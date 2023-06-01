@@ -1,0 +1,15 @@
+pkgbase = calamus-appimage
+	pkgdesc = React Electron App for Writing and Publishing Novels
+	pkgver = 0.6.2_pre_alpha
+	pkgrel = 1
+	url = https://orcawriter.app/
+	arch = x86_64
+	license = AGPL3
+	depends = zlib
+	depends = glibc
+	conflicts = calamus
+	options = !strip
+	source = calamus-0.6.2_pre_alpha.tar.gz::https://github.com/zachhannum/orca/archive/refs/tags/v0.6.2-pre-alpha.tar.gz
+	sha256sums = 4370a0199954dd04a21c712488d3f4c56cf05d3484431d14aedc6fef98eb621d
+
+pkgname = calamus-appimage
