@@ -2,14 +2,14 @@
 
 pkgbase='python-intake'
 pkgname=('python-intake')
-pkgver=0.6.8
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='A general interface for loading data'
 arch=('any')
 url='https://intake.readthedocs.io/'
 license=('BSD')
 source=("https://files.pythonhosted.org/packages/source/i/intake/intake-$pkgver.tar.gz")
-sha256sums=('fcda7b572c63da20e5af39c30e0ff28cf7abad4c256e47dc6b5ce22edeb51a56')
+sha256sums=('ce3b8bce87f9831823f87936c546f898dbb718985770124c7cc569061726f3b6')
 provides=("python-intake=$pkgver")
 
 build() {
