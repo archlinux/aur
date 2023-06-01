@@ -3,7 +3,7 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl-hardened
-_ver=3.1.0
+_ver=3.1.1
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
@@ -20,7 +20,7 @@ provides=(openssl)
 conflicts=(openssl)
 source=("https://artfiles.org/openssl.org/source/openssl-${_ver}.tar.gz")
 #	'ca-dir.patch')
-sha256sums=('aaa925ad9828745c4cad9d9efeb273deca820f2cdcf2c3ac7d7c1212b7c497b4')
+sha256sums=('b3aa61334233b852b63ddb048df181177c2c659eb9d4376008118f9c08d07674')
 #            '75aa8c2c638c8a3ebfd9fa146fc61c7ff878fc997dc6aa10d39e4b2415d669b2')
 
 #prepare() {
