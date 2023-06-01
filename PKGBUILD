@@ -1,6 +1,6 @@
 _name="material-shell"
 pkgname="gnome-shell-extension-${_name}"
-pkgver="43b"
+pkgver="44"
 pkgrel="1"
 pkgdesc='A modern desktop interface for Linux extending GNOME Shell.'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('plata-theme: GTK and shell theme'
             'ttf-roboto: font')
 groups=('gnome-shell-extensions')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-b2sums=("c5968f0696737be31a2026814eef31e43b197e4e8e9d9eedc2fee92097b312dcb9455962b81408e007d7dcc8fba0a54747f9adabba87ba296ab46ed26a4ece68")
+b2sums=("9fa945a71f20c7b7e1012fb738e10bfaccd908cb9de2248cb3a00158ff312723ea01f5b6b9188776a0687ef8e7934b9a56e3ca72c5fa3effa5dda7f1f65e5f9c")
 
 _dir="material-shell-${pkgver}"
 _uuid="material-shell@papyelgringo"
