@@ -9,7 +9,7 @@ url="https://github.com/coNQP/${_repo_name}"
 license=('MIT')
 makedepends=("cargo")
 source=("${_repo_name}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('6c4b58d5c271b4c1c4c6ab80fb4c537f8583fc778a075f642f59aaa074f532b1')
+sha256sums=('63e2789365cc2a05e2aa18385af2e03067ebcdd1e8e4e0f2f81c364ca647b2be')
 
 build() {
 	cd "${_repo_name}-${pkgver}"
