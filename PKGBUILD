@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="chatall-appimage"
-pkgver=1.19.20
+pkgver=1.19.21
 pkgrel=1
 pkgdesc="Concurrently chat with ChatGPT, Bing Chat, bard, Alpaca, Vincuna, Claude, ChatGLM, MOSS, iFlytek Spark, ERNIE and more, discover the best answers"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/ChatALL-${pkgver}-linux-${arch}.AppImage")
-sha256sums=('8dcafc6ab1b24ed527e19e009b40ca437e542cff44a5e6b394159899641d4e0e')
+sha256sums=('8ce3144b52970f760c11141633796777df1ac25c43e5d5d528178b51e26080f0')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null

@@ -1,6 +1,6 @@
 pkgbase = chatall-appimage
 	pkgdesc = Concurrently chat with ChatGPT, Bing Chat, bard, Alpaca, Vincuna, Claude, ChatGLM, MOSS, iFlytek Spark, ERNIE and more, discover the best answers
-	pkgver = 1.19.20
+	pkgver = 1.19.21
 	pkgrel = 1
 	url = http://chatall.ai/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = chatall-appimage
 	depends = glibc
 	conflicts = chatall
 	options = !strip
-	source = chatall-1.19.20.AppImage::https://github.com/sunner/ChatALL/releases/download/v1.19.20/ChatALL-1.19.20-linux-x86_64.AppImage
-	sha256sums = 8dcafc6ab1b24ed527e19e009b40ca437e542cff44a5e6b394159899641d4e0e
+	source = chatall-1.19.21.AppImage::https://github.com/sunner/ChatALL/releases/download/v1.19.21/ChatALL-1.19.21-linux-x86_64.AppImage
+	sha256sums = 8ce3144b52970f760c11141633796777df1ac25c43e5d5d528178b51e26080f0
 
 pkgname = chatall-appimage
