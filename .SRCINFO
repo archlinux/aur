@@ -1,7 +1,7 @@
 pkgbase = tmux-zh_tw
 	pkgdesc = Chinese translation for tmux man pages
 	pkgver = 3.3a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Freed-Wu/tmux-zh
 	arch = any
 	license = GPL3
