@@ -13,9 +13,12 @@ pkgbase = saber
 	makedepends = xz
 	makedepends = rustup
 	depends = gtk3
+	depends = bash
 	source = https://github.com/adil192/saber/archive/refs/tags/v0.12.9.tar.gz
 	source = 0001-Modify-.desktop-for-Arch-Linux.patch
+	source = saber.sh
 	sha256sums = 3f1fbde854b30d9f60ab3a7ccf863662586f165fb6273dc0f2cfe9d13528b52f
 	sha256sums = 93e6e067fefad597117d7f6889df204082898b79dcd29853eaa5c879ab35b2df
+	sha256sums = 43a5cf6b114b0c6411c6048339adb1d5ffc37bcaa338e6bf1287a7105f667e1c
 
 pkgname = saber

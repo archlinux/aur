@@ -7,12 +7,14 @@ pkgdesc="A cross-platform libre notes app written in Flutter"
 arch=('x86_64')
 url="https://github.com/adil192/saber"
 license=('GPL3')
-depends=('gtk3')
+depends=('gtk3' 'bash')
 makedepends=('flutter' 'clang' 'cmake' 'ninja' 'pkgconf' 'xz' 'rustup')
 source=("https://github.com/adil192/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
-        "0001-Modify-.desktop-for-Arch-Linux.patch")
+        "0001-Modify-.desktop-for-Arch-Linux.patch"
+        "saber.sh")
 sha256sums=('3f1fbde854b30d9f60ab3a7ccf863662586f165fb6273dc0f2cfe9d13528b52f'
-            '93e6e067fefad597117d7f6889df204082898b79dcd29853eaa5c879ab35b2df')
+            '93e6e067fefad597117d7f6889df204082898b79dcd29853eaa5c879ab35b2df'
+            '43a5cf6b114b0c6411c6048339adb1d5ffc37bcaa338e6bf1287a7105f667e1c')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -46,6 +48,6 @@ package() {
     install -Dm644 "$srcdir/$pkgname-$pkgver/saber.desktop" -t "$pkgdir/usr/share/applications/"
     install -Dm644 "$srcdir/$pkgname-$pkgver/saber.png" -t "$pkgdir/usr/share/pixmaps/"
 
-    # Symbolic link from package to /usr/bin so it appears within the PATH
-    ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    # Copy wrapper script to /usr/bin
+    install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
