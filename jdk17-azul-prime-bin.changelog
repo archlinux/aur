@@ -1,0 +1,19 @@
+Release date: May 31, 2023
+
+This release is based on Azul Platform Prime 23.04.0.0 and corresponds to the following OpenJDK version: 17.0.7+7-LTS
+
+What’s New
+- Some Falcon CPU Budgeting options have been renamed:
+CompilerTier2BudgetingThreadsPercent -> CompilerTier2BudgetingCPUPercent
+CompilerTier2BudgetingWarmupThreadsPercent -> CompilerTier2BudgetingWarmupCPUPercent
+CompilerTier2BudgetMaxMs -> CompilerTier2BudgetWindowDurationMs
+
+- The command line option UseTrueObjectsForUnsafe has been set to true by default. This option forces unsafe objects to be returned in their true object form instead of the equivalent java class object. For example, with UseTrueObjectsForUnsafe disabled, java.class.Object can be returned instead of the true klassOop.
+
+- Azul Platform Prime 23.05.0.0 includes several performance optimizations including many intrinsic functions implemented in the Falcon compiler.
+
+Known Issues
+- There are no new issues to report in this release.
+
+Resolved Issues
+- There are no resolved issues to report in this release.

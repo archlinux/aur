@@ -1,0 +1,25 @@
+pkgbase = jdk17-azul-prime-bin
+	pkgdesc = Azul Platform Prime Stream Build of OpenJDK 17. TCK compliant, free for development.
+	pkgver = 23.05.0.0_2
+	pkgrel = 1
+	url = https://www.azul.com/downloads/#prime
+	install = jdk17-azul-prime-bin.install
+	changelog = jdk17-azul-prime-bin.changelog
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	depends = java-environment-common
+	depends = java-runtime
+	depends = ca-certificates-utils
+	depends = libx11
+	depends = libxi
+	depends = libxtst
+	depends = alsa-lib
+	depends = libxext
+	depends = libxrender
+	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM23.05.0.0/zing23.05.0.0-2-jdk17.0.7-linux_x64.tar.gz
+	sha256sums_x86_64 = 9168a4caa77c407b72074d187caefa2dbc1a8464f0806aa69ecb5c7229ece293
+	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM23.05.0.0/zing23.05.0.0-2-jdk17.0.7-linux_aarch64.tar.gz
+	sha256sums_aarch64 = 610d34408b9811c239508d5f3804fcc29d6c7446e9e146fcab288183d03763ec
+
+pkgname = jdk17-azul-prime-bin
