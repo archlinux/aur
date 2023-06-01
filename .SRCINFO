@@ -1,7 +1,7 @@
 pkgbase = unifi
 	pkgdesc = Centralized management system for Ubiquiti UniFi AP
 	pkgver = 7.4.156
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unifi-network.ui.com
 	arch = x86_64
 	arch = armv7h

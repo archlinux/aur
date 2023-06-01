@@ -3,7 +3,7 @@
 
 pkgname=unifi
 pkgver=7.4.156
-pkgrel=1
+pkgrel=2
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://unifi-network.ui.com'
@@ -29,7 +29,6 @@ package() {
   # lib
   install -dm755 "${pkgdir}"/usr/lib/unifi
   cp -r UniFi/{bin,dl,lib,webapps} "${pkgdir}"/usr/lib/unifi
-  rm -r "${pkgdir}"/usr/lib/unifi/lib/native/{Mac,Windows}
   case ${CARCH} in
   armv7h)
       rm -r "${pkgdir}"/usr/lib/unifi/lib/native/Linux/{aarch64,x86_64}
