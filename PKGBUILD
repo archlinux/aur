@@ -1,12 +1,12 @@
-# Maintainer:  tx00100xt <tx00100xt@yandex.ru>
-# Contributer: tx00100xt <tx00100xt@yandex.ru>
+# Maintainer:  Alexander <tx00100xt@yandex.ru>
+# Contributer: Alexander <tx00100xt@yandex.ru>
 
 pkgname=serioussam-tower
 pkginstdir=serioussam
 tower=SamTFE-Tower.tar.xz
 pkgver=1.00
 _srcname="SE1-TFE-Tower-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Serious Sam Classic Nightmare Tower native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TFE-Tower"
@@ -69,9 +69,16 @@ build(){
 
 package(){
   # Making sure directories exist.
+  install -d $pkgdir/usr/lib/{serioussam,serioussam/Mods,serioussam/Mods/Tower}
+  install -d $pkgdir/usr/share/{serioussam,serioussam/Mods}
+
+  install -D -m0755 $srcdir/Mods/Tower/Bin/libGame.so $pkgdir/usr/lib/serioussam/Mods/Tower
+  install -D -m0755 $srcdir/Mods/Tower/Bin/libEntities.so  $pkgdir/usr/lib/serioussam/Mods/Tower
+
+  rm -fr "$srcdir/Mods/Tower/Bin"
+
+  # Making sure directories exist.
   install -d $pkgdir/usr/share/licenses
-  mkdir "$pkgdir/usr/share/$pkginstdir"
-  mkdir "$pkgdir/usr/share/$pkginstdir"/{SamTFE,SamTFE/Mods} || return 0
 
   # Install license.
   install -D -m 644 $srcdir/$_srcname/LICENSE \
@@ -79,5 +86,5 @@ package(){
   rm -f  "$srcdir/$_srcname/LICENSE" || return 1
 
   # Install data.
-  mv "$srcdir/Mods" "$pkgdir/usr/share/$pkginstdir/SamTFE"
+  mv "$srcdir/Mods" "$pkgdir/usr/share/$pkginstdir/"
 }
