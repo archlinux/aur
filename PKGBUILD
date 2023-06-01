@@ -1,9 +1,10 @@
+_pkgname="certbot-plugin-gandi"
 pkgname="certbot-dns-gandi"
 pkgdesc="gandi DNS authenticator plugin for certbot"
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 arch=("any")
-url="https://github.com/obynio/certbot-plugin-gandi"
+url="https://github.com/obynio/${_pkgname}"
 license=("MIT")
 depends=("certbot")
 makedepends=("git" "python-setuptools")
@@ -19,7 +20,7 @@ sha256sums=('7f076d8cc03b58e0a9763378dee6ab39057769405578ad27c690c5f94a3c8e5c'
             'dff9eaa13a927429a407a7e152690c5c10f51b6fa426f1ea29787728eeab8279')
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}"
   mkdir -p "${pkgdir}/etc/letsencrypt"
   mkdir -p "${pkgdir}/usr/lib/systemd/system"
