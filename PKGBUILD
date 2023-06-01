@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-ffn
 _pkgname=${pkgname:7}
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Financial functions for Python"
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
     python-tabulate
 )
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('4a79e72e06ff328e333ffe97010b1ce110bcd694fcd03be7351bf5065cd273e8')
+sha256sums=('58b0056e680f4291ab61c6f55809f2d21a339f5c4ec48bba2ecee32f20bbd09e')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
