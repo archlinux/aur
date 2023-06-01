@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/305a385/ytfind/'
 license=('AGPL3')
 depends=('curl')
-makedepends=('git')
+makedepends=('json-c')
 source=("https://github.com/305a385/$pkgname/archive/refs/tags/v$pkgver.zip")
 sha256sums=('4670dab98390ade9f1565757f6572fa08aca93cffc44e792bcff57f2fa41ce42')
 
