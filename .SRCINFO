@@ -1,13 +1,13 @@
 pkgbase = rtx-bin
 	pkgdesc = Polyglot runtime manager
-	pkgver = 1.30.5
+	pkgver = 1.30.6
 	pkgrel = 1
 	url = https://github.com/jdxcode/rtx
 	arch = x86_64
 	license = MIT
 	provides = rtx
 	conflicts = rtx
-	source = rtx-1.30.5.tar.gz::https://github.com/jdxcode/rtx/releases/download/v1.30.5/rtx-v1.30.5-linux-x64.tar.gz
-	sha512sums = 0b72e7a38cef89fa83e3f2d3ee991dc6793406fe138833a081e770b02eb6319594204a241569db0be4fd77e7b6028371d7a5e10abedb832c56bcd0a66b991584
+	source = rtx-1.30.6.tar.gz::https://github.com/jdxcode/rtx/releases/download/v1.30.6/rtx-v1.30.6-linux-x64.tar.gz
+	sha512sums = ed6b5abde64f571978371285f9cc2a39a957a1f71156947febb83f9f329b36d679887fd9a642ad56fb57fc82078c050c3b869e0a8836054ae1b1def9e0811040
 
 pkgname = rtx-bin
