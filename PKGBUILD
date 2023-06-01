@@ -19,7 +19,7 @@ source=("https://heasarc.gsfc.nasa.gov/FTP/software/lheasoft/lheasoft${pkgver}/h
 
 # You could use below to get offical md5
 # curl -s ${source}.md5  | awk '{print "md5sums=(", $1, ")"}'
-md5sums=('06d374d96b0f4ee707b2d32baea3b5a8')
+md5sums=('263bc438c66590cbc189601a66b3fafe')
 
 install="$pkgname.install"
 
