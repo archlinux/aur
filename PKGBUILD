@@ -2,7 +2,7 @@
 # Contributor: brody <archfan@brodix.de>
 
 pkgname=netbird
-pkgver=0.20.6
+pkgver=0.20.8
 pkgrel=1
 pkgdesc='A WireGuard-based mesh network that connects your devices into a single private network'
 url='https://netbird.io'
@@ -19,7 +19,7 @@ source=(
   'environment'
   'netbird@.service'
 )
-sha256sums=('235c78ee245fc1cbe3c76d10e0539a32a0c8c261f3dfccfe7e7f1dd164c9c03b'
+sha256sums=('12fc9ad99ddf89100e7ea0a14e742fbc647ae301e95a74060ea8defa2cf24f29'
             '128e36e1f814a12886f3122a1809a404be17f81481275b6624e66937941f5269'
             '3bd6d2692dc6d08cfabce1ba2514c02f4463294ebbdb63828baca5d9e4c9daa9')
 
