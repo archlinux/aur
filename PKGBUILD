@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/adil192/saber"
 license=('GPL3')
 depends=('gtk3' 'bash' 'jsoncpp' 'libsecret' 'xdg-user-dirs')
-makedepends=('flutter' 'clang' 'cmake' 'ninja' 'pkgconf' 'xz' 'rustup')
+makedepends=('flutter' 'clang' 'cmake' 'ninja' 'rustup')
 source=("https://github.com/adil192/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "0001-Modify-.desktop-for-Arch-Linux.patch"
         "saber.sh")
