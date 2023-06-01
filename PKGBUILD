@@ -1,5 +1,3 @@
-# Maintainer: Paul Spruce <paul.spruce@gmail.com>
-
 _pkgname=meg
 pkgname=meg-bin
 pkgver=0.3.0
