@@ -1,5 +1,3 @@
-# Maintainer: Paul Spruce <paul.spruce@gmail.com>
-
 pkgname=meg
 pkgver=0.3.0
 pkgrel=1
