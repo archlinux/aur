@@ -1,6 +1,6 @@
 pkgbase = gbar-git
 	pkgdesc = Blazingly fast status bar written with GTK
-	pkgver = r108.ea857e5
+	pkgver = r118.180e472
 	pkgrel = 1
 	url = https://github.com/scorpion-26/gBar
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = gbar-git
 	depends = gtk-layer-shell
 	depends = pulseaudio
 	depends = libdbusmenu-gtk3
+	depends = pamixer
 	optdepends = bluez-utils: Bluetooth support
 	optdepends = hyprland: Workspace widgets
 	optdepends = nvidia-utils: Nvidia GPU support
