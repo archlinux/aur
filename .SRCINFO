@@ -1,0 +1,12 @@
+pkgbase = hlsdl-bin
+	pkgdesc = A golang library to help you download a m3u8 file and save it as a single TS file
+	pkgver = 1.4.8
+	pkgrel = 1
+	url = https://github.com/canhlinh/hlsdl
+	arch = x86_64
+	license = GPL3
+	provides = hlsdl
+	source = https://github.com/canhlinh/hlsdl/releases/download/1.4.8/hlsdl_linux
+	sha256sums = 74afcb48209b5416c3c706a33c792a84f9b500fd9a3c8b3151a022d204ffac04
+
+pkgname = hlsdl-bin
