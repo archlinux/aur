@@ -6,7 +6,6 @@
 !PKGBUILD
 !.SRCINFO
 !timeshift.install
-!read-only-btrfs-snapshot.patch
 !grub-btrfs.path
 !snapshot-detect
 !snapshot-detect.desktop
