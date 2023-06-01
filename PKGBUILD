@@ -3,9 +3,9 @@
 
 pkgname=heroic-games-launcher-electron
 _pkgbase=HeroicGamesLauncher
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
-_electronversion=22
+_electronversion=24
 pkgdesc="HGL, a Native alternative Linux Launcher for Epic Games"
 arch=('x86_64')
 url="https://heroicgameslauncher.com/"
@@ -18,8 +18,8 @@ _launcher_ver=8
 source=("https://github.com/Heroic-Games-Launcher/$_pkgbase/archive/refs/tags/v$pkgver.tar.gz"
         electron-is-dev-env.patch
         "${pkgname%-*}.sh.in")
-sha256sums=('3689d777bf16e751eedf4e4df5d050bb014489184c7b2c80a79ac42771010fd4'
-            'f8890a3c25036d8f75135cf57c9ea850077b1167a80e93cde5df3889370087f5'
+sha256sums=('59f068d6ba7e6c9c5d3c08f06b4cee23f07452777b9edb8baa61895fa9f40320'
+            '71498b332f2258646ae80fbe09a8d1f1c03f3abde57728a4bce434bbc1ce6cf9'
             '01840a1e45da355cea9205eb1724615d27ea0b9c8115b9ee811ff545cac5bbfc')
 
 prepare() {
@@ -34,6 +34,7 @@ build() {
   electronDist="/usr/lib/electron$_electronversion"
   electronVer="$(sed s/^v// $electronDist/version)"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+  export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
   yarn install
   yarn dist:linux --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
