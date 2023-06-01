@@ -1,6 +1,8 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
+# Contributor: Asuka Minato
+
 pkgname=lebab
-pkgver=3.1.1
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Turn your JavaScript ES5 code into readable ES6/ES7"
 arch=(any)
@@ -23,4 +25,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('a914347ad063bcb246eeebcd246b2f773021f872a71a066134dc1613366ec26b')
+sha256sums=('b5af8dc4b2917869a02f5525269b4891e66902315b021adbef1e15ee6599751e')
