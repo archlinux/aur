@@ -7,7 +7,7 @@ xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
 pkgver=1.10.4
 _srcname="SeriousSamClassic-$pkgver"
-pkgrel=7
+pkgrel=8
 pkgdesc="Serious Sam Classic native Linux version with XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic"
@@ -29,7 +29,8 @@ source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgv
     "tfe-last-update.patch"
     "tse-last-update.patch"
     "fix-thunder.patch"
-    "fix_sdl2_fullscreen_on_gnome44.patch")
+    "fix_sdl2_fullscreen_on_gnome44.patch"
+    "arch_linux_libraries_path.patch")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
@@ -49,7 +50,8 @@ sha256sums=('c42e1434e03f713ffc60aa627f0a24c64287598bc5ee7cdbd2cbe91aa363ef51'
             '3e7556a71e8627ea0e94e1abd1112e493e12e27d8465aa3a7c37a138d08893b7'
             '637b388f88a241ad7f140ed22cc49b92174cb9b8abe9bb8a876a9b40af7b3f16'
             'ad07c6b9d29a0d8a1a276b0c00d07e2d24d8c63c425efa21daa31ec3c1d366df'
-            '18244ab0be66d5f5ea98e2ad387290803be08a77d71820a53972e4d58d3e2ac0')
+            '18244ab0be66d5f5ea98e2ad387290803be08a77d71820a53972e4d58d3e2ac0'
+            'f0dad9c8748d440f998bf059615020f89520631730ec89b78db70aada2ac57a8')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -62,6 +64,7 @@ prepare(){
   cat tse-last-update.patch > "$srcdir/$_srcname/tse-last-update.patch"
   cat fix-thunder.patch > "$srcdir/$_srcname/fix-thunder.patch"
   cat fix_sdl2_fullscreen_on_gnome44.patch > "$srcdir/$_srcname/fix_sdl2_fullscreen_on_gnome44.patch"
+  cat arch_linux_libraries_path.patch > "$srcdir/$_srcname/arch_linux_libraries_path.patch"
 
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
@@ -100,6 +103,7 @@ prepare(){
   patch -p1 < fix-thunder.patch || return 1
   # gnone44 sdl2 patch
   patch -p1 < fix_sdl2_fullscreen_on_gnome44.patch || return 1
+  patch -p1 < arch_linux_libraries_path.patch || return 1
 }
 
 build(){
