@@ -1,7 +1,7 @@
 # Maintainer: tocic <tocic at protonmail dot ch>
 
 pkgname=sobjectizer
-pkgver=5.7.4.3
+pkgver=5.7.5
 pkgrel=1
 pkgdesc="An implementation of Actor, Publish-Subscribe, and CSP models
          in one rather small C++ framework"
@@ -11,7 +11,7 @@ license=("custom:BSD")
 depends=("gcc-libs")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Stiffstream/sobjectizer/archive/v.${pkgver}.tar.gz")
-b2sums=("771ae1fea9188467e29a15651035dd72c08b07a57a026680d4e1fb9fdc3d1d22adb3e2b993001cdb36497dd8ff022d7df99681e2e60c51753584c075adea68f8")
+b2sums=("4a8c1256e611799a28cd68d97f6f633fca9f1c4536c56e3093d1082f70638cc0f909b26f402da5b51fe61bfec1d9be2eef1d5918590ef160a2b0ae4b7d40ab2d")
 
 build() {
   cmake -B "build/" -S "${pkgname}-v.${pkgver}/dev" \
