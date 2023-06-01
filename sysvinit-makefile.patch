@@ -19,10 +19,30 @@
  
  ifeq ($(DISTRO),)
  SBIN	+= sulogin bootlogd
-@@ -213,10 +213,6 @@
- 		ln -sf halt $(ROOT)/sbin/reboot
- 		ln -sf halt $(ROOT)/sbin/poweroff
- 		ln -sf init $(ROOT)/sbin/telinit
+@@ -196,27 +196,16 @@
+ distclean:	clobber
+ 
+ install:	all
+-		$(INSTALL_DIR) $(ROOT)/bin/ $(ROOT)/sbin/
+ 		$(INSTALL_DIR) $(ROOT)/usr/bin/
+-		for i in $(BIN); do \
+-			$(INSTALL_EXEC) $$i $(ROOT)/bin/ ; \
+-		done
+-		for i in $(SBIN); do \
+-			$(INSTALL_EXEC) $$i $(ROOT)/sbin/ ; \
+-		done
+ 		for i in $(USRBIN); do \
+ 			$(INSTALL_EXEC) $$i $(ROOT)/usr/bin/ ; \
+ 		done
+ 		# $(INSTALL_DIR) $(ROOT)/etc/
+ 		$(INSTALL_DIR) $(ROOT)/etc/inittab.d
+ 		# $(INSTALL_EXEC) ../doc/initscript.sample $(ROOT)/etc/
+-		ln -sf halt $(ROOT)/sbin/reboot
+-		ln -sf halt $(ROOT)/sbin/poweroff
+-		ln -sf init $(ROOT)/sbin/telinit
++		ln -sf halt $(ROOT)/usr/bin/reboot
++		ln -sf halt $(ROOT)/usr/bin/poweroff
++		ln -sf init $(ROOT)/usr/bin/telinit
 -		ln -sf ../sbin/killall5 $(ROOT)/bin/pidof
 -		if [ ! -f $(ROOT)/usr/bin/lastb ]; then \
 -			ln -sf last $(ROOT)/usr/bin/lastb; \

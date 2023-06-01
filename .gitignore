@@ -1,5 +1,5 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
-!sysvinit-makefile.patch
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/sysvinit-makefile.patch
