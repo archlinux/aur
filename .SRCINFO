@@ -9,7 +9,6 @@ pkgbase = texlive-minionpro-git
 	makedepends = acroread-fonts-systemwide
 	depends = texlive-core
 	depends = texlive-latexextra
-	depends = texlive-genericextra
 	source = git+https://github.com/sebschub/FontPro.git
 	source = minionpro.maps
 	source = myriadpro.maps
@@ -24,4 +23,3 @@ pkgname = texlive-minionpro-git
 pkgname = texlive-myriadpro-git
 	provides = myriadpro
 	conflicts = myriadpro
-

@@ -1,4 +1,4 @@
-# Maintainer:  Stefan Husmann <stefan-husmann@t-online.de>>
+# Contributor:  Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('texlive-minionpro-git' 'texlive-myriadpro-git')
 pkgver=r134.165b4a7
@@ -7,7 +7,7 @@ pkgdesc="generate all necessary files to use Adobe Minion Pro and Adobe Myriad P
 arch=('any')
 url="https://github.com/sebschub/FontPro.git"
 license=('GPL')
-depends=('texlive-core' 'texlive-latexextra' 'texlive-genericextra')
+depends=('texlive-core' 'texlive-latexextra')
 makedepends=('git' 'acroread-fonts-systemwide')
 source=("git+https://github.com/sebschub/FontPro.git" minionpro.maps myriadpro.maps)
 _gitname="FontPro"
