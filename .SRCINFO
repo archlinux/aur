@@ -1,12 +1,13 @@
 pkgbase = rider
 	pkgdesc = A cross-platform .NET IDE by JetBrains.
 	pkgver = 2023.1.2
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://www.jetbrains.com/rider/
 	arch = x86_64
 	arch = aarch64
 	license = Commercial
+	makedepends = gendesk
 	optdepends = mono: .NET runtime
 	optdepends = msbuild: build .NET Core projects
 	provides = rider
@@ -14,8 +15,6 @@ pkgbase = rider
 	options = !strip
 	options = staticlibs
 	source = https://download-cf.jetbrains.com/rider/JetBrains.Rider-2023.1.2.tar.gz
-	source = rider.desktop
 	sha256sums = 50eb2deb303162dc77c802c4402c2734bdae38a47ab534921e064a107dc284ae
-	sha256sums = 3709aa3f918294ecc7d9ad483ee549f45a746248ec6397d297cfac023f999229
 
 pkgname = rider
