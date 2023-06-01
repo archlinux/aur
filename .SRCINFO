@@ -1,7 +1,7 @@
 pkgbase = serioussam-st8vipe
 	pkgdesc = Serious Sam Classic ST8VIPE native Linux
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tx00100xt/SE1-TSE-ST8VIPE
 	arch = i686
 	arch = x86_64
