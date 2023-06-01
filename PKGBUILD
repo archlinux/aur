@@ -1,12 +1,12 @@
-# Maintainer:  tx00100xt <tx00100xt@yandex.ru>
-# Contributer: tx00100xt <tx00100xt@yandex.ru>
+# Maintainer:  Alexander <tx00100xt@yandex.ru>
+# Contributer: Alexander <tx00100xt@yandex.ru>
 
 pkgname=serioussam-dancesworld
-pkginstdir=serioussam
+pkginstdir=serioussamse
 dancesworld=SamTSE-DancesWorld.tar.xz
 pkgver=2.0
 _srcname="SE1-TSE-DancesWorld-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Serious Sam Classic Dances World native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TSE-DancesWorld"
@@ -35,7 +35,7 @@ else
 fi
 
 prepare(){
-  # Install the Tower Modification data.
+  # Install the DancesWorld Modification data.
   rm -f "$srcdir/Mods/DancesWorld/Bin/libGameMP.so" || return 0
   rm -f "$srcdir/Mods/DancesWorld/Bin/libEntitiesMP.so" || return 0
   chmod -R o=rx "$srcdir/Mods/DancesWorld"
@@ -67,9 +67,16 @@ build(){
 
 package(){
   # Making sure directories exist.
+  install -d $pkgdir/usr/lib/{serioussamse,serioussamse/Mods,serioussamse/Mods/DancesWorld}
+  install -d $pkgdir/usr/share/{serioussamse,serioussamse/Mods}
+
+  install -D -m0755 $srcdir/Mods/DancesWorld/Bin/libGameMP.so $pkgdir/usr/lib/serioussamse/Mods/DancesWorld
+  install -D -m0755 $srcdir/Mods/DancesWorld/Bin/libEntitiesMP.so  $pkgdir/usr/lib/serioussamse/Mods/DancesWorld
+
+  rm -fr "$srcdir/Mods/DancesWorld/Bin"
+
+  # Making sure directories exist.
   install -d $pkgdir/usr/share/licenses
-  mkdir "$pkgdir/usr/share/$pkginstdir"
-  mkdir "$pkgdir/usr/share/$pkginstdir"/{SamTSE,SamTSE/Mods} || return 0
 
   # Install license.
   install -D -m 644 $srcdir/$_srcname/LICENSE \
@@ -77,5 +84,5 @@ package(){
   rm -f  "$srcdir/$_srcname/LICENSE" || return 1
 
   # Install data.
-  mv "$srcdir/Mods" "$pkgdir/usr/share/$pkginstdir/SamTSE"
+  mv "$srcdir/Mods" "$pkgdir/usr/share/$pkginstdir/"
 }
