@@ -1,3 +1,4 @@
+# Maintainer: Dylan Rumble-Smith < dylan at dylanjava dot com >
 # Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: MarkZZ <mark.weiman at markzz dot com>
 # Contributor: Alucryd <alucryd at gmail dot com>
