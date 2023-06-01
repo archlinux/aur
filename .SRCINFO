@@ -1,7 +1,7 @@
 pkgbase = vmd-src
 	pkgdesc = Visual Molecular Dynamics
 	pkgver = 1.9.4a57
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ks.uiuc.edu/Research/vmd/
 	arch = x86_64
 	arch = aarch64
@@ -26,6 +26,6 @@ pkgbase = vmd-src
 	source = local://vmd-1.9.4a57.src.tar.gz
 	source = configure.patch
 	sha256sums = de278d0c5d969336d89068e0806fb50aaa0cb0f546ba985d840b279357860679
-	sha256sums = 51f0f26b246ab4b9cf561ae7bdb9c636fb1a8963766299e711d121df21152cbd
+	sha256sums = 93ef1e106141e7386113dcc64185174413e30934fba597ce2ebe44660c2d7665
 
 pkgname = vmd-src

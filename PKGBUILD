@@ -6,26 +6,26 @@
 pkgname=vmd-src
 _pkgname=vmd
 pkgver=1.9.4a57
-pkgrel=2
+pkgrel=3
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
-license=('custom')
-arch=('x86_64' 'aarch64')
-depends=('tcsh' 'tk' 'python-numpy' 'fltk' 'netcdf' 'ocl-icd' 'libxi' 'openmpi')
-makedepends=('opencl-headers')
+license=(custom)
+arch=(x86_64 aarch64)
+depends=(tcsh tk python-numpy fltk netcdf ocl-icd libxi openmpi)
+makedepends=(opencl-headers)
 optdepends=('openbabel: additional file formats support'
             'sqlite: dmsplugin'
             'ospray: accelerated ray tracing for Intel CPUs'
             'optix: accelerated ray tracing for NVIDIA GPUs'
             'cuda: NVIDIA CUDA GPU acceleration functions')
-provides=("$_pkgname")
-conflicts=("$_pkgname" "$_pkgname-bin")
+provides=($_pkgname)
+conflicts=($_pkgname $_pkgname-bin)
 # You have to download the package from the VMD url
 # and put it in the PKGBUILD folder.
-source=("local://$_pkgname-${pkgver}.src.tar.gz"
-        "configure.patch")
+source=(local://$_pkgname-${pkgver}.src.tar.gz
+        configure.patch)
 sha256sums=('de278d0c5d969336d89068e0806fb50aaa0cb0f546ba985d840b279357860679'
-            '51f0f26b246ab4b9cf561ae7bdb9c636fb1a8963766299e711d121df21152cbd')
+            '93ef1e106141e7386113dcc64185174413e30934fba597ce2ebe44660c2d7665')
 
 prepare() {
   sed -i 's/ltcl8.5/ltcl/g' plugins/Make-arch
@@ -66,7 +66,7 @@ build() {
   make -j1 $MACHINE
   make distrib
   cd ../$_pkgname-$pkgver
-  ./configure $MACHINE OPENGL EGLPBUFFER FLTKOPENGL FLTK TK $ACC IMD OPENCL MPI XINERAMA XINPUT $RAY LIBPNG ZLIB NETCDF COLVARS TCL PYTHON NUMPY PTHREADS GCC
+  ./configure $MACHINE $ACC $RAY OPENGL EGLPBUFFER FLTKOPENGL FLTK TK IMD OPENCL MPI XINERAMA XINPUT LIBPNG ZLIB NETCDF COLVARS TCL PYTHON NUMPY PTHREADS GCC
   cd src
   make veryclean
   make
@@ -75,6 +75,7 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
   cd src
   make install
   sed -i 's#set defaultvmddir=.*#set defaultvmddir=/usr/lib/vmd#' \
