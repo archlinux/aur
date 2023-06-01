@@ -3,7 +3,7 @@
 pkgbase=python-ndcube
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Package for multi-dimensional contiguious and non-contiguious coordinate aware arrays"
 arch=('any')
@@ -25,12 +25,12 @@ makedepends=('python-setuptools-scm'
              'graphviz')  # matplotlib <- mpl-animators
 checkdepends=('python-pytest-doctestplus'
               'python-dask'
-              'python-reproject')  # pytest-doctestplus gwcs mpl-animators sunpy already in makedep
+              'python-reproject')  # pytest-doctestplus gwcs mpl-animators sunpy{,sphinx-theme} already in makedep
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'doc-use-local-fits.patch'
 #       "https://www.astropy.org/astropy-data/tutorials/FITS-images/HorseHead.fits"
 #       "https://github.com/sunpy/ndcube/raw/main/changelog/README.rst")
-md5sums=('5c17a5bce55d101870a588d93babd9d0')
+md5sums=('726183d12d8b9837f4263a6c4bd3269a')
 #        'b50513a0bb73290d65317d0d44ae9fb9'
 #        'SKIP'
 #        'SKIP')
@@ -60,7 +60,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" #-vv --color=yes
+    pytest || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-ndcube() {
