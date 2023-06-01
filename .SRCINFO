@@ -1,7 +1,7 @@
 pkgbase = code-oss-marketplace
 	pkgdesc = Enable vscode marketplace in code-oss
 	pkgver = 1.77.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://marketplace.visualstudio.com/vscode
 	install = code-oss-marketplace.install
 	arch = any
