@@ -19,5 +19,5 @@ package() {
     unzip fonts.zip
     rm fonts.zip
 
-    find . -type f -name '*.otf' -exec install -Dm644 {} "$pkgdir/usr/share/fonts/TTF/{}" \;
+    find . -type f -name '*.otf' -exec install -Dm644 {} "$pkgdir/usr/share/fonts/OTF/{}" \;
 }
