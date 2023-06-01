@@ -1,6 +1,6 @@
 # Maintainer: aulonsal <seraur at aulonsal dot com>
 pkgname=zet
-pkgver=0.2.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="CLI utility to find the union, intersection, set difference, etc of files considered as sets of lines"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('APACHE' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('c38ef0cca4ea45f79554bae7c1235ee00215b7483c880c56d282346adda463a11dfda57a963106734d4fa8e5135cb0f9b1622265537d3068c9296d2446b458b3')
+b2sums=('0ec24e512c64c25cdb3d83b168967b36803b1fee30653252416c72be2f29579742bba26034d38f2d6a3fda3415e5cd734af21e846896fbb807af349c18248e8b')
 
 build() {
 	cd "$pkgname-$pkgver"
