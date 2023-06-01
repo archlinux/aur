@@ -1,0 +1,7 @@
+---
+repos:
+  - repo: https://github.com/edlanglois/pkgbuild-hooks
+    rev: v0.2.0
+    hooks:
+      - id: srcinfo-fixer
+      - id: verify-srcinfo-checksums
