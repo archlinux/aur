@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Eli Schwartz
 pkgname=smile
-pkgver=2.2.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=('appstream-glib')
 conflicts=("$pkgname-emoji-picker")
 replaces=("$pkgname-emoji-picker")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6c2c5b02722a66ad477fec7206c8f66a513b22e8aa1a0b2023c56bedbe5a9d85')
+sha256sums=('33f12470c70c98a733e40c8161048ceabc436fa2d8988f759b929631120fc918')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -40,4 +40,6 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+
+  rm "$pkgdir/usr/share/icons/hicolor/scalable/actions/meson.build"
 }
