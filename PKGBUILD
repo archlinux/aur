@@ -3,7 +3,7 @@
 
 pkgname=('kingstvis')
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kingst Virtual Instruments - Logic Analyzer"
 provides=("kingstvis")
 url='http://www.qdkingst.com'
