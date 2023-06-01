@@ -1,15 +1,15 @@
 pkgbase = astroimagej
 	pkgdesc = ImageJ for Astronomy
-	pkgver = 3.2.0
-	pkgrel = 2
+	pkgver = 5.1.0
+	pkgrel = 0
 	url = http://www.astro.louisville.edu/software/astroimagej/
 	arch = any
 	license = GPL
 	depends = java-environment
-	noextract = AstroImageJ_v3.2.0_20160201_linux.tar.gz
-	source = http://www.astro.louisville.edu/software/astroimagej//installation_packages/AstroImageJ_v3.2.0_20160201_linux.tar.gz
+	noextract = AstroImageJ_v5.1.0.00_linux_x64_java18.tar.gz
+	source = https://www.astro.louisville.edu/software/astroimagej/installation_packages/AstroImageJ_v5.1.0.00_linux_x64_java18.tar.gz
 	source = aij
-	sha1sums = 22938e075cd72604db1e1c732286002503a957bf
+	sha1sums = 25167866a9da45166b030b4bfbdc18eb33097fb0
 	sha1sums = a09026bbb1c482dfb28651c1163c3e574c23a838
 
 pkgname = astroimagej
