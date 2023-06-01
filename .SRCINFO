@@ -1,7 +1,7 @@
 pkgbase = r-ggrastr
 	pkgdesc = Rasterize Layers for 'ggplot2'
-	pkgver = 1.0.1
-	pkgrel = 4
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ggrastr
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = r-ggrastr
 	optdepends = r-maps
 	optdepends = r-rmarkdown
 	optdepends = r-sf
-	source = https://cran.r-project.org/src/contrib/ggrastr_1.0.1.tar.gz
-	sha256sums = 82d6e90fa38dec85e829f71018532ed5b709a50a585455fc07cb3bae282f5d1f
+	source = https://cran.r-project.org/src/contrib/ggrastr_1.0.2.tar.gz
+	sha256sums = cb27406dca99cea6440adf6edb7eb53141b60322452f5a5d4409e36516ad20d1
 
 pkgname = r-ggrastr
