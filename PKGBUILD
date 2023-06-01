@@ -7,7 +7,7 @@ pkgdesc="A cross-platform libre notes app written in Flutter"
 arch=('x86_64')
 url="https://github.com/adil192/saber"
 license=('GPL3')
-depends=('gtk3' 'bash')
+depends=('gtk3' 'bash' 'jsoncpp' 'libsecret' 'xdg-user-dirs')
 makedepends=('flutter' 'clang' 'cmake' 'ninja' 'pkgconf' 'xz' 'rustup')
 source=("https://github.com/adil192/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "0001-Modify-.desktop-for-Arch-Linux.patch"
