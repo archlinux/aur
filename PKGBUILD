@@ -6,8 +6,14 @@ pkgrel=1
 pkgdesc="A YAML wrapper around Packer"
 arch=('any')
 url="https://gitlab.com/matilda.peak/yacker"
-source=('git+https://gitlab.com/matilda.peak/yacker.git')
-md5sums=('SKIP')
+source=(
+  'git+https://gitlab.com/vitrvvivs/yacker.git'
+  'requirements.txt.patch'
+)
+md5sums=(
+  'SKIP'
+  'e99ac7a240eca1e3f2e70775417af49b'
+)
 depends=('packer' 'python' 'python-pyaml')
 makedepends=('python-setuptools')
 
@@ -18,6 +24,10 @@ pkgver() {
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "$srcdir/$_name"
+  git apply "$srcdir/requirements.txt.patch"
+}
 
 build() {
   cd "$srcdir/$_name"

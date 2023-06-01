@@ -1,0 +1,7 @@
+diff --git a/requirements.txt b/requirements.txt
+index a888cfe..b8f7025 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1 +1 @@
+-PyYAML == 3.13
++PyYAML >= 3.13
