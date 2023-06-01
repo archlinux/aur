@@ -1,7 +1,7 @@
 pkgbase = aopsf-git
 	pkgdesc = Audio Overload's PSF core, now in a proper library
 	pkgver = r40.3a3f594
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/derselbst/aopsf
 	arch = x86_64
 	license = BSD

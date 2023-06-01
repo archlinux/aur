@@ -1,6 +1,6 @@
 pkgname=aopsf-git
 pkgver=r40.3a3f594
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Overload's PSF core, now in a proper library"
 arch=(x86_64)
 url='https://github.com/derselbst/aopsf'
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make libaopsf.so
+  make libaopsf.so OPTFLAGS="$CFLAGS"
 }
 
 package() {
