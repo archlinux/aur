@@ -65,7 +65,7 @@ _amlog='/var/log/amanda'
 set -u
 pkgname='amanda'
 #pkgver='3.3.9'
-pkgver='3.5.2'
+pkgver='3.5.3'
 pkgrel='1'
 pkgdesc='Advanced Maryland Automatic Network Disk Archiver network backup for Linux Windows clients, supports SSH, AES, GPG, encryption, tape, RAIT, mirror, changers, Amazon S3, ipv6, DVD, NDMP, VTL, advanced scripting'
 arch=('i686' 'x86_64')
@@ -148,10 +148,11 @@ options=('!strip')
 install="${pkgname}.install"
 _tapetypes=('tapetypes.txt')
 #_verwatch=('http://www.amanda.org/download.php' '\([0-9\.]\+\)' 't')
-#_srcdir="${pkgname}-${pkgver}"
+_srcdir="${pkgname}-tag-community-${pkgver}"
 source=(
   #"https://prdownloads.sourceforge.net/amanda/amanda-${pkgver}.tar.gz"
-  "https://cdn.zmanda.com/downloads/community/Amanda/${pkgver}/Source/amanda-tag-community-${pkgver}.tar.gz"
+  #"https://cdn.zmanda.com/downloads/community/Amanda/${pkgver}/Source/amanda-tag-community-${pkgver}.tar.gz"
+  "${_srcdir}.tar.gz::https://github.com/zmanda/amanda/archive/refs/tags/${_srcdir#*-}.tar.gz"
   "xinetd.${pkgname}".{udp,tcp}
   '0000-fedora-patch-tirpc.patch' # https://src.fedoraproject.org/rpms/amanda/tree/master
   "${_tapetypes[@]}"
@@ -159,14 +160,14 @@ source=(
   # https://bugs.gentoo.org/656340
   # https://fedoraproject.org/wiki/Changes/SunRPCRemoval
 )
-_srcdir="${source[0]##*/}"
-_srcdir="${_srcdir%%.tar*}"
-md5sums=('b3b3ec3f3eecbe1a38c637feecf1b922'
+#_srcdir="${source[0]##*/}"
+#_srcdir="${_srcdir%%.tar*}"
+md5sums=('ccb15863132c7028b004737ccfd7b57a'
          '4745f45c43488f46cba00073a60d587e'
          'c42f8eb4461c1979b22761e288ff5c2e'
          '51982f3d5c6b4a367de24c7fd7b7eb16'
          'fbb84f7b778ff76759062878f413f047')
-sha256sums=('812aea37d5e5ae852ab4147e989f090fb60ef66e7b7fe49ef58e2d139fe3e99f'
+sha256sums=('7821d7420e12bfc96c8db385c29f79afe7d6f35e80faa81da0b87a47ee5b2476'
             '3db294c9d7c610e9c0d531dcc2725dbddf1213fad64f04bc7cf9b1b9c30e9803'
             '46446a8dc4ee8ec39ed0a3e2636fb02a198565e8111abe8392c456da56a007ce'
             'ae51f305b49bd7c94e854c2784ee4b58dabf74bc43bfe9a738d3d03322938861'
