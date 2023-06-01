@@ -5,19 +5,18 @@
 # Contributor: Ada <adadonderr@gmail.com>
 # Contributor: Christian Finnberg <christian@finnberg.net>
 
-
 pkgname=notesnook
 pkgver=2.5.0
 pkgrel=1
 _electronversion=21
-pkgdesc="Take private notes, capture ideas, make lists & sync them anywhere"
+pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=('any')
 url="https://github.com/streetwriters/notesnook"
 license=('GPLv3')
 options=(!strip)
 provides=(${pkgname})
 conflicts=(${pkgname})
-depends=("electron$_electronversion" 'gtk3' 'libxss' 'libnotify' 'libappindicator-gtk3')
+depends=("electron$_electronversion" 'libappindicator-gtk3' 'libindicator-gtk3' 'libnotify' 'libxss' 'libxtst')
 makedepends=('nvm' 'git' 'yarn')
 source=("notesnook::git+$url.git"
         "${pkgname}.desktop")
