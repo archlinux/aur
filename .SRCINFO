@@ -1,17 +1,24 @@
 pkgbase = cufflinks
-	pkgdesc = Cufflinks assembles transcripts, estimates their abundances, and tests for differential expression and regulation in RNA-Seq samples..
-	pkgver = 2.2.1
-	pkgrel = 5
-	url = http://cole-trapnell-lab.github.io/projects/cufflinks/
+	pkgdesc = Transcriptome assembly and differential expression analysis for RNA-Seq.
+	pkgver = 2.2.2.20190706.162801
+	pkgrel = 2
+	url = http://cole-trapnell-lab.github.io/cufflinks/
 	arch = x86_64
-	license = Artistic
-	depends = boost
-	depends = eigen3
-	depends = python2
-	depends = samtools
-	depends = perl
-	source = https://github.com/cole-trapnell-lab/cufflinks/archive/v2.2.1.tar.gz
-	md5sums = 80328ff4169f2778c0728a4795da85e2
+	license = BSL
+	makedepends = autoconf
+	makedepends = make
+	makedepends = ncurses
+	makedepends = boost
+	makedepends = eigen
+	makedepends = git
+	makedepends = samtools
+	makedepends = htslib
+	depends = python
+	depends = htslib
+	depends = boost-libs
+	source = git+https://github.com/cole-trapnell-lab/cufflinks.git
+	source = cufflinks.patch::https://github.com/cole-trapnell-lab/cufflinks/pull/108.patch
+	sha1sums = SKIP
+	sha1sums = 081021851cfcc0372bcf1f2e56aa11d0a3b5862c
 
 pkgname = cufflinks
-
