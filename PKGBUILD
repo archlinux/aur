@@ -3,13 +3,13 @@
 # Co-Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=aeron-git
-pkgver=1.40.0.r226.g4e5374a06
+pkgver=1.41.3.r9.g58e8582e4
 pkgrel=1
 pkgdesc="Efficient reliable UDP unicast, UDP multicast, and IPC message transport"
 arch=('i686' 'x86_64')
 url="https://github.com/real-logic/aeron"
 license=('Apache')
-depends=('gcc-libs' 'libbsd' 'util-linux-libs' 'zlib' 'java-environment')
+depends=('gcc-libs' 'libbsd' 'util-linux-libs' 'zlib')
 makedepends=('cmake')
 source=("git+https://github.com/real-logic/aeron.git"
         "aeronmd.service")
