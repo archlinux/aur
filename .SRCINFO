@@ -1,6 +1,6 @@
 pkgbase = jfrog-cli
 	pkgdesc = Simple interface to Artifactory, Bintray and Mission Control
-	pkgver = 2.38.5
+	pkgver = 2.39.0
 	pkgrel = 1
 	url = https://github.com/jfrog/jfrog-cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = jfrog-cli
 	depends = glibc
 	conflicts = jfrog-cli-go
 	replaces = jfrog-cli-go
-	source = jfrog-cli-2.38.5.tar.gz::https://github.com/jfrog/jfrog-cli/archive/v2.38.5.tar.gz
-	sha512sums = 38bebfaac6ced56fb7a9a318e9f2f84689bdb0221e1290a92c4430b2cd2b4ad628cd452b285b6857d3dea782ad6301e7274a3a691d114169d5a34854c5d8011a
+	source = jfrog-cli-2.39.0.tar.gz::https://github.com/jfrog/jfrog-cli/archive/v2.39.0.tar.gz
+	sha512sums = d2bdc310b7a441e56ce2b6f8dd5cc091f90e44acca0ddcfdfe9336b32dd51d7521a6645ade5f78955875d7470fcae6838a532597369c9950459daf4adbfd15dc
 
 pkgname = jfrog-cli
