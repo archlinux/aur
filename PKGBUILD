@@ -4,16 +4,16 @@
 _pkgname=jwcrypto
 pkgname=python-$_pkgname
 # https://github.com/latchset/jwcrypto/releases
-pkgver=1.4.2
+pkgver=1.5.0
 # curl https://api.github.com/repos/latchset/jwcrypto/git/ref/tags/v$pkgver | jq -r .object.sha
-_tag=65b76952a91a792d234aab529ef5cd5f82258f1c
-pkgrel=2
+_tag=2b03e450701f5990f3c9e49c9bfa4da71dc8c921
+pkgrel=1
 pkgdesc='Python implementation of JWK, JWS, JWE specifications'
 arch=(any)
 url='https://github.com/latchset/jwcrypto'
 license=(LGPL3)
 depends=(python python-cryptography python-deprecated)
-makedepends=(git python-setuptools)
+makedepends=(git python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=("git+$url?signed#tag=$_tag")
 sha256sums=('SKIP')
@@ -34,7 +34,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -44,5 +44,5 @@ check() {
 
 package() {
   cd $_pkgname
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
