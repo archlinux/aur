@@ -1,5 +1,5 @@
-# Maintainer:  tx00100xt <tx00100xt@yandex.ru>
-# Contributer: tx00100xt <tx00100xt@yandex.ru>
+# Maintainer:  Alexander <tx00100xt@yandex.ru>
+# Contributer: Alexander <tx00100xt@yandex.ru>
 
 pkgname=serioussam
 pkginstdir=serioussam
@@ -7,7 +7,7 @@ xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
 pkgver=1.10.4
 _srcname="SeriousSamClassic-$pkgver"
-pkgrel=6
+pkgrel=7
 pkgdesc="Serious Sam Classic native Linux version with XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic"
@@ -26,8 +26,6 @@ source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgv
     "serioussam-tfe.desktop"
     "serioussam-tse.desktop"
     "serioussam.xpm"
-    "serioussam-tfe.sh"
-    "serioussam-tse.sh"
     "tfe-last-update.patch"
     "tse-last-update.patch"
     "fix-thunder.patch"
@@ -45,11 +43,9 @@ sha256sums=('c42e1434e03f713ffc60aa627f0a24c64287598bc5ee7cdbd2cbe91aa363ef51'
             '28a90da56de5d6591a2e65154778030ba28b375d29556fd7e1db085d2c00b877'
             '93fe183a2f0a35989b3d1678dddb1c5976cda94747d4186c6f36af4ccf144443'
             '8282f527b54e9d8fe009640b7634560f3b4bf0fc9b72cdc2f865f1c226339d35'
-            '8e9f0d7138ab5da6b4b899f39234f6e3c48d0d47970c6b12372e33e86e39d606'
-            '134bbc9088b8c323c9a17a7ea8a39942e4cf4b83e149cb4f89e161adf7290122'
+            '1e36d7b0d11f68729aa5c79ac9a44157d4af0bf61060040ab92a37d96ca89aba'
+            '49680c65d26b264a1d7735c6310fcc5d0ac0e0e56273d3bccf539c0c87d31b2b'
             '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4'
-            '092d0806cba13368419c63887dec4dd556ffc63d0421634e268c544260f78b1f'
-            '6332bcfe309be35f5381bdf3dc7c334674a936b3793ac0840dc9992e9a98d6a3'
             '3e7556a71e8627ea0e94e1abd1112e493e12e27d8465aa3a7c37a138d08893b7'
             '637b388f88a241ad7f140ed22cc49b92174cb9b8abe9bb8a876a9b40af7b3f16'
             'ad07c6b9d29a0d8a1a276b0c00d07e2d24d8c63c425efa21daa31ec3c1d366df'
@@ -135,6 +131,11 @@ build(){
   rm -f  "$srcdir/$_srcname"/{*.sh,*.old,*.patch}
   rm -fr "$srcdir/$_srcname/Images"
 
+  mv -f "$srcdir/$_srcname/SamTFE/Bin/SeriousSam" "$srcdir/$_srcname/SamTFE/Bin/serioussam"
+  mv -f "$srcdir/$_srcname/SamTFE/Bin/DedicatedServer" "$srcdir/$_srcname/SamTFE/Bin/serioussam-ded"
+  mv -f "$srcdir/$_srcname/SamTSE/Bin/SeriousSam" "$srcdir/$_srcname/SamTSE/Bin/serioussamse"
+  mv -f "$srcdir/$_srcname/SamTSE/Bin/DedicatedServer" "$srcdir/$_srcname/SamTSE/Bin/serioussamse-ded"
+
   # fix scripts for AMD cards
   sed -i 's/mdl_bFineQuality = 0;/mdl_bFineQuality = 1;/g' "$srcdir/$_srcname/SamTFE/Scripts/GLSettings/RAM.ini"
   sed -i 's/mdl_bFineQuality = 0;/mdl_bFineQuality = 1;/g' "$srcdir/$_srcname/SamTFE/Scripts/GLSettings/ATI-RPRO.ini"
@@ -146,19 +147,44 @@ package(){
   # Making sure directories exist.
   install -d $pkgdir/usr/share/{applications,pixmaps,licenses}
   install -d $pkgdir/usr/bin/
+  install -d $pkgdir/usr/lib/{serioussam,serioussam/Mods,serioussam/Mods/XPLUS}
+  install -d $pkgdir/usr/lib/{serioussamse,serioussamse/Mods,serioussamse/Mods/XPLUS}
 
   # Install license.
   install -D -m 644 $srcdir/$_srcname/LICENSE \
        $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
-  # Install data.
-  mv "$srcdir/$_srcname" "$pkgdir/usr/share/$pkginstdir"
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Bin/serioussam $pkgdir/usr/bin
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Bin/serioussam-ded $pkgdir/usr/bin
 
-  # Install helper scripts.
-  install -D -m 755 $srcdir/serioussam-tfe.sh \
-       $pkgdir/usr/share/$pkginstdir/SamTFE
-  install -D -m 755 $srcdir/serioussam-tse.sh \
-       $pkgdir/usr/share/$pkginstdir/SamTSE
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Bin/libEngine.so $pkgdir/usr/lib
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Bin/libGame.so $pkgdir/usr/lib/serioussam
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Bin/libEntities.so $pkgdir/usr/lib/serioussam
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Bin/libShaders.so $pkgdir/usr/lib/serioussam
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Bin/libamp11lib.so $pkgdir/usr/lib/serioussam
+
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Bin/serioussamse $pkgdir/usr/bin
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Bin/serioussamse-ded $pkgdir/usr/bin
+
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Bin/libEngineMP.so $pkgdir/usr/lib
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Bin/libGameMP.so $pkgdir/usr/lib/serioussamse
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Bin/libEntitiesMP.so $pkgdir/usr/lib/serioussamse
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Bin/libShaders.so $pkgdir/usr/lib/serioussamse
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Bin/libamp11lib.so $pkgdir/usr/lib/serioussamse
+
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Mods/XPLUS/Bin/libGame.so $pkgdir/usr/lib/serioussam/Mods/XPLUS
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Mods/XPLUS/Bin/libEntities.so $pkgdir/usr/lib/serioussam/Mods/XPLUS
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Mods/XPLUS/Bin/libGameMP.so $pkgdir/usr/lib/serioussamse/Mods/XPLUS
+  install -D -m0755 $srcdir/$_srcname/SamTSE/Mods/XPLUS/Bin/libEntitiesMP.so $pkgdir/usr/lib/serioussamse/Mods/XPLUS
+
+  rm -fr "$srcdir/$_srcname/SamTFE/Bin"
+  rm -fr "$srcdir/$_srcname/SamTSE/Bin"
+  rm -fr "$srcdir/$_srcname/SamTFE/Mods/XPLUS/Bin"
+  rm -fr "$srcdir/$_srcname/SamTSE/Mods/XPLUS/Bin"
+
+  # Install data.
+  mv "$srcdir/$_srcname/SamTFE"  $pkgdir/usr/share/serioussam
+  mv "$srcdir/$_srcname/SamTSE"  $pkgdir/usr/share/serioussamse
 
   # Install desktop file.
   install -D -m 644 $srcdir/serioussam-tfe.desktop \
@@ -169,9 +195,5 @@ package(){
   # Install icon file.
   install -D -m 644 $srcdir/serioussam.xpm \
            $pkgdir/usr/share/pixmaps/serioussam.xpm
-
-  # Create symlinks to add the serioussam startup and utility scripts to usr/bin
-  ln -s /usr/share/$pkginstdir/SamTFE/serioussam-tfe.sh $pkgdir/usr/bin/serioussam-tfe || return 1
-  ln -s /usr/share/$pkginstdir/SamTSE/serioussam-tse.sh $pkgdir/usr/bin/serioussam-tse || return 1
 
 }
