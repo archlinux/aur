@@ -1,6 +1,6 @@
 pkgbase = walc
 	pkgdesc = An unofficial WhatsApp Desktop client for linux systems.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 2
 	url = https://github.com/WAClient/WALC
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = walc
 	depends = nss
 	provides = walc
 	conflicts = walc
-	source = WALC-0.3.0.tar.gz::https://github.com/WAClient/WALC/archive/refs/tags/v0.3.0.tar.gz
-	md5sums = 4d3f8eb668ea2cfd9c551745c97194f7
+	source = WALC-0.3.1.tar.gz::https://github.com/WAClient/WALC/archive/refs/tags/v0.3.1.tar.gz
+	md5sums = 42a77a90085b2689478dd51246748b9f
 
 pkgname = walc
