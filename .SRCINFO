@@ -14,6 +14,6 @@ pkgbase = walc
 	provides = walc
 	conflicts = walc
 	source = WALC-0.3.1.tar.gz::https://github.com/WAClient/WALC/archive/refs/tags/v0.3.1.tar.gz
-	md5sums = 42a77a90085b2689478dd51246748b9f
+	md5sums = b1e5af4f70b3656e1dda0f9d4dca8a30
 
 pkgname = walc
