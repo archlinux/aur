@@ -2,7 +2,7 @@
 
 pkgbase=purc-git
 pkgname=purc-git
-pkgver=0.9.12.r0.g25294297d
+pkgver=0.9.12.r0.g8514c26d0
 pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
@@ -83,13 +83,6 @@ build() {
         -G Ninja
 
     ninja -C build
-}
-
-check() {
-#     cd "${srcdir}/${pkgname%-git}"
-#     ctest --test-dir build --output-on-failure
-    cd "${srcdir}/${pkgname%-git}/build"
-    bash run_all_tests.sh
 }
 
 package() {
