@@ -1,8 +1,8 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.16.0
-pkgrel=2
+pkgver=0.16.1
+pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
 url="https://www.zephyrproject.org/"
@@ -16,7 +16,7 @@ makedepends=('patchelf' 'wget')
 source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64.tar.xz"
         "zephyrrc"
 )
-sha256sums=('63fd2a70fe941c92cc92bf13f5a50ff785c0bd1051460ec661542cd10b9052cd'
+sha256sums=('51338d51aa4cea2516641ce0d9dc0b51b763779f00dc4564a2bc0dd713df22c7'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
 
 
