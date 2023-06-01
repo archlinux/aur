@@ -1,7 +1,7 @@
 pkgbase = thunderbird-bin
 	pkgdesc = Standalone Mail/News reader - binary version
 	pkgver = 102.11.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-bin.install
 	arch = x86_64

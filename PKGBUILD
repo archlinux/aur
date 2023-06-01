@@ -1,13 +1,14 @@
 # Maintainer: Gennadiy Mykhailiuta <gmykhailiuta@gmail.com>
 # Maintainer: Luna Jernberg <droidbittin@gmail.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
-
+# Contributor: Andreas Baumann <mail@andreasbaumann.cc>
+ 
 pkgname=thunderbird-bin
 _pkgname=thunderbird
 pkgver=102.11.2
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
-pkgrel=2
+pkgrel=1
 pkgdesc="Standalone Mail/News reader - binary version"
 arch=('x86_64' 'pentium4' 'i686')
 url="https://www.mozilla.org/thunderbird"
