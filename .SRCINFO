@@ -6,10 +6,11 @@ pkgbase = alfae
 	arch = any
 	license = GPL3
 	makedepends = dotnet-sdk
+	makedepends = git
 	depends = legendary
 	depends = heroic-gogdl
 	options = !strip
-	source = https://github.com/suchmememanyskill/Alfae/archive/refs/tags/1.4.1.tar.gz
-	sha256sums = 43e0e678fac1313de4db5f2722708c97402acee1ff4afbd481ff01712463c191
+	source = git+https://github.com/suchmememanyskill/Alfae.git
+	sha256sums = SKIP
 
 pkgname = alfae

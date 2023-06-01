@@ -8,11 +8,11 @@ arch=('any')
 url="https://github.com/suchmememanyskill/Alfae"
 license=('GPL3')
 depends=('legendary' 'heroic-gogdl')
-makedepends=('dotnet-sdk')
+makedepends=('dotnet-sdk' 'git')
 options=('!strip')
 _desktop=alfae.desktop
-source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('43e0e678fac1313de4db5f2722708c97402acee1ff4afbd481ff01712463c191')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
   # Create a shortcut
@@ -25,12 +25,12 @@ prepare() {
   sed -i '1 i\Exec=/opt/Alfae/Alfae %U' $_desktop
   sed -i '1 i\Name=Alfae' $_desktop
   sed -i '1 i\[Desktop Entry]' $_desktop
-  mkdir -p desktop
-  mv $_desktop desktop
 }
 
 build() {
-  cd Alfae-$pkgver
+  # Switch tag version
+  cd Alfae
+  git checkout tags/${pkgver}
 
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
@@ -69,13 +69,13 @@ build() {
 
 package() {
   # Create folders
-  mkdir -p $pkgdir/opt
-  mkdir -p $pkgdir/usr/bin
+  mkdir -p "$pkgdir/opt"
+  mkdir -p "$pkgdir/usr/bin"
   # Install
-  cp -r Alfae-$pkgver/Release $pkgdir/opt/Alfae
-  ln -s /opt/Alfae/Alfae $pkgdir/usr/bin/$pkgname
-  install -Dm644 Alfae-$pkgver/Launcher/Assets/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-  install -Dm644 desktop/$_desktop -t "$pkgdir/usr/share/applications"
-  install -Dm644 Alfae-$pkgver/README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 Alfae-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  cp -r Alfae/Release "$pkgdir/opt/Alfae"
+  ln -s /opt/Alfae/Alfae "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 Alfae/Launcher/Assets/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
+  install -Dm644 $_desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 Alfae/README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 Alfae/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
