@@ -4,12 +4,12 @@
 
 pkgname=gromacs
 pkgver=2023.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
 license=("LGPL")
 arch=('x86_64')
-depends=('lapack' 'zlib' 'hwloc' 'gcc11')
+depends=('lapack' 'zlib' 'hwloc')
 optdepends=('cuda: Nvidia GPU support'
             'vmd: Accesibility to other trajectory formats (ONLY WHEN COMPILING)'
             'perl: needed for demux.pl and xplor2gmx.pl'
