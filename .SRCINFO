@@ -1,6 +1,6 @@
 pkgbase = code-oss-marketplace
 	pkgdesc = Enable vscode marketplace in code-oss
-	pkgver = 1.77.0
+	pkgver = 1.77.1
 	pkgrel = 1
 	url = https://marketplace.visualstudio.com/vscode
 	install = code-oss-marketplace.install
@@ -9,7 +9,7 @@ pkgbase = code-oss-marketplace
 	source = code-oss-marketplace.hook
 	source = patch_code_oss_product.py
 	sha256sums = 138eb84d5e98b38f7d3cf8e38ff807dd6a6ea78e249c4f0fa96187d4db1f3528
-	sha256sums = 7f8566106add894c99670d7dbdc96b0883bdead2e595f3217a0eed975b3e8b2c
+	sha256sums = b5094739cc30beda5d677603352b005c8abe08e451037b1c4eea2ea74450ccf3
 
 pkgname = code-oss-marketplace
 	depends = code
