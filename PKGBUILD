@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 57440 2011-10-27 20:16:15Z lcarlier $
 # Maintainer: Hector <hsearaDOTatDOTgmailDOTcom>
+# Maintainer: Vedran Miletic <vedran AT miletic DOT net>
 
 pkgname=gromacs
 pkgver=2023.1
@@ -12,8 +13,8 @@ depends=('lapack' 'zlib' 'hwloc' 'gcc11')
 optdepends=('cuda: Nvidia GPU support'
             'vmd: Accesibility to other trajectory formats (ONLY WHEN COMPILING)'
             'perl: needed for demux.pl and xplor2gmx.pl'
-	    'opencl-mesa: OpenCL support for AMD GPU'
-	    'opencl-nvidia: OpenCL support for Nvidia GPU')
+            'opencl-mesa: OpenCL support for AMD GPU'
+            'opencl-nvidia: OpenCL support for Nvidia GPU')
 makedepends=('cmake' 'libxml2' 'hwloc')
 options=('!libtool')
 source=(https://gitlab.com/gromacs/gromacs/-/archive/v${pkgver}/gromacs-v${pkgver}.tar.gz)
@@ -25,16 +26,17 @@ export VMDDIR=/usr/lib/vmd/ #If vmd is available at compilation time
                             #trajectory file format that can be read by
                             #VMD installation (e.g. AMBER's DCD format).
 
-#For cuda support gcc12 is required (CUDA 12>), if you do not need cuda support comment the next two lines and install cuda
+# For CUDA (12+) support, compiling with GCC 12 is required.
+# If you not need CUDA support, uncomment the next two lines
+# and install cuda and gcc12 packages.
 #export CC=gcc-12
-#export CXX=g++-12 
+#export CXX=g++-12
 
 build() {
   mkdir -p ${srcdir}/{single,double}
 
- 
   msg2 "Building the double precision files"
-  cd ${srcdir}/double	
+  cd ${srcdir}/double
   cmake ../gromacs-v${pkgver}/ \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
@@ -47,10 +49,11 @@ build() {
   cd ${srcdir}/single
   cmake ../gromacs-v${pkgver}/ \
         -DCMAKE_INSTALL_PREFIX=/usr/ \
-        -DCMAKE_INSTALL_LIBDIR=lib\
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DGMX_BUILD_OWN_FFTW=ON \
-        -DREGRESSIONTEST_DOWNLOAD=ON
-  #-GMX_GPU: Framework for GPU acceleration. Pick one: OFF, CUDA, OpenCL, SYCL
+        -DREGRESSIONTEST_DOWNLOAD=ON \
+        #-GMX_GPU=CUDA
+  # For GPU acceleration support, uncomment the previous line and pick one: OFF, CUDA, OpenCL, SYCL
   make
 }
 
@@ -64,7 +67,6 @@ check () {
 }
 
 package() {
-
   msg2 "Making the single precision executables"
   cd ${srcdir}/single
   make  DESTDIR=${pkgdir} install
