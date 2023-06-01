@@ -2,7 +2,7 @@
 pkgname=deepin-wine-pandaocr.pro
 _pkgname=com.pandaocr.pro.spark
 _officalname=PandaOCR.Pro
-pkgver=5.47
+pkgver=5.48
 sparkver=1.0.0
 pkgrel=1
 epoch=
@@ -25,11 +25,11 @@ source=(
     "LICENSE.md::${url}/raw/main/README.md"
     )
 sha256sums=('f21c8dd02ee531e32a6f8b4b9cf8c49a21d6c85d422063673ff172e07deeb98f'
-            '06d40eb14ec2029fa28a3dfcaa64dce3e42c854f69742e7b27d0c99f3ebb6d4f'
+            '417ce5c202648e01c6f44973fa20acf34327cfa18e1477bcb2cf1da19abc5c00'
             'fba9300589f8e39390cbbd82e3042d494f70b166881460e4e8ce8b75265da481'
             '21fc8ca36649a1085d71f7391c2ec1378d2322a12a1713ce00eefc1072c90f3b'
-            'dc0e0ad3903022785a7ffd57a4924d12f3dbc5972d95acbf597804d562fc3d2c'
-            '2e08f2ba3d754f1d43b6309d03f6e2d1e58835a572fcb04a7c54549243bd7111')
+            'a3c5196c31a3fdb73e7d43833f6ab957f02d465f1495784ff42e08518a460079'
+            '80c6ab59c68cfe0975dc846a8df6ebf75812f3e6ed6e5a649e035fc99ccb422d')
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}" --gname root --uname root
     mv "${pkgdir}/opt/apps/${_pkgname}" "${pkgdir}/opt/apps/${pkgname}"
