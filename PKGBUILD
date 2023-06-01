@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="frappe-books-appimage"
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern desktop accounting for freelancers and small-businesses."
 arch=('x86_64')
 url="https://frappebooks.com/"
 _githuburl="https://github.com/frappe/books"
 license=('AGPL3')
 options=(!strip)
-conflicts=("${pkgname%-appimage}" "frappebooks")
+conflicts=("${pkgname%-appimage}" "frappebooks" "frappebooks-appimage")
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Frappe-Books-${pkgver}.AppImage")
