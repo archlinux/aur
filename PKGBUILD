@@ -2,14 +2,14 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=23.2.0_devel.171388.0066be44eba.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.2.0_devel.171999.e2da5bf549e.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
              'libxdamage' 'libvdpau' 'libva' 'wayland' 'wayland-protocols' 'zstd' 'elfutils' 'llvm'
              'libomxil-bellagio' 'libclc' 'clang' 'libglvnd' 'libunwind' 'lm_sensors' 'libxrandr'
              'systemd' 'valgrind' 'glslang' 'vulkan-icd-loader' 'cmake' 'meson'
-             'directx-headers-git' 'git' 'ninja' 
+             'git' 'ninja' 
              'rust' 'rust-bindgen' 'spirv-tools' 'spirv-llvm-translator')
 depends=('libdrm' 'libxcb' 'wayland' 'python'
          'libclc' 'clang' 'expat' 'spirv-llvm-translator'
@@ -82,7 +82,6 @@ build () {
     export CXX="clang++"
 
     meson setup mesa _build \
-       --wrap-mode=nofallback \
        -D prefix=/usr \
        -D sysconfdir=/etc \
        -D buildtype=release \

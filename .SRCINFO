@@ -1,6 +1,6 @@
 pkgbase = mesa-rusticl-git
 	pkgdesc = An open-source implementation of the OpenGL specification, with Rusticl
-	pkgver = 23.2.0_devel.171388.0066be44eba.d41d8cd98f00b204e9800998ecf8427e
+	pkgver = 23.2.0_devel.171999.e2da5bf549e.d41d8cd98f00b204e9800998ecf8427e
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -33,7 +33,6 @@ pkgbase = mesa-rusticl-git
 	makedepends = vulkan-icd-loader
 	makedepends = cmake
 	makedepends = meson
-	makedepends = directx-headers-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = rust
