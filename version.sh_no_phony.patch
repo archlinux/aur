@@ -1,0 +1,10 @@
+diff --git a/src/Makefile b/src/Makefile
+index b9d715e..3ea4907 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -42,4 +42,4 @@ install: build
+ clean:
+ 	rm -f sysinfo version.sh
+ 
+-.PHONY: default build install clean version.sh
++.PHONY: default build install clean
