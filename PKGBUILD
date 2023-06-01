@@ -5,7 +5,7 @@
 _pkgbasename=openssl
 pkgname=lib32-$_pkgbasename-hardened
 epoch=1
-_ver=3.1.0
+_ver=3.1.1
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
@@ -20,7 +20,7 @@ conflicts=(lib32-openssl)
 source=("https://artfiles.org/openssl.org/source/openssl-${_ver}.tar.gz")
 # the tests are currently not being used
 #        'ca-dir.patch')
-sha256sums=('aaa925ad9828745c4cad9d9efeb273deca820f2cdcf2c3ac7d7c1212b7c497b4')
+sha256sums=('b3aa61334233b852b63ddb048df181177c2c659eb9d4376008118f9c08d07674')
 #            '0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e')
 
 #prepare() {
