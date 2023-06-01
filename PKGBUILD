@@ -4,7 +4,7 @@
 
 _pkgname=doxygen
 pkgname=doxygen-clang
-pkgver=1.9.6
+pkgver=1.9.7
 pkgrel=1
 pkgdesc='Documentation system for C++, C, Java, IDL and PHP (built with clang parser)'
 url='http://www.doxygen.nl'
@@ -16,9 +16,9 @@ optdepends=('graphviz: for caller/callee graph generation'
 makedepends=('cmake' 'gcc-libs' 'flex' 'qt5-base' 'texlive-core' 'ghostscript'
              'texlive-latexextra' 'graphviz' 'python' 'git' 'llvm')
 source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/doxygen/doxygen/archive/Release_${pkgver//./_}.tar.gz)
-sha256sums=('2a3ee47f7276b759f74bac7614c05a1296a5b028d3f6a79a88e4c213db78e7dc')
-sha512sums=('687ffedad87ee908987967ef6675141bc9b2a55bf88d871d275aee6c35af9615c70c12f25401b1b368b32e92a3d0534177ec8781d8fb614137b98f4862445e37')
-b2sums=('6a51cb5bcc5892dce9220f9f64b3834d6204ecfe2adeeaf86b8230adcde180e4cae7c0a691ecf0cf181559ea2a4ce734619beaabfdb6903b80fbe6cdad083198')
+sha256sums=('691777992a7240ed1f822a5c2ff2c4273b57c1cf9fc143553d87f91a0c5970ee')
+sha512sums=('2986ea60f9b683d92d81083af74ed17cffa283b9893f61c1d8d62a9d7f0daa8b16057e952163046c96aa9b26a83f8fd55d27b124a3d65f0129acd18866fdb8be')
+b2sums=('69f30fc701e55c9cca0a14da141acbc16403c7c35bb60720415e5851c16ea2ee68bca90a6d88c9b14b98d794c80dc93d2c9e085a8dcd4fd9e6f8111544ce678e')
 
 provides=(${_pkgname} ${_pkgname}-docs)
 conflicts=(${_pkgname} ${_pkgname}-docs)
@@ -54,3 +54,5 @@ package() {
   cd ${_pkgname}-Release_${pkgver//./_}
   make -C build DESTDIR="${pkgdir}" install
 }
+
+# vim: ts=2 sw=2 et:
