@@ -1,17 +1,18 @@
-# Maintainer: Jay Ta'ala <jay@jaytaala.com>
+# Maintainer: Peter Gaede <peter-gaede@mail.com>
+# Maintainer: Jay Ta'ala  <jay@jaytaala.com>
 
 pkgname=zoho-notebook
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Zoho Notebook for Linux: Take notes, add files, create checklists, sketches, record audio, and capture moments."
 arch=('x86_64')
 url="https://www.zoho.com/notebook"
 license=('custom')
-depends=('gtk3' 'libsecret' 'dbus' 'libxss' 'nss')
+depends=('gtk3' 'libsecret' 'dbus' 'nss' 'python' 'alsa-lib' 'make')
 options=('!strip' '!emptydirs')
 install=notebook.install
 source=("https://downloads.zohocdn.com/notebooklinux-desktop/Notebook-${pkgver}.deb")
-sha256sums=('e961f7e896adcd8647dc1eab5eaf1c18a1c5876ae72c1c21c6432a8c42dc3875')
+sha256sums=('f1d5ce56d1c0324194b9e8ca4487bcc0f90a0fb600627e2343421b406b904abd')
 
 package() {
 	tar xf data.tar.xz -C "${pkgdir}"
