@@ -44,7 +44,7 @@ prepare() {
 
 package() {
   for i in 32x32 128x128 256x256@2; do
-    install -Dm644 squashfs-root/usr/share/icons/hicolor/$i/apps/flight-core.png "${pkgdir}"/usr/share/icons/hicolor/$i/apps/$_pkgname.png
+    install -Dm644 squashfs-root/usr/share/icons/hicolor/$i/apps/flight-core.png "${pkgdir}/usr/share/icons/hicolor/$i/apps/$_pkgname.png"
   done
   install -Dm644 DEVELOPMENT.md FAQ.md README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
