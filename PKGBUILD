@@ -1,7 +1,7 @@
 # Maintainer: littzhch <2371050115@qq.com>
 
 pkgname=notepad---bin
-pkgver=2.0.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="Notepad-- 是一个简单的国产跨平台文本编辑器，是替换 Notepad++ 的一种选择。其内置强大的代码对比功能，让你丢掉付费的 Beyond Compare。"
 arch=('x86_64')
@@ -15,9 +15,11 @@ depends=(
     qt5-xmlpatterns
     qt5-base
     libglvnd
+    glibc
+    hicolor-icon-theme
     )
-source=("${url}/releases/download/notepad-v${pkgver/%.[0-9]/}/com.hmja.notepad_${pkgver}_amd64.deb")
-sha256sums=('9a4f7d6f1dff87bbc6d48204b5585a2b2485e2df34441e5bc3e00bcc1e4f9ddc')
+source=("${url}/releases/download/notepad-v${pkgver/%.[0-9]/}/com.hmja.notepad_${pkgver}.0_amd64.deb")
+sha256sums=('947bf996df7a0af418853ecc3685f631f5362331f133208e161e683a11a57fe4')
 
 prepare() {
     cd ${srcdir}
