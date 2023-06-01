@@ -3,7 +3,7 @@
 
 pkgname=repgrep-git
 _pkgname=rgr
-pkgver=0.12.1.r10.g3778c5b
+pkgver=0.12.1.r16.g0ff1f62
 pkgrel=1
 pkgdesc="An interactive command line replacer for ripgrep (git)"
 arch=('x86_64')
