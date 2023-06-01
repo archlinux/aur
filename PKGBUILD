@@ -6,7 +6,7 @@
 # Contributor: Christoph Fink <christoph.fink@gmail.com>
 
 pkgname=geoserver-bin
-pkgver=2.23.0
+pkgver=2.23.1
 pkgrel=1
 pkgdesc="Server written in Java that allows users to share and edit geospatial data"
 arch=("any")
@@ -22,9 +22,9 @@ source=(
     "geoserver.service"
     "geoserver.sysusers"
 )
-sha256sums=('aa847253e759ae060a6bab6a7b5de71c969c3a536248cb82102b5f305c6ed558'
+sha256sums=('d197079c3570e5ab7075ea987905df4538a8d3fa6544b4c396348c6fcd54f9fe'
             '576c36670c418aa25730986e592c8b0f4a0657d3129aafbe7c783ff3ed527abe'
-            '8a785d95da48d4a97d9f3620256b2a7fe607680dc932b5ee2dbcd6473352d126'
+            '20f2540a657f824f583e122e40a44c116d27728d55e8fb6fd15f96b721eb4797'
             'edd692b53b71a684b20e0e7a87b0047aaefc2286574355fb5c08770af2652d08')
 
 install="geoserver.install"
