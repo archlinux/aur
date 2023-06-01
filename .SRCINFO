@@ -1,7 +1,7 @@
 pkgbase = mongodb-tools-bin
 	pkgdesc = The MongoDB tools provide import, export, and diagnostic capabilities.
 	pkgver = 100.7.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/mongodb/mongo-tools
 	arch = x86_64
 	arch = aarch64
