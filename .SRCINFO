@@ -1,6 +1,6 @@
 pkgbase = linuxqq-appimage
 	pkgdesc = New Linux QQ based on Electron
-	pkgver = 3.1.2_12912
+	pkgver = 3.1.2_13107
 	pkgrel = 1
 	url = https://im.qq.com/linuxqq/
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = linuxqq-appimage
 	provides = linuxqq
 	conflicts = linuxqq
 	conflicts = linuxqq-nt-bwrap
-	noextract = Linuxqq-3.1.2_12912-x86_64.AppImage
+	noextract = Linuxqq-3.1.2_13107-x86_64.AppImage
 	options = !strip
-	source_x86_64 = Linuxqq-3.1.2_12912-x86_64.AppImage::https://dldir1.qq.com/qqfile/qq/QQNT/80d33f88/linuxqq_3.1.2-12912_x86_64.AppImage
-	sha256sums_x86_64 = 3b38d225adb89b076ae209af74535fee87df0c3b20b95af4edaa1de87198b912
-	source_aarch64 = Linuxqq-3.1.2_12912-aarch64.AppImage::https://dldir1.qq.com/qqfile/qq/QQNT/80d33f88/linuxqq_3.1.2-12912_arm64.AppImage
-	sha256sums_aarch64 = 117fd8ef4a6f625345a354c253c1cb6a20146fa0a3c74d8b35d117cdd06696fa
+	source_x86_64 = Linuxqq-3.1.2_13107-x86_64.AppImage::https://dldir1.qq.com/qqfile/qq/QQNT/ad5b5393/linuxqq_3.1.2-13107_x86_64.AppImage
+	sha256sums_x86_64 = ac2c1cbba255516f4fc4ca4e1eb1eb813dfc0d48343c470b992ea793242d04de
+	source_aarch64 = Linuxqq-3.1.2_13107-aarch64.AppImage::https://dldir1.qq.com/qqfile/qq/QQNT/ad5b5393/linuxqq_3.1.2-13107_arm64.AppImage
+	sha256sums_aarch64 = 2672a7a6e9bd994c9b39d8ffaa25df6f73eb513cafb1bf0226140a43b4c25f18
 
 pkgname = linuxqq-appimage
