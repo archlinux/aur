@@ -8,7 +8,7 @@ url='https://matsuridayo.github.io'
 license=('GPL')
 makedepends=('cmake' 'git' 'ninja' 'go')
 depends=(
- 'qt5-base' 'qt5-svg' 'qt5-tools' 'qt5-x11extras'
+ 'qt6-base' 'qt6-svg' 'qt6-tools'
  'protobuf' 'yaml-cpp' 'zxing-cpp'
 )
 
@@ -35,7 +35,7 @@ build() {
     bash libs/get_source.sh
     mkdir build
     cd build
-    cmake -GNinja -DQT_VERSION_MAJOR=5 -DNKR_PACKAGE=ON ..
+    cmake -GNinja -DQT_VERSION_MAJOR=6 -DNKR_PACKAGE=ON ..
     ninja
     cd "${srcdir}/nekoray"
     GOOS=linux GOARCH=amd64 ./libs/build_go.sh
