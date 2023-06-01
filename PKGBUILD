@@ -1,12 +1,12 @@
-# Maintainer:  tx00100xt <tx00100xt@yandex.ru>
-# Contributer: tx00100xt <tx00100xt@yandex.ru>
+# Maintainer:  Alexander <tx00100xt@yandex.ru>
+# Contributer: Alexander <tx00100xt@yandex.ru>
 
 pkgname=serioussam-alpha
 pkginstdir=serioussam
 ssa=SeriousSamAlphaRemake_v1.5.tar.xz
 pkgver=1.5
 _srcname="SeriousSamAlphaRemake-$pkgver"
-pkgrel=2
+pkgrel=3
 pkgdesc="Serious Sam Classic Alpha Reamake native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamAlphaRemake"
@@ -33,10 +33,10 @@ noextract=("SeriousSamAlphaRemake_v1.5.tar.xz.partaa"
 	"SeriousSamAlphaRemake_v1.5.tar.xz.partac"
 	"SeriousSamAlphaRemake_v1.5.tar.xz.partad")
 sha256sums=('df75c5b2810533d1227c7f9aa6533fa9c06f9917cfb12a536a49cb64bc06aaf7'
-	"a8a51c8d4dd6c402c0ba440dd9673b2db7131eb0d7f9507517e170120781777b"
-	"a83b0a5e76cadc027df50fdc217a1c9bad25a76327c9feb562a53f3516d6edb5"
-	"3ae1841b97129a82a55f59c5fa8b0bf316890260615f961fe3c82911035eccb3"
-	"f97257f0d82c618dde4b456c8449b8bf4fc1084ff70649a32f34a5f5941202a5")
+	"d5eef988652bf0f157f58c4faf92911b1c71a948229a035e7a237f973b39db5b"
+	"c412a76659b87892d4bb879d53f774ba72b1e6905901a1e042a72821a6a412c1"
+	"331a0d2fd0cc6dce4a3eda3c2a898043ca4bc55fa8ab7fc2094f7f1f1df8853e"
+	"0e3749e6c0492a3cdd5ff3f9f55e6141fb415090c32922d7073f6c5eb265d479")
 
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
@@ -51,9 +51,9 @@ prepare(){
   # Install the SSA Modification data.
   mkdir "$srcdir/$_srcname"/{SamTFE,SamTFE/Mods,SamTFE/Mods/SSA} || return 0
   tar -xJvf "$srcdir/$ssa" -C "$srcdir/$_srcname/SamTFE/"
-  rm -f "$srcdir/$_srcname/SamTFE/Mods/SSA/Bin/libGame.so" || return 1
-  rm -f "$srcdir/$_srcname/SamTFE/Mods/SSA/Bin/libEntities.so" || return 1
-  rm -f "$srcdir/$_srcname/SamTFE/Mods/SSA/Data/Translations/engine.txt" || return 1
+  rm -f "$srcdir/$_srcname/SamTFE/Mods/SSA/Bin/libGame.so" || return 0
+  rm -f "$srcdir/$_srcname/SamTFE/Mods/SSA/Bin/libEntities.so" || return 0
+  rm -f "$srcdir/$_srcname/SamTFE/Mods/SSA/Data/Translations/engine.txt" || return 0
   chmod -R o=rx "$srcdir/$_srcname/SamTFE/Mods/SSA"
   chmod -R g=rx "$srcdir/$_srcname/SamTFE/Mods/SSA"
 
@@ -84,6 +84,15 @@ build(){
 
 package(){
   # Making sure directories exist.
+  install -d $pkgdir/usr/lib/{serioussam,serioussam/Mods,serioussam/Mods/SSA}
+  install -d $pkgdir/usr/share/{serioussam,serioussam/Mods}
+
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Mods/SSA/Bin/libGame.so $pkgdir/usr/lib/serioussam/Mods/SSA
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Mods/SSA/Bin/libEntities.so  $pkgdir/usr/lib/serioussam/Mods/SSA
+
+  rm -fr "$srcdir/$_srcname/SamTFE/Mods/SSA/Bin"
+
+  # Making sure directories exist.
   install -d $pkgdir/usr/share/licenses
 
   # Install license.
@@ -92,5 +101,5 @@ package(){
   rm -f  "$srcdir/$_srcname/LICENSE" || return 1
 
   # Install data.
-  mv "$srcdir/$_srcname" "$pkgdir/usr/share/$pkginstdir"
+  mv "$srcdir/$_srcname/SamTFE/Mods" "$pkgdir/usr/share/$pkginstdir/"
 }
