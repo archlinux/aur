@@ -1,6 +1,6 @@
 # Maintainer: Abraham Toriz <categulario at gmail dot com>
 pkgname=tiempo-git
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='A command line time tracking application'
 arch=('i686' 'x86_64')
@@ -39,4 +39,6 @@ package() {
     install -Dm644 completions/bash/t "$pkgdir"/usr/share/bash-completion/completions/t
     install -Dm644 completions/fish/t.fish "$pkgdir"/usr/share/fish/vendor_completions.d/t.fish
     install -Dm644 completions/zsh/_t "$pkgdir"/usr/share/zsh/site-functions/_t
+
+    ln -s "$pkgdir"/usr/share/man/man1/tiempo.1.gz "$pkgdir"/usr/share/man/man1/t.1.gz
 }
