@@ -8,7 +8,7 @@
 
 _pack=signal
 pkgname=octave-$_pack
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Signal processing tools, including filtering, windowing and display functions."
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha256sums=('545b97540ebeba3b420f08906fdd3977fc293b3bc8fc36f6ba8b094cea88f339')
+sha256sums=('119df4b3a177834d6dd9c3124a2167c05aff5e6582fd0d32a7f9f306d302293a')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
