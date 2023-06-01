@@ -1,6 +1,6 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=zet-bin
-pkgver=0.2.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='CLI utility to find the union, intersection, set difference, etc of files considered as sets of lines'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.xz::$url/releases/download/v$pkgver/${pkgname%-bin}-v${pkgver}-x86_64-unknown-linux-gnu.tar.xz")
 
-b2sums_x86_64=('cc6c1d91e86e09a6721fd8e1843a620164d9576374269a5bcbcbe27c0b883559fd554735bffffa688ff38c65bbd55b7179cc3f59e412dd8849959b9241b89c13')
+b2sums_x86_64=('9ab4b51cc186821ff56c2b9ddb3cc33b5a528dcae7e69a3d0f550d47ad4d6910b73326ed174a6948f9dfaa0b47ebf7f7d94a330027b3a48d4835fc79b934a0c3')
 
 package() {
 	cd "${pkgname%-bin}-v$pkgver-"*

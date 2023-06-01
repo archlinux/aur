@@ -1,6 +1,6 @@
 pkgbase = zet-bin
 	pkgdesc = CLI utility to find the union, intersection, set difference, etc of files considered as sets of lines
-	pkgver = 0.2.6
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/yarrow/zet
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = zet-bin
 	depends = gcc-libs
 	provides = zet
 	conflicts = zet
-	source_x86_64 = zet-bin-0.2.6-x86_64.tar.xz::https://github.com/yarrow/zet/releases/download/v0.2.6/zet-v0.2.6-x86_64-unknown-linux-gnu.tar.xz
-	b2sums_x86_64 = cc6c1d91e86e09a6721fd8e1843a620164d9576374269a5bcbcbe27c0b883559fd554735bffffa688ff38c65bbd55b7179cc3f59e412dd8849959b9241b89c13
+	source_x86_64 = zet-bin-1.0.0-x86_64.tar.xz::https://github.com/yarrow/zet/releases/download/v1.0.0/zet-v1.0.0-x86_64-unknown-linux-gnu.tar.xz
+	b2sums_x86_64 = 9ab4b51cc186821ff56c2b9ddb3cc33b5a528dcae7e69a3d0f550d47ad4d6910b73326ed174a6948f9dfaa0b47ebf7f7d94a330027b3a48d4835fc79b934a0c3
 
 pkgname = zet-bin
