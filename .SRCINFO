@@ -1,7 +1,7 @@
 pkgbase = sysinfo
 	pkgdesc = sysinfo shows system information like the hardware configuration and resource usage in a compact, clearly arranged and visually pleasing style.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IngoMeyer441/sysinfo
 	arch = any
 	license = MIT

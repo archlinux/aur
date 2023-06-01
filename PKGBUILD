@@ -2,7 +2,7 @@
 
 pkgname="sysinfo"
 pkgver="0.1.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="sysinfo shows system information like the hardware configuration and resource usage in a compact, clearly arranged and
 visually pleasing style."
 arch=("any")
@@ -19,5 +19,5 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}" || return
-    DESTDIR="${pkgdir}" make install
+    make DESTDIR="${pkgdir}" PREFIX=/usr install
 }
