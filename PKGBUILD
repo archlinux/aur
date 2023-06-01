@@ -1,7 +1,7 @@
 # Maintainer: Fabien Michel <fabien.michel@hespul.org>
 _pkgname=wazo-desktop
 pkgname=${_pkgname}-appimage
-pkgver=1.13.18
+pkgver=1.13.20
 pkgrel=1
 pkgdesc="Wazo desktop client for wazo VOIP server"
 arch=('x86_64')
@@ -15,7 +15,7 @@ _installappimage=Wazo-Desktop.AppImage
 source=("${_appimage}::https://mirror.wazo.io/songbird/${pkgver}/${_appimage}")
 noextract=("${_appimage}")
 options=("!strip")
-sha256sums=('6f71ff3183cf4034fe38559efe5031c2d8aa2290369000da918d47ce4cc81f4f')
+sha256sums=('fec54f83cf7ed03ddb692fcfe834f7a1317cd7b6bdf1cb6f20e135674ca860d7')
 
 prepare() {
     # Make AppImage executable
