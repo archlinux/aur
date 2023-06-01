@@ -1,0 +1,12 @@
+pkgbase = fortune-mod-wisdom-fr
+	pkgdesc = Fortune cookies: Wisdom quotes in French
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Bundy01/fortune-mod-wisdom-fr
+	arch = any
+	license = GPL3
+	depends = fortune-mod
+	source = fortune-mod-wisdom-fr-1.1.tar.gz::https://github.com/Bundy01/fortune-mod-wisdom-fr/archive/refs/tags/1.1.tar.gz
+	sha256sums = cb3a631f51dbe1ce5adc19179548fecdfe5aaf17ecf220750cacec6f831e5ef4
+
+pkgname = fortune-mod-wisdom-fr
