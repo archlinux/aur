@@ -1,7 +1,7 @@
 # Maintainer: Jeff Dickey <releases at rtx dot pub>
 
 pkgname=rtx
-pkgver=1.30.5
+pkgver=1.30.6
 pkgrel=1
 pkgdesc='Polyglot runtime manager'
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('rtx')
 conflicts=('rtx-bin')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jdxcode/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('1dac9293872c41f74c3f70ee5ccda124e5f1358be3aa1206b8608d225fc7e684e98d9ce7391c96097569f271fafc6b3c8a1fd425411d09fca28125276d018054')
+sha512sums=('f93c1d82d05550fa0f6d73e33d1f40f52344306811b0bb94f6dd4e2a5edc2301539ab7320c1a9576771dcc06900fcc4aa6f40f764e164f6e74fe28d42f154853')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -28,7 +28,11 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    install -Dm755 target/release/rtx "$pkgdir/usr/bin/rtx"
+    install -Dm644 man/man1/rtx.1 "$pkgdir/usr/share/man/man1/rtx.1"
+    install -Dm644 completions/rtx.bash "$pkgdir/usr/share/bash-completion/completions/rtx"
+    install -Dm644 completions/rtx.fish "$pkgdir/usr/share/fish/completions/rtx.fish"
+    install -Dm644 completions/_rtx "$pkgdir/usr/share/zsh/site-functions/_zsh"
 }
 
 check() {
