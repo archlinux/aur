@@ -1,5 +1,3 @@
-# Maintainer: Paul Spruce <paul.spruce@gmail.com>
-
 _pkgname=unfurl
 pkgname=unfurl-bin
 pkgver=0.4.3
@@ -18,7 +16,7 @@ b2sums=('e036aa36663fef86b357f55ecbbf080c25af30a4feabb3e796088ddc77a2ea29adfc767
         'c6ad443c99cef14f0f7c2164aae375a52516a3f075c73bade58a2e4300eee4ddf1f30235839a122b9fc93e532072272b68ec84317665a529786564b46cf9be16')
 
 package() {
-    install -Dm755 $_pkgname -t "$pkgdir/usr/bin/"
+	install -Dm755 $_pkgname -t "$pkgdir/usr/bin/"
 	install -Dm644 $pkgname-$pkgver-README.mkd "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 $pkgname-$pkgver-LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
