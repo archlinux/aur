@@ -1,12 +1,12 @@
-# Maintainer:  tx00100xt <tx00100xt@yandex.ru>
-# Contributer: tx00100xt <tx00100xt@yandex.ru>
+# Maintainer:  Alexander <tx00100xt@yandex.ru>
+# Contributer: Alexander <tx00100xt@yandex.ru>
 
 pkgname=serioussam-oddworld
 pkginstdir=serioussam
 oddworld=SamTFE-OddWorld.tar.xz
 pkgver=0.20
 _srcname="SE1-TFE-OddWorld-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Serious Sam Classic Odd World native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TFE-OddWorld"
@@ -45,11 +45,11 @@ prepare(){
   # Prepare XPLUS archive
   cat "$oddworld".part* > "$oddworld"
 
-  # Install the SSA Modification data.
+  # Install the OddWorldHD Modification data.
   mkdir "$srcdir/$_srcname"/{SamTFE,SamTFE/Mods,SamTFE/Mods/OddWorldHD} || return 0
   tar -xJvf "$srcdir/$oddworld" -C "$srcdir/$_srcname/SamTFE/"
-  rm -f "$srcdir/$_srcname/SamTFE/Mods/SSA/Bin/libGame.so" || return 0
-  rm -f "$srcdir/$_srcname/SamTFE/Mods/SSA/Bin/libEntities.so" || return 0
+  rm -f "$srcdir/$_srcname/SamTFE/Mods/OddWorldHD/Bin/libGame.so" || return 0
+  rm -f "$srcdir/$_srcname/SamTFE/Mods/OddWorldHD/Bin/libEntities.so" || return 0
   chmod -R o=rx "$srcdir/$_srcname/SamTFE/Mods/OddWorldHD"
   chmod -R g=rx "$srcdir/$_srcname/SamTFE/Mods/OddWorldHD"
 
@@ -80,15 +80,22 @@ build(){
 
 package(){
   # Making sure directories exist.
+  install -d $pkgdir/usr/lib/{serioussam,serioussam/Mods,serioussam/Mods/OddWorldHD}
+  install -d $pkgdir/usr/share/{serioussam,serioussam/Mods}
+
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Mods/OddWorldHD/Bin/libGame.so $pkgdir/usr/lib/serioussam/Mods/OddWorldHD
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Mods/OddWorldHD/Bin/libEntities.so  $pkgdir/usr/lib/serioussam/Mods/OddWorldHD
+
+  rm -fr "$srcdir/$_srcname/SamTFE/Mods/OddWorldHD/Bin"
+
+  # Making sure directories exist.
   install -d $pkgdir/usr/share/licenses
 
   # Install license.
   install -D -m 644 $srcdir/$_srcname/LICENSE \
        $pkgdir/usr/share/licenses/$pkgname/LICENSE
   rm -f  "$srcdir/$_srcname/LICENSE" || return 1
-  rm -f  "$srcdir/$_srcname/.gitattributes" || return 1
-  rm -f  "$srcdir/$_srcname/.gitignore" || return 1
 
   # Install data.
-  mv "$srcdir/$_srcname" "$pkgdir/usr/share/$pkginstdir"
+  mv "$srcdir/$_srcname/SamTFE/Mods" "$pkgdir/usr/share/$pkginstdir/"
 }

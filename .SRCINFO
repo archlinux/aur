@@ -1,7 +1,7 @@
 pkgbase = serioussam-oddworld
 	pkgdesc = Serious Sam Classic Odd World native Linux
 	pkgver = 0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tx00100xt/SE1-TFE-OddWorld
 	arch = i686
 	arch = x86_64
