@@ -1,12 +1,12 @@
-# Maintainer:  tx00100xt <tx00100xt@yandex.ru>
-# Contributer: tx00100xt <tx00100xt@yandex.ru>
+# Maintainer:  Alexander <tx00100xt@yandex.ru>
+# Contributer: Alexander <tx00100xt@yandex.ru>
 
 pkgname=serioussam-pefe2q
 pkginstdir=serioussam
 pefe2q=SamTFE-ParseError.tar.xz
 pkgver=1.0
 _srcname="SE1-ParseError-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Serious Sam Classic Odd World native Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SE1-TFE-OddWorld"
@@ -71,7 +71,7 @@ build(){
   rm -fr cmake-build
   mkdir cmake-build
   cd cmake-build
-  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+  cmake -DCMAKE_BUILD_TYPE=Release ..
   make -j4
 
   mv "$srcdir/$_srcname/Sources/cmake-build/Debug/libGameMP.so" "$srcdir/$_srcname/SamTFE/Mods/PEFE2/Bin/libGame.so" || return 1
@@ -83,7 +83,7 @@ build(){
   rm -fr cmake-build
   mkdir cmake-build
   cd cmake-build
-  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+  cmake -DCMAKE_BUILD_TYPE=Release ..
   make -j4
 
   mv "$srcdir/$_srcname/Sources/cmake-build/Debug/libGameMP.so" "$srcdir/$_srcname/SamTFE/Mods/PEFE2HD/Bin/libGame.so" || return 1
@@ -100,15 +100,25 @@ build(){
 
 package(){
   # Making sure directories exist.
+  install -d $pkgdir/usr/lib/{serioussam,serioussam/Mods,serioussam/Mods/PEFE2,serioussam/Mods/PEFE2HD}
+  install -d $pkgdir/usr/share/{serioussam,serioussam/Mods}
+
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Mods/PEFE2/Bin/libGame.so $pkgdir/usr/lib/serioussam/Mods/PEFE2
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Mods/PEFE2/Bin/libEntities.so  $pkgdir/usr/lib/serioussam/Mods/PEFE2
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Mods/PEFE2HD/Bin/libGame.so $pkgdir/usr/lib/serioussam/Mods/PEFE2HD
+  install -D -m0755 $srcdir/$_srcname/SamTFE/Mods/PEFE2HD/Bin/libEntities.so  $pkgdir/usr/lib/serioussam/Mods/PEFE2HD
+
+  rm -fr "$srcdir/$_srcname/SamTFE/Mods/PEFE2/Bin"
+  rm -fr "$srcdir/$_srcname/SamTFE/Mods/PEFE2HD/Bin"
+
+  # Making sure directories exist.
   install -d $pkgdir/usr/share/licenses
 
   # Install license.
   install -D -m 644 $srcdir/$_srcname/LICENSE \
        $pkgdir/usr/share/licenses/$pkgname/LICENSE
   rm -f  "$srcdir/$_srcname/LICENSE" || return 1
-  rm -f  "$srcdir/$_srcname/.gitattributes" || return 1
-  rm -f  "$srcdir/$_srcname/.gitignore" || return 1
 
   # Install data.
-  mv "$srcdir/$_srcname" "$pkgdir/usr/share/$pkginstdir"
+  mv "$srcdir/$_srcname/SamTFE/Mods" "$pkgdir/usr/share/$pkginstdir/"
 }
