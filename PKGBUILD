@@ -1,8 +1,8 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore
-pkgver=1.16.1
-pkgrel=3
+pkgver=1.17.0
+pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
