@@ -1,12 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=tasker-permissions-git
-pkgver=0.1.0.r3.gc36e36c
-pkgrel=1
+pkgver=0.2.0.r1.gce60661
+pkgrel=2
+_electronversion=21
 pkgdesc="Utility to easily grant Tasker permissions"
 arch=('x86_64')
 url="https://github.com/joaomgcd/Tasker-Permissions"
 license=('ISC')
-depends=('android-tools' 'electron')
+depends=('android-tools' "electron${_electronversion}")
 makedepends=('git' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -15,7 +16,7 @@ source=("${pkgname%-git}::git+https://github.com/joaomgcd/Tasker-Permissions.git
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
             '018509800d5dcf4b9030c5dff291355476715443b412127f2eca712d764334cb'
-            '4e0f3cab603bbf5ac519e86dcf193242d05afdd317ce960ba60e2f5ad10803fa')
+            '0951726ead4cda34ca772cbd2cd5f756b6acbace45aecab925653e1127bdb55c')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -24,8 +25,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  electronDist=/usr/lib/electron
-  electronVer=$(sed s/^v// /usr/lib/electron/version)
+  electronDist="/usr/lib/electron${_electronversion}"
+  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   export npm_config_cache="$srcdir/npm_cache"
   npm install
   ./node_modules/.bin/electron-builder build --dir \
