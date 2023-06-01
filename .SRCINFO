@@ -1,7 +1,7 @@
 pkgbase = exercism-bin
 	pkgdesc = Command line client for exercism.io
-	pkgver = 3.0.13
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://github.com/exercism/cli
 	arch = i686
 	arch = x86_64

@@ -4,8 +4,8 @@
 
 _pkgname=exercism
 pkgname="${_pkgname}-bin"
-pkgver=3.0.13
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Command line client for exercism.io"
 arch=("i686" "x86_64")
 url="https://github.com/exercism/cli"
@@ -16,15 +16,12 @@ replaces=("exercism-cli")
 license=("MIT")
 
 source_i686=(${_rel_url}/exercism-${pkgver}-linux-i386.tar.gz)
-sha256sums_i686=('36afe02fbfc8f5fe17033d6982e74e51ba072991d08ef12f22a78fa74c30a864')
+sha256sums_i686=('e47d26d4efe836043a2f4b436dbbd552962f23771bf7f741c85d57e77dc7af54')
 source_x86_64=(${_rel_url}/exercism-${pkgver}-linux-x86_64.tar.gz)
-sha256sums_x86_64=('8abcd78d9fbf9c580381e86e611f50a0d5efd88aed06100cd1e4d12ee41440d2')
+sha256sums_x86_64=('97ba90d7d83a9e8de57066be4d42319c33165a355c7072f535ba37c00aedf432')
 
 package(){
     cd "$srcdir"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-    install -D -m644 shell/exercism_completion.bash "$pkgdir/usr/share/bash-completion/completions/${_pkgname}"
-    install -D -m644 shell/exercism_completion.zsh "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
-    install -D -m644 shell/exercism.fish "$pkgdir/usr/share/fish/vendor_completions.d/exercism.fish"
     install -D exercism "$pkgdir/usr/bin/exercism"
 }
