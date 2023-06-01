@@ -3,7 +3,7 @@
 _pkgname=flightcore
 pkgname=$_pkgname-bin
 pkgver=1.16.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -11,7 +11,6 @@ license=('MIT')
 depends=('webkit2gtk' 'webkit2gtk-4.1' 'libappindicator-gtk3')
 provides=($_pkgname)
 conflicts=($_pkgname)
-options=('!strip')
 _appimage=flight-core_${pkgver}_amd64.AppImage
 _desktop=flightcore.desktop
 _commit=c178623d47d99184d4c561589c501bdb3d6db15c
