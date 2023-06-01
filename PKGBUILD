@@ -1,5 +1,3 @@
-# Maintainer: Paul Spruce <paul.spruce@gmail.com>
-
 pkgname=anew
 pkgver=0.1.1
 pkgrel=1
