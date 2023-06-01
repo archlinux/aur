@@ -2,7 +2,7 @@
 pkgname=tasker-permissions-git
 pkgver=0.2.0.r1.gce60661
 pkgrel=2
-_electronversion=21
+_electronversion=24
 pkgdesc="Utility to easily grant Tasker permissions"
 arch=('x86_64')
 url="https://github.com/joaomgcd/Tasker-Permissions"
