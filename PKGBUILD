@@ -27,6 +27,8 @@ prepare() {
   (cd path; ln -s /usr/bin/true bazel)
 
   sed '2i#include <fstream>' -i TensorRT/core/runtime/TRTEngine.cpp
+  sed '5i#include <cstdint>' -i TensorRT/core/util/Exception.h
+  sed '4i#include <cstdint>' -i TensorRT/core/util/Exception.cpp
 }
 
 build() {
