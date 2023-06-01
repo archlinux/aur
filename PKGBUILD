@@ -3,7 +3,7 @@
 
 pkgname='ytfind'
 pkgver='1.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="A program that searches invidious and gives you video titles and IDs"
 arch=('x86_64')
 url='https://github.com/305a385/ytfind/'
@@ -24,9 +24,9 @@ package() {
 
 
 	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/man/man1"
+	mkdir -p "${pkgdir}/usr/share/man/man1"
 
 	install -m 755 ${srcdir}/$pkgname-$pkgver/${pkgname} ${pkgdir}/usr/bin/${pkgname}
-	install -g 0 -o 0 -m 0644 ${srcdir}/$pkgname-$pkgver/manpages/${pkgname}.1 ${pkgdir}/usr/man/man1/
-	gzip ${pkgdir}/usr/man/man1/${pkgname}.1
+	install -g 0 -o 0 -m 0644 ${srcdir}/$pkgname-$pkgver/manpages/${pkgname}.1 ${pkgdir}/usr/share/man/man1/
+	gzip ${pkgdir}/usr/share/man/man1/${pkgname}.1
 }
