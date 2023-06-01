@@ -1,5 +1,3 @@
-# Maintainer: Paul Spruce <paul.spruce@gmail.com>
-
 pkgname=unfurl
 pkgver=0.4.3
 pkgrel=2
@@ -31,5 +29,5 @@ package() {
     cd $pkgname-$pkgver
     install -Dm755 build/$pkgname -t "$pkgdir/usr/bin/"
     install -Dm644 README.mkd "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
