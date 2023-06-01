@@ -1,0 +1,19 @@
+--- configure.ac.bak	2018-05-24 23:24:31.000000000 +0800
++++ configure.ac	2022-07-19 10:24:36.805405047 +0800
+@@ -5,7 +5,7 @@
+ AC_CONFIG_SRCDIR([config.h.in])
+ AC_CONFIG_HEADERS([config.h])
+ # AC_CONFIG_AUX_DIR([build-aux])
+-AM_INIT_AUTOMAKE
++AM_INIT_AUTOMAKE([-Wall foreign tar-pax foreign])
+
+ AC_ARG_VAR(PYTHON, [python program])
+
+@@ -108,7 +108,6 @@
+ CXXFLAGS="$CXXFLAGS $BAM_CPPFLAGS $BOOST_CPPFLAGS -I./SeqAn-1.4.2"
+ LDFLAGS="$BAM_LDFLAGS $BOOST_LDFLAGS $user_LDFLAGS"
+
+-AM_INIT_AUTOMAKE([-Wall foreign tar-pax foreign])
+
+ # makefiles to configure
+ AC_CONFIG_FILES([Makefile src/Makefile])

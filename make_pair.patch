@@ -9,14 +9,14 @@ diff -uBw -aur tophat-2.1.1/src/juncs_db.cpp tophat-2.1.1-patched/src/juncs_db.c
 +			junctions.insert(make_pair(Junction(ref_id, left_coord, right_coord, antisense), JunctionStats()));
  		}
  	}
- 
+
 diff -uBw -aur tophat-2.1.1/src/tophat_reports.cpp tophat-2.1.1-patched/src/tophat_reports.cpp
 --- tophat-2.1.1/src/tophat_reports.cpp	2016-02-23 22:20:44.320710000 +0100
 +++ tophat-2.1.1-patched/src/tophat_reports.cpp	2016-06-02 11:26:22.057239478 +0200
 @@ -2705,7 +2705,7 @@
  				junction_stat.gtf_match = true;
  				junction_stat.accepted = true;
- 
+
 -				gtf_junctions.insert(make_pair<Junction, JunctionStats>(Junction(ref_id, left_coord, right_coord, antisense), junction_stat));
 +				gtf_junctions.insert(make_pair(Junction(ref_id, left_coord, right_coord, antisense), junction_stat));
  			}
