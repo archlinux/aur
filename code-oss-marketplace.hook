@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = code
+
+[Action]
+Description = [code-oss-marketplace] Patching product.json...
+Exec = /usr/local/sbin/patch_code_oss_product.py
+When = PostTransaction

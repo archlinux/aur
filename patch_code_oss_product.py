@@ -2,7 +2,7 @@
 from sys import argv
 from json import load, dump, JSONDecodeError
 
-PRODUCT_JSON_LOCATION = "/opt/vscodium-bin/resources/app/product.json"
+PRODUCT_JSON_LOCATION = "/usr/lib/code/product.json"
 
 
 if __name__ == "__main__":

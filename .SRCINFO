@@ -1,16 +1,16 @@
-pkgbase = vscodium-bin-marketplace
-	pkgdesc = Enable vscode marketplace in vscodium-bin
-	pkgver = 1.76.0
+pkgbase = code-oss-marketplace
+	pkgdesc = Enable vscode marketplace in code-oss
+	pkgver = 1.77.0
 	pkgrel = 1
 	url = https://marketplace.visualstudio.com/vscode
-	install = vscodium-bin-marketplace.install
+	install = code-oss-marketplace.install
 	arch = any
 	license = unknown
-	source = vscodium-bin-marketplace.hook
-	source = patch.py
-	sha256sums = a5236b4dd9662e7015e39593eb1611059cf35c202f538518ca04089dbe701958
-	sha256sums = eb25bec26234a9493f7632c387d8d0963bb5dfd625478a19a32b6c2a1f37c090
+	source = code-oss-marketplace.hook
+	source = patch_code_oss_product.py
+	sha256sums = 138eb84d5e98b38f7d3cf8e38ff807dd6a6ea78e249c4f0fa96187d4db1f3528
+	sha256sums = 7f8566106add894c99670d7dbdc96b0883bdead2e595f3217a0eed975b3e8b2c
 
-pkgname = vscodium-bin-marketplace
-	depends = vscodium-bin
+pkgname = code-oss-marketplace
+	depends = code
 	depends = python

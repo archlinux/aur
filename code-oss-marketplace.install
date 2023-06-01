@@ -1,0 +1,15 @@
+post_install() {
+  /usr/local/sbin/patch_code_oss_product.py
+}
+
+pre_upgrade() {
+  /usr/local/sbin/patch_code_oss_product.py -R
+}
+
+post_upgrade() {
+  /usr/local/sbin/patch_code_oss_product.py
+}
+
+pre_remove() {
+  /usr/local/sbin/patch_code_oss_product.py -R
+}

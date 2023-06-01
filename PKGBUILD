@@ -1,23 +1,24 @@
-# Maintainer: Carson Rueter <roachh at proton mail dot com>
-# Maintainer: Icelk <main at icelk.dev>
+# Maintainer: Sedrubal <aur at sedrubal dot de>
+# Contributor: Carson Rueter <roachh at proton mail dot com>
+# Contributor: Icelk <main at icelk.dev>
 
-pkgname=vscodium-bin-marketplace
-pkgver=1.76.0
+pkgname=code-oss-marketplace
+pkgver=1.77.0
 pkgrel=1
-pkgdesc='Enable vscode marketplace in vscodium-bin'
+pkgdesc='Enable vscode marketplace in code oss'
 arch=('any')
 url='https://marketplace.visualstudio.com/vscode'
 license=('unknown')
 install="${pkgname}.install"
-source=('vscodium-bin-marketplace.hook'
-        'patch.py')
- sha256sums=('a5236b4dd9662e7015e39593eb1611059cf35c202f538518ca04089dbe701958'
-          'eb25bec26234a9493f7632c387d8d0963bb5dfd625478a19a32b6c2a1f37c090')
+source=('code-oss-marketplace.hook'
+        'patch_code_oss_product.py')
+ sha256sums=('138eb84d5e98b38f7d3cf8e38ff807dd6a6ea78e249c4f0fa96187d4db1f3528'
+          '7f8566106add894c99670d7dbdc96b0883bdead2e595f3217a0eed975b3e8b2c')
 
 package() {
-  depends=('vscodium-bin' 'python')
+  depends=('code' 'python')
 
-  install -Dm 644 "${srcdir}"/vscodium-bin-marketplace.hook "${pkgdir}"/usr/share/libalpm/hooks/vscodium-bin-marketplace.hook
-  install -Dm 755 "${srcdir}"/patch.py "${pkgdir}"/opt/vscodium-bin/resources/app/patch.py
+  install -Dm 644 "${srcdir}"/code-oss-marketplace.hook "${pkgdir}"/usr/share/libalpm/hooks/code-oss-marketplace.hook
+  install -Dm 755 "${srcdir}"/patch_code_oss_product.py "${pkgdir}"/usr/local/sbin/patch_code_oss_product.py
 }
 
