@@ -1,0 +1,34 @@
+--- a/SamTFE/Sources/Engine/Engine.cpp	2023-06-01 20:23:35.433010942 +0300
++++ b/SamTFE/Sources/Engine/Engine.cpp	2023-06-01 20:27:29.016031099 +0300
+@@ -743,13 +743,7 @@
+ 
+   // get library path for mods
+   _fnmModLibPath = "";
+-  if( sys_iSysPath == 1 && sys_iGameBits == 64 && _pFileSystem->IsDirectory((const char *) "/usr/lib/x86_64-linux-gnu")) {
+-    _fnmModLibPath = "/usr/lib/x86_64-linux-gnu/" + strGameID + "/"; 
+-  } else if( sys_iSysPath == 1 && sys_iGameBits == 32 && _pFileSystem->IsDirectory((const char *) "/usr/lib/i386-linux-gnu")) {
+-    _fnmModLibPath = "/usr/lib/i386-linux-gnu/" + strGameID + "/";
+-  } else if( sys_iSysPath == 1 && sys_iGameBits == 64 && _pFileSystem->IsDirectory((const char *) "/usr/lib64")) {
+-    _fnmModLibPath = "/usr/lib64/" + strGameID + "/";
+-  } else if( sys_iSysPath == 1 && sys_iGameBits == 32 && _pFileSystem->IsDirectory((const char *) "/usr/lib")) {
++  if( sys_iSysPath == 1 ) {
+     _fnmModLibPath = "/usr/lib/" + strGameID + "/";
+   } else {
+     _fnmModLibPath = _fnmApplicationPath;
+--- a/SamTSE/Sources/Engine/Engine.cpp	2023-06-01 20:23:35.433010942 +0300
++++ b/SamTSE/Sources/Engine/Engine.cpp	2023-06-01 20:27:29.016031099 +0300
+@@ -743,13 +743,7 @@
+ 
+   // get library path for mods
+   _fnmModLibPath = "";
+-  if( sys_iSysPath == 1 && sys_iGameBits == 64 && _pFileSystem->IsDirectory((const char *) "/usr/lib/x86_64-linux-gnu")) {
+-    _fnmModLibPath = "/usr/lib/x86_64-linux-gnu/" + strGameID + "/"; 
+-  } else if( sys_iSysPath == 1 && sys_iGameBits == 32 && _pFileSystem->IsDirectory((const char *) "/usr/lib/i386-linux-gnu")) {
+-    _fnmModLibPath = "/usr/lib/i386-linux-gnu/" + strGameID + "/";
+-  } else if( sys_iSysPath == 1 && sys_iGameBits == 64 && _pFileSystem->IsDirectory((const char *) "/usr/lib64")) {
+-    _fnmModLibPath = "/usr/lib64/" + strGameID + "/";
+-  } else if( sys_iSysPath == 1 && sys_iGameBits == 32 && _pFileSystem->IsDirectory((const char *) "/usr/lib")) {
++  if( sys_iSysPath == 1 ) {
+     _fnmModLibPath = "/usr/lib/" + strGameID + "/";
+   } else {
+     _fnmModLibPath = _fnmApplicationPath;
