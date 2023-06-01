@@ -1,0 +1,17 @@
+pkgbase = spotify-player-full-git
+	pkgdesc = A TUI spotify player.
+	pkgver = 0.14.1.r0.g77727a4
+	pkgrel = 1
+	url = https://github.com/aome510/spotify-player
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	depends = alsa-lib
+	depends = openssl
+	conflicts = spotify-player
+	source = spotify-player-full-git::git+https://github.com/aome510/spotify-player#branch=master
+	sha256sums = SKIP
+
+pkgname = spotify-player-full-git
