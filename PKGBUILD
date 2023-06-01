@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiasedUrn
-_pkgver=2.0.9
+_pkgver=2.0.10
 pkgname=r-${_pkgname,,}
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
 pkgdesc='Biased Urn Model Distributions'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bac62bbbc3e2417772f8784996a6c2d0857adb42e86e46b1a9703b187a406b09')
+sha256sums=('1bbb3d3319ae354f6b6a8b4f67be98d3c1632ba6c3bef6458064e81ffefe604b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
