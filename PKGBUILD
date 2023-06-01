@@ -9,7 +9,7 @@
 
 _pack=instrument-control
 pkgname=octave-$_pack
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Low level I/O functions for serial, i2c, parallel, tcp, gpib, vxi11 and usbtmc interfaces."
 arch=(any)
@@ -24,7 +24,7 @@ options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://downloads.sourceforge.net/octave/$_archive")
-sha256sums=('8373f2cf66fc86f83432414603b71db98a33700776527aa8ac11f336cf94baba')
+sha256sums=('6cf6236c25d9db19aca62ae79494234425a821b992091fafa47b724a53f9e453')
 noextract=("$_archive")
 
 _octave_run() {
