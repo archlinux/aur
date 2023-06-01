@@ -1,6 +1,6 @@
 pkgbase = gpt4all-chat-git
 	pkgdesc = Cross platform Qt based GUI for GPT4All versions
-	pkgver = r832.73db20b
+	pkgver = r876.27e80e1
 	pkgrel = 1
 	url = https://github.com/nomic-ai/gpt4all
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = gpt4all-chat-git
 	depends = qt6-quickcontrols2
 	depends = qt6-svg
 	depends = qt6-webengine
+	depends = qt6-shadertools
+	depends = qt6-5compat
 	provides = gpt4all-chat
 	conflicts = gpt4all-chat
 	source = gpt4all::git+https://github.com/nomic-ai/gpt4all.git
