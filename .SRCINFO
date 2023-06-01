@@ -19,7 +19,7 @@ pkgbase = python-pywebview
 	optdepends = pyside2: use with Qt (PySide2)
 	optdepends = pyside6: use with Qt (PySide6)
 	source = https://pypi.python.org/packages/source/p/pywebview/pywebview-3.6.2.tar.gz
-	source = https://raw.githubusercontent.com/r0x0r/pywebview/master/LICENSE.md
+	source = https://raw.githubusercontent.com/r0x0r/pywebview/master/LICENSE
 	sha256sums = 5f52f30a8df3b635506ee3ed744c281b60537085f052f22cb5f9506084ca3f25
 	sha256sums = 4a988dd3598832cd3653de20dc33cb677d0fb53ab5551c879ca31280ae653675
 

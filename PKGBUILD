@@ -20,9 +20,9 @@ optdepends=('python-gobject: use with GTK'
 	'pyside6: use with Qt (PySide6)')
 install="$pkgname.install"
 source=("https://pypi.python.org/packages/source/p/pywebview/pywebview-$pkgver.tar.gz"
-	"https://raw.githubusercontent.com/r0x0r/pywebview/master/LICENSE.md")
+	"https://raw.githubusercontent.com/r0x0r/pywebview/master/LICENSE")
 sha256sums=('5f52f30a8df3b635506ee3ed744c281b60537085f052f22cb5f9506084ca3f25'
-	'4a988dd3598832cd3653de20dc33cb677d0fb53ab5551c879ca31280ae653675')
+            '4a988dd3598832cd3653de20dc33cb677d0fb53ab5551c879ca31280ae653675')
 
 build() {
 	cd "${srcdir}/pywebview-${pkgver}"
@@ -31,7 +31,7 @@ build() {
 
 package() {
 	cd "${srcdir}"
-	install -Dm 644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	cd "pywebview-${pkgver}"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
