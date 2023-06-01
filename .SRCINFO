@@ -1,12 +1,15 @@
 pkgbase = python-fenicsprecice
 	pkgdesc = FEniCS-preCICE adapter is a preCICE adapter for the open source computing platform FEniCS
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/precice/fenics-adapter
 	arch = any
 	license = LGPL3
-	makedepends = openssh
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-pyprecice
 	depends = python-dolfin
 	depends = python-scipy
