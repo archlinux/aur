@@ -1,6 +1,6 @@
 pkgbase = gojq
 	pkgdesc = Pure go implementation of jq
-	pkgver = 0.12.11
+	pkgver = 0.12.13
 	pkgrel = 1
 	url = https://github.com/itchyny/gojq
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gojq
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = https://github.com/itchyny/gojq/archive/v0.12.11/gojq-0.12.11.tar.gz
-	sha256sums = 8fa747f787ba81a9c6979d3323a94897a64e7561263a82b795adcb21f7f40637
+	source = https://github.com/itchyny/gojq/archive/v0.12.13/gojq-0.12.13.tar.gz
+	sha256sums = 2af7bc4b106fc26658f9f312f2e2d53036e75291cda8132d61d1867e2457b8e3
 
 pkgname = gojq
