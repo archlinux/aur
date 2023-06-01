@@ -9,7 +9,7 @@
 pkgname=icaclient-beta
 artefactid=icaclient
 pkgver=23.5.0.58
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology Preview]"
 arch=('x86_64' 'i686' 'armv7h')
 #='https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html'
