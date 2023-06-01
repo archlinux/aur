@@ -1,0 +1,17 @@
+pkgbase = python-rich-pixels
+	pkgdesc = A Rich-compatible module for writing pixel images and other colourful grids to the terminal.
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/darrenburns/rich-pixels
+	arch = any
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-rich
+	depends = python-pillow
+	source = https://github.com/darrenburns/rich-pixels/archive/refs/tags/2.1.1.tar.gz
+	sha256sums = af7dd45d6c1a4c3a637c7f202db9fc90378c437dda86a3cd01ffb510032b8bf7
+
+pkgname = python-rich-pixels
