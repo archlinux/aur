@@ -2,8 +2,8 @@
 Name=Serious Sam The First Encounter
 Type=Application
 Comment=Linux port of Serious Sam Classic The First Encounter
-Exec=serioussam-tfe
-TryExec=serioussam-tfe
+Exec=serioussam
+TryExec=serioussam
 Icon=serioussam
 Categories=Application;Game;
 
