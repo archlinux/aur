@@ -27,15 +27,16 @@ prepare() {
   sed -i '1 i\[Desktop Entry]' $_desktop
   mv $_desktop FlightCore
 
+  # Switch tag version
+  cd FlightCore
+  git checkout tags/v${pkgver}
+
   # Only build the excutable
-  cd FlightCore/src-tauri
+  cd src-tauri
   sed -i '18s/.*/      "active": false,/' tauri.conf.json
   # Disable the updater
   sed -i '54s/.*/      "active": false,/' tauri.conf.json
   cd ..
-
-  # Switch tag version
-  git checkout tags/v${pkgver}
 
   # Prioritize IPv4 because some machines have a problem with IPv6
   export NODE_OPTIONS=--dns-result-order=ipv4first
