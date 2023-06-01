@@ -7,7 +7,7 @@ pkgdesc="Build GUI for your Python program with JavaScript, HTML, and CSS."
 arch=('any')
 url='https://github.com/r0x0r/pywebview'
 license=('BSD')
-depends=('python' 'python-proxy_tools')
+depends=('python' 'python-proxy_tools' 'python-bottle')
 makedepends=('python-setuptools')
 optdepends=('python-gobject: use with GTK'
 	'python-cairo: use with GTK'
