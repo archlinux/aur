@@ -2,7 +2,7 @@
 
 pkgname=python-yacker-git
 pkgver=2019.1.r0.ge959885
-pkgrel=1
+pkgrel=2
 pkgdesc="A YAML wrapper around Packer"
 arch=('any')
 url="https://gitlab.com/matilda.peak/yacker"

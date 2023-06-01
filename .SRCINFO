@@ -1,15 +1,16 @@
 pkgbase = python-yacker-git
 	pkgdesc = A YAML wrapper around Packer
 	pkgver = 2019.1.r0.ge959885
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/matilda.peak/yacker
 	arch = any
 	makedepends = python-setuptools
 	depends = packer
 	depends = python
 	depends = python-pyaml
-	source = git+https://gitlab.com/matilda.peak/yacker.git
+	source = git+https://gitlab.com/vitrvvivs/yacker.git
+	source = requirements.txt.patch
 	md5sums = SKIP
+	md5sums = e99ac7a240eca1e3f2e70775417af49b
 
 pkgname = python-yacker-git
-
