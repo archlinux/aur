@@ -2,7 +2,7 @@
 pkgname=planify
 _app_id=io.github.alainm23.planify
 pkgver=3.0.7+47+g696fb7ab
-pkgrel=1
+pkgrel=2
 pkgdesc="Task manager with Todoist support (Development version)"
 arch=('x86_64')
 url="https://useplanner.com"
@@ -14,16 +14,16 @@ checkdepends=('appstream')
 conflicts=('elementary-planner')
 replaces=('elementary-planner')
 _commit=696fb7ab3c66ea4a14a5167cb5b44e9444294ecb  # 4.0 beta on FlatHub
-source=("git+https://github.com/alainm23/planner.git#commit=$_commit")
+source=("git+https://github.com/alainm23/planify.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd planner
+  cd "$pkgname"
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  arch-meson planner build
+  arch-meson "$pkgname" build
   meson compile -C build
 }
 
