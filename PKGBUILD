@@ -1,8 +1,9 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-einsteinpy-git
 _gitname=einsteinpy
 pkgname=("python-${_gitname}-git" "python-${_gitname}-doc-git")
-pkgver=0.3.1.r68.ge7f648b
+pkgver=0.3.1.r71.g1bd1b27
 pkgrel=1
 pkgdesc="Python package for General Relativity"
 arch=('any')
@@ -16,7 +17,6 @@ makedepends=('git'
              'python-numpy'
              'python-nbsphinx'
              'python-astropy'
-             'python-matplotlib'
              'python-numba'
              'python-plotly'
              'python-scipy'
@@ -55,8 +55,7 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_gitname}/docs
-    PYTHONPATH="../build/lib" make html
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
