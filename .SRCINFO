@@ -1,0 +1,14 @@
+pkgbase = smhasher3
+	pkgdesc = A tool for testing the quality of hash functions in terms of their distribution, collision, and performance properties
+	pkgver = 0.0.0beta2
+	pkgrel = 1
+	url = https://gitlab.com/fwojcik/smhasher3
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	depends = gcc-libs
+	source = smhasher3-0.0.0beta2.tar.gz::https://gitlab.com/fwojcik/smhasher3/-/archive/beta2/smhasher3-beta2.tar.gz
+	b2sums = a6f5a0e82aa066709795182874ee90f3f278c49b06994e11e6b86784d144ca1685654737ee6dea4eda3702a64f8fb21efa02a11d4a6740234988d1a31457654a
+
+pkgname = smhasher3
