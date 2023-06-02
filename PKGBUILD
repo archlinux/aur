@@ -2,13 +2,14 @@
 pkgname=cs-nginx-bouncer
 _pkgname=crowdsec-nginx-bouncer
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="CrowdSec bouncer for Nginx"
 arch=('any')
 url="https://doc.crowdsec.net/docs/bouncers/nginx"
 _giturl="https://github.com/crowdsecurity/${pkgname}"
 license=('MIT')
 depends=(
+	'crowdsec'
 	'nginx-mainline-mod-lua'
 	'luajit-openresty'
 	'lua51'

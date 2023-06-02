@@ -1,12 +1,13 @@
 pkgbase = cs-nginx-bouncer
 	pkgdesc = CrowdSec bouncer for Nginx
 	pkgver = 1.0.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://doc.crowdsec.net/docs/bouncers/nginx
 	install = cs-nginx-bouncer.install
 	arch = any
 	license = MIT
 	makedepends = gettext
+	depends = crowdsec
 	depends = nginx-mainline-mod-lua
 	depends = luajit-openresty
 	depends = lua51
