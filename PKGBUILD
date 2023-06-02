@@ -1,68 +1,32 @@
-# Maintainer: Ryan Dowling <ryan@ryandowling.me>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Ryan Dowling <ryan@ryandowling.me>
 pkgname=hyper-appimage
-pkgver=2.0.0.canary.15
-pkgrel=18
+pkgver=3.4.1
+pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
+_githuburl="https://github.com/vercel/hyper"
 license=('MIT')
-conflicts=('hyper')
-provides=('hyper')
-depends=('libnotify' 'libxss' 'libxtst' 'gconf' 'libindicator' 'libappindicator')
-noextract=('Hyper.AppImage')
-install=hyper-appimage.install
+conflicts=("${pkgname%-appimage}")
+provides=("${pkgname%-appimage}")
+depends=('glibc' 'hicolor-icon-theme' 'zlib')
 options=('!strip')
-
-_pkgver_correct=${pkgver/\.canary/-canary}
-
-source_x86_64=(
-    "Hyper.AppImage::https://github.com/zeit/hyper/releases/download/${_pkgver_correct}/hyper-${_pkgver_correct}-x86_64.AppImage"
-)
-
-md5sums_x86_64=(
-    '53e1b818d3e8f9ff647ab13e1549b55b'
-)
-
-source=(
-    "Hyper.desktop"
-)
-
-md5sums=(
-    'd6ffcfefb9246850d775735217c7736f'
-)
-
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Hyper-${pkgver}.AppImage"
+    "LICENSE::https://raw.githubusercontent.com/vercel/hyper/canary/LICENSE")
+sha256sums=('5050be667fe56d6871ed6f86b3b03a023b2b75aa91329a82c2f15ff7ed66b63c'
+            '981433d189ff6b8399148e4affbc19e2c17295e6b99941425a48177dd954e9b1')
 prepare() {
-    # mark as executable so we can extract
-    chmod +x "${srcdir}/Hyper.AppImage"
-
-    # extract the AppImage
-    "${srcdir}/Hyper.AppImage" --appimage-extract
-
-    # remove execution bit after extraction
-    chmod -x "${srcdir}/Hyper.AppImage"
+    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
+    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|TerminalEmulator|TerminalEmulator;Utility|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
-
 package() {
-    # install the main files.
-    install -d -m755 "${pkgdir}/opt/${pkgname}"
-    cp -Rr "${srcdir}/squashfs-root/app/"* "${pkgdir}/opt/${pkgname}"
-
-    # desktop entry
-    install -D -m644 "${srcdir}/Hyper.desktop" "${pkgdir}/usr/share/applications/Hyper.desktop"
-
-    # install the icons
-    install -d -m755 "${pkgdir}/usr/share/icons/hicolor"
-    cp -Rr "${srcdir}/squashfs-root/usr/share/icons/hicolor/" "${pkgdir}/usr/share/icons/hicolor"
-
-    # fix file permissions - all files as 644 - directories as 755
-    find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
-    find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
-
-    # make sure the main binary has the right permissions
-    chmod +x "${pkgdir}/opt/${pkgname}/hyper"
-
-    # link the binary
-    install -d -m755 "${pkgdir}/usr/bin"
-    ln -sr "${pkgdir}/opt/${pkgname}/hyper" "${pkgdir}/usr/bin/hyper"
+    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-appimage}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-appimage}.desktop"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
