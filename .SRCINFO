@@ -1,0 +1,51 @@
+pkgbase = linux-asus
+	pkgdesc = Linux with asus-linux.org patches
+	pkgver = 6.3.5.arch1
+	pkgrel = 1
+	url = https://gitlab.com/asus-linux/fedora-kernel
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = git
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = python-sphinx
+	makedepends = texlive-latexextra
+	options = !strip
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.3.5-arch1
+	source = asus-linux-fedora-kernel::git+https://gitlab.com/asus-linux/fedora-kernel#commit=d05d9d73e54ffd6f842443a0086ca1932a39b074
+	source = config
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = c2d1c69265adc041dc0364e448f6e86dc4c9ca1207c84071abc1675dd820534a8ab5a230e579e68bfb1bf2b861f23ad34e090f8ceaef5e265ea95e2bc6946013
+
+pkgname = linux-asus
+	pkgdesc = The Linux with asus-linux.org patches kernel and modules
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = KSMBD-MODULE
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-asus-headers
+	pkgdesc = Headers and scripts for building modules for the Linux with asus-linux.org patches kernel
+	depends = pahole
+
+pkgname = linux-asus-docs
+	pkgdesc = Documentation for the Linux with asus-linux.org patches kernel
