@@ -1,4 +1,4 @@
-# Maintainer: Guilhem Saurel <saurel@laas.fr>
+# Maintainer: Guilhem "Nim65s" Saurel <guilhem.saurel@laas.fr>
 
 pkgorg='stack-of-tasks'
 _pkgname='pinocchio'
