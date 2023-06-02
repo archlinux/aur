@@ -1,13 +1,13 @@
 pkgbase = latex-template-lipics
 	pkgdesc = LaTeX template for LIPIcs (Leibniz International Proceedings in Informatics)
 	pkgver = 2021.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.dagstuhl.de/en/publications/lipics
 	install = texlive.install
 	arch = any
 	license = CCPL:by
 	makedepends = tar
-	depends = texlive-latex3
+	depends = texlive-core
 	source = https://submission.dagstuhl.de/styles/download-tag/lipics/v2021.1.2/authors/tgz
 	sha256sums = 2308217cdf7a4c304b79ec4a8ad04fedf30852eb5608ef84d794846dd6203925
 

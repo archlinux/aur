@@ -3,7 +3,7 @@
 pkgname=latex-template-lipics
 pkgver=2021.1.2
 pkgmajver=$(cut -d'.' -f1 <<<"${pkgver}")
-pkgrel=3
+pkgrel=4
 pkgdesc="LaTeX template for LIPIcs (Leibniz International Proceedings in Informatics)"
 url="https://www.dagstuhl.de/en/publications/lipics"
 license=('CCPL:by')
@@ -15,7 +15,7 @@ sha256sums=(
   '2308217cdf7a4c304b79ec4a8ad04fedf30852eb5608ef84d794846dd6203925'
 )
 makedepends=('tar')
-depends=('texlive-latex3')
+depends=('texlive-core')
 install=texlive.install
 
 package() {
