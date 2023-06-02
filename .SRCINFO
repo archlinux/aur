@@ -1,14 +1,14 @@
 pkgbase = kluctl
-	pkgdesc = Linters Runner for Go. 5x faster than gometalinter.
+	pkgdesc = The missing glue to put together large Kubernetes deployments.
 	pkgver = 2.20.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kluctl/kluctl/
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	arch = armv7h
 	arch = armv6h
-	license = Apache-2.0
+	license = Apache
 	makedepends = git
 	makedepends = go
 	depends = glibc

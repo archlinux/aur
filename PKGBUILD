@@ -2,7 +2,7 @@
 pkgname=kluctl
 pkgdesc='The missing glue to put together large Kubernetes deployments.'
 pkgver=2.20.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/kluctl/kluctl/'
 license=('Apache')
