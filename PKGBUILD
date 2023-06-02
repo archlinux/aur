@@ -20,7 +20,8 @@ depends=(
 	gcc-libs
 	webkit2gtk)
 makedepends=()
-conflicts=(typstudio{-git,})
+provides=("typstudio=$pkgver")
+conflicts=(typstudio)
 source=("$pkgname-$pkgver.deb::https://github.com/Cubxity/typstudio/releases/download/v${_pkgver}/typstudio_0.1.0_amd64.deb")
 sha256sums=('e4770477c00df1262339b1aa75ed2048b77d42e0d8a591af037f44213e0cef57')
 
