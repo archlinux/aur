@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /opt/forkboard
-./forkboard $@
+cd /opt/forkboard || exit
+./forkboard "$@"

@@ -15,7 +15,7 @@ source=(${_pkgname_src}-${pkgver}.tar.gz::https://github.com/aaroncarpenter/fork
 	forkboard.sh)
 sha256sums=('df3dbaf567628cb2d9bb96c5402a7a07f1e5a8ec4cf597ce6c6dbec69650d131'
             '20f8f8e3b757c7450be207ecc5a976e2b405cae20ea3e1290c1856d9c2f324a9'
-            '81927d6ae46b4b4ab49bdfc798b1910d70b422adbd2d589501279155f6da3c90')
+            '66918df837e22336fbf16436f632202651a73bd2e5de4f91119249bc2f889e95')
 build() {
 	cd ${_pkgname_src}-${pkgver}
 	npm install
