@@ -1,8 +1,9 @@
-# Mantainer: Fabrizio Pietrucci <bamlessnty5@gmail.com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Fabrizio Pietrucci <bamlessnty5@gmail.com>
 
 pkgname=syngestures
-pkgver=1.0
-pkgrel=4
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Swipes and gestures for Linux with the MT multitouch protocol"
 arch=('x86_64')
 url="https://github.com/mqudsi/syngesture"
@@ -11,9 +12,8 @@ makedepends=('cargo')
 depends=('evtest')
 optdepends=("wmctrl: needed for syngestures-switch-ws for X11 and Wayland compatible workspace switching"
             "xdotool: simulates keyboard and mouse actions for Xorg or XWayland based apps")
-
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mqudsi/syngesture/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('308499e6dceb40a11dc56d8c780d3844f92d846f6819af1012aabf1e9843fdee')
+sha256sums=('3b187ef32818427490e422925dc6c30cf2ab05649a94a14a568b70ac2fc177c2')
 backup=("usr/local/etc/syngestures.toml")
 
 prepare() {
