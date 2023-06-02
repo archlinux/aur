@@ -2,11 +2,9 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: ml <>
 
-# GPG keys: https://github.com/hurl-bot.gpg
-
 pkgname=hurl-rs
-pkgver=3.0.0
-_commit=277393700b9dbc48aba28be8ccb7ea3e766cc0cb
+pkgver=3.0.1
+_commit="3d48b12900040db577385a752e401cf13b725ddc"  # git rev-list -n1 ${pkgver}
 pkgrel=1
 pkgdesc='HTTP Client to run and test requests'
 arch=('x86_64')
@@ -16,9 +14,9 @@ depends=('curl' 'libxml2' 'openssl')
 makedepends=('cargo' 'git' 'python')
 checkdepends=('cargo' 'python' 'python-flask' 'python-lxml' 'python-beautifulsoup4' 'libnetfilter_conntrack' 'squid')
 options=('!lto')
-source=("$pkgname::git+$url#commit=$_commit?signed")
+source=("$pkgname::git+$url#commit=${_commit}?signed")
 sha256sums=('SKIP')
-validpgpkeys=('2A8D14993928B676E424009F1283A2B4A0DCAF8D') ## hurl-bot on GitHub
+validpgpkeys=('2A8D14993928B676E424009F1283A2B4A0DCAF8D') # hurl-bot <bot@hurl.dev> : https://github.com/hurl-bot.gpg
 
 prepare() {
 	cd "$pkgname"
@@ -36,30 +34,33 @@ build() {
 
 check() {
 	cd "$pkgname"
-	export RUSTUP_TOOLCHAIN=stable
+	set -x
+
+	[[ "$(target/release/hurl -V)" = "hurl ${pkgver} "* ]]
 
 	# run servers required for integration tests as background processes
-	trap 'kill ${SERVER_PIDS[@]} && SERVER_PIDS=()' RETURN ERR EXIT
+	trap '((${#PIDS[@]})) && kill ${PIDS[@]} && PIDS=()' RETURN ERR EXIT
 	cd integration || return
 	{
 		python3 server.py &
-		SERVER_PIDS+=($!)
-		until echo -n >/dev/tcp/localhost/8000; do sleep 1; done
+		PIDS+=($!)
+		until echo -n >/dev/tcp/localhost/8000; do sleep 1; done 2>/dev/null
 		python3 ssl/server.py 8001 ssl/server/cert.selfsigned.pem false &
-		SERVER_PIDS+=($!)
-		until echo -n >/dev/tcp/localhost/8001; do sleep 1; done
+		PIDS+=($!)
+		until echo -n >/dev/tcp/localhost/8001; do sleep 1; done 2>/dev/null
 		python3 ssl/server.py 8002 ssl/server/cert.pem false &
-		SERVER_PIDS+=($!)
-		until echo -n >/dev/tcp/localhost/8002; do sleep 1; done
+		PIDS+=($!)
+		until echo -n >/dev/tcp/localhost/8002; do sleep 1; done 2>/dev/null
 		python3 ssl/server.py 8003 ssl/server/cert.selfsigned.pem true &
-		SERVER_PIDS+=($!)
-		until echo -n >/dev/tcp/localhost/8003; do sleep 1; done
+		PIDS+=($!)
+		until echo -n >/dev/tcp/localhost/8003; do sleep 1; done 2>/dev/null
 		squid -d 2 -N -f <(printf '%s\n' 'cache deny all' 'cache_log /dev/null' 'access_log /dev/null' 'http_access allow all' 'http_port 127.0.0.1:3128' 'request_header_add From-Proxy Hello' 'reply_header_add From-Proxy Hello' 'shutdown_lifetime 1 seconds' "pid_filename ${srcdir}/squid.pid") &
-		SERVER_PIDS+=($!)
-		until echo -n >/dev/tcp/localhost/3128; do sleep 1; done
+		PIDS+=($!)
+		until echo -n >/dev/tcp/localhost/3128; do sleep 1; done 2>/dev/null
 	}
 	cd ../ || return
 
+	export RUSTUP_TOOLCHAIN=stable
 	# TODO: figure out why test_cookie_storage is failing
 	cargo test --frozen --all-features --workspace -- --skip http::tests::libcurl::test_cookie_storage
 }
