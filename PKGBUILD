@@ -1,5 +1,4 @@
 # Maintainer: dimtpap <dimtpap@protonmail.com>
-
 pkgname=coppwr
 pkgver=1.0.0
 pkgrel=1
@@ -22,8 +21,8 @@ build() {
 	cd "$pkgname-$pkgver"
 
 	export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 package() {
