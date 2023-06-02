@@ -2,7 +2,7 @@
 # Contributor: Alex Leray <alexandre@stdin.fr>
 
 pkgname=inkscape-axidraw-bin
-pkgver=3.9.2
+pkgver=3.9.3
 pkgrel=1
 pkgdesc='Inkscape extension for Axidraw'
 provides=('inkscape-axidraw' 'inkscape-eggbot')
@@ -15,7 +15,7 @@ source=(
   "https://cdn.evilmadscientist.com/dl/ad/public/${pkgver//./}/ad-ink_lin-x86_${pkgver//./}.zip"
 )
 sha256sums=(
-  '98e1af387987c7bfb635c894c3ad174fd3fc08d55d2291efb71664cbe1cd301e'
+  '11785f19a6826a449ac05e0cb3e3d3eab3317157c15f744cb85f2e410ee42b19'
 )
 
 package() {
