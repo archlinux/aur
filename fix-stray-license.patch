@@ -1,0 +1,13 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 6ef54c4..9fa25af 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -41,7 +41,7 @@ classifiers = [
+     "Topic :: Utilities"
+ ]
+ packages = [ { include = "spleeter" } ]
+-include = ["LICENSE", "spleeter/resources/*.json"]
++include = ["spleeter/resources/*.json"]
+ 
+ [tool.poetry.dependencies]
+ python = ">=3.6.1,<3.10"
