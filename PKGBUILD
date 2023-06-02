@@ -19,7 +19,7 @@ source=("https://github.com/th-ch/youtube-music/releases/download/v$pkgver/${pkg
         "${pkgname%-bin}.sh")
 sha256sums=('dbefcfdcab7df20be27690b9ecb0762816be61988b0371af7b2f0afb24b66494'
             'e7e14b3b771ecadb23f6ee0b6f99d1553e385e35cdb44fc8e36ee7c878dacd08'
-            '23c170618c57ff6c93eaf84c77785a9a42baada6ae7492591abd6a59eb4b4fda')
+            '840e0f62ca9e0889739cefa475baa862c5a6c25f547a3bb920bf483f0c33dc12')
 
 package(){
   bsdtar xfv data.tar.xz -C "$pkgdir"
