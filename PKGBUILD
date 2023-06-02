@@ -4,7 +4,7 @@
 
 pkgbase=qt5-doc
 pkgname=(qt5-doc qt5-examples)
-_basever=5.15.8
+_basever=5.15.9
 pkgver=$_basever
 pkgrel=1
 arch=('any')
@@ -17,9 +17,9 @@ _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/single/${_pkgfqn}.tar.xz"
          qt5-webengine-python3.patch
          no-qmake.patch)
-sha256sums=('776a9302c336671f9406a53bd30b8e36f825742b2ec44a57c08217bff0fa86b9'
+sha256sums=('26d5f36134db03abe4a6db794c7570d729c92a3fc1b0bf9b1c8f86d0573cd02f'
             '398c996cb5b606695ac93645143df39e23fa67e768b09e0da6dbd37342a43f32'
-            '7893df4981d6611c5aaeb4cc69bc77d14b4251842b205591a563f9a7184dfb0a')
+            'db90fa31381fa0814c9c8c803c9e2f9b36bdd6f52da753399e500c0692352498')
 
 prepare() {
   cd ${_pkgfqn/opensource-/}
@@ -64,19 +64,12 @@ package_qt5-examples() {
 
   # The various example dirs have conflicting .pro files, but
   # QtCreator requires them to be in the same top-level directory.
-  # Matching the Qt5 installer, only the qtbase project is kept.
+  # Matching the Qt installer, only the qtbase project is kept.
   mkdir -p $_base
   cp ${_pkgfqn/opensource-/}/qtbase/examples/examples.pro $_base
-
   _fdirs=$(find "${_pkgfqn/opensource-/}" -maxdepth 2 -type d -name examples)
   for _dir in $_fdirs; do
-      _mod=$(basename ${_dir%/examples})
-
-      if [ -e "$_dir/README" ]; then
-        cp $_dir/README $_dir/README.$_mod
-      fi
-
-#     mkdir $_base/$_mod
-      cp -rn $_dir/* $_base
+    rm -f $_dir/{examples.pro,README}
+    cp -rn $_dir/* $_base
   done
 }

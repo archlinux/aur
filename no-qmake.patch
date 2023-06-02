@@ -2,7 +2,7 @@ diff --git a/configure b/configure
 index b6c9b462f2..b426aa2085 100755
 --- a/configure
 +++ b/configure
-@@ -711,105 +711,6 @@ setBootstrapVariable()
+@@ -711,109 +711,6 @@ setBootstrapVariable()
      getQMakeConf "$1" | echo ${2-$1} = `if [ -n "$3" ]; then sed "$3"; else cat; fi` >> "$mkfile"
  }
  
@@ -76,6 +76,10 @@ index b6c9b462f2..b426aa2085 100755
 -
 -        if [ "$BUILD_ON_MAC" = "yes" ]; then
 -            echo "EXTRA_CXXFLAGS += -MMD" >> "$mkfile"
+-            for arch in $QMAKE_APPLE_DEVICE_ARCHS; do
+-                echo "EXTRA_CXXFLAGS += -arch $arch" >> "$mkfile"
+-                echo "EXTRA_LFLAGS += -arch $arch" >> "$mkfile"
+-            done
 -            cat "$in_mkfile" >> "$mkfile"
 -            echo "-include \$(notdir \$(DEPEND_SRC:%.cpp=%.d))" >> "$mkfile"
 -        else
