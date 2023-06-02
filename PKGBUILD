@@ -3,7 +3,7 @@
 pkgname="flutter-git-clone"
 pkgdesc="UI framework for crossplatform development (git version)"
 license=("MIT")
-pkgver="1"
+pkgver="1.1"
 pkgrel="1"
 arch=("x86_64")
 url="https://github.com/flutter/flutter"
@@ -13,7 +13,7 @@ source=("flutter::git+https://github.com/flutter/flutter")
 sha256sums=("SKIP")
 
 package() {
-  find . -type f -exec install -Dm777 {} $pkgdir/usr/share/flutter/{} \; 
+  find . -type f -exec install -Dm777 {} $pkgdir/usr/share/{} \; 
   rm -rf flutter
   install -Dm755 ../flutter.sh $pkgdir/usr/bin/flutter
 }
