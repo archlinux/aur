@@ -2,7 +2,7 @@
 # Contributor: Harsh Barsaiyan <hbarsaiyan at gmail dot com>
 pkgname=youtube-music-bin
 pkgver=1.20.0
-pkgrel=3
+pkgrel=4
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
@@ -19,7 +19,7 @@ source=("https://github.com/th-ch/youtube-music/releases/download/v$pkgver/${pkg
         "${pkgname%-bin}.sh")
 sha256sums=('dbefcfdcab7df20be27690b9ecb0762816be61988b0371af7b2f0afb24b66494'
             'e7e14b3b771ecadb23f6ee0b6f99d1553e385e35cdb44fc8e36ee7c878dacd08'
-            '08a3f1a8a20277caf3516c10c967adf7c8e3ff8a6c1ccdb53dc9794f82cae1d4')
+            '23c170618c57ff6c93eaf84c77785a9a42baada6ae7492591abd6a59eb4b4fda')
 
 package(){
   bsdtar xfv data.tar.xz -C "$pkgdir"
