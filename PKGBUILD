@@ -4,7 +4,7 @@ _projectname="googlesat"
 _pkgname="marble-maps-${_projectname}"
 pkgname="${_pkgname}-git"
 pkgver=r11.20120613.ec55ac8
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Satellite for the Marble desktop globe.'
 arch=(
   'any'
@@ -23,7 +23,7 @@ makedepends=(
 )
 checkdepends=()
 provides=(
-  "${_pkgname}=${pkgver}"
+  "${_pkgname}"
 )
 conflicts=(
   "${_pkgname}"
