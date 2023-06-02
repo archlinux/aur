@@ -1,5 +1,5 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Bruno Pagani <archange@archlinux.org>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 _use_suffix=1
 pkgver=20.3.12
@@ -7,7 +7,7 @@ _commit=50f600b350d420cc5b45800868b55bd6764225e4
 _chromiumver=104.0.5112.124
 _gcc_patchset=2
 # shellcheck disable=SC2034
-pkgrel=2
+pkgrel=3
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
