@@ -1,0 +1,18 @@
+pkgbase = kluctl
+	pkgdesc = Linters Runner for Go. 5x faster than gometalinter.
+	pkgver = 2.20.4
+	pkgrel = 1
+	url = https://github.com/kluctl/kluctl/
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = https://github.com/kluctl/kluctl/archive/v2.20.4/kluctl-2.20.4.tar.gz
+	sha256sums = faaccbe66c4f91dd4fb32993d1b37db43ac139c9088f11ae5399cb84493c0894
+
+pkgname = kluctl
