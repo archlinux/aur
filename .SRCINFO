@@ -1,0 +1,19 @@
+pkgbase = xbyyunpan-appimage
+	pkgdesc = 小白羊网盘 - Powered by 阿里云盘Open
+	pkgver = 3.11.9
+	pkgrel = 1
+	url = https://github.com/gaozhangmin/aliyunpan
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	conflicts = xbyyunpan
+	conflicts = aliyunpan-liupan1890
+	conflicts = aliyunpan-odomu
+	options = !strip
+	source = xbyyunpan-3.11.9.AppImage::https://github.com/gaozhangmin/aliyunpan/releases/download/3.11.9/XBYDriver-3.11.9-linux-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/gaozhangmin/aliyunpan/main/LICENSE
+	sha256sums = a0463effc760d7a479c2d4b1e20279f7516ce8deda394cc94405ba2af981b33a
+	sha256sums = 37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009
+
+pkgname = xbyyunpan-appimage
