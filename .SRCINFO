@@ -1,0 +1,11 @@
+pkgbase = hnsky-bin
+	pkgdesc = Semi professional free planetarium program
+	pkgver = 4.2.15
+	pkgrel = 1
+	url = https://sourceforge.net/projects/hnsky/
+	arch = x86_64
+	license = GPL3
+	source = https://altushost-swe.dl.sourceforge.net/project/hnsky/linux_installer/hnsky-bin_amd64.tar.gz
+	sha256sums = f4b0eff6fe43fe59bce3c3f33bf0cb03017ec20f7b19e914dc6c920b8877e080
+
+pkgname = hnsky-bin
