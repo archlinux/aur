@@ -11,7 +11,7 @@ license=('Apache')
 depends=()
 conflicts=(chef chef-solo chef-dk chef-client cinc)
 source=("http://downloads.cinc.sh/files/stable/cinc-workstation/${pkgver}/ubuntu/20.04/cinc-workstation_${pkgver}-1_amd64.deb")
-sha256sums=('2b8db220268d476628a7edc210f426b3ef52773aa1c68fabe43fa0367411d319')
+sha256sums=('2b5ece5adf231a3018171ebf834347953d3865c88afaa7cbd7945d165ec7ed3f')
 
 package() {
   cd "$srcdir"
