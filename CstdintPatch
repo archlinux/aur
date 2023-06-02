@@ -1,0 +1,36 @@
+diff --git a/include/klee/Core/Interpreter.h b/include/klee/Core/Interpreter.h
+index f14e3d88..1cfa19dc 100644
+--- a/include/klee/Core/Interpreter.h
++++ b/include/klee/Core/Interpreter.h
+@@ -14,6 +14,7 @@
+ #include <set>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+
+ struct KTest;
+
+diff --git a/include/klee/Statistics/Statistics.h b/include/klee/Statistics/Statistics.h
+--- a/include/klee/Statistics/Statistics.h
++++ b/include/klee/Statistics/Statistics.h
+@@ -15,6 +15,7 @@
+ #include <vector>
+ #include <string>
+ #include <string.h>
++#include <cstdint>
+
+ namespace klee {
+   class Statistic;
+
+diff --git a/include/klee/Statistics/Statistic.h b/include/klee/Statistics/Statistic.h
+index bbb67116..ed880f4f 100644
+--- a/include/klee/Statistics/Statistic.h
++++ b/include/klee/Statistics/Statistic.h
+@@ -11,6 +11,7 @@
+ #define KLEE_STATISTIC_H
+
+ #include <string>
++#include <cstdint>
+
+ namespace klee {
+   class Statistic;

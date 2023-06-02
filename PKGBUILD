@@ -4,7 +4,7 @@
 # Contributor: nickolai
 pkgname=klee
 pkgver=2.3
-pkgrel=14
+pkgrel=15
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -46,6 +46,7 @@ prepare() {
     git cherry-pick 39f8069db879e1f859c60c821092452748b4ba37
     git apply "../../TargetRegistryPatch"
     git apply "../../KnownLLVMVersionPatch"
+    git apply "../../CstdintPatch"
     mkdir -p "$srcdir/build"
     cd "$srcdir/build"
     cmake -DENABLE_TCMALLOC=ON \
