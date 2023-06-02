@@ -9,7 +9,7 @@ url="https://github.com/pyvisa/pyvisa-py"
 arch=('any')
 license=('MIT')
 depends=('python-pyvisa')
-makedepends=('python-wheel' 'python-setuptools-scm' 'python-pytest')
+makedepends=('git' 'python-wheel' 'python-setuptools-scm' 'python-pytest')
 optdepends=('linux-gpib: gpib instrument support'
             'python-pyserial: interface with serial instruments'
             'python-pyusb: interface with USB instruments'
