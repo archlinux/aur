@@ -1,49 +1,42 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-pyvisa-py
-pkgver=0.5.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A pure python backend for PyVISA"
 url="https://github.com/pyvisa/pyvisa-py"
-arch=(any)
-license=(MIT)
-depends=(
-python
-python-pyvisa
-python-pyserial
-python-pyusb
-)
-makedepends=(
-python-wheel
-python-setuptools
-python-setuptools-scm
-python-pytest
-)
-conflicts=(python-pyvisa-py-git)
-optdepends=('linux-gpib: gpib instrument support')
-
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pyvisa/pyvisa-py/archive/${pkgver}.tar.gz)
-sha256sums=('5a39209acbcdb597b3bd8f997d484e193d91b5622cb691dd1f513d610317594c')
-
-export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+arch=('any')
+license=('MIT')
+depends=('python-pyvisa' 'python-pyserial' 'python-pyusb')
+makedepends=('python-wheel' 'python-setuptools-scm' 'python-pytest')
+optdepends=('linux-gpib: gpib instrument support'
+            'python-pyserial: interface with serial instruments'
+            'python-pyusb: interface with USB instruments'
+            'python-gpib-ctypes: interface with GPIB instruments'
+            'python-psutil: discover TCPIP devices across multiple interfaces')
+conflicts=($pkgname-git)
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
-  cd pyvisa-py-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  # Switch tag version
+  cd pyvisa-py
+  git checkout tags/${pkgver}
 }
 
 build() {
-  cd pyvisa-py-${pkgver}
+  cd pyvisa-py
   python setup.py build
 }
 
 check() {
-  cd pyvisa-py-${pkgver}
+  cd pyvisa-py
   python -m pytest --pyargs pyvisa_py
 }
 
 package() {
-  cd pyvisa-py-${pkgver}
+  cd pyvisa-py
   python setup.py install --skip-build --prefix=/usr --root="$pkgdir/" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
