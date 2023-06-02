@@ -2,17 +2,16 @@
 
 _pkgname=BeeRef
 pkgname=${_pkgname,,}
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Reference Image Viewer"
 arch=('any')
-url="https://beeref.org/"
-_url="https://github.com/rbreu/${pkgname}"
+url="https://github.com/mini-ninja-64/${pkgname}"
 license=('GPL3')
-depends=('hicolor-icon-theme' 'python-exif' 'python-pyqt6' 'python-rectangle-packer' 'sqlite')
-makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('e10badf8d606630b263e2d462dc3d1fc02f54014a82faee06086b5d2f12bfe524d33c65b147d7f4b5f73684213728689281b5fcf05845ccc7d9074a2ac43b5be')
+depends=('hicolor-icon-theme' 'python-exif' 'python-pyqt6' 'python-rectangle-packer')
+makedepends=('python-build' 'python-installer' 'python-pdm' 'python-wheel')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('da5dee97e5839198fe89178090379d0f89b58d48d317312a5a46649899649b3bb33c6c2eed84908084b70be9838593654a01ba271c10a92dc64237f1bdab8ffe')
 
 _xdg_desktop_name=org.${pkgname}.${_pkgname}
 
@@ -26,12 +25,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm 644 beeref.desktop \
                   "${pkgdir}/usr/share/applications/${_xdg_desktop_name}.desktop"
