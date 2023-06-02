@@ -2,7 +2,7 @@
 # Contributor: Asuka Minato
 
 pkgname=typstudio-bin
-pkgver=0.1.0dev.20
+pkgver=0.1.0dev.22
 _pkgver=${pkgver/dev/-dev}
 pkgrel=1
 pkgdesc='desktop application for typst'
@@ -18,12 +18,11 @@ depends=(
 	gdk-pixbuf2
 	cairo
 	gcc-libs
-	libsoup
 	webkit2gtk)
 makedepends=()
 conflicts=(typstudio{-git,})
 source=("$pkgname-$pkgver.deb::https://github.com/Cubxity/typstudio/releases/download/v${_pkgver}/typstudio_0.1.0_amd64.deb")
-sha256sums=('b9fad3eab676029c721a25b50abdcc7612896f39692318b5d3e4660c4b79fd12')
+sha256sums=('e4770477c00df1262339b1aa75ed2048b77d42e0d8a591af037f44213e0cef57')
 
 package() {
 	tar -xvpf data.tar.* -C $pkgdir

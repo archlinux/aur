@@ -1,6 +1,6 @@
 pkgbase = typstudio-bin
 	pkgdesc = desktop application for typst
-	pkgver = 0.1.0dev.20
+	pkgver = 0.1.0dev.22
 	pkgrel = 1
 	url = https://github.com/Cubxity/typstudio
 	arch = x86_64
@@ -13,11 +13,10 @@ pkgbase = typstudio-bin
 	depends = gdk-pixbuf2
 	depends = cairo
 	depends = gcc-libs
-	depends = libsoup
 	depends = webkit2gtk
 	conflicts = typstudio-git
 	conflicts = typstudio
-	source = typstudio-bin-0.1.0dev.20.deb::https://github.com/Cubxity/typstudio/releases/download/v0.1.0-dev.20/typstudio_0.1.0_amd64.deb
-	sha256sums = b9fad3eab676029c721a25b50abdcc7612896f39692318b5d3e4660c4b79fd12
+	source = typstudio-bin-0.1.0dev.22.deb::https://github.com/Cubxity/typstudio/releases/download/v0.1.0-dev.22/typstudio_0.1.0_amd64.deb
+	sha256sums = e4770477c00df1262339b1aa75ed2048b77d42e0d8a591af037f44213e0cef57
 
 pkgname = typstudio-bin
