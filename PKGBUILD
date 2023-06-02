@@ -5,7 +5,7 @@ pkgdesc='A simple and soft X cursor theme'
 arch=(any)
 license=(GPL)
 source=($pkgname.tar.xz::https://github.com/red-magic/dotfiles/raw/master/extra/themes/cursor-themes/$pkgname.tar.xz)
-sha256sums=(f9ced93e1a2351b0449e8fac13139982ed2919e2c9eb1193d0ad7a02c7393d2c)
+b2sums=(519d7e3bacf9e43fba67bca8c0911029522d13308f6994634514b80799ea9544c9a3d5af0805b27316ada9d6590c8217eca1aba34ddffa525a1705d853e01915)
 
 package() {
 	install -dm 755 $pkgdir/usr/share/icons/$pkgname/cursors
