@@ -1,0 +1,17 @@
+pkgbase = psp-pthread-embedded
+	pkgdesc = POSIX Threads for embedded systems (psp)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/pspdev/pthread-embedded
+	arch = any
+	license = LGPL
+	makedepends = psp-gcc-base
+	makedepends = git
+	depends = psp-newlib
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = git+https://github.com/pspdev/pthread-embedded.git#branch=psp
+	md5sums = SKIP
+
+pkgname = psp-pthread-embedded
