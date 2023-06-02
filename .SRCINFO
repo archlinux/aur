@@ -1,7 +1,7 @@
 pkgbase = vlc-wayland-git
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version with patch for embedded video on Wayland based on blocked merge request 2419)
 	pkgver = 4.0.0.r24042.ge1b09a5bf5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.videolan.org/vlc/
 	arch = i686
 	arch = x86_64
@@ -173,10 +173,6 @@ pkgbase = vlc-wayland-git
 	optdepends = dav1d: dav1d AV1 decoder
 	provides = vlc=4.0.0.r24042.ge1b09a5bf5
 	conflicts = vlc
-	conflicts = vlc-dev
-	conflicts = vlc-plugin
-	conflicts = vlc-stable-git
-	conflicts = vlc-git
 	options = !emptydirs
 	source = git+https://code.videolan.org/videolan/vlc.git
 	source = vlc-live-media-2021.patch

@@ -11,7 +11,7 @@
 
 pkgname=vlc-wayland-git
 pkgver=4.0.0.r24042.ge1b09a5bf5
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version with patch for embedded video on Wayland based on blocked merge request 2419)"
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64')
@@ -99,7 +99,7 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'dav1d: dav1d AV1 decoder')
 
 _name=vlc
-conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git' 'vlc-git')
+conflicts=("${_name}")
 provides=("${_name}=${pkgver}")
 options=(!emptydirs)
 source=('git+https://code.videolan.org/videolan/vlc.git'
