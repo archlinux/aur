@@ -1,19 +1,17 @@
 pkgbase = psp-newlib
 	pkgdesc = Newlib is a C library intended for use on embedded systems (psp)
-	pkgver = 1.20.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://github.com/pspdev/newlib
 	arch = any
-	groups = psp
 	license = GPL
 	makedepends = psp-gcc-base
 	makedepends = psp-binutils
-	makedepends = psp-sdk-base
+	makedepends = git
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/pspdev/newlib/archive/newlib-1_20_0-PSP.zip
+	source = newlib-4.1.0::git+https://github.com/pspdev/newlib.git#branch=allegrex-v4.1.0
 	sha256sums = SKIP
 
 pkgname = psp-newlib
-
