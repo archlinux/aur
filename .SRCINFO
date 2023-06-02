@@ -1,9 +1,9 @@
 pkgbase = btllib
 	pkgdesc = Bioinformatics Technology Lab common code library https://doi.org/10.21105/joss.04720
 	pkgver = 1.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/bcgsc/btllib
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = meson
 	makedepends = ninja
@@ -14,7 +14,8 @@ pkgbase = btllib
 	depends = gcc-libs
 	depends = samtools
 	depends = python
-	source = git+https://github.com/bcgsc/btllib.git#tag=v1.6.0
-	md5sums = SKIP
+	options = !strip
+	source = btllib-1.6.0.tar.gz::https://github.com/bcgsc/btllib/releases/download/v1.6.0/btllib-1.6.0.tar.gz
+	sha256sums = 4a122c1047785dc865b8c94063714667f8ca43b8a881754eebd96dbb44fd1c3f
 
 pkgname = btllib
