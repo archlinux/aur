@@ -5,13 +5,13 @@
 set -u
 pkgname='buku-git'
 _pkgname="${pkgname%-git}"
-pkgver=4.2.2.r15.g2c577a9
+pkgver=4.8.r7.gdb054e1
 pkgrel=1
 pkgdesc='Powerful command-line bookmark manager.'
 arch=('any')
 url='https://github.com/jarun/Buku'
 license=('GPL3')
-depends=('python' 'python-beautifulsoup4' 'python-cryptography' 'python-urllib3' 'python-certifi' 'python-html5lib')
+depends=('python>=3.9' 'python-beautifulsoup4' 'python-cryptography' 'python-urllib3' 'python-certifi' 'python-html5lib')
 makedepends=('make')
 makedepends+=('git')
 provides=("buku=${pkgver%%.r*}")
