@@ -8,8 +8,6 @@ pkgbase = readpe
 	license = custom:OpenSSL
 	makedepends = git
 	depends = openssl
-	provides = readpe
-	conflicts = readpe
 	conflicts = pev
 	source = readpe::git+https://github.com/mentebinaria/readpe.git#commit=ad4d5a586f022f36b6b925a63ffd667cb729731d
 	source = fix-install-prefix.diff
