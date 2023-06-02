@@ -1,7 +1,7 @@
 pkgbase = marble-maps-mapycz
 	pkgdesc = Maps for KDE marble by mapy.cz (Czech Republic & Slovakia (OSM-based with own additions), and Worldwide (OSM based)).
 	pkgver = 20220207.01
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 0
 	url = http://mapy.cz/
 	arch = any

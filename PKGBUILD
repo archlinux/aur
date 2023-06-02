@@ -1,10 +1,10 @@
-# Maintainer: dreieck
+# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 
 _pkgname=marble-maps-mapycz
 pkgname="${_pkgname}"
 epoch=0
 pkgver=20220207.01
-pkgrel=4
+pkgrel=5
 pkgdesc="Maps for KDE marble by mapy.cz (Czech Republic & Slovakia (OSM-based with own additions), and Worldwide (OSM based))."
 url="http://mapy.cz/"
 arch=('any')
