@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="numara-appimage"
-pkgver=3.20.0
+pkgver=3.20.1
 pkgrel=1
 pkgdesc="Simple notepad calculator built on Electron, powered by Math.js"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Numara-${pkgver}-${arch}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/bornova/numara-calculator/master/LICENSE")
-sha256sums=('efbe1794648ca2d0f3127e509f629ebfbc19d27a10b4779aa3600995e50b4f47'
+sha256sums=('48d4e9af7a8201f0c6abf85dfa3ef39f345fdfa7e43ac604b5dd9dc2f8cbd4e8'
             'b944c7642b6a0ccf0c24e98d199d8bf4c8d556ebc7d87ddb9af98cab67b378b5')
       
 prepare() {
