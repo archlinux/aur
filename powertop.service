@@ -2,8 +2,8 @@
 Description=Powertop tunings
 
 [Service]
-Type=oneshot
-RemainAfterExit=yes
+Type=forking
+RemainAfterExit=no
 ExecStart=/usr/bin/powertop --auto-tune
 
 [Install]

@@ -2,7 +2,7 @@
 
 pkgname=powertop-auto-tune
 pkgver=2021.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A systemd service for powertop that sets all tunable options to their GOOD setting.'
 arch=('any')
 url="https://wiki.archlinux.org/index.php/Powertop"
@@ -10,7 +10,7 @@ license=('FDL')
 depends=("systemd" "powertop")
 _unit='powertop.service'
 source=($_unit)
-sha256sums=('0f56e8475519e84eff5740e44fb9e8cd27cefb65746053436a1a0d5610dd2305')
+sha256sums=('6c8f5d252c5924e3fb589b787423be693e0c5cb8c99f2da1aedd29c0ab8ce976')
 install="${pkgname}.install"
 
 package() {
