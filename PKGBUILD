@@ -8,7 +8,7 @@ pkgdesc="A pure python backend for PyVISA"
 url="https://github.com/pyvisa/pyvisa-py"
 arch=('any')
 license=('MIT')
-depends=('python-pyvisa' 'python-pyserial' 'python-pyusb')
+depends=('python-pyvisa')
 makedepends=('python-wheel' 'python-setuptools-scm' 'python-pytest')
 optdepends=('linux-gpib: gpib instrument support'
             'python-pyserial: interface with serial instruments'
