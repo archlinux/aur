@@ -1,8 +1,9 @@
+
 # Maintainer: Yurii Kolesykov <root@yurikoles.com>
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-xe-next-git
-pkgver=6.3.r1173456.270095383047
+pkgver=6.3.r1173528.9f49c413b187
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge Intel Xe driver'
 _product="${pkgbase%-git}"
@@ -20,11 +21,9 @@ _srcname=$pkgbase
 source=(
   "$_srcname::git+https://gitlab.freedesktop.org/drm/xe/kernel.git#branch=${_branch}"
   config         # the main kernel config file
-  upstreaming-pt1.patch
 )
 sha256sums=('SKIP'
-            '5557889ef70c6f8fdde93092b9f9a28cbdaaca2989a15147826825119c7aae0f'
-            'c0f8a43b0e4f632034dc408eea35aa5a3a0966cc3af3bddeb22ff4c378ca05a8')
+            '5557889ef70c6f8fdde93092b9f9a28cbdaaca2989a15147826825119c7aae0f')
 
 pkgver() {
   cd $_srcname
