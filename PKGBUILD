@@ -1,4 +1,5 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: vigo <vigo.the.unholy.carpathian@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
