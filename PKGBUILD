@@ -2,17 +2,17 @@
 
 pkgname=prometheus-nextcloud-exporter
 _pkgname=nextcloud-exporter
-pkgver=0.5.1
+pkgver=0.6.1
 pkgrel=1
-pkgdesc="Prometheus exporter for Nextcloud metrics"
+pkgdesc='Prometheus exporter for Nextcloud metrics'
 arch=('x86_64')
-url="https://github.com/xperimental/nextcloud-exporter"
+url='https://github.com/xperimental/nextcloud-exporter'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 backup=("etc/$_pkgname.yml")
 options=('!lto')
-_commit='c1bf70e07107ca7a96a42d7afa014b8284aadb9c'
+_commit='98d4d4607e9d020dc19b8c21e1401b6b27a5d3a8'
 source=(
   "$pkgname::git+$url.git#commit=$_commit"
   'sysusers.conf'

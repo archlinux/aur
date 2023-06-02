@@ -1,6 +1,6 @@
 pkgbase = prometheus-nextcloud-exporter
 	pkgdesc = Prometheus exporter for Nextcloud metrics
-	pkgver = 0.5.1
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/xperimental/nextcloud-exporter
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = prometheus-nextcloud-exporter
 	depends = glibc
 	options = !lto
 	backup = etc/nextcloud-exporter.yml
-	source = prometheus-nextcloud-exporter::git+https://github.com/xperimental/nextcloud-exporter.git#commit=c1bf70e07107ca7a96a42d7afa014b8284aadb9c
+	source = prometheus-nextcloud-exporter::git+https://github.com/xperimental/nextcloud-exporter.git#commit=98d4d4607e9d020dc19b8c21e1401b6b27a5d3a8
 	source = sysusers.conf
 	source = nextcloud-exporter.yml
 	b2sums = SKIP
