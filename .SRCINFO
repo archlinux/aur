@@ -1,6 +1,6 @@
 pkgbase = inkscape-eggbot-git
 	pkgdesc = EggBot software as an Inkscape extension. Useful for other plotters, too.
-	pkgver = r684.0a70092
+	pkgver = r686.28a050b
 	pkgrel = 1
 	url = https://github.com/evil-mad/EggBot
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = inkscape-eggbot-git
 	conflicts = inkscape-eggbot
 	options = !strip
 	source = inkscape-eggbot-git::git+https://github.com/evil-mad/EggBot.git
-	source = axidraw-3.9.2.tar.gz::https://github.com/evil-mad/axidraw/archive/v3.9.2.tar.gz
+	source = axidraw-3.9.3.tar.gz::https://github.com/evil-mad/axidraw/archive/v3.9.3.tar.gz
 	sha512sums = SKIP
-	sha512sums = e68462f0d0e70a56fcbb11077011181291afa669f81ca667bc81d7d1fca9854963bd8faaa9468124f5aa1e050aee114ba93fbdbb0168e0c5da5e2c691db1fbfe
+	sha512sums = 0d0add604dc0ff30bd24bb32e908ebb82c421ccbc4a75d2c4136ebc6e4f2cbc272fb13ac907adfd7fc46d4409d065729131ad8fe7fe71b6ff21a9a14740d63c6
 
 pkgname = inkscape-eggbot-git
