@@ -1,10 +1,10 @@
-# Maintainer: dreieck
+# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 
 _pkgname=marble-maps-thunderforest
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=r13.20220207.cfdc60d
-pkgrel=2
+pkgrel=3
 pkgdesc="Maps served by thunderforest for KDE marble. API key required and asked for during build."
 url="https://gitlab.com/dreieckli/marble-maps-thunderforest"
 arch=('any')
