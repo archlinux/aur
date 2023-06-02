@@ -4,7 +4,7 @@ _projectname="googlemaps"
 _pkgname="marble-maps-${_projectname}"
 pkgname="${_pkgname}-git"
 pkgver=r6.20120205.6528d2c
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Maps for the Marble desktop globe.'
 arch=(
   'any'
@@ -23,7 +23,7 @@ makedepends=(
 )
 checkdepends=()
 provides=(
-  "${_pkgname}=${pkgver}"
+  "${_pkgname}"
 )
 conflicts=(
   "${_pkgname}"
