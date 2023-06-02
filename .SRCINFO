@@ -1,7 +1,7 @@
 pkgbase = hyper-appimage
 	pkgdesc = A terminal built on web technologies
 	pkgver = 3.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hyper.is
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = hyper-appimage
 	source = hyper-3.4.1.AppImage::https://github.com/vercel/hyper/releases/download/v3.4.1/Hyper-3.4.1.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/vercel/hyper/canary/LICENSE
 	sha256sums = 5050be667fe56d6871ed6f86b3b03a023b2b75aa91329a82c2f15ff7ed66b63c
-	sha256sums = 981433d189ff6b8399148e4affbc19e2c17295e6b99941425a48177dd954e9b1
+	sha256sums = 07a1ce5a08f3f385ea6f2aef0c8246c2d9bdd7c8dd21235b76b1cb7116efc13f
 
 pkgname = hyper-appimage

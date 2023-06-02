@@ -2,7 +2,7 @@
 # Contributor: Ryan Dowling <ryan@ryandowling.me>
 pkgname=hyper-appimage
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
 url="https://hyper.is"
@@ -12,10 +12,11 @@ conflicts=("${pkgname%-appimage}")
 provides=("${pkgname%-appimage}")
 depends=('glibc' 'hicolor-icon-theme' 'zlib')
 options=('!strip')
+_install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Hyper-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/vercel/hyper/canary/LICENSE")
 sha256sums=('5050be667fe56d6871ed6f86b3b03a023b2b75aa91329a82c2f15ff7ed66b63c'
-            '981433d189ff6b8399148e4affbc19e2c17295e6b99941425a48177dd954e9b1')
+            '07a1ce5a08f3f385ea6f2aef0c8246c2d9bdd7c8dd21235b76b1cb7116efc13f')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
