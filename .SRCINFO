@@ -1,6 +1,6 @@
 pkgbase = fastdownloader-bin
 	pkgdesc = A fast video/audio downloader in electron.js
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/BERNARDO31P/FastDownloader
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = fastdownloader-bin
 	depends = alsa-lib
 	conflicts = fastdownloader
 	options = !strip
-	source = fastdownloader-0.5.6.pacman::https://github.com/BERNARDO31P/FastDownloader/releases/download/v0.5.6/fastdownloader-0.5.6.pacman
-	sha256sums = 2a16882d5278b2443c9d8340b2275c4829aad3956f80426b68f2cd5c4ae2fb32
+	source = fastdownloader-0.5.7.pacman::https://github.com/BERNARDO31P/FastDownloader/releases/download/v0.5.7/fastdownloader-0.5.7.pacman
+	sha256sums = 8d7c4188b988b94ba72f154f5c22ff3eca84c238a8daa67ec42466c20c0ed530
 
 pkgname = fastdownloader-bin
