@@ -1,13 +1,18 @@
+# Maintainer:  reeeeeeeeeeelity <rility3 AT GMAIL>
+# Contributor: Thang Pham <phamducthang1234 at gmail dot com
+# Contributor: FabioLolix
 pkgname=spotify-player-full-git
+_pkgname=spotify-player
 pkgver=0.14.1.r0.g77727a4
 pkgrel=1
 pkgdesc="A TUI spotify player. "
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/aome510/spotify-player"
 license=('MIT')
-conflicts=("spotify-player")
-depends=('alsa-lib' 'openssl')
-makedepends=('cargo')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+depends=('libpulse' 'openssl' 'dbus')
+makedepends=('cargo' 'git')
 source=("$pkgname::git+$url#branch=master")
 sha256sums=("SKIP")
 
@@ -16,7 +21,6 @@ pkgver() {
     cd "$pkgname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 
 build() {
     cd "${pkgname}"

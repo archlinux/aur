@@ -8,8 +8,11 @@ pkgbase = spotify-player-full-git
 	arch = armv7h
 	license = MIT
 	makedepends = cargo
-	depends = alsa-lib
+	makedepends = git
+	depends = libpulse
 	depends = openssl
+	depends = dbus
+	provides = spotify-player
 	conflicts = spotify-player
 	source = spotify-player-full-git::git+https://github.com/aome510/spotify-player#branch=master
 	sha256sums = SKIP
