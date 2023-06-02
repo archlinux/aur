@@ -32,7 +32,7 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    flutter --no-version-check build linux --release
+    flutter --no-version-check build linux --release --prefixed-errors
 
     # Copy icon to source directory for installing
     cp assets/icon/resized/icon-128x128.png ./saber.png
