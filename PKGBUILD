@@ -1,10 +1,10 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=performance
-_pkgver=0.10.3
+_pkgver=0.10.4
 pkgname=r-${_pkgname,,}
-pkgver=0.10.3
-pkgrel=3
+pkgver=0.10.4
+pkgrel=1
 pkgdesc='Assessment of Regression Models Performance'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -78,7 +78,7 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d8a8a0ee9d1a8af0adce0f981b88788b86958e3543a1c48b7e33a3f798c99ad0')
+sha256sums=('cabaea67c417b31361606ae4e98d1270160d4358f9bbb8a75f412efef374bc35')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
