@@ -20,7 +20,11 @@ build() {
     [[ -d "${srcdir}/build/dep_includes" ]] && rm -rf "${srcdir}/build"
     mkdir -p "${srcdir}/build"
 
+    # Bootstrap just
     env JUST_BUILD_CONF='{"COMPILER_FAMILY": "clang", "CC": "/usr/bin/clang", "CXX": "/usr/bin/clang++", "AR": "/usr/bin/ar"}' python3 ./bin/bootstrap.py . "${srcdir}/build"
+
+    # Build compiled just-mr
+    python ./bin/just-mr.py --just "../build/out/bin/just" --always-file install 'installed just-mr' --output-dir ../build/out -D '{"COMPILER_FAMILY": "clang", "CC": "/usr/bin/clang", "CXX": "/usr/bin/clang++", "AR": "/usr/bin/ar"}'
 
     # convert man pages from orgmode to man
     find "${srcdir}/justbuild-${pkgver}/share/man" -name "*.md" -exec sh -c 'pandoc --standalone --to man -o "${0%.md}.man" "${0}"' {} \;
@@ -28,7 +32,7 @@ build() {
 
 package() {
     install -m 755 -Dt "${pkgdir}/usr/bin" "${srcdir}/build/out/bin/just" 
-    install -m 755 -DT "${srcdir}/justbuild-${pkgver}/bin/just-mr.py" "${pkgdir}/usr/bin/just-mr"
+    install -m 755 -Dt "${pkgdir}/usr/bin" "${srcdir}/build/out/bin/just-mr"
     install -m 755 -DT "${srcdir}/justbuild-${pkgver}/bin/just-import-git.py" "${pkgdir}/usr/bin/just-import-git"
 	
     # bash completion
