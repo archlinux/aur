@@ -1,8 +1,9 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Jack Roehr <jack@seatgull.com>
+# Contributor: tee <teeaur at duck dot com>
 
 pkgname=ticker
-pkgver=4.5.6
+pkgver=4.5.13
 pkgrel=1
 pkgdesc='Terminal stock ticker with live updates and position tracking'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +12,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('59b15a98c1652a11878adf5b1c5318b0caa25a069e3fa90ce12adab1e9fafb2e')
+sha256sums=('b4b470c82a45b25d396208ae988feb9cc6dba6d278bdc62f763d0a14fb6ed1de')
 
 prepare () {
 	cd "$pkgname-$pkgver"
