@@ -1,0 +1,32 @@
+# Current Maintainer: Sean Snell <ssnell@lakecs.net>
+# Original Maintainer: Sean Snell <ssnell@lakecs.net>
+
+pkgname=hamrs
+pkgver=1.0.6
+pkgrel=1
+pkgdesc="A simple, portable logger tailored for activities like Parks on the Air, Field Day, and more."
+arch=('x86_64')
+url="https://hamrs.app/"
+license=('none')
+provides=('hamrs')
+source=("https://hamrs-releases.s3.us-east-2.amazonaws.com/${pkgver}/${pkgname}-${pkgver}-linux-${arch}.AppImage"
+        "hamrs.desktop"
+        "hamrs-256x256.png")
+
+# Upstream AppImage
+# hamrs.desktop
+# hamrs-256x256.png
+
+sha512sums=('d6f068123da7f0f72d4287af8f8260ce32b61a6de7cf88e01dec6506bfb803c0ae929e4ef0cfe7d288c3921f26eecc13cd1faa945ae1a08bf02e8ba61067f208'
+            '6a96dde0f91cde31dcecd44468aca368f8119a22f89943ae49e4705dae30949a3576855b33978ab800db1cdf05ce91825b7a1c8b96456bf9ab8439706ee8f4a4'
+            '767da353b15240815f4f6c8af3566f4a9e39363b59e1db20f66f8e4e2a2a76db83da384782c1f54dcffc2bc178e616ebe77683072ceaecba6649455685d611f2')
+
+package() {
+    mkdir -p "${pkgdir}/opt/hamrs/"
+    mkdir -p "${pkgdir}/usr/share/applications/"
+    mkdir -p "${pkgdir}/usr/share/pixmaps/"
+    chmod +x "$srcdir/hamrs-${pkgver}-linux-${arch}.AppImage"
+    cp -r "$srcdir/hamrs-${pkgver}-linux-${arch}.AppImage" "${pkgdir}/opt/hamrs/hamrs-${pkgver}-linux-${arch}.AppImage"
+    cp -r "$srcdir/hamrs.desktop" "${pkgdir}/usr/share/applications/hamrs.desktop"
+    cp -r "$srcdir/hamrs-256x256.png" "${pkgdir}/usr/share/pixmaps/hamrs-256x256.png"
+}

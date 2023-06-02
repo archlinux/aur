@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0.6-1
+Name=HAMRS Logger
+GenericName=HAMRS
+Comment=A simple, portable logger tailored for activities like Parks on the Air, Field Day, and more. 
+Terminal=false
+Type=Application
+Exec=/opt/hamrs/hamrs-1.0.6-linux-x86_64.AppImage
+MimeType=application/x-executable;
+Categories=Network;
+Icon=hamrs-256x256.png
