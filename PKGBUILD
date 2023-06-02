@@ -3,7 +3,7 @@
 _pkgname=marble-restricted-maps
 pkgname="${_pkgname}"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Metapackage that depends on some maps for the Marble desktop globe with restricted licenses (Google Maps, Google Satellite, Bing Maps, Bing Satellite, Mapy.cz, Sachsen).'
 arch=('any')
 url="https://gitlab.com/marble-restricted-maps"
@@ -20,7 +20,7 @@ makedepends=()
 provides=()
 conflicts=()
 replaces=(
-  'marble-restricted-maps-git'
+  'marble-restricted-maps-git<=latest'
 )
 source=(
   'license-metapackage-pd.txt'
