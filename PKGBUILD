@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=bkmr
-pkgver=0.7.0
+pkgver=0.8.0
 # _pkgrev=982145d8ea36d9a78d7c7f828ca5a68f7aa9b524
 # _pkgref=$_pkgrev
 _pkgrev=$pkgver
@@ -15,10 +15,10 @@ depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sysid/bkmr/archive/$_pkgref.tar.gz"
         Cargo.lock)
-sha256sums=('0043c7e39ad7815014845f89600438e8968da2438746a1694867954380ef76f6'
-            'c958c76c441cd65d77d31c58dd20e90ecb6cb68e4f2f5d8518b5b38323c7291a')
-b2sums=('2f672f20cb4c0a854f34f0be6b5a79b665a2385b12a9cf07f193ba5d1d69d1729ff255cc09ae61297453969810acc5dca507b644aebf19316f8fd591c2fa706d'
-        'f2411061e2ab68e0f41cf778c68645d2cc7b0b7c8fd9a060ee6f96dff547a64ac834cb44130e57713daa89cd095448997bfa75cd3886091246f100fe23facc70')
+sha256sums=('766ef127b1e347fa60293dd66ea17f5076921e3be2c3a96e8de503dcbe71411e'
+            '471dc9a27646fb18e485032a845883d723d9d4c224527c7866c003e381f43701')
+b2sums=('5567e835342a65971520fc513e32c4ea0c600f1933a185f7c32717715f51eedd379fc20ed93cdf613a993ec41b2510867bb2239cf2bb8841edee8516f0533e7a'
+        '9c45398d44a966d85e675894ecb51abbef797bb88f69c867377bc84caeace4f6ac3f39b3bafffdf5d2a7940646945a4cdcb2bd6613bd5cb299c19d4ad1d1842e')
 
 case $CARCH in
   x86_64|i686|aarch64)
