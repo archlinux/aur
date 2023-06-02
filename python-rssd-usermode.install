@@ -1,5 +1,5 @@
 post_install() {
     echo "Run 'systemctl --user start python-rssd.timer' to start python-rssd for this session."
     echo "Run 'systemctl --user enable python-rssd.timer' to autostart python-rssd in next sessions."
-    echo "The settings file can be found in ~/.config/python-rssd/config.py"
+    echo "The settings file can be found in ~/.config/python-rssd/settings.ini"
 }

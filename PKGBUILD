@@ -5,7 +5,7 @@ _pkgname=python-rssd
 pkgname="${_pkgname}-usermode"
 _commit=0ecf85c
 pkgver=2.${_commit}
-pkgrel=2
+pkgrel=3
 pkgdesc='A service for displaying the latest news from RSS feeds via notify.'
 _pkgdesc_ru='Cервис отображениея последних новостей из лент RSS через notify.'
 arch=('any')
@@ -20,10 +20,6 @@ md5sums=('SKIP')
 prepare() {
 	tar -zxvf ${srcdir}/${_pkgname}/icons.tar.gz
 }
-
-# build() {
-# 	python -m compileall "${srcdir}/${_pkgname}/${_pkgname}.py" -b
-# }
 
 package() {
 	install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}.py" "${pkgdir}/$HOME/.local/bin/${_pkgname}.py"
