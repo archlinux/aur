@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-plus-appimage
-pkgver=3.1.20
+pkgver=3.1.21
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=("${pkgname%-appimage}" "${pkgname%-plus-appimage}" "${pkgname%-plus-a
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-${arch}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/mvdicarlo/postybirb-plus/master/LICENSE")
-sha256sums=('b5f5081340af445cbbf36f5bd2f4a35e3ad2faf60ddda02ae0dc8226a8c6d7cb'
+sha256sums=('9e4f772f7b2f51b780b2734823566244d2c13266da5912fa4cdd215fc3c6ceac'
             'a0b91aa0ffc9564128c6599eac1fc0ba93b8fe477dff6258ef315f0019b5726d')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
