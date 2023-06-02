@@ -104,7 +104,7 @@ index 01bc87bb..5df4ba8f 100644
 +		if (!sway_input_popup_get_position(popup, &lx, &ly)) {
 +			continue;
 +		}
-+		if (!popup->popup_surface->mapped || !popup->visible) {
++		if (!popup->popup_surface->surface->mapped || !popup->visible) {
 +			continue;
 +		}
 +
@@ -194,7 +194,7 @@ index d8ec11ac..b2fd8763 100644
 +		if (!sway_input_popup_get_position(popup, &lx, &ly)) {
 +			continue;
 +		}
-+		if (!popup->popup_surface->mapped || !popup->visible) {
++		if (!popup->popup_surface->surface->mapped || !popup->visible) {
 +			continue;
 +		}
 +		double _sx = ox - lx;
@@ -290,7 +290,7 @@ index 58911c2d..2195c430 100644
 +		return;
 +	}
 +
-+	if (!popup->popup_surface->mapped) {
++	if (!popup->popup_surface->surface->mapped) {
 +		return;
 +	}
 +
@@ -471,7 +471,7 @@ index 58911c2d..2195c430 100644
 +		struct sway_layer_surface *layer =
 +			layer_from_wlr_layer_surface_v1(layer_surface);
 +		wl_signal_add(
-+			&layer->layer_surface->events.unmap, &popup->focused_surface_unmap);
++			&layer->layer_surface->surface->events.unmap, &popup->focused_surface_unmap);
 +		input_popup_update(popup);
 +		return;
 +	}
@@ -491,10 +491,10 @@ index 58911c2d..2195c430 100644
 +	popup->popup_surface = data;
 +	popup->popup_surface->data = popup;
 +
-+	wl_signal_add(&popup->popup_surface->events.map, &popup->popup_map);
++	wl_signal_add(&popup->popup_surface->surface->events.map, &popup->popup_map);
 +	popup->popup_map.notify = handle_im_popup_map;
 +	wl_signal_add(
-+		&popup->popup_surface->events.unmap, &popup->popup_unmap);
++		&popup->popup_surface->surface->events.unmap, &popup->popup_unmap);
 +	popup->popup_unmap.notify = handle_im_popup_unmap;
 +	wl_signal_add(
 +		&popup->popup_surface->events.destroy, &popup->popup_destroy);
