@@ -1,0 +1,11 @@
+pkgbase = ourgalaxy-bin
+	pkgdesc = app that helps you understand the structural components of the Galaxy
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://www.otherwise.com/
+	arch = x86_64
+	license = custom
+	source = https://otherwise.com/OurGalaxy_Linux.zip
+	sha256sums = 2950167d6bad4b1c841326b8d57f60e195dfba1e2bea31b7e176183daac1d9e1
+
+pkgname = ourgalaxy-bin

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Our Galaxy
+Comment=Planetarium program 
+Exec=/opt/ourgalaxy/OurGalaxy_Linux.x86_64
+Terminal=false
+Type=Application
+Categories=Education;Science;Astronomy;
+GenericName=Our Galaxy
+
