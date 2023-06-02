@@ -1,0 +1,13 @@
+pkgbase = flutter-git-clone
+	pkgdesc = UI framework for crossplatform development (git version)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/flutter/flutter
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = unzip
+	source = flutter::git+https://github.com/flutter/flutter
+	sha256sums = SKIP
+
+pkgname = flutter-git-clone
