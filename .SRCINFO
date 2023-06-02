@@ -1,7 +1,7 @@
 pkgbase = mod_wsgi
 	pkgdesc = Python WSGI adapter module for Apache
 	pkgver = 4.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.modwsgi.org/
 	install = mod_wsgi.install
 	arch = x86_64
