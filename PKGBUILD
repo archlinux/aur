@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=succulent
 pkgname=python-${_base}
-pkgver=0.1.4
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Collect POST requests easily"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(python-pandas python-yaml python-flask)
 makedepends=(python-build python-installer python-poetry-core python-wheel)
 checkdepends=(python-pytest python-mock)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('e89055f3a0dde6202fa176eb41d8c11390dc29ee5d3641681098d276177518705b228b6234fecebb39dba2e7cd609c488500e60845c1ac9329b11423122797d0')
+sha512sums=('0aa582f43dbb148dd8acbb1cdbf9bfe18911c589cd74252457a3b666bccf4901ca29e2b7488d4847dcbce821cecd453e407cb57649d1d6613102ee7d3fd2baea')
 
 build() {
   cd ${_base}-${pkgver}
@@ -22,7 +22,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not process_args and not process_json'
+  test-env/bin/python -m pytest
 }
 
 package() {

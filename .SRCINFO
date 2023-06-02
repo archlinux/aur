@@ -1,6 +1,6 @@
 pkgbase = python-succulent
 	pkgdesc = Collect POST requests easily
-	pkgver = 0.1.4
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/firefly-cpp/succulent
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-succulent
 	depends = python-pandas
 	depends = python-yaml
 	depends = python-flask
-	source = succulent-0.1.4.tar.gz::https://github.com/firefly-cpp/succulent/archive/0.1.4.tar.gz
-	sha512sums = e89055f3a0dde6202fa176eb41d8c11390dc29ee5d3641681098d276177518705b228b6234fecebb39dba2e7cd609c488500e60845c1ac9329b11423122797d0
+	source = succulent-0.2.1.tar.gz::https://github.com/firefly-cpp/succulent/archive/0.2.1.tar.gz
+	sha512sums = 0aa582f43dbb148dd8acbb1cdbf9bfe18911c589cd74252457a3b666bccf4901ca29e2b7488d4847dcbce821cecd453e407cb57649d1d6613102ee7d3fd2baea
 
 pkgname = python-succulent
