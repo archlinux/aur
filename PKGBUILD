@@ -7,54 +7,65 @@
 # Contributor: jht <stefano@inventati.org>
 
 pkgname=wxglade
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython'
 arch=('any')
 license=('MIT')
 url='https://github.com/wxGlade/wxGlade'
-depends=('python>=3.4' 'python-wxpython>=2.8' 'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info')
-makedepends=(icoutils gendesk)
-source=("https://github.com/wxGlade/wxGlade/archive/v$pkgver.tar.gz"
-        application-x-wxg.xml)
-sha256sums=('4ef19816224bd5d1acaf7b98fa6e03904d2acc8c225942618289d2ff55f157d2'
-            'f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0')
+depends=(
+    'python>=3.4'
+    'python-wxpython>=2.8'
+    'desktop-file-utils'
+    'hicolor-icon-theme'
+    'shared-mime-info'
+)
+makedepends=(
+    'icoutils'
+    'gendesk'
+)
+source=(
+    "https://github.com/wxGlade/wxGlade/archive/v$pkgver.tar.gz"
+    application-x-wxg.xml
+)
+sha256sums=('0ac846980072efabda06f63470b6185c18858adbf38763211edc293b9230499b'
+    'f651ff097678077eac865c64a655107c9a4aa4fd0bf65e233713a5ed916608c0')
 
 prepare() {
-  gendesk -f -n --pkgname "$pkgname" \
-  	--pkgdesc "$pkgdesc" \
-  	--exec "$pkgname %f" \
-    --name 'WxGlade' \
-    --mimetypes 'application/x-wxg' \
-    --categories "Development;GUIDesigner"
+    gendesk -f -n --pkgname "$pkgname" \
+        --pkgdesc "$pkgdesc" \
+        --exec "$pkgname %f" \
+        --name 'WxGlade' \
+        --mimetypes 'application/x-wxg' \
+        --categories "Development;GUIDesigner"
 
-  rm -rf "$pkgname-$pkgver" && mv -Tf {wxGlade,$pkgname}-$pkgver
+    rm -rf "$pkgname-$pkgver" && mv -Tf {wxGlade,$pkgname}-$pkgver
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  command -p python setup.py build
+    cd "$pkgname-$pkgver"
+    command -p python setup.py build
 
-  icotool --extract --output=$srcdir icons/wxglade*.ico
+    icotool --extract --output=$srcdir icons/wxglade*.ico
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
 
-  command -p python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    command -p python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-  datadir="$pkgdir/usr/share/"
+    datadir="$pkgdir/usr/share/"
 
-  # TODO: Replace with default wxglade-mime.xml in v1.1.0+
-  install -Dm644 "$srcdir/application-x-wxg.xml" "$datadir/mime/packages/$pkgname.xml"
+    # TODO: Replace with default wxglade-mime.xml in v1.1.0+
+    install -Dm644 "$srcdir/application-x-wxg.xml" "$datadir/mime/packages/$pkgname.xml"
 
-  find "$srcdir" -maxdepth 1 -name "$pkgname*128*.png" \
-    -execdir install -Dm644 {} "$datadir/icons/hicolor/128x128/apps/$pkgname.png" \; \
-    -execdir install -Dm644 {} "$datadir/icons/hicolor/128x128/mimetypes/application-x-wxg.png" \;
+    find "$srcdir" -maxdepth 1 -name "$pkgname*128*.png" \
+        -execdir install -Dm644 {} "$datadir/icons/hicolor/128x128/apps/$pkgname.png" \; \
+        -execdir install -Dm644 {} "$datadir/icons/hicolor/128x128/mimetypes/application-x-wxg.png" \;
 
-  find "$srcdir" -maxdepth 1 -name "$pkgname*32*.png" \
-    -execdir install -Dm644 {} "$datadir/icons/hicolor/32x32/apps/$pkgname.png" \; \
-    -execdir install -Dm644 {} "$datadir/icons/hicolor/32x32/mimetypes/application-x-wxg.png" \;
+    find "$srcdir" -maxdepth 1 -name "$pkgname*32*.png" \
+        -execdir install -Dm644 {} "$datadir/icons/hicolor/32x32/apps/$pkgname.png" \; \
+        -execdir install -Dm644 {} "$datadir/icons/hicolor/32x32/mimetypes/application-x-wxg.png" \;
 
-  install -Dm644 "$srcdir/$pkgname.desktop" "$datadir/applications/$pkgname.desktop"
+    install -Dm644 "$srcdir/$pkgname.desktop" "$datadir/applications/$pkgname.desktop"
 }
