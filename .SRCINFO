@@ -1,7 +1,7 @@
 pkgbase = fast-discord-git
 	pkgdesc = A new Discord client made in C++ and Qt
-	pkgver = r232.f14ee21
-	pkgrel = 2
+	pkgver = r233.651f323
+	pkgrel = 1
 	url = https://github.com/EnyoYoen/Fast-Discord
 	arch = i686
 	arch = x86_64

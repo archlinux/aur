@@ -2,8 +2,8 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=fast-discord-git
-pkgver=r232.f14ee21
-pkgrel=2
+pkgver=r233.651f323
+pkgrel=1
 pkgdesc='A new Discord client made in C++ and Qt'
 url='https://github.com/EnyoYoen/Fast-Discord'
 source=("${pkgname}::git+https://github.com/EnyoYoen/Fast-Discord")
