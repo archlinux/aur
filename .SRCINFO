@@ -1,20 +1,21 @@
 pkgbase = abyss
 	pkgdesc = Assembly By Short Sequences - a de novo, parallel, paired-end sequence assembler
-	pkgver = 2.3.6
-	pkgrel = 1
+	pkgver = 2.3.7
+	pkgrel = 2
 	url = https://github.com/bcgsc/abyss
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = boost
 	makedepends = sparsehash
-	makedepends = make
 	makedepends = btllib
 	depends = openmpi
 	depends = make
+	depends = sqlite
+	depends = perl
 	optdepends = pigz: for parallel gzip
 	optdepends = samtools: for reading SAM files
-	source = abyss-2.3.6.tar.gz::https://github.com/bcgsc/abyss/archive/2.3.6.tar.gz
-	sha512sums = bc535f2676f6ed9929219680fb301787bffa527892c46f96c10d4e998cd7a7cf88df689f04e3bb4333d4a8ec7f098f6bd45b1a0e20877674d003c7f57eca5268
+	source = abyss-2.3.7.tar.gz::https://github.com/bcgsc/abyss/archive/2.3.7.tar.gz
+	sha512sums = 71fe616724e61174d5034b91de9b0495b7c3d8cd2c3c88981048089003041bab6cad4ff608aac10bcb0846aaac047d73b9d6c2e1f52c0681ac351c5ef5a0831d
 
 pkgname = abyss
