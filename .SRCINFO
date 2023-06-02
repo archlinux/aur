@@ -1,21 +1,19 @@
 pkgbase = psp-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files (psp)
-	pkgver = 2.23.2
+	pkgver = 2.37.0
 	pkgrel = 1
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
-	groups = psp
 	license = GPL
-	makedepends = gcc
+	makedepends = git
+	depends = glibc
+	depends = libelf
 	depends = zlib
-	depends = flex
+	depends = python
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://ftp.gnu.org/pub/gnu/binutils/binutils-2.23.2.tar.bz2
-	source = binutils-2.23.2-PSP.patch
-	sha256sums = fe914e56fed7a9ec2eb45274b1f2e14b0d8b4f41906a5194eac6883cfe5c1097
-	sha256sums = 155d7499dd65d496ec076dc71d93db9c0c2f9cdf3faae8671d969675346bf4c9
+	source = binutils-2.37.0::git+https://github.com/pspdev/binutils-gdb.git#branch=allegrex-v2.37.0
+	sha256sums = SKIP
 
 pkgname = psp-binutils
-
