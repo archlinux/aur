@@ -2,7 +2,7 @@
 pkgname="gchat-bin"
 _pkgname=GChat
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Google Chat app"
 arch=('x86_64')
 url="https://github.com/dcrousso/GChat"
@@ -24,4 +24,5 @@ package() {
     install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/assets/Icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
     gendesk -f -n --icon "${pkgname%-bin}" --categories "Network" --name "${_pkgname}" --exec "/opt/${pkgname%-bin}/${_pkgname} %U"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
