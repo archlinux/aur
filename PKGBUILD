@@ -2,7 +2,7 @@
 
 pkgname=rtx-bin
 pkgver=1.30.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Polyglot runtime manager'
 arch=('x86_64')
 url='https://github.com/jdxcode/rtx'

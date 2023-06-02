@@ -1,7 +1,7 @@
 pkgbase = rtx-bin
 	pkgdesc = Polyglot runtime manager
 	pkgver = 1.30.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jdxcode/rtx
 	arch = x86_64
 	license = MIT
