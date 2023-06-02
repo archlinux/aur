@@ -5,18 +5,18 @@
 pkgname=php-msgpack
 _extname=msgpack
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="PHP extension for interfacing with MessagePack"
 arch=("i686" "x86_64")
 license=('New BSD')
 url="http://msgpack.org/"
 depends=('php')
 backup=("etc/php/conf.d/$_extname.ini")
-source=("https://pecl.php.net/get/$_extname-${pkgver}RC2.tgz")
-sha512sums=('11b7243e6abb7dc58a02e2289433a292e2b2a3298357e3a14468faa06c7d302c442891cdf944e31b22435b9ce449b2ab632e30c1c5ccdec8f6b6e5033a2cdbef')
+source=("https://pecl.php.net/get/$_extname-${pkgver}.tgz")
+sha512sums=('91cb45e79b78624938ddabce39327a093d668a875fad6e2ce55058e54a742a3a35ea58069446399425816613ebdf5fc503222555b9296a22879d2b7eb475b8c9')
 
 build() {
-	cd "$srcdir/$_extname-${pkgver}RC2"
+	cd "$srcdir/$_extname-${pkgver}"
 
 	phpize
 	./configure
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_extname-${pkgver}RC2"
+	cd "$srcdir/$_extname-${pkgver}"
 
 	make install INSTALL_ROOT="${pkgdir}"
 	install -m0755 -d "$pkgdir/etc/php/conf.d/"
