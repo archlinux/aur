@@ -1,13 +1,13 @@
 pkgbase = marble-maps-virtualearth-git
-	pkgdesc = Microsoft Maps for the Marble desktop globe.
+	pkgdesc = Microsoft satellite map for the Marble desktop globe.
 	pkgver = r1.20110512.9377625
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gitlab.com/marble-restricted-maps/virtualearth
 	arch = any
 	license = custom: unknown.
 	makedepends = git
 	provides = marble-maps-virtualearth
-	provides = marble-maps-bing
+	provides = marble-maps-bingsatellite
 	conflicts = marble-maps-virtualearth
 	conflicts = marble-restricted-maps-git<=latest
 	source = virtualearth::git+https://gitlab.com/marble-restricted-maps/virtualearth.git

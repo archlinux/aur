@@ -4,8 +4,8 @@ _projectname="virtualearth"
 _pkgname="marble-maps-${_projectname}"
 pkgname="${_pkgname}-git"
 pkgver=r1.20110512.9377625
-pkgrel=1
-pkgdesc='Microsoft Maps for the Marble desktop globe.'
+pkgrel=2
+pkgdesc='Microsoft satellite map for the Marble desktop globe.'
 arch=(
   'any'
 )
@@ -24,7 +24,7 @@ makedepends=(
 checkdepends=()
 provides=(
   "${_pkgname}"
-  "marble-maps-bing"
+  "marble-maps-bingsatellite"
 )
 conflicts=(
   "${_pkgname}"
