@@ -1,7 +1,7 @@
 pkgbase = xmousepasteblock
 	pkgdesc = Userspace tool to disable middle mouse button paste in Xorg
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/milaq/XMousePasteBlock
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = xmousepasteblock
 	depends = libx11
 	depends = libev
 	depends = libxfixes
-	provides = xmousepasteblock
-	conflicts = xmousepasteblock
+	conflicts = xmousepasteblock-git
 	source = xmpb::git+https://github.com/milaq/XMousePasteBlock.git#commit=c45bd41d5a350317f9507ace7bed4c635cfe319c
 	source = xmousepasteblock.service
 	sha256sums = SKIP
