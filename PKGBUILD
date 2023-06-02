@@ -6,6 +6,8 @@ pkgver=r1683.f96b226
 pkgdesc="Zig LSP implementation + Zig Language Server"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/zigtools/${_pkgbasename}"
+provides=('zls')
+conflicts=('zls')
 replaces=('zls-master-data-git')
 license=('MIT')
 depends=('zig')
@@ -29,7 +31,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgbasename}"
-	zig build -Doptimize=ReleaseFast
+	zig build -Doptimize=ReleaseSafe
 }
 
 package() {
