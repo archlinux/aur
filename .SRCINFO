@@ -5,6 +5,7 @@ pkgbase = python-pyvisa
 	url = https://github.com/pyvisa/pyvisa
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools-scm
 	makedepends = python-pytest
 	depends = python-distribute
