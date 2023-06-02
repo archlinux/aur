@@ -1,15 +1,15 @@
 pkgbase = notepadnext-appimage
 	pkgdesc = Cross-platform reimplementation of Notepad++ (binary AppImage)
-	pkgver = 0.6.1
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/dail8859/NotepadNext
 	arch = x86_64
 	license = GPL3
 	conflicts = notepadnext-git
 	conflicts = notepadnext
-	noextract = NotepadNext-x86_64.AppImage
+	noextract = NotepadNext-v0.6.3-x86_64.AppImage
 	options = !strip
-	source_x86_64 = NotepadNext-x86_64.AppImage::https://github.com/dail8859/NotepadNext/releases/download/v0.6.1/NotepadNext-x86_64.AppImage
-	sha256sums_x86_64 = 1dbc1f6bdfe64d674168e7c9f65d87e4df6e0ea2a53dfc4be5440eb71a8c98b8
+	source_x86_64 = NotepadNext-v0.6.3-x86_64.AppImage::https://github.com/dail8859/NotepadNext/releases/download/v0.6.3/NotepadNext-x86_64.AppImage
+	sha256sums_x86_64 = 80971d30de9a1d0c590d3f76f60cacbd44530c03c4fa132aafe933273bc45af4
 
 pkgname = notepadnext-appimage
