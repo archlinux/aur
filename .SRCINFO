@@ -1,7 +1,7 @@
 pkgbase = dns-over-https-git
 	pkgdesc = Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol
-	pkgver = f4e27c9
-	pkgrel = 1
+	pkgver = r342.0690c41
+	pkgrel = 2
 	url = https://github.com/m13253/dns-over-https
 	arch = x86_64
 	arch = i686
@@ -9,10 +9,13 @@ pkgbase = dns-over-https-git
 	makedepends = go
 	makedepends = git
 	depends = glibc
+	provides = dns-over-https
+	conflicts = dns-over-https
 	backup = etc/dns-over-https/doh-client.conf
 	backup = etc/dns-over-https/doh-server.conf
 	source = git+https://github.com/m13253/dns-over-https
+	source = dns-over-https.patch
 	md5sums = SKIP
+	md5sums = 085b6f2ffbc847204a09d119b51dcaab
 
 pkgname = dns-over-https-git
-

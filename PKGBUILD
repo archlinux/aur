@@ -1,52 +1,42 @@
-# Maintainer: Sherlock-Holo <sherlockya@gmail.com>
-
+# Maintainer: Sieve Lau <sievelau@gmail.com>
+# Contributor: Sherlock-Holo <sherlockya@gmail.com> 
 pkgname=dns-over-https-git
-_pkgname=dns-over-https
-pkgver=f4e27c9
-pkgrel=1
+pkgver=r342.0690c41
+pkgrel=2
 pkgdesc="Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol"
 url="https://github.com/m13253/dns-over-https"
 arch=('x86_64' 'i686')
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/m13253/dns-over-https")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+https://github.com/m13253/dns-over-https"
+        "dns-over-https.patch")
 backup=('etc/dns-over-https/doh-client.conf'
         'etc/dns-over-https/doh-server.conf')
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '085b6f2ffbc847204a09d119b51dcaab')
 
 pkgver(){
-        cd $srcdir/$_pkgname
-        printf "${_pkgver}%s"  "$(git rev-parse --short HEAD)"
+        cd $srcdir/${pkgname%-git}
+        ( set -o pipefail
+        git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+        )
 }
 
 prepare(){
-        #mkdir -p $srcdir/gopath
-        #export GOPATH=$srcdir/gopath
-        cd $srcdir/dns-over-https
-        sed -i 's/\/usr\/local/${pkgdir}\/usr/g' Makefile
-        sed -i 's/\/local//g' systemd/doh-client.service
-        sed -i 's/\/local//g' systemd/doh-server.service
+        cd "$srcdir/${pkgname%-git}"
+        git apply "$srcdir/${pkgname%-git}.patch"
 }
 
 build(){
-        cd $srcdir/$_pkgname
+        cd "$srcdir/${pkgname%-git}"
         make
 }
 
 package(){
-        cd $srcdir/$_pkgname
-        install -Dm755 doh-client/doh-client $pkgdir/usr/bin/doh-client
-        install -Dm755 doh-server/doh-server $pkgdir/usr/bin/doh-server
-
-        install -Dm644 doh-client/doh-client.conf $pkgdir/etc/dns-over-https/doh-client.conf
-        install -Dm644 doh-server/doh-server.conf $pkgdir/etc/dns-over-https/doh-server.conf
-
-        install -Dm644 systemd/doh-client.service $pkgdir/usr/lib/systemd/system/doh-client.service
-        install -Dm644 systemd/doh-server.service $pkgdir/usr/lib/systemd/system/doh-server.service
-
-        install -Dm755 NetworkManager/dispatcher.d/doh-client $pkgdir/etc/NetworkManager/dispatcher.d/doh-client
-        install -Dm755 NetworkManager/dispatcher.d/doh-server $pkgdir/etc/NetworkManager/dispatcher.d/doh-server
-
-        install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+        cd "$srcdir/${pkgname%-git}"
+        make DESTDIR="$pkgdir/" install
 }

@@ -1,0 +1,51 @@
+diff --git a/Makefile b/Makefile
+index e65c210..06a9188 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,6 @@
+ .PHONY: all clean install uninstall
+ 
+-PREFIX = /usr/local
++PREFIX = /usr
+ 
+ ifeq ($(GOROOT),)
+ GOBUILD = go build
+diff --git a/systemd/Makefile b/systemd/Makefile
+index cf437ab..ced08d4 100644
+--- a/systemd/Makefile
++++ b/systemd/Makefile
+@@ -6,7 +6,6 @@ SYSTEMD_UNIT_DIR = $(SYSTEMD_DIR)/system
+ install:
+ 	install -Dm0644 doh-client.service "$(DESTDIR)$(SYSTEMD_UNIT_DIR)/doh-client.service"
+ 	install -Dm0644 doh-server.service "$(DESTDIR)$(SYSTEMD_UNIT_DIR)/doh-server.service"
+-	systemctl daemon-reload || true
+ 
+ uninstall:
+ 	rm -f "$(DESTDIR)$(SYSTEMD_UNIT_DIR)/doh-client.service" "$(DESTDIR)$(SYSTEMD_UNIT_DIR)/doh-server.service"
+diff --git a/systemd/doh-client.service b/systemd/doh-client.service
+index 9ac5672..286a0fd 100644
+--- a/systemd/doh-client.service
++++ b/systemd/doh-client.service
+@@ -7,7 +7,7 @@ Wants=nss-lookup.target
+ 
+ [Service]
+ AmbientCapabilities=CAP_NET_BIND_SERVICE
+-ExecStart=/usr/local/bin/doh-client -conf /etc/dns-over-https/doh-client.conf
++ExecStart=/usr/bin/doh-client -conf /etc/dns-over-https/doh-client.conf
+ LimitNOFILE=1048576
+ Restart=always
+ RestartSec=3
+diff --git a/systemd/doh-server.service b/systemd/doh-server.service
+index 442979b..8dcc4f8 100644
+--- a/systemd/doh-server.service
++++ b/systemd/doh-server.service
+@@ -5,7 +5,7 @@ After=network.target
+ 
+ [Service]
+ AmbientCapabilities=CAP_NET_BIND_SERVICE
+-ExecStart=/usr/local/bin/doh-server -conf /etc/dns-over-https/doh-server.conf
++ExecStart=/usr/bin/doh-server -conf /etc/dns-over-https/doh-server.conf
+ LimitNOFILE=1048576
+ Restart=always
+ RestartSec=3
+
