@@ -1,0 +1,10 @@
+--- openmpt123/openmpt123/openmpt123_sndfile.hpp	2023-06-02 17:09:53.523331713 +0200
++++ patched/openmpt123/openmpt123_sndfile.hpp	2023-06-02 17:42:44.103331693 +0200
+@@ -17,6 +17,7 @@
+ 
+ #include "mpt/base/detect.hpp"
+ 
++#define ENABLE_SNDFILE_WINDOWS_PROTOTYPES 1
+ #include <sndfile.h>
+ 
+ namespace openmpt123 {
