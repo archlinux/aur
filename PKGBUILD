@@ -5,7 +5,7 @@ _pkgname=python-rssd
 pkgname="${_pkgname}-usermode"
 _commit=0ecf85c
 pkgver=2.${_commit}
-pkgrel=1
+pkgrel=2
 pkgdesc='A service for displaying the latest news from RSS feeds via notify.'
 _pkgdesc_ru='Cервис отображениея последних новостей из лент RSS через notify.'
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL')
 install=${pkgname}.install
 provides=("${_pkgname}")
 url="https://gitflic.ru/project/ksandr/${_pkgname}"
-depends=('python' 'dbus-python' 'python-feedparser' 'python-asyncio' 'python-aiohttp' 'python-aiofiles')
+depends=('python' 'dbus-python' 'python-feedparser' 'python-aiohttp' 'python-aiofiles')
 source=(git+${url}.git#commit=${_commit})
 md5sums=('SKIP')
 
