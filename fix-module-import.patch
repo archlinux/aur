@@ -1,0 +1,84 @@
+--- a/cdflib/cdf_to_xarray.py	2023-06-02 04:00:23.000000000 +0800
++++ b/cdflib/cdf_to_xarray.py	2023-06-02 10:45:12.676169379 +0800
+@@ -683,6 +683,7 @@
+     Example MMS:
+         >>> #Import necessary libraries
+         >>> import cdflib
++        >>> from cdflib.cdf_to_xarray import cdf_to_xarray
+         >>> import xarray as xr
+         >>> import os
+         >>> import urllib.request
+@@ -694,7 +695,7 @@
+         >>>     urllib.request.urlretrieve(url, fname)
+ 
+         >>> #Load in and display the CDF file
+-        >>> mms_data = cdflib.cdf_to_xarray("mms2_fgm_srvy_l2_20160809_v4.47.0.cdf", to_unixtime=True, fillval_to_nan=True)
++        >>> mms_data = cdf_to_xarray("mms2_fgm_srvy_l2_20160809_v4.47.0.cdf", to_unixtime=True, fillval_to_nan=True)
+         >>> print(mms_data)
+ 
+         >>> # Show off XArray functionality
+@@ -711,6 +712,7 @@
+     Example THEMIS:
+         >>> #Import necessary libraries
+         >>> import cdflib
++        >>> from cdflib.cdf_to_xarray import cdf_to_xarray
+         >>> import xarray as xr
+         >>> import os
+         >>> import urllib.request
+@@ -722,7 +724,7 @@
+         >>>     urllib.request.urlretrieve(url, fname)
+ 
+         >>> #Load in and display the CDF file
+-        >>> thg_data = cdflib.cdf_to_xarray(fname, to_unixtime=True, fillval_to_nan=True)
++        >>> thg_data = cdf_to_xarray(fname, to_unixtime=True, fillval_to_nan=True)
+         >>> print(thg_data)
+ 
+     Processing Steps:
+--- a/cdflib/xarray_to_cdf.py	2023-06-02 04:00:23.000000000 +0800
++++ b/cdflib/xarray_to_cdf.py	2023-06-02 10:47:20.549596882 +0800
+@@ -521,6 +521,7 @@
+     Example CDF file from scratch:
+         >>> # Import the needed libraries
+         >>> import cdflib
++        >>> from cdflib.xarray_to_cdf import xarray_to_cdf
+         >>> import xarray as xr
+         >>> import os
+         >>> import urllib.request
+@@ -537,7 +538,7 @@
+ 
+         >>> # Combine the two into an xarray Dataset and export as CDF (this will print out many ISTP warnings)
+         >>> ds = xr.Dataset(data_vars={'data': data, 'epoch': epoch})
+-        >>> cdflib.xarray_to_cdf(ds, 'hello.cdf')
++        >>> xarray_to_cdf(ds, 'hello.cdf')
+ 
+         >>> # Add some global attributes
+         >>> global_attributes = {'Project': 'Hail Mary',
+@@ -563,7 +564,7 @@
+         >>> # Recreate the Dataset with this new objects, and recreate the CDF
+         >>> ds = xr.Dataset(data_vars={'data': data, 'epoch': epoch, 'direction':direction}, attrs=global_attributes)
+         >>> os.remove('hello.cdf')
+-        >>> cdflib.xarray_to_cdf(ds, 'hello.cdf')
++        >>> xarray_to_cdf(ds, 'hello.cdf')
+ 
+     Example netCDF -> CDF conversion:
+         >>> # Download a netCDF file (if needed)
+@@ -581,7 +582,7 @@
+         >>> goes_r_mag['time_orbit'].attrs['VAR_TYPE'] = 'support_data'
+ 
+         >>> # Create the CDF file
+-        >>> cdflib.xarray_to_cdf(goes_r_mag, 'hello.cdf')
++        >>> xarray_to_cdf(goes_r_mag, 'hello.cdf')
+ 
+     Processing Steps:
+         1. Determines the list of dimensions that represent time-varying dimensions.  These ultimately become the "records" of the CDF file
+--- a/doc/modules/xarray.rst	2023-06-02 04:00:23.000000000 +0800
++++ b/doc/modules/xarray.rst	2023-06-02 10:41:31.564828345 +0800
+@@ -8,6 +8,6 @@
+ These will attempt to determine any
+ `ISTP Compliance <https://spdf.gsfc.nasa.gov/istp_guide/istp_guide.html>`_, and incorporate that into the output.
+ 
+-.. autofunction:: cdflib.cdf_to_xarray
++.. autofunction:: cdflib.cdf_to_xarray.cdf_to_xarray
+ 
+-.. autofunction:: cdflib.xarray_to_cdf
++.. autofunction:: cdflib.xarray_to_cdf.xarray_to_cdf

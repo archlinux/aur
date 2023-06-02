@@ -1,8 +1,9 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
+
 pkgbase=python-cdflib
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.4.9
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A python module for reading NASA's Common Data Format (cdf) files Resources"
 arch=('any')
@@ -13,14 +14,17 @@ makedepends=('python-setuptools-scm'
              'python-build'
              'python-installer'
              'python-sphinx-automodapi'
+             'python-sphinx-copybutton'
              'python-sphinx_rtd_theme'
-             'python-astropy')
+             'python-astropy'
+             'python-xarray')
 checkdepends=('python-pytest-cov'
               'python-pytest-remotedata'
               'python-hypothesis'
               'python-xarray')
-#             'python-netcdf4')  #'python-astropy' in makedepends
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+#             'python-netcdf4')  #'python-astropy' in makedepends; netcdf4 needs remote-data
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        'fix-module-import.patch')
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/mms1_fpi_brst_l2_des-moms_20151016130334_v3.3.0.cdf"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/mms1_fpi_brst_l2_des-moms_20151016130334_v3.3.0.nc"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/mms2_epd-eis_srvy_l2_extof_20160809_v3.0.4.cdf"
@@ -63,7 +67,8 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_elsp_3dp_20210115_v01.nc"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.cdf"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.nc")
-md5sums=('e7e342081f1e70bfc284f68c96c807f6')
+md5sums=('37eeeaa6c3c4d0f95a33bcac9df3b3b4'
+         'c527401b7d4cd77d6de01dd7ebca27e7')
 #        'ba680f74500be6839d3fe232e6a22eb1'
 #        '0239191dd5d8400aaf68ff5a6ee4de0d'
 #        '269b0b2dae018ffa3e7442349e65b0ad'
@@ -107,22 +112,22 @@ md5sums=('e7e342081f1e70bfc284f68c96c807f6')
 #        '273cc645dc7f40c46db2e29dd95b310a'
 #        'cb336e89340e4cf0ec2f468b86b21901')
 
-#prepare() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    ln -rs ${srcdir}/*.cdf .
-#    ln -rs ${srcdir}/*.nc .
-#    ln -rs ${srcdir}/*.ncdf .
-#    sed -i "/language\ = /s/None/'en'/" doc/conf.py
-#}
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+#   ln -rs ${srcdir}/*.cdf .
+#   ln -rs ${srcdir}/*.nc .
+#   ln -rs ${srcdir}/*.ncdf .
+#   sed -i "/language\ = /s/None/'en'/" doc/conf.py
+    patch -Np1 -i "${srcdir}/fix-module-import.patch"
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_pyname}-${pkgver}/doc
-    PYTHONPATH="../build/lib" make SPHINXOPTS="" html
+    PYTHONPATH="../build/lib" make SPHINXOPTS="" -C doc html
 }
 
 check() {
