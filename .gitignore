@@ -1,5 +1,4 @@
-pkg/
-src/
-bitwarden-cli-git-repo/
-jslib-git-repo/
-bitwarden-cli-git-1.*
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD

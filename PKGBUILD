@@ -1,42 +1,66 @@
-# Maintainer: libertylocked <libertylocked@disroot.org>
+# Maintainer: éclairevoyant
+# Contributor: Alexander Epaneshnikov <alex19ep at archlinux dot com>
+# Contributor: libertylocked <libertylocked at disroot dot org>
 
-pkgname=bitwarden-cli-git
 _pkgname=bitwarden-cli
-pkgver=1.7.4.r17.g3915e43
+pkgname="$_pkgname-git"
+pkgver=2023.5.0.r8.2d9fdd68da2
 pkgrel=1
 pkgdesc='Bitwarden Command-line Interface'
-arch=('x86_64')
-url='https://github.com/bitwarden/cli'
-license=('GPL3')
-makedepends=('nodejs' 'npm')
-depends=('nodejs')
-conflicts=('bitwarden-cli')
-options=('!strip')
-source=("${_pkgname}-git-repo::git+https://github.com/bitwarden/cli.git"
-        'jslib-git-repo::git+https://github.com/bitwarden/jslib.git')
-sha512sums=('SKIP'
-            'SKIP')
-
-pkgver() {
-  cd "${_pkgname}-git-repo"
-  git describe --long --tags | sed 's/^v//' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+arch=(x86_64)
+url='https://github.com/bitwarden/clients/apps/cli'
+license=(GPL3)
+depends=(nodejs-lts-gallium)
+makedepends=(git npm modclean)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+options=(!emptydirs)
+source=("$_pkgname::git+https://github.com/bitwarden/clients.git"
+        'git+https://github.com/bitwarden/jslib.git')
+b2sums=('SKIP'
+        'SKIP')
 
 prepare() {
-  rmdir "${srcdir}/${_pkgname}-git-repo/jslib"
-  ln -s "${srcdir}/jslib-git-repo" "${srcdir}/${_pkgname}-git-repo/jslib"
-  sed -i 's/"postinstall": "npm run sub:init",//' "${_pkgname}-git-repo/package.json"
+	cd $_pkgname
+	export npm_config_build_from_source=true
+	export npm_config_cache="$srcdir/npm_cache"
+
+	npm ci
+}
+
+pkgver() {
+	cd $_pkgname
+	git blame -s -L"/\"version\"/,+1" apps/cli/package.json | awk '{
+		ver = gensub(/[^0-9.]/, "", "g", $4);
+		"git rev-list --count "$1"..HEAD" | getline commit_count;
+		print ver".r"commit_count"."$1
+	}'
 }
 
 build() {
-  cd "${_pkgname}-git-repo"
-  npm install
-  npm run dist:lin
+	cd $_pkgname/apps/cli
+	export npm_config_cache="$srcdir/npm_cache"
+	npm run dist:lin
+	npm run clean
+	node ./build/bw.js completion --shell zsh > _bw
 }
 
 package() {
-  cd "${_pkgname}-git-repo"
+	cd $_pkgname/apps/cli
+	npm install --production -g --prefix "$pkgdir"/usr $(npm pack . | tail -1)
 
-  install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 ./dist/linux/bw "${pkgdir}/usr/bin/bw"
+	# Non-deterministic race in npm gives 777 permissions to random directories.
+	# See https://github.com/npm/npm/issues/9359 for details.
+	chmod -R u=rwX,go=rX "$pkgdir"
+	# npm gives ownership of ALL FILES to build user
+	# https://bugs.archlinux.org/task/63396
+	chown -R root:root "${pkgdir}"
+
+	# package zsh completions
+	install -vDm644 _bw -t "${pkgdir}/usr/share/zsh/site-functions"
+
+	# cleanup
+	sed -e "s|${srcdir}|/|" -i "$pkgdir"/usr/lib/node_modules/@bitwarden/cli/package.json
+	find "$pkgdir"/usr/lib/node_modules -name 'package.json' -exec sed -e "s|${srcdir}||" -i {} \;
+	modclean --path "$pkgdir"/usr/lib -r -a "*.ts,.bin,.github,.vscode,bin.js" --ignore='license'
 }
