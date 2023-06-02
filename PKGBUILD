@@ -1,8 +1,8 @@
 # Maintainer: Ingo Meyer <IJ_M@gmx.de>
 
 pkgname="sysinfo"
-pkgver="0.1.0"
-pkgrel="3"
+pkgver="0.1.1"
+pkgrel="1"
 pkgdesc="sysinfo shows system information like the hardware configuration and resource usage in a compact, clearly arranged and
 visually pleasing style."
 arch=("any")
@@ -11,7 +11,7 @@ license=("MIT")
 depends=("bash" "gawk")
 source=("https://github.com/IngoMeyer441/sysinfo/archive/v${pkgver}.tar.gz"
         "version.sh_no_phony.patch")
-sha256sums=("250e8a5f6242511f70d2b6c2f7928199ae70612227fa8e41190fae428dd4afa0"
+sha256sums=("4296928662b16c087607f1a274531c884a86444f55bbe038c5cfbed3a357c843"
             "022e579806fc6090f066489ee40a38010f7c26d9f874554e7eb7d7f5236d257f")
 
 prepare() {
