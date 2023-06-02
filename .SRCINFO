@@ -1,7 +1,7 @@
 pkgbase = gtkhash-thunar
 	pkgdesc = A GTK+ utility for computing message digests or checksums (Gtkhash with Thunar filemanager plugin)
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tristanheaven/gtkhash
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = gtkhash-thunar
 	depends = dconf
 	depends = gtk3
 	depends = libb2
-	depends = mbedtls
+	depends = mbedtls2
 	depends = nettle
 	depends = thunar
 	provides = gtkhash
