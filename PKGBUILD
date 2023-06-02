@@ -1,24 +1,17 @@
 # Maintainer: Michael Thies <mail@mhthies.de>
 
 pkgname=justbuild
-pkgver='1.0.0'
-pkgrel=2
+pkgver='1.1.1'
+pkgrel=1
 pkgdesc="A generic build system supporting multi-repository builds"
 arch=('x86_64')
 url="https://github.com/just-buildsystem/justbuild"
 license=('Apache')
 depends=('python')
-makedepends=('clang' 'binutils' 'wget' 'emacs')
+makedepends=('clang' 'binutils' 'wget' 'pandoc')
 conflicts=('just' 'just-git' 'just-js')
-source=("justbuild-${pkgver}.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v${pkgver}.tar.gz"
-        "boringssl-no-Werror.patch")
-sha256sums=('d36ad7f2710c4e21368eb274c830ce8a71b6819ce80685d707a355fe3916e7a5'
-            'SKIP')
-
-prepare() {
-    cd "${srcdir}/justbuild-${pkgver}"
-    patch --forward --strip=1 --input="${srcdir}/boringssl-no-Werror.patch"
-}
+source=("justbuild-${pkgver}.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v${pkgver}.tar.gz")
+sha256sums=('75b7d92d233250fa9751542cf5020c10b20e178f898b3fe1294fc9013b4ad5fe')
 
 build() {
     cd "${srcdir}/justbuild-${pkgver}"
@@ -30,7 +23,7 @@ build() {
     env JUST_BUILD_CONF='{"COMPILER_FAMILY": "clang", "CC": "/usr/bin/clang", "CXX": "/usr/bin/clang++", "AR": "/usr/bin/ar"}' python3 ./bin/bootstrap.py . "${srcdir}/build"
 
     # convert man pages from orgmode to man
-    find "${srcdir}/justbuild-${pkgver}/share/man" -name "*.org" -exec emacs {} --batch --eval "(require 'ox-man)" -f org-man-export-to-man --kill \;
+    find "${srcdir}/justbuild-${pkgver}/share/man" -name "*.md" -exec sh -c 'pandoc --standalone --to man -o "${0%.md}.man" "${0}"' {} \;
 }
 
 package() {
