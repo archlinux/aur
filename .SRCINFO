@@ -1,8 +1,8 @@
 pkgbase = zfsbootmenu-sb
 	pkgdesc = Hooks for signing ZFSBootMenu for use with Secure Boot.
 	pkgver = 0.3
-	pkgrel = 1
-	url = https://github.com/Biyoni/zfsbootmenu-sb
+	pkgrel = 2
+	url = https://github.com/KorewaKiyo/zfsbootmenu-sb
 	arch = any
 	license = GPL2
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = zfsbootmenu-sb
 	depends = perl
 	optdepends = zfsbootmenu: For ZBM
 	optdepends = zfsbootmenu-efi-bin: For ZBM
-	source = git+https://github.com/Biyoni/zfsbootmenu-sb.git
+	source = git+https://github.com/KorewaKiyo/zfsbootmenu-sb.git
 	sha256sums = SKIP
 
 pkgname = zfsbootmenu-sb
