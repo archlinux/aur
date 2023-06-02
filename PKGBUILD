@@ -1,7 +1,7 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=betterdiscord-installer
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Installer for BetterDiscord'
 arch=('x86_64')
@@ -11,7 +11,7 @@ replaces=('betterdiscord')
 makedepends=('git' 'nodejs' 'yarn')
 depends=('libxss')
 source=("$pkgname-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('0851b5c9c61b615e4710dae11cf7689db147a35e1bff5cc83e069416ec0ed0b1')
+sha256sums=('aecc83656770ff4d91aa0c4650e4774c162d47766e149ab2b8e0287ec52c4857')
 
 build() {
     cd Installer-${pkgver}
