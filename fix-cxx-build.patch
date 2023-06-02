@@ -1,0 +1,30 @@
+--- portaudio-19.7.0/bindings/cpp/example/devs.cxx	2021-04-01 02:17:30.000000000 +0200
++++ patched/bindings/cpp/example/devs.cxx	2023-03-03 14:18:26.039999819 +0100
+@@ -1,9 +1,11 @@
+ #include <iostream>
+ #include "portaudiocpp/PortAudioCpp.hxx"
+ 
++#if 0
+ #ifdef WIN32
+ #include "portaudiocpp/AsioDeviceAdapter.hxx"
+ #endif
++#endif
+ 
+ // ---------------------------------------------------------------------------------------
+ 
+@@ -109,6 +111,7 @@
+ 			std::cout << "Default high input latency  = " << (*i).defaultHighInputLatency() << std::endl; // 8.3
+ 			std::cout << "Default high output latency = " << (*i).defaultHighOutputLatency() << std::endl; // 8.3
+ 
++#if 0
+ #ifdef WIN32
+ 			// ASIO specific latency information:
+ 			if ((*i).hostApi().typeId() == paASIO)
+@@ -125,6 +128,7 @@
+ 					std::cout << "ASIO buffer granularity     = " << asioDevice.granularity() << std::endl;
+ 			}
+ #endif // WIN32
++#endif
+ 
+ 			std::cout << "Default sample rate         = " << (*i).defaultSampleRate() << std::endl; // 8.2
+ 
