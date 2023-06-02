@@ -13,8 +13,6 @@ pkgbase = bitwarden-cli-git
 	conflicts = bitwarden-cli
 	options = !emptydirs
 	source = bitwarden-cli::git+https://github.com/bitwarden/clients.git
-	source = git+https://github.com/bitwarden/jslib.git
-	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = bitwarden-cli-git

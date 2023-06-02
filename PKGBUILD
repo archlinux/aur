@@ -15,10 +15,8 @@ makedepends=(git npm modclean)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=(!emptydirs)
-source=("$_pkgname::git+https://github.com/bitwarden/clients.git"
-        'git+https://github.com/bitwarden/jslib.git')
-b2sums=('SKIP'
-        'SKIP')
+source=("$_pkgname::git+https://github.com/bitwarden/clients.git")
+b2sums=('SKIP')
 
 prepare() {
 	cd $_pkgname
