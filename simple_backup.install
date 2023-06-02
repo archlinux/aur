@@ -3,3 +3,8 @@ post_install() {
    echo "Copy it to ~/config/simple_backup/simple_backup.conf and modify it as needed"
 }
 
+post_upgrade() {
+    echo "Since version 3.2.8.r1.gffbf8ec simple_backup doesn't use 'last_backup' symlink to determine the last backup folder"
+    echo "If you have a backup directory generated with an older version which contains a symlink called 'last_backup', remove the symlink from it"
+}
+

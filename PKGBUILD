@@ -5,7 +5,7 @@
 pkgname=simple_backup-git
 _pkgname=simple_backup
 pkgdesc='Simple backup script that uses rsync to copy files'
-pkgver=3.2.8.r0.g6c07c14
+pkgver=3.2.8.r1.gffbf8ec
 pkgrel=1
 url="https://github.com/Fuxino/${_pkgname}"
 install=simple_backup.install
@@ -48,6 +48,6 @@ package()
 {
     cd ${srcdir}/${_pkgname}
     python -m installer --destdir=${pkgdir} dist/*.whl
-    install -Dm644 ${_pkgname}.conf ${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}.conf
+    install -Dm644 ${_pkgname}/${_pkgname}.conf ${pkgdir}/usr/share/doc/${_pkgname}/${_pkgname}.conf
     install -Dm644 man/${_pkgname}.1 ${pkgdir}/usr/share/man/man1/${_pkgname}.1
 }
