@@ -1,33 +1,24 @@
 # Maintainer: Grafcube <grafcube at disroot dot org>
 
-_pypkgname=docopt_ng
 _pkgname=docopt-ng
 pkgname=python-${_pkgname}
-pkgver=0.9.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Jazzband-maintained fork of docopt, the humane command line arguments parser."
 url="https://github.com/jazzband/docopt-ng"
 depends=('python' 'python-regex')
-makedepends=('python-pdm' 'python-installer')
-checkdepends=('python-pdm')
+makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("${pkgname}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cda61705e203000e6e0add5bfd4038c75447bc8ea2c6fc7288ed6d3ade4cc38c')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('ea6a61a288fc864eee6b22d6fe28aa202d59fc86fad05f16ff5e39cc4ea7f6e3')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
-	pdm config check_update false
-	pdm sync -d -G dev
-	pdm build
-}
-
-check() {
-	cd "${_pkgname}-${pkgver}"
-	pdm run pytest
+	python setup.py build
 }
 
 package() {
 	cd "${_pkgname}-${pkgver}"
-	python -m installer --destdir="${pkgdir}" "dist/${_pypkgname}-${pkgver}-py3-none-any.whl"
+	python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
