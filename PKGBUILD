@@ -4,14 +4,14 @@ _pkgname="spleeter"
 pkgname="$_pkgname-git"
 pkgver=2.3.0.r57.g0b26dec
 pkgrel=1
-pkgdesc="Fast and efficient music source separation tool and Deezer library with pretrained models"
+pkgdesc="Deezer music source separation library and tool using pretrained models"
 # https://research.deezer.com/projects/spleeter.html
 url="https://github.com/deezer/spleeter"
 arch=('any')
 license=('MIT')
 
 depends=(
-  'python-h2'
+  'python-h2' # (optdep python-httpx)
   'python-httpx'
   'python-numpy'
   'python-pandas'
@@ -36,6 +36,9 @@ makedepends=(
   'python-installer'
   'python-poetry'
   'python-wheel'
+)
+optdepends=(
+  'spleeter-data: pretrained model'
 )
 
 provides=(

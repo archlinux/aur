@@ -1,5 +1,5 @@
 pkgbase = spleeter-git
-	pkgdesc = Fast and efficient music source separation tool and Deezer library with pretrained models
+	pkgdesc = Deezer music source separation library and tool using pretrained models
 	pkgver = 2.3.0.r57.g0b26dec
 	pkgrel = 1
 	url = https://github.com/deezer/spleeter
@@ -20,6 +20,7 @@ pkgbase = spleeter-git
 	depends = python-norbert
 	depends = python-musdb
 	depends = python-museval
+	optdepends = spleeter-data: pretrained model
 	provides = spleeter
 	provides = spleeter2
 	conflicts = spleeter
