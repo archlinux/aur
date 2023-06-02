@@ -1,13 +1,10 @@
 pkgbase = coppwr-bin
 	pkgdesc = Low level PipeWire control GUI
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dimtpap.xyz/coppwr
 	arch = x86_64
 	license = GPL3
-	makedepends = cargo
-	makedepends = clang
-	makedepends = libpipewire
 	depends = pipewire
 	provides = coppwr
 	conflicts = coppwr
