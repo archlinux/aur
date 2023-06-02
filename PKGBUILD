@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/th-ch/youtube-music/archive
         "$pkgname.sh"
         "$pkgname.desktop")
 sha256sums=('d88b52a59f68a9024b36c635c1b02bf625e806ae50469b912b8f55c7cc5373f9'
-            'ab2ce0c5e63b886ef2480924eaabd78c25ed1e89e5f97591515e57938ae43067'
+            '88cbaae0694a0ed190255125637e1c35f1a89dc844c5e4eb9c1a75c28c65151a'
             '07af59376e13e5dae2e7e38fa09d734a5147d5c344b3aed84c2f3afe22b8af79')
 
 build() {
