@@ -3,7 +3,7 @@
 pkgname=forkboard
 _pkgname_src=fork-board
 pkgver=1.1.1
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc='An ElectronJS Dashboard App to show wallets balances from Chia and Forks in one convenient location.'
 arch=('x86_64')
 url='https://github.com/aaroncarpenter/fork-board'
