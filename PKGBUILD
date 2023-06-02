@@ -4,7 +4,7 @@
 set -u
 _name='cpulimit'
 pkgname='limitcpu'
-pkgver='2.7'
+pkgver='3.0'
 pkgrel='1'
 pkgdesc="A simple ${_name} program that attempts to limit the CPU usage of a process, expressed in percentage."
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ license=("GPL")
 depends=('glibc')
 _verwatch=("https://sourceforge.net/projects/${pkgname}/rss" "\s*<title>.*/${_name}-\([0-9\.]\+\)\.tar\.gz\].*" 'f')
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${_name}-${pkgver}.tar.gz")
-md5sums=('8732edc5d2092b380412288514e8180e')
-sha256sums=('1de040a4f8a40dfe8c7a025fe98075673468fbc3fccccbc231bc7402f62ec4a0')
+md5sums=('bdfae460475241d6253a74abf4dffbad')
+sha256sums=('ad2f415eb2bbda3e83a8a2d918ef5e90f52ebcc6fee61e94bf917b3e84ebb49c')
 
 prepare() {
   set -u
