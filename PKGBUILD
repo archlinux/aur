@@ -1,8 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgbase=xguipro-git
+# pkgname=(xguipro-gtk{3,4}-git)
 pkgname=(xguipro-gtk3-git)
-pkgver=0.7.0.r0.gb7b7c0c
+pkgver=0.8.0.r0.g5dc1a2a
 pkgrel=1
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=(x86_64
@@ -16,7 +17,12 @@ groups=('hvml-git')
 provides=(${pkgbase%-git}  'xGUI-Pro')
 conflicts=(${pkgbase%-git})
 replaces=()
-depends=(webkit2gtk)
+depends=(
+# xguipro-gtk3
+        webkit2gtk
+# # xguipro-gtk4
+#         webkit2gtk-5.0
+        )
 makedepends=(ccache
             cmake
             curl
@@ -24,9 +30,7 @@ makedepends=(ccache
             glib2
             git
             gcc
-            gtk3
             gperf
-            libsoup
             libxml2
             ninja
             icu
@@ -36,7 +40,14 @@ makedepends=(ccache
             python
             ruby
             sqlite
-            zlib)
+            zlib
+# xguipro-gtk3
+            gtk3
+            libsoup
+# # xguipro-gtk4
+#             gtk4
+#             libsoup3
+            )
 optdepends=('webkit2gtk-hvml: Web content engine for GTK (HVML)')
 backup=()
 options=('!strip')
@@ -71,6 +82,9 @@ EOF
 package_xguipro-gtk3-git() {
     pkgdesc+=" (gtk3)"
     conflicts+=(${pkgname%-git})
+    depends+=(webkit2gtk
+            gtk3
+            libsoup)
 
     cd "${srcdir}/${pkgbase%-git}"
 
@@ -79,11 +93,11 @@ package_xguipro-gtk3-git() {
 #     cmake -DCMAKE_BUILD_TYPE=Release \
     cmake -DCMAKE_BUILD_TYPE=None \
         -DPORT=GTK \
+        -DUSE_GTK4=OFF \
+        -DUSE_SOUP2=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
-        -DUSE_GTK4=OFF \
-        -DUSE_SOUP2=ON \
         -B build-gtk3 \
         -G Ninja
 
@@ -96,3 +110,32 @@ package_xguipro-gtk3-git() {
     install -Dm644 ${srcdir}/xguipro.sh ${pkgdir}/etc/profile.d/xguipro.sh
 }
 
+# package_xguipro-gtk4-git() {
+#     pkgdesc+=" (gtk4)"
+#     conflicts+=(${pkgname%-git})
+#     depends+=(webkit2gtk-5.0
+#             gtk4
+#             libsoup3)
+#     cd "${srcdir}/${pkgbase%-git}"
+#
+# # Ninja build
+# # see：https://wiki.archlinux.org/title/CMake_package_guidelines
+# #     cmake -DCMAKE_BUILD_TYPE=Release \
+#     cmake -DCMAKE_BUILD_TYPE=None \
+#         -DPORT=GTK \
+#         -DCMAKE_INSTALL_PREFIX=/usr \
+#         -DCMAKE_INSTALL_LIBDIR=lib \
+#         -DCMAKE_INSTALL_LIBEXECDIR=lib \
+#         -DUSE_GTK4=ON \
+#         -DUSE_SOUP2=OFF \
+#         -B build-gtk4 \
+#         -G Ninja
+#
+#     ninja -C build-gtk4
+#
+# # ninja install
+#     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgbase%-git}/build-gtk4 install
+#
+#     install -Dm644 ${srcdir}/xguipro.csh ${pkgdir}/etc/profile.d/xguipro.csh
+#     install -Dm644 ${srcdir}/xguipro.sh ${pkgdir}/etc/profile.d/xguipro.sh
+# }
