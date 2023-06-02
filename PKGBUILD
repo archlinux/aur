@@ -24,4 +24,7 @@ pkgver() {
 package() {
     cd "${pkgname%-git}"
     npm install -g --prefix "${pkgdir}/usr"
+    # npm gives ownership of ALL FILES to build user
+    # https://bugs.archlinux.org/task/63396
+    chown -R root:root "${pkgdir}"
 }
