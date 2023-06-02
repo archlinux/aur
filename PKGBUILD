@@ -3,7 +3,7 @@
 
 pkgname=php82-composer
 epoch=1
-pkgver=2.5.5
+pkgver=2.5.7
 pkgrel=2
 pkgdesc="Dependency Manager for PHP 8.2 (php82)"
 arch=('any')
