@@ -9,7 +9,7 @@ license=("BSD-3-Clause")
 arch=('x86_64')
 depends=('docker')
 source=("https://github.com/NeuroDesk/neurodesk-app/releases/download/v${pkgver}/NeurodeskApp-Setup-Debian.deb")
-sha256sums=('5970430f4069eba6781053f52a1c53152dd01e8592c972c3e72538b5eba36df5')
+sha256sums=('4846f5ba4a2dc22f8e1ecaef64f3fd415b9d7e3d09943ddabf0ba1f7c2ffaef9')
 
 prepare() {
     cd $srcdir
