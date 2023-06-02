@@ -4,19 +4,19 @@
 
 set -u
 pkgname='lfhex'
-pkgver='0.42'
-pkgrel='2'
+pkgver='0.44'
+pkgrel='1'
 pkgdesc='A hex editor with support for large files'
 arch=('i686' 'x86_64')
 #url='http://stoopidsimple.com/lfhex'
 url='https://github.com/srtlg/lfhex'
 license=('GPL')
-depends=('qt4')
+depends=('qt5-base')
 makedepends=('bison' 'flex')
 _srcdir="${pkgname}-${pkgver}.tar.gz"
 source=("${_srcdir}::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('95a31935c53f0f73c0da4e2f0a0d93b9')
-sha256sums=('f17543de8264e4c6eb7535dbc9dfb26ba787e1736972d14fb97e2e8a4ddcc034')
+md5sums=('6f1932e557a5a3f7d1ecb911a0ec4374')
+sha256sums=('938bf8fd024a20651e1a0df8daa519fa9139bb262f1fe39e85922494e85315ce')
 
 prepare() {
   set -u
@@ -32,13 +32,13 @@ prepare() {
 build() {
   set -u
   cd "${pkgbase}-${pkgver}/src"
-  qmake-qt4
+  qmake-qt5
 
   # Bison/YACC bug. Different source files expect different file names.
-  sed -e '/expr\.tab\.h/ s:mv -f :cp -p :g' -i 'Makefile'
+  #sed -e '/expr\.tab\.h/ s:mv -f :cp -p :g' -i 'Makefile'
+  sed -e '/expr\.tab\.h/ s:.(MOVE) :cp -p :g' -i 'Makefile' # issue #1
 
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  nice make -s -j "${_nproc}"
+  nice make -s
   set +u
 }
 
