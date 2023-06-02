@@ -15,10 +15,11 @@ sha256sums=('2014bffad116b3c7d6439fb62403af1e635b19131300a8828900ab69edf7672a'
             '1d06bf5ea511546f328d39d3e476fa3c59d85a6c36ea267bb6321873b639d7b1')
 
 package() {
-    tar -xvf assets-v1.1.1.tar.gz
-    sudo mkdir -p /usr/share/9launcher
-    sudo cp -r assets-v1.1.1 /usr/share/9launcher
-    sudo install -Dm755 "9launcher" /usr/bin/9launcher
-    sudo desktop-file-install /usr/share/9launcher/assets-v1.1.1/9Launcher.desktop
-    chmod +x /usr/bin/9launcher
+    mkdir -p "${pkgdir}/assets/"
+    tar -xvf assets-v1.1.1.tar.gz -C "${pkgdir}/assets/" --strip-components 1
+    mkdir -p "${pkgdir}/usr/share/9launcher"
+    mkdir -p "${pkgdir}/usr/share/applications"
+    cp -r assets-v1.1.1 "${pkgdir}/usr/share/9launcher"
+    install -d "${pkgdir}/usr/bin"
+    install -m644 "${pkgdir}/assets/9Launcher.desktop" "${pkgdir}/usr/share/applications/"
 }
