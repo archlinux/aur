@@ -1,0 +1,97 @@
+Build 3.1.235 (2023-05-10): mopy: Added the --no-location-vars parameter to mopy, too.
+Build 3.1.232 (2023-05-10): mcsta, modes, modysh: Added the --no-location-vars parameter to disable the expansion of location variables into automaton locations.
+Build 3.1.231 (2023-05-07): mcsta: Added the --stop-after parameter to facilitate benchmarking of specific analysis phases.
+Build 3.1.225 (2023-03-15): mcsta: Fixed crashes when using partial exploration.
+Build 3.1.224 (2023-03-02): modes: Added support for Q-learning for MDP, for global-information and distributed schedulers.
+Build 3.1.216 (2022-10-27): modes: Added support for resolving nondeterminism via neural networks or external oracles.
+Build 3.1.213 (2022-10-09): mcsta: Added the --topological parameter to solve models by SCCs; currently supported with linear programming only.
+Build 3.1.212 (2022-10-08): mcsta: Added support for the CPLEX linear programming solver.
+Build 3.1.211 (2022-10-08): mcsta: Added support for the COPT linear programming solver.
+Build 3.1.210 (2022-10-07): mcsta: Added support for the HiGHS linear programming solver.
+Build 3.1.209 (2022-10-06): mcsta: Added support for the Mosek linear programming solver.
+Build 3.1.208 (2022-10-06): mcsta: Added support for the Gurobi linear programming solver.
+Build 3.1.207 (2022-10-05): mcsta: Added support for checking expected-reward properties with linear programming, the --lp-solver parameter to select the linear programming solver, and support for the lp_solve solver.
+Build 3.1.195 (2022-07-12): prohver: Added the --refinement parameter for automatic interval refinement and support for running PHAVer on Windows via WSL in prohver.
+Build 3.1.194 (2022-07-12): moplot: Added support for matplotlib colour sets and more than 5 categories in moplot.
+Build 3.1.189 (2022-05-12): mcsta: Added support for step-bounded probabilistic reachability properties.
+Build 3.1.186 (2022-04-25): mcsta: Added the --ls parameter to only explore the DTMC induced by a specified lightweight scheduler.
+Build 3.1.176 (2021-11-25): modes: Added a compact coordinate-tuple trace format for use with nonlinear SHA.
+Build 3.1.173 (2021-11-15): modes: Added support for configuring the root finding algorithm in nonlinear SHA simulation via --int-events.
+Build 3.1.171 (2021-11-14): modes: Added support for nonlinear SHA and Q-learning, configurable via the --int and --learn parameters.
+Build 3.1.170 (2021-11-10): The Modest Toolset can now be accessed from the Modest Visual Studio Code plugin.
+Build 3.1.110 (2021-10-20): mcsta: Added the --fpu parameter to configure floating-point precision, instruction set, and rounding.
+Build 3.1.105 (2021-08-27): modes: Added the --schedulers-file parameter to export information about sampled schedulers.
+Build 3.1.102 (2021-08-14): modes: Improved performance in scheduler sampling by reducing per-scheduler overhead.
+Build 3.1. 84 (2021-07-09): modysh: Added the modysh tool that provides an implemenation of FRET-π LRTDP.
+Build 3.1. 74 (2021-03-04): mopy: Added support for Markov automata and rate rewards.
+Build 3.1. 68 (2021-02-04): modes: Fixed run termination issue that prevented results from being returned in some scenarios.
+Build 3.1. 63 (2021-01-13): mcsta: Added the symblicit engine.
+Build 3.1. 54 (2020-10-13): modes: Added support for prolongations in the RESTART method for rare event simulation.
+Build 3.1. 53 (2020-10-12): modes: Added support for manual specification of levels and splitting factors for rare event simulation.
+Build 3.1. 51 (2020-10-11): modes: Added support for rare event simulation of long-run average value properties using the RESTART method.
+Build 3.1. 49 (2020-09-06): mobench: Added the --create parameter to create benchmark scripts from the Quantitative Verification Benchmark Set in mobench.
+Build 3.1. 47 (2020-09-05): prohver: Added support for automatic abstraction of continuous distributions into equal-probability intervals.
+Build 3.1. 44 (2020-06-30): prohver: Added support for until properties.
+Build 3.1. 43 (2020-06-29): mcsta, modes, prohver: Added support for the folded normal distribution.
+Build 3.1. 42 (2020-05-26): mcsta: Added the --es parameter to perform essential states reduction.
+Build 3.1. 41 (2020-05-19): modes: Added support for long-run average value simulation.
+Build 3.1. 39 (2020-03-22): modes: Added support for interruptible sampling in lightweight scheduler sampling.
+Build 3.1. 37 (2020-03-20): mcsta: Added the --no-partial-results parameter to disable returning partial results.
+Build 3.1. 25 (2019-12-11): modes: Added support for smart sampling in lightweight scheduler sampling.
+Build 3.1. 13 (2019-11-05): mcsta: Added support for checking expected-reward properties with interval iteration.
+Build 3.1. 12 (2019-09-23): mcsta: Added optimistic value iteration as a solution method.
+Build 3.1. 11 (2019-09-21): mcsta: Added sound value iteration as a solution method.
+Build 3.1. 10 (2019-09-19): mobench: Added the mobench tool to automate benchmarking.
+Build 3.1.  2 (2019-06-16): All tools: Added support for qcomp:// URLs, e.g. "qcomp://beb", to load models from the Quantitative Verification Benchmark Set.
+Build 3.1.  0 (2019-06-03): The Modest Toolset now uses the .NET Core runtime; all tools have been consolidated into the modest command.
+
+Build 3.0.136 (2019-04-17): mcsta: Added support for long-run average properties.
+Build 3.0.132 (2019-03-25): mcsta: Added the IMCA format for state space exporting.
+Build 3.0.129 (2019-03-19): mcsta: Added linear programming as a solution method.
+Build 3.0.128 (2019-03-17): mcsta: Added the --exhaustive parameter to explore the complete state space, including irrelevant states.
+Build 3.0.122 (2019-03-10): mcsta: Added the --statespace parameter to export the explored state space to file.
+Build 3.0.121 (2019-03-09): mcsta: Added the switch-step algorithm for time-bounded reachability in MA.
+Build 3.0.111 (2019-02-17): moconv: Added the --location-vars parameter to detect and expand location variables.
+Build 3.0.110 (2019-02-04): mopy: Added the mopy tool to export Python code for state space exploration.
+Build 3.0.108 (2019-01-13): modes: Changed the default value of the --rng parameter to MersenneTwister.
+Build 3.0.106 (2018-12-18): mcsta: Changed the scheduler output to include only states reachable with that scheduler for unbounded properties.
+Build 3.0.104 (2018-12-09): modes: Added the new adaptive sampling method by Chen and Xu.
+Build 3.0.101 (2018-12-01): mcsta: Added interval iteration as an alternative to value iteration.
+Build 3.0.100 (2018-11-29): mcsta, moconv, modes, mosta: Fixed incorrect conversion of exit rewards to branch rewards.
+Build 3.0. 99 (2018-11-28): mcsta, moconv, modes, mosta, prohver: Added the --props parameter to select the properties to analyse.
+Build 3.0. 98 (2018-11-27): mcsta: Added support for sampling from discretised continuous distributions, e.g. "i = floor(min(LogNormal(0, 0.5), 3.68))".
+Build 3.0. 97 (2018-11-21): Modest: Added "option" declarations to request special semantics for DTMC, CTMC, and CTMDP.
+Build 3.0. 90 (2018-10-15): mcsta: Added support for checking properties with nontrivial until formulas.
+Build 3.0. 89 (2018-10-14): mcsta: Added the --partial parameter to use model checking based on partial exploration.
+Build 3.0. 88 (2018-10-09): mcsta: Added the --ec parameter to perform end component reduction.
+Build 3.0. 86 (2018-08-30): mcsta: Added support for time-bounded properties on Markov automata.
+Build 3.0. 85 (2018-08-28): mcsta: Improved the JSON-based results format to report per-property timings.
+Build 3.0. 84 (2018-08-27): Modest: Added the "with" construct to specify location transient values, "constrain" as a synonym for "invariant", and support for state exit rewards with accumulation symbol "X".
+Build 3.0. 80 (2018-08-16): mcsta: Added support for properties that compare a probability or expected value to a constant expression.
+Build 3.0. 78 (2018-08-09): mcsta: Improved the handling and reporting of floating-point inaccuracies.
+Build 3.0. 77 (2018-08-08): modes: Improved trace output to more precisely state the reson for the end of the trace.
+Build 3.0. 72 (2018-07-29): prohver: Added the --precision parameter to specify the precision of probabilities exported to PHAVER.
+Build 3.0. 71 (2018-07-26): Modest: Fixed crashes with certain patterns of process calls.
+Build 3.0. 68 (2018-07-19): mcsta, modes, prohver: Added support for finite-range nondeterministic assignments.
+Build 3.0. 65 (2018-07-08): mcsta, modes: Fixed incorrect handling of synchronisation with PTA and STA models in mcsta, and incorrect computation of rewards with Markov automata models in modes.
+Build 3.0. 64 (2018-06-28): mcsta, modes, prohver: Added support for writing results to file in a JSON-based format.
+Build 3.0. 62 (2018-06-21): modes: Added parameters to specify the initial and target values of ad-hoc importance functions.
+Build 3.0. 61 (2018-06-19): Modest: Added syntax for indexed assignments "{= 1: i = 1, 2: i++ =}".
+Build 3.0. 60 (2018-06-18): mcsta: Added support for branch reward-bounded and expected rate reward properties on Markov automata.
+Build 3.0. 59 (2018-06-16): mcsta: Added support for model checking of unbounded properties on Markov automata.
+Build 3.0. 47 (2018-05-22): moconv: Added the ability to export models with open parameters.
+Build 3.0. 42 (2018-05-01): modes: Added the --collect-schedulers option to obtain a histogram of per-scheduler results.
+Build 3.0. 33 (2018-03-22): modes: Fixed the evaluation of properties during zone-based simulation.
+Build 3.0. 31 (2018-03-21): modes: Fixed the handling of user-specified seeds for random number generation.
+Build 3.0. 28 (2018-03-07): mcsta, modes: Changed the formatting of location variables to use location names in printed traces and schedulers.
+Build 3.0. 23 (2018-01-19): modes: Added the --thread-budget parameter to enable throttling of unbalanced simulation threads.
+Build 3.0. 22 (2018-01-04): modes: Improved the performance of lightweight scheduler sampling.
+Build 3.0. 20 (2017-11-19): prohver: Fixed excessive syntactic checks that rejected valid SHA models.
+Build 3.0. 19 (2017-11-14): mcsta: Fixed crash when chain compression is enabled and the model does not use any rewards.
+Build 3.0. 18 (2017-11-03): modes: Added a bash script that automates the distributed execution of modes on Slurm-based clusters, and the --scheduler-levels parameter to recalculate splitting levels for every scheduler in modes.
+Build 3.0. 16 (2017-10-30): modes: Added the --independent parameter to use independent simulation runs for all properties.
+Build 3.0. 11 (2017-10-25): modes: Improved the state space generation and simulation performance for models with many components and synchronising transitions, and removed the --buffer-size parameter.
+Build 3.0.  9 (2017-10-18): modes: Added support for two-phase scheduler sampling.
+Build 3.0.  8 (2017-10-14): modes: Improved parallelism across properties and schedulers.
+Build 3.0.  7 (2017-10-03): modes: Added support for distributed rare-event simulation.
+Build 3.0.  6 (2017-10-02): modes: Added support for rectangular hybrid automata.
