@@ -1,3 +1,5 @@
+# Maintainer: dimtpap <dimtpap@protonmail.com>
+
 pkgname=coppwr
 pkgver=1.0.0
 pkgrel=1
