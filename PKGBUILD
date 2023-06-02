@@ -1,15 +1,15 @@
-# Current Maintainer: Sean Snell <ssnell@lakecs.net>
+# Maintainer: Sean Snell <ssnell@lakecs.net>
 # Previous Maintainer: GI Jack <GI_Jack@hackermail.com>
 # Original: hexptr <hexptr@protonmail.com>
 
 pkgname=streamdeck-ui
 pkgver=2.0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux compatible UI for the Elgato Stream Deck"
 arch=('any')
 url="https://timothycrosley.github.io/streamdeck-ui/"
 license=('MIT')
-depends=('python-pillow' 'python-hidapi' 'pyside6' 'python-pynput' 'python-elgato-streamdeck>=0.9.1' 'python-xlib' 'python-filetype' 'python-cairosvg')
+depends=('python-pillow' 'python-hidapi' 'pyside6' 'python-pynput' 'python-elgato-streamdeck' 'python-xlib' 'python-filetype' 'python-cairosvg')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-poetry')
 provides=('streamdeck-ui')
 conflicts=('streamdeck-ui-git')
@@ -39,8 +39,9 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm 644 "$srcdir/60-streamdeck.rules" "${pkgdir}/usr/lib/udev/rules.d/60-streamdeck.rules"
-  install -Dm 644 "$srcdir/streamdeck-ui.desktop" "${pkgdir}/usr/share/applications/streamdeck-ui.desktop"
-  install -Dm 644 "$srcdir/elgato.png" "${pkgdir}/usr/share/pixmaps/elgato.png"
-  install -Dm 644 "$srcdir/streamdeck.service" "${pkgdir}/etc/systemd/system/streamdeck.service"
+  install -Dm 644 "${srcdir}/60-streamdeck.rules" "${pkgdir}/usr/lib/udev/rules.d/60-streamdeck.rules"
+  install -Dm 644 "${srcdir}/streamdeck-ui.desktop" "${pkgdir}/usr/share/applications/streamdeck-ui.desktop"
+  install -Dm 644 "${srcdir}/elgato.png" "${pkgdir}/usr/share/pixmaps/elgato.png"
+  install -Dm 644 "${srcdir}/streamdeck.service" "${pkgdir}/etc/systemd/user/streamdeck.service"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
