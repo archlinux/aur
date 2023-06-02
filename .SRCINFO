@@ -1,7 +1,7 @@
 pkgbase = postgis-old-upgrade
 	pkgdesc = PostGIS build against postgresql-old-upgrade package for pg_upgrade
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://postgis.net/
 	arch = x86_64
 	license = GPL

@@ -6,7 +6,7 @@
 pkgname=postgis-old-upgrade
 _pkgname="${pkgname%-old-upgrade}"
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 _pg_majorver=14
 pkgdesc='PostGIS build against postgresql-old-upgrade package for pg_upgrade'
 arch=('x86_64')
@@ -32,8 +32,10 @@ build() {
   cd "$_pkgname-$pkgver"
 
   export PG_CONFIG="/opt/pgsql-${_pg_majorver}/bin/pg_config"
+  export CXXFLAGS="$CXXFLAGS -std=c++17"
 
   ./configure --prefix="/opt/pgsql-${_pg_majorver}"
+
   make
 }
 
