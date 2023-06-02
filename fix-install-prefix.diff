@@ -1,0 +1,26 @@
+diff --git a/lib/libpe/Makefile b/lib/libpe/Makefile
+index 8554745..d75a40d 100644
+--- a/lib/libpe/Makefile
++++ b/lib/libpe/Makefile
+@@ -6,7 +6,7 @@ PLATFORM_OS := $(shell uname | cut -d_ -f1)
+ ####### Makefile Conventions - Directory variables
+ 
+ srcdir = .
+-prefix = /usr/local
++prefix = /usr
+ exec_prefix = $(prefix)
+ sysconfdir = $(prefix)/etc
+ includedir = $(prefix)/include
+diff --git a/src/Makefile b/src/Makefile
+index b22251a..b072423 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -6,7 +6,7 @@ export PLATFORM_OS := $(shell uname | cut -d_ -f1)
+ ####### Makefile Conventions - Directory variables
+ 
+ srcdir = .
+-prefix = /usr/local
++prefix = /usr
+ 
+ exec_prefix = $(prefix)
+ sysconfdir = $(prefix)/etc
