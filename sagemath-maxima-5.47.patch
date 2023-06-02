@@ -1,0 +1,756 @@
+diff --git a/src/doc/de/tutorial/interfaces.rst b/src/doc/de/tutorial/interfaces.rst
+index edb4f383363..3b5bde7df15 100644
+--- a/src/doc/de/tutorial/interfaces.rst
++++ b/src/doc/de/tutorial/interfaces.rst
+@@ -272,8 +272,8 @@ deren :math:`i,j` Eintrag gerade :math:`i/j` ist, für :math:`i,j=1,\ldots,4`.
+     matrix([1,1/2,1/3,1/4],[0,0,0,0],[0,0,0,0],[0,0,0,0])
+     sage: A.eigenvalues()
+     [[0,4],[3,1]]
+-    sage: A.eigenvectors()
+-    [[[0,4],[3,1]],[[[1,0,0,-4],[0,1,0,-2],[0,0,1,-4/3]],[[1,2,3,4]]]]
++    sage: A.eigenvectors().sage()
++    [[[0, 4], [3, 1]], [[[1, 0, 0, -4], [0, 1, 0, -2], [0, 0, 1, -4/3]], [[1, 2, 3, 4]]]]
+ 
+ Hier ein anderes Beispiel:
+ 
+@@ -334,8 +334,8 @@ Und der letzte ist die berühmte Kleinsche Flasche:
+ 
+     sage: maxima("expr_1: 5*cos(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0) - 10.0")
+     5*cos(x)*(sin(x/2)*sin(2*y)+cos(x/2)*cos(y)+3.0)-10.0
+-    sage: maxima("expr_2: -5*sin(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)")
+-    -5*sin(x)*(sin(x/2)*sin(2*y)+cos(x/2)*cos(y)+3.0)
++    sage: maxima("expr_2: -5*sin(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)").sage()
++    -5*(cos(1/2*x)*cos(y) + sin(1/2*x)*sin(2*y) + 3.0)*sin(x)
+     sage: maxima("expr_3: 5*(-sin(x/2)*cos(y) + cos(x/2)*sin(2*y))")
+     5*(cos(x/2)*sin(2*y)-sin(x/2)*cos(y))
+     sage: maxima.plot3d ("[expr_1, expr_2, expr_3]", "[x, -%pi, %pi]", # not tested
+diff --git a/src/doc/de/tutorial/tour_algebra.rst b/src/doc/de/tutorial/tour_algebra.rst
+index baba2553a25..60e05332eaa 100644
+--- a/src/doc/de/tutorial/tour_algebra.rst
++++ b/src/doc/de/tutorial/tour_algebra.rst
+@@ -210,8 +210,8 @@ Lösung: Berechnen Sie die Laplace-Transformierte der ersten Gleichung
+ ::
+ 
+     sage: de1 = maxima("2*diff(x(t),t, 2) + 6*x(t) - 2*y(t)")
+-    sage: lde1 = de1.laplace("t","s"); lde1
+-    2*((-%at('diff(x(t),t,1),t = 0))+s^2*'laplace(x(t),t,s)-x(0)*s) -2*'laplace(y(t),t,s)+6*'laplace(x(t),t,s)
++    sage: lde1 = de1.laplace("t","s"); lde1.sage()
++    2*s^2*laplace(x(t), t, s) - 2*s*x(0) + 6*laplace(x(t), t, s) - 2*laplace(y(t), t, s) - 2*D[0](x)(0)
+ 
+ Das ist schwierig zu lesen, es besagt jedoch, dass
+ 
+@@ -226,8 +226,8 @@ Laplace-Transformierte der zweiten Gleichung:
+ ::
+ 
+     sage: de2 = maxima("diff(y(t),t, 2) + 2*y(t) - 2*x(t)")
+-    sage: lde2 = de2.laplace("t","s"); lde2
+-    (-%at('diff(y(t),t,1),t = 0))+s^2*'laplace(y(t),t,s) +2*'laplace(y(t),t,s)-2*'laplace(x(t),t,s) -y(0)*s
++    sage: lde2 = de2.laplace("t","s"); lde2.sage()
++    s^2*laplace(y(t), t, s) - s*y(0) - 2*laplace(x(t), t, s) + 2*laplace(y(t), t, s) - D[0](y)(0)
+ 
+ Dies besagt
+ 
+diff --git a/src/doc/en/constructions/linear_algebra.rst b/src/doc/en/constructions/linear_algebra.rst
+index 8894de9a5fd..f698342b02b 100644
+--- a/src/doc/en/constructions/linear_algebra.rst
++++ b/src/doc/en/constructions/linear_algebra.rst
+@@ -278,7 +278,7 @@ Another approach is to use the interface with Maxima:
+     sage: A = maxima("matrix ([1, -4], [1, -1])")
+     sage: eig = A.eigenvectors()
+     sage: eig
+-    [[[-sqrt(3)*%i,sqrt(3)*%i],[1,1]], [[[1,(sqrt(3)*%i+1)/4]],[[1,-(sqrt(3)*%i-1)/4]]]]
++    [[[-...sqrt(3)*%i...,sqrt(3)*%i],[1,1]], [[[1,(sqrt(3)*%i+1)/4]],[[1,-...(sqrt(3)*%i-1)/4...]]]]
+ 
+ This tells us that :math:`\vec{v}_1 = [1,(\sqrt{3}i + 1)/4]` is
+ an eigenvector of :math:`\lambda_1 = - \sqrt{3}i` (which occurs
+diff --git a/src/doc/en/tutorial/interfaces.rst b/src/doc/en/tutorial/interfaces.rst
+index b0e55345669..19c28f636d4 100644
+--- a/src/doc/en/tutorial/interfaces.rst
++++ b/src/doc/en/tutorial/interfaces.rst
+@@ -267,8 +267,8 @@ whose :math:`i,j` entry is :math:`i/j`, for
+     matrix([1,1/2,1/3,1/4],[0,0,0,0],[0,0,0,0],[0,0,0,0])
+     sage: A.eigenvalues()
+     [[0,4],[3,1]]
+-    sage: A.eigenvectors()
+-    [[[0,4],[3,1]],[[[1,0,0,-4],[0,1,0,-2],[0,0,1,-4/3]],[[1,2,3,4]]]]
++    sage: A.eigenvectors().sage()
++    [[[0, 4], [3, 1]], [[[1, 0, 0, -4], [0, 1, 0, -2], [0, 0, 1, -4/3]], [[1, 2, 3, 4]]]]
+ 
+ Here's another example:
+ 
+@@ -320,8 +320,8 @@ The next plot is the famous Klein bottle (do not type the ``....:``)::
+ 
+     sage: maxima("expr_1: 5*cos(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0) - 10.0")
+     5*cos(x)*(sin(x/2)*sin(2*y)+cos(x/2)*cos(y)+3.0)-10.0
+-    sage: maxima("expr_2: -5*sin(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)")
+-    -5*sin(x)*(sin(x/2)*sin(2*y)+cos(x/2)*cos(y)+3.0)
++    sage: maxima("expr_2: -5*sin(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)").sage()
++    -5*(cos(1/2*x)*cos(y) + sin(1/2*x)*sin(2*y) + 3.0)*sin(x)
+     sage: maxima("expr_3: 5*(-sin(x/2)*cos(y) + cos(x/2)*sin(2*y))")
+     5*(cos(x/2)*sin(2*y)-sin(x/2)*cos(y))
+     sage: maxima.plot3d ("[expr_1, expr_2, expr_3]", "[x, -%pi, %pi]",  # not tested
+diff --git a/src/doc/en/tutorial/tour_algebra.rst b/src/doc/en/tutorial/tour_algebra.rst
+index 2e872cc9059..3a9830f16d5 100644
+--- a/src/doc/en/tutorial/tour_algebra.rst
++++ b/src/doc/en/tutorial/tour_algebra.rst
+@@ -217,8 +217,8 @@ the notation :math:`x=x_{1}`, :math:`y=x_{2}`):
+ ::
+ 
+     sage: de1 = maxima("2*diff(x(t),t, 2) + 6*x(t) - 2*y(t)")
+-    sage: lde1 = de1.laplace("t","s"); lde1
+-    2*((-%at('diff(x(t),t,1),t = 0))+s^2*'laplace(x(t),t,s)-x(0)*s) -2*'laplace(y(t),t,s)+6*'laplace(x(t),t,s)
++    sage: lde1 = de1.laplace("t","s"); lde1.sage()
++    2*s^2*laplace(x(t), t, s) - 2*s*x(0) + 6*laplace(x(t), t, s) - 2*laplace(y(t), t, s) - 2*D[0](x)(0)
+ 
+ This is hard to read, but it says that
+ 
+@@ -232,8 +232,8 @@ Laplace transform of the second equation:
+ ::
+ 
+     sage: de2 = maxima("diff(y(t),t, 2) + 2*y(t) - 2*x(t)")
+-    sage: lde2 = de2.laplace("t","s"); lde2
+-    (-%at('diff(y(t),t,1),t = 0))+s^2*'laplace(y(t),t,s) +2*'laplace(y(t),t,s)-2*'laplace(x(t),t,s) -y(0)*s
++    sage: lde2 = de2.laplace("t","s"); lde2.sage()
++    s^2*laplace(y(t), t, s) - s*y(0) - 2*laplace(x(t), t, s) + 2*laplace(y(t), t, s) - D[0](y)(0)
+ 
+ This says
+ 
+diff --git a/src/doc/es/tutorial/tour_algebra.rst b/src/doc/es/tutorial/tour_algebra.rst
+index dc1a7a96719..c57e6775a49 100644
+--- a/src/doc/es/tutorial/tour_algebra.rst
++++ b/src/doc/es/tutorial/tour_algebra.rst
+@@ -197,8 +197,8 @@ la notación :math:`x=x_{1}`, :math:`y=x_{2}`):
+ ::
+ 
+     sage: de1 = maxima("2*diff(x(t),t, 2) + 6*x(t) - 2*y(t)")
+-    sage: lde1 = de1.laplace("t","s"); lde1
+-    2*((-%at('diff(x(t),t,1),t = 0))+s^2*'laplace(x(t),t,s)-x(0)*s) -2*'laplace(y(t),t,s)+6*'laplace(x(t),t,s)
++    sage: lde1 = de1.laplace("t","s"); lde1.sage()
++    2*s^2*laplace(x(t), t, s) - 2*s*x(0) + 6*laplace(x(t), t, s) - 2*laplace(y(t), t, s) - 2*D[0](x)(0)
+ 
+ El resultado puede ser difícil de leer, pero significa que
+ 
+@@ -212,8 +212,8 @@ Toma la transformada de Laplace de la segunda ecuación:
+ ::
+ 
+     sage: de2 = maxima("diff(y(t),t, 2) + 2*y(t) - 2*x(t)")
+-    sage: lde2 = de2.laplace("t","s"); lde2
+-    (-%at('diff(y(t),t,1),t = 0))+s^2*'laplace(y(t),t,s) +2*'laplace(y(t),t,s)-2*'laplace(x(t),t,s) -y(0)*s
++    sage: lde2 = de2.laplace("t","s"); lde2.sage()
++    s^2*laplace(y(t), t, s) - s*y(0) - 2*laplace(x(t), t, s) + 2*laplace(y(t), t, s) - D[0](y)(0)
+ 
+ Esto dice
+ 
+diff --git a/src/doc/fr/tutorial/interfaces.rst b/src/doc/fr/tutorial/interfaces.rst
+index 1cd662f3083..807ab6d8ee2 100644
+--- a/src/doc/fr/tutorial/interfaces.rst
++++ b/src/doc/fr/tutorial/interfaces.rst
+@@ -273,8 +273,8 @@ pour :math:`i,j=1,\ldots,4`.
+     matrix([1,1/2,1/3,1/4],[0,0,0,0],[0,0,0,0],[0,0,0,0])
+     sage: A.eigenvalues()
+     [[0,4],[3,1]]
+-    sage: A.eigenvectors()
+-    [[[0,4],[3,1]],[[[1,0,0,-4],[0,1,0,-2],[0,0,1,-4/3]],[[1,2,3,4]]]]
++    sage: A.eigenvectors().sage()
++    [[[0, 4], [3, 1]], [[[1, 0, 0, -4], [0, 1, 0, -2], [0, 0, 1, -4/3]], [[1, 2, 3, 4]]]]
+ 
+ Un deuxième exemple :
+ 
+@@ -336,8 +336,8 @@ Et la fameuse bouteille de Klein (n'entrez pas les ``....:``):
+ 
+     sage: maxima("expr_1: 5*cos(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0) - 10.0")
+     5*cos(x)*(sin(x/2)*sin(2*y)+cos(x/2)*cos(y)+3.0)-10.0
+-    sage: maxima("expr_2: -5*sin(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)")
+-    -5*sin(x)*(sin(x/2)*sin(2*y)+cos(x/2)*cos(y)+3.0)
++    sage: maxima("expr_2: -5*sin(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)").sage()
++    -5*(cos(1/2*x)*cos(y) + sin(1/2*x)*sin(2*y) + 3.0)*sin(x)
+     sage: maxima("expr_3: 5*(-sin(x/2)*cos(y) + cos(x/2)*sin(2*y))")
+     5*(cos(x/2)*sin(2*y)-sin(x/2)*cos(y))
+     sage: maxima.plot3d ("[expr_1, expr_2, expr_3]", "[x, -%pi, %pi]", # not tested
+diff --git a/src/doc/fr/tutorial/tour_algebra.rst b/src/doc/fr/tutorial/tour_algebra.rst
+index 658894b2e8b..be534cd556b 100644
+--- a/src/doc/fr/tutorial/tour_algebra.rst
++++ b/src/doc/fr/tutorial/tour_algebra.rst
+@@ -182,8 +182,8 @@ Solution : Considérons la transformée de Laplace de la première équation
+ ::
+ 
+     sage: de1 = maxima("2*diff(x(t),t, 2) + 6*x(t) - 2*y(t)")
+-    sage: lde1 = de1.laplace("t","s"); lde1
+-    2*((-%at('diff(x(t),t,1),t = 0))+s^2*'laplace(x(t),t,s)-x(0)*s) -2*'laplace(y(t),t,s)+6*'laplace(x(t),t,s)
++    sage: lde1 = de1.laplace("t","s"); lde1.sage()
++    2*s^2*laplace(x(t), t, s) - 2*s*x(0) + 6*laplace(x(t), t, s) - 2*laplace(y(t), t, s) - 2*D[0](x)(0)
+ 
+ La réponse n'est pas très lisible, mais elle signifie que
+ 
+@@ -197,8 +197,8 @@ la seconde équation :
+ ::
+ 
+     sage: de2 = maxima("diff(y(t),t, 2) + 2*y(t) - 2*x(t)")
+-    sage: lde2 = de2.laplace("t","s"); lde2
+-    (-%at('diff(y(t),t,1),t = 0))+s^2*'laplace(y(t),t,s) +2*'laplace(y(t),t,s)-2*'laplace(x(t),t,s) -y(0)*s
++    sage: lde2 = de2.laplace("t","s"); lde2.sage()
++    s^2*laplace(y(t), t, s) - s*y(0) - 2*laplace(x(t), t, s) + 2*laplace(y(t), t, s) - D[0](y)(0)
+ 
+ Ceci signifie
+ 
+diff --git a/src/doc/it/tutorial/tour_algebra.rst b/src/doc/it/tutorial/tour_algebra.rst
+index 5a5311e9b1c..5a153e6fb75 100644
+--- a/src/doc/it/tutorial/tour_algebra.rst
++++ b/src/doc/it/tutorial/tour_algebra.rst
+@@ -183,8 +183,8 @@ la notazione :math:`x=x_{1}`, :math:`y=x_{2}`:
+ ::
+ 
+     sage: de1 = maxima("2*diff(x(t),t, 2) + 6*x(t) - 2*y(t)")
+-    sage: lde1 = de1.laplace("t","s"); lde1
+-    2*((-%at('diff(x(t),t,1),t = 0))+s^2*'laplace(x(t),t,s)-x(0)*s) -2*'laplace(y(t),t,s)+6*'laplace(x(t),t,s)
++    sage: lde1 = de1.laplace("t","s"); lde1.sage()
++    2*s^2*laplace(x(t), t, s) - 2*s*x(0) + 6*laplace(x(t), t, s) - 2*laplace(y(t), t, s) - 2*D[0](x)(0)
+ 
+ Questo è di difficile lettura, ma dice che
+ 
+@@ -198,8 +198,8 @@ trasformata di Laplace della seconda equazione:
+ ::
+ 
+     sage: de2 = maxima("diff(y(t),t, 2) + 2*y(t) - 2*x(t)")
+-    sage: lde2 = de2.laplace("t","s"); lde2
+-    (-%at('diff(y(t),t,1),t = 0))+s^2*'laplace(y(t),t,s) +2*'laplace(y(t),t,s)-2*'laplace(x(t),t,s) -y(0)*s
++    sage: lde2 = de2.laplace("t","s"); lde2.sage()
++    s^2*laplace(y(t), t, s) - s*y(0) - 2*laplace(x(t), t, s) + 2*laplace(y(t), t, s) - D[0](y)(0)
+ 
+ che significa
+ 
+diff --git a/src/doc/ja/tutorial/interfaces.rst b/src/doc/ja/tutorial/interfaces.rst
+index 9c16b2eba08..b48087c7bca 100644
+--- a/src/doc/ja/tutorial/interfaces.rst
++++ b/src/doc/ja/tutorial/interfaces.rst
+@@ -239,8 +239,8 @@ Sage/Maximaインターフェイスの使い方を例示するため，ここで
+     matrix([1,1/2,1/3,1/4],[0,0,0,0],[0,0,0,0],[0,0,0,0])
+     sage: A.eigenvalues()
+     [[0,4],[3,1]]
+-    sage: A.eigenvectors()
+-    [[[0,4],[3,1]],[[[1,0,0,-4],[0,1,0,-2],[0,0,1,-4/3]],[[1,2,3,4]]]]
++    sage: A.eigenvectors().sage()
++    [[[0, 4], [3, 1]], [[[1, 0, 0, -4], [0, 1, 0, -2], [0, 0, 1, -4/3]], [[1, 2, 3, 4]]]]
+ 
+ 
+ 使用例をもう一つ示す:
+@@ -301,8 +301,8 @@ Sage/Maximaインターフェイスの使い方を例示するため，ここで
+ 
+     sage: maxima("expr_1: 5*cos(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0) - 10.0")
+     5*cos(x)*(sin(x/2)*sin(2*y)+cos(x/2)*cos(y)+3.0)-10.0
+-    sage: maxima("expr_2: -5*sin(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)")
+-    -5*sin(x)*(sin(x/2)*sin(2*y)+cos(x/2)*cos(y)+3.0)
++    sage: maxima("expr_2: -5*sin(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)").sage()
++    -5*(cos(1/2*x)*cos(y) + sin(1/2*x)*sin(2*y) + 3.0)*sin(x)
+     sage: maxima("expr_3: 5*(-sin(x/2)*cos(y) + cos(x/2)*sin(2*y))")
+     5*(cos(x/2)*sin(2*y)-sin(x/2)*cos(y))
+     sage: maxima.plot3d ("[expr_1, expr_2, expr_3]", "[x, -%pi, %pi]",  # not tested
+diff --git a/src/doc/ja/tutorial/tour_algebra.rst b/src/doc/ja/tutorial/tour_algebra.rst
+index 784fd0d5c40..64edd47b930 100644
+--- a/src/doc/ja/tutorial/tour_algebra.rst
++++ b/src/doc/ja/tutorial/tour_algebra.rst
+@@ -213,8 +213,8 @@ Sageを使って常微分方程式を研究することもできる． :math:`x'
+ ::
+ 
+     sage: de1 = maxima("2*diff(x(t),t, 2) + 6*x(t) - 2*y(t)")
+-    sage: lde1 = de1.laplace("t","s"); lde1
+-    2*((-%at('diff(x(t),t,1),t = 0))+s^2*'laplace(x(t),t,s)-x(0)*s) -2*'laplace(y(t),t,s)+6*'laplace(x(t),t,s)
++    sage: lde1 = de1.laplace("t","s"); lde1.sage()
++    2*s^2*laplace(x(t), t, s) - 2*s*x(0) + 6*laplace(x(t), t, s) - 2*laplace(y(t), t, s) - 2*D[0](x)(0)
+ 
+ この出力は読みにくいけれども，意味しているのは
+ 
+@@ -227,8 +227,8 @@ Sageを使って常微分方程式を研究することもできる． :math:`x'
+ ::
+ 
+     sage: de2 = maxima("diff(y(t),t, 2) + 2*y(t) - 2*x(t)")
+-    sage: lde2 = de2.laplace("t","s"); lde2
+-    (-%at('diff(y(t),t,1),t = 0))+s^2*'laplace(y(t),t,s) +2*'laplace(y(t),t,s)-2*'laplace(x(t),t,s) -y(0)*s
++    sage: lde2 = de2.laplace("t","s"); lde2.sage()
++    s^2*laplace(y(t), t, s) - s*y(0) - 2*laplace(x(t), t, s) + 2*laplace(y(t), t, s) - D[0](y)(0)
+ 
+ 意味するところは
+ 
+diff --git a/src/doc/pt/tutorial/interfaces.rst b/src/doc/pt/tutorial/interfaces.rst
+index 386ef6456e5..b993b304a35 100644
+--- a/src/doc/pt/tutorial/interfaces.rst
++++ b/src/doc/pt/tutorial/interfaces.rst
+@@ -269,8 +269,8 @@ entrada :math:`i,j` é :math:`i/j`, para :math:`i,j=1,\ldots,4`.
+     matrix([1,1/2,1/3,1/4],[0,0,0,0],[0,0,0,0],[0,0,0,0])
+     sage: A.eigenvalues()
+     [[0,4],[3,1]]
+-    sage: A.eigenvectors()
+-    [[[0,4],[3,1]],[[[1,0,0,-4],[0,1,0,-2],[0,0,1,-4/3]],[[1,2,3,4]]]]
++    sage: A.eigenvectors().sage()
++    [[[0, 4], [3, 1]], [[[1, 0, 0, -4], [0, 1, 0, -2], [0, 0, 1, -4/3]], [[1, 2, 3, 4]]]]
+ 
+ Aqui vai outro exemplo:
+ 
+@@ -333,8 +333,8 @@ E agora a famosa garrafa de Klein:
+     sage: maxima("expr_1: 5*cos(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)"
+     ....:        "- 10.0")
+     5*cos(x)*(sin(x/2)*sin(2*y)+cos(x/2)*cos(y)+3.0)-10.0
+-    sage: maxima("expr_2: -5*sin(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)")
+-    -5*sin(x)*(sin(x/2)*sin(2*y)+cos(x/2)*cos(y)+3.0)
++    sage: maxima("expr_2: -5*sin(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)").sage()
++    -5*(cos(1/2*x)*cos(y) + sin(1/2*x)*sin(2*y) + 3.0)*sin(x)
+     sage: maxima("expr_3: 5*(-sin(x/2)*cos(y) + cos(x/2)*sin(2*y))")
+     5*(cos(x/2)*sin(2*y)-sin(x/2)*cos(y))
+     sage: maxima.plot3d("[expr_1, expr_2, expr_3]", "[x, -%pi, %pi]", # not tested
+diff --git a/src/doc/pt/tutorial/tour_algebra.rst b/src/doc/pt/tutorial/tour_algebra.rst
+index baeb37b1c71..b3cbd06d8d9 100644
+--- a/src/doc/pt/tutorial/tour_algebra.rst
++++ b/src/doc/pt/tutorial/tour_algebra.rst
+@@ -205,8 +205,8 @@ equação (usando a notação :math:`x=x_{1}`, :math:`y=x_{2}`):
+ ::
+ 
+     sage: de1 = maxima("2*diff(x(t),t, 2) + 6*x(t) - 2*y(t)")
+-    sage: lde1 = de1.laplace("t","s"); lde1
+-    2*((-%at('diff(x(t),t,1),t = 0))+s^2*'laplace(x(t),t,s)-x(0)*s) -2*'laplace(y(t),t,s)+6*'laplace(x(t),t,s)
++    sage: lde1 = de1.laplace("t","s"); lde1.sage()
++    2*s^2*laplace(x(t), t, s) - 2*s*x(0) + 6*laplace(x(t), t, s) - 2*laplace(y(t), t, s) - 2*D[0](x)(0)
+ 
+ O resultado é um pouco difícil de ler, mas diz que
+ 
+@@ -220,8 +220,8 @@ calcule a transformada de Laplace da segunda equação:
+ ::
+ 
+     sage: de2 = maxima("diff(y(t),t, 2) + 2*y(t) - 2*x(t)")
+-    sage: lde2 = de2.laplace("t","s"); lde2
+-    (-%at('diff(y(t),t,1),t = 0))+s^2*'laplace(y(t),t,s) +2*'laplace(y(t),t,s)-2*'laplace(x(t),t,s) -y(0)*s
++    sage: lde2 = de2.laplace("t","s"); lde2.sage()
++    s^2*laplace(y(t), t, s) - s*y(0) - 2*laplace(x(t), t, s) + 2*laplace(y(t), t, s) - D[0](y)(0)
+ 
+ O resultado significa que
+ 
+diff --git a/src/doc/ru/tutorial/interfaces.rst b/src/doc/ru/tutorial/interfaces.rst
+index ea84527f478..7d7886b26cf 100644
+--- a/src/doc/ru/tutorial/interfaces.rst
++++ b/src/doc/ru/tutorial/interfaces.rst
+@@ -264,8 +264,8 @@ gnuplot, имеет методы решения и манипуляции мат
+     matrix([1,1/2,1/3,1/4],[0,0,0,0],[0,0,0,0],[0,0,0,0])
+     sage: A.eigenvalues()
+     [[0,4],[3,1]]
+-    sage: A.eigenvectors()
+-    [[[0,4],[3,1]],[[[1,0,0,-4],[0,1,0,-2],[0,0,1,-4/3]],[[1,2,3,4]]]]
++    sage: A.eigenvectors().sage()
++    [[[0, 4], [3, 1]], [[[1, 0, 0, -4], [0, 1, 0, -2], [0, 0, 1, -4/3]], [[1, 2, 3, 4]]]]
+ 
+ Вот другой пример:
+ 
+@@ -325,8 +325,8 @@ gnuplot, имеет методы решения и манипуляции мат
+ 
+     sage: maxima("expr_1: 5*cos(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0) - 10.0")
+     5*cos(x)*(sin(x/2)*sin(2*y)+cos(x/2)*cos(y)+3.0)-10.0
+-    sage: maxima("expr_2: -5*sin(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)")
+-    -5*sin(x)*(sin(x/2)*sin(2*y)+cos(x/2)*cos(y)+3.0)
++    sage: maxima("expr_2: -5*sin(x)*(cos(x/2)*cos(y) + sin(x/2)*sin(2*y)+ 3.0)").sage()
++    -5*(cos(1/2*x)*cos(y) + sin(1/2*x)*sin(2*y) + 3.0)*sin(x)
+     sage: maxima("expr_3: 5*(-sin(x/2)*cos(y) + cos(x/2)*sin(2*y))")
+     5*(cos(x/2)*sin(2*y)-sin(x/2)*cos(y))
+     sage: maxima.plot3d ("[expr_1, expr_2, expr_3]", "[x, -%pi, %pi]", # not tested
+diff --git a/src/doc/ru/tutorial/tour_algebra.rst b/src/doc/ru/tutorial/tour_algebra.rst
+index 9f08c41d118..107571f6018 100644
+--- a/src/doc/ru/tutorial/tour_algebra.rst
++++ b/src/doc/ru/tutorial/tour_algebra.rst
+@@ -199,8 +199,8 @@ Sage может использоваться для решения диффер
+ ::
+ 
+     sage: de1 = maxima("2*diff(x(t),t, 2) + 6*x(t) - 2*y(t)")
+-    sage: lde1 = de1.laplace("t","s"); lde1
+-    2*((-%at('diff(x(t),t,1),t = 0))+s^2*'laplace(x(t),t,s)-x(0)*s) -2*'laplace(y(t),t,s)+6*'laplace(x(t),t,s)
++    sage: lde1 = de1.laplace("t","s"); lde1.sage()
++    2*s^2*laplace(x(t), t, s) - 2*s*x(0) + 6*laplace(x(t), t, s) - 2*laplace(y(t), t, s) - 2*D[0](x)(0)
+ 
+ Данный результат тяжело читаем, однако должен быть понят как
+ 
+@@ -211,8 +211,8 @@ Sage может использоваться для решения диффер
+ ::
+ 
+     sage: de2 = maxima("diff(y(t),t, 2) + 2*y(t) - 2*x(t)")
+-    sage: lde2 = de2.laplace("t","s"); lde2
+-    (-%at('diff(y(t),t,1),t = 0))+s^2*'laplace(y(t),t,s) +2*'laplace(y(t),t,s)-2*'laplace(x(t),t,s) -y(0)*s
++    sage: lde2 = de2.laplace("t","s"); lde2.sage()
++    s^2*laplace(y(t), t, s) - s*y(0) - 2*laplace(x(t), t, s) + 2*laplace(y(t), t, s) - D[0](y)(0)
+ 
+ Результат:
+ 
+diff --git a/src/sage/calculus/calculus.py b/src/sage/calculus/calculus.py
+index c707530b9f1..f7ce8b95727 100644
+--- a/src/sage/calculus/calculus.py
++++ b/src/sage/calculus/calculus.py
+@@ -783,7 +783,7 @@ def nintegral(ex, x, a, b,
+     Now numerically integrating, we see why the answer is wrong::
+ 
+         sage: f.nintegrate(x,0,1)
+-        (-480.0000000000001, 5.32907051820075...e-12, 21, 0)
++        (-480.000000000000..., 5.32907051820075...e-12, 21, 0)
+ 
+     It is just because every floating point evaluation of return -480.0
+     in floating point.
+@@ -1336,7 +1336,7 @@ def limit(ex, dir=None, taylor=False, algorithm='maxima', **argv):
+         sage: limit(floor(x), x=0, dir='+')
+         0
+         sage: limit(floor(x), x=0)
+-        und
++        ...nd
+ 
+     Maxima gives the right answer here, too, showing
+     that :trac:`4142` is fixed::
+diff --git a/src/sage/calculus/desolvers.py b/src/sage/calculus/desolvers.py
+index e0c31925f44..6e91f7e2bb4 100644
+--- a/src/sage/calculus/desolvers.py
++++ b/src/sage/calculus/desolvers.py
+@@ -295,7 +295,7 @@ def desolve(de, dvar, ics=None, ivar=None, show_method=False, contrib_ode=False,
+     Clairaut equation: general and singular solutions::
+ 
+         sage: desolve(diff(y,x)^2+x*diff(y,x)-y==0,y,contrib_ode=True,show_method=True)
+-        [[y(x) == _C^2 + _C*x, y(x) == -1/4*x^2], 'clairault']
++        [[y(x) == _C^2 + _C*x, y(x) == -1/4*x^2], 'clairau...']
+ 
+     For equations involving more variables we specify an independent variable::
+ 
+@@ -1325,7 +1325,7 @@ def desolve_rk4(de, dvar, ics=None, ivar=None, end_points=None, step=0.1, output
+ 
+         sage: x,y = var('x,y')
+         sage: desolve_rk4(x*y*(2-y),y,ics=[0,1],end_points=1,step=0.5)
+-        [[0, 1], [0.5, 1.12419127424558], [1.0, 1.461590162288825]]
++        [[0, 1], [0.5, 1.12419127424558], [1.0, 1.46159016228882...]]
+ 
+     Variant 1 for input - we can pass ODE in the form used by
+     desolve function In this example we integrate backwards, since
+@@ -1333,7 +1333,7 @@ def desolve_rk4(de, dvar, ics=None, ivar=None, end_points=None, step=0.1, output
+ 
+         sage: y = function('y')(x)
+         sage: desolve_rk4(diff(y,x)+y*(y-1) == x-2,y,ics=[1,1],step=0.5, end_points=0)
+-        [[0.0, 8.904257108962112], [0.5, 1.909327945361535], [1, 1]]
++        [[0.0, 8.904257108962112], [0.5, 1.90932794536153...], [1, 1]]
+ 
+     Here we show how to plot simple pictures. For more advanced
+     applications use list_plot instead. To see the resulting picture
+diff --git a/src/sage/functions/bessel.py b/src/sage/functions/bessel.py
+index 95405c3d72f..c53935d60fe 100644
+--- a/src/sage/functions/bessel.py
++++ b/src/sage/functions/bessel.py
+@@ -294,8 +294,8 @@ class Function_Bessel_J(BuiltinFunction):
+         sage: f.integrate(x)
+         1/24*x^3*hypergeometric((3/2,), (5/2, 3), -1/4*x^2)
+         sage: m = maxima(bessel_J(2, x))
+-        sage: m.integrate(x)
+-        (hypergeometric([3/2],[5/2,3],-_SAGE_VAR_x^2/4)*_SAGE_VAR_x^3)/24
++        sage: m.integrate(x).sage()
++        1/24*x^3*hypergeometric((3/2,), (5/2, 3), -1/4*x^2)
+ 
+     Visualization (set plot_points to a higher value to get more detail)::
+ 
+@@ -1121,8 +1121,8 @@ def Bessel(*args, **kwds):
+         sage: f = maxima(Bessel(typ='K')(x,y))
+         sage: f.derivative('_SAGE_VAR_x')
+         (%pi*csc(%pi*_SAGE_VAR_x) *('diff(bessel_i(-_SAGE_VAR_x,_SAGE_VAR_y),_SAGE_VAR_x,1) -'diff(bessel_i(_SAGE_VAR_x,_SAGE_VAR_y),_SAGE_VAR_x,1))) /2 -%pi*bessel_k(_SAGE_VAR_x,_SAGE_VAR_y)*cot(%pi*_SAGE_VAR_x)
+-        sage: f.derivative('_SAGE_VAR_y')
+-        -(bessel_k(_SAGE_VAR_x+1,_SAGE_VAR_y)+bessel_k(_SAGE_VAR_x-1, _SAGE_VAR_y))/2
++        sage: f.derivative('_SAGE_VAR_y').sage()
++        -1/2*bessel_K(x + 1, y) - 1/2*bessel_K(x - 1, y)
+ 
+     Compute the particular solution to Bessel's Differential Equation that
+     satisfies `y(1) = 1` and `y'(1) = 1`, then verify the initial conditions
+diff --git a/src/sage/functions/hypergeometric.py b/src/sage/functions/hypergeometric.py
+index 752b8422fc6..fc2fb5875ce 100644
+--- a/src/sage/functions/hypergeometric.py
++++ b/src/sage/functions/hypergeometric.py
+@@ -19,8 +19,11 @@ Examples from :trac:`9908`::
+     sage: sum(((2*I)^x/(x^3 + 1)*(1/4)^x), x, 0, oo)
+     hypergeometric((1, 1, -1/2*I*sqrt(3) - 1/2, 1/2*I*sqrt(3) - 1/2),...
+     (2, -1/2*I*sqrt(3) + 1/2, 1/2*I*sqrt(3) + 1/2), 1/2*I)
+-    sage: sum((-1)^x/((2*x + 1)*factorial(2*x + 1)), x, 0, oo)
++    sage: res = sum((-1)^x/((2*x + 1)*factorial(2*x + 1)), x, 0, oo)
++    sage: res  # not tested - depends on maxima version
+     hypergeometric((1/2,), (3/2, 3/2), -1/4)
++    sage: res in [hypergeometric((1/2,), (3/2, 3/2), -1/4), sin_integral(1)]
++    True
+ 
+ Simplification (note that ``simplify_full`` does not yet call
+ ``simplify_hypergeometric``)::
+diff --git a/src/sage/functions/orthogonal_polys.py b/src/sage/functions/orthogonal_polys.py
+index 7398c763971..6127f5d9490 100644
+--- a/src/sage/functions/orthogonal_polys.py
++++ b/src/sage/functions/orthogonal_polys.py
+@@ -974,7 +974,7 @@ class Func_chebyshev_U(ChebyshevFunction):
+             sage: chebyshev_U(x, x)._sympy_()
+             chebyshevu(x, x)
+             sage: maxima(chebyshev_U(2,x, hold=True))
+-            3*((-(8*(1-_SAGE_VAR_x))/3)+(4*(1-_SAGE_VAR_x)^2)/3+1)
++            3*(...-...(8*(1-_SAGE_VAR_x))/3)+(4*(1-_SAGE_VAR_x)^2)/3+1)
+             sage: maxima(chebyshev_U(n,x, hold=True))
+             chebyshev_u(_SAGE_VAR_n,_SAGE_VAR_x)
+         """
+diff --git a/src/sage/functions/other.py b/src/sage/functions/other.py
+index 3e2570e889e..39e144d9ca2 100644
+--- a/src/sage/functions/other.py
++++ b/src/sage/functions/other.py
+@@ -501,7 +501,7 @@ class Function_floor(BuiltinFunction):
+             sage: a = floor(5.4 + x); a
+             floor(x + 5.40000000000000)
+             sage: a.simplify()
+-            floor(x + 0.4000000000000004) + 5
++            floor(x + 0.400000000000000...) + 5
+             sage: a(x=2)
+             7
+ 
+diff --git a/src/sage/functions/special.py b/src/sage/functions/special.py
+index faa6a73cc7e..3978392dba0 100644
+--- a/src/sage/functions/special.py
++++ b/src/sage/functions/special.py
+@@ -457,7 +457,7 @@ class EllipticE(BuiltinFunction):
+         elliptic_e(z, 1)
+         sage: # this is still wrong: must be abs(sin(z)) + 2*round(z/pi)
+         sage: elliptic_e(z, 1).simplify()
+-        2*round(z/pi) + sin(z)
++        2*round(z/pi) ... sin(...z)
+         sage: elliptic_e(z, 0)
+         z
+         sage: elliptic_e(0.5, 0.1)  # abs tol 2e-15
+diff --git a/src/sage/interfaces/interface.py b/src/sage/interfaces/interface.py
+index 6baa4eb597c..bacbbfe87f9 100644
+--- a/src/sage/interfaces/interface.py
++++ b/src/sage/interfaces/interface.py
+@@ -1581,18 +1581,18 @@ class InterfaceElement(Element):
+             sage: f = maxima.function('x','sin(x)')
+             sage: g = maxima('-cos(x)') # not a function!
+             sage: f*g
+-            -cos(x)*sin(x)
++            -...cos(x)*sin(x)...
+             sage: _(2)
+-            -cos(2)*sin(2)
++            -...cos(2)*sin(2)...
+ 
+         ::
+ 
+             sage: f = maxima.function('x','sin(x)')
+             sage: g = maxima('-cos(x)')
+             sage: g*f
+-            -cos(x)*sin(x)
++            -...cos(x)*sin(x)...
+             sage: _(2)
+-            -cos(2)*sin(2)
++            -...cos(2)*sin(2)...
+             sage: 2*f
+             2*sin(x)
+         """
+@@ -1614,18 +1614,18 @@ class InterfaceElement(Element):
+             sage: f = maxima.function('x','sin(x)')
+             sage: g = maxima('-cos(x)')
+             sage: f/g
+-            -sin(x)/cos(x)
++            -...sin(x)/cos(x)...
+             sage: _(2)
+-            -sin(2)/cos(2)
++            -...sin(2)/cos(2)...
+ 
+         ::
+ 
+             sage: f = maxima.function('x','sin(x)')
+             sage: g = maxima('-cos(x)')
+             sage: g/f
+-            -cos(x)/sin(x)
++            -...cos(x)/sin(x)...
+             sage: _(2)
+-            -cos(2)/sin(2)
++            -...cos(2)/sin(2)...
+             sage: 2/f
+             2/sin(x)
+         """
+diff --git a/src/sage/interfaces/maxima.py b/src/sage/interfaces/maxima.py
+index 4829560f98b..ebbd9133734 100644
+--- a/src/sage/interfaces/maxima.py
++++ b/src/sage/interfaces/maxima.py
+@@ -51,7 +51,7 @@ The first way yields a Maxima object.
+ 
+     sage: F = maxima.factor('x^5 - y^5')
+     sage: F
+-    -(y-x)*(y^4+x*y^3+x^2*y^2+x^3*y+x^4)
++    -...(y-x)*(y^4+x*y^3+x^2*y^2+x^3*y+x^4)...
+     sage: type(F)
+     <class 'sage.interfaces.maxima.MaximaElement'>
+ 
+@@ -72,9 +72,9 @@ data to other systems.
+ ::
+ 
+     sage: repr(F)
+-    '-(y-x)*(y^4+x*y^3+x^2*y^2+x^3*y+x^4)'
++    '-...(y-x)*(y^4+x*y^3+x^2*y^2+x^3*y+x^4)...'
+     sage: F.str()
+-    '-(y-x)*(y^4+x*y^3+x^2*y^2+x^3*y+x^4)'
++    '-...(y-x)*(y^4+x*y^3+x^2*y^2+x^3*y+x^4)...'
+ 
+ The ``maxima.eval`` command evaluates an expression in
+ maxima and returns the result as a *string* not a maxima object.
+@@ -82,7 +82,7 @@ maxima and returns the result as a *string* not a maxima object.
+ ::
+ 
+     sage: print(maxima.eval('factor(x^5 - y^5)'))
+-    -(y-x)*(y^4+x*y^3+x^2*y^2+x^3*y+x^4)
++    -...(y-x)*(y^4+x*y^3+x^2*y^2+x^3*y+x^4)...
+ 
+ We can create the polynomial `f` as a Maxima polynomial,
+ then call the factor method on it. Notice that the notation
+@@ -95,7 +95,7 @@ works.
+     sage: f^2
+     (x^5-y^5)^2
+     sage: f.factor()
+-    -(y-x)*(y^4+x*y^3+x^2*y^2+x^3*y+x^4)
++    -...(y-x)*(y^4+x*y^3+x^2*y^2+x^3*y+x^4)...
+ 
+ Control-C interruption works well with the maxima interface,
+ because of the excellent implementation of maxima. For example, try
+@@ -161,20 +161,20 @@ http://maxima.sourceforge.net/docs/intromax/intromax.html.
+ 
+     sage: eqn = maxima(['a+b*c=1', 'b-a*c=0', 'a+b=5'])
+     sage: s = eqn.solve('[a,b,c]'); s
+-    [[a = -(sqrt(79)*%i-11)/4,b = (sqrt(79)*%i+9)/4, c = (sqrt(79)*%i+1)/10], [a = (sqrt(79)*%i+11)/4,b = -(sqrt(79)*%i-9)/4, c = -(sqrt(79)*%i-1)/10]]
++    [[a = -...(sqrt(79)*%i-11)/4...,b = (sqrt(79)*%i+9)/4, c = (sqrt(79)*%i+1)/10], [a = (sqrt(79)*%i+11)/4,b = -...(sqrt(79)*%i-9)/4..., c = -...(sqrt(79)*%i-1)/10...]]
+ 
+ Here is an example of solving an algebraic equation::
+ 
+     sage: maxima('x^2+y^2=1').solve('y')
+     [y = -sqrt(1-x^2),y = sqrt(1-x^2)]
+     sage: maxima('x^2 + y^2 = (x^2 - y^2)/sqrt(x^2 + y^2)').solve('y')
+-    [y = -sqrt(((-y^2)-x^2)*sqrt(y^2+x^2)+x^2), y = sqrt(((-y^2)-x^2)*sqrt(y^2+x^2)+x^2)]
++    [y = -sqrt((...-y^2...-x^2)*sqrt(y^2+x^2)+x^2), y = sqrt((...-y^2...-x^2)*sqrt(y^2+x^2)+x^2)]
+ 
+ 
+ You can even nicely typeset the solution in latex::
+ 
+     sage: latex(s)
+-    \left[ \left[ a=-{{\sqrt{79}\,i-11}\over{4}} , b={{\sqrt{79}\,i+9  }\over{4}} , c={{\sqrt{79}\,i+1}\over{10}} \right]  , \left[ a={{  \sqrt{79}\,i+11}\over{4}} , b=-{{\sqrt{79}\,i-9}\over{4}} , c=-{{  \sqrt{79}\,i-1}\over{10}} \right]  \right]
++    \left[ \left[ a=-...{{\sqrt{79}\,i-11}\over{4}}... , b={{...\sqrt{79}\,i+9...}\over{4}} , c={{\sqrt{79}\,i+1}\over{10}} \right]  , \left[ a={{...\sqrt{79}\,i+11}\over{4}} , b=-...{{\sqrt{79}\,i-9...}\over{4}}... , c=-...{{...\sqrt{79}\,i-1}\over{10}}... \right]  \right]
+ 
+ To have the above appear onscreen via ``xdvi``, type
+ ``view(s)``. (TODO: For OS X should create pdf output
+@@ -200,7 +200,7 @@ and use preview instead?)
+     sage: f.diff('x')
+     k*x^3*%e^(k*x)*sin(w*x)+3*x^2*%e^(k*x)*sin(w*x)+w*x^3*%e^(k*x) *cos(w*x)
+     sage: f.integrate('x')
+-    (((k*w^6+3*k^3*w^4+3*k^5*w^2+k^7)*x^3 +(3*w^6+3*k^2*w^4-3*k^4*w^2-3*k^6)*x^2+((-18*k*w^4)-12*k^3*w^2+6*k^5)*x-6*w^4 +36*k^2*w^2-6*k^4) *%e^(k*x)*sin(w*x) +(((-w^7)-3*k^2*w^5-3*k^4*w^3-k^6*w)*x^3 +(6*k*w^5+12*k^3*w^3+6*k^5*w)*x^2+(6*w^5-12*k^2*w^3-18*k^4*w)*x-24*k*w^3 +24*k^3*w) *%e^(k*x)*cos(w*x)) /(w^8+4*k^2*w^6+6*k^4*w^4+4*k^6*w^2+k^8)
++    (((k*w^6+3*k^3*w^4+3*k^5*w^2+k^7)*x^3 +(3*w^6+3*k^2*w^4-3*k^4*w^2-3*k^6)*x^2+(...-...18*k*w^4)-12*k^3*w^2+6*k^5)*x-6*w^4 +36*k^2*w^2-6*k^4) *%e^(k*x)*sin(w*x) +((...-w^7...-3*k^2*w^5-3*k^4*w^3-k^6*w)*x^3...+(6*k*w^5+12*k^3*w^3+6*k^5*w)*x^2...+(6*w^5-12*k^2*w^3-18*k^4*w)*x-24*k*w^3 +24*k^3*w) *%e^(k*x)*cos(w*x)) /(w^8+4*k^2*w^6+6*k^4*w^4+4*k^6*w^2+k^8)
+ 
+ ::
+ 
+@@ -234,7 +234,7 @@ is `i/j`, for `i,j=1,\ldots,4`.
+     sage: A.eigenvalues()
+     [[0,4],[3,1]]
+     sage: A.eigenvectors()
+-    [[[0,4],[3,1]],[[[1,0,0,-4],[0,1,0,-2],[0,0,1,-4/3]],[[1,2,3,4]]]]
++    [[[0,4],[3,1]],[[[1,0,0,-4],[0,1,0,-2],[0,0,1,-...4/3...]],[[1,2,3,4]]]]
+ 
+ We can also compute the echelon form in Sage::
+ 
+@@ -287,12 +287,12 @@ We illustrate Laplace transforms::
+ ::
+ 
+     sage: maxima("laplace(diff(x(t),t,2),t,s)")
+-    (-%at('diff(x(t),t,1),t = 0))+s^2*'laplace(x(t),t,s)-x(0)*s
++    ...-...%at('diff(x(t),t,1),t = 0))+s^2*'laplace(x(t),t,s)-x(0)*s
+ 
+ It is difficult to read some of these without the 2d
+ representation::
+ 
+-    sage: print(maxima("laplace(diff(x(t),t,2),t,s)"))
++    sage: print(maxima("laplace(diff(x(t),t,2),t,s)")) # not tested - depends on maxima version
+                              !
+                     d        !          2
+                  (- -- (x(t))!     ) + s  laplace(x(t), t, s) - x(0) s
+@@ -396,7 +396,7 @@ Here's another example::
+ 
+     sage: g = maxima('exp(3*%i*x)/(6*%i) + exp(%i*x)/(2*%i) + c')
+     sage: latex(g)
+-    -{{i\,e^{3\,i\,x}}\over{6}}-{{i\,e^{i\,x}}\over{2}}+c
++    -...{{i\,e^{3\,i\,x}}\over{6}}...-{{i\,e^{i\,x}}\over{2}}+c
+ 
+ Long Input
+ ----------
+@@ -684,7 +684,7 @@ class Maxima(MaximaAbstract, Expect):
+             sage: maxima.assume('a>0')
+             [a > 0]
+             sage: maxima('integrate(1/(x^3*(a+b*x)^(1/3)),x)')
+-            (-(b^2*log((b*x+a)^(2/3)+a^(1/3)*(b*x+a)^(1/3)+a^(2/3)))/(9*a^(7/3))) +(2*b^2*atan((2*(b*x+a)^(1/3)+a^(1/3))/(sqrt(3)*a^(1/3))))/(3^(3/2)*a^(7/3)) +(2*b^2*log((b*x+a)^(1/3)-a^(1/3)))/(9*a^(7/3)) +(4*b^2*(b*x+a)^(5/3)-7*a*b^2*(b*x+a)^(2/3)) /(6*a^2*(b*x+a)^2-12*a^3*(b*x+a)+6*a^4)
++            ...-...(b^2*log((b*x+a)^(2/3)+a^(1/3)*(b*x+a)^(1/3)+a^(2/3)))/(9*a^(7/3))) +(2*b^2*atan((2*(b*x+a)^(1/3)+a^(1/3))/(sqrt(3)*a^(1/3))))/(3^(3/2)*a^(7/3)) +(2*b^2*log((b*x+a)^(1/3)-a^(1/3)))/(9*a^(7/3)) +(4*b^2*(b*x+a)^(5/3)-7*a*b^2*(b*x+a)^(2/3)) /(6*a^2*(b*x+a)^2-12*a^3*(b*x+a)+6*a^4)
+             sage: maxima('integrate(x^n,x)')
+             Traceback (most recent call last):
+             ...
+diff --git a/src/sage/interfaces/maxima_abstract.py b/src/sage/interfaces/maxima_abstract.py
+index 4f6306ba4fc..a5b5f35d188 100644
+--- a/src/sage/interfaces/maxima_abstract.py
++++ b/src/sage/interfaces/maxima_abstract.py
+@@ -856,9 +856,9 @@ class MaximaAbstract(ExtraTabCompletion, Interface):
+             sage: maxima.de_solve('diff(y,x,2) + 3*x = y', ['x','y'])
+             y = %k1*%e^x+%k2*%e^-x+3*x
+             sage: maxima.de_solve('diff(y,x) + 3*x = y', ['x','y'])
+-            y = (%c-3*((-x)-1)*%e^-x)*%e^x
++            y = (%c-3*(...-x...-1)*%e^-x)*%e^x
+             sage: maxima.de_solve('diff(y,x) + 3*x = y', ['x','y'],[1,1])
+-            y = -%e^-1*(5*%e^x-3*%e*x-3*%e)
++            y = -...%e^-1*(5*%e^x-3*%e*x-3*%e)...
+         """
+         if not isinstance(vars, str):
+             str_vars = '%s, %s'%(vars[1], vars[0])
+@@ -1573,7 +1573,7 @@ class MaximaAbstractElement(ExtraTabCompletion, InterfaceElement):
+         ::
+ 
+             sage: f = maxima('exp(x^2)').integral('x',0,1); f
+-            -(sqrt(%pi)*%i*erf(%i))/2
++            -...(sqrt(%pi)*%i*erf(%i))/2...
+             sage: f.numer()
+             1.46265174590718...
+         """
+diff --git a/src/sage/interfaces/maxima_lib.py b/src/sage/interfaces/maxima_lib.py
+index bba8504aa92..c90196a0a48 100644
+--- a/src/sage/interfaces/maxima_lib.py
++++ b/src/sage/interfaces/maxima_lib.py
+@@ -133,6 +133,7 @@ if MAXIMA_FAS:
+     ecl_eval("(require 'maxima \"{}\")".format(MAXIMA_FAS))
+ else:
+     ecl_eval("(require 'maxima)")
++ecl_eval("(maxima::initialize-runtime-globals)")
+ ecl_eval("(in-package :maxima)")
+ ecl_eval("(setq $nolabels t))")
+ ecl_eval("(defvar *MAXIMA-LANG-SUBDIR* NIL)")
+diff --git a/src/sage/matrix/matrix1.pyx b/src/sage/matrix/matrix1.pyx
+index f38c429d994..47df9fc80a5 100644
+--- a/src/sage/matrix/matrix1.pyx
++++ b/src/sage/matrix/matrix1.pyx
+@@ -248,7 +248,7 @@ cdef class Matrix(Matrix0):
+             sage: a = maxima(m); a
+             matrix([0,1,2],[3,4,5],[6,7,8])
+             sage: a.charpoly('x').expand()
+-            (-x^3)+12*x^2+18*x
++            ...-x^3...+12*x^2+18*x
+             sage: m.charpoly()
+             x^3 - 12*x^2 - 18*x
+         """
+diff --git a/src/sage/modules/free_module_element.pyx b/src/sage/modules/free_module_element.pyx
+index 0532ea0c9bd..94e63fdc5f8 100644
+--- a/src/sage/modules/free_module_element.pyx
++++ b/src/sage/modules/free_module_element.pyx
+@@ -4054,7 +4054,7 @@ cdef class FreeModuleElement(Vector):   # abstract base class
+             sage: r=vector([t,t^2,sin(t)])
+             sage: vec,answers=r.nintegral(t,0,1)
+             sage: vec
+-            (0.5, 0.3333333333333334, 0.4596976941318602)
++            (0.5, 0.333333333333333..., 0.4596976941318602...)
+             sage: type(vec)
+             <class 'sage.modules.vector_real_double_dense.Vector_real_double_dense'>
+             sage: answers
+diff --git a/src/sage/symbolic/relation.py b/src/sage/symbolic/relation.py
+index a72ab547c76..e0a3692a8ab 100644
+--- a/src/sage/symbolic/relation.py
++++ b/src/sage/symbolic/relation.py
+@@ -659,7 +659,7 @@ def solve(f, *args, **kwds):
+ 
+         sage: sols = solve([x^3==y,y^2==x], [x,y]); sols[-1], sols[0]
+         ([x == 0, y == 0],
+-         [x == (0.3090169943749475 + 0.9510565162951535*I),
++         [x == (0.309016994374947... + 0.9510565162951535*I),
+           y == (-0.8090169943749475 - 0.5877852522924731*I)])
+         sage: sols[0][0].rhs().pyobject().parent()
+         Complex Double Field
