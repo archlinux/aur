@@ -68,8 +68,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_name}"
-    make clean
     qmake PREFIX=/usr moment.pro
+    make clean
     make
 }
 
