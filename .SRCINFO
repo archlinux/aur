@@ -1,0 +1,13 @@
+pkgbase = apk-installer-bin
+	pkgdesc = 一款可运行于windows、macos的Apk安装器软件，快速安装Apk至手机。
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/zhujiaming/apk-installer
+	arch = x86_64
+	license = ISC
+	conflicts = apk-installer
+	conflicts = apk-installer-appimage
+	source = apk-installer-1.5.0.tar.gz::https://github.com/zhujiaming/apk-installer/archive/refs/tags/v1.5.0-all.tar.gz
+	sha256sums = 7f6bd055639b0c4949ef8eef6621bbf0ca4f711980132ebf58c84069e4feeff5
+
+pkgname = apk-installer-bin
