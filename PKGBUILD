@@ -1,10 +1,10 @@
-# Maintainer: dreieck
+# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 
 _pkgname=marble-maps-sachsen
 pkgname="${_pkgname}"
 epoch=0
 pkgver=20220208.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Aerial (RGB and CIR) and topographic (DTK10, DTK25, DTK50, DTK100 and historic) maps provided by the German federal state of Saxony. WMS maps, if 'marble' crashes try 'marble-qt'."
 url="https://www.landesvermessung.sachsen.de/geodaten-online-3962.html"
 arch=('any')
