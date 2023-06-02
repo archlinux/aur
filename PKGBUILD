@@ -2,18 +2,20 @@
 
 set -u
 pkgname='oki-b512'
-pkgver='1.1.3'
+pkgver='1.1.4'
 pkgrel='1'
 pkgdesc='CUPS printer driver for the Okidata B512 B432 MB562 MB492'
 arch=('any')
 url='http://www.okidata.com/'
 license=('GPL')
 depends=('cups')
-source=('http://www.oki.com/eu/printing/download/B512_B432_MB562_MB492_PS_Linux_010103_66002.zip')
-sha256sums=('f1f53d01a40652b8ecd8e8b0aa0931ea6e0504feec500c6b2f6c6eee8ba69b44')
+source=('https://www.oki.com/eu/printing/download/B512_B432_MB562_MB492_PS_Linux_010104_298032.zip')
+md5sums=('ac42f3d15cc79d1e91a9aacce5e2c8a7')
+sha256sums=('3462b9d204c4a3aea0c9adcca8f0e23da7247e14eba98d8ace3122e72e5b8806')
 
 package() {
   set -u
+  cd 'B512_B432_MB562_MB492_PS_Linux_010104'
   install -Dpm644 *.ppd* -t "${pkgdir}/usr/share/cups/model"
   set +u
 }
