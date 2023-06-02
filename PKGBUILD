@@ -7,7 +7,7 @@
 # Contributor: Alexey Pavlov <alexpux@gmail.com>
 
 pkgname=mingw-w64-libssh
-pkgver=0.10.4
+pkgver=0.10.5
 pkgrel=1
 pkgdesc="Library for accessing ssh client services through C libraries (mingw-w64)"
 url="https://www.libssh.org/"
@@ -18,7 +18,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-pkg-config' 'mingw-w64
 options=(!strip !buildflags staticlibs)
 #cmocka
 source=(https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz{,.asc})
-sha256sums=('07392c54ab61476288d1c1f0a7c557b50211797ad00c34c3af2bbc4dbc4bd97d'
+sha256sums=('b60e2ff7f367b9eee2b5634d3a63303ddfede0e6a18dfca88c44a8770e7e4234'
             'SKIP')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
