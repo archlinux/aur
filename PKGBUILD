@@ -2,7 +2,7 @@
 
 pkgname=gpt4all-chat-git
 _gitname=gpt4all
-pkgver=r876.27e80e1
+pkgver=r904.f3564ac
 pkgrel=1
 pkgdesc="Cross platform Qt based GUI for GPT4All versions"
 arch=('x86_64')
@@ -48,7 +48,9 @@ package() {
 
   DESTDIR="${pkgdir}" make install
   mv "${pkgdir}/usr/bin/chat" "${pkgdir}/usr/bin/gpt4all-chat"
-  mv "${pkgdir}/usr/bin/test_hw" "${pkgdir}/usr/bin/gpt4all-test_hw"
+  if [ -e "${pkgdir}/usr/bin/test_hw" ]; then
+    mv "${pkgdir}/usr/bin/test_hw" "${pkgdir}/usr/bin/gpt4all-test_hw"
+  fi
 
 	mkdir -p "${pkgdir}/usr/share/applications"
 	mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
