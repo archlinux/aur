@@ -1,0 +1,16 @@
+pkgbase = wackywebm-git
+	pkgdesc = This is a simple tool to allow you to create WebM files with changing aspect ratios.
+	pkgver = r282.768e19c
+	pkgrel = 1
+	url = https://github.com/OIRNOIR/WackyWebM
+	arch = any
+	license = GPL3
+	makedepends = npm
+	depends = nodejs
+	depends = ffmpeg
+	provides = wackywebm
+	conflicts = wackywebm
+	source = wackywebm::git+https://github.com/OIRNOIR/WackyWebM.git
+	sha256sums = SKIP
+
+pkgname = wackywebm-git
