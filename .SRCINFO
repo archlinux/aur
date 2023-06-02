@@ -1,0 +1,18 @@
+pkgbase = mobmuplat-editor
+	pkgdesc = MobMuPlatEditor is an application to create and edit user interface files for use in the MobMuPlat iOS app
+	pkgver = 0.34
+	pkgrel = 1
+	url = https://danieliglesia.com/mobmuplat/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = java-runtime-common
+	provides = mobmuplat-editor
+	source = https://danieliglesia.com/mobmuplat//MobMuPlatDistribution_1.82iOS_0.34Android.zip
+	source = mobmuplat-editor
+	source = mobmuplat-editor.desktop
+	md5sums = 0b0b04fb747f5858372e43e79dd3e65c
+	md5sums = e8ef293d2fa86a0338632ac0f57ef9af
+	md5sums = 1c0fdebce3e59decc565f83d07f6d7d7
+
+pkgname = mobmuplat-editor
