@@ -10,7 +10,7 @@ arch=(x86_64)
 license=(GPL3)
 conflicts=('theseus-gui')
 provides=('theseus-gui')
-makedepends=('cargo-tauri' 'yarn')
+makedepends=('cargo-tauri' 'yarn' 'pnpm')
 source=("git+https://github.com/modrinth/theseus")
 sha256sums=('SKIP')
 
