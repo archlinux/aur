@@ -1,7 +1,7 @@
 pkgbase = readpe
 	pkgdesc = PE file analysis toolkit
 	pkgver = 0.82
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mentebinaria/readpe
 	arch = x86_64
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = readpe
 	depends = openssl
 	provides = readpe
 	conflicts = readpe
+	conflicts = pev
 	source = readpe::git+https://github.com/mentebinaria/readpe.git#commit=ad4d5a586f022f36b6b925a63ffd667cb729731d
 	source = fix-install-prefix.diff
 	sha256sums = SKIP

@@ -4,13 +4,13 @@
 _commit="ad4d5a586f022f36b6b925a63ffd667cb729731d"
 pkgname=readpe
 pkgver=0.82
-pkgrel=1
+pkgrel=2
 pkgdesc="PE file analysis toolkit"
 arch=(x86_64)
 url="https://github.com/mentebinaria/readpe"
 license=(GPL custom:OpenSSL)
 provides=(readpe)
-conflicts=(readpe)
+conflicts=(readpe pev)
 depends=(openssl)
 makedepends=(git)
 source=(
