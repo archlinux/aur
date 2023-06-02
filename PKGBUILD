@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="zxinfo-file-browser-appimage"
-pkgver=1.1.6
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Organize and manage your emulator files for ZX Spectrum & ZX 81 - powered by the web"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/thomasheckmann/zxinfo-file-browser/master/LICENSE")
-sha256sums=('5e5aed9d27a91ebd81d238d93dc45399cabc76ba18514b1532c54673da52aecc'
+sha256sums=('45a045818ddaf10b7805a099ddcae28b48567806a5372d53436ca727a6a47d83'
             '2042c6124204156b44ed7676a90f1e0bb9ddfee1f76d20f7b6f220a90398f74e')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
