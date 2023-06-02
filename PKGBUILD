@@ -32,10 +32,8 @@ prepare() {
 
 build() {
     cd "${srcdir}/QtTube"
-    mkdir build
-    cd build
-    qmake6 ..
-    make
+    cmake -Bbuild
+    cmake --build build
 }
 
 package() {
