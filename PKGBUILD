@@ -37,7 +37,10 @@ makedepends=(
   'python-wheel'
 )
 
-provides=("$_pkgname")
+provides=(
+  "$_pkgname"
+  'spleeter2'
+)
 conflicts=(${provides[@]})
 
 options=("!strip")
