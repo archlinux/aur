@@ -65,7 +65,7 @@ else
 pkgname="${_pyver}-${_pybase}-git"
 _pyverother='python'
 fi
-pkgver=1.18.195.r8866.g280e35ef3
+pkgver=1.27.145.r11217.g5885ee4dc
 # Generally when this version changes, the version of botocore also changes
 pkgrel=1
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
@@ -117,7 +117,7 @@ if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   makedepends+=('git')
   _vcsprovides=("${pkgname%-git}=${pkgver%%.r*}")
   _vcsconflicts=("${pkgname%-git}")
-  source=("${_srcdir}::${url//https:/git:}.git")
+  source=("${_srcdir}::git+${url}.git")
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
 pkgver() {
