@@ -1,13 +1,13 @@
 pkgbase = hgrep-bin
 	pkgdesc = Grep with human-friendly search results
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/rhysd/hgrep
 	arch = x86_64
 	license = MIT
 	makedepends = zip
 	noextract = hgrep.zip
-	source = hgrep.zip::https://github.com/rhysd/hgrep/releases/download/v0.3.1/hgrep-v0.3.1-x86_64-unknown-linux-musl.zip
-	md5sums = 679005cc6205df889a8266f0ba18666a
+	source = hgrep.zip::https://github.com/rhysd/hgrep/releases/download/v0.3.2/hgrep-v0.3.2-x86_64-unknown-linux-musl.zip
+	md5sums = c6e8a58874d48ac6b52bb84bd340145c
 
 pkgname = hgrep-bin
