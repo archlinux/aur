@@ -1,7 +1,7 @@
 # Maintainer: Th30
 pkgname=fortune-mod-wisdom-fr
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Fortune cookies: Wisdom quotes in French"
 arch=('any')
 url="https://github.com/Bundy01/fortune-mod-wisdom-fr"
@@ -14,7 +14,7 @@ package()
 {
 	cd "${pkgname}-${pkgver}"
 	mkdir -pm755 "${pkgdir}/usr/share/fortune/wisdom-fr"
-	install -Dm644 Asie{,.dat} "/usr/share/fortune/wisdom-fr"
-	install -Dm644 Occident{,.dat} "/usr/share/fortune/wisdom-fr"
-	install -Dm644 RastAfrica{,.dat} "/usr/share/fortune/wisdom-fr"
+	install -Dm644 Asie{,.dat} "${pkgdir}/usr/share/fortune/wisdom-fr"
+	install -Dm644 Occident{,.dat} "${pkgdir}/usr/share/fortune/wisdom-fr"
+	install -Dm644 RastAfrica{,.dat} "${pkgdir}/usr/share/fortune/wisdom-fr"
 }
