@@ -2,7 +2,7 @@
 # Maintainer: Cedric Felizard <cedric@felizard.fr>
 
 pkgname=cinc-workstation-bin
-pkgver=23.4.1032
+pkgver=23.5.1040
 pkgrel=1
 pkgdesc="The Cinc installation package includes everything you need to start converging your machines."
 arch=('x86_64')
