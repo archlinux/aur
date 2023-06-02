@@ -1,4 +1,4 @@
-# Maintainer: Peter Gaede <peter-gaede@mail.com>
+# Maintainer: Peter Gaede <peter-gaede@mail.de>
 # Maintainer: Jay Ta'ala  <jay@jaytaala.com>
 
 pkgname=zoho-notebook
