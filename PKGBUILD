@@ -17,6 +17,7 @@ depends=(
   'python-pandas'
   'python-tensorflow'
   'python-typer'
+  'python-pyxdg'
 
   # AUR
   'python-ffmpeg'
@@ -37,6 +38,11 @@ makedepends=(
   'python-poetry'
   'python-wheel'
 )
+#checkdepends=(
+#  'python-py'
+#  'python-pytest'
+#  'python-pytest-forked'
+#)
 optdepends=(
   'spleeter-data: pretrained model'
 )
@@ -51,10 +57,22 @@ options=("!strip")
 
 source=(
   "$_pkgname"::"git+$url"
+  'github-pr-808-rebased-2.3.0.patch'
+  'xdg_config_home.patch'
 )
 sha256sums=(
   'SKIP'
+  '50472de0822614939fe0fabd36439cc38f5ff35828c06121884f5e125e1845b6'
+  '24a40f5fd3cbf87e2e78236159fefe60be6a02e895c50d8f7e17546f27e322e0'
 )
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+
+  for i in "$srcdir"/*.patch ; do
+    patch --verbose -Np1 -F100 -i "$i"
+  done
+}
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -65,6 +83,12 @@ build() {
   cd "$srcdir/$_pkgname"
   python -m build --wheel --no-isolation
 }
+
+#check() {
+#  cd "$srcdir/$_pkgname"
+#  rm -rf pretrained_models
+#  python -m pytest
+#}
 
 package() {
   cd "$srcdir/$_pkgname"

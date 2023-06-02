@@ -1,0 +1,33 @@
+diff --git a/spleeter/model/provider/__init__.py b/spleeter/model/provider/__init__.py
+index 0e31e46..adb9be6 100644
+--- a/spleeter/model/provider/__init__.py
++++ b/spleeter/model/provider/__init__.py
+@@ -16,18 +16,26 @@ from abc import ABC, abstractmethod
+ from os import environ, makedirs
+ from os.path import exists, isabs, join, sep
+
++try:
++    from xdg.BaseDirectory import xdg_config_home
++except:
++    xdg_config_home = '.'
++
+ __email__ = "spleeter@deezer.com"
+ __author__ = "Deezer Research"
+ __license__ = "MIT License"
+
+-
+ class ModelProvider(ABC):
+     """
+     A ModelProvider manages model files on disk and
+     file download is not available.
+     """
+
+-    DEFAULT_MODEL_PATH: str = environ.get("MODEL_PATH", "pretrained_models")
++    if xdg_config_home == '.':
++        DEFAULT_MODEL_PATH: str = environ.get("MODEL_PATH", "pretrained_models")
++    else:
++        DEFAULT_MODEL_PATH: str = environ.get("MODEL_PATH", xdg_config_home + "/spleeter")
++
+     MODEL_PROBE_PATH: str = ".probe"
+
+     @abstractmethod
