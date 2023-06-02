@@ -1,27 +1,34 @@
-# Maintainer: Joe Carta <cartakid at gmail dot com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Joe Carta <cartakid at gmail dot com>
 # Contributor: sidious/SiD <miste78 web de>
 # Contributor: Wes Brewer <brewerw@gmail.com>
 
 pkgname=extract-xiso
-pkgver=2.7.1
+_pkgver=build-202303040307
+pkgver=202303040307
 pkgrel=1
-pkgdesc="xdvdfs (xbox iso) file creation and extraction utility"
-arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/extract-xiso"
+pkgdesc="Xbox ISO Creation/Extraction utility"
+url="https://github.com/XboxDev/extract-xiso"
+arch=('any')
 license=('custom')
-conflicts=('extract-xiso-somski')
-source=(http://downloads.sourceforge.net/$pkgname/${pkgname}-${pkgver}.tar.gz)
-md5sums=('464aeb312aca6f4a1ffee42384b3c738')
+makedepends=('git')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+prepare() {
+  # Switch tag version
+  cd $pkgname
+  git checkout tags/${_pkgver}
+}
 
 build() {
-  cd ${srcdir}/${pkgname}
-  # build
-  make 
+  cd $pkgname
+  make
 }
 package() {
-  cd ${srcdir}/${pkgname}
-  # install binary
-  install -Dm755 extract-xiso ${pkgdir}/usr/bin/extract-xiso
-  # install custom license
-  install -Dm644 LICENSE.TXT ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.TXT
+  cd $pkgname
+  # Install binary
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  # Install custom license
+  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT"
 }
