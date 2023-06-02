@@ -13,8 +13,6 @@ pkgbase = zls-git
 	conflicts = zls
 	replaces = zls-master-data-git
 	source = git+https://github.com/zigtools/zls
-	source = git+https://github.com/ziglibs/known-folders
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = zls-git

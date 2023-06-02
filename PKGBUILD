@@ -12,21 +12,12 @@ replaces=('zls-master-data-git')
 license=('MIT')
 depends=('zig')
 makedepends=('git')
-source=(git+https://github.com/zigtools/${_pkgbasename}
-        git+https://github.com/ziglibs/known-folders)
-sha256sums=('SKIP'
-            'SKIP')
-
+source=(git+https://github.com/zigtools/${_pkgbasename})
+sha256sums=('SKIP')
+            
 pkgver() {
 	cd "${srcdir}/${_pkgbasename}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgbasename}"
-  git submodule init
-  git config submodule.known-folders.url "$srcdir"/known-folders
-  git submodule update
 }
 
 build() {
