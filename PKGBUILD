@@ -21,6 +21,11 @@ options=('!lto')
 source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git')
 md5sums=('SKIP')
 
+export CARGO_PROFILE_RELEASE_LTO=true
+
+export RUSTUP_TOOLCHAIN=stable
+export CARGO_TARGET_DIR=target
+
 pkgver() {
 	cd "$srcdir/${_pkgname}"
 
@@ -34,21 +39,12 @@ prepare() {
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
 
-	echo "
-[profile.release]
-lto=true" >>Cargo.toml
-
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-
 	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd "$srcdir/${_pkgname}"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
 
 	export ALVR_ROOT_DIR=/usr
 
