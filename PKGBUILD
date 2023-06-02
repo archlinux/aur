@@ -8,7 +8,7 @@
 
 pkgname=wxglade
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='wxGlade is a GUI builder written in Python for the GUI toolkit wxWidgets/wxPython'
 arch=('any')
 license=('MIT')
@@ -16,9 +16,11 @@ url='https://github.com/wxGlade/wxGlade'
 depends=(
     'python>=3.4'
     'python-wxpython>=2.8'
-    'desktop-file-utils'
     'hicolor-icon-theme'
-    'shared-mime-info'
+)
+optdepends=(
+    'desktop-file-utils: pacman hooks for updating desktop database'
+    'shared-mime-info: pacman hooks for updating mime database'
 )
 makedepends=(
     'icoutils'
