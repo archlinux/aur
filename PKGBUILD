@@ -20,6 +20,8 @@ package() {
     mkdir -p "${pkgdir}/usr/share/9launcher"
     mkdir -p "${pkgdir}/usr/share/applications"
     cp -r assets-v1.1.1 "${pkgdir}/usr/share/9launcher"
-    install -d "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/bin"
+    install -m644 "${srcdir}/9launcher" "${pkgdir}/usr/bin/9launcher"
     install -m644 "${pkgdir}/assets/9Launcher.desktop" "${pkgdir}/usr/share/applications/"
+    chmod +x "${pkgdir}/usr/bin/9launcher"
 }
