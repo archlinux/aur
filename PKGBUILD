@@ -18,7 +18,7 @@ package() {
   bsdtar -xf data.tar.xz -C "$pkgdir"
 
   # link executables
-  binaries="cinc cinc-apply cinc-auditor cinc-cli cinc-client cinc-shell cinc-solo kitchen knife ohai"
+  binaries="cinc cinc-apply cinc-auditor cinc-cli cinc-client cinc-shell cinc-solo cookstyle kitchen knife ohai"
 
   mkdir -p $pkgdir/usr/bin
 
