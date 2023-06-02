@@ -1,0 +1,19 @@
+pkgbase = mpr-cli-bin
+	pkgdesc = A CLI for the makedeb Package Repository
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/jrop/mpr-cli
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = mpr
+	source_x86_64 = https://github.com/jrop/mpr-cli/releases/download/v0.0.3/mpr-v0.0.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = a0a43971a1a681ffdfba98af52f9ab2f0e6ccf92e6ebbd089eee0f47bb92c24c
+	source_i686 = https://github.com/jrop/mpr-cli/releases/download/v0.0.3/mpr-v0.0.3-linux-386.tar.gz
+	sha256sums_i686 = 1573248b367e58bdddf0663de80526fee387d4ba2e06a05b1a0589efd426156e
+	source_aarch64 = https://github.com/jrop/mpr-cli/releases/download/v0.0.3/mpr-v0.0.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = 5e0856e1666e413002deacb5300af0d541722f94b771f1b7306a0afec2a81053
+
+pkgname = mpr-cli-bin
