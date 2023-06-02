@@ -1,0 +1,4 @@
+Name: Microsoft GSL
+Description: C++ Core Guidelines Support Library
+Version: 4.0.0
+Cflags: -I/usr/include

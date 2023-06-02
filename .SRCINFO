@@ -11,6 +11,7 @@ pkgbase = justbuild
 	makedepends = cli11
 	makedepends = microsoft-gsl
 	makedepends = nlohmann-json
+	makedepends = pandoc
 	depends = fmt
 	depends = openssl
 	depends = zlib
@@ -25,6 +26,8 @@ pkgbase = justbuild
 	conflicts = just-git
 	conflicts = just-js
 	source = justbuild-1.1.1.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v1.1.1.tar.gz
+	source = gsl.pc
 	sha256sums = 75b7d92d233250fa9751542cf5020c10b20e178f898b3fe1294fc9013b4ad5fe
+	sha256sums = SKIP
 
 pkgname = justbuild
