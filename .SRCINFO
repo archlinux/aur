@@ -3,11 +3,11 @@ pkgbase = j9-git
 	pkgver = r2388.ad0ca1c6
 	pkgrel = 1
 	url = http://www.jsoftware.com
-	install = j9-git.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = clang
+	makedepends = nasm
 	depends = qt5-webengine
 	depends = qt5-websockets
 	depends = qt5-multimedia
@@ -19,10 +19,7 @@ pkgbase = j9-git
 	optdepends = lapack: for math/lapack addon
 	source = j9-git::git+https://github.com/jsoftware/jsource.git#branch=master
 	source = qtide-git::git+https://github.com/jsoftware/qtide.git#branch=master
-	source = jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j903_env_20201225.tar.gz
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = ad004c510a1b39a27107f03398759628
 
 pkgname = j9-git
-

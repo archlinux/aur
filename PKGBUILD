@@ -15,36 +15,19 @@ optdepends=('wget: for web/gethttp addon'
             'fftw: for math/fftw addon'
             'lapack: for math/lapack addon')
 makedepends=('git'
-             'clang')
+             'clang'
+	     'nasm')
 source=("${pkgname}::git+https://github.com/jsoftware/jsource.git#branch=master"
-        'qtide-git::git+https://github.com/jsoftware/qtide.git#branch=master'
-        'jenv.tar.gz::http://www.databaserossoverde.it/jsoftware/j903_env_20201225.tar.gz')
+        'qtide-git::git+https://github.com/jsoftware/qtide.git#branch=master')
 md5sums=('SKIP'
-         'SKIP'
-         'ad004c510a1b39a27107f03398759628')
-install="${pkgname}.install"
-
-pkgver() {
-  cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-} 
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  echo '#define jversion "903"' > jsrc/jversion.h
-  echo '#define jplatform "linux"' >> jsrc/jversion.h
-  echo '#define jtype "beta"' >> jsrc/jversion.h
-  echo '#define jlicense "GPL3"' >> jsrc/jversion.h
-  echo '#define jbuilder "AUR"' >> jsrc/jversion.h
-}
-
+         'SKIP')
 build() {
   # jsource
   cd "${srcdir}/${pkgname}/make2"
   CC=clang
   export CC
-  . build_all.sh
-  . cpbin.sh
+  ./build_all.sh
+  ./cpbin.sh
   # qtide
   cd "${srcdir}/qtide-git/lib"
   qmake && make
@@ -54,7 +37,7 @@ build() {
 
 package() {
   cd "${srcdir}"
-  cp -a jenv/* "${pkgdir}/"
+  mkdir -p "${pkgdir}/usr/lib/j9/bin"
   cp -a "${pkgname}/jlibrary/bin/"* "${pkgdir}/usr/lib/j9/bin/"
   cp -a "${pkgname}/bin/linux/"*/* "${pkgdir}/usr/lib/j9/bin/"
   cp -a "qtide-git/bin/linux-${CARCH}/release/"* "${pkgdir}/usr/lib/j9/bin/"
