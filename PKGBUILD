@@ -3,7 +3,7 @@
 pkgbase=linux-asus
 pkgver=6.3.5.arch1
 pkgrel=1
-pkgdesc='Linux with asus-linux.org patches'
+pkgdesc='Linux (with asus-linux.org patches)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://gitlab.com/asus-linux/fedora-kernel"
 arch=(x86_64)
