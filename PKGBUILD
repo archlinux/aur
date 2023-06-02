@@ -2,7 +2,7 @@
 
 pkgname=justbuild
 pkgver='1.1.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic build system supporting multi-repository builds"
 arch=('x86_64')
 url="https://github.com/just-buildsystem/justbuild"
