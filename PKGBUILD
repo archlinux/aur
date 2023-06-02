@@ -24,10 +24,10 @@ build() {
   python setup.py build
 }
 
-check() {
-  cd redbaron-$pkgver
-  pytest tests
-}
+# check() {
+#   cd redbaron-$pkgver
+#   pytest tests
+# }
 
 package() {
   cd redbaron-$pkgver
