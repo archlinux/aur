@@ -2,7 +2,7 @@
 _pkgbasename=zls
 pkgname=${_pkgbasename}-git
 pkgrel=1
-pkgver=r884.fd2a863
+pkgver=r1683.f96b226
 pkgdesc="Zig LSP implementation + Zig Language Server"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/zigtools/${_pkgbasename}"
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgbasename}"
-	zig build -Drelease-fast
+	zig build -Doptimize=ReleaseFast
 }
 
 package() {
