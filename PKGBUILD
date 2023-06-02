@@ -1,12 +1,13 @@
 # Maintainer: dimtpap <dimtpap@protonmail.com>
 pkgname=coppwr
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Low level PipeWire control GUI'
 arch=('x86_64')
 url='https://dimtpap.xyz/coppwr'
 license=('GPL3')
 depends=('pipewire')
+provides=('coppwr')
 makedepends=('cargo' 'clang' 'libpipewire')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dimtpap/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=("032f2355223af4e7e2f383cf2822531d1f4b5a8bad2550a199ba1e444442417a")
