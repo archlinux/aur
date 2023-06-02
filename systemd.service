@@ -1,0 +1,5 @@
+[Unit]
+Description=Randomly choose line from /etc/fortune to update /etc/motd.d/fortune
+
+[Service]
+ExecStart=sh -c "fortune > /etc/motd.d/fortune"

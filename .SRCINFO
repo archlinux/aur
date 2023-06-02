@@ -1,0 +1,18 @@
+pkgbase = fotd
+	pkgdesc = Fortune of the day
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.exozy.me/exozyme/fotd
+	arch = any
+	license = GPL
+	conflicts = fortune-mod
+	backup = etc/fortune
+	backup = etc/motd.d/fortune
+	source = fortune
+	source = systemd.service
+	source = systemd.timer
+	sha256sums = 6cc31663003d7208c3b188e6529fe5b4933cefefa0a33a205ab12ca3400632a2
+	sha256sums = d220d733e08e57fe8d9c048a6deec88553034e36c1828dd778bda544e7b2202b
+	sha256sums = 91121ae4298f29502e9142006ccc4f95f0eef089e6e3aa6a7ccc6ff7651591c0
+
+pkgname = fotd

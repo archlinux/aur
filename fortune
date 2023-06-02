@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+shuf -n 1 /etc/fortune $@
