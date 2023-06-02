@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname='vdr-osd2web'
-pkgver=0.2.56
+pkgver=0.2.58
 _vdrapi=2.6.3
 pkgrel=1
 pkgdesc='osd2web is a VDR skin interface for web browsers, to show and navigate through the VDR osd'
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/horchi/vdr-plugin-osd2web/a
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 options=('!emptydirs')
-sha256sums=('38e8e8a20e5b59c76a1f18aa3dc6b7ad4372241414f71c292fed8986c0785f02'
+sha256sums=('b206168fbac9eb946d800c7104c8abd04033c92c0e8014469ba16471b5b2164d'
             '330126667df54bcb853346bf2dde52beecafc4fda1a684b68d4cc81908ba551c')
 
 build() {
