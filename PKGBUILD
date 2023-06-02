@@ -11,6 +11,7 @@ arch=('any')
 license=('MIT')
 
 depends=(
+  'python-h2'
   'python-httpx'
   'python-numpy'
   'python-pandas'

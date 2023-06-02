@@ -10,6 +10,7 @@ pkgbase = spleeter-git
 	makedepends = python-installer
 	makedepends = python-poetry
 	makedepends = python-wheel
+	depends = python-h2
 	depends = python-httpx
 	depends = python-numpy
 	depends = python-pandas
