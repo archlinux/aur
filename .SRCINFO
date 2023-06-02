@@ -1,0 +1,13 @@
+pkgbase = openxlsx
+	pkgdesc = A C++ library for reading, writing, creating and modifying Microsoft Excel (.xlsx) files
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/troldal/OpenXLSX
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = gcc-libs
+	source = https://github.com/troldal/OpenXLSX/archive/v0.3.2.tar.gz
+	sha256sums = e379f29a8ba4c4c33a2ef0589cf2fbc956411514748b2b7b45aaeff393e52cb3
+
+pkgname = openxlsx
