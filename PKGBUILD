@@ -1,55 +1,50 @@
 # Maintainer: GrayJack <gr41.j4ck@gmail.com>
+# Contributor: Thomas Jost <schnouki@schnouki.net>
 
 _pkgname=janet
 pkgname=janet-lang
-pkgver=1.24.1
+pkgver=1.28.0
+_jpm_commit=af002e6
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="https://janet-lang.org/"
 license=('MIT')
+depends=('glibc')
 makedepends=('git')
 provides=('janet' 'jpm')
 conflicts=('janet-lang-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/janet-lang/janet/archive/v${pkgver}.tar.gz" "git+https://github.com/janet-lang/jpm#commit=d841549" "default_config.janet")
-sha256sums=('67964e63957299fd46d9d2640443ae1b7ae3528a396c993c457c3296b1ae586e'
+source=("$pkgname-$pkgver.tar.gz::https://github.com/janet-lang/janet/archive/v${pkgver}.tar.gz"
+        "git+https://github.com/janet-lang/jpm#commit=${_jpm_commit}"
+        "default_config.janet")
+sha256sums=('d78a4c367f1b2c9f95897fa13fc788b36ce49cfcc18083b0810e86b2dd1285bb'
             'SKIP'
             '7fb56585e6027ea800920a364acd73b49205298dcf887a4ee71fb65125c4539f')
 options=('staticlibs')
 
 build() {
-    cd $_pkgname-$pkgver
-    CFLAGS+=" -fPIC"
-    LDFLAGS+=" -rdynamic"
-    make PREFIX="/usr" $janet_build
-    make PREFIX="/usr" build/janet.pc
-    make PREFIX="/usr" docs
+  cd "${srcdir}"/$_pkgname-$pkgver
+  CFLAGS+=" -fPIC"
+  LDFLAGS+=" -rdynamic"
+  make PREFIX="/usr" all build/janet.pc docs
 }
 
 package() {
-    cd $_pkgname-$pkgver
+  cd "${srcdir}"/$_pkgname-$pkgver
+  make DESTDIR="${pkgdir}" PREFIX=/usr install
 
-    install -Dt       "${pkgdir}"/usr/bin build/janet
-    install -Dm644 -t "${pkgdir}"/usr/include/janet build/janet.h
+  install -dm755 "${pkgdir}"/usr/share/janet
+  cp -a examples "${pkgdir}"/usr/share/janet
 
-    install -Dm644 -t "${pkgdir}"/usr/lib build/libjanet.a build/libjanet.so
-    ln -s libjanet.so "${pkgdir}"/usr/lib/libjanet.so.$pkgver
+  install -Dm644 build/doc.html "${pkgdir}"/usr/share/doc/janet/doc.html
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 
-    install -Dm644 "build/janet.pc" "${pkgdir}"/usr/lib/pkgconfig/janet.pc
+  cd "${srcdir}"/jpm
 
-    install -Dm644 -t "${pkgdir}"/usr/share/man janet.1
+  install -Dm755 -t "${pkgdir}"/usr/bin jpm/jpm
+  install -Dm644 -t "${pkgdir}"/usr/lib/janet/jpm jpm/*.janet
+  install -Dm644 -t "${pkgdir}"/usr/share/man/man1 jpm.1
+  install -Dm644 -t "${pkgdir}"/usr/share/janet/jpm/configs configs/*
 
-    install -dm755 "${pkgdir}"/usr/share/janet
-    cp -a examples "${pkgdir}"/usr/share/janet
-
-    install -Dm644 build/doc.html "${pkgdir}"/usr/share/doc/janet/doc.html
-    install -Dm644 -t "${pkgdir}"/usr/lib/janet tools/.keep
-
-    cd "${srcdir}/jpm"
-
-    install -Dt       "${pkgdir}"/usr/bin jpm/jpm
-    install -Dm644 -t "${pkgdir}"/usr/lib/janet/jpm jpm/*.janet
-    install -Dm644 -t "${pkgdir}"/usr/share/man jpm.1
-    install -Dm644 -t "${pkgdir}"/usr/share/janet/jpm/configs configs/*
-    install -m644 -T "${srcdir}"/default_config.janet "${pkgdir}"/usr/lib/janet/jpm/default-config.janet
+  install -Dm644 -t "${pkgdir}"/usr/lib/janet/jpm "${srcdir}"/default_config.janet
 }
