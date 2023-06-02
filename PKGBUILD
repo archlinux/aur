@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mfgtools-git
-pkgver=1.5.21.r0.g1f42172
+pkgver=1.5.21.r74.g31e59f2
 pkgrel=1
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
@@ -35,7 +35,7 @@ pkgver() {
 build() {
     cd "${srcdir}/${pkgname%-git}"
     cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr \
-          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_BUILD_TYPE=None \
           -Dwl=true \
           -Ddrm=true
     make -C build
