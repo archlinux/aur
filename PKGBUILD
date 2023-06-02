@@ -1,16 +1,16 @@
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
 
 pkgname=gtkcord4
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='Discord client written in go and gtk4'
 arch=('x86_64' 'aarch64')
 url='https://github.com/diamondburned/gtkcord4'
 license=('GPL3')
-depends=('gtk4' 'gobject-introspection' 'libadwaita')
+depends=('gtk4>=4.10.3' 'gobject-introspection' 'libadwaita>=1.3.2')
 provides=('gtkcord4')
 conflicts=('gtkcord4')
-makedepends=('git' 'go')
+makedepends=('git' 'go>=1.20.3')
 source=("git+https://github.com/diamondburned/gtkcord4#tag=v${pkgver}")
 sha256sums=('SKIP')
 
