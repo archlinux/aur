@@ -1,5 +1,5 @@
 pkgname=renderdoc
-pkgver=1.26
+pkgver=1.27
 pkgrel=1
 pkgdesc="OpenGL and Vulkan debugging tool"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=("libx11" "libxcb" "mesa" "libgl" "qt5-base" "qt5-svg" "qt5-x11extras" "
 source=("https://github.com/baldurk/renderdoc/archive/v${pkgver}.tar.gz"
         "https://github.com/baldurk/renderdoc/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc")
 validpgpkeys=('1B039DB9A4718A2D699DE031AC612C3120C34695')
-sha384sums=('c28d4a59496ce6907b8f589a7bc20f8b8e8b3d43c54005befca97750a7b8072baf5e65e7a39ae5f2869211e9f392dca6'
+sha384sums=('41bb70dcb4022f7c5f90191ae6ffc1c456abb00abf71be7b210de60b899029091100a929c7399b0f4d0ed49468eb8017'
             'SKIP')
 
 build() {
