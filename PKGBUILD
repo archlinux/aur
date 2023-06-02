@@ -9,11 +9,13 @@ url="http://www.tntnet.org"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('cxxtools' 'sqlite')
-source=("http://www.tntnet.org/download/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('48cefd354acf2579c80b77d789d67f8b8162f1a02a3c2fb8157a9a32dc332859')
+source=("$pkgname-${pkgver}_git.tar.gz::https://github.com/maekitalo/tntdb/archive/refs/tags/V$pkgver.tar.gz")
+sha256sums=('20f5d10817c0ad74f7728a0ca393337c0c73336dbc2b3273dcde22e5cc7cd76d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  autoreconf -i
   ./configure --prefix=/usr \
               --disable-static \
               --without-postgresql \
