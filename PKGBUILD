@@ -6,7 +6,7 @@
 
 _pkgname=stellarium
 pkgname=${_pkgname}-lite
-pkgver=1.2
+pkgver=23.1
 pkgrel=1
 pkgdesc="Stellarium without GPS and Telescope Control support (no gpsd and libindi dependencies)"
 arch=(x86_64)
@@ -18,10 +18,15 @@ makedepends=('cmake' 'ninja' 'mesa' 'qt6-tools')
 conflicts=(${_pkgname})
 source=(https://github.com/Stellarium/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
-md5sums=('1a9b2b69300ac54fda47cf4b801bf07f'
-         'SKIP')
-sha256sums=('2cbf95839c5fbd312c08ad0f92b2ddf8a7f822bd32bc31e91f3aa28920674f60'
-            'SKIP')
+md5sums=('7dde5f42e434fff6aa622cd239385709'
+  'SKIP')
+sha256sums=('c0d519ef44e78c0609b576c068e1ef2ad09e635d4ff73de7d41bb8c7323bad27'
+  'SKIP')
+
+# prepare() {
+#   # https://github.com/Stellarium/stellarium/issues/3132#issuecomment-1485304021
+#   sed -i 's/SOURCE_SUBDIR QXlsx/SOURCE_SUBDIR QXlsxQt${QT_VERSION_MAJOR}/' ${pkgname}-${pkgver}/CMakeLists.txt
+# }
 
 build() {
   PATH="/usr/bin/core_perl/:$PATH"
@@ -44,6 +49,7 @@ build() {
     -DENABLE_GPS=0 \
     -DENABLE_LIBGPS=0 \
     -DUSE_PLUGIN_TELESCOPECONTROL=0 \
+    -DPREFER_SYSTEM_INDILIB=No \
     -Wno-dev
   cmake --build build --target all
 }
