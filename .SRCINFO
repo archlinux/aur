@@ -1,0 +1,17 @@
+pkgbase = marble-maps-googlesat-git
+	pkgdesc = Google Satellite for the Marble desktop globe.
+	pkgver = r11.20120613.ec55ac8
+	pkgrel = 1
+	url = http://gitlab.com/marble-restricted-maps/googlesat
+	arch = any
+	license = custom: unknown.
+	makedepends = git
+	provides = marble-maps-googlesat=r11.20120613.ec55ac8
+	conflicts = marble-maps-googlesat
+	conflicts = marble-restricted-maps-git<=latest
+	source = googlesat::git+https://gitlab.com/marble-restricted-maps/googlesat.git
+	source = license-info.txt
+	sha256sums = SKIP
+	sha256sums = 956222372d7993efa4584827bb57e72fc693a5df4eadcb22ed88f96c79bf0a50
+
+pkgname = marble-maps-googlesat-git
