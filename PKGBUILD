@@ -1,18 +1,25 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Timm Preetz <timm@preetz.us>
+# Contributor: rabyte <rabyte__gmail>
+
 pkgname=mingw-w64-schroedinger
 pkgver=1.0.11
-pkgrel=4
-pkgdesc="An implemenation of the Dirac video codec in ANSI C code (mingw-w64)"
+pkgrel=5
+pkgdesc='An implemenation of the Dirac video codec in ANSI C code (mingw-w64)'
 arch=('any')
-url="https://launchpad.net/schroedinger"
+url='https://launchpad.net/schroedinger'
 license=('GPL2' 'LGPL2.1' 'MPL' 'MIT')
 depends=('mingw-w64-crt' 'mingw-w64-orc')
 options=(!strip !buildflags !libtool staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
-source=(http://launchpad.net/schroedinger/trunk/$pkgver/+download/schroedinger-$pkgver.tar.gz
+source=("https://launchpad.net/schroedinger/trunk/${pkgver}/+download/schroedinger-${pkgver}.tar.gz"{,.asc}
         'testsuite.patch')
-md5sums=('da6af08e564ca1157348fb8d92efc891'
-         '0d6d1f8e78befde9bd04d7e93aed0b67')
+validpgpkeys=('9456AFC0814A8139E99483517FE6B095B582B0D4') # Timothy Gu
+sha256sums=('1e572a0735b92aca5746c4528f9bebd35aa0ccf8619b22fa2756137a8cc9f912'
+            'SKIP'
+            '95a5ffb1175274d837170b0e3935284e5b4cecf77937883ce612322a5e89ec04')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
@@ -42,3 +49,5 @@ package() {
     rm -r ${pkgdir}/usr/${_arch}/share/gtk-doc
   done
 }
+
+# vim: ts=2 sw=2 et:
