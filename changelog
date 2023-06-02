@@ -1,3 +1,11 @@
+2023-05-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.6.3-1:
+    Added additional bullet-proofing for validation of accounts being announced on ASF STM listing (@JustArchi #2900 #2901).
+    Fixed OnBotDisconnected() always giving EResult.OK as a disconnection reason to subscribed plugins (@JustArchi #2891).
+    Fixed ASF not working with Steam passwords longer than 64 characters (@JustArchi #2903).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2023-05-01 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.5.2-1:
     Added IBotCustomMachineInfoProvider plugin interface, which deprecates previously used ICustomMachineInfoProvider (@JustArchi #2873).
