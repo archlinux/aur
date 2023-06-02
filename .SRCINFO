@@ -1,12 +1,12 @@
 pkgbase = lib32-libunrar
 	pkgdesc = Library and header file for applications that use libunrar (32-bit)
-	pkgver = 6.2.6
+	pkgver = 6.2.7
 	pkgrel = 1
 	url = https://www.rarlab.com/rar_add.htm
 	arch = x86_64
 	license = custom
 	depends = lib32-gcc-libs
-	source = https://www.rarlab.com/rar/unrarsrc-6.2.6.tar.gz
-	sha256sums = 0c2d4cbc8b34d0e3bec7b474e0f52bbcc6c4320ec089b4141223ee355f63c318
+	source = https://www.rarlab.com/rar/unrarsrc-6.2.7.tar.gz
+	sha256sums = f071169f3f20a564f9cf1c8976c64e72de3b9cdbcccaa43a0c66472eb737aa01
 
 pkgname = lib32-libunrar
