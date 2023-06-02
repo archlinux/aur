@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=youtube-music-git
-pkgver=1.19.0.r267.gc488c30
+pkgver=1.20.0.r3.g1ed43e1
 pkgrel=2
 _electronversion=22
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
@@ -17,7 +17,7 @@ source=('git+https://github.com/th-ch/youtube-music.git'
         "${pkgname%-git}.sh"
         "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
-            'ab2ce0c5e63b886ef2480924eaabd78c25ed1e89e5f97591515e57938ae43067'
+            '88cbaae0694a0ed190255125637e1c35f1a89dc844c5e4eb9c1a75c28c65151a'
             '07af59376e13e5dae2e7e38fa09d734a5147d5c344b3aed84c2f3afe22b8af79')
 
 pkgver() {
