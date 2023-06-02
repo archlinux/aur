@@ -1,7 +1,7 @@
 # Maintainer: <max at swk-web.com>
 
 pkgname=shopware-cli
-pkgver=0.1.73
+pkgver=0.1.74
 pkgrel=1
 pkgdesc="A cli which contains handy helpful commands for daily Shopware tasks"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/FriendsOfShopware/shopware-cli/releases/download/${pkgver}/${pkgname}_Linux_x86_64.tar.gz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/FriendsOfShopware/shopware-cli/${pkgver}/LICENSE")
-sha256sums=('d699def2d3130a98f521750d241f5abc7430befaf2a4406e12cd258f873ef5d9'
+sha256sums=('ce0a9a6e7e830753d807d9ba2f41a2b0a821b85b1b2a142cdcdd016f036a9f13'
             'd7aa16ba3040471c1f8958214ca26e957586f6a95434adc476edbaa9ca3a46ae')
 
 package() {
