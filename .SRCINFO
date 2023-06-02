@@ -1,0 +1,14 @@
+pkgbase = modest-toolset
+	pkgver = 3.1.235_ge57b05e4a
+	pkgrel = 1
+	url = https://www.modestchecker.net
+	arch = x86_64
+	license = custom
+	optdepends = graphviz: graphviz dot in Visual Studio Code extension
+	options = !strip
+	source = LICENSE
+	sha256sums = 2a7f81d26a98a73826766fafc2dcf03fa3d74576e3aee572f61e772dd7e2d1e9
+	source_x86_64 = https://www.modestchecker.net/Downloads/Modest-Toolset-v3.1.235-ge57b05e4a-linux-x64.zip
+	sha256sums_x86_64 = 7024dbe2584506901fcec81bcb4d95c434173289cd8a9e574880aec2ad8ac0bc
+
+pkgname = modest-toolset
