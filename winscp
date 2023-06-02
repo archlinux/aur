@@ -12,4 +12,6 @@ if [ ! -d "${WINEPREFIX}" ] ; then
   cp -f "/usr/share/${APPLICATION}/${APPLICATION}_default_configuration.ini" "${CONFIG_DIR}/${APPLICATION}.ini" || exit 1
 fi
 
+# workaround for https://bugs.winehq.org/show_bug.cgi?id=54460
+winecfg -v win8
 wine "${CONFIG_DIR}/${APPLICATION}.exe" "$@"

@@ -1,7 +1,7 @@
 pkgbase = winscp
 	pkgdesc = Free SFTP, SCP and FTP client for Wine
 	pkgver = 6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://winscp.net/
 	arch = any
 	license = GPL2

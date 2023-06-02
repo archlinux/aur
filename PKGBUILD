@@ -5,7 +5,7 @@
 
 pkgname=winscp
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free SFTP, SCP and FTP client for Wine"
 arch=('any')
 url="https://winscp.net/"
