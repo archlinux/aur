@@ -1,0 +1,17 @@
+pkgbase = spleeter-data
+	pkgdesc = Deezer music source separation library - pretrained model - 2stems
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/deezer/spleeter
+	install = spleeter-data.install
+	arch = any
+	license = MIT
+	provides = spleeter-data
+	conflicts = spleeter-data
+	options = !strip
+	source = https://github.com/deezer/spleeter/releases/download/v1.4.0/2stems.tar.gz
+	source = https://github.com/deezer/spleeter/blob/master/LICENSE
+	sha256sums = f3a90b39dd2874269e8b05a48a86745df897b848c61f3958efc80a39152bd692
+	sha256sums = 757d6e9249af1eff9e703d18b41d449cd569ff35c1cd19864b72d04bf6c30565
+
+pkgname = spleeter-data
