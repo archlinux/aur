@@ -1,10 +1,10 @@
-# Maintainer: dreieck
+# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 
 _pkgname=marble-maps-micromacro-crimecity-demo
 pkgname="${_pkgname}"
 epoch=0
 pkgver=20220208.01
-pkgrel=2
+pkgrel=3
 pkgdesc="Makes the map of the demo of the board game 'microMACRO Crime City' browsable in KDE marble. Select the celestial body 'MicroMacro'."
 url="https://micromacro-game.com/en/democase.html"
 arch=('any')
