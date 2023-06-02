@@ -1,0 +1,3 @@
+The markup files contained in this package, which describe the maps, have unknown license. Assume copyright to the author (https://gitlab.com/marble-restricted-maps/).
+
+The map usage itself has a proprietary license.
