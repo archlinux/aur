@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="electronreact-appimage"
 _appname="electron-react-desktop-app"
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Desktop application using Electron and React"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/ElectronReact-${pkgver}.AppImage")
-sha256sums=('5ada7253a91b8c538723a67e55de5703d1775f30026b67aec9211b77c9a13c5b')
+sha256sums=('d809f3e848b32b66c5a85bc91f1bae17dc2be3556525f39e1f76889692234ecd')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
