@@ -1,0 +1,17 @@
+pkgbase = selvania-launcher-appimage
+	pkgdesc = Custom launcher for modded minecraft written in electron.js and Node.js (premium and crack)
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = http://luuxis.fr/
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = glibc
+	conflicts = selvania-launcher
+	options = !strip
+	source = selvania-launcher-1.2.6.AppImage::https://github.com/luuxis/Selvania-Launcher/releases/download/1.2.6/Selvania-Launcher-linux-x86_64.AppImage
+	source = LICENSE.md::https://raw.githubusercontent.com/luuxis/Selvania-Launcher/master/LICENSE.md
+	sha256sums = 4b90b419ab99bbc3bb566a02d5f6a6344ba27732faa6afb726734962f3a6529c
+	sha256sums = 7c73b8f626696c0403394da3dae0d5ed33009cc2d674803d40bc4e2c7e67174b
+
+pkgname = selvania-launcher-appimage
