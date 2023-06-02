@@ -12,12 +12,12 @@ pkgbase = circumflex-bin
 	provides = circumflex
 	conflicts = circumflex
 	source_i686 = circumflex-bin-2.9.1.tar.gz::https://github.com/bensadeh/circumflex/releases/download/2.9.1/circumflex_2.9.1_Linux_32-bit.tar.gz
-	sha256sums_i686 = 03efef371ef8eea9b34b74b90cd37a310c97ef95fd2f6ed8477c6ed64944c90b
+	sha256sums_i686 = 216b103db78ff366ab622d88f92e891b91856ff9b0981a23847f8a5393b750d1
 	source_pentium4 = circumflex-bin-2.9.1.tar.gz::https://github.com/bensadeh/circumflex/releases/download/2.9.1/circumflex_2.9.1_Linux_32-bit.tar.gz
-	sha256sums_pentium4 = 03efef371ef8eea9b34b74b90cd37a310c97ef95fd2f6ed8477c6ed64944c90b
+	sha256sums_pentium4 = 216b103db78ff366ab622d88f92e891b91856ff9b0981a23847f8a5393b750d1
 	source_x86_64 = circumflex-bin-2.9.1.tar.gz::https://github.com/bensadeh/circumflex/releases/download/2.9.1/circumflex_2.9.1_Linux_64-bit.tar.gz
-	sha256sums_x86_64 = 03efef371ef8eea9b34b74b90cd37a310c97ef95fd2f6ed8477c6ed64944c90b
+	sha256sums_x86_64 = 216b103db78ff366ab622d88f92e891b91856ff9b0981a23847f8a5393b750d1
 	source_aarch64 = circumflex-bin-2.9.1.tar.gz::https://github.com/bensadeh/circumflex/releases/download/2.9.1/circumflex_2.9.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 03efef371ef8eea9b34b74b90cd37a310c97ef95fd2f6ed8477c6ed64944c90b
+	sha256sums_aarch64 = 216b103db78ff366ab622d88f92e891b91856ff9b0981a23847f8a5393b750d1
 
 pkgname = circumflex-bin
