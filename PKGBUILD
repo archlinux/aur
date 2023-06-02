@@ -2,9 +2,9 @@
 
 pkgname=inkscape-eggbot-git
 _gitpkgname=EggBot
-pkgver=r681.a54e5df
-_axidraw_pkgver=3.9.1
-pkgrel=2
+pkgver=r684.0a70092
+_axidraw_pkgver=3.9.2
+pkgrel=1
 pkgdesc='EggBot software as an Inkscape extension. Useful for other plotters, too.'
 arch=('any')
 url='https://github.com/evil-mad/EggBot'
@@ -25,7 +25,7 @@ source=(
 
 sha512sums=(
   'SKIP'
-  '0ef744ca52147f01466173a21db0c5cbcc3197331d2db4cbae12df098cecce426b691f87dce99d116138208c14b878e1e3b35082c553fd993d084b3ad2535104'
+  'e68462f0d0e70a56fcbb11077011181291afa669f81ca667bc81d7d1fca9854963bd8faaa9468124f5aa1e050aee114ba93fbdbb0168e0c5da5e2c691db1fbfe'
 )
 
 pkgver() {
