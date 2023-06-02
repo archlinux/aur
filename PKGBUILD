@@ -8,7 +8,7 @@
 
 pkgname=google-chrome-dev
 pkgver=116.0.5803.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The popular and trusted web browser by Google (Dev Channel)"
 arch=('x86_64')
 url="https://www.google.com/chrome"
@@ -38,7 +38,7 @@ source=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_cha
 	"google-chrome-$_channel.sh")
 sha512sums=('81ebd4a24920df45895187ee1d516aae626eed0af71f2291bbeb0701cd29350a4f23c17b2af3789b9d88062f55345f3917e29c405f5a7a1250a78644665a201b'
             'a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
-            '349fc419796bdea83ebcda2c33b262984ce4d37f2a0a13ef7e1c87a9f619fd05eb8ff1d41687f51b907b43b9a2c3b4a33b9b7c3a3b28c12cf9527ffdbd1ddf2e')
+            '445eb36a588f49af018ded3d852b63e0523ffac20c25be721f3ef4663591256849432bebb3d9f352e4f53cbe1fb77fa67cf8911c9161f826490a21adbdcc81f4')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
