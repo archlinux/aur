@@ -9,7 +9,7 @@ pkgver=202303040307
 pkgrel=1
 pkgdesc="Xbox ISO Creation/Extraction utility"
 url="https://github.com/XboxDev/extract-xiso"
-arch=('any')
+arch=('x86_64' 'i686')
 license=('custom')
 makedepends=('git')
 source=("git+$url.git")
@@ -25,6 +25,7 @@ build() {
   cd $pkgname
   make
 }
+
 package() {
   cd $pkgname
   # Install binary
