@@ -1,0 +1,18 @@
+pkgbase = deno-init
+	pkgdesc = Initializer AUR providing the latest deno runtime, then you can upgrade deno by `deno upgrade`
+	pkgver = 1.0+deno+1.x
+	pkgrel = 1
+	url = https://deno.com/runtime
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = deno
+	conflicts = deno
+	conflicts = deno-git
+	conflicts = deno-bin
+	source_x86_64 = https://github.com/denoland/deno/releases/latest/download/deno-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/LukeChannings/deno-arm64/releases/latest/download/deno-linux-arm64.zip
+	sha256sums_aarch64 = SKIP
+
+pkgname = deno-init
