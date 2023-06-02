@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
   "SKIP"
-  "6c2124ae92594d84ee58531c93820957356bd7f92236cd85fa8d6de6b554ede5"
+  "SKIP"
 )
 
 build() {
