@@ -3,8 +3,8 @@
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=mingw-w64-cmocka
-pkgver=1.1.5
-pkgrel=2
+pkgver=1.1.7
+pkgrel=1
 pkgdesc='Elegant unit testing framework for C with support for mock objects (mingw-w64)'
 url='https://cmocka.org/'
 arch=('any')
@@ -13,10 +13,10 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-wine')
 options=(!strip !buildflags staticlibs)
 source=(https://cmocka.org/files/1.1/cmocka-${pkgver}.tar.xz{,.asc}
-            'cmake.patch')
-sha512sums=('cad7f04757183d004f6eaad39036fc0e24c5e0e987f80e85bc43bc66dba22389cb02b08e25531cc28a541d0a24a86b29be134a2d6fc339128e87d66952f502bd'
+        'cmake.patch')
+sha512sums=('fe451893474dce1270e12af707a9a8fe1f0217e1782b4e1a67d25dadf56ff4a5e7dbc9ba4431f774aedffa46a40a28a6a0488df24feefb2f93e90fd2369c2c88'
             'SKIP'
-            'a9f959ca9f489c3ca57e7671e249064c28b45a00df95395ac46ba0cea5bfc8760253a708a470e04e6c1f9a6f5a882b75fbceef7933b8e200da3579b1580cd671')
+            'a7e862f1b68ee72a10c6820c3739e01eab0cef8d4014b605ea1c14d4869891b854197ba8ee823a12e886c232bf117d028904e737a0597eca48d1072330bfa00d')
 validpgpkeys=('8DFF53E18F2ABC8D8F3C92237EE0FC4DCC014E3D') # Andreas Schneider <asn@cryptomilk.org>
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
