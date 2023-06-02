@@ -1,46 +1,38 @@
-# Maintainer: Greyson Christoforo <grey@christoforo.net>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Greyson Christoforo <grey@christoforo.net>
 # Contributor: Alex Forencich <alex@alexforencich.com>
-pkgname=python-pyvisa
-pkgver=1.11.3
-pkgrel=3
-pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library"
-arch=(any)
-url="https://github.com/pyvisa/pyvisa"
-license=('MIT')
-depends=(
-python
-python-distribute
-python-docutils
-python-typing_extensions
-)
-optdepends=('python-pyvisa-py: Pure Python backend')
-makedepends=(
-python-setuptools
-python-setuptools-scm
-python-pytest
-)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pyvisa/pyvisa/archive/$pkgver.tar.gz")
-sha256sums=('8f8a309050a784b518a04b1506a06d34c69c630ee553e8a88d9d89cea4fd318a')
 
-export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+pkgname=python-pyvisa
+pkgver=1.13.0
+pkgrel=1
+pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library"
+url="https://github.com/pyvisa/pyvisa"
+arch=('any')
+license=('MIT')
+depends=('python-distribute' 'python-docutils' 'python-typing_extensions')
+makedepends=('python-setuptools-scm' 'python-pytest')
+optdepends=('python-pyvisa-py: Pure Python backend')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
-  cd pyvisa-${pkgver}
+  export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+  # Switch tag version
+  cd pyvisa
+  git checkout tags/${pkgver}
 }
 
 build() {
-  cd pyvisa-${pkgver}
+  cd pyvisa
   python setup.py build
 }
 
 check(){
-  cd pyvisa-${pkgver}
+  cd pyvisa
   PYTHONPATH="${srcdir}/pyvisa-${pkgver}" python -m pytest --pyargs pyvisa --ignore pyvisa/testsuite/test_cmd_line_tools.py
 }
 
 package(){
-  cd pyvisa-${pkgver}
+  cd pyvisa
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
