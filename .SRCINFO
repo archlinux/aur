@@ -1,0 +1,13 @@
+pkgbase = dcsf-git
+	pkgdesc = Send attachments / files to DMs with messages in Discord using the dcsf command in your command line. (dcsf = discord send file)
+	pkgver = r14.97092f3
+	pkgrel = 1
+	url = https://github.com/whois-hoeless/Discord-Console-File-Upload
+	arch = any
+	license = MIT
+	depends = python>=3.9
+	depends = git
+	source = git+https://github.com/whois-hoeless/Discord-Console-File-Upload
+	sha256sums = SKIP
+
+pkgname = dcsf-git
