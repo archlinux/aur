@@ -22,6 +22,7 @@ pkgbase = justbuild
 	depends = curl
 	depends = python
 	depends = protobuf
+	depends = libarchive
 	conflicts = just
 	conflicts = just-git
 	conflicts = just-js
