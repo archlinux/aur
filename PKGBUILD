@@ -3,7 +3,7 @@
 
 pkgname=python-pyvisa-py
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure python backend for PyVISA"
 url="https://github.com/pyvisa/pyvisa-py"
 arch=('any')
@@ -15,7 +15,6 @@ optdepends=('linux-gpib: gpib instrument support'
             'python-pyusb: interface with USB instruments'
             'python-gpib-ctypes: interface with GPIB instruments'
             'python-psutil: discover TCPIP devices across multiple interfaces')
-conflicts=($pkgname-git)
 source=("git+$url.git")
 sha256sums=('SKIP')
 
