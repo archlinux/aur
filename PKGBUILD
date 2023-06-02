@@ -2,7 +2,7 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-tvscraper
-pkgver=1.1.10
+pkgver=1.1.12
 _vdrapi=2.6.3
 pkgrel=1
 pkgdesc="Runs in the background and collects metadata for all available EPG events"
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/MarkusEh/vdr-plugin-tvscrap
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         'var/lib/vdr/plugins/tvscraper/override.conf')
-sha256sums=('39ffb9dde3326874b68269b7034ba3c1aed95081b9e2e4d6ad204614f517e0e9'
+sha256sums=('8b5424b1ece3f5171844403b2c823871c6c343d5d5821ae5245efd1d10ae3ae3'
             '8e3d62505e7c17364a482374bc9f90cdabe6ef81bf4104f87c3898cb5397d808')
 
 build() {
