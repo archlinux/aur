@@ -5,7 +5,7 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname='makeself'
-pkgver='2.4.5'
+pkgver='2.5.0'
 pkgrel='1'
 pkgdesc='Utility to create self-extracting packages'
 arch=('any')
@@ -30,9 +30,9 @@ optdepends=(
   'tar: archive support'
 )
 source=("${pkgname}-release-${pkgver}.tar.gz::https://github.com/megastep/${pkgname}/archive/release-${pkgver}.tar.gz")
-md5sums=('18bd1c06156cdf2d006ce21a72078e30')
-sha256sums=('91deafdbfddf130abe67d7546f0c50be6af6711bb1c351b768043bd527bd6e45')
-sha512sums=('1dae74586f6bd5afb526801b7ffa7fc7962ff74b0f190cdd51da93c21421864b72f5fe18090cb2ff6ad27f0907fbf3aeb5545f3f70e33dbc9e505a78505f5f90')
+md5sums=('0c0811d2134edafd7ac311e66fbdfb19')
+sha256sums=('705d0376db9109a8ef1d4f3876c9997ee6bed454a23619e1dbc03d25033e46ea')
+sha512sums=('cd0ce98579f00a02f9559848b39e0a6efea9df1866073d419f0b6560034cc186ed8315f8b4589e03f626b040727d9ae646bc2abaebe4f4da556b87617bdd770f')
 
 prepare() {
   cd "${pkgname}-release-${pkgver}"
@@ -41,7 +41,7 @@ prepare() {
 
 package() {
   cd "${pkgname}-release-${pkgver}"
-  install -Dpm644 'makeself.lsm' 'README.md' -t "${pkgdir}/usr/share/${pkgname}/"
+  #install -Dpm644 'makeself.lsm' 'README.md' -t "${pkgdir}/usr/share/${pkgname}/"
   install -Dpm644 'makeself.1' -t "${pkgdir}/usr/share/man/man1/"
   install -Dpm755 'makeself.sh' "${pkgdir}/usr/bin/makeself"
   install -Dpm755 'makeself-header.sh' -t "${pkgdir}/usr/share/${pkgname}/"
