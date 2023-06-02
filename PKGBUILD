@@ -11,7 +11,7 @@ depends=(cava libadwaita python-gobject python-cairo)
 makedepends=(git meson)
 checkdepends=(appstream-glib)
 source=(git+$url#tag=$pkgver)
-b2sums=(SKIP)
+b2sums=('SKIP')
 
 build() {
 	arch-meson $pkgname build
