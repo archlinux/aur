@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="chrolog-bin"
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A automated time tracking tool"
 arch=("x86_64")
@@ -9,11 +9,10 @@ license=('custom')
 depends=('zlib' 'glibc' 'python' 'perl' 'at-spi2-core' 'mesa' 'alsa-lib' 'dbus' 'gcc-libs' 'libxkbcommon' 'gtk3' 'libx11' 'libinput' 'nss' \
     'systemd-libs' 'glib2' 'libxcb' 'pango' 'libxext' 'bash' 'cairo' 'libxrandr' 'libdrm' 'libxcomposite' 'hicolor-icon-theme' 'libcups' \
     'libxfixes' 'nspr' 'libxdamage' 'expat')
-#options=(!strip)
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
 replaces=("${pkgname%-bin}-appimage")
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.zip")
-sha256sums=('0d2c0e3c2afd69b1892d29acf57a393d2895d3e9c1a679d36db3954f60ae7818')
+sha256sums=('4ba773a11f93fe66357605f403517e0326aa67201cd25a7fbe1a0919236e21f6')
      
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"

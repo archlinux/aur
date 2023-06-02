@@ -1,6 +1,6 @@
 pkgbase = chrolog-bin
 	pkgdesc = A automated time tracking tool
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/Lukylix/Chrolog
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = chrolog-bin
 	conflicts = chrolog
 	conflicts = chrolog-appimage
 	replaces = chrolog-appimage
-	source = chrolog-1.4.0.zip::https://github.com/Lukylix/Chrolog/releases/download/v1.4.0/chrolog-1.4.0-linux.zip
-	sha256sums = 0d2c0e3c2afd69b1892d29acf57a393d2895d3e9c1a679d36db3954f60ae7818
+	source = chrolog-1.5.0.zip::https://github.com/Lukylix/Chrolog/releases/download/v1.5.0/chrolog-1.5.0-linux.zip
+	sha256sums = 4ba773a11f93fe66357605f403517e0326aa67201cd25a7fbe1a0919236e21f6
 
 pkgname = chrolog-bin
