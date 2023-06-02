@@ -1,14 +1,14 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=python-podman
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="Python bindings for Podman's RESTful API"
 arch=('any')
 url="https://github.com/containers/podman-py"
 license=('Apache')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5cf5f5c4cb3f7616a38ff92a534f4221517c6d0b9d6a5f2fda6608f5e00fb906')
+sha256sums=('464631a8005e61a5118c2d408f373a327efb854074b70ef6e24985d90c0b2231')
 depends=('python')
 makedepends=('python-setuptools')
 provides=('python-podman-py')
