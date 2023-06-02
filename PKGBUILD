@@ -60,8 +60,8 @@ prepare() {
 
 build() {
     cd "${srcdir}/${pkgname}"
-    make clean
     qmake PREFIX=/usr moment.pro
+    make clean
     make
 }
 
