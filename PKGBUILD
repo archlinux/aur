@@ -29,7 +29,7 @@ source=(https://repo.${pkgname}.com/archive/Anaconda3-${pkgver}-Linux-x86_64.sh
 	${pkgname}-navigator.desktop)
 options=(!strip libtool staticlibs)
 sha512sums=('27a44d1da6a6d0bce646e735510c3a16f30a74a310f86c6da09a6364d440717750bad96316ae978f66ed1801310e7d4cf0b5a410808a7c51522a484e636eb4ad'
-	'16a4d08590c082dc6042a68783f5c6bfa03af6aa6e07baf489f7d698695d1e2659b0add6c123693da6516ebc031009f97368830f028e2c7af45db33f883aa26a')
+            '16a4d08590c082dc6042a68783f5c6bfa03af6aa6e07baf489f7d698695d1e2659b0add6c123693da6516ebc031009f97368830f028e2c7af45db33f883aa26a')
 install="${pkgname}.install"
 
 package() {
