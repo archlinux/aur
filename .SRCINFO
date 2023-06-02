@@ -1,6 +1,6 @@
 pkgbase = python-equinox
 	pkgdesc = Elegant easy-to-use neural networks in JAX
-	pkgver = 0.10.4
+	pkgver = 0.10.5
 	pkgrel = 1
 	url = https://github.com/patrick-kidger/equinox
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-equinox
 	depends = python-jax
 	depends = python-jaxtyping
 	depends = python-typing_extensions
-	source = equinox-0.10.4.tar.gz::https://github.com/patrick-kidger/equinox/archive/v0.10.4.tar.gz
-	sha512sums = d85ea14a025022310e0333f7bac085c105227c1548c8c91088aacc24373054583470ee2c960817bd4a5efb7f24ceec7f8a54f2dccc80e5abe2072687c1dc6e20
+	source = equinox-0.10.5.tar.gz::https://github.com/patrick-kidger/equinox/archive/v0.10.5.tar.gz
+	sha512sums = 393299c019acd207d888a327b9901a77c731e636b519f772249d0fe4f489f022962982f783d81e5e53511ff684114596fc2cbbf8e932bfc80ee752018bb2954b
 
 pkgname = python-equinox
