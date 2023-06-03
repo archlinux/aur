@@ -1,0 +1,15 @@
+pkgbase = pynterferometer
+	pkgdesc = Is a graphical interface designed to demonstrated the techniques of radio interferometry used by telescopes
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://www.jb.man.ac.uk/pynterferometer/index.html
+	arch = x86_64
+	license = unknown
+	depends = tk
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-scipy
+	source = https://www.jb.man.ac.uk/pynterferometer/Linux/LinuxV2ERIS.tar
+	md5sums = 55dd6a740993e098c5aa6bd9b96f491c
+
+pkgname = pynterferometer
