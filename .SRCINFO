@@ -1,0 +1,16 @@
+pkgbase = reproc-git
+	pkgdesc = Cross-platform library that simplifies working with external CLI applications from C and C++
+	pkgver = 14.2.4.r8.g9f39967
+	pkgrel = 1
+	url = https://github.com/DaanDeMeyer/reproc
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	provides = reproc
+	conflicts = reproc
+	source = reproc::git+https://github.com/DaanDeMeyer/reproc
+	sha256sums = SKIP
+
+pkgname = reproc-git
