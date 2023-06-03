@@ -1,6 +1,6 @@
 pkgbase = easyeffects-git
 	pkgdesc = Audio Effects for Pipewire applications
-	pkgver = 7.0.4.r111.g2916f27f
+	pkgver = 7.0.4.r132.g31e41d04
 	pkgrel = 1
 	url = https://github.com/wwmm/easyeffects
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = easyeffects-git
 	depends = liblilv-0.so
 	depends = pipewire
 	depends = rnnoise
-	depends = librubberband.so
+	depends = soundtouch
 	depends = speexdsp
 	depends = tbb
 	depends = zita-convolver

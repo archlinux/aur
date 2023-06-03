@@ -4,7 +4,7 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=7.0.4.r111.g2916f27f
+pkgver=7.0.4.r132.g31e41d04
 pkgrel=1
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('fftw' 'libfmt.so' 'gsl' 'gtk4' 'libadwaita-1.so'
          'libbs2b.so' 'libebur128' 'libsamplerate.so'
          'libsigc-3.0.so' 'libsndfile.so' 'liblilv-0.so'
-         'pipewire' 'rnnoise' 'librubberband.so'
+         'pipewire' 'rnnoise' 'soundtouch'
          'speexdsp' 'tbb' 'zita-convolver')
 makedepends=('appstream-glib' 'itstool' 'meson' 'nlohmann-json' 'speex' 'lv2')
 optdepends=(
