@@ -19,20 +19,21 @@ arch=('x86_64')
 url='http://www.dolphin-emu.org/'
 license=('GPL2')
 depends=(
-  'alsa-lib' 'bluez-libs' 'cubeb' 'enet' 'hidapi' 'libevdev' 'libgl' 'libmgba'
-  'libpulse' 'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'minizip-ng'
+  'alsa-lib' 'bluez-libs' 'cubeb' 'enet' 'hidapi' 'libevdev' 'libgl' 'libmgba-git'
+  'libpulse' 'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'mbedtls2' 'minizip-ng'
   'pugixml' 'qt6-base' 'sfml' 'zlib'
   'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
   'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
 )
 makedepends=('cmake' 'git' 'ninja' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
-source=("$_projectname::git+https://github.com/dolphin-emu/dolphin.git#commit=dadbeb4bae7e7fa23af2b46e0add4143094dc107")
+source=("$_projectname::git+https://github.com/dolphin-emu/dolphin.git#commit=dadbeb4bae7e7fa23af2b46e0add4143094dc107" "https://github.com/dolphin-emu/dolphin/commit/4d61ec1f4f5ae87f49ec85f30a3167d56c9706a4.patch")
 sha256sums=('SKIP')
 
 prepare() {
   # init submodules
   cd $_projectname
+  patch --forward --strip=1 --input="../4d61ec1f4f5ae87f49ec85f30a3167d56c9706a4.patch"
   git submodule update --init --recursive
 
   if [[ -d build ]]; then
@@ -80,3 +81,6 @@ package_dolphin-emu-beta-nogui-git() {
   install -dm 755 "${pkgdir}"/usr/bin
   install -m 755 build/Binaries/dolphin-emu-nogui "${pkgdir}"/usr/bin/dolphin-emu-cli
 }
+
+sha256sums=('SKIP'
+            'eacce3ae34270f8d1b4a9cac9f37fd19506613653d663f07b57695680c3b7828')

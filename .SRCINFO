@@ -16,7 +16,7 @@ pkgbase = dolphin-emu-beta-git
 	depends = hidapi
 	depends = libevdev
 	depends = libgl
-	depends = libmgba
+	depends = libmgba-git
 	depends = libpulse
 	depends = libspng
 	depends = libx11
@@ -24,6 +24,7 @@ pkgbase = dolphin-emu-beta-git
 	depends = libxrandr
 	depends = lzo
 	depends = mbedtls
+	depends = mbedtls2
 	depends = minizip-ng
 	depends = pugixml
 	depends = qt6-base
@@ -40,7 +41,9 @@ pkgbase = dolphin-emu-beta-git
 	depends = libusb-1.0.so
 	optdepends = pulseaudio: PulseAudio backend
 	source = dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git#commit=dadbeb4bae7e7fa23af2b46e0add4143094dc107
+	source = https://github.com/dolphin-emu/dolphin/commit/4d61ec1f4f5ae87f49ec85f30a3167d56c9706a4.patch
 	sha256sums = SKIP
+	sha256sums = eacce3ae34270f8d1b4a9cac9f37fd19506613653d663f07b57695680c3b7828
 
 pkgname = dolphin-emu-beta-git
 	provides = dolphin-emu
