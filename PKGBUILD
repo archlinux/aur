@@ -1,15 +1,16 @@
 # Manitainer: grgergo <csakbek@freemail.hu>
 
 pkgname='purple-instagram'
-pkgver=1.0.0
-pkgrel=2
+pkgver=master
+pkgrel=1
+epoch=1
 pkgdesc='Instagram plugin for libpurple'
 arch=('x86_64')
-url='https://github.com/doopage/purple-instagram'
+url='https://codeberg.org/grgergo/purple-instagram'
 license=('GPL3')
 depends=('libpurple' 'glib2' 'json-glib')
 
-source=('git+https://github.com/doopage/purple-instagram')
+source=('git+https://codeberg.org/grgergo/purple-instagram')
 sha256sums=('SKIP')
 
 build() {
