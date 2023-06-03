@@ -1,0 +1,15 @@
+pkgbase = apsynsim
+	pkgdesc = Aperture Synthesis Simulator for Radio Astronomy
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://launchpad.net/apsynsim
+	arch = x86_64
+	license = GPL3
+	makedepends = python-numpy
+	makedepends = python-scipy
+	makedepends = python-matplotlib
+	makedepends = tk
+	source = https://launchpad.net/apsynsim/trunk/i-train-2022/+download/apsynsim_I-TRAIN_Release_2.2b.tar.gz
+	sha256sums = 445faba97c42361296a428b6992ff3e7af2165caa461321fe9f069f8b0f9faa1
+
+pkgname = apsynsim
