@@ -17,7 +17,7 @@ epoch=
 pkgdesc="This module offers a straightforward macro interface that facilitates seamless exception handling in
  the C programming language, drawing inspiration from the paradigm employed in C++."
 arch=(x86_64)
-url="https://github.com/alecksandr26/trycatch-c"
+url="https://github.com/alecksandr26/trycatch-c/archive/refs/tags/v1.2.0.tar.gz"
 license=('MIT License')
 depends=()
 makedepends=(gcc git make binutils coreutils nasm)
@@ -28,7 +28,7 @@ basedir=$(pwd)
 
 # Compile the source code 
 build () {
-    tar -xf "$basedir/$pkgname-$pkgver.tar.gz"
+    tar -xzf "$basedir/$pkgname-$pkgver.tar.gz"
     cd $srcdir/$pkgname-$pkgver
     make compile
 }
