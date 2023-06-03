@@ -1,0 +1,14 @@
+pkgbase = purple-instagram
+	pkgdesc = Instagram plugin for libpurple
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/EionRobb/purple-instagram
+	arch = x86_64
+	license = GPL3
+	depends = libpurple
+	depends = glib2
+	depends = json-glib
+	source = git+https://github.com/EionRobb/purple-instagram
+	sha256sums = SKIP
+
+pkgname = purple-instagram
