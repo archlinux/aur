@@ -2,7 +2,7 @@
 
 _pkgname='catt'
 pkgname="$_pkgname-git"
-pkgver=0.12.10.r1.g82cd0fe
+pkgver=0.12.11.r4.g305b832
 pkgrel=1
 pkgdesc='Cast All The Things - Send videos from many, many online sources to your Chromecast.'
 arch=('any')
@@ -13,7 +13,6 @@ makedepends=(
   'git'
   'python-installer'
   'python-poetry'
-  'python-setuptools'
 )
 source=("$_pkgname"::"git+$url")
 sha256sums=('SKIP')
@@ -39,7 +38,7 @@ package() {
   )
 
   cd "$_pkgname"
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -vDm0644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -vDm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
