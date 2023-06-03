@@ -1,0 +1,90 @@
+diff -ru ghemical-3.0.0.orig/configure.ac ghemical-3.0.0/configure.ac
+--- ghemical-3.0.0.orig/configure.ac	2023-06-02 02:29:50.000000000 +0100
++++ ghemical-3.0.0/configure.ac	2023-06-03 16:54:11.000000000 +0100
+@@ -163,9 +163,9 @@
+ if test $enable_openbabel = yes; then
+ 	AC_DEFINE([ENABLE_OPENBABEL], [], [Define if you are building a version that interfaces directly with OpenBabel])
+ 	
+-	PKG_CHECK_MODULES([OPENBABEL], [openbabel-2.0])
+-	##alt	OPENBABEL_CFLAGS=`$PKG_CONFIG --cflags openbabel-2.0`
+-	##alt	OPENBABEL_LIBS=`$PKG_CONFIG --libs openbabel-2.0`
++	PKG_CHECK_MODULES([OPENBABEL], [openbabel-3])
++	##alt	OPENBABEL_CFLAGS=`$PKG_CONFIG --cflags openbabel-3`
++	##alt	OPENBABEL_LIBS=`$PKG_CONFIG --libs openbabel-3`
+ 	
+ 	CPPFLAGS="$CPPFLAGS $OPENBABEL_CFLAGS"
+ 	LIBS="$LIBS $OPENBABEL_LIBS"
+diff -ru ghemical-3.0.0.orig/src/filetrans.cpp ghemical-3.0.0/src/filetrans.cpp
+--- ghemical-3.0.0.orig/src/filetrans.cpp	2023-06-02 02:29:50.000000000 +0100
++++ ghemical-3.0.0/src/filetrans.cpp	2023-06-03 16:54:11.000000000 +0100
+@@ -33,6 +33,8 @@
+ // Babel lib includes
+ // ^^^^^^^^^^^^^^^^^^
+ 
++#include <openbabel/atom.h>
++#include <openbabel/bond.h>
+ #include <openbabel/mol.h>
+ #include <openbabel/obutil.h>
+ #include <openbabel/data.h>
+@@ -48,12 +50,12 @@
+ 
+ namespace OpenBabel
+ {
+-	extern OBAromaticTyper aromtyper;
+-	extern OBAtomTyper atomtyper;
+-	extern OBElementTable etab;
++	//extern OBAromaticTyper aromtyper;
++	//extern OBAtomTyper atomtyper;
++	//extern OBElementTable etab;
+ 	extern OBTypeTable ettab;
+ 	extern OBChainsParser chainsparser;
+-	extern OBIsotopeTable isotab;
++	//extern OBIsotopeTable isotab;
+ }
+ 
+ /*################################################################################################*/
+@@ -438,7 +440,7 @@
+ 			bndr = & (* it1);
+ 			
+ 			i32s bt;
+-			switch (obb->GetBO())
++			switch (obb->GetBondOrder())
+ 			{
+ 				case 1:		bt = BONDTYPE_SINGLE; break;
+ 				case 2:		bt = BONDTYPE_DOUBLE; break;
+@@ -458,7 +460,7 @@
+ 		if (!bndr)
+ 		{
+ 			i32s bt;
+-			switch (obb->GetBO())
++			switch (obb->GetBondOrder())
+ 			{
+ 				case 1:		bt = BONDTYPE_SINGLE; break;
+ 				case 2:		bt = BONDTYPE_DOUBLE; break;
+diff -ru ghemical-3.0.0.orig/src/pangofont_wcl.cpp ghemical-3.0.0/src/pangofont_wcl.cpp
+--- ghemical-3.0.0.orig/src/pangofont_wcl.cpp	2023-06-02 02:29:50.000000000 +0100
++++ ghemical-3.0.0/src/pangofont_wcl.cpp	2023-06-03 16:57:38.000000000 +0100
+@@ -69,20 +69,13 @@
+ 	font_list_base = glGenLists(128);
+ 	
+ 	PangoFontDescription * font_desc = pango_font_description_from_string(font_string);
+-	PangoFont * font = gdk_gl_font_use_pango_font(font_desc, 0, 128, font_list_base);
+-	if (font == NULL)
++        font_height = pango_font_description_get_size(font_desc);
++	if (!pango_font_description_get_size_is_absolute(font_desc))
+ 	{
+-		g_print(_("*** ERROR : Can't load font '%s'\n"), font_string);
+-		exit(EXIT_FAILURE);
++		font_height = PANGO_PIXELS(font_height);
+ 	}
+ 	
+-	PangoFontMetrics * font_metrics = pango_font_get_metrics(font, NULL);
+-	
+-	font_height = pango_font_metrics_get_ascent(font_metrics) + pango_font_metrics_get_descent(font_metrics);
+-	font_height = PANGO_PIXELS(font_height);
+-	
+ 	pango_font_description_free(font_desc);
+-	pango_font_metrics_unref(font_metrics);
+ }
+ 
+ int pangofont_wcl::ogl_GetStringWidth(const char * str)
