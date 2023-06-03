@@ -24,6 +24,7 @@ makedepends=(gcc git make binutils coreutils nasm)
 optdepends=(valgrind)
 source=("$pkgname-$pkgver.tar.gz::$url")
 md5sums=('SKIP')
+basedir=$(pwd)
 
 # Compile the source code 
 build () {
