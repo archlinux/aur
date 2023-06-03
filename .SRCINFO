@@ -1,5 +1,5 @@
 pkgbase = spleeter-data
-	pkgdesc = Deezer music source separation library - pretrained model - 2stems
+	pkgdesc = Deezer music source separation library - pretrained model
 	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/deezer/spleeter
@@ -9,9 +9,35 @@ pkgbase = spleeter-data
 	provides = spleeter-data
 	conflicts = spleeter-data
 	options = !strip
-	source = https://github.com/deezer/spleeter/releases/download/v1.4.0/2stems.tar.gz
 	source = https://raw.githubusercontent.com/deezer/spleeter/master/LICENSE
-	sha256sums = f3a90b39dd2874269e8b05a48a86745df897b848c61f3958efc80a39152bd692
+	source = https://github.com/deezer/spleeter/releases/download/v1.4.0/2stems.tar.gz
+	source = https://github.com/deezer/spleeter/releases/download/v1.4.0/4stems.tar.gz
+	source = https://github.com/deezer/spleeter/releases/download/v1.4.0/5stems.tar.gz
+	source = https://github.com/deezer/spleeter/releases/download/v1.4.0/2stems-finetune.tar.gz
+	source = https://github.com/deezer/spleeter/releases/download/v1.4.0/4stems-finetune.tar.gz
+	source = https://github.com/deezer/spleeter/releases/download/v1.4.0/5stems-finetune.tar.gz
 	sha256sums = b15e40c921ec6fe997e0d88ddab9c26fb915bebbbb9496530d3f98f317d4325a
+	sha256sums = f3a90b39dd2874269e8b05a48a86745df897b848c61f3958efc80a39152bd692
+	sha256sums = 3adb4a50ad4eb18c7c4d65fcf4cf2367a07d48408a5eb7d03cd20067429dfaa8
+	sha256sums = 25a1e87eb5f75cc72a4d2d5467a0a50ac75f05611f877c278793742513cc7218
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
-pkgname = spleeter-data
+pkgname = spleeter-data-2stems
+	pkgdesc = Deezer music source separation library - pretrained model - 2stems
+
+pkgname = spleeter-data-4stems
+	pkgdesc = Deezer music source separation library - pretrained model - 4stems
+
+pkgname = spleeter-data-5stems
+	pkgdesc = Deezer music source separation library - pretrained model - 5stems
+
+pkgname = spleeter-data-2stems-finetune
+	pkgdesc = Deezer music source separation library - pretrained model - 2stems-finetune
+
+pkgname = spleeter-data-4stems-finetune
+	pkgdesc = Deezer music source separation library - pretrained model - 4stems-finetune
+
+pkgname = spleeter-data-5stems-finetune
+	pkgdesc = Deezer music source separation library - pretrained model - 5stems-finetune
