@@ -1,10 +1,12 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: UnicornDarkness
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Artem Klevtsov <a.a.klevtsov@gmail com>
 
 pkgname=afancontrol
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
+_pypi_hash="b4/6b/50d7cd7693c21f4fcb48e77a79bea4e6de550f35879bcaf0cc82515667cc"
 pkgdesc="Advanced fan control daemon"
 arch=('any')
 url="https://github.com/KostyaEsmukov/afancontrol"
@@ -18,8 +20,8 @@ optdepends=('lm_sensors: to use the motherboard-based sensors and PWM fans'
             'python-pyserial: Arduino support'
             'python-prometheus_client: Prometheus support')
 backup=("etc/$pkgname/$pkgname.conf")
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/a/$pkgname/$pkgname-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/a/$pkgname/$pkgname-$pkgver.tar.gz.asc"
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/$_pypi_hash/afancontrol-3.1.0.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/$_pypi_hash/afancontrol-3.1.0.tar.gz.asc"
         'LICENSE')
 sha256sums=('1403995a84a2ec880e36d36ca54c51e21e459e492b36b13437ceb5b792c7a46c'
             'SKIP'
@@ -46,7 +48,7 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dvm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dvm644 "pkg/$pkgname.conf" -t "$pkgdir/etc/$pkgname/"
 }
