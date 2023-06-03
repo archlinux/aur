@@ -1,7 +1,7 @@
 # Maintainer: Lorenz Steinert <lorenz@steinerts.de>
 
 pkgname=dsc
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Docspell command line interface"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('cargo')
 # disable link time optimization as that breaks linking of libgit2
 options=(!lto)
 source=("https://github.com/docspell/dsc/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('6a5a02c32ef4481828adeef558a3e0ac70f8c31cca3daeb291238b0557220c60ebe3321b318de8760e2bc472d60f2e2784bc9f70a75edf87588d519ca1eba90e')
+sha512sums=('fc326a5fb8c2c93da366727a060746945a011fd80b6c5b93776e691425fe7218f5122bd3fc0e046988033bcfb8891e20642ad3cf0671c58bc7d9eac6bdb608e3')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
