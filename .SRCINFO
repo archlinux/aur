@@ -1,0 +1,33 @@
+pkgbase = tomcat8
+	pkgdesc = Open source implementation of the Java Servlet 3.1 and JavaServer Pages 2.3 technologies
+	pkgver = 8.5.90
+	pkgrel = 1
+	url = https://tomcat.apache.org/
+	install = tomcat8.install
+	arch = any
+	license = APACHE
+	makedepends = ant
+	makedepends = git
+	makedepends = java-environment=8
+	depends = java-runtime>=7
+	depends = java-jsvc
+	depends = java-commons-daemon
+	depends = eclipse-ecj
+	optdepends = tomcat-native: to allow optimal performance in production environments
+	backup = etc/tomcat8/catalina.policy
+	backup = etc/tomcat8/catalina.properties
+	backup = etc/tomcat8/context.xml
+	backup = etc/tomcat8/logging.properties
+	backup = etc/tomcat8/server.xml
+	backup = etc/tomcat8/tomcat-users.xml
+	backup = etc/tomcat8/web.xml
+	source = git+https://github.com/apache/tomcat.git#tag=136713c528bfcd31563c1e7b7685d4983bb3559c
+	source = tomcat8.service
+	source = tomcat8.sysusers
+	source = tomcat8.tmpfiles
+	b2sums = SKIP
+	b2sums = b573a5c2d081539c57c35655c612108ae5ece6e362d887170fa52888272480f17f4e6637f378e9fbdf9cb992d91ce63f4fb45d2fca62b31fa1c817ae4465e94c
+	b2sums = e2b63275530ce7e57756ccf6f3934506245888dbc41005275e039e25712c13d37c2f28fd3af0c1dcace1dabe7a1e33d7f056f4c3c8f4a336f952fd7de46345ef
+	b2sums = a0e3052408ad8c64c88fcc7d4c3a883c16e7fd0d89a22fd6e89480b2021fc7fb4acf6f9b2ded78e64ebe9c2afb8bf85742da0299666b22f5cf6f63166ce1b141
+
+pkgname = tomcat8
