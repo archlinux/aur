@@ -1,8 +1,8 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=cubeb
-pkgver=20230201
-_commit=70b4e3db7822de4d534959885cda109d6edbee36
+pkgver=20230517
+_commit=48689ae7a73caeb747953f9ed664dc71d2f918d8
 pkgrel=1
 pkgdesc="Cross platform audio library"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
