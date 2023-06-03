@@ -20,7 +20,7 @@ pkgdesc="unittest c is a fast and simple macro-based unit testing framework for 
 It's inspired by the Python unittest module and designed to reduce boilerplate code.
 With macros and a built-in test runner, it's ideal for large test suites."
 arch=('x86_64')
-url="https://github.com/alecksandr26/unittest-c/archive/refs/tags/v1.1.0.tar.gz"
+url="https://github.com/alecksandr26/unittest-c/archive/refs/tags/v1.1.1.tar.gz"
 license=('MIT License')
 depends=()
 makedepends=(gcc git make binutils coreutils trycatch-c)
