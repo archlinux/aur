@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.3.3.arch1
+pkgver=6.3.5.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -83,7 +83,6 @@ makedepends=(
     imagemagick
     python-sphinx
     texlive-latexextra
-    xmlto
 )
 options=('!strip')
 
