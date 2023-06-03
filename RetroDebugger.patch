@@ -1,0 +1,35 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 827dd91..d197d89 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,7 +26,7 @@ include_directories(
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/CrtMaker"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/DNDK"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/Commando"
+-    "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/ShowPic"
++#    "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/ShowPic"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/GoatTracker"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/GoatTracker/gt2"
+     "${CMAKE_CURRENT_SOURCE_DIR}/src/Plugins/GoatTracker/gt2/asm"
+@@ -1430,7 +1430,7 @@ target_link_libraries(retrodebugger
+     gobject-2.0
+     gio-2.0
+     dbus-1
+-    /usr/lib/x86_64-linux-gnu/libsndio.so
++    /usr/lib/libsndio.so
+     dl
+     m
+     pthread
+diff --git a/src/Plugins/C64D_InitPlugins.cpp b/src/Plugins/C64D_InitPlugins.cpp
+index 05c08d3..bc02324 100644
+--- a/src/Plugins/C64D_InitPlugins.cpp
++++ b/src/Plugins/C64D_InitPlugins.cpp
+@@ -7,7 +7,7 @@
+ //#include "C64DebuggerPluginGoatTracker.h"
+ //#include "C64DebuggerPluginDNDK.h"
+ #include "C64DebuggerPluginCommando.h"
+-#include "C64DebuggerPluginShowPic.h"
++//#include "C64DebuggerPluginShowPic.h"
+ //#include "C64DebuggerPluginMapper.h"
+ //#include "C64DebuggerPluginRasterBars.h"
+ //#include "C64DebuggerPluginPicFader.h"
