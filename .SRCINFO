@@ -1,24 +1,22 @@
 pkgbase = phonon-git
 	pkgdesc = The multimedia framework by KDE
-	pkgver = 4.11.1_r3850.g6a5106d3
+	pkgver = 4.11.1_r3911.g0f0ae8d0
 	pkgrel = 1
 	url = https://community.kde.org/Phonon
 	arch = x86_64
 	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules-git
-	makedepends = qt5-tools
+	makedepends = qt6-tools
+	makedepends = qt6-5compat
 	depends = libpulse
-	depends = qt5-base
+	depends = qt6-base
 	optdepends = pulseaudio: PulseAudio support
-	optdepends = qt5-tools: Designer plugin
-	provides = phonon-qt5
-	conflicts = phonon-qt5
+	optdepends = qt6-tools: Designer plugin
+	provides = phonon
+	provides = phonon-qt6
+	conflicts = phonon
 	source = git+https://github.com/KDE/phonon.git
 	sha256sums = SKIP
 
-pkgname = phonon-qt5-git
-	depends = libpulse
-	depends = qt5-base
-	depends = phonon-qt5-backend
-
+pkgname = phonon-git
