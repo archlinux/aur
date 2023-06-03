@@ -1,13 +1,13 @@
 pkgname=kalc
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="a complex numbers, graphing, cli calculator"
-arch=('x86_64' 'aarch64')
+arch=('any')
 url="https://github.com/bgkillas/kalc"
 license=('GPL3')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bgkillas/kalc/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('6a033dc7e08d586883e0543a6ce09b27a39db3fbcd5ac70a4af2167875041e82720c2e0962ba54004bbbac9b8bf24c233520263a5e07b4df46d98b447f5e48c9')
+sha512sums=('8abba9dfd4cfa01ca76b3cea95a580a6ea8bbbecd905a4f1948107c412c45f0b00d13ca2b3a2be6889e0783a0d9cbf73969653176f365f24b91522f140e14fa1')
 build(){
   cd "$srcdir/$pkgname-$pkgver"
   export RUSTFLAGS="-C strip=symbols -C codegen-units=1 -C opt-level=3 -C embed-bitcode=y -C lto=y"
