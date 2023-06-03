@@ -2,8 +2,8 @@
 # Contributor: Markus Kaiser <markus dot kaiser at in dot tum dot de>
 _base=holoviews
 pkgname=python-${_base}
-pkgver=1.16.0
-pkgrel=2
+pkgver=1.16.1
+pkgrel=1
 pkgdesc="With Holoviews, your data visualizes itself"
 arch=(any)
 url="https://${_base}.org"
