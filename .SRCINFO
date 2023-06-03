@@ -1,7 +1,7 @@
 pkgbase = diffutils-git
 	pkgdesc = Utility programs used for creating patch files
 	pkgver = 3.10_r1239.gc2e38d4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/diffutils
 	arch = x86_64
 	license = GPL3

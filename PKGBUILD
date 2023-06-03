@@ -4,7 +4,7 @@
 
 pkgname=diffutils-git
 pkgver=3.10_r1239.gc2e38d4
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility programs used for creating patch files'
 arch=($CARCH)
 url='https://www.gnu.org/software/diffutils'

@@ -1,0 +1,18 @@
+From ba08fbbb0ca5da455bf695236c57bc50e7faed50 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Fri, 10 Feb 2023 15:33:40 -0800
+Subject: diff: fix bug where -D does not work
+
+diff --git a/src/diff.c b/src/diff.c
+index dd6f63b..2b4834f 100644
+--- a/src/diff.c
++++ b/src/diff.c
+@@ -416,7 +416,7 @@ main (int argc, char **argv)
+ 	    char *base = b;
+ 	    int changes = 0;
+ 
+-	    for (i = 0; i < sizeof sizeof C_ifdef_group_formats; i++)
++	    for (i = 0; i < sizeof C_ifdef_group_formats; i++)
+ 	      {
+ 		char ch = C_ifdef_group_formats[i];
+ 		switch (ch)
