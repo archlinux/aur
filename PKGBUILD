@@ -58,10 +58,10 @@ esac
 install="$_pkgname.install"
 
 source+=(
-  "$url/blob/master/LICENSE"
+  "https://raw.githubusercontent.com/deezer/spleeter/master/LICENSE"
 )
 sha256sums+=(
-  '757d6e9249af1eff9e703d18b41d449cd569ff35c1cd19864b72d04bf6c30565'
+  'b15e40c921ec6fe997e0d88ddab9c26fb915bebbbb9496530d3f98f317d4325a'
 )
 
 package() {
