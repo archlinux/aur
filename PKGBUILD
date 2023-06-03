@@ -28,7 +28,7 @@ basedir=$(pwd)
 
 # Compile the source code 
 build () {
-    tar -xzf "$basedir/$pkgname-$pkgver.tar.gz"
+    tar -xf "$basedir/$pkgname-$pkgver.tar.gz"
     cd $srcdir/$pkgname-$pkgver
     make compile
 }
@@ -41,6 +41,6 @@ package() {
     mkdir -p $pkgdir/usr/include
     mkdir -p $pkgdir/usr/lib
     
-    install $srcdir/$pkgname-$pkgver/include/* $pkgdir/usr/include
-    install $srcdir/$pkgname-$pkgver/lib/* $pkgdir/usr/lib
+    cp -r $srcdir/$pkgname-$pkgver/include/* $pkgdir/usr/include
+    cp -r $srcdir/$pkgname-$pkgver/lib/* $pkgdir/usr/lib
 }
