@@ -2,7 +2,7 @@
 
 pkgname=astap-bin-qt5
 pkgver=2023.05.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer"
 provides=('astap')
 conflicts=('astap-bin')
@@ -13,6 +13,7 @@ source=("astap-${pkgver}.tar.gz::https://github.com/wrenby/astap-backups/raw/285
 md5sums=('1e953c28a53b8182190cfa51a85dc295')
 
 noextract=("astap-${pkgver}.tar.gz") # bsdtar can't handle this archive because it contains a self-referential hardlink
+depends=('qt5-base' 'qt5-x11extras' 'qt5pas') # qt5 + pascal bindings
 makedepends=('tar') # but gnu tar is just fine
 
 # these databases aren't hard-limited by the bounds provided here

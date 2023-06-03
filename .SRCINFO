@@ -1,11 +1,12 @@
 pkgbase = astap-bin-qt5
 	pkgdesc = Astrometric (plate) solver, stacking of images, photometry and FITS viewer
 	pkgver = 2023.05.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hnsky.org/astap.htm
 	arch = x86_64
 	license = LGPL3
 	makedepends = tar
+	depends = qt5pas
 	optdepends = hyperleda-galaxy-db-astap: database of 1.3m galaxies and 171k other non-star objects
 	optdepends = w08-star-db-astap: database of stars up to magnitude 8, reliable above 20° FOV
 	optdepends = v17-photometry-color-db-astap: color database of stars up to magnitude 17, reliable with 1-20° FOV, slower but required for photometry
