@@ -4,7 +4,7 @@
 
 pkgname=diffutils-git
 pkgver=3.10_r1239.gc2e38d4
-pkgrel=2
+pkgrel=3
 pkgdesc='Utility programs used for creating patch files'
 arch=($CARCH)
 url='https://www.gnu.org/software/diffutils'
@@ -19,18 +19,18 @@ pkgver() {
   echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd ${pkgname%-git}
-  # apply patch from the source array (should be a pacman feature)
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
-    patch -Np1 < "../$src"
-  done
-}
+# prepare() {
+#   cd ${pkgname%-git}
+#   # apply patch from the source array (should be a pacman feature)
+#   local src
+#   for src in "${source[@]}"; do
+#     src="${src%%::*}"
+#     src="${src##*/}"
+#     [[ $src = *.patch ]] || continue
+#     msg2 "Applying patch $src..."
+#     patch -Np1 < "../$src"
+#   done
+# }
 
 build() {
   cd ${pkgname%-git}
