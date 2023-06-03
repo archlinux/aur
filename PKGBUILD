@@ -4,14 +4,14 @@ pkgname=python-${_base}
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Parallel active learning of mathematical functions"
-arch=('x86_64')
-url="https://github.com/${pkgname}/${_base}"
+arch=(x86_64)
+url="https://${_base}.readthedocs.io"
 license=('custom:BSD-3-clause')
-depends=(python-scipy python-sortedcollections python-cloudpickle python-loky python-versioningit)
+depends=(python-cloudpickle python-loky python-scipy python-sortedcollections python-versioningit)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-cov python-flaky)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('22c37d5c6592ef43e4a2bb571c9b059d87879016800527ba2398455fb54afd5781bccc3cbee42de049603a13f8239382fb46db254da43a79b5688d30c869437d')
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('a2a4551b46ba61212909f54af274f22b86ca2e96270e82b6d12decc5ab35f50daba3a9bbe4316a2e0de24858682d5ec066db90825d04c30516b2aa750dce9095')
 
 build() {
   cd ${_base}-${pkgver}
