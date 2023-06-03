@@ -2,7 +2,7 @@
 
 pkgname=keyman
 pkgver=16.0.139
-pkgrel=1
+pkgrel=2
 pkgdesc="IBus engine supporting over 1,000 keyboard layouts (former KMFL)"
 arch=('i686' 'x86_64')
 url="https://keyman.com/linux/"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('ibus' 'webkit2gtk' 'python-magic' 'python-requests-cache'
          'python-numpy' 'python-pillow' 'python-qrcode' 'python-lxml' 
          'python-sentry_sdk')
-makedepends=('meson' 'git')
+makedepends=('meson' 'git' 'python-setuptools' 'perl-locale-gettext')
 optdepends=('keyman-onboard: on-screen keyboard')
 replaces=('kmflcomp' 'libkmfl' 'ibus-kmfl')
 conflicts=('kmflcomp' 'libkmfl' 'ibus-kmfl')
@@ -19,8 +19,12 @@ sha256sums=('7c8036fc7bf50fde6c57735cc4bd128564a9a4669af582e4cacea612accce980')
 
 prepare() {
     cd "$srcdir/keyman/core"
+
+    # bug https://github.com/keymanapp/keyman/pull/8912
     sed -i '44 {s/^/#/}' meson.build
 
+    # gcc 13 bug
+    sed -i '1 i\#include <stdint.h>' include/keyman/keyboardprocessor_bits.h
 }
 
 build() {
@@ -35,6 +39,8 @@ build() {
             -I$srcdir/keyman/core/build/include \
             -I$srcdir/keyman/common/include \
             -I$srcdir/keyman/core/include" \
+        KEYMAN_PROC_LIBS=" \
+            -L$srcdir/keyman/core/build/src -lkmnkbp0" \
         --prefix=/usr \
         --libexecdir=/usr/lib/ibus \
         --datadir=/usr/share
@@ -47,7 +53,7 @@ build() {
 
 check() {
     cd "$srcdir/keyman/core"
-    # meson test -C build
+    meson test -C build
 }
 
 package() {
@@ -76,7 +82,7 @@ package() {
     install -Dm644 --target-directory="$pkgdir/usr/share/icons/hicolor/64x64/mimetypes" icons/64/application-x-kmp.png
     # desktop
     install -Dm644 --target-directory="$pkgdir/usr/share/applications" km-config.desktop 
-   # mime (only in github?)
+    # mime (https://github.com/keymanapp/keyman/pull/8917)
     # install -Dm644 debian/keyman.sharedmimeinfo "$pkgdir/usr/share/mime/packages/keyman.xml"
     # glib schemas
     install -Dm644 --target-directory="$pkgdir/usr/share/glib-2.0/schemas" com.keyman.gschema.xml

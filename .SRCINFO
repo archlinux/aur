@@ -1,13 +1,15 @@
 pkgbase = keyman
 	pkgdesc = IBus engine supporting over 1,000 keyboard layouts (former KMFL)
 	pkgver = 16.0.139
-	pkgrel = 1
+	pkgrel = 2
 	url = https://keyman.com/linux/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = meson
 	makedepends = git
+	makedepends = python-setuptools
+	makedepends = perl-locale-gettext
 	depends = ibus
 	depends = webkit2gtk
 	depends = python-magic
