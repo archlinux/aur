@@ -2,30 +2,33 @@
 
 pkgname=jflap
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Software to learning the basic concepts of Formal Languages and Automata Theory"
 arch=('i686' 'x86_64')
 url="http://www.jflap.org/"
 license=('CCPL')
-noextract=("JFLAP$pkgver.jar")
-depends=('java-environment')
-source=(https://www2.cs.duke.edu/csed/jflap/jflaptmp/july27-18/JFLAP$pkgver.jar
-    $pkgname.sh
-    $pkgname.desktop
-    $pkgname.png
+noextract=("JFLAP${pkgver}.jar")
+depends=('java-runtime')
+source=(
+  "https://www2.cs.duke.edu/csed/jflap/jflaptmp/july27-18/JFLAP${pkgver}.jar"
+  "${pkgname}.sh"
+  "${pkgname}.desktop"
+  "${pkgname}.png"
 )
 
 package() {
-    cd $srcdir
-    install -Dm644 JFLAP$pkgver.jar $pkgdir/opt/jflap/JFLAP.jar
-    install -Dm755 $pkgname.sh $pkgdir/usr/bin/jflap
-    install -D -m 644 $srcdir/$pkgname.desktop \
-        $pkgdir/usr/share/applications/$pkgname.desktop
-    install -D -m 644 $srcdir/$pkgname.png \
-        $pkgdir/usr/share/pixmaps/$pkgname.png
-}
+  cd ${srcdir}
 
-md5sums=('25a862c1dd2f07ffdb0ad602ab3ae2a0'
-         '6ce7e5c80d16fdc9d4f04089b50a0e96'
-         '1968d6cd572b5cef609e5b1792a8935d'
-         'a396345680d223883c2ea2c2bf50734d')
+  install -Dm644 "JFLAP${pkgver}.jar" \
+    "${pkgdir}/opt/jflap/JFLAP.jar"
+  install -Dm755 "${pkgname}.sh" \
+    "${pkgdir}/usr/bin/jflap"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}.png" \
+    "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+}
+sha256sums=('a22c095ddc56b18163e8ebeeef165b3a04cb570f35eb46b96105166e06c99406'
+            'b307592bda3aeb08ec3c07f33d89884e37da59daa0d81a9756b47f2e2a15e43c'
+            '2fec4a0d6b3b99216c28c404f38cb1ec06198eb7c610f7a814902b6fff302a77'
+            '67b7714c0b93b614a9821f2f1bb383f72ca364d28a33b0f3a34072d8f8d6dbcc')
