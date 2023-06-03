@@ -61,7 +61,7 @@ depends=()
 makedepends=()
 
 provides=("$_pkgname")
-conflicts=(${provides[@]})
+conflicts=()
 
 options=("!strip")
 

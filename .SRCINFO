@@ -7,7 +7,6 @@ pkgbase = spleeter-data
 	arch = any
 	license = MIT
 	provides = spleeter-data
-	conflicts = spleeter-data
 	options = !strip
 	source = https://raw.githubusercontent.com/deezer/spleeter/master/LICENSE
 	source = https://github.com/deezer/spleeter/releases/download/v1.4.0/2stems.tar.gz
