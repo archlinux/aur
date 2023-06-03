@@ -1,0 +1,17 @@
+pkgbase = shopware-cli-bin
+	pkgdesc = A cli which contains handy helpful commands for daily Shopware tasks
+	pkgver = 0.1.76
+	pkgrel = 1
+	url = https://sw-cli.fos.gg
+	license = MIT
+	optdepends = dart-sass-embedded: For building admin SCSS using esbuild
+	conflicts = shopware-cli
+	provides = shopware-cli
+	arch = aarch64
+	source_aarch64 = https://github.com/FriendsOfShopware/shopware-cli/releases/download/0.1.76/shopware-cli_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 88ce93e3941bdf2a061efa2e145f83067bbd683480ee7e2f2d6758d55bdbff33
+	arch = x86_64
+	source_x86_64 = https://github.com/FriendsOfShopware/shopware-cli/releases/download/0.1.76/shopware-cli_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7fcb7557d0d18fab3c37c2150a2bfec44b3e6e5a0b1f6173edc3a6c02e67fa16
+	
+pkgname = shopware-cli-bin
