@@ -2,7 +2,7 @@
 
 pkgname=sedutil
 pkgver=1.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
@@ -26,7 +26,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Drive-Trust-Alliance/${
         'mkinitcpio.conf.lib'
         'linuxpba.hook'
         'linuxpba.install'
-        'getpasswd.c')
+        'getpasswd.c'
+        'cstdint.patch')
 sha256sums=('88016b93cbbef98fa6f5c4e6f58e6c871662b6a7f1fc8dc788c8599fa37a44f3'
             '40d785c16a28a5a8a43050d1731174482ee24459be215d2e4e27ffba3b2e28b2'
             'ee3171da9eeab5170815713280588db99118a5fba73eea6373f8555451ab1e5c'
@@ -37,8 +38,14 @@ sha256sums=('88016b93cbbef98fa6f5c4e6f58e6c871662b6a7f1fc8dc788c8599fa37a44f3'
             'daaa13d48b9e72e3185594a0f7c54d2966711ef03b5444141d41be9994710c82'
             'd9a7b66d8365e7f4eb0233b30c0ab70b5e978f6554960bf12994a1f0910c1447'
             'f31a0ba891dd705ef68174afeb651bdc3426a63202d058d98510907de43248f7'
-            'e94d011c98bd336f37d6d4923e5d63a22ebd10d8f2c6486b6bcd6617524d6484')
+            'e94d011c98bd336f37d6d4923e5d63a22ebd10d8f2c6486b6bcd6617524d6484'
+            '39cdcf396b4171b65ddb696ba5fc4893a22f052d3257a683708b5233f04248f5')
 CPPFLAGS="$CPPFLAGS -O2"
+
+prepare() {
+    cd "${srcdir}/$pkgname-$pkgver"
+    patch -p2 < "${srcdir}/cstdint.patch"
+}
 
 build() {
     _release="Release_$CARCH"

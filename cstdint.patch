@@ -1,0 +1,12 @@
+diff -ur src/sedutil-1.20.0/Common/DtaOptions.h new/sedutil-1.20.0/Common/DtaOptions.h
+--- src/sedutil-1.20.0/Common/DtaOptions.h	2021-08-18 13:18:03.000000000 +0100
++++ new/sedutil-1.20.0/Common/DtaOptions.h	2023-06-03 19:35:06.239632338 +0100
+@@ -21,6 +21,8 @@
+ #ifndef _DTAOPTIONS_H
+ #define	_DTAOPTIONS_H
+ 
++#include <cstdint>
++
+ /** Output modes */
+ typedef enum _sedutiloutput {
+ 	sedutilNormal,
