@@ -2,8 +2,8 @@
 pkgname=elan-bin
 _pkgname_caps=ELAN
 _pkgname=elan
-pkgver="6.4"
-pkgrel=3
+pkgver="6.5"
+pkgrel=1
 pkgdesc="A video and audio annotation tool"
 arch=(any)
 url="https://tla.mpi.nl/tools/tla-tools/elan/"
@@ -12,7 +12,7 @@ conflicts=('elan')
 license=('GPL3' 'apache')
 source=("https://www.mpi.nl/tools/${_pkgname}/${_pkgname_caps}_${pkgver//\./\-}_linux.tar.gz"
 		    "elan.desktop")
-sha256sums=('04ac89213ed010e1d57cb6406e9a78970839d55d60b0e2c8cb7ffc3d69158379'
+sha256sums=('0135a9bd67a8d5fbc3c8eeb0eb3395502753cfd1757ee4c99ae00d22545b3748'
             '3ae976fe400c61d002b28f7991f44493ea8a142a79a93afcc038a72a1171bb6f')
 
 package() {
