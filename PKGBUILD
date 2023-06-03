@@ -3,7 +3,7 @@
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-xe-next-git
-pkgver=6.3.r1173528.9f49c413b187
+pkgver=6.3.r1173523.ef153c77d25f
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge Intel Xe driver'
 _product="${pkgbase%-git}"
@@ -21,9 +21,11 @@ _srcname=$pkgbase
 source=(
   "$_srcname::git+https://gitlab.freedesktop.org/drm/xe/kernel.git#branch=${_branch}"
   config         # the main kernel config file
+  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
 )
 sha256sums=('SKIP'
-            '5557889ef70c6f8fdde93092b9f9a28cbdaaca2989a15147826825119c7aae0f')
+            '76ada98e3b96875fc391a39040afb7566c9f4c17cac89f20832e44dae89a0414'
+            'edb89714a248c3f6d33de7ebe576623cf80e5bc70bb66ab29cf949171ec84d9f')
 
 pkgver() {
   cd $_srcname
@@ -115,7 +117,7 @@ _package-headers() {
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  # install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
