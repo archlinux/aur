@@ -1,7 +1,7 @@
 pkgbase = darktable-plugin-dtmediawiki-git
 	pkgdesc = MediaWiki export plugin for darktable
 	pkgver = r59.4045142
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trougnouf/dtMediaWiki
 	arch = x86_64
 	license = GPL3
