@@ -3,11 +3,11 @@
 pkgname=xaskpass
 pkgdesc="A lightweight passphrase dialog"
 url="https://github.com/user827/xaskpass.git"
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
-makedepends=('git' 'rust' 'cargo' 'clang')
+makedepends=('git' 'cargo' 'clang')
 depends=(libxcb pango cairo libxkbcommon libxkbcommon-x11)
 provides=('x11-ssh-askpass')
 source=("$pkgname::git+$url#tag=v${pkgver}?signed")
@@ -23,11 +23,12 @@ build() {
 
 check() {
   cd "$pkgname"
-  cargo test --release --locked --target-dir target
-  cd target/release
+
   local version
-  version=$(./xaskpass --version)
+  version=$(./target/release/xaskpass --version)
   [ "$version" = "$pkgname $pkgver" ]
+
+  cargo test --release --locked --target-dir target
 }
 
 package() {
