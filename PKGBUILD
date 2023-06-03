@@ -1,3 +1,4 @@
+# Maintainer:
 # Contributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: getzze <getzze at gmail dot com>
 
@@ -26,6 +27,7 @@ checkdepends=(
   'python-pytest'
   'python-pytest-mock'
 )
+
 source=(
   "$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
 )
@@ -36,17 +38,10 @@ sha256sums=(
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
   sed -i -e 's/collections.Iterable/collections.abc.Iterable/g' ffmpeg/_run.py
-
-  for p in "$srcdir"/*.patch ; do
-    if [ -e "$p" ] ; then
-      patch -Np1 -F100 -i "$p"
-    fi
-  done
 }
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
-  #python setup.py build
   python -m build --no-isolation --wheel
 }
 
@@ -57,6 +52,5 @@ check(){
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
-  #python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
