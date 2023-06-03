@@ -1,4 +1,4 @@
-# Mantainer: grgergo <>
+# Manitainer: grgergo <csakbek@freemail.hu>
 
 pkgname='purple-instagram'
 pkgver=1.0.0
