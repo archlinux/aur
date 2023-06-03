@@ -2,7 +2,7 @@
 # Contributor: chn <g897331845@gmail.com>
 
 pkgname=cista
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="Simple, high-performance, zero-copy C++ serialization & reflection library"
 arch=("any")
@@ -11,8 +11,8 @@ license=("MIT")
 makedepends=("cmake")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/felixguendling/cista/archive/v${pkgver}.tar.gz"
         "https://github.com/felixguendling/cista/releases/download/v${pkgver}/cista.h")
-b2sums=("90d9ba05ebb2c80400c3734b7549baaedf4cd0f74dbf149f2ed8210580d236801b1ebdbcbe8137a27a8ccd3f883a9eb763a277f5ec2b30e7ee9459835555a5af"
-        "6718234c88bb4d7a89a8dab43661e0cc918d364d91e70178b6aaeba4aa396d3e310c809952c432a8866566f8866150d6c369ca233febd7ff08981f4045547006")
+b2sums=("a96ed4d6709ef28f4f911275212bc2a8318e93d083a12dbdd39aa5a441190b37172d1ce683bb0433081c045b692803a20a65fea4a186c08f8f7627029a8481be"
+        "e0e01c64ec9628a0c7f5bccc98b558b5780ff0e81251e520731fd9ee52609a402fe233518f6a20e7e4829dd7d067e9a8dec62df3685bf7d2e82dc6c5e9ef0a08")
 
 build() {
   cmake -B "build/" -S "${pkgname}-${pkgver}" \
