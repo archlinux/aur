@@ -1,16 +1,27 @@
-
 # Maintainer: Eric Woudstra <ericwouds AT gmail DOT com>
 
+# Contributor: Yatao Li
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
+# ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
+#  - use -fPIC in host cflags for v7/v8 to fix print_options.c compile
+#  - remove makedepends on ffnvcodec-headers, remove --enable-nvenc, --enable-nvdec
+#  - remove depends on aom, remove --enable-libaom
+#  - remove depends on intel-media-sdk, remove --enable-libmfx
+#  - remove depends on vmaf, remove --enable-vmaf
+#  - remove depends on rav1e, remove --enable-librav1e
+#  - remove depends on svt-av1, remove --enable-libsvtav1
+#  - remove --enable-lto
+
 pkgname=ffmpeg-v4l2-request-git
+# pkgname=ffmpeg
 _srcname=FFmpeg
-pkgver=5.1.2.r322505
-pkgrel=1
+pkgver=6.0.r329749
+pkgrel=2
 epoch=2
 pkgdesc='FFmpeg with v4l2-request and drmprime'
 arch=('armv7h' 'aarch64')
@@ -29,11 +40,15 @@ depends=(
   libass.so
   libavc1394
   libbluray.so
+  libbs2b.so
   libdav1d.so
   libdrm
   libfreetype.so
+  libgl
   libiec61883
+  libjxl.so
   libmodplug
+  libopenmpt.so
   libpulse
   libraw1394
   librsvg-2.so
@@ -48,6 +63,7 @@ depends=(
   libvorbisenc.so
   libvorbis.so
   libvpx.so
+  libvulkan.so
   libwebp
   libx11
   libx264.so
@@ -58,11 +74,11 @@ depends=(
   libxv
   libxvidcore.so
   libzimg.so
+  ocl-icd
   opencore-amr
   openjpeg2
   opus
   sdl2
-  sndio
   speex
   srt
   v4l-utils
@@ -76,32 +92,42 @@ makedepends=(
   git
   ladspa
   linux-api-headers
+  mesa
   nasm
+  opencl-headers
+  vulkan-headers
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
   'ladspa: LADSPA filters'
 )
-provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavutil.so' 'libpostproc.so' 'libswscale.so' 'libswresample.so'
-          'ffmpeg' 'ffmpeg4.4')
-conflicts=('ffmpeg')
+provides=(
+  libavcodec.so
+  libavdevice.so
+  libavfilter.so
+  libavformat.so
+  libavutil.so
+  libpostproc.so
+  libswresample.so
+  libswscale.so
+  ffmpeg)
+conflicts=(
+  ffmpeg
+)
 source=(
   'git+https://github.com/jernejsk/FFmpeg'
+  add-av_stream_get_first_dts-for-chromium.patch
 )
 sha256sums=(
   SKIP
+  SKIP
 )
 
-#_version='4.4.1'
-#_branch1='v4l2-request-hwaccel-'$_version'-Nexus-Alpha1'
-#_branch2='v4l2-drmprime-v6-'$_version'-Nexus-Alpha1'
-#_branch3=''
-
- _version='5.1.2'
- _branch1='v4l2-request-n'$_version
- _branch2='v4l2-drmprime-n'$_version
- _branch3='vf-deinterlace-v4l2m2m-n'$_version
+ #_version='5.1.2'
+_version='6.0'
+_branch1='v4l2-request-n'$_version
+_branch2='v4l2-drmprime-n'$_version
+_branch3='vf-deinterlace-v4l2m2m-n'$_version
 
 prepare() {
   cd ${_srcname}
@@ -116,6 +142,8 @@ prepare() {
     git -c "user.name=Your Name" -c "user.email=you@example.com" \
       merge --no-edit origin/$_branch3
   fi
+
+  patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
 }
 
 pkgver() {
@@ -150,6 +178,7 @@ build() {
     --enable-ladspa \
     --enable-libass \
     --enable-libbluray \
+    --enable-libbs2b \
     --enable-libdav1d \
     --enable-libdrm \
     --enable-libfreetype \
@@ -157,11 +186,13 @@ build() {
     --enable-libgsm \
     --enable-libiec61883 \
     --enable-libjack \
+    --enable-libjxl \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
     --enable-libopencore_amrwb \
     --enable-libopenjpeg \
+    --enable-libopenmpt \
     --enable-libopus \
     --enable-libpulse \
     --enable-librsvg \
@@ -181,8 +212,11 @@ build() {
     --enable-libxml2 \
     --enable-libxvid \
     --enable-libzimg \
+    --enable-opencl \
+    --enable-opengl \
     --enable-shared \
     --enable-version3 \
+    --enable-vulkan $CONFIG \
     \
     --arch=$CARCH \
     --enable-v4l2_m2m \
