@@ -2,13 +2,13 @@
 
 pkgname=novel-cli
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='tool for downloading novels from the web, manipulating text, and generating EPUBs'
 arch=(x86_64)
 url='https://github.com/novel-rs/cli'
 license=(Apache MIT)
 depends=(gcc-libs)
-makedepends=(rustup
+makedepends=("rust>=1.70.0"
              clang
              cmake
              sqlite)
@@ -18,21 +18,22 @@ sha256sums=('01dca1b084488b455d8355bbfeea783d68b8a795d7166c82f0eef70daaa5e7e7')
 
 prepare() {
 	cd "$_archive"
-	rustup toolchain install stable
-	cargo +stable fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd "$_archive"
+	CFLAGS+=" -ffat-lto-objects"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo +stable build --frozen --release --all-features
+	cargo build --frozen --release --all-features
 }
 
 check() {
 	cd "$_archive"
+	CFLAGS+=" -ffat-lto-objects"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo +stable test --frozen --all-features
+	cargo test --frozen --all-features
 }
 
 package() {
