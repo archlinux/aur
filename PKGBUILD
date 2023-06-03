@@ -1,8 +1,7 @@
 # Maintainer: Ruben Agin <phabrics@phabrics.com>
-_fragment="${FRAGMENT:-#branch=main}"
 _gtk="${GTKMAJ:-gtk4}"
 pkgname=tme-git
-pkgver=r434.40dce40
+pkgver=0.12rc11.r0.g4cb4b81
 pkgrel=1
 pkgdesc="The Machine Emulator, or tme, provides a general-purpose framework for computer emulation."
 arch=('i686' 'x86_64')
@@ -15,7 +14,7 @@ optdepends=('perl-x11-protocol: for computing optimal graphics parameters'
 makedepends=('git' 'perl-x11-protocol' 'libvncserver' "${_gtk}" 'sdl2')
 provides=('tme')
 conflicts=('tme')
-source=("tme::git+https://scm.osdn.net/gitroot/nme/tme.git${_fragment}")
+source=("tme::git+https://github.com/phabrics/nme.git")
 sha256sums=('SKIP')
 options=(libtool debug !strip)
 install=$pkgname.install
@@ -23,7 +22,7 @@ install=$pkgname.install
 pkgver() {
   cd "$srcdir/tme"
   ( set -o pipefail
-    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --abbrev=7 --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
