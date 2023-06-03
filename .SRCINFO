@@ -7,7 +7,6 @@ pkgbase = rymfony-bin
 	license = AGPL3
 	provides = rymfony
 	conflicts = rymfony
-	conflicts = rymfony-git
 	source = https://github.com/Orbitale/Rymfony/releases/download/v0.4.6/rymfony-ubuntu-v0.4.6
 	source = https://raw.githubusercontent.com/Orbitale/Rymfony/v0.4.6/CHANGELOG.md
 	source = https://raw.githubusercontent.com/Orbitale/Rymfony/v0.4.6/README.md

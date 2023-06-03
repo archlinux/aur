@@ -8,8 +8,8 @@ pkgdesc="A command-line tool to mimic the behavior of the Symfony CLI binary (bi
 arch=('x86_64')
 url="https://github.com/Orbitale/Rymfony"
 license=('AGPL3')
-provides=("$_pkgname")
-conflicts=("$_pkgname" "$_pkgname-git")
+provides=($_pkgname)
+conflicts=($_pkgname)
 _url2=https://raw.githubusercontent.com/Orbitale/Rymfony/v$pkgver
 source=("$url/releases/download/v$pkgver/rymfony-ubuntu-v$pkgver"
         "$_url2/CHANGELOG.md"
