@@ -1,6 +1,6 @@
 pkgbase = openturns
 	pkgdesc = Uncertainty treatment library
-	pkgver = 1.20.2
+	pkgver = 1.21rc1
 	pkgrel = 1
 	url = http://www.openturns.org/
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = openturns
 	depends = hdf5
 	depends = primesieve
 	depends = pagmo
-	source = https://github.com/openturns/openturns/archive/v1.20.2.tar.gz
-	sha256sums = 39bac145f07fdd86a79fc114deb35f99d6e90e503f12084c661fb138caf775f6
+	source = https://github.com/openturns/openturns/archive/v1.21rc1.tar.gz
+	sha256sums = f5c910931196c0ce925f67b0bffe2e7716aa59513d71443dcb661695ffd5e6fe
 
 pkgname = openturns
