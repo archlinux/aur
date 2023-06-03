@@ -3,7 +3,7 @@
 
 pkgname=solana-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.14.16
+pkgver=1.14.18
 pkgrel=1
 pkgdesc='Solana CLI tools'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   #"$_pkgname-sys-tuner.service"
   #"$_pkgname-test.service"
 )
-sha256sums=('bd22667fb4c651e810e374d11316424086d168932ae536073e977a4ca679e151'
+sha256sums=('d49cf4e98bbb00ce521530247593d4b8cabc7b933197786f41b784db98b92e1f'
             '3e893948c70e514ee369253fe37cf1d7cb3f99d350656f3c9a777ea87f895ca6'
             '4a5a6060c734f0c85d4e13e5124ee30f6612a6a812642d043e0bff18790776f5')
 
@@ -52,7 +52,7 @@ package() {
   "$pkgdir/opt/solana-release/bin/$_pkgname" completion --shell bash | install -D --mode 644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
   "$pkgdir/opt/solana-release/bin/$_pkgname" completion --shell zsh | install -D --mode 644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 
-  install -m 777 -d "$pkgdir/opt/$_pkgname-release/bin/sdk/bpf/dependencies" # adds dependency directory to allow installing bpf-tools and criterion unit test framework without root
+  install -m 755 -d "$pkgdir/opt/$_pkgname-release/bin/sdk/bpf/dependencies" # adds dependency directory to allow installing bpf-tools and criterion unit test framework without root
   #install -Dm 644 "$_pkgname"-*.service -t "$pkgdir/usr/lib/systemd/system"
 }
 
