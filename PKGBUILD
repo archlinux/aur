@@ -2,7 +2,7 @@
 
 pkgbase=nanomq-git
 pkgname=(nanomq{,-sqlite,-msquic,-full}-git)
-pkgver=0.17.8.r86.g3886c036
+pkgver=0.18.2.r45.g1a9e588d
 pkgrel=1
 pkgdesc="Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge"
 arch=('x86_64')
@@ -19,7 +19,6 @@ makedepends=(asciidoctor
             gcc
             git
             ninja
-            openssl
             sqlite
             zeromq)
 backup=()

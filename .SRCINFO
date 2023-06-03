@@ -1,6 +1,6 @@
 pkgbase = nanomq-git
 	pkgdesc = Nano MQTT Broker - An Ultra-light and Blazing-fast MQTT Broker for IoT Edge
-	pkgver = 0.17.8.r86.g3886c036
+	pkgver = 0.18.2.r45.g1a9e588d
 	pkgrel = 1
 	url = https://github.com/nanomq/nanomq
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = nanomq-git
 	makedepends = gcc
 	makedepends = git
 	makedepends = ninja
-	makedepends = openssl
 	makedepends = sqlite
 	makedepends = zeromq
 	depends = mbedtls
