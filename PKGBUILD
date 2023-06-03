@@ -6,12 +6,12 @@
 pkgname=extract-xiso
 _pkgver=build-202303040307
 pkgver=202303040307
-pkgrel=1
+pkgrel=2
 pkgdesc="Xbox ISO Creation/Extraction utility"
 url="https://github.com/XboxDev/extract-xiso"
 arch=('x86_64' 'i686')
 license=('custom')
-makedepends=('git')
+makedepends=('cmake' 'git')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -23,13 +23,16 @@ prepare() {
 
 build() {
   cd $pkgname
+  mkdir -p build
+  cd build
+  cmake ..
   make
 }
 
 package() {
   cd $pkgname
-  # Install binary
-  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
   # Install custom license
   install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT"
+  # Install binary
+  install -Dm755 build/$pkgname "$pkgdir/usr/bin/$pkgname"
 }
