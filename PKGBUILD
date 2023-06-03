@@ -16,10 +16,10 @@ sha256sums=('4d58993cee2a9e6e87a4139bf44d5594fa4a54c6e873f22b754910dfcaf2f060'
 
 package() {
     mkdir -p "${pkgdir}/assets/"
-    tar -xvf assets-v1.1.1.tar.gz -C "${pkgdir}/assets/" --strip-components 1
+    tar -xvf assets.tar.gz -C "${pkgdir}/assets/"
     mkdir -p "${pkgdir}/usr/share/9launcher"
     mkdir -p "${pkgdir}/usr/share/applications"
-    cp -r assets-v1.1.1 "${pkgdir}/usr/share/9launcher"
+    cp -r assets "${pkgdir}/usr/share/9launcher"
     mkdir -p "${pkgdir}/usr/bin"
     install -m644 "${srcdir}/9launcher" "${pkgdir}/usr/bin/9launcher"
     install -m644 "${pkgdir}/assets/9Launcher.desktop" "${pkgdir}/usr/share/applications/"
