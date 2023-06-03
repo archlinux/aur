@@ -33,8 +33,6 @@ package() {
 	
 	install -Dm644 -t "$pkgdir/usr/share/gnome-shell/extensions/$uuid" extension.js indicator.js utils.js convenience.js prefs.js opts.js stylesheet.css metadata.json
 
-	for s in schemas; do
-		install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" $s;
-	done
+	install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" "schemas/org.gnome.shell.extensions.mailnag.gschema.xml";
 }
 
