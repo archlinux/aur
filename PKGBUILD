@@ -1,7 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Hezekiah Michael <spiritomb at protonmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-tokyodark-git
-pkgver=r21.c1052e5
+pkgver=r47.32be524
 pkgrel=1
 pkgdesc="TokyoNight inspired colorscheme"
 arch=('any')

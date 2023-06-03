@@ -1,6 +1,6 @@
 pkgbase = neovim-tokyodark-git
 	pkgdesc = TokyoNight inspired colorscheme
-	pkgver = r21.c1052e5
+	pkgver = r47.32be524
 	pkgrel = 1
 	url = https://github.com/tiagovla/tokyodark.nvim
 	arch = any
