@@ -6,7 +6,7 @@
 
 pkgbase=gdal-libkml-filegdb
 pkgname=(gdal-libkml-filegdb python-gdal-libkml-filegdb)
-pkgver=3.6.4
+pkgver=3.7.0
 pkgrel=0
 provides=('gdal')
 pkgdesc="A translator library for raster and vector geospatial data formats"
@@ -22,12 +22,14 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
 # armadillo brunsli lerc libkml rasterlite2 sfcgal tiledb
 # ogdi
 changelog=gdal.changelog
-source=(https://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.xz https://github.com/Esri/file-geodatabase-api/blob/master/FileGDB_API_1.5.1/FileGDB_API_1_5_1-64gcc51.tar.gz)
-sha256sums=('889894cfff348c04ac65b462f629d03efc53ea56cf04de7662fbe81a364e3df1'
-            '1a1b5c417224e8a4dfd3f7c1f4d1911febf1de38e9b6f93a1e4523a9fce92a91')
+source=(https://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.xz
+        https://github.com/Esri/file-geodatabase-api/blob/master/FileGDB_API_1.5.1/FileGDB_API_1_5_1-64gcc51.tar.gz)
+sha256sums=('af4b26a6b6b3509ae9ccf1fcc5104f7fe015ef2110f5ba13220816398365adce'
+  '1a1b5c417224e8a4dfd3f7c1f4d1911febf1de38e9b6f93a1e4523a9fce92a91')
 
 build() {
   tar xzvf FileGDB_API_1_5_1-64gcc51.tar.gz
+  cp FileGDB_API-64gcc51/lib/libFileGDBAPI.so libFileGDBAPI_gdal.so
   cmake -B build -S gdal-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_STANDARD=17 \
@@ -77,7 +79,7 @@ build() {
     -DGDAL_USE_LIBKML=ON \
     -DGDAL_USE_FileGDB=ON \
     -DFileGDB_INCLUDE_DIR=FileGDB_API-64gcc51/include \
-    -DFileGDB_LIBRARY=FileGDB_API-64gcc51/lib/libFileGDBAPI.so && \
+    -DFileGDB_LIBRARY=libFileGDBAPI_gdal.so && \
   make -C build -j $(nproc)
 }
 
@@ -102,6 +104,8 @@ package_gdal-libkml-filegdb () {
               'libwebp: WebP support')
 
   make -C build DESTDIR="${pkgdir}" install
+  cp libFileGDBAPI_gdal.so "${pkgdir}"/usr/lib/
+  patchelf --replace-needed "${srcdir}"/libFileGDBAPI_gdal.so libFileGDBAPI_gdal.so "${pkgdir}"/usr/lib/gdalplugins/ogr_FileGDB.so
   install -Dm644 gdal-${pkgver}/LICENSE.TXT -t "${pkgdir}"/usr/share/licenses/gdal/
   # Move python stuff
   mkdir -p {bin,lib}
