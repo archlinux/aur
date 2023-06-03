@@ -1,7 +1,7 @@
 pkgbase = thinkpad-p14s
 	pkgdesc = Utilities and dependencies for a Thinkpad P14s laptop
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/rnestler/archpkg-thinkpad-p14s
 	arch = any
 	license = GPL
