@@ -1,7 +1,7 @@
 pkgbase = python-adafruit-circuitpython-pcd8544
 	pkgdesc = CircuitPython display control library for Nokia PCD8544 monochrome displays
-	pkgver = 1.2.13
-	pkgrel = 1
+	pkgver = 1.2.14
+	pkgrel = 0
 	url = https://github.com/adafruit/Adafruit_CircuitPython_PCD8544
 	arch = armv6h
 	arch = armv7h
@@ -13,7 +13,7 @@ pkgbase = python-adafruit-circuitpython-pcd8544
 	depends = python
 	depends = python-adafruit-circuitpython-busdevice
 	optdepends = python-rpi-gpio
-	source = https://pypi.io/packages/source/a/adafruit-circuitpython-pcd8544/adafruit-circuitpython-pcd8544-1.2.13.tar.gz
-	sha256sums = a76b07d647686f7e863a2a7ee46dd76d2496695116507107755f799b45259239
+	source = https://pypi.io/packages/source/a/adafruit-circuitpython-pcd8544/adafruit-circuitpython-pcd8544-1.2.14.tar.gz
+	sha256sums = 1215ce47a14e1fecb4e4759920514f890e13672743e648c33559f97f772362cc
 
 pkgname = python-adafruit-circuitpython-pcd8544
