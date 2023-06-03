@@ -1,0 +1,35 @@
+From cfaf00797b474211699e0e8f8e20e3dc4093def7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Sat, 3 Jun 2023 08:36:56 -0400
+Subject: [PATCH] respect compilation flags
+
+---
+ Makefile | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index ae24b2a..fe962c1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ CC = gcc
+-CFLAGS = -Wall -Wextra -O2
+-LDFLAGS = -Wall -s
++CFLAGS += -Wall -Wextra -O2
++LDFLAGS += -Wall -s
+ PREFIX = /usr/local
+ 
+ chd: chd.o
+ chd.o: chd.c
+@@ -10,5 +10,5 @@ clean:
+ 	rm -f chd.o chd
+ 
+ install:
+-	cp chd $(PREFIX)/bin/
+-	cp chd.1 $(PREFIX)/share/man/man1/
++	install -Dm755 chd -t $(PREFIX)/bin/
++	install -Dm644 chd.1 -t $(PREFIX)/share/man/man1/
+-- 
+2.40.1
+

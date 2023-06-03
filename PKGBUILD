@@ -1,52 +1,36 @@
-pkgbase="chd-git"
-pkgname="chd-git"
-pkgver=1.5
-pkgrel=89
-pkgdesc="C makefile generator"
+# Maintainer: éclairevoyant
 
-arch=("any")
+_pkgname=chd
+pkgname="$_pkgname-git"
+pkgver=r4.94c77db
+pkgrel=1
+pkgdesc="Unicode-aware replacement for xxd/hexdump"
+arch=(x86_64)
+url="https://git.sr.ht/~breadbox/$_pkgname"
+license=(MIT)
+depends=(glibc)
+makedepends=(git)
+source=("git+$url"
+        $pkgname-0001-respect-compilation-flags.patch)
+b2sums=('SKIP'
+        '1af5926db775a0e7c2720064005d547f79819e35c33448cc349f00f9189e140804e06d260a76a9983b1855020b602a9f5ed2fce80f37c7f160b4c912e2f6be22')
 
-makedepends=("git" "make" "gcc" "binutils")
-depends=("glibc")
+prepare() {
+	cd $_pkgname
+	patch -Np1 -i ../$pkgname-0001-respect-compilation-flags.patch
+}
 
-license=("Mimik1.2")
+pkgver() {
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
-url="https://github.com/Noah-Arcouette/hd.git"
-
-provides=()
-conflicts=("hd-git")
-
-giturl="https://raw.githubusercontent.com/Noah-Arcouette/hd/master/"
-
-source=(
-	"git+${url}"
-)
-
-sha256sums=(
-	"SKIP"
-)
-
-build () {
-	cd "hd"
-
-	mkdir ./obj -p
-	mkdir ./bin -p
-
-	./mkinfo 1.5
-
-	make -j1 build
+build() {
+	make -C $_pkgname
 }
 
 package() {
-	cd "hd"
-
-	# setup dirs
-	mkdir -p "${pkgdir}/usr/bin/"
-
-	# make binary root owned and executable
-	chown root:root ${srcdir}/hd/bin/hd
-	chmod a+x ${srcdir}/hd/bin/hd
-
-	# copy binary
-	mv "${srcdir}/hd/bin/hd" "${pkgdir}/usr/bin/hd"
+	cd $_pkgname
+	make PREFIX="$pkgdir/usr" install
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }

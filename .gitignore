@@ -1,5 +1,5 @@
-imd/
-pkg/
-src/
-hd*
-*.zst
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/chd-git-0001-respect-compilation-flags.patch
