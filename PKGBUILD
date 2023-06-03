@@ -1,32 +1,71 @@
-# Maintainer: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
+# Maintainer:
+# Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
-pkgname=plasmatube-git
-pkgver=22.06.r6.g858abe4
+_pkgname="plasmatube"
+pkgname="$_pkgname-git"
+pkgver=23.04.2.r0.g8fcdc91
 pkgrel=1
 pkgdesc="Kirigami YouTube video player based on libmpv and youtube-dl"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-url="https://invent.kde.org/plasma-mobile/plasmatube"
+url="https://invent.kde.org/multimedia/plasmatube"
 license=(GPL3)
-depends=('ki18n' 'kirigami2' 'youtube-dl' 'mpv' 'gst-libav' 'gst-plugins-bad' 'kcoreaddons')
-makedepends=('git' 'extra-cmake-modules' 'qt5-svg' 'qt5-tools')
-provides=('plasmatube')
-conflicts=('plasmatube')
-source=("git+${url}.git")
-sha256sums=('SKIP')
+
+depends=(
+  'kirigami-addons'
+  'qt5-svg'
+  'kcoreaddons'
+  'kconfig'
+  'ki18n'
+  'mpv'
+  'yt-dlp'
+)
+makedepends=(
+  'extra-cmake-modules'
+  'git'
+)
+
+provides=("$_pkgname")
+conflicts=(${provides[@]})
+
+source=(
+  "$_pkgname"::"git+$url"
+)
+sha256sums=(
+  'SKIP'
+)
 
 pkgver() {
-  cd "${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
-      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
+  cd "$srcdir/$_pkgname"
+
+  _regex='^\s+<release version="([0-9]+\.[0-9]+(\.[0-9]+)?)".*>$'
+
+  _version=$(
+    grep -E "$_regex" org.kde.plasmatube.appdata.xml \
+      | sed -E "s@$_regex@\1@" \
+      | head -1
   )
+  _commit=$(
+    git log -S "$_version" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
+  )
+  _revision=$(
+    git rev-list --count $_commit..HEAD
+  )
+  _hash=$(
+    git rev-parse --short HEAD
+  )
+
+  echo "$_version.r$_revision.g$_hash"
 }
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo -B build -S "${pkgname%-git}"
-  cmake --build build --config RelWithDebInfo
+  cmake -B build -S "$_pkgname" \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D BUILD_TESTING=OFF
+
+  cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build --config RelWithDebInfo
+  DESTDIR="$pkgdir" cmake --install build
 }
