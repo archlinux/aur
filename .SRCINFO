@@ -1,0 +1,19 @@
+pkgbase = wasix-libc-git
+	pkgdesc = WASIX libc implementation for WebAssembly
+	pkgver = 0+459+eaed353
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/wasix-org/wasix-libc
+	arch = any
+	license = Apache
+	license = MIT
+	makedepends = git
+	makedepends = llvm
+	makedepends = clang
+	options = staticlibs
+	source = wasix-libc-git::git+https://github.com/wasix-org/wasix-libc.git
+	source = 0001-makepkg-Fix-some-make-statement.patch
+	b2sums = SKIP
+	b2sums = 406513a87f02606753ec43d4a987b508c9c2c208c2704fdb8dbfd10281268590e9a60dec59b6f6453df2b1956d7a58b71e9262bbacefa29a113f0aaee9b5792e
+
+pkgname = wasix-libc-git

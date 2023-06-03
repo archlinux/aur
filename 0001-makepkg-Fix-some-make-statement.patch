@@ -1,0 +1,25 @@
+From 03918a9127f5139484849606f2b404b73ac46b13 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Sat, 3 Jun 2023 17:47:13 +0200
+Subject: [PATCH] makepkg: Fix some make statement
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 01d0b32..e401900 100644
+--- a/Makefile
++++ b/Makefile
+@@ -679,7 +679,7 @@ check-symbols: startup_files libc
+ 	    |grep ' U ' |sed 's/.* U //' |LC_ALL=C sort |uniq); do \
+ 	    grep -q '\<'$$undef_sym'\>' "$(DEFINED_SYMBOLS)" || echo $$undef_sym; \
+ 	done | grep -v "^__mul" > "$(UNDEFINED_SYMBOLS)"
+-	grep '^_*imported_$(TARGET_OS)_' "$(UNDEFINED_SYMBOLS)" \
++	-grep '^_*imported_$(TARGET_OS)_' "$(UNDEFINED_SYMBOLS)" \
+ 	    > "$(SYSROOT_LIB)/libc.imports"
+ 
+ 	#
+-- 
+2.41.0
+
