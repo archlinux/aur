@@ -4,7 +4,7 @@ pkgname=xaskpass
 pkgdesc="A lightweight passphrase dialog"
 url="https://github.com/user827/xaskpass.git"
 pkgver=2.5.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('Apache')
 makedepends=('git' 'cargo' 'clang')
@@ -15,10 +15,17 @@ sha256sums=(SKIP)
 validpgpkeys=(D47AF080A89B17BA083053B68DFE60B7327D52D6) # user827
 options=(strip)
 
+prepare() {
+  cd "$pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target  "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "$pkgname"
   [ -d manout ] || mkdir manout
-  XASKPASS_BUILDDIR=manout cargo build --release --locked --target-dir target
+  export RUSTUP_TOOLCHAIN=stable
+  XASKPASS_BUILDDIR=manout cargo build --release --locked --target-dir target --frozen
 }
 
 check() {
@@ -28,7 +35,8 @@ check() {
   version=$(./target/release/xaskpass --version)
   [ "$version" = "$pkgname $pkgver" ]
 
-  cargo test --release --locked --target-dir target
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --release --locked --target-dir target --frozen
 }
 
 package() {
