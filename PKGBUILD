@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-mailnag
 pkgver=44
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome shell extension for mailnag to show new mails in top bar"
 uuid="mailnag@pulb.github.com"
 arch=('x86_64')
