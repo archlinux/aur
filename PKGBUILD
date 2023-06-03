@@ -10,10 +10,11 @@ url="https://github.com/Orbitale/Rymfony"
 license=('AGPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
+_url2=https://raw.githubusercontent.com/Orbitale/Rymfony/v$pkgver
 source=("$url/releases/download/v$pkgver/rymfony-ubuntu-v$pkgver"
-        "$url/raw/main/CHANGELOG.md"
-        "$url/raw/main/README.md"
-        "$url/raw/main/LICENSE")
+        "$_url2/CHANGELOG.md"
+        "$_url2/README.md"
+        "$_url2/LICENSE")
 sha256sums=('e832ff6a97bf2d0a39086f36d962e10c27db41b12f67ce48b4a2ff6971a9526f'
             'SKIP'
             'SKIP'
