@@ -26,4 +26,5 @@ package() {
     chmod +x "${pkgdir}/usr/bin/9launcher"
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
     install -m644 "${pkgdir}/assets/ninelauncher.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/ninelauncher.png"
+    echo "9Launcher installed successfully!"
 }
