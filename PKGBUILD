@@ -48,7 +48,6 @@ build() {
   arch-meson "gtkhash-$pkgver" build \
     -Dglib-checksums='true' \
     -Dlinux-crypto='true' \
-    -Dmbedtls='true' \
     -Dnettle='true' \
     -Dbuild-caja='false' \
     -Dbuild-nautilus='false' \
