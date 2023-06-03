@@ -1,5 +1,5 @@
 pkgbase = plasmatube-git
-	pkgdesc = Kirigami YouTube video player based on libmpv and youtube-dl
+	pkgdesc = Kirigami YouTube video player based on libmpv and yt-dlp
 	pkgver = 23.04.2.r0.g8fcdc91
 	pkgrel = 1
 	url = https://invent.kde.org/multimedia/plasmatube
