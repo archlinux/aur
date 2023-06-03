@@ -3,7 +3,7 @@
 
 pkgname=networkmanager-openvpn
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
@@ -23,6 +23,11 @@ pkgver() {
 
 prepare() {
   cd NetworkManager-openvpn
+
+  # Fix data-ciphers
+  # https://gitlab.gnome.org/GNOME/NetworkManager-openvpn/-/issues/112
+  git cherry-pick -n a790374f4c2e9e1657cbb8470357d72d4bd87916
+
   autoreconf -fvi
 }
 
