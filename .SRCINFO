@@ -1,11 +1,11 @@
 pkgbase = nats-server-bin
 	pkgdesc = Simple, secure and high performance open source messaging system
 	pkgver = 2.9.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nats.io
 	arch = x86_64
 	license = Apache
-	provides = nats-server-bin
+	conflicts = nats-server
 	replaces = nats-server
 	source = https://github.com/nats-io/nats-server/releases/download/v2.9.16/nats-server-v2.9.16-linux-amd64.zip
 	source = local://nats-server.service
