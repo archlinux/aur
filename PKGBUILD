@@ -1,25 +1,30 @@
+# Maintainer: Letu Ren <fantasquex at gmail dot com>
 # Contributor: Peter Mattern <pmattern at arcor dot de>
-_base=pyjwkest
-pkgname=python-${_base}
-pkgver=1.4.0
-pkgrel=4
-pkgdesc="Implementation of JWT, JWS, JWE and JWK"
-arch=(any)
-url="https://github.com/rohe/${_base}"
+pkgname='python-pyjwkest'
+_name=${pkgname#python-}
+pkgver=1.4.2
+pkgrel=1
+pkgdesc='Implementation of JWT, JWS, JWE and JWK'
+arch=('any')
+url='https://github.com/rohe/${_name}'
 license=('Apache')
-depends=(python-pycryptodomex python-requests python-six python-future)
-makedepends=(python-setuptools)
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('5c239c3c2347a13e5455e2375938a8e2b4c960ed62475929ddb710164acce0defe79b322b2e884a7324237e6fd07d6503f790aed8ca50f07b70689aa6b525bbf')
+depends=(
+  'python'
+  'python-pycryptodomex'
+  'python-requests'
+  'python-six'
+  'python-future'
+)
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=('2d2c8bcd77697850e92ae6c61ac6884cc5f6b62f6104d5f98acf3c0c07f8537cad1dcabd6840f36fcacdbabc04e85f069f94e400bc1aecaa6cb7710aeeb4cf13')
 
 build() {
-  cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
+  cd ${_name}-${pkgver}
   python setup.py build
 }
 
 package() {
-  cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd ${_name}-${pkgver}
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
