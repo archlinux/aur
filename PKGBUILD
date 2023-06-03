@@ -3,7 +3,7 @@
 
 pkgname='fastgron-git'
 _pkgname='fastgron'
-pkgver=0.4.12.r4.g993365e
+pkgver=0.4.14.r2.g2fb854b
 pkgrel=1
 pkgdesc='High-performance JSON to GRON (greppable, flattened JSON) converter (development version)'
 arch=('x86_64' 'aarch64')
@@ -25,11 +25,11 @@ pkgver() {
 }
 
 prepare() {
-  cd "$_pkgname"
+  rm -rf "$_pkgname/build" || :
 
-  mkdir -p build \
-  && cd build \
-  && cmake ..
+  mkdir -p "$_pkgname/build" \
+     && cd "$_pkgname/build" \
+     && cmake ..
 }
 
 build() {
