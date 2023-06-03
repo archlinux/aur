@@ -2,7 +2,7 @@
 
 pkgname=owncast
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted live video streaming (chat included)'
 url="https://github.com/owncast/$pkgname"
 arch=(x86_64)
@@ -29,14 +29,15 @@ package() {
 	cd $pkgname-$pkgver
 	install -vDm755 $pkgname -t "$pkgdir/usr/bin/"
 	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -vdm755 "$pkgdir/var/www/$pkgname/"
 	install -vDm644 /dev/stdin "$pkgdir/usr/lib/systemd/system/$pkgname.service" <<eof
 [Unit]
 Description=Owncast Service
 
 [Service]
 Type=simple
-WorkingDirectory=/var/www/$pkgname/
+User=owncast
+Group=owncast
+WorkingDirectory=/var/lib/$pkgname/
 ExecStart=/usr/bin/$pkgname
 Restart=on-failure
 RestartSec=5
@@ -44,4 +45,15 @@ RestartSec=5
 [Install]
 WantedBy=multi-user.target
 eof
+
+install -vDm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf" <<eof
+# Type  Name    ID GECOS HomeDir          Shell
+u       $pkgname -  -     /var/lib/$pkgname -
+eof
+
+	install -vDm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf" <<eof
+# Type Path                               Mode User    Group   Age Argument
+d      /var/lib/$pkgname            0700 $pkgname $pkgname -   -
+eof
+
 }

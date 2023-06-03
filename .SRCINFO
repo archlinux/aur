@@ -1,7 +1,7 @@
 pkgbase = owncast
 	pkgdesc = Self-hosted live video streaming (chat included)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/owncast/owncast
 	install = owncast.install
 	arch = x86_64
