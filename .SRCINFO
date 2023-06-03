@@ -1,0 +1,12 @@
+pkgbase = ccd
+	pkgdesc = Simple astronomical CCD controller
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://sourceforge.net/projects/cccd/
+	arch = x86_64
+	license = GPL3
+	makedepends = libraw
+	source = https://master.dl.sourceforge.net/project/cccd/ccd/2.0.3/ccd-2.0.3.tar.bz2
+	sha256sums = 9895de36c80fb751192bc3578806ef4aed176e1d902b9851540a0d533845613c
+
+pkgname = ccd
