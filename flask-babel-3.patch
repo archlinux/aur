@@ -1,0 +1,33 @@
+diff --git a/searx/webapp.py b/searx/webapp.py
+index e37eaf73..96bac1c0 100755
+--- a/searx/webapp.py
++++ b/searx/webapp.py
+@@ -141,7 +141,6 @@ if not werkzeug_reloader\
+    or (werkzeug_reloader and os.environ.get("WERKZEUG_RUN_MAIN") == "true"):
+     search_initialize(enable_checker=True)
+ 
+-babel = Babel(app)
+ 
+ rtl_locales = ['ar', 'arc', 'bcc', 'bqi', 'ckb', 'dv', 'fa', 'fa_IR', 'glk', 'he',
+                'ku', 'mzn', 'pnb', 'ps', 'sd', 'ug', 'ur', 'yi']
+@@ -188,7 +187,6 @@ def _get_browser_or_settings_language(request, lang_list):
+     return settings['search']['default_lang'] or 'en'
+ 
+ 
+-@babel.localeselector
+ def get_locale():
+     if 'locale' in request.form\
+        and request.form['locale'] in settings['locales']:
+@@ -217,6 +215,12 @@ def get_locale():
+ 
+     return locale
+ 
++babel = Babel()
++if hasattr(babel, "localeselector"):
++    babel.init_app(app)
++    babel.localeselector(get_locale)
++else:
++    babel.init_app(app, locale_selector=get_locale)
+ 
+ # code-highlighter
+ @app.template_filter('code_highlighter')
