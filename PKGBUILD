@@ -6,11 +6,11 @@ pkgver=r4.94c77db
 pkgrel=1
 pkgdesc="Unicode-aware replacement for xxd/hexdump"
 arch=(x86_64)
-url="https://git.sr.ht/~breadbox/$_pkgname"
+url="https://www.muppetlabs.com/~breadbox/software/chd.html"
 license=(MIT)
 depends=(glibc)
 makedepends=(git)
-source=("git+$url"
+source=("git+https://git.sr.ht/~breadbox/$_pkgname"
         $pkgname-0001-respect-compilation-flags.patch)
 b2sums=('SKIP'
         '1af5926db775a0e7c2720064005d547f79819e35c33448cc349f00f9189e140804e06d260a76a9983b1855020b602a9f5ed2fce80f37c7f160b4c912e2f6be22')
