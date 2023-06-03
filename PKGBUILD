@@ -1,9 +1,9 @@
 # Maintainer: shizhiex <shizhiex@gmail.com>
 
 pkgname="orca-slicer"
-pkgver=1.6.2
-_tag='1.6.2'
-pkgrel=2
+pkgver=1.6.3
+_tag='1.6.3'
+pkgrel=1
 pkgdesc="Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
@@ -17,12 +17,14 @@ source=(
   "https://raw.githubusercontent.com/SoftFever/OrcaSlicer/v${_tag}/deps/Boost/0001-Boost-fix.patch"
   'CMakeLists.txt.patch'
   'OrcaSlicer.desktop.patch'
+  'fix_gcc13_build_failed.patch'
   'orca-slicer.sh'
   )
-sha256sums=('2370c287e6c8d89b1ecf712ff69ee6c2814a6a9823a964a0d1b704fd7db71921'
+sha256sums=('f63ef3aeef1d70a517354e512a7f463e2c721b5871ce30f7723ece9e070feb44'
             'bb2662d0a4c58c43726ec98ef4acf201fcf98719c9bbfd207e2d6cdf695a2093'
             'f2b56d64bc5d80cf726ab0a4931ecf84cdaa938bb6da6134d36e6a05d3a0eee4'
             '030d32a60c7bbecacaf1f3844ed6157c1eb1d67b7009a8132e91b0a07deb77c0'
+            '2d493a82a9a22b97e08170fc287f6a291b8e51f9cf499f5b245f00332e39b2fe'
             '30d860958f3fd5fc657daa6addce45e91689d9833b931c9feb646da760d61de8'
             )
 
@@ -35,6 +37,8 @@ prepare() {
   cp 0001-Boost-fix.patch OrcaSlicer/deps/Boost
   # icons conflict with BambuStudio
   patch -p0 < "$srcdir/OrcaSlicer.desktop.patch"
+  # fix gcc13 building issues, from https://github.com/SoftFever/OrcaSlicer/pull/1220
+  git apply --directory=OrcaSlicer "$srcdir/fix_gcc13_build_failed.patch"
 }
 
 build() {
