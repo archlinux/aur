@@ -1,45 +1,49 @@
-# Maintainer: David Parrish <daveparrish@tutanota.com>
+# Merged with official ABS diffutils PKGBUILD by João, 2023/06/03 (all respective contributors apply herein)
+# Maintainer: João Figueiredo <islandc0der@chaotic.cx>
+# Contributor: David Parrish <daveparrish@tutanota.com>
 
 pkgname=diffutils-git
-pkgver=3.7.r11.g3600e8d
+pkgver=3.10_r1239.gc2e38d4
 pkgrel=1
 pkgdesc='Utility programs used for creating patch files'
-arch=('i686' 'x86_64')
-url='http://www.gnu.org/software/diffutils'
-license=('GPL3')
-depends=('libsigsegv')
-makedepends=('gperf' 'git' 'help2man' 'rsync' 'wget')
-provides=('diffutils')
-conflicts=('diffutils')
-source=("${pkgname}::git+git://git.savannah.gnu.org/diffutils.git")
+arch=($CARCH)
+url='https://www.gnu.org/software/diffutils'
+license=(GPL3)
+depends=(glibc bash)
+source=("git+https://git.savannah.gnu.org/git/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname" || exit
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${pkgname%-git}
+  _ver="$(git describe | sed 's/^v//;s/-.*//')"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$pkgname" || exit
-
-  # Bootstrap diffutils
-  ./bootstrap
+  cd ${pkgname%-git}
+  # apply patch from the source array (should be a pacman feature)
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    [[ $src = *.patch ]] || continue
+    msg2 "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 }
 
 build() {
-  cd "$pkgname" || exit
+  cd ${pkgname%-git}
   ./configure --prefix=/usr
   make
 }
 
-check() {
-  cd "$pkgname" || exit
-  make check
-}
+# check() {
+#   cd ${pkgname%-git}
+#   make check
+# }
 
 package() {
-  cd "$pkgname" || exit
+  cd ${pkgname%-git}
   make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:

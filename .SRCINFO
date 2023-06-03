@@ -1,21 +1,13 @@
 pkgbase = diffutils-git
 	pkgdesc = Utility programs used for creating patch files
-	pkgver = 3.7.r11.g3600e8d
+	pkgver = 3.10_r1239.gc2e38d4
 	pkgrel = 1
-	url = http://www.gnu.org/software/diffutils
-	arch = i686
+	url = https://www.gnu.org/software/diffutils
 	arch = x86_64
 	license = GPL3
-	makedepends = gperf
-	makedepends = git
-	makedepends = help2man
-	makedepends = rsync
-	makedepends = wget
-	depends = libsigsegv
-	provides = diffutils
-	conflicts = diffutils
-	source = diffutils-git::git+git://git.savannah.gnu.org/diffutils.git
+	depends = glibc
+	depends = bash
+	source = git+https://git.savannah.gnu.org/git/diffutils.git
 	sha256sums = SKIP
 
 pkgname = diffutils-git
-
