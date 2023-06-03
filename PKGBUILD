@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=113.0.5672.126
+pkgver=114.0.5735.45
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -31,19 +31,23 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        add-cstring-for-std-strlen-in-web_view_impl.cc.patch
+        add-some-typename-s-that-are-required-in-C-17.patch
+        REVERT-disable-autoupgrading-debug-info.patch
         download-bubble-typename.patch
         webauthn-variant.patch
+        random-fixes-for-gcc13.patch
         disable-GlobalMediaControlsCastStartStop.patch
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch
         index.html)
-sha256sums=('0def7cd594304d7675821d42a4207377af98e321a78a91ee5200aea55adc2d93'
+sha256sums=('1b8cdf5f06bcf976d5631dbda1cfbc1f89cec7d843fd7cfb0931713f7025fffc'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '5f868cba9e4d387499711738adc6fd87ab9f1ef61f464016bc682660ae59206a'
+            '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
+            '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
             'd464eed4be4e9bf6187b4c40a759c523b7befefa25ba34ad6401b2a07649ca2a'
             '590fabbb26270947cb477378b53a9dcd17855739076b4af9983e1e54dfcab6d7'
+            'ba4dd0a25a4fc3267ed19ccb39f28b28176ca3f97f53a4e9f5e9215280040ea0'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'f97e6cd3c4d2e04f5d9a0ea234fe768d6ba0fa9f4ecd5c7b2ca91030a1249078'
@@ -60,7 +64,8 @@ conflicts=('chromium' 'chromedriver')
 _uc_usr=ungoogled-software
 _uc_ver=$pkgver-1
 source=(${source[@]}
-        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
+        #${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
+        ${pkgname%-*}-$_uc_ver.zip::https://github.com/Ahrotahn/${pkgname%-*}/archive/refs/heads/update.zip
         ozone-add-va-api-support-to-wayland.patch
         vaapi-add-av1-support.patch
         remove-main-main10-profile-limit.patch
@@ -86,7 +91,7 @@ source=(${source[@]}
         chromium-112-gcc-13-0023-gcc-incomplete-type-v8-subtype.patch
         chromium-113-gcc-13-vulkan-build-fixes.patch)
 sha256sums=(${sha256sums[@]}
-            '1025329c38041b3b8b200fe3405d4b873345e87cba6333e036b83ad2f0000d3e'
+            '35449af35a66af5d675bef6bf3364d5a5cd10c4a43b6972e30b16209b978e4b6'
             'e9e8d3a82da818f0a67d4a09be4ecff5680b0534d7f0198befb3654e9fab5b69'
             'e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307'
             'be8d3475427553feb5bd46665ead3086301ed93c9a41cf6cc2644811c5bda51c'
@@ -175,7 +180,11 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -i ../add-cstring-for-std-strlen-in-web_view_impl.cc.patch
+  patch -Np1 -i ../add-some-typename-s-that-are-required-in-C-17.patch
+
+  # Revert addition of compiler flag that needs newer clang
+  patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
+
 
   # Disable kGlobalMediaControlsCastStartStop by default
   # https://crbug.com/1314342
