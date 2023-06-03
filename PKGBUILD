@@ -10,9 +10,9 @@ license=('MIT')
 depends=('webkit2gtk' 'gtk3')
 provides=('9launcher-bin')
 conflicts=('9launcher-bin')
-source=("https://github.com/wearrrrr/9Launcher/releases/download/v1.2.1/9launcher" "https://github.com/wearrrrr/9Launcher/releases/download/v1.1.1/assets-v1.1.1.tar.gz")
+source=("https://github.com/wearrrrr/9Launcher/releases/download/v1.2.1/9launcher" "https://github.com/wearrrrr/9Launcher/releases/download/v1.2.1/assets.tar.gz")
 sha256sums=('4d58993cee2a9e6e87a4139bf44d5594fa4a54c6e873f22b754910dfcaf2f060'
-            '1d06bf5ea511546f328d39d3e476fa3c59d85a6c36ea267bb6321873b639d7b1')
+            '5389ec3850c1784cb1c237666e72b9d84fdd21957851b0f28ab6ae574950e2dc')
 
 package() {
     mkdir -p "${pkgdir}/assets/"
@@ -24,4 +24,6 @@ package() {
     install -m644 "${srcdir}/9launcher" "${pkgdir}/usr/bin/9launcher"
     install -m644 "${pkgdir}/assets/9Launcher.desktop" "${pkgdir}/usr/share/applications/"
     chmod +x "${pkgdir}/usr/bin/9launcher"
+    mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
+    install -m644 "${pkgdir}/assets/ninelauncher.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/ninelauncher.png"
 }
