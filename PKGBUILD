@@ -5,7 +5,7 @@ pkgver=1.0.0
 pkgrel=2
 pkgdesc='Instagram plugin for libpurple'
 arch=('x86_64')
-url='https://github.com/EionRobb/purple-instagram'
+url='https://github.com/doopage/purple-instagram'
 license=('GPL3')
 depends=('libpurple' 'glib2' 'json-glib')
 
