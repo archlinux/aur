@@ -1,7 +1,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 pkgname=golangci-lint
 pkgdesc='Linters Runner for Go. 5x faster than gometalinter.'
-pkgver=1.53.1
+pkgver=1.53.2
 pkgrel=1
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/golangci/golangci-lint'
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 
 source=("https://github.com/golangci/golangci-lint/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b4a69e3bde2380461ff8463b19e819bd53af7adae10ce1158c6a61949c6a484d')
+sha256sums=('fc3e94b5574cdbe0faf37c8cbc1764c4ed07852a9e9dc146216ee69a20b3f97c')
 
 build() {
   local _commit _flags
