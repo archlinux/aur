@@ -7,7 +7,7 @@ xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
 pkgver=1.10.4
 _srcname="SeriousSamClassic-VK-$pkgver"
-pkgrel=8
+pkgrel=9
 pkgdesc="Serious Sam Classic native Linux version with Vulkan support and XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic-VK"
@@ -26,11 +26,7 @@ source=("https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v$p
     "serioussam-tfe.desktop"
     "serioussam-tse.desktop"
     "serioussam.xpm"
-    "tfe-vk-last-update.patch"
-    "tse-vk-last-update.patch"
-    "fix-thunder.patch"
-    "fix_sdl2_vk_fullscreen_on_gnome44.patch"
-    "arch_linux_libraries_path.patch")
+    "samvk-1.10.4-to-1.10.5-pre.patch")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
@@ -47,11 +43,7 @@ sha256sums=('951fea8274cf795c1bdcff708e1dffbef78cd7993585144b565aefba93433e08'
             '1e36d7b0d11f68729aa5c79ac9a44157d4af0bf61060040ab92a37d96ca89aba'
             '49680c65d26b264a1d7735c6310fcc5d0ac0e0e56273d3bccf539c0c87d31b2b'
             '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4'
-            '08cb78b2c5a487e8d644971729dd391851ec476b3e92d683d9d4f256b229dbac'
-            'a82821d12ebadb5ecade4b0169ff9497b6d00d6b0a9c4a0112a5915be1057542'
-            'ad07c6b9d29a0d8a1a276b0c00d07e2d24d8c63c425efa21daa31ec3c1d366df'
-            '7962e50f6c1781a3240647b77e72f588c6be772261be0d3753039dd3acc18c7d'
-            'f0dad9c8748d440f998bf059615020f89520631730ec89b78db70aada2ac57a8')
+            '9b507c20d0144c729f2ea9b54a0052e4048e5d88ecf7bc9bc227fdd899bb1ca1')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -60,11 +52,7 @@ fi
 
 prepare(){
   # Prepare patch
-  cat tfe-vk-last-update.patch > "$srcdir/$_srcname/tfe-vk-last-update.patch"
-  cat tse-vk-last-update.patch > "$srcdir/$_srcname/tse-vk-last-update.patch"
-  cat fix-thunder.patch > "$srcdir/$_srcname/fix-thunder.patch"
-  cat fix_sdl2_vk_fullscreen_on_gnome44.patch > "$srcdir/$_srcname/fix_sdl2_vk_fullscreen_on_gnome44.patch"
-  cat arch_linux_libraries_path.patch > "$srcdir/$_srcname/arch_linux_libraries_path.patch"
+  cat samvk-1.10.4-to-1.10.5-pre.patch > "$srcdir/$_srcname/samvk-1.10.4-to-1.10.5-pre.patch"
 
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
@@ -83,7 +71,7 @@ prepare(){
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
   sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh > build-linux"$_bits"-tfe.sh
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh
-  sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh > build-linux"$_bits"xplus-tfe.sh
+  sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DXPLUS=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh > build-linux"$_bits"xplus-tfe.sh
   # sed -i 's/Threaded version" FALSE/Threaded version" TRUE/g' CMakeLists.txt
   chmod 755 build-linux"$_bits"-tfe.sh
   chmod 755 build-linux"$_bits"xplus-tfe.sh
@@ -91,19 +79,14 @@ prepare(){
   # Making building TSE scripts.
   cd "$srcdir/$_srcname/SamTSE/Sources/"
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
-  sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh
+  sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release -DXPLUS=TRUE/g' build-linux"$_bits"xplus.sh
   # sed -i 's/Threaded version" FALSE/Threaded version" TRUE/g' CMakeLists.txt
   chmod 755 build-linux"$_bits".sh
   chmod 755 build-linux"$_bits"xplus.sh
 
-  # gcc 11.3 patch && hud score patch
   cd "$srcdir/$_srcname"
-  patch -p1 < tfe-vk-last-update.patch || return 1
-  patch -p1 < tse-vk-last-update.patch || return 1
-  patch -p1 < fix-thunder.patch || return 1
-  # gnone44 sdl2 patch
-  patch -p1 < fix_sdl2_vk_fullscreen_on_gnome44.patch || return 1
-  patch -p1 < arch_linux_libraries_path.patch || return 1
+  # patch
+  patch -p1 < samvk-1.10.4-to-1.10.5-pre.patch || return 1
 }
 
 build(){
