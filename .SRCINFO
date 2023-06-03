@@ -1,0 +1,15 @@
+pkgbase = planetarysystemstacker-git
+	pkgdesc = Produce a sharp image of a planetary system object
+	pkgver = 0.8.31
+	pkgrel = 1
+	url = https://github.com/Rolf-Hempel/PlanetarySystemStacker
+	arch = x86_64
+	license = GPL3
+	depends = python-opencv
+	depends = astropy
+	depends = python-scikit-image
+	depends = python-numpy
+	source = planetarysystemstacker-git::git+https://github.com/Rolf-Hempel/PlanetarySystemStacker.git
+	sha256sums = SKIP
+
+pkgname = planetarysystemstacker-git
