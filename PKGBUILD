@@ -1,3 +1,4 @@
+# Maintainer:
 # Contributor: reggiiie <reggiiie@tutanota.de>
 
 _gitname="ffmpeg-python"
@@ -19,7 +20,6 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-pytest-runner'
   'python-setuptools'
   'python-wheel'
 )
@@ -46,12 +46,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
   sed -i -e 's/collections.Iterable/collections.abc.Iterable/g' ffmpeg/_run.py
-
-  for p in "$srcdir"/*.patch ; do
-    if [ -e "$p" ] ; then
-      patch -Np1 -F100 -i "$p"
-    fi
-  done
 }
 
 build() {
