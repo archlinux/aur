@@ -61,6 +61,8 @@ package() {
 
     # Unpack patch into game directory
     tar xaf ${srcdir}/OldUnreal-UTPatch${pkgver}-Linux.tar.bz2 -C ${pkgdir}${_game_dir}
+    # fix permissions
+    find ${pkgdir}${_game_dir} -type d -exec chmod 755 {} \;
 
     # Copy the Music and Sounds directories from the distribution directory into the game directory
     install --mode=644 -t ${pkgdir}${_game_dir}/Music ${srcdir}/dist_dir/Music/*
