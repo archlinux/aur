@@ -1,7 +1,7 @@
 pkgbase = librts-co
 	pkgdesc = Runtime support for CDK-based languages, used for the CO course of IST university
 	pkgver = 5_202103031636
-	pkgrel = 1
+	pkgrel = 2
 	url = https://web.tecnico.ulisboa.pt/~david.matos/w/pt/index.php/Compiladores
 	arch = x86_64
 	groups = ist-co

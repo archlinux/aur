@@ -1,7 +1,7 @@
 # Maintainer: Rafael Oliveira <rafael.serra.olveira at tecnico dot ulisboa dot pt>
 pkgname=librts-co
 pkgver=5_202103031636
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Runtime support for CDK-based languages, used for the CO course of IST university"
 arch=('x86_64')
@@ -22,6 +22,8 @@ prepare() {
 
 	sed -i '/^ROOT *=/s/^/#/' Makefile # comment out assignments to ROOT
 	sed -i 's/ docs$//' Makefile # remove "all:" phony target's dependency on docs
+	sed -i 's/^COMMON_FLAGS =.*/& -fno-stack-protector/' Makefile # add missing -fno-stack-protector flag
+	# ^ (although supposedly off by default, some Linux distros patch GCC to change the default to on)
 }
 
 build() {
