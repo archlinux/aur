@@ -21,7 +21,8 @@ _setup() {
 prepare() {
 	_setup
 
-	CHOOSENIM_NO_ANALYTICS=1 choosenim stable --nimbleDir="$_nimble_dir"
+	# stable nim doesn't support --offline --noRebuild
+	CHOOSENIM_NO_ANALYTICS=1 choosenim '#head' --nimbleDir="$_nimble_dir"
 	PATH="$_path" nimble refresh -l
 	PATH="$_path" nimble install -d -l
 }
@@ -29,7 +30,8 @@ prepare() {
 build() {
 	_setup
 
-	PATH="$_path" nimble install -l --verbose --passNim:--passC:"\"$CFLAGS\"" --passNim:--passL:"\"$LDFLAGS\""
+	PATH="$_path" nimble install --offline --noRebuild -l --verbose \
+		--passNim:--passC:"\"$CFLAGS\"" --passNim:--passL:"\"$LDFLAGS\""
 }
 
 package() {
