@@ -31,10 +31,10 @@ package() {
 		chmod 755 "$pkgdir/usr/bin/$p";
 	done
 	
-	install -d "$pkgdir/usr/share/gnome-shell/extensions/$uuid"
-	for d in 'extension.js' 'indicator.js' 'utils.js' 'convenience.js' 'prefs.js' 'opts.js' 'stylesheet.css' 'metadata.json'; do
-		cp "$d" "$pkgdir/usr/share/gnome-shell/extensions/$uuid/";
-		chmod 644 "$pkgdir/usr/share/gnome-shell/extensions/$uuid/$d";
+	install -Dm644 -t "$pkgdir/usr/share/gnome-shell/extensions/$uuid" extension.js indicator.js utils.js convenience.js prefs.js opts.js stylesheet.css metadata.json
+
+	for s in schemas; do
+		install -Dm644 -t "$pkgdir/usr/share/glib-2.0/schemas" $s;
 	done
 }
 
