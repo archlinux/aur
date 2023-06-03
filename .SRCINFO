@@ -1,6 +1,6 @@
 pkgbase = newsflash-git
 	pkgdesc = The spiritual successor to FeedReader
-	pkgver = 1070.0d9f8d9
+	pkgver = 1301.7fc90cf
 	pkgrel = 1
 	url = https://gitlab.com/news-flash/news_flash_gtk
 	arch = any
