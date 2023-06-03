@@ -1,17 +1,17 @@
 pkgbase = modest-toolset
 	pkgdesc = Toolset for modelling and analysis of hybrid, real-time, distributed and stochastic systems
 	pkgver = 3.1.235_ge57b05e4a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.modestchecker.net
 	arch = x86_64
 	license = custom
-	optdepends = graphviz: graphviz dot in Visual Studio Code extension
+	optdepends = graphviz: graphviz dot to visualize models
 	options = !strip
-	source = LICENSE
-	source = CHANGELOG
-	sha256sums = cbf39fa0e46be19445f6e43163cc6c08f256f2853f4e8a7e1eaa84d62225266f
+	source = LICENSE::https://www.modestchecker.net/Downloads/License.txt
+	source = CHANGELOG::https://www.modestchecker.net/Downloads/Changes.txt
 	sha256sums = 72ecf41ec7ac13ac1b84854777506a87971b5d511e30e6936f3ce04ecd7847f9
+	sha256sums = cbf39fa0e46be19445f6e43163cc6c08f256f2853f4e8a7e1eaa84d62225266f
 	source_x86_64 = https://www.modestchecker.net/Downloads/Modest-Toolset-v3.1.235-ge57b05e4a-linux-x64.zip
-	sha256sums_x86_64 = 7024dbe2584506901fcec81bcb4d95c434173289cd8a9e574880aec2ad8ac0bc
+	sha256sums_x86_64 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = modest-toolset
