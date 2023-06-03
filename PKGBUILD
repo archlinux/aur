@@ -44,7 +44,7 @@ prepare() {
 
   cd "$srcdir/$pkgname/src-tauri"
 
-  cargo fetch target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 
   pnpm fetch
 }
