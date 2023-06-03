@@ -1,15 +1,17 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=btop-git
-pkgver=1.0.18.r292.a0ee404
+pkgver=1.2.13.r698.e269046
 pkgrel=1
 pkgdesc="A monitor of resources"
 arch=(any)
 url="https://github.com/aristocratos/btop"
 license=('Apache-2.0')
 makedepends=('gcc' 'make' 'git')
-source=("${pkgname}::git+https://github.com/aristocratos/btop.git")
-sha512sums=('SKIP')
+source=("${pkgname}::git+https://github.com/aristocratos/btop.git"
+        "git+https://github.com/fmtlib/fmt.git")
+sha512sums=('SKIP'
+            'SKIP')
 provides=('btop')
 conflicts=('btop')
 options=(!strip)
@@ -19,6 +21,14 @@ pkgver() {
   _pkgver="$(cat CHANGELOG.md | grep '^##' | sed 's/## v//g' | head -1)"
 
   printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+
+  git submodule init
+  git config submodule."lib/fmt".url "${srcdir}/fmt"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
