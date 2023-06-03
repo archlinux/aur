@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=wayprompt-git
-pkgver=0+50+3d73732
+pkgver=0+54+0b18ef2
 pkgrel=1
 pkgdesc='Multi-purpose prompt tool for Wayland (pinentry, himitsu)'
 url='https://git.sr.ht/~leon_plickat/wayprompt'
@@ -47,7 +47,4 @@ build() {
 package() {
   cd ${pkgname%-git}
   mv -v build/* "${pkgdir}"
-  ln -sf /usr/bin/wayprompt "${pkgdir}"/usr/bin/pinentry-wayprompt
-  ln -sf /usr/bin/wayprompt "${pkgdir}"/usr/bin/hiprompt-wayprompt
-  ln -sf /usr/bin/wayprompt "${pkgdir}"/usr/bin/wayprompt-cli
 }
