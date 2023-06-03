@@ -135,7 +135,8 @@ prepare() {
       merge --no-edit origin/$_branch2
   fi
   if [ ! -z $_commit3 ]; then
-    git cherry-pick --keep-redundant-commits $_commit3
+    git -c "user.name=Your Name" -c "user.email=you@example.com" \
+      cherry-pick --keep-redundant-commits $_commit3
   fi
 }
 
