@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.1.30 Kernel Configuration
+# Linux/arm64 6.1.31 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.0"
 CONFIG_CC_IS_GCC=y
@@ -3260,7 +3260,7 @@ CONFIG_RTL8723_COMMON=m
 CONFIG_RTLBTCOEXIST=m
 CONFIG_RTL8XXXU=m
 # CONFIG_RTL8XXXU_UNTESTED is not set
-# CONFIG_RTL8822CS is not set
+CONFIG_RTL8822CS=m
 CONFIG_RTW88=m
 CONFIG_RTW88_CORE=m
 CONFIG_RTW88_PCI=m
