@@ -1,12 +1,12 @@
 # Maintainer: Ilya Zlobintsev <ilya.zl@protonmail.com>
 pkgname=lact
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 license=("MIT")
 pkgdesc="AMDGPU Controller application"
 url="https://github.com/ilya-zlobintsev/LACT"
-makedepends=("rust")
-depends=("gtk4" "hwdata" "clang")
+makedepends=("rust" "clang")
+depends=("gtk4" "hwdata")
 arch=('x86_64' 'aarch64')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/ilya-zlobintsev/LACT/archive/refs/tags/v${pkgver}.tar.gz")
