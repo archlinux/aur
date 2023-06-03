@@ -1,10 +1,11 @@
 # Maintainer: Francis Agyapong <francisagyapong2 at gmail dot com>
 
-pkgname="nats-server"
+pkgname="nats-server-bin"
 pkgdesc="Simple, secure and high performance open source messaging system"
 pkgver=2.9.16
 pkgrel=1
 provides=("${pkgname}")
+replaces=("nats-server")
 arch=("x86_64")
 url="https://nats.io"
 license=("Apache")
