@@ -1,0 +1,28 @@
+--- a/tools/packaging/debian/dragonfly.conf
++++ b/tools/packaging/debian/dragonfly.conf
+@@ -1,4 +1,4 @@
+---pidfile=/var/run/dragonfly/dragonfly.pid
++--pidfile=/run/dragonfly/dragonfly.pid
+ --log_dir=/var/log/dragonfly
+ --dir=/var/lib/dragonfly
+ --version_check=true
+--- a/tools/packaging/debian/dragonfly.service
++++ b/tools/packaging/debian/dragonfly.service
+@@ -7,7 +7,7 @@ Documentation=
+ Type=simple
+ EnvironmentFile=-/etc/dragonfly/environment
+ ExecStart=/usr/bin/dragonfly --flagfile=/etc/dragonfly/dragonfly.conf
+-PIDFile=/var/run/dragonfly/dragonfly.pid
++PIDFile=/run/dragonfly/dragonfly.pid
+ TimeoutStopSec=infinity
+ Restart=always
+ User=dfly
+@@ -24,7 +24,7 @@ ProtectSystem=full
+ 
+ ReadWritePaths=-/var/lib/dragonfly
+ ReadWritePaths=-/var/log/dragonfly
+-ReadWritePaths=-/var/run/dragonfly
++ReadWritePaths=-/run/dragonfly
+ 
+ NoNewPrivileges=true
+ CapabilityBoundingSet=CAP_SETGID CAP_SETUID CAP_SYS_RESOURCE

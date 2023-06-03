@@ -1,22 +1,43 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dragonflydb
-pkgver=1.1.2
+pkgver=1.3.0
 pkgrel=1
-pkgdesc='A modern replacement for Redis/Memcached'
+pkgdesc='A fast in-memory store that is fully compatible with Redis and Memcached'
 arch=('x86_64')
 url='https://dragonflydb.io'
 license=('custom:BSL1.1')
-depends=('openssl' 'boost-libs' 'libunwind')
-makedepends=('git' 'cmake' 'ninja' 'python' 'boost')
+depends=(
+  'glibc'
+  'gcc-libs'
+  'openssl'
+  'boost-libs'
+  'libunwind'
+  'libxml2'
+  'zstd'
+)
+makedepends=(
+  'git'
+  'cmake'
+  'ninja'
+  'python'
+  'boost'
+)
+optdepends=('logrotate')
 options=('!buildflags')
-_commit='6d269096df37e9f4389d4d2b354113a0c8cbfb74'
+_commit='f80afca9c23e2f30373437520a162c591eaa2005'
 source=(
   "$pkgname::git+https://github.com/dragonflydb/dragonfly#commit=$_commit"
   'github.com-romage-helio::git+https://github.com/romange/helio'
+  'sysusers.conf'
+  'tmpfiles.conf'
+  'use-fhs-directories.patch'
 )
 b2sums=('SKIP'
-        'SKIP')
+        'SKIP'
+        'fa10c1cfbd47eb0bdaae77e66a89fc94ee8803f30e431ce498c99724653a63102c7c34e96b44847c45f43ebdd4a549fdb67f47b30698af582aa2e38a9a760fa3'
+        'ed965facc221fa66c8803b6b7ddc91151ebbb857eb77f934a700f02940f8294d6c8d075b76eba8fccc550ba7054ec26dd7599fef7d7b608e5e76be7a138ae279'
+        'ccb72430294479155b716e0aef2a6a85c0100ecd8560735af32211632363a3ef65c35f13be8ab57b5c363577a92e893213b81aed213091c280d9d4cda13c3554')
 
 pkgver() {
   cd "$pkgname"
@@ -32,6 +53,14 @@ prepare() {
   git submodule init
   git config submodule.helio.url "$srcdir/github.com-romage-helio"
   git -c protocol.file.allow=always submodule update
+
+  # FTBFS: https://github.com/dragonflydb/dragonfly/issues/1339
+  pushd helio
+  git checkout 72d02055f8f79e55f28679a11dd2c673399a8ca0
+  popd
+
+  # use FHS directories
+  patch -p1 -i "$srcdir/use-fhs-directories.patch"
 }
 
 build() {
@@ -46,6 +75,15 @@ build() {
 
 package() {
   cd "$pkgname"
+
+  # systemd integration
+  install -vDm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -vDm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+  install -vDm644 -t "$pkgdir/usr/lib/systemd/system" tools/packaging/debian/dragonfly.service
+  install -vDm644 -t "$pkgdir/etc/dragonfly" tools/packaging/debian/dragonfly.conf
+
+  # logrotate
+  install -vDm644 tools/packaging/debian/dragonfly.logrotate "$pkgdir/etc/logrotate.d/$pkgname"
 
   # binary
   install -vDm755 -t "$pkgdir/usr/bin" build-opt/dragonfly

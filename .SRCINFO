@@ -1,6 +1,6 @@
 pkgbase = dragonflydb
-	pkgdesc = A modern replacement for Redis/Memcached
-	pkgver = 1.1.2
+	pkgdesc = A fast in-memory store that is fully compatible with Redis and Memcached
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://dragonflydb.io
 	arch = x86_64
@@ -10,13 +10,24 @@ pkgbase = dragonflydb
 	makedepends = ninja
 	makedepends = python
 	makedepends = boost
+	depends = glibc
+	depends = gcc-libs
 	depends = openssl
 	depends = boost-libs
 	depends = libunwind
+	depends = libxml2
+	depends = zstd
+	optdepends = logrotate
 	options = !buildflags
-	source = dragonflydb::git+https://github.com/dragonflydb/dragonfly#commit=6d269096df37e9f4389d4d2b354113a0c8cbfb74
+	source = dragonflydb::git+https://github.com/dragonflydb/dragonfly#commit=f80afca9c23e2f30373437520a162c591eaa2005
 	source = github.com-romage-helio::git+https://github.com/romange/helio
+	source = sysusers.conf
+	source = tmpfiles.conf
+	source = use-fhs-directories.patch
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = fa10c1cfbd47eb0bdaae77e66a89fc94ee8803f30e431ce498c99724653a63102c7c34e96b44847c45f43ebdd4a549fdb67f47b30698af582aa2e38a9a760fa3
+	b2sums = ed965facc221fa66c8803b6b7ddc91151ebbb857eb77f934a700f02940f8294d6c8d075b76eba8fccc550ba7054ec26dd7599fef7d7b608e5e76be7a138ae279
+	b2sums = ccb72430294479155b716e0aef2a6a85c0100ecd8560735af32211632363a3ef65c35f13be8ab57b5c363577a92e893213b81aed213091c280d9d4cda13c3554
 
 pkgname = dragonflydb
