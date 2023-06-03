@@ -1,7 +1,7 @@
 pkgbase = budgie-desktop-git
 	pkgdesc = A familiar, modern desktop environment - latest git
-	pkgver = 10.7.1.r30.gde1379f6
-	pkgrel = 2
+	pkgver = 10.7.1.r34.g195fbe14
+	pkgrel = 1
 	url = https://github.com/BuddiesOfBudgie/budgie-desktop
 	arch = x86_64
 	arch = armv7h
@@ -39,6 +39,6 @@ pkgbase = budgie-desktop-git
 	source = 30_org.archlinux.budgie-desktop.gschema.override
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 8bf90523787a7acf907adff557e0f578d8516f76c4c63aefe1395250f497324a
+	sha256sums = 500efe7bc76e6c6c383e5fed55503d3071646cc0ee71524860d6efcf229a920a
 
 pkgname = budgie-desktop-git

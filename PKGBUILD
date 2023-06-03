@@ -1,8 +1,8 @@
 # Maintainer: Solomon Choina <shlomochoina at gmail dot com>
-# Maintainer: Campbell Jones <dev at serebit dot com>
+# Maintainer: Campbell Jones <arch at serebit dot com>
 
 pkgname=budgie-desktop-git
-pkgver=10.7.1.r33.ga018185c
+pkgver=10.7.1.r34.g195fbe14
 pkgrel=1
 pkgdesc="A familiar, modern desktop environment - latest git"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -22,7 +22,7 @@ source=("$pkgname"::'git+https://github.com/BuddiesOfBudgie/budgie-desktop.git'
         "30_org.archlinux.budgie-desktop.gschema.override")
 sha256sums=('SKIP'
             'SKIP'
-            '8bf90523787a7acf907adff557e0f578d8516f76c4c63aefe1395250f497324a')
+            '500efe7bc76e6c6c383e5fed55503d3071646cc0ee71524860d6efcf229a920a')
 
 pkgver() {
     cd "$pkgname"
@@ -37,7 +37,7 @@ prepare() {
 }
 
 build() {
-    arch-meson "$pkgname" build
+    arch-meson "$pkgname" build -Duse-old-zenity=true
     meson compile -C build
 }
 

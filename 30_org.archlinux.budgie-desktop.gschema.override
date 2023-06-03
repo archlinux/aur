@@ -1,3 +1,6 @@
 [org.gnome.desktop.interface:Budgie]
 gtk-theme='Arc-Dark'
 icon-theme='Papirus-Dark'
+
+[org.gnome.desktop.peripherals.touchpad:Budgie]
+click-method='default'
