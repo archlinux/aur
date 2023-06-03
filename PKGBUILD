@@ -2,7 +2,7 @@
 
 pkgname=rider
 pkgver='2023.1.2'
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='A cross-platform .NET IDE by JetBrains.'
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ package() {
     ln -s "${_installdir}/${pkgname}"/bin/rider.sh "${pkgdir}"/usr/bin/"${pkgname}"
 
     install -d -m755 "$pkgdir"/usr/share/applications
-    gendesk -f -n --exec "${_installdir}/${pkgname}/bin/rider.sh %f" --icon "${_installdir}/${pkgname}/bin/rider.png"
+    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec "${_installdir}/${pkgname}/bin/rider.sh %f" --icon "${_installdir}/${pkgname}/bin/rider.png"
     echo "StartupWMClass=jetbrains-rider" >> "${pkgname}.desktop"
     install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications"
 }
