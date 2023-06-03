@@ -1,8 +1,8 @@
 # Maintainer: Balazs Ruzsa <ruzsa.balazs@gmail.com>
 pkgname=retro-debugger-git
 pkgver=v0.64.64.r1.7cbfb8a
-pkgrel=1
-pkgdesc="Multiplatform debugger APIs host for retro computers: C64 (Vice), Atari800 and NES (NestopiaUE)."
+pkgrel=2
+pkgdesc="Multiplatform debugger APIs host for retro computers: C64 (Vice), Atari800 and NES (NestopiaUE)"
 arch=(x86_64)
 url="https://github.com/slajerek/RetroDebugger"
 license=('custom')
