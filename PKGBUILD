@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSVA
-_pkgver=1.48.0
+_pkgver=1.48.1
 pkgname=r-${_pkgname,,}
-pkgver=1.48.0
+pkgver=1.48.1
 pkgrel=1
 pkgdesc='Gene Set Variation Analysis for microarray and RNA-seq data'
 arch=('x86_64')
@@ -47,7 +47,7 @@ optdepends=(
   r-shinyjs
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c34fa44060485df0fd4a34aac6e5aea38b979fbea12ea361a17ca7e6c9a1fb25')
+sha256sums=('7b8c19225cb38c24dfebd1294918950b64108f7d4e9c2b7bee3c9a4b1eb289a7')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
