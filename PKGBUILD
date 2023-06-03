@@ -1,7 +1,7 @@
 # Maintainer: Andrey Antonowycz <andrey at antonowycz dot com>
 pkgname=modest-toolset
 pkgver=3.1.235_ge57b05e4a
-pkgrel=4
+pkgrel=5
 pkgdesc="Toolset for modelling and analysis of hybrid, real-time, distributed and stochastic systems"
 arch=('x86_64')
 url="https://www.modestchecker.net"

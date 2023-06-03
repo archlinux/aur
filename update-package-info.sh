@@ -9,9 +9,6 @@ fi
 echo "Updating PKGBUILD to version $pkgver"
 sed -i "s/^\(pkgver=\).*$/\1$pkgver/" PKGBUILD
 
-echo "Generating .SRCINFO"
-makepkg --printsrcinfo > .SRCINFO
-
 # Calculate SHA256 digests
 echo "Calculating SHA256 of Modest archive"
 MODEST_SHA256=(`curl -fsL https://www.modestchecker.net/Downloads/Modest-Toolset-v${pkgver//_/-}-linux-x64.zip | sha256sum`)
@@ -23,6 +20,9 @@ CHANGELOG_SHA256=(`curl -fsL https://www.modestchecker.net/Downloads/Changes.txt
 # Include digests in PKGBUILD
 sed -i "s/^\(sha256sums=\).*/\1\(\'$LICENSE_SHA256\' \'$CHANGELOG_SHA256\'\)/" PKGBUILD
 sed -i "s/^\(sha256sums_x86_64=\).*/\1\(\'$MODEST_SHA256\'\)/" PKGBUILD
+
+echo "Generating .SRCINFO"
+makepkg --printsrcinfo > .SRCINFO
 
 echo "Done, good-bye."
 exit 0
