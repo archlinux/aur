@@ -2,7 +2,7 @@
 # Maintainer: soloturn@gmail.com
 
 pkgname=gossip
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="gossip nostr client, rust, egui based."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
   "$pkgname.desktop"
 )
 sha256sums=(
-  '18cbbc23f08d2357b7ef1167385fb21714d2d2c9468ee4e20f0f50bc77597152'
+  'da8265ba786128fa62c3e8bf9183c79f4d4bf6d1efd19a0c29a7a976939f9ea5'
   'cf28c5863c0f5f6766d98cb18189761f95f2a0a7c166a39afa4ffa2578a703af'
 )
 
@@ -26,6 +26,7 @@ sha256sums=(
 
 build() {
   cd $pkgname-$pkgver
+  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   RUSTFLAGS="-C link-arg=-fuse-ld=mold -C target-cpu=native --cfg tokio_unstable"
   # cargo build --frozen --release --all-features
