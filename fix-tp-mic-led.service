@@ -1,5 +1,5 @@
 [Unit]
-Description=Fix ThinkPad T14s AMD Microphone Led
+Description=Fix ThinkPad P14s AMD microphone LED
 
 [Service]
 ExecStart=/usr/bin/fix-tp-mic-led.sh

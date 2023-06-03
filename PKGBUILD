@@ -12,7 +12,7 @@ optdepends=(
 )
 source=('fix-tp-mic-led.sh' 'fix-tp-mic-led.service')
 sha256sums=('e333bd4961d2145959f1f84d04935ae29e42663d94024a280f083c24fa3cfede'
-            'a9062c04ee8b1fdeffce0c0c6765bf20c72c23bdc38338a4493a6f52697ba9e4')
+            '331feb49d38fa941eef58be53c351faf1e332282496b1f4907300b4ea46abdbf')
 
 package() {
   install -Dm755 "${srcdir}/fix-tp-mic-led.sh" -t "${pkgdir}/usr/bin/"
