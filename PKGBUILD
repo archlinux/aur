@@ -3,16 +3,16 @@
 # Contributor: Caleb Chase <firstname at lastnamefirstname dot com>
 
 pkgname=ledger-autosync-git
-_pyname=ledger-autosync
-pkgver=1.0.3.r7.g69f30ea
+_pyname=ledger_autosync
+pkgver=1.0.3.r22.g4edbb5b
 pkgrel=2
 pkgdesc="Pull down transactions from your bank and create ledger transactions for them"
 arch=("any")
 url="https://gitlab.com/egh/ledger-autosync"
 license=('GPL3')
-depends=('python' 'python-ofxclient-git' 'ofxparse-git')
+depends=('python' 'python-ofxclient-git' 'python-ofxparse' )
 optdepends=('ledger')
-makedepends=('git' 'python-setuptools' 'python-poetry')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://gitlab.com/egh/ledger-autosync.git')
@@ -27,11 +27,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  poetry build -f sdist
-  tar xvf ./dist/${_pyname}-*.tar.gz
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}/${_pyname}"*/
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd "$srcdir/${pkgname%-git}/"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
 }
