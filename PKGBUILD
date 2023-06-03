@@ -15,7 +15,7 @@ makedepends=(
 'python-setuptools-scm'
 )
 depends=('python')
-source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/Adafruit_PureIO-${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/a/adafruit-pureio/${_pypi_pkgname}-${pkgver}.tar.gz")
 sha256sums=('c4cfbb365731942d1f1092a116f47dfdae0aef18c5b27f1072b5824ad5ea8c7c')
 
 build() {
