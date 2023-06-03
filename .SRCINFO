@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-mailnag
+	pkgdesc = Gnome shell extension for mailnag to show new mails in top bar
+	pkgver = 44
+	pkgrel = 1
+	url = https://github.com/pulb/mailnag-gnome-shell
+	arch = x86_64
+	license = GPL
+	makedepends = vala
+	makedepends = folks
+	depends = folks
+	depends = gnome-shell
+	depends = mailnag
+	optdepends = gnome-online-accounts
+	replaces = mailnag-gnome-shell
+	source = https://github.com/pulb/mailnag-gnome-shell/archive/refs/heads/master.zip
+	sha256sums = d3e42603f67cce83ac9c43fdfa7813f609f80f306792754df36b2c5c527589ae
+
+pkgname = gnome-shell-extension-mailnag
