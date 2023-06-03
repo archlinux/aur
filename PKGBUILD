@@ -15,6 +15,7 @@ depends=(
     'dconf'
     'gtk3'
     'libb2'
+    'libgcrypt'
     'nettle'
     'thunar'
 )

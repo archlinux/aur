@@ -13,6 +13,7 @@ pkgbase = gtkhash-thunar
 	depends = dconf
 	depends = gtk3
 	depends = libb2
+	depends = libgcrypt
 	depends = nettle
 	depends = thunar
 	provides = gtkhash
