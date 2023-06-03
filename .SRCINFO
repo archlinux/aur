@@ -1,0 +1,22 @@
+pkgbase = cargo-mommy-git
+	pkgdesc = Mommy's here to support you when running cargo~
+	pkgver = r10.df726f2
+	pkgrel = 1
+	url = https://github.com/Gankra/cargo-mommy
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = aarch64
+	license = Apache
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	source = cargo-mommy-git::git+https://github.com/Gankra/cargo-mommy.git
+	source = 0001-multiple-toolchain.patch::https://github.com/Gankra/cargo-mommy/pull/18.patch
+	sha256sums = SKIP
+	sha256sums = b6e24f80d82e08069917c5ea28b02dca2786396960a18aca574b14989d567a21
+	b2sums = SKIP
+	b2sums = 26e978f4a2a63666db67066c2738df3e37bbf32ef79751783fce1042d4927a04c06aca448d5f2244d368ca5657124bf9e19269e995424b38ccdcf8c3b7ea81ff
+
+pkgname = cargo-mommy-git

@@ -1,0 +1,42 @@
+From 45346bb315c4ef98a6f4f6ed7719f640c1abed32 Mon Sep 17 00:00:00 2001
+From: trinity-1686a <trinity@deuxfleurs.fr>
+Date: Mon, 20 Mar 2023 00:53:02 +0100
+Subject: [PATCH] mommy lets you play with multiple toolchain~
+
+---
+ README.md   | 3 +++
+ src/main.rs | 6 ++++--
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/README.md b/README.md
+index 70b7020..e91f732 100644
+--- a/README.md
++++ b/README.md
+@@ -42,6 +42,9 @@ mommy knows her little girl can do better~ ❤️
+ >_
+ ```
+ 
++If you try to make it into an alias, you should prefere poiting it to `cargo-mommy` directly,
++we wouldn't want to break rustup toolchain picker, now would we?~
++
+ # Configuration
+ 
+ Mommy will read the following environment variables to make her messages better for you~ ❤️
+diff --git a/src/main.rs b/src/main.rs
+index 15aefe7..7b1b9bb 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -39,9 +39,11 @@ fn main() {
+ 
+ fn real_main() -> Result<i32, Box<dyn std::error::Error>> {
+     let cargo = std::env::var("CARGO").unwrap_or_else(|_| "cargo".to_owned());
+-    let mut arg_iter = std::env::args();
++    let mut arg_iter = std::env::args().peekable();
+     let _cargo = arg_iter.next();
+-    let _mommy = arg_iter.next();
++    if arg_iter.peek().map_or(false, |arg| arg == "mommy") {
++        let _mommy = arg_iter.next();
++    }
+ 
+     let mut cmd = std::process::Command::new(cargo);
+     cmd.args(arg_iter);
