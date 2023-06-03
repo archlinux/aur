@@ -1,0 +1,16 @@
+pkgbase = imppg
+	pkgdesc = ImPPG (Image Post-Processor)
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://greatattractor.github.io/imppg/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = wxwidgets-gtk3
+	makedepends = cfitsio
+	makedepends = glew
+	makedepends = freeimage
+	source = https://github.com/GreatAttractor/imppg/archive/refs/tags/v1.9.1-beta.tar.gz
+	sha256sums = e63df6e5a12027208f2da4a6b62c5bebfedd8e1b627ac81cd21069fb06e62335
+
+pkgname = imppg
