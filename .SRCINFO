@@ -1,7 +1,7 @@
 pkgbase = nbia-data-retriever
 	pkgdesc = NBIA Data Retriever is an app that facilitates downloading images from the National Biomedical Imaging Archive (NBIA) and The Cancer Imaging Archive (TCIA)
 	pkgver = 4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.cancerimagingarchive.net/display/NBIA/Cancer+Imaging+Archive+User%27s+Guide#CancerImagingArchiveUser%27sGuide-DownloadingStudyData
 	arch = x86_64
 	license = BSD-3-Clause
