@@ -1,32 +1,39 @@
+_pkgname='openasar'
+pkgname="${_pkgname}-git"
+variants=(
+	"discord"
+	"discord-ptb"
+	"discord-canary"
+	"discord-development"
+)
+
 post_install() {
-	_pkgname='openasar'
-	pkgname="${_pkgname}-git"
-	default_asar_path="${pkgdir}/opt/discord/resources/app.asar"
-	if [ -f "$default_asar_path" ]; then
-		cp "${default_asar_path}" "${default_asar_path}.backup"
-		cp "/opt/${pkgname}/app.asar" "${default_asar_path}"
-	fi
+	for variant in "${variants[@]}"; do
+		asar_path="/opt/${variant}/resources/app.asar"
+		if [ -f "${asar_path}" ]; then
+			mv "${asar_path}" "${asar_path}.backup"
+			cp -f "/opt/${pkgname}/app.asar" "${asar_path}"
+		fi
+	done
 }
 
 pre_upgrade() {
-	default_asar_path="${pkgdir}/opt/discord/resources/app.asar"
-	if [ -f "$default_asar_path" ]; then
-		rm "${default_asar_path}"
-	fi
+	for variant in "${variants[@]}"; do
+		rm -rf "/opt/${variant}/resources/app.asar"
+	done
 }
 
 post_upgrade() {
-	_pkgname='openasar'
-	pkgname="${_pkgname}-git"
-	default_asar_path="${pkgdir}/opt/discord/resources/app.asar"
-	if [ -f "${default_asar_path}.backup" ]; then
-		cp "/opt/${pkgname}/app.asar" "/opt/discord/resources/app.asar"
-	fi
+	for variant in "${variants[@]}"; do
+		cp -f "/opt/${pkgname}/app.asar" "/opt/${variant}/resources/app.asar"
+	done
 }
 
 post_remove() {
-	default_asar_path="/opt/discord/resources/app.asar"
-	if [ -f "${default_asar_path}.backup" ]; then
-		mv "${default_asar_path}.backup" "${default_asar_path}"
-	fi
+	for variant in "${variants[@]}"; do
+		asar_path="/opt/${variant}/resources/app.asar"
+		if [ -f "${asar_path}.backup" ]; then
+			mv "${asar_path}.backup" "${asar_path}"
+		fi
+	done
 }

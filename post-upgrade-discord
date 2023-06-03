@@ -1,3 +1,5 @@
 #!/bin/bash
-mv /opt/discord/resources/app.asar /opt/discord/resources/app.asar.backup
+variant="$1"
+asar_path="/opt/${variant}/resources/app.asar"
+mv "${asar_path}" "${asar_path}.backup"
 install -Dm 644 /opt/openasar-git/app.asar /opt/discord/resources/app.asar

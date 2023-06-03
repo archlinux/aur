@@ -2,9 +2,9 @@
 Type = Path
 Operation = Install
 Operation = Upgrade
-Target = opt/discord/resources/*
+Target = opt/discord-development/resources/*
 
 [Action]
 Description = Replacing official asar with openasar...
 When = PostTransaction
-Exec = /usr/share/libalpm/scripts/post-upgrade-discord discord
+Exec = /usr/share/libalpm/scripts/post-upgrade-discord discord-development
