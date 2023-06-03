@@ -1,0 +1,6 @@
+#!/bin/sh
+
+post_install() {
+  echo ":: To be able to change settings in LACT, you need to enable the lactd service:"
+  echo "   sudo systemctl enable --now lactd"
+}

@@ -12,6 +12,7 @@ backup=('etc/lact/config.yaml')
 source=("git+https://github.com/ilya-zlobintsev/LACT.git")
 sha512sums=("SKIP")
 provides=('lact')
+install=lact.install
 
 pkgver() {
   cd LACT

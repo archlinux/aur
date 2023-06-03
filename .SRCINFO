@@ -3,6 +3,7 @@ pkgbase = lact-git
 	pkgver = r295.2108864
 	pkgrel = 1
 	url = https://github.com/ilya-zlobintsev/LACT
+	install = lact.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
