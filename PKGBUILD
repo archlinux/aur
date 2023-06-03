@@ -1,44 +1,38 @@
-# Submitter: Zhiwei Chen <condy0919@gmail.com>
-# Mantainer: Fabrizio Pietrucci <bamlessnty5@gmail.com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Fabrizio Pietrucci <bamlessnty5@gmail.com>
+# Contributor: Zhiwei Chen <condy0919@gmail.com>
 
 _pkgname=hotspot
-pkgname="${_pkgname}"-appimage
-pkgver=1.3.0
+pkgname=$_pkgname-appimage
+pkgver=1.4.1
 pkgrel=1
-pkgdesc="The Linux perf GUI for performance analysis."
+pkgdesc="The Linux perf GUI for performance analysis (AppImage release)"
 arch=('x86_64')
 url="https://github.com/KDAB/hotspot"
 license=('GPL')
-depends=('perf' 'fuse')
-conflicts=(hotspot)
-provides=(hotspot)
-options=(!strip)
-_appimage="${pkgname}-${pkgver}.AppImage"
-
-noextract=("${_appimage}")
-source=("${_appimage}::https://github.com/KDAB/hotspot/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64.AppImage")
-sha256sums=('7d933e4e8dfe3894c244a74979eb1ad94bda109380398c532fb9ca7ef958c0eb')
+depends=('fuse2')
+provides=($_pkgname)
+conflicts=($_pkgname)
+options=('!strip')
+_appimage="$_pkgname-v$pkgver-x86_64.AppImage"
+source=("$url/releases/download/v$pkgver/$_appimage")
+sha256sums=('281c3e652285fad052a9af9d722c974940dbdc46d07e9727d35ed42d69c65f83')
 
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
-}
-
-build() {
-    chmod -R a-x+rX squashfs-root/opt # Fix permissions
+  # Extract the AppImage
+  chmod +x "$_appimage"
+  ./"$_appimage" --appimage-extract
+  chmod 755 squashfs-root
+  # Create an exec file with an environment variable that disables AppImageLauncher integration
+  echo env APPIMAGELAUNCHER_DISABLE=true /opt/$_pkgname/$_pkgname > $_pkgname
 }
 
 package() {
-    # AppImage
-    install -Dm755 "${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-
-    # Desktop file
-    install -Dm644 "squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
-    # Icon images
-    cp -a "squashfs-root/opt/share/icons" "${pkgdir}/usr/share/"
-
-    # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin/"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+  cd squashfs-root
+  for i in 16x16 22x22 32x32 48x48 64x64 512x512; do
+    install -Dm644 usr/share/icons/hicolor/$i/apps/$_pkgname.png "$pkgdir/usr/share/icons/hicolor/$i/apps/$_pkgname.png"
+  done
+  install -Dm644 usr/share/applications/com.kdab.$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm755 ../$_appimage "$pkgdir/opt/$_pkgname/$_pkgname"
+  install -Dm755 ../$_pkgname -t "$pkgdir/usr/bin"
 }
