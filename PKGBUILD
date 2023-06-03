@@ -7,7 +7,7 @@ xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
 pkgver=1.10.4
 _srcname="SeriousSamClassic-$pkgver"
-pkgrel=8
+pkgrel=9
 pkgdesc="Serious Sam Classic native Linux version with XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic"
@@ -26,11 +26,7 @@ source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgv
     "serioussam-tfe.desktop"
     "serioussam-tse.desktop"
     "serioussam.xpm"
-    "tfe-last-update.patch"
-    "tse-last-update.patch"
-    "fix-thunder.patch"
-    "fix_sdl2_fullscreen_on_gnome44.patch"
-    "arch_linux_libraries_path.patch")
+    "sam-1.10.4-to-1.10.5-pre.patch")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
@@ -47,11 +43,7 @@ sha256sums=('c42e1434e03f713ffc60aa627f0a24c64287598bc5ee7cdbd2cbe91aa363ef51'
             '1e36d7b0d11f68729aa5c79ac9a44157d4af0bf61060040ab92a37d96ca89aba'
             '49680c65d26b264a1d7735c6310fcc5d0ac0e0e56273d3bccf539c0c87d31b2b'
             '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4'
-            '3e7556a71e8627ea0e94e1abd1112e493e12e27d8465aa3a7c37a138d08893b7'
-            '637b388f88a241ad7f140ed22cc49b92174cb9b8abe9bb8a876a9b40af7b3f16'
-            'ad07c6b9d29a0d8a1a276b0c00d07e2d24d8c63c425efa21daa31ec3c1d366df'
-            '18244ab0be66d5f5ea98e2ad387290803be08a77d71820a53972e4d58d3e2ac0'
-            'f0dad9c8748d440f998bf059615020f89520631730ec89b78db70aada2ac57a8')
+            'afc114cf26ca56f8fa9720d9e0aeab2a5674d7d6e33b038bd609d2882b1a9acc')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -60,11 +52,7 @@ fi
 
 prepare(){
   # Prepare patch
-  cat tfe-last-update.patch > "$srcdir/$_srcname/tfe-last-update.patch"
-  cat tse-last-update.patch > "$srcdir/$_srcname/tse-last-update.patch"
-  cat fix-thunder.patch > "$srcdir/$_srcname/fix-thunder.patch"
-  cat fix_sdl2_fullscreen_on_gnome44.patch > "$srcdir/$_srcname/fix_sdl2_fullscreen_on_gnome44.patch"
-  cat arch_linux_libraries_path.patch > "$srcdir/$_srcname/arch_linux_libraries_path.patch"
+  cat sam-1.10.4-to-1.10.5-pre.patch > "$srcdir/$_srcname/sam-1.10.4-to-1.10.5-pre.patch"
 
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
@@ -83,7 +71,7 @@ prepare(){
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
   sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh > build-linux"$_bits"-tfe.sh
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh
-  sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh > build-linux"$_bits"xplus-tfe.sh
+  sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DXPLUS=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh > build-linux"$_bits"xplus-tfe.sh
   # sed -i 's/Threaded version" FALSE/Threaded version" TRUE/g' CMakeLists.txt
   chmod 755 build-linux"$_bits"-tfe.sh
   chmod 755 build-linux"$_bits"xplus-tfe.sh
@@ -91,19 +79,14 @@ prepare(){
   # Making building TSE scripts.
   cd "$srcdir/$_srcname/SamTSE/Sources/"
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
-  sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh
+  sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release -DXPLUS=TRUE/g' build-linux"$_bits"xplus.sh
   # sed -i 's/Threaded version" FALSE/Threaded version" TRUE/g' CMakeLists.txt
   chmod 755 build-linux"$_bits".sh
   chmod 755 build-linux"$_bits"xplus.sh
 
-  # gcc 11.3 patch && hud score patch
   cd "$srcdir/$_srcname"
-  patch -p1 < tfe-last-update.patch || return 1
-  patch -p1 < tse-last-update.patch || return 1
-  patch -p1 < fix-thunder.patch || return 1
-  # gnone44 sdl2 patch
-  patch -p1 < fix_sdl2_fullscreen_on_gnome44.patch || return 1
-  patch -p1 < arch_linux_libraries_path.patch || return 1
+  # patch
+  patch -p1 < sam-1.10.4-to-1.10.5-pre.patch || return 1
 }
 
 build(){
