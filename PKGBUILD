@@ -3,7 +3,7 @@
 # Mantainer: XenGi
 pkgname=unrealtournament
 pkgver=469c
-pkgrel=2
+pkgrel=3
 pkgdesc="The classic Unreal Tournament from 1999 (Retail CD or DVD required)"
 arch=('i686' 'x86_64')
 url="http://www.unrealtournament.com/"
@@ -47,45 +47,52 @@ EOF
         return 1
     else
         echo "${_dist_dir} looks promising."
+        rm -f ${srcdir}/dist_dir
+        ln -s ${_dist_dir} ${srcdir}/dist_dir
     fi
-
-    # Set game destination
-    export _game_dir="/opt/ut"
 }
 
 package() {
+    # Set game destination
+    export _game_dir="/opt/ut"
+
     # Create game directory
-    install --mode 755 -d -- ${pkgdir}${_game_dir}
+    install --mode=755 -d -- ${pkgdir}${_game_dir}/{Music,Sounds,Maps}
 
     # Unpack patch into game directory
     tar xaf ${srcdir}/OldUnreal-UTPatch${pkgver}-Linux.tar.bz2 -C ${pkgdir}${_game_dir}
 
     # Copy the Music and Sounds directories from the distribution directory into the game directory
-    cp -r ${_dist_dir}/Music/ ${pkgdir}${_game_dir}
-    cp -r ${_dist_dir}/Sounds/ ${pkgdir}${_game_dir}
+    install --mode=644 -t ${pkgdir}${_game_dir}/Music ${srcdir}/dist_dir/Music/*
+    install --mode=644 -t ${pkgdir}${_game_dir}/Sounds ${srcdir}/dist_dir/Sounds/*
 
     # Copy the contents of the Textures directory from the distribution directory into the existing Textures directory
     # within your game directory WITHOUT REPLACING the existing files
-    cp -n ${_dist_dir}/Textures/* ${pkgdir}${_game_dir}/Textures/ || true
+    cp -n ${srcdir}/dist_dir/Textures/* ${pkgdir}${_game_dir}/Textures/ || true
+    # fix permissions
+    chmod 644 ${pkgdir}${_game_dir}/Textures/*
 
     # Create a Maps directory within the game directory and copy over the unpacked Maps (i.e., map files with a .unr
     # extension) from the distribution directory
-    install --mode=755 -d -- ${pkgdir}${_game_dir}/Maps
-    cp ${_dist_dir}/Maps/*.unr ${pkgdir}${_game_dir}/Maps/
+    install --mode=644 -t ${pkgdir}${_game_dir}/Maps ${srcdir}/dist_dir/Maps/*.unr
 
     # Extract all compressed maps (i.e., maps with a .uz extension) into your game's Maps directory as follows.
     # If there are no compressed maps in your game distribution folder, you may ignore this step.
     #for i in /mnt/Maps/*.uz; do ./System64/ucc-bin decompress $i; done
     [ "$CARCH" = "i686" ] && _system_dir=${_game_dir}/System
     [ "$CARCH" = "x86_64" ] && _system_dir=${_game_dir}/System64
-
-    find ${_dist_dir}/Maps/ -name "*.uz" -exec ${pkgdir}${_system_dir}/ucc-bin decompress {} \;
-    #find ${_dist_dir}/Maps/ -name "*.uz" -exec sh -c "mv ${pkgdir}${_system_dir}/\$\{1%\} ${pkgdir}${_game_dir}/Maps/" _ {}\;
+    find ${srcdir}/dist_dir/Maps/ -name "*.uz" -exec ${pkgdir}${_system_dir}/ucc-bin decompress {} \;
 
     install --mode 755 -d -- ${pkgdir}/usr/bin
     ln -s ${_system_dir}/ut-bin ${pkgdir}/usr/bin/ut
     install --mode=755 -d -- "${pkgdir}/usr/share/pixmaps"
     zstdcat "${srcdir}/ut.svg.zstd" > "${pkgdir}/usr/share/pixmaps/ut.svg"
     install --mode=644 -D -- "${srcdir}/ut.desktop" "${pkgdir}/usr/share/applications/ut.desktop"
+
+    # fix ownership
+    chown -R root:root ${pkgdir}${_game_dir}
+
+    # remove symlink
+    rm ${srcdir}/dist_dir
 }
 
