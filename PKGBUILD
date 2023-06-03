@@ -2,8 +2,8 @@
 
 _pkgname=fdns
 pkgname=${_pkgname}-git
-pkgver=0.9.69+gd5aa86c
-pkgrel=2
+pkgver=0.9.69+gbb723a2
+pkgrel=3
 pkgdesc="Firejail DNS-over-HTTPS proxy server - git version"
 arch=(x86_64)
 url="https://github.com/netblue30/fdns"
@@ -48,6 +48,9 @@ prepare() {
     # revert https://github.com/netblue30/fdns/commit/b7b98a1e33d07795a2482ecd23f56157adac71c6
     # this commit drops all the hardenings from fdns.service and only affects Debian 11
     git revert --no-commit b7b98a1e33d07795a2482ecd23f56157adac71c6
+    # partially revert https://github.com/netblue30/fdns/commit/bb723a2a8dfb907f972ac441b2757212af728c8c
+    # --daemonize implies changing service type from 'simple' to 'forking' (which also needs 'PIDFile')
+    sed -i -e "s/ --daemonize//g" etc/fdns.service
     # fix for https://github.com/netblue30/fdns/issues/79
     patch -Np1 -i ../openssl3.patch
 }
