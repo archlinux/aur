@@ -19,12 +19,11 @@ package() {
     tar -xvf assets.tar.gz -C "${pkgdir}/assets/"
     mkdir -p "${pkgdir}/usr/share/9launcher"
     mkdir -p "${pkgdir}/usr/share/applications"
-    cp -r assets "${pkgdir}/usr/share/9launcher"
+    cp -r ${pkgdir}/assets "${pkgdir}/usr/share/9launcher"
     mkdir -p "${pkgdir}/usr/bin"
     install -m644 "${srcdir}/9launcher" "${pkgdir}/usr/bin/9launcher"
     install -m644 "${pkgdir}/assets/9Launcher.desktop" "${pkgdir}/usr/share/applications/"
     chmod +x "${pkgdir}/usr/bin/9launcher"
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
     install -m644 "${pkgdir}/assets/ninelauncher.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/ninelauncher.png"
-    echo "9Launcher installed successfully!"
 }
