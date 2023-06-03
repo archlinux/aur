@@ -1,34 +1,74 @@
-# Maintainer: 
+# Maintainer:
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Shengyu Zhang <la@archlinuxcn.org>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=vte4-git
-pkgver=0.69.90+r35+g8ef3f6b2
+_gitname='vte'
+_pkgname='vte4'
+pkgname="$_pkgname-git"
+pkgver=0.73.0.r23.gdce7b5f0
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget"
-url="https://wiki.gnome.org/Apps/Terminal/VTE"
-arch=(x86_64)
-license=(LGPL)
-depends=(gtk4 pcre2 gnutls fribidi systemd vte-common)
-makedepends=(gobject-introspection vala git gi-docgen gperf meson)
-provides=(vte4 libvte-2.91-gtk4.so=0-64)
-conflicts=(vte4)
-source=('git+https://gitlab.gnome.org/GNOME/vte.git')
-sha256sums=('SKIP')
+# https://wiki.gnome.org/Apps/Terminal/VTE
+url="https://gitlab.gnome.org/GNOME/vte"
+arch=('x86_64')
+license=('LGPL')
+
+depends=(
+  'fribidi'
+  'gnutls'
+  'gtk4'
+  'pcre2'
+  'systemd'
+  'vte-common'
+)
+makedepends=(
+  'gi-docgen'
+  'git'
+  'gobject-introspection'
+  'gperf'
+  'meson'
+  'vala'
+)
+
+provides=(
+  'libvte-2.91-gtk4.so=0-64'
+  'vte4'
+)
+conflicts=(
+  'vte4'
+)
+
+source=(
+  "$_gitname"::"git+$url"
+)
+sha256sums=(
+  'SKIP'
+)
 
 pkgver() {
-  cd vte
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
+  cd "$srcdir/$_gitname"
 
-prepare() {
-  cd vte
+  _version=$(
+    grep -E "^\s+version:\s+'([0-9]+\.[0-9]+\.[0-9]+)',\$" meson.build \
+      | sed -E "s@^\s+version:\s+'([0-9]+\.[0-9]+\.[0-9]+)',\$@\1@"
+  )
+  _commit=$(
+    git log -S "$_version" -1 --pretty=oneline | sed 's@\ .*$@@'
+  )
+  _revision=$(
+    git rev-list --count $_commit..HEAD
+  )
+  _hash=$(
+    git rev-parse --short HEAD
+  )
+
+  echo "$_version.r$_revision.g$_hash"
 }
 
 build() {
-  arch-meson vte build \
+  arch-meson "$_gitname" build \
     -D b_lto=false \
     -D docs=false \
     -D gtk3=false \
