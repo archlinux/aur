@@ -1,0 +1,137 @@
+From 165c7c95ba65d8b83eccae4b0b82ea274b137bb1 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@ubuntu.com>
+Date: Thu, 2 Jan 2014 06:14:30 +0000
+Subject: Tcl 8.6 disallows direct access to TclInterp.result
+
+Forwarded: no
+Last-Update: 2012-12-21
+
+Patch-Name: tcl-interp-result.patch
+---
+ ex/ex_tcl.c   |  3 ++-
+ tcl_api/tcl.c | 12 +++++++++---
+ tk/tk_main.c  |  7 +++++--
+ vigor/vigor.c |  6 +++---
+ 4 files changed, 19 insertions(+), 9 deletions(-)
+
+diff --git a/ex/ex_tcl.c b/ex/ex_tcl.c
+index 06736a7..92ab679 100644
+--- a/ex/ex_tcl.c
++++ b/ex/ex_tcl.c
+@@ -71,7 +71,8 @@ ex_tcl(sp, cmdp)
+ 	    Tcl_Eval(gp->tcl_interp, cmdp->argv[0]->bp) == TCL_OK)
+ 		return (0);
+ 
+-	msgq(sp, M_ERR, "Tcl: %s", ((Tcl_Interp *)gp->tcl_interp)->result);
++	msgq(sp, M_ERR, "Tcl: %s",
++	    Tcl_GetStringResult((Tcl_Interp *)gp->tcl_interp));
+ 	return (1);
+ #else
+ 	msgq(sp, M_ERR, "302|Vi was not loaded with a Tcl interpreter");
+diff --git a/tcl_api/tcl.c b/tcl_api/tcl.c
+index 8f4a430..a58ddb5 100644
+--- a/tcl_api/tcl.c
++++ b/tcl_api/tcl.c
+@@ -64,6 +64,7 @@ tcl_fscreen(clientData, interp, argc, argv)
+ 	char **argv;
+ {
+ 	SCR *sp;
++	char buf[20];
+ 
+ 	if (argc != 2) {
+ 		Tcl_SetResult(interp, "Usage: viFindScreen file", TCL_STATIC);
+@@ -73,7 +74,8 @@ tcl_fscreen(clientData, interp, argc, argv)
+ 	if (getscreenid(interp, &sp, NULL, argv[1]))
+ 		return (TCL_ERROR);
+ 
+-	(void)sprintf(interp->result, "%d", sp->id);
++	(void)snprintf(buf, sizeof(buf), "%d", sp->id);
++	Tcl_SetResult(interp, buf, TCL_VOLATILE);
+ 	return (TCL_OK);
+ }
+ 
+@@ -240,6 +242,7 @@ tcl_lline(clientData, interp, argc, argv)
+ 	recno_t last;
+ 	void (*scr_msg) __P((SCR *, mtype_t, char *, size_t));
+ 	int rval;
++	char buf[40];
+ 
+ 	if (argc != 2) {
+ 		Tcl_SetResult(interp, "Usage: viLastLine screenId", TCL_STATIC);
+@@ -254,7 +257,8 @@ tcl_lline(clientData, interp, argc, argv)
+ 	if (rval)
+ 		return (TCL_ERROR);
+ 
+-	(void)sprintf(interp->result, "%lu", (unsigned long)last);
++	(void)snprintf(buf, sizeof(buf), "%lu", (unsigned long)last);
++	Tcl_SetResult(interp, buf, TCL_VOLATILE);
+ 	return (TCL_OK);
+ }
+ 
+@@ -504,6 +508,7 @@ tcl_iscreen(clientData, interp, argc, argv)
+ 	SCR *sp, *nsp;
+ 	void (*scr_msg) __P((SCR *, mtype_t, char *, size_t));
+ 	int rval;
++	char buf[20];
+ 
+ 	if (argc != 2 && argc != 3) {
+ 		Tcl_SetResult(interp,
+@@ -520,7 +525,8 @@ tcl_iscreen(clientData, interp, argc, argv)
+ 	if (rval)
+ 		return (TCL_ERROR);
+ 
+-	(void)sprintf(interp->result, "%d", nsp->id);
++	(void)snprintf(buf, sizeof(buf), "%d", nsp->id);
++	Tcl_SetResult(interp, buf, TCL_VOLATILE);
+ 	return (TCL_OK);
+ }
+ 
+diff --git a/tk/tk_main.c b/tk/tk_main.c
+index c2f34e7..6149e72 100644
+--- a/tk/tk_main.c
++++ b/tk/tk_main.c
+@@ -306,8 +306,11 @@ static void
+ tcl_err(tkp)
+ 	TK_PRIVATE *tkp;
+ {
+-	(void)fprintf(stderr, "%s\n", tkp->interp->result != NULL ?
+-	    tkp->interp->result : "Tcl/Tk: initialization error");
++	const char *result;
++
++	result = Tcl_GetStringResult(tkp->interp);
++	(void)fprintf(stderr, "%s\n", result != NULL ?
++	    result : "Tcl/Tk: initialization error");
+ 	(void)tk_usage();
+ 	exit (1);
+ }
+diff --git a/vigor/vigor.c b/vigor/vigor.c
+index 987d019..b233a9e 100644
+--- a/vigor/vigor.c
++++ b/vigor/vigor.c
+@@ -78,7 +78,7 @@ vigor_init(gp)
+ 	 * to want tk's main window cluttering up the place.  I should
+ 	 * use a wm_withdraw instead. */
+ 	if (Tk_Init(vigor_interp) == TCL_ERROR) {
+-		fprintf(stderr, "%s\n", vigor_interp->result);		
++		fprintf(stderr, "%s\n", Tcl_GetStringResult(vigor_interp));
+ 		return (1);
+ 	}
+ 
+@@ -87,7 +87,7 @@ vigor_init(gp)
+ 		return (1);
+ #endif
+ 	if (Tcl_Eval(vigor_interp, vigor_tcl) == TCL_ERROR) {
+-		fprintf(stderr, "%s\n", vigor_interp->result);
++		fprintf(stderr, "%s\n", Tcl_GetStringResult(vigor_interp));
+ 		return (1);
+ 	}
+ 
+@@ -127,7 +127,7 @@ vigor_init(gp)
+ 	init_vigor_phrases();
+ 
+ 	if (Tcl_Eval(vigor_interp, "vigor_init") == TCL_ERROR) {
+-		fprintf(stderr, "%s\n", vigor_interp->result);
++		fprintf(stderr, "%s\n", Tcl_GetStringResult(vigor_interp));
+ 	        return (1);
+ 	}
+ 

@@ -1,0 +1,23 @@
+pkgbase = vigor
+	pkgdesc = nvi with the evil paperclip
+	pkgver = 0.016
+	pkgrel = 1
+	url = https://vigor.sourceforge.net
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	depends = glibc
+	depends = ncurses
+	depends = tcl
+	depends = tk
+	source = vigor-0.016.tar.gz::https://sourceforge.net/projects/vigor/files/vigor/0.016/vigor-0.016.tar.gz/download
+	source = avoid-sys-stropts-h.patch
+	source = tcl-interp-result.patch
+	source = client-side-fonts.patch
+	sha256sums = ff2274fdccd549e52415fff8fa3136353d8f501345b1f7f89e8d1a2c8f540b9c
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vigor

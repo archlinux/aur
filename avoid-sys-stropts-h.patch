@@ -1,0 +1,39 @@
+From 45f41e76eecf82ac69ed79d398e8750339f816e7 Mon Sep 17 00:00:00 2001
+From: Jan Christoph Nordholz <hesso@pool.math.tu-berlin.de>
+Date: Wed, 11 Sep 2019 15:47:47 +0100
+Subject: Avoid including <sys/stropts.h>
+
+glibc has grantpt(), so only check for HAVE_SYS5_PTY on non-glibc
+installations.
+
+Forwarded: no
+Last-Update: 2019-09-11
+
+Patch-Name: avoid-sys-stropts-h.patch
+---
+ ex/ex_script.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/ex/ex_script.c b/ex/ex_script.c
+index 9ca6d60..5e437fd 100644
+--- a/ex/ex_script.c
++++ b/ex/ex_script.c
+@@ -23,7 +23,8 @@ static const char sccsid[] = "@(#)ex_script.c	10.30 (Berkeley) 9/24/96";
+ #include <sys/select.h>
+ #endif
+ #include <sys/stat.h>
+-#ifdef HAVE_SYS5_PTY
++/* glibc2.1 defines grantpt but there is no stropts.h */
++#if defined(HAVE_SYS5_PTY) && !defined(__GLIBC__)
+ #include <sys/stropts.h>
+ #endif
+ #include <sys/time.h>
+@@ -625,7 +626,7 @@ sscr_check(sp)
+ 	F_CLR(gp, G_SCRWIN);
+ }
+ 
+-#ifdef HAVE_SYS5_PTY
++#if defined(HAVE_SYS5_PTY) && !defined(__GLIBC__)
+ static int ptys_open __P((int, char *));
+ static int ptym_open __P((char *));
+ 
