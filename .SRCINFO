@@ -1,6 +1,6 @@
 pkgbase = normcap
 	pkgdesc = OCR powered screen-capture tool to capture information instead of images
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://dynobo.github.io/normcap
 	arch = any
@@ -17,9 +17,9 @@ pkgbase = normcap
 	depends = python-pytesseract
 	optdepends = qt6-wayland: Required in Wayland sessions
 	optdepends = wl-clipboard: Required for clipboard access in Wayland sessions
-	source = normcap-0.4.2.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v0.4.2.tar.gz
+	source = normcap-0.4.3.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v0.4.3.tar.gz
 	source = normcap.desktop
-	sha256sums = d940a0a241106890b44884880b6c77aa5c07aee4a10edd8620a4f5ea471aa07a
+	sha256sums = 43573cf81443a8ebfc81ab2d04a4e74ce12525ada473f88907f4a61d7c0293bd
 	sha256sums = 29992fdb19773faa7582e44fe4394d4772984d5b7b9b7b347617c387f0a260f9
 
 pkgname = normcap

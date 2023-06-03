@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=normcap
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
@@ -9,38 +9,17 @@ license=('GPL')
 depends=('leptonica' 'pyside6' 'python-certifi' 'python-jeepney' 'python-pillow'
          'python-pytesseract')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
-#checkdepends=('python-levenshtein' 'python-pytest-qt' 'python-toml'
-#              'tesseract-data-eng' 'tesseract-data-jpn' 'tesseract-data-chi_sim'
-#              'wl-clipboard')
 optdepends=('qt6-wayland: Required in Wayland sessions'
             'wl-clipboard: Required for clipboard access in Wayland sessions')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
-#        "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('d940a0a241106890b44884880b6c77aa5c07aee4a10edd8620a4f5ea471aa07a'
+sha256sums=('43573cf81443a8ebfc81ab2d04a4e74ce12525ada473f88907f4a61d7c0293bd'
             '29992fdb19773faa7582e44fe4394d4772984d5b7b9b7b347617c387f0a260f9')
 
 build() {
   cd "$pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
-
-#check() {
-#  cd "$pkgname-$pkgver"
-
-## WIP
-## Tests run normcap and pop up test windows
-## Cannot be run successfully in chroot currently
-
-  # use local XDG_RUNTIME_DIR
-#  mkdir -p "$srcdir/run/user/1000"
-#  export XDG_RUNTIME_DIR="$srcdir/run/user/1000"
-
-#  # simulate GNOME desktop
-#  export XDG_SESSION_TYPE='gnome'
-
-#  pytest
-#}
 
 package() {
   cd "$pkgname-$pkgver"
