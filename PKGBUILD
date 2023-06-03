@@ -13,8 +13,8 @@
 
 # Move to the build directory
 pkgname=unittest-c
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=3
 epoch=
 pkgdesc="unittest c is a fast and simple macro-based unit testing framework for C.
 It's inspired by the Python unittest module and designed to reduce boilerplate code.
@@ -23,7 +23,7 @@ arch=('x86_64')
 url="https://github.com/alecksandr26/unittest-c/archive/refs/tags/v1.1.0.tar.gz"
 license=('MIT License')
 depends=()
-makedepends=(gcc git make binutils coreutils c-exceptions)
+makedepends=(gcc git make binutils coreutils trycatch-c)
 optdepends=(valgrind)
 source=("$pkgname-$pkgver.tar.gz::$url")
 md5sums=('SKIP')
@@ -46,7 +46,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     
     # Install into the package the program
-    install $srcdir/$pkgname-$pkgver/include/* $pkgdir/usr/include
-    install $srcdir/$pkgname-$pkgver/lib/* $pkgdir/usr/lib
-
+    cp -r $srcdir/$pkgname-$pkgver/include/* $pkgdir/usr/include
+    cp -r $srcdir/$pkgname-$pkgver/lib/* $pkgdir/usr/lib
 }
