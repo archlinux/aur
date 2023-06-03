@@ -1,6 +1,6 @@
 pkgbase = winegui
 	pkgdesc = A user-friendly WINE graphical interface (build from source)
-	pkgver = 1.9.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://gitlab.melroy.org/melroy/winegui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = winegui
 	depends = unzip
 	depends = wget
 	depends = wine
-	source = https://gitlab.melroy.org/melroy/winegui/-/archive/v1.9.2/winegui-v1.9.2.tar.gz
-	sha256sums = 9aacf396617d76561b869a80217d6eb2e41d4a8c9e59416338921e2ba503c840
+	source = https://gitlab.melroy.org/melroy/winegui/-/archive/v2.1.0/winegui-v2.1.0.tar.gz
+	sha256sums = 33ca58d0c87540c664c5c7d32451eae1e570a006a99111749cf15d6deef5b6f0
 
 pkgname = winegui
