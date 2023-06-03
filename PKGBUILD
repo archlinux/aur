@@ -1,16 +1,27 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
-pkgname=ob-xd
+pkgbase=ob-xd
+pkgname=(
+  'ob-xd'
+  'ob-xd-common'
+  'ob-xd-standalone'
+  'ob-xd-lv2'
+  'ob-xd-vst3'
+)
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual analog synthesizer based on the Oberheim OB-X, OB-Xa and OB-8 synths'
 arch=('x86_64')
 url='https://github.com/reales/OB-Xd'
 license=('GPL3')
-groups=('pro-audio' 'vst3-plugins' 'lv2-plugins')
-depends=(
+groups=('pro-audio')
+_common_depends=(
+  'glibc'
+  'gcc-libs'
+  'libogg'
+  'libpng'
+  'zlib'
   'alsa-lib'
-  'hicolor-icon-theme'
   'libjpeg-turbo'
   'libvorbis'
   'flac'
@@ -19,6 +30,7 @@ depends=(
   'curl'
 )
 makedepends=(
+  "${_common_depends[@]}"
   'git'
   'juce'
   'zlib'
@@ -32,14 +44,12 @@ makedepends=(
   'libxcursor'
   'gendesk'
 )
-optdepends=(
-  'jack: backend for standalone'
-  'vst3-host: for VST3 plugins'
-  'lv2-host: for LV2 plugins'
-)
-_commit='2afc035ac3e70171a71840bbc2f859715b6ce765'
+# NOTE: Upstream nuked the repository, not sure why.
+# Thankfully, I had a copy lying around, and have
+# reuploaded to github.com/grawlinson/OB-Xd
+_commit='4f4e47bada73be219b414019ea5353503a2479d2'
 source=(
-  "$pkgname::git+$url#commit=$_commit"
+  "$pkgname::git+https://github.com/grawlinson/OB-Xd#commit=$_commit"
   'use-global-path.patch'
   'skip-legacy-vst2-plugin.patch'
   'skip-plugin-copy.patch'
@@ -47,18 +57,12 @@ source=(
 )
 b2sums=('SKIP'
         '9e9954ff7aeedc176e4f12ed9fcc97bac7b2a1c45450adf27af7b7ab1f3869121b98eb4d5c93926416d09073b6bfb937d89115f31730abfdc4399b3c2526bac2'
-        'b71a23ba0d7f48df9039fa7e8951e96818dfd0c57a49491d9984860cf0dccd120b3c54c3833a01d94cb723432493f282e9073a6ce6ab190d1abc616401600202'
+        '44fe61c94be2e8727c548e729f2acaf15bd5dd401c24085d5bbec38914c182f92ab4fd09a5feddc85b3fbb41459360796643cc7a5703afb2944b8743d89aac3b'
         'c52749354ab0a8cd1e2a8d071f3d27ca5f8b9b6d3dd9b46855de9b8d883cea25e8aa649b661e50b276149a9f72d6208d5333680d86713c71040ca9f9e2082bb9'
-        '9bfaf21ab88a016bff1adfa916252335757a387ba95fed5ab3584c4a03bd10795fb23108e8e0d645f84d94e789c1498717d472106b176b4336dbed34e3e149f7')
-
-pkgver() {
-  cd "$pkgname"
-
-  git describe --tags | sed 's/^v//'
-}
+        '4037b2a97d841e59f380028903127e81c439d93c21f1397ee1d05b1c3047f35a78115aa58de8fdd325e6ed3bdbb5cc4cf5d36d582cf7557fb96fed5edda4a5f3')
 
 prepare() {
-  cd "$pkgname"
+  cd "$pkgbase"
 
   # use global path
   patch -p1 -i "$srcdir/use-global-path.patch"
@@ -80,28 +84,45 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"
+  cd "$pkgbase"
 
-  Projucer --resave OB-Xd.jucer
+  Projucer --resave OB-Xd\ Linux.jucer
 
   cd Builds/LinuxMakefile
 
   # skip copying plugins to user home directory
-  patch -p1 -i "$srcdir/skip-plugin-copy.patch"
+  #patch -p1 -i "$srcdir/skip-plugin-copy.patch"
 
   make
 }
 
-package() {
-  cd "$pkgname"
+package_ob-xd() {
+  depends=($pkgbase-{common,standalone,vst3,lv2})
+}
 
-  # create directories
-  install -vd \
-    "$pkgdir/usr/share/"{ob-xd,doc/ob-xd} \
-    "$pkgdir/usr/lib/"{vst3,lv2}
+package_ob-xd-common() {
+  pkgdesc="Common files for OB-Xd"
+
+  cd "$pkgbase"
 
   # application data
-  cp -vr Documents/discoDSP/OB-Xd/{Banks,MIDI,Themes} "$pkgdir/usr/share/$pkgname"
+  install -vd "$pkgdir/usr/share/$pkgbase"
+  cp -vr Documents/discoDSP/OB-Xd/{Banks,MIDI,Themes} "$pkgdir/usr/share/$pkgbase"
+
+  # documentation
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgbase" Documents/discoDSP/OB-Xd/*.pdf README.md
+}
+
+package_ob-xd-standalone() {
+  pkgdesc+=' - standalone'
+  depends=(
+    "ob-xd-common=$pkgver"
+    "${_common_depends[@]}"
+    'hicolor-icon-theme'
+  )
+  optdepends=('jack: audio backend')
+
+  cd "$pkgbase"
 
   # application icon
   install -vDm644 Source/Images/appicon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
@@ -109,17 +130,43 @@ package() {
   # desktop file
   install -vDm644 -t "$pkgdir/usr/share/applications" com.discoDSP.Obxd.desktop
 
-  # documentation
-  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" Documents/discoDSP/OB-Xd/*.pdf README.md
-
-  cd Builds/LinuxMakefile/build
-
-  # vst3
-  cp -vr OB-Xd.vst3 "$pkgdir/usr/lib/vst3"
-
-  # lv2
-  cp -vr OB-Xd.lv2 "$pkgdir/usr/lib/lv2"
-
   # standalone
+  cd Builds/LinuxMakefile/build
   install -vDm755 -t "$pkgdir/usr/bin" OB-Xd
+}
+
+package_ob-xd-vst3() {
+  pkgdesc+=' - VST3 plugin'
+  groups+=('vst3-plugins')
+  depends=(
+    "ob-xd-common=$pkgver"
+    "${_common_depends[@]}"
+    'vst3-host'
+  )
+  optdepends=('jack: audio backend')
+
+  # create directory
+  install -vd "$pkgdir/usr/lib/vst3"
+
+  # vst3 plugin
+  cd "$pkgbase/Builds/LinuxMakefile/build"
+  cp -vr OB-Xd.vst3 "$pkgdir/usr/lib/vst3"
+}
+
+package_ob-xd-lv2() {
+  pkgdesc+=' - LV2 plugin'
+  groups+=('lv2-plugins')
+  depends=(
+    "ob-xd-common=$pkgver"
+    "${_common_depends[@]}"
+    'lv2-host'
+  )
+  optdepends=('jack: audio backend')
+
+  # create directory
+  install -vd "$pkgdir/usr/lib/lv2"
+
+  # lv2 plugin
+  cd "$pkgbase/Builds/LinuxMakefile/build"
+  cp -vr OB-Xd.lv2 "$pkgdir/usr/lib/lv2"
 }
