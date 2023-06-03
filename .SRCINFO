@@ -1,7 +1,7 @@
 pkgbase = olympus
 	pkgdesc = Everest installer / mod manager for Celeste
-	pkgver = 23.04.20.01
-	pkgrel = 2
+	pkgver = 23.05.24.03
+	pkgrel = 1
 	url = https://github.com/EverestAPI/Olympus
 	arch = x86_64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = olympus
 	depends = lua51-lsqlite3
 	depends = mono
 	conflicts = olympus-bin
-	source = git+https://github.com/EverestAPI/Olympus.git#commit=f530d262767f3e627340019989dd65359faf3f8f
+	source = git+https://github.com/EverestAPI/Olympus.git#commit=37214f524c232398cd6de0567203878868e052f7
 	source = git+https://github.com/EverestAPI/OlympUI.git
 	source = git+https://github.com/vrld/moonshine.git
 	source = git+https://github.com/LPGhatguy/luajit-request.git
