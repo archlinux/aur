@@ -5,12 +5,12 @@
 # Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
-_date=2023-03-28
-_rustc=1.68.2
+_date=2023-04-20
+_rustc=1.69.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.69.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -38,15 +38,15 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_rustc}-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('e533c903820b0c2ba10491b70105149d2243348f3b5e26bd7b6bdd022c7dbe75'
+sha256sums=('bb8e9c564566b2d3228d95de9063a9254182446a161353f1d843bfbaf5c34639'
             'SKIP'
-            'c8a3eaf26b83f1926d86b4db99ca16cbbff8e746e4c63f25f4d75a02a34a3b16'
+            '4c95739e6f0f1d4defd937f6d60360b566e051dfb2fa71879d0f9751392f3709'
             'SKIP'
-            'd33d493381dd17a4b491d0e978cdb6700badb5905e831dd5f7fe75ffbf8e0584'
+            '70e97ab5b9600328b977268fc92ca4aa53064e4e97468df35215d4396e509279'
             'SKIP'
-            'b25d6f88b93cb75868ff4bc9ca0103facd4622825cf53df67546cea6cb60da0f'
+            '336eeabf231a7665c26c127a37b8aefffe28cb087c5c8d4ba0460419f5f8eff2'
             'SKIP'
-            '1e5c26cf3b6be791ab025aaaa4d2908c9be0c47ef18fb68e05e180fa4e3add01')
+            '2661456d13366cd181de9e7ddfa797c7ef6be9fe9f3d0d766089870e45b8010c')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
@@ -69,17 +69,13 @@ build() {
 
   export CFLAGS="-O2 -pipe -fno-plt -Wall -D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS="-O2 -pipe -fno-plt -Wall -D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
-  python ./x.py build
+  # TODO: find a way to disable packaging
+  DESTDIR="${srcdir}/rust_install" python ./x.py install
 }
 
 package() {
   cd "rustc-${pkgver}-src"
-
-  # rust will build install tools there
-  export CFLAGS="-O2 -pipe -fno-plt -Wall -D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
-  export CXXFLAGS="-O2 -pipe -fno-plt -Wall -D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
-  # TODO: find a way to disable packaging
-  DESTDIR="${pkgdir}" python ./x.py install --keep-stage 0 --keep-stage 1
+  mv "${srcdir}/rust_install/"* "${pkgdir}"
 
   # license
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"{rust,cargo}
