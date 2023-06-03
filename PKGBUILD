@@ -3,7 +3,7 @@
 
 pkgname='fastgron-git'
 _pkgname='fastgron'
-pkgver=0.4.14.r2.g2fb854b
+pkgver=0.4.14.r17.gdcc1e3b
 pkgrel=1
 pkgdesc='High-performance JSON to GRON (greppable, flattened JSON) converter (development version)'
 arch=('x86_64' 'aarch64')
@@ -25,34 +25,28 @@ pkgver() {
 }
 
 prepare() {
-  rm -rf "$_pkgname/build" || :
+  export CFLAGS="${CFLAGS} -DNDEBUG"
+  export CXXFLAGS="${CXXFLAGS} -DNDEBUG"
 
-  mkdir -p "$_pkgname/build" \
-     && cd "$_pkgname/build" \
-     && cmake ..
+  cmake -B build -S "${_pkgname}" \
+        -DCMAKE_BUILD_TYPE='None' \
+	-DCMAKE_INSTALL_PREFIX='/usr' \
+	-Wno-dev
 }
 
 build() {
-  cd "$_pkgname/build"
-
-  make
+  cmake --build build
 }
 
 check() {
-  cd "$_pkgname/build"
-
-  make test
+  make -C build test
 }
 
 package() {
-  cd "$_pkgname"
+  DESTDIR="${pkgdir}" cmake --install build
 
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  cd "build"
-
-  env DESTDIR="$pkgdir" cmake --install . --prefix '/usr'
+  install -Dm0644 "$_pkgname/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 "$_pkgname/LICENSE"   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # eof

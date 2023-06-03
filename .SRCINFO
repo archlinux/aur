@@ -1,6 +1,6 @@
 pkgbase = fastgron-git
 	pkgdesc = High-performance JSON to GRON (greppable, flattened JSON) converter (development version)
-	pkgver = 0.4.14.r2.g2fb854b
+	pkgver = 0.4.14.r17.gdcc1e3b
 	pkgrel = 1
 	url = https://github.com/adamritter/fastgron
 	arch = x86_64
