@@ -10,6 +10,8 @@ pkgbase = purple-instagram
 	depends = glib2
 	depends = json-glib
 	source = git+https://codeberg.org/grgergo/purple-instagram
+	source = install.sh
 	sha256sums = SKIP
+	sha256sums = 557a23298b550a5c83cba572642f6095cef7827584dc0c7e1f459a42ac3cd0cb
 
 pkgname = purple-instagram
