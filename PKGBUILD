@@ -21,5 +21,5 @@ package() {
 
     # Symlink the binary
     install -d "$pkgdir/usr/bin/"
-    ln -sf "/opt/Cider/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -sf "/opt/${_pkgname^}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
