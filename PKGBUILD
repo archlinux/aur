@@ -5,8 +5,8 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname="catt"
-pkgver=0.12.10
-pkgrel=2
+pkgver=0.12.11
+pkgrel=1
 pkgdesc='Cast All The Things - Send videos from many, many online sources to your Chromecast.'
 arch=('any')
 url="https://github.com/skorokithakis/catt"
@@ -20,7 +20,7 @@ makedepends=(
 provides=("$pkgname")
 conflicts=(${provides[@]})
 source=("$pkgname-$pkgver.tar.gz"::"$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('11b77cf5a3ccb96a5f3234334a8f888cf23d2435d4acefbcaca0376290468be0')
+sha256sums=('82d69d963696dfe3cfece6bdb03d96e35c80351ca8231d51b9da15bd1d3c8c4d')
 
 build() {
   cd "$pkgname-$pkgver"
