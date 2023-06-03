@@ -4,7 +4,7 @@
 pkgname='fastgron-git'
 _pkgname='fastgron'
 pkgver=0.4.14.r17.gdcc1e3b
-pkgrel=1
+pkgrel=2
 pkgdesc='High-performance JSON to GRON (greppable, flattened JSON) converter (development version)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/adamritter/fastgron'
@@ -30,8 +30,8 @@ prepare() {
 
   cmake -B build -S "${_pkgname}" \
         -DCMAKE_BUILD_TYPE='None' \
-	-DCMAKE_INSTALL_PREFIX='/usr' \
-	-Wno-dev
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
 }
 
 build() {
