@@ -1,24 +1,29 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 
 _name=Amulet-NBT
-pkgname=python-${_name,,}
-pkgver=2.0.5
-pkgrel=2
+_lowername=${_name,,}
+_pyname=${_lowername/-/_}
+pkgname=python-$_lowername
+pkgver=2.0.6
+pkgrel=1
 pkgdesc='A Python and Cython library for reading and writing binary NBT and stringified NBT'
 arch=('x86_64')
 url="https://github.com/Amulet-Team/$_name"
 license=('custom')
 depends=('python' 'python-mutf8' 'python-numpy')
-makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-versioneer-518' 'python-wheel')
+makedepends=('cython' 'python-build' 'python-installer' 'python-setuptools' 'python-versioneer' 'python-wheel')
 # tests directory isn't in pypi sdist
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('aefde9746e4eaaa79f62d6127ef282c50ba9ba64b57d7d69cf45a5e13637d8e1')
+sha256sums=('12f9378a4073680c6ae6277b50db16deaa1b2740cdae5a2dad914a08352967e3')
 
 prepare() {
   cd "$_name-$pkgver"
 
   # ignore cython version requirement
   sed -Ei 's/(cython) >= 3\.0\.0a9, != 3\.0\.0b1/\1/' pyproject.toml
+
+  # use current versioneer
+  sed -Ei 's/(versioneer)-518/\1/' pyproject.toml
 }
 
 build() {
@@ -30,16 +35,21 @@ build() {
 check() {
   cd "$_name-$pkgver"
 
-  # based on https://github.com/archlinux/svntogit-packages/commit/1007750f9a884f04ae7faf085f3ecb9dbe70b5b9
-  # install to temporary location
-  python -m installer --destdir=test_dir dist/*.whl
-  # test_dir needs to be before script directory
-  python -c 'import site, sys; sys.path.insert(0, "test_dir/" + site.getsitepackages()[0]); from unittest import __main__' discover -s tests
+  # based on https://wiki.archlinux.org/title/Python_package_guidelines#Check
+  # build directory needs to be before script directory
+  CARCH="$CARCH" python -c 'import os, sys; sys.path.insert(0, f"{os.getcwd()}/build/lib.linux-{os.environ['\''CARCH'\'']}-cpython-" + "".join(map(str, sys.version_info[:2]))); from unittest import __main__' discover -s tests
 }
 
 package() {
   cd "$_name-$pkgver"
 
   python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # https://wiki.archlinux.org/title/Python_package_guidelines#Using_site-packages
+  local _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  local _license_path="$_site_packages/$_pyname-$pkgver.dist-info/LICENSE"
+  [ -f "$pkgdir/$_license_path" ] || { echo "License file not found"; exit 1; }
+  ln -s "$_license_path" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
