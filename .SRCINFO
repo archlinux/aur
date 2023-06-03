@@ -1,6 +1,6 @@
 pkgbase = mozillavpn
 	pkgdesc = A fast, secure and easy to use VPN. Built by the makers of Firefox.
-	pkgver = 2.14.0
+	pkgver = 2.15.0
 	pkgrel = 1
 	url = https://mozilla.org/products/vpn
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = mozillavpn
 	depends = WIREGUARD-MODULE
 	depends = openresolv
 	optdepends = qt6-wayland: for Wayland support
-	source = mozillavpn-v2.14.0::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v2.14.0
+	source = mozillavpn-v2.15.0::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v2.15.0
 	sha256sums = SKIP
 
 pkgname = mozillavpn
