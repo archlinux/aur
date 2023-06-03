@@ -1,5 +1,4 @@
 pkg/
 src/
-kwin-polonium/
 *.tar.gz
 *.pkg*
