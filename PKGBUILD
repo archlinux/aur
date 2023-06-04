@@ -3,7 +3,7 @@
 
 pkgname=calckey
 pkgver=13.1.4
-pkgrel=4
+pkgrel=5
 pkgdesc='A fun, new way to experience social media'
 url='https://calckey.org'
 arch=('x86_64')
@@ -82,7 +82,6 @@ build() {
         -delete
     rm -r "${srcdir}/${pkgname}/cypress"
     rm -r "${srcdir}/${pkgname}/.cache"
-    rm -r "${srcdir}/${pkgname}/calckey-assets"
     rm -rf "${srcdir}/${pkgname}/.npm"
     rm -r "${srcdir}/${pkgname}/scripts"
 }

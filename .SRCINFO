@@ -1,7 +1,7 @@
 pkgbase = calckey
 	pkgdesc = A fun, new way to experience social media
 	pkgver = 13.1.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://calckey.org
 	install = calckey.install
 	arch = x86_64
