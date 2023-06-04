@@ -11,6 +11,7 @@ pkgbase = tsscreenlock
 	depends = qt5-x11extras
 	depends = qt5-svg
 	depends = the-libs
+	depends = libtdesktopenvironment
 	conflicts = tscheckpass
 	replaces = tscheckpass
 	source = tsscreenlock-2.3.1::git+https://github.com/vicr123/tsscreenlock#branch=master
