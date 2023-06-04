@@ -1,4 +1,4 @@
-_pkgbase=relcs-git
+_pkgbase=re3
 pkgname=relcs-git
 pkgver=1.0_r5619.33abd1b4
 pkgrel=1
@@ -26,7 +26,7 @@ md5sums=(
 	SKIP
 	SKIP)
 pkgver(){
-	cd re3
+	cd $_pkgbase
 	echo 1.0_r`git rev-list --count HEAD`.`git rev-parse --short HEAD`
 }
 prepare() {
