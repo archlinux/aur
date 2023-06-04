@@ -1,0 +1,13 @@
+pkgbase = upscayl-bin-rpm
+	pkgdesc = Free and Open Source AI Image Upscaler (binary release)
+	pkgver = 2.5.5
+	pkgrel = 1
+	url = https://github.com/upscayl/upscayl
+	arch = x86_64
+	license = AGPL3
+	provides = upscayl
+	conflicts = upscayl
+	source = https://github.com/upscayl/upscayl/releases/download/v2.5.5/upscayl-2.5.5-linux.rpm
+	sha256sums = c5f5bf396c1d4631b894d9e4d076ff3bbeef61ab4fbfcfd770eea831d81c1975
+
+pkgname = upscayl-bin-rpm
