@@ -1,11 +1,12 @@
 pkgbase = batmanager
 	pkgdesc = Tool for configuring Lenovo battery settings
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LevitatingBusinessMan/batmanager
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	depends = acpi_call
 	source = batmanager-1.0.1.tar.gz::https://static.crates.io/crates/batmanager/batmanager-1.0.1.crate
 	sha256sums = 8f0f534421432f168a34e6598759741a45af131fe7eefd809c308b9883dc09c0
 

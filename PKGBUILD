@@ -3,9 +3,10 @@
 pkgname=batmanager
 pkgver=1.0.1
 arch=("x86_64")
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for configuring Lenovo battery settings"
 license=("MIT")
+depends=("acpi_call")
 makedepends=("cargo")
 url="https://github.com/LevitatingBusinessMan/$pkgname"
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
