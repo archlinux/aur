@@ -16,7 +16,7 @@ optdepends=('cups: Printer support'
             'libgnome-keyring: gnome keyring support')
 provides=("${pkgname}" 'brave-nightly-browser')
 conflicts=()
-source=("MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt"
+source=("MPL2::https://raw.githubusercontent.com/brave/brave-browser/master/LICENSE"
         "$pkgname.sh")
 options=(!strip)
 source_x86_64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-nightly_${pkgver}_amd64.deb")
