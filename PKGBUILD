@@ -4,7 +4,7 @@
 # Contributor: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=slack-electron
-pkgver=4.32.122
+pkgver=4.32.126
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux, using the system Electron package"
 arch=(x86_64)
@@ -23,25 +23,25 @@ source=(
   'slack.sh'
 )
 sha256sums=(
-  '5622471bbb3bc6a9dab4d3acb3999f6bb1aaaa51db06b2c61c1cd3aaaa3b5bfc'
+  '09923b3e787f76ac595b21616aedac547c0ec7c51899fa4462b9001b126903a9'
   '4db11d083626a561129ca40e9cce7cc613c42223f138bb0136c62064c57471fd'
 )
 
 prepare() {
-	bsdtar -xf data.tar.xz
+  bsdtar -xf data.tar.xz
 
-	# Enable slack silent mode and fix icon
-	sed -ri \
-	-e 's|^(Exec=.+/slack)(.+)|\1 -s\2|' \
-	-e 's/^Icon=.+slack\.png/Icon=slack/' \
-	"usr/share/applications/slack.desktop"
+  # Enable slack silent mode and fix icon
+  sed -ri \
+  -e 's|^(Exec=.+/slack)(.+)|\1 -s\2|' \
+  -e 's/^Icon=.+slack\.png/Icon=slack/' \
+  "usr/share/applications/slack.desktop"
 }
 
 package() {
-	install -Dv "slack.sh" "$pkgdir/usr/bin/slack"
-	install -dv "$pkgdir/usr/lib/slack/"
-	cp -av --no-preserve=ownership usr/lib/slack/resources/* "$pkgdir/usr/lib/slack/"
-	install -Dvm644 "usr/share/applications/slack.desktop" -t "$pkgdir/usr/share/applications"
-	install -Dvm644 "usr/share/pixmaps/slack.png" -t "$pkgdir/usr/share/pixmaps"
-	install -Dvm644 "usr/lib/slack/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dv "slack.sh" "$pkgdir/usr/bin/slack"
+  install -dv "$pkgdir/usr/lib/slack/"
+  cp -av --no-preserve=ownership usr/lib/slack/resources/* "$pkgdir/usr/lib/slack/"
+  install -Dvm644 "usr/share/applications/slack.desktop" -t "$pkgdir/usr/share/applications"
+  install -Dvm644 "usr/share/pixmaps/slack.png" -t "$pkgdir/usr/share/pixmaps"
+  install -Dvm644 "usr/lib/slack/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
