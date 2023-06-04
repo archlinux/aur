@@ -1,0 +1,15 @@
+pkgbase = pyright-inlay-hints-git
+	pkgdesc = Static type checker for Python with inlay hint support
+	pkgver = 1.1.310.r40.gbe4a3b58d
+	pkgrel = 1
+	url = https://github.com/jbradaric/pyright-inlay-hints
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = pyright
+	conflicts = pyright
+	source = pyright::git+https://github.com/jbradaric/pyright-inlay-hints.git
+	sha256sums = SKIP
+
+pkgname = pyright-inlay-hints-git
