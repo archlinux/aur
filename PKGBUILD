@@ -10,7 +10,7 @@ _albugst_ver=1.0.2
 _alforuma_ver=1.0.2
 _alforumk_ver=1.0.2
 _alman_ver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of Web Extensions that adds ArchLinux (bug tracker, forum, packages, wiki, AUR) as a search engine to the Firefox browser."
 arch=('any')
 url="https://github.com/noraj/firefox-extension-arch-search"
@@ -43,7 +43,7 @@ b2sums=('a02d0934decf27e98b2a7d8dd10724e5a9020bdc0a1e5cde182b49d9731153dcbf085d6
         '2d0aeab08ebb2791f7aec7b61de7cba44c82e5a49652b72bc58f27e5af7aebf3ca553696342574b51b6d9ddf6d910687786d6c4f4766a4c07f8ab9c12118b75a'
         '59d870e45b57b388daeb8f6e85d15d44339d3b68634d5c2d65acb60d770cb33549864327801832acabcf89fef0a7df2293a50180c3ee2e6a2c910236e8e664df'
         '671faf32a319404b68eb372f749c8105fd5850831f37d34fc80f61d699856a0e2ac7d8d7772639a36dffff1c89b215c896907cb32aa1a5188934a2930806dcaf'
-        '0d3c9592a3a0e845a5a421876209b1ee5e70024590788f7952bd54df159138c704d16ea994cac4455f2280da3008e03c7fbc0adaee4cdccd75e262b36141b873')
+        'a4c401071f50f885cea359404502a4da0459efd97fef9310d9484e9801b8b6eff3085dd0cfc6917b575dd3def37695c8cbeb37221e51855b8e97376c59b3d39a')
 
 package() {
 
