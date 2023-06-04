@@ -1,0 +1,13 @@
+pkgbase = gitlab-sans-otf-git
+	pkgdesc = Gitlab's sans-serif typeface based on Inter.
+	pkgver = r50.a912c38
+	pkgrel = 1
+	url = https://gitlab-org.gitlab.io/frontend/fonts
+	arch = any
+	license = custom:OFL
+	makedepends = python-pdm
+	makedepends = jq
+	source = gitlab-fonts::git+https://gitlab.com/gitlab-org/frontend/fonts.git
+	sha256sums = SKIP
+
+pkgname = gitlab-sans-otf-git

@@ -1,0 +1,5 @@
+pkg
+src
+gitlab-fonts/
+*.tar.zst
+*.tar.xz
