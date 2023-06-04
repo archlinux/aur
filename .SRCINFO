@@ -6,6 +6,7 @@ pkgbase = tsscreenlock
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = qt5-tools
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-x11extras
