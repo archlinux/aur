@@ -32,7 +32,7 @@ build() {
 package() {
   cd $pkgname
   # Install custom license
-  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE.TXT"
+  install -Dm644 LICENSE.TXT -t "$pkgdir/usr/share/licenses/$pkgname"
   # Install binary
-  install -Dm755 build/$pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 build/$pkgname -t "$pkgdir/usr/bin"
 }
