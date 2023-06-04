@@ -1,16 +1,16 @@
 #Maintainer: Rein Fernhout (LevitatingBusinessMan) <me@levitati.ng>
 
 pkgname=batmanager
-pkgver=1.0.1
+pkgver=1.0.2
 arch=("x86_64")
-pkgrel=2
+pkgrel=1
 pkgdesc="Tool for configuring Lenovo battery settings"
 license=("MIT")
 depends=("acpi_call")
 makedepends=("cargo")
 url="https://github.com/LevitatingBusinessMan/$pkgname"
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=("8f0f534421432f168a34e6598759741a45af131fe7eefd809c308b9883dc09c0")
+sha256sums=('6dd89df69b07ab643d685894ee42181943f1f7cc1b34940ebdc003ffc1b73a5f')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
