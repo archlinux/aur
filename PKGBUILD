@@ -2,10 +2,10 @@
 # Based on https://aur.archlinux.org/packages/misskey
 
 pkgname=calckey
-pkgver=13.1.3
+pkgver=13.1.4
 pkgrel=1
 pkgdesc='A greatly enhanced fork of Misskey with better UI/UX, security, features, and more! (Experimental)'
-url='https://calckey.cloud'
+url='https://calckey.org'
 arch=('x86_64')
 license=('AGPL3' 'MIT')
 depends=('nodejs' 'npm' 'postgresql' 'redis' 'pnpm')
@@ -15,8 +15,7 @@ install='calckey.install'
 optdepends=('elasticsearch: Search functionality'
             'ffmpeg: Media de-encode functionality'
             'nginx: Reverse-proxy usage')
-_commit='998e6fd4d262691e87beb5e46218490162d24452' #tag/13.1.3
-source=("git+https://codeberg.org/calckey/calckey.git#commit=${_commit}"
+source=("git+https://codeberg.org/calckey/calckey.git#brach=main"
         "${pkgname}.install"
         "${pkgname}.service"
         "${pkgname}.sh"
@@ -39,7 +38,7 @@ prepare() {
 
     # Dependency handling
     git submodule update --init
-    corepack enable
+    corepack enable --install-directory "${srcdir}/${pkgname}"
     HOME="${srcdir}/${pkgname}" pnpm install
 
     # Example configuration
