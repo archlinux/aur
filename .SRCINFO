@@ -1,0 +1,16 @@
+pkgbase = distributionz-appimage
+	pkgdesc = A simple tool to distribute Employees
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/TheDome/DistributionZ
+	arch = x86_64
+	license = Apache
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = distributionz
+	options = !strip
+	source = distributionz-1.1.4.AppImage::https://github.com/TheDome/DistributionZ/releases/download/1.1.4/DistributionZ-1.1.4.AppImage
+	sha256sums = 657fc8ffdd9ed3e828a09e5498a7e01468e4e6bea36f3cde7525b53d5ea483a9
+
+pkgname = distributionz-appimage
