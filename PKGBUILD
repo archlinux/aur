@@ -2,7 +2,7 @@
 pkgname=mdformat
 pkgdesc="CommonMark compliant Markdown formatter"
 pkgver=0.7.16
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/executablebooks/${pkgname}"
 license=(MIT)

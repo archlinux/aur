@@ -1,7 +1,7 @@
 pkgbase = mdformat
 	pkgdesc = CommonMark compliant Markdown formatter
 	pkgver = 0.7.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/executablebooks/mdformat
 	arch = any
 	license = MIT
