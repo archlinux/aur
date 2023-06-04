@@ -2,7 +2,7 @@
 
 _pkgname="spleeter"
 pkgname="$_pkgname-git"
-pkgver=2.3.0.r57.g0b26dec
+pkgver=2.3.2.r45.g0b26dec
 pkgrel=1
 pkgdesc="Deezer music source separation library and tool using pretrained models"
 # https://research.deezer.com/projects/spleeter.html
@@ -76,7 +76,27 @@ prepare() {
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
+  _regex="## ([0-9]+\\.[0-9]+(\\.[0-9]+)?)\s*\$"
+  _file="CHANGELOG.md"
+
+  _line=$(
+    grep -E "$_regex" $_file | head -1
+  )
+  _version=$(
+    echo $_line | sed -E "s@$_regex@\1@"
+  )
+  _commit=$(
+    git log -S "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
+  )
+  _revision=$(
+    git rev-list --count $_commit..HEAD
+  )
+  _hash=$(
+    git rev-parse --short HEAD
+  )
+
+  echo "$_version.r$_revision.g$_hash"
 }
 
 build() {
@@ -95,9 +115,9 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # install LICENSE
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -vDm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
   # remove incorrectly installed LICENSE file
-  _pyver=$(python --version | sed -E 's@^Python\ ([0-9]+\.[0-9]+)(\.[0-9]+)?$@\1@')
+  _pyver=$(python --version | sed -E 's@^Python\ ([0-9]+\\.[0-9]+)(\\.[0-9]+)?$@\1@')
   rm -f "$pkgdir/usr/lib/python$_pyver/site-packages/LICENSE"
 } 
