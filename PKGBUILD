@@ -1,6 +1,6 @@
 # Maintainer: Dušan Mitrović <dusan@dusanmitrovic.xyz>
 pkgname=supersonic-desktop
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers"
 _pkgname="${pkgname//-desktop/}"
@@ -20,7 +20,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/dweymouth/supersonic/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    'cd76c0b51cbbf954e31b120bc11247aee5e558068107289ac4f2262f786c1e4a'
+    '687bca81bcd7c840cbd0af8e3cb729ec30ee66599388eaea6db5fb35ccda538a'
 )
 
 build() {
