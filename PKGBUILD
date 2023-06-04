@@ -27,7 +27,7 @@ sha256sums=('b56181f0f21e9e5b7dfb5a0cfc8a71412fe65ed400840168c35ff057ae9d8637'
 
 prepare() {
   # Create a shortcut
-  echo "Categories=Game;" >> $_desktop
+  echo "Categories=Game;" > $_desktop
   sed -i '1 i\Comment=Installer/Updater/Launcher for Northstar' $_desktop
   sed -i '1 i\StartupWMClass=FlightCore' $_desktop
   sed -i '1 i\Icon=flightcore' $_desktop
@@ -43,7 +43,7 @@ prepare() {
 
 package() {
   for i in 32x32 128x128 256x256@2; do
-    install -Dm644 squashfs-root/usr/share/icons/hicolor/$i/apps/flight-core.png "${pkgdir}/usr/share/icons/hicolor/$i/apps/$_pkgname.png"
+    install -Dm644 squashfs-root/usr/share/icons/hicolor/$i/apps/flight-core.png "$pkgdir/usr/share/icons/hicolor/$i/apps/$_pkgname.png"
   done
   install -Dm644 DEVELOPMENT.md FAQ.md README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
