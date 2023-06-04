@@ -1,0 +1,15 @@
+pkgbase = sixgrid-appimage
+	pkgdesc = Open-Source Desktop Client for e926/e621 and websites alike
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/SixGrid/sixgrid
+	arch = x86_64
+	license = Apache
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	options = !strip
+	source = sixgrid-0.3.6.AppImage::https://github.com/SixGrid/sixgrid/releases/download/v0.3.6/sixgrid-58cccb3b42651ae2e53a0aaffc778b691db364c0-linux-amd64.AppImage
+	sha256sums = 22cfcbfc8679e2d8917e3d1756b1f03faeebc72e1ae74175ffbed492f44e788a
+
+pkgname = sixgrid-appimage
