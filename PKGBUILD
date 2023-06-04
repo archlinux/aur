@@ -3,9 +3,9 @@
 pkgdesc='A cross platform utility to dump and modify audio metadata for a wide variety of formats.'
 pkgname=('tone-bin')
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
-license=('MIT')
+license=('APACHE')
 url="https://github.com/sandreas/tone"
 makedepends=()
 depends=()
