@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="f1mv-lights-integration-appimage"
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="The best way to connect your smart home lights to MultiViewer."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/F1MV-Lights-Integration-${pkgver}.AppImage")
-sha256sums=('73388da072c904dcb129806cddef96adcb54e539a39cc8ee83941ae39a085b33')
+sha256sums=('69db0b72becc8cf76427033490a5eb305f75a329f6cd718630bde62b4badfb59')
      
 prepare() {
     chmod a+x "f1mv-lights-integration-${pkgver}.AppImage"
