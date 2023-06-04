@@ -16,7 +16,7 @@ optdepends=('cups: Printer support'
 	    'libgnome-keyring: gnome keyriung support')
 provides=("${pkgname}" 'brave-beta-browser')
 conflicts=()
-source=("MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt"
+source=("MPL2::https://raw.githubusercontent.com/brave/brave-browser/master/LICENSE"
         "$pkgname.sh")
 source_x86_64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta_${pkgver}_arm64.deb")
