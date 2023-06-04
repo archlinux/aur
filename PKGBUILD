@@ -2,7 +2,7 @@
 
 pkgdesc='A command line utility to merge, split and chapterize audiobook files such as mp3, ogg, flac, m4a or m4b'
 pkgname=('m4b-tool-bin')
-pkgver=0.4.2~20230213
+pkgver=0.4.2~20230214
 pkgrel=2
 arch=('x86_64')
 license=('custom:MIT')
@@ -14,6 +14,7 @@ depends=(
   'php'
 )
 provides=('m4b-tool')
+conflicts=('m4b-tool')
 optdepends=(
   'fdkaac: to use fdkaac in conversions'
   'ffmpeg-libfdk_aac: to use fdkaac in conversions'
@@ -25,7 +26,8 @@ source=("m4b-tool.tar.gz::https://github.com/sandreas/m4b-tool/files/10728378/m4
 
 pkgver() {
   cd ${srcdir}
-  _dat=`stat --format=%y m4b-tool.phar | awk -F ' |\-' '{ print $1$2$3 }'`
+  # _dat=`stat --format=%y m4b-tool.phar | awk -F ' |\-' '{ print $1$2$3 }'`
+  _dat=`date -u -r m4b-tool.phar -Idate| awk -F '\-' '{ print $1$2$3 }'`
   printf "0.4.2~$_dat"
 }
 
