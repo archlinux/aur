@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=stremio
-pkgver=4.4.159
+pkgver=4.4.160
 pkgrel=1
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)'
 arch=('x86_64')
@@ -21,9 +21,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c31c98fe4cd8158523c45685ba2a949cffd3fc0f06dffef66797d07e3a2bbbee'
-            'd01ba5d69cf0e94f3d44c8e4ed5b10eaab67e83398a7d86f86f378ade59cf8f9'
-            'd1702ebfa92b55c26331e26ff50b5240c8bf69b0edfd6b7b78ef2da257a864d4')
+            '3088ef4dfb26426cca5d54386a65066d07a20b5c7729742e30522cd96d2786e8'
+            'b253331df5aef953208691e5bece1e33c8e9705c981979d9392052356c1eb352'
+            'b5eff88b30d8c6030e36ca4949ebf6ff9515efbedc0b9bc748110cd1fbc0671a')
 
 prepare() {
     git -C stremio-shell submodule init
