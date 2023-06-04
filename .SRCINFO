@@ -1,5 +1,5 @@
 pkgbase = inter-doom-git
-	pkgver = r4620.b8776844
+	pkgver = r4735.2bdf44a4
 	pkgrel = 1
 	url = https://github.com/JNechaevsky/inter-doom
 	arch = i686

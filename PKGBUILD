@@ -1,7 +1,7 @@
 # Maintainer: Leonid Murin (Dasperal) <Dasperal1 at gmail dot com>
 pkgbase=inter-doom-git
 pkgname=('inter-doom-git' 'inter-heretic-git' 'inter-hexen-git')
-pkgver=r4620.b8776844
+pkgver=r4735.2bdf44a4
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/JNechaevsky/inter-doom"
@@ -21,12 +21,12 @@ build() {
     cmake -S "inter-doom" -B "build" \
     -D CMAKE_BUILD_TYPE="Release" \
     -D CMAKE_INSTALL_PREFIX="/usr" \
-    -D COMPILE_DOOM="ON" \
-    -D COMPILE_HERETIC="ON" \
-    -D COMPILE_HEXEN="ON" \
-    -D COMPILE_STRIFE="OFF" \
-    -D BUILD_VERSION_OVERWRITE="$pkgver" \
-    -D NO_GIT_HASH="ON"
+    -D ID_COMPILE_DOOM="ON" \
+    -D ID_COMPILE_HERETIC="ON" \
+    -D ID_COMPILE_HEXEN="ON" \
+    -D ID_COMPILE_STRIFE="OFF" \
+    -D ID_BUILD_VERSION_OVERWRITE="$pkgver" \
+    -D ID_GIT_NO_HASH="ON"
     cmake --build "build"
 }
 
