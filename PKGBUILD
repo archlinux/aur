@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ttservice
-_pkgver=0.2.2
+_pkgver=0.3.5
 pkgname=r-${_pkgname,,}
-pkgver=0.2.2
-pkgrel=4
+pkgver=0.3.5
+pkgrel=1
 pkgdesc='A Service for Tidy Transcriptomics Software Suite'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -17,7 +17,7 @@ optdepends=(
   r-methods
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dd896d1892dce4ca6c0ef8a95b6c6ff69eb1349959134475494adc7b209738e3')
+sha256sums=('c13993c3939a714332cd4ed01d7ba2cf186424571d6282161abac90877d55618')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
