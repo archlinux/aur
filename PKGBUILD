@@ -5,7 +5,7 @@
 
 _pkgname=libxfce4ui
 pkgname=${_pkgname}-devel
-pkgver=4.19.1
+pkgver=4.19.2
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ optdepends=('glade: Glade designer plugin')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('e315ca0d53c448f27ebaadc9019d40e5e3f1eb2b9fc3300ecd56308ee82c5d84')
+sha256sums=('d1065ee4f100cb21501993f6e7f329d80cc8ee3950f8d06e5d9b6e7fb2022cb5')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -30,7 +30,8 @@ build() {
     --enable-gtk-doc \
     --disable-debug \
     --enable-gladeui2 \
-    --with-vendor-info='Arch Linux'
+    --with-vendor-info='Arch Linux' \
+    --enable-maintainer-mode
   make
 }
 
