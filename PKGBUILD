@@ -4,7 +4,7 @@ _group_name="swcdb"
 _sub_name="lib-core"
 
 pkgname=${_group_name}-${_sub_name}
-pkgver=0.5.11
+pkgver=0.5.12
 pkgrel=1
 pkgdesc="The SWC-DB core libraries"
 arch=("x86_64")
