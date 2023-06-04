@@ -3,7 +3,7 @@
 _pkgname=xdman8
 pkgname=$_pkgname-bin
 pkgver=8.0.26
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source download accelerator and video downloader (binary release)"
 arch=('x86_64')
 url="https://github.com/subhra74/xdm"
@@ -18,5 +18,5 @@ package() {
   cp -r opt "$pkgdir"
   install -Dm644 opt/xdman/xdm-logo.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
   install -Dm644 usr/share/applications/xdm-app.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-  install -Dm755 usr/bin/xdman -t "$pkgdir/usr/bin"
+  install -Dm755 usr/bin/xdman "$pkgdir/usr/bin/$_pkgname"
 }
