@@ -1,0 +1,21 @@
+pkgbase = inso-linux-bin
+	pkgdesc = Allows you to use Insomnia application functionality in your terminal and CI/CD environments for automation.
+	pkgver = 3.16.0
+	pkgrel = 1
+	url = https://insomnia.rest
+	arch = x86_64
+	license = MIT
+	depends = libxss
+	depends = nss
+	depends = gtk3
+	depends = alsa-lib
+	optdepends = libappindicator-gtk3: StatusNotifierItem support
+	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
+	provides = inso-linux
+	conflicts = inso-linux
+	source = https://github.com/Kong/insomnia/releases/download/lib@3.16.0/inso-linux-3.16.0.tar.xz
+	source = https://github.com/Kong/insomnia/raw/core@2023.2.2/LICENSE
+	sha256sums = d20435cd95c80acac8894124ff7a79ea199395cf48329bdf171803b84a7d4a63
+	sha256sums = cc91b5641bbbf592a69ca5f7b45807efba470068e815fc7682a42022bbd3cbb9
+
+pkgname = inso-linux-bin
