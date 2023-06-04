@@ -6,7 +6,7 @@
 pkgname=digikam
 _pkgver=8.0.0
 pkgver=${_pkgver//-/} # for beta versions
-pkgrel=3
+pkgrel=4
 pkgdesc='An advanced digital photo management application'
 arch=(x86_64)
 license=(GPL)
@@ -18,14 +18,17 @@ optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional ima
             'rawtherapee: RAW import' 'darktable: RAW import'
             'perl: for digitaglinktree')
 source=(https://download.kde.org/stable/$pkgname/${_pkgver%-*}/digiKam-$_pkgver.tar.xz{,.sig}
-        akonadi-22.04.patch)
+        akonadi-22.04.patch
+        https://invent.kde.org/graphics/digikam/-/commit/4896cef0.patch)
 sha256sums=('102c712b6209fe2ac877c9b1d019dacadaf115adf915570d26816066d151e847'
             'SKIP'
-            '4b02d8c00c0117fb7e440bdf30fa366efda62a7710a44b49fb649a93fc1165d9')
+            '4b02d8c00c0117fb7e440bdf30fa366efda62a7710a44b49fb649a93fc1165d9'
+            '2a49336e3a80686721b90811de702c80072f0741231e39980bb68c598dc286e1')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
 
 prepare() {
   patch -d $pkgname-$pkgver -p1 < akonadi-22.04.patch # Fix build with akonadi 22.04
+  patch -d $pkgname-$pkgver -p1 < 4896cef0.patch # Fix build with exiv2 0.28
 }
 
 build() {
