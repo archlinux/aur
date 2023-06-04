@@ -1,4 +1,4 @@
-pkgbase = inso-linux-bin
+pkgbase = inso-bin
 	pkgdesc = Allows you to use Insomnia application functionality in your terminal and CI/CD environments for automation.
 	pkgver = 3.16.0
 	pkgrel = 1
@@ -18,4 +18,4 @@ pkgbase = inso-linux-bin
 	sha256sums = d20435cd95c80acac8894124ff7a79ea199395cf48329bdf171803b84a7d4a63
 	sha256sums = cc91b5641bbbf592a69ca5f7b45807efba470068e815fc7682a42022bbd3cbb9
 
-pkgname = inso-linux-bin
+pkgname = inso-bin
