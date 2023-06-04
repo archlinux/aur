@@ -1,14 +1,14 @@
 # Maintainer: Th30
 pkgname=fortune-mod-wisdom-fr
-pkgver=1.1
-pkgrel=4
+pkgver=1.2
+pkgrel=1
 pkgdesc="Fortune cookies: Wisdom quotes in French"
 arch=('any')
 url="https://github.com/Bundy01/fortune-mod-wisdom-fr"
 license=('GPL3')
 depends=('fortune-mod')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('cb3a631f51dbe1ce5adc19179548fecdfe5aaf17ecf220750cacec6f831e5ef4')
+sha256sums=('a2e1fcf8e76df66cafd3fc0e7fb6a2622b395921058ccc468ff6c45e4aec9f00')
 
 package()
 {
