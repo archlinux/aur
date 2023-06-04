@@ -1,7 +1,7 @@
 pkgbase = r-rmarkdown
 	pkgdesc = Dynamic Documents for R
 	pkgver = 2.22
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=rmarkdown
 	arch = any
 	license = GPL3
@@ -35,6 +35,7 @@ pkgbase = r-rmarkdown
 	optdepends = r-vctrs
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/rmarkdown_2.22.tar.gz
+	md5sums = 28f72cac8b8b3c646f5cbaf1c195178a
 	sha256sums = c6635519503e0fcdd518696d3ac96d8d28d9d4ecd9db0532c53426002f6387b8
 
 pkgname = r-rmarkdown
