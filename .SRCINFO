@@ -1,0 +1,15 @@
+pkgbase = neovim-rose-pine-git
+	pkgdesc = Port of the dark Rose Pine colorscheme for neovim. Includes lualine theme.
+	pkgver = r261.15aac8c
+	pkgrel = 1
+	url = https://github.com/rose-pine/neovim
+	install = neovim-rose-pine-git.install
+	arch = any
+	groups = neovim-plugins
+	license = custom:MIT
+	makedepends = git
+	depends = neovim>=0.5.0
+	source = neovim-rose-pine::git+https://github.com/rose-pine/neovim
+	sha256sums = SKIP
+
+pkgname = neovim-rose-pine-git
