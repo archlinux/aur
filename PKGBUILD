@@ -13,7 +13,13 @@ source=("https://github.com/troglobit/mrouted/releases/download/${pkgver}/mroute
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --runstatedir=/run --with-systemd=/usr/lib/systemd/system
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --runstatedir=/run \
+    --with-systemd=/usr/lib/systemd/system \
+    ;
   make
 }
 
