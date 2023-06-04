@@ -1,19 +1,19 @@
 pkgbase = uefitool-bin
 	pkgdesc = UEFI firmware image viewer and editor
-	pkgver = A63
+	pkgver = A66
 	pkgrel = 1
 	url = https://github.com/LongSoft/UEFITool
 	arch = x86_64
 	license = BSD
-	depends = qt5-base
-	provides = uefitool=A63
-	provides = uefipatch=A63
-	provides = uefireplace=A63
-	source = UEFIExtract-A63.zip::https://github.com/LongSoft/UEFITool/releases/download/A63/UEFIExtract_NE_A63_linux_x86_64.zip
-	source = UEFIFind-A63.zip::https://github.com/LongSoft/UEFITool/releases/download/A63/UEFIFind_NE_A63_linux_x86_64.zip
-	source = UEFITool-A63.zip::https://github.com/LongSoft/UEFITool/releases/download/A63/UEFITool_NE_A63_linux_x86_64.zip
-	sha256sums = 1c0ff218b541f3ce19c70e1b93b6ee0d3faafee401da82a2c558aeb2edc22e04
-	sha256sums = 167b06da54f7f8423685ff5071b0cdcc8dc69f34603c0491ac6d6474385a5995
-	sha256sums = 133ca02cd7475b58725dc19d0f1dad3362e56e91fd6c9f86231caba1606656f5
+	depends = qt6-base
+	provides = uefitool=A66
+	provides = uefipatch=A66
+	provides = uefireplace=A66
+	source = UEFIExtract-A66.zip::https://github.com/LongSoft/UEFITool/releases/download/A66/UEFIExtract_NE_A66_x64_linux.zip
+	source = UEFIFind-A66.zip::https://github.com/LongSoft/UEFITool/releases/download/A66/UEFIFind_NE_A66_x64_linux.zip
+	source = UEFITool-A66.zip::https://github.com/LongSoft/UEFITool/releases/download/A66/UEFITool_NE_A66_x64_linux.zip
+	sha256sums = a8effffa85411a0b6318285511af2e71d572b6374d4ee15320b6a78727428651
+	sha256sums = 3297c90bdbf2b8c2fa6f2ed65c7938832e45826a60c02cd816a154d0abe2dd9b
+	sha256sums = dada149eb2f263b70b67ac76ac57edd406c08d6a4115c25338f22948f2587166
 
 pkgname = uefitool-bin
