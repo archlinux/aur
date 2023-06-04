@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="xbyyunpan-appimage"
-pkgver=3.11.9
+pkgver=3.11.11
 pkgrel=1
 pkgdesc="小白羊网盘 - Powered by 阿里云盘Open"
 arch=('x86_64')
@@ -10,9 +10,9 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}" "aliyunpan-liupan1890" "aliyunpan-odomu")
 depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/XBYDriver-${pkgver}-linux-${CARCH}.AppImage"
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-${CARCH}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/gaozhangmin/aliyunpan/main/LICENSE")
-sha256sums=('a0463effc760d7a479c2d4b1e20279f7516ce8deda394cc94405ba2af981b33a'
+sha256sums=('0695198319f2d349d62a7785a3ed8ad7e35e6a8ff040ee8575f73526336bed73'
             '37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
