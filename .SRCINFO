@@ -1,0 +1,18 @@
+pkgbase = y2mp3-appimage
+	pkgdesc = An Electron app to download youtube playlist
+	pkgver = 2.5.9alpha
+	pkgrel = 1
+	url = https://github.com/moshfeu/y2mp3
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = y2mp3
+	options = !strip
+	source = y2mp3-2.5.9alpha.AppImage::https://github.com/moshfeu/y2mp3/releases/download/v2.5.9-alpha/y2mp3-2.5.9-alpha.AppImage
+	source = LICENSE::https://raw.githubusercontent.com//moshfeu/y2mp3/master/LICENSE
+	sha256sums = 9acdbb1535557d818eb4b4f86b4e27cf6c442cd1f66101530c33e200eaf66b2e
+	sha256sums = e38ba30feb86e7387a43e735f2b65cf072436b3af6b3333abb4e6c460e6622fe
+
+pkgname = y2mp3-appimage
