@@ -1,13 +1,28 @@
 # Maintainer: graysky <therealgraysky AT protonmail DOT com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
+### BUILD OPTIONS
+# Any/all of the next three variables may be set to ANYTHING
+# that is not null to enable their respective build options
+
+# Tweak kernel options prior to a build via nconfig
+_makenconfig=
+
+# Only compile select modules to reduce the number of modules built
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD reads the database kept if it exists
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
+
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-6.0
-_major=6.0
+_srcname=linux-6.3
+_major=6.3
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=1
+_minor=5
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 [[ -z $_minor ]] && _fullver=$_major || _fullver=$_major.$_minor
@@ -16,10 +31,19 @@ _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
 arch=(x86_64)
-license=(GPL2)
 url="https://www.kernel.org/"
+license=(GPL2)
 makedepends=(
-  bc kmod libelf        cpio perl tar xz
+  bc
+  cpio
+  gettext
+  git
+  libelf
+  pahole
+  python
+  perl
+  tar
+  xz
 )
 options=('!strip')
 _modprobeddb=
@@ -30,8 +54,6 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-mm-vmscan-fix-extreme-overreclaim-and-swap-floods.patch
-  0003-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -39,19 +61,17 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('cf011d218b1bd95c93fe42d6f265e7aadda8fd88098b28b057a1e24c6a197da38f18a7c83ab9def14897be563da2e4234c3e33b2d29bffc872b1999ff9b57794'
+b2sums=('a18e5f933756f496b3073361d0669814041593a22657206dd801bd97801a405f89e92cdd363cecd21b41dd353d3205f16a8e1197df5d1e3aa6421e50a463583a'
         'SKIP'
-        'c2eb16c09006df5fa4c57d24663f9f20443fc683b0890d1c70eaeb08a6da146a9421114719da1a6ed66624f07715fb6cf6d0403c472e3612944e233dd2b2f429'
+        '646a94591eae93db9301a11e5300579c8cce7d2a544727cb88efed86d05ba070a247498d9c83d7b7cdbead4e7d46537134c877813aa7f188dd36b403c58d0c11'
         'SKIP'
         'f6f53ed92891b063ae6874764ad370f5de2d115dcf7a5d5d35f4fa678947235abb023b156c6563c068a313654a856807298f1935d78238f698e38b9bcd4db6e6'
-        '2692c46e15bf1527aa19a1db2b1c325a95a15fc2128cc49da2fa31d14f10615c736c928180ac403b76054b9e504057cedaf5252c0e1ca697162bdc7d394379cd'
-        '4128728302395142a282840d4408500cf8b0d45f4df70e0e4b845150222193217a11945d4c6a901813b9fed1425d2c280ef0cf5c3e9281512bdf934c93b5a0cc'
-        '63c2639fe24acaafb993dc06fc244d965da76730da08d23308b668c598a9d1da1be898a344fdb693acc7d8e883234437abd8d6bc89ca21eae637d8955ce5f25b')
+        '726829c8cf3753fa3f397f85ca828d99b8130c6d83790996ece927a46215fb843f10186aa5ae5b9904e46f0afa68b6ae3c10508370edafbbc2a0e43a35050271')
 
-
-export KBUILD_BUILD_HOST=archlinux
-export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
 
 prepare() {
   # hacky work around for rc1 not getting extracted
@@ -62,12 +82,15 @@ prepare() {
 
   cd linux-${_fullver}
   msg2 "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
   msg2 "Applying $_rcpatch..."
   patch -Np1 <"../$_rcpatch"
+
+  make defconfig
+  make -s kernelrelease > version
+  make mrproper
 
   local src
   for src in "${source[@]}"; do
@@ -78,39 +101,40 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
-  msg2 "Setting config..."
+  echo "Setting config..."
   cp ../config .config
 
-  # disable CONFIG_DEBUG_INFO at build time otherwise memory usage blows up and
-  # can easily overwhelm a system with 32 GB of memory using a tmpfs build.
-  # introduced by FS#66260, see:
-  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-  scripts/config --disable CONFIG_DEBUG_INFO
-  scripts/config --disable CONFIG_CGROUP_BPF
-  scripts/config --disable CONFIG_BPF_LSM
-  scripts/config --disable CONFIG_BPF_PRELOAD
-  scripts/config --disable CONFIG_BPF_LIRC_MODE2
-  scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
 
-  if [[ -n "$_modprobeddb" ]]; then
-    #msg "Running Steven Rostedt's make localmodconfig now"
-    #sudo /usr/bin/modprobed-db recall
-    #make localmodconfig
-    msg "Running Steven Rostedt's make localmodconfig now"
-    if [[ -f $HOME/.config/modprobed.db ]]; then
-      _useit="$HOME/.config/modprobed.db"
-    else
-      _useit="../modprobed.db"
-    fi
-    make LSMOD="$_useit" localmodconfig
-  fi
-
+  # non-interactively apply ck1 default options
+  # this isn't redundant if we want a clean selection of subarch below
   make olddefconfig
   diff -u ../config .config || :
  # make nconfig
 
   make -s kernelrelease > version
   msg2 "Prepared $pkgbase version $(<version)"
+
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
+    if [ -n "$_localmodcfg" ]; then
+      if [ -f $HOME/.config/modprobed.db ]; then
+        echo "Running Steven Rostedt's make localmodconfig now"
+        make LSMOD="$HOME/.config/modprobed.db" localmodconfig
+      else
+        echo "No modprobed.db data found"
+        exit
+      fi
+    fi
+
+  echo "Prepared $pkgbase version $(<version)"
+
+  [[ -z "$_makenconfig" ]] || make nconfig
+
+  # save configuration for later reuse
+  cat .config > "${startdir}/config.last"
+
+  # uncomment if you want to build with distcc
+  ### sed -i '/HAVE_GCC_PLUGINS/d' arch/x86/Kconfig
 }
 
 build() {
@@ -120,15 +144,27 @@ build() {
 
 _package() {
   pkgdesc="The release candidate kernel and modules"
-  depends=(coreutils kmod initramfs)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
   cd linux-${_fullver}
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
@@ -139,7 +175,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -148,6 +184,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the linux-rc kernel"
+  depends=(pahole "$pkgbase") # added to keep kernel and headers packages matched
 
   cd linux-${_fullver}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -163,7 +200,7 @@ _package-headers() {
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  # install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -207,7 +244,7 @@ _package-headers() {
   echo "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sib "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
@@ -219,14 +256,12 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  #echo "Stripping vmlinux..."
-  #strip -v $STRIP_STATIC "$builddir/vmlinux"
-  # not needed since not building with CONFIG_DEBUG_INFO=y
+  echo "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers")
