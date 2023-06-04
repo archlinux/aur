@@ -3,7 +3,7 @@
 
 pkgname=calckey
 pkgver=13.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A fun, new way to experience social media'
 url='https://calckey.org'
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('debug')
 install='calckey.install'
 optdepends=('ffmpeg: Media encode functionality'
             'nginx: Reverse-proxy')
-source=("git+https://codeberg.org/calckey/calckey.git"
+source=("git+https://codeberg.org/calckey/calckey.git#branch=main"
         "${pkgname}.install"
         "${pkgname}.service"
         "${pkgname}.sh"
@@ -29,7 +29,6 @@ sha256sums=('SKIP'
 
 prepare() {
     cd "${pkgname}"
-    git checkout main
 
     # Dependency handling
     git submodule update --init
