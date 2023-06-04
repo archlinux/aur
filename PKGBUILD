@@ -20,14 +20,16 @@ source=("https://www.gen2vdr.de/wirbel/$pkgname/$pkgname-$pkgver.tar.bz2"
         "https://www.gen2vdr.de/wirbel/wirbelscan/vdr-${_wirbelscan_version}.tgz"
         "git://git.tvdr.de/vdr.git#commit=$_vdr_gitver"
         "git+https://github.com/wirbel-at-vdr-portal/vdr-plugin-satip.git#commit=$_satip_gitver"
+        "vdr-wirbelscan-add_missing_cstdint_h.patch::https://github.com/wirbel-at-vdr-portal/wirbelscan-dev/commit/016c9aee9d12326e3b08ded15ab98ab5c82c7228.patch"
        )
 sha256sums=('6177dc8a42f87c03292de74bfe43bf4c0f027727e017c0d98f211666d9bed4bf'
             'd6db38e259699de21a4c261ed1799991539fe57dea987870854e037b9c0be7f9'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'b4dde703cb0c091a0646d85b6a82b58b580989f5bfcf9ac797b183f4654c548b')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # Copy VDR source into place
   cp -a "$srcdir/vdr" .
@@ -40,15 +42,18 @@ prepare() {
   ln -s "vdr-plugin-satip" "vdr/PLUGINS/src/satip"
   cp -a "$srcdir/$_wirbelscan_version" "vdr/PLUGINS/src"
   ln -s "$_wirbelscan_version" "vdr/PLUGINS/src/wirbelscan"
+
+  cd "$srcdir/$pkgname-$pkgver/vdr/PLUGINS/src/wirbelscan"
+  sed '/diff --git a\/HISTORY/,/diff --git/d' "$srcdir/vdr-wirbelscan-add_missing_cstdint_h.patch" | patch -p1
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   make prefix="$pkgdir/usr" install
 }
 
