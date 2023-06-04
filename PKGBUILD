@@ -2,7 +2,7 @@
 # Contributor: Ben Curtis <nospam@nowsci.com>
 
 pkgname=gnome-shell-extension-wintile
-pkgver=9
+pkgver=10.1
 pkgrel=1
 pkgdesc="Windows 10 window tiling for GNOME"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('gnome-shell')
 makedepends=('zip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 _srcname=wintile
-b2sums=('7ba1c3e6139950cacdabc2aecc702df70106f1bbf90784cc72f52dc89758b601beb1fdad9790a8c8c828f8e9eb417716cfc625f8c97a5b942b05d555b67fae36')
+b2sums=('ff780ee1cc11908664c62d76edced4cfebcb68dc2cda7b2f3cd03b40045b58ee3101158d620e8d765485da61c91818778099b341b6991969e2165ba838cf77f1')
 
 build() {
 	cd "$_srcname-$pkgver"
