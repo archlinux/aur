@@ -1,7 +1,7 @@
 pkgbase = sixgrid-appimage
 	pkgdesc = Open-Source Desktop Client for e926/e621 and websites alike
 	pkgver = 0.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SixGrid/sixgrid
 	arch = x86_64
 	license = Apache
