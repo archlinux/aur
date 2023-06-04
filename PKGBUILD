@@ -1,47 +1,72 @@
-# Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
+# Maintainer:
+# Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
-pkgname=filelight-git
-pkgver=r915.7ec619e
+_pkgname="filelight"
+pkgname="$_pkgname-git"
+pkgver=23.04.2.r0.g2f2b5a1
 pkgrel=1
 pkgdesc="View disk usage information"
 arch=('i686' 'x86_64')
-url='https://projects.kde.org/projects/kde/applications/filelight'
+url='https://invent.kde.org/utilities/filelight'
 license=('GPL' 'LGPL' 'FDL')
-depends=('kio' 'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'git' 'kdoctools')
-provides=('filelight')
-conflicts=('filelight')
-source=('git+https://invent.kde.org/utilities/filelight.git')
-md5sums=('SKIP')
+
+depends=(
+  'hicolor-icon-theme'
+  'kdeclarative'
+  'kio'
+  'kquickcharts'
+  'qqc2-desktop-style'
+)
+makedepends=(
+  'extra-cmake-modules'
+  'git'
+  'kdoctools'
+)
+
+provides=("$_pkgname")
+conflicts=(${provides[@]})
+
+source=(
+  "$_pkgname"::"git+$url"
+)
+sha256sums=(
+  'SKIP'
+)
 
 pkgver() {
-  cd filelight
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+  cd "$srcdir/$_pkgname"
 
-prepare() {
-  mkdir -p build
+  _regex='^\s+<release version="([0-9]+\.[0-9]+(\.[0-9]+)?)".*>$'
+  _file='misc/org.kde.filelight.appdata.xml'
+
+  _line=$(
+    grep -E "$_regex" "$_file" | head -1
+  )
+  _version=$(
+    echo "$_line" | sed -E "s@$_regex@\1@"
+  )
+  _commit=$(
+    git log -S "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
+  )
+  _revision=$(
+    git rev-list --count $_commit..HEAD
+  )
+  _hash=$(
+    git rev-parse --short HEAD
+  )
+
+  echo "$_version.r$_revision.g$_hash"
 }
 
 build() {
-  cd build
-  BUILD_TYPE=Release
-  if [[ " ${OPTIONS[@]} " =~ " debug " ]]; then
-    BUILD_TYPE=RelDebug
-  elif [[ " ${OPTIONS[@]} " =~ " !strip " ]]; then
-    BUILD_TYPE=RelDebug
-  fi
-  echo "${BUILD_TYPE}"
-
-  cmake ../filelight \
-    -DCMAKE_BUILD_TYPE=${BUILD_TYPE} \
+  cmake -B build -S $pkgname-$pkgver \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
