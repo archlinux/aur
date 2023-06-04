@@ -12,7 +12,7 @@ pkgbase = gmsh
 	makedepends = texlive-core
 	makedepends = voro++
 	makedepends = fltk
-	makedepends = med
+	makedepends = med-openmpi
 	makedepends = opencascade
 	makedepends = cairo
 	makedepends = metis
@@ -35,7 +35,7 @@ pkgbase = gmsh
 
 pkgname = gmsh
 	depends = fltk
-	depends = med
+	depends = med-openmpi
 	depends = opencascade
 	depends = cairo
 	depends = metis
@@ -45,7 +45,6 @@ pkgname = gmsh
 	depends = cgns
 	depends = lapack
 	optdepends = gmsh-docs: docs for gmsh
-	optdepends = python2: for gmsh.py
 	optdepends = python: for gmsh.py
 	optdepends = julia: for gmsh.jl
 

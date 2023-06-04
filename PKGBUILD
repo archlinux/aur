@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://gmsh.info"
 license=('custom')
 makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig' 'texlive-core' 'voro++'
-             'fltk' 'med' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
+             'fltk' 'med-openmpi' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
              'glu' 'cgns' 'lapack')
 options=(!emptydirs)
 source=("${url}/src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion
@@ -53,10 +53,9 @@ build() {
 }
 
 package_gmsh() {
-   depends=('fltk' 'med' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
+   depends=('fltk' 'med-openmpi' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
             'glu' 'cgns' 'lapack')
    optdepends=('gmsh-docs: docs for gmsh'
-            'python2: for gmsh.py'
             'python: for gmsh.py'
             'julia: for gmsh.jl')
 
