@@ -1,0 +1,16 @@
+pkgbase = hnsky-hg
+	pkgdesc = Semi professional free planetarium program
+	pkgver = 4.2.15
+	pkgrel = 1
+	url = https://sourceforge.net/projects/hnsky/
+	arch = x86_64
+	license = GPL3
+	makedepends = lazarus
+	makedepends = mercurial
+	depends = qt5-base
+	depends = qt5-x11extras
+	depends = qt5pas
+	source = hg+http://hg.code.sf.net/p/hnsky/code
+	sha256sums = SKIP
+
+pkgname = hnsky-hg
