@@ -3,8 +3,8 @@
 _pkgname=marble-maps-mapycz
 pkgname="${_pkgname}"
 epoch=0
-pkgver=20220207.01
-pkgrel=5
+pkgver=20230604.01
+pkgrel=1
 pkgdesc="Maps for KDE marble by mapy.cz (Czech Republic & Slovakia (OSM-based with own additions), and Worldwide (OSM based))."
 url="http://mapy.cz/"
 arch=('any')
@@ -27,6 +27,7 @@ replaces=()
 options=('emptydirs')
 source=(
   'mapycz-18xx.dgml'
+  'mapycz-aerial.dgml'
   'mapycz-base.dgml'
   'mapycz-geo.dgml'
   'mapycz-places.dgml'
@@ -36,6 +37,7 @@ source=(
   'mapycz-winter.dgml'
 
   'mapycz-18xx-basetile.png::http://mapserver.mapy.cz/army2-m/0-0-0'
+  'mapycz-aerial-basetile.png::http://mapserver.mapy.cz/bing/0-0-0'
   'mapycz-base-basetile.png::http://mapserver.mapy.cz/base-m/0-0-0'
   'mapycz-geo-basetile.png::http://mapserver.mapy.cz/zemepis-m/0-0-0'
   'mapycz-places-basetile.png::http://mapserver.mapy.cz/base-m-traf-up/0-0-0'
@@ -45,6 +47,7 @@ source=(
   'mapycz-winter-basetile.png::http://mapserver.mapy.cz/winter-m/0-0-0'
 
   'mapycz-18xx-preview.jpeg::https://mapserver.mapy.cz/army2-m/14-8906-5633'
+  'mapycz-aerial-preview.png::https://mapserver.mapy.cz/bing/14-8884-5503'
   'mapycz-base-preview.png::https://mapserver.mapy.cz/base-m/14-8884-5503'
   'mapycz-geo-preview.png::https://mapserver.mapy.cz/zemepis-m/14-8884-5503'
   'mapycz-places-preview.png::https://mapserver.mapy.cz/base-m-traf-up/14-8885-5503'
@@ -57,6 +60,7 @@ source=(
 )
 sha256sums=(
   'ad8b0f2a6e0cb499ea439390ff9547c37065abddacf26108b69ff2ed430fcb83'
+  '1440be2635a0fe9df6332628309b9aec6c622022cb38d2a3c28fb46fdc4dde90' # mapycz-aerial.dgml
   '8893feaa65610c87266a2c8da491092084940e8704e6d94047eda93a954a97f8'
   '8b8a35d10b185441f66aaea381f70e47775d31a2bfb70bc7687b26d209839c75'
   '62ce417c66ebcc010284740c76668006a8445d47b48d8db50a154f67c7bba095'
@@ -73,7 +77,9 @@ sha256sums=(
   'SKIP'
   'SKIP'
   'SKIP'
+  'SKIP'
 
+  'SKIP'
   'SKIP'
   'SKIP'
   'SKIP'
