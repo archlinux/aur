@@ -1,6 +1,6 @@
 pkgbase = aur-check-updates
 	pkgdesc = A very basic CLI app for checking updates from AUR
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/HanabishiRecca/aur-check-updates
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = aur-check-updates
 	makedepends = cargo
 	depends = libalpm.so
 	depends = libcurl.so
-	source = aur-check-updates-1.0.4.tar.gz::https://github.com/HanabishiRecca/aur-check-updates/archive/1.0.4.tar.gz
-	sha256sums = 9d9badf2140a1eb339c644a6bfee77add706647c316495f1ace8a8f87895f83b
+	source = aur-check-updates-1.0.5.tar.gz::https://github.com/HanabishiRecca/aur-check-updates/archive/1.0.5.tar.gz
+	sha256sums = e3763de00a1927770385cc974f7124bc10d598aded32be18b764ee0c2c1aadb7
 
 pkgname = aur-check-updates
