@@ -1,6 +1,6 @@
 pkgbase = relcs-git
 	pkgdesc = Grand Theft Auto: LCS reverse engineered
-	pkgver = 1.0_r5619.33abd1b4
+	pkgver = 1.0_b1
 	pkgrel = 1
 	url = https://github.com/halpz/re3/tree/miami
 	install = relcs.install
@@ -11,8 +11,8 @@ pkgbase = relcs-git
 	depends = librw-git
 	depends = openal
 	depends = mpg123
-	provides = re3
-	conflicts = re3
+	provides = relcs-git
+	conflicts = relcs-git
 	source = git+https://github.com/halpz/re3.git#branch=lcs
 	source = git+https://github.com/aap/librw.git
 	source = git+https://github.com/xiph/ogg.git

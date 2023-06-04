@@ -1,6 +1,6 @@
-_pkgbase=re3
+_pkgbase=relcs-git
 pkgname=relcs-git
-pkgver=1.0_r5619.33abd1b4
+pkgver=1.0_b1
 pkgrel=1
 pkgdesc="Grand Theft Auto: LCS reverse engineered"
 arch=(x86_64 aarch64)
@@ -26,12 +26,12 @@ md5sums=(
 	SKIP
 	SKIP)
 pkgver(){
-	cd $_pkgbase
+	cd re3
 	echo 1.0_r`git rev-list --count HEAD`.`git rev-parse --short HEAD`
 }
 prepare() {
 
-  cd "$srcdir/$_pkgbase"
+  cd "$srcdir/re3"
   git submodule init
   for submod in librw ogg opus opusfile
   do
@@ -41,13 +41,13 @@ prepare() {
 
 }
 build(){
-  cd "$srcdir/$_pkgbase"
+  cd "$srcdir/re3"
   premake5 --with-librw gmake2
   ./printHash.sh src/extras/GitSHA1.cpp
   make -C build config=release_linux-amd64-librw_gl3_glfw-oal
 }
 package(){
-cd "$srcdir/$_pkgbase"
+cd "$srcdir/re3"
   install -D -m755 -t "$pkgdir/usr/bin" \
     "bin/linux-amd64-librw_gl3_glfw-oal/Release/reLCS"
       install -D -m644 -t "$pkgdir/usr/share/applications" ../reLCS.desktop
