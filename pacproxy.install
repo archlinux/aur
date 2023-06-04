@@ -1,5 +1,3 @@
 post_install() {
-	echo
-	echo "By default pacproxy.service uses 127.0.0.1:8080 port and /etc/proxy.pac file"
-	echo
+	echo -e "\nBy default pacproxy.service uses 127.0.0.1:8080 port and /etc/proxy.pac file\n"
 }
