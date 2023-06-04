@@ -4,7 +4,7 @@
 _pkgname=qmplay2
 pkgname="${_pkgname}-appimage"
 _appname=QMPlay2
-pkgver=23.02.05
+pkgver=23.06.04
 pkgrel=2
 pkgdesc="A video and audio player which can play most formats and codecs"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(hicolor-icon-theme zlib glibc)
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_appname}-${pkgver}-1-x86_64.AppImage")
-sha256sums=('d5567475a0137a826dd0340deacd0a5e3ec95a70b7e0ce848ae64bda7c19371d')
+sha512sums=('77b7e5d3da79b78ed7772037862202df28184caa21c87e5dc9f34d259fa49d2deb17d04fb05d94aa5f0da657d10a01b362ac1fb0833ccdc5dfa8f5d78d175d80')
      
 prepare() {
     chmod a+x "${_pkgname}-${pkgver}.AppImage"
