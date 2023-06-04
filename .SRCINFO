@@ -1,6 +1,6 @@
 pkgbase = libreoffice-dev-i18n
 	pkgver = 7.6.0.0alpha1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.documentfoundation.org
 	arch = any
 	license = LGPL
@@ -133,6 +133,8 @@ pkgbase = libreoffice-dev-i18n
 	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOfficeDev_7.6.0.0.alpha1_Linux_x86-64_rpm_helppack_pt-BR.tar.gz
 	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOfficeDev_7.6.0.0.alpha1_Linux_x86-64_rpm_langpack_pt.tar.gz
 	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOfficeDev_7.6.0.0.alpha1_Linux_x86-64_rpm_helppack_pt.tar.gz
+	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOfficeDev_7.6.0.0.alpha1_Linux_x86-64_rpm_langpack_qtz.tar.gz
+	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOfficeDev_7.6.0.0.alpha1_Linux_x86-64_rpm_helppack_qtz.tar.gz
 	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOfficeDev_7.6.0.0.alpha1_Linux_x86-64_rpm_langpack_ro.tar.gz
 	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOfficeDev_7.6.0.0.alpha1_Linux_x86-64_rpm_helppack_ro.tar.gz
 	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOfficeDev_7.6.0.0.alpha1_Linux_x86-64_rpm_langpack_ru.tar.gz
@@ -186,6 +188,8 @@ pkgbase = libreoffice-dev-i18n
 	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOfficeDev_7.6.0.0.alpha1_Linux_x86-64_rpm_helppack_zh-TW.tar.gz
 	source = https://dev-builds.libreoffice.org/pre-releases/rpm/x86_64//LibreOfficeDev_7.6.0.0.alpha1_Linux_x86-64_rpm_langpack_zu.tar.gz
 
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -529,6 +533,8 @@ pkgname = libreoffice-dev-pl
 pkgname = libreoffice-dev-pt-br
 
 pkgname = libreoffice-dev-pt
+
+pkgname = libreoffice-dev-qtz
 
 pkgname = libreoffice-dev-ro
 

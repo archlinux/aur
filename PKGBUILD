@@ -5,7 +5,7 @@ pkgbase=libreoffice-dev-i18n
 _pkgnamefmt=LibreOfficeDev
 _pkgver=7.6.0.0.alpha1
 pkgver=7.6.0.0alpha1
-pkgrel=1
+pkgrel=2
 #_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 
 arch=('any')
@@ -103,6 +103,7 @@ _languages=(
   'ro           "Romanian"                     1'
   'ru           "Russian"                      1'
   'rw           "Kinyarwanda"                  0'
+  'qtz          "Weblate Localization"         1' ## search for KeyID strings in weblate and help with localization of LibreOffice
   'sa-IN        "Sanskrit (India)"             0'
   'sat          "Santali"                      0'
   'sd           "Sindhi"                       0'
@@ -137,7 +138,6 @@ _languages=(
   'zh-TW        "Chinese (traditional)"        1'
   'zu           "Zulu"                         0'
 )
-#  'qtz          "Reserved"                     1' ## Reserved language code?
 
 #validpgpkeys=('C2839ECAD9408FBE9531C3E9F434A1EFAFEEAEA3') # "LibreOfficeDev Build Team (CODE SIGNING KEY) <build@documentfoundation.org>"
 
