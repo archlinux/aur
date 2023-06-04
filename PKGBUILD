@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="dbgate-appimage"
-pkgver=5.2.5
+pkgver=5.2.6
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application"
 arch=('x86_64')
@@ -13,13 +13,13 @@ options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-linux_x86_64.AppImage"
   "LICENSE::https://raw.githubusercontent.com/dbgate/dbgate/master/LICENSE")
-sha256sums=('93fa83b6991eb052532d50fe4949c54c2c294af8fda2660a24b63b1fc50bb550'
+sha256sums=('070e7e31a617b8e4f50f9cf7708993a12e8075dfed0f0cbdaff6fb32cbe2c941'
             '4ba7d897a31d45781b6bbc0b87e9a241873d61fff657af2f0c54608f652d235b')
     
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/dbgate.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 
 package() {
