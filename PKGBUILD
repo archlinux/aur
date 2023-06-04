@@ -1,6 +1,8 @@
 # Maintainer:
 # Contributor: Alexey Manukhin <axxapy@gmail.com>
 
+
+
 _gitname="runkit7"
 _pkgname="php-$_gitname"
 pkgname="$_pkgname-git"
@@ -13,7 +15,7 @@ license=('PHP')
 url="https://github.com/runkit7/runkit7"
 
 depends=('php')
-makedepends=('php')
+makedepends=('git')
 
 provides=("$_pkgname")
 conflicts=(${provides[@]})
