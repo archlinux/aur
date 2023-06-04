@@ -1,7 +1,7 @@
 pkgbase = wayclip-manager-git
 	pkgdesc = an opinionated Wayland package manager
-	pkgver = 0.1
-	pkgrel = 1
+	pkgver = any
+	pkgrel = 2
 	arch = any
 	license = GPL
 	makedepends = git

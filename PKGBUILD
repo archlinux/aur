@@ -1,7 +1,7 @@
 # Maintainer: Joey Eamigh @JoeyEamigh on GitHub
 pkgname=wayclip-manager-git
-pkgver=0.1
-pkgrel=1
+pkgver=any
+pkgrel=2
 pkgdesc="an opinionated Wayland package manager"
 arch=('any')
 url=""
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-manager-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	printf "%s" "$(git describe --always --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
