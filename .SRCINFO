@@ -1,0 +1,17 @@
+pkgbase = postbird-appimage
+	pkgdesc = Open source PostgreSQL GUI client for macOS, Linux and Windows
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/Paxa/postbird
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	conflicts = postbird
+	options = !strip
+	source = postbird-0.8.4.AppImage::https://github.com/Paxa/postbird/releases/download/0.8.4/postbird-0.8.4.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Paxa/postbird/master/LICENSE
+	sha256sums = 94498a3f6d9ad2ea9d344c25e20674290c1362fd5356ecf33eabc778fe2fd19e
+	sha256sums = d93e84fa24bbea7e92d6cd171968d8da1f4a28047cc704f0700d17b57c7a9a9c
+
+pkgname = postbird-appimage
