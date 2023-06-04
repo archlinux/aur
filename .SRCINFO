@@ -14,9 +14,6 @@ pkgbase = python-textual
 	depends = python-aiohttp
 	depends = python-click
 	depends = python-msgpack
-	optdepends = python-aiohttp: for HTTP server
-	optdepends = python-click: for click event as mouse button
-	optdepends = python-msgpack: for MessagePack serializer
 	source = textual-0.27.0.tar.gz::https://github.com/Textualize/textual/archive/v0.27.0.tar.gz
 	sha512sums = 700dbd8205c2812088287fa0a133d4a0f8a6eb0f8054e6b4b55a1daf6aaf5dddfd509aa58eab6a55ee93c458a1417e01fc36003e59fc79a4d76c5556f39db1f5
 

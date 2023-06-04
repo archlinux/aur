@@ -13,9 +13,6 @@ depends=(python-rich python-importlib-metadata python-typing_extensions python-a
 makedepends=(python-build python-installer python-poetry-core)
 # checkdepends=(python-pytest python-exceptiongroup python-jinja python-syrupy python-time-machine)
 # python-pytest-aiohttp python-pytest-asyncio
-optdepends=('python-aiohttp: for HTTP server'
-  'python-click: for click event as mouse button'
-  'python-msgpack: for MessagePack serializer')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('700dbd8205c2812088287fa0a133d4a0f8a6eb0f8054e6b4b55a1daf6aaf5dddfd509aa58eab6a55ee93c458a1417e01fc36003e59fc79a4d76c5556f39db1f5')
 
