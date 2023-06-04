@@ -1,0 +1,17 @@
+pkgbase = certbot-dns-desec
+	pkgdesc = OVH DNS Authenticator plugin for Certbot
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/desec-io/certbot-dns-desec
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	depends = certbot
+	depends = python-requests
+	source = git+https://github.com/desec-io/certbot-dns-desec.git#tag=v1.2.1
+	b2sums = SKIP
+
+pkgname = certbot-dns-desec
