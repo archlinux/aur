@@ -1,6 +1,6 @@
 # Maintainer: Alexander Diana (alexander.a.diana@gmail.com)
 pkgname=vrising-server
-pkgver=0.6.0.57108
+pkgver=0.6.5.57553
 pkgrel=1
 pkgdesc="Dedicated server for the V-Rising PC game"
 arch=('x86_64')
@@ -23,7 +23,7 @@ sha256sums=('8af62cab2aa72e9827d0666cbecbbd22377f9fd67b183dd29e771ffb3a269800'
             '66e46b3d7618801e5188d25305bc5b82f9e4969810da1b585a6ff2228d70f01d')
 
 prepare() {
-    steamcmd +force_install_dir "$srcdir/$pkgname" +login anonymous +app_update 1829350 validate +quit
+    steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir "$srcdir/$pkgname" +login anonymous +app_update 1829350 validate +quit
 }
 
 package() {
