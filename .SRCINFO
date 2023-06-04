@@ -1,0 +1,16 @@
+pkgbase = intrigue-appimage
+	pkgdesc = Organize literature into ideas, fast.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/shaunabanana/intrigue
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = intrigue
+	options = !strip
+	source = intrigue-0.1.6.AppImage::https://github.com/shaunabanana/intrigue/releases/download/v0.1.6/Intrigue-0.1.6.AppImage
+	sha256sums = 467fdc85ce640e9289604e7e7ce60e0b9146b295da857b100603749f988e38d0
+
+pkgname = intrigue-appimage
