@@ -1,0 +1,17 @@
+pkgbase = grimshot-sway-bin
+	pkgdesc = Symlink sway's included grimshot script to /usr/bin
+	pkgver = 1
+	pkgrel = 1
+	url = https://swaywm.org/
+	arch = any
+	license = MIT
+	provides = grimshot
+	conflicts = grimshot
+
+pkgname = grimshot-sway-bin
+	depends = sway
+	depends = grim
+	depends = slurp
+	depends = jq
+	optdepends = wl-clipboard
+	optdepends = libnotify
