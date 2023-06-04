@@ -1,6 +1,6 @@
 pkgbase = buttercup-desktop-appimage
 	pkgdesc = Cross-Platform Passwords & Secrets Vault
-	pkgver = 2.20.2
+	pkgver = 2.20.3
 	pkgrel = 1
 	url = https://buttercup.pw/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = buttercup-desktop-appimage
 	depends = glibc
 	depends = hicolor-icon-theme
 	options = !strip
-	source = buttercup-desktop-2.20.2.AppImage::https://github.com/buttercup/buttercup-desktop/releases/download/v2.20.2/Buttercup-linux-x86_64.AppImage
-	sha256sums = 7dc58b9c952fb12c032c72fc4e26041a7410f8a824999206b961b85dabdbc792
+	source = buttercup-desktop-2.20.3.AppImage::https://github.com/buttercup/buttercup-desktop/releases/download/v2.20.3/Buttercup-linux-x86_64.AppImage
+	sha256sums = 7bb0998c94a400090d9fbdd9ddc83e0f9494751781a7aa6acfbccaadb907b37f
 
 pkgname = buttercup-desktop-appimage
