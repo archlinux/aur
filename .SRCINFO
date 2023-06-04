@@ -1,0 +1,18 @@
+pkgbase = ambient-git
+	pkgdesc = The Ambient game engine runtime commandline tool.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://ambient.run
+	install = ambient.install
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = rustup
+	depends = openssl
+	provides = ambient
+	conflicts = ambient
+	source = ambient-git::git+https://github.com/AmbientRun/Ambient.git
+	sha512sums = SKIP
+
+pkgname = ambient-git
