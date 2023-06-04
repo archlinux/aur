@@ -23,7 +23,7 @@ _clangbuild=
 pkgbase=kodi-nexus-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
 pkgver=r62122.ce0bfc65020
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -68,7 +68,6 @@ _crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
 _flatbuffers_version="23.3.3"
 _libudfread_version="1.1.2"
-
 source=(
   "git+https://github.com/xbmc/xbmc.git#branch=$_codename"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
@@ -80,7 +79,7 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   cheat-sse-build.patch
-  0001-flatbuffers-use-23.3.3-to-fix-build-with-gcc13.patch
+  23266.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/23266.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -102,7 +101,7 @@ b2sums=('SKIP'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
-        'd24ddcde4e78fea147e326e1b0257d5a7bcda45cd918f1c4d30d150cf83208662b2f9bded61a482ce1afca479d995ac029556b5b88330e53faa30878f8752331')
+        'd0d1e805243a3371b0777fd062d171a142c89845713c8b0c3882ef819db7635e242ff501efc65a0205fa54888615dbee951a235bec9207d8bf960a3541dd1aff')
 
 pkgver() {
   cd "$_gitname"
@@ -118,7 +117,7 @@ prepare() {
   rm -rf system/certs # remove not needed cacert
 
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
-  patch -p1 -i ../0001-flatbuffers-use-23.3.3-to-fix-build-with-gcc13.patch
+  patch -p1 -i ../23266.patch
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
