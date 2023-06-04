@@ -2,26 +2,19 @@
 
 pkgname=astap-bin
 _pkgname=astap
-pkgver=2022.2.04a
+pkgver=2023.05.31
 pkgrel=1
-pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer"
+pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer. Gtk2 version."
 arch=('i686' 'x86_64')
 url="http://www.hnsky.org/astap.htm"
 license=('GPL')
 source_i686=("${_pkgname}_i386.deb::https://sourceforge.net/projects/astap-program/files/linux_installer/astap_i386.deb/download")
 source_x86_64=("${_pkgname}_amd64.deb::https://sourceforge.net/projects/astap-program/files/linux_installer/astap_amd64.deb/download")
-sha256sums_i686=('c52ea287343c9d43491c3ce7488405d398b7b1a0f69d2c41dbe3f48daa181bb1')
-sha256sums_x86_64=('9c3d4415f5c3cb68fee7834995eb3610bf85594f9c8fa957a6e2ffaa8abfc1b0')
+sha256sums_i686=('a3d2fd2b941979da09e520d32d340beb20786b3e75e1d60e740d0b5c8e2ca8e1')
+sha256sums_x86_64=('667c0db4ca252407bbc6a893349f9c46b1177e3171e1d9dfbe8bdda26cd1b89b')
 
 mkinfo() { echo -e "[\e[96mMKINFO\e[0m]:  \e[1m$*\e[0m"; }
 
-pkgver() {
-    if [[ "$CARCH" == "i686" ]]; then
-        echo "2022.1.17"
-    else
-        echo "${pkgver}"
-    fi
-}
 
 build() {
     if [[ "$CARCH" == "i686" ]]; then
