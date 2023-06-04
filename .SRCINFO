@@ -1,0 +1,20 @@
+pkgbase = python-cf-xarray
+	pkgdesc = A lightweight convenience wrapper for using CF attributes on xarray objects.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/xarray-contrib/cf-xarray
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-xdist
+	depends = python-dask
+	depends = python-matplotlib
+	depends = python-netcdf4
+	depends = python-pandas
+	depends = python-pooch
+	depends = python-xarray
+	source = python-cf-xarray-0.8.1.tar.gz::https://github.com/xarray-contrib/cf-xarray/archive/refs/tags/v0.8.1.tar.gz
+	sha256sums = 4a079a9015f7a46c11792f07bb73610eb0e337daf21b63dc03201ae92ab0996a
+
+pkgname = python-cf-xarray
