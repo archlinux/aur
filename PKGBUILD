@@ -2,7 +2,7 @@
 
 _pkgname=flightcore
 pkgname=$_pkgname-bin
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("$url/releases/download/v$pkgver/flight-core_${pkgver}_amd64.AppImage"
         "$_url2/README.md"
         "$_url2/docs/DEVELOPMENT.md"
         "$_url2/docs/FAQ.md")
-sha256sums=('8d39d46740db3300bf2844b1d90c9de1d9459c80988170981e16709535720ae5'
+sha256sums=('b56181f0f21e9e5b7dfb5a0cfc8a71412fe65ed400840168c35ff057ae9d8637'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -39,7 +39,6 @@ prepare() {
   # Extract the AppImage
   chmod +x "./$_appimage"
   "./$_appimage" --appimage-extract
-  chmod 755 squashfs-root
 }
 
 package() {
@@ -48,6 +47,6 @@ package() {
   done
   install -Dm644 DEVELOPMENT.md FAQ.md README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
-  install -Dm644 $_desktop "$pkgdir/usr/share/applications/$_desktop"
+  install -Dm644 $_desktop -t "$pkgdir/usr/share/applications"
   install -Dm755 squashfs-root/usr/bin/flight-core "$pkgdir/usr/bin/$_pkgname"
 }
