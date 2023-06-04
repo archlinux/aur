@@ -1,0 +1,17 @@
+pkgbase = southweather-appimage
+	pkgdesc = Open weather app for linux
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://southweather.wlorigin.cf/
+	arch = x86_64
+	license = ISC
+	depends = zlib
+	depends = glibc
+	conflicts = southweather
+	options = !strip
+	source = southweather-1.0.1.AppImage::https://github.com/SpiritOTHawk-s-projects/SouthWeather/releases/download/1.0.1/SouthWeather-1.0.1.AppImage
+	source = LICENSE.md::https://raw.githubusercontent.com/SpiritOTHawk-s-projects/SouthWeather/master/LICENSE.md
+	sha256sums = 44d74cf6b0d85a5f9cd88aab7a2be09d54afb8e097c6463d9979e51715415576
+	sha256sums = d3c7942b781e1616c13d183bf30ccb1e52837b11d53a7f97ae4b65d85fcd3bac
+
+pkgname = southweather-appimage
