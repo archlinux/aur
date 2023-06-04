@@ -15,7 +15,7 @@
 
 pkgname=mutter-x11-scaling
 pkgver=44.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -75,6 +75,11 @@ pkgver() {
 
 prepare() {
   cd mutter
+  
+  # Revert commit that broke auto focus of opened windows from overview until upstream fixes it
+  # https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
+  # https://gitlab.gnome.org/GNOME/mutter/-/commit/3ac82a58c51a5c8db6b49e89a1232f99c79644cc?merge_request_iid=2878
+  git revert -n 3ac82a58
 
   # Unbreak tests with Mesa 23.1
   # https://gitlab.gnome.org/GNOME/mutter/-/issues/2848
