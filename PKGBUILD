@@ -3,7 +3,7 @@
 vername=GC_NMQ_D
 verdesc="Ocarina of Time Gamecube Europe PAL Debug"
 pkgname=soh-otr-${vername,,}
-pkgver=5.1.4.r35.g37f31116b
+pkgver=7.0.2.r60.g2308ab882
 pkgrel=1
 epoch=1   # For old versions of SoH, if available
 pkgdesc="OTR game data for SoH (${verdesc})"
@@ -31,7 +31,7 @@ build() {
   cp -r "${SHIP_PREFIX}"/assets/game Extract/assets/
 
   "assets/extractor/ZAPD.out" ed -eh -i "assets/extractor/xmls/${vername}" \
-    -b baserom.z64 -fl "assets/extractor/filelists" -o . -osf . -gsf 1 \
+    -b baserom.z64 -fl "assets/extractor/filelists" -o . -osf . -gsf 0 \
     -rconf "assets/extractor/Config_${vername}.xml" -se OTR --otrfile oot.otr
 }
 
