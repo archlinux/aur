@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-nexus-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r62102.f960b3749f3
+pkgver=r62122.ce0bfc65020
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -80,9 +80,7 @@ source=(
   "https://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "https://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
   cheat-sse-build.patch
-  gcc13.patch
-  https://github.com/xbmc/xbmc/commit/28ed2221.patch
-  https://github.com/xbmc/xbmc/commit/023717ed.patch
+  0001-flatbuffers-use-23.3.3-to-fix-build-with-gcc13.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -104,9 +102,7 @@ b2sums=('SKIP'
         'be5e3c8ea81ce4b6f2e2c1b2f22e1172434c435f096fa7dade060578c506cff0310e3e2ef0627e26ce2be44f740652eb9a8e1b63578c18f430f7925820f04e66'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
-        'cae6c719106d57102e54b8e21f29f32fc3b9453e16c4fc2ad6dbe64cc6dc550da149e75cd8c26a446cefae44d5c52a95a3c073ad2d42296650d9c68704da8abd'
-        'a83e294a5e179c0b3d2d378db115af03aacff3e24c2a90a0485413225178cc175efb083047b90c8231c3435b22f859477939febe963092fb03f1f4ebcb7a5934'
-        'e60221f70947838cc3ffce9c848d109fc108cda616306b860330def5d1b3adca01a6d8f3e9afdde9283432cf843d8b7af2fd7693c2ff21cb3548625c651058b9')
+        'd24ddcde4e78fea147e326e1b0257d5a7bcda45cd918f1c4d30d150cf83208662b2f9bded61a482ce1afca479d995ac029556b5b88330e53faa30878f8752331')
 
 pkgver() {
   cd "$_gitname"
@@ -119,11 +115,11 @@ prepare() {
 
   cd "$_gitname"
 
+  rm -rf system/certs # remove not needed cacert
+
   [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
-  patch -p1 -i ../28ed2221.patch # Fix build with GCC 13
-  patch -p1 -i ../023717ed.patch # Fix build with GCC 13
-  patch -p1 -i ../gcc13.patch # Fix build with GCC 13
-  
+  patch -p1 -i ../0001-flatbuffers-use-23.3.3-to-fix-build-with-gcc13.patch
+
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
     export CC=clang CXX=clang++
@@ -159,6 +155,7 @@ build() {
     -DENABLE_VDPAU=ON
     -DENABLE_XSLT=ON
     -DENABLE_LIRCCLIENT=ON
+    -DENABLE_INTERNAL_RapidJSON=OFF
     -DENABLE_INTERNAL_FFMPEG=ON
     -DENABLE_INTERNAL_CROSSGUID=ON
     -DENABLE_INTERNAL_FSTRCMP=ON
