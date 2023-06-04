@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tadabor-bin
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="An app that allows you to browse through the Quran and write your notes/reflections below the verses, everything will be saved in the application."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('nspr' 'nss' 'libdrm' 'mesa' 'glibc' 'libxkbcommon' 'dbus' 'expat' 'lib
     'libxcomposite' 'at-spi2-core' 'glib2' 'libcups' 'alsa-lib' 'libxrandr' 'gtk3' 'libx11' 'libxdamage' 'cairo')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/EnlightenCode/tadabor/master/LICENSE")
-sha256sums=('4f339c7fee7cf34fde58bcab6aceaa2083e42289782a858825e7a73fe834d18a'
+sha256sums=('2799902026c0618fcadb52af191f75065bbc930e3b94bb87c39689b7096cab67'
             'c55a4e23192e61a6c80cf58bfc7ae0b6f6598a0b27a0112558bd47d0d65f4d7c')
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst"
