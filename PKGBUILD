@@ -1,8 +1,8 @@
 # Maintainer: kmille github@androidloves.me
 
 pkgname=riseup-vpn-configurator
-pkgver=0.1.6
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="a simple command line tool to get RiseupVPN up and running"
 arch=('any')
 url="https://github.com/kmille/riseup-vpn-configurator"
@@ -11,7 +11,7 @@ backup=('etc/riseup-vpn.yaml')
 makedepends=(python-poetry-core python-build python-installer python-wheel)
 depends=(openvpn openvpn-reconnect python python-jinja python-requests python-yaml python-pyasn1 python-pyasn1-modules python-psutil python-ping3)
 source=(https://github.com/kmille/riseup-vpn-configurator/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('842bc8337e532c8c8f470143875e32b6fee89a45d546f06149a232135b9f19f3')
+sha256sums=('0707249c2f47a034ada9952175141bd731fa1e166ff668b143a9c62f40e14701')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
