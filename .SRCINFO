@@ -1,6 +1,6 @@
 pkgbase = makedeb
 	pkgdesc = A simplicity-focused packaging tool for Debian archives (stable release)
-	pkgver = 11.0.1
+	pkgver = 16.0.0
 	pkgrel = 1
 	url = https://github.com/makedeb/makedeb
 	arch = any
@@ -36,7 +36,7 @@ pkgbase = makedeb
 	replaces = makedeb-makepkg
 	replaces = makedeb-makepkg-beta
 	replaces = makedeb-makepkg-alpha
-	source = makedeb::git+https://github.com/makedeb/makedeb/#tag=v11.0.1-1-stable
-	sha256sums = SKIP
+	source = https://github.com/makedeb/makedeb/archive/refs/tags/v16.0.0-stable.tar.gz
+	sha256sums = c87e3f56e867a165c927f7e34ed23bf29f369628dec4fd0ccd4738e512baf4ff
 
 pkgname = makedeb
