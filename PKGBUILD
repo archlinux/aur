@@ -3,7 +3,7 @@
 
 pkgname=raze
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64')
 url='https://github.com/coelckers/Raze'
@@ -23,9 +23,15 @@ optdepends=('gxmessage: crash dialog (GNOME)'
             'kdialog: crash dialog (KDE)'
             'xorg-xmessage: crash dialog (other)')
 source=("Raze::git+https://github.com/coelckers/Raze#tag=${pkgver}"
+        '0001-Fix-build-on-recent-gcc-libstdc.patch'
         'raze.desktop')
 sha256sums=('SKIP'
+            '9a531bb168ae375b15fb3a6efff9da8a9e6ed5a2834d405dd7b41e8b52e21504'
             'ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8')
+prepare() {
+    cd Raze
+    patch -i "$srcdir"/0001-Fix-build-on-recent-gcc-libstdc.patch -p 1
+}
 
 build() {
     cd Raze

@@ -1,0 +1,44 @@
+From 2081cb1d34847b34d0b11020d375619c60529cc7 Mon Sep 17 00:00:00 2001
+From: Brian Koropoff <bkoropoff@gmail.com>
+Date: Sat, 6 May 2023 18:28:55 -0700
+Subject: [PATCH] Fix build on recent gcc/libstdc++
+
+---
+ libraries/ZVulkan/include/zvulkan/vk_mem_alloc/vk_mem_alloc.h | 1 +
+ libraries/ZVulkan/src/vulkanbuilders.cpp                      | 1 +
+ libraries/ZVulkan/src/vulkanswapchain.cpp                     | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/libraries/ZVulkan/include/zvulkan/vk_mem_alloc/vk_mem_alloc.h b/libraries/ZVulkan/include/zvulkan/vk_mem_alloc/vk_mem_alloc.h
+index fd4472286..6091f1b2b 100644
+--- a/libraries/ZVulkan/include/zvulkan/vk_mem_alloc/vk_mem_alloc.h
++++ b/libraries/ZVulkan/include/zvulkan/vk_mem_alloc/vk_mem_alloc.h
+@@ -2162,6 +2162,7 @@ VMA_CALL_PRE void VMA_CALL_POST vmaDestroyImage(
+ #undef VMA_IMPLEMENTATION
+ 
+ #include <cstdint>
++#include <cstdio>
+ #include <cstdlib>
+ #include <cstring>
+ #include <utility>
+diff --git a/libraries/ZVulkan/src/vulkanbuilders.cpp b/libraries/ZVulkan/src/vulkanbuilders.cpp
+index bfa138080..486ba0caf 100644
+--- a/libraries/ZVulkan/src/vulkanbuilders.cpp
++++ b/libraries/ZVulkan/src/vulkanbuilders.cpp
+@@ -1,3 +1,4 @@
++#include <stdexcept>
+ 
+ #include "vulkanbuilders.h"
+ #include "vulkansurface.h"
+diff --git a/libraries/ZVulkan/src/vulkanswapchain.cpp b/libraries/ZVulkan/src/vulkanswapchain.cpp
+index 9162109c4..7a5a5378f 100644
+--- a/libraries/ZVulkan/src/vulkanswapchain.cpp
++++ b/libraries/ZVulkan/src/vulkanswapchain.cpp
+@@ -1,3 +1,4 @@
++#include <stdexcept>
+ 
+ #include "vulkanswapchain.h"
+ #include "vulkanobjects.h"
+-- 
+2.41.0
+
