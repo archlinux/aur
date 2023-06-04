@@ -1,0 +1,11 @@
+pkgbase = ttf-paktype
+	pkgdesc = PakType fonts for Pakistani typography
+	pkgver = 2022_04_01
+	pkgrel = 1
+	url = https://paktype.sourceforge.net/
+	arch = any
+	license = custom
+	source = https://master.dl.sourceforge.net/project/paktype/PakType-Release-2022-04-01.zip
+	sha256sums = 5398cfaf99296d866b4eaba45dd7b83374d3229ee7dee10b85fc93a2c9a06677
+
+pkgname = ttf-paktype
