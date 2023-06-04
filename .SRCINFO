@@ -1,0 +1,12 @@
+pkgbase = d05-star-db-astap
+	pkgdesc = D05 star database for 10>FOV>0.6 degrees. Size 100 mb.
+	pkgver = 2023.03.18
+	pkgrel = 1
+	url = https://www.hnsky.org/astap.htm
+	arch = any
+	license = LGPL3
+	depends = astap
+	source = d05.deb::https://downloads.sourceforge.net/project/astap-program/star_databases/d05_star_database.deb
+	sha256sums = e00b276e86c5673aef862d4fa093e739bd58cad267af916756409770fd0bd8eb
+
+pkgname = d05-star-db-astap
