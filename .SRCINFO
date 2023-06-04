@@ -1,0 +1,14 @@
+pkgbase = glass-appimage
+	pkgdesc = Cross-platform tool for making video tutorials and video conferencing, blending the webcam over the screen.
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/jersonlatorre/webcam-glass-app
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = glibc
+	options = !strip
+	source = glass-0.7.2.AppImage::https://github.com/jersonlatorre/webcam-glass-app/releases/download/0.7.2/Glass-0.7.2.AppImage
+	sha256sums = 88f07b92e0079398e430b74162871396d2b9aaaaa1e0344a68ff320e876e64fc
+
+pkgname = glass-appimage
