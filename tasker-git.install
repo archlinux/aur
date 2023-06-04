@@ -8,6 +8,7 @@ pre_install(){
     mv tasker_service ~.cargo/bin/
     sudo mv taskerctl /usr/bin/
     taskerctl enable
+    sudo cp ~.config/systemd/user/tasker.service /etc/systemd/system/
     systemctl --user enable tasker
     sudo systemctl enable tasker
     systemctl --user start tasker
