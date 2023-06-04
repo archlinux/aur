@@ -1,0 +1,19 @@
+pkgbase = lyricistant-appimage
+	pkgdesc = A helpful writing assistant for lyricists!
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/wardellbagby/lyricistant
+	arch = aarch64
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = lyricistant
+	options = !strip
+	source_aarch64 = lyricistant-3.1.0-aarch64.AppImage::https://github.com/wardellbagby/lyricistant/releases/download/v3.1.0/lyricistant-linux_arm64.AppImage
+	sha256sums_aarch64 = 8fc3c03552d22e03b8a073e2fc0d0fd565c0ec7ee567204fa875004cbe8a04bf
+	source_x86_64 = lyricistant-3.1.0-x86_64.AppImage::https://github.com/wardellbagby/lyricistant/releases/download/v3.1.0/lyricistant-linux_x86_64.AppImage
+	sha256sums_x86_64 = b3d1159a459c2bfa1f406cd0c007f16fceb7bd3fa03887698fddebbb8a93428c
+
+pkgname = lyricistant-appimage
