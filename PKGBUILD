@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stretchly-appimage
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="The break time reminder app"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflits=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Stretchly-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/hovancik/stretchly/trunk/LICENSE")
-sha256sums=('f595c44d4d02ce90e805b73d8fe63df59a5052ee4e74e9150605ab6fc8b165f8'
+sha256sums=('70222dc33910ac7d39ea87384dd3f739ab0e3b01cd7a9c34400866ced74c61ce'
             'd4262f71a6c02b19bdbdf760033803c0c7ca24acf2591ba425633f7e3315790a')
 _install_path="/opt/appimages"
 prepare() {
