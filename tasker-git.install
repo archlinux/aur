@@ -7,7 +7,7 @@ pre_install(){
     mkdir ~.cargo/bin/
     mv tasker_service ~.cargo/bin/
     sudo mv taskerctl /usr/bin/
-    taskerctl install
+    taskerctl enable
     systemctl --user enable tasker
     sudo systemctl enable tasker
     systemctl --user start tasker
