@@ -1,5 +1,23 @@
 # Maintainer: Nixuge
 
+# Note: check if "depends" are still valid. As of 1.9, the AppImage
+# Should contain everything already to just work everywhere.
+
+# Note 2 (for future me & others):
+# I really dislike using the AppImage for this package as it's slow to launch & kinda bloated
+# Ideally I'd use the deb, which is 10MB instead of 50MB for the appimage
+# 
+# However, as of 1.9, the introduction of the "libayatana-appindicator" dependency has caused some problems on Arch,
+# and is why the appimage became bloated in the first place to include everything for max compatibility
+#
+# This forces me to unfortunately stick with the appimage, as arch's "libayatana-appindicator" just segfaults
+# 
+# Could also redistribute debian's lib & patch the deb around, but I'd have to either:
+# - Add another file to download from another source (more risks of it going down)
+# - Add the raw file here directly (you'd have to trust me, or go check if the hash in the pkgbuild matches the one from an official src)
+# 
+# So for now just sticking with that. Will switch in the future if that lib implementation gets fixed.
+
 pkgname=localsend-bin
 pkgver=1.10.0
 pkgrel=1
@@ -7,7 +25,7 @@ pkgdesc='An open source cross-platform alternative to AirDrop '
 url=https://github.com/localsend/localsend
 arch=(x86_64)
 license=(MIT)
-depends=(zenity xdg-user-dirs libayatana-appindicator)
+depends=(zenity xdg-user-dirs)
 conflicts=('localsend-git')
 provides=('localsend')
 options=(!strip)

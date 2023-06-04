@@ -7,7 +7,6 @@ pkgbase = localsend-bin
 	license = MIT
 	depends = zenity
 	depends = xdg-user-dirs
-	depends = libayatana-appindicator
 	provides = localsend
 	conflicts = localsend-git
 	options = !strip
