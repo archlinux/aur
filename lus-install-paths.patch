@@ -1,23 +1,23 @@
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index f95c3c9..6040470 100644
+index c3367ca..b197010 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -85,6 +85,11 @@ set(Source_Files__Core
- 
- source_group("Core" FILES ${Source_Files__Core})
+@@ -14,6 +14,11 @@ set(Source_Files__TopLevel
+     ${CMAKE_CURRENT_SOURCE_DIR}/Context.cpp
+ )
  
 +if (DEFINED SHIP_BIN_DIR)
-+set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/core/Context.cpp
-+    PROPERTIES COMPILE_DEFINITIONS SHIP_BIN_DIR="${SHIP_BIN_DIR}")
++    set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/Context.cpp
++        PROPERTIES COMPILE_DEFINITIONS SHIP_BIN_DIR="${SHIP_BIN_DIR}")
 +endif()
 +
- set(Source_Files__Core__Libultra
-     ${CMAKE_CURRENT_SOURCE_DIR}/core/libultra/os.h
-     ${CMAKE_CURRENT_SOURCE_DIR}/core/libultra/os.cpp
-diff --git a/src/core/Context.cpp b/src/core/Context.cpp
-index 776333e..02eabe6 100644
---- a/src/core/Context.cpp
-+++ b/src/core/Context.cpp
+ source_group("" FILES ${Source_Files__TopLevel})
+ target_sources(libultraship PRIVATE ${Source_Files__TopLevel})
+ 
+diff --git a/src/Context.cpp b/src/Context.cpp
+index 113fd2d..3792058 100644
+--- a/src/Context.cpp
++++ b/src/Context.cpp
 @@ -281,6 +281,9 @@ std::string Context::GetShortName() {
  }
  
@@ -50,10 +50,11 @@ index 776333e..02eabe6 100644
      return ".";
  }
  
-@@ -315,7 +326,24 @@ std::string Context::GetPathRelativeToAppDirectory(const char* path) {
+@@ -314,4 +325,22 @@ std::string Context::GetPathRelativeToAppBundle(const std::string path) {
+ std::string Context::GetPathRelativeToAppDirectory(const std::string path) {
      return GetAppDirectoryPath() + "/" + path;
  }
- 
++
 +std::string Context::FindFileFromAllAppDirectories(const char* path) {
 +    std::string fpath;
 +
@@ -71,29 +72,24 @@ index 776333e..02eabe6 100644
 +    return "./" + std::string(path);
 +}
 +
- bool Context::DoesOtrFileExist() {
-     return mOtrFileExists;
- }
--} // namespace LUS
-\ No newline at end of file
-+} // namespace LUS
-diff --git a/src/core/Context.h b/src/core/Context.h
-index c32f4dd..a9f1639 100644
---- a/src/core/Context.h
-+++ b/src/core/Context.h
-@@ -26,6 +26,7 @@ class Context {
+ } // namespace LUS
+diff --git a/src/Context.h b/src/Context.h
+index 3f1b750..c31864e 100644
+--- a/src/Context.h
++++ b/src/Context.h
+@@ -29,6 +29,7 @@ class Context {
      static std::string GetAppDirectoryPath();
-     static std::string GetPathRelativeToAppDirectory(const char* path);
-     static std::string GetPathRelativeToAppBundle(const char* path);
+     static std::string GetPathRelativeToAppDirectory(const std::string path);
+     static std::string GetPathRelativeToAppBundle(const std::string path);
 +    static std::string FindFileFromAllAppDirectories(const char* path);
  
-     Context(std::string name, std::string shortName);
- 
-diff --git a/src/core/libultra/os.cpp b/src/core/libultra/os.cpp
-index 9058fe1..2956b7f 100644
---- a/src/core/libultra/os.cpp
-+++ b/src/core/libultra/os.cpp
-@@ -21,8 +21,8 @@ int32_t osContInit(OSMesgQueue* mq, uint8_t* controllerBits, OSContStatus* statu
+     Context(std::string name, std::string shortName, std::string configFilePath);
+     ~Context();
+diff --git a/src/public/libultra/os.cpp b/src/public/libultra/os.cpp
+index 2025557..a007734 100644
+--- a/src/public/libultra/os.cpp
++++ b/src/public/libultra/os.cpp
+@@ -14,8 +14,8 @@ int32_t osContInit(OSMesgQueue* mq, uint8_t* controllerBits, OSContStatus* statu
      }
  
  #ifndef __SWITCH__
@@ -104,7 +100,7 @@ index 9058fe1..2956b7f 100644
      if (mappingsAdded >= 0) {
          SPDLOG_INFO("Added SDL game controllers from \"{}\" ({})", controllerDb, mappingsAdded);
      } else {
-@@ -90,4 +90,4 @@ int32_t osRecvMesg(OSMesgQueue* mq, OSMesg* msg, int32_t flag) {
+@@ -78,4 +78,4 @@ int32_t osRecvMesg(OSMesgQueue* mq, OSMesg* msg, int32_t flag) {
      mq->validCount--;
      return 0;
  }
