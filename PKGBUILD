@@ -15,7 +15,7 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre
-pkgver=6.1.5
+pkgver=6.3.3
 pkgrel=1
 pkgdesc='Linux-libre'
 rcnver=5.18.12
@@ -24,12 +24,26 @@ url='https://linux-libre.fsfla.org/'
 arch=(i686 x86_64 armv7h)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  bc
+  cpio
+  gettext
+  git
+  libelf
+  pahole
+  perl
+  tar
+  xz
+
+  # htmldocs
+  graphviz
+  imagemagick
+  python-sphinx
+  texlive-latexextra
+  xmlto
 )
 makedepends_armv7h=(uboot-tools vboot-utils dtc) # required by linux-libre-chromebook
 options=('!strip')
-_srcname=linux-6.1
+_srcname=linux-6.3
 source=(
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/linux-libre-${_srcname##*-}-gnu.tar.xz"{,.sign}
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/$pkgver-gnu/patch-${_srcname##*-}-gnu-$pkgver-gnu.xz"{,.sign}
@@ -47,8 +61,7 @@ source=(
   0002-fix-Atmel-maXTouch-touchscreen-support.patch
   # Arch Linux patches
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-docs-Fix-the-docs-build-with-Sphinx-6.0.patch
-  0003-Revert-drm-display-dp_mst-Move-all-payload-info-into.patch
+  0002-drm-amd-display-Have-Payload-Properly-Created-After-.patch
 )
 source_i686=(
   # avoid using zstd compression in ultra mode (exhausts virtual memory)
@@ -56,7 +69,7 @@ source_i686=(
 )
 source_armv7h=(
   # RCN patch (CM3 firmware deblobbed and bloatware removed)
-  "https://repo.parabola.nu/other/rcn-libre/patches/$rcnver/rcn-libre-$rcnver-$rcnrel.patch"{,.sig}
+  #"https://repo.parabola.nu/other/rcn-libre/patches/$rcnver/rcn-libre-$rcnver-$rcnrel.patch"{,.sig}
   # Arch Linux ARM patches
   0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch
   0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch
@@ -65,46 +78,44 @@ source_armv7h=(
   0005-set-default-cubietruck-led-triggers.patch
   0006-exynos4412-odroid-set-higher-minimum-buck2-regulator.patch
   0007-USB-Armory-MkII-support.patch
-  # ChromiumOS patches
+  # ChromiumOS patch
+  # https://labs.parabola.nu/issues/2372
   0001-CHROMIUM-block-partitions-efi-Add-support-for-IGNORE.patch
 )
 validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
   '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78' # David P.
 )
-sha512sums=('1791227e4eef3be119fcbdbf3c8d441ae77badb6565c4b918130328fa24711b09128d4aabb26cd2adf453726bcb4b30b8c5199794114050835e3875bea169224'
-            'SKIP'
-            '309ce36c543c30fe2211368ea566d143b6b6fc766e509c3c0e9884618e9e71428f22d532dd8448a73c54d741795194afe4a04e6b2a5fccfd7de1f7fd5ad89f9d'
-            'SKIP'
-            '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
-            'SKIP'
-            '7a3716bfe3b9f546da309c7492f3e08f8f506813afeb1c737a474c83313d5c313cf4582b65215c2cfce3b74d9d1021c96e8badafe8f6e5b01fe28d2b5c61ae78'
-            'SKIP'
-            '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
-            'SKIP'
-            'b00a4c1aecd9d14a198595223559a70291682ceafa997637d472aac6487eb55f55e706eab67abbc1d6e51a40ad062d8f9b6993e116aaf8398b61148179f294c1'
-            '4fc56b1e48e402e0ee6d103dc6b53e7a5ae71945551189df7cdbfce516c8f5cd182bb541e793e0e9444be094a322e6c33ba401f7bca05534f348eff2c7d4df9f'
-            '47d16ffc94510d4a8773146a46cfb35aca8cfdae38d17283334cd62d92de36250fbec90e9892357033398ecc7d970127b1a41b703a8372972422ca4af7c90c70'
-            '53103bf55b957b657039510527df0df01279dec59cda115a4d6454e4135025d4546167fa30bdc99107f232561c1e096d8328609ab5a876cf7017176f92ad3e0b'
-            'f10af02f0cb2d31259d9633e1ba845f555f525789f750fc2ddc51bd18c5ff64fcdd242dae801623887f5ce5cdb5528bce890459f0fab9fd31a28868bb7f6bba5'
-            'bb6718984a7357c9b00c37e4788480e5b8b75018c172ecc1441bc3fc5d2d42444eb5d8c7f9d2e3a7d6fed6d03acb565e3c0559486e494c40a7fe6bd0570c9ede'
-            '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
-            '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
-            'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            '5640d6f9226ef6c172a4d0b74fd32f2e3ad5b3fca8c75d1f07fe83c083aadc7d59273823b77d9d75a5539ec16bb7d4aba32e58bda991144d2773a7fad6848841'
-            'ab6bf4664911dbe526dc611d53f9d2ba1a84d96ddb38befaa1b3bfad60e4371c2229cb620612894b28af29562494eedf8e3f63a792d2a63e33a3b8cd0076b000'
-            'f74f8c6a6a6fe4159fc03f0ae8f12f661ee39e918d8a3a1abbd6d35538bab6807b5413136f032ac617e2882a71db9969fb14fe23c31a20d236350825ddfb5876')
-sha512sums_i686=('bca15cc96f64c38adcd13a46752866b5b30555ac21e19b3f7afcd20fcb7ec585c9d990fe8f842f44d5f69d477d72867fe6a9102729f26f93f5a80b372e41ce85')
-sha512sums_armv7h=('94c6243d23bc995dec3edcb1dd5cc7d5e7d30fec70fc32b9be5f3e7d934da7035e9152fea3cce58a53b0f35f29060bdef2a3a2dac3c46f520adf1088897362f9'
-                   'SKIP'
-                   '8da996a42249672893fa532ccbd096347580a0dc1698c45e9c865646e2765789553b1bb42793e721de30aea70340fdc116d2e4a50580fef999ca5fc627aaf4c3'
-                   '0e6ddc24011d77a2e422b642c4507317fc2d26b20f5649818a2f11acac165ccab2cf2e64ab50d44ce7affcfe12c2ef5158790e499058831e7995400b2087df78'
-                   '5d2f228151148358b07744a9c09cf6e2420c4284735d4ce7dc925a1deb3970298cc95dd766ee13e094e2853847b016c3ebc2d61bb423e370b4bc33938367ebda'
-                   'a206c3dc678839831d72eefee997cbe1bb877af7f6f90dfe5cab0bd7d9686a3b13a2aba74c8fbe5533872e12306ac9ea1b5eede18ef3cf10b8d01361afd67e9c'
-                   'a1072dd808c63592178cc01ea3c36de946f277fb451b13c34f51a5ac134cde4a8a4d57487132af1c6d7b5820842cdda9dc4edb3da85d33bd02bf87a032c3263a'
-                   '85b2e16a930b8066990c42f973d386dc3c6d62fdf3d1289bbb51df3df296c26f30051162fba49a42d38f71f05de926aa8c065097f14bd8e9f8e28a52949ead00'
-                   '2e99582d8b670b6c6b27add14b60e957cbcf9cd6aae40491bd9dea6ac455c0ade0bbee21e3bdfb5e06ce83ad27c5a788404b05bf7ac93831ca18d2e60a67017c'
-                   '5b77c587cf2ffb60acf1d9eb43330983548c7e81a53e0ffd2b04962a99441a0000d631ff77c245c7062afc2c8368d996a2456496d42dcb658f330e5083e5e029')
+b2sums=('03c5869a2b432207208d002a3a8b55f42751dc2b50642fcd9ca982cc8da05c7965d359202e49e1418b0ff74307fdeb91d9f41f3293815bc4e508a43104ec1e92'
+        'SKIP'
+        'cff40934db0b5da1624718bab083fc7e99418ee1f134fbb5d52f47927e32198fdc5117d1e8464dc86f504ce8dc1ad924dff6eb87f7cf844ef7b35861aa2a40c8'
+        'SKIP'
+        '73fee2ae5cb1ffd3e6584e56da86a8b1ff6c713aae54d77c0dab113890fc673dc5f300eb9ed93fb367b045ece8fa80304ff277fe61665eccf7b7ce24f0c045eb'
+        'SKIP'
+        'd02a1153a4285b32c774dca4560fe37907ccf30b8e487a681b717ed95ae9bed5988875c0a118938e5885ae9d2857e53a6f216b732b6fa3368e3c5fe08c86382c'
+        'SKIP'
+        '580911af9431c066bbc072fd22d5e2ef65f12d8358cec5ff5a4f1b7deebb86cef6b5c1ad631f42350af72c51d44d2093c71f761234fb224a8b9dbb3b64b8201d'
+        'SKIP'
+        'efb4265f5e7554b8daa8ab0ae727ee2dbb53ed685956f6e41a548ff297e4dabd9a6e8a61a74af697fd6253c3a79a01d25cf30a6f4f4c3b9d12835228e7481e05'
+        'e0047e808c4f2c4659df36e16a5b3ef9f77853950f9ae572b5cfc77d6b28144636d7a8524ef628c51725bdce629f5e1126eddec24189650e103462493bcbc585'
+        '5760e0879cf71dfc1c9bdd557829f28437909e701fa566cc3575a52785c81ac70d634ec929833ac01aea111bbae6ba402add738dc86623b32bcc3b523d43f60f'
+        'af69176b1117b94e56b043e97b0bd5873a2974a6a2fd52b102d0ffdca440ff68cfb241d6c4d4ef453cc8c220c236b739bad232e53fd500ce7672fa6e5ba87383'
+        'f2d309c1d0a347539a8095223085691a9be228934b2258feb4872784f6cf6c2cc741426e4e755d63128ee57c284eddb13e0c719d4b5f8e101722e4cca4eb3ad5'
+        'eeed12b2ab60c3d3aad598a1d44b4f23560d818e8fe1ef143f857c8e176652df53501b192ade7d4d915d425fff818b2a232d46bae0d3a0f46b8959e614e0ede2'
+        'aaa4e28a31967cc3a7fe25a86ba35fdfa210cd8b1a9cc96298349cbf01d60cdf146ee519d6803d05b175873f1b3367e47194a178db7ed97c802e59b38f8c303c'
+        'c2214154c36900e311531bfe68184f31639f5c50fed23bc3803a7f18439b7ff258552a39f02fed0ea92f10744e17a6c55cef0ef1a98187f978fe480fb3dddc14'
+        '0c7ceba7cd90087db3296610a07886f337910bad265a32c052d3a703e6eb8e53f355ab9948d72d366408d968d8ee7435084dd89bef5ed0b69355fd884c2cd468'
+        '25b35ceabee03a287f21e7de5907fa760ad63e2e5125ee2c42fb8e4427c5fca1bd62be0bef32a1d46b649b513bb3f892337cc1413768440fe9e9613c51d0f8e3'
+        '9c7f23cc063ab6c8878e2785bf415320df1e41687db3e35e99286416d59f4c923b1a8bcf6cd0e51d9e689b063c49451bb765d18b47b9139990c8f5b01710783b')
+b2sums_i686=('165ab9dd8cedeaae5327accc1581c19cf0be55f923b03feb889cad3351b74c7c4cd3d3c206938e5152bfe1d947513dea8f630f8f5544099ec13d16d254725c40')
+b2sums_armv7h=('73ecc5862c6b4aef7b163c1992004273fbf791b82c75a8602e3def311f682f2b866124c0bfde90d03c7c76bb8b5853bdb9daad6ee2ab0908f4145cda476b8286'
+               '15f7b70b5d153e9336006aba873a78f94d91b8df5e1939041f12e678bb9cfbdda2e362001068a07c044ce606cf0d4d2e625002df9c569c914f7ac248d4d3e8ad'
+               '6219cec826bc543000ab87cf35dcc713f0635519cf79e75888b213a5e2d1f728e59e70df7fd842dda6e40494bf9cafa9f87368cb75b338c5a157a0adcf583512'
+               '66d6cff292962c4c8bbea62b2240c4c53c0c514f9e99864be9244cb846c505e1bedd800ca1347b80883543035d20573b06796e5bacbace6e829880695ffca781'
+               'e1d0949abbde146d68cddab53944c0391210fb4ac632a78788ec729dea834cb82698c8beef203608eee5323a07ecd566b9813552498e9ac659942060713c4549'
+               '56fdf81b439b6b94e63acfb18d61f90298dc4e29fc65efd4dcf41ae950e87f287f48b42b2be15f4ea0cf7a6d39df3c0ef882cf37b2474e91cc2985fb6cdd1089'
+               'd00505c1ac57fd4b53bdb0d9a2172168a23d6082111695c679aeae58e8e749f5b2ef27ce1bc47b0d5fdd81fac792c57d9b45f125a3315b64297b146f727ac467'
+               '741ad7ffc9e8200657315fc4111066b2477cde35ecdc5e73976457f17106f80d148d86bf97b92c523fef1cc5a26ddb867d16330f592f2aa4d886be596bedc8df')
 
 _replacesarchkernel=("${_replacesarchkernel[@]/\%/${pkgbase#linux-libre}}")
 _replacesoldkernels=("${_replacesoldkernels[@]/\%/${pkgbase#linux-libre}}")
@@ -119,6 +130,11 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+_make() {
+  test -s version
+  make KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
   cd $_srcname
 
@@ -132,9 +148,11 @@ prepare() {
     ../logo_linux_{clut224.ppm,vga16.ppm,mono.pbm}
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux-libre}" > localversion.20-pkgname
+  make defconfig
+  make -s kernelrelease > version
+  make mrproper
 
   if [ "$CARCH" = "armv7h" ]; then
     local src_armv7h
@@ -169,39 +187,47 @@ prepare() {
 
   echo "Setting config..."
   cp ../config.$CARCH .config
-  make olddefconfig
+  _make olddefconfig
   diff -u ../config.$CARCH .config || :
 
-  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make htmldocs all
+  _make htmldocs all
 }
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  depends=(coreutils kmod initramfs)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-libre-firmware: firmware images needed for some devices')
-  provides=(LINUX-ABI_VERSION="$pkgver" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-libre-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE "LINUX-ABI_VERSION=$pkgver"
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
 
   cd $_srcname
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -209,12 +235,12 @@ _package() {
 
   if [ "$CARCH" = "armv7h" ]; then
     echo "Installing device tree binaries..."
-    make INSTALL_DTBS_PATH="$pkgdir/boot/dtbs/$pkgbase" dtbs_install
+    _make INSTALL_DTBS_PATH="$pkgdir/boot/dtbs/$pkgbase" dtbs_install
 
-    # armv7h presets only work with ALL_kver=$kernver
+    # armv7h presets only work with ALL_kver=$(<version)
     backup=("etc/mkinitcpio.d/$pkgbase.preset")
     echo "Installing mkinitcpio preset..."
-    sed "s|%PKGBASE%|$pkgbase|g;s|%KERNVER%|$kernver|g" ../linux-armv7h.preset \
+    sed "s|%PKGBASE%|$pkgbase|g;s|%KERNVER%|$(<version)|g" ../linux-armv7h.preset \
       | install -Dm644 /dev/stdin "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
   fi
 }
@@ -330,9 +356,6 @@ _package-docs() {
 _package-chromebook() {
   pkgdesc="$pkgdesc kernel sign for Veyron Chromebooks"
   depends=(linux-libre=$pkgver)
-  provides=("${_replacesarchkernel[@]/%/-armv7-chromebook=$pkgver}")
-  conflicts=("${_replacesarchkernel[@]/%/-armv7-chromebook}" "${_replacesoldkernels[@]/%/-armv7-chromebook}")
-  replaces=("${_replacesarchkernel[@]/%/-armv7-chromebook}" "${_replacesoldkernels[@]/%/-armv7-chromebook}")
   install=$pkgbase-chromebook.install
 
   cd $_srcname
@@ -358,7 +381,11 @@ _package-chromebook() {
   cp vmlinux.kpart "$pkgdir/boot"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=(
+  "$pkgbase"
+  "$pkgbase-headers"
+  "$pkgbase-docs"
+)
 [ "$CARCH" = "armv7h" ] && pkgname+=("$pkgbase-chromebook")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
