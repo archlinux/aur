@@ -2,8 +2,8 @@
 # Contributor: richli <rich at dranek dot com>
 
 pkgname=python-h5netcdf
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Pythonic interface to netCDF4 via h5py"
 arch=('any')
 url='https://h5netcdf.org'
@@ -21,17 +21,10 @@ checkdepends=('python-netcdf4' 'python-pytest')
 _pypi=h5netcdf
 source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
-  'github-pr-206.patch::https://patch-diff.githubusercontent.com/raw/h5netcdf/h5netcdf/pull/206.patch'
 )
 sha256sums=(
-  '932c3b573bed7370ebfc9e802cd60f1a4da5236efb11b36eeff897324d76bf56'
-  '2517d389ea36edc1b7c895a1b7aaa533f74d6be809c289c9531e5def00059ac5'
+  '7f6b2733bde06ea2575b79a6450d9bd5c38918ff4cb2a355bf22bbe8c86c6bcf'
 )
-
-prepare() {
-    cd "$_pypi-${pkgver}"
-    patch -p1 -i "$srcdir/github-pr-206.patch"
-}
 
 build() {
     cd "$_pypi-${pkgver}"
