@@ -1,0 +1,11 @@
+pkgbase = astap-cli
+	pkgdesc = Astrometric (plate) solver, stacking of images, photometry and FITS viewer. CLI-version
+	pkgver = 2023.05.31
+	pkgrel = 0
+	url = http://www.hnsky.org/astap.htm
+	arch = x86_64
+	license = GPL
+	source = astap_command-line_version_Linux_amd64.zip::https://sourceforge.net/projects/astap-program/files/linux_installer/astap_command-line_version_Linux_amd64.zip/download
+	sha256sums = dfb041235913bc0caf88526f3514c3775f7d2db70bb1c91b152c17f77d5b735a
+
+pkgname = astap-cli
