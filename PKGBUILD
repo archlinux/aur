@@ -11,6 +11,8 @@ makedepends=('git' 'go')
 depends=('tmux')
 source=('git+https://github.com/arl/gitmux.git')
 md5sums=('SKIP')
+provides=($pkgname)
+conflicts=($_pkgname)
 
 pkgver() {
         cd "$srcdir/${_pkgname}"
