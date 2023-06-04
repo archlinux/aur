@@ -1,0 +1,15 @@
+pkgbase = xxdi-git
+	pkgdesc = Perl script that implements vim's xxd -i mode
+	pkgver = r4.1d4dcaf
+	pkgrel = 1
+	url = https://github.com/gregkh/xxdi
+	arch = any
+	license = GPL
+	depends = perl-file-slurp
+	provides = xxd
+	conflicts = xxd
+	options = !emptydirs
+	source = xxdi-git::git+https://github.com/gregkh/xxdi
+	sha256sums = SKIP
+
+pkgname = xxdi-git
