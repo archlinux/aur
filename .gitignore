@@ -1,0 +1,9 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!rsbackup.install
+!rsbackup.conf
+!rsbackup.cron@.service
+!rsbackup.cron@.timer
+!rsbackup.cron.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Run rsbackup.cron %i
+PartOf=rsbackup.cron.target
+
+[Timer]
+OnCalendar=%i
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=Run the default rsbackup.cron hourly, daily, weekly, monthly timers
+ConditionPathExists=/etc/rsbackup/defaults
+Wants=rsbackup.cron@hourly.timer
+Wants=rsbackup.cron@daily.timer
+Wants=rsbackup.cron@weekly.timer
+Wants=rsbackup.cron@monthly.timer
+
+[Install]
+WantedBy=multi-user.target
+Also=rsbackup.cron@hourly.timer
+Also=rsbackup.cron@daily.timer
+Also=rsbackup.cron@weekly.timer
+Also=rsbackup.cron@monthly.timer

@@ -1,0 +1,7 @@
+[Unit]
+Description=Run the rsbackup.cron %i timer
+ConditionPathExists=/etc/rsbackup/defaults
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rsbackup.cron %i
