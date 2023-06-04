@@ -1,4 +1,4 @@
-pkgbase = grimshot-sway-bin
+pkgbase = grimshot-bin-sway
 	pkgdesc = Symlink sway's included grimshot script to /usr/bin
 	pkgver = 1
 	pkgrel = 1
@@ -8,10 +8,10 @@ pkgbase = grimshot-sway-bin
 	provides = grimshot
 	conflicts = grimshot
 
-pkgname = grimshot-sway-bin
+pkgname = grimshot-bin-sway
 	depends = sway
 	depends = grim
 	depends = slurp
 	depends = jq
-	optdepends = wl-clipboard
-	optdepends = libnotify
+	optdepends = wl-clipboard: Copying screenshot to clipboard
+	optdepends = libnotify: Notification support
