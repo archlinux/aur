@@ -1,16 +1,14 @@
 pkgbase = nimdow
 	pkgdesc = Tiling window manager written in Nim
-	pkgver = 0.7.35
-	pkgrel = 4
+	pkgver = 0.7.36
+	pkgrel = 1
 	url = https://github.com/avahe-kellenberger/nimdow
 	arch = x86_64
 	license = GPL2
+	makedepends = choosenim
 	makedepends = git
-	makedepends = nim
 	depends = glibc
-	source = git+https://github.com/avahe-kellenberger/nimdow.git#commit=b3097e94093d8c37b5331addbf3b248e194981c1
-	source = 0001-use-full-URLs-in-nimble-file.patch
+	source = git+https://github.com/avahe-kellenberger/nimdow.git#commit=7233c0f79b6e5cf1afecffac01a841ba1a7de594
 	b2sums = SKIP
-	b2sums = 9a2ab646e40b29ea44ea68c4a4b3242b982703835acfff2712ba80d8aaa92c179fa9649a8b798cae2b296857e36385b742e99e13638074dc279b3593e7fb02ad
 
 pkgname = nimdow
