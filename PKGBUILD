@@ -1,6 +1,6 @@
 _pkgname="myjdapi"
 pkgname="python-$_pkgname"
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="My.Jdownloader API Python Library"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/mmarquezs/My.Jdownloader-API-Python-Library/"
 license=('MIT')
 
 source=("https://files.pythonhosted.org/packages/source/m/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=("252a9c6eee001d67bb000ceb8fdf99729c06cf46ff18a00fc89468672388de1e")
+sha256sums=('3a6c56fb14608e147214e7c6a6499f6d6ec047502c24cb11b77a23cf3ef6ea92')
 
 build(){
     cd $_pkgname-$pkgver
