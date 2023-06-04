@@ -3,18 +3,17 @@
 
 pkgname=calckey
 pkgver=13.1.4
-pkgrel=1
-pkgdesc='A greatly enhanced fork of Misskey with better UI/UX, security, features, and more! (Experimental)'
+pkgrel=2
+pkgdesc='A fun, new way to experience social media'
 url='https://calckey.org'
 arch=('x86_64')
 license=('AGPL3' 'MIT')
-depends=('nodejs' 'npm' 'postgresql' 'redis' 'pnpm')
+depends=('nodejs' 'npm' 'postgresql' 'redis' 'pnpm' 'zip')
 makedepends=('git' 'python')
 options=('debug')
 install='calckey.install'
-optdepends=('elasticsearch: Search functionality'
-            'ffmpeg: Media de-encode functionality'
-            'nginx: Reverse-proxy usage')
+optdepends=('ffmpeg: Media encode functionality'
+            'nginx: Reverse-proxy')
 source=("git+https://codeberg.org/calckey/calckey.git#brach=main"
         "${pkgname}.install"
         "${pkgname}.service"
@@ -55,7 +54,7 @@ prepare() {
 
 build() {
     cd "${pkgname}"
-    corepack enable
+    corepack enable --install-directory "${srcdir}/${pkgname}"
     NODE_ENV=production HOME="${srcdir}/${pkgname}" pnpm run build
 
     # Cleanup

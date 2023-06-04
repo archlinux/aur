@@ -1,7 +1,7 @@
 pkgbase = calckey
-	pkgdesc = A greatly enhanced fork of Misskey with better UI/UX, security, features, and more! (Experimental)
+	pkgdesc = A fun, new way to experience social media
 	pkgver = 13.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://calckey.org
 	install = calckey.install
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = calckey
 	depends = postgresql
 	depends = redis
 	depends = pnpm
-	optdepends = elasticsearch: Search functionality
-	optdepends = ffmpeg: Media de-encode functionality
-	optdepends = nginx: Reverse-proxy usage
+	depends = zip
+	optdepends = ffmpeg: Media encode functionality
+	optdepends = nginx: Reverse-proxy
 	options = debug
 	source = git+https://codeberg.org/calckey/calckey.git#brach=main
 	source = calckey.install
