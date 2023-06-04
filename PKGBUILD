@@ -17,7 +17,7 @@ options=(!strip)
 _appimage="${_pkgname}.AppImage"
 source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage")
 noextract=("$_appimage")
-b2sums=('977cc6cd037b295448c896cf606ac9658e6ad4fbb7737738d280132c445ddf715269fc82c3299b05877a2568f7a6e1ac299e243cb0d0b4ffa30b58c3b3ff664f')
+sha512sums=('e3a91049eddb33e88e29456f8caef15daf2c789fba0600998136fa3235949ce4acaf76db8afdd32503401fc0722b56e75dc6545842010fa16b047affb083b1f6')
 
 prepare() {
     mv "${_pkgname}_${pkgver}_amd64.AppImage" "$_appimage"
