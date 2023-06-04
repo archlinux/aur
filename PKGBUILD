@@ -59,7 +59,7 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S $pkgname-$pkgver \
+  cmake -B build -S "$_pkgname" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
