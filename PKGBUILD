@@ -99,7 +99,7 @@ package() {
     install -dm755 "${pkgdir}/etc/webapps/${pkgname}"
     mv "${pkgdir}/usr/share/webapps/${pkgname}/.config/example.yml" -t \
         "${pkgdir}/etc/webapps/${pkgname}/"
-    rmdir "${pkgdir}/usr/share/webapps/${pkgname}/.config"
+    rm -r "${pkgdir}/usr/share/webapps/${pkgname}/.config"
     ln -s "/etc/webapps/${pkgname}" "${pkgdir}/usr/share/webapps/${pkgname}/.config"
 
     # cache setup
