@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/usr/lib/jvm/java-8-openjdk/jre/bin/java \
+	-Djavax.accessibility.assistive_technologies=" " \
+	-jar /usr/share/java/carFirma/carFirmaApp.jar $*

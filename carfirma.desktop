@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=carFirma
+Encoding=UTF-8
+Comment=Componente de firma del Gobierno de La Rioja
+Icon=carfirma
+Exec=/usr/bin/carFirma %u
+Categories=GNOME;Application;Office
+StartupNotify=true
+StartupWMClass=carfirma
+Name[es_ES]=carfirma
+MimeType=x-scheme-handler/carfirma;

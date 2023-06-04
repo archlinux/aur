@@ -1,0 +1,19 @@
+pkgbase = carfirma-bin
+	pkgdesc = Cliente de firma electrónica de la Administración Pública de la Comunidad Autónoma de La Rioja
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://www.larioja.org/oficina-electronica/es/firma-electronica/carfirma
+	arch = x86_64
+	license = GPL
+	license = custom:EUPL
+	depends = java-runtime=8
+	source = carfirma-bin-2.0.deb::https://ias1.larioja.org/carFirma/descargas/exe/Instalacion_carFirma_64.deb
+	source = carFirma
+	source = carfirma.desktop
+	source = carFirma.js
+	b2sums = 8e0a97e79d5483f759a1ae0f607593162d4aa24cb7c8d70599fc217810f8a77de2ba3979e06b712f6a3894fc0533169d73bc79b40596d835f5fe09225b987627
+	b2sums = 270ab583c309c26245790b732d5421e7ca972815c8b68a4ee31a3493cc7862f50c2285c5f20adab504e36947e75ff50a37cc933231b5d46c87ad5d674484f770
+	b2sums = 08e1ef142e248a77f95d3a4a34bf275b53003c49a3fd08c65a3cc8f76ae7a3da5583e64951255697fba3a4c860dd107d06119e956829c57d5ba4370680ed1b64
+	b2sums = c673d01048b696ee0cdbab72a557b596580168f69b18934f7796b59143b1f30bc2f8374eb15dbf66f88a1a9a186a3d5733da88f46741f95206026538f6775880
+
+pkgname = carfirma-bin
