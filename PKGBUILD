@@ -54,7 +54,7 @@ build() {
 
   cd "$pkgname"
 
-  pnpm install --frozen-lockfile --offline
+  pnpm install --offline
 
   unset SOURCE_DATE_EPOCH
 
