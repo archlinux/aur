@@ -9,7 +9,9 @@ pkgbase = php-runkit7
 	makedepends = git
 	depends = php
 	provides = php-runkit7
+	provides = php-runkit
 	conflicts = php-runkit7
+	conflicts = php-runkit
 	source = runkit7::git+https://github.com/runkit7/runkit7#tag=4.0.0a6
 	sha256sums = SKIP
 

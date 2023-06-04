@@ -14,7 +14,10 @@ url="https://github.com/runkit7/runkit7"
 depends=('php')
 makedepends=('git')
 
-provides=("$_pkgname")
+provides=(
+  "$_pkgname"
+  'php-runkit'
+)
 conflicts=(${provides[@]})
 
 source=(
