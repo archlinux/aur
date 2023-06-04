@@ -35,5 +35,3 @@ package() {
     # # install -Dvm644 "/opt/${_corepkgname}/" -t "/usr/share/licenses/${_corepkgname}"
     # # install -Dvm644 LICENSE "/usr/share/licenses/${_corepkgname}/LICENSE"
 }
-
-# vim: ts=2 sw=2 et:
