@@ -10,8 +10,11 @@ pkgdesc='Nim toolchain installer'
 arch=(x86_64)
 url="https://github.com/dom96/$_pkgname"
 license=(BSD)
-provides=("choosenim=$pkgver" nim nimble nimgrep nimpretty nimsuggest)
-conflicts=(choosenim nim nimble nimgrep nimpretty nimsuggest)
+depends=(glibc)
+optdepends=('clang: C/C++ backend'
+            'gcc: C/C++ backend')
+provides=("$_pkgname=$pkgver" nim nimble nimgrep nimpretty nimsuggest)
+conflicts=("$_pkgname" nim nimble nimgrep nimpretty nimsuggest)
 source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname-${pkgver}_linux_amd64"
         "$pkgname-$pkgver.LICENSE::$url/raw/v$pkgver/LICENSE")
 b2sums=('4190f29eec3f28a9161a229e4466858c997abd6a15e6e01d83e51c4a8ae327d5bbbffd5b465ee1ba9f095609fa0245900caa4bbb46b041b0f5f334e4e8edaa7d'

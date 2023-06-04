@@ -5,6 +5,9 @@ pkgbase = choosenim-bin
 	url = https://github.com/dom96/choosenim
 	arch = x86_64
 	license = BSD
+	depends = glibc
+	optdepends = clang: C/C++ backend
+	optdepends = gcc: C/C++ backend
 	provides = choosenim=0.8.4
 	provides = nim
 	provides = nimble
