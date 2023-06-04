@@ -2,6 +2,7 @@
 
 pkgname="jellyfin-web-intro-skipper"
 pkgver=10.8.10
+_commit=4d9c94b8f109435b68ea864bcea3bc41dfceb128
 pkgrel=1
 pkgdesc="Modified jellyfin web client to use with the 'Intro Skipper' plugin"
 arch=('any')
@@ -10,13 +11,8 @@ license=('GPL2')
 provides=("${pkgname%-intro-skipper}=$pkgver")
 conflicts=("${pkgname%-intro-skipper}")
 makedepends=('npm')
-source=("git+$url.git")
+source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
-
-prepare() {
-    cd "$srcdir/${pkgname%-intro-skipper}"
-    git reset --hard 4d9c94b8f109435b68ea864bcea3bc41dfceb128
-}
 
 build() {
     cd "$srcdir/${pkgname%-intro-skipper}"
