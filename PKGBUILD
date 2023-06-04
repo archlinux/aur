@@ -2,7 +2,7 @@
 pkgname=colloid-kde-theme-git
 _themeName=Colloid
 _gitname="$_themeName-kde"
-pkgver=r39.9ebb36a
+pkgver=r40.4dd1cc3
 pkgrel=1
 pkgdesc="colloid theme for KDE Plasma"
 arch=('any')
@@ -50,8 +50,8 @@ package() {
    cp -r "${srcdir}/${_gitname}/plasma/desktoptheme/icons" "${pkgdir}/usr/share/plasma/desktoptheme/${_themeName}-dark"
    # look and feel
    cp -r "${srcdir}/${_gitname}/plasma/look-and-feel"/* "${pkgdir}/usr/share/plasma/look-and-feel"
-   # wallpaper
-   cp -r "${srcdir}/${_gitname}/wallpaper/${_themeName}"-* "${pkgdir}/usr/share/wallpapers"
+   # wallpapers
+   cp -r "${srcdir}/${_gitname}/wallpapers/${_themeName}"-* "${pkgdir}/usr/share/wallpapers"
    # sddm
    for color in {dark,light}; do
      cp -r "${srcdir}/${_gitname}/sddm/${_themeName}" "${pkgdir}/usr/share/sddm/themes/${_themeName}-${color}"
