@@ -1,6 +1,6 @@
 pkgbase = nuitka-git
 	pkgdesc = A Python compiler
-	pkgver = 1.5.5.r338.g3c3e8f96d
+	pkgver = 1.6.r105.gd263e6fd2
 	pkgrel = 1
 	url = https://nuitka.net/
 	arch = any
@@ -8,10 +8,12 @@ pkgbase = nuitka-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
+	depends = libxml2
 	depends = python
+	depends = python-setuptools
+	depends = python-wheel
 	optdepends = chrpath: for building standalone executables
-	provides = nuitka=1.5.5.r338.g3c3e8f96d
+	provides = nuitka=1.6.r105.gd263e6fd2
 	conflicts = nuitka
 	source = git+https://github.com/Nuitka/Nuitka.git
 	sha256sums = SKIP
