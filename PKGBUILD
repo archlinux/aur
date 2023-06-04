@@ -3,14 +3,15 @@
 # Contributor: sukanka < su975853527 [at] gmail dot com >
 pkgname=aliyunpan-odomu-git
 url="https://github.com/odomu/aliyunpan"
-pkgrel=2
-pkgver=r170.ef60c2b
+pkgrel=1
+pkgver=r197.64c6ec3
 pkgdesc="阿里云盘小白羊版，odomu's fork"
 arch=("any")
 license=("MIT")
 _electron=electron
 depends=("$_electron" 'aria2')
 optdepends=('mpv: media preview support')
+makedepends=('npm' 'yarn')
 provides=("aliyunpan-odomu")
 conflicts=("aliyunpan-odomu")
 source=(
