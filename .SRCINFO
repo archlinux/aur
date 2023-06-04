@@ -1,6 +1,6 @@
 pkgbase = milcheck
 	pkgdesc = A CLI that displays the status of your pacman mirrorlist and the Arch Linux latest news right in the terminal
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/doums/milcheck
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = milcheck
 	depends = gcc-libs
 	provides = milcheck
 	conflicts = milcheck
-	source = milcheck-0.3.2.tar.gz::https://github.com/doums/milcheck/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = 41ef3fba6aadf43a117520ffa4e93efb6e7922d715b0afd3dc1788cd80424d30
+	source = milcheck-0.3.3.tar.gz::https://github.com/doums/milcheck/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = 54090fcd8c8b66a5f7a464ae8c8e5b024ec5ec90394f4e7a7a2a0cbba3a28a30
 
 pkgname = milcheck
