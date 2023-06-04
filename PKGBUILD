@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=tsscreenlock
-pkgver=2.2
+pkgver=2.3.1
 pkgrel=0
 pkgdesc="Screen Locker for theShell"
 arch=("x86_64")
@@ -22,6 +22,8 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make install INSTALL_ROOT=$pkgdir
+
+	# Dies because qmake can't run chmod - ignore any errors
+	make install INSTALL_ROOT=$pkgdir || true
 	chmod u+s "$pkgdir/usr/bin/tscheckpass"
 }
