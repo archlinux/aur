@@ -1,0 +1,17 @@
+pkgbase = spark-wallet-appimage
+	pkgdesc = A minimalistic wallet GUI for c-lightning, accessible over the web or through mobile and desktop apps.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/shesek/spark-wallet
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = zlib
+	conflicts = spark-wallet
+	options = !strip
+	source = spark-wallet-0.3.1.AppImage::https://github.com/shesek/spark-wallet/releases/download/v0.3.1/spark-wallet-0.3.1-linux-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/shesek/spark-wallet/master/LICENSE
+	sha256sums = b7aa4b2d2805400243dff66c46313d5155d60081d8cff01a6da3567729032d2c
+	sha256sums = d8a82e79466ba5d679ba7edf5acd05bf6767edeb56f51a76ce8e121c7c887bf2
+
+pkgname = spark-wallet-appimage
