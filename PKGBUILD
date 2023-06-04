@@ -1,7 +1,7 @@
 # Maintainer: Ren Tatsumoto <tatsu at autistici dot org>
 
 pkgname=transformers_ocr
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="An OCR tool for manga using maim with Transformers."
 arch=(any)
@@ -17,9 +17,10 @@ optdepends=(
 	 'slurp: selecting a region on Wayland'
 	 'wl-clipboard: copying to the clipboard on Wayland'
 
-	 'gnome-screenshot: copying text to the clipboard on GNOME'
+	 'gnome-screenshot: taking screenshots on GNOME'
+	 'spectacle: taking screenshots on KDE'
 )
-sha256sums=('0e6cce5041d321e340be29940b1c48de020c1391ff94d9a7521caae32461c667')
+sha256sums=('8dd843201e6f479e4904d920f68fdf5263a576a1fcb0e45571b22eb2cb8b0d0f')
 
 package() {
 	cd -- "${pkgname}-${pkgver}"
