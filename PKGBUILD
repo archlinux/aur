@@ -1,7 +1,7 @@
 pkgname=d20-star-db-astap
 pkgver=2023.03.18
 pkgrel=1
-pkgdesc="D05 star database for 10>FOV>0.6 degrees. Size 400 mb."
+pkgdesc="D20 star database for 10>FOV>0.3 degrees. Size 400 mb"
 arch=('any')
 url="https://www.hnsky.org/astap.htm"
 license=('LGPL3')
