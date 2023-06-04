@@ -5,6 +5,7 @@ pkgbase = rainlendar-pro
 	url = http://www.rainlendar.net/
 	arch = x86_64
 	license = custom
+	makedepends = gendesk
 	depends = gtk2
 	depends = libcanberra
 	depends = libsm

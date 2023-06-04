@@ -11,6 +11,7 @@ arch=('x86_64')
 url="http://www.rainlendar.net/"
 license=('custom')
 depends=('gtk2' 'libcanberra' 'libsm')
+makedepends=('gendesk')
 provides=('rainlendar2')
 conflicts=('rainlendar-lite')
 source=("https://www.rainlendar.net/download/${pkgver}/Rainlendar-Pro-${pkgver}-amd64.tar.bz2"
