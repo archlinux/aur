@@ -1,5 +1,5 @@
 pkgbase = c2nim-git
-	pkgdesc = Tool to translate Ansi C code to Nim
+	pkgdesc = Tool to translate ANSI C code to Nim
 	pkgver = 0.9.18.r36.6d35d93
 	pkgrel = 1
 	epoch = 1
