@@ -1,6 +1,6 @@
 pkgbase = soh-otr-gc_nmq_pal_f
 	pkgdesc = OTR game data for SoH (Ocarina of Time Gamecube Europe PAL)
-	pkgver = 5.1.4.r35.g37f31116b
+	pkgver = 7.0.2.r60.g2308ab882
 	pkgrel = 1
 	epoch = 1
 	url = https://shipofharkinian.com/
