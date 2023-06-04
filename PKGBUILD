@@ -2,7 +2,7 @@
 
 pkgname=gpt4all-chat-git
 _gitname=gpt4all
-pkgver=r904.f3564ac
+pkgver=r914.9f590db
 pkgrel=1
 pkgdesc="Cross platform Qt based GUI for GPT4All versions"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '968ade77776bd88735b8dc370d5619378a131333694b7d43318bde02627f4c2b'
+  '8861ce995b79e95363e86a261d7a9d3c4c7da6de1b63f40ee5b2ecd02dcd6693'
 )
 
 
@@ -39,7 +39,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_gitname}/gpt4all-chat/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/gpt4all-chat -DCMAKE_BUILD_TYPE=Release ..
   make
 }
 
@@ -47,10 +47,7 @@ package() {
   cd "${srcdir}/${_gitname}/gpt4all-chat/build"
 
   DESTDIR="${pkgdir}" make install
-  mv "${pkgdir}/usr/bin/chat" "${pkgdir}/usr/bin/gpt4all-chat"
-  if [ -e "${pkgdir}/usr/bin/test_hw" ]; then
-    mv "${pkgdir}/usr/bin/test_hw" "${pkgdir}/usr/bin/gpt4all-test_hw"
-  fi
+  cp -av bin/* ${pkgdir}/opt/gpt4all-chat/bin/
 
 	mkdir -p "${pkgdir}/usr/share/applications"
 	mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
