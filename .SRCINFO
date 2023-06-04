@@ -1,7 +1,7 @@
 pkgbase = marble-maps-sachsen
 	pkgdesc = Aerial (RGB and CIR) and topographic (DTK10, DTK25, DTK50, DTK100 and historic) maps provided by the German federal state of Saxony. WMS maps, if 'marble' crashes try 'marble-qt'.
 	pkgver = 20220208.01
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://www.landesvermessung.sachsen.de/geodaten-online-3962.html
 	arch = any
@@ -41,13 +41,13 @@ pkgbase = marble-maps-sachsen
 	sha256sums = ca1d88d3d734a9b0e8964390369aba42e8a7a8ede24fbeb19e989abd296e5c3d
 	sha256sums = 9cc39bcca7f22f610693ae74c2465eba4405de50a2cb1348bca828502418a078
 	sha256sums = 87bedbf81955554b8deab1cc30991024483d0bf265384325bebda7fefb48971c
-	sha256sums = f0ee5d99466b2a3ea6c7c0273d69dbcc9917ccf355832c935854cbd5974e69b9
-	sha256sums = 2adb9c1eca39339b936f57533145d23126b9ebfa5dfd8b05e0a80d0a7d78cf77
+	sha256sums = ca6f24f100f15ac238e85329e69f1060c080ba142b4f0201cb0c22667c00a06c
+	sha256sums = 3bd094612936c5deed15c444c9e558067261aa59ad17792155134f6b67d3c550
 	sha256sums = b6d579732bec3e3b7aea34f7c45634f322afc40ae4e2b99c84308507ee3890dd
 	sha256sums = fb7d7758d60c2b30b6a93f9fa2d6bc183525a7deabc4e17dc1f22b13e6b68bd7
 	sha256sums = e372ee19a74ec328ee0f5d8be8d0a43c6609cdfaed9100d2d5b98aeafce3a761
 	sha256sums = 28393c87d3b41ff8da79a67d8bb89e8e0a573b50619912fc48fb8c2124f881ec
-	sha256sums = 63e90ec70c097fbf582cb420ef2c2d4ea0f8cbfccdcec7e3776d51434c3be92c
+	sha256sums = b289f44259f1df9c5eeaa75a76951610b27b6a9eef588ebd37aa9dceaea59636
 	sha256sums = 340e165eb000011f97b63ecaf44569a0da9fea77b82331d384e5b4a54a86fb3b
 	sha256sums = 19b09c83bd7436b7c48d2222af39d1e09609649f92055ff6f7c325b6a0fb3762
 
