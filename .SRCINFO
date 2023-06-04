@@ -1,0 +1,25 @@
+pkgbase = choosenim-bin
+	pkgdesc = Nim toolchain installer
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/dom96/choosenim
+	arch = x86_64
+	license = BSD
+	provides = choosenim=0.8.4
+	provides = nim
+	provides = nimble
+	provides = nimgrep
+	provides = nimpretty
+	provides = nimsuggest
+	conflicts = choosenim
+	conflicts = nim
+	conflicts = nimble
+	conflicts = nimgrep
+	conflicts = nimpretty
+	conflicts = nimsuggest
+	source = choosenim-bin-0.8.4::https://github.com/dom96/choosenim/releases/download/v0.8.4/choosenim-0.8.4_linux_amd64
+	source = choosenim-bin-0.8.4.LICENSE::https://github.com/dom96/choosenim/raw/v0.8.4/LICENSE
+	b2sums = 4190f29eec3f28a9161a229e4466858c997abd6a15e6e01d83e51c4a8ae327d5bbbffd5b465ee1ba9f095609fa0245900caa4bbb46b041b0f5f334e4e8edaa7d
+	b2sums = 8f19a2a567b2415263d72a13cd1508a1ba189e211a91580bf78653185717df5c7582e09ef27f60176eba3dbdb379d0f64fccc595a5970d40bc381f62a72cad00
+
+pkgname = choosenim-bin
