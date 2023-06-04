@@ -23,7 +23,7 @@
           <tileSize width="512" height="512"/>
           <storageLayout levelZeroColumns="1" levelZeroRows="1" maximumTileLevel="6" mode="Custom"/>
           <projection name="Mercator"/>
-          <downloadUrl protocol="https" host="micromacro-game.com" path="/img/map/2x/{zoomLevel}/{y}/{x}.png" query=""/>
+          <downloadUrl protocol="https" host="webapp.micromacro-game.com" path="/democase/img/map/2x/{zoomLevel}/{y}/{x}.png" query=""/>
           <downloadPolicy usage="Browse" maximumConnections="4"/>
           <downloadPolicy usage="Bulk" maximumConnections="2"/>
         </texture>
