@@ -2,21 +2,24 @@
 
 pkgdesc='A command line utility to merge, split and chapterize audiobook files such as mp3, ogg, flac, m4a or m4b'
 pkgname=('m4b-tool-bin')
-pkgver=0.4.2~20210604
+pkgver=0.4.2~20230213
 pkgrel=1
 arch=('x86_64')
-license=('MIT')
+license=('custom:MIT')
 url="https://github.com/sandreas/m4b-tool"
 makedepends=()
-depends=('ffmpeg'
-    'libmp4v2'
-    'php'
-    'php-intl'
-    'fdkaac'
+depends=(
+  'ffmpeg'
+  'libmp4v2'
+  'php'
 )
-optdepends=('ffmpeg-libfdk_aac: to use fdkaac in conversions')
+optdepends=(
+  'fdkaac: to use fdkaac in conversions'
+  'ffmpeg-libfdk_aac: to use fdkaac in conversions'
+  'tone-bin')
 options=('!strip')
-source=("m4b-tool.tar.gz::https://github.com/sandreas/m4b-tool/files/6598116/m4b-tool.tar.gz")
+source=("m4b-tool.tar.gz::https://github.com/sandreas/m4b-tool/files/10728378/m4b-tool.tar.gz"
+  "https://raw.githubusercontent.com/sandreas/m4b-tool/03043298eb477d925c50ba81097b0cf43558738e/LICENSE")
 
 
 pkgver() {
@@ -27,7 +30,9 @@ pkgver() {
 
 package() {
     cd ${srcdir}
-	install -Dm 755 m4b-tool.phar "${pkgdir}/usr/local/bin/m4b-tool"
+	install -Dvm 755 m4b-tool.phar "${pkgdir}/usr/bin/m4b-tool"
+	install -Dvm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-sha256sums=('ae3b350ddc4b3037205a8594cd9255c406130fe264cf965f40357927acbc9925')
+sha256sums=('181fb3e332849ea704ef860aaabaf9dcab2fdab298ffba99e66d31efa18b02f2'
+            'f4e10d52874360d5da10907ef1179e7064fbb1b1d51d1d548bb73d91afcfb65e')
