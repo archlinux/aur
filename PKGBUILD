@@ -1,25 +1,23 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="weektodo-appimage"
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="WeekToDo is a Free and Open Source Weekly Planner. Stop prioritizing what's on your schedule and start scheduling your priorities."
 arch=("x86_64")
 url="https://weektodo.me/"
 _githuburl="https://github.com/manuelernestog/weektodo"
-license=(GPL3)
+license=("GPL3")
 depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
-optdepends=()
-provides=("${pkgname%-appimage}")
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/WeekToDo-${pkgver}.AppImage")
-sha256sums=('bdbd5fab6dc80c18629119cd76ba6a1d506b9bf11ffab2a91a3eafd34c134b0b')
+sha256sums=('db03c92f5a84424664dd16683fa3ed3ffb46160bc8e27ed54ef50b2c7f07da4a')
      
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/weektodo.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
      
 package() {
