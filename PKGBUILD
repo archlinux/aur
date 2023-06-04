@@ -1,14 +1,14 @@
 # Maintainer: Ben Mezger <me at benmezger dot nl>
 _pkgname=gitmux
 pkgname=$_pkgname-git
-pkgver=r48.d79bab3
+pkgver=r70.5479145
 pkgrel=1
 pkgdesc="Git in your tmux status bar"
 arch=('any')
 url="https://github.com/arl/gitmux"
 license=('MIT')
 makedepends=('git' 'go')
-optdepends=('tmux')
+depends=('tmux')
 source=('git+https://github.com/arl/gitmux.git')
 md5sums=('SKIP')
 
