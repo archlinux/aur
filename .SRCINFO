@@ -1,0 +1,17 @@
+pkgbase = apple-music-electron-appimage
+	pkgdesc = A free, lightweight, open source alternative to iTunes and other Apple Music applications based on Electron 15
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/Alex313031/Apple-Music-Electron
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = apple-music-electron-3.0.2.AppImage::https://github.com/Alex313031/Apple-Music-Electron/releases/download/v3.0.2/Apple.Music-3.0.2.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Alex313031/Apple-Music-Electron/master/LICENSE
+	sha256sums = 3ffbc3086026ef189b85657b479bd8fbc7dd504534096dc55c3e6d1761f1160c
+	sha256sums = 2fef7133abc6fd2dc02cb7402696cf54cd6387e4259d86cd670e4a61f94d6f63
+
+pkgname = apple-music-electron-appimage
