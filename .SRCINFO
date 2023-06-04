@@ -1,0 +1,16 @@
+pkgbase = php-runkit7
+	pkgdesc = Tools to allow what Reflection does not. Useful for unit tests.
+	pkgver = 4.0.0a6
+	pkgrel = 1
+	url = https://github.com/runkit7/runkit7
+	arch = x86_64
+	arch = i686
+	license = PHP
+	makedepends = git
+	depends = php
+	provides = php-runkit7
+	conflicts = php-runkit7
+	source = runkit7::git+https://github.com/runkit7/runkit7#tag=4.0.0a6
+	sha256sums = SKIP
+
+pkgname = php-runkit7
