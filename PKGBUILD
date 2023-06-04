@@ -3,7 +3,7 @@ _aurname=shell
 _upstream_name=notes
 _pkgname=$_aurname-$_upstream_name
 pkgname=$_pkgname
-pkgver=v1.0.0
+pkgver=v1.0.1
 pkgrel=1
 pkgdesc="Simple delightful note taking, with more unix and less lock-in."
 arch=('any')
@@ -14,9 +14,10 @@ source=(
   'https://raw.githubusercontent.com/pimterry/notes/latest-release/notes.bash_completion'
   'https://raw.githubusercontent.com/pimterry/notes/latest-release/_notes'
 )
-md5sums=('4a32ed95ee590c2b52b26a488d95db79'
-         '6690eec10fe14663b4d79fca39eccdba'
-         '93788aeb11186922a6e547ae2c9e0ac1')
+sha256sums=('87466c25d8d93606e53ad6cc5770d8ac66cef4e3ec87129c10ab2bb04190fd50'
+            '4a33a0d9e038879186656984e778fbdd8a992f79e212d760c5a79b8ebf3a7ab4'
+            '8a4177d52a856dc940832e40702f971e1ae24918999502b81eea1cad79c3274a')
+
 
 package() {
         chmod +x $srcdir/$_upstream_name
