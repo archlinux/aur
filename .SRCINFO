@@ -1,6 +1,6 @@
 pkgbase = timew-git
 	pkgdesc = A command-line time tracker (also known as timewarrior)
-	pkgver = r2971.77d4728a
+	pkgver = r3124.814956b9
 	pkgrel = 1
 	url = https://github.com/GothenburgBitFactory/timewarrior
 	install = timew-git.install

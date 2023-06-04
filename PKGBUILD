@@ -2,7 +2,7 @@
 # Contributor: David Cao <dcao@protonmail.com>
 
 pkgname=timew-git
-pkgver=r2971.77d4728a
+pkgver=r3124.814956b9
 pkgrel=1
 pkgdesc="A command-line time tracker (also known as timewarrior)"
 arch=('i686' 'x86_64')
@@ -28,7 +28,6 @@ pkgver() {
 prepare() {
   cd "timewarrior"
   git submodule init
-  git config submodule.src/libshared.url "${srcdir}/libshared"
   git submodule update src/libshared
 
   cp "${srcdir}/timewarrior/ext/on-modify.timewarrior" "${srcdir}"
