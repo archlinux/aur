@@ -1,0 +1,15 @@
+# a simple installation script for tasker
+pre_install(){
+    git clone https://github.com/DanielMadmon/tasker.git
+    cd tasker
+    cargo build --release
+    cd target/release/
+    mkdir ~.cargo/bin/
+    mv tasker_service ~.cargo/bin/
+    sudo mv taskerctl /usr/bin/
+    taskerctl install
+    systemctl --user enable tasker
+    sudo systemctl enable tasker
+    systemctl --user start tasker
+    sudo systemctl start tasker 
+}

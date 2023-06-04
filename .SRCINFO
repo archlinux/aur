@@ -1,0 +1,17 @@
+pkgbase = tasker-git
+	pkgdesc = a package for executing commands on time basis
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/DanielMadmon/tasker
+	install = tasker-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = libthemis
+	provides = tasker-git=0.0.2
+	conflicts = tasker-git
+	source = https://github.com/DanielMadmon/tasker.git
+	sha256sums = SKIP
+
+pkgname = tasker-git
