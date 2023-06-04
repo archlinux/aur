@@ -3,7 +3,7 @@
 # Maintainer: Max <max@swk-web.com>
 
 pkgname='shopware-cli-bin'
-pkgver=0.1.77
+pkgver=0.1.78
 pkgrel=1
 pkgdesc='A cli which contains handy helpful commands for daily Shopware tasks'
 url='https://sw-cli.fos.gg'
@@ -14,23 +14,23 @@ conflicts=('shopware-cli')
 depends=('git')
 optdepends=('dart-sass-embedded: For building admin SCSS using esbuild')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/FriendsOfShopware/shopware-cli/releases/download/0.1.77/shopware-cli_Linux_arm64.tar.gz")
-sha256sums_aarch64=('67df9dbfb247f65df4f5357e934da6feb3afe40537c87bd83d4307884ac1b764')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/FriendsOfShopware/shopware-cli/releases/download/0.1.78/shopware-cli_Linux_arm64.tar.gz")
+sha256sums_aarch64=('10836a09069bf8dd9ce729fbee7c68631e37e94b314b4d2accddd581ebb62954')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/FriendsOfShopware/shopware-cli/releases/download/0.1.77/shopware-cli_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('36b604a6b20c0235f4f65ae7d1af7b592e60f6309f5b2e327f1c6da3c0c4fc75')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/FriendsOfShopware/shopware-cli/releases/download/0.1.78/shopware-cli_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('9e8fa64b8887ffa119cd9224e9745295053555866386879225fdb095cd417ba1')
 
 package() {
-  install -Dm755 "./${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "./shopware-cli" "${pkgdir}/usr/bin/shopware-cli"
 
   # license
-  install -Dm644 "./LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/shopware-cli/LICENSE"
 
   # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
   mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-  install -Dm644 "./completions/${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
-  install -Dm644 "./completions/${pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
-  install -Dm644 "./completions/${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm644 "./completions/shopware-cli.bash" "${pkgdir}/usr/share/bash-completion/completions/shopware-cli"
+  install -Dm644 "./completions/shopware-cli.zsh" "${pkgdir}/usr/share/zsh/site-functions/_shopware-cli"
+  install -Dm644 "./completions/shopware-cli.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/shopware-cli.fish"
 }
