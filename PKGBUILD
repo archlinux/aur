@@ -3,14 +3,13 @@
 # Contributor: librewish
 pkgname=whitesur-kvantum-theme-patched-git
 _gitname=WhiteSur-kde
-pkgver=r106.b502d15
+pkgver=r109.cb960cd
 pkgrel=1
 pkgdesc="WhiteSur theme for Kvantum, with patches customized for better GNOME experience."
 arch=('any')
 url="https://github.com/vinceliuice/${_gitname}"
 license=('GPL3')
 depends=('kvantum-qt5')
-makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=(
   "${pkgname%-git}"
@@ -18,10 +17,10 @@ conflicts=(
   'whitesur-kvantum-theme-git'
   'whitesur-kde-theme'
   'whitesur-kde-theme-git')
-source=("git+${url}.git" 'Kvantum.patch')
+source=("git+${url}.git" 'gnomish.patch')
 sha256sums=(
   'SKIP'
-  '103b5dfff5aecb651573357a9f36e645c94979ea42e53bc7226400e5e447f3c2'
+  '61682ce8cfa6feb2af18c1aeecde46752412ebf3af10e666a48b414d0a10b7a8'
 )
 
 pkgver() {
@@ -30,7 +29,7 @@ pkgver() {
 }
 
 package() {
-  patch -p1 -d"${srcdir}/${_gitname}/Kvantum" <"${srcdir}/Kvantum.patch"
+  patch -p1 -d"${srcdir}/${_gitname}/Kvantum" <"${srcdir}/gnomish.patch"
   install -d "${pkgdir}/usr/share"
   mv "${srcdir}/${_gitname}/Kvantum" "${pkgdir}/usr/share"
 }

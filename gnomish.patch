@@ -1,6 +1,6 @@
-diff --color -aurN Kvantum/WhiteSur/WhiteSurDark.kvconfig Kvantum-patched/WhiteSur/WhiteSurDark.kvconfig
+diff --color -aurN Kvantum/WhiteSur/WhiteSurDark.kvconfig Kvantum/WhiteSur/WhiteSurDark.kvconfig
 --- Kvantum/WhiteSur/WhiteSurDark.kvconfig	2023-05-11 00:40:33.364715768 +0800
-+++ Kvantum-patched/WhiteSur/WhiteSurDark.kvconfig	2023-05-11 00:38:05.624853645 +0800
++++ Kvantum/WhiteSur/WhiteSurDark.kvconfig	2023-05-11 00:38:05.624853645 +0800
 @@ -10,13 +10,13 @@
  group_toolbar_buttons=false
  spread_progressbar=true
@@ -50,9 +50,9 @@ diff --color -aurN Kvantum/WhiteSur/WhiteSurDark.kvconfig Kvantum-patched/WhiteS
  iconless_pushbutton=false
  iconless_menu=false
  disabled_icon_opacity=100
-diff --color -aurN Kvantum/WhiteSur/WhiteSur.kvconfig Kvantum-patched/WhiteSur/WhiteSur.kvconfig
+diff --color -aurN Kvantum/WhiteSur/WhiteSur.kvconfig Kvantum/WhiteSur/WhiteSur.kvconfig
 --- Kvantum/WhiteSur/WhiteSur.kvconfig	2023-05-11 00:40:33.363715769 +0800
-+++ Kvantum-patched/WhiteSur/WhiteSur.kvconfig	2023-05-11 00:38:05.624853645 +0800
++++ Kvantum/WhiteSur/WhiteSur.kvconfig	2023-05-11 00:38:05.624853645 +0800
 @@ -10,13 +10,13 @@
  group_toolbar_buttons=false
  spread_progressbar=true
@@ -111,9 +111,9 @@ diff --color -aurN Kvantum/WhiteSur/WhiteSur.kvconfig Kvantum-patched/WhiteSur/W
  iconless_pushbutton=false
  iconless_menu=false
  disabled_icon_opacity=100
-diff --color -aurN Kvantum/WhiteSur-solid/WhiteSur-solidDark.kvconfig Kvantum-patched/WhiteSur-solid/WhiteSur-solidDark.kvconfig
---- Kvantum/WhiteSur-solid/WhiteSur-solidDark.kvconfig	2023-05-11 00:40:33.363715769 +0800
-+++ Kvantum-patched/WhiteSur-solid/WhiteSur-solidDark.kvconfig	2023-05-11 00:38:05.623853646 +0800
+diff --color -aurN Kvantum/WhiteSur-opaque/WhiteSur-opaqueDark.kvconfig Kvantum/WhiteSur-opaque/WhiteSur-opaqueDark.kvconfig
+--- Kvantum/WhiteSur-opaque/WhiteSur-opaqueDark.kvconfig	2023-05-11 00:40:33.363715769 +0800
++++ Kvantum/WhiteSur-opaque/WhiteSur-opaqueDark.kvconfig	2023-05-11 00:38:05.623853646 +0800
 @@ -10,13 +10,13 @@
  group_toolbar_buttons=false
  spread_progressbar=true
@@ -169,9 +169,9 @@ diff --color -aurN Kvantum/WhiteSur-solid/WhiteSur-solidDark.kvconfig Kvantum-pa
  
  [BaseWidget]
  interior=true
-diff --color -aurN Kvantum/WhiteSur-solid/WhiteSur-solid.kvconfig Kvantum-patched/WhiteSur-solid/WhiteSur-solid.kvconfig
---- Kvantum/WhiteSur-solid/WhiteSur-solid.kvconfig	2023-05-11 00:40:33.360715772 +0800
-+++ Kvantum-patched/WhiteSur-solid/WhiteSur-solid.kvconfig	2023-05-11 00:38:05.623853646 +0800
+diff --color -aurN Kvantum/WhiteSur-opaque/WhiteSur-opaque.kvconfig Kvantum/WhiteSur-opaque/WhiteSur-opaque.kvconfig
+--- Kvantum/WhiteSur-opaque/WhiteSur-opaque.kvconfig	2023-05-11 00:40:33.360715772 +0800
++++ Kvantum/WhiteSur-opaque/WhiteSur-opaque.kvconfig	2023-05-11 00:38:05.623853646 +0800
 @@ -10,13 +10,13 @@
  group_toolbar_buttons=false
  spread_progressbar=true
