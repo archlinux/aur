@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="x-minecraft-launcher-appimage"
 _appname=xmcl
-pkgver=0.35.10
+pkgver=0.35.11
 pkgrel=1
 pkgdesc="An Open Source Minecraft Launcher with Modern UX. Provide a Disk Efficient way to manage all your Mods!"
 arch=('x86_64')
@@ -14,13 +14,13 @@ options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-x86_64.AppImage"
     "LICENSE::https://raw.githubusercontent.com/AppOutlet/AppOutlet/main/LICENSE")
-sha256sums=('2b4fb27cee012359f8c7f87264def1a1e5ed67289f5076a0e73225ef85b6fa7b'
+sha256sums=('d17022415370ef3eac818964a57427b7ff94383743492ef7fe53d39b8c2bcbc6'
             'c24c91646674659de06c8dad229b589608a69be9403433b4b5efe856db4cecb8')
 
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/x-minecraft-launcher.AppImage|g' -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
 }
  
 package() {
