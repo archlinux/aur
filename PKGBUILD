@@ -10,9 +10,9 @@ url='http://linphone.org'
 license=(GPL)
 depends=('libxcrypt-compat' 'fuse2')
 makedepends=('gendesk')
-source=("linphone-$pkgver.AppImage::https://download.linphone.org/releases/linux/app/Linphone-5.0.14.AppImage"
+source=("linphone-$pkgver.AppImage::https://download.linphone.org/releases/linux/app/Linphone-5.0.17.AppImage"
         "linphone.png::https://gitlab.linphone.org/BC/public/linphone-desktop/-/raw/8dfd384e3df08b200c8eb382b740da6839961bf0/linphone-app/assets/icons/hicolor/128x128/apps/icon.png")
-sha512sums=('fbe57bf0d137afc2a59e5b245bc51b23777316e2f65db254732741e72a23fa053cc0438bc5c08f7e6eed1f144f845deeb1de322d65343ebb5653896764f0f950'
+sha512sums=('68d6a05974cc057ec62eb4fe8a138cfddc5f9977f9fb2a0917d7f5c3c5623a2b6b6f8cec478a4d18e82505ebce238ef0c555d6f50e068158dac7e6afad68348b'
             'd6495cdc022b1e4c92b3641cb70347e7e6b6ef47599004de729e908b4876a12540713ab54b588611c99c8025fb9b33e3392573c85c13f72cdaee8bcf7a73d65d')
 options=(!strip)
 
