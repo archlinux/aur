@@ -2,15 +2,15 @@
 # Contributor: budRich
 
 pkgname=i3ass-git
-pkgver=r493.20ef288
-pkgrel=2
+pkgver=r498.87bb309
+pkgrel=1
 pkgdesc='A bash-script collection to assist the use of i3-wm.'
 arch=('any')
 url='https://github.com/budlabs/i3ass'
 license=('MIT')
 depends=('bash>=4.0.0' 'i3-wm' 'gawk' 'sed')
 makedepends=('gawk' 'sed')
-optdepends=('rofi' 'xdotool')
+optdepends=('xdotool' 'i3menu')
 conflicts=('i3ass')
 source=("${pkgname}::git+$url")
 provides=(i3ass)
