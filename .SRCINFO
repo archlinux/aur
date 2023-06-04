@@ -1,0 +1,18 @@
+pkgbase = electron-tools-appimage
+	pkgdesc = Toolbox based on Electron 25, Vite 4, Vue 3, element plus 2, TypeScript 5.基于 Electron 25、Vite 4、Vue 3、element-plus 2、TypeScript 5 的工具箱
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/xuxiaowei-com-cn/electron-tools
+	arch = x86_64
+	license = MIT
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = glibc
+	conflicts = electron-tools
+	options = !strip
+	source = electron-tools-1.0.0.AppImage::https://github.com/xuxiaowei-com-cn/electron-tools/releases/download/v1.0.0-2023-06-03T19-05Z/electron-tools_1.0.0-node-18.x-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/xuxiaowei-com-cn/electron-tools/main/LICENSE
+	sha256sums = e5b3e2f57292bf47f171babfa77036c25d31cd61bbfe6d6905317a80fb3ea521
+	sha256sums = fb94fa24a71011f12af9b7ac20de0b67555efede948bd606d8315428b35a90e6
+
+pkgname = electron-tools-appimage
