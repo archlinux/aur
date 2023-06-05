@@ -2,7 +2,7 @@
 # Co-Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 pkgname=aurutils
 pkgver=15.5
-pkgrel=1
+pkgrel=2
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
 arch=('any')
@@ -11,7 +11,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 changelog=aurutils.changelog
 install=aurutils.install
 sha256sums=('f7a2bd5ac72860588e8dce62929c8d905ec1eab502a1b1308da1e48c91df8142')
-depends=('git' 'pacutils' 'curl' 'perl')
+depends=('git' 'pacutils' 'curl' 'perl' 'bash')
 optdepends=('bash-completion: bash completion'
             'zsh: zsh completion'
             'devtools: aur-chroot'
@@ -30,5 +30,5 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
+    make PREFIX=/usr ETCDIR=/etc DESTDIR="$pkgdir" install
 }
