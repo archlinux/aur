@@ -28,11 +28,11 @@ package() {
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"
   install -Dm755 "$_pkgname" "$pkgdir"/usr/bin/"$_pkgname"
   ./gitleaks completion bash --no-descriptions |
-    install -Dm644 /dev/stdin "$pkgdir"/usr/share/bash-completion/completions/"$pkgname"
+    install -Dm644 /dev/stdin "$pkgdir"/usr/share/bash-completion/completions/"$_pkgname"
   ./gitleaks completion zsh --no-descriptions |
-    install -Dm644 /dev/stdin "$pkgdir"/usr/share/zsh/site-functions/_"$pkgname"
+    install -Dm644 /dev/stdin "$pkgdir"/usr/share/zsh/site-functions/_"$_pkgname"
   ./gitleaks completion fish --no-descriptions |
-    install -Dm644 /dev/stdin "$pkgdir"/usr/share/fish/vendor_completions.d/"$pkgname".fish
+    install -Dm644 /dev/stdin "$pkgdir"/usr/share/fish/vendor_completions.d/"$_pkgname".fish
 }
 
 # vim:set ts=2 sw=2 et:
