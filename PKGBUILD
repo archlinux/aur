@@ -2,6 +2,7 @@ pkgname=correios-git
 _pkgname=correios
 pkgver=r18.0d75f6e
 pkgrel=1
+pkgdesc="Golang client for some Brazilian Post Office (Correios) services"
 arch=('i686' 'x86_64')
 url='https://github.com/paoloo/correios'
 source=('git+https://github.com/paoloo/correios')
