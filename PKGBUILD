@@ -2,11 +2,11 @@
 # Contributor: Manuel Reimer <manuel.reimer@gmx.de>
 
 pkgname=w_scan_cpp
-pkgver=20230121
+pkgver=20230604
 pkgrel=1
 
 # These are versions of dependencies used by w_scan_cpp
-_wirbelscan_version=wirbelscan-2023.01.21
+_wirbelscan_version=wirbelscan-2023.06.04
 _satip_gitver=7ef19f78c8cc0dfb2398be8f6577eadd4475fa51
 _vdr_gitver=42b584e38d442cae587add3a1018d4ed6917e123
 
@@ -20,13 +20,11 @@ source=("https://www.gen2vdr.de/wirbel/$pkgname/$pkgname-$pkgver.tar.bz2"
         "https://www.gen2vdr.de/wirbel/wirbelscan/vdr-${_wirbelscan_version}.tgz"
         "git://git.tvdr.de/vdr.git#commit=$_vdr_gitver"
         "git+https://github.com/wirbel-at-vdr-portal/vdr-plugin-satip.git#commit=$_satip_gitver"
-        "vdr-wirbelscan-add_missing_cstdint_h.patch::https://github.com/wirbel-at-vdr-portal/wirbelscan-dev/commit/016c9aee9d12326e3b08ded15ab98ab5c82c7228.patch"
        )
-sha256sums=('6177dc8a42f87c03292de74bfe43bf4c0f027727e017c0d98f211666d9bed4bf'
-            'd6db38e259699de21a4c261ed1799991539fe57dea987870854e037b9c0be7f9'
+sha256sums=('f617e6a80e78d1514ef8413e8d6a4ca5bbacf1b74cb89f06e3b9a06e00a7e953'
+            '22bfd788c280c7da27c7372c57440561d1577f745df52a8965599a912480fb74'
             'SKIP'
-            'SKIP'
-            'b4dde703cb0c091a0646d85b6a82b58b580989f5bfcf9ac797b183f4654c548b')
+            'SKIP')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -42,9 +40,6 @@ prepare() {
   ln -s "vdr-plugin-satip" "vdr/PLUGINS/src/satip"
   cp -a "$srcdir/$_wirbelscan_version" "vdr/PLUGINS/src"
   ln -s "$_wirbelscan_version" "vdr/PLUGINS/src/wirbelscan"
-
-  cd "$srcdir/$pkgname-$pkgver/vdr/PLUGINS/src/wirbelscan"
-  sed '/diff --git a\/HISTORY/,/diff --git/d' "$srcdir/vdr-wirbelscan-add_missing_cstdint_h.patch" | patch -p1
 }
 
 build() {

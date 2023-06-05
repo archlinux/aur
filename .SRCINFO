@@ -1,6 +1,6 @@
 pkgbase = w_scan_cpp
 	pkgdesc = A dtv channel scanner based on VDR. Successor of w_scan
-	pkgver = 20230121
+	pkgver = 20230604
 	pkgrel = 1
 	url = https://www.gen2vdr.de/wirbel/w_scan_cpp/index2.html
 	arch = i686
@@ -16,15 +16,13 @@ pkgbase = w_scan_cpp
 	depends = librepfunc
 	depends = libjpeg
 	depends = curl
-	source = https://www.gen2vdr.de/wirbel/w_scan_cpp/w_scan_cpp-20230121.tar.bz2
-	source = https://www.gen2vdr.de/wirbel/wirbelscan/vdr-wirbelscan-2023.01.21.tgz
+	source = https://www.gen2vdr.de/wirbel/w_scan_cpp/w_scan_cpp-20230604.tar.bz2
+	source = https://www.gen2vdr.de/wirbel/wirbelscan/vdr-wirbelscan-2023.06.04.tgz
 	source = git://git.tvdr.de/vdr.git#commit=42b584e38d442cae587add3a1018d4ed6917e123
 	source = git+https://github.com/wirbel-at-vdr-portal/vdr-plugin-satip.git#commit=7ef19f78c8cc0dfb2398be8f6577eadd4475fa51
-	source = vdr-wirbelscan-add_missing_cstdint_h.patch::https://github.com/wirbel-at-vdr-portal/wirbelscan-dev/commit/016c9aee9d12326e3b08ded15ab98ab5c82c7228.patch
-	sha256sums = 6177dc8a42f87c03292de74bfe43bf4c0f027727e017c0d98f211666d9bed4bf
-	sha256sums = d6db38e259699de21a4c261ed1799991539fe57dea987870854e037b9c0be7f9
+	sha256sums = f617e6a80e78d1514ef8413e8d6a4ca5bbacf1b74cb89f06e3b9a06e00a7e953
+	sha256sums = 22bfd788c280c7da27c7372c57440561d1577f745df52a8965599a912480fb74
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = b4dde703cb0c091a0646d85b6a82b58b580989f5bfcf9ac797b183f4654c548b
 
 pkgname = w_scan_cpp
