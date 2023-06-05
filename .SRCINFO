@@ -1,0 +1,20 @@
+pkgbase = siag
+	pkgdesc = A tightly integrated, free office package
+	pkgver = 3.6.1
+	pkgrel = 1
+	url = https://siag.nu
+	arch = x86_64
+	license = GPL3
+	depends = xorg-fonts-75dpi
+	depends = xorg-fonts-100dpi
+	depends = gmp
+	depends = tcl
+	depends = libxpm
+	depends = nextaw
+	depends = mowitz
+	source = siag-3.6.1.tar.gz::https://siag.nu/pub/siag/siag-3.6.1.tar.gz
+	source = siag.patch
+	sha256sums = 712633adac591bc48466b12b9012ff51066233b36d0589bc44ed54ba62bcdd5a
+	sha256sums = b69c894240c4fc12a3edd2eda5a1a69c18ddb61e50a30379e27fcc71fca67b84
+
+pkgname = siag
