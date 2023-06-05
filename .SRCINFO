@@ -14,7 +14,7 @@ pkgbase = linux-aarch64-orangepi5
 	source = config
 	source = linux.preset
 	sha256sums = 13e21a457fdf6760d146dafe51c16b2cecfce310262416b06841fbb9d7b86d14
-	sha256sums = 211d3b30c81d9369dda18d0c891cd1846d9a5b447aeceea49ed0cf2b01e613b5
+	sha256sums = 6ec4e4767c7df92f9fb33cc6548efd86eb8fca2c53b6c0f76aac4bcee628d5ba
 	sha256sums = 801ba636d9b1e4109990827eb1fbb351f1fff56a4f74c7f1b424b5e23174bc4b
 	sha256sums = bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3
 
