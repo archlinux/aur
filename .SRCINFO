@@ -1,10 +1,10 @@
 pkgbase = lutris-wine-meta
 	pkgdesc = Meta package for using lutris with wine
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lutris/docs/blob/master/WineDependencies.md
 	arch = any
-	depends = wine-staging
+	depends = wine
 	depends = giflib
 	depends = lib32-giflib
 	depends = libpng
