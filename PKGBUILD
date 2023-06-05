@@ -16,13 +16,11 @@ optdepends=('cups: Printer support'
             'libgnome-keyring: gnome keyring support')
 provides=("${pkgname}" 'brave-nightly-browser')
 conflicts=()
-source=("MPL2::https://raw.githubusercontent.com/brave/brave-browser/master/LICENSE"
-        "$pkgname.sh")
+source=("$pkgname.sh")
 options=(!strip)
 source_x86_64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-nightly_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-nightly_${pkgver}_arm64.deb")
-sha512sums=('239dbc27d68e0a03e92c68fb746602d8183084c9624a533fe92a991b8a4658d5154c901ff64826992eabcf89a5b52cb32f9cf29fd25a42bef2b5d3932010d806'
-            '191500db5dd9692d362745e0055f9ac570c7ca2043edcf3e2eb9dcf8039615022f3459c909ed29d89410886481723d2d439086f1938249674ea32654819190c4')
+sha512sums=('191500db5dd9692d362745e0055f9ac570c7ca2043edcf3e2eb9dcf8039615022f3459c909ed29d89410886481723d2d439086f1938249674ea32654819190c4')
 
 sha512sums_x86_64=('6fee4031c20df23e0aa5035e988e39462e31b6567c404961d20549067af6d0866ec30046566e31dad2d9ea6e19c8c2ea51b8fbe84ba4b7892a9bb477b1b4eadf')
 sha512sums_aarch64=('SKIP')
