@@ -3,13 +3,13 @@
 
 _pkgname=libfm-qt6
 pkgname=$_pkgname-git
-pkgver=1.2.1.2.gaa82aa8
+pkgver=1.3.0.8.gda59254
 pkgrel=1
 pkgdesc='Qt port of libfm, a library providing components to build desktop file managers'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/lxqt/libfm-qt'
 license=('LGPL')
-depends=('qt6-base' 'menu-cache' 'libexif')
+depends=('qt6-base' 'menu-cache' 'libexif' 'lxqt-menu-data-git')
 makedepends=('git' 'cmake' 'qt6-tools' 'lxqt-build-tools-qt6-git')
 optdepends=(
   'gvfs: support for the trash bin and network devices'
