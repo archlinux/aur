@@ -1,29 +1,33 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=('xapp-thumbnailers-common'
          'xapp-mp3-thumbnailer'
          'xapp-epub-thumbnailer'
          'xapp-raw-thumbnailer'
+         'xapp-vorbiscomment-thumbnailer'
          'xapp-appimage-thumbnailer')
 pkgbase=xapp-thumbnailers
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Thumbnailers for GTK Desktop Environments"
 arch=('any')
 url="https://github.com/linuxmint/xapp-thumbnailers"
 license=('GPL3')
-makedepends=('python')
+makedepends=('meson')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('5c7971edafd07e17b3961c3dbd0993e2511feb5db0c42c90332ff393100d2213')
+sha256sums=('a1546aa966a0a34f76ea348d85c9eca91ded8e97bdc90116f995ac5453256610')
+
+build() {
+  arch-meson "$pkgbase-$pkgver" build
+  meson compile -C build
+}
 
 package_xapp-thumbnailers-common() {
   pkgdesc="Common files for XApp thumbnailers"
   depends=('python' 'python-pillow')
 
-  cd "$pkgbase-$pkgver"
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -Dm644 usr/lib/python3/dist-packages/XappThumbnailers/__init__.py -t \
-    "${pkgdir}${site_packages}/XappThumbnailers/"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  meson install -C build --destdir "$pkgdir"
+
+  rm -rf "$pkgdir"/usr/{bin,share}
 }
 
 package_xapp-mp3-thumbnailer() {
@@ -31,8 +35,8 @@ package_xapp-mp3-thumbnailer() {
   depends=('python-eyed3' 'xapp-thumbnailers-common')
 
   cd "$pkgbase-$pkgver"
-  install -Dm755 "usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "usr/share/thumbnailers/$pkgname.thumbnailer" -t \
+  install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "files/usr/share/thumbnailers/$pkgname.thumbnailer" -t \
     "$pkgdir/usr/share/thumbnailers/"
 }
 
@@ -41,8 +45,8 @@ package_xapp-epub-thumbnailer() {
   depends=('xapp-thumbnailers-common')
 
   cd "$pkgbase-$pkgver"
-  install -Dm755 "usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "usr/share/thumbnailers/$pkgname.thumbnailer" -t \
+  install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "files/usr/share/thumbnailers/$pkgname.thumbnailer" -t \
     "$pkgdir/usr/share/thumbnailers/"
 }
 
@@ -51,8 +55,18 @@ package_xapp-raw-thumbnailer() {
   depends=('dcraw' 'xapp-thumbnailers-common')
 
   cd "$pkgbase-$pkgver"
-  install -Dm755 "usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "usr/share/thumbnailers/$pkgname.thumbnailer" -t \
+  install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "files/usr/share/thumbnailers/$pkgname.thumbnailer" -t \
+    "$pkgdir/usr/share/thumbnailers/"
+}
+
+package_xapp-vorbiscomment-thumbnailer() {
+  pkgdesc="VorbisComment thumbnailer"
+  depends=('python-mutagen' 'xapp-thumbnailers-common')
+
+  cd "$pkgbase-$pkgver"
+  install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "files/usr/share/thumbnailers/$pkgname.thumbnailer" -t \
     "$pkgdir/usr/share/thumbnailers/"
 }
 
@@ -61,7 +75,7 @@ package_xapp-appimage-thumbnailer() {
   depends=('python-pyelftools' 'squashfs-tools' 'xapp-thumbnailers-common')
 
   cd "$pkgbase-$pkgver"
-  install -Dm755 "usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "usr/share/thumbnailers/$pkgname.thumbnailer" -t \
+  install -Dm755 "files/usr/bin/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 "files/usr/share/thumbnailers/$pkgname.thumbnailer" -t \
     "$pkgdir/usr/share/thumbnailers/"
 }

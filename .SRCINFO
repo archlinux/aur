@@ -1,13 +1,13 @@
 pkgbase = xapp-thumbnailers
 	pkgdesc = Thumbnailers for GTK Desktop Environments
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/linuxmint/xapp-thumbnailers
 	arch = any
 	license = GPL3
-	makedepends = python
-	source = xapp-thumbnailers-1.0.1.tar.gz::https://github.com/linuxmint/xapp-thumbnailers/archive/refs/tags/1.0.1.tar.gz
-	sha256sums = 5c7971edafd07e17b3961c3dbd0993e2511feb5db0c42c90332ff393100d2213
+	makedepends = meson
+	source = xapp-thumbnailers-1.2.0.tar.gz::https://github.com/linuxmint/xapp-thumbnailers/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = a1546aa966a0a34f76ea348d85c9eca91ded8e97bdc90116f995ac5453256610
 
 pkgname = xapp-thumbnailers-common
 	pkgdesc = Common files for XApp thumbnailers
@@ -26,6 +26,11 @@ pkgname = xapp-epub-thumbnailer
 pkgname = xapp-raw-thumbnailer
 	pkgdesc = RAW thumbnailer
 	depends = dcraw
+	depends = xapp-thumbnailers-common
+
+pkgname = xapp-vorbiscomment-thumbnailer
+	pkgdesc = VorbisComment thumbnailer
+	depends = python-mutagen
 	depends = xapp-thumbnailers-common
 
 pkgname = xapp-appimage-thumbnailer
