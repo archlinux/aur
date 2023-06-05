@@ -2,7 +2,7 @@
 
 pkgname=saber
 pkgver=0.12.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform libre notes app written in Flutter"
 arch=('x86_64')
 url="https://github.com/adil192/saber"
@@ -14,7 +14,7 @@ source=("https://github.com/adil192/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "saber.sh")
 sha256sums=('3f1fbde854b30d9f60ab3a7ccf863662586f165fb6273dc0f2cfe9d13528b52f'
             '93e6e067fefad597117d7f6889df204082898b79dcd29853eaa5c879ab35b2df'
-            '43a5cf6b114b0c6411c6048339adb1d5ffc37bcaa338e6bf1287a7105f667e1c')
+            '7beadd69cd9fc88ccc8916b27057498da652afbe4265d00cf9de20ea84bb2488')
 
 prepare() {
     cd "$pkgname-$pkgver"
