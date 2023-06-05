@@ -1,0 +1,18 @@
+pkgbase = anthy-unicode-git
+	pkgdesc = Hiragana text to Kana Kanji mixed text Japanese input method
+	pkgver = r83.360c112
+	pkgrel = 1
+	url = https://github.com/fujiwarat/anthy-unicode
+	arch = x86_64
+	license = LGPL
+	license = GPL
+	makedepends = emacs
+	makedepends = git
+	provides = anthy-unicode
+	provides = anthy
+	conflicts = anthy-unicode
+	conflicts = anthy
+	source = anthy-unicode::git+https://github.com/fujiwarat/anthy-unicode.git
+	sha512sums = SKIP
+
+pkgname = anthy-unicode-git
