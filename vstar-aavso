@@ -1,0 +1,4 @@
+#!/bin/sh
+cd opt/vstar-aavso/VStar-2.22.0/dist/
+java -Xmx8192m -jar vstar.jar
+exit
