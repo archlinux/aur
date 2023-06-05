@@ -1,0 +1,11 @@
+pkgbase = correios-git
+	pkgver = r18.0d75f6e
+	pkgrel = 1
+	url = https://github.com/paoloo/correios
+	arch = i686
+	arch = x86_64
+	makedepends = go
+	source = git+https://github.com/paoloo/correios
+	sha1sums = SKIP
+
+pkgname = correios-git
