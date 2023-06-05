@@ -3,9 +3,9 @@
 
 pkgname=serioussam-vk
 pkginstdir=serioussam
-pkgver=1.10.4
+pkgver=1.10.5
 _srcname="SeriousSamClassic-VK-$pkgver"
-pkgrel=10
+pkgrel=1
 pkgdesc="Serious Sam Classic native Linux version with Vulkan support."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic-VK"
@@ -17,13 +17,11 @@ install=serioussam.install
 source=("https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v$pkgver.tar.gz"
     "serioussam-tfe.desktop"
     "serioussam-tse.desktop"
-    "serioussam.xpm"
-    "samvk-1.10.4-to-1.10.5-pre.patch")
-sha256sums=('951fea8274cf795c1bdcff708e1dffbef78cd7993585144b565aefba93433e08'
+    "serioussam.xpm")
+sha256sums=('e4fb2c46b238bc9984c6d5ec31f2aed0f571cca724795bc333ad1ab92d80a8f7'
             '1e36d7b0d11f68729aa5c79ac9a44157d4af0bf61060040ab92a37d96ca89aba'
             '49680c65d26b264a1d7735c6310fcc5d0ac0e0e56273d3bccf539c0c87d31b2b'
-            '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4'
-            '9b507c20d0144c729f2ea9b54a0052e4048e5d88ecf7bc9bc227fdd899bb1ca1')
+            '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -31,8 +29,6 @@ else
 fi
 
 prepare(){
-  # Prepare patch
-  cat samvk-1.10.4-to-1.10.5-pre.patch > "$srcdir/$_srcname/samvk-1.10.4-to-1.10.5-pre.patch"
 
   # Making building TFE scripts.
   cd "$srcdir/$_srcname/SamTFE/Sources/"
@@ -51,7 +47,7 @@ prepare(){
 
   cd "$srcdir/$_srcname"
   # patch
-  patch -p1 < samvk-1.10.4-to-1.10.5-pre.patch || return 1
+  # patch -p1 < samvk-1.10.4-to-1.10.5-pre.patch || return 1
 }
 
 build(){

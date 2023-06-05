@@ -1,7 +1,7 @@
 pkgbase = serioussam-vk
 	pkgdesc = Serious Sam Classic native Linux version with Vulkan support.
-	pkgver = 1.10.4
-	pkgrel = 10
+	pkgver = 1.10.5
+	pkgrel = 1
 	url = https://github.com/tx00100xt/SeriousSamClassic-VK
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = serioussam-vk
 	depends = bash
 	depends = vulkan-icd-loader
 	depends = vulkan-validation-layers
-	source = https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v1.10.4.tar.gz
-	sha512sums = 4c37422e58f697c6d195296c896d2bc4084c8006e8aa28bd94a40df85362979814f12fe63e02201ca2ae9c0139a38bfa9c93ee14f122390e49b6fa38cbcc83b9
+	source = https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v1.10.5.tar.gz
+	sha512sums = 6f52b21a9f8cd93bb5c51500d0100fa71fdb02c310c2ed667d191009c3c4af09c3dcbff073c6be19d484d13c20694e860ee91db4a19b5b62d8896fa438aa3964
 
 pkgname = serioussam-vk
 
