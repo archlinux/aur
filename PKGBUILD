@@ -1,6 +1,6 @@
 pkgname=mowitz
 pkgver=0.3.1
-pkgrel=1
+pkgrel=3
 pkgdesc='"More Widgets" library'
 arch=("x86_64")
 url="https://siag.nu/pub/mowitz/"
