@@ -1,0 +1,28 @@
+pkgbase = p4lang-p4c
+	pkgdesc = P4 reference compiler
+	pkgver = 1.2.4.0
+	pkgrel = 1
+	url = https://github.com/p4lang/p4c
+	arch = any
+	license = Apache
+	checkdepends = clang
+	makedepends = boost
+	makedepends = cmake
+	makedepends = git
+	makedepends = libbpf
+	makedepends = llvm
+	depends = boost-libs
+	depends = p4lang-bmv2
+	depends = protobuf
+	depends = python
+	depends = python-ply
+	depends = python-pyroute2
+	depends = python-scapy
+	source = p4lang-p4c::git+https://github.com/p4lang/p4c.git#commit=71a06fee49d2237afc28b8f74c96b1d390e93c12
+	source = git+https://github.com/google/googletest.git
+	source = git+https://github.com/p4lang/p4runtime.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = p4lang-p4c
