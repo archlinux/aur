@@ -3,8 +3,8 @@
 # Contributor: Molyuu <zhangjtroger at gmail dot com>
 
 pkgname=nekoray-bin
-pkgver=3.6
-_releasedate=2023-05-30
+pkgver=3.7
+_releasedate=2023-06-05
 pkgrel=1
 pkgdesc="Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)"
 arch=('x86_64')
@@ -15,8 +15,10 @@ depends=('qt5-base>=5.15' 'qt5-svg' 'qt5-tools' 'qt5-x11extras')
 provides=('nekoray')
 conflicts=('nekoray-git' 'nekoray')
 optdepends=(
-    'v2ray-domain-list-community: geosite data for NekoRay'
-    'v2ray-geoip: geoip data for NekoRay'
+    'v2ray-domain-list-community: geosite data for V2Ray Core'
+    'v2ray-geoip: geoip data for V2Ray Core'
+		'sing-geosite: geosite data for SignBox Core'
+		'sing-geoip: geoip data for SignBox Core'
 )
 
 source=(
@@ -26,7 +28,7 @@ source=(
 )
 
 sha256sums=(
-	'533521d46511a74d6c619c5bd4f15db5e6c325a364495e66c92e4bf590acb775'
+	'1be40a91028b801baa3c477e8f1bd1f657412d1f7c0f13dc4f11b79f4733937c'
 	'86f1332c81be2c346a4cdc80a3550f6484ef89e4ee8d4f23afada0c2d0a184e2'
 	'5a7cbb61608137924fb1ba3ecb057adb7973f5775f64758736b447041fa15377'
 )
