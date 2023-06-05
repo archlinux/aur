@@ -6,6 +6,18 @@
 # Contributor: Michael 'manveru' Fellinger <m.fellinger@gmail.com>
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
+# anki -> git rev-parse $pkgver --short=8
+# ftl -> git submodule
+declare -gA _tags=(
+ [ftl_core]="25c97e48acf6626f0b8bc9daede14e21a83cdaf2"
+ [ftl_desktop]="1fbf87bb8a7d441482e79b3b8c2e06479e9fa978"
+ [anki]="141bc18b"
+)
+declare -gA _caches=(
+    [yarn]="yarn-cache"
+    [cargo]="cargo-cache"
+)
+
 pkgname=anki
 pkgver=2.1.65
 pkgrel=1
@@ -57,14 +69,9 @@ optdepends=(
     'texlive-most: render LaTex in cards'
 )
 changelog="$pkgname.changelog"
-# (adjust in respective functions as well)
-# anki -> git rev-parse $pkgver --short=8
-# ftl -> git submodule
-_tag_ftl_core="25c97e48acf6626f0b8bc9daede14e21a83cdaf2"
-_tag_ftl_desktop="1fbf87bb8a7d441482e79b3b8c2e06479e9fa978"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/${pkgver}.tar.gz"
-        "anki-core-i18n-${_tag_ftl_core}.tar.gz::https://github.com/ankitects/anki-core-i18n/archive/${_tag_ftl_core}.tar.gz"
-        "anki-desktop-ftl-${_tag_ftl_desktop}.tar.gz::https://github.com/ankitects/anki-desktop-ftl/archive/${_tag_ftl_desktop}.tar.gz"
+        "anki-core-i18n-${_tags[ftl_core]}.tar.gz::https://github.com/ankitects/anki-core-i18n/archive/${_tags[ftl_core]}.tar.gz"
+        "anki-desktop-ftl-${_tags[ftl_desktop]}.tar.gz::https://github.com/ankitects/anki-desktop-ftl/archive/${_tags[ftl_desktop]}.tar.gz"
         "disable-git-checks.patch"
         "no-update.patch"
         "strip-formatter-deps.patch"
@@ -80,11 +87,6 @@ sha256sums=('ca1c37e8e32bec02f09421bd29ac67253e4039e705bf9fba919918c4559b48e8'
 )
 
 prepare() {
-    _yc="$srcdir/yarn-cache"
-    _ch="$srcdir/cargo-cache"
-    _tag_anki="141bc18b"
-    _tag_ftl_core="25c97e48acf6626f0b8bc9daede14e21a83cdaf2"
-    _tag_ftl_desktop="1fbf87bb8a7d441482e79b3b8c2e06479e9fa978"
     cd "$pkgname-$pkgver"
 
     patch -p1 < "$srcdir/no-update.patch"
@@ -97,21 +99,23 @@ prepare() {
     # (together with disable-git-checks.patch)
     mkdir -p .git
     touch .git/HEAD
-    sed -i "s/MY_REV/${_tag_anki}/" build/runner/src/build.rs
+    sed -i "s/MY_REV/${_tags[anki]}/" build/runner/src/build.rs
 
     # place translations in build dir
     rm -r ftl/core-repo ftl/qt-repo
-    ln -sT "${srcdir}"/anki-core-i18n-${_tag_ftl_core} ftl/core-repo
-    ln -sT "${srcdir}"/anki-desktop-ftl-${_tag_ftl_desktop} ftl/qt-repo
+    ln -sT "${srcdir}"/anki-core-i18n-${_tags[ftl_core]} ftl/core-repo
+    ln -sT "${srcdir}"/anki-desktop-ftl-${_tags[ftl_desktop]} ftl/qt-repo
 
-    #force update for 'rustup' package users (not necesarry for 'cargo' package user)
+    #force update for 'rustup' package users (not necesarry for 'rust' package users)
     pacman -Qo $(which cargo) | grep -q rustup && rustup update
     # fetch rust packages
-    export CARGO_HOME="$_ch"       # do not litter in ~
+    export CARGO_HOME="$srcdir/${_caches[cargo]}"       # do not litter in ~
+    echo "CARGO_HOME:$CARGO_HOME"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
     # fetch node packages already in prepare()
-    export YARN_CACHE_FOLDER="$_yc" # do not litter in ~
+    export YARN_CACHE_FOLDER="$srcdir/${_caches[yarn]}" # do not litter in ~
+    echo "YARN_CACHE_FOLDER:$YARN_CACHE_FOLDER"
     yarn install --immutable --modules-folder out/node_modules --ignore-scripts
     ln -sf out/node_modules ./
 
@@ -123,11 +127,9 @@ prepare() {
 }
 
 build() {
-    _yc="$srcdir/yarn-cache"
-    _ch="$srcdir/cargo-cache"
     cd "$pkgname-$pkgver"
 
-    export YARN_CACHE_FOLDER="$_yc" # do not litter in ~
+    export YARN_CACHE_FOLDER="$srcdir/${_caches[yarn]}" # do not litter in ~
     yarn run --offline postinstall
 
     #use local binaries instead of downloading them
@@ -136,7 +138,7 @@ build() {
     export NODE_BINARY=$(which node)
     export YARN_BINARY=$(which yarn)
 
-    export CARGO_HOME="$_ch"    # do not litter in ~
+    export CARGO_HOME="$srcdir/${_caches[cargo]}"    # do not litter in ~
     export RELEASE=1	        # anki-internal variable for optimization
     mold -run ./ninja wheels -v # use mold as linker to allow for LTO
 }
