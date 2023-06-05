@@ -2,7 +2,7 @@
 # Maintainer: Blacktop <https://github.com/blacktop>
 
 pkgname='ipsw-bin'
-pkgver=3.1.351
+pkgver=3.1.352
 pkgrel=1
 pkgdesc='iOS/macOS Research Swiss Army Knife'
 url='https://github.com/blacktop/ipsw'
@@ -12,17 +12,17 @@ provides=('ipsw')
 conflicts=('ipsw')
 backup=('/etc/ipsw.conf')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.351/ipsw_3.1.351_linux_arm64.tar.gz")
-sha256sums_aarch64=('029c0b3ca38280deee84f6c743ab9c37639ea7a7a415957d665dd55c77346116')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.352/ipsw_3.1.352_linux_arm64.tar.gz")
+sha256sums_aarch64=('1e4e834321eb44ea9a610a284cf6ad45e2fc81050f8417458ab9ec1bbe854aa1')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.351/ipswd_3.1.351_linux_arm64.tar.gz")
-sha256sums_aarch64=('2ded1e80b44751d326d9032a4edebc7cf93dc51ebf2e0ae77624010030a8ce0c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.352/ipswd_3.1.352_linux_arm64.tar.gz")
+sha256sums_aarch64=('f78a0c68cc6cbc9a86bc294c88d52ee9afde4fe242e19789c13e0a181ba79fef')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.351/ipsw_3.1.351_linux_x86_64.tar.gz")
-sha256sums_x86_64=('a193bb47c3e9143c41ff17060e2152891bbd88c0c2b3912400a418ec8d963fd3')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.352/ipsw_3.1.352_linux_x86_64.tar.gz")
+sha256sums_x86_64=('de00755a5df443541d10e212e5d736cb308922b15f72eb155007199d063bc7d8')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.351/ipswd_3.1.351_linux_x86_64.tar.gz")
-sha256sums_x86_64=('117a06acc41a2b071f4dfc05c8a60bd92946a1eaeddc60ac3a9e6bc0faade9af')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.352/ipswd_3.1.352_linux_x86_64.tar.gz")
+sha256sums_x86_64=('88b60013d519bd22ef8aee921668b50dab9cb358f8aeade06e5e966145a6ccb5')
 
 package() {
   # bin
