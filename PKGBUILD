@@ -8,6 +8,8 @@ _channel=nightly
 _lang=en-US
 _pkgname="${_name}-${_channel}"
 pkgname="${_pkgname}-bin"
+provides=('firefox-nightly')
+conflicts=('firefox-nightly')
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 
