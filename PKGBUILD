@@ -1,20 +1,20 @@
 pkgname=companion
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('i386' 'x86_64')
 url="https://github.com/bitfocus/companion"
 license=('custom')
-depends=('gtk3' 'alsa-lib' 'nss')
-makedepends=('nvm' 'git' 'zip')
+depends=('gtk3' 'alsa-lib' 'nss' 'hicolor-icon-theme')
+makedepends=('nvm' 'git' 'zip' 'python>=3.10.0' 'python<3.11.0')
 install=companion.install
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitfocus/companion/archive/refs/tags/v${pkgver}.tar.gz"
 		"50-bitfocus-companion.rules"
 		"bitfocus-companion.desktop")
 
-sha256sums=('004fd0fa5ab44f42fe6f5ed260771f830633cb5a579d635767957cd126122a09'
-            'c0e7cd1f730a7b4381e654b53f6fdd1c06911b2593bdfe07bba5e198fc61d5d9'
+sha256sums=('ed6c944a5188eda06ba57b0d85149308957ddf7a4cde0a2a6d3c8c49d2206a26'
+            'dd9121aeecb8b8b72e8a5c1170925e4a62ea4f95ec3d2c46c7c9626b451b9adf'
             '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
 
 _ensure_local_nvm() {
@@ -44,6 +44,8 @@ prepare() {
 
 	nvm install
 	npm config set cache "${srcdir}/npm"
+	npm config set python python3.10
+	npm config set scripts-prepend-node-path auto
 	npm install -g node-gyp
 	npm install -g yarn
 }
