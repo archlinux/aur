@@ -16,7 +16,7 @@ provides=()
 conflicts=()
 source=("blackd.service"
         "blackd.socket")
-sha256sums=('3981e6220903aeeac44906a16f61e3d9af66d29a7d1ada9a60e9c7bc3470b2c9'
+sha256sums=('23cee4d6e7e74b75d575da41f2479af352de918bee4bb91cd720b2f91d505bd3'
             '5f6230274dfa0a650f4cdf20797598036163faa386711d24446c7bcf94f97703')
 
 package() {

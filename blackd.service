@@ -1,7 +1,8 @@
 [Unit]
 Description=Black Python Formatter Daemon
-After=network.target blackd.socket
-Requires=blackd.socket
+After=network.target
+# After=network.target blackd.socket
+# Requires=blackd.socket
 
 [Service]
 Type=simple
