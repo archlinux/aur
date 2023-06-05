@@ -1,7 +1,7 @@
 # Maintainer: Johannes Wienke <languitar@semipol.de>
 
 pkgname=autosuspend
-pkgver=4.3.1
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="A daemon to suspend and wake up a system based on configurable checks"
 arch=(any)
@@ -23,12 +23,12 @@ makedepends=('python-setuptools'
              'python-pytest-runner'
              'python-recommonmark'
              'python-sphinx'
-             'python-sphinx_rtd_theme'
+             'python-sphinx-furo'
              'python-sphinx-issues'
              'python-sphinxcontrib-plantuml'
              'python-sphinx-autodoc-typehints')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/languitar/autosuspend/archive/v${pkgver}.tar.gz")
-sha256sums=('bfe3e00be2c5e87371500f00d83df6ce5aff11fb42a59cabcd4499c6bd6a1ca5')
+sha256sums=('be0312681f5ddcf1f84eaab0e63c8732beb3511eabf9fc07fecf08fed877af64')
 install="${pkgname}.install"
 backup=('etc/autosuspend.conf'
         'etc/autosuspend-logging.conf')
@@ -36,8 +36,8 @@ backup=('etc/autosuspend.conf'
 build() {
     cd "$pkgname-${pkgver}"
     export PYTHONPATH=$(pwd)/src
-    # python3 setup.py build_sphinx -a -b html
-    # python3 setup.py build_sphinx -a -b man
+    sphinx-build -a -b html doc/source/ doc/build/html
+    sphinx-build -a -b man doc/source/ doc/build/man
 }
 
 package() {
@@ -48,12 +48,12 @@ package() {
     mv "$pkgdir/usr/etc" "$pkgdir"
 
     # # man pages
-    # mkdir -p "${pkgdir}/usr/share/man/man1"
-    # cp doc/build/man/autosuspend.1 "${pkgdir}/usr/share/man/man1"
-    # mkdir -p "${pkgdir}/usr/share/man/man5"
-    # cp doc/build/man/autosuspend.conf.5 "${pkgdir}/usr/share/man/man5"
+    mkdir -p "${pkgdir}/usr/share/man/man1"
+    cp doc/build/man/autosuspend.1 "${pkgdir}/usr/share/man/man1"
+    mkdir -p "${pkgdir}/usr/share/man/man5"
+    cp doc/build/man/autosuspend.conf.5 "${pkgdir}/usr/share/man/man5"
 
     # # HTML help
-    # mkdir -p "${pkgdir}/usr/share/doc"
-    # cp -R doc/build/html "${pkgdir}/usr/share/doc/${pkgname}"
+    mkdir -p "${pkgdir}/usr/share/doc"
+    cp -R doc/build/html "${pkgdir}/usr/share/doc/${pkgname}"
 }
