@@ -3,13 +3,14 @@
 _pkgname=lean-game-maker
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc='Turning lean code into an interactive browser game'
+pkgdesc='Turns lean code into an interactive browser game'
 arch=(any)
 url='https://github.com/mpedramfar/Lean-game-maker'
 license=(Apache)
-depends=(python
+depends=(lean-community
+         python
          python-fire
          python-jinja
          python-jsonpickle
@@ -50,5 +51,3 @@ package() {
 
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
-
-# vi: set ft=bash noet sw=8 sts=8 ts=8

@@ -1,7 +1,7 @@
 pkgbase = lean-game-maker-git
-	pkgdesc = Turning lean code into an interactive browser game
+	pkgdesc = Turns lean code into an interactive browser game
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mpedramfar/Lean-game-maker
 	arch = any
 	license = Apache
@@ -13,6 +13,7 @@ pkgbase = lean-game-maker-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = lean-community
 	depends = python
 	depends = python-fire
 	depends = python-jinja
