@@ -1,3 +1,23 @@
+## GE-Proton8-4
+
+* protonfixes: fix for Moero Chronicle (Thanks Kaedras and Snaggly)
+* protonfixes: fix for Shadows on the Vatican games (Thanks marianoag)
+* protonfixes: fix for The Blind Prophet (Thanks marianoag)
+* protonfixes: fix for Alter Ego (Thanks marianoag)
+* protonfixes: remove no longer needed fall guys easyanticheat_x64.so workaround (Thanks Corben)
+* added fix for northstar launch arguement not working (Thanks Jan ValveSoftware#6555)
+* added upstream proton script changes
+* added upstream font changes
+* added upstream openxr changes
+* added upstream steam helper fixes
+* added upstream user_settings changes
+* updated wine to latest bleeding edge
+* updated dxvk to latest git
+* updated vkd3d-proton to latest git
+* updated dxvk-nvapi to latest release
+
+Notes: On Fall Guys when the Epic Online Services installer is running on a clean prefix, you must hit cancel on step 2/2, otherwise Fall Guys will tell you the game is missing files and force you to exit.
+
 ## GE-Proton8-3
 
 * wine updated to latest bleeding edge -- fixes video playback regression introduced in 8-2
