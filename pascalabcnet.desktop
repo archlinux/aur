@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=3.8.3-3255
+Name=PascalABC.NET
+Exec=mono /opt/PascalABCNETLinux/PascalABCNETLinux.exe
+Icon=pascalabcnet
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Development;IDE;
+
