@@ -9,7 +9,7 @@ readonly _pkgname="NostalgiaForInfinity"
 declare -r _tag="692fe484c1b096699441188417fe94e2f5b21c87"
 
 pkgname="python-nostalgiaforinfinity"
-pkgver="12.0.556"
+pkgver="12.0.614"
 pkgrel="1"
 pkgdesc="Trading strategy for the Freqtrade crypto bot."
 arch=("any")
