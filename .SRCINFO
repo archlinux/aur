@@ -1,6 +1,6 @@
 pkgbase = llama-bin
 	pkgdesc = Terminal file manager
-	pkgver = 1.0.2
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/antonmedv/llama
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = llama-bin
 	license = MIT
 	provides = llama
 	conflicts = llama
-	source = LICENSE-1.0.2::https://github.com/antonmedv/llama/raw/v1.0.2/LICENSE
+	source = LICENSE-1.4.0::https://github.com/antonmedv/llama/raw/v1.4.0/LICENSE
 	sha256sums = d63a8c4f17dde022f8d1f96a4b2c744821f65bcae926b4de4ee77230a70cdee4
-	source_x86_64 = llama-1.0.2-x86_64::https://github.com/antonmedv/llama/releases/download/v1.0.2/llama_linux_amd64
-	sha256sums_x86_64 = e4939e659bb18d4b17f209164dde1cf5fe9d9919e83d9441d8abcb6912a6be2e
-	source_arm = llama-1.0.2-arm::https://github.com/antonmedv/llama/releases/download/v1.0.2/llama_linux_arm
-	sha256sums_arm = 5e1781c3bd040811f2c489cee91d878780a032b8dcd03f904ae36805dfc4fcf7
+	source_x86_64 = llama-1.4.0-x86_64::https://github.com/antonmedv/llama/releases/download/v1.4.0/llama_linux_amd64
+	sha256sums_x86_64 = 47685ed4a117c621ba12a84ffc7be94739ae0bc01c2d144c386595e98914bd9f
+	source_arm = llama-1.4.0-arm::https://github.com/antonmedv/llama/releases/download/v1.4.0/llama_linux_arm
+	sha256sums_arm = 530eab4089fc9cb534cce6ed2d6cce6eb71dbf2fec7148a00ec7488e4a80fd08
 
 pkgname = llama-bin
