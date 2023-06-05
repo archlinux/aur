@@ -1,0 +1,11 @@
+diff --unified --recursive --text beaker-beaker-28.3.orig/documentation/conf.py beaker-beaker-28.3.new/documentation/conf.py
+--- beaker-beaker-28.3.orig/documentation/conf.py	2023-06-05 16:00:06.128268904 +0200
++++ beaker-beaker-28.3.new/documentation/conf.py	2023-06-05 16:00:53.415263377 +0200
+@@ -1,6 +1,6 @@
+ import six
+ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx', 'sphinx.ext.todo',
+-    'sphinx.ext.extlinks']
++    'sphinx.ext.extlinks', 'sphinxcontrib.autohttp.flask']
+ if six.PY2:
+     extensions += ['sphinxcontrib.httpdomain', 'sphinxcontrib.autohttp.flask']
+ master_doc = 'index'

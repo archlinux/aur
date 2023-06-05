@@ -1,0 +1,12 @@
+diff --unified --recursive --text beaker-beaker-28.3.orig/documentation/conf.py beaker-beaker-28.3.new/documentation/conf.py
+--- beaker-beaker-28.3.orig/documentation/conf.py	2023-06-05 16:11:53.389855145 +0200
++++ beaker-beaker-28.3.new/documentation/conf.py	2023-06-05 16:11:12.496236699 +0200
+@@ -65,7 +65,7 @@
+                        'beakerdev': ('http://beaker-project.org/dev', None),
+                       }
+ extlinks = {
+-    'issue': ('https://bugzilla.redhat.com/show_bug.cgi?id=%s', '#'),
++    'issue': ('https://bugzilla.redhat.com/show_bug.cgi?id=%s', '%s'),
+ }
+ 
+ if six.PY3:
