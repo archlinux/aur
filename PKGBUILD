@@ -66,7 +66,7 @@ package() {
   install -Dm644 usr/share/icons/hicolor/0x0/apps/harmony_vpk_tool.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
   ln -s /opt/HarmonyVPKTool/harmony_vpk_tool "$pkgdir/usr/bin/$_pkgname"
   rm -dr usr & rm harmony_vpk_tool.png .DirIcon
-  cp -r * "$pkgdir/opt/HarmonyVPKTool"
+  cp -r ../squashfs-root "$pkgdir/opt/HarmonyVPKTool"
   # Fix permissions
   find "$pkgdir" | while read -r target; do
     _fix_permissions "$target"
