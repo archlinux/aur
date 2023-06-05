@@ -2,7 +2,7 @@
 # Contributor: Harry Beadle <harrybeadle@protonmail.com>
 pkgname=otf-san-francisco-mono
 pkgver=1
-pkgrel=11
+pkgrel=12
 pkgdesc='Monospaced variant of San Francisco. Sourced directly from Apple.'
 arch=('any')
 url='https://developer.apple.com/fonts/'
