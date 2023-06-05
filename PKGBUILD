@@ -12,7 +12,7 @@ pkgname=(gcc12 gcc12-libs gcc12-fortran)
 pkgver=12.3.0
 _majorver=${pkgver%%.*}
 _commit=8fc1a49c9312b05d925b7d21f1d2145d70818151
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
 license=(GPL3 LGPL FDL custom)
@@ -239,7 +239,7 @@ package_gcc12-fortran() {
   make -C gcc DESTDIR="$pkgdir" fortran.install-common
   install -Dm755 gcc/f951 "$pkgdir/${_libdir}/f951"
 
-  ln -s gfortran "$pkgdir/usr/bin/f95-12"
+  ln -s gfortran-12 "$pkgdir/usr/bin/f95-12"
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
