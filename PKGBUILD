@@ -83,6 +83,7 @@ build() {
     rm -r "${srcdir}/${pkgname}/cypress"
     rm -r "${srcdir}/${pkgname}/.cache"
     rm -rf "${srcdir}/${pkgname}/.npm"
+    rm -rf "${srcdir}/${pkgname}/.local"
     rm -r "${srcdir}/${pkgname}/scripts"
 }
 
