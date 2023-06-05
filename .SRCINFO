@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-endeavouros
+	pkgdesc = Plymouth Theme for EndeavourOS
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tomaspinho/plymouth-endeavouros
+	install = plymouth-theme-endeavouros.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/tomaspinho/plymouth-endeavouros.git
+	md5sums = SKIP
+
+pkgname = plymouth-theme-endeavouros
