@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='A tightly integrated, free office package'
 arch=('x86_64')
 url='https://siag.nu'
-license=('GPL3')
+license=('GPL2')
 depends=('xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'gmp' 'tcl' 'libxpm' 'nextaw' 'mowitz')
 
 source=("$pkgname-$pkgver.tar.gz::https://siag.nu/pub/siag/siag-3.6.1.tar.gz"
