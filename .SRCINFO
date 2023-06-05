@@ -1,0 +1,15 @@
+pkgbase = openspace
+	pkgdesc = OpenSpace is an open source, non-commercial, and freely available interactive data visualization software designed to visualize the entire known universe and portray our ongoing efforts to investigate the cosmos
+	pkgver = 0.18.2
+	pkgrel = 1
+	url = https://github.com/OpenSpace/OpenSpace
+	arch = x86_64
+	license = MIT
+	makedepends = glm
+	makedepends = websocketpp
+	source = openspace_0.18.2.tar.gz::https://github.com/OpenSpace/OpenSpace/archive/refs/tags/releases/v0.18.2.tar.gz
+	source = ghoul.tar.gz::https://github.com/OpenSpace/Ghoul/archive/refs/tags/v0.25.0.tar.gz
+	sha256sums = 2f13eadb48370275ef2b91db5e664b0148863f489cbe3d94525a78622e0bd6f9
+	sha256sums = b9f7845fb36fe3fda28eafa5117ca86b341c5a70946dfba1b1802aa622a402d5
+
+pkgname = openspace
