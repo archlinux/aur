@@ -36,5 +36,5 @@ build() {
 
 package() {
 	pushd $pkgname-$pkgver
-	find target/release/ -executable -exec install -Dm755 {} -t $pkgdir/usr/bin/ \;
+	find target/release/ \( -name $pkgname -or -name ${pkgname}_install \) -executable -exec install -Dm755 {} -t $pkgdir/usr/bin/ \;
 }
