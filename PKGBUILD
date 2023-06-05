@@ -1,17 +1,17 @@
 # Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=petalinux
-pkgver=2022.2
+pkgver=2023.1
 pkgrel=1
 pkgdesc='Toolchain and SDK for Xilinx embedded Linux'
 arch=('x86_64')
 url='https://www.xilinx.com/products/design-tools/embedded-software/petalinux-sdk.html'
 license=('custom')
-depends=('bzip2' 'ccache' 'chrpath' 'cpio' 'diffstat' 'diffutils' 'dos2unix' 'git' 'glib2' 'gnupg' 'ncurses' 'ncurses5-compat-libs' 'net-tools' 'openssl' 'pax' 'perl' 'python-gitpython' 'python-jinja' 'python-pexpect' 'python-pip' 'python-pylint' 'screen' 'sdl' 'socat' 'unzip' 'wget' 'xterm' 'zlib')
+depends=('bzip2' 'ccache' 'chrpath' 'cpio' 'diffstat' 'diffutils' 'dos2unix' 'git' 'glib2' 'gnupg' 'inetutils' 'ncurses' 'ncurses5-compat-libs' 'net-tools' 'openssl' 'pax' 'perl' 'python-gitpython' 'python-jinja' 'python-pexpect' 'python-pip' 'python-pylint' 'screen' 'sdl' 'socat' 'unzip' 'wget' 'xterm' 'zlib')
 options=('!strip')
 install="$pkgname.install"
-_plnxinstaller="petalinux-v2022.2-10141622-installer.run"
+_plnxinstaller='petalinux-v2023.1-05012318-installer.run'
 source=("local://$_plnxinstaller")
-sha256sums=('4b8ff9128c991c757c55266b09eb2e83d2e420c2830159c6a081806dca3a3197')
+sha256sums=('22a314dfd36caa333425eb61d48ad0404e239c1689be593a771d4c03859e5d4b')
 
 prepare() {
 	PLNXINSTALLLER="$_plnxinstaller"
@@ -25,7 +25,7 @@ prepare() {
 package() {
 	env -i \
 		PLATFORMS='aarch64 arm microblaze' \
-		PLNXCHECKSUM='f82a77399c118da90098868fa7edd7f9' \
+		PLNXCHECKSUM='ab14d397770da66f07e16728ca0ee208' \
 		PLNXINSTALLDIR="$pkgdir/opt/$pkgname" \
 		PLNXINSTALLLER="$_plnxinstaller" \
 		./petalinux-install
