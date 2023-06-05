@@ -15,12 +15,12 @@ source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 
 prepare() {
-  sed -i "s/'validate'/'validate-relax'/" ${pkgname}/data/meson.build
+  sed -i "s/'validate'/'validate-relax'/" $pkgname/data/meson.build
 }
 
 build() {
   arch-meson $pkgname build
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
