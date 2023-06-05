@@ -5,9 +5,8 @@ post_install() {
         systemctl enable udevmon.service
         echo enabled udevmon.service
     fi
-    # restart udevmon
+    echo "restarting udevmon.service"
     systemctl restart udevmon.service
-    echo restarting udevmon.service
 }
 
 post_upgrade() {
