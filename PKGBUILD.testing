@@ -6,7 +6,8 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=GE-Proton8-7
+_srctag=GE-Proton8-8
+_commit=7a126afa0957743b067181b0fa82af60e2ac412b
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
@@ -16,7 +17,7 @@ epoch=1
 _pkgbasever=${pkgver/rc/-rc}
 _winever=$_pkgbasever
 
-source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=${_srctag}
+source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#commit=${_commit}
         proton-wine-ge::git+https://github.com/GloriousEggroll/proton-wine.git
         wine-wmclass.patch
         wine-isolate_home.patch
