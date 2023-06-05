@@ -6,8 +6,8 @@
 
 pkgname=pacman-fancy-progress-git
 pkgver=6.0.1.r123.g2c45e854
-pkgrel=2
-pkgdesc="A library-based package manager with dependency support"
+pkgrel=3
+pkgdesc="pacman-git but patched to have a unicode progressbar"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
