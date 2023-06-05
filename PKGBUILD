@@ -1,14 +1,14 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
 
 pkgname=perl-sdl
 pkgver=2.548
-pkgrel=7
+pkgrel=8
 pkgdesc='Simple DirectMedia Layer for Perl'
 arch=('x86_64')
-license=(LGPL)
+license=('LGPL')
 url='https://metacpan.org/dist/SDL'
 depends=(
   'perl>=5.008'
@@ -23,7 +23,6 @@ depends=(
   'sdl_mixer'
   'sdl_gfx'
   'sdl_pango'
-  'smpeg'
 )
 makedepends=(
   'perl-capture-tiny'
@@ -32,6 +31,7 @@ makedepends=(
   'perl-test-most>=0.21'
   'perl-test-simple>=0.88'
 )
+optdepends=('smpeg: deprecated MP3 library, SDL does not need it but this Perl module still supports it')
 options=('!emptydirs')
 _cpan_author='FROGGS'
 source=("https://cpan.metacpan.org/authors/id/${_cpan_author::1}/${_cpan_author::2}/$_cpan_author/SDL-$pkgver.tar.gz")
