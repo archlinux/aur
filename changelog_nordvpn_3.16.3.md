@@ -1,6 +1,6 @@
 
 <!-- Public changelog source from release version: -->
-<!-- https://github.com/NordSecurity/nordvpn-linux/releases/tag/3.16.2 -->
+<!-- https://github.com/NordSecurity/nordvpn-linux/releases/tag/3.16.3 -->
 ---
 
 * We improved how command line parameters are handled to avoid connection errors caused by typing in all caps.
