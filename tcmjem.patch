@@ -1,0 +1,11 @@
+--- configure_cmake.sh	2023-06-05 17:30:25.919291388 +0530
++++ configure_cmake.sh	2023-06-05 17:32:39.363142785 +0530
+@@ -154,6 +154,8 @@
+ build_type=""
+ [ -z "$CFLAGS" ] && [ -z "$CXXFLAGS" ] && build_type="RelWithDebInfo"
+ 
++tcm=0
++jem=0
+ 
+ # parse arguments
+ while [ $# -ne 0 ]; do

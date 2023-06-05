@@ -18,7 +18,7 @@
  
  using DaqVar = std::pair<std::string, std::string>;
  using DaqVarList = std::vector<DaqVar>;
---- src/service_inspectors/wizard/magic.h.amm	2023-05-24 09:16:41.121404348 +0530
+--- src/service_inspectors/wizard/magic.h	2023-05-24 09:16:41.121404348 +0530
 +++ src/service_inspectors/wizard/magic.h	2023-05-24 09:17:13.008321620 +0530
 @@ -23,6 +23,7 @@
  #include <cassert>
