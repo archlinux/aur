@@ -9,7 +9,6 @@ pkgbase = gitleaks-bin
 	arch = armv6h
 	arch = aarch64
 	license = MIT
-	depends = glibc
 	provides = gitleaks
 	source_x86_64 = https://github.com/gitleaks/gitleaks/releases/download/v8.16.3/gitleaks_8.16.3_linux_x64.tar.gz
 	b2sums_x86_64 = 2c428c0a54f5d81331bca800aac4e8c5867867f955aead4a2fd0713ee9a9936377e3be36a275f6b4bca12dcac924b2e131fec99abd8f304e77cbdd7176d14399
