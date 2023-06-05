@@ -1,26 +1,26 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: Matej Dujava <mdujava (plus) aur (at) kocurkovo (dot) cz>
 
 pkgname=python-sphinxcontrib-httpdomain
 _libname=sphinxcontrib-httpdomain
-pkgver=1.5.0
-pkgrel=1
+pkgver='1.8.1'
+pkgrel='1'
 pkgdesc="HTTP domain extension for sphinx"
-arch=(any)
-url="https://bitbucket.org/birkenfeld/sphinx-contrib/"
+arch=('any')
+url="https://github.com/sphinx-contrib/httpdomain"
 license=('BSD')
+makedepends=('python-setuptools')
 depends=('python-sphinx')
-options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/source/s/$_libname/$_libname-$pkgver.tar.gz")
+source=("https://github.com/sphinx-contrib/httpdomain/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('8c58e5874474f6b9b2100d6bddb2140d8a82d459cd20cd62342405c7e84811a6')
+
 
 build() {
-	cd "$srcdir/$_libname-$pkgver"
-	python setup.py build
+    cd httpdomain-${pkgver}
+    python setup.py build
 }
 
-package() {
-	cd "$srcdir/$_libname-$pkgver"
-	python setup.py install -O1 --skip-build --root="$pkgdir"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package(){
+    cd httpdomain-${pkgver}
+    python setup.py install -O1 --skip-build --root="${pkgdir}" --optimize=1
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-sha256sums=('eab097505caee272ca6a313edb2cbc3d2103bb6bcc09923ef43054e238452f6b')
