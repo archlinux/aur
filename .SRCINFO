@@ -1,0 +1,20 @@
+pkgbase = period04
+	pkgdesc = Period04 is a computer program especially dedicated to the statistical analysis of large astronomical time series containing gaps
+	pkgver = 1.2.9.3
+	pkgrel = 1
+	url = http://period04.net/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = java-environment-common
+	makedepends = java-runtime-common
+	makedepends = ant
+	makedepends = boost
+	depends = java-environment-common
+	depends = java-runtime-common
+	source = git+https://gitlab.com/patdb/period04-public.git
+	source = period04
+	sha256sums = SKIP
+	sha256sums = dd5ca330f45377f791c171b3b2c899db5a6a29385f48ed3fbf94893447f607a1
+
+pkgname = period04

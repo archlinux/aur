@@ -1,0 +1,4 @@
+#!/bin/sh
+cd /opt/period04/
+java -Xmx8192m -jar ij.jar
+exit
