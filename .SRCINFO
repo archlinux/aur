@@ -1,6 +1,6 @@
 pkgbase = relcs-git
 	pkgdesc = Grand Theft Auto: LCS reverse engineered
-	pkgver = 1.0_b1
+	pkgver = 1.0_r5619.33abd1b4
 	pkgrel = 1
 	url = https://github.com/halpz/re3/tree/miami
 	install = relcs.install
@@ -19,6 +19,8 @@ pkgbase = relcs-git
 	source = git+https://github.com/xiph/opus.git
 	source = git+https://github.com/xiph/opusfile.git
 	source = reLCS.desktop
+	source = reLCS.svg
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP

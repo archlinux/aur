@@ -1,6 +1,6 @@
 _pkgbase=relcs-git
 pkgname=relcs-git
-pkgver=1.0_b1
+pkgver=1.0_r5619.33abd1b4
 pkgrel=1
 pkgdesc="Grand Theft Auto: LCS reverse engineered"
 arch=(x86_64 aarch64)
@@ -17,8 +17,10 @@ source=(
     git+https://github.com/xiph/ogg.git
     git+https://github.com/xiph/opus.git
     git+https://github.com/xiph/opusfile.git	
-	reLCS.desktop)
+	reLCS.desktop
+	reLCS.svg)
 md5sums=(
+	SKIP
 	SKIP
 	SKIP
 	SKIP
@@ -51,7 +53,7 @@ cd "$srcdir/re3"
   install -D -m755 -t "$pkgdir/usr/bin" \
     "bin/linux-amd64-librw_gl3_glfw-oal/Release/reLCS"
       install -D -m644 -t "$pkgdir/usr/share/applications" ../reLCS.desktop
-  install -D -m644 res/images/logo.svg "$pkgdir/usr/share/pixmaps/reLCS.svg"
+	  install -D -m644 -t "$pkgdir/usr/share/pixmaps/reLCS.svg" ../reLCS.svg
   mkdir -p "$pkgdir/usr/share/games/relcs"
   cp -a gamefiles "$pkgdir/usr/share/games/relcs/"
   chmod og=rX -R "$pkgdir/usr/share/games/relcs"
