@@ -11,7 +11,7 @@ url='https://www.gnu.org/software/libidn/'
 arch=('x86_64')
 license=('GPL3' 'LGPL')
 depends=('glibc')
-makedepends=('git' 'gperf')
+makedepends=('git' 'gperf' 'gtk-doc')
 source=("git+https://git.savannah.gnu.org/git/libidn.git?signed#tag=libidn-${pkgver//./-}"
         'libidn11-subdirs.patch')
 validpgpkeys=('9AA9BDB11BB1B99A21285A330664A76954265E8C') # Simon Josefsson <simon@josefsson.org>
