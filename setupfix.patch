@@ -1,0 +1,30 @@
+Tylko w hankel-1.2.1: build
+diff -u --color -ur hankel-1.2.1.orig/setup.cfg hankel-1.2.1/setup.cfg
+--- hankel-1.2.1.orig/setup.cfg	1970-01-01 01:00:00.000000000 +0100
++++ hankel-1.2.1/setup.cfg	2023-06-05 15:53:53.877402526 +0200
+@@ -7,7 +7,7 @@
+ author = Steven Murray
+ author_email = steven.g.murray@asu.edu
+ license = MIT
+-license_file = LICENSE.rst
++license_files = LICENSE.rst
+ classifiers = 
+ 	Development Status :: 5 - Production/Stable
+ 	Intended Audience :: Developers
+@@ -50,14 +50,14 @@
+ 	pre-commit
+ 	pytest
+ 	pytest-cov
+-	sphinx>=2.0<3
++	sphinx>=2.0,<3
+ 	sphinx-rtd-theme
+ docs = 
+ 	ipykernel
+ 	nbsphinx
+ 	numpydoc
+ 	pandoc
+-	sphinx>=2.0<3
++	sphinx>=2.0,<3
+ 	sphinx-rtd-theme
+ tests = 
+ 	pre-commit
