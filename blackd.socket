@@ -1,0 +1,9 @@
+[Unit]
+Description=Black Python Formatter Daemon
+PartOf=blackd.service
+
+[Socket]
+ListenStream=127.0.0.1:45484
+
+[Install]
+WantedBy=sockets.target

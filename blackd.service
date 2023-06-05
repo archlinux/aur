@@ -1,0 +1,11 @@
+[Unit]
+Description=Black Python Formatter Daemon
+After=network.target blackd.socket
+Requires=blackd.socket
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/blackd
+
+[Install]
+WantedBy=default.target
