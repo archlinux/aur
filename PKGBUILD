@@ -35,7 +35,4 @@ package() {
         -executable \
         -type f \
         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
-
-    taskerctl enable
-    sudo cp "${HOME}/.config/systemd/user/tasker.service" /etc/systemd/system/
 }
