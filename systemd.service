@@ -1,0 +1,17 @@
+[Unit]
+Description=Prometheus exporter for fail2ban metrics
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/fail2ban-exporter
+ExecReload=/bin/kill -HUP $MAINPID
+User=root
+Group=root
+Restart=on-failure
+RestartSec=5s
+
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
