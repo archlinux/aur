@@ -4,7 +4,7 @@ pkgname=carfirma-bin
 pkgver=2.0
 pkgrel=1
 pkgdesc='Cliente de firma electrónica de la Administración Pública de la Comunidad Autónoma de La Rioja'
-arch=('x86_64')
+arch=('any')
 url='https://www.larioja.org/oficina-electronica/es/firma-electronica/carfirma'
 license=('GPL' 'custom:EUPL')
 depends=('java-runtime=8')
