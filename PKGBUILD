@@ -3,7 +3,7 @@
 
 pkgname=calckey
 pkgver=13.1.4
-pkgrel=5
+pkgrel=6
 pkgdesc='A fun, new way to experience social media'
 url='https://calckey.org'
 arch=('x86_64')
