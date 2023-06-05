@@ -3,27 +3,23 @@
 
 _pkgname=libint
 pkgname=libint2
-pkgver=2.6.0
-pkgrel=2
+pkgver=2.7.2
+pkgrel=1
 pkgdesc='A high-performance library for computing Gaussian integrals in quantum mechanics'
 url='https://github.com/evaleev/libint'
 license=('GPL')
 arch=('x86_64')
 depends=('boost')
-makedepends=('python' 'gcc-fortran' 'cmake' 'automake' 'autoconf')
-source=("https://github.com/evaleev/libint/archive/v${pkgver}.tar.gz"
-        "0001-Update-build_libint.cc.patch")
-sha256sums=('4ae47e8f0b5632c3d2a956469a7920896708e9f0e396ec10071b8181e4c8d9fa'
-            '22fea5b46e61ad3a08f2b9ea9a898dc8c29faa77db06dfd45cdc8e9046286a6e')
+makedepends=('python' 'gcc-fortran' 'cmake' 'automake' 'autoconf' 'eigen')
+source=("https://github.com/evaleev/libint/archive/v${pkgver}.tar.gz")
+sha256sums=('fd0466ce9eb6786b8c5bbe3d510e387ed44b198a163264dfd7e60b337e295fd9')
 options=(staticlibs)
+
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    patch -Np1 -i "${srcdir}/0001-Update-build_libint.cc.patch"
-
     ./autogen.sh
-    mkdir "$srcdir/build"
     
     # Detecting FMA support
     if [ $( gcc -march=native -dM -E - < /dev/null | egrep "FMA__" | tail -c 2 ) \
@@ -45,9 +41,15 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/build"
+    ## generating libint library
+    tarball_build_dir="${srcdir}/prepare_tarball"
+    libint_build_dir="${srcdir}/build_libint"
+
+    # create dir for building tarball 
+    mkdir -p "$tarball_build_dir"
     
-    # Generating code with desirable features such as fortran interface
+    # run conf from building tarball dir
+    cd "$tarball_build_dir"
     ../$_pkgname-$pkgver/configure \
                 --enable-eri=1 \
                 --enable-eri2=1 \
@@ -60,27 +62,25 @@ build() {
                 --with-opt-am=3
     make export
     
-    # Actual compilation of LIBINT
-    tar xzf $_pkgname-$pkgver.tgz
-    cd "$_pkgname-$pkgver"
+    ## compiling libint library
+    # create dir for building libint 
+    mkdir -p "$libint_build_dir"
 
-    ./configure \
-                --prefix=/usr \
-                --libdir=/usr/lib \
-                --enable-fortran \
-                --with-cxx=g++ \
-                --with-cxx-optflags="$CXXFLAGS"
-    make
+    tar xzf "$tarball_build_dir/${_pkgname}-${pkgver}.tgz" -C "$libint_build_dir"
+
+    cd "$libint_build_dir/${_pkgname}-${pkgver}"
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CXX_FLAGS="$CXXFLAGS"
+    cmake --build .
 }
 
 check() {
-    cd "$srcdir/build/$_pkgname-$pkgver"
-
-    make check
+    libint_build_dir="${srcdir}/build_libint"
+    cd "$libint_build_dir/${_pkgname}-${pkgver}"
+    cmake --build . check
 }
 
 package() {
-    cd "$srcdir/build/$_pkgname-$pkgver"
-
-    make DESTDIR=$pkgdir install
+    libint_build_dir="${srcdir}/build_libint"
+    cd "$libint_build_dir/${_pkgname}-${pkgver}"
+    DESTDIR="$pkgdir" cmake --install .
 }
