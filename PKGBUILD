@@ -3,7 +3,7 @@
 
 pkgname=python-pymorphy2
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Morphological analyzer (POS tagger + inflection engine) for Russian language."
 arch=(any)
 url="https://github.com/kmike/pymorphy2/"
@@ -14,17 +14,25 @@ depends=("python-pymorphy2_dicts<3.0" "python-pymorphy2_dicts>=2.4"
 optdepends=("python-pymorphy2-dicts-ru: russian language"
             "python-pymorphy2-dicts-uk: ukraine language")
 makedepends=("python")
-source=(https://github.com/kmike/pymorphy2/archive/$pkgver.tar.gz)
-md5sums=('4bb4419174860f8535a098bf166f80cc')
+source=("pymorphy2::git+https://github.com/kmike/pymorphy2#tag=$pkgver")
+md5sums=('SKIP')
+
+prepare()
+  {
+    # apply python 3.11 fix
+    cd "$srcdir/pymorphy2"
+    git fetch origin pull/161/head:fix_python_311
+    git merge fix_python_311
+  }
 
 build()
   {
-    cd "$srcdir/pymorphy2-$pkgver"
-    python setup.py build
+    cd "$srcdir/pymorphy2"
+    python -m build --wheel --no-isolation
   }
 
 package()
   {
-    cd "$srcdir/pymorphy2-$pkgver"
-    python setup.py install --root="$pkgdir/"
+    cd "$srcdir/pymorphy2"
+    python -m installer --destdir="$pkgdir" dist/*.whl
   }
