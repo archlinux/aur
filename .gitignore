@@ -1,0 +1,9 @@
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/remove-selinux.patch
+!/more-xsessions.patch
+!/Xsession
+!/README.md
+
