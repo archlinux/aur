@@ -45,11 +45,6 @@
 #   'n' - do not apply this patch
 #   'y' - apply this patch
 #
-# Show offset, size and padding for bit fields on hover
-# CLANGD_HOVERBITFIELDS:
-#   'n' - do not apply this patch
-#   'y' - apply this patch
-#
 # Show mask for bit fields (require CLANGD_HOVERBITFIELDS)
 # CLANGD_HOVERBITFIELDSMASK:
 #   'n' - do not apply this patch
@@ -65,11 +60,10 @@
 : ${CLANGD_EXTRACTFUNC:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_INLAYHINTSPADS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERINHEX:=$CLANGD_DEFAULT_PATCH_STATE}
-: ${CLANGD_HOVERBITFIELDS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_HOVERBITFIELDSMASK:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.r12800.gab05d9134d18
+pkgver=17.r13572.gd965960fcf90
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -88,21 +82,17 @@ source=('git+https://github.com/llvm/llvm-project.git'
         'refactor-extract-function.patch'
         'inlay-hints-paddings.patch'
         'hover-hex-formats.patch'
-        'hover-hex-formats-bits-patch.patch'
-        'hover-bit-fields.patch'
         'hover-bit-fields-mask.patch')
 sha256sums=('SKIP'
             '843bf80065da5929276e070a5e66cd2a8391090bba2ac2f9c48be0a9bb35d315'  # hover-doxygen-noast
             'b00ed1cef0ee45f7db596d268bb1e0af6da986590830ee33c7da7596a3c32fc0'  # hover-doxygen
             '8e9aa2930380bbdcf4ae48ba309c558db9ccdbbb90f92d247a58ac9c758c87aa'  # doxygen-more-fields
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
-            '9bb8d1d27e3b5a184af71a5aad310da3971e77279f65d7bf804d619ce907280a'  # lsp-codelens
-            'b4833ec1cb598ca679de397207e085eebac5a0cb48fff71c441a7272d3767683'  # postfix-completion
+            '35153f4775647bd7172a460de595f8b1cab4db0ae85283cd1119864f5328ea48'  # lsp-codelens
+            '4152daf9a48c6d6745815571de994d071ed1352fc3122944b593559a603a91a6'  # postfix-completion
             'f719fb52edee98f54ba40786d2ecac6ef63f56797c8f52d4d7ce76a3825966eb'  # refactor-extract-function
             '2db1f319f850858ecebdcda1c1600d6dd523f171c5b019740298d43607d5fa00'  # inlay-hints-paddings
-            '346483b0d5823fba409785c2df471ca8a659112d630ee66e53b1a3e36e46e981'  # hover-hex-formats
-            'ec5e9ff589c658b7ea82a9aa1e9cdc1296446a918cfda9cb870442a93e14454a'  # hover-hex-formats-bits-patch
-            'd1ecb75928639823e0fa2d6ffb39992ef40c7b95f71fd7def4a2353fedd7ff69'  # hover-bit-fields
+            'ba47bb7ac05487a5a083094247eaa369f89404924172a4af40147507b15b90aa'  # hover-hex-formats
             'a02dbc05ab1ca824b5487aa4df360be403f28c90564eddb3a974c81761f1e8ff') # hover-bit-fields-mask
 
 pkgver() {
@@ -127,18 +117,11 @@ prepare() {
     if [ "$CLANGD_RESOLVEFWDPARAMS" != "n" ]; then
         patch -p1 -i ${srcdir}/hover-resolve-forward-params.patch
     fi
-    if [ "$CLANGD_HOVERBITFIELDS" != "n" ]; then
-        patch -p1 -i ${srcdir}/hover-bit-fields.patch
-        if [ "$CLANGD_HOVERBITFIELDSMASK" != "n" ]; then
-            patch -p1 -i ${srcdir}/hover-bit-fields-mask.patch
-        fi
+    if [ "$CLANGD_HOVERBITFIELDSMASK" != "n" ]; then
+        patch -p1 -i ${srcdir}/hover-bit-fields-mask.patch
     fi
     if [ "$CLANGD_HOVERINHEX" != "n" ]; then
-        if [ "$CLANGD_HOVERBITFIELDS" != "n" ]; then
-            patch -p1 -i ${srcdir}/hover-hex-formats-bits-patch.patch
-        else
-            patch -p1 -i ${srcdir}/hover-hex-formats.patch
-        fi
+        patch -p1 -i ${srcdir}/hover-hex-formats.patch
     fi
     
     # LSP patches

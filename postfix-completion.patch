@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/CodeComplete.cpp b/clang-tools-extra/clangd/CodeComplete.cpp
-index 3da923c6dd92..2f61e6f019d5 100644
+index f4f93a01ec90..69365439925a 100644
 --- a/clang-tools-extra/clangd/CodeComplete.cpp
 +++ b/clang-tools-extra/clangd/CodeComplete.cpp
 @@ -329,7 +329,12 @@ struct CodeCompletionBuilder {
@@ -25,6 +25,17 @@ index 3da923c6dd92..2f61e6f019d5 100644
        if (!C.SemaResult->FunctionCanBeCall)
          S.SnippetSuffix.clear();
        S.ReturnType = getReturnType(*SemaCCS);
+@@ -746,8 +753,8 @@ SpecifiedScope getQueryScopes(CodeCompletionContext &CCContext,
+   llvm::StringRef SpelledSpecifier = Lexer::getSourceText(
+       CharSourceRange::getCharRange(SemaSpecifier->getRange()),
+       CCSema.SourceMgr, clang::LangOptions());
+-  if (SpelledSpecifier.consume_front("::")) 
+-      Scopes.QueryScopes = {""};
++  if (SpelledSpecifier.consume_front("::"))
++    Scopes.QueryScopes = {""};
+   Scopes.UnresolvedQualifier = std::string(SpelledSpecifier);
+   // Sema excludes the trailing "::".
+   if (!Scopes.UnresolvedQualifier->empty())
 @@ -917,6 +924,8 @@ struct CompletionRecorder : public CodeCompleteConsumer {
    // Returns the filtering/sorting name for Result, which must be from Results.
    // Returned string is owned by this recorder (or the AST).
@@ -34,13 +45,22 @@ index 3da923c6dd92..2f61e6f019d5 100644
      switch (Result.Kind) {
      case CodeCompletionResult::RK_Declaration:
        if (auto *ID = Result.Declaration->getIdentifier())
-@@ -2221,9 +2230,17 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
-   const auto *InsertInclude = Includes.empty() ? nullptr : &Includes[0];
+@@ -1494,7 +1503,7 @@ class CodeCompleteFlow {
+   CompletionPrefix HeuristicPrefix;
+   std::optional<FuzzyMatcher> Filter; // Initialized once Sema runs.
+   Range ReplacedRange;
+-  std::vector<std::string> QueryScopes; // Initialized once Sema runs.
++  std::vector<std::string> QueryScopes;      // Initialized once Sema runs.
+   std::vector<std::string> AccessibleScopes; // Initialized once Sema runs.
+   // Initialized once QueryScopes is initialized, if there are scopes.
+   std::optional<ScopeDistance> ScopeProximity;
+@@ -2223,9 +2232,16 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
+   // In VSCode there are rendering issues that prevent these being aligned.
    LSP.label = ((InsertInclude && InsertInclude->Insertion)
                     ? Opts.IncludeIndicator.Insert
 -                   : Opts.IncludeIndicator.NoInsert) +
 -              (Opts.ShowOrigins ? "[" + llvm::to_string(Origin) + "]" : "") +
--              RequiredQualifier + Name + Signature;
+-              RequiredQualifier + Name;
 +               : AbstractName ? Opts.IncludeIndicator.Rewrite
 +                              : Opts.IncludeIndicator.NoInsert);
 +  if (Opts.ShowOrigins)
@@ -50,12 +70,11 @@ index 3da923c6dd92..2f61e6f019d5 100644
 +  } else {
 +    LSP.label += RequiredQualifier;
 +    LSP.label += Name;
-+    LSP.label += Signature;
 +  }
+   LSP.labelDetails.emplace();
+   LSP.labelDetails->detail = Signature;
  
-   LSP.kind = Kind;
-   LSP.detail = BundleSize > 1
-@@ -2242,7 +2259,9 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
+@@ -2246,7 +2262,9 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
    }
    LSP.sortText = sortText(Score.Total, FilterText);
    LSP.filterText = FilterText;
@@ -66,7 +85,7 @@ index 3da923c6dd92..2f61e6f019d5 100644
    // Merge continuous additionalTextEdits into main edit. The main motivation
    // behind this is to help LSP clients, it seems most of them are confused when
    // they are provided with additionalTextEdits that are consecutive to main
-@@ -2251,7 +2270,7 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
+@@ -2255,7 +2273,7 @@ CompletionItem CodeCompletion::render(const CodeCompleteOptions &Opts) const {
    // is mainly to help LSP clients again, so that changes do not effect each
    // other.
    for (const auto &FixIt : FixIts) {
@@ -116,7 +135,7 @@ index a2d523cd3e92..c50a41a7c7ba 100644
    unsigned Priority;
  
 diff --git a/clang/lib/Sema/SemaCodeComplete.cpp b/clang/lib/Sema/SemaCodeComplete.cpp
-index 22d8b5eb44e8..c349495b63ee 100644
+index 8c166570265c..b11807054f93 100644
 --- a/clang/lib/Sema/SemaCodeComplete.cpp
 +++ b/clang/lib/Sema/SemaCodeComplete.cpp
 @@ -20,6 +20,7 @@

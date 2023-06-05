@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/CMakeLists.txt b/clang-tools-extra/clangd/CMakeLists.txt
-index 183a3666ee58..3f76eb6ce196 100644
+index 3911fb6c6c74..43272cbeb87f 100644
 --- a/clang-tools-extra/clangd/CMakeLists.txt
 +++ b/clang-tools-extra/clangd/CMakeLists.txt
 @@ -68,6 +68,7 @@ add_clang_library(clangDaemon
@@ -11,10 +11,10 @@ index 183a3666ee58..3f76eb6ce196 100644
    CompileCommands.cpp
    Compiler.cpp
 diff --git a/clang-tools-extra/clangd/ClangdLSPServer.cpp b/clang-tools-extra/clangd/ClangdLSPServer.cpp
-index 6ead59a7ec90..7989c8b3746a 100644
+index 396b903a9a76..600931e310cb 100644
 --- a/clang-tools-extra/clangd/ClangdLSPServer.cpp
 +++ b/clang-tools-extra/clangd/ClangdLSPServer.cpp
-@@ -633,6 +633,11 @@ void ClangdLSPServer::onInitialize(const InitializeParams &Params,
+@@ -667,6 +667,11 @@ void ClangdLSPServer::onInitialize(const InitializeParams &Params,
         {"capabilities", std::move(ServerCaps)}}};
    if (Opts.Encoding)
      Result["offsetEncoding"] = *Opts.Encoding;
@@ -26,7 +26,7 @@ index 6ead59a7ec90..7989c8b3746a 100644
    Reply(std::move(Result));
  
    // Apply settings after we're fully initialized.
-@@ -1549,6 +1554,30 @@ void ClangdLSPServer::onMemoryUsage(const NoParams &,
+@@ -1591,6 +1596,30 @@ void ClangdLSPServer::onMemoryUsage(const NoParams &,
    Reply(std::move(MT));
  }
  
@@ -57,7 +57,7 @@ index 6ead59a7ec90..7989c8b3746a 100644
  void ClangdLSPServer::onAST(const ASTParams &Params,
                              Callback<std::optional<ASTNode>> CB) {
    Server->getAST(Params.textDocument.uri.file(), Params.range, std::move(CB));
-@@ -1624,7 +1653,10 @@ void ClangdLSPServer::bindMethods(LSPBinder &Bind,
+@@ -1666,7 +1695,10 @@ void ClangdLSPServer::bindMethods(LSPBinder &Bind,
    Bind.method("textDocument/foldingRange", this, &ClangdLSPServer::onFoldingRange);
    Bind.command(ApplyFixCommand, this, &ClangdLSPServer::onCommandApplyEdit);
    Bind.command(ApplyTweakCommand, this, &ClangdLSPServer::onCommandApplyTweak);
@@ -70,10 +70,10 @@ index 6ead59a7ec90..7989c8b3746a 100644
    PublishDiagnostics = Bind.outgoingNotification("textDocument/publishDiagnostics");
    if (Caps.InactiveRegions)
 diff --git a/clang-tools-extra/clangd/ClangdLSPServer.h b/clang-tools-extra/clangd/ClangdLSPServer.h
-index cd5bb662c393..2f3dbebf20c3 100644
+index a483d1110f64..27faf4535b96 100644
 --- a/clang-tools-extra/clangd/ClangdLSPServer.h
 +++ b/clang-tools-extra/clangd/ClangdLSPServer.h
-@@ -175,6 +175,10 @@ private:
+@@ -173,6 +173,10 @@ private:
    void onCommandApplyEdit(const WorkspaceEdit &, Callback<llvm::json::Value>);
    void onCommandApplyTweak(const TweakArgs &, Callback<llvm::json::Value>);
  
@@ -85,7 +85,7 @@ index cd5bb662c393..2f3dbebf20c3 100644
    LSPBinder::OutgoingMethod<ApplyWorkspaceEditParams,
                              ApplyWorkspaceEditResponse>
 diff --git a/clang-tools-extra/clangd/ClangdServer.cpp b/clang-tools-extra/clangd/ClangdServer.cpp
-index 7c5042b8414b..804b36e2b66a 100644
+index cd3a52249dfb..9c56de832730 100644
 --- a/clang-tools-extra/clangd/ClangdServer.cpp
 +++ b/clang-tools-extra/clangd/ClangdServer.cpp
 @@ -8,6 +8,7 @@
@@ -129,10 +129,10 @@ index 7c5042b8414b..804b36e2b66a 100644
    return WorkScheduler->fileStats();
  }
 diff --git a/clang-tools-extra/clangd/ClangdServer.h b/clang-tools-extra/clangd/ClangdServer.h
-index f47216a05176..6c517541b8cd 100644
+index eee79abee7c9..147a52405675 100644
 --- a/clang-tools-extra/clangd/ClangdServer.h
 +++ b/clang-tools-extra/clangd/ClangdServer.h
-@@ -169,6 +169,9 @@ public:
+@@ -170,6 +170,9 @@ public:
      // Whether the client supports folding only complete lines.
      bool LineFoldingOnly = false;
  
@@ -142,7 +142,7 @@ index f47216a05176..6c517541b8cd 100644
      FeatureModuleSet *FeatureModules = nullptr;
      /// If true, use the dirty buffer contents when building Preambles.
      bool UseDirtyHeaders = false;
-@@ -377,6 +380,12 @@ public:
+@@ -378,6 +381,12 @@ public:
    void getAST(PathRef File, std::optional<Range> R,
                Callback<std::optional<ASTNode>> CB);
  
@@ -157,7 +157,7 @@ index f47216a05176..6c517541b8cd 100644
    /// The AST is only valid for the duration of the callback.
 diff --git a/clang-tools-extra/clangd/CodeLens.cpp b/clang-tools-extra/clangd/CodeLens.cpp
 new file mode 100644
-index 000000000000..a5ef149d920b
+index 000000000000..0cbfe3f70571
 --- /dev/null
 +++ b/clang-tools-extra/clangd/CodeLens.cpp
 @@ -0,0 +1,167 @@
@@ -185,11 +185,11 @@ index 000000000000..a5ef149d920b
 +  if (!FileFieldRef)
 +    return std::nullopt;
 +  auto FilePath =
-+      getCanonicalPath(*FileFieldRef, SM);
++      getCanonicalPath(*FileFieldRef, SM.getFileManager());
 +  auto TUFieldRef = SM.getFileEntryRefForID(SM.getFileID(NameLoc));
 +  if (!TUFieldRef)
 +    return std::nullopt;
-+  auto TUPath = getCanonicalPath(*TUFieldRef, SM);
++  auto TUPath = getCanonicalPath(*TUFieldRef, SM.getFileManager());
 +  if (!FilePath || !TUPath)
 +    return std::nullopt; // Not useful without a uri.
 +
@@ -363,7 +363,7 @@ index 000000000000..2dbfaf87baed
 +#endif
 \ No newline at end of file
 diff --git a/clang-tools-extra/clangd/Protocol.cpp b/clang-tools-extra/clangd/Protocol.cpp
-index 4b2472ad4be0..b62fbb89b413 100644
+index 269e77372ad3..4e32a9474bda 100644
 --- a/clang-tools-extra/clangd/Protocol.cpp
 +++ b/clang-tools-extra/clangd/Protocol.cpp
 @@ -150,6 +150,12 @@ llvm::raw_ostream &operator<<(llvm::raw_ostream &OS, const Range &R) {
@@ -379,7 +379,7 @@ index 4b2472ad4be0..b62fbb89b413 100644
  llvm::json::Value toJSON(const Location &P) {
    return llvm::json::Object{
        {"uri", P.uri},
-@@ -826,6 +832,8 @@ llvm::json::Value toJSON(const Command &C) {
+@@ -868,6 +874,8 @@ llvm::json::Value toJSON(const Command &C) {
  const llvm::StringLiteral CodeAction::QUICKFIX_KIND = "quickfix";
  const llvm::StringLiteral CodeAction::REFACTOR_KIND = "refactor";
  const llvm::StringLiteral CodeAction::INFO_KIND = "info";
@@ -388,7 +388,7 @@ index 4b2472ad4be0..b62fbb89b413 100644
  
  llvm::json::Value toJSON(const CodeAction &CA) {
    auto CodeAction = llvm::json::Object{{"title", CA.title}};
-@@ -1570,5 +1578,37 @@ bool fromJSON(const llvm::json::Value &E, SymbolID &S, llvm::json::Path P) {
+@@ -1645,5 +1653,37 @@ bool fromJSON(const llvm::json::Value &E, SymbolID &S, llvm::json::Path P) {
  }
  llvm::json::Value toJSON(const SymbolID &S) { return S.str(); }
  
@@ -427,7 +427,7 @@ index 4b2472ad4be0..b62fbb89b413 100644
  } // namespace clangd
  } // namespace clang
 diff --git a/clang-tools-extra/clangd/Protocol.h b/clang-tools-extra/clangd/Protocol.h
-index eb271676e651..2a14a7ed6f64 100644
+index cc2ad99451a2..e0289086b750 100644
 --- a/clang-tools-extra/clangd/Protocol.h
 +++ b/clang-tools-extra/clangd/Protocol.h
 @@ -225,6 +225,7 @@ struct Location {
@@ -438,7 +438,7 @@ index eb271676e651..2a14a7ed6f64 100644
  llvm::json::Value toJSON(const Location &);
  llvm::raw_ostream &operator<<(llvm::raw_ostream &, const Location &);
  
-@@ -1026,6 +1027,9 @@ struct CodeAction {
+@@ -1080,6 +1081,9 @@ struct CodeAction {
    const static llvm::StringLiteral QUICKFIX_KIND;
    const static llvm::StringLiteral REFACTOR_KIND;
    const static llvm::StringLiteral INFO_KIND;
@@ -448,7 +448,7 @@ index eb271676e651..2a14a7ed6f64 100644
  
    /// The diagnostics that this code action resolves.
    std::optional<std::vector<Diagnostic>> diagnostics;
-@@ -1890,6 +1894,33 @@ struct ASTNode {
+@@ -1965,6 +1969,33 @@ struct ASTNode {
  llvm::json::Value toJSON(const ASTNode &);
  llvm::raw_ostream &operator<<(llvm::raw_ostream &, const ASTNode &);
  
