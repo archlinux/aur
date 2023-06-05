@@ -3,7 +3,7 @@ pkgname='dust-mail-client-git'
 
 arch=('x86_64')
 
-pkgver=r34.b3d6e37
+pkgver=r39.3a52112
 pkgver() {
   cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -11,7 +11,7 @@ pkgver() {
 pkgrel=1
 epoch=1
 
-makedepends=('pnpm-bin' 'nvm' 'cargo' 'git' 'appstream' 'wget' 'webkit2gtk' 'appmenu-gtk-module' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
+makedepends=('pnpm-bin=8.6.0' 'nvm' 'cargo' 'git' 'appstream' 'wget' 'webkit2gtk' 'appmenu-gtk-module' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips')
 
 pkgdesc='A simple and fast mail client (Git version)'
 

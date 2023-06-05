@@ -1,12 +1,12 @@
 pkgbase = dust-mail-client-git
 	pkgdesc = A simple and fast mail client (Git version)
-	pkgver = r34.b3d6e37
+	pkgver = r39.3a52112
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Dust-Mail/desktop
 	arch = x86_64
 	license = MIT
-	makedepends = pnpm-bin
+	makedepends = pnpm-bin=8.6.0
 	makedepends = nvm
 	makedepends = cargo
 	makedepends = git
