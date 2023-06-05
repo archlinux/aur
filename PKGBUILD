@@ -1,8 +1,8 @@
 # Maintainer: Fedor Piecka <teplavoda at gmail dot com>
 
 pkgname=eidklient
-pkgver=4.6
-pkgrel=2
+pkgver=4.7
+pkgrel=1
 pkgdesc="Slovak eID Client"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
