@@ -30,7 +30,7 @@ source=(
   "osu-lazer"
 )
 noextract=("osu.AppImage")
-sha256sums=('83819d0221e1ff6803715bf8b655fce83738bf48759f7dbc89f807b51fbacd6d'
+sha256sums=('4d1eefc35045122d6118de3913425b271971e1881324b664afd724788ba26c2e'
             '36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
             'e08a76a780960fffbd63fed26df21f0e7846d9bc8b366bfdbb54b07bf543113e'
