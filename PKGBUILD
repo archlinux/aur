@@ -5,7 +5,7 @@
 
 pkgname=perl-sdl
 pkgver=2.548
-pkgrel=8
+pkgrel=9
 pkgdesc='Simple DirectMedia Layer for Perl'
 arch=('x86_64')
 license=('LGPL')
@@ -30,8 +30,10 @@ makedepends=(
   'perl-module-build>=0.40'
   'perl-test-most>=0.21'
   'perl-test-simple>=0.88'
+  'smpeg'
 )
-optdepends=('smpeg: deprecated MP3 library, SDL does not need it but this Perl module still supports it')
+checkdepends=('smpeg')
+optdepends=('smpeg: deprecated MPEG library, SDL does not need it but this Perl module still supports it')
 options=('!emptydirs')
 _cpan_author='FROGGS'
 source=("https://cpan.metacpan.org/authors/id/${_cpan_author::1}/${_cpan_author::2}/$_cpan_author/SDL-$pkgver.tar.gz")
