@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="An elegant command-line options, arguments and sub-commands parser for bash"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('bfc8e6770d933138edfbf0a5f2d3502ac79e7f5b60719782b3f85eea7b84c4665728c34631ea918054d90985dc821246ee052807b87ab8528d1f0bc3f2310498')
+sha512sums=('9e8f3ddbe8e86175e81daaaf488d0994496bb7e0c667101d71e9753ca689ad65c973f99fac266537cd39400fb6676fe834ed64bf7b0e69b6f9f6d59639d41d9a')
 
 prepare() {
   cd "$pkgname-$pkgver"
