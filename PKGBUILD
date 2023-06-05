@@ -17,7 +17,7 @@ source_i686=($pkgname-$pkgver.sh::$_source/COPASI-$pkgver-Linux-32bit.sh)
 source_x86_64=($pkgname-$pkgver.sh::$_source/COPASI-$pkgver-Linux-64bit.sh)
 sha512sums=('cf7172b155885db8007298643499a57421e4890b72da86f8124bc35ec30c39f17c4167cd5d4603fc37c0cf72c6e4283c009339363da1cc5f44708c08d16a2b4e')
 sha512sums_i686=('f6c27a4fac99feef6c5d0c6e337344638718287c229a57da24dcdf1f21acb32c0f443ee17bcbce72e019fdb40ffe37e187b0d06fee19b1021a823642da8dc9c6')
-sha512sums_x86_64=('f6c27a4fac99feef6c5d0c6e337344638718287c229a57da24dcdf1f21acb32c0f443ee17bcbce72e019fdb40ffe37e187b0d06fee19b1021a823642da8dc9c6')
+sha512sums_x86_64=('9a94fa9e42b04eb058cb8f81ea090dfe55759d2162d8334603397d1838de7cd09f365b6aed056824aa91b57be3fb3015b3e7c0e91e793a63c90c270fc5b2ce37')
 
 package() {
   MACHINE_TYPE=$(uname -m)
