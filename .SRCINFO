@@ -1,6 +1,6 @@
 pkgbase = python-pysim-git
 	pkgdesc = A python tool to program SIMs / USIMs / ISIMs
-	pkgver = 1.0.r442.g4e64e727
+	pkgver = 1.0.r520.g219a5f36
 	pkgrel = 1
 	url = https://osmocom.org/projects/pysim/wiki
 	arch = any
@@ -21,11 +21,7 @@ pkgbase = python-pysim-git
 	depends = python-yaml>=5.1
 	provides = python-pysim
 	source = git+https://git.osmocom.org/pysim
-	source = 0001-pySim-shell.py-make-it-work-with-cmd2-v2.0.0.patch
-	source = 0002-pySim-shell.py-make-it-work-with-cmd2-v2.4.0.patch
 	sha256sums = SKIP
-	sha256sums = 2eb84bfbd29c8cda42b53d5523e71be8beada766b1fd4970d3ce527852797716
-	sha256sums = b9daf3e3ec027731afeecba8b0d501963944403e6d770a127d35f70c1bacf97c
 
 pkgname = python-pysim-git
 	install = python-pysim-git.install
