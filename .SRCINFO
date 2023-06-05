@@ -1,6 +1,6 @@
 pkgbase = aurutils
 	pkgdesc = helper tools for the arch user repository
-	pkgver = 15.3
+	pkgver = 15.4
 	pkgrel = 1
 	url = https://github.com/AladW/aurutils
 	install = aurutils.install
@@ -19,8 +19,9 @@ pkgbase = aurutils
 	optdepends = ninja: aur-sync ninja support
 	optdepends = bat: view-delta example script
 	optdepends = git-delta: view-delta example script
-	optdepends = setconf: sync-rebuild example script
-	source = aurutils-15.3.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/15.3.tar.gz
-	sha256sums = d9a1c8ac1c1773592e3197f8b352f808aec8d5b9fbde330ae7a675a1149a93fa
+	optdepends = python-srcinfo: sync-rebuild example script
+	optdepends = python-pyxdg: sync-rebuild example script
+	source = aurutils-15.4.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/15.4.tar.gz
+	sha256sums = 4c1e6cd3c4ee52e81ad46ee4e4a14af7c6dcae450602c68c305b748855e162ac
 
 pkgname = aurutils
