@@ -1,16 +1,16 @@
 # Maintainer: VCalV
 pkgname=overdrive2opus-git
-pkgver=r29.1b7449f
+pkgver=r52.675d07e
 pkgrel=1
 pkgdesc="convert overdrive audiobooks into opus files with chapters and thumbnails"
 arch=('any')
 url="https://github.com/vcalv/overdrive2opus"
 license=('GPL3')
 groups=()
-depends=(python ffmpeg opus-tools python-appdirs)
+depends=(python ffmpeg opus-tools python-appdirs python-rich)
 makedepends=(git)
 checkdepends=()
-optdepends=(python-progress)
+optdepends=()
 provides=()
 conflicts=()
 replaces=()

@@ -1,6 +1,6 @@
 pkgbase = overdrive2opus-git
 	pkgdesc = convert overdrive audiobooks into opus files with chapters and thumbnails
-	pkgver = r39.8b087a7
+	pkgver = r52.675d07e
 	pkgrel = 1
 	url = https://github.com/vcalv/overdrive2opus
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = overdrive2opus-git
 	depends = ffmpeg
 	depends = opus-tools
 	depends = python-appdirs
-	optdepends = python-progress
+	depends = python-rich
 	source = overdrive2opus-git::git+https://github.com/vcalv/overdrive2opus
 	md5sums = SKIP
 
