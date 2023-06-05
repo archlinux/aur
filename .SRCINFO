@@ -1,0 +1,27 @@
+pkgbase = lean-game-maker-git
+	pkgdesc = Turning lean code into an interactive browser game
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/mpedramfar/Lean-game-maker
+	arch = any
+	license = Apache
+	makedepends = gettext
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-fire
+	depends = python-jinja
+	depends = python-jsonpickle
+	depends = python-mistletoe
+	depends = python-polib
+	depends = python-regex
+	depends = python-toml
+	source = lean-game-maker::git+https://github.com/mpedramfar/Lean-game-maker.git
+	sha512sums = SKIP
+
+pkgname = lean-game-maker-git
