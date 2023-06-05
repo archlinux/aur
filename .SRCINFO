@@ -3,7 +3,6 @@ pkgbase = tasker-git
 	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/DanielMadmon/tasker
-	install = tasker-git.install
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
@@ -11,7 +10,7 @@ pkgbase = tasker-git
 	depends = libthemis
 	provides = tasker-git=0.0.2
 	conflicts = tasker-git
-	source = https://github.com/DanielMadmon/tasker.git
+	source = https://github.com/DanielMadmon/tasker/archive/refs/tags/linux_release.tar.gz
 	sha256sums = SKIP
 
 pkgname = tasker-git

@@ -1,6 +1,7 @@
 #Maintainer: Daniel Madmon : danielmadmon@protonmail.com
 _pkgname=tasker-git
 _pkgver=0.0.2
+_pkgnamegit=tasker-linux_release
 pkgname=$_pkgname
 pkgver=$_pkgver
 pkgrel=1
@@ -12,6 +13,29 @@ depends=('libthemis')
 makedepends=('cargo' 'git')
 provides=("tasker-git=0.0.2")
 conflicts=(tasker-git)
-install=tasker-git.install
-source=("https://github.com/DanielMadmon/tasker.git")
+source=("https://github.com/DanielMadmon/tasker/archive/refs/tags/linux_release.tar.gz")
 sha256sums=('SKIP')
+
+prepare() {
+    cd "${srcdir}/${_pkgnamegit}"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+    cd "${srcdir}/${_pkgnamegit}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
+}
+package() {
+    cd "${srcdir}/${_pkgnamegit}"
+    find target/release \
+        -maxdepth 1 \
+        -executable \
+        -type f \
+        -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
+
+    taskerctl enable
+    sudo cp "${HOME}/.config/systemd/user/tasker.service" /etc/systemd/system/
+}
