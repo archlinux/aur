@@ -5,7 +5,7 @@ pkgname=serioussam-xplus
 pkginstdir=serioussam
 xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
-pkgver=1.10.4
+pkgver=1.10.5
 _srcname="SeriousSamClassic-$pkgver"
 pkgrel=1
 pkgdesc="Serious Sam Classic native Linux XPLUS Modification."
@@ -30,22 +30,20 @@ source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgv
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-XPLUS/SamTFE-XPLUS.tar.xz.partac"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partaa"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partab"
-	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partac"
-    "sam-1.10.4-to-1.10.5-pre.patch")
+	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partac")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
 	"SamTSE-XPLUS.tar.xz.partaa"
 	"SamTSE-XPLUS.tar.xz.partab"
 	"SamTSE-XPLUS.tar.xz.partac")
-sha256sums=('c42e1434e03f713ffc60aa627f0a24c64287598bc5ee7cdbd2cbe91aa363ef51'
+sha256sums=('ecd850cabd144b29bcec97de4ad8a1ffc14144432744de9bf39fe1d00385daf6'
             '01b2e2d4dbdb65b2f1e174fbd6606d70806e97b6a45047ed6c58e7b801f6a879'
             'f8f35bcc54ed888b72b8660319ad089b7243b9e8d83aefabdb8f0111fcb0b728'
             '3da6b8588115cf31cb67e15f527dc8b6a83da16fe35ac8c7b78ed9522e0211a4'
             '28a90da56de5d6591a2e65154778030ba28b375d29556fd7e1db085d2c00b877'
             '93fe183a2f0a35989b3d1678dddb1c5976cda94747d4186c6f36af4ccf144443'
-            '8282f527b54e9d8fe009640b7634560f3b4bf0fc9b72cdc2f865f1c226339d35'
-            'afc114cf26ca56f8fa9720d9e0aeab2a5674d7d6e33b038bd609d2882b1a9acc')
+            '8282f527b54e9d8fe009640b7634560f3b4bf0fc9b72cdc2f865f1c226339d35')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -53,8 +51,6 @@ else
 fi
 
 prepare(){
-  # Prepare patch
-  cat sam-1.10.4-to-1.10.5-pre.patch > "$srcdir/$_srcname/sam-1.10.4-to-1.10.5-pre.patch"
 
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
@@ -70,31 +66,31 @@ prepare(){
 
   # Making building TFE scripts.
   cd "$srcdir/$_srcname/SamTFE/Sources/"
-  sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh
-  sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DXPLUS=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits"xplus.sh > build-linux"$_bits"xplus-tfe.sh
+  sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
+  sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DXPLUS=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh > build-linux"$_bits"-tfe.sh
   # sed -i 's/Threaded version" FALSE/Threaded version" TRUE/g' CMakeLists.txt
-  chmod 755 build-linux"$_bits"xplus-tfe.sh
+  chmod 755 build-linux"$_bits"-tfe.sh
 
   # Making building TSE scripts.
   cd "$srcdir/$_srcname/SamTSE/Sources/"
-  sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release -DXPLUS=TRUE/g' build-linux"$_bits"xplus.sh
+  sed -i 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DCMAKE_BUILD_TYPE=Release -DXPLUS=TRUE/g' build-linux"$_bits".sh
   # sed -i 's/Threaded version" FALSE/Threaded version" TRUE/g' CMakeLists.txt
-  chmod 755 build-linux"$_bits"xplus.sh
+  chmod 755 build-linux"$_bits".sh
 
   cd "$srcdir/$_srcname"
   # patch
-  patch -p1 < sam-1.10.4-to-1.10.5-pre.patch || return 1
+  # patch -p1 < sam-1.10.4-to-1.10.5-pre.patch || return 1
 }
 
 build(){
 
   # Building Serious Sam Classic The First Encounter XPLUS Modification.
   cd "$srcdir/$_srcname/SamTFE/Sources/"
-  ./build-linux"$_bits"xplus-tfe.sh
+  ./build-linux"$_bits"-tfe.sh
 
   # Building Serious Sam Classic The Second Encounter XPLUS Modification.
   cd "$srcdir/$_srcname/SamTSE/Sources/"
-  ./build-linux"$_bits"xplus.sh
+  ./build-linux"$_bits".sh
 
   # Removed Serious Sam Classic tmp stuff.
   cd "$srcdir/$_srcname/SamTFE/"
