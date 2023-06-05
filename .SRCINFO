@@ -1,11 +1,12 @@
 pkgbase = mingw-w64-libopenmpt
 	pkgdesc = A library to render tracker music to a PCM audio stream (mingw-w64)
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lib.openmpt.org/libopenmpt/
 	arch = any
 	license = BSD
 	makedepends = autoconf-archive
+	makedepends = mingw-w64-configure
 	makedepends = mingw-w64-gcc
 	depends = mingw-w64-flac
 	depends = mingw-w64-crt

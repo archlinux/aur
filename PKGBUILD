@@ -4,7 +4,7 @@
 pkgname=mingw-w64-libopenmpt
 _pkgname=libopenmpt
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to render tracker music to a PCM audio stream (mingw-w64)"
 arch=(any)
 url="https://lib.openmpt.org/libopenmpt/"
@@ -20,7 +20,7 @@ depends=(
   mingw-w64-zlib
 )
 options=(!strip !buildflags staticlibs)
-makedepends=(autoconf-archive mingw-w64-gcc)
+makedepends=(autoconf-archive mingw-w64-configure mingw-w64-gcc)
 source=($_pkgname-$pkgver.tar.gz::https://lib.openmpt.org/files/libopenmpt/src/$_pkgname-$pkgver+release.autotools.tar.gz
         sf_wchar_open.patch)
 sha512sums=('65468341b24d80f8bf0e9cf32d43b3ca3ced0323836373ae3c794b6df5b23d7e9c230ec37dd00777e22038d340adb56b20b83815e048fae22117ead0b4044bba'
