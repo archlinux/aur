@@ -1,7 +1,7 @@
 # Maintainer: Yorick Peterse <aur AT yorickpeterse DOT com>
 
 pkgname=inko
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A language for building concurrent software with confidence "
 url="https://inko-lang.org"
@@ -13,7 +13,7 @@ provides=(inko)
 conflicts=(inko-git)
 options=(strip !docs !libtool !staticlibs)
 source=("https://releases.inko-lang.org/${pkgver}.tar.gz")
-sha256sums=('fd1b492d0fc4d0e4930e3b3a547957ccb01898306797b1a1afbc4512eb045566')
+sha256sums=('56584ece9d1522401d0855d3d103ee7e53fee74f12441a5e26b32f8d5eb934b8')
 
 build() {
     make build PREFIX='/usr'
