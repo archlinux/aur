@@ -1,13 +1,13 @@
-pkgbase = shellfirm-bin
-	pkgdesc = Intercept any risky patterns (default or defined by you) and prompt you a small challenge for double verification
-	pkgver = 0.2.6
+pkgbase = tfk8s-bin
+	pkgdesc = If you want to copy examples from the Kubernetes documentation or migrate existing YAML manifests and use them with Terraform without having to convert YAML to HCL by hand, this tool is for you.
+	pkgver = 0.1.10
 	pkgrel = 1
-	url = https://github.com/kaplanelad/shellfirm
-	arch = x86_64
-	license = Apache
-	makedepends = git
-	makedepends = rust
-	source = shellfirm-0.2.6.tar.gz::https://github.com/kaplanelad/shellfirm/archive/refs/tags/v0.2.6.tar.gz
-	sha256sums = 0dd22e933763e01e14e816ae839c54d0b48fd802ddee8ae3fe66043a47b1411b
+	url = https://github.com/jrhouston/tfk8s
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = tfk8s-bin-0.1.10-source.tar.gz::https://github.com/jrhouston/tfk8s/archive/v0.1.10.tar.gz
+	sha256sums = be2680e76311ac7dd814a1bb0dceb486e3511d8d68845421338f9fcf5a92d5f9
 
-pkgname = shellfirm-bin
+pkgname = tfk8s-bin
