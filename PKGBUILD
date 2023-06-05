@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ngsReports
-_pkgver=2.2.3
+_pkgver=2.2.4
 pkgname=r-${_pkgname,,}
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc='Load FastqQC reports and other NGS related files'
 arch=('any')
@@ -44,7 +44,7 @@ optdepends=(
   r-truncnorm
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9ea6bebb5972fff3fb72fb10c985e30b1d2704607afb6e24361988425cedcba3')
+sha256sums=('540c18fdaa9213279c1934a59bcdad973c67a7970e8d57f1344674fe1f69b934')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
