@@ -1,8 +1,8 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 pkgname=llvm-libunwind
 pkgver=15.0.7
-pkgrel=1
-pkgdesc='LLVM'\'' libunwind library'
+pkgrel=2
+pkgdesc='LLVM'\''s libunwind library'
 url='https://github.com/llvm/llvm-project/tree/main/libunwind'
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-project-$pkgver.src.tar.xz")
 arch=('x86_64')

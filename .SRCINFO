@@ -1,7 +1,7 @@
 pkgbase = llvm-libunwind
-	pkgdesc = LLVM' libunwind library
+	pkgdesc = LLVM's libunwind library
 	pkgver = 15.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/llvm/llvm-project/tree/main/libunwind
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
