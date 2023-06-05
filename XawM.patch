@@ -1,0 +1,63 @@
+--- a/Makefile
++++ b/Makefile
+@@ -107,7 +107,7 @@
+ 
+ TKLIBNAME =
+ 
+-TKLIBDIR = /usr/lib64
++TKLIBDIR = /usr/lib
+ 
+ TCLLIBNAME =
+ 
+@@ -132,12 +132,12 @@
+         DEPENDSRC = $(CONFIGSRC)/util
+ 
+           INCROOT = /usr/include
+-        USRLIBDIR = /usr/lib64
++        USRLIBDIR = /usr/lib
+            VARDIR = /var
+         VARLIBDIR = $(VARDIR)/lib
+-  SYSTEMUSRLIBDIR = /usr/lib64
++  SYSTEMUSRLIBDIR = /usr/lib
+   SYSTEMUSRINCDIR = /usr/include
+-         SHLIBDIR = /usr/lib64
++         SHLIBDIR = /usr/lib
+        LINTLIBDIR = $(USRLIBDIR)/lint
+           MANPATH = /usr/share/man
+     MANSOURCEPATH = $(MANPATH)/man
+@@ -314,7 +314,7 @@
+    DEPEND_DEFINES =
+ 
+ # Not sure this belongs here
+-         TKLIBDIR = /usr/lib64
++         TKLIBDIR = /usr/lib
+          TKINCDIR =
+         TKLIBNAME =
+         TKLIBRARY = -L$(TKLIBDIR) -l$(TKLIBNAME)
+@@ -890,7 +890,7 @@
+ LINTXPM = $(LINTLIBDIR)/llib-lXpm.ln
+ 
+ FREETYPE2DIR = /usr
+-FREETYPE2LIBDIR = /usr/lib64
++FREETYPE2LIBDIR = /usr/lib
+ FREETYPE2INCDIR = /usr/include
+ 
+ FREETYPE2LIB = -lfreetype
+@@ -908,7 +908,7 @@
+ LINTEXPAT = $(LINTLIBDIR)/llib-lexpat.ln
+ 
+ EXPATDIR = /usr
+-EXPATLIBDIR = /usr/lib64
++EXPATLIBDIR = /usr/lib
+ EXPATINCDIR = /usr/include
+ 
+ EXPATINCLUDES =
+@@ -956,7 +956,7 @@
+ LIBPNGINC=
+ 
+ LIBPNGDIR = /usr
+-LIBPNGLIBDIR = /usr/lib64
++LIBPNGLIBDIR = /usr/lib
+ LIBPNGINCDIR = /usr/include
+ 
+ LIBPNGLIB = -lpng
