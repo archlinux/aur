@@ -1,13 +1,13 @@
 # Maintainer: Vincent Bernardoff <vb@luminar.eu.org>
 
 pkgname=debezium-connector-postgres
-pkgver=2.0.0.Final
+pkgver=2.2.1.Final
 pkgrel=1
 pkgdesc='KafkaConnect plugin for PostgreSQL'
 depends=('java-runtime>=8')
 arch=('any')
-source=("https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/2.0.0.Final/${pkgname}-${pkgver}-plugin.tar.gz")
-sha256sums=('3534c2c750084d8cb0f87c17220a2be032c7da062b3fec763b67abba12774545')
+source=("https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/${pkgver}/${pkgname}-${pkgver}-plugin.tar.gz")
+sha256sums=('b2bb1265da5f76e92c7c8400fd3b8b69fdbcac20f733ec1a2ef8d253e4c8f2d2')
 
 url='https://debezium.io/documentation/reference/2.0/connectors/postgresql.html'
 license=('Apache')
