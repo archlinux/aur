@@ -1,7 +1,7 @@
 # Maintainer: Akarsh Jain <akarsh.1995.02@gmail.com>
 
 pkgname=interception-caps2esc-arrow-git
-pkgver=r17.f566c02
+pkgver=r19.2623069
 pkgrel=1
 pkgdesc='Interception plugin: Capslock tap for escape key, Capslock + hjkl for arrow keys.'
 arch=('x86_64')
