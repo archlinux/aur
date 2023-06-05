@@ -5,7 +5,7 @@ diff --unified --recursive --text beaker-beaker-28.3.orig/documentation/conf.py 
  import six
  extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx', 'sphinx.ext.todo',
 -    'sphinx.ext.extlinks']
-+    'sphinx.ext.extlinks', 'sphinxcontrib.autohttp.flask']
++    'sphinx.ext.extlinks', 'sphinxcontrib.httpdomain']
  if six.PY2:
      extensions += ['sphinxcontrib.httpdomain', 'sphinxcontrib.autohttp.flask']
  master_doc = 'index'
