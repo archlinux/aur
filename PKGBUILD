@@ -2,18 +2,19 @@
 
 _gemname=oj
 pkgname=ruby-$_gemname
-pkgver=3.14.3
+pkgver=3.15.0
 pkgrel=1
 pkgdesc="The fastest JSON parser and object serializer"
 arch=(i686 x86_64)
 url=http://www.ohler.com/oj/
 license=(MIT)
+options=(!emptydirs)
 depends=(ruby)
-checkdepends=(ruby-bundler ruby-rake ruby-rake-compiler ruby-minitest ruby-test-unit)
+checkdepends=(ruby-bundler ruby-rake ruby-rake-compiler ruby-minitest
+              ruby-test-unit)
 makedepends=(rubygems ruby-rdoc)
 source=(https://github.com/ohler55/oj/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-options=(!emptydirs)
-sha256sums=('061fa5e961754fcca527a9b1b5cf132ae4325243a631bc4f45ae7c137a6d9cc5')
+sha256sums=('50691a18a490d925937683651b2d9c6da4906d4d5cd9361aeb207f239c59d6bb')
 
 prepare() {
   cd $_gemname-$pkgver
@@ -24,30 +25,61 @@ prepare() {
 
 build() {
   cd $_gemname-$pkgver
-  gem build ${_gemname}.gemspec
+  local _gemdir="$(gem env gemdir)"
+
+  gem build "${_gemname}.gemspec"
+
+  gem install \
+    --local \
+    --verbose \
+    --ignore-dependencies \
+    --no-user-install \
+    --install-dir "tmp_install/${_gemdir}" \
+    --bindir "tmp_install/usr/bin" \
+    "${_gemname}-${pkgver}.gem"
+
+  # remove unrepreducible files
+  rm --force --recursive --verbose \
+    "tmp_install/${_gemdir}/cache/" \
+    "tmp_install/${_gemdir}/gems/${_gemname}-${pkgver}/vendor/" \
+    "tmp_install/${_gemdir}/doc/${_gemname}-${pkgver}/ri/ext/"
+
+  find "tmp_install/${_gemdir}/gems/" \
+    -type f \
+    \( \
+      -iname "*.o" -o \
+      -iname "*.c" -o \
+      -iname "*.so" -o \
+      -iname "*.time" -o \
+      -iname "gem.build_complete" -o \
+      -iname "Makefile" \
+    \) \
+    -delete
+
+  find "tmp_install/${_gemdir}/extensions/" \
+    -type f \
+    \( \
+      -iname "mkmf.log" -o \
+      -iname "gem_make.out" \
+    \) \
+    -delete
 }
 
 check() {
   cd $_gemname-$pkgver
-  rake
+  local _gemdir="$(gem env gemdir)"
+  GEM_HOME="tmp_install/${_gemdir}" rake
 }
 
 package() {
   cd $_gemname-$pkgver
   local _gemdir="$(gem env gemdir)"
 
-  gem install \
-    --ignore-dependencies \
-    --no-user-install \
-    -i "$pkgdir/$_gemdir" \
-    -n "$pkgdir/usr/bin" \
-    $_gemname-$pkgver.gem
+  cp --archive --verbose tmp_install/* "${pkgdir}"
 
-  rm -rf "$pkgdir/$_gemdir/cache"
-
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm0644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+  install -vDm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -vDm0644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
 
 # vim: set ts=2 sw=2 et:
