@@ -1,14 +1,14 @@
 pkgbase = qodana-cli
 	pkgdesc = Simple cross-platform command-line tool to run Qodana linters anywhere with minimum effort required.
-	pkgver = 1.1.1
+	pkgver = 2023.1.4
 	pkgrel = 1
 	url = https://github.com/JetBrains/qodana-cli
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	makedepends = go>=1.16
+	makedepends = go>=1.19
 	depends = docker
-	source = qodana-cli-1.1.1.tar.gz::https://github.com/JetBrains/qodana-cli/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = f614329d6d76332bb76d94f4885371505b954113c755edcd8566d7d24d024376
+	source = qodana-cli-2023.1.4.tar.gz::https://github.com/JetBrains/qodana-cli/archive/refs/tags/v2023.1.4.tar.gz
+	sha256sums = 932c965163c177d9803e46d9e691afc493bc8ccdd61b9e06139a590d9f028403
 
 pkgname = qodana-cli

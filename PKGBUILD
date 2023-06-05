@@ -1,18 +1,18 @@
-# Maintainer: Maarten de Boer <maarten@cloudstek.nl>
+# Maintainer: Maarten de Boer <info@maartendeboer.net>
 
 pkgname=('qodana-cli')
-pkgver=1.1.1
+pkgver=2023.1.4
 pkgrel=1
 pkgdesc="Simple cross-platform command-line tool to run Qodana linters anywhere with minimum effort required."
 arch=('x86_64' 'aarch64')
 url="https://github.com/JetBrains/qodana-cli"
 license=('Apache')
 depends=('docker')
-makedepends=('go>=1.16')
+makedepends=('go>=1.19')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JetBrains/qodana-cli/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('f614329d6d76332bb76d94f4885371505b954113c755edcd8566d7d24d024376')
+sha256sums=('932c965163c177d9803e46d9e691afc493bc8ccdd61b9e06139a590d9f028403')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,6 +22,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
+    export GOPATH="${srcdir}/go"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     go mod tidy
