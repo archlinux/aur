@@ -1,7 +1,7 @@
 # Maintainer: Trevor Mosey <trevor dot mosey at gmail dot com>
 
 pkgname=flyctl
-pkgver="0.0.435"
+pkgver="0.1.26"
 pkgrel="1"
 pkgdesc="Command line tools for fly.io services"
 arch=("any")
@@ -10,7 +10,7 @@ license=("Apache")
 makedepends=(git go)
 provides=("flyctl")
 conflicts=("flyctl")
-_commit=f71fe0efcbdc3adc8f066c3d9a0d55f5225f1ffe        #refs/tags/v0.0.500^{}
+_commit=4f0cc0dda12801e566e460d1c47c60815052fd89        #refs/tags/v0.1.26^{}
 source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
 
