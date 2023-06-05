@@ -14,13 +14,11 @@ pkgdesc="Free and open source Enterprise Resource Planning (ERP)."
 arch=("x86_64")
 url="https://github.com/frappe/${pkgname}"
 license=("GPL3")
-depends=("frappe-bench" "libmaxminddb" "nodejs" "python" "python-pycups")
+depends=("frappe-bench" "libmaxminddb" "mariadb" "nodejs" "python" "python-pycups")
 makedepends=("python-build" "python-installer" "python-virtualenv" "tmux")
 optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
-    "mariadb: Database"
-    "nginx: HTTP server"
-    "postgresql: Database")
+    "nginx: HTTP server")
 install="${pkgname}.install"
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
