@@ -1,7 +1,7 @@
 pkgbase = arc_unpacker-git
 	pkgdesc = CLI tool for extracting images and sounds from visual novels.
 	pkgver = r2428.456834ec
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vn-tools/arc_unpacker
 	arch = x86_64
 	license = GPL
@@ -18,12 +18,14 @@ pkgbase = arc_unpacker-git
 	source = arc_unpacker-git::git+https://github.com/vn-tools/arc_unpacker.git
 	source = catch.hpp::https://raw.githubusercontent.com/catchorg/Catch2/v2.13.8/single_include/catch2/catch.hpp
 	source = etc.patch
-	source = limits.patch
+	source = include_limits.patch
+	source = include_cstdint.patch
 	source = failing_tests.patch
 	sha256sums = SKIP
 	sha256sums = f5adf6a4c3237920421d51a11112904084043b015acf2c9058e8f36b92ab2921
 	sha256sums = e8c02f338aca81df79f6d5c0e302322abd776b2aeb36eb0a57ee93335c0da216
 	sha256sums = 83c82ea28e61b8acb296c33a1a8336c8ac54163b3fa0fd7edd57cd35d72bd671
+	sha256sums = 91e33edbefc17afd2613d9b571d558f0df244dfb6c77d51c103ed3d72c488ec3
 	sha256sums = 61244eb2ec5ef7ccfb0a0532d51c256d2e99304098b143522f2bee8da3b8eac0
 
 pkgname = arc_unpacker-git

@@ -1,0 +1,12 @@
+diff --git a/src/types.h b/src/types.h
+index 50b0afec..776dcd9d 100644
+--- a/src/types.h
++++ b/src/types.h
+@@ -19,6 +19,7 @@
+ 
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace au {
+ 
