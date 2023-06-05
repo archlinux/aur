@@ -1,0 +1,33 @@
+diff --git a/src/pacman/callback.c b/src/pacman/callback.c
+index 5c3557c7..ced686be 100644
+--- a/src/pacman/callback.c
++++ b/src/pacman/callback.c
+@@ -158,7 +158,7 @@ static void fill_progress(const int percent, const int proglen)
+ 	int i;
+ 
+ 	if(hashlen > 0) {
+-		fputs(" [", stdout);
++		fputs(" ", stdout);
+ 		for(i = hashlen; i > 0; --i) {
+ 			/* if special progress bar enabled */
+ 			if(config->chomp) {
+@@ -177,12 +177,16 @@ static void fill_progress(const int percent, const int proglen)
+ 				}
+ 			} /* else regular progress bar */
+ 			else if(i > hashlen - hash) {
+-				putchar('#');
++				fputs("", stdout);
+ 			} else {
+-				putchar('-');
++				fputs("", stdout);
+ 			}
+ 		}
+-		putchar(']');
++		if (hashlen == hash) {
++			fputs("", stdout);
++		} else {
++			fputs("", stdout);
++		}
+ 	}
+ 	/* print display percent after progress bar */
+ 	/* 5 = 1 space + 3 digits + 1 % */

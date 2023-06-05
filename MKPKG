@@ -1,0 +1,3 @@
+pkgname=(pacman-fancy-progress-git pacman-fancy-progress-git-debug)
+chroot=(debug)
+check_git pacman
