@@ -1,11 +1,12 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2018-04-23.
+# PKGBUILD last time manually edited: At least on 2023-06-05.
 
 _pkgname=bahn-regio-entfernungsrechner
 pkgname="${_pkgname}-bin"
 epoch=0
-pkgver=3.2d_20210104
+_programdate=220106
+pkgver="3.2d_${_programdate}"
 pkgrel=1
 pkgdesc="Calculates fare kilometres for subscription tickets for DB regio. Upstream name: 'Entfernungsrechner für Fahrvergünstigungen.'"
 arch=(
@@ -20,22 +21,16 @@ groups=()
 depends=(
   "wine"
 )
-
-makedepends=(
-)
-
+makedepends=()
 optdepends=()
-
 provides=(
   "${_pkgname}=${pkgver}"
   "${_pkgname}-doc=${pkgver}"
 )
-
 conflicts=(
   "${_pkgname}"
   "${_pkgname}-latest"
 )
-
 replaces=(
   "${_pkgname}-latest<=3d_20180202"
   "${_pkgname}<=1:3.2d_20210104"
@@ -43,21 +38,21 @@ replaces=(
 
 
 source=(
-  "entfernungsrechner.zip::https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/210104_Entfernungsrechner.zip"
+  "entfernungsrechner_${_programdate}.zip::https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/${_programdate}_Entfernungsrechner.zip"
   "entfernungsrechner.sh"
   "Entfernungsrechner_Benutzerhandbuch.pdf::https://www.evg-online.org/fileadmin/Service/Entfernungsrechner/handbuch_entfernungsrechner-data.pdf"
   "license-dummy.txt"
 )
 
 sha256sums=(
-  "3a22d238e1f5f0847f73ea5ffa85d8ccfc8a753b79279cc0e7a81a37f794eed4"  # entfernungsrechner.zip
+  "6c5e9a44f9e9d9a4afa29b2c63f977f129ceb30a1a97881ec2f5ab26db9babc5"  # entfernungsrechner_${_programdate}_${_programdate}.zip
   "8347288b3a402c8075e5ccc24d23f3ae123ebebedd4116ed5e2352cf1a7b24ac"  # entfernungsrechner.sh
   "f3a566dec531484b4d3b864c958cff554e006362921d971704817f8fd60e814b"  # Entfernungsrechner_Benutzerhandbuch.pdf
   "b90a755ef3db2a12766725c1f5e0d31bebb08a700d240b4304624768c38ed9eb"  # license-dummy.txt
 )
 
 noextract=(
-  "entfernungsrechner.zip"
+  "entfernungsrechner_${_programdate}.zip"
 )
 
 options=(
@@ -106,7 +101,7 @@ package() {
 
   (
     cd "${_instdir}"
-    bsdtar -x -v -f "${srcdir}/entfernungsrechner.zip"
+    bsdtar -x -v -f "${srcdir}/entfernungsrechner_${_programdate}.zip"
     chmod 644 *
     chmod 755 *.[eE][xX][eE]
   )
