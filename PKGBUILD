@@ -1,25 +1,39 @@
 # Maintainer: Manish Khadka <manish.khadka@ttutanota.com>
 
-pkgname=tfk8s-bin
-pkgorg=tfk8s
-pkgver=0.1.10
+pkgname=awscli-bin
+pkgorg=aws
+pkgver=2.11.25
+arch=('x86_64' 'aarch64')
 pkgrel=1
-pkgdesc="If you want to copy examples from the Kubernetes documentation or migrate existing YAML manifests and use them with Terraform without having to convert YAML to HCL by hand, this tool is for you."
-arch=('any')
-_vendor="github.com/jrhouston/${pkgorg}"
-url="https://${_vendor}"
+pkgdesc="This package provides a unified command line interface to Amazon Web Services."
+source_x86_64=("${pkgorg}-${pkgver}-x86_64.zip"::https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip)
+source_aarch64=("${pkgorg}-${pkgver}-aarch64.zip"::https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip)
 license=('MIT')
-depends=('glibc')
-makedepends=('go')
-source=("$pkgname-$pkgver-source.tar.gz::https://${_vendor}/archive/v${pkgver}.tar.gz")
-sha256sums=('be2680e76311ac7dd814a1bb0dceb486e3511d8d68845421338f9fcf5a92d5f9')
-_vendorpath="gopath/src/$_vendor"
+depends=(
+        'glibc'
+        'groff'
+        'less'
+        'unzip'
+        )
+sha256sums_x86_64=('0252933b8de10ea5d9f66cb48b1b9fe14e71d02646afeaf84486553ded527c4a')
+sha256sums_aarch64=('9e79818cb1ab2a8a4a9c2f011d0d456663966a92ee88b762d4a5123a4b8b3b0c')
 
-build() {
-  cd $srcdir/tfk8s-${pkgver}
-  go build -o tfk8s
-}
+#build() {
+#  cd $srcdir/awscli-${pkgver}
+#}
 
 package() {
-  install -Dm755 $srcdir/tfk8s-${pkgver}/tfk8s $pkgdir/usr/bin/tfk8s
+  aarch=$(uname -m)
+  if [[ $aarch == "x86_64" ]];
+  then 
+    unzip ${pkgorg}-${pkgver}-x86_64.zip
+  fi
+
+  if [[ $aarch == "aarch64" || $aarch == "arm64"  ]];
+  then 
+    unzip ${pkgorg}-${pkgver}-aarch64.zip
+  fi
+
+  cd aws
+  ./install -i $HOME/.local/aws-cli -b $HOME/.local/bin --update
 }

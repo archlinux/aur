@@ -1,13 +1,17 @@
-pkgbase = tfk8s-bin
-	pkgdesc = If you want to copy examples from the Kubernetes documentation or migrate existing YAML manifests and use them with Terraform without having to convert YAML to HCL by hand, this tool is for you.
-	pkgver = 0.1.10
+pkgbase = awscli-bin
+	pkgdesc = This package provides a unified command line interface to Amazon Web Services.
+	pkgver = 2.11.25
 	pkgrel = 1
-	url = https://github.com/jrhouston/tfk8s
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
-	makedepends = go
 	depends = glibc
-	source = tfk8s-bin-0.1.10-source.tar.gz::https://github.com/jrhouston/tfk8s/archive/v0.1.10.tar.gz
-	sha256sums = be2680e76311ac7dd814a1bb0dceb486e3511d8d68845421338f9fcf5a92d5f9
+	depends = groff
+	depends = less
+	depends = unzip
+	source_x86_64 = aws-2.11.25-x86_64.zip::https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+	sha256sums_x86_64 = 0252933b8de10ea5d9f66cb48b1b9fe14e71d02646afeaf84486553ded527c4a
+	source_aarch64 = aws-2.11.25-aarch64.zip::https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip
+	sha256sums_aarch64 = 9e79818cb1ab2a8a4a9c2f011d0d456663966a92ee88b762d4a5123a4b8b3b0c
 
-pkgname = tfk8s-bin
+pkgname = awscli-bin
