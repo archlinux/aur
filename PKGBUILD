@@ -12,7 +12,7 @@ depends=(python-panel python-colorcet)
 makedepends=(python-build python-installer)
 optdepends=('jupyter-nbconvert: for use holoviews command')
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('a5178fce98b5ae82c82eb91e1dd073517d5a024d44ceb9acfffed69f94dc7a2a00d191b3036280cbbc224ec7c680457115a471cf15212b4c552023abbc8f9aca')
+sha512sums=('a747af11a1cc4133f57c7f551fc30dbe77b549f7cd1bf9bf6961ddd8a44957ebe7a2bea3f7573ca0200d7111502d36bfe0630edea867ad113cc6446a04eb4ff9')
 
 build() {
   cd ${_base}-${pkgver}
