@@ -1,6 +1,20 @@
 Version history
 ===============
 
+0.10.11
+-------
+
+2023-06-04
+
+Offer a user option to choose the splat ruler's snapping distance.
+Set this option to 0 to deactivate snapping altogether.
+
+Make Lix compile again with D compilers older than DMD v2.102.0 from 2023-02.
+In 0.10.10, I silently relied on a compiler bugfix that correctly allows
+indexing associative arrays during @nogc; this needs DMD v2.102.0 or newer.
+
+
+
 0.10.10
 -------
 
