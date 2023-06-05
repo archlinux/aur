@@ -1,7 +1,7 @@
 pkgbase = xawm
 	pkgdesc = Xaw with Modern look and feel
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xawm.sourceforge.net
 	arch = x86_64
 	license = unknown

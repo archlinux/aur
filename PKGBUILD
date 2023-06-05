@@ -3,7 +3,7 @@
 pkgname='xawm'
 _pkgname='XawM'
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Xaw with Modern look and feel'
 arch=('x86_64')
 url='https://xawm.sourceforge.net'
