@@ -1,11 +1,11 @@
 pkgbase = hurl-bin
 	pkgdesc = Hurl, run and test HTTP requests
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/Orange-OpenSource/hurl
 	arch = x86_64
 	license = Apache
-	source_x86_64 = https://github.com/Orange-OpenSource/hurl/releases/download/3.0.0/hurl-3.0.0-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 5f388b7b34acde34a1323c698e8e03211c0707246e7d7a53b70bbdf4c5cce0ec
+	source_x86_64 = https://github.com/Orange-OpenSource/hurl/releases/download/3.0.1/hurl-3.0.1-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 3221cb730264a6285f09c4ba3c7fc150784bd6d58c231e60e1e3abb48cfa32d3
 
 pkgname = hurl-bin
