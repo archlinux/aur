@@ -6,6 +6,7 @@ pkgbase = xawm
 	arch = x86_64
 	license = unknown
 	makedepends = imake
+	provides = libxaw
 	source = XawM-1.6.tar.gz::https://downloads.sourceforge.net/project/xawm/xawm/1.6/XawM-1.6.src.tar.gz
 	source = https://www.ibiblio.org/pub/X11/contrib/widgets/Xaw3d/R5/laygram.h
 	source = XawM.patch
