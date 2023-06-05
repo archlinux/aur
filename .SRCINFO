@@ -1,0 +1,14 @@
+pkgbase = lyricstify
+	pkgdesc = Synchronized Spotify lyrics in the terminal
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/lyricstify/lyricstify
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = lyricstify-1.1.2.tgz
+	source = https://registry.npmjs.org/@lyricstify/lyricstify/-/lyricstify-1.1.2.tgz
+	sha256sums = 31e08cfc5c4bdbd890ad469c0a284a65565a6ddf9c3c10958307e9702540d6e7
+
+pkgname = lyricstify
