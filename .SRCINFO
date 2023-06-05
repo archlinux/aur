@@ -1,6 +1,6 @@
 pkgbase = python-aiofile
 	pkgdesc = Real asynchronous file operations with asyncio support
-	pkgver = 3.8.5
+	pkgver = 3.8.7
 	pkgrel = 1
 	url = https://github.com/mosquito/aiofile
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-aiofile
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-caio
-	source = https://files.pythonhosted.org/packages/source/a/aiofile/aiofile-3.8.5.tar.gz
-	sha256sums = bb1ca0b2c4ef3b78f5012a2a3919a4151f873b6aabdc73a7b9b8e94edb2e01ae
+	source = https://files.pythonhosted.org/packages/source/a/aiofile/aiofile-3.8.7.tar.gz
+	sha256sums = a8f9dec17282b3583337c4ef2d1a67f33072ab80dd03608041ed9e71b88dc521
 
 pkgname = python-aiofile
