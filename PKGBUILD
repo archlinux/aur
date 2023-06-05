@@ -1,9 +1,9 @@
 # Maintainer: Juacrumar <juacrumar at lairen dot eu>
 
 pkgname=pineappl
-pkgver=0.5.9
+pkgver=0.6.0
 pkgrel=1
-pkgdesc='PineAPPL is not an extension of APPLgrid'
+pkgdesc='PineAPPL is not an extension of APPLgrid. Installs pineappl_cli, pineappl library and python package'
 arch=('any')
 url="https://n3pdf.github.io/pineappl/"
 license=('GPL3')
@@ -18,7 +18,7 @@ optdepends=()
 provides=("pineappl")
 changelog=
 source=("https://github.com/N3PDF/pineappl/archive/v${pkgver}.tar.gz")
-md5sums=("f053286904e6c9d1161bb39433b6d782")
+md5sums=("c9ab86eea2381080032d6d73922003f3")
 
 build() {
     # Build the python interface
@@ -27,18 +27,18 @@ build() {
 }
 
 package() {
+    echo "DONE"
     # Install the command-line program
 	cd "$pkgname-$pkgver"
-    cargo install --path pineappl_cli --root=${pkgdir}/usr --no-track --features=fktable
+    cargo install --path pineappl_cli --root=${pkgdir}/usr --no-track --features=fktable,evolve
     # Install pineappl_capi
 	cd pineappl_capi
     cargo cinstall --release --destdir=${pkgdir} --prefix=/usr
     cd ..
     # And the python wrapper
-    cd pineappl_py/target/wheels/
+    cd target/wheels/
     PYTHONDONTWRITEBYTECODE=1 PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps *.whl
     # manually remove __pycache__ from pkgdir (isn't there a better way?)
     rm -rf ${pkgdir}/usr/lib/python*/site-packages/pineappl/__pycache__
-    # Note: some debug information, including the folder where the package was built, is stored
-    # I haven't found a way of stripping that information and so some warnings might be shown
+    # Note: some debug information, including the folder where the package was built, might stored
 }
