@@ -1,6 +1,6 @@
 pkgbase = uvtools-bin
 	pkgdesc = MSLA/DLP, file analysis, calibration, repair, conversion and manipulation
-	pkgver = 3.12.0
+	pkgver = 3.14.1
 	pkgrel = 2
 	url = https://github.com/sn4k3/UVtools
 	install = uvtools-bin.install
@@ -19,9 +19,9 @@ pkgbase = uvtools-bin
 	depends = libgdiplus
 	provides = uvtools
 	conflicts = uvtools
-	noextract = UVtools_linux-x64_3.12.0.AppImage
+	noextract = UVtools_linux-x64_3.14.1.AppImage
 	options = !strip
-	source_x86_64 = UVtools_linux-x64_3.12.0.AppImage::https://github.com/sn4k3/UVtools/releases/download/v3.12.0/UVtools_linux-x64_v3.12.0.AppImage
-	sha256sums_x86_64 = d5a49d75c7f56972143e2290a807194f27a0d8c30b5d8cefc7f8c1d9b4d69728
+	source_x86_64 = UVtools_linux-x64_3.14.1.AppImage::https://github.com/sn4k3/UVtools/releases/download/v3.14.1/UVtools_linux-x64_v3.14.1.AppImage
+	sha256sums_x86_64 = 6bf9c35d6542e6e2838fe76e631ed4edb1040cfb0fcb197210b7d573c50d143b
 
 pkgname = uvtools-bin
