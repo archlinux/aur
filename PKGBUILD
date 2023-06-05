@@ -1,6 +1,6 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 pkgname=rustic-bin
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='Rustic is a backup tool that provides fast, encrypted, deduplicated backups.'
 url='https://github.com/rustic-rs/rustic'
@@ -11,8 +11,8 @@ provides=('rustic')
 conflicts=('rustic')
 license=('Apache')
 changelog=CHANGELOG
-b2sums_x86_64=('5522390c870ba69db5dfffd6de5a64a4f322c177de11674c1507740cef819c59e0cad5aea5e0b7e5e2213aa6f048c2f85954c6fff11b18194aa0fd32ae1b5ed3')
-b2sums_aarch64=('5aa048f2f31b2cf7865f68a7b4ddd550afa2d24b11f2d70d203d109503f2889fa01e3ecbaa328cbb31310cf0b961dabc7c3482528b1a83f2a54ce61ac5665080')
+b2sums_x86_64=('4283268ea7d08c6f7986b83b65210e7066f4436511eb13b3c0d0d8e6bdc0f13bdd62e8466930fe5a4f12964f2cb9ce534005d4af0924bc24763a334f0439681c')
+b2sums_aarch64=('8852bfbeed8bf8e326ddc89f8f4f22b38e385bfdfe5e23c634ce79a6aa87469a8f25c05b1dda17119c25c5461c5c303ade8b705086ef99b332cb9ee5e1cd7827')
 
 package() {
   cd "$srcdir"

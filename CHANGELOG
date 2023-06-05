@@ -1,4 +1,18 @@
-Changes in version 0.5.3:
+# Changes in version 0.5.4:
+
+Bugs fixed:
+
+- backup crashed when there was a non-unicode link target. The crash has been fixed. However, non-unicode link targets are still unsupported.
+- Extended attributes which were saved with value null couldn't be handled. This has been fixed.
+- prune: --max-repack didn't work with a given percentage of repo size. This has been fixed.
+
+New features:
+
+- copy: Added --init option to initialize uninitialized target repos
+- dependencies have been updated
+
+
+# Changes in version 0.5.3:
 
 Breaking changes:
 
@@ -13,7 +27,7 @@ New features:
 - The show-config command has been added.
 
 
-Changes in version 0.5.2:
+# Changes in version 0.5.2:
 
 Breaking changes:
 
@@ -36,7 +50,7 @@ New features:
 - Updated to clap v4
 
 
-Changes in version 0.5.1:
+# Changes in version 0.5.1:
 
 Breaking changes:
 
@@ -64,7 +78,7 @@ New features:
 - Dependencies have been updated.
 
 
-Changes in version 0.5.0:
+# Changes in version 0.5.0:
 
 Breaking changes:
 
@@ -95,7 +109,7 @@ New features:
 - Updated to Rust 1.68 and many dependency updates
 
 
-Changes in version 0.4.4:
+# Changes in version 0.4.4:
 
 Bugs fixed:
 
