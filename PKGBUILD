@@ -4,20 +4,20 @@
 
 _pkgname=tshock
 pkgname=${_pkgname}-bin
-pkgver=4.5.17
-_terraria_ver=1.4.3.6
+pkgver=5.2
+_terraria_ver=1.4.4.9
 # Because of tag 4.2200 is 4.2.2.1228 and tag 4.2202 is 4.2.2.0224 epoch must be 1
 epoch=1
 pkgrel=1
 pkgdesc="A Terraria Server administration modification that runs on the open source TerrariaAPI."
-arch=("x86_64" "aarch64")
+arch=("x86_64")
 url="https://github.com/Pryaxis/TShock"
 license=("GPL3")
 depends=("mono" "tmux")
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(
-	"${_pkgname}_${pkgver}.zip::https://github.com/Pryaxis/TShock/releases/download/v${pkgver}/TShock${pkgver}_Terraria_${_terraria_ver}.zip"
+	"${_pkgname}_${pkgver}.zip::https://github.com/Pryaxis/TShock/releases/download/v5.2.0/TShock-${pkgver}-for-Terraria-${_terraria_ver}-linux-x64-Release.zip"
 	"${_pkgname}.sh"
 	"default.conf"
 	"${_pkgname}@.service"
@@ -26,7 +26,7 @@ source=(
 	"${_pkgname}.install"
 )
 noextract=("${_pkgname}_${pkgver}.zip")
-sha512sums=('a9309dab7737d4b5a5d685a1c5a51f2bd8711619b64e885e3cb40067c7f04113c5ce250dd31f05c5d337afd3eb3f4b319a80cb4a599ccf7788d9cfb30892a115'
+sha512sums=('17c593ec07d2b04765ddbeb3e58bb5dfe0f0d9ada883c97d8ccc3303148d6e2fda64103586274c3ba16f6550a41a171db87b45033ce9841e49647fdc3b199c09'
 	'SKIP'
 	'SKIP'
 	'SKIP'
