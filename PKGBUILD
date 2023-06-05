@@ -1,9 +1,9 @@
 # Maintainer: Antonio Prates <hello@aprates.dev>
 
 pkgname=fatscript-fry
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="fry - The FatScript Interpreter"
+pkgdesc="fry - FatScript Interpreter"
 arch=('any')
 url="https://fatscript.org/"
 license=('GPL3')
