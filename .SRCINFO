@@ -1,20 +1,26 @@
-pkgbase = rpi-poe-fan-dkms-git
-	pkgdesc = Hwmon driver for Raspberry Pi PoE(+)HAT fan
-	pkgver = 3.b422a76
+pkgbase = bcm5421-phy-dkms-git
+	pkgdesc = Broadcom BCM5421 driver with PTP fix for Raspberry Pi 4B
+	pkgver = 6.56d25c8
 	pkgrel = 1
-	url = https://github.com/raspberrypi/linux/blob/b422a76/drivers/hwmon/rpi-poe-fan.c
+	url = https://github.com/raspberrypi/linux/blob/56d25c8/drivers/net/phy/broadcom.c
 	arch = any
-	license = GPL
+	license = GPL2
 	depends = dkms
-	provides = rpi-poe-fan=3.b422a76-1
-	conflicts = rpi-poe-fan
-	source = https://raw.githubusercontent.com/raspberrypi/linux/b422a76/drivers/hwmon/rpi-poe-fan.c
-	source = https://raw.githubusercontent.com/raspberrypi/linux/b422a76/include/soc/bcm2835/raspberrypi-firmware.h
+	provides = bcm5421-phy=6.56d25c8-1
+	conflicts = bcm5421-phy
+	source = https://raw.githubusercontent.com/raspberrypi/linux/56d25c8/drivers/net/phy/broadcom.c
+	source = https://raw.githubusercontent.com/raspberrypi/linux/56d25c8/drivers/net/phy/bcm-phy-lib.c
+	source = https://raw.githubusercontent.com/raspberrypi/linux/56d25c8/drivers/net/phy/bcm-phy-lib.h
+	source = https://raw.githubusercontent.com/raspberrypi/linux/56d25c8/drivers/net/phy/bcm-phy-ptp.c
+	source = https://raw.githubusercontent.com/raspberrypi/linux/56d25c8/include/linux/brcmphy.h
 	source = dkms.conf
 	source = Makefile
-	b2sums = 92a4e558f527f155deb17af88ea3cfd03aad8dcac9f6ca7100d49d39627c98f9aeefef721583768719b00a130dc11c2494d6d2453bea419582bb3c7ebe3f0b1d
-	b2sums = 5d4034b09087ee9f0d9e8408a08b0df9b63524a2cd32710f1ded05bbfbfcc5c7aede0eb11847c041811384d74c338a86b907b8965284f094593d6e42369120f5
-	b2sums = a70240cc2424ecade86a37acc57f2d7b55a9cf6fbf65fb1f0033e297bb4c5ebb9fc87da0b65b982f518f5a7437dd3717ca9c9a9d584144c14ca3063e068fd4de
-	b2sums = cb19c21e9bbb2995198c54d3478a09cfc1893daa6a33404611664979b0bd09729a3576542f693cb71dad005363fa330cb8d5e91c6b81292c4598aee54ae49b34
+	sha256sums = f591bed1a63eaf77301f48e752358af53c83f059e7ed6f669ced8848a7ad4e31
+	sha256sums = a5085d707314e02758ed6d027ed2fd6e9a50b4ee9bb270844c618ea09c288643
+	sha256sums = 5fd457fa2da7182e100c7c6ae12079d7467c079c148c31142103f68ab70b9862
+	sha256sums = f5ff8e859b584c39100cb93bc0041be6c904d10b1a0d4cbf1463503c04e467c3
+	sha256sums = f80731dd1bf2183280663df55e8fdcc1cf07aed0493df206e7118ec1855731f3
+	sha256sums = b7d8a4b697ab96da9a9982a1eefddd9dcc086fa5482ba5763d32505b2aa04c68
+	sha256sums = c6d012d6189975cb36bd9fef1408aa13f550f95868135990ce1a92e3b4b4b03d
 
-pkgname = rpi-poe-fan-dkms-git
+pkgname = bcm5421-phy-dkms-git
