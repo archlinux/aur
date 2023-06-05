@@ -1,6 +1,6 @@
 pkgname=erlang_ls
-pkgver=0.46.2
-pkgrel=2
+pkgver=0.47.1
+pkgrel=1
 pkgdesc='The Erlang Language Server'
 arch=(x86_64)
 url=https://erlang-ls.github.io/
