@@ -9,7 +9,7 @@ url='https://developer.apple.com/fonts/'
 license=('custom')
 makedepends=('p7zip')
 source=("SF-Mono-$pkgrel.dmg::https://developer.apple.com/design/downloads/SF-Mono.dmg")
-sha256sums=('abaf6d62cd5b17ae1837ab40a35386733a3f603cf641a84cf59b1d7fb4caac39')
+sha256sums=('a6a91880966db4a287a936286c1523b9dd1f5bbf5d4b9b5dcd8276df07bd4d6e')
 
 prepare() {
   # remove previous files
