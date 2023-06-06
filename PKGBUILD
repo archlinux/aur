@@ -1,7 +1,7 @@
 # Maintainer: Setpill
 pkgname=lnd-bin
 _pkgname=lnd
-pkgver=0.16.2_beta
+pkgver=0.16.3_beta
 _pkgver="${pkgver//_/-}"
 __pkgver="${_pkgver//\./\\\.}"
 pkgrel=1
@@ -16,7 +16,7 @@ source=(
     "$_pkgname-LICENSE-v$_pkgver::https://raw.githubusercontent.com/lightningnetwork/$_pkgname/v$_pkgver/LICENSE"
 )
 sha512sums=(
-    '27cf4c4009b63d32baed559029e8ab176d05f8620f3931cd494bde7f29f5493c9fe8d3475765e5ed76f9af51ca0bf6e99b63e5c99807af0506c23254d24772de'
+    '080678d1af2998eb9002db638fbdb59fb8c272fa37da610620db5d0de1e33da686814f8d89652df80c8d345fbfdc22d7e3d9f436826ca179968e8dbeabc8dffe'
     '49de7041d5c7448a8f5cc387e4e820eca2a87c02b70d5a38aa3823354d960843e93ca12bd8b66a13708937539da85b90328bd4c32575792f0aa6755a011ba4bb'
 )
 
