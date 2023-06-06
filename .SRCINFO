@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-new-mail-indicator
+	pkgdesc = Gnome shell extension to notify new mails - only Gnome shell version 44.
+	pkgver = 44
+	pkgrel = 1
+	url = https://github.com/fthx/new-mail-indicator
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = gnome-shell>=44
+	conflicts = gnome-shell>=45
+	source = https://github.com/fthx/new-mail-indicator/archive/refs/heads/master.zip
+	sha256sums = 0f1d8181466e5815827dd41a1b5b14253e9ba9a1c5c2b653208893a09655a8fa
+
+pkgname = gnome-shell-extension-new-mail-indicator
