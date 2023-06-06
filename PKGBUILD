@@ -20,7 +20,7 @@ depends=(
         'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
         'libxpresent' 'pipewire' 'zimg' 'ffmpeg' 'sndio' 'libsixel'
     # AUR:
-        'spirv-cross' 'libplacebo-git' 'libavutil'
+        'spirv-cross' 'libplacebo-git' 'libavutil-52'
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'meson')
