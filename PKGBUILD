@@ -15,22 +15,22 @@ sha256sums=('18821588b2dc5bf159aa37d3bcb7b885d85ffd1e19f23a0c57a58723fea85f48'
             '3f50f832eff04a00d59bd7fe19fd743b5639ea7cc78822329a77604f28e24102')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    patch -Np0 -i "${srcdir}/CVE-2014-9862.patch"
+  patch -Np0 -i "${srcdir}/CVE-2014-9862.patch"
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-    cc ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -o bsdiff bsdiff.c -lbz2
-    cc ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -o bspatch bspatch.c -lbz2
+  cc ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -o bsdiff bsdiff.c -lbz2
+  cc ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -o bspatch bspatch.c -lbz2
 }
 
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/bsdiff" "${pkgdir}/usr/bin/bsdiff"
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/bspatch" "${pkgdir}/usr/bin/bspatch"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/bsdiff" "${pkgdir}/usr/bin/bsdiff"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/bspatch" "${pkgdir}/usr/bin/bspatch"
 
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/bsdiff.1" "${pkgdir}/usr/share/man/man1/bsdiff.1"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/bspatch.1" "${pkgdir}/usr/share/man/man1/bspatch.1"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/bsdiff.1" "${pkgdir}/usr/share/man/man1/bsdiff.1"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/bspatch.1" "${pkgdir}/usr/share/man/man1/bspatch.1"
 }
