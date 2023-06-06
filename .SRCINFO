@@ -1,6 +1,6 @@
 pkgbase = notesnook-appimage
 	pkgdesc = A fully open source & end-to-end encrypted note taking alternative to Evernote.
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://notesnook.com/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = notesnook-appimage
 	depends = glibc
 	conflicts = notesnook
 	options = !strip
-	source = notesnook-2.5.0.AppImage::https://github.com/streetwriters/notesnook/releases/download/v2.5.0/notesnook_linux_x86_64.AppImage
-	sha256sums = 2e93cf8031e0b8189986002911f2d0f8959975c2e2388403814307ebc9567321
+	source = notesnook-2.5.1.AppImage::https://github.com/streetwriters/notesnook/releases/download/v2.5.1/notesnook_linux_x86_64.AppImage
+	sha256sums = a15f40d1fabaa3bc4fcc42099a89e4fc4b3664c5508c4c16a1a53f0205a4f7a7
 
 pkgname = notesnook-appimage
