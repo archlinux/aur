@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=squeekboard
-pkgver=1.19.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='An on-screen-keyboard input method for Wayland'
 arch=(x86_64 aarch64)
@@ -23,7 +23,7 @@ makedepends=(
 )
 _commit=v${pkgver}
 source=("${url}/-/archive/${_commit}/squeekboard-${_commit}.tar.gz")
-b2sums=('92e2d5e7f4a6eadb88862f48eaccd576724b472ddf348280f5fcb2c8a040ffd04b9b89c74389936e367e287eb151436f0e6b81db08e9d4d8c7390dee8b60935d')
+b2sums=('b1cadc8ad2bcdf6fb4e408c75aea90cccbaafce4580f464dc85a6ac0a3a801ba495423e7945859dd536cc9f60985d289938a710d093d3b94b8ae0f26c1f37e1f')
 
 build() {
 	arch-meson "squeekboard-${_commit}" build
