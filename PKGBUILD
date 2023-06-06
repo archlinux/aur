@@ -18,9 +18,9 @@ depends=(
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
         'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
-        'libxpresent' 'pipewire' 'zimg' 'ffmpeg' 'sndio' 'libsixel'
+        'libxpresent' 'pipewire' 'zimg' 'sndio' 'libsixel'
     # AUR:
-        'spirv-cross' 'libplacebo-git' 'libavutil-52'
+        'spirv-cross' 'libplacebo-git' 'ffmpeg-git'
 )
 makedepends=('git' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'meson')
