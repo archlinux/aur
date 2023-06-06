@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=siyuan-appimage
-pkgver=2.8.10
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system, support fine-grained block-level reference and Markdown WYSIWYG"
 arch=("x86_64")
@@ -14,7 +14,7 @@ provides=("siyuan")
 depends=('fuse2')
 optdepends=('pandoc: docx export')
 source=("${_pkgname}::https://github.com/siyuan-note/siyuan/releases/download/v${pkgver}/${_pkgname}")
-sha256sums=("4c90bf34ffd541267e934e156a00d1a5a1472a7e2e14ff11e0d546f2b62b77dd")
+sha256sums=("1c9f3e9a2fd64a38e053ab7e7130f9a8509eb17649c4942a5b8cfbd4d7ee36c4")
 
 _installdir=/opt/appimages
 
