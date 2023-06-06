@@ -201,15 +201,26 @@ finish() {
 }
 
 build() {
+	set -o nounset
+	set -o pipefail
+	set -o errexit
+
   local _builddir=${srcdir}/build
   local _srcdir="${srcdir}/${_source_package_name}"
 
   local _basedir="${_srcdir}/qtbase"
-  local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
+
+	local additional_args=""
 
   rm -Rf ${_builddir}
   mkdir -p ${_builddir}
   cd ${_builddir}
+
+for i in ${BUILDENV[@]}; do
+	if [[ $i = "ccache" ]]; then
+		additional_args="${additional_args} -DQT_USE_CCACHE=ON"
+	fi
+done
 
   # Just because you can enable something doesnt mean you should
   # Prepare for breakage in all your Qt derived projects
@@ -245,12 +256,17 @@ build() {
                                 -DCMAKE_INSTALL_PREFIX:PATH=${_installprefix} \
                                 -DBUILD_qtwebengine=OFF \
                                 -DINPUT_linker=mold \
+				${additional_args}
                                 ${_srcdir}
     "
   echo ${_configure_line} > ${_configure_line_fn}
   set &> configure_env
   ${_configure_line} | tee ${pkgname}-configure.log
   time cmake --build . --parallel | tee ${pkgname}-build.log
+
+	set +o nounset
+	set +o pipefail
+	set +o errexit
 }
 
 create_install_script() {
