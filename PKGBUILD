@@ -3,13 +3,31 @@
 pkgname=python-yt
 _module_name=yt
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A community-developed analysis and visualization toolkit for volumetric data."
 arch=(any)
 url="http://yt-project.org"
 license=('BSD')
-depends=('python-numpy' 'python-matplotlib' 'python-sympy' 'python-unyt' 'python-cmyt' 'python-tqdm')
-makedepends=('cython')
+depends=(
+    'python-cmyt'
+    'python-ewah-bool-utils'
+    'python-matplotlib'
+    'python-more-itertools'
+    'python-numpy'
+    'python-pillow'
+    'python-sympy'
+    'python-tomli-w'
+    'python-tqdm'
+    'python-typing-extensions'
+    'python-unyt'
+)
+makedepends=(
+    'cython'
+    'python-setuptools'
+    'python-wheel'
+    'python-ewah-bool-utils'
+    'python-oldest-supported-numpy'
+)
 optdepends=(
     'jupyterlab: interactive analysis'
     'openmp: multithred support'
