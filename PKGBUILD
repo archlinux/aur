@@ -1,7 +1,7 @@
 
 # Maintainer: Zehka <aur@zehka.net>
 pkgname=guglielmo
-pkgver=v0.4
+pkgver=v0.5
 pkgrel=0
 epoch=
 pkgdesc="Qt based FM / Dab tuner"
@@ -34,6 +34,7 @@ prepare() {
 
 build() {
 	cd "$pkgname/build" || exit 1
+	sed -i 's/QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core/QT NAMES Qt5 REQUIRED COMPONENTS Core/g' ../CMakeLists.txt
 	cmake ..
 	make
 }
