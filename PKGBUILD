@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-x-icons
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc='A mint/metal theme based on mintified versions of Clearlooks Revamp, Elementary and Faenza'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
 )
 options=(!strip)
 source=("${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('269b1de4f8cce1ee367b7be4385dc67e34de2e6c451eeed9abe129478a96fe3d')
+sha256sums=('f1c83432f4fe3aea021f28c235d28878367ff9f77bbd7a44391becfa914c6a85')
 
 package() {
     cd "${srcdir}"/"${pkgname}"
