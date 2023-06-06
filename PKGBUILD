@@ -11,7 +11,7 @@ wl_pkgname="wlroots"
 url="https://gitlab.freedesktop.org/wlroots/wlroots"
 arch=("x86_64")
 provides=(
-	"wlroots"
+	"wlroots-$pkgver"
 	"libwlroots.so"
 )
 conflicts=(
