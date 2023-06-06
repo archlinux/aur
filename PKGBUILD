@@ -1,9 +1,10 @@
 # Maintainer: ThatOneCalculator <kainoa@t1c.dev>
+# Co-Matainer: Bjoern Franke <bjo+aur@schafweide.org>
 # Based on https://aur.archlinux.org/packages/misskey
 
 pkgname=calckey
 pkgver=13.1.4
-pkgrel=6
+pkgrel=7
 pkgdesc='A fun, new way to experience social media'
 url='https://calckey.org'
 arch=('x86_64')
@@ -12,9 +13,10 @@ depends=('nodejs' 'npm' 'postgresql' 'redis' 'pnpm' 'zip')
 makedepends=('git' 'python')
 options=('debug')
 install='calckey.install'
+commit=b03e65584383ceafe2d85e08055e9ab249fbe765
 optdepends=('ffmpeg: Media encode functionality'
             'nginx: Reverse-proxy')
-source=("git+https://codeberg.org/calckey/calckey.git#branch=main"
+source=("git+https://codeberg.org/calckey/calckey.git#commit=$commit"
         "${pkgname}.install"
         "${pkgname}.service"
         "${pkgname}.sh"
