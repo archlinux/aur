@@ -8,6 +8,7 @@ pkgbase = screenkey-git
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-distutils-extra
+	makedepends = python-pip
 	depends = gtk3
 	depends = python-gobject
 	depends = python-cairo
@@ -20,4 +21,3 @@ pkgbase = screenkey-git
 	sha1sums = SKIP
 
 pkgname = screenkey-git
-

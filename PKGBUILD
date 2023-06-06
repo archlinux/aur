@@ -13,7 +13,7 @@ arch=('any')
 url="https://gitlab.com/screenkey/screenkey"
 license=('GPL3')
 depends=('gtk3' 'python-gobject' 'python-cairo' 'libxtst')
-makedepends=('git' 'python-setuptools' 'python-distutils-extra')
+makedepends=('git' 'python-setuptools' 'python-distutils-extra' 'python-pip')
 optdepends=('slop: interactive positioning of the output textbox'
   'ttf-font-awesome: multimedia keys symbols')
 source=("$pkgname"::"git+https://gitlab.com/wavexx/screenkey.git")
