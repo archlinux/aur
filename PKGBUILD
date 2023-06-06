@@ -6,7 +6,7 @@
 
 pkgname=gtkhash
 pkgver=1.5
-pkgrel=1
+pkgrel=3
 pkgdesc="A GTK+ utility for computing message digests or checksums"
 arch=('x86_64')
 url="https://github.com/tristanheaven/gtkhash"
@@ -16,18 +16,14 @@ depends=(
     'gtk3'
     'libb2'
     'libgcrypt'
-    'mbedtls'
     'nettle'
 )
 
 makedepends=(
     'appstream-glib'
-    'dconf'
-    'gtk3'
     'intltool' 
     'librsvg'
     'meson'
-    'nettle'
     'xdg-utils'
 )
 provides=(${pkgname})
@@ -49,7 +45,6 @@ build() {
   arch-meson "$pkgbase-$pkgver" build \
     -Dglib-checksums='true' \
     -Dlinux-crypto='true' \
-    -Dmbedtls='true' \
     -Dnettle='true' \
     -Dbuild-caja='false' \
     -Dbuild-nautilus='false' \
