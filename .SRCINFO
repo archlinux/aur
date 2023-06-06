@@ -27,7 +27,7 @@ pkgbase = wlroots-nvidia
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
 	optdepends = xorg-xwayland: Xwayland support
-	provides = wlroots-0.16.2
+	provides = wlroots=0.16.2
 	provides = libwlroots.so
 	conflicts = wlroots
 	conflicts = wlroots-git
