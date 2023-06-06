@@ -16,7 +16,6 @@ depends=('vulkan-driver' 'libunwind' 'libdrm')
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-options=('!lto')
 source=("${pkgname}"::"git+https://github.com/alvr-org/ALVR.git#tag=v$pkgver")
 md5sums=('SKIP')
 
@@ -35,10 +34,9 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname}"
+
 	export ALVR_ROOT_DIR=/usr
-
 	export ALVR_LIBRARIES_DIR="$ALVR_ROOT_DIR/lib"
-
 	export ALVR_OPENVR_DRIVER_ROOT_DIR="$ALVR_LIBRARIES_DIR/steamvr/alvr/"
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR="$ALVR_LIBRARIES_DIR/alvr/"
 
