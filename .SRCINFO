@@ -1,0 +1,18 @@
+pkgbase = focalboard-server-bin
+	pkgdesc = Focalboard is an open source, self-hosted alternative to Trello, Notion, and Asana.
+	pkgver = 7.10.0
+	pkgrel = 1
+	url = https://www.focalboard.com/
+	install = focalboard.install
+	arch = x86_64
+	license = MIT
+	optdepends = nginx: reverse proxy server, recommended
+	provides = focalboard-server
+	conflicts = focalboard-server
+	backup = opt/focalboard/config.json
+	source = https://github.com/mattermost/focalboard/releases/download/v7.10.0/focalboard-server-linux-amd64.tar.gz
+	source = focalboard.service
+	sha256sums = 5157e0ff5cb6bd6b9f38385b146a305cc2518c5f7ba32a9381af66aac696aa29
+	sha256sums = 607d16cb2544101d0e4291e7804c3137b90b620107a37431c0f3d71e93c4fcd5
+
+pkgname = focalboard-server-bin

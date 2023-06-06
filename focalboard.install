@@ -1,0 +1,35 @@
+# arg 1:  the new package version
+pre_install() {
+	if [[ -d /opt/focalboard ]]; then
+		mv /opt/focalboard /opt/focalboard-old
+		echo "Old focalboard installation moved to /opt/focalboard-old"
+	fi
+}
+
+# arg 1:  the new package version
+post_install() {
+	echo "You need to start/enable focalboard.service"
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+pre_upgrade() {
+	systemctl stop focalboard.service
+	mv /opt/focalboard /opt/focalboard-$2
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+	cp -r /opt/focalboard-$2/files /opt/focalboard
+	mv /opt/focalboard/config.json /opt/focalboard/config.json.new
+	cp /opt/focalboard-$2/config.json /opt/focalboard
+	echo "Old focalboard installation moved to /opt/focalboard-$2"
+	echo "New config.json moved to /opt/focalboard/config.json.new"
+	echo "You need to start/enable focalboard.service"
+}
+
+# arg 1:  the old package version
+pre_remove() {
+        systemctl stop focalboard.service
+}
