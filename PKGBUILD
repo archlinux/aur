@@ -6,7 +6,7 @@ function _nvidia_check() {
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=21.0.0_dev00.r2518.379a4d54
+pkgver=21.0.0_dev00.r2522.3f3b878f
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -14,10 +14,9 @@ url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
 depends=('vulkan-driver' 'libunwind' 'libdrm')
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers' 'jq')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-options=('!lto')
 source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git')
 md5sums=('SKIP')
 
@@ -29,7 +28,7 @@ export CARGO_TARGET_DIR=target
 pkgver() {
 	cd "$srcdir/${_pkgname}"
 
-	ver=$(cargo metadata --frozen --format-version 1 | jq ".workspace_members[0]" -r | awk '{print $2}')
+	ver=$(cargo metadata --frozen --filter-platform "$CARCH-unknown-linux-gnu" --format-version 1 | jq ".workspace_members[0]" -r | awk '{print $2}')
 
 	printf "%s.r%s.%s" "${ver//-/_}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
@@ -39,7 +38,6 @@ prepare() {
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
 
-	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -47,9 +45,7 @@ build() {
 	cd "$srcdir/${_pkgname}"
 
 	export ALVR_ROOT_DIR=/usr
-
 	export ALVR_LIBRARIES_DIR="$ALVR_ROOT_DIR/lib"
-
 	export ALVR_OPENVR_DRIVER_ROOT_DIR="$ALVR_LIBRARIES_DIR/steamvr/alvr/"
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR="$ALVR_LIBRARIES_DIR/alvr/"
 
