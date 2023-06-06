@@ -1,6 +1,6 @@
 # Maintainer: Johan Rehnberg <cleanrock@gmail.com>
 pkgname=flobby-git
-pkgver=0.2.131.g708b76c
+pkgver=0.2.138.g6c9a288
 pkgrel=1
 pkgdesc="spring lobby client"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/cleanrock/flobby"
 license=('GPL2')
 groups=()
 depends=('jsoncpp' 'graphicsmagick' 'libxpm' 'libxss' 'boost-libs' 'curl')
-makedepends=('git' 'cmake' 'boost')
+makedepends=('git' 'cmake' 'boost' 'minizip')
 optdepends=()
 provides=()
 conflicts=()
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git://github.com/cleanrock/flobby.git')
+source=('git+https://github.com/cleanrock/flobby.git')
 noextract=()
 md5sums=('SKIP')
 
@@ -35,13 +35,12 @@ prepare() {
 }
 
 build() {
+  rm -rf "$srcdir/$_gitname/build"
   mkdir "$srcdir/$_gitname/build"
   cd "$srcdir/$_gitname/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   
   # use this cmake line instead of above to skip building and installing pr-downloader
-  #cmake -DWITH_PRD=OFF -DCMAKE_INSTALL_PREFIX=/usr ..
-
+  cmake -DWITH_PRD=OFF -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
 
