@@ -1,9 +1,10 @@
 pkgbase = spfft
 	pkgdesc = Sparse 3D FFT library with MPI, OpenMP, CUDA and ROCm support
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eth-cscs/SpFFT
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	makedepends = cmake
 	makedepends = gcc-fortran
