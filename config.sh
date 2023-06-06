@@ -39,7 +39,7 @@ export NWCHEM_TOP=$(pwd)
 
 export USE_PYTHONCONFIG=y
 export PYTHONHOME=/usr
-export PYTHONVERSION=3.10
+export PYTHONVERSION=3.11
 export PYTHONLIBTYPE=so
 
 export LARGE_FILES=TRUE
