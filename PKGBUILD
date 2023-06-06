@@ -1,7 +1,7 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=epsonscan2
-pkgver=6.7.43.0
+pkgver=6.7.61.0
 _pkgver="$pkgver-1"
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('libjpeg-turbo' 'libpng' 'libtiff' 'libusb' 'qt5-base' 'sane' 'zlib')
 makedepends=('boost' 'cmake' 'libharu' 'qt5-singlecoreapplication' 'rapidjson')
 optdepends=('epsonscan2-non-free-plugin: OCR support and wireless scanning')
 options=('!buildflags')
-source=("http://support.epson.net/linux/src/scanner/$pkgname/$pkgname-$_pkgver.src.tar.gz")
-sha512sums=('feee8abdc1efc0cbec3fc0c5442219f47497a714dca210b9c1ac238a23ca1e99a7f5c1ce4f802a2e9c1d604edf9cc37a888381759c4b8cf1598ce76793c604c7')
+source=("https://download3.ebz.epson.net/dsc/f/03/00/14/53/67/1a6447b4acc5568dfd970feba0518fabea35bca2/epsonscan2-6.7.61.0-1.src.tar.gz")
+sha512sums=('65f0681402401db32470dc6496dd667fcdbb365cbda9b9d94f67387edfa9e8f8c9747bc77467b39ac08fcaa0d7cd0d35569d61cbae470a329aee318d637bf402')
 
 prepare() {
   [[ -d build ]] && rm -r build; mkdir build
