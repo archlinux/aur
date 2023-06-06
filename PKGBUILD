@@ -1,46 +1,52 @@
-# Maintainer: Jonathon Fernyhough <jonathon+m2x.dev>
+# Maintainer: Mario Finelli <mario at finel dot li>
+# Contributor: Jonathon Fernyhough <jonathon+m2x.dev>
 # Contributor: krevedko <helllamer-gmail.com>
 
 pkgname=seaweedfs
-pkgver=3.24
+pkgver=3.52
 pkgrel=1
-pkgdesc="SeaweedFS is a simple and highly scalable distributed file system"
-arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h' 'arm')
-url="https://github.com/chrislusf/seaweedfs"
-license=('APACHE')
-makedepends=('git' 'go')
-options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('b4f6aaccedbae6569d22e4cdb6fbbb909945d9220867ec29c792c8fd1b36b47c6fe2e7511f6f5d3b909e6cb1ddff8c8a02ccf1308c141a8b18c485bcecbe691e')
-_shortcommit=5799a20
+pkgdesc="Simple and highly scalable distributed file system"
+arch=(i686 x86_64 aarch64 armv7h)
+url=https://github.com/seaweedfs/seaweedfs
+license=(Apache)
+depends=(glibc)
+makedepends=(go)
+source=($url/archive/$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('d189dcba808e56dfaf80bd954c27ebd074671792d8980dd67efdaed90cb166f7')
 
 prepare() {
   cd $pkgname-$pkgver
-
-  export GOPATH="${SRCDEST:-$srcdir}"
-  go mod vendor
+  export GOPATH="$srcdir/gopath"
+  go mod download
 }
 
 build() {
+  cd $pkgname-$pkgver
+
+  export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
-  export GOPATH="${SRCDEST:-$srcdir}"
 
-  cd $pkgname-$pkgver/weed
-  go build -v $GO_FLAGS -tags 5BytesOffset -ldflags "-X github.com/chrislusf/seaweedfs/weed/util.COMMIT=$_shortcommit -extldflags $LDFLAGS"
+  go build -o weed/weed \
+    -buildmode=pie \
+    -trimpath \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    weed/weed.go
 }
 
-#check() {
-#  cd $pkgname-$pkgver/weed
-#  go test -v
-#}
+# check() {
+#   cd $pkgname-$pkgver/weed
+#   go test -v ./...
+# }
 
 package() {
   cd $pkgname-$pkgver
-  install -D     weed/weed "$pkgdir"/usr/bin/weed
-  install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
-  install -Dm644 LICENSE   "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -vDm0755 weed/weed "$pkgdir/usr/bin/weed"
+  install -vDm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: set ts=2 sw=2 et:
