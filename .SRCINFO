@@ -1,19 +1,19 @@
 pkgbase = nucleus-bin
-	pkgdesc = Nucleus CLI
-	pkgver = 0.2.7
+	pkgdesc = CLI for interfacing with Nucleus
+	pkgver = 0.2.11
 	pkgrel = 1
-	url = https://github.com/nucleuscloud/cli
-	arch = x86_64
-	arch = i686
-	arch = aarch64
+	url = https://nucleuscloud.com
 	license = Apache-2.0
-	provides = nucleus
 	conflicts = nucleus
-	source_x86_64 = https://github.com/nucleuscloud/cli/releases/download/v0.2.7/nucleus_0.2.7_linux_amd64.tar.gz
-	sha256sums_x86_64 = fb2a1aa97865c044524d22d3ec8d45672508132486d8e7b4731bc804c1454c88
-	source_i686 = https://github.com/nucleuscloud/cli/releases/download/v0.2.7/nucleus_0.2.7_linux_386.tar.gz
-	sha256sums_i686 = 93b59d57555e8ea204659c414e6bd49c6d8a93937629a463d115a137ff59ae71
-	source_aarch64 = https://github.com/nucleuscloud/cli/releases/download/v0.2.7/nucleus_0.2.7_linux_arm64.tar.gz
-	sha256sums_aarch64 = 331ae053db38f82593c8359b5c610f89f4017ebbeab1716fdfe55d1bf79b0b35
-
+	provides = nucleus
+	arch = aarch64
+	source_aarch64 = https://github.com/nucleuscloud/cli/releases/download/v0.2.11/nucleus_0.2.11_linux_arm64.tar.gz
+	sha256sums_aarch64 = 97074e43a0d24f1f73637158ca04e460af1f1e7b8000028fdbbb5d6c8dd744c8
+	arch = i686
+	source_i686 = https://github.com/nucleuscloud/cli/releases/download/v0.2.11/nucleus_0.2.11_linux_386.tar.gz
+	sha256sums_i686 = c11f5bf25f2e39e69d6d7631b6b2053797b0a9d11a48e692009a179c061f5e36
+	arch = x86_64
+	source_x86_64 = https://github.com/nucleuscloud/cli/releases/download/v0.2.11/nucleus_0.2.11_linux_amd64.tar.gz
+	sha256sums_x86_64 = ffba27f299ce8e2d70cb45668fdd8be9b17e927b911ea69be663cc701c696d95
+	
 pkgname = nucleus-bin
