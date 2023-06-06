@@ -1,0 +1,13 @@
+pkgbase = yeganesh-bin
+	pkgdesc = dmenu with a sense of history (binary release)
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://dmwit.com/yeganesh/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	depends = dmenu
+	source = http://dmwit.com/yeganesh/yeganesh-2.5-bin.tar.gz
+	sha256sums = 0f1051197abac99b9ce3f7073ecff46bf74abf739252127ae1d7b21f66be27be
+
+pkgname = yeganesh-bin
