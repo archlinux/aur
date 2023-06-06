@@ -1,7 +1,7 @@
 pkgbase = firefox-gnome-theme
 	pkgdesc = A GNOME theme for Firefox
 	pkgver = 113
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rafaelmardojai/firefox-gnome-theme
 	install = firefox-gnome-theme.install
 	arch = any
@@ -12,6 +12,6 @@ pkgbase = firefox-gnome-theme
 	source = firefox-gnome-theme.tar.gz::https://github.com/rafaelmardojai/firefox-gnome-theme/archive/refs/tags/v113.tar.gz
 	source = INSTALL.md
 	md5sums = 30641c43126404c387940a88dc766705
-	md5sums = 07005689cf01618e0f8788e7b40c884d
+	md5sums = 25f18456221ffc91f472b1abff8aae84
 
 pkgname = firefox-gnome-theme

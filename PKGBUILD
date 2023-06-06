@@ -3,7 +3,7 @@
 
 pkgname=firefox-gnome-theme
 pkgver=113
-pkgrel=1
+pkgrel=2
 pkgdesc='A GNOME theme for Firefox'
 arch=('any')
 url="https://github.com/rafaelmardojai/$pkgname"
@@ -12,12 +12,13 @@ optdepends=('firefox: primary compatible browser' 'librewolf: alternative compat
 conflicts=("$pkgname-git")
 install="$pkgname.install"
 source=("$pkgname.tar.gz::https://github.com/rafaelmardojai/$pkgname/archive/refs/tags/v${pkgver}.tar.gz" "INSTALL.md")
-md5sums=('30641c43126404c387940a88dc766705' '07005689cf01618e0f8788e7b40c884d')
+md5sums=('30641c43126404c387940a88dc766705'
+         '25f18456221ffc91f472b1abff8aae84')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	install -d "$pkgdir/usr/lib/$pkgname"
-	cp -ra theme userChrome.css userContent.css "$pkgdir/usr/lib/$pkgname"
+	cp -ra theme userChrome.css userContent.css configuration "$pkgdir/usr/lib/$pkgname"
 	# Install docs & license
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	install -Dm644 "$srcdir/INSTALL.md" "$pkgdir/usr/share/doc/$pkgname/INSTALL.md"
