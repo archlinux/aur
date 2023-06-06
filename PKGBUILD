@@ -17,7 +17,7 @@ pkgver() {
 	(
 		set -o pipefail
 		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		git submodule update --init
+		git submodule update --init ||
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
