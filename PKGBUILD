@@ -5,9 +5,9 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=102.11.0
+pkgver=102.12.0
 pkgrel=1
-_commit=5a1894fc966840dc242110ec0459471c637a4675
+_commit=b2d463b0e331795eebe3ee62f2c58c1bd05b9899
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -30,7 +30,7 @@ source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_comm
         missing_cstdint.patch::https://hg.mozilla.org/mozilla-central/raw-rev/61f052c26dd1
         RsdparsaSdpGlue.patch)
 
-sha256sums=('8ea296e4237f3b1565cd9171abb4415c5be6a47622986645eaa5f6859c479497'
+sha256sums=('0f629c78f24dc56b7369b337aa8d72d948c1d00a2c1f6761468c9511ca8320be'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
             'ca3cedc5edce26040d3caf735afa8744fe08f3a1695eb2cda3796f4f336632d3'
