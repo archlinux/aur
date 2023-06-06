@@ -9,7 +9,7 @@ pkgdesc="a package for executing commands on time basis"
 arch=('x86_64')
 url="https://github.com/DanielMadmon/tasker"
 license=('GPL3')
-depends=('libthemis')
+depends=('libthemis' 'kwalletd5')
 makedepends=('cargo' 'git')
 provides=("tasker-git=0.0.3")
 conflicts=(tasker-git)
