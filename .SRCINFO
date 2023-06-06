@@ -1,7 +1,7 @@
 pkgbase = legacylauncher
 	pkgdesc = Freeware Minecraft launcher
 	pkgver = 1.157.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://llaun.ch
 	arch = any
 	license = custom

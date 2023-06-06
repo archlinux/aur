@@ -3,7 +3,7 @@
 # Contributor: SaMaLerO <smlr[at]ukr[dot]net>
 pkgname='legacylauncher'
 pkgver='1.157.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Freeware Minecraft launcher'
 url='https://llaun.ch'
 arch=('any')
