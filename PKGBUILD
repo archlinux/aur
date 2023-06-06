@@ -1,7 +1,7 @@
 # Maintainer: Zoron <zoronlivingston@gmail.com>
 
 pkgname=wgshadertoy
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A WGSL playground inspired by Shadertoy"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/fralonra/wgshadertoy"
 license=('MIT')
 makedepends=('rust')
 source=("https://github.com/fralonra/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('404a6a17239f1a4fd3747605b6078aba')
+md5sums=('1fd10b3b82ca219d2c38b8825ad16bf5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
