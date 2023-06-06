@@ -3,7 +3,7 @@
 _npmname=wenku8
 _npmver=3.5.0
 _npmrel=1
-pkgname=nodejs-wenku8-downloader # All lowercase
+pkgname=nodejs-wenku8 # All lowercase
 pkgver=3.5.0
 pkgrel=1
 pkgdesc="轻小说文库下载器"
@@ -13,7 +13,7 @@ license=(MIT)
 depends=('nodejs' 'npm')
 optdepends=()
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-noextract=($_npmname-$_npmver.tgz)
+noextract=(${_npmname}-${_npmver}.tgz)
 sha1sums=('a6b7aa573520fe3d29d7258d4f3d9b6ea72c62ff')
 
 package() {
