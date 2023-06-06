@@ -1,0 +1,16 @@
+pkgbase = python-rubinsim-git
+	pkgdesc = Scheduler, survey strategy analysis, and other simulation tools for Rubin Observatory.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/lsst/rubin_sim
+	arch = x86_64
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	source = python-rubinsim-git::git+https://github.com/lsst/rubin_sim.git
+	sha256sums = SKIP
+
+pkgname = python-rubinsim-git
