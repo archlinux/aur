@@ -7,7 +7,7 @@ pkgbase=mutter-auto-rotation
 pkgname=mutter-auto-rotation
 provides=(libmutter-12.so mutter)
 conflicts=(mutter)
-pkgver=44.1+r2+g82bd40dcbc
+pkgver=44.2
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME, with touch-mode auto-rotation (reverts MR 1710)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -44,7 +44,7 @@ makedepends=(
   xorg-server
   xorg-server-xvfb
 )
-_commit=82bd40dcbcc3601da755678778f033bd9a30286d  # gnome-44
+_commit=e7ed2bf85700a2ff33b69826f6f0fff6e2f28e69  # tags/44.2^0
 
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
