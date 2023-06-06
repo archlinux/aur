@@ -1,21 +1,21 @@
 diff --git a/soh/soh/Extractor/Extract.cpp b/soh/soh/Extractor/Extract.cpp
-index f8eed857..a9afadab 100644
+index 143a8638..063a63da 100644
 --- a/soh/soh/Extractor/Extract.cpp
 +++ b/soh/soh/Extractor/Extract.cpp
-@@ -490,28 +490,27 @@ const char* Extractor::GetZapdVerStr() const {
+@@ -498,28 +498,27 @@ const char* Extractor::GetZapdVerStr() const {
  
  extern "C" int zapd_main(int argc, char** argv);
  
 -bool Extractor::CallZapd() {
 +bool Extractor::CallZapd(std::string &assetPath) {
      constexpr int argc = 16;
--    char xmlPath[100];
--    char confPath[100];
+-    char xmlPath[1024];
+-    char confPath[1024];
      std::array<const char*, argc> argv;
      const char* version = GetZapdVerStr();
  
--    snprintf(xmlPath, 100, "assets/extractor/xmls/%s", version);
--    snprintf(confPath, 100, "assets/extractor/Config_%s.xml", version);
+-    snprintf(xmlPath, 1024, "assets/extractor/xmls/%s", version);
+-    snprintf(confPath, 1024, "assets/extractor/Config_%s.xml", version);
 +    std::string xmlPath = assetPath + "/assets/extractor/xmls/" + version;
 +    std::string confPath = assetPath + "/assets/extractor/Config_" + version + ".xml";
 +    std::string fileListsPath = assetPath + "/assets/extractor/filelists";
@@ -53,7 +53,7 @@ index e4eb2e5b..3c95b025 100644
  };
  #endif
 diff --git a/soh/soh/OTRGlobals.cpp b/soh/soh/OTRGlobals.cpp
-index 58a1e064..42a6d185 100644
+index 3a75545a..bb4f5372 100644
 --- a/soh/soh/OTRGlobals.cpp
 +++ b/soh/soh/OTRGlobals.cpp
 @@ -205,11 +205,11 @@ const char* constCameraStrings[] = {
