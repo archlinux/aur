@@ -1,4 +1,5 @@
 # Maintainer: jswagner <jason-at-jason;s.wagner*dot,com>
+# Contributor: KickMeElmo
 _prgname=mpf-check
 pkgname=mpf-check-bin
 url="https://github.com/SabreTools/MPF"
@@ -7,7 +8,7 @@ pkgdesc="Media Preservation Frontend for DiscImageCreator/Aaru/Redumper in C# (.
 provides=('mpf-check')
 depends=('mono')
 pkgver=2.5
-pkgrel=3
+pkgrel=4
 license=('GPL3')
 source=('https://github.com/SabreTools/MPF/releases/download/2.5/MPF.Check_2.5-net48.zip'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
@@ -75,7 +76,7 @@ package() {
 	# create convenience script
 	mkdir ${pkgdir}/usr/bin
 	echo "#!/bin/bash" > ${pkgdir}/usr/bin/${_prgname}
-	echo "mono /opt/${_prgname}/MPF.Check.exe \$@" >> ${pkgdir}/usr/bin/${_prgname}
+	echo "mono /opt/${_prgname}/MPF.Check.exe \"\$@\"" >> ${pkgdir}/usr/bin/${_prgname}
 	chmod 755 ${pkgdir}/usr/bin/${_prgname}
 
 }
