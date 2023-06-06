@@ -8,7 +8,7 @@ pkgbase = tasker-git
 	makedepends = cargo
 	makedepends = git
 	depends = libthemis
-	depends = kwalletd5
+	depends = kwallet
 	provides = tasker-git=0.0.3
 	conflicts = tasker-git
 	source = https://github.com/DanielMadmon/tasker/archive/refs/tags/v0.0.3.tar.gz
