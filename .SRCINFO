@@ -1,15 +1,15 @@
 pkgbase = sysinfo
 	pkgdesc = sysinfo shows system information like the hardware configuration and resource usage in a compact, clearly arranged and visually pleasing style.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/IngoMeyer441/sysinfo
 	arch = any
 	license = MIT
 	depends = bash
 	depends = gawk
-	source = https://github.com/IngoMeyer441/sysinfo/archive/v0.1.2.tar.gz
+	source = https://github.com/IngoMeyer441/sysinfo/archive/v0.1.3.tar.gz
 	source = version.sh_no_phony.patch
-	sha256sums = e0bc83f0bb67cb2e2612ac63016e84ce8819f75ef7991e8bdb78e496707be8be
+	sha256sums = 7ffe3c2a3897222aa53b6c279c9d93c4fb7227710c3f88b09a4f05d8a52fbabb
 	sha256sums = 022e579806fc6090f066489ee40a38010f7c26d9f874554e7eb7d7f5236d257f
 
 pkgname = sysinfo
