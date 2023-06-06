@@ -16,7 +16,7 @@ _reponame=tageditor
 _cfg=qt6
 pkgname=tageditor-$_cfg
 _name=${pkgname%-$_cfg}
-pkgver=3.7.9
+pkgver=3.8.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska (using Qt 6)'
@@ -32,7 +32,7 @@ makedepends=('cmake' 'ninja' 'qt6-tools' 'qt6-declarative' 'clang' 'mesa')
 checkdepends=('cppunit' 'jq' 'appstream')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('987101e9a259db79b28b872c778e9818f12618ce5a12ab7558b6262c7621b217')
+sha256sums=('9ab25924be61b1ddd12510c2fa90a9fd9ebae1b634764e50415f47c1e0be28ab')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
