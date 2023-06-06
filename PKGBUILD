@@ -3,7 +3,7 @@
 
 pkgname=lutris-wine-meta
 pkgver=2.1.0
-pkgrel=4
+pkgrel=5
 arch=(any)
 url='https://github.com/lutris/docs/blob/master/WineDependencies.md'
 pkgdesc='Meta package for using lutris with wine'
