@@ -27,8 +27,8 @@
 
 pkgname=vitis
 _srcname=Xilinx_Unified
-pkgver=2022.2
-_more_ver=1014_8888
+pkgver=2023.1
+_more_ver=0507_1903
 pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vitis.html"
@@ -42,6 +42,7 @@ depends=('ncurses5-compat-libs'
          'gtk2'
          'xorg-xlsclients'
          'cpio'
+         'inetutils'
 )
 optdepends=('fxload'
             'digilent.adept.runtime'
@@ -56,7 +57,7 @@ source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
         'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('4b4e84306eb631fe67d3efb469122671'
+md5sums=('f2011ceba52b109e3551c1d3189a8c9c'
          '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
