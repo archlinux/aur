@@ -2,7 +2,7 @@
 pkgname='roc-nightly-bin'
 _name='roc_nightly-linux_x86_64-latest'
 pkgver=0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast, friendly, functional language. Work in progress!'
 arch=('x86_64')
 url='https://github.com/roc-lang/roc'
