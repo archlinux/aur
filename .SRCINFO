@@ -19,7 +19,6 @@ pkgbase = pyload-ng
 	depends = python-cheroot
 	depends = python-setuptools
 	depends = python-certifi
-	depends = python-cachelib
 	optdepends = caffeine: For AntiStandby plugin
 	optdepends = python-beautifulsoup4: for XFileSharing plugin
 	optdepends = python-slixmpp: for XMPP plugin
