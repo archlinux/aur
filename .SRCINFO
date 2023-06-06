@@ -1,6 +1,6 @@
 pkgbase = klaus-bin
 	pkgdesc = Arch manager that allows you to download, install, delete packages...
-	pkgver = 3.1
+	pkgver = 3.2
 	pkgrel = 1
 	url = https://github.com/dmaliog/kLausqt/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = klaus-bin
 	depends = yay
 	depends = zenity
 	depends = libnotify
-	source = klaus-bin-3.1.zip::https://github.com/dmaliog/kLausqt//releases/download/3.1/klaus-3.1-2023-06-06-linux64.zip
-	sha256sums = 3b91df473b4f543d48fc1da9272a869a2577ec1d907edcf8da9379cbbb0b479b
+	source = klaus-bin-3.2.zip::https://github.com/dmaliog/kLausqt//releases/download/3.2/klaus-3.2-2023-06-06-linux64.zip
+	sha256sums = 6ca5798bc70d3decd43ca8594c785b52be95e4b6f6f79e4379455864974a38ce
 
 pkgname = klaus-bin
