@@ -1,6 +1,6 @@
 # Maintainer: Callum Osmotherly <acheronfail@gmail.com>
 pkgname=istat
-pkgver="0.2.2"
+pkgver="0.3.0"
 pkgrel=1
 pkgdesc="A lightweight and batteries-included status_command for i3 and sway"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('gcc-libs')
 makedepends=('cargo' 'clang' 'libpulse')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('18b45ce2010b3de8bb6fef9eafaffd5b158bbac59231c02588423ab7f5be61c14f51cb74085bc4e325abbdc2087ec419db499ed02088c0846322ee5c3d573303')
+sha512sums=('e948f1d5dee35c67159ef27d74941a8410a5736bca4f243aa913b625375b109872116009b70db776d39fa11cb29d7fbe2046932c1f85c4f46887d8fc39c48d44')
 
 # this is effectively a no-op for standard usages of the PKGBUILD, but it exists for
 # local testing of the PKGBUILD itself in the upstream repository (when the build version

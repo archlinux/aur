@@ -1,6 +1,6 @@
 pkgbase = istat
 	pkgdesc = A lightweight and batteries-included status_command for i3 and sway
-	pkgver = 0.2.2
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/acheronfail/istat
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = istat
 	makedepends = clang
 	makedepends = libpulse
 	depends = gcc-libs
-	source = istat-0.2.2.tar.gz::https://static.crates.io/crates/istat/istat-0.2.2.crate
-	sha512sums = 18b45ce2010b3de8bb6fef9eafaffd5b158bbac59231c02588423ab7f5be61c14f51cb74085bc4e325abbdc2087ec419db499ed02088c0846322ee5c3d573303
+	source = istat-0.3.0.tar.gz::https://static.crates.io/crates/istat/istat-0.3.0.crate
+	sha512sums = e948f1d5dee35c67159ef27d74941a8410a5736bca4f243aa913b625375b109872116009b70db776d39fa11cb29d7fbe2046932c1f85c4f46887d8fc39c48d44
 
 pkgname = istat
