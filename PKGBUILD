@@ -1,7 +1,8 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
-pkgname=bros
-pkgver=1.0.0
-pkgrel=5
+
+pkgname='bros'
+pkgver='1989'
+pkgrel=1
 pkgdesc="Atari 800XL platformer"
 arch=('any')
 url="http://www.atarimania.com/game-atari-400-800-xl-xe-tobot-bros_5425.html"
@@ -18,12 +19,14 @@ sha256sums=('bb659633247cf99b90a8948ce499047503ebb76c31578f181b165ebc3b212009'
 
 package() {
 	# game rom atr
-	dest="${pkgdir}"/opt/${pkgname}
-	install -Dm644 Bros_1989_KE_Soft_DE_en_a3.atr "${dest}"/Bros.atr
+	# yknow I could just sneak this into the altirra package if I wanted
+	# lmao
+	_dest="${pkgdir}/opt/${pkgname}"
+	install -Dm644 "Bros_1989_KE_Soft_DE_en_a3.atr" "${_dest}/Bros.atr"
 	# launch script
-	install -D ${pkgname} "${dest}"/${pkgname}
-	# desktop entry
-	share="${pkgdir}"/usr/share
-	install -Dm644 ${pkgname}.desktop "${share}"/applications/${pkgname}.desktop
-	install -Dm644 ${pkgname}.svg "${share}"/pixmaps/${pkgname}.svg
+	install -D -t "${_dest}" "${pkgname}"
+	# desktop entry and icons
+	_share="${pkgdir}/usr/share"
+	install -Dm644 -t "${_share}/applications" "${pkgname}.desktop"
+	install -Dm644  -t "${_share}/pixmaps" "${pkgname}.svg"
 }

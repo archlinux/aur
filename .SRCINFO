@@ -1,7 +1,7 @@
 pkgbase = bros
 	pkgdesc = Atari 800XL platformer
-	pkgver = 1.0.0
-	pkgrel = 5
+	pkgver = 1989
+	pkgrel = 1
 	url = http://www.atarimania.com/game-atari-400-800-xl-xe-tobot-bros_5425.html
 	arch = any
 	license = Unlicense
