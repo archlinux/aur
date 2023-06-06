@@ -2,7 +2,7 @@
 
 _pkgname=vpktool
 pkgname=$_pkgname-bin
-pkgdesc="A tool to read and extract data from VPK files  (binary release)"
+pkgdesc="A tool to read and extract data from VPK files (binary release)"
 pkgver=2.1.2
 pkgrel=1
 arch=('x86_64')
