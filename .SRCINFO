@@ -1,0 +1,17 @@
+pkgbase = tts-vue-appimage
+	pkgdesc = Microsoft speech synthesis tool, built using Electron+Vue+ElementPlus+Vite.微软语音合成工具,使用Electron+Vue+ElementPlus+Vite构建。
+	pkgver = 1.9.9
+	pkgrel = 1
+	url = https://tts-doc.loker.vip/home.html
+	arch = x86_64
+	license = MIT
+	makedepends = yarn
+	makedepends = gendesk
+	depends = zlib
+	depends = glibc
+	conflicts = tts-vue
+	options = !strip
+	source = tts-vue-1.9.9.tar.gz::https://github.com/LokerL/tts-vue/archive/refs/tags/1.9.9.tar.gz
+	sha256sums = 644fba208a81a7118ec5338d3a8c38160375bf2dcb87c57cf0721830b4de3d95
+
+pkgname = tts-vue-appimage
