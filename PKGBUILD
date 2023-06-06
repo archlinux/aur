@@ -8,7 +8,7 @@ url="https://www.wurmonline.com/"
 license=('unknown')
 depends=('gtk2')
 source=("https://client.wurmonline.com/client/wurmlauncher.tar.gz" 
-		"https://github.com/Sallad02/wurm-launcher-files/archive/1.1.tar.gz")
+		"https://github.com/simkej/wurm-launcher-files/archive/1.1.tar.gz")
 md5sums=('db194b15a6182c0b48f11bcefedbac55'
          'bf7fafab57af1280cf6bfe4ad32639f7')
 
