@@ -11,7 +11,7 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.10.1
+pkgver=4.10.2
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
         freeipa-client-update-sshd_config.hook
         nis-domainname.service
         ipaplatform.tar.gz)
-sha256sums=('ab6ad0cdc065d6d238ffbfa1c44c0e63d343f3a84e6deeceed8f44107edc5280'
+sha256sums=('f436dfc497845069c113ba542d33eb560a9178f20b5059382a7d1614d99c1558'
             '09894b521258983da988b6d78ed8d5370669ffb7d6a6e3cfbf0c0b8eda67f11b'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d'
             '74a394af693e3677146eff18a770a4271fba961b2af93b15b8ae26157af1760a'
