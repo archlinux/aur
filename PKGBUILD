@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="nuclia-appimage"
-pkgver=2.2.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A low-code API to build an AI & multi-language semantic search engine in minutes. For any data, including audios and videos, and any source."
 arch=('x86_64')
@@ -11,9 +11,9 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/Nuclia.Desktop-${pkgver}.AppImage"
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/NucliaDesktop-${pkgver}.AppImage"
     "LICENSE.md::https://raw.githubusercontent.com/nuclia/frontend/main/LICENSE.md")
-sha256sums=('acb1f3d3b4114b3966d5b27b26892316e61b90f93ba914e777316b0b4c2be8ed'
+sha256sums=('e611cb4b2b699ffcb8c08bf13e07853ef6cf4a481426776b9ca06f9e4046fe88'
             '7c18093059eeabbeac27a86cb0c7e187845d96331e9c5d8388ee8fc5d637da66')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
