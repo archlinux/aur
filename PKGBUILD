@@ -6,7 +6,7 @@
 
 pkgname=gtkhash-nemo
 pkgver=1.5
-pkgrel=1
+pkgrel=3
 pkgdesc="A GTK+ utility for computing message digests or checksums (Gtkhash with Thunar filemanager plugin)"
 arch=('x86_64')
 url="https://github.com/tristanheaven/gtkhash"
@@ -15,7 +15,7 @@ depends=(
     'dconf'
     'gtk3'
     'libb2'
-    'mbedtls'
+    'libgcrypt'
     'nemo'
     'nettle'
 )
@@ -48,7 +48,6 @@ build() {
   arch-meson "gtkhash-$pkgver" build \
     -Dglib-checksums='true' \
     -Dlinux-crypto='true' \
-    -Dmbedtls='true' \
     -Dnettle='true' \
     -Dbuild-caja='false' \
     -Dbuild-nautilus='false' \
