@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="apifox-bin"
-pkgver=2.2.40
+pkgver=2.2.42
 pkgrel=1
 pkgdesc="Apifox=Postman+Swagger+Mock+JMeter.API 文档、API 调试、API Mock、API 自动化测试"
 arch=('x86_64')
