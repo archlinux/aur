@@ -1,0 +1,16 @@
+pkgbase = web-os-dev-manager-appimage
+	pkgdesc = Device/DevMode Manager for webOS TV
+	pkgver = 1.11.15
+	pkgrel = 1
+	url = https://github.com/webosbrew/dev-manager-desktop
+	arch = x86_64
+	license = Apache
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = web-os-dev-manager
+	options = !strip
+	source = web-os-dev-manager-1.11.15.AppImage::https://github.com/webosbrew/dev-manager-desktop/releases/download/v1.11.15/web-os-dev-manager_1.11.15_amd64.AppImage
+	sha256sums = 7c2a267fabf8c4dc148c514e6863a54f4914b7ee999a5bf0bd6712c7113315fc
+
+pkgname = web-os-dev-manager-appimage
