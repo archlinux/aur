@@ -1,25 +1,44 @@
 # Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
 # Contributor: Jerry Lin <jerry73204 at gmail dot com>
 
-_pkgname=aiokafka
-pkgname=python-$_pkgname
-pkgver=0.8.0
+_pyname=aiokafka
+pkgname=python-$_pyname
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Asyncio client for Kafka'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://aiokafka.readthedocs.io'
-license=('Apache')
-depends=('python-kafka')
-makedepends=('python-setuptools' 'cython')
-source=("https://github.com/aio-libs/aiokafka/archive/v$pkgver.tar.gz")
-sha256sums=('494be1172bd69032b8b49d6445c2a47f575c677df1ac8578f41f44cad1144f1a')
+license=(Apache)
+depends=(python-kafka python-async-timeout)
+makedepends=(python-setuptools cython python-build python-installer python-wheel)
+checkdepends=(python-pytest-asyncio python-docker python-snappy
+              python-zstandard python-lz4)
+source=($pkgname-$pkgver.tar.gz::https://github.com/aio-libs/aiokafka/archive/v$pkgver.tar.gz)
+sha256sums=('e0861cdb34a4e023ac9b211dcd7140ae4b78e44ef6fcffbf2b6ce917db8351c9')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+  cd "$srcdir/$_pyname-$pkgver"
+  python -m build \
+    --wheel \
+    --no-isolation \
+    --skip-dependency-check
+}
+
+check() {
+  cd "$srcdir/$_pyname-$pkgver"
+
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+
+  mv $_pyname $_pyname-orig
+
+  test-env/bin/python -m pytest -v -k 'not test_legacy'
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" -O1
+  cd "$srcdir/$_pyname-$pkgver"
+  python -m installer \
+    --destdir="$pkgdir" \
+    --compile-bytecode=2 \
+    dist/*.whl
 }
