@@ -1,19 +1,21 @@
 pkgbase = uoy-assessment-uploader
 	pkgdesc = Tool for automating submitting assessments to the University of York Computer Science department.
-	pkgver = 0.5.1
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/joelsgp/uoy-assessment-uploader
 	arch = any
 	license = GPL3
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-flit-core
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-keyring
 	depends = python-requests
 	provides = python-uoy-assessment-uploader
-	source = https://files.pythonhosted.org/packages/source/u/uoy_assessment_uploader/uoy_assessment_uploader-0.5.1.tar.gz
-	sha256sums = 5c214f6c0248121412b7ef11bfba5a4c841dc56d38e29fe35fef266c6695feeb
+	source = https://files.pythonhosted.org/packages/source/u/uoy_assessment_uploader/uoy_assessment_uploader-0.6.0.tar.gz
+	sha256sums = b5ca15f087b6c5f88568b2ff515e7fbf76779a1e48d3b5823c7aab4ae81c2f28
 
 pkgname = uoy-assessment-uploader
