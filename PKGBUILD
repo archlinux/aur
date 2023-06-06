@@ -1,0 +1,63 @@
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+
+_pkgname=sigma-file-manager
+pkgname=$_pkgname-bin
+pkgver=1.6.0
+pkgrel=1
+pkgdesc="A free, open-source, quickly evolving, modern file manager (explorer / finder) app (binary release)"
+url="https://github.com/aleksey-hoffman/sigma-file-manager"
+arch=("x86_64")
+license=('GPL3')
+depends=('libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst')
+makedepends=('fuse2')
+provides=($_pkgname)
+conflicts=($_pkgname)
+_appimage=Sigma-File-Manager-$pkgver-Linux-Debian.AppImage
+source=("$url/releases/download/v$pkgver/$_appimage")
+sha256sums=('ca4bb1d6707776d3cb2cf3ae589f155173d5e043c51a72970197d24cf3cf9e34')
+
+_fix_permissions() (
+  target=$1
+
+  if [[ -L "$target" ]]; then
+    return 0
+  fi
+
+  if [[ -d "$target" || -x "$target" ]]; then
+    chmod 755 "$target"
+    return 0
+  fi
+
+  if [[ -f "$target" ]]; then
+    chmod 644 "$target"
+    return 0
+  fi
+
+  echo "Unrecognizable filesystem entry: $target" >&2
+  return 1
+)
+
+prepare() {
+  # Extract the AppImage
+  chmod +x "./$_appimage"
+  "./$_appimage" --appimage-extract
+  # Edit the shortcut
+  cd squashfs-root
+  sed -i -E "s|Exec=AppRun|Exec=$_pkgname|g" $_pkgname.desktop
+}
+
+package() {
+  # Create folders
+  mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
+  # Install
+  cd squashfs-root
+  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 usr/share/icons/hicolor/0x0/apps/$_pkgname.png -t "$pkgdir/usr/share/pixmaps"
+  ln -s /opt/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
+  rm -dr usr & rm ${_pkgname}.png .DirIcon ${_pkgname}.desktop
+  cp -r ../squashfs-root "$pkgdir/opt/$_pkgname"
+  # Fix permissions
+  find "$pkgdir"| while read -r target; do
+    _fix_permissions "$target"
+  done
+}
