@@ -1,0 +1,21 @@
+pkgbase = mistral-nightly
+	pkgdesc = Cyclone V bitstream reverse-engineering project
+	pkgver = 20230606_d6bd02c
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/Ravenslofty/mistral
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = python
+	depends = python
+	conflicts = mistral-git
+	options = !strip
+	source = mistral::git+https://github.com/Ravenslofty/mistral.git#commit=d6bd02c
+	sha256sums = SKIP
+
+pkgname = mistral-nightly
