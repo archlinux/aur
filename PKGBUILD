@@ -7,7 +7,7 @@ pkgdesc="Tool for programming serial SPI FlashROM memories attached to PC via pa
 arch=(i686 x86_64)
 url="https://www.daemonology.net/bsdiff/"
 license=(custom)
-depends=(bzip2)
+depends=(glibc bzip2)
 makedepends=(patch)
 source=("https://ftp.desolve.ru/pub/bsdiff/${pkgname}-${pkgver}.tar.gz"
         "CVE-2014-9862.patch")
