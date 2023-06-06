@@ -3,7 +3,7 @@
 _npmname=wenku8
 _npmver=3.5.0
 _npmrel=1
-pkgname=nodejs-wenku8 # All lowercase
+pkgname=nodejs-wenku8-downloader # All lowercase
 pkgver=3.5.0
 pkgrel=1
 pkgdesc="轻小说文库下载器"
