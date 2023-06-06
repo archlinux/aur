@@ -16,7 +16,7 @@ depends=("$_electronpkg>=22.0.0" 'krb5' 'libsecret' 'lsb-release')
 makedepends=('git' 'nodejs>=16.15.1' 'npm>=8.19.2' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
-	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build-ffmpeg.diff'
 	'hadron-build-os-dns-native.diff'
 	'fix-argv.diff'
