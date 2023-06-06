@@ -1,6 +1,6 @@
 pkgbase = ficus-appimage
 	pkgdesc = A software for editing and managing markdown documents, developed by the gg=G team.
-	pkgver = 0.1.3
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://ficus.world/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = ficus-appimage
 	depends = glibc
 	conflicts = ficus
 	options = !strip
-	source = ficus-0.1.3.AppImage::https://github.com/Thysrael/Ficus/releases/download/v0.1.3/ficus-0.1.3.AppImage
+	source = ficus-0.1.8.AppImage::https://github.com/Thysrael/Ficus/releases/download/v0.1.8/ficus-0.1.8.AppImage
 	source = https://raw.githubusercontent.com/Thysrael/Ficus/main/LICENSE
-	sha256sums = e6c0f974242644e5a227eebde8dd31d35f461fab2b53cb8fb354bf02ffd6b319
+	sha256sums = 4c4f8592bda2bc323e8237f4d6ed058e01ec3fc11cfe338f2454e3ac8635d9aa
 	sha256sums = 062dfd6ae4c19f555ebbdba752598c98510837687393a38a3602b711890430d7
 
 pkgname = ficus-appimage
