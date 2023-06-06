@@ -19,7 +19,7 @@ optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 _betaprefix="$([[ "$_pkgname" =~ -beta$ ]] && printf 'beta/' || printf '')"
-source=("$pkgname-$pkgver-$pkgrel.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm")
+source=("$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm")
 sha512sums=('ff3148ece36d47d835c06d59758571b3caaaed60fb9c8b72c271779cb7ce8db42cfbb7b70dd0b11e7470881b335a596b8473e583c389ca3482d8b3eb1a534e86')
 
 package() {
