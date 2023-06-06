@@ -1,5 +1,5 @@
 pkgname=pocketbase-bin
-pkgver=0.16.2
+pkgver=0.16.4
 pkgrel=1
 pkgdesc="Open source backend for your next project in 1 file"
 arch=('x86_64')
@@ -11,4 +11,4 @@ source=("${url}/releases/download/v${pkgver}/pocketbase_${pkgver}_linux_amd64.zi
 package() {
   install -Dm755 $srcdir/pocketbase  "${pkgdir}/usr/bin/pocketbase"
 }
-sha256sums=('0969d9f646979a4a71d7608663827e76dcc5a24f0b32994d85266b2465576397')
+sha256sums=('6c4fa8faab04de27f617970111a88a6f4309cdb510282590c9ff90cc8227368a')
