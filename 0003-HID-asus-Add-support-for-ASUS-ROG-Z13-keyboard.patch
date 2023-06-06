@@ -1,7 +1,7 @@
-From f92c356bbd162c710bd7ee8cbc81b8d0a7cc7bb0 Mon Sep 17 00:00:00 2001
+From a3457e1c57736904ea4a389d1beb852ef8d7169e Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Mon, 24 Apr 2023 11:16:24 +1200
-Subject: [PATCH 1/7] HID: asus: Add support for ASUS ROG Z13 keyboard
+Subject: [PATCH 03/11] HID: asus: Add support for ASUS ROG Z13 keyboard
 
 Add support for the ROG Z13 keyboard. This is a variant of the last
 few ASUS ROG keyboards and has much of the same functionality.
@@ -13,10 +13,10 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 4 insertions(+)
 
 diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
-index d1094bb1aa42..ac93f987d822 100644
+index 01a27579ec02..46ecc7dfb2b0 100644
 --- a/drivers/hid/hid-asus.c
 +++ b/drivers/hid/hid-asus.c
-@@ -1267,6 +1267,9 @@ static const struct hid_device_id asus_devices[] = {
+@@ -1268,6 +1268,9 @@ static const struct hid_device_id asus_devices[] = {
  	{ HID_USB_DEVICE(USB_VENDOR_ID_ASUSTEK,
  	    USB_DEVICE_ID_ASUSTEK_ROG_NKEY_KEYBOARD2),
  	  QUIRK_USE_KBD_BACKLIGHT | QUIRK_ROG_NKEY_KEYBOARD },
@@ -27,7 +27,7 @@ index d1094bb1aa42..ac93f987d822 100644
  	    USB_DEVICE_ID_ASUSTEK_ROG_CLAYMORE_II_KEYBOARD),
  	  QUIRK_ROG_CLAYMORE_II_KEYBOARD },
 diff --git a/drivers/hid/hid-ids.h b/drivers/hid/hid-ids.h
-index c2e9b6d1fd7d..513290a2e91c 100644
+index d79e946acdcb..25f26375815b 100644
 --- a/drivers/hid/hid-ids.h
 +++ b/drivers/hid/hid-ids.h
 @@ -207,6 +207,7 @@
@@ -39,5 +39,5 @@ index c2e9b6d1fd7d..513290a2e91c 100644
  #define USB_DEVICE_ID_ASUSTEK_FX503VD_KEYBOARD	0x1869
  
 -- 
-2.40.0
+2.40.1
 

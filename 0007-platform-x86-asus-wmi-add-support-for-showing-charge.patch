@@ -1,0 +1,130 @@
+From 7fb84ee268c5f40219ae694845b7a956a68ca2d2 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 4 Jun 2023 18:48:11 +1200
+Subject: [PATCH 07/11] platform/x86: asus-wmi: add support for showing charger
+ mode
+
+Expose another WMI method in sysfs platform for showing what charging
+mode the laptop is currently using.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ .../ABI/testing/sysfs-platform-asus-wmi       | 10 +++++++
+ drivers/platform/x86/asus-wmi.c               | 27 ++++++++++++++++---
+ include/linux/platform_data/x86/asus-wmi.h    |  3 +++
+ 3 files changed, 36 insertions(+), 4 deletions(-)
+
+diff --git a/Documentation/ABI/testing/sysfs-platform-asus-wmi b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+index a77a004a1baa..eb29e3023c7b 100644
+--- a/Documentation/ABI/testing/sysfs-platform-asus-wmi
++++ b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+@@ -98,3 +98,13 @@ Description:
+ 		Enable an LCD response-time boost to reduce or remove ghosting:
+ 			* 0 - Disable,
+ 			* 1 - Enable
++
++What:		/sys/devices/platform/<platform>/charge_mode
++Date:		Jun 2023
++KernelVersion:	6.5
++Contact:	"Luke Jones" <luke@ljones.dev>
++Description:
++		Get the current charging mode being used:
++			* 1 - Barrel connected charger,
++			* 2 - USB-C charging
++			* 3 - Both connected, barrel used for charging
+\ No newline at end of file
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 5edf9ece51dc..fd1ce1650187 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -239,6 +239,7 @@ struct asus_wmi {
+ 	u8 fan_boost_mode_mask;
+ 	u8 fan_boost_mode;
+ 
++	bool charge_mode_available;
+ 	bool egpu_enable_available;
+ 	bool dgpu_disable_available;
+ 	bool gpu_mux_mode_available;
+@@ -588,6 +589,22 @@ static void asus_wmi_tablet_mode_get_state(struct asus_wmi *asus)
+ 		asus_wmi_tablet_sw_report(asus, result);
+ }
+ 
++/* Charging mode, 1=Barrel, 2=USB ******************************************/
++static ssize_t charge_mode_show(struct device *dev,
++				   struct device_attribute *attr, char *buf)
++{
++	struct asus_wmi *asus = dev_get_drvdata(dev);
++	int result, value;
++
++	result = asus_wmi_get_devstate(asus, ASUS_WMI_DEVID_CHARGE_MODE, &value);
++	if (result < 0)
++		return result;
++
++	return sysfs_emit(buf, "%d\n", value & 0xff);
++}
++
++static DEVICE_ATTR_RO(charge_mode);
++
+ /* dGPU ********************************************************************/
+ static ssize_t dgpu_disable_show(struct device *dev,
+ 				   struct device_attribute *attr, char *buf)
+@@ -3286,9 +3303,7 @@ static int asus_screenpad_init(struct asus_wmi *asus)
+ 	int power, brightness;
+ 
+ 	power = read_screenpad_backlight_power(asus);
+-	if (power == -ENODEV)
+-		power = FB_BLANK_UNBLANK;
+-	else if (power < 0)
++	if (power < 0)
+ 		return power;
+ 
+ 	memset(&props, 0, sizeof(struct backlight_properties));
+@@ -3583,6 +3598,7 @@ static struct attribute *platform_attributes[] = {
+ 	&dev_attr_camera.attr,
+ 	&dev_attr_cardr.attr,
+ 	&dev_attr_touchpad.attr,
++	&dev_attr_charge_mode.attr,
+ 	&dev_attr_egpu_enable.attr,
+ 	&dev_attr_dgpu_disable.attr,
+ 	&dev_attr_gpu_mux_mode.attr,
+@@ -3612,6 +3628,8 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+ 		devid = ASUS_WMI_DEVID_LID_RESUME;
+ 	else if (attr == &dev_attr_als_enable.attr)
+ 		devid = ASUS_WMI_DEVID_ALS_ENABLE;
++	else if (attr == &dev_attr_charge_mode.attr)
++		ok = asus->charge_mode_available;
+ 	else if (attr == &dev_attr_egpu_enable.attr)
+ 		ok = asus->egpu_enable_available;
+ 	else if (attr == &dev_attr_dgpu_disable.attr)
+@@ -3878,6 +3896,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 	if (err)
+ 		goto fail_platform;
+ 
++	asus->charge_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_CHARGE_MODE);
+ 	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
+ 	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
+ 	asus->gpu_mux_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX);
+@@ -4174,4 +4193,4 @@ static void __exit asus_wmi_exit(void)
+ }
+ 
+ module_init(asus_wmi_init);
+-module_exit(asus_wmi_exit);
++module_exit(asus_wmi_exit);
+\ No newline at end of file
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index a2d94adb5c80..b57f3591676a 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -99,6 +99,9 @@
+ /* Keyboard dock */
+ #define ASUS_WMI_DEVID_KBD_DOCK		0x00120063
+ 
++/* Charging mode - 1=Barrel, 2=USB */
++#define ASUS_WMI_DEVID_CHARGE_MODE	0x0012006C
++
+ /* dgpu on/off */
+ #define ASUS_WMI_DEVID_EGPU		0x00090019
+ 
+-- 
+2.40.1
+

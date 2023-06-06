@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.3.5.arch1
+pkgver=6.3.6.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -36,7 +36,6 @@ source=(
 
   0001-acpi-proc-idle-skip-dummy-wait.patch
 
-  0019-HID-amd_sfh-Add-keyguard-for-ASUS-ROG-X13-tablet.patch
   0001-platform-x86-asus-wmi-Add-safety-checks-to-dgpu-egpu.patch
   
   0027-mt76_-mt7921_-Disable-powersave-features-by-default.patch
@@ -45,19 +44,25 @@ source=(
   0001-constgran-v2.patch
   0001-linux6.1.y-bore2.2.1.patch
 
-  0028-patch01_gu604_alc285_fixes.patch
   0029-patch02_gu604v_wmi_keys.patch
 
-  0031-FX516PE-rgb-mode.patch
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
+  0035-Add_quirk_for_polling_the_KBD_port.patch
+  0036-Block_a_rogue_device_on_ASUS_TUF_A16.patch
 
-  0001-HID-asus-Add-support-for-ASUS-ROG-Z13-keyboard.patch
-  0002-HID-asus-add-keycodes-for-0x6a-0x4b-and-0xc7.patch
-  0003-HID-asus-reformat-the-hotkey-mapping-block.patch
-#  0004-ALSA-hda-realtek-Add-quirk-for-2nd-ASUS-GU603.patch
-  0005-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
-  0006-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
-  0007-platform-x86-asus-wmi-add-support-for-ASUS-screenpad.patch
+  0001-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
+  0001-ALSA-hda-realtek-gu604.patch
+  0001-HID-amd_sfh-Add-support-for-tablet-mode-switch-senso.patch
+  0002-ACPI-resource-Skip-IRQ-override-on-ASUS-TUF-Gaming-A.patch
+  0003-HID-asus-Add-support-for-ASUS-ROG-Z13-keyboard.patch
+  0004-HID-asus-add-keycodes-for-0x6a-0x4b-and-0xc7.patch
+  0005-HID-asus-reformat-the-hotkey-mapping-block.patch
+  0006-platform-x86-asus-wmi-add-support-for-ASUS-screenpad.patch
+  0007-platform-x86-asus-wmi-add-support-for-showing-charge.patch
+  0008-platform-x86-asus-wmi-add-support-for-showing-middle.patch
+  0009-platform-x86-asus-wmi-support-middle-fan-custom-curv.patch
+  0010-platform-x86-asus-wmi-add-WMI-method-to-show-if-egpu.patch
+  0011-platform-x86-asus-wmi-support-setting-mini-LED-mode.patch
 
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"

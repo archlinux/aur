@@ -1,7 +1,8 @@
-From 816e2a658a7714a7870b00923318fa064b466194 Mon Sep 17 00:00:00 2001
+From cfadb2992e771f8b5bdbdbfe6c2fdd2fd964de1d Mon Sep 17 00:00:00 2001
 From: hqp1203 <hqp1203hqp@163.com>
 Date: Tue, 14 Mar 2023 22:30:57 +0800
-Subject: [PATCH 5/7] ACPI: resource: Skip IRQ override on ASUS TUF Gaming A15
+Subject: [PATCH 01/11] ACPI: resource: Skip IRQ override on ASUS TUF Gaming
+ A15
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -23,7 +24,7 @@ Signed-off-by: hqp1203 <hqp1203hqp@163.com>
  1 file changed, 7 insertions(+)
 
 diff --git a/drivers/acpi/resource.c b/drivers/acpi/resource.c
-index e8492b3a393a..77b638974273 100644
+index 0800a9d77558..cefc3b24a845 100644
 --- a/drivers/acpi/resource.c
 +++ b/drivers/acpi/resource.c
 @@ -467,6 +467,13 @@ static const struct dmi_system_id asus_laptop[] = {
@@ -41,5 +42,5 @@ index e8492b3a393a..77b638974273 100644
  };
  
 -- 
-2.40.0
+2.40.1
 

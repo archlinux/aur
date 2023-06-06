@@ -1,0 +1,114 @@
+From 2fb35e005be26d242d6a3e94db7fbcbaed9aa0e9 Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Sun, 4 Jun 2023 20:01:57 +1200
+Subject: [PATCH 10/11] platform/x86: asus-wmi: add WMI method to show if egpu
+ connected
+
+Exposes the WMI method which tells if the eGPU is properly connected
+on the devices that support it.
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ .../ABI/testing/sysfs-platform-asus-wmi       | 11 +++++++++-
+ drivers/platform/x86/asus-wmi.c               | 21 +++++++++++++++++++
+ include/linux/platform_data/x86/asus-wmi.h    |  4 +++-
+ 3 files changed, 34 insertions(+), 2 deletions(-)
+
+diff --git a/Documentation/ABI/testing/sysfs-platform-asus-wmi b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+index eb29e3023c7b..878daf7c2036 100644
+--- a/Documentation/ABI/testing/sysfs-platform-asus-wmi
++++ b/Documentation/ABI/testing/sysfs-platform-asus-wmi
+@@ -107,4 +107,13 @@ Description:
+ 		Get the current charging mode being used:
+ 			* 1 - Barrel connected charger,
+ 			* 2 - USB-C charging
+-			* 3 - Both connected, barrel used for charging
+\ No newline at end of file
++			* 3 - Both connected, barrel used for charging
++
++What:		/sys/devices/platform/<platform>/egpu_connected
++Date:		Jun 2023
++KernelVersion:	6.5
++Contact:	"Luke Jones" <luke@ljones.dev>
++Description:
++		Show if the egpu (XG Mobile) is correctly connected:
++			* 0 - False,
++			* 1 - True
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index d63d0111cb8b..26155bdc48da 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -245,6 +245,7 @@ struct asus_wmi {
+ 
+ 	bool charge_mode_available;
+ 	bool egpu_enable_available;
++	bool egpu_connected_available;
+ 	bool dgpu_disable_available;
+ 	bool gpu_mux_mode_available;
+ 
+@@ -711,6 +712,22 @@ static ssize_t egpu_enable_store(struct device *dev,
+ }
+ static DEVICE_ATTR_RW(egpu_enable);
+ 
++/* Is eGPU connected? *********************************************************/
++static ssize_t egpu_connected_show(struct device *dev,
++				   struct device_attribute *attr, char *buf)
++{
++	struct asus_wmi *asus = dev_get_drvdata(dev);
++	int result;
++
++	result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_EGPU_CONNECTED);
++	if (result < 0)
++		return result;
++
++	return sysfs_emit(buf, "%d\n", result);
++}
++
++static DEVICE_ATTR_RO(egpu_connected);
++
+ /* gpu mux switch *************************************************************/
+ static ssize_t gpu_mux_mode_show(struct device *dev,
+ 				 struct device_attribute *attr, char *buf)
+@@ -3762,6 +3779,7 @@ static struct attribute *platform_attributes[] = {
+ 	&dev_attr_touchpad.attr,
+ 	&dev_attr_charge_mode.attr,
+ 	&dev_attr_egpu_enable.attr,
++	&dev_attr_egpu_connected.attr,
+ 	&dev_attr_dgpu_disable.attr,
+ 	&dev_attr_gpu_mux_mode.attr,
+ 	&dev_attr_lid_resume.attr,
+@@ -3794,6 +3812,8 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+ 		ok = asus->charge_mode_available;
+ 	else if (attr == &dev_attr_egpu_enable.attr)
+ 		ok = asus->egpu_enable_available;
++	else if (attr == &dev_attr_egpu_connected.attr)
++		ok = asus->egpu_connected_available;
+ 	else if (attr == &dev_attr_dgpu_disable.attr)
+ 		ok = asus->dgpu_disable_available;
+ 	else if (attr == &dev_attr_gpu_mux_mode.attr)
+@@ -4060,6 +4080,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+ 
+ 	asus->charge_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_CHARGE_MODE);
+ 	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
++	asus->egpu_connected_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU_CONNECTED);
+ 	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
+ 	asus->gpu_mux_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX);
+ 	asus->kbd_rgb_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE);
+diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
+index dc5e8038d88b..bfc284fe4d68 100644
+--- a/include/linux/platform_data/x86/asus-wmi.h
++++ b/include/linux/platform_data/x86/asus-wmi.h
+@@ -104,7 +104,9 @@
+ /* Charging mode - 1=Barrel, 2=USB */
+ #define ASUS_WMI_DEVID_CHARGE_MODE	0x0012006C
+ 
+-/* dgpu on/off */
++/* epu is connected? 1 == true */
++#define ASUS_WMI_DEVID_EGPU_CONNECTED	0x00090018
++/* egpu on/off */
+ #define ASUS_WMI_DEVID_EGPU		0x00090019
+ 
+ /* dgpu on/off */
+-- 
+2.40.1
+

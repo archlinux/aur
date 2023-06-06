@@ -1,7 +1,7 @@
-From 14ee963e3c58cccf21e3e9eb7b9b89e13f41009b Mon Sep 17 00:00:00 2001
+From e8f498b61017b18bb7229c63be13b4792f2ba8eb Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Tue, 2 May 2023 11:20:27 +1200
-Subject: [PATCH 3/7] HID: asus: reformat the hotkey mapping block
+Subject: [PATCH 05/11] HID: asus: reformat the hotkey mapping block
 
 Older formatting of this block was beginning to get somewhat cluttered.
 Condensing the block and putting comments to the side makes it easier
@@ -13,10 +13,10 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  1 file changed, 12 insertions(+), 32 deletions(-)
 
 diff --git a/drivers/hid/hid-asus.c b/drivers/hid/hid-asus.c
-index 918d0d05ca88..2bc14e076739 100644
+index ddfd37e67c3c..fd61dba88233 100644
 --- a/drivers/hid/hid-asus.c
 +++ b/drivers/hid/hid-asus.c
-@@ -885,38 +885,18 @@ static int asus_input_mapping(struct hid_device *hdev,
+@@ -886,38 +886,18 @@ static int asus_input_mapping(struct hid_device *hdev,
  		case 0xc5: asus_map_key_clear(KEY_KBDILLUMDOWN);		break;
  		case 0xc7: asus_map_key_clear(KEY_KBDILLUMTOGGLE);	break;
  
@@ -66,7 +66,7 @@ index 918d0d05ca88..2bc14e076739 100644
  
  		default:
  			/* ASUS lazily declares 256 usages, ignore the rest,
-@@ -1319,4 +1299,4 @@ static struct hid_driver asus_driver = {
+@@ -1320,4 +1300,4 @@ static struct hid_driver asus_driver = {
  };
  module_hid_driver(asus_driver);
  
@@ -74,5 +74,5 @@ index 918d0d05ca88..2bc14e076739 100644
 +MODULE_LICENSE("GPL");
 \ No newline at end of file
 -- 
-2.40.0
+2.40.1
 

@@ -1,0 +1,177 @@
+
+
+It seems like there are some devices in the ASUS TUF A16 laptops that
+just don't send any keyboard interrupts until you read from the KBD port.
+
+Signed-off-by: Friedrich Vock <friedrich.vock@gmx.de>
+---
+ drivers/input/serio/i8042-acpipnpio.h | 30 +++++++++++++++--
+ drivers/input/serio/i8042.c           | 47 ++++++++++++++++++++++-----
+ drivers/input/serio/i8042.h           |  2 +-
+ 3 files changed, 67 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/input/serio/i8042-acpipnpio.h b/drivers/input/serio/i8042-acpipnpio.h
+index 028e45bd050b..be2e72aaa658 100644
+--- a/drivers/input/serio/i8042-acpipnpio.h
++++ b/drivers/input/serio/i8042-acpipnpio.h
+@@ -83,6 +83,7 @@ static inline void i8042_write_command(int val)
+ #define SERIO_QUIRK_KBDRESET		BIT(12)
+ #define SERIO_QUIRK_DRITEK		BIT(13)
+ #define SERIO_QUIRK_NOPNP		BIT(14)
++#define SERIO_QUIRK_POLL_KBD            BIT(15)
+
+ /* Quirk table for different mainboards. Options similar or identical to i8042
+  * module parameters.
+@@ -99,6 +100,26 @@ static const struct dmi_system_id i8042_dmi_quirk_table[] __initconst = {
+ 		},
+ 		.driver_data = (void *)(SERIO_QUIRK_NOMUX)
+ 	},
++	/* Some laptops seem to not trigger any keyboard interrupts at all,
++	 * even when there is data available. On these devices, manually
++	 * polling the keyboard port is required.
++	 */
++	{
++		/* ASUS TUF Gaming A16 with Ryzen 7 7735HS */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "FA617NS"),
++		},
++		.driver_data = (void *)(SERIO_QUIRK_POLL_KBD)
++	},
++	{
++		/* ASUS TUF Gaming A16 with Ryzen 9 7940HS */
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "FA617XS"),
++		},
++		.driver_data = (void *)(SERIO_QUIRK_POLL_KBD)
++	},
+ 	{
+ 		.matches = {
+ 			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
+@@ -1634,6 +1655,8 @@ static void __init i8042_check_quirks(void)
+ 	if (quirks & SERIO_QUIRK_NOPNP)
+ 		i8042_nopnp = true;
+ #endif
++	if (quirks & SERIO_QUIRK_POLL_KBD)
++		i8042_poll_kbd = true;
+ }
+ #else
+ static inline void i8042_check_quirks(void) {}
+@@ -1667,7 +1690,7 @@ static int __init i8042_platform_init(void)
+
+ 	i8042_check_quirks();
+
+-	pr_debug("Active quirks (empty means none):%s%s%s%s%s%s%s%s%s%s%s%s%s\n",
++	pr_debug("Active quirks (empty means none):%s%s%s%s%s%s%s%s%s%s%s%s%s%s\n",
+ 		i8042_nokbd ? " nokbd" : "",
+ 		i8042_noaux ? " noaux" : "",
+ 		i8042_nomux ? " nomux" : "",
+@@ -1687,10 +1710,11 @@ static int __init i8042_platform_init(void)
+ 		"",
+ #endif
+ #ifdef CONFIG_PNP
+-		i8042_nopnp ? " nopnp" : "");
++		i8042_nopnp ? " nopnp" : "",
+ #else
+-		"");
++		"",
+ #endif
++		i8042_poll_kbd ? "poll_kbd" : "");
+
+ 	retval = i8042_pnp_init();
+ 	if (retval)
+diff --git a/drivers/input/serio/i8042.c b/drivers/input/serio/i8042.c
+index 6dac7c1853a5..7212263d3a41 100644
+--- a/drivers/input/serio/i8042.c
++++ b/drivers/input/serio/i8042.c
+@@ -115,6 +115,10 @@ module_param_named(nopnp, i8042_nopnp, bool, 0);
+ MODULE_PARM_DESC(nopnp, "Do not use PNP to detect controller settings");
+ #endif
+
++static bool i8042_poll_kbd;
++module_param_named(poll_kbd, i8042_poll_kbd, bool, 0);
++MODULE_PARM_DESC(poll_kbd, "Continuously poll the KBD port instead of relying on interrupts");
++
+ #define DEBUG
+ #ifdef DEBUG
+ static bool i8042_debug;
+@@ -178,6 +182,24 @@ static irqreturn_t i8042_interrupt(int irq, void *dev_id);
+ static bool (*i8042_platform_filter)(unsigned char data, unsigned char str,
+ 				     struct serio *serio);
+
++#define POLL_TIME 1
++static void i8042_poll_func(struct timer_list *timer)
++{
++	unsigned char status;
++	unsigned long flags;
++
++	do {
++		spin_lock_irqsave(&i8042_lock, flags);
++		status = i8042_read_status();
++		spin_unlock_irqrestore(&i8042_lock, flags);
++		if (status & I8042_STR_OBF)
++			i8042_interrupt(0, NULL);
++	} while (status & I8042_STR_OBF);
++	mod_timer(timer, jiffies + msecs_to_jiffies(POLL_TIME));
++}
++
++DEFINE_TIMER(poll_timer, i8042_poll_func);
++
+ void i8042_lock_chip(void)
+ {
+ 	mutex_lock(&i8042_mutex);
+@@ -1437,13 +1459,15 @@ static void i8042_unregister_ports(void)
+ 	}
+ }
+
++
+ static void i8042_free_irqs(void)
+ {
+ 	if (i8042_aux_irq_registered)
+ 		free_irq(I8042_AUX_IRQ, i8042_platform_device);
+-	if (i8042_kbd_irq_registered)
++	if (i8042_poll_kbd)
++		del_timer(&poll_timer);
++	else if (i8042_kbd_irq_registered)
+ 		free_irq(I8042_KBD_IRQ, i8042_platform_device);
+-
+ 	i8042_aux_irq_registered = i8042_kbd_irq_registered = false;
+ }
+
+@@ -1497,10 +1521,14 @@ static int i8042_setup_kbd(void)
+ 	if (error)
+ 		return error;
+
+-	error = request_irq(I8042_KBD_IRQ, i8042_interrupt, IRQF_SHARED,
+-			    "i8042", i8042_platform_device);
+-	if (error)
+-		goto err_free_port;
++	if (i8042_poll_kbd)
++		mod_timer(&poll_timer, msecs_to_jiffies(POLL_TIME));
++	else {
++		error = request_irq(I8042_KBD_IRQ, i8042_interrupt, IRQF_SHARED,
++				    "i8042", i8042_platform_device);
++		if (error)
++			goto err_free_port;
++	}
+
+ 	error = i8042_enable_kbd_port();
+ 	if (error)
+@@ -1510,8 +1538,11 @@ static int i8042_setup_kbd(void)
+ 	return 0;
+
+  err_free_irq:
+-	free_irq(I8042_KBD_IRQ, i8042_platform_device);
+- err_free_port:
++	if (i8042_poll_kbd)
++		del_timer(&poll_timer);
++	else
++		free_irq(I8042_KBD_IRQ, i8042_platform_device);
++err_free_port:
+ 	i8042_free_kbd_port();
+ 	return error;
+ }
+--
+2.40.1
+
