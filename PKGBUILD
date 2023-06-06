@@ -6,7 +6,7 @@
 _reponame=tagparser
 pkgname=mingw-w64-tagparser
 _name=${pkgname#mingw-w64-}
-pkgver=11.6.0
+pkgver=12.0.0
 pkgrel=1
 arch=('any')
 pkgdesc='C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags (mingw-w64)'
@@ -17,7 +17,7 @@ checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine' 'mingw-w64-openssl')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja' 'iso-codes')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('298ff927e14860e97e5b75057ff50fe64e0e0521ca7253e8624be6db6ac77261')
+sha256sums=('94ded89093beb67d95816c4ba700cb50f64b4f4fdc7748ccfbb61946246b635e')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
@@ -55,6 +55,7 @@ build() {
         -DCONFIGURATION_NAME:STRING="${_cfg}" \
         -DCONFIGURATION_PACKAGE_SUFFIX:STRING="-${_cfg}" \
         -DENABLE_TARGETS_FOR_MINGW64_CROSS_PACKAGING:BOOL=ON \
+        -DVERSIONED_MINGW_LIBRARIES:BOOL=ON \
         ${_config_flags[$_cfg]} \
         ../
       ninja
