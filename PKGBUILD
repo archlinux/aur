@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=downzemall
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="A mass download manager that helps you to select, organize, prioritize and run your downloads in parallel."
 arch=('x86_64')
@@ -8,11 +8,9 @@ url="https://setvisible.github.io/DownZemAll"
 license=('LGPL3' 'CC BY-SA 3.0')
 depends=('libtorrent-rasterbar' 'qt6-base' 'yt-dlp')
 makedepends=('boost' 'cmake' 'qt6-tools')
-optdepends=('libnotify: desktop notifications'
-            'libappindicator-gtk3: tray icon')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/setvisible/DownZemAll/archive/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('a293392f743d6b4e240f5ee262f13cac377b2741d66009c72b88b4c0b170b99a'
+sha256sums=('a5f1eefdbc83f7f3e1e72b4c6102829e511331ef96c466bfa23cb5bba543bb2f'
             '3cb8f2eefbd9f04dd4b3a706058d8ab82c42514db81fbfbdf213fc833ca01eff')
 
 prepare() {
