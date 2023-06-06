@@ -7,15 +7,15 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9558.f9ab0b304
-pkgrel=3
+pkgver=r9594.54c499ed5
+pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
 options=("!lto") #Use LTO, free performance
 license=('GPL2')
 depends=('ffmpeg' 'speexdsp' 'boost-libs' 'mbedtls' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'libfdk-aac' 'sndio')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt6-tools' 'qt6-multimedia' 'gcc')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt6-tools' 'qt6-multimedia' 'gcc' 'glslang')
 source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
@@ -40,6 +40,11 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "git+https://github.com/weidai11/cryptopp.git"
         "git+https://github.com/septag/dds-ktx.git"
         "git+https://github.com/kcat/openal-soft.git"
+        "git+https://github.com/KhronosGroup/glslang.git"
+        "vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
+        "vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
+        "git+https://github.com/KhronosGroup/SPIRV-Headers.git"
+        "git+https://github.com/yuzu-emu/sirit.git"
         # cubeb's submodule
         "git+https://github.com/google/googletest"
         "git+https://github.com/arsenm/sanitizers-cmake"
@@ -47,6 +52,11 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "zycore::git+https://github.com/zyantific/zycore-c"
         )
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -81,11 +91,10 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgbase"
-    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,sdl2,lodepng,libusb,inih};
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,sdl2,lodepng,libusb,inih,openal-soft,glslang,vma,vulkan-headers,sirit};
     do
     git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule}"
     done
-    git config --file=.gitmodules submodule.externals/openal-soft.url "$srcdir/openal-soft"
     git -c protocol.file.allow=always submodule update --init
 
 
@@ -94,9 +103,12 @@ prepare() {
     git config --file=.gitmodules submodule."cmake/sanitizers-cmake".url "$srcdir/sanitizers-cmake"
     git -c protocol.file.allow=always submodule update --init
 
-    cd "$srcdir/$_pkgbase/externals/dynarmic/externals/zydis"
-    git config --file=.gitmodules submodule.dependencies/zycore.url "$srcdir/zycore"
+
+    cd "$srcdir/$_pkgbase/externals/sirit/"
+    git config --file=.gitmodules submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
     git -c protocol.file.allow=always submodule update --init
+
+
 }
 
 build() {
