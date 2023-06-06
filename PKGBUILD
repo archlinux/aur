@@ -4,7 +4,7 @@
 pkgname=python-ginga
 _pyname=${pkgname#python-}
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('any')
 url="https://ejeschke.github.io/ginga"
@@ -65,7 +65,7 @@ package() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/applications/${pkgname}" ${_pyname}.desktop
-    install -d -m644 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -d -m755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -m644 ${_pyname}/icons/${_pyname}.svg \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pyname}.svg"
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt licenses/*
