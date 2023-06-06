@@ -1,10 +1,11 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=portage
 pkgver=3.0.48.1
-pkgrel=1
+pkgrel=2
 pkgdesc="package management and distribution system for Gentoo"
 arch=(any)
 url=https://wiki.gentoo.org/wiki/Project:Portage
+depends=(python)
 makedepends=(python-installer)
 license=(GPL2)
 _py=py3
