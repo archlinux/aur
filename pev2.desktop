@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=PEV2 (Postgres Explain Visualizer 2)
+Comment=Show a graphical vizualization of a PostgreSQL execution plan
+Exec=/usr/bin/pev2
+Terminal=false
+Categories=Development
