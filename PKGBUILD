@@ -1,31 +1,21 @@
-# Maintainer: Cédric Schieli <cschieli at gmail dot com>
+# Maintainer: tarball <bootctl@gmail.com>
+# Contributor: Cédric Schieli <cschieli at gmail dot com>
+
 pkgname=klibc
-pkgver=2.0.6
+pkgver=2.0.12
 pkgrel=1
 pkgdesc="A minimalistic libc subset for use with initramfs"
-arch=(x86_64)
+arch=(x86_64 aarch64 i686)
 url="https://mirrors.kernel.org/pub/linux/libs/klibc/"
 license=('GPL')
-groups=()
 depends=(perl)
 makedepends=(linux-api-headers)
-provides=()
-conflicts=()
-replaces=()
-backup=()
 options=('staticlibs')
-install=
-source=(
-	"https://mirrors.kernel.org/pub/linux/libs/klibc/2.0/${pkgname}-${pkgver}.tar.xz"
-	"fix_missing_include_in_sys_mman_h.patch::https://git.kernel.org/pub/scm/libs/klibc/klibc.git/patch/?id=d4853d030639cf3542ae39129c18b654d8d4f020"
-)
-noextract=()
-md5sums=('d01e2f8fa8a616c8523787ea4c634e8b'
-         '8d7744591b5ba254fe6d4ef324a5383e')
+source=("https://mirrors.kernel.org/pub/linux/libs/klibc/2.0/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('71f816a0d3abe3aba8b46319ae5ca147e7a7a38401b3f5e262025f4dc08c475d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/fix_missing_include_in_sys_mman_h.patch"
 	mkdir -p uapi/include
 	ln -sf /usr/include/{asm,asm-generic,linux} uapi/include/
 }
