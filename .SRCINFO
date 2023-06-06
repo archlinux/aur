@@ -1,6 +1,6 @@
 pkgbase = yuzu-git
 	pkgdesc = An experimental open-source emulator for the Nintendo Switch
-	pkgver = r23740.e9069dfe7
+	pkgver = r24275.238e46ec9
 	pkgrel = 1
 	url = https://github.com/yuzu-emu/yuzu
 	arch = i686
@@ -39,7 +39,7 @@ pkgbase = yuzu-git
 	source = yuzu::git+https://github.com/yuzu-emu/yuzu
 	source = git+https://github.com/lsalzman/enet.git
 	source = git+https://github.com/benhoyt/inih.git
-	source = git+https://github.com/kinetiknz/cubeb.git
+	source = git+https://github.com/mozilla/cubeb.git
 	source = git+https://github.com/MerryMage/dynarmic.git
 	source = git+https://github.com/libusb/libusb.git
 	source = git+https://github.com/yuzu-emu/discord-rpc.git
