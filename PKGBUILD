@@ -1,13 +1,13 @@
 # Maintainer: Andy Brennan <andy at beiwy dot com>
 pkgname=apex-tux-git
-pkgver=r25.17f41f5
+pkgver=r27.565966a
 pkgrel=1
 pkgdesc="Support for Steelseries Apex keyboard OLED screens"
 arch=('x86_64')
 url="https://github.com/not-jan/apex-tux"
 license=('Unlicense')
 groups=()
-depends=('libstatgrab' 'libusb' 'dbus')
+depends=('libusb' 'dbus')
 makedepends=('git' 'cargo-nightly')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -16,7 +16,7 @@ backup=("etc/${pkgname%-git}/settings.toml")
 options=()
 install=
 source=(
-  'git+https://github.com/brennana/apex-tux.git#branch=aur'
+  'git+https://github.com/not-jan/apex-tux.git'
   'settings.toml'
   '98-steelseries.rules'
   'apex-tux.service'

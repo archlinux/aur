@@ -1,19 +1,18 @@
 pkgbase = apex-tux-git
 	pkgdesc = Support for Steelseries Apex keyboard OLED screens
-	pkgver = r25.17f41f5
+	pkgver = r27.565966a
 	pkgrel = 1
 	url = https://github.com/not-jan/apex-tux
 	arch = x86_64
 	license = Unlicense
 	makedepends = git
 	makedepends = cargo-nightly
-	depends = libstatgrab
 	depends = libusb
 	depends = dbus
 	provides = apex-tux
 	conflicts = apex-tux
 	backup = etc/apex-tux/settings.toml
-	source = git+https://github.com/brennana/apex-tux.git#branch=aur
+	source = git+https://github.com/not-jan/apex-tux.git
 	source = settings.toml
 	source = 98-steelseries.rules
 	source = apex-tux.service
