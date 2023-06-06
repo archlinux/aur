@@ -4,7 +4,7 @@
 pkgname='perl-log-dispatchouli'
 _module='Log-Dispatchouli'
 _author='R/RJ/RJBS'
-pkgver='3.003'
+pkgver='3.004'
 pkgrel='1'
 pkgdesc='A simple wrapper around Log::Dispatch.'
 arch=('any')
@@ -29,7 +29,7 @@ checkdepends=(
 )
 url="https://metacpan.org/release/$_module"
 source=("https://cpan.metacpan.org/authors/id/$_author/$_module-$pkgver.tar.gz")
-sha256sums=('001e602793a263c40a51eab1f62e704753879c515f419dda02e70b188fbea69a')
+sha256sums=('1642fb9c49fdbec4a378b77106a2c0b32362771f59f90d78d02bf29c647f4b54')
 
 build() {
    (
