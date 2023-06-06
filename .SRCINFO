@@ -1,12 +1,14 @@
 pkgbase = python-pymorphy2
 	pkgdesc = Morphological analyzer (POS tagger + inflection engine) for Russian language.
 	pkgver = 0.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kmike/pymorphy2/
 	arch = any
 	license = MIT
 	license = license
-	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-pymorphy2_dicts<3.0
 	depends = python-pymorphy2_dicts>=2.4
 	depends = python-docopt>=0.6
