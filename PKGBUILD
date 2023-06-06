@@ -3,7 +3,7 @@
 _pkgname=idris2-lsp
 pkgname="$_pkgname-git"
 pkgver=latest
-pkgrel=2
+pkgrel=1
 epoch=
 pkgdesc='Language Server for Idris2'
 arch=('x86_64')
