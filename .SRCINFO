@@ -1,0 +1,11 @@
+pkgbase = cosmonium-bin
+	pkgdesc = 3D astronomy and space exploration program.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/cosmonium/cosmonium
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/cosmonium/cosmonium/releases/download/v0.3.0.dev581/cosmonium-0.3.0.dev581_manylinux2014_x86_64.tar.gz
+	sha256sums = ae51ac3c85f10bc925ad29d5fddf424515c23397c00abe5069511a04ecd4f767
+
+pkgname = cosmonium-bin
