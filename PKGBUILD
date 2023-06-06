@@ -1,15 +1,15 @@
 # Maintainer: Zoron <zoronlivingston@gmail.com>
 
 pkgname=wgshadertoy
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="A WGSL playground inspired by Shadertoy"
 arch=('any')
 url="https://github.com/fralonra/wgshadertoy"
 license=('MIT')
 makedepends=('rust')
 source=("https://github.com/fralonra/$pkgname/archive/v${pkgver}.tar.gz")
-md5sums=('1fd10b3b82ca219d2c38b8825ad16bf5')
+md5sums=('96aeded73f93b474480e9c7b12afd103')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -19,7 +19,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin/"
-  install -Dm644 extra/linux/WgShadertoy.desktop -t "$pkgdir/usr/share/applications/"
-  install -Dm644 extra/logo/$pkgname.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm755 target/release/$pkgname -t         "$pkgdir/usr/bin/"
+  install -Dm644 extra/linux/WgShadertoy.desktop -t "$pkgdir/usr/share/applications/io.github.fralonra.WgShadertoy.desktop"
+  install -Dm644 extra/logo/$pkgname.svg -t         "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.fralonra.WgShadertoy.svg"
 }
