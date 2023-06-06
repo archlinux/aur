@@ -1,6 +1,6 @@
 pkgbase = pyload-ng
 	pkgdesc = The free and open-source Download Manager written in pure Python
-	pkgver = 0.5.0b3.dev54
+	pkgver = 0.5.0b3.dev71
 	pkgrel = 1
 	url = https://pyload.net/
 	arch = any
@@ -19,12 +19,15 @@ pkgbase = pyload-ng
 	depends = python-cheroot
 	depends = python-setuptools
 	depends = python-certifi
+	depends = python-cachelib
 	optdepends = caffeine: For AntiStandby plugin
 	optdepends = python-beautifulsoup4: for XFileSharing plugin
 	optdepends = python-slixmpp: for XMPP plugin
 	optdepends = python-pillow: for some CAPTCHA stuff
 	optdepends = python-beaker: for some accounts
-	source = pyload-ng-0.5.0b3.dev54.tar.gz::https://files.pythonhosted.org/packages/source/p/pyload-ng/pyload-ng-0.5.0b3.dev54.tar.gz
-	sha256sums = ca08e932a4ff7395f71ddb2c605a5156599e018789cd2e5815a43feb5855d156
+	source = pyload-ng-0.5.0b3.dev71.tar.gz::https://files.pythonhosted.org/packages/source/p/pyload-ng/pyload-ng-0.5.0b3.dev71.tar.gz
+	source = patch.patch
+	sha256sums = eba844e6e149668c5680c4db54d49bd9af0f7845910fd8160107888c15754bc9
+	sha256sums = 37aa269f69c2114b3fbb8992f564a812639b2a7a228150f840ccbaad1985a59b
 
 pkgname = pyload-ng
