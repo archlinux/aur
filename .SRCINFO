@@ -1,0 +1,12 @@
+pkgbase = star-charter-git
+	pkgdesc = A command-line tool for producing vector-graphics charts of the night sky in SVG, PDF and PNG formats
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://github.com/dcf21/star-charter
+	arch = x86_64
+	license = GPL3
+	makedepends = python-numpy
+	source = git+https://github.com/dcf21/star-charter.git
+	sha1sums = SKIP
+
+pkgname = star-charter-git
