@@ -2,7 +2,7 @@
 pkgname=nerd-fonts-sf-mono
 pkgver=3.0.2
 pkgrel=1
-_fontver=10
+_fontver=11
 pkgdesc="Monospaced variant of San Francisco. Sourced directly from Apple, patched with the Nerd Fonts Patcher"
 arch=('any')
 url='https://developer.apple.com/fonts/'
