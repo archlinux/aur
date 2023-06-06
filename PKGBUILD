@@ -1,7 +1,7 @@
 # Maintainer: xuhcc <xuhcc at cryptolab dot net>
 
 pkgname=mermaid-cli
-pkgver=10.1.0
+pkgver=10.2.2
 pkgrel=1
 pkgdesc='Generation of diagram and flowchart from text in a similar manner as markdown (CLI)'
 arch=('any')
@@ -13,7 +13,7 @@ _npmscope=@mermaid-js
 _npmname=mermaid-cli
 _npmver=$pkgver
 source=("http://registry.npmjs.org/${_npmscope}/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-sha256sums=('743d724d1d66a40b3c278495b11cf0645dd54b7a12897f7a0f39d5b4ce4305d5')
+sha256sums=('40964f35b8c065cb9665806a267efdc1fd22a1dcf9f04dda4c0e5e919965e5a2')
 noextract=("${_npmname}-${_npmver}.tgz")
 
 package() {
