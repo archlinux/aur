@@ -10,10 +10,10 @@ pkgdesc="The plugin for the extension script for whistle"
 arch=(any)
 url="https://github.com/whistle-plugins/whistle.script"
 license=(MIT)
-depends=('nodejs' 'npm' 'nodejs-whistle')
+depends=('nodejs-whistle')
 optdepends=()
-source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
-noextract=($_npmname-$_npmver.tgz)
+source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
+noextract=(${_npmname}-${_npmver}.tgz)
 sha1sums=('90d3520aefce5366390b2501c3a7faf51313cf9c')
 
 package() {
