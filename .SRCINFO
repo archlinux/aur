@@ -1,6 +1,6 @@
 pkgbase = hypnotix
 	pkgdesc = An IPTV streaming application with support for live TV, movies and series.
-	pkgver = 3.2
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://github.com/linuxmint/hypnotix
 	arch = any
@@ -10,13 +10,13 @@ pkgbase = hypnotix
 	depends = mpv
 	depends = python-cairo
 	depends = python-gobject
-	depends = python-imdbpy
+	depends = python-cinemagoer
 	depends = python-requests
 	depends = python-setproctitle
 	depends = python-unidecode
 	depends = xapp
 	optdepends = yt-dlp: YouTube channel support
-	source = hypnotix-3.2.tar.gz::https://github.com/linuxmint/hypnotix/archive/refs/tags/3.2.tar.gz
-	sha256sums = c69906318dfbfd10df055d085afbe271f2e89372faa4c47a649b4827b3a7903c
+	source = hypnotix-3.3.tar.gz::https://github.com/linuxmint/hypnotix/archive/refs/tags/3.3.tar.gz
+	sha256sums = 7c4a875d0dd29f07976abc7cc9574c9af917effe9733fb668dc7ad939dc0f2ac
 
 pkgname = hypnotix
