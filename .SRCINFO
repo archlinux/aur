@@ -1,8 +1,8 @@
-pkgbase = moc-fluidsynth-decoder-plugin
+pkgbase = moc-fluidsynth-plugin
 	pkgdesc = Decoder plugin for playing MIDI files with FluidSynth using the MOC (Music on Console) player.
 	pkgver = 0.0.4
 	pkgrel = 1
-	url = https://github.com/joanbm/moc-fluidsynth-decoder-plugin
+	url = https://github.com/joanbm/moc-fluidsynth-plugin
 	install = install.sh
 	arch = x86_64
 	license = GPL2
@@ -10,7 +10,7 @@ pkgbase = moc-fluidsynth-decoder-plugin
 	depends = moc
 	depends = fluidsynth
 	depends = libsmf
-	source = https://github.com/joanbm/moc-fluidsynth-decoder-plugin/archive/refs/tags/v0.0.4.tar.gz
-	sha256sums = ed72042085c8782b12713b3b5fcc170585f5cabaac7034d0b98b65fbf10e26df
+	source = https://github.com/joanbm/moc-fluidsynth-plugin/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = 775e7087f2414c29cf399de23f45a7e29303dd7726dfa22d1f9d0df6f6257d50
 
-pkgname = moc-fluidsynth-decoder-plugin
+pkgname = moc-fluidsynth-plugin
