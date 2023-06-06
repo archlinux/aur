@@ -1,2 +1,7 @@
 #!/usr/bin/bash
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+
+if [[ -f $XDG_CONFIG_HOME/bilibili-flags.conf ]]; then
+   BILIBILI_USER_FLAGS="$(sed 's/#.*//' $XDG_CONFIG_HOME/bilibili-flags.conf | tr '\n' ' ')"
+fi
 env ELECTRON_FORCE_IS_PACKAGED=true electron17 /usr/share/bilibili/bilibili.asar "$@"
