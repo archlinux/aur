@@ -1,0 +1,40 @@
+diff --unified --recursive --text pev2-1.8.0.orig/example/src/views/HomeView.vue pev2-1.8.0/example/src/views/HomeView.vue
+--- pev2-1.8.0.orig/example/src/views/HomeView.vue	2023-03-21 08:12:20.000000000 +0100
++++ pev2-1.8.0/example/src/views/HomeView.vue	2023-06-06 23:53:35.489859399 +0200
+@@ -154,15 +154,6 @@
+ <template>
+   <main-layout>
+     <div class="container">
+-      <div class="alert alert-warning">
+-        This is the demo application for
+-        <a href="https://github.com/dalibo/pev2">PEV2</a>. It is serverless and
+-        doesn't store your plans.
+-        <br />
+-        Please consider using
+-        <a href="https://explain.dalibo.com">explain.dalibo.com</a> instead if
+-        you want to save or share your plans.
+-      </div>
+       <div class="row">
+         <div class="col d-flex">
+           <div class="text-muted">
+diff --unified --recursive --text pev2-1.8.0.orig/package.json pev2-1.8.0/package.json
+--- pev2-1.8.0.orig/package.json	2023-03-21 08:12:20.000000000 +0100
++++ pev2-1.8.0/package.json	2023-06-06 23:52:45.559685767 +0200
+@@ -22,7 +22,7 @@
+     "preview": "vite preview --port 5050",
+     "typecheck": "vue-tsc --noEmit",
+     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+-    "prepare": "husky install",
++
+     "test": "jest"
+   },
+   "dependencies": {
+@@ -59,7 +59,7 @@
+     "@vue/tsconfig": "^0.1.3",
+     "eslint": "^8.5.0",
+     "eslint-plugin-vue": "^8.5.0",
+-    "husky": "^7.0.0",
++
+     "jest": "^27.5.1",
+     "lint-staged": "^12.4.0",
+     "prettier": "^2.5.1",
