@@ -7,7 +7,7 @@
 
 pkgname=python-cloudscraper
 _name=${pkgname#python-}
-pkgver=1.2.69
+pkgver=1.2.71
 pkgrel=1
 pkgdesc="Python module to bypass Cloudflare's anti-bot page"
 arch=(any)
@@ -35,11 +35,12 @@ checkdepends=(
   python-js2py
   nodejs
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('9da8d3d42117768a0a38843448248e3a124c864aaa76d62125d3a1dad8ea4f1921954e6efaa2eb9b40c283d6889c15c0c33378db7008155e46ccb5ae219c11d6')
-b2sums=('ea7325353aa9c4bfaca1834a1f9fdb2201cee1946a990d059540500e58322899469a48d847b6d7688b8f671bf4bbe762d1f61ed080587f3a553771ba8e9c2a93')
 
-_archive="${_name}-${pkgver}"
+_commit_hash=cbb3c0ea31597a3c94760d9edf648a77510da8ac
+source=("${pkgname}-${_commit_hash}.tar.gz::${url}/archive/${_commit_hash}.tar.gz")
+sha256sums=('045c8f6e87697d0684997a61315883c968974a1a0a2bc7ee470c1e63ceab23fc')
+
+_archive="${_name}-${_commit_hash}"
 
 build() {
   cd "$_archive"
