@@ -37,7 +37,7 @@ prepare() {
 	cd "$srcdir/${_pkgname}"
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
-	sed -i 's:/usr/libexec/alvr/alvr_fw_config.sh:/usr/lib/alvr/alvr_fw_config.sh' alvr/server_io/src/firewall.rs
+	sed -i 's:/usr/libexec/alvr/alvr_fw_config.sh:/usr/lib/alvr/alvr_fw_config.sh:' alvr/server_io/src/firewall.rs
 
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
