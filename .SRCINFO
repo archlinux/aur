@@ -1,0 +1,16 @@
+pkgbase = impression
+	pkgdesc = A straight-forward modern application to create bootable drives.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/adhami3310/Impression
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = blueprint-compiler
+	makedepends = cargo
+	makedepends = meson
+	depends = libadwaita
+	source = https://gitlab.com/adhami3310/Impression/-/archive/v1.0.0/Impression-v1.0.0.tar.gz
+	sha256sums = fc494f3e9d2d7a6bcdaf23743d06c6e2e4d302f3c63b975ab017a347026a4d4f
+
+pkgname = impression
