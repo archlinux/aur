@@ -1,7 +1,7 @@
 #Maintainer: Daniel Madmon : danielmadmon@protonmail.com
 _pkgname=tasker-git
-_pkgver=0.0.2
-_pkgnamegit=tasker-linux_release
+_pkgver=0.0.3
+_pkgnamegit=tasker-0.0.3
 pkgname=$_pkgname
 pkgver=$_pkgver
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://github.com/DanielMadmon/tasker"
 license=('GPL3')
 depends=('libthemis')
 makedepends=('cargo' 'git')
-provides=("tasker-git=0.0.2")
+provides=("tasker-git=0.0.3")
 conflicts=(tasker-git)
 source=("https://github.com/DanielMadmon/tasker/archive/refs/tags/v0.0.2.tar.gz")
 sha256sums=('SKIP')
