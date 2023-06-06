@@ -3,23 +3,21 @@
 # Contributor: AndyRTR <andyrtr@archlinux.org>
 
 pkgname=xorg-xwayland-hidpi-xprop
-pkgver=23.1.1
+pkgver=23.1.2
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 url="https://xorg.freedesktop.org"
 pkgdesc="run X clients under wayland, with !733 HiDPI patch"
 depends=('nettle' 'libepoxy' 'systemd-libs' 'libxfont2' 
-         'pixman' 'xorg-server-common' 'libxcvt' 'mesa')
+         'pixman' 'xorg-server-common' 'libxcvt' 'mesa'
+         'libglvnd' 'libxau' 'wayland' 'libdrm' 'libtirpc'
+         'libxshmfence' 'glibc')
 makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
-             'xorg-font-util'
-             'wayland' 'wayland-protocols'
-             'libdrm' 'mesa-libgl'
-             'systemd'
-             'egl-wayland'
-)
+             'xorg-font-util' 'wayland-protocols' 'mesa-libgl'
+             'systemd' 'egl-wayland')
 source=(https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz{,.sig} hidpi.patch)
-sha512sums=('21c386847135c5cb4ac884926b0fbeb6ad21c9ee54752e0cdc8418e31a72872d81032159c1d91b8afb915aaaf65e80454342461d676996b2f3c535a37b0147f0'
+sha512sums=('796939106e8c986f2e8d6a1ff27f3a51cda0718825c3a6da678573de95a61bcc9fac484a34c6f8f762f7078f5289aa35c393725ea0b0f7e5d153352ab01a48f5'
             'SKIP'
             '603278d45ae29b65d5bea806abb98d22b6ecc7501199ae23f40e01adcfc29a3d7432e3dec1864b6eb3ba6d02998c68f6a455d389875fec40d9baa880c85f815a')
 provides=('xorg-server-xwayland' 'xorg-xwayland' 'xorg-xwayland-lily')
