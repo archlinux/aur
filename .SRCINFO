@@ -1,7 +1,7 @@
 pkgbase = go-task
 	pkgdesc = Task runner & Make alternative that runs taskfiles (Installs as go-task to avoid conflict with taskwarrior)
 	pkgver = 3.25.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/go-task/task
 	arch = x86_64
 	license = MIT

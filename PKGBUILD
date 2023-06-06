@@ -4,7 +4,7 @@
 pkgname=go-task
 _pkgname=task
 pkgver=3.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Task runner & Make alternative that runs taskfiles (Installs as go-task to avoid conflict with taskwarrior)"
 arch=(x86_64)
 url="https://github.com/go-task/task"
@@ -33,9 +33,10 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  go build -v -o bin ./cmd/task
+  _ldflags="-linkmode external -X github.com/go-task/task/v3/internal/version.version=v$pkgver"
+  go build -v -ldflags "$_ldflags" -o bin ./cmd/task
 }
 
 check() {
