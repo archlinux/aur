@@ -4,7 +4,7 @@
 pkgname=mailtutan-bin
 pkgver=0.2.0
 pkgrel=1
-pkgdesc="a fake smtp server for test and development environments written in Rust - binary executable"
+pkgdesc="a fake smtp server for test and development environments written in Rust"
 url="https://github.com/mailtutan/mailtutan"
 license=("MIT")
 arch=("x86_64")
