@@ -7,27 +7,29 @@ arch=('x86_64')
 pkgdesc="DiscImageCreator, official release with supplemental binaries and text files for full functionality."
 provides=('discimagecreator')
 conflicts=('discimagecreator')
-pkgver=20230413
-pkgrel=2
+pkgver=20230606
+pkgrel=1
 license=('Apache')
 # Developer attaches links to the compiled builds in release notes so this entire URL must be replaced with every new build.
-source=("https://github.com/saramibreak/DiscImageCreator/files/11222269/DiscImageCreator_20230413.tar.gz")
-# source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('099cb574cacf7af444a938051248a7ac4e9dd6f5bd327487c879d950a2e64243')
+source=("https://github.com/saramibreak/DiscImageCreator/files/11660559/DiscImageCreator_20230606.tar.gz")
+sha256sums=('52538a89f1816709078d2ef8eac2dd5aab89ae1ad72687c1c12d02d012af489b')
 
 package() {
+
 	# install binaries
 	mkdir -p ${pkgdir}/usr/bin
-	install -Dm 755 ${srcdir}/${_pkgname}/DiscImageCreator_linux.out ${pkgdir}/usr/bin/DiscImageCreator_linux.out
-	install -Dm 755 ${srcdir}/${_pkgname}/DVDAuth_linux.out ${pkgdir}/usr/bin/DVDAuth_linux.out
-	install -Dm 755 ${srcdir}/${_pkgname}/EccEdc_linux.out ${pkgdir}/usr/bin/EccEdc_linux.out
-	
+	install -Dm 755 ${srcdir}/${_pkgname}/DiscImageCreator.out ${pkgdir}/usr/bin/DiscImageCreator.out
+	install -Dm 755 ${srcdir}/${_pkgname}/DVDAuth.out ${pkgdir}/usr/bin/DVDAuth.out
+	install -Dm 755 ${srcdir}/${_pkgname}/EccEdc.out ${pkgdir}/usr/bin/EccEdc.out
+	install -Dm 755 ${srcdir}/${_pkgname}/unscrambler.out ${pkgdir}/usr/bin/unscrambler.out
+
 	# create symlinks for to deal with stupid idiot filenames for convenience; no, you can't just rename these,
 	# `DiscImageCreator` calls them during execution and the `_linux.out` suffix is hardcoded into the source.
 	# no, i'm not going to patch this trash.
-	ln -s DiscImageCreator_linux.out ${pkgdir}/usr/bin/DiscImageCreator
-	ln -s DVDAuth_linux.out ${pkgdir}/usr/bin/DVDAuth
-	ln -s EccEdc_linux.out ${pkgdir}/usr/bin/EccEdc
+	ln -s DiscImageCreator.out ${pkgdir}/usr/bin/DiscImageCreator
+	ln -s DVDAuth.out ${pkgdir}/usr/bin/DVDAuth
+	ln -s EccEdc.out ${pkgdir}/usr/bin/EccEdc
+	ln -s unscrambler.out ${pkgdir}/usr/bin/unscrambler
 
 	# install supplemental data files
 	mkdir -p ${pkgdir}/usr/lib/${_pkgname}
