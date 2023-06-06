@@ -1,4 +1,4 @@
-# Maintainer: nicolarevelant44 <nicolarevelant44@outlook.com>
+# Maintainer: Nicola Revelant <nicolarevelant@outlook.com>
 
 pkgname=italian-draughts-git
 pkgver=1.3.2.r3.gebb11e5
