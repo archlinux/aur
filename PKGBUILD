@@ -4,8 +4,8 @@
 
 _pkgname=browser-stable
 pkgname=yandex-browser
-pkgver=23.3.3.764_1
-_pkgver=23.3.3.764-1
+pkgver=23.5.1.667
+_pkgver=23.5.1.667-1
 pkgrel=1
 #epoch=1
 
@@ -30,8 +30,8 @@ optdepends=(
     "cryptopro-csp-k1"
 )
 
-source=("${pkgname}-${pkgver}.deb::https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-${_pkgname}/yandex-${_pkgname}_${_pkgver}_amd64.deb")
-sha256sums=("0de3e4a58d5159abe371567c09f823e0b3aca665c6ae21be787bcd21b4817651")
+source=("${pkgname}-${_pkgver}.deb::https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-${_pkgname}/yandex-${_pkgname}_${_pkgver}_amd64.deb")
+sha256sums=("397e92ed923460c6caa35cb70706b557229261f9712ba506081412b77f0909dd")
 install=yandex-browser.install
 
 prepare() {
