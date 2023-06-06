@@ -1,0 +1,11 @@
+--- Drivers/Dta/Source/Linux/DtaIal.c	2023-06-06 13:44:08.233215971 +0100
++++ Drivers/Dta/Source/Linux/DtaIal.c	2023-06-06 13:47:26.153399824 +0100
+@@ -786,7 +786,7 @@
+     pDvcData->m_pUserMapping = pUserMapping;
+ 
+     // Be sure the memory is mapped non-cacheable
+-    pVma->vm_flags |= VM_IO;
++    vm_flags_set(pVma, VM_IO);
+     pVma->vm_page_prot = pgprot_noncached(pVma->vm_page_prot);
+     
+     RegionStart = pDvcData->m_DtaRegs.m_PciAddr.QuadPart;

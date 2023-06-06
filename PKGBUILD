@@ -3,7 +3,7 @@
 
 pkgname=dektec-dkms
 pkgver=2022.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="DekTec DKMS"
 arch=('i686' 'x86_64')
 url="https://www.dektec.com/"
@@ -14,6 +14,7 @@ source=("${url}/products/SDK/DTAPI/Downloads/LinuxSDK_v${pkgver}.tar.gz"
         'linux-3.18-netif-changes.patch'
         'linux-6.2+-prefix-symbols.patch'
         'linux-6.2+-prefix-symbols.2022.06.0.patch'
+        'linux-6.3+-vm_flags_set.patch'
         'dkms.conf'
         'Makefile')
 md5sums=('72685face3bcf3b5c0aadf569ba8cca5'
@@ -21,6 +22,7 @@ md5sums=('72685face3bcf3b5c0aadf569ba8cca5'
          '7bcb9def37608558fbdef4053af96792'
          '8c4c8d92a5840ad03c5f6e0bcd27500b'
          '5817a31229c1f12ea0b3c6fc3fea05fa'
+         'facbf2c909bded3ca94c93360f02a7e2'
          '539fb620aadf7fcab3f29156b6e8bdc4'
          'e0a9e12767006053c4e71ecd49dd2769')
 
@@ -34,6 +36,8 @@ prepare() {
 # If you're going back in versions, use the 2022.06.0 version of the prefix-symbols
 # patch. It is also still in the repo and checksumed so you're fine to use.
   patch -d LinuxSDK -p0 -i "${srcdir}"/linux-6.2+-prefix-symbols.patch
+
+  patch -d LinuxSDK -p0 -i "${srcdir}"/linux-6.3+-vm_flags_set.patch
 
   sed -e"s/@PKGVER@/${pkgver}/" -i "${srcdir}"/dkms.conf
 }
