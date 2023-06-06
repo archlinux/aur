@@ -1,7 +1,7 @@
 pkgbase = gitlint
 	pkgdesc = Git commit message linter
 	pkgver = 0.17.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jorisroovers/gitlint
 	install = gitlint.install
 	arch = any

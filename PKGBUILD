@@ -3,7 +3,7 @@
 
 pkgname=gitlint
 pkgver=0.17.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Git commit message linter'
 arch=('any')
 url='https://github.com/jorisroovers/gitlint'
@@ -58,4 +58,6 @@ package() {
 
   export PYTHONHASHSEED=0
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
