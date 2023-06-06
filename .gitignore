@@ -1,0 +1,6 @@
+pkg
+src
+Nord-Spotify
+*.log
+*.pkg.tar.*
+
