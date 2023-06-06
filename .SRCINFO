@@ -1,0 +1,12 @@
+pkgbase = exoplanet-git
+	pkgdesc = Fast & scalable MCMC for all your exoplanet needs!
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/exoplanet-dev/exoplanet
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	source = exoplanet-git::git+https://github.com/exoplanet-dev/exoplanet.git
+	sha256sums = SKIP
+
+pkgname = exoplanet-git
