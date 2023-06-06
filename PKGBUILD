@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=microdnf
-pkgver=3.9.1
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='Lightweight implementation of dnf in C'
 url='https://github.com/rpm-software-management/microdnf'
@@ -15,7 +15,7 @@ makedepends=(meson help2man)
 options=('!emptydirs')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rpm-software-management/microdnf/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('912a17f741fc7d1a0f8ffa46bec744dedec46d801d965270b1f77c56eb03c672')
+sha256sums=('c029017a85c0f8a496e552a1ef2748022c5359b3b4beb32d6b1488710f6aa920')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
