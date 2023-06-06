@@ -1,7 +1,7 @@
 pkgbase = python-yt-git
 	pkgdesc = python package for data analysis and visualization
 	pkgver = 4.0.0.r2489.g7df628d03
-	pkgrel = 1
+	pkgrel = 2
 	url = http://yt-project.org
 	arch = any
 	license = BSD
@@ -19,7 +19,7 @@ pkgbase = python-yt-git
 	depends = python-sympy
 	depends = python-tomli-w
 	depends = python-tqdm
-	depends = python-typing-extensions
+	depends = python-typing_extensions
 	depends = python-unyt
 	optdepends = jupyterlab: interactive analysis
 	optdepends = openmp: multithred support

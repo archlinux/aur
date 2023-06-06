@@ -3,7 +3,7 @@
 _gitname=yt
 pkgname=python-${_gitname}-git
 pkgver=4.0.0.r2489.g7df628d03
-pkgrel=1
+pkgrel=2
 pkgdesc="python package for data analysis and visualization"
 url="http://yt-project.org"
 arch=(any)
@@ -18,7 +18,7 @@ depends=(
     'python-sympy'
     'python-tomli-w'
     'python-tqdm'
-    'python-typing-extensions'
+    'python-typing_extensions'
     'python-unyt'
 )
 makedepends=(
