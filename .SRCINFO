@@ -1,6 +1,6 @@
 pkgbase = counter-strike-2d
 	pkgdesc = More than just a freeware clone of the well known game Counter-Strike
-	pkgver = 1.0.1.1
+	pkgver = 1.0.1.3
 	pkgrel = 1
 	url = https://www.unrealsoftware.de
 	install = cs2d.install
@@ -12,9 +12,6 @@ pkgbase = counter-strike-2d
 	depends = lib32-libtxc_dxtn
 	depends = lib32-glu
 	optdepends = lib32-openal: audio output
-	optdepends = lib32-ati-dri: video acceleration
-	optdepends = lib32-intel-dri: video acceleration
-	optdepends = lib32-nouveau-dri: video acceleration
 	options = emptydirs
 	backup = opt/cs2d/sys/autobuy.cfg
 	backup = opt/cs2d/sys/autoexec.cfg
@@ -32,12 +29,11 @@ pkgbase = counter-strike-2d
 	backup = opt/cs2d/sys/bans.lst
 	backup = opt/cs2d/sys/serverinfo.txt
 	backup = opt/cs2d/sys/servertransfer.lst
-	source = cs2d_1011_linux.zip::http://www.unrealsoftware.de/get.php?get=cs2d_1011_linux.zip&p=1&cid=16245
+	source = cs2d_1013_linux.zip::http://www.unrealsoftware.de/get.php?get=cs2d_1013_linux.zip&p=1&cid=12675
 	source = cs2d.desktop
 	source = cs2d.png
-	sha512sums = ae69edb5ff2afc3104f045dd403112b4bc094b35deedf0aaf6a2a2441493556912e40954d189bde7ab489c05a98d2a077f95d30e876ddafaff95b38d37e20833
+	sha512sums = 113c0b890df01c14934db8bc860c0c3c0f040ce88fc27b88766c0c89d1d6a1a410f46e81a5ff1c7d71d08da8b2dd0e865e51ca110dcf3f954ca2cd7fd528a219
 	sha512sums = d7d452fa4a2310ec2ac68c2c500e2a66f3a6df2291ad6615f9a957cbc6cb4ccd7f00f9578ccebeb1367aa21205e3743b16463d841c63c73f9b0bfbbf37bd6992
 	sha512sums = dfe79598af30797195fad38461119f7d611021577a1e1e624567adeceade8f9bc4c97cd110515e492d612d09b740f78faf7dce55448f64a9a698e7748f121a80
 
 pkgname = counter-strike-2d
-

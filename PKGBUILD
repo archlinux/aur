@@ -6,7 +6,7 @@
 # Contributor: Moses Miller <Majora320@gmail.com>
 
 pkgname=counter-strike-2d
-pkgver=1.0.1.1
+pkgver=1.0.1.3
 _ver=${pkgver//./}
 pkgrel=1
 pkgdesc="More than just a freeware clone of the well known game Counter-Strike"
@@ -15,12 +15,9 @@ url="https://www.unrealsoftware.de"
 license=('custom')
 if [ "$CARCH" == "x86_64" ]; then
   depends=('lib32-freetype2' 'lib32-libtxc_dxtn' 'lib32-glu')
-  optdepends=('lib32-openal: audio output'
-              'lib32-ati-dri: video acceleration'
-              'lib32-intel-dri: video acceleration'
-              'lib32-nouveau-dri: video acceleration')
+  optdepends=('lib32-openal: audio output')
 elif [ "$CARCH" == "i686" ]; then
-  depends=('freetype2' 'libtxc_dxtn' 'glu')
+  #depends=('freetype2' 'libtxc_dxtn' 'glu')
   optdepends=('openal: audio output'
               'ati-dri: video acceleration'
               'intel-dri: video acceleration'
@@ -37,7 +34,7 @@ backup=(opt/cs2d/sys/autobuy.cfg    opt/cs2d/sys/autoexec.cfg
         opt/cs2d/sys/weapons.cfg    opt/cs2d/sys/weapons_recoil.cfg
         opt/cs2d/sys/favorites.lst  opt/cs2d/sys/bans.lst 
         opt/cs2d/sys/serverinfo.txt opt/cs2d/sys/servertransfer.lst)
-sha512sums=('ae69edb5ff2afc3104f045dd403112b4bc094b35deedf0aaf6a2a2441493556912e40954d189bde7ab489c05a98d2a077f95d30e876ddafaff95b38d37e20833'
+sha512sums=('113c0b890df01c14934db8bc860c0c3c0f040ce88fc27b88766c0c89d1d6a1a410f46e81a5ff1c7d71d08da8b2dd0e865e51ca110dcf3f954ca2cd7fd528a219'
             'd7d452fa4a2310ec2ac68c2c500e2a66f3a6df2291ad6615f9a957cbc6cb4ccd7f00f9578ccebeb1367aa21205e3743b16463d841c63c73f9b0bfbbf37bd6992'
             'dfe79598af30797195fad38461119f7d611021577a1e1e624567adeceade8f9bc4c97cd110515e492d612d09b740f78faf7dce55448f64a9a698e7748f121a80')
 _url=http://www.unrealsoftware.de/get.php?get
@@ -48,7 +45,7 @@ grabcid() {
 }
 
 _cid=$(grabcid) # this will hide the cmd line above from AUR interface
-source=(cs2d_${_ver}_linux.zip::"$_url=cs2d_${_ver}_linux.zip&p=1&cid=16245"
+source=(cs2d_${_ver}_linux.zip::"$_url=cs2d_${_ver}_linux.zip&p=1&cid=12675"
         "cs2d.desktop"
         "cs2d.png")
 options=(emptydirs)
