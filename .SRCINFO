@@ -18,7 +18,7 @@ pkgbase = chatgpt.sh
 	optdepends = xclip: copy output to clipboard
 	optdepends = python: count input tokens (tiktoken)
 	provides = chatgpt.sh
-	source = chatgpt.sh-0.14.5::git+https://github.com/mountaineerbr/shellChatGPT.git#commit=22472b05e021c072907bb4258c029cbe753ee3d4
+	source = chatgpt.sh-0.14.5::git+https://github.com/mountaineerbr/shellChatGPT.git#commit=4d029124ea5163c1dc09a113d48155a565fd4d1b
 	sha256sums = SKIP
 
 pkgname = chatgpt.sh
