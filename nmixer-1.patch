@@ -1,0 +1,11 @@
+--- a/nmixer/nmixer.cc   2017-05-16 01:25:18.000000000 +0300
++++ b/nmixer/nmixer.cc 2023-06-06 14:18:33.536413971 +0300
+@@ -216,7 +216,7 @@
+		mvwprintw(mixwin, my_y + 1, my_x, (char*)empty_scrollbar);
+
+		//draw new bar
+-		mvwprintw(mixwin, my_y - 1, my_x, (char*)source);
++		mvwprintw(mixwin, my_y - 1, my_x, "%s", (char*)source);
+		if (i == currentbar)
+		{
+			 mvwchgat(mixwin, my_y - 1, my_x, strlen(source), A_REVERSE,
