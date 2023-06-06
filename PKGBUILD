@@ -262,6 +262,7 @@ package() {
 
     # SwiftShader ICD
     libvk_swiftshader.so
+    libvulkan.so.1
     vk_swiftshader_icd.json
   )
 
