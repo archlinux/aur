@@ -1,0 +1,20 @@
+pkgbase = live-plus-plus-appimage
+	pkgdesc = Lightweight live streaming client.轻量级的直播客户端
+	pkgver = 2.0.0beat1
+	pkgrel = 1
+	url = https://github.com/dipelta/live-plus-plus
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = gendesk
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = live-plus-plus
+	conflicts = live++
+	conflicts = live++-appimage
+	options = !strip
+	source = live-plus-plus-2.0.0-beat1.tar.gz::https://github.com/dipelta/live-plus-plus/archive/refs/tags/v2.0.0-beat1.tar.gz
+	sha256sums = fdd73284ad453a1c37c0de3d9ec0055c2fa6457754dbaaeabbfd187e640edbae
+
+pkgname = live-plus-plus-appimage
