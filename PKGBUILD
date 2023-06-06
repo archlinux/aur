@@ -1,17 +1,35 @@
 # Original maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 # Current maintainer: Corentin Cadiou <contact@cphyc.me>
 _gitname=yt
-pkgname=python-$_gitname-git
-pkgver=4.0.0.r668.g03c41c0d9
-pkgrel=2
+pkgname=python-${_gitname}-git
+pkgver=4.0.0.r2489.g7df628d03
+pkgrel=1
 pkgdesc="python package for data analysis and visualization"
 url="http://yt-project.org"
 arch=(any)
 license=('BSD')
-depends=('python-numpy' 'python-matplotlib' 'python-sympy' 'python-unyt' 'python-cmyt' 'python-tqdm')
-makedepends=('cython')
+depends=(
+    'python-cmyt'
+    'python-ewah-bool-utils'
+    'python-matplotlib'
+    'python-more-itertools'
+    'python-numpy'
+    'python-pillow'
+    'python-sympy'
+    'python-tomli-w'
+    'python-tqdm'
+    'python-typing-extensions'
+    'python-unyt'
+)
+makedepends=(
+    'cython'
+    'python-setuptools'
+    'python-wheel'
+    'python-ewah-bool-utils'
+    'python-oldest-supported-numpy'
+)
 optdepends=(
-    'jupyter'
+    'jupyterlab: interactive analysis'
     'openmp: multithred support'
     'python-astropy: reading FITS files'
     'python-f90nml: reading RAMSES namelist files'
@@ -25,20 +43,26 @@ optdepends=(
 )
 source=("git+https://github.com/yt-project/yt")
 provides=('python-yt')
-md5sums=(SKIP)
+conflicts=('python-yt')
+md5sums=('SKIP')
+
+prepare() {
+    cd "${srcdir}/${_gitname}"
+    git clean -dfx
+}
 
 build() {
-  cd "$srcdir/$_gitname"
-  python setup.py build
+  cd "${srcdir}/${_gitname}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${_gitname}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "${srcdir}/${_gitname}"
   git describe --long --tags | sed 's/^yt-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
