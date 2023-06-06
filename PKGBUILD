@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="monarch-bin"
-pkgver=2.1.8
+pkgver=2.1.10
 pkgrel=1
 pkgdesc="a tool for building Flutter widgets in isolation. It makes it easy to build, test and debug complex UIs."
 arch=('x86_64')
