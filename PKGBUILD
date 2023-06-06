@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.27.14879.999caea021
+pkgver=0.0.28.r15143.6f834e99d2
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -64,7 +64,7 @@ pkgver() {
   COMM_TAG="$(grep 'version{.*}' rpcs3/rpcs3_version.cpp | awk -F[{,] '{printf "%d.%d.%d", $2, $3, $4}')"
   COMM_COUNT="$(git rev-list --count HEAD)"
   COMM_HASH="$(git rev-parse --short HEAD)"
-  echo "${COMM_TAG}.${COMM_COUNT}.${COMM_HASH}"
+  echo "${COMM_TAG}.r${COMM_COUNT}.${COMM_HASH}"
 }
 
 prepare() {
@@ -112,7 +112,8 @@ build() {
     -DUSE_SYSTEM_CURL=ON \
     -DUSE_SYSTEM_FLATBUFFERS=OFF \
     -DUSE_SYSTEM_PUGIXML=ON \
-    -DBUILD_LLVM=ON
+    -DBUILD_LLVM=ON \
+    -DUSE_SYSTEM_WOLFSSL=OFF
   
   make -C build
 }
