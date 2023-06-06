@@ -29,7 +29,7 @@
 
 pkgname=brave
 pkgver=1.52.117
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default'
 arch=(x86_64)
 url='https://www.brave.com/download'
@@ -52,7 +52,7 @@ _patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
 _launcher_ver=8
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkgver"
         "brave::git+https://github.com/brave/brave-core.git#tag=v$pkgver"
-        "chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=$_chromium_ver"
+        "chromium-mirror::git+https://github.com/chromium/chromium.git#tag=$_chromium_ver"
         'depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
         "https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz"
         chromium-launcher-electron-app.patch
@@ -147,7 +147,7 @@ prepare() {
     patch -Np1 -i "${srcdir}/system-rust-utils.patch"
   fi
 
-  jq ".config.projects.chrome.repository.url = \"file://${srcdir}/chromium@${_chromium_ver}\"" package.json > tmp.json
+  jq ".config.projects.chrome.repository.url = \"file://${srcdir}/chromium-mirror@${_chromium_ver}\"" package.json > tmp.json
   mv {tmp,package}.json
 
   npm install

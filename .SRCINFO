@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = Web browser that blocks ads and trackers by default
 	pkgver = 1.52.117
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brave.com/download
 	arch = x86_64
 	license = BSD
@@ -67,7 +67,7 @@ pkgbase = brave
 	options = !lto
 	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.52.117
 	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.52.117
-	source = chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=114.0.5735.90
+	source = chromium-mirror::git+https://github.com/chromium/chromium.git#tag=114.0.5735.90
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v8/chromium-launcher-8.tar.gz
 	source = chromium-launcher-electron-app.patch
