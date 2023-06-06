@@ -13,7 +13,7 @@ depends=('libthemis')
 makedepends=('cargo' 'git')
 provides=("tasker-git=0.0.2")
 conflicts=(tasker-git)
-source=("https://github.com/DanielMadmon/tasker/")
+source=("https://github.com/DanielMadmon/tasker/archive/refs/tags/v0.0.2.tar.gz")
 sha256sums=('SKIP')
 #user service should not have user section
 #make sure --user service is loaded after kde/gnome keyring (kwalletd5)
