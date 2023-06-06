@@ -6,7 +6,7 @@
 
 _pkgname=chromium
 pkgname=chromium-no-extras
-pkgver=114.0.5735.90
+pkgver=114.0.5735.106
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -36,7 +36,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         random-fixes-for-gcc13.patch
         disable-GlobalMediaControlsCastStartStop.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('071a8620b6175923f91f0ce0e3a0b2b20bf350a7d1a0f5513c160df7c17526d8'
+sha256sums=('df18b0b28bf52b1c099acde54e568fbfa2c9225150108bce9d53d8b31f71304a'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
