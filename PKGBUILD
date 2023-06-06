@@ -2,7 +2,7 @@
 
 pkgname=wgshadertoy
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A WGSL playground inspired by Shadertoy"
 arch=('any')
 url="https://github.com/fralonra/wgshadertoy"
@@ -21,5 +21,5 @@ package() {
 
   install -Dm755 target/release/$pkgname -t "$pkgdir/usr/bin/"
   install -Dm644 extra/linux/WgShadertoy.desktop -t "$pkgdir/usr/share/applications/"
-  install -Dm644 extra/logo/$pkgname.svg -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 extra/logo/$pkgname.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 }
