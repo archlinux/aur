@@ -4,7 +4,7 @@ _pkgname=vpktool
 pkgname=$_pkgname-bin
 pkgdesc="A tool to read and extract data from VPK files (binary release)"
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/craftablescience/VPKTool"
 license=('MIT')
@@ -39,5 +39,5 @@ package() {
   install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
   install -Dm644 $_desktop -t "$pkgdir/usr/share/applications"
   install -Dm755 libvtflib.so vpktool -t "$pkgdir/opt/VPKTool"
-  ln -s $pkgdir/opt/VPKTool/$_pkgname -t "$pkgdir/usr/bin"
+  ln -s /opt/VPKTool/$_pkgname -t "$pkgdir/usr/bin"
 }
