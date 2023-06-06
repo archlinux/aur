@@ -2,31 +2,24 @@
 # Past-Maintainer: CUI Hao <cuihao.leo@gmail.com>
 
 pkgname=seismic-unix
-pkgver=44.18
+pkgver=44.28
 pkgrel=1
 pkgdesc='A seismic processing and research environment developed
 at the Center for Wave Phenomena, Colorado School of Mines'
 arch=('i686' 'x86_64')
 license=('custom')
-url="http://www.cwp.mines.edu/cwpcodes/"
+url="https://wiki.seismic-unix.org/start"
 depends=('libtirpc' 'libxi' 'libglvnd' 'libxmu' 'openmotif')
-#depends=('freeglut' 'glu' 'libxmu' 'lesstif' 'libtirpc' 'libtirpc-compat')
-#depends=('freeglut' 'glu' 'libxmu' 'openmotif')
-#depends=('freeglut' 'glu' 'libxmu')
 optdepends=(
     'tcsh: some scripts'
     'gcc-fortran: Fortran support')
-#makedepends=('git' 'gcc-fortran' 'libtirpc' 'libtirpc-compat' 'lesstif' 'glu' 'libxmu' 'freeglut')
-makedepends=('git' 'gcc-fortran' 'libtirpc' 'libtirpc-compat' 'openmotif' 'glu' 'libxmu' 'freeglut')
-#source=("ftp://ftp.cwp.mines.edu/pub/cwpcodes/cwp_su_all_$pkgver.tgz")
-#sha1sums=('2456bfa4145ba5e8c03d9ffe85173b6657972bb3')
+makedepends=('git' 'gcc-fortran' 'libtirpc' 'libtirpc' 'openmotif' 'glu' 'libxmu' 'freeglut' 'libtirpc-compat')
 #source=("git+https://github.com/JohnWStockwellJr/SeisUnix.git")
-source=("seismic_unix.tgz::https://nextcloud.seismic-unix.org/index.php/s/WgXpRba4DPPaiNK/download")
+source=("seismic_unix.tgz::https://nextcloud.seismic-unix.org/s/LZpzc8jMzbWG9BZ/download?path=%2F&files=cwp_su_all_44R28.tgz")
 md5sums=("SKIP")
 install=seismic-unix.install
 
 prepare() {
-    #cd ${srcdir}/src/SeisUnix/src
     cd ${srcdir}/src/
     # start fresh
     rm -rf ../bin/
@@ -89,4 +82,4 @@ setenv PATH \${PATH}:\${CWPROOT}/bin
 EOF
     chmod 755 "$pkgdir/etc/profile.d/$pkgname"{.sh,.csh}
 }
-md5sums=('2b4d9f3a09dbecca1919f4edf44fffc5')
+md5sums=('8dac66e953b3998ee8acbaeacb0bce77')
