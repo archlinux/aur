@@ -11,7 +11,7 @@ conflicts=('dnsproxy-bin' 'dnsproxy-adguard')
 source=("dnsproxy.service"
         "https://github.com/AdguardTeam/dnsproxy/archive/v${pkgver}.tar.gz")
 makedepends=("go")
-sha256sums=('565eea9808589ecafa81f2229ac1f85b39028e26d488a9a7c0b51afc43d7f42b'
+sha256sums=('002deb38e7d69beb8848c57a7ba0d00437c542589baccc6dab074767ffa64b75'
             '23bf3492a8647dadff4c4e999c858f9b715a797cee00a81b439e3175ad76cdce')
 
 _conf=etc/dnsproxy/dnsproxy.yaml
