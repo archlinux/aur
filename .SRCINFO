@@ -17,7 +17,7 @@ pkgbase = apex-tux-git
 	source = 98-steelseries.rules
 	source = apex-tux.service
 	sha256sums = SKIP
-	sha256sums = 14ef44861b2487852e88e91de89feb892cc8a89d5290d3ee07d903666af92f20
+	sha256sums = d8f2c3acaca5df74522d84d37bdd2eb61e1d3fb7c67a872e21d0d8c59872cb1b
 	sha256sums = ca08475ae39f3ee111e7363829f2bdce9e7ae0bfacd0a481009fc363308ddad2
 	sha256sums = 761cef629df24b01e92926590daa31aa0c562f5ffc09a390be8434085d6d7b93
 
