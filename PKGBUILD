@@ -5,7 +5,7 @@
 pkgname=ruby-dotenv
 _name=${pkgname#ruby-}
 pkgver=2.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Loads environment variables from .env"
 arch=('any')
 depends=(ruby)
@@ -14,7 +14,6 @@ url='https://github.com/bkeepers/dotenv'
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('03f1e21bd6d681501dd719b4f4ce2663049ac27531c0bee69e740e2e9b6526c0')
-noextract=("$_name-$pkgver.gem")
 options=(!emptydirs)
 install=ruby-dotenv.install
 
