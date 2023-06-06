@@ -1,0 +1,13 @@
+pkgbase = mailtutan-bin
+	pkgdesc = a fake smtp server for test and development environments written in Rust - binary executable
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/mailtutan/mailtutan
+	arch = x86_64
+	license = MIT
+	provides = mohsen-alizadeh
+	conflicts = mohsen-alizadeh
+	source = https://github.com/mailtutan/mailtutan/releases/download/v0.2.0/mailtutan-0.2.0-x86_64.tar.gz
+	sha256sums = e9fad48702d5db3131e15dfc5edb5532ad3554eda99e75fc7594f3167b978402
+
+pkgname = mailtutan-bin
