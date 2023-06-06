@@ -4,8 +4,8 @@
 /*.part
 /linux-*.tar.xz
 /linux-*.tar.sign
-/linux-hardened-*.patch
-/linux-hardened-*.patch.sig
+/*.patch
+/*.patch.sig
 /*.diff
 /*.log
 /*.src.tar.gz
