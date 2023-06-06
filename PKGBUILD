@@ -30,5 +30,5 @@ package(){
         install src/reLCS -Dt "$pkgdir"/usr/bin
         install ../reLCS.svg -Dt "$pkgdir"/usr/share/pixmaps
         install ../reLCS.desktop -Dt "$pkgdir"/usr/share/applications
-        cp -r gamefiles "$pkgdir"/usr/share/relcs
+        cp -r gamefiles "$pkgdir"/usr/share/reLCS
 }
