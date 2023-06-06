@@ -1,8 +1,8 @@
 # Maintainer: Polarian <polarian@polarian.dev>
 
 pkgname=saber
-pkgver=0.12.9
-pkgrel=2
+pkgver=0.12.10
+pkgrel=1
 pkgdesc="A cross-platform libre notes app written in Flutter"
 arch=('x86_64')
 url="https://github.com/adil192/saber"
@@ -12,7 +12,7 @@ makedepends=('flutter' 'clang' 'cmake' 'ninja' 'rustup')
 source=("https://github.com/adil192/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
         "0001-Modify-.desktop-for-Arch-Linux.patch"
         "saber.sh")
-sha256sums=('3f1fbde854b30d9f60ab3a7ccf863662586f165fb6273dc0f2cfe9d13528b52f'
+sha256sums=('5f9bd9626545508355ef379262e963eaa7ee8bc7de9768603a8eda411c359956'
             '93e6e067fefad597117d7f6889df204082898b79dcd29853eaa5c879ab35b2df'
             '7beadd69cd9fc88ccc8916b27057498da652afbe4265d00cf9de20ea84bb2488')
 
