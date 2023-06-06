@@ -9,11 +9,11 @@ pkgbase = carta-appimage
 	depends = hicolor-icon-theme
 	depends = libidn11
 	depends = rtmpdump
-	noextract = carta-v3.0-x86_64.AppImage
+	noextract = carta-3.0-x86_64.AppImage
 	options = !strip
 	source_x86_64 = carta-appimage-v3.0.0.tgz::https://github.com/CARTAvis/carta/releases/latest/download/carta.AppImage.x86_64.tgz
 	source_x86_64 = LICENSE::https://raw.githubusercontent.com/CARTAvis/carta-backend/v3.0.0/COPYING.md
-	sha256sums_x86_64 = 8816d702cb31d32d833e088fab38aa891cb0788cce760b950687acb80fcc4943
+	sha256sums_x86_64 = 3bc84533a8ddbf9164c4ba2d8142daa42b94debe56787b240cdd9c476446f41c
 	sha256sums_x86_64 = 26c03bc049c15fc5b9e52d791a06f1a6bc32f89edc8f8c701ab0aadf66e85b82
 
 pkgname = carta-appimage
