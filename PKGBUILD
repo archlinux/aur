@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="query-master-appimage"
-pkgver=0.0.3
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Just another MySQL GUI client"
 arch=('x86_64')
@@ -11,8 +11,8 @@ conflicts=("${pkgname%-appimage}" "live++" "live++-appimage")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 makedepends=('yarn' 'gendesk')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('65a0d266a0f741d62214b3c441ab2d3000ad8b910e0b66e6937f05cf27cce7f1')
+source=("${pkgname%-appimage}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('97588df0cdb6a83943ca9bf293559f2197e383e45b99e5451a236c743306e17c')
 build() {
     cd "${srcdir}/${pkgname%-appimage}-${pkgver}"
     yarn install
