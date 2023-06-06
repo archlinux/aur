@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="apk-installer-bin"
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="一款可运行于windows、macos的Apk安装器软件，快速安装Apk至手机。"
 arch=('x86_64')
@@ -9,11 +9,10 @@ license=('ISC')
 depends=()
 mkdenpends=('npm' 'gendesk' 'electron')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
-source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}-all.tar.gz")
-sha256sums=('7f6bd055639b0c4949ef8eef6621bbf0ca4f711980132ebf58c84069e4feeff5')
+source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('f58d1e672a98961307577251a5952521f723607d4920138e1d325bf14297c52c')
 build() {
-    cd "${srcdir}/${pkgname%-bin}-${pkgver}-all"
-    sed '14i\  \"email": "771407650@qq.com",' -i package.json
+    cd "${srcdir}/${pkgname%-bin}-${pkgver}"
     npm install
     electron-builder --config build.config.js --linux
 }
