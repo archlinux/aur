@@ -7,7 +7,7 @@ _reponame=reflective-rapidjson
 pkgname=mingw-w64-reflective-rapidjson
 _name=${pkgname#mingw-w64-}
 pkgver=0.0.15
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON (mingw-w64)'
 license=('GPL')
@@ -17,14 +17,20 @@ optdepends=("mingw-w64-boost: use Boost.Hana instead of code generator"
 checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine' 'mingw-w64-boost')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja')
 url="https://github.com/Martchus/${_reponame}"
-source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('1e253ca0c63c6432ede1b1d7ad6c828b93eeb47eb1843d7bdc09445be7c1bba6')
+source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
+        https://github.com/Martchus/reflective-rapidjson/commit/7c8ef68155724417066bfaf694ce26834251a62e.patch)
+sha256sums=('1e253ca0c63c6432ede1b1d7ad6c828b93eeb47eb1843d7bdc09445be7c1bba6' SKIP)
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 _configurations=()
 [[ $NO_SHARED_LIBS ]] || _configurations+=('shared')
 [[ $NO_STATIC_LIBS ]] || _configurations+=('static')
+
+prepare() {
+  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+  patch -p1 -i ../7c8ef68155724417066bfaf694ce26834251a62e.patch
+}
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
