@@ -2,16 +2,16 @@
 
 _pkgname=sigma-file-manager
 pkgname=$_pkgname-bin
+pkgdesc="A free, open-source, quickly evolving, modern file manager (explorer / finder) app (binary release)"
 pkgver=1.6.0
 pkgrel=1
-pkgdesc="A free, open-source, quickly evolving, modern file manager (explorer / finder) app (binary release)"
-url="https://github.com/aleksey-hoffman/sigma-file-manager"
 arch=("x86_64")
+url="https://github.com/aleksey-hoffman/sigma-file-manager"
 license=('GPL3')
 depends=('libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst')
 makedepends=('fuse2')
-provides=($_pkgname)
 conflicts=($_pkgname)
+provides=($_pkgname)
 _appimage=Sigma-File-Manager-$pkgver-Linux-Debian.AppImage
 source=("$url/releases/download/v$pkgver/$_appimage")
 sha256sums=('ca4bb1d6707776d3cb2cf3ae589f155173d5e043c51a72970197d24cf3cf9e34')
