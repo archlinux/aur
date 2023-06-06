@@ -11,7 +11,7 @@ license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz gettext
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
-  git rust llvm lld
+  git rustup llvm lld
 )
 options=('!strip')
 _srcname=archlinux-linux
@@ -51,6 +51,9 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  echo "Installing rust-src"
+  rustup component add rust-src
 
   echo "Installing rust-bindgen"
   cargo install --locked --version $(scripts/min-tool-version.sh bindgen) bindgen
