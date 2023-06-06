@@ -3,17 +3,17 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=r9577.399ed10f3
+pkgver=r9602.14290bc2f
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
 url='https://github.com/citra-emu/citra-canary'
-options=("!lto") #Set LTO (disabled cause clang thin lto)
+options=("!lto") #Set LTO
 provides=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 conflicts=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 license=('GPL2')
 depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'boost-libs' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt6-tools' 'clang') #Use clang until Issue 6500 is fixeo
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt6-tools' 'gcc')
 source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
@@ -38,6 +38,10 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "git+https://github.com/weidai11/cryptopp.git"
         "git+https://github.com/septag/dds-ktx.git"
         "git+https://github.com/kcat/openal-soft.git"
+        "git+https://github.com/KhronosGroup/glslang.git"
+        "vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
+        "vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
+        "git+https://github.com/yuzu-emu/sirit.git"
         # cubeb's submodule
         "git+https://github.com/google/googletest"
         "git+https://github.com/arsenm/sanitizers-cmake"
@@ -73,6 +77,10 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -82,20 +90,15 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
-    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,sdl2,lodepng,libusb,inih};
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sdl2,lodepng,libusb,inih};
     do
     git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule}"
     done
-    git config --file=.gitmodules submodule.externals/openal-soft.url "$srcdir/openal-soft"
     git -c protocol.file.allow=always submodule update --init
 
     cd "$srcdir/$_pkgname/externals/cubeb"
     git config --file=.gitmodules submodule.googletest.url "$srcdir/googletest"
     git config --file=.gitmodules submodule."cmake/sanitizers-cmake".url "$srcdir/sanitizers-cmake"
-    git -c protocol.file.allow=always submodule update --init
-
-    cd "$srcdir/$_pkgname/externals/dynarmic/externals/zydis"
-    git config --file=.gitmodules submodule.dependencies/zycore.url "$srcdir/zycore"
     git -c protocol.file.allow=always submodule update --init
 
     cd "$srcdir/$_pkgname/externals/sirit/"
@@ -125,14 +128,12 @@ build() {
       -DCITRA_ENABLE_COMPATIBILITY_REPORTING=ON \
       -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
       -DUSE_DISCORD_PRESENCE=ON \
-      -DENABLE_FFMPEG_VIDEO_DUMPER=ON \
-      -DENABLE_FFMPEG_AUDIO_DECODER=ON \
       -DUSE_SYSTEM_BOOST=ON \
       -DUSE_SYSTEM_SDL2=ON \
-      -DCMAKE_C_COMPILER=clang \
-      -DCMAKE_CXX_COMPILER=clang++ \
-      -DCMAKE_C_FLAGS="$CFLAGS -flto=thin" \
-      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=thin" \
+      -DCMAKE_C_COMPILER=gcc \
+      -DCMAKE_CXX_COMPILER=g++ \
+      -DCMAKE_C_FLAGS="$CFLAGS -flto=auto" \
+      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=auto" \
       -Wno-dev
 
     cmake --build build   
