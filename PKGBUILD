@@ -3,7 +3,7 @@
 _pkgbasename=new-mail-indicator
 pkgname=gnome-shell-extension-${_pkgbasename}
 pkgver=44
-pkgrel=2
+pkgrel=3
 pkgdesc="Gnome shell extension to notify new mails - only Gnome shell version 44."
 arch=('any')
 url="https://github.com/fthx/new-mail-indicator"
@@ -24,6 +24,6 @@ build() {
 
 
 package() {
-		install -D -m644 "${srcdir}/${_pkgbasename}-master/extension.js" "${pkgname}${_extension_dir}/extension.js"
+		install -D -m644 "${srcdir}/${_pkgbasename}-master/extension.js" "${pkgdir}${_extension_dir}/extension.js"
 		install -D -m644 "${srcdir}/${_pkgbasename}-master/metadata.json" "${pkgdir}${_extension_dir}/metadata.json"
 }
