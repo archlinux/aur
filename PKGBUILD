@@ -2,7 +2,7 @@
 
 
 _pkgname=Qogir-icon-theme
-_pkgver=2023-02-23
+_pkgver=2023-06-05
 pkgname=${_pkgname@L}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vinceliuice/$_pkgname/archive/$_pkgver.tar.gz")
-sha256sums=('7f72b64a4483c3e1030347641ccd4d9668a689088aaabac9ef425abb4eab6409')
+sha256sums=('618768d3592238f0d11379b4a0261434c332bb63c30d3ea85ea26f80bf199043')
 
 package() {
 	cd "$_pkgname-$_pkgver"
