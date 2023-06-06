@@ -1,7 +1,7 @@
 pkgbase = chatgpt.sh
 	pkgdesc = Shell wrapper for ChatGPT, DALL-E, Whisper, and awesome-chatgpt-prompts(-zh).
 	pkgver = 0.14.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mountaineerbr/shellChatGPT
 	arch = any
 	license = GPL3

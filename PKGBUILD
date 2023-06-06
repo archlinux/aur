@@ -2,7 +2,7 @@
 pkgname='chatgpt.sh'
 pkgver=0.14.5
 _commit=4d029124ea5163c1dc09a113d48155a565fd4d1b
-pkgrel=1
+pkgrel=2
 pkgdesc='Shell wrapper for ChatGPT, DALL-E, Whisper, and awesome-chatgpt-prompts(-zh).'
 url='https://github.com/mountaineerbr/shellChatGPT'
 arch=('any')
