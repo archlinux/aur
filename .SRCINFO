@@ -1,6 +1,6 @@
 pkgbase = texpresso-git
 	pkgdesc = Live rendering and error reporting for LaTeX
-	pkgver = r29.7bcf830
+	pkgver = r34.eae4844
 	pkgrel = 1
 	url = https://github.com/let-def/texpresso
 	arch = x86_64
@@ -24,12 +24,12 @@ pkgbase = texpresso-git
 	depends = openssl
 	depends = sdl2
 	depends = zlib
-	provides = texpresso=r29.7bcf830
+	provides = texpresso=r34.eae4844
 	conflicts = texpresso
 	source = git+https://github.com/let-def/texpresso.git
-	source = texpresso-tonic::git+https://github.com/let-def/tectonic.git#commit=03e79075be9ee35587c529c3bae6b5868997fa7c
-	source = harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git#commit=4a1d891c6317d2c83e5f3c2607ec5f5ccedffcde
-	source = tectonic-staging::git+https://github.com/tectonic-typesetting/tectonic-staging.git#commit=70dbe0603c4b27f17b3b4dcb25a85e9da3050fe9
+	source = texpresso-tonic::git+https://github.com/let-def/tectonic.git
+	source = harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git
+	source = tectonic-staging::git+https://github.com/tectonic-typesetting/tectonic-staging.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

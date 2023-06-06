@@ -1,12 +1,12 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Frédéric Bour <fred@tarides.com>
 
-# Upstream check assumes XDG_RUNTIME_DIR is set
+# Upstream check assumes XDG_RUNTIME_DIR is set and leaves a GUI running
 BUILDENV+=(!check)
 
 pkgname=texpresso-git
 _pkgname=${pkgname%-git}
-pkgver=r29.7bcf830
+pkgver=r34.eae4844
 pkgrel=1
 pkgdesc='Live rendering and error reporting for LaTeX'
 url="https://github.com/let-def/$_pkgname"
@@ -34,9 +34,9 @@ makedepends=(cargo
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git+$url.git"
-        "$_pkgname-tonic::git+${url%/$_pkgname}/tectonic.git#commit=03e79075be9ee35587c529c3bae6b5868997fa7c"
-        'harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git#commit=4a1d891c6317d2c83e5f3c2607ec5f5ccedffcde'
-        'tectonic-staging::git+https://github.com/tectonic-typesetting/tectonic-staging.git#commit=70dbe0603c4b27f17b3b4dcb25a85e9da3050fe9')
+        "$_pkgname-tonic::git+${url%/$_pkgname}/tectonic.git"
+        'harfbuzz::git+https://github.com/harfbuzz/harfbuzz.git'
+        'tectonic-staging::git+https://github.com/tectonic-typesetting/tectonic-staging.git')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -69,7 +69,7 @@ build() {
 
 check() {
 	cd "${pkgname%-git}"
-	"./build/$_pkgname" test/simple.tex
+	"./build/$_pkgname-tonic" test/simple.tex
 }
 
 package() {
