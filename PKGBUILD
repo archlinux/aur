@@ -1,7 +1,7 @@
 # Maintainer: Radu Potop <radu@wooptoo.com>
 
 pkgname=aws-lambda-powertools-python
-pkgver=2.16.1
+pkgver=2.16.2
 pkgrel=1
 pkgdesc='A developer toolkit to implement Serverless best practices and increase developer velocity'
 arch=(any)
@@ -21,4 +21,4 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('e3873d6efbff60f9f59e86a8253f68aa1775bcd5c8ecaebdbd8a3803647e64c3')
+sha256sums=('435c3c5177e9332122c24abb4493e9383e2f09b6d629da34993e4701cd192e48')
