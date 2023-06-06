@@ -1,7 +1,7 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef
-pkgver=1.2.2
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='multi-backend declarative package manager for Linux'
 url='https://github.com/steven-omaha/pacdef'
 source=("${pkgname}-${pkgver}.tar.gz::https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('rust')
-sha256sums=('76dcd153f617f4edf0d1feb99f935c3708c53ef3ffda339c5ab89a6cbe13817c')
+sha256sums=('083ace8b468d30135489253a6d4feb08f932fcf778ca5e9c593231b93731e9a0')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
