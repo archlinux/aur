@@ -1,7 +1,7 @@
 pkgbase = gtkhash-caja
 	pkgdesc = A GTK+ utility for computing message digests or checksums (Gtkhash with Caja filemanager plugin)
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/tristanheaven/gtkhash
 	arch = x86_64
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = gtkhash-caja
 	depends = dconf
 	depends = gtk3
 	depends = libb2
-	depends = mbedtls
+	depends = libgcrypt
 	depends = nettle
 	provides = gtkhash
 	provides = gtkhash-caja

@@ -6,7 +6,7 @@
 
 pkgname=gtkhash-caja
 pkgver=1.5
-pkgrel=1
+pkgrel=3
 pkgdesc="A GTK+ utility for computing message digests or checksums (Gtkhash with Caja filemanager plugin)"
 arch=('x86_64')
 url="https://github.com/tristanheaven/gtkhash"
@@ -16,7 +16,7 @@ depends=(
     'dconf'
     'gtk3'
     'libb2'
-    'mbedtls'
+    'libgcrypt'
     'nettle'
 )
 
@@ -48,7 +48,6 @@ build() {
   arch-meson "gtkhash-$pkgver" build \
     -Dglib-checksums='true' \
     -Dlinux-crypto='true' \
-    -Dmbedtls='true' \
     -Dnettle='true' \
     -Dbuild-caja='true' \
     -Dbuild-nautilus='false' \
