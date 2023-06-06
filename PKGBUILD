@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgbase=autodiff
 pkgname=(${pkgbase} python-${pkgbase})
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Automatic differentiation made easier for C++"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 makedepends=(cmake eigen pybind11 python-build python-installer python-setuptools python-wheel)
 # checkdepends=(catch2)
 source=(${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('25371875b7c07185794baa7bb92f4674493b7a225d0761ea88ec5d89621a30832482fb5bdd12df9397a60f018237dbcab52823cdbf2a628b99c9aaaea6f5583f')
+sha512sums=('b2ebfdf49f82a8543916395b54b0dbff3672cb0f69636d2ab8e9c887f53ceac645606bdbf2da56d7051176a88bd8e075ed6dad7f913975f89ac3f8a5f01d14d3')
 
 build() {
   cmake \
