@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Legacy Launcher
+Comment=Simple, light and fast Minecraft launcher
+Icon=legacylauncher
+Exec=/usr/bin/legacylauncher
+StartupWMClass=ch-llaunch-LegacyLauncher
+NoDisplay=false
+Categories=Game;
+Keywords=Minecraft
+StartupNotify=false
+Terminal=false
+PrefersNonDefaultGPU=true
+X-KDE-RunOnDiscreteGpu=true
