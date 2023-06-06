@@ -1,0 +1,16 @@
+pkgbase = laylua-fossil
+	pkgdesc = Lua interface to create layer-shell windows
+	pkgver = 0.2.1.3bbe12f608
+	pkgrel = 1
+	url = https://code.jessemcclure.org/laylua
+	arch = x86_64
+	license = MIT
+	makedepends = fossil
+	depends = cairo
+	depends = luajit
+	depends = pango
+	depends = wayland
+	source = fossil+https://code.jessemcclure.org/laylua
+	sha256sums = SKIP
+
+pkgname = laylua-fossil
