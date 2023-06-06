@@ -23,8 +23,8 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  cc ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -o bsdiff bsdiff.c -lbz2
-  cc ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -o bspatch bspatch.c -lbz2
+  cc ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -o bsdiff bsdiff.c -O3 -lbz2
+  cc ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -o bspatch bspatch.c -O3 -lbz2
 }
 
 package() {
