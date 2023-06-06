@@ -1,0 +1,18 @@
+pkgbase = python-imsim-git
+	pkgdesc = software package that simulates the LSST telescope and survey.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/LSSTDESC/imSim
+	arch = x86_64
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python-galsim
+	depends = python-rubinsim-git
+	source = python-imsim-git::git+https://github.com/LSSTDESC/imSim.git
+	sha256sums = SKIP
+
+pkgname = python-imsim-git
