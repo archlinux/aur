@@ -6,7 +6,7 @@
              {
 -                using (var str = File.OpenRead(typeof(OsuGameBase).Assembly.Location))
 -                    VersionHash = str.ComputeMD5Hash();
-+                VersionHash = "c16fb0529dfe1c0b77a4d20ec8cc67b5";
++                VersionHash = "d8eecb53a231fc75ef0d938ed7c6205b";
              }
              catch
              {
