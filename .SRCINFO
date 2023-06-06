@@ -1,14 +1,16 @@
 pkgbase = ruby-dotenv
-	pkgdesc = Loads environment variables from '.env'.
+	pkgdesc = Loads environment variables from .env
 	pkgver = 2.8.1
-	pkgrel = 1
-	url = https://rubygems.org/gems/dotenv
+	pkgrel = 2
+	url = https://github.com/bkeepers/dotenv
+	install = ruby-dotenv.install
 	arch = any
 	license = MIT
+	makedepends = rubygems
 	depends = ruby
 	noextract = dotenv-2.8.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/dotenv-2.8.1.gem
-	sha256sums = c5944793349ae03c432e1780a2ca929d60b88c7d14d52d630db0508c3a8a17d8
+	source = ruby-dotenv-2.8.1.tar.gz::https://github.com/bkeepers/dotenv/archive/refs/tags/v2.8.1.tar.gz
+	sha256sums = 03f1e21bd6d681501dd719b4f4ce2663049ac27531c0bee69e740e2e9b6526c0
 
 pkgname = ruby-dotenv
