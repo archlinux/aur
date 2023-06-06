@@ -2,7 +2,7 @@
 pkgname=moc-fluidsynth-plugin
 pkgver=0.0.4
 pkgrel=1
-pkgdesc="Decoder plugin for playing MIDI files with FluidSynth using the MOC (Music on Console) player."
+pkgdesc="Plugin for playing MIDI files with FluidSynth using the MOC (Music on Console) player."
 arch=(x86_64)
 url="https://github.com/joanbm/$pkgname"
 license=('GPL2')

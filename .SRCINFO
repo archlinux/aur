@@ -1,5 +1,5 @@
 pkgbase = moc-fluidsynth-plugin
-	pkgdesc = Decoder plugin for playing MIDI files with FluidSynth using the MOC (Music on Console) player.
+	pkgdesc = Plugin for playing MIDI files with FluidSynth using the MOC (Music on Console) player.
 	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/joanbm/moc-fluidsynth-plugin
