@@ -1,7 +1,7 @@
 pkgbase = python-yt
 	pkgdesc = A community-developed analysis and visualization toolkit for volumetric data.
 	pkgver = 4.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://yt-project.org
 	arch = any
 	license = BSD
@@ -19,7 +19,7 @@ pkgbase = python-yt
 	depends = python-sympy
 	depends = python-tomli-w
 	depends = python-tqdm
-	depends = python-typing-extensions
+	depends = python-typing_extensions
 	depends = python-unyt
 	optdepends = jupyterlab: interactive analysis
 	optdepends = openmp: multithred support

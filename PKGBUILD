@@ -3,7 +3,7 @@
 pkgname=python-yt
 _module_name=yt
 pkgver=4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A community-developed analysis and visualization toolkit for volumetric data."
 arch=(any)
 url="http://yt-project.org"
@@ -18,7 +18,7 @@ depends=(
     'python-sympy'
     'python-tomli-w'
     'python-tqdm'
-    'python-typing-extensions'
+    'python-typing_extensions'
     'python-unyt'
 )
 makedepends=(
@@ -47,12 +47,12 @@ sha256sums=('ed518bab672a84ff4c145a27654f6c7b1c91632062a223592e15ee558779db26')
 
 build() {
   cd "$srcdir/${_module_name}-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/${_module_name}-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -D -m644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
