@@ -1,7 +1,7 @@
 # Maintainer: nicolarevelant44 <nicolarevelant44@outlook.com>
 
 pkgname=italian-draughts-git
-pkgver=1.3.2.r2.g41f62e0
+pkgver=1.3.2.r3.gebb11e5
 pkgrel=1
 pkgdesc="Italian Draughts, a strategy game for 2 players written in C++"
 
@@ -17,7 +17,7 @@ sha256sums=('SKIP'
 
 build() {
 	cd "$pkgname"
-	cmake -B build -DCMAKE_BUILD_TYPE="Release"
+	cmake -B build -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="/usr"
 	cmake --build build
 }
 
