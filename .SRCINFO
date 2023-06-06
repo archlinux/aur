@@ -1,8 +1,8 @@
 pkgbase = namecoin-core-wallet
 	pkgdesc = This package provides the Namecoin Core GUI client, CLI daemon, and daemon user service.
-	pkgver = v24.0
+	pkgver = v25.0
 	pkgrel = 1
-	epoch = 1670802532
+	epoch = 1686084914
 	url = https://namecoin.org/
 	arch = i686
 	arch = x86_64
