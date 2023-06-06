@@ -1,0 +1,12 @@
+pkgbase = csum-git
+	pkgdesc = An open source development library
+	pkgver = r11.e400ed3
+	pkgrel = 1
+	url = https://github.com/openbfdev/csum.git
+	arch = any
+	license = GPL
+	makedepends = git
+	source = csum::git+https://github.com/openbfdev/csum.git
+	md5sums = SKIP
+
+pkgname = csum-git
