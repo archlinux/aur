@@ -8,8 +8,8 @@ pkgdesc="Gnome shell extension to notify new mails - only Gnome shell version 44
 arch=('any')
 url="https://github.com/fthx/new-mail-indicator"
 license=('GPL2')
-depends=('gnome-shell>=44')
-conflicts=('gnome-shell>=45')
+depends=('gnome-shell>=1:44')
+conflicts=('gnome-shell>=1:45')
 makedepends=('git')
 optional=('evolution')
 source=("https://github.com/fthx/new-mail-indicator/archive/refs/heads/master.zip")

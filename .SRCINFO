@@ -6,8 +6,8 @@ pkgbase = gnome-shell-extension-new-mail-indicator
 	arch = any
 	license = GPL2
 	makedepends = git
-	depends = gnome-shell>=44
-	conflicts = gnome-shell>=45
+	depends = gnome-shell>=1:44
+	conflicts = gnome-shell>=1:45
 	source = https://github.com/fthx/new-mail-indicator/archive/refs/heads/master.zip
 	sha256sums = 0f1d8181466e5815827dd41a1b5b14253e9ba9a1c5c2b653208893a09655a8fa
 
