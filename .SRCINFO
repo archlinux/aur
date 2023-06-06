@@ -1,0 +1,18 @@
+pkgbase = pdot-git
+	pkgdesc = Generate dot digraphs based on your PostgreSQL databases
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/dmfay/pdot
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = nodejs
+	makedepends = cargo
+	provides = pdot=0.1.0
+	conflicts = pdot
+	source = git+https://gitlab.com/dmfay/pdot
+	source = git+https://github.com/derekStride/tree-sitter-sql
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pdot-git
