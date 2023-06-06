@@ -1,7 +1,7 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 # Contributor: c4tz
 pkgname=kodi-addon-script-module-inputstreamhelper
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='A simple Kodi module that makes life easier for add-on developers relying on InputStream based add-ons and DRM playback'
 _gitname=script.module.inputstreamhelper
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('git')
 depends=('kodi-addon-inputstream-adaptive')
 source=("https://github.com/emilsvennesson/${_gitname}/releases/download/v${pkgver}/${_gitname}-${pkgver}+matrix.1.zip")
-sha512sums=('8e6858398e1e036c7076f1cafb7106d2d3439fe40dbf9de1f0929fc9b7c19a6faa8e00f1c5f7bdac6c2e6020e5c8e165c027020c0d99229f50f56579606f51b9')
+sha512sums=('e2d51ca455c489178394fa2240a67a6774ced0119a92f6f417f50e930a343bfc50ae736f9619eb57e46625bfe51bd3f55dc26a2e12d5a7e15e4ede1d2e1c1ced')
 
 package() {
 	install -d "${pkgdir}/usr/share/kodi/addons"
