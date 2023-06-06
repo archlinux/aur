@@ -14,8 +14,8 @@ depends=('gtk3' 'lib32-gcc-libs' 'nodejs' 'nss' 'at-spi2-core' 'java-runtime' 'a
 options=(!strip)
 source=("${pkgname%-bin}-deb-${pkgver}.zip::https://cdn.apifox.cn/download/Apifox-linux-deb-latest.zip"
   "LICENSE.html::${url}/help/app/faq/")
-sha256sums=('990bb2deeb7fc22bb59bfeba906dd5b92d861b7dfd642b6950249ee1424d0e04'
-            '0e912bb92bbe3f542ba2622eeec04c6c718bd224e90177bcf4a64f152564b447')
+sha256sums=('1d93e8a9778a5fe4716d3d7fa6518f9c169e17fefbc1b88d6415c042507ed034'
+            'ced0a381df47fff43afde7e40be9cba87798e27807d4cf989ee4c111a284c5a3')
    
 package() {
     ar -x "${pkgname%-bin}_${pkgver}_amd64.deb"
