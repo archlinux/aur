@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-asus
-pkgver=6.3.5.arch1
+pkgver=6.3.6.arch1
 pkgrel=1
 pkgdesc='Linux (with asus-linux.org patches)'
 _srctag=v${pkgver%.*}-${pkgver##*.}

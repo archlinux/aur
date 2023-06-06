@@ -1,6 +1,6 @@
 pkgbase = linux-asus
 	pkgdesc = Linux (with asus-linux.org patches)
-	pkgver = 6.3.5.arch1
+	pkgver = 6.3.6.arch1
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/fedora-kernel
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = linux-asus
 	makedepends = python-sphinx
 	makedepends = texlive-latexextra
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.3.5-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.3.6-arch1
 	source = asus-linux-fedora-kernel::git+https://gitlab.com/asus-linux/fedora-kernel#commit=d05d9d73e54ffd6f842443a0086ca1932a39b074
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
