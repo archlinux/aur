@@ -23,10 +23,10 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_gitname}"
-	git submodule update --init &&
+	git submodule update --init
 	cd -
 	cmake -B build -S ${_gitname%-git} \
-		-D CMAKE_INSTALL_PREFIX=/usr &&
+		-D CMAKE_INSTALL_PREFIX=/usr
 	cmake --build build
 }
 
