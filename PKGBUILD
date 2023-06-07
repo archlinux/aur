@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DataVisualizations
-_pkgver=1.2.3
+_pkgver=1.3.0
 pkgname=r-${_pkgname,,}
-pkgver=1.2.3
-pkgrel=6
+pkgver=1.3.0
+pkgrel=1
 pkgdesc='Visualizations of High-Dimensional Data'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -46,7 +46,7 @@ optdepends=(
   r-vioplot
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2e657944dc670265ca5ac822bd1387280048df2245bbd0a8a8f0ba480b94a1c6')
+sha256sums=('9ea66501fed6d7305add5ae68cbf04d370215899919856a389e699523dd9ba6c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
