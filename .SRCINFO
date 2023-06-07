@@ -1,8 +1,8 @@
 pkgbase = plainpanel
 	pkgdesc = plainDE panel
-	pkgver = 0.5
+	pkgver = 0.5.2
 	pkgrel = 1
-	url = https://plainde.org
+	url = https://plainde.github.io
 	arch = x86_64
 	arch = i686
 	arch = pentium4
@@ -11,8 +11,7 @@ pkgbase = plainpanel
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	makedepends = git
-	depends = qt6-base
+	depends = qt5-base
 	depends = noto-fonts-emoji
 	depends = polkit
 	depends = ttf-opensans
@@ -26,7 +25,7 @@ pkgbase = plainpanel
 	depends = plainartwork
 	depends = plainabout
 	conflicts = plainpanel-git
-	source = git+https://github.com/plainDE/plainPanel.git#tag=0.4.1
-	sha256sums = SKIP
+	source = plainpanel-0.5.2.tar.gz::https://github.com/plainDE/plainPanel/archive/refs/tags/0.5.2.tar.gz
+	sha256sums = 1a707d23a245f2ffcacbdd28b7adb8b0ccde9c40d3f56a90ebc3cd0186e040e9
 
 pkgname = plainpanel
