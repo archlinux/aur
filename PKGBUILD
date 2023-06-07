@@ -19,6 +19,11 @@ sha512sums=('155d8165792935176bf9484b42d6caa715b3c6ff36d266be4d8334fc17a2fdd4a85
 ENABLE_NEON_ON_ARMv7=0
 
 prepare() {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        echo 'ERROR: $VIRTUAL_ENV is set, which means the build is running in a virtual Python environment.'
+        echo 'ERROR: Rerun the build in a fresh terminal, using the default/system Python environment.'
+        exit 1
+    fi
     if [[ $CARCH = 'aarch64' || ( "$CARCH" = 'armv7h' && "$ENABLE_NEON_ON_ARMv7" -ne 0 ) ]]; then
         cd "blake3-py-${pkgver}"
         echo -e '[tool.maturin]\ncargo-extra-args = "--features neon"' >> pyproject.toml
