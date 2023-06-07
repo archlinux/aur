@@ -15,7 +15,7 @@ sha256sums=('c9c5fd12bc3962c23dc22d4d79ff4ec2135320be3a074117094357abffde41bd')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/Decodetalkers/qmarinetheme/archive/refs/tags/v${pkgver}.tar.gz")
 build() {
   cd ${_pkguntar}-$pkgver
-  cmake -GNinja \
+  cmake . -GNinja \
         -DCMAKE_INSTALL_PREFIX=/usr
   ninja
 }
