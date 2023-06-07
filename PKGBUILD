@@ -2,8 +2,8 @@
 # Contributor: William Aass Dahlen <cznk@protonmail.com>
 
 pkgname=azure-kubelogin
-_pkgname=kubelogin
-pkgver=0.0.29
+_name=kubelogin
+pkgver=0.0.30
 pkgrel=1
 pkgdesc="A Kubernetes credential (exec) plugin implementing azure authentication"
 arch=(x86_64)
@@ -13,11 +13,11 @@ makedepends=(go)
 depends=(glibc)
 conflicts=(kubelogin)
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Azure/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b16ee2abc3df550be6a5845b73b05b370fa9d2450dabbc4cf207781c00ab8970')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Azure/$_name/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b9b2198beae24827dba7bca312e2d872d6668448cadebf19a87db087639c4ea2')
 
-_archive="$_pkgname-$pkgver"
-_git_hash="2026869c86368dafa3ff06001b68f9a881dee75c"
+_archive="$_name-$pkgver"
+_git_hash="f9291df8538a4f8d3eb1957d75027199bbea0481"
 
 build() {
   cd "$_archive"
@@ -29,9 +29,8 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   _go_version=$(go version | cut -d " " -f 3)
-  _ld_flags="-X main.version=v$pkgver/$_git_hash -X main.goVersion=$_go_version -X 'main.platform=linux/amd64'"
-
-  go build -ldflags "-linkmode external $_ld_flags" .
+  _ld_flags="-linkmode external -X main.version=v$pkgver/$_git_hash -X main.goVersion=$_go_version -X 'main.platform=linux/amd64'"
+  go build -ldflags "$_ld_flags" .
 }
 
 check() {
