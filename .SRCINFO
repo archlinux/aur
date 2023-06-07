@@ -1,0 +1,9 @@
+pkgbase = systemd-noop
+	pkgdesc = If a dependency enforce you to install systemd, but you dont want it, this will help you ;)
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL3+
+	provides = systemd
+
+pkgname = systemd-noop
