@@ -1,7 +1,7 @@
 # Maintainer: AstroFloyd  < AstroFloyd [at] gmail [dt] com >
 pkgname=libthesky
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fortran library to compute the positions of celestial bodies and events with great accuracy"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://libthesky.sourceforge.net/"
@@ -15,7 +15,7 @@ sha512sums=('70bcc525d54f1645cff65fc0ac702fb0a19445d74fa3c567aa07fed027b966c4753
 build() {
     mkdir -p "$pkgname-$pkgver"/build
     cd "$pkgname-$pkgver"/build/
-    cmake -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr/" ..
+    FC=gfortran cmake -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr/" ..
     make
 }
 

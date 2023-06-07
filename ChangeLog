@@ -2,6 +2,10 @@
 ChangeLog for libTheSky PKGBUILD
 http://libthesky.sourceforge.net/
 
+* libthesky-0.4.2-2 (2023-06-07 - AstroFloyd)
+	Revision bump to v0.4.2-2:
+	Solve issue caused by symlink f95 -> gfortran.
+
 * libthesky-0.4.2-1 (2021-08-22 - AstroFloyd)
 	Version bump to v0.4.2-1:
 	remove libsufr from makedepends.
