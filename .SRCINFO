@@ -1,7 +1,8 @@
 pkgbase = qmarineplatformtheme6
 	pkgdesc = Another qt6ct for qt6, use toml as config
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/Decodetalkers/qmarinetheme
 	arch = x86_64
 	arch = aarch64
 	license = MIT
