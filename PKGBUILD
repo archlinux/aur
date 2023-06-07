@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="mdview-appimage"
-pkgver=2.6.2
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Standalone Markdown viewer "
 arch=('x86_64')
@@ -13,12 +13,12 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-${arch}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/c3er/mdview/master/LICENSE")
-sha256sums=('385f423089e7da839c7772334b3ea0f5390d07f6c234c82d34edbda33285de6f'
+sha256sums=('560481b7b978a44d1d3f11244517d785d16467784d0b101cab9a83f48b633e83'
             '4014420ba4b48c5f19ac8645ebeec93b9a0ccd41359700efc8b4d83738d16eeb')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/mdview.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
