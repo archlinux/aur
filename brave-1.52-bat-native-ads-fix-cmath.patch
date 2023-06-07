@@ -1,0 +1,26 @@
+diff --git a/brave/components/brave_ads/core/internal/ml/data/vector_data.cc b/brave/components/brave_ads/core/internal/ml/data/vector_data.cc
+index 45f92fcde0..c9dadc8852 100644
+--- a/brave/components/brave_ads/core/internal/ml/data/vector_data.cc
++++ b/brave/components/brave_ads/core/internal/ml/data/vector_data.cc
+@@ -5,6 +5,7 @@
+ 
+ #include "brave/components/brave_ads/core/internal/ml/data/vector_data.h"
+ 
++#include <cmath>
+ #include <cstddef>
+ #include <limits>
+ #include <numeric>
+diff --git a/brave/components/brave_ads/core/internal/ml/transformation/hash_vectorizer.cc b/brave/components/brave_ads/core/internal/ml/transformation/hash_vectorizer.cc
+index 2ec39abd0f..8c58230207 100644
+--- a/brave/components/brave_ads/core/internal/ml/transformation/hash_vectorizer.cc
++++ b/brave/components/brave_ads/core/internal/ml/transformation/hash_vectorizer.cc
+@@ -7,6 +7,9 @@
+ 
+ #include "third_party/zlib/zlib.h"
+ 
++#include <cmath>
++#include <cstring>
++
+ namespace brave_ads::ml {
+ 
+ namespace {

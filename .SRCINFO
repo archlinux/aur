@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = Web browser that blocks ads and trackers by default
-	pkgver = 1.52.117
-	pkgrel = 2
+	pkgver = 1.52.122
+	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
 	license = BSD
@@ -65,18 +65,25 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	options = !lto
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.52.117
-	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.52.117
-	source = chromium-mirror::git+https://github.com/chromium/chromium.git#tag=114.0.5735.90
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.52.122
+	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.52.122
+	source = chromium-mirror::git+https://github.com/chromium/chromium.git#tag=114.0.5735.110
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v8/chromium-launcher-8.tar.gz
 	source = chromium-launcher-electron-app.patch
 	source = chromium-launcher-vendor.patch
 	source = system-rust-utils.patch
+	source = 0001-Fix-Rust-linking-on-component-and-debug-Windows-builds.patch
+	source = 0002-Remove-the-prebuilt-toolchain-from-the-Android-team.patch
 	source = brave-1.19-BUILD.gn.patch
+	source = brave-1.43-bitcoin-core_remove-serialize.h.patch
 	source = brave-1.43-debounce-debounce_navigation_throttle_fix.patch
 	source = brave-1.43-ntp_background_images-std-size_t.patch
 	source = brave-1.48-partitioned_host_state_map-cstring.patch
+	source = brave-1.52-bat-native-ads-fix-cmath.patch
+	source = brave-1.52-bitints-libstdcxx-bypass.patch
+	source = brave-1.52-missing-includes.patch
+	source = brave-1.52-playlist-user-agent-only-constructor.patch
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/fa08adba87b6222bdf9ba31aaa41579e634ec444/add-some-typename-s-that-are-required-in-C-17.patch
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/fa08adba87b6222bdf9ba31aaa41579e634ec444/REVERT-disable-autoupgrading-debug-info.patch
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/fa08adba87b6222bdf9ba31aaa41579e634ec444/download-bubble-typename.patch
@@ -91,11 +98,18 @@ pkgbase = brave
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5
 	sha256sums = 404bf09df39310a1e374c5e7eb9c7311239798adf4e8cd85b7ff04fc79647f88
-	sha256sums = 579c5cf5cd59c89ac363f0adcf42463a4aa2effb30fbf09467d4745bf26c2e7d
+	sha256sums = dcaf12a8b2ba15cefafd6e3c053b2ec490b1b8e1c89a3309e41133c0cd183ed3
+	sha256sums = dfb5ca39abe7dd449729d3af3724fe27208d8cda76ecc4916cc57a4ad9c8e1b1
+	sha256sums = 01a809e8bf7eeed6e263bc7118d6e40395dca7ac8463dbe230303e13d17d673e
 	sha256sums = 12a3d37ffca4c0fa25f89f02efdf79d24f6412ee29ec35e8a00f9086dba4e822
+	sha256sums = 984bb0257ed6fe4af543c3fb803ed81bddc97ff367ccd93620404be60cb78eb3
 	sha256sums = 30a6a9ca2a6dd965cb2d9f02639079130948bf45d483f0c629f2cf8394a1c22f
 	sha256sums = ea0cd714ccaa839baf7c71e9077264016aa19415600f16b77d5398fd49f5a70b
 	sha256sums = 3864fcb12aaec849fd0e5423c9c5dfb1fdd7805e298a52125776bb24abe71e3c
+	sha256sums = 9a0c3d05aaa20812da8ee1fcb10c55a3df92f0c8248c3d2cbe4906d94dd48e49
+	sha256sums = f781d6315e4147b775350d7a36481c3ce43b582eee5ee228768e42c30d9dd9ca
+	sha256sums = 1654fa922d10a591d5c28159a6d22d1183bcbd3448f175d7f3e2e11879588ddd
+	sha256sums = 7cf8569ff905666889842c36e82d51c08d482745cd2f71e48fa1296824f09839
 	sha256sums = 621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11
 	sha256sums = 1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69
 	sha256sums = d464eed4be4e9bf6187b4c40a759c523b7befefa25ba34ad6401b2a07649ca2a

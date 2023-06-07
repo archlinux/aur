@@ -1,35 +1,40 @@
 diff --git a/script/cargo.py b/script/cargo.py
-index 0766c5f118..40b88e9a5c 100755
+index 0766c5f118..8ed8893272 100755
 --- a/script/cargo.py
 +++ b/script/cargo.py
-@@ -21,7 +21,7 @@ def run_cargo(command, args):
+@@ -16,8 +16,8 @@ def run_cargo(command, args):
+     env = os.environ.copy()
+ 
+     rustup_home = args.rustup_home
+-    env['RUSTUP_HOME'] = rustup_home
+-    env['CARGO_HOME'] = rustup_home
++    # env['RUSTUP_HOME'] = rustup_home
++    # env['CARGO_HOME'] = rustup_home
      # Enable experimental features in non-nightly builds
      env['RUSTC_BOOTSTRAP'] = '1'
  
--    rustup_bin_dir = os.path.abspath(os.path.join(rustup_home, 'bin'))
-+    rustup_bin_dir = os.path.abspath(os.path.join('/usr', 'bin'))
-     cargo_exe = args.exe
- 
-     env['PATH'] = rustup_bin_dir + os.pathsep + env['PATH']
 diff --git a/script/cargo_cbindgen.py b/script/cargo_cbindgen.py
-index db28fd013e..e2082e36fe 100755
+index db28fd013e..78a9dd9481 100755
 --- a/script/cargo_cbindgen.py
 +++ b/script/cargo_cbindgen.py
-@@ -20,7 +20,8 @@ def run(args):
-     cargo_home = args.cargo_home
-     env["CARGO_HOME"] = cargo_home
+@@ -15,10 +15,10 @@ def run(args):
+     env = os.environ.copy()
  
--    rustup_bin = os.path.abspath(os.path.join(rustup_home, "bin"))
-+    # rustup_bin = os.path.abspath(os.path.join(rustup_home, "bin"))
-+    rustup_bin = os.path.abspath(os.path.join("/usr", "bin"))
+     rustup_home = args.rustup_home
+-    env["RUSTUP_HOME"] = rustup_home
++    # env["RUSTUP_HOME"] = rustup_home
+ 
+     cargo_home = args.cargo_home
+-    env["CARGO_HOME"] = cargo_home
++    # env["CARGO_HOME"] = cargo_home
+ 
+     rustup_bin = os.path.abspath(os.path.join(rustup_home, "bin"))
      cbindgen_bin = os.path.join(
-         rustup_bin, "cbindgen" if sys.platform != "win32" else "cbindgen.exe"
-     )
 diff --git a/script/download_rust_deps.py b/script/download_rust_deps.py
-index d1d4b70eb2..ce9e6e816c 100755
+index 60ff491eb9..94521879c6 100755
 --- a/script/download_rust_deps.py
 +++ b/script/download_rust_deps.py
-@@ -191,7 +191,8 @@ def main():
+@@ -203,7 +203,8 @@ def main():
          "features": "vendored-openssl",
      }]
      for tool in tools:

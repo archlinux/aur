@@ -1,0 +1,12 @@
+diff --git a/brave/components/brave_wallet/browser/eth_abi_decoder.cc b/brave/components/brave_wallet/browser/eth_abi_decoder.cc
+index 406f96476f..31ef6ac196 100644
+--- a/brave/components/brave_wallet/browser/eth_abi_decoder.cc
++++ b/brave/components/brave_wallet/browser/eth_abi_decoder.cc
+@@ -73,7 +73,6 @@ absl::optional<std::string> GetAddressFromData(
+ template <typename M>
+ absl::optional<M> GetUintFromData(const std::vector<uint8_t>& input,
+                                   size_t offset) {
+-  static_assert(std::is_integral<M>::value, "M must be an integer type");
+ 
+   auto arg = GetArgFromData(input, offset);
+   if (!arg) {

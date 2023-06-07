@@ -1,0 +1,383 @@
+From 635f82e7dd5802b338a5a404f92672b1ed878df1 Mon Sep 17 00:00:00 2001
+From: danakj <danakj@chromium.org>
+Date: Thu, 4 May 2023 16:33:48 +0000
+Subject: [PATCH] Remove the prebuilt toolchain from the Android team
+
+We build our own compiler and stdlib for Chrome unconditionally now, so
+this is no longer used.
+
+These paths were broken while fixing the Windows build, so time for
+them to go.
+
+Bug: 1292038
+Change-Id: I9d43875671245e5be08fa63aff06f13c0b2243d9
+Cq-Include-Trybots: luci.chromium.try:android-rust-arm32-rel,android-rust-arm64-dbg,android-rust-arm64-rel,linux-rust-x64-rel,linux-rust-x64-dbg,win-rust-x64-rel,win-rust-x64-dbg
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/4500460
+Reviewed-by: Adrian Taylor <adetaylor@chromium.org>
+Commit-Queue: danakj <danakj@chromium.org>
+Reviewed-by: Ben Pastene <bpastene@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1139597}
+---
+ DEPS                                          | 13 ----
+ build/config/rust.gni                         | 75 +++++++------------
+ build/rust/std/BUILD.gn                       | 57 ++++----------
+ build/rust/std/find_std_rlibs.py              | 32 --------
+ .../ci/android-rust-arm32-rel/properties.json |  3 +-
+ .../ci/android-rust-arm64-dbg/properties.json |  3 +-
+ .../ci/android-rust-arm64-rel/properties.json |  3 +-
+ .../android-rust-arm32-rel/properties.json    |  3 +-
+ .../android-rust-arm64-dbg/properties.json    |  3 +-
+ .../android-rust-arm64-rel/properties.json    |  3 +-
+ .../chromium/ci/chromium.rust.star            |  3 -
+ 11 files changed, 47 insertions(+), 151 deletions(-)
+
+diff --git a/DEPS b/DEPS
+index 98d20c55e07a5..9606cafe4c800 100644
+--- a/DEPS
++++ b/DEPS
+@@ -241,9 +241,6 @@ vars = {
+   # Fetch Rust toolchain.
+   'checkout_rust': 'host_os == "linux"',
+ 
+-  # Fetch the Android team's Rust toolchain.
+-  'fetch_android_chromium_rust_toolchain': False,
+-
+   # See //docs/testing/regression-test-selection.md
+   # for info on RTS
+   'checkout_rts_model': False,
+@@ -560,16 +557,6 @@ deps = {
+     ],
+     'dep_type': 'cipd',
+   },
+-  'src/third_party/android_rust_toolchain/toolchain': {
+-    'packages': [
+-      {
+-        'package': 'chromium/third_party/android_rust_toolchain/linux-amd64',
+-        'version': 'version:2@1.64.0.cr2',
+-      },
+-    ],
+-    'dep_type': 'cipd',
+-    'condition': 'fetch_android_chromium_rust_toolchain',
+-  },
+ 
+   # We don't know target_cpu at deps time. At least until there's a universal
+   # binary of httpd-php, pull both intel and arm versions in DEPS and then pick
+diff --git a/build/config/rust.gni b/build/config/rust.gni
+index c0d934ce193f2..544ca33a8e036 100644
+--- a/build/config/rust.gni
++++ b/build/config/rust.gni
+@@ -35,19 +35,18 @@ declare_args() {
+   # all Rust features enabled.
+   enable_all_rust_features = false
+ 
+-  # Use the Rust toolchain built in-tree. See //tools/rust.
+-  use_chromium_rust_toolchain = true
+-
+-  # Chromium currently has a Rust toolchain for Android and Linux, but
+-  # if you wish to experiment on more platforms you can use this
+-  # argument to specify an alternative toolchain.
+-  # This should be an absolute path to a directory
+-  # containing a 'bin' directory and others. Commonly
++  # Chromium provides a Rust toolchain in //third_party/rust-toolchain when
++  # checkout_rust is True (which is being rolled out by default over time).
++  #
++  # To use a custom toolchain instead, specify an absolute path to the root of
++  # a Rust sysroot, which will have a 'bin' directory and others. Commonly
+   # <home dir>/.rustup/toolchains/nightly-<something>-<something>
+   rust_sysroot_absolute = ""
+ 
+-  # If you're using an external Rust toolchain, set this to a Rust
+-  # the output of rustc -V.
++  # If you're using a Rust toolchain as specified by rust_sysroot_absolute,
++  # set this to the output of `rustc -V`. Changing this string will cause all
++  # Rust targets to be rebuilt, which allows you to update your toolchain and
++  # not break incremental builds.
+   rustc_version = ""
+ 
+   # If you're using a Rust toolchain as specified by rust_sysroot_absolute,
+@@ -77,10 +76,9 @@ declare_args() {
+   host_toolchain_no_sanitizers = host_toolchain
+ }
+ 
++# Use a separate declare_args so these variables' defaults can depend on the
++# ones above.
+ declare_args() {
+-  # Use a separate declare_args so these variables' defaults can depend on the
+-  # ones above.
+-
+   # Individual Rust components.
+ 
+   # Conversions between Rust types and C++ types.
+@@ -105,36 +103,33 @@ declare_args() {
+   enable_rust_boringssl = enable_all_rust_features
+ }
+ 
+-# Platform support for "official" toolchains (Android or Chromium)
+-android_toolchain_supports_platform =
+-    (!is_nacl &&
+-     (is_android && (current_cpu == "arm" || current_cpu == "arm64" ||
+-                     current_cpu == "x64" || current_cpu == "x86"))) ||
+-    (is_linux && current_cpu == "x64")
++# Use the Rust toolchain built in-tree. When false, we use the prebuilt Rust
++# stdlibs that come with the specified custom toolchain.
++use_chromium_rust_toolchain = rust_sysroot_absolute == ""
++
++# Platform support for the Rust toolchain.
+ chromium_toolchain_supports_platform = !is_nacl
+ custom_toolchain_supports_platform = !is_nacl || rust_toolchain_supports_nacl
+ 
+-toolchain_has_rust =
+-    enable_rust &&
+-    ((use_chromium_rust_toolchain && chromium_toolchain_supports_platform) ||
+-     (!use_chromium_rust_toolchain && android_toolchain_supports_platform) ||
+-     (rust_sysroot_absolute != "" && custom_toolchain_supports_platform))
++# Not all target triples (GN toolchains) are supported by the Rust compiler.
++# Define if we support the current GN toolchain.
++toolchain_has_rust = false
+ 
+ # The rustc_revision is used to introduce a dependency on the toolchain version
+ # (so e.g. rust targets are rebuilt, and the standard library is re-copied when
+ # the toolchain changes). It is left empty for custom toolchains.
+ rustc_revision = ""
+-if (toolchain_has_rust) {
++
++if (enable_rust) {
+   if (use_chromium_rust_toolchain) {
++    toolchain_has_rust = chromium_toolchain_supports_platform
+     update_rust_args = [ "--print-package-version" ]
+     rustc_revision = exec_script("//tools/rust/update_rust.py",
+                                  update_rust_args,
+                                  "trim string")
+-  } else if (rust_sysroot_absolute != "") {
+-    rustc_revision = rustc_version
+   } else {
+-    # Android toolchain version.
+-    rustc_revision = "rustc 1.64.0-dev (Android Rust Toolchain version 9099361)"
++    toolchain_has_rust = custom_toolchain_supports_platform
++    rustc_revision = rustc_version
+   }
+ }
+ 
+@@ -150,21 +145,10 @@ build_rust_crash = toolchain_has_rust && enable_rust_crash
+ # portability. In practice if an external toolchain was specified, it might
+ # be an absolute path, but we'll do our best.
+ if (enable_rust) {
+-  if (rust_sysroot_absolute != "") {
+-    rust_sysroot = get_path_info(rust_sysroot_absolute, "abspath")
+-    use_unverified_rust_toolchain = true
+-  } else if (use_chromium_rust_toolchain) {
++  if (use_chromium_rust_toolchain) {
+     rust_sysroot = "//third_party/rust-toolchain"
+-    use_unverified_rust_toolchain = false
+   } else {
+-    if (host_os != "linux") {
+-      assert(false,
+-             "Attempt to use Android Rust toolchain on an unsupported platform")
+-    }
+-
+-    rust_sysroot = "//third_party/android_rust_toolchain/toolchain"
+-    use_unverified_rust_toolchain = false
+-    extra_sysroot_libs += [ "libunwind.a" ]
++    rust_sysroot = get_path_info(rust_sysroot_absolute, "abspath")
+   }
+ }
+ 
+@@ -266,13 +250,6 @@ if (current_cpu == "x86") {
+ 
+ assert(!toolchain_has_rust || rust_target_arch != "")
+ 
+-# Must use Chromium Rust toolchain to get precisely matching LLVM versions
+-# in order to enable LTO. Some say that LTO probably works if LLVM is "close
+-# enough", but we don't want to take that risk.
+-assert(!use_thin_lto || !enable_rust || use_chromium_rust_toolchain ||
+-           use_unverified_rust_toolchain,
+-       "Must use Chromium Rust toolchain for LTO")
+-
+ # Arguments for Rust invocation.
+ # This is common between gcc/clang, Mac and Windows toolchains so specify once,
+ # here. This is not the complete command-line: toolchains should add -o
+diff --git a/build/rust/std/BUILD.gn b/build/rust/std/BUILD.gn
+index 03b894327c0d0..60aea480a42a1 100644
+--- a/build/rust/std/BUILD.gn
++++ b/build/rust/std/BUILD.gn
+@@ -70,12 +70,6 @@ if (toolchain_has_rust) {
+     "unwind",
+   ]
+ 
+-  # rlibs explicitly ignored when copying prebuilt sysroot libraries.
+-  # find_std_rlibs.py rightfully errors out if an unexpected prebuilt lib is
+-  # encountered, since it usually indicates we missed something. This ignore
+-  # list is also passed to it. This has no effect on the local std build.
+-  ignore_stdlib_files = []
+-
+   # proc_macro is special: we only run proc macros on the host, so we only want
+   # it for our host toolchain.
+   if (current_toolchain == host_toolchain_no_sanitizers) {
+@@ -83,10 +77,6 @@ if (toolchain_has_rust) {
+     # includes proc_macro in the prebuilts copied in find_stdlib. Otherwise it
+     # is not built or copied.
+     stdlib_files += [ "proc_macro" ]
+-  } else {
+-    # Explicitly ignore it from the prebuilts. Nothing needs to be done for the
+-    # local std build.
+-    ignore_stdlib_files += [ "proc_macro" ]
+   }
+ 
+   # Different Rust toolchains may add or remove files relative to the above
+@@ -198,9 +188,11 @@ if (toolchain_has_rust) {
+     }
+ 
+     group("local_stdlib_libs") {
+-      assert(
+-          enable_rust,
+-          "Some C++ target is including Rust code even though enable_rust=false")
++      assert(toolchain_has_rust,
++             "Some C++ target is depending on Rust code even though " +
++                 "toolchain_has_rust=false. Usually this would mean" +
++                 "a NaCl target is depending on Rust, as there's no Rust " +
++                 "toolchain targetting NaCl.")
+       all_dependent_configs = [ ":stdlib_dependent_libs" ]
+       deps = []
+       foreach(libname, stdlib_files + skip_stdlib_files) {
+@@ -212,9 +204,6 @@ if (toolchain_has_rust) {
+     # Builds the stdlib and points the rustc `--sysroot` to them. Used by
+     # targets for which linking is driven by Rust (bins and dylibs).
+     group("stdlib_for_rustc") {
+-      assert(
+-          enable_rust,
+-          "Some C++ target is including Rust code even though enable_rust=false")
+       all_dependent_configs = [ ":local_stdlib_sysroot" ]
+       public_deps = [ ":local_stdlib_libs" ]
+     }
+@@ -228,27 +217,25 @@ if (toolchain_has_rust) {
+         ":remap_alloc",
+       ]
+     }
+-
+-    not_needed([ "ignore_stdlib_files" ])
+   } else {
+     action("find_stdlib") {
+-      # Collect prebuilt Rust libraries from toolchain package and copy to a known
+-      # location.
++      # Collect prebuilt Rust libraries from toolchain package and copy to a
++      # known location.
+       #
+       # The Rust toolchain contains prebuilt rlibs for the standard library and
+       # its dependencies. However, they have unstable names: an unpredictable
+       # metadata hash is appended to the known crate name.
+       #
+       # We must depend on these rlibs explicitly when rustc is not in charge of
+-      # linking. However, it is difficult to construct GN rules to do so when the
+-      # names can't be known statically.
++      # linking. However, it is difficult to construct GN rules to do so when
++      # the names can't be known statically.
+       #
+       # This action copies the prebuilt rlibs to a known location, removing the
+       # metadata part of the name. In the process it verifies we have all the
+-      # libraries we expect and none that we don't. A depfile is generated so this
+-      # step is re-run when any libraries change. The action script additionally
+-      # verifies rustc matches the expected version, which is unrelated but this
+-      # is a convenient place to do so.
++      # libraries we expect and none that we don't. A depfile is generated so
++      # this step is re-run when any libraries change. The action script
++      # additionally verifies rustc matches the expected version, which is
++      # unrelated but this is a convenient place to do so.
+       #
+       # The action refers to `stdlib_files`, `skip_stdlib_files`, and the
+       # associated //build/config/rust.gni vars `removed_rust_stdlib_libs` and
+@@ -259,8 +246,8 @@ if (toolchain_has_rust) {
+       out_libdir = rebase_path(target_out_dir, root_build_dir)
+       out_depfile = rebase_path(depfile, root_build_dir)
+ 
+-      # For the rustc sysroot we must include even the rlibs we don't pass to the
+-      # C++ linker.
++      # For the rustc sysroot we must include even the rlibs we don't pass to
++      # the C++ linker.
+       all_stdlibs_to_copy = stdlib_files + skip_stdlib_files
+       args = [
+         "--rust-bin-dir",
+@@ -282,20 +269,6 @@ if (toolchain_has_rust) {
+         rustc_revision,
+       ]
+ 
+-      if (!use_unverified_rust_toolchain) {
+-        args += [
+-          "--stdlibs",
+-          string_join(",", all_stdlibs_to_copy),
+-        ]
+-
+-        if (ignore_stdlib_files != []) {
+-          args += [
+-            "--ignore-stdlibs",
+-            string_join(",", ignore_stdlib_files),
+-          ]
+-        }
+-      }
+-
+       if (extra_sysroot_libs != []) {
+         args += [
+           "--extra-libs",
+diff --git a/build/rust/std/find_std_rlibs.py b/build/rust/std/find_std_rlibs.py
+index 85ab477a9450c..386258f890c01 100755
+--- a/build/rust/std/find_std_rlibs.py
++++ b/build/rust/std/find_std_rlibs.py
+@@ -33,10 +33,6 @@ def main():
+   parser.add_argument("--depfile-target",
+                       help="Target to key depfile around",
+                       required=True)
+-  parser.add_argument("--stdlibs",
+-                      help="Expected list of standard library libraries")
+-  parser.add_argument("--ignore-stdlibs",
+-                      help="List of sysroot libraries to ignore")
+   parser.add_argument("--extra-libs",
+                       help="List of extra non-libstd sysroot libraries")
+   parser.add_argument("--rustc-revision",
+@@ -44,24 +40,6 @@ def main():
+                       " on the rustc version.")
+   args = parser.parse_args()
+ 
+-  # Expected rlibs by concise name (the crate name, plus a disambiguating suffix
+-  # e.g. "-2" when necessary).
+-  if args.stdlibs:
+-    rlibs_expected = set()
+-    for lib in args.stdlibs.split(','):
+-      # The version is only included if there's more than one of `name`, and
+-      # even then is only included for the 2nd onward.
+-      (name, version) = EXPECTED_STDLIB_INPUT_REGEX.match(lib).group(1, 2)
+-      if version is None:
+-        rlibs_expected.add(name)
+-      else:
+-        rlibs_expected.add(f"{name}-{version}")
+-    ignore_rlibs = set()
+-    if args.ignore_stdlibs is not None:
+-      ignore_rlibs = set(args.ignore_stdlibs.split(','))
+-  else:
+-    rlibs_expected = None
+-
+   extra_libs = set()
+   if args.extra_libs:
+     for lib in args.extra_libs.split(','):
+@@ -138,13 +116,6 @@ def copy_file(infile, outfile):
+ 
+       output_filename = f"lib{concise_name}.rlib"
+ 
+-      if rlibs_expected is not None:
+-        if concise_name in ignore_rlibs:
+-          continue
+-        if concise_name not in rlibs_expected:
+-          raise Exception("Found stdlib rlib that wasn't expected: %s" % f)
+-        rlibs_expected.remove(concise_name)
+-
+       infile = os.path.join(rustlib_dir, f)
+       outfile = os.path.join(args.output, output_filename)
+       copy_file(infile, outfile)
+@@ -155,9 +126,6 @@ def copy_file(infile, outfile):
+       copy_file(infile, outfile)
+ 
+     depfile.write("\n")
+-    if rlibs_expected:
+-      raise Exception("We failed to find all expected stdlib rlibs: %s" %
+-                      ','.join(rlibs_expected))
+ 
+ 
+ if __name__ == '__main__':

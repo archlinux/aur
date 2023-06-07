@@ -1,0 +1,60 @@
+diff --git a/brave/components/brave_rewards/core/common/request_util.h b/brave/components/brave_rewards/core/common/request_util.h
+index 07de15e8a6..2d723f5fb8 100644
+--- a/brave/components/brave_rewards/core/common/request_util.h
++++ b/brave/components/brave_rewards/core/common/request_util.h
+@@ -6,6 +6,7 @@
+ #ifndef BRAVE_COMPONENTS_BRAVE_REWARDS_CORE_COMMON_REQUEST_UTIL_H_
+ #define BRAVE_COMPONENTS_BRAVE_REWARDS_CORE_COMMON_REQUEST_UTIL_H_
+ 
++#include <cstdint>
+ #include <map>
+ #include <string>
+ #include <vector>
+diff --git a/brave/components/brave_rewards/core/common/security_util.h b/brave/components/brave_rewards/core/common/security_util.h
+index 070a686c84..2faa892eb5 100644
+--- a/brave/components/brave_rewards/core/common/security_util.h
++++ b/brave/components/brave_rewards/core/common/security_util.h
+@@ -6,6 +6,7 @@
+ #ifndef BRAVE_COMPONENTS_BRAVE_REWARDS_CORE_COMMON_SECURITY_UTIL_H_
+ #define BRAVE_COMPONENTS_BRAVE_REWARDS_CORE_COMMON_SECURITY_UTIL_H_
+ 
++#include <cstdint>
+ #include <map>
+ #include <string>
+ #include <vector>
+diff --git a/brave/components/brave_rewards/core/contribution/contribution.cc b/brave/components/brave_rewards/core/contribution/contribution.cc
+index 9ba025de51..0e9e8be5c9 100644
+--- a/brave/components/brave_rewards/core/contribution/contribution.cc
++++ b/brave/components/brave_rewards/core/contribution/contribution.cc
+@@ -7,6 +7,7 @@
+ 
+ #include <algorithm>
+ #include <cmath>
++#include <ctime>
+ #include <memory>
+ #include <utility>
+ #include <vector>
+diff --git a/brave/components/brave_sync/crypto/crypto.h b/brave/components/brave_sync/crypto/crypto.h
+index 029335df4a..cd06efdea6 100644
+--- a/brave/components/brave_sync/crypto/crypto.h
++++ b/brave/components/brave_sync/crypto/crypto.h
+@@ -5,6 +5,7 @@
+ #ifndef BRAVE_COMPONENTS_BRAVE_SYNC_CRYPTO_CRYPTO_H_
+ #define BRAVE_COMPONENTS_BRAVE_SYNC_CRYPTO_CRYPTO_H_
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 
+diff --git a/brave/components/ipfs/repo_stats.h b/brave/components/ipfs/repo_stats.h
+index b9127788fd..d249a3fa3f 100644
+--- a/brave/components/ipfs/repo_stats.h
++++ b/brave/components/ipfs/repo_stats.h
+@@ -6,6 +6,7 @@
+ #ifndef BRAVE_COMPONENTS_IPFS_REPO_STATS_H_
+ #define BRAVE_COMPONENTS_IPFS_REPO_STATS_H_
+ 
++#include <cstdint>
+ #include <string>
+ #include <vector>
+ 

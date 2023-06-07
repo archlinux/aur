@@ -1,0 +1,19 @@
+diff --git a/brave/components/playlist/browser/playlist_download_request_manager.cc b/brave/components/playlist/browser/playlist_download_request_manager.cc
+index 9d2eb81a8b..32e17cb768 100644
+--- a/brave/components/playlist/browser/playlist_download_request_manager.cc
++++ b/brave/components/playlist/browser/playlist_download_request_manager.cc
+@@ -72,12 +72,11 @@ void PlaylistDownloadRequestManager::CreateWebContents() {
+   web_contents_ = content::WebContents::Create(create_params);
+   if (base::FeatureList::IsEnabled(features::kPlaylistFakeUA)) {
+     DVLOG(2) << __func__ << " Faked UA to detect media files";
+-    blink::UserAgentOverride user_agent(
++    blink::UserAgentOverride user_agent = blink::UserAgentOverride::UserAgentOnly(
+         "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) "
+         "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 "
+         "Mobile/15E148 "
+-        "Safari/604.1",
+-        /* user_agent_metadata */ {});
++        "Safari/604.1");
+     web_contents_->SetUserAgentOverride(user_agent,
+                                         /* override_in_new_tabs= */ true);
+   }

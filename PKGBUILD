@@ -28,8 +28,8 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.52.117
-pkgrel=2
+pkgver=1.52.122
+pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default'
 arch=(x86_64)
 url='https://www.brave.com/download'
@@ -46,9 +46,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-_chromium_ver=114.0.5735.90
-_gcc_patchset=2
-_patchset_name="chromium-${_chromium_ver%%.*}-patchset-$_gcc_patchset"
+_chromium_ver=114.0.5735.110
 _launcher_ver=8
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkgver"
         "brave::git+https://github.com/brave/brave-core.git#tag=v$pkgver"
@@ -58,10 +56,17 @@ source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkg
         chromium-launcher-electron-app.patch
         chromium-launcher-vendor.patch
         system-rust-utils.patch
+        0001-Fix-Rust-linking-on-component-and-debug-Windows-builds.patch
+        0002-Remove-the-prebuilt-toolchain-from-the-Android-team.patch
         brave-1.19-BUILD.gn.patch
+        brave-1.43-bitcoin-core_remove-serialize.h.patch
         brave-1.43-debounce-debounce_navigation_throttle_fix.patch
         brave-1.43-ntp_background_images-std-size_t.patch
-        brave-1.48-partitioned_host_state_map-cstring.patch)
+        brave-1.48-partitioned_host_state_map-cstring.patch
+        brave-1.52-bat-native-ads-fix-cmath.patch
+        brave-1.52-bitints-libstdcxx-bypass.patch
+        brave-1.52-missing-includes.patch
+        brave-1.52-playlist-user-agent-only-constructor.patch)
 _arch_revision=fa08adba87b6222bdf9ba31aaa41579e634ec444
 _patches=(add-some-typename-s-that-are-required-in-C-17.patch
           REVERT-disable-autoupgrading-debug-info.patch
@@ -80,11 +85,18 @@ sha256sums=('SKIP'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '9235485adc4acbfaf303605f4428a6995a7b0b3b5a95181b185afbcb9f1f6ae5'
             '404bf09df39310a1e374c5e7eb9c7311239798adf4e8cd85b7ff04fc79647f88'
-            '579c5cf5cd59c89ac363f0adcf42463a4aa2effb30fbf09467d4745bf26c2e7d'
+            'dcaf12a8b2ba15cefafd6e3c053b2ec490b1b8e1c89a3309e41133c0cd183ed3'
+            'dfb5ca39abe7dd449729d3af3724fe27208d8cda76ecc4916cc57a4ad9c8e1b1'
+            '01a809e8bf7eeed6e263bc7118d6e40395dca7ac8463dbe230303e13d17d673e'
             '12a3d37ffca4c0fa25f89f02efdf79d24f6412ee29ec35e8a00f9086dba4e822'
+            '984bb0257ed6fe4af543c3fb803ed81bddc97ff367ccd93620404be60cb78eb3'
             '30a6a9ca2a6dd965cb2d9f02639079130948bf45d483f0c629f2cf8394a1c22f'
             'ea0cd714ccaa839baf7c71e9077264016aa19415600f16b77d5398fd49f5a70b'
             '3864fcb12aaec849fd0e5423c9c5dfb1fdd7805e298a52125776bb24abe71e3c'
+            '9a0c3d05aaa20812da8ee1fcb10c55a3df92f0c8248c3d2cbe4906d94dd48e49'
+            'f781d6315e4147b775350d7a36481c3ce43b582eee5ee228768e42c30d9dd9ca'
+            '1654fa922d10a591d5c28159a6d22d1183bcbd3448f175d7f3e2e11879588ddd'
+            '7cf8569ff905666889842c36e82d51c08d482745cd2f71e48fa1296824f09839'
             '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
             'd464eed4be4e9bf6187b4c40a759c523b7befefa25ba34ad6401b2a07649ca2a'
@@ -129,6 +141,10 @@ prepare() {
   cd chromium-launcher-$_launcher_ver
   patch -Np1 -i ../chromium-launcher-electron-app.patch
   patch -Np1 -i ../chromium-launcher-vendor.patch
+
+  cd ../depot_tools
+  echo > python3_bin_reldir.txt
+  ln -sf /usr/bin/python3 python3
 
   cd ../brave-browser
 
@@ -184,14 +200,12 @@ prepare() {
     --local_state=src/chrome/android/profiles/local.txt \
     --output_name=src/chrome/android/profiles/afdo.prof \
     --gs_url_base=chromeos-prebuilt/afdo-job/llvm
-  mkdir -p third_party/jdk/current/bin
-  ln -s /usr/bin/java third_party/jdk/current/bin
+  mkdir -p src/third_party/jdk/current/bin
+  ln -sf /usr/bin/java src/third_party/jdk/current/bin
 
   # Brave specific hooks
   cd src/brave
   # python script/bootstrap.py
-  echo > vendor/depot_tools/python3_bin_reldir.txt
-  ln -sf /usr/bin/python vendor/depot_tools/python3
   npm install --no-save --yes
   python script/web_discovery_project.py --install
   python script/generate_licenses.py
@@ -226,6 +240,10 @@ prepare() {
   patch -Np1 -i "${srcdir}/download-bubble-typename.patch"
   patch -Np1 -i "${srcdir}/webauthn-variant.patch"
   patch -Np1 -i "${srcdir}/random-fixes-for-gcc13.patch"
+
+  # Rust fixes
+  patch -Np1 -i "${srcdir}/0001-Fix-Rust-linking-on-component-and-debug-Windows-builds.patch"
+  patch -Np1 -i "${srcdir}/0002-Remove-the-prebuilt-toolchain-from-the-Android-team.patch"
 
   # Hacky patching
   sed -e 's/\(enable_distro_version_check =\) true/\1 false/g' -i chrome/installer/linux/BUILD.gn
@@ -301,14 +319,23 @@ build() {
   echo "gemini_wallet_client_secret = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" >> .npmrc
   echo "sardine_client_id = 7ca8433c-7e61-4e25-b76e-25aa2da68df1" >> .npmrc
   echo "sardine_client_secret = 7ca8433c-7e61-4e25-b76e-25aa2da68df1" >> .npmrc
+  echo "brave_zero_ex_api_key = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" >> .npmrc
+  echo "p3a_json_upload_url = https://example.com" >> .npmrc
+  echo "p3a_creative_upload_url = https://example.com" >> .npmrc
+  echo "p3a_constellation_upload_url = https://example.com" >> .npmrc
+  echo "p2a_json_upload_url = https://example.com" >> .npmrc
+  echo "star_randomness_host = https://example.com" >> .npmrc
 
   npm_args=()
   if [ "$COMPONENT" = "4" ]; then
+    local _rustc_version="$(rustc -V)"
     local _flags=(
       'custom_toolchain="//build/toolchain/linux/unbundle:default"'
       'host_toolchain="//build/toolchain/linux/unbundle:default"'
       'clang_base_path="/usr"'
       'clang_use_chrome_plugins=false'
+      'rust_sysroot_absolute="/usr"'
+      'rustup_home="/usr"'
       'symbol_level=0' # sufficient for backtraces on x86(_64)
       'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
       'treat_warnings_as_errors=false'
@@ -326,14 +353,13 @@ build() {
       'enable_widevine=true'
       'enable_nacl=false'
     )
-    _flags+=("rustup_path=\"$HOME/.rustup\"" "cargo_path=\"$HOME/.cargo\"")
 
     if [[ -n ${_system_libs[icu]+set} ]]; then
       _flags+=('icu_use_data_file=false')
     fi
 
     # This specific tool requires to be built outside of an official build
-    echo "${_flags[@]}" | tr ' ' '\n' >> src/brave/tools/redirect_cc/args.gni
+    printf "%s\n" "${_flags[@]}" "rustc_version=\"$_rustc_version\"" >> src/brave/tools/redirect_cc/args.gni
 
     _flags+=('is_official_build=true') # implies is_cfi=true on x86_64
 
@@ -347,7 +373,8 @@ build() {
     CXXFLAGS+=' -Wno-unknown-warning-option'
 
     npm_args+=(
-      $(echo "${_flags[@]}" | tr ' ' '\n' | sed -e 's/=/:/' -e 's/^/--gn=/')
+      "--gn=rustc_version:\"$_rustc_version\""
+      $(printf "%s\n" "${_flags[@]}" | sed -e 's/=/:/' -e 's/^/--gn=/')
     )
   fi
 
@@ -374,17 +401,14 @@ build() {
   case $COMPONENT in
     0)
     echo "Normal build (with debug)"
-    npm_args=()
     ;;
     2)
     echo "Static build"
     _build_type=Static
-    npm_args=()
     ;;
     3)
     echo "Debug build"
     _build_type=Debug
-    npm_args=()
     ;;
     4)
     echo "Release custom build"
@@ -393,7 +417,6 @@ build() {
     1|*)
     echo "Release build"
     _build_type=Release
-    npm_args=()
     ;;
   esac
 
@@ -456,6 +479,7 @@ package() {
 
     # SwiftShader ICD
     libvk_swiftshader.so
+    libvulkan.so.1
     vk_swiftshader_icd.json
   )
 
