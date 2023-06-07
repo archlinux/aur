@@ -7,7 +7,9 @@ pkgbase = chuncord-git
 	license = custom:EUPLv1.2
 	makedepends = cargo
 	makedepends = git
-	source = git+https://git.lemonsh.moe/lemon/chuncord
+	provides = chuncord
+	conflicts = chuncord
+	source = chuncord-git::git+https://git.lemonsh.moe/lemon/chuncord
 	sha256sums = SKIP
 
 pkgname = chuncord-git

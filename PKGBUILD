@@ -10,8 +10,10 @@ arch=("x86_64")
 url="https://git.lemonsh.moe/lemon/chuncord"
 license=("custom:EUPLv1.2")
 makedepends=("cargo" "git")
-source=("git+https://git.lemonsh.moe/lemon/$_reponame")
+source=("$pkgname::git+https://git.lemonsh.moe/lemon/$_reponame")
 sha256sums=('SKIP')
+conflicts=('chuncord')
+provides=('chuncord')
 
 pkgver() {
     cd "$pkgname"
@@ -31,6 +33,6 @@ build() {
 }
 
 package() {
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$pkgname/LICENSE"
-    install -Dm755 "$pkgname/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$_reponame/" "$pkgname/LICENSE"
+    install -Dm755 "$pkgname/target/release/$_reponame" "$pkgdir/usr/bin/$_reponame"
 }
