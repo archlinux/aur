@@ -1,7 +1,7 @@
 pkgbase = libsufr
 	pkgdesc = A LIBrary containing Some Useful Fortran Routines
 	pkgver = 0.7.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libsufr.sourceforge.net/
 	changelog = ChangeLog
 	arch = i686

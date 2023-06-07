@@ -1,7 +1,7 @@
 # Maintainer:   AstroFloyd  < AstroFloyd [at] gmail >
 pkgname=libsufr
 pkgver=0.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A LIBrary containing Some Useful Fortran Routines"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://libsufr.sourceforge.net/"
@@ -15,7 +15,7 @@ sha512sums=('c24cb69361f8db31396e554a48eb864b7cc2c8ac437b2c0d3113e02adf9a5301797
 build() {
     mkdir -p "$pkgname-$pkgver"/build
     cd "$pkgname-$pkgver"/build/
-    cmake -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr/" ..
+    FC=gfortran cmake -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr/" ..
     make
 }
 
