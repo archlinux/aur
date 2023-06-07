@@ -14,32 +14,25 @@ conflicts=("${pkgname%-git}" "sway-services-git")
 source=('sway-systemd::git+https://github.com/alebastr/sway-systemd.git')
 sha512sums=('SKIP')
 
-
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${pkgname%-git}"
+    printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
-
     arch-meson \
         -Dautoload-configs=all \
-        "$srcdir/${pkgname%-git}" build
+        "${srcdir}/${pkgname%-git}" build
     ninja -C build
 }
 
 check() {
-
     ninja -C build test
 }
 
 package() {
-
-    DESTDIR="$pkgdir" ninja -C build install
-
-    cd "$srcdir/${pkgname%-git}"
-
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
+    DESTDIR="${pkgdir}" ninja -C build install
+    cd "${srcdir}/${pkgname%-git}"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
 }
