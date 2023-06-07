@@ -37,7 +37,7 @@ package_flashplugin() {
   optdepends=('libvdpau: GPU acceleration on Nvidia cards')
 
   cd "$srcdir/npapi"
-  install -Dm644 -t "$pkgdir/usr/lib/mozilla/plugins" libflashplayer.so 
+  install -Dm644 -t "$pkgdir/usr/lib/mozilla/plugins" libflashplayer.so
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" license.pdf LGPL/notice.txt
 
   install -Dm755 -t "$pkgdir/usr/bin" usr/bin/flash-player-properties
