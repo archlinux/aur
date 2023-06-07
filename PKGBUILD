@@ -1,9 +1,10 @@
+# Maintainer: llaunch-bot <bot@llaun.ch>
 # Maintainer: turikhay <me@turikhay.com>
 # Maintainer: McModder <aur @ modder.pw>
 # Contributor: SaMaLerO <smlr[at]ukr[dot]net>
 pkgname='legacylauncher'
-pkgver='1.157.0'
-pkgrel=2
+pkgver='1.158.0'
+pkgrel=1
 pkgdesc='Freeware Minecraft launcher'
 url='https://llaun.ch'
 arch=('any')
@@ -17,8 +18,8 @@ optdepends=(
 
 #_bootstrap_version='1.32.2'
 #_bootstrap_checksum='6a291f834630111d9df8138283c2994f0737f974751ea2fe421ba5eca52ff9ff'
-#_launcher_version='1.157.0'
-#_launcher_checksum='63443ca701ab54aa4ad65a26eb8178e1e36de13ef26954894fde3542ce17f081'
+#_launcher_version='1.158.0'
+#_launcher_checksum='c309da44438c7c2c56583894876f33ffe7df532c6262e5f00a2e81d3edf944d8'
 
 _repo='https://llaun.ch/repo'
 # Try one of these if the above one fails:
@@ -43,7 +44,7 @@ source=(
   "legacylauncher-bootstrap-1.32.2-6a291f83.jar::${_repo}/update/aur/bootstrap/6a291f834630111d9df8138283c2994f0737f974751ea2fe421ba5eca52ff9ff.jar"
 
   # Launcher
-  "legacylauncher-launcher-1.157.0-63443ca7.jar::${_repo}/update/aur/launcher/63443ca701ab54aa4ad65a26eb8178e1e36de13ef26954894fde3542ce17f081.jar"
+  "legacylauncher-launcher-1.158.0-c309da44.jar::${_repo}/update/aur/launcher/c309da44438c7c2c56583894876f33ffe7df532c6262e5f00a2e81d3edf944d8.jar"
 
   # Libraries
   "${_repo}/libraries/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
@@ -70,6 +71,7 @@ source=(
   "${_repo}/libraries/ru/turikhay/app/nstweaker/1.0/nstweaker-1.0.jar"
   "${_repo}/libraries/org/slf4j/slf4j-api/2.0.1/slf4j-api-2.0.1.jar"
   "${_repo}/libraries/org/tukaani/xz/1.9/xz-1.9.jar"
+  "${_repo}/libraries/me/cortex/jarscaner/1.0/jarscaner-1.0.jar"
   "${_repo}/libraries/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar"
   "${_repo}/libraries/commons-codec/commons-codec/1.11/commons-codec-1.11.jar"
   "${_repo}/libraries/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar"
@@ -94,13 +96,13 @@ source=(
 noextract=(
   "${source[@]##*/}"
   "legacylauncher-bootstrap-1.32.2-6a291f83.jar"
-  "legacylauncher-launcher-1.157.0-63443ca7.jar"
+  "legacylauncher-launcher-1.158.0-c309da44.jar"
 )
 
 sha256sums=(
   '6a291f834630111d9df8138283c2994f0737f974751ea2fe421ba5eca52ff9ff' # legacylauncher-bootstrap-1.32.2-6a291f83.jar
 
-  '63443ca701ab54aa4ad65a26eb8178e1e36de13ef26954894fde3542ce17f081' # legacylauncher-launcher-1.157.0-63443ca7.jar
+  'c309da44438c7c2c56583894876f33ffe7df532c6262e5f00a2e81d3edf944d8' # legacylauncher-launcher-1.158.0-c309da44.jar
 
   '795f783dc6301d10e356d1f3db9952d71692ed8004ffdd843f0049f813a0d1a5' # com.mojang:authlib:1.5.24
   'f883b6b027d5e05c53e48e4fe3548715c52dbd590ffa3f52d039574f1a4d0728' # org.apache.httpcomponents:fluent-hc:4.5.13
@@ -126,6 +128,7 @@ sha256sums=(
   '6b4c15577b5256b64c7e3d69dcdbf8d18f17f68ac5928e36936bd6a40a91c218' # ru.turikhay.app:nstweaker:1.0
   'b36b99b8d99ea7857554d9b25dfdbd1fb25378c926f7b9e0249983c99335b2c4' # org.slf4j:slf4j-api:2.0.1
   '211b306cfc44f8f96df3a0a3ddaf75ba8c5289eed77d60d72f889bb855f535e5' # org.tukaani:xz:1.9
+  'f38fef14cc0807e0532cc7cb29c2c4f33a0e75d64055340d7bc593d36dd8b6ca' # me.cortex:jarscaner:1.0
   '766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7' # com.google.code.findbugs:jsr305:3.0.2
   'e599d5318e97aa48f42136a2927e6dfa4e8881dff0e6c8e3109ddbbff51d7b7d' # commons-codec:commons-codec:1.11
   'e06e89d40943245fcfa39ec537cdbfce3762aecde8f9c597780d2b00c2b43424' # org.apache.httpcomponents:httpcore:4.4.13
@@ -157,7 +160,7 @@ package() {
 
   # install launcher
   install -Dm0644 "${srcdir}/legacylauncher-bootstrap-1.32.2-6a291f83.jar" "${pkgdir}/opt/legacylauncher/bootstrap.jar"
-  install -Dm0644 "${srcdir}/legacylauncher-launcher-1.157.0-63443ca7.jar" "${pkgdir}/opt/legacylauncher/launcher.jar"
+  install -Dm0644 "${srcdir}/legacylauncher-launcher-1.158.0-c309da44.jar" "${pkgdir}/opt/legacylauncher/launcher.jar"
 
   # install libraries
   install -Dm0644 "${srcdir}/authlib-1.5.24.jar" "${pkgdir}/opt/legacylauncher/lib/com/mojang/authlib/1.5.24/authlib-1.5.24.jar"
@@ -184,6 +187,7 @@ package() {
   install -Dm0644 "${srcdir}/nstweaker-1.0.jar" "${pkgdir}/opt/legacylauncher/lib/ru/turikhay/app/nstweaker/1.0/nstweaker-1.0.jar"
   install -Dm0644 "${srcdir}/slf4j-api-2.0.1.jar" "${pkgdir}/opt/legacylauncher/lib/org/slf4j/slf4j-api/2.0.1/slf4j-api-2.0.1.jar"
   install -Dm0644 "${srcdir}/xz-1.9.jar" "${pkgdir}/opt/legacylauncher/lib/org/tukaani/xz/1.9/xz-1.9.jar"
+  install -Dm0644 "${srcdir}/jarscaner-1.0.jar" "${pkgdir}/opt/legacylauncher/lib/me/cortex/jarscaner/1.0/jarscaner-1.0.jar"
   install -Dm0644 "${srcdir}/jsr305-3.0.2.jar" "${pkgdir}/opt/legacylauncher/lib/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar"
   install -Dm0644 "${srcdir}/commons-codec-1.11.jar" "${pkgdir}/opt/legacylauncher/lib/commons-codec/commons-codec/1.11/commons-codec-1.11.jar"
   install -Dm0644 "${srcdir}/httpcore-4.4.13.jar" "${pkgdir}/opt/legacylauncher/lib/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar"
