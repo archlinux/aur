@@ -1,6 +1,6 @@
 pkgbase = botim-appimage
 	pkgdesc = BOTIM - Free, Secure & Reliable Messages and Calls
-	pkgver = 1.6.3
+	pkgver = 1.6.5
 	pkgrel = 0
 	url = https://botim.me
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = botim-appimage
 	provides = botim
 	conflicts = botim
 	conflicts = botim-bin
-	noextract = botim-appimage-1.6.3.AppImage
+	noextract = botim-appimage-1.6.5.AppImage
 	options = !strip
-	source_x86_64 = botim-appimage-1.6.3.AppImage::https://cdn-web-sg.botim.me/downloads/desktop/linux/1.6.3/BOTIM-1.6.3.AppImage
-	sha256sums_x86_64 = 67bfa32f390559b6b9ab41a009eab3e57a9e537b5f5b87de71a03c64beccb4f2
+	source_x86_64 = botim-appimage-1.6.5.AppImage::https://cdn-web-sg.botim.me/downloads/desktop/linux/1.6.5/Botim-1.6.5.AppImage
+	sha256sums_x86_64 = c01e9a6455f143c9659e56b44bf2557612ebc66056fd5862b9c60b4e4f73b3e7
 
 pkgname = botim-appimage

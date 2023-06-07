@@ -4,7 +4,7 @@
 _pkgname=botim
 
 pkgname="${_pkgname}"-appimage
-pkgver=1.6.3
+pkgver=1.6.5
 pkgrel=0
 pkgdesc="BOTIM - Free, Secure & Reliable Messages and Calls"
 arch=('x86_64')
@@ -15,9 +15,9 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}" 'botim-bin')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://cdn-web-sg.botim.me/downloads/desktop/linux/${pkgver}/BOTIM-${pkgver}.AppImage")
+source_x86_64=("${_appimage}::https://cdn-web-sg.botim.me/downloads/desktop/linux/${pkgver}/Botim-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('67bfa32f390559b6b9ab41a009eab3e57a9e537b5f5b87de71a03c64beccb4f2')
+sha256sums_x86_64=('c01e9a6455f143c9659e56b44bf2557612ebc66056fd5862b9c60b4e4f73b3e7')
 
 prepare() {
     chmod +x "${_appimage}"
