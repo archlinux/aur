@@ -4,7 +4,7 @@
 
 _pkgname=ttf-timetable
 pkgname="${_pkgname}-latest"
-pkgver=1.355.r20230327
+pkgver=1.355.20230327
 pkgrel=1
 pkgdesc="Font with train timetable symbols, used by the offline timetable by CHAPS (IDOS, Timetable-Browser) or INPROP (CP, ELIS) (also retailed by České Dráhy or ŽSR)."
 arch=('any')
@@ -57,7 +57,7 @@ pkgver() {
   # _ver="$(fc-query -f "%{fontversion}" "${_fontfile}")"
   # _ver="$(wget -q -O- "${url}" | html2text -b 0 | grep 'Font Timetable, version' | sed 's|^.*version[[:space:]]\([0-9\.]*\)[^0-9].*$|\1|g')"
   _ver="$(wget -nv -O- "${url}" | sed -n 's|^.*Font Timetable, version[[:space:]]*\([0-9\.]*\)[^0-9].*$|\1|p')"
-  _rel="$(wget -nv -O- "${url}" | sed -n 's|^.*/updates/ttfont_d#\([0-9]*\)[^0-9].*$|\1|p')"
+  _date="$(wget -nv -O- "${url}" | sed -n 's|^.*/updates/ttfont_d#\([0-9]*\)[^0-9].*$|\1|p')"
 
   _exitcode=0
   if [ -z "${_ver}" ]; then
@@ -66,13 +66,13 @@ pkgver() {
     _exitcode=1
   fi
   
-  if [ -z "${_rel}" ]; then
+  if [ -z "${_date}" ]; then
     echo "$0: Error: Could not determine release date." > /dev/stderr
     false
     _exitcode=2
   fi
 
-  echo "${_ver}.r${_rel}"
+  echo "${_ver}.${_date}"
   return ${_exitcode}
 }
 
