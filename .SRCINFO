@@ -5,7 +5,7 @@ pkgbase = projector-git
 	arch = x86_64
 	makedepends = go
 	makedepends = git
-	source = git+https://github.com/jordus100/projector
+	source = git+https://github.com/jordus100/projector-git
 	sha256sums = SKIP
 
 pkgname = projector-git
