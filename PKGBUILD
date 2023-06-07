@@ -1,7 +1,7 @@
 pkgname="lnn"
 pkgver="0.1.5"
 pkgrel=1
-pkgdesc="A tool to hardcopy directories"
+pkgdesc="A tool to hardlink directories"
 arch=("any")
 url="https://github.com/JanzenJohn/lnn"
 license=("GPL")

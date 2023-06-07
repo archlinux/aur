@@ -1,5 +1,5 @@
 pkgbase = lnn
-	pkgdesc = A tool to hardcopy directories
+	pkgdesc = A tool to hardlink directories
 	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/JanzenJohn/lnn
