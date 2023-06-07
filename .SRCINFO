@@ -1,13 +1,13 @@
 pkgbase = python-sphinxcontrib-katex
 	pkgdesc = A Sphinx extension for rendering math in HTML pages
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/hagenw/sphinxcontrib-katex
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-sphinx
-	source = sphinxcontrib-katex-0.9.4.tar.gz::https://github.com/hagenw/sphinxcontrib-katex/archive/v0.9.4.tar.gz
-	sha512sums = 1995273c158df3e2279367f708c2d3043f27cc93886333686fea204d07893944cbb2c664df2f089aaf1c72c674095688a5783c6bf29f3a7d0b932db0e03a3975
+	source = sphinxcontrib-katex-0.9.5.tar.gz::https://github.com/hagenw/sphinxcontrib-katex/archive/v0.9.5.tar.gz
+	sha512sums = d473d943b9beb0ba5286fc928ba69878483ec5130c638735fb26725370e049255d517d59ba895062a99b43993da82132c07f381473ce4e482c8fff7e0e8691ec
 
 pkgname = python-sphinxcontrib-katex
