@@ -1,6 +1,6 @@
-#contributor: tantalum <tantalum at online dot de>
+#Contributor: tantalum <tantalum at online dot de>
 pkgname=pfds-guile-git
-pkgver=20130202
+pkgver=20140711
 pkgrel=1
 pkgdesc="Purely Functional Data Structures in Scheme. Installs the files for use with Guile."
 arch=(any)
@@ -9,25 +9,16 @@ license=(custom)
 depends=("guile>=2")
 makedepends=(git)
 conflicts=(pfds-guile)
-provides=()
-source=()
-
+provides=(pfds-guile)
 _gitname=pfds
-_gitroot="git://github.com/ijp"
+_gitroot="https://github.com/ijp"
+source=(git+$_gitroot/$_gitname)
+md5sums=('SKIP')
 
-build() {
-    cd "$srcdir"
-    msg "Connecting to GIT server..."
-    if [ -d "$_gitname" ] ; then
-	cd "$_gitname" && git pull origin
-	cd "$srcdir"
-	msg "The local files are updated."
-    else
-	git clone --depth=1 "$_gitroot/$_gitname"
-    fi
-    msg "GIT checkout done or server timeout"
+pkgver() {
+  cd $_gitname
+  git log -1 --format='%cd' --date=short | tr -d -- '-'
 }
-
 package() {
   cd "$srcdir/$_gitname"
   t="$pkgdir/usr/share/guile/site/$_gitname"
