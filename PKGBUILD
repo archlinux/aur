@@ -2,14 +2,14 @@
 # Contributor: frousties
 _pkgname=tacentview
 pkgname=${_pkgname}-git
-pkgver=1.0.35.r31.g303f9b0
+pkgver=1.0.39.r0.g3f6b1cb
 pkgrel=1
 pkgdesc="Tacent View. An image and texture viewer for tga, png, apng, exr, dds, gif, hdr, jpg, tiff, ico, webp, and bmp files."
 arch=('i686' 'x86_64')
 url="https://github.com/bluescan/${_pkgname}"
 license=('ISC')
 groups=('')
-depends=('gcc' 'libx11' 'cmake' 'ninja' 'dpkg')
+depends=('gcc12' 'libx11' 'cmake' 'ninja' 'dpkg')
 options=('!strip' '!emptydirs')
 source_x86_64=("git+https://github.com/bluescan/${_pkgname}.git")
 sha512sums_x86_64=('SKIP')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-	cmake -S "${_pkgname}" -B build -GNinja -DPACKAGE_DEB=True
+	cmake -S "${_pkgname}" -B build -GNinja -DPACKAGE_DEB=True -DCMAKE_CXX_COMPILER=gcc-12 -DCMAKE_C_COMPILER=gcc-12
 	ninja -C build install
 }
 
