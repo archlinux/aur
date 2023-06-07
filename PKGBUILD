@@ -17,7 +17,7 @@ _nodever=16.14.0
 _pandocver="current"
 _quarto="FALSE"
 
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -38,7 +38,7 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "pandoc_version.patch")
 
 sha256sums=('e11c323f3396877f417e8d4afec700e02399504c1505fed1fd127b32b2b23214'
-            'df3a040f0cf4ce1892519082dd6822a8ca433e9e4f02d9394ab2931733f7e5a6'
+            'SKIP'
             '2c69e7b040c208b61ebf9735c63d2e5bcabfed32ef05a9b8dd5823489ea50d6b'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
             '286925c442c1818979714feeec1577f03ae8a3527d2478b0f55238e2272a0b9e')
