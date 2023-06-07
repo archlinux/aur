@@ -18,7 +18,7 @@ build() {
   cmake -GNinja \
         -DQT_PLUGIN_DIR=/usr/lib/qt/plugins/ \
 				-DQT_VERSION=5 \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr .
   ninja
 }
 
