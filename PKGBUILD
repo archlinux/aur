@@ -3,7 +3,7 @@
 pkgname=hackernews_tui
 _gitname=hackernews-TUI
 pkgver=0.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Terminal UI to browse hacker news."
 arch=("x86_64")
 url="https://github.com/aome510/hackernews-TUI"
@@ -32,7 +32,7 @@ package() {
 
     install -Dm755 target/release/${pkgname} -t "${pkgdir}/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "README.md" "doc/config.md"
+    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "README.md" "docs/config.md"
     install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}/examples" "examples/hn-tui.toml"
 }
 # vim:set ts=2 sw=2 et:
