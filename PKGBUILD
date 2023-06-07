@@ -1,5 +1,5 @@
 # Maintainer: Jordan Parviainen jordan.parviainen.stud@pw.edu.pl
-pkgname='projector'
+pkgname='projector-git'
 pkgrel=1
 pkgver=1.0.0
 arch=('x86_64')

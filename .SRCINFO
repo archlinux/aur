@@ -1,4 +1,4 @@
-pkgbase = projector
+pkgbase = projector-git
 	pkgver = 1.0.0
 	pkgrel = 1
 	arch = x86_64
@@ -7,4 +7,4 @@ pkgbase = projector
 	source = git+https://github.com/jordus100/projector
 	sha256sums = SKIP
 
-pkgname = projector
+pkgname = projector-git
