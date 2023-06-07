@@ -1,6 +1,6 @@
 pkgbase = weechat-wee-most-git
 	pkgdesc = A WeeChat plugin for Mattermost
-	pkgver = r590.d2c5a3c
+	pkgver = r592.28caa0b
 	pkgrel = 1
 	url = https://sr.ht/~tardypad/wee-most/
 	arch = any
