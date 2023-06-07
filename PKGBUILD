@@ -172,7 +172,7 @@ END
 
   # Upstream patches from gentoo
   # PGO improvements
-  patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0015-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+  patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0014-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
