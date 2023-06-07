@@ -1,6 +1,6 @@
 pkgbase = nextpnr-ice40-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - for ice40
-	pkgver = 20230606_nextpnr_0.6_13_g119b47ac
+	pkgver = 20230607_nextpnr_0.6_13_g119b47ac
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
@@ -14,6 +14,7 @@ pkgbase = nextpnr-ice40-nightly
 	makedepends = gawk
 	makedepends = eigen
 	makedepends = boost
+	makedepends = icestorm-nightly
 	depends = yosys-nightly
 	depends = icestorm-nightly
 	depends = python
