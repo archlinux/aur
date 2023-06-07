@@ -1,0 +1,24 @@
+pkgbase = qmarineplatformtheme5
+	pkgdesc = Another qt5ct for qt5, use toml as config
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = tomlplusplus
+	makedepends = kconfig
+	makedepends = kconfigwidgets
+	makedepends = kiconthemes
+	depends = kconfig
+	depends = qt5-base
+	depends = kconfigwidgets
+	depends = kiconthemes
+	provides = qt5ct
+	conflicts = qt5ct
+	source = qmarineplatformtheme5-v0.1.0.tar.gz::https://github.com/Decodetalkers/qmarinetheme/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = c9c5fd12bc3962c23dc22d4d79ff4ec2135320be3a074117094357abffde41bd
+
+pkgname = qmarineplatformtheme5
