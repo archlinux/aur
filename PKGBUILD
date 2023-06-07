@@ -1,7 +1,7 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=httm
-pkgver=0.27.2
+pkgver=0.28.0
 pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots."
 arch=('x86_64')
@@ -16,10 +16,11 @@ optdepends=('btrfs-progs: BTRFS support'
             'nilfs-utils: NILFS2 support')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('f517614f672e8065d2261575b3131bc637e94ed2be3109d228646e0079b1e72bce5ccf216ed18049d5c2327c747535835e7053caa88e29da216ab864b8ff901c')
+sha512sums=('c8db765db717b0ff0553d1c3b3ac1b27ed7d609298f0d7ea77c721547878fea197e2d5b3c1fc90dc092c40f8c6ce96c27ab022c9dda838ecd7e5e1275e59e1e0')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	sed -i 's/version = "0.27.2"/version = "0.28.0"/' Cargo.toml
 	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
