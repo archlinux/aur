@@ -1,12 +1,12 @@
 pkgbase = plainbase
 	pkgdesc = plainDE base files
-	pkgver = 0.5
+	pkgver = 0.5.2
 	pkgrel = 1
-	url = https://plainde.org
+	url = https://plainde.github.io
 	arch = any
 	license = GPL3
-	makedepends = git
-	source = git+https://github.com/plainDE/plainBase.git#tag=0.4.2
-	sha256sums = SKIP
+	conflicts = plainbase-git
+	source = plainbase-0.5.2.tar.gz::https://github.com/plainDE/plainBase/archive/refs/tags/0.5.2.tar.gz
+	sha256sums = 9691675973b705f92674c89404205fffc78ac02277d28147130688ceaf0ae717
 
 pkgname = plainbase
