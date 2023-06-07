@@ -43,7 +43,7 @@ package() {
 	echo -e "${RED}this package has to be installed as root${NOCOLOR}\nuse pacman -U to install the package"
 	cd "$pkgname-v$pkgver"
 	
-	install -Dm 755 build/kbdmod.bin $pkgdir/kbdmod
+	install -Dm 755 build/kbdmod.bin $pkgdir/usr/bin/kbdmod
 	echo "kbdmod installed to $pkgdir/kbdmod"
 
 
