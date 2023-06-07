@@ -11,14 +11,14 @@
 pkgbase=firefox-esr
 pkgname=(firefox-esr)
 pkgver=102.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/en-US/firefox/enterprise/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
+             autoconf2.13 rustup clang llvm jack nodejs cbindgen nasm
              python lld dump_syms
              wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -46,6 +46,8 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
 prepare() {
+  export RUSTUP_TOOLCHAIN=1.69
+
   mkdir -p mozbuild
   cd firefox-$pkgver
 
