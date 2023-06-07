@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tropy-appimage
-pkgver=1.13.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Research photo management"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Tropy-${pkgver}-x86_64.AppImage"
   "LICENSE::https://raw.githubusercontent.com/tropy/tropy/main/LICENSE")
-sha256sums=('acf081c6f44fbf5abeade136ba1fa84cc23833a590d671c76f121d7559c41fe1'
+sha256sums=('ad0d345aa573da17566ff6481d4413ec9032a6e3ac8616ec1ca767ad4e714abb'
             '2406653c61846ad831e8cbb4b8908061e3f7a7a0c88f32617ea5cd92c919b1b3')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
