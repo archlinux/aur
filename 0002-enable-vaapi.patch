@@ -1,7 +1,7 @@
-diff -up firefox-113.0/widget/gtk/GfxInfo.cpp.firefox-enable-vaapi firefox-113.0/widget/gtk/GfxInfo.cpp
---- firefox-113.0/widget/gtk/GfxInfo.cpp.firefox-enable-vaapi	2023-05-09 19:43:38.495868810 +0200
-+++ firefox-113.0/widget/gtk/GfxInfo.cpp	2023-05-09 19:44:30.943597984 +0200
-@@ -818,14 +818,6 @@ const nsTArray<GfxDriverInfo>& GfxInfo::
+diff --color --unified --recursive --text firefox.orig/widget/gtk/GfxInfo.cpp firefox.new/widget/gtk/GfxInfo.cpp
+--- firefox.orig/widget/gtk/GfxInfo.cpp	2023-06-07 15:10:31.232283071 +0200
++++ firefox.new/widget/gtk/GfxInfo.cpp	2023-06-07 15:21:02.802001776 +0200
+@@ -957,14 +957,6 @@
          nsIGfxInfo::FEATURE_BLOCKED_DEVICE, DRIVER_COMPARISON_IGNORED,
          V(0, 0, 0, 0), "FEATURE_HARDWARE_VIDEO_DECODING_NO_R600", "");
  

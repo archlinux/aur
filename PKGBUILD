@@ -5,7 +5,7 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=113.0.2
+pkgver=114.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
@@ -68,23 +68,23 @@ options=(
 )
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
-  $_pkgname.desktop
   identity-icons-brand.svg
-  0001-enable-vaapi.patch
+  0001-xdg-desktop.patch
+  0002-enable-vaapi.patch
 )
 validpgpkeys=(
   '14F26682D0916CDD81E37B6D61B7B526D98F0353'  # Mozilla Software Releases <release@mozilla.com>
 )
-sha256sums=('f132b702836311b6cc40873b69df3ce208d035dbc8ce390c390eebd63d27c7a3'
+sha256sums=('d23a0502742f52110ce496837ba82b47bf38d40585633787508ae5be9a5b4bc6'
             'SKIP'
-            '298eae9de76ec53182f38d5c549d0379569916eebf62149f9d7f4a7edef36abf'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '3110e09266e2830084b7f325a4911acc7812f5f5ddc10bc42a38f1a3ee8e7305')
-b2sums=('29be5865db0fd5de0d74d8f906301277eb3eeb0ef53db0a27398a0410fd2b8f973074cf58e00c718b5c7ef2b71295513adc1a905444e8b74f5b9be3a701d9b6d'
+            '66fee9db4fb85c41b0b6401c3efedb9cbd36850abeb9781879b75de5aa80987e'
+            '5c190c05fdb7dc0a7c50cc1f238620d50f3423b94eaea2d7b9d832ccd1fdffe3')
+b2sums=('09d29112a487bc23c0e54380bf5e6ef5c62639aa53b6cca7c9a61b2452f4ee0e1a1b9f7ca996ddb78b842170fa67be0dc926c17956ab505e42966d443a798f34'
         'SKIP'
-        'e18f2c22e394ca3b6758bc130245b254947e4d15921be3da443d6d7c3c4b0d22ead1b39fbc10a4f896edd19e2a1dffbd1cbb34dc4beb0621a6ddb70ccc53b3a7'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        '29635d36533cbe8b606b75dc448e1870c12e7519494c67b13030fbe3cba3cce01415b30bb6b9f2d945c8f2966310e805ca0be7254896502eb14b424b28374033')
+        '6768e33be14b504a9f9af66733b7b0752da60b8f76b6b50521b8eb31c36f537d9ce6cf1fda40dfb0036efee10a6c853b52e4716858611ff420ce25273cbc9f1f'
+        '30551e27556470266060ef4169fb9fbd2692852133160c9378b67fb53abd01a58d5aa0a01bac879ade99867a287c8a95c08c9f1ab91d43f05df4ddb5e021ec1f')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -102,10 +102,13 @@ prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
 
+  # Adjust desktop and metainfo files
+  patch -Np1 -i ../0001-xdg-desktop.patch
+
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1809068
   # https://bbs.archlinux.org/viewtopic.php?id=281398
   # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/firefox-enable-vaapi.patch
-  patch -Np1 -i ../0001-enable-vaapi.patch
+  patch -Np1 -i ../0002-enable-vaapi.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -244,8 +247,10 @@ END
   install -Dvm644 ../identity-icons-brand.svg \
     "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_pkgname-symbolic.svg"
 
-  install -Dvm644 ../$_pkgname.desktop \
-    "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dvm644 taskcluster/docker/firefox-flatpak/org.mozilla.firefox.desktop \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dvm644 taskcluster/docker/firefox-flatpak/org.mozilla.firefox.appdata.xml.in \
+    "$pkgdir/usr/share/metainfo/org.mozilla.firefox.appdata.xml"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
