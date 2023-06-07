@@ -1,0 +1,21 @@
+pkgname=herwig_lhapdf_config
+pkgver=1.0
+pkgrel=1
+pkgdesc="Prepare PDFs set MMHT2014nlo68cl MMHT2014lo68cl for Herwig install"
+arch=('x86_64')
+url="https://lhapdfsets.web.cern.ch/current/"
+license=('custom')
+depends=()
+makedepends=()
+source=('https://lhapdfsets.web.cern.ch/current/MMHT2014nlo68cl.tar.gz'
+	'https://lhapdfsets.web.cern.ch/current/MMHT2014lo68cl.tar.gz')
+sha256sums=('cff81fc54e365e67fd0851eb6c7b1c726c077f8da09d2ddf0ac6d49f7fe13f0d'
+            '9586f40e3f620039f5bf082ef52281485a50c915abf44f365db87d44c896990f')
+
+
+package() {
+	mkdir -p "${pkgdir}/usr/share/lhapdf/LHAPDF"
+	cp -r "${srcdir}/MMHT2014lo68cl/" "${pkgdir}/usr/share/lhapdf/LHAPDF/"
+	cp -r "${srcdir}/MMHT2014nlo68cl/" "${pkgdir}/usr/share/lhapdf/LHAPDF/"
+}
+
