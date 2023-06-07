@@ -1,11 +1,11 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2021-07-04.
+# PKGBUILD last time manually edited: At least on 2023-06-07.
 
 _pkgname=ttf-timetable
 pkgname="${_pkgname}-latest"
 pkgver=1.355.20230327
-pkgrel=1
+pkgrel=2
 pkgdesc="Font with train timetable symbols, used by the offline timetable by CHAPS (IDOS, Timetable-Browser) or INPROP (CP, ELIS) (also retailed by České Dráhy or ŽSR)."
 arch=('any')
 url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
