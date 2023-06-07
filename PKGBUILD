@@ -5,7 +5,7 @@
 
 pkgname=python-sexpdata
 _name=sexpdata
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="S-expression parser for Python"
 arch=('any')
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://pypi.python.org/packages/source/s/sexpdata/sexpdata-${pkgver}.tar.gz")
-sha256sums=('e8d5f75c378a07c6d1cc61fad9611b451c9383c0253052e16198a852e1620705')
+sha256sums=('6f65f115291890cbce5cd269c13bdf1f82a4cd23bc61b6e150a27511ee6a7d5e')
 
 build() {
     cd "$_name-$pkgver"
