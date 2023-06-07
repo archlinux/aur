@@ -1,7 +1,7 @@
 pkgbase = uhhyou-plugins
 	pkgdesc = A collection of synthesizer and effect VST3 plugins
 	pkgver = 0.55.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ryukau.github.io/VSTPlugins/
 	arch = aarch64
 	arch = x86_64

@@ -4,7 +4,7 @@
 _name=VSTPlugins-UhhyouPlugins
 pkgname=uhhyou-plugins
 pkgver=0.55.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of synthesizer and effect VST3 plugins'
 arch=(aarch64 x86_64)
 url='https://ryukau.github.io/VSTPlugins/'
@@ -59,6 +59,8 @@ package() {
     libpango-1.0.so libgobject-2.0.so ttf-croscore)
   cd "$srcdir"/build/VST3/Release
   for plugin in *.vst3; do
+    # skip vst3sdk samples
+    [ ! -f $plugin/Contents/moduleinfo.json ] && continue
     # install executable
     install -vDm755 $plugin/Contents/$CARCH-linux/*.so -t \
       "$pkgdir"/usr/lib/vst3/$plugin/Contents/$CARCH-linux
