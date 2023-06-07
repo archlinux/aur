@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kwok-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Kubernetes WithOut Kubelet - Simulates thousands of Nodes and Clusters."
 arch=('x86_64')
