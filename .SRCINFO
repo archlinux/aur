@@ -11,4 +11,3 @@ pkgbase = pyznap
 	sha256sums = 0668308132fecc7e37626490f683ebfaf2ffb89a462162cd112951178150bb1f
 
 pkgname = pyznap
-
