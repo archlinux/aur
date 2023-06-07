@@ -17,8 +17,8 @@
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=5.0.1
-pkgrel=3
+pkgver=6.0
+pkgrel=8
 epoch=2
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -37,11 +37,15 @@ depends=(
   libass.so
   libavc1394
   libbluray.so
+  libbs2b.so
   libdav1d.so
   libdrm
   libfreetype.so
+  libgl
   libiec61883
+  libjxl.so
   libmodplug
+  libopenmpt.so
   libpulse
   libraw1394
   librsvg-2.so
@@ -66,6 +70,7 @@ depends=(
   libxv
   libxvidcore.so
   libzimg.so
+  ocl-icd
   opencore-amr
   openjpeg2
   opus
@@ -74,6 +79,7 @@ depends=(
   speex
   srt
   v4l-utils
+  vulkan-icd-loader
   xz
   zlib
 )
@@ -82,7 +88,10 @@ makedepends=(
   clang
   git
   ladspa
+  mesa
   nasm
+  opencl-headers
+  vulkan-headers
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
@@ -103,22 +112,17 @@ conflicts=('ffmpeg')
 options=(
   debug
 )
-_tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3
+_tag=3949db4d261748a9f34358a388ee255ad1a7f0c0
 source=(
-  git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
-  ffmpeg-vmaf2.x.patch
+  git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
   add-av_stream_get_first_dts-for-chromium.patch
 )
-b2sums=(
-  SKIP
-  65039aac811bfd143359e32720cd6ca64124f1789c1b624bd28a5bd75b37362b2a3b6b402203c4e9d137fb1d00895114f3789df40f8381091d38c98e7876cc8a
-  3f2ee7606500fa9444380d138959cd2bccfbba7d34629a17f4f6288c6bde29e931bbe922a7c25d861f057ddd4ba0b095bbd675c1930754746d5dd476b3ccbc13
-)
+b2sums=('SKIP'
+        '555274228e09a233d92beb365d413ff5c718a782008075552cafb2130a3783cf976b51dfe4513c15777fb6e8397a34122d475080f2c4483e8feea5c0d878e6de')
+validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
   cd ffmpeg
-  git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
-  patch -Np1 -i ../ffmpeg-vmaf2.x.patch # vmaf 2.x support
   patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
 }
 
@@ -129,7 +133,6 @@ pkgver() {
 
 build() {
   cd ffmpeg
-
   [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && CONFIG='--host-cflags="-fPIC"'
 
   ./configure \
@@ -147,6 +150,7 @@ build() {
     --enable-ladspa \
     --enable-libass \
     --enable-libbluray \
+    --enable-libbs2b \
     --enable-libdav1d \
     --enable-libdrm \
     --enable-libfreetype \
@@ -154,11 +158,13 @@ build() {
     --enable-libgsm \
     --enable-libiec61883 \
     --enable-libjack \
+    --enable-libjxl \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
     --enable-libopencore_amrwb \
     --enable-libopenjpeg \
+    --enable-libopenmpt \
     --enable-libopus \
     --enable-libpulse \
     --enable-librsvg \
@@ -178,13 +184,14 @@ build() {
     --enable-libxml2 \
     --enable-libxvid \
     --enable-libzimg \
+    --enable-opencl \
+    --enable-opengl \
     --enable-mmal \
     --enable-omx \
     --enable-omx-rpi \
     --enable-shared \
     --enable-version3 \
-    $CONFIG
-
+    --enable-vulkan $CONFIG
   make
   make tools/qt-faststart
   make doc/ff{mpeg,play}.1
