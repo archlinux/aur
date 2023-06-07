@@ -4,6 +4,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Cirrus <nailzuk at gmail dot com>
+# Contributor: Bohdan Mart <mart.bogdan at gmail>
 
 pkgname=mp3blaster
 pkgver=3.2.6
