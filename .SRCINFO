@@ -1,7 +1,7 @@
 pkgbase = teams-for-linux-appimage
 	pkgdesc = Unofficial Microsoft Teams for Linux client
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IsmaelMartinez/teams-for-linux
 	arch = armv7h
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = teams-for-linux-appimage
 	depends = zlib
 	depends = hicolor-icon-theme
 	depends = glibc
+	depends = fuse2
 	conflicts = teams-for-linux
 	options = !strip
 	source_armv7h = teams-for-linux-1.1.2-armv7h.AppImage::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.1.2/teams-for-linux-1.1.2-armv7l.AppImage

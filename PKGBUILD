@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="teams-for-linux-appimage"
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Microsoft Teams for Linux client"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/IsmaelMartinez/teams-for-linux"
 license=('GPL3')
 options=(!strip)
 conflicts=("${pkgname%-appimage}")
-depends=('zlib' 'hicolor-icon-theme' 'glibc')
+depends=('zlib' 'hicolor-icon-theme' 'glibc' 'fuse2')
 _install_path="/opt/appimages"
 source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-armv7l.AppImage")
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-arm64.AppImage")
