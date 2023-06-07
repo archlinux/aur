@@ -1,25 +1,28 @@
 # Maintainer: Ivan 'ivabus' Bushchik ivabus@ivabus.dev -> https://github.com/ivabus
 
 pkgname=plaincontrolcenter
-pkgver=0.5
+_pkgname=plainControlCenter
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="plainDE control center"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
-url="https://plainde.org"
+url="https://plainde.github.io"
 license=(GPL3)
 depends=(qt5-base noto-fonts-emoji polkit ttf-opensans make plainpanel plainabout)
-makedepends=(git)
-source=("git+https://github.com/plainDE/plainControlCenter.git#tag=${pkgver}")
-sha256sums=('SKIP')
+makedepends=()
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plainDE/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('490000aed236d3d5cbb2769912e20f4825e55ccdfdb75d883c9cd21541353381')
 conflicts=('plaincontrolcenter-git')
 
 build() {
-  cd $srcdir/plainControlCenter
+  cd "${_pkgname}-${pkgver}"
+  
   qmake
   make
 }
 
 package() {
-  mkdir -p $pkgdir/usr/bin $pkgdir/usr/share/plainDE
-  install -m 0755 $srcdir/plainControlCenter/plainControlCenter $pkgdir/usr/bin/plainControlCenter
+  cd "${_pkgname}-${pkgver}"
+  
+  install -Dm 755 "${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 }

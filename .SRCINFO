@@ -1,8 +1,8 @@
 pkgbase = plaincontrolcenter
 	pkgdesc = plainDE control center
-	pkgver = 0.5
+	pkgver = 0.5.2
 	pkgrel = 1
-	url = https://plainde.org
+	url = https://plainde.github.io
 	arch = x86_64
 	arch = i686
 	arch = pentium4
@@ -11,8 +11,7 @@ pkgbase = plaincontrolcenter
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	makedepends = git
-	depends = qt6-base
+	depends = qt5-base
 	depends = noto-fonts-emoji
 	depends = polkit
 	depends = ttf-opensans
@@ -20,7 +19,7 @@ pkgbase = plaincontrolcenter
 	depends = plainpanel
 	depends = plainabout
 	conflicts = plaincontrolcenter-git
-	source = git+https://github.com/plainDE/plainControlCenter.git#tag=0.4.2
-	sha256sums = SKIP
+	source = plaincontrolcenter-0.5.2.tar.gz::https://github.com/plainDE/plainControlCenter/archive/refs/tags/0.5.2.tar.gz
+	sha256sums = 490000aed236d3d5cbb2769912e20f4825e55ccdfdb75d883c9cd21541353381
 
 pkgname = plaincontrolcenter
