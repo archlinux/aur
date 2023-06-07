@@ -1,57 +1,92 @@
 # Maintainer: Hezekiah Michael <spiritomb at protonmail dot com>
 pkgname=ttf-blex-nerd-font-git
-pkgver=20190529
+pkgver=v3.0.1.r93.gdf626d3
 pkgrel=1
 pkgdesc="IBM Plex Mono Font patched with ryanoasis' Nerd Fonts glyphs."
 arch=(any)
 url="https://github.com/ryanoasis/nerd-fonts"
-license=('MIT')
-depends=('fontconfig')
-conflicts=('nerd-fonts-git')
-raw_url="$url/raw/master/patched-fonts/IBMPlexMono/Mono/complete"
+license=('custom:OFL1.1')
+optdepends=('fontconfig')
+conflicts=('nerd-fonts-git' 'ttf-ibmplex-mono-nerd' 'nerd-fonts-ibm-plex-mono')
+provides=('ttf-ibmplex-mono-nerd' 'ttf-font-nerd')
+groups=('nerd-fonts')
+raw_url="$url/raw/master/patched-fonts/IBMPlexMono/Mono"
 
 source=(
-"Blex-Mono-Bold-Italic-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-Bold-Italic-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20Bold%20Italic%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-Bold-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-Bold-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20Bold%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-ExtraLight-Italic-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20ExtraLight%20Italic%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-ExtraLight-Italic-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20ExtraLight%20Italic%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-ExtraLight-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20ExtraLight%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-ExtraLight-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20ExtraLight%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-Italic-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Italic%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-Italic-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20Italic%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-Light-Italic-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Light%20Italic%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-Light-Italic-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20Light%20Italic%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-Light-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Light%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-Light-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20Light%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-Medium-Italic-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Medium%20Italic%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-Medium-Italic-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20Medium%20Italic%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-Medium-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Medium%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-Medium-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20Medium%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-SemiBold-Italic-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20SemiBold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-SemiBold-Italic-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20SemiBold%20Italic%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-SemiBold-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20SemiBold%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-SemiBold-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20SemiBold%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-Text-Italic-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Text%20Italic%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-Text-Italic-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20Text%20Italic%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-Text-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Text%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-Text-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20Text%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-Thin-Italic-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Thin%20Italic%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-Thin-Italic-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20Thin%20Italic%20Nerd%20Font%20Complete.ttf"
-"Blex-Mono-Thin-Nerd-Font-Complete-Mono.ttf::$raw_url/Blex%20Mono%20Thin%20Nerd%20Font%20Complete%20Mono.ttf"
-"Blex-Mono-Thin-Nerd-Font-Complete.ttf::$raw_url/Blex%20Mono%20Thin%20Nerd%20Font%20Complete.ttf"
+  "${raw_url}/BlexMonoNerdFont-Bold.ttf"
+  "${raw_url}/BlexMonoNerdFont-BoldItalic.ttf"
+  "${raw_url}/BlexMonoNerdFont-ExtraLight.ttf"
+  "${raw_url}/BlexMonoNerdFont-ExtraLightItalic.ttf"
+  "${raw_url}/BlexMonoNerdFont-Italic.ttf"
+  "${raw_url}/BlexMonoNerdFont-Light.ttf"
+  "${raw_url}/BlexMonoNerdFont-LightItalic.ttf"
+  "${raw_url}/BlexMonoNerdFont-Medium.ttf"
+  "${raw_url}/BlexMonoNerdFont-MediumItalic.ttf"
+  "${raw_url}/BlexMonoNerdFont-Regular.ttf"
+  "${raw_url}/BlexMonoNerdFont-SemiBold.ttf"
+  "${raw_url}/BlexMonoNerdFont-SemiBoldItalic.ttf"
+  "${raw_url}/BlexMonoNerdFont-Text.ttf"
+  "${raw_url}/BlexMonoNerdFont-TextItalic.ttf"
+  "${raw_url}/BlexMonoNerdFont-Thin.ttf"
+  "${raw_url}/BlexMonoNerdFont-ThinItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-Bold.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-BoldItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-ExtraLight.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-ExtraLightItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-Italic.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-Light.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-LightItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-Medium.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-MediumItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-Regular.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-SemiBold.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-SemiBoldItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-Text.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-TextItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-Thin.ttf"
+  "${raw_url}/BlexMonoNerdFontMono-ThinItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-Bold.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-BoldItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-ExtraLight.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-ExtraLightItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-Italic.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-Light.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-LightItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-Medium.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-MediumItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-Regular.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-SemiBold.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-SemiBoldItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-Text.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-TextItalic.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-Thin.ttf"
+  "${raw_url}/BlexMonoNerdFontPropo-ThinItalic.ttf"
+  "LICENSE::${raw_url}/LICENSE.txt"
 )
 
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=(
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  'SKIP' 
+  )
+
 
 pkgver() {
-  date +%Y%m%d
+  # we don't need to download gigabytes of blobs to get the versioning @_@
+  git clone --sparse --filter=blob:none https://github.com/ryanoasis/nerd-fonts.git nerd-fonts-sparse
+  cd nerd-fonts-sparse
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 package() {
-  install -dm0755 ${pkgdir}/usr/share/fonts/TTF
-  install -Dm0644 ${srcdir}/*.ttf ${pkgdir}/usr/share/fonts/TTF
+  install -Dm 644 -t "${pkgdir}/usr/share/fonts/TTF" ${srcdir}/*.ttf
+  install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  rm -rf ${srcdir}/nerd-fonts-sparse
 }
