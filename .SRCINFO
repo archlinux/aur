@@ -1,6 +1,6 @@
 pkgbase = python310
 	pkgdesc = Next generation of the python high-level scripting language, version 3.10
-	pkgver = 3.10.11
+	pkgver = 3.10.12
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64
@@ -27,13 +27,13 @@ pkgbase = python310
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
-	provides = python=3.10.11
-	source = https://www.python.org/ftp/python/3.10.11/Python-3.10.11.tar.xz
-	source = https://www.python.org/ftp/python/3.10.11/Python-3.10.11.tar.xz.asc
+	provides = python=3.10.12
+	source = https://www.python.org/ftp/python/3.10.12/Python-3.10.12.tar.xz
+	source = https://www.python.org/ftp/python/3.10.12/Python-3.10.12.tar.xz.asc
 	validpgpkeys = 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 	validpgpkeys = E3FF2839C048B25C084DEBE9B26995E310250568
 	validpgpkeys = A035C8C19219BA821ECEA86B64E628F8D684696D
-	sha512sums = fa113b4b635d271a1412999587ec64654d337db263851a6a9d88b3cab4ed66dba76fe03e65c4d341f0a83fd8182d35e245bfd9827465d7aebcb4deb71af4d047
-	sha512sums = SKIP
+	b2sums = f7a3e27b437003915e4ebeeba82d1cc0c9de169f6e4bfe8d957e910141767668f3f1dd19374c212dba09325465f859244b955f3ffd3d0e6e879cc31bb4229ed6
+	b2sums = SKIP
 
 pkgname = python310

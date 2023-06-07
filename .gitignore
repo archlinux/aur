@@ -1,4 +1,6 @@
 pkg
 src
+.idea
+*.tar.xz.asc
 *.tar.xz
 *.pkg.tar.zst

@@ -8,7 +8,7 @@
 shopt -s extglob
 
 pkgname=python310
-pkgver=3.10.11
+pkgver=3.10.12
 pkgrel=1
 _pymajver=3
 _pybasever=${pkgver%.*}
@@ -25,8 +25,8 @@ optdepends=('python-setuptools'
               'xz: for lzma'
               'tk: for tkinter')
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc})
-sha512sums=('fa113b4b635d271a1412999587ec64654d337db263851a6a9d88b3cab4ed66dba76fe03e65c4d341f0a83fd8182d35e245bfd9827465d7aebcb4deb71af4d047'
-            'SKIP')
+b2sums=('f7a3e27b437003915e4ebeeba82d1cc0c9de169f6e4bfe8d957e910141767668f3f1dd19374c212dba09325465f859244b955f3ffd3d0e6e879cc31bb4229ed6'
+        'SKIP')
 validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
               'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
               'A035C8C19219BA821ECEA86B64E628F8D684696D') # Pablo Galindo Salgado <pablogsal@gmail.com>
@@ -92,6 +92,8 @@ package() {
   rm -f "${pkgdir}/usr/lib/libpython${_pymajver}.so"
   rm -f "${pkgdir}/usr/share/man/man1/python${_pymajver}.1"
 
+  # Clean-up reference to build directory
+  sed -i "s|$srcdir/Python-${pkgver}:||" "$pkgdir/usr/lib/python${_pybasever}/config-${_pybasever}-${CARCH}-linux-gnu/Makefile"
 
   # some useful "stuff" FS#46146
   install -dm755 "${pkgdir}"/usr/lib/python${_pybasever}/Tools/{i18n,scripts}
