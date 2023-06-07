@@ -1,7 +1,7 @@
 pkgbase = kavita-bin
 	pkgdesc = Self hosted ebook and comic reader
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kavitareader.com/
 	arch = x86_64
 	arch = aarch64
