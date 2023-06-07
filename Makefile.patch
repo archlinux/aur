@@ -1,13 +1,14 @@
---- a/Makefile	2023-04-14 11:57:06.531957438 +0530
-+++ b/Makefile	2023-04-14 12:06:45.853847462 +0530
-@@ -1,5 +1,5 @@
+--- kraken2-2.1.3.orig/src/Makefile	2023-06-07 05:55:37.000000000 +0530
++++ kraken2-2.1.3.new/src/Makefile	2023-06-07 15:11:05.404521211 +0530
+@@ -1,6 +1,6 @@
  CXX = g++
--CXXFLAGS = -fopenmp -Wall -std=c++11 -O3
-+CXXFLAGS = -fopenmp -Wall -std=c++11 -O2
+ KRAKEN2_SKIP_FOPENMP ?= -fopenmp
+-CXXFLAGS = $(KRAKEN2_SKIP_FOPENMP) -Wall -std=c++11 -O3
++CXXFLAGS = $(KRAKEN2_SKIP_FOPENMP) -Wall -std=c++11 -O2
  CXXFLAGS += -DLINEAR_PROBING
  
  .PHONY: all clean install
-@@ -9,7 +9,7 @@
+@@ -10,7 +10,7 @@
  all: $(PROGS)
  
  install: $(PROGS)
@@ -16,8 +17,8 @@
  
  clean:
  	rm -f *.o $(PROGS)
-@@ -32,16 +32,16 @@
- lookup_accession_numbers.o: lookup_accession_numbers.cc mmap_file.h utilities.h
+@@ -34,19 +34,19 @@
+ k2mask.o: k2mask.cc gzstream.h threadpool.h
  
  build_db: build_db.o mmap_file.o compact_hash.o taxonomy.o seqreader.o mmscanner.o omp_hack.o utilities.o
 -	$(CXX) $(CXXFLAGS) -o $@ $^
@@ -38,3 +39,7 @@
  lookup_accession_numbers: lookup_accession_numbers.o mmap_file.o omp_hack.o utilities.o
 -	$(CXX) $(CXXFLAGS) -o $@ $^
 +	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+ 
+ k2mask: k2mask.o seqreader.o
+-	$(CXX) $(CXXFLAGS) -o $@ $^ -lz -pthread
++	$(CXX) $(CXXFLAGS) -o $@ $^ -lz -pthread $(LDFLAGS)
