@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=113.0.1
-pkgrel=2
+pkgver=114.0
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(
@@ -80,7 +80,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git"
         "match.patch")
-sha256sums=('c4f86ecbb3f418cf8f0000a3824c0decb6ef2253f468cf6e005c5fd1de33da4d'
+sha256sums=('d23a0502742f52110ce496837ba82b47bf38d40585633787508ae5be9a5b4bc6'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -207,8 +207,6 @@ END
     msg2 "add custom uBO assets (on first launch only)"
     patch -Np1 -i ${_patches_dir}/librewolf/custom-ubo-assets-bootstrap-location.patch
 
-    patch -Np1 -i ${_patches_dir}/librewolf/faster-package-multi-locale.patch
-
     msg2 "remove references to firefox from the settings UI, change text in some of the links"
     patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
     patch -Np1 -i ${_patches_dir}/librewolf-ui/hide-default-browser.patch
@@ -255,8 +253,8 @@ END
     #patch -Np1 -i ${_patches_dir}/unity_kde/unity-menubar.patch
     msg2 "mozilla-nongnome-proxies"
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-    msg2  "some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
-    patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
+#    msg2  "some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
+#    patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
     # msg2 "Match to system libs"
     # patch -Np1 -i ../match.patch
