@@ -3,7 +3,7 @@
 
 pkgname=scid_vs_pc
 pkgver=4.24
-pkgrel=2
+pkgrel=3
 pkgdesc="Shane's Chess Information Database"
 arch=('i686' 'x86_64')
 url="http://scidvspc.sourceforge.net/"
@@ -12,7 +12,10 @@ depends=('zlib' 'tk')
 optdepends=('snack' 'tdom')
 install=$pkgname.install
 conflicts=('scid')
-source=("scid_vs_pc-"$pkgver".tgz::http://sourceforge.net/projects/scidvspc/files/source/scid_vs_pc-"$pkgver".tgz/download"
+# We embed the pkgrel in the download file name because SCID devs
+# sometimes use the same version number for an update and any previously
+# cached file will otherwise fail against the new checksum.
+source=("scid_vs_pc-$pkgver-$pkgrel.tgz::http://sourceforge.net/projects/scidvspc/files/source/scid_vs_pc-"$pkgver".tgz/download"
         scid
         $pkgname.desktop
         $pkgname.install
