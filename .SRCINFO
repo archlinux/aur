@@ -1,6 +1,6 @@
 pkgbase = python-selenium
 	pkgdesc = Python language bindings for Selenium WebDriver
-	pkgver = 4.9.1
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = https://www.selenium.dev
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-selenium
 	depends = python-inflection
 	depends = geckodriver
 	options = !makeflags
-	source = https://github.com/SeleniumHQ/selenium/archive/refs/tags/selenium-4.9.1.tar.gz
-	sha256sums = f6a11c5ac8e00e94e14e2232ea89d1b07d0334871cc5890df0a5fd50f511f09e
+	source = https://github.com/SeleniumHQ/selenium/archive/refs/tags/selenium-4.10.0.tar.gz
+	sha256sums = 873f8071df2dd0c175216721e39072f8a9821119ac21b1ddb52a21f6a0ad442e
 
 pkgname = python-selenium
