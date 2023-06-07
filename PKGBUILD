@@ -2,7 +2,7 @@
 
 pkgname=pot-translation
 reponame=pot-desktop
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('nodejs' 'pnpm' 'rust' 'git')
 
 source=("${reponame}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 
-sha512sums=('491e2ea9ff674c091191247ba86b2ab52e3f77fa126bb63b1fa8201aad2a2f731c7466bb1747682e51de96d9d4e3d3d5f3b3ccb2523c5e92df9922a28f62a754')
+sha512sums=('61f32781fe5c3713d92fbc56d73d0d99809e6d33bbe19e318637b21a2c1c4e5c3fda0dd25861cb9494b7d2fc98f851eb78ad537766528f26292341fed421b248')
 
 build(){
     cd $srcdir/${reponame}-${pkgver}
