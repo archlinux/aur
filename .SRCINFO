@@ -1,25 +1,28 @@
 pkgbase = python-sphinx-astropy
 	pkgdesc = Sphinx extensions and configuration specific to the Astropy project
-	pkgver = 1.8.0
-	pkgrel = 2
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = https://github.com/astropy/sphinx-astropy
 	arch = any
 	license = BSD
 	checkdepends = python-pytest-doctestplus
 	checkdepends = python-astropy-sphinx-theme
+	checkdepends = python-matplotlib
 	checkdepends = python-numpydoc
 	checkdepends = python-sphinxcontrib-jquery
 	checkdepends = python-sphinx-automodapi
+	checkdepends = python-pydata-sphinx-theme
+	checkdepends = python-sphinx-copybutton
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-astropy/sphinx-astropy-1.8.0.tar.gz
-	md5sums = 1080a54c73c327fe6511764110b09508
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-astropy/sphinx-astropy-1.9.0.tar.gz
+	md5sums = 1f7bf94bda42a5b51f196c8efa5f66ea
 
 pkgname = python-sphinx-astropy
 	depends = python-packaging
-	depends = python-sphinx>=1.7
+	depends = python-sphinx>=3.0.0
 	depends = python-astropy-sphinx-theme
 	depends = python-sphinx-automodapi
 	depends = python-sphinx-gallery
@@ -27,3 +30,5 @@ pkgname = python-sphinx-astropy
 	depends = python-sphinxcontrib-jquery
 	depends = python-pillow
 	depends = python-pytest-doctestplus>=0.11
+	optdepends = python-pydata-sphinx-theme: To use the new pydata-sphinx-theme with sphinx_astropy.conf.v2
+	optdepends = python-sphinx-copybutton: To use the new pydata-sphinx-theme with sphinx_astropy.conf.v2
