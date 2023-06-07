@@ -45,5 +45,5 @@ build() {
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+    install -D "build/monstermash" "${pkgdir}/usr/bin/${pkgname%-git}"
 }
