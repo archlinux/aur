@@ -12,7 +12,8 @@ license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Provides access to sensor hardware and motion gesture recognition'
 depends=('qt5-base')
 makedepends=('qt5-declarative' 'git')
-optdepends=('qt5-declarative: QML bindings')
+optdepends=('qt5-declarative: QML bindings'
+            'iio-sensor-proxy: iio-sensor-proxy backend')
 groups=('qt' 'qt5')
 _pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
