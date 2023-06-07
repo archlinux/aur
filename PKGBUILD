@@ -2,7 +2,7 @@
 
 pkgname=cider
 pkgver=1.6.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Build from tar file on GitHub releases."
 arch=(x86_64)
 url="https://github.com/ciderapp/${pkgname}.git"
@@ -42,9 +42,9 @@ build() {
 package() {
   # Extract package data
   bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
-  mv "${pkgdir}/opt/${_pkgname^}" "${pkgdir}/opt/${pkgname}"
+  mv "${pkgdir}/opt/${pkgname^}" "${pkgdir}/opt/${pkgname}"
 
   # Symlink the binary
   install -d "$pkgdir/usr/bin/"
-  ln -sf "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
