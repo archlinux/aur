@@ -5,14 +5,14 @@
 
 pkgname='libervia-backend-hg'
 _realname='libervia-backend'
-pkgver=0.8.0.rev114.g23b53ac87e0f
+pkgver=0.8.0.rev368.g84f6bee6440d
 pkgrel=1
 url="http://salut-a-toi.org/"
 pkgdesc="Libervia, multi-frontends multi-purposes XMPP client (core)"
 arch=('any')
 conflicts=('sat-xmpp-hg')
 provides=('libervia-backend')
-depends=('python' 'dbus' 'python-lxml' 'python-pillow' 'python-pyopenssl' 'python-dbus' 'python-twisted' 'python-wokkel' 'python-pyxdg' 'python-mutagen' 'python-markdown' 'python-shortuuid' 'python-html2text' 'python-netifaces' 'sat-tmp-hg' 'python-dateutil'  'python-gobject' 'python-babel' 'python-urwid' 'python-urwid-satext' 'python-treq' 'python-miniupnpc' 'python-langid' 'python-miniupnpc' 'python-omemo' 'python-yaml' 'python-progressbar' 'python-pycryptodome' 'python-omemo-backend-signal' 'python-sqlalchemy' 'python-alembic' 'python-txdbus' 'python-aiosqlite' 'python-jinja' 'python-pygments' 'python-cairosvg')
+depends=('python' 'dbus' 'python-lxml' 'python-pillow' 'python-pyopenssl' 'python-dbus' 'python-twisted' 'python-wokkel' 'python-pyxdg' 'python-mutagen' 'python-markdown' 'python-shortuuid' 'python-html2text' 'python-netifaces' 'sat-tmp-hg' 'python-dateutil'  'python-gobject' 'python-babel' 'python-urwid' 'python-urwid-satext' 'python-treq' 'python-miniupnpc' 'python-miniupnpc' 'python-omemo' 'python-yaml' 'python-progressbar' 'python-pycryptodome' 'python-omemo-backend-signal' 'python-sqlalchemy' 'python-alembic' 'python-txdbus' 'python-aiosqlite' 'python-jinja' 'python-pygments' 'python-cairosvg' 'python-xmlschema' 'python-hatchling')
 makedepends=('python-setuptools' 'mercurial' 'python-setuptools-scm')
 license=('AGPL3')
 source=("hg+https://repos.goffi.org/libervia-backend")
@@ -25,17 +25,12 @@ pkgver() {
 }
 
 
-prepare() {
-  cd "$srcdir/$_realname"
-  sed -i -e "s/'dbus-python',//" setup.py
-}
-
 build() {
     cd "$srcdir/$_realname"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package(){
     cd "$srcdir/$_realname"
-    python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
  }
