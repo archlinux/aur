@@ -40,8 +40,6 @@ pkgver() {
 build() {
 	cd "$_sourcedirectory/"
 
-	patch --forward -p1 < "$srcdir/$pkgname-mbedtls2.diff"
-
 	CMAKE_FLAGS='-DLINUX_LOCAL_DEV=true'
 
 	# Move into the build directory, run CMake, and compile the project
