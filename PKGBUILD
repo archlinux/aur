@@ -4,12 +4,14 @@
 # Contributor: Tom Richards <tom@tomrichards.net>
 pkgname=highscore
 pkgver=40.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A retro gaming application for the GNOME desktop"
 arch=('x86_64' 'aarch64')
 url="https://wiki.gnome.org/Apps/Games"
 license=('GPL3')
-depends=('grilo' 'libarchive' 'libhandy' 'libmanette' 'retro-gtk' 'tracker3')
+depends=('cairo' 'dconf' 'gdk-pixbuf2' 'glib2' 'glibc' 'grilo' 'gtk3' 'hicolor-icon-theme'
+         'libarchive' 'libhandy' 'libmanette' 'librsvg' 'libsoup3' 'libxml2' 'retro-gtk' 'sqlite'
+         'tracker3')
 makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
 optdepends=(
@@ -64,10 +66,12 @@ conflicts=('gnome-games')
 replaces=('gnome-games')
 source=("https://gitlab.gnome.org/World/highscore/-/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         'tracker3.patch'
-        'meson-0.60.patch')
+        'meson-0.60.patch'
+        'libsoup3.patch')
 sha512sums=('39e1abfe4dae8a349449d8a42070a5f1eb9e7556c5857477ef24213710aff09faebffd0e77ce1aaf22f65ea3e7d057c6f8b590810dcab97324f8772dd22a31fa'
             'b7e60604171b3189cd38cbfdb165d29d524a9f08c807fef7dccf251b52a745d60cfadafc86e305634c2313f04989664e26d0483cd86fb51ea176ecff47e38967'
-            '714e7cabbb45b63eddccfe295976a29bc85b577c2040a55903b84a2270fa7b63621cbed50c0bfecf1f17a8a8eb28d98e0a3f7c611ba30a97b62a44ffd6566340')
+            '714e7cabbb45b63eddccfe295976a29bc85b577c2040a55903b84a2270fa7b63621cbed50c0bfecf1f17a8a8eb28d98e0a3f7c611ba30a97b62a44ffd6566340'
+            'd02a285893435d741569df8a4f9ecc5416212e239393784d3b69ec50ad8f7f13448a8478be7ac8cad17cd8692f796001b05d60eaa384d24ca40cbbaa662bbea9')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -77,6 +81,9 @@ prepare() {
 
   # Fix build with meson 0.60 (Alpine)
   patch -p1 -i ../meson-0.60.patch
+
+  # Port to libsoup3 (Alpine)
+  patch -p1 -i ../libsoup3.patch
 
   # Replace pcsx_rearmed with mednafen_psx
   mv flatpak/libretro-cores/{pcsx_rearmed,mednafen_psx}.libretro
