@@ -2,7 +2,7 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.81.0.r0.gc1b7da69cc
+pkgver=1.85.0.r1.gad690037de
 _pkgname=matrix-synapse
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
@@ -123,7 +123,7 @@ pkgver() {
 prepare() {
         cd synapse
 	# allow any poetry-core to be used
-	sed -r 's/poetry-core>=1.0.0,<=([0-9.]+)/poetry-core>=1.0.0/' -i pyproject.toml
+	sed -r 's/poetry-core>=([0-9.]+),<=([0-9.]+)/poetry-core>=\1/' -i pyproject.toml
 }
 
 build() {
