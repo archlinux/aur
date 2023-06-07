@@ -43,22 +43,22 @@ package() {
 	echo -e "${RED}this package has to be installed as root${NOCOLOR}\nuse pacman -U to install the package"
 	cd "$pkgname-v$pkgver"
 	
-	install -Dm 755 build/kbdmod.bin $pkgdir/usr/bin/kbdmod
+	install -CDm 755 build/kbdmod.bin $pkgdir/usr/bin/kbdmod
 	echo "kbdmod installed to $pkgdir/kbdmod"
 
 
-	install -Dm 600 templates/mouse_props.yaml "$pkgdir/etc/interception/properties/mouse.yaml"
+	install -CDm 600 templates/mouse_props.yaml "$pkgdir/etc/interception/properties/mouse.yaml"
 
-	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/kbdmod/LICENSE"
+	install -CDm 644 LICENSE "$pkgdir/usr/share/licenses/kbdmod/LICENSE"
 	echo "LICENSE installed to /usr/share/licenses/kbdmod/LICENSE"
 
-	install -Dm 644 README.md "$pkgdir/usr/share/doc/kbdmod/README.md"
+	install -CDm 644 README.md "$pkgdir/usr/share/doc/kbdmod/README.md"
 	echo "README.md installed to /usr/share/doc/kbdmod/README.md"
 
-	install -Dm 644 doc/* "$pkgdir/usr/share/doc/kbdmod/"
+	install -CDm 644 doc/* "$pkgdir/usr/share/doc/kbdmod/"
 	echo "doc installed to /usr/share/doc/kbdmod/"
 
-	install -Dm 644 examples/laptop.yaml "$pkgdir/usr/share/doc/kbdmod/examples/laptop.yaml"
+	install -CDm 644 examples/laptop.yaml "$pkgdir/usr/share/doc/kbdmod/examples/laptop.yaml"
 	echo "laptop.yaml installed to /usr/share/doc/kbdmod/examples/laptop.yaml"
 
 #check if cowsay is installed
