@@ -1,0 +1,12 @@
+pkgbase = ti84cc-git
+	pkgdesc = Compiler for ti84+.
+	pkgver = r14.29f54c60e384e2008ad31f34f099156e368f659b
+	pkgrel = 1
+	url = https://github.com/kuche1/ti84cc.git
+	arch = any
+	makedepends = git
+	provides = ti84cc
+	source = git+https://github.com/kuche1/ti84cc.git
+	md5sums = SKIP
+
+pkgname = ti84cc-git
