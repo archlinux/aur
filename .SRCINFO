@@ -1,6 +1,6 @@
 pkgbase = rio
 	pkgdesc = A hardware-accelerated GPU terminal emulator powered by WebGPU
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/raphamorim/rio
 	arch = x86_64
@@ -15,9 +15,11 @@ pkgbase = rio
 	depends = libxcb
 	depends = libxkbcommon
 	depends = python
-	source = rio-0.0.5.tar.gz::https://github.com/raphamorim/rio/archive/refs/tags/v0.0.5.tar.gz
+	source = rio-0.0.6.tar.gz::https://github.com/raphamorim/rio/archive/refs/tags/v0.0.6.tar.gz
 	source = rio.desktop
-	b2sums = cdbfbc0925e0ac64d170c8b9f0797ae9cca20acfac62b737c0bbf8f96fb69c7cd8b49eb5f0385e67ea8eb8c5aa04f160e37bfa772da62984005d78351bc19f7c
-	b2sums = 4725c1ab72b7cdcc055912e97827fd2705d48ee6f084d469f0fbbff4ce65f25ab715e4f208cb7058961e4001c273c9f444065b3aa64a85a638c25b84a2688d50
+	source = rio-pull86-fix-cl-wayland.patch::https://patch-diff.githubusercontent.com/raw/raphamorim/rio/pull/86.patch
+	b2sums = 478f7e0585391fabb18e97a454041f937b3651c3080c696e3dcb5dfdc9ef6b681c1f848afbba7e1075c96f34b873161127a1e33a712d04eee6040dfe32ea5791
+	b2sums = cdb6a76cae33968b23a5d950c727151b152ea2c2951df0eda08e825d366eb41d7c9182aabb6cf85efe62a66010ce50096582b6300659f781dd5bd0e7a3646041
+	b2sums = 268f8bcf1675dd6c8cfb0b0d5bfcb91e3e400dede03d59b6db0a300b017d52a05033eeba42a4bdf767ce4b0049933df5c44a293ccf7114472998e73898c4a835
 
 pkgname = rio

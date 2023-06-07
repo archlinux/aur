@@ -8,3 +8,6 @@ TryExec=rio
 Exec=rio
 Icon=rio
 Categories=System;TerminalEmulator;
+StartupNotify=true
+StartupWMClass=rio
+SingleMainWindow=false
