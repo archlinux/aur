@@ -1,6 +1,6 @@
 # Maintainer: Benoît Rouits <brouits at free dot fr>
 pkgname=qabc
-pkgver=1.9.2
+pkgver=1.10
 pkgrel=1
 pkgdesc="ABC music notation minimal GUI."
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('qt5-base' 'abcm2ps' 'abcmidi' 'fluidsynth' 'shared-mime-info')
 makedepends=('qt5-tools')
 groups=(abc)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/be1/qabc/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('d91adb00526bfc63b4e3fdb3f267126366296ef59976ccce51595490abe3a6b8e0f65a2e78e151b7ed264234147658bcb03fb59395905fb8f104af8b7ade5b54')
+sha512sums=('f9c9d5adaccd9a608d0ec047db9e8094cc21899024b5a025b202788115c8230b84f3422a81cc6660611c29144d81870210f8f06554a071de02e7741e038c5480')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
