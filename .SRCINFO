@@ -1,0 +1,13 @@
+pkgbase = micah-man
+	pkgdesc = Manpages for Micah Halter's resume
+	pkgver = r157.f924ffb
+	pkgrel = 1
+	url = https://code.mehalter.com/mehalter.com
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = pandoc
+	source = git+https://github.com/mehalter/mehalter.com.git
+	sha256sums = SKIP
+
+pkgname = micah-man
