@@ -5,7 +5,7 @@ _pkgname=junction
 pkgname=junction-zhfix
 pkgver=1.6
 _tag=v$pkgver
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="Application/browser chooser"
 arch=('x86_64')
@@ -21,7 +21,7 @@ b2sums=('SKIP')
 prepare() {
   cd "$_pkgname-$pkgver"
 
-  # fix zh lang
+  # fix zh
   pushd po
   ln -vf zh_Hans.po zh_CN.po
   grep zh_CN LINGUAS || echo zh_CN >> LINGUAS
@@ -31,9 +31,15 @@ prepare() {
   rm zh_Hans.po && sed -i '/zh_Hans/d' LINGUAS
   popd
 
-  # fix fail to start in none flatpak environment
+  # fix crash when not in flatpak environment
   pushd src
   sed -i 's|XDG_DATA_DIRS.*e |FLATPAK_ID=fromAUR |' bin.js
+  popd
+
+  # redirect output
+  # so when use `xdg-open` there will be no annoying log printed to terminal
+  pushd data
+  sed -i '/^Exec=/ s|$| 2>/dev/null|' re.sonny.Junction.desktop
   popd
 
   git submodule update --init --recursive

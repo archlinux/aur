@@ -1,7 +1,7 @@
 pkgbase = junction-zhfix
 	pkgdesc = Application/browser chooser
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://github.com/sonnyp/Junction
 	arch = x86_64
