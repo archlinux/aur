@@ -15,7 +15,7 @@ pkgbase = plainde-meta
 	depends = plainabout=0.5.2
 	depends = plaincontrolcenter=0.5.2
 	depends = plainbase=0.5.2
-	depends = plainartwork=0.5
+	depends = plainartwork
 	conflicts = plainde-meta-git
 
 pkgname = plainde-meta

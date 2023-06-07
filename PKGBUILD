@@ -11,5 +11,5 @@ depends=(plainpanel=0.5.2
          plainabout=0.5.2
          plaincontrolcenter=0.5.2
          plainbase=0.5.2
-         plainartwork=0.5)
+         plainartwork)
 conflicts=('plainde-meta-git')
