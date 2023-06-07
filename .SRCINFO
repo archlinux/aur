@@ -1,0 +1,17 @@
+pkgbase = mpv-thumbfast-noenabled-git
+	pkgdesc = High-performance on-the-fly thumbnailer script for mpv, disabled by default
+	pkgver = r123.g6f1d92d
+	pkgrel = 1
+	url = https://github.com/po5/thumbfast
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = mpv-thumbfast
+	provides = mpv-thumbfast-git
+	conflicts = mpv-thumbfast
+	conflicts = mpv-thumbfast-git
+	source = git+https://github.com/po5/thumbfast.git
+	sha256sums = SKIP
+
+pkgname = mpv-thumbfast-noenabled-git
+	depends = mpv
