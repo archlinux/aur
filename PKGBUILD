@@ -8,7 +8,7 @@ pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
 pkgver=114.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(
@@ -253,8 +253,8 @@ END
     #patch -Np1 -i ${_patches_dir}/unity_kde/unity-menubar.patch
     msg2 "mozilla-nongnome-proxies"
     patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-#    msg2  "some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
-#    patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
+    msg2  "some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
+    patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
     # msg2 "Match to system libs"
     # patch -Np1 -i ../match.patch
