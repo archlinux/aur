@@ -1,0 +1,15 @@
+pkgbase = lnn
+	pkgdesc = A tool to hardcopy directories
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/JanzenJohn/lnn
+	arch = any
+	license = GPL
+	makedepends = rust
+	makedepends = git
+	makedepends = wget
+	makedepends = tar
+	source = https://github.com/JanzenJohn/lnn/archive/refs/tags/0.1.4.tar.gz
+	sha256sums = a14cc3be482f065b7c191bc1ef4d5c7f5ab142b007875986c547cc3ab9d28c17
+
+pkgname = lnn
