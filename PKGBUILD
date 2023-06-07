@@ -3,6 +3,7 @@ pkgname='projector-git'
 pkgrel=1
 pkgver=1.0.0
 arch=('x86_64')
+pkgdesc='Screen sharing web application, port of https://github.com/adamyordan/laplace'
 makedepends=('go' 'git')
 source=('git+https://github.com/jordus100/projector')
 sha256sums=('SKIP')
