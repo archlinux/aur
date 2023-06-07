@@ -9,7 +9,9 @@ pkgdesc="A retro gaming application for the GNOME desktop"
 arch=('x86_64' 'aarch64')
 url="https://wiki.gnome.org/Apps/Games"
 license=('GPL3')
-depends=('libadwaita' 'libarchive' 'libmanette' 'retro-gtk-git' 'tracker3')
+depends=('cairo' 'dconf' 'gdk-pixbuf2' 'glib2' 'glibc' 'grilo' 'gtk4' 'hicolor-icon-theme'
+         'libadwaita' 'libarchive' 'libmanette' 'librsvg' 'libsoup3' 'libxml2' 'retro-gtk-git'
+         'sqlite' 'tracker3')
 makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream-glib')
 optdepends=(
