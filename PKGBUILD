@@ -2,7 +2,7 @@
 
 pkgname=jskycalc
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for observing preparation in java"
 arch=('any')
 url="https://caligari.dartmouth.edu/public/downloads/skycalc/"

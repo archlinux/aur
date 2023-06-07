@@ -1,7 +1,7 @@
 pkgbase = jskycalc
 	pkgdesc = A tool for observing preparation in java
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caligari.dartmouth.edu/public/downloads/skycalc/
 	arch = any
 	license = custom
