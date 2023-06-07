@@ -1,0 +1,16 @@
+pkgbase = deskaide-appimage
+	pkgdesc = An aide to your desk life!
+	pkgver = 1.0.0.alpha.16
+	pkgrel = 1
+	url = https://github.com/deskaide/deskaide
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = deskaide
+	options = !strip
+	source = deskaide-1.0.0.alpha.16.tar.gz::https://github.com/deskaide/deskaide/archive/refs/tags/v1.0.0-alpha.16.tar.gz
+	sha256sums = 961371a61a539be9f9109277f39aafe2d4ab068427ee4afa6579edc4060d525c
+
+pkgname = deskaide-appimage
