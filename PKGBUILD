@@ -24,7 +24,7 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   make prefix=/usr DESTDIR="$pkgdir" install
 
-  _docdir="$pkgdir/usr/share/doc/$pkgname"
+  local _docdir="$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 README.txt "$_docdir/README.txt"
   install -Dm644 ChangeLog.txt "$_docdir/ChangeLog.txt"
 }
