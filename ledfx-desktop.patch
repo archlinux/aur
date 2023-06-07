@@ -1,0 +1,11 @@
+--- squashfs-root/ledfx.desktop
++++ squashfs-root/ledfx.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+-Name=ledfx
++Name=LedFx CC
+-Exec=AppRun --no-sandbox %U
++Exec=/usr/bin/ledfx-cc %U
+ Terminal=false
+ Type=Application
+ Icon=ledfx
