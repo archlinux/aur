@@ -1,7 +1,7 @@
 #Maintainer: jnanar <info@agayon.be>
 _realname=brython
 pkgname=python-brython
-pkgver=3.10.4
+pkgver=3.11.2
 pkgrel=1
 pkgdesc="A Python 3 implementation for client-side web programming"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('python' 'python-plumbum')
 options=(!emptydirs)
 provides=('python-brython')
 source=("https://github.com/brython-dev/brython/archive/${pkgver}.tar.gz")
-sha512sums=('db149a08caa3253caf45615da72b54fb863b1f7a345ec81f9abb1cfcea8931374036a5885bcd0519ff16cd604bdb47c85aab487d57b5bd8b39a9c4675fb351b2')
+sha512sums=('1f0d06ae6d6523fb8f99a4ff407783b677063e99f278e1a860a422535695d2f67d98d9ccea02968dd15a52998bd34620dd54f758d5f7f4a4668e9bc621680172')
 
 package() {
   cd "$srcdir/$_realname-$pkgver/scripts"
