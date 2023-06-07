@@ -1,6 +1,6 @@
 # Maintainer: greg erwin 256 at gmail dot com
 pkgname=signal-hound-vsg60
-pkgver=1.0.13
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="Signal generation software for Signal Hound VSG60"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom')
 depends=('libusb' 'signal-hound-udev')
 source=("$pkgname-$pkgver.zip::https://signalhound.com/download/vsg60a-software-installer_ubuntu-18-04x64/"
         'com.signalhound.vsg60.desktop')
-sha1sums=('98f6c88f20975d34fa3541acc7583faf2dc8c876'
+sha1sums=('4f059e35b0445c8fdff2c2586162fe8d17054aac'
           '97dfef8f137a888e47944db9e9dddebc1b302234')
 
 package() {
