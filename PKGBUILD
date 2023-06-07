@@ -1,9 +1,11 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Fabrizio Pietrucci <bamlessnty5@gmail.com>
 
 pkgname=syngestures
+_pkgname=syngesture
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Swipes and gestures for Linux with the MT multitouch protocol"
 arch=('x86_64')
 url="https://github.com/mqudsi/syngesture"
@@ -12,17 +14,23 @@ makedepends=('cargo')
 depends=('evtest')
 optdepends=("wmctrl: needed for syngestures-switch-ws for X11 and Wayland compatible workspace switching"
             "xdotool: simulates keyboard and mouse actions for Xorg or XWayland based apps")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mqudsi/syngesture/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3b187ef32818427490e422925dc6c30cf2ab05649a94a14a568b70ac2fc177c2')
-backup=("usr/local/etc/syngestures.toml")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+        "$pkgname.desktop"
+        "$pkgname.toml"
+        "$pkgname-switch-ws")
+sha256sums=('3b187ef32818427490e422925dc6c30cf2ab05649a94a14a568b70ac2fc177c2'
+            '244d8dc40c0bb6eea28a05c22b4a6950bbf0ecfc358cbc4c1500aae805f87883'
+            '4b835cf5dfe4c4387a9d607f44ce06cfbb6777c3ca5ffe3f5125d957f4fc6626'
+            '587366d03b3e70f8cbdd78f557bdf5191ff9937f9f86afa0d7ff78c490b015d8')
+backup=("etc/$pkgname.toml")
 
 prepare() {
-    cd "syngesture-$pkgver"
+    cd $_pkgname-$pkgver
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "${srcdir}/syngesture-${pkgver}"
+    cd $_pkgname-$pkgver
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
@@ -31,9 +39,9 @@ build() {
 }
 
 package() {
-    install -Dm644 ${srcdir}/syngesture-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    install -Dm755 ${srcdir}/syngesture-${pkgver}/target/release/${pkgname} ${pkgdir}/usr/bin/${pkgname}
-    install -Dm755 ../syngestures-switch-ws ${pkgdir}/usr/bin/syngestures-switch-ws
-    install -Dm644 ../syngestures.toml ${pkgdir}/usr/local/etc/syngestures.toml
-    install -Dm644 ../syngestures.desktop ${pkgdir}/usr/share/applications/syngestures.desktop
+    install -Dm644 $pkgname.toml -t "$pkgdir/etc"
+    install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
+    install -Dm644 $_pkgname-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm755 $pkgname-switch-ws -t "$pkgdir/usr/bin"
+    install -Dm755 $_pkgname-$pkgver/target/release/$pkgname -t "$pkgdir/usr/bin"
 }
