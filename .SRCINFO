@@ -1,18 +1,15 @@
 pkgbase = evolvotron
 	pkgdesc = An interactive generative art application
-	pkgver = 0.7.1
-	pkgrel = 5
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = http://www.timday.com/share/evolvotron/index.htm
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = boost
-	makedepends = gendesk
 	depends = qt5-base
 	depends = boost-libs
-	source = https://gitlab.com/saveriobran/evolvotron_fixed/raw/master/evolvotron.tar.gz
-	source = https://gitlab.com/saveriobran/evolvotron_fixed/raw/master/evolvotron.png
-	md5sums = 73d9188d01ec3b69010ff2ec2d74ccea
-	md5sums = 6a940f8edfff06aad4d8049be8cda8bf
+	source = https://github.com/WickedSmoke/evolvotron/archive/refs/tags/v0.8.1.tar.gz
+	sha512sums = 6852469db0e0a19340a7d035eda1720aa2eb36b11d84289b50699997594b945f5991e62607d010b82f02e1da2434e057d694d295f45a5a0f52078d5f8bfd1121
 
 pkgname = evolvotron
