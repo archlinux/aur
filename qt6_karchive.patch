@@ -1,0 +1,21 @@
+diff -ruN klogg-22.06/3rdparty/CMakeLists.txt klogg-22.06.patched/3rdparty/CMakeLists.txt
+--- klogg-22.06/3rdparty/CMakeLists.txt 2022-06-14 22:21:49.000000000 +0000
++++ klogg-22.06.patched/3rdparty/CMakeLists.txt 2023-06-07 22:09:04.246482427 +0000
+@@ -106,6 +106,9 @@
+   target_include_directories(uchardet_wrapper INTERFACE ${UCHARDET_INCLUDE_DIR})
+ endif()
+ 
++if(${QT_VERSION_MAJOR} EQUAL 6) 
++set(CPM_USE_LOCAL_PACKAGES OFF)
++endif()
+ cpmaddpackage(
+   NAME
+   KF5Archive
+@@ -121,6 +124,7 @@
+   add_library(klogg_karchive INTERFACE)
+   target_link_libraries(klogg_karchive INTERFACE KF5::Archive)
+ endif()
++set(CPM_USE_LOCAL_PACKAGES ON)
+ 
+ cpmaddpackage(
+   NAME

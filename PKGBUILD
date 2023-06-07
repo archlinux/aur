@@ -15,13 +15,16 @@ makedepends=('cmake' 'git')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/variar/klogg/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/variar/klogg/releases/download/v${pkgver}/${pkgname}-${pkgver}.${_subversion}.deps.tar.gz"
-        "crash_handler.patch")
+        "crash_handler.patch"
+        "qt6_karchive.patch")
 sha256sums=('a6a68b45d828a0de34572a77a25cb0bac7ce15f7e0328b4f4dae573b990e3970'
             'c9316454cbca126ee7fb55dd7b3af5bab92a914ec4df950fcf7c435a2f2c8276'
-            '653ad64febd55ee1b62c4604ecf7ac43574f81ca55f7d672a339c02114661be6')
+            '653ad64febd55ee1b62c4604ecf7ac43574f81ca55f7d672a339c02114661be6'
+            '606ec346a361dfe4e4cf9743df43c8897677553d9b2d028af157b2220e580bfc')
 
 prepare() {
     patch -p0 --input="${srcdir}/crash_handler.patch"
+    patch -p0 --input="${srcdir}/qt6_karchive.patch"
 }
 
 build() {

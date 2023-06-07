@@ -18,8 +18,10 @@ pkgbase = klogg
 	source = klogg-22.06.tar.gz::https://github.com/variar/klogg/archive/refs/tags/v22.06.tar.gz
         source = https://github.com/variar/klogg/releases/download/v22.06/klogg-22.06.0.1289.deps.tar.gz
         source = crash_handler.patch
+        source = qt6_karchive.patch
         sha256sums = a6a68b45d828a0de34572a77a25cb0bac7ce15f7e0328b4f4dae573b990e3970
         sha256sums = c9316454cbca126ee7fb55dd7b3af5bab92a914ec4df950fcf7c435a2f2c8276
         sha256sums = 653ad64febd55ee1b62c4604ecf7ac43574f81ca55f7d672a339c02114661be6
+        sha256sums = 606ec346a361dfe4e4cf9743df43c8897677553d9b2d028af157b2220e580bfc
 
 pkgname = klogg
