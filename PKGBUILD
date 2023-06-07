@@ -20,7 +20,7 @@ _opt_FLUTTER=1
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r3437.gcb42edd7
+pkgver=1.2.0.r3543.gb40f24a3
 pkgrel=1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
@@ -31,7 +31,7 @@ depends=("${_dpr[@]}" 'pulseaudio' 'gst-plugins-base-libs')
 depends+=('hicolor-icon-theme' 'xdg-utils')
 depends+=('xdg-user-dirs')
 _mdp=('unzip' 'git' 'cmake' 'gcc' 'curl' 'wget' 'yasm' 'nasm' 'zip' 'make' 'pkg-config' 'clang') # from Readme.MD
-makedepends=("${_mdp[@]}" 'rust' 'python')
+makedepends=("${_mdp[@]}" 'rust' 'python' 'python-yaml' 'python-toml')
 makedepends+=('ninja') # vcpkg build can use the latest ninja
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
@@ -56,7 +56,7 @@ source+=("${_vcs[@]}")
 if [ "${_opt_FLUTTER}" -eq 0 ]; then
   source+=("https://raw.github.com/c-smile/sciter-sdk/master/bin.lnx/x64/libsciter-gtk.so")
 else
-  _FLUVER='3.10.1'
+  _FLUVER='3.10.2'
   _FRBVER='1.75.0'
   source+=(
     "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${_FLUVER}-stable.tar.xz"
@@ -71,7 +71,7 @@ md5sums=('SKIP'
          '82e5e527336b41281a582204db1f3457'
          '357dc26a802c34387512a42697846d16'
          '10cf85debdd07be719a35ca3bfb8ea64'
-         'fa8974848a1347828252aff068a7fe11'
+         'c8548e2053281cb448f409448119f938'
          '9cb4a6717db959e082db75200e75d3e1')
 sha256sums=('SKIP'
             '149e0cee002e59e0bb84543cf3cb099f108c08390392605e944daeb6594cbc29'
@@ -79,7 +79,7 @@ sha256sums=('SKIP'
             '965e51c91ad9851e2337aebcc0f517440c637c506f3a03948062e3d5ea129a83'
             'a78b05c0d8427a90eb5b4eb08af25309770c8379592bb0b8a863373128e6143f'
             'f1acc15d0fd0cb431f4bf6eac32d5e932e40ea1186fe78e074254d6d003957bb'
-            'e325dfc5621aaeecc95ce9c51d0f4adf15786cfe881ed619e96780a3ddfbbaf5'
+            '7a0d9b80abf48d10801ecd7747550fb627df3ff2170b4833909bb9108873e07e'
             '6efb71ac8086699da74dad6736c32ddb20db5dcabe167c49a8c3a650675eb84b')
 _vcs=("${_vcs[@]%%::*}")
 _vcs=("${_vcs[@]##*/}")
@@ -165,19 +165,35 @@ prepare() {
 
   if [ "${_opt_FLUTTER}" -ne 0 ]; then
     local _FLUTTER_VERSION
-    _FLUTTER_VERSION="$(source <(grep -e 'FLUTTER_VERSION: ' '.github/workflows/flutter-build.yml' | sed -e 's/: /=/g'); printf '%s' "${FLUTTER_VERSION}")"
+    local _pyfv="
+import yaml
+import io
+with open('.github/workflows/flutter-build.yml', 'r') as stream:
+    data_loaded = yaml.safe_load(stream)
+#print(data_loaded.get('env').keys())
+print(data_loaded.get('env').get('FLUTTER_VERSION'))
+"
+    _FLUTTER_VERSION="$(python -c "${_pyfv}")"
     if [ "${_FLUTTER_VERSION}" != "${_FLUVER}" ]; then
       printf 'Flutter version has changed to %s\n' "${_FLUTTER_VERSION}"
       set +u
       false
     fi
+    set +u; msg2 "FLUTTER_VERSION=${_FLUTTER_VERSION}"; set -u
     local _flutter_rust_bridge
-    _flutter_rust_bridge="$(source <(grep -e 'flutter_rust_bridge = "' 'Cargo.toml' | sed -e 's: = :=:g'); printf '%s' "${flutter_rust_bridge}")"
-    if [ "$(vercmp "${_flutter_rust_bridge}" "${_FRBVER}")" -gt 0 ]; then
+    local _pyfrb="
+import toml
+new_toml_string = toml.load('Cargo.toml')
+#print(new_toml_string.keys())
+print(new_toml_string.get('dependencies').get('flutter_rust_bridge').get('version'))
+"
+    _flutter_rust_bridge="$(python -c "${_pyfrb}")"
+    if [ "$(vercmp "${_flutter_rust_bridge}" "${_FRBVER%.0}")" -gt 0 ]; then
       printf 'flutter_rust_bridge version has changed to %s\n' "${_flutter_rust_bridge}"
       set +u
       false
     fi
+    set +u; msg2 "flutter_rust_bridge=${_flutter_rust_bridge}"; set -u
   fi
 
   if [ "$(grep -c -F -e 'os.system' 'build.py')" -gt 1 ]; then
