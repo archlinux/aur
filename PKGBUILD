@@ -2,28 +2,18 @@
 
 _pkgname=Herwig
 pkgname=herwig
-pkgver=7.2.2
+pkgver=7.2.3
 pkgrel=1
 pkgdesc="Herwig is a multi-purpose particle physics event generator."
 arch=('x86_64')
 url="http://herwig.hepforge.org"
 license=('GPL2')
 depends=("gcc-fortran" "thepeg" "boost-libs" "fastjet" "gsl" "lhapdf")
-makedepends=("sudo" "sed")
+makedepends=('herwig_lhapdf_config')
 source=("http://www.hepforge.org/archive/${pkgname}/${_pkgname}-${pkgver}.tar.bz2")
-sha512sums=('3c0a08281ebea62370e6ed0262b731c7b0358d7aa2ce2e59d6a56c5f486ba31b25c9c9ad9d91476a4ec3c9998c361631a0e2b311b102f9a8b03aeb3fb5de1191')
+sha256sums=('5599899379b01b09e331a2426d78d39b7f6ec126db2543e9d340aefe6aa50f84')
 
 prepare() {
-  pdfs=(MMHT2014nlo68cl MMHT2014lo68cl)
-  lhapdfdata=$(lhapdf-config --datadir)
-  for p in "${pdfs[@]}"; do
-    if [ ! -d "${lhapdfdata}/$p" ]; then
-        sudo lhapdf install "$p"
-    else
-        sudo lhapdf upgrade "$p"
-    fi
-  done
-
   cd "$srcdir/${_pkgname}-${pkgver}"
   sed -i 's/lib\/libgsl.a/lib\/libgsl.so/' configure
 }
