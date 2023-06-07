@@ -12,26 +12,26 @@
 # idiosyncratic.
 
 _pkgname=fs2_open
-_pkgver=21_4_0
+_pkgver=23_0_0
 _pkgrelease=release_${_pkgver}
 _appimage="${_pkgname}_${_pkgver}_x64.AppImage"
 _licensefile="Unlicense.md"
 _desktopfile="fso.desktop"
 
 pkgname=fs2_open-appimage
-pkgver=21.4.0
+pkgver=23.0.0
 pkgrel=1
 pkgdesc="An enhancement of the FreeSpace 2 engine, AppImage version"
 arch=('x86_64')
-url="https://github.com/scp-fs2open/fs2open.github.com"
+url="https://www.hard-light.net/"
 license=('custom:Unlicense')
 depends=('zlib' 'hicolor-icon-theme')
 optdepends=('fs2_open-data')
 conflicts=('fs2_open' 'fs2_open-git')
 options=(!strip)
-source=("${url}/releases/download/${_pkgrelease}/${_pkgname}_${_pkgver}-builds-Linux.tar.gz"
+source=("https://github.com/scp-fs2open/fs2open.github.com/releases/download/release_${_pkgver}/${_pkgname}_${_pkgver}-builds-Linux.tar.gz"
         "https://raw.githubusercontent.com/scp-fs2open/fs2open.github.com/${_pkgrelease}/${_licensefile}")
-sha256sums=('3f856e0b852613b41890db83f4392580aaa3f5e32dffc33b508da4e0fd9c7e0f'
+sha256sums=('cf89cdd6830a2cf3cb8fd31e964d4105748b70569178b8dc53298fc8297a2097'
             'c8a0ed607299ef766627afa6091d2908b50ed4b9dc1b691b0058e6ba4b1b9a79')
 
 prepare() {
