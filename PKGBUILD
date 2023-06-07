@@ -2,7 +2,7 @@
 # Co-maintainer: Lemon <lemon@lemonsh.moe>
 
 pkgname="chuncord"
-pkgver="0.2"
+pkgver="0.2.1"
 pkgrel=1
 pkgdesc="CLI tool that allows for uploading large files to Discord in parts using webhooks"
 arch=("x86_64")
@@ -10,7 +10,7 @@ url="https://git.lemonsh.moe/lemon/chuncord"
 license=("custom:EUPLv1.2")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::https://git.lemonsh.moe/lemon/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('41eadca7f00e0c9394677e6163aa2f78f93c4f3eb6ad872ad870c0c412629f04')
+sha256sums=('2866a4f1557ed36ec618cdb25e0def81441969cb6464b7ae1e0f44880e76e192')
 
 prepare() {
     cd "$pkgname"
