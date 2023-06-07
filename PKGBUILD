@@ -1,14 +1,14 @@
 # Maintainer: Robert Hamblin <hamblingreen@hotmail.com>
 pkgname=dotool
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="Command to simulate input anywhere"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://git.sr.ht/~geb/dotool"
 license=('GPL3')
 makedepends=('go>=1.19')
 source=("$url/archive/$pkgver.tar.gz")
-sha512sums=('37ca511089ce1491bddfead3b12e41ffa12f75132e681580377313aee68994128b31f2562472cbe59478ca765e55f3b5e58369a4d905ae35218bc706cdf595f0')
+sha512sums=('1f786c5769e7ddfc53c921a4920909632cbd4c2e89df7b6ba5f6b075345928f537f3b955ce034c2d2cf6a0512805fef17fa9ffc6a635d3e33257d03f3a57c9b9')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -20,12 +20,8 @@ package() {
   cd "$pkgname-$pkgver"
 
   mkdir -p "$pkgdir/usr/local/bin"
-  mkdir -p "$pkgdir/usr/share/X11/xorg.conf.d"
   mkdir -p "$pkgdir/etc/udev/rules.d/"
-  mkdir -p "$pkgdir/etc/sway/config.d/"
   install dotool dotoolc dotoold "$pkgdir/usr/local/bin/"
-  install "50-dotool.conf" "$pkgdir/usr/share/X11/xorg.conf.d/50-dotool.conf"
   install "80-dotool.rules" "$pkgdir/etc/udev/rules.d/80-dotool.rules"
-  install "dotool.sway" "$pkgdir/etc/sway/config.d/dotool.sway"
 }
 
