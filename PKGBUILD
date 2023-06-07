@@ -5,7 +5,7 @@ pkgver=1.0.0
 arch=('x86_64')
 pkgdesc='Screen sharing web application, port of https://github.com/adamyordan/laplace'
 makedepends=('go' 'git')
-source=('git+https://github.com/jordus100/projector')
+source=('git+https://github.com/jordus100/projector-git')
 sha256sums=('SKIP')
 
 _static_files="usr/share/proj"
