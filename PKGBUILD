@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Mangano <fmang+aur mg0.fr>
 
 pkgname=opustags
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Opus tags editor'
 
@@ -10,14 +10,14 @@ license=('BSD3')
 
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 depends=('libogg')
-makedepends=('cmake')
+makedepends=('cmake' 'pkgconf')
 
 source=("https://github.com/fmang/opustags/archive/$pkgver.tar.gz")
-sha256sums=('1cd4d07344ae85511851f4dc79afef0590757b3776133c5268cb100c367e714e')
+sha256sums=('ea937f48a011bbacf37324c159149625c1ab66110e6d279693a92659bd38cf02')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	mkdir build
+	mkdir -p build
 	cd build
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
 	make
