@@ -1,7 +1,7 @@
 pkgbase = calckey-beta
 	pkgdesc = A fun, new way to experience social media
 	pkgver = 14.0.0rc2b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://calckey.org
 	install = calckey.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = calckey-beta
 	license = MIT
 	makedepends = git
 	makedepends = python
+	makedepends = rust
 	depends = nodejs
 	depends = npm
 	depends = postgresql

@@ -5,13 +5,13 @@
 pkgname=calckey-beta
 _pkgname=calckey
 pkgver=14.0.0rc2b
-pkgrel=1
+pkgrel=2
 pkgdesc='A fun, new way to experience social media'
 url='https://calckey.org'
 arch=('x86_64')
 license=('AGPL3' 'MIT')
 depends=('nodejs' 'npm' 'postgresql' 'redis' 'pnpm' 'zip')
-makedepends=('git' 'python')
+makedepends=('git' 'python' 'rust')
 options=('debug')
 install='calckey.install'
 commit=2d79418851021c0dbd215871d6ec543bdfd98155
@@ -88,7 +88,9 @@ build() {
     rm -rf "${srcdir}/${_pkgname}/.npm"
     rm -rf "${srcdir}/${_pkgname}/.local"
     rm -r "${srcdir}/${_pkgname}/scripts"
+    rm -rf "${srcdir}/${_pkgname}/.cargo"
 }
+
 
 package() {
     # systemd files
