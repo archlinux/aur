@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r23801.fbe86b889
+pkgver=r24266.069d7e6be
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -54,12 +54,17 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/yhirose/cpp-httplib.git'
         'git+https://github.com/Microsoft/vcpkg.git'
         'git+https://github.com/arun11299/cpp-jwt.git'
+        'git+https://github.com/bylaws/libadrenotools.git'
         # cubeb dependencies
         'git+https://github.com/arsenm/sanitizers-cmake.git'
         'git+https://github.com/google/googletest'
         # sirit dependencies
-        'git+https://github.com/KhronosGroup/SPIRV-Headers.git')
+        'git+https://github.com/KhronosGroup/SPIRV-Headers.git'
+        # libadrenotools' dependencies
+        'git+https://github.com/bylaws/liblinkernsbypass.git')
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -93,6 +98,7 @@ prepare() {
     do
         git config --file=.gitmodules submodule.$submodule.url "$srcdir/${submodule}"
     done
+    git config --file=.gitmodules submodule.externals/libadrenotools.url "$srcdir/libadrenotools"
 
     git -c protocol.file.allow=always submodule update --init
 
@@ -105,6 +111,10 @@ prepare() {
     cd "$srcdir/$_pkgname"/externals/sirit
     
     git config --file=.gitmodules submodule.externals/SPIRV-Headers.url "$srcdir/SPIRV-Headers"
+    git -c protocol.file.allow=always submodule update --init
+
+    cd "$srcdir/$_pkgname/externals/libadrenotools"
+    git config --file=.gitmodules submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
     git -c protocol.file.allow=always submodule update --init
 }
 
