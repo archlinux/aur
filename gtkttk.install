@@ -1,4 +1,24 @@
 ## arg 1:  the new package version
 post_install() {
-    ttk-theme-chooser gtkTtk
+    # Launch the script to make gtkTtk the default ttk theme for every user of the machine which don't have already selected a default theme
+    tclsh <<< 'set users [exec getent passwd] ;# List all the users on the system
+    foreach user [split $users "\n"] {
+        if {[regexp {/home} [lindex [split $user :] 5]]} { ;# Filter users that have a home directory known
+	    if {![file exists [lindex [split $user :] 5]]} { ;# And test if this home directory exists ont the system
+                continue
+	    }
+	    set ressourcesfilename [file join [lindex [split $user :] 5] {.Xresources}]
+	    if {[file exists $ressourcesfilename]} {
+	        set fptr [open $ressourcesfilename r]
+                set content [read -nonewline $fptr]
+                close $fptr
+                if {[regexp {\*TkTheme:} $content]} { ;# If there is already a ttk theme setted -> dont modfy it
+		    continue
+	        }
+	    }
+            set fptr [open $ressourcesfilename w+]
+            puts $fptr {*TkTheme: gtkTtk} ;# Set gtkTtk as the default ttk theme
+            close $fptr
+        }
+    }'
 }
