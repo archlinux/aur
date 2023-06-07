@@ -14,13 +14,13 @@ sha256sums=('3047014d07499a5e0e83bc1848800bc43f0f26319add7dcd1270a207d06c9105')
 prepare() {
 	cd "keyboard-configurator-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	make vendor
 }
 
 build() {
 	cd "keyboard-configurator-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	make prefix=/usr
+	make VENDOR=1 prefix=/usr
 }
 
 package() {
