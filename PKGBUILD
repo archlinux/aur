@@ -2,7 +2,7 @@
 
 pkgname=python-blake3
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the BLAKE3 cryptographic hash function"
 arch=(x86_64 i686 aarch64 armv7h)
 url="https://github.com/oconnor663/blake3-py"
