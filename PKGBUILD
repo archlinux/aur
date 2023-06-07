@@ -1,26 +1,29 @@
 # Maintainer: Ivan 'ivabus' Bushchik ivabus@ivabus.dev -> https://github.com/ivabus
 
 pkgname=plainabout
-pkgver=0.5
+_pkgname=plainAbout
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="plainDE about screen"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
-url="https://plainde.org"
+url="https://plainde.github.io"
 license=(GPL3)
 depends=(qt5-base noto-fonts-emoji polkit ttf-opensans make plainbase)
-makedepends=(git)
-source=("git+https://github.com/plainDE/plainAbout.git#tag=${pkgver}")
-sha256sums=('SKIP')
+
+makedepends=()
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plainDE/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('206adc9a949e8b569e12df3ba0fd384ef12ad5af8dc9a4539b6e840809d54985')
 conflicts=('plainabout-git')
 
-
 build() {
-  cd $srcdir/plainAbout
+  cd "${_pkgname}-${pkgver}"
+  
   qmake
   make
 }
 
 package() {
-  mkdir -p $pkgdir/usr/bin
-  install -m 0755 $srcdir/plainAbout/plainAbout $pkgdir/usr/bin/plainAbout
+  cd "${_pkgname}-${pkgver}"
+  
+  install -Dm 755 "${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 }
