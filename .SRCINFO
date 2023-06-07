@@ -5,7 +5,6 @@ pkgbase = clash-verge-bin
 	url = https://github.com/zzzgydi/clash-verge
 	arch = x86_64
 	license = GPL3
-	depends = libappindicator-gtk3
 	depends = webkit2gtk
 	depends = gtk3
 	depends = libayatana-appindicator
