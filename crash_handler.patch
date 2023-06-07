@@ -1,0 +1,19 @@
+diff -ruN klogg-22.06/src/crash_handler/src/memory_info.cpp klogg-22.06.patched/src/crash_handler/src/memory_info.cpp
+--- klogg-22.06/src/crash_handler/src/memory_info.cpp   2022-06-14 22:21:49.000000000 +0000
++++ klogg-22.06.patched/src/crash_handler/src/memory_info.cpp   2023-06-07 21:25:25.985787413 +0000
+@@ -89,6 +89,7 @@
+ #include <unistd.h>
+ 
+ #include <array>
++#include <cstdio>
+ 
+ uint64_t systemPhysicalMemory()
+ {
+@@ -128,4 +129,5 @@
+ {
+     std::call_once( totalMemoryFlag, []() { totalMemory = systemPhysicalMemory(); } );
+     return totalMemory;
+-}
+\ No newline at end of file
++}
++
