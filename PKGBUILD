@@ -6,7 +6,7 @@ pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase")
 _tagname='v3.0.4'
 pkgver='v3.0.4.r0.g0b4ba1fd8'
-pkgrel='2'
+pkgrel='0'
 pkgdesc='Super Smash Bros. Melee rollback netcode'
 _pkgdescappend=' - git version'
 arch=('x86_64')
@@ -23,11 +23,9 @@ makedepends=('cmake' 'git' 'qt5-base')
 optdepends=('pulseaudio: PulseAudio backend')
 source=(
 	"$pkgname::git+https://github.com/project-slippi/Ishiiruka.git#tag=$_tagname"
-	"$pkgname-mbedtls2.diff::https://github.com/project-slippi/Ishiiruka/pull/384.diff"
 )
 sha256sums=(
 	'SKIP'
-	'a82d73418931e0eb5cf252e557b040e750917197131ee43dcf7df550a8f8d83c'
 )
 
 _sourcedirectory="$pkgbase"
