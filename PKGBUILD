@@ -2,7 +2,7 @@
 # Contributor: Soukyuu <chrno-sphered at hotmail dot com>
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=deadbeef-git
-pkgver=r11297.94a8acbd2
+pkgver=r11326.2e38a0c13
 pkgrel=1
 pkgdesc="A GTK+ audio player for GNU/Linux (devel branch)"
 url="https://deadbeef.sourceforge.io/"
@@ -37,7 +37,6 @@ optdepends=('gtk2: for the GTK2 interface'
             'pulseaudio: for PulseAudio output plugin'
             'libx11: for global hotkeys plugin'
             'zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)'
-            'libsidplay: for SID player plugin'
             'yasm: required to build assembly portions of ffap plugin'
             'libzip: for vfs_zip plugin'
             'ffmpeg: for ffmpeg plugin'

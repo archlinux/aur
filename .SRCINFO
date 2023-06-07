@@ -1,6 +1,6 @@
 pkgbase = deadbeef-git
 	pkgdesc = A GTK+ audio player for GNU/Linux (devel branch)
-	pkgver = r11297.94a8acbd2
+	pkgver = r11326.2e38a0c13
 	pkgrel = 1
 	url = https://deadbeef.sourceforge.io/
 	arch = i686
@@ -56,7 +56,6 @@ pkgbase = deadbeef-git
 	optdepends = pulseaudio: for PulseAudio output plugin
 	optdepends = libx11: for global hotkeys plugin
 	optdepends = zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)
-	optdepends = libsidplay: for SID player plugin
 	optdepends = yasm: required to build assembly portions of ffap plugin
 	optdepends = libzip: for vfs_zip plugin
 	optdepends = ffmpeg: for ffmpeg plugin
