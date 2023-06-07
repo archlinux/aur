@@ -7,7 +7,7 @@ _pkgname=syngesture
 pkgver=1.0.1
 pkgrel=2
 pkgdesc="Swipes and gestures for Linux with the MT multitouch protocol"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/mqudsi/syngesture"
 license=('MIT')
 makedepends=('cargo')
@@ -25,23 +25,24 @@ sha256sums=('3b187ef32818427490e422925dc6c30cf2ab05649a94a14a568b70ac2fc177c2'
 backup=("etc/$pkgname.toml")
 
 prepare() {
-    cd $_pkgname-$pkgver
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cd $_pkgname-$pkgver
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd $_pkgname-$pkgver
+  cd $_pkgname-$pkgver
 
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
 
-    cargo build --frozen --release --all-features
+  cargo build --frozen --release --all-features
 }
 
 package() {
-    install -Dm644 $pkgname.toml -t "$pkgdir/etc"
-    install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
-    install -Dm644 $_pkgname-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm755 $pkgname-switch-ws -t "$pkgdir/usr/bin"
-    install -Dm755 $_pkgname-$pkgver/target/release/$pkgname -t "$pkgdir/usr/bin"
+  install -Dm644 $pkgname.toml -t "$pkgdir/etc"
+  install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 $_pkgname-$pkgver/README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 $_pkgname-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm755 $pkgname-switch-ws -t "$pkgdir/usr/bin"
+  install -Dm755 $_pkgname-$pkgver/target/release/$pkgname -t "$pkgdir/usr/bin"
 }
