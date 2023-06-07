@@ -1,0 +1,13 @@
+pkgbase = vapecalc-cli
+	pkgdesc = Vape calculator for your terminal, with both weight and volume calculation.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/muvment/vapecalc-cli
+	arch = any
+	license = MIT
+	depends = bash
+	depends = fzf
+	source = vapecalc-cli-1.0.0.tar.gz::https://github.com/muvment/vapecalc-cli/archive/refs/tags/1.0.0.tar.gz
+	sha512sums = 27ca7cc7ea273e6de4c4af068276012f8c956d64b03f2580ca3341a81c5e229d598b055af8467bb4aa464ebc0fb52e0ab28eeae3cdeab9f50dc20f751510dc74
+
+pkgname = vapecalc-cli
