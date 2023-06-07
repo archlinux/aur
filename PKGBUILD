@@ -3,7 +3,7 @@
 pkgname=bsdiff
 pkgver=4.3
 pkgrel=1
-pkgdesc="Tool for programming serial SPI FlashROM memories attached to PC via parallel port cable"
+pkgdesc="bsdiff and bspatch are tools for building and applying patches to binary files"
 arch=(i686 x86_64)
 url="https://www.daemonology.net/bsdiff/"
 license=(custom)
