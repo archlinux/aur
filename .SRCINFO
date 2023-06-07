@@ -1,17 +1,18 @@
 pkgbase = klogg-continuous-bin
 	pkgdesc = A multi-platform GUI application that helps browse and search through long and complex log files. It is designed with programmers and system administrators in mind and can be seen as a graphical, interactive combination of grep, less, and tail
-	pkgver = 23.06.r0.1405
+	pkgver = 23.06.r0.1407
 	pkgrel = 1
 	url = https://klogg.filimonov.dev
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = tar
 	depends = qt5-base
 	depends = hyperscan
 	depends = hicolor-icon-theme
 	provides = klogg
 	conflicts = klogg
-	source = klogg-continuous-23.06.0.1405.deb::https://github.com/variar/klogg/releases/download/continuous-linux/klogg-23.06.0.1405-focal.deb
-	b2sums = ab0266d436a34c27b0acfefb0cfa9f42121e45cc98ff31f01ee59012d78318adf757a271167790686ace61d9652e590dba746b07b2f8a591f87a721e6a91c3f5
+	source = klogg-continuous-23.06.0.1407.deb::https://github.com/variar/klogg/releases/download/continuous-linux/klogg-23.06.0.1407-focal.deb
+	b2sums = 13d45a54e2341c990f30cf4b65da7ebe5e3817ebcadcd239a0067bf45038e1ab12092b12c969310387af9374ad54da621115a5df51692f37cce78b93d800ebb8
 
 pkgname = klogg-continuous-bin
