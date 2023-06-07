@@ -5,11 +5,11 @@ pkgver=1.2
 pkgrel=1
 pkgdesc="A tool for observing preparation in java"
 arch=('any')
-url="http://www.dartmouth.edu/~physics/labs/skycalc/flyer.html"
+url="https://caligari.dartmouth.edu/public/downloads/skycalc/"
 depends=('java-environment' 'sh')
 license=('custom')
 noextract=('JSkyCalc.jar')
-source=("http://www.dartmouth.edu/~physics/labs/skycalc/JSkyCalc.jar"
+source=("https://caligari.dartmouth.edu/public/downloads/skycalc/JSkyCalc.jar"
         "jskycalc" "jskycalc.desktop" "jskycalc.png")
 sha1sums=('09f00cb1925f7b62a0237694007f18670857b32b'
 	'126b4cd9b01821f5d735c29b0bef5703bfc411de'
