@@ -5,7 +5,7 @@
 
 # Maintainer: Loic Guegan <loic.guegan@mailbox.org>
 pkgname=ochess
-pkgver=v0.0.3
+pkgver=v0.0.4
 pkgrel=1
 epoch=
 pkgdesc="Chess game analysis software written in c++"
@@ -15,8 +15,8 @@ license=('GPLv3')
 groups=()
 depends=(wxwidgets-gtk3)
 makedepends=(cmake wxwidgets-common)
-source=("http://loicguegan.com/files_/ochess-v0.0.3.tar.gz")
-sha256sums=(24dc1932c36ef62b33b3353a857133de3c5f527b6ccf875ac15c65e1750a3608) #generate with 'makepkg -g'
+source=("http://loicguegan.com/files_/ochess-v0.0.4.tar.gz")
+sha256sums=(c70ed1a8558312c646fc4c9cab74eb8a30677838a38b79baaa967e79801a72ed) #generate with 'makepkg -g'
 
 prepare() {
 	cd "$srcdir/$pkgname"
