@@ -2,8 +2,8 @@
 
 
 pkgname=libdeep_filter_ladspa
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='A Low Complexity Speech Enhancement Framework for Full-Band Audio (48kHz) using on Deep Filtering (LASPDA)'
 arch=(x86_64)
 url='https://github.com/Rikorose/DeepFilterNet'
