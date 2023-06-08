@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="ntrack-appimage"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A desktop app where you can easily keep track of your time-based tasks."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
-sha256sums=('fcdf8229ee47bef4bc35953296a87a5b32ea3fe71b6587cafc375e7772941cb1')
+sha256sums=('dd2581e6040c9deaacc40f42425b0e576845cb8b2688b5094cd0b355aaf82aa4')
       
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"

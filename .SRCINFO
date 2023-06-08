@@ -1,6 +1,6 @@
 pkgbase = ntrack-appimage
 	pkgdesc = A desktop app where you can easily keep track of your time-based tasks.
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/kutay-celebi/ntracker
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ntrack-appimage
 	depends = glibc
 	conflicts = ntrack
 	options = !strip
-	source = ntrack-1.1.0.AppImage::https://github.com/kutay-celebi/ntracker/releases/download/1.1.0/ntrack-1.1.0.AppImage
-	sha256sums = fcdf8229ee47bef4bc35953296a87a5b32ea3fe71b6587cafc375e7772941cb1
+	source = ntrack-1.1.1.AppImage::https://github.com/kutay-celebi/ntracker/releases/download/1.1.1/ntrack-1.1.1.AppImage
+	sha256sums = dd2581e6040c9deaacc40f42425b0e576845cb8b2688b5094cd0b355aaf82aa4
 
 pkgname = ntrack-appimage
