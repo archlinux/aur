@@ -1,5 +1,5 @@
 pkgbase = gnatstudio-sources
-	pkgdesc = Source tarballs for the Gnatstudio project stack
+	pkgdesc = Source tarballs for the Gnatstudio project stack.
 	pkgver = 24.0w
 	pkgrel = 1
 	url = https://github.com/AdaCore/gnatstudio
