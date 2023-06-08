@@ -2,12 +2,12 @@
 
 pkgname=lib32-c-ares
 pkgver=1.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library for asynchronous DNS requests"
 arch=(x86_64)
 url="https://c-ares.haxx.se/"
 license=(MIT)
-depends=(glibc)
+depends=(lib32-glibc)
 makedepends=(cmake)
 provides=(libcares.so)
 source=(https://github.com/c-ares/c-ares/releases/download/cares-${pkgver//./_}/c-ares-$pkgver.tar.gz{,.asc})
