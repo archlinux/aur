@@ -7,13 +7,13 @@
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=prismlauncher-qt5
-pkgver=6.3
+pkgver=7.0
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
 license=('GPL3')
-depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt5' 'tomlplusplus')
+depends=('java-runtime' 'libgl' 'qt5-base' 'qt5-svg' 'qt5-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt5' 'tomlplusplus' 'cmark')
 provides=('prismlauncher')
 conflicts=('prismlauncher')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc' 'ghc-filesystem' 'gamemode')
@@ -22,7 +22,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions')
 source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-${pkgver}.tar.gz")
-sha256sums=('fc1896df6422248dbd767d4a82066fe6044ae104354ebf75fc5ae92252f2fb1a')
+sha256sums=('aef3d368aea8c5c65d6db0d258ef3d0a2965a009f1311568190d2b557ec01833')
 
 build() {
   cd "PrismLauncher-${pkgver}"
