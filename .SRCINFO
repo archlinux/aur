@@ -1,11 +1,11 @@
 pkgbase = slweb
 	pkgdesc = Simple static website generator
-	pkgver = 0.6
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://strahinja.srht.site/slweb
 	arch = x86_64
 	license = GPL3
-	source = slweb-0.6.tar.gz::https://git.sr.ht/~strahinja/slweb/archive/v0.6.tar.gz
-	md5sums = c70b0681db019b6ed9d38bb637b7de61
+	source = slweb-0.6.1.tar.gz::https://git.sr.ht/~strahinja/slweb/archive/v0.6.1.tar.gz
+	md5sums = a294cc147dae7738b1b1db2f0fd53df5
 
 pkgname = slweb
