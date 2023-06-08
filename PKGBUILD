@@ -4,7 +4,7 @@ pkgver=0.3
 pkgrel=1
 pkgdesc="Creates and opens a whatsapp web link to send a message to a phone number"
 arch=('x86_64')
-url=""
+url="https://github.com/Caliel666/wpplinkmaker"
 license=('GPL3')
 source=(
 "https://github.com/Caliel666/wpplinkmaker/releases/download/$pkgver/whatsapp_link_maker"
