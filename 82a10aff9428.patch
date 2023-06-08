@@ -1,0 +1,43 @@
+From 82a10aff9428f1d190de55ef7971fdb84303cc7a Mon Sep 17 00:00:00 2001
+From: Aric Cyr <aric.cyr@amd.com>
+Date: Sat, 11 Feb 2023 10:03:22 -0500
+Subject: [PATCH] drm/amd/display: Only wait for blank completion if OTG active
+
+[why]
+If OTG is not active, waiting for blank completion will always fail and
+timeout resulting in unnecessary driver delays.
+
+[how]
+Check that OTG is enabled before waiting for blank.
+
+Reviewed-by: Alvin Lee <Alvin.Lee2@amd.com>
+Acked-by: Qingqing Zhuo <qingqing.zhuo@amd.com>
+Signed-off-by: Aric Cyr <aric.cyr@amd.com>
+Tested-by: Daniel Wheeler <daniel.wheeler@amd.com>
+Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+---
+ drivers/gpu/drm/amd/display/dc/core/dc.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/amd/display/dc/core/dc.c b/drivers/gpu/drm/amd/display/dc/core/dc.c
+index d4a1670a54506a..f07cba121d010e 100644
+--- a/drivers/gpu/drm/amd/display/dc/core/dc.c
++++ b/drivers/gpu/drm/amd/display/dc/core/dc.c
+@@ -1093,7 +1093,8 @@ static void phantom_pipe_blank(
+ 			otg_active_height,
+ 			0);
+ 
+-	hws->funcs.wait_for_blank_complete(opp);
++	if (tg->funcs->is_tg_enabled(tg))
++		hws->funcs.wait_for_blank_complete(opp);
+ }
+ 
+ static void disable_dangling_plane(struct dc *dc, struct dc_state *context)
+@@ -1156,6 +1157,7 @@ static void disable_dangling_plane(struct dc *dc, struct dc_state *context)
+ 			if (old_stream->mall_stream_config.type == SUBVP_PHANTOM) {
+ 				if (tg->funcs->enable_crtc) {
+ 					int main_pipe_width, main_pipe_height;
++
+ 					main_pipe_width = old_stream->mall_stream_config.paired_stream->dst.width;
+ 					main_pipe_height = old_stream->mall_stream_config.paired_stream->dst.height;
+ 					phantom_pipe_blank(dc, tg, main_pipe_width, main_pipe_height);

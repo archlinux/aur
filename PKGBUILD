@@ -28,7 +28,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
         '0103-Bluetooth_fix_deadlock_for_RFCOMM_sk_state_change.patch'
         # MANJARO Patches
-
+        '82a10aff9428.patch'
         # Bootsplash
         '0301-revert-fbcon-remove-now-unusued-softback_lines-cursor-argument.patch'
         '0302-revert-fbcon-remove-no-op-fbcon_set_origin.patch'
@@ -49,9 +49,10 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         # ACS override patch
         '0999-acs.gitpatch')
 sha256sums=('d8627528ed6b3ae607d00b1ef5a46e0e7051ae40b285fd4e82f4ff0bb72b68e8'
-            '0369e7685adc8efd5063cdbde9b450d446788dc5107ee8f8ff0c4519125ae5ea'
+            '546fcc3f18f7b2b556b1afe1f43e84e1fd18f6376da201a6b200d08d089fb8f9'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
             'a8a2d8b402b2877df1a949a106c634b6c366dd33b954c4b735ce1d3778214169'
+            '3cd0d68a430ba5267a944bdc81eb711fa078d08dd796d7a28cc3723f4796edbf'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             '50f4ccc4aeb0ffb8ec648b90a84ff188dbfed5364075cf0c6045c5696caf6ca9'
