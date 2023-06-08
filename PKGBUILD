@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 backup=("etc/$pkgname/config.conf")
 source=("g-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('61443a56244c65d3cf56037caf293f7f6566824036d67c0e72890ef179432c5e')
+sha256sums=('c123cbbf2601cdee1ccf1f1a1cfa351497c39f076bac8a13ddb14f9e09c332f0')
 
 
 build() {
