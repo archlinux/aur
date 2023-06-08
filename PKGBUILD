@@ -1,8 +1,4 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
-# Contributor: Dave Reisner <dreisner@archlinux.org>
-# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
-# Contributor: Jeff Mickey <jeff@archlinux.org>
-# Contributor: Alexander Fehr <pizzapunk gmail com>
+# Maintainer: Yaksh Bariya <yaksbari4@gmail.com>
 
 pkgname=lib32-c-ares
 pkgver=1.19.1
