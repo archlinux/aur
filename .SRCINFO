@@ -19,6 +19,6 @@ pkgbase = gpt4all-chat-git
 	source = gpt4all::git+https://github.com/nomic-ai/gpt4all.git
 	source = gpt4all-chat.desktop
 	sha256sums = SKIP
-	sha256sums = 08869f864cedd95b39a61df6f46f7af3914a03f9e008302f91acd01622e130de
+	sha256sums = 16cd7d32166c493b1028c3e5c6a8437d3d81315c92076f5a94240e509a93a271
 
 pkgname = gpt4all-chat-git

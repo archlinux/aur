@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '08869f864cedd95b39a61df6f46f7af3914a03f9e008302f91acd01622e130de'
+  '16cd7d32166c493b1028c3e5c6a8437d3d81315c92076f5a94240e509a93a271'
 )
 
 
@@ -47,6 +47,8 @@ package() {
   cd "${srcdir}/${_gitname}/gpt4all-chat/build"
 
   DESTDIR="${pkgdir}" make install
+
+  mv "${pkgdir}/opt/gpt4all-chat/bin/chat" "${pkgdir}/opt/gpt4all-chat/bin/gpt4all-chat"
 
   mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
