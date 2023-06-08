@@ -15,7 +15,7 @@ if [[ -n ${LOCAL_LLVM_REPO} ]]; then
 source=("git+file://${LOCAL_LLVM_REPO}#branch=main")
 fi
 sha512sums=('SKIP')
-static_build=true
+static_build=false
 
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
