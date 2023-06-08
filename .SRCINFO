@@ -1,6 +1,6 @@
 pkgbase = python-looseversion
 	pkgdesc = Version numbering for anarchists and software realists
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/effigies/looseversion
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-looseversion
 	makedepends = python-flit
 	makedepends = python-hatchling
 	depends = python
-	source = looseversion-1.1.2.tar.gz::https://github.com/effigies/looseversion/archive/1.1.2.tar.gz
-	md5sums = 901ec210a70289eca3a3be51678d3c21
+	source = looseversion-1.2.0.tar.gz::https://github.com/effigies/looseversion/archive/1.2.0.tar.gz
+	md5sums = dd279fe74ae0df00039da30a21245f25
 
 pkgname = python-looseversion
