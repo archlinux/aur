@@ -2,14 +2,14 @@
 _orgname=OpenOrienteering
 _pkgname=mapper
 pkgname=${_orgname,,}-${_pkgname}
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc='Map drawing program from OpenOrienteering'
 arch=(x86_64)
 url='https://www.openorienteering.org/apps/mapper/'
 license=('GPL3')
-depends=('qt5-base>=5.5' 'polyclipping>=6.1.3a' 'proj>=4.9' 'gdal>=2')
-makedepends=('cmake>=3.7' 'qt5-tools>=5.5' 'doxygen' 'libcups')
+depends=('qt5-base' 'polyclipping' 'proj' 'gdal')
+makedepends=('cmake' 'qt5-tools' 'doxygen' 'libcups' 'qt5-sensors' 'qt5-location' 'qt5-serialport')
 checkdepends=('qt5-imageformats')
 optdepends=('qt5-imageformats: Support for TIFF etc.'
             'qt5-translations: for Qt5 dialog translations')
@@ -17,7 +17,7 @@ provides=("${pkgname}=${pkgver}")
 conflicts=(${pkgname}-git)
 install=${pkgname}.install
 source=("https://github.com/${_orgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('485b0c3861673977a7639d43ae4354ce9fae4799c36ed1d47770625f92a07e35')
+sha256sums=('619152ca01a370875c15e1930918ce961284ccbf5d2371c147d50caf5e5c2f00')
 
 build() {
   cd ${_pkgname}-${pkgver}
