@@ -3,7 +3,7 @@
 
 pkgname=('llvm10' 'llvm10-libs')
 pkgver=10.0.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -12,16 +12,19 @@ makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2'
 options=('staticlibs')
 source=("https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver/llvm-$pkgver.src.tar.xz"
         "llvm-config.h"
-        "benchmark-register-fix.patch")
+        "benchmark-register-fix.patch"
+        "llvm-gcc13-issue55711.patch")
 sha256sums=('c5d8e30b57cbded7128d78e5e8dad811bff97a8d471896812f57fa99ee82cdf3'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
-            '6ea7fec524215f021bf4507da67247707c87640c9ec2b3314a71d1aa9c043158')
+            '6ea7fec524215f021bf4507da67247707c87640c9ec2b3314a71d1aa9c043158'
+            'bba0c07266ef175ac950246c95232d3d69c7c24a8d0b92ae632f67be7c0ba2c7')
 validpgpkeys+=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D') # Hans Wennborg <hans@chromium.org>
 validpgpkeys+=('474E22316ABF4785A88C6E8EA2C794A986419D8A') # Tom Stellard <tstellar@redhat.com>
 
 prepare() {
   cd "$srcdir/llvm-$pkgver.src"
   patch -Np1 -i ../benchmark-register-fix.patch
+  patch -Np1 -i ../llvm-gcc13-issue55711.patch
 
   mkdir build
 }
