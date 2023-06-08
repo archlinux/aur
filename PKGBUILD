@@ -2,7 +2,7 @@
 # Maintainer: Joseph Donofry <joe at joedonofry dot com>
 
 pkgname=nheko-git
-pkgver=0.11.3.r154.gb0f3d39e
+pkgver=0.11.3.r307.g8259891a
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64" "aarch64")
@@ -10,9 +10,9 @@ arch=("i686" "x86_64" "aarch64")
 url="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
 
-depends=("qt5-base" "lmdb" "qt5-graphicaleffects" "qt5-multimedia" "qt5-svg" "qt5-quickcontrols2" "qt5-declarative" "qtkeychain-qt5" "cmark" "openssl" "hicolor-icon-theme" "gstreamer" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "gst-plugin-qmlgl" "gst-plugin-pipewire" "libnice" "libolm" "spdlog" "curl" "libevent" "pkg-config" "re2")
-makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools" "nlohmann-json" "asciidoc")
-optdepends=("kimageformats" "qt5-imageformats" "qt-jdenticon")
+depends=("qt6-base" "lmdb" "qt6-multimedia" "qt6-svg" "qt6-declarative" "qtkeychain-qt6" "cmark" "openssl" "hicolor-icon-theme" "gstreamer" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "gst-plugin-qmlgl" "gst-plugin-pipewire" "libnice" "libolm" "spdlog" "curl" "libevent" "pkg-config" "re2")
+makedepends=("git" "cmake" "gcc" "fontconfig" "qt6-tools" "nlohmann-json" "asciidoc")
+optdepends=("kimageformats" "qt6-imageformats" "qt-jdenticon")
 provides=("nheko=${pkgver}")
 conflicts=("nheko")
 
