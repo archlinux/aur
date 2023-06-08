@@ -1,7 +1,7 @@
 # Contributor: Paul Nicholson <brenix@gmail.com>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=yor-bin
-pkgver=0.1.179
+pkgver=0.1.180
 pkgrel=1
 pkgdesc="Extensible auto-tagger for your IaC files. The ultimate way to link entities in the cloud back to the codified resource which created it."
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
@@ -14,10 +14,10 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${_githuburl}/releases/
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz")
 source_i686=("${pkgname%-bin}-${pkgver}-i686.tar.gz::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_386.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_armv7h=('213de5807bfd66de6af37984ef88883579b693edaf9dfa53ed11e22c04fb7490')
-sha256sums_aarch64=('ca211aa7afee95839221c1f287d5c98c1bbfbacf5774266d58ef964eed6d7996')
-sha256sums_i686=('e14aa355988f215b92aacb6e853731cfc63738272c6e2cf218c68c8892a83445')
-sha256sums_x86_64=('26209c7d0f4a0f8afc99dddad2d9c241f93525bfe4d1d472be9bb98ec847cef8')
+sha256sums_armv7h=('a3701f0f6951e8f148e17612c2ba270dc329c810fa4edf8e52eb709c19f94471')
+sha256sums_aarch64=('7355707126668c9e9b38013c68b36bf05ecc441321f66f355c7b211b583b9e9a')
+sha256sums_i686=('d3d71aa7386193c80a03fe02c3192ba06ca5a177b326c1b95c6025d4a64f707f')
+sha256sums_x86_64=('fd762fe2fa2a881e2026a40284057ffa2a69e3a0b2082fe5482aa922c06eac4a')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
