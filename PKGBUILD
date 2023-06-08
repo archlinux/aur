@@ -3,7 +3,7 @@
 # Contributor: Julio Diez <juliosddr@gmail.com>
 
 pkgname=sigutils-git
-pkgver=r464.bd4295d
+pkgver=r474.e1d6c84
 pkgrel=1
 pkgdesc="Digital signal processing library"
 arch=("any")
@@ -22,8 +22,15 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${pkgname}"
+
+    git submodule init
+    git submodule update
+}
+
 build() {
-  cd "$pkgname"
+  cd "${pkgname}"
   
   mkdir build
   cd build
