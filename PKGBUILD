@@ -20,7 +20,7 @@ upstream_arch=
 [[ "$CARCH" == "i686" ]] && upstream_arch="i386"
 
 package() {
-    depends=("glibc" "gcc-libs" "mesa" "qt5-base" "qt5-websockets")
+    depends=("glibc" "gcc-libs" "mesa" "qt5-base" "qt5-websockets" "openssl-1.1")
 
     ar p "${srcdir}/disig-web-signer_${pkgver}-${_upstream_pkgrel}.ubuntu_${upstream_arch}.deb" data.tar.xz | tar -xJ -C "${pkgdir}"
 

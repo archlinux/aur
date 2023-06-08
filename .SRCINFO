@@ -18,3 +18,4 @@ pkgname = disig-web-signer
 	depends = mesa
 	depends = qt5-base
 	depends = qt5-websockets
+	depends = openssl-1.1
