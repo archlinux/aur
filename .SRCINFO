@@ -1,6 +1,6 @@
 pkgbase = gprbuild
 	pkgdesc = Builder for multi-language systems
-	pkgver = 23.0.0
+	pkgver = 24.0w
 	pkgrel = 3
 	epoch = 1
 	url = https://github.com/AdaCore/gprbuild/
@@ -11,12 +11,12 @@ pkgbase = gprbuild
 	makedepends = gprbuild-bootstrap
 	makedepends = which
 	depends = xmlada
-	source = gprbuild-23.0.0.tar.gz::https://github.com/AdaCore/gprbuild//archive/v23.0.0.tar.gz
-	source = gprconfig_kb-23.0.0.tar.gz::https://github.com/AdaCore/gprconfig_kb/archive/v23.0.0.tar.gz
-	source = 0001-Makefile-build-relocatable-instead-of-static-binarie.patch
-	source = 0001-compilers.xml-use-gcc-version-to-get-version-number-.patch
-	sha256sums = 141b403ea8a3f82b58b6a8690f8409fe295f3692b667ba3ec487fafcbd26e389
-	sha256sums = 182d9108c91390ddd67c841e45a3fc9dd23a94b33d4a1f05ed2788c1fb9b7dd2
+	source = file:///opt/gnatstudio-sources/gprbuild-24.0w-20230324-1649D-src.tar.gz
+	source = file:///opt/gnatstudio-sources/gprconfig-kb-24.0w-20230324-16644-src.tar.gz
+	source = 0001-Makefile-build-relocatable-instead-of-static-binary.patch
+	source = 0002-compilers.xml-use-gcc-version-to-get-version-number.patch
+	sha256sums = efeb12ab26ca687a000ca781f3bce0e4ec2d4efd62b996116f2f505e50239b4f
+	sha256sums = 7de5388f05168fb32577556989f0bc0f4f4d615cbd6a79ad544127a090aba5f4
 	sha256sums = 6ebbea41d4b8b516d0646438338fb228ea907600a2ad2c594bab41a7e1c3680c
 	sha256sums = ffa2a18febe9d8c512f81d66a58e73a6bd9f417aa3a8d8acfc1eab2047492569
 
@@ -30,3 +30,18 @@ pkgname = gprbuild
 	depends = xmlada
 	provides = gprbuild-bootstrap
 	conflicts = gprbuild-bootstrap
+
+pkgname = gprtools
+	depends = libgpr
+	depends = xmlada
+	provides = gprtools
+
+pkgname = gprname
+	depends = libgpr
+	depends = xmlada
+	provides = gprname
+
+pkgname = gprslave
+	depends = libgpr
+	depends = xmlada
+	provides = gprslave
