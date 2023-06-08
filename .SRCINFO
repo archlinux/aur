@@ -8,14 +8,16 @@ pkgbase = jdk17-zulu-prime-bin
 	arch = aarch64
 	license = unknown
 	depends = java-environment-common
-	depends = java-runtime
+	depends = java-runtime-common
 	depends = ca-certificates-utils
-	depends = libx11
 	depends = libxi
-	depends = libxtst
-	depends = alsa-lib
 	depends = libxext
 	depends = libxrender
+	depends = libx11
+	depends = libxtst
+	depends = alsa-lib
+	provides = java-runtime=17
+	provides = java-environment=17
 	source_x86_64 = https://cdn.azul.com/zing-zvm/ZVM23.05.0.0/zing23.05.0.0-2-jdk17.0.7-linux_x64.tar.gz
 	sha256sums_x86_64 = 9168a4caa77c407b72074d187caefa2dbc1a8464f0806aa69ecb5c7229ece293
 	source_aarch64 = https://cdn.azul.com/zing-zvm/ZVM23.05.0.0/zing23.05.0.0-2-jdk17.0.7-linux_aarch64.tar.gz
