@@ -3,7 +3,7 @@
 _base=pyviz_comms
 pkgname=python-${_base}
 pkgdesc="Bidirectional communication for the PyViz ecosystem"
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 arch=(any)
 url="https://github.com/pyviz/${_base}"
@@ -11,7 +11,7 @@ license=('custom:BSD-3-clause')
 depends=(python-param jupyterlab)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('7d0ef99aa1fd041e6f8ca4d39c88a817a6ca3aed66f5a0cc8e6d1a34095a96a23435b5a1ffdc4fe74978eed11ff68ffa6be9b744d6d9f0ee035f9034428bc010')
+sha512sums=('630e49242e7402e7e6547ea787d679ac9450311cafc27d093549a2e83bcf2c9b885c3017bbbbe06b6d7e5675256de0d6811baee9f4ab76e776b934013da8685a')
 
 build() {
   cd ${_base}-${pkgver}
