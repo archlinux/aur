@@ -1,4 +1,4 @@
-# Maintainer: Frederik Holm Strøm <aur@katofln.com>
+# Maintainer: Frederik Holm Strøm <aur@frederikstroem.com>
 
 # https://chatboxapp.xyz/
 
