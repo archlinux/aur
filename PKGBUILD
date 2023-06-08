@@ -3,13 +3,13 @@
 pkgname=klogg
 pkgver=22.06
 _subversion=0.1289
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-platform GUI application that helps browse and search through long and complex log files. It is designed with programmers and system administrators in mind and can be seen as a graphical, interactive combination of grep, less, and tail"
 arch=('x86_64')
 url='https://klogg.filimonov.dev'
 license=('GPL3')
 provides=('klogg')
-conflicts=('klogg-bin')
+conflicts=('klogg')
 depends=('qt5-base' 'hicolor-icon-theme' 'hyperscan' 'xxhash' 'uchardet' 'tbb')
 makedepends=('cmake' 'git')
 
