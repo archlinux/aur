@@ -1,7 +1,7 @@
 pkgbase = fishnet-bin
 	pkgdesc = Distributed Stockfish analysis for lichess.org
 	pkgver = 2.6.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lichess-org/fishnet
 	arch = x86_64
 	license = GPL
