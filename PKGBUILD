@@ -1,16 +1,16 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 
 pkgname=healthchecks
-_pkgver=2.8.1
-pkgver=2.8.1
+_pkgver=2.9.2
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="A cron monitoring service with a web-based dashboard, API, and notification integrations."
 arch=('any')
 url="https://github.com/healthchecks/healthchecks"
 license=('BSD')
-depends=('python-cron-descriptor' 'python-cronsim' 'python-django' 'python-django-compressor'
-	 'python-fido2' 'python-pyotp' 'python-pytz' 'python-pycurl' 'python-segno'
-	 'python-statsd' 'python-whitenoise' 'uwsgi' 'uwsgi-plugin-python')
+depends=('python-aiosmtpd' 'python-cron-descriptor' 'python-cronsim' 'python-django'
+	 'python-django-compressor' 'python-fido2' 'python-pyotp' 'python-pytz' 'python-pycurl'
+	 'python-segno' 'python-statsd' 'python-whitenoise' 'uwsgi' 'uwsgi-plugin-python')
 optdepends=('python-psycopg2: Add support for postgreSQL.'
 	    'python-apprise: Add support for the Apprise integration.')
 backup=("var/lib/$pkgname/local_settings.py" "etc/uwsgi/$pkgname.ini")
@@ -31,7 +31,7 @@ source=("$url/archive/refs/tags/v$_pkgver.tar.gz"
         "$pkgname.tmpfiles"
 	"local_settings.py"
         "settings.patch")
-sha256sums=('ff851b1e5042e1a1bef9b569a7e55e3d114f1943a612bf3c1a245a92b4646569'
+sha256sums=('64f7fec9d43aeddd80ac7065e15c4556868aee0ec7caa4441d6c50610727b539'
 	    'a7b75bdd35c6952e06e1cd3824450f7c613aff5e3fb1d9f4f57f517b57cefbde'
 	    '355ac237284642e24a3cbe7ddb285bf7dbb802e72ea7fe7c68f0476178ab94fc'
 	    '9d32c4d1404079cac9b7a4ccbc97e01d867735c2536f915220d2ac5dffc333e7'
@@ -42,7 +42,7 @@ sha256sums=('ff851b1e5042e1a1bef9b569a7e55e3d114f1943a612bf3c1a245a92b4646569'
 	    '2407d81ae0224d5c394b35e20a3b29d138fbde3fdde951de9dfea44d97e73eca'
 	    'c04de046d176958b3705d751ac09cf018d395b6c37f38977ec4048a561d5041f'
 	    '4cb8857de8ef834e0e41eddc56a3e7bbab63adb210196642ca2544b48220f31d'
-	    '6daf90731364cfb1b80fb94438d93891be6565cbbf220fbe4ba11b1f3fdbc777')
+	    '86dbe0d8ac731908833848fdae056722f10a10647c5256eab4413e80663f23ca')
 
 prepare () {
     cd "$pkgname-$_pkgver/hc"
