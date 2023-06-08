@@ -1,7 +1,7 @@
 pkgbase = tastytrade
 	pkgdesc = One of the fastest, most reliable, and most secure trading platforms in the world.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tastytrade.com/
 	arch = x86_64
 	license = custom:commercial

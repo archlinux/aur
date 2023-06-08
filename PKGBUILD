@@ -3,7 +3,7 @@
 
 pkgname=tastytrade
 pkgver='2.2.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
 url='https://tastytrade.com/'
@@ -13,7 +13,7 @@ source=(https://download.tastytrade.com/desktop-2.x.x/${pkgver}/tastytrade-${pkg
 sha256sums=('087a794f0a0bc32eab1c8c58e9139a72a9481c17faa4e7684015682f3eea46e9')
 
 build() {
-	tar xf data.tar.xz
+	tar axf data.tar.zst
 
 	# Remove additional bundled Java "runtime"
 	#rm -rf opt/tastytrade/lib/runtime
