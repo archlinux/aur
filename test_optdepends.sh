@@ -24,10 +24,9 @@ fi
 
 # Add mumps support
 MUMPS_DIR="/usr/include"
-if [ -d "/usr/include/cmumps_c.h" ]; then
+if [ -f "/usr/include/cmumps_c.h" ]; then
 	MUMPS_LIBS="libcmumps.so,libdmumps.so,libmumps_common.so,libpord.so,libsmumps.so,libzmumps.so"
-	CONFOPTS="${CONFOPTS} --with-mumps=1 --with-mumps-lib=${SCOTCH_LIBS} --with-mumps-include=${SCOTCH_DIR}"
-	# CONFOPTS="${CONFOPTS} --with-mumps=1"
+	CONFOPTS="${CONFOPTS} --with-mumps=1 --with-mumps-lib=${MUMPS_LIBS} --with-mumps-include=${MUMPS_DIR}"
 fi
 
 # Add fftw support
@@ -66,7 +65,7 @@ fi
 
 # Add scotch support
 SCOTCH_DIR="/usr/include"
-if [ -d "/usr/include/scotch.h" ]; then
+if [ -f "/usr/include/scotch.h" ]; then
 	SCOTCH_LIBS="libesmumps.so,libptscotch.so,libptscotcherr.so,libscotch.so,libscotcherr.so"
 	# Include bzip2 if scotch was build with bzip2 support
 	if [ -f /usr/include/bzlib.h ];then

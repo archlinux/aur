@@ -10,7 +10,7 @@
 _base=petsc
 pkgname=${_base}-complex
 pkgver=3.19.2
-pkgrel=2
+pkgrel=3
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -44,7 +44,7 @@ install=${_base}.install
 source=(https://ftp.mcs.anl.gov/pub/${_base}/release-snapshots/${_base}-lite-${pkgver}.tar.gz
   test_optdepends.sh)
 sha512sums=('f8feeb66fa8bd2406227be0e2cc2946485238362270d40e3f07dc89491177751f6bf680f51b70696bc30b677624c0e525c3fa9784eabdeb2337697ec56f63fc1'
-            'f6ddebd3d9bd5bfe987b282db6895ae0156a71ae597fd570bcfea9376c44e1968ed83b035ceef2b0f31c7648e67b9bf6a778074804de7458b47d2e0f0a199efd')
+            '8c8874745aaa412e5dfa9397f3765e9a25d700af35315bec9143b29f09e4a3d4455f7c1fa8220115c6bef116d79750c9bf6321e166061d032a03c4aebd9c1df5')
 
 _install_dir=/opt/${_base}/${_config}
 _petsc_arch=arch-${_config}
