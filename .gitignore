@@ -1,2 +1,4 @@
-zsa-wally-*.pkg.tar.zst
-wally
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
