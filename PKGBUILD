@@ -11,9 +11,6 @@ license=('BSD')
 depends=('haskell-old-time' 'haskell-syb' 'haskell-regex-compat' 'haskell-split')
 makedepends=('git' 'gperf' 'ghc' 'tcl' 'texlive-latexextra' 'texlive-fontsextra')
 optdepends=('tcl: bluesim and bluetcl')
-# workaround for pkgrel overwritten on regen (by TkG)
-# rebuild whenever some haskell depend is rebuilt
-eval pkgrel=$(pacman -Q ${depends[@]} | cut -d" " -f2 | cut -d"-" -f2 | awk '{sum+=$0}END{print sum}')
 source=("git+https://github.com/b-lang-org/bsc.git"
         "git+https://github.com/SRI-CSL/yices2.git")
 sha256sums=('SKIP'
