@@ -1,6 +1,6 @@
 # Maintainer: Aaron Honeycutt <aaron at system76 dot com>
 pkgname=system76-keyboard-configurator
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="Configures keymap and backlight of System76 keyboards."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gtk3' 'hidapi' 'xz')
 makedepends=('cargo' 'systemd')
 source=("keyboard-configurator-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3047014d07499a5e0e83bc1848800bc43f0f26319add7dcd1270a207d06c9105')
+sha256sums=('92c2b87b93f84a1215412632c7350c19d6163acde424ef8839c755700d9f22b1')
 
 prepare() {
 	cd "keyboard-configurator-$pkgver"
