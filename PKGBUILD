@@ -3,13 +3,13 @@
 pkgname=lpm-git
 _pkgname=lpm
 _gitname=lite-xl-plugin-manager
-pkgver=latest.r0.gd70f827
+pkgver=latest.r2.g74ced20
 pkgrel=1
 pkgdesc='A lite-xl plugin manager.'
 arch=('x86_64' 'aarch64')
 url="https://github.com/adamharrison/lite-xl-plugin-manager"
 license=('MIT')
-depends=('lite-xl' 'lua' 'zlib' 'libzip' 'libgit2' 'mbedtls')
+depends=('lite-xl' 'lua' 'zlib' 'libzip' 'libgit2' 'mbedtls2')
 # vim needed for xxd
 makedepends=('git' 'vim')
 provides=("$_pkgname")
@@ -34,8 +34,11 @@ build() {
   git tag -d latest
   FULL_VERSION=`git describe --tags | tail -c +2`
   gcc -DLPM_VERSION='"'$FULL_VERSION-$CARCH-linux'"' -DLPM_STATIC \
-    src/lpm.c src/lpm.lua.c lib/microtar/src/microtar.c -Ilib/microtar/src \
-    -lz -lgit2 -lzip -llua -lm -lmbedtls -lmbedx509 -lmbedcrypto -o lpm
+    src/lpm.c src/lpm.lua.c lib/microtar/src/microtar.c \
+    -Ilib/microtar/src -I/usr/include/mbedtls2 \
+    -lz -lgit2 -lzip -llua -lm \
+    -L/usr/lib/mbedtls2 -lmbedtls -lmbedx509 -lmbedcrypto \
+    -o lpm
 }
 
 package() {
