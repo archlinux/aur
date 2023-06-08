@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade-git
-pkgver=3.2.1+19+g4364af26
+pkgver=3.2.3+5+g23d86d96
 pkgrel=1
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
@@ -40,6 +40,7 @@ build() {
     export CCACHE_SLOPPINESS=pch_defines,time_macros
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
+          -DFMT_INSTALL=OFF \
           .
     make
 }
