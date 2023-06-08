@@ -1,0 +1,17 @@
+pkgbase = goman-git
+	pkgdesc = Fetches the repo's readme as a man page replacement.
+	pkgver = 0.3.0.1f4e65d
+	pkgrel = 1
+	url = https://github.com/appliedgocode/goman
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = go
+	provides = goman
+	conflicts = goman
+	source = git+https://github.com/appliedgocode/goman
+	source = https://raw.githubusercontent.com/appliedgocode/goman/master/LICENSE.txt
+	sha256sums = SKIP
+	sha256sums = 00c7eaf22064ba6b41caa08390f90018c21516c7b172b94b913bb2eb177f78c1
+
+pkgname = goman-git
