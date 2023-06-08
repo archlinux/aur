@@ -1,7 +1,7 @@
 pkgbase = blogly-bin
 	pkgdesc = An open-source desktop application for bloggers and content writers
 	pkgver = 1.0.0.beta.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aswinrajeev/blogly
 	arch = x86_64
 	license = BSD
@@ -12,8 +12,9 @@ pkgbase = blogly-bin
 	provides = blogly
 	source = blogly-1.0.0-beta.1.deb::https://github.com/aswinrajeev/blogly/releases/download/v1.0.0-beta.1/blogly_1.0.0-beta.1_amd64.deb
 	source = LICENSE::https://github.com/aswinrajeev/blogly/raw/master/LICENSE
+	source = blogly.desktop
 	sha256sums = 7ef32073f6d620a90f9629942343d88499ea907a9743660126f06f50ac66a605
 	sha256sums = cf689ee9f0d656283bb561ca8925c5607c9fde2cc9ef363e385cff0dcb599ac4
+	sha256sums = a5519a0bc76fcbbb6449b97d5923a868153abdd2bf3a3f9397a479a03dffcae6
 
 pkgname = blogly-bin
-

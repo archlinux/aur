@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Blogly
+Exec=/opt/Blogly/blogly --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=blogly
+StartupWMClass=Blogly
+Comment=Blogly is an open-source desktop application for bloggers and content writers
+Categories=Productivity;
