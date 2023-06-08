@@ -1,6 +1,6 @@
 # Maintainer: Your Name <calielmusica@gmail.com.com>
 pkgname=wpplinkmaker
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Creates and opens a whatsapp web link to send a message to a phone number"
 arch=('x86_64')
