@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=slade
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ depends=('bzip2'
 makedepends=('cmake'
              'p7zip')
 source=("https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz")
-sha256sums=('9d2b4f177ac18c1110c7ed36a5ea6e47814b65f26aeaaf6a9959e72309cb5a87')
+sha256sums=('cadb8f334e5c669956ddbfa82923f679546c3aab7ef21217373d985f3ae0c07b')
 
 build() {
     cd SLADE-${pkgver}
@@ -31,6 +31,7 @@ build() {
     export CCACHE_SLOPPINESS=pch_defines,time_macros
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
+          -DFMT_INSTALL=OFF \
           .
     make
 }
