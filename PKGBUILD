@@ -21,7 +21,7 @@ source=("https://github.com/${__pkgname}/${__pkgname}/releases/download/v${pkgve
         "flaresolverr.sysusers"
         "flaresolverr.tmpfiles"
         "flaresolverr.install")
-sha512sums=('f3ac8c708f79c1b21a25f9042e21cc05bc9de6392c304a9151308b29834d2a93a478fd2b9e76eaaa6dd97e869f8e2e31526a659b9a5b99cb79bc790191edcfc9'
+sha512sums=('c7f6d13831c1c271006599ae88f9e0bee0c56355eacb9e7fbab069aaafcbb9aee9e30726a9b3519e23f73f9a8c75d60d75551fe1da381f94b5adaacc155fd9cf'
             'ea3aa3af56f503faa7cae884748386ddd87aa7887d1dd3ec010270510c6b477a2627efde3ebddaf60f414d0a5eb34964464c212219cd5423efd0303a7055fc54'
             '7e3c7292c16103be75e5f6caaea1b70e9b1be72d54a7594e666cb95061d23c72aa93aa8510891f4821c19979d0199852f4f587ec392aa12e92bfffb06a1a6bf8'
             '0423d10d964a187e5a153140597e7cee3a6112bf6569dfcda7848bfbce4e5660534db3bdbe4a4de9a63fbf0ecc2b874937afd94495691f76176243d2ac4b080d'
