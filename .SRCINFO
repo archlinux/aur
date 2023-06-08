@@ -1,7 +1,7 @@
 pkgbase = bms-token-git
 	pkgdesc = BMS/Secure-IT Token OATHController.
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zedeldi/BMS-Token
 	arch = any
 	license = GPL3
@@ -9,6 +9,8 @@ pkgbase = bms-token-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
+	provides = bms-token
+	conflicts = bms-token
 	source = bms-token-git::git+https://github.com/Zedeldi/BMS-Token.git
 	b2sums = SKIP
 
