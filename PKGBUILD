@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="quark-player-appimage"
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="An Electron based Web Video Services Player, supporting Netflix, Youtube, Twitch, Floatplane, Hulu and More!"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}_${pkgver}_${arch}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Alex313031/quark-player/master/LICENSE")
-sha256sums=('2b56d090cb8b801a75a011cac55b79603ac7cad34c07fbc3719f42a73e677893'
+sha256sums=('5608782fc8d966aa43873bcfc88d974d184375be72d51d35470a5d155504df41'
             'f60c2918d56a97a03b92e13e9fc479e81db309476ec26f7c8c0df82007612117')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
