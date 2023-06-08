@@ -3,7 +3,7 @@ pkgbase=python-pytest-doctestplus
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.12.1
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Pytest plugin that provides advanced features for testing example code in documentation"
 arch=('any')
@@ -11,9 +11,10 @@ url="https://github.com/astropy/pytest-doctestplus"
 license=('BSD')
 makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer')
 #'python-sphinx')
-checkdepends=('python-pytest-remotedata' 'python-numpy')
+checkdepends=('python-pytest-remotedata'
+              'python-numpy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('e85de9d8826d5e10712948994e1ab3c9')
+md5sums=('f0ad13f205a300b79b5a5aa4fcab4309')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
