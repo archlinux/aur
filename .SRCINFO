@@ -1,7 +1,7 @@
 pkgbase = libervia-web-hg
 	pkgdesc = Salut à Toi, multi-frontends multi-purposes XMPP client (Web interface)
-	pkgver = 0.9.0.r1492.3a34d78f2717
-	pkgrel = 1
+	pkgver = 0.9.0.r1522.a44f77559279
+	pkgrel = 2
 	url = http://salut-a-toi.org/
 	install = libervia-web-hg.install
 	arch = any

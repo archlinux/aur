@@ -2,9 +2,9 @@
 
 pkgname='libervia-web-hg'
 _realname=libervia
-pkgver=0.9.0.r1492.3a34d78f2717
+pkgver=0.9.0.r1522.a44f77559279
 _version=0.9.0
-pkgrel=1
+pkgrel=2
 url="http://salut-a-toi.org/"
 arch=('any')
 pkgdesc="Salut à Toi, multi-frontends multi-purposes XMPP client (Web interface)"
@@ -19,15 +19,13 @@ md5sums=('SKIP')
 
 options=('!strip')
 
-pkgver() {
+build() {
     cd "$srcdir/$_realname"
-    printf "$_version.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+    python -m build --wheel --no-isolation
 }
 
-
-package(){
+package() {
     cd "$srcdir/$_realname"
-    python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 
-    install -dm755 etc
-    cp ../../sat.conf etc/
- }
+    python -m installer --destdir="$pkgdir" dist/*.whl
+}
+
