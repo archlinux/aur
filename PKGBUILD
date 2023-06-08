@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 _pkgname=nwg-shell
 pkgname=$_pkgname-git
-pkgver=r338.c32a2e3
+pkgver=r383.b160791
 pkgrel=1
 pkgdesc="nwg-shell meta-package, installer and updater - development version"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=('chromium: suggested web browser'
             'nano: in case you hate vi')
 makedepends=('python-setuptools' 'python-wheel')
 conflicts=('nwg-shell')
-source=('nwg-shell::git+https://github.com/nwg-piotr/nwg-shell#branch=gui')
+source=('nwg-shell::git+https://github.com/nwg-piotr/nwg-shell#branch=050')
 md5sums=('SKIP')
 
 pkgver() {
