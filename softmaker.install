@@ -1,4 +1,8 @@
 post_install() {
+	chmod +x /usr/share/office2021/textmaker
+	chmod +x /usr/share/office2021/planmaker
+	chmod +x /usr/share/office2021/presentations
+	
 	sh /usr/share/office2021/postinst.sh
 	
 	echo '***********************************************************'

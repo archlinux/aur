@@ -26,9 +26,9 @@ package() {
 	find usr/lib -type f -exec install -D -m 644 {,${pkgdir}/}{} \;
 	find usr/share -type f -exec install -D -m 644 {,${pkgdir}/}{} \;
 	
-	install -Dm755 "postinst.sh" "${pkgdir}/usr/share/office${_ver}/postinst.sh"
-	install -Dm755 "prerm.sh" "${pkgdir}/usr/share/office${_ver}/prerm.sh"
+	install -Dm744 "postinst.sh" "${pkgdir}/usr/share/office${_ver}/postinst.sh"
+	install -Dm744 "prerm.sh" "${pkgdir}/usr/share/office${_ver}/prerm.sh"
 	
-  	install -Dm655 "${srcdir}/usr/share/office${_ver}/mime/xdg-utils/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  	install -Dm644 "${srcdir}/usr/share/office${_ver}/mime/xdg-utils/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
