@@ -4,7 +4,7 @@
 pkgname=netease-cloud-music
 pkgver=1.2.1
 _pkgdate=20190428
-pkgrel=7
+pkgrel=8
 pkgdesc="Netease Cloud Music, converted from .deb package"
 arch=("x86_64")
 url="https://music.163.com/"
@@ -34,6 +34,7 @@ build() {
 package() {
   cd ${srcdir}
   tar -xf data.tar.xz -C ${pkgdir} --exclude-from=exclude.list
+  rm ${pkgdir}/opt/netease/netease-cloud-music/libs/libnssutil3.so
   install -D -m644 service.html ${pkgdir}/usr/share/licenses/$pkgname/license.html
   install -D -m755 libnetease-patch.so ${pkgdir}/opt/netease/netease-cloud-music/libnetease-patch.so
   install -D -m755 netease-cloud-music.bash ${pkgdir}/opt/netease/netease-cloud-music/netease-cloud-music.bash
