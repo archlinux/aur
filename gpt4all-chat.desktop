@@ -4,7 +4,7 @@ GenericName=GPT4All Chat
 Comment=GUI for GPT4All versions
 Keywords=chat;gpt;ai;
 Path=/opt/gpt4all-chat/bin
-Exec=/opt/gpt4all-chat/bin/chat
+Exec=sh -c "LD_LIBRARY_PATH=/opt/gpt4all-chat/lib /opt/gpt4all-chat/bin/chat"
 Icon=gpt4all-chat
 Type=Application
 Terminal=false

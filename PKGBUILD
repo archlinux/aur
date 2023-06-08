@@ -2,7 +2,7 @@
 
 pkgname=gpt4all-chat-git
 _gitname=gpt4all
-pkgver=r914.9f590db
+pkgver=r954.0cb2b86
 pkgrel=1
 pkgdesc="Cross platform Qt based GUI for GPT4All versions"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '8861ce995b79e95363e86a261d7a9d3c4c7da6de1b63f40ee5b2ecd02dcd6693'
+  '08869f864cedd95b39a61df6f46f7af3914a03f9e008302f91acd01622e130de'
 )
 
 
@@ -47,11 +47,10 @@ package() {
   cd "${srcdir}/${_gitname}/gpt4all-chat/build"
 
   DESTDIR="${pkgdir}" make install
-  cp -av bin/* ${pkgdir}/opt/gpt4all-chat/bin/
 
-	mkdir -p "${pkgdir}/usr/share/applications"
-	mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+  mkdir -p "${pkgdir}/usr/share/applications"
+  mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
 
-	cp "${srcdir}/gpt4all-chat.desktop" "${pkgdir}/usr/share/applications/"
-	cp ../icons/logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gpt4all-chat.svg"
+  cp "${srcdir}/gpt4all-chat.desktop" "${pkgdir}/usr/share/applications/"
+  cp ../icons/logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gpt4all-chat.svg"
 }
