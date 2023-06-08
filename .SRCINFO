@@ -1,0 +1,13 @@
+pkgbase = powernotd-bin
+	pkgdesc = Battery level notification daemon for linux that sends events according to according to the 'Desktop Notification Specification'.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Laeri/powernotd
+	arch = x86_64
+	license = MIT
+	provides = powernotd
+	conflicts = powernotd
+	source = https://github.com/Laeri/powernotd/releases/download/v1.0.0/powernotd-1.0.0-x86_64.tar.gz
+	sha256sums = 872472aec47f8d4b5e240acbf3c57482a651492a14e6ade7e2ea4aa5fa048e6a
+
+pkgname = powernotd-bin
