@@ -1,6 +1,6 @@
 _pkgname="dolphin"
 pkgname="$_pkgname-tabopts-git"
-pkgver=r7391.7e394dc09
+pkgver=r7417.bb08c70a9
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 arch=(i686 x86_64)
@@ -24,6 +24,7 @@ optdepends=(
   'ffmpegthumbs: video thumbnails'
   'kde-cli-tools: for editing file type options'
   'kdegraphics-thumbnailers: PDF and PS thumbnails'
+  'kio-admin: for managing files as administrator'
   'konsole: terminal panel'
   'purpose: share context menu'
 )

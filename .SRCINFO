@@ -21,6 +21,7 @@ pkgbase = dolphin-tabopts-git
 	optdepends = ffmpegthumbs: video thumbnails
 	optdepends = kde-cli-tools: for editing file type options
 	optdepends = kdegraphics-thumbnailers: PDF and PS thumbnails
+	optdepends = kio-admin: for managing files as administrator
 	optdepends = konsole: terminal panel
 	optdepends = purpose: share context menu
 	provides = dolphin
