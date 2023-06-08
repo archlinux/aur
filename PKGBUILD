@@ -3,7 +3,7 @@
 
 pkgname=maptool
 _pkgname=MapTool
-pkgver=1.13.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
