@@ -6,10 +6,10 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=curl
-_pkgver=5.0.0
+_pkgver=5.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//[:-]/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="A Modern and Flexible Web Client for R"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -29,8 +29,8 @@ optdepends=(
   r-webutils
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cae7a80c8d94d435b39bee5457f78ab6')
-sha256sums=('d7f3cac9b513914ffa8f6f64e6fa5dd96c8273378ace6b0c16b71bc6ba59c9b2')
+md5sums=('32e8bd2e7f0322ee0e95fa8ce4a3ae1a')
+sha256sums=('b7058f9cc7fa8f649505583584b61383fc08dccf746faa5381ba3d0b8bdf93a6')
 
 build() {
   mkdir -p build
