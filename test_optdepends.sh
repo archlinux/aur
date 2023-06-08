@@ -23,8 +23,11 @@ if [ -f "/usr/lib/libHYPRE.so" ]; then
 fi
 
 # Add mumps support
-if [ -f "/usr/lib/libmumps_common.so" ]; then
-	CONFOPTS="${CONFOPTS} --with-mumps=1"
+MUMPS_DIR="/usr/include"
+if [ -d "/usr/include/cmumps_c.h" ]; then
+	MUMPS_LIBS="libcmumps.so,libdmumps.so,libmumps_common.so,libpord.so,libsmumps.so,libzmumps.so"
+	CONFOPTS="${CONFOPTS} --with-mumps=1 --with-mumps-lib=${SCOTCH_LIBS} --with-mumps-include=${SCOTCH_DIR}"
+	# CONFOPTS="${CONFOPTS} --with-mumps=1"
 fi
 
 # Add fftw support
