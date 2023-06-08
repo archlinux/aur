@@ -1,5 +1,5 @@
 pkgbase = neovide-git-wayland
-	pkgdesc = No Nonsense Neovim Client in Rust
+	pkgdesc = No Nonsense Neovim Client in Rust with wayland fix from new-keyboard-v3 branch
 	pkgver = 0.10.4.r22.gaa637e0
 	pkgrel = 1
 	url = https://github.com/neovide/neovide
