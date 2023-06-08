@@ -44,7 +44,7 @@ install=${_base}.install
 source=(https://ftp.mcs.anl.gov/pub/${_base}/release-snapshots/${_base}-lite-${pkgver}.tar.gz
   test_optdepends.sh)
 sha512sums=('f8feeb66fa8bd2406227be0e2cc2946485238362270d40e3f07dc89491177751f6bf680f51b70696bc30b677624c0e525c3fa9784eabdeb2337697ec56f63fc1'
-            'b943a7add71dcc80fd8a68671398f4d5e70554b5bdba6199c440333ef6bbb4aa02cbdda5ab89f25b72389a5e3151a3c55878c0ad945c2a5769265a5601a0f90e')
+  'b943a7add71dcc80fd8a68671398f4d5e70554b5bdba6199c440333ef6bbb4aa02cbdda5ab89f25b72389a5e3151a3c55878c0ad945c2a5769265a5601a0f90e')
 
 _install_dir=/opt/${_base}/${_config}
 _petsc_arch=arch-${_config}
