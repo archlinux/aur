@@ -1,17 +1,17 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 _dot_ io>
 pkgname=wget2
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Updated version of the popular wget URL retrieval tool"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/gnuwget/wget2"
 license=('GPL3')
-depends=('pcre2' 'libidn2' 'zstd' 'brotli' 'xz' 'zlib' 'gpgme' 'bzip2' 'nghttp2' 'libpsl' 'gnutls' 'lzip')
-# libhsts is optional but not in any repository. I also don't feel the
-# motivation to package it myself since it requires regularly updating
-# the preload list. Leave a comment if you're interested in HSTS
+depends=('pcre2' 'libidn2' 'zstd' 'brotli' 'xz' 'zlib' 'gpgme' 'bzip2' 'libnghttp2' 'libpsl' 'gnutls' 'lzip' 'ca-certificates')
+# libhsts is optional but not in any repository. I currently don't feel
+# the motivation to package it myself since it requires regularly
+# updating the preload list. Leave a comment if you'd like to see HSTS
 # preload support so that I can gauge interest.
-optdepends=("ca-certificates: HTTPS Downloads")
+optdepends=()
 checkdepends=('libmicrohttpd')
 makedepends=('gperf' 'python' 'doxygen' 'pandoc')
 conflicts=("$pkgname-git")
