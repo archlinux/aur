@@ -1,13 +1,13 @@
 pkgbase = plasma5-wallpapers-blurredwallpaper
-	pkgdesc = KDE Plasma wallpaper plugin that blur the wallpaper when a window is active
-	pkgver = 2.1
+	pkgdesc = KDE Plasma wallpaper plugin that blurs the wallpaper when a window is active
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/bouteillerAlan/blurredwallpaper
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = plasma-workspace
-	source = https://github.com/bouteillerAlan/blurredwallpaper/archive/refs/tags/v2.1.tar.gz
-	sha256sums = 450af7435b27860104da07d40ce1dd69cf47213f43b8b44e738eefc747385076
+	source = https://github.com/bouteillerAlan/blurredwallpaper/archive/refs/tags/v2.2.tar.gz
+	sha256sums = bc928ade4aeced817513fd586c3be4ed8d5ff68b2168ef6e8a1c22539b45db60
 
 pkgname = plasma5-wallpapers-blurredwallpaper
