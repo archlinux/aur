@@ -1,4 +1,5 @@
-# Maintainer: Marco44 <cousinmarc at gmail dot com>
+# Maintainer: pitbuster <felipe.contreras.s@gmail.com>
+# Contributor: Marco44 <cousinmarc at gmail dot com>
 # Contributor: Sarkasper <echo a2FzcGVyLm1lbnRlbkBnbXguY29tCg== | base64 -d>
 # Contributor: Christian Himpel <chressie at gmail dot com>
 # Contributor: Johannes Hanika  <hanatos at gmail dot com>
@@ -6,7 +7,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=4.1.0.r657.g28547c0d90
+pkgver=4.3.0.r2508.gb320d1ed58
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -19,39 +20,47 @@ optdepends=('dcraw: base curve script'
             'perl-image-exiftool: base curve script'
             'imagemagick: base curve and noise profile scripts'
             'ghostscript: noise profile script'
-            'gnuplot: noise profile script')
+            'gnuplot: noise profile script'
+)
 makedepends=(git cmake intltool desktop-file-utils llvm clang python-jsonschema libwebp perl-pod-parser)
 conflicts=(darktable)
 provides=(darktable)
 install=darktable.install
 options=(!emptydirs !libtool)
-source=('git+https://github.com/darktable-org/darktable.git'
-	"rawspeed.git::git+https://github.com/darktable-org/rawspeed.git"
-	"OpenCL-Headers.git::git+https://github.com/KhronosGroup/OpenCL-Headers.git"
-	"libxcf.git::git+https://github.com/houz/libxcf.git"
-	"whereami::git+https://github.com/gpakosz/whereami"
-	"darktable-tests.git::git+https://github.com/darktable-org/darktable-tests.git"
+source=(
+  'git+https://github.com/darktable-org/darktable.git'
+  'OpenCL-Headers.git::git+https://github.com/KhronosGroup/OpenCL-Headers.git'
+  "LibRaw.git::git+https://github.com/LibRaw/LibRaw.git"
+  'libxcf.git::git+https://github.com/houz/libxcf.git'
+  'rawspeed.git::git+https://github.com/darktable-org/rawspeed.git'
+  'whereami::git+https://github.com/gpakosz/whereami'
 )
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+)
 
 pkgver() {
   cd $_gitname
-  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  tools/get_git_version_string.sh | sed 's/+/.r/;s/~/./;s/-dirty//'
 }
 
 prepare() {
   cd $_gitname
-  git config submodule.src/external/rawspeed.url "$srcdir/rawspeed.git"
   git config submodule.src/external/OpenCL.url "$srcdir/OpenCL-Headers.git"
+  git config submodule.src/external/LibRaw.url "$srcdir/LibRaw.git"
   git config submodule.src/external/libxcf.url "$srcdir/libxcf.git"
+  git config submodule.src/external/rawspeed.url "$srcdir/rawspeed.git"
   git config submodule.src/external/whereami.url "$srcdir/whereami"
-  git config submodule.src/tests/integration.url "$srcdir/darktable-tests.git"
-  git -c protocol.file.allow=always submodule update --init --recursive
+  # We will individually update submodules to avoid downloading integration tests
+  git -c protocol.file.allow=always submodule update --init src/external/rawspeed
+  git -c protocol.file.allow=always submodule update --init --recursive src/external/OpenCL
+  git -c protocol.file.allow=always submodule update --init --recursive src/external/LibRaw
+  git -c protocol.file.allow=always submodule update --init --recursive src/external/libxcf
+  git -c protocol.file.allow=always submodule update --init --recursive src/external/whereami
 }
 
 build() {
