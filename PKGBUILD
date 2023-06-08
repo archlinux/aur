@@ -3,7 +3,7 @@
 pkgbase=certbot-plugins-git
 pkgname=("certbot-nginx-git" "certbot-apache-git")
 _reponame="certbot"
-pkgver=1.28.0.r4.ga73a86bbc
+pkgver=2.6.0.r10.g2d8a274eb
 pkgrel=1
 pkgdesc="Plugins for Certbot"
 arch=('any')
