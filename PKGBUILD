@@ -5,7 +5,7 @@
 
 pkgname='libervia-backend-hg'
 _realname='libervia-backend'
-pkgver=0.8.0.rev368.g84f6bee6440d
+pkgver=0.8.0.rev373.g479192bc0fa8
 pkgrel=1
 url="http://salut-a-toi.org/"
 pkgdesc="Libervia, multi-frontends multi-purposes XMPP client (core)"
