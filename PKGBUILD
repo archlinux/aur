@@ -15,7 +15,6 @@ sha256sums=('7c3c586d4e9e8e91c7d660a5312e95fd80600c482b84dadfa13f81bfc907f8ef')
 
 
 prepare() {
-    ls -lah
     chmod +x ${_appimage}
     ./${_appimage} --appimage-extract ${_desktopfile}.desktop
     ./${_appimage} --appimage-extract ${_pkgname}.png
