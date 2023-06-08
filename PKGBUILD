@@ -1,4 +1,4 @@
-# Maintainer: Frederik Holm Strøm <aur@katofln.com>
+# Maintainer: Frederik Holm Strøm <aur@frederikstroem.com>
 
 # Thanks to AUR users: Trebuchette, tobtoht, jahway603
 
