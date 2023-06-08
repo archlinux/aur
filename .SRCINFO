@@ -1,0 +1,43 @@
+pkgbase = neovim-git
+	pkgdesc = Fork of Vim aiming to improve user experience, plugins, and GUIs.
+	pkgver = 0.9.0.r855.g64e023a7d3
+	pkgrel = 1
+	url = https://neovim.io
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = custom:neovim
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libluv
+	depends = libtermkey
+	depends = libuv
+	depends = libvterm>=0.3
+	depends = lua51-lpeg
+	depends = luajit
+	depends = msgpack-c
+	depends = tree-sitter
+	depends = unibilium
+	optdepends = python-neovim: for Python 3 plugin support (see :help provider-python)
+	optdepends = ruby-neovim: for Ruby plugin support (see :help provider-ruby)
+	optdepends = xclip: for X11 clipboard support (or xsel) (see :help provider-clipboard)
+	optdepends = xsel: for X11 clipboard support (or xclip) (see :help provider-clipboard)
+	optdepends = wl-clipboard: for clipboard support on wayland (see :help clipboard)
+	provides = neovim=0.9.0.r855.g64e023a7d3
+	provides = vim-plugin-runtime
+	conflicts = neovim
+	options = !strip
+	backup = etc/xdg/nvim/sysinit.vim
+	source = neovim-git.tar.gz::file:///home/chinmay/stuff/pkgbuilds/nvim/repo.tar.gz
+	source = neovim-git-archlinux.vim
+	source = neovim-git-sysinit.vim
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = neovim-git
