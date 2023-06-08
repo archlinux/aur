@@ -1,23 +1,21 @@
 pkgbase = python-acstools
 	pkgdesc = Python Tools for ACS (Advanced Camera for Surveys) Data
-	pkgver = 3.5.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://acstools.readthedocs.io
 	arch = any
 	license = BSD
-	checkdepends = python-pytest-astropy-header
-	checkdepends = python-pytest-remotedata
-	checkdepends = python-astropy
+	checkdepends = python-pytest
+	checkdepends = python-stsci.tools
 	checkdepends = python-requests
-	checkdepends = python-matplotlib
 	checkdepends = python-ci_watson
 	checkdepends = python-scikit-image>=0.11
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/a/acstools/acstools-3.5.0.tar.gz
-	md5sums = 2d8253a883ac19ba56bc2fc1be2f1d9b
+	source = https://files.pythonhosted.org/packages/source/a/acstools/acstools-3.6.1.tar.gz
+	md5sums = 433cab4861d6b2a6607980aaf9950a3c
 
 pkgname = python-acstools
 	depends = python>=3.8
