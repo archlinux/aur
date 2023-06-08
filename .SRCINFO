@@ -1,8 +1,7 @@
 pkgbase = clang-prefixed-git
-	pkgver = 17.0.0_r463221.eecaeb6f100a
-	pkgrel = 2
+	pkgver = 17.0.0_r463319.68f55d78e3cd
+	pkgrel = 1
 	url = https://llvm.org/
-	install = clang.install
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
 	checkdepends = python-psutil
@@ -22,7 +21,7 @@ pkgbase = clang-prefixed-git
 	makedepends = z3
 	makedepends = jsoncpp
 	makedepends = clang
-	source = git+https://github.com/llvm/llvm-project.git
+	source = git+file:///opt/src/OSS/llvm-project#branch=main
 	sha512sums = SKIP
 
 pkgname = clang-prefixed-git

@@ -1,8 +1,8 @@
 # Maintainer: Donald Carr <sirspudd at gmail dot com>
 
 pkgname=('clang-prefixed-git')
-pkgver=17.0.0_r463221.eecaeb6f100a
-pkgrel=2
+pkgver=17.0.0_r463319.68f55d78e3cd
+pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -15,7 +15,6 @@ if [[ -n ${LOCAL_LLVM_REPO} ]]; then
 source=("git+file://${LOCAL_LLVM_REPO}#branch=main")
 fi
 sha512sums=('SKIP')
-install=clang.install
 static_build=true
 
 prefix_path="/opt/clang"
