@@ -1,7 +1,7 @@
 # Maintainer: Jake Stanger <mail@jstanger.dev>
 
 pkgname=mpd-discord-rpc-git
-pkgver=v1.6.0.r0.ee29533
+pkgver=v1.6.0.r1.ee29533
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/mpd-discord-rpc"
-    cargo build --release --locked
+    cargo build --release --locked --target-dir target
 }
 
 package() {
