@@ -3,7 +3,7 @@
 set -e
 
 echo "Fetching latest release..."
-LATEST=$(hub api repos/Rigellute/spotify-tui/releases/latest | jq '.tag_name' -r | cut -c 2-)
+LATEST=$(gh api repos/Rigellute/spotify-tui/releases/latest | jq '.tag_name' -r | cut -c 2-)
 
 CURRENT=$(grep '^pkgver=' PKGBUILD | grep -oEi '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+')
 if [ "$CURRENT" = "$LATEST" ]; then
