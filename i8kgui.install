@@ -1,0 +1,14 @@
+post_install() {
+  echo ""
+  echo "***************************************************************************************************************"
+  echo "**** Configure i8kutils:"
+  echo "**** Example i8kutils config can be found in /usr/share/doc/i8kgui/"
+  echo "****"
+  echo "**** Then start the Dell BIOS fan control and i8kutil services:"
+  echo "**** systemctl enable --now dell-bios-fan-control i8kmon"
+  echo "****"
+  echo "**** (Optional) Configure undervolt. An example for a XPS 7590 (i7 CPU):"
+  echo "**** sudo undervolt -v --gpu -0 --core -121 --cache -121 --uncore -121 --analogio 0 --temp 100"
+  echo "***************************************************************************************************************"
+  echo ""
+}
