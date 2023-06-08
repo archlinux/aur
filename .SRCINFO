@@ -1,0 +1,15 @@
+pkgbase = jidugs-appimage
+	pkgdesc = 极度公式 公式一键识别快速转换，几十项技术创新助力，快捷方便！
+	pkgver = 1.3.8
+	pkgrel = 0
+	url = https://jidugs.wlhex.com/
+	arch = x86_64
+	license = custom
+	license = Commercial
+	depends = hicolor-icon-theme
+	provides = jidugs
+	conflicts = jidugs
+	source_x86_64 = jidugs-1.3.8-x86_64.AppImage::https://download.wrste.com/jidugs/极度公式-1.3.8.AppImage
+	sha256sums_x86_64 = fb6f0d2a9e668a9ec6da26528c2b04118f40a65cedc45cecb47b7619fb06a7bd
+
+pkgname = jidugs
