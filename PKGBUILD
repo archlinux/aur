@@ -2,8 +2,8 @@
 # Contributor: Carlo Sala <carlosalag@protonmail.com>
 
 pkgname=surfshark-gui-bin
-pkgver=1.4.2
-pkgrel=1742
+pkgver=1.4.3
+pkgrel=1762
 pkgdesc="Surfshark VPN client. Keep your online activity and personal information secure. Put your privacy-conscious mind at rest and enjoy unrestricted internet."
 url="https://surfshark.com"
 arch=('x86_64')
@@ -14,8 +14,8 @@ provides=('surfsharkvpngui')
 conflicts=('surfshark-vpn-gui' 'surfshark-wireguard' 'surfshark-wireguard-git' 'surfshark-vpn' 'surfshark-client')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark/surfshark_1.4.2-1742_amd64.deb")
-sha512sums=('70252f18ca548ec9b83ee7e539099ed317226a7b461bc93a11b323b4dcd46fc839984be830e311804ecd25b2db69d8b3ecbaa97d693f22be6b2fd57284fca88e')
+source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark/surfshark_1.4.3-1762_amd64.deb")
+sha512sums=('a2e1f844b1615c0a9f072423dabd1723a6fb1689de4699b0ca3f202c601b46e4e35b829be938b84b5d116f067f51f572f30900d5291e79727f6aac2495d2c703')
 
 package(){
 
