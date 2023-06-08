@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=imcRtools
-_pkgver=1.6.1
+_pkgver=1.6.2
 pkgname=r-${_pkgname,,}
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Methods for imaging mass cytometry data analysis'
 arch=('any')
@@ -51,7 +51,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('33edaff09a845a6d27046fc1d89c3123dea760fd0ed3f6ee9923a5dbb2979dab')
+sha256sums=('345c73ab9fe07a2d5bf794e57a69756cb86d992a7afaabccca75644aeb6e20a1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
