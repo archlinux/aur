@@ -1,7 +1,7 @@
 pkgbase = kipi-plugins
 	pkgdesc = A collection of plugins extending the KDE graphics and image applications
 	pkgver = 23.04.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/kipi_plugins/
 	arch = x86_64
 	groups = kde-applications
@@ -14,8 +14,7 @@ pkgbase = kipi-plugins
 	depends = libkipi
 	optdepends = libmediawiki: MediaWiki Export plugin
 	optdepends = qt5-xmlpatterns: rajce.net plugin
-	options = debug
-	source = https://github.com/KDE/kipi-plugins/archive/refs/tags/v23.04.1.tar.gz
+	source = kipi-plugins-23.04.1.tar.gz::https://github.com/KDE/kipi-plugins/archive/refs/tags/v23.04.1.tar.gz
 	sha256sums = 22aad9610595335f5cb146f3fec495f1641819ca8d89dc41d313862dde9a5752
 
 pkgname = kipi-plugins
