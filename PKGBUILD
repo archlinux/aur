@@ -2,7 +2,7 @@
 
 pkgname=certbot-git
 _reponame="certbot"
-pkgver=1.28.0.r4.ga73a86bbc
+pkgver=2.6.0.r10.g2d8a274eb
 pkgrel=1
 pkgdesc="Tool to automatically receive and install X.509 certificates to enable TLS on servers"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://certbot.eff.org/"
 depends=('ca-certificates' 'python-acme-git' 'python-configargparse' 'python-configobj'
 	'python-cryptography' 'python-distro' 'python-josepy' 'python-parsedatetime'
 	'python-pyrfc3339' 'python-pytz' 'python-setuptools' 'python-zope-component'
-	'python-zope-interface')
+	'python-zope-interface' 'python-httplib2')
 optdepends=("certbot-apache-git: Apache plugin for Let’s Encrypt client"
 	"certbot-nginx-git: Nginx plugin for Let’s Encrypt client")
 makedepends=('git')
