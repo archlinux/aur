@@ -1,6 +1,6 @@
 pkgbase = dolphin-tabopts-git
 	pkgdesc = KDE File Manager - with extended tab options
-	pkgver = r7391.7e394dc09
+	pkgver = 23.04.2.r3.gbb08c70a9
 	pkgrel = 1
 	url = https://invent.kde.org/xiota/dolphin/-/merge_requests/1
 	arch = i686
