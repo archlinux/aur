@@ -1,0 +1,13 @@
+post_install() {
+	sh /usr/share/office2021/postinst.sh
+	
+	echo '***********************************************************'
+  	echo 'You can try out SoftMaker Office for free for 30 days.'
+  	echo 'Convert it to the full version by purchasing a product key.'
+  	echo 'This can be done within the application.'
+  	echo '***********************************************************'
+}
+
+pre_remove() {
+	sh /usr/share/office2021/prerm.sh
+}
