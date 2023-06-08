@@ -1,6 +1,6 @@
 pkgbase = focalboard-server-git
 	pkgdesc = Focalboard is an open source, self-hosted alternative to Trello, Notion, and Asana.
-	pkgver = 7.1.0
+	pkgver = r3592.3b7954872
 	pkgrel = 1
 	url = https://www.focalboard.com/
 	install = focalboard.install
@@ -8,13 +8,14 @@ pkgbase = focalboard-server-git
 	arch = x86_64
 	license = MIT
 	makedepends = go>=1.18
-	makedepends = nodejs>=16.3
+	makedepends = nodejs>=10.0
 	makedepends = npm
+	makedepends = git
 	provides = focalboard-server
 	conflicts = focalboard-server
-	source = focalboard-server-git-7.1.0.tar.gz::https://github.com/mattermost/focalboard/archive/refs/tags/v7.1.0.tar.gz
+	source = focalboard-server-git::git+https://github.com/mattermost/focalboard.git
 	source = focalboard.service
 	sha256sums = SKIP
-	sha256sums = 8b3037f093de8610ff50aff2aba3c31e137af0067fda508291a1abfbdd4c72b1
+	sha256sums = 607d16cb2544101d0e4291e7804c3137b90b620107a37431c0f3d71e93c4fcd5
 
 pkgname = focalboard-server-git

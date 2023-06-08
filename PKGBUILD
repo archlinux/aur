@@ -1,6 +1,7 @@
-# Maintainer: Jacob Still <jacobcstill at gmail dot com>
+# Maintainer: Vladyslav Aviedov <vladaviedov at protonmail dot com>
+# Contributor: Jacob Still <jacobcstill at gmail dot com>
 pkgname=focalboard-server-git
-pkgver=7.1.0
+pkgver=r3592.3b7954872
 pkgrel=1
 epoch=
 pkgdesc="Focalboard is an open source, self-hosted alternative to Trello, Notion, and Asana."
@@ -9,7 +10,7 @@ url="https://www.focalboard.com/"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('go>=1.18' 'nodejs>=16.3' 'npm')
+makedepends=('go>=1.18' 'nodejs>=10.0' 'npm' 'git')
 checkdepends=()
 optdepends=()
 provides=('focalboard-server')
@@ -19,31 +20,38 @@ backup=()
 options=()
 install=focalboard.install
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/mattermost/focalboard/archive/refs/tags/v$pkgver.tar.gz"
+source=("${pkgname}::git+https://github.com/mattermost/focalboard.git"
         'focalboard.service')
 noextract=()
 sha256sums=('SKIP'
-            '8b3037f093de8610ff50aff2aba3c31e137af0067fda508291a1abfbdd4c72b1')
+            '607d16cb2544101d0e4291e7804c3137b90b620107a37431c0f3d71e93c4fcd5')
 validpgpkeys=()
 
 build() {
-  cd "${srcdir}/focalboard-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   LDFLAGS=''
   make prebuild
   make server-linux webapp
 }
 
-package() {
-  cd "${srcdir}/focalboard-${pkgver}"
-  PACKAGE_FOLDER="$pkgdir/opt/focalboard-${pkgver}-${pkgrel}/"
-  mkdir -pv "${PACKAGE_FOLDER}/" "${PACKAGE_FOLDER}/bin/" "${PACKAGE_FOLDER}/pack/"
-  cp -v bin/linux/focalboard-server "${PACKAGE_FOLDER}/bin/"
-  cp -vr webapp/pack "${PACKAGE_FOLDER}/"
-  cp -v server-config.json "${PACKAGE_FOLDER}/config.json"
-  cp -v build/MIT-COMPILED-LICENSE.md "${PACKAGE_FOLDER}/MIT-COMPILED-LICENSE.md"
-  cp -v NOTICE.txt "${PACKAGE_FOLDER}/NOTICE.txt"
-  cp -v webapp/NOTICE.txt "${PACKAGE_FOLDER}/webapp-NOTICE.txt"
-  mkdir -pv "${pkgdir}/usr/lib/systemd/system/"
-  cp -v "${srcdir}/focalboard.service" "${pkgdir}/usr/lib/systemd/system/focalboard.service"
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+package() {
+  cd "${srcdir}/${pkgname}"
+  PACKAGE_FOLDER="$pkgdir/opt/focalboard/"
+  mkdir -p "${PACKAGE_FOLDER}" "${PACKAGE_FOLDER}/bin" "${PACKAGE_FOLDER}/pack" "${PACKAGE_FOLDER}/license"
+
+  # Copy focalboard build
+  cp bin/linux/focalboard-server "${PACKAGE_FOLDER}/bin"
+  cp -r webapp/pack/* "${PACKAGE_FOLDER}/pack"
+  cp config.json "${PACKAGE_FOLDER}"
+  cp NOTICE.txt "${PACKAGE_FOLDER}/license"
+  cp webapp/NOTICE.txt "${PACKAGE_FOLDER}/license/webapp-NOTICE"
+
+  # Systemd Service
+  mkdir -p "${pkgdir}/usr/lib/systemd/system/"
+  cp "${srcdir}/focalboard.service" "${pkgdir}/usr/lib/systemd/system/focalboard.service"
+}
