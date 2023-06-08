@@ -9,10 +9,10 @@ epoch=1
 pkgname=gprbuild-bootstrap
 pkgver=24.0w
 pkgrel=1
-pkgdesc="Static GPRbuild to bootstrap XML/Ada and GPRbuild itself.
+pkgdesc="Static GPRbuild to bootstrap XML/Ada and GPRbuild itself."
 
 arch=(i686 x86_64)
-url=https://github.com/AdaCore/gprbuild/
+url=https://github.com/AdaCore/gprbuild
 license=(GPL3 custom)
 
 depends=(gcc-ada gnatstudio-sources)
@@ -36,12 +36,12 @@ prepare()
 
     # GPRbuild hard-codes references to /usr/libexec, but ArchLinux packages
     # must use /usr/lib instead.
-    
-    sed -i 's/libexec/lib/g'                          \
-    doinstall gprbuild.gpr                            \
-        "$srcdir/$_gprconfig_kb_src/db/compilers.xml" \
-        "$srcdir/$_gprconfig_kb_src/db/linker.xml"    \
-        "$srcdir/$_gprconfig_kb_src/db/gnat.xml"
+    #
+    sed -i 's/libexec/lib/g'                        \
+    doinstall gprbuild.gpr                          \
+        $srcdir/$_gprconfig_kb_src/db/compilers.xml \
+        $srcdir/$_gprconfig_kb_src/db/linker.xml    \
+        $srcdir/$_gprconfig_kb_src/db/gnat.xml
 }
 
 
@@ -54,9 +54,9 @@ build()
 
     GNATMAKEFLAGS="$MAKEFLAGS"
 
-    ./bootstrap.sh                             \
-        --with-xmlada="$srcdir/$_xmlada_src"   \
-        --with-kb="$srcdir/$_gprconfig_kb_src" \
+    ./bootstrap.sh                           \
+        --with-xmlada=$srcdir/$_xmlada_src   \
+        --with-kb=$srcdir/$_gprconfig_kb_src \
         --build
 }
 
@@ -65,20 +65,22 @@ package()
 {
     cd $srcdir/$_gprbuild_src
 
-    env DESTDIR="$pkgdir"                        \
-    ./bootstrap.sh                               \
-        --with-kb="$srcdir/$_gprconfig_kb_src"   \
-        --prefix=/usr                            \
-        --libexecdir=/lib                        \
+    env DESTDIR=$pkgdir                      \
+    ./bootstrap.sh                           \
+        --with-kb=$srcdir/$_gprconfig_kb_src \
+        --prefix=/usr                        \
+        --libexecdir=/lib                    \
         --install
 
     # Install the license.
+    #
     install -D -m644 \
-       "COPYING3"    \
-       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+       COPYING3      \
+       $pkgdir/usr/share/licenses/$pkgname/COPYING3
 
     # Install the custom license.
-    install -D -m644     \
-       "COPYING.RUNTIME" \
-       "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
+    #
+    install -D -m644   \
+       COPYING.RUNTIME \
+       $pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME
 }
