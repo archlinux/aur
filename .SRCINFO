@@ -1,6 +1,6 @@
 pkgbase = cosmic-epoch-git
-	pkgdesc = desktop environment in Rust, Iced. GNOME inspired, by System76, Pop! OS.
-	pkgver = r66.0ffc5ae
+	pkgdesc = Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME
+	pkgver = r70.0db4e9c
 	pkgrel = 1
 	url = https://github.com/pop-os/cosmic-epoch
 	arch = x86_64
