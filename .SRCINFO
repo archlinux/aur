@@ -1,7 +1,7 @@
 pkgbase = yank-note-appimage
 	pkgdesc = A Hackable Markdown Note Application for Programmers.
-	pkgver = 3.53.3
-	pkgrel = 2
+	pkgver = 3.54.0
+	pkgrel = 1
 	url = https://demo.yank-note.com/
 	arch = aarch64
 	arch = armv7h
@@ -12,11 +12,11 @@ pkgbase = yank-note-appimage
 	depends = glibc
 	conflicts = yank-note
 	options = !strip
-	source_aarch64 = yank-note-3.53.3-aarch64.AppImage::https://github.com/purocean/yn/releases/download/v3.53.3/Yank-Note-linux-arm64-3.53.3.AppImage
-	sha256sums_aarch64 = 701ff1a0e923a7cb279c41843bea5c6175551910beb89f40332b7f625525869c
-	source_armv7h = yank-note-3.53.3-armv7h.AppImage::https://github.com/purocean/yn/releases/download/v3.53.3/Yank-Note-linux-arm64-3.53.3.AppImage
-	sha256sums_armv7h = 701ff1a0e923a7cb279c41843bea5c6175551910beb89f40332b7f625525869c
-	source_x86_64 = yank-note-3.53.3-x86_64.AppImage::https://github.com/purocean/yn/releases/download/v3.53.3/Yank-Note-linux-x86_64-3.53.3.AppImage
-	sha256sums_x86_64 = 1b744867ccc0aba095fe88b09835adf7177c7a00074e09c4f199d41cc1895003
+	source_aarch64 = yank-note-3.54.0-aarch64.AppImage::https://github.com/purocean/yn/releases/download/v3.54.0/Yank-Note-linux-arm64-3.54.0.AppImage
+	sha256sums_aarch64 = d22d14d5801a00bccf8644431f6a8f85012b63c9a6a9521f5b1706a321ee6a3f
+	source_armv7h = yank-note-3.54.0-armv7h.AppImage::https://github.com/purocean/yn/releases/download/v3.54.0/Yank-Note-linux-arm64-3.54.0.AppImage
+	sha256sums_armv7h = d22d14d5801a00bccf8644431f6a8f85012b63c9a6a9521f5b1706a321ee6a3f
+	source_x86_64 = yank-note-3.54.0-x86_64.AppImage::https://github.com/purocean/yn/releases/download/v3.54.0/Yank-Note-linux-x86_64-3.54.0.AppImage
+	sha256sums_x86_64 = 9a134a1eb08e6e2d7d22e29fe04cc7fe20cdadabeb4274ccae306d26fa379950
 
 pkgname = yank-note-appimage
