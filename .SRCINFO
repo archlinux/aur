@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-gdal
 	pkgdesc = A translator library for raster geospatial data formats (mingw-w64)
-	pkgver = 3.5.1
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = http://www.gdal.org/
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = mingw-w64-gdal
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = http://download.osgeo.org/gdal/3.5.1/gdal-3.5.1.tar.gz
-	sha256sums = 7c4406ca010dc8632703a0a326f39e9db25d9f1f6ebaaeca64a963e3fac123d1
+	source = http://download.osgeo.org/gdal/3.7.0/gdal-3.7.0.tar.gz
+	sha256sums = 5a806d759f403a15bbbf8a14ecc6947071afc5ab91e5abaef0d11d1d2d16bf94
 
 pkgname = mingw-w64-gdal
