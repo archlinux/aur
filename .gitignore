@@ -1,2 +1,4 @@
 *.*.*-linux-x86_64
 *.tar.zst
+pkg
+src
