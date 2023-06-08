@@ -1,6 +1,6 @@
 pkgbase = octopi-notifier-qt5-dev
 	pkgdesc = Notifier for Octopi using Qt5 libs
-	pkgver = 0.14.0.r3.d0a30a9
+	pkgver = 0.14.0.r4.cbd43ab
 	pkgrel = 1
 	url = https://github.com/aarnt/octopi
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = octopi-notifier-qt5-dev
 	makedepends = qt5-tools
 	depends = octopi-dev
 	provides = octopi-notifier
-	source = git+https://github.com/aarnt/octopi.git#commit=d0a30a9eca187fa6c7ba34ddb57606d2591cbc92
+	source = git+https://github.com/aarnt/octopi.git#commit=cbd43ab731d9141c46e2b5a3a8951f6da6433f7d
 	sha256sums = SKIP
 
 pkgname = octopi-notifier-qt5-dev
