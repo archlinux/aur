@@ -1,6 +1,6 @@
 # Maintainer: Daniel Bodky <dbodky at gmail dot com>
 pkgname=acorn-cli
-pkgver="v0.6.0"
+pkgver="v0.7.0"
 pkgrel=1
 epoch=
 pkgdesc="A simple application deployment framework for Kubernetes"
@@ -32,7 +32,7 @@ build() {
 
 check() {
 	cd "acorn-$pkgver"
-	./bin/acorn -v
+	./bin/acorn version
 }
 
 package() {
