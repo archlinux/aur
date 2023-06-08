@@ -5,14 +5,14 @@
 
 pkgname=libkipi
 pkgver=23.04.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An interface to use kipi-plugins from a KDE application'
 url='https://www.kde.org/'
 arch=($CARCH)
 license=(GPL LGPL FDL)
 depends=(kxmlgui kservice hicolor-icon-theme)
 makedepends=(extra-cmake-modules)
-source=("https://github.com/KDE/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/KDE/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('2c00e6a9ab5489ac44157a054337bb6fe7152d38ca6010a3ee544bae89b0aca7')
 
 build() {
