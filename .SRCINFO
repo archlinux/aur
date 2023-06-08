@@ -1,6 +1,6 @@
 pkgbase = timeshift-bin
 	pkgdesc = A system restore utility for Linux
-	pkgver = 23.06.1
+	pkgver = 23.06.2
 	pkgrel = 1
 	url = https://github.com/linuxmint/timeshift
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = timeshift-bin
 	optdepends = grub-btrfs: BtrfS snapshots in grub
 	provides = timeshift
 	conflicts = timeshift
-	source = https://launchpad.net/~linuxmint-daily-build-team/+archive/ubuntu/daily-builds/+files/timeshift_23.06.1-unstable-202306011106~ubuntu23.04.1_amd64.deb
-	sha256sums = 8814b007b9eae3410cfea71dc466b3ca303420c2a7192aff035efe4167d40eae
+	source = https://launchpad.net/~linuxmint-daily-build-team/+archive/ubuntu/daily-builds/+files/timeshift_23.06.2-unstable-202306081117~ubuntu23.04.1_amd64.deb
+	sha256sums = 687dc5d0f156eb1daed5ca28c5caf0b75860f08c8a2a9fde59b2ba2df96b068d
 
 pkgname = timeshift-bin
