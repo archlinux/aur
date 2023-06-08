@@ -1,7 +1,7 @@
 pkgbase = softmaker-office-2021
 	pkgdesc = Proprietary office suite, consisting of word processing, spreadsheet and presentation software.
 	pkgver = 2021.1064
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.softmaker.com
 	install = softmaker.install
 	arch = x86_64
