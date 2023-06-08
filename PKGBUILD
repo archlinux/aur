@@ -1,4 +1,4 @@
-# Maintainer: Tommaso Dordoni <t.dordoni.aur@outlook.com>
+# Maintainer: Tommaso Dordoni <t dot dordoni dot aur at outlook dot com>
 
 _java=17
 _jdk=${_java}.0.7
@@ -19,14 +19,18 @@ url="https://www.azul.com/downloads/#prime"
 license=('unknown')
 depends=(
   'java-environment-common'
-  'java-runtime'
+  'java-runtime-common'
   'ca-certificates-utils'
-  'libx11'
   'libxi'
-  'libxtst'
-  'alsa-lib'
   'libxext'
   'libxrender'
+  'libx11'
+  'libxtst'
+  'alsa-lib'
+)
+provides=(
+  "java-runtime=${_java}"
+  "java-environment=${_java}"
 )
 install="$pkgname.install"
 source_x86_64=("https://cdn.azul.com/zing-zvm/ZVM${_pkgver_major}.${_pkgver_minor}/zing${pkgver//_/-}-jdk${_jdk}-linux_x64.tar.gz")
