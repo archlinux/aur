@@ -1,7 +1,8 @@
+# Maintainer:
 
 _pkgname="baca-ereader"
 pkgname="$_pkgname-git"
-pkgver=0.1.13.r0.g7bc856f
+pkgver=0.1.16.r0.gf6be598
 pkgrel=1
 pkgdesc="TUI Ebook Reader"
 arch=('any')
@@ -17,6 +18,8 @@ depends=(
   'python-rich'
 
   # AUR
+  'python-climage'
+    # 'python-kdtree'
   'python-markdownify'
   'python-textual'
 )
@@ -25,9 +28,7 @@ makedepends=(
   'python-build'
   'python-installer'
   'python-poetry'
-  'python-setuptools'
   'python-wheel'
-
 )
 source=(
   "$_pkgname"::"git+$url"
