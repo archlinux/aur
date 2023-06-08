@@ -1,6 +1,6 @@
 pkgbase = python-acme-git
 	pkgdesc = ACME protocol implementation for Python
-	pkgver = 1.28.0.r4.ga73a86bbc
+	pkgver = 2.6.0.r10.g2d8a274eb
 	pkgrel = 1
 	url = https://github.com/certbot/certbot
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-acme-git
 	depends = python-pytz
 	depends = python-requests
 	depends = python-requests-toolbelt
-	provides = python-acme=1.28.0.r4.ga73a86bbc
+	provides = python-acme=2.6.0.r10.g2d8a274eb
 	conflicts = python-acme
 	source = certbot::git+https://github.com/certbot/certbot
 	sha512sums = SKIP
