@@ -1,7 +1,8 @@
-# Maintainer: Jacob Still <jacobcstill at gmail dot com>
+# Maintainer: Vladyslav Aviedov <vladaviedov at protonmail dot com>
+# Contributor: Jacob Still <jacobcstill at gmail dot com>
 pkgname=focalboard-server
-pkgver=7.1.0
-pkgrel=3
+pkgver=7.10.1
+pkgrel=1
 epoch=
 pkgdesc="Focalboard is an open source, self-hosted alternative to Trello, Notion, and Asana."
 arch=('i686' 'x86_64')
@@ -9,41 +10,48 @@ url="https://www.focalboard.com/"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('go>=1.18' 'nodejs>=16.3' 'npm')
+makedepends=('go' 'nodejs>=10.0' 'npm' 'git')
 checkdepends=()
-optdepends=()
+optdepends=('nginx: reverse proxy server, recommended')
 provides=('focalboard-server')
 conflicts=('focalboard-server')
 replaces=()
-backup=(opt/focalboard-${pkgver}-${pkgrel}/config.json)
+backup=(opt/focalboard/config.json)
 options=()
 install=focalboard.install
 changelog=
+mmver=7.10.2
 source=("${pkgname}::git+https://github.com/mattermost/focalboard.git#tag=v${pkgver}"
+        "mattermost-server::git+https://github.com/mattermost/mattermost.git#tag=v${mmver}"
         'focalboard.service')
 noextract=()
 sha256sums=('SKIP'
-            '8b3037f093de8610ff50aff2aba3c31e137af0067fda508291a1abfbdd4c72b1')
+            'SKIP'
+            '607d16cb2544101d0e4291e7804c3137b90b620107a37431c0f3d71e93c4fcd5')
 validpgpkeys=()
 
 build() {
   cd "${srcdir}/${pkgname}"
   LDFLAGS=''
   make prebuild
-  make server-linux webapp
+  make server-linux
 }
 
 package() {
+  # Copy focalboard build
   cd "${srcdir}/${pkgname}"
-  PACKAGE_FOLDER="$pkgdir/opt/focalboard-${pkgver}-${pkgrel}/"
-  mkdir -pv "${PACKAGE_FOLDER}/" "${PACKAGE_FOLDER}/bin/" "${PACKAGE_FOLDER}/pack/"
-  cp -v bin/linux/focalboard-server "${PACKAGE_FOLDER}/bin/"
-  cp -vr webapp/pack "${PACKAGE_FOLDER}/"
-  cp -v server-config.json "${PACKAGE_FOLDER}/config.json"
-  cp -v build/MIT-COMPILED-LICENSE.md "${PACKAGE_FOLDER}/MIT-COMPILED-LICENSE.md"
-  cp -v NOTICE.txt "${PACKAGE_FOLDER}/NOTICE.txt"
-  cp -v webapp/NOTICE.txt "${PACKAGE_FOLDER}/webapp-NOTICE.txt"
-  mkdir -pv "${pkgdir}/usr/lib/systemd/system/"
-  cp -v "${srcdir}/focalboard.service" "${pkgdir}/usr/lib/systemd/system/focalboard.service"
+  PACKAGE_FOLDER="$pkgdir/opt/focalboard/"
+  mkdir -p "${PACKAGE_FOLDER}" "${PACKAGE_FOLDER}/bin" "${PACKAGE_FOLDER}/pack" "${PACKAGE_FOLDER}/license"
+  cp bin/linux/focalboard-server "${PACKAGE_FOLDER}/bin"
+  cp webapp/static/* "${PACKAGE_FOLDER}/pack"
+  cp webapp/src/fonts/metropolis/* "${PACKAGE_FOLDER}/pack"
+  cp config.json "${PACKAGE_FOLDER}"
+  cp build/MIT-COMPILED-LICENSE.md "${PACKAGE_FOLDER}/license"
+  cp NOTICE.txt "${PACKAGE_FOLDER}/license"
+  cp webapp/NOTICE.txt "${PACKAGE_FOLDER}/license/webapp-NOTICE"
+
+  # Systemd Service
+  mkdir -p "${pkgdir}/usr/lib/systemd/system/"
+  cp "${srcdir}/focalboard.service" "${pkgdir}/usr/lib/systemd/system/focalboard.service"
 }
 

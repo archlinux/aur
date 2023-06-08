@@ -1,41 +1,35 @@
 # arg 1:  the new package version
-# pre_install() {
-        # do something here
-# }
+pre_install() {
+	if [[ -d /opt/focalboard ]]; then
+		mv /opt/focalboard /opt/focalboard-old
+		echo "Old focalboard installation moved to /opt/focalboard-old"
+	fi
+}
 
 # arg 1:  the new package version
 post_install() {
-        ln -nsf /opt/focalboard-$1 /opt/focalboard
-        echo "  you will need to start focalboard.service"
+	echo "You need to start/enable focalboard.service"
 }
 
 # arg 1:  the new package version
 # arg 2:  the old package version
 pre_upgrade() {
-        systemctl stop focalboard.service
-        if [[ ! -h /opt/focalboard ]]; then
-                mv -v /opt/focalboard /opt/focalboard-$2
-        fi
+	systemctl stop focalboard.service
+	mv /opt/focalboard /opt/focalboard-$2
 }
 
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
-        ln -nsf /opt/focalboard-$1 /opt/focalboard
-        rsync -a /opt/focalboard-$2/files /opt/focalboard-$1/
-        mv /opt/focalboard-$1/config.json{,.default}
-        cp /opt/focalboard-$2/config.json.pacsave /opt/focalboard-$1/config.json
-        echo "  you will need to start focalboard.service"
+	cp -r /opt/focalboard-$2/files /opt/focalboard
+	mv /opt/focalboard/config.json /opt/focalboard/config.json.new
+	cp /opt/focalboard-$2/config.json /opt/focalboard
+	echo "Old focalboard installation moved to /opt/focalboard-$2"
+	echo "New config.json moved to /opt/focalboard/config.json.new"
+	echo "You need to start/enable focalboard.service"
 }
 
-# # arg 1:  the old package version
-# pre_remove() {
-        # do something here
-# }
-
 # arg 1:  the old package version
-post_remove() {
+pre_remove() {
         systemctl stop focalboard.service
-        # rm -rf /opt/focalboard-$1
-        # rm -f /opt/focalboard
 }
