@@ -10,8 +10,8 @@ url="https://github.com/ethereum/${_base}"
 license=(MIT)
 depends=(python-eth-typing)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-sha512sums=('648d613270a6183c63e28717edce38f43ef389dbede0ffd7d05f28d593d53dcc9aa92b40d8ade86851dd1671d64c54dc0fafe1431cc92c42d49e07b616b8ce1d')
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('cef5c98fd354ba2569e683b03a86beba2f449f597d07d86634c1df513a6fe334309ef4b8eae0a30a07fb2c038a57e3b41baa1042a0daf57952436778f0a85dff')
 
 build() {
   cd ${_base}-${pkgver}
