@@ -3,10 +3,10 @@
 
 pkgname=cjose
 pkgver=0.6.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='C library implementing the Javascript Object Signing and Encryption (JOSE)'
 arch=(x86_64)
-url="https://github.com/zmartzone/$pkgname"
+url="https://github.com/OpenIDC/$pkgname"
 license=(MIT)
 depends=(openssl
          jansson)
