@@ -1,4 +1,5 @@
-# Maintainer: Lev Lybin <aur@devtrue.net>
+# Maintainer: Rich Lees <git0 at bitservices.io>
+# Contributor: Lev Lybin <aur@devtrue.net>
 
 pkgname=synology-cloud-sync-decryption-tool
 pkgver=027
@@ -25,5 +26,3 @@ package() {
     mkdir -p "${pkgdir}/usr/bin"
     ln -sf /opt/Synology/CloudSyncDecryptionTool/SynologyCloudSyncDecryptionTool "${pkgdir}/usr/bin/synology-cloud-sync-decryption-tool"
 }
-
-
