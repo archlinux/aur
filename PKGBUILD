@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="x-minecraft-launcher-appimage"
 _appname=xmcl
-pkgver=0.35.11
+pkgver=0.35.13
 pkgrel=1
 pkgdesc="An Open Source Minecraft Launcher with Modern UX. Provide a Disk Efficient way to manage all your Mods!"
-arch=('x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 url="https://xmcl.app/"
 _githuburl="https://github.com/Voxelum/x-minecraft-launcher"
 license=('MIT')
@@ -12,10 +12,14 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-x86_64.AppImage"
-    "LICENSE::https://raw.githubusercontent.com/AppOutlet/AppOutlet/main/LICENSE")
-sha256sums=('d17022415370ef3eac818964a57427b7ff94383743492ef7fe53d39b8c2bcbc6'
-            'c24c91646674659de06c8dad229b589608a69be9403433b4b5efe856db4cecb8')
+source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-arm64.AppImage")
+source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-arm64.AppImage")
+source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-x86_64.AppImage")
+source=("LICENSE::https://raw.githubusercontent.com/AppOutlet/AppOutlet/main/LICENSE")
+sha256sums=('c24c91646674659de06c8dad229b589608a69be9403433b4b5efe856db4cecb8')
+sha256sums_aarch64=('fae29c27cff694063fd193a8fbf23bf679e84335384c7f5181e04ba6c469b005')
+sha256sums_armv7h=('fae29c27cff694063fd193a8fbf23bf679e84335384c7f5181e04ba6c469b005')
+sha256sums_x86_64=('6c01ff034e54bf9ae7bbbf59dff9514f3520f26ccd72bf185bf96390ec9952f2')
 
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
