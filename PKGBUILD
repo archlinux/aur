@@ -6,9 +6,9 @@ pkgver=20230604
 pkgrel=1
 
 # These are versions of dependencies used by w_scan_cpp
-_wirbelscan_version=wirbelscan-2023.06.04
+_wirbelscan_version=2023.06.04
 _satip_gitver=7ef19f78c8cc0dfb2398be8f6577eadd4475fa51
-_vdr_gitver=42b584e38d442cae587add3a1018d4ed6917e123
+_vdr_gitver=5f136032a2cf9ce979c3ec81556a9c3164820baf
 
 pkgdesc="A dtv channel scanner based on VDR. Successor of w_scan"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,13 +16,13 @@ url="https://www.gen2vdr.de/wirbel/w_scan_cpp/index2.html"
 license=('GPL')
 depends=('freetype2' 'fontconfig' 'pugixml' 'librepfunc' 'libjpeg' 'curl')
 makedepends=('git' 'pango')
-source=("https://www.gen2vdr.de/wirbel/$pkgname/$pkgname-$pkgver.tar.bz2"
-        "https://www.gen2vdr.de/wirbel/wirbelscan/vdr-${_wirbelscan_version}.tgz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/wirbel-at-vdr-portal/w_scan_cpp/archive/refs/tags/$pkgver.tar.gz"
+        "vdr-wirbelscan-$_wirbelscan_version.tar.gz::https://github.com/wirbel-at-vdr-portal/wirbelscan-dev/archive/refs/tags/$_wirbelscan_version.tar.gz"
         "git://git.tvdr.de/vdr.git#commit=$_vdr_gitver"
-        "git+https://github.com/wirbel-at-vdr-portal/vdr-plugin-satip.git#commit=$_satip_gitver"
+        "vdr-plugin-satip-wirbel::git+https://github.com/wirbel-at-vdr-portal/vdr-plugin-satip.git#commit=$_satip_gitver"
        )
-sha256sums=('f617e6a80e78d1514ef8413e8d6a4ca5bbacf1b74cb89f06e3b9a06e00a7e953'
-            '22bfd788c280c7da27c7372c57440561d1577f745df52a8965599a912480fb74'
+sha256sums=('d61e81895e6b87bf41a554103e9c93feb573f36a2649d24e0e9b8577e7736ead'
+            'f58208ec8bb9eb868e50b5e2031f125d4d16aad625b812327c07d4de88371804'
             'SKIP'
             'SKIP')
 
@@ -36,10 +36,10 @@ prepare() {
   mkdir -p "vdr/PLUGINS/lib"
 
   # Copy plugin sources into place
-  cp -a "$srcdir/vdr-plugin-satip" "vdr/PLUGINS/src"
-  ln -s "vdr-plugin-satip" "vdr/PLUGINS/src/satip"
-  cp -a "$srcdir/$_wirbelscan_version" "vdr/PLUGINS/src"
-  ln -s "$_wirbelscan_version" "vdr/PLUGINS/src/wirbelscan"
+  cp -a "$srcdir/vdr-plugin-satip-wirbel" "vdr/PLUGINS/src"
+  ln -s "vdr-plugin-satip-wirbel" "vdr/PLUGINS/src/satip"
+  cp -a "$srcdir/wirbelscan-dev-$_wirbelscan_version" "vdr/PLUGINS/src"
+  ln -s "wirbelscan-dev-$_wirbelscan_version" "vdr/PLUGINS/src/wirbelscan"
 }
 
 build() {

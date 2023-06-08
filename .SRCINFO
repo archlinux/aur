@@ -16,12 +16,12 @@ pkgbase = w_scan_cpp
 	depends = librepfunc
 	depends = libjpeg
 	depends = curl
-	source = https://www.gen2vdr.de/wirbel/w_scan_cpp/w_scan_cpp-20230604.tar.bz2
-	source = https://www.gen2vdr.de/wirbel/wirbelscan/vdr-wirbelscan-2023.06.04.tgz
-	source = git://git.tvdr.de/vdr.git#commit=42b584e38d442cae587add3a1018d4ed6917e123
-	source = git+https://github.com/wirbel-at-vdr-portal/vdr-plugin-satip.git#commit=7ef19f78c8cc0dfb2398be8f6577eadd4475fa51
-	sha256sums = f617e6a80e78d1514ef8413e8d6a4ca5bbacf1b74cb89f06e3b9a06e00a7e953
-	sha256sums = 22bfd788c280c7da27c7372c57440561d1577f745df52a8965599a912480fb74
+	source = w_scan_cpp-20230604.tar.gz::https://github.com/wirbel-at-vdr-portal/w_scan_cpp/archive/refs/tags/20230604.tar.gz
+	source = vdr-wirbelscan-2023.06.04.tar.gz::https://github.com/wirbel-at-vdr-portal/wirbelscan-dev/archive/refs/tags/2023.06.04.tar.gz
+	source = git://git.tvdr.de/vdr.git#commit=5f136032a2cf9ce979c3ec81556a9c3164820baf
+	source = vdr-plugin-satip-wirbel::git+https://github.com/wirbel-at-vdr-portal/vdr-plugin-satip.git#commit=7ef19f78c8cc0dfb2398be8f6577eadd4475fa51
+	sha256sums = d61e81895e6b87bf41a554103e9c93feb573f36a2649d24e0e9b8577e7736ead
+	sha256sums = f58208ec8bb9eb868e50b5e2031f125d4d16aad625b812327c07d4de88371804
 	sha256sums = SKIP
 	sha256sums = SKIP
 
