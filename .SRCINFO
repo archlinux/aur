@@ -1,7 +1,7 @@
 pkgbase = superlu_dist
 	pkgdesc = Distributed memory, MPI based SuperLU
 	pkgver = 8.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiaoyeli/superlu_dist
 	arch = x86_64
 	license = custom
@@ -10,6 +10,8 @@ pkgbase = superlu_dist
 	depends = parmetis
 	options = staticlibs
 	source = superlu_dist-8.1.2.tar.gz::https://github.com/xiaoyeli/superlu_dist/archive/v8.1.2.tar.gz
+	source = get_metis_dist.patch::https://github.com/xiaoyeli/superlu_dist/commit/b64fe36742f1468075670129ac460915eb7130fe.patch
 	sha512sums = 30dbd8dbf7a2d86c0b8fdadf6f476473514a8698b15fbdb63e1f2de0d47abd5e1de25f5757ed40c941b4165ae3c53d1132caa8b5a03eaaeea7a4868d13778bf3
+	sha512sums = 4f99d5900917a428597ff788205bd536cb1b591fdf400ed4d9ba0bc05d19f6db7612bd2797d94cdf4572b213758b2e8e7c11919f88023114a4b61d7455d58d9f
 
 pkgname = superlu_dist
