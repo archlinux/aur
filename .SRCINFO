@@ -1,0 +1,15 @@
+pkgbase = kernel-install-ukify
+	pkgdesc = kernel-install plugin to generate unified kernel images (UKIs) from initrds
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/vibhavp/kernel-install-ukify
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = systemd
+	optdepends = pacman-hook-kernel-install: for pacman hook
+	source = git+https://github.com/vibhavp/kernel-install-ukify.git#tag=v1.0.0?signed
+	validpgpkeys = 7ED1D48C513CA024BE3A785FE3FB28CB6AB59598
+	sha256sums = SKIP
+
+pkgname = kernel-install-ukify
