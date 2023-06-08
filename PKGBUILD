@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-badger'
-pkgver='0.09'
-pkgrel='2'
+pkgver='0.16'
+pkgrel='1'
 pkgdesc="Perl Application Programming Toolkit"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -11,9 +11,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=('perl-yaml-libyaml')
 url='https://metacpan.org/release/Badger'
-source=('https://github.com/abw/Badger/archive/master.zip')
-md5sums=('b2a025e7a7fbd8f4dd3d3b8e85fa581a')
-_distdir="Badger-master"
+source=("https://cpan.metacpan.org/authors/id/A/AB/ABW/Badger-${pkgver}.tar.gz")
+sha256sums=('b4be99e08ddebdcbda95838d8aa1af120ac1ece07bd5db33335fbb3f32c3aaa7')
+_distdir="Badger-0.16"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
