@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=yuzu
-pkgver=1448
+pkgver=1461
 pkgrel=1
 pkgdesc='Nintendo Switch emulator'
 arch=(x86_64)
@@ -46,7 +46,7 @@ makedepends=(
   vulkan-headers
 )
 options=(!debug)
-_tag=0cefbf953019ace6c5d1cd6d04997a432bad88d5
+_tag=238e46ec9339e1f4e8b3fb565b2c8679f14a47ff
 source=(
   git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${_tag}
   git+https://github.com/arsenm/sanitizers-cmake.git
@@ -54,11 +54,13 @@ source=(
   git+https://github.com/arun11299/cpp-jwt.git
   git+https://github.com/mozilla/cubeb.git
   git+https://github.com/MerryMage/dynarmic.git
+  git+https://github.com/bylaws/libadrenotools.git
   yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git
   yuzu-sirit::git+https://github.com/yuzu-emu/sirit.git
   git+https://github.com/herumi/xbyak.git
 )
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -74,6 +76,7 @@ prepare() {
   git config submodule.cpp-jwt.url "${srcdir}"/cpp-jwt
   git config submodule.cubeb.url "${srcdir}"/cubeb
   git config submodule.dynarmic.url "${srcdir}"/dynarmic
+  git config submodule.libadrenotools.url "${srcdir}"/libadrenotools
   git config submodule.mbedtls.url "${srcdir}"/yuzu-mbedtls
   git config submodule.sirit.url "${srcdir}"/yuzu-sirit
   git config submodule.xbyak.url "${srcdir}"/xbyak
