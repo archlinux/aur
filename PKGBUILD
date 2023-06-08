@@ -1,8 +1,8 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=httm-bin
-pkgver=0.28.0
-pkgrel=2
+pkgver=0.28.1
+pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS, BTRFS, or NILFS snapshots. (binary .deb)"
 arch=('x86_64')
 url="https://github.com/kimono-koans/httm"
@@ -13,9 +13,8 @@ optdepends=('btrfs-progs: BTRFS support'
             'zfs-utils: ZFS support'
             'nilfs-utils: NILFS2 support')
 options=('!strip' '!emptydirs')
-#source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${pkgver}/httm_${pkgver}_amd64.deb")
-source=("https://github.com/kimono-koans/httm/releases/download/0.28.0.1/httm_0.28.0_amd64.deb")
-sha512sums=('dda42ceb247665d029a9d1c56065fc35735e2812d968710b1b69ee5e6a30537ac0398eeaaf602d0789d047a2c5d980e072594a2c66263b38f49634338a07648b')
+source=("${pkgname}-${pkgver}.deb::${url}/releases/download/${pkgver}/httm_${pkgver}_amd64.deb")
+sha512sums=('f1a4190516c722704b1c7c5cfb545a87b4428785f25af3ebfe6b0011f700c9701d24dc32ca495045320c9a2578736753561c9a9b0c5dbfe11efa3ab96af23ca4')
 
 prepare() {
 	tar -xf data.tar.xz
