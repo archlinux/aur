@@ -2,7 +2,7 @@
 # Contributor: algebro <algebro at tuta dot io>
 _base=eth-utils
 pkgname=python-$_base
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Common utility functions for python code that interacts with Ethereum"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python-eth-hash python-eth-typing python-cytoolz)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('aec131682186d9393663a84c93700610e37ffe6dab5a6b7e80ceca1c14b38b8b26a10b0bb6658526069e34ecddca8f9af1b037e741733731b7e42d6dd61c63aa')
+sha512sums=('4462879318fdc5b297bc1be9b541cb4650a029cc86d829d78ed85e59532e9dc04cae8b12b9b7eae8142fff67000a3ce9a6820de3f339303b3e6be1f3367b8a69')
 
 build() {
   cd ${_base}-${pkgver}
