@@ -18,6 +18,7 @@ pkgname = libnetceiver
 	depends = libxml2
 	optdepends = libnetceiver-tools: Tools to maintain a netceiver
 	provides = libmcli
+	conflicts = libmcli
 	replaces = libmcli
 
 pkgname = libnetceiver-tools

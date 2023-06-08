@@ -22,6 +22,7 @@ package_libnetceiver() {
   depends=('libxml2')
   replaces=('libmcli')
   provides=('libmcli')
+  conflicts=('libmcli')
 
   cd "${srcdir}/$pkgbase-$pkgver/lib"
   make PREFIX="/usr" DESTDIR="${pkgdir}" install
