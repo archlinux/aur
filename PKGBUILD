@@ -43,11 +43,14 @@ _jvmdir="/usr/lib/jvm/${_jdkname}"
 BUILDENV+=('!check')
 
 package() {
-  if [ "${CARCH}" = "x86_64" ]; then
+  case "${CARCH}" in
+  x86_64)
     cd "$srcdir/zing${pkgver//_/-}-jdk${_jdk}-linux_x64"
-  elif [ "${CARCH}" = "aarch64" ]; then
+    ;;
+  aarch64)
     cd "$srcdir/zing${pkgver//_/-}-jdk${_jdk}-aarch64"
-  fi
+    ;;
+  esac
   install -dm 755 "${pkgdir}/${_jvmdir}"
   cp -a . "${pkgdir}/${_jvmdir}/"
 
