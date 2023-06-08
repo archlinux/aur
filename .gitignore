@@ -1,6 +1,8 @@
+*.tar.zst
 OpenCL-Headers.git
 LibRaw.git
 darktable
 libxcf.git
 rawspeed.git
+pkg
 whereami
