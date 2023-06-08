@@ -1,6 +1,6 @@
 pkgbase = darkorbit-client-appimage
 	pkgdesc = Open source darkorbit client (cross-platform and with better performance)
-	pkgver = 2.7.3
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/kaiserdj/Darkorbit-client
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = darkorbit-client-appimage
 	depends = hicolor-icon-theme
 	conflicts = darkorbit-client
 	options = !strip
-	source = darkorbit-client-2.7.3.AppImage::https://github.com/kaiserdj/Darkorbit-client/releases/download/v2.7.3/DarkOrbit-Client-2.7.3.AppImage
-	sha256sums = 2e142505cb2ea1dcab06952076297b94cdf92e2b574064cd0b23baf9a65bb390
+	source = darkorbit-client-2.8.0.AppImage::https://github.com/kaiserdj/Darkorbit-client/releases/download/v2.8.0/DarkOrbit-Client-2.8.0.AppImage
+	sha256sums = 22a3b672f68ef3ff0fbc4889b2f3b7fd009c4759c94a0cf4e6420ddeadab104d
 
 pkgname = darkorbit-client-appimage

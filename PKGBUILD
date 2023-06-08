@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="darkorbit-client-appimage"
-pkgver=2.7.3
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Open source darkorbit client (cross-platform and with better performance)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/DarkOrbit-Client-${pkgver}.AppImage")
-sha256sums=('2e142505cb2ea1dcab06952076297b94cdf92e2b574064cd0b23baf9a65bb390')
+sha256sums=('22a3b672f68ef3ff0fbc4889b2f3b7fd009c4759c94a0cf4e6420ddeadab104d')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
