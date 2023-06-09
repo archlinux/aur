@@ -1,25 +1,34 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
-pkgname=thefile
-pkgver=4.0.2
+pkgname=('thefile' 'libthefile')
+pkgver=5.0
 pkgrel=0
 pkgdesc="File Manager"
-arch=("x86_64")
-url="https://github.com/vicr123/thefile"
+arch=("x86_64" "aarch64")
+url="https://github.com/theCheeseboard/thefile"
 license=('GPL3')
-depends=('xdg-utils' 'qt5-base' 'the-libs' 'libtdesktopenvironment' 'libthefrisbee' 'qt5-svg')
-makedepends=('git' 'qt5-tools')
-source=("git+https://github.com/vicr123/thefile#tag=v$pkgver")
-sha256sums=('SKIP')
+makedepends=('git' 'qt6-tools' 'cmake' 'clang' 'quazip-qt6' 'libimobiledevice')
+source=("thefile-$pkgver"::"https://github.com/theCheeseboard/thefile/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('0a84231b8d85ee22f0bd2989ee290917bd3003b50d70558249e1838ce4cfd4a0')
 
-build() {
-	cd thefile
-	mkdir -p build
-	cd build
-	qmake ../theFile.pro
-	make
+doInstallModule() {
+	DESTDIR="$pkgdir" cmake --install "build/$1"
 }
 
-package() {
-	cd thefile/build
-	make install INSTALL_ROOT=$pkgdir
+build() {
+	cmake -B build -S "thefile-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
+}
+
+package_thefile() {
+    depends=('libimobiledevice' 'quazip-qt6' 'libthefile')
+
+    doInstallModule 'application'
+    doInstallModule 'plugins'
+}
+
+package_libthefile() {
+    depends=('libtdesktopenvironment' 'libthefrisbee')
+
+    doInstallModule 'libthefile'
 }
