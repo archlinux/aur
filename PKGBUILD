@@ -1,5 +1,5 @@
 pkgname=carla-bridges-linux32
-pkgver=2.5.2
+pkgver=2.5.5
 pkgrel=1
 pkgdesc="Carla Linux VST 32-Bit Bridge (Stable)"
 arch=(x86_64)
@@ -10,9 +10,8 @@ depends=(alsa-lib carla gcc-libs glibc lib32-gcc-libs lib32-glibc libglvnd libx1
 makedepends=(file fluidsynth freetype2 git libsndfile liblo libpulse qt5-tools)
 provides=(carla-bridges-linux32)
 source=("https://github.com/falkTX/Carla/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('cfdeeafe3a108a4e6d88d4be0ccb73d4e1677f0eff51375b04bd6a7a081694f91dfd37afa88f4bd0baf02a14f2e2e8214f471273d2b0fe12b63ba36656650e2d')
-b2sums=('1a07c9829529fb9bfaeafca508cfa2f96a19f6a78b143a3766b15df951407b05968d3a78ab46595bff0d0352d2e8e03ec7880babb2682628504bead01c45b055')
-validpgpkeys=('62B11043D2F6EB6672D93103CDBAA37ABC74FBA0')  # falkTX <falktx@falktx.com>
+sha512sums=('93d0fd7c97956446701328f4b98db508a64df9ae6f476871ba7c1ec3f7cc420c206622a01ce5aec2e98079a714264dac5f3f662e0c3d0fad83cc1f1dbeac119a')
+b2sums=('fd34d827eea5fb4b7a9fcd57827adde9fae1f0fe2ee02fcccfc4b2d0f72a31872f52956b32455666471cf573fcd04abe3d432c3d38407c6dabe8f95287da388c')
 
 build() {
   cd "$srcdir/Carla-${pkgver}"
