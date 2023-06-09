@@ -1,19 +1,19 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=oqsprovider
 _pkgname=oqs-provider
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=('x86_64')
 url="https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider"
 license=('MIT')
 depends=(
-    'liboqs<0.8.0'
+    'liboqs'
     'openssl'
 )
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/open-quantum-safe/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('92b6bf8141c0bd62dd64e2ff34b76ac2e5d7af65cd97c2f28f13605817459cddb68f925e9fae5873a69481ee05751d2bf620fe83e4fd90354fa7fbf0c4f19ab3')
+b2sums=('93a3ae7d2043728f2eca90b3d111b94c75c46f27f3323da1f79ca6dc32357f27099f7f76c7ba6cf6357b0b1636789379ffc7363b369febdca7af69fb01a4abd5')
 
 build() {
     cmake -B build -S "${_pkgname}-${pkgver}" \
@@ -24,6 +24,8 @@ build() {
 }
 
 package() {
-    install -D -m0755 "${srcdir}"/build/oqsprov/oqsprovider.so "${pkgdir}"/usr/lib/ossl-modules/oqsprovider.so
+    install -D -m0755 "${srcdir}"/build/lib/oqsprovider.so "${pkgdir}"/usr/lib/ossl-modules/oqsprovider.so
+    install -D -m0755 "${srcdir}"/build/lib/oqsprovider.so.1 "${pkgdir}"/usr/lib/ossl-modules/oqsprovider.so.1
+    install -D -m0755 "${srcdir}"/build/lib/oqsprovider.so.0.5.0 "${pkgdir}"/usr/lib/ossl-modules/oqsprovider.so.0.5.0
     install -D -m0644 "${srcdir}"/${_pkgname}-${pkgver}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
