@@ -1,0 +1,47 @@
+diff --git a/CMake/FindMbedTLS.cmake b/CMake/FindMbedTLS.cmake
+index 97c45150a7..d4c47ad834 100644
+--- a/CMake/FindMbedTLS.cmake
++++ b/CMake/FindMbedTLS.cmake
+@@ -1,8 +1,8 @@
+-find_path(MBEDTLS_INCLUDE_DIR mbedtls/ssl.h)
++find_path(MBEDTLS_INCLUDE_DIR mbedtls/ssl.h PATH_SUFFIXES mbedtls2)
+ 
+-find_library(MBEDTLS_LIBRARY mbedtls)
+-find_library(MBEDX509_LIBRARY mbedx509)
+-find_library(MBEDCRYPTO_LIBRARY mbedcrypto)
++find_library(MBEDTLS_LIBRARY mbedtls PATH_SUFFIXES mbedtls2)
++find_library(MBEDX509_LIBRARY mbedx509 PATH_SUFFIXES mbedtls2)
++find_library(MBEDCRYPTO_LIBRARY mbedcrypto PATH_SUFFIXES mbedtls2)
+ 
+ set(MBEDTLS_INCLUDE_DIRS ${MBEDTLS_INCLUDE_DIR})
+ set(MBEDTLS_LIBRARIES ${MBEDTLS_LIBRARY} ${MBEDX509_LIBRARY} ${MBEDCRYPTO_LIBRARY})
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1abb7d7cbf..56db5588e6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -602,6 +602,7 @@ else()
+   add_subdirectory(Externals/enet)
+ endif()
+ 
++check_lib(XXHASH libxxhash xxhash xxhash.h)
+ if(NOT XXHASH_FOUND)
+   message(STATUS "Using static xxhash from Externals")
+   add_subdirectory(Externals/xxhash)
+@@ -673,7 +674,7 @@ else()
+   set(LZO lzo2)
+ endif()
+ 
+-if(NOT APPLE AND NOT MSVC AND NOT LIBRETRO)
++if(NOT APPLE AND NOT MSVC)
+   check_lib(PNG libpng png png.h QUIET)
+ endif()
+ if (PNG_FOUND)
+@@ -770,7 +771,7 @@ else()
+ endif()
+ 
+ find_package(CURL)
+-if(CURL_FOUND AND NOT(LIBRETRO))
++if(CURL_FOUND)
+   message(STATUS "Using shared libcurl")
+   include_directories(${CURL_INCLUDE_DIRS})
+ else()

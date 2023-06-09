@@ -1,57 +1,102 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-
-pkgname=libretro-dolphin-git
-pkgver=r29735.ec90b9bfcd
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+_pkgname=libretro-dolphin
+pkgname=$_pkgname-git
+pkgver=r33042.2f4b0f7902
 pkgrel=1
-pkgdesc='Nintendo GC/Wii core'
-arch=(x86_64)
-url=https://github.com/libretro/dolphin
-license=(GPL2)
-groups=(libretro-unstable)
+pkgdesc="Nintendo GameCube/Wii core"
+arch=('x86_64')
+url="https://github.com/libretro/dolphin"
+license=('GPL2')
+groups=('libretro')
 depends=(
-  libretro-core-info
-  libudev.so
-  libx11
-  libxi
-  libxrandr
-  zlib
+	'enet'
+	'gcc-libs'
+	'glibc'
+	'libpng'
+	'libretro-core-info'
+	'libx11'
+	'libxi'
+	'libxrandr'
+	'pugixml'
+	'sfml'
+	'zlib'
 )
 makedepends=(
-  cmake
-  git
-  mesa
+	'bluez-libs'
+	'bzip2'
+	'cmake'
+	'cubeb'
+	'curl'
+	'fmt'
+	'git'
+	'hidapi'
+	'libevdev'
+	'libglvnd'
+	'libusb'
+	'lzo'
+	'mbedtls2'
+	'python'
+	'systemd'
+	'systemd-libs'
+	'xorgproto'
+	'xxhash'
+	'xz'
+	'zstd'
 )
-provides=(libretro-dolphin)
-conflicts=(libretro-dolphin)
-source=(libretro-dolphin::git+https://github.com/libretro/dolphin.git)
-sha256sums=(SKIP)
+provides=("$_pkgname=${pkgver#r}")
+conflicts=("$_pkgname")
+source=(
+	"$_pkgname::git+$url.git"
+	'use-system-libs.patch'
+)
+b2sums=(
+	'SKIP'
+	'b149713ac0faaf7aeeaca3f0a4f82ee40085c9b7caa34b55a9182d8d4146670b0c774a89e96d4c4cedebf49168394940f636d3bc61f1878238fd5850992a8990'
+)
 
 pkgver() {
-  cd libretro-dolphin
-
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
+	patch -d $_pkgname -Np1 < use-system-libs.patch
 }
 
 build() {
-  cd build
-
-  cmake ../libretro-dolphin \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIBRETRO=ON \
-    -DLIBRETRO_STATIC=1
-  make
+	cmake -S $_pkgname -B build \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+		-DENABLE_LTO=OFF \
+		-DENABLE_TESTS=OFF \
+		-DLIBRETRO=ON \
+		-DUSE_SHARED_ENET=ON \
+		-Wno-dev
+	cmake --build build
 }
 
 package() {
-  install -Dm 644 build/dolphin_libretro.so -t "${pkgdir}"/usr/lib/libretro/
+	depends+=(
+		'libbluetooth.so'
+		'libbz2.so'
+		'libcubeb.so'
+		'libEGL.so'
+		'libevdev.so'
+		'libfmt.so'
+		'libGLX.so'
+		'libhidapi-hidraw.so'
+		'liblzma.so'
+		'liblzo2.so'
+		'libmbedcrypto.so'
+		'libmbedtls.so'
+		'libmbedx509.so'
+		'libudev.so'
+		'libusb-1.0.so'
+		'libxxhash.so'
+		'libzstd.so'
+	)
+	# shellcheck disable=SC2154
+	install -D -t "$pkgdir"/usr/lib/libretro build/dolphin_libretro.so
 }
-
-# vim: ts=2 sw=2 et:
