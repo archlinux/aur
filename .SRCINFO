@@ -1,19 +1,16 @@
 pkgbase = music-you-appimage
 	pkgdesc = 一个美观简约的Material Design 3 (Material You) 风格网易云音乐播放器pc客户端
 	pkgver = 2.0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://v-player-git-dev-gumengyu.vercel.app/
 	arch = x86_64
 	license = AGPL3
-	makedepends = git
-	makedepends = npm
-	makedepends = gendesk
-	makedepends = yarn
 	depends = zlib
 	depends = glibc
+	depends = hicolor-icon-theme
 	conflicts = music-you
 	options = !strip
-	source = music-you-2.0.12.tar.gz::https://github.com/GuMengYu/music-you/archive/refs/tags/v2.0.12.tar.gz
-	sha256sums = 449ae97cb8ea4a12b2cd263d6bf28979e49a4df6711761d4442cea1af6a85e87
+	source = music-you-2.0.12.AppImage::https://github.com/GuMengYu/music-you/releases/download/v2.0.12-hotfix/music-you-2.0.12.AppImage
+	sha256sums = 510990647e307eafb20d8e33983fd9bfb7972e97ba9c0a26f57301adf7b15bf0
 
 pkgname = music-you-appimage
