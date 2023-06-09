@@ -1,0 +1,12 @@
+pkgbase = nodejs-graphite-cli
+	pkgdesc = graphite.dev terminal client
+	pkgver = 0.20.19
+	pkgrel = 1
+	url = https://github.com/withgraphite/graphite-cli
+	arch = any
+	license = AGPL-3.0
+	makedepends = npm
+	depends = nodejs
+	options = !strip
+
+pkgname = nodejs-graphite-cli
