@@ -1,27 +1,23 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thebeat
-pkgver=3.1.1
+pkgver=4.0
 pkgrel=0
-pkgdesc="Audio Player based on Phonon"
-arch=("x86_64")
-url="https://github.com/vicr123/thebeat"
+pkgdesc="Audio Player"
+arch=("x86_64" "aarch64")
+url="https://github.com/libcontemporary/thebeat"
 license=('GPL3')
-depends=('libmusicbrainz5' 'xdg-utils' 'phonon-qt5' 'qt5-base' 'qt5-multimedia' 'taglib' 'the-libs' 'qt5-svg')
-makedepends=('git' 'qt5-tools' 'libcdio-paranoia')
-optdepends=('discord-rpc-api: for Discord Rich Presence integration')
-source=("$pkgname-$pkgver"::"https://github.com/vicr123/theBeat/archive/v3.1.1.tar.gz")
-sha256sums=('c49e6da000fa1d9c2746451c5254bbd4b188e07ca27e0a37423e557b790ce127')
+depends=('libcontemporary' 'libthefrisbee' 'taglib' 'gstreamer')
+makedepends=('git' 'qt6-tools' 'cmake' 'clang')
+optdepends=('cdrdao: for CD burning')
+source=("thebeat"::"https://github.com/vicr123/theBeat/archive/v$pkgver.tar.gz")
+sha256sums=('ad49c87d1c529d7e5f73afc9636bb243cfb6b61e5ab30da570e3ff13bf6c77e9')
 
 build() {
-	cd "theBeat-$pkgver"
-	mkdir -p build
-	cd build
-	qmake ../theBeat.pro
-	make
+	cmake -B build -S "theBeat-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 
 package() {
-	cd "theBeat-$pkgver"
-	cd build
-	make install INSTALL_ROOT=$pkgdir
+	DESTDIR="$pkgdir" cmake --install "build"
 }
