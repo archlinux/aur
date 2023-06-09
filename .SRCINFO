@@ -1,7 +1,7 @@
 pkgbase = latencyflex-bin
-	pkgdesc = Vendor agnostic latency reduction middleware. An alternative to NVIDIA Reflex (binary release)
+	pkgdesc = Vendor and game agnostic latency reduction middleware (binary release)
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ishitatsuyuki/LatencyFleX
 	arch = x86_64
 	license = Apache2

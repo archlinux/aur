@@ -3,8 +3,8 @@
 _pkgname=latencyflex
 pkgname=$_pkgname-bin
 pkgver=0.1.1
-pkgrel=1
-pkgdesc="Vendor agnostic latency reduction middleware. An alternative to NVIDIA Reflex (binary release)"
+pkgrel=2
+pkgdesc="Vendor and game agnostic latency reduction middleware (binary release)"
 arch=('x86_64')
 url="https://github.com/ishitatsuyuki/LatencyFleX"
 license=('Apache2')
@@ -24,4 +24,7 @@ package() {
   install -Dm644 layer/usr/share/vulkan/implicit_layer.d/$_pkgname.json -t "$pkgdir/usr/share/vulkan/implicit_layer.d"
   install -Dm755 layer/usr/lib/x86_64-linux-gnu/lib${_pkgname}_layer.so -t "$pkgdir/usr/lib"
   cp -r wine/usr "$pkgdir"
+  echo "If you want to use this package with system installations of Proton"
+  echo "such as proton-ge-custom (and -bin) check out my comment:"
+  echo "https://aur.archlinux.org/packages/latencyflex-bin#comment-918559"
 }
