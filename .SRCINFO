@@ -1,19 +1,22 @@
 pkgbase = cruft
 	pkgdesc = Maintain all the necessary boilerplate for packaging and building projects separate from the code you intentionally write. Fully compatible with existing Cookiecutter templates
-	pkgver = 2.12.0
+	pkgver = 2.15.0
 	pkgrel = 1
 	url = https://cruft.github.io/cruft/
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
 	depends = python
 	depends = python-click
 	depends = python-cookiecutter
 	depends = python-gitpython
 	depends = python-typer
 	optdepends = python-toml: specify patterns to ignore in toml files
-	source = https://files.pythonhosted.org/packages/source/c/cruft/cruft-2.12.0.tar.gz
-	sha1sums = caa92f51a79e1f3b21f8345f89afd01fda2698a7
-	sha256sums = 57455d33a60684c945d501dcea2b1c57dc0fb200a0090f07c83da1603382cbb1
+	source = https://files.pythonhosted.org/packages/source/c/cruft/cruft-2.15.0.tar.gz
+	sha1sums = 312b0312ad460dd70ea8d55d1664e2819e47d728
+	sha256sums = 9802af66037418655e7e4b6f30b531591e0761939b3ff5dd45d27c3a3f588abe
 
 pkgname = cruft
