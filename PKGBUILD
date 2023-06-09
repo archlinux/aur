@@ -1,9 +1,10 @@
 # Maintainer: fn2006 <usernamefn2006alreadyused@protonmail.com>
 # Contributor: Sefa Eyeoglu <contact@scrumplex.net>
-# Contributor: txtsd <code@ihavea.quest>
+# Contributor: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: seth <getchoo at tuta dot io>
 
 pkgname=pollymc-bin
-pkgver=6.3
+pkgver=7.0
 pkgrel=1
 pkgdesc="Prism Launcher fork that adds Ely.by support and allows you to use offline mode without an account."
 arch=('x86_64')
@@ -16,11 +17,11 @@ optdepends=('java-runtime=8: support for Minecraft versions < 1.17'
             'java-runtime=17: support for Minecraft versions >= 1.17')
 source=("https://github.com/fn2006/PollyMC/releases/download/${pkgver}/PollyMC-Linux-Qt6-${pkgver}.tar.gz")
 noextract=("PollyMC-Linux-Qt6-${pkgver}.tar.gz")
-sha256sums=('e635c81303884f43f197b81af329d40f3034037da032d8d83b526d7aa4b584de')
+sha256sums=('3bcb0e7a1806f1c264eec9685edf3c0182abfc4a030d7eb7d83c02c6ca3280ff')
 
 package() {
-    install -d "$pkgdir/usr"
-    tar -C "$pkgdir/usr" -xvf PollyMC-Linux-Qt6-${pkgver}.tar.gz
-    chown -R root:root "$pkgdir/usr"  # fils in tarball are not owned by root
+    install -d "${pkgdir}/usr"
+    tar -C "${pkgdir}/usr" -xvf PollyMC-Linux-Qt6-${pkgver}.tar.gz
+    chown -R root:root "${pkgdir}/usr"  # files in tarball are not owned by root
 }
 
