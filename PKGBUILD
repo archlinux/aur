@@ -12,7 +12,7 @@ pkgdesc="Desktop Environment built on Qt"
 arch=("x86_64" "aarch64")
 url="https://github.com/theCheeseboard/thedesk"
 license=('GPL3')
-makedepends=('git' 'qt6-tools' 'qt6-positioning' 'cmake' 'clang' $_pkg_polkit 'libtdesktopenvironment' $_pkg_pulseaudio $_pkg_networkmanager $_pkg_modemmanager $_pkg_bluez 'qrencode' 'libthefile' 'contemporary-icons' 'contemporary-widgets' 'ttf-contemporary')
+makedepends=('git' 'qt6-tools' 'qt6-positioning' 'cmake' 'clang' $_pkg_polkit 'libtdesktopenvironment' $_pkg_pulseaudio $_pkg_networkmanager $_pkg_modemmanager $_pkg_bluez 'qrencode' 'libthefile' 'contemporary-icons' 'contemporary-widgets' 'ttf-contemporary' 'xf86-input-libinput' 'libxi' 'libx11' 'qrencode')
 source=("thedesk-$pkgver"::"https://github.com/theCheeseboard/thedesk/archive/refs/tags/v$pkgver.tar.gz"
         "kf6-patch.patch")
 sha256sums=("d9594530e6efce439d98888f9e0ea4e4ec23e9eee1f6c7591c3f3e31ee92546c"
@@ -65,7 +65,7 @@ package_xdg-desktop-portal-td() {
 }
 
 package_thedesk() {
-    depends=('kwin' 'libtdesktopenvironment' 'td-polkitagent' 'libthedesk' 'thedesk-platform' $_pkg_pulseaudio 'libx11' 'libxi' 'xf86-input-libinput' $_pkg_networkmanager $_pkg_modemmanager 'accountsservice' 'libtwebservices' $_pkg_bluez 'qrencode' 'thedesk-xdg-utils' 'xdg-desktop-portal-td' 'qt6-positioning')
+    depends=('kwin' 'libtdesktopenvironment' 'td-polkitagent' 'libthedesk' 'thedesk-platform' $_pkg_pulseaudio 'libx11' 'libxi' 'xf86-input-libinput' $_pkg_networkmanager $_pkg_modemmanager 'accountsservice' $_pkg_bluez 'qrencode' 'thedesk-xdg-utils' 'xdg-desktop-portal-td' 'qt6-positioning')
     
     doInstallModule 'desktop';
     doInstallModule 'plugins';
