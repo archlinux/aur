@@ -1,7 +1,7 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=zaman
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A simple cli tool that prints (or saves) man pages in a PDF file for an easier reading"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('zathura-pdf-poppler: PDF support for zathura using the poppler engi
 	    'rofi: Rofi support'
 	    'dmenu: Dmenu support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b65643d2626e772e9e2ec763c70929282199ef3f721ccf8cb0285ba455329100')
+sha256sums=('b040ff5b84d3fd19391636815ad4b421b517b7c5995f35c30ecf0ba627d20b2d')
 
 package() {
 	cd "${pkgname}-${pkgver}"
