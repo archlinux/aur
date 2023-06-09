@@ -1,7 +1,7 @@
 pkgbase = atsas
 	pkgdesc = A program suite for small-angle scattering data analysis from biological macromolecules
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.embl-hamburg.de/biosaxs/software.html
 	install = install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = atsas
 	sha512sums = f80c19cae7c07c38f719c1592b529bf15654da531a808a61c33a75c57eec6f9e9a3ed76b266a0d85e27d1a2acd153fd0a027166e497c7bdbaa98c082e1de0da9
 	sha512sums = 3f728fb538b236f0ddce8a7c86303d14c529da4f117eb5f4c87ef5f0fef52dea3ae7650fc439316c08628dc641893ab10f85890577fcb8e67b9398fdbbfa773f
 	sha512sums = 293ce54e3ec40b2b9173e123a9a98027b69859b28bf970d91d6ace3ae60d30a00e7c2e89fc02755874967a6e34446ea32084a9335bf2f3b41aa30458f7fcfd54
-	sha512sums = 5c654541e4a778ac2e27bccb8952bbeff79cb5f11339b705b26eb9d4d2c31511bdbc3ecfd31bbe538c82a725617ff1053a0536f81b9231e972e5947010ed74c0
+	sha512sums = 854e0d11d87e22c7a70f13309b0d9070bc0d63cb1c3ac0235f84550345072bf4552ffeb866db32e264117ae9d17b536572c181db7e4e77e224c321e9a8ffe87f
 	sha512sums = 0dba1e27b46fbbb272c4afeef06368c99ae28eb6686c6cfc6fe68169f9729a6d63a039a8909cbf17d1eca756ef471c675c438d10749ee35024ddb6579139fdca
 
 pkgname = atsas
