@@ -1,21 +1,23 @@
 pkgbase = thefrisbee
 	pkgdesc = Disk Management
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 0
-	url = https://github.com/vicr123/thefrisbee
+	url = https://github.com/theCheeseboard/thefrisbee
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
-	makedepends = qt5-tools
-	makedepends = the-libs
-	source = thefrisbee-1.0::https://github.com/vicr123/theFrisbee/archive/refs/tags/v1.0.tar.gz
-	sha256sums = a1b2dc15bcb2db0851ac7a79ba424e717ca890314c2b42027fbe3e4a9a71637e
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = cmake
+	makedepends = clang
+	makedepends = libcontemporary
+	source = thefrisbee::https://github.com/theCheeseboard/theFrisbee/archive/refs/tags/v2.0.tar.gz
+	sha256sums = a596f17a414de78bbaf5ff6da1f4fa0773e21f4896c59a49c5b65e73c056adb9
 
 pkgname = thefrisbee
 	depends = xdg-utils
-	depends = qt5-base
-	depends = the-libs
+	depends = libcontemporary
 	depends = libthefrisbee
 
 pkgname = libthefrisbee
-	depends = qt5-base
-	depends = the-libs
+	depends = libcontemporary
