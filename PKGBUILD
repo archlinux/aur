@@ -1,7 +1,7 @@
 # Maintainer: arraen
 pkgname="synergy3-bin"
 pkgver="v3.0.72.1"
-pkgrel="6"
+pkgrel="7"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('unknown')
@@ -21,8 +21,8 @@ package() {
   ln -s /opt/Synergy/synergyc ${pkgdir}/usr/bin/synergyc
   ln -s /opt/Synergy/synergy-core ${pkgdir}/usr/bin/synergy-core
   mkdir -p ${pkgdir}/etc/systemd/user/graphical-session.target.wants
-  cp ${$pkgdir}/opt/Synergy/resources/services/global/synergy.service ${pkgdir}/etc/systemd/user/
-  cp ${$pkgdir}/opt/Synergy/resources/services/global/synergy.service ${pkgdir}/etc/systemd/user/graphical-session.target.wants/
+  cp ${pkgdir}/opt/Synergy/resources/services/global/synergy.service ${pkgdir}/etc/systemd/user/
+  cp ${pkgdir}/opt/Synergy/resources/services/global/synergy.service ${pkgdir}/etc/systemd/user/graphical-session.target.wants/
   chmod 4755 ${pkgdir}/opt/Synergy/chrome-sandbox || true
 }
 
