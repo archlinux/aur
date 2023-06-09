@@ -7,6 +7,7 @@ pkgbase = libcontemporary
 	license = GPL3
 	makedepends = git
 	makedepends = qt6-tools
+	makedepends = cmake
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-svg
