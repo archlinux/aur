@@ -1,25 +1,23 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 
 pkgname=tttermwidget
-pkgver=1.0.1
+pkgver=2.0
 pkgrel=0
 pkgdesc="Terminal widget used by theTerminal"
-arch=("i686" "x86_64")
-url="https://github.com/vicr123/tttermwidget"
+arch=("x86_64" "aarch64")
+url="https://github.com/theCheeseboard/tttermwidget"
 license=("GPL2")
-depends=("qt5-base" "libsm" "libxkbcommon-x11" "libutf8proc" "the-libs")
-makedepends=("qt5-tools")
-source=("$pkgname-$pkgver"::'https://github.com/vicr123/tttermwidget/archive/v1.0.1.tar.gz')
-sha256sums=("6329163b696c06b62df96aa04cb28bc7c85cfc862f34ef8a3d5a9eb504d5fe91")
+depends=("libsm" "libxkbcommon-x11" "libutf8proc" "libcontemporary" "qt6-5compat")
+makedepends=('git' 'qt6-tools' 'cmake' 'clang')
+source=("tttermwidget"::"https://github.com/theCheeseboard/tttermwidget/archive/v$pkgver.tar.gz")
+sha256sums=("41817db1c22a539e6e1a95562d017b624ace0d130327b6165c2f3433afaf6d94")
 
 build() {
-	mkdir -p build
-	cd build
-	qmake $srcdir/$pkgname-$pkgver/tttermwidget.pro
-	make
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 
 package() {
-	cd build
-	make INSTALL_ROOT="$pkgdir" install
+	DESTDIR="$pkgdir" cmake --install "build"
 }
