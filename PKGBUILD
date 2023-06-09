@@ -1,7 +1,7 @@
-#Maintainer: SecondaryArcs http418teapot@protonmail.com
+#Maintainer: SecondaryArcs 25348fac440da98721ce3eb39e7b6220ea3b6d4d http418teapot@protonmail.com
 
 pkgname=mysterium-node
-pkgver=1.21.0
+pkgver=1.22.1
 pkgrel=1
 
 pkgdesc='Mysterium Node for decentralised VPN Network'
@@ -58,7 +58,7 @@ package() {
   install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/MYSTERIUM" LICENSE
 }
 
-md5sums=('0f95ef5756621bad1d965d168c3523fb'
+md5sums=('8aaf8896e424a8316b99a329fb01c284'
          '98c921e848f46630097311d88ebd4c80'
          'd7a3c7c37902b9eff954a6b08eba1314'
 				 'b95b54717678f5e3224aba7981d2caaa'
@@ -66,7 +66,7 @@ md5sums=('0f95ef5756621bad1d965d168c3523fb'
          '2541dec04c7fd8c9f0d55c81f5abef07'
          '90d849e9a576d28aaeb84ae10d53273b'
          'ef2fbcfa9beaba00013e4c03704a3bb2')
-sha512sums=('886d621569f3b093a575b6823075dbf1c0e2f4c21c9254b139961d186a2787ca70ca2a1522faac5f7759aa77e40f826af3c70cf79990969134781c8c90023542'
+sha512sums=('8dd4d181a00c50d087ea13b66b49d00c998a1475bb3bc937e97a7abf29cbb744a05a6e17e531a3b9da160165b6483b69acf97786b5c43bb204bd04f743aa0632'
             '2d833621aa158fc7c0d08a863f83e94199c3f0ce6d687605a1c9463941126e78d792c82a2b2da0dadf2735a6f4e97c6140a4ac5c0dc7b31641011dd26a580a59'
             'eb66ff9dfbbbe7fa9b83e64486d2b7078625160ecf96fc1c2bf309e06b0516d41fe909fa25ab6d7728a955a7e9390e7a806a0e9613594489c609fbc3423f5f6a'
 						'7a9cc3b7b1c89bba8a4ec290de93d1111edb176ed9e331315b3342a5a8f583c23380df1ba535ee3f961f4c542dc6eca39c5cd18a2b3a372270c2340ebe4792a2'
