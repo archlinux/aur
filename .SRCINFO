@@ -1,0 +1,13 @@
+pkgbase = s3s-setup
+	pkgdesc = Setup and helper script for splatnet3statink (s3s) by frozenpandaman.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/North-West-Wind/s3s-setup
+	arch = any
+	license = GPL3
+	depends = python
+	optdepends = xclip
+	source = s3s-setup::git+https://github.com/North-West-Wind/s3s-setup.git
+	md5sums = SKIP
+
+pkgname = s3s-setup
