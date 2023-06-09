@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Zhou <pn3535 at icloud dot com>
 pkgname=bili-you-bin
-pkgver=1.1.3+13
+pkgver=1.1.4+14
 pkgrel=3
 epoch=
 pkgdesc="一个用flutter制作的第三方B站客户端."
@@ -16,7 +16,7 @@ provides=(bili-you-bin)
 conflicts=(bili-you-bin)
 replaces=()
 source=(
-	bili-you-${pkgver}.AppImage::'https://github.com/lucinhu/bili_you/releases/latest/download/BiliYou-linux-x86_64.AppImage'
+	bili-you-${pkgver}.AppImage::'https://github.com/lucinhu/bili_you/releases/latest/download/BiliYou-x86_64.AppImage'
 )
 noextract=()
 md5sums=(
