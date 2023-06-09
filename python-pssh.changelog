@@ -1,3 +1,10 @@
+2023-06-09 Hyacinthe Cartiaux <hyacinthe.cartiaux@uni.lu>
+	* pssh 2.3.5-12 All patches upstreamed, removed from the PKGBUILD
+
+2023-05-29 Boris Momčilović <boris@firstbeatmedia.com>
+	* Update to minor release 2.3.5-11
+	* Upstream repository changed
+
 2016-11-21 Jaroslav Lichtblau <svetlemodry@archlinux.org>
 	* pssh 2.3.1-8 FS#51533 and pssh dropped from [community]
 

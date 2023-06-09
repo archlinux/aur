@@ -1,11 +1,12 @@
-# Maintainer: Boris Momcilovic <boris.momcilovic@gmail.com>
+# Maintainer:  Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Contributor: Boris Momcilovic <boris.momcilovic@gmail.com>
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Elis Hughes <elishughes@googlemail.com>
 # Contributor: Mark Blakeney at bullet-systems dot net
 
 pkgname=python-pssh
 pkgver=2.3.5
-pkgrel=11
+pkgrel=12
 pkgdesc="Parallel versions of the openssh tools ssh, scp, rsync, nuke, slurp"
 arch=('any')
 url="https://github.com/lilydjwg/pssh"
@@ -13,17 +14,8 @@ license=('BSD')
 depends=('openssh' 'python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'patch')
 changelog=$pkgname.changelog
-source=(https://github.com/lilydjwg/pssh/archive/refs/tags/v${pkgver}.tar.gz
-        pssh-valueerror-the-fd-4-must-be-in-non-blocking-mode.patch)
-sha256sums=('97277f9d08b512c6a1b6dc5eac9677f34038096bae24484452d326137ba0d080'
-            '40b01fd5c2aa59542a5d1bf65a41b861733f71305a9799c1d1ca6661f228a891')
-
-prepare() {
-  cd "${srcdir}"/pssh-$pkgver
-
-# fix FS#46571
-  patch -Np0 -i ../pssh-valueerror-the-fd-4-must-be-in-non-blocking-mode.patch
-}
+source=(https://github.com/lilydjwg/pssh/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('97277f9d08b512c6a1b6dc5eac9677f34038096bae24484452d326137ba0d080')
 
 build() {
   cd "${srcdir}"/pssh-$pkgver

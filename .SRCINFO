@@ -1,7 +1,7 @@
 pkgbase = python-pssh
 	pkgdesc = Parallel versions of the openssh tools ssh, scp, rsync, nuke, slurp
 	pkgver = 2.3.5
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/lilydjwg/pssh
 	changelog = python-pssh.changelog
 	arch = any
@@ -13,8 +13,6 @@ pkgbase = python-pssh
 	depends = openssh
 	depends = python
 	source = https://github.com/lilydjwg/pssh/archive/refs/tags/v2.3.5.tar.gz
-	source = pssh-valueerror-the-fd-4-must-be-in-non-blocking-mode.patch
 	sha256sums = 97277f9d08b512c6a1b6dc5eac9677f34038096bae24484452d326137ba0d080
-	sha256sums = 40b01fd5c2aa59542a5d1bf65a41b861733f71305a9799c1d1ca6661f228a891
 
 pkgname = python-pssh
