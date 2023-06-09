@@ -3,14 +3,14 @@
 
 pkgname=tastytrade
 pkgver='2.2.0'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
 url='https://tastytrade.com/'
 license=('custom:commercial')
 conflicts=('tastytrade-bin')
 source=(https://download.tastytrade.com/desktop-2.x.x/${pkgver}/tastytrade-${pkgver}-1_amd64.deb)
-sha256sums=('087a794f0a0bc32eab1c8c58e9139a72a9481c17faa4e7684015682f3eea46e9')
+sha256sums=('fd5e30dc5a21c6ae7499d271e2dcd89a283ccbee5c4bbef6ebd6c7b6778c2e25')
 
 build() {
 	tar axf data.tar.zst
