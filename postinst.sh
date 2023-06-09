@@ -173,15 +173,7 @@ create_desktop2()
 	chmod 755 $PMDESKTOP
 	chmod 755 $PRDESKTOP
 	
-	if [ $SCRIPT -eq 1 ] ; then
-		if [ "$LOCALINSTALL" = "1" ] ; then
-			XDG_MODE=" user "
-		else
-			XDG_MODE=" system "
-		fi
-	else
-		XDG_MODE=" system "
-	fi
+	XDG_MODE=" system "
 	
 	sh $XDGPATH/xdg-desktop-menu install --noupdate --novendor --mode $XDG_MODE $TMDESKTOP >/dev/null 2>&1
 	sh $XDGPATH/xdg-desktop-menu install --noupdate --novendor --mode $XDG_MODE $PMDESKTOP >/dev/null 2>&1
@@ -435,15 +427,7 @@ copy_icons()
 	if [ -d "$THEMEDIR" ] ; then        
     	if [ $SCRIPT -eq 1 ] ; then
 
-			if [ "$LOCALINSTALL" = "1" ] ; then
-				XDG_MODE=" user "
-				
-			else
-				XDG_MODE=" system "
-			fi
-		else
-			XDG_MODE=" system "
-		fi
+		XDG_MODE=" system "
 
 		FREENAME=""
 		if [ $VERSION = "free" ] ; then
@@ -824,23 +808,10 @@ create_mime()
 
     display_information "Registering MIME types..."
 	#echo "Registering MIME types..."
-	if [ $SCRIPT -eq 1 ] ; then
-		if [ "$LOCALINSTALL" = "1" ] ; then
-			XDG_MODE=" --mode user "
-		else
 			XDG_MODE=" --mode system "
 
 			display_information "Creating /etc/SoftMaker folder..."
 			mkdir -p /etc/SoftMaker
-			chmod 777 /etc/SoftMaker
-		fi
-	else
-		XDG_MODE=" --mode system "
-
-		display_information "Creating /etc/SoftMaker folder..."
-		mkdir -p /etc/SoftMaker
-		chmod 777 /etc/SoftMaker
-	fi
 
 	set_output
 
