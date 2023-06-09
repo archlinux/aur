@@ -13,7 +13,7 @@ pkgrel=1
 _pkgdesc=('Userspace setup tool for transparent encryption of block devices using dm-crypt '
 	 '(with edited mkinitcpio hook to check file system signature before attempting to open it).')
 pkgdesc="${_pkgdesc[*]}"
-arch=('i686' 'pentium4' 'x86_64')
+arch=('x86_64' 'i686' 'pentium4' 'aarch64')
 license=('GPL')
 url='https://gitlab.com/cryptsetup/cryptsetup/'
 depends=('device-mapper'
