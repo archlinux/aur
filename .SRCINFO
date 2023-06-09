@@ -1,0 +1,18 @@
+pkgbase = mechakeys-appimage
+	pkgdesc = An integrated typing environment, a collection of interconnected customization tools built around your keyboard and mouse.
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = https://v2.robolab.io
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = glibc
+	provides = mechakeys
+	conflicts = mechakeys
+	options = !strip
+	source = mechakeys-2.0.6.AppImage::https://github.com/robolab-io/mechakeys-distro/releases/download/v2.0.6/MechaKeys-2.0.6.AppImage
+	source = LICENSE.html::https://v2.robolab.io/terms
+	sha256sums = ba45cb02a9cf9ccef4842768b612d42cf11c82dc22e94a860364975abd60f74b
+	sha256sums = 04d6d6a6e5f277ec57b1365e94c56d39e00f4792cec45254cc1cc1ac8b73727a
+
+pkgname = mechakeys-appimage
