@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-astropy
 	pkgdesc = Sphinx extensions and configuration specific to the Astropy project
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/astropy/sphinx-astropy
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-sphinx-astropy
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-astropy/sphinx-astropy-1.9.0.tar.gz
-	md5sums = 1f7bf94bda42a5b51f196c8efa5f66ea
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-astropy/sphinx-astropy-1.9.1.tar.gz
+	md5sums = da84468f9a8395216a22f8bdf292d43b
 
 pkgname = python-sphinx-astropy
 	depends = python-packaging
