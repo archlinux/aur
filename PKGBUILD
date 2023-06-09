@@ -32,7 +32,7 @@ else
 fi
 epoch=1
 pkgver=44.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -74,10 +74,12 @@ if [ -n "$_enable_check" ]; then
 fi
 _commit=e7ed2bf85700a2ff33b69826f6f0fff6e2f28e69  # tags/44.2^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
+        '0001-tests-cogl-test-framebuffer-get-bits-should-fail-on-.patch'
         'mr1441.patch'
         'mr2941.patch'
         'prio.patch')
 sha256sums=('SKIP'
+            '3321a1b16de808469333231096074e4caaca8563e0a138344246c9301dfac3b9'
             '3621acfed945773de4e107d4b077d8ff2b31eb4adc52d956ee6cc6bb245bac04'
             '395072af4b44baa2831031fb3c85ef1fa999f6de66ab5c09082432c369e37b2d'
             'cca15ee32b5b4d942960672ab37403b2ccf5d249711fc321b333c3936d9ab897')
@@ -119,6 +121,10 @@ prepare() {
 
   git reset --hard
   git cherry-pick --abort || true
+
+  # Unbreak tests with Mesa 23.1
+  # https://gitlab.gnome.org/GNOME/mutter/-/issues/2848
+  git apply -3 ../0001-tests-cogl-test-framebuffer-get-bits-should-fail-on-.patch
 
   #git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   #git remote add verdre https://gitlab.gnome.org/verdre/mutter.git || true
