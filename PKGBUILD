@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/Antiz96/malias"
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e837c7013513ec2d249e436afd01e2d66be2b09e211fc5a71fd2c9b9d9fc80f1')
+sha256sums=('8b7a8e15dec1065af459de5b7f0a261e69b3caf1845b266a278442d00d3b77ac')
 
 package() {
 	cd "${pkgname}-${pkgver}"
