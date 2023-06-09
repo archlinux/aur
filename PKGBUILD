@@ -1,25 +1,34 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
+epoch=1
+
 pkgname=gnatcoll-core
-epoch=2
-pkgver=23.0.0
+pkgver=24.0w
 pkgrel=1
-
 pkgdesc='Gnat components collection - Core packages.'
-url='https://github.com/AdaCore/gnatcoll-core/'
-arch=('i686' 'x86_64')
-license=('GPL3' 'custom')
 
-depends=('libgpr')
-makedepends=('gprbuild' 'texlive-bin' 'python-sphinx' 'python-sphinx_rtd_theme' 'texlive-core' 'texlive-latexextra')
+url=https://github.com/AdaCore/gnatcoll-core
+arch=(i686 x86_64)
+license=(GPL3 custom)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("a9e57bfaeaa24c23a738e1d60e0c3b775dc9845c9694c8271efca43381fee85f")
+depends=(libgpr)
+makedepends=(gprbuild
+             texlive-bin
+             python-sphinx
+             python-sphinx_rtd_theme
+             texlive-core
+             texlive-latexextra)
+
+source=(file:///opt/gnatstudio-sources/$pkgname-$pkgver-20230324-161A8-src.tar.gz)
+sha256sums=(4698c52bac871cd50aac2a2f305dfe8511731bc17b716400837a5f1f27166505)
+
+_gnatcoll_core_src=$pkgname-$pkgver-20230428-16442-src
+
 
 build()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd $srcdir/$_gnatcoll_core_src
 
     ADA_FLAGS="$CFLAGS"
     ADA_FLAGS="${ADA_FLAGS//-Wformat}"
@@ -30,21 +39,25 @@ build()
     make -C docs html latexpdf
 }
 
+
 package()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd $srcdir/$_gnatcoll_core_src
 
     # Make one install at a time to avoid GPRinstall reading/writing to
     # the same installed project files at the same time.
+    #
     make -j1 prefix="$pkgdir/usr" install
     
     # Install the license.
-    install -D -m644     \
-       "COPYING3"        \
-       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+    #
+    install -D -m644 \
+       COPYING3      \
+       $pkgdir/usr/share/licenses/$pkgname/COPYING3
 
     # Install the custom license.
-    install -D -m644     \
-       "COPYING.RUNTIME" \
-       "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
+    #
+    install -D -m644   \
+       COPYING.RUNTIME \
+       $pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME
 }
