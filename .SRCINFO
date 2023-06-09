@@ -1,6 +1,6 @@
 pkgbase = octave-strings
 	pkgdesc = Additional functions for manipulation and analysis of strings
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/strings
 	install = octave-strings.install
@@ -9,8 +9,8 @@ pkgbase = octave-strings
 	license = custom
 	makedepends = pcre
 	depends = octave>=3.8.0
-	noextract = strings-1.3.0.tar.gz
-	source = https://downloads.sourceforge.net/octave/strings-1.3.0.tar.gz
-	sha512sums = 28ee2d318b5585a7be49eebbd621496257fc9e873063e1a69de7cf5d30c025c7b1870b7fd47d869eb9d1650b166068930f63430ad7ed20236a0423e74e4bfde9
+	noextract = strings-1.3.1.tar.gz
+	source = https://downloads.sourceforge.net/octave/strings-1.3.1.tar.gz
+	sha512sums = 76eb6853feb68afcdf579df48e1388e787686ecaa95d659aabf83db62fb993b8a76a1c4c4182c6896fd0f79f82b4ba422a698f916338ea2c652df5ab219f648e
 
 pkgname = octave-strings

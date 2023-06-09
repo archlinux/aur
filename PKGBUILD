@@ -10,7 +10,7 @@
 
 _pack=strings
 pkgname=octave-${_pack}
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Additional functions for manipulation and analysis of strings"
 arch=(any)
@@ -26,7 +26,7 @@ install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
 source=("https://downloads.sourceforge.net/octave/${_archive}")
 noextract=("${_archive}")
-sha512sums=('28ee2d318b5585a7be49eebbd621496257fc9e873063e1a69de7cf5d30c025c7b1870b7fd47d869eb9d1650b166068930f63430ad7ed20236a0423e74e4bfde9')
+sha512sums=('76eb6853feb68afcdf579df48e1388e787686ecaa95d659aabf83db62fb993b8a76a1c4c4182c6896fd0f79f82b4ba422a698f916338ea2c652df5ab219f648e')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
