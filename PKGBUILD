@@ -1,26 +1,22 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thepage
-pkgver=1.0
+pkgver=2.0
 pkgrel=0
 pkgdesc="Document Viewer using poppler"
-arch=("x86_64")
-url="https://github.com/vicr123/thepage"
+arch=("x86_64" "aarch64")
+url="https://github.com/theCheeseboard/thepage"
 license=('GPL3')
-depends=('xdg-utils' 'qt5-base' 'the-libs' 'qt5-svg' 'poppler-qt5')
-makedepends=('git' 'qt5-tools')
-source=("$pkgname-$pkgver"::"https://github.com/vicr123/thepage/archive/v1.0.tar.gz")
-sha256sums=('6ec74fe265cbb864d51dada54056053235646a7a69437ddbb037bdc624abfef5')
+depends=('libcontemporary' 'poppler-qt6')
+makedepends=('git' 'qt6-tools' 'cmake' 'clang')
+source=("thepage"::"https://github.com/theCheeseboard/thepage/archive/v$pkgver.tar.gz")
+sha256sums=('f974e766cb57eaac442714b76a96d279e49603cfde5e607512f8f70d4f675a3a')
 
 build() {
-	cd "thePage-$pkgver"
-	mkdir -p build
-	cd build
-	qmake ../thePage.pro
-	make
+	cmake -B build -S "thePage-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 
 package() {
-	cd "thePage-$pkgver"
-	cd build
-	make install INSTALL_ROOT=$pkgdir
+	DESTDIR="$pkgdir" cmake --install "build"
 }

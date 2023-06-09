@@ -1,19 +1,18 @@
 pkgbase = thepage
 	pkgdesc = Document Viewer using poppler
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 0
-	url = https://github.com/vicr123/thepage
+	url = https://github.com/theCheeseboard/thepage
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
-	makedepends = qt5-tools
-	depends = xdg-utils
-	depends = qt5-base
-	depends = the-libs
-	depends = qt5-svg
-	depends = poppler-qt5
-	source = thepage-1.0::https://github.com/vicr123/thepage/archive/v1.0.tar.gz
-	sha256sums = 6ec74fe265cbb864d51dada54056053235646a7a69437ddbb037bdc624abfef5
+	makedepends = qt6-tools
+	makedepends = cmake
+	makedepends = clang
+	depends = libcontemporary
+	depends = poppler-qt6
+	source = thepage::https://github.com/theCheeseboard/thepage/archive/v2.0.tar.gz
+	sha256sums = f974e766cb57eaac442714b76a96d279e49603cfde5e607512f8f70d4f675a3a
 
 pkgname = thepage
-
