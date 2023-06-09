@@ -1,12 +1,13 @@
 pkgbase = infra-arcana
 	pkgdesc = Roguelike game inspired by H.P. Lovecraft
 	pkgver = 22.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sites.google.com/site/infraarcana/home
 	install = infra-arcana.install
 	arch = i686
 	arch = x86_64
 	license = custom:Infra Arcana License
+	makedepends = icoutils
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = hicolor-icon-theme
