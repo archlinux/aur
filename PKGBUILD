@@ -2,8 +2,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=browser360-bin
 _appname=com.360.browser-stable
-pkgver=13.2.1031.22
-pkgrel=2
+pkgver=13.2.1031.25
+pkgrel=1
 pkgdesc="360 Browser stable version"
 arch=("x86_64")
 url="https://browser.360.net/gc/index.html?src=se"
@@ -11,13 +11,11 @@ license=('custom')
 depends=('alsa-lib' 'at-spi2-core' 'nss' 'gtk3' 'gtk2' 'dbus' 'libxkbcommon' 'systemd-libs' 'glibc' 'gdk-pixbuf2' 'libx11' \
     'hicolor-icon-theme' 'libxext' 'libxcb' 'libxshmfence' 'libdrm' 'libxfixes' 'cairo' 'libxrandr' 'mesa' 'libcups' \
     'gcc-libs' 'libxdamage' 'nspr' 'libxcomposite' 'glib2' 'expat' 'pango' 'libxtst' 'libusb' 'openssl-1.1' 'sh')
-optdepends=()
-provides=()
 conflicts=("${pkgname%-bin}")
 install="${pkgname%-bin}.install"
 source=("${pkgname%-bin}-${pkgver}.deb::https://down.360safe.com/gc/signed_${_appname}_${pkgver}-1_amd64.deb"
     "${pkgname%-bin}.install")
-sha256sums=('8dada6f9ad9bc61f0de6c96e2142cb44af14b42c64347509a2af845bc947cecb'
+sha256sums=('87b9c31cadc31ed991ac24e00a91864806941690b4845d9781475f53524c1b09'
             'a5fa1eaebb4b7302d5d1dbfe33934d8a10e5dc46cd5d7bec302a8dd9b8354664')
 
 package() {
