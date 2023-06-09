@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=rsign2
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A command-line tool to sign files and verify signatures."
 url="https://github.com/jedisct1/rsign2"
@@ -11,8 +11,8 @@ depends_x86_64=('gcc-libs')
 depends_i686=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('0e9b14ed750d177081e32fb7d52e04e4dd4f4a72d224a4ab78a1431260c8ecc4')
-b2sums=('0fd7b293e9c6226710159014f479cee47614be0334a45a1da2c0c519f6d2075c9c532400cbffbc232407fafb4402ae4d2f50329b423691d79fd07473ffd77d87')
+sha256sums=('dd714e5954c122f7b6eb9c740416afd49a43eaf38996f01c0c12c82bfd3f7620')
+b2sums=('9e7ad47150758f279651c3aa84ebb5a61f7bb9bf6bb4db108ab1fa8f33c1f20bc9b03d594e9b87e02c34de1921ca85c5d9c79124f52c5029e24564d8981002bc')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
