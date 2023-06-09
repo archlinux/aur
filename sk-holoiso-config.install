@@ -1,0 +1,29 @@
+pre_install() {
+    # if yay is used, it will be installed in /usr/bin
+    if [ -f "/usr/bin/yay" ]; then
+        # if holo-gs-auto-update is not installed, install it
+        if ! pacman -Qi holo-gs-auto-update &> /dev/null; then
+            echo "Install holo-gs-auto-update"
+            yay -S holo-gs-auto-update
+        fi
+    fi
+}
+
+post_install() {
+    echo "Enable sk-auto-swap.service and sk-efi-mount.service"
+    sudo systemctl enable sk-auto-swap.service
+    sudo systemctl enable sk-efi-mount.service
+
+    # swap partuuid
+    echo "Set swap PARTUUID in /etc/default/auto_swap"
+    SWAP_PARTITION=$(lsblk -rno NAME,PARTUUID,PARTTYPE | awk '$3=="0657fd6d-a4ab-43c4-84e5-0933c84b4f4f" {print $1}')
+    echo "$SWAP_PARTITION" | sudo tee /etc/default/auto_swap
+}
+
+pre_upgrade() {
+  pre_install
+}
+
+post_upgrade() {
+  post_install
+}
