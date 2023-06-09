@@ -2,15 +2,15 @@
 
 pkgname='opensearch-dashboards-gantt-chart-plugin'
 _pluginname='gantt-chart-dashboards-plugin'
-pkgver=2.6.0.0
-_dashboardsver=2.6.0
+pkgver=2.8.0.0
+_dashboardsver=2.8.0
 pkgrel=1
 pkgdesc='OpenSearch Dashboards Gantt Chart Plugin'
 url='https://opensearch.org/docs/latest/dashboards/gantt/'
 arch=('x86_64')
 license=('Apache')
 depends=("opensearch-dashboards=${_dashboardsver}")
-makedepends=('yarn' 'python' 'git')
+makedepends=('yarn' 'npm' 'python' 'git')
 options=('!strip' 'emptydirs')
 source=(
   "git+https://github.com/opensearch-project/dashboards-visualizations.git#tag=${pkgver}"
@@ -25,7 +25,10 @@ prepare() {
   sed -i "s/    \"node\": \"[0-9\.]*\",/    \"node\": \"${nodeVersion:1}\",/" "OpenSearch-Dashboards/package.json"
 
   # https://github.com/opensearch-project/dashboards-visualizations/issues/146
-  sed -i "s/  \"opensearchDashboardsVersion\": \"2.4.0\",/  \"opensearchDashboardsVersion\": \"2.6.0\",/" "dashboards-visualizations/gantt-chart/opensearch_dashboards.json"
+  sed -i "s/  \"opensearchDashboardsVersion\": \"2.4.0\",/  \"opensearchDashboardsVersion\": \"2.8.0\",/" "dashboards-visualizations/gantt-chart/opensearch_dashboards.json"
+  # https://github.com/opensearch-project/OpenSearch-Dashboards/issues/4260
+  cd "OpenSearch-Dashboards"
+  git cherry-pick -n -m1 "986eb8c82a6be22bfb838a7dc1db997905737c88"
 }
 
 build() {
