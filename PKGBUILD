@@ -4,7 +4,7 @@
 basepkgname=pulseaudio-qt-git
 pkgname=pulseaudio-qt6-git
 pkgver=1.3.0_r748.g9bba225
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt bindings for libpulse'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
@@ -33,4 +33,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  sed -i 's:INTERFACE_INCLUDE_DIRECTORIES "/KF5PulseAudioQt":INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include/KF6/KF5PulseAudioQt":g' $pkgdir/opt/KF5-qt6/lib/cmake/KF5PulseAudioQt/KF5PulseAudioQtTargets.cmake
 }
