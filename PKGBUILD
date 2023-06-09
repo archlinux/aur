@@ -12,6 +12,7 @@ source=("https://repo.hotspotshield.com/rpm/rel/all/hotspotshield-$pkgver.x86_64
 
 package() {
   rm -dr usr/lib
+  mv usr/lib64 usr/lib
   cp -r etc usr "$pkgdir"
 }
 sha256sums=('6678ad1da674d455dec2476aeae7b036928a7061c403104fc57db560083e900a')
