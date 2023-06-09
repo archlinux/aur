@@ -4,7 +4,7 @@
 # For make options, see https://www.postgresql.org/docs/current/install-procedure.html
 
 pkgbase=postgresql-devel
-pkgver=16devel
+pkgver=16beta1
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'

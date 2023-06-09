@@ -1,6 +1,6 @@
 pkgbase = postgresql-devel
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 16devel
+	pkgver = 16beta1
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -57,7 +57,7 @@ pkgname = postgresql-devel-docs
 pkgname = postgresql-devel
 	pkgdesc = Sophisticated object-relational DBMS
 	install = postgresql.install
-	depends = postgresql-devel-libs>=16devel
+	depends = postgresql-devel-libs>=16beta1
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
