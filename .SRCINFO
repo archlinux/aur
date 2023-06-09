@@ -1,0 +1,16 @@
+pkgbase = modrinth-app-git
+	pkgdesc = Official Modrinth launcher. Open-source, built by the community, for the community.
+	pkgver = r135.9ea548c
+	pkgrel = 1
+	url = https://github.com/modrinth/theseus
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo-tauri
+	makedepends = yarn
+	makedepends = pnpm
+	provides = modrinth-app
+	conflicts = modrinth-app
+	source = git+https://github.com/modrinth/theseus
+	sha256sums = SKIP
+
+pkgname = modrinth-app-git
