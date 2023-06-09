@@ -19,10 +19,10 @@ backup=()
 options=(!strip)
 install=
 changelog=
-source=("$pkgname-$pkgver-$pkgrel.AppImage::https://github.com/minecraft-linux/appimage-builder/releases/download/v$pkgver-$pkgrel/Minecraft_Bedrock_Launcher-arm64-v$pkgver.$pkgrel.AppImage"
-    "$pkgname.png::https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/98/Bedrock_Edition_Google_Play_icon.png"
+source=("${pkgname}-${pkgver}-${pkgrel}.AppImage::https://github.com/minecraft-linux/appimage-builder/releases/download/v${pkgver}-${pkgrel}/Minecraft_Bedrock_Launcher-arm64-v${pkgver}.${pkgrel}.AppImage"
+    "${pkgname}.png::https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/98/Bedrock_Edition_Google_Play_icon.png"
     "mcbelauncher.desktop")
-noextract=("$pkgname-$pkgver.AppImage")
+noextract=("${pkgname}-${pkgver}-${pkgrel}.AppImage")
 sha256sums=('f0005092c6a11a0055da13a60ea0b4b09abcdac4c598fd62296cf1211ee3fccc'
             'd676e742b549cf7b4698cb9dc5be5f1734bc59313958cf9a7b7acd92a5ff3d76'
             '3ae613839cf1020192527621f97b8958394a2ff9dac6567cb16c5e76f0386e2d')
@@ -33,5 +33,5 @@ package() {
     # Install desktop file
     install -Dm644 mcbelauncher.desktop "${pkgdir}"/usr/share/applications/mcbelauncher.desktop
     # Install binary
-    install -Dm755 "${srcdir}"/"${pkgname}"-"${pkgver}".AppImage "${pkgdir}"/usr/bin/mcbelauncher
+    install -Dm755 "${srcdir}"/"${pkgname}"-"${pkgver}"-"${pkgrel}".AppImage "${pkgdir}"/usr/bin/mcbelauncher
 }
