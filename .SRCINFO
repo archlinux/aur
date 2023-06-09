@@ -11,11 +11,14 @@ pkgbase = cryptsetup-sigfile
 	makedepends = util-linux
 	makedepends = asciidoctor
 	depends = device-mapper
+	depends = libdevicemapper.so
 	depends = openssl
 	depends = popt
 	depends = util-linux-libs
 	depends = json-c
+	depends = libjson-c.so
 	depends = argon2
+	depends = libargon2.so
 	provides = libcryptsetup.so=12-32
 	provides = libcryptsetup.so
 	provides = cryptsetup-nested-cryptkey

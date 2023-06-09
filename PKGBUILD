@@ -14,11 +14,14 @@ arch=('x86_64' 'i686' 'pentium4' 'aarch64')
 license=('GPL')
 url='https://gitlab.com/cryptsetup/cryptsetup/'
 depends=('device-mapper'
+	 'libdevicemapper.so'
          'openssl'
          'popt'
          'util-linux-libs'
          'json-c'
-         'argon2')
+	 'libjson-c.so'
+         'argon2'
+         'libargon2.so')
 makedepends=('util-linux'
 	     'asciidoctor')
 provides=('libcryptsetup.so=12-32'
