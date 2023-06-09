@@ -1,31 +1,30 @@
-# Maintainer: Leander Oudakker <arch at leanderoudakker dot com>
+# Maintainer: xkww3n <xkww3n at outlook dot com>
 pkgname=spectre-cli-git
-pkgver=r479.a5e7aab
-pkgrel=4
-pkgdesc="Spectre introduces a completely new way of thinking about passwords."
+pkgver=2.6_cli_5_116_g26c01a5
+pkgrel=1
+pkgdesc="The command-line interface brings the Spectre algorithm to POSIX platforms, including Linux, *NIX, macOS and Windows."
 arch=('any')
-url="https://gitlab.com/spectre.app/cli"
+url="https://spectre.app/"
 license=('GPL3')
-depends=( 'ncurses' 'json-c' 'libsodium')
+depends=('ncurses' 'json-c' 'libsodium')
 makedepends=('git')
+checkdepends=('jq')
 provides=('spectre')
 conflicts=('spectre')
-source=("${pkgname}::git+https://gitlab.com/spectre.app/cli"
-        "api::git+https://gitlab.com/spectre.app/api")
-md5sums=('SKIP'
-         'SKIP')
+source=("${pkgname}::git+https://gitlab.com/spectre.app/cli.git")
+
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
 
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "$(git describe --match '*-cli*' --long --dirty | sed "s/-/_/g")"
 }
 
 prepare() {
 	cd "$srcdir/${pkgname}"
 
 	git submodule init
-	git config submodule.api.url "$srcdir/api"
 	git submodule update
 }
 
