@@ -2,23 +2,23 @@
 # Contributor: navigaid <navigaid@gmail.com>
 # Contributor: shi liang <shiliang2008@msn.com>
 
-pkgname=naiveproxy-git
+pkgname=naiveproxy-git-new
 _pkgname=naiveproxy
-pkgver=v113.0.5672.62.1.r1.g900f316fd
+pkgver=v114.0.5735.91.3.r0.gc53143ba5
 pkgrel=1
-pkgdesc='camouflage traffic with strong censorship resistence using Chromium network stack'
+pkgdesc='camouflage traffic with strong censorship resistence, git version that CAN build'
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
 depends=('nspr')
-source=('git+https://github.com/klzgrad/naiveproxy' 'naiveproxy.service')
+source=('git+https://github.com/klzgrad/naiveproxy' 'naiveproxy@.service')
 makedepends=()
-optdepends=("ccache: Speed up compilation")
+optdepends=()
 backup=(etc/naiveproxy/config.json)
-md5sums=('SKIP'
-         'cb40c8c7586f92892a81f698fd6140b3')
+b2sums=('SKIP'
+        '91ea619c5dfcd8acfdcc5ea74bf108be172e18973fb3ce2ad418308176c17580a066d6d75d20fec8e05caedc6d4a7adafd9f693235f3fadbc2cef670a3ab4782')
 provides=('naiveproxy')
-conflicts=('naiveproxy' 'naiveproxy-bin')
+conflicts=('naiveproxy' 'naiveproxy-bin' 'naiveproxy-git')
 
 prepare() {
   cd ${srcdir}/${_pkgname}/src
