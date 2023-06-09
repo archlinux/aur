@@ -13,7 +13,7 @@ options=('!strip')
 install="${pkgname}.install"
 
 # The vendor’s EULA is available online. To update it, run:
-# curl -L 'https://www.mediola.com/eula' | html2text --body-width=80 | awk '/^###\s\s/,/^####$/ { print }' | head -n -2 > eula.md
+# curl -L 'https://www.mediola.com/eula' | html2text --body-width=80 | awk '/^###\s.*(EULA)/,/^####$/ { print }' | head -n -2 > eula.md
 
 _pkgver_major_minor="$(cut -d . -f -2 <<< "${pkgver}")"
 source=(
@@ -25,7 +25,7 @@ source=(
 sha512sums=(
   '85f22d42fa470698fbea38e0a34cf7077fb394b331516405073606dd8b4a2cf7564f1cbbb464dcbc90912cb296f833283b8a906bc0d9eee2fbd163eb5d65551d'
   'bc47d7d69f96f1f1108291d95e438a169890964a4d8fefbfa67752609f66e77d3926b2879fe820f9956b71be64a8f02afd3a6302174526ca32d37bb8481cf0e2'
-  '1a56d9ad3f5f8468eaadb3e80bbeda41e0071582053df1726d51fdd0551d3ba93a83d250143c197051fa059c7a9cfb904fee411431ba837bb7549624fade3928'
+  'c7ecb4026b2145bd7675a9b4aaa01d53b3d14930302e36682a50efabebff7a7af9d6279e103220092fdd5706506b46e10cc56acd3397cfb0b211377825f8b727'
 )
 
 prepare() {
