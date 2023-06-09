@@ -1,6 +1,6 @@
 pkgname=imgui
-pkgver=1.89.5
-pkgrel=3
+pkgver=1.89.6
+pkgrel=1
 pkgdesc="Bloat-free Graphical User interface for C++"
 license=('MIT')
 arch=('x86_64')
@@ -8,15 +8,15 @@ url="https://github.com/ocornut/imgui"
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/ocornut/imgui/tar.gz/v${pkgver}"
-        "CMakeLists.txt.v${pkgver}-${pkgrel}::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt"
-        "imgui-config.cmake.in.v${pkgver}-${pkgrel}::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/imgui-config.cmake.in")
-sha256sums=('eab371005c86dd029523a0c4ba757840787163740d45c1f4e5a110eb21820546'
-            'babb55a73a4449c4cee837ae029a9cf346089324400922e2f59ba22b08b6ce73'
-            '872817faad3a5c1f221a42309dc1b7c9c26434630df63d49a2b85a573c9598ed')
+        "CMakeLists.v${pkgver}-${pkgrel}.txt::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/CMakeLists.txt"
+        "imgui-config.v${pkgver}-${pkgrel}.cmake.in::https://raw.githubusercontent.com/microsoft/vcpkg/master/ports/imgui/imgui-config.cmake.in")
+sha256sums=('e95d1cba1481e66386acda3e7da19cd738da86c6c2a140a48fa55046e5f6e208'
+            '9435b199b0248611314f312e0ac9130816d86f2b15ac21283cffb78d883d5584'
+            'b993a4e2cd0729586339816aabebb0d0109a390c4beb65e7319dba8bd940c28a')
 
 prepare () {
-  cp CMakeLists.txt.v${pkgver}-${pkgrel}        ${pkgname}-${pkgver}/CMakeLists.txt
-  cp imgui-config.cmake.in.v${pkgver}-${pkgrel} ${pkgname}-${pkgver}/imgui-config.cmake.in
+  cp CMakeLists.v${pkgver}-${pkgrel}.txt        ${pkgname}-${pkgver}/CMakeLists.txt
+  cp imgui-config.v${pkgver}-${pkgrel}.cmake.in ${pkgname}-${pkgver}/imgui-config.cmake.in
 }
 
 build() {
