@@ -1,7 +1,7 @@
 # MAINTAINER: haagch <christoph.haag@collabora.com>
 
 pkgname=basalt-monado-git
-pkgver=r464.303eee5
+pkgver=r467.3948e54
 pkgrel=1
 pkgdesc="Visual-Inertial Mapping with Non-Linear Factor Recovery"
 arch=('i686' 'x86_64')
@@ -31,6 +31,7 @@ prepare() {
 	cd thirdparty/Pangolin
 	git checkout include/pangolin/utils/picojson.h
 	git apply ../../../279c17d9c9eb9374c89489b449f92cb93350e8cd.patch
+	sed -i '1s/^/#include <stdint.h>\n/' include/pangolin/platform.h
 }
 
 build() {
