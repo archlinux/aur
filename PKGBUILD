@@ -76,6 +76,7 @@ build() {
             -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libc;libclc;lld;lldb;openmp;polly;pstl;compiler-rt" \
             -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi;libunwind" \
             -DCMAKE_BUILD_TYPE=Release \
+		${additional_build_options} \
             ${srcdir}/llvm-project-${_pkgver_suffix}.src/llvm | tee ${pkgname}-configure.log
 
     time ninja -C _build | tee ${pkgname}-build.log
