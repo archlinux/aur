@@ -1,24 +1,25 @@
+# Maintainer:  JakobDev<jakobdev at gmx dot de>
+
 pkgname=jdreplace
-pkgver=2.2
+pkgver=4.1
 pkgrel=1
-pkgdesc='With jdReplace you can replace a text in all files of a directory'
-arch=('any')
-url="https://gitlab.com/JakobDev/jdReplace"
-license=('BSD')
-depends=('python-pyqt5' 'python-jdtranslationhelper')
-makedepends=('python-setuptools' 'gendesk')
-source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/JakobDev/jdReplace/-/archive/${pkgver}/jdReplace-${pkgver}.tar.gz")
-sha256sums=('8a8df34b3dd4c80ac3561f109162fb3ef81008a50ebc3ce3915ef0a3139e16b5')
+pkgdesc="With jdReplace you can replace a text in all files of a directory"
+arch=("any")
+url="https://codeberg.org/JakobDev/jdReplace"
+license=("GPL3")
+depends=("python" "python-pyqt6")
+makedepends=("qt5-tools" "python-build" "python-setuptools" "python-installer" "python-wheel")
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/jdReplace/archive/${pkgver}.tar.gz")
+sha256sums=("53e8057adce3e95c2721af486d4ac8ed1e4a51d2372fdd4c39dff1b91b8465be")
+
+build() {
+      cd "jdreplace"
+      python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "jdReplace-${pkgver}"
-    python setup.py install --root="$pkgdir/" --optimize=1
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    gendesk -f -n --pkgname "${pkgname}" \
-            --pkgdesc "$pkgdesc" \
-            --name "jdReplace" \
-            --comment "$pkgdesc" \
-            --exec jdReplace \
-            --categories 'Qt;Utility'
-  install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    cd "jdreplace"
+    python -m installer --destdir "$pkgdir" dist/*.whl
+    python install-unix-datafiles.py --prefix "${pkgdir}/usr"
+    install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
