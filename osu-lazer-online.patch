@@ -1,12 +1,30 @@
 --- a/osu.Game/OsuGameBase.cs
 +++ b/osu.Game/OsuGameBase.cs
-@@ -242,8 +242,7 @@
+@@ -105,7 +105,7 @@
+         /// <summary>
+         /// MD5 representation of the game executable.
+         /// </summary>
+-        public string VersionHash { get; private set; }
++        public string VersionHash { get; } = "a8ff3338cc9aeb83618296afe0746c29";
+ 
+         public bool IsDeployedBuild => AssemblyVersion.Major > 0;
+ 
+@@ -240,18 +240,6 @@
+         [BackgroundDependencyLoader]
+         private void load(ReadableKeyCombinationProvider keyCombinationProvider)
          {
-             try
-             {
+-            try
+-            {
 -                using (var str = File.OpenRead(typeof(OsuGameBase).Assembly.Location))
 -                    VersionHash = str.ComputeMD5Hash();
-+                VersionHash = "d8eecb53a231fc75ef0d938ed7c6205b";
-             }
-             catch
-             {
+-            }
+-            catch
+-            {
+-                // special case for android builds, which can't read DLLs from a packed apk.
+-                // should eventually be handled in a better way.
+-                VersionHash = $"{Version}-{RuntimeInfo.OS}".ComputeMD5Hash();
+-            }
+-
+             Resources.AddStore(new DllResourceStore(OsuResources.ResourceAssembly));
+ 
+             dependencies.Cache(realm = new RealmAccess(Storage, CLIENT_DATABASE_FILENAME, Host.UpdateThread));
