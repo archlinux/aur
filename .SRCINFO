@@ -1,0 +1,11 @@
+pkgbase = pipewire-autostart
+	pkgdesc = /etc/xdg/autostart files for pipewire, pipewire-pulse and wireplumber.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = ГОЛ-1.1
+	depends = pipewire
+	depends = pipewire-pulse
+	depends = wireplumber
+
+pkgname = pipewire-autostart
