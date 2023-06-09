@@ -2,8 +2,8 @@
 
 _pkgname='quikc'
 pkgname='quikc-git'
-pkgver='1.0.0'
-pkgrel='1'
+pkgver=r267.c83d32e
+pkgrel=1
 url="https://github.com/Ramenu/$_pkgname"
 pkgdesc='A minimalistic, safety-focused build system for C/C++'
 arch=('x86_64')
@@ -12,6 +12,15 @@ depends=('python')
 license=('MIT')
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
+
+pkgver() {
+	cd "$_pkgname"
+	( 
+		set -o pipefail
+		git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
+}
 
 build() {
 	cd "$_pkgname"

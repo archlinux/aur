@@ -1,6 +1,6 @@
 pkgbase = quikc-git
 	pkgdesc = A minimalistic, safety-focused build system for C/C++
-	pkgver = 1.0.0
+	pkgver = r267.c83d32e
 	pkgrel = 1
 	url = https://github.com/Ramenu/quikc
 	arch = x86_64
