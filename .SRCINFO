@@ -1,0 +1,23 @@
+pkgbase = bluez-qt6
+	pkgdesc = Qt wrapper for Bluez 5 DBus API
+	pkgver = 5.103.0
+	pkgrel = 1
+	url = https://community.kde.org/Frameworks
+	arch = x86_64
+	groups = kf5
+	license = GPL2
+	makedepends = extra-cmake-modules
+	makedepends = doxygen
+	makedepends = qt6-tools
+	makedepends = qt6-doc
+	makedepends = qt6-declarative
+	depends = qt6-base
+	depends = bluez
+	optdepends = qt6-declarative: QML bindings
+	source = https://download.kde.org/stable/frameworks/5.103/bluez-qt-5.103.0.tar.xz
+	source = https://download.kde.org/stable/frameworks/5.103/bluez-qt-5.103.0.tar.xz.sig
+	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
+	sha256sums = ff431505377a5e3598de4beab414133b32f4812de476bb5fd82e1aa22c1bd8f0
+	sha256sums = SKIP
+
+pkgname = bluez-qt6
