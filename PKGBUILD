@@ -1,7 +1,7 @@
 # Maintainer: Anna Schumaker <anna@nowheycreamery.com>
 pkgname=emmental
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The cheesy music player'
 url='https://www.git.nowheycreamery.com/anna/emmental'
 arch=('any')
@@ -18,7 +18,6 @@ prepare() {
 	if [ ! -f "mpris-spec/Makefile" ]; then
 		git clone https://gitlab.freedesktop.org/mpris/mpris-spec.git
 	fi
-	mv emmental.desktop com.nowheycreamery.emmental.desktop
 }
 
 build() {
