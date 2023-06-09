@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fastfetch
-pkgver=1.11.2
+pkgver=1.11.3
 pkgrel=1
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -28,7 +28,7 @@ optdepends=(
 )
 backup=("etc/$pkgname/config.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('bd8b778703aeb0a7763f99c8900c8adcb0596d4f0be978b939373fd0fc36b0dd')
+sha256sums=('699ee59b0677121411a11119a06bdb5bc45dc04b551904c9d9d30477e2142358')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
