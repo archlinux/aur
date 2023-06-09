@@ -1,6 +1,6 @@
 pkgbase = gnatcoll-db2ada
-	pkgdesc = GNAT Components Collection - Tool to generate Ada code from database schemas
-	pkgver = 23.0.0
+	pkgdesc = GNAT Components Collection - Tool to generate Ada code from database schemas.
+	pkgver = 24.0w
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/gnatcoll-db
@@ -12,7 +12,7 @@ pkgbase = gnatcoll-db2ada
 	depends = gnatcoll-core
 	depends = gnatcoll-sql
 	depends = python
-	source = gnatcoll-db-23.0.0.tar.gz::https://github.com/AdaCore/gnatcoll-db/archive/v23.0.0.tar.gz
-	sha256sums = 0a4cc9f9c034be34ca4d08ae2c8fedce66c462719a2e1035d916559f6eee7a4d
+	source = file:///opt/gnatstudio-sources/gnatcoll-db-24.0w-20230324-166CC-src.tar.gz
+	sha256sums = 374adf9064cbdf87c4c3f4cc815d8c0f914820a0caa45edd605545ee7a4c07c2
 
 pkgname = gnatcoll-db2ada
