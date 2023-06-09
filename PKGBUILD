@@ -1,38 +1,30 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
-pkgname=python-deepl
-pkgver=1.14.0
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+_base=deepl
+pkgname=python-${_base}
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="DeepL language translation API"
-arch=('any')
-url="https://github.com/deeplcom/deepl-python"
-license=('MIT')
-depends=('python-requests')
-optdepends=('python-keyring')
-makedepends=('git' 'python-poetry-core' 'python-build' 'python-installer')
-install=deepl.install
-changelog=CHANGELOG.md
-source=("$pkgname::git+$url#tag=v$pkgver?signed"
-        'remove-datafiles.patch')
-sha256sums=('SKIP'
-            '963de9fdb04134b7c698a2e440aa7f5fd870685673c5240ecfbb26455eff00b7')
-validpgpkeys=('DBDC63E97C526204335805941FA7A782EC90634E') ## Daniel Jones
-
-prepare() {
-	patch -p1 -d "$pkgname" < remove-datafiles.patch
-}
+arch=(any)
+url="https://github.com/${_base}com/${_base}-python"
+license=(MIT)
+depends=(python-requests)
+makedepends=(python-build python-installer python-poetry-core python-wheel)
+optdepends=('python-keyring: for support storing API Key')
+install=${_base}.install
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('SKIP')
+# validpgpkeys=('DBDC63E97C526204335805941FA7A782EC90634E') # Daniel Jones
 
 build() {
-	cd "$pkgname"
-	python -m build --wheel --no-isolation
+  cd ${_base}-python-${pkgver}
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-## tests require a DeepL API key (paid account)
+# tests require a DeepL API key (paid account)
 
 package() {
-	cd "$pkgname"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -dv "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -sv "$_site/deepl-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+  cd ${_base}-python-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
