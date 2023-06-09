@@ -1,24 +1,23 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thecalculator
-pkgver=2.2
+pkgver=3.0
 pkgrel=0
 pkgdesc="Calculator"
-arch=("x86_64")
-url="https://github.com/vicr123/thecalculator"
+arch=("x86_64" "aarch64")
+url="https://github.com/theCheeseboard/thecalculator"
 license=('GPL3')
-depends=('qt5-base' 'the-libs')
-makedepends=('bison' 'flex' 'qt5-tools')
-source=("$pkgname-$pkgver"::'https://github.com/vicr123/thecalculator/archive/v2.2.tar.gz')
-sha256sums=('913ff3ae453dda137205d89cf6a334a224745a5f2961402afabbf0bec5df4678')
+depends=('libcontemporary')
+makedepends=('bison' 'flex' 'git' 'qt6-tools' 'cmake' 'clang')
+source=("thecalculator"::"https://github.com/theCheeseboard/thecalculator/archive/v$pkgver.tar.gz")
+sha256sums=('c1a34775e3e056e9b6bbab4ed8539d23cbfac370bdf299e32851b1fdb98f1a5f')
 
 build() {
-	cd "$pkgname-$pkgver"
-	qmake
-	make
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make install INSTALL_ROOT=$pkgdir
+	DESTDIR="$pkgdir" cmake --install "build"
 }

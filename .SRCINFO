@@ -1,17 +1,19 @@
 pkgbase = thecalculator
 	pkgdesc = Calculator
-	pkgver = 2.2
+	pkgver = 3.0
 	pkgrel = 0
-	url = https://github.com/vicr123/thecalculator
+	url = https://github.com/theCheeseboard/thecalculator
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = bison
 	makedepends = flex
-	makedepends = qt5-tools
-	depends = qt5-base
-	depends = the-libs
-	source = thecalculator-2.2::https://github.com/vicr123/thecalculator/archive/v2.2.tar.gz
-	sha256sums = 913ff3ae453dda137205d89cf6a334a224745a5f2961402afabbf0bec5df4678
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = cmake
+	makedepends = clang
+	depends = libcontemporary
+	source = thecalculator::https://github.com/theCheeseboard/thecalculator/archive/v3.0.tar.gz
+	sha256sums = c1a34775e3e056e9b6bbab4ed8539d23cbfac370bdf299e32851b1fdb98f1a5f
 
 pkgname = thecalculator
-
