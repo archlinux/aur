@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="x-minecraft-launcher-appimage"
 _appname=xmcl
-pkgver=0.35.13
+pkgver=0.35.14
 pkgrel=1
 pkgdesc="An Open Source Minecraft Launcher with Modern UX. Provide a Disk Efficient way to manage all your Mods!"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -17,9 +17,9 @@ source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${_githuburl}/re
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${_appname}-${pkgver}-x86_64.AppImage")
 source=("LICENSE::https://raw.githubusercontent.com/AppOutlet/AppOutlet/main/LICENSE")
 sha256sums=('c24c91646674659de06c8dad229b589608a69be9403433b4b5efe856db4cecb8')
-sha256sums_aarch64=('fae29c27cff694063fd193a8fbf23bf679e84335384c7f5181e04ba6c469b005')
-sha256sums_armv7h=('fae29c27cff694063fd193a8fbf23bf679e84335384c7f5181e04ba6c469b005')
-sha256sums_x86_64=('6c01ff034e54bf9ae7bbbf59dff9514f3520f26ccd72bf185bf96390ec9952f2')
+sha256sums_aarch64=('2866063b35540cf2f0944c321679959214e3ef0d96d7965397bcbfaa4d732957')
+sha256sums_armv7h=('2866063b35540cf2f0944c321679959214e3ef0d96d7965397bcbfaa4d732957')
+sha256sums_x86_64=('dd885658266b5b82045e4a0d6bfd6251bb22575ab662f02790c01f8ec27498e7')
 
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"

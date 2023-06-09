@@ -1,6 +1,6 @@
 pkgbase = x-minecraft-launcher-appimage
 	pkgdesc = An Open Source Minecraft Launcher with Modern UX. Provide a Disk Efficient way to manage all your Mods!
-	pkgver = 0.35.13
+	pkgver = 0.35.14
 	pkgrel = 1
 	url = https://xmcl.app/
 	arch = aarch64
@@ -13,11 +13,11 @@ pkgbase = x-minecraft-launcher-appimage
 	options = !strip
 	source = LICENSE::https://raw.githubusercontent.com/AppOutlet/AppOutlet/main/LICENSE
 	sha256sums = c24c91646674659de06c8dad229b589608a69be9403433b4b5efe856db4cecb8
-	source_aarch64 = x-minecraft-launcher-0.35.13-aarch64.AppImage::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.35.13/xmcl-0.35.13-arm64.AppImage
-	sha256sums_aarch64 = fae29c27cff694063fd193a8fbf23bf679e84335384c7f5181e04ba6c469b005
-	source_armv7h = x-minecraft-launcher-0.35.13-armv7h.AppImage::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.35.13/xmcl-0.35.13-arm64.AppImage
-	sha256sums_armv7h = fae29c27cff694063fd193a8fbf23bf679e84335384c7f5181e04ba6c469b005
-	source_x86_64 = x-minecraft-launcher-0.35.13-x86_64.AppImage::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.35.13/xmcl-0.35.13-x86_64.AppImage
-	sha256sums_x86_64 = 6c01ff034e54bf9ae7bbbf59dff9514f3520f26ccd72bf185bf96390ec9952f2
+	source_aarch64 = x-minecraft-launcher-0.35.14-aarch64.AppImage::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.35.14/xmcl-0.35.14-arm64.AppImage
+	sha256sums_aarch64 = 2866063b35540cf2f0944c321679959214e3ef0d96d7965397bcbfaa4d732957
+	source_armv7h = x-minecraft-launcher-0.35.14-armv7h.AppImage::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.35.14/xmcl-0.35.14-arm64.AppImage
+	sha256sums_armv7h = 2866063b35540cf2f0944c321679959214e3ef0d96d7965397bcbfaa4d732957
+	source_x86_64 = x-minecraft-launcher-0.35.14-x86_64.AppImage::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.35.14/xmcl-0.35.14-x86_64.AppImage
+	sha256sums_x86_64 = dd885658266b5b82045e4a0d6bfd6251bb22575ab662f02790c01f8ec27498e7
 
 pkgname = x-minecraft-launcher-appimage
