@@ -12,6 +12,8 @@ pkgbase = thefile
 	makedepends = clang
 	makedepends = quazip-qt6
 	makedepends = libimobiledevice
+	makedepends = libtdesktopenvironment
+	makedepends = libthefrisbee
 	source = thefile-5.0::https://github.com/theCheeseboard/thefile/archive/refs/tags/v5.0.tar.gz
 	sha256sums = 0a84231b8d85ee22f0bd2989ee290917bd3003b50d70558249e1838ce4cfd4a0
 

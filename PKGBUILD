@@ -6,7 +6,7 @@ pkgdesc="File Manager"
 arch=("x86_64" "aarch64")
 url="https://github.com/theCheeseboard/thefile"
 license=('GPL3')
-makedepends=('git' 'qt6-tools' 'cmake' 'clang' 'quazip-qt6' 'libimobiledevice')
+makedepends=('git' 'qt6-tools' 'cmake' 'clang' 'quazip-qt6' 'libimobiledevice' 'libtdesktopenvironment' 'libthefrisbee')
 source=("thefile-$pkgver"::"https://github.com/theCheeseboard/thefile/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('0a84231b8d85ee22f0bd2989ee290917bd3003b50d70558249e1838ce4cfd4a0')
 
