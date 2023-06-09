@@ -1,0 +1,19 @@
+pkgbase = linwood-butterfly-appimage
+	pkgdesc = Powerful, minimalistic, cross-platform, opensource note-taking app
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://docs.butterfly.linwood.dev/
+	arch = x86_64
+	license = Apache
+	license = AGPL3
+	license = CC-BY-4.0
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	options = !strip
+	source = linwood-butterfly-1.6.1.AppImage::https://github.com/LinwoodDev/Butterfly/releases/download/v1.6.1/linwood-butterfly-linux.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/LinwoodDev/Butterfly/develop/LICENSE
+	sha256sums = 10c952cf72e9f431e9c6eb06e7e0038eaf1498831d5d9ff38e6a261fa0cc2f68
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+
+pkgname = linwood-butterfly-appimage
