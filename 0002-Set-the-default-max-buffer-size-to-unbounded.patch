@@ -1,0 +1,44 @@
+From c7473676b8abc682e820546287044cee3bca9147 Mon Sep 17 00:00:00 2001
+From: Erik Chen <erikchen@chromium.org>
+Date: Sun, 30 Oct 2022 23:31:57 +0000
+Subject: Set the default max buffer size to unbounded.
+
+Bug: 1342356
+Change-Id: I6e6c353504d6817b9bf76bc7e8b24001d7957ad6
+---
+ src/connection.c      | 2 +-
+ src/wayland-private.h | 5 ++++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/connection.c b/src/connection.c
+index 98aefd6..24544d0 100644
+--- a/src/connection.c
++++ b/src/connection.c
+@@ -537,7 +537,7 @@ wl_connection_queue(struct wl_connection *connection,
+ 		    const void *data, size_t count)
+ {
+ 	if (connection->out.head - connection->out.tail +
+-	    count > WL_BUFFER_DEFAULT_MAX_SIZE) {
++	    count > WL_BUFFER_FLUSH_SIZE) {
+ 		connection->want_flush = 1;
+ 		if (wl_connection_flush(connection) < 0 && errno != EAGAIN)
+ 			return -1;
+diff --git a/src/wayland-private.h b/src/wayland-private.h
+index a3a5032..1aafa2e 100644
+--- a/src/wayland-private.h
++++ b/src/wayland-private.h
+@@ -48,7 +48,10 @@
+ #define WL_MAP_MAX_OBJECTS 0x00f00000
+ #define WL_CLOSURE_MAX_ARGS 20
+ #define WL_BUFFER_DEFAULT_SIZE_POT 12
+-#define WL_BUFFER_DEFAULT_MAX_SIZE (1 << WL_BUFFER_DEFAULT_SIZE_POT)
++// 0 means unbounded.
++#define WL_BUFFER_DEFAULT_MAX_SIZE 0
++// The size at which queueing a request will also trigger a flush.
++#define WL_BUFFER_FLUSH_SIZE (1 << WL_BUFFER_DEFAULT_SIZE_POT)
+ 
+ struct wl_object {
+ 	const struct wl_interface *interface;
+-- 
+2.41.0
+
