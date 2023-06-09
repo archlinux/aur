@@ -13,8 +13,16 @@ provides=(paper-plane)
 conflicts=(paper-plane)
 
 _commit=cf4439ce3f8d52d971a9bde257d864083bcf21f6  # tags/v0.1.0-beta.2^0
-source=("git+$url.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+$url.git#commit=$_commit"
+        "unstable-gtk-crash-fix.patch::$url/commit/dee19785c1e6a79b07f3984080f7ce18ccdfd74c.patch")
+sha256sums=('SKIP'
+            '10f8b9d8956d1bf44e227d99e5f9b7562c488ac4e8ace22103e9718b1100f7e9')
+
+prepare() {
+  cd "$pkgname"
+
+  patch --forward --strip=1 --input="$srcdir/unstable-gtk-crash-fix.patch"
+}
 
 pkgver() {
   cd "$pkgname"
