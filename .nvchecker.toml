@@ -1,0 +1,5 @@
+[bitvault-bin]
+source = "github"
+github = "overcuriousity/bitvault"
+use_latest_release = true
+prefix = "v"

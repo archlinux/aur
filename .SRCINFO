@@ -1,0 +1,21 @@
+pkgbase = bitvault-bin
+	pkgdesc = A secure, configurable file-sharing and URL shortening web app written in Rust.
+	pkgver = 2026.11.7
+	pkgrel = 1
+	url = https://github.com/overcuriousity/bitvault
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	provides = bitvault
+	conflicts = bitvault
+	backup = etc/bitvault/config.toml
+	source = LICENSE-2026.11.7::https://raw.githubusercontent.com/overcuriousity/bitvault/v2026.11.7/LICENSE
+	source = README-2026.11.7.md::https://raw.githubusercontent.com/overcuriousity/bitvault/v2026.11.7/README.md
+	sha256sums = 89dc84174bf4bdc8895f75625e535401a108418ff9cb207f0776b414cf7e2f0a
+	sha256sums = b6852f1d215f82b8d31a5556ba62c146733e98d9805e88b5f2c580d1250c3944
+	source_x86_64 = bitvault-x86_64-2026.11.7.tgz::https://github.com/overcuriousity/bitvault/releases/download/v2026.11.7/bitvault-2026.11.7-x86_64-unknown-linux-musl-offline.tar.gz
+	sha256sums_x86_64 = 02890b3b1f7c72386e054b7deacece3cdcfb6efeeb2067781a0f88fd5b356b40
+	source_aarch64 = bitvault-aarch64-2026.11.7.tgz::https://github.com/overcuriousity/bitvault/releases/download/v2026.11.7/bitvault-2026.11.7-aarch64-unknown-linux-musl-offline.tar.gz
+	sha256sums_aarch64 = 30f58e38118d806778179a396781ad225087375bd1e1c22a0055d6e8d8388c13
+
+pkgname = bitvault-bin
