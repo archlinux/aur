@@ -1,54 +1,99 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
-pkgname=gpr
-pkgver=23.0.0
-pkgrel=3
-
+pkgbase=gpr
+pkgname=(gpr gpr2tools)
+pkgver=24.0w
+pkgrel=1
 pkgdesc='Parser for Ada GPR project files.'
-url='https://github.com/AdaCore/gpr'
-arch=('i686' 'x86_64')
-license=('GPL3' 'Apache')
 
-depends=(python libadalang which python-funcy python-mako python-docutils)
-makedepends=('gprbuild' 'python-e3-core')
+url=https://github.com/AdaCore/gpr
+arch=(i686 x86_64)
+license=(GPL3 Apache)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("c7c0ac859547a53dc0bb60c4370e3063ac612a2d229d656b1465715b099afb11")
+depends=(gcc-ada
+         python
+         which
+         python-funcy
+         python-mako
+         python-docutils)
+
+makedepends=(gprbuild python-e3-core)
+
+source=(file:///opt/gnatstudio-sources/gpr2-$pkgver-20230324-16151-src.tar.gz)
+sha256sums=(e6f85d621d5161c15004657df01ae797a6cd782a8f7cf4fdbdf5b280e6840a1b)
 
 
 prepare()
 {
-    cd "$srcdir/$pkgname-$pkgver"
-    make setup prefix="$pkgdir/usr" GPR2KBDIR=/usr/share/gprconfig
+    cd $srcdir/gpr2-$pkgver-20230428-162AF-src
+    make setup prefix=$pkgdir/usr GPR2KBDIR=/usr/share/gprconfig
 }
+
 
 build()
 {
-    cd "$srcdir/$pkgname-$pkgver"
-    make
+    cd $srcdir/gpr2-$pkgver-20230428-162AF-src
+
+    make build-lib-static
+    make build-lib-static-pic
+    make build-lib-relocatable
+    make build-tools
+
+    make doc
+    make docgen
 }
 
-package()
-{
-    cd "$srcdir/$pkgname-$pkgver"
 
-    make install
+package_gpr()
+{
+    cd $srcdir/gpr2-$pkgver-20230428-162AF-src
+
+    make install-libs
+    make install-tools
    
     # These conflict with the binaries from 'gprbuild'.
     #
-    rm "$pkgdir/usr/bin/gprclean"
-    rm "$pkgdir/usr/bin/gprconfig"
-    rm "$pkgdir/usr/bin/gprinstall"
-    rm "$pkgdir/usr/bin/gprls"
-    rm "$pkgdir/usr/bin/gprname"
+    rm $pkgdir/usr/bin/gprclean
+    rm $pkgdir/usr/bin/gprconfig
+    rm $pkgdir/usr/bin/gprinstall
+    rm $pkgdir/usr/bin/gprls
 
     # Install the license.
+    #
     install -D -m644 \
-       "COPYING3"    \
-       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+       COPYING3      \
+       $pkgdir/usr/share/licenses/$pkgname/COPYING3
 
     # Install the custom license.
+    #
     install -D -m644 \
-       "LICENSE"     \
-       "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+       LICENSE       \
+       $pkgdir/usr/share/licenses/$pkgname/LICENSE
+}
+
+
+package_gpr2tools()
+{
+    provides=(gprtools)
+    conflicts=(gprtools)
+
+    cd $srcdir/gpr2-$pkgver-20230428-162AF-src
+
+    mkdir -p $pkgdir/usr/bin
+    cp  .build/release/gprclean    $pkgdir/usr/bin
+    cp  .build/release/gprconfig   $pkgdir/usr/bin
+    cp  .build/release/gprinstall  $pkgdir/usr/bin
+    cp  .build/release/gprls       $pkgdir/usr/bin
+
+    # Install the license.
+    #
+    install -D -m644 \
+       COPYING3      \
+       $pkgdir/usr/share/licenses/$pkgname/COPYING3
+
+    # Install the custom license.
+    #
+    install -D -m644 \
+       LICENSE       \
+       $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
