@@ -1,27 +1,24 @@
 pkgname=jdminecraftlauncher
-pkgver=3.2
+pkgver=5.0
 pkgrel=1
-pkgdesc="A oldstyle Minecraft launcher written in Python"
+pkgdesc="An classic styled Minecraft Launcher"
 arch=("any")
-url="https://gitlab.com/JakobDev/jdMinecraftLauncher"
+url="https://codeberg.org/JakobDev/jdMinecraftLauncher"
 license=("GPL3")
-depends=("python"
-         "python-setuptools"
-         "python-pyqt6"
-         "python-pyqt6-webengine"
-         "python-requests"
-         "python-minecraft-launcher-lib"
-         "python-jdtranslationhelper")
-makedepends=("gendesk")
+depends=("python" "python-pyqt6" "python-pyqt6-webengine" "python-minecraft-launcher-lib" "python-requests")
+makedepends=("qt5-tools" "python-build" "python-setuptools" "python-installer" "python-wheel")
 optdepends=("gamemode: Run Minecraft in gamemode")
-source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/JakobDev/jdMinecraftLauncher/-/archive/${pkgver}/jdMinecraftLauncher-${pkgver}.tar.gz")
-sha256sums=("2eea914e24ed8672cb80a9a724d56e6271d3922fd5ef79f195ad84e39880ad07")
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/JakobDev/jdMinecraftLauncher/archive/${pkgver}.tar.gz")
+sha256sums=("41ee52c85ce45c79683da0864352c9c09d141d78742420cb8731b65f1c653fa2")
+
+build() {
+      cd "jdminecraftlauncher"
+      python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "jdMinecraftLauncher-${pkgver}"
-    python setup.py install --root="$pkgdir/" --optimize=1
-    install -Dm644 "jdMinecraftLauncher/Icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.gitlab.JakobDev.jdMinecraftLauncher.svg"
-    install -Dm644 "deploy/com.gitlab.JakobDev.jdMinecraftLauncher.metainfo.xml" -t "${pkgdir}/usr/share/metainfo"
-    install -Dm644 "deploy/com.gitlab.JakobDev.jdMinecraftLauncher.desktop" -t "${pkgdir}/usr/share/applications"
+    cd "jdminecraftlauncher"
+    python -m installer --destdir "$pkgdir" dist/*.whl
+    python install-unix-datafiles.py --prefix "${pkgdir}/usr"
     install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
