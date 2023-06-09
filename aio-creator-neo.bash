@@ -17,18 +17,6 @@ APPDIR_TARGET_PARENT="${WINEPREFIX}/drive_c/Program Files/mediola/AIO CREATOR NE
 DATADIR_SOURCE="/opt/${PKGNAME}/commonappdata/AIO CREATOR NEO"
 DATADIR_TARGET_PARENT="${WINEPREFIX}/drive_c/ProgramData"
 
-function reg_query {
-  local key
-  local value_name
-
-  key="${1?}"
-  value_name="${2?}"
-
-  wine REG QUERY "${key}" /v "${value_name}" 2>/dev/null \
-    | awk -v "value_name=${value_name}" -e '$1 == value_name { print $3 }' \
-    | tr -d $'\r'
-}
-
 echo >&2 "Checking for Wine prefix"
 if ! [ -d "${WINEPREFIX}" ]; then
   echo >&2 "==> Bootstrapping Wine prefix"
@@ -41,24 +29,20 @@ if ! [ -d "${WINEPREFIX}" ]; then
   echo >&2 "==> Done"
 fi
 
+# Under a prior version of Wine, we used to force-install a
+# Direct3D 9 override to make the app work.
+# At least since Wine 8.9, that override has not only become
+# obsolete, it’s also breaking the app now.
+# Therefore, we need to uninstall the override for this app.
 echo >&2 "Checking Direct3D 9 override"
-reg_query_result="$(
-  reg_query 'HKCU\Software\Wine\DllOverrides' 'd3d9'
-)" || true
-
-if [[ "${reg_query_result}" == 'native' ]]; then
-  echo >&2 "==> Found"
-else
-  echo >&2 "==> Not found, installing Direct3D override"
-  setup_dxvk install --without-dxgi
-  while [ "$(
-      reg_query 'HKCU\Software\Wine\DllOverrides' 'd3d9'
-    )" != 'native' ]
-  do
-    echo >&2 "==> Waiting for registry to be flushed"
-    sleep 1
-  done
+if [ -e "${WINEPREFIX}/drive_c/windows/system32/d3d9.dll.old" ]; then
+  echo >&2 "==> Found, removing Direct3D override"
+  setup_dxvk uninstall
+  echo >&2 "==> Waiting for registry to be flushed"
+  sleep 3
   echo >&2 "==> Done"
+else
+  echo >&2 "==> Not found"
 fi
 
 echo >&2 "Checking program data directory"
