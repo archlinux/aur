@@ -1,5 +1,5 @@
 # Maintainer: zer0-x < Matrix: "@zer0-x:kde.org" >
-# Contributor: fisch02
+# Contributor: Kevin Majewski
 
 pkgname=xdg-desktop-portal-gtk-git
 _pkgname=xdg-desktop-portal-gtk
@@ -9,8 +9,8 @@ pkgdesc="A GTK backend for xdg-desktop-portal"
 url="https://github.com/flatpak/xdg-desktop-portal-gtk"
 arch=(x86_64)
 license=(LGPL)
-depends=('gtk3')
-makedepends=('git' 'xdg-desktop-portal' 'autoconf' 'automake')
+depends=('gtk3' 'xdg-desktop-portal')
+makedepends=('git' 'autoconf' 'automake')
 optdepends=("evince: Print preview")
 provides=($_pkgname 'xdg-desktop-portal-impl')
 conflicts=($_pkgname)
