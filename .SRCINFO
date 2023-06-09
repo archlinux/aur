@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-libpcap
+	pkgdesc = A system-independent interface for user-level packet capture (mingw-w64)
+	pkgver = 1.10.4
+	pkgrel = 1
+	url = https://www.tcpdump.org/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	depends = mingw-w64-openssl
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://www.tcpdump.org/release/libpcap-1.10.4.tar.gz
+	sha256sums = ed19a0383fad72e3ad435fd239d7cd80d64916b87269550159d20e47160ebe5f
+
+pkgname = mingw-w64-libpcap
