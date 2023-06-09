@@ -1,7 +1,7 @@
 pkgbase = gtkada
 	pkgdesc = Ada bindings for the Gtk+ library.
-	pkgver = 23.0.0
-	pkgrel = 2
+	pkgver = 24.0w
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/gtkada
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = gtkada
 	makedepends = gprbuild
 	depends = gcc-ada
 	depends = gtk3
-	source = gtkada-23.0.0.tar.gz::https://github.com/AdaCore/gtkada/archive/v23.0.0.tar.gz
+	source = file:///opt/gnatstudio-sources/gtkada-24.0w-20230428-165F0-src.tar.gz
 	source = Makefile.in-patch
-	sha256sums = 011d47f7ea8dbebd5489d6933572a618fcf3ea8b1bbfb3d60622752269cec087
+	sha256sums = 596d19722c0b7f6ec67d0f00918a2bfb0ae0fb7352b2182a290d5dcdf31e1ba9
 	sha256sums = f525df1f7c319f1dc95ddafe1a73d961ce162c6171c97b0df3ae756122ca76d4
 
 pkgname = gtkada
