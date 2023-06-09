@@ -12,6 +12,7 @@ pkgbase = spotify-player-full-git
 	depends = libpulse
 	depends = openssl
 	depends = dbus
+	depends = libsixel
 	provides = spotify-player
 	conflicts = spotify-player
 	source = spotify-player-full-git::git+https://github.com/aome510/spotify-player#branch=master

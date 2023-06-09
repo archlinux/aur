@@ -11,7 +11,7 @@ url="https://github.com/aome510/spotify-player"
 license=('MIT')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-depends=('libpulse' 'openssl' 'dbus')
+depends=('libpulse' 'openssl' 'dbus' 'libsixel')
 makedepends=('cargo' 'git')
 source=("$pkgname::git+$url#branch=master")
 sha256sums=("SKIP")
@@ -25,7 +25,7 @@ pkgver() {
 build() {
     cd "${pkgname}"
 	cargo build --release --locked --no-default-features \
-		 --features lyric-finder,notify,pulseaudio-backend,media-control,daemon,image
+		 --features lyric-finder,notify,pulseaudio-backend,media-control,daemon,image,sixel
 }
 
 package() {
