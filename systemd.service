@@ -4,7 +4,7 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/fail2ban-exporter
+ExecStart=/usr/bin/prometheus-fail2ban-exporter
 ExecReload=/bin/kill -HUP $MAINPID
 User=root
 Group=root
