@@ -1,0 +1,175 @@
+diff --git a/Makefile.common b/Makefile.common
+index 5c04d28..d60382e 100644
+--- a/Makefile.common
++++ b/Makefile.common
+@@ -1,3 +1,4 @@
++LIBS += -lboost_serialization $(shell pkg-config --libs libcryptopp libenet libzstd)
+ INCFLAGS := -I$(SRC_DIR) \
+             -I$(SRC_DIR)/video_core \
+             -I$(EXTERNALS_DIR) \
+@@ -17,113 +18,6 @@ INCFLAGS := -I$(SRC_DIR) \
+ SOURCES_C   :=
+ SOURCES_CXX :=
+ 
+-# Begone boost linking
+-CXXFLAGS += -DBOOST_ERROR_CODE_HEADER_ONLY -DBOOST_SYSTEM_NO_LIB -DBOOST_DATE_TIME_NO_LIB -DBOOST_REGEX_NO_LIB \
+-    -DNULL_POINTER_TAG=BOOST_SERIALIZATION_NULL_POINTER_TAG # Stupid workaround for boost serialization
+-
+-SOURCES_CXX +=  $(EXTERNALS_DIR)/boost/libs/serialization/src/archive_exception.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_pointer_oserializer.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/extended_type_info_no_rtti.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/polymorphic_text_oarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/stl_port.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/xml_archive_exception.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_archive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_serializer_map.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/binary_iarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/extended_type_info_typeid.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/polymorphic_text_wiarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/text_iarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/xml_grammar.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_iarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_text_iprimitive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/binary_oarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/polymorphic_binary_iarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/polymorphic_text_woarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/text_oarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/xml_iarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_iserializer.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_text_oprimitive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/binary_wiarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/polymorphic_binary_oarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/polymorphic_xml_iarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/text_wiarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/xml_oarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_oarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_text_wiprimitive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/binary_woarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/polymorphic_iarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/polymorphic_xml_oarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/text_woarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/xml_wgrammar.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_oserializer.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_text_woprimitive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/codecvt_null.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/polymorphic_oarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/polymorphic_xml_wiarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/utf8_codecvt_facet.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/xml_wiarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_pointer_iserializer.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/basic_xml_archive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/extended_type_info.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/polymorphic_text_iarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/polymorphic_xml_woarchive.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/void_cast.cpp \
+-                $(EXTERNALS_DIR)/boost/libs/serialization/src/xml_woarchive.cpp
+-
+-ifeq ($(platform), libnx)
+-INCFLAGS  += -isystem$(EXTERNALS_DIR)/switch-compat/include
+-SOURCES_C += $(EXTERNALS_DIR)/switch-compat/src/switch-compat.c
+-endif
+-
+-# Externals - CryptoPP
+-SOURCES_CXX += $(EXTERNALS_DIR)/cryptopp/cryptopp/allocate.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/cryptlib.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/cpu.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/integer.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/algparam.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/asn.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/authenc.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/base64.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/basecode.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/ccm.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/crc_simd.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/des.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/dessp.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/dll.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/ec2n.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/ecp.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/filters.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/fips140.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/gcm_simd.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/gf2n.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/gfpcrypt.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/hex.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/hmac.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/hrtimer.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/iterhash.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/md5.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/misc.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/modes.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/mqueue.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/nbtheory.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/neon_simd.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/oaep.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/osrng.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/pubkey.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/queue.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/randpool.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/rdtables.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/rijndael_simd.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/rijndael.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/rng.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/sha_simd.cpp \
+-               $(EXTERNALS_DIR)/cryptopp/cryptopp/sha.cpp
+-
+-ifeq ($(HAVE_SSE), 1)
+-SOURCES_CXX += $(EXTERNALS_DIR)/cryptopp/cryptopp/sse_simd.cpp
+-endif
+-
+-CXXFLAGS += -DCRYPTOPP_DISABLE_ASM -DCRYPTOPP_DISABLE_SSSE3 -DCRYPTOPP_DISABLE_SSE4
+ 
+ # Externals - Dynarmic
+ ifeq ($(HAVE_DYNARMIC), 1)
+@@ -265,18 +159,6 @@ DYNARMICSOURCES_CXX += $(EXTERNALS_DIR)/dynarmic/src/common/assert.cpp \
+     endif
+ endif
+ 
+-# Externals - Enet
+-SOURCES_C += $(EXTERNALS_DIR)/enet/callbacks.c \
+-             $(EXTERNALS_DIR)/enet/compress.c \
+-             $(EXTERNALS_DIR)/enet/host.c \
+-             $(EXTERNALS_DIR)/enet/list.c \
+-             $(EXTERNALS_DIR)/enet/packet.c \
+-             $(EXTERNALS_DIR)/enet/peer.c \
+-             $(EXTERNALS_DIR)/enet/protocol.c \
+-             $(EXTERNALS_DIR)/enet/unix.c \
+-             $(EXTERNALS_DIR)/enet/win32.c
+-
+-CFLAGS += -DHAS_SOCKLEN_T
+ 
+ ## Externals - FFMPEG (static)
+ ifeq ($(HAVE_FFMPEG_STATIC), 1)
+@@ -336,32 +218,6 @@ SOURCES_CXX += $(EXTERNALS_DIR)/teakra/src/ahbm.cpp \
+                $(EXTERNALS_DIR)/teakra/src/teakra.cpp \
+                $(EXTERNALS_DIR)/teakra/src/test_generator.cpp
+ 
+-# Externals - Zstd
+-SOURCES_C += $(EXTERNALS_DIR)/zstd/lib/common/debug.c \
+-             $(EXTERNALS_DIR)/zstd/lib/common/entropy_common.c \
+-             $(EXTERNALS_DIR)/zstd/lib/common/error_private.c \
+-             $(EXTERNALS_DIR)/zstd/lib/common/fse_decompress.c \
+-             $(EXTERNALS_DIR)/zstd/lib/common/pool.c \
+-             $(EXTERNALS_DIR)/zstd/lib/common/threading.c \
+-             $(EXTERNALS_DIR)/zstd/lib/common/xxhash.c \
+-             $(EXTERNALS_DIR)/zstd/lib/common/zstd_common.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/fse_compress.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/hist.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/huf_compress.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/zstd_compress_literals.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/zstd_compress_sequences.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/zstd_compress_superblock.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/zstd_compress.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/zstd_double_fast.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/zstd_fast.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/zstd_lazy.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/zstd_ldm.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/zstd_opt.c \
+-             $(EXTERNALS_DIR)/zstd/lib/compress/zstdmt_compress.c \
+-             $(EXTERNALS_DIR)/zstd/lib/decompress/huf_decompress.c \
+-             $(EXTERNALS_DIR)/zstd/lib/decompress/zstd_ddict.c \
+-             $(EXTERNALS_DIR)/zstd/lib/decompress/zstd_decompress_block.c \
+-             $(EXTERNALS_DIR)/zstd/lib/decompress/zstd_decompress.c
+ 
+ # Externals - libretro-common/rglgen
+ ifeq ($(HAVE_RGLGEN), 1)
