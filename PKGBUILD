@@ -4,7 +4,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=rio
-pkgver=0.0.6
+pkgver=0.0.6.1
+_pkgver=0.0.61
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64' 'aarch64')
@@ -15,26 +16,25 @@ depends=('gcc-libs' 'fontconfig' 'freetype2' 'libxcb' 'libxkbcommon' 'python')
 makedepends=('cargo' 'cmake' 'desktop-file-utils')
 optdepends=()
 source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    'rio.desktop::rio.desktop'
-    'rio-pull86-fix-cl-wayland.patch::https://patch-diff.githubusercontent.com/raw/raphamorim/rio/pull/86.patch')
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
+    'rio.desktop')
 b2sums=(
-    '478f7e0585391fabb18e97a454041f937b3651c3080c696e3dcb5dfdc9ef6b681c1f848afbba7e1075c96f34b873161127a1e33a712d04eee6040dfe32ea5791'
-    'cdb6a76cae33968b23a5d950c727151b152ea2c2951df0eda08e825d366eb41d7c9182aabb6cf85efe62a66010ce50096582b6300659f781dd5bd0e7a3646041'
-    '268f8bcf1675dd6c8cfb0b0d5bfcb91e3e400dede03d59b6db0a300b017d52a05033eeba42a4bdf767ce4b0049933df5c44a293ccf7114472998e73898c4a835')
+    '53ed249327db2153037b8e50e03f01557994b8c43605165733e6eb806b8b9b266a4aa92f8b7cd4e37167b2feb3c94ec61e36187ec69a0b2cf34a72452d46bf56'
+    'cdb6a76cae33968b23a5d950c727151b152ea2c2951df0eda08e825d366eb41d7c9182aabb6cf85efe62a66010ce50096582b6300659f781dd5bd0e7a3646041')
 backup=()
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${_pkgver}"
     export CARGO_TARGET_DIR=target
     export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
 
-    patch --forward --strip=1 --input="${srcdir}/rio-pull86-fix-cl-wayland.patch"
+    # `cargo.lock` needs to be updated
+    cargo generate-lockfile
     cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${_pkgver}"
     export CARGO_TARGET_DIR=target
     export CARGO_INCREMENTAL=0
 
@@ -42,7 +42,7 @@ build() {
 }
 
 check() {
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${_pkgver}"
     export CARGO_INCREMENTAL=0
 
     cargo test --frozen --workspace
@@ -51,7 +51,7 @@ check() {
 package() {
     desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "rio.desktop"
 
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${_pkgver}"
     install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
     install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgname}/" "README.md"
     install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "LICENSE"
