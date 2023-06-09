@@ -2,7 +2,7 @@
 
 pkgname=cider-git
 _pkgname=cider
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=9
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Build from tar file on GitHub releases."
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/ciderapp/${_pkgname}.git"
 license=(AGPL3)
 depends=(gtk3 nss alsa-lib libxcrypt-compat)
 optdepends=('libnotify: Playback notifications')
-makedepends=(npm nvm fontconfig yarn)
+makedepends=(nvm fontconfig)
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source_x86_64=("${_pkgname}::git+https://github.com/ciderapp/${_pkgname}.git")
@@ -36,6 +36,8 @@ prepare() {
   cd "${srcdir}/${_pkgname}"
   _ensure_local_nvm
   nvm install
+  corepack enable
+  corepack prepare yarn@stable --activate
 }
 
 build() {
@@ -44,13 +46,16 @@ build() {
   npx -y check-engine && yarn install && yarn dist && mv dist/*.deb "${srcdir}/" && cd "${srcdir}"
   ar x ${_pkgname}_*_amd64.deb data.tar.xz
 }
-
+ 
 package() {
   # Extract package data
   bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
-  mv "${pkgdir}/opt/${_pkgname^}" "${pkgdir}/opt/${pkgname}"
+  # mv "${pkgdir}/opt/${_pkgname^}" "${pkgdir}/opt/${pkgname}" # Disabled as breaks desktop file
 
   # Symlink the binary
   install -d "$pkgdir/usr/bin/"
-  ln -sf "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -sf "/opt/${_pkgname^}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  # Echo documentation to user
+  echo "To change the port that Cider uses, CIDER_PORT environment variable can be set."
 }
