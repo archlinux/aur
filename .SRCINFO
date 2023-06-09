@@ -1,0 +1,13 @@
+pkgbase = pleaserunthat
+	pkgdesc = A python socket app for letting a friend execute a command on your system without opening ports or using an ssh server all, with a Simple GUI
+	pkgver = 1.21.0
+	pkgrel = 1
+	url = https://github.com/Sebicodes99/pleaserunthat-beta
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	source = pleaserunthat::git+https://github.com/Sebicodes99/pleaserunthat-beta.git#tag=1.21.0
+	sha256sums = SKIP
+
+pkgname = pleaserunthat
