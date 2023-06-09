@@ -1,25 +1,25 @@
 pkgbase = infra-arcana
 	pkgdesc = Roguelike game inspired by H.P. Lovecraft
-	pkgver = 21.0.1
+	pkgver = 22.0.0
 	pkgrel = 1
 	url = https://sites.google.com/site/infraarcana/home
 	install = infra-arcana.install
 	arch = i686
 	arch = x86_64
 	license = custom:Infra Arcana License
-	makedepends = cmake
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = hicolor-icon-theme
 	conflicts = infra-arcana-git
-	source = git+https://gitlab.com/martin-tornqvist/ia.git#tag=v21.0.1
+	source = ia_linux_x64_v22.0.0.zip::https://gitlab.com/martin-tornqvist/ia/-/jobs/artifacts/v22.0.0/download?job=build-linux
+	source = icon_v22.0.0.ico::https://gitlab.com/martin-tornqvist/ia/-/raw/v22.0.0/icon/icon.ico?inline=false
 	source = infra-arcana.install
 	source = infra-arcana.desktop
 	source = infra-arcana.sh
-	md5sums = SKIP
-	md5sums = d82f8781f8d1ce1df8c53094ce5c3b27
-	md5sums = 2e28c2803d7d2cd4376dcd3aa6512774
-	md5sums = 87294b81f5a2f98a78d318a5dcec7caf
+	sha256sums = 776a083044ad877f2c5fca5fcf73b92f286629df73dff6ae77720b3831c0148c
+	sha256sums = 5c5b0b435e5effead5a700bc870aaf227536f32e736348f23956048d7c3225fd
+	sha256sums = 3675cbaa28ce7e9e99271914f957cdbec942799aef0f88584cd99ddd642360d2
+	sha256sums = c7738445681a33b5a1ca95528c0d3a6131bd867d6ce76f3b64677cee846a83c3
+	sha256sums = fc7f7ab24e2e5adc8958842b27925ad97037b82fc8e722f4aaf14573f3308c82
 
 pkgname = infra-arcana
-
