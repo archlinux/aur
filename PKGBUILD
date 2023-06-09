@@ -11,8 +11,8 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '2941' 'prio')
-_merge_requests_to_use=('1441' '2941' 'prio')
+# Merge Requests List: ('579' '1441' '2941' 'revert-2878-partially' 'prio')
+_merge_requests_to_use=('1441' 'revert-2878-partially' 'prio')
 
 ## Disable building the DOCS package (Enabled if not set)
 # Remember to unset this variable when producing .SRCINFO
@@ -31,8 +31,8 @@ else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
 epoch=1
-pkgver=44.1+r5+g4f8bdda42
-pkgrel=2
+pkgver=44.2
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -46,7 +46,7 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 if [ -n "$_enable_check" ]; then
   checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
-_commit=4f8bdda42c7fc6c943c3b1213db79db1017d8b26  # tags/44.1^5
+_commit=e7ed2bf85700a2ff33b69826f6f0fff6e2f28e69  # tags/44.2^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr2941.patch'
@@ -136,6 +136,21 @@ prepare() {
   #          If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania, use it.
   pick_mr '579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
 
+  # Title: Revert "Prevent newly focused windows to steal focus from Shell (Take 3)" partially
+  # Type: 3
+  # Comment: See https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
+  #          Cannot be used with !2941
+  pick_mr 'revert-2878-partially' 3ac82a58c51a5c8db6b49e89a1232f99c79644cc 'revert'
+
+  # Title: Try unparenting client windows when fullscreen again
+  # Author: Jonas Ådahl <jadahl@gmail.com>
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2941
+  # Type: 3
+  # Status: 2 & 3
+  # Comment: Avoid bugs like #2678 (closed) when we try to avoid blits in the X server for fullscreen windows.
+  #          Cannot be used with 'revert-2878-partially'
+  pick_mr '2941' 'mr2941.patch' 'patch'
+
   # Title: Draft: Dynamic triple/double buffering (v4)
   # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
@@ -144,17 +159,9 @@ prepare() {
   # Comment: Help GPU frequencies to scale up but not currently working on Wayland.
   pick_mr '1441' 'mr1441.patch' 'patch'
 
-  # Title: Try unparenting client windows when fullscreen again
-  # Author: Jonas Ådahl <jadahl@gmail.com>
-  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2941
-  # Type: 3
-  # Status: 2 & 3
-  # Comment: Avoid bugs like #2678 (closed) when we try to avoid blits in the X server for fullscreen windows.
-  pick_mr '2941' 'mr2941.patch' 'patch'
-
   # Title: [REVERT] backends/native: Use rtkit to get realtime priority
   # Author: Carlos Garnacho <carlosg@gnome.org>
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2060
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2060
   # Type: 1
   # Status: 4
   # Comment: Reverting it to get rt-scheduler working with mr1441.
