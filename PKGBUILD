@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="query-master-appimage"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Just another MySQL GUI client"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/invisal/query-master"
 license=('MIT')
 options=(!strip)
@@ -12,7 +12,7 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 makedepends=('yarn' 'gendesk')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('97588df0cdb6a83943ca9bf293559f2197e383e45b99e5451a236c743306e17c')
+sha256sums=('2cc34973e2ca9d74f0fc8e95bc84537fa796b0d69be86c86377719cd1af7150a')
 build() {
     cd "${srcdir}/${pkgname%-appimage}-${pkgver}"
     yarn install
