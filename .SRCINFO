@@ -1,6 +1,6 @@
 pkgbase = paper-plane
 	pkgdesc = Chat over Telegram on a modern and elegant client
-	pkgver = 0.1.0.beta.1
+	pkgver = 0.1.0.beta.2
 	pkgrel = 1
 	url = https://github.com/paper-plane-developers/paper-plane
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = paper-plane
 	depends = libtdjson.so
 	provides = paper-plane
 	conflicts = paper-plane
-	source = git+https://github.com/paper-plane-developers/paper-plane.git#commit=83df76b6eb0fae5b51079d80258a96664f686236
+	source = git+https://github.com/paper-plane-developers/paper-plane.git#commit=cf4439ce3f8d52d971a9bde257d864083bcf21f6
 	sha256sums = SKIP
 
 pkgname = paper-plane
