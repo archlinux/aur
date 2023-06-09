@@ -6,10 +6,9 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-wayland-vaapi
-pkgver=111.0.5563.146
+pkgver=114.0.5735.106
 pkgrel=1
 _launcher_ver=8
-_gcc_patchset=2
 _manual_clone=0
 pkgdesc="Chromium, patched to enable VA-API video decoding on the Ozone Wayland backend"
 arch=('x86_64')
@@ -19,6 +18,7 @@ provides=('chromium')
 conflicts=('chromium')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
+         'wayland-chromium'
          'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
              'qt5-base' 'java-runtime-headless' 'git')
@@ -30,14 +30,20 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        sql-relax-constraints-on-VirtualCursor-layout.patch
+        add-some-typename-s-that-are-required-in-C-17.patch
+        REVERT-disable-autoupgrading-debug-info.patch
+        download-bubble-typename.patch
+        webauthn-variant.patch
+        random-fixes-for-gcc13.patch
         disable-GlobalMediaControlsCastStartStop.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('1e701fa31b55fa0633c307af8537b4dbf67e02d8cad1080c57d845ed8c48b5fe'
+sha256sums=('df18b0b28bf52b1c099acde54e568fbfa2c9225150108bce9d53d8b31f71304a'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'a016588340f1559198e4ce61c6e91c48cf863600f415cb5c46322de7e1f77909'
-            'e66be069d932fe18811e789c57b96249b7250257ff91a3d82d15e2a7283891b7'
+            '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
+            '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
+            'd464eed4be4e9bf6187b4c40a759c523b7befefa25ba34ad6401b2a07649ca2a'
+            '590fabbb26270947cb477378b53a9dcd17855739076b4af9983e1e54dfcab6d7'
+            'ba4dd0a25a4fc3267ed19ccb39f28b28176ca3f97f53a4e9f5e9215280040ea0'
             '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
@@ -50,8 +56,8 @@ source=(${source[@]}
         0001-ozone-wayland-add-VA-API-support.patch
         vaapi-add-av1-support.patch)
 sha256sums=(${sha256sums[@]}
-            8d703b2f8a479b1c9b0837220e8694c30b8c4e35ce51d9c4895a295a61fe6a95
-            e742cc5227b6ad6c3e0c2026edd561c6d3151e7bf0afb618578ede181451b307)
+            f8e834ee3045e6c405016824655251d7f35632d76293a30ae866d772d5770194
+            7b013b914289beff35d09af69751d939fb34e2ba585a45620603beea603223c9)
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -65,7 +71,7 @@ declare -gA _system_libs=(
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
   [jsoncpp]=jsoncpp
-  [libaom]=aom
+  #[libaom]=aom      # https://aomedia.googlesource.com/aom/+/706ee36dcc82
   #[libavif]=libavif # https://github.com/AOMediaCodec/libavif/commit/4d2776a3
   [libdrm]=
   [libjpeg]=libjpeg
@@ -116,13 +122,19 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -i ../sql-relax-constraints-on-VirtualCursor-layout.patch
+  patch -Np1 -i ../add-some-typename-s-that-are-required-in-C-17.patch
+
+  # Revert addition of compiler flag that needs newer clang
+  patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
 
   # Disable kGlobalMediaControlsCastStartStop by default
   # https://crbug.com/1314342
   patch -Np1 -i ../disable-GlobalMediaControlsCastStartStop.patch
 
-  # Fixes for building with libstdc++ instead of libc++
+  # Build fixes
+  patch -Np1 -i ../download-bubble-typename.patch
+  patch -Np1 -i ../webauthn-variant.patch
+  patch -Np1 -i ../random-fixes-for-gcc13.patch
 
   # Enable VAAPI on Wayland
   patch -Np1 -i ../0001-ozone-wayland-add-VA-API-support.patch
@@ -268,6 +280,7 @@ package() {
 
     # SwiftShader ICD
     libvk_swiftshader.so
+    libvulkan.so.1
     vk_swiftshader_icd.json
   )
 
