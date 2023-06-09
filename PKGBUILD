@@ -3,7 +3,7 @@
 _gecko_id='wappalyzer@crunchlabz.com'
 _plugin_name='wappalyzer'
 pkgname="firefox-extension-${_plugin_name}"
-pkgver=6.10.56
+pkgver=6.10.62
 pkgrel=1
 pkgdesc='Identify technology on websites'
 arch=('any')
@@ -16,27 +16,14 @@ options=('!strip')
 
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/wappalyzer/wappalyzer/archive/v${pkgver}.tar.gz"
-  'puppeteer-no-sandbox.patch'
 )
 
 sha512sums=(
-  '19b3c3e4882d5b0585d010804acc96380c108469ebc3159f24f2542ef7af38e2c0d10cb0e73d60998eeabbf80cc1732346971a84845d5c5a1a9ba868d6f575d2'
-  'd2ccd784adfccb76dd6ccb7db07fdcf94ad40bde100cd552fddf3516660a9526992e83757898f7efeff5818f83cebea49fcaeb44ba5349e339eb29a995669948'
+  'f6e0d47f5bbda37d6712d78e7e27074b3e57c15959037da1dc172911d5915975219e613b19bda4ff2e3040ff08f12da737972b4bc217d03ad69d423c331de791'
 )
 
 build() {
   cd "${srcdir}/${_plugin_name}-${pkgver}"
-
-  # Work around a crash in headless Chrome, which may occur in the
-  # GPU thread. As a workaround [1], we tell Puppeteer to disable
-  # sandboxing.
-  # The web extension needs Chrome only at build time, and only for
-  # converting SVG to PNG. The SVG is coming directly from the
-  # source package. So we can safely disable the sandbox for this.
-  #
-  # [1]: https://github.com/puppeteer/puppeteer/issues/1543#issuecomment-349642975
-  patch -p1 < "${srcdir}/puppeteer-no-sandbox.patch"
-
   /usr/bin/node /usr/bin/yarn install
   /usr/bin/node /usr/bin/yarn build "${pkgver}"
 
