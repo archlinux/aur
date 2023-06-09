@@ -1,31 +1,29 @@
-# Maintainer  : Anthony Wang <ta180m@pm.me>
-# Contributor : Maxime Gauduin <alucryd@archlinux.org>
-
-pkgname=libretro-shaders-slang-git
-pkgver=r370.b91c670
-pkgrel=2
-pkgdesc='Collection of shaders for libretro'
-arch=(any)
-url=https://www.libretro.com/
-license=(GPL3)
-groups=(libretro-unstable)
-provides=(
-  libretro-shaders
-  libretro-shaders-slang
-)
-conflicts=(libretro-shaders-slang)
-makedepends=(git)
-source=(libretro-shaders-slang::git+https://github.com/libretro/slang-shaders.git)
-sha256sums=(SKIP)
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Anthony Wang <ta180m@pm.me>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+_pkgname=libretro-shaders-slang
+pkgname=$_pkgname-git
+pkgver=r1257.755b4bb
+pkgrel=1
+pkgdesc="Collection of shaders for libretro"
+arch=('any')
+url="https://github.com/libretro/slang-shaders"
+license=('BSD' 'CCPL' 'GPL2' 'GPL3' 'LGPL2.1' 'LGPL3' 'MIT' 'MPL2' 'Unlicense')
+groups=('libretro')
+makedepends=('git')
+optdepends=('retroarch')
+provides=("$_pkgname=${pkgver#r}" 'libretro-shaders')
+conflicts=("$_pkgname")
+options=('!strip')
+source=("$_pkgname::git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd libretro-shaders-slang
-
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
- make DESTDIR="${pkgdir}" -C libretro-shaders-slang install
+	# shellcheck disable=SC2154
+	make -C $_pkgname DESTDIR="$pkgdir" install
 }
-
-# vim: ts=2 sw=2 et:
