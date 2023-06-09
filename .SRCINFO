@@ -1,0 +1,18 @@
+pkgbase = cool-retro-term-nvidia
+	pkgdesc = A good looking terminal emulator which mimics the old cathode display (patched to work with proprietary nvidia drivers)
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = https://github.com/Swordfish90/cool-retro-term
+	arch = x86_64
+	license = GPL3
+	depends = qmltermwidget
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	depends = qt5-graphicaleffects
+	depends = hicolor-icon-theme
+	provides = cool-retro-term
+	conflicts = cool-retro-term
+	source = cool-retro-term-1.2.0.tar.gz::https://github.com/Swordfish90/cool-retro-term/archive/1.2.0.tar.gz
+	sha256sums = 68bd3137439941e6253a97c7dcd27b553ce4d76c8c38e7f8db63db4d6cc7000b
+
+pkgname = cool-retro-term-nvidia
