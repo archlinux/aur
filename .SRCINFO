@@ -1,0 +1,16 @@
+pkgbase = python-patio
+	pkgdesc = Python Asynchronous Task for AsyncIO core library
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/patio-python/patio
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python-typing_extensions
+	source = python-patio-0.0.0.tar.gz::https://github.com/patio-python/patio/archive/f65bd652719f0dd1b7926014059b7970c6b95b33.tar.gz
+	sha256sums = e6219bc987e3544573784c3d25581b56e723176e6e285cda52396d224b40c3e8
+
+pkgname = python-patio
