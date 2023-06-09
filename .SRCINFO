@@ -8,6 +8,7 @@ pkgbase = libcontemporary
 	makedepends = git
 	makedepends = qt6-tools
 	makedepends = cmake
+	makedepends = clang
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-svg
