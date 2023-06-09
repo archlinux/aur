@@ -5,7 +5,7 @@ pkgname=serioussam
 pkginstdir=serioussam
 pkgver=1.10.5
 _srcname="SeriousSamClassic-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Serious Sam Classic native Linux version."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic"
@@ -17,11 +17,13 @@ install=serioussam.install
 source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgver.tar.gz"
     "serioussam-tfe.desktop"
     "serioussam-tse.desktop"
-    "serioussam.xpm")
+    "serioussam.xpm"
+    "0001-remove_SE1_10b_depend.patch")
 sha256sums=('ecd850cabd144b29bcec97de4ad8a1ffc14144432744de9bf39fe1d00385daf6'
             '1e36d7b0d11f68729aa5c79ac9a44157d4af0bf61060040ab92a37d96ca89aba'
             '49680c65d26b264a1d7735c6310fcc5d0ac0e0e56273d3bccf539c0c87d31b2b'
-            '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4')
+            '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4'
+            '244101d02598010e4c45e57f26e0842d4cff058e3cde5e59062b9d36b5ffaca0')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -29,23 +31,23 @@ else
 fi
 
 prepare(){
+  # Prepare patch
+  cat 0001-remove_SE1_10b_depend.patch > "$srcdir/$_srcname/0001-remove_SE1_10b_depend.patch"
 
   # Making building TFE scripts.
   cd "$srcdir/$_srcname/SamTFE/Sources/"
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
   sed 's/cmake -DCMAKE_BUILD_TYPE=Release/cmake -DTFE=TRUE -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh > build-linux"$_bits"-tfe.sh
-  # sed -i 's/Threaded version" FALSE/Threaded version" TRUE/g' CMakeLists.txt
   chmod 755 build-linux"$_bits"-tfe.sh
 
   # Making building TSE scripts.
   cd "$srcdir/$_srcname/SamTSE/Sources/"
   sed -i 's/cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo/cmake -DCMAKE_BUILD_TYPE=Release/g' build-linux"$_bits".sh
-  # sed -i 's/Threaded version" FALSE/Threaded version" TRUE/g' CMakeLists.txt
   chmod 755 build-linux"$_bits".sh
 
   cd "$srcdir/$_srcname"
-  # patch
-  # patch -p1 < sam-1.10.4-to-1.10.5-pre.patch || return 1
+  # apply patch
+  patch -p1 < 0001-remove_SE1_10b_depend.patch || return 1
 }
 
 build(){
