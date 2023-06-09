@@ -1,52 +1,52 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=gnatdoc
-pkgver=23.0.0
-pkgrel=4
-
+pkgver=24.0w
+pkgrel=1
 pkgdesc='GNAT documentation generation tool.'
-url='https://github.com/AdaCore/gnatdoc'
-arch=('i686' 'x86_64')
-#license=('GPL3' 'custom')
+
+url=https://github.com/AdaCore/gnatdoc
+arch=(i686 x86_64)
+#license=(GPL3 custom)
 
 depends=(gnatcoll-core markdown gpr-unit-provider)
-makedepends=('gprbuild')
+makedepends=(gprbuild)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("123c8e3517512f6f4f7e92d62f2d0e1b35c8d59c87acc5ba504eeeb0988b20d5")
+source=(file:///opt/gnatstudio-sources/"$pkgname"4-$pkgver-20230428-16616-src.tar.gz)
+sha256sums=(2a627fd36a0b157aadbcfc3ff5a248b0e47680e519f874cc750b44bc8b7478dc)
 
 
 build()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd $srcdir/"$pkgname"4-$pkgver-20230428-16616-src
  
-     gprbuild -j0 -p -P gnat/libgnatdoc.gpr \
-              -XSUPERPROJECT=
+   export LIBRARY_TYPE=relocatable
+   
+   gprbuild -j0 -p -P gnat/libgnatdoc.gpr \
+             -XSUPERPROJECT=
 
-     gprbuild -j0 -p -P gnat/gnatdoc.gpr              \
-              -XGPR_UNIT_PROVIDER_LIBRARY_TYPE=static \
-              -XGPR2_LIBRARY_TYPE=static              \
-              -XSUPERPROJECT=                         \
-              -XGPR_UNIT_PROVIDER_BUILD=release
+#    export LIBRARY_TYPE=relocatable
+    make all
 }
+
 
 package()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd $srcdir/"$pkgname"4-$pkgver-20230428-16616-src
 
-    gprinstall gnat/gnatdoc.gpr                         \
-               --prefix="$pkgdir/usr"                   \
-               --create-missing-dirs                    \
-                -XGPR_UNIT_PROVIDER_LIBRARY_TYPE=static \
-                -XGPR2_LIBRARY_TYPE=static
+    gprinstall gnat/gnatdoc.gpr                             \
+               --prefix=$pkgdir/usr                         \
+               --create-missing-dirs                        \
+               -XGPR_UNIT_PROVIDER_LIBRARY_TYPE=relocatable \
+               -XGPR2_LIBRARY_TYPE=relocatable
 
     gprinstall gnat/libgnatdoc.gpr    \
-               --prefix="$pkgdir/usr" \
+               --prefix=$pkgdir/usr   \
                --create-missing-dirs
 
-#    # Install the license.
-#    install -D -m644     \
-#       "COPYING3"        \
-#       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
-
+    # Install the license.
+    #
+    install -D -m644   \
+       COPYING3        \
+       $pkgdir/usr/share/licenses/$pkgname/COPYING3
 }
