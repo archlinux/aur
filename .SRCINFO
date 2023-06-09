@@ -7,6 +7,7 @@ pkgbase = synergy3-bin
 	license = unknown
 	depends = openssl
 	optdepends = libappindicator-gtk3
+	conflicts = synergy
 	conflicts = synergy1-bin
 	conflicts = synergy-git
 	conflicts = synergy-1.6
