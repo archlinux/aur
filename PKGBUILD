@@ -13,6 +13,8 @@ source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 makedepends=(cargo git)
 depends=(greetd gtk4)
+provides=(greetd-greeter)
+conflicts=("greetd-$_pkgname")
 replaces=(regreet-git)
 
 pkgver() {
