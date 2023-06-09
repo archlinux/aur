@@ -1,0 +1,19 @@
+pkgbase = orgadoc
+	pkgdesc = easily copy and maintain a pool of documents between computers
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://www.gnu.org/software/orgadoc/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = texi2html
+	depends = xz
+	depends = glibc
+	depends = bash
+	depends = libxml2
+	depends = zlib
+	depends = icu
+	source = https://ftp.gnu.org/gnu/orgadoc/orgadoc-1.3.tar.gz
+	md5sums = 12de176434431b6af8cf4fac034135d1
+
+pkgname = orgadoc
