@@ -1,0 +1,12 @@
+pkgbase = zig-completion-git
+	pkgdesc = Shell completions for the Zig compiler.
+	pkgver = gc5b387b
+	pkgrel = 1
+	url = https://github.com/ziglang/shell-completions.git
+	arch = any
+	license = MIT
+	optdepends = bash-completion: Bash completion support
+	source = git+https://github.com/ziglang/shell-completions.git
+	sha256sums = SKIP
+
+pkgname = zig-completion-git
