@@ -1,10 +1,12 @@
-# Maintainer: FixFromDarkness <aur@forestfox.tk>
+# Contributor: FixFromDarkness <aur@forestfox.tk>
+# Contributor: Asuka Minato
+
 pkgname=microbin-bin
 _pkgname=microbin
 pkgver=1.2.1
 pkgrel=1
 pkgdesc="A tiny, self-contained, configurable paste bin and URL shortener written in Rust."
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/szabodanika/microbin"
 license=('BSD')
 provides=($_pkgname)
@@ -18,8 +20,8 @@ source_i686=("https://github.com/szabodanika/microbin/releases/download/v${pkgve
 source_armv7h=("https://github.com/szabodanika/microbin/releases/download/v${pkgver}/microbin-v${pkgver}-armv7-unknown-linux-musleabihf.tar.gz")
 source_arm=("https://github.com/szabodanika/microbin/releases/download/v${pkgver}/microbin-v${pkgver}-arm-unknown-linux-musleabihf.tar.gz")
 sha256sums=('3704d0a839585b6e6a38dda635f7c8119a3c8286420f62a028ae1b7d27a89ad0'
-            '8e943fc702637b1b7441491db945c078d190c4208cd202e5e360cad90ca793ab'
-            'f692f4e1ae51ae73723c06d826f2c11d03dcf2a0e84d41fabc74110dbcd0d591')
+	'8e943fc702637b1b7441491db945c078d190c4208cd202e5e360cad90ca793ab'
+	'f692f4e1ae51ae73723c06d826f2c11d03dcf2a0e84d41fabc74110dbcd0d591')
 sha256sums_i686=('27485749be80f7ed33840a02a31264af3faad000f6279ca4c752b64286cdd842')
 sha256sums_x86_64=('762a12295f032532c168328dfa040a24892ab8ee78aeff8992e2ac31c88d5269')
 sha256sums_arm=('117bb442729513322b8ecf265495e7d8c88c98abc7606226b042da1eba77a2b4')
