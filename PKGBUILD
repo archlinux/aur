@@ -1,8 +1,8 @@
 # Maintainer: Harish Rajagopal <harish dot rajagopals at gmail dot com>
 
 _pkgname=regreet
-pkgname="$_pkgname-git"
-pkgver=0.1.0.r0.1353d2a
+pkgname="greetd-$_pkgname-git"
+pkgver=0.1.1.r0.0fb4245
 pkgrel=1
 pkgdesc="Clean and customizable greeter for greetd"
 arch=('x86_64')
@@ -13,6 +13,7 @@ source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 makedepends=(cargo git)
 depends=(greetd gtk4)
+replaces=(regreet-git)
 
 pkgver() {
     cd "$_pkgname"
