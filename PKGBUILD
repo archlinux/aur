@@ -6,7 +6,7 @@
 pkgbase=postgresql-devel
 pkgver=16beta1
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
             '02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a'
             'af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb'
             'cfb3bee0f7fc98c8c81aa3a73398bc0446822af86479b5a8ee0c67faae46ec1c'
-            'e0445d31cbafe6a06af38224d4e6ff976cc8977d140adadc99a2e11f2152a485'
+            '7d2e8243a2c024a57489276bbf8945eb8a1b8762448732d432c56911577f8756'
             '7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12'
             '3e13800ae807ee3c40b7e947770c58d5bf04d6427afd2bb8d2e7ecf839802b07'
             '804e76418eb16edd2a3ac458d01d94a4a496e529064eeb115c28c6532ff8e5a5')
