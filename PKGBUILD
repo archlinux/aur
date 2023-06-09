@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r14.9aaa7c5
+pkgver=r15.8690dbc
 pkgrel=1
 pkgdesc="A custom configs for sk-holoiso"
 arch=('any')
@@ -28,7 +28,7 @@ package() {
         install -Dm644 "etc/systemd/system/$service_file" "$pkgdir/etc/systemd/system/$service_file"
     done
 
-    exclude_files=("sk-auto-swap" "sk-efi-mount")
+    exclude_files=("sk-auto-swap" "sk-efi-mount" "sk-resume")
     for exclude_file in "${exclude_files[@]}"; do
         install -Dm755 "usr/bin/$exclude_file" "$pkgdir/usr/bin/$exclude_file"
     done
