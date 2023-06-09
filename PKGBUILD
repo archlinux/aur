@@ -1,9 +1,9 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=thunderbird-eas-4-tbsync
-_file=1021719
+_file=1021786
 _name=provider_fur_exchange_activesync
-pkgver=4.2
+pkgver=4.3
 pkgrel=1
 pkgdesc='Provider for Exchange ActiveSync Version History'
 arch=('any')
@@ -14,10 +14,9 @@ depends=(
   'thunderbird>=102'
   'thunderbird<103'
 )
-source=("${_name}-${pkgver}.xpi::https://github.com/jobisoft/${_name}/releases/download/v${pkgver}/${_name}.xpi")
 source=("https://addons.thunderbird.net/thunderbird/downloads/file/${_file}/${_name}-${pkgver}-tb.xpi")
 noextract=("${_name}-${pkgver}-tb.xpi")
-sha512sums=('22627731e54d7eaa2377398a94d2a6653c239229c56c9e4e73e5a3d86aece1f9d3ecf4570b11de98d8f88a7f1929237328e5a6e2c26c1e1b75ec5e2f33596855')
+sha512sums=('e503b1c37c754431c12776894f407c6f9fe9096e1673ed7ca8d4c1e92cd5f354f70653db8894eeced763d68572dd3d9d5c616c99a9c1906878ce8c31e93fb17f')
 
 package() {
   _extension_id="eas4tbsync@jobisoft.de"
