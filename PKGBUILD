@@ -1,28 +1,33 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
-pkgname=gnatcoll-xref
 epoch=1
-pkgver=23.0.0
+
+pkgname=gnatcoll-xref
+pkgver=24.0w
 pkgrel=1
-_repo_name=gnatcoll-db
-
 pkgdesc='GNAT Components Collection - Tool to support parsing *.ali and *.gli files.'
-url='https://github.com/AdaCore/gnatcoll-db'
-arch=('i686' 'x86_64')
-license=('GPL3' 'custom')
 
-depends=('gnatcoll-iconv' 'gnatcoll-sqlite')
-makedepends=('gprbuild')
+url=https://github.com/AdaCore/gnatcoll-db
+arch=(i686 x86_64)
+license=(GPL3 custom)
 
-source=("$_repo_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0a4cc9f9c034be34ca4d08ae2c8fedce66c462719a2e1035d916559f6eee7a4d')
+depends=(gnatcoll-iconv gnatcoll-sqlite)
+makedepends=(gprbuild)
+
+_repo_name=gnatcoll-db
+_source_dir=$_repo_name-$pkgver-20230428-1640B-src
+
+source=(file:///opt/gnatstudio-sources/$_repo_name-$pkgver-20230324-166CC-src.tar.gz)
+sha256sums=(374adf9064cbdf87c4c3f4cc815d8c0f914820a0caa45edd605545ee7a4c07c2)
+
 
 build()
 {
-    cd "$srcdir/$_repo_name-$pkgver/xref"
+    cd $srcdir/$_source_dir/xref
 
     # Rid flags not used by Ada.
+    #
     CFLAGS="${CFLAGS//-Wformat}"
     CFLAGS="${CFLAGS//-Werror=format-security}"
 
@@ -30,21 +35,25 @@ build()
     make -j1 GPRBUILD_OPTIONS="-R -cargs $CFLAGS -largs $LDFLAGS -gargs"
 }
 
+
 package()
 {
-    cd "$srcdir/$_repo_name-$pkgver/xref"
+    cd $srcdir/$_source_dir/xref
 
     # Make one install at a time to avoid GPRinstall reading/writing to
     # the same installed project files at the same time.
+    #
     make prefix="$pkgdir/usr" install -j1
 
     # Install the license.
-    install -D -m644        \
-       "../COPYING3"        \
-       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+    #
+    install -D -m644      \
+       ../COPYING3        \
+       $pkgdir/usr/share/licenses/$pkgname/COPYING3
 
     # Install the custom license.
-    install -D -m644        \
-       "../COPYING.RUNTIME" \
-       "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
+    #
+    install -D -m644      \
+       ../COPYING.RUNTIME \
+       $pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME
 }
