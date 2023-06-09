@@ -2,23 +2,24 @@
 # Contributor: TBK <aur at jjtc dot eu>
 
 pkgname=termius-beta
-pkgver=7.58.6
+pkgver=7.59.7
 pkgrel=2
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
 arch=('x86_64')
 license=('custom')
-depends=('libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' 'libxss')
+depends=('at-spi2-core' 'gtk3' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss' 'util-linux-libs' 'xdg-utils')
+optdepends=('libappindicator-gtk3')
 makedepends=('squashfs-tools')
 # Get latest version + link from https://snapcraft.io/termius-beta|| snap info termius-beta || run the following
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-beta | jq '.download_url' -r
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-beta | jq '.version' -r
 source=(
-    "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/yyZzRdoyiRz3EM7iuvjhaIjDfnlFJcZs_258.snap"
+    "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/yyZzRdoyiRz3EM7iuvjhaIjDfnlFJcZs_267.snap"
     "termius-beta.desktop"
     "tos.html"
 )
-sha512sums=('ea2527143cf41935f1ea68f16077a65c6b21b4a96c7509cfd57048fa379b99ab920f62ca016338b44cd23643e1d5672e9ac76f49b4a87e96b697dc1944b6ecd2'
+sha512sums=('c120d00309893d74c59f9a727b141b8e725af39235b28526fe00f6796ee02132e2bfa66a5c109b03fab632b19cc2c5eaa98db51ac686f0b26ed7ca11b37dee0a'
             'f626754916d9a07faa6d1b2bbdf34da8385aaf1b29eca3c0007079b06de18a4a3c51007d8b753a0c9d721c9ea48f646d00ac3ec219cb4eb77c4419bba634d34b'
             '53f9c61fba12b72817c5e7f4e0ac520489265fbf425fa46f13129da66632b41a2a128072d9e0e64e37e4e8feb8424bc1c15eed127d630314e6459ceb2dbafb4b')
 
