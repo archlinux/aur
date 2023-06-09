@@ -1,7 +1,8 @@
 _create_latest_symlink() {
-  echo "Creating latest symlink"
+  echo "Creating latest symlink for CLANG_PREFIX/CLANG_VERSION"
 
   cd CLANG_PREFIX
+  rm -f latest
   ln -fs CLANG_VERSION latest
 }
 
