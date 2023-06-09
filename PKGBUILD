@@ -3,8 +3,8 @@
 
 pkgname=kbtui-git
 pkgdesc="Keybase TUI written in Go (git)"
-pkgver=1.0.1.r28.g68ab6db
-pkgrel=2
+pkgver=1.0.1.r31.g709ff33
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/Rudi9719/kbtui"
 license=('GPL3')
