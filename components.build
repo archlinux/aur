@@ -4,9 +4,7 @@ shared/exec
 shared/shllang
 shared/winbrand
 shell/run
-shell/start
-shell/systray
-shell/taskbuttons
+shell/taskband
 shell/winver
 windows/notepad
 themes/luna/blue
