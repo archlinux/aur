@@ -3,7 +3,7 @@
 
 _pkgname="llm"
 pkgname="${_pkgname}-git"
-pkgver=r572.8a8076f
+pkgver=r734.4b6366c
 pkgrel=1
 pkgdesc="Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙"
 arch=(any)
@@ -15,7 +15,7 @@ provides=(llm)
 conflicts=(llm)
 replaces=(llama-cli)
 source=("git+${url}"
-        "git+https://github.com/ggerganov/ggml"
+        "git+https://github.com/ggerganov/llama.cpp"
         )
 sha256sums=('SKIP' 'SKIP')
 
@@ -23,8 +23,12 @@ sha256sums=('SKIP' 'SKIP')
 prepare() {
     cd "${srcdir}/${_pkgname}"
     git submodule init
-    git config submodule.crates/ggml/sys/ggml.url "${srcdir}/ggml"
+    git config submodule.crates/ggml/sys/llama-cpp.url "${srcdir}/llama.cpp"
     git -c protocol.file.allow=always submodule update
+    export RUSTUP_TOOLCHAIN=stable
+    cargo update
+    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+    cat LICENSE-* > LICENSE
 }
 
 pkgver() {
@@ -34,13 +38,17 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    cargo build --release
-    cat LICENSE-* > LICENSE
+    RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target cargo build --frozen --release --all-features
+}
+
+check () {
+    cd "${srcdir}/${_pkgname}"
+    RUSTUP_TOOLCHAIN=stable cargo test --frozen --all-features --workspace
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    install -Dm755 target/release/llm -t "${pkgdir}/usr/bin/"
+    install -Dm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}/"
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
