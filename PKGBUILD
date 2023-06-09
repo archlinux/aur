@@ -1,7 +1,7 @@
 # Maintainer: myname <mebitek@zohomail.eu>
 pkgname=tui-deck
 _gitname=tui-deck
-pkgver=0.5.8
+pkgver=0.5.8.r1.g95a83ce
 pkgrel=1
 pkgdesc="A TUI frontend for Nextcloud Deck app written in GO using the Rich Interactive Widgets for Terminal UIs"
 url="https://github.com/mebitek/tui-deck"
@@ -25,4 +25,9 @@ build() {
 package() {
 	cd $_gitname
 	install -Dm755 --no-target-directory "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+}
+
+pkgver() {
+	cd "$_gitname"
+	git describe --long --abbrev=7 --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
