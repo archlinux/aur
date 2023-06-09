@@ -1,12 +1,12 @@
 _pkgname=rime-ice
 pkgname=rime-ice
 pkgver=2023_06_07T22_42_01Z
-pkgrel=1
+pkgrel=2
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库 | (自动版本号/减少编译)"
 arch=("any")
 url="https://github.com/iDvel/rime-ice"
 license=("GPL3")
-makedepends=("librime" "rime-prelude")
+makedepends=("librime" "rime-prelude" "git")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "rime-emoji-git" "rime-emoji")
 source=("${_pkgname}::git+${url}.git")
