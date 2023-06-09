@@ -1,6 +1,6 @@
 pkgbase = libvss
 	pkgdesc = A high level string and text processing library for Ada.
-	pkgver = 23.0.0
+	pkgver = 24.0w
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/VSS
@@ -8,7 +8,7 @@ pkgbase = libvss
 	arch = x86_64
 	license = Apache
 	makedepends = gprbuild
-	source = libvss-23.0.0.tar.gz::https://github.com/AdaCore/VSS/archive/v23.0.0.tar.gz
-	sha256sums = 94f782d629c2817ae3755461fa8f813a00c8576e91388606bc772ff708efec28
+	source = file:///opt/gnatstudio-sources/vss-24.0w-20230428-1628B-src.tar.gz
+	sha256sums = 560c3ee35e710dacf2a0f929ab23c220ba0c0d1e72e3e6a14793a58a96553776
 
 pkgname = libvss
