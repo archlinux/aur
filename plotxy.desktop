@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=plotxy %U
+Comment=A plotting  and post-processing program
+Terminal=false
+Name=PlotXY
+Icon=/usr/share/pixmaps/plotxy.png
+Categories=Science;Education;

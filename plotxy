@@ -1,0 +1,12 @@
+#!/bin/sh
+# script to run PlotXY
+# usage:
+# runplotxy file <enter>
+#
+cd ${1%/*}
+
+/opt/plotxy/PlotXY ${1##*/}
+
+
+
+
