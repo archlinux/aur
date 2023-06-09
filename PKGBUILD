@@ -8,21 +8,24 @@
 pkgname=darktable-git
 _gitname=darktable
 pkgver=4.3.0.r2508.gb320d1ed58
-pkgrel=1
+pkgrel=2
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
 url=http://www.darktable.org/
 license=('GPL3')
-depends=(pugixml libjpeg-turbo colord-gtk libgphoto2 openexr lensfun iso-codes zlib
-         exiv2 flickcurl openjpeg2 graphicsmagick lua53 osm-gps-map libsecret openmp
-         gmic libavif)
-optdepends=('dcraw: base curve script'
-            'perl-image-exiftool: base curve script'
-            'imagemagick: base curve and noise profile scripts'
-            'ghostscript: noise profile script'
-            'gnuplot: noise profile script'
+depends=(
+  pugixml libjpeg-turbo colord-gtk libgphoto2 openexr lensfun iso-codes zlib
+  exiv2 openjpeg2 graphicsmagick lua osm-gps-map libsecret openmp gmic libavif
+  jasper libjxl
 )
-makedepends=(git cmake intltool desktop-file-utils llvm clang python-jsonschema libwebp perl-pod-parser)
+optdepends=(
+  'dcraw: base curve script'
+  'perl-image-exiftool: base curve script'
+  'imagemagick: base curve and noise profile scripts'
+  'ghostscript: noise profile script'
+  'gnuplot: noise profile script'
+)
+makedepends=(git cmake intltool desktop-file-utils llvm clang python-jsonschema libwebp)
 conflicts=(darktable)
 provides=(darktable)
 install=darktable.install
@@ -30,7 +33,7 @@ options=(!emptydirs !libtool)
 source=(
   'git+https://github.com/darktable-org/darktable.git'
   'OpenCL-Headers.git::git+https://github.com/KhronosGroup/OpenCL-Headers.git'
-  "LibRaw.git::git+https://github.com/LibRaw/LibRaw.git"
+  'LibRaw.git::git+https://github.com/LibRaw/LibRaw.git'
   'libxcf.git::git+https://github.com/houz/libxcf.git'
   'rawspeed.git::git+https://github.com/darktable-org/rawspeed.git'
   'whereami::git+https://github.com/gpakosz/whereami'
