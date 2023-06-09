@@ -1,6 +1,6 @@
 # Maintainer: Julian Schmidhuber <aur at schmiddi dot anonaddy dot com>
 pkgname=tubefeeder-git
-pkgver=1.8.5.r2.9a0f55a
+pkgver=1.10.0.r0.7b19f44
 pkgrel=1
 pkgdesc="A Youtube, Lbry and Peertube client made for the Pinephone"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 groups=()
 depends=('libadwaita')
 optdepends=('mpv: Play the videos', 'youtube-dl: Play and download the videos')
-makedepends=('git' 'cargo' 'meson')
+makedepends=('git' 'rust' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()

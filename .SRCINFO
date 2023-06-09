@@ -1,13 +1,13 @@
 pkgbase = tubefeeder-git
 	pkgdesc = A Youtube, Lbry and Peertube client made for the Pinephone
-	pkgver = 1.8.5.r2.9a0f55a
+	pkgver = 1.10.0.r0.7b19f44
 	pkgrel = 1
 	url = https://www.tubefeeder.de
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	makedepends = git
-	makedepends = cargo
+	makedepends = rust
 	makedepends = meson
 	depends = libadwaita
 	optdepends = mpv: Play the videos,
