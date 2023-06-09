@@ -1,8 +1,8 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 # Contributor: Victoria Mitchell <victoria@quietmisdreavus.net>
 pkgname='git-htmldocs'
-pkgver='2.40.1'
-pkgrel=2
+pkgver='2.41.0'
+pkgrel=1
 pkgdesc='HTML documentation files for Git'
 arch=('any')
 url='https://git-scm.com/'
@@ -13,7 +13,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 source=("https://www.kernel.org/pub/software/scm/git/$pkgname-$pkgver.tar."{xz,sign})
-sha256sums=('8c08b31087566e719f6a7d16bb102255a8b9b970aefba6e306d6340eefe368ee'
+sha256sums=('0cb2d4a09270eede7c1b686e2dfeac9bffef9e42c117a7e120f3cbb3e665d286'
             'SKIP')
 validpgpkeys=('96E07AF25771955980DAD10020D04E5A713660A7') # Junio C Hamano
 
