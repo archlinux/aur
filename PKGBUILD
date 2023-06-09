@@ -14,7 +14,7 @@ source=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver.tar.xz")
 sha256sums=('c992ebd2f43c99ab4a84a6ffce692d9aae4cc2571536a5854ae2e79b6951e78a')
 
 prepare() {
-  # Edit the path in .json
+  # Edit the lib path in the latencyflex.json file
   cd $_pkgname-v$pkgver/layer/usr/share/vulkan/implicit_layer.d
   sed -i -E "s|                \"library_path\": \"/usr/lib/x86_64-linux-gnu/liblatencyflex_layer.so\",|                \"library_path\": \"/usr/lib/liblatencyflex_layer.so\",|g" $_pkgname.json
 }
