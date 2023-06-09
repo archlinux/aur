@@ -1,23 +1,37 @@
 # Maintainer: myname <mebitek@zohomail.eu>
 pkgname=tui-deck
 _gitname=tui-deck
-pkgver=0.5.8
+pkgver=r77.95a83ce
 pkgrel=1
 pkgdesc="A TUI frontend for Nextcloud Deck app written in GO using the Rich Interactive Widgets for Terminal UIs"
 url="https://github.com/mebitek/tui-deck"
 license=("GPL3")
-source=("git+$url#tag=$pkgver")
+source=("git+$url")
 md5sums=("SKIP")
 arch=("x86_64")
-depends=("bash")
+provides=(tui-deck)
+conflicts=(tui-deck)
 makedepends=("git" "go")
 
 build() {
 	cd $_gitname
-	go build -o ${pkgname} -ldflags="-s -w"
+	go build \
+		-gcflags "all=-trimpath=${PWD}" \
+		-asmflags "all=-trimpath=${PWD}" \
+		-ldflags "-extldflags ${LDFLAGS}" \
+		-o $_gitname
 }
 
 package() {
 	cd $_gitname
 	install -Dm755 --no-target-directory "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+}
+
+pkgver() {
+	cd $_gitname
+	(
+		set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
