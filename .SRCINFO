@@ -1,16 +1,17 @@
 pkgbase = thedesk-xdg-utils
-	pkgver = beta1
+	pkgdesc = XDG Utilities for theDesk
+	pkgver = 1.0
 	pkgrel = 0
-	url = https://github.com/vicr123/the24
+	url = https://github.com/theCheeseboard/thedesk-xdg-utils
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
-	makedepends = qt5-tools
-	depends = qt5-base
-	depends = qt5-svg
-	depends = the-libs
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = cmake
+	makedepends = clang
 	depends = libtdesktopenvironment
-	source = thedesk-xdg-utils-beta1::https://github.com/vicr123/thedesk-xdg-utils/archive/refs/tags/beta1.tar.gz
-	sha256sums = 348f9378acc9035e1f04ea8962de482a092c7c578c7dd9fcf2f03e3581652a32
+	source = thedesk-xdg-utils-1.0::https://github.com/theCheeseboard/thedesk-xdg-utils/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 550549f9bd82e01d18ad55b16c41496755f9955ea76f15fde6e7c96462c51f6d
 
 pkgname = thedesk-xdg-utils
-
