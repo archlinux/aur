@@ -9,7 +9,7 @@ pkgname=wine-ge-custom
 _srctag=GE-Proton8-8
 _commit=7a126afa0957743b067181b0fa82af60e2ac412b
 pkgver=${_srctag//-/.}
-pkgrel=1
+pkgrel=2
 epoch=1
 
 #_winever=${pkgver%.*}
@@ -163,7 +163,6 @@ build() {
     --with-alsa \
     --without-oss \
     --disable-winemenubuilder \
-    --disable-win16 \
     --disable-tests \
     --enable-win64 \
     --with-xattr
@@ -187,7 +186,6 @@ build() {
     --with-alsa \
     --without-oss \
     --disable-winemenubuilder \
-    --disable-win16 \
     --disable-tests \
     --with-xattr \
     --libdir=/usr/lib32 \
