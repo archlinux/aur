@@ -1,0 +1,17 @@
+pkgbase = pyproject-appimage
+	pkgdesc = Generate AppImages from your Python projects
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://codeberg.org/JakobDev/pyproject-appimage
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	source = pyproject-appimage-3.0.tar.gz::https://codeberg.org/JakobDev/pyproject-appimage/archive/3.0.tar.gz
+	sha256sums = 6e578762a605e1cd9ecb5acd13a71a11a0ad9a44c6c2aee1eb86c3451b3eedaa
+
+pkgname = pyproject-appimage
