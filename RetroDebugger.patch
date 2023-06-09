@@ -20,16 +20,3 @@ index 827dd91..d197d89 100644
      dl
      m
      pthread
-diff --git a/src/Plugins/C64D_InitPlugins.cpp b/src/Plugins/C64D_InitPlugins.cpp
-index 05c08d3..bc02324 100644
---- a/src/Plugins/C64D_InitPlugins.cpp
-+++ b/src/Plugins/C64D_InitPlugins.cpp
-@@ -7,7 +7,7 @@
- //#include "C64DebuggerPluginGoatTracker.h"
- //#include "C64DebuggerPluginDNDK.h"
- #include "C64DebuggerPluginCommando.h"
--#include "C64DebuggerPluginShowPic.h"
-+//#include "C64DebuggerPluginShowPic.h"
- //#include "C64DebuggerPluginMapper.h"
- //#include "C64DebuggerPluginRasterBars.h"
- //#include "C64DebuggerPluginPicFader.h"

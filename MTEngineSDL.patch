@@ -10,18 +10,6 @@ index 5c927b1..82e137d 100755
  
      "${CMAKE_CURRENT_SOURCE_DIR}/./src/Engine/Libs/jpeg/jpeg-9a/jcapimin.c"
      "${CMAKE_CURRENT_SOURCE_DIR}/./src/Engine/Libs/jpeg/jpeg-9a/transupp.c"
-diff --git a/src/Engine/Libs/hjson/hjson.h b/src/Engine/Libs/hjson/hjson.h
-index 18f5abe..79f399b 100644
---- a/src/Engine/Libs/hjson/hjson.h
-+++ b/src/Engine/Libs/hjson/hjson.h
-@@ -5,6 +5,7 @@
- #include <memory>
- #include <map>
- #include <stdexcept>
-+#include <cstdint>
- 
- #define HJSON_OP_DECL_VAL(_T, _O) \
- friend Value operator _O(_T, const Value&); \
 diff --git a/src/Engine/Libs/implot/implot.cpp b/src/Engine/Libs/implot/implot.cpp
 index c6e420e..e7c494b 100644
 --- a/src/Engine/Libs/implot/implot.cpp
