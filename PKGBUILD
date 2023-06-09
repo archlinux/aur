@@ -3,7 +3,7 @@
 _gecko_id='wappalyzer@crunchlabz.com'
 _plugin_name='wappalyzer'
 pkgname="firefox-extension-${_plugin_name}"
-pkgver=6.10.65
+pkgver=6.10.66
 pkgrel=1
 pkgdesc='Identify technology on websites'
 arch=('any')
@@ -19,7 +19,7 @@ source=(
 )
 
 sha512sums=(
-  '79ec07e6cf09e0b4e12115ff436a186263959e69fe2ed4ce0bf759df7f499ef08d638bccdd74b4018f18f8fc9e437480c38200e796e9567440e3942a5833195f'
+  '8c98c230beffaa935a37ecd82bcc57fddfaac98bc4a3f7bb607ba6204a9b669840ea0958573849d8e20818b20dd2ea90066900a943e740ce7c83c158e1f178ad'
 )
 
 build() {
