@@ -10,10 +10,10 @@ pkgbase = mcbelauncher-bin
 	provides = mcbelauncher
 	noextract = mcbelauncher-bin-0.10.0-716.AppImage
 	options = !strip
-	source = mcbelauncher-bin-0.10.0-716.AppImage::https://github.com/minecraft-linux/appimage-builder/releases/download/v0.10.0-716/Minecraft_Bedrock_Launcher-arm64-v0.10.0.716.AppImage
+	source = mcbelauncher-bin-0.10.0-716.AppImage::https://github.com/minecraft-linux/appimage-builder/releases/download/v0.10.0-716/Minecraft_Bedrock_Launcher-x86_64-v0.10.0.716.AppImage
 	source = mcbelauncher-bin.png::https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/98/Bedrock_Edition_Google_Play_icon.png
 	source = mcbelauncher.desktop
-	sha256sums = f0005092c6a11a0055da13a60ea0b4b09abcdac4c598fd62296cf1211ee3fccc
+	sha256sums = 9072496aed563004dbab3e4bd5049445b1bb382f9c1d5e2d2af76894dce5b40e
 	sha256sums = d676e742b549cf7b4698cb9dc5be5f1734bc59313958cf9a7b7acd92a5ff3d76
 	sha256sums = 3ae613839cf1020192527621f97b8958394a2ff9dac6567cb16c5e76f0386e2d
 
