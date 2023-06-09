@@ -1,21 +1,20 @@
 pkgbase = xdg-desktop-portal-gtk-git
-	pkgdesc = A GTK+ backend for xdg-desktop-portal
-	pkgver = 1.10.0+5+gcd51644
+	pkgdesc = A GTK backend for xdg-desktop-portal
+	pkgver = 1.14.1+13+gb6a8b0a
 	pkgrel = 1
 	url = https://github.com/flatpak/xdg-desktop-portal-gtk
 	arch = x86_64
 	license = LGPL
 	makedepends = git
-	makedepends = python
 	makedepends = xdg-desktop-portal
+	makedepends = autoconf
+	makedepends = automake
 	depends = gtk3
-	depends = gnome-desktop
-	depends = gnome-keyring
 	optdepends = evince: Print preview
 	provides = xdg-desktop-portal-gtk
 	provides = xdg-desktop-portal-impl
 	conflicts = xdg-desktop-portal-gtk
 	source = git+https://github.com/flatpak/xdg-desktop-portal-gtk
-	b2sums = SKIP
+	sha256sums = SKIP
 
 pkgname = xdg-desktop-portal-gtk-git
