@@ -1,17 +1,17 @@
 pkgbase = theheartbeat
 	pkgdesc = System Monitor
-	pkgver = 1.1
+	pkgver = 2.0
 	pkgrel = 0
-	url = https://github.com/vicr123/theheartbeat
+	url = https://github.com/theCheeseboard/theheartbeat
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
-	makedepends = qt5-tools
-	depends = xdg-utils
-	depends = qt5-base
-	depends = qt5-x11extras
-	depends = the-libs
-	source = theheartbeat-1.1::https://github.com/vicr123/theHeartbeat/archive/v1.1.tar.gz
-	md5sums = SKIP
-	sha256sums = f5a1792d15dd275fd12a6f496f9c7557e190ed96c8b92a9c5bbb3e469d3c3ec0
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = cmake
+	makedepends = clang
+	depends = libcontemporary
+	source = theheartbeat::https://github.com/theCheeseboard/theHeartbeat/archive/v2.0.tar.gz
+	sha256sums = a1e98b2bf415a50e289630f0f0c160fdf4c21728e1c768f86375481101a49362
 
 pkgname = theheartbeat

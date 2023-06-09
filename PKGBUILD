@@ -1,24 +1,22 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theheartbeat
-pkgver=1.1
+pkgver=2.0
 pkgrel=0
 pkgdesc="System Monitor"
-arch=("x86_64")
-url="https://github.com/vicr123/theheartbeat"
+arch=("x86_64" "aarch64")
+url="https://github.com/theCheeseboard/theheartbeat"
 license=('GPL3')
-depends=('xdg-utils' 'qt5-base' 'qt5-x11extras' 'the-libs')
-makedepends=('qt5-tools')
-source=("$pkgname-$pkgver"::'https://github.com/vicr123/theHeartbeat/archive/v1.1.tar.gz')
-md5sums=('SKIP')
-sha256sums=('f5a1792d15dd275fd12a6f496f9c7557e190ed96c8b92a9c5bbb3e469d3c3ec0')
+depends=('libcontemporary')
+makedepends=('git' 'qt6-tools' 'cmake' 'clang')
+source=("theheartbeat"::"https://github.com/theCheeseboard/theHeartbeat/archive/v$pkgver.tar.gz")
+sha256sums=('a1e98b2bf415a50e289630f0f0c160fdf4c21728e1c768f86375481101a49362')
 
 build() {
-	cd "theHeartbeat-$pkgver"
-	qmake
-	make
+	cmake -B build -S "theHeartbeat-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 
 package() {
-	cd "theHeartbeat-$pkgver"
-	make install INSTALL_ROOT=$pkgdir
+	DESTDIR="$pkgdir" cmake --install "build"
 }
