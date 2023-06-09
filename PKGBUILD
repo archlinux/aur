@@ -9,7 +9,7 @@ url="https://github.com/ciderapp/${pkgname}.git"
 license=(AGPL3)
 depends=(gtk3 nss alsa-lib libxcrypt-compat)
 optdepends=('libnotify: Playback notifications')
-makedepends=(npm nvm fontconfig yarn)
+makedepends=(nvm fontconfig)
 provides=(${pkgname})
 conflicts=(${pkgname})
 source_x86_64=("https://github.com/ciderapp/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -30,6 +30,8 @@ prepare() {
   cd "${srcdir}/${pkgname^}-${pkgver}"
   _ensure_local_nvm
   nvm install
+  corepack enable
+  corepack prepare yarn@stable --activate
 }
 
 build() {
@@ -42,9 +44,12 @@ build() {
 package() {
   # Extract package data
   bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}/
-  mv "${pkgdir}/opt/${pkgname^}" "${pkgdir}/opt/${pkgname}"
+  # mv "${pkgdir}/opt/${pkgname^}" "${pkgdir}/opt/${pkgname}" # Disabled as breaks desktop file
 
   # Symlink the binary
   install -d "$pkgdir/usr/bin/"
-  ln -sf "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  ln -sf "/opt/${pkgname^}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+
+  # Echo documentation to user
+  echo "To change the port that Cider uses, CIDER_PORT environment variable can be set."
 }
