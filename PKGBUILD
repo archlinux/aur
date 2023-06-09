@@ -2,7 +2,7 @@
 
 pkgname=snmpb
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="SnmpB is a desktop SNMP browser and MIB editor written in Qt."
 arch=(x86_64)
 url="https://sourceforge.net/projects/snmpb/"
@@ -50,9 +50,6 @@ prepare() {
         cp -r "libtomcrypt-1.18.2"/* "$pkgname-$pkgver/libtomcrypt"
         cp -r "qwt-6.2.0"/* "$pkgname-$pkgver/qwt"
 
-        # prepare libtomcrypt src
-        cat "$srcdir/$pkgname-$pkgver/libtomcrypt/makefile.unix" > "$srcdir/$pkgname-$pkgver/libtomcrypt/makefile"
-
         # prepare libsmi src
         cd "$srcdir/$pkgname-$pkgver/libsmi"
         ./autogen.sh
@@ -68,10 +65,10 @@ prepare() {
 
         # apply patches
         cd "$srcdir/$pkgname-$pkgver"
-        patch --forward --strip=1 --input="${srcdir}/libsmi.patch"
-        patch --forward --strip=1 --binary --input="${srcdir}/qwt.patch"
-        patch --forward --strip=1 --input="${srcdir}/graph.patch"
-        patch --forward --strip=1 --input="${srcdir}/Makefile.patch"
+        patch -N -p1 -i "${srcdir}/libsmi.patch"
+        patch -N -p1 --binary -i "${srcdir}/qwt.patch"
+        patch -N -p1 -i "${srcdir}/graph.patch"
+        patch -N -p1 -i "${srcdir}/Makefile.patch"
 }
 
 build() {

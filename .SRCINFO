@@ -1,7 +1,7 @@
 pkgbase = snmpb
 	pkgdesc = SnmpB is a desktop SNMP browser and MIB editor written in Qt.
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sourceforge.net/projects/snmpb/
 	arch = x86_64
 	license = GPL2
