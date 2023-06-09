@@ -1,10 +1,13 @@
 pkgbase = gopherjs
-	pkgver = 1.13
+	pkgdesc = A compiler from Go to JavaScript for running Go code in a browser
+	pkgver = 1.18.0_beta2
 	pkgrel = 1
+	url = https://github.com/gopherjs/gopherjs
 	arch = any
+	license = BSD2
 	makedepends = go
-	source = git+https://github.com/gopherjs/gopherjs#branch=go1.13
-	md5sums = SKIP
+	depends = glibc
+	source = gopherjs-1.18.0_beta2.tar.gz::https://github.com/gopherjs/gopherjs/archive/refs/tags/v1.18.0-beta2+go1.18.5.tar.gz
+	md5sums = c38febaefce9db41702692ded304bd38
 
 pkgname = gopherjs
-
