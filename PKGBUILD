@@ -8,7 +8,6 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Flamelab <panosfilip@gmail.com
 
-
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
 # Merge Requests List: ()
@@ -17,40 +16,76 @@ _merge_requests_to_use=()
 ## Enable the `check()` operation (Disabled if not set)
 : "${_enable_check:=""}"
 
-
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=44.1
-pkgrel=2
+pkgver=44.2
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64 aarch64)
 license=(GPL)
-depends=(accountsservice gcr-4 gjs upower gnome-session gtk4
-         gnome-settings-daemon gsettings-desktop-schemas libcanberra-pulse
-         libgdm libsecret mutter libnma unzip libibus gnome-autoar
-         gnome-disk-utility libsoup3 libgweather-4)
-makedepends=(gtk-doc gnome-control-center evolution-data-server
-             gobject-introspection git meson sassc asciidoc bash-completion)
+depends=(
+  accountsservice
+  gcr-4
+  gjs
+  gnome-autoar
+  gnome-session
+  gnome-settings-daemon
+  gsettings-desktop-schemas
+  gtk4
+  libadwaita
+  libcanberra-pulse
+  libgdm
+  libgweather-4
+  libibus
+  libnma-gtk4
+  libsecret
+  libsoup3
+  mutter
+  unzip
+  upower
+)
+makedepends=(
+  asciidoc
+  bash-completion
+  evolution-data-server
+  git
+  gnome-control-center
+  gobject-introspection
+  gtk-doc
+  meson
+  sassc
+)
 if [ -n "$_enable_check" ]; then
-  checkdepends=(xorg-server-xvfb python-dbusmock xorg-server-xvfb)
+  checkdepends=(
+    appstream-glib
+    python-dbusmock
+    xorg-server-xvfb
+  )
 fi
-optdepends=('gnome-control-center: System settings'
-            'evolution-data-server: Evolution calendar integration'
-            'gst-plugins-good: Screen recording'
-            'gst-plugin-pipewire: Screen recording'
-            'gnome-bluetooth-3.0: Bluetooth support')
+optdepends=(
+  'evolution-data-server: Evolution calendar integration'
+  'gnome-bluetooth-3.0: Bluetooth support'
+  'gnome-control-center: System settings'
+  'gnome-disk-utility: Mount with keyfiles'
+  'gst-plugin-pipewire: Screen recording'
+  'gst-plugins-good: Screen recording'
+  'power-profiles-daemon: Power profile switching'
+  'switcheroo-control: Multi-GPU support'
+)
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
-_commit=b0ca64e7775225b7c5d049571a44ef40bf516406  # tags/44.1^0
-source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
-sha256sums=('SKIP'
-            'SKIP')
+_commit=071a47ba27d7117f56fd965ad2a9675d1ab823f6 # tags/44.2^0
+source=(
+  "git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
+  "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+)
+b2sums=('SKIP'
+  'SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -68,7 +103,7 @@ pick_mr() {
         echo "Reverting $1..."
         git revert "$2" --no-commit
       elif [ "$3" = "patch" ]; then
-	if [ -e ../"$2" ]; then 
+        if [ -e ../"$2" ]; then
           echo "Patching with $2..."
           patch -Np1 -i ../"$2"
         else
@@ -143,8 +178,8 @@ build() {
 }
 
 _check() (
-  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/rdir}"
-  export XDG_RUNTIME_DIR
+  export XDG_RUNTIME_DIR="$PWD/rdir"
+  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
 
   meson test -C build --print-errorlogs -t 3
 )
