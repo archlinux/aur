@@ -8,19 +8,26 @@ _pkgbase=cryptsetup
 variant="sigfile"
 _pkgname="${_pkgbase}-${variant}"
 pkgname="${_pkgname}-git"
-pkgver=2.4.3
-pkgrel=5
-pkgdesc='Userspace setup tool for transparent encryption of block devices using dm-crypt (with edited mkinitcpio hook to check file system signature before attempting to open it).'
+pkgver=2.6.1
+pkgrel=1
+_pkgdesc=('Userspace setup tool for transparent encryption of block devices using dm-crypt '
+	 '(with edited mkinitcpio hook to check file system signature before attempting to open it).')
+pkgdesc="${_pkgdesc[*]}"
 arch=('i686' 'pentium4' 'x86_64')
 license=('GPL')
 url='https://gitlab.com/cryptsetup/cryptsetup/'
 depends=('device-mapper'
+	 'libdevmapper.so'
          'openssl'
          'popt'
          'util-linux-libs'
+	 'libuuid.so'
          'json-c'
-         'argon2')
-makedepends=('util-linux')
+	 'libjson-c.so'
+         'argon2'
+         'libargon2.so')
+makedepends=('util-linux'
+	     'asciidoctor')
 provides=('libcryptsetup.so=12-32'
           'libcryptsetup.so'
 	  "${_pkgbase}-nested-cryptkey"
@@ -35,7 +42,7 @@ source=("https://www.kernel.org/pub/linux/utils/${_pkgbase}/v${pkgver%.*}/${_pkg
         'hooks-encrypt'
         'install-encrypt'
         'install-sd-encrypt')
-sha256sums=("fc0df945188172264ec5bf1d0bda08264fadc8a3f856d47eba91f31fe354b507"
+sha256sums=('410ded65a1072ab9c8e41added37b9729c087fef4d2db02bb4ef529ad6da4693'
 	    "SKIP"
 	    "SKIP"
 	    "817686b47e5ffd32913bcae7efe717f3377a48062b6311549d4440cfd3eadf17"
@@ -62,7 +69,7 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # install docs
-  install -D -m0644 -t "${pkgdir}"/usr/share/doc/cryptsetup/ FAQ docs/{Keyring,LUKS2-locking}.txt
+  install -D -m0644 -t "${pkgdir}"/usr/share/doc/cryptsetup/ FAQ.md docs/{Keyring,LUKS2-locking}.txt
 
   # install hook
   install -D -m0644 "${srcdir}"/hooks-encrypt "${pkgdir}"/usr/lib/initcpio/hooks/encrypt
