@@ -1,0 +1,48 @@
+[Unit]
+Description=A tiny, self-contained, configurable paste bin and URL shortener
+Documentation=https://github.com/szabodanika/microbin
+After=network.target
+
+[Service]
+# hardening
+ReadWritePaths="/var/lib/microbin/"
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+PrivateDevices=true
+DevicePolicy=closed
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+ProtectHostname=true
+PrivateTmp=true
+ProtectClock=true
+LockPersonality=true
+RestrictNamespaces=true
+RestrictRealtime=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+ProtectHome=true
+RemoveIPC=true
+RestrictSUIDSGID=true
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+# enable for 1-1024 port listening
+#AmbientCapabilities=CAP_NET_BIND_SERVICE
+# enable to specify a higher limit for open files/connections
+#LimitNOFILE=1000000
+
+User=http
+Group=http
+StateDirectory=microbin
+WorkingDirectory=/var/lib/microbin
+EnvironmentFile=/etc/microbin.conf
+ExecStart=microbin
+Restart=on-failure
+KillSignal=SIGINT
+
+[Install]
+WantedBy=default.target
