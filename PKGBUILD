@@ -1,28 +1,31 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=ffmpeg-normalize-git
-pkgver=1.22.9.r1.gd375ad0
+pkgver=1.27.3.r5.ge95d669
 pkgrel=1
-pkgdesc="Normalize loudness of audio and video files using FFmpeg"
-arch=('any')
-url="https://github.com/slhck/ffmpeg-normalize"
-license=('MIT')
-depends=('ffmpeg' 'python-ffmpeg-progress-yield')
-checkdepends=('python-pytest')
-makedepends=('git' 'python-setuptools')
+pkgdesc='Normalize loudness of audio and video files using FFmpeg'
+arch=(any)
+url=https://github.com/slhck/ffmpeg-normalize
+license=(MIT)
+depends=(ffmpeg python-colorlog python-ffmpeg-progress-yield)
+checkdepends=(python-pytest)
+makedepends=(git python-build python-installer python-wheel)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C $pkgname describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  git -C $pkgname clean -dfx
 }
 
 build() {
   cd $pkgname
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -32,6 +35,6 @@ check() {
 
 package() {
   cd $pkgname
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
