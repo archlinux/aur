@@ -17,7 +17,7 @@ pkgbase = bitwig-studio-earlyaccess
 	conflicts = bitwig-8-track
 	conflicts = bitwig-studio
 	options = !strip
-	source = https://downloads.bitwig.com/5.0%20Beta%210/bitwig-studio-5.0-beta-10.deb
+	source = https://downloads.bitwig.com/5.0%20Beta%2010/bitwig-studio-5.0-beta-10.deb
 	sha256sums = b4d82b927d01d5d6ef307b5d9262531e48a574048119d806ad0e752008b9a0ed
 
 pkgname = bitwig-studio-earlyaccess
