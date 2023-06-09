@@ -1,60 +1,74 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
+_pkg_networkmanager='networkmanager-qt6'
+_pkg_modemmanager='modemmanager-qt6'
+_pkg_bluez='bluez-qt6'
+_pkg_pulseaudio='pulseaudio-qt6-git'
+_pkg_polkit='polkit-qt6-git'
+
 pkgname=('thedesk' 'td-polkitagent' 'xdg-desktop-portal-td' 'thedesk-platform' 'libthedesk')
-pkgver=rc1
-pkgrel=1
+pkgver=1.0
+pkgrel=0
 pkgdesc="Desktop Environment built on Qt"
-arch=("x86_64")
-url="https://github.com/vicr123/thedesk"
+arch=("x86_64" "aarch64")
+url="https://github.com/theCheeseboard/thedesk"
 license=('GPL3')
-makedepends=('polkit-qt5' 'qt5-tools' 'the-libs' 'libtdesktopenvironment' 'pulseaudio-qt' 'libx11' 'libxi' 'xf86-input-libinput' 'networkmanager-qt' 'modemmanager-qt' 'qt5-location' 'libtwebservices' 'bluez-qt' 'qrencode' 'thefile')
-source=("thedesk-$pkgver"::'https://github.com/vicr123/thedesk/archive/rc1.tar.gz')
-sha256sums=('e0a8320d4d6aacb5281698edb29f07563620773d371da565f30b7722f93d4681')
+makedepends=('git' 'qt6-tools' 'qt6-positioning' 'cmake' 'clang' $_pkg_polkit 'libtdesktopenvironment' $_pkg_pulseaudio $_pkg_networkmanager $_pkg_modemmanager $_pkg_bluez 'qrencode' 'libthefile' 'contemporary-icons' 'contemporary-widgets' 'ttf-contemporary')
+source=("thedesk-$pkgver"::"https://github.com/theCheeseboard/thedesk/archive/refs/tags/v$pkgver.tar.gz"
+        "kf6-patch.patch")
+sha256sums=("d9594530e6efce439d98888f9e0ea4e4ec23e9eee1f6c7591c3f3e31ee92546c"
+            "SKIP")
 
 doInstallModule() {
-    pushd "$pkgbase-$pkgver/build/$1"
-    make install INSTALL_ROOT=$pkgdir
-    popd
+	DESTDIR="$pkgdir" cmake --install "build/$1"
+}
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/kf6-patch.patch"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	mkdir -p build
-	cd build
-	qmake ..
-	make
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_PREFIX_PATH='/opt/KF5-qt6/lib/pkgconfig;/opt/KF5-qt6/lib/cmake' \
+		-DKF5BluezQt_DIR=/opt/KF5-qt6/lib/cmake/KF5BluezQt \
+		-DKF5ModemManagerQt_DIR=/opt/KF5-qt6/lib/cmake/KF5ModemManagerQt \
+		-DKF5NetworkManagerQt_DIR=/opt/KF5-qt6/lib/cmake/KF5NetworkManagerQt \
+		-DKF5PulseAudioQt_DIR=/opt/KF5-qt6/lib/cmake/KF5PulseAudioQt \
+		-DKF_VERSION_MAJOR=5 \
+		-DFORCE_STABLE=ON
+	cmake --build build
 }
 
 package_libthedesk() {
-    depends=('the-libs' 'libtdesktopenvironment')
+    depends=('libtdesktopenvironment')
     
     doInstallModule 'libthedesk';
 }
 
 package_thedesk-platform() {
-    depends=('the-libs' 'libx11')
-    optdepends=('contemporary-widgets: Default Widget Theme'
-                'contemporary-icons: Default Icon Theme'
-                'ttf-contemporary: Default Font')
+    depends=('libcontemporary' 'libx11' 'contemporary-widgets' 'contemporary-icons' 'ttf-contemporary')
     
     doInstallModule 'platform'
 }
 
 package_td-polkitagent() {
-    depends=('the-libs' 'polkit-qt5' 'libtdesktopenvironment')
+    depends=($_pkg_polkit 'libtdesktopenvironment')
 
     doInstallModule 'polkitagent';
 }
 
 package_xdg-desktop-portal-td() {
-    depends=('the-libs' 'thefile')
+    depends=('libthefile')
 
     doInstallModule 'desktop-portal'
 }
 
 package_thedesk() {
-    depends=('the-libs' 'kwin' 'libtdesktopenvironment' 'td-polkitagent' 'libthedesk' 'thedesk-platform' 'pulseaudio-qt' 'libx11' 'libxi' 'xf86-input-libinput' 'networkmanager-qt' 'modemmanager-qt' 'accountsservice' 'qt5-location' 'libtwebservices' 'bluez-qt' 'qrencode' 'thedesk-xdg-utils' 'xdg-desktop-portal-td')
+    depends=('kwin' 'libtdesktopenvironment' 'td-polkitagent' 'libthedesk' 'thedesk-platform' $_pkg_pulseaudio 'libx11' 'libxi' 'xf86-input-libinput' $_pkg_networkmanager $_pkg_modemmanager 'accountsservice' 'libtwebservices' $_pkg_bluez 'qrencode' 'thedesk-xdg-utils' 'xdg-desktop-portal-td' 'qt6-positioning')
     
     doInstallModule 'desktop';
     doInstallModule 'plugins';
     doInstallModule 'startdesk';
+    doInstallModule 'locker';
 }
