@@ -8,7 +8,7 @@ _pkgbase=archiso
 _variant="encryption"
 _pkgname="${_pkgbase}-${_variant}"
 pkgname="${_pkgname}-git"
-pkgver=v70.r244.g247a768
+pkgver=v70.r275.ge17397d
 pkgrel=1
 pkgdesc='Tools for creating Arch Linux live and install ISO images (LUKS image type support).'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   'openssl: for codesigning support when building netboot artifacts'
   'qemu: for run_archiso'
 )
-source=("${_pkgbase}::git+${_url}")
+source=("${_pkgbase}::git+${_url}#branch=raid")
 sha256sums=('SKIP')
 
 pkgver() {
