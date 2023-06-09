@@ -1,9 +1,9 @@
 pre_install() {
-
+    echo ""
 }
 
 post_install() {
-    echo "Enable sk-auto-swap.service and sk-efi-mount.service"
+    echo "Enable service"
     sudo systemctl enable sk-auto-swap.service
     sudo systemctl enable sk-efi-mount.service
     sudo systemctl enable sk-root-resume.service
@@ -12,6 +12,12 @@ post_install() {
     echo "Set swap PARTUUID in /etc/default/auto_swap"
     SWAP_PARTITION=$(lsblk -rno NAME,PARTUUID,PARTTYPE | awk '$3=="0657fd6d-a4ab-43c4-84e5-0933c84b4f4f" {print $1}')
     echo "$SWAP_PARTITION" | sudo tee /etc/default/auto_swap
+
+    DEVICENAME=$(cat /sys/devices/virtual/dmi/id/product_name)
+    if [[ "${DEVICENAME}" != "G1619-04" ]]; then
+      rm /etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules
+    fi
+    
 }
 
 pre_upgrade() {
@@ -23,6 +29,7 @@ post_upgrade() {
 }
 
 pre_remove() {
+    echo "Disable service"
     sudo systemctl disable sk-auto-swap.service
     sudo systemctl disable sk-efi-mount.service
     sudo systemctl disable sk-root-resume.service

@@ -1,12 +1,13 @@
 pkgbase = sk-holoiso-config
 	pkgdesc = A custom configs for sk-holoiso
-	pkgver = r8.fdbed7a
+	pkgver = r11.4ffc3de
 	pkgrel = 1
 	url = https://github.com/honjow/sk-holoiso-config
 	install = sk-holoiso-config.install
 	arch = any
 	license = MIT
 	makedepends = git
+	optdepends = holo-gs-auto-update: auto update gamescope-session
 	provides = sk-holoiso-config
 	conflicts = sk-holoiso-config
 	options = !strip
