@@ -1,6 +1,6 @@
 pkgbase = home-assistant
 	pkgdesc = Open source home automation that puts local control and privacy first
-	pkgver = 2023.6.0
+	pkgver = 2023.6.1
 	pkgrel = 1
 	epoch = 1
 	url = https://home-assistant.io/
@@ -55,7 +55,7 @@ pkgbase = home-assistant
 	optdepends = python-dtlssocket: Ikea Tradfri integration
 	optdepends = python-lxml: Meteo France integration
 	optdepends = python-paho-mqtt: mqtt integration
-	source = git+https://github.com/home-assistant/home-assistant.git#tag=a4e236d0b9ca91c962173c081e29ea6523126145
+	source = git+https://github.com/home-assistant/home-assistant.git#tag=a5f86bff45c4a7422b5011a4689557d9b434728a
 	source = home-assistant.service
 	b2sums = SKIP
 	b2sums = b5e181e00e499cd0c6e3922af44afe7e8043063d49c89c207beeff9b56ea2920a6f7b6d211be027cb4b6cf8450396623515dadcebdbdbdf0f934d3d16963790e
