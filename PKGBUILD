@@ -2,25 +2,23 @@
 # Maintainer: Solomon Choina <shlomochoina at gmail dot com>
 #
 pkgname=lightdm-thedesk-greeter
-pkgver=0.1
-pkgrel=1
+pkgver=1.0
+pkgrel=0
 pkgdesc="LightDM greeter for theDesk"
-arch=("x86_64")
-url="https://github.com/vicr123/liblightdm-qt5"
+arch=("x86_64" "aarch64")
+url="https://github.com/theCheeseboard/lightdm-thedesk-greeter"
 license=('GPL3')
-depends=('the-libs' 'libtdesktopenvironment' 'liblightdm-qt5')
-makedepends=('git' 'qt5-tools')
-source=("$pkgname-$pkgver"::"git+https://github.com/vicr123/lightdm-thedesk-greeter.git")
-#sha256sums=('7c85d6e089285ab3206fc9731110a155dd46e30067554edc71f3edb33872b181')
-sha256sums=('SKIP')
+depends=('libtdesktopenvironment' 'lightdm')
+makedepends=('git' 'qt6-tools' 'cmake' 'clang')
+source=("$pkgname-$pkgver"::"https://github.com/theCheeseboard/lightdm-thedesk-greeter/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2ac3cc8d663d0ce0fa0d0eba9fb68d6938776379711b5efa0aa013848e4bb552')
 
 build() {
-	cd "$pkgname-$pkgver"
-	qmake lightdm-thedesk-greeter.pro
-	make
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make install INSTALL_ROOT=$pkgdir
+	DESTDIR="$pkgdir" cmake --install "build"
 }

@@ -1,17 +1,18 @@
 pkgbase = lightdm-thedesk-greeter
 	pkgdesc = LightDM greeter for theDesk
-	pkgver = 0.1
-	pkgrel = 1
-	url = https://github.com/vicr123/liblightdm-qt5
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/theCheeseboard/lightdm-thedesk-greeter
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
-	makedepends = qt5-tools
-	depends = the-libs
+	makedepends = qt6-tools
+	makedepends = cmake
+	makedepends = clang
 	depends = libtdesktopenvironment
-	depends = liblightdm-qt5
-	source = lightdm-thedesk-greeter-0.1::git+https://github.com/vicr123/lightdm-thedesk-greeter.git
-	sha256sums = SKIP
+	depends = lightdm
+	source = lightdm-thedesk-greeter-1.0::https://github.com/theCheeseboard/lightdm-thedesk-greeter/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 2ac3cc8d663d0ce0fa0d0eba9fb68d6938776379711b5efa0aa013848e4bb552
 
 pkgname = lightdm-thedesk-greeter
-
