@@ -10,7 +10,7 @@ post_install() {
 
     # swap partuuid
     echo "Set swap PARTUUID in /etc/default/auto_swap"
-    SWAP_PARTITION=$(lsblk -rno NAME,PARTUUID,PARTTYPE | awk '$3=="0657fd6d-a4ab-43c4-84e5-0933c84b4f4f" {print $1}')
+    SWAP_PARTITION=$(lsblk -rno NAME,PARTUUID,PARTTYPE | awk '$3=="0657fd6d-a4ab-43c4-84e5-0933c84b4f4f" {print $2}')
     echo "$SWAP_PARTITION" | sudo tee /etc/default/auto_swap
 
     DEVICENAME=$(cat /sys/devices/virtual/dmi/id/product_name)
@@ -29,8 +29,17 @@ post_upgrade() {
 }
 
 pre_remove() {
+    curr_version=$1
     echo "Disable service"
     sudo systemctl disable sk-auto-swap.service
     sudo systemctl disable sk-efi-mount.service
     sudo systemctl disable sk-root-resume.service
+    cp /etc/default/grub /etc/default/grub.bak-${curr_version}
+}
+
+post_remove() {
+    curr_version=$1
+    echo "Restore grub"
+    cp /etc/default/grub.bak-${curr_version} /etc/default/grub
+    rm /etc/default/grub.bak-${curr_version}
 }
