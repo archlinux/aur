@@ -2,8 +2,8 @@
 # Contributor: TZ86
 
 pkgname=vivaldi
-_rpmversion=6.1.3035.51-1
-pkgver=6.1.3035.51
+_rpmversion=6.1.3035.75-1
+pkgver=6.1.3035.75
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
@@ -18,7 +18,7 @@ optdepends=(
 )
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable-${_rpmversion}.x86_64.rpm"
         '0001-add-support-for-user-flags.patch')
-sha512sums=('56e0cc5f2395d52fbec249507d4c50d70446aea771503d063c94767f6e9814d5b1e1ac001c26d6c3327f4ff656c5fec4f6266dfe4022c93c4a570b3e7d53c13e'
+sha512sums=('fab57b595e482f11977dead826f99a2da0f85e143eaa11eb593c6ef57d7782821121d99e61c4ff4a9a6773ed6cf43e9be2974a5f41f0b4fac91e1129c269f00c'
             '334db2056114fdbf07407b1cee24284f019df7a15acd711ed016bab1a1ab211abf3884ed848f3496486e7c78056108ccf1e88547e22b787bc4f548c6785f64d2')
 
 package() {
