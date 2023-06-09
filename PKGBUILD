@@ -9,7 +9,7 @@
 
 pkgname=ntfsprogs-ntfs3
 pkgver=2022.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='NTFS filesystem utilities without NTFS-3G driver. For system with kernel >= 5.15'
 url='https://github.com/tuxera/ntfs-3g'
 arch=('x86_64')
@@ -17,7 +17,7 @@ license=('GPL2')
 depends=('util-linux')
 makedepends=('git')
 conflicts=('ntfsprogs' 'ntfs-3g')
-provides=('ntfsprogs' 'ntfs-3g')
+provides=('ntfsprogs')
 replaces=('ntfsprogs')
 source=("ntfs-3g_${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         'mount.ntfs'
