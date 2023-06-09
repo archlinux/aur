@@ -4,14 +4,14 @@ pkgname=softmaker-office-2021
 _ver=2021
 _rev=1064
 pkgver=${_ver}.${_rev}
-pkgrel=4
+pkgrel=5
 pkgdesc="Proprietary office suite, consisting of word processing, spreadsheet and presentation software."
 url="https://www.softmaker.com"
 arch=('x86_64')
 license=('custom')
 depends=('curl' 'hicolor-icon-theme' 'libglvnd' 'libxmu' 'libxrandr')
 source=("https://www.softmaker.net/down/${pkgname}_${_rev}-01_amd64.deb" "postinst.sh" "prerm.sh")
-sha256sums=('bed57a21e3c97cdab9834fc32fa1e52bdc376afd8f7c41484c2bfba135ddaaca' 'c9b07266997d4221d1facc806ef302db8debb81d2da7784071857f79d2e2bb20' 'd0b1b5be2578c4f20564fafade3505e0e7a45a0f79b23196e5b205574305696e')
+sha256sums=('bed57a21e3c97cdab9834fc32fa1e52bdc376afd8f7c41484c2bfba135ddaaca' 'd464570ba6f8c716a58c62edc917558b0c354f171c603c485ab6694d02220e4c' 'd0b1b5be2578c4f20564fafade3505e0e7a45a0f79b23196e5b205574305696e')
 install=softmaker.install
 
 build() {

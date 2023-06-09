@@ -1,5 +1,4 @@
 #!/bin/bash
-
 create_desktop1()
 {
 	VERSION=$1
@@ -173,7 +172,7 @@ create_desktop2()
 	chmod 755 $PMDESKTOP
 	chmod 755 $PRDESKTOP
 	
-	XDG_MODE=" system "
+		XDG_MODE=" system "
 	
 	sh $XDGPATH/xdg-desktop-menu install --noupdate --novendor --mode $XDG_MODE $TMDESKTOP >/dev/null 2>&1
 	sh $XDGPATH/xdg-desktop-menu install --noupdate --novendor --mode $XDG_MODE $PMDESKTOP >/dev/null 2>&1
@@ -425,9 +424,7 @@ copy_icons()
 	set_output
 
 	if [ -d "$THEMEDIR" ] ; then        
-    	if [ $SCRIPT -eq 1 ] ; then
-
-		XDG_MODE=" system "
+			XDG_MODE=" system "
 
 		FREENAME=""
 		if [ $VERSION = "free" ] ; then
@@ -808,17 +805,18 @@ create_mime()
 
     display_information "Registering MIME types..."
 	#echo "Registering MIME types..."
-			XDG_MODE=" --mode system "
+		XDG_MODE=" --mode system "
 
-			display_information "Creating /etc/SoftMaker folder..."
-			mkdir -p /etc/SoftMaker
+		display_information "Creating /etc/SoftMaker folder..."
+		mkdir -p /etc/SoftMaker
+		chmod 777 /etc/SoftMaker
 
 	set_output
 
 	#fix for KDE Bug 343468
 	if [ "$LOCALINSTALL" != "1" ] ; then
 		echo "Fix for KDE Bug 343468:" >>$ERROROUTPUT 2>&1
-		for I in /usr/share/mime/subclasses /usr/share/mime/types ; do
+		for I in /usr/share/mime/subclasses /usr/share/mime/types /etc/mime.types ; do
 			#echo "--file: $I" >>$ERROROUTPUT 2>&1
 			sed -i 's:macroEnabled:macroenabled:g' $I
 		done
@@ -984,55 +982,80 @@ create_mime()
 }  
 
 
-set -e
-set +e
+install_eeepc()
+{
+  if [ -f /etc/X11/icewm/preferences ]; then
+
+    # show start menu
+    cp /etc/X11/icewm/preferences /etc/X11/icewm/preferences.bak
+    sed "s/TaskBarShowStartMenu=0/TaskBarShowStartMenu=1/g" < /etc/X11/icewm/preferences.bak > /etc/X11/icewm/preferences
+
+  fi
+
+  if [ ! -f /etc/X11/icewm/menu ]; then
+    touch /etc/X11/icewm/menu
+  fi
+
+  # add menu items
+  grep "TextMaker" /etc/X11/icewm/menu > /tmp/smcheck
+  if [ ! -s /tmp/smcheck ]; then
+    echo "prog \"TextMaker\" textmaker textmaker" >> /etc/X11/icewm/menu
+    echo "prog \"PlanMaker\" planmaker planmaker" >> /etc/X11/icewm/menu
+    echo "prog \"Presentations\" presentations presentations" >> /etc/X11/icewm/menu
+  fi
+  
+  rm -f /tmp/smcheck
+}
+
+		set -e
+		set +e
 		
-DATADIR=/usr/share
-APPPATH=$DATADIR/office2021
-APPBINPATH="/usr/bin"
-SRCPATH=$APPPATH
-TMPCMD=`which xdg-mime 2>/dev/null` 
+			DATADIR=/usr/share
+			APPPATH=$DATADIR/office2021
+			APPBINPATH="/usr/bin"
+			SRCPATH=$APPPATH
+			TMPCMD=`which xdg-mime 2>/dev/null` 
+			if [ "$TMPCMD" = "" ] 
+			then
+				echo "Using xdg-utils supplied by this package"
+				XDGPATH=$SRCPATH/mime/xdg-utils
+			else
+				echo "Using existing xdg-utils"
+				TMPCMD2="dirname $TMPCMD"
+				XDGPATH=`$TMPCMD2` 
+			fi
+			UNINSTALLSCRIPT=$APPPATH/mime/unregister_smoffice2021
+			echo "#!/bin/sh" >$UNINSTALLSCRIPT
+			chmod 755 $UNINSTALLSCRIPT
 
-if [ "$TMPCMD" = "" ] 
-then
-	echo "Using xdg-utils supplied by this package"
-	XDGPATH=$SRCPATH/mime/xdg-utils
-else
-	echo "Using existing xdg-utils"
-	TMPCMD2="dirname $TMPCMD"
-	XDGPATH=`$TMPCMD2` 
-fi
+			REMOVEICONSSCRIPT=$APPPATH/mime/remove_icons.sh
+			echo "#!/bin/sh" >$REMOVEICONSSCRIPT
+			chmod 755 $REMOVEICONSSCRIPT
+			
+			create_script 2021 "0"
+			create_mime 2021 "0"
+			create_desktop2 2021 "0"
+			
+			
+			TMPCMD=`which update-mime-database 2>/dev/null` 
+			if [ ! "$TMPCMD" = ""  ] ; then
+				update-mime-database /usr/share/mime >/dev/null 2>&1
+			fi
+			
+			TMPCMD=`which update-desktop-database 2>/dev/null` 
+			if [ ! "$TMPCMD" = ""  ] ; then
+				update-desktop-database /usr/share/applications >/dev/null 2>&1
+				update-desktop-database /usr/share/mimelnk/application >/dev/null 2>&1
+			fi
+			
+			TMPCMD=`which gtk-update-icon-cache 2>/dev/null` 
+			if [ ! "$TMPCMD" = ""  ] ; then
+				touch --no-create /usr/share/icons/hicolor
+				gtk-update-icon-cache --ignore-theme-index /usr/share/icons/hicolor >/dev/null 2>&1
+			fi
 
-UNINSTALLSCRIPT=$APPPATH/mime/unregister_smoffice2021
-echo "#!/bin/sh" >$UNINSTALLSCRIPT
-chmod 755 $UNINSTALLSCRIPT
+			if [ -f /opt/xandros/bin/AsusLauncher ] ; then
+				install_eeepc
+			fi
+			ldconfig
 
-REMOVEICONSSCRIPT=$APPPATH/mime/remove_icons.sh
-echo "#!/bin/sh" >$REMOVEICONSSCRIPT
-chmod 755 $REMOVEICONSSCRIPT
-			
-create_script 2021 "0"
-create_mime 2021 "0"
-create_desktop2 2021 "0"
-			
-TMPCMD=`which update-mime-database 2>/dev/null` 
-if [ ! "$TMPCMD" = ""  ]
-then
-	update-mime-database /usr/share/mime >/dev/null 2>&1
-fi
-			
-TMPCMD=`which update-desktop-database 2>/dev/null` 
-if [ ! "$TMPCMD" = ""  ]
-then
-	update-desktop-database /usr/share/applications >/dev/null 2>&1
-	update-desktop-database /usr/share/mimelnk/application >/dev/null 2>&1
-fi
-			
-TMPCMD=`which gtk-update-icon-cache 2>/dev/null` 
-if [ ! "$TMPCMD" = ""  ]
-then
-	touch --no-create /usr/share/icons/hicolor
-	gtk-update-icon-cache --ignore-theme-index /usr/share/icons/hicolor >/dev/null 2>&1
-fi
-
-ldconfig
