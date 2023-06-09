@@ -1,6 +1,6 @@
 pkgbase = dbeaver-arm
 	pkgdesc = Free universal SQL Client for developers and database administrators. Community Edition. Linux ARM version.
-	pkgver = 23.0.4
+	pkgver = 23.1.0
 	pkgrel = 0
 	url = https://dbeaver.io/
 	install = dbeaver-arm.install
