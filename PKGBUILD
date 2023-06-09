@@ -1,64 +1,55 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
+
 # Contributor: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
-pkgname=libadalang-tools
 epoch=1
-pkgver=23.0.0
+
+pkgname=libadalang-tools
+pkgver=24.0w
 pkgrel=1
+pkgdesc='Libadalang-based tools for Ada: gnatpp, gnatmetric and gnatstub.'
 
-pkgdesc="Libadalang-based tools for Ada: gnatpp, gnatmetric and gnatstub"
-url='https://github.com/AdaCore/libadalang-tools'
-arch=('i686' 'x86_64')
-license=('GPL3')
+url=https://github.com/AdaCore/libadalang-tools
+arch=(i686 x86_64)
+license=(GPL3)
 
-depends=('ada-web-server' 'libadalang')
-makedepends=('gprbuild' 'which')
+depends=(libadalang templates_parser)
+makedepends=(gprbuild which)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "0002-Makefile-add-GPRBUILD_FLAGS-variable.patch"
-        "0003-Makefile-don-t-force-j-to-be-passed-to-gprbuild.patch")
+source=(file:///opt/gnatstudio-sources/$pkgname-$pkgver-20230324-166A6-src.tar.gz)
+sha256sums=(13837105dcb3e474ff96bcb530590e7404b87948c98ea33e05fa5a505eff76a5)
 
-sha256sums=('c6e06d7d0df874cab2b61530165f94b93ebd900b59735ff702b2f9d70456faa6'
-            'c71fcd7a535c348c24ba984186d3663f41085296e8dc7b79c06bb9d85fabf419'
-            '627fd033fd90630c0b5cf24dff4ca6537c903215148384b966567986c17f63aa')
-
-prepare()
-{
-    cd "$srcdir/$pkgname-$pkgver"
-
-    patch -p1 < "$srcdir/0002-Makefile-add-GPRBUILD_FLAGS-variable.patch"
-    patch -p1 < "$srcdir/0003-Makefile-don-t-force-j-to-be-passed-to-gprbuild.patch"
-}
 
 build()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+  cd $srcdir/$pkgname-$pkgver-20230428-1627A-src
 
-    ADA_FLAGS="$CFLAGS"
-    ADA_FLAGS="${ADA_FLAGS//-Wformat}"
-    ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
+   export BUILD_MODE=prod
+   make lib
 
-    make -j1                                                             \
-        BUILD_MODE=prod                                                  \
-        LIBRARY_TYPE=relocatable                                         \
-        GPRBUILD_FLAGS="-R -j$(nproc) -cargs $ADA_FLAGS -largs $LDFLAGS" \
-        bin lib
+   LIBRARY_TYPE=relocatable \
+   make bin
 }
+
 
 package()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+   cd $srcdir/$pkgname-$pkgver-20230428-1627A-src
 
-    make DESTDIR="$pkgdir/usr/"   \
-         install-lib
+   export DESTDIR=$pkgdir/usr
+   export BUILD_MODE=prod
 
-    install -Dm755 -t "$pkgdir/usr/bin/" bin/{gnatpp,gnatmetric,gnatstub}
+   make install-lib
+   make install-bin-strip
 
-    # Install the license.
-    install -D -m644 \
-       "LICENSE"     \
-       "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # Install the licenses.
+  #
+  install -D -m644  \
+     LICENSE        \
+     $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+  install -D -m644  \
+     COPYING3       \
+     $pkgdir/usr/share/licenses/$pkgname/COPYING3
 }
-
-# vim: set et ts=4:
