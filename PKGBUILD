@@ -1,8 +1,8 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=cinnamon-doc
-pkgver=5.6.7
-_pkgver=vera
+pkgver=5.8.1
+_pkgver=victoria
 pkgrel=1
 pkgdesc='Code documentation for various Cinnamon components.'
 arch=('any')
@@ -12,8 +12,8 @@ depends=(
     cinnamon
     devhelp
 )
-source=("${pkgname}_${pkgver}.deb::${url}/${pkgname}_${pkgver}+${_pkgver}_all.deb")
-sha256sums=('4f46156a7ad712809093f000e1875d3109d1e42a3c3a93db4dc2c816494f2bad')
+source=("${pkgname}_${pkgver}.deb::${url}/${pkgname}_${pkgver}+${_pkgver}_amd64.deb")
+sha256sums=('b8d57f6390dd9df001f28eea7868b4100faf27067d14ce2431970daec40f3a35')
 
 package() {
   tar xf "${srcdir}/data.tar.xz"
