@@ -4,13 +4,13 @@
 
 pkgname=wgrib2
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to read and write grib2 files"
 arch=('x86_64')
 url="https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/"
 license=('GPL' 'Apache' 'custom')
 depends=('glibc' 'gcc-libs')
-makedepends=('gcc-fortran')
+makedepends=('gcc-fortran' 'cmake')
 source=("https://www.ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/$pkgname.tgz.v$pkgver")
 sha256sums=('5b70ac88df269598bc51441c8990b866d62a447c643fcb89df5c844f2c8a855b')
 
