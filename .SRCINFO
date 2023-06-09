@@ -1,6 +1,6 @@
 pkgbase = markdown
 	pkgdesc = A markdown parser for Ada.
-	pkgver = 23.0.0
+	pkgver = 24.0w
 	pkgrel = 1
 	url = https://github.com/AdaCore/markdown
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = markdown
 	license = Apache
 	makedepends = gprbuild
 	depends = libvss
-	source = markdown-23.0.0.tar.gz::https://github.com/AdaCore/markdown/archive/v23.0.0.tar.gz
-	sha256sums = 89efa74f7ebc37cf0701832b4ff9d9199689194debfe871752c319e5cfb0e3e1
+	source = file:///opt/gnatstudio-sources/markdown-24.0w-20230428-162F9-src.tar.gz
+	sha256sums = 6fc302143b73086f98a8a75853eb556b1736b4e18345637e463b90ad736aa523
 
 pkgname = markdown

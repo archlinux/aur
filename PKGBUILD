@@ -1,37 +1,43 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=markdown
-pkgver=23.0.0
+pkgver=24.0w
 pkgrel=1
-
 pkgdesc='A markdown parser for Ada.'
-url='https://github.com/AdaCore/markdown'
-arch=('i686' 'x86_64')
-license=('Apache')
+
+url=https://github.com/AdaCore/markdown
+arch=(i686 x86_64)
+license=(Apache)
 
 depends=(libvss)
-makedepends=('gprbuild')
+makedepends=(gprbuild)
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=("89efa74f7ebc37cf0701832b4ff9d9199689194debfe871752c319e5cfb0e3e1")
+source=(file:///opt/gnatstudio-sources/$pkgname-$pkgver-20230428-162F9-src.tar.gz)
+sha256sums=(6fc302143b73086f98a8a75853eb556b1736b4e18345637e463b90ad736aa523)
 
 
 build()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd $srcdir/$pkgname-$pkgver-20230428-162F9-src
     BUILD_MODE=prod make
 }
 
+
 package()
 {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd $srcdir/$pkgname-$pkgver-20230428-162F9-src
 
-    make BUILD_MODE=prod   \
-         DESTDIR="$pkgdir" \
+    make BUILD_MODE=prod \
+         DESTDIR=$pkgdir \
          install
     
-    # Install the license.
-    install -D -m644 \
-       "LICENSE"     \
-       "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # Install the licenses.
+    #
+    install -D -m644     \
+       LICENSE.txt       \
+       $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+    install -D -m644     \
+       COPYING3          \
+       $pkgdir/usr/share/licenses/$pkgname/COPYING3
 }
