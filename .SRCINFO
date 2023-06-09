@@ -4,6 +4,7 @@ pkgbase = the24
 	pkgrel = 0
 	url = https://github.com/vicr123/the24
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = qt6-tools
