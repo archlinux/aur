@@ -1,0 +1,21 @@
+pkgbase = templates_parser
+	pkgdesc = A high performance semantic engine for the Ada programming language.
+	pkgver = 24.0w
+	pkgrel = 1
+	url = https://github.com/AdaCore/libadalang
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = gprbuild
+	makedepends = python-setuptools
+	makedepends = python-mako
+	makedepends = python-funcy
+	makedepends = python-e3-core
+	makedepends = python-docutils
+	makedepends = python-sphinx
+	depends = gnatcoll-gmp
+	depends = langkit
+	source = file:///opt/gnatstudio-sources/templates_parser-24.0w-20230324-1619B-src.tar.gz
+	sha256sums = 52e0f2cd44d92d99c818628bf3dfd1d019b6c2e852a3dc5de6edd0dfda529fd6
+
+pkgname = templates_parser
