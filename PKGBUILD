@@ -1,7 +1,7 @@
 # Maintainer: arraen
 pkgname="synergy3-bin"
 pkgver="v3.0.72.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="https://symless.com/synergy"
 license=('unknown')
@@ -19,14 +19,14 @@ package() {
 }
 
 post_install() {
-  sudo ./opt/Synergy/synergy-service --install
+  sudo /opt/Synergy/synergy-service --install
   chmod 4755 '/opt/Synergy/chrome-sandbox' || true
   update-mime-database /usr/share/mime || true
   update-desktop-database /usr/share/applications || true
 }
 
 pre_remove() {
-  sudo ./opt/Synergy/synergy-service --uninstall
+  sudo /opt/Synergy/synergy-service --uninstall
 }
 
 post_remove() {
