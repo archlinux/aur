@@ -1,54 +1,48 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
-pkgname=ada_spawn
 epoch=1
-pkgver=23.0.0
+
+pkgname=ada_spawn
+pkgver=24.0w
 pkgrel=1
 
-pkgdesc="A simple Ada API to start processes and communicate with them."
-url="https://github.com/AdaCore/spawn"
+pkgdesc='A simple Ada API to start processes and communicate with them.'
+url=https://github.com/AdaCore/spawn
 
-arch=('i686' 'x86_64')
-license=('Apache')
+arch=(i686 x86_64)
+license=(Apache)
 
-depends=('gtkada')
-makedepends=('gprbuild')
+depends=(gtkada)
+makedepends=(gprbuild)
 
-source=("https://github.com/AdaCore/spawn/archive/refs/tags/v$pkgver.tar.gz"
-        "Makefile.patch")
-sha256sums=(1487fef86433d1d06c5c3af3c012aac9eae8d2f4b7f8c1d2fdbe2be0b1770fa8
-            23f7f6c71c5bcdef0f2258becdd39f4d86bb3f742ff73d08610118b467264343)
-
-
-prepare()
-{
-   cd "$srcdir/spawn-$pkgver"
-   patch -Np0 -i ../Makefile.patch
-}
+source=(file:///opt/gnatstudio-sources/spawn-$pkgver-20230428-162D4-src.tar.gz)
+sha256sums=(11aaea8688f5b4f9e38cf38963b0a0eec553c16f1a21961a071be40f5dd12b39)
 
 
 build()
 {
-   cd "$srcdir/spawn-$pkgver"
+   cd $srcdir/spawn-$pkgver-20230428-162D4-src
 
-   export OS=unix
-   export SPAWN_WARN_ERRORS=false
    make all
+   
+   LIBRARY_TYPE=relocatable \
+   gprbuild -P gnat/spawn_glib.gpr
 }
 
 
 package()
 {
-   cd "$srcdir/spawn-$pkgver"
+   cd $srcdir/spawn-$pkgver-20230428-162D4-src
 
-   export OS=unix
-   DESTDIR=$pkgdir make install
+   DESTDIR=$pkgdir \
+   make install
 
    LIBRARY_TYPE=relocatable \
-   gprinstall -p --prefix="$pkgdir/usr" gnat/spawn_glib.gpr
+   gprinstall -p --prefix=$pkgdir/usr gnat/spawn_glib.gpr
 
    # Install the license.
+   #
    install -D -m644 \
-      "LICENSE"     \
-      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+      LICENSE.txt   \
+      $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
 }

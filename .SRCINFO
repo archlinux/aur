@@ -1,6 +1,6 @@
 pkgbase = ada_spawn
 	pkgdesc = A simple Ada API to start processes and communicate with them.
-	pkgver = 23.0.0
+	pkgver = 24.0w
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/spawn
@@ -9,9 +9,7 @@ pkgbase = ada_spawn
 	license = Apache
 	makedepends = gprbuild
 	depends = gtkada
-	source = https://github.com/AdaCore/spawn/archive/refs/tags/v23.0.0.tar.gz
-	source = Makefile.patch
-	sha256sums = 1487fef86433d1d06c5c3af3c012aac9eae8d2f4b7f8c1d2fdbe2be0b1770fa8
-	sha256sums = 23f7f6c71c5bcdef0f2258becdd39f4d86bb3f742ff73d08610118b467264343
+	source = file:///opt/gnatstudio-sources/spawn-24.0w-20230428-162D4-src.tar.gz
+	sha256sums = 11aaea8688f5b4f9e38cf38963b0a0eec553c16f1a21961a071be40f5dd12b39
 
 pkgname = ada_spawn
