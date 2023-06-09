@@ -1,6 +1,6 @@
 pkgbase = thepage
 	pkgdesc = Document Viewer using poppler
-	pkgver = 2.0
+	pkgver = 2.0.1
 	pkgrel = 0
 	url = https://github.com/theCheeseboard/thepage
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = thepage
 	makedepends = clang
 	depends = libcontemporary
 	depends = poppler-qt6
-	source = thepage::https://github.com/theCheeseboard/thepage/archive/v2.0.tar.gz
-	sha256sums = f974e766cb57eaac442714b76a96d279e49603cfde5e607512f8f70d4f675a3a
+	source = thepage-2.0.1::https://github.com/theCheeseboard/thepage/archive/v2.0.1.tar.gz
+	sha256sums = e010d58e50db25ed33ca56e45fc164226772a5383ecf0b271e4bb9fb2cc08fe0
 
 pkgname = thepage
