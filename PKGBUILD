@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=aio-creator-neo
-pkgver=2.11.4
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Design a custom app to control your smart home. Supports many vendors.'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
 )
 
 sha512sums=(
-  '85f22d42fa470698fbea38e0a34cf7077fb394b331516405073606dd8b4a2cf7564f1cbbb464dcbc90912cb296f833283b8a906bc0d9eee2fbd163eb5d65551d'
+  '834e578d4834b0bc6f917eedf79f73080f6f4e25cab0d823efc510d98ed67c501fc1a95f5f24044cfe7e4e76603ec5cc8326fad0801b3f796988bacae0c9ff30'
   '308b84b654e63fe14cd68f6bb8fdeb1f0e7afe1b15127fa5779cbe40227c9a6616060b27e28e98505f72d26873379b6a3672fc98060f6e47e64667f81a91d500'
   'c7ecb4026b2145bd7675a9b4aaa01d53b3d14930302e36682a50efabebff7a7af9d6279e103220092fdd5706506b46e10cc56acd3397cfb0b211377825f8b727'
 )
