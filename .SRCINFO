@@ -1,15 +1,17 @@
 pkgbase = contemporary-widgets
 	pkgdesc = Contemporary Widget Theme
-	pkgver = 1.7
+	pkgver = 2.0
 	pkgrel = 0
-	url = https://github.com/vicr123/contemporary-theme
+	url = https://github.com/theCheeseboard/contemporary-theme
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
-	depends = qt5-base
-	depends = the-libs
-	source = https://github.com/vicr123/contemporary-theme/archive/v1.7.tar.gz
-	sha256sums = b1ebd8832e2f3d3335c9d48db68b0dda2594f317aadcd6a24e09ab4e8ec1c3e4
+	makedepends = qt6-tools
+	makedepends = cmake
+	makedepends = clang
+	depends = libcontemporary
+	source = contemporary-widgets-2.0::https://github.com/theCheeseboard/contemporary-theme/archive/v2.0.tar.gz
+	sha256sums = 4be56bfe3279503cccc6bba782225e0924c884899e316ef52c1e1e057b0639ec
 
 pkgname = contemporary-widgets
-

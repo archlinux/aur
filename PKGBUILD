@@ -1,24 +1,23 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=contemporary-widgets
-pkgver=1.7
+pkgver=2.0
 pkgrel=0
 pkgdesc="Contemporary Widget Theme"
-arch=("x86_64")
-url="https://github.com/vicr123/contemporary-theme"
+arch=("x86_64" "aarch64")
+url="https://github.com/theCheeseboard/contemporary-theme"
 license=('GPL3')
-depends=('qt5-base' 'the-libs')
-makedepends=('git')
-source=('https://github.com/vicr123/contemporary-theme/archive/v1.7.tar.gz')
-sha256sums=('b1ebd8832e2f3d3335c9d48db68b0dda2594f317aadcd6a24e09ab4e8ec1c3e4')
+depends=('libcontemporary')
+makedepends=('git' 'qt6-tools' 'cmake' 'clang')
+source=("$pkgname-$pkgver"::"https://github.com/theCheeseboard/contemporary-theme/archive/v$pkgver.tar.gz")
+sha256sums=('4be56bfe3279503cccc6bba782225e0924c884899e316ef52c1e1e057b0639ec')
 
 build() {
-	cd "contemporary-theme-$pkgver"
-	qmake
-	make
+	cmake -B build -S "contemporary-theme-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 
 package() {
-	cd "contemporary-theme-$pkgver"
-	make install INSTALL_ROOT=$pkgdir
+	DESTDIR="$pkgdir" cmake --install "build"
 }
