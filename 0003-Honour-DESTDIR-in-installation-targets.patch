@@ -1,0 +1,43 @@
+From 60e49aa020efbb58a81c1e1cfbec90b59bb33272 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 24 May 2020 11:23:29 +0200
+Subject: [PATCH 3/5] Honour DESTDIR= in installation targets
+
+---
+ Makefile.in      | 6 +++---
+ docs/Makefile.in | 4 ++--
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index da439c1629..18be4f7699 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -11,9 +11,9 @@ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+ INSTALL_DATA    = @INSTALL_DATA@
+ GNATCOLL_INSTALL  = @GNATCOLL_INSTALL@
+ prefix          = @prefix@
+-bindir          = $(prefix)/bin
+-sharedir        = $(prefix)/share
+-examplesdir     = $(prefix)/share/examples/gnatstudio
++bindir          = $(DESTDIR)$(prefix)/bin
++sharedir        = $(DESTDIR)$(prefix)/share
++examplesdir     = $(DESTDIR)$(prefix)/share/examples/gnatstudio
+ 
+ SYS := $(shell gcc -dumpmachine)
+ 
+diff --git a/docs/Makefile.in b/docs/Makefile.in
+index 34f3d0aee8..16e273e7f7 100644
+--- a/docs/Makefile.in
++++ b/docs/Makefile.in
+@@ -1,6 +1,6 @@
+ prefix = @prefix@
+-docdir = $(prefix)/share/doc/gnatstudio
+-sharedir = $(prefix)/share/gnatstudio
++docdir = $(DESTDIR)$(prefix)/share/doc/gnatstudio
++sharedir = $(DESTDIR)$(prefix)/share/gnatstudio
+ 
+ MKDIR = mkdir -p
+ INSTALL = @INSTALL@
+-- 
+2.26.2
+

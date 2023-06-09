@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=GNAT Studio (GPS)
+Exec=gnatstudio
+Icon=/usr/share/gnatstudio/icons/hicolor/32x32/apps/gnatstudio_logo.png
+Terminal=false
+Categories=Development;Languages;Ada;

@@ -1,0 +1,11 @@
+--- dap/dap.gpr-orig	2022-10-07 00:20:05.000000000 +1100
++++ dap/dap.gpr	2022-11-22 14:27:09.005758016 +1100
+@@ -7,7 +7,7 @@
+ with "../views/views";
+ with "../browsers/browsers";
+ with "../gvd/gvd";
+-with "../subprojects/VSS/gnat/vss_text";
++with "vss_text";
+ 
+ project DAP is
+ 
