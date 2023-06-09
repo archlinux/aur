@@ -24,8 +24,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	export rustc_version=$(rustc --version)
-	RUSTFLAGS="-C target-cpu=native" cargo build --release
+	rustc_version=$(rustc --version) cargo build --release
 }
 
 package() {
