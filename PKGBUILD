@@ -1,6 +1,6 @@
 # Maintainer: Hezekiah Michael <spiritomb at protonmail dot com>
 pkgname=ttf-blex-nerd-font-git
-pkgver=v3.0.1.r93.gdf626d3
+pkgver=v3.0.1.r96.g7039b47
 pkgrel=1
 pkgdesc="IBM Plex Mono Font patched with ryanoasis' Nerd Fonts glyphs."
 arch=(any)
@@ -74,19 +74,22 @@ sha256sums=(
   'SKIP' 
   )
 
-
-pkgver() {
+prepare(){
   # we don't need to download gigabytes of blobs to get the versioning @_@
   git clone --sparse --filter=blob:none https://github.com/ryanoasis/nerd-fonts.git nerd-fonts-sparse
   cd nerd-fonts-sparse
   ( set -o pipefail
     git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
-  )
+  ) > ../pkgver
+  rm -rf ${srcdir}/nerd-fonts-sparse
+}
+
+pkgver() {
+  cat ${srcdir}/pkgver
 }
 
 package() {
   install -Dm 644 -t "${pkgdir}/usr/share/fonts/TTF" ${srcdir}/*.ttf
   install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  rm -rf ${srcdir}/nerd-fonts-sparse
 }

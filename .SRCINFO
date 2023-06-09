@@ -1,6 +1,6 @@
 pkgbase = ttf-blex-nerd-font-git
 	pkgdesc = IBM Plex Mono Font patched with ryanoasis' Nerd Fonts glyphs.
-	pkgver = v3.0.1.r93.gdf626d3
+	pkgver = v3.0.1.r96.g7039b47
 	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
