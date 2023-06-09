@@ -20,7 +20,7 @@ static_build=false
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
 
-shared_library_build_options="
+shared_library_build_options=" \
             -DCMAKE_EXE_LINKER_FLAGS=-Wl,-Bsymbolic-functions \
             -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-Bsymbolic-functions \
             -DLLVM_LINK_LLVM_DYLIB=ON \
