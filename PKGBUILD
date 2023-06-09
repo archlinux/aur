@@ -1,23 +1,22 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theterminal
-pkgver=3.0
+pkgver=4.0
 pkgrel=0
 pkgdesc="Simple Terminal Emulator"
-arch=("x86_64")
-url="https://github.com/vicr123/theterminal"
+arch=("x86_64" "aarch64")
+url="https://github.com/theCheeseboard/theterminal"
 license=('GPL3')
-depends=('xdg-utils' 'tttermwidget' 'qt5-base' 'qt5-x11extras' 'the-libs')
-makedepends=('qt5-tools')
-source=("$pkgname-$pkgver"::'https://github.com/vicr123/theterminal/archive/v3.0.tar.gz')
-sha256sums=('ae129556502549293ef090afa2954389353c70d6a5d7c6f8a838bbaacaa607e9')
+depends=('xdg-utils' 'tttermwidget')
+makedepends=('git' 'qt6-tools' 'cmake' 'clang')
+source=("theterminal"::"https://github.com/theCheeseboard/theterminal/archive/v$pkgver.tar.gz")
+sha256sums=('985e820fbc3ff2d70807474813cb0efbc38ef4616400e57055b2f18bcf266323')
 
 build() {
-	cd "$pkgname-$pkgver"
-	qmake
-	make
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make install INSTALL_ROOT=$pkgdir
+	DESTDIR="$pkgdir" cmake --install "build"
 }

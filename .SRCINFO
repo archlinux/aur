@@ -1,18 +1,18 @@
 pkgbase = theterminal
 	pkgdesc = Simple Terminal Emulator
-	pkgver = 3.0
+	pkgver = 4.0
 	pkgrel = 0
-	url = https://github.com/vicr123/theterminal
+	url = https://github.com/theCheeseboard/theterminal
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
-	makedepends = qt5-tools
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = cmake
+	makedepends = clang
 	depends = xdg-utils
 	depends = tttermwidget
-	depends = qt5-base
-	depends = qt5-x11extras
-	depends = the-libs
-	source = theterminal-3.0::https://github.com/vicr123/theterminal/archive/v3.0.tar.gz
-	sha256sums = ae129556502549293ef090afa2954389353c70d6a5d7c6f8a838bbaacaa607e9
+	source = theterminal::https://github.com/theCheeseboard/theterminal/archive/v4.0.tar.gz
+	sha256sums = 985e820fbc3ff2d70807474813cb0efbc38ef4616400e57055b2f18bcf266323
 
 pkgname = theterminal
-
