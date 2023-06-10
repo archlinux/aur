@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=subfinder-bin
-pkgver=2.5.9
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A subdomain discovery tool that discovers valid subdomains for websites"
 arch=("x86_64")
@@ -12,7 +12,7 @@ conflicts=('subfinder')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/subfinder_${pkgver}_linux_amd64.zip"
         "https://raw.githubusercontent.com/projectdiscovery/subfinder/v${pkgver}/LICENSE.md")
-b2sums=('a48dba0b993a0821e3fbb0952e13a3fa6e588a34bcf881cfd6bf680b4ec003e6412260753cd897f020d7de73450c5e29e71dd4de6bc62bcd492532dc593cab43'
+b2sums=('0cb3e5740cfa40041b102ffdc16515f4518e2764c0e9368c0d716ff67b5a443f25d6b654dc00a88117ac4bf12373a0448a82c8ca877c80bcca8bf0befd5d824f'
         'c699be7ccfc40564b59bfa217e254c9553678f343466becebad5017d81310d7b7519837a9a25df2e09e16b6e1bd5a209d7aeb039662a206dd8966b9697c02ede')
 
 package() {
