@@ -4,7 +4,7 @@ _pkgroot=ros2_controllers
 _pkgname=joint_trajectory_controller
 pkgname=ros2-humble-joint-trajectory-controller
 pkgver=2.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Controller for executing joint-space trajectories on a group of joints"
 url="https://index.ros.org/p/joint_trajectory_controller/"
 arch=('any')
@@ -26,16 +26,11 @@ depends=(
 source=("https://github.com/ros-controls/ros2_controllers/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('d6761cdecb079122ce46b94b8dcae6f6580b9ef45ff8728447c0d7dd27b6b49c')
 
-prepare() {
-    source /opt/ros/humble/setup.bash
-
-    cmake -S ros2_controllers-$pkgver/$_pkgname -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble
-}
 
 build() {
-source /opt/ros/humble/setup.bash
+    source /opt/ros/humble/setup.bash
+
+
     make -C build
 }
 
