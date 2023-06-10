@@ -3,7 +3,7 @@
 _pkgname=twist_mux
 pkgname=ros2-humble-twist-mux
 pkgver=4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Twist multiplexer, which multiplex several velocity commands (topics) and allows to priorize or disable them (locks)."
 url="https://index.ros.org/p/twist_mux/"
 arch=('any')
@@ -11,22 +11,23 @@ depends=(
     'ros2-humble' 
     'ros2-humble-diagnostic-updater'
 )
+makedepends=('cmake')
 source=("https://github.com/ros-teleop/twist_mux/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('74df6cc84a9f24c7c794a4a7902b06683b535ffd4f9894b9fc663ab9d8fb01d4')
 
 prepare() {
     source /opt/ros/humble/setup.bash
-
-    cmake -S twist_mux-$pkgver -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble
 }
 
 build() {
-source /opt/ros/humble/setup.bash
-    make -C build
+    cmake -B build -S "$_pkgname-$pkgver" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
+        -Wno-dev
+    
+    cmake --build build
 }
 
 package() {
-    make DESTDIR="$pkgdir/" -C build install
+    DESTDIR="$pkgdir" cmake --install build
 }
