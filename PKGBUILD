@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/North-West-Wind/s3s-setup"
 license=('GPL3')
 depends=('python' 'jq')
-optdepends=('xclip')
+optdepends=('xclip: copy gtoken instead of printing to console')
 source=("${pkgname}::git+https://github.com/North-West-Wind/s3s-setup.git")
 md5sums=('SKIP')
 
