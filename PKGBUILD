@@ -4,7 +4,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ksystemlog-git
-pkgver=21.07.70_r635.g66c0bd7
+pkgver=23.07.70_r856.g17b7432
 pkgrel=1
 pkgdesc='System log viewer tool'
 url='https://kde.org/applications/system/ksystemlog/'
@@ -28,6 +28,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }

@@ -1,6 +1,6 @@
 pkgbase = ksystemlog-git
 	pkgdesc = System log viewer tool
-	pkgver = 21.07.70_r635.g66c0bd7
+	pkgver = 23.07.70_r856.g17b7432
 	pkgrel = 1
 	url = https://kde.org/applications/system/ksystemlog/
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = ksystemlog-git
 	sha256sums = SKIP
 
 pkgname = ksystemlog-git
-
