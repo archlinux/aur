@@ -3,7 +3,7 @@
 # Contributor: tee <teeaur at duck dot com>
 
 pkgname=ticker
-pkgver=4.5.13
+pkgver=4.5.14
 pkgrel=1
 pkgdesc='Terminal stock ticker with live updates and position tracking'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b4b470c82a45b25d396208ae988feb9cc6dba6d278bdc62f763d0a14fb6ed1de')
+sha256sums=('d95e286a2ecda18154e24b1b8a05b6e3bff9cc48d2a127217ba7ec7379e4c163')
 
 prepare () {
 	cd "$pkgname-$pkgver"
@@ -43,4 +43,5 @@ check () {
 package () {
 	cd "$pkgname-$pkgver"
 	install -Dv "build/$pkgname" -t "$pkgdir/usr/bin/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
