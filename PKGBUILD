@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh-git
-pkgver=0.27.0.r31.g35db9d16
+pkgver=0.28.0.r22.gd06c69b9
 pkgrel=1
 pkgdesc='A pure Wayland shell prototype for GNOME on mobile devices'
 arch=(x86_64 aarch64 armv7h)
@@ -32,6 +32,10 @@ makedepends=(
 	meson
 	git
 	wayland-protocols
+	python-docutils
+)
+checkdepends=(
+	xorg-server-xvfb
 )
 provides=(phosh)
 conflicts=(phosh)
