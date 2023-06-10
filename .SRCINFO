@@ -1,6 +1,6 @@
 pkgbase = plasma-desktop-git
 	pkgdesc = KDE Plasma Desktop
-	pkgver = 5.22.80_r8480.g7452d5c9b
+	pkgver = 5.27.80_r10537.g60ed932eb
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = plasma-desktop-git
 	makedepends = kdesignerplugin-git
 	makedepends = kaccounts-integration-git
 	makedepends = intltool
-	makedepends = packagekit-qt5
+	makedepends = packagekit-qt6
 	makedepends = kinit-git
 	depends = gawk
 	depends = polkit-kde-agent-git
@@ -52,4 +52,3 @@ pkgbase = plasma-desktop-git
 	sha256sums = SKIP
 
 pkgname = plasma-desktop-git
-

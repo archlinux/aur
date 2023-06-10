@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-desktop-git
-pkgver=5.22.80_r8480.g7452d5c9b
+pkgver=5.27.80_r10537.g60ed932eb
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
 arch=($CARCH)
@@ -20,7 +20,7 @@ optdepends=('plasma-nm-git: Network manager applet'
 conflicts=(${pkgname%-git} user-manager knetattach user-manager-git knetattach-git)
 provides=(${pkgname%-git} user-manager knetattach user-manager-git knetattach-git)
 replaces=(user-manager-git knetattach-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel scim kdesignerplugin-git kaccounts-integration-git intltool packagekit-qt5 kinit-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel scim kdesignerplugin-git kaccounts-integration-git intltool packagekit-qt6 kinit-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
@@ -32,6 +32,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
