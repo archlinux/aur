@@ -15,7 +15,7 @@ arch=(i686 x86_64)
 url=https://github.com/AdaCore/xmlada
 license=(GPL3 custom)
 
-depends=(gcc-ada)
+depends=(gcc-ada gnatstudio-sources)
 makedepends=(gprbuild-bootstrap)
 
 conflicts=($pkgname-git)

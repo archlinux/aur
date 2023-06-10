@@ -10,6 +10,7 @@ pkgbase = xmlada
 	license = custom
 	makedepends = gprbuild-bootstrap
 	depends = gcc-ada
+	depends = gnatstudio-sources
 	conflicts = xmlada-git
 	source = file:///opt/gnatstudio-sources/xmlada-24.0w-20230324-1684A-src.tar.gz
 	source = expose-cargs-and-largs-makefile.patch
