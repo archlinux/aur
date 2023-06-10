@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DelayedMatrixStats
-_pkgver=1.22.0
+_pkgver=1.22.1
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc="Functions that Apply to Rows and Columns of 'DelayedMatrix' Objects"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f2e0938ab28fbcee336effc93157bbf09c3e6273739c0c28adf5cbbacd994dd6')
+sha256sums=('efc534b9fd479eedba4a4f3fd9c9904f1a86571f0b3c3e99f0c5c04f0ea7388e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
