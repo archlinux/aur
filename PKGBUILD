@@ -3,7 +3,7 @@
 _pkgname=urdf_parser_py
 pkgname=ros2-humble-urdf-parser-py
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python implementation of the URDF parser"
 url="https://index.ros.org/p/urdf_parser_py/"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=(python-build python-installer python-wheel)
 source=("https://github.com/ros/urdf_parser_py/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('ea7ca336bf0e7d47048769634eb3ca63fc773cbdeef8ed2a7c38230151cc3b45')
+sha256sums=('35252568e329c86ee352c4285ad12dbd3430c88abbe441078687cd49f843f591')
 
 prepare() {
     source /opt/ros/humble/setup.bash   
@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-    cd "$_pkgroot-$pkgver"
+    cd "$_pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" --prefix="/opt/ros/humble" dist/*.whl
 }
