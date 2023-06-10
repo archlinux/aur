@@ -1,0 +1,5 @@
+laszip-python-*.tar.gz
+src/
+pkg/
+python-laszip-*.pkg.tar*
+*.log

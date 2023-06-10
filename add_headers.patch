@@ -1,0 +1,24 @@
+--- src/laszipper.cpp
++++ src/laszipper.cpp
+
+@@ -1,7 +1,8 @@ Fix 'numeric_limits' is not a member of 'std'
+ #include "laszipper.h"
++#include <limits>
+ 
+ #include "laszip_error.h"
+ 
+ LasZipper::LasZipper(py::object &file_obj, py::bytes &header_bytes)
+     : m_is(), m_b(file_obj), m_output_stream(&m_b)
+ {
+
+--- src/lasunzipper.cpp
++++ src/lasunzipper.cpp
+
+@@ -2,6 +2,7 @@ Fix 'numeric_limits' is not a member of 'std'
+ #include "laszip_error.h"
+ #include <laszip/laszip_api.h>
+ 
+ #include <algorithm>
++#include <limits>
+ 
+ LasUnZipper::LasUnZipper(py::object &file_obj) : LasUnZipper(file_obj, laszip_DECOMPRESS_SELECTIVE_ALL) {}
