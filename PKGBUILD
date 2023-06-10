@@ -1,45 +1,70 @@
-# Maintainer: Artorias
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Artorias
 # Contributor: Gustavo Chain <me@qustavo.cc>
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=notesnook-bin
-pkgver=2.4.11
-pkgrel=2
-pkgdesc="Open source zero knowledge private note taking"
-arch=('x86_64')
-url="https://notesnook.com"
-_githuburl=https://github.com/streetwriters/notesnook
-license=('GPL')
-options=(!strip)
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
-depends=('glibc' 'hicolor-icon-theme' 'zlib')
-_appimage="${pkgname%-bin}_${pkgver}_${pkgrel}_linux_x86_64.AppImage"
-source=("${pkgname%-bin}_${pkgver}_${pkgrel}_linux_x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_linux_x86_64.AppImage")
-sha256sums=('b6e241b6f12ea47ce3bebc988e47e0188b0b358ce191db4932acfe765ffe1f15')
+
+_pkgname=notesnook
+pkgname=$_pkgname-bin
+pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote (binary release)"
+pkgver=2.5.2
+pkgrel=1
+arch=('x86_64' 'arm64')
+url="https://github.com/streetwriters/notesnook"
+license=('GPL3')
+depends=('libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst')
+makedepends=('fuse2')
+conflicts=($_pkgname)
+provides=($_pkgname)
+_appimage="${_pkgname}_${pkgver}_linux.AppImage"
+source_x86_64=("$_appimage::$url/releases/download/v$pkgver/${_pkgname}_linux_x86_64.AppImage")
+source_arm64=("$_appimage::$url/releases/download/v$pkgver/${_pkgname}_linux_arm64.AppImage")
+sha256sums_x86_64=('f07298b21bcc468bc882ec7fea29fb332d8dbf7e763ffa22ca1519c57bd55b48')
+sha256sums_arm64=('1ee8ee0bd8536cead09aca00f01aaf614b13448af8c8c6adb919bba3fd4d83bb')
+
+_fix_permissions() (
+  target=$1
+
+  if [[ -L "$target" ]]; then
+    return 0
+  fi
+
+  if [[ -d "$target" || -x "$target" ]]; then
+    chmod 755 "$target"
+    return 0
+  fi
+
+  if [[ -f "$target" ]]; then
+    chmod 644 "$target"
+    return 0
+  fi
+
+  echo "Unrecognizable filesystem entry: $target" >&2
+  return 1
+)
 
 prepare() {
-	chmod +x "${_appimage}"
-	"./${_appimage}" --appimage-extract > /dev/null
-}
-
-build() {
-	sed -i -E "s|Exec=AppRun|Exec=${pkgname%-bin}|g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+  # Extract the AppImage
+  chmod +x "./$_appimage"
+  "./$_appimage" --appimage-extract
+  # Edit the shortcut
+  cd squashfs-root
+  sed -i -E "s|Exec=AppRun|Exec=$_pkgname|g" $_pkgname.desktop
 }
 
 package() {
-	# Install AppImage
-	install -Dm 755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_appimage}"
-
-	#  Install a Symlink
-	install -dm755 -d "${pkgdir}/usr/bin"
-	ln -sf "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-
-	# Install Icons
-	for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024;do
-		install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-			"${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
-	done
-
-	# Install Desktop file
-	install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+  # Create folders
+  mkdir -p "$pkgdir/opt/$_pkgname" "$pkgdir/usr/bin"
+  # Install
+  cd squashfs-root
+  for i in 16 32 48 64 128 256 512 1024; do
+    install -Dm644 usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
+  done
+  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
+  rm -dr usr & rm AppRun $_pkgname.desktop $_pkgname.png .DirIcon
+  ln -s /opt/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
+  cp -a ../squashfs-root/. "$pkgdir/opt/$_pkgname"
+  # Fix permissions
+  find "$pkgdir" | while read -r target; do
+    _fix_permissions "$target"
+  done
 }
