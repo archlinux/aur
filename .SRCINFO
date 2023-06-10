@@ -1,6 +1,6 @@
 pkgbase = kwallet-pam-git
 	pkgdesc = KWallet PAM integration
-	pkgver = 5.22.80_r244.gb93e8c6
+	pkgver = 5.27.80_r295.gc41b2c4
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = kwallet-pam-git
 	sha256sums = SKIP
 
 pkgname = kwallet-pam-git
-

@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwallet-pam-git
-pkgver=5.22.80_r244.gb93e8c6
+pkgver=5.27.80_r295.gc41b2c4
 pkgrel=1
 pkgdesc='KWallet PAM integration'
 arch=($CARCH)
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib
   cmake --build build
 }
