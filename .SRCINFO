@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-moveit-configs-utils
 	pkgdesc = Python library for loading moveit config parameters in launch files
 	pkgver = 2.5.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://index.ros.org/p/moveit_configs_utils/
 	arch = any
 	makedepends = python-build
