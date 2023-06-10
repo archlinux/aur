@@ -10,7 +10,6 @@ arch=('x86_64')
 url="https://www.parallels.com/products/ras/capabilities/parallels-client/"
 license=("custom:${pkgname}")
 # from .deb control.tar.xz file
-# todo check over
 depends=('libxcursor'
          'zlib'
          'fontconfig'
@@ -36,6 +35,7 @@ depends=('libxcursor'
          'libusb'
          'nas'
          'udisks2'
+         # includes core, gui, widgets, network, xml, dbus, pritnsupport
          'qt5-base'
          'qt5-x11extras')
 makedepends=()
@@ -53,6 +53,8 @@ package() {
     _dest="${pkgdir}/${_suffix}"
 
     cd "${_src}"
+
+    # TODO symlinks
 
     # binaries
     find 'bin/' -type f -exec install -D -t "${_dest}/bin" {} +
