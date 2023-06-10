@@ -3,7 +3,7 @@
 _pkgname=ruckig
 pkgname=ros2-humble-ruckig
 pkgver=0.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Core libraries used by MoveIt"
 url="https://index.ros.org/p/ruckig/"
 arch=('any')
@@ -13,17 +13,17 @@ sha256sums=('9207db22604881b146ca2fbe79916ff4290c53eb5b46a0f3bbc606fb74bee13c')
 
 prepare() {
     source /opt/ros/humble/setup.bash
-
-    cmake -S ruckig-$pkgver -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble
 }
 
 build() {
-source /opt/ros/humble/setup.bash
-    make -C build
+    cmake -B build -S "$_pkgname-$pkgver" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
+        -Wno-dev
+    
+    cmake --build build
 }
 
 package() {
-    make DESTDIR="$pkgdir/" -C build install
+    DESTDIR="$pkgdir" cmake --install build
 }
