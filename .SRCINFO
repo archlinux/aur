@@ -1,9 +1,10 @@
 pkgbase = ros2-humble-smclib
 	pkgdesc = Converts a language-independent description of a state machine into the source code to support that state machine.
 	pkgver = 3.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://index.ros.org/p/smclib/
 	arch = any
+	makedepends = cmake
 	depends = ros2-humble
 	source = https://github.com/ros/bond_core/archive/refs/tags/3.0.2.tar.gz
 	sha256sums = 16f0a741c238057146c50f4537d0e41c6c1842f7890a9fea1e782743ec9909f3
