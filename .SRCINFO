@@ -1,0 +1,13 @@
+pkgbase = qsort
+	pkgdesc = Advanced file sorter for archlinux
+	pkgver = 0.3.3_beta
+	pkgrel = 1
+	url = https://github.com/BiltuDas1/qsort
+	arch = any
+	license = CPL
+	depends = cmake>=3.22
+	depends = tar
+	source = https://github.com/BiltuDas1/qsort/releases/download/0.3.3-beta/qsort_v0.3.3-beta_1_amd64.deb
+	sha256sums = 538ab917dab7e826cda1e766a6f0934a3f71c55c91f84607f381c8c5400231de
+
+pkgname = qsort
