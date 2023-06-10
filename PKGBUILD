@@ -4,7 +4,7 @@
 _arch=x64v2
 _pkgbase=linux-xanmod-lts
 _major=6.1
-_minor=31
+_minor=33
 _branch=6.x
 _xanmodrel=1
 _xanmodrev=
@@ -43,8 +43,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('940fffd7003f3f702998c69d2df24d0dd7ddc5905ace8c3ad53f3792557e9d48'
-            '8d4830c33398bf818fa5d065b91bb1bf263f7e8590e4fa455fe7f2836c7e5049')
+sha256sums=('c2119d0d128840311d072a8a5bb4250fcb978a6bda5eb4dc01bfdbdd2ed35c27'
+            '0996a5b87ea110f6edb1531bf5c02f5dccb04e7d93fd2d8991c2d65e32e879f3')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - ${_arch}"
@@ -74,7 +74,8 @@ _package() {
 
   # Used by mkinitcpio to name the kernel
   echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/pkgbase"
-  echo "${kernver}" | install -Dm644 /dev/stdin "${modulesdir}/kernelbase"
+  # echo "${kernver}" | install -Dm644 /dev/stdin "${modulesdir}/kernelbase"
+  echo "${pkgbase}" | install -Dm644 /dev/stdin "${modulesdir}/kernelbase"
 
   echo "${kernver}${_xanmodrev}" | install -Dm644 /dev/stdin "${pkgdir}/boot/${pkgbase}.kver"
 
