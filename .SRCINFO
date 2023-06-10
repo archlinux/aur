@@ -1,9 +1,10 @@
 pkgbase = ros2-humble-gazebo-dev
 	pkgdesc = Provides a cmake config for the default version of Gazebo for the ROS distribution.
 	pkgver = 3.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://index.ros.org/p/gazebo_dev/
 	arch = any
+	makedepends = cmake
 	depends = ros2-humble
 	depends = gazebo
 	source = https://github.com/ros-simulation/gazebo_ros_pkgs/archive/refs/tags/3.7.0.tar.gz
