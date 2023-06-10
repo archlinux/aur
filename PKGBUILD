@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdialog-git
-pkgver=21.07.70_r1179.g1906217e5
+pkgver=23.07.70_r1366.g0832b04ba
 pkgrel=1
 pkgdesc="A utility for displaying dialog boxes from shell scripts"
 arch=($CARCH)
@@ -28,6 +28,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
