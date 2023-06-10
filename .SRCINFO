@@ -1,12 +1,13 @@
 pkgbase = ros2-humble-nav2-common
 	pkgdesc = Common support functionality used throughout the navigation 2 stack
-	pkgver = 1.1.6
-	pkgrel = 2
+	pkgver = 1.1.7
+	pkgrel = 1
 	url = https://index.ros.org/p/nav2_common/
 	arch = any
+	makedepends = cmake
 	depends = ros2-humble
 	depends = python-yaml
-	source = https://github.com/ros-planning/navigation2/archive/refs/tags/1.1.6.tar.gz
-	sha256sums = 43abfa0eba8e3862e9f69e39399b0b6b627d2fa44faede494b09b7ee8c2626c1
+	source = https://github.com/ros-planning/navigation2/archive/refs/tags/1.1.7.tar.gz
+	sha256sums = 1d89dc1ad7c75d4d1645c882a5aee037ca965908344a158bb9669ad80a85196b
 
 pkgname = ros2-humble-nav2-common
