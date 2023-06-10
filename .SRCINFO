@@ -1,0 +1,18 @@
+pkgbase = schoenerd-git
+	pkgdesc = Schoener's D index calculator for niche overlap.
+	pkgver = r18.91bffdb
+	pkgrel = 1
+	url = https://github.com/marcoradocchia/schoenerd
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	checkdepends = cargo
+	makedepends = git
+	makedepends = cargo
+	provides = schoenerd
+	conflicts = schoenerd
+	source = schoenerd::git+https://github.com/marcoradocchia/schoenerd.git
+	md5sums = SKIP
+
+pkgname = schoenerd-git
