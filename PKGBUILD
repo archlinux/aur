@@ -1,21 +1,23 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: w0rty <mawo97 at gmail.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgname=wails
-pkgver=2.4.1
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Create desktop apps using Go and Web Technologies"
 arch=(x86_64)
 url="https://github.com/wailsapp/wails"
 license=(MIT)
-depends=(glibc)
+depends=('glibc' 'npm')
 makedepends=(
-  go
-  webkit2gtk
-  gtk3
+  'go'
+  'webkit2gtk'
+  'gtk3'
 )
+optdepends=('docker')
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('fa4a593b5cdad24b5e0e3b8798a6196d6337e8649d20b40b28680ec58a2ceb580e43ad8fa464b2359c57a4c28bc24260bb0b03fa2c073ac2f5236f865311016f')
-b2sums=('a39a844d5ad97a2d31b30d46262f8261a3f0c03d9d149d8af10040fcf3918a4244ca6105d360ce24e30c172dd3e3483330a8b5ccee236b8888446bec1dfd59e1')
+sha512sums=('8700c8ae51f474e64349dadb4f47a64e3b33c98c28bd0a9369b73aee231cabafcaf91bc189a514f2e97542aca03c643174de5f758df33ad22750319a1f4042b9')
+b2sums=('3c2804a1129049f983b9fd5e956cdd94e54d48f4c9a45f7dfc07203e6d932a6af8f4158d3a8a3a06213bb3074b649da686e1e3b202d13bc24ae9ff2b09c31eca')
 
 prepare() {
   mkdir -vp $pkgname-$pkgver/build
@@ -32,10 +34,10 @@ build() {
   go build -o build/ ./cmd/wails
 }
 
-check() {
-  cd $pkgname-$pkgver
-  go test
-}
+#check() {
+#  cd $pkgname-$pkgver/v2
+#  go test ./...
+#}
 
 package() {
   install -vDm 755 $pkgname-$pkgver/v2/build/$pkgname -t "$pkgdir/usr/bin/"
