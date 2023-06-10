@@ -33,7 +33,7 @@
 #      /usr/share
 pkgname=wrye-bash
 pkgver=311
-pkgrel=1
+pkgrel=2
 pkgdesc="A swiss army knife for modding Bethesda games"
 arch=('x86_64')
 license=('GPL3')
@@ -109,5 +109,6 @@ package() {
     # Install the docs to /usr, edited to make them work with the local fs layout
     mkdir -p "${pkgdir}"/usr/share/doc
     find Mopy/Docs -type f -iname "*.html" -exec sed -i "s|../bash/|/opt/wrye-bash/Mopy/bash/|" {} \;
+    find Mopy/Docs -type f -iname "*.css" -exec sed -i "s|../../bash|/opt/wrye-bash/Mopy/bash/|" {} \;
     cp -a Mopy/Docs "${pkgdir}"/usr/share/doc/$pkgname
 }
