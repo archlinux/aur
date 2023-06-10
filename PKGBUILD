@@ -4,7 +4,7 @@
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=kde-cli-tools-git
-pkgver=5.22.80_r1845.gddccf63
+pkgver=5.27.80_r2176.g3eefd40
 pkgrel=1
 pkgdesc="Tools based on KDE Frameworks 5 to better interact with the system"
 arch=($CARCH)
@@ -27,6 +27,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
@@ -35,5 +36,5 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 
-  ln -s /usr/lib/kf5/kdesu "$pkgdir"/usr/bin/
+  ln -s /usr/lib/kf6/kdesu "$pkgdir"/usr/bin/
 }
