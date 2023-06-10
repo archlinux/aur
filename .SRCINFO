@@ -1,7 +1,7 @@
 pkgbase = python39
 	pkgdesc = Major release 3.9 of the Python high-level programming language
 	pkgver = 3.9.16
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = python39
 	makedepends = bluez-libs
 	makedepends = mpdecimal
 	makedepends = gdb
+	makedepends = tk
 	depends = bzip2
 	depends = expat
 	depends = gdbm
