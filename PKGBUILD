@@ -2,14 +2,14 @@
 
 pkgname=lychee-photo-management
 pkgver=4.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy to use and great looking photo management system"
 arch=(any)
 url="https://lycheeorg.github.io/"
 license=(MIT)
-depends=(mariadb 'php>=8.1' php-gd)
+depends=('php>=8.1' php-gd)
 makedepends=(git)
-optdepends=('php-apache: to use the Apache web server')
+optdepends=(php-apache nginx mysql postgresql)
 options=('!strip' emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v$pkgver.tar.gz"
         apache.example.conf)

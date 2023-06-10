@@ -1,15 +1,17 @@
 pkgbase = lychee-photo-management
 	pkgdesc = Easy to use and great looking photo management system
 	pkgver = 4.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lycheeorg.github.io/
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = mariadb
 	depends = php>=8.1
 	depends = php-gd
-	optdepends = php-apache: to use the Apache web server
+	optdepends = php-apache
+	optdepends = nginx
+	optdepends = mysql
+	optdepends = postgresql
 	options = !strip
 	options = emptydirs
 	source = lychee-photo-management-4.9.2.tar.gz::https://github.com/LycheeOrg/Lychee/archive/v4.9.2.tar.gz
