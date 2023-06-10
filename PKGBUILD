@@ -1,6 +1,6 @@
 pkgname=revbayes-mpi
 _pkgname=revbayes
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Bayesian Phylogenetic Inference Using Graphical Models and an Interactive Model-Specification Language https://doi.org/10.1093/sysbio/syw021"
 arch=(x86_64)
@@ -17,9 +17,6 @@ md5sums=('SKIP'
 
 prepare() {
   cd $srcdir/$_pkgname
-  # fix lib issue
-  patch -p1 < $srcdir/rb.patch  
-
   git submodule update --init --recursive
   ./projects/meson/generate.sh
 }
