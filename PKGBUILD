@@ -1,13 +1,14 @@
 # Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
+_pkgroot=navigation2
 _pkgname=nav2_controller
 pkgname=ros2-humble-nav2-controller
-pkgver=1.1.6
-pkgrel=2
+pkgver=1.1.7
+pkgrel=1
 pkgdesc="Controller action interface"
 url="https://index.ros.org/p/nav2_controller/"
 arch=('any')
-makedepends=('ros2-humble-nav2-common')
+makedepends=('ros2-humble-nav2-common' 'cmake')
 depends=(
     'ros2-humble'
     'ros2-humble-angles'
@@ -18,21 +19,21 @@ depends=(
     'ros2-humble-nav2-core'
 )
 source=("https://github.com/ros-planning/navigation2/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('43abfa0eba8e3862e9f69e39399b0b6b627d2fa44faede494b09b7ee8c2626c1')
+sha256sums=('1d89dc1ad7c75d4d1645c882a5aee037ca965908344a158bb9669ad80a85196b')
 
 prepare() {
     source /opt/ros/humble/setup.bash
-
-    cmake -S navigation2-$pkgver/$_pkgname -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble
 }
 
 build() {
-source /opt/ros/humble/setup.bash
-    make -C build
+    cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
+        -Wno-dev
+    
+    cmake --build build
 }
 
 package() {
-    make DESTDIR="$pkgdir/" -C build install
+    DESTDIR="$pkgdir" cmake --install build
 }
