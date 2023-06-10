@@ -1,6 +1,6 @@
 pkgbase = ksystemstats-git
 	pkgdesc = A plugin based system monitoring daemon
-	pkgver = 5.22.80_r184.gbbfce43
+	pkgver = 5.27.80_r310.ga328223
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64

@@ -2,7 +2,7 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=ksystemstats-git
-pkgver=5.22.80_r184.gbbfce43
+pkgver=5.27.80_r310.ga328223
 pkgrel=1
 pkgdesc='A plugin based system monitoring daemon'
 arch=($CARCH)
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
