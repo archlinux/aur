@@ -10,7 +10,8 @@ url=https://github.com/AdaCore/gpr
 arch=(i686 x86_64)
 license=(GPL3 Apache)
 
-depends=(gcc-ada
+depends=(gnatcoll-iconv
+         gnatcoll-gmp
          python
          which
          python-funcy
