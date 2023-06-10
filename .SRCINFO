@@ -9,6 +9,7 @@ pkgbase = whalebird
 	makedepends = tar
 	makedepends = nodejs>=18.0.0
 	makedepends = node-gyp
+	makedepends = git
 	depends = electron21>=21.4.3
 	depends = electron21<22.0.0
 	provides = whalebird

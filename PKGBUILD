@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://whalebird.social"
 license=('MIT')
 depends=('electron21>=21.4.3' 'electron21<22.0.0')
-makedepends=('yarn' 'tar' 'nodejs>=18.0.0' 'node-gyp')
+makedepends=('yarn' 'tar' 'nodejs>=18.0.0' 'node-gyp' 'git')
 provides=('whalebird')
 cnflicts=('whalebird-bin' 'whalebird-desktop-git')
 source=("https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/v$pkgver.tar.gz"
