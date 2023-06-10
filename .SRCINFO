@@ -1,7 +1,8 @@
 pkgbase = ngs-lang-git
 	pkgdesc = Next Generation Shell (NGS)
-	pkgver = 0.2.14
+	pkgver = 0.2.16.r1.g4dbdd65
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/ngs-lang/ngs
 	arch = x86_64
 	license = GPLv3

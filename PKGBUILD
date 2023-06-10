@@ -2,8 +2,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='ngs-lang-git'
-pkgver=0.2.14
+pkgver=0.2.16.r1.g4dbdd65
 pkgrel=1
+epoch=1
 pkgdesc='Next Generation Shell (NGS)'
 arch=('x86_64')
 url='https://github.com/ngs-lang/ngs'
@@ -17,9 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname/-lang-git}"
 
-  git describe --tags --exclude 'tested' \
-    | sed 's/\([^-]*-g\)/r\1/;s/-/./'   \
-    | sed 's/v//'
+  git describe --tags | cut -c2- | sed 's+-+.r+' |tr - .
 }
 
 prepare() {
