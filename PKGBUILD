@@ -5,7 +5,7 @@
 
 pkgname='evdi-compat-git'
 src_pkgname='evdi-git'
-pkgver=1.13.1.r0.g85a347a
+pkgver=1.14.0.r0.geb83c2e
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
 pkgdesc='kernel module for DisplayLink driver, aimed at compatibility with DisplayLink package and Official kernels'
