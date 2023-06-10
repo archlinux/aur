@@ -2,7 +2,7 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kactivitymanagerd-git
-pkgver=5.21.90_r1352.g11be786
+pkgver=5.26.90_r1478.g2e822ea
 pkgrel=1
 pkgdesc="System service to manage user's activities and track the usage patterns"
 arch=($CARCH)
@@ -24,6 +24,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
