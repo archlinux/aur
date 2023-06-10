@@ -4,7 +4,7 @@
 pkgname=aliyunpan-odomu-git
 url="https://github.com/odomu/aliyunpan"
 pkgrel=1
-pkgver=r197.64c6ec3
+pkgver=r228.49e1416
 pkgdesc="阿里云盘小白羊版，odomu's fork"
 arch=("any")
 license=("MIT")
@@ -34,6 +34,7 @@ prepare(){
 set -eu
 
 export ELECTRON_FORCE_IS_PACKAGED=true
+export ELECTRON_IS_DEV=0
 
 exec $_electron --no-sandbox /usr/lib/aliyunpan-odomu/app.asar "\$@"
 
