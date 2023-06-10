@@ -32,7 +32,7 @@
 #    - Bonus points for moving *out* of /opt and sticking our shared stuff into
 #      /usr/share
 pkgname=wrye-bash
-pkgver=310
+pkgver=311
 pkgrel=1
 pkgdesc="A swiss army knife for modding Bethesda games"
 arch=('x86_64')
@@ -40,31 +40,30 @@ license=('GPL3')
 url="https://github.com/wrye-bash/wrye-bash"
 depends=('p7zip' 'python' 'python-chardet' 'python-lz4' 'python-wxpython' 'python-yaml' 'xdg-utils')
 optdepends=('python-lxml: FOMOD schema validation'
-            'python-pymupdf: PDF support in the doc browser')
+            'python-packaging: Download conditions during update check'
+            'python-pymupdf: PDF support in the doc browser'
+            'python-requests: Various Internet-based functionality'
+            'python-send2trash: Recycle instead of delete files'
+            'python-websocket-client: NexusMods integration (currently unused)')
+makedepends=('python-pygit2')
 backup=('opt/wrye-bash/Mopy/bash.ini')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/wrye-bash/wrye-bash/archive/v${pkgver}.tar.gz"
         "wrye-bash"
         "wrye-bash.desktop"
-        "0001-Some-minor-fixups-for-Linux.patch"
-        "0002-Check-for-missing-bash-dir-instead.patch"
-        "0003-Add-support-for-global-docs-to-readme_url.patch"
-        "0004-Fix-wxGTK-status-bar-icons.patch")
-sha256sums=('1f789324745e3fb7d15f67cc59254ab3d5232f7e4851483b56077f29a45e3dbb'
+        "0001-Make-BashBugDump-work-globally.patch"
+        "0002-Add-support-for-global-docs-to-readme_url.patch")
+sha256sums=('303a9b86023a8ee1ab00105ac982531e298c58e8da27e325c322a2723c6032a8'
             'a401d8f3aea3117585330037c23d0c7c1573c84c8affe1a2cfd08fe9341cb562'
             'dd2c34488c4d8f3f43311bdcf9c32d6e7645933eb32eb03f0456adfbed35594f'
-            '645147449c9612927011a5b6e491ac67b978752e94b07d19d18c5d1aacb1e90b'
-            '1dee0e88b86dedf9874625a8acc98522b46e12cad7f87aacd84a85223911007d'
-            '64fd53a7a20865759fc2378ecbfb64b6cf8ee048747d8e4128d84cf764c0b245'
-            'a5a599cf478f6282025b2cbaa9767a09fdd9eb046c4bdffac02ec16a391e73ae')
+            'f4bfc10dc5303e32fb2ee61c16474f1703b47281b68172d7919e90a686e0fbbe'
+            'd7777835c35fb8919d07f80d971b72ff604c7cf40ae13ba50b3c8259ae85d837')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
     # Apply the patchset to make WB (mostly) work as a global installation on Linux
-    patch -Np1 -i ../0001-Some-minor-fixups-for-Linux.patch
-    patch -Np1 -i ../0002-Check-for-missing-bash-dir-instead.patch
-    patch -Np1 -i ../0003-Add-support-for-global-docs-to-readme_url.patch
-    patch -Np1 -i ../0004-Fix-wxGTK-status-bar-icons.patch
+    patch -Np1 -i ../0001-Make-BashBugDump-work-globally.patch
+    patch -Np1 -i ../0002-Add-support-for-global-docs-to-readme_url.patch
 
     # Useless binary bloat on Linux
     rm -rf Mopy/bash/compiled
@@ -105,8 +104,7 @@ package() {
 
     # Install the license to /usr
     install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE.md
-    # Uncomment in 311
-    #install -Dm644 Mopy/LICENSE-THIRD-PARTY "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE-THIRD-PARTY
+    install -Dm644 Mopy/LICENSE-THIRD-PARTY "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE-THIRD-PARTY
 
     # Install the docs to /usr, edited to make them work with the local fs layout
     mkdir -p "${pkgdir}"/usr/share/doc
