@@ -1,10 +1,11 @@
 pkgbase = ros2-humble-dwb-core
 	pkgdesc = TODO
-	pkgver = 1.1.6
-	pkgrel = 2
+	pkgver = 1.1.7
+	pkgrel = 1
 	url = https://index.ros.org/p/dwb_core/
 	arch = any
 	makedepends = ros2-humble-nav2-common
+	makedepends = cmake
 	depends = ros2-humble
 	depends = ros2-humble-nav-2d-msgs
 	depends = ros2-humble-dwb-msgs
@@ -13,7 +14,7 @@ pkgbase = ros2-humble-dwb-core
 	depends = ros2-humble-nav2-util
 	depends = ros2-humble-nav2-core
 	depends = ros2-humble-nav-2d-utils
-	source = https://github.com/ros-planning/navigation2/archive/refs/tags/1.1.6.tar.gz
-	sha256sums = 43abfa0eba8e3862e9f69e39399b0b6b627d2fa44faede494b09b7ee8c2626c1
+	source = https://github.com/ros-planning/navigation2/archive/refs/tags/1.1.7.tar.gz
+	sha256sums = 1d89dc1ad7c75d4d1645c882a5aee037ca965908344a158bb9669ad80a85196b
 
 pkgname = ros2-humble-dwb-core
