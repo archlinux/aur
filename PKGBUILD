@@ -1,7 +1,7 @@
 # Maintainer: Jakub Szymański <jakubmateusz@poczta.onet.pl>
 pkgname=woeusb-ng
 pkgver=0.2.12
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple tool that enable you to create your own usb stick with Windows installer."
 arch=('any')
 url="https://github.com/WoeUSB/WoeUSB-ng"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=(
     'parted'
     'dosfstools'
-    'ntfs-3g'
+    'ntfsprogs'
     'grub'
     'p7zip'
     'python'
