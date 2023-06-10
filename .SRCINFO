@@ -1,12 +1,15 @@
 pkgbase = python-py-eddy-tracker
 	pkgdesc = Py-Eddy-Tracker libraries
 	pkgver = 3.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AntSimi/py-eddy-tracker
 	arch = any
 	license = GPL3
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-matplotlib
 	depends = python-opencv
 	depends = python-pint
