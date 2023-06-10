@@ -11,7 +11,7 @@ depends=('legendary' 'heroic-gogdl')
 makedepends=('dotnet-sdk' 'git')
 options=('!strip')
 _desktop=alfae.desktop
-source=("git+$url.git")
+source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
@@ -28,9 +28,7 @@ prepare() {
 }
 
 build() {
-  # Switch tag version
   cd Alfae
-  git checkout tags/${pkgver}
 
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
   export DOTNET_CLI_TELEMETRY_OPTOUT=true
