@@ -2,7 +2,7 @@
 # Mostly based on hyper PKGBUILD
 
 pkgname=electerm
-pkgver=1.25.41
+pkgver=1.25.50
 pkgrel=1
 pkgdesc="An electron-based SSH/SFTP Connection manager and terminal"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ source=(
     "https://raw.githubusercontent.com/electerm/electerm/master/LICENSE"
 )
 
-sha256sums=('f2e898e6f75f31f36801e21d90f6e63bc8b46da51620a73d71ac9f61fb39313f'
+sha256sums=('788590af775834126a24a3cc48ef8b38b80ee3d321c159c4e73d750012e78bbc'
             '0e932e10da6153c37a30eefd211a4af76586fa30b0675da8926e2239dc1eff7b'
             'b6d96207cff171127c04f59f9eb545b575b71cd93ebc355247cad63e23ca500d')
 
