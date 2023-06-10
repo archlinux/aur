@@ -5,7 +5,7 @@ pkgver='19.2.23906'
 # has an extra digit in the middle for some reason
 _downloadver='19.2.0.23906'
 pkgrel=2
-pkgdesc="A remote work tool (rasclient, 2x RDP client, Parallels RAS)"
+pkgdesc="A remote work tool"
 arch=('x86_64')
 url="https://www.parallels.com/products/ras/capabilities/parallels-client/"
 license=("custom:${pkgname}")

@@ -1,5 +1,5 @@
 pkgbase = parallels-client
-	pkgdesc = A remote work tool (rasclient, 2x RDP client, Parallels RAS)
+	pkgdesc = A remote work tool
 	pkgver = 19.2.23906
 	pkgrel = 2
 	url = https://www.parallels.com/products/ras/capabilities/parallels-client/
