@@ -7,7 +7,7 @@ pkgbase = lwjgl
 	license = BSD
 	depends = java-environment
 	options = !strip
-	source = https://github.com/LWJGL/lwjgl3/releases/download/3.3.1/lwjgl.zip
-	md5sums = 033c4048461bf0baefc2a6c00179a519
+	source = https://github.com/LWJGL/lwjgl3/releases/download/3.3.2/lwjgl.zip
+	md5sums = c1b282189e0be3dd85d3bf279f141385
 
 pkgname = lwjgl
