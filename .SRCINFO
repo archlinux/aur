@@ -1,0 +1,14 @@
+pkgbase = stendhal-bin
+	pkgdesc = Stendhal is a fun friendly and free multiplayer online adventure game with an old school feel.
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://stendhalgame.org/
+	arch = any
+	license = GPL2
+	depends = java-environment-common
+	source = https://arianne-project.org/download/stendhal.zip
+	source = stendhal
+	sha256sums = dffeb98c9e8e28265f873f087e2abee74fcb5b0b3874884efc8c044470645d7c
+	sha256sums = 5d29bc01ccc575e62d145d4826d962bc0ade872538c8e5888415b0f98e942aaf
+
+pkgname = stendhal-bin

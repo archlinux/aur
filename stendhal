@@ -1,0 +1,4 @@
+#!/bin/sh
+cd /opt/stendhal/
+java -Xmx8192m -jar stendhal-starter.jar
+exit
