@@ -1,0 +1,13 @@
+pkgbase = schoenerd-bin
+	pkgdesc = Schoener's D index calculator for niche overlap.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/marcoradocchia/schoenerd
+	arch = x86_64
+	license = GPL3
+	provides = schoenerd
+	conflicts = schoenerd
+	source = https://github.com/marcoradocchia/schoenerd/releases/download/v0.1.0/schoenerd-0.1.0-x86_64-linux-gnu.tar.gz
+	sha256sums = dfb29473dc7439a735684eccab4b7aaff4050282227bd9991fc38cf1c8113dfe
+
+pkgname = schoenerd-bin
