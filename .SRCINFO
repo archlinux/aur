@@ -1,9 +1,10 @@
 pkgbase = ros2-humble-moveit-resources-panda-moveit-config
 	pkgdesc = MoveIt Resources for testing: Franka Emika Panda
 	pkgver = 2.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://index.ros.org/p/panda_moveit_config/
 	arch = any
+	makedepends = cmake
 	depends = ros2-humble
 	depends = ros2-humble-joint-state-publisher
 	depends = ros2-humble-joint-state-publisher-gui
