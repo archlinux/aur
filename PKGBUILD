@@ -3,7 +3,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=dolphin-plugins-git
-pkgver=21.11.70_r601.g04ae4bf
+pkgver=23.07.70_r761.g1abd322
 pkgrel=1
 pkgdesc='Extra Dolphin plugins'
 arch=($CARCH)
@@ -28,6 +28,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }

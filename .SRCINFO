@@ -1,6 +1,6 @@
 pkgbase = dolphin-plugins-git
 	pkgdesc = Extra Dolphin plugins
-	pkgver = 21.11.70_r601.g04ae4bf
+	pkgver = 23.07.70_r761.g1abd322
 	pkgrel = 1
 	url = https://apps.kde.org/dolphin_plugins/
 	arch = x86_64
