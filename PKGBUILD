@@ -4,7 +4,7 @@ _pkgroot=navigation2
 _pkgname=nav2_dwb_controller/dwb_critics
 pkgname=ros2-humble-dwb-critics
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The dwb_critics package"
 url="https://index.ros.org/p/dwb_critics/"
 arch=('any')
@@ -21,11 +21,10 @@ depends=(
 source=("https://github.com/ros-planning/navigation2/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('1d89dc1ad7c75d4d1645c882a5aee037ca965908344a158bb9669ad80a85196b')
 
-prepare() {
-    source /opt/ros/humble/setup.bash
-}
 
 build() {
+    source /opt/ros/humble/setup.bash
+
     cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
