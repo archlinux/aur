@@ -1,0 +1,17 @@
+pkgbase = python-pytest-jupyterhub
+	pkgdesc = Reusable pytest plugin for testing JupyterHub components
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://pytest-jupyterhub.readthedocs.io/
+	arch = any
+	license = BSD
+	checkdepends = python-pytest-asyncio
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = jupyterhub
+	depends = python-pytest
+	source = https://files.pythonhosted.org/packages/source/p/pytest_jupyterhub/pytest_jupyterhub-0.1.0.tar.gz
+	sha256sums = fbbff17d873ff5480631cf2299356fb1beef64eda74130f881189deb71cd0696
+
+pkgname = python-pytest-jupyterhub

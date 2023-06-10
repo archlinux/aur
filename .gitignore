@@ -1,0 +1,5 @@
+pytest_jupyterhub-*.tar.gz
+src/
+pkg/
+python-pytest-jupyterhub-*.pkg.tar*
+*.log
