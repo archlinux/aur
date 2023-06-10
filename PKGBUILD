@@ -2,7 +2,7 @@
 
 pkgname=ros2-humble-slam-toolbox
 pkgver=2.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="This package provides a sped up improved slam karto with updated SDK and visualization and modification toolsets"
 url="https://index.ros.org/p/slam_toolbox/"
 arch=('any')
@@ -17,22 +17,23 @@ depends=(
     'qt5-base'
     'ros2-humble-nav2-map-server'
 )
+makedepends=('cmake')
 source=("https://github.com/SteveMacenski/slam_toolbox/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('27242664b7964180f48f53f7594a1e6a06a2f96e9d54285eb159be9fd7eedb08')
 
 prepare() {
     source /opt/ros/humble/setup.bash
-
-    cmake -S slam_toolbox-$pkgver -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble
 }
 
 build() {
-source /opt/ros/humble/setup.bash
-    make -C build
+    cmake -B build -S "$_pkgname-$pkgver" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
+        -Wno-dev
+    
+    cmake --build build
 }
 
 package() {
-    make DESTDIR="$pkgdir/" -C build install
+    DESTDIR="$pkgdir" cmake --install build
 }
