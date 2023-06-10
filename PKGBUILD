@@ -3,8 +3,9 @@
 _pkgroot=ros2_controllers
 _pkgname=diff_drive_controller
 pkgname=ros2-humble-diff-drive-controller
-pkgver=2.21.0
-pkgrel=2
+pkgver=2.20.0
+epoch=1
+pkgrel=1
 pkgdesc="Controller for a differential drive mobile base."
 url="https://index.ros.org/p/diff_drive_controller/"
 arch=('any')
@@ -22,7 +23,7 @@ depends=(
     'ros2-humble-realtime-tools'
 )
 source=("https://github.com/ros-controls/ros2_controllers/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d6761cdecb079122ce46b94b8dcae6f6580b9ef45ff8728447c0d7dd27b6b49c')
+sha256sums=('1b05787726fe7b14d493dd612aa7eb4459da53ccaee261ae87b78bf73878a0e3')
 
 
 build() {
