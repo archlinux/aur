@@ -37,7 +37,10 @@ depends=('libxcursor'
          'udisks2'
          # includes core, gui, widgets, network, xml, dbus, pritnsupport
          'qt5-base'
-         'qt5-x11extras')
+         'qt5-x11extras'
+         # replacements for bundled libraries in opt/2X/Client/lib/
+         # libavcodec.so.58, libavutil.so.56
+         'ffmpeg4.4')
 makedepends=()
 optdepends=()
 provides=()
@@ -68,6 +71,9 @@ package() {
     ln -s -t "${_bin}/" \
         "/${_opt}/bin/2XClient" \
         "/${_opt}/bin/appserverclient"
+
+    # libraries
+    install -D -t "${_dest}/lib/" 'lib/lib2xsupport.so.19' 'lib/libmtp-prl.so' 'lib/libwebview.so'
 
     # license
     install -D -m644 -t "${_dest}/doc/" 'doc/EULA.txt' 

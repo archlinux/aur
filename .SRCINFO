@@ -32,6 +32,7 @@ pkgbase = parallels-client
 	depends = udisks2
 	depends = qt5-base
 	depends = qt5-x11extras
+	depends = ffmpeg4.4
 	source = https://download.parallels.com/ras/v19/19.2.0.23906/RASClient-19.2.23906_x86_64.tar.bz2
 	sha256sums = e37843a042f544bdebeccfb0a42ce1ffba30a0ee71d742493a44ee79fc554211
 
