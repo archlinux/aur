@@ -1,12 +1,13 @@
 pkgbase = ros2-humble-controller-interface
 	pkgdesc = Description of controller_interface
-	pkgver = 2.24.1
-	pkgrel = 2
+	pkgver = 2.26.0
+	pkgrel = 1
 	url = https://index.ros.org/p/controller_interface/
 	arch = any
+	makedepends = cmake
 	depends = ros2-humble
 	depends = ros2-humble-hardware-interface
-	source = https://github.com/ros-controls/ros2_control/archive/refs/tags/2.24.1.tar.gz
-	sha256sums = ceaa6c11965e2136d1a511584bdaf5694f1e665429860ccac8b65f59230e14b2
+	source = https://github.com/ros-controls/ros2_control/archive/refs/tags/2.26.0.tar.gz
+	sha256sums = bb8b1233fa6db7dd2f56cf350c9ef9c5750f83e212df62981480a2453656f0cf
 
 pkgname = ros2-humble-controller-interface
