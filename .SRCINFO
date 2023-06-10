@@ -4,6 +4,7 @@ pkgbase = ros2-humble-backward-ros
 	pkgrel = 2
 	url = https://index.ros.org/p/backward_ros/
 	arch = any
+	makedepends = cmake
 	depends = ros2-humble
 	depends = pahole
 	source = https://github.com/pal-robotics/backward_ros/archive/refs/tags/1.0.2.tar.gz
