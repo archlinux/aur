@@ -3,7 +3,7 @@
 
 _pkgbase=ocp
 pkgname=('ocp-git' 'ocp-sdl2-git')
-pkgver=0.2.105.r3.f9a4f71
+pkgver=0.2.105.r17.38fc2b5
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -26,6 +26,7 @@ makedepends=('alsa-lib'
 	     'ncurses'
 	     'sdl2'
 	     'xa'
+	     'libgme'
 	     'libancient'
 	     'libdiscid' 
 	     'libmad'
@@ -67,9 +68,10 @@ package_ocp-sdl2-git() {
 		 'freetype2'
 		 'hicolor-icon-theme'
 		 'ncurses'
-	   	 'sdl2'
+		 'sdl2'
 	 	 'shared-mime-info'
 		 'zlib'
+		 'libgme'
 		 'libancient'
 		 'libdiscid'
 		 'libjpeg-turbo' 
@@ -93,10 +95,11 @@ package_ocp-git() {
 		  ${_pkgbase}-curses=${pkgver})
 	conflicts=('ocp-curses' 'ocp-sdl2')
 	depends=('alsa-lib'
-	         'bzip2'
-                 'cjson'
+		 'bzip2'
+		 'cjson'
 		 'ncurses'
 		 'zlib'
+		 'libgme'
 		 'libancient'
 		 'libdiscid')
 	cd $_pkgbase
