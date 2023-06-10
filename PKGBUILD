@@ -3,7 +3,7 @@
 
 pkgname=python-inquirer
 _pkg="${pkgname#python-}"
-pkgver=3.1.2
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="Collection of common interactive command line user interfaces, based on Inquirer.js"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python-blessed' 'python-editor' 'python-readchar')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/i/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('d5b4dafe5cbb9edf5991b77bd08053b683e13b600bf9174c0bda5a35b3e88ec5')
+sha256sums=('aac309406f5b49d4b8ab7c6872117f43bf082a552dc256aa16bc95e16bb58bec')
 
 build() {
 	cd "$_pkg-$pkgver"
