@@ -20,6 +20,6 @@ pkgbase = qdvdauthor
 	source = https://sourceforge.net/projects/qdvd/files/qdvd-2.3.1-qt5/qdvdauthor-2.3.1-013.tar.gz
         source = CMakeLists.patch
         source = CMakeLists_qrender.patch
-	md5sums = d2c3579e6b1148e7aa45fadc77324d38
+	md5sums = 857b925af7138aab779b972674941792
 
 pkgname = qdvdauthor
