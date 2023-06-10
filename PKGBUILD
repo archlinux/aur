@@ -9,7 +9,7 @@ url="https://github.com/he-yaowen/dostron"
 license=("GPL-3.0")
 depends=("electron")
 source=(https://github.com/he-yaowen/dostron/releases/download/v$pkgver/$pkgname-$pkgver-aur-$arch.tar.xz)
-sha256sums=("a5887cc8ea1dd0aec5f032929a527093c6d0afc967b4088cc3871666dd0fc9df")
+sha256sums=("2465091b4fd58d4e34ba339a1a73bedb758a88ae5162d108f10cb965f65f8b8e")
 
 build() {
     mkdir -p $srcdir/opt
