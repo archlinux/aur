@@ -3,7 +3,7 @@
 _pkgname=fanuc_description
 pkgname=ros2-humble-moveit-resources-fanuc-description
 pkgver=2.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Fanuc Resources used for MoveIt testing"
 url="https://index.ros.org/p/fanuc_description/"
 arch=('any')
@@ -15,18 +15,17 @@ sha256sums=('25d86930fd51927670ea3135ad398bc6b4a9ade2c6a629d63e02f818431a52ac')
 
 prepare() {
     source /opt/ros/humble/setup.bash
-
-    cmake -S moveit_resources-$pkgver/$_pkgname -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble
 }
 
 build() {
-source /opt/ros/humble/setup.bash
-    make -C build
+    cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
+        -Wno-dev
+    
+    cmake --build build
 }
 
 package() {
-    make DESTDIR="$pkgdir/" -C build install
+    DESTDIR="$pkgdir" cmake --install build
 }
-
