@@ -1,6 +1,6 @@
 pkgbase = labplot-git
 	pkgdesc = KDE Application for interactive graphing and analysis of scientific data
-	pkgver = 2.9.0_r8443.g48ee28c12
+	pkgver = 2.10.0_r11697.g60ad14f72
 	pkgrel = 1
 	url = https://labplot.kde.org/
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = labplot-git
 	depends = libcerf
 	depends = qt5-mqtt
 	depends = kuserfeedback-git
+	depends = qt6-5compat
 	provides = labplot
 	conflicts = labplot
 	source = git+https://github.com/KDE/labplot.git
 	sha256sums = SKIP
 
 pkgname = labplot-git
-
