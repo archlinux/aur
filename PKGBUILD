@@ -1,11 +1,11 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=turtle-git
 _app_id="de.philippun1.${pkgname%-git}"
-pkgver=0.2.r14.gd647dce
+pkgver=0.2.r26.gb10dd51
 pkgrel=1
 pkgdesc="A gtk4 + libadwaita frontend for pygit2 with nautilus plugin support."
 arch=('any')
-url="https://gitlab.gnome.org/philippun1/turtlegit"
+url="https://gitlab.gnome.org/philippun1/turtle"
 license=('GPL3')
 depends=('libadwaita' 'python-gobject' 'python-nautilus' 'python-pygit2')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
@@ -14,21 +14,21 @@ optdepends=('meld: diff tool')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'turtlegit')
 replaces=('turtlegit-git')
-source=('git+https://gitlab.gnome.org/philippun1/turtlegit.git')
+source=('git+https://gitlab.gnome.org/philippun1/turtle.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/turtlegit"
+  cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/turtlegit"
+  cd "$srcdir/${pkgname%-git}"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir/turtlegit"
+  cd "$srcdir/${pkgname%-git}"
   PYTHONPATH=./ pytest
 
   appstream-util validate-relax --nonet "data/${_app_id}.metainfo.xml"
@@ -36,7 +36,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/turtlegit"
+  cd "$srcdir/${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 "data/icons/hicolor/scalable/apps/${_app_id}.svg" -t \
