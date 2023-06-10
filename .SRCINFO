@@ -1,6 +1,6 @@
 pkgbase = kscreenlocker-git
 	pkgdesc = Library and components for secure lock screen architecture
-	pkgver = 5.22.80_r850.g4913b97
+	pkgver = 5.27.80_r1134.g0720165
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -23,4 +23,3 @@ pkgbase = kscreenlocker-git
 	sha256sums = SKIP
 
 pkgname = kscreenlocker-git
-

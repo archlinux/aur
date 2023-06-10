@@ -4,7 +4,7 @@
 # Contributor: Marcin Mikołajczak <me@mkljczk.pl>
 
 pkgname=kscreenlocker-git
-pkgver=5.22.80_r850.g4913b97
+pkgver=5.27.80_r1134.g0720165
 pkgrel=1
 pkgdesc='Library and components for secure lock screen architecture'
 arch=($CARCH)
@@ -27,6 +27,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
     -DBUILD_TESTING=OFF
   cmake --build build
