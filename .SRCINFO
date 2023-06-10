@@ -1,16 +1,17 @@
 pkgbase = ros2-humble-gazebo-ros2-control
 	pkgdesc = gazebo_ros2_control
-	pkgver = 0.4.2
-	pkgrel = 2
+	pkgver = 0.4.3
+	pkgrel = 1
 	url = https://index.ros.org/p/gazebo_ros2_control/
 	arch = any
+	makedepends = cmake
 	depends = ros2-humble
 	depends = ros2-humble-angles
 	depends = ros2-humble-gazebo-dev
 	depends = ros2-humble-gazebo-ros
 	depends = ros2-humble-controller-manager
 	depends = ros2-humble-hardware-interface
-	source = https://github.com/ros-controls/gazebo_ros2_control/archive/refs/tags/0.4.2.tar.gz
-	sha256sums = fbe323cf876cac86d3c852cc9ccae63fdc36a760c73df6fa64f793fb0eb110e0
+	source = https://github.com/ros-controls/gazebo_ros2_control/archive/refs/tags/0.4.3.tar.gz
+	sha256sums = 722098c4dc61da9f810da1aa959312ba85f679e85507a623846e911bedd7500c
 
 pkgname = ros2-humble-gazebo-ros2-control
