@@ -3,15 +3,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=gwenview-git
-pkgver=23.07.70_r7068.g23987b45
+pkgver=23.07.70_r7165.g29cc77fa
 pkgrel=1
 pkgdesc='A fast and easy to use image viewer'
 url='https://apps.kde.org/gwenview/'
 arch=($CARCH)
 license=(GPL LGPL FDL)
 groups=(kde-applications-git kde-graphics-git)
-depends=(kactivities-git baloo-git libkdcraw-git kparts-git kitemmodels-git cfitsio phonon-qt5-git purpose-git perl kimageannotator)
-optdepends=('qt5-imageformats: support for tiff, webp, and more image formats'
+depends=(kactivities-git baloo-git libkdcraw-git kparts-git kitemmodels-git cfitsio phonon-qt6-git purpose-git perl kimageannotator)
+optdepends=('qt6-imageformats: support for tiff, webp, and more image formats'
             'kimageformats-git: support for dds, xcf, exr, psd, and more image formats'
             'kamera-git: import pictures from gphoto2 cameras')
 makedepends=(git extra-cmake-modules-git kdoctools-git)
@@ -30,6 +30,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DGWENVIEW_SEMANTICINFO_BACKEND="Baloo" \
     -DBUILD_TESTING=OFF
   cmake --build build
