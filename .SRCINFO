@@ -1,6 +1,6 @@
 pkgbase = jupyterhub-systemdspawner
 	pkgdesc = Spawn JupyterHub single-user servers with systemd
-	pkgver = 0.17.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/jupyterhub/systemdspawner
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = jupyterhub-systemdspawner
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = jupyterhub
-	source = https://files.pythonhosted.org/packages/source/j/jupyterhub-systemdspawner/jupyterhub-systemdspawner-0.17.0.tar.gz
-	sha256sums = 5337a1266f3c0f6dbe162754061c1a8096ad7a9ccf519fe9f27219678051c21a
+	depends = systemd
+	source = https://files.pythonhosted.org/packages/source/j/jupyterhub-systemdspawner/jupyterhub-systemdspawner-1.0.1.tar.gz
+	sha256sums = 8d614f19d89564321fe55d80ecd134a0e2bf276274d45861495c9bb5a80add28
 
 pkgname = jupyterhub-systemdspawner
