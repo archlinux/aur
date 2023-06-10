@@ -2,7 +2,7 @@
 
 _pkgname=fmt
 pkgname=mingw-w64-${_pkgname}
-pkgver=9.1.0
+pkgver=10.0.0
 pkgrel=1
 pkgdesc='Open-source formatting library for C++ (mingw-w64)'
 url='https://fmt.dev/'
@@ -13,12 +13,12 @@ checkdepends=('mingw-w64-wine')
 arch=('any')
 options=(!strip !buildflags staticlibs !lto)
 optdepends=()
-sha256sums=('5dea48d1fcddc3ec571ce2058e13910a0d4a6bab4cc09a809d8b1dd1c88ae6f2')
+sha256sums=('ede1b6b42188163a3f2e0f25ad5c0637eca564bd8df74d02e31a311dd6b37ad8')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/fmtlib/${_pkgname}/archive/${pkgver}.tar.gz")
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' \
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' \
 	-DFMT_DOC=OFF -DCMAKE_CXX_STANDARD=20 )
 
 build() {
