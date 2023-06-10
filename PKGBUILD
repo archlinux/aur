@@ -4,7 +4,7 @@
 
 pkgname=kscreen-git
 pkgver=5.27.80_r1786.g07e7887
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE's screen management software"
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
