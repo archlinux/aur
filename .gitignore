@@ -1,0 +1,5 @@
+scikit_build_core-*.tar.gz
+src/
+pkg/
+python-scikit-build-core-*.pkg.tar*
+*.log
