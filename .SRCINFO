@@ -13,7 +13,7 @@ pkgbase = eww-git
 	provides = eww
 	conflicts = eww
 	source = git+https://github.com/elkowar/eww.git?signed
-	validpgpkeys = B558974128820CB473BD9807E321AD71B1D1F27F
+	validpgpkeys = 94E8F34BCE4F4BA8ED9B29BD50E76B4711E4C3E4
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	b2sums = SKIP
 
