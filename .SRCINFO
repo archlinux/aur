@@ -1,0 +1,11 @@
+pkgbase = webgpu-headers
+	pkgdesc = WebGPU native header files
+	pkgver = 64aeb86b69
+	pkgrel = 1
+	url = https://github.com/webgpu-native/webgpu-headers/
+	arch = any
+	license = BSD
+	source = https://github.com/webgpu-native/webgpu-headers/archive/64aeb86b69.tar.gz
+	sha256sums = e339a47c516d07a6aac93159d59f8c8b17c8c5d0866de0a21364411b2593e585
+
+pkgname = webgpu-headers
