@@ -3,14 +3,14 @@
 _pkgname=RSL
 pkgname=ros2-humble-rsl
 pkgver=0.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="ROS Support Library"
 url="https://index.ros.org/p/rsl/"
 arch=('any')
 makedepends=(
-    'clang'
     'range-v3'
     'cmake'
+    'doxygen'
 )
 depends=(
     'ros2-humble' 

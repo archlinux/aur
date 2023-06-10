@@ -1,12 +1,12 @@
 pkgbase = ros2-humble-rsl
 	pkgdesc = ROS Support Library
 	pkgver = 0.2.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://index.ros.org/p/rsl/
 	arch = any
-	makedepends = clang
 	makedepends = range-v3
 	makedepends = cmake
+	makedepends = doxygen
 	depends = ros2-humble
 	depends = fmt
 	depends = ros2-humble-tl-expected
