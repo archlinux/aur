@@ -3,7 +3,7 @@
 _plug=vsbasicvsrpp
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=2.1.0.0.gb37b134
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/HolyWu/vs-basicvsrpp'
@@ -14,23 +14,15 @@ depends=(
   'python-tqdm'
   'python-requests'
   'python-addict'
-  'python-mmengine'
-  'python-opencv'
-  'python-pillow'
-  'python-yaml'
-  'yapf'
+  'python-mmcv-full'
 )
 makedepends=(
   'git'
-  'cuda'
-  'cython'
   'python-build'
   'python-installer'
-  'python-pytorch-cuda'
   'python-setuptools'
   'python-sympy'
   'python-wheel'
-  'numactl'
 )
 optdepends=(
   'python-pytorch: pytorch CPU with AVX2 optimizations'
@@ -39,18 +31,9 @@ optdepends=(
   'python-torchvision-cuda: torchvision Datasets, transforms, and models specific to computer vision git diff(with GPU support)'
 )
 provides=("vapoursynth-plugin-${_plug}")
-conflicts=(
-  "vapoursynth-plugin-${_plug}"
-  'python-mmcv'
-)
-source=(
-  "${_plug}::git+https://github.com/HolyWu/vs-basicvsrpp.git"
-  'https://github.com/open-mmlab/mmcv/archive/v1.7.1.tar.gz'
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+conflicts=("vapoursynth-plugin-${_plug}")
+source=("${_plug}::git+https://github.com/HolyWu/vs-basicvsrpp.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -66,19 +49,11 @@ build() {
   export CC=/opt/cuda/bin/gcc
   export CXX=/opt/cuda/bin/g++
 
-  cd "${srcdir}/mmcv-1.7.1"
-  FORCE_CUDA=1 \
-  MMCV_WITH_OPS=1 \
-  TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST} \
-  python -m build --wheel --no-isolation
-
   cd "${srcdir}/${_plug}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/mmcv-1.7.1"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
   cd "${srcdir}/${_plug}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 
