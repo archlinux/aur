@@ -1,9 +1,10 @@
 # Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
+_pkgroot=ros2_controllers
 _pkgname=joint_trajectory_controller
 pkgname=ros2-humble-joint-trajectory-controller
-pkgver=2.17.2
-pkgrel=2
+pkgver=2.21.0
+pkgrel=1
 pkgdesc="Controller for executing joint-space trajectories on a group of joints"
 url="https://index.ros.org/p/joint_trajectory_controller/"
 arch=('any')
@@ -23,7 +24,7 @@ depends=(
     'ros2-humble-generate-parameter-library'
 )
 source=("https://github.com/ros-controls/ros2_controllers/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('87f488479f0d4cdbdcdef5ec5a6238c8fd4a84fda9f365d90feafb1f3903c245')
+sha256sums=('d6761cdecb079122ce46b94b8dcae6f6580b9ef45ff8728447c0d7dd27b6b49c')
 
 prepare() {
     source /opt/ros/humble/setup.bash
