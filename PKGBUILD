@@ -3,8 +3,9 @@
 _pkgroot=ros2_controllers
 _pkgname=position_controllers
 pkgname=ros2-humble-position-controllers
-pkgver=2.21.0
-pkgrel=2
+pkgver=2.20.0
+epoch=1
+pkgrel=1
 pkgdesc="Generic controller for forwarding commands"
 url="https://index.ros.org/p/position_controllers/"
 arch=('any')
@@ -19,7 +20,7 @@ depends=(
     'ros2-humble-forward-command-controller'
 )
 source=("https://github.com/ros-controls/ros2_controllers/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d6761cdecb079122ce46b94b8dcae6f6580b9ef45ff8728447c0d7dd27b6b49c')
+sha256sums=('1b05787726fe7b14d493dd612aa7eb4459da53ccaee261ae87b78bf73878a0e3')
 
 
 build() {
