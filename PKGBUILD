@@ -1,7 +1,7 @@
 pkgname="xinvaders3d"
 pkgver=1.5.0
 pkgrel=1
-#pkgdesc="XInvaders3D is a 3D Vector Graphics Space Invaders clone for X11. "
+pkgdesc="XInvaders3D is a 3D Vector Graphics Space Invaders clone for X11. "
 arch=('i686' 'x86_64')
 url="https://github.com/JoesCat/xinvaders3d"
 makedepends=('xtrans')
