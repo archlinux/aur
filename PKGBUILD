@@ -1,6 +1,6 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgname=apk-editor-studio
+pkgname=apk-editor-studio-1.7
 pkgver=1.7.1
 pkgrel=1
 pkgdesc="Powerful yet easy to use APK editor"
