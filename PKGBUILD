@@ -1,14 +1,16 @@
 # Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
+_pkgroot=vision_opencv
 _pkgname=cv_bridge
 pkgname=ros2-humble-cv-bridge
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="This contains CvBridge, which converts between ROS Image messages and OpenCV images."
 url="https://index.ros.org/p/cv_bridge/"
 arch=('any')
 makedepends=(
     'boost'
+    'cmake'
 )
 depends=(
     'ros2-humble'
@@ -21,17 +23,17 @@ sha256sums=('bf8a18770ffe3335e9bf96cb89be886a846be10382e67c2dc93cd4e387b2c3f9')
 
 prepare() {
     source /opt/ros/humble/setup.bash
-
-    cmake -S vision_opencv-$pkgver/$_pkgname -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble
 }
 
 build() {
-source /opt/ros/humble/setup.bash
-    make -C build
+    cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
+        -Wno-dev
+    
+    cmake --build build
 }
 
 package() {
-    make DESTDIR="$pkgdir/" -C build install
+    DESTDIR="$pkgdir" cmake --install build
 }
