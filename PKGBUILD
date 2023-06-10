@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore
-pkgver=1.17.1
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('webkit2gtk' 'webkit2gtk-4.1' 'libappindicator-gtk3')
 makedepends=('cargo' 'git' 'npm')
 optdepends=('sccache: compiler caching for faster compiling')
 _desktop=flightcore.desktop
-source=("git+$url.git")
+source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
@@ -25,13 +25,8 @@ prepare() {
   sed -i '1 i\Exec=flightcore %U' $_desktop
   sed -i '1 i\Name=FlightCore' $_desktop
   sed -i '1 i\[Desktop Entry]' $_desktop
-
-  # Switch tag version
-  cd FlightCore
-  git checkout tags/v${pkgver}
-
   # Only build the excutable
-  cd src-tauri
+  cd FlightCore/src-tauri
   sed -i '18s/.*/      "active": false,/' tauri.conf.json
   # Disable the updater
   sed -i '54s/.*/      "active": false,/' tauri.conf.json
