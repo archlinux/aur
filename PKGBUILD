@@ -6,7 +6,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 
 pkgname=notesnook
-pkgver=2.5.0
+pkgver=2.5.2
 pkgrel=1
 _electronversion=21
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
@@ -18,7 +18,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 depends=("electron$_electronversion" 'libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst')
 makedepends=('nvm' 'git' 'yarn')
-source=("notesnook::git+$url.git"
+source=("git+$url.git#tag=v$pkgver"
         "${pkgname}.desktop")
 sha256sums=('SKIP'
             'f0e084aa6dae51e4f18962f5ca2b83c4150dc26dfad69301f0e8d2d0d0d876b5')
@@ -29,7 +29,6 @@ prepare() {
 
 build() {
   cd notesnook
-  git checkout tags/v${pkgver}
   source /usr/share/nvm/init-nvm.sh && nvm use lts/gallium --silent
   electronDist=/usr/lib/electron$_electronversion
   electronVer=$(electron$_electronversion --version | tail -c +2)
