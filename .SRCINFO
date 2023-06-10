@@ -1,0 +1,13 @@
+pkgbase = fleek
+	pkgdesc = "Home as Code" for Humans
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/ublue-os/fleek
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/ublue-os/fleek#commit=fa4dddb10798d96bc56e84cd4fe7d8b74367a8f6
+	b2sums = SKIP
+
+pkgname = fleek
