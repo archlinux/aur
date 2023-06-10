@@ -3,7 +3,7 @@
 pkgname=python-pure-protobuf
 _author=eigenein
 _gitname=protobuf
-pkgver=2.1.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Python implementation of Protocol Buffers data types with dataclasses support.'
 url='https://github.com/eigenein/protobuf'
@@ -13,13 +13,20 @@ depends=('python')
 makedepends=(
   git
   python-setuptools
+  python-hatchling
+  python-hatch-vcs
 )
 provides=('python-pure-protobuf')
 
-source=("$_gitname-$pkgver.tar.gz::https://www.github.com/$_author/$_gitname/archive/$pkgver.tar.gz")
-sha256sums=('91854ece115b9fdc36facf73ac96945de32d71cb279fe116f186c1c670e1b61e')
+source=("git+https://www.github.com/$_author/$_gitname#tag=$pkgver")
+sha256sums=('SKIP')
+
+build() {
+    cd "$srcdir/$_gitname"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "$_gitname-$pkgver"
-  python setup.py install --root=$pkgdir
+  cd "$srcdir/$_gitname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 } 

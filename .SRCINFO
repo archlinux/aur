@@ -1,15 +1,17 @@
 pkgbase = python-pure-protobuf
 	pkgdesc = Python implementation of Protocol Buffers data types with dataclasses support.
-	pkgver = 2.1.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/eigenein/protobuf
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
 	depends = python
 	provides = python-pure-protobuf
-	source = protobuf-2.1.1.tar.gz::https://www.github.com/eigenein/protobuf/archive/2.1.1.tar.gz
-	sha256sums = 91854ece115b9fdc36facf73ac96945de32d71cb279fe116f186c1c670e1b61e
+	source = git+https://www.github.com/eigenein/protobuf#tag=2.3.0
+	sha256sums = SKIP
 
 pkgname = python-pure-protobuf
