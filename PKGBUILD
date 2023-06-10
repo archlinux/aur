@@ -27,26 +27,26 @@ package()
 
    mkdir -p $pkgdir/opt/gnatstudio-sources
 
-   mv ada_libfswatch-24.0w-20230428-16626-src.tar.gz    $pkgdir/opt/gnatstudio-sources
-   mv adasat-24.0w-20230324-16568-src.tar.gz            $pkgdir/opt/gnatstudio-sources
-   mv als-24.0w-20230428-16420-src.tar.gz               $pkgdir/opt/gnatstudio-sources
-   mv gnatcoll-bindings-24.0w-20230324-1636E-src.tar.gz $pkgdir/opt/gnatstudio-sources
-   mv gnatcoll-core-24.0w-20230324-161A8-src.tar.gz     $pkgdir/opt/gnatstudio-sources
-   mv gnatcoll-db-24.0w-20230324-166CC-src.tar.gz       $pkgdir/opt/gnatstudio-sources
-   mv gnatdoc4-24.0w-20230428-16616-src.tar.gz          $pkgdir/opt/gnatstudio-sources
-   mv gnathub-edge-24.0w-20230324-16293-src.tar.gz      $pkgdir/opt/gnatstudio-sources
-   mv gnatstudio-24.0w-20230428-16588-src.tar.gz        $pkgdir/opt/gnatstudio-sources
-   mv gpr2-24.0w-20230324-16151-src.tar.gz              $pkgdir/opt/gnatstudio-sources
-   mv gprbuild-24.0w-20230324-1649D-src.tar.gz          $pkgdir/opt/gnatstudio-sources
-   mv gprconfig-kb-24.0w-20230324-16644-src.tar.gz      $pkgdir/opt/gnatstudio-sources
-   mv gtkada-24.0w-20230428-165F0-src.tar.gz            $pkgdir/opt/gnatstudio-sources
-   mv langkit-24.0w-20230324-16391-src.tar.gz           $pkgdir/opt/gnatstudio-sources
-   mv libadalang-24.0w-20230324-164A3-src.tar.gz        $pkgdir/opt/gnatstudio-sources
-   mv libadalang-tools-24.0w-20230324-166A6-src.tar.gz  $pkgdir/opt/gnatstudio-sources
-   mv markdown-24.0w-20230428-162F9-src.tar.gz          $pkgdir/opt/gnatstudio-sources
-   mv spawn-24.0w-20230428-162D4-src.tar.gz             $pkgdir/opt/gnatstudio-sources
-   mv templates_parser-24.0w-20230324-1619B-src.tar.gz  $pkgdir/opt/gnatstudio-sources
-   mv vss-24.0w-20230324-16550-src.tar.gz               $pkgdir/opt/gnatstudio-sources
-   mv vss-24.0w-20230428-1628B-src.tar.gz               $pkgdir/opt/gnatstudio-sources
-   mv xmlada-24.0w-20230324-1684A-src.tar.gz            $pkgdir/opt/gnatstudio-sources
+   cp ada_libfswatch-24.0w-20230428-16626-src.tar.gz    $pkgdir/opt/gnatstudio-sources
+   cp adasat-24.0w-20230324-16568-src.tar.gz            $pkgdir/opt/gnatstudio-sources
+   cp als-24.0w-20230428-16420-src.tar.gz               $pkgdir/opt/gnatstudio-sources
+   cp gnatcoll-bindings-24.0w-20230324-1636E-src.tar.gz $pkgdir/opt/gnatstudio-sources
+   cp gnatcoll-core-24.0w-20230324-161A8-src.tar.gz     $pkgdir/opt/gnatstudio-sources
+   cp gnatcoll-db-24.0w-20230324-166CC-src.tar.gz       $pkgdir/opt/gnatstudio-sources
+   cp gnatdoc4-24.0w-20230428-16616-src.tar.gz          $pkgdir/opt/gnatstudio-sources
+   cp gnathub-edge-24.0w-20230324-16293-src.tar.gz      $pkgdir/opt/gnatstudio-sources
+   cp gnatstudio-24.0w-20230428-16588-src.tar.gz        $pkgdir/opt/gnatstudio-sources
+   cp gpr2-24.0w-20230324-16151-src.tar.gz              $pkgdir/opt/gnatstudio-sources
+   cp gprbuild-24.0w-20230324-1649D-src.tar.gz          $pkgdir/opt/gnatstudio-sources
+   cp gprconfig-kb-24.0w-20230324-16644-src.tar.gz      $pkgdir/opt/gnatstudio-sources
+   cp gtkada-24.0w-20230428-165F0-src.tar.gz            $pkgdir/opt/gnatstudio-sources
+   cp langkit-24.0w-20230324-16391-src.tar.gz           $pkgdir/opt/gnatstudio-sources
+   cp libadalang-24.0w-20230324-164A3-src.tar.gz        $pkgdir/opt/gnatstudio-sources
+   cp libadalang-tools-24.0w-20230324-166A6-src.tar.gz  $pkgdir/opt/gnatstudio-sources
+   cp markdown-24.0w-20230428-162F9-src.tar.gz          $pkgdir/opt/gnatstudio-sources
+   cp spawn-24.0w-20230428-162D4-src.tar.gz             $pkgdir/opt/gnatstudio-sources
+   cp templates_parser-24.0w-20230324-1619B-src.tar.gz  $pkgdir/opt/gnatstudio-sources
+   cp vss-24.0w-20230324-16550-src.tar.gz               $pkgdir/opt/gnatstudio-sources
+   cp vss-24.0w-20230428-1628B-src.tar.gz               $pkgdir/opt/gnatstudio-sources
+   cp xmlada-24.0w-20230324-1684A-src.tar.gz            $pkgdir/opt/gnatstudio-sources
 }
