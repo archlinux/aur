@@ -3,13 +3,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-nm-git
-pkgver=5.22.80_r3051.g9005f258
+pkgver=5.27.80_r3672.gc1f307e6
 pkgrel=1
 pkgdesc='Plasma applet written in QML for managing network connections'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(GPL2)
-depends=(plasma-workspace-git modemmanager-qt-git networkmanager-qt-git qca-git)
+depends=(plasma-workspace-git modemmanager-qt-git networkmanager-qt-git qca-qt6-git)
 makedepends=(git extra-cmake-modules-git openconnect)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
