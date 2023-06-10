@@ -1,6 +1,6 @@
 pkgbase = kio-extras-git
 	pkgdesc = Additional components to increase the functionality of KIO
-	pkgver = 21.07.70_r7026.g112b67ae
+	pkgver = 23.07.70_r7575.g0680a0462
 	pkgrel = 1
 	url = https://www.kde.org/applications/internet/
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = kio-extras-git
 	depends = libssh
 	depends = smbclient
 	depends = libmtp
-	depends = phonon-qt5-git
+	depends = phonon-qt6-git
 	depends = syntax-highlighting-git
 	depends = kdsoap-ws-discovery-client-git
 	depends = libxcursor
-	optdepends = qt5-imageformats: thumbnails for additional image formats
+	optdepends = qt6-imageformats: thumbnails for additional image formats
 	optdepends = perl: info kioslave
 	optdepends = kimageformats-git: thumbnails for additional image formats
 	optdepends = taglib: audio file thumbnails
@@ -38,4 +38,3 @@ pkgbase = kio-extras-git
 	sha256sums = SKIP
 
 pkgname = kio-extras-git
-

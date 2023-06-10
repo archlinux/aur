@@ -3,17 +3,17 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kio-extras-git
-pkgver=21.07.70_r7026.g112b67ae
+pkgver=23.07.70_r7575.g0680a0462
 pkgrel=1
 pkgdesc="Additional components to increase the functionality of KIO"
 arch=($CARCH)
 url='https://www.kde.org/applications/internet/'
 license=(LGPL)
-depends=(kio-git kdnssd-git libssh smbclient libmtp phonon-qt5-git syntax-highlighting-git kdsoap-ws-discovery-client-git libxcursor)
+depends=(kio-git kdnssd-git libssh smbclient libmtp phonon-qt6-git syntax-highlighting-git kdsoap-ws-discovery-client-git libxcursor)
 makedepends=(git extra-cmake-modules-git kdoctools-git gperf taglib libappimage openexr kactivities-stats-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
-optdepends=('qt5-imageformats: thumbnails for additional image formats' 'perl: info kioslave'
+optdepends=('qt6-imageformats: thumbnails for additional image formats' 'perl: info kioslave'
             'kimageformats-git: thumbnails for additional image formats' 'taglib: audio file thumbnails'
             'libappimage: AppImage thumbnails' 'icoutils: Windows executable thumbnails'
             'openexr: EXR format thumbnails' 'kactivities-stats-git: recently used kioslave')
@@ -31,6 +31,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DLIBAPPIMAGE_LIBRARIES=libappimage.so \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
