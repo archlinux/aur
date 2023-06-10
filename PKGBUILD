@@ -22,7 +22,7 @@ sha256sums=('3b187ef32818427490e422925dc6c30cf2ab05649a94a14a568b70ac2fc177c2'
             '244d8dc40c0bb6eea28a05c22b4a6950bbf0ecfc358cbc4c1500aae805f87883'
             '4b835cf5dfe4c4387a9d607f44ce06cfbb6777c3ca5ffe3f5125d957f4fc6626'
             '587366d03b3e70f8cbdd78f557bdf5191ff9937f9f86afa0d7ff78c490b015d8')
-backup=("etc/$pkgname.toml")
+backup=("usr/local/etc/$pkgname.toml")
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-  install -Dm644 $pkgname.toml -t "$pkgdir/etc"
+  install -Dm644 $pkgname.toml -t "$pkgdir/usr/local/etc"
   install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 $_pkgname-$pkgver/README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 $_pkgname-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
