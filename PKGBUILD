@@ -4,7 +4,7 @@
 
 pkgname=breeze-git
 pkgver=5.27.80_r2660.g4f29c929
-pkgrel=1
+pkgrel=2
 arch=($CARCH)
 pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
 url='https://kde.org/plasma-desktop/'
