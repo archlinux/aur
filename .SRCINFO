@@ -1,0 +1,17 @@
+pkgbase = oxp-sensors-dkms-git
+	pkgdesc = Linux Driver for One X Player mini AMD
+	pkgver = v0.7.r4.gceaee72
+	pkgrel = 1
+	url = https://gitlab.com/Samsagax/oxp-platform-dkms
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dkms
+	conflicts = oxp-platform-dkms-git
+	replaces = oxp-platform-dkms-git
+	source = oxp-sensors::git+https://gitlab.com/Samsagax/oxp-sensors.git
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = f325b751c8a81416a75c2c1e7a7bc9ca46ae0fa3b44d4ccc09593274be1b2dc7
+
+pkgname = oxp-sensors-dkms-git
