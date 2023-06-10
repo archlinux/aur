@@ -1,0 +1,18 @@
+pkgbase = slippi-launcher-bin
+	pkgdesc = The way to play Slippi Online and watch replays (binary release)
+	pkgver = 2.10.1
+	pkgrel = 1
+	url = https://github.com/project-slippi/slippi-launcher
+	arch = x86_64
+	license = GPL3
+	makedepends = fuse2
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	provides = slippi-launcher
+	conflicts = slippi-launcher
+	source = https://github.com/project-slippi/slippi-launcher/releases/download/v2.10.1/Slippi-Launcher-2.10.1-x86_64.AppImage
+	sha256sums = be2d1f39bf6afa9ad31ccb457f49820c91164f8cac6da9e2a3a50e8a729aacb9
+
+pkgname = slippi-launcher-bin
