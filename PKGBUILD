@@ -4,13 +4,12 @@
 
 pkgname=kscreen-git
 pkgver=5.27.80_r1786.g07e7887
-pkgrel=2
+pkgrel=3
 pkgdesc="KDE's screen management software"
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(libkscreen-git kdeclarative-git qt6-sensors)
-depends=(libkscreen-git kdeclarative-git qt5-graphicaleffects qt5-sensors layer-shell-qt-git)
+depends=(libkscreen-git kdeclarative-git qt6-sensors layer-shell-qt-git)
 makedepends=(git extra-cmake-modules-git plasma-framework-git kcmutils-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
