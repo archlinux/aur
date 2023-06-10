@@ -4,7 +4,7 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL2')
@@ -16,11 +16,11 @@ makedepends=('git' 'cmake' 'llvm' 'nlohmann-json' 'librsvg' 'python')
 provides=('imhex-patterns')
 conflicts=('imhex-patterns-git')
 source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
-        "nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git"
-        "xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp"
-        "libromfs::git+https://github.com/WerWolv/libromfs"
-        "capstone::git+https://github.com/capstone-engine/capstone#branch=next"
-        "libwolv::git+https://github.com/WerWolv/libwolv"
+        "nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git#tag=v1.0.3"
+        "xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp#commit=f01f810714443d0f10c333d4d1d9c0383be41375"
+        "libromfs::git+https://github.com/WerWolv/libromfs#commit=80b9adea2003eb01fa4cf2ecb0d77f2d9c0dd32a"
+        "capstone::git+https://github.com/capstone-engine/capstone#commit=e9fd6f4800be1584124e9eee92cf15ab947d33ec"
+        "libwolv::git+https://github.com/WerWolv/libwolv#commit=49489507989d767d131342cf3e2c192288cecf14"
         "pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v$pkgver"
         "imhex-patterns::git+https://github.com/WerWolv/ImHex-Patterns#tag=ImHex-v$pkgver"
         0001-makepkg-Fix-compiler-check.patch
