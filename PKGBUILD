@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-    cd "$_pkgroot-$pkgver/$_pkgname"
+    cd "$_pkgroot-$pkgver"
     python -m installer --destdir="$pkgdir" --prefix="/opt/ros/humble" dist/*.whl
 }
