@@ -6,7 +6,7 @@
 
 pkgname=icecat
 pkgver=102.12.0
-pkgrel=1
+pkgrel=2
 _commit=b2d463b0e331795eebe3ee62f2c58c1bd05b9899
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
@@ -28,13 +28,15 @@ options=(!emptydirs !makeflags !strip)
 source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_commit}.tar.gz
         icecat.desktop icecat-safe.desktop
         missing_cstdint.patch::https://hg.mozilla.org/mozilla-central/raw-rev/61f052c26dd1
-        RsdparsaSdpGlue.patch)
+        RsdparsaSdpGlue.patch
+        mp4parse_macro_mul.patch)
 
 sha256sums=('0f629c78f24dc56b7369b337aa8d72d948c1d00a2c1f6761468c9511ca8320be'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
             'ca3cedc5edce26040d3caf735afa8744fe08f3a1695eb2cda3796f4f336632d3'
-            '2a12b187a8803b0c3a4385d4567e1debf8bfa3e17c4c8cefdf39fb7434d3d932')
+            '2a12b187a8803b0c3a4385d4567e1debf8bfa3e17c4c8cefdf39fb7434d3d932'
+            'db2fb4df9738c83c59ff037093d5474bc0fb64ac4ea0f71945ac741d4173211a')
 
 prepare() {
   cd gnuzilla-${_commit}
@@ -68,6 +70,10 @@ prepare() {
   # https://hg.mozilla.org/mozilla-central/rev/61f052c26dd1
   patch -Np1 -i ../../../missing_cstdint.patch
   patch -Np1 -i ../../../RsdparsaSdpGlue.patch
+
+  # fix mp4parse (thank you @seo.disparate :: https://aur.archlinux.org/packages/icecat#comment-918458)
+  patch -Np1 -i ../../../mp4parse_macro_mul.patch
+  sed -e 's|src/lib.rs":"73114a5c28472e77082ad259113ffafb418ed602c1741f26da3e10278b0bf93e|src/lib.rs":"bded10689ddd8fd3fcb4ab01be1ecf3642691d68c3651fc4b00f3ccba67fc7cd|' -i output/icecat-${pkgver}/third_party/rust/mp4parse/.cargo-checksum.json
 
   # Patch to move files directly to /usr/lib/icecat. No more symlinks.
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
