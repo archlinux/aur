@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kmenuedit-git
-pkgver=5.22.80_r968.g2742003
+pkgver=5.27.80_r1201.gacb7ce4
 pkgrel=1
 pkgdesc='KDE menu editor'
 arch=($CARCH)
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }

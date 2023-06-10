@@ -1,6 +1,6 @@
 pkgbase = kmenuedit-git
 	pkgdesc = KDE menu editor
-	pkgver = 5.22.80_r968.g2742003
+	pkgver = 5.27.80_r1201.gacb7ce4
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = kmenuedit-git
 	sha256sums = SKIP
 
 pkgname = kmenuedit-git
-
