@@ -4,7 +4,8 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/prometheus-fail2ban-exporter
+EnvironmentFile=/etc/conf.d/prometheus-fail2ban-exporter
+ExecStart=/usr/bin/prometheus-fail2ban-exporter ${PROMETHEUS_FAIL2BAN_EXPORTER_EXTRA_ARGS}
 ExecReload=/bin/kill -HUP $MAINPID
 User=root
 Group=root
