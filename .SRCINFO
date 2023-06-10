@@ -1,7 +1,7 @@
 pkgbase = chuncord
-	pkgdesc = CLI tool that allows for uploading large files to Discord in parts using webhooks
+	pkgdesc = CLI tool for uploading large files to Discord in parts using webhooks
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.lemonsh.moe/lemon/chuncord
 	arch = x86_64
 	license = custom:EUPLv1.2
