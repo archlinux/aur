@@ -4,7 +4,7 @@ _pkgroot=ros2_controllers
 _pkgname=diff_drive_controller
 pkgname=ros2-humble-diff-drive-controller
 pkgver=2.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Controller for a differential drive mobile base."
 url="https://index.ros.org/p/diff_drive_controller/"
 arch=('any')
@@ -24,11 +24,10 @@ depends=(
 source=("https://github.com/ros-controls/ros2_controllers/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('d6761cdecb079122ce46b94b8dcae6f6580b9ef45ff8728447c0d7dd27b6b49c')
 
-prepare() {
-    source /opt/ros/humble/setup.bash
-}
 
 build() {
+    source /opt/ros/humble/setup.bash
+
     cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
