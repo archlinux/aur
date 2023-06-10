@@ -1,15 +1,14 @@
 # Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
 _pkgname=launch_param_builder
+_pkgname=launch_param_builder
 pkgname=ros2-humble-launch-param-builder
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for loading parameters in launch files"
 url="https://index.ros.org/p/launch_param_builder/"
 arch=('any')
-makedepends=(
-    'python-pytest'
-)
+makedepends=(python-build python-installer python-wheel)
 depends=(
     'ros2-humble'
     'python-yaml'
@@ -23,16 +22,11 @@ prepare() {
 }
 
 build() {
-source /opt/ros/humble/setup.bash
-    colcon build --merge-install
+    cd "$_pkgroot-$pkgver/$_pkgname"
+    python -m build --wheel --no-isolation 
 }
 
 package() {
-    # Copy build files
-    mkdir -p $pkgdir/opt/ros/humble
-    cp -r $srcdir/install/* $pkgdir/opt/ros/humble/
-    # Exclude files that clash with base ros installation
-    rm $pkgdir/opt/ros/humble/*setup.*
-    rm $pkgdir/opt/ros/humble/_local_setup*
-    rm $pkgdir/opt/ros/humble/COLCON_IGNORE
+    cd "$_pkgroot-$pkgver/$_pkgname"
+    python -m installer --destdir="$pkgdir" --prefix="/opt/ros/humble" dist/*.whl
 }
