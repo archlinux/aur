@@ -3,7 +3,7 @@
 pkgname=rubichess
 _pkgname='RubiChess'
 pkgver=20230410
-pkgrel=1
+pkgrel=2
 pkgdesc="Just another UCI compliant chess engine"
 arch=(x86_64)
 url='https://github.com/Matthies/RubiChess'
