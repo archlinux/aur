@@ -1,6 +1,6 @@
 pkgbase = kwalletmanager-git
 	pkgdesc = Wallet management tool
-	pkgver = 21.07.70_r1188.gf593224
+	pkgver = 23.07.70_r1464.g6a4a01b
 	pkgrel = 1
 	url = https://www.kde.org/applications/system/kwalletmanager/
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = kwalletmanager-git
 	sha256sums = SKIP
 
 pkgname = kwalletmanager-git
-

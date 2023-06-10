@@ -4,7 +4,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwalletmanager-git
-pkgver=21.07.70_r1188.gf593224
+pkgver=23.07.70_r1464.g6a4a01b
 pkgrel=1
 pkgdesc='Wallet management tool'
 arch=($CARCH)
@@ -28,6 +28,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
