@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
 arch=('x86_64')
 url="https://whalebird.social"
-license=('MIT')
+license=('GPL3.0')
 depends=('electron21>=21.4.3' 'electron21<22.0.0')
 makedepends=('yarn' 'tar' 'nodejs>=18.0.0' 'node-gyp' 'git')
 provides=('whalebird')
