@@ -1,0 +1,12 @@
+pkgbase = xinvaders3d
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/JoesCat/xinvaders3d
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xtrans
+	source = https://github.com/JoesCat/xinvaders3d/archive/refs/tags/1.5.0.tar.gz
+	sha256sums = a4add5b977129c51635a8b1958026119b169defde017ff33060b77daf7f16a56
+
+pkgname = xinvaders3d
