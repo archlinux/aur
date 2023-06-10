@@ -9,7 +9,7 @@ depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
 pkgver=2.59.5
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -19,8 +19,12 @@ options=('!strip' 'emptydirs' '!lto')
 install=snapd.install
 source=(
     "$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
+    "0001-snap-confine-add-tmpfs-mount-rule-to-apparmor-profil.patch"
 )
-sha256sums=('d2d9efbc2db7fa79edf0c73286320ab5ba039ae30874e88725ef326c618ae5df')
+sha256sums=(
+    'd2d9efbc2db7fa79edf0c73286320ab5ba039ae30874e88725ef326c618ae5df'
+    '03caf6a339e29bfdaa443c36d2b3f7350f1869c8b6cab86ba5fb46d858fef596'
+)
 
 
 _gourl=github.com/snapcore/snapd
