@@ -1,15 +1,15 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=libxtend
-pkgver=0.1.7
-pkgrel=5
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="A library of miscellaneous generic C functions"
 arch=('i686' 'x86_64')
 url="https://github.com/outpaddling/libxtend"
 license=('BSD-2')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/outpaddling/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('46176850e70b48bf0d49f60ea338121dac9ec35cb9706b226fd031ff5a758fd0')
+sha256sums=('2ea58285de2cf104887b0c1be79698dcce3694e315ed3dcd6263ee3edd769f21')
 
 build() {
   cd "$pkgname-$pkgver"
