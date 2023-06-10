@@ -1,6 +1,6 @@
 pkgbase = kinfocenter-git
 	pkgdesc = A utility that provides information about a computer system
-	pkgver = 5.22.80_r1836.ga3051a4
+	pkgver = 5.27.80_r2448.g03574bef
 	pkgrel = 1
 	url = https://www.kde.org/applications/system/kinfocenter/
 	arch = x86_64
@@ -18,4 +18,3 @@ pkgbase = kinfocenter-git
 	sha256sums = SKIP
 
 pkgname = kinfocenter-git
-
