@@ -1,8 +1,9 @@
 # Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
+_pkgname=moveit_msgs
 pkgname=ros2-humble-moveit-msgs
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Messages, services and actions used by MoveIt"
 url="https://index.ros.org/p/moveit_msgs/"
 arch=('any')
