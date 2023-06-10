@@ -3,7 +3,7 @@
 _pkgname=pal_gazebo_plugins
 pkgname=ros2-humble-pal-gazebo-plugins
 pkgver=4.0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Common Gazebo v1.9+ plugins used by the PAL Robotics robots"
 url="https://github.com/pal-robotics/pal_gazebo_plugins/"
 arch=('any')
@@ -23,7 +23,7 @@ prepare() {
 }
 
 build() {
-    cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
+    cmake -B build -S "$_pkgname-$pkgver" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
         -Wno-dev
