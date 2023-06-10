@@ -5,7 +5,7 @@
 
 pkgname='evdi-compat-git'
 src_pkgname='evdi-git'
-pkgver=1.14.0.r0.geb83c2e
+pkgver=1.14.03.r0.g19476e7
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
 pkgdesc='kernel module for DisplayLink driver, aimed at compatibility with DisplayLink package and Official kernels'
@@ -64,6 +64,7 @@ build() {
 package() {
   cd "${_srcdir}"
   install -Dpm755 "library/lib${src_pkgname%-git}.so"* -t "${pkgdir}/usr/lib/"
+  rm "${pkgdir}/usr/lib/libevdi.so.1" # hack to remove bad lib, don't know where it was coming from
 
 if ! :; then
   pushd "${pkgdir}/usr/lib/" > /dev/null
