@@ -1,9 +1,10 @@
 pkgbase = ros2-humble-generate-parameter-library
 	pkgdesc = CMake to generate ROS parameter library
-	pkgver = 0.3.1
-	pkgrel = 2
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://index.ros.org/p/generate_parameter_library/
 	arch = any
+	makedepends = cmake
 	depends = ros2-humble
 	depends = fmt
 	depends = ros2-humble-tl-expected
@@ -11,7 +12,7 @@ pkgbase = ros2-humble-generate-parameter-library
 	depends = ros2-humble-rsl
 	depends = ros2-humble-tcb-span
 	depends = ros2-humble-generate-parameter-library-py
-	source = https://github.com/PickNikRobotics/generate_parameter_library/archive/refs/tags/0.3.1.tar.gz
-	sha256sums = 1b0a4a2e30518ac3b416798cc593edfe1ec488d0c1ab05dbb31ae40c28f1edec
+	source = https://github.com/PickNikRobotics/generate_parameter_library/archive/refs/tags/0.3.3.tar.gz
+	sha256sums = f1fd0bd411191a68ce70833c97aa0925525951127709819eb00e7a4007f5447e
 
 pkgname = ros2-humble-generate-parameter-library
