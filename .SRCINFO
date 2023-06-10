@@ -1,0 +1,16 @@
+pkgbase = python-lazrs
+	pkgdesc = Python bindings for laz-rs (LAZ compression)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/laz-rs/laz-rs-python
+	arch = x86_64
+	license = MIT
+	makedepends = maturin
+	makedepends = python-installer
+	depends = gcc-libs
+	depends = glibc
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/l/lazrs/lazrs-0.5.0.tar.gz
+	sha256sums = 793359e94eb436b34877b4305570774f9b1bba34c4671238512b80b60456d9ce
+
+pkgname = python-lazrs

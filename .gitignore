@@ -1,0 +1,5 @@
+lazrs-*.tar.gz
+src/
+pkg/
+python-lazrs-*pkg.tar*
+*.log
