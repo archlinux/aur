@@ -10,12 +10,12 @@ url="https://libvolk.org/"
 license=(GPL3)
 depends=(boost-libs gcc-libs orc python-six)
 makedepends=(boost cmake git python-mako)
-provides=("libvolk=${pkgver%%.r*}")
-conflicts=(libvolk)
+provides=(libcpufeatures "libvolk=${pkgver%%.r*}")
+conflicts=(libcpufeatures libvolk)
 source=("$pkgname::git+https://github.com/gnuradio/volk.git"
         "git+https://github.com/google/cpu_features.git")
 b2sums=('SKIP'
-        'c2784a6e4b9eab658acc7f967f0ca869148da9d0c75f0df7130ff585b17fb8600a755784aa3eccec80005a8900448be379b92c6c92e0dcce8491fac6a59e7dd2')
+        'SKIP')
 
 prepare() {
 	cd $pkgname
