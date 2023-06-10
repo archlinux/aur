@@ -1,7 +1,7 @@
 pkgbase = python-datasets
 	pkgdesc = The largest hub of ready-to-use datasets for ML models with fast, easy-to-use and efficient data manipulation tools
 	pkgver = 2.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/huggingface/datasets
 	arch = x86_64
 	groups = huggingface
@@ -13,8 +13,7 @@ pkgbase = python-datasets
 	depends = python-aiohttp
 	depends = python-dill
 	depends = python-fsspec>=2021.11.1
-	depends = python-huggingface-hub>=0.2.0
-	depends = python-huggingface-hub<1.0.0
+	depends = python-huggingface-hub
 	depends = python-multiprocess
 	depends = python-numpy>=1.17
 	depends = python-packaging

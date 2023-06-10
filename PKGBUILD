@@ -3,7 +3,7 @@
 
 pkgname='python-datasets'
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The largest hub of ready-to-use datasets for ML models with fast, easy-to-use and efficient data manipulation tools'
 arch=('x86_64')
 url='https://github.com/huggingface/datasets'
@@ -12,8 +12,7 @@ depends=(
     'python-aiohttp'
     'python-dill'
     'python-fsspec>=2021.11.1'
-    'python-huggingface-hub>=0.2.0'
-    'python-huggingface-hub<1.0.0'
+    'python-huggingface-hub'
     'python-multiprocess'
     'python-numpy>=1.17'
     'python-packaging'
