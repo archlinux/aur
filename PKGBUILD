@@ -1,8 +1,8 @@
 # Maintainer: Ronny Lorenz <ronny at tbi dot univie dot ac dot at>
 
 pkgbase=viennarna
-pkgname=('viennarna' 'python-rna' 'python2-rna' 'perl-rna')
-pkgver=2.5.1
+pkgname=('viennarna' 'python-rna' 'perl-rna')
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="RNA Secondary Structure Prediction and Comparison"
 arch=('x86_64' 'i686')
@@ -10,16 +10,19 @@ license=('Custom')
 url="http://www.tbi.univie.ac.at/RNA"
 groups=('viennarna-package')
 makedepends=( 'perl'
-              'python2'
               'python'
               'libtool'
               'check'
               'mpfr'
-              'gsl')
+              'gsl'
+              'lapack'
+	      'lapacke'
+              'gcc-fortran')
+
 source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.gz)
 
 options=('staticlibs' '!strip')
-sha256sums=('05400437cf15595e10b1a25df6c9c48856f356130f9d1e380fa8866b6d27f457')
+sha256sums=('c239596ac63ff30d98c7629f3cfeaa6a066dc3b577e1b920eb704381bb6c3f85')
 
 prepare() {
   cd "${srcdir}/ViennaRNA-${pkgver}"
@@ -49,6 +52,7 @@ package_viennarna() {
   provides=('Kinfold=1.4'
             'RNAforester=2.0'
             'kinwalker=2.0'
+	    'RNAxplorer=0.9'
             "viennarna2=${pkgver}"
             "libRNA=${pkgver}")
   conflict=('kinwalker')
@@ -70,6 +74,8 @@ package_viennarna() {
   cd ../Kinwalker
   make DESTDIR="${pkgdir}" install
   cd ../RNAlocmin
+  make DESTDIR="${pkgdir}" install
+  cd ../RNAxplorer
   make DESTDIR="${pkgdir}" install
   cd ../..
 
@@ -102,13 +108,6 @@ package_viennarna() {
 
   # no need for that file it is outdated anyway
   rm $pkgdir/usr/share/info/dir
-}
-
-package_python2-rna() {
-  depends=('python2' viennarna="${pkgver}")
-  cd "${srcdir}/ViennaRNA-${pkgver}"
-  cd interfaces/Python2
-  make DESTDIR="${pkgdir}" install
 }
 
 package_python-rna() {
