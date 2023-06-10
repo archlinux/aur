@@ -1,7 +1,7 @@
 # Maintainer: Swix <spam@antoine-roux.fr>
 
 pkgname=python-cyborgclient
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="OpenStack Acceleration (Cyborg) Client"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-pbr' 'python-cliff' 'python-debtcollector'
          'python-keystoneclient' 'python-requests' 'python-simplejson')
 checkdepends=('python-oslotest' 'python-osprofiler' 'python-requests-mock')
 source=("https://github.com/openstack/python-cyborgclient/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('92d68a91553c481941315ee76fa6cd5e76515ef47181559409cba34f9c49e4aa6ea25851b22772084dcfc8dfd64b5a4a90f8a5f3017955245408954d1cf42267')
+sha512sums=('3f6dea2066e2920ed8bcd619a2e63cf7a6c6fa0b881907c7dff9e62140528778c09872c49e21ae10877670de5b31965d84f7bd19c221cb96ede48a5497117ba5')
 
 export PBR_VERSION=$pkgver
 
