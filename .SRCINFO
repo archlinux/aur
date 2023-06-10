@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-control-toolbox
 	pkgdesc = The control toolbox contains modules that are useful across all controllers.
 	pkgver = 2.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://index.ros.org/p/control_toolbox/
 	arch = any
 	makedepends = cmake
