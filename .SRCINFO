@@ -1,9 +1,10 @@
 pkgbase = ros2-humble-gazebo-msgs
 	pkgdesc = Message and service data structures for interacting with Gazebo from ROS
 	pkgver = 3.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://index.ros.org/p/gazebo_msgs/
 	arch = any
+	makedepends = cmake
 	depends = ros2-humble
 	source = https://github.com/ros-simulation/gazebo_ros_pkgs/archive/refs/tags/3.7.0.tar.gz
 	sha256sums = 69093e3cc7c4194f958bff777e76ab7c9a8f5c880f764332eb961f791a5a73a4
