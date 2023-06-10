@@ -3,7 +3,7 @@
 pkgname="orca-slicer"
 pkgver=1.6.3
 _tag='1.6.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
@@ -38,7 +38,7 @@ prepare() {
   # icons conflict with BambuStudio
   patch -p0 < "$srcdir/OrcaSlicer.desktop.patch"
   # fix gcc13 building issues, from https://github.com/SoftFever/OrcaSlicer/pull/1220
-  git apply --directory=OrcaSlicer "$srcdir/fix_gcc13_build_failed.patch"
+  patch --directory=OrcaSlicer -p1 < "$srcdir/fix_gcc13_build_failed.patch"
 }
 
 build() {
