@@ -3,9 +3,9 @@
 pkgname=prometheus-fail2ban-exporter
 _pkgname=fail2ban-prometheus-exporter
 pkgver=0.7.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Fail2Ban exporter for Fail2Ban metrics"
-arch=('x86_64')
+arch=('armv7h' 'aarch64' 'x86_64')
 url="https://gitlab.com/hectorjsmith/$_pkgname"
 license=('MIT')
 makedepends=('go')
