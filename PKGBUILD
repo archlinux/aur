@@ -1,19 +1,19 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=whalebird
-pkgver=5.0.5
+pkgver=5.0.6
 pkgrel=1
-pkgdesc="An Electron based Mastodon, Pleroma and Misskey client"
+pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
 arch=('x86_64')
 url="https://whalebird.social"
 license=('MIT')
 depends=('electron21>=21.4.3' 'electron21<22.0.0')
-makedepends=('yarn' 'tar' 'nodejs>=18.0.0')
+makedepends=('yarn' 'tar' 'nodejs>=18.0.0' 'node-gyp')
 provides=('whalebird')
 cnflicts=('whalebird-bin' 'whalebird-desktop-git')
 source=("https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/v$pkgver.tar.gz"
         whalebird.desktop
         electron-builder.yml)
-md5sums=('ec3c3109e344d7748a67190f3e7dbf63'
+md5sums=('1d539c294724f4b7c609c214888a0ec6'
          '2cf7ef689d208d2fa41ce3622dce3545'
          '68af72623ba3763c9a1ea440b72a253d')
 
@@ -45,5 +45,5 @@ package() {
     "${pkgdir}/usr/share/icons/hicolor/64x64/apps/whalebird.png"
 
   install -Dm644 -t "${pkgdir}/usr/share/applications" whalebird.desktop
-  install -Dm 644 "whalebird-desktop-${pkgver}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 "whalebird-desktop-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
