@@ -18,14 +18,15 @@ source=("git+https://github.com/tdlib/td.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
-  mkdir -p td/build
-  cd td/build
-  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DCMAKE_BUILD_TYPE=Release ..
-  cmake --build .
+  cmake \
+    -B build \
+    -S td \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Wno-dev
+  cmake --build build
 }
 
 package() {
-  cd td/build
-  mkdir -p ${pkgdir}/usr
-  cmake --build . --target install
+  DESTDIR="$pkgdir" cmake --install build
 }
