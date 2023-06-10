@@ -1,0 +1,5 @@
+pytest-subprocess-*.tar.gz
+src/
+pkg/
+python-pytest-subprocess-*.pkg.tar*
+*.log
