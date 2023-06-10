@@ -3,13 +3,13 @@
 
 pkgbase=plasma-workspace-git
 pkgname=(plasma-workspace-git plasma-wayland-session-git)
-pkgver=5.24.80_r11429.g43ca3339b
+pkgver=5.27.80_r13857.gb5c675324
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(knotifyconfig-git libksysguard-git ktexteditor-git libqalculate kde-cli-tools-git appstream-qt phonon-qt5-git
+depends=(knotifyconfig-git libksysguard-git ktexteditor-git libqalculate kde-cli-tools-git appstream-qt phonon-qt6-git
          xorg-xrdb xorg-xsetroot kactivitymanagerd-git kholidays-git xorg-xmessage milou-git prison-git kwin-git
          plasma-integration-git kdelibs4support-git kpeople-git kactivities-stats-git libkscreen-git kquickcharts-git kuserfeedback-git layer-shell-qt-git)
 makedepends=(git extra-cmake-modules-git kdoctools-git gpsd baloo-git networkmanager-qt-git kdesignerplugin-git kinit-git plasma-wayland-protocols-git)
@@ -28,6 +28,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgbase%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
@@ -38,7 +39,7 @@ package_plasma-workspace-git() {
               'gpsd: GPS based geolocation' 'networkmanager-qt: IP based geolocation'
               'kdepim-addons-git: displaying PIM events in the calendar'
               'appmenu-gtk-module: global menu support for GTK2 and some GTK3 applications'
-              'qt5-virtualkeyboard: virtual keyboard support in lock screen'
+              'qt6-virtualkeyboard: virtual keyboard support in lock screen'
               'baloo-git: Baloo search runner' 'discover: manage applications installation from the launcher')
   conflicts=(plasma-workspace)
   provides=(plasma-workspace notification-daemon)
@@ -54,7 +55,7 @@ package_plasma-workspace-git() {
 
 package_plasma-wayland-session-git() {
   pkgdesc='Plasma Wayland session'
-  depends=(plasma-workspace-git qt5-wayland kwayland-integration-git xorg-server-xwayland)
+  depends=(plasma-workspace-git qt6-wayland kwayland-integration-git xorg-server-xwayland)
   conflicts=(plasma-wayland-session)
   provides=(plasma-wayland-session)
 
