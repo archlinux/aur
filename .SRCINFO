@@ -1,9 +1,10 @@
 pkgbase = ros2-humble-moveit-common
 	pkgdesc = CoCommon support functionality used throughout MoveIt
 	pkgver = 2.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://index.ros.org/p/moveit_common/
 	arch = any
+	makedepends = cmake
 	depends = ros2-humble
 	depends = ros2-humble-backward-ros
 	source = https://github.com/ros-planning/moveit2/archive/refs/tags/2.5.4.tar.gz
