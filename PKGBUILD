@@ -4,7 +4,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwrited-git
-pkgver=5.22.80_r478.gb687e84
+pkgver=5.27.80_r546.gafa7c21
 pkgrel=1
 pkgdesc='KDE daemon listening for wall and write messages'
 arch=($CARCH)
@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
