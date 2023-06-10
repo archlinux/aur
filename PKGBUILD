@@ -2,7 +2,7 @@
 
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.12.0.beta7.r1.g73ce5a4
+pkgver=3.12.0.beta8.r8.g8866c02
 pkgrel=1
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
@@ -67,8 +67,15 @@ prepare() {
 build() {
     cd "${_pkgname}"
 
-    arch-meson "$srcdir/$_pkgname" build --buildtype release \
-        --force-fallback-for=wlroots,libliftoff,stb
+    export LDFLAGS="$LDFLAGS -lrt"
+
+    arch-meson "$srcdir/$_pkgname" build \
+        --buildtype release \
+        --force-fallback-for=wlroots,libliftoff,stb \
+        -Dpipewire=enabled \
+        -Dwlroots:backends=drm,libinput,x11 \
+        -Dwlroots:renderers=gles2,vulkan
+
     ninja -C build
 }
 
