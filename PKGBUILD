@@ -23,6 +23,7 @@ build() {
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_CXX_STANDARD=17 \
     -DWITH_LLVM=yes \
+    -DWITH_TARGET_X86=yes \
     -DWITH_RUNTIME_LIBRARY=yes \
     -DWITH_XEUS=yes \
     -DWITH_ZLIB=yes
