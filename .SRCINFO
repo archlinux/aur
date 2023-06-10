@@ -1,6 +1,6 @@
 pkgbase = parallels-client
 	pkgdesc = A remote work tool (rasclient, 2x RDP client, Parallels RAS)
-	pkgver = 19.1.23476
+	pkgver = 19.2.23906
 	pkgrel = 1
 	url = https://www.parallels.com/products/ras/capabilities/parallels-client/
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = parallels-client
 	depends = udisks2
 	depends = qt5-base
 	depends = qt5-x11extras
-	source = https://download.parallels.com/ras/v19/19.1.1.23476/RASClient-19.1.23476_x86_64.deb
-	sha256sums = e42bc663654e3fe191c96de1b8e900e87908924bcf22dbee524fb20ccf6934dc
+	source = https://download.parallels.com/ras/v19/19.2.0.23906/RASClient-19.2.23906_x86_64.deb
+	sha256sums = b5d690ced7784ebe8b44304a82469dca08c47d25cac46aa456ed4a3ff81d8842
 
 pkgname = parallels-client

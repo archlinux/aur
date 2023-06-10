@@ -1,8 +1,10 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
+
 pkgname='parallels-client'
-pkgver='19.1.23476'
-_downloadver='19.1.1.23476'
-pkgrel=2
+pkgver='19.2.23906'
+# has an extra digit in the middle for some reason
+_downloadver='19.2.0.23906'
+pkgrel=1
 pkgdesc="A remote work tool (rasclient, 2x RDP client, Parallels RAS)"
 arch=('x86_64')
 url="https://www.parallels.com/products/ras/capabilities/parallels-client/"
@@ -22,7 +24,7 @@ provides=()
 conflicts=()
 source=("https://download.parallels.com/ras/v${pkgver%%.*}/${_downloadver}/RASClient-${pkgver}_x86_64.deb")
 noextract=()
-sha256sums=('e42bc663654e3fe191c96de1b8e900e87908924bcf22dbee524fb20ccf6934dc')
+sha256sums=('b5d690ced7784ebe8b44304a82469dca08c47d25cac46aa456ed4a3ff81d8842')
 
 
 package() {
