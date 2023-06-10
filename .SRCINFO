@@ -1,0 +1,19 @@
+pkgbase = mashmap
+	pkgdesc = Fast approximate aligner for long DNA sequences
+	pkgver = 3.0.4
+	pkgrel = 1
+	url = https://github.com/marbl/MashMap
+	arch = x86_64
+	license = custom: Public Domain
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = gsl
+	depends = zlib
+	depends = gcc-libs
+	depends = perl
+	depends = python
+	source = mashmap-3.0.4.tar.gz::https://github.com/marbl/MashMap/archive/refs/tags/v3.0.4.tar.gz
+	b2sums = 609e531a32e6e9042ec692cfb137a16fb39e7ff65e3f3f7d56a44dfba173bd79719893f55475a5a05e7b31d2e6278a5834ab31dba4603dbc2736ed947636179a
+
+pkgname = mashmap
