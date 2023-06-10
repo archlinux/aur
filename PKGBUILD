@@ -7,7 +7,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=4.3.0.r2509.g1c48a1fe39
+pkgver=4.3.0.r2511.gcc4456938f
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -26,8 +26,8 @@ optdepends=(
   'gnuplot: noise profile script'
 )
 makedepends=(
-	git cmake intltool desktop-file-utils llvm clang portmidi
-	python-jsonschema libwebp perl-image-exiftool)
+  git cmake intltool desktop-file-utils llvm clang portmidi
+  python-jsonschema libwebp perl-image-exiftool libxslt)
 conflicts=(darktable)
 provides=(darktable)
 install=darktable.install
@@ -40,12 +40,13 @@ source=(
   'rawspeed.git::git+https://github.com/darktable-org/rawspeed.git'
   'whereami::git+https://github.com/gpakosz/whereami'
 )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
+md5sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
 )
 
 pkgver() {
