@@ -8,7 +8,7 @@ pkgbase = extract-xiso
 	license = custom
 	makedepends = cmake
 	makedepends = git
-	source = git+https://github.com/XboxDev/extract-xiso.git
+	source = git+https://github.com/XboxDev/extract-xiso.git#tag=build-202303040307
 	sha256sums = SKIP
 
 pkgname = extract-xiso

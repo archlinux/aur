@@ -12,14 +12,8 @@ url="https://github.com/XboxDev/extract-xiso"
 arch=('x86_64' 'i686')
 license=('custom')
 makedepends=('cmake' 'git')
-source=("git+$url.git")
+source=("git+$url.git#tag=$_pkgver")
 sha256sums=('SKIP')
-
-prepare() {
-  # Switch tag version
-  cd $pkgname
-  git checkout tags/${_pkgver}
-}
 
 build() {
   cd $pkgname
