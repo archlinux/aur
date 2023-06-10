@@ -1,19 +1,20 @@
-# Maintainer: PumpkinCheshire <sollyonzou at gmail dot net>
+# Maintainer:  Misaka13514 <Misaka13514 at gmail dot com>
+# Contributor: PumpkinCheshire <sollyonzou at gmail dot net>
 # Contributor: Mitch Bigelow <ipha00@gmail.com>
 
 pkgname=srmd-ncnn-vulkan
-pkgver=20210210
-pkgrel=2
+pkgver=20220728
+pkgrel=1
 pkgdesc="SRMD super resolution implemented with ncnn library"
 url="https://github.com/nihui/srmd-ncnn-vulkan"
 license=('MIT')
 depends=('vulkan-icd-loader' 'vulkan-driver' 'libwebp')
-makedepends=('git' 'cmake' 'glslang-git' 'vulkan-headers' 'ncnn')
+makedepends=('git' 'cmake' 'glslang' 'vulkan-headers' 'ncnn')
 conflicts=('srmd-ncnn-vulkan-git' 'srmd-ncnn-vulkan-bin')
 provides=('srmd-ncnn-vulkan')
 arch=('i686' 'x86_64')
-source=("https://github.com/nihui/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('c4da46d26709429da5c59523102dcd5e5269fcb57ebaf036acf7224f59cd2958')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nihui/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('e841ad9d2f0b4b20b6dafbfa2a078afb9d934d90376787195f5b15915ee5dc6f')
 
 prepare() {
     sed -i 's|path_t model = PATHSTR("models-srmd")|path_t model = PATHSTR("/usr/share/srmd-ncnn-vulkan/models-srmd/")|' "${pkgname}-${pkgver}"/src/main.cpp
