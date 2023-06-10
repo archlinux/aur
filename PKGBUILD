@@ -3,10 +3,10 @@
 
 pkgname=pynmonanalyzer
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python tool for reformatting and plotting/graphing NMON output"
 url="https://github.com/madmaze/pynmonanalyzer"
-depends=('python2' 'python2-matplotlib')
+depends=('python-matplotlib')
 license=('GPL3')
 arch=('any')
 source=("https://pypi.python.org/packages/source/p/pyNmonAnalyzer/pyNmonAnalyzer-${pkgver}.tar.gz")
@@ -14,10 +14,10 @@ md5sums=('06424e2651ee3b8107c56cfab4fb86a4')
 
 build() {
     cd $srcdir/pyNmonAnalyzer-$pkgver
-    python2 setup.py build
+    python setup.py build
 }
 
 package() {
     cd $srcdir/pyNmonAnalyzer-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1 
+    python setup.py install --root="$pkgdir" --optimize=1 
 }
