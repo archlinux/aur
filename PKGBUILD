@@ -2,7 +2,7 @@
 
 _pkgname=gnucap-modelgen-verilog
 pkgname=$_pkgname-git
-pkgver=develop-git
+pkgver=develop
 pkgrel=1
 pkgdesc="Verilog model generator for Gnucap"
 arch=('i686' 'x86_64')

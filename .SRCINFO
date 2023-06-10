@@ -1,7 +1,7 @@
 
 pkgbase = gnucap-modelgen-verilog-git
 	pkgdesc = Verilog-AMS for Gnucap
-	pkgver = develop-git
+	pkgver = develop
 	pkgrel = 1
 	url = http://gnucap.org/
 	arch = i686
