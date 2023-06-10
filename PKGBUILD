@@ -4,7 +4,7 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=3.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
@@ -22,7 +22,7 @@ makedepends=(
 )
 checkdepends=(
   'jupyter-notebook' 'python-beautifulsoup4' 'python-pytest'
-  'python-pytest-asyncio' 'python-requests-mock'
+  'python-pytest-asyncio' 'python-requests-mock' 'python-playwright'
 )
 optdepends=(
   'jupyter-notebook: standard notebook server'
@@ -40,9 +40,9 @@ source=(
   'tests_use_random_ports.patch'
 )
 sha256sums=(
-  '3ddcd96ae291b24571f9aa42e6316410379d46068482e35bad7691cb336dcc72'
-  'adb4c09c668c35605d9cddc4a4171dd64ed6e74ab82da97f19b3437d26b052b9'
-  '05a86fad6eada56e1128f7ebaf038524d6182b6453427bbc27a58331992b7308'
+  '39a396119e8f62d011fc2e091898097fb9279e4539474eb0c6a5deeb76ae5000'
+  'f851dac9e098afa1dfcf30169b23414e7384559984eb7090aaf3c4f9c1c84997'
+  '031b504b08c67dfbd6047a31a3cf5555a06cfb04b8c0a637206d548e48845ab1'
 )
 
 prepare() {
@@ -71,6 +71,7 @@ check() {
 
   local skip_files=(
     # DB upgrade tests always seem to fail (virtual environment appears incorrect).
+    # Assume the upstream CI checks the upgrades work.
     'test_db.py'
 
     # Broken by our patch to use random ports for testing. This enables a lot
@@ -110,14 +111,16 @@ check() {
   done
   testargs+=('-k' "${karg:5}")  # Trim the leading ' and '.
 
-  PYTHONPATH="$PWD/build/lib" pytest -v jupyterhub "${testargs[@]}"
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer "dist/jupyterhub-$pkgver"-*.whl
+  test-env/bin/python -m pytest -v jupyterhub "${testargs[@]}"
 }
 
 package() {
   cd "${srcdir}/jupyterhub-$pkgver"
 
   # Install the package.
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" "dist/jupyterhub-$pkgver"-*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING.md
 
   # Remove $srcdir references from npm metadata.

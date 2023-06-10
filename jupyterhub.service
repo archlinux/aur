@@ -20,7 +20,7 @@ ExecStart=/usr/bin/jupyterhub \
 
 # Apply some service hardening.
 # The default LocalProcess spawner needs SETUID and SETGID to run the
-# single-user servers.
+# single-user servers. For other spawners you could probably remove these.
 CapabilityBoundingSet=CAP_SETUID CAP_SETGID
 LockPersonality=true
 NoNewPrivileges=true
@@ -41,6 +41,10 @@ RestrictSUIDSGID=true
 SystemCallArchitectures=native
 SystemCallErrorNumber=EPERM
 SystemCallFilter=@system-service
+
+# Some other hardening that could be enabled for specific setups.
+# PrivateUsers=true            # Not with LocalSpawner
+# MemoryDenyWriteExecute=true  # Not with configurable-http-proxy
 
 [Install]
 WantedBy=multi-user.target
