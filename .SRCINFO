@@ -1,6 +1,6 @@
 pkgbase = notes-git
 	pkgdesc = Note taking application, write down your thoughts
-	pkgver = 2.1.0.r54.geecd263
+	pkgver = 2.1.0.r74.g5b76489
 	pkgrel = 1
 	url = https://github.com/nuttyartist/notes
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = notes-git
 	depends = qt6-declarative
 	provides = notes
 	conflicts = notes
-	source = git+https://github.com/nuttyartist/notes.git
+	source = notes-git::git+https://github.com/nuttyartist/notes
 	source = git+https://github.com/b00f/qautostart.git
 	source = git+https://github.com/pbek/qmarkdowntextedit.git
 	source = git+https://github.com/alex-spataru/QSimpleUpdater.git
