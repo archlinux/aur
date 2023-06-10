@@ -16,7 +16,6 @@ makedepends=(
   python-hatchling
   python-hatch-vcs
 )
-provides=('python-pure-protobuf')
 
 source=("git+https://www.github.com/$_author/$_gitname#tag=$pkgver")
 sha256sums=('SKIP')

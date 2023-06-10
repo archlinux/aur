@@ -10,7 +10,6 @@ pkgbase = python-pure-protobuf
 	makedepends = python-hatchling
 	makedepends = python-hatch-vcs
 	depends = python
-	provides = python-pure-protobuf
 	source = git+https://www.github.com/eigenein/protobuf#tag=2.3.0
 	sha256sums = SKIP
 
