@@ -3,7 +3,7 @@
 
 pkgname=python312
 pkgver=3.12.0b1
-pkgrel=1
+pkgrel=2
 _pyver=3.12.0
 _pybasever=3.12
 _pymajver=3
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 url="https://www.python.org/"
 depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
-makedepends=('bluez-libs' 'mpdecimal' 'gdb')
+makedepends=('bluez-libs' 'mpdecimal' 'gdb' 'tk')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(https://www.python.org/ftp/python/${_pyver}/Python-${pkgver}.tar.xz)
 sha256sums=('8ba76ca64acd745babdfb8467820964df98858ee6a9577bf1d93447257be581e')
