@@ -4,7 +4,7 @@ _pkgroot=moveit_resources
 _pkgname=panda_moveit_config
 pkgname=ros2-humble-moveit-resources-panda-moveit-config
 pkgver=2.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="MoveIt Resources for testing: Franka Emika Panda"
 url="https://index.ros.org/p/panda_moveit_config/"
 arch=('any')
@@ -19,11 +19,10 @@ makedepends=('cmake')
 source=("https://github.com/ros-planning/moveit_resources/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('25d86930fd51927670ea3135ad398bc6b4a9ade2c6a629d63e02f818431a52ac')
 
-prepare() {
-    source /opt/ros/humble/setup.bash
-}
 
 build() {
+    source /opt/ros/humble/setup.bash
+
     cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
