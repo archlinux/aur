@@ -1,6 +1,6 @@
 pkgbase = polkit-kde-agent-git
 	pkgdesc = Daemon providing a polkit authentication UI for KDE
-	pkgver = 5.22.80_r497.gaa6f7c5
+	pkgver = 5.27.80_r601.g44265af
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = polkit-kde-agent-git
 	sha256sums = SKIP
 
 pkgname = polkit-kde-agent-git
-

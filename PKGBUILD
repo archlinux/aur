@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=polkit-kde-agent-git
-pkgver=5.22.80_r497.gaa6f7c5
+pkgver=5.27.80_r601.g44265af
 pkgrel=1
 pkgdesc='Daemon providing a polkit authentication UI for KDE'
 arch=($CARCH)
@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git}-1 \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
