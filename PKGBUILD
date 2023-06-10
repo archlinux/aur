@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib-cuda
 pkgver=0.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -25,9 +25,12 @@ sha256sums=('90bdaf1351809f6d73ffc20dbdd4390293742a62368e33870ef3a67e2ce52647')
 build() {
     cd $srcdir/jax-jaxlib-v$pkgver
     python build/build.py \
+        --cuda_compute_capabilities 7.5,8.0,8.6,8.7,9.0 \
         --cuda_path /opt/cuda \
+        --cudnn_path /usr \
         --enable_cuda \
         --enable_nccl
+
 }
 
 package() {
