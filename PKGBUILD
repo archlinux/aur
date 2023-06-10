@@ -3,7 +3,7 @@
 
 pkgname=photoqt
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and highly configurable image viewer with a simple and nice interface."
 arch=('x86_64')
 url="http://photoqt.org/"
@@ -14,8 +14,10 @@ depends=('exiv2' 'imagemagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 'qt
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt5-tools' 'extra-cmake-modules')
-source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz)
-sha256sums=('96417137f1e9d6cd01a22dbe1b5be27a673c317250cb1cb1a6161f0ee1c317c8')
+source=(https://photoqt.org/downloads/source/$pkgname-$pkgver.tar.gz
+        exiv2_0.28.patch)
+sha256sums=('96417137f1e9d6cd01a22dbe1b5be27a673c317250cb1cb1a6161f0ee1c317c8'
+            '57d55dfef69e415e01d6d2c5f5a20b6c07d2a593715057ece68988887f2a2873')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
@@ -24,6 +26,9 @@ prepare() {
   # the next line (where xxxx is the respective CMake option).
   # to use GraphicsMagick instead of ImageMagick add: -DIMAGEMAGICK=OFF -DGRAPHICSMAGICK=ON
   cmake . -DCMAKE_INSTALL_PREFIX=/usr -DFREEIMAGE=OFF -DDEVIL=OFF -DPOPPLER=OFF -DIMAGEMAGICK=ON -DGRAPHICSMAGICK=OFF -DLIBVIPS=OFF -DVIDEO_MPV=ON -DCHROMECAST=OFF
+
+  # PhotoQt v3.2 does not work as-is with exiv2 v0.28
+  patch -p0 < ../exiv2_0.28.patch
 
 }
 

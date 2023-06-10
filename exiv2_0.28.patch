@@ -1,0 +1,45 @@
+diff -ruN cplusplus/filefoldermodel/filefoldermodel.cpp cplusplus/filefoldermodel/filefoldermodel.cpp
+--- cplusplus/filefoldermodel/filefoldermodel.cpp	2023-05-11 13:46:41.000000000 -0500
++++ cplusplus/filefoldermodel/filefoldermodel.cpp	2023-06-09 22:53:34.463322200 -0500
+@@ -560,7 +560,11 @@
+                         } catch (Exiv2::Error& e) {
+                             // An error code of 11 means unknown file type
+                             // Since we always try to read any file's meta data, this happens a lot
++#if EXIV2_TEST_VERSION(0, 28, 0)
++                            if(e.code() != Exiv2::ErrorCode::kerFileContainsUnknownImageType)
++#else
+                             if(e.code() != 11)
++#endif
+                                 LOG << CURDATE << "PQMetaData::updateMetadaya(): ERROR reading exiv data (caught exception): " << e.what() << NL;
+                             else
+                                 DBG << CURDATE << "PQMetaData::updateMetadaya(): ERROR reading exiv data (caught exception): " << e.what() << NL;
+diff -ruN cplusplus/scripts/handlingfacetags.cpp cplusplus/scripts/handlingfacetags.cpp
+--- cplusplus/scripts/handlingfacetags.cpp	2023-05-11 13:46:41.000000000 -0500
++++ cplusplus/scripts/handlingfacetags.cpp	2023-06-09 22:53:34.463322200 -0500
+@@ -57,7 +57,11 @@
+         image->readMetadata();
+     } catch (Exiv2::Error& e) {
+         // An error code of 11 means image not supported. This is much more reliable than, e.g., checking a file ending
++#if EXIV2_TEST_VERSION(0, 28, 0)
++        if(e.code() != Exiv2::ErrorCode::kerFileContainsUnknownImageType)
++#else
+         if(e.code() != 11)
++#endif
+             LOG << CURDATE << "PQHandlingFaceTags::getFaceTags() - ERROR reading metadata (caught exception): " << e << NL;
+         else
+             DBG << CURDATE << "PQHandlingFaceTags::getFaceTags() - ERROR reading metadata (caught exception): " << e << NL;
+diff -ruN cplusplus/scripts/metadata.cpp cplusplus/scripts/metadata.cpp
+--- cplusplus/scripts/metadata.cpp	2023-05-11 13:46:41.000000000 -0500
++++ cplusplus/scripts/metadata.cpp	2023-06-09 22:53:34.463322200 -0500
+@@ -120,7 +120,11 @@
+     } catch (Exiv2::Error& e) {
+         // An error code of 11 means unknown file type
+         // Since we always try to read any file's meta data, this happens a lot
++#if EXIV2_TEST_VERSION(0, 28, 0)
++        if(e.code() != Exiv2::ErrorCode::kerFileContainsUnknownImageType)
++#else
+         if(e.code() != 11)
++#endif
+             LOG << CURDATE << "PQMetaData::updateMetadaya(): ERROR reading exiv data (caught exception): " << e.what() << NL;
+         else
+             DBG << CURDATE << "PQMetaData::updateMetadaya(): ERROR reading exiv data (caught exception): " << e.what() << NL;
