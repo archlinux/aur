@@ -2,8 +2,9 @@
 
 _pkgname=moveit_msgs
 pkgname=ros2-humble-moveit-msgs
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.1
+pkgrel=3
+epoch=1
 pkgdesc="Messages, services and actions used by MoveIt"
 url="https://index.ros.org/p/moveit_msgs/"
 arch=('any')
@@ -14,7 +15,7 @@ depends=(
 )
 makedepends=('cmake')
 source=("https://github.com/ros-planning/moveit_msgs/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('aa24e058bce0a81de7baf8be7af40121983e7b143aaa1b7cffb11e25d16abe51')
+sha256sums=('19fe10af4ab1e236206886c66824beab1bfe9e295d37a2a47c51b65c5199b4aa')
 
 prepare() {
     source /opt/ros/humble/setup.bash
