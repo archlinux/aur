@@ -1,9 +1,9 @@
 pkgbase = softmaker-office-2021
 	pkgdesc = Proprietary office suite, consisting of word processing, spreadsheet and presentation software.
 	pkgver = 2021.1064
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.softmaker.com
-	install = softmaker.install
+	install = softmaker-office-2021.install
 	arch = x86_64
 	license = custom
 	depends = curl
@@ -12,10 +12,6 @@ pkgbase = softmaker-office-2021
 	depends = libxmu
 	depends = libxrandr
 	source = https://www.softmaker.net/down/softmaker-office-2021_1064-01_amd64.deb
-	source = postinst.sh
-	source = prerm.sh
 	sha256sums = bed57a21e3c97cdab9834fc32fa1e52bdc376afd8f7c41484c2bfba135ddaaca
-	sha256sums = d464570ba6f8c716a58c62edc917558b0c354f171c603c485ab6694d02220e4c
-	sha256sums = d0b1b5be2578c4f20564fafade3505e0e7a45a0f79b23196e5b205574305696e
 
 pkgname = softmaker-office-2021
