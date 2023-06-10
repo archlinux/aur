@@ -3,7 +3,7 @@
 pkgname=pot-translation-bin
 _pkgname=pot-translation
 prjname=pot
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="一个跨平台的划词翻译软件"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'xdotool' 'libxcb' 'libxr
 
 source=("${prjname}-${pkgver}-${arch}.deb::${url}/releases/download/${pkgver}/${prjname}_${pkgver}_amd64.deb")
 
-sha512sums=('26da3f7eb8fe160b0080a07bd74c694a9a7134127ed2d05208fdfee47c1df8bc1a74f55c8522c99361eb2d4d1efc082e3adea852a02afdfd6b5afc647b347a3a')
+sha512sums=('b35d62a79af8b269f9914fb8c96183b964f28c04ae7e17422a76d2937f6a39a6ca48987c62d04c5a418ede84f1b0ee8d0a86ee94d10444dfd6229e4744ab23f1')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
