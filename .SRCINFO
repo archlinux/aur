@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-moveit-ros-planning-interface
 	pkgdesc = Components of MoveIt that offer simpler interfaces to planning and execution
 	pkgver = 2.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://index.ros.org/p/moveit_ros_planning_interface/
 	arch = any
 	makedepends = ros2-humble-moveit-common
@@ -10,6 +10,7 @@ pkgbase = ros2-humble-moveit-ros-planning-interface
 	makedepends = ros2-humble-moveit-simple-controller-manager
 	makedepends = ros2-humble-moveit-planners-ompl
 	makedepends = ros2-humble-moveit-configs-utils
+	makedepends = cmake
 	depends = ros2-humble
 	depends = ros2-humble-moveit-core
 	depends = ros2-humble-moveit-ros-planning
