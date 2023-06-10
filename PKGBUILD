@@ -4,7 +4,7 @@ _pkgroot=moveit2
 _pkgname=moveit_ros/robot_interaction
 pkgname=ros2-humble-moveit-ros-robot-interaction
 pkgver=2.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Components of MoveIt that offer interaction via interactive markers"
 url="https://index.ros.org/p/moveit_ros_robot_interaction/"
 arch=('any')
@@ -18,11 +18,10 @@ makedepends=('cmake')
 source=("https://github.com/ros-planning/moveit2/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('42ac45e2631d59203edfdfc2f521312f7ddef04ff5baf1fec43c65f79495d7a6')
 
-prepare() {
-    source /opt/ros/humble/setup.bash
-}
 
 build() {
+    source /opt/ros/humble/setup.bash
+
     cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
