@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-browser-integration-git
-pkgver=5.22.80_r1254.gcedda05a
+pkgver=5.27.80_r1474.g61385d35
 pkgrel=1
 pkgdesc='Components necessary to integrate browsers into the Plasma Desktop'
 arch=($CARCH)
@@ -25,6 +25,7 @@ pkgver() {
 
 build() { 
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DINSTALL_CHROME_MANIFEST=ON
   cmake --build build
 }
