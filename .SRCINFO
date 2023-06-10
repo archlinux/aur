@@ -1,0 +1,15 @@
+pkgbase = presence-client-git
+	pkgdesc = Rich presence support for hacked Nintendo Switches with automatic game detection. Using the elsorino fork.
+	pkgver = 1.0.1.r22.g5184927
+	pkgrel = 1
+	url = https://github.com/elsorino/PresenceClient
+	arch = any
+	license = GPL2
+	depends = python
+	depends = python-pypresence
+	source = presence-client::git+https://github.com/elsorino/PresenceClient.git
+	source = executable.patch
+	md5sums = SKIP
+	md5sums = 864fa26af5c1c74fd46f4be40951aac9
+
+pkgname = presence-client-git
