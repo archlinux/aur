@@ -4,7 +4,7 @@ _pkgroot=navigation2
 _pkgname=nav2_voxel_grid
 pkgname=ros2-humble-nav2-voxel-grid
 pkgver=1.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="voxel_grid provides an implementation of an efficient 3D voxel grid"
 url="https://index.ros.org/p/nav2_voxel_grid/"
 arch=('any')
@@ -18,11 +18,10 @@ depends=(
 source=("https://github.com/ros-planning/navigation2/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('1d89dc1ad7c75d4d1645c882a5aee037ca965908344a158bb9669ad80a85196b')
 
-prepare() {
-    source /opt/ros/humble/setup.bash
-}
 
 build() {
+    source /opt/ros/humble/setup.bash
+
     cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
