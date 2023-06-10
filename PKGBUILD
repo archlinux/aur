@@ -1,11 +1,10 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
-# Contributor: dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Fabrizio Pietrucci <bamlessnty5@gmail.com>
 
 pkgname=syngestures
 _pkgname=syngesture
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Swipes and gestures for Linux with the MT multitouch protocol"
 arch=('any')
 url="https://github.com/mqudsi/syngesture"
