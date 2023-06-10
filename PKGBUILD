@@ -3,7 +3,7 @@
 
 _reponame="chuncord"
 pkgname="chuncord-git"
-pkgver="0.2.r1.g9ffce3e"
+pkgver="0.2.1.r0.gab5b71b"
 pkgrel=1
 pkgdesc="CLI tool that allows for uploading large files to Discord in parts using webhooks"
 arch=("x86_64")
@@ -21,6 +21,7 @@ pkgver() {
 }
 
 prepare() {
+    export RUSTUP_TOOLCHAIN=stable
     cd "$pkgname"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
