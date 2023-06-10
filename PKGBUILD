@@ -7,19 +7,20 @@ arch=('any')
 url="https://github.com/BiltuDas1/qsort"
 license=('CPL')
 depends=('cmake>=3.22' 'tar')
-source=("https://github.com/BiltuDas1/$pkgname/releases/download/${pkgver//_/-}/${pkgname}_v${pkgver//_/-}_1_amd64.deb")
-sha256sums=("538ab917dab7e826cda1e766a6f0934a3f71c55c91f84607f381c8c5400231de")
+source=("https://github.com/BiltuDas1/$pkgname/archive/refs/tags/${pkgver//_/-}.tar.gz")
+sha256sums=("0a7980857d07789a28abb9afc71e4a6834eb59aa9e1b47dc1f41bf1f90d09615")
+
+prepare(){
+	cd "$srcdir/$pkgname-${pkgver//_/-}"
+	cmake -B build .
+}
 
 build(){
-	cd "${srcdir}"
-	mkdir $pkgname
-	mv data.tar.zst $pkgname
-	cd $pkgname
-	tar -xf data.tar.zst
-	mv data.tar.zst ..
+	cd "$srcdir/$pkgname-${pkgver//_/-}/build"
+	make
 }
 
 package(){
-	cd "${srcdir}"
-	mv $pkgname ../pkg/
+	cd "$srcdir/$pkgname-${pkgver//_/-}/build"
+	make DESTDIR="$pkgdir/" install
 }

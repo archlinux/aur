@@ -7,7 +7,7 @@ pkgbase = qsort
 	license = CPL
 	depends = cmake>=3.22
 	depends = tar
-	source = https://github.com/BiltuDas1/qsort/releases/download/0.3.3-beta/qsort_v0.3.3-beta_1_amd64.deb
-	sha256sums = 538ab917dab7e826cda1e766a6f0934a3f71c55c91f84607f381c8c5400231de
+	source = https://github.com/BiltuDas1/qsort/archive/refs/tags/0.3.3-beta.tar.gz
+	sha256sums = 0a7980857d07789a28abb9afc71e4a6834eb59aa9e1b47dc1f41bf1f90d09615
 
 pkgname = qsort
