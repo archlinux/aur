@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=breeze-git
-pkgver=5.22.80_r2190.g29f1ef63
+pkgver=5.27.80_r2660.g4f29c929
 pkgrel=1
 arch=($CARCH)
 pkgdesc='Artwork, styles and assets for the Breeze visual style for the Plasma Desktop'
@@ -27,6 +27,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
