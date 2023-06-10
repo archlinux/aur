@@ -24,5 +24,5 @@ package(){
    cp --recursive "${srcdir}/${_pkgbase}/include/ronin" "${pkgdir}/usr/include/"
    find "${pkgdir}/usr/include/" -type d -exec chmod 755 {} \;
    find "${pkgdir}/usr/include/" -type f -exec chmod 644 {} \;
-   install -Dm644 "${srcdir}/${_pkgbase}/build/libbadrge.so" -t "${pkgdir}/usr/lib/"
+   install -Dm644 "${srcdir}/${_pkgbase}/build/libronin_framework.so" -t "${pkgdir}/usr/lib/"
 }
