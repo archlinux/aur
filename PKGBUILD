@@ -11,14 +11,33 @@ url="https://www.parallels.com/products/ras/capabilities/parallels-client/"
 license=("custom:${pkgname}")
 # from .deb control.tar.xz file
 # todo check over
-depends=('libxcursor' 'zlib' 'fontconfig' 'libxrender'
-         'glibc' 'libxrandr' 'libsm' 'libxtst' 'libice'
-         'libxext' 'libxi' 'gcc' 'alsa-lib' 'alsa-plugins'
-         'libxinerama' 'libxft' 'libx11' 'pcsclite'
-         'libcups' 'libxpm' 'libxml2' 'libmtp' 'libusb'
+depends=('libxcursor'
+         'zlib'
+         'fontconfig'
+         'libxrender'
+         'glibc'
+         'libxrandr'
+         'libsm'
+         'libxtst'
+         'libice'
+         'libxext'
+         'libxi'
+         'gcc'
+         'alsa-lib'
+         'alsa-plugins'
+         'libxinerama'
+         'libxft'
+         'libx11'
+         'pcsclite'
+         'libcups'
+         'libxpm'
+         'libxml2'
+         'libmtp'
+         'libusb'
          'nas'
          'udisks2'
-         'qt5-base' 'qt5-x11extras')
+         'qt5-base'
+         'qt5-x11extras')
 makedepends=()
 optdepends=()
 provides=()
