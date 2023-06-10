@@ -2,24 +2,23 @@
 
 _pkgname=spglib
 pkgname="${_pkgname}-git"
-pkgver=1.9.5.r564.951c47c
+pkgver=2.1.0rc2.r1647.3800c46
 pkgrel=1
 pkgdesc="C library for finding and handling crystal symmetries"
-url="http://atztogo.github.io/spglib/"
+url="https://spglib.readthedocs.io/en/latest/"
 arch=("i686" "x86_64")
-license=("BSD")
+license=("BSD-3-Clause")
 depends=("glibc")
-makedepends=("git" "automake" "autoconf" "libtool" "gcc")
+makedepends=("git" "cmake" "gcc")
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("git://github.com/atztogo/${_pkgname}.git")
+source=("git+https://github.com/spglib/${_pkgname}")
 sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  _parent_ver=$(git log --tags --simplify-by-decoration --pretty="format:%d" | head -n 1 | cut -d " " -f 6 | tr -d "v,")
   printf "%s.r%s.%s" \
-         "${_parent_ver}" \
+         "$(git describe --tags --abbrev=0 | tr -d 'v-')" \
          "$(git rev-list --count HEAD)" \
          "$(git rev-parse --short HEAD)"
 }
@@ -27,20 +26,21 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  aclocal
-  autoheader
-  libtoolize
-  touch INSTALL NEWS README AUTHORS
-  automake -acf
-  autoconf
+  mkdir -p build
 
-  # This also calls make!
-  ./configure \
-      --prefix=/usr
+  cmake -B build .
+
+  cd build
+  make
+}
+
+check() {
+  cd "${srcdir}/${_pkgname}"
+
+  ctest --test-dir build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}/build"
   make DESTDIR="${pkgdir}" install
-  install -D -m 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
