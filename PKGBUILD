@@ -21,7 +21,7 @@ options=()
 source=("https://sourceforge.net/projects/qdvd/files/qdvd-2.3.1-qt5/qdvdauthor-${pkgver}-013.tar.gz"
         'CMakeLists.patch'
         'CMakeLists_qrender.patch')
-md5sums=('857b925af7138aab779b972674941792'
+md5sums=('ce1169060c618e50e07f0272a3b4d282'
          'c9c7641aff17d1f9a299f4ea4fa03c6b'
          '612adb519f1dc94a403740e9c08a9afe')
 
