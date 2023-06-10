@@ -1,0 +1,15 @@
+pkgbase = rusted-xonix
+	pkgdesc = Xonix - remake of old pc game written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/denix666/xonix
+	arch = x86_64
+	license = MIT
+	source = https://github.com/denix666/xonix/releases/download/v0.1.0/xonix_linux_x86_64.tar.gz
+	source = rusted-xonix_icon.png
+	source = rusted-xonix.desktop
+	sha256sums = 7abeee182270d5199ed0c5bfc93ece89d41f1bedde94ce7bdaff20c95a69afd9
+	sha256sums = 501acf78f94c75f2131747e2214427302aa6d228f5da1cc029d7bc5ae203064c
+	sha256sums = 1d8b7bc4b656a36cbc2c823cf3afce6ec23528d0e791e4c7ef0135bda3ef975c
+
+pkgname = rusted-xonix

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=bash -c 'cd /usr/local/games/rusted-xonix && ./xonix'
+Icon=/usr/share/pixmaps/rusted-xonix_icon.png
+Name=Rusted xonix
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Game;
+Encoding=UTF-8
+Comment=Xonix - remake of old pc game written in Rust
