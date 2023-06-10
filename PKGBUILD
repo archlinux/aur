@@ -1,6 +1,6 @@
 pkgname=revbayes
-pkgver=1.2.1
-pkgrel=7
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="Bayesian Phylogenetic Inference Using Graphical Models and an Interactive Model-Specification Language https://doi.org/10.1093/sysbio/syw021"
 arch=(x86_64)
 url="https://github.com/revbayes/revbayes"
@@ -15,17 +15,15 @@ md5sums=('SKIP'
 
 prepare() {
   cd $srcdir/$pkgname
-  # fix lib issue
-  patch -p1 < $srcdir/rb.patch  
-
   git submodule update --init --recursive
   ./projects/meson/generate.sh
 }
 
 build() {
   cd $srcdir/$pkgname
-  CXXFLAGS="${CXXFLAGS} -std=c++14" arch-meson build \
-  --buildtype      release
+  arch-meson build \
+  --buildtype      release \
+  -Dmpi=false
   ninja -C build
 }
 
