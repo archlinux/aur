@@ -2,12 +2,12 @@
 # Contributor: Christopher Billington <chrisjbillington@gmail.com>
 pkgname=finesse
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="FINESSE: Frequency domain INterfErometer Simulation SoftwarE"
 license=("GPL3")
 url="http://gwoptics.org/finesse"
 optdepends=('gnuplot: for test_plot.kat example')
-source=("git+https://git.ligo.org/$pkgname/$pkgname#tag=$pkgver")
+source=("git+https://git.ligo.org/$pkgname/$pkgname")
 sha256sums=('SKIP')
 arch=('any')
 
