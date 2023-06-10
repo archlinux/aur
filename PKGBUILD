@@ -4,7 +4,7 @@ _pkgroot=ros2_control
 _pkgname=ros2_control_test_assets
 pkgname=ros2-humble-ros2-control-test-assets
 pkgver=2.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The package provides shared test resources for ros2_control stack"
 url="https://index.ros.org/p/ros2_control_test_assets/"
 arch=('any')
@@ -15,11 +15,10 @@ makedepends=('cmake')
 source=("https://github.com/ros-controls/ros2_control/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('bb8b1233fa6db7dd2f56cf350c9ef9c5750f83e212df62981480a2453656f0cf')
 
-prepare() {
-    source /opt/ros/humble/setup.bash
-}
 
 build() {
+    source /opt/ros/humble/setup.bash
+
     cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
