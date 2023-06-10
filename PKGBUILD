@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=ksshaskpass-git
-pkgver=5.22.80_r196.gdaa2679
+pkgver=5.27.80_r279.ge186e89
 pkgrel=1
 pkgdesc='ssh-add helper that uses kwallet-git and kpassworddialog'
 url='https://kde.org/plasma-desktop/'
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
