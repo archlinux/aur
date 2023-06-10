@@ -1,12 +1,15 @@
 pkgbase = python-jupyter_telemetry
 	pkgdesc = Configurable event-logging for Jupyter applications and extensions
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jupyter/telemetry
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-json-logger
 	depends = python-jsonschema
 	depends = python-ruamel-yaml
@@ -15,4 +18,3 @@ pkgbase = python-jupyter_telemetry
 	sha256sums = 445c613ae3df70d255fe3de202f936bba8b77b4055c43207edf22468ac875314
 
 pkgname = python-jupyter_telemetry
-
