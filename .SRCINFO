@@ -1,11 +1,12 @@
 pkgbase = ros2-humble-diagnostic-updater
 	pkgdesc = diagnostic_updater contains tools for easily updating diagnostics
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 3.1.2
+	pkgrel = 1
 	url = https://index.ros.org/p/diagnostic_updater/
 	arch = any
+	makedepends = cmake
 	depends = ros2-humble
-	source = https://github.com/ros/diagnostics/archive/refs/tags/3.1.0.tar.gz
-	sha256sums = 70eab1c02b0eb113f35ae84d300bc2c510c015a16961ee4c95449ccd3d20a188
+	source = https://github.com/ros/diagnostics/archive/refs/tags/3.1.2.tar.gz
+	sha256sums = 3944f6a8c4ba3574ebc0baf7d53f1a94c7a875ed07b9e0c1e070ccea08bff361
 
 pkgname = ros2-humble-diagnostic-updater

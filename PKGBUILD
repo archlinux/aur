@@ -1,31 +1,33 @@
 # Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
+_pkgroot=diagnostics
 _pkgname=diagnostic_updater
 pkgname=ros2-humble-diagnostic-updater
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.1.2
+pkgrel=1
 pkgdesc="diagnostic_updater contains tools for easily updating diagnostics"
 url="https://index.ros.org/p/diagnostic_updater/"
 arch=('any')
 depends=(
     'ros2-humble' 
 )
+makedepends=('cmake')
 source=("https://github.com/ros/diagnostics/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('70eab1c02b0eb113f35ae84d300bc2c510c015a16961ee4c95449ccd3d20a188')
+sha256sums=('3944f6a8c4ba3574ebc0baf7d53f1a94c7a875ed07b9e0c1e070ccea08bff361')
 
 prepare() {
     source /opt/ros/humble/setup.bash
-
-    cmake -S diagnostics-$pkgver/$_pkgname -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble
 }
 
 build() {
-source /opt/ros/humble/setup.bash
-    make -C build
+    cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
+        -Wno-dev
+    
+    cmake --build build
 }
 
 package() {
-    make DESTDIR="$pkgdir/" -C build install
+    DESTDIR="$pkgdir" cmake --install build
 }
