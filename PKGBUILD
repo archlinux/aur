@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=apk-editor-studio
-pkgver=1.4.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Powerful yet easy to use APK editor"
 arch=('x86_64')
@@ -17,8 +17,8 @@ optdepends=('libsecret: Enable password manager backend')
 makedepends=('qt5-base')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kefir500/apk-editor-studio/archive/v${pkgver}.tar.gz"
         'deploy.pri.patch')
-sha256sums=('62f2830a282f44d4860330a8f371b1ac27676257fe39a70f6203d34a6633a5e5'
-            'SKIP')
+sha256sums=('676d236c8025ae1b1ac15e9ebe0617eba1fb7bb7a2728841e6bbab451174d5c9'
+            '5099d3afb6026a8646a22e5c9b0b7ca03b7f2cc614df2e1f3b5a5df4d8e46c4d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
