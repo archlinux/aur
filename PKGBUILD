@@ -1,10 +1,9 @@
 # Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
 _pkgname=launch_param_builder
-_pkgname=launch_param_builder
 pkgname=ros2-humble-launch-param-builder
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Python library for loading parameters in launch files"
 url="https://index.ros.org/p/launch_param_builder/"
 arch=('any')
@@ -22,11 +21,11 @@ prepare() {
 }
 
 build() {
-    cd "$_pkgroot-$pkgver/$_pkgname"
+    cd "$_pkgname-$pkgver"
     python -m build --wheel --no-isolation 
 }
 
 package() {
-    cd "$_pkgroot-$pkgver/$_pkgname"
+    cd "$_pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" --prefix="/opt/ros/humble" dist/*.whl
 }
