@@ -3,14 +3,14 @@
 # Contributor: Matthias Blaicher <matthias at blaicher dot com>
 
 pkgname=libkscreen-git
-pkgver=5.23.80_r1594.g29eee17
+pkgver=5.27.80_r1809.gaab05f8
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(qt5-x11extras libxrandr kwayland-git)
-makedepends=(git extra-cmake-modules-git doxygen qt5-tools plasma-wayland-protocols-git)
+depends=(libxrandr kwayland-git)
+makedepends=(git extra-cmake-modules-git doxygen qt6-tools plasma-wayland-protocols-git)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
     -DBUILD_QCH=ON
