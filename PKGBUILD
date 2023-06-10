@@ -3,15 +3,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwin-git
-pkgver=5.22.80_r19461.geb27d312a
+pkgver=5.27.80_r24848.g80b7ed62da
 pkgrel=1
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(kscreenlocker-git xcb-util-cursor plasma-framework-git kcmutils-git kwayland-server-git breeze-git qt5-sensors qt5-script pipewire libqaccessibilityclient-git libdrm lcms2)
-makedepends=(git extra-cmake-modules-git qt5-tools kdoctools-git krunner-git xorg-xwayland)
-optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland'
+depends=(kscreenlocker-git xcb-util-cursor plasma-framework-git kcmutils-git kwayland-server-git breeze-git qt6-sensors pipewire libqaccessibilityclient-git libdrm lcms2)
+makedepends=(git extra-cmake-modules-git qt6-tools kdoctools-git krunner-git xorg-xwayland)
+optdepends=('qt6-virtualkeyboard: virtual keyboard support for kwin-wayland'
             'maliit-keyboard: virtual keyboard support for kwin-wayland')
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
@@ -28,6 +28,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build
