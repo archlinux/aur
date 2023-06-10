@@ -16,6 +16,7 @@ url=https://github.com/AdaCore/gprbuild
 license=(GPL3 custom)
 
 depends=(gcc-ada gnatstudio-sources)
+makedepends=(gcc-ada gnatstudio-sources)
 
 source=(file:///opt/gnatstudio-sources/gprbuild-$pkgver-20230324-1649D-src.tar.gz
         file:///opt/gnatstudio-sources/xmlada-$pkgver-20230324-1684A-src.tar.gz
