@@ -10,7 +10,7 @@ pkgbase = telegraph
 	makedepends = meson
 	depends = python
 	depends = libadwaita
-	source = git+https://github.com/fkinoshita/Telegraph.git
+	source = git+https://github.com/fkinoshita/Telegraph.git#tag=0.1.6
 	sha256sums = SKIP
 
 pkgname = telegraph

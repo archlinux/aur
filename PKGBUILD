@@ -10,14 +10,8 @@ license=('GPL3')
 depends=('python' 'libadwaita')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-source=("git+$url.git")
+source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
-
-prepare() {
-  # Switch tag version
-  cd $pkgname
-  git checkout tags/${_pkgver}
-}
 
 build() {
   arch-meson Telegraph build
