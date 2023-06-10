@@ -1,15 +1,17 @@
 # Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
+_pkgroot=ros2_controllers
 _pkgname=position_controllers
 pkgname=ros2-humble-position-controllers
-pkgver=2.17.2
-pkgrel=2
+pkgver=2.21.0
+pkgrel=1
 pkgdesc="Generic controller for forwarding commands"
 url="https://index.ros.org/p/position_controllers/"
 arch=('any')
 makedepends=(
     'ros2-humble-controller-manager'
     'ros2-humble-ros2-control-test-assets'
+    'cmake'
 )
 depends=(
     'ros2-humble' 
@@ -17,21 +19,21 @@ depends=(
     'ros2-humble-forward-command-controller'
 )
 source=("https://github.com/ros-controls/ros2_controllers/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('87f488479f0d4cdbdcdef5ec5a6238c8fd4a84fda9f365d90feafb1f3903c245')
+sha256sums=('d6761cdecb079122ce46b94b8dcae6f6580b9ef45ff8728447c0d7dd27b6b49c')
 
 prepare() {
     source /opt/ros/humble/setup.bash
-
-    cmake -S ros2_controllers-$pkgver/$_pkgname -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble
 }
 
 build() {
-source /opt/ros/humble/setup.bash
-    make -C build
+    cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
+        -Wno-dev
+    
+    cmake --build build
 }
 
 package() {
-    make DESTDIR="$pkgdir/" -C build install
+    DESTDIR="$pkgdir" cmake --install build
 }
