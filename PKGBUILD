@@ -109,7 +109,7 @@ package_libgpr()
 package_gprbuild()
 {
     conflicts=(gprbuild-bootstrap)
-    depends=(libgpr xmlada)
+    depends=(gprtools)
 
     cd $srcdir/$_gprbuild_src
 
