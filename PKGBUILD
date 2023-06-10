@@ -4,7 +4,7 @@
 
 pkgname=kwin-git
 pkgver=5.27.80_r24848.g80b7ed62da
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
