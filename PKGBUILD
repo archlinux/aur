@@ -4,8 +4,8 @@ _pkgname=xerces-c
 pkgname=mingw-w64-${_pkgname}-icu
 provides=("mingw-w64-${_pkgname}")
 conflicts=("mingw-w64-${_pkgname}")
-pkgver=3.2.3
-pkgrel=9
+pkgver=3.2.4
+pkgrel=1
 pkgdesc='A validating XML parser written in a portable subset of C++ (ICU) (mingw-w64)'
 arch=('any')
 url='http://xerces.apache.org/xerces-c/'
@@ -14,11 +14,11 @@ makedepends=('mingw-w64-wine' 'mingw-w64-cmake')
 depends=('mingw-w64-crt' 'mingw-w64-icu')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/apache/xerces-c/archive/v${pkgver}.tar.gz")
-sha256sums=('a7cf582d618c048ef6a4684457a641940179c446e5f02c81f582f5952755a76a')
+sha256sums=('8dfaa30d6a641bda113625ef65e43c433e8ffd94fadd3b8d39dfe6faf450f26d')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -Dtranscoder=icu )
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' -Dtranscoder=icu )
 
 prepare() {
 	cd "${_srcdir}"
