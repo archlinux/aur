@@ -18,7 +18,7 @@ pkgbase = mkinitcpio-archiso-encryption
 	optdepends = pv: for status display during copy to RAM
 	provides = mkinitcpio-archiso
 	conflicts = mkinitcpio-archiso
-	source = mkinitcpio-archiso::git+https://gitlab.archlinux.org/tallero/mkinitcpio-archiso.git#tag=v65
+	source = mkinitcpio-archiso::git+https://gitlab.archlinux.org/tallero/mkinitcpio-archiso.git#commit=aef089395300e9ec9c4f15d8c7f952af8d481c86
 	sha256sums = SKIP
 
 pkgname = mkinitcpio-archiso-encryption

@@ -23,7 +23,8 @@ optdepends=(
   'nbd: for PXE over NBD'
   'pv: for status display during copy to RAM'
 )
-source=("${_pkgbase}::git+${_gitlab}/tallero/${_pkgbase}.git#tag=${pkgver}")
+_commit="aef089395300e9ec9c4f15d8c7f952af8d481c86"
+source=("${_pkgbase}::git+${_gitlab}/tallero/${_pkgbase}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 check() {
