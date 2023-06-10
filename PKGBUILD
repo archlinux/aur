@@ -1,29 +1,31 @@
 # Maintainer: Angelo Elias Dal Zotto <angelodalzotto97@gmail.com>
 
+_pkgroot=play_motion2
 _pkgname=play_motion2_msgs
 pkgname=ros2-humble-play-motion2-msgs
-pkgver=0.0.5
-pkgrel=2
+pkgver=0.0.8
+pkgrel=1
 pkgdesc="associated messages to play and handle pre-recorded motions in ROS2"
 url="https://github.com/pal-robotics/play_motion2/"
 arch=('any')
 depends=('ros2-humble')
+makedepends=('cmake')
 source=("https://github.com/pal-robotics/play_motion2/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('49195d29e6d05b4c8a3404369f40de14c2644e14ce3982e9c568bd841931260f')
+sha256sums=('2cb01f576e8c06a5f5c75f75dc3e61c9fb8149041236fc8afd2061b9f09edac2')
 
 prepare() {
     source /opt/ros/humble/setup.bash
-
-    cmake -S play_motion2-$pkgver/$_pkgname -B build \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/opt/ros/humble
 }
 
 build() {
-source /opt/ros/humble/setup.bash
-    make -C build
+    cmake -B build -S "$_pkgroot-$pkgver/$_pkgname" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/opt/ros/humble' \
+        -Wno-dev
+    
+    cmake --build build
 }
 
 package() {
-    make DESTDIR="$pkgdir/" -C build install
+    DESTDIR="$pkgdir" cmake --install build
 }
