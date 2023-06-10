@@ -3,14 +3,14 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libksysguard-git
-pkgver=5.22.80_r2232.g3ab65f7
+pkgver=5.27.80_r2664.gea2fb0db
 pkgrel=1
 pkgdesc='Library to retrieve information on the current status of computer hardware'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(libxres qt5-webengine kdeclarative-git knewstuff-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git qt5-tools)
+depends=(libxres qt6-webengine kdeclarative-git knewstuff-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git qt6-tools)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
 groups=(plasma-git)
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }

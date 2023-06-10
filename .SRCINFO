@@ -1,6 +1,6 @@
 pkgbase = libksysguard-git
 	pkgdesc = Library to retrieve information on the current status of computer hardware
-	pkgver = 5.22.80_r2232.g3ab65f7
+	pkgver = 5.27.80_r2664.gea2fb0db
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = libksysguard-git
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	makedepends = kdoctools-git
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	depends = libxres
-	depends = qt5-webengine
+	depends = qt6-webengine
 	depends = kdeclarative-git
 	depends = knewstuff-git
 	provides = libksysguard
@@ -20,4 +20,3 @@ pkgbase = libksysguard-git
 	sha256sums = SKIP
 
 pkgname = libksysguard-git
-
