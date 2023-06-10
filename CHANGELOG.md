@@ -1,11 +1,55 @@
 # Changelog
 
+## 2.4.1
+
+### Fixed
+- Removed spurious `print` in copc.py and compression.py
+
+---
+
+## 2.4.0
+
+## Added
+- `read_evlrs` option (default true) to `laspy.open`, `laspy.LasReader.__init__` and `laspy.LasHeader.read_from`
+  Which allows to skip reading the EVLRs when opening a file. This can be useful when
+  opening a LAS file from a non seekable source / where seeking is expensive as reading
+  EVLRs requires seeking to the end of the file.
+- Selective decompression feature that allows to select in a LAS 1.4 (fmt >= 6 && <= 10)
+  which fields should be decompressed allowing to save time by decompressing only the fields
+  that are needed. Works with LAZ and COPC files.
+
+## Changed
+- The internal point reader is lazily created when the first point is actually read
+
+## Fixed
+- LasAppender when input file's last chunk is complete
+- Handle redundant CSs in GeoKeyDirectoryVlr
+
+---
+
+## 2.3.0
+
+### Changed
+- EVLRs are now read during the file opening part.
+- EVLRs are now part of the `LasHeader` class, but are still accesible
+  via `LasReader.evlrs` or `LasData.evlrs.
+
+### Fixed
+- Fixed CRS parsing on fiels with both `GeoKeyDirectoryVlr` and `WktCoordinateSystemVlr` and the first one is empty
+- `LasHeader.parse_crs` also looks for the CRS VLRs in the EVLRs of the file.
+- Fixed `LasHeader.generating_software` and `LasHeader.system_id` being limited to 31
+  bytes instead of 32.
+- Fixed `laspy.convert` to ensure the returng `LasData.evlrs` is a `Vlrlist` and
+  no simply a `list`
+
+---
+
 ## 2.2.0
 
 ### Added
 - Added support for querying COPC LAZ files via a new class `CopcReader`.
 - Added new optional feature to support adding CRS / SRS to a LAS file from a `pyproj.CRS` as
-  well as reading the CRS / SRS information from a LAS file to a `pyproj.CRS`. 
+  well as reading the CRS / SRS information from a LAS file to a `pyproj.CRS`.
 
 ### Fixed
 - Fixed support for stream / source that are not `seekable`.
@@ -28,14 +72,14 @@
 ## 2.2.0 beta 0
 
 ### Added
-- Added new optional feature to support adding CRS / SRS to a LAS file from a `pyproj.CRS` as 
-  well as reading the CRS / SRS information from a LAS file to a `pyproj.CRS`. 
+- Added new optional feature to support adding CRS / SRS to a LAS file from a `pyproj.CRS` as
+  well as reading the CRS / SRS information from a LAS file to a `pyproj.CRS`.
 
 ### Changed
 - Support for Python3.6 removed.
 
 ---
-  
+
 ## 2.1.2
 
 
@@ -73,7 +117,7 @@
   However, an encoding error will be raised when writing such files.
 - `LasData.__getitem__` will now return a `LasData` when indexing with slice or numpy array.
    `assert isinstance(las[[1, 2, 3, 4]], laspy.LasData)`
- 
+
 ### Fixed
 - Fix `PackedPointRecord.__len__` when array has no dim
 - Fix scaled extra byte creation when the offsets/scales given to `ExtraBytesParam` where of type `list` or `tuple`

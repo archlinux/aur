@@ -1,0 +1,29 @@
+--- docs/conf.py
++++ docs/conf.py
+@@ -53,7 +53,7 @@ m2r2 uses vulnerable version of mistune; use myst_parser instead.
+     "sphinx.ext.napoleon",
+     "sphinx.ext.intersphinx",
+     "sphinx.ext.doctest",
+-    "m2r2"
++    "myst_parser"
+     # 'sphinx_autodoc_typehints'
+ ]
+ 
+@@ -66,7 +66,7 @@ Configure markdown as a valid source.
+ # You can specify multiple suffix as a list of string:
+ #
+ # source_suffix = ['.rst', '.md']
+-source_suffix = ".rst"
++source_suffix = [".rst", ".md"]
+ 
+ # The master toctree document.
+ master_doc = "index"
+@@ -93,7 +93,7 @@ We are only building the manpage, so remove dependency on external theme.
+ # The theme to use for HTML and HTML Help pages.  See the documentation for
+ # a list of builtin themes.
+ #
+-html_theme = "sphinx_rtd_theme"
++# html_theme = "sphinx_rtd_theme"
+ 
+ language = "en"
+ 

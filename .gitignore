@@ -1,3 +1,5 @@
-python-laspy/
-laspy-*/
-*.tar.*
+laspy/
+src/
+pkg/
+*.log
+python-laspy-*.pkg.tar*
