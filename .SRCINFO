@@ -1,6 +1,6 @@
 pkgbase = kgamma5-git
 	pkgdesc = Adjust your monitor's gamma settings
-	pkgver = 5.22.80_r455.gdb6a51b
+	pkgver = 5.27.80_r554.gc6e0490
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = kgamma5-git
 	sha256sums = SKIP
 
 pkgname = kgamma5-git
-

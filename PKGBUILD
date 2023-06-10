@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kgamma5-git
-pkgver=5.22.80_r455.gdb6a51b
+pkgver=5.27.80_r554.gc6e0490
 pkgrel=1
 pkgdesc="Adjust your monitor's gamma settings"
 arch=($CARCH)
@@ -25,6 +25,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
