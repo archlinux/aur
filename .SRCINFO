@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-moveit-msgs
 	pkgdesc = Messages, services and actions used by MoveIt
 	pkgver = 2.2.1
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://index.ros.org/p/moveit_msgs/
 	arch = any
