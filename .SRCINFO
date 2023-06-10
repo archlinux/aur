@@ -1,7 +1,7 @@
 pkgbase = ros2-humble-tcb-span
 	pkgdesc = Implementation of C++20's std::span
 	pkgver = 1.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://index.ros.org/p/tcb_span/
 	arch = any
 	makedepends = cmake
