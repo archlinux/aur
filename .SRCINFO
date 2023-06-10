@@ -1,7 +1,7 @@
 pkgbase = fleek-bin
 	pkgdesc = "Home as Code" for Humans
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ublue-os/fleek
 	arch = x86_64
 	license = Apache

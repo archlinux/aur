@@ -2,7 +2,7 @@
 
 pkgname=fleek-bin
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='"Home as Code" for Humans'
 arch=(x86_64)
 url=https://github.com/ublue-os/fleek
@@ -19,5 +19,5 @@ package() {
 	done
 	install -Dm644 "completions/${pkgname%-bin}.bash" "$pkgdir/usr/share/bash-completion/completions/${pkgname%-bin}"
 	install -Dm644 "completions/${pkgname%-bin}.zsh" "$pkgdir/usr/share/zsh/site-functions/_${pkgname%-bin}"
-	install -Dm644 "completions/${pkgname%-bin}.fish" "$pkgdir/usr/share/fish/${pkgname%-bin}.fish"
+	install -Dm644 "completions/${pkgname%-bin}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${pkgname%-bin}.fish"
 }
