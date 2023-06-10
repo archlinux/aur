@@ -22,13 +22,13 @@ pkgver=2.6
 #_rel="rc1"
 [ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
 _name=LuxCore-${pkgname}_v${_pkgver}
-pkgrel=7
+pkgrel=8
 epoch=2
 pkgdesc="Physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
-depends+=(blosc boost-libs embree glfw gtk3 openimagedenoise openimageio openvdb fmt python spdlog)
+depends+=(blosc boost-libs embree3 glfw gtk3 openimagedenoise openimageio openvdb fmt python spdlog)
 optdepends+=("pyside2: for pyluxcoretools gui")
 makedepends+=(boost cmake doxygen git ninja pyside2-tools)
 provides=(luxrays)
