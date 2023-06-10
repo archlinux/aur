@@ -1,7 +1,7 @@
 # Maintainer: JCWasmx86 <JCWasmx86@t-online.de>
 
 pkgname=swift-mesonlsp
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="A language server for meson"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://github.com/JCWasmx86/Swift-MesonLSP"
 license=("GPL3")
 makedepends=("swift-language")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/JCWasmx86/Swift-MesonLSP/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("8788bce443bbf67d2f5c48893b008689942394ba30fd8c9b16863531c67068ae")
+sha256sums=('a36ae72c5b6e1159177b0761bb958e5a82106a1e94592759026102fc51e8979f')
 
 prepare() {
   cd "Swift-MesonLSP-$pkgver"
