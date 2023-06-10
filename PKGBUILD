@@ -3,7 +3,7 @@
 _pkgname=angles
 pkgname=ros2-humble-angles
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This package provides a set of simple math utilities to work with angles"
 url="https://index.ros.org/p/angles/"
 arch=('any')
@@ -26,5 +26,5 @@ build() {
 }
 
 package() {
-    make DESTDIR="$pkgdir/" -C build install
+    DESTDIR="$pkgdir" cmake --install build
 }
