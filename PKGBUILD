@@ -1,4 +1,5 @@
-# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Maintainer: w0rty <mawo97 at gmail.com>
+# Contributor: Fredy García <frealgagu at gmail dot com>
 
 pkgname=welle.io
 pkgver=2.4
