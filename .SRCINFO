@@ -1,9 +1,10 @@
 pkgbase = ros2-humble-gazebo-ros
 	pkgdesc = Provides ROS plugins that offer message and service publishers for interfacing with
 	pkgver = 3.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://index.ros.org/p/gazebo_ros/
 	arch = any
+	makedepends = cmake
 	depends = ros2-humble
 	depends = ros2-humble-gazebo-dev
 	depends = ros2-humble-gazebo-msgs
