@@ -13,6 +13,14 @@ source=(https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20
 sha256sums=(acacf5f971dd94dd08a464a05f4e02cf0f1fc5e81028bf7c13091ed08ad97218)
 
 
+build()
+{
+   cd $srcdir/$pkgname-x86_64-linux
+
+   # Nothing to build.
+}
+
+
 package()
 {
    cd $srcdir/$pkgname-x86_64-linux
