@@ -4,13 +4,13 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kde-gtk-config-git
-pkgver=5.27.80_r991.g45672f2
+pkgver=5.27.80_r993.gb79bd5a
 pkgrel=1
 pkgdesc='GTK2 and GTK3 Configurator for KDE'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(qt5-svg kdecoration-git kconfigwidgets-git kdbusaddons-git kwindowsystem-git)
+depends=(qt6-svg kdecoration-git kconfigwidgets-git kdbusaddons-git kwindowsystem-git)
 makedepends=(git extra-cmake-modules-git gtk3 sassc)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
@@ -27,6 +27,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build

@@ -1,6 +1,6 @@
 pkgbase = kde-gtk-config-git
 	pkgdesc = GTK2 and GTK3 Configurator for KDE
-	pkgver = 5.27.80_r991.g45672f2
+	pkgver = 5.27.80_r993.gb79bd5a
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kde-gtk-config-git
 	makedepends = extra-cmake-modules-git
 	makedepends = gtk3
 	makedepends = sassc
-	depends = qt5-svg
+	depends = qt6-svg
 	depends = kdecoration-git
 	depends = kconfigwidgets-git
 	depends = kdbusaddons-git
