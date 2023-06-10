@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <nqn1976 @ gmail.com>
 
 pkgname=powerdevil-git
-pkgver=5.22.80_r2436.gf66333c5
+pkgver=5.27.80_r2797.gddd396d5
 pkgrel=1
 pkgdesc='Manages the power consumption settings of a Plasma Shell'
 arch=($CARCH)
@@ -26,6 +26,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   cmake --build build

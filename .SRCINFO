@@ -1,6 +1,6 @@
 pkgbase = powerdevil-git
 	pkgdesc = Manages the power consumption settings of a Plasma Shell
-	pkgver = 5.22.80_r2436.gf66333c5
+	pkgver = 5.27.80_r2797.gddd396d5
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = powerdevil-git
 	sha256sums = SKIP
 
 pkgname = powerdevil-git
-
