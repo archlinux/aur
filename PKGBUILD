@@ -4,13 +4,13 @@ _pkgbase=rime-ice
 _schemas=(rime_ice)
 _pkgname=$_pkgbase-pinyin
 pkgname=$_pkgname-git
-pkgver=r212.b514049
+pkgver=r258.0809b29
 pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库 - 拼音方案"
 arch=("any")
 url="https://github.com/iDvel/rime-ice"
 license=("GPL3")
-makedepends=("librime" "rime-prelude" "coreutils" "grep" "sed")
+makedepends=("git" "librime" "rime-prelude" "coreutils" "grep" "sed")
 provides=("${_pkgname}")
 conflicts=(
   "rime-emoji"
