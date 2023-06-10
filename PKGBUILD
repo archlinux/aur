@@ -3,7 +3,7 @@
 _pkgname=backward_ros
 pkgname=ros2-humble-backward-ros
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="The backward_ros package is a ros wrapper of backward-cpp"
 url="https://index.ros.org/p/backward_ros/"
 arch=('any')
@@ -29,5 +29,5 @@ build() {
 }
 
 package() {
-    make DESTDIR="$pkgdir/" -C build install
+    DESTDIR="$pkgdir" cmake --install build
 }
