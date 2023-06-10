@@ -16,7 +16,7 @@ sha256sums=("SKIP")
 
 pkgver() {
 	cd "${srcdir}/nabud"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -27,6 +27,6 @@ build() {
 
 package() {
 	cd "${srcdir}/nabud"
-    make DESTDIR="${pkgdir}" install
-    install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	make DESTDIR="${pkgdir}" install
+	install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
