@@ -48,27 +48,51 @@ sha256sums=('e37843a042f544bdebeccfb0a42ce1ffba30a0ee71d742493a44ee79fc554211')
 
 
 package() {
-    _suffix='opt/2X/Client'
-    _src="${srcdir}/${_suffix}"
-    _dest="${pkgdir}/${_suffix}"
+    _opt='opt/2X/Client'
+    _src="${srcdir}/${_opt}"
+    _dest="${pkgdir}/${_opt}"
+
+    _bin="${pkgdir}/usr/bin"
+    _share="${pkgdir}/usr/share"
 
     cd "${_src}"
 
-    # TODO symlinks
-
     # binaries
-    find 'bin/' -type f -exec install -D -t "${_dest}/bin" {} +
+    install -D -t "${_dest}/bin/" 'bin/2XClient' 'bin/appserverclient' 'bin/downloader'
+    # symlink binaries
+    install -d "${_bin}/"
+    # symlink binary with package name
+    ln -s "/${_opt}/bin/2XClient" "${_bin}/${pkgname}"
+    # symlink binary with original names
+    # bniary
+    ln -s -t "${_bin}/" \
+        "/${_opt}/bin/2XClient" \
+        "/${_opt}/bin/appserverclient"
 
-    #license
-    install -D 'doc/EULA.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # license
+    install -D -m644 -t "${_dest}/doc/" 'doc/EULA.txt' 
+    # symlink license
+    install -d "${_share}/licenses/${pkgname}/"
+    ln -s "/${_opt}/doc/EULA.txt" "${_share}/licenses/${pkgname}/LICENSE"
 
     # share
     find 'share/' -type f -exec install -D -m644 -t "${_dest}/share" {} +
     find 'share/mime/' -type f -exec install -D -m644 -t "${_dest}/share/mime" {} +
     find 'share/sharedmimeinfo/' -type f -exec install -D -m644 -t "${_dest}/share/sharedmimeinfo" {} +
-
-    # Fix udev symlink in /lib
-    # install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
-    # mv "${pkgdir}/lib/udev/rules.d/90-rasusb.rules" "${pkgdir}/usr/lib/udev/rules.d/"
-    # rm -rf "${pkgdir}/lib/"
+    # symlink share
+    # symlink desktop entries
+    install -d "${_share}/applications/"
+    ln -s -t "${_share}/applications/" \
+        "/${_opt}/share/rasclient.desktop" \
+        "/${_opt}/share/appserverclient.desktop" \
+        "/${_opt}/share/tuxclient.desktop"
+    # symlink mime entry
+    install -d "${_share}/mime/packages/"
+    ln -s -t "${_share}/mime/packages/" "/${_opt}/share/2XClient.xml"
+    # symlink pixmap
+    install -d "${_share}/pixmaps/"
+    ln -s -t "${_share}/pixmaps/" "/${_opt}/share/2X.png"
+    # symlink udev rule
+    install -d "${pkgdir}/usr/lib/udev/rules.d/"
+    ln -s "/${_opt}/share/udev.rules" "${pkgdir}/usr/lib/udev/rules.d/90-rasusb.rules"
 }
