@@ -1,6 +1,6 @@
 pkgbase = orbiton-bin
 	pkgdesc = Text editor, IDE and gdb frontend (CLI only)
-	pkgver = 2.62.2
+	pkgver = 2.62.3
 	pkgrel = 1
 	url = https://github.com/xyproto/orbiton
 	arch = aarch64
@@ -20,7 +20,6 @@ pkgbase = orbiton-bin
 	optdepends = cxx: for compiling C and C++
 	optdepends = elm-bin: for compiling Elm
 	optdepends = fpc: for compiling Object Pascal
-	optdepends = fstabfmt: for formatting /etc/fstab
 	optdepends = gdb: for debugging C
 	optdepends = gcc-d: for compiling D
 	optdepends = ghc: for compiling Haskell
@@ -51,8 +50,8 @@ pkgbase = orbiton-bin
 	optdepends = yasm: for compiling Assembly
 	optdepends = zig: for compiling and formatting Zig
 	conflicts = orbiton
-	source = https://github.com/xyproto/orbiton/releases/download/v2.62.2/orbiton-2.62.2-linux_x86_64_static.tar.xz
-	sha256sums = 5c8231dc10d2f54cdfb7059ab1d4c8917be96fa145c109f1a636f6a5925e41eb
-	b2sums = 2238a7e1d80d0013d1ac60a07e170ac73f3b3b736d76633500624ddaa8b8b6c6d57cd5a0c3ece62f758d63fbc30ca38b83f47f143d8855d709ddef25ccc89d5b
+	source = https://github.com/xyproto/orbiton/releases/download/v2.62.3/orbiton-2.62.3-linux_x86_64_static.tar.xz
+	sha256sums = 750faf7befeb768307983de716c9eade12bf1889f5ac42cae412ed3eeecad6aa
+	b2sums = 293068a2d60c93908fa24d119a36bd7277a4e76b9760d093599bedecb34090832dc4d08b32f8e56abb32534bc8169b42b7b7a784f0462196860b0fc8d9f72bf2
 
 pkgname = orbiton-bin
