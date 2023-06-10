@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=alixby
+Exec="/opt/alixby/alixby" %U
+Terminal=false
+Type=Application
+Icon=/opt/alixby/alixby.png
+StartupWMClass=alixby
+Comment=alixby
+Categories=Network;
