@@ -6,7 +6,7 @@ pkgbase = dostron
 	arch = any
 	license = GPL-3.0
 	depends = electron
-	source = https://github.com/he-yaowen/dostron/releases/download/v0.1.0/dostron-0.1.0-aur-any.tar.xz
+	source = https://github.com/he-yaowen/dostron/releases/download/v0.1.0/dostron-0.1.0-asar.tar.xz
 	sha256sums = 2465091b4fd58d4e34ba339a1a73bedb758a88ae5162d108f10cb965f65f8b8e
 
 pkgname = dostron

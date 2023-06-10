@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/he-yaowen/dostron"
 license=("GPL-3.0")
 depends=("electron")
-source=(https://github.com/he-yaowen/dostron/releases/download/v$pkgver/$pkgname-$pkgver-aur-$arch.tar.xz)
+source=(https://github.com/he-yaowen/dostron/releases/download/v$pkgver/$pkgname-$pkgver-asar.tar.xz)
 sha256sums=("2465091b4fd58d4e34ba339a1a73bedb758a88ae5162d108f10cb965f65f8b8e")
 
 build() {
