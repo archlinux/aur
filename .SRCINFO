@@ -1,7 +1,8 @@
 pkgbase = ros2-humble-joint-state-broadcaster
 	pkgdesc = Broadcaster to publish joint state
-	pkgver = 2.21.0
-	pkgrel = 2
+	pkgver = 2.20.0
+	pkgrel = 1
+	epoch = 1
 	url = https://index.ros.org/p/joint_state_broadcaster/
 	arch = any
 	makedepends = ros2-humble-controller-manager
@@ -13,7 +14,7 @@ pkgbase = ros2-humble-joint-state-broadcaster
 	depends = ros2-humble-generate-parameter-library
 	depends = ros2-humble-hardware-interface
 	depends = ros2-humble-realtime-tools
-	source = https://github.com/ros-controls/ros2_controllers/archive/refs/tags/2.21.0.tar.gz
-	sha256sums = d6761cdecb079122ce46b94b8dcae6f6580b9ef45ff8728447c0d7dd27b6b49c
+	source = https://github.com/ros-controls/ros2_controllers/archive/refs/tags/2.20.0.tar.gz
+	sha256sums = 1b05787726fe7b14d493dd612aa7eb4459da53ccaee261ae87b78bf73878a0e3
 
 pkgname = ros2-humble-joint-state-broadcaster
