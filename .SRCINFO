@@ -28,21 +28,17 @@ pkgname = libgpr
 pkgname = gprbuild
 	depends = libgpr
 	depends = xmlada
-	depends = gprtools
-	provides = gprbuild-bootstrap
 	conflicts = gprbuild-bootstrap
 
 pkgname = gprtools
 	depends = libgpr
 	depends = xmlada
-	provides = gprtools
+	conflicts = gprbuild-bootstrap
 
 pkgname = gprname
 	depends = libgpr
 	depends = xmlada
-	provides = gprname
 
 pkgname = gprslave
 	depends = libgpr
 	depends = xmlada
-	provides = gprslave
