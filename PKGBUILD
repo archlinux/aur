@@ -5,7 +5,7 @@
 # Contributor: Henri Chain <henri@henricha.in>
 
 pkgname=kdecoration-git
-pkgver=5.23.80_r273.g343cade
+pkgver=5.27.80_r355.ge46c579
 pkgrel=1
 pkgdesc='Plugin based library to create window decorations'
 arch=($CARCH)
@@ -27,6 +27,7 @@ pkgver() {
 
 build() {
   cmake -B build -S ${pkgname%-git} \
+    -DQT_MAJOR_VERSION=6 \
     -DBUILD_TESTING=OFF
   cmake --build build
 }
