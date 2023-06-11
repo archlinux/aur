@@ -1,7 +1,7 @@
 # Maintainer: Piroro-hs
 
 pkgname=gsettings-desktop-schemas-nofont
-pkgver=43.0
+pkgver=44.0
 pkgrel=1
 pkgdesc='Shared GSettings schemas for the desktop, patched to drop font dependencies'
 arch=('any')
@@ -19,8 +19,8 @@ install=
 source=("$pkgname::git+$url.git#tag=$pkgver"
         "0001-Revert-default-font.patch")
 noextract=()
-md5sums=('SKIP'
-         '5548b3d4ef94d31d5a2a737eaff3e8e0')
+sha256sums=('SKIP'
+            '70823e18b0b35f698890cee555afee794e805750e798e0c76a1f0d456aaf587d')
 
 prepare() {
 	cd "$srcdir/$pkgname"
