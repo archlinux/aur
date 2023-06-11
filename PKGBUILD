@@ -1,10 +1,10 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=gpr-unit-provider
+pkgdesc='A unit provider for Libadalang based on GPR project analysis library.'
 pkgver=23.0.0
 pkgrel=2
 
-pkgdesc='A unit provider for Libadalang based on GPR project analysis library.'
 url=https://github.com/AdaCore/gpr-unit-provider
 arch=(i686 x86_64)
 license=(GPL3 custom)
