@@ -1,5 +1,125 @@
 Changelog for AirVPN Suite
 
+Version 1.3.0 - 1 June 2023
+
+- [ProMIND] updated to OpenVPN3 AirVPN 3.8.4
+- [ProMIND] replaced include guards with #pragma once in all include files
+- [ProMIND] added file continent_names.csv
+- [ProMIND] installation script: improved group management for specific system cases
+
+
+airvpnmanifest
+
+- [ProMIND] updated to AirVPN document version 288
+- [ProMIND] loadManifest() can now force the loading of the local instance (if any)
+- [ProMIND] loadManifest() statistics are now counted for continent and earth as well
+- [ProMIND] loadManifest() added support for new AirVPNServer class members compliance
+- [ProMIND] processXmlManifest() countryStats now includes closed servers as well
+- [ProMIND] getServerListByCountry() now accepts continents as well
+
+
+airvpnserver
+
+- [ProMIND] renamed specific OpenVPN members
+- [ProMIND] added members for WireGuard support
+- [ProMIND] added members for Perfect Forward Secrecy (PFS) support
+- [ProMIND] members supportIPv4 renamed to IPv4Available
+- [ProMIND] members supportIPv6 renamed to IPv6Available
+
+
+airvpnserverprovider
+
+- [ProMIND] members supportIPv4 renamed to IPv4Available
+- [ProMIND] members supportIPv6 renamed to IPv6Available
+
+
+airvpntools
+
+- [ProMIND] updated to AirVPN document version 288
+- [ProMIND] added int AirVpnDocumentVersion
+- [ProMIND] added std::string wireguardPublicKey
+- [ProMIND] added method getAirVpnDocumentVersion()
+- [ProMIND] requestAirVPNDocument(): in case document version is not set by caller, it is then set to the default value
+- [ProMIND] added methods getWireGuardPublicKey() and setWireGuardPublicKey()
+- [ProMIND] added method getWireGuardProfile()
+- [ProMIND] added method realCountryName(): return the normalized country/continent name
+- [ProMIND] added method loadLinuxModule()
+- [ProMIND] added method replaceAll()
+- [ProMIND] added method formatTimestamp()
+- [ProMIND] added methods getVPNConfigFileType() and getVPNProfileType()
+- [ProMIND] added unit of measure mode to formatTransferRate() and formatDataVolume() methods (defaults to decimal mode)
+
+
+airvpnuser
+
+- [ProMIND] updated to AirVPN document version 288
+- [ProMIND] added WireGuard members to struct UserKey
+- [ProMIND] added method getWireGuardProfile()
+- [ProMIND] getOpenVPNProfile(): replaced "cipher" with "data-ciphers"
+- [ProMIND] getOpenVPNProfile(): removed "comp-lzo" support
+
+
+countrycontinent
+
+- [ProMIND] added method isContinent()
+- [ProMIND] added method getContinentCode()
+- [ProMIND] added method getContinentName()
+
+
+dbusconnector
+
+- [ProMIND] mutex lock operations are now depending on timeout
+
+
+loadmod
+
+- [ProMIND] added MODULE_IS_EMBEDDED, MODULE_DEP_FILE_NOT_FOUND and MODULE_BUILTIN_FILE_NOT_FOUND macros
+- [ProMIND] load_kernel_module(): added check to modules.builtin
+
+
+localnetwork
+
+- [ProMIND] added struct IPAddress and enum IPFamily
+- [ProMIND] removed local struct IPEntry (superseeded by IPAddress and IPFamily)
+- [ProMIND] added method parseIpSpecification()
+
+
+netfilter
+
+- [ProMIND] removed method loadLinuxModule() (moved to airvpntools)
+- [ProMIND] enum Direction replaced by enum Hook
+- [ProMIND] Replaced enum IP with LocalNetwork's enum IPFamily
+- [ProMIND] extensive and complete re-engineering and revision in order to allow a full and dynamic management of rules (notably nftables)
+
+
+openvpnclient
+
+- [ProMIND] added method profileNeedsResolution()
+- [ProMIND] added method resolveProfile()
+- [ProMIND] system DNS operations are now handled by methods saveSystemDNS(), allowSystemDNS() and rejectSystemDNS()
+- [ProMIND] bypass routes are now added at connection establishment in order to allow "redirect-gateway" ignore to work properly
+- [ProMIND] onAssignIpEvent(): add local gateway to netFilter in case gateway has not been redirected (pull-filter ignore "redirect-gateway")
+- [ProMIND] print_stats(): stats are now shown only in case of connection to VPN server
+- [ProMIND] removed references to LocalNetwork::IPEntry and replaced with IPAddress and IPFamily
+- [ProMIND] implemented and overridden all virtual tun_builder_* methods
+- [ProMIND] tun_builder_set_mtu(): now correctly sets MTU according to tun-mtu directive
+- [ProMIND] Replaced struct IPClass with LocalNetwork's enum IPFamily
+- [ProMIND] onResolveEvent(): proxy is now properly added to the network filter
+
+
+vpnclient
+
+- [ProMIND] refactored and renamed to openvpnclient
+
+
+wireguardclient
+
+- [ProMIND] new class
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 1.2.1 - 9 December 2022
 
 - [ProMIND] production release
