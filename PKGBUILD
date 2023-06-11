@@ -8,8 +8,8 @@ arch=(any)
 url="https://github.com/webgpu-native/webgpu-headers/"
 license=(BSD)
 makedepends=(git)
-provides=(webgpu-headers)
-conflicts=(webgpu-headers)
+provides=()
+conflicts=()
 source=("git+https://github.com/webgpu-native/webgpu-headers.git")
 sha256sums=('SKIP')
 
