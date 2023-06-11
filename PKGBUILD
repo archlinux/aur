@@ -1,4 +1,4 @@
-# Maintainer : MorsMortium <morsmortium@gmail.com>
+# Maintainer : MorsMortium <morsmortium@disroot.org>
 
 pkgname=appdir
 pkgver=0.1.0
