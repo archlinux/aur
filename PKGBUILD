@@ -15,6 +15,7 @@ depends=(
   python-argcomplete
   python-yaml
   python-pyqt5
+  polkit
 )
 makedepends=(
   git
