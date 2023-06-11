@@ -9,7 +9,7 @@ pkgbase = gnatdoc
 	depends = gnatcoll-core
 	depends = markdown
 	depends = gpr-unit-provider
-	source = file:///opt/gnatstudio-sources/gnatdoc4-24.0w-20230428-16616-src.tar.gz
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gnatdoc4-24.0w-20230428-16616-src.tar.gz
 	sha256sums = 2a627fd36a0b157aadbcfc3ff5a248b0e47680e519f874cc750b44bc8b7478dc
 
 pkgname = gnatdoc

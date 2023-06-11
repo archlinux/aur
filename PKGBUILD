@@ -1,9 +1,9 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=gnatdoc
+pkgdesc='GNAT documentation generation tool.'
 pkgver=24.0w
 pkgrel=1
-pkgdesc='GNAT documentation generation tool.'
 
 url=https://github.com/AdaCore/gnatdoc
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ arch=(i686 x86_64)
 depends=(gnatcoll-core markdown gpr-unit-provider)
 makedepends=(gprbuild)
 
-source=(file:///opt/gnatstudio-sources/"$pkgname"4-$pkgver-20230428-16616-src.tar.gz)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/"$pkgname"4-$pkgver-20230428-16616-src.tar.gz)
 sha256sums=(2a627fd36a0b157aadbcfc3ff5a248b0e47680e519f874cc750b44bc8b7478dc)
 
 
