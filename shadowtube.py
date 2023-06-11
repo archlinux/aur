@@ -22,7 +22,9 @@ try:
 	import socket
 	import socks
 except ImportError:
+	print("Erro: Dependency failure. Installing packages...")
 	subprocess.check_call([sys.executable, '-m', 'pip', '-r', 'install', 'requirements.txt'])
+	print("Done.")
 	sys.exit(1)
 
 ### Global variables/Settings
