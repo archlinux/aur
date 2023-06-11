@@ -1,0 +1,17 @@
+pkgbase = poser
+	pkgdesc = C framework for POsix SERvices
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/Zirias/poser
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = pkgconf
+	depends = openssl
+	depends = git
+	source = poser-1.1.tar.gz::https://github.com/Zirias/poser/archive/refs/tags/v1.1.tar.gz
+	source = zimk::git+https://github.com/Zirias/zimk#commit=348bfe8
+	sha256sums = e8c35772401481a335e0227616220e57f4aa63ae2b9ca33a870be1d5d3f3d33c
+	sha256sums = SKIP
+
+pkgname = poser
