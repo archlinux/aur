@@ -1,7 +1,7 @@
 pkgbase = generand
 	pkgdesc = Simple and fast tool for generating random genomic data in common formats for testing and benchmarking purposes
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/auerlab/generand
 	arch = i686
 	arch = x86_64

@@ -1,8 +1,8 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=generand
 pkgver=0.1.2
-pkgrel=1
+pkgrel=3
 pkgdesc="Simple and fast tool for generating random genomic data in common formats for testing and benchmarking purposes"
 arch=('i686' 'x86_64')
 url="https://github.com/auerlab/generand"
