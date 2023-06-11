@@ -1,7 +1,7 @@
 # Maintainer: Brenton Horne <brentonhorne77@gmail.com>
 
 pkgname=openra-wts-git
-pkgver=29400.git.02e4bfb
+pkgver=29440.git.703618b
 pkgrel=1
 pkgdesc="OpenRA built from latest git commit and with the experimental Tiberian Sun mod included."
 arch=('x86_64')
@@ -46,4 +46,5 @@ package() {
        -e "s|Red Alert|Tiberian Sun|g" $pkgdir/usr/bin/openra-ts
     sed -i -e "s|-ra|-ts|g" \
        -e "s|Red Alert|Tiberian Sun|g" $pkgdir/usr/share/applications/openra-ts.desktop
+    mkdir -p $pkgdir/usr/lib/openra/src
 }
