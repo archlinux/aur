@@ -1,20 +1,26 @@
 # Maintainer: Rick Stanley <rick {hyphen} stanley {at} outlook[dot] com>
 
-pkgname=webgpu-headers
-pkgver=64aeb86b69
+pkgname=webgpu-headers-git
+pkgver=r118.64aeb86
 pkgrel=1
 pkgdesc="WebGPU native header files"
 arch=(any)
 url="https://github.com/webgpu-native/webgpu-headers/"
-license=("BSD")
-source=("https://github.com/webgpu-native/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('e339a47c516d07a6aac93159d59f8c8b17c8c5d0866de0a21364411b2593e585')
+license=(BSD)
+makedepends=(git)
+provides=(webgpu-headers)
+conflicts=(webgpu-headers)
+source=("git+https://github.com/webgpu-native/webgpu-headers.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd webgpu-headers
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-  install -dm0755 "${pkgdir}/usr/include/webgpu"
-
-  cd $pkgname-$pkgver*
-
-  cp -a --no-preserve=ownership "webgpu.h" "${pkgdir}/usr/include/webgpu"
+  cd webgpu-headers
+  install -D webgpu.h -t "${pkgdir}/usr/include/webgpu"
+  install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
