@@ -3,17 +3,18 @@
 pkgname=tlsc
 _zimk_pkgname=zimk
 _zimk_commit=0def4fa
-pkgver=1.3
+pkgver=2.0
 pkgrel=1
 pkgdesc="TLS connect daemon"
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=('openssl' 'git')
+depends=('openssl' 'poser' 'git')
+makedepends=('pkgconf')
 url="https://github.com/Zirias/tlsc"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_zimk_pkgname}::git+https://github.com/Zirias/${_zimk_pkgname}#commit=${_zimk_commit}")
-sha256sums=('37bdf6975d099e0481cab1270191254b8527e925e151b1ca94bf790db31b146e'
+sha256sums=('632be47ece732b0eae190f7e92e099c31655ccc46b60696aad7164a390be5247'
             'SKIP')
 
 prepare() {
@@ -25,13 +26,13 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make prefix="${pkgdir}/usr"
+  make DESTDIR="${pkgdir}/" prefix="/usr"
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
 
-  make prefix="${pkgdir}/usr" install
+  make DESTDIR="${pkgdir}/" prefix="/usr" install
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
