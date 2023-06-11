@@ -72,7 +72,7 @@ package(){
     ar x libcairo2_1.16.0-7_arm64.deb
     tar -xJvf data.tar.xz
     cd $srcdir/usr/lib/aarch64-linux-gnu/
-    install -Dm755 libcairo.so.2.11600.0 -t ${pkgdir}/usr/lib/dingtalk/libcairo.so.2
+    install -Dm755 libcairo.so.2.11600.0 ${pkgdir}/usr/lib/dingtalk/libcairo.so.2
 
     # fix open url
     install -Dm755 $srcdir/xdg-open.sh ${pkgdir}/opt/dingtalk/release/xdg-open
