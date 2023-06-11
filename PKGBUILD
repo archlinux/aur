@@ -1,10 +1,10 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgbase=gpr
+pkgdesc='Parser for Ada GPR project files.'
 pkgname=(gpr gpr2tools)
 pkgver=24.0w
 pkgrel=1
-pkgdesc='Parser for Ada GPR project files.'
 
 url=https://github.com/AdaCore/gpr
 arch=(i686 x86_64)
@@ -20,7 +20,7 @@ depends=(gnatcoll-iconv
 
 makedepends=(gprbuild python-e3-core)
 
-source=(file:///opt/gnatstudio-sources/gpr2-$pkgver-20230324-16151-src.tar.gz)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gpr2-$pkgver-20230324-16151-src.tar.gz)
 sha256sums=(e6f85d621d5161c15004657df01ae797a6cd782a8f7cf4fdbdf5b280e6840a1b)
 
 
