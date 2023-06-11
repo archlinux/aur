@@ -13,7 +13,6 @@ post_install() {
 
   
     if [[ ! -d "/sys/class/power_supply/BAT1" ]]; then
-        echo "/sys/class/power_supply/BAT1 not found"
         vp_status=$(systemctl is-enabled vpower.service 2>/dev/null)
         if [[ "$vp_status" != "masked" ]]; then
             echo "Mask vpower.service"
@@ -42,7 +41,6 @@ post_install() {
     if [[ $(grep -c ^ /proc/swaps) -gt 1 && $(awk 'NR==2{print $1}' /proc/swaps) == "/dev/"* ]]; then
         echo "Swap is already enabled. Set swap PARTUUID in /etc/default/auto_swap"
         # swap partuuid
-        # sudo lsblk -rno NAME,PARTUUID,PARTTYPE
         SWAP_PARTITION=$(awk 'NR==2{print $1}' /proc/swaps)
         SWAP_PARTUUID=$(lsblk -rno PARTUUID ${SWAP_PARTITION})
         
@@ -66,10 +64,6 @@ post_upgrade() {
 
 pre_remove() {
     curr_version=$1
-    echo "Disable service"
-    sudo systemctl disable sk-auto-swap.service
-    sudo systemctl disable sk-efi-mount.service
-    sudo systemctl disable sk-root-resume.service
     cp /etc/default/grub /etc/default/grub.bak-"${curr_version}"
 }
 
