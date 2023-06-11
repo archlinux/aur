@@ -1,6 +1,6 @@
 pkgbase = quickmedia-git
 	pkgdesc = A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.
-	pkgver = r1332.fd402fc
+	pkgver = r1333.cdddd42
 	pkgrel = 1
 	url = https://git.dec05eba.com/QuickMedia
 	arch = x86_64
@@ -28,9 +28,9 @@ pkgbase = quickmedia-git
 	conflicts = quickmedia-video-player
 	noextract = twemoji-1.tar.gz
 	options = !strip
-	source = quickmedia-git-r1332.fd402fc.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1332.fd402fc.tar.gz
+	source = quickmedia-git-r1333.cdddd42.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1333.cdddd42.tar.gz
 	source = twemoji-1.tar.gz::https://dec05eba.com/files/twemoji.tar.gz
-	sha512sums = a17767efebfacfff93756a49cc6773df1ca2edcbfec96030c41f2d3eafc7fa7ab2820e419da4779c94b56bd806afe938c90c849eb725388544eb8089b1feaf7a
+	sha512sums = 8e948e34d6c13848b5dbf6201576ee9181c98c88327d0f49711ca33ff9b93801264e26996d5d2c75eed063777d191be2fe1b34e7caaad19a773aefa1f9e798cc
 	sha512sums = f25bd2ede84dc43278a86b5d234e9c78a102a61dfd796a364e76a135289c29503e97e51dfe49fcd1a72eb714755a45b95c60768811bfb3cdebb23694bc86e7d2
 
 pkgname = quickmedia-git
