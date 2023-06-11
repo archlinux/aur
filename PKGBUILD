@@ -1,7 +1,7 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=(ifcopenshell blender-plugin-bim)
-pkgver=0.7.0a8
-pkgrel=2
+pkgver=0.7.0a9
+pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="http://ifcopenshell.org/"
@@ -45,7 +45,6 @@ prepare() {
   ln -s "../../svgfill"
   rm -r "svgfill/3rdparty/svgpp"
   ln -s "../../svgpp" "svgfill/3rdparty"
-  rm -r "blenderbim/blenderbim/libs/site/packages/bpypolyskel"
   ln -s "../../bpypolyskel/bpypolyskel" "blenderbim/blenderbim/libs/site/packages"
   sed -i 's/lib_ext a/lib_ext so/' ${srcdir}/${_iosdir}/cmake/CMakeLists.txt
   cp "${srcdir}/Brick.ttl" "${srcdir}/${_iosdir}/src/blenderbim/blenderbim/bim/schema"
@@ -107,4 +106,4 @@ package_blender-plugin-bim() {
   chmod -R a+rwX "${pkgdir}/usr/share/blender/${_blender_ver}/scripts/addons/blenderbim/bim/data"
 }
 
-md5sums=('b0e6f84fc01478d07f66e47f53b52c48' 'SKIP' 'SKIP' '8a1fabbe039bda399ff9cb0f646fca89' 'SKIP')
+md5sums=('273d83440e646be689cddb723f50b57b' 'SKIP' 'SKIP' '8a1fabbe039bda399ff9cb0f646fca89' 'SKIP')
