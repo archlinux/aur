@@ -1,7 +1,7 @@
 pkgbase = autotype
 	pkgdesc = Unicode-friendly tool for faking key presses to type strings on X11
 	pkgver = 1.0.0.r6.f5b6527
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gemdude46/autotype
 	arch = any
 	license = MIT
