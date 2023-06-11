@@ -8,7 +8,7 @@ pkgdesc="Powerful yet easy to use APK editor"
 arch=('x86_64' 'aarch64')
 url='https://qwertycube.com/apk-editor-studio'
 license=('GPL3')
-depends=('qt5-base'
+depends=('qt5-base' 'qt5-tools'
          'java-runtime>=8'
          'hicolor-icon-theme'
          'android-sdk-build-tools'
