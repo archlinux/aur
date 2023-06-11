@@ -1,0 +1,7 @@
+post_install() {
+	echo "You may now follow the plugin installation instructions in /opt/ghidra/Extensions/Eclipse/*/*_README.html."
+}
+
+post_upgrade() {
+	echo "If a plugin version has changed, you should now update its location in Eclipse: Help -> Install New Software -> Manage."
+}
