@@ -11,8 +11,9 @@ post_install() {
     sudo systemctl enable sk-efi-mount.service
     sudo systemctl enable sk-root-resume.service
 
-    # if /sys/class/power_supply/BAT1 not exist, disable vpower.service
-    if [ ! -d "/sys/class/power_supply/BAT1" ]; then
+  
+    if [[ ! -d "/sys/class/power_supply/BAT1" ]]; then
+        echo "/sys/class/power_supply/BAT1 not found"
         vp_status=$(systemctl is-enabled vpower.service 2>/dev/null)
         if [[ "$vp_status" != "masked" ]]; then
             echo "Mask vpower.service"
