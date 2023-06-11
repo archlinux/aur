@@ -14,17 +14,16 @@ post_install() {
     # if /sys/class/power_supply/BAT1 not exist, disable vpower.service
     if [ ! -d "/sys/class/power_supply/BAT1" ]; then
         vp_status=$(systemctl is-enabled vpower.service 2>/dev/null)
-        # if vpower.service is enabled, disable it
-        if [[ "$vp_status" == "enabled" ]]; then
-            echo "Disable vpower.service"
-            sudo systemctl disable --now vpower.service
+        if [[ "$vp_status" != "masked" ]]; then
+            echo "Mask vpower.service"
+            sudo systemctl mask --now vpower.service
         fi
     fi
 
     jfc_status=$(systemctl is-enabled jupiter-fan-control.service 2>/dev/null)
     if [[ "$jfc_status" != "masked" ]]; then
         echo "Mask jupiter-fan-control.service"
-        sudo systemctl mask jupiter-fan-control.service
+        sudo systemctl mask --now jupiter-fan-control.service
     fi
 
     # if file /usr/bin/efi-mount is exist, rename it
