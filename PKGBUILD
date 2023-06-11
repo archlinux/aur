@@ -1,11 +1,10 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
-epoch=1
-
 pkgname=langkit
+pkgdesc='Compiler for syntactic and semantic language analysis libraries.'
 pkgver=24.0w
 pkgrel=1
-pkgdesc='Compiler for syntactic and semantic language analysis libraries.'
+epoch=1
 
 url=https://github.com/AdaCore/langkit
 arch=(i686 x86_64)
@@ -27,7 +26,7 @@ makedepends=(gprbuild
              python-pycodestyle
              python-railroad-diagrams)
 
-source=(file:///opt/gnatstudio-sources/$pkgname-$pkgver-20230324-16391-src.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-16391-src.tar.gz
         0001-Replace-calls-to-inspect.getargspec-with-getfullargs.patch)
         
 sha256sums=(aea03ed51466fdca9bee32274a09a08cce645094da1cabea87a75829eb56491c
