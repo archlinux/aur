@@ -3,7 +3,7 @@
 pkgname=fenics-basix-git
 _base=basix
 pkgdesc="Interface of FEniCS for ordinary and partial differential equations (C++ and Python from git release)."
-pkgver=0.5.0.post0
+pkgver=0.5.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/basix"
@@ -123,7 +123,7 @@ build() {
   cd "${_base_dir}"/cpp
   # Add CBLAS to linking libraries
   # (https://github.com/davisking/dlib/issues/154#issuecomment-240651490)
-  sed -i 's%\(target_link_libraries(basix PRIVATE ${BLAS_LIBRARIES})\)%\nset(BLAS_LIBRARIES "-lcblas;-lblas")\n\1%' "${srcdir}"/"${_base}"/cpp/CMakeLists.txt
+  # sed -i 's%\(target_link_libraries(basix PRIVATE ${BLAS_LIBRARIES})\)%\nset(BLAS_LIBRARIES "-lcblas;-lblas")\n\1%' "${srcdir}"/"${_base}"/cpp/CMakeLists.txt
   cmake -DCMAKE_BUILD_TYPE="Release" \
         -B "${srcdir}"/build \
         -S . \
