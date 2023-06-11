@@ -1,6 +1,6 @@
 # Maintainer: Lonny Wong <lonnywong@qq.com>
 pkgname="tssh"
-pkgver="0.1.1"
+pkgver="0.1.2"
 pkgrel=1
 epoch=0
 pkgdesc="Simple ssh client with trzsz ( trz / tsz ) support."
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/trzsz/trzsz-ssh/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('01547d1661208742c3cc9538fde5547e')
+md5sums=('9d57d186330958f5d2799026864d8032')
 validpgpkeys=()
 
 build() {
