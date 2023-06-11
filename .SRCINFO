@@ -1,16 +1,14 @@
 pkgbase = kimap2
 	pkgdesc = Job-based API for interacting with IMAP servers
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://community.kde.org/KDE_PIM
-	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = extra-cmake-modules
 	depends = kcoreaddons
 	depends = kmime
-	source = https://download.kde.org/unstable/kimap2/0.2.0/src/kimap2-0.2.0.tar.xz
-	sha256sums = b99125de1f8170c62d79dcc4baa456b64340d428e127ee993df470ce76a7ea33
+	source = https://invent.kde.org/pim/kimap2/-/archive/v0.4.0/kimap2-v0.4.0.tar.gz
+	sha256sums = 32f9d47234a3aca6b87de3f4bc46c57b37c7f14396a6cf0d9da5a648aee9f5c4
 
 pkgname = kimap2
-

@@ -1,32 +1,24 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kimap2
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="Job-based API for interacting with IMAP servers"
-arch=(i686 x86_64)
-url="https://community.kde.org/KDE_PIM"
+pkgdesc='Job-based API for interacting with IMAP servers'
+arch=(x86_64)
+url='https://community.kde.org/KDE_PIM'
 license=(LGPL)
 depends=(kcoreaddons kmime)
 makedepends=(extra-cmake-modules)
-source=("https://download.kde.org/unstable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
-sha256sums=('b99125de1f8170c62d79dcc4baa456b64340d428e127ee993df470ce76a7ea33')
-
-prepare() {
-  mkdir -p build
-}
+#source=("https://download.kde.org/unstable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
+source=(https://invent.kde.org/pim/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
+sha256sums=('32f9d47234a3aca6b87de3f4bc46c57b37c7f14396a6cf0d9da5a648aee9f5c4')
 
 build() {
-  cd build
-  cmake ../$pkgname-$pkgver \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
+  cmake -B build -S $pkgname-v$pkgver \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
