@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'zlib' 'gcc-libs')
 options=('!strip')
 source=("https://github.com/13xforever/${pkgname/-bin/}/releases/download/v${pkgver}/${pkgname/-bin/}_lin64_v${pkgver}.zip"
-        "https://github.com/13xforever/ps3-disc-dumper/archive/refs/tags/v${pkgver}.zip")
+        "https://github.com/13xforever/${pkgname/-bin/}/archive/refs/tags/v${pkgver}.zip")
 md5sums=('SKIP' 'SKIP')
 
 package() {
