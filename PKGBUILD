@@ -3,7 +3,7 @@
 
 pkgname=filen-desktop-appimage-git
 pkgver=git
-pkgrel=0
+# pkgrel=0
 pkgdesc="Filen.io Desktop Client - Zero knowledge end-to-end encrypted cloud storage. Git version."
 arch=('x86_64')
 url="https://filen.io/"
