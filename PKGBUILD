@@ -1,7 +1,7 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
 
 pkgname=paper-plane
-pkgver=0.1.0.beta.2
+pkgver=0.1.0.beta.3
 pkgrel=1
 pkgdesc='Chat over Telegram on a modern and elegant client'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=(git meson rust blueprint-compiler appstream)
 provides=(paper-plane)
 conflicts=(paper-plane)
 
-_commit=cf4439ce3f8d52d971a9bde257d864083bcf21f6  # tags/v0.1.0-beta.2^0
+_commit=03b916f6f099e51393a657683d495aa6dcce3655  # tags/v0.1.0-beta.3^0
 source=("git+$url.git#commit=$_commit"
         "unstable-gtk-crash-fix.patch::$url/commit/dee19785c1e6a79b07f3984080f7ce18ccdfd74c.patch")
 sha256sums=('SKIP'
