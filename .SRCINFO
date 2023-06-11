@@ -1,13 +1,20 @@
 pkgbase = python-pykat
 	pkgdesc = Python interface and tools for FINESSE
-	pkgver = 1.2.81
+	pkgver = 1.2.94
 	pkgrel = 1
-	url = https://pypi.org/project/PyKat/
+	url = https://www.gwoptics.org/pykat/
 	arch = any
 	license = GPL2
-	makedepends = python-setuptools
 	depends = finesse
-	source = https://files.pythonhosted.org/packages/source/P/PyKat/PyKat-1.2.81.tar.gz
-	sha256sums = f2dc912aee7ae7b1f3a193fe1dfd155c6ff8527b0e7e3a1d649d090c63a7472c
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-six
+	depends = python-h5py-git
+	depends = python-pandas
+	depends = python-matplotlib
+	depends = python-tabulate
+	depends = python-click
+	source = git+https://git.ligo.org/finesse/pykat
+	sha256sums = SKIP
 
 pkgname = python-pykat
