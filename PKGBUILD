@@ -1,7 +1,7 @@
 # Maintainer: Integral <integral@murena.io>
 
 pkgname=arianna
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="EPub Reader for mobile devices"
 url="https://invent.kde.org/graphics/${pkgname}"
@@ -12,7 +12,7 @@ makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'kfilemetadata' 'qqc2-deskt
 provides=('arianna')
 conflicts=('arianna')
 source=("https://invent.kde.org/graphics/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('be5a171a282fc5dfd196d9986a2199dfbc53f7ae391d4dd97044d7ad0168a30c')
+sha256sums=('b2624a4d567bc975d7d4dd053e5e99f64f6a8cd7d0e55231a3a32581ab30bb26')
 
 prepare() {
   mkdir -p ${pkgname}-v${pkgver}/build/
