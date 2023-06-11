@@ -5,9 +5,9 @@
 #   Denys Zariaiev <denys.zariaiev@gmail.com>
 
 pkgname=chitubox-free-bin
-pkgver=1.9.4
+pkgver=1.9.5
 
-pkgrel=4
+pkgrel=1
 pkgdesc="All-in-one SLA/DLP/LCD Slicer"
 
 makedepends=(
@@ -43,7 +43,7 @@ source=(
 )
 
 sha256sums=(
-	'c3131af2c0409759b8659f0e0b9a023bf65698245a9073051be5ff7082748e9b'
+	'98d10c7eecd148a068e6d1884d6af083af1c68bc7c663cfe09a4a76eddf9362b'
 	'ef455760a0ed63b4f695fd5d999a338e6192e6fa9d4571791397cd5884c62c9f'
 	'1144e0420568f0745aa6392d42c0fe0f496d18fb26e28c636bae45615180ec4e'
 	'8bd846e6e12e293c8fe9a9c78e59658397dd078e1d697d72cda339ccd6ba06b2'
