@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=alizams
-pkgver=1.8.3
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Qt6 DICOM Viewer"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
