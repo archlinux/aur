@@ -11,8 +11,11 @@ post_install() {
 
     # if /sys/class/power_supply/BAT1 not exist, disable vpower.service
     if [ ! -d "/sys/class/power_supply/BAT1" ]; then
-        echo "Disable vpower.service"
-        sudo systemctl disable --now vpower.service
+        # if vpower.service is enabled, disable it
+        if [ -f "/etc/systemd/system/multi-user.target.wants/vpower.service" ]; then
+            echo "Disable vpower.service"
+            sudo systemctl disable --now vpower.service
+        fi
     fi
 
     # if file /usr/bin/efi-mount is exist, rename it
@@ -27,15 +30,19 @@ post_install() {
         sudo mv /usr/bin/auto-swap /usr/bin/auto-swap.bak
     fi
 
-    # swap partuuid
-    echo "Set swap PARTUUID in /etc/default/auto_swap"
-    # sudo lsblk -rno NAME,PARTUUID,PARTTYPE
-    SWAP_PARTITION=$(lsblk -rno NAME,PARTUUID,PARTTYPE | awk '$3=="0657fd6d-a4ab-43c4-84e5-0933c84b4f4f" {print $2}')
-    echo "$SWAP_PARTITION" | sudo tee /etc/default/auto_swap
+    if [[ $(grep -c ^ /proc/swaps) -gt 1 && $(awk 'NR==2{print $1}' /proc/swaps) == "/dev/"* ]]; then
+        echo "Swap is already enabled. Set swap PARTUUID in /etc/default/auto_swap"
+        # swap partuuid
+        # sudo lsblk -rno NAME,PARTUUID,PARTTYPE
+        SWAP_PARTITION=$(awk 'NR==2{print $1}' /proc/swaps)
+        SWAP_PARTUUID=$(lsblk -rno PARTUUID ${SWAP_PARTITION})
+        
+        echo "$SWAP_PARTUUID" | sudo tee /etc/default/auto_swap
+    fi
 
     DEVICENAME=$(cat /sys/devices/virtual/dmi/id/product_name)
     if [[ "${DEVICENAME}" != "G1619-04" ]]; then
-      rm /etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules
+        echo "" | tee /etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules
     fi
     
 }
