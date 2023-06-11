@@ -1,7 +1,7 @@
 pkgbase = minecraft-technic-launcher
 	pkgdesc = Choose from thousands of community-made Minecraft modpacks
 	pkgver = 4.774
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.technicpack.net/
 	arch = any
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = minecraft-technic-launcher
 	source = minecraft-technic-launcher-4.774.jar::https://launcher.technicpack.net/launcher4/774/TechnicLauncher.jar
 	source = technic-launcher
 	source = technic-launcher.desktop
-	sha256sums = skLMCKja4ROOJaVFEFuhpMj9JN5Xbv8ZVmrdAEoVyIbXIrt8TIWMgmzEa4AxEhygD2XdNNdUg8eTWitJY8QZf4MvhcdLUAvCikLAFJMNxKuL75WOBUoEf7Wl5sHbiiVu0Y4qTBgYpSFL4XnCLEJHEAXYEPW6o07akVSPSxv18qWGLG81fzRP
+	sha256sums = acec93f45825cf836d244a9996115a74e79a77641e95f78d65cd5f019ea460a9
 	sha256sums = 11e5cbc3ae9888865c34bec90ce725532a039aa751aefa61cd4703c9f0460397
 	sha256sums = 221da85f9fb535951e490a3feda052c60839883ae0806d7d587b0c64337f3513
 
