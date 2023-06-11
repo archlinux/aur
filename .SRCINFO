@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-actionlib
 	pkgdesc = ROS - The actionlib stack provides a standardized interface for interfacing with preemptable tasks.
-	pkgver = 1.13.2
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://wiki.ros.org/actionlib
 	arch = i686
@@ -29,8 +29,7 @@ pkgbase = ros-noetic-actionlib
 	depends = ros-noetic-roslib
 	depends = python-wxpython
 	depends = boost
-	source = ros-noetic-actionlib-1.13.2.tar.gz::https://github.com/ros/actionlib/archive/1.13.2.tar.gz
-	sha256sums = b741755881e30b9aea6bcdd9831e3f0932a8bbba02fa59e5c0e5970280024055
+	source = ros-noetic-actionlib-1.14.0.tar.gz::https://github.com/ros/actionlib/archive/1.14.0.tar.gz
+	sha256sums = 7bbb6a3f33eecd06166a7ef5548ad6bf55f21253a8380ce88264767060ecbb24
 
 pkgname = ros-noetic-actionlib
-
