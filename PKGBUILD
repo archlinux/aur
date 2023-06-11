@@ -17,10 +17,10 @@ license=(GPL3 custom)
 makedepends=(gprbuild-bootstrap)
 conflicts=($pkgname-git)
 
-source=(https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20230501/gnatstudio-sources-x86_64-linux.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-1684A-src.tar.gz
         expose-cargs-and-largs-makefile.patch)
 
-sha256sums=(acacf5f971dd94dd08a464a05f4e02cf0f1fc5e81028bf7c13091ed08ad97218
+sha256sums=(c243de68f3f7c0f5e8a23d24ab0725d038f4dd2b7798855a3b91b574e44e2dc1
             7543e5fa8f2b0b400b937b0b3bb27b46b263a3cd7b17f00f6f9c6b3905729610)
 
 _xmlada_src=$pkgname-$pkgver-20230428-16463-src
@@ -28,12 +28,6 @@ _xmlada_src=$pkgname-$pkgver-20230428-16463-src
 
 prepare()
 {
-    cd $srcdir/gnatstudio-sources-x86_64-linux
-    
-    tar --extract                                       \
-        --file=xmlada-$pkgver-20230324-1684A-src.tar.gz \
-        --directory $srcdir
-
     cd $srcdir/$_xmlada_src
 
     patch -Np0 -i $srcdir/expose-cargs-and-largs-makefile.patch
