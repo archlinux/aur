@@ -34,9 +34,6 @@ prepare() {
 }
 
 package() {
-	mkdir -p ${pkgdir}/usr/src/${_pkgname}-1.0.0
-	mkdir -p ${pkgdir}/etc/pacman.d/hooks
-
 	cd "${srcdir}/${_pkgname}/kernel_module/"
 	install -Dm644 dkms.conf ${pkgdir}/usr/src/${_pkgname}-1.0.0/dkms.conf
 	cp -r {issue-warning.sh,legion-laptop-unused-snippets.c,legion-laptop.c,Makefile} ${pkgdir}/usr/src/$_pkgname-1.0.0/
