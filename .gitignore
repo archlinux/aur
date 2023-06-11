@@ -1,0 +1,5 @@
+copier-templates-extensions-*.tar.gz
+src/
+pkg/
+python-copier-templates-extensions-*.pkg.tar*
+*.log
