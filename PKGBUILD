@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-linear-operator
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A LinearOperator implementation to wrap the numerical nuts and bolts of
 GPyTorch'
