@@ -23,7 +23,7 @@ sha256sums=(SKIP)
 
 build() {
     cd "$srcdir/$_pkgname"
-    cargo install --path=. --root=.
+    cargo install --path=./ --root=.
     mkdir -p assets/completions
     ./bin/borgtui shell-completion --shell bash > assets/completions/borgtui.bash
     ./bin/borgtui shell-completion --shell fish > assets/completions/borgtui.fish
