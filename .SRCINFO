@@ -1,0 +1,19 @@
+pkgbase = python-crowdin-api-client
+	pkgdesc = Lightweight interface to the Crowdin API
+	pkgver = 1.10.1
+	pkgrel = 1
+	url = https://support.crowdin.com/api/v2/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-requests-mock
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-requests
+	source = crowdin-api-client-python-1.10.1.tar.gz::https://github.com/crowdin/crowdin-api-client-python/archive/refs/tags/v1.10.1.tar.gz
+	sha256sums = 4f1f9ab87bdf76e9d72de2ae0708b21ecbbe20abca3bf811ee4cef92d83a9355
+
+pkgname = python-crowdin-api-client
