@@ -4,13 +4,13 @@
 
 pkgname=gwenview-git
 pkgver=23.07.70_r7165.g29cc77fa
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and easy to use image viewer'
 url='https://apps.kde.org/gwenview/'
 arch=($CARCH)
 license=(GPL LGPL FDL)
 groups=(kde-applications-git kde-graphics-git)
-depends=(kactivities-git baloo-git libkdcraw-git kparts-git kitemmodels-git cfitsio phonon-qt6-git purpose-git perl kimageannotator)
+depends=(kactivities-git baloo-git libkdcraw-git kparts-git kitemmodels-git cfitsio phonon-qt6-git purpose-git perl kimageannotator qt6-svg qt6-wayland)
 optdepends=('qt6-imageformats: support for tiff, webp, and more image formats'
             'kimageformats-git: support for dds, xcf, exr, psd, and more image formats'
             'kamera-git: import pictures from gphoto2 cameras')

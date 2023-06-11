@@ -1,7 +1,7 @@
 pkgbase = gwenview-git
 	pkgdesc = A fast and easy to use image viewer
 	pkgver = 23.07.70_r7165.g29cc77fa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/gwenview/
 	arch = x86_64
 	groups = kde-applications-git
@@ -22,6 +22,8 @@ pkgbase = gwenview-git
 	depends = purpose-git
 	depends = perl
 	depends = kimageannotator
+	depends = qt6-svg
+	depends = qt6-wayland
 	optdepends = qt6-imageformats: support for tiff, webp, and more image formats
 	optdepends = kimageformats-git: support for dds, xcf, exr, psd, and more image formats
 	optdepends = kamera-git: import pictures from gphoto2 cameras
