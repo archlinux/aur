@@ -1,0 +1,12 @@
+pkgbase = suikoden-ency
+	pkgdesc = An encyclopedia for video game Suikoden: Tenmei No Chikai.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/he-yaowen/suikoden-ency
+	arch = any
+	license = GPL-3.0
+	depends = electron
+	source = https://github.com/he-yaowen/suikoden-ency/releases/download/v1.0.0/suikoden-ency-1.0.0-asar.tar.xz
+	sha256sums = c2cb9f032836c1227c5cf87b16d6f61526448566cde7e9ee0b4fd0f6c07b4d62
+
+pkgname = suikoden-ency
