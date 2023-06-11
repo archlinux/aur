@@ -4,6 +4,7 @@ pre_install() {
 
 post_install() {
     echo "Enable service"
+    sudo systemctl daemon-reload
     sudo systemctl enable sk-auto-swap.service
     sudo systemctl enable sk-efi-mount.service
     sudo systemctl enable sk-root-resume.service
@@ -12,6 +13,18 @@ post_install() {
     if [ ! -d "/sys/class/power_supply/BAT1" ]; then
         echo "Disable vpower.service"
         sudo systemctl disable --now vpower.service
+    fi
+
+    # if file /usr/bin/efi-mount is exist, rename it
+    if [ -f "/usr/bin/efi-mount" ]; then
+        echo "Rename /usr/bin/efi-mount to /usr/bin/efi-mount.bak"
+        sudo mv /usr/bin/efi-mount /usr/bin/efi-mount.bak
+    fi
+
+    # if file /usr/bin/auto-swap is exist, rename it
+    if [ -f "/usr/bin/auto-swap" ]; then
+        echo "Rename /usr/bin/auto-swap to /usr/bin/auto-swap.bak"
+        sudo mv /usr/bin/auto-swap /usr/bin/auto-swap.bak
     fi
 
     # swap partuuid
