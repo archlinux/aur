@@ -7,6 +7,7 @@ pkgdesc="A YouTube shadowban detection program."
 arch=('any')
 url="https://github.com/danehobrecht/shadowtube"
 license=('GPL')
+depends=("python>=3.7.3", "python-pip")
 
 source=("https://github.com/danehobrecht/shadowtube/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('0264d0fe189e94e3f900f80d7da5b086ec0d3e17e9200e616691a93553edad5c')

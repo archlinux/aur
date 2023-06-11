@@ -2,7 +2,10 @@
 Analyzation features:
  - Video links
  - Complete comment history
-## Setup
+## Installation
+### Arch
+`yay -S shadowtube`
+### Other
 1. Clone the repository and navigate to the directory
 ```
 git clone https://github.com/danehobrecht/shadowtube.git && cd shadowtube
@@ -15,7 +18,7 @@ pip3 install -r requirements.txt
 4. Launch an instance of Tor Browser
 5. Execute 
 ```
-python3 shadowtube.py
+python3 shadowtube
 ```
 ## Configure torrc
 1. Hash a custom control password
