@@ -1,0 +1,17 @@
+pkgbase = mmtc
+	pkgdesc = A mpd terminal client
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/figsoda/mmtc
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = rust
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	depends = gcc-libs
+	depends = mpd
+	source = mmtc-0.3.2.tar.gz::https://github.com/figsoda/mmtc/archive/v0.3.2.tar.gz
+	sha256sums = 558e8778d299ed8c760617c3050228c2d638950a86db014a1a597751c1101870
+
+pkgname = mmtc
