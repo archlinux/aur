@@ -2,7 +2,7 @@
 
 pkgname=openra-d2-git
 _pkgname=openra-d2
-pkgver=189.git.3c1489a
+pkgver=199.git.4837e48
 pkgrel=1
 pkgdesc="A Dune II-inspired mod of OpenRA"
 arch=('any')
@@ -19,7 +19,7 @@ source=("git+${url}.git"
 "openra-d2.appdata.xml"
 "openra-d2.desktop")
 md5sums=('SKIP'
-         'f883c23d492f8c930aca5ad2c3624cc2'
+         'fef36e5d463cf157f4d5bfbe3f0dce54'
          'e6c82533bf669122fd26f2d60ed97a6f'
          'ad2adc9f6f5f756492371b38c996d44c')
 
@@ -34,20 +34,22 @@ prepare() {
     cd $srcdir/d2
     dos2unix *.md
     chmod +x *.sh
+    make version VERSION="${pkgver}"
 }
 
 build() {
     cd $srcdir/d2
-    make version VERSION="${pkgver}"
-    make engine
-    make core
+    #make version VERSION="${pkgver}"
+    #make engine
+    #make core
+    make
 }
 
 package() {
     cd $srcdir/d2
     mkdir -p $pkgdir/usr/{lib/${_pkgname}/mods,bin,share/pixmaps,share/doc/packages/openra-d2,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-d2
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,'global mix database.dat',launch-dedicated.sh,launch-game.sh,OpenRA.Game.exe,OpenRA.Server.exe,OpenRA.Utility.exe,VERSION} $pkgdir/usr/lib/openra-d2
+    cp -r engine/{glsl,lua,bin/*,AUTHORS,COPYING,'global mix database.dat',launch-dedicated.sh,launch-game.sh,VERSION} $pkgdir/usr/lib/openra-d2
     cp -r mods/d2 $pkgdir/usr/lib/${_pkgname}/mods
     cp -r engine/mods/{common,modcontent,d2k,cnc,ra} $pkgdir/usr/lib/${_pkgname}/mods
     install -Dm755 $srcdir/openra-d2 $pkgdir/usr/bin/openra-d2
