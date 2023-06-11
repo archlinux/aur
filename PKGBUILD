@@ -1,11 +1,10 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
-epoch=1
-
 pkgname=ada-libfswatch
+pkgdesc='An Ada binding to the libfswatch library in the fswatch project.'
 pkgver=24.0w
 pkgrel=1
-pkgdesc='An Ada binding to the libfswatch library in the fswatch project.'
+epoch=1
 
 url=https://github.com/AdaCore/ada_libfswatch
 arch=(x86_64)
@@ -17,7 +16,8 @@ makedepends=(gprbuild)
 _repo_name=ada_libfswatch
 _source_dir=$_repo_name-$pkgver-20230428-16626-src
 
-source=(file:///opt/gnatstudio-sources/$_repo_name-$pkgver-20230428-16626-src.tar.gz
+#https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/ada_libfswatch-24.0w-20230428-16626-src.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$_repo_name-$pkgver-20230428-16626-src.tar.gz
         0001-Use-system-libfswatch-install.patch
         0002-Build-dynamic-library.patch
         0003-Makefile-allow-passing-custom-flags-to-gprbuild.patch)
