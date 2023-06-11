@@ -4,12 +4,11 @@
 # Contributor: Patrick Kelly      <kameo76890 at gmail dot com>
 # Contributor: Georgios Tsalikis  <aliverius somewhere near tsalikis and a net>
 
-epoch=1
-
 pkgname=gnatstudio
+pkgdesc='GNAT Programming Studio for Ada.'
 pkgver=24.0w
 pkgrel=1
-pkgdesc='GNAT Programming Studio for Ada.'
+epoch=1
 
 arch=(i686 x86_64)
 url=https://github.com/AdaCore/gps
@@ -31,7 +30,7 @@ makedepends=(gprbuild
              texlive-latexextra
              graphviz)
 
-source=(file:///opt/gnatstudio-sources/$pkgname-$pkgver-20230428-16588-src.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230428-16588-src.tar.gz
         0003-Honour-DESTDIR-in-installation-targets.patch
         patch-dap.gpr
         gps.desktop)
