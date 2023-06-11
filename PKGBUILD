@@ -1,12 +1,11 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
-epoch=1
-
 pkgname=ada_spawn
+pkgdesc='A simple Ada API to start processes and communicate with them.'
 pkgver=24.0w
 pkgrel=1
+epoch=1
 
-pkgdesc='A simple Ada API to start processes and communicate with them.'
 url=https://github.com/AdaCore/spawn
 
 arch=(i686 x86_64)
@@ -15,7 +14,8 @@ license=(Apache)
 depends=(gtkada)
 makedepends=(gprbuild)
 
-source=(file:///opt/gnatstudio-sources/spawn-$pkgver-20230428-162D4-src.tar.gz)
+#https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/spawn-24.0w-20230428-162D4-src.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/spawn-$pkgver-20230428-162D4-src.tar.gz)
 sha256sums=(11aaea8688f5b4f9e38cf38963b0a0eec553c16f1a21961a071be40f5dd12b39)
 
 

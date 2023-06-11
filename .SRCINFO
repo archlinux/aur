@@ -9,7 +9,7 @@ pkgbase = ada_spawn
 	license = Apache
 	makedepends = gprbuild
 	depends = gtkada
-	source = file:///opt/gnatstudio-sources/spawn-24.0w-20230428-162D4-src.tar.gz
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/spawn-24.0w-20230428-162D4-src.tar.gz
 	sha256sums = 11aaea8688f5b4f9e38cf38963b0a0eec553c16f1a21961a071be40f5dd12b39
 
 pkgname = ada_spawn
