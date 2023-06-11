@@ -2,15 +2,14 @@
 
 pkgname=opensnitch-ebpf-module-git
 _pkgname=opensnitch
-pkgver=1.6.0rc5.r76.102b65e
+pkgver=1.6.0rc5.r84.e1afd24
 pkgrel=2
 pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
 license=('GPL3')
 makedepends=('git' 'clang' 'llvm' 'libelf'
-             'binutils' 'bc' 'rsync' 'flex'
-             'linux-headers' 'coreutils')
+             'bc' 'rsync' 'linux-headers' 'coreutils')
 depends=('opensnitch')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
