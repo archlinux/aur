@@ -1,4 +1,4 @@
-# Maintainer : MorsMortium <morsmortium@gmail.com>
+# Maintainer : MorsMortium <morsmortium@disroot.org>
 
 pkgname=linker
 pkgver=4.40e005b
@@ -13,8 +13,8 @@ sha512sums=('SKIP')
 source=("${pkgname}::git+${url}.git")
 
 pkgver() {
-    cd "${srcdir}/${pkgname}"
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${pkgname}"
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
