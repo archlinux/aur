@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=An Anime Borb Launcher
+Comment=An Launcher for a specific anime game with auto-patching, discord rpc and time tracking
+Exec=an-anime-borb-launcher
+Terminal=false
+Type=Application
+Icon=an-anime-borb-launcher
+Categories=Game
