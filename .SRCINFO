@@ -1,10 +1,11 @@
 pkgbase = pigar
 	pkgdesc = A fantastic tool to generate requirements for your Python project, and more than that
-	pkgver = 2.0.7
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://github.com/Damnever/pigar
 	arch = any
 	license = BSD
+	checkdepends = python-pip
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -13,7 +14,7 @@ pkgbase = pigar
 	depends = python-aiohttp
 	depends = python-click
 	depends = python-packaging
-	source = https://github.com/Damnever/pigar/archive/v2.0.7/pigar-2.0.7.tar.gz
-	sha256sums = 897896d73e4974eb77e1e287e121919b8c78bc8e528590669a40a65f13301f4c
+	source = https://github.com/Damnever/pigar/archive/v2.0.8/pigar-2.0.8.tar.gz
+	sha256sums = 40c3a173373f88c3976c3193cfc6a77619584269b8d2aa57c09d250483aac180
 
 pkgname = pigar
