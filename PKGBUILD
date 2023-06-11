@@ -2,7 +2,7 @@
 # Maintainer: Abhinav Gupta <mail@abhinavg.net>
 
 pkgname='tmux-fastcopy-bin'
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc='easymotion-style text copying for tmux.'
 url='https://github.com/abhinav/tmux-fastcopy'
@@ -11,20 +11,20 @@ license=('GPL-2.0')
 provides=('tmux-fastcopy')
 conflicts=('tmux-fastcopy')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhinav/tmux-fastcopy/releases/download/v0.11.0/tmux-fastcopy_ 0.11.0_Linux_arm64 .tar.gz")
-sha256sums_aarch64=('77c58e7aa5ea875577ad1ee7a0c81d50872b3ca765ccacacdbe44b76a8df0baf')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/abhinav/tmux-fastcopy/releases/download/v0.11.1/tmux-fastcopy_0.11.1_Linux_arm64.tar.gz")
+sha256sums_aarch64=('cd3d154fc38b12be1a822b4c7d4bd124fa0b3aefee368da4a5b00ef23e0690ff')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/abhinav/tmux-fastcopy/releases/download/v0.11.0/tmux-fastcopy_ 0.11.0_Linux_arm v6.tar.gz")
-sha256sums_armv6h=('684b6ae437aeb5a1577de22e28d1a12a17227777837ebec1dea85b53f78b16d1')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/abhinav/tmux-fastcopy/releases/download/v0.11.1/tmux-fastcopy_0.11.1_Linux_armv6.tar.gz")
+sha256sums_armv6h=('3c043c4d16b9cdb4bbf741d44108c7dc3d7ebefe186d671fbff0e6896ae182d9')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/abhinav/tmux-fastcopy/releases/download/v0.11.0/tmux-fastcopy_ 0.11.0_Linux_arm v7.tar.gz")
-sha256sums_armv7h=('00a459f265df3125d7bdddafc8209defeba03b26439178b47f3a52297455586a')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/abhinav/tmux-fastcopy/releases/download/v0.11.1/tmux-fastcopy_0.11.1_Linux_armv7.tar.gz")
+sha256sums_armv7h=('156bf3557b408225ffaca9497ceb58d600b0ff89ef12fcd5272ec002bf966ac4')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhinav/tmux-fastcopy/releases/download/v0.11.0/tmux-fastcopy_ 0.11.0_Linux_i386 .tar.gz")
-sha256sums_i686=('94318b14f0830472c57515bc775d7d721ba2c5ac27cf2470e0883622577e25ab')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/abhinav/tmux-fastcopy/releases/download/v0.11.1/tmux-fastcopy_0.11.1_Linux_i386.tar.gz")
+sha256sums_i686=('d14da644ff60e5679a10036167a796f5d8781e6b73cbb7a85529d609710fbbcc')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhinav/tmux-fastcopy/releases/download/v0.11.0/tmux-fastcopy_ 0.11.0_Linux_x86_64 .tar.gz")
-sha256sums_x86_64=('2dd291134a8d27317f7b2997a703af017b8b6429719d67e3e20d82d04d7a62ac')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/abhinav/tmux-fastcopy/releases/download/v0.11.1/tmux-fastcopy_0.11.1_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('ce7edcc36203522cf383bacc02e1a9f1e820f733a81a18bc77baa6ab3bf5bfb7')
 
 package() {
   install -Dm755 "./tmux-fastcopy" "${pkgdir}/usr/bin/tmux-fastcopy"
