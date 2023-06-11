@@ -1,8 +1,9 @@
-# Maintainer: Laurent OF Fough
+# Maintainer:  RogueGirl <3a33oxx40 at mozmail dot com>
+
 pkgname=iptvnator-bin
 _pkgname=iptvnator
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 pkgdesc="Cross-platform IPTV player app, supports m3u+m3u8 playlists, favorites, TV guide, TV archive/catchup and more."
 arch=('x86_64')
 url="https://github.com/4gray/iptvnator"
@@ -11,7 +12,7 @@ depends=('alsa-lib' 'at-spi2-atk' 'at-spi2-core' 'atk' 'cairo' 'dbus' 'desktop-f
 options=('!strip' '!emptydirs')
 install=${_pkgname}.install
 source=("https://github.com/4gray/iptvnator/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('5f3b4a1514db16e19f1a7305c1711f0d9e01c58bab2e9bf5b21e5d83c3ec2a2e')
+sha256sums=('68c296e91bdbcdd7254cc5f65e9c65dd23164fc568adcbd0b38664f1885aed37')
 
 package(){
 
