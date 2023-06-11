@@ -1,0 +1,24 @@
+pkgbase = qalcmenu-git
+	pkgdesc = A qalc frontend for menus like rofi, bemenu, and dmenu.
+	pkgver = r45.ac55d66
+	pkgrel = 1
+	url = https://github.com/MithicSpirit/qalcmenu
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = libqalculate
+	depends = bash
+	depends = util-linux
+	depends = coreutils
+	depends = wl-clipboard
+	optdepends = rofi: rofi frontend
+	optdepends = bemenu: bemenu frontend
+	optdepends = dmenu: dmenu frontend
+	provides = menu-qalc
+	provides = menu-calc
+	conflicts = menu-qalc
+	conflicts = menu-calc
+	source = qalcmenu::git+https://github.com/MithicSpirit/qalcmenu.git
+	sha512sums = SKIP
+
+pkgname = qalcmenu-git
