@@ -12,20 +12,21 @@ provides=('klogg')
 conflicts=('klogg')
 depends=('qt5-base' 'hicolor-icon-theme')
 
-source=("https://github.com/variar/klogg/releases/download/continuous-linux/klogg_version.txt"
-        "https://github.com/variar/klogg/releases/download/continuous-linux/klogg_bin.tar.gz")
-sha256sums=('SKIP' 'SKIP')
+_klogg_version=`curl -L -s https://github.com/variar/klogg/releases/download/continuous-linux/klogg_version.txt`
+_klogg_sha256=`curl -L -s https://github.com/variar/klogg/releases/download/continuous-linux/sha256_klogg_bin.txt | cut -c1-64 | head -n1`
+source=("klogg_bin_${_klogg_version}.tar.gz::https://github.com/variar/klogg/releases/download/continuous-linux/klogg_bin.tar.gz")
+sha256sums=("${_klogg_sha256}")
 
 prepare() {
   wget -q --show-progress -O klogg_version.txt --backups=0 "https://github.com/variar/klogg/releases/download/continuous-linux/klogg_version.txt"
 }
 
 pkgver() {
-  cat klogg_version.txt
+  echo $_klogg_version
 }
 
 package() {
-  tar xvf klogg_bin.tar.gz -C "${pkgdir}/"
+  tar xvf klogg_bin_${_klogg_version}.tar.gz -C "${pkgdir}/"
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 }
 
