@@ -12,7 +12,7 @@ pkgbase = gnatcoll-db2ada
 	depends = gnatcoll-core
 	depends = gnatcoll-sql
 	depends = python
-	source = file:///opt/gnatstudio-sources/gnatcoll-db-24.0w-20230324-166CC-src.tar.gz
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gnatcoll-db-24.0w-20230324-166CC-src.tar.gz
 	sha256sums = 374adf9064cbdf87c4c3f4cc815d8c0f914820a0caa45edd605545ee7a4c07c2
 
 pkgname = gnatcoll-db2ada
