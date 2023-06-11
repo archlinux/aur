@@ -1,8 +1,8 @@
 # Maintainer: Michael Thies <mail@mhthies.de>
 
 pkgname=justbuild
-pkgver='1.1.1'
-pkgrel=2
+pkgver='1.1.2'
+pkgrel=1
 pkgdesc="A generic build system supporting multi-repository builds"
 arch=('x86_64')
 url="https://github.com/just-buildsystem/justbuild"
@@ -12,7 +12,7 @@ makedepends=('clang' 'binutils' 'wget' 'cli11' 'microsoft-gsl' 'nlohmann-json' '
 conflicts=('just' 'just-git' 'just-js')
 source=("justbuild-${pkgver}.tar.gz::https://github.com/just-buildsystem/justbuild/archive/v${pkgver}.tar.gz"
         "gsl.pc")
-sha256sums=('75b7d92d233250fa9751542cf5020c10b20e178f898b3fe1294fc9013b4ad5fe'
+sha256sums=('50341bdf3742ad6dec20454b338770e8428b531d04c675ca976d1e410c5b33ba'
             'SKIP')
 
 build() {
