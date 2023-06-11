@@ -1,0 +1,5 @@
+c-ares-*.tar.gz
+mingw-w64-c-ares-*pkg.tar.zst
+pkg/
+src/
+
