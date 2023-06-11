@@ -9,7 +9,7 @@ url="https://github.com/danehobrecht/shadowtube"
 license=('GPL')
 
 source=("https://github.com/danehobrecht/shadowtube/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('278c667a5279a7b72fde9f443de1adbc82d20cf211eaf6dfcd8ceec30cbff694')
+sha256sums=('78a5bfbfe2eb47827db8c5cd8c63ae2f7f95f57dbff06d6b83f33a94d970168b')
 
 package() {
 	cd "$srcdir"
