@@ -1,34 +1,29 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kube
-pkgver=0.3.1
+pkgver=0.9.0
 pkgrel=2
-pkgdesc="A modern groupware client based on QtQuick and Sink"
-arch=(i686 x86_64)
-url="https://kube.kde.org/"
+pkgdesc='A modern groupware client based on QtQuick and Sink'
+arch=(x86_64)
+url='https://kube.kde.org/'
 license=(LGPL)
-depends=(sink qgpgme kpackage qt5-quickcontrols2 qt5-webengine qt5-quickcontrols)
-makedepends=(extra-cmake-modules python)
-source=("https://download.kde.org/unstable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
-sha256sums=('ac1058cb702d0ee3b929b9f522cfddd982dc3e36c6d2416078264cbbcf347723')
+depends=(sink gpgme sonnet qt5-quickcontrols2 qt5-webengine qt5-quickcontrols)
+makedepends=(extra-cmake-modules)
+#source=(https://download.kde.org/unstable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz)
+source=(https://invent.kde.org/pim/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz)
+sha256sums=('75e6c0d1b04328eb2ada0ceea656753aa1a94361b94feaf81003733470400a63')
 
 prepare() {
-  mkdir -p build
-
-#  sed -e '/QGpgme/d' -i kube-$pkgver/framework/CMakeLists.txt
+  sed -e 's|CMAKE_CXX_STANDARD 20|CMAKE_CXX_STANDARD 17|' -i $pkgname-v$pkgver/CMakeLists.txt # Fix build
+  find . -name CMakeLists.txt | xargs sed -e '/tests/d' -i # Don't build tests
 }
 
 build() {
-  cd build
-  cmake ../$pkgname-$pkgver \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib \
+  cmake -B build -S $pkgname-v$pkgver \
     -DBUILD_TESTING=OFF
-  make
+  cmake --build build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
