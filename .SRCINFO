@@ -1,0 +1,22 @@
+pkgbase = arcolinux-app-glade-git
+	pkgdesc = ArcoLinux App Glade
+	pkgver = r17.0ed65ff
+	pkgrel = 1
+	url = https://github.com/arcolinux/arcolinux-app-glade
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-distro
+	depends = python-psutil
+	depends = git
+	depends = archiso
+	depends = alacritty
+	optdepends = noto-fonts: for alignment of all the buttons and labels (optional)
+	optdepends = hw-probe: information on hardware
+	provides = arcolinux-app-glade-git
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/arcolinux/arcolinux-app-glade
+	sha256sums = SKIP
+
+pkgname = arcolinux-app-glade-git
