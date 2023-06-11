@@ -8,8 +8,8 @@
 __pkgname=firedragon
 pkgname=$__pkgname-unsigned-extensions
 _pkgname=FireDragon
-pkgver=113.0.2
-pkgrel=2
+pkgver=114.0.1
+pkgrel=1
 pkgdesc="FireDragon modified to allow installation of unsigned extensions"
 arch=(x86_64 x86_64_v3 aarch64)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -21,8 +21,8 @@ _arch_git_blob=https://raw.githubusercontent.com/archlinux/svntogit-packages
 depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg xdg-desktop-portal)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
   autoconf2.13 rust clang llvm jack nodejs cbindgen nasm mold gawk
-  python-setuptools python-zstandard git binutils dump_syms lld
-  'wasi-compiler-rt>13' 'wasi-libc>=1:0+258+30094b6' 'wasi-libc++>13' 'wasi-libc++abi>13' pciutils) # pciutils: only to avoid some PGO warning
+  python-setuptools python-zstandard git binutils dump_syms lld libxss
+  'wasi-compiler-rt>15' 'wasi-libc>=1:0+314+a1c7c2c' 'wasi-libc++>15' 'wasi-libc++abi>15' pciutils) # pciutils: only to avoid some PGO warning
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
   'profile-sync-daemon: Load the browser profile into RAM'
   'whoogle: Searching the web using a locally running Whoogle instance'
@@ -43,10 +43,10 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "$__pkgname.desktop"
   "git+https://gitlab.com/dr460nf1r3/common.git"
   "git+https://gitlab.com/dr460nf1r3/settings.git"
-  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=$pkgver-1"
+  "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=114.0.1-2"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
-sha256sums=('f132b702836311b6cc40873b69df3ce208d035dbc8ce390c390eebd63d27c7a3'
+sha256sums=('7e4ebc13e8c94af06f703af2119cf1641d4186174a3d59b7812f9d28f61b7d18'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
@@ -178,9 +178,9 @@ END
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
   # KDE menu and unity menubar
-  patch -Np1 -i "${_cachyos_patches_dir}"/unity_kde/firefox-kde.patch
+  # patch -Np1 -i "${_cachyos_patches_dir}"/unity_kde/firefox-kde.patch
+  # patch -Np1 -i "${_patches_dir}"/kde-upstream/unity-menubar.patch
   patch -Np1 -i "${_patches_dir}"/kde-upstream/mozilla-kde.patch
-  patch -Np1 -i "${_patches_dir}"/kde-upstream/unity-menubar.patch
 
   # Disabling Pocket
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/disable-pocket.patch
@@ -208,9 +208,6 @@ END
   # Don't nag to set default browser
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/hide-default-browser.patch
 
-  # Add LibreWolf logo to Debugging Page
-  patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/lw-logo-devtools.patch
-
   # Remove firefox references in the urlbar, when suggesting opened tabs.
   patch -Np1 -i "${_librewolf_patches_dir}"/ui-patches/remove-branding-urlbar.patch
 
@@ -234,9 +231,6 @@ END
 
   # Allows hiding the password manager (from the lw pref pane) / via a pref
   patch -Np1 -i "${_librewolf_patches_dir}"/hide-passwordmgr.patch
-
-  # Faster multilocate
-  patch -Np1 -i "${_librewolf_patches_dir}"/faster-package-multi-locale.patch
 
   # Pref pane - custom FireDragon svg
   patch -Np1 -i "${_patches_dir}"/custom/librewolf-pref-pane.patch
