@@ -344,7 +344,7 @@ def main():
 				continue
 		comments_init()
 	else:
-		os.system("python3 shadowtube.py -h")
+		os.system("shadowtube -h")
 
 if __name__ == "__main__":
 	main()
