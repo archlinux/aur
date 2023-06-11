@@ -2,7 +2,7 @@
 
 pkgname=geoclue_fake-git
 pkgver=0.r6.g0d7f9aa
-pkgrel=2
+pkgrel=3
 pkgdesc="Fake Geoclue Service so that it doesn't need to phone home"
 arch=('x86_64')
 url="https://github.com/Grollicus/${pkgname%-git}"
@@ -18,13 +18,13 @@ options=()
 install=
 source=("$pkgname::git+$url")
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
 	local ver=`git describe --long 2> /dev/null`
-	if [ $? = 0 ]; then
-		ver="0-$(git rev-list --count master)-g$(git rev-parse --short HEAD)"
+	if [ -z $ver ]; then
+		ver="0-$(git rev-list --count HEAD)-g$(git rev-parse --short HEAD)"
 	fi
 	echo $ver | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
