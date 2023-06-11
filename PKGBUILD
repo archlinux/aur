@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-torch-geometric
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Graph Neural Network Library for PyTorch'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=('python-yacs' 'python-hydra-core' 'python-protobuf'
             'python-pgmpy' 'python-opt_einsum' 'python-statsmodels'
             'python-torch-cluster' 'python-torch-spline-cov')
 source=("$pkgname-$pkgver::https://github.com/pyg-team/pytorch_geometric/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('33c6afd6076232f27a3446e2795c25e559384864582eb165b110cc98603bea91')
+sha256sums=('d557db04a968ae3402e7c301ddd1051189e978a92a0df90e49dc65837e0ec8e8')
 
 _pkgname=pytorch_geometric
 
