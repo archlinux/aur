@@ -1,6 +1,6 @@
 pkgbase = chainner-bin
 	pkgdesc = Node-based image processing and AI upscaling GUI
-	pkgver = 0.18.8
+	pkgver = 0.18.9
 	pkgrel = 1
 	url = https://github.com/chaiNNer-org/chaiNNer/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = chainner-bin
     conflicts = chainner-rpm
 	options = !emptydirs
 	options = !strip
-	source = https://github.com/chainner-org/chainner/releases/download/v0.18.8/chainner-0.18.8-x64-linux-redhat.rpm
-	sha512sums = 0b652650befd5342e3d40cbfdfbf4e9e28f1cdd1d165edef21b075204abe28b49ecb4d9a08c76f3e4ab3e5afd3be04d3cf82f5bc100640dac19bb54aab468c17
+	source = https://github.com/chainner-org/chainner/releases/download/v0.18.9/chainner-0.18.9-x64-linux-redhat.rpm
+	sha512sums = 9c93d5c2e651bbbb697d2d7bbfc806fde6ad9783d526994e0a596be3d2ede34522652cb2788f2c1b9030063ee9fea2bc4607d0890bdd8a96766cc77e71744270
 
 pkgname = chainner-bin
