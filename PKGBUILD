@@ -103,6 +103,7 @@ _base_dir="${startdir}"/src/"${_base}"
 prepare() {
   cd "${_base_dir}"
   git checkout origin/release
+  git -C "${_base_dir}" clean -dfx
 }
 
 pkgver() {
