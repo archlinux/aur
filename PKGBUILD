@@ -1,4 +1,4 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Florian Pritz <bluewind at xinu dot at>
 # Contributor: Jelle van der Waa <jelle@ at vdwaa dot nl>
 # Contributor: Hugo Osvaldo Barrera <hugo at barrera dot io>
@@ -15,7 +15,7 @@ makedepends=('cmake' 'python2' 'python' 'qt4' 'libxslt')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/PySide/Shiboken/archive/$pkgver.tar.gz"
         support-new-python.diff)
 md5sums=('c284197d06ad25d78009ff55f18dd512'
-         '84844a6459a5fccb3ec2d6418a1af3fd')
+         'c7d70851fa057dc843aca978b2b52a4b')
 
 prepare(){
     cd "$srcdir/Shiboken-$pkgver"

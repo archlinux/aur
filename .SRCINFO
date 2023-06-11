@@ -12,7 +12,7 @@ pkgbase = shiboken
 	source = shiboken-1.2.4.tar.gz::https://github.com/PySide/Shiboken/archive/1.2.4.tar.gz
 	source = support-new-python.diff
 	md5sums = c284197d06ad25d78009ff55f18dd512
-	md5sums = 84844a6459a5fccb3ec2d6418a1af3fd
+	md5sums = c7d70851fa057dc843aca978b2b52a4b
 
 pkgname = python2-shiboken
 	pkgdesc = Support library for Python2 bindings
@@ -35,4 +35,3 @@ pkgname = shiboken
 	depends = libxslt
 	optdepends = python2-shiboken: for compilation against python2
 	optdepends = python-shiboken: for compilation against python
-
