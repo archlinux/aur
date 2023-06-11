@@ -1,5 +1,5 @@
 requests
-PySocks
+pysocks
 cssselect
 lxml
 stem

@@ -3,7 +3,7 @@
 ### Dependencies
 
 from __future__ import print_function
-import itertools, threading
+import itertools, threading, subprocess
 import socket, shutil
 import time, json, html
 import sys
@@ -22,7 +22,7 @@ try:
 	import socket
 	import socks
 except ImportError:
-	print("Run `pip3 install -r requirements.txt` to install dependencies.")
+	subprocess.check_call([sys.executable, '-m', 'pip', '-r', 'install', 'requirements.txt'])
 	sys.exit(1)
 
 ### Global variables/Settings

@@ -1,0 +1,1 @@
+git push ssh://aur@aur.archlinux.org/shadowtube.git main:master
