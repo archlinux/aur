@@ -4,7 +4,7 @@
 # Contributor: Artem Sereda <overmind88 at gmail dot com>
 
 pkgname=flacon
-pkgver=10.0.0
+pkgver=11.1.0
 pkgrel=1
 pkgdesc="An Audio File Encoder. Extracts audio tracks from an audio CD image to separate tracks."
 arch=(x86_64 i686 aarch64)
