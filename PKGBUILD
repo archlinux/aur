@@ -2,13 +2,13 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 # Contributor: Bruce Zhang <zttt183525594@gmail.com>
 
-pkgname=dingtalk-bin
+pkgname=dingtalk-aarch64
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
-pkgver=1.7.0.30419
+pkgver=1.7.0.30424
 pkgrel=1
 pkgdesc="钉钉"
-arch=("x86_64")
+arch=("aarch64")
 url="https://www.dingtalk.com/"
 license=("custom")
 depends=("glu" 'gtk2' 'libxcrypt-compat')
@@ -21,24 +21,24 @@ provides=('com.alibabainc.dingtalk' 'dingtalk')
 conflicts=('com.alibabainc.dingtalk')
 replaces=('com.alibabainc.dingtalk')
 # https://tms.dingtalk.com/markets/dingtalk/service-terms-zh md5 will change per download
-source=("${_pkgname}_${pkgver}-${arch}.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/${_pkgname2}_${pkgver}_amd64.deb"
+source=("${_pkgname}_${pkgver}-${arch}.deb::https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/${_pkgname2}_${pkgver}_arm64.deb"
         "service-terms-zh"
         "${_pkgname2}.desktop"
         "dingtalk.sh"
         "${_pkgname2}.svg"
-        "https://archive.archlinux.org/packages/c/cairo/cairo-1.17.4-5-x86_64.pkg.tar.zst"
+        "http://mirror.archlinuxarm.org/aarch64/extra/cairo-1.17.8-2-aarch64.pkg.tar.xz"
         'xdg-open.sh'
         )
 
 
 # DebSource & pkgver can be get here: https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/linux_dingtalk_update.json
 
-sha512sums=('3fc0f1f4b3774afc992569b120aa2994d40dd2b5ec868296e7c8ba334eee2a8cfdc0a7242072caae5dba01e4fac99ec20f50b1dae867b193e28b0caed0ac5fd0'
+sha512sums=('8b06e82a11c70490d7b24fbb9d97fe8e85d1e2a05d59959fbe204aff29b9b02204fd5a0873e24c4528417e7228086fd68e2e64a2672fef83bac0a216b53b1631'
             'b83d493ed68be0f5a6b851fd93d819bb3a6e62feeb71a5bef10bad24b5ea8f3cf09deea4f31ed727449888a6eae1be99fa9cf263bc921cb8bb2958e2f37a7d64'
             'c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f'
             '4dde27376ed3ed5fed5da2a94f45e2556c7bd0fe5086351a9fd204a08b52823d70d60024b91c1f1cc023f5a276442537c0789ffbefa9ef7aa2be2b6e10c99071'
             '5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775'
-            '94a108a3f3f88bc7ede370d5e3f84afaedd78d892f7352926091881c066cbe0da55bebb5fc83978ca83c6420ed0c94fbba1f3454c5ff8d33a38669a0a11a80ac'
+            '73a06796ccaea0dc57ab9a07a77b2bb6424f4a615767c236222ee05325c89390be2054f2a3dfd8881f82592606d071957b09dbd47ff6cb83f6f1c76897316dc7'
             '685f7eb38fd0e34aac3f1e1272f4c6f9404765decee82831b9fc4e743e0b0a022f8e49bd5623f524890a719af0b1333b96773fb386b74aeded4307e8b1a626ed')
 
 prepare(){
