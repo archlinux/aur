@@ -1,13 +1,13 @@
 pkgbase = presence-client-git
 	pkgdesc = Rich presence support for hacked Nintendo Switches with automatic game detection.
-	pkgver = 1.0.1.r22.g5184927
+	pkgver = 1.0.1.r16.g1b8fb5d
 	pkgrel = 1
 	url = https://github.com/SunResearchInstitute/PresenceClient
 	arch = any
 	license = GPL2
 	depends = python
 	depends = python-pypresence
-	source = presence-client::git+https://github.com/SunResearchInstitute/PresenceClient
+	source = presence-client::git+https://github.com/SunResearchInstitute/PresenceClient.git
 	source = executable.patch
 	md5sums = SKIP
 	md5sums = 9f63f7e40df1e505e66033ace946e81f
