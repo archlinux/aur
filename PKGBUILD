@@ -33,7 +33,9 @@ build() {
 
 check() {
   cd "$_pypi-$pkgver"
-  PYTHONPATH=build/lib pytest -v
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest -v
 }
 
 package() {
