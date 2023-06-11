@@ -3,12 +3,12 @@
 pkgname=borgtui-git
 _pkgname=borgtui
 pkgver=r58.9992e9a
-_pkgver=0.3.1
+_pkgver=0.3.2
 pkgrel=1
 epoch=
 pkgdesc="Like borgomatic, but with a TUI to help automate borg backups :^)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://www.github.com/borgtui-org/borgtui"
+url="https://www.github.com/dpbriggs/borgtui"
 license=('GPL3')
 groups=()
 depends=('borg' 'glibc' 'gcc-libs')
