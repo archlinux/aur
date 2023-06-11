@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-image-view
 	pkgdesc = ROS - rqt_image_view provides a GUI plugin for displaying images using image_transport.
-	pkgver = 0.4.16
-	pkgrel = 3
+	pkgver = 0.4.17
+	pkgrel = 1
 	url = https://wiki.ros.org/rqt_image_view
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = ros-noetic-rqt-image-view
 	depends = ros-noetic-rqt-gui
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-image-transport
-	source = ros-noetic-rqt-image-view-0.4.16.tar.gz::https://github.com/ros-visualization/rqt_image_view/archive/0.4.16.tar.gz
-	sha256sums = 8fc609aefd0faf9d2b7df62add6e11310f43e5f5499ba203e2e81899ac2b8d30
+	source = ros-noetic-rqt-image-view-0.4.17.tar.gz::https://github.com/ros-visualization/rqt_image_view/archive/0.4.17.tar.gz
+	sha256sums = cf4d76d02fc83220ece6837e1eca7423e0ee84b3ee03f1e2b5851ef20f4f5119
 
 pkgname = ros-noetic-rqt-image-view
