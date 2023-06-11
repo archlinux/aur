@@ -5,7 +5,7 @@ _program_name=GalaxyBudsClient
 _pkgname="${_program_name,,}"
 pkgname="${_pkgname}-bin"
 pkgver=4.5.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Unofficial manager for the Samsung Galaxy Buds, Buds+, Buds Live and Buds Pro"
 arch=('x86_64'
       'armv7h'
@@ -47,7 +47,7 @@ package() {
     install -Dm644 "${srcdir}/icon_white.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
 sha256sums=('88677692ff1d7202b9f7aedbb5ec6cc01684041b94220a8da8feb69d9a028f70'
-            '04b551470a2e0ccd99b266d313265321113886f5808b872bf928a97442bf930a')
+            '17c7fa91678d1ba8cac08dcfda613735bfab97f4488909c8ac98a5aaa2c94214')
 sha256sums_x86_64=('46e8098f2c084708daed8e89119317043b643017a3ee2f45025d61d13b625345')
 sha256sums_armv7h=('051d31e680d09e2a7fe3a317b2dbeaad786ec2c6d7571fa8232d5099d4be2764')
 sha256sums_aarch64=('df7eaf63cdd3120ee5b6f49031ef20456ce627740bce995d858fd9ca9d1fe2d6')
