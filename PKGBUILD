@@ -1,4 +1,4 @@
-# Maintainer : MorsMortium <morsmortium@gmail.com>
+# Maintainer : MorsMortium <morsmortium@disroot.org>
 
 pkgname=0x0uploader
 pkgver=1.0
