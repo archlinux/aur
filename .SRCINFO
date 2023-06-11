@@ -1,11 +1,10 @@
 pkgbase = pigar
 	pkgdesc = A fantastic tool to generate requirements for your Python project, and more than that
 	pkgver = 2.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Damnever/pigar
 	arch = any
 	license = BSD
-	checkdepends = python-pip
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
