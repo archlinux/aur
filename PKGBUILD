@@ -1,6 +1,7 @@
 # Maintainer: Frederik Holm Strøm <aur@frederikstroem.com>
 
-# Thanks to AUR users: Trebuchette, tobtoht, jahway603
+# Feather website: https://featherwallet.org
+# Feather GitHub: https://github.com/feather-wallet/feather
 
 _pkgname=feather
 pkgname="${_pkgname}wallet-appimage"
