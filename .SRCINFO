@@ -1,6 +1,6 @@
 pkgbase = ruby-acme_nsupdate
 	pkgdesc = ACME (Let's Encrypt) client with nsupdate (DDNS) integration.
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 2
 	url = https://github.com/jhass/acme_nsupdate
 	arch = any
@@ -9,10 +9,9 @@ pkgbase = ruby-acme_nsupdate
 	depends = ruby-slop
 	depends = ruby-acme-client
 	depends = ruby-faraday-detailed_logger
-	noextract = acme_nsupdate-0.4.4.gem
+	noextract = acme_nsupdate-0.4.5.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/acme_nsupdate-0.4.4.gem
-	sha1sums = 5cc21eb037f0dbc6c45b6b30a622d64ea4b70cef
+	source = https://rubygems.org/downloads/acme_nsupdate-0.4.5.gem
+	sha1sums = 1147fb224656d66ceaf7be551d5093d0907626d5
 
 pkgname = ruby-acme_nsupdate
-

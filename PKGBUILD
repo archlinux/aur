@@ -2,7 +2,7 @@
 
 _gemname=acme_nsupdate
 pkgname=ruby-$_gemname
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=2
 pkgdesc='ACME (Let'\''s Encrypt) client with nsupdate (DDNS) integration.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-slop ruby-acme-client ruby-faraday-detailed_logger)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('5cc21eb037f0dbc6c45b6b30a622d64ea4b70cef')
+sha1sums=('1147fb224656d66ceaf7be551d5093d0907626d5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
