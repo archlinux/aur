@@ -1,6 +1,6 @@
 pkgbase = mediamtx-bin
 	pkgdesc = Also known as rtsp-simple-server. Ready-to-use RTSP / RTMP / LL-HLS / WebRTC server and proxy that allows to read, publish and proxy video and audio streams
-	pkgver = 0.23.4
+	pkgver = 0.23.5
 	pkgrel = 1
 	url = https://github.com/aler9/mediamtx
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = mediamtx-bin
 	sha256sums = fbae4d196086e770a0a4f10ac03b1e4180517381bbc03d9acc16b6d4f7fe3a71
 	sha256sums = 5f0cb022e45716970ec5be2458f9ce6482790083786da4a7bd78770316a3b650
 	sha256sums = 7e3736dfad3141a3f263fb29a05885670961f07dfbdad8bdbb5de41e3433f3b0
-	source_x86_64 = https://github.com/aler9/mediamtx/releases/download/v0.23.4/mediamtx_v0.23.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = 666f7470b8e6a7b0d375cdff84c6bec78d4535dbc125b0638ad11ff5dfa7460b
-	source_armv7h = https://github.com/aler9/mediamtx/releases/download/v0.23.4/mediamtx_v0.23.4_linux_armv7.tar.gz
-	sha256sums_armv7h = 6653988a6f4ddaac7d2f0b57fff036e85988a6a83045211a82576801ce69a91d
-	source_aarch64 = https://github.com/aler9/mediamtx/releases/download/v0.23.4/mediamtx_v0.23.4_linux_arm64v8.tar.gz
-	sha256sums_aarch64 = 88d02638c910c8174672575e09a5afb8a1dbcfa21d576db28235b06a4c79a91b
+	source_x86_64 = https://github.com/aler9/mediamtx/releases/download/v0.23.5/mediamtx_v0.23.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = d066b8ccfcae23cf5fed4eb7ed9dec3a0cbda9d33be63de202c062c1baf64c7e
+	source_armv7h = https://github.com/aler9/mediamtx/releases/download/v0.23.5/mediamtx_v0.23.5_linux_armv7.tar.gz
+	sha256sums_armv7h = aa2729793e44dcd381b0226dbf41c95d7ca5adbeede88c603c5e1e0a550b756b
+	source_aarch64 = https://github.com/aler9/mediamtx/releases/download/v0.23.5/mediamtx_v0.23.5_linux_arm64v8.tar.gz
+	sha256sums_aarch64 = deb51d9092ff4947a3b69be064b400e5bb4429603ec140add481db7ce5c7ad4f
 
 pkgname = mediamtx-bin
