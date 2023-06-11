@@ -1,7 +1,7 @@
 pkgname=briar-desktop
-pkgver=0.4.1.beta
+pkgver=0.4.2.beta
 pkgrel=1
-_bin_ver=0.4.1
+_bin_ver=0.4.2
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
 arch=('x86_64' 'aarch64' 'armv7h')
