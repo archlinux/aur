@@ -1,6 +1,7 @@
 # Maintainer: Frederik Holm Strøm <aur@frederikstroem.com>
 
-# https://chatboxapp.xyz/
+# Chatbox website: https://chatboxapp.xyz/
+# Chatbox GitHub: https://github.com/Bin-Huang/chatbox
 
 _pkgname=chatbox
 pkgname="${_pkgname}-appimage"
