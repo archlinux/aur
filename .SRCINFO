@@ -1,7 +1,7 @@
 pkgbase = augustus
 	pkgdesc = A eukaryotic gene prediction program
 	pkgver = 3.5.0
-	pkgrel = 4
+	pkgrel = 5
 	url = http://augustus.gobics.de/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,16 @@ pkgbase = augustus
 	depends = lpsolve
 	depends = perl
 	depends = htslib
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-biopython
+	depends = mariadb-libs
+	depends = gcc-libs
+	depends = glibc
+	depends = bash
 	source = augustus-3.5.0.tar.gz::https://github.com/Gaius-Augustus/Augustus/archive/v3.5.0.tar.gz
+	source = augustus.patch::https://github.com/Gaius-Augustus/Augustus/pull/395.patch
 	sha256sums = 5ed6ce6106303b800c5e91d37a250baff43b20824657b853ae04d11ad8bdd686
+	sha256sums = f6676c6f9e5fade9adaf6a457fd87c9401a5ebc5f6aa4a87037990dd381afd1d
 
 pkgname = augustus

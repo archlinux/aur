@@ -1,21 +1,23 @@
-# Maintainer: bipin kumar <bipin@ccmb.res.in>
+# Maintainer: bipin kumar <kbipinkumar@pm.me>
 # Contributor: sukanka <su975853527 at gmail>
 pkgname=augustus
 _pkgname=Augustus
 pkgver=3.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A eukaryotic gene prediction program"
 arch=('i686' 'x86_64')
 url="http://augustus.gobics.de/"
 license=('custom:Artistic-2.0')
-depends=('bamtools'  'boost-libs' 'gsl' 'mysql++' 'sqlite' 'python' 'lpsolve' 'perl' 'htslib')
+depends=('bamtools'  'boost-libs' 'gsl' 'mysql++' 'sqlite' 'python' 'lpsolve' 'perl' 'htslib' 'python-pandas' 'python-numpy' 'python-biopython' 'mariadb-libs' 'gcc-libs' 'glibc' 'bash')
 makedepends=('boost' 'suitesparse' 'samtools' )
-source=($pkgname-$pkgver.tar.gz::https://github.com/Gaius-Augustus/Augustus/archive/v$pkgver.tar.gz)
-sha256sums=('5ed6ce6106303b800c5e91d37a250baff43b20824657b853ae04d11ad8bdd686')
+source=($pkgname-$pkgver.tar.gz::https://github.com/Gaius-Augustus/Augustus/archive/v$pkgver.tar.gz
+	"$pkgname.patch::https://github.com/Gaius-Augustus/Augustus/pull/395.patch")
+sha256sums=('5ed6ce6106303b800c5e91d37a250baff43b20824657b853ae04d11ad8bdd686'
+            'f6676c6f9e5fade9adaf6a457fd87c9401a5ebc5f6aa4a87037990dd381afd1d')
 
 prepare() {
   cd $_pkgname-$pkgver
-  sed -i "s|/usr/local/bin|/usr/bin|" Makefile
+  patch -p1 < $srcdir/$pkgname.patch
 }
 
 build() {
