@@ -1,18 +1,18 @@
 # Maintainer: OpenSorcerer <alex at opensourcery dot eu>
 pkgname=airvpn-suite-beta-bin
 _pkgname=AirVPN-Suite
-pkgver=1.2.1
-_pkgver=1.2
+pkgver=1.3.0
 #_prstage=RC
 #_prver=3
 pkgrel=1
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – prebuilt beta"
 arch=('x86_64' 'armv7l' 'aarch64')
-url="https://gitlab.com/AirVPN/$_pkgname"
+url="https://airvpn.org/linux/suite"
 license=('GPL3')
 provides=('hummingbird' 'hummingbird-bin' 'airvpn-suite' 'airvpn-suite-bin')
 conflicts=('hummingbird' 'hummingbird-bin' 'airvpn-suite' 'airvpn-suite-bin')
-depends=('dbus' 'libxml2' 'curl')
+depends=('glibc' 'gcc-libs' 'dbus' 'openssl' 'libxml2')
+makedepends=('curl')
 source=("https://eddie.website/repository/$_pkgname/$pkgver/$_pkgname-$arch-$pkgver.tar.gz")
 sha512sums=(`curl -sLo - "https://eddie.website/repository/$_pkgname/$pkgver/$_pkgname-$arch-$pkgver.tar.gz.sha512"|cut -f1 -d " "`)
 backup=('etc/airvpn/bluetit.rc')
