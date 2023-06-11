@@ -6,7 +6,7 @@
 _tag=latest
 pkgname=whatpulse
 pkgver=5.4
-pkgrel=3
+pkgrel=4
 
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
 )
 source_x86_64=("${pkgname}-${pkgver}-amd64.AppImage::https://releases.whatpulse.org/${_tag:-$pkgver}/linux/whatpulse-linux-${_tag:-$pkgver}_amd64.AppImage")
 sha256sums=('5a4a6676a6b513824eeac8a2accd6de9e8bd2bc11b3e2967fa2b2a18d29fa35d'
-            '34c48411039c6f61b14d3d92af0dd07d31ca2042aaa36555e272fa00e2cf7752'
+            'f3d16ee6e325a3c657e7af1ebc9f6e35d09ff5c03b0a8b0450611e610c5d6d32'
             'cfea47f15bb3ba2494a7b1d50367139dc12709fc1e8ba0b25d86ee5f09748619')
 sha256sums_x86_64=('533b1b28120a25f3db625425f42dfbc559180a3dfb4e1f9c6156cf27b4a646f4')
 
