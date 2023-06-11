@@ -12,16 +12,16 @@ depends=('systemd-libs' 'linux-api-headers' 'libx11' 'libxrandr' 'libxext' 'polk
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/FedeDP/Clightd.git")
+source=('git+https://github.com/FedeDP/Clightd.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/Clightd"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake -B build -S "${pkgname%-git}" \
+  cmake -B build -S Clightd \
     -G "Unix Makefiles" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \

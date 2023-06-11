@@ -22,7 +22,7 @@ pkgbase = clightd-git
 	depends = wayland
 	provides = clightd
 	conflicts = clightd
-	source = clightd::git+https://github.com/FedeDP/Clightd.git
+	source = git+https://github.com/FedeDP/Clightd.git
 	sha256sums = SKIP
 
 pkgname = clightd-git
