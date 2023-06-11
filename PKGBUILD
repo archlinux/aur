@@ -3,13 +3,13 @@
 
 pkgname=xairedit
 pkgver=1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Remote control program for Behringer X-AIR mixers"
 arch=('x86_64' 'armv7h')
 url="https://www.behringer.com/downloads.html"
 license=('custom:MUSIC Group End User License Agreement')
 depends=('libxext' 'alsa-lib' 'freetype2' 'mesa' 'mesa-libgl' 'libcurl-gnutls')
-source=("https://eurocom.musictribe.com/assets/EULA_2012-09-12.pdf"
+source=("EULA_2012-09-12.pdf"
         "xairedit.desktop")
 source_x86_64=("https://mediadl.musictribe.com/download/software/behringer/XAIR/X-AIR-Edit_LINUX_${pkgver}.tar.gz")
 source_armv7h=("https://mediadl.musictribe.com/download/software/behringer/XAIR/X-AIR-Edit_RASPI_${pkgver}.tar.gz")
@@ -21,8 +21,8 @@ sha256sums_armv7h=('08fce3acb103f055e3209e39d94a6321ed49c5e35f328facb7ff791d6908
 package()
 {
     cd "${srcdir}"
-    install -Dm755 X-AIR-Edit ${pkgdir}/usr/bin/${pkgname}
-    install -Dm644 EULA_2012-09-12.pdf ${pkgdir}/usr/share/licenses/${pkgname}/license.pdf
+    install -Dm755 X-AIR-Edit "${pkgdir}"/usr/bin/${pkgname}
+    install -Dm644 EULA_2012-09-12.pdf "${pkgdir}"/usr/share/licenses/${pkgname}/license.pdf
     install -Dm644 xairedit.desktop -t "${pkgdir}"/usr/share/applications
     install -Dm644 X-AIR-Edit_icon.png "${pkgdir}"/usr/share/pixmaps/xairedit.png
 }

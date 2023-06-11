@@ -1,4 +1,6 @@
-/pkg
-/src
-*.tar*
-EULA*
+*
+!.gitignore
+!.SRCINFO
+!EULA_2012-09-12.pdf
+!PKGBUILD
+!xairedit.desktop

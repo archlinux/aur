@@ -1,7 +1,7 @@
 pkgbase = xairedit
 	pkgdesc = Remote control program for Behringer X-AIR mixers
 	pkgver = 1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.behringer.com/downloads.html
 	arch = x86_64
 	arch = armv7h
@@ -12,7 +12,7 @@ pkgbase = xairedit
 	depends = mesa
 	depends = mesa-libgl
 	depends = libcurl-gnutls
-	source = https://eurocom.musictribe.com/assets/EULA_2012-09-12.pdf
+	source = EULA_2012-09-12.pdf
 	source = xairedit.desktop
 	sha256sums = 3321aa0b3e208133094665281a6fc2ca001628858cd1a6388185eac93569fca8
 	sha256sums = b57f9fcfe157cd880104948834c88a2983a1d12ee0ab7786737a281178fe4ed7
