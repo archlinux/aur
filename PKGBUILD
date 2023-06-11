@@ -1,16 +1,22 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=jupyterlab-language-pack-de-de
-_pypi=jupyterlab-language-pack-de-DE
 pkgdesc='German (Germany) language pack for JupyterLab'
 url='https://github.com/jupyterlab/language-packs/tree/master/language-packs/jupyterlab-language-pack-de-DE'
-pkgver=3.5.post2
+pkgver=4.0.post0
 pkgrel=1
 arch=('any')
 license=('BSD')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz")
-sha256sums=('8de585eafb7596fc44bce4264a49f571ec1a3ddd1432bcf6615115547b42dda6')
+
+makedepends=('jupyterlab-translate' 'python-build' 'python-hatchling' 'python-installer')
+
+_pypi=jupyterlab_language_pack_de_de
+source=(
+  "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
+)
+sha256sums=(
+  'ae460371a602559c9b45b9cee65a4c750c0be2b303cec2b683b26e518ca6f44b'
+)
 
 build() {
   cd "$_pypi-$pkgver"
