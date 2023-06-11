@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=YARG
+GenericName=YARG
+Comment=Yet Another Rhythm Game inspired off of Rockband, Guitar Hero, Clone Hero, or similar
+Exec=yarg
+Icon=/usr/share/pixmaps/yarg.png
+Terminal=false
+Type=Application
+Categories=Game;
