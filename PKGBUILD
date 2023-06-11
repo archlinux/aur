@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=matplotplusplus
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Matplot++: A C++ Graphics Library for Data Visualization"
 url="https://alandefreitas.github.io/matplotplusplus"
 arch=(x86_64)
@@ -16,8 +16,8 @@ build() {
   cd "$srcdir/${pkgname}-${pkgver}/build"
   cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
         -DBUILD_SHARED_LIBS=ON \
-        -DBUILD_EXAMPLES=OFF \
-        -DBUILD_TESTS=OFF \
+        -DMATPLOTPP_BUILD_EXAMPLES=OFF \
+        -DMATPLOTPP_BUILD_TESTS=OFF \
         ..
   make
 }
