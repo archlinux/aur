@@ -55,7 +55,7 @@ build()
    cd $srcdir/$pkgname-$pkgver-20230428-16588-src
 
    export OS=unix
-
+   export LC_ALL=C
    ./configure --prefix=/usr
 
    # The release tarball contains a bunch of sphinx build artefacts.
