@@ -4,26 +4,23 @@
 # Contributor: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 # Contributor: Earnestly <zibeon AT googlemail.com>
 
-epoch=1
-
 pkgname=xmlada
+pkgdesc="An XML parser for Ada95."
 pkgver=24.0w
 pkgrel=2
-pkgdesc="An XML parser for Ada95"
+epoch=1
 
 arch=(i686 x86_64)
 url=https://github.com/AdaCore/xmlada
 license=(GPL3 custom)
 
-depends=(gcc-ada gnatstudio-sources)
 makedepends=(gprbuild-bootstrap)
-
 conflicts=($pkgname-git)
 
-source=(file:///opt/gnatstudio-sources/xmlada-24.0w-20230324-1684A-src.tar.gz
+source=(https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20230501/gnatstudio-sources-x86_64-linux.tar.gz
         expose-cargs-and-largs-makefile.patch)
 
-sha256sums=(c243de68f3f7c0f5e8a23d24ab0725d038f4dd2b7798855a3b91b574e44e2dc1
+sha256sums=(acacf5f971dd94dd08a464a05f4e02cf0f1fc5e81028bf7c13091ed08ad97218
             7543e5fa8f2b0b400b937b0b3bb27b46b263a3cd7b17f00f6f9c6b3905729610)
 
 _xmlada_src=$pkgname-$pkgver-20230428-16463-src
@@ -31,6 +28,12 @@ _xmlada_src=$pkgname-$pkgver-20230428-16463-src
 
 prepare()
 {
+    cd $srcdir/gnatstudio-sources-x86_64-linux
+    
+    tar --extract                                       \
+        --file=xmlada-$pkgver-20230324-1684A-src.tar.gz \
+        --directory $srcdir
+
     cd $srcdir/$_xmlada_src
 
     patch -Np0 -i $srcdir/expose-cargs-and-largs-makefile.patch
