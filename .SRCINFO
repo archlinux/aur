@@ -1,0 +1,16 @@
+pkgbase = r-pan
+	pkgdesc = Multiple Imputation for Multivariate Panel or Clustered Data
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://cran.r-project.org/package=pan
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc-fortran
+	depends = r
+	optdepends = r-lme4
+	optdepends = r-mitools
+	source = https://cran.r-project.org/src/contrib/pan_1.6.tar.gz
+	md5sums = 86525839b38e045d2577eaf045269415
+	sha256sums = adc0df816ae38bc188bce0aef3aeb71d19c0fc26e063107eeee71a81a49463b6
+
+pkgname = r-pan
