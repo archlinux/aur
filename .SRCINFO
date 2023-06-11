@@ -1,6 +1,6 @@
 pkgbase = aqualung
 	pkgdesc = High quality music player w/ gapless support
-	pkgver = 1.1+4+g44a3f40
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://aqualung.jeremyevans.net/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = aqualung
 	depends = liboggz
 	depends = libusb-compat
 	depends = libifp
-	depends = ffmpeg4.4
+	depends = ffmpeg
 	depends = libvorbis
 	depends = libsndfile
 	depends = lua52
@@ -36,7 +36,7 @@ pkgbase = aqualung
 	optdepends = speex: Oggz speex support (playback)
 	optdepends = lame: MP3 audio support (encode)
 	optdepends = libmodplug: MOD files support (playback .mod .s3m .xm .it ...)
-	source = git+https://github.com/jeremyevans/aqualung.git#commit=44a3f40d784010a183e1f61cbd02615ff5568358
+	source = git+https://github.com/jeremyevans/aqualung.git#tag=1.2
 	source = aqualung.desktop
 	sha256sums = SKIP
 	sha256sums = 4d2aba2924b7c0bacbd377a6975f1cdbf09dc67a5d61c36bf2d52bddbab1b3b9
