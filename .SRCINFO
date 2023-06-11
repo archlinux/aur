@@ -1,0 +1,12 @@
+pkgbase = eastern-wisdom-cli
+	pkgdesc = Get a random quote from the Dhammapada or the Dao De jing in your teminal, with optional color output.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/muvment/eastern-wisdom-cli
+	arch = any
+	license = MIT
+	depends = bash
+	source = eastern-wisdom-cli-1.0.0.tar.gz::https://github.com/muvment/eastern-wisdom-cli/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 26c55b0075323f304671a6c198bb23efb5a40c04b361f3227390ad567039c2c2
+
+pkgname = eastern-wisdom-cli
