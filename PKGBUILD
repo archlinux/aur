@@ -4,12 +4,12 @@
 pkgname=tome4-forbidden_cults
 _pkgname=cults
 pkgver='1.0.12'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Forbidden Cults DLC for tome4."
 arch=('any')
 url="https://te4.org/"
 license=('custom')
-depends=('tome4=1.7.4')
+depends=('tome4>=1.7.4')
 source=("cults.teaac::te4://cults.teaac")
 # don't download anything automatically
 DLAGENTS+=("te4::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
