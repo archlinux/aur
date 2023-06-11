@@ -1,0 +1,13 @@
+pkgbase = app-librescore-appimage
+	pkgdesc = Download sheet music
+	pkgver = 2.0.92
+	pkgrel = 1
+	url = https://github.com/LibreScore/app-librescore
+	arch = any
+	license = MIT
+	depends = hicolor-icon-theme
+	options = !strip
+	source = https://github.com/LibreScore/app-librescore/releases/download/v2.0.92/LibreScore.AppImage
+	md5sums = d3f19fc8af7c01308644404ae2035b93
+
+pkgname = app-librescore-appimage
