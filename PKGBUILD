@@ -1,4 +1,4 @@
-# Maintainer : MorsMortium <morsmortium@gmail.com>
+# Maintainer : MorsMortium <morsmortium@disroot.org>
 
 _pkgname=lbry-gtk
 pkgname=${_pkgname}-git
