@@ -1,14 +1,14 @@
 pkgbase = yangdownloader-appimage
 	pkgdesc = Downloads best-quality audio and video from YouTube
-	pkgver = 3.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/mysteryx93/HanumanInstituteApps/wiki/Yang-YouTube-Downloader
 	arch = x86_64
 	license = MIT
 	depends = ffmpeg
-	noextract = yangdownloader-appimage-3.1.AppImage
+	noextract = yangdownloader-appimage-3.1.2.AppImage
 	options = !strip
-	source_x86_64 = yangdownloader-appimage-3.1.AppImage::https://github.com/mysteryx93/HanumanInstituteApps/releases/download/v3.1/YangDownloader-3.1_Linux_x64.AppImage
-	sha256sums_x86_64 = 7a56109e5ace2cd734b9bb9d093ce557f57803773dce192b0c2e2acfaa7464ca
+	source_x86_64 = yangdownloader-appimage-3.1.2.AppImage::https://github.com/mysteryx93/HanumanInstituteApps/releases/download/v3.1.2/YangDownloader-3.1.2_Linux_x64.AppImage
+	sha256sums_x86_64 = 2a33b8391f00719341387f03f7dbfc5ce0d58b2b6dc9a048281ec4ed1eddd924
 
 pkgname = yangdownloader-appimage
