@@ -1,8 +1,6 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
-epoch=1
-
 pkgbase=gnatcoll-bindings
 pkgname=(gnatcoll-gmp
          gnatcoll-iconv
@@ -12,10 +10,11 @@ pkgname=(gnatcoll-gmp
          gnatcoll-readline
          gnatcoll-syslog
          gnatcoll-zlib)
+pkgdesc='GNAT Components Collection - Language and library bindings.'
 pkgver=24.0w
 pkgrel=1
+epoch=1
 
-pkgdesc='GNAT Components Collection - Language and library bindings'
 url=https://github.com/AdaCore/gnatcoll-bindings
 arch=(i686 x86_64)
 license=(GPL3 custom)
@@ -23,7 +22,8 @@ license=(GPL3 custom)
 depends=(gnatcoll-core)
 makedepends=(python gprbuild libiconv syslog-ng)
 
-source=(file:///opt/gnatstudio-sources/$pkgbase-$pkgver-20230324-1636E-src.tar.gz
+#https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gnatcoll-bindings-24.0w-20230324-1636E-src.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgbase-$pkgver-20230324-1636E-src.tar.gz
         0002-fix-python-don-t-cache-prefix-during-install.patch
         python_support.c-patch)
 

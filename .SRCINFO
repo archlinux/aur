@@ -1,5 +1,5 @@
 pkgbase = gnatcoll-bindings
-	pkgdesc = GNAT Components Collection - Language and library bindings
+	pkgdesc = GNAT Components Collection - Language and library bindings.
 	pkgver = 24.0w
 	pkgrel = 1
 	epoch = 1
@@ -13,7 +13,7 @@ pkgbase = gnatcoll-bindings
 	makedepends = libiconv
 	makedepends = syslog-ng
 	depends = gnatcoll-core
-	source = file:///opt/gnatstudio-sources/gnatcoll-bindings-24.0w-20230324-1636E-src.tar.gz
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gnatcoll-bindings-24.0w-20230324-1636E-src.tar.gz
 	source = 0002-fix-python-don-t-cache-prefix-during-install.patch
 	source = python_support.c-patch
 	sha256sums = 6a3d077c2939fe53ce87b58e8414ef41779c670ed00e0d728f12ee160d67723e
