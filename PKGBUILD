@@ -5,8 +5,8 @@ pkgname=(
   czkawka-cli
   czkawka-gui
 )
-pkgver=5.1.0
-pkgrel=1
+pkgver=6.0.0
+pkgrel=0.1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
 arch=(
@@ -24,8 +24,10 @@ makedepends=(
   rust
 )
 checkdepends=(xorg-server-xvfb)
-_commit=c6c4230699715ee6a91fdf153cc5b6255bbf5ad0 # tags/5.1.0^0
-source=("git+https://github.com/qarmin/czkawka.git#commit=${_commit}")
+_commit=7cb355a35902e79a1413296bd60bb8eabfd395da # tags/6.0.0^0
+# curl -sS https://github.com/web-flow.gpg | gpg --import -
+validpgpkeys=('5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23') # GitHub (web-flow commit signing) <noreply@github.com>
+source=("git+https://github.com/qarmin/czkawka.git#commit=${_commit}?signed")
 sha512sums=('SKIP')
 
 pkgver() {
