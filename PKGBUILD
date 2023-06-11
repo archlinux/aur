@@ -2,14 +2,14 @@
 
 pkgname=android-sdk-deb
 pkgver=28.0.2+9
-pkgrel=0
+pkgrel=1
 pkgdesc="Software development kit for Android platform - built out of Debian's repository"
 arch=("x86_64" "aarch64")
 url="https://salsa.debian.org/android-tools-team/android-sdk-meta"
 license=("Apache" "BSD" "SSLeay" "ISC" "GPL3" "MIT" "OpenSSL" "Khronos" "Expat" "PD" "LGPL")
 depends=("android-tools" "android-udev" "java-environment" "proguard")
 optdepends=("gradle" "maven")
-provides=("android-sdk" "anroid-build-tools" "aapt" "apksign" "zipalign" "aidl" "split-select" "devlink")
+provides=("android-sdk" "android-sdk-build-tools" "android-sdk-debian" "anroid-build-tools" "aapt" "apksign" "zipalign" "aidl" "split-select" "devlink")
 conflicts=("adroid-sdk" "android-sdk-build-tools")
 makedepends=("binutils" "tar")
 backup=("opt/${pkgname}/packages/${pkgname}_test/pubspec.yaml" "opt/${pkgname}/packages/${pkgname}/pubspec.yaml")
