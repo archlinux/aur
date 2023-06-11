@@ -3,7 +3,7 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.6.0rc5.r10.5f532e5
+pkgver=1.6.0rc5.r84.e1afd24
 pkgrel=2
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -89,9 +89,9 @@ prepare() {
   patch -p1 -i "$srcdir/remove-debian-path.patch"
 
   # other fixes
-
-  sed -i 's|/usr/lib/python3/dist-packages/data/|/usr/lib/python3.10/site-packages/pyasn/data/|g' ui/opensnitch/utils/__init__.py
-  sed -i 's|/usr/lib/python3/dist-packages/|/usr/lib/python3.10/site-packages/|g' ui/bin/opensnitch-ui
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  sed -i "s|/usr/lib/python3/dist-packages/data/|${site_packages}/pyasn/data/|g" ui/opensnitch/utils/__init__.py
+  sed -i "s|/usr/lib/python3/dist-packages/|${site_packages}/|g" ui/bin/opensnitch-ui
 }
 
 build() {

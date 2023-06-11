@@ -1,6 +1,6 @@
 pkgbase = opensnitch-git
 	pkgdesc = A GNU/Linux port of the Little Snitch application firewall
-	pkgver = 1.6.0rc5.r10.5f532e5
+	pkgver = 1.6.0rc5.r84.e1afd24
 	pkgrel = 2
 	url = https://github.com/evilsocket/opensnitch
 	install = opensnitch.install
