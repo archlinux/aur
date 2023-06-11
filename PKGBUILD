@@ -19,8 +19,7 @@ conflicts=()
 source=("brave-beta-bin.sh")
 source_x86_64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta_${pkgver}_amd64.deb")
 source_aarch64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-beta_${pkgver}_arm64.deb")
-sha512sums=('e7fa3e103ad891e3aaf48bba3cff3611000a8489057f0f7570c60bb39de7079b6c8fba29abb647904d98621dde5261c59c6fa6d8adb1a17d355dd9062ef554c0')
-
+sha512sums=('56be4daa8294c7c3d4b3f1ce7169ac575be0faa623d7cd977eb135e971914b90e3f596ecad72d89178de04e65cd3d49c138e8518d1dccf9fc814d0858b38767e')
 sha512sums_x86_64=('cd7cd38417aa60525f1d03b05bbd83b305e2bfe27288b51b0bbaea0b6c72efcd9bb873ec15fc0effd8b5f5259635d69c92699cf15fcc640fc503369a1268189d')
 sha512sums_aarch64=('6b5b6cfaca4ac9b1edd5da58ec46b2f505068afdb39cfeb48d9b432ea7c129c1e0ba90cbb474339f66014061c5c678eff5c94db096ea0c5d844514919fc8503f')
 
