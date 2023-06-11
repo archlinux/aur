@@ -2,7 +2,7 @@
 # Adapted from zellij-git https://aur.archlinux.org/packages/zellij-git
 pkgname=borgtui-git
 _pkgname=borgtui
-pkgver=r58.9992e9a
+pkgver=r4.faec31d
 _pkgver=0.3.2
 pkgrel=1
 epoch=
@@ -23,7 +23,7 @@ sha256sums=(SKIP)
 
 build() {
     cd "$srcdir/$_pkgname"
-    cargo install --path=. --root=.
+    cargo install --path=./borgtui/ --root=.
     mkdir -p assets/completions
     ./bin/borgtui shell-completion --shell bash > assets/completions/borgtui.bash
     ./bin/borgtui shell-completion --shell fish > assets/completions/borgtui.fish
