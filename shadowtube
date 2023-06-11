@@ -31,10 +31,14 @@ YOUTUBE_VIDEO_URL = "https://www.youtube.com/watch?v={youtube_id}"
 YOUTUBE_COMMENTS_AJAX_URL = "https://www.youtube.com/comment_service_ajax"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
 
-use_control_pass = false
-control_pass = ""
-control_port = 9151
-socks_port = 9150
+settings_dict = None
+with open('/etc/shadowtube/settings.json') as f:
+	settings_dict = json.load(f);
+
+use_control_pass = settings_dict["use_control_pass"]
+control_pass = settings_dict["control_pass"]
+control_port = settings_dict["control_port"]
+socks_port = settings_dict["socks_port"]
 
 ### Tor
 
