@@ -1,6 +1,5 @@
-*
-!.SRCINFO
-!.gitignore
-!PKGBUILD
-!mullvad-browser.desktop
-
+/*
+!/.SRCINFO
+!/.gitignore
+!/PKGBUILD
+!/mullvad-browser.desktop

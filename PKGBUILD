@@ -1,9 +1,14 @@
-# Maintainer: tarball <bootctl@gmail.com>
+# Maintainer: éclairevoyant
+# Contributor: tarball <bootctl at gmail dot com>
 
 pkgname=mullvad-browser
-pkgver=12.0.4
+pkgver=12.0.7
+_esrbuildver=102.12.0esr-12.0-1-build1
+# will not build with stable, see mozilla/mp4parse-rust#387; also see "uses" column of
+# https://firefox-source-docs.mozilla.org/writing-rust-code/update-policy.html
+_rustver=1.60.0
 pkgrel=1
-pkgdesc='Privacy-focused web browser developed in a collaboration between Mullvad VPN and the Tor Project'
+pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
 license=(GPL LGPL MPL)
 depends=(
@@ -30,7 +35,7 @@ makedepends=(
   nasm
   nodejs
   python
-  rust
+  rustup
   unzip
   wasi-compiler-rt
   wasi-libc
@@ -59,14 +64,16 @@ validpgpkeys=(
   'EF6E286DDA85EA2A4BA7DE684E2C6E8793298290' # Tor Browser Developers (signing key) <torbrowser@torproject.org>
 )
 source=(
-  https://cdn.mullvad.net/browser/$pkgver/src-firefox-mullvad-browser-102.9.0esr-12.0-2-build1.tar.xz{,.asc}
+  https://cdn.mullvad.net/browser/$pkgver/src-firefox-mullvad-browser-$_esrbuildver.tar.xz{,.asc}
   $pkgname.desktop
 )
-sha256sums=('8b58ffb0b51189e138b1982bec8f77f68ce37ccd34569ef378ccc14db5cc9af7'
+sha256sums=('78a66c3bca36e8ff8e8c7c981ea9a04cc4c7d95177dd661d4c09ce2b41944d8c'
             'SKIP'
             '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')
 
 prepare() {
+  export RUSTUP_TOOLCHAIN=$_rustver
+  rustup default $_rustver
   mkdir -p mozbuild
 
   rm -rf $pkgname-$pkgver
@@ -107,9 +114,15 @@ ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --disable-tests
 END
+
+  # GCC 13 fix
+  sed '18i#include <cstdint>' -i gfx/2d/Rect.h
+  sed '7i#include <cstdint>' -i dom/media/webrtc/sdp/RsdparsaSdpGlue.cpp
 }
 
 build() {
+  export RUSTUP_TOOLCHAIN=$_rustver
+  rustup default $_rustver
   cd $pkgname-$pkgver
 
   export MOZ_NOSPAM=1
