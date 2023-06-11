@@ -2,7 +2,7 @@
 
 pkgname=python-libusb-package
 pkgver=1.0.26.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Packaged libusb shared libraries for Python.'
 arch=('x86_64')
 url='https://github.com/pyocd/libusb-package'
@@ -11,7 +11,7 @@ depends=('python' 'libusb')
 makedepends=('python-build' 'python-installer' 'python-wheel'
              'python-setuptools' 'python-setuptools-scm' 'libusb')
 source=("$pkgname-$pkgver::https://github.com/pyocd/libusb-package/archive/v$pkgver.tar.gz")
-sha256sums=('fd55bad7b11b1d1d296ebd740cf8fefa3d54d3d2046703b2c6aa532c51be7648')
+sha256sums=('838174eab4134c912dc61f05132fab8855db06a834c9eb2e1e180283acc2155f')
 
 _pkgname=libusb-package
 

@@ -1,7 +1,7 @@
 pkgbase = python-libusb-package
 	pkgdesc = Packaged libusb shared libraries for Python.
 	pkgver = 1.0.26.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyocd/libusb-package
 	arch = x86_64
 	license = Apache-2.0
@@ -14,6 +14,6 @@ pkgbase = python-libusb-package
 	depends = python
 	depends = libusb
 	source = python-libusb-package-1.0.26.1::https://github.com/pyocd/libusb-package/archive/v1.0.26.1.tar.gz
-	sha256sums = fd55bad7b11b1d1d296ebd740cf8fefa3d54d3d2046703b2c6aa532c51be7648
+	sha256sums = 838174eab4134c912dc61f05132fab8855db06a834c9eb2e1e180283acc2155f
 
 pkgname = python-libusb-package
