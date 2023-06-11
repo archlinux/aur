@@ -8,7 +8,11 @@ post_install() {
     sudo systemctl enable sk-efi-mount.service
     sudo systemctl enable sk-root-resume.service
 
-    sudo pacman -Rns --noconfirm vpower
+    # if /sys/class/power_supply/BAT1 not exist, disable vpower.service
+    if [ ! -d "/sys/class/power_supply/BAT1" ]; then
+        echo "Disable vpower.service"
+        sudo systemctl disable --now vpower.service
+    fi
 
     # swap partuuid
     echo "Set swap PARTUUID in /etc/default/auto_swap"
