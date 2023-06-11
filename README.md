@@ -16,7 +16,7 @@ pip3 install -r requirements.txt
 ```
 3. [Configure torrc](#configure-torrc) (optional)
 4. Launch an instance of Tor Browser
-5. Execute 
+5. Execute
 ```
 python3 shadowtube
 ```

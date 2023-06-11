@@ -10,7 +10,7 @@ license=('GPL')
 depends=("python>=3.7.3", "python-pip")
 
 source=("https://github.com/danehobrecht/shadowtube/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0264d0fe189e94e3f900f80d7da5b086ec0d3e17e9200e616691a93553edad5c')
+sha256sums=('dcd4c87b504731db0fcb6332168b49a65b20d006c8b078f2fc6e6fd289fda75f')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
