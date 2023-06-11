@@ -4,15 +4,20 @@ pkgname=jupyterlab-translate
 pkgdesc="JupyterLab language pack translations helper"
 url='https://github.com/jupyterlab/jupyterlab-translate'
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('BSD')
 
+# python-copier tries to import the git command from python-plumbum, which fails
+# if git is not installed. This should be in the dependencies of python-copier,
+# but put it here for now until that is fixed.
 depends=(
-  'python-babel' 'python-click' 'python-copier' 'python-polib'
-  'python-questionary' 'python-dunamai'
+  'git' 'nodejs' 'python-babel' 'python-click' 'python-copier'
+  'python-copier-templates-extensions' 'python-crowdin-api-client'
+  'python-hatchling' 'python-jinja-time' 'python-polib' 'python-requests'
 )
-makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest')
 
 source=(
   "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz"
@@ -24,6 +29,13 @@ sha256sums=(
 build() {
   cd "${pkgname//-/_}-$pkgver"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${pkgname//-/_}-$pkgver"
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  PATH="$(pwd)/test-env/bin:$PATH" test-env/bin/python -m pytest -v
 }
 
 package() {
