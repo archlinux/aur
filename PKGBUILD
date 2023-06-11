@@ -31,7 +31,7 @@ build() {
   rm -rf build
   mkdir build
   cd "${srcdir}/${_pkgname}-${pkgver}/build"
-  qmake PREFIX=/usr ..
+  cmake PREFIX=/usr ..
   make
 }
 
