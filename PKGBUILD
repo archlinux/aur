@@ -2,13 +2,14 @@
 
 pkgname=pwndbg-git
 pkgver=2022.12.19.r206.g79ade42
-pkgrel=1
+pkgrel=2
 pkgdesc='Makes debugging with GDB suck less'
 url='https://github.com/pwndbg/pwndbg'
 arch=('any')
 license=('MIT')
 depends=(
   'gdb'
+  'debuginfod'
   'python'
   'python-capstone'
   'python-unicorn'
