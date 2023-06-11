@@ -23,7 +23,7 @@ sha256sums=('676d236c8025ae1b1ac15e9ebe0617eba1fb7bb7a2728841e6bbab451174d5c9'
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  patch < "${srcdir}/deploy.pri.patch"
+  #patch < "${srcdir}/deploy.pri.patch"
 }
 
 build() {
