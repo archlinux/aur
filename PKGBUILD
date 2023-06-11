@@ -9,7 +9,7 @@ pkgdesc="Interact with Hop in your terminal"
 url="https://hop.io"
 license=('MPL-2.0')
 source=("hop_cli-$pkgver.tar.gz::https://github.com/hopinc/cli/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("c44c90085147c3b5cfb71b1922fb4bbbacec9342e76a140c823b2754acb8d771")
+sha256sums=("2924e0d5142c5071231f86bc100b2dc7ef832949967e0df3f4464c2fed397604")
 
 prepare() {
   cd "$srcdir/cli-$pkgver"
