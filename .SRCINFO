@@ -12,7 +12,7 @@ depends = cssselect
 depends = lxml
 depends = stem
 depends = argparse
-source = shadowtube.py::https://example.com/releases/shadowtube-1.0.2.tar.gz
+source = shadowtube.py::https://github.com/releases/shadowtube-1.0.2.tar.gz
 sha256sums = 278c667a5279a7b72fde9f443de1adbc82d20cf211eaf6dfcd8ceec30cbff694
 
 pkgname = shadowtube
