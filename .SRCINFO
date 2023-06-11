@@ -1,7 +1,7 @@
 pkgbase = python-simplepush
 	pkgdesc = Python library for simplepush.io
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simplepush/simplepush-python
 	arch = any
 	license = MIT

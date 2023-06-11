@@ -3,7 +3,7 @@
 pkgname=python-simplepush
 _name=${pkgname#python-}
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for simplepush.io"
 arch=('any')
 url="https://github.com/simplepush/simplepush-python"
