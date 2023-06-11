@@ -4,12 +4,12 @@
 pkgname=tome4-ashes_of_urhrok
 _pkgname=ashes-urhrok
 pkgver='1.1.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Ashes of Urhok DLC for tome4."
 arch=('any')
 url="https://te4.org/"
 license=('custom')
-depends=('tome4=1.7.4')
+depends=('tome4>=1.7.4')
 source=("ashes-urhrok.teaac::te4://ashes-urhrok.teaac")
 # don't download anything automatically
 DLAGENTS+=("te4::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
