@@ -5,37 +5,69 @@
 # Contributer: Colin Woodbury <colingw@gmail.com>
 
 pkgname=xmobar-git
-pkgver=0.36.r24.ga071c2a
+pkgver=0.46.r5.gb5e397b
 pkgrel=1
 pkgdesc='Minimalistic Text Based Status Bar'
-url='https://hackage.haskell.org/package/xmobar'
-license=('custom:BSD3')
+url='https://codeberg.org/xmobar/xmobar'
+license=('BSD')
 arch=('x86_64')
-depends=('libxft' 'libxinerama' 'libxrandr' 'libxpm' 'ghc-libs' 'haskell-x11'
-         'haskell-x11-xft' 'haskell-utf8-string' 'haskell-network-uri'
-         'haskell-hinotify' 'haskell-stm' 'haskell-parsec' 'haskell-parsec-numbers'
-         'haskell-mtl' 'haskell-regex-base' 'haskell-regex-compat'
-         'haskell-http' 'haskell-dbus' 'haskell-libmpd' 'haskell-cereal' 'haskell-netlink'
-         'haskell-text' 'haskell-async' 'haskell-aeson' 'haskell-hspec'
-         'haskell-timezone-olson' 'haskell-timezone-series' 'alsa-lib'
-         'haskell-extensible-exceptions' 'haskell-http-conduit' 'haskell-temporary'
-         'haskell-http-types' 'haskell-http-client-tls' 'haskell-alsa-core' 'haskell-alsa-mixer'
-         'haskell-iwlib')
-makedepends=('git' 'ghc')
+depends=(
+  alsa-lib
+  ghc-libs
+  haskell-aeson
+  haskell-alsa-core
+  haskell-alsa-mixer
+  haskell-async
+  haskell-cairo
+  haskell-cereal
+  haskell-colour
+  haskell-dbus
+  haskell-extensible-exceptions
+  haskell-hinotify
+  haskell-http
+  haskell-http-client-tls
+  haskell-http-conduit
+  haskell-http-types
+  haskell-libmpd
+  haskell-netlink
+  haskell-network-uri
+  haskell-old-locale
+  haskell-pango
+  haskell-parsec-numbers
+  haskell-regex-compat
+  haskell-timezone-olson
+  haskell-timezone-series
+  haskell-utf8-string
+  haskell-x11
+  haskell-x11-xft
+  libxft
+  libxinerama
+  libxpm
+  libxrandr
+  pango
+)
+makedepends=('git' 'ghc' 'haskell-hspec' 'haskell-temporary')
 conflicts=('xmobar')
 provides=('xmobar')
-source=(${pkgname}::git+https://github.com/jaor/xmobar.git)
-sha512sums=('SKIP')
+source=(${pkgname}::git+https://codeberg.org/xmobar/xmobar.git
+        dynamic-compilation.patch)
+sha512sums=('SKIP'
+            '15db3e27d1ff957e26e706e4c67cec6e43d89f5a39cd6d81ddb5ae8426e32d938494fbba39fa322461d992a95d2e522c10b186a1ca2c5c3e996f944b6e6ef7c4')
 
 pkgver() {
   cd ${pkgname}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed -E 's|\.r0\.\w+$||'
 }
 
+prepare() {
+  cd ${pkgname}
+  patch -p1 -i "${srcdir}/dynamic-compilation.patch"
+}
+
 build() {
   cd ${pkgname}
 
-  _flags=(with_xft with_utf8 with_inotify with_mpd with_alsa with_nl80211
+  _flags=(with_xft with_inotify with_mpd with_alsa with_nl80211
           with_datezone with_mpris with_dbus with_xpm with_threaded
           with_rtsopts with_weather)
 
@@ -45,7 +77,7 @@ build() {
     --disable-library-vanilla \
     --prefix=/usr \
     --dynlibdir=/usr/lib \
-    --libsubdir=\$compiler/site-local/\$pkgid \
+    --libsubdir=\$compiler/site-local/\$pkgid --ghc-option=-fllvm \
     --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
     --ghc-option='-pie' \
     --flags="${_flags[*]}" \

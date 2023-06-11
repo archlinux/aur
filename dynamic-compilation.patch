@@ -1,0 +1,11 @@
+--- a/src/Xmobar/App/Compile.hs	2023-02-25 00:52:50.200025709 +0100
++++ b/src/Xmobar/App/Compile.hs	2023-02-25 01:10:05.503624465 +0100
+@@ -161,7 +161,7 @@
+         return (status == ExitSuccess)
+       else return True
+  where opts bin = ["--make" , execName ++ ".hs" , "-i" , "-ilib"
+-                  , "-fforce-recomp" , "-main-is", "main" , "-v0"]
++                  , "-fforce-recomp" , "-main-is", "main" , "-dynamic" , "-v0"]
+ #ifdef THREADED_RUNTIME
+                   ++ ["-threaded"]
+ #endif
