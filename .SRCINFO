@@ -1,6 +1,6 @@
 pkgbase = copyparty
 	pkgdesc = Portable file sharing hub
-	pkgver = 1.7.2
+	pkgver = 1.7.6
 	pkgrel = 1
 	url = https://github.com/9001/copyparty
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = copyparty
 	optdepends = python-pyopenssl: ftps functionality
 	optdepends = python-impacket-git: smb support (bad idea)
 	backup = etc/copyparty.d/init
-	source = https://github.com/9001/copyparty/releases/download/v1.7.2/copyparty-1.7.2.tar.gz
-	sha256sums = fb261d45ce7cf146a3f620d1e3109eb5c584f8950e61a872e2d92d7b7447bae0
+	source = https://github.com/9001/copyparty/releases/download/v1.7.6/copyparty-1.7.6.tar.gz
+	sha256sums = e44bfb2e998677a160343ed4aa87741e653dbc27db594e6a00935e89b90cd3f4
 
 pkgname = copyparty
