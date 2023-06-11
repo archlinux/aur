@@ -1,12 +1,12 @@
 pkgbase = python-hexbytes
 	pkgdesc = Python bytes subclass that decodes hex, with a readable console output
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/ethereum/hexbytes
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/h/hexbytes/hexbytes-0.3.0.tar.gz
-	sha256sums = afeebfb800f5f15a3ca5bab52e49eabcb4b6dac06ec8ff01a94fdb890c6c0712
+	source = https://files.pythonhosted.org/packages/source/h/hexbytes/hexbytes-0.3.1.tar.gz
+	sha256sums = a3fe35c6831ee8fafd048c4c086b986075fc14fd46258fa24ecb8d65745f9a9d
 
 pkgname = python-hexbytes
