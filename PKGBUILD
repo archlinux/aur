@@ -80,4 +80,7 @@ package(){
 
     # remove unused lib
     rm -rf ${pkgdir}/opt/${_pkgname}/release/{libcurl.so.4,libz*}
+
+    # replace with lib from system
+    ln -s /usr/lib/libz.so.1 ${pkgdir}/opt/${_pkgname}/release/libz.so.1
 }
