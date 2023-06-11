@@ -1,7 +1,7 @@
 pkgbase = biolibc
 	pkgdesc = High-performance, memory-efficient bioinformatics library
 	pkgver = 0.2.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/auerlab/biolibc
 	arch = i686
 	arch = x86_64

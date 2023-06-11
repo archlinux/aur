@@ -1,8 +1,8 @@
-# Maintainer: Bipin Kumar <bipin@ccmb.res.in>
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
 
 pkgname=biolibc
 pkgver=0.2.4
-pkgrel=5
+pkgrel=6
 pkgdesc="High-performance, memory-efficient bioinformatics library"
 arch=('i686' 'x86_64')
 url="https://github.com/auerlab/biolibc"
