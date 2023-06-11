@@ -4,13 +4,12 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-# _electron=electron20
-_electron=electron # 20 is current
+_electron=electron24
 _nodeversion=16
 pkgname=schildichat-desktop-git
 _pkgname=schildichat-desktop
-pkgver=1.11.16.sc.0.test.1.r0.eb17c2a
-pkgrel=1
+pkgver=1.11.30.sc.2.r1.0ba494e
+pkgrel=2
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
 url="https://schildi.chat"
@@ -42,16 +41,16 @@ pkgver() {
 }
 
 prepare() {
-  cd ${srcdir}/${_pkgname}
+  cd ${_pkgname}
   export npm_config_cache="${srcdir}/npm_cache"
   _ensure_local_nvm
   nvm install ${_nodeversion}
 
   git submodule init
-  git config submodule.matrix-js-sdk.url $srcdir/matrix-js-sdk
-  git config submodule.matrix-react-sdk.url $srcdir/matrix-react-sdk
-  git config submodule.element-web.url $srcdir/element-web
-  git config submodule.element-desktop.url $srcdir/element-desktop
+  git config submodule.matrix-js-sdk.url ${srcdir}/matrix-js-sdk
+  git config submodule.matrix-react-sdk.url ${srcdir}/matrix-react-sdk
+  git config submodule.element-web.url ${srcdir}/element-web
+  git config submodule.element-desktop.url ${srcdir}/element-desktop
   git -c protocol.file.allow=always submodule update
 
   # Specify electron version in launcher
@@ -71,11 +70,12 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}
+  cd ${_pkgname}
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm use ${_nodeversion}
-  export SQLCIPHER_STATIC=1
+  export SQLCIPHER_BUNDLED=1
+  export CFLAGS+=" -ffat-lto-objects"
 
   # yarn --cwd element-desktop run build:64 --linux -c.linux.target=dir -c.electronDist=${_electron_dist} -c.electronVersion=${_electron_ver}
   # let's use the ready-made build script instead - otherwise, we'd have to do a lot more work to get the webapp build etc.
@@ -83,7 +83,7 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
+  cd ${_pkgname}
 
   install -d "${pkgdir}"/usr/lib/${_pkgname}
 
