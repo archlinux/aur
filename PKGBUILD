@@ -1,6 +1,6 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=quik
-pkgver=10.2.0
+pkgver=10.2.1
 pkgrel=1
 stratver=3.0.5
 pkgdesc="Trading terminal in Wine"
@@ -19,7 +19,7 @@ source=(
 'ip.cfg'
 )
 sha256sums=(
-'e3ca7389cbe3fb4730d2af939dd66dc6ee2f6a09bac12a4c9bd4a6ea8e5a5507'
+'50000de30898f8608b8ca2800c2736f0e2994cdf29dfdba938780b2c46d3a47c'
 'd32095309cd7359f4078a74179d8ae42e013e3fd3ad75837f0fa3941e7091b75'
 'bc66665d2209836abe51ae9258c289c0f682dba4ea5261f9319996a60a6a4ae7'
 '133bcae46a8f0547603fb2f157b89bf4be59291bf9292695f723d7d5b1cf01dc'
