@@ -1,6 +1,6 @@
 pkgbase = pandoc-crossref-bin
 	pkgdesc = Pandoc filter for cross-references - executable only
-	pkgver = 0.3.16.0
+	pkgver = 0.3.16.0.a
 	pkgrel = 1
 	url = https://github.com/lierdakil/pandoc-crossref/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pandoc-crossref-bin
 	replaces = pandoc-crossref-static
 	replaces = pandoc-crossref-lite
 	options = !strip
-	source = pandoc-crossref-0.3.16.0.tar.xz::https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.16.0/pandoc-crossref-Linux.tar.xz
-	sha256sums = 1e87845b3a29febb2c5e946c6590591d202b15da3d5cf437a94be047b4b48e83
+	source = pandoc-crossref-0.3.16.0a.tar.xz::https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.16.0a/pandoc-crossref-Linux.tar.xz
+	sha256sums = 6a66ab63c1b1a11a842464270c738d27379396c579e338863721b83019dffb50
 
 pkgname = pandoc-crossref-bin
