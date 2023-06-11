@@ -8,7 +8,7 @@ source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/sequoia-pgp/${pkgname}/-/ar
         "${pkgname}.hook")
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL2')
-makedepends=('cargo' 'clang' 'rust')
+makedepends=('cargo' 'clang')
 install="${pkgname}.install"
 depends=('thunderbird')
 sha256sums=('f802392300a4fa3b6d69bae60920ab5c80542a7177520edd5d1fa3687bd26590'

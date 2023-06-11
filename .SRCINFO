@@ -13,7 +13,6 @@ pkgbase = sequoia-octopus-librnp
 	license = GPL2
 	makedepends = cargo
 	makedepends = clang
-	makedepends = rust
 	depends = thunderbird
 	source = sequoia-octopus-librnp-1.5.0.tar.gz::https://gitlab.com/sequoia-pgp/sequoia-octopus-librnp/-/archive/v1.5.0/sequoia-octopus-librnp-v1.5.0.tar.gz
 	source = sequoia-octopus-librnp.hook
