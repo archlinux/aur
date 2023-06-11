@@ -3,9 +3,9 @@
 # the intention of this package is to support `mimeapps.list` being a symlink
 # this package serves as an interim solution until https://gitlab.freedesktop.org/xdg/xdg-utils/-/merge_requests/49 is merged
 pkgname=xdg-utils-symlink-fix
-_commit=b937642a1013b7dcf122a5a0229f3e59b93e4aee
-pkgver=1.1.3+21+gb937642
-pkgrel=2
+_commit=79dcb44559a5ed4b994ebc579f9575eef443e4cb
+pkgver=1.1.3+26+g79dcb44
+pkgrel=1
 pkgdesc="xdg-utils replacement which respects mimeapps.list being a symlink"
 arch=('any')
 url="https://gitlab.freedesktop.org/xdg/xdg-utils/-/merge_requests/49"
