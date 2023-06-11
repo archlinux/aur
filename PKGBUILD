@@ -1,12 +1,11 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
-epoch=2
-
 pkgname=libadalang
+pkgdesc="A high performance semantic engine for the Ada programming language."
 pkgver=24.0w
 pkgrel=1
-pkgdesc="A high performance semantic engine for the Ada programming language."
+epoch=2
 
 url=https://github.com/AdaCore/libadalang
 arch=(i686 x86_64)
@@ -21,7 +20,7 @@ makedepends=(gprbuild
              python-docutils
              python-sphinx)
 
-source=(file:///opt/gnatstudio-sources/$pkgname-$pkgver-20230324-164A3-src.tar.gz)
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-164A3-src.tar.gz)
 sha256sums=(87c64c60ee147a9ac27f997dcf071a7c143e85382202a18e5d8a0943fb87cc16)
 
 
