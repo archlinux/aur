@@ -1,0 +1,13 @@
+pkgbase = atlasvpn-bin
+	pkgdesc = Package to install AtlasVPN
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://atlasvpn.com
+	install = atlasvpn-bin.install
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://repo.atlasvpn.com/debian/pool/main/a/atlasvpn/atlasvpn_1.0.3_amd64.deb
+	sha256sums = 969fd91120b29ec3e618118fbd3d0c5a16006cc2bc1819026d7d4defc8bd7b3c
+
+pkgname = atlasvpn-bin

@@ -1,0 +1,18 @@
+post_install() {
+  echo ':: In order to enable atlasvpn you have to start the following service:'
+  echo '     sudo systemctl enable --now atlasvpnd.socket'
+  echo '     sudo systemctl enable --now atlasvpnd.service'
+}
+
+post_upgrade() {
+  echo ':: Restart atlasvpn service:'
+  echo '     sudo systemctl restart atlasvpnd.socket'
+  echo '     sudo systemctl restart atlasvpnd.service'
+}
+
+pre_remove() {
+  atlasvpn disconnect &> /dev/null
+  atlasvpn signout &> /dev/null
+  systemctl disable --now atlasvpnd.socket &> /dev/null
+  systemctl disable --now atlasvpnd.service &> /dev/null
+}
