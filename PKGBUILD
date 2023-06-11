@@ -1,4 +1,4 @@
-# Maintainer : MorsMortium <morsmortium@gmail.com>
+# Maintainer : MorsMortium <morsmortium@disroot.org>
 
 pkgname=pysolfc-music
 pkgver=4.5
