@@ -3,7 +3,7 @@
 
 pkgname=erlang-cl
 pkgver=1.2.4
-pkgrel=6
+pkgrel=7
 arch=(x86_64)
 pkgdesc='OpenCL binding for Erlang'
 url='https://github.com/tonyrog/cl'
@@ -12,7 +12,7 @@ replaces=(cl)
 depends=(erlang opencl-icd-loader)
 makedepends=(git opencl-headers rebar)
 source=("git+$url#commit=f0a5631fdcf4e1c56e6bf1568c6c2c8fff0d66df") # tag: cl-1.2.4
-b2sums=(SKIP)
+b2sums=('SKIP')
 
 build() {
   cd cl
