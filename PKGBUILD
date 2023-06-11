@@ -3,7 +3,7 @@
 
 pkgname=centrifuge
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Rapid and memory-efficient tool for classification of metagenomic sequences"
 arch=('x86_64')
 url=https://ccb.jhu.edu/software/centrifuge/
@@ -17,7 +17,7 @@ depends=(
          'jellyfish'
          'hisat2'
         )
-makedepends=('git' 'inetutils' 'pandoc-cli')
+makedepends=('git' 'inetutils' 'pandoc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DaehwanKimLab/centrifuge/archive/refs/tags/v${pkgver}.tar.gz"
         'alphabet.cpp.patch'
         'alphabet.h.patch'

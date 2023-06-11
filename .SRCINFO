@@ -1,13 +1,13 @@
 pkgbase = centrifuge
 	pkgdesc = Rapid and memory-efficient tool for classification of metagenomic sequences
 	pkgver = 1.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ccb.jhu.edu/software/centrifuge/
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = inetutils
-	makedepends = pandoc-cli
+	makedepends = pandoc
 	depends = glibc
 	depends = gcc-libs
 	depends = python
