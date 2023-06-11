@@ -2,7 +2,7 @@
 # Maintainer: johnfanv2 <https://github.com/johnfanv2>
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-dkms-git
-pkgver=r255.a03d860
+pkgver=r255.648c27b
 pkgrel=1
 pkgdesc="LenovoLegionLinux (LLL) DKMS module"
 arch=("x86_64")
@@ -33,10 +33,6 @@ prepare() {
   git checkout $pkgver_commit
 }
 
-build() {
-	cd "${srcdir}/${_pkgname}/python/legion_linux"
-	python setup.py build
-}
 package() {
 	mkdir -p ${pkgdir}/usr/src/${_pkgname}-1.0.0
 	mkdir -p ${pkgdir}/etc/pacman.d/hooks
