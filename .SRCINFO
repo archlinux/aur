@@ -1,6 +1,6 @@
 pkgbase = shadowtube
 	pkgdesc = A YouTube shadowban detection program.
-	pkgver = 1.0.3
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/danehobrecht/shadowtube
 	arch = any
