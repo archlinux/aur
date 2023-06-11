@@ -1,17 +1,17 @@
 # Maintainer: zhullyb <zhullyb [at] outlook dot com>
 # Contributor: weearc <q19981121 [at] 163 dot com>
 # Contributor: JimMoen <LnJimMoen [at] outlook dot com>
-pkgname=motrix
+pkgname=motrix-aarch64
 _pkgname=Motrix
 pkgver=1.8.19
 pkgrel=3
 epoch=
 pkgdesc="A full-featured download manager (release version)"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 url="https://github.com/agalwood/Motrix"
 license=('MIT')
 groups=()
-depends=('gtk3' 'libxcb' 'electron22')
+depends=('gtk3' 'libxcb')
 makedepends=('npm' 'yarn' 'nodejs' 'python')
 checkdepends=()
 optdepends=()
@@ -56,10 +56,11 @@ build() {
 }
 
 package() {
+    pkgname=motrix
 
-    install -Dm 644 ${srcdir}/${_pkgname}-${pkgver}/release/linux-unpacked/resources/app.asar ${pkgdir}/usr/lib/${pkgname}/app.asar
-    install -Dm 755 ${srcdir}/${_pkgname}-${pkgver}/release/linux-unpacked/resources/engine/aria2c ${pkgdir}/usr/lib/${pkgname}/engine/aria2c
-    install -Dm 644 ${srcdir}/${_pkgname}-${pkgver}/release/linux-unpacked/resources/engine/aria2.conf ${pkgdir}/usr/lib/${pkgname}/engine/aria2.conf
+    install -Dm 644 ${srcdir}/${_pkgname}-${pkgver}/release/linux-*unpacked/resources/app.asar ${pkgdir}/usr/lib/${pkgname}/app.asar
+    install -Dm 755 ${srcdir}/${_pkgname}-${pkgver}/release/linux-*unpacked/resources/engine/aria2c ${pkgdir}/usr/lib/${pkgname}/engine/aria2c
+    install -Dm 644 ${srcdir}/${_pkgname}-${pkgver}/release/linux-*unpacked/resources/engine/aria2.conf ${pkgdir}/usr/lib/${pkgname}/engine/aria2.conf
 
     # binary wrapper
     install -Dm 775 ${srcdir}/motrix ${pkgdir}/usr/bin/${pkgname}
