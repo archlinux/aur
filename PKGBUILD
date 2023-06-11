@@ -2,7 +2,7 @@
 
 pkgname=tome4-bin
 _pkgname=tome4
-pkgver='1.7.4'
+pkgver='1.7.5'
 pkgrel='1'
 pkgdesc="An open-source, single-player, role-playing roguelike game set in the world of Eyal."
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ source_x86_64=("https://te4.org/dl/t-engine/t-engine4-linux64-${pkgver}.tar.bz2"
 source_i686=("https://te4.org/dl/t-engine/t-engine4-linux32-${pkgver}.tar.bz2")
 sha256sums=('3a1e4901337f91697bcfaf095f488c447c27ccc2484a543e31f024d5aefb61a0'
             '80e663d9eb2d41c6d9c0a6b4b5b52eb33b0872c3412a617530777fd137c0baa1')
-sha256sums_x86_64=('ab53ce825063318564ee2ff74833b86792ee4f276319f5dd57e3803c489defaa')
-sha256sums_i686=('ee78900675d6119ee5e152a4fb9e3a8d26b966a5e6942996dcd8ceae45b6b193')
+sha256sums_x86_64=('1ec45772765e37c443ed12107170e02f6cdc1f7df45c1551fefed3cfefa7f012')
+sha256sums_i686=('57eb2fc0bf3d2103db42e608570abbf540cbb0b4bb516e9358f8d4fbd7a9b6d9')
 
 package() {
 
