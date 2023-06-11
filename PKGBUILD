@@ -1,20 +1,18 @@
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
 
 pkgname='perl-mixin-extrafields-param'
-pkgver='0.020'
+pkgver='0.022'
 pkgrel='1'
 pkgdesc="make your class provide a familiar \"param\" method"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-mixin-extrafields>=0.002')
-makedepends=()
-url='http://search.cpan.org/dist/Mixin-ExtraFields-Param'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Mixin-ExtraFields-Param-0.020.tar.gz')
-md5sums=('8f44556c61149f0c340b459af3d082bb')
-sha512sums=('ee901998d6e11396d6665751944227e07f12b03f0d45144f6d23b18918e8a72093d784620b75a930438f282fff1b4844e5aaf8bcc35c510059499259939522ca')
-_distdir="Mixin-ExtraFields-Param-0.020"
+depends=('perl-mixin-extrafields')
+url='https://search.cpan.org/dist/Mixin-ExtraFields-Param'
+_distdir="Mixin-ExtraFields-Param-$pkgver"
+source=(https://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/$_distdir.tar.gz)
+md5sums=('82acf03e07698245c2eb948514fcb4e2')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +40,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
