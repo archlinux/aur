@@ -1,14 +1,28 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=pwndbg-git
-pkgver=2018.07.29.733.d9cb83b
+pkgver=2022.12.19.r206.g79ade42
 pkgrel=1
 pkgdesc='Makes debugging with GDB suck less'
 url='https://github.com/pwndbg/pwndbg'
 arch=('any')
 license=('MIT')
-depends=('gdb' 'python-capstone' 'python-unicorn' 'python-pycparser' 'python-psutil' 'python-ptrace'
-         'python-pyelftools' 'python-six' 'python-future' 'python-pygments')
+depends=(
+  'gdb'
+  'python'
+  'python-capstone'
+  'python-unicorn'
+  'python-pycparser'
+  'python-psutil'
+  'python-ptrace'
+  'python-tabulate'
+  'python-pwntools'
+  'python-pyelftools'
+  'python-pygments'
+  'python-requests'
+  'python-typing_extensions'
+  'which'
+)
 optdepends=('checksec: checksec command support'
             'ropper: ropper command support'
             'ropgadget: ropgadget command support'
@@ -21,10 +35,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" \
-    "$(git tag -l|sort -V -r|head -n1)" \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
