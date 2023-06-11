@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 pkgname=jskat
 _progname=jskat-linux
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Free implementation of the German card game Skat in Java."
 arch=('any')
@@ -9,7 +9,7 @@ url="http://www.jskat.org"
 license=('GPL3')
 depends=('java-runtime=17' 'bash' 'archlinux-java-run')
 source=("${_progname}-${pkgver}.jar::https://github.com/b0n541/jskat-multimodule/releases/download/v${pkgver}/JSkat-${pkgver}-linux.jar" "${pkgname}.png::http://www.jskat.org/img/jskat_logo.png")
-sha256sums=('e80a20f7d597efe17c3a88efc8f4d63fe6aa2f9023f53d08fc7d145c1d10dd13'
+sha256sums=('f4a0027b84d73dcb91d29b81b65f894889d7372cee50860f70a19c149325915f'
             'd459ce6f79b911b0d0b8e2616338bf875f9867c0490ab20bb6241a66ca0b6570')
 noextract=("${_progname}-${pkgver}.jar")
 
