@@ -6,7 +6,7 @@ pkgname=dingtalk-aarch64
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 pkgver=1.7.0.30424
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉"
 arch=("aarch64")
 url="https://www.dingtalk.com/"
@@ -26,7 +26,6 @@ source=("${_pkgname}_${pkgver}-${arch}.deb::https://dtapp-pub.dingtalk.com/dingt
         "${_pkgname2}.desktop"
         "dingtalk.sh"
         "${_pkgname2}.svg"
-        "http://mirror.archlinuxarm.org/aarch64/extra/cairo-1.17.8-2-aarch64.pkg.tar.xz"
         'xdg-open.sh'
         )
 
@@ -38,7 +37,6 @@ sha512sums=('8b06e82a11c70490d7b24fbb9d97fe8e85d1e2a05d59959fbe204aff29b9b02204f
             'c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f'
             '4dde27376ed3ed5fed5da2a94f45e2556c7bd0fe5086351a9fd204a08b52823d70d60024b91c1f1cc023f5a276442537c0789ffbefa9ef7aa2be2b6e10c99071'
             '5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775'
-            '73a06796ccaea0dc57ab9a07a77b2bb6424f4a615767c236222ee05325c89390be2054f2a3dfd8881f82592606d071957b09dbd47ff6cb83f6f1c76897316dc7'
             '685f7eb38fd0e34aac3f1e1272f4c6f9404765decee82831b9fc4e743e0b0a022f8e49bd5623f524890a719af0b1333b96773fb386b74aeded4307e8b1a626ed')
 
 prepare(){
@@ -70,8 +68,11 @@ package(){
     rm -rf ${pkgdir}/opt/${_pkgname}/release/libgtk-x11-2.0.so.*
 
     # fix cairo
-    cd $srcdir/usr/lib
-    install -Dm755 libcairo.so.2 -t ${pkgdir}/usr/lib/dingtalk
+    wget http://ftp.us.debian.org/debian/pool/main/c/cairo/libcairo2_1.16.0-7_arm64.deb
+    ar x libcairo2_1.16.0-7_arm64.deb
+    tar -xJvf data.tar.xz
+    cd $srcdir/usr/lib/aarch64-linux-gnu/
+    install -Dm755 libcairo.so.2.11600.0 -t ${pkgdir}/usr/lib/dingtalk/libcairo.so.2
 
     # fix open url
     install -Dm755 $srcdir/xdg-open.sh ${pkgdir}/opt/dingtalk/release/xdg-open
