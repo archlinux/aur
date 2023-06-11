@@ -2,7 +2,7 @@
 
 pkgname=python-miepython
 pkgdesc='Mie scattering of light off perfect spheres'
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 arch=('any')
 url='https://miepython.readthedocs.io/'
@@ -24,7 +24,7 @@ source=(
   "$_pyname-$pkgver.tar.gz::https://github.com/scottprahl/$_pyname/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-  '97e5b32afbf6755c60dc8db9a31f43b0422a11e58bb454ff01475d39f70ef98d'
+  '09a6a027f7288f3a3b7aaae296b7639c582595e2521748893a6ed3a73aff9aa9'
 )
 
 prepare() {
@@ -39,15 +39,14 @@ build() {
 
 check() {
   cd "$_pyname-$pkgver"
-
-  # We need an absolute path here. The notebook tests are run in a different
-  # directory so a relative path causes test failures.
-  PYTHONPATH="$PWD/build/lib" pytest -v --notebooks
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer "dist/$_pyname-$pkgver"-*.whl
+  test-env/bin/python -m pytest -v --notebooks
 }
 
 package() {
   cd "$_pyname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" "dist/$_pyname-$pkgver"-*.whl
   install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
   install -m755 -d "$pkgdir/usr/share/$pkgname/examples"
   install -m755 -d "$pkgdir/usr/share/$pkgname/examples/notebooks"
