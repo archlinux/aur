@@ -3,7 +3,7 @@
 pkgname=markdown-editor
 _name=Markdown-Editor
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="standalone editor for your local markdown files"
 arch=('any')
 url="https://github.com/ncornette/Python-Markdown-Editor"

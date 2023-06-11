@@ -1,7 +1,7 @@
 pkgbase = markdown-editor
 	pkgdesc = standalone editor for your local markdown files
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ncornette/Python-Markdown-Editor
 	arch = any
 	license = MIT
