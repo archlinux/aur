@@ -1,12 +1,11 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
-epoch=1
-
 pkgname=gnatcoll-core
+pkgdesc='Gnat components collection - Core packages.'
 pkgver=24.0w
 pkgrel=1
-pkgdesc='Gnat components collection - Core packages.'
+epoch=1
 
 url=https://github.com/AdaCore/gnatcoll-core
 arch=(i686 x86_64)
@@ -20,7 +19,8 @@ makedepends=(gprbuild
              texlive-core
              texlive-latexextra)
 
-source=(file:///opt/gnatstudio-sources/$pkgname-$pkgver-20230324-161A8-src.tar.gz)
+#https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gnatcoll-core-24.0w-20230324-161A8-src.tar.gz
+source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-161A8-src.tar.gz)
 sha256sums=(4698c52bac871cd50aac2a2f305dfe8511731bc17b716400837a5f1f27166505)
 
 _gnatcoll_core_src=$pkgname-$pkgver-20230428-16442-src

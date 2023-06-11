@@ -15,7 +15,7 @@ pkgbase = gnatcoll-core
 	makedepends = texlive-core
 	makedepends = texlive-latexextra
 	depends = libgpr
-	source = file:///opt/gnatstudio-sources/gnatcoll-core-24.0w-20230324-161A8-src.tar.gz
+	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gnatcoll-core-24.0w-20230324-161A8-src.tar.gz
 	sha256sums = 4698c52bac871cd50aac2a2f305dfe8511731bc17b716400837a5f1f27166505
 
 pkgname = gnatcoll-core
