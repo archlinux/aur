@@ -1,47 +1,44 @@
-# Maintainer: Raphael Scholer <rascholer@gmail.com>
-# Contributors: Dan Serban, Dany Martineau, RTFreedman, Harvey, Jordi De Groof,
-#               qqqqqqqqq9
-
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Raphael Scholer <rascholer@gmail.com>
+# Contributors: Dan Serban, Dany Martineau, RTFreedman, Harvey, Jordi De Groof, qqqqqqqqq9
 pkgname=mp3diags
-pkgver=1.2.03
-pkgrel=4
-pkgdesc="Fix and identify issues with MP3 files"
-url="http://mp3diags.sourceforge.net/"
-license=("GPL")
-arch=("i686" "x86_64")
-depends=("boost-libs" "qt4")
-makedepends=("boost")
+pkgver=1.5.02
+pkgrel=1
+pkgdesc="Tool for finding and fixing problems in MP3 files; includes a tagger"
+url="https://mp3diags.sourceforge.net/"
+license=('GPL2')
+arch=('x86_64')
+depends=('boost-libs' 'qt5-base')
+makedepends=('boost' 'qt5-tools')
 optdepends=('mp3gain: MP3 normalization support')
-source=("http://downloads.sourceforge.net/project/mp3diags/mp3diags-src/MP3Diags-${pkgver}.tar.gz")
-sha1sums=('53a699b809781819988a17b7558b9c0aab08d76a')
+source=("https://downloads.sourceforge.net/project/mp3diags/unstable/mp3diags-src/MP3Diags-unstable-${pkgver}.tar.gz")
+sha256sums=('6dacea62988e7ffee79217cf404268ece22b3fee95474f021c22f854a9f3e8e6')
+
+prepare() {
+  cd "MP3Diags-unstable-$pkgver"
+  sed -i 's/-unstable//g' desktop/MP3Diags-unstable.desktop
+  sed -i 's/\/unstable//g' desktop/MP3Diags-unstable.desktop
+}
 
 build() {
-	cd "MP3Diags-${pkgver}"
-	./AdjustMt.sh
-	qmake-qt4
-	make
-	lrelease-qt4 src/translations/mp3diags_*.ts
+  cd "MP3Diags-unstable-$pkgver"
+  ./AdjustMt.sh
+  qmake-qt5
+  make
+  lrelease src/translations/mp3diags_*.ts
 }
 
 package() {
-	cd "MP3Diags-${pkgver}"
+  cd "MP3Diags-unstable-$pkgver"
+  install -Dm755 bin/MP3Diags-unstable "$pkgdir/usr/bin/MP3Diags"
+  install -Dm644 desktop/MP3Diags-unstable.desktop \
+    "$pkgdir/usr/share/applications/MP3Diags.desktop"
 
-	install -m755 -d "${pkgdir}/usr/bin"
-	install -m755 -d "${pkgdir}/usr/share/applications"
+  for i in 16 22 24 32 36 40 48; do
+    install -Dm644 "desktop/MP3Diags-unstable${i}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/MP3Diags.png"
+  done
 
-	cd "bin"
-	install -m755 -t "${pkgdir}/usr/bin" "MP3Diags"
-
-	cd "../desktop"
-	install -m644 -t "${pkgdir}/usr/share/applications" "MP3Diags.desktop"
-
-	for i in "16" "22" "24" "32" "36" "40" "48"; do
-		install -m755 -d "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps"
-		install -p -m644 "MP3Diags${i}.png" \
-		                 "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/MP3Diags.png"
-	done
-
-	cd "${srcdir}/MP3Diags-${pkgver}/src/translations"
-	install -m755 -d "${pkgdir}/usr/share/mp3diags/translations"
-	install -m644 -t "${pkgdir}/usr/share/mp3diags/translations" *.qm
+  install -Dm644 src/translations/*.qm -t "$pkgdir/usr/share/mp3diags/translations/"
 }
