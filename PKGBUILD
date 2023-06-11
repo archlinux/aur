@@ -31,15 +31,12 @@ build() {
   rm -rf build
   mkdir build
   cd "${srcdir}/${_pkgname}-${pkgver}/build"
-  cmake PREFIX=/usr ..
-  make
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr
+  make -j8
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  install -d "${pkgdir}/usr"
-  cp -R bin/linux/bin "${pkgdir}/usr"
-  cp -R bin/linux/share "${pkgdir}/usr"
-  chown -R root:root "${pkgdir}/"
+  cd "${srcdir}/${_pkgname}-${pkgver}/build"
+  make install DESTDIR="${pkgdir}"
 }
 # vim:set ts=2 sw=2 et:
