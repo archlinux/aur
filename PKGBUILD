@@ -3,11 +3,11 @@
 buildarch=20
 
 pkgbase=linux-rpi-legacy
-_commit=b34bf3273cfe492daa04fc57eb88782df1714a66
+_commit=bb63dc31e48948bc2649357758c7a152210109c4
 _srcname=linux-${_commit}
 _kernelname=${pkgbase#linux}
 _desc="RPi 1/Zero/Zero W only"
-pkgver=5.15.48
+pkgver=6.1.32
 pkgrel=1
 pkgdesc='Linux'
 url="http://www.kernel.org/"
@@ -25,7 +25,7 @@ source=("linux-$pkgver-${_commit:0:10}.tar.gz::https://github.com/raspberrypi/li
         60-linux.hook
         90-linux.hook
 )
-md5sums=('42d49846a4a9b2612d0b958cee04dc4c'
+md5sums=('20c3f8379959e8b482e2e897a36f9754'
          '31c02f4518d46deb5f0c2ad1f8b083cd'
          '7c2cace68dd229483b28ba7147347811'
          '8c9f4df9503130411595ddd7b482d885'
