@@ -6,8 +6,6 @@ pkgbase = webgpu-headers-git
 	arch = any
 	license = BSD
 	makedepends = git
-	provides = webgpu-headers
-	conflicts = webgpu-headers
 	source = git+https://github.com/webgpu-native/webgpu-headers.git
 	sha256sums = SKIP
 
