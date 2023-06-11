@@ -4,7 +4,7 @@
 
 pkgname=ib-tws
 pkgver=10.23.1q
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
 arch=('any')
@@ -52,7 +52,7 @@ build() {
 
   if [ ! -f "${BUNDLED_JRE_LOCATION}/bin/java" ]; then
     echo "java.home JRE location did not contain java; finding log entry which installed java"
-    BUNDLED_JRE_LOCATION=$(grep -e "Install file.*\/java\;" ${srcdir}/target/.install4j/installation.log | head -n 1 | cut -d ';' -f 1|sed -e 's/ .*Install file\: //g'|sed 's/\/bin\/java//')
+    BUNDLED_JRE_LOCATION=$(grep -e "Install file.*/java;" ${srcdir}/target/.install4j/installation.log | head -n 1 | cut -d ';' -f 1|sed -e 's/ .*Install file\: //g'|sed 's/\/bin\/java//')
     if [ -z "${BUNDLED_JRE_LOCATION}" ]; then
       echo "Could not find bundled JRE installation entry in log"
       exit 1
