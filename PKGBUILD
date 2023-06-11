@@ -1,38 +1,59 @@
+# Maintainer:
+# Contributor: Haron Prime (Haron_Prime) <haron.prime@gmx.com>
 
-# Maintainer: Haron Prime (Haron_Prime) <haron.prime@gmx.com>
-pkgname=gis-weather-git
-pkgver=0.8.2.76
+_pkgname="gis-weather"
+pkgname="$_pkgname-git"
+pkgver=0.8.4.17.r3.g98fd207
 pkgrel=1
 pkgdesc="Customizable weather widget"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/RingOV/gis-weather"
-license=('GPLv3')
-groups=()
-depends=('gtk3' 'python' 'python-gobject' 'python-cairo')
-makedepends=('git')
-provides=()
-conflicts=('gis-weather')
+license=('GPL3')
+depends=(
+  'gtk3'
+  'libappindicator-gtk3'
+  'python'
+  'python-cairo'
+  'python-distro'
+  'python-gobject'
+)
+makedepends=(
+  'git'
+)
 
-source=("${pkgname}::git://github.com/RingOV/gis-weather")
-md5sums=('SKIP')
+provides=("$_pkgname")
+conflicts=(${provides[@]})
+
+source=(
+  "$_pkgname"::"git+https://github.com/RingOV/gis-weather"
+  "gis-weather.desktop"
+)
+sha256sums=(
+  'SKIP'
+  'e5bd1f85c730fcf4a5cc2618b2cb3184597443188b12eb2071540468418575e3'
+)
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
-  mkdir -p ${pkgdir}/usr/bin
-  mkdir -p ${pkgdir}/usr/share/gis-weather
-  mkdir -p ${pkgdir}/usr/share/applications
-  cp -R $srcdir/$pkgname/. $pkgdir/usr/share/gis-weather
-  rm -fr $pkgdir/usr/share/gis-weather/.git
-  chmod -R 777 $pkgdir/usr/share/gis-weather 
-  echo "exec python3 /usr/share/gis-weather/gis-weather.py $*" > ${pkgdir}/usr/bin/gis-weather
-  chmod 755 ${pkgdir}/usr/bin/gis-weather
-  echo "[Desktop Entry]
-Name=Gis Weather
-Comment=Weather widget
-Categories=GNOME;Utility;
-Exec=/usr/bin/gis-weather
-Icon=/usr/share/gis-weather/icon.png
-Terminal=false
-Type=Application" > $pkgdir/usr/share/applications/gis-weather.desktop
-  #install -Dm644 "gis-weather.desktop" "$pkgdir/usr/share/applications/gis-weather.desktop"
-  #install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  cd "$srcdir/$_pkgname"
+
+  # symlink executable
+  mkdir -p "$pkgdir/usr/bin"
+  ln -s '/usr/share/gis-weather/gis-weather.py' "$pkgdir/usr/bin/gis-weather"
+
+  # install files
+  install -vDm0755 'gis-weather.py' -t "$pkgdir/usr/share/gis-weather"
+  install -vDm0644 'icon.png' -t "$pkgdir/usr/share/pixmaps"
+  install -vDm0644 "$srcdir/gis-weather.desktop" -t "$pkgdir/usr/share/applications"
+
+  install -vDm0644 {'icon.png','README.md'} -t "$pkgdir/usr/share/gis-weather"
+
+  #install folders
+  for _f in 'dialogs' 'i18n' 'po' 'services' 'themes' 'utils' ; do
+    cp --reflink=auto -r "$_f" "$pkgdir/usr/share/gis-weather/"
+  done
 }

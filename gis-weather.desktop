@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Gis Weather
+Comment=Weather widget
+Categories=GNOME;Utility;
+Exec=/usr/bin/gis-weather
+Icon=gis-weather
+Terminal=false
+Type=Application
