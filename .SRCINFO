@@ -11,7 +11,6 @@ pkgbase = pot-translation-bin
 	depends = xdotool
 	depends = libxcb
 	depends = libxrandr
-	depends = dbus
 	provides = pot-translation
 	conflicts = pot-translation
 	conflicts = pot-translation-git

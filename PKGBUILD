@@ -11,7 +11,7 @@ url="https://github.com/pot-app/pot-desktop"
 license=('GPL3')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
-depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'xdotool' 'libxcb' 'libxrandr' 'dbus')
+depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'xdotool' 'libxcb' 'libxrandr')
 
 source=("${prjname}-${pkgver}-${arch}.deb::${url}/releases/download/${pkgver}/${prjname}_${pkgver}_amd64.deb")
 
