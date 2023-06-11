@@ -1,0 +1,437 @@
+From 1bd86c66cdb4f9cc9db2a2b3932a407a41f9000c Mon Sep 17 00:00:00 2001
+From: Grim Maple <grimmaple95@gmail.com>
+Date: Thu, 18 May 2023 22:57:40 +0300
+Subject: [PATCH] Update code for dlangui 0.10.3
+
+---
+ dub.json                           |  2 +-
+ src/dlangide/ui/dmdprofilerview.d  | 36 +++++++++++++++---------------
+ src/dlangide/ui/newproject.d       | 24 ++++++++++----------
+ src/dlangide/workspace/project.d   | 30 ++++++++++++-------------
+ src/dlangide/workspace/workspace.d | 34 ++++++++++++++--------------
+ 5 files changed, 63 insertions(+), 63 deletions(-)
+
+diff --git a/dub.json b/dub.json
+index 7a028cd0..d1540051 100644
+--- a/dub.json
++++ b/dub.json
+@@ -12,7 +12,7 @@
+     "stringImportPaths": ["views"],
+ 
+     "dependencies": {
+-        "dlangui": "~>0.10.2",
++        "dlangui": "~>0.10.3",
+         "dcd": "~>0.16.0-beta.1"
+     },
+ 
+diff --git a/src/dlangide/ui/dmdprofilerview.d b/src/dlangide/ui/dmdprofilerview.d
+index 54758146..5615e525 100644
+--- a/src/dlangide/ui/dmdprofilerview.d
++++ b/src/dlangide/ui/dmdprofilerview.d
+@@ -43,7 +43,7 @@ class DMDProfilerView : WidgetGroupDefaultDrawing {
+ 
+ class TraceFuncionGrid : StringGridWidgetBase {
+     protected FunctionNode[] _list;
+-    protected dstring[] _colTitles;
++    protected UIString[] _colTitles;
+     protected ulong _ticksPerSecond;
+     this(string ID, FunctionNode[] list, ulong ticks_per_second) {
+         super(ID);
+@@ -53,10 +53,10 @@ class TraceFuncionGrid : StringGridWidgetBase {
+         fullColumnOnLeft(false);
+         fullRowOnTop(false);
+         resize(4, cast(int)list.length);
+-        setColTitle(0, "Function name"d);
+-        setColTitle(1, "Called"d);
+-        setColTitle(2, "F us"d);
+-        setColTitle(3, "F+D us"d);
++        setColTitle(0, UIString.fromRaw("Function name"));
++        setColTitle(1, UIString.fromRaw("Called"));
++        setColTitle(2, UIString.fromRaw("F us"));
++        setColTitle(3, UIString.fromRaw("F+D us"));
+         showRowHeaders = false;
+         rowSelect = true;
+         minVisibleRows = 10;
+@@ -80,54 +80,54 @@ class TraceFuncionGrid : StringGridWidgetBase {
+             buffer[i] = buf[k - i - 1];
+         return cast(dstring)buffer[0..k];
+     }
+-    dstring formatDurationTicks(ulong n) {
++    auto formatDurationTicks(ulong n) {
+         ulong v = n * 1000000 / _ticksPerSecond;
+-        return formatNumber(v, _numberFormatBuf[]);
++        return UIString.fromRaw(formatNumber(v, _numberFormatBuf[]));
+     }
+ 
+     /// get cell text
+-    override dstring cellText(int col, int row) {
++    override UIString cellText(int col, int row) {
+         import std.conv : to;
+         if (row < 0 || row >= _list.length)
+-            return ""d;
++            return UIString.fromRaw(""d);
+         FunctionNode entry = _list[row];
+         switch (col) {
+             case 0:
+                 string fn = entry.name;
+                 if (fn.length > 256)
+                     fn = fn[0..256] ~ "...";
+-                return fn.to!dstring;
++                return UIString.fromRaw(fn.to!dstring);
+             case 1:
+-                return formatNumber(entry.number_of_calls, _numberFormatBuf);
++                return UIString.fromRaw(formatNumber(entry.number_of_calls, _numberFormatBuf));
+             case 2:
+                 return formatDurationTicks(entry.function_time);
+             case 3:
+                 return formatDurationTicks(entry.function_and_descendant_time);
+             default:
+-                return ""d;
++                return UIString.fromRaw(""d);
+         }
+     }
+     /// set cell text
+-    override StringGridWidgetBase setCellText(int col, int row, dstring text) {
++    override StringGridWidgetBase setCellText(int col, int row, UIString text) {
+         // do nothing
+         return this;
+     }
+     /// returns row header title
+-    override dstring rowTitle(int row) {
+-        return ""d;
++    override UIString rowTitle(int row) {
++        return UIString.fromRaw(""d);
+     }
+     /// set row header title
+-    override StringGridWidgetBase setRowTitle(int row, dstring title) {
++    override StringGridWidgetBase setRowTitle(int row, UIString title) {
+         return this;
+     }
+ 
+     /// returns row header title
+-    override dstring colTitle(int col) {
++    override UIString colTitle(int col) {
+         return _colTitles[col];
+     }
+ 
+     /// set col header title
+-    override StringGridWidgetBase setColTitle(int col, dstring title) {
++    override StringGridWidgetBase setColTitle(int col, UIString title) {
+         _colTitles[col] = title;
+         return this;
+     }
+diff --git a/src/dlangide/ui/newproject.d b/src/dlangide/ui/newproject.d
+index d1463e51..0663f776 100644
+--- a/src/dlangide/ui/newproject.d
++++ b/src/dlangide/ui/newproject.d
+@@ -38,7 +38,7 @@ class NewProjectDlg : Dialog {
+     IDEFrame _ide;
+ 
+     this(IDEFrame parent, bool newWorkspace, Workspace currentWorkspace, string dir) {
+-        super(newWorkspace ? UIString.fromId("OPTION_NEW_WORKSPACE"c) : UIString.fromId("OPTION_NEW_PROJECT"c), parent.window, 
++        super(newWorkspace ? UIString.fromId("OPTION_NEW_WORKSPACE"c) : UIString.fromId("OPTION_NEW_PROJECT"c), parent.window,
+               DialogFlag.Modal | DialogFlag.Resizable | DialogFlag.Popup, 500, 400);
+         _ide = parent;
+         _icon = "dlangui-logo1";
+@@ -64,8 +64,8 @@ class NewProjectDlg : Dialog {
+                                 margins: 5
+                                 layoutWidth: 25%; layoutHeight: fill
+                                 TextWidget { text: OPTION_PROJECT_TEMPLATE }
+-                                StringListWidget { 
+-                                    id: projectTemplateList 
++                                StringListWidget {
++                                    id: projectTemplateList
+                                     layoutWidth: wrap; layoutHeight: fill
+                                 }
+                             }
+@@ -73,8 +73,8 @@ class NewProjectDlg : Dialog {
+                                 margins: 5
+                                 layoutWidth: 40%; layoutHeight: fill
+                                 TextWidget { text: OPTION_TEMPLATE_DESCR }
+-                                EditBox { 
+-                                    id: templateDescription; readOnly: true 
++                                EditBox {
++                                    id: templateDescription; readOnly: true
+                                     layoutWidth: fill; layoutHeight: fill
+                                 }
+                             }
+@@ -82,7 +82,7 @@ class NewProjectDlg : Dialog {
+                                 layoutWidth: 35%; layoutHeight: fill
+                                 margins: 5
+                                 TextWidget { text: OPTION_DIRECTORY_LAYOUT }
+-                                EditBox { 
++                                EditBox {
+                                     id: directoryLayout; readOnly: true
+                                     layoutWidth: fill; layoutHeight: fill
+                                 }
+@@ -362,13 +362,13 @@ class NewProjectDlg : Dialog {
+         project.name = toUTF32(_projectName);
+         if (!project.save())
+             return setError("Cannot save project");
+-        project.content.setString("targetName", _projectName);
++        project.content.setting.setString("targetName", _projectName);
+         if (_currentTemplate.isLibrary) {
+-            project.content.setString("targetType", "staticLibrary");
+-            project.content.setString("targetPath", "lib");
++            project.content.setting.setString("targetType", "staticLibrary");
++            project.content.setting.setString("targetPath", "lib");
+         } else {
+-            project.content.setString("targetType", "executable");
+-            project.content.setString("targetPath", "bin");
++            project.content.setting.setString("targetType", "executable");
++            project.content.setting.setString("targetPath", "bin");
+         }
+         if (_currentTemplate.json)
+             project.content.merge(_currentTemplate.json);
+@@ -500,7 +500,7 @@ extern (C) int UIAppMain(string[] args) {
+     };
+     // show message box with content of editors
+     window.mainWidget.childById!Button("btnOk").click = delegate(Widget w) {
+-        window.showMessageBox(UIString.fromId("MSG_OK_BUTTON"c), 
++        window.showMessageBox(UIString.fromId("MSG_OK_BUTTON"c),
+                               UIString.fromId("EDITOR_CONTENT"c) ~ "\nEdit1: "d ~ edit1.text ~ "\nEdit2: "d ~ edit2.text);
+         return true;
+     };
+diff --git a/src/dlangide/workspace/project.d b/src/dlangide/workspace/project.d
+index f0abebbd..71d6db70 100644
+--- a/src/dlangide/workspace/project.d
++++ b/src/dlangide/workspace/project.d
+@@ -312,19 +312,19 @@ struct ProjectConfiguration {
+     string name;
+     /// type, for libraries one can run tests, for apps - execute them
+     Type type;
+-    
++
+     /// How to display default configuration in ui
+     immutable static string DEFAULT_NAME = "default";
+     /// Default project configuration
+     immutable static ProjectConfiguration DEFAULT = ProjectConfiguration(DEFAULT_NAME, Type.Default);
+-    
++
+     /// Type of configuration
+     enum Type {
+         Default,
+         Executable,
+         Library
+     }
+-    
++
+     private static Type parseType(string s)
+     {
+         switch(s)
+@@ -336,7 +336,7 @@ struct ProjectConfiguration {
+             default: return Type.Default;
+         }
+     }
+-    
++
+     /// parsing from setting file
+     static ProjectConfiguration[] load(Setting s)
+     {
+@@ -491,7 +491,7 @@ class Project : WorkspaceItem {
+     /// name
+     override @property void name(dstring s) {
+         super.name(s);
+-        _projectFile.setString("name", toUTF8(s));
++        _projectFile.setting.setString("name", toUTF8(s));
+     }
+ 
+     /// name
+@@ -502,7 +502,7 @@ class Project : WorkspaceItem {
+     /// name
+     override @property void description(dstring s) {
+         super.description(s);
+-        _projectFile.setString("description", toUTF8(s));
++        _projectFile.setting.setString("description", toUTF8(s));
+     }
+ 
+     /// returns project's own source paths
+@@ -577,12 +577,12 @@ class Project : WorkspaceItem {
+         if (!isExecutable)
+             return null;
+         string exename = toUTF8(name);
+-        exename = _projectFile.getString("targetName", exename);
++        exename = _projectFile.setting.getString("targetName", exename);
+         // TODO: use targetName
+         version (Windows) {
+             exename = exename ~ ".exe";
+         }
+-        string targetPath = _projectFile.getString("targetPath", null);
++        string targetPath = _projectFile.setting.getString("targetPath", null);
+         string exePath;
+         if (targetPath.length)
+             exePath = buildNormalizedPath(_filename.dirName, targetPath, exename); // int $targetPath directory
+@@ -686,10 +686,10 @@ class Project : WorkspaceItem {
+     protected string[] findSourcePaths() {
+         string[] res;
+         res.assumeSafeAppend;
+-        string[] srcPaths = _projectFile.getStringArray("sourcePaths");
++        string[] srcPaths = _projectFile.setting.getStringArray("sourcePaths");
+         foreach(s; srcPaths)
+             addRelativePathIfExists(res, s);
+-        Setting configs = _projectFile.objectByPath("configurations");
++        Setting configs = _projectFile.setting.objectByPath("configurations");
+         if (configs) {
+             for (int i = 0; i < configs.length; i++) {
+                 Setting s = configs[i];
+@@ -711,7 +711,7 @@ class Project : WorkspaceItem {
+     void processSubpackages() {
+         import dlangui.core.files;
+         _subPackages.length = 0;
+-        Setting subPackages = _projectFile.settingByPath("subPackages", SettingType.ARRAY, false);
++        Setting subPackages = _projectFile.setting.settingByPath("subPackages", SettingType.ARRAY, false);
+         if (subPackages) {
+             string p = _projectFile.filename.dirName;
+             for(int i = 0; i < subPackages.length; i++) {
+@@ -762,7 +762,7 @@ class Project : WorkspaceItem {
+         //
+         _mainSourceFile = null;
+         try {
+-            _name = toUTF32(_projectFile.getString("name"));
++            _name = toUTF32(_projectFile.setting.getString("name"));
+             _originalName = _name;
+             if (_baseProjectName) {
+                 _name = _baseProjectName ~ ":" ~ _name;
+@@ -771,7 +771,7 @@ class Project : WorkspaceItem {
+                 _name ~= "-"d;
+                 _name ~= toUTF32(_dependencyVersion.startsWith("~") ? _dependencyVersion[1..$] : _dependencyVersion);
+             }
+-            _description = toUTF32(_projectFile.getString("description"));
++            _description = toUTF32(_projectFile.setting.getString("description"));
+             Log.d("  project name: ", _name);
+             Log.d("  project description: ", _description);
+ 
+@@ -787,7 +787,7 @@ class Project : WorkspaceItem {
+             if (!_isDependency)
+                 loadSelections();
+ 
+-            _configurations = ProjectConfiguration.load(_projectFile);
++            _configurations = ProjectConfiguration.load(_projectFile.setting);
+             Log.i("Project configurations: ", _configurations);
+ 
+ 
+@@ -843,7 +843,7 @@ class Project : WorkspaceItem {
+             _dependencies = newdeps;
+             return false;
+         }
+-        Setting versions = selectionsFile.objectByPath("versions");
++        Setting versions = selectionsFile.setting.objectByPath("versions");
+         if (!versions.isObject) {
+             _dependencies = newdeps;
+             return false;
+diff --git a/src/dlangide/workspace/workspace.d b/src/dlangide/workspace/workspace.d
+index f8002e95..d2f3d09c 100644
+--- a/src/dlangide/workspace/workspace.d
++++ b/src/dlangide/workspace/workspace.d
+@@ -54,9 +54,9 @@ class Workspace : WorkspaceItem {
+     protected Project[] _projects;
+     protected SettingsFile _workspaceFile;
+     protected WorkspaceSettings _settings;
+-    
++
+     protected IDEFrame _frame;
+-    
++
+     this(IDEFrame frame, string fname = WORKSPACE_EXTENSION) {
+         super(fname);
+         _workspaceFile = new SettingsFile(fname);
+@@ -74,9 +74,9 @@ class Workspace : WorkspaceItem {
+     }
+ 
+     @property Setting includePath(){
+-        Setting res = _workspaceFile.objectByPath("includePath", true);
++        Setting res = _workspaceFile.setting.objectByPath("includePath", true);
+         return res;
+-    }    
++    }
+ 
+     @property Project[] projects() { return _projects; }
+ 
+@@ -91,19 +91,19 @@ class Workspace : WorkspaceItem {
+     protected Project _startupProject;
+ 
+     @property Project startupProject() { return _startupProject; }
+-    @property void startupProject(Project project) { 
++    @property void startupProject(Project project) {
+         if (_startupProject is project)
+             return;
+         _startupProject = project;
+         _settings.startupProjectName = toUTF8(project.name);
+         _frame.updateProjectConfigurations();
+     }
+-    
++
+     /// Last opened files in workspace
+     @property WorkspaceFile[] files() {
+         return _settings.files();
+     }
+-    
++
+     /// Last opened files in workspace
+     @property void files(WorkspaceFile[] fs) {
+         _settings.files(fs);
+@@ -159,7 +159,7 @@ class Workspace : WorkspaceItem {
+         updateBreakpointFiles(res);
+         return res;
+     }
+-    
++
+     void setSourceFileBreakpoints(ProjectSourceFile file, Breakpoint[] breakpoints) {
+         _settings.setProjectBreakpoints(toUTF8(file.project.name), file.projectFilePath, breakpoints);
+     }
+@@ -169,7 +169,7 @@ class Workspace : WorkspaceItem {
+         updateBookmarkFiles(res);
+         return res;
+     }
+-    
++
+     void setSourceFileBookmarks(ProjectSourceFile file, EditorBookmark[] bookmarks) {
+         _settings.setProjectBookmarks(toUTF8(file.project.name), file.projectFilePath, bookmarks);
+     }
+@@ -180,7 +180,7 @@ class Workspace : WorkspaceItem {
+         updateBreakpointFiles(res);
+         return res;
+     }
+-    
++
+     protected void fillStartupProject() {
+         string s = _settings.startupProjectName;
+         if ((!_startupProject || !_startupProject.name.toUTF8.equal(s)) && _projects.length) {
+@@ -312,13 +312,13 @@ class Workspace : WorkspaceItem {
+             if (nf && !_name.empty) // cut off last comma
+                 _name = _name[ 0 .. $ - 1 ];
+             if (df && !_description.empty) // cut off last delimiter
+-                _description = _description[ 0 .. $ - 3 ]; 
++                _description = _description[ 0 .. $ - 3 ];
+         }
+-        _workspaceFile.setString("name", toUTF8(_name));
+-        _workspaceFile.setString("description", toUTF8(_description));
++        _workspaceFile.setting.setString("name", toUTF8(_name));
++        _workspaceFile.setting.setString("description", toUTF8(_description));
+         Log.d("workspace name: ", _name);
+         Log.d("workspace description: ", _description);
+-        Setting projects = _workspaceFile.objectByPath("projects", true);
++        Setting projects = _workspaceFile.setting.objectByPath("projects", true);
+         projects.clear(SettingType.OBJECT);
+         foreach (Project p; _projects) {
+             if (p.isDependency)
+@@ -346,8 +346,8 @@ class Workspace : WorkspaceItem {
+             return false;
+         }
+         _settings.load(filename ~ WORKSPACE_SETTINGS_EXTENSION);
+-        _name = toUTF32(_workspaceFile["name"].str);
+-        _description = toUTF32(_workspaceFile["description"].str);
++        _name = toUTF32(_workspaceFile.setting["name"].str);
++        _description = toUTF32(_workspaceFile.setting["description"].str);
+         Log.d("workspace name: ", _name);
+         Log.d("workspace description: ", _description);
+         if (_name.empty()) {
+@@ -355,7 +355,7 @@ class Workspace : WorkspaceItem {
+             return false;
+         }
+         auto originalStartupProjectName = _settings.startupProjectName;
+-        Setting projects = _workspaceFile.objectByPath("projects", true);
++        Setting projects = _workspaceFile.setting.objectByPath("projects", true);
+         foreach(string key, Setting value; projects) {
+             string path = value.str;
+             Log.d("project: ", key, " path:", path);
