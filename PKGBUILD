@@ -34,7 +34,7 @@ sha256sums=('4b65b33dc88d77fef6e7ba1bdc1ae88b149296d3e1eb87db251bfcdf119a1f22'
 
 build() {
   cd ${srcdir}
-  rm -rf ${srcdir}/target ${srcdir}/jre
+  rm -rf ${srcdir}/target ${srcdir}/jre ${srcdir}/*.jar
   mkdir ${srcdir}/target ${srcdir}/jre
 
   chmod +x tws-${pkgver}-standalone-linux-x64.sh
