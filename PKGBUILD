@@ -4,7 +4,7 @@
 
 _pkgname=chatbox
 pkgname="${_pkgname}-appimage"
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Chatbox is a desktop app for GPT-4 / GPT-3.5 (OpenAI API) that supports Windows, Mac & Linux."
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=(!strip)
 _appimage="${_pkgname}.AppImage"
 source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage")
 noextract=("$_appimage")
-sha512sums=('8b3415ead8ff83e89c3fbb515d1ede9ebee4c872c7c533b6a75a33ec8b18e1deddf52796774d0cf1a6602383eb9b6128d1c6c708ece8a6fa90164fbcbb531e09')
+sha512sums=('cfc7c40c17a181dbafec2a4521d9d524984dc166a1abbb8136921321093b9d2672e46a97da83bd915cf0e16444ad10c5231e5d3a65fc0d04b5a813bbb4661f46')
 
 prepare() {
     mv "${_pkgname}_${pkgver}_amd64.AppImage" "$_appimage"
