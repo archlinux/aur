@@ -3,21 +3,22 @@
 # Mantainer: XenGi
 pkgname=unrealtournament
 pkgver=469c
-pkgrel=3
+pkgrel=4
 pkgdesc="The classic Unreal Tournament from 1999 (Retail CD or DVD required)"
 arch=('i686' 'x86_64')
 url="http://www.unrealtournament.com/"
 license=('custom')
+depends=('libfmod' 'libxmp' 'mpg123' 'openal' 'sdl2' 'sdl2_ttf')
 optdepends=('innoextract: Extract GOG release')
 source=("ut.desktop"
         "ut.svg.zstd")
-source_i686+=("OldUnreal-UTPatch${pkgver}-Linux.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux-x86.tar.bz2")
-source_x86_64+=("OldUnreal-UTPatch${pkgver}-Linux.tar.bz2::https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2")
-noextract=("OldUnreal-UTPatch${pkgver}-Linux.tar.bz2")
+source_i686=("https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux-x86.tar.bz2")
+source_x86_64=("https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${pkgver}/OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2")
+noextract=("OldUnreal-UTPatch${pkgver}-Linux-x86.tar.bz2" "OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2")
 sha256sums=('fea5efdcac67564f2b5b8ef215115990739243a53a5f86e67f9414081d5b28dc'
             '8fc6bc71f20b8395d75fad8b30d18fc6c9d39fee1f9633be090ad8fd779e8827')
-sha256sums_i686+=('30978800c100e8c5a20fbc66a04b9e12f843424b3a811b04e6fb8e1b6b5d6543')
-sha256sums_x86_64+=('4c99bde06d26b724f14471d374d4d6105dbdc98c56ec2a40af3fa541956eeed9')
+sha256sums_i686=('30978800c100e8c5a20fbc66a04b9e12f843424b3a811b04e6fb8e1b6b5d6543')
+sha256sums_x86_64=('4c99bde06d26b724f14471d374d4d6105dbdc98c56ec2a40af3fa541956eeed9')
 
 prepare() {
     # Mount the UT (GOTY) cd/image or unpack the GOG distribution with the innoextract tool.
@@ -56,13 +57,25 @@ package() {
     # Set game destination
     export _game_dir="/opt/ut"
 
+    [ "$CARCH" = "i686" ] && _system_dir=${_game_dir}/System
+    [ "$CARCH" = "i686" ] && _srctar=OldUnreal-UTPatch${pkgver}-Linux-x86.tar.bz2
+    [ "$CARCH" = "x86_64" ] && _system_dir=${_game_dir}/System64
+    [ "$CARCH" = "x86_64" ] && _srctar=OldUnreal-UTPatch${pkgver}-Linux-amd64.tar.bz2
+
     # Create game directory
     install --mode=755 -d -- ${pkgdir}${_game_dir}/{Music,Sounds,Maps}
 
     # Unpack patch into game directory
-    tar xaf ${srcdir}/OldUnreal-UTPatch${pkgver}-Linux.tar.bz2 -C ${pkgdir}${_game_dir}
+    tar xaf ${srcdir}/${_srctar} -C ${pkgdir}${_game_dir}
     # fix permissions
     find ${pkgdir}${_game_dir} -type d -exec chmod 755 {} \;
+
+    # Remove bundled libraries to use native versions instead
+    rm ${pkgdir}${_system_dir}/libfmod.so*
+    rm ${pkgdir}${_system_dir}/libmpg123.so*
+    rm ${pkgdir}${_system_dir}/libopenal.so*
+    rm ${pkgdir}${_system_dir}/libSDL2*
+    rm ${pkgdir}${_system_dir}/libxmp.so*
 
     # Copy the Music and Sounds directories from the distribution directory into the game directory
     install --mode=644 -t ${pkgdir}${_game_dir}/Music ${srcdir}/dist_dir/Music/*
@@ -81,9 +94,9 @@ package() {
     # Extract all compressed maps (i.e., maps with a .uz extension) into your game's Maps directory as follows.
     # If there are no compressed maps in your game distribution folder, you may ignore this step.
     #for i in /mnt/Maps/*.uz; do ./System64/ucc-bin decompress $i; done
-    [ "$CARCH" = "i686" ] && _system_dir=${_game_dir}/System
-    [ "$CARCH" = "x86_64" ] && _system_dir=${_game_dir}/System64
-    find ${srcdir}/dist_dir/Maps/ -name "*.uz" -exec ${pkgdir}${_system_dir}/ucc-bin decompress {} \;
+    find ${srcdir}/dist_dir/Maps/ -name "*.uz" -exec ${pkgdir}${_system_dir}/ucc-bin decompress {} -nohomedir \;
+    set -- ${pkgdir}${_system_dir}/*.unr
+    [ -f "$1" ] && mv ${pkgdir}${_system_dir}/*.unr ${pkgdir}${_game_dir}/Maps
 
     install --mode 755 -d -- ${pkgdir}/usr/bin
     ln -s ${_system_dir}/ut-bin ${pkgdir}/usr/bin/ut
