@@ -2,7 +2,7 @@
 # Maintainer: Famous
 # Contributor: Famous
 pkgname=zelcore
-pkgver=5.23.0
+pkgver=7.1.3
 pkgrel=0
 pkgdesc="Zelcore Platform"
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'xdg-utils' 'libxtst' 'at-spi2-core' 
 optdepends=('libappindicator-gtk3')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://resources.zelcore.workers.dev/downloads/zelcore.deb")
-sha256sums_x86_64=('c19c338a2568d7a2f7f32570d4512dbe75d2199581bc968a3848222e8c241e25')
+source_x86_64=("https://zelcore.io/download/zelcore-for-linux-debian/?tmstv=1686570772")
+sha256sums_x86_64=('24bd89b474555cc36ffa84f510a3ea246fc7dc7c689139f2107739032e0bfb43')
 
 
 
