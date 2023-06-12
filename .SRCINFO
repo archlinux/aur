@@ -1,5 +1,5 @@
 pkgbase = emacs-pretest
-	pkgdesc = The extensible, customizable, self-documenting real-time display editor -- pretest version.
+	pkgdesc = The extensible, customizable, self-documenting real-time display editor -- pretest version. Uses tree-sitter.
 	pkgver = 29.0
 	pkgrel = 0.91
 	url = http://www.gnu.org/software/emacs/emacs.html
@@ -11,6 +11,7 @@ pkgbase = emacs-pretest
 	depends = giflib
 	depends = libotf
 	depends = libgccjit
+	depends = tree-sitter
 	provides = emacs
 	provides = emacs-nativecomp
 	conflicts = emacs-nox

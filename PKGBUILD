@@ -8,7 +8,7 @@ _pkgname=emacs
 pkgver=29.0
 _pkgver=29.0.91
 pkgrel=0.91
-pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version."
+pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version. Uses tree-sitter."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
@@ -19,6 +19,7 @@ depends=(
   'giflib'
   'libotf'
   'libgccjit'
+  'tree-sitter'
 )
 provides=('emacs' 'emacs-nativecomp')
 conflicts=('emacs-nox')
@@ -56,6 +57,7 @@ build() {
     --without-m17n-flt
     --with-libotf
     --without-imagemagick
+    --with-tree-sitter
 # Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
 # dconf and gconf break font settings set in ~/.emacs
 # If you insist you'll need to play gymnastics with
