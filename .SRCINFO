@@ -7,7 +7,8 @@ pkgbase = surfshark-vpn-cli-bin
 	license = custom:surfshark
 	depends = glibc
 	depends = openvpn
-	replaces = surfshark-vpn
+	provides = surfshark-vpn
+	conflicts = surfshark-vpn
 	source = https://ocean.surfshark.com/debian/pool/main/s/surfshark-vpn/surfshark-vpn_1.1.0_amd64.deb
 	sha256sums = 5ef76e6a9f61272ff927ccd965fce4b752de1083c3c4b25aecee513515cca819
 
