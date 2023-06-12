@@ -1,16 +1,15 @@
 [Unit]
-Description=Motion daemon
+Description=Motionplus daemon
 After=local-fs.target network.target
 
 [Service]
-User=motion
-ExecStart=/usr/bin/motion -n
+ExecStart=/usr/bin/motionplus -n
 DynamicUser=true
 Type=simple
-RuntimeDirectory=motion
-LogsDirectory=motion
-StateDirectory=motion
-ReadWritePaths=/etc/motion/
+RuntimeDirectory=motionplus
+LogsDirectory=motionplus
+StateDirectory=motionplus
+ReadWritePaths=/etc/motionplus/
 AmbientCapabilities=
 CapabilityBoundingSet=
 LockPersonality=true
