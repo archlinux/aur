@@ -2,43 +2,29 @@
 
 pkgname=opensnitch-ebpf-module
 _pkgname=opensnitch
-pkgver=1.5.7
+pkgver=1.5.9
 pkgrel=1
-_kver=6.0.14
 pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
 license=('GPL3')
-makedepends=('bc' 'clang' 'libelf' 'llvm' 'rsync')
+makedepends=('bc' 'clang' 'libelf' 'linux-headers' 'llvm' 'rsync')
 depends=('opensnitch')
-source=("${url}/archive/v${pkgver}.tar.gz"
-        "https://cdn.kernel.org/pub/linux/kernel/v${_kver%%.*}.x/linux-${_kver}.tar.xz")
-sha256sums=('d68bf55e4b7cc6a9db6c7eb35412afdabdff988d54c3ead24d5ebb8286f59ca3'
-            '5ef18f7e7fcffa2571431fccb3bc26a4e975492208e8490867148a2a5b78c220')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('881bc1e00a26559e87e76310a874647b3b2221e6ad25844d90cdc70223ca086a')
 options=('!strip') # we're stripping with llvm-strip
 
-prepare() {
-  cd ${srcdir}/linux-${_kver}
-
-  patch tools/lib/bpf/bpf_helpers.h < ${srcdir}/${_pkgname}-${pkgver}/ebpf_prog/file.patch
-  cp ${srcdir}/${_pkgname}-${pkgver}/ebpf_prog/opensnitch*.c \
-    ${srcdir}/${_pkgname}-${pkgver}/ebpf_prog/Makefile samples/bpf
-
-  yes "" | make oldconfig
-  make prepare
-}
-
 build() {
-  cd ${srcdir}/linux-${_kver}
+  cd "${srcdir}/${_pkgname}-${pkgver}/ebpf_prog"
+  KDIR="/usr/src/linux"
 
-  make headers_install
-
-  cd samples/bpf
-  make
+  # we set -fno-stack-protector here to work around a clang regression
+  # this is fine - bpf programs do not use stack protectors
+  CLANG="clang -fno-stack-protector" ARCH="$CARCH" KERNEL_DIR="$KDIR" KERNEL_HEADERS="$KDIR" make
   llvm-strip -g opensnitch*.o
 }
 
 package() {
-  install -Dm644 "${srcdir}/linux-${_kver}/samples/bpf/opensnitch"*".o" -t \
-    "$pkgdir/etc/opensnitchd"
+  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/ebpf_prog/opensnitch"*".o" -t \
+    "${pkgdir}/usr/lib/opensnitchd/ebpf"
 }
