@@ -1,0 +1,35 @@
+[Unit]
+Description=Apache Tika server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/default/tika-server
+ExecStart=/usr/bin/java -jar /usr/lib/tika-server/tika-server.jar --host=${HOST} --port=${PORT}
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+
+# isolation
+DynamicUser=yes
+LockPersonality=yes
+NoNewPrivileges=yes
+PrivateMounts=yes
+PrivateTmp=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=no
+ProtectKernelTunables=no
+ProtectSystem=yes
+RemoveIPC=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+
+[Install]
+WantedBy=multi-user.target
+
+# vim: ft=systemd
