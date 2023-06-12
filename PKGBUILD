@@ -2,7 +2,7 @@
 
 _pkgname='surface-control'
 pkgname="${_pkgname}-bin"
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 _pkgrel=1
 pkgdesc='Control various aspects of Microsoft Surface devices from the Command-Line'
@@ -19,15 +19,11 @@ source=(
     "https://github.com/linux-surface/surface-control/releases/download/v${pkgver}-${_pkgrel}/surface-control-${pkgver}.${_pkgrel}-${CARCH}.bin.tar.xz"
 )
 
-sha256sums=('b76535f2df2641cea78076550941944851530bb7ceaf22e83f9f77f9054d38d8')
+sha256sums=('7a8d86c0b3eff633b38de037ba843e7e31120dde55967d51c26144d79c78035e')
 
 
 package() {
     install -D -m755 "bin/surface" "$pkgdir/usr/bin/surface"
-
-    # copy system files
-    install -D -m644 "usr/lib/sysusers.d/surface-control.conf" "${pkgdir}/usr/lib/sysusers.d/surface-control.conf"
-    install -D -m644 "usr/lib/udev/rules.d/40-surface-control.rules" "${pkgdir}/usr/lib/udev/rules.d/40-surface-control.rules"
 
     # completion files
     install -D -m644 "shell-completions/surface.bash" "$pkgdir/usr/share/bash-completion/completions/surface"
