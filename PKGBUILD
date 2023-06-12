@@ -3,7 +3,7 @@
 pkgname=pretix-venv
 _pkgname=pretix
 pkgver=4.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ticket shop application for conferences, festivals, concerts, tech events, shows, exhibitions, workshops, barcamps, etc. (venv-version)"
 arch=('any')
 url="https://github.com/pretix/pretix"
@@ -40,7 +40,7 @@ package() {
   cd $srcdir
   install -Dm644 "$_pkgname-worker.service" -t "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 "$_pkgname-web.service" -t "$pkgdir/usr/lib/systemd/system/"
-  install -Dm600 "$_pkgname.cfg"   "$pkgdir/etc/$_pkgname/$_pkgname.conf"
+  install -Dm600 "$_pkgname.cfg"   "$pkgdir/etc/$_pkgname/$_pkgname.cfg"
   install -Dm644 "$_pkgname.sysusers"   "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
   install -Dm644 "$_pkgname.tmpfiles"   "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
 }
