@@ -8,6 +8,7 @@ pkgbase = influxdb-bin
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = MIT
 	depends = glibc
 	conflicts = influxdb
@@ -25,6 +26,8 @@ pkgbase = influxdb-bin
 	source_armv6h = influxdb.tar.gz::https://dl.influxdata.com/influxdb/releases/influxdb-1.8.10_linux_armhf.tar.gz
 	sha256sums_armv6h = 33daa5312a24b82365b98387fd330c574c990260a836fa810604cadc085050c5
 	source_armv7h = influxdb.tar.gz::https://dl.influxdata.com/influxdb/releases/influxdb-1.8.10_linux_armhf.tar.gz
-	sha256sums_armv7h = 33daa5312a24b82365b98387fd330c574c990260a836fa810604cadc085050c5
+	sha256sums_armv7h = influxdb.tar.gz::33daa5312a24b82365b98387fd330c574c990260a836fa810604cadc085050c5
+	source_aarch64 = influxdb.tar.gz::https://dl.influxdata.com/influxdb/releases/influxdb-1.8.10_linux_arm64.tar.gz
+	sha256sums_aarch64 = a6e10c02d02db1a34cf662672004c0e42d6021a33cd16666b69d205736ee7f3c
 
 pkgname = influxdb-bin
