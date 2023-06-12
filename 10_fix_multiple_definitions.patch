@@ -1,0 +1,22 @@
+Description: Fix multiple conflicting defs of dispatch_to_wdp/wsp/push
+ Needed on gcc-10.
+Author: Chris Hofstaedtler <zeha@debian.org>
+Last-Update: 2020-07-23
+
+diff --git a/wap/wtp_resp.c b/wap/wtp_resp.c
+index 57c2d03..46a6790 100644
+--- a/wap/wtp_resp.c
++++ b/wap/wtp_resp.c
+@@ -96,9 +96,9 @@ static Counter *resp_machine_id_counter = NULL;
+ static enum { limbo, running, terminating } resp_run_status = limbo;
+ 
+ 
+-wap_dispatch_func_t *dispatch_to_wdp;
+-wap_dispatch_func_t *dispatch_to_wsp;
+-wap_dispatch_func_t *dispatch_to_push;
++static wap_dispatch_func_t *dispatch_to_wdp;
++static wap_dispatch_func_t *dispatch_to_wsp;
++static wap_dispatch_func_t *dispatch_to_push;
+ 
+ /*
+  * Queue of events to be handled by WTP responder.

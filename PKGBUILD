@@ -28,7 +28,8 @@ source=("https://kannel.org/download/${pkgver}/gateway-${pkgver}.tar.gz"
         kannel-bearerbox.service
         kannel-smsbox.service
         kannel-wapbox.service
-        gateway-${pkgver}.bison.patch)
+        gateway-${pkgver}.bison.patch
+        10_fix_multiple_definitions.patch)
 md5sums=('b6b5b48edb646e0e0e2ea5378c8ac9ff'
          '7090740f6f82d8973bf07ba538a3dd80'
          '24ae1183521fe871e39f499eed27b93a'
@@ -37,12 +38,14 @@ md5sums=('b6b5b48edb646e0e0e2ea5378c8ac9ff'
          '43c8248224a130e27ca2bad84eca9e42'
          '7aedab47cc36958e2848c5c357ffb34b'
          'e4bac33d1ff8dc6947f5850c6fe3d6b0'
-         '5adb3c84885e70da557ea083c9dd205c')
+         '5adb3c84885e70da557ea083c9dd205c'
+         '8e013264da946255b7e1040eead7b657')
 
 prepare()
 {
   cd ${srcdir}/gateway-${pkgver}
   patch -p1 < ${srcdir}/gateway-${pkgver}.bison.patch
+  patch -p1 < ${srcdir}/10_fix_multiple_definitions.patch
 }
 
 build() {

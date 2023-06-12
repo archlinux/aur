@@ -26,6 +26,7 @@ pkgbase = kannel
 	source = kannel-smsbox.service
 	source = kannel-wapbox.service
 	source = gateway-1.4.5.bison.patch
+	source = 10_fix_multiple_definitions.patch
 	md5sums = b6b5b48edb646e0e0e2ea5378c8ac9ff
 	md5sums = 7090740f6f82d8973bf07ba538a3dd80
 	md5sums = 24ae1183521fe871e39f499eed27b93a
@@ -35,6 +36,6 @@ pkgbase = kannel
 	md5sums = 7aedab47cc36958e2848c5c357ffb34b
 	md5sums = e4bac33d1ff8dc6947f5850c6fe3d6b0
 	md5sums = 5adb3c84885e70da557ea083c9dd205c
+	md5sums = 8e013264da946255b7e1040eead7b657
 
 pkgname = kannel
-
