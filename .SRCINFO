@@ -1,6 +1,6 @@
 pkgbase = dwatch
 	pkgdesc = A tool to watch command output for differences and send notifications.
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/IngoMeyer441/dwatch
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dwatch
 	depends = python
 	depends = python-jinja
 	depends = python-yacl
-	source = https://github.com/IngoMeyer441/dwatch/archive/v0.1.2.tar.gz
-	sha256sums = 5b9bc2490797eecdc8959dcc14d0a099a74d669d26048e25cd35f37830be0e41
+	source = https://github.com/IngoMeyer441/dwatch/archive/v0.2.0.tar.gz
+	sha256sums = fdb109aefc27809c103496fd6458fc1e5fc66d3caf61764f0983d267d93e23c2
 
 pkgname = dwatch
