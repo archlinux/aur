@@ -1,6 +1,6 @@
 pkgbase = python-dvc-data
 	pkgdesc = DVC’s data management subsystem
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/iterative/dvc-data
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-dvc-data
 	depends = python-funcy
 	depends = python-pygtrie
 	depends = python-shortuuid
-	source = https://files.pythonhosted.org/packages/source/d/dvc-data/dvc-data-1.8.0.tar.gz
-	sha256sums = ad2374b2d9cd2c91ac7491ca7d6843978ad9d38972ff2eff86afa14978f2233d
+	source = https://files.pythonhosted.org/packages/source/d/dvc-data/dvc-data-1.9.0.tar.gz
+	sha256sums = f9cb493e8910925200da920d7fa9bb34895df589681f03121982f8b7dfe09a46
 
 pkgname = python-dvc-data
