@@ -1,6 +1,6 @@
 pkgbase = php-box-bin
 	pkgdesc = Fast, zero config application bundler with PHARs
-	pkgver = 4.3.7
+	pkgver = 4.3.8
 	pkgrel = 1
 	url = https://github.com/box-project/box
 	install = php-box.install
@@ -9,9 +9,9 @@ pkgbase = php-box-bin
 	depends = php
 	provides = php-box
 	conflicts = php-box
-	source = php-box-4.3.7.phar::https://github.com/box-project/box/releases/download/4.3.7/box.phar
-	source = LICENSE-4.3.7::https://raw.github.com/box-project/box/4.3.7/LICENSE
-	sha256sums = b50222cff9ec2e42876a3c2319880eb95e6a0f900b7098fbea03cc6ecb1c7617
+	source = php-box-4.3.8.phar::https://github.com/box-project/box/releases/download/4.3.8/box.phar
+	source = LICENSE-4.3.8::https://raw.github.com/box-project/box/4.3.8/LICENSE
+	sha256sums = 83d63ddb24ecc97538356b90c320773d1aca2712d14813bd27bee3ba65cf3b18
 	sha256sums = ba2dfc30b9659262549c839894838d9a1fe78ca533d0338cebc2f4f634b3bb12
 
 pkgname = php-box-bin
