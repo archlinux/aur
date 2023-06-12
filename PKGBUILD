@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=locfit
-_pkgver=1.5-9.7
+_pkgver=1.5-9.8
 pkgname=r-${_pkgname,,}
-pkgver=1.5.9.7
+pkgver=1.5.9.8
 pkgrel=1
 pkgdesc='Local Regression, Likelihood and Density Estimation'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   r-interp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('48e5fcd089fbc609d8e4c62c390425fba1dd167ad95ae0bddc175cbbe1517aff')
+sha256sums=('0d0a9bfb32e50e8f8f97de771f91b17db1db7c5be35027f2d7840a7293e11de3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
