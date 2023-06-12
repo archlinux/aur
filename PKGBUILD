@@ -1,14 +1,12 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce-git
-pkgver=r1680.c40786b
-miscfiles_pkgver=0.6.1
+pkgver=r1722.b7f3457
 pkgrel=1
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
 license=('Apache')
-source=("https://downloads.nestybox.com/sysbox/releases/v${miscfiles_pkgver}/sysbox-ce_${miscfiles_pkgver}-0.linux_amd64.deb"
-        "git+https://github.com/nestybox/sysbox.git"
+source=("git+https://github.com/nestybox/sysbox.git"
         "git+https://github.com/nestybox/dockerfiles.git"
         "git+https://github.com/nestybox/sysbox-fs.git"
         "git+https://github.com/nestybox/fuse.git"
@@ -17,9 +15,9 @@ source=("https://downloads.nestybox.com/sysbox/releases/v${miscfiles_pkgver}/sys
         "git+https://github.com/nestybox/libseccomp.git"
         "git+https://github.com/nestybox/libseccomp-golang.git"
         "git+https://github.com/nestybox/sysbox-mgr.git"
+        "git+https://github.com/nestybox/sysbox-pkgr.git"
         "git+https://github.com/nestybox/sysbox-runc.git")
-sha256sums=('d57dc297c60902d4f7316e4f641af00a2a9424e24dde88bb2bb7d3bc419b0f04'
-            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install=install.sh
 provides=('sysbox-ce')
 conflicts=('sysbox-ce')
@@ -42,6 +40,7 @@ prepare() {
 	git -C sysbox config submodule.sysbox-ipc.url "$srcdir/sysbox-ipc"
 	git -C sysbox config submodule.sysbox-libs.url "$srcdir/sysbox-libs"
 	git -C sysbox config submodule.sysbox-mgr.url "$srcdir/sysbox-mgr"
+	git -C sysbox config submodule.sysbox-pkgr.url "$srcdir/sysbox-pkgr"
 	git -C sysbox config submodule.sysbox-runc.url "$srcdir/sysbox-runc"
 	git -C sysbox -c protocol.file.allow=always submodule update
 
@@ -53,10 +52,6 @@ prepare() {
 	git -C sysbox/sysbox-libs config submodule.libseccomp.url "$srcdir/libseccomp"
 	git -C sysbox/sysbox-libs config submodule.libseccomp-golang.url "$srcdir/libseccomp-golang"
 	git -C sysbox/sysbox-libs -c protocol.file.allow=always submodule update
-
-	# Get some non-binary files from the Debian package as they don't seem to be uploaded anywhere else
-	mkdir -p data
-	tar xf data.tar.xz -C data
 
 	# Migrate to the new protoc-gen-go-grpc generator. Set require_unimplemented_servers=false for compatibility:
 	# https://github.com/grpc/grpc-go/blob/abff344ead8f49f3a89ae8be68b1538611950ec4/cmd/protoc-gen-go-grpc/README.md
@@ -78,8 +73,7 @@ build() {
 package() {
 	make -C sysbox DESTDIR="${pkgdir}/usr/bin" install
 
-	cd "data"
-	(cd lib/sysctl.d && find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/lib/sysctl.d/{}" \; )
-	(cd lib/systemd && find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/lib/systemd/{}" \; )
-	(cd usr/share/doc && find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/doc/{}" \; )
+	install -Dm644 -t "${pkgdir}/usr/lib/sysctl.d/" sysbox/sysbox-pkgr/systemd/99-sysbox-sysctl.conf
+	install -Dm644 -t "${pkgdir}/usr/lib/systemd/system/" sysbox/sysbox-pkgr/systemd/*.service
+	install -Dm644 -t "${pkgdir}/usr/share/doc/sysbox-ce/" sysbox/CHANGELOG.md sysbox/sysbox-pkgr/deb/sysbox-ce/copyright
 }
