@@ -1,7 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=linwood-butterfly-appimage
 _appname="dev.linwood.butterfly"
-pkgver=1.6.1
+pkgver=2.0.0beta.0
+_ver=beta.0
 pkgrel=1
 pkgdesc="Powerful, minimalistic, cross-platform, opensource note-taking app"
 arch=("x86_64")
@@ -12,9 +13,9 @@ options=(!strip)
 conflits=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-linux.AppImage"
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver%${_ver}}-${_ver}/${pkgname%-appimage}-linux.AppImage"
     "LICENSE::https://raw.githubusercontent.com/LinwoodDev/Butterfly/develop/LICENSE")
-sha256sums=('10c952cf72e9f431e9c6eb06e7e0038eaf1498831d5d9ff38e6a261fa0cc2f68'
+sha256sums=('1e107e484e5aa3c771cefd072c90589213c79ecec97b29ce9382a266c3f2c59a'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
