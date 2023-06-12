@@ -1,7 +1,7 @@
 # Maintainer: gee
 
 pkgname=ialauncher-git
-pkgver=r45.291048f
+pkgver=r127.b93f75d
 pkgrel=1
 pkgdesc='Play all of the Internet Archive’s MS-DOS games offline!'
 arch=('x86_64')
@@ -9,6 +9,7 @@ url='https://github.com/rtts/ialauncher'
 license=('GPL3')
 depends=('dosbox' 'webkit2gtk' 'python' 'python-natsort' 'gst-plugins-bad'
          'python-jinja')
+makedepends=('git' 'python-setuptools')
 source=('ialauncher::git+https://github.com/rtts/ialauncher.git')
 sha256sums=('SKIP')
 
