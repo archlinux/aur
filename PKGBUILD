@@ -9,8 +9,9 @@ arch=('i686' 'x86_64')
 url="https://github.com/bluescan/${_pkgname}"
 license=('ISC')
 groups=('')
-depends=('gcc12' 'libx11' 'cmake' 'ninja' 'dpkg')
-options=('!strip' '!emptydirs')
+depends=('libx11')
+makedepends=('cmake' 'dpkg' 'gcc12' 'git' 'ninja')
+options=('!emptydirs')
 source_x86_64=("git+https://github.com/bluescan/${_pkgname}.git")
 sha512sums_x86_64=('SKIP')
 
