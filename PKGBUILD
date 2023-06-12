@@ -103,6 +103,7 @@ package() {
     install --mode=755 -d -- "${pkgdir}/usr/share/pixmaps"
     zstdcat "${srcdir}/ut.svg.zstd" > "${pkgdir}/usr/share/pixmaps/ut.svg"
     install --mode=644 -D -- "${srcdir}/ut.desktop" "${pkgdir}/usr/share/applications/ut.desktop"
+    install --mode=644 -D -- "${pkgdir}${_game_dir}/LICENSE.md" "${pkgdir}/usr/share/licenses/unrealtournament/LICENSE.md"
 
     # fix ownership
     chown -R root:root ${pkgdir}${_game_dir}
