@@ -1,14 +1,15 @@
 pkgbase = farmhash
 	pkgdesc = FarmHash is a family of hash functions
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/farmhash
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = gcc-libs
 	source = git+https://github.com/google/farmhash.git
+	source = namespace.patch
 	sha256sums = SKIP
+	sha256sums = e3f7e0c3a421e814305611395e4abf9734d4d96214815dfab384702a6772ba92
 
 pkgname = farmhash
-
