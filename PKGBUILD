@@ -125,21 +125,6 @@ pkgver() {
 build() {
   [ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
 
-  # Add CBLAS to linking libraries
-  # (https://github.com/davisking/dlib/issues/154#issuecomment-240651490)
-  # sed -i 's%\(target_link_libraries(basix PRIVATE ${BLAS_LIBRARIES})\)%\nset(BLAS_LIBRARIES "-lcblas;-lblas")\n\1%' "${srcdir}"/"${_base}"/cpp/CMakeLists.txt
-
-  # cmake -DCMAKE_BUILD_TYPE="Release" \
-  #       -B "${srcdir}"/build \
-  #       -S "${_base_dir}" \
-  #       -DCMAKE_INSTALL_PREFIX=/usr \
-  #       -DXTENSOR_OPTIMIZE=TRUE
-  # cmake --build "${srcdir}"/build
-
-  # _pydir="${_base_dir}"/python
-  # cd "${_pydir}"
-  # python setup.py build
-
   cmake -DCMAKE_BUILD_TYPE="Release" \
         -B "${srcdir}"/build \
         -S "${_base_dir}" \
@@ -164,15 +149,6 @@ package() {
   export CMAKE_PREFIX_PATH="${pkgdir}"/usr
   python -m build --wheel --no-isolation --skip-dependency-check
 
-  # python setup.py build
-  # PYTHONPYCACHEPREFIX="${_pydir}/.cache/cpython/" \
-  #                    python setup.py install \
-  #                    --prefix=/usr --root="${pkgdir}"\
-  #                    --optimize=1
-
-  # pip install . --no-deps --prefix=/usr --root="${pkgdir}" --compile
-
-  # # python setup.py build
   PYTHONPYCACHEPREFIX="${_pydir}/.cache/cpython/" \
                      python -m installer --destdir="$pkgdir" dist/*.whl
 }
