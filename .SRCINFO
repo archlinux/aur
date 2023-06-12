@@ -1,0 +1,12 @@
+pkgbase = uniciv-bin
+	pkgdesc = Uniciv bin
+	pkgver = 4.6.19
+	pkgrel = 1
+	url = https://github.com/yairm210/Unciv
+	arch = x86_64
+	source = uniciv-bin-4.6.19.jar::https://github.com/yairm210/Unciv/releases/download/4.6.19/Unciv.jar
+	source = uniciv::https://pastebin.com/raw/YYcHRv48
+	sha256sums = db53e07bf6faa59e1cb0656bd89d15eabc1918a04412a124b9e7feee2986b65e
+	sha256sums = 90697f0f9e48b4d3f8b5e636731af870a091582195ba84c0d8a2a3360564b606
+
+pkgname = uniciv-bin
