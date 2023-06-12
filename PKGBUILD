@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r24.01bb0ff
+pkgver=r25.d3896a2
 pkgrel=1
 pkgdesc="A custom configs for sk-holoiso"
 arch=('any')
@@ -28,7 +28,7 @@ package() {
         install -Dm644 "etc/systemd/system/$service_file" "$pkgdir/etc/systemd/system/$service_file"
     done
 
-    exclude_files=("sk-auto-swap" "sk-efi-mount" "sk-resume")
+    exclude_files=("sk-auto-swap" "sk-efi-mount" "sk-resume" "sk-holoiso-config")
     for exclude_file in "${exclude_files[@]}"; do
         install -Dm755 "usr/bin/$exclude_file" "$pkgdir/usr/bin/$exclude_file"
     done
@@ -36,4 +36,6 @@ package() {
     install -Dm644 "etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules" "$pkgdir/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules"
     install -Dm644 "etc/default/grub" "$pkgdir/etc/default/grub"
     install -Dm644 "etc/fonts/conf.d/99-noto-cjk.conf" "$pkgdir/etc/fonts/conf.d/99-noto-cjk.conf"
+
+    install -Dm644 "${srcdir}/sk-config.desktop" "${pkgdir}/usr/share/applications/sk-config.desktop"
 }
