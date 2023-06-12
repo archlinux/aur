@@ -34,8 +34,15 @@ YOUTUBE_COMMENTS_AJAX_URL = "https://www.youtube.com/comment_service_ajax"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
 
 settings_dict = None
-with open('/etc/shadowtube/settings.json') as f:
-	settings_dict = json.load(f);
+try:
+	with open('settings.json') as f:
+		settings_dict = json.load(f)
+except FileNotFoundError:
+	try:
+		with open('/etc/shadowtube/settings.json') as f:
+			settings_dict = json.load(f)
+	except FileNotFoundError:
+		print("Error: Missing 'settings.json'.")
 
 use_control_pass = settings_dict["use_control_pass"]
 control_pass = settings_dict["control_pass"]
@@ -297,46 +304,48 @@ def search_dict(partial, search_key):
 def main():
 	parser = argparse.ArgumentParser(prog="shadowtube", description="A YouTube shadowban detection program.")
 	group = parser.add_mutually_exclusive_group()
-	group.add_argument("-v", "--video", help="analyze individual video URLs")
+	group.add_argument("-v", "--video", metavar="VIDEO_URL", help="analyze an individual video URL ('https://youtu.be/VIDEO_ID' or 'https://www.youtube.com/watch?v=VIDEO_ID')")
 	group.add_argument("-c", "--comments", help="analyze locally available comment history", action="store_true")
 	args = parser.parse_args()
 	if args.video:
 		tor_validate()
-		if "https://www.youtube.com/watch?v=" in str(args.video):
-			while True:
-				youtube_id = args.video.replace("https://www.youtube.com/watch?v=", "")
-				count = 0
-				for c in youtube_id:
-					if c.isspace() != True:
-						count = count + 1
-				if count == 11:
-					response = tor_authenticate().get("https://www.youtube.com/watch?v=" + youtube_id)
-					break
-				else:
-					os.system("clear")
+		video_url = str(args.video)
+		if "https://www.youtube.com/watch?v=" in video_url:
+			youtube_id = video_url.replace("https://www.youtube.com/watch?v=", "")
+		elif "https://youtu.be/" in video_url:
+			youtube_id = video_url.replace("https://youtu.be/", "")
+		else:
+			print("Invalid input.")
+			return
+		if len(youtube_id) == 11:
+			response = tor_authenticate().get("https://www.youtube.com/watch?v=" + youtube_id)
 			video_init(youtube_id)
 		else:
 			print("Invalid input.")
 	elif args.comments:
 		tor_validate()
 		while True:
-			try:
-				print('The basic HTML page data from https://www.youtube.com/feed/history/comment_history must be locally available to the script as "Google - My Activity.html"')
-				confirm = input("Confirm? (y/N) ")
-				if confirm == "Y" or confirm == "y":
-					try:
-						io.open("Google - My Activity.html", "r")
+			print('The basic HTML page data from https://www.youtube.com/feed/history/comment_history must be locally available to the script as "Google - My Activity.html"')
+			confirm = input("Confirm? (y/N) ").lower()
+			if confirm in ["y", "yes"]:
+				try:
+					with open("Google - My Activity.html", "r"):
 						break
-					except IOError:
-						print("Error: File does not exist.")
-				elif confirm == "N" or confirm == "n" or confirm == "":
-					print("Exiting.")
-					sys.exit(1)
-			except ValueError:
-				continue
+				except FileNotFoundError:
+					print("Error: File does not exist.")
+			elif confirm in ["n", "no", ""]:
+				print("Exiting.")
+				sys.exit(1)
+		
 		comments_init()
 	else:
-		os.system("shadowtube -h")
+		try:
+			os.system("shadowtube -h")
+		except OSError:
+			try:
+				os.system("python3 shadowtube -h")
+			except OSError:
+				print("Error: Missing executable.")
 
 if __name__ == "__main__":
 	main()
