@@ -1,5 +1,5 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
-!0001-print-help-when-no-args-provided.patch
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/0001-print-help-when-no-args-provided.patch
