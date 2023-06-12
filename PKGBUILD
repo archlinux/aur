@@ -2,7 +2,7 @@
 
 _pkgname='surface-control'
 pkgname="${_pkgname}-git"
-pkgver=0.4.4.1.r0.g1c89881
+pkgver=0.4.5.1.r0.g85729bf
 pkgrel=1
 pkgdesc='Control various aspects of Microsoft Surface devices from the Command-Line'
 url='https://github.com/linux-surface/surface-control'
@@ -33,10 +33,6 @@ build(){
 
 package() {
     install -D -m755 "${srcdir}/${_pkgname}/target/release/surface" "${pkgdir}/usr/bin/surface"
-
-    # copy system files
-    install -D -m644 "${srcdir}/${_pkgname}/etc/sysusers/surface-control.conf" "${pkgdir}/usr/lib/sysusers.d/surface-control.conf"
-    install -D -m644 "${srcdir}/${_pkgname}/etc/udev/40-surface-control.rules" "${pkgdir}/usr/lib/udev/rules.d/40-surface-control.rules"
 
     # completion files
     install -D -m644 "${srcdir}/${_pkgname}/target/surface.bash" "${pkgdir}/usr/share/bash-completion/completions/surface"
