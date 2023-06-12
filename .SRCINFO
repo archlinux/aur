@@ -1,25 +1,25 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 6.2.13.arch1
+	pkgver = 6.3.7.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.2.13-arch1
+	url = https://github.com/archlinux/linux/commits/v6.3.7-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = git
 	makedepends = libelf
 	makedepends = pahole
-	makedepends = cpio
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
-	makedepends = xmlto
-	makedepends = python-sphinx
 	makedepends = graphviz
 	makedepends = imagemagick
+	makedepends = python-sphinx
 	makedepends = texlive-latexextra
-	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.2.13-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.3.7-arch1
 	source = config
 	source = 0001-add-acs-overrides.patch
 	source = 0002-i915-vga-arbiter.patch
@@ -27,18 +27,19 @@ pkgbase = linux-vfio
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
-	sha256sums = SKIP
-	sha256sums = de96ef80c3d883d03bce280ea1aebb1691aeebfcab82bf14a63d4ab5d9dca4b1
-	sha256sums = bdd2a5a56e01e91723907afb40d28bed77b7d5107aba92c85adb3ce6967e713a
-	sha256sums = 9a698eaf1a0bd740981e909b6ad9bd41300488a2a771843bf30b9bdc94aa3c3b
+	b2sums = SKIP
+	b2sums = c2d1c69265adc041dc0364e448f6e86dc4c9ca1207c84071abc1675dd820534a8ab5a230e579e68bfb1bf2b861f23ad34e090f8ceaef5e265ea95e2bc6946013
+	b2sums = b1bb6028bead89c277f0e98b308574e47feee2ece5b7f0a2422d40d5b2532216550f99153fbb451c2bee2df398a1a2d596f776281243cf55d4e94c1d5d854ef2
+	b2sums = 7c99c5d965bda71f1d08e72fadc529b594d95648950aab49212daee8b34af525404bd98737d2bd715d81959fb71ed143416cb21d88075d833f931f9d0d313ab5
 
 pkgname = linux-vfio
 	pkgdesc = The Linux kernel and modules (ACS override and i915 VGA arbiter patches)
 	depends = coreutils
-	depends = kmod
 	depends = initramfs
+	depends = kmod
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = KSMBD-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
