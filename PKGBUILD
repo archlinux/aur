@@ -2,6 +2,9 @@
 # Contributor: Maxim Kurnosenko <asusx2@mail.ru>
 # Contributor: Marco A Rojas <marco.rojas@zentek.com.mx>
 
+# Workaround for kannel.org SSL certificate issues
+DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
+
 pkgname=kannel
 pkgver=1.4.5
 pkgrel=3
