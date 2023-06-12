@@ -23,7 +23,7 @@ try:
 	import socks
 except ImportError:
 	print("Error: Dependency failure. Installing packages...")
-	subprocess.check_call([sys.executable, '-m', 'pip', '-r', 'install', 'requirements.txt'])
+	subprocess.check_call([sys.executable, '-m', 'pip3', '-r', 'install', 'requirements.txt'])
 	print("Done.")
 	sys.exit(1)
 

@@ -56,14 +56,14 @@ This step limits connection only to the local loopback address, effectively limi
 ## Sample outputs
 ```
 "Portal - 'Still Alive'"
-https://www.youtube.com/watch?v=jNQXAC9IVRw
+https://www.youtube.com/watch?v=Y6ljFaKRTrI
 Interrupt (CTRL+C) to conclude the session
 
-[✓] United States — 199.249.230.78
-[✓] Republic of Moldova — 178.17.174.164
-[✓] Ukraine — 193.218.118.183
-[✓] Seychelles — 37.228.129.5
-[✓] United States — 199.249.230.158
+[✓] Poland — 95.214.55.43
+[✓] Netherlands — 95.168.173.143
+[✓] Germany — 185.220.101.55
+[✓] Germany — 185.207.107.216
+[✓] (Unknown)
 ^C
 No abnormal behavior detected
 ```
@@ -83,7 +83,7 @@ https://www.youtube.com/watch?v=Drx1DEXa0GM
 https://www.youtube.com/watch?v=nWfF8wj19yk
 
 [✓] Germany — 185.220.100.249
-[✓] Unknown
+[✓] (Unknown)
 [✓] Austria — 109.70.100.50
 
 "Doesn't look like failing to me. Glad you enjoyed the map."
