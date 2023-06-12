@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="board4you-appimage"
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A whiteboard app built with Electron, React, react-icons, konva and bootstrap."
 arch=("x86_64")
@@ -11,7 +11,7 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
-sha256sums=('102c960b65c289533f9a80be6a0a4f44bc8cb3625bd2570807458fed56262464')
+sha256sums=('cc334da395c8d9d6e0dcba03cb048e0a998a14b966a5eda7588065a9bb2a6a67')
          
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
