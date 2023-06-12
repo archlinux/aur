@@ -6,16 +6,16 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=4d2e3bd
+_mozc_commit=7896c97
 
 ## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party
-_abseil_cpp_commit=2151058
-_breakpad_commit=216cea7
-_gtest_commit=703bd9c
-_gyp_commit=caa6002
-_japanese_usage_dictionary_commit=e5b3425
-_jsoncpp_commit=11086dd
-_protobuf_commit=cc7b1b5
+_abseil_cpp_commit=1feab4f
+_breakpad_commit=8988364
+_gtest_commit=65cfeca
+_gyp_commit=c6d8b9f
+_japanese_usage_dictionary_commit=a4a6677
+_jsoncpp_commit=3d9bf8e
+_protobuf_commit=3560e23
 _dictext_commit=1041a9c
 
 ## the latest release from https://osdn.net/projects/ponsfoot-aur/storage/mozc/
@@ -24,8 +24,8 @@ _zipcode_rel=202110
 _pkgbase=mozc
 pkgname=fcitx5-mozc-ext-neologd
 pkgdesc="Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)"
-pkgver=2.26.4632.102.g4d2e3bd
-pkgrel=4
+pkgver=2.29.5111.102.g7896c97
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/google/mozc"
 license=('custom')
@@ -106,7 +106,7 @@ prepare() {
   sed 's|path = QT_BASE_PATH|path = "/usr/include/qt"|' -i WORKSPACE.bazel
 
   # Fix @bazel_tools//platforms to @platforms//os
-  sed 's$@bazel_tools//platforms:(linux|osx|windows|android|freebsd|ios|os)$@platforms//os:\1$' -E -i tools/cc_target_os/BUILD.bazel third_party/gtest/BUILD.bazel
+  sed 's$@bazel_tools//platforms:(linux|osx|windows|android|freebsd|ios|os)$@platforms//os:\1$' -E -i third_party/gtest/BUILD.bazel
 }
 
 
