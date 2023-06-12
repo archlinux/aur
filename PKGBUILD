@@ -2,7 +2,7 @@
 
 pkgname=sqriptor-git
 _gitname=sqriptor
-pkgver=r62.a658771
+pkgver=r151.c0599eb
 pkgrel=1
 pkgdesc="QScintilla based text editor"
 arch=(i686 x86_64)
@@ -29,4 +29,7 @@ build() {
 package() {
     cd "${_gitname}"
     install -Dm755 sqriptor -t "${pkgdir}/usr/bin"
+    install -Dm644 "sqriptor.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+    install -Dm644 "sqriptor256.png" "${pkgdir}/usr/share/pixmaps/sqriptor.png"
+    install -Dm644 "sqriptor.desktop" -t "${pkgdir}/usr/share/applications"
 }
