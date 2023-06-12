@@ -1,0 +1,16 @@
+pkgbase = blender-plugin-supertuxkart-git
+	pkgdesc = Custom scripts made to help in the creation of custom SuperTuxKart karts and tracks.
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/supertuxkart/stk-blender
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = blender
+	depends = supertuxkart
+	provides = blender-plugin-supertuxkart
+	provides = stk-blender
+	source = blender-plugin-supertuxkart::git+https://github.com/supertuxkart/stk-blender.git
+	sha256sums = SKIP
+
+pkgname = blender-plugin-supertuxkart-git
