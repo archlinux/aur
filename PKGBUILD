@@ -10,8 +10,8 @@ license=("MIT")
 arch=("x86_64")
 provides=("aur_cli")
 conflicts=("aur_cli")
-source=("https://gitlab.com/andrew_ryan/aur_cli/-/raw/master/aur_cli-$pkgver-x86_64.tar.gz")
-sha256sums=("c241c6b315729a14ab0204fce90e731f1c5fc773e0d2a02dfd0147a1d1f7a273")
+source=("https://gitlab.com/andrew_ryan/aur_cli/-/raw/main/aur_cli-$pkgver-x86_64.tar.gz")
+sha256sums=('c241c6b315729a14ab0204fce90e731f1c5fc773e0d2a02dfd0147a1d1f7a273')
 
 package() {
     install -Dm755 aur_cli -t "$pkgdir/usr/bin"
