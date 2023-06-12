@@ -1,0 +1,26 @@
+pkgbase = tdv-git
+	pkgdesc = Translation dictionary viewer
+	pkgver = r300.d1ce970
+	pkgrel = 1
+	url = https://git.janouch.name/p/tdv
+	arch = i686
+	arch = x86_64
+	license = custom:0BSD
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = asciidoctor
+	makedepends = librsvg
+	depends = zlib
+	depends = glib2
+	depends = ncurses
+	depends = pango
+	optdepends = libxcb: X11 selection watcher
+	optdepends = gtk3: GUI
+	provides = tdv
+	conflicts = tdv
+	options = zipman
+	source = git+https://git.janouch.name/p/tdv
+	md5sums = SKIP
+
+pkgname = tdv-git
