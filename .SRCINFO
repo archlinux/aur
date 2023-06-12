@@ -1,6 +1,6 @@
 pkgbase = airdrop-tool-bin
 	pkgdesc = Fetch & analyse blockchain tickets. View leaderboards and user tickets. Calculate and perform provably fair airdrops.
-	pkgver = 0.1.71
+	pkgver = 0.1.7.21
 	pkgrel = 1
 	url = https://github.com/BTS-CM/airdrop_tool
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = airdrop-tool-bin
 	depends = gtk3
 	conflicts = airdrop-tool
 	conflicts = airdrop-tool-appimage
-	source = airdrop-tool-0.1.71.deb::https://github.com/BTS-CM/airdrop_tool/releases/download/v0.1.71/airdrop_tool.deb
+	source = airdrop-tool-0.1.7.21.deb::https://github.com/BTS-CM/airdrop_tool/releases/download/v0.1.7.21/airdrop_tool.deb
 	source = LICENSE.md::https://raw.githubusercontent.com/BTS-CM/airdrop_tool/main/License.md
-	sha256sums = d1adb8a11e96b0e6debecc3edba7256c0e57b9fa1ae8d5ba18c664241513c9a2
+	sha256sums = 28cc75a36314b4f9e2b14a638a8ec10c4125c9272d7007be25e19c61156e27a3
 	sha256sums = 48ecd55adc52c7a1ad9e3f699b9e2348bca9bb6797ce8ad4e9cbe38f7aa11c8a
 
 pkgname = airdrop-tool-bin
