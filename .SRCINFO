@@ -1,6 +1,6 @@
 pkgbase = shadowtube
 	pkgdesc = A YouTube shadowban detection program.
-	pkgver = 1.0.6
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/danehobrecht/shadowtube
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = shadowtube
 	depends = python>=3.7.3 
 	depends = python-pip
 	depends = torbrowser-launcher
-	source = https://github.com/danehobrecht/shadowtube/archive/refs/tags/1.0.6.tar.gz
+	source = https://github.com/danehobrecht/shadowtube/archive/refs/tags/1.0.7.tar.gz
 	sha256sums = 64437eab87a00d375e040686228851773f598bc3bc3d7d184734b7f9687c71b3
 
 pkgname = shadowtube
