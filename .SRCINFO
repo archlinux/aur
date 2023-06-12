@@ -4,6 +4,7 @@ pkgbase = uniciv-bin
 	pkgrel = 1
 	url = https://github.com/yairm210/Unciv
 	arch = x86_64
+	license = MPL 2.0
 	source = uniciv-bin-4.7.0.jar::https://github.com/yairm210/Unciv/releases/download/4.7.0/Unciv.jar
 	source = uniciv::https://pastebin.com/raw/YYcHRv48
 	sha256sums = 02c8ce461f0b62221028aa747773be8d6607c620201aa7cae075e6c894dee306

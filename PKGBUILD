@@ -5,7 +5,7 @@ pkgdesc="Uniciv bin"
 arch=('x86_64')
 url="https://github.com/yairm210/Unciv"
 options=()
-license=()
+license=("MPL 2.0")
 source=(
 	"${pkgname}-${pkgver}.jar::https://github.com/yairm210/Unciv/releases/download/${pkgver}/Unciv.jar"
 	"uniciv::https://pastebin.com/raw/YYcHRv48"
