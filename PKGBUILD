@@ -4,7 +4,7 @@
 # Contributor: leemars
 
 pkgname=ibus-qt
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=13
 pkgdesc='IBus qt library and IBus qt input method plugin'
 arch=('x86_64')
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 build() {
   cd $pkgname
-  
+
   cmake . -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
