@@ -45,14 +45,17 @@ socks_port = settings_dict["socks_port"]
 ### Tor
 
 def tor_authenticate():
-	s = requests.Session()
-	s.proxies = {"http": "socks5://localhost:" + str(socks_port), "https": "socks5://localhost:" + str(socks_port)}
-	return s
+	session = requests.Session()
+	session.proxies = {
+		"http": "socks5://localhost:" + str(socks_port),
+		"https": "socks5://localhost:" + str(socks_port)
+	}
+	return session
 
 def tor_rotate():
 	time.sleep(10)
 	try:
-		with Controller.from_port(port = 9151) as c:
+		with Controller.from_port(port = control_port) as c:
 			if use_control_pass:
 				c.authenticate(password = control_pass)
 				c.signal(Signal.NEWNYM)
@@ -67,36 +70,27 @@ def tor_rotate():
 		sys.exit(1)
 
 def tor_validate():
-	att = 0
 	print("Reaching Tor service...")
-	while True:
-		try:
-			tor_authenticate().get("https://ip.seeip.org")
-			print("Success")
-			time.sleep(1.2)
-			os.system("clear")
-			break
-		except IOError:
-			print("Error: Failed to establish conection. Trying again in 5 seconds.")
-			att += 1
-			time.sleep(5)
-			if att == 10:
-				print("User idle. Exiting.")
-				sys.exit(1)
+	try:
+		tor_authenticate().get("https://api.seeip.org")
+		print("Done.")
+	except IOError:
+		print("Error: Couldn't bridge to Tor Browser (is it running?).")
+		sys.exit(1)
 
 ### Output
 
 def out_geoip():
 	try:
-		r = tor_authenticate().get("https://ip.seeip.org/geoip")
+		r = tor_authenticate().get("https://api.seeip.org/geoip")
 		r_dict = r.json()
 		print(r_dict["country"] + " — " + r_dict["ip"])
-	except IOError:
-		print("Unknown")
+	except Exception:
+		print("(Unknown)")
 
 def out_conclude(att, acc):
 	if att == 0:
-		print("\nInterrupted before granted sufficient time")
+		print("\nInterrupted before granted sufficient time.")
 	elif acc == 0 and att > 0:
 		print("\nAlarming behavior detected")
 	elif att > acc:
@@ -107,10 +101,10 @@ def out_conclude(att, acc):
 ### Video - https://www.youtube.com/watch?v=Y6ljFaKRTrI
 
 def video_init(youtube_id):
-	att = 0
-	acc = 0
+	att, acc = 0, 0
 	url = "https://www.youtube.com/watch?v=" + youtube_id
 	try:
+		print("Fetching video metadata (this may take awhile)...")
 		while True:
 			try:
 				page_data = tor_authenticate().get(url).text
@@ -119,11 +113,12 @@ def video_init(youtube_id):
 				break
 			except IndexError:
 				tor_rotate()
+		print("Done.")
 		if title == "":
 			print("\nVideo unavailable")
 			sys.exit(1)
 		else:
-			print("\n" + title)
+			print('\n"' + title + '"' + "\n" + url)
 		print("Interrupt (CTRL+C) to conclude the session\n")
 		while True:
 			tor_rotate()
@@ -144,9 +139,7 @@ def video_init(youtube_id):
 ### Comment url template (removed) - https://www.youtube.com/watch?v=OfsojVaqyAA&lc=Ugx5BtG_-N5pwDyvOiF4AaABAg.9NEWMl2CCJR9NI73GZeCDa
 
 def comments_init():
-	att = 0
-	acc = 0
-	ind = 1
+	att, acc, ind = 0, 0, 1
 	print("\nInterrupt (CTRL+C) to conclude the session")
 	try:
 		with io.open("Google - My Activity.html", "r", encoding = "utf-8") as raw_html:
@@ -303,43 +296,43 @@ def search_dict(partial, search_key):
 ### Init
 
 def main():
-	parser = argparse.ArgumentParser(description="A YouTube shadowban detection program.")
+	parser = argparse.ArgumentParser(prog="shadowtube", description="A YouTube shadowban detection program.")
 	group = parser.add_mutually_exclusive_group()
-	group.add_argument("-v", "--video", help="analyze individual video URLs", action="store_true")
+	group.add_argument("-v", "--video", help="analyze individual video URLs")
 	group.add_argument("-c", "--comments", help="analyze locally available comment history", action="store_true")
 	args = parser.parse_args()
 	if args.video:
 		tor_validate()
-		while True:
-			print("Complete the video URL in question")
-			youtube_id = input("https://www.youtube.com/watch?v=")
-			count = 0
-			for c in youtube_id:
-				if c.isspace() != True:
-					count = count + 1
-			if count == 11:
-				response = tor_authenticate().get("https://www.youtube.com/watch?v=" + youtube_id)
-				break
-			else:
-				os.system("clear")
-		video_init(youtube_id)
+		if "https://www.youtube.com/watch?v=" in str(args.video):
+			while True:
+				youtube_id = args.video.replace("https://www.youtube.com/watch?v=", "")
+				count = 0
+				for c in youtube_id:
+					if c.isspace() != True:
+						count = count + 1
+				if count == 11:
+					response = tor_authenticate().get("https://www.youtube.com/watch?v=" + youtube_id)
+					break
+				else:
+					os.system("clear")
+			video_init(youtube_id)
+		else:
+			print("Invalid input.")
 	elif args.comments:
 		tor_validate()
 		while True:
 			try:
 				print('The basic HTML page data from https://www.youtube.com/feed/history/comment_history must be locally available to the script as "Google - My Activity.html"')
-				confirm = input("Confirm? (Y) ")
+				confirm = input("Confirm? (y/N) ")
 				if confirm == "Y" or confirm == "y":
 					try:
 						io.open("Google - My Activity.html", "r")
 						break
 					except IOError:
 						print("Error: File does not exist.")
-				elif confirm == "N" or confirm == "n":
+				elif confirm == "N" or confirm == "n" or confirm == "":
 					print("Exiting.")
 					sys.exit(1)
-				else:
-					os.system("clear")
 			except ValueError:
 				continue
 		comments_init()

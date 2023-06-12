@@ -6,11 +6,13 @@ Analyzation features:
 ### Arch
 `yay -S shadowtube`
 ### Other
-1. Clone the repository and navigate to the directory
+1. Clone the repository and navigate to the directory:
 ```
 git clone https://github.com/danehobrecht/shadowtube.git && cd shadowtube
 ```
-2. Install dependencies
+2. Install dependencies:
+ - [Python 3.7.3+ & pip3](https://www.python.org/downloads/)
+ - [Tor Browser](https://www.torproject.org/)
 ```
 pip3 install -r requirements.txt
 ```
@@ -21,15 +23,15 @@ pip3 install -r requirements.txt
 python3 shadowtube
 ```
 ## Configure torrc
-1. Hash a custom control password
+1. Hash a custom control password:
 ```
 tor --hash-password <password>
 ```
-2. Open `torrc` with elevated privelages
+2. Open `torrc` with elevated privelages:
 ```
 nano /etc/tor/torrc
 ```
-3. Append the hashed password to `HashedControlPassword` and uncomment `ControlPort`
+3. Append the hashed password to `HashedControlPassword` and uncomment `ControlPort`:
 ```
 ...
 ## The port on which Tor will listen for local connections from Tor
@@ -41,7 +43,7 @@ HashedControlPassword 16:872860B76453A77D60CA2BB8C1A7042072093276A3D701AD684053E
 #CookieAuthentication 1
 ...
 ```
-### Additional security steps
+### Additional security steps:
 To prevent unauthorized users from accessing `tor`, consider adding the following steps:
 - Change your SOCKS5 and control ports to a port not commonly used
 - **Important for users using cookie authentication**: Append the following lines to `torrc`
@@ -88,11 +90,7 @@ https://www.youtube.com/watch?v=e_pyT5yFuYY
 
 No abnormal behavior detected
 ```
-## Prerequisites
- - [Python 3.7.3+ & pip3](https://www.python.org/downloads/)
- - [Tor Browser](https://www.torproject.org/)
- - [virtualenv](https://pypi.org/project/virtualenv/)
-## Known compatability issues (subject to change)
+## Known compatability issues (subject to change):
  - Video premieres
  - Live streams
  - "Discussion", or, "Community" posts

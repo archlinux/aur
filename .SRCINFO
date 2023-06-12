@@ -6,7 +6,8 @@ pkgbase = shadowtube
 	arch = any
 	license = GPL
 	depends = python>=3.7.3,
-	depends = python-pip
+	depends = python-pip,
+	depends = tor-browser
 	source = https://github.com/danehobrecht/shadowtube/archive/refs/tags/1.0.3.tar.gz
 	sha256sums = dcd4c87b504731db0fcb6332168b49a65b20d006c8b078f2fc6e6fd289fda75f
 
