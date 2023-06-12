@@ -1,6 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-gnome-ui-tune-git
-pkgver=1.7.2.r0.gb720e9c
+_uuid=gnome-ui-tune@itstime.tech
+pkgver=1.7.3.r0.gc03e0e0
 pkgrel=1
 pkgdesc="Tunes the overview UI of GNOME 40"
 arch=('any')
@@ -26,14 +27,16 @@ build() {
 
 package() {
   cd $srcdir/gnome-ui-tune
-  _uuid='gnome-ui-tune@itstime.tech'
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
+  bsdtar xvf "${_uuid}.shell-extension.zip" -C \
+    "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
 
-  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
-  bsdtar xvf "$_uuid.shell-extension.zip" -C \
-    "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+  cp -r "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale" "$pkgdir/usr/share/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/locale"
 
   install -Dm644 schemas/org.gnome.shell.extensions.gnome-ui-tune.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
 
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/"
+  rm "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/LICENSE"
 }
