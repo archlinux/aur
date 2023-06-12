@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r28.2afe111
+pkgver=r29.5a7afbe
 pkgrel=1
 pkgdesc="A custom configs for sk-holoiso"
 arch=('any')
@@ -22,9 +22,12 @@ pkgver() {
 }
 
 package() {
+    install -dm755 "${pkgdir}/opt/${pkgname}"
+    install -Dm755 "${srcdir}/sk-holoiso-config/src/sk-holoiso-config.py" "${pkgdir}/opt/${pkgname}/sk-holoiso-config.py"
+
     source_services=("sk-auto-swap.service" "sk-efi-mount.service" "sk-root-resume.service")
 
-    cd "$srcdir/sk-holoiso-config/src"
+    cd "${srcdir}/sk-holoiso-config/src"
     for service_file in "${source_services[@]}"; do
         install -Dm644 "etc/systemd/system/$service_file" "$pkgdir/etc/systemd/system/$service_file"
     done
@@ -34,8 +37,7 @@ package() {
         install -Dm755 "usr/bin/$exclude_file" "$pkgdir/usr/bin/$exclude_file"
     done
 
-    # link sk-holoiso-config.py to /usr/bin/sk-holoiso-config
-    ln -s "sk-holoiso-config.py" "$pkgdir/usr/bin/sk-holoiso-config"
+    ln -s "/opt/${pkgname}/sk-holoiso-config.py" "${pkgdir}/usr/bin/sk-holoiso-config"
 
     install -Dm644 "etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules" "$pkgdir/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules"
     install -Dm644 "etc/default/grub" "$pkgdir/etc/default/grub"
