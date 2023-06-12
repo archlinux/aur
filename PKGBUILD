@@ -1,7 +1,7 @@
 # Maintainer: Yann Büchau <nobodyinperson at posteo de>
 # Contributor: Thomas Jost <schnouki@schnouki.net>
 pkgname=git-annex-standalone-nightly
-pkgver=10.20230408+g250194b7d
+pkgver=10.20230408+g37a9982d8
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone nightly autobuild version, with no Haskell dependency."
 arch=(x86_64 aarch64)
@@ -21,7 +21,9 @@ case $CARCH in
     default) _arch=amd64;;
 esac
 
-_tarball_url="https://downloads.kitenet.net/git-annex/autobuild/${_arch}/git-annex-standalone-${_arch}.tar.gz"
+_tarball="git-annex-standalone-${_arch}.tar.gz"
+_tarball_url="https://downloads.kitenet.net/git-annex/autobuild/${_arch}/${_tarball}"
+rm -f "${_tarball}"
 
 source=(
     "git-annex-standalone-${_arch}.tar.gz::$_tarball_url"
