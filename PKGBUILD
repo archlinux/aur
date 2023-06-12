@@ -2,7 +2,7 @@
 
 pkgname=ialauncher-git
 pkgver=r127.b93f75d
-pkgrel=1
+pkgrel=2
 pkgdesc='Play all of the Internet Archive’s MS-DOS games offline!'
 arch=('x86_64')
 url='https://github.com/rtts/ialauncher'
