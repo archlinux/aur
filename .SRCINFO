@@ -1,0 +1,17 @@
+pkgbase = snapdrop-appimage
+	pkgdesc = A Self Contained Desktop Version Of Snapdrop Made With Electron
+	pkgver = 1.0.4
+	pkgrel = 4
+	url = https://github.com/JustSch/node-snapdrop-electron
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	conflicts = snapdrop
+	options = !strip
+	source = snapdrop-1.0.4.AppImage::https://github.com/JustSch/node-snapdrop-electron/releases/download/v1.0.4/snapdrop-1.0.4-x64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/JustSch/node-snapdrop-electron/main/LICENSE
+	sha256sums = fa7e75d9ca2aa3f793d4e0429bee4654071ad5f027be53b2e9a748a691e0b0a9
+	sha256sums = 7f5b14a890fc05b278075f83944a89798f72df4756b29de289b17fef3f191703
+
+pkgname = snapdrop-appimage
