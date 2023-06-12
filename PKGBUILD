@@ -8,10 +8,10 @@ pkgname=${_pkgname}-bin
 
 _ghrepo=andydecleyre/archbuilder_${_pkgname}
 
-pkgver=4.8.1   # match telegram-desktop-userfonts:pkgver
-_pkgrel=2      # match telegram-desktop-userfonts:pkgrel
+pkgver=4.8.3   # match telegram-desktop-userfonts:pkgver
+_pkgrel=1      # match telegram-desktop-userfonts:pkgrel
 
-pkgrel=2
+pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
@@ -21,7 +21,7 @@ license=('GPL3')
 
 # depends match telegram-desktop-userfonts:depends
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm-2.68'
+         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash' 'glibmm-2.68'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch'
          'openssl' 'protobuf')
 
@@ -32,7 +32,7 @@ optdepends=('webkit2gtk: embedded browser features'
 source=("https://github.com/${_ghrepo}/releases/download/${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-${arch}.pkg.tar.zst")
 
 # sha512sums match latest successful build at releases URL
-sha512sums=('a42b40b0dc8737d15b3f1f31375308d5380ed84e8e7fd3d2076c6205a0faf12c1928459f91f47611ed893a6c0dbf279bfd1543e2b04550fcaebef8d0c610c304')
+sha512sums=('b9aeb99558718b2090b9d7575c57fd4129bb0b69100368322f796961bcd3832a827e483a67fc36b664f256355de101ce3d641b178c9e90a8fc8ba979e7f48c33')
 
 package() {
   cp -a usr $pkgdir/
