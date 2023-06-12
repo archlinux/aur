@@ -1,6 +1,6 @@
 pkgbase = perl-dbix-class-schema-loader
 	pkgdesc = Create a DBIx::Class::Schema based on a database
-	pkgver = 0.07042
+	pkgver = 0.07051
 	pkgrel = 1
 	url = http://search.mcpan.org/dist/DBIx-Class-Schema-Loader
 	arch = any
@@ -14,7 +14,6 @@ pkgbase = perl-dbix-class-schema-loader
 	makedepends = perl-config-any
 	makedepends = perl-config-general
 	makedepends = perl-dbd-sqlite>=1.29
-	makedepends = perl-dbix-class-introspectablem2m
 	makedepends = perl-moose>=1.12
 	makedepends = perl-moosex-markasmethods>=0.13
 	makedepends = perl-moosex-nonmoose>=0.25
@@ -30,19 +29,15 @@ pkgbase = perl-dbix-class-schema-loader
 	depends = perl-lingua-en-inflect-number>=1.1
 	depends = perl-lingua-en-inflect-phrase>=0.15
 	depends = perl-lingua-en-tagger>=0.23
-	depends = perl-list-moreutils>=0.32
 	depends = perl-mro-compat>=0.09
 	depends = perl-scope-guard>=0.20
 	depends = perl-string-camelcase>=0.02
 	depends = perl-string-toidentifier-en>=0.05
-	depends = perl-sub-name
 	depends = perl-try-tiny
 	depends = perl-namespace-clean>=0.23
-	depends = perl>=5.8.1
+	depends = perl-curry
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/I/IL/ILMARI/DBIx-Class-Schema-Loader-0.07042.tar.gz
-	md5sums = bdf0f66ed6e97a9630dda37ffe356060
-	sha512sums = 62a4168f5a0d107f26ad090c7828352c5a15d2dcccd54b992585f314d1985a8d7eb4d466cc10e87e42aee2b55832428fdb28d7bcfcecde950a70228f7d0c6253
+	source = https://cpan.metacpan.org/authors/id/V/VE/VEESH/DBIx-Class-Schema-Loader-0.07051.tar.gz
+	md5sums = 701d09a648f217fedf1dff2feee0d7de
 
 pkgname = perl-dbix-class-schema-loader
-
