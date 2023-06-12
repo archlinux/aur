@@ -1,6 +1,7 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-space-bar-git
-pkgver=r28.7582c18
+_uuid=space-bar@luchrioh
+pkgver=16.r0.gd671f4b
 pkgrel=1
 pkgdesc="GNOME Shell extension that shows workspaces buttons in top panel"
 arch=('any')
@@ -15,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/space-bar"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -25,13 +26,11 @@ build() {
 
 package() {
   cd "$srcdir/space-bar"
-  _uuid=space-bar@luchrioh
-
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
   bsdtar -xvf "${_uuid}.shell-extension.zip" -C \
     "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/"
 
   install -Dm644 target/schemas/org.gnome.shell.extensions.space-bar.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas/"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 }
