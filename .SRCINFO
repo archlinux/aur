@@ -8,5 +8,6 @@ pkgbase = otc-auth
 	license = GPL3
 	makedepends = go
 	source = https://github.com/iits-consulting/otc-auth/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 671d6c683c03cdd8179390f30028bdad3db9646eb583df5b3735fa4e203fac1c
 
 pkgname = otc-auth

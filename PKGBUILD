@@ -34,3 +34,4 @@ package() {
 	install -d -m 0755 "${pkgdir}/usr/bin"
   install -m 0755 otc-auth "${pkgdir}/usr/bin"
 }
+sha256sums=('671d6c683c03cdd8179390f30028bdad3db9646eb583df5b3735fa4e203fac1c')
