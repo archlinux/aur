@@ -4,7 +4,7 @@
 _pkgname=php-box
 pkgname=${_pkgname}-bin
 pkgver=4.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, zero config application bundler with PHARs"
 arch=("any")
 url="https://github.com/box-project/box"
@@ -22,7 +22,7 @@ sha256sums=('83d63ddb24ecc97538356b90c320773d1aca2712d14813bd27bee3ba65cf3b18'
 
 package() {
   install -D -m644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -D -m755 "${srcdir}/${_pkgname}-${pkgver}.phar" "${pkgdir}/usr/share/webapps/bin/box.phar"
+  install -D -m755 "${srcdir}/${_pkgname}-${pkgver}.phar" "${pkgdir}/usr/share/webapps/bin/${_pkgname}.phar"
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/webapps/bin/${_pkgname}.phar" "${pkgdir}/usr/bin/box"
 }
