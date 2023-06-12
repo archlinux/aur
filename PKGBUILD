@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-virtualkeyboard
-_basever=5.15.9
+_basever=5.15.10
 pkgver=5.15.9
 pkgrel=1
-_commit=4191fd9098ae25ffd5917370427460842e73f0cb
+_commit=72373522141dd3206183eb5fa56ae1c36a6d4c2b
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
