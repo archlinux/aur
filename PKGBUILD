@@ -1,8 +1,8 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=snagboot
-pkgver=1.0
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 pkgdesc='Generic recovery and reflashing tool for embedded platforms'
 arch=(any)
 url='https://github.com/bootlin/snagboot'
@@ -22,7 +22,7 @@ makedepends=(python-build python-installer python-wheel)
 install=$pkgname.install
 source=("$url/archive/refs/tags/v$pkgver.tar.gz"
         $pkgname.sysusers)
-b2sums=('e8c0486b42fb31587ec9401ab4dd678d4649025ba943d2d2c8f59dd8da4dacd91e5b8edaa321a447a7fc44d345d2c4f68fc0d5939c31842302c8cdc7e73f2457'
+b2sums=('b10361b7929acd47d23c16a49c46deae1892433748973c372020e376bb37ced75b000b40d8cb8dbb781765c6762105ab3e076091918dca6168dc6f6e1f8b3ac2'
         'f48705e2a98ec318e26a4a1f01bafabbd8ab74622c7209be9cbae34bb0ccc999d6581b0fa5c827ab7a8bd41d6f32d32c4a2ed642342279308362953018843138')
 
 build() {
@@ -33,5 +33,5 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dt "$pkgdir/etc/udev/rules.d" src/snagrecover/80-snagboot.rules
+    install -Dt "$pkgdir/etc/udev/rules.d" src/snagrecover/50-snagboot.rules
 }
