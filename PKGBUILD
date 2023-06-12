@@ -4,7 +4,7 @@
 # Maintainer: slbtty <shenlebantongying@gmail.com>
 
 pkgname=goldendict-ng-git
-pkgver=23.05.03.alpha.230526.defc2447.r3.g3858932e
+pkgver=23.06.02.a2f5aa6c
 pkgrel=1
 pkgdesc="A feature-rich dictionary lookup program, supporting multiple dictionary formats."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "%s.%s" "$(git describe | cut -c 2-9)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
