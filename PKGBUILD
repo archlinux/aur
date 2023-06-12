@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-number-format'
-pkgver='1.75'
+pkgver='1.76'
 pkgrel='1'
 pkgdesc="Perl extension for formatting numbers"
 arch=('any')
@@ -11,10 +11,10 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Number-Format'
-source=('http://search.cpan.org/CPAN/authors/id/W/WR/WRW/Number-Format-1.75.tar.gz')
-sha256sums=('82d659cb16461764fd44d11a9ce9e6a4f5e8767dc1069eb03467c6e55de257f3')
-_distdir="Number-Format-1.75"
+url='https://metacpan.org/pod/Number::Format'
+source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Number-Format-${pkgver}.tar.gz")
+sha256sums=('0e0060eb363635a885706c6a26f5fcaafeae759f7b2acae49dda70e195dd44d6')
+_distdir="Number-Format-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
