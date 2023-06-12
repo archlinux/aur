@@ -1,0 +1,12 @@
+[Unit]
+Description=pretix runperiodic
+
+[Service]
+User=pretix
+Group=pretix
+Environment="VIRTUAL_ENV=/var/pretix/venv"
+Environment="PATH=/var/pretix/venv/bin:/usr/local/bin:/usr/bin:/bin"
+ExecStart=/var/pretix/venv/bin/python -m pretix runperiodic
+WorkingDirectory=/var/pretix
+
+
