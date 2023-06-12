@@ -1,32 +1,33 @@
-# Maintainer: Antoine Lubineau <antoine@lubignon.info>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=patator
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-purpose bruteforcer"
-arch=('any')
+arch=(any)
 url="https://github.com/lanjelot/patator"
-license=('GPL2')
-depends=('python2')
+license=(GPL2)
+depends=(python)
 optdepends=(
-  'python2-paramiko: SSH'
-  'python2-pycurl: HTTP'
+  'python-paramiko: SSH'
+  'python-pycurl: HTTP'
   'openldap: LDAP'
   'impacket: SMB'
   'mysql-python: MySQL'
-  'python2-psycopg2: PostgreSQL'
-  'python2-crypto: VNC'
-  'python2-pydns: DNS'
-  'python2-pysnmp: SNMP'
-  'python2-ipy: NETx keywords'
+  'python-psycopg2: PostgreSQL'
+  'python-crypto: VNC'
+  'python-pydns: DNS'
+  'python-pysnmp: SNMP'
+  'python-ipy: NETx keywords'
   'java-runtime: keystore files'
   'unzip: zip archives'
 )
-source=("https://github.com/lanjelot/patator/archive/$pkgver.tar.gz")
+source=("$url/archive/$pkgver.tar.gz")
 sha256sums=('dfec3106e3bbab15b83135e17728e8dbb325f2697875364d99abc2ebba15fd5a')
 
 build() {
-  sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|g' -i "$srcdir/${pkgname}-$pkgver/${pkgname}.py"
+  sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python|g' -i "$srcdir/${pkgname}-$pkgver/${pkgname}.py"
 }
 
 package() {
@@ -63,5 +64,3 @@ package() {
     ln -s /usr/bin/patator "$pkgdir/usr/bin/$module"
   done
 }
-
-# vim:set ts=2 sw=2 et:
