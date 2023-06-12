@@ -1,5 +1,5 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
-!*.patch
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/attract.desktop
