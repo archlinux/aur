@@ -58,9 +58,6 @@ prepare() {
   mkdir mozbuild
   cd mozilla-unified
 
-  # See https://github.com/glandium/git-cinnabar/issues/311
-  git config remote.origin.fetch '^refs/cinnabar/*'
-
   # EVENT__SIZEOF_TIME_T does not exist on upstream libevent, see event-config.h.cmake
   sed -i '/CHECK_EVENT_SIZEOF(TIME_T, time_t);/d' ipc/chromium/src/base/message_pump_libevent.cc
 
@@ -131,6 +128,9 @@ END
 
 build() {
   cd mozilla-unified
+
+  # See https://github.com/glandium/git-cinnabar/issues/311
+  git config remote.origin.fetch '^refs/cinnabar/*'
 
   export MOZ_SOURCE_REPO="$_repo"
   export MOZ_SOURCE_CHANGESET="$(cd $SRCDEST/mozilla-unified; git cinnabar git2hg bookmarks/autoland)"
