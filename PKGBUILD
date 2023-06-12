@@ -1,7 +1,7 @@
 # Maintainer: myname <mebitek@zohomail.eu>
 pkgname=tui-deck
 _gitname=tui-deck
-pkgver=0.5.9.r0.ga5135b6
+pkgver=0.5.11.r0.g0856c80
 pkgrel=1
 pkgdesc="A TUI frontend for Nextcloud Deck app written in GO using the Rich Interactive Widgets for Terminal UIs"
 url="https://github.com/mebitek/tui-deck"
