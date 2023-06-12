@@ -1,4 +1,5 @@
-# Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
+# Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
+# Contributor: Maxim Kurnosenko <asusx2@mail.ru>
 # Contributor: Marco A Rojas <marco.rojas@zentek.com.mx>
 
 pkgname=kannel
