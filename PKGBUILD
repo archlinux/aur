@@ -2,7 +2,7 @@
 # Contributor: Hunter Jones <hjones2199 at gmail dot com>
 # Maintainer: Thomas Bork <sudobash418 at gmail dot com>
 pkgname=worldpainter
-pkgver=2.17.2
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='An interactive map generator for Minecraft'
 
@@ -16,11 +16,11 @@ optdepends=('minecraft: for playing the exported maps')
 source=("https://www.worldpainter.net/files/${pkgname}_${pkgver}.tar.gz"
 		'worldpainter.png'
 		'worldpainter.desktop'
-		'launch-script')
-sha256sums=('9872d8224bcd27bc1657f47f7911028bada017e0bd7f1154176d65bf71a1b05f'
+		'launch-script.sh')
+sha256sums=('975dadb205eb91f057ee8b2944c7324250cebba6c2c7b255a0bf83e1b5dfd9bf'
             'a93cd4af0e8ef470f48a8dd2773fb9d83a5302f1b9bfba67f43b4ec7500a039e'
             '815abfee2eb545a3bac0d2e4e5c0cadc548cc1466c4e0aaf3bfd1f07a15e7741'
-            'fd64d11450f03c8924cbc133a009b3373bc5f80b2589b63391b65db04d82963f')
+            '631cffdb102945a39b28ec33567acd350c3ae5b000face915d24159741942fd0')
 
 package() {
 	cd "${srcdir}/${pkgname}"
@@ -36,6 +36,6 @@ package() {
 	find .install4j/user/ -maxdepth 1 -type f -exec install -Dm644 {} "${pkgdir}/opt/${pkgname}/.install4j/user/" \;
 
 	install -Dm644 "${srcdir}/worldpainter.png" "${pkgdir}/usr/share/pixmaps/"
-	install -Dm755 "${srcdir}/launch-script" "${pkgdir}/usr/bin/worldpainter"
+	install -Dm755 "${srcdir}/launch-script.sh" "${pkgdir}/usr/bin/worldpainter"
 	install -Dm644 "${srcdir}/worldpainter.desktop" "${pkgdir}/usr/share/applications/worldpainter.desktop"
 }
