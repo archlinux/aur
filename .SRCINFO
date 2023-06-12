@@ -1,0 +1,14 @@
+pkgbase = silverbullet
+	pkgdesc = A clean Markdown-based writing/note taking application
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/silverbulletmd/silverbullet
+	arch = any
+	license = MIT
+	depends = deno
+	source = silverbullet-0.3.1.js::https://github.com/silverbulletmd/silverbullet/releases/download/0.3.1/silverbullet.js
+	source = silverbullet.service
+	sha256sums = 5fe4acabdb503256c56e4a8293453cfaf9289e54e035f85ad0c6686f34dc5e47
+	sha256sums = 5309053371a003f3c32365eb15dbd38118ab2409a0a5737854261f821fe253a3
+
+pkgname = silverbullet
