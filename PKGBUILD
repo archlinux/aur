@@ -3,7 +3,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname='perl-pdl-stats'
-pkgver='0.82'
+pkgver='0.83'
 pkgrel='1'
 pkgdesc="a collection of statistics modules in Perl Data Language, with a quick-start guide for non-PDL people."
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl-pdl')
 url='https://metacpan.org/release/PDL-Stats'
 source=("https://search.cpan.org/CPAN/authors/id/E/ET/ETJ/PDL-Stats-${pkgver}.tar.gz")
-sha512sums=('9c4f165e7ae60e271b37de5c10d84a344ca2a9281d8f75ddebe1b7d44921082174919619f58cb4cebc8ab88e21d17e82de74124bc5924b9b8dcfaf3a22e217c8')
+sha512sums=('1e6cc2c8fc6432087f591f0e1ae53e4212bbb301792029b093badac14346a4145ea1e768ed636be6bc83db89758eadf9ca9a5adfefd26c0fc91e9fd0feb6a04e')
 _distdir="PDL-Stats-${pkgver}"
 
 build() {
