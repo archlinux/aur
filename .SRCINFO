@@ -1,11 +1,14 @@
 pkgbase = ly2video
 	pkgdesc = Generate videos from Lilypond sheet music files
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aspiers/ly2video
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = ffmpeg
 	depends = lilypond
 	depends = python-mido
