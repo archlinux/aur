@@ -1,0 +1,16 @@
+pkgbase = php-box-bin
+	pkgdesc = Fast, zero config application bundler with PHARs
+	pkgver = 4.0.1
+	pkgrel = 1
+	url = https://github.com/box-project/box
+	install = php-box.install
+	arch = any
+	license = MIT
+	depends = php
+	depends = php-sodium
+	source = box-4.0.1.phar::https://github.com/box-project/box/releases/download/4.0.1/box.phar
+	source = LICENSE-4.0.1::https://raw.github.com/box-project/box/4.0.1/LICENSE
+	sha512sums = 84747841f36f444e28041f563c367529f5a453b7ad150b44ee21d384c9959ce80dc791d79500227a57f4cf8e701140c960d5481fa0886606d5addada7a963c42
+	sha512sums = 4574410c9a00c41e11d166bcc0d44b4e31b5beaf24bf498a608ebf611e86466a3a61549da6d608b714b3c32c5c361a1514baf38e4db2a5fc0a0d36b69169cb50
+
+pkgname = php-box-bin
