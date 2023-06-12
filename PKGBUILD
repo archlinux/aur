@@ -9,10 +9,8 @@ pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
 license=('GPL3')
-makedepends=('clang' 'llvm' 'libelf' 'flex'
-             'binutils' 'bc' 'rsync')
+makedepends=('bc' 'clang' 'libelf' 'llvm' 'rsync')
 depends=('opensnitch')
-conflicts=("${pkgname}-git" "${pkgname}-stable")
 source=("${url}/archive/v${pkgver}.tar.gz"
         "https://cdn.kernel.org/pub/linux/kernel/v${_kver%%.*}.x/linux-${_kver}.tar.xz")
 sha256sums=('d68bf55e4b7cc6a9db6c7eb35412afdabdff988d54c3ead24d5ebb8286f59ca3'
