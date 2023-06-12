@@ -1,8 +1,8 @@
 # Maintainer: éclairevoyant
-# Contributor: xiretza <xiretza+aur@gmail.com>
+# Contributor: xiretza <xiretza+aur at gmail dot com>
 
 pkgname=python-discord
-pkgver=2.2.3
+pkgver=2.3.0
 _tarname=discord.py-$pkgver
 pkgrel=1
 pkgdesc="Discord API wrapper written in Python"
@@ -10,7 +10,7 @@ arch=(any)
 url="https://github.com/Rapptz/discord.py"
 license=(MIT)
 depends=('python-aiohttp>=3.7.4' 'python-aiohttp<4')
-makedepends=(python-setuptools)
+makedepends=(python-setuptools python-{build,installer,wheel})
 optdepends=(
 	'python-pynacl>=1.3.0: voice support'
 	'libffi: voice support'
@@ -21,15 +21,15 @@ optdepends=(
 	'python<3.10: speed support'
 )
 source=("$_tarname.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('d7ff7bf45e3c4b4fdd57643b5ad12ebc2c4082e49add1e3494af76c9110f312c455a272aac69dc0ef89dc1c0e2fc991eec3772cd5daf75e2ac3ec4637b1edab6')
+b2sums=('c06dfd3a58e209ab2c910b320ec03480f9f404bc049b7886e939b23f77012fcd97f4ad63cd30a663dbe7a3c18fa00c02f387c99fafdc857840c8bc1617799a4e')
 
 build() {
 	cd $_tarname
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd $_tarname
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
