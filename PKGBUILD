@@ -1,12 +1,13 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Pascal Ernster <archlinux@hardfalcon.net>
+# Contributor: loqs <bugs-archlinux@entropy-collector.net>
 
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
 
 _use_suffix=1
-pkgver=25.0.1
+pkgver=25.1.0
 _chromiumver=114.0.5735.90
 # shellcheck disable=SC2034
 pkgrel=1
@@ -15,6 +16,7 @@ _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
   pkgname="electron${_major_ver}"
 else
+  pkgbase="electron${_major_ver}"
   pkgname=electron
 fi
 # shellcheck disable=SC2034
@@ -26,7 +28,7 @@ url='https://electronjs.org/'
 # shellcheck disable=SC2034
 license=('MIT' 'custom')
 # shellcheck disable=SC2034
-depends=('c-ares' 'gtk3' 'libevent' 'nss' 'libffi' 'wayland')
+depends=('c-ares' 'gtk3' 'libevent' 'nss' 'libffi')
 # shellcheck disable=SC2034
 makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
              'qt5-base' 'java-runtime-headless' 'libnotify' 'lld' 'llvm'
@@ -50,7 +52,7 @@ options=('!lto') # Electron adds its own flags for ThinLTO
 # shellcheck disable=SC2034
 source=("git+https://github.com/electron/electron.git#tag=v$pkgver"
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
-        "chromium::git+https://chromium.googlesource.com/chromium/src.git#tag=$_chromiumver"
+        "chromium-mirror::git+https://github.com/chromium/chromium.git#tag=$_chromiumver"
         "electron-launcher.sh"
         "electron.desktop"
         'default_app-icon.patch'
@@ -137,7 +139,7 @@ EOF
   export VPYTHON_BYPASS='manually managed python not supported by chrome operations'
 
   echo "Linking chromium from sources..."
-  ln -s chromium src
+  ln -s chromium-mirror src
 
   depot_tools/gclient.py sync -D \
       --nohooks \
@@ -221,17 +223,10 @@ build() {
   export AR=ar
   export NM=nm
 
-  # https://github.com/webpack/webpack/issues/14532
-  export NODE_OPTIONS=--openssl-legacy-provider
-
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
   CXXFLAGS+=' -Wno-builtin-macro-redefined'
   CPPFLAGS+=' -D__DATE__=  -D__TIME__=  -D__TIMESTAMP__='
-
-  # Do not warn about unknown warning options
-  CFLAGS+='   -Wno-unknown-warning-option'
-  CXXFLAGS+=' -Wno-unknown-warning-option'
 
   # Let Chromium set its own symbol level
   CFLAGS=${CFLAGS/-g }
@@ -274,8 +269,6 @@ build() {
     use_gnome_keyring = false
     use_sysroot = false
     use_system_libffi = true
-    use_system_libwayland = true
-    use_system_wayland_scanner = true
     icu_use_data_file = false
     is_component_ffmpeg = false
   '
