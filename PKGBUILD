@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=addressbook-desktop-bin
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Backbone React/Redux/MUIv5 Electron Application For macOS(x64/arm64) / Windows(x86_64)"
 arch=('x86_64')
 url="https://github.com/dredwardhyde/addressbook-desktop-app"
@@ -12,7 +12,7 @@ makedepends=('npm' 'gendesk')
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname%-bin}.png")
-sha256sums=('866eed289ef40d2f3585508c82453cf48d1e46229e3605c0c5c56cb3a806e560'
+sha256sums=('03b21c99576b14cc1236a15bbc40c14b5d304a0a8399fe435ee7660dd51a9082'
             '69a031a39efb4564ee88f08d36cb5b606d99429ad77f47f967f88a6a4d40937f')
 build() {
     cd "${srcdir}/${pkgname%-bin}-app-${pkgver}"
