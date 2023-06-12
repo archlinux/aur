@@ -1,16 +1,15 @@
 pkgbase = emv-cap
 	pkgdesc = EMV CAP implementation in python
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://sites.uclouvain.be/EMV-CAP/Application/
 	arch = any
 	license = CC-BY-ND-2.0
-	makedepends = python2-setuptools
-	depends = python2
-	depends = python2-crypto
-	depends = python2-pyscard
-	source = https://sites.uclouvain.be/EMV-CAP/resources/Data/EMVCAP-1.5.tar.gz
-	sha512sums = 7ab6752b0f883a0f22ab301231586cbf30485adfe36bcb62a733e25bd69f0443f15dff63b038460f71a14ce02adc71a410ba7689530eabb9441af6906cf18469
+	makedepends = python-setuptools
+	depends = python
+	depends = python-crypto
+	depends = python-pyscard
+	source = https://github.com/doegox/EMV-CAP/archive/d28dbdd77b57fe2489d0f3d452a5b716a0852949.zip
+	sha512sums = 73a4cbb1d06342bbf5cbbb923581356f66d68db2b887388922e01093fc374c9e6841238e26d0cb3586a652579d83d348b3c2957f555318300e7d921d01667532
 
 pkgname = emv-cap
-
