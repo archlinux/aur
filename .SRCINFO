@@ -1,0 +1,20 @@
+pkgbase = mimic-bin
+	pkgdesc = A fast, local, neural text to speech system for Mycroft
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://mycroft.ai/mimic-3/
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = AGPL3
+	provides = mimic
+	conflicts = mimic
+	options = !strip
+	source_x86_64 = https://github.com/MycroftAI/mimic3/releases/download/release%2Fv0.2.4/mycroft-mimic3-tts_0.2.4_amd64.deb
+	sha256sums_x86_64 = a622280d00742c9bfc20b9c075c619c23b4184c757abecc3021397009c01e315
+	source_aarch64 = https://github.com/MycroftAI/mimic3/releases/download/release%2Fv0.2.4/mycroft-mimic3-tts_0.2.4_arm64.deb
+	sha256sums_aarch64 = 57069d2e207c8d2e899b974d13e4985e4d5866a977ed9499bd2d229ddedddee8
+	source_armv7h = https://github.com/MycroftAI/mimic3/releases/download/release%2Fv0.2.4/mycroft-mimic3-tts_0.2.4_armhf.deb
+	sha256sums_armv7h = a0a32d9ad3e8b06e47cffc0d2fe88cd2acdb86dd33f1c5efd1fd03f5f5e8f22f
+
+pkgname = mimic-bin
