@@ -1,14 +1,13 @@
 pkgbase = pdf-decrypt
 	pkgdesc = Remove password-protection from PDFs permanently.
-	pkgver = 0
+	pkgver = r14.c3a4fc9
 	pkgrel = 1
 	url = https://github.com/zvyn/pdf-decrypt
 	arch = any
-	license = MIT
+	license = custom
 	makedepends = git
 	depends = qpdf
-	source = git://github.com/zvyn/pdf-decrypt.git
-	md5sums = SKIP
+	source = git+https://github.com/zvyn/pdf-decrypt
+	sha256sums = SKIP
 
 pkgname = pdf-decrypt
-
