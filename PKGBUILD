@@ -3,7 +3,7 @@
 pkgname=pretix-venv
 _pkgname=pretix
 pkgver=4.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Ticket shop application for conferences, festivals, concerts, tech events, shows, exhibitions, workshops, barcamps, etc. (venv-version)"
 arch=('any')
 url="https://github.com/pretix/pretix"
@@ -37,6 +37,13 @@ package() {
   source "$pkgdir/var/pretix/venv/bin/activate"
   pip3 install wheel
   pip3 install .  --compile
+  find "$pkgdir"/var/pretix/venv/bin/ \
+    -maxdepth 1 -type f -exec sed -i "s#${pkgdir}/#/#g" {} +
+  find "$pkgdir"/var/pretix/venv/ \
+    -type f -name "*.py[co]" -delete
+  find "$pkgdir"/var/pretix/venv/ \
+    -type d -name "__pycache__" -delete
+  deactivate
   cd $srcdir
   install -Dm644 "$_pkgname-worker.service" -t "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 "$_pkgname-web.service" -t "$pkgdir/usr/lib/systemd/system/"
