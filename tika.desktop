@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Apache Tika
+Comment=The Apache Tika™ toolkit detects and extracts metadata and text from over a thousand different file types (such as PPT, XLS, and PDF)
+Exec=tika %u
+Icon=tika
+Terminal=false
+StartupNotify=true
+
