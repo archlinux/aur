@@ -183,7 +183,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.3
-_minor=6
+_minor=7
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -220,7 +220,7 @@ source=(
 # ZFS support
 if [ -n "$_build_zfs" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=2582dbec90ac8639dcecaf5ffc95040e759a67d1")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=893549d6259a6904b7c1ee58080eb72acc4ff7aa")
 fi
 
 case "$_cpusched" in
@@ -825,8 +825,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('73afc625bbdce52a288724f17a42603b45c9e107a8055172d218369d16885ab9e3ecc1358be5bc839c53ae40c9005b673de6f08bb2cbf36873a19b3ebdb69218'
-        '39157008becff43ca5ba415b23c7b399cb27e2d811a0f59264d54008103206ba04c5cc9e775c21f579dace2b334992d09907a1a7a242f85edd0bead5320ac6ba'
+b2sums=('d26443196635af6a5ca339362cd573a24759ff57f4152ab2a5ced21bdc69a66296168fab0e9ea7755ef71edce3f9898cf64d2dc9aea0cfa2b126716c706ab7d6'
+        '4c1f062a149a3d91f9d69f55f914addaf03d1620a5d4ff3cc392b2f970c7ec43b6896fddb10adbbe333b215a2b36cf21aac4704f49ca4cb22123b2e2e780b6cb'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        '18f71f8174ba35180fd0e71eba8ceb355aab90e25e26521e7fe058a004e91272c297d05081281f01502e3cde32e325b40e24d2220161339fede9737d8d9ef68e'
+        'ccd373221c3af34360936df9c1f206221745dbcbb0715958eb0e60e1b3fa5d2e7e61f3d6d4e8400cb0eb5029a3f6093bdd9e99cf0fba573e83547a75b15a0529'
         '35462a8688c7775d1c4e96e77b1af08c511bbc48f14b7b26f2841124afa4d65147c7d2c3c68faabab21f6700da3d06ab26ae3277c59f472cf17834c4600f3d7c')
