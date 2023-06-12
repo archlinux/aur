@@ -3,7 +3,7 @@
 pkgname=pretix-venv
 _pkgname=pretix
 pkgver=4.20.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Ticket shop application for conferences, festivals, concerts, tech events, shows, exhibitions, workshops, barcamps, etc. (venv-version)"
 arch=('any')
 url="https://github.com/pretix/pretix"
@@ -20,7 +20,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname
         "$_pkgname.tmpfiles"
         "$_pkgname.cfg")
 sha256sums=('d2a62ac6f1cbe1f539aab19884140d28b8017ca29ea277516e3805036615c314'
-            'c4a823f9621e96f498b7a58a3062da11e6ac71659be829868ba14d882b09f7a9'
+            '3cfa382ea4295d2e6eca94acc4cf77b93811d9b9ecee3e549eb445f161adf3ed'
             'e22f39cf639d797e5c91401050a351754d502c4b179af8450e926679ea31b4c9'
             '8463729a99776fe56bf5331aae6c2f58683e03c2951810fdb46314bac159beaa'
             '83c48c5d35a05359b59bff5df90baedb82cb8c0bd8d4f80d8783fdc017d8ac3f'
