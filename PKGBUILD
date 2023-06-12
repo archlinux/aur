@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastdownloader-bin
-pkgver=0.5.7
+pkgver=0.5.8
 pkgrel=1
 pkgdesc="A fast video/audio downloader in electron.js"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nss' 'mesa' 'libxcomposite' 'libxkbcommon' 'libxfixes' 'gtk3' 'libxdam
     'dbus' 'glibc' 'at-spi2-core' 'nspr' 'libxcb' 'libxrandr' 'glib2' 'libxext' 'pango' 'libcups' 'cairo' 'alsa-lib')
 options=(!strip)
 source=("${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman")
-sha256sums=('8d7c4188b988b94ba72f154f5c22ff3eca84c238a8daa67ec42466c20c0ed530')
+sha256sums=('f665254f05dfc4f90d6badf14f3f523b9cbe8ece68d12b8340a7129915369453')
 package() {
     cp --parents -a {opt,usr} "${pkgdir}"
 }
