@@ -6,7 +6,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 pkgname=python-gruut-ipa
 epoch=
 pkgver=0.13.0
-pkgrel=00
+pkgrel=01
 pkgdesc='Library for manipulating pronunciations using the International Phonetic Alphabet (IPA)'
 arch=(any)
 url=https://github.com/rhasspy/gruut-ipa
@@ -129,7 +129,7 @@ _package() {
     if [[ -f LICENSE ]]; then
         install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     fi
-    rm -rf $pkgdir/usr/lib/python3.10/site-packages/tests
+    rm -rf $pkgdir/usr/lib/python3.*/site-packages/tests
 }
 
 package() { _package; }
