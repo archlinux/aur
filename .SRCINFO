@@ -1,0 +1,23 @@
+pkgbase = python-peft
+	pkgdesc = State-of-the-art Parameter-Efficient Fine-Tuning.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/hugginface/peft
+	arch = any
+	groups = hugginface
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-accelerate
+	depends = python-numpy
+	depends = python-psutil
+	depends = python-pytorch
+	depends = python-safetensors
+	depends = python-transformers
+	depends = python-yaml
+	source = peft-0.3.0.tar.gz::https://github.com/huggingface/peft/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 2e21b0e410af0378ae3b553a47f7477e81e5ec00d9b0473219afbe24aeba9dc5
+
+pkgname = python-peft
