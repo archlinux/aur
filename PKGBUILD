@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastfetch-bin
-pkgver=1.11.2
+pkgver=1.11.3
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in C."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('sh' 'glibc')
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-Linux.tar.gz")
-sha256sums=('ed123f2d0a766bb3e221b6897fd7db89afb0a4623c73af306336841b7987e0c5')
+sha256sums=('83debf7e3be8afa140bebb72df37e663c05369fa34e64126acfe2f2243b765d1')
   
 package() {
     cd "${srcdir}/${pkgname%-bin}-${pkgver}-Linux"
