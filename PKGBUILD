@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fclones-bin
-pkgver=0.31.0
+pkgver=0.32.1
 pkgrel=1
 pkgdesc="Efficient Duplicate File Finder"
 arch=('x86_64')
@@ -12,10 +12,10 @@ depends=('gcc-libs')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tgz::$url/releases/download/v$pkgver/${pkgname%-bin}-${pkgver}-linux-glibc-x86_64.tar.gz")
-sha512sums_x86_64=('c59b6611ab9ec5fa122d205ee6b417cecd803b28230ec9ff59c70f4c0e883fcab6c4397c369039fe9b570c85bc14a5375e2448595f411a8e660e59c370e472d4')
+sha512sums_x86_64=('c034b55a1aa80b14daff18692a87f90a1742c02cd0c4a310cd1a5c485cfc7ad1d95b32e4bb32dacced4e646de9da58a46558921a9c0e0086f9ae7ee097c25d70')
 
 package() {
   install -Dm 755 "usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
-  install -Dm 644 "usr/share/doc/${pkgname%-bin}/README" -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 "usr/share/doc/${pkgname%-bin}/README.md" -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 "usr/share/doc/${pkgname%-bin}/copyright" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
