@@ -1,12 +1,13 @@
 pkgbase = php-box-bin
 	pkgdesc = Fast, zero config application bundler with PHARs
 	pkgver = 4.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/box-project/box
 	install = php-box.install
 	arch = any
 	license = MIT
 	depends = php
+	depends = php-sodium
 	provides = php-box
 	conflicts = php-box
 	source = php-box-4.3.8.phar::https://github.com/box-project/box/releases/download/4.3.8/box.phar
