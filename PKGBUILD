@@ -159,7 +159,7 @@ prepare() {
   ./scripts/kconfig/merge_config.sh .config "$srcdir"/pf_defconfig
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
+  scripts/setlocalversion
 
   echo "-$pkgrel" > localversion.10-pkgrel
 
