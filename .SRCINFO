@@ -1,16 +1,20 @@
 pkgbase = python-lsp-isort
-	pkgdesc = isort plugin for python-lsp-server, sorts imports when formatting
-	pkgver = 0.2.2
-	pkgrel = 2
-	url = https://github.com/paradoxxxzero/pyls-isort
+	pkgdesc = isort plugin for the Python LSP Server
+	pkgver = 0.1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/chantera/python-lsp-isort
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
 	depends = python-lsp-server
 	depends = python-isort
-	conflicts = python-pyls-isort
 	options = !strip
-	source = pyls-isort-0.2.2.tar.gz::https://github.com/paradoxxxzero/pyls-isort/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 1f0a77d718a8ffdff2120a145b8e4e3f3a0c02eb58222657feed6815db6c7e01
+	source = https://files.pythonhosted.org/packages/source/p/python-lsp-isort/python-lsp-isort-0.1.tar.gz
+	sha256sums = f02948bc8e7549905032100e772f03464f7548afa96f07d744ff1f93cc58339a
 
 pkgname = python-lsp-isort

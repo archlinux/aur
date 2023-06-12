@@ -1,31 +1,30 @@
-# Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
+# Maintainer: Luc Khai Hai <lkh42t@gmail.com>
+# Contributer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
+
 pkgname=python-lsp-isort
-_name=pyls-isort
-pkgver=0.2.2
-pkgrel=2
-pkgdesc="isort plugin for python-lsp-server, sorts imports when formatting"
+_name=${pkgname}
+pkgver=0.1
+pkgrel=1
+epoch=1
+pkgdesc="isort plugin for the Python LSP Server"
 arch=(any)
-url="https://github.com/paradoxxxzero/pyls-isort"
+url="https://github.com/chantera/python-lsp-isort"
 license=('MIT')
-depends=(python-lsp-server python-isort)
-makedepends=(python-setuptools)
-conflicts=(python-pyls-isort)
+depends=(python python-lsp-server python-isort)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 options=(!strip)
-source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1f0a77d718a8ffdff2120a145b8e4e3f3a0c02eb58222657feed6815db6c7e01')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('f02948bc8e7549905032100e772f03464f7548afa96f07d744ff1f93cc58339a')
 
 build() {
   cd "$_name-$pkgver"
-  python setup.py build
-}
-
-check() {
-  cd "$_name-$pkgver"
-  python -c "import ${_name//-/_}"
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_name-$pkgver"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
+
+# vi: sts=2 sw=2 et
