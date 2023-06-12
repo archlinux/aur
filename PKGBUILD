@@ -5,7 +5,7 @@ pkgver="1.6"
 pkgrel=1
 pkgdesc='EMV CAP implementation in python'
 url='https://sites.uclouvain.be/EMV-CAP/Application/'
-license=('CC-BY-ND-2.0')
+license=('GPL3')
 
 source=(
  'https://github.com/doegox/EMV-CAP/archive/d28dbdd77b57fe2489d0f3d452a5b716a0852949.zip'
