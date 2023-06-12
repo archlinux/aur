@@ -34,15 +34,18 @@ YOUTUBE_COMMENTS_AJAX_URL = "https://www.youtube.com/comment_service_ajax"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
 
 settings_dict = None
-try:
-	with open('settings.json') as f:
-		settings_dict = json.load(f)
-except FileNotFoundError:
+file_paths = ['settings.json', '/etc/shadowtube/settings.json']
+
+for file_path in file_paths:
 	try:
-		with open('/etc/shadowtube/settings.json') as f:
+		with open(file_path) as f:
 			settings_dict = json.load(f)
+			break
 	except FileNotFoundError:
-		print("Error: Missing 'settings.json'.")
+		pass
+
+if settings_dict is None:
+	print("Error: Missing 'settings.json'.")
 
 use_control_pass = settings_dict["use_control_pass"]
 control_pass = settings_dict["control_pass"]
@@ -229,13 +232,10 @@ def comments_download(youtube_id, sleep=.1):
 	private = False
 	session = requests.Session()
 	session.headers['User-Agent'] = USER_AGENT
-
 	response = session.get(YOUTUBE_VIDEO_URL.format(youtube_id=youtube_id))
 	html = response.text
-
 	session_token = find_value(html, 'XSRF_TOKEN', 3)
 	session_token = session_token.encode('ascii').decode('unicode-escape')
-
 	data = json.loads(find_value(html, 'var ytInitialData = ', 0, '};') + '}')
 	for renderer in search_dict(data, 'itemSectionRenderer'):
 		ncd = next(search_dict(renderer, 'nextContinuationData'), None)
@@ -261,12 +261,10 @@ def comments_download(youtube_id, sleep=.1):
 								data={'session_token': session_token},
 								headers={'X-YouTube-Client-Name': '1',
 										'X-YouTube-Client-Version': '2.20201202.06.01'})
-
 		if not response:
 			break
 		if list(search_dict(response, 'externalErrorMessage')):
 			raise RuntimeError('Error returned from server: ' + next(search_dict(response, 'externalErrorMessage')))
-
 		if action == 'action_get_comments':
 			section = next(search_dict(response, 'itemSectionContinuation'), {})
 			for continuation in section.get('continuations', []):
@@ -275,14 +273,11 @@ def comments_download(youtube_id, sleep=.1):
 			for item in section.get('contents', []):
 				continuations.extend([(ncd['continuation'], ncd['clickTrackingParams'], 'action_get_comment_replies')
 									for ncd in search_dict(item, 'nextContinuationData')])
-
 		elif action == 'action_get_comment_replies':
 			continuations.extend([(ncd['continuation'], ncd['clickTrackingParams'], 'action_get_comment_replies')
 								for ncd in search_dict(response, 'nextContinuationData')])
-
 		for comment in search_dict(response, 'commentRenderer'):
 			yield {'cid': comment['commentId'],'text': ''.join([c['text'] for c in comment['contentText']['runs']])}
-
 		time.sleep(sleep)
 
 def search_dict(partial, search_key):
@@ -324,20 +319,17 @@ def main():
 			print("Invalid input.")
 	elif args.comments:
 		tor_validate()
-		while True:
-			print('The basic HTML page data from https://www.youtube.com/feed/history/comment_history must be locally available to the script as "Google - My Activity.html"')
-			confirm = input("Confirm? (y/N) ").lower()
-			if confirm in ["y", "yes"]:
-				try:
-					with open("Google - My Activity.html", "r"):
-						break
-				except FileNotFoundError:
-					print("Error: File does not exist.")
-			elif confirm in ["n", "no", ""]:
-				print("Exiting.")
-				sys.exit(1)
-		
-		comments_init()
+		print('The basic HTML page data from https://www.youtube.com/feed/history/comment_history must be locally available to the script as "Google - My Activity.html"')
+		confirm = input("Confirm? (y/N) ").lower()
+		if confirm in ["y", "yes"]:
+			try:
+				with open("Google - My Activity.html", "r"):
+					comments_init()
+			except FileNotFoundError:
+				print("Error: File does not exist.")
+		elif confirm in ["n", "no", ""]:
+			print("Exiting.")
+			sys.exit(1)
 	else:
 		try:
 			os.system("shadowtube -h")
