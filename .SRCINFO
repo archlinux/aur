@@ -1,0 +1,16 @@
+pkgbase = publii-appimage
+	pkgdesc = The most intuitive Static Site CMS designed for SEO-optimized and privacy-focused websites.
+	pkgver = 0.42.1
+	pkgrel = 1
+	url = https://getpublii.com
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	conflicts = publii
+	options = !strip
+	source = publii-0.42.1.AppImage::https://getpublii.com/download/Publii-0.42.1.AppImage
+	sha256sums = a2fa155d269b725ded7fba0645a61bdaf36a11eec11afbbd831f0da9cbaebdf6
+
+pkgname = publii-appimage
