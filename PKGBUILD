@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="ostara-appimage"
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A desktop application that provides various features to monitor and interact with Spring Boot Applications via Actuator."
 arch=("x86_64")
@@ -12,11 +12,11 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Ostara-${pkgver}.AppImage")
-sha256sums=('3c3977e2407920ad9f6dca8e0dde304beaf8c1fe8b6a490c4102d244dc8747b2')
+sha256sums=('309d68bd333b6a294f4046100ff665b6feb1dfa8352c1a254d03c56c4153de14')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/ostara.AppImage|g;s|@krud-devboost|ostara|g' -i "${srcdir}/squashfs-root/@krud-devboost.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|@krud-devboost|${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/@krud-devboost.desktop"
 }  
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
