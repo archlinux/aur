@@ -1,7 +1,7 @@
 pkgbase = pretix-venv
 	pkgdesc = Ticket shop application for conferences, festivals, concerts, tech events, shows, exhibitions, workshops, barcamps, etc. (venv-version)
 	pkgver = 4.20.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/pretix/pretix
 	arch = any
 	license = GPL

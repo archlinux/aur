@@ -3,7 +3,7 @@
 pkgname=pretix-venv
 _pkgname=pretix
 pkgver=4.20.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Ticket shop application for conferences, festivals, concerts, tech events, shows, exhibitions, workshops, barcamps, etc. (venv-version)"
 arch=('any')
 url="https://github.com/pretix/pretix"
@@ -45,7 +45,7 @@ package() {
     -type d -name "__pycache__" -delete
   deactivate
   cd $srcdir
-  install -Dm644 "$_pkgname{-web,-worker,-periodic}.service" -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "$_pkgname"{-web,-worker,-periodic}.service -t "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 "$_pkgname-periodic.timer" -t "$pkgdir/usr/lib/systemd/system/"
   install -Dm600 "$_pkgname.cfg"   "$pkgdir/etc/$_pkgname/$_pkgname.cfg"
   install -Dm644 "$_pkgname.sysusers"   "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
