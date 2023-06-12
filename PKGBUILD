@@ -11,10 +11,6 @@ depends=()
 source=("https://github.com/El-Wumbus/Tara/releases/download/v$pkgver/tara-v$pkgver-x86_64-unknown-linux-gnu.tar.xz")
 sha256sums=('60d967514aa70f92936fdb3db3f5d96897d47e8178f403affbbb7f50a654d7a0')
 
-prepare() {
-    tar xvf "tara-v$pkgver-x86_64-unknown-linux-gnu.tar.xz"
-}
-
 package() {
     cd "tara-v$pkgver-x86_64-unknown-linux-gnu"
     install -Dm755 ./tara "$pkgdir/usr/bin/tara"
