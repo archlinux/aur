@@ -3,18 +3,21 @@
 pkgname=fenics-basix-git
 _base=basix
 pkgdesc="Interface of FEniCS for ordinary and partial differential equations (C++ and Python from git release)."
-pkgver=0.5.1
-pkgrel=1
+pkgver=0.6.0
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/FEniCS/basix"
 license=('GPL3')
 groups=('fenics-git')
-depends=('xtensor' 'xtensor-blas' 'pybind11' 'petsc')
-makedepends=('git' 'boost')
+depends=('xtensor' 'xtensor-blas' 'petsc' "python-numpy")
+makedepends=('git' 'boost' 'python-setuptools' "pybind11")
 checkdepends=("python-sympy")
 options=(!emptydirs)
-source=("git+${url}")
-sha256sums=('SKIP')
+source=("git+${url}"
+        "0001-local-build-for-Python.patch")
+sha512sums=('SKIP'
+            '68798ec16666289131bec093a9b5f762569f2dbc9fa6d537dc5d9573abb6faa07791091cf4f12f2ce41798cd8e8b506311be3f2f55ce63cc28e3f91586a7b549')
+
 provides=("${_base}=${pkgver}"
           "python-${_base}=${pkgver}"
           "python-${_base}-git=${pkgver}"
@@ -103,6 +106,7 @@ _base_dir="${startdir}"/src/"${_base}"
 prepare() {
   cd "${_base_dir}"
   git checkout origin/release
+  # git apply "${srcdir}"/0001-local-build-for-Python.patch
   git -C "${_base_dir}" clean -dfx
 }
 
@@ -121,38 +125,54 @@ pkgver() {
 build() {
   [ -n "$PETSC_DIR" ] && source /etc/profile.d/petsc.sh
 
-  cd "${_base_dir}"/cpp
   # Add CBLAS to linking libraries
   # (https://github.com/davisking/dlib/issues/154#issuecomment-240651490)
   # sed -i 's%\(target_link_libraries(basix PRIVATE ${BLAS_LIBRARIES})\)%\nset(BLAS_LIBRARIES "-lcblas;-lblas")\n\1%' "${srcdir}"/"${_base}"/cpp/CMakeLists.txt
+
+  # cmake -DCMAKE_BUILD_TYPE="Release" \
+  #       -B "${srcdir}"/build \
+  #       -S "${_base_dir}" \
+  #       -DCMAKE_INSTALL_PREFIX=/usr \
+  #       -DXTENSOR_OPTIMIZE=TRUE
+  # cmake --build "${srcdir}"/build
+
+  # _pydir="${_base_dir}"/python
+  # cd "${_pydir}"
+  # python setup.py build
+
   cmake -DCMAKE_BUILD_TYPE="Release" \
         -B "${srcdir}"/build \
-        -S . \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DXTENSOR_OPTIMIZE=TRUE
+        -S "${_base_dir}" \
+        -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build "${srcdir}"/build
-
-  _pydir="${_base_dir}"/python
-  cd "${_pydir}"
-  python setup.py build
 }
 
-check() {
-  cd "${_base_dir}"
-  pytest test
-}
+# check() {
+#   cd "${_base_dir}"
+#   pytest test
+# }
 
 package() {
-  cd "${srcdir}"/"${_base}"/cpp
+  # cd "${srcdir}"/"${_base}"/cpp
   cmake --install "${srcdir}"/build --prefix="${pkgdir}"/usr
   # make -C "${srcdir}"/build DESTDIR="${pkgdir}" install
 
-  _pydir="${srcdir}"/"${_base}"/python
-  cd "${srcdir}"/"${_base}"/python
-  python setup.py build
-  PYTHONPYCACHEPREFIX="${_pydir}/.cache/cpython/" \
-                     python setup.py install \
-                     --prefix=/usr --root="${pkgdir}"\
-                     --optimize=1
+  # export Basix_DIR="${pkgdir}/usr/"
+  _pydir="${_base_dir}"/python
+  cd "${_pydir}"
+
+  export CMAKE_PREFIX_PATH="${pkgdir}"/usr
+  python -m build --wheel --no-isolation --skip-dependency-check
+
+  # python setup.py build
+  # PYTHONPYCACHEPREFIX="${_pydir}/.cache/cpython/" \
+  #                    python setup.py install \
+  #                    --prefix=/usr --root="${pkgdir}"\
+  #                    --optimize=1
+
   # pip install . --no-deps --prefix=/usr --root="${pkgdir}" --compile
+
+  # # python setup.py build
+  PYTHONPYCACHEPREFIX="${_pydir}/.cache/cpython/" \
+                     python -m installer --destdir="$pkgdir" dist/*.whl
 }
