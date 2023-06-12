@@ -1,7 +1,7 @@
 # Maintainer: Agampreet
 # Contributor: Agampreet
 pkgname=ms-365-electron-git
-pkgver=0.8.0.r1.g596f93a
+pkgver=0.9.0.r0.gf82837a
 pkgrel=1
 pkgdesc="Unofficial Microsoft 365 Web Desktop Wrapper made with Electron"
 arch=('x86_64')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    yarn config set cache-folder "$srcdir/yarn-cache"
+    yarn config set cacheFolder "$srcdir/yarn-cache"
     yarn install
     yarn dist -l deb --config.artifactName="MS-365-Electron.deb"
 }
