@@ -1,10 +1,11 @@
+# Maintainer: Adam <dev@goshawk22.uk>
 # Maintainer: Sharky <sharky@sharky.pw>
 # Maintainer: Carlo Sala <carlosalag@protonmail.com>
 
-pkgname=surfshark-vpn
+pkgname=surfshark-vpn-cli-bin
 pkgver=1.1.0
 pkgrel=2
-pkgdesc="Surfshark VPN client"
+pkgdesc="Surfshark VPN cli client"
 arch=('x86_64')
 url="https://surfshark.com/download/linux"
 license=('custom:surfshark')

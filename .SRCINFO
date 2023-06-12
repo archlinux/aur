@@ -1,4 +1,4 @@
-pkgbase = surfshark-vpn
+pkgbase = surfshark-vpn-cli-bin
 	pkgdesc = Surfshark VPN client
 	pkgver = 1.1.0
 	pkgrel = 2
@@ -10,5 +10,4 @@ pkgbase = surfshark-vpn
 	source = https://ocean.surfshark.com/debian/pool/main/s/surfshark-vpn/surfshark-vpn_1.1.0_amd64.deb
 	sha256sums = 5ef76e6a9f61272ff927ccd965fce4b752de1083c3c4b25aecee513515cca819
 
-pkgname = surfshark-vpn
-
+pkgname = surfshark-vpn-cli-bin
