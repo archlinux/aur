@@ -6,7 +6,7 @@ pkgname=(
   czkawka-gui
 )
 pkgver=6.0.0
-pkgrel=0.1
+pkgrel=0.2
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
 arch=(
@@ -37,12 +37,18 @@ pkgver() {
 
 build() {
   cd ${pkgbase}
+
+  # Keep rust/cargo build-dependency management inside the build directory
+  export CARGO_HOME="${srcdir}/cargo"
+
   cargo build --bin czkawka_cli --release --features heif
   cargo build --bin czkawka_gui --release --features heif
 }
 
 check() {
   cd ${pkgbase}
+
+  export CARGO_HOME="${srcdir}/cargo"
   cargo test --bin czkawka_cli --release
   dbus-run-session xvfb-run -s '-nolisten local' \
     cargo test --bin czkawka_gui --release
