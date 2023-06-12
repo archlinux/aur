@@ -1,43 +1,66 @@
-# system requirements: Python (>= 2.7.0)
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=reticulate
-_pkgver=1.28
+_pkgver=1.30
 pkgname=r-${_pkgname,,}
-pkgver=1.28
+pkgver=${_pkgver//[:-]/.}
 pkgrel=1
 pkgdesc="Interface to 'Python'"
-arch=('x86_64')
+arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('Apache')
+license=(Apache)
 depends=(
-  r
+  python
   r-here
   r-jsonlite
   r-png
   r-rappdirs
   r-rcpp
-  r-withr
-  python
   r-rcpptoml
+  r-rlang
+  r-withr
+)
+checkdepends=(
+  ipython
+  python-docutils
+  python-matplotlib
+  python-numpy
+  python-pandas
+  python-pipenv
+  python-plotly
+  python-poetry
+  python-scipy
+  python-tabulate
+  python-wrapt
+  r-rmarkdown
+  r-testthat
 )
 optdepends=(
   r-callr
+  r-cli
+  r-glue
   r-knitr
-  r-rlang
+  r-pillar
   r-rmarkdown
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('58a299ed18faaa3ff14936752fcc2b86e64ae18fc9f36befdfd492ccb251516f')
+md5sums=('9063282d659c73afbf9bcaec50878eb7')
+sha256sums=('ee8f8a3a90fa49faf802c345a23e103d897e40dadc5ec75bfb13ce06576017df')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
