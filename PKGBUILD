@@ -2,12 +2,11 @@
 
 pkgname=motionplus
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Monitor and record video signals from many types of cameras"
 arch=('x86_64')
 license=('GPL')
 url="https://github.com/Motion-Project/motionplus"
-conflicts=(motion motion-git)
 depends=('sqlite' 'ffmpeg' 'libmicrohttpd' 'libwebp' 'postgresql-libs' 'mariadb-libs')
 optdepends=('gettext: native language support')
 backup=('etc/motionplus/motionplus.conf')
