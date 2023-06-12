@@ -1,5 +1,5 @@
 pkgbase = raptor-cos
-	pkgdesc = Raptor is a vertically-scrolling shoot 'em up. It features smooth scrolling VGA graphics, a variety of enemies on ground, air and sea, and an original soundtrack. (from https://www.mobygames.com/game/511/raptor-call-of-the-shadows/)
+	pkgdesc = Vertically-scrolling shoot 'em up from 1994
 	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/skynettx/raptor
@@ -9,13 +9,16 @@ pkgbase = raptor-cos
 	makedepends = unzip
 	depends = alsa-lib
 	depends = fluidsynth
+	depends = hicolor-icon-theme
 	depends = sdl2
 	depends = soundfont-fluid
 	source = raptor-cos-0.8.0.tgz::https://github.com/skynettx/raptor/archive/refs/tags/v0.8.0.tar.gz
 	source = ftp://ftp.3drealms.com/share/1rap12.zip
+	source = raptor-cos.desktop
 	source = raptor-cos.sh
 	sha256sums = 14ef26b8f2dfb3654e84c3867c331bdb13988de127b60a52199b0547f27f23dc
 	sha256sums = 7d6b062dcdc76d9ea02d8d71af14e5043223581d792f6ead4eb1316fd0351552
-	sha256sums = 1170c76805d7cb2096b54ed7eca0a7dd390765073a70e4cf7afa721f01c1ce5a
+	sha256sums = 1efd7607fb6a09f318699ac29bc07e2237a433cb7863c265c9a4913ee10e0e5f
+	sha256sums = a0779f1c5f49e58a2513e47cb950d7b48d76fd241825c84ee921caf966aed5ae
 
 pkgname = raptor-cos
