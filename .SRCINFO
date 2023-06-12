@@ -1,0 +1,19 @@
+pkgbase = kcolorscheme-git
+	pkgdesc = Classes to read and interact with KColorScheme
+	pkgver = 5.240.0_r121.g1fba09a
+	pkgrel = 1
+	url = https://invent.kde.org/frameworks/kcolorscheme
+	arch = x86_64
+	groups = kf6-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	depends = kconfig-git
+	depends = kguiaddons-git
+	depends = ki18n-git
+	provides = kcolorscheme
+	conflicts = kcolorscheme
+	source = git+https://invent.kde.org/frameworks/kcolorscheme.git
+	sha256sums = SKIP
+
+pkgname = kcolorscheme-git
