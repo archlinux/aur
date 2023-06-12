@@ -1,10 +1,10 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Klaus Alexander Seistrup <klaus@seistrup.dk>
-# -*- sh -*-
 
 pkgname=python-nestedtext
 _pkg="${pkgname#python-}"
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 pkgdesc='Human readable and writable data interchange format'
 arch=('any')
@@ -13,7 +13,7 @@ url='https://github.com/KenKundert/nestedtext'
 depends=('python-inform')
 makedepends=('python-build' 'python-installer' 'python-flit-core' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/n/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('9beced9cb39e5e0d05148393f5279b0e1cc4868a8bb11800dc03dd07a5e2c3d7')
+sha256sums=('8837596bdb5936b05ead4517713dc67f8118760ef59e58777475d4a8dd20cbac')
 
 build() {
 	cd "$_pkg-$pkgver"
