@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=dynarmic
 pkgver=6.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="An ARM dynamic recompiler"
 arch=('aarch64' 'x86_64')
 url="https://github.com/merryhime/dynarmic"
@@ -26,7 +26,7 @@ build() {
 		-DBUILD_SHARED_LIBS=ON \
 		-DBUILD_TESTING="$CHECKFUNC" \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_CXX_FLAGS_RELEASE="-O2 -DNDEBUG" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DDYNARMIC_IGNORE_ASSERTS=ON \
 		-DDYNARMIC_USE_LLVM=ON \
