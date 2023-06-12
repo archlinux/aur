@@ -55,18 +55,23 @@ This step limits connection only to the local loopback address, effectively limi
 - As always, [RTFM](https://2019.www.torproject.org/docs/documentation.html.en#UpToSpeed)
 ## Sample outputs
 ```
-"Me at the zoo"
+"Portal - 'Still Alive'"
 https://www.youtube.com/watch?v=jNQXAC9IVRw
+Interrupt (CTRL+C) to conclude the session
 
 [✓] United States — 199.249.230.78
 [✓] Republic of Moldova — 178.17.174.164
 [✓] Ukraine — 193.218.118.183
 [✓] Seychelles — 37.228.129.5
 [✓] United States — 199.249.230.158
-
+^C
 No abnormal behavior detected
 ```
 ```
+"Google - My Activity.html"
+https://www.youtube.com/feed/history/comment_history
+Interrupt (CTRL+C) to conclude the session
+
 "Super clever, really like the use of chickens. The smaller scale interpretations seem to be popular as opposed to som..."
 https://www.youtube.com/watch?v=Drx1DEXa0GM
 
@@ -87,7 +92,7 @@ https://www.youtube.com/watch?v=e_pyT5yFuYY
 [✓] Switzerland — 176.10.104.240
 [✓] Germany — 185.220.101.144
 [✓] China — 23.154.177.131
-
+^C
 No abnormal behavior detected
 ```
 ## Known compatability issues (subject to change):

@@ -118,8 +118,7 @@ def video_init(youtube_id):
 			print("\nVideo unavailable")
 			sys.exit(1)
 		else:
-			print('\n"' + title + '"' + "\n" + url)
-		print("Interrupt (CTRL+C) to conclude the session\n")
+			print('\n"' + title + '"' + "\n" + url + "\nInterrupt (CTRL+C) to conclude the session\n")
 		while True:
 			tor_rotate()
 			q = tor_authenticate().get("https://www.youtube.com/results?search_query=" + "+".join(title.split())).text
@@ -140,7 +139,7 @@ def video_init(youtube_id):
 
 def comments_init():
 	att, acc, ind = 0, 0, 1
-	print("\nInterrupt (CTRL+C) to conclude the session")
+	print('\n"Google - My Activity.html"' + "\nhttps://www.youtube.com/feed/history/comment_history" + "\nInterrupt (CTRL+C) to conclude the session\n")
 	try:
 		with io.open("Google - My Activity.html", "r", encoding = "utf-8") as raw_html:
 			html = raw_html.read().replace("\n", "").replace("'", "`")
