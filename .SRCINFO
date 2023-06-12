@@ -1,15 +1,21 @@
 pkgbase = turbowarp-desktop-appimage
 	pkgdesc = A program that lets you manipulate digital audio waveforms
-	pkgver = 1.7.2beta1
+	pkgver = 1.8.0beta.1
 	pkgrel = 2
 	url = https://desktop.turbowarp.org/
+	arch = aarch64
+	arch = armv7h
 	arch = x86_64
 	license = GPL3
 	depends = zlib
 	depends = glibc
 	conflicts = turbowarp-desktop-bin
 	options = !strip
-	source = turbowarp-desktop-1.7.2beta1.AppImage::https://github.com/TurboWarp/desktop/releases/download/v1.7.2-beta.1/TurboWarp-linux-x86_64-1.7.2-beta.1.AppImage
-	sha256sums = 5ce20252583bc0138cd1dd4ef0c8f59f2b72b41e105f2102f460a7a1f5d84564
+	source_aarch64 = turbowarp-desktop-1.8.0beta.1-aarch64.AppImage::https://github.com/TurboWarp/desktop/releases/download/v1.8.0-beta.1/TurboWarp-linux-arm64-1.8.0-beta.1.AppImage
+	sha256sums_aarch64 = 00ceebeb43653e848b82d678229113b18e8f679f8804bc6db210020b03f4e79c
+	source_armv7h = turbowarp-desktop-1.8.0beta.1-armv7h.AppImage::https://github.com/TurboWarp/desktop/releases/download/v1.8.0-beta.1/TurboWarp-linux-armv7l-1.8.0-beta.1.AppImage
+	sha256sums_armv7h = 89e298f7a85188409359ce3bd7293f7e39ba337c32aa6b6ad819b3c1ab1c76cb
+	source_x86_64 = turbowarp-desktop-1.8.0beta.1-x86_64.AppImage::https://github.com/TurboWarp/desktop/releases/download/v1.8.0-beta.1/TurboWarp-linux-x86_64-1.8.0-beta.1.AppImage
+	sha256sums_x86_64 = 6dc995066ca16fd93569e9f1f3ecdffcab699b4d360895d626465e70cea7ef6b
 
 pkgname = turbowarp-desktop-appimage
