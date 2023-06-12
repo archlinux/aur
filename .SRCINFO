@@ -1,0 +1,14 @@
+pkgbase = linthtml
+	pkgdesc = The html5 linter and validator.
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/linthtml/linthtml/tree/main/packages/linthtml#readme
+	arch = any
+	license = ISC
+	makedepends = npm
+	depends = nodejs
+	noextract = linthtml-0.9.5.tgz
+	source = https://registry.npmjs.org/@linthtml/linthtml/-/linthtml-0.9.5.tgz
+	sha512sums = f0c728b96da00adddb8371a72b593df0a2f92e20d5b58fb01320e381f0ba31da9b1ab99521dd01e80282d5e476c10e5f46f69d171371e567bf416dcaed58a6db
+
+pkgname = linthtml
