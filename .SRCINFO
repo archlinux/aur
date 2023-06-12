@@ -1,12 +1,12 @@
 pkgbase = conky-colors-git
 	pkgdesc = An easier way to configure Conky
 	pkgver = 20230521.r173.5a0c738
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/helmuthdu/conky_colors
 	install = conky-colors-git.install
 	arch = armv6h
 	arch = armv7h
-	arch = arm
+	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = GPL3
