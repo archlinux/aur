@@ -1,5 +1,5 @@
 diff --git a/apps/studio/vue.config.js b/apps/studio/vue.config.js
-index 86c82c6a..750d6991 100644
+index d900f53c..750d6991 100644
 --- a/apps/studio/vue.config.js
 +++ b/apps/studio/vue.config.js
 @@ -49,6 +49,8 @@ module.exports = {
@@ -11,7 +11,7 @@ index 86c82c6a..750d6991 100644
          extraResources: [
            {
              from: 'build/launcher-script.sh',
-@@ -117,53 +119,22 @@ module.exports = {
+@@ -117,54 +119,22 @@ module.exports = {
              role: "Editor"
            }
          ],
@@ -59,7 +59,8 @@ index 86c82c6a..750d6991 100644
 -        },
 -        win: {
 -          icon: './public/icons/png/512x512.png',
--          target: ['nsis', 'portable']
+-          target: ['nsis', 'portable'],
+-          sign: "./build/win/sign.js"
 -        },
 -        portable: {
 -          "artifactName": "${productName}-${version}-portable.exe",
