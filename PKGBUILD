@@ -7,7 +7,7 @@ DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=kannel
 pkgver=1.4.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Kannel is a compact and very powerful open source WAP and SMS gateway, it comes with extras!"
 arch=('any')
 license=('custom')
