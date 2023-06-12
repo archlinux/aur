@@ -1,16 +1,19 @@
 pkgbase = r-adabag
 	pkgdesc = Applies Multiclass AdaBoost.M1, SAMME and Bagging
-	pkgver = 4.3
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=adabag
 	arch = any
 	license = GPL
-	depends = r
 	depends = r-caret
+	depends = r-consrank
 	depends = r-doparallel
+	depends = r-dplyr
 	depends = r-foreach
+	depends = r-tidyr
 	optdepends = r-mlbench
-	source = https://cran.r-project.org/src/contrib/adabag_4.3.tar.gz
-	sha256sums = 33d62f96e92224ee37cf7276749d214723c70b56704ebe2e2303edc541a18cec
+	source = https://cran.r-project.org/src/contrib/adabag_5.0.tar.gz
+	md5sums = 675cf557792d970a2115e0f7a44f4954
+	sha256sums = ec58756fda2e64753d21e28d9e27ed34f28020045b199a58dcea06a3e2c3d60e
 
 pkgname = r-adabag

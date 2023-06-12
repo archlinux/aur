@@ -1,32 +1,36 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=adabag
-_pkgver=4.3
+_pkgver=5.0
 pkgname=r-${_pkgname,,}
-pkgver=4.3
+pkgver=${_pkgver//[:-]/.}
 pkgrel=1
-pkgdesc='Applies Multiclass AdaBoost.M1, SAMME and Bagging'
-arch=('any')
+pkgdesc="Applies Multiclass AdaBoost.M1, SAMME and Bagging"
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL)
 depends=(
-  r
   r-caret
+  r-consrank
   r-doparallel
+  r-dplyr
   r-foreach
+  r-tidyr
 )
 optdepends=(
   r-mlbench
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('33d62f96e92224ee37cf7276749d214723c70b56704ebe2e2303edc541a18cec')
+md5sums=('675cf557792d970a2115e0f7a44f4954')
+sha256sums=('ec58756fda2e64753d21e28d9e27ed34f28020045b199a58dcea06a3e2c3d60e')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
