@@ -15,6 +15,6 @@ pkgbase = pot-translation-bin
 	conflicts = pot-translation
 	conflicts = pot-translation-git
 	source = pot-1.4.0-x86_64.deb::https://github.com/pot-app/pot-desktop/releases/download/1.4.0/pot_1.4.0_amd64.deb
-	sha512sums = 0bcd316e7e180b5b6e3a1596e117b6d45675c6d53878c5b0cc5849a6d19d3327be2d2111eb1503f01dcd391cc4892927b7af00ac58b5e6904082b2974a2a0fba
+	sha512sums = 872a228304409c9eb5343454634fe32b0cf307ff57bb986df0a72aee25e3537e73e32d5382c5ed9f7e662ee9845ffda3f1bbf51071d5f0a888885b3e116f84df
 
 pkgname = pot-translation-bin
