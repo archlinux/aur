@@ -2,7 +2,7 @@
 #
 
 pkgname=aur_cli
-pkgver=0.1.0
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Prepare Rust projects to be released on the Arch Linux User Repository."
 url="https://dnrops.gitee.io"
@@ -11,7 +11,7 @@ arch=("x86_64")
 provides=("aur_cli")
 conflicts=("aur_cli")
 source=("https://gitlab.com/andrew_ryan/aur_cli/-/raw/main/aur_cli-$pkgver-x86_64.tar.gz")
-sha256sums=('c241c6b315729a14ab0204fce90e731f1c5fc773e0d2a02dfd0147a1d1f7a273')
+sha256sums=('7ad29bc9c1f50124168ee231a7fd2c2bca23b833f570e3a7255777f9e082c154')
 
 package() {
     install -Dm755 aur_cli -t "$pkgdir/usr/bin"
