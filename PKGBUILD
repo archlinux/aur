@@ -1,60 +1,76 @@
-# Maintainer: Karol Babioch <karol@babioch.de
+# Maintainer: tarball <bootctl@gmail.com>
+# Contributor: Karol Babioch <karol@babioch.de
 
 pkgname=('tika' 'tika-server')
-_name='tika'
-pkgver=1.26
+pkgver=2.8.0
 pkgrel=1
-pkgdesc='Apache Tika - a content analysis toolkit'
+pkgdesc='Apache Tika — detect and extract metadata and text from over a thousand different file types'
 arch=('any')
 url='https://tika.apache.org'
 license=('Apache')
 depends=('java-runtime-headless')
 optdepends=(
-    'tesseract: OCR support'
+  'tesseract: OCR support'
 )
 makedepends=('git' 'maven')
 source=(
-    "git+https://github.com/apache/tika.git#tag=$pkgver"
-    "tika-server.service"
-    "tika-server.sysusers"
+  "https://github.com/apache/tika/archive/refs/tags/$pkgver.tar.gz"
+  'tika-server.service'
+  'tika.desktop'
+  'tika.sh'
+  'tika.svg'
 )
-sha256sums=('SKIP'
-            '6c11bffbb1a1fa7bda47a763981656bd3ab12ad203b379aa5eada817b81660a3'
-            'fda25de00a6407318506142d9d24f896c970b8800c2731b09f9ca66e9ccce230')
+sha256sums=('beb67aecbc55d92dadd117e0b98e35b7511f0d708f292a50987619eb8c1defe4'
+            '4bfed9962d831fa5de01c94f83ee4784c9dd371d72035125508a63debd161862'
+            '490cfc11aa05722a7831a3938a63df39b9d4d08e47e88b973479fffac17ce246'
+            'caf002fe624623a6598e1753e42400e58f951d37cdf2410aaf0fd8e6343bc5c5'
+            'ccae8a7ff8b30e73511e11f5c33facbf87d7e47db8cc86e14a52116ac96da9b7')
 
+# Tests: https://issues.apache.org/jira/browse/TIKA-2487
+#
+# Vulnerability scanning only creates problems for the end user. There has been
+# a vulnerability in a SQLite package at the time of writing this that the
+# upstream does not consider serious enough to warrant a new release. They
+# actually recommend disabling scanning if it breaks your builds…
 build() {
-    cd "$srcdir/$_name"
-    mvn clean install -Dmaven.test.skip=true -Dmaven.repo.local=m2
-}
+  cd "$srcdir/$pkgname-$pkgver"
 
-check() {
-    cd "$srcdir/$_name"
-    # Disable testing for now since it will fail, see: https://issues.apache.org/jira/browse/TIKA-2487
-    # mvn test -Dmaven.repo.local=m2
+  mvn clean install \
+    -Dmaven.test.skip=true \
+    -Dmaven.repo.local=m2 \
+    -Dossindex.skip
 }
 
 package_tika() {
+  install -Dm755 tika.sh "$pkgdir/usr/bin/tika"
+  install -Dm644 tika.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/tika.svg"
+  install -Dm644 tika.desktop "$pkgdir/usr/share/applications/tika.desktop"
 
-    cd "$srcdir/$_name"
+  cd "$srcdir/$pkgname-$pkgver"
 
-    install -Dm0644 "tika-core/target/tika-core-$pkgver.jar" "$pkgdir/usr/lib/$pkgname/tika-core.jar"
-    install -Dm0644 "tika-parsers/target/tika-parsers-$pkgver.jar" "$pkgdir/usr/lib/$pkgname/tika-parsers.jar"
-    install -Dm0644 "tika-app/target/tika-app-$pkgver.jar" "$pkgdir/usr/lib/$pkgname/tika-app.jar"
+  install -Dm644 "tika-app/target/tika-app-$pkgver.jar" \
+    "$pkgdir/usr/lib/tika/tika-app.jar"
 
-    install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
+  install -Dm644 LICENSE.txt \
+    "$pkgdir/usr/share/licenses/tika/LICENSE"
 }
 
-package_tika-server(){
+package_tika-server() {
+  install -dm755 "$pkgdir/etc/default"
 
-    cd "$srcdir/$_name"
+  cat >"$pkgdir/etc/default/tika-server" <<EOF
+HOST=localhost
+PORT=9998
+EOF
 
-    install -Dm0644 "tika-server/target/tika-server-$pkgver.jar" "$pkgdir/usr/lib/$pkgname/tika-server.jar"
+  install -Dm644 tika-server.service \
+    "$pkgdir/usr/lib/systemd/system/tika-server.service"
 
-    install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/tika-$pkgver"
 
-    install -Dm0644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    install -Dm0644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 LICENSE.txt \
+    "$pkgdir/usr/share/licenses/tika-server/LICENSE"
 
+  install -Dm644 "tika-server/tika-server-standard/target/tika-server-standard-$pkgver.jar" \
+    "$pkgdir/usr/lib/tika-server/tika-server.jar"
 }
-

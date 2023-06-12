@@ -1,5 +1,3 @@
-/*.tar.gz
-/*.tar.xz
+/*.tar.*
 /pkg/
 /src/
-/tika
