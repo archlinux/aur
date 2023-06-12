@@ -1,7 +1,7 @@
 pkgbase = opensnitch-ebpf-module
 	pkgdesc = eBPF process monitor module for opensnitch
 	pkgver = 1.5.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evilsocket/opensnitch
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = opensnitch-ebpf-module
 	makedepends = libelf
 	makedepends = linux-headers
 	makedepends = llvm
-	makedepends = rsync
 	depends = opensnitch
 	options = !strip
 	source = https://github.com/evilsocket/opensnitch/archive/v1.5.9.tar.gz
