@@ -1,0 +1,27 @@
+From 5056602eb10316f4f1791ec5a7918e1ff40fe7fe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20Men=C5=A1=C3=ADk?= <pemensik@redhat.com>
+Date: Fri, 4 Feb 2022 19:07:02 +0100
+Subject: [PATCH] Compile under gcc 12.0.0 (#88)
+
+Add missing includes to query.cpp. It does not compile anymore on gcc 12
+without it.
+---
+ flame/query.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/flame/query.cpp b/flame/query.cpp
+index 4f7ef21..fdd5f73 100644
+--- a/flame/query.cpp
++++ b/flame/query.cpp
+@@ -5,9 +5,11 @@
+ #include <algorithm>
+ #include <cctype>
+ #include <climits>
++#include <cstring>
+ #include <fstream>
+ #include <iomanip>
+ #include <iostream>
++#include <iterator>
+ #include <regex>
+ #include <sstream>
+ #include <stdexcept>
