@@ -18,7 +18,7 @@ pip3 install -r requirements.txt
 ```
 3. [Configure torrc](#configure-torrc) (optional)
 4. Launch an instance of Tor Browser
-5. Execute
+5. Execute:
 ```
 python3 shadowtube
 ```
@@ -43,7 +43,7 @@ HashedControlPassword 16:872860B76453A77D60CA2BB8C1A7042072093276A3D701AD684053E
 #CookieAuthentication 1
 ...
 ```
-### Additional security steps:
+### Additional security steps
 To prevent unauthorized users from accessing `tor`, consider adding the following steps:
 - Change your SOCKS5 and control ports to a port not commonly used
 - **Important for users using cookie authentication**: Append the following lines to `torrc`
@@ -95,7 +95,7 @@ https://www.youtube.com/watch?v=e_pyT5yFuYY
 ^C
 No abnormal behavior detected
 ```
-## Known compatability issues (subject to change):
+## Known compatability issues (subject to change)
  - Video premieres
  - Live streams
  - "Discussion", or, "Community" posts
