@@ -1,8 +1,7 @@
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-text-format'
-pkgver='0.59'
+pkgver='0.62'
 pkgrel='1'
 pkgdesc="Various subroutines to format text."
 arch=('any')
@@ -11,10 +10,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=('perl-module-build')
 url='https://metacpan.org/release/Text-Format'
-source=('http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Text-Format-0.59.tar.gz')
-md5sums=('ab4ae26dbbb7eed101dc7a4324ac9c10')
-sha512sums=('030fc38853f96d64f359af1ad9f776e7c797f564f11207de32477b3b716da665dbce3b91d988241ba1fbd2b884aa85b0ce0b7b473aaf0efd23839f8422a52fcd')
-_distdir="Text-Format-0.59"
+source=('https://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Text-Format-0.62.tar.gz')
+md5sums=('b65464a656886bfc2cc2ebedd68cb970')
+_distdir="Text-Format-0.62"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +40,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
