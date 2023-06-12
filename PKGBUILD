@@ -26,14 +26,14 @@
 
 pkgname="cryptopro-csp-k1"
 pkgver=5.0.12600
-pkgrel=1
+pkgrel=2
 _pkgver_patch="6"
 _cades_version="2.0.14660"
 _pkgver="$pkgver-$_pkgver_patch"
 pkgdesc='CryptoPro CSP 5.0'
 arch=('x86_64')
 url='https://cryptopro.ru/products/cryptopro-csp'
-license=('proprietary')
+license=('unknown')
 depends=(
     'glibc'
     'gcc-libs'
@@ -52,7 +52,7 @@ makedepends=(
     'libarchive'
 )
 source=(
-    'linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/12600/linux-amd64.tgz
+    'linux-amd64.tgz::local://linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/12600/linux-amd64.tgz
 )
 sha256sums=('3414afc826241a3e7a0cc4c188ccbca5100c37a7b2e98e5b650194b091b912e9')
 install=cryptopro-csp-k1.install
