@@ -1,12 +1,13 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r27.674f360
+pkgver=r28.2afe111
 pkgrel=1
 pkgdesc="A custom configs for sk-holoiso"
 arch=('any')
 url="https://github.com/honjow/sk-holoiso-config"
 license=('MIT')
 makedepends=('git')
+depends=('python-gobject' 'gtk3')
 provides=(sk-holoiso-config)
 conflicts=(sk-holoiso-config)
 source=("git+$url")
@@ -28,10 +29,13 @@ package() {
         install -Dm644 "etc/systemd/system/$service_file" "$pkgdir/etc/systemd/system/$service_file"
     done
 
-    exclude_files=("sk-auto-swap" "sk-efi-mount" "sk-resume" "sk-holoiso-config")
+    exclude_files=("sk-auto-swap" "sk-efi-mount" "sk-resume")
     for exclude_file in "${exclude_files[@]}"; do
         install -Dm755 "usr/bin/$exclude_file" "$pkgdir/usr/bin/$exclude_file"
     done
+
+    # link sk-holoiso-config.py to /usr/bin/sk-holoiso-config
+    ln -s "sk-holoiso-config.py" "$pkgdir/usr/bin/sk-holoiso-config"
 
     install -Dm644 "etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules" "$pkgdir/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules"
     install -Dm644 "etc/default/grub" "$pkgdir/etc/default/grub"
