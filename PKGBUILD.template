@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/iits-consulting/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://github.com/iits-consulting/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
 validpgpkeys=()
 
