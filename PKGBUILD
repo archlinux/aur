@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-webview
-_basever=5.15.9
+_basever=5.15.10
 pkgver=5.15.9
 pkgrel=1
-_commit=23d67d0de3301dbed5d8c5880b6cf60bfa9eeb2a
+_commit=7e941648610ff4033ae8f9709077edd0595364f0
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
