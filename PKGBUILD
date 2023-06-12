@@ -7,7 +7,7 @@
 # Contributor: Holger Rauch < holger dot rauch at posteo dot de >
 
 pkgname=tea-qt
-pkgver=61.1.0
+pkgver=62.0.2
 pkgrel=1
 pkgdesc="Powerful text editor for Linux, *BSD, Windows, OS/2, Mac and Haiku OS with PDF and DJVU support"
 arch=(x86_64)
@@ -28,6 +28,7 @@ build() {
   cd "${srcdir}/tea-qt/build"
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DQT_DIR=/usr/lib/cmake/Qt6 \
     -DUSE_PDF=ON \
     -DUSE_DJVU=ON
 
