@@ -1,17 +1,17 @@
 # Maintainer: OpenSorcerer <alex at opensourcery dot eu>
 pkgname=airvpn-suite
 _pkgname=AirVPN-Suite
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
-_commit="2252964899b6da4221c7ecfe14af8eacc714b40f"
+_commit="ef5ce5ad8fff24f3476f3a072f44d31a5cd1d3fc"
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – stable"
 arch=('x86_64')
 url="https://gitlab.com/AirVPN/$_pkgname"
 license=('GPL3')
 provides=('hummingbird' 'hummingbird-bin' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
 conflicts=('hummingbird' 'hummingbird-bin' 'airvpn-suite-bin' 'airvpn-suite-beta-bin')
-depends=('dbus' 'libxml2' 'crypto++' 'curl')
-makedepends=('git' 'wget')
+depends=('dbus' 'libxml2' 'crypto++' 'curl' 'zlib' 'lz4' 'openssl' 'zstd' 'xz' 'glibc' 'gcc-libs')
+makedepends=('git' 'wget' 'wireguard-tools')
 source=("git+$url.git#commit=$_commit")
 sha256sums=('SKIP')
 backup=('etc/airvpn/bluetit.rc')
@@ -24,19 +24,22 @@ build() {
     export DEP_DIR="$O3/deps" && mkdir "$DEP_DIR"
     export DL="$O3/dl" && mkdir "$DL"
     cd "$O3"
-    
+
     # clone and build OpenVPN3 core
     git clone https://github.com/AirVPN/openvpn3-airvpn.git core
     cd core/scripts/linux
     ./build-all
-    
+
     # move directories around for the suite build scripts
     cd "$srcdir"
     mv "$O3/core" "$srcdir/openvpn3-airvpn"
     mv "$O3/deps/asio" "$srcdir"
-    
+
     # build the suite
-    cd AirVPN-Suite
+    cd "$_pkgname"
+    mkdir obj
+    cp /usr/share/wireguard-tools/examples/embeddable-wg-library/wireguard.? src/
+    cp /usr/share/wireguard-tools/examples/embeddable-wg-library/wireguard.h src/include/
     ./build-bluetit.sh
     ./build-goldcrest.sh
     ./build-hummingbird.sh
@@ -63,5 +66,5 @@ package() {
     install -Dm644 -t "$pkgdir/etc/dbus-1/system.d/" "$_pkgname"/etc/dbus-1/system.d/*
 
     # place Systemd service
-    install -Dm644 "$_pkgname/etc/systemd/system/bluetit.service" "$pkgdir/etc/systemd/system/bluetit.service"
+    install -Dm644 "$_pkgname/etc/systemd/system/bluetit.service" "$pkgdir/usr/lib/systemd/system/bluetit.service"
 }
