@@ -35,7 +35,6 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTM
 
 settings_dict = None
 file_paths = ['settings.json', '/etc/shadowtube/settings.json']
-
 for file_path in file_paths:
 	try:
 		with open(file_path) as f:
@@ -43,7 +42,6 @@ for file_path in file_paths:
 			break
 	except FileNotFoundError:
 		pass
-
 if settings_dict is None:
 	print("Error: Missing 'settings.json'.")
 
