@@ -4,12 +4,13 @@
 
 pkgname=surfshark-vpn-cli-bin
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Surfshark VPN cli client"
 arch=('x86_64')
 url="https://surfshark.com/download/linux"
 license=('custom:surfshark')
 depends=(glibc openvpn)
+replaces=(surfshark-vpn)
 source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark-vpn/surfshark-vpn_${pkgver}_amd64.deb")
 sha256sums=('5ef76e6a9f61272ff927ccd965fce4b752de1083c3c4b25aecee513515cca819')
 
