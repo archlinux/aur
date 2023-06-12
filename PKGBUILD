@@ -1,18 +1,19 @@
 # Maintainer: Frank Vanderham <twelve dot eighty at gmail dot com>
 # Contributor: Isaac Freund <ifreund@ifreund.xyz>
 pkgname=cozette-otb
-pkgver=1.19.2
+pkgver=1.19.3
 pkgrel=1
 pkgdesc='A bitmap programming font optimized for coziness'
 arch=('any')
 url='https://github.com/slavfox/Cozette'
 license=('MIT')
-source=("$pkgname-$pkgver.zip::https://github.com/slavfox/Cozette/releases/download/v.${pkgver}/CozetteFonts.zip")
-sha256sums=('1f7b0287ea991b1f7a791491dfad6fbc6d253601a6c259fe54cef102b7a12bf1')
+source=("https://github.com/slavfox/Cozette/releases/download/v.${pkgver}/CozetteFonts-v-${pkgver//./-}.zip")
+sha256sums=('d0f2cecdb4e05d38bd0241fc6a584b4288213ff9cbf0b73710f38e1287531e71')
 
 package() {
     cd "${srcdir}/CozetteFonts"
     install -vDm 644 "cozette.otb" -t "${pkgdir}/usr/share/fonts/misc/"
+    install -vDm 644 "cozette_hidpi.otb" -t "${pkgdir}/usr/share/fonts/misc/"
     install -vDm 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
