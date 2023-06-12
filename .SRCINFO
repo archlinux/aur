@@ -1,15 +1,15 @@
 pkgbase = klogg-bin-git
-	pkgdesc = A multi-platform GUI application that helps browse and search through long and complex log files. It is designed with programmers and system administrators in mind and can be seen as a graphical, interactive combination of grep, less, and tail
-	pkgver = 23.06.0.1413
-	pkgrel = 2
-	url = https://klogg.filimonov.dev
-	arch = x86_64
-	license = GPL3
-	depends = qt5-base
-	depends = hicolor-icon-theme
-	provides = klogg
-	conflicts = klogg
-	source = klogg_bin_23.06.0.1413.tar.gz::https://github.com/variar/klogg/releases/download/continuous-linux/klogg_bin.tar.gz
-	sha256sums = 463c298e3fca4a658eb27ac8027976e1895be098944ac1a31f28a6ac13cf5898
+  pkgdesc = A multi-platform GUI application that helps browse and search through long and complex log files. It is designed with programmers and system administrators in mind and can be seen as a graphical, interactive combination of grep, less, and tail
+  pkgver = 23.06.0.1419
+  pkgrel = 1
+  url = https://klogg.filimonov.dev
+  arch = x86_64
+  license = GPL3
+  depends = qt5-base
+  depends = hicolor-icon-theme
+  provides = klogg
+  conflicts = klogg
+  source = klogg_bin_23.06.0.1419.tar.gz::https://github.com/variar/klogg/releases/download/continuous-linux/klogg-23.06.0.1419-bin.tar.gz
+  sha256sums = 7c5c23e91091c262811ddac60af8f965cdce198d78697a0849480b871687fa3e
 
 pkgname = klogg-bin-git
