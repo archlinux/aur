@@ -1,8 +1,8 @@
 # Contributor: NexAdn <git@nexadn.de>
 # Maintainer: javsanpar <javsanpar@riseup.net>
 pkgname=abaddon
-pkgver=0.1.10
-pkgrel=2
+pkgver=0.1.11
+pkgrel=1
 pkgdesc='An alternative Discord client made with C++/gtkmm'
 url='https://github.com/uowuo/abaddon'
 source=("git+https://github.com/uowuo/abaddon#tag=v$pkgver"
@@ -10,7 +10,7 @@ source=("git+https://github.com/uowuo/abaddon#tag=v$pkgver"
 arch=('x86_64')
 license=('GPL3')
 makedepends=('git' 'cmake' 'nlohmann-json')
-depends=('gtkmm3' 'libhandy')
+depends=('gtkmm3' 'libhandy' 'spdlog' 'opus' 'libsodium')
 conflicts=('abaddon')
 provides=('abaddon')
 sha256sums=('SKIP'
@@ -22,12 +22,6 @@ prepare () {
   git submodule update --init subprojects/ixwebsocket/
   git submodule update --init subprojects/keychain/
   git submodule update --init subprojects/miniaudio/
-
-  # Temporal workaround to fix compilation issues with the commit used in
-  # release v0.1.10
-  pushd subprojects/ixwebsocket
-  git checkout bc765e7
-  popd
 }
 
 build () {
