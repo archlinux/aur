@@ -10,7 +10,7 @@ license=('GPL')
 depends=("python>=3.7.3" "python-pip" "torbrowser-launcher")
 
 source=("https://github.com/danehobrecht/shadowtube/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9e6b0b03439478b17624be9e40c0017a1066b30c1fc36d1956f5d8022f4f546b')
+sha256sums=('64437eab87a00d375e040686228851773f598bc3bc3d7d184734b7f9687c71b3')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
