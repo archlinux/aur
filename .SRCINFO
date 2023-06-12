@@ -1,0 +1,13 @@
+pkgbase = zin-bin
+	pkgdesc = A CLI tool for generate random english words by length
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://dnrops.gitee.io
+	arch = x86_64
+	license = MIT
+	provides = zin
+	conflicts = zin
+	source = https://gitlab.com/andrew_ryan/zin/-/archive/v0.1.1/zin-0.1.1-x86_64.tar.gz
+	sha256sums = 192c12c89a90c726ff7717776305b3f3c400089a1aec917ce73e929126f9b24f
+
+pkgname = zin-bin
