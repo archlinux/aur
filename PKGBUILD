@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=whalebird-appimage
-pkgver=5.0.5
+pkgver=5.0.6
 pkgrel=1
 pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
 arch=('x86_64')
@@ -11,12 +11,12 @@ depends=('zlib' 'glibc')
 options=(!strip)
 conflicts=("${pkgname%-appimage}" "${pkgname%-appimage}-desktop-git")
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Whalebird-${pkgver}-linux-x86_64.AppImage")
-sha256sums=('c60da1d548f68531cc9b3ec02bc95b622af25aa803fdf762ae72cfa8dba74d5c')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Whalebird-${pkgver}-linux-${CARCH}.AppImage")
+sha256sums=('320f267c7ff385bc4e92b6a7d4c57fc11492dbefbbb89d7880d16d93be4fd5ea')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/whalebird.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 } 
 package() {
   install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
