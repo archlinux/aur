@@ -1,5 +1,5 @@
 pkgname=uniciv-bin
-pkgver=4.6.19
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="Uniciv bin"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
 	"uniciv::https://pastebin.com/raw/YYcHRv48"
 )
 sha256sums=(
-	'db53e07bf6faa59e1cb0656bd89d15eabc1918a04412a124b9e7feee2986b65e'
+	'02c8ce461f0b62221028aa747773be8d6607c620201aa7cae075e6c894dee306'
 	'90697f0f9e48b4d3f8b5e636731af870a091582195ba84c0d8a2a3360564b606'
 )
 
