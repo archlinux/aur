@@ -2,7 +2,7 @@
 pkgname=s3s-setup
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Setup and helper script for splatnet3statink (s3s) by frozenpandaman."
+pkgdesc="Setup and helper script for s3s by frozenpandaman."
 arch=('any')
 url="https://github.com/North-West-Wind/s3s-setup"
 license=('GPL3')
