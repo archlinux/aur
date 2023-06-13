@@ -1,19 +1,18 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 # Contributor: frousties
 
-_pkgname=tacentview
-pkgname=$_pkgname-git
-pkgver=1.0.39.1.g3699ff9
+pkgname=tacentview
+pkgver=1.0.39
 pkgrel=1
-pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent (latest comit)"
+pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent"
 arch=('any')
 url="https://github.com/bluescan/tacentview"
 license=('ISC')
-conflicts=($_pkgname)
-provides=($_pkgname)
+conflicts=($pkgname)
+provides=($pkgname)
 depends=('libx11')
 makedepends=('cmake' 'dpkg' 'gcc12' 'git' 'ninja')
-source=("git+$url.git")
+source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 pkgver() {
