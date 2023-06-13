@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="grx-appimage"
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Fastest Web Gerber Renderer"
 arch=('x86_64')
@@ -13,13 +13,13 @@ options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}.AppImage"
     "https://raw.githubusercontent.com/hpcreery/GRX/master/LICENSE")
-sha256sums=('3a064e397d1b93b9c10c978f652e87e83340c17c24a6948f151c14f0130c93db'
+sha256sums=('09b1cf340a87ae75cd4bd0df9d2b2c3fb08d6d715a4f8b4e29ce0d82078a6623'
             '6af73551667116d187b1a4e5dac0933f99a4c1151bd1a44c12249cd540a69444')
       
 prepare() {
     chmod a+x "grx-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/grx.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
       
 package() {

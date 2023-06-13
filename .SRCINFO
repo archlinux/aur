@@ -1,6 +1,6 @@
 pkgbase = grx-appimage
 	pkgdesc = Fastest Web Gerber Renderer
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://grx.creery.org/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = grx-appimage
 	depends = glibc
 	conflicts = grx
 	options = !strip
-	source = grx-2.1.1.AppImage::https://github.com/hpcreery/GRX/releases/download/v2.1.1/grx.AppImage
+	source = grx-2.1.2.AppImage::https://github.com/hpcreery/GRX/releases/download/v2.1.2/grx.AppImage
 	source = https://raw.githubusercontent.com/hpcreery/GRX/master/LICENSE
-	sha256sums = 3a064e397d1b93b9c10c978f652e87e83340c17c24a6948f151c14f0130c93db
+	sha256sums = 09b1cf340a87ae75cd4bd0df9d2b2c3fb08d6d715a4f8b4e29ce0d82078a6623
 	sha256sums = 6af73551667116d187b1a4e5dac0933f99a4c1151bd1a44c12249cd540a69444
 
 pkgname = grx-appimage
