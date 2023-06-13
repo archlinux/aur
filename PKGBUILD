@@ -2,7 +2,7 @@
 pkgname="wai-chat-desktop-bin"
 _appname="Wai Chat"
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An electron project for chatgpt wai chat bot"
 arch=('any')
 url="https://github.com/ptp-build/wai-chat-desktop"
@@ -22,7 +22,7 @@ package() {
     cp -r "${srcdir}/${pkgname%-bin}-${pkgver}/out/${_appname}-linux-x64/"* "${pkgdir}/opt/${pkgname%-bin}"
     for _icons in 256x256 512x512;do
         install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}/src/icons/favicon.${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/${pkgname%-bin}.png"
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png"
     done
     install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
     gendesk -f -n --icon "${pkgname%-bin}" --categories "Utility" --name "${_appname}" --exec "\"/opt/${pkgname%-bin}/${_appname}\" %U"

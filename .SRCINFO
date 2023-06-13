@@ -1,7 +1,7 @@
 pkgbase = wai-chat-desktop-bin
 	pkgdesc = An electron project for chatgpt wai chat bot
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ptp-build/wai-chat-desktop
 	arch = any
 	license = custom
