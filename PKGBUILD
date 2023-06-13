@@ -1,7 +1,7 @@
 # Maintainer: laeri laeri@laeri.me
 
 pkgname=powernotd-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Battery level notification daemon for linux that sends events according to according to the 'Desktop Notification Specification'."
 url="https://github.com/Laeri/powernotd"
