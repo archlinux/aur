@@ -8,7 +8,7 @@ arch=('any')
 url='http://pythonhosted.org/python-pushover/'
 license=('GPL')
 depends=('python-requests')
-makedepends=('python-distribute')
+makedepends=('python-distribute' 'git')
 source=("git+https://github.com/Thibauth/python-pushover.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
