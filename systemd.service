@@ -1,0 +1,18 @@
+[Unit]
+Description=Prometheus exporter for x509 certificate metrics
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/prometheus-x509-certificate-exporter
+ExecStart=/usr/bin/prometheus-x509-certificate-exporter
+ExecReload=/bin/kill -HUP $MAINPID
+User=root
+Group=root
+Restart=on-failure
+RestartSec=5s
+
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
