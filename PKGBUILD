@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot-armhf
-pkgver=9
+pkgver=10
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (armhf)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('armhf-musl'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/${pkgname%-armhf}/archive/v$pkgver.tar.gz")
-sha256sums=('88d53da99d8e12b87a4d6fc0f154f1003d6a33d4a19709452d5ea5de866230d8')
+sha256sums=('adbfef316c0ff07e67abce5f395146f90e90a1fad97ed419be92e3516ee8b6f3')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
