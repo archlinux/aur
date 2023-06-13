@@ -1,0 +1,14 @@
+pkgbase = stm32cubemonucpd
+	pkgdesc = Monitoring and configuration software tool for STM32 USB-C and Power Delivery 3.0 applications
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://www.st.com/en/development-tools/stm32cubemonucpd.html
+	arch = x86_64
+	license = custom:SLA0048
+	depends = java-runtime=8
+	depends = java8-openjfx
+	options = !strip
+	source = en.STM32CubeMonUCPD_Lin.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group0/50/42/75/64/e8/0a/44/b5/STM32CubeMonUCPD_Lnx/files/STM32CubeMonUCPD_Lin.zip/jcr:content/translations/en.STM32CubeMonUCPD_Lin.zip
+	sha256sums = 8cf22650111ace170eb841cace7a028cad1c68a9e3ec8abab7f739c0a0f47b0a
+
+pkgname = stm32cubemonucpd
