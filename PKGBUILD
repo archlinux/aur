@@ -1,14 +1,14 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=zeitfetch-git
-pkgver=r46.caeecaf
+pkgver=r81.dba1df3
 pkgrel=1
 pkgdesc="a neofetch implementation in Rust aiming to be near instantaneous, with the least amount of dependencies possible"
 arch=('x86_64')
 url="https://github.com/nidnogg/zeitfetch"
 license=('MIT')
-makedepends=('rust')
-depends=('cargo')
+makedepends=('cargo' 'git')
+depends=('gcc-libs')
 source=("git+https://github.com/nidnogg/zeitfetch.git")
 sha256sums=('SKIP')
 
@@ -19,11 +19,10 @@ pkgver() {
 
 build() {
   cd "${srcdir}/zeitfetch"
-  RUSTFLAGS="-C target-cpu=native" cargo build --release
+  cargo build --release
 }
 
-package()
-{
+package() {
   cd "${srcdir}/zeitfetch"
   install -Dm755 "target/release/zeitfetch" "$pkgdir/usr/bin/zeitfetch"
 
