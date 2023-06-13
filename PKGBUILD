@@ -1,12 +1,12 @@
 # Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=inform7-ide-git
-pkgver=0.5.r728.ge6ded50f
-pkgrel=2
+pkgver=2.0.0.r89.g94b9c510
+pkgrel=1
 pkgdesc="a ide for the inform language/compiler"
 arch=(x86_64)
 url="https://github.com/ptomato/inform7-ide"
 license=('GPL3')
-depends=('libcanberra' 'python-virtualenv' 'libxml2' 'libgl' 'glibc' 'goocanvas2' 'webkit2gtk' 'gtksourceview4' 'gspell' 'libplist' 'desktop-file-utils' 'gstreamer' 'gst-plugins-bad' 'gst-plugins-good' 'gtk3' 'libratify-git' 'libchimara-git' 'rsync' 'vala')
+depends=('libcanberra' 'python-virtualenv' 'libxml2' 'libgl' 'glibc' 'goocanvas2' 'webkit2gtk' 'gtksourceview4' 'gspell' 'libplist' 'desktop-file-utils' 'gstreamer' 'gst-plugins-bad' 'gst-plugins-good' 'gtk3' 'libratify-git' 'libchimara-git' 'rsync' 'vala' 'clang')
 makedepends=('meson' 'ninja')
 provides=('inform7-ide')
 options=(!buildflags !makeflags)
@@ -19,6 +19,9 @@ pkgver() {
 }
 
 build() {
+
+export CC=clang
+
 install "${srcdir}/inform7-ide/build-aux/make-integration-settings.mk" "${srcdir}/make-integration-settings.mk"
 
 #setting up inweb build enviroment
@@ -39,13 +42,26 @@ make "forcekits"
 make "forceextensions"
 make "localintegration"
 make -f "inform6/inform6.mk" "interpreters"
-make "forceintegration" "retrospective"
+
+make "forcetransfertools"
+make "forcetransferpreform"
+make "forcetransferindext"
+make "forcetransferkits"
+make "forcetransferextensions"
+make "forcetransferlanguages"
+make "forcetransferimages"
+make "forcetransferotherinternals"
+make "forcetransferdocumentation"
+make "forcetransferoutcomepages"
+make "forcetransfertemplates"
+
+make "retrospective"
 cp -r "retrospective" -t "${srcdir}/inform7-ide"
 
 #building inform7-ide
 cd "${srcdir}/inform7-ide/"
 arch-meson build
-ninja -C build
+meson compile -C build
 }
 
 check() {
