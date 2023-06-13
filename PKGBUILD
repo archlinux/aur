@@ -2,15 +2,12 @@
 # Inspired from the PKGBUILD for vscodium.
 
 pkgname=mrcode
-pkgver=1.67.2+22140
+pkgver=1.79.0.23164
 pkgrel=1
 pkgdesc="A custom build of VSCodium / VSCode (git build from latest release)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/zokugun/MrCode.git'
 license=('MIT')
-
-# Version of NodeJS that will be used to create the build.
-_nodejs='14'
 
 depends=(
     'fontconfig'
@@ -30,12 +27,13 @@ optdepends=(
     'libdbusmenu-glib: For KDE global menu'
 )
 makedepends=(
-    'bash'
+   'bash'
     'git'
+    'git-lfs'
+    'gulp'
     'jq'
     'libxdmcp'
-    'nodejs-lts-fermium'
-    'npm'
+    'nvm'
     'python'
     'yarn'
 )
@@ -67,43 +65,61 @@ case "$CARCH" in
     ;;
 esac
 
-install_node() {
-    mkdir -p ~/.npm-global
-
-    npm config set prefix '~/.npm-global'
-
-    export PATH=~/.npm-global/bin:$PATH
-}
-
 version() {
     echo "$@" | tr 'v' ' ' | awk -F. '{ printf("%03d%03d%03d%03d\n", $1,$2,$3,$4); }'
 }
 
-prepare() {
-    install_node
-}
-
 build() {
     cd "MrCode"
-
-    export CI_BUILD="no"
-    export SHOULD_BUILD="yes"
-    export OS_NAME="linux"
-    export VSCODE_ARCH="${_vscode_arch}"
-    export SKIP_LINUX_PACKAGES="True"
-    export RELEASE_VERSION="${pkgver}"
-    export VSCODIUM_LATEST="1"
     
-    if [ -d vscodium ]; then
-        . reset.sh
+     # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
+    command -v nvm >/dev/null && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+
+    # Install the correct version of NodeJS (read from .nvmrc)
+	nvm install $(cat .nvmrc)
+    nvm use
+
+    # Check if the correct version of node is being used
+    nvmrc_version="$(cat .nvmrc)"
+    if [[ "$nvmrc_version" != "v"* ]]
+    then
+        # Add the v prefix, because it seems to be missing in .nvmrc
+        echo "Configured .nvmrc version is [$nvmrc_version], adding the v prefix before checking if it matches with the node command."
+        nvmrc_version="v$nvmrc_version"
     fi
 
+    # Now check if the version matches exactly, or at least starts with the same prefix
+    if [[ "$(node --version)" != "$nvmrc_version"* ]]
+    then
+    	echo "Using the wrong version of NodeJS! Expected ["$nvmrc_version"] but using ["$(node --version)"]."
+    	exit 1
+    fi
+    echo "Installed version of node ["$(node --version)"] matches required version ["$nvmrc_version"], continuing."
+
+    # Remove old build
+    if [ -d "vscodium" ]; then
+        rm -rf vscodium
+    fi
+
+     # Export necessary environment variables
+    export SHOULD_BUILD="yes"
+    export SHOULD_BUILD_REH="no"
+    export CI_BUILD="no"
+    export OS_NAME="linux"
+    export VSCODE_ARCH="${_vscode_arch}"
+    export VSCODE_QUALITY="stable"
+    export RELEASE_VERSION="${pkgver}"
+    # the app will be updated with pacman
+    export DISABLE_UPDATE="yes"
+    
     . get_repo.sh
 
     . prepare.sh
     
-    . version.sh
-
+    cd vscodium
+    
     . build.sh
 }
 
