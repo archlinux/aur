@@ -1,7 +1,7 @@
 pkgbase = gmssl-git
 	pkgdesc = Chinese national cryptographic algorithms and protocols
-	pkgver = 3.0.0.r45.g8177f87d
-	pkgrel = 2
+	pkgver = 3.1.0.r36.g5ca0d607
+	pkgrel = 1
 	url = http://gmssl.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gmssl-git
 	makedepends = git
 	makedepends = cmake
 	depends = glibc
-	provides = gmssl=3.0.0.r45.g8177f87d
+	provides = gmssl=3.1.0.r36.g5ca0d607
 	conflicts = gmssl
 	source = git+https://github.com/guanzhi/GmSSL.git
 	sha256sums = SKIP
