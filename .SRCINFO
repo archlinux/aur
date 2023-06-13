@@ -1,7 +1,7 @@
 pkgbase = bib2ref
 	pkgdesc = Create refer databases from bibtex files.
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://litcave.rudi.ir/
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = bib2ref
 	sha256sums = 7f352c24c707f710d08ab85c99e05b8488e5f43eed6b45c2a454c184db63d587
 
 pkgname = bib2ref
-
