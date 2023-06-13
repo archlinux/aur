@@ -6,7 +6,7 @@ pkgbase = nodejs-passport
 	arch = any
 	license = MIT
 	makedepends = npm
-	depends = nodejs<18.1.0
+	depends = nodejs<=18.15.0
 	noextract = passport-0.5.3.tgz
 	source = https://registry.npmjs.org/passport/-/passport-0.5.3.tgz
 	sha256sums = 161b6eb9f49d2cff23ae16b6123a4b686cb8f30927d8cb4d92c1e1e142fe6532
