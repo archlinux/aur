@@ -1,6 +1,6 @@
 pkgbase = libsndfile-git
 	pkgdesc = A C library for reading and writing files containing sampled sound
-	pkgver = 1.1.0.r30.g005a36b4
+	pkgver = 1.2.0.r19.gd97f4666
 	pkgrel = 1
 	url = https://libsndfile.github.io/libsndfile/
 	arch = i686
@@ -11,19 +11,22 @@ pkgbase = libsndfile-git
 	makedepends = cmake
 	makedepends = flac
 	makedepends = sqlite
+	makedepends = lame
 	makedepends = libogg
 	makedepends = libvorbis
+	makedepends = mpg123
 	makedepends = python
 	makedepends = sqlite
 	depends = glibc
 	depends = libFLAC.so
+	depends = libmp3lame.so
+	depends = libmpg123.so
 	depends = libogg.so
 	depends = libvorbis.so
 	depends = libvorbisenc.so
 	depends = opus
-	depends = speex
 	optdepends = alsa-lib: for sndfile-play
-	provides = libsndfile=1.1.0.r30.g005a36b4
+	provides = libsndfile=1.2.0.r19.gd97f4666
 	provides = libsndfile.so
 	conflicts = libsndfile
 	source = git+https://github.com/libsndfile/libsndfile.git
