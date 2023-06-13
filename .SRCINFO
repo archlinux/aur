@@ -21,6 +21,7 @@ pkgbase = tube-converter-git
 	depends = python-pyxattr
 	depends = python-websockets
 	depends = yt-dlp
+	depends = python-psutil
 	provides = tube-converter
 	conflicts = tube-converter
 	source = git+https://github.com/NickvisionApps/tubeconverter
