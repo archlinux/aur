@@ -3,7 +3,7 @@
 
 _pkgname=uploadprogress
 pkgname=php-${_pkgname}
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="An extension to track progress of a file upload"
 arch=('i686' 'x86_64')
