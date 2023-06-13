@@ -2,7 +2,7 @@
 
 pkgname=python-google-i18n-address
 _pkgname=google-i18n-address
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='I18n address data packaged for Python'
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('python')
 makedepends=('python-setuptools')
 source=("${_pkgname}-$pkgver.tar.gz::https://github.com/mirumee/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('387b4683936bbc19d1cf9a1dbf8f08610742f5ad3db72b681240b2e43a120c05')
+sha256sums=('96044d9a09fed1b7c5a289b4880bee23d7de26696a7908c4e6e7c07668f2b9af')
 
 build() {
   cd ${_pkgname}-${pkgver}
