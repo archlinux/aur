@@ -4,7 +4,7 @@
 
 _pkgname=php-ssh
 pkgname=${_pkgname}
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="An SSH2 extension for PHP"
 url="http://pecl.php.net/package/ssh2"
