@@ -1,6 +1,6 @@
 pkgbase = libsamplerate-git
 	pkgdesc = A Sample Rate Converter for audio
-	pkgver = 0.2.2.r12.g215c75e
+	pkgver = 0.2.2.r13.g22bd06e
 	pkgrel = 1
 	url = https://libsndfile.github.io/libsamplerate/
 	arch = i686
@@ -8,11 +8,14 @@ pkgbase = libsamplerate-git
 	license = BSD
 	checkdepends = fftw
 	makedepends = git
+	makedepends = alsa-lib
+	makedepends = cmake
+	makedepends = libsndfile
+	makedepends = opus
 	depends = glibc
-	depends = libsndfile
-	provides = libsamplerate=0.2.2.r12.g215c75e
+	provides = libsamplerate=0.2.2.r13.g22bd06e
+	provides = libsamplerate.so
 	conflicts = libsamplerate
-	options = staticlibs
 	source = git+https://github.com/erikd/libsamplerate.git
 	sha256sums = SKIP
 
