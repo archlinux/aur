@@ -1,6 +1,6 @@
 pkgbase = r-methylpipe
 	pkgdesc = Base resolution DNA methylation data analysis
-	pkgver = 1.33.1
+	pkgver = 1.34.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/methylPipe
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = r-methylpipe
 	optdepends = r-knitr
 	optdepends = r-methylseekr
 	optdepends = r-txdb.hsapiens.ucsc.hg18.knowngene
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylPipe_1.33.1.tar.gz
-	sha256sums = bd4c678a9bc6980ff7d8112011c3a9685b527217c154d2c5425301a7917c20b7
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/methylPipe_1.34.1.tar.gz
+	sha256sums = cdf07c8bcf62496df85470bf2bfada59fdf82fa0771cd139ef01b792308a4884
 
 pkgname = r-methylpipe
