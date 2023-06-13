@@ -1,27 +1,23 @@
+# Maintainer: Bastian Plettner <plettner [dot] bastian [atsign] gmail [dot] com>
 # Contributor: Vojtech Horky <AUR / hotspur>
 pkgname=ski-ia64-simulator
-_pkgname=ski
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Itanium 2 (ia64) instruction set simulator"
-url="http://ski.sourceforge.net/"
-arch=('i686' 'x86_64')
-license=('GPLv2')
-depends=('gperf')
-source=("https://sourceforge.net/projects/${_pkgname}/files/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-    "ski.patch")
-md5sums=('fa511f222d246e9a7578106db75fd6a5'
-    '5e61944fb3ed1e960db74fc3c95f590c')
+url="https://github.com/trofi/ski/"
+arch=('x86_64')
+license=('GPL2')
+depends=('ncurses')
+source=("https://github.com/trofi/ski/releases/download/v${pkgver}/ski-${pkgver}.tar.xz")
+sha512sums=('855bc73c2cd93d890cd532db524eecc122d5f3eddf189efdbf34069d1c9bd7b7f98d5e593387fdc31b38fc8630f00b6b126f5c1a1f22dab57447e024b9015cf5')
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	patch -p0 <../ski.patch
-	./autogen.sh --disable-maintainer-mode --prefix=/usr
+	cd "${srcdir}/ski-${pkgver}"
+	./configure --prefix="/usr"
 	make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	make "DESTDIR=${pkgdir}" install
-	msg "Installing documentation"
+	cd "${srcdir}/ski-${pkgver}"
+	make DESTDIR="${pkgdir}/" install
 }
