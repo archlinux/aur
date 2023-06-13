@@ -3,7 +3,7 @@
 
 _pkgname=uploadprogress
 pkgname=php-${_pkgname}
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="An extension to track progress of a file upload"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('PHP')
 depends=('php')
 makedepends=('php' 'git' 'autoconf')
 install=${_pkgname}.install
-source=("${_pkgname}"::"git+https://git.php.net/repository/pecl/php/uploadprogress.git#tag=uploadprogress-${pkgver}")
+source=("${_pkgname}"::"git+https://github.com/php/pecl-php-uploadprogress.git#tag=uploadprogress-${pkgver}")
 sha512sums=('SKIP')
 
 build() {
