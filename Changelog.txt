@@ -1,5 +1,29 @@
 Changelog for Hummingbird
 
+Version 1.3.0 - 1 June 2023
+
+- [ProMIND] updated to OpenVPN3 AirVPN 3.8.4
+- [ProMIND] production release
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog for Hummingbird
+
+Version 1.2.2 - 4 April 2023
+
+- [ProMIND] refactored VpnClient references to OpenVpnClient
+- [ProMIND] when needed, remote addresses in OpenVPN profile are resolved before submitting it to OpenVPN3
+- [ProMIND] removed references to LocalNetwork::IPEntry and replaced with IPAddress and IPFamily
+- [ProMIND] openvpn_client(): added proxy host and port check
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Changelog for Hummingbird
+
 Version 1.2.1 - 9 December 2022
 
 - [ProMIND] production release
@@ -229,6 +253,5 @@ Version 1.0 alpha 2 - 7 November 2019
 Version 1.0 alpha 1 - 1 November 2019
 
 - [ProMIND] Initial public release
-
 
 
