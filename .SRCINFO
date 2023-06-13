@@ -2,7 +2,7 @@ pkgbase = zmviewer-svn
 	pkgdesc = SVN version of a zoneminder client written in Qt
 	pkgver = r211
 	pkgrel = 1
-	url = http://sourceforge.net/projects/zmviewer/
+	url = https://sourceforge.net/projects/zmviewer/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -14,4 +14,3 @@ pkgbase = zmviewer-svn
 	md5sums = SKIP
 
 pkgname = zmviewer-svn
-
