@@ -3,10 +3,10 @@
 
 pkgbase=pyside2
 pkgname=(shiboken2 python-shiboken2 pyside2 pyside2-tools)
-_qtver=5.15.9
+_qtver=5.15.10
 _clangver=15.0.7
 pkgver=${_qtver/-/}
-pkgrel=5
+pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -30,9 +30,9 @@ optdepends=('qt5-svg: QtSvg bindings'
             'qt5-serialport: QtSerialPort bindings'
             'qt5-quickcontrols2: QtQuickControls2 bindings')
 _pkgfqn=pyside-setup-opensource-src-$_qtver
-source=(https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}-1.tar.xz
+source=(https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz
         python3.11.patch)
-sha256sums=('3298660742037c71274a30770541abf6d1552ec65fc93678eedee5718852a62c'
+sha256sums=('2af691d3613a41f83a60439b46568fc2c696dbfae42f7cd7b07152d115ead33a'
             'e91549f7d3da412e864af26f604d0023b80233a7165f50fa21e53cbe861db886')
 
 prepare() {
