@@ -2,11 +2,11 @@
 
 _pkgname=samloader
 pkgname=${_pkgname}-git
-pkgver=r39.576bd29
+pkgver=r46.b20e1b1
 pkgrel=1
 pkgdesc="Download firmware for Samsung devices"
 arch=('any')
-url="https://github.com/nlscc/samloader"
+url="https://github.com/martinetd/samloader"
 license=('GPL3')
 conflicts=('samloader')
 depends=(
@@ -15,7 +15,10 @@ depends=(
 	'python-tqdm'
 	'python-pycryptodomex'
 	'python-pip'
-	)
+)
+makedepends=(
+	'git'
+)
 source=(git+"${url}.git")
 sha256sums=('SKIP')
 
