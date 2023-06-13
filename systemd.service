@@ -5,7 +5,7 @@ After=network-online.target
 
 [Service]
 EnvironmentFile=/etc/conf.d/prometheus-x509-certificate-exporter
-ExecStart=/usr/bin/prometheus-x509-certificate-exporter
+ExecStart=/usr/bin/prometheus-x509-certificate-exporter ${EXTRA_ARGS}
 ExecReload=/bin/kill -HUP $MAINPID
 User=root
 Group=root
