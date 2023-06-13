@@ -39,6 +39,7 @@ ExecStart=sh -c '\
 				"${sitePackages}/homeassistant" \
 					-name "package_constraints.txt" \
 				-o	-name "manifest.json" \
+				-o 	-name "METADATA" \
 				-exec sed -i "s/==/>=/g" {} \;'
 
 LockPersonality=true
