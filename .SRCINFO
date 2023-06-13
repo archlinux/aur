@@ -1,7 +1,7 @@
 pkgbase = python-django-ninja
 	pkgdesc = Fast Django REST Framework
-	pkgver = 0.21.0
-	pkgrel = 2
+	pkgver = 0.22.2
+	pkgrel = 1
 	url = https://django-ninja.rest-framework.com/
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = python-django-ninja
 	makedepends = python-installer
 	depends = python-django>=2.2
 	depends = python-pydantic>=1.6
-	source = django-ninja-0.21.0.tar.gz::https://github.com/vitalik/django-ninja/archive/refs/tags/v.0.21.0.tar.gz
-	sha256sums = 6db363e8bc308eba89a1501b61a40082948001d7574e31fbba8d05a46292a19c
+	source = django-ninja-0.22.2.tar.gz::https://github.com/vitalik/django-ninja/archive/refs/tags/v0.22.2.tar.gz
+	sha256sums = bcae48c0b7e302a09e8c234ada5decdd964611f656abd9c76876db60181c47f4
 
 pkgname = python-django-ninja
