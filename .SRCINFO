@@ -1,6 +1,6 @@
 pkgbase = coppwr-bin
 	pkgdesc = Low level PipeWire control GUI
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://dimtpap.xyz/coppwr
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = coppwr-bin
 	depends = pipewire
 	provides = coppwr
 	conflicts = coppwr
-	source = coppwr::https://github.com/dimtpap/coppwr/releases/download/1.0.1/coppwr
-	source = coppwr-1.0.1.tar.gz::https://github.com/dimtpap/coppwr/archive/refs/tags/1.0.1.tar.gz
-	sha256sums = bbc2bc2a4f3f532f98a93a5a2c64e984df92be485193d99446ea31d38d437ff4
-	sha256sums = 3fa5e051ea75653ad54a919369e2eb9e644b62204c6053e8ca5e4da13ffdc7d2
+	source = coppwr::https://github.com/dimtpap/coppwr/releases/download/1.1.0/coppwr
+	source = coppwr-1.1.0.tar.gz::https://github.com/dimtpap/coppwr/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = 629640dbdf02e04885de0a9303c767288f74221caeb0c7c82397313dc9177095
+	sha256sums = 39e4c3f2f9dff64fc68aff4723ac66474c93c9629e47ec6e752dd8907d5c1255
 
 pkgname = coppwr-bin
