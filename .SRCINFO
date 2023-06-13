@@ -1,6 +1,6 @@
 pkgbase = php-rdkafka
 	pkgdesc = AProduction-ready, stable Kafka client for PHP
-	pkgver = 6.0.2
+	pkgver = 6.0.3
 	pkgrel = 1
 	url = https://github.com/arnaud-lb/php-rdkafka
 	arch = i686

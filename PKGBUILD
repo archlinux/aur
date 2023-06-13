@@ -4,7 +4,7 @@
 
 _pkgname=php-rdkafka
 pkgname=${_pkgname}
-pkgver=6.0.2
+pkgver=6.0.3
 pkgrel=1
 pkgdesc="AProduction-ready, stable Kafka client for PHP"
 arch=("i686" "x86_64")
