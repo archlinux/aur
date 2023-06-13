@@ -1,10 +1,10 @@
-# Maintainer: Moritz Patelscheck <moritz(at)patelscheck.de>
+# Maintainer: mojo-hakase <aur@mojo.hakase.de>
 
 _pkgname=minidlna
 pkgname=minidlna-custom-icon
-pkgver=1.3.0
-pkgrel=1
-pkgdesc="A DLNA/UPnP-AV Media server (aka ReadyDLNA) with patch to set a custom icon (instead of a tux)"
+pkgver=1.3.2
+pkgrel=3
+pkgdesc="A DLNA/UPnP-AV Media server (aka ReadyDLNA) with patch to set a custom icon"
 arch=('x86_64')
 url="https://sourceforge.net/projects/minidlna/"
 license=('GPL')
