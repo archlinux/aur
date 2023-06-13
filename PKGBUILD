@@ -3,12 +3,16 @@
 pkgname=prometheus-x509-certificate-exporter
 _pkgname=x509-certificate-exporter
 pkgver=3.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="metric exporter for x509 certificates"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/enix/$_pkgname"
 license=('MIT')
 makedepends=('go')
+backup=(
+  etc/conf.d/prometheus-x509-certificate-exporter
+)
+
 source=(
   "$url/archive/refs/tags/v$pkgver.zip"
   'prometheus-x509-certificate-exporter'

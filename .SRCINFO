@@ -1,13 +1,14 @@
 pkgbase = prometheus-x509-certificate-exporter
 	pkgdesc = metric exporter for x509 certificates
 	pkgver = 3.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/enix/x509-certificate-exporter
 	arch = armv7h
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	backup = etc/conf.d/prometheus-x509-certificate-exporter
 	source = https://github.com/enix/x509-certificate-exporter/archive/refs/tags/v3.6.0.zip
 	source = prometheus-x509-certificate-exporter
 	source = systemd.service
