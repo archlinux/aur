@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r32.77315e0
+pkgver=r33.86538c0
 pkgrel=1
 pkgdesc="A custom configs tool for sk-holoiso"
 arch=('any')
@@ -22,28 +22,29 @@ pkgver() {
 }
 
 package() {
+    source_dir="${srcdir}/sk-holoiso-config/src"
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
-    install -Dm755 "${srcdir}/sk-holoiso-config/src/sk-holoiso-config.py" "${pkgdir}/opt/${pkgname}/sk-holoiso-config.py"
 
     # oxp2 fix 
     install -dm755 "${pkgdir}/usr/share/${pkgname}/oxp2Fix"
-    install -m644 -t "${pkgdir}/usr/share/${pkgname}/oxp2Fix" "${srcdir}/sk-holoiso-config/src/oxp2Fix"/* 
+    install -m644 -t "${pkgdir}/usr/share/${pkgname}/oxp2Fix" "${source_dir}/oxp2Fix"/* 
 
     # 服务
     install -dm755 "${pkgdir}/etc/systemd/system/"
-    install -m644 -t "${pkgdir}/etc/systemd/system/" "${srcdir}/sk-holoiso-config/src/etc/systemd/system"/*
+    install -m644 -t "${pkgdir}/etc/systemd/system/" "${source_dir}/etc/systemd/system"/*
 
     # 脚本
     install -dm755 "${pkgdir}/usr/bin/"
-    install -m755 -t "${pkgdir}/usr/bin/" "${srcdir}/sk-holoiso-config/src/usr/bin"/*
+    install -m755 -t "${pkgdir}/usr/bin/" "${source_dir}/usr/bin"/*
 
+    # 主程序
+    install -Dm755 "${source_dir}/sk-holoiso-config.py" "${pkgdir}/usr/share/${pkgname}/sk-holoiso-config.py"
     ln -s "/usr/share/${pkgname}/sk-holoiso-config.py" "${pkgdir}/usr/bin/sk-holoiso-config"
 
-    install -Dm644 "etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules" "${pkgdir}/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules"
-    
-    install -Dm644 "etc/default/grub" "${pkgdir}/etc/default/grub"
-    install -Dm644 "etc/fonts/conf.d/99-noto-cjk.conf" "${pkgdir}/etc/fonts/conf.d/99-noto-cjk.conf"
+    install -Dm644 "${source_dir}/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules" "${pkgdir}/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules"
+    install -Dm644 "${source_dir}/etc/default/grub" "${pkgdir}/etc/default/grub"
+    install -Dm644 "${source_dir}/etc/fonts/conf.d/99-noto-cjk.conf" "${pkgdir}/etc/fonts/conf.d/99-noto-cjk.conf"
 
-    # 图标
-    install -Dm644 "sk-config.desktop" "${pkgdir}/usr/share/applications/sk-config.desktop"
+    # 程序图标
+    install -Dm644 "${source_dir}/sk-config.desktop" "${pkgdir}/usr/share/applications/sk-config.desktop"
 }
