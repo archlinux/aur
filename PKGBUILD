@@ -1,6 +1,6 @@
 # Maintainer: acidicX
 pkgname=kodi-addon-pvr-waipu
-pkgver=20.8.1
+pkgver=20.9.0
 pkgrel=1
 pkgdesc='Waipu.tv PVR Plugin for Kodi'
 _koditarget=Nexus
@@ -17,7 +17,7 @@ depends=('kodi' 'kodi-addon-script-module-inputstreamhelper')
 source=("https://github.com/flubshi/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('5dfe9f891edefd5334c7a45593651634b43e1fdbea5a1b396131a45f5928f4aa'
+sha256sums=('3a0a1dffe1bb8711dd6747b02a51aee6a0bce40ca6822cc2ab7f04b4b5acb82f'
             'cd4158b2bc2d9593ad2f5c1cd2494957ab726b13d8379bbfb09d7d36df7b7d7e')
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
