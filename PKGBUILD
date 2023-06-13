@@ -6,7 +6,7 @@
 # Contributor: Uli Armbruster <uli_armbruster at web.de>
 
 pkgname=ardour-git
-pkgver=7.0.pre0.r2972.gd037dff213
+pkgver=7.4.r267.g6319980746
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation (git version)"
 arch=('x86_64')
@@ -96,12 +96,12 @@ package() {
   # Icons
   for size in 16 22 32 48; do
     install -vdm 755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes"
-    ln -sf "/usr/share/ardour6/icons/application-x-ardour_${size}px.png" \
+    ln -sf "/usr/share/ardour${pkgver%%.*}/icons/application-x-ardour_${size}px.png" \
       "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-ardour.png"
   done
   for size in 16 22 32 48 256 512; do
     install -vdm 755 "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-    ln -sf "/usr/share/ardour6/resources/Ardour-icon_${size}px.png" \
+    ln -sf "/usr/share/ardour${pkgver%%.*}/resources/Ardour-icon_${size}px.png" \
       "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname%-*}${pkgver%%.*}.png"
   done
 
