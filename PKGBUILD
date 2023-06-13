@@ -12,7 +12,9 @@ license=('MIT')
 depends=('python')
 makedepends=(
   git
-  python-setuptools
+  python-build
+  python-installer
+  python-wheel
   python-hatchling
   python-hatch-vcs
 )
