@@ -1,7 +1,7 @@
 # Maintainer: FLX (Paul Werther) <flx@evait.de>
 pkgname=pd-tools
 _pkgname=pdtm
-pkgver=20230423
+pkgver=20230613
 pkgrel=1
 pkgdesc='pdtm is a simple and easy-to-use golang based tool for managing open source projects from ProjectDiscovery'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -39,8 +39,8 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  ./cmd/build/${_pkgname} -install-all
-  for file in /build/.pdtm/go/bin/*; do
+  ./cmd/build/${_pkgname} -install-all -binary-path ${pkgdir}
+  for file in ${pkgdir}/*; do
     install -Dvm755 "$file" -t "${pkgdir}/usr/bin/"
   done
 }
