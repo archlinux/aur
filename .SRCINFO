@@ -1,0 +1,14 @@
+pkgbase = rspnvpk-bin
+	pkgdesc = RSPNVPK is a command line VPK repacking tool for Titanfall 2 (binary release)
+	pkgver = 1.2.9
+	pkgrel = 1
+	url = https://github.com/taskinoz/RSPNVPK
+	arch = x86_64
+	license = MIT
+	provides = rspnvpk
+	conflicts = rspnvpk
+	options = !strip
+	source = rspnvpk-1.2.9.tar.gz::https://github.com/taskinoz/RSPNVPK/releases/download/v1.2.9/linux-x64.tar.gz
+	sha256sums = a1af5b33368af22acb31e5c7908a3e1f68c1d52c166310b82635045a7d9a5493
+
+pkgname = rspnvpk-bin
