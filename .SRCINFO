@@ -1,6 +1,6 @@
 pkgbase = libretro-flycast-git
 	pkgdesc = Sega Dreamcast/NAOMI/NAOMI 2/Atomiswave core (fork of reicast)
-	pkgver = 2.1.r70.g415d8c2ea
+	pkgver = 2.1.r286.gf679fd9ba
 	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = aarch64
@@ -14,32 +14,31 @@ pkgbase = libretro-flycast-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = glm
+	makedepends = glslang>=12.1
 	makedepends = libchdr
 	makedepends = libgl
 	makedepends = libzip
 	makedepends = miniupnpc
-	makedepends = vulkan-headers>=1:1.3.236
+	makedepends = vulkan-headers>=1:1.3.250
 	makedepends = vulkan-icd-loader
 	makedepends = xbyak
 	makedepends = xxhash
 	depends = gcc-libs
 	depends = glibc
-	depends = glslang>=11.13
 	depends = libretro-core-info
 	depends = zlib
 	provides = libretro-flycast
 	conflicts = libretro-flycast
 	source = flycast::git+https://github.com/flyinghead/flycast.git
 	source = VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
-	source = unbundle-libs.patch
+	source = use-system-libs.patch
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 46548c4be0e6bdebaece4b3484fd6d05015a7cb07cef5054d25fe8df95ef1855eceea39ec3becd13e64e4753c7badcfb18a1b1f5eeedbb720f3c38c1cb0dc996
+	b2sums = c226d68266b6a1bd6e59f0c9d1e6ba5299945b2282673839c76d738d16c14e4e5e6a45b930d7ba8a14edbe1aa7c5ea053243895db6ccfca4ae1164008fe4334f
 
 pkgname = libretro-flycast-git
 	depends = gcc-libs
 	depends = glibc
-	depends = glslang>=11.13
 	depends = libretro-core-info
 	depends = zlib
 	depends = libchdr.so
