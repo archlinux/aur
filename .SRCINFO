@@ -8,6 +8,6 @@ pkgbase = libcdk-co
 	license = GPL3
 	depends = python>=3
 	source = libcdk-co-18_202304130001.tar.gz::https://web.tecnico.ulisboa.pt/~david.matos/w/pt/images/a/a5/Libcdk18-202304130001.tar.bz2
-	sha256sums = e56e2e6a061f4fe672b632021681b76d7ac23fd811dccb106b7b6c0d7790e011
+	sha256sums = e79620c78162e53db4382d0d83adbd12952931b3f638eeef91575376a8a77b6e
 
 pkgname = libcdk-co

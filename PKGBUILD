@@ -15,7 +15,7 @@ _libname="cdk"
 _pkgname="Lib$_libname${pkgver//_/-}"
 _pkgpath="a/a5"
 source=("$pkgname-$pkgver.tar.gz::https://web.tecnico.ulisboa.pt/~david.matos/w/pt/images/$_pkgpath/$_pkgname.tar.bz2")
-sha256sums=('e56e2e6a061f4fe672b632021681b76d7ac23fd811dccb106b7b6c0d7790e011')
+sha256sums=('e79620c78162e53db4382d0d83adbd12952931b3f638eeef91575376a8a77b6e')
 
 prepare() {
 	cd "${_pkgname,,}"
