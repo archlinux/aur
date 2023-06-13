@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  box compile
+  box compile --no-interaction
 }
 
 package() {
