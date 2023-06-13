@@ -1,0 +1,16 @@
+--- libsrc/posix-implementation.ads	2023-06-13 15:45:03.637030819 +1000
++++ libsrc/posix-implementation.ads-new	2023-06-13 15:47:07.983015143 +1000
+@@ -38,10 +38,12 @@
+ 
+ with POSIX.C,
+      System.Interrupt_Management,
+-     Unchecked_Conversion;
++     Ada.Unchecked_Conversion;
+ package POSIX.Implementation is
+    pragma Elaborate_Body;
+ 
++   use Ada;
++
+    --  =========  --
+    --   WARNING   --
+    --  =========  --

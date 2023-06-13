@@ -1,0 +1,18 @@
+--- libsrc/posix-unsafe_process_primitives.adb	2023-06-13 15:58:42.925868349 +1000
++++ libsrc/posix-unsafe_process_primitives.adb-new	2023-06-13 16:00:08.865396760 +1000
+@@ -41,12 +41,13 @@
+      System,
+      System.Secondary_Stack,
+      System.Soft_Links,
+-     Unchecked_Conversion;
++     Ada.Unchecked_Conversion;
+ 
+ package body POSIX.Unsafe_Process_Primitives is
+ 
+    use POSIX.C,
+-       POSIX.Implementation;
++       POSIX.Implementation,
++       Ada;
+ 
+    function To_Process_ID is new Unchecked_Conversion
+      (pid_t, POSIX.Process_Identification.Process_ID);

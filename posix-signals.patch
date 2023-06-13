@@ -1,0 +1,20 @@
+--- libsrc/threads/posix-signals.adb	2023-06-13 15:40:50.495086588 +1000
++++ libsrc/threads/posix-signals.adb-new	2023-06-13 15:42:12.121305335 +1000
+@@ -84,14 +84,15 @@
+      System.Tasking,
+      System.Interrupts,
+      System.Task_Primitives.Operations,
+-     Unchecked_Conversion;
++     Ada.Unchecked_Conversion;
+ 
+ package body POSIX.Signals is
+ 
+    use POSIX.C,
+        POSIX.Implementation,
+        System,
+-       System.Storage_Elements;
++       System.Storage_Elements,
++       Ada;
+ 
+    package SI renames System.Interrupts;
+    subtype SIID is SI.Interrupt_ID;

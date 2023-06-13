@@ -1,0 +1,17 @@
+--- libsrc/posix-supplement_to_ada_io.adb	2023-06-13 15:53:47.900820616 +1000
++++ libsrc/posix-supplement_to_ada_io.adb-new	2023-06-13 15:55:55.843451871 +1000
+@@ -55,12 +55,13 @@
+      Interfaces.C_Streams,
+      System.File_Control_Block,
+      System.File_IO,
+-     Unchecked_Conversion;
++     Ada.Unchecked_Conversion;
+ 
+ package body POSIX.Supplement_to_Ada_IO is
+ 
+    use Interfaces.C_Streams;
+    use POSIX.Implementation;
++   use Ada;
+ 
+    subtype System_File_Type is System.File_Control_Block.AFCB_Ptr;
+ 

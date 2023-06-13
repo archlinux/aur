@@ -10,6 +10,14 @@ pkgbase = florist
 	options = staticlibs
 	options = !strip
 	source = git+https://github.com/Blady-Com/florist.git
+	source = posix-signals.patch
+	source = posix-implementation.patch
+	source = posix-supplement_to_ada_io.patch
+	source = posix-unsafe_process_primitives.patch
 	sha256sums = SKIP
+	sha256sums = c8cdc201ce444dd9bcdaf4ed790ce6ce3cfabe922d5e804edc3356cf28b3e1f2
+	sha256sums = daefcebb30f49f437562c63b1957891963fbf832448892f4c73ae575735a972c
+	sha256sums = 0d3366e14e12df13f68c12122eb896cc1be21590f897dda52e212805b529185b
+	sha256sums = 9750ff2db04afd7d9394101f286206bc0b62085e3bad93de44804a47fad14c72
 
 pkgname = florist
