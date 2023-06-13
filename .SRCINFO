@@ -1,7 +1,7 @@
 pkgbase = prometheus-x509-certificate-exporter
 	pkgdesc = metric exporter for x509 certificates
 	pkgver = 3.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/enix/x509-certificate-exporter
 	arch = armv7h
 	arch = aarch64

@@ -3,7 +3,7 @@
 pkgname=prometheus-x509-certificate-exporter
 _pkgname=x509-certificate-exporter
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="metric exporter for x509 certificates"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/enix/$_pkgname"
