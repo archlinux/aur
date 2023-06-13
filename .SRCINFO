@@ -1,6 +1,6 @@
 pkgbase = ros2-arch-deps
 	pkgdesc = Dependencies for building ROS2 on Arch
-	pkgver = 0.12
+	pkgver = 0.13
 	pkgrel = 1
 	url = https://index.ros.org/doc/ros2/
 	arch = any
@@ -59,6 +59,7 @@ pkgbase = ros2-arch-deps
 	depends = python-colcon-ros
 	depends = python-colcon-test-result
 	depends = python-colcon-zsh
+	depends = python-colcon-cd
 	depends = python-colcon-common-extensions
 	depends = python-pyqt5-sip4
 	depends = python-rospkg
