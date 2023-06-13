@@ -1,7 +1,7 @@
 pkgbase = 64gram-desktop
 	pkgdesc = Unofficial desktop version of Telegram messaging app
 	pkgver = 1.0.85
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/TDesktop-x64/tdesktop
 	arch = x86_64
@@ -33,7 +33,6 @@ pkgbase = 64gram-desktop
 	depends = qt6-imageformats
 	depends = qt6-svg
 	depends = qt6-wayland
-	depends = qt6-5compat
 	depends = xxhash
 	depends = glibmm-2.68
 	depends = rnnoise
