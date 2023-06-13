@@ -58,9 +58,7 @@ post_install() {
     if [[ "${DEVICENAME}" == "ONEXPLAYER 2 ARP23" ]]; then
         sudo systemctl enable --now oxp2-lsusb.service
         sudo systemctl enable --now oxp2-volume-button-fix.service
-    fi
-
-    
+    fi    
 }
 
 pre_upgrade() {
