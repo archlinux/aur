@@ -8,8 +8,8 @@ pkgbase = php-rdkafka
 	license = MIT
 	depends = php
 	depends = librdkafka
-	backup = etc/php/conf.d/.ini
-	source = git+https://github.com/arnaud-lb/php-rdkafka
+	backup = etc/php/conf.d/rdkafka.ini
+	source = rdkafka::git+https://github.com/arnaud-lb/php-rdkafka
 	md5sums = SKIP
 
 pkgname = php-rdkafka
