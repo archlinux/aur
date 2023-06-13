@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="woocommerce-pos-appimage"
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Electron Desktop App for WooCommerce POS"
 arch=('x86_64')
@@ -12,12 +12,12 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/WooCommerce-POS-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/wcpos/electron/main/LICENSE")
-sha256sums=('9141ddb0056d1025cbd0d3bd615e6b028f219531590bb113d44b15dde295e168'
+sha256sums=('0c85836f32ef1627fde79ef27487cdff729a12314451403eba79cd289dc101b7'
             'd8a5569300a1a9624f8e32056d771809676dc7dcaf3ed1ba900c635c426f28e7')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/woocommerce-pos.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
