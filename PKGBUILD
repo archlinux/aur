@@ -3,7 +3,7 @@
 
 _prjname=wxWeaver
 pkgname=wxweaver-git
-pkgver=2236.37fc5e28
+pkgver=2321.70ae1174
 pkgrel=1
 pkgdesc="GUI Designer for wxWidgets"
 arch=("i686" "x86_64" "aarch64")
@@ -13,7 +13,7 @@ provides=("wxweaver" "wxformbuilder")
 conflicts=("wxweaver" "wxformbuilder" "wxformbuilder-svn")
 depends=("wxgtk3")
 makedepends=("git" "cmake")
-source=("git://github.com/wxweaver/wxWeaver.git")
+source=("git+https://github.com/wxweaver/wxWeaver.git")
 sha512sums=("SKIP")
 pkgver() {
     cd "${srcdir}/${_prjname}"
