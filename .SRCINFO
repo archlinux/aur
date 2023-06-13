@@ -1,6 +1,6 @@
 pkgbase = wxcode-git
 	pkgdesc = wxCode plugin for wxWeaver and custom wxWidgets controls library
-	pkgver = 1294.17815ef
+	pkgver = 1299.e2f5c33
 	pkgrel = 1
 	url = https://wxweaver.github.io
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = wxcode-git
 	makedepends = cmake
 	depends = wxgtk3
 	depends = wxweaver
-	source = git://github.com/wxweaver/wxcode.git
+	source = git+https://github.com/wxweaver/wxcode.git
 	sha512sums = SKIP
 
 pkgname = wxcode-git
-
