@@ -1,6 +1,6 @@
 pkgbase = deepin-wine-mailmaster
 	pkgdesc = 网易(Netease)推出的全平台邮箱客户端,支持使用网易、Outlook等各个品牌邮箱,支持全平台设备登录.
-	pkgver = 4.19.1.1003
+	pkgver = 4.19.2.1004
 	pkgrel = 1
 	url = https://dashi.163.com/
 	install = deepin-wine-mailmaster.install
@@ -18,14 +18,16 @@ pkgbase = deepin-wine-mailmaster
 	optdepends = wqy-zenhei
 	provides = Netease
 	source = com.163.dashi.mailmaster.spark-4.18.1.1006.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/network/com.163.dashi.mailmaster.spark/com.163.dashi.mailmaster.spark_4.18.1.1006_i386.deb
-	source = mailmaster-4.19.1.1003.exe::https://res.126.net/dl/client/pcmail/dashi/mail.exe
+	source = mailmaster-4.19.2.1004.exe::https://res.126.net/dl/client/pcmail/dashi/mail.exe
 	source = LICENSE.html::https://mail.163.com/html/agreement/doc.html
 	source = deepin-wine-mailmaster.install
+	source = fake_simsun.ttc::https://images.xuthus.cc/images/fake_simsun.ttc
 	source = run.sh
 	sha256sums = fe1c70aeb9a8007c8cdcb0e63298c0c69c590af963c365fea22194a4ad1b77d5
-	sha256sums = 0665d859a6b713439364a8a6dbaae244086d862eb39476d12efa31e856d4350f
+	sha256sums = 6c9bad53f03c3c21fef085ea1280867ebe1ab3e0e660e4ce91cab433dbc31c1d
 	sha256sums = a0cda3796e8d0d932eadc0e588dd7422183a55969c48316a01df7ff6aff1580a
 	sha256sums = cb8eb7ef4af1cc2e9f87a0aeb44cc0642c918615a237bd75852788aea654a76f
-	sha256sums = ed95307ae79a53d79a7c4673b7d88a57eccb88140fa229b7b73c32cb8b5714bf
+	sha256sums = 3e2ed9203a5ce3b2f00b6c942d8fac6b24e7a6e7b1ebc863cee2e27d3ff487db
+	sha256sums = fad8a805bebeaacf09f6ac9c3fe1348314729f28ab906215c28470f2536676f3
 
 pkgname = deepin-wine-mailmaster
