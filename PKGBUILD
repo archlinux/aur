@@ -8,8 +8,8 @@
 #
 pkgbase="zfs-linux-rt"
 pkgname=("zfs-linux-rt" "zfs-linux-rt-headers")
-_zfsver="2.1.9"
-_kernelver="6.0.5.14.realtime1-4"
+_zfsver="2.1.12"
+_kernelver="6.3.0.11.realtime1-1"
 _extramodules="${_kernelver}-rt"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -18,7 +18,7 @@ makedepends=("linux-rt-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
-sha256sums=('6b172cdf2eb54e17fcd68f900fab33c1430c5c59848fa46fab83614922fe50f6')
+sha256sums=('64daa26aed3e12c931f6f4413d7527c4ebdb8da35416b356152b5f9fdd4c6e6d')
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux-rt=${_kernelver}")
 
