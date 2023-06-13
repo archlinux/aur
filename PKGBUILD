@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-appimage
-pkgver=0.15.28
+pkgver=0.15.29
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Lvce-v${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/lvce-editor/lvce-editor/main/LICENSE")
-sha256sums=('65f735a2e8dc210c543977ee51aa1d2329b6ddf2cf6b2a6a52b17f8e3f1afd43'
+sha256sums=('e265c5de78fe4773335c07c448db59140829970be61a46ae1e802ee948f05a01'
             '7736b1dbda2b18af09232f9eb619e4d3d79d855058cc7494853f25d1553ed00b')
       
 prepare() {
