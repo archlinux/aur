@@ -1,4 +1,5 @@
-# Maintainer: George Rawlinson <george@rawlinson.net.nz>
+# Maintainer: VitalyR <vr@vitalyr.com>
+# Contributor: George Rawlinson <george@rawlinson.net.nz>
 # Contributor: Cyano Hao <c@cyano.cn>
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 # Contributor: Cedric MATHIEU <me.xenom @ gmail.com>
