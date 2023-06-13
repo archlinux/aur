@@ -9,7 +9,7 @@ pkgdesc="a ide for the inform language/compiler"
 arch=('x86_64')
 url="https://github.com/ptomato/inform7-ide"
 license=('GPL3')
-depends=('libcanberra' 'python-virtualenv' 'libxml2' 'libgl' 'glibc' 'goocanvas2' 'webkit2gtk' 'gtksourceview4' 'gspell' 'libplist' 'desktop-file-utils' 'gstreamer' 'gst-plugins-bad' 'gst-plugins-good' 'gtk3' 'libratify-git' 'libchimara-git' 'rsync' 'vala')
+depends=('libcanberra' 'python-virtualenv' 'libxml2' 'libgl' 'glibc' 'goocanvas2' 'webkit2gtk' 'gtksourceview4' 'gspell' 'libplist' 'desktop-file-utils' 'gstreamer' 'gst-plugins-bad' 'gst-plugins-good' 'gtk3' 'libratify-git' 'libchimara-git' 'rsync' 'vala' 'clang')
 makedepends=('meson' 'ninja')
 provides=('inform7-ide')
 conflicts=('inform7-ide')
@@ -50,8 +50,10 @@ fi
 
 }
 
+export CC=clang
+
 build() {
-install "${srcdir}/inform7-ide/build-aux/make-integration-settings.mk" "${srcdir}/make-integration-settings.mk"
+install -D "${srcdir}/inform7-ide/build-aux/make-integration-settings.mk" "${srcdir}/make-integration-settings.mk"
 
 #setting up inweb build enviroment
 install -D "inweb/Materials/platforms/linux.mk" "inweb/platform-settings.mk"

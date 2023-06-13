@@ -26,6 +26,7 @@ pkgbase = inform7-ide
 	depends = libchimara-git
 	depends = rsync
 	depends = vala
+	depends = clang
 	provides = inform7-ide
 	conflicts = inform7-ide
 	options = !buildflags
