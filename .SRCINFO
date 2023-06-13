@@ -1,7 +1,7 @@
 pkgbase = spyglass-bin
 	pkgdesc = A personal search engine that indexes what you want, exposing it to you in a simple & fast interface
 	pkgver = 23.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/spyglass-search/spyglass
 	arch = x86_64
 	license = AGPL3
