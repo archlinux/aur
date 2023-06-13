@@ -1,14 +1,15 @@
 pkgbase = durdraw
 	pkgdesc = Frame based ASCII and ANSI drawing and playback program
-	pkgver = 0.18.4
+	pkgver = 0.20.3
 	pkgrel = 1
 	url = http://cmang.org/durdraw/
 	arch = any
 	license = custom
 	depends = python
 	depends = python-pillow
+	depends = python-setuptools
 	optdepends = ansilove: png export, animated gif export
-	source = durdraw.tar.gz::https://github.com/cmang/durdraw/archive/refs/tags/0.18.4.tar.gz
-	md5sums = 10a1749afd710438c84b5575de6e80c1
+	source = durdraw-0.20.3.tar.gz::https://github.com/cmang/durdraw/archive/refs/tags/0.20.3.tar.gz
+	md5sums = 8177e38af391475bee1b2fe36d8ea76d
 
 pkgname = durdraw
