@@ -2,7 +2,7 @@
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 pkgname="phpcpd"
-pkgver=5.0.2
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Copy/Paste Detector (CPD) for PHP code."
 url="https://github.com/sebastianbergmann/phpcpd"
@@ -14,7 +14,7 @@ source=(
   "LICENSE"
 )
 install="${pkgname}.install"
-sha256sums=('12e94af9928be2f33fd394d2cc5d96b3925de24d614381d06b3096cc9eeabbcb'
+sha256sums=('9411389fb68640d11acb5353d6901e5d7e7216aefdefd853af19dd925a0738a8'
             'a1c3d70730486361b39b935b6e84f67be22ceae5377be4ab1c3e2eee61a487ec')
 
 package() {
