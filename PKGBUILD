@@ -1,8 +1,9 @@
 # Maintainer: a13xie <rostik.medved@gmail.com>
 pkgname=('libproidplus-gui')
-pkgver=2.4.2
-pkgrel=7
+pkgver=2.5.0
+pkgrel=1
 _filename="libproidplus-gui_${pkgver}-0_amd64"
+_extractedfilename="libproidplus-gui-${pkgver}-0.amd64"
 pkgdesc="Library for ProID+ SmartCards"
 makedepends=(jq)
 arch=('x86_64')
@@ -15,8 +16,8 @@ prepare () {
 	curl $_downloadurl -L --insecure --output "$_filename.deb.zip"
 	mkdir "$srcdir/$pkgname"
 	bsdtar -C "$srcdir/$pkgname" -xf "$srcdir/${_filename}.deb.zip"
-	bsdtar -C "$srcdir/$pkgname" -xf "$srcdir/$pkgname/${_filename}.deb"
-	echo "$(cat $srcdir/$pkgname/${_filename}.sha256 | cut -d ' ' -f1) $srcdir/$pkgname/${_filename}.deb" | sha256sum --check --status
+	bsdtar -C "$srcdir/$pkgname" -xf "$srcdir/$pkgname/${_extractedfilename}.deb"
+	echo "$(cat $srcdir/$pkgname/${_extractedfilename}.deb.sha256 | cut -d ' ' -f1) $srcdir/$pkgname/${_extractedfilename}.deb" | sha256sum --check --status
 }
 
 package () {
