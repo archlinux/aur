@@ -1,6 +1,6 @@
 # Maintainer: Rafael Oliveira <rafael.serra.olveira at tecnico dot ulisboa dot pt>
 pkgname=libcdk-co
-pkgver=18_202304130000
+pkgver=18_202304130001
 pkgrel=1
 epoch=
 pkgdesc="Compiler Development Kit, used for the CO course of IST university"
@@ -13,7 +13,7 @@ makedepends=()
 checkdepends=()
 _libname="cdk"
 _pkgname="Lib$_libname${pkgver//_/-}"
-_pkgpath="3/39"
+_pkgpath="a/a5"
 source=("$pkgname-$pkgver.tar.gz::https://web.tecnico.ulisboa.pt/~david.matos/w/pt/images/$_pkgpath/$_pkgname.tar.bz2")
 sha256sums=('e56e2e6a061f4fe672b632021681b76d7ac23fd811dccb106b7b6c0d7790e011')
 
