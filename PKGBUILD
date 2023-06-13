@@ -2,7 +2,7 @@
 # Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 _pkgname=pixel-saver
 pkgname=gnome-shell-extension-$_pkgname
-pkgver=1.30
+pkgver=1.32
 pkgrel=1
 pkgdesc="Saves pixels by fusing activity bar and title bar in a natural way"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gnome-shell' 'xorg-xprop' 'xorg-xwininfo')
 install=$_pkgname.install
 source=($_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=('c11e725b122313895794abba1cd40ff03301ed890dff6f00506e8c6e124d8687')
+sha256sums=('562a1d566bd6ab3ee4e194ed8c48b432865807b9e14d9cad983b5d8d57a279b4')
 
 package() {
   cd "$srcdir"/pixel-saver-$pkgver
