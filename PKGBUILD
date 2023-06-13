@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=n-m3u8dl-re-git
-pkgver=0.1.6.beta.r0.ge3c1eea
+pkgver=0.1.6.beta.r7.gf1a3715
 pkgrel=1
 epoch=
 pkgdesc="Cross-Platform, beautiful and powerful stream downloader for DASH/HLS."
@@ -12,7 +12,7 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
 depends=(curl zlib krb5 dotnet-runtime)
-makedepends=(git)
+makedepends=(git dotnet-sdk)
 backup=()
 options=('!strip')
 install=
