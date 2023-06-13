@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=aom-git
-pkgver=3.6.0.r463.gdc985c81d66
+pkgver=3.6.1.r733.g233000f66e9
 pkgrel=1
 pkgdesc="An open, royalty-free video coding format designed for video transmissions over the Internet"
 arch=('i686' 'x86_64')
@@ -33,8 +33,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    -DBUILD_SHARED_LIBS="1" \
-    -DENABLE_TESTS="0" \
+    -DBUILD_SHARED_LIBS=ON \
+    -DENABLE_TESTS=OFF \
     ./
   make -C "_build"
 }
