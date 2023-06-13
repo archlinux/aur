@@ -1,7 +1,7 @@
 pkgbase = python-jaxlib-cuda
 	pkgdesc = XLA library for JAX
 	pkgver = 0.4.12
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/google/jax/
 	arch = x86_64
 	groups = jax
@@ -19,7 +19,7 @@ pkgbase = python-jaxlib-cuda
 	depends = python-ml-dtypes
 	depends = python-numpy
 	depends = python-scipy
-	provides = python-jaxlib
+	provides = python-jaxlib=0.4.12
 	conflicts = python-jaxlib
 	source = jaxlib-0.4.12.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v0.4.12.tar.gz
 	source = bazelrc.user

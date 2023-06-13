@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib-cuda
 pkgver=0.4.12
-pkgrel=5
+pkgrel=6
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -17,7 +17,7 @@ depends=('absl-py'
          'python-scipy')
 makedepends=('bazel' 'gcc12' 'pybind11' 'python-installer' 'python-setuptools' 'python-wheel')
 conflicts=('python-jaxlib')
-provides=('python-jaxlib')
+provides=("python-jaxlib=$pkgver")
 source=("jaxlib-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v${pkgver}.tar.gz"
         'bazelrc.user')
 sha256sums=('90bdaf1351809f6d73ffc20dbdd4390293742a62368e33870ef3a67e2ce52647'
