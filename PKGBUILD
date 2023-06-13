@@ -9,15 +9,11 @@ pkgdesc='Play all of the Internet Archive’s MS-DOS games offline'
 arch=('any')
 url='https://github.com/rtts/ialauncher'
 license=('GPL3')
-depends=(
-  'python-pygame'
 
-  # Not needed?
-  #'dosbox'
-  #'gst-plugins-bad'
-  #'python-jinja'
-  #'python-natsort'
-  #'webkit2gtk'
+depends=(
+  'dosbox'
+  'python-pygame'
+  'python-pyxdg'
 )
 makedepends=(
   'git'
@@ -26,8 +22,28 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-source=("$_pkgname"::"git+$url")
-sha256sums=('SKIP')
+
+options=(!strip)
+
+source=(
+  "$_pkgname"::"git+$url"
+  "ialauncher-19-xdg-cache.patch"::"https://github.com/rtts/ialauncher/pull/19.patch"
+)
+sha256sums=(
+  'SKIP'
+  '6def4ff58722dc5efbbd93c19837bb80774bb2d979a69567279273a4e0a4dc5b'
+)
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+
+  for patch in "$srcdir"/*.patch ; do
+    if [ -f "$patch" ] ; then
+      echo "Applying patch: ${patch##*/}"
+      patch -Np1 -F100 -i "$patch"
+    fi
+  done
+}
 
 pkgver() {
   cd "$srcdir/$_pkgname"
