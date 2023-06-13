@@ -3,7 +3,7 @@
 
 pkgname=qt5-3d
 _basever=5.15.10
-pkgver=5.15.9
+pkgver=5.15.10
 pkgrel=1
 _commit=01aa0a9cb22ce5ed2b7ead03ed9cbeb5f978e897
 arch=('x86_64')
