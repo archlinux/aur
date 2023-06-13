@@ -10,7 +10,7 @@ _use_suffix=1
 pkgver=25.1.0
 _chromiumver=114.0.5735.90
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -36,7 +36,6 @@ makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
              'python-pyparsing' 'python-six' 'wget' 'yarn')
 # shellcheck disable=SC2034
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
-            'libappindicator-gtk3: StatusNotifierItem support'
             'pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
