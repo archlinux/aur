@@ -1,19 +1,20 @@
 pkgbase = dbus-test-runner
 	pkgdesc = A small little utility to run a couple of executables under a new DBus session for testing
-	pkgver = 15.04.0
-	pkgrel = 2
-	url = https://launchpad.net/dbus-test-runner
+	pkgver = 19.04.0
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu/+source/dbus-test-runner
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	makedepends = gnome-common
+	makedepends = intltool
+	makedepends = dbus-glib
 	depends = dbus-glib
 	provides = dbus-test-runner
 	conflicts = dbus-test-runner
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/dbus-test-runner/15.04.0+16.10.20160906-0ubuntu1/dbus-test-runner_15.04.0+16.10.20160906.orig.tar.gz
-	sha256sums = 7d06a2d4af8979b569fbef5c6da2c32ddfcc6d1063e7ccbfc2f673013352d3d8
+	conflicts = dbus-test-runner-bzr
+	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/dbus-test-runner/19.04.0-1/dbus-test-runner_19.04.0.orig.tar.gz
+	sha256sums = 645a32fbd909baf2c01438f0cbda29dc9cd01a7aba5504c45610d88e8a57cb76
 
 pkgname = dbus-test-runner
-
