@@ -23,11 +23,15 @@ pkgbase = gnatstudio
 	conflicts = gnatstudio-bin
 	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gnatstudio-24.0w-20230428-16588-src.tar.gz
 	source = 0003-Honour-DESTDIR-in-installation-targets.patch
+	source = gs_utils.patch
 	source = patch-dap.gpr
+	source = building_executable_programs_with_gnat.rst
 	source = gps.desktop
 	sha256sums = ae17d963f063657fe665be243362eccb6b3f122fe846fe64dd1270775120fb52
 	sha256sums = 5607c451dbf63dba346eeb2ef602a86321d310bdfb6ef777870bb32761b596d5
+	sha256sums = 7f5196621ca8f1dfe15ada96af63b10d70a56727c103459864a0e3f6b510d182
 	sha256sums = b4701fa61cdd64f2fb689e68de06e209d2bb809fd5d98d81d9ccd7a77c6caff8
+	sha256sums = 6b128ae9c7c9253cb71debd162380d4a481ef748231bcb822f78b3c961e961da
 	sha256sums = e21894fc1a0fbc90c25b0c524969703d685f283adc09225744d9013de3b00533
 
 pkgname = gnatstudio

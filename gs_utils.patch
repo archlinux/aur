@@ -1,0 +1,11 @@
+--- share/support/core/gs_utils/__init__.py	2023-04-27 11:09:52.150229500 +1000
++++ share/support/core/gs_utils/__init__.py-new	2023-06-13 22:22:03.252988629 +1000
+@@ -2,7 +2,7 @@
+ # exported by GPS to make it easier to write plugins
+ 
+ from GPS import pwd, cd, Action, EditorBuffer, MDI
+-from collections import MutableMapping as DictMixin
++from collections.abc import MutableMapping as DictMixin
+ import types
+ import GPS
+ import GPS.Browsers
