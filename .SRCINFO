@@ -1,0 +1,18 @@
+pkgbase = python-mknapsack
+	pkgdesc = Solving knapsack and bin packing problems with Python
+	pkgver = 1.1.12
+	pkgrel = 1
+	url = https://github.com/jmyrberg/mknapsack
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = gcc-fortran
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-numpy
+	source = mknapsack-1.1.12.tar.gz::https://github.com/jmyrberg/mknapsack/archive/1.1.12.tar.gz
+	sha512sums = 494574c70adb7675136cbf148b3129fccc3f1559d8c49db3e64c82182f77ca453b1e4dadd2f557e3161e93232707b472b4f260d12f4871075b15b7b17501855e
+
+pkgname = python-mknapsack
