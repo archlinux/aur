@@ -1,4 +1,4 @@
-# Maintainer: Moritz Patelscheck <moritz(at)patelscheck.de>
+# Maintainer: mojo-hakase <aur@mojo.hakase.de>
 
 pkgname=otpw
 pkgver=1.5
