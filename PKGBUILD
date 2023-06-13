@@ -2,7 +2,7 @@
 # Please report issues at https://github.com/sanduhrs/arch-aur-phpmetrics
 
 pkgname=phpmetrics
-pkgver=2.7.1
+pkgver=2.7.2
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="A static analysis tool for PHP"
