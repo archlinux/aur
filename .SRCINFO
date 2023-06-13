@@ -1,7 +1,7 @@
 pkgbase = nref
 	pkgdesc = A program for handling document references, it can be used as a troff preprocessor.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://litcave.rudi.ir/
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = nref
 	sha256sums = 6a3ea53ac353606a403077cac4737d979820a6d40d9c2cb9782df8283450d453
 
 pkgname = nref
-
