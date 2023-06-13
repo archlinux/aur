@@ -1,7 +1,7 @@
-# Maintainer: Moritz Patelscheck <moritz(at)patelscheck.de>
+# Maintainer: mojo-hakase <aur@mojo.hakase.de>
 _pkgname=passmate
 pkgname=passmate-server
-pkgver=v0.4.alpha
+pkgver=0.2.r6.g07a8820
 pkgrel=1
 epoch=
 pkgdesc="a cross-platform, open-source password manager"
@@ -9,8 +9,9 @@ arch=('i686' 'x86_64')
 url="https://github.com/TobiasKaiser/passmate"
 license=('Apache')
 groups=()
-depends=('python2' 'python2-pycryptodome')
-makedepends=('git' 'sed')
+depends=('python>=3.7' 'python-scrypt>=0.8.6' 'python-prompt_toolkit>=3.0.9'
+         'python-toml>=0.10.0' 'python-jsonschema>=3.2.0')
+makedepends=('git' 'sed' 'python-flit' 'pip')
 checkdepends=()
 optdepends=()
 provides=()
@@ -24,12 +25,21 @@ source=(git+https://github.com/TobiasKaiser/passmate.git)
 noextract=()
 md5sums=('SKIP')
 
-prepare() {
-	cd "$_pkgname/server"
-	sed -i 's/#!\/usr\/bin\/python/#!\/usr\/bin\/python2/' "server.py"
+pkgver() {
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+	cd "$_pkgname"
+	flit build --format wheel
 }
 
 package() {
-	cd "$_pkgname/server"
-	install -Dm755 "server.py" "${pkgdir}/usr/bin/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
+	VERSION="$(python -Bc 'import passmate;print(passmate.__version__)')"
+	WHEELFILE="./dist/${_pkgname}-${VERSION}-py3-none-any.whl"
+	pip install "${WHEELFILE}" --root "${pkgdir}" --no-deps --no-index \
+	            --no-warn-script-location  --root-user-action=ignore
+	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
