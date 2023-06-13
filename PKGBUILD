@@ -2,7 +2,7 @@
 
 pkgname=libsndfile-git
 pkgver=1.2.0.r19.gd97f4666
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library for reading and writing files containing sampled sound"
 arch=('i686' 'x86_64')
 url="https://libsndfile.github.io/libsndfile/"
@@ -30,7 +30,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    -DBUILD_SHARED_LIBS="ON" \
+    -DBUILD_SHARED_LIBS=ON \
     ./
   make -C "_build"
 }

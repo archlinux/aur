@@ -1,7 +1,7 @@
 pkgbase = libsndfile-git
 	pkgdesc = A C library for reading and writing files containing sampled sound
 	pkgver = 1.2.0.r19.gd97f4666
-	pkgrel = 1
+	pkgrel = 2
 	url = https://libsndfile.github.io/libsndfile/
 	arch = i686
 	arch = x86_64
