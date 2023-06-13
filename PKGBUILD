@@ -4,7 +4,7 @@
 pkgname=qt5-gamepad
 _qtver=5.15.2
 _basever=5.15.10
-pkgver=5.15.9
+pkgver=5.15.10
 pkgrel=1
 _commit=f90bd729eb70d4a0770efed3f9bb1b6dbe67d37c
 arch=('x86_64')
