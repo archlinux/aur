@@ -1,6 +1,6 @@
 # Maintainer Shell Chen <aur@sorz.org>
 pkgname=pgvector
-pkgver=0.4.1
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A vector similarity search extension for PostgreSQL"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ depends=('postgresql')
 makedepends=('git')
 optdepends=()
 source=("https://github.com/pgvector/pgvector/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('12dc08c33165a2f14d97d1c153d6ec3dc0c8d1b8c53ac3ba8b44517e8795444c')
+sha256sums=('1cb70a63f8928e396474796c22a20be9f7285a8a013009deb8152445b61b72e6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
