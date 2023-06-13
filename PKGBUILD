@@ -1,6 +1,7 @@
-# Maintainer: Moritz Patelscheck <moritz(at)patelscheck.de>
-pkgname=passmate
-pkgver=v0.4.alpha
+# Maintainer: mojo-hakase <aur@mojo.hakase.de>
+_pkgname=passmate
+pkgname="${_pkgname}"
+pkgver=0.2.r6.g07a8820
 pkgrel=1
 epoch=
 pkgdesc="a cross-platform, open-source password manager"
@@ -8,8 +9,9 @@ arch=('i686' 'x86_64')
 url="https://github.com/TobiasKaiser/passmate"
 license=('Apache')
 groups=()
-depends=('libscrypt' 'mbedtls' 'wxgtk3')
-makedepends=('git' 'cmake')
+depends=('python>=3.7' 'python-scrypt>=0.8.6' 'python-prompt_toolkit>=3.0.9'
+         'python-toml>=0.10.0' 'python-jsonschema>=3.2.0')
+makedepends=('git' 'sed' 'python-flit' 'python-pip')
 checkdepends=()
 optdepends=()
 provides=()
@@ -23,14 +25,21 @@ source=(git+https://github.com/TobiasKaiser/passmate.git)
 noextract=()
 md5sums=('SKIP')
 
+pkgver() {
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-	cd "$pkgname/client"
-	export WX_CONFIG=/usr/bin/wx-config-gtk3
-	cmake . -DCMAKE_BUILD_TYPE=Release
-	make
+	cd "$_pkgname"
+	flit build --format wheel
 }
 
 package() {
-	cd "$pkgname/client"
-	install -Dm644 "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
+	VERSION="$(python -Bc 'import passmate;print(passmate.__version__)')"
+	WHEELFILE="./dist/${_pkgname}-${VERSION}-py3-none-any.whl"
+	pip install "${WHEELFILE}" --root "${pkgdir}" --no-deps --no-index \
+	            --no-warn-script-location  --root-user-action=ignore
+	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
