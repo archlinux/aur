@@ -18,7 +18,7 @@ source=("https://github.com/dshearer/jobber/releases/download/v$pkgver/$_pkgname
 
 build() {
     cd $srcdir
-    bsdtar -xf ../$_pkgname-$pkgver-1.el7.$arch.rpm
+    bsdtar -xf ./$_pkgname-$pkgver-1.el8.$arch.rpm
 }
 
 package() {
@@ -29,4 +29,3 @@ package() {
     mv $srcdir/usr/local/bin/jobber $pkgdir/usr/bin/
     mv $srcdir/usr/local/libexec/ $pkgdir/usr/local
 }
-

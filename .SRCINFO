@@ -11,4 +11,3 @@ pkgbase = jobber-bin
 	sha256sums = eb4f50c0d2510480bafa3efc5711fe750685c0534cfbbc74aa479a0dfdba6698
 
 pkgname = jobber-bin
-
