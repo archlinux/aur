@@ -11,7 +11,7 @@ license=('Apache')
 groups=()
 depends=('python>=3.7' 'python-scrypt>=0.8.6' 'python-prompt_toolkit>=3.0.9'
          'python-toml>=0.10.0' 'python-jsonschema>=3.2.0')
-makedepends=('git' 'sed' 'python-flit' 'pip')
+makedepends=('git' 'sed' 'python-flit' 'python-pip')
 checkdepends=()
 optdepends=()
 provides=()

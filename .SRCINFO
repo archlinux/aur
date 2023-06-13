@@ -9,7 +9,7 @@ pkgbase = passmate-server
 	makedepends = git
 	makedepends = sed
 	makedepends = python-flit
-	makedepends = pip
+	makedepends = python-pip
 	depends = python>=3.7
 	depends = python-scrypt>=0.8.6
 	depends = python-prompt_toolkit>=3.0.9
