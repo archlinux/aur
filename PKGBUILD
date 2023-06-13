@@ -1,6 +1,6 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 epoch=
 pkgdesc="smooll Color Picker for X11"
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://www.github.com/reallySmooll/scolorpicker"
 license=('MIT')
 groups=()
-depends=('libx11' 'glibc')
+depends=('libx11' 'glibc' 'xclip')
 makedepends=()
 checkdepends=()
 optdepends=()
