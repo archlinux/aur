@@ -47,10 +47,19 @@ post_install() {
         echo "$SWAP_PARTUUID" | sudo tee /etc/default/auto_swap
     fi
 
-    
+
+    # 机型特殊处理
+    # G1619-04 （WinMAX2） 机型不需要蓝牙自动挂起 会导致连接xbox手柄异常
     if [[ "${DEVICENAME}" != "G1619-04" ]]; then
         echo "" | tee /etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules
     fi
+
+    # OXP2 自启动相关服务
+    if [[ "${DEVICENAME}" == "ONEXPLAYER 2 ARP23" ]]; then
+        sudo systemctl enable --now oxp2-lsusb.service
+        sudo systemctl enable --now oxp2-volume-button-fix.service
+    fi
+
     
 }
 

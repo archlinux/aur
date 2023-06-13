@@ -1,8 +1,8 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r31.3547666
+pkgver=r32.77315e0
 pkgrel=1
-pkgdesc="A custom configs for sk-holoiso"
+pkgdesc="A custom configs tool for sk-holoiso"
 arch=('any')
 url="https://github.com/honjow/sk-holoiso-config"
 license=('MIT')
@@ -22,26 +22,28 @@ pkgver() {
 }
 
 package() {
-    install -dm755 "${pkgdir}/opt/${pkgname}"
+    install -dm755 "${pkgdir}/usr/share/${pkgname}"
     install -Dm755 "${srcdir}/sk-holoiso-config/src/sk-holoiso-config.py" "${pkgdir}/opt/${pkgname}/sk-holoiso-config.py"
 
-    source_services=("sk-auto-swap.service" "sk-efi-mount.service" "sk-root-resume.service")
+    # oxp2 fix 
+    install -dm755 "${pkgdir}/usr/share/${pkgname}/oxp2Fix"
+    install -m644 -t "${pkgdir}/usr/share/${pkgname}/oxp2Fix" "${srcdir}/sk-holoiso-config/src/oxp2Fix"/* 
 
-    cd "${srcdir}/sk-holoiso-config/src"
-    for service_file in "${source_services[@]}"; do
-        install -Dm644 "etc/systemd/system/$service_file" "$pkgdir/etc/systemd/system/$service_file"
-    done
+    # 服务
+    install -dm755 "${pkgdir}/etc/systemd/system/"
+    install -m644 -t "${pkgdir}/etc/systemd/system/" "${srcdir}/sk-holoiso-config/src/etc/systemd/system"/*
 
-    exclude_files=("sk-auto-swap" "sk-efi-mount" "sk-resume")
-    for exclude_file in "${exclude_files[@]}"; do
-        install -Dm755 "usr/bin/$exclude_file" "$pkgdir/usr/bin/$exclude_file"
-    done
+    # 脚本
+    install -dm755 "${pkgdir}/usr/bin/"
+    install -m755 -t "${pkgdir}/usr/bin/" "${srcdir}/sk-holoiso-config/src/usr/bin"/*
 
-    ln -s "/opt/${pkgname}/sk-holoiso-config.py" "${pkgdir}/usr/bin/sk-holoiso-config"
+    ln -s "/usr/share/${pkgname}/sk-holoiso-config.py" "${pkgdir}/usr/bin/sk-holoiso-config"
 
-    install -Dm644 "etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules" "$pkgdir/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules"
-    install -Dm644 "etc/default/grub" "$pkgdir/etc/default/grub"
-    install -Dm644 "etc/fonts/conf.d/99-noto-cjk.conf" "$pkgdir/etc/fonts/conf.d/99-noto-cjk.conf"
+    install -Dm644 "etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules" "${pkgdir}/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules"
+    
+    install -Dm644 "etc/default/grub" "${pkgdir}/etc/default/grub"
+    install -Dm644 "etc/fonts/conf.d/99-noto-cjk.conf" "${pkgdir}/etc/fonts/conf.d/99-noto-cjk.conf"
 
+    # 图标
     install -Dm644 "sk-config.desktop" "${pkgdir}/usr/share/applications/sk-config.desktop"
 }
