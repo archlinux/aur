@@ -1,6 +1,6 @@
 diff -ur siag-3.6.1/egon/fileio_html.c siag-3.6.1-b/egon/fileio_html.c
 --- siag-3.6.1/egon/fileio_html.c	2003-01-16 00:56:43.000000000 +0100
-+++ siag-3.6.1-b/egon/fileio_html.c	2023-06-05 12:22:51.497631403 +0200
++++ siag-3.6.1-b/egon/fileio_html.c	2023-06-05 13:15:47.760895619 +0200
 @@ -39,7 +39,7 @@
  	if (!line) return;
  	while ((c = *line)) {
@@ -10,9 +10,132 @@ diff -ur siag-3.6.1/egon/fileio_html.c siag-3.6.1-b/egon/fileio_html.c
  		line++;
  	}
  }
+diff -ur siag-3.6.1/gvu/callbacks.c siag-3.6.1-b/gvu/callbacks.c
+--- siag-3.6.1/gvu/callbacks.c	2003-01-16 00:57:33.000000000 +0100
++++ siag-3.6.1-b/gvu/callbacks.c	2023-06-05 13:15:47.823893755 +0200
+@@ -32,11 +32,11 @@
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Shell.h>
+-#include <X11/Xaw/Cardinals.h>
+-#include <X11/Xaw/AsciiText.h>
+-#include <X11/Xaw/Scrollbar.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/Command.h>
++#include <X11/XawM/Cardinals.h>
++#include <X11/XawM/AsciiText.h>
++#include <X11/XawM/Scrollbar.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/Command.h>
+ 
+ #include "../common/common.h"
+ #include <Mowitz/MwUtils.h>
+diff -ur siag-3.6.1/gvu/main.c siag-3.6.1-b/gvu/main.c
+--- siag-3.6.1/gvu/main.c	2003-01-16 00:57:34.000000000 +0100
++++ siag-3.6.1-b/gvu/main.c	2023-06-05 13:15:47.824893725 +0200
+@@ -32,13 +32,13 @@
+ #include <X11/StringDefs.h>
+ #include <X11/Shell.h>
+ 
+-#include <X11/Xaw/Cardinals.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/Viewport.h>
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/AsciiText.h>
+-#include <X11/Xaw/Command.h>
++#include <X11/XawM/Cardinals.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/Viewport.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/AsciiText.h>
++#include <X11/XawM/Command.h>
+ #include <X11/xpm.h>
+ 
+ #include "blank.xpm"
+diff -ur siag-3.6.1/gvu/misc.c siag-3.6.1-b/gvu/misc.c
+--- siag-3.6.1/gvu/misc.c	2003-01-16 00:57:35.000000000 +0100
++++ siag-3.6.1-b/gvu/misc.c	2023-06-05 13:15:47.822893784 +0200
+@@ -44,16 +44,16 @@
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Shell.h>
+-#include <X11/Xaw/Cardinals.h>
+-#include <X11/Xaw/Form.h>
++#include <X11/XawM/Cardinals.h>
++#include <X11/XawM/Form.h>
+ 
+ #include <Mowitz/Mowitz.h>
+ 
+-#include <X11/Xaw/Scrollbar.h>
+-#include <X11/Xaw/AsciiText.h>
++#include <X11/XawM/Scrollbar.h>
++#include <X11/XawM/AsciiText.h>
+ /* Yuck, cannot get vScrollbar via the usual methods */
+ #include <X11/IntrinsicP.h>
+-#include <X11/Xaw/TextP.h>
++#include <X11/XawM/TextP.h>
+ #include <X11/Xmu/StdCmap.h>
+ 
+ #include <errno.h>
+diff -ur siag-3.6.1/plugins/clipart.c siag-3.6.1-b/plugins/clipart.c
+--- siag-3.6.1/plugins/clipart.c	2003-01-16 00:56:58.000000000 +0100
++++ siag-3.6.1-b/plugins/clipart.c	2023-06-05 13:15:47.747896003 +0200
+@@ -53,7 +53,7 @@
+ #include <X11/StringDefs.h>
+ #include <X11/Shell.h>
+ #include <X11/Xatom.h>
+-#include <X11/Xaw/Cardinals.h>
++#include <X11/XawM/Cardinals.h>
+ 
+ #include "../common/ps.h"
+ #include "../common/common.h"
+diff -ur siag-3.6.1/plugins/form.c siag-3.6.1-b/plugins/form.c
+--- siag-3.6.1/plugins/form.c	2003-03-10 00:20:41.000000000 +0100
++++ siag-3.6.1-b/plugins/form.c	2023-06-05 13:15:47.747896003 +0200
+@@ -24,10 +24,10 @@
+ #include <string.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Intrinsic.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/List.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/List.h>
+ #include <Mowitz/Mowitz.h>
+ 
+ String fallback_resources[] = {
+diff -ur siag-3.6.1/plugins/hello.c siag-3.6.1-b/plugins/hello.c
+--- siag-3.6.1/plugins/hello.c	2003-03-10 00:20:41.000000000 +0100
++++ siag-3.6.1-b/plugins/hello.c	2023-06-05 13:15:47.746896033 +0200
+@@ -24,7 +24,7 @@
+ #include <X11/StringDefs.h>
+ #include <X11/Intrinsic.h>
+ #include <X11/Shell.h>
+-#include <X11/Xaw/Command.h>
++#include <X11/XawM/Command.h>
+ #include <Mowitz/Mowitz.h>
+ 
+ static Widget topLevel;
+diff -ur siag-3.6.1/plugins/text.c siag-3.6.1-b/plugins/text.c
+--- siag-3.6.1/plugins/text.c	2003-03-10 00:20:41.000000000 +0100
++++ siag-3.6.1-b/plugins/text.c	2023-06-05 13:15:47.746896033 +0200
+@@ -24,7 +24,7 @@
+ #include <X11/StringDefs.h>
+ #include <X11/Intrinsic.h>
+ #include <X11/Shell.h>
+-#include <X11/Xaw/Command.h>
++#include <X11/XawM/Command.h>
+ #include "../common/common.h"
+ #include <Mowitz/Mowitz.h>
+ 
 diff -ur siag-3.6.1/pw/fileio_html.c siag-3.6.1-b/pw/fileio_html.c
 --- siag-3.6.1/pw/fileio_html.c	2003-01-16 00:56:29.000000000 +0100
-+++ siag-3.6.1-b/pw/fileio_html.c	2023-06-05 12:18:21.641651536 +0200
++++ siag-3.6.1-b/pw/fileio_html.c	2023-06-05 13:15:47.754895796 +0200
 @@ -39,7 +39,7 @@
  	if (!line) return;
  	while ((c = line->c)) {
@@ -24,7 +147,7 @@ diff -ur siag-3.6.1/pw/fileio_html.c siag-3.6.1-b/pw/fileio_html.c
  }
 diff -ur siag-3.6.1/tsiag/window.c siag-3.6.1-b/tsiag/window.c
 --- siag-3.6.1/tsiag/window.c	2003-01-16 00:56:24.000000000 +0100
-+++ siag-3.6.1-b/tsiag/window.c	2023-06-05 12:18:09.842002737 +0200
++++ siag-3.6.1-b/tsiag/window.c	2023-06-05 13:15:47.833893459 +0200
 @@ -98,7 +98,7 @@
  
  int columns;    /* number of cells per line */
@@ -129,3 +252,369 @@ diff -ur siag-3.6.1/tsiag/window.c siag-3.6.1-b/tsiag/window.c
  
  	wrefresh(stdscr);
  } /* show_cur */
+diff -ur siag-3.6.1/xcommon/forminput.c siag-3.6.1-b/xcommon/forminput.c
+--- siag-3.6.1/xcommon/forminput.c	2003-01-16 00:55:42.000000000 +0100
++++ siag-3.6.1-b/xcommon/forminput.c	2023-06-05 13:15:47.768895382 +0200
+@@ -28,11 +28,11 @@
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Shell.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Dialog.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Dialog.h>
+ #include <Mowitz/Mowitz.h>
+ 
+ #include "../siod/siod.h"
+diff -ur siag-3.6.1/xcommon/xcommon.c siag-3.6.1-b/xcommon/xcommon.c
+--- siag-3.6.1/xcommon/xcommon.c	2003-01-16 00:55:42.000000000 +0100
++++ siag-3.6.1-b/xcommon/xcommon.c	2023-06-05 13:15:47.767895411 +0200
+@@ -26,8 +26,8 @@
+ 
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Toggle.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Toggle.h>
+ #include <X11/xpm.h>
+ #include <Mowitz/Mowitz.h>
+ #include "../common/common.h"
+diff -ur siag-3.6.1/xed/file_sel.c siag-3.6.1-b/xed/file_sel.c
+--- siag-3.6.1/xed/file_sel.c	2003-01-16 00:57:03.000000000 +0100
++++ siag-3.6.1-b/xed/file_sel.c	2023-06-05 13:15:47.837893341 +0200
+@@ -74,15 +74,15 @@
+ #include <X11/IntrinsicP.h>
+ #include <X11/Shell.h>
+ #include <X11/ShellP.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Viewport.h>
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/List.h>
+-#include <X11/Xaw/DialogP.h>
+-#include <X11/Xaw/AsciiText.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/Text.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Viewport.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/List.h>
++#include <X11/XawM/DialogP.h>
++#include <X11/XawM/AsciiText.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/Text.h>
+ #include <X11/StringDefs.h>
+ 
+ #include <Mowitz/Mowitz.h>
+diff -ur siag-3.6.1/xed/xedit.h siag-3.6.1-b/xed/xedit.h
+--- siag-3.6.1/xed/xedit.h	2003-02-28 07:02:09.000000000 +0100
++++ siag-3.6.1-b/xed/xedit.h	2023-06-05 13:15:47.837893341 +0200
+@@ -76,17 +76,17 @@
+ #include <X11/cursorfont.h>
+ #include <X11/Xatom.h>
+ 
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/AsciiText.h>
+-#include <X11/Xaw/Paned.h>
+-#include <X11/Xaw/Viewport.h>
+-#include <X11/Xaw/Cardinals.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/AsciiText.h>
++#include <X11/XawM/Paned.h>
++#include <X11/XawM/Viewport.h>
++#include <X11/XawM/Cardinals.h>
+ 
+ #include <Mowitz/Mowitz.h>
+ 
+-#include <X11/Xaw/Toggle.h>
++#include <X11/XawM/Toggle.h>
+ 
+ #ifndef L_tmpnam
+ #define L_tmpnam	1024
+diff -ur siag-3.6.1/xegon/window.c siag-3.6.1-b/xegon/window.c
+--- siag-3.6.1/xegon/window.c	2006-11-10 10:05:46.000000000 +0100
++++ siag-3.6.1-b/xegon/window.c	2023-06-05 13:15:47.801894406 +0200
+@@ -39,14 +39,14 @@
+ #include <X11/Shell.h>
+ #include <X11/Xmu/Atoms.h>
+ #include <X11/Xmu/StdSel.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Scrollbar.h>
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Toggle.h>
+-#include <X11/Xaw/Viewport.h>
+-#include <X11/Xaw/Repeater.h>
+-#include <X11/Xaw/List.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Scrollbar.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Toggle.h>
++#include <X11/XawM/Viewport.h>
++#include <X11/XawM/Repeater.h>
++#include <X11/XawM/List.h>
+ #include <X11/xpm.h>
+ #include <X11/Xlib.h>
+ #include <X11/Xutil.h>
+@@ -56,7 +56,7 @@
+ #include <X11/Xatom.h>
+ #include <X11/Shell.h>
+ 
+-#include <X11/Xaw/Paned.h>
++#include <X11/XawM/Paned.h>
+ #include <X11/xpm.h>
+ 
+ #include <Mowitz/Mowitz.h>
+diff -ur siag-3.6.1/xfiler/Chmod.c siag-3.6.1-b/xfiler/Chmod.c
+--- siag-3.6.1/xfiler/Chmod.c	2003-01-16 00:57:06.000000000 +0100
++++ siag-3.6.1-b/xfiler/Chmod.c	2023-06-05 13:15:47.832893489 +0200
+@@ -12,10 +12,10 @@
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Shell.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Box.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Box.h>
+ 
+ #include "Files.h"
+ 
+diff -ur siag-3.6.1/xfiler/Confirm.c siag-3.6.1-b/xfiler/Confirm.c
+--- siag-3.6.1/xfiler/Confirm.c	2003-01-16 00:57:06.000000000 +0100
++++ siag-3.6.1-b/xfiler/Confirm.c	2023-06-05 13:15:47.828893607 +0200
+@@ -9,9 +9,9 @@
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Shell.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Box.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Box.h>
+ 
+ #include "../xcommon/xcommon.h"
+ 
+diff -ur siag-3.6.1/xfiler/Errors.c siag-3.6.1-b/xfiler/Errors.c
+--- siag-3.6.1/xfiler/Errors.c	2003-01-16 00:57:07.000000000 +0100
++++ siag-3.6.1-b/xfiler/Errors.c	2023-06-05 13:15:47.828893607 +0200
+@@ -12,9 +12,9 @@
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Shell.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Box.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Box.h>
+ 
+ #include "../xcommon/xcommon.h"
+ #include "Files.h"
+diff -ur siag-3.6.1/xfiler/FwActions.c siag-3.6.1-b/xfiler/FwActions.c
+--- siag-3.6.1/xfiler/FwActions.c	2003-01-16 00:57:09.000000000 +0100
++++ siag-3.6.1-b/xfiler/FwActions.c	2023-06-05 13:15:47.832893489 +0200
+@@ -13,7 +13,7 @@
+ 
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+-#include <X11/Xaw/Toggle.h>
++#include <X11/XawM/Toggle.h>
+ 
+ #include "Files.h"
+ 
+diff -ur siag-3.6.1/xfiler/Fw.c siag-3.6.1-b/xfiler/Fw.c
+--- siag-3.6.1/xfiler/Fw.c	2003-01-16 00:57:08.000000000 +0100
++++ siag-3.6.1-b/xfiler/Fw.c	2023-06-05 13:15:47.828893607 +0200
+@@ -27,11 +27,11 @@
+ #include <X11/Intrinsic.h>
+ #include <X11/Shell.h>
+ #include <X11/StringDefs.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Viewport.h>
+-#include <X11/Xaw/Toggle.h>
+-#include <X11/Xaw/Label.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Viewport.h>
++#include <X11/XawM/Toggle.h>
++#include <X11/XawM/Label.h>
+ #include <Mowitz/Mowitz.h>
+ 
+ #include <X11/xpm.h>
+diff -ur siag-3.6.1/xfiler/FwCb.c siag-3.6.1-b/xfiler/FwCb.c
+--- siag-3.6.1/xfiler/FwCb.c	2003-01-16 00:57:09.000000000 +0100
++++ siag-3.6.1-b/xfiler/FwCb.c	2023-06-05 13:15:47.830893548 +0200
+@@ -11,7 +11,7 @@
+ 
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+-#include <X11/Xaw/Toggle.h>
++#include <X11/XawM/Toggle.h>
+ 
+ #include <string.h>
+ #include <stdio.h>
+diff -ur siag-3.6.1/xfiler/Info.c siag-3.6.1-b/xfiler/Info.c
+--- siag-3.6.1/xfiler/Info.c	2003-01-16 00:57:09.000000000 +0100
++++ siag-3.6.1-b/xfiler/Info.c	2023-06-05 13:15:47.829893578 +0200
+@@ -16,9 +16,9 @@
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Shell.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Form.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Form.h>
+ 
+ #include "Files.h"
+ #include "../common/common.h"
+diff -ur siag-3.6.1/xfiler/Main.c siag-3.6.1-b/xfiler/Main.c
+--- siag-3.6.1/xfiler/Main.c	2003-03-10 00:20:42.000000000 +0100
++++ siag-3.6.1-b/xfiler/Main.c	2023-06-05 13:15:47.831893518 +0200
+@@ -27,7 +27,7 @@
+ 
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+-#include <X11/Xaw/Cardinals.h>
++#include <X11/XawM/Cardinals.h>
+ #include <X11/Shell.h>
+ 
+ #ifdef XPM
+diff -ur siag-3.6.1/xfiler/Popup.c siag-3.6.1-b/xfiler/Popup.c
+--- siag-3.6.1/xfiler/Popup.c	2003-01-16 00:57:10.000000000 +0100
++++ siag-3.6.1-b/xfiler/Popup.c	2023-06-05 13:15:47.830893548 +0200
+@@ -20,7 +20,7 @@
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Shell.h>
+-#include <X11/Xaw/Toggle.h>
++#include <X11/XawM/Toggle.h>
+ 
+ #include "Files.h"
+ 
+diff -ur siag-3.6.1/xfiler/runcmd.c siag-3.6.1-b/xfiler/runcmd.c
+--- siag-3.6.1/xfiler/runcmd.c	2003-03-10 00:20:42.000000000 +0100
++++ siag-3.6.1-b/xfiler/runcmd.c	2023-06-05 13:15:47.832893489 +0200
+@@ -21,9 +21,9 @@
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+ #include <X11/Shell.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/AsciiText.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/AsciiText.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <unistd.h>
+diff -ur siag-3.6.1/xfiler/Utils.c siag-3.6.1-b/xfiler/Utils.c
+--- siag-3.6.1/xfiler/Utils.c	2003-01-16 00:57:11.000000000 +0100
++++ siag-3.6.1-b/xfiler/Utils.c	2023-06-05 13:15:47.828893607 +0200
+@@ -18,10 +18,10 @@
+ 
+ #include <Mowitz/Mowitz.h>
+ 
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Box.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Box.h>
+ 
+ #include "Files.h"
+ #include "../common/common.h"
+diff -ur siag-3.6.1/xpw/window.c siag-3.6.1-b/xpw/window.c
+--- siag-3.6.1/xpw/window.c	2003-09-16 08:37:45.000000000 +0200
++++ siag-3.6.1-b/xpw/window.c	2023-06-05 13:15:47.743896121 +0200
+@@ -40,13 +40,13 @@
+ #include <X11/Shell.h>
+ #include <X11/Xmu/Atoms.h>
+ #include <X11/Xmu/StdSel.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Scrollbar.h>
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Repeater.h>
+-#include <X11/Xaw/Toggle.h>
+-#include <X11/Xaw/Paned.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Scrollbar.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Repeater.h>
++#include <X11/XawM/Toggle.h>
++#include <X11/XawM/Paned.h>
+ #include <X11/xpm.h>
+ 
+ #include <Mowitz/Mowitz.h>
+diff -ur siag-3.6.1/xpw/xpw.c siag-3.6.1-b/xpw/xpw.c
+--- siag-3.6.1/xpw/xpw.c	2003-01-16 00:56:39.000000000 +0100
++++ siag-3.6.1-b/xpw/xpw.c	2023-06-05 13:15:47.742896151 +0200
+@@ -26,11 +26,11 @@
+ #include <X11/Xatom.h>
+ #include <X11/Shell.h>
+ #include <X11/StringDefs.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/AsciiText.h>
+-#include <X11/Xaw/Scrollbar.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/AsciiText.h>
++#include <X11/XawM/Scrollbar.h>
+ #include <Mowitz/Mowitz.h>
+ #include "../siod/siod.h"
+ #include "../pw/pw.h"
+diff -ur siag-3.6.1/xsiag/window.c siag-3.6.1-b/xsiag/window.c
+--- siag-3.6.1/xsiag/window.c	2003-09-16 08:33:57.000000000 +0200
++++ siag-3.6.1-b/xsiag/window.c	2023-06-05 13:15:47.821893814 +0200
+@@ -75,15 +75,15 @@
+ #include <X11/Shell.h>		/* for XtNtitle */
+ #include <X11/Xmu/Atoms.h>
+ #include <X11/Xmu/StdSel.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Scrollbar.h>
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Toggle.h>
+-#include <X11/Xaw/Paned.h>
+-#include <X11/Xaw/Repeater.h>
+-#include <X11/Xaw/Viewport.h>
+-#include <X11/Xaw/List.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Scrollbar.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Toggle.h>
++#include <X11/XawM/Paned.h>
++#include <X11/XawM/Repeater.h>
++#include <X11/XawM/Viewport.h>
++#include <X11/XawM/List.h>
+ #include <X11/xpm.h>
+ 
+ #include <Mowitz/Mowitz.h>

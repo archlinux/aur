@@ -2,17 +2,17 @@
 
 pkgname='siag'
 pkgver=3.6.1
-pkgrel=1
+pkgrel=3
 pkgdesc='A tightly integrated, free office package'
 arch=('x86_64')
 url='https://siag.nu'
 license=('GPL2')
-depends=('xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'gmp' 'tcl' 'libxpm' 'nextaw' 'mowitz')
+depends=('xorg-fonts-75dpi' 'xorg-fonts-100dpi' 'gmp' 'tcl' 'libxpm' 'xawm' 'nextaw' 'mowitz')
 
 source=("$pkgname-$pkgver.tar.gz::https://siag.nu/pub/siag/siag-3.6.1.tar.gz"
         'siag.patch')
 sha256sums=('712633adac591bc48466b12b9012ff51066233b36d0589bc44ed54ba62bcdd5a'
-            'b69c894240c4fc12a3edd2eda5a1a69c18ddb61e50a30379e27fcc71fca67b84')
+            'a15393853ad6305d66b222306439c950fbcc2b91e26f6e93d372b85834839648')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure
+	./configure --prefix=/usr --with-docdir=/usr/share/doc/siag
 	make 
 }
 
