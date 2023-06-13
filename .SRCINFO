@@ -5,7 +5,7 @@ pkgbase = php-cs-fixer
 	url = https://github.com/PHP-CS-Fixer/PHP-CS-Fixer
 	arch = any
 	license = MIT
-	makedepends = php-humbug-box-bin
+	makedepends = php-box
 	makedepends = composer
 	makedepends = git
 	depends = php>=7.1.3

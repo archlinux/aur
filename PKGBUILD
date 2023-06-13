@@ -10,14 +10,18 @@ url="https://github.com/PHP-CS-Fixer/PHP-CS-Fixer"
 license=("MIT")
 arch=("any")
 depends=("php>=7.1.3")
-makedepends=("php-humbug-box-bin" "composer" "git")
-source=("${_pkgname}"::"git+https://github.com/PHP-CS-Fixer/PHP-CS-Fixer#tag=v${pkgver}")
+makedepends=("php-box" "composer" "git")
+source=("${_pkgname}::git+https://github.com/PHP-CS-Fixer/PHP-CS-Fixer#tag=v${pkgver}")
 md5sums=('SKIP')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  composer install --no-interaction
+}
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  php /usr/bin/composer install --prefer-dist --no-dev
-  php -d phar.readonly=Off /usr/bin/box compile
+  box compile
 }
 
 package() {
