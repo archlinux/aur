@@ -5,12 +5,12 @@ pkgname="stm32cubeide"
 pkgver=1.12.1
 _pkgver_ext=1.12.1_16088_20230420_1057
 _pkg_file_name=en.st-stm32cubeide_1.12.1_16088_20230420_1057_amd64.sh.zip
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
-depends=('glibc' 'libusb' 'arm-none-eabi-gdb')
-optdepends=('jlink-software-and-documentation' 'stlink' 'webkit2gtk')
+depends=('glibc' 'libusb')
+optdepends=('jlink-software-and-documentation' 'stlink' 'arm-none-eabi-gdb' 'webkit2gtk')
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('Commercial')
@@ -111,11 +111,14 @@ Type=Application
 Categories=Development;IDE;Java;
 END
 
-	msg2 'Replace GDB by system'
-	rm "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin/arm-none-eabi-gdb
-	rm "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin/arm-none-eabi-gdb-add-index
-	ln -s /usr/bin/arm-none-eabi-gdb "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin
-	ln -s /usr/bin/arm-none-eabi-gdb-add-index "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin
+	#msg2 'Replace GDB by system'
+	#rm "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin/arm-none-eabi-gdb
+	#rm "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin/arm-none-eabi-gdb-add-index
+	#ln -s /usr/bin/arm-none-eabi-gdb "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin
+	#ln -s /usr/bin/arm-none-eabi-gdb-add-index "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin
+	
+	msg2 'Create symlink from original directory name'
+	ln -s "${pkgdir}/opt/stm32cubeide" "${pkgdir}/opt/stm32cubeide_${pkgver}"
 	
 	msg2 'Installation of license file'
 	install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
