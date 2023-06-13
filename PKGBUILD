@@ -1,13 +1,13 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 _pkgname='rage'
 pkgname="rust-$_pkgname-git"
-pkgver='0.9.0.r3.g3ff541a'
+pkgver='0.9.2.r0.g267f383'
 pkgrel='1'
 pkgdesc='Rust implementation of the age encryption tool - git version'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://github.com/str4d/$_pkgname"
 license=('Apache' 'MIT')
-depends=('fuse2' 'pcsclite')
+depends=('bzip2' 'fuse3')
 makedepends=('cargo' 'git')
 provides=("rust-$_pkgname")
 conflicts=("rust-$_pkgname")
