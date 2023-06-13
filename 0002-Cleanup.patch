@@ -1,4 +1,4 @@
-From a9497ee455674bd17baefb3a6a3f4bf9c789ac76 Mon Sep 17 00:00:00 2001
+From f6f24ab3a9f5b46ae87c7a9677c8a63cc940fc91 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
@@ -10,13 +10,13 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  .../java/org/jackhuang/hmcl/Metadata.java     |   1 -
  .../jackhuang/hmcl/setting/ConfigHolder.java  |   1 -
  .../hmcl/setting/ConfigUpgrader.java          | 112 --------
- .../org/jackhuang/hmcl/ui/Controllers.java    |   4 -
+ .../org/jackhuang/hmcl/ui/Controllers.java    |   9 -
  .../org/jackhuang/hmcl/ui/CrashWindow.java    |   6 +-
  .../org/jackhuang/hmcl/ui/UpgradeDialog.java  |  77 ------
  .../hmcl/ui/account/CreateAccountPane.java    |  16 --
  .../jackhuang/hmcl/ui/main/FeedbackPage.java  |  80 ------
  .../hmcl/ui/main/LauncherSettingsPage.java    |  22 +-
- .../org/jackhuang/hmcl/ui/main/MainPage.java  | 121 +--------
+ .../org/jackhuang/hmcl/ui/main/MainPage.java  | 135 +--------
  .../org/jackhuang/hmcl/ui/main/RootPage.java  |  17 --
  .../jackhuang/hmcl/ui/main/SettingsPage.java  |  60 ----
  .../jackhuang/hmcl/ui/main/SettingsView.java  |  58 ----
@@ -29,7 +29,7 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  .../jackhuang/hmcl/upgrade/UpdateChecker.java | 125 ---------
  .../jackhuang/hmcl/upgrade/UpdateHandler.java | 257 ------------------
  .../jackhuang/hmcl/util/CrashReporter.java    |   5 -
- 23 files changed, 3 insertions(+), 1619 deletions(-)
+ 23 files changed, 3 insertions(+), 1638 deletions(-)
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
@@ -43,7 +43,7 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-index 00ed301e..96f5da68 100644
+index 292393f4b..d050f6694 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 @@ -29,8 +29,6 @@ import org.jackhuang.hmcl.setting.SambaException;
@@ -76,7 +76,7 @@ index 00ed301e..96f5da68 100644
          AsyncTaskExecutor.setUncaughtExceptionHandler(new CrashReporter(false));
  
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java b/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
-index 3c006446..f4bcb72f 100644
+index 3c0064463..f4bcb72f2 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Metadata.java
 @@ -37,7 +37,6 @@ public final class Metadata {
@@ -88,7 +88,7 @@ index 3c006446..f4bcb72f 100644
      public static final String HELP_URL = "https://hmcl.huangyuhui.net/help";
      public static final String CHANGELOG_URL = "https://docs.hmcl.net/changelog/";
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigHolder.java b/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigHolder.java
-index e94bd2be..ae3ae9d0 100644
+index e94bd2bec..ae3ae9d08 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigHolder.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigHolder.java
 @@ -168,7 +168,6 @@ public final class ConfigHolder {
@@ -101,7 +101,7 @@ index e94bd2be..ae3ae9d0 100644
              } catch (JsonParseException e) {
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java b/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java
 deleted file mode 100644
-index 9e519b09..00000000
+index 9e519b092..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/setting/ConfigUpgrader.java
 +++ /dev/null
 @@ -1,112 +0,0 @@
@@ -218,22 +218,27 @@ index 9e519b09..00000000
 -    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-index 467a9fb2..cd5f899e 100644
+index d4c4f9d24..cd5f899ec 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/Controllers.java
-@@ -323,10 +323,6 @@ public final class Controllers {
+@@ -323,15 +323,6 @@ public final class Controllers {
  
      public static void onHyperlinkAction(String href) {
          if (href.startsWith("hmcl://")) {
--            if ("hmcl://settings/feedback".equals(href)) {
--                Controllers.getSettingsPage().showFeedback();
--                Controllers.navigate(Controllers.getSettingsPage());
+-            switch (href) {
+-                case "hmcl://settings/feedback":
+-                    Controllers.getSettingsPage().showFeedback();
+-                    Controllers.navigate(Controllers.getSettingsPage());
+-                    break;
+-                case "hmcl://hide-announcement":
+-                    Controllers.getRootPage().getMainPage().hideAnnouncementPane();
+-                    break;
 -            }
          } else {
              FXUtils.openLink(href);
          }
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
-index 46ce19ab..daafd6f6 100644
+index 46ce19abc..daafd6f69 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/CrashWindow.java
 @@ -27,7 +27,6 @@ import javafx.scene.layout.HBox;
@@ -258,7 +263,7 @@ index 46ce19ab..daafd6f6 100644
          TextArea textArea = new TextArea();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
 deleted file mode 100644
-index b43133a1..00000000
+index b43133a1c..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/UpgradeDialog.java
 +++ /dev/null
 @@ -1,77 +0,0 @@
@@ -340,7 +345,7 @@ index b43133a1..00000000
 -    }
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
-index 44cc2307..7e095069 100644
+index 44cc2307b..7e0950690 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/account/CreateAccountPane.java
 @@ -58,7 +58,6 @@ import org.jackhuang.hmcl.ui.FXUtils;
@@ -382,7 +387,7 @@ index 44cc2307..7e095069 100644
  
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 deleted file mode 100644
-index 58972ed3..00000000
+index 58972ed3f..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/FeedbackPage.java
 +++ /dev/null
 @@ -1,80 +0,0 @@
@@ -467,7 +472,7 @@ index 58972ed3..00000000
 -
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
-index d6c11595..d7586282 100644
+index d6c11595c..d75862829 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/LauncherSettingsPage.java
 @@ -44,8 +44,6 @@ public class LauncherSettingsPage extends DecoratorAnimatedPage implements Decor
@@ -522,10 +527,10 @@ index d6c11595..d7586282 100644
      public ReadOnlyObjectProperty<State> stateProperty() {
          return state.getReadOnlyProperty();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-index dc15b1d1..7cc36a80 100644
+index 461d05c15..33fddb4db 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-@@ -53,9 +53,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
+@@ -54,9 +54,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
  import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
  import org.jackhuang.hmcl.ui.versions.GameItem;
  import org.jackhuang.hmcl.ui.versions.Versions;
@@ -535,7 +540,7 @@ index dc15b1d1..7cc36a80 100644
  import org.jackhuang.hmcl.util.javafx.BindingMapping;
  import org.jackhuang.hmcl.util.javafx.MappedObservableList;
  import org.jackhuang.hmcl.util.platform.JavaVersion;
-@@ -77,14 +74,11 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -78,14 +75,10 @@ public final class MainPage extends StackPane implements DecoratorPage {
      private final JFXPopup popup = new JFXPopup(menu);
  
      private final StringProperty currentGame = new SimpleStringProperty(this, "currentGame");
@@ -545,15 +550,25 @@ index dc15b1d1..7cc36a80 100644
      private final ObservableList<Node> versionNodes;
      private Profile profile;
  
-     private final VBox announcementPane;
+-    private VBox announcementPane;
 -    private final StackPane updatePane;
      private final JFXButton menuButton;
  
      {
-@@ -114,44 +108,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -113,54 +106,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
  
-         announcementPane = new VBox(16);
+         setPadding(new Insets(20));
  
+-        if (Metadata.isNightly() || (Metadata.isDev() && !Objects.equals(Metadata.VERSION, config().getHideAnnouncementVersion()))) {
+-            announcementPane = new VBox(16);
+-            if (Metadata.isNightly()) {
+-                announcementPane.getChildren().add(new AnnouncementCard(i18n("update.channel.nightly.title"), i18n("update.channel.nightly.hint")));
+-            } else if (Metadata.isDev()) {
+-                announcementPane.getChildren().add(new AnnouncementCard(i18n("update.channel.dev.title"), i18n("update.channel.dev.hint")));
+-            }
+-            getChildren().add(announcementPane);
+-        }
+-
 -        updatePane = new StackPane();
 -        updatePane.setVisible(false);
 -        updatePane.getStyleClass().add("bubble");
@@ -595,26 +610,19 @@ index dc15b1d1..7cc36a80 100644
          StackPane launchPane = new StackPane();
          launchPane.getStyleClass().add("launch-pane");
          launchPane.setMaxWidth(230);
-@@ -221,7 +177,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -230,7 +175,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
              launchPane.getChildren().setAll(launchButton, separator, menuButton);
          }
  
--        getChildren().setAll(announcementPane, updatePane, launchPane);
-+        getChildren().setAll(announcementPane, launchPane);
+-        getChildren().addAll(updatePane, launchPane);
++        getChildren().setAll(launchPane);
  
          menu.setMaxHeight(365);
          menu.setMaxWidth(545);
-@@ -235,44 +191,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -243,37 +188,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+         });
          Bindings.bindContent(menu.getContent(), versionNodes);
      }
- 
--    public MainPage() {
--        if (Metadata.isNightly()) {
--            announcementPane.getChildren().add(new AnnouncementCard(i18n("update.channel.nightly.title"), i18n("update.channel.nightly.hint")));
--        } else if (Metadata.isDev()) {
--            announcementPane.getChildren().add(new AnnouncementCard(i18n("update.channel.dev.title"), i18n("update.channel.dev.hint")));
--        }
--    }
 -
 -    private void showUpdate(boolean show) {
 -        doAnimation(show);
@@ -649,7 +657,7 @@ index dc15b1d1..7cc36a80 100644
      private void launch() {
          Versions.launch(Profiles.getSelectedProfile());
      }
-@@ -281,19 +199,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -282,29 +196,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          popup.show(menuButton, JFXPopup.PopupVPosition.BOTTOM, JFXPopup.PopupHPosition.RIGHT, 0, -menuButton.getHeight());
      }
  
@@ -666,10 +674,20 @@ index dc15b1d1..7cc36a80 100644
 -        showUpdate.set(false);
 -    }
 -
+-    public void hideAnnouncementPane() {
+-        if (announcementPane != null) {
+-            config().setHideAnnouncementVersion(Metadata.VERSION);
+-            Pane parent = (Pane) announcementPane.getParent();
+-            if (parent != null)
+-                parent.getChildren().remove(announcementPane);
+-            announcementPane = null;
+-        }
+-    }
+-
      @Override
      public ReadOnlyObjectWrapper<State> stateProperty() {
          return state;
-@@ -311,30 +216,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -322,30 +213,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          this.currentGame.set(currentGame);
      }
  
@@ -701,7 +719,7 @@ index dc15b1d1..7cc36a80 100644
          FXUtils.checkFxUserThread();
          this.profile = profile;
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
-index 0b3ab66d..b158bc33 100644
+index 65eb3fcf2..c92208fcd 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/RootPage.java
 @@ -41,7 +41,6 @@ import org.jackhuang.hmcl.ui.decorator.DecoratorPage;
@@ -750,7 +768,7 @@ index 0b3ab66d..b158bc33 100644
  
              // the root page, with the sidebar in left, navigator in center.
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
-index b5347094..622b21e6 100644
+index b53470944..622b21e6b 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsPage.java
 @@ -27,10 +27,6 @@ import org.jackhuang.hmcl.setting.Settings;
@@ -835,7 +853,7 @@ index b5347094..622b21e6 100644
      protected void clearCacheDirectory() {
          FileUtils.cleanDirectoryQuietly(new File(Settings.instance().getCommonDirectory(), "cache"));
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
-index af9a3477..44b6dfed 100644
+index af9a3477b..44b6dfed7 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SettingsView.java
 @@ -49,11 +49,6 @@ public abstract class SettingsView extends StackPane {
@@ -928,7 +946,7 @@ index af9a3477..44b6dfed 100644
  }
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java
 deleted file mode 100644
-index 07716990..00000000
+index 07716990b..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/SponsorPage.java
 +++ /dev/null
 @@ -1,174 +0,0 @@
@@ -1108,7 +1126,7 @@ index 07716990..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
 deleted file mode 100644
-index 7c47f586..00000000
+index 7c47f586d..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/ExecutableHeaderHelper.java
 +++ /dev/null
 @@ -1,124 +0,0 @@
@@ -1238,7 +1256,7 @@ index 7c47f586..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java
 deleted file mode 100644
-index 8b6fdc06..00000000
+index 8b6fdc06c..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/HMCLDownloadTask.java
 +++ /dev/null
 @@ -1,68 +0,0 @@
@@ -1312,7 +1330,7 @@ index 8b6fdc06..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
 deleted file mode 100644
-index 5faaaf8c..00000000
+index 5faaaf8c1..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/IntegrityChecker.java
 +++ /dev/null
 @@ -1,148 +0,0 @@
@@ -1466,7 +1484,7 @@ index 5faaaf8c..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java
 deleted file mode 100644
-index c3ac2caa..00000000
+index c3ac2caaf..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/RemoteVersion.java
 +++ /dev/null
 @@ -1,96 +0,0 @@
@@ -1568,7 +1586,7 @@ index c3ac2caa..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChannel.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChannel.java
 deleted file mode 100644
-index 998a3da7..00000000
+index 998a3da7d..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChannel.java
 +++ /dev/null
 @@ -1,42 +0,0 @@
@@ -1616,7 +1634,7 @@ index 998a3da7..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
 deleted file mode 100644
-index cc7ce8f2..00000000
+index cc7ce8f2e..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateChecker.java
 +++ /dev/null
 @@ -1,125 +0,0 @@
@@ -1747,7 +1765,7 @@ index cc7ce8f2..00000000
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java b/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 deleted file mode 100644
-index 4cd06ef8..00000000
+index 4cd06ef8c..000000000
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 +++ /dev/null
 @@ -1,257 +0,0 @@
@@ -2009,7 +2027,7 @@ index 4cd06ef8..00000000
 -    // ====
 -}
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java b/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
-index 5ec3d2e3..def97e1a 100644
+index 5ec3d2e31..def97e1aa 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/util/CrashReporter.java
 @@ -23,8 +23,6 @@ import javafx.scene.control.Alert.AlertType;
@@ -2032,5 +2050,5 @@ index 5ec3d2e3..def97e1a 100644
              });
          } catch (Throwable handlingException) {
 -- 
-2.40.0
+2.41.0
 
