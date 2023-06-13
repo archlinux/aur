@@ -2,7 +2,7 @@
 # https://github.com/brokenpip3/my-pkgbuilds
 
 pkgname=falcoctl
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Administrative tooling for Falco"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/falcosecurity/falcoctl"
 license=('APACHE')
 makedepends=('go' 'git' 'make')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bcb8c46e7e0e22e8958135daf35bc78380877eea4027bae9f459ad1d6c2cf1ad')
+sha256sums=('515a856b84493c06c40d93b86ab2a7dbb47d871e977b608e5fb911be0fc2f2f2')
 
 build() {
   cd "$pkgname-$pkgver"
