@@ -1,0 +1,79 @@
+diff --git a/staging/src/k8s.io/kubectl/pkg/cmd/diff/diff.go b/staging/src/k8s.io/kubectl/pkg/cmd/diff/diff.go
+index 72d16b716da..37bb247f5bd 100644
+--- a/staging/src/k8s.io/kubectl/pkg/cmd/diff/diff.go
++++ b/staging/src/k8s.io/kubectl/pkg/cmd/diff/diff.go
+@@ -17,6 +17,7 @@ limitations under the License.
+ package diff
+ 
+ import (
++	"encoding/base64"
+ 	"fmt"
+ 	"io"
+ 	"os"
+@@ -556,6 +557,29 @@ func NewDiffer(from, to string) (*Differ, error) {
+ 	return &differ, nil
+ }
+ 
++func fixSecret(src runtime.Object) runtime.Object {
++	u, ok := src.(*unstructured.Unstructured)
++	if !ok {
++		return src
++	}
++	data, found, err := unstructured.NestedMap(u.UnstructuredContent(), "data")
++	if err != nil || !found {
++		return src
++	}
++	for k, v := range data {
++		if s, ok := v.(string); ok {
++			decoded, _ := base64.StdEncoding.DecodeString(s)
++			data[k] = string(decoded)
++		}
++	}
++	if err := unstructured.SetNestedMap(u.UnstructuredContent(), data, "stringData"); err != nil {
++		return src
++	}
++
++	unstructured.SetNestedMap(u.UnstructuredContent(), nil, "data")
++	return u
++}
++
+ // Diff diffs to versions of a specific object, and print both versions to directories.
+ func (d *Differ) Diff(obj Object, printer Printer, showManagedFields bool) error {
+ 	from, err := d.From.getObject(obj)
+@@ -572,13 +596,9 @@ func (d *Differ) Diff(obj Object, printer Printer, showManagedFields bool) error
+ 		to = omitManagedFields(to)
+ 	}
+ 
+-	// Mask secret values if object is V1Secret
+ 	if gvk := to.GetObjectKind().GroupVersionKind(); gvk.Version == "v1" && gvk.Kind == "Secret" {
+-		m, err := NewMasker(from, to)
+-		if err != nil {
+-			return err
+-		}
+-		from, to = m.From(), m.To()
++		from = fixSecret(from)
++		to = fixSecret(to)
+ 	}
+ 
+ 	if err := d.From.Print(obj.Name(), from, printer); err != nil {
+diff --git a/vendor/gopkg.in/yaml.v2/emitterc.go b/vendor/gopkg.in/yaml.v2/emitterc.go
+index a1c2cc52627..466957fd32c 100644
+--- a/vendor/gopkg.in/yaml.v2/emitterc.go
++++ b/vendor/gopkg.in/yaml.v2/emitterc.go
+@@ -830,11 +830,11 @@ func yaml_emitter_select_scalar_style(emitter *yaml_emitter_t, event *yaml_event
+ 			style = yaml_DOUBLE_QUOTED_SCALAR_STYLE
+ 		}
+ 	}
+-	if style == yaml_LITERAL_SCALAR_STYLE || style == yaml_FOLDED_SCALAR_STYLE {
+-		if !emitter.scalar_data.block_allowed || emitter.flow_level > 0 || emitter.simple_key_context {
+-			style = yaml_DOUBLE_QUOTED_SCALAR_STYLE
+-		}
+-	}
++	// if style == yaml_LITERAL_SCALAR_STYLE || style == yaml_FOLDED_SCALAR_STYLE {
++	// 	if !emitter.scalar_data.block_allowed || emitter.flow_level > 0 || emitter.simple_key_context {
++	// 		style = yaml_DOUBLE_QUOTED_SCALAR_STYLE
++	// 	}
++	// }
+ 
+ 	if no_tag && !event.quoted_implicit && style != yaml_PLAIN_SCALAR_STYLE {
+ 		emitter.tag_data.handle = []byte{'!'}
