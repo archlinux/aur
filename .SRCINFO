@@ -1,0 +1,25 @@
+pkgbase = kglobalacceld-git
+	pkgdesc = Daemon providing Global Keyboard Shortcut (Accelerator) functionality
+	pkgver = _r237.g8827cbc
+	pkgrel = 1
+	url = https://invent.kde.org/plasma/kglobalacceld
+	arch = x86_64
+	groups = kf6-git
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules-git
+	depends = kconfig-git
+	depends = kcoreaddons-git
+	depends = kcrash-git
+	depends = kdbusaddons-git
+	depends = kwindowsystem-git
+	depends = kglobalaccel-git
+	depends = kio-git
+	depends = kservice-git
+	depends = knotifications-git
+	provides = kglobalacceld
+	conflicts = kglobalacceld
+	source = git+https://invent.kde.org/plasma/kglobalacceld.git
+	sha256sums = SKIP
+
+pkgname = kglobalacceld-git
