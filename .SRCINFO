@@ -1,6 +1,6 @@
 pkgbase = passmate-server
 	pkgdesc = a cross-platform, open-source password manager
-	pkgver = v0.4.alpha
+	pkgver = 0.2.r6.g07a8820
 	pkgrel = 1
 	url = https://github.com/TobiasKaiser/passmate
 	arch = i686
@@ -8,10 +8,14 @@ pkgbase = passmate-server
 	license = Apache
 	makedepends = git
 	makedepends = sed
-	depends = python2
-	depends = python2-pycryptodome
+	makedepends = python-flit
+	makedepends = pip
+	depends = python>=3.7
+	depends = python-scrypt>=0.8.6
+	depends = python-prompt_toolkit>=3.0.9
+	depends = python-toml>=0.10.0
+	depends = python-jsonschema>=3.2.0
 	source = git+https://github.com/TobiasKaiser/passmate.git
 	md5sums = SKIP
 
 pkgname = passmate-server
-
