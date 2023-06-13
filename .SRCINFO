@@ -1,8 +1,8 @@
 pkgbase = blosc2-git
 	pkgdesc = Next generation c-blosc
-	pkgver = 2.8.0.r11.g0aa01c65
+	pkgver = 2.9.2.r27.g80464026
 	pkgrel = 1
-	url = https://blosc-doc.readthedocs.io/en/latest/
+	url = https://www.blosc.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
@@ -10,10 +10,9 @@ pkgbase = blosc2-git
 	makedepends = cmake
 	depends = glibc
 	depends = lz4
-	depends = snappy
 	depends = zlib
 	depends = zstd
-	provides = blosc2=2.8.0.r11.g0aa01c65
+	provides = blosc2=2.9.2.r27.g80464026
 	conflicts = blosc2
 	options = staticlibs
 	source = git+https://github.com/Blosc/c-blosc2.git

@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=blosc2-git
-pkgver=2.8.0.r11.g0aa01c65
+pkgver=2.9.2.r27.g80464026
 pkgrel=1
 pkgdesc="Next generation c-blosc"
 arch=('i686' 'x86_64')
-url="https://blosc-doc.readthedocs.io/en/latest/"
+url="https://www.blosc.org/"
 license=('BSD')
-depends=('glibc' 'lz4' 'snappy' 'zlib' 'zstd')
+depends=('glibc' 'lz4' 'zlib' 'zstd')
 makedepends=('git' 'cmake')
 provides=("blosc2=$pkgver")
 conflicts=('blosc2')
@@ -30,10 +30,9 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
-    -DPREFER_EXTERNAL_LZ4="ON" \
-    -DPREFER_EXTERNAL_SNAPPY="ON" \
-    -DPREFER_EXTERNAL_ZLIB="ON" \
-    -DPREFER_EXTERNAL_ZSTD="ON" \
+    -DPREFER_EXTERNAL_LZ4=ON \
+    -DPREFER_EXTERNAL_ZLIB=ON \
+    -DPREFER_EXTERNAL_ZSTD=ON \
     ./
   make -C "_build"
 }
