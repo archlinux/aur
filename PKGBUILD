@@ -3,20 +3,20 @@
 
 _pkgname=robo
 pkgname=${_pkgname}
-pkgver=1.4.9
 pkgrel=1
+pkgver=3.0.4
 pkgdesc="Modern task runner for PHP."
 arch=("any")
 url="http://robo.li"
 license=("MIT")
 depends=("php")
-makedepends=("php-composer" "git")
+makedepends=("composer" "git")
 source=("${_pkgname}"::"git+https://github.com/Codegyre/Robo.git#tag=${pkgver}")
 sha512sums=('SKIP')
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  php /usr/bin/composer install --no-dev
+  composer install --no-interaction
 }
 
 package() {
