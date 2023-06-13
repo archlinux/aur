@@ -1,15 +1,16 @@
-# Maintainer: Chris <christopher.r.mullins g-mail>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Chris <christopher.r.mullins g-mail>
 # Contributor: geosam <samuelmesa@linuxmail.org>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=insight-toolkit
-pkgver=5.2.1
-pkgrel=15
+pkgver=5.3.0
+pkgrel=1
 pkgdesc='Cross-platform system that provides developers with an extensive suite of software tools for image analysis'
 arch=('i686' 'x86_64')
-url='http://www.itk.org/'
+url='https://itk.org/'
 license=('APACHE')
 depends=('fftw' 'libjpeg-turbo' 'libpng' 'zlib' 'libtiff' 'gdcm' 'expat' 'hdf5' 'gtest' 'eigen')
 optdepends=('python2: build python wrapping'
@@ -19,14 +20,21 @@ optdepends=('python2: build python wrapping'
             'java-runtime: build java wrapping (currently not supported)'
             'swig: generate python wrappers'
             'pcre: for wrapping'
-            'castxml-git: for wrapping and docs'
-            'clang: for swig'
-	    'castxml-git: for ITK')
+            'castxml: for wrapping and docs'
+            'clang: for swig')
 makedepends=('cmake' 'git')
-source=("https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.gz")
-sha512sums=('6786e39cdf3d0c3a31abd1e23481e30f6dc9dac189ffe372dde3db688f2f57686a8beb321778327e1ff683ed844d41f1dee937b0ba542b2365e2195dfca398c7')
+options=(!lto)
+source=("https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.gz"
+        "InsightToolkit-gcc13-fix.patch::https://github.com/FabioLolix/ITK/commit/93bd9fe07e250bdac948ae6f2c2cc749f165f0e9.patch")
+sha512sums=('29359839c0fb13acd430410e6adadbecb4d9d8cb4871a0aba0ac67b539c235354a591655dd654f43daa5f035a33721671d665eee8a4a129a9d0d3419e2356e97'
+            '1435e87705a4bd53ae70c221b2541a8912b08f21e62de87c25520d3cc7e9784ae8deb8bcbd37ccd28b17e57d0069919ad103e93030b99417131e708abc9a0a38')
 
 _usepython=false
+
+prepare() {
+  cd "InsightToolkit-${pkgver}"
+  patch -Np1 -i ../InsightToolkit-gcc13-fix.patch
+}
 
 build() {
   cd "$srcdir"
