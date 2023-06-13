@@ -1,16 +1,20 @@
 pkgbase = riichi-city-bin
 	pkgdesc = Riichi Mahjong client
-	pkgver = 2.0.1
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://www.mahjong-jp.com
+	install = riichi-city-bin.install
 	arch = x86_64
-	provides = riichicity
+	provides = riichi-city
+	conflicts = riichi-city
 	options = !strip
 	source = riichi-city.desktop
 	source = icon.png::https://www.mahjong-jp.com/static/img/tool/download/role11/awaken_5.png
-	source = riichi-city-bin-2.0.1.zip::https://d3qgi0t347dz44.cloudfront.net/release/linuxpack/2.0.1_default_prod_Linux.zip
+	source = riichi-city-bin-2.0.3.zip::https://d3qgi0t347dz44.cloudfront.net/release/linuxpack/default_prod_Linux_2.0.3.zip
+	source = riichi-city-bin.install
 	sha256sums = 6f667f25d34798d00d6cb733f3e01f16fa09eba3553a8aa0788bafa24d128da9
 	sha256sums = 796cbe29af70f4b5067cbd224b66f717d910c6102addae526afc880baebf9a61
-	sha256sums = c73c423f756a1ef53781b9795d58b413ae8dc4679a777fa2b324ed71d25a7b00
+	sha256sums = a693324d95b47f82696a8d9dc66f7368617ccac2e1837c4100bd428cf8cb7436
+	sha256sums = 5bde9d74e3d6137475f8acf3d55fe938dca78aecf45797af67b84ab0283c4f29
 
 pkgname = riichi-city-bin

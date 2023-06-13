@@ -1,0 +1,9 @@
+post_install() {
+  echo "If you've previously run Riichi City, user-downloaded asset packs may be found at"
+  echo "    \$HOME/.config/unity3d/HappyWoods/麻雀一番街/"
+  echo "in the StreamingAssets and Zips folders. Consider removing them before next launch."
+}
+
+post_upgrade() {
+  post_install $1
+}
