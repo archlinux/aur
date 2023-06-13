@@ -2,31 +2,29 @@
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: 吕海涛 <aur@lvht.net>
 
-pkgname=php-rdkafka
-_extname=rdkafka
-pkgver=6.0.1
+_pkgname=php-rdkafka
+pkgname=${_pkgname}
+pkgver=6.0.2
 pkgrel=1
-pkgdesc="A thin librdkafka binding providing a working PHP 7 / PHP 8 Kafka client"
+pkgdesc="AProduction-ready, stable Kafka client for PHP"
 arch=("i686" "x86_64")
 url="https://github.com/arnaud-lb/php-rdkafka"
 license=('MIT')
 depends=('php' 'librdkafka')
-source=("https://pecl.php.net/get/$_extname-$pkgver.tgz")
+source=("git+https://github.com/arnaud-lb/php-rdkafka")
 backup=("etc/php/conf.d/$_extname.ini")
-md5sums=('dc6125dbfd9ff8adf0f1e428b3449184')
+md5sums=('SKIP')
 
 build() {
-	cd "$srcdir/$_extname-$pkgver"
+	cd "$srcdir/$_pkgname"
 	phpize
 	./configure
-	make
+	make all -j 5
 }
 
 package() {
-	cd "$srcdir/$_extname-$pkgver"
-	install -m0755 -d "$pkgdir/etc/php/conf.d/"
-	install -m0644 -D "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-	echo "extension=$_extname.so" > "$pkgdir/etc/php/conf.d/$_extname.ini"
-	chmod 0644 "$pkgdir/etc/php/conf.d/$_extname.ini"
-	install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config --extension-dir)/$_extname.so"
+	cd "$srcdir/$_pkgname"
+	echo ";extension=${_pkgname}.so" > ${_pkgname}.ini
+	install -Dm644 ${_pkgname}.ini "${pkgdir}/etc/php/conf.d/${_pkgname}.ini"
+	make install INSTALL_ROOT="${pkgdir}/"
 }
