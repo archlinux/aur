@@ -124,13 +124,14 @@ ac_add_options --enable-crashreporter
 ac_add_options --disable-updater
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 END
+
+  # See https://github.com/glandium/git-cinnabar/issues/311
+  cd "$SRCDEST/mozilla-unified"
+  git config remote.origin.fetch '^refs/cinnabar/*'
 }
 
 build() {
   cd mozilla-unified
-
-  # See https://github.com/glandium/git-cinnabar/issues/311
-  git config remote.origin.fetch '^refs/cinnabar/*'
 
   export MOZ_SOURCE_REPO="$_repo"
   export MOZ_SOURCE_CHANGESET="$(cd $SRCDEST/mozilla-unified; git cinnabar git2hg bookmarks/autoland)"
