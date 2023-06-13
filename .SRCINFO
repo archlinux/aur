@@ -1,25 +1,18 @@
 pkgbase = python-pydbus-git
 	pkgdesc = Pythonic DBus library
-	pkgver = 0.5.1.r0.1b58124
+	pkgver = 0.6.0.r17.77fc029
 	pkgrel = 1
-	url = https://github.com/LEW21/pydbus
+	url = https://github.com/openEuler-BaseService/pydbus
 	arch = any
-	license = LGPL
+	license = LGPL2.1
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = pydbus::git+https://github.com/LEW21/pydbus.git
-	md5sums = SKIP
-
-pkgname = python-pydbus-git
 	depends = python
 	depends = python-gobject
+	depends = gobject-introspection-runtime
 	provides = python-pydbus
 	conflicts = python-pydbus
+	source = git+https://github.com/openEuler-BaseService/pydbus.git
+	sha256sums = SKIP
 
-pkgname = python2-pydbus-git
-	depends = python2
-	depends = python2-gobject
-	provides = python2-pydbus
-	conflicts = python2-pydbus
-
+pkgname = python-pydbus-git
