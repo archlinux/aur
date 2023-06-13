@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r1335.3554a83
+pkgver=r1336.613016a
 pkgrel=1
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist, dramacool and several manga sites.'
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
 )
 noextract=("twemoji-1.tar.gz")
 sha512sums=(
-    'e5d4e2bd91ff282b8c7b6bc1ce4ac4f67b4f04c5a74dae7222f2a0bfd0db653811f4e26e0304ae273a166c9f113e22f91a4fa0c8dde86a01cd1390531dbe4927'
+    '0fa8105afcaa80c7c9f3f22d42a5bb0c86a4739aec74100e1d989f9fb3d5eae822d48e5a0f5f396e86cb996b4b3f4e6787edb4d39d0c8e189d01d0a220127a9a'
     'f25bd2ede84dc43278a86b5d234e9c78a102a61dfd796a364e76a135289c29503e97e51dfe49fcd1a72eb714755a45b95c60768811bfb3cdebb23694bc86e7d2'
 )
 
