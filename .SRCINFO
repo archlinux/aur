@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-6.0-bin
-	pkgver = 6.0.16.sdk408
+	pkgver = 6.0.18.sdk410
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -7,24 +7,24 @@ pkgbase = dotnet-core-6.0-bin
 	arch = aarch64
 	license = MIT
 	options = staticlibs
-	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/dd7d2255-c9c1-4c6f-b8ad-6e853d6bb574/c8e1b5f47bf17b317a84487491915178/dotnet-sdk-6.0.408-linux-x64.tar.gz
-	sha512sums_x86_64 = d5eed37ce6c07546aa217d6e786f3b67be2b6d97c23d5888d9ee5d5398e8a9bfc06202b14e3529245f7ec78f4036778caf69bdbe099de805fe1f566277e8440e
-	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/ddd2d69f-65ef-4cb2-b34f-468c582d3092/f5572b4b10386c9defc75a813836c3f3/dotnet-sdk-6.0.408-linux-arm.tar.gz
-	sha512sums_armv7h = a86414ac2cd417cc477e39d02348223644cb1f006fab537d3a4d002ec3c7b35af8c006736dd4206040c6a58d2b3a71f18678b492e7d18510b69deeb730c673b9
-	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/9c4bff1b-9f35-44a3-95a3-d17224810b08/0f7426d4ce82cd5b55ed1b6f07877d5e/dotnet-sdk-6.0.408-linux-arm64.tar.gz
-	sha512sums_aarch64 = 40ad715ffb059df03eeae4ee4dff9b8998928e90dc0103b38ef671acbcfe4ac40016220e6b1214f0f77757099dccdf0fbaf1690191b350dbbaf773a01be8d25d
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/ac5809b0-7930-4ae9-9005-58f2fd7912f3/4cf0cb18d22a162b33149b1f28a8e045/dotnet-sdk-6.0.410-linux-x64.tar.gz
+	sha512sums_x86_64 = 8c85f5b10eb786c8cf31bf268131a2345a295d88d318310dc8457d831f0a587ec1600e43beb7f55aec2248483b9a95e905a468b592f0c910443b4aaa9baeb2e3
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/5e96f312-9963-4aae-98c5-38bb1cf3020d/9c5fa4d735eb7af674a365821525b503/dotnet-sdk-6.0.410-linux-arm.tar.gz
+	sha512sums_armv7h = 3869ed4526c0758999a11cab20ce943239d0c45b330cc28c24c6b6917454b5a417aeb75a02ec974a5e638103554d5e8b839c2eb3f436591ea018b4a8abdc336a
+	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/bf758689-351e-4857-8e9d-b2f155577bcf/759401b27c3c68d3ae344d2112bf9057/dotnet-sdk-6.0.410-linux-arm64.tar.gz
+	sha512sums_aarch64 = 75776b101672714f4e919b71313c3abba6f9b8a14d36751b31fb5400106e87d55e3aa45c1bf25be26a40847637f583815e40d61a837bebda66f30b88294f7e49
 
 pkgname = aspnet-runtime-6.0-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
 	depends = dotnet-runtime-6.0-bin
-	provides = aspnet-runtime=6.0.16
+	provides = aspnet-runtime=6.0.18
 	provides = aspnet-runtime-6.0
-	conflicts = aspnet-runtime=6.0.16
+	conflicts = aspnet-runtime=6.0.18
 	conflicts = aspnet-runtime-6.0
 
 pkgname = dotnet-runtime-6.0-bin
 	pkgdesc = The .NET Core runtime (binary)
-	depends = dotnet-host>=6.0.16
+	depends = dotnet-host>=6.0.18
 	depends = gcc-libs
 	depends = glibc
 	depends = icu
@@ -33,9 +33,9 @@ pkgname = dotnet-runtime-6.0-bin
 	depends = zlib
 	depends = openssl
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=6.0.16
+	provides = dotnet-runtime=6.0.18
 	provides = dotnet-runtime-6.0
-	conflicts = dotnet-runtime=6.0.16
+	conflicts = dotnet-runtime=6.0.18
 	conflicts = dotnet-runtime-6.0
 
 pkgname = dotnet-sdk-6.0-bin
@@ -46,23 +46,23 @@ pkgname = dotnet-sdk-6.0-bin
 	depends = dotnet-targeting-pack-6.0-bin
 	depends = netstandard-targeting-pack
 	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
-	provides = dotnet-sdk=6.0.16.sdk408
+	provides = dotnet-sdk=6.0.18.sdk410
 	provides = dotnet-sdk-6.0
-	conflicts = dotnet-sdk=6.0.16.sdk408
+	conflicts = dotnet-sdk=6.0.18.sdk410
 	conflicts = dotnet-sdk-6.0
 
 pkgname = dotnet-targeting-pack-6.0-bin
 	pkgdesc = The .NET Core targeting pack (binary)
 	depends = netstandard-targeting-pack
-	provides = dotnet-targeting-pack=6.0.16
+	provides = dotnet-targeting-pack=6.0.18
 	provides = dotnet-targeting-pack-6.0
-	conflicts = dotnet-targeting-pack=6.0.16
+	conflicts = dotnet-targeting-pack=6.0.18
 	conflicts = dotnet-targeting-pack-6.0
 
 pkgname = aspnet-targeting-pack-6.0-bin
 	pkgdesc = The ASP.NET Core targeting pack (binary)
 	depends = dotnet-targeting-pack-6.0-bin
-	provides = aspnet-targeting-pack=6.0.16
+	provides = aspnet-targeting-pack=6.0.18
 	provides = aspnet-targeting-pack-6.0
-	conflicts = aspnet-targeting-pack=6.0.16
+	conflicts = aspnet-targeting-pack=6.0.18
 	conflicts = aspnet-targeting-pack-6.0
