@@ -1,14 +1,14 @@
 pkgname=sdupes
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="fast duplicate file detection"
 arch=(x86_64)
 license=(gpl3+)
 makedepends=()
 provides=(sdupes)
-source=("https://github.com/sph-mn/sdupes/archive/refs/tags/v1.0.tar.gz")
+source=("https://github.com/sph-mn/sdupes/archive/refs/tags/v1.1.tar.gz")
 url="https://github.com/sph-mn/sdupes"
-md5sums=(b4c31ab8764410c39e9c0e0ff641951d)
+md5sums=(dd3129af5e7c411bcf9f304e8bcf19bf)
 
 package() {
   cd "${srcdir}/sdupes-$pkgver"
