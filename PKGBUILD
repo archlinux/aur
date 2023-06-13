@@ -1,8 +1,8 @@
 # Maintainer: Tomasz Zok <tomasz dot zok at gmail dot com>
 # Inspired by PKGBUILD of ucsf-chimera
 pkgname=chimerax
-pkgver=1.5
-pkgrel=3
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="UCSF ChimeraX (or simply ChimeraX) is the next-generation molecular visualization program from the Resource for Biocomputing, Visualization, and Informatics (RBVI), following UCSF Chimera."
 arch=(x86_64)
 url="https://www.cgl.ucsf.edu/chimerax/"
@@ -12,9 +12,10 @@ options=(!strip)
 source=(LICENSE)
 sha256sums=('4361604379b11e73ad942144ef84aaf479815f80265f98fed9879f3c82e3aa8d')
 
-_source=https://www.cgl.ucsf.edu/chimerax/cgi-bin/secure/chimerax-get.py
+_major=$(echo ${pkgver} | awk -F. '{ if (NF >= 2) { print $1 "." $2 } else print $1 }')
+_source=https://www.rbvi.ucsf.edu/chimerax/cgi-bin/secure/chimerax-get.py
 _file=ChimeraX-${pkgver}.tar.gz
-_filepath=${pkgver}/linux/ChimeraX-${pkgver}.tar.gz
+_filepath=${_major}/linux/${_file}
 
 prepare() {
 	cd "${srcdir}"
