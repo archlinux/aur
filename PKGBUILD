@@ -1,32 +1,45 @@
-# Maintainer: gee
+# Maintainer:
+# Contributor: gee
 
-pkgname=ialauncher-git
+_pkgname="ialauncher"
+pkgname="$_pkgname-git"
 pkgver=r127.b93f75d
-pkgrel=2
-pkgdesc='Play all of the Internet Archive’s MS-DOS games offline!'
-arch=('x86_64')
+pkgrel=1
+pkgdesc='Play all of the Internet Archive’s MS-DOS games offline'
+arch=('any')
 url='https://github.com/rtts/ialauncher'
 license=('GPL3')
-depends=('dosbox' 'webkit2gtk' 'python' 'python-natsort' 'gst-plugins-bad'
-         'python-jinja')
-makedepends=('git' 'python-setuptools')
-source=('ialauncher::git+https://github.com/rtts/ialauncher.git')
+depends=(
+  'python-pygame'
+
+  # Not needed?
+  #'dosbox'
+  #'gst-plugins-bad'
+  #'python-jinja'
+  #'python-natsort'
+  #'webkit2gtk'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
+source=("$_pkgname"::"git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ialauncher
-
+  cd "$srcdir/$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ialauncher
-
-  python setup.py build
+  cd "$srcdir/$_pkgname"
+  python -m build --no-isolation --wheel
 }
 
 package() {
   cd ialauncher
-
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
