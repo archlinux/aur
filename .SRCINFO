@@ -1,0 +1,11 @@
+pkgbase = spyglass-bin
+	pkgdesc = A personal search engine that indexes what you want, exposing it to you in a simple & fast interface
+	pkgver = 23.5.1
+	pkgrel = 1
+	url = https://github.com/spyglass-search/spyglass
+	arch = x86_64
+	license = AGPL3
+	source_x86_64 = https://github.com/spyglass-search/spyglass/releases/download/v2023.5.1/spyglass_23.5.1_amd64.deb
+	sha256sums_x86_64 = 6bf3e6afc65d6bd5d4ff9df9bf14bc324cd2685077f9f9d130d199c201432499
+
+pkgname = spyglass-bin
