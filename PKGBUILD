@@ -1,7 +1,7 @@
 # Maintainer: Dan Printzell <me@vild.io>
 
 pkgname=('serve-d-git')
-pkgver=r550.e1fcbb8
+pkgver=r911.172f231
 pkgrel=1
 pkgdesc="Microsoft language server protocol implementation for D using workspace-d"
 arch=('i686' 'x86_64')
@@ -17,11 +17,6 @@ source=(
 	"git+https://github.com/Pure-D/serve-d"
 )
 sha256sums=('SKIP')
-
-prepare() {
-	cd "$srcdir/serve-d"
-	dub upgrade
-}
 
 pkgver() {
 	cd "$srcdir/serve-d"
