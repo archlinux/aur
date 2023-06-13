@@ -4,17 +4,17 @@
 
 pkgname=python-jsonargparse
 _name=${pkgname#python-}
-pkgver=4.21.1
+pkgver=4.21.2
 pkgrel=1
 pkgdesc='Parsing library for CLI options, configs, and environment variables'
 arch=('any')
 url='https://github.com/omni-us/jsonargparse'
 license=('MIT')
 depends=('python-yaml')
-makedepends=('python-attrs' 'python-build' 'python-fsspec' 'python-installer' 'python-jsonschema' 'python-pydantic' 'python-requests' 'python-setuptools' 'python-wheel')
-checkdepends=('python-pytorch')
+makedepends=('python-argcomplete' 'python-attrs' 'python-fsspec' 'python-jsonschema' 'python-pydantic' 'python-pytorch' 'python-requests' 'python-responses')
+checkdepends=('python-coverage' 'python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('c70700a33c16038c6b71d6ddbd7dcc58cf07865f5e0a0f0a7406b90f3a306bcc')
+sha256sums=('d8354450d131e557f318568369008bde0bf2506f6fa61cc8a0a3217320db882c')
 
 #prepare() {
 #  cd "$_name-$pkgver"
