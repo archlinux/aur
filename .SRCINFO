@@ -1,6 +1,6 @@
 pkgbase = sacad
 	pkgdesc = Smart Automatic Cover Art Downloader
-	pkgver = 2.7.4
+	pkgver = 2.7.5
 	pkgrel = 2
 	url = https://github.com/desbma/sacad
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = sacad
 	optdepends = jpegoptim: for automatic lossless JPEG crunching
 	optdepends = optipng: for automatic lossless PNG crunching
 	optdepends = oxipng: for automatic lossless PNG crunching
-	source = sacad-2.7.4.tar.gz::https://github.com/desbma/sacad/archive/2.7.4.tar.gz
-	sha512sums = 26bb2507faf1c673df5719380e05e526e478fce8ed364730c234e9bee3d384cdea216f1e618f2b439cfdb514d7aeea06b98e689c8d2859ea85093bdd8e458d66
+	source = sacad-2.7.5.tar.gz::https://github.com/desbma/sacad/archive/2.7.5.tar.gz
+	sha512sums = e6fffeaf32d9672c44c7752511ded313ec4c8f116071c15dfc15b8909c263e00ce1e780a0b6afe7f77849caf38e38669a5c6c811ab8e572eddff010693b8103e
 
 pkgname = sacad
