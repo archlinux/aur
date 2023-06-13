@@ -1,0 +1,170 @@
+--- a/examples/allwidgets.c
++++ b/examples/allwidgets.c
+@@ -4,8 +4,8 @@
+ #include <X11/StringDefs.h>
+ #include <X11/Intrinsic.h>
+ #include <X11/Shell.h>
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Label.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Label.h>
+ #include <Mowitz/Mowitz.h>
+ 
+ #define MENUBAR (1)
+--- a/examples/listtree.c
++++ b/examples/listtree.c
+@@ -4,7 +4,7 @@
+ #ifdef MOTIF
+ #include <Xm/ScrolledW.h>
+ #else
+-#include <X11/Xaw/Viewport.h>
++#include <X11/XawM/Viewport.h>
+ #endif
+ #include <Mowitz/MwListTree.h>
+ 
+--- a/examples/rulerdemo.c
++++ b/examples/rulerdemo.c
+@@ -7,7 +7,7 @@
+ #include <X11/Object.h>
+ #include <X11/Shell.h>
+ 
+-#include <X11/Xaw/Form.h>
++#include <X11/XawM/Form.h>
+ 
+ #include <Mowitz/Mowitz.h>
+ 
+--- a/examples/TreeFSel.c
++++ b/examples/TreeFSel.c
+@@ -31,14 +31,14 @@
+ #include <string.h>
+ #include <X11/IntrinsicP.h>
+ #include <X11/StringDefs.h>
+-#include <X11/Xaw/Viewport.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/List.h>
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Paned.h>
+-#include <X11/Xaw/AsciiText.h>
++#include <X11/XawM/Viewport.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/List.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Paned.h>
++#include <X11/XawM/AsciiText.h>
+ #include <Mowitz/MwListTree.h>
+ #include "TreeFSelP.h"
+ 
+--- a/Mowitz/MwCombo.c
++++ b/Mowitz/MwCombo.c
+@@ -30,11 +30,11 @@
+ #include	<X11/IntrinsicP.h>
+ #include	<X11/StringDefs.h>
+ #include	<X11/Shell.h>
+-#include	<X11/Xaw/Command.h>
+-#include	<X11/Xaw/List.h>
+-#include	<X11/Xaw/Viewport.h>
++#include	<X11/XawM/Command.h>
++#include	<X11/XawM/List.h>
++#include	<X11/XawM/Viewport.h>
+ #include	<X11/Xmu/Misc.h>
+-#include	<X11/Xaw/Command.h>
++#include	<X11/XawM/Command.h>
+ #include	<X11/xpm.h>
+ #include	"MwTextField.h"
+ #include	"MwComboP.h"
+--- a/Mowitz/MwDialog.c
++++ b/Mowitz/MwDialog.c
+@@ -33,13 +33,13 @@
+ #include <X11/Shell.h>
+ #include <X11/xpm.h>
+ 
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Viewport.h>
+-#include <X11/Xaw/List.h>
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/Dialog.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Viewport.h>
++#include <X11/XawM/List.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/Dialog.h>
+ 
+ #include <Mowitz/Mowitz.h>
+ #include "pixmaps/unknown.xpm"
+--- a/Mowitz/MwFilesel.c
++++ b/Mowitz/MwFilesel.c
+@@ -44,13 +44,13 @@
+ #include <X11/Intrinsic.h>
+ #include <X11/StringDefs.h>
+ 
+-#include <X11/Xaw/Form.h>
+-#include <X11/Xaw/Box.h>
+-#include <X11/Xaw/Label.h>
+-#include <X11/Xaw/Command.h>
+-#include <X11/Xaw/Viewport.h>
+-#include <X11/Xaw/Scrollbar.h>
+-#include <X11/Xaw/List.h>
++#include <X11/XawM/Form.h>
++#include <X11/XawM/Box.h>
++#include <X11/XawM/Label.h>
++#include <X11/XawM/Command.h>
++#include <X11/XawM/Viewport.h>
++#include <X11/XawM/Scrollbar.h>
++#include <X11/XawM/List.h>
+ 
+ #include "Mowitz.h"
+ 
+--- a/Mowitz/MwFrame.c
++++ b/Mowitz/MwFrame.c
+@@ -29,7 +29,7 @@
+ #include	<X11/StringDefs.h>
+ #include	<X11/Xmu/Converters.h>
+ #include	<X11/Xmu/CharSet.h>
+-#include	<X11/Xaw/Label.h>
++#include	<X11/XawM/Label.h>
+ 
+ 
+ #include	"MwFrameP.h"
+--- a/Mowitz/MwRuler.c
++++ b/Mowitz/MwRuler.c
+@@ -102,7 +102,7 @@
+ #include	<X11/StringDefs.h>
+ #include	<X11/Xmu/Misc.h>
+ #include	<X11/Xmu/CharSet.h>
+-#include	<X11/Xaw/XawInit.h>
++#include	<X11/XawM/XawInit.h>
+ #include	"MwRulerP.h"
+ #include	"MwGcs.h"
+ 
+--- a/Mowitz/MwSpinner.c
++++ b/Mowitz/MwSpinner.c
+@@ -27,7 +27,7 @@
+ #include	<X11/IntrinsicP.h>
+ #include	<X11/StringDefs.h>
+ #include	<X11/Shell.h>
+-#include	<X11/Xaw/Repeater.h>
++#include	<X11/XawM/Repeater.h>
+ #include	<X11/Xmu/Misc.h>
+ #include	<X11/xpm.h>
+ #include	"MwFrameP.h"
+--- a/Mowitz/MwTooltip.c
++++ b/Mowitz/MwTooltip.c
+@@ -8,8 +8,8 @@
+ #include <X11/StringDefs.h>
+ 
+ #include "MwTooltipP.h"
+-#include <X11/Xaw/Cardinals.h>
+-#include <X11/Xaw/Label.h>
++#include <X11/XawM/Cardinals.h>
++#include <X11/XawM/Label.h>
+ 
+ #include "MwUtils.h"
+ 
