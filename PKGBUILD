@@ -2,9 +2,9 @@
 # Contributor: David Wu <xdavidwuph@gmail.com>
 
 pkgname=kali-undercover
-pkgver=2021.4.0
-pkgrel=4
-pkgdesc='Kali Undercover Mode'
+pkgver=2023.1.0
+pkgrel=1
+pkgdesc='Kali Undercover Mode. Makes your xfce desktop look like Windows 10.'
 arch=('any')
 url='https://gitlab.com/kalilinux/packages/kali-undercover/'
 license=('GPL3')
