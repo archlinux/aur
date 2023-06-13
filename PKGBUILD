@@ -1,6 +1,6 @@
 # Maintainer: Nathan Kolpa <nathan@kolpa.me>
 pkgname=xmonad-recompile-hook-git
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Recompile xmonad after package updates"
 arch=('any')
