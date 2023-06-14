@@ -1,0 +1,7 @@
+src
+pkg
+ananicy-rules
+*.tar.xz
+*.tar.gz
+*.tar.zst
+*.log
