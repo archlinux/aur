@@ -12,7 +12,7 @@ git clone https://github.com/danehobrecht/shadowtube.git && cd shadowtube
 ```
 2. Create virtual environment:
 ```
-python -m venv venv && source /venv/bin/activate && cd ..
+python -m venv venv && source /venv/bin/activate
 ```
 3. Install dependencies:
  - [Python 3.7.3+ & pip](https://www.python.org/downloads/)
