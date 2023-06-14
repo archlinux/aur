@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/snarkrans/blender-dl"
 license=('MIT')
 depends=('wget' 'fzf' 'axel')
-source=("https://github.com/snarkrans/blender-dl/blob/main/blender-dl")
+source=("https://raw.githubusercontent.com/snarkrans/blender-dl/main/blender-dl")
 md5sums=('SKIP')
 package() {
     cd "$srcdir"

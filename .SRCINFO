@@ -8,7 +8,7 @@ pkgbase = blender-dl
 	depends = wget
 	depends = fzf
 	depends = axel
-	source = https://github.com/snarkrans/blender-dl/blob/main/blender-dl
+	source = https://raw.githubusercontent.com/snarkrans/blender-dl/main/blender-dl
 	md5sums = SKIP
 
 pkgname = blender-dl
