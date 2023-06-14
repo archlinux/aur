@@ -3,7 +3,7 @@
 
 pkgname=lib32-glib-networking
 pkgver=2.76.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Network extensions for GLib (32-bit)"
 url="https://gitlab.gnome.org/GNOME/glib-networking"
 arch=(x86_64)
@@ -21,12 +21,19 @@ makedepends=(
 checkdepends=(ca-certificates)
 _commit=eab226398f9872c381033f7cb3af43dcb66600f4  # tags/2.76.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=${_commit}")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd glib-networking
 
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
+
+prepare() {
+  cd glib-networking
+
+  # Fix tests with libproxy 0.5
+  git cherry-pick -n a7db10e8862050f19af5c2eebcd1d590a04d5ced
 }
 
 build() {
