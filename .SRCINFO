@@ -1,7 +1,7 @@
 pkgbase = upgrade
 	pkgdesc = Automate system upgrades
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/dnut/upgrade
 	install = upgrade.install
 	arch = i686
@@ -14,8 +14,9 @@ pkgbase = upgrade
 	license = GPL3
 	depends = paru
 	depends = kernel-modules-hook
+	optdepends = flatpak
 	backup = etc/upgrade.conf
-	source = git+https://github.com/dnut/upgrade#tag=0.2.0
+	source = git+https://github.com/dnut/upgrade#tag=0.3.0
 	sha256sums = SKIP
 
 pkgname = upgrade
