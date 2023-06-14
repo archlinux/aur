@@ -21,7 +21,8 @@ pkgname = libgpr
 	conflicts = grpc
 
 pkgname = gprbuild
-	depends = gprtools
+	depends = libgpr
+	depends = xmlada
 	conflicts = gprbuild-bootstrap
 
 pkgname = gprtools
