@@ -1,6 +1,6 @@
 pkgbase = httpx
 	pkgdesc = A fast and multi-purpose HTTP toolkit allow to run multiple probers using retryablehttp library
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/httpx
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = httpx
 	depends = glibc
 	provides = httpx
 	conflicts = httpx
-	source = httpx-1.3.1.tar.gz::https://github.com/projectdiscovery/httpx/archive/v1.3.1.tar.gz
-	b2sums = 9684e99e1f0b0af8cc2b0517cd23ffb55f3bb156a2a25d52f13fe3f5c345cca393b9246839398d5ee11f77696a32189a6edba11b1408c1a11bf08117f46788a5
+	source = httpx-1.3.2.tar.gz::https://github.com/projectdiscovery/httpx/archive/v1.3.2.tar.gz
+	b2sums = 14e9c428c456624a9cebc774d7e7afabdfc1920bc25e600ac55bd35f141e8b6cf870a2460638ff4ddeb4bab01b505e5a72ca51f50566844e6e41bce446bb1e0e
 
 pkgname = httpx
