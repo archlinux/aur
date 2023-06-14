@@ -168,17 +168,17 @@ build() {
 package_wxwidgets-qt5-light() {
 pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
   depends=(
-    'wxwidgets-common-light'
     'bash'
     'glibc'
     'libpng'
     'qt5-base'
     'sdl2'
     'gcc-libs'
-    'libglvnd'      'libOpenGL.so'
-    'libjpeg-turbo' 'libjpeg.so'
-    'libmspack'     'libmspack.so'
-    'libtiff'       'libtiff.so'
+    'wxwidgets-common-light' 'libwx_baseu_xml-3.2.so'
+    'libglvnd'               'libOpenGL.so'
+    'libjpeg-turbo'          'libjpeg.so'
+    'libmspack'              'libmspack.so'
+    'libtiff'                'libtiff.so'
   )
   provides=(
     'wxwidgets-qt5'
@@ -216,7 +216,6 @@ pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
 package_wxwidgets-gtk3-light() {
   pkgdesc="wxWidgets GTK3 Toolkit (GNOME/GStreamer free!)"
   depends=(
-    'wxwidgets-common-light'
     'libsm'
     'bash'
     'gcc-libs'
@@ -225,19 +224,20 @@ package_wxwidgets-gtk3-light() {
     'libx11'
     'libxtst'
     'sdl2'
-    'libglvnd'      'libEGL.so' 'libOpenGL.so'
-    'cairo'         'libcairo.so'
-    'fontconfig'    'libfontconfig.so'
-    'gtk3'          'libgdk-3.so' 'libgtk-3.so'
-    'gdk-pixbuf2'   'libgdk_pixbuf-2.0.so'
-    'glib2'         'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
-    'gspell'        'libgspell-1.so'
-    'libjpeg-turbo' 'libjpeg.so'
-    'libmspack'     'libmspack.so'
-    'libnotify'     'libnotify.so'
-    'pango'         'libpango-1.0.so' 'libpangocairo-1.0.so' 'libpangoft2-1.0.so'
-    'libtiff'       'libtiff.so'
-    'wayland'       'libwayland-client.so' 'libwayland-egl.so'
+    'wxwidgets-common-light' 'libwx_baseu_xml-3.2.so'
+    'libglvnd'               'libEGL.so' 'libOpenGL.so'
+    'cairo'                  'libcairo.so'
+    'fontconfig'             'libfontconfig.so'
+    'gtk3'                   'libgdk-3.so' 'libgtk-3.so'
+    'gdk-pixbuf2'            'libgdk_pixbuf-2.0.so'
+    'glib2'                  'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
+    'gspell'                 'libgspell-1.so'
+    'libjpeg-turbo'          'libjpeg.so'
+    'libmspack'              'libmspack.so'
+    'libnotify'              'libnotify.so'
+    'pango'                  'libpango-1.0.so' 'libpangocairo-1.0.so' 'libpangoft2-1.0.so'
+    'libtiff'                'libtiff.so'
+    'wayland'                'libwayland-client.so' 'libwayland-egl.so'
   )
   provides=(
     'wxwidgets'
@@ -279,13 +279,13 @@ package_wxwidgets-gtk3-light() {
 package_wxwidgets-gtk4-light() {
   pkgdesc="wxWidgets GTK4 Toolkit (GNOME/GStreamer free!)"
   depends=(
-    'wxwidgets-common-light'
     'sdl2'
-    'gspell'    'libgspell-1.so'
-    'gtk4'      'libgtk-4.so'
-    'libmspack' 'libmspack.so'
-    'libnotify' 'libnotify.so'
-    'libtiff'   'libtiff.so'
+    'wxwidgets-common-light' 'libwx_baseu_xml-3.2.so'
+    'gspell'                 'libgspell-1.so'
+    'gtk4'                   'libgtk-4.so'
+    'libmspack'              'libmspack.so'
+    'libnotify'              'libnotify.so'
+    'libtiff'                'libtiff.so'
 )
   optdepends=('webkit2gtk: for webview support')
   provides=(
