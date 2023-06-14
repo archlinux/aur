@@ -17,8 +17,8 @@ pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc
 arch=('x86_64')
 url="https://developer.android.com/studio/releases/build-tools"
 license=('custom')
-depends=('gcc-libs' 'zlib')
-optdepends=('lib32-gcc-libs' 'lib32-zlib')
+depends=('gcc-libs' 'zlib' 'bash')
+optdepends=('lib32-gcc-libs' 'lib32-zlib' 'java-runtime')
 
 source=("https://dl.google.com/android/repository/build-tools_r${_displayversion}-linux.zip"
         "package.xml")
