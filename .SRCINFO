@@ -1,12 +1,11 @@
 pkgbase = electron-egg-bin
 	pkgdesc = A simple, cross platform, enterprise desktop software development framework
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kaka996.com/
 	arch = x86_64
 	license = Apache
 	makedepends = pnpm
-	makedepends = gendesk
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	depends = cairo

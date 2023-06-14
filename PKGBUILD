@@ -2,7 +2,7 @@
 pkgname="electron-egg-bin"
 _appname="ee"
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, cross platform, enterprise desktop software development framework"
 arch=('x86_64')
 url="https://www.kaka996.com/"
@@ -11,7 +11,7 @@ license=('Apache')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
 depends=('gcc-libs' 'hicolor-icon-theme' 'cairo' 'libxcomposite' 'libxext' 'gtk3' 'nss' 'libx11' 'libxdamage' 'glib2' 'alsa-lib' \
     'libxrandr' 'dbus' 'nspr' 'wayland' 'libxfixes' 'mesa' 'expat' 'at-spi2-core' 'glibc' 'libcups' 'libdrm' 'libxkbcommon' 'pango' 'libxcb')
-makedepends=('pnpm' 'gendesk')
+makedepends=('pnpm')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('eff22be2951d44ef83fc7f524895837fd729ef3af5a5fdbb1c40280634dad004')
 build() {
@@ -21,8 +21,8 @@ build() {
     #npm config set registry=https://registry.npmmirror.com
     #npm config set disturl=https://registry.npmmirror.com/-/binary/node
     #npm config set electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-#   pnpm install
-#   pnpm run build-lp-64
+   pnpm install
+   pnpm run build-lp-64
 }
 package() {
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}/out/${_appname}-linux-${pkgver}-x64.pacman" -C "${srcdir}"
