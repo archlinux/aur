@@ -6,9 +6,9 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-_electron=electron21
+_electron=electron24
 pkgname=schildichat-desktop
-pkgver=1.11.30.sc.1
+pkgver=1.11.30.sc.2
 pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
@@ -37,7 +37,7 @@ prepare() {
   cd "${srcdir}/${pkgname}"
   export HOME="$srcdir/"
   _ensure_local_nvm
-  nvm install 16
+  nvm install 18
 
   git submodule init
   git config submodule.matrix-js-sdk.url "$srcdir/matrix-js-sdk"
