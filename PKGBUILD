@@ -2,7 +2,7 @@
 # Contributor: Fabio Zanini <fabio.zanini@fastmail.fm>
 _base=annoy
 pkgname=python-${_base}
-pkgver=1.17.2
+pkgver=1.17.3
 pkgrel=1
 pkgdesc="Approximate Nearest Neighbors Oh Yeah"
 url="https://github.com/spotify/${_base}"
@@ -12,7 +12,7 @@ depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest python-numpy python-h5py)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha256sums=('ad3518f36bdd5ea54576dfe1c765c93d5c737342f269aada2cd7ff1bc0d0cd93')
+sha256sums=('c121d38cacd98f5103b24ca4e94ca097f18179eed3037e9eb93ad70ec1e6356e')
 
 build() {
   cd ${_base}-${pkgver}
