@@ -1,7 +1,8 @@
 # Maintainer: Leon Richardt <aur at leon.dev>
 pkgname=python-repetita-parser
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
+pkgdesc="Python parser module for the REPETITA data format"
 url="https://github.com/leon-richardt/python-repetita-parser"
 license=("MIT")
 arch=("any")
