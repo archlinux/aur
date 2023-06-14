@@ -1,0 +1,17 @@
+pkgbase = kbd-audio
+	pkgdesc = Acoustic keyboard eavesdropping
+	pkgver = 2022.05.03
+	pkgrel = 1
+	url = https://github.com/ggerganov/kbd-audio
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	depends = sdl2
+	depends = fftw
+	depends = libglvnd
+	source = kbd-audio-2022.05.03::git+https://github.com/ggerganov/kbd-audio.git#tag=keytap3
+	sha256sums = SKIP
+
+pkgname = kbd-audio
