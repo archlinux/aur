@@ -1,0 +1,17 @@
+pkgbase = openvaf
+	pkgdesc = A Next-Generation Verilog-A compiler https://openvaf.semimod.de/
+	pkgver = 23.5.0
+	pkgrel = 1
+	url = https://github.com/pascalkuthe/OpenVAF
+	arch = x86_64
+	license = GPL3
+	makedepends = clang
+	makedepends = lld
+	makedepends = cargo
+	makedepends = cargo-nextest
+	depends = llvm-libs
+	options = !lto
+	source = openvaf-23.5.0.tar.gz::https://github.com/pascalkuthe/OpenVAF/archive/refs/tags/OpenVAF-v23.5.0.tar.gz
+	sha256sums = c20b818cd4106af5f21368b4d801be3d81f2632ac3ec718f4003e1b15474c403
+
+pkgname = openvaf
