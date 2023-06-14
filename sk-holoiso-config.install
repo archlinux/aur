@@ -64,7 +64,11 @@ post_install() {
     if [[ "${DEVICENAME}" == "ONEXPLAYER 2 ARP23" ]]; then
         sudo systemctl enable --now oxp2-lsusb.service
         sudo systemctl enable --now oxp2-volume-button-fix.service
-    fi    
+    fi
+
+    # if [[ "${DEVICENAME}" != "AIR Plus" ]]; then
+    #     sudo systemctl disable --now ayaled.service
+    # fi
 }
 
 pre_upgrade() {
