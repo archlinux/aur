@@ -1,6 +1,6 @@
 # Maintainer: Arshaluys Smbatyan <ash.smbatyan@gmail.com>
 
-pkgname=zsh-utility
+pkgname=zsh-utility-git
 pkgver=r3.e508a34
 pkgrel=1
 pkgdesc="Misc functions"

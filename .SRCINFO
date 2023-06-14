@@ -1,4 +1,4 @@
-pkgbase = zsh-utility
+pkgbase = zsh-utility-git
 	pkgdesc = Misc functions
 	pkgver = r3.e508a34
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = zsh-utility
 	source = git+https://github.com/AshSmbatyan/zsh-utility.git
 	md5sums = SKIP
 
-pkgname = zsh-utility
+pkgname = zsh-utility-git
