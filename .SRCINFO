@@ -9,4 +9,4 @@ pkgbase = zsh-utility-git
 	source = git+https://github.com/AshSmbatyan/zsh-utility.git
 	md5sums = SKIP
 
-pkgname = zsh-utility-git
+pkgname = zsh-utility

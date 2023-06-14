@@ -1,6 +1,7 @@
 # Maintainer: Arshaluys Smbatyan <ash.smbatyan@gmail.com>
 
-pkgname=zsh-utility-git
+pkgbase=zsh-utility-git
+pkgname=zsh-utility
 pkgver=r3.e508a34
 pkgrel=1
 pkgdesc="Misc functions"
@@ -8,7 +9,7 @@ arch=('any')
 url="https://github.com/AshSmbatyan/zsh-utility"
 license=('GPL3')
 makedepends=("git")
-source=("git+https://github.com/AshSmbatyan/zsh-utility.git")
+source=("git+${url}.git")
 md5sums=("SKIP")
 validpgpkeys=()
 
