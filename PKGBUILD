@@ -54,13 +54,12 @@ build() {
   cd ${build_dir}
 
   cmake \
-    -G Ninja \
     -DCMAKE_TOOLCHAIN_FILE=${startdir}/toolchain.cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release -DWITH_DOCS=ON -DBUILD_QBS=OFF -DBUILD_WITH_CRASHPAD=OFF \
     ${working_dir}
 
-  ninja all
+  make all
 }
 
 package() {
@@ -68,5 +67,5 @@ package() {
   local build_dir=${working_dir}/build
 
   cd ${build_dir}
-  DESTDIR=${pkgdir} ninja install
+  DESTDIR=${pkgdir} make install
 }
