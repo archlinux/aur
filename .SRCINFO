@@ -1,0 +1,16 @@
+pkgbase = python-sphinx-insipid-theme
+	pkgdesc = An insipid Sphinx theme
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/mgeier/insipid-sphinx-theme
+	arch = any
+	license = custom:BSD-2-clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-sphinx
+	source = insipid-0.4.1.tar.gz::https://github.com/mgeier/insipid-sphinx-theme/archive/0.4.1.tar.gz
+	sha512sums = 0342e63cedb08023c174f4f2a66fb4ef81ee9f7b2baaa250ae0822f481195ad11755d623a5f7672b3e0bae1981eae1e5ab182cf21a7b682820c32eda9d425531
+
+pkgname = python-sphinx-insipid-theme
