@@ -1,7 +1,7 @@
 pkgbase = r-gprofiler2
 	pkgdesc = Interface to the 'g:Profiler' Toolset
-	pkgver = 0.2.1
-	pkgrel = 4
+	pkgver = 0.2.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=gprofiler2
 	arch = any
 	license = GPL
@@ -18,7 +18,7 @@ pkgbase = r-gprofiler2
 	optdepends = r-knitr
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/gprofiler2_0.2.1.tar.gz
-	sha256sums = 2fac15b65921d95b1d360ad3f60bf9c077ab806dd69702736aeff73216191064
+	source = https://cran.r-project.org/src/contrib/gprofiler2_0.2.2.tar.gz
+	sha256sums = b90094f8de25c2953fc14839ac2461d94012bcbf445ff06fdc46624cd6dd6efd
 
 pkgname = r-gprofiler2
