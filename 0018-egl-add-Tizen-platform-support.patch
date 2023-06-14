@@ -1,0 +1,1634 @@
+From 70abef4d4511b1e25ab3b4746644e5324140d9d7 Mon Sep 17 00:00:00 2001
+From: Frank Binns <frank.binns@imgtec.com>
+Date: Fri, 6 Jan 2017 16:35:00 +0000
+Subject: [PATCH] egl: add Tizen platform support
+
+Add a new "tizen" platform to support drm/gbm and Wayland on Tizen.
+The platform can be enabled by passing "-Dplatforms=tizen" to Meson.
+
+---
+ meson.build                           |  25 +-
+ meson_options.txt                     |   2 +-
+ src/egl/drivers/dri2/egl_dri2.c       | 182 ++++-
+ src/egl/drivers/dri2/egl_dri2.h       |  59 +-
+ src/egl/drivers/dri2/platform_tizen.c | 980 ++++++++++++++++++++++++++
+ src/egl/main/eglapi.c                 |   7 +
+ src/egl/main/egldisplay.c             |  32 +-
+ src/egl/main/egldisplay.h             |   7 +
+ src/egl/main/egllog.c                 |  27 +-
+ src/egl/meson.build                   |   7 +-
+ 10 files changed, 1313 insertions(+), 15 deletions(-)
+ create mode 100644 src/egl/drivers/dri2/platform_tizen.c
+
+diff --git a/meson.build b/meson.build
+index 968b4f5..3d9d345 100644
+--- a/meson.build
++++ b/meson.build
+@@ -358,6 +358,11 @@ with_platform_x11 = _platforms.contains('x11')
+ with_platform_wayland = _platforms.contains('wayland')
+ with_platform_haiku = _platforms.contains('haiku')
+ with_platform_windows = _platforms.contains('windows')
++with_platform_tizen = _platforms.contains('tizen')
++
++if with_platform_tizen and _platforms.length() != 1
++  error('tizen cannot be enabled at the same time as other platforms')
++endif
+ 
+ with_glx = get_option('glx')
+ if with_glx == 'auto'
+@@ -910,7 +915,7 @@ else
+   pre_args += '-DEGL_NO_X11'
+   gl_pkgconfig_c_flags += '-DEGL_NO_X11'
+ endif
+-if with_gbm and not with_platform_android
++if with_gbm and not with_platform_android and not with_platform_tizen
+   pre_args += '-DHAVE_DRM_PLATFORM'
+ endif
+ 
+@@ -944,6 +949,15 @@ endif
+ if with_platform_haiku
+   pre_args += '-DHAVE_HAIKU_PLATFORM'
+ endif
++if with_platform_tizen
++  dep_dlog = dependency('dlog')
++  dep_tizen = [
++    dep_dlog,
++    dependency('libtbm'),
++    dependency('tpl-egl'),
++  ]
++  pre_args += '-DHAVE_TIZEN_PLATFORM'
++endif
+ 
+ prog_python = import('python').find_installation('python3')
+ has_mako = run_command(
+@@ -1568,7 +1582,8 @@ with_gallium_drisw_kms = false
+ dep_libdrm = dependency(
+   'libdrm', version : '>=' + _drm_ver,
+   # GNU/Hurd includes egl_dri2, without drm.
+-  required : (with_dri2 and host_machine.system() != 'gnu') or with_dri3
++  required : (with_dri2 and host_machine.system() != 'gnu') or with_dri3 or
++             with_platform_tizen
+ )
+ if dep_libdrm.found()
+   pre_args += '-DHAVE_LIBDRM'
+@@ -2187,8 +2202,10 @@ if with_egl
+   lines += 'EGL drivers:     ' + ' '.join(egl_drivers)
+ endif
+ if with_egl or with_any_vk
+-  _platforms += 'surfaceless'
+-  if with_gbm and not with_platform_android
++  if not with_platform_tizen
++    _platforms += 'surfaceless'
++  endif
++  if with_gbm and not with_platform_android and not with_platform_tizen
+     _platforms += 'drm'
+   endif
+   lines += 'EGL/Vulkan/VL platforms:   ' + ' '.join(_platforms)
+diff --git a/meson_options.txt b/meson_options.txt
+index dac7910..8230db9 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -23,7 +23,7 @@ option(
+   type : 'array',
+   value : ['auto'],
+   choices : [
+-    'auto', 'x11', 'wayland', 'haiku', 'android', 'windows',
++    'auto', 'x11', 'wayland', 'haiku', 'android', 'windows', 'tizen',
+   ],
+   description : 'window systems to support. If this is set to `auto`, all platforms applicable will be enabled.'
+ )
+diff --git a/src/egl/drivers/dri2/egl_dri2.c b/src/egl/drivers/dri2/egl_dri2.c
+index dea5899..6d34395 100644
+--- a/src/egl/drivers/dri2/egl_dri2.c
++++ b/src/egl/drivers/dri2/egl_dri2.c
+@@ -1179,6 +1179,11 @@ dri2_initialize(_EGLDisplay *disp)
+    case _EGL_PLATFORM_ANDROID:
+       ret = dri2_initialize_android(disp);
+       break;
++#ifdef HAVE_TIZEN_PLATFORM
++   case _EGL_PLATFORM_TIZEN:
++      ret = dri2_initialize_tizen(disp);
++      break;
++#endif
+    default:
+       unreachable("Callers ensure we cannot get here.");
+       return EGL_FALSE;
+@@ -1253,6 +1258,12 @@ dri2_display_destroy(_EGLDisplay *disp)
+    case _EGL_PLATFORM_WAYLAND:
+       dri2_teardown_wayland(dri2_dpy);
+       break;
++#ifdef HAVE_TIZEN_PLATFORM
++   case _EGL_PLATFORM_TIZEN:
++      if (dri2_dpy->tpl_dpy)
++         tpl_object_unreference((tpl_object_t *) dri2_dpy->tpl_dpy);
++      break;
++#endif
+    default:
+       /* TODO: add teardown for other platforms */
+       break;
+@@ -2293,8 +2304,96 @@ dri2_create_image_khr_renderbuffer(_EGLDisplay *disp, _EGLContext *ctx,
+    return dri2_create_image_from_dri(disp, dri_image);
+ }
+ 
+-#ifdef HAVE_WAYLAND_PLATFORM
++#ifdef HAVE_TIZEN_PLATFORM
++int
++dri2_fourcc_from_tbm_format(tbm_format format)
++{
++   switch (format) {
++   case TBM_FORMAT_ARGB8888:
++      return DRM_FORMAT_ARGB8888;
++   case TBM_FORMAT_XRGB8888:
++      return DRM_FORMAT_XRGB8888;
++   case TBM_FORMAT_RGB565:
++      return DRM_FORMAT_RGB565;
++   default:
++      _eglLog(_EGL_DEBUG, "%s: unsupported tbm format %#x", __func__, format);
++      return 0;
++   }
++}
+ 
++static _EGLImage *
++dri2_create_image_wayland_wl_buffer_tizen(_EGLDisplay *disp, _EGLContext *ctx,
++                                          EGLClientBuffer _buffer,
++                                          const EGLint *attr_list)
++{
++   struct dri2_egl_display *dri2_dpy = dri2_egl_display(disp);
++   __DRIimage *dri_image;
++   _EGLImageAttribs attrs;
++   tbm_surface_h tbm_surf;
++   tbm_bo tbm_buf;
++   tbm_surface_info_s info;
++   int fourcc, fd, pitch, offset;
++
++   tbm_surf = tpl_display_get_buffer_from_native_pixmap(dri2_dpy->tpl_dpy,
++                                                        (tpl_handle_t) _buffer);
++   if (!tbm_surf) {
++      _eglError(EGL_BAD_PARAMETER, "tpl_display_get_buffer_from_native_pixmap");
++      return NULL;
++   }
++
++   if (!_eglParseImageAttribList(&attrs, disp, attr_list)) {
++      _eglError(EGL_BAD_PARAMETER, "dri2_create_image_wayland_wl_buffer_tizen");
++      return NULL;
++   }
++
++   if (tbm_surface_get_info(tbm_surf, &info)) {
++      _eglError(EGL_BAD_PARAMETER, "tbm_surface_get_info");
++      return NULL;
++   }
++
++   if (info.num_planes > 1) {
++      _eglError(EGL_BAD_PARAMETER,
++                "dri2_create_image_wayland_wl_buffer_tizen (multi-plane format)");
++      return NULL;
++   }
++
++   if (attrs.PlaneWL < 0 || attrs.PlaneWL >= info.num_planes) {
++      _eglError(EGL_BAD_PARAMETER,
++                "dri2_create_image_wayland_wl_buffer_tizen (plane out of bounds)");
++      return NULL;
++   }
++
++   tbm_buf = tbm_surface_internal_get_bo(tbm_surf, attrs.PlaneWL);
++   if (!tbm_buf) {
++      _eglError(EGL_BAD_PARAMETER, "tbm_surface_internal_get_bo");
++      return NULL;
++   }
++
++   fourcc = dri2_fourcc_from_tbm_format(info.format);
++   pitch = info.planes[attrs.PlaneWL].stride;
++   offset = info.planes[attrs.PlaneWL].offset;
++   fd = tbm_bo_export_fd(tbm_buf);
++
++   dri_image = dri2_dpy->image->createImageFromFds(dri2_dpy->dri_screen,
++                                                   info.width,
++                                                   info.height,
++                                                   fourcc,
++                                                   &fd,
++                                                   1,
++                                                   &pitch,
++                                                   &offset,
++                                                   tbm_surf);
++   close(fd);
++   if (dri_image == NULL) {
++      _eglError(EGL_BAD_PARAMETER, "createImageFromFds");
++      return NULL;
++   }
++
++   return dri2_create_image_from_dri(disp, dri_image);
++}
++#endif
++
++#ifdef HAVE_WAYLAND_PLATFORM
+ /* This structure describes how a wl_buffer maps to one or more
+  * __DRIimages.  A wl_drm_buffer stores the wl_drm format code and the
+  * offsets and strides of the planes in the buffer.  This table maps a
+@@ -3193,6 +3292,10 @@ dri2_create_image_khr(_EGLDisplay *disp, _EGLContext *ctx, EGLenum target,
+ #ifdef HAVE_WAYLAND_PLATFORM
+    case EGL_WAYLAND_BUFFER_WL:
+       return dri2_create_image_wayland_wl_buffer(disp, ctx, buffer, attr_list);
++#endif
++#ifdef HAVE_TIZEN_PLATFORM
++   case EGL_WAYLAND_BUFFER_WL:
++      return dri2_create_image_wayland_wl_buffer_tizen(disp, ctx, buffer, attr_list);
+ #endif
+    case EGL_CL_IMAGE_IMG:
+       return dri2_create_image_img_buffer(disp, ctx, target, buffer, attr_list);
+@@ -3214,6 +3317,78 @@ dri2_destroy_image_khr(_EGLDisplay *disp, _EGLImage *image)
+    return EGL_TRUE;
+ }
+ 
++#ifdef HAVE_TIZEN_PLATFORM
++
++static EGLint get_texture_format_from_gbm_format(tbm_format format)
++{
++   switch (format) {
++   case TBM_FORMAT_ARGB8888:
++      return EGL_TEXTURE_RGBA;
++   default:
++      _eglLog(_EGL_DEBUG, "%s: unsupported tbm format %#x", __func__, format);
++      return 0;
++   }
++}
++
++static EGLBoolean
++dri2_bind_wayland_display_wl_tizen(_EGLDisplay *disp, struct wl_display *wl_dpy)
++{
++   (void) disp;
++   (void) wl_dpy;
++
++   return EGL_TRUE;
++}
++
++static EGLBoolean
++dri2_unbind_wayland_display_wl_tizen(_EGLDisplay *disp,
++                                     struct wl_display *wl_dpy)
++{
++   (void) disp;
++   (void) wl_dpy;
++
++   return EGL_TRUE;
++}
++
++static EGLBoolean
++dri2_query_wayland_buffer_wl_tizen(_EGLDisplay *disp,
++                                   struct wl_resource *buffer_resource,
++                                   EGLint attribute, EGLint *value)
++{
++   struct dri2_egl_display *dri2_dpy = dri2_egl_display(disp);
++   tpl_handle_t pixmap = (tpl_handle_t) buffer_resource;
++   tbm_surface_h tbm_surf;
++   tbm_format format;
++   EGLint tex_format;
++
++   tbm_surf = tpl_display_get_buffer_from_native_pixmap(dri2_dpy->tpl_dpy,
++                                                        pixmap);
++   if (!tbm_surf)
++      return EGL_FALSE;
++
++   switch (attribute) {
++   case EGL_TEXTURE_FORMAT:
++      format = tbm_surface_get_format(tbm_surf);
++      tex_format = get_texture_format_from_gbm_format(format);
++      if (!tex_format)
++         return EGL_FALSE;
++
++      *value = tex_format;
++      break;
++   case EGL_WIDTH:
++      *value = tbm_surface_get_width(tbm_surf);
++      break;
++   case EGL_HEIGHT:
++      *value = tbm_surface_get_height(tbm_surf);
++      break;
++   default:
++      return EGL_FALSE;
++   }
++
++   return EGL_TRUE;
++}
++
++#endif
++
+ #ifdef HAVE_WAYLAND_PLATFORM
+ 
+ static void
+@@ -3755,6 +3930,11 @@ const _EGLDriver _eglDriver = {
+    .BindWaylandDisplayWL = dri2_bind_wayland_display_wl,
+    .UnbindWaylandDisplayWL = dri2_unbind_wayland_display_wl,
+    .QueryWaylandBufferWL = dri2_query_wayland_buffer_wl,
++#endif
++#ifdef HAVE_TIZEN_PLATFORM
++   .BindWaylandDisplayWL = dri2_bind_wayland_display_wl_tizen,
++   .UnbindWaylandDisplayWL = dri2_unbind_wayland_display_wl_tizen,
++   .QueryWaylandBufferWL = dri2_query_wayland_buffer_wl_tizen,
+ #endif
+    .GetSyncValuesCHROMIUM = dri2_get_sync_values_chromium,
+    .CreateSyncKHR = dri2_create_sync,
+diff --git a/src/egl/drivers/dri2/egl_dri2.h b/src/egl/drivers/dri2/egl_dri2.h
+index 6a7eede..a8bfe45 100644
+--- a/src/egl/drivers/dri2/egl_dri2.h
++++ b/src/egl/drivers/dri2/egl_dri2.h
+@@ -62,9 +62,9 @@ struct zwp_linux_dmabuf_v1;
+ #include <gbm_driint.h>
+ #endif
+ 
+-#ifdef HAVE_ANDROID_PLATFORM
+ #define LOG_TAG "EGL-DRI2"
+ 
++#ifdef HAVE_ANDROID_PLATFORM
+ #include <hardware/gralloc.h>
+ 
+ #if ANDROID_API_LEVEL >= 26
+@@ -75,6 +75,12 @@ struct zwp_linux_dmabuf_v1;
+ 
+ #endif /* HAVE_ANDROID_PLATFORM */
+ 
++#ifdef HAVE_TIZEN_PLATFORM
++#include <pthread.h>
++#include <tpl.h>
++#include <tbm_surface_internal.h>
++#endif
++
+ #include "eglconfig.h"
+ #include "eglcontext.h"
+ #include "egldevice.h"
+@@ -259,6 +265,10 @@ struct dri2_egl_display
+ 
+    bool                      is_render_node;
+    bool                      is_different_gpu;
++
++#ifdef HAVE_TIZEN_PLATFORM
++   tpl_display_t            *tpl_dpy;
++#endif
+ };
+ 
+ struct dri2_egl_context
+@@ -276,6 +286,18 @@ enum wayland_buffer_type {
+ };
+ #endif
+ 
++#define DRI2_SURFACE_NUM_COLOR_BUFFERS 4
++
++#ifdef HAVE_TIZEN_PLATFORM
++struct tpl_swap_queue_elem
++{
++   tbm_surface_h       tbm_surf;
++   EGLint             *rects;
++   EGLint              n_rects_max;
++   EGLint              n_rects;
++};
++#endif
++
+ struct dri2_egl_surface
+ {
+    _EGLSurface          base;
+@@ -308,15 +330,33 @@ struct dri2_egl_surface
+    struct gbm_dri_surface *gbm_surf;
+ #endif
+ 
++#ifdef HAVE_TIZEN_PLATFORM
++   tpl_surface_t         *tpl_surf;
++   bool                   reset;
++   /*
++    * Protects swap_queue_idx_head, swap_queue_idx_tail and
++    * color_buffers.locked.
++    */
++   pthread_mutex_t        mutex;
++   pthread_cond_t         swap_queue_cond;
++   struct tpl_swap_queue_elem swap_queue[DRI2_SURFACE_NUM_COLOR_BUFFERS];
++   int                    swap_queue_idx_head;
++   int                    swap_queue_idx_tail;
++   pthread_t              swap_queue_processor;
++#endif
++
+    /* EGL-owned buffers */
+    __DRIbuffer           *local_buffers[__DRI_BUFFER_COUNT];
+ 
+-#if defined(HAVE_WAYLAND_PLATFORM) || defined(HAVE_DRM_PLATFORM)
++#if defined(HAVE_WAYLAND_PLATFORM) || defined(HAVE_DRM_PLATFORM) || \
++    defined(HAVE_TIZEN_PLATFORM)
+    struct {
++#if defined(HAVE_WAYLAND_PLATFORM) || defined(HAVE_TIZEN_PLATFORM)
++      __DRIimage         *dri_image;
++#endif
+ #ifdef HAVE_WAYLAND_PLATFORM
+       struct wl_buffer   *wl_buffer;
+       bool                wl_release;
+-      __DRIimage         *dri_image;
+       /* for is_different_gpu case. NULL else */
+       __DRIimage         *linear_copy;
+       /* for swrast */
+@@ -325,6 +365,9 @@ struct dri2_egl_surface
+ #endif
+ #ifdef HAVE_DRM_PLATFORM
+       struct gbm_bo       *bo;
++#endif
++#ifdef HAVE_TIZEN_PLATFORM
++      tbm_surface_h       tbm_surf;
+ #endif
+       bool                locked;
+       int                 age;
+@@ -525,6 +568,11 @@ dri2_initialize_android(_EGLDisplay *disp)
+ EGLBoolean
+ dri2_initialize_surfaceless(_EGLDisplay *disp);
+ 
++#ifdef HAVE_TIZEN_PLATFORM
++EGLBoolean
++dri2_initialize_tizen(_EGLDisplay *disp);
++#endif
++
+ EGLBoolean
+ dri2_initialize_device(_EGLDisplay *disp);
+ static inline void
+@@ -559,6 +607,11 @@ dri2_set_WL_bind_wayland_display(_EGLDisplay *disp)
+ #endif
+ }
+ 
++#ifdef HAVE_TIZEN_PLATFORM
++int
++dri2_fourcc_from_tbm_format(tbm_format format);
++#endif
++
+ void
+ dri2_display_destroy(_EGLDisplay *disp);
+ 
+diff --git a/src/egl/drivers/dri2/platform_tizen.c b/src/egl/drivers/dri2/platform_tizen.c
+new file mode 100644
+index 0000000..a08bc8c
+--- /dev/null
++++ b/src/egl/drivers/dri2/platform_tizen.c
+@@ -0,0 +1,980 @@
++/*
++ * Mesa 3-D graphics library
++ *
++ * Copyright (c) Imagination Technologies Ltd.
++ * Copyright © 2011 Intel Corporation
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a
++ * copy of this software and associated documentation files (the "Software"),
++ * to deal in the Software without restriction, including without limitation
++ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
++ * and/or sell copies of the Software, and to permit persons to whom the
++ * Software is furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included
++ * in all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
++ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
++ * DEALINGS IN THE SOFTWARE.
++ */
++
++#include <dlfcn.h>
++#include <pthread.h>
++#include <stdio.h>
++#include <string.h>
++#include <tpl.h>
++#include <xf86drm.h>
++
++#include "egl_dri2.h"
++#include "loader.h"
++
++#define TIZEN_DRM_RENDER_MINOR_START 128
++#define TIZEN_DRM_RENDER_MINOR_MAX 191
++
++#define TIZEN_SWAP_N_RECTS_MIN 32
++
++struct rgba_shifts_and_sizes {
++   int shifts[4];
++   unsigned int sizes[4];
++};
++
++static void *swap_queue_processor_worker(void *data)
++{
++   struct dri2_egl_surface *dri2_surf = data;
++
++   pthread_mutex_lock(&dri2_surf->mutex);
++   while (1) {
++      struct tpl_swap_queue_elem *queue_elem;
++      int i;
++      tpl_result_t res;
++
++      if (dri2_surf->swap_queue_idx_head == dri2_surf->swap_queue_idx_tail) {
++         /* Wait for new swaps to be added to the queue */
++         pthread_cond_wait(&dri2_surf->swap_queue_cond, &dri2_surf->mutex);
++         continue;
++      }
++
++      queue_elem = &dri2_surf->swap_queue[dri2_surf->swap_queue_idx_head];
++      pthread_mutex_unlock(&dri2_surf->mutex);
++
++      res = tpl_surface_enqueue_buffer_with_damage(dri2_surf->tpl_surf,
++                                                   queue_elem->tbm_surf,
++                                                   queue_elem->n_rects,
++                                                   queue_elem->rects);
++      if (res != TPL_ERROR_NONE)
++         return NULL;
++
++      pthread_mutex_lock(&dri2_surf->mutex);
++      for (i = 0; i < ARRAY_SIZE(dri2_surf->color_buffers); i++) {
++         if (dri2_surf->color_buffers[i].tbm_surf == queue_elem->tbm_surf) {
++            dri2_surf->color_buffers[i].locked = false;
++            break;
++         }
++      }
++
++      dri2_surf->swap_queue_idx_head++;
++      dri2_surf->swap_queue_idx_head %= ARRAY_SIZE(dri2_surf->swap_queue);
++
++      /*
++       * Notify get_back_bo that a buffer has become available, reset_surface_cb
++       * that it may be able to reset the surface or dri2_tizen_destroy_surface
++       * that it may be able to proceed with surface destruction.
++       */
++      pthread_cond_signal(&dri2_surf->swap_queue_cond);
++   }
++   pthread_mutex_unlock(&dri2_surf->mutex);
++
++   return NULL;
++}
++
++static __DRIimage *
++create_image_from_native(struct dri2_egl_surface *dri2_surf,
++                         tbm_surface_h tbm_surf,
++                         int *width, int *height,
++                         void *loaderPrivate)
++{
++   _EGLSurface *surf = &dri2_surf->base;
++   struct dri2_egl_display *dri2_dpy = dri2_egl_display(surf->Resource.Display);
++   tbm_bo tbm_buf;
++   tbm_surface_info_s info;
++   int fd, fourcc, offset, pitch;
++   __DRIimage *dri_image;
++
++   tbm_buf = tbm_surface_internal_get_bo(tbm_surf, 0);
++   if (!tbm_buf) {
++      _eglLog(_EGL_DEBUG, "%s: failed to get bo for tbm surface", __func__);
++      return NULL;
++   }
++
++   if (tbm_surface_get_info(tbm_surf, &info)) {
++      _eglLog(_EGL_DEBUG, "%s: failed to get tbm surface info", __func__);
++      return NULL;
++   }
++
++   fd = tbm_bo_export_fd(tbm_buf);
++   fourcc = dri2_fourcc_from_tbm_format(info.format);
++   offset = info.planes[0].offset;
++   pitch = info.planes[0].stride;
++
++   dri_image = dri2_dpy->image->createImageFromFds(dri2_dpy->dri_screen,
++                                                   info.width,
++                                                   info.height,
++                                                   fourcc,
++                                                   &fd,
++                                                   1,
++                                                   &pitch,
++                                                   &offset,
++                                                   loaderPrivate);
++   close(fd);
++
++   if (!dri_image) {
++      _eglLog(_EGL_DEBUG, "%s: failed to create dri image from tbm bo", __func__);
++      return NULL;
++   }
++
++   if (width)
++      *width = info.width;
++
++   if (height)
++      *height = info.height;
++
++   return dri_image;
++}
++
++static int
++get_back_bo(struct dri2_egl_surface *dri2_surf, bool allow_update)
++{
++   struct dri2_egl_display *dri2_dpy =
++      dri2_egl_display(dri2_surf->base.Resource.Display);
++   tbm_surface_h tbm_surf;
++   tpl_bool_t tpl_surf_valid;
++   int i;
++
++   if (dri2_surf->base.Type == EGL_PIXMAP_BIT) {
++      _eglLog(_EGL_DEBUG, "%s: can't get back bo for pixmap surface", __func__);
++      return -1;
++   }
++
++   if (dri2_surf->back && !allow_update)
++      return 0;
++
++   /*
++    * If the tpl surface is no longer valid, e.g. it has been resized, then
++    * we should get a new back buffer.
++    */
++   tpl_surf_valid = tpl_surface_validate(dri2_surf->tpl_surf);
++   if (dri2_surf->back && tpl_surf_valid == TPL_TRUE)
++      return 0;
++
++   tbm_surf = tpl_surface_dequeue_buffer(dri2_surf->tpl_surf);
++   if (!tbm_surf) {
++      _eglLog(_EGL_DEBUG, "%s: surface buffer dequeue failed", __func__);
++      return -1;
++   }
++
++   pthread_mutex_lock(&dri2_surf->mutex);
++   /*
++    * If the tpl surface is no longer valid, e.g. it has been resized, then the
++    * call to tpl_surface should've resulted in a call to reset_surface_cb,
++    * which sets the dri2_surf reset flag. In this case we need to reset the
++    * color_buffer state.
++    *
++    * Note: we can't rely on the return value of tpl_surface_validate
++    * since the surface may have become invalid between this call and
++    * tpl_surface_dequeue_buffer.
++    */
++   if (dri2_surf->reset) {
++      /* Wait for any outstanding swaps to complete */
++      while (dri2_surf->swap_queue_idx_head != dri2_surf->swap_queue_idx_tail)
++         pthread_cond_wait(&dri2_surf->swap_queue_cond, &dri2_surf->mutex);
++
++      /* Cancel the old back buffer */
++      if (dri2_surf->back) {
++         tbm_surface_internal_unref(dri2_surf->back->tbm_surf);
++         dri2_surf->back->locked = false;
++         dri2_surf->back = NULL;
++      }
++
++      /* Reset the color buffers */
++      for (i = 0; i < ARRAY_SIZE(dri2_surf->color_buffers); i++) {
++         assert(!dri2_surf->color_buffers[i].locked);
++
++         if (dri2_surf->color_buffers[i].dri_image) {
++            dri2_dpy->image->destroyImage(dri2_surf->color_buffers[i].dri_image);
++            dri2_surf->color_buffers[i].dri_image = NULL;
++         }
++
++         dri2_surf->color_buffers[i].tbm_surf = NULL;
++         dri2_surf->color_buffers[i].age = 0;
++      }
++
++      dri2_surf->back = NULL;
++      dri2_surf->current = NULL;
++      dri2_surf->reset = false;
++   }
++
++   assert(!dri2_surf->back);
++
++   for (i = 0; i < ARRAY_SIZE(dri2_surf->color_buffers); i++) {
++      if (dri2_surf->color_buffers[i].tbm_surf == tbm_surf) {
++         dri2_surf->back = &dri2_surf->color_buffers[i];
++         assert(!dri2_surf->back->locked);
++         break;
++      }
++   }
++
++   while (!dri2_surf->back) {
++      int age;
++
++      /*
++       * Search for a free color buffer. Free the oldest buffer if one
++       * cannot be found.
++       */
++      for (i = 0, age = -1; i < ARRAY_SIZE(dri2_surf->color_buffers); i++) {
++         if (dri2_surf->color_buffers[i].locked)
++            continue;
++         if (!dri2_surf->color_buffers[i].dri_image) {
++            dri2_surf->back = &dri2_surf->color_buffers[i];
++            break;
++         }
++
++         if (dri2_surf->color_buffers[i].age > age) {
++            dri2_surf->back = &dri2_surf->color_buffers[i];
++            age = dri2_surf->color_buffers[i].age;
++         }
++      }
++
++      if (!dri2_surf->back) {
++         /*
++          * There aren't any available back buffers so wait for
++          * swap_queue_processor_worker to make one available.
++          */
++         pthread_cond_wait(&dri2_surf->swap_queue_cond, &dri2_surf->mutex);
++         continue;
++      }
++
++      if (dri2_surf->back->dri_image)
++         dri2_dpy->image->destroyImage(dri2_surf->back->dri_image);
++
++      dri2_surf->back->dri_image =
++         create_image_from_native(dri2_surf, tbm_surf,
++                                  &dri2_surf->base.Width,
++                                  &dri2_surf->base.Height,
++                                  dri2_surf);
++      if (!dri2_surf->back->dri_image) {
++         dri2_surf->back = NULL;
++         pthread_mutex_unlock(&dri2_surf->mutex);
++         return -1;
++      }
++   }
++
++   dri2_surf->back->tbm_surf = tbm_surf;
++   dri2_surf->back->locked = true;
++
++   if (dri2_surf->base.SwapBehavior == EGL_BUFFER_PRESERVED &&
++       dri2_surf->current) {
++      _EGLContext *ctx = _eglGetCurrentContext();
++      struct dri2_egl_context *dri2_ctx = dri2_egl_context(ctx);
++
++      if (dri2_ctx)
++      {
++         dri2_dpy->image->blitImage(dri2_ctx->dri_context,
++                                    dri2_surf->back->dri_image,
++                                    dri2_surf->current->dri_image,
++                                    0, 0, dri2_surf->base.Width,
++                                    dri2_surf->base.Height,
++                                    0, 0, dri2_surf->base.Width,
++                                    dri2_surf->base.Height,
++                                    __BLIT_FLAG_FLUSH);
++      }
++   }
++
++   pthread_mutex_unlock(&dri2_surf->mutex);
++
++   return 0;
++}
++
++static int
++get_front_bo(struct dri2_egl_surface *dri2_surf)
++{
++   struct dri2_egl_display *dri2_dpy =
++      dri2_egl_display(dri2_surf->base.Resource.Display);
++
++   if (dri2_surf->front)
++      return 0;
++
++   if (dri2_surf->base.Type == EGL_PIXMAP_BIT) {
++      tbm_surface_h tbm_surf;
++
++      tbm_surf = tpl_surface_dequeue_buffer(dri2_surf->tpl_surf);
++      if (!tbm_surf)
++         return -1;
++
++      dri2_surf->front = create_image_from_native(dri2_surf, tbm_surf,
++                                                  &dri2_surf->base.Width,
++                                                  &dri2_surf->base.Height,
++                                                  dri2_surf);
++   } else {
++      dri2_surf->front = dri2_dpy->image->createImage(dri2_dpy->dri_screen,
++                                                      dri2_surf->base.Width,
++                                                      dri2_surf->base.Height,
++                                                      dri2_surf->visual,
++                                                      0,
++                                                      dri2_surf);
++   }
++
++   return dri2_surf->front ? 0 : -1;
++}
++
++static _EGLSurface *
++create_surface(_EGLDisplay *dpy, _EGLConfig *config, EGLint type,
++               const EGLint *attrib_list)
++{
++   struct dri2_egl_display *dri2_dpy = dri2_egl_display(dpy);
++   struct dri2_egl_config *dri2_config = dri2_egl_config(config);
++   struct dri2_egl_surface *dri2_surf;
++   const __DRIconfig *dri_config;
++
++   dri2_surf = calloc(1, sizeof(*dri2_surf));
++   if (!dri2_surf) {
++      _eglError(EGL_BAD_ALLOC, "DRI2: failed to create surface");
++      return NULL;
++   }
++
++   if (!dri2_init_surface(&dri2_surf->base, dpy, type, config, attrib_list,
++                          false, NULL))
++      goto err_free_surface;
++
++   dri_config = dri2_get_dri_config(dri2_config, type,
++                                    dri2_surf->base.GLColorspace);
++   if (!dri_config) {
++      _eglError(EGL_BAD_MATCH, "Unsupported surfacetype/colorspace configuration");
++      goto err_free_surface;
++   }
++
++   dri2_surf->dri_drawable =
++      dri2_dpy->image_driver->createNewDrawable(dri2_dpy->dri_screen,
++                                                dri_config, dri2_surf);
++   if (!dri2_surf->dri_drawable) {
++      _eglError(EGL_BAD_ALLOC, "DRI2: failed to create drawable");
++      goto err_free_surface;
++   }
++
++   pthread_mutex_init(&dri2_surf->mutex, NULL);
++   pthread_cond_init(&dri2_surf->swap_queue_cond, NULL);
++
++   return &dri2_surf->base;
++
++err_free_surface:
++   free(dri2_surf);
++   return NULL;
++}
++
++static void
++destroy_surface(_EGLSurface *surf)
++{
++   struct dri2_egl_display *dri2_dpy = dri2_egl_display(surf->Resource.Display);
++   struct dri2_egl_surface *dri2_surf = dri2_egl_surface(surf);
++
++   pthread_cond_destroy(&dri2_surf->swap_queue_cond);
++   pthread_mutex_destroy(&dri2_surf->mutex);
++   dri2_dpy->core->destroyDrawable(dri2_surf->dri_drawable);
++   free(dri2_surf);
++}
++
++static void
++reset_surface_cb(void *data)
++{
++   struct dri2_egl_surface *dri2_surf = data;
++
++   dri2_surf->reset = true;
++}
++
++static _EGLSurface *
++dri2_tizen_create_window_surface(_EGLDisplay *dpy, _EGLConfig *config,
++                                 void *native_window, const EGLint *attrib_list)
++{
++   struct dri2_egl_display *dri2_dpy = dri2_egl_display(dpy);
++   struct dri2_egl_surface *dri2_surf;
++   _EGLSurface *surf;
++   int width, height;
++   tbm_format format;
++   tpl_result_t res;
++   int err;
++
++   surf = create_surface(dpy, config, EGL_WINDOW_BIT, attrib_list);
++   if (!surf)
++      return NULL;
++
++   res = tpl_display_get_native_window_info(dri2_dpy->tpl_dpy, native_window,
++                                            &width, &height, &format,
++                                            config->RedSize +
++                                            config->GreenSize +
++                                            config->BlueSize +
++                                            config->AlphaSize,
++                                            config->AlphaSize);
++   if (res != TPL_ERROR_NONE) {
++      _eglError(EGL_BAD_NATIVE_WINDOW, "DRI2: failed to get window info");
++      goto err_destroy_surface;
++   }
++
++   dri2_surf = dri2_egl_surface(surf);
++   dri2_surf->base.Width = width;
++   dri2_surf->base.Height = height;
++
++   dri2_surf->tpl_surf = tpl_surface_create(dri2_dpy->tpl_dpy, native_window,
++                                            TPL_SURFACE_TYPE_WINDOW, format);
++   if (!dri2_surf->tpl_surf) {
++      _eglError(EGL_BAD_ALLOC, "DRI2: failed to create TPL window surface");
++      goto err_destroy_surface;
++   }
++
++   res = tpl_surface_set_reset_cb(dri2_surf->tpl_surf, dri2_surf,
++                                  reset_surface_cb);
++   if (res != TPL_ERROR_NONE) {
++      _eglError(EGL_BAD_NATIVE_WINDOW,
++                "DRI2: failed to register TPL window surface reset callback");
++      goto err_tpl_surface_destroy;
++   }
++
++   err = pthread_create(&dri2_surf->swap_queue_processor, NULL,
++                        swap_queue_processor_worker, dri2_surf);
++   if (err) {
++      _eglError(EGL_BAD_ALLOC, "DRI2: failed to create TPL window thread");
++      goto err_tpl_surface_destroy;
++   }
++
++   return surf;
++
++err_tpl_surface_destroy:
++   tpl_object_unreference((tpl_object_t *) dri2_surf->tpl_surf);
++err_destroy_surface:
++   destroy_surface(surf);
++   return NULL;
++}
++
++static _EGLSurface *
++dri2_tizen_create_pixmap_surface(_EGLDisplay *dpy, _EGLConfig *config,
++                                 void *native_pixmap, const EGLint *attrib_list)
++{
++   struct dri2_egl_display *dri2_dpy = dri2_egl_display(dpy);
++   struct dri2_egl_surface *dri2_surf;
++   _EGLSurface *surf;
++   int width, height;
++   tbm_format format;
++   tpl_result_t res;
++
++   surf = create_surface(dpy, config, EGL_PIXMAP_BIT, attrib_list);
++   if (!surf)
++      return NULL;
++
++   res = tpl_display_get_native_pixmap_info(dri2_dpy->tpl_dpy, native_pixmap,
++                                            &width, &height, &format);
++   if (res != TPL_ERROR_NONE) {
++      _eglError(EGL_BAD_NATIVE_PIXMAP, "DRI2: failed to get pixmap info");
++      goto err_destroy_surface;
++   }
++
++   dri2_surf = dri2_egl_surface(surf);
++   dri2_surf->base.Width = width;
++   dri2_surf->base.Height = height;
++
++   dri2_surf->tpl_surf = tpl_surface_create(dri2_dpy->tpl_dpy, native_pixmap,
++                                            TPL_SURFACE_TYPE_PIXMAP, format);
++   if (!dri2_surf->tpl_surf) {
++      _eglError(EGL_BAD_ALLOC, "DRI2: failed to create TPL pixmap surface");
++      goto err_destroy_surface;
++   }
++
++   return surf;
++
++err_destroy_surface:
++   destroy_surface(surf);
++   return NULL;
++}
++
++static _EGLSurface *
++dri2_tizen_create_pbuffer_surface(_EGLDisplay *dpy, _EGLConfig *config,
++                                  const EGLint *attrib_list)
++{
++   struct dri2_egl_surface *dri2_surf;
++   _EGLSurface *surf;
++
++   surf = create_surface(dpy, config, EGL_PBUFFER_BIT, attrib_list);
++   if (!surf)
++      return NULL;
++
++   dri2_surf = dri2_egl_surface(surf);
++
++   if (config->RedSize == 5)
++      dri2_surf->visual = __DRI_IMAGE_FORMAT_RGB565;
++   else if (config->AlphaSize)
++      dri2_surf->visual = __DRI_IMAGE_FORMAT_ARGB8888;
++   else
++      dri2_surf->visual = __DRI_IMAGE_FORMAT_XRGB8888;
++
++   return surf;
++}
++
++static EGLBoolean
++dri2_tizen_destroy_surface(_EGLDisplay *dpy, _EGLSurface *surf)
++{
++   struct dri2_egl_display *dri2_dpy = dri2_egl_display(dpy);
++   struct dri2_egl_surface *dri2_surf = dri2_egl_surface(surf);
++   int i;
++
++   if (dri2_surf->swap_queue_processor) {
++      /* Wait for any outstanding swaps to complete */
++      pthread_mutex_lock(&dri2_surf->mutex);
++      while (dri2_surf->swap_queue_idx_head != dri2_surf->swap_queue_idx_tail)
++         pthread_cond_wait(&dri2_surf->swap_queue_cond, &dri2_surf->mutex);
++      pthread_mutex_unlock(&dri2_surf->mutex);
++
++      pthread_cancel(dri2_surf->swap_queue_processor);
++      pthread_join(dri2_surf->swap_queue_processor, NULL);
++   }
++
++   for (i = 0; i < ARRAY_SIZE(dri2_surf->swap_queue); i++)
++      free(dri2_surf->swap_queue[i].rects);
++
++   if (dri2_surf->front)
++      dri2_dpy->image->destroyImage(dri2_surf->front);
++
++   if (dri2_surf->back) {
++      tbm_surface_internal_unref(dri2_surf->back->tbm_surf);
++      dri2_surf->back->locked = false;
++   }
++
++   for (i = 0; i < ARRAY_SIZE(dri2_surf->color_buffers); i++) {
++      if (dri2_surf->color_buffers[i].dri_image)
++         dri2_dpy->image->destroyImage(dri2_surf->color_buffers[i].dri_image);
++      assert(!dri2_surf->color_buffers[i].locked);
++   }
++
++   if (dri2_surf->tpl_surf)
++      tpl_object_unreference((tpl_object_t *) dri2_surf->tpl_surf);
++
++   destroy_surface(surf);
++
++   return EGL_TRUE;
++}
++
++static EGLBoolean
++dri2_tizen_swap_interval(_EGLDisplay *dpy, _EGLSurface *surf, EGLint interval)
++{
++   struct dri2_egl_surface *dri2_surf = dri2_egl_surface(surf);
++   tpl_result_t res;
++
++   if (interval > surf->Config->MaxSwapInterval)
++      interval = surf->Config->MaxSwapInterval;
++   else if (interval < surf->Config->MinSwapInterval)
++      interval = surf->Config->MinSwapInterval;
++
++   if (interval == surf->SwapInterval)
++      return EGL_TRUE;
++
++   res = tpl_surface_set_post_interval(dri2_surf->tpl_surf, interval);
++   if (res == TPL_ERROR_NONE) {
++      surf->SwapInterval = interval;
++      return EGL_TRUE;
++   }
++
++   return EGL_FALSE;
++}
++
++static EGLBoolean
++dri2_tizen_swap_buffers_with_damage(_EGLDisplay *dpy, _EGLSurface *draw,
++                                    const EGLint *rects, EGLint n_rects)
++{
++   struct dri2_egl_surface *dri2_surf = dri2_egl_surface(draw);
++   struct tpl_swap_queue_elem *queue_elem;
++   int i;
++
++   if (dri2_surf->base.Type != EGL_WINDOW_BIT)
++      return EGL_TRUE;
++
++   for (i = 0; i < ARRAY_SIZE(dri2_surf->color_buffers); i++) {
++      if (draw->SwapBehavior == EGL_BUFFER_PRESERVED)
++         dri2_surf->color_buffers[i].age = 1;
++      else if (dri2_surf->color_buffers[i].age > 0)
++         dri2_surf->color_buffers[i].age++;
++   }
++
++   /*
++    * Make sure we have a back buffer in case we're swapping without ever
++    * rendering.
++    */
++   if (get_back_bo(dri2_surf, false) < 0) {
++      _eglError(EGL_BAD_ALLOC, "DRI2: failed to get back buffer");
++      return EGL_FALSE;
++   }
++
++   dri2_flush_drawable_for_swapbuffers(dpy, draw);
++
++   pthread_mutex_lock(&dri2_surf->mutex);
++   queue_elem =
++      &dri2_surf->swap_queue[dri2_surf->swap_queue_idx_tail];
++
++   queue_elem->tbm_surf = dri2_surf->back->tbm_surf;
++
++   /* Allocate space for damage rectangles in swap queue element if necessary */
++   if (queue_elem->n_rects_max < n_rects) {
++      free(queue_elem->rects);
++
++      if (!queue_elem->n_rects_max)
++         queue_elem->n_rects_max = TIZEN_SWAP_N_RECTS_MIN;
++
++      while (queue_elem->n_rects_max <= n_rects)
++         queue_elem->n_rects_max *= 2;
++
++      queue_elem->rects =
++         malloc(sizeof(*queue_elem->rects) * queue_elem->n_rects_max);
++      if (!queue_elem->rects) {
++         _eglError(EGL_BAD_ALLOC,
++                   "DRI2: failed to allocate space for damage rects");
++         queue_elem->n_rects_max = 0;
++         pthread_mutex_unlock(&dri2_surf->mutex);
++         return EGL_FALSE;
++      }
++   }
++
++   /* Copy damage rectangles into swap queue element */
++   STATIC_ASSERT(sizeof(*queue_elem->rects) == sizeof(*rects));
++   memcpy(&queue_elem->rects[0], &rects[0], sizeof(*rects) * n_rects);
++   queue_elem->n_rects = n_rects;
++
++   dri2_surf->swap_queue_idx_tail++;
++   dri2_surf->swap_queue_idx_tail %= ARRAY_SIZE(dri2_surf->color_buffers);
++
++   /* Notify swap_queue_processor_worker that there's new work */
++   pthread_cond_signal(&dri2_surf->swap_queue_cond);
++   pthread_mutex_unlock(&dri2_surf->mutex);
++
++   dri2_surf->back->age = 1;
++   dri2_surf->current = dri2_surf->back;
++   dri2_surf->back = NULL;
++
++   return EGL_TRUE;
++}
++
++static EGLBoolean
++dri2_tizen_swap_buffers(_EGLDisplay *dpy, _EGLSurface *draw)
++{
++   return dri2_tizen_swap_buffers_with_damage(dpy, draw, NULL, 0);
++}
++
++static EGLint
++dri2_tizen_query_buffer_age(_EGLDisplay *dpy, _EGLSurface *surface)
++{
++   struct dri2_egl_surface *dri2_surf = dri2_egl_surface(surface);
++
++   if (get_back_bo(dri2_surf, false) < 0) {
++      _eglError(EGL_BAD_ALLOC, "DRI2: failed to get back buffer");
++      return -1;
++   }
++
++   return dri2_surf->back->age;
++}
++
++
++static EGLBoolean
++dri2_tizen_query_surface(_EGLDisplay *dpy, _EGLSurface *surf,
++                         EGLint attribute, EGLint *value)
++{
++   struct dri2_egl_display *dri2_dpy = dri2_egl_display(dpy);
++   struct dri2_egl_surface *dri2_surf = dri2_egl_surface(surf);
++
++   switch (attribute) {
++   case EGL_WIDTH:
++   case EGL_HEIGHT:
++      if (dri2_surf->base.Type == EGL_WINDOW_BIT) {
++         tpl_handle_t window;
++         int width, height;
++         tbm_format format;
++         tpl_result_t res;
++
++         window = tpl_surface_get_native_handle(dri2_surf->tpl_surf);
++
++         res = tpl_display_get_native_window_info(dri2_dpy->tpl_dpy, window,
++                                                  &width, &height, &format,
++                                                  surf->Config->RedSize +
++                                                  surf->Config->GreenSize +
++                                                  surf->Config->BlueSize +
++                                                  surf->Config->AlphaSize,
++                                                  surf->Config->AlphaSize);
++         if (res == TPL_ERROR_NONE) {
++            surf->Width = width;
++            surf->Height = height;
++         }
++      }
++      break;
++   default:
++      break;
++   }
++
++   return _eglQuerySurface(dpy, surf, attribute, value);
++}
++
++
++static struct dri2_egl_display_vtbl dri2_tizen_display_vtbl = {
++   .create_window_surface = dri2_tizen_create_window_surface,
++   .create_pixmap_surface = dri2_tizen_create_pixmap_surface,
++   .create_pbuffer_surface = dri2_tizen_create_pbuffer_surface,
++   .destroy_surface = dri2_tizen_destroy_surface,
++   .create_image = dri2_create_image_khr,
++   .swap_interval = dri2_tizen_swap_interval,
++   .swap_buffers = dri2_tizen_swap_buffers,
++   .swap_buffers_with_damage = dri2_tizen_swap_buffers_with_damage,
++   .query_buffer_age = dri2_tizen_query_buffer_age,
++   .query_surface = dri2_tizen_query_surface,
++   .get_dri_drawable = dri2_surface_get_dri_drawable,
++};
++
++static int
++dri2_tizen_get_buffers(__DRIdrawable *driDrawable,
++                       unsigned int format,
++                       uint32_t *stamp,
++                       void *loaderPrivate,
++                       uint32_t buffer_mask,
++                       struct __DRIimageList *buffers)
++{
++   struct dri2_egl_surface *dri2_surf = loaderPrivate;
++
++   buffers->image_mask = 0;
++   buffers->front = NULL;
++   buffers->back = NULL;
++
++   if (buffer_mask & __DRI_IMAGE_BUFFER_FRONT)
++      if (get_front_bo(dri2_surf) < 0)
++         return 0;
++
++   if (buffer_mask & __DRI_IMAGE_BUFFER_BACK)
++      if (get_back_bo(dri2_surf, true) < 0)
++         return 0;
++
++   if (buffer_mask & __DRI_IMAGE_BUFFER_FRONT) {
++      buffers->front = dri2_surf->front;
++      buffers->image_mask |= __DRI_IMAGE_BUFFER_FRONT;
++   }
++
++   if (buffer_mask & __DRI_IMAGE_BUFFER_BACK) {
++      buffers->back = dri2_surf->back->dri_image;
++      buffers->image_mask |= __DRI_IMAGE_BUFFER_BACK;
++   }
++
++   return 1;
++}
++
++static void
++dri2_tizen_flush_front_buffer(__DRIdrawable * driDrawable, void *loaderPrivate)
++{
++}
++
++static const __DRIimageLoaderExtension tizen_image_loader_extension = {
++   .base             = { __DRI_IMAGE_LOADER, 1 },
++   .getBuffers       = dri2_tizen_get_buffers,
++   .flushFrontBuffer = dri2_tizen_flush_front_buffer,
++};
++
++static const __DRIextension *image_loader_extensions[] = {
++   &tizen_image_loader_extension.base,
++   &image_lookup_extension.base,
++   NULL,
++};
++
++static EGLBoolean
++dri2_tizen_add_configs(_EGLDisplay *dpy)
++{
++   struct dri2_egl_display *dri2_dpy = dri2_egl_display(dpy);
++   int count = 0;
++
++   for (unsigned i = 0; dri2_dpy->driver_configs[i]; i++) {
++      static const struct rgba_shifts_and_sizes pbuffer_sasa[] = {
++         {
++            /* ARGB8888 */
++            { 16, 8, 0, 24 },
++            { 8, 8, 8, 8 },
++         },
++         {
++            /* RGB888 */
++            { 16, 8, 0, -1 },
++            { 8, 8, 8, 0 },
++         },
++         {
++            /* RGB565 */
++            { 11, 5, 0, -1 },
++            { 5, 6, 5, 0 },
++         },
++      };
++      struct dri2_egl_config *dri2_cfg;
++      int shifts[4];
++      unsigned int sizes[4];
++      unsigned int caveat = 0;
++      int surface_type = 0;
++      tpl_bool_t is_slow;
++      EGLint attr_list[] = {
++         EGL_NATIVE_VISUAL_ID, 0,
++         EGL_CONFIG_CAVEAT, EGL_NONE,
++         EGL_NONE,
++      };
++      tpl_result_t res;
++
++      dri2_get_shifts_and_sizes(dri2_dpy->core, dri2_dpy->driver_configs[i],
++                                shifts, sizes);
++
++      dri2_dpy->core->getConfigAttrib(dri2_dpy->driver_configs[i],
++                                      __DRI_ATTRIB_BUFFER_SIZE, &depth);
++
++      dri2_dpy->core->getConfigAttrib(dri2_dpy->driver_configs[i],
++                                      __DRI_ATTRIB_CONFIG_CAVEAT, &caveat);
++
++      res = tpl_display_query_config(dri2_dpy->tpl_dpy, TPL_SURFACE_TYPE_WINDOW,
++                                     sizes[0], sizes[1], sizes[2], sizes[3],
++                                     depth, &attr_list[1], &is_slow);
++      if (res != TPL_ERROR_NONE)
++         continue;
++      surface_type |= EGL_WINDOW_BIT;
++
++      if (is_slow)
++         caveat |= __DRI_ATTRIB_SLOW_BIT;
++
++      res = tpl_display_query_config(dri2_dpy->tpl_dpy, TPL_SURFACE_TYPE_PIXMAP,
++                                     sizes[0], sizes[1], sizes[2], sizes[3],
++                                     depth, NULL, &is_slow);
++      if (res == TPL_ERROR_NONE) {
++         surface_type |= EGL_PIXMAP_BIT;
++
++         if (is_slow)
++            caveat |= __DRI_ATTRIB_SLOW_BIT;
++      }
++
++      for (unsigned j = 0; j < ARRAY_SIZE(pbuffer_sasa); j++) {
++         const struct rgba_shifts_and_sizes *pbuffer_sas = &pbuffer_sasa[j];
++
++         if (shifts[0] == pbuffer_sas->shifts[0] &&
++             shifts[1] == pbuffer_sas->shifts[1] &&
++             shifts[2] == pbuffer_sas->shifts[2] &&
++             shifts[3] == pbuffer_sas->shifts[3] &&
++             sizes[0] == pbuffer_sas->sizes[0] &&
++             sizes[1] == pbuffer_sas->sizes[1] &&
++             sizes[2] == pbuffer_sas->sizes[2] &&
++             sizes[3] == pbuffer_sas->sizes[3]) {
++            surface_type |= EGL_PBUFFER_BIT;
++            break;
++         }
++      }
++
++      if (dri2_dpy->image->base.version >= 9 && dri2_dpy->image->blitImage)
++         surface_type |= EGL_SWAP_BEHAVIOR_PRESERVED_BIT;
++
++      if (caveat & __DRI_ATTRIB_NON_CONFORMANT_CONFIG)
++         attr_list[3] = EGL_NON_CONFORMANT_CONFIG;
++      else if (caveat & __DRI_ATTRIB_SLOW_BIT)
++         attr_list[3] = EGL_SLOW_CONFIG;
++
++      dri2_cfg = dri2_add_config(dpy, dri2_dpy->driver_configs[i], count + 1,
++                                 surface_type, &attr_list[0], NULL, NULL);
++      if (dri2_cfg)
++         count++;
++   }
++
++   return count != 0;
++}
++
++EGLBoolean
++dri2_initialize_tizen(_EGLDisplay *dpy)
++{
++   struct dri2_egl_display *dri2_dpy;
++   int i;
++
++   dri2_dpy = calloc(1, sizeof(*dri2_dpy));
++   if (!dri2_dpy)
++      return _eglError(EGL_BAD_ALLOC, "DRI2: failed to create display");
++
++   dpy->DriverData = (void *) dri2_dpy;
++   dri2_dpy->fd = -1;
++
++   dri2_dpy->tpl_dpy =
++      tpl_display_create(TPL_BACKEND_UNKNOWN, dpy->PlatformDisplay);
++   if (!dri2_dpy->tpl_dpy) {
++      _eglError(EGL_NOT_INITIALIZED, "DRI2: failed to create tpl display");
++      goto cleanup;
++   }
++
++   for (i = TIZEN_DRM_RENDER_MINOR_START; i <= TIZEN_DRM_RENDER_MINOR_MAX; i++) {
++      char *render_path;
++
++      if (asprintf(&render_path, DRM_RENDER_DEV_NAME, DRM_DIR_NAME, i) < 0)
++         continue;
++
++      dri2_dpy->fd = loader_open_device(render_path);
++      free(render_path);
++      if (dri2_dpy->fd < 0)
++         continue;
++
++      dri2_dpy->driver_name = loader_get_driver_for_fd(dri2_dpy->fd);
++      if (dri2_dpy->driver_name) {
++         if (dri2_load_driver_dri3(dpy)) {
++            _EGLDevice *dev = _eglAddDevice(dri2_dpy->fd, false);
++            if (!dev) {
++               dlclose(dri2_dpy->driver);
++               _eglLog(_EGL_WARNING, "DRI2: failed to find EGLDevice");
++            } else {
++               dri2_dpy->own_device = 1;
++               dpy->Device = dev;
++               break;
++	    }
++         }
++
++         free(dri2_dpy->driver_name);
++         dri2_dpy->driver_name = NULL;
++      }
++
++      close(dri2_dpy->fd);
++      dri2_dpy->fd = -1;
++   }
++
++   if (dri2_dpy->fd < 0) {
++      _eglError(EGL_NOT_INITIALIZED, "DRI2: failed to load driver");
++      goto cleanup;
++   }
++
++   dri2_dpy->loader_extensions = &image_loader_extensions[0];
++
++   if (!dri2_create_screen(dpy)) {
++      _eglError(EGL_NOT_INITIALIZED, "DRI2: failed to create screen");
++      goto cleanup;
++   }
++
++   if (!dri2_setup_extensions(dpy))
++      goto cleanup;
++
++   dri2_setup_screen(dpy);
++
++   if (!dri2_tizen_add_configs(dpy)) {
++      _eglError(EGL_NOT_INITIALIZED, "DRI2: failed to add configs");
++      goto cleanup;
++   }
++
++   dpy->Extensions.EXT_buffer_age = EGL_TRUE;
++   dpy->Extensions.EXT_swap_buffers_with_damage = EGL_TRUE;
++   dpy->Extensions.KHR_image_base = EGL_TRUE;
++   dpy->Extensions.WL_bind_wayland_display = EGL_TRUE;
++
++   /*
++    * Fill vtbl last to prevent accidentally calling virtual function during
++    * initialization.
++    */
++   dri2_dpy->vtbl = &dri2_tizen_display_vtbl;
++
++   return EGL_TRUE;
++
++cleanup:
++   dri2_display_destroy(dpy);
++   return EGL_FALSE;
++}
+diff --git a/src/egl/main/eglapi.c b/src/egl/main/eglapi.c
+index 234449a..43c7b91 100644
+--- a/src/egl/main/eglapi.c
++++ b/src/egl/main/eglapi.c
+@@ -416,6 +416,13 @@ _eglGetPlatformDisplayCommon(EGLenum platform, void *native_display,
+    case EGL_PLATFORM_DEVICE_EXT:
+       disp = _eglGetDeviceDisplay(native_display, attrib_list);
+       break;
++#ifdef HAVE_TIZEN_PLATFORM
++   case EGL_PLATFORM_GBM_MESA:
++   case EGL_PLATFORM_WAYLAND_EXT:
++      disp = _eglGetTizenDisplay((struct gbm_device*) native_display,
++                                attrib_list);
++      break;
++#endif
+    default:
+       RETURN_EGL_ERROR(NULL, EGL_BAD_PARAMETER, NULL);
+    }
+diff --git a/src/egl/main/egldisplay.c b/src/egl/main/egldisplay.c
+index 765618f..486ac3b 100644
+--- a/src/egl/main/egldisplay.c
++++ b/src/egl/main/egldisplay.c
+@@ -77,6 +77,7 @@ static const struct {
+    { _EGL_PLATFORM_HAIKU, "haiku" },
+    { _EGL_PLATFORM_SURFACELESS, "surfaceless" },
+    { _EGL_PLATFORM_DEVICE, "device" },
++   { _EGL_PLATFORM_TIZEN, "tizen" },
+ };
+ 
+ 
+@@ -107,6 +108,17 @@ _eglGetNativePlatformFromEnv(void)
+       }
+    }
+ 
++#ifdef HAVE_TIZEN_PLATFORM
++   switch (plat) {
++   case _EGL_PLATFORM_DRM:
++   case _EGL_PLATFORM_WAYLAND:
++      plat = _EGL_PLATFORM_TIZEN;
++      break;
++   default:
++      break;
++   }
++#endif
++
+    if (plat == _EGL_INVALID_PLATFORM)
+       _eglLog(_EGL_WARNING, "invalid EGL_PLATFORM given");
+ 
+@@ -120,6 +132,7 @@ _eglGetNativePlatformFromEnv(void)
+ static _EGLPlatformType
+ _eglNativePlatformDetectNativeDisplay(void *nativeDisplay)
+ {
++#ifndef HAVE_TIZEN_PLATFORM
+    if (nativeDisplay == EGL_DEFAULT_DISPLAY)
+       return _EGL_INVALID_PLATFORM;
+ 
+@@ -141,7 +154,7 @@ _eglNativePlatformDetectNativeDisplay(void *nativeDisplay)
+          return _EGL_PLATFORM_DRM;
+ #endif
+    }
+-
++#endif
+    return _EGL_INVALID_PLATFORM;
+ }
+ 
+@@ -595,6 +608,23 @@ _eglGetAndroidDisplay(void *native_display,
+ }
+ #endif /* HAVE_ANDROID_PLATFORM */
+ 
++#ifdef HAVE_TIZEN_PLATFORM
++_EGLDisplay*
++_eglGetTizenDisplay(void *native_display,
++                    const EGLint *attrib_list)
++{
++   /* EGL_MESA_platform_gbm and EGL_EXT_platform_wayland recognizes no
++    * attributes. */
++   if (attrib_list != NULL && attrib_list[0] != EGL_NONE) {
++      _eglError(EGL_BAD_ATTRIBUTE, "eglGetPlatformDisplay");
++      return NULL;
++   }
++
++   return _eglFindDisplay(_EGL_PLATFORM_TIZEN, native_display,
++                          attrib_list);
++}
++#endif /* HAVE_TIZEN_PLATFORM */
++
+ _EGLDisplay*
+ _eglGetDeviceDisplay(void *native_display,
+                      const EGLAttrib *attrib_list)
+diff --git a/src/egl/main/egldisplay.h b/src/egl/main/egldisplay.h
+index 5b05dcc..cbb0983 100644
+--- a/src/egl/main/egldisplay.h
++++ b/src/egl/main/egldisplay.h
+@@ -52,6 +52,7 @@ enum _egl_platform_type {
+    _EGL_PLATFORM_HAIKU,
+    _EGL_PLATFORM_SURFACELESS,
+    _EGL_PLATFORM_DEVICE,
++   _EGL_PLATFORM_TIZEN,
+ 
+    _EGL_NUM_PLATFORMS,
+    _EGL_INVALID_PLATFORM = -1
+@@ -329,6 +330,12 @@ _eglGetAndroidDisplay(void *native_display,
+                          const EGLAttrib *attrib_list);
+ #endif
+ 
++#ifdef HAVE_TIZEN_PLATFORM
++_EGLDisplay*
++_eglGetTizenDisplay(void *native_display,
++                    const EGLint *attrib_list);
++#endif
++
+ _EGLDisplay*
+ _eglGetDeviceDisplay(void *native_display,
+                      const EGLAttrib *attrib_list);
+diff --git a/src/egl/main/egllog.c b/src/egl/main/egllog.c
+index 6a91952..973b760 100644
+--- a/src/egl/main/egllog.c
++++ b/src/egl/main/egllog.c
+@@ -46,15 +46,17 @@
+ 
+ #include "egllog.h"
+ 
+-#ifdef HAVE_ANDROID_PLATFORM
+ #define LOG_TAG "EGL-MAIN"
++
++#ifdef HAVE_ANDROID_PLATFORM
+ #if ANDROID_API_LEVEL >= 26
+ #include <log/log.h>
+ #else
+ #include <cutils/log.h>
+ #endif /* use log/log.h start from android 8 major version */
+-
+-#endif /* HAVE_ANDROID_PLATFORM */
++#elif defined(HAVE_TIZEN_PLATFORM)
++#include <dlog.h>
++#endif /* HAVE_TIZEN_PLATFORM */
+ 
+ #define MAXSTRING 1000
+ #define FALLBACK_LOG_LEVEL _EGL_WARNING
+@@ -93,9 +95,26 @@ _eglDefaultLogger(EGLint level, const char *msg)
+       [_EGL_DEBUG] = ANDROID_LOG_DEBUG,
+    };
+    LOG_PRI(egl2alog[level], LOG_TAG, "%s", msg);
++#elif defined(HAVE_TIZEN_PLATFORM)
++   switch (level) {
++   case _EGL_DEBUG:
++      LOGD("%s", msg);
++      break;
++   case _EGL_INFO:
++      LOGI("%s", msg);
++      break;
++   case _EGL_WARNING:
++      LOGW("%s", msg);
++      break;
++   case _EGL_FATAL:
++      LOGF("%s", msg);
++      break;
++   default:
++      break;
++   }
+ #else
+    fprintf(stderr, "libEGL %s: %s\n", level_strings[level], msg);
+-#endif /* HAVE_ANDROID_PLATFORM */
++#endif /* HAVE_TIZEN_PLATFORM */
+ }
+ 
+ 
+diff --git a/src/egl/meson.build b/src/egl/meson.build
+index ab8f4e1..5749ec8 100644
+--- a/src/egl/meson.build
++++ b/src/egl/meson.build
+@@ -106,7 +106,7 @@ if with_dri2
+     endif
+     deps_for_egl += [dep_x11_xcb, dep_xcb_dri2, dep_xcb_xfixes]
+   endif
+-  if with_gbm and not with_platform_android
++  if with_gbm and not with_platform_android and not with_platform_tizen
+     files_egl += files('drivers/dri2/platform_drm.c')
+     link_for_egl += libgbm
+     incs_for_egl += [inc_gbm, include_directories('../gbm/main')]
+@@ -141,6 +141,11 @@ elif with_platform_haiku
+   link_for_egl += libgl
+   deps_for_egl += cpp.find_library('be')
+ endif
++if with_platform_tizen
++  files_egl += files('drivers/dri2/platform_tizen.c')
++  incs_for_egl += [inc_loader]
++  deps_for_egl += [dep_tizen, dep_libdrm]
++endif
+ 
+ if cc.has_function('mincore')
+   c_args_for_egl += '-DHAVE_MINCORE'

@@ -1,0 +1,62 @@
+From 5e54d8fe1f2daab845340cf7ad519b85ad27fb27 Mon Sep 17 00:00:00 2001
+From: brendan King <Brendan.King@imgtec.com>
+Date: Mon, 2 Aug 2021 11:21:16 +0100
+Subject: [PATCH] vulkan/wsi: enable additional formats for Wayland
+
+Add VK_FORMAT_R5G6B5_UNORM_PACK16.
+
+This is for compatibility with IMG WSI.
+
+---
+ src/vulkan/wsi/wsi_common_wayland.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/vulkan/wsi/wsi_common_wayland.c b/src/vulkan/wsi/wsi_common_wayland.c
+index 1109d3f..e520aa9 100644
+--- a/src/vulkan/wsi/wsi_common_wayland.c
++++ b/src/vulkan/wsi/wsi_common_wayland.c
+@@ -68,6 +68,7 @@ struct wsi_wl_display_dmabuf {
+    struct {
+       struct u_vector                           argb8888;
+       struct u_vector                           xrgb8888;
++      struct u_vector                           rgb565;
+    } modifiers;
+ };
+ 
+@@ -441,6 +442,9 @@ dmabuf_handle_modifier(void *data, struct zwp_linux_dmabuf_v1 *dmabuf,
+    case WL_DRM_FORMAT_XRGB8888:
+       modifiers = &display->dmabuf.modifiers.xrgb8888;
+       break;
++   case WL_DRM_FORMAT_RGB565:
++      modifiers = &display->dmabuf.modifiers.rgb565;
++      break;
+    default:
+       return; /* Unsupported format */
+    }
+@@ -527,6 +531,7 @@ wsi_wl_display_finish(struct wsi_wl_display *display)
+    u_vector_finish(&display->dmabuf.formats);
+    u_vector_finish(&display->dmabuf.modifiers.argb8888);
+    u_vector_finish(&display->dmabuf.modifiers.xrgb8888);
++   u_vector_finish(&display->dmabuf.modifiers.rgb565);
+    if (display->swrast.wl_shm)
+       wl_shm_destroy(display->swrast.wl_shm);
+    if (display->drm.wl_drm)
+@@ -563,6 +568,8 @@ wsi_wl_display_init(struct wsi_wayland *wsi_wl,
+           !u_vector_init(&display->dmabuf.modifiers.argb8888,
+                          sizeof(uint64_t), 32) ||
+           !u_vector_init(&display->dmabuf.modifiers.xrgb8888,
++                         sizeof(uint64_t), 32) ||
++          !u_vector_init(&display->dmabuf.modifiers.rgb565,
+                          sizeof(uint64_t), 32)) {
+          result = VK_ERROR_OUT_OF_HOST_MEMORY;
+          goto fail;
+@@ -1356,6 +1363,9 @@ wsi_wl_surface_create_swapchain(VkIcdSurfaceBase *icd_surface,
+       case WL_DRM_FORMAT_XRGB8888:
+          modifiers = &chain->display->dmabuf.modifiers.xrgb8888;
+          break;
++      case WL_DRM_FORMAT_RGB565:
++         modifiers = &chain->display->dmabuf.modifiers.rgb565;
++         break;
+       default:
+          modifiers = NULL;
+          break;

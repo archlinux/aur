@@ -1,0 +1,180 @@
+From fa99f7580504ea68bf36cf1f0dcf7cdcd0338916 Mon Sep 17 00:00:00 2001
+From: Luigi Santivetti <luigi.santivetti@imgtec.com>
+Date: Thu, 12 Aug 2021 00:55:46 +0100
+Subject: [PATCH] mesa/main: dri: add YUV420_3PLANE and YVU420_3PLANE
+
+---
+ include/GL/internal/dri_interface.h    |  2 ++
+ src/gallium/include/pipe/p_format.h    |  3 +++
+ src/mesa/drivers/dri/common/utils.c    | 18 ++++++++++++++++++
+ src/mesa/drivers/dri/pvr/dri_support.h |  2 ++
+ src/mesa/drivers/dri/pvr/pvrutil.c     | 13 +++++++++++++
+ src/mesa/main/format_info.py           |  2 +-
+ src/mesa/main/formats.c                |  2 ++
+ src/mesa/main/formats.csv              |  2 ++
+ src/mesa/main/formats.h                |  6 ++++++
+ 9 files changed, 49 insertions(+), 1 deletion(-)
+
+diff --git a/include/GL/internal/dri_interface.h b/include/GL/internal/dri_interface.h
+index 080d191..7d9a1bd 100644
+--- a/include/GL/internal/dri_interface.h
++++ b/include/GL/internal/dri_interface.h
+@@ -1424,6 +1424,8 @@ struct __DRIdri2ExtensionRec {
+ #define __DRI_IMAGE_FORMAT_BGR888       0x101a
+ #define __DRI_IMAGE_FORMAT_NV12         0x101b
+ #define __DRI_IMAGE_FORMAT_NV21         0x101c
++#define __DRI_IMAGE_FORMAT_YU12         0x101d
++#define __DRI_IMAGE_FORMAT_YV12         0x101e
+ 
+ #define __DRI_IMAGE_USE_SHARE		0x0001
+ #define __DRI_IMAGE_USE_SCANOUT		0x0002
+diff --git a/src/gallium/include/pipe/p_format.h b/src/gallium/include/pipe/p_format.h
+index fd65337..970f075 100644
+--- a/src/gallium/include/pipe/p_format.h
++++ b/src/gallium/include/pipe/p_format.h
+@@ -516,6 +516,9 @@ enum pipe_format {
+    PIPE_FORMAT_YUV420_2PLANE,
+    PIPE_FORMAT_YVU420_2PLANE,
+ 
++   PIPE_FORMAT_YUV420_3PLANE,
++   PIPE_FORMAT_YVU420_3PLANE,
++
+    PIPE_FORMAT_COUNT
+ };
+ 
+diff --git a/src/mesa/drivers/dri/common/utils.c b/src/mesa/drivers/dri/common/utils.c
+index d268dc4..df5f8cb 100644
+--- a/src/mesa/drivers/dri/common/utils.c
++++ b/src/mesa/drivers/dri/common/utils.c
+@@ -330,6 +330,24 @@ driCreateConfigs(mesa_format format,
+       yuv_subsample = __DRI_ATTRIB_YUV_SUBSAMPLE_4_2_0_BIT;
+       yuv_plane_bpp = __DRI_ATTRIB_YUV_PLANE_BPP_8_BIT;
+       break;
++   case MESA_FORMAT_YUV420_3PLANE:
++      masks = format_table[11].masks;
++      shifts = format_table[11].shifts;
++      is_yuv = true; /* FIXME: This should come from formats_info.py */
++      yuv_order = __DRI_ATTRIB_YUV_ORDER_YUV_BIT;
++      yuv_num_planes = 3;
++      yuv_subsample = __DRI_ATTRIB_YUV_SUBSAMPLE_4_2_0_BIT;
++      yuv_plane_bpp = __DRI_ATTRIB_YUV_PLANE_BPP_8_BIT;
++      break;
++   case MESA_FORMAT_YVU420_3PLANE:
++      masks = format_table[11].masks;
++      shifts = format_table[11].shifts;
++      is_yuv = true; /* FIXME: This should come from formats_info.py */
++      yuv_order = __DRI_ATTRIB_YUV_ORDER_YVU_BIT;
++      yuv_num_planes = 3;
++      yuv_subsample = __DRI_ATTRIB_YUV_SUBSAMPLE_4_2_0_BIT;
++      yuv_plane_bpp = __DRI_ATTRIB_YUV_PLANE_BPP_8_BIT;
++      break;
+    default:
+       fprintf(stderr, "[%s:%u] Unknown framebuffer type %s (%d).\n",
+               __func__, __LINE__,
+diff --git a/src/mesa/drivers/dri/pvr/dri_support.h b/src/mesa/drivers/dri/pvr/dri_support.h
+index 6314104..51524a9 100644
+--- a/src/mesa/drivers/dri/pvr/dri_support.h
++++ b/src/mesa/drivers/dri/pvr/dri_support.h
+@@ -92,6 +92,8 @@ typedef enum
+ #define PVRDRI_MESA_FORMAT_YVU420_2PLANE	8
+ #define PVRDRI_MESA_FORMAT_B8G8R8A8_SRGB	9
+ #define PVRDRI_MESA_FORMAT_R8G8B8A8_SRGB	10
++#define PVRDRI_MESA_FORMAT_YUV420_3PLANE	11
++#define PVRDRI_MESA_FORMAT_YVU420_3PLANE	12
+ 
+ typedef struct __DRIimageRec __DRIimage;
+ 
+diff --git a/src/mesa/drivers/dri/pvr/pvrutil.c b/src/mesa/drivers/dri/pvr/pvrutil.c
+index d107a5d..ee11ac5 100644
+--- a/src/mesa/drivers/dri/pvr/pvrutil.c
++++ b/src/mesa/drivers/dri/pvr/pvrutil.c
+@@ -118,6 +118,10 @@ PVRDRIMesaFormatToMesaFormat(int pvrdri_mesa_format)
+       return MESA_FORMAT_B8G8R8A8_SRGB;
+    case PVRDRI_MESA_FORMAT_R8G8B8A8_SRGB:
+       return MESA_FORMAT_R8G8B8A8_SRGB;
++   case PVRDRI_MESA_FORMAT_YUV420_3PLANE:
++         return MESA_FORMAT_YUV420_3PLANE;
++   case PVRDRI_MESA_FORMAT_YVU420_3PLANE:
++         return MESA_FORMAT_YVU420_3PLANE;
+    default:
+       __driUtilMessage("%s: Unknown format: %d", __func__, pvrdri_mesa_format);
+       break;
+@@ -178,6 +182,11 @@ PVRDRIFormatToFourCC(int dri_format)
+       return DRM_FORMAT_NV12;
+    case __DRI_IMAGE_FORMAT_NV21:
+       return DRM_FORMAT_NV21;
++   case __DRI_IMAGE_FORMAT_YU12:
++      return DRM_FORMAT_YUV420;
++   case __DRI_IMAGE_FORMAT_YV12:
++      return DRM_FORMAT_YVU420;
++
+    default:
+       __driUtilMessage("%s: Unknown format: %d", __func__, dri_format);
+       break;
+@@ -238,6 +247,10 @@ PVRDRIFourCCToDRIFormat(int iFourCC)
+       return __DRI_IMAGE_FORMAT_NV12;
+    case DRM_FORMAT_NV21:
+       return __DRI_IMAGE_FORMAT_NV21;
++   case DRM_FORMAT_YUV420:
++      return __DRI_IMAGE_FORMAT_YU12;
++   case DRM_FORMAT_YVU420:
++      return __DRI_IMAGE_FORMAT_YV12;
+    default:
+       __driUtilMessage("%s: Unknown format: %d", __func__, iFourCC);
+       break;
+diff --git a/src/mesa/main/format_info.py b/src/mesa/main/format_info.py
+index d58403e..bc18db7 100644
+--- a/src/mesa/main/format_info.py
++++ b/src/mesa/main/format_info.py
+@@ -29,7 +29,7 @@ import sys
+ def get_gl_base_format(fmat):
+    if fmat.name == 'MESA_FORMAT_NONE':
+       return 'GL_NONE'
+-   elif fmat.name in ['MESA_FORMAT_YCBCR', 'MESA_FORMAT_YCBCR_REV', 'MESA_FORMAT_YUV420_2PLANE', 'MESA_FORMAT_YVU420_2PLANE']:
++   elif fmat.name in ['MESA_FORMAT_YCBCR', 'MESA_FORMAT_YCBCR_REV', 'MESA_FORMAT_YUV420_2PLANE', 'MESA_FORMAT_YVU420_2PLANE', 'MESA_FORMAT_YUV420_3PLANE', 'MESA_FORMAT_YVU420_3PLANE']:
+       return 'GL_YCBCR_MESA'
+    elif fmat.has_channel('r'):
+       if fmat.has_channel('g'):
+diff --git a/src/mesa/main/formats.c b/src/mesa/main/formats.c
+index f81caec..d7b0d0a 100644
+--- a/src/mesa/main/formats.c
++++ b/src/mesa/main/formats.c
+@@ -1455,6 +1455,8 @@ _mesa_format_matches_format_and_type(mesa_format mformat,
+    switch (mformat) {
+    case MESA_FORMAT_YUV420_2PLANE:
+    case MESA_FORMAT_YVU420_2PLANE:
++   case MESA_FORMAT_YUV420_3PLANE:
++   case MESA_FORMAT_YVU420_3PLANE:
+       return false;
+ 
+    default:
+diff --git a/src/mesa/main/formats.csv b/src/mesa/main/formats.csv
+index b2d4765..825443b 100644
+--- a/src/mesa/main/formats.csv
++++ b/src/mesa/main/formats.csv
+@@ -94,6 +94,8 @@ MESA_FORMAT_YCBCR                         , other , 1, 1, 1, x16 ,     ,     ,
+ MESA_FORMAT_YCBCR_REV                     , other , 1, 1, 1, x16 ,     ,     ,     , xyzw, yuv
+ MESA_FORMAT_YUV420_2PLANE                 , other , 1, 1, 1, x8  ,     ,     ,     , y___, yuv
+ MESA_FORMAT_YVU420_2PLANE                 , other , 1, 1, 1, x8  ,     ,     ,     , y___, yuv
++MESA_FORMAT_YUV420_3PLANE                 , other , 1, 1, 1, x8  ,     ,     ,     , y___, yuv
++MESA_FORMAT_YVU420_3PLANE                 , other , 1, 1, 1, x8  ,     ,     ,     , y___, yuv
+ 
+ MESA_FORMAT_RG_RB_UNORM8                  , other , 2, 1, 1, x16 ,     ,     ,     , xyz1, rgb
+ MESA_FORMAT_GR_BR_UNORM8                  , other , 2, 1, 1, x16 ,     ,     ,     , xyz1, rgb
+diff --git a/src/mesa/main/formats.h b/src/mesa/main/formats.h
+index 0e778d6..1ab03d2 100644
+--- a/src/mesa/main/formats.h
++++ b/src/mesa/main/formats.h
+@@ -624,6 +624,12 @@ typedef enum pipe_format mesa_format;
+ #define HAVE_MESA_FORMAT_YVU420_2PLANE
+ #define MESA_FORMAT_YVU420_2PLANE                PIPE_FORMAT_YVU420_2PLANE
+ 
++#define HAVE_MESA_FORMAT_YUV420_3PLANE
++#define MESA_FORMAT_YUV420_3PLANE                PIPE_FORMAT_YUV420_3PLANE
++
++#define HAVE_MESA_FORMAT_YVU420_3PLANE
++#define MESA_FORMAT_YVU420_3PLANE                PIPE_FORMAT_YVU420_3PLANE
++
+ #define MESA_FORMAT_COUNT                        PIPE_FORMAT_COUNT
+ 
+ /* Packed to array format adapters */

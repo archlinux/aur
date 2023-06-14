@@ -1,0 +1,52 @@
+From bad7401b26d84646293aef242c710af5f2addf06 Mon Sep 17 00:00:00 2001
+From: Brendan King <Brendan.King@imgtec.com>
+Date: Thu, 23 Nov 2017 15:50:21 +0000
+Subject: [PATCH] dri: use a supported API in driCreateNewContext
+
+Don't assume the screen supports OpenGL when creating a new context,
+use an API that the screen supports.
+
+---
+ src/mesa/drivers/dri/common/dri_util.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/src/mesa/drivers/dri/common/dri_util.c b/src/mesa/drivers/dri/common/dri_util.c
+index caed5fa..6c45eb0 100644
+--- a/src/mesa/drivers/dri/common/dri_util.c
++++ b/src/mesa/drivers/dri/common/dri_util.c
+@@ -50,6 +50,7 @@
+ #include "main/debug_output.h"
+ #include "main/errors.h"
+ #include "main/macros.h"
++#include "util/bitscan.h"
+ 
+ driOptionDescription __dri2ConfigOptions[] = {
+       DRI_CONF_SECTION_DEBUG
+@@ -332,7 +333,11 @@ driCreateContextAttribs(__DRIscreen *screen, int api,
+ 	mesa_api = API_OPENGLES;
+ 	break;
+     case __DRI_API_GLES2:
++	ctx_config.major_version = 2;
++	mesa_api = API_OPENGLES2;
++	break;
+     case __DRI_API_GLES3:
++	ctx_config.major_version = 3;
+ 	mesa_api = API_OPENGLES2;
+ 	break;
+     case __DRI_API_OPENGL_CORE:
+@@ -515,7 +520,14 @@ static __DRIcontext *
+ driCreateNewContext(__DRIscreen *screen, const __DRIconfig *config,
+                     __DRIcontext *shared, void *data)
+ {
+-    return driCreateNewContextForAPI(screen, __DRI_API_OPENGL,
++    int apifs;
++
++    apifs = ffs(screen->api_mask);
++
++    if (!apifs)
++        return NULL;
++
++    return driCreateNewContextForAPI(screen, apifs - 1,
+                                      config, shared, data);
+ }
+ 

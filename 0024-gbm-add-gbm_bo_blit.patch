@@ -1,0 +1,222 @@
+From 689befeb2523bc1244efda8de8585e079de47e6f Mon Sep 17 00:00:00 2001
+From: Brendan King <Brendan.King@imgtec.com>
+Date: Tue, 28 Nov 2017 16:27:38 +0000
+Subject: [PATCH] gbm: add gbm_bo_blit
+
+For the GBM DRI backend, gbm_bo_blit is a wrapper around blitImage in
+the DRI Image extension.
+
+---
+ src/gbm/backends/dri/gbm_dri.c | 33 +++++++++++++++++++++++++++++++++
+ src/gbm/main/gbm.c             | 31 +++++++++++++++++++++++++++++++
+ src/gbm/main/gbm.h             | 21 +++++++++++++++++++++
+ src/gbm/main/gbm_abi_check.c   | 20 +++++++++++++++++++-
+ src/gbm/main/gbm_backend_abi.h | 10 +++++++++-
+ 5 files changed, 113 insertions(+), 2 deletions(-)
+
+diff --git a/src/gbm/backends/dri/gbm_dri.c b/src/gbm/backends/dri/gbm_dri.c
+index 96fa921..bd8a80c 100644
+--- a/src/gbm/backends/dri/gbm_dri.c
++++ b/src/gbm/backends/dri/gbm_dri.c
+@@ -1355,6 +1355,37 @@ gbm_dri_surface_destroy(struct gbm_surface *_surf)
+    free(surf);
+ }
+ 
++static int
++gbm_dri_bo_blit(struct gbm_bo *_dst_bo, struct gbm_bo *_src_bo,
++                int dst_x0, int dst_y0, int dst_width, int dst_height,
++                int src_x0, int src_y0, int src_width, int src_height,
++                enum gbm_blit_flags flags)
++{
++   struct gbm_dri_device *dri = gbm_dri_device(_dst_bo->gbm);
++   struct gbm_dri_bo *dst_bo = gbm_dri_bo(_dst_bo);
++   struct gbm_dri_bo *src_bo = gbm_dri_bo(_src_bo);
++
++   if (!dri->image || dri->image->base.version < 9 || !dri->image->blitImage) {
++      errno = ENOSYS;
++      return 0;
++   }
++
++   mtx_lock(&dri->mutex);
++   if (!dri->context)
++      dri->context = dri->dri2->createNewContext(dri->screen, NULL,
++                                                 NULL, NULL);
++   assert(dri->context);
++   mtx_unlock(&dri->mutex);
++
++   /* GBM flags and DRI flags are the same, so just pass them on */
++   dri->image->blitImage(dri->context, dst_bo->image, src_bo->image,
++                         dst_x0, dst_y0, dst_width, dst_height,
++                         src_x0, src_y0, src_width, src_height,
++                         flags);
++
++   return 1;
++}
++
+ static void
+ dri_destroy(struct gbm_device *gbm)
+ {
+@@ -1416,6 +1447,8 @@ dri_device_create(int fd, uint32_t gbm_backend_version)
+ 
+    dri->base.v0.name = "drm";
+ 
++   dri->base.v1.bo_blit = gbm_dri_bo_blit;
++
+    dri->visual_table = gbm_dri_visuals_table;
+    dri->num_visuals = ARRAY_SIZE(gbm_dri_visuals_table);
+ 
+diff --git a/src/gbm/main/gbm.c b/src/gbm/main/gbm.c
+index d81931a..e2351d3 100644
+--- a/src/gbm/main/gbm.c
++++ b/src/gbm/main/gbm.c
+@@ -758,6 +758,37 @@ gbm_format_get_name(uint32_t gbm_format, struct gbm_format_name_desc *desc)
+    return desc->name;
+ }
+ 
++/**
++ * Blit from one buffer object to another
++ *
++ * \param dst_bo The destination buffer object
++ * \param src_bo The source buffer object
++ * \param dst_x0 The X coordinate (top left origin) of the destination rectangle
++ * \param dst_y0 The Y coordinate (top left origin) of the destination rectangle
++ * \param dst_width The width of the destination rectangle
++ * \param dst_height The height of the destination rectangle
++ * \param src_x0 The X coordinate (top left origin) of the source rectangle
++ * \param src_y0 The Y coordinate (top left origin) of the source rectangle
++ * \param src_width The width of the source rectangle
++ * \param src_height The height of the source rectangle
++ * \param flags The flags for the blit
++ * \return 1 on success, 0 otherwise
++ */
++GBM_EXPORT int
++gbm_bo_blit(struct gbm_bo *dst_bo, struct gbm_bo *src_bo,
++            int dst_x0, int dst_y0, int dst_width, int dst_height,
++            int src_x0, int src_y0, int src_width, int src_height,
++            enum gbm_blit_flags flags)
++{
++   if (dst_bo->gbm->v0.backend_version >= 1)
++      return dst_bo->gbm->v1.bo_blit(dst_bo, src_bo,
++                                     dst_x0, dst_y0, dst_width, dst_height,
++                                     src_x0, src_y0, src_width, src_height,
++                                     flags);
++   else
++      return 0;
++}
++
+ /**
+  * A global table of functions and global variables defined in the core GBM
+  * code that need to be accessed directly by GBM backends.
+diff --git a/src/gbm/main/gbm.h b/src/gbm/main/gbm.h
+index 3a0fe73..7c82cd6 100644
+--- a/src/gbm/main/gbm.h
++++ b/src/gbm/main/gbm.h
+@@ -246,6 +246,21 @@ enum gbm_bo_flags {
+    GBM_BO_USE_PROTECTED = (1 << 5),
+ };
+ 
++/**
++ * Flags to control the behaviour of a blit - these are passed to
++ * gbm_bo_blit().
++ */
++enum gbm_blit_flags {
++   /**
++    * Force blit execution in finite time
++    */
++   GBM_BLIT_FLAG_FLUSH  = 0x0001,
++   /**
++    * Flush, and wait for the blit to complete
++    */
++   GBM_BLIT_FLAG_FINISH = 0x0002
++};
++
+ int
+ gbm_device_get_fd(struct gbm_device *gbm);
+ 
+@@ -425,6 +440,12 @@ gbm_surface_destroy(struct gbm_surface *surface);
+ char *
+ gbm_format_get_name(uint32_t gbm_format, struct gbm_format_name_desc *desc);
+ 
++int
++gbm_bo_blit(struct gbm_bo *dst_bo, struct gbm_bo *src_bo,
++            int dst_x0, int dst_y0, int dst_width, int dst_height,
++            int src_x0, int src_y0, int src_width, int src_height,
++            enum gbm_blit_flags flags);
++
+ #ifdef __cplusplus
+ }
+ #endif
+diff --git a/src/gbm/main/gbm_abi_check.c b/src/gbm/main/gbm_abi_check.c
+index f1137be..02ce23b 100644
+--- a/src/gbm/main/gbm_abi_check.c
++++ b/src/gbm/main/gbm_abi_check.c
+@@ -101,6 +101,21 @@ struct gbm_device_abi0 {
+    struct gbm_device_v0_abi0 v0;
+ };
+ 
++#define GBM_BACKEND_ABI_VERSION_abi1 1
++struct gbm_device_v1_abi1 {
++   int (*bo_blit)(struct gbm_bo *dst_bo, struct gbm_bo *src_bo,
++                  int dst_x0, int dst_y0, int dst_width, int dst_height,
++                  int src_x0, int src_y0, int src_width, int src_height,
++                  enum gbm_blit_flags flags);
++};
++
++struct gbm_device_abi1 {
++   /* Hack to make a gbm_device detectable by its first element. */
++   struct gbm_device *(*dummy)(int);
++   struct gbm_device_v0_abi0 v0;
++   struct gbm_device_v1_abi1 v1;
++};
++
+ /**
+  * GBM buffer object interface corresponding to GBM_BACKEND_ABI_VERSION = 0
+  *
+@@ -359,8 +374,11 @@ int main(int argc, char **argv)
+    CHECK_MEMBER_CURRENT(gbm_device_v0, _abi0, surface_has_free_buffers);
+    CHECK_MEMBER_CURRENT(gbm_device_v0, _abi0, surface_destroy);
+ 
++   CHECK_MEMBER_CURRENT(gbm_device_v1, _abi1, bo_blit);
++
+    /* Size of ABI-versioned substructures verified by above member checks */
+-   CHECK_SIZE_CURRENT  (gbm_device, _abi0);
++   CHECK_SIZE          (gbm_device, _abi0, _abi1);
++   CHECK_SIZE_CURRENT  (gbm_device, _abi1);
+ 
+ 
+    /* Check current gbm_bo ABI against gbm_bo_abi0*/
+diff --git a/src/gbm/main/gbm_backend_abi.h b/src/gbm/main/gbm_backend_abi.h
+index 962ee74..3abf29f 100644
+--- a/src/gbm/main/gbm_backend_abi.h
++++ b/src/gbm/main/gbm_backend_abi.h
+@@ -72,7 +72,7 @@ struct gbm_backend_desc;
+  * Core ABI version: 4
+  * ABI version of a buffer object created by a device from the backend: 4
+  */
+-#define GBM_BACKEND_ABI_VERSION 0
++#define GBM_BACKEND_ABI_VERSION 1
+ 
+ /**
+  * GBM device interface corresponding to GBM_BACKEND_ABI_VERSION = 0
+@@ -149,6 +149,13 @@ struct gbm_device_v0 {
+    void (*surface_destroy)(struct gbm_surface *surface);
+ };
+ 
++struct gbm_device_v1 {
++   int (*bo_blit)(struct gbm_bo *dst_bo, struct gbm_bo *src_bo,
++                  int dst_x0, int dst_y0, int dst_width, int dst_height,
++                  int src_x0, int src_y0, int src_width, int src_height,
++                  enum gbm_blit_flags flags);
++};
++
+ /**
+  * The device used for the memory allocation.
+  *
+@@ -161,6 +168,7 @@ struct gbm_device {
+    /* Hack to make a gbm_device detectable by its first element. */
+    struct gbm_device *(*dummy)(int);
+    struct gbm_device_v0 v0;
++   struct gbm_device_v1 v1;
+ };
+ 
+ /**

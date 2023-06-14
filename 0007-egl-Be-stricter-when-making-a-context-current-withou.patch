@@ -1,0 +1,49 @@
+From d2badaa4a36fdd2193faf40df67b3595f871ffd7 Mon Sep 17 00:00:00 2001
+From: Frank Binns <frank.binns@imgtec.com>
+Date: Wed, 18 Jun 2014 17:10:28 +0100
+Subject: [PATCH] egl: Be stricter when making a context current without any
+ surfaces
+
+The EGL_KHR_surfaceless_context extension spec states for eglMakeCurrent:
+    "If <ctx> does not support being bound without read and draw
+    surfaces, and both <draw> and <read> are EGL_NO_SURFACE, an
+    EGL_BAD_MATCH error is generated."
+
+Only OpenGLES contexts support this, via the GL_OES_surfaceless_context,
+so if EGL_KHR_surfaceless_context is supported and the context isn't an
+OpenGLES context then set the EGL error to EGL_BAD_MATCH.
+
+NOTE: This patch can't be upstreamed as is because we set the error to
+EGL_BAD_MATCH if we have an OpenGLES 1.x context but the
+GL_OES_surfaceless_context extension spec says:
+    "This extension is written against the OpenGL ES 2.0 Specification
+    but can apply to OpenGL ES 1.1 with the GL_OES_framebuffer_object
+    extension."
+
+All Mesa OpenGLES drivers support GL_OES_framebuffer_object, but we
+don't, so there would never be a reason to check whether or not this
+extension is supported.
+
+In order to upstream this patch the check would need to be changed
+to set the error to EGL_BAD_MATCH if EGL_KHR_surfaceless_context is
+supported and the context API isn't OpenGLES or the OpenGLES version
+is 1.0.
+
+---
+ src/egl/main/eglapi.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/egl/main/eglapi.c b/src/egl/main/eglapi.c
+index 6ffcff8..3cd69b9 100644
+--- a/src/egl/main/eglapi.c
++++ b/src/egl/main/eglapi.c
+@@ -888,6 +888,9 @@ eglMakeCurrent(EGLDisplay dpy, EGLSurface draw, EGLSurface read,
+          RETURN_EGL_ERROR(disp, EGL_BAD_SURFACE, EGL_FALSE);
+       if (draw_surf || read_surf)
+          RETURN_EGL_ERROR(disp, EGL_BAD_MATCH, EGL_FALSE);
++      if (disp->Extensions.KHR_surfaceless_context && context &&
++          (context->ClientAPI != EGL_OPENGL_ES_API || context->ClientMajorVersion == 1))
++         RETURN_EGL_ERROR(disp, EGL_BAD_MATCH, EGL_FALSE);
+    }
+ 
+    /*    If a native window underlying either draw or read is no longer valid,

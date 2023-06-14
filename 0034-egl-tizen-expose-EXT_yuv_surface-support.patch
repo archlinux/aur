@@ -1,0 +1,355 @@
+From 6bdf417b37b8b8d50facbb610ab2b936bf5cc626 Mon Sep 17 00:00:00 2001
+From: Frank Binns <frank.binns@imgtec.com>
+Date: Tue, 13 Feb 2018 14:47:48 +0000
+Subject: [PATCH] egl/tizen: expose EXT_yuv_surface support
+
+This adds support for NV12 and NV21 configs.
+
+---
+ src/egl/drivers/dri2/platform_tizen.c | 278 ++++++++++++++++++--------
+ 1 file changed, 200 insertions(+), 78 deletions(-)
+
+diff --git a/src/egl/drivers/dri2/platform_tizen.c b/src/egl/drivers/dri2/platform_tizen.c
+index 2bc9b3e..b6478a1 100644
+--- a/src/egl/drivers/dri2/platform_tizen.c
++++ b/src/egl/drivers/dri2/platform_tizen.c
+@@ -100,37 +100,93 @@ create_image_from_native(struct dri2_egl_surface *dri2_surf,
+ {
+    _EGLSurface *surf = &dri2_surf->base;
+    struct dri2_egl_display *dri2_dpy = dri2_egl_display(surf->Resource.Display);
++   struct dri2_egl_config *dri2_conf = dri2_egl_config(surf->Config);
++   const __DRIconfig *config =
++      dri2_get_dri_config(dri2_conf, surf->Type, surf->GLColorspace);
+    tbm_bo tbm_buf;
+    tbm_surface_info_s info;
+-   int fd, fourcc, offset, pitch;
++   int fd[TBM_SURF_PLANE_MAX];
++   int offset[TBM_SURF_PLANE_MAX];
++   int pitch[TBM_SURF_PLANE_MAX];
++   int fourcc;
+    __DRIimage *dri_image;
+-
+-   tbm_buf = tbm_surface_internal_get_bo(tbm_surf, 0);
+-   if (!tbm_buf) {
+-      _eglLog(_EGL_DEBUG, "%s: failed to get bo for tbm surface", __func__);
+-      return NULL;
+-   }
++   enum __DRIYUVColorSpace color_space;
++   enum __DRISampleRange sample_range;
++   unsigned csc_standard;
++   unsigned depth_range;
++   unsigned create_error;
+ 
+    if (tbm_surface_get_info(tbm_surf, &info)) {
+       _eglLog(_EGL_DEBUG, "%s: failed to get tbm surface info", __func__);
+       return NULL;
+    }
+ 
+-   fd = tbm_bo_export_fd(tbm_buf);
+    fourcc = dri2_fourcc_from_tbm_format(info.format);
+-   offset = info.planes[0].offset;
+-   pitch = info.planes[0].stride;
+-
+-   dri_image = dri2_dpy->image->createImageFromFds(dri2_dpy->dri_screen,
+-                                                   info.width,
+-                                                   info.height,
+-                                                   fourcc,
+-                                                   &fd,
+-                                                   1,
+-                                                   &pitch,
+-                                                   &offset,
+-                                                   loaderPrivate);
+-   close(fd);
++
++   for (unsigned i = 0; i < info.num_planes; i++) {
++      int index = tbm_surface_internal_get_plane_bo_idx(tbm_surf, i);
++
++      tbm_buf = tbm_surface_internal_get_bo(tbm_surf, index);
++      if (!tbm_buf) {
++         while (i--)
++            close(fd[i]);
++         _eglLog(_EGL_DEBUG, "%s: failed to get bo %d for tbm surface",
++                 __func__, i);
++         return NULL;
++      }
++
++      fd[i] = tbm_bo_export_fd(tbm_buf);
++      offset[i] = info.planes[i].offset;
++      pitch[i] = info.planes[i].stride;
++   }
++
++   dri2_dpy->core->getConfigAttrib(config,
++                                   __DRI_ATTRIB_YUV_CSC_STANDARD, &csc_standard);
++   switch (csc_standard) {
++   case __DRI_ATTRIB_YUV_CSC_STANDARD_601_BIT:
++      color_space = __DRI_YUV_COLOR_SPACE_ITU_REC601;
++      break;
++   case __DRI_ATTRIB_YUV_CSC_STANDARD_709_BIT:
++      color_space = __DRI_YUV_COLOR_SPACE_ITU_REC709;
++      break;
++   case __DRI_ATTRIB_YUV_CSC_STANDARD_2020_BIT:
++      color_space = __DRI_YUV_COLOR_SPACE_ITU_REC2020;
++      break;
++   default:
++      color_space = __DRI_YUV_COLOR_SPACE_UNDEFINED;
++      break;
++   }
++
++   dri2_dpy->core->getConfigAttrib(config,
++                                   __DRI_ATTRIB_YUV_DEPTH_RANGE, &depth_range);
++   switch (depth_range) {
++   case __DRI_ATTRIB_YUV_DEPTH_RANGE_LIMITED_BIT:
++      sample_range = __DRI_YUV_NARROW_RANGE;
++      break;
++   case __DRI_ATTRIB_YUV_DEPTH_RANGE_FULL_BIT:
++      sample_range = __DRI_YUV_FULL_RANGE;
++      break;
++   default:
++      sample_range = __DRI_YUV_RANGE_UNDEFINED;
++      break;
++   }
++
++   dri_image = dri2_dpy->image->createImageFromDmaBufs(dri2_dpy->dri_screen,
++                                                       info.width,
++                                                       info.height,
++                                                       fourcc,
++                                                       fd,
++                                                       info.num_planes,
++                                                       pitch,
++                                                       offset,
++                                                       color_space,
++                                                       sample_range,
++                                                       __DRI_YUV_CHROMA_SITING_UNDEFINED,
++                                                       __DRI_YUV_CHROMA_SITING_UNDEFINED,
++                                                       &create_error,
++                                                       loaderPrivate);
++   for (unsigned i = 0; i < info.num_planes; i++)
++      close(fd[i]);
+ 
+    if (!dri_image) {
+       _eglLog(_EGL_DEBUG, "%s: failed to create dri image from tbm bo", __func__);
+@@ -792,10 +848,22 @@ dri2_tizen_flush_front_buffer(__DRIdrawable * driDrawable, void *loaderPrivate)
+ {
+ }
+ 
++static unsigned
++dri2_tizen_get_capability(void *loaderPrivate, enum dri_loader_cap cap)
++{
++   switch (cap) {
++   case DRI_LOADER_CAP_YUV_SURFACE_IMG:
++      return 1;
++   default:
++      return 0;
++   }
++}
++
+ static const __DRIimageLoaderExtension tizen_image_loader_extension = {
+-   .base             = { __DRI_IMAGE_LOADER, 1 },
++   .base             = { __DRI_IMAGE_LOADER, 2 },
+    .getBuffers       = dri2_tizen_get_buffers,
+    .flushFrontBuffer = dri2_tizen_flush_front_buffer,
++   .getCapability    = dri2_tizen_get_capability,
+ };
+ 
+ static const __DRIextension *image_loader_extensions[] = {
+@@ -804,6 +872,41 @@ static const __DRIextension *image_loader_extensions[] = {
+    NULL,
+ };
+ 
++static EGLBoolean
++derive_yuv_native_visual_from_config(struct dri2_egl_display *dri2_dpy,
++                                     const __DRIconfig *dri_config,
++                                     int *native_visual)
++{
++   unsigned order, subsample, num_planes, plane_bpp;
++
++   dri2_dpy->core->getConfigAttrib(dri_config, __DRI_ATTRIB_YUV_ORDER,
++                                   &order);
++   dri2_dpy->core->getConfigAttrib(dri_config, __DRI_ATTRIB_YUV_SUBSAMPLE,
++                                   &subsample);
++   dri2_dpy->core->getConfigAttrib(dri_config, __DRI_ATTRIB_YUV_NUMBER_OF_PLANES,
++                                   &num_planes);
++   dri2_dpy->core->getConfigAttrib(dri_config, __DRI_ATTRIB_YUV_PLANE_BPP,
++                                   &plane_bpp);
++
++   if ((plane_bpp & __DRI_ATTRIB_YUV_PLANE_BPP_8_BIT) == 0)
++      return EGL_FALSE;
++
++   if (num_planes != 2)
++      return EGL_FALSE;
++
++   if (subsample & __DRI_ATTRIB_YUV_SUBSAMPLE_4_2_0_BIT) {
++      if (order & __DRI_ATTRIB_YUV_ORDER_YUV_BIT) {
++         *native_visual = TBM_FORMAT_NV12;
++         return EGL_TRUE;
++      } else if (order & __DRI_ATTRIB_YUV_ORDER_YVU_BIT) {
++         *native_visual = TBM_FORMAT_NV21;
++         return EGL_TRUE;
++      }
++   }
++
++   return EGL_FALSE;
++}
++
+ static EGLBoolean
+ dri2_tizen_add_configs(_EGLDisplay *dpy)
+ {
+@@ -811,83 +914,102 @@ dri2_tizen_add_configs(_EGLDisplay *dpy)
+    int count = 0;
+ 
+    for (unsigned i = 0; dri2_dpy->driver_configs[i]; i++) {
+-      static const struct rgba_shifts_and_sizes pbuffer_sasa[] = {
+-         {
+-            /* ARGB8888 */
+-            { 16, 8, 0, 24 },
+-            { 8, 8, 8, 8 },
+-         },
+-         {
+-            /* RGB888 */
+-            { 16, 8, 0, -1 },
+-            { 8, 8, 8, 0 },
+-         },
+-         {
+-            /* RGB565 */
+-            { 11, 5, 0, -1 },
+-            { 5, 6, 5, 0 },
+-         },
+-      };
+       struct dri2_egl_config *dri2_cfg;
+-      int shifts[4];
+-      unsigned int sizes[4];
++      unsigned int render_type;
+       unsigned int caveat = 0;
+       int surface_type = 0;
+-      tpl_bool_t is_slow;
+       EGLint attr_list[] = {
+          EGL_NATIVE_VISUAL_ID, 0,
+          EGL_CONFIG_CAVEAT, EGL_NONE,
+          EGL_NONE,
+       };
+-      tpl_result_t res;
+-
+-      dri2_get_shifts_and_sizes(dri2_dpy->core, dri2_dpy->driver_configs[i],
+-                                shifts, sizes);
+ 
+       dri2_dpy->core->getConfigAttrib(dri2_dpy->driver_configs[i],
+-                                      __DRI_ATTRIB_BUFFER_SIZE, &depth);
++                                      __DRI_ATTRIB_CONFIG_CAVEAT, &caveat);
+ 
+       dri2_dpy->core->getConfigAttrib(dri2_dpy->driver_configs[i],
+-                                      __DRI_ATTRIB_CONFIG_CAVEAT, &caveat);
++                                      __DRI_ATTRIB_RENDER_TYPE, &render_type);
++
++      if (render_type & __DRI_ATTRIB_RGBA_BIT) {
++         static const struct rgba_shifts_and_sizes pbuffer_sasa[] = {
++            {
++               /* ARGB8888 */
++               { 16, 8, 0, 24 },
++               { 8, 8, 8, 8 },
++            },
++            {
++               /* RGB888 */
++               { 16, 8, 0, -1 },
++               { 8, 8, 8, 0 },
++            },
++            {
++               /* RGB565 */
++               { 11, 5, 0, -1 },
++               { 5, 6, 5, 0 },
++            },
++         };
++         int shifts[4];
++         unsigned int sizes[4];
++         unsigned int depth;
++         tpl_bool_t is_slow;
++         tpl_result_t res;
+ 
+-      res = tpl_display_query_config(dri2_dpy->tpl_dpy, TPL_SURFACE_TYPE_WINDOW,
+-                                     sizes[0], sizes[1], sizes[2], sizes[3],
+-                                     depth, &attr_list[1], &is_slow);
+-      if (res != TPL_ERROR_NONE)
+-         continue;
+-      surface_type |= EGL_WINDOW_BIT;
++         dri2_get_shifts_and_sizes(dri2_dpy->core, dri2_dpy->driver_configs[i],
++                                   shifts, sizes);
+ 
+-      if (is_slow)
+-         caveat |= __DRI_ATTRIB_SLOW_BIT;
++         dri2_dpy->core->getConfigAttrib(dri2_dpy->driver_configs[i],
++                                         __DRI_ATTRIB_BUFFER_SIZE, &depth);
++
++         res = tpl_display_query_config(dri2_dpy->tpl_dpy,
++                                        TPL_SURFACE_TYPE_WINDOW,
++                                        sizes[0], sizes[1], sizes[2], sizes[3],
++                                        depth, &attr_list[1], &is_slow);
++         if (res != TPL_ERROR_NONE)
++            continue;
+ 
+-      res = tpl_display_query_config(dri2_dpy->tpl_dpy, TPL_SURFACE_TYPE_PIXMAP,
+-                                     sizes[0], sizes[1], sizes[2], sizes[3],
+-                                     depth, NULL, &is_slow);
+-      if (res == TPL_ERROR_NONE) {
+-         surface_type |= EGL_PIXMAP_BIT;
++         surface_type |= EGL_WINDOW_BIT;
+ 
+          if (is_slow)
+             caveat |= __DRI_ATTRIB_SLOW_BIT;
+-      }
+ 
+-      for (unsigned j = 0; j < ARRAY_SIZE(pbuffer_sasa); j++) {
+-         const struct rgba_shifts_and_sizes *pbuffer_sas = &pbuffer_sasa[j];
+-
+-         if (shifts[0] == pbuffer_sas->shifts[0] &&
+-             shifts[1] == pbuffer_sas->shifts[1] &&
+-             shifts[2] == pbuffer_sas->shifts[2] &&
+-             shifts[3] == pbuffer_sas->shifts[3] &&
+-             sizes[0] == pbuffer_sas->sizes[0] &&
+-             sizes[1] == pbuffer_sas->sizes[1] &&
+-             sizes[2] == pbuffer_sas->sizes[2] &&
+-             sizes[3] == pbuffer_sas->sizes[3]) {
+-            surface_type |= EGL_PBUFFER_BIT;
+-            break;
++         res = tpl_display_query_config(dri2_dpy->tpl_dpy,
++                                        TPL_SURFACE_TYPE_PIXMAP,
++                                        sizes[0], sizes[1], sizes[2], sizes[3],
++                                        depth, NULL, &is_slow);
++         if (res == TPL_ERROR_NONE) {
++            surface_type |= EGL_PIXMAP_BIT;
++
++            if (is_slow)
++               caveat |= __DRI_ATTRIB_SLOW_BIT;
+          }
+-      }
+ 
+-      if (dri2_dpy->image->base.version >= 9 && dri2_dpy->image->blitImage)
+-         surface_type |= EGL_SWAP_BEHAVIOR_PRESERVED_BIT;
++         for (unsigned j = 0; j < ARRAY_SIZE(pbuffer_sasa); j++) {
++            const struct rgba_shifts_and_sizes *pbuffer_sas = &pbuffer_sasa[j];
++
++            if (shifts[0] == pbuffer_sas->shifts[0] &&
++                shifts[1] == pbuffer_sas->shifts[1] &&
++                shifts[2] == pbuffer_sas->shifts[2] &&
++                shifts[3] == pbuffer_sas->shifts[3] &&
++                sizes[0] == pbuffer_sas->sizes[0] &&
++                sizes[1] == pbuffer_sas->sizes[1] &&
++                sizes[2] == pbuffer_sas->sizes[2] &&
++                sizes[3] == pbuffer_sas->sizes[3]) {
++               surface_type |= EGL_PBUFFER_BIT;
++               break;
++            }
++
++         }
++
++         if (dri2_dpy->image->base.version >= 9 && dri2_dpy->image->blitImage)
++            surface_type |= EGL_SWAP_BEHAVIOR_PRESERVED_BIT;
++      } else if (render_type & __DRI_ATTRIB_YUV_BIT) {
++         if (!derive_yuv_native_visual_from_config(dri2_dpy,
++                                                   dri2_dpy->driver_configs[i],
++                                                   &attr_list[1]))
++            continue;
++         surface_type = EGL_WINDOW_BIT;
++         caveat = 0;
++      }
+ 
+       if (caveat & __DRI_ATTRIB_NON_CONFORMANT_CONFIG)
+          attr_list[3] = EGL_NON_CONFORMANT_CONFIG;

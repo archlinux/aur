@@ -1,0 +1,74 @@
+From 2e1cdcd98f084bf62a2b1f4a8ecb77f3be8548db Mon Sep 17 00:00:00 2001
+From: brendan King <Brendan.King@imgtec.com>
+Date: Fri, 30 Jul 2021 15:34:13 +0100
+Subject: [PATCH] vulkan/wsi: Disable use of VK_EXT_pci_bus_info
+
+The VK_EXT_pci_bus_info related code has been wrapped in
+VULKAN_WSI_USE_PCI_BUS_INFO, effectively disabling it.
+
+Not all platforms support the VK_EXT_pci_bus_info extension.
+A better fix might be to pass another parameter to wsi_device_init,
+to indicate that the device is a PCI one.
+
+---
+ src/vulkan/wsi/wsi_common.c     | 4 ++++
+ src/vulkan/wsi/wsi_common.h     | 2 ++
+ src/vulkan/wsi/wsi_common_drm.c | 4 ++++
+ 3 files changed, 10 insertions(+)
+
+diff --git a/src/vulkan/wsi/wsi_common.c b/src/vulkan/wsi/wsi_common.c
+index b1360ed..66d6683 100644
+--- a/src/vulkan/wsi/wsi_common.c
++++ b/src/vulkan/wsi/wsi_common.c
+@@ -56,11 +56,15 @@ wsi_device_init(struct wsi_device *wsi,
+    WSI_GET_CB(GetPhysicalDeviceQueueFamilyProperties);
+ #undef WSI_GET_CB
+ 
++#if defined(VULKAN_WSI_USE_PCI_BUS_INFO)
+    wsi->pci_bus_info.sType =
+       VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT;
++#endif
+    VkPhysicalDeviceProperties2 pdp2 = {
+       .sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2,
++#if defined(VULKAN_WSI_USE_PCI_BUS_INFO)
+       .pNext = &wsi->pci_bus_info,
++#endif
+    };
+    GetPhysicalDeviceProperties2(pdevice, &pdp2);
+ 
+diff --git a/src/vulkan/wsi/wsi_common.h b/src/vulkan/wsi/wsi_common.h
+index c2563c6..4a73366 100644
+--- a/src/vulkan/wsi/wsi_common.h
++++ b/src/vulkan/wsi/wsi_common.h
+@@ -112,7 +112,9 @@ struct wsi_device {
+    VkPhysicalDeviceMemoryProperties memory_props;
+    uint32_t queue_family_count;
+ 
++#if defined(VULKAN_WSI_USE_PCI_BUS_INFO)
+    VkPhysicalDevicePCIBusInfoPropertiesEXT pci_bus_info;
++#endif
+ 
+    bool supports_modifiers;
+    uint32_t maxImageDimension2D;
+diff --git a/src/vulkan/wsi/wsi_common_drm.c b/src/vulkan/wsi/wsi_common_drm.c
+index 6201891..49a78cf 100644
+--- a/src/vulkan/wsi/wsi_common_drm.c
++++ b/src/vulkan/wsi/wsi_common_drm.c
+@@ -45,6 +45,7 @@ wsi_device_matches_drm_fd(const struct wsi_device *wsi, int drm_fd)
+    if (ret)
+       return false;
+ 
++#if defined(VULKAN_WSI_USE_PCI_BUS_INFO)
+    bool match = false;
+    switch (fd_device->bustype) {
+    case DRM_BUS_PCI:
+@@ -57,6 +58,9 @@ wsi_device_matches_drm_fd(const struct wsi_device *wsi, int drm_fd)
+    default:
+       break;
+    }
++#else
++   const bool match = true;
++#endif
+ 
+    drmFreeDevice(&fd_device);
+ 

@@ -1,0 +1,47 @@
+From 09d413ab8c88e98534b32067e170bdd92c887cc5 Mon Sep 17 00:00:00 2001
+From: Brendan King <Brendan.King@imgtec.com>
+Date: Thu, 13 Apr 2017 10:12:40 +0100
+Subject: [PATCH] egl/dri3: fix segfault in eglCopyBuffers
+
+The loader_dri3_copy_drawable function expected the drawable to have
+a fake front buffer, resulting in a segfault if there wasn't one,
+when dri3_fence_reset was called.
+If there is no fake front buffer, but there are back buffers, use the
+current back buffer.
+
+---
+ src/loader/loader_dri3_helper.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/src/loader/loader_dri3_helper.c b/src/loader/loader_dri3_helper.c
+index 6e825f9..ff6d1ff 100644
+--- a/src/loader/loader_dri3_helper.c
++++ b/src/loader/loader_dri3_helper.c
+@@ -863,15 +863,24 @@ loader_dri3_copy_drawable(struct loader_dri3_drawable *draw,
+                           xcb_drawable_t dest,
+                           xcb_drawable_t src)
+ {
++   struct loader_dri3_buffer *buffer;
++
++   if (draw->have_fake_front)
++      buffer = dri3_fake_front_buffer(draw);
++   else if (draw->have_back)
++      buffer = dri3_back_buffer(draw);
++   else
++      return;
++
+    loader_dri3_flush(draw, __DRI2_FLUSH_DRAWABLE, __DRI2_THROTTLE_COPYSUBBUFFER);
+ 
+-   dri3_fence_reset(draw->conn, dri3_fake_front_buffer(draw));
++   dri3_fence_reset(draw->conn, buffer);
+    dri3_copy_area(draw->conn,
+                   src, dest,
+                   dri3_drawable_gc(draw),
+                   0, 0, 0, 0, draw->width, draw->height);
+-   dri3_fence_trigger(draw->conn, dri3_fake_front_buffer(draw));
+-   dri3_fence_await(draw->conn, draw, dri3_fake_front_buffer(draw));
++   dri3_fence_trigger(draw->conn, buffer);
++   dri3_fence_await(draw->conn, draw, buffer);
+ }
+ 
+ void

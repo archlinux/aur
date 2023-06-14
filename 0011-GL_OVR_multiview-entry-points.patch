@@ -1,0 +1,50 @@
+From d7176528f6dbb0c807fe34ebd8a3c5cee5945d3d Mon Sep 17 00:00:00 2001
+From: Brendan King <Brendan.King@imgtec.com>
+Date: Mon, 11 Jul 2016 12:45:30 +0100
+Subject: [PATCH] GL_OVR_multiview entry points
+
+---
+ src/mapi/glapi/gen/gl_API.xml     | 17 +++++++++++++++++
+ src/mapi/glapi/gen/static_data.py |  1 +
+ 2 files changed, 18 insertions(+)
+
+diff --git a/src/mapi/glapi/gen/gl_API.xml b/src/mapi/glapi/gen/gl_API.xml
+index cf5a0f0..4e35de0 100644
+--- a/src/mapi/glapi/gen/gl_API.xml
++++ b/src/mapi/glapi/gen/gl_API.xml
+@@ -13125,6 +13125,23 @@
+     </function>
+ </category>
+ 
++<category name="GL_OVR_multiview" number="478">
++    <enum name="FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR" value="0x9630" />
++    <enum name="FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR" value="0x9632" />
++    <enum name="MAX_VIEWS_OVR" value="0x9631">
++        <size name="Get" mode="get"/>
++    </enum>
++    <enum name="FRAMEBUFFER_INCOMPLETE_VIEW_TARGETS_OVR" value="0x9633" />
++    <function name="FramebufferTextureMultiviewOVR" es2="3.0" exec="dynamic">
++        <param name="target" type="GLenum"/>
++        <param name="attachment"  type="GLenum"/>
++        <param name="texture"  type="GLuint"/>
++        <param name="level"  type="GLint"/>
++        <param name="baseViewIndex"  type="GLint"/>
++        <param name="numViews"  type="GLsizei"/>
++    </function>
++</category>
++
+ <xi:include href="EXT_window_rectangles.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+ 
+ <!-- 520. GL_EXT_shader_framebuffer_fetch -->
+diff --git a/src/mapi/glapi/gen/static_data.py b/src/mapi/glapi/gen/static_data.py
+index c723cb3..73625c7 100644
+--- a/src/mapi/glapi/gen/static_data.py
++++ b/src/mapi/glapi/gen/static_data.py
+@@ -1702,6 +1702,7 @@ offsets = {
+     "GetFramebufferPixelLocalStorageSizeEXT" : 1666,
+     "FramebufferTexture2DDownsampleIMG" : 1667,
+     "FramebufferTextureLayerDownsampleIMG" : 1668,
++    "FramebufferTextureMultiviewOVR" : 1669,
+ }
+ 
+ functions = [

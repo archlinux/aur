@@ -1,0 +1,25 @@
+From 499acbbea8d82fe7018bd8663bc543fa691d41de Mon Sep 17 00:00:00 2001
+From: Brendan King <Brendan.King@imgtec.com>
+Date: Wed, 26 Oct 2016 16:24:28 +0100
+Subject: [PATCH] Enable buffer sharing in the kms_swrast driver
+
+Enable buffer sharing, so that a DRI driver can be loaded by a
+Wayland client when kms_swrast is being used by the compositor.
+
+---
+ src/gallium/frontends/dri/dri2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gallium/frontends/dri/dri2.c b/src/gallium/frontends/dri/dri2.c
+index ebc18a7..09f4b02 100644
+--- a/src/gallium/frontends/dri/dri2.c
++++ b/src/gallium/frontends/dri/dri2.c
+@@ -2400,7 +2400,7 @@ dri_kms_init_screen(__DRIscreen * sPriv)
+    if (!configs)
+       goto destroy_screen;
+ 
+-   screen->can_share_buffer = false;
++   screen->can_share_buffer = true;
+    screen->auto_fake_front = dri_with_format(sPriv);
+    screen->broken_invalidate = !sPriv->dri2.useInvalidate;
+    screen->lookup_egl_image = dri2_lookup_egl_image;
