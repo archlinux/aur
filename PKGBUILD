@@ -2,7 +2,7 @@
 # Contributor: Marie Piontek <marie@kaifa.ch>
 
 pkgname=an-anime-borb-launcher-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://github.com/an-anime-team/an-anime-borb-launcher"
@@ -37,7 +37,7 @@ source=(
 )
 
 md5sums=(
-    'a58fd01f5dafb33fccaacaeec2e25024'
+    'ce7cb93ad7de892a708d0f91707d5a56'
     'c9781df3572ed96be8e11733d68a1f94'
     '3348673b36d8783fb1e7bd1363e79c89'
 )
