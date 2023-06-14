@@ -1,7 +1,7 @@
 pkgbase = d50-star-db-astap
 	pkgdesc = D50 star database for 10>FOV>0.2 degrees. Size 900 Mb
 	pkgver = 2023.03.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hnsky.org/astap.htm
 	arch = any
 	license = LGPL3

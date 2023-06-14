@@ -1,6 +1,6 @@
 pkgname=d50-star-db-astap
 pkgver=2023.03.18
-pkgrel=1
+pkgrel=2
 pkgdesc="D50 star database for 10>FOV>0.2 degrees. Size 900 Mb"
 arch=('any')
 url="https://www.hnsky.org/astap.htm"
