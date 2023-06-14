@@ -2,17 +2,17 @@
 # Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
 
 pkgname=contour
-pkgver=0.3.11.258
-pkgrel=2
+pkgver=0.3.12.262
+pkgrel=1
 pkgdesc="Modern C++ Terminal Emulator"
 arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
-depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-multimedia' 'qt6-5compat')
+depends=('harfbuzz' 'fontconfig' 'yaml-cpp' 'qt6-base' 'qt6-multimedia' 'qt6-5compat' 'libutempter')
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'libxml2'
              'python' 'catch2' 'range-v3' 'fmt' 'microsoft-gsl')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('96e6ec683df18b0b15bee4bcbe68bc940b025d99466bf278b7f356acd27f054e9c49376f20545aef0a619c0bcd65c961a22c58f37b2e6011fe2d2a9bc65ef1b7')
+sha512sums=('8d70cbd19b02196dd1f5c45ab85f5601a3226a1deaba5aa7d83bc79647a04b8945e4555fd735736366df05563a9d2d098b6936f3248e006e1e15ae3aa358170d')
 
 build() {
   _cpuCount=$(grep -c -w ^processor /proc/cpuinfo)
@@ -27,7 +27,7 @@ build() {
         -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCONTOUR_BUILD_WITH_QT6=ON
+        -DCONTOUR_QT_VERSION=6
   cmake --build build --parallel $_cpuCount
 }
 

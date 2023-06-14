@@ -1,7 +1,7 @@
 pkgbase = contour
 	pkgdesc = Modern C++ Terminal Emulator
-	pkgver = 0.3.11.258
-	pkgrel = 2
+	pkgver = 0.3.12.262
+	pkgrel = 1
 	url = https://github.com/contour-terminal/contour
 	arch = x86_64
 	arch = aarch64
@@ -22,7 +22,8 @@ pkgbase = contour
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-5compat
-	source = https://github.com/contour-terminal/contour/archive/refs/tags/v0.3.11.258.tar.gz
-	sha512sums = 96e6ec683df18b0b15bee4bcbe68bc940b025d99466bf278b7f356acd27f054e9c49376f20545aef0a619c0bcd65c961a22c58f37b2e6011fe2d2a9bc65ef1b7
+	depends = libutempter
+	source = https://github.com/contour-terminal/contour/archive/refs/tags/v0.3.12.262.tar.gz
+	sha512sums = 8d70cbd19b02196dd1f5c45ab85f5601a3226a1deaba5aa7d83bc79647a04b8945e4555fd735736366df05563a9d2d098b6936f3248e006e1e15ae3aa358170d
 
 pkgname = contour
