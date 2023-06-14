@@ -1,17 +1,17 @@
 pkgbase = scala
 	pkgdesc = A Java-interoperable language with object-oriented and functional features
-	pkgver = 2.13.10
-	pkgrel = 2
+	pkgver = 2.13.11
+	pkgrel = 1
 	url = https://www.scala-lang.org
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = sbt
 	makedepends = jdk8-openjdk
-	source = scala-2.13.10.tar.gz::https://github.com/scala/scala/archive/v2.13.10.tar.gz
-	source = scala-docs-2.13.10.tar.xz::https://www.scala-lang.org/files/archive/scala-docs-2.13.10.txz
-	sha512sums = 7a89ee746d892640faf0ad3a91715c91bd174acbae22fde7dcbc16a71c6bd84d4f448071fd497a778ef5aaba48c306150e591ad1d2c263764aeac79bcc021529
-	sha512sums = 0ccbae59327b7a2254115d729f08c75e80c3d0f07a4ebd0f7947307b1cbd4a77a9581a8baa6bba0f98472485b441e5daaf153b9c78c0613c7886e9dc3e8650b3
+	source = scala-2.13.11.tar.gz::https://github.com/scala/scala/archive/v2.13.11.tar.gz
+	source = scala-docs-2.13.11.tar.xz::https://www.scala-lang.org/files/archive/scala-docs-2.13.11.txz
+	sha512sums = 5cf56b5c5f1177867de93a6e1507d68e65b07a63c66bf77930b1390f2277d616302d7966d7b78a8b7a885106d5d4e474332aa0dbb3cea0a52dcc6864b721a350
+	sha512sums = 495e3d18ccedcc3f5079dd4e57c434830b43bd9277a52ca7d43e6a23ed6eb21b724a629f19df02192a0440abdfecee476572db485c3542d5f7a84b73ac789ce8
 
 pkgname = scala
 	depends = java-environment

@@ -8,9 +8,9 @@
 # shellcheck disable=SC2034
 pkgbase=scala
 pkgname=(scala scala-docs scala-sources)
-pkgver=2.13.10
+pkgver=2.13.11
 # shellcheck disable=SC2034
-pkgrel=2
+pkgrel=1
 pkgdesc='A Java-interoperable language with object-oriented and functional features'
 # shellcheck disable=SC2034
 arch=('any')
@@ -24,8 +24,8 @@ makedepends=('git' 'sbt' 'jdk8-openjdk')
 source=("scala-${pkgver}.tar.gz::https://github.com/scala/scala/archive/v${pkgver}.tar.gz"
         "scala-docs-${pkgver}.tar.xz::https://www.scala-lang.org/files/archive/scala-docs-${pkgver}.txz")
 # shellcheck disable=SC2034
-sha512sums=('7a89ee746d892640faf0ad3a91715c91bd174acbae22fde7dcbc16a71c6bd84d4f448071fd497a778ef5aaba48c306150e591ad1d2c263764aeac79bcc021529'
-            '0ccbae59327b7a2254115d729f08c75e80c3d0f07a4ebd0f7947307b1cbd4a77a9581a8baa6bba0f98472485b441e5daaf153b9c78c0613c7886e9dc3e8650b3')
+sha512sums=('5cf56b5c5f1177867de93a6e1507d68e65b07a63c66bf77930b1390f2277d616302d7966d7b78a8b7a885106d5d4e474332aa0dbb3cea0a52dcc6864b721a350'
+            '495e3d18ccedcc3f5079dd4e57c434830b43bd9277a52ca7d43e6a23ed6eb21b724a629f19df02192a0440abdfecee476572db485c3542d5f7a84b73ac789ce8')
 
 prepare() {
   chmod 0755 "${srcdir:?}/${pkgbase}-${pkgver}/tools"/*
