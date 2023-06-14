@@ -18,16 +18,15 @@ sha512sums=("a4cf192c48feff624c9ac89b5480c2343c143b749382a4e6c125d0bafc55f526c5e
 _installdir=/opt/appimages
 
 prepare() {
-    cd ${srcdir}
-    chmod a+x ${_pkgname}
-    ${srcdir}/${_pkgname} --appimage-extract >/dev/null
-    sed -i "s+Exec=localsend_app+Exec=env DESKTOPINTEGRATION=no ${_installdir}/localsend.AppImage+" "squashfs-root/org.localsend.localsend_app.desktop"
-    sed -i "s+Icon=localsend+Icon=localsend-appimage+" "squashfs-root/org.localsend.localsend_app.desktop"
-    sed -i "s+Comment=+Comment=An open source cross-platform alternative to AirDrop+" "squashfs-root/org.localsend.localsend_app.desktop"
+    chmod a+x ../${_pkgname}
+    ./${_pkgname} --appimage-extract >/dev/null
+    sed -i "s+^Exec=.*+Exec=env DESKTOPINTEGRATION=no ${_installdir}/localsend.AppImage+" "squashfs-root/org.localsend.localsend_app.desktop"
+    sed -i "s+^Icon=.*+Icon=localsend-appimage+" "squashfs-root/org.localsend.localsend_app.desktop"
+    sed -i "s+^Comment=.*+Comment=An open source cross-platform alternative to AirDrop+" "squashfs-root/org.localsend.localsend_app.desktop"
 }
 
 package() {
-    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/localsend.AppImage"
+    install -Dm755 ../${_pkgname} "${pkgdir}/${_installdir}/localsend.AppImage"
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/32x32/apps/localsend.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/localsend-appimage.png"
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/128x128/apps/localsend.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/localsend-appimage.png"
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/256x256/apps/localsend.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/localsend-appimage.png"
