@@ -1,8 +1,9 @@
-# Maintainer : Pim Bliek <pim@pimbliek.nl>
-# Contributor : Elvin L <elvin@eelviny.me>
+# Maintainer: w0rty <mawo97 at gmail.com>
+# Contributor: Pim Bliek <pim@pimbliek.nl>
+# Contributor: Elvin L <elvin@eelviny.me>
 
 pkgname=rocrail
-pkgver=03112022
+pkgver=14062023
 pkgrel=1
 pkgdesc="Innovative Model Railroad Control System"
 arch=('x86_64')

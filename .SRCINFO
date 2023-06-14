@@ -1,6 +1,6 @@
 pkgbase = rocrail
 	pkgdesc = Innovative Model Railroad Control System
-	pkgver = 03112022
+	pkgver = 14062023
 	pkgrel = 1
 	url = http://wiki.rocrail.net/
 	arch = x86_64
