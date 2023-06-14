@@ -1,25 +1,26 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 # Contributor: Bader <Bad3r@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.9.4.r7.abcc6c5bc
+pkgver=0.9.9.r1.9a8d5ea6a
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://logseq.com"
+repo="https://github.com/logseq/logseq.git"
+branch=master
+dev=n
 license=("AGPL3")
 depends=()
 makedepends=("git" "yarn" "npm" "clojure" "nodejs>=16")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 source=(
-    "${pkgname}::git+https://github.com/logseq/logseq.git#branch=master"
-    "build.patch"
+    "${pkgname}::git+${repo}#branch=${branch}"
     "${pkgname%-git}.desktop"
 )
 md5sums=(
     "SKIP"
-    "bba8acbfbe599e5e1621f9d91a003e21"
-    "3f3c332592b47c84f3a44f582103151b"
+    "e762de1df43a2582fe9a3d4604917f7b"
 )
 
 pkgver() {
@@ -29,9 +30,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-
-    # patch :parallel-build true in shadow-cljs.edn
-    patch -p1 -i "${srcdir}/build.patch"
 
     # download required js modules
     yarn install
@@ -52,7 +50,11 @@ build() {
     cd "${srcdir}/${pkgname}"
 
     # build
-    yarn cljs:release-electron
+    if [ $dev = "y" ]; then
+        yarn cljs:dev-release-electron
+    else
+        yarn cljs:release-electron
+    fi
 
     # packaging javescript files to an executable
     cd "${srcdir}/${pkgname}/static"
@@ -64,7 +66,7 @@ package() {
     # change the folder permision
     chmod 755 "${srcdir}/${pkgname}/static/out/Logseq-linux-x64"
 
-    # important files are under static/out/Logseq-linux-x64 
+    # important files are under static/out/Logseq-linux-x64
     cd "${srcdir}/${pkgname}/static/out/Logseq-linux-x64"
 
     # create destination folder and copy files
