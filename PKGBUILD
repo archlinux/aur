@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="btcpayserver"
-pkgver="1.10.1"
+pkgver="1.10.2"
 pkgrel="1"
 pkgdesc="Accept Bitcoin payments. Free, open source and self-hosted Bitcoin payment processor."
 arch=("x86_64")
@@ -18,14 +18,12 @@ optdepends=("apache: HTTP server"
     "certbot: Creates SSL certificates."
     "eclair: Lightning Network support"
     "lnd: Lightning Network support"
-    "mariadb: Database"
     "nginx: HTTP server"
-    "postgresql: Database"
-    "sqlite: Database")
+    "postgresql: Database")
 install="${pkgname}.install"
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha512sums=("855fa62352c91b6632ca1c23937c67efe7a00f241de0ae1eabf1d5015a317478227f805beaca942b279fefbd71d630c04f2c5c0dc8fb782e4946aecf92fd881b"
+sha512sums=("7478fceb530a5295dbd96e547891c8cf9dcc6a2c03229492c18e00458d0b33b9926436765fd517e5b93940d5a41af8796b4f8443d2d6df2af5dfd7d6a85f792c"
     "0b95e4320dbf06e89895527a1ecc4019463f85b7d8b1799193b7101ad7f324ef21408f84850323195110a5fd2c565317a67156f724a7e688b2843269bd78f75a")
 
 build()
