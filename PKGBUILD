@@ -1,8 +1,8 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=mongosh
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='Rich Node.js REPL for interacting with MongoDB instances.'
 arch=('x86_64')
 url='https://github.com/mongodb-js/mongosh'
@@ -14,11 +14,11 @@ source=(
   https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz
 )
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('d84d76067b9aa8851aa52eccf2996bb711a36b0e497b1af0506b0334c74fd901')
+sha256sums=('21144391446bf805adac6d4ef5293992d434ce0bc080bdab8406570e72e4f785')
 
 package() {
   export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
-  npm install -g --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
+  npm install --omit=dev -g --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
   install -dm755 "$pkgdir"/usr/share/licenses/$pkgname
   ln -s "$pkgdir"/usr/lib/node_modules/$pkgname/LICENSE "$pkgdir"/usr/share/licenses/$pkgname
 
