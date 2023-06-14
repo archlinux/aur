@@ -4,16 +4,16 @@
 _pkgname=csvtk
 pkgname=${_pkgname}-bin
 pkgver=0.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, efficient and practical CSV/TSV toolkit in Golang"
 arch=('x86_64')
-url=http://bioinf.shenwei.me/csvtk
+url=https://bioinf.shenwei.me/csvtk/
 license=('MIT')
 conflicts=(${_pkgname})
 provides=(${_pkgname})
 source=(
   "${_pkgname}"-"${pkgver}"::https://github.com/shenwei356/"${_pkgname}"/archive/v"${pkgver}".tar.gz
-  "${_pkgname}"-"${pkgver}"-binary::https://github.com/shenwei356/"${_pkgname}"/releases/download/v"${pkgver}"/"${_pkgname}"_linux_amd64.tar.gz
+  "${_pkgname}"-"${pkgver}"-binary.tar.gz::https://github.com/shenwei356/"${_pkgname}"/releases/download/v"${pkgver}"/"${_pkgname}"_linux_amd64.tar.gz
 )
 sha256sums=('47d244068274ad5070ef50cafee243d1035c51692b025bf074d0b7be3f8a7d1c'
             'f7b173cb40ca84cad834ccb65721b6ef96849f07718ce854c47ca65a04710d9e')
@@ -32,5 +32,5 @@ package() {
   ln -s ../../../csvtk/testdata/figures ./figures
 
   cd "${srcdir}/"
-  install -Dm755 "${_pkgname}"-"${pkgver}"-binary "${pkgdir}"/usr/bin/"${_pkgname}"
+  install -Dm755 "${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}"
 }
