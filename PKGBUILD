@@ -1,23 +1,22 @@
 # Maintainer: SpacingBat3 <aur@spacingbat3.anonaddy.com>
 _pname=OpenSCQ30
-_pauthor=Oppzippy
-pkgbase=openscq30
-pkgname=($pkgbase-{cli,gui}) 
-pkgver=1.2.0
-pkgrel=1
-pkgdesc="Cross platform application for controlling settings of Soundcore Q30 headphones"
-arch=(x86_64 arm64 ia32 armv7l)
-url="https://github.com/Oppzippy/OpenSCQ30"
-license=('GPL3')
-
+_powner=Oppzippy
 _deps_common=('libdbus-1.so')
 _deps_gui=('libgtk-4.so' 'libadwaita-1.so')
-makedepends=('pkgconf' 'cargo-make' 'rust')
 
-source=("https://github.com/$_pauthor/$pname/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('8f6349ca44c229fe90616bc8033946db')
-sha512sums=('0be6738383e2a5880653795c3d5c5dbb0ea00d7c3bec5eead4ae382be002a4eb47cacd8c439ee91f6e85b0b500f45ed30b55a1eecb85d2af408ae4892da16974')
-b2sums=('40ac7035ed52ef8e62c5cf5a9cd354733b456a25b78929ff093fbba167591d13b3e1d3034550cba55651d520d0e82e74acf963b01ab2d6626fdfe952f63eaf14')
+pkgbase=openscq30
+pkgname=($pkgbase-{cli,gui}) 
+pkgver=1.3.1
+pkgrel=1
+pkgdesc="Cross platform application for controlling settings of Soundcore Q30 headphones"
+arch=(x86_64 aarch64 armv7l)
+url="https://github.com/$_powner/$_pname"
+license=('GPL3')
+makedepends=('pkgconf' 'cargo-make' 'rust' "${_deps_common[@]}" "${_deps_gui[@]}")
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+md5sums=('9e7900952b6795e79a93e67a13315f8a')
+sha512sums=('5fdcf3388bbf61c4f13418c111156b11629fa258e3ceaadac9401a19c5aef4d3b87e57743d3b66ca2dfdc5a9e3abde31cb8905416f1324dab4cf41e33b3e04fb')
+b2sums=('966029883bc647bb035ac39692b56e6b32e0d40e531a906510cb1b2331e29474f8b8c200ef807aa5dbc3405ded8ba9618f01c1fcb966c7689458b549cfb44cfe')
 
 build() {
 	cd "$srcdir/$_pname-$pkgver"
