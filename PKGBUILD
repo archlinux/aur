@@ -2,10 +2,11 @@
 _pkgname=ipp-devel
 pkgname=python-$_pkgname
 pkgver=2021.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel® Integrated Performance Primitives"
 arch=(x86_64)
 url=https://www.intel.com/content/www/us/en/developer/tools/oneapi/ipp.html
+depends=(python-ipp python-ipp-include)
 makedepends=(python-installer)
 license=(custom)
 _py=py2.py3
