@@ -1,7 +1,7 @@
 pkgbase = yarn-berry
 	pkgdesc = Fast, reliable, and secure dependency management - Active development trunk
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://yarnpkg.com/
 	arch = any
 	license = BSD

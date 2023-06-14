@@ -2,7 +2,7 @@
 
 pkgname=yarn-berry
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, reliable, and secure dependency management - Active development trunk'
 arch=(any)
 provides=('yarn')
@@ -17,6 +17,7 @@ package() {
   cd berry--yarnpkg-cli-${pkgver}
   install -dm755  "$pkgdir"/usr/lib/node_modules/yarn
   cp -R * "$pkgdir"/usr/lib/node_modules/yarn
+  chmod +x "$pkgdir"/usr/lib/node_modules/yarn/packages/yarnpkg-cli/bin/yarn.js
 
   install -dm755 "$pkgdir"/usr/bin
   ln -s /usr/lib/node_modules/yarn/packages/yarnpkg-cli/bin/yarn.js "$pkgdir"/usr/bin/yarn
