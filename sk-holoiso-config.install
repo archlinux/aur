@@ -8,7 +8,7 @@ post_install() {
     echo "Enable service"
     sudo systemctl daemon-reload
     sudo systemctl enable sk-auto-swap.service
-    sudo systemctl enable sk-efi-mount.service
+    sudo systemctl disable --now sk-efi-mount.service
     sudo systemctl enable sk-root-resume.service
 
   
@@ -47,6 +47,12 @@ post_install() {
         echo "$SWAP_PARTUUID" | sudo tee /etc/default/auto_swap
     fi
 
+    # 备份原始的 /etc/fstab 文件
+    sudo cp /etc/fstab /etc/fstab.backup
+    # 使用 awk 分析 /etc/fstab 文件并生成新的内容
+    sudo awk '!($1 == "PARTUUID=" && $2 == "/boot/efi")' /etc/fstab > /etc/fstab.tmp
+    # 将临时文件替换回原始的 /etc/fstab 文件
+    sudo mv /etc/fstab.tmp /etc/fstab
 
     # 机型特殊处理
     # G1619-04 （WinMAX2） 机型不需要蓝牙自动挂起 会导致连接xbox手柄异常
