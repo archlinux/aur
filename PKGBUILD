@@ -3,66 +3,66 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
-pkgname=lib32-libproxy
-pkgver=0.4.18
+pkgbase=lib32-libproxy
+pkgname=(
+  lib32-libproxy
+)
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Automatic proxy configuration management library (32-bit)"
 url="https://libproxy.github.io/libproxy/"
 arch=(x86_64)
 license=(LGPL)
 depends=(
-  lib32-dbus
-  lib32-gcc-libs
+  lib32-curl
+  lib32-duktape
   lib32-glib2
-  lib32-zlib
   libproxy
 )
 makedepends=(
-  cmake
   git
-  ninja
+  gsettings-desktop-schemas
+  meson
 )
-_commit=caccaf28e3df6ea612d2d4b39f781c4324019fdb  # tags/0.4.18
+_commit=8a39803dc6a71c81092eb485d4b7d0213beb4d63  # tags/0.5.1^0
 source=("git+https://github.com/libproxy/libproxy#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {
   cd libproxy
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+  git describe --tags | sed 's/^libproxy-//;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
   cd libproxy
-
-  # Fix building without duktape
-  git cherry-pick -n c9b1f19c486b6ec590441b9c46965ab961d2677d
 }
 
 build() {
+  local meson_options=(
+    --libdir=/usr/lib32
+    -D docs=false
+    -D introspection=false
+    -D vapi=false
+  )
+
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
-  cmake -S libproxy -B build -G Ninja \
-    -DBIPR=1 \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
-    -DCMAKE_C_FLAGS="$CFLAGS" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_SKIP_RPATH=ON \
-    -DLIBEXEC_INSTALL_DIR=/usr/lib \
-    -DLIB_SUFFIX=32 \
-    -DWITH_{DUKTAPE,PERL,WEBKIT}=OFF
-  cmake --build build
+  arch-meson libproxy build "${meson_options[@]}"
+  meson compile -C build
 }
 
 check() {
-  cmake --build build --target test
+  meson test -C build --print-errorlogs
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
-  rm -r "$pkgdir"/usr/{bin,include,lib,share}
+package_lib32-libproxy() {
+  provides=(libproxy.so)
+  conflicts=()
+
+  meson install -C build --destdir "$pkgdir"
+  rm -r "$pkgdir"/usr/{bin,include,share}
 }
 
 # vim:set sw=2 sts=-1 et:
