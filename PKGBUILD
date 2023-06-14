@@ -1,43 +1,61 @@
 # Maintainer: Lex Childs <lexchilds@gmail.com>
-pkgname=leftwm
+# Contributor: éclairevoyant
+
+pkgbase=leftwm
+pkgname=(leftwm leftwm-nonsystemd)
 pkgver=0.4.1
-pkgrel=2
-epoch=0
-pkgdesc="Leftwm - A tiling window manager for the adventurer"
+pkgrel=3
+pkgdesc="A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
 url="https://github.com/leftwm/leftwm"
 license=('MIT')
-depends=()
+depends=(gcc-libs)
 makedepends=('cargo' 'git')
-optdepends=('dmenu: default launcher'
+optdepends=('bash: themes'
+            'dmenu: default launcher'
+            'eww: flexible status bar'
             'feh: used to set background images'
             'lemonbar: light weight bar'
             'polybar: light weight bar')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-md5sums=('SKIP')
-
-build() {
-  export CARGO_TARGET_DIR=target
-  if [[ $(ps --no-headers -o comm 1) == "systemd" ]]; then
-    buildflags=""
-    echo "Building for systemd."
-  else
-    buildflags="--no-default-features --features=lefthk,sys-log"
-    echo "Building for non-systemd."
-  fi
-
-  cd ${pkgname}-${pkgver}
-  cargo build --profile optimized ${buildflags}
-}
-
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('fe10c6ef9f458a889ff0020d348e0185eeba8c606e2fb8ac04a78ac214ce40bc')
 install='readme.install'
 
-package() {
-  cd ${pkgname}-${pkgver}/target/optimized
-  install -Dm755 leftwm leftwm-worker lefthk-worker leftwm-state leftwm-check leftwm-command -t "${pkgdir}"/usr/bin
-  install -Dm644 ${srcdir}/${pkgname}-${pkgver}/leftwm/doc/leftwm.1 "${pkgdir}"/usr/share/man/man1
-  install -d "${pkgdir}"/usr/share/leftwm
-  cp -R "${srcdir}"/${pkgname}-${pkgver}/themes "${pkgdir}"/usr/share/leftwm
-  install -Dm644 "${srcdir}"/${pkgname}-${pkgver}/leftwm.desktop "${pkgdir}"/usr/share/xsessions/leftwm.desktop
+prepare() {
+	cd $pkgbase-$pkgver
+	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
+build() {
+	cd $pkgbase-$pkgver
+
+	export CARGO_TARGET_DIR=target_non_systemd
+	cargo build --frozen --release --no-default-features --features=lefthk,sys-log
+
+	export CARGO_TARGET_DIR=target_systemd
+	cargo build --frozen --release
+}
+
+_package() {
+	install -Dm755 leftwm{,-worker,-state,-check,-command} lefthk-worker -t "$pkgdir"/usr/bin/
+
+	cd ../../
+	install -Dm644 leftwm/doc/leftwm.1 -t "$pkgdir"/usr/share/man/man1/
+	install -d "$pkgdir"/usr/share/leftwm
+	cp -R themes "$pkgdir"/usr/share/leftwm
+	install -Dm644 leftwm.desktop -t "$pkgdir"/usr/share/xsessions/
+	install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/leftwm/LICENSE
+}
+
+package_leftwm-nonsystemd() {
+	pkgdesc+=" (non-systemd init)"
+	cd $pkgbase-$pkgver/target_non_systemd/release
+	_package
+}
+
+package_leftwm() {
+	pkgdesc+=" (systemd init)"
+	depends+=(systemd)
+	cd $pkgbase-$pkgver/target_systemd/release
+	_package
+}

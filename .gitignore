@@ -1,4 +1,5 @@
-src/
-pkg/
-leftwm/
-*pkg.tar.zst
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/readme.install
