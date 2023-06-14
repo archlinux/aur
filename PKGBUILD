@@ -1,17 +1,18 @@
 # Maintainer: Vasiliy Stelmachenok <ventureo@yandex.ru>
 # Contributor: mfcmquintela <mfcmquintela@gmail.com>
 # Contributor: lazerl0rd <lazerl0rd@thezest.dev>
+# Contributor: Joel Selvaraj
 
 _gitname=nvlax
 pkgname=$_gitname-git
 pkgver=r11.b3699ad
-pkgrel=5
+pkgrel=6
 pkgdesc='Future-proof NvENC & NvFBC patcher'
 arch=('x86_64')
 url='https://github.com/illnyang/nvlax'
 license=('GPL')
 depends=('nvidia-utils')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'gcc12')
 provides=('nvlax' 'nvlax-git')
 conflicts=('nvlax')
 options=(!ccache)
@@ -24,6 +25,10 @@ sha256sums=('SKIP'
 
 prepare() {
   cd $_gitname
+
+  # fixme: Looks like it's not building normally with GCC 13
+  export CC="/usr/bin/gcc-12"
+  export CXX="/usr/bin/g++-12"
 
   # Fixes: https://github.com/illnyang/nvlax/issues/11
   sed -i 's|CPMAddPackage("gh:zyantific/zydis#master")|CPMAddPackage("gh:zyantific/zydis#55dd08c210722aed81b38132f5fd4a04ec1943b5")|g' CMakeLists.txt
