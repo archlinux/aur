@@ -1,6 +1,6 @@
 pkgbase = doomseeker
 	pkgdesc = A cross-platform Doom server browser
-	pkgver = 1.4.r0.gd47a5362
+	pkgver = 1.4.1.r0.g973e20aa
 	pkgrel = 1
 	epoch = 1
 	url = https://doomseeker.drdteam.org/
@@ -17,7 +17,7 @@ pkgbase = doomseeker
 	optdepends = zandronum: GZDoom fork supporting client/server multiplayer
 	optdepends = odamex: Classic client/server multiplayer fork
 	optdepends = chocolate-doom: Doom source port accurately reproducing the original DOS versions of Doom
-	source = doomseeker::git+https://bitbucket.org/Doomseeker/doomseeker#tag=1.4.0
+	source = doomseeker::git+https://bitbucket.org/Doomseeker/doomseeker#tag=1.4.1
 	sha256sums = SKIP
 
 pkgname = doomseeker
