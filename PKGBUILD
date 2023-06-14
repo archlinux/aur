@@ -6,7 +6,7 @@
 
 ## Mozc compile option
 _bldtype=Release
-_mozc_commit=7896c97
+_mozc_commit=99cd187
 
 ## follow the submodule commits in https://github.com/fcitx/mozc/tree/fcitx/src/third_party
 _abseil_cpp_commit=1feab4f
@@ -24,7 +24,7 @@ _zipcode_rel=202110
 _pkgbase=mozc
 pkgname=fcitx5-mozc-ext-neologd
 pkgdesc="Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)"
-pkgver=2.29.5111.102.g7896c97
+pkgver=2.29.5111.102.g99cd187
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/google/mozc"
