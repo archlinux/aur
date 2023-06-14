@@ -3,11 +3,12 @@
 pkgname='xawm'
 _pkgname='XawM'
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Xaw with Modern look and feel'
 arch=('x86_64')
 url='https://xawm.sourceforge.net'
 license=('unknown')
+depends=('libxmu' 'libxpm')
 makedepends=('imake')
 
 source=("$_pkgname-$pkgver.tar.gz::https://downloads.sourceforge.net/project/xawm/xawm/1.6/XawM-1.6.src.tar.gz"

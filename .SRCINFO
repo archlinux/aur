@@ -1,11 +1,13 @@
 pkgbase = xawm
 	pkgdesc = Xaw with Modern look and feel
 	pkgver = 1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xawm.sourceforge.net
 	arch = x86_64
 	license = unknown
 	makedepends = imake
+	depends = libxmu
+	depends = libxpm
 	provides = libxaw
 	source = XawM-1.6.tar.gz::https://downloads.sourceforge.net/project/xawm/xawm/1.6/XawM-1.6.src.tar.gz
 	source = https://www.ibiblio.org/pub/X11/contrib/widgets/Xaw3d/R5/laygram.h
