@@ -1,16 +1,21 @@
 # Maintainer: Dane Hobrecht <76x5l22l@anonaddy.me>
 
 pkgname=shadowtube
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="A YouTube shadowban detection program."
 arch=('any')
 url="https://github.com/danehobrecht/shadowtube"
 license=('GPL')
 depends=("python>=3.7.3" "python-pip" "torbrowser-launcher")
-
 source=("https://github.com/danehobrecht/shadowtube/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('560267a8fa759c728fa3f0dbb65cf24c8a6a0ad25a4ff2e3d1b841ec938a3698')
+
+build() {
+    python -m venv "$srcdir"/venv    
+    source "$srcdir"/venv/bin/activate
+    pip install -r requirements.txt
+}
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"

@@ -10,17 +10,21 @@ Analyzation features:
 ```
 git clone https://github.com/danehobrecht/shadowtube.git && cd shadowtube
 ```
-2. Install dependencies:
- - [Python 3.7.3+ & pip3](https://www.python.org/downloads/)
+2. Create virtual environment:
+```
+python -m venv venv && source /venv/bin/activate && cd ..
+```
+3. Install dependencies:
+ - [Python 3.7.3+ & pip](https://www.python.org/downloads/)
  - [Tor Browser](https://www.torproject.org/)
 ```
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
-3. [Configure torrc](#configure-torrc) (optional)
-4. Launch an instance of Tor Browser
-5. Execute:
+4. [Configure torrc](#configure-torrc) (optional)
+5. Launch an instance of Tor Browser
+6. Execute:
 ```
-python3 shadowtube
+python shadowtube
 ```
 ## Configure torrc
 1. Hash a custom control password:
@@ -55,17 +59,22 @@ This step limits connection only to the local loopback address, effectively limi
 - As always, [RTFM](https://2019.www.torproject.org/docs/documentation.html.en#UpToSpeed)
 ## Sample outputs
 ```
-"Portal - 'Still Alive'"
-https://www.youtube.com/watch?v=Y6ljFaKRTrI
+Title: "Portal - 'Still Alive'"
+Video URL: https://www.youtube.com/watch?v=Y6ljFaKRTrI
+
 Interrupt (CTRL+C) to conclude the session
 
-[✓] Poland — 95.214.55.43
-[✓] Netherlands — 95.168.173.143
-[✓] Germany — 185.220.101.55
-[✓] Germany — 185.207.107.216
-[✓] (Unknown)
-^C
-No abnormal behavior detected
+X [1 / 8] (Unknown)
+✓ [2 / 8] United States — 162.247.74.27
+X [3 / 8] (Unknown)
+X [4 / 8] Germany — 84.252.122.55
+✓ [5 / 8] Luxembourg — 104.244.74.159
+✓ [6 / 8] Iceland — 89.147.109.233
+X [7 / 8] United States — 199.249.230.145
+╰─> ⚠ Throttling detected
+✓ [8 / 8] Austria — 109.70.100.6
+
+STATUS: QUESTIONABLE
 ```
 ```
 "Google - My Activity.html"
@@ -75,25 +84,25 @@ Interrupt (CTRL+C) to conclude the session
 "Super clever, really like the use of chickens. The smaller scale interpretations seem to be popular as opposed to som..."
 https://www.youtube.com/watch?v=Drx1DEXa0GM
 
-[✓] Germany — 185.220.102.8
-[✓] Seychelles — 37.228.129.5
-[✓] Germany — 185.220.101.213
+✓ Germany — 185.220.102.8
+✓ Seychelles — 37.228.129.5
+✓ Germany — 185.220.101.213
 
 "This is good work. Feel your pain with the beatmap conversion."
 https://www.youtube.com/watch?v=nWfF8wj19yk
 
-[✓] Germany — 185.220.100.249
-[✓] (Unknown)
-[✓] Austria — 109.70.100.50
+✓ Germany — 185.220.100.249
+✓ (Unknown)
+✓ Austria — 109.70.100.50
 
 "Doesn't look like failing to me. Glad you enjoyed the map."
 https://www.youtube.com/watch?v=e_pyT5yFuYY
 
-[✓] Switzerland — 176.10.104.240
-[✓] Germany — 185.220.101.144
-[✓] China — 23.154.177.131
-^C
-No abnormal behavior detected
+✓ Switzerland — 176.10.104.240
+✓ Germany — 185.220.101.144
+✓ China — 23.154.177.131
+
+STATUS: HEALTHY
 ```
 ## Known compatability issues (subject to change)
  - Video premieres
