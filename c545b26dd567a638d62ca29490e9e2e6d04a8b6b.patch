@@ -1,0 +1,156 @@
+From c545b26dd567a638d62ca29490e9e2e6d04a8b6b Mon Sep 17 00:00:00 2001
+From: MrMan314 <44348373+MrMan314@users.noreply.github.com>
+Date: Wed, 1 Feb 2023 15:29:23 -0500
+Subject: [PATCH] i hate reg
+
+---
+ drivers/net/wireless/intel/iwlwifi/iwl-drv.c       |  3 +++
+ drivers/net/wireless/intel/iwlwifi/iwl-modparams.h |  2 ++
+ drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.c | 12 ++++++------
+ drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.h |  4 ++--
+ drivers/net/wireless/intel/iwlwifi/mvm/mvm.h       |  3 +++
+ drivers/net/wireless/intel/iwlwifi/mvm/nvm.c       |  8 +++++++-
+ 6 files changed, 23 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/wireless/intel/iwlwifi/iwl-drv.c b/drivers/net/wireless/intel/iwlwifi/iwl-drv.c
+index ab7065c93826a5..cf407307c8c898 100644
+--- a/drivers/net/wireless/intel/iwlwifi/iwl-drv.c
++++ b/drivers/net/wireless/intel/iwlwifi/iwl-drv.c
+@@ -1887,6 +1887,9 @@ MODULE_PARM_DESC(fw_restart, "restart firmware in case of error (default true)")
+ module_param_named(nvm_file, iwlwifi_mod_params.nvm_file, charp, 0444);
+ MODULE_PARM_DESC(nvm_file, "NVM file name");
+ 
++module_param_named(lar_disable, iwlwifi_mod_params.lar_disable, bool, 0444);
++MODULE_PARM_DESC(lar_disable, "disable LAR functionality (default: N)");
++
+ module_param_named(uapsd_disable, iwlwifi_mod_params.uapsd_disable, uint, 0644);
+ MODULE_PARM_DESC(uapsd_disable,
+ 		 "disable U-APSD functionality bitmap 1: BSS 2: P2P Client (default: 3)");
+diff --git a/drivers/net/wireless/intel/iwlwifi/iwl-modparams.h b/drivers/net/wireless/intel/iwlwifi/iwl-modparams.h
+index 1cf26ab4f4887f..c9343ce72cd53d 100644
+--- a/drivers/net/wireless/intel/iwlwifi/iwl-modparams.h
++++ b/drivers/net/wireless/intel/iwlwifi/iwl-modparams.h
+@@ -59,6 +59,7 @@ enum iwl_uapsd_disable {
+  * @nvm_file: specifies a external NVM file
+  * @uapsd_disable: disable U-APSD, see &enum iwl_uapsd_disable, default =
+  *	IWL_DISABLE_UAPSD_BSS | IWL_DISABLE_UAPSD_P2P_CLIENT
++ * @lar_disable: disable LAR (regulatory), default = 0
+  * @disable_11ac: disable VHT capabilities, default = false.
+  * @remove_when_gone: remove an inaccessible device from the PCIe bus.
+  * @enable_ini: enable new FW debug infratructure (INI TLVs)
+@@ -78,6 +79,7 @@ struct iwl_mod_params {
+ #endif
+ 	char *nvm_file;
+ 	u32 uapsd_disable;
++	bool lar_disable;
+ 	bool disable_11ac;
+ 	/**
+ 	 * @disable_11ax: disable HE capabilities, default = false
+diff --git a/drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.c b/drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.c
+index aa8e08487b52a0..6bcf68535a92ae 100644
+--- a/drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.c
++++ b/drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.c
+@@ -1366,7 +1366,7 @@ iwl_parse_nvm_data(struct iwl_trans *trans, const struct iwl_cfg *cfg,
+ 		   const __be16 *nvm_hw, const __le16 *nvm_sw,
+ 		   const __le16 *nvm_calib, const __le16 *regulatory,
+ 		   const __le16 *mac_override, const __le16 *phy_sku,
+-		   u8 tx_chains, u8 rx_chains)
++		   u8 tx_chains, u8 rx_chains, bool lar_fw_supported)
+ {
+ 	struct iwl_nvm_data *data;
+ 	bool lar_enabled;
+@@ -1446,8 +1446,7 @@ iwl_parse_nvm_data(struct iwl_trans *trans, const struct iwl_cfg *cfg,
+ 		return NULL;
+ 	}
+ 
+-	if (lar_enabled &&
+-	    fw_has_capa(&fw->ucode_capa, IWL_UCODE_TLV_CAPA_LAR_SUPPORT))
++	if (lar_fw_supported && lar_enabled)
+ 		sbands_flags |= IWL_NVM_SBANDS_FLAGS_LAR;
+ 
+ 	if (iwl_nvm_no_wide_in_5ghz(trans, cfg, nvm_hw))
+@@ -1892,6 +1891,9 @@ struct iwl_nvm_data *iwl_get_nvm(struct iwl_trans *trans,
+ 		.id = WIDE_ID(REGULATORY_AND_NVM_GROUP, NVM_GET_INFO)
+ 	};
+ 	int  ret;
++	bool lar_fw_supported = !iwlwifi_mod_params.lar_disable &&
++				fw_has_capa(&fw->ucode_capa,
++					    IWL_UCODE_TLV_CAPA_LAR_SUPPORT);
+ 	bool empty_otp;
+ 	u32 mac_flags;
+ 	u32 sbands_flags = 0;
+@@ -1971,9 +1973,7 @@ struct iwl_nvm_data *iwl_get_nvm(struct iwl_trans *trans,
+ 	nvm->valid_tx_ant = (u8)le32_to_cpu(rsp->phy_sku.tx_chains);
+ 	nvm->valid_rx_ant = (u8)le32_to_cpu(rsp->phy_sku.rx_chains);
+ 
+-	if (le32_to_cpu(rsp->regulatory.lar_enabled) &&
+-	    fw_has_capa(&fw->ucode_capa,
+-			IWL_UCODE_TLV_CAPA_LAR_SUPPORT)) {
++	if (le32_to_cpu(rsp->regulatory.lar_enabled) && lar_fw_supported) {
+ 		nvm->lar_enabled = true;
+ 		sbands_flags |= IWL_NVM_SBANDS_FLAGS_LAR;
+ 	}
+diff --git a/drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.h b/drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.h
+index e01f7751cf1130..001648c46fdd37 100644
+--- a/drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.h
++++ b/drivers/net/wireless/intel/iwlwifi/iwl-nvm-parse.h
+@@ -22,7 +22,7 @@ enum iwl_nvm_sbands_flags {
+ };
+ 
+ /**
+- * iwl_parse_nvm_data - parse NVM data and return values
++ * const struct iwl_fw *fw,iwl_parse_nvm_data - parse NVM data and return values
+  *
+  * This function parses all NVM values we need and then
+  * returns a (newly allocated) struct containing all the
+@@ -35,7 +35,7 @@ iwl_parse_nvm_data(struct iwl_trans *trans, const struct iwl_cfg *cfg,
+ 		   const __be16 *nvm_hw, const __le16 *nvm_sw,
+ 		   const __le16 *nvm_calib, const __le16 *regulatory,
+ 		   const __le16 *mac_override, const __le16 *phy_sku,
+-		   u8 tx_chains, u8 rx_chains);
++		   u8 tx_chains, u8 rx_chains, bool lar_fw_supported);
+ 
+ /**
+  * iwl_parse_mcc_info - parse MCC (mobile country code) info coming from FW
+diff --git a/drivers/net/wireless/intel/iwlwifi/mvm/mvm.h b/drivers/net/wireless/intel/iwlwifi/mvm/mvm.h
+index ce6b701f3f4cd2..edc2406f899908 100644
+--- a/drivers/net/wireless/intel/iwlwifi/mvm/mvm.h
++++ b/drivers/net/wireless/intel/iwlwifi/mvm/mvm.h
+@@ -1276,6 +1276,9 @@ static inline bool iwl_mvm_is_lar_supported(struct iwl_mvm *mvm)
+ 	bool nvm_lar = mvm->nvm_data->lar_enabled;
+ 	bool tlv_lar = fw_has_capa(&mvm->fw->ucode_capa,
+ 				   IWL_UCODE_TLV_CAPA_LAR_SUPPORT);
++	
++	if (iwlwifi_mod_params.lar_disable)
++		return false;
+ 
+ 	/*
+ 	 * Enable LAR only if it is supported by the FW (TLV) &&
+diff --git a/drivers/net/wireless/intel/iwlwifi/mvm/nvm.c b/drivers/net/wireless/intel/iwlwifi/mvm/nvm.c
+index 6d18a1fd649b90..0a93b820299864 100644
+--- a/drivers/net/wireless/intel/iwlwifi/mvm/nvm.c
++++ b/drivers/net/wireless/intel/iwlwifi/mvm/nvm.c
+@@ -220,6 +220,7 @@ iwl_parse_nvm_sections(struct iwl_mvm *mvm)
+ 	struct iwl_nvm_section *sections = mvm->nvm_sections;
+ 	const __be16 *hw;
+ 	const __le16 *sw, *calib, *regulatory, *mac_override, *phy_sku;
++	bool lar_enabled;
+ 	int regulatory_type;
+ 
+ 	/* Checking for required sections */
+@@ -270,9 +271,14 @@ iwl_parse_nvm_sections(struct iwl_mvm *mvm)
+ 		(const __le16 *)sections[NVM_SECTION_TYPE_REGULATORY_SDP].data :
+ 		(const __le16 *)sections[NVM_SECTION_TYPE_REGULATORY].data;
+ 
++	lar_enabled = !iwlwifi_mod_params.lar_disable &&
++		fw_has_capa(&mvm->fw->ucode_capa,
++			IWL_UCODE_TLV_CAPA_LAR_SUPPORT);
++
+ 	return iwl_parse_nvm_data(mvm->trans, mvm->cfg, mvm->fw, hw, sw, calib,
+ 				  regulatory, mac_override, phy_sku,
+-				  mvm->fw->valid_tx_ant, mvm->fw->valid_rx_ant);
++				  mvm->fw->valid_tx_ant, mvm->fw->valid_rx_ant,
++				  lar_enabled);
+ }
+ 
+ /* Loads the NVM data stored in mvm->nvm_sections into the NIC */
