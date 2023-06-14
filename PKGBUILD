@@ -15,9 +15,9 @@ depends=('bzip2' 'fmt' 'libpng' 'libsodium' 'sdl2' 'sdl2_image' 'simpleini' 'zli
 makedepends=('cmake' 'devilutionx-graphics-tools-git' 'flac' 'gettext' 'git' 'lame' 'smpq')
 options=('strip')
 source=("${url}/archive/${pkgver}.tar.gz"
-  "${url}-assets/releases/download/v2/fonts.mpq"
-  "${url}-assets/releases/download/v2/pl.mpq"
-  "${url}-assets/releases/download/v2/ru.mpq"
+  "${url}-assets/releases/download/v3/fonts.mpq"
+  "${url}-assets/releases/download/v3/pl.mpq"
+  "${url}-assets/releases/download/v3/ru.mpq"
 )
 
 prepare() {
@@ -65,6 +65,6 @@ package_devilutionx-fonts() {
 }
 
 sha256sums=('94bd11e05ba53edddfd9df677d30c9f9fdca90f963a3466bf0fb133bd4f8d668'
-            '0988354014c0b969d06001eb1f7e6395de9b41a8de06315745e75d98b5334201'
-            'd2b4b794312e5c79b49eda19f97820e213d8feff3f479834cd290faf22eb6469'
-            '2b65103615d68a146fa8685f82f40c82417050baee351dc5b92813240537aac9')
+            '6b62e03c42ae4427055e0f292a1beafb5e840c397adaf1f641b909be37b8653e'
+            'b78c058a51733d9a0513c3cc535312b00a2bdff8ad0efac75971104c9ae11f41'
+            '01749f4c4009b93bb1bb40e2ee09dba409fa37501da32bdb0b468146e56c9689')
