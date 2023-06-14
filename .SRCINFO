@@ -1,12 +1,12 @@
 pkgbase = treesheets-bin
 	pkgdesc = Free form data organizer
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://strlen.com/treesheets/
 	arch = x86_64
 	license = ZLIB
 	depends = glibc
-	depends = wxgtk30
+	depends = wxwidgets3.0-gtk3
 	provides = treesheets=1.0.2
 	source = https://mirrors.kernel.org/ubuntu/pool/universe/t/treesheets/treesheets_1.0.2-1build1_amd64.deb
 	source = treesheets-bin.LICENSE::https://github.com/aardappel/treesheets/raw/master/ZLIB_LICENSE.txt

@@ -5,13 +5,13 @@
 _pkgname=treesheets
 pkgname="$_pkgname-bin"
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Free form data organizer'
-arch=('x86_64')
+arch=(x86_64)
 url="https://strlen.com/treesheets/"
-license=('ZLIB')
+license=(ZLIB)
 # wxgtk requires ABI 1013
-depends=('glibc' 'wxgtk30')
+depends=(glibc wxwidgets3.0-gtk3)
 provides=("$_pkgname=$pkgver")
 source=("https://mirrors.kernel.org/ubuntu/pool/universe/t/$_pkgname/${_pkgname}_$pkgver-1build1_amd64.deb"
         "$pkgname.LICENSE::https://github.com/aardappel/treesheets/raw/master/ZLIB_LICENSE.txt")
