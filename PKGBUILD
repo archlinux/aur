@@ -3,7 +3,7 @@
 pkgname=gnatstudio-sources
 pkgver=24.0w
 pkgrel=1
-pkgdesc="Source tarballs for the Gnatstudio project stack."
+pkgdesc='Source tarballs for the Gnatstudio project stack.'
 
 arch=(i686 x86_64)
 url=https://github.com/AdaCore/gnatstudio
@@ -11,14 +11,6 @@ license=(GPL3)
 
 source=(https://github.com/AdaCore/gnatstudio/releases/download/gnatstudio-cr-20230501/gnatstudio-sources-x86_64-linux.tar.gz)
 sha256sums=(acacf5f971dd94dd08a464a05f4e02cf0f1fc5e81028bf7c13091ed08ad97218)
-
-
-build()
-{
-   cd $srcdir/$pkgname-x86_64-linux
-
-   # Nothing to build.
-}
 
 
 package()
