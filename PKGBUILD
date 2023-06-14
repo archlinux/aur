@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r36.bcc5366
+pkgver=r37.0ef5f3d
 pkgrel=1
 pkgdesc="A custom configs tool for sk-holoiso"
 arch=('any')
@@ -38,7 +38,8 @@ package() {
     install -m755 -t "${pkgdir}/usr/bin/" "${source_dir}/usr/bin"/*
 
     # 主程序
-    install -Dm755 "${source_dir}/sk-holoiso-config.py" "${pkgdir}/usr/share/${pkgname}/sk-holoiso-config.py"
+    install -m644 -t "${pkgdir}/usr/share/${pkgname}" "${source_dir}/main"/* 
+    # install -Dm755 "${source_dir}/sk-holoiso-config.py" "${pkgdir}/usr/share/${pkgname}/sk-holoiso-config.py"
     ln -s "/usr/share/${pkgname}/sk-holoiso-config.py" "${pkgdir}/usr/bin/sk-holoiso-config"
 
     install -Dm644 "${source_dir}/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules" "${pkgdir}/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules"
