@@ -1,0 +1,17 @@
+pkgbase = syncthing-desktop-entries
+	pkgdesc = Adds files to integrate Syncthing in your desktop environment.
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	arch = any
+	license = GPL
+	depends = syncthing
+	conflicts = syncthing-appmenu
+	source = syncthing-start.desktop
+	source = syncthing-ui.desktop
+	source = syncthing.svg
+	sha256sums = 750f60ce1da6a9f30494d676141151d99eb4c7f6cc58e04cd1478cff94834b40
+	sha256sums = fe101b991f56b3b11f029e6f019371c4190b09db726d1d13bf5a437ffa781bb8
+	sha256sums = 32a59ba5e16eea315c533d38358107984049d54c8130122cd0a63480fffa80dd
+
+pkgname = syncthing-desktop-entries
