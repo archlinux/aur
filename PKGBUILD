@@ -158,8 +158,9 @@ pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
   )
   provides=(
     'wxwidgets-qt5'
-     'wxwidgets'
+    'wxwidgets'
   )
+  conflicts=('wxwidgets-qt5')
 
   make -C build-qt5 DESTDIR="${pkgdir}" install
 
@@ -231,12 +232,8 @@ package_wxwidgets-gtk4-light() {
   provides=(
     'wxwidgets'
     'wxwidgets-gtk4'
-    'wxgtk4'
   )
-  conflicts=(
-    'wxwidgets-gtk4'
-    'wxgtk4'
-  )
+  conflicts=('wxwidgets-gtk4')
 
   make -C build-gtk4 DESTDIR="${pkgdir}" install
 
@@ -250,7 +247,6 @@ package_wxwidgets-gtk4-light() {
   done
   rm -fr "${pkgdir}/usr/share/bakefile"
   rm -fr "${pkgdir}/usr/share/"{aclocal,locale}
-
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
@@ -266,13 +262,10 @@ package_wxwidgets-common-light() {
   provides=(
     'wxbase'
     'wxbase-light'
-    'wxgtk-common'
     'wxwidgets-common'
   )
   conflicts=(
     'wxbase'
-    'wxbase-light'
-    'wxgtk-common'
     'wxwidgets-common'
   )
 

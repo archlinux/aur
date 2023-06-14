@@ -31,11 +31,8 @@ pkgname = wxwidgets-common-light
 	depends = libpcre2-32.so
 	provides = wxbase
 	provides = wxbase-light
-	provides = wxgtk-common
 	provides = wxwidgets-common
 	conflicts = wxbase
-	conflicts = wxbase-light
-	conflicts = wxgtk-common
 	conflicts = wxwidgets-common
 
 pkgname = wxwidgets-gtk3-light
@@ -62,3 +59,4 @@ pkgname = wxwidgets-qt5-light
 	depends = libmspack.so
 	provides = wxwidgets-qt5
 	provides = wxwidgets
+	conflicts = wxwidgets-qt5
