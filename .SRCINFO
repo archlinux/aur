@@ -1,0 +1,26 @@
+pkgbase = python-pycorrector-git
+	pkgdesc = pycorrector is a toolkit for text error correction. 文本纠错，Kenlm，ConvSeq2Seq，BERT，MacBERT，ELECTRA，ERNIE，Transformer，T5等模型实现，开箱即用。
+	pkgver = 0.4.8.r12.g9069caa
+	pkgrel = 1
+	url = https://github.com/shibing624/pycorrector
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = pypinyin
+	depends = python-jieba
+	depends = python-numpy
+	depends = python-six
+	depends = python-loguru
+	optdepends = kenlm: Faster and Smaller Language Model Queries
+	provides = python-pycorrector
+	conflicts = python-pycorrector
+	source = python-pycorrector-git::git+https://github.com/shibing624/pycorrector.git
+	sha256sums = SKIP
+
+pkgname = python-pycorrector-git
