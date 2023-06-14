@@ -1,0 +1,12 @@
+pkgbase = python-ipp-include
+	pkgdesc = Intel® Integrated Performance Primitives
+	pkgver = 2021.8.0
+	pkgrel = 1
+	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/ipp.html
+	arch = x86_64
+	license = custom
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/py2.py3/i/ipp-include/ipp_include-2021.8.0-py2.py3-none-manylinux1_x86_64.whl
+	sha256sums = d0da94b162043fd28f66b0e100b5958671957ea506623d43e05ba255f2b31489
+
+pkgname = python-ipp-include
