@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver//_/-}.tar.gz::https://github.com/vinceliuice/${_pkg
 sha512sums=('02b6685c8837de2273b0df18ea1dc3b5f296fa75f9d0eabf803823a7231f619c99c331cb8a8bf8bbfeab7dbc3ee859933ee8db985597b56cbf61d0d27fa966fa')
 makedepends=('sassc' 'optipng' 'inkscape')
 options=('!strip')
-conflicts=('mojave-gtk-theme-git')
+conflicts=('mojave-gtk-theme-git' 'mojave-gtk-theme-git-new')
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver//_/-}"
