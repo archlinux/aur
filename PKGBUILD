@@ -1,7 +1,7 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=picotool
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.1.2
+pkgrel=1
 
 pkgdesc="Tool for inspecting RP2040 binaries and interacting with RP2040 devices."
 arch=('any')
@@ -11,13 +11,20 @@ license=('BSD-3-Clause')
 depends=('gcc-libs' 'libusb')
 makedepends=('pico-sdk' 'cmake')
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2d824dbe48969ab9ae4c5311b15bca3449f5758c43602575c2dc3af13fcba195')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+        "99-picotool.rules")
+sha256sums=('f1746ead7815c13be1152f0645db8ea3b277628eb0110d42a0a186db37d40a91'
+            'de1a6ed1862e0fe31c4ebcaf322654203dfc07fd59c38e721f9bec48be1872a8')
 
 build() {
-	if [[ -z "${PICO_SDK_PATH}" ]]; then
-		error "Couldn't find pico-sdk! Is it set up?"
-		exit 1
+	if [ -z "${PICO_SDK_PATH}" ]; then
+		if [ -d "/usr/share/pico-sdk" ]; then
+			warning "PICO_SDK_PATH is not set! Using default path: /usr/share/pico-sdk"
+			export PICO_SDK_PATH=/usr/share/pico-sdk
+		else
+			error "Couldn't find pico-sdk! Is it set up?"
+			exit 1
+		fi
 	fi
 
 	cd "${srcdir}"
@@ -26,10 +33,15 @@ build() {
 }
 
 package() {
-	cd "${srcdir}"
-	install -Dm755 "build/picotool"         -t "${pkgdir}/usr/bin/"
+	# Install application
+	install -Dm755 "${srcdir}/build/picotool" -t "${pkgdir}/usr/bin/"
 
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -Dm644 "udev/99-picotool.rules" -t "${pkgdir}/etc/udev/rules.d/"
-	install -Dm644 "LICENSE.TXT"               "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	# Install udev rules
+	install -Dm644 "${srcdir}/99-picotool.rules" -t "${pkgdir}/etc/udev/rules.d/"
+
+	# Install docs
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+
+	# Install license
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.TXT" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
