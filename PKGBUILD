@@ -14,7 +14,8 @@ url="https://www.boost.org/"
 license=(custom)
 makedepends=(
   icu
-  python39
+  python
+  python-numpy
   bzip2
   openmpi
   zstd
@@ -24,12 +25,14 @@ source=(
   "$pkgbase-ublas-c++20-allocator-patch1.patch::https://github.com/boostorg/ublas/commit/47a314dd01d1.patch"
   "$pkgbase-ublas-c++20-allocator-patch2.patch::https://github.com/boostorg/ublas/commit/a23a903f9a36.patch"
   "$pkgbase-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch"
+  "python311-compatibility.patch"
 )
 sha256sums=(
   '83bfc1507731a0906e387fc28b7ef5417d591429e51e788417fe9ff025e116b1'
   '3f42688a87c532ac916889f21a4487b9e94a38a047b18724385eaa474719a9f7'
   '67f413463a1a12bdf63c913acd318148dda618d3f994e466232e265bbf0c2903'
   'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee'
+  'SKIP'
 )
 
 prepare() {
@@ -42,13 +45,14 @@ prepare() {
 
   # https://github.com/boostorg/ublas/pull/97
   patch -Np2 -i ../$pkgbase-ublas-c++20-iterator.patch
-}
 
-_python_version=3.9
-_python_exe=python$_python_version
+  patch -Np1 -i ../python311-compatibility.patch
+}
 
 build() {
   local JOBS="$(sed 's/.*\(-j *[0-9]\+\).*/\1/' <<<$MAKEFLAGS)"
+  local python_version=$(
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 
   pushd $_srcname/tools/build
   ./bootstrap.sh --cxxflags="$CXXFLAGS $LDFLAGS"
@@ -57,7 +61,7 @@ build() {
   popd
 
   cd $_srcname
-  ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=$_python_exe
+  ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=python3
 
   # support for OpenMPI
   echo "using mpi ;" >>project-config.jam
@@ -74,7 +78,7 @@ build() {
     runtime-link=shared \
     link=shared,static \
     toolset=gcc \
-    python=$_python_version \
+    python=$python_version \
     cflags="$CPPFLAGS $CFLAGS -fPIC -O3 -ffat-lto-objects" \
     cxxflags="$CPPFLAGS $CXXFLAGS -fPIC -O3 -ffat-lto-objects" \
     linkflags="$LDFLAGS" \
@@ -85,10 +89,13 @@ build() {
 }
 
 package_boost174() {
+  local python_version=$(
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
   pkgdesc+=' (development headers)'
   depends=("boost-libs=$pkgver")
   provides=("boost=$pkgver")
-  optdepends=('python39: for python bindings')
+  optdepends=('python: for python bindings')
   options=('staticlibs')
 
   install -d "$pkgdir"/usr/lib
@@ -96,10 +103,18 @@ package_boost174() {
   cp -a fakeinstall/lib/cmake "$pkgdir"/usr/lib/
   cp -a fakeinstall/{bin,include,share} "$pkgdir"/usr/
 
+  # https://github.com/boostorg/python/issues/203#issuecomment-391477685
+  for _lib in python numpy; do
+    ln -srL "$pkgdir"/usr/lib/libboost_${_lib}{${python_version/.},${python_version%.*}}.so
+  done
+
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $_srcname/LICENSE_1_0.txt
 }
 
 package_boost174-libs() {
+  local python_version=$(
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+
   pkgdesc+=' (runtime libraries)'
   depends=('bzip2' 'zlib' 'icu' 'zstd')
   optdepends=('openmpi: for mpi support')
@@ -128,10 +143,10 @@ package_boost174-libs() {
     "libboost_math_tr1f.so=$pkgver"
     "libboost_math_tr1l.so=$pkgver"
     "libboost_mpi.so=$pkgver"
-    "libboost_numpy39.so=$pkgver"
+    "libboost_numpy${python_version/.}.so=$pkgver"
     "libboost_prg_exec_monitor.so=$pkgver"
     "libboost_program_options.so=$pkgver"
-    "libboost_python39.so=$pkgver"
+    "libboost_python${python_version/.}.so=$pkgver"
     "libboost_random.so=$pkgver"
     "libboost_regex.so=$pkgver"
     "libboost_serialization.so=$pkgver"
@@ -151,10 +166,10 @@ package_boost174-libs() {
   cp -a fakeinstall/lib/*.so.* "$pkgdir"/usr/lib/
 
   # https://github.com/boostorg/mpi/issues/112
-  local site_packages=$($_python_exe -c 'import site; print(site.getsitepackages()[0])')
+  local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
   install -d "$pkgdir"$site_packages/boost
   touch "$pkgdir"$site_packages/boost/__init__.py
-  $_python_exe -m compileall -o 0 -o 1 -o 2 "$pkgdir"$site_packages/boost
+  python -m compileall -o 0 -o 1 -o 2 "$pkgdir"$site_packages/boost
   cp fakeinstall/lib/boost-python*/mpi.so "$pkgdir"$site_packages/boost/mpi.so
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $_srcname/LICENSE_1_0.txt
