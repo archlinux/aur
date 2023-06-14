@@ -1,7 +1,7 @@
 pkgbase = boost174
 	pkgdesc = Free peer-reviewed portable C++ source libraries (version 1.74)
 	pkgver = 1.74.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.boost.org/
 	arch = x86_64
 	license = custom
@@ -20,13 +20,12 @@ pkgbase = boost174
 	sha256sums = 3f42688a87c532ac916889f21a4487b9e94a38a047b18724385eaa474719a9f7
 	sha256sums = 67f413463a1a12bdf63c913acd318148dda618d3f994e466232e265bbf0c2903
 	sha256sums = aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee
-	sha256sums = SKIP
+	sha256sums = 44fffaefa5a7785142b4deacd508ba5de23fa4aafde6cc66f3b697c07f498d5f
 
 pkgname = boost174
 	pkgdesc = Free peer-reviewed portable C++ source libraries (version 1.74) (development headers)
 	depends = boost-libs=1.74.0
 	optdepends = python: for python bindings
-	provides = boost=1.74.0
 	options = staticlibs
 
 pkgname = boost174-libs

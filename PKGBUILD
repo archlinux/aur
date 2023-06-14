@@ -6,7 +6,7 @@ pkgname=(
   boost174-libs
 )
 pkgver=1.74.0
-pkgrel=1
+pkgrel=3
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries (version 1.74)"
 arch=(x86_64)
@@ -32,7 +32,7 @@ sha256sums=(
   '3f42688a87c532ac916889f21a4487b9e94a38a047b18724385eaa474719a9f7'
   '67f413463a1a12bdf63c913acd318148dda618d3f994e466232e265bbf0c2903'
   'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee'
-  'SKIP'
+  '44fffaefa5a7785142b4deacd508ba5de23fa4aafde6cc66f3b697c07f498d5f'
 )
 
 prepare() {
@@ -94,18 +94,22 @@ package_boost174() {
 
   pkgdesc+=' (development headers)'
   depends=("boost-libs=$pkgver")
-  provides=("boost=$pkgver")
   optdepends=('python: for python bindings')
   options=('staticlibs')
 
-  install -d "$pkgdir"/usr/lib
-  cp -a fakeinstall/lib/*.{a,so} "$pkgdir"/usr/lib/
-  cp -a fakeinstall/lib/cmake "$pkgdir"/usr/lib/
-  cp -a fakeinstall/{bin,include,share} "$pkgdir"/usr/
+  install -d "$pkgdir/opt/boost-$pkgver/lib/"
+  cp -a fakeinstall/lib/*.{a,so} "$pkgdir/opt/boost-$pkgver/lib/"
+  cp -a fakeinstall/lib/cmake "$pkgdir/opt/boost-$pkgver/lib/"
+  cp -a fakeinstall/{bin,include,share} "$pkgdir/opt/boost-$pkgver/"
+
+  for link in "$pkgdir"/opt/boost-$pkgver/lib/libboost_*.so; do
+    target="$(readlink "$link")"
+    ln -nfs "/usr/lib/$target" "$link"
+  done
 
   # https://github.com/boostorg/python/issues/203#issuecomment-391477685
   for _lib in python numpy; do
-    ln -srL "$pkgdir"/usr/lib/libboost_${_lib}{${python_version/.},${python_version%.*}}.so
+    ln -srL "$pkgdir"/opt/boost-$pkgver/lib/libboost_${_lib}{${python_version/.},${python_version%.*}}.so
   done
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $_srcname/LICENSE_1_0.txt
@@ -167,10 +171,10 @@ package_boost174-libs() {
 
   # https://github.com/boostorg/mpi/issues/112
   local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
-  install -d "$pkgdir"$site_packages/boost
-  touch "$pkgdir"$site_packages/boost/__init__.py
-  python -m compileall -o 0 -o 1 -o 2 "$pkgdir"$site_packages/boost
-  cp fakeinstall/lib/boost-python*/mpi.so "$pkgdir"$site_packages/boost/mpi.so
+  install -d "$pkgdir"$site_packages/boost174
+  touch "$pkgdir"$site_packages/boost174/__init__.py
+  python -m compileall -o 0 -o 1 -o 2 "$pkgdir"$site_packages/boost174
+  cp fakeinstall/lib/boost-python*/mpi.so "$pkgdir"$site_packages/boost174/mpi.so
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $_srcname/LICENSE_1_0.txt
 }
