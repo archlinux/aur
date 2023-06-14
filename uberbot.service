@@ -1,0 +1,13 @@
+[Unit]
+Description=All in one IRC bot developed by Lemon.sh
+After=network.target
+
+[Service]
+User=uberbot
+Type=simple
+WorkingDirectory=/var/lib/uberbot
+Environment=UBERBOT_CONFIG=/etc/uberbot/config.toml
+ExecStart=/usr/bin/uberbot
+
+[Install]
+WantedBy=multi-user.target

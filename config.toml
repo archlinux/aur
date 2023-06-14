@@ -1,0 +1,89 @@
+# Logging severity. Can be one of trace, debug, info, warn or error.
+# optional, default: info
+log_level = "info"
+
+
+[irc]
+# IRC server hostname to connect to.
+host = "irc.libera.chat"
+
+# Port of the IRC server.
+port = 6697
+
+# Whether to use SSL/TLS or not.
+tls = true
+
+# IRC username of the bot.
+username = "uberbot"
+
+# Channels the bot will join.
+channels = ["#libera"]
+
+# Password to use during SASL authentication.
+# optional, SASL authentication disabled if not set
+#sasl_pass = "1234"
+
+# Nickname of the bot.
+# optional, default: same as username
+#nickname = "amazingbot"
+
+# Alternative nicks to use when the bot can't use 'nickname'.
+# optional, default: ["<nickname>_", "<nickname>__"]
+#alt_nicks = ["notsoamazingbot", "someonetookmynick"]
+
+# IRC user mode to set after connecting.
+# optional, default: none
+#mode = "+B"
+
+
+[bot]
+# Command prefixes that the bot will react to.
+prefixes = ["u!", "yo uberbot "]
+
+# Controls how many last messages will be stored per-user. Used for quoting.
+history_depth = 5
+
+# Controls how many search results will be shown on a single page
+# when using quote search.
+# optional, default: 3
+#search_limit = 5
+
+# Path to the SQLite3 database where quotes will be stored.
+# optional, default: uberbot.db3
+db_path = "/var/lib/uberbot/database.db3"
+
+# User agent used for title requests. Important for sites like crates.io which require
+# a user agent to be set. Default: uberbot $VERSION (reqwest)
+#user_agent = "amazingbot"
+
+# Allows disabling specific triggers in certain channels.
+# You can also disable a trigger in all channels by using '*'.
+# Currently available triggers are: sed, title, spotify
+# optional, default: all triggers allowed
+#[bot.ignored_triggers]
+#sed = ["#dev"]  # disables sed in #dev
+#title = ["*"]  # disables title completely
+
+
+# Spotify module. Shows metadata about Spotify URLs sent in chat.
+# optional, spotify functionality disabled if not set
+#[spotify]
+
+# Spotify Client Credentials.
+# You can get those from https://developer.spotify.com/dashboard/
+#client_id = ""
+#client_secret = ""
+
+
+# Web service. Exposes HTTP APIs that extend the bot's features
+# (currently only webhooks).
+# optional, web service disabled if not set
+#[web]  
+#listen = "127.0.0.1:8080"
+
+#[web.webhooks]
+# format: "<path>" = "<irc channel>"
+# for example:
+#"devel" = "#dev"  # http://127.0.0.1:8080/devel
+#"chaospeople" = "#chaos"  # http://127.0.0.1:8080/chaospeople
+

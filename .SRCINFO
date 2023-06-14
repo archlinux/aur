@@ -1,0 +1,23 @@
+pkgbase = irc-uberbot-git
+	pkgdesc = General purpose IRC bot developed by Lemon.sh
+	pkgver = 0.3.r36.g8f4e3f7
+	pkgrel = 1
+	url = https://git.lemonsh.moe/lemon/uberbot
+	arch = x86_64
+	license = unknown
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	backup = etc/config/uberbot.toml
+	source = git+https://git.lemonsh.moe/lemon/uberbot
+	source = uberbot.service
+	source = uberbot.tmpfiles
+	source = uberbot.sysusers
+	source = config.toml
+	sha256sums = SKIP
+	sha256sums = 49df7d0318b91ce187679fc18ba86697fb4dadcfb3497b57644ff80d35362e9b
+	sha256sums = e11423155f6fae7c66684b8c87900d0a301ed9d2899286ded993cfaeae063675
+	sha256sums = 1f2d0df6a6c1e0d248c60807635b4f68130f5dae1413d236ceef75ace559d742
+	sha256sums = 1c498cccec8ed472a53aff0fd02eb73e3128847096547c16ffc75fcc705d9fdf
+
+pkgname = irc-uberbot-git
