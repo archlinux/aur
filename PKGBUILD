@@ -3,7 +3,7 @@
 java_=17
 pkgname_=graal-llvm
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=22.3.2
+pkgver=23.0.0
 pkgrel=1
 pkgdesc="GraalVM LLVM runtime (aka Sulong), Java ${java_} version"
 arch=('x86_64'
@@ -11,10 +11,10 @@ arch=('x86_64'
 url='https://www.graalvm.org/'
 license=('BSD')
 depends=("jdk${java_}-graalvm-bin")
-source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/llvm-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
-source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/llvm-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('ba94d6e265c5c465d80e067fc01f86af3669563b04add617f2ff87b37be8eef6')
-sha256sums_aarch64=('6a337611325cfad41b33c763e4a5b8cfd5115a5995e2dbcb04cf2d80006d54c9')
+source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/llvm-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
+source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/llvm-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
+sha256sums_x86_64=('3969247ab3bb7f04ce80ec8961a1f16f3e99d99e7e9275669faf22e13317b872')
+sha256sums_aarch64=('dbc947fddb1775ca228114f17c29597241f0b15a333ccdf47081368b2b8b9740')
 
 package() {
     local file eq permissions mode name target
@@ -22,7 +22,7 @@ package() {
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
     cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" languages/ lib/ LICENSE_SULONG.txt THIRD_PARTY_LICENSE_SULONG.txt
 
-    printf '\n' >> META-INF/permissions
+    [[ -s META-INF/permissions ]] && printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
         if [[ $eq != '=' ]]; then
             printf >&2 'second word should be "=": %s %s %s\n' "$file" "$eq" "$permissions"
@@ -43,7 +43,7 @@ package() {
         chmod "$mode" -- "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$file"
     done < META-INF/permissions
 
-    printf '\n' >> META-INF/symlinks
+    [[ -s META-INF/symlinks ]] && printf '\n' >> META-INF/symlinks
     while read -r name eq target; do
         if [[ $eq != '=' ]]; then
             printf >&2 'second word should be "=": %s %s %s\n' "$name" "$eq" "$target"
