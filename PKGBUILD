@@ -27,8 +27,6 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$pkgname"
 
-	git submodule update --init --recursive
-
 	# remove the default flag U_GLIBCXX_ASSERTIONS
 	echo "QMAKE_CXXFLAGS += -U_GLIBCXX_ASSERTIONS" >> goldendict.pro
 
