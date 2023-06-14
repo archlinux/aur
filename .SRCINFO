@@ -1,7 +1,7 @@
 pkgbase = mesa-pvr-vf2
 	pkgdesc = an open-source implementation of the OpenGL specification, PowerVR (VisionFive2) version
 	pkgver = 21.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mesa3d.org
 	arch = riscv64
 	license = custom
@@ -34,7 +34,6 @@ pkgbase = mesa-pvr-vf2
 	depends = vulkan-icd-loader
 	depends = zstd
 	depends = expat
-	depends = visionfive2-img-gpu
 	depends = llvm-libs=15.0.7
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	optdepends = clang: opencl
@@ -186,7 +185,7 @@ pkgbase = mesa-pvr-vf2
 	md5sums = 4d852725f9eabc9dff1e62db93d835d4
 	md5sums = 7b98e9e7edafe0b8496cc1408f34866b
 	md5sums = 5b2ac4d79c33fa71f29db25047152576
-	md5sums = SKIP
+	md5sums = 46a08d47150adcfbc4fcb2da9c4a0967
 	sha256sums = 2c65e6710b419b67456a48beefd0be827b32db416772e0e363d5f7d54dc01787
 	sha256sums = effc4cc39e9f07ac2f4f32f2b69e874b3be71b993bea98f36bae56a2d92a2056
 	sha256sums = 5aff6dc45847047657ef25de37f38afa183307344e2ca971a748c76534375903
@@ -256,6 +255,6 @@ pkgbase = mesa-pvr-vf2
 	sha256sums = b66ba7f6d58469fc98cf20ad42134d09b02340bdec6d189783b051a494e398ba
 	sha256sums = 4b5a3801c1489fdfe975d9b1789e5b16e543d704dcd9344963b748c37e6ff6cc
 	sha256sums = a698d554efed988a85b88169b4cff1ef9d6189004d57800f1c1e923f443f0661
-	sha256sums = SKIP
+	sha256sums = 420ae64542bb89ca363979d69449498995cde0d6d58b53f69a5d95cc9d4dd1b3
 
 pkgname = mesa-pvr-vf2
