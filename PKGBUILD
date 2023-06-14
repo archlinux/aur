@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="tts-vue-appimage"
-pkgver=1.9.9
+pkgver=1.9.10
 pkgrel=1
 pkgdesc="Microsoft speech synthesis tool, built using Electron+Vue+ElementPlus+Vite.微软语音合成工具,使用Electron+Vue+ElementPlus+Vite构建。"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('zlib' 'glibc')
 makedepends=('yarn' 'gendesk')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('644fba208a81a7118ec5338d3a8c38160375bf2dcb87c57cf0721830b4de3d95')
+sha256sums=('231de5d63b07e66751bdb21a45af5a891ee37bccb459038b8cfbe70a29869662')
 build() {
     cd "${srcdir}/${pkgname%-appimage}-${pkgver}"
     yarn install
