@@ -1,0 +1,19 @@
+pkgbase = wasabi
+	pkgdesc = A modern and fast real-time MIDI player written in Rust.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/arduano/wasabi
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	makedepends = cargo-nightly
+	makedepends = cmake
+	makedepends = git
+	makedepends = shaderc
+	depends = alsa-lib
+	depends = gcc-libs
+	source = wasabi-0.1.0.tar.gz::https://github.com/arduano/wasabi/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = c1b3c1bfe080d0832f28126abdaba493786482060804951fb3cae6fe8417e2ba
+
+pkgname = wasabi
