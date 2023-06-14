@@ -5,7 +5,7 @@ pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=4.1.7
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
@@ -63,7 +63,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
 #        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
 ##       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
-md5sums=('b3a7013c913fdbfc951023c80dbcfa82')
+md5sums=('f30c2e69e026dff2c1fda08b307c28a8')
 #        'bde3bd7a691b38e2e4c4e1d17b143b24'
 #        '01efaf052d81efc32a92050a249aa557'
 #        'ead6d3ce4c183c471d76bf1bc3be44a3'
@@ -136,15 +136,15 @@ build() {
 #}
 
 package_python-sunpy() {
-    depends=('python>=3.8' 'python-astropy>=4.2.1' 'python-parfive>=1.2.0' 'python-aioftp' 'python-packaging>=19.0')
+    depends=('python>=3.9' 'python-astropy>=5.0.1' 'python-parfive>=2.0.0' 'python-aioftp' 'python-packaging>=19.0')
     optdepends=('python-asdf>=2.8.0: asdf'
                 'python-asdf-astropy>=0.1.1: asdf'
-                'python-dask>=2.0.0: dask'
+                'python-dask>=2021.4.0: dask'
                 'python-sqlalchemy>=1.3.4: database'
-                'python-scikit-image>=0.16.0: image'
+                'python-scikit-image>=0.18.0: image'
                 'python-scipy>1.10.0: image, map'
                 'python-reproject: map'
-                'python-matplotlib>=3.3.0: map, timeseries, visualization'
+                'python-matplotlib>=3.5.0: map, timeseries, visualization'
                 'python-mpl-animators>=1.0.0: map, visualization'
                 'python-glymur>0.9.5: jpeg2000'
                 'python-lxml>=4.8.0: jpeg2000'
@@ -154,9 +154,9 @@ package_python-sunpy() {
                 'python-tqdm>=4.32.1: net'
                 'python-zeep>=3.4.0: net'
                 'python-cdflib>0.4.0: timeseries'
-                'python-h5netcdf>=0.8.1: timeseries'
+                'python-h5netcdf>=0.11: timeseries'
                 'python-h5py>=3.1.0: timeseries'
-                'python-pandas>=1.0.0: timeseries')
+                'python-pandas>=1.2.0: timeseries')
 #               'python-sunpy-doc: Documentation for SunPy')
     cd ${srcdir}/${_pyname}-${pkgver}
 
