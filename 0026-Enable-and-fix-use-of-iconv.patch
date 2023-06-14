@@ -1,4 +1,4 @@
-From beb5aee023c41a605e095bd2e65ac2d1305fc9db Mon Sep 17 00:00:00 2001
+From 78a3832857278ccfa3d170fa673cb4b5a4717af3 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 25 Jan 2017 21:08:20 +0100
 Subject: [PATCH 26/32] Enable and fix use of iconv
@@ -74,5 +74,5 @@ index a9025a2dd2..ffb6f50fbe 100644
          },
          "icu": {
 -- 
-2.40.0
+2.41.0
 
