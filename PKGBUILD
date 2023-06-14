@@ -36,7 +36,7 @@ sha256sums=('0f629c78f24dc56b7369b337aa8d72d948c1d00a2c1f6761468c9511ca8320be'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
             'ca3cedc5edce26040d3caf735afa8744fe08f3a1695eb2cda3796f4f336632d3'
             '2a12b187a8803b0c3a4385d4567e1debf8bfa3e17c4c8cefdf39fb7434d3d932'
-            'db2fb4df9738c83c59ff037093d5474bc0fb64ac4ea0f71945ac741d4173211a')
+            '53a45dd7ffd004d04c89492fd6c9aa1759f44f212730479d98e72ce20a74e254')
 
 prepare() {
   cd gnuzilla-${_commit}
@@ -73,7 +73,7 @@ prepare() {
 
   # fix mp4parse (thank you @seo.disparate :: https://aur.archlinux.org/packages/icecat#comment-918458)
   patch -Np1 -i ../../../mp4parse_macro_mul.patch
-  sed -e 's|src/lib.rs":"73114a5c28472e77082ad259113ffafb418ed602c1741f26da3e10278b0bf93e|src/lib.rs":"bded10689ddd8fd3fcb4ab01be1ecf3642691d68c3651fc4b00f3ccba67fc7cd|' -i output/icecat-${pkgver}/third_party/rust/mp4parse/.cargo-checksum.json
+  sed -e 's|src/lib.rs":"73114a5c28472e77082ad259113ffafb418ed602c1741f26da3e10278b0bf93e|src/lib.rs":"bded10689ddd8fd3fcb4ab01be1ecf3642691d68c3651fc4b00f3ccba67fc7cd|' -i third_party/rust/mp4parse/.cargo-checksum.json
 
   # Patch to move files directly to /usr/lib/icecat. No more symlinks.
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
