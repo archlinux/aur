@@ -1,0 +1,27 @@
+pkgbase = simplenote-appimage
+	pkgdesc = A Simplenote React client packaged in Electron.
+	pkgver = 2.21.0
+	pkgrel = 1
+	url = https://app.simplenote.com/
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = simplenote
+	conflicts = simplenote-electron-bin
+	conflicts = python-simplenote
+	options = !strip
+	source_aarch64 = simplenote-2.21.0-aarch64.AppImage::https://github.com/Automattic/simplenote-electron/releases/download/v2.21.0/Simplenote-linux-2.21.0-arm64.AppImage
+	sha256sums_aarch64 = 5eaa38788a3f0a03e316483a2d2d90b8717aeeeeda0a974f7435b61bbbe02566
+	source_armv7h = simplenote-2.21.0-armv7h.AppImage::https://github.com/Automattic/simplenote-electron/releases/download/v2.21.0/Simplenote-linux-2.21.0-armv7l.AppImage
+	sha256sums_armv7h = 0ba5dd4c8b8906e2148ca6a81c7d70358f11ef06a04bc2dc4a0b9a18a9156da6
+	source_i686 = simplenote-2.21.0-i686.AppImage::https://github.com/Automattic/simplenote-electron/releases/download/v2.21.0/Simplenote-linux-2.21.0-i386.AppImage
+	sha256sums_i686 = 1d11a9d2a1fbfd98389894cee254cf02ed5872779428ceea2c5e70e0536204c8
+	source_x86_64 = simplenote-2.21.0-x86_64.AppImage::https://github.com/Automattic/simplenote-electron/releases/download/v2.21.0/Simplenote-linux-2.21.0-x86_64.AppImage
+	sha256sums_x86_64 = d24e6149a262f11e3d2c201acce22f2b21b7a47efefb4370a8b5d122d90ce907
+
+pkgname = simplenote-appimage
