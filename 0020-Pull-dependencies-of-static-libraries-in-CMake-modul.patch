@@ -1,4 +1,4 @@
-From d799313888a5dd4a7dc2e9c5f499637239697822 Mon Sep 17 00:00:00 2001
+From 4ee89f7cb286a1b85f9a7834bc245529d5bb610e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
 Subject: [PATCH 20/32] Pull dependencies of static libraries in CMake modules
@@ -384,7 +384,7 @@ index db18dbece6..5a5bc4d61d 100644
      include(\"${CMAKE_CURRENT_LIST_DIR}/Qt5$${CMAKE_MODULE_NAME}ConfigExtras.cmake\")
  !!ENDIF
 diff --git a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
-index 2e23109167..eaf9011c3d 100644
+index b465a7fa89..eaf9011c3d 100644
 --- a/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5PluginTarget.cmake.in
 @@ -1,5 +1,6 @@
@@ -473,7 +473,7 @@ index 2e23109167..eaf9011c3d 100644
 -        # Add this plugin if all of the following are true:
 -        # 1) the list of explicitly included plugin types is empty
 -        # 2) the QT_PLUGIN_EXTENDS property for the plugin is empty or equal to one of the modules
--        #    listed in the plugin's PLUGIN_EXTEND qmake variable
+-        #    listed in the plugin\'s PLUGIN_EXTEND qmake variable
 -        # 3) the user hasn\'t explicitly excluded the plugin.
 -        # TODO: Note that the current implementation of (2) is not entirely correct QTBUG-93501
 -        \"$<AND:\"
@@ -499,5 +499,5 @@ index 2e23109167..eaf9011c3d 100644
  set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_CLASS_NAME \"$$CMAKE_PLUGIN_NAME\")
 +endif()
 -- 
-2.40.0
+2.41.0
 
