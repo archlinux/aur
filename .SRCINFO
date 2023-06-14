@@ -1,10 +1,11 @@
 pkgbase = amide-git
 	pkgdesc = Medical imaging data examiner
-	pkgver = 1.0.6.r13.g874d6ea
+	pkgver = 1.0.6.r15.geaa6abe
 	pkgrel = 1
 	url = https://github.com/ferdymercury/amide
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = intltool
 	makedepends = libxml2
 	depends = dcmtk

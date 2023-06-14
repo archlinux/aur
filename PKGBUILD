@@ -2,14 +2,14 @@
 # Contributor: Jonas Witschel <diabonas@archlinux.org>
 
 pkgname=amide-git
-pkgver=1.0.6.r13.g874d6ea
+pkgver=1.0.6.r15.geaa6abe
 pkgrel=1
 pkgdesc='Medical imaging data examiner'
 arch=('x86_64')
 url='https://github.com/ferdymercury/amide'
 license=('GPL')
 depends=('dcmtk' 'gsl' 'libgnomecanvas' 'volpack' 'xmedcon-gtk2')
-makedepends=('intltool' 'libxml2')
+makedepends=('git' 'intltool' 'libxml2')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=(git+$url.git)
