@@ -1,0 +1,21 @@
+pkgbase = tinycorrect-git
+	pkgdesc = Auto detect & correct typeset, inline code, toc, file name, header, images, urls and words of Markdown documents, originally written for the RISC-V Linux project: https://gitee.com/tinylab/riscv-linux.
+	pkgver = 0.1.r23.gfd2d32a
+	pkgrel = 1
+	url = https://gitee.com/tinylab/tinycorrect
+	arch = any
+	groups = tinylab-git
+	license = GPL-2.0
+	makedepends = git
+	depends = autocorrect
+	depends = vim-pangu
+	depends = autocorrect
+	depends = python-pycorrector
+	depends = python-xmnlp
+	provides = tinycorrect
+	conflicts = tinycorrect
+	options = !strip
+	source = tinycorrect::git+https://gitee.com/tinylab/tinycorrect.git
+	sha256sums = SKIP
+
+pkgname = tinycorrect
