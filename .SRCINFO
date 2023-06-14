@@ -1,16 +1,15 @@
 pkgbase = pyfan
 	pkgdesc = Fan control utilising hwmon and pid
 	pkgver = 1.6
-	pkgrel = 1
-	url = https://git.harting.dev/anonfunc/PyFan
+	pkgrel = 2
+	url = https://somegit.dev/anonfunc/PyFan
 	arch = any
 	license = GPL3
 	depends = python-yaml
 	depends = python-simple-pid
 	optdepends = lm_sensors: check and load required hwmon modules
 	backup = etc/pyfan
-	source = https://git.harting.dev/anonfunc/PyFan/archive/1.6.tar.gz
-	b2sums = 858866a2c9b4598eef0b717de491d7c66e799c8d77d461cb7d379d21733c772899d118d2f1a51db4809a7462d0eb45c871c09d05dec9c311ca0b5c70708f1c74
+	source = https://somegit.dev/anonfunc/PyFan/archive/1.6.tar.gz
+	b2sums = 2e348441bdb0ab6a5c4cb0124666edf712394862eb4a2a12424a405cb2df8b3282d38489351999bc9ee4e343e559ed3958167a18a331b73c6bfe04cf6337902c
 
 pkgname = pyfan
-
