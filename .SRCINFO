@@ -19,6 +19,7 @@ pkgbase = safeeyes-git
 	depends = xorg-xprop
 	optdepends = xprintidle: better idle timer
 	optdepends = python-croniter: health stats plugin
+	optdepends = swayidle: for smart pause
 	conflicts = safeeyes
 	source = git+https://github.com/slgobinath/SafeEyes.git
 	sha1sums = SKIP
