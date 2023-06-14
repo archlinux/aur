@@ -1,9 +1,9 @@
 # Maintainer: Mira Strannaya <rsxrwscjpzdzwpxaujrr@yahoo.com>
 pkgname=mazemaze
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple 3D OpenGL first-person maze game.'
-url="https://mira-strannaya.ru/articles/mazemaze"
+url="https://github.com/rsxrwscjpzdzwpxaujrr/${pkgname}"
 arch=('x86_64' 'i686')
 license=('GPLv2')
 depends=('jsoncpp' 'sfml' 'sfgui')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake')
 conflicts=()
 replaces=()
 backup=()
-source=("https://github.com/mirai65536/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("https://github.com/rsxrwscjpzdzwpxaujrr/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('2a43e6399005b616465cd6e9fe12a54069a250d4537d05999c9b7aa45fec7a15')
 
 build() {
