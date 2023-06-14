@@ -1,19 +1,20 @@
 pkgbase = upwork-beta
 	pkgdesc = Upwork Desktop Application, Beta Version
-	pkgver = 5.8.0.25
+	pkgver = 5.8.0.31
 	pkgrel = 1
 	url = https://www.upwork.com/ab/downloads/?os=linux
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
 	depends = at-spi2-core
+	depends = graphite
 	depends = gtk3
-	depends = mesa
+	depends = libp11-kit
 	depends = nss
 	conflicts = upwork
-	source = https://upwork-usw2-desktopapp.upwork.com/binaries/v5_8_0_25_e119f6b95355474f/upwork_5.8.0.25_amd64.deb
+	source = https://upwork-usw2-desktopapp.upwork.com/binaries/v5_8_0_31_b7b2c82d2557407d/upwork_5.8.0.31_amd64.deb
 	source = LICENSE
-	sha256sums = de0e2a7395182dcdd2d54b3cc845ebf92bdd442050bb74d6742061ebebbbaf2f
+	sha256sums = b5057abf453ac71a8197b9d06818574ab73d8affbb48f1df0014e22494039cf2
 	sha256sums = 793d8d7bc0f088c48798bda3d5483972636c6b8c5dcd9aeaf85411f7d4547b38
 
 pkgname = upwork-beta
