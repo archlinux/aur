@@ -1,6 +1,6 @@
 pkgbase = r-multcomp
 	pkgdesc = Simultaneous Inference in General Parametric Models
-	pkgver = 1.4.23
+	pkgver = 1.4.24
 	pkgrel = 1
 	url = https://cran.r-project.org/package=multcomp
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-multcomp
 	optdepends = r-simcomp
 	optdepends = r-tram
 	optdepends = r-xtable
-	source = https://cran.r-project.org/src/contrib/multcomp_1.4-23.tar.gz
-	sha256sums = 425154a58bd8f2dbaff5d16e97b03473cbc0d571b1c2e4dd66a13c6d20a8cde1
+	source = https://cran.r-project.org/src/contrib/multcomp_1.4-24.tar.gz
+	sha256sums = 7e64ed3013620772f802863704f9530eabdf62c1a9df936c3e42636d344fb411
 
 pkgname = r-multcomp
