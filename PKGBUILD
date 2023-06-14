@@ -4,7 +4,7 @@ java_=17
 pkgname_=graalpy
 pkgname__=graalpython
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=22.3.1
+pkgver=23.0.0
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the Python language (early development), Java ${java_} version"
 arch=('x86_64'
@@ -13,15 +13,17 @@ url='https://github.com/graalvm/graalpython'
 license=('custom')
 depends=(
     "jdk${java_}-graalvm-bin"
+    "graal-icu4j-jdk${java_}-bin"
+    "graal-regex-jdk${java_}-bin"
     'gcc-libs'
     'libxcrypt-compat'
     'zlib'
 )
 replaces=("${pkgname__}-jdk${java_}-bin")
-source_x86_64=("https://github.com/graalvm/$pkgname__/releases/download/vm-${pkgver}/python-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
-source_aarch64=("https://github.com/graalvm/$pkgname__/releases/download/vm-${pkgver}/python-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('e1502ebb6701b8456b242c1f92f64a79af9913bd4b6c215143a96e083921ea5d')
-sha256sums_aarch64=('0cd7968118f91c2a4e22845998e362d7942242f7281f40feebd6e2f1792efd3d')
+source_x86_64=("https://github.com/graalvm/$pkgname__/releases/download/graal-${pkgver}/python-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
+source_aarch64=("https://github.com/graalvm/$pkgname__/releases/download/graal-${pkgver}/python-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
+sha256sums_x86_64=('4bdb1e5f0b8ce75ffaded7ceb32c26ab15e53aad4a2e3455d28735b6d1ce416c')
+sha256sums_aarch64=('497e26cf857e56ca89ed430ab36cd889616a14c0c456c92b4a49a589a45ce62c')
 
 package() {
     local file eq permissions mode name target
@@ -29,7 +31,7 @@ package() {
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
     cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" languages/ lib/ LICENSE_GRAALPY.txt THIRD_PARTY_LICENSE_GRAALPY.txt
 
-    printf '\n' >> META-INF/permissions
+    [[ -s META-INF/permissions ]] && printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
         if [[ $eq != '=' ]]; then
             printf >&2 'second word should be "=": %s %s %s\n' "$file" "$eq" "$permissions"
@@ -50,7 +52,7 @@ package() {
         chmod "$mode" -- "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$file"
     done < META-INF/permissions
 
-    printf '\n' >> META-INF/symlinks
+    [[ -s META-INF/symlinks ]] && printf '\n' >> META-INF/symlinks
     while read -r name eq target; do
         if [[ $eq != '=' ]]; then
             printf >&2 'second word should be "=": %s %s %s\n' "$name" "$eq" "$target"
