@@ -2,7 +2,7 @@
 
 pkgname=newcp-bin
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='New Club Penguin Electron app'
 arch=('x86_64')
 url='https://github.com/New-Club-Penguin/NewCP-App-Build/'
@@ -15,7 +15,8 @@ sha256sums=('895dfbf6bb98abba70cb5d24e456ffbe367550e3c7e312333d299db7ff14761a')
 
 prepare() {
   mkdir data
-  tar -xvf data.tar.xz -C data
+  unzstd data.tar.zst
+  tar -xvf data.tar -C data
 }
 
 package() {
