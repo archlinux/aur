@@ -174,7 +174,7 @@ pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
     'qt5-base'
     'sdl2'
     'gcc-libs'
-    'wxwidgets-common-light' 'libwx_baseu_xml-3.2.so'
+    'wxwidgets-common-light' 'libwx_baseu-3.2.so' 'libwx_baseu_xml-3.2.so'
     'libglvnd'               'libOpenGL.so'
     'libjpeg-turbo'          'libjpeg.so'
     'libmspack'              'libmspack.so'
@@ -224,7 +224,7 @@ package_wxwidgets-gtk3-light() {
     'libx11'
     'libxtst'
     'sdl2'
-    'wxwidgets-common-light' 'libwx_baseu_xml-3.2.so'
+    'wxwidgets-common-light' 'libwx_baseu-3.2.so' 'libwx_baseu_xml-3.2.so'
     'libglvnd'               'libEGL.so' 'libOpenGL.so'
     'cairo'                  'libcairo.so'
     'fontconfig'             'libfontconfig.so'
@@ -280,7 +280,7 @@ package_wxwidgets-gtk4-light() {
   pkgdesc="wxWidgets GTK4 Toolkit (GNOME/GStreamer free!)"
   depends=(
     'sdl2'
-    'wxwidgets-common-light' 'libwx_baseu_xml-3.2.so'
+    'wxwidgets-common-light' 'libwx_baseu-3.2.so' 'libwx_baseu_xml-3.2.so'
     'gspell'                 'libgspell-1.so'
     'gtk4'                   'libgtk-4.so'
     'libmspack'              'libmspack.so'
