@@ -10,7 +10,7 @@ arch=(x86_64)
 url='https://github.com/pascalkuthe/OpenVAF'
 license=('GPL3')
 depends=('llvm-libs')
-makedepends=('clang' 'lld' 'rust' 'cargo-nextest')
+makedepends=('clang' 'lld' 'llvm' 'rust' 'cargo-nextest' 'python')
 options=('!lto')
 
 source=(
