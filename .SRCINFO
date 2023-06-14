@@ -37,8 +37,6 @@ pkgname = wxwidgets-common-light
 	conflicts = wxbase-light
 	conflicts = wxgtk-common
 	conflicts = wxwidgets-common
-	replaces = wxcommon-light
-	replaces = wxgtk-common
 
 pkgname = wxwidgets-gtk3-light
 	pkgdesc = wxWidgets GTK3 Toolkit (GNOME/GStreamer free!)
@@ -55,8 +53,6 @@ pkgname = wxwidgets-gtk3-light
 	provides = wxgtk3
 	conflicts = wxwidgets-gtk3
 	conflicts = wxgtk3
-	replaces = wxgtk3-light
-	replaces = wxgtk3
 
 pkgname = wxwidgets-qt5-light
 	pkgdesc = wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)
@@ -66,4 +62,3 @@ pkgname = wxwidgets-qt5-light
 	depends = libmspack.so
 	provides = wxwidgets-qt5
 	provides = wxwidgets
-	conflicts = wxwidgets-qt5

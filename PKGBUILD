@@ -1,37 +1,41 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=wxwidgets-light
-pkgname=('wxwidgets-common-light'
-         'wxwidgets-gtk3-light'
-#          'wxwidgets-gtk4-light'
-         'wxwidgets-qt5-light'
-         )
+pkgname=(
+  'wxwidgets-common-light'
+   'wxwidgets-gtk3-light'
+#   'wxwidgets-gtk4-light'
+  'wxwidgets-qt5-light'
+)
 pkgver=3.2.2.1
 pkgrel=3
 pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
 license=('custom:wxWindows')
-makedepends=('git'
-             'cmake'
-             'glu'
-             'webkit2gtk'
-             'gtk3'
-#              'gtk4'
-             'libnotify'
-             'qt5-base'
-             'sdl2'
-             'libmspack'
-             'libsecret'
-             'sh'
-             'gspell'
-             )
-source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
-        'git+https://github.com/wxWidgets/nanosvg.git'
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            )
+makedepends=(
+  'git'
+  'cmake'
+  'glu'
+  'webkit2gtk'
+  'gtk3'
+#  'gtk4'
+  'libnotify'
+  'qt5-base'
+  'sdl2'
+  'libmspack'
+  'libsecret'
+  'sh'
+  'gspell'
+)
+source=(
+   "wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
+   'git+https://github.com/wxWidgets/nanosvg.git'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 options=('debug')
 
 prepare() {
@@ -146,15 +150,16 @@ build() {
 
 package_wxwidgets-qt5-light() {
 pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
-  depends=('wxwidgets-common-light'
-           'qt5-base'
-           'sdl2'
-           'libmspack.so'
-           )
-  provides=('wxwidgets-qt5'
-            'wxwidgets'
-            )
-  conflicts=('wxwidgets-qt5')
+  depends=(
+    'wxwidgets-common-light'
+    'qt5-base'
+    'sdl2'
+    'libmspack.so'
+  )
+  provides=(
+    'wxwidgets-qt5'
+     'wxwidgets'
+  )
 
   make -C build-qt5 DESTDIR="${pkgdir}" install
 
@@ -174,25 +179,25 @@ pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
 
 package_wxwidgets-gtk3-light() {
   pkgdesc="wxWidgets GTK3 Toolkit (GNOME/GStreamer free!)"
-  depends=('wxwidgets-common-light'
-           'sdl2'
-           'libgspell-1.so'
-           'libgtk-3.so'
-           'libmspack.so'
-           'libnotify.so'
-           'libtiff.so'
-           )
+  depends=(
+    'wxwidgets-common-light'
+    'sdl2'
+    'libgspell-1.so'
+    'libgtk-3.so'
+    'libmspack.so'
+    'libnotify.so'
+    'libtiff.so'
+  )
   optdepends=('webkit2gtk: for webview support')
-  provides=('wxwidgets'
-            'wxwidgets-gtk3'
-            'wxgtk3'
-            )
-  conflicts=('wxwidgets-gtk3'
-             'wxgtk3'
-             )
-  replaces=('wxgtk3-light'
-            'wxgtk3'
-            )
+  provides=(
+    'wxwidgets'
+    'wxwidgets-gtk3'
+    'wxgtk3'
+  )
+  conflicts=(
+    'wxwidgets-gtk3'
+    'wxgtk3'
+  )
 
   make -C build-gtk3 DESTDIR="${pkgdir}" install
 
@@ -213,25 +218,25 @@ package_wxwidgets-gtk3-light() {
 
 package_wxwidgets-gtk4-light() {
   pkgdesc="wxWidgets GTK4 Toolkit (GNOME/GStreamer free!)"
-  depends=('wxwidgets-common-light'
-           'sdl2'
-           'libgspell-1.so'
-           'libgtk-4.so'
-           'libmspack.so'
-           'libnotify.so'
-           'libtiff.so'
-           )
+  depends=(
+    'wxwidgets-common-light'
+    'sdl2'
+    'libgspell-1.so'
+    'libgtk-4.so'
+    'libmspack.so'
+    'libnotify.so'
+    'libtiff.so'
+)
   optdepends=('webkit2gtk: for webview support')
-  provides=('wxwidgets'
-            'wxwidgets-gtk4'
-            'wxgtk4'
-            )
-  conflicts=('wxwidgets-gtk4'
-             'wxgtk4'
-             )
-  replaces=('wxgtk4-light'
-            'wxgtk4'
-            )
+  provides=(
+    'wxwidgets'
+    'wxwidgets-gtk4'
+    'wxgtk4'
+  )
+  conflicts=(
+    'wxwidgets-gtk4'
+    'wxgtk4'
+  )
 
   make -C build-gtk4 DESTDIR="${pkgdir}" install
 
@@ -252,24 +257,24 @@ package_wxwidgets-gtk4-light() {
 
 package_wxwidgets-common-light() {
   pkgdesc="wxWidgets common & base (GNOME/GStreamer free!)"
-  depends=('sh'
-           'libexpat.so'
-           'libsecret-1.so'
-           'libpcre2-32.so'
-           )
-  provides=('wxbase'
-            'wxbase-light'
-            'wxgtk-common'
-            'wxwidgets-common'
-            )
-  conflicts=('wxbase'
-             'wxbase-light'
-             'wxgtk-common'
-             'wxwidgets-common'
-             )
-  replaces=('wxcommon-light'
-            'wxgtk-common'
-            )
+  depends=(
+    'sh'
+    'libexpat.so'
+    'libsecret-1.so'
+    'libpcre2-32.so'
+  )
+  provides=(
+    'wxbase'
+    'wxbase-light'
+    'wxgtk-common'
+    'wxwidgets-common'
+  )
+  conflicts=(
+    'wxbase'
+    'wxbase-light'
+    'wxgtk-common'
+    'wxwidgets-common'
+  )
 
   make -C build-qt5 DESTDIR="${pkgdir}" install
   make -C build-gtk3 DESTDIR="${pkgdir}" install
