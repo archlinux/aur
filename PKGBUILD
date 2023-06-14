@@ -2,13 +2,13 @@
 # SPDX-License-Identifier: CC0-1.0
 
 pkgname='nginx-mainline-mod-http-xslt-filter'
-pkgver=1.21.6
+pkgver=1.25.1
 pkgrel=1
 pkgdesc='Transform nginx XML responses using XSLT stylesheets'
 arch=('x86_64')
 url='https://nginx.org/en/docs/http/ngx_http_xslt_module.html'
 license=('custom:BSD-2-Clause')
-depends=('nginx-mainline' 'libxslt')
+depends=('nginx-mainline' 'libxml2' 'libxslt')
 makedepends=("nginx-mainline-src=$pkgver")
 
 prepare() {

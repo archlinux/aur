@@ -1,12 +1,13 @@
 pkgbase = nginx-mainline-mod-http-xslt-filter
 	pkgdesc = Transform nginx XML responses using XSLT stylesheets
-	pkgver = 1.21.6
+	pkgver = 1.25.1
 	pkgrel = 1
 	url = https://nginx.org/en/docs/http/ngx_http_xslt_module.html
 	arch = x86_64
 	license = custom:BSD-2-Clause
-	makedepends = nginx-mainline-src=1.21.6
+	makedepends = nginx-mainline-src=1.25.1
 	depends = nginx-mainline
+	depends = libxml2
 	depends = libxslt
 
 pkgname = nginx-mainline-mod-http-xslt-filter
