@@ -1,0 +1,18 @@
+pkgbase = des-talk-appimage
+	pkgdesc = A ChatGPT clone for desktop made with Tauri and React.js
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Red-Spaces/DesTalk
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = des-talk
+	options = !strip
+	source = des-talk-0.1.2.AppImage::https://github.com/Red-Spaces/DesTalk/releases/download/v0.1.2/des-talk_0.1.2_amd64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/Red-Spaces/DesTalk/stable/LICENSE
+	sha256sums = 906f5658f55b00a0109dacfe22dffaf264faace606c1a8ff076851c181c08ebd
+	sha256sums = 9f0d47ac26c0c5a6780c541ad8a392ec796c9933abf93260595ed641d8e623f2
+
+pkgname = des-talk-appimage
