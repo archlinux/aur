@@ -1,7 +1,7 @@
 pkgbase = rocrail
 	pkgdesc = Innovative Model Railroad Control System
-	pkgver = 14062023
-	pkgrel = 5
+	pkgver = 3357
+	pkgrel = 1
 	url = http://wiki.rocrail.net/
 	arch = x86_64
 	license = Proprietary
@@ -15,7 +15,7 @@ pkgbase = rocrail
 	source = startrocrail.sh
 	md5sums = SKIP
 	md5sums = b3851071a1185e25a6e59471d955b098
-	md5sums = a60b14152ccf912877d625a407e40802
+	md5sums = edc94290e0835812bc704dbe1d6a940f
 	md5sums = 06fe0cfafc3cffd5be25a51bf2d13d48
 
 pkgname = rocrail

@@ -3,8 +3,8 @@
 # Contributor: Elvin L <elvin@eelviny.me>
 
 pkgname=rocrail
-pkgver=14062023
-pkgrel=5
+pkgver=3357
+pkgrel=1
 pkgdesc="Innovative Model Railroad Control System"
 arch=('x86_64')
 url="http://wiki.rocrail.net/"
@@ -19,7 +19,7 @@ md5sums=('SKIP'
 
 pkgver() {
   # I made it like this because i dont have the time to test and update every new daily version. Anyone can update the package themself just by reinstalling.
-  curl -s https://wiki.rocrail.net/rocrail-snapshot/ | grep -e '<a href="Debian/Rocrail-debian11-i64.zip"' | cut -d' ' -f 7 | rev | cut -c 1-8 | rev
+  grep "${srcdir}"/revision.info -e "Revision:" | awk '{print $2}'
 }
 
 package() {
