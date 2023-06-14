@@ -1,7 +1,7 @@
 # Maintainer: Raphael Nestler (rnestler) <raphael.nestler@gmail.com>
 
 pkgbase=linux-rust
-pkgver=6.2.10.arch1
+pkgver=6.2.13.arch1
 pkgrel=1
 pkgdesc='Rust Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -28,7 +28,7 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            'e6cd5373081191da48295c8d96994c89381d8a8498a47706b22ed8ff42c56494'
+            '6368e9c43f78544bce1f74ff5dcaad2cda95e05b4447c7f01e698e964c006a36'
             '875ed8a3f782904d26619155f27f94e35d1fde02eb2948c463dd2c8441e0f450')
 
 export KBUILD_BUILD_HOST=archlinux
