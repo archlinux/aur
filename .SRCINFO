@@ -1,0 +1,18 @@
+pkgbase = python-sphinx-last-updated-by-git
+	pkgdesc = Get the last updated time for each Sphinx page from Git
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/mgeier/sphinx-last-updated-by-git
+	arch = any
+	license = custom:BSD-2-clause
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-sphinx
+	depends = git
+	source = sphinx-last-updated-by-git-0.3.5.tar.gz::https://github.com/mgeier/sphinx-last-updated-by-git/archive/0.3.5.tar.gz
+	sha512sums = b8fa97eaa1b732a8417850c2a18efadf66b3e3967e5c0ce9baa6e518fe8751b847cdf3299368bb4070030050cc2bd349d4e583cd013907fbe95bac726a189617
+
+pkgname = python-sphinx-last-updated-by-git
