@@ -5,7 +5,7 @@
 # shellcheck disable=SC1090
 # shellcheck disable=SC2206
 pkgname=pince-git
-pkgver=r1277.53022ff
+pkgver=r1300.7111db9
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
@@ -51,15 +51,17 @@ package() {
   . <(sed -n '/^PKG_NAMES/p' install_pince.sh)
   # Set new depends
   depends+=($PKG_NAMES_ARCH)
-  for pkg in $PKG_NAMES_PIP; do
-    ## why archlinux python package isn't just match "python-$pkg" format?
+  for pipkg in $PKG_NAMES_PIP; do
+    ## why archlinux python package isn't just match "python-$pipkg" format?
     ## and one of these depends in aur are outdated now 2023/05/08
-    if [ "$pkg" == "distorm3" ]; then
+    if [ "$pipkg" == "distorm3" ]; then
       depends+=("python-distorm")
-    elif [ "$pkg" == "pygobject" ]; then
+    elif [ "$pipkg" == "pygobject" ]; then
       depends+=("python-gobject")
+    elif [ "$pipkg" == "keystone-engine" ]; then
+      depends+=("python-keystone")
     else
-      depends+=("python-$pkg")
+      depends+=("python-$pipkg")
     fi
   done
   # Copy files
