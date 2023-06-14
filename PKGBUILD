@@ -12,9 +12,10 @@ source=("https://github.com/danehobrecht/shadowtube/archive/refs/tags/${pkgver}.
 sha256sums=('1f9c80b884e1efb2706afaa3618c228ce80604b4de34c845f681931db70272d7')
 
 build() {
-    python -m venv "$srcdir"/venv    
-    source "$srcdir"/venv/bin/activate
-    pip install -r requirements.txt
+	python -m venv "$srcdir"/venv    
+	source "$srcdir"/venv/bin/activate
+	pip install --upgrade pip
+	pip install -r "$srcdir/$pkgname-$pkgver/requirements.txt"
 }
 
 package() {
