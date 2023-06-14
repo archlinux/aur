@@ -1,0 +1,15 @@
+pkgbase = eldev-git
+	pkgdesc = Emacs-based build tool, targeted solely at Elisp projects
+	pkgver = 1.4.1.r6.g586cf08
+	pkgrel = 1
+	url = https://github.com/doublep/eldev
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = emacs
+	provides = eldev
+	conflicts = eldev
+	source = git+https://github.com/doublep/eldev.git
+	sha256sums = SKIP
+
+pkgname = eldev-git

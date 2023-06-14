@@ -1,0 +1,5 @@
+# Generated data from makepkg -si
+/eldev
+/pkg
+/src
+/*.pkg.tar.zst
