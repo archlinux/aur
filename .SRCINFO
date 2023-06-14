@@ -1,0 +1,23 @@
+pkgbase = biyi-git
+	pkgdesc = A convenient translation and dictionary app written in Flutter.
+	pkgver = r147.87be06a
+	pkgrel = 1
+	url = https://biyidev.com/
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = imagemagick
+	makedepends = clang>=11.0.0
+	depends = gtk3
+	provides = biyi
+	conflicts = biyi
+	source = git+https://github.com/biyidev/biyi.git
+	source = biyi.desktop
+	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.4-stable.tar.xz
+	sha256sums = SKIP
+	sha256sums = 8020a34eb3368d8aa0109cfd8ae3e8ba74866594fcf6f0e757b1326fafed3180
+	sha256sums = 77900b1ee58d57b64e2c0265c58fa737f21ba7749f31ce3894a006c82e5beed7
+
+pkgname = biyi-git
