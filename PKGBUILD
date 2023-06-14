@@ -2,9 +2,9 @@
 
 pkgname=go-translation-git
 _name=got
-pkgver=r78.d6f9a06
+pkgver=r88.bd746d7
 pkgrel=1
-pkgdesc="Translating TUI written in go using simplytranslate's API"
+pkgdesc="Translating TUI written in go using simplytranslate and lingvatranslate APIs"
 arch=('any')
 url="https://github.com/fedeztk/got"
 license=('MIT')
