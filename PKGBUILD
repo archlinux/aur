@@ -8,7 +8,7 @@ pkgname=(
   'wxwidgets-qt5-light'
 )
 pkgver=3.2.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="wxWidgets suite for Base, Qt5 and GTK3 toolkits (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -25,12 +25,29 @@ makedepends=(
   'sdl2'
   'libmspack'
   'libsecret'
-  'sh'
+  'bash'
   'gspell'
+  'gcc-libs'
+  'glibc'
+  'curl'
+  'expat'
+  'glib2'
+  'xz'
+  'pcre2'
+  'libglvnd'
+  'libtiff'
+  'libjpeg-turbo'
+  'libglvnd'
+  'libpng'
+  'fontconfig'
+  'pango'
+  'cairo'
+  'gdk-pixbuf2'
+  'wayland'
 )
 source=(
-   "wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
-   'git+https://github.com/wxWidgets/nanosvg.git'
+  "wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
+  'git+https://github.com/wxWidgets/nanosvg.git'
 )
 sha256sums=(
   'SKIP'
@@ -152,13 +169,31 @@ package_wxwidgets-qt5-light() {
 pkgdesc="wxWidgets Qt5 Toolkit (GNOME/GStreamer free!)"
   depends=(
     'wxwidgets-common-light'
+    'bash'
+    'glibc'
+    'libpng'
     'qt5-base'
     'sdl2'
-    'libmspack.so'
+    'gcc-libs'
+    'libglvnd'      'libOpenGL.so'
+    'libjpeg-turbo' 'libjpeg.so'
+    'libmspack'     'libmspack.so'
+    'libtiff'       'libtiff.so'
   )
   provides=(
     'wxwidgets-qt5'
     'wxwidgets'
+    'libwx_qtu_adv-3.2.so'
+    'libwx_qtu_aui-3.2.so'
+    'libwx_qtu_core-3.2.so'
+    'libwx_qtu_gl-3.2.so'
+    'libwx_qtu_html-3.2.so'
+    'libwx_qtu_propgrid-3.2.so'
+    'libwx_qtu_qa-3.2.so'
+    'libwx_qtu_ribbon-3.2.so'
+    'libwx_qtu_richtext-3.2.so'
+    'libwx_qtu_stc-3.2.so'
+    'libwx_qtu_xrc-3.2.so'
   )
   conflicts=('wxwidgets-qt5')
 
@@ -182,23 +217,47 @@ package_wxwidgets-gtk3-light() {
   pkgdesc="wxWidgets GTK3 Toolkit (GNOME/GStreamer free!)"
   depends=(
     'wxwidgets-common-light'
+    'libsm'
+    'bash'
+    'gcc-libs'
+    'libpng'
+    'glibc'
+    'libx11'
+    'libxtst'
     'sdl2'
-    'libgspell-1.so'
-    'libgtk-3.so'
-    'libmspack.so'
-    'libnotify.so'
-    'libtiff.so'
+    'libglvnd'      'libEGL.so' 'libOpenGL.so'
+    'cairo'         'libcairo.so'
+    'fontconfig'    'libfontconfig.so'
+    'gtk3'          'libgdk-3.so' 'libgtk-3.so'
+    'gdk-pixbuf2'   'libgdk_pixbuf-2.0.so'
+    'glib2'         'libgio-2.0.so' 'libglib-2.0.so' 'libgobject-2.0.so'
+    'gspell'        'libgspell-1.so'
+    'libjpeg-turbo' 'libjpeg.so'
+    'libmspack'     'libmspack.so'
+    'libnotify'     'libnotify.so'
+    'pango'         'libpango-1.0.so' 'libpangocairo-1.0.so' 'libpangoft2-1.0.so'
+    'libtiff'       'libtiff.so'
+    'wayland'       'libwayland-client.so' 'libwayland-egl.so'
   )
-  optdepends=('webkit2gtk: for webview support')
   provides=(
     'wxwidgets'
     'wxwidgets-gtk3'
     'wxgtk3'
+    'libwx_gtk3u_adv-3.2.so'
+    'libwx_gtk3u_aui-3.2.so'
+    'libwx_gtk3u_core-3.2.so'
+    'libwx_gtk3u_gl-3.2.so'
+    'libwx_gtk3u_html-3.2.so'
+    'libwx_gtk3u_propgrid-3.2.so'
+    'libwx_gtk3u_qa-3.2.so'
+    'libwx_gtk3u_ribbon-3.2.so'
+    'libwx_gtk3u_richtext-3.2.so'
+    'libwx_gtk3u_stc-3.2.so'
+    'libwx_gtk3u_webview-3.2.so'
+    'libwx_gtk3u_xrc-3.2.so'
   )
-  conflicts=(
-    'wxwidgets-gtk3'
-    'wxgtk3'
-  )
+  optdepends=('webkit2gtk: for webview support')
+  conflicts=('wxwidgets-gtk3')
 
   make -C build-gtk3 DESTDIR="${pkgdir}" install
 
@@ -222,11 +281,11 @@ package_wxwidgets-gtk4-light() {
   depends=(
     'wxwidgets-common-light'
     'sdl2'
-    'libgspell-1.so'
-    'libgtk-4.so'
-    'libmspack.so'
-    'libnotify.so'
-    'libtiff.so'
+    'gspell'    'libgspell-1.so'
+    'gtk4'      'libgtk-4.so'
+    'libmspack' 'libmspack.so'
+    'libnotify' 'libnotify.so'
+    'libtiff'   'libtiff.so'
 )
   optdepends=('webkit2gtk: for webview support')
   provides=(
@@ -254,15 +313,25 @@ package_wxwidgets-gtk4-light() {
 package_wxwidgets-common-light() {
   pkgdesc="wxWidgets common & base (GNOME/GStreamer free!)"
   depends=(
-    'sh'
-    'libexpat.so'
-    'libsecret-1.so'
-    'libpcre2-32.so'
+    'gcc-libs'
+    'glibc'
+    'bash'
+    'zlib'
+    'xz'
+    'curl'      'libcurl.so'
+    'expat'     'libexpat.so'
+    'glib2'     'libglib-2.0.so' 'libgobject-2.0.so'
+    'xz'        'liblzma.so'
+    'pcre2'     'libpcre2-32.so'
+    'libsecret' 'libsecret-1.so'
   )
   provides=(
     'wxbase'
     'wxbase-light'
     'wxwidgets-common'
+    'libwx_baseu-3.2.so'
+    'libwx_baseu_net-3.2.so'
+    'libwx_baseu_xml-3.2.so'
   )
   conflicts=(
     'wxbase'
