@@ -1,20 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="houdunren-camera-bin"
-pkgver=1.0.19
-pkgrel=2
+pkgver=1.0.27
+pkgrel=1
 pkgdesc="Desktop camera software that can be used for online live streaming, distance learning, and video conferencing.桌面摄像头软件，可用于在线直播、远程教学、视频会议"
-arch=('x86_64')
+arch=('any')
 url="https://www.houdunren.com/"
 _githuburl="https://github.com/houdunwang/camera"
 license=('MIT')
 depends=('hicolor-icon-theme' 'libcups' 'glibc' 'libxrandr' 'mesa' 'expat' 'cairo' 'libxfixes' 'libxext' \
     'at-spi2-core' 'libxcb' 'wayland' 'glib2' 'nss' 'libxcomposite' 'libdrm' 'dbus' 'libxkbcommon' \
     'alsa-lib' 'gcc-libs' 'libx11' 'nspr' 'libxdamage' 'gtk3' 'pango')
-mkdenpends=('nodejs >=16.4' 'npm' 'pnpm')
-provides=()
+mkdenpends=('nodejs >=16.4' 'pnpm')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('190ea644e67764636096f9003c040c564bae75876d39f18ba582b0eb1119d760')
+sha256sums=('c9279c8c83f81464bd975d0390ecd497ba77b76571ce8df815e9e5b687af5319')
 build() {
     cd "${srcdir}/camera-${pkgver}"
     pnpm i
