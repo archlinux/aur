@@ -20,7 +20,7 @@ source=(
 )
 md5sums=(
     "SKIP"
-    "e762de1df43a2582fe9a3d4604917f7b"
+    "53b345faf8839be86f1e3a5f9f0db8f1"
 )
 
 pkgver() {
