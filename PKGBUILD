@@ -4,7 +4,7 @@
 _upstream_name=uberbot
 pkgname="irc-uberbot-git"
 pkgver="0.3.r36.g8f4e3f7"
-pkgrel=1
+pkgrel=2
 pkgdesc="General purpose IRC bot developed by Lemon.sh"
 arch=("x86_64")
 url="https://git.lemonsh.moe/lemon/uberbot"
@@ -12,6 +12,8 @@ license=('unknown')
 backup=('etc/config/uberbot.toml')
 depends=('gcc-libs')
 makedepends=("cargo" "git")
+# See issue: https://github.com/briansmith/ring/issues/1444
+options=('!lto')
 source=("git+https://git.lemonsh.moe/lemon/$_upstream_name"
         "uberbot.service"
         "uberbot.tmpfiles"

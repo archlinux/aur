@@ -1,13 +1,14 @@
 pkgbase = irc-uberbot-git
 	pkgdesc = General purpose IRC bot developed by Lemon.sh
 	pkgver = 0.3.r36.g8f4e3f7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.lemonsh.moe/lemon/uberbot
 	arch = x86_64
 	license = unknown
 	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
+	options = !lto
 	backup = etc/config/uberbot.toml
 	source = git+https://git.lemonsh.moe/lemon/uberbot
 	source = uberbot.service
