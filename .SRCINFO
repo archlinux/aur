@@ -1,0 +1,24 @@
+pkgbase = python-xmnlp-git
+	pkgdesc = xmnlp：提供中文分词, 词性标注, 命名体识别，情感分析，文本纠错，文本转拼音，文本摘要，偏旁部首，句子表征及文本相似度计算等功能
+	pkgver = 0.5.3.r1.g57c72cc
+	pkgrel = 1
+	url = https://github.com/SeanLee97/xmnlp
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-tokenizers
+	depends = python-scikit-learn
+	depends = python-numpy
+	optdepends = python-onnxruntime: Cross-platform, high performance scoring engine for ML models
+	provides = python-xmnlp
+	conflicts = python-xmnlp
+	source = python-xmnlp-git::git+https://github.com/SeanLee97/xmnlp.git
+	sha256sums = SKIP
+
+pkgname = python-xmnlp-git
