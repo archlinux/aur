@@ -1,11 +1,14 @@
 pkgbase = blink
 	pkgdesc = Fully featured, easy to use SIP client with a Qt based UI
-	pkgver = 5.5.0
-	pkgrel = 2
+	pkgver = 5.5.1
+	pkgrel = 1
 	url = https://icanblink.com
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3+
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = icu
 	depends = libvncserver
 	depends = python-application
@@ -28,7 +31,7 @@ pkgbase = blink
 	depends = qt5-svg
 	depends = qt5-webkit
 	optdepends = x11vnc: for screen sharing
-	source = blink-5.5.0.tar.gz::https://github.com/AGProjects/blink-qt/archive/5.5.0.tar.gz
-	b2sums = 3fca90bfd78e747c6bd3c46c7ca9a064b3bbd7fb44e51d79d2820f3a516783b499bb836e9620cbb4c3c2fb74dc475ab01f28840f71bc901c1a714bbbd16f1182
+	source = blink-5.5.1.tar.gz::https://github.com/AGProjects/blink-qt/archive/5.5.1.tar.gz
+	b2sums = 866dd26e3e729e1f4b7072e8a6d03f71b676a9191036f266c6243ea12c33d92b6a497509ca7c7d96bf46dd069bebe611b122107f89133aa141a992057bd43e13
 
 pkgname = blink

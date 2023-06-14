@@ -3,12 +3,13 @@
 
 _pkgname=blink-qt
 pkgname=blink
-pkgver=5.5.0
-pkgrel=2
+pkgver=5.5.1
+pkgrel=1
 pkgdesc='Fully featured, easy to use SIP client with a Qt based UI'
 arch=('aarch64' 'x86_64')
 url='https://icanblink.com'
 license=('GPL-3+')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 depends=(
   'icu'
   'libvncserver'
@@ -36,17 +37,17 @@ depends=(
 optdepends=('x11vnc: for screen sharing')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AGProjects/${_pkgname}/archive/${pkgver}.tar.gz")
 b2sums=(
-	'3fca90bfd78e747c6bd3c46c7ca9a064b3bbd7fb44e51d79d2820f3a516783b499bb836e9620cbb4c3c2fb74dc475ab01f28840f71bc901c1a714bbbd16f1182'
+	'866dd26e3e729e1f4b7072e8a6d03f71b676a9191036f266c6243ea12c33d92b6a497509ca7c7d96bf46dd069bebe611b122107f89133aa141a992057bd43e13'
 )
 
 build() {
   cd $_pkgname-$pkgver
-  python3 setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd $_pkgname-$pkgver
-  python3 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
