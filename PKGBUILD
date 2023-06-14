@@ -3,7 +3,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-bsnes
 pkgname=$_pkgname-git
-pkgver=r3087.3c186825
+pkgver=r3093.4f4e22e8
 pkgrel=1
 pkgdesc="Super Nintendo Entertainment System core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -23,9 +23,7 @@ pkgver() {
 }
 
 prepare() {
-	cd $_pkgname
-	sed -i 's/-O3//' nall/GNUmakefile
-	sed -i '1i #include <stdexcept>' nall/arithmetic/natural.hpp
+	sed -i 's/-O3//' $_pkgname/nall/GNUmakefile
 }
 
 build() {

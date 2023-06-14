@@ -1,6 +1,6 @@
 pkgbase = libretro-bsnes-git
 	pkgdesc = Super Nintendo Entertainment System core
-	pkgver = r3087.3c186825
+	pkgver = r3093.4f4e22e8
 	pkgrel = 1
 	url = https://github.com/libretro/bsnes-libretro
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = libretro-bsnes-git
 	depends = gcc-libs
 	depends = glibc
 	depends = libretro-core-info
-	provides = libretro-bsnes=1:3087.3c186825
+	provides = libretro-bsnes=1:3093.4f4e22e8
 	conflicts = libretro-bsnes
 	source = libretro-bsnes::git+https://github.com/libretro/bsnes-libretro.git
 	b2sums = SKIP
