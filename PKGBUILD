@@ -1,7 +1,7 @@
 # Maintainer: endaaman <ken@endaaman.me>
 pkgname=(otf-line-seed ttf-line-seed)
 pkgver=1.1
-pkgrel=1
+pkgrel=5
 pkgdesc="LINE Seed font"
 arch=(any)
 url="https://seed.line.me"
