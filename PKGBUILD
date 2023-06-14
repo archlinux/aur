@@ -1,9 +1,9 @@
 # Maintainer: Marek <mail@marek.onl>
 
 pkgname=zebrad
-pkgver=1.0.0_rc.6
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A Rust implementation of a Zcash node. 🦓"
+pkgdesc="Zcash - Financial Privacy in Rust 🦓"
 url='https://github.com/ZcashFoundation/zebra'
 source=("zebra-${pkgver//_/-}.tar.gz::https://github.com/ZcashFoundation/zebra/archive/refs/tags/v${pkgver//_/-}.tar.gz")
 arch=('aarch64' 'x86_64')
