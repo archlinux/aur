@@ -1,0 +1,20 @@
+pkgbase = gnome-ssh-askpass4-git
+	pkgdesc = A passphrase requester for ssh-add using gcr.
+	pkgver = 9.3p1.pr400.8023317
+	pkgrel = 1
+	url = https://www.openssh.com/portable.html
+	arch = x86_64
+	license = custom:2-term BSD licence
+	depends = gcr-4
+	provides = x11-ssh-askpass
+	conflicts = x11-ssh-askpass
+	conflicts = ssh-askpass-fullscreen
+	conflicts = gnome-ssh-askpass
+	conflicts = gnome-ssh-askpass2
+	conflicts = gnome-ssh-askpass3
+	source = https://github.com/openssh/openssh-portable/archive/8023317e22368c32a6391ab8febf13067f669704.tar.gz
+	source = gnome-ssh-askpass4.sh
+	sha256sums = c9412ec80d651b3998da1de594dd223b8bcab3205b241393238a95aca01d4de8
+	sha256sums = 89309c0cc5c58bba32d03c1d998175f01b1f471589b4400dfe5d01702837c828
+
+pkgname = gnome-ssh-askpass4-git
