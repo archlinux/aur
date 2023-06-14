@@ -1,3 +1,10 @@
+2023-06-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Updated the makedepends array
+	Add a patch to fix the compilation of the TextManager class
+	The patch to compile against the latest version of SDL2_mixer is not needed anymore
+
 2021-04-14 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :

@@ -1,0 +1,11 @@
+diff -ur dunelegacy.orig/include/FileClasses/TextManager.h dunelegacy/include/FileClasses/TextManager.h
+--- dunelegacy.orig/include/FileClasses/TextManager.h	2023-06-14 12:38:06.296181593 +0200
++++ dunelegacy/include/FileClasses/TextManager.h	2023-06-14 12:30:46.579528680 +0200
+@@ -21,6 +21,7 @@
+ #include "IndexedTextFile.h"
+ #include "MentatTextFile.h"
+ 
++#include <array>
+ #include <string>
+ #include <vector>
+ #include <map>

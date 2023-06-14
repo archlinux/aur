@@ -1,18 +1,20 @@
 pkgbase = dunelegacy
 	pkgdesc = Updated clone of Westood Studios' Dune2
-	pkgver = 0.96.4
-	pkgrel = 2
+	pkgver = 0.97.02
+	pkgrel = 1
 	url = http://dunelegacy.sourceforge.net
 	changelog = dunelegacy.changelog
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
+	makedepends = autoconf
 	depends = sdl2_mixer
+	depends = sdl2_ttf
 	depends = xdg-utils
-	source = http://downloads.sourceforge.net/sourceforge/dunelegacy/dunelegacy-0.96.4-src.tar.bz2
-	source = mix_init_mid.patch
-	md5sums = de1d0a529cc32ba5d909bf1570272434
-	md5sums = 9a074011e5dd75f9d3c0f5a14bdd1600
+	source = dunelegacy::git+https://git.code.sf.net/p/dunelegacy/code#commit=6ea9ac96854daa8c75ba429e78dc6716b147e106
+	source = text_manager.patch
+	md5sums = SKIP
+	md5sums = ee5ade548d7d5bbf1145b63be47183db
 
 pkgname = dunelegacy
-
