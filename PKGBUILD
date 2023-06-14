@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=music-player
-pkgver=0.2.0_alpha.12
+pkgver=0.2.0_alpha.13
 pkgrel=1
 pkgdesc='An extensible music server written in Rust'
 url='https://github.com/tsirysndr/music-player'
@@ -14,7 +14,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver/_/-}.tar.gz"
   $pkgname.service
 )
-b2sums=('71a3ea25c0905b01b5a66c116cf9d8dbe947cd16b3a7e0dfb438a36d2d063f78f52407fd3e39d261319d8eb135b23094d598e094e98b79bb7ec29bfc93aedecc'
+b2sums=('79e52b8ec4eea69530e50ff43d8c0789097db6df52e7f155722b2075a0ce81f3d529519dd08f55083de204b95d0666d56bcac3fb9f155654c8723bd4474c720c'
         'd9924b8f0fcd2106d51b6e07c1bf40ab734ba24e0ebec4d697775e56305a252489469e4a634f4d967508decc0f556ebe425896aca0eb791c9813f60b1d239703')
 
 prepare() {
