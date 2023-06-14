@@ -2,15 +2,16 @@
 # Contributer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-mbedtls
-_tag='52302478926d89f60001f0c95bdd3f280c46b773' # git rev-parse v${pkgver}
+_tag='69166bd4a5e78d1c5de858c3f46d49db2f6220b8' # git rev-parse v${pkgver}
 _pkgname=openvpn
 crypto_library=mbedtls
-pkgver=2.6.4
+crypto_library_package=mbedtls2
+pkgver=2.6.5
 pkgrel=1
 pkgdesc="An easy-to-use, robust and highly configurable VPN (Virtual Private Network), linked against the ${crypto_library} library for crypto support."
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://openvpn.net/index.php/open-source.html'
-depends=('lzo' 'lz4' 'iproute2' 'systemd-libs' "${crypto_library}")
+depends=('lzo' 'lz4' 'iproute2' 'systemd-libs' "${crypto_library_package}")
 optdepends=('easy-rsa: easy CA and certificate handling'
             'pam: authenticate via PAM')
 makedepends=('git' 'systemd' 'cmocka' 'python-docutils')
@@ -28,6 +29,9 @@ sha256sums=('SKIP'
             '77874824d96c1fd6c14259a6ea16232ae574dda3d5adba1798ccd6c93694846c'
             '3646b865ac67783fafc6652589cfe2a3105ecef06f3907f33de5135815f6a621'
             'b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc')
+
+export MBEDTLS_CFLAGS="-I/usr/include/mbedtls2"
+export MBEDTLS_LIBS="-L/usr/lib/mbedtls2 -lmbedcrypto -lmbedtls -lmbedx509"
 
 prepare() {
   cd "${srcdir}"/${_pkgname}
