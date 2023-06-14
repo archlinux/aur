@@ -3,7 +3,7 @@
 java_=17
 pkgname_=fastr
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=22.3.1
+pkgver=23.0.0
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the R language (Java ${java_} version)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ url='https://github.com/oracle/fastr'
 license=('GPL3')
 depends=("jdk${java_}-graalvm-bin"
          'zlib')
-source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/r-installable-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('d96c98f73000bbc3628ae052da6ab71b080f8fe16eee0b0586b1c1f1d699b345')
+source=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/r-installable-ce-java${java_}-linux-amd64-${pkgver}.jar")
+sha256sums=('e12981d34bdc3f417229816f752dec668ee1364d248e2967b36b2d30b559f856')
 
 package() {
     local file eq permissions mode name target
@@ -20,7 +20,7 @@ package() {
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
     cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" languages/ lib/ LICENSE_FASTR 3rd_party_licenses_fastr.txt
 
-    printf '\n' >> META-INF/permissions
+    [[ -s META-INF/permissions ]] && printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
         if [[ $eq != '=' ]]; then
             printf >&2 'second word should be "=": %s %s %s\n' "$file" "$eq" "$permissions"
@@ -42,7 +42,7 @@ package() {
         chmod "$mode" -- "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$file"
     done < META-INF/permissions
 
-    printf '\n' >> META-INF/symlinks
+    [[ -s META-INF/symlinks ]] && printf '\n' >> META-INF/symlinks
     while read -r name eq target; do
         if [[ $eq != '=' ]]; then
             printf >&2 'second word should be "=": %s %s %s\n' "$name" "$eq" "$target"
