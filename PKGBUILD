@@ -3,7 +3,7 @@
 java_=17
 pkgname_=truffleruby
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=22.3.1
+pkgver=23.0.0
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the Ruby language (Java ${java_} version)"
 arch=('x86_64'
@@ -12,10 +12,10 @@ url='https://github.com/oracle/truffleruby'
 license=('EPL' 'GPL2' 'LGPL2.1')
 depends=("jdk${java_}-graalvm-bin"
          "graal-llvm-jdk${java_}-bin")
-source_x86_64=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/ruby-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
-source_aarch64=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/ruby-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('e1ca9d1280d0c3b6cb1bb34a58adc432668e0daad504799227827ed8f00560c5')
-sha256sums_aarch64=('7f694e7e8fa57ed21576593f80f07f3c78154a5f2b058ee176778eeb13e1014e')
+source_x86_64=("https://github.com/oracle/$pkgname_/releases/download/graal-${pkgver}/ruby-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
+source_aarch64=("https://github.com/oracle/$pkgname_/releases/download/graal-${pkgver}/ruby-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
+sha256sums_x86_64=('5ca99662597a7b03f1274578c740e197651436336efe7256bef6730593947b78')
+sha256sums_aarch64=('e8994990a9d76695f808780f80c62092c260ed2bec0f4080d971b48fc9f0876b')
 
 package() {
     local file eq permissions mode name target
@@ -23,7 +23,7 @@ package() {
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
     cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" languages/ lib/ LICENSE_TRUFFLERUBY.txt 3rd_party_licenses_truffleruby.txt
 
-    printf '\n' >> META-INF/permissions
+    [[ -s META-INF/permissions ]] && printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
         if [[ $eq != '=' ]]; then
             printf >&2 'second word should be "=": %s %s %s\n' "$file" "$eq" "$permissions"
@@ -44,7 +44,7 @@ package() {
         chmod "$mode" -- "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$file"
     done < META-INF/permissions
 
-    printf '\n' >> META-INF/symlinks
+    [[ -s META-INF/symlinks ]] && printf '\n' >> META-INF/symlinks
     while read -r name eq target; do
         if [[ $eq != '=' ]]; then
             printf >&2 'second word should be "=": %s %s %s\n' "$name" "$eq" "$target"
