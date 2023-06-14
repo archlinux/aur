@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Rocview
+Comment=Innovative Model Railroad Control System - Client
+Path=/opt/rocrail/
+Exec=/opt/rocrail/bin/rocview
+Icon=/opt/rocrail/rocrail.png
+Terminal=false
+Categories=Application;

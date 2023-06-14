@@ -4,48 +4,45 @@
 
 pkgname=rocrail
 pkgver=14062023
-pkgrel=3
+pkgrel=5
 pkgdesc="Innovative Model Railroad Control System"
 arch=('x86_64')
 url="http://wiki.rocrail.net/"
 license=('Proprietary')
 depends=('libusb' 'libsm' 'gtk3')
 makedepends=('curl')
-source=("https://wiki.rocrail.net/rocrail-snapshot/Debian/Rocrail-debian11-i64.zip")
-md5sums=('SKIP')
+source=("https://wiki.rocrail.net/rocrail-snapshot/Debian/Rocrail-debian11-i64.zip" "rocview.desktop" "rocrail.desktop" "startrocrail.sh")
+md5sums=('SKIP'
+         'b3851071a1185e25a6e59471d955b098'
+         'edc94290e0835812bc704dbe1d6a940f'
+         '06fe0cfafc3cffd5be25a51bf2d13d48')
 
 pkgver() {
-  # get buildnumber
-  # curl -s https://wiki.rocrail.net/rocrail-snapshot/log.txt | head -n 1 | awk '{ print $1 }'
-  # get builddate
+  # I made it like this because i dont have the time to test and update every new daily version. Anyone can update the package themself just by reinstalling.
   curl -s https://wiki.rocrail.net/rocrail-snapshot/ | grep -e '<a href="Debian/Rocrail-debian11-i64.zip"' | cut -d' ' -f 7 | rev | cut -c 1-8 | rev
 }
 
-
 package() {
-  msg "Installing..."
-  cd "$srcdir/"
-  chmod -R 755 .
-  mkdir -p $pkgdir/opt/rocrail
-  cp -r * $pkgdir/opt/rocrail/.
-  rm $pkgdir/opt/rocrail/*.zip
+  install -d "${pkgdir}/opt/rocrail"
+  cp -r "${srcdir}/"* "${pkgdir}/opt/rocrail" -R
+
+  install -d "${pkgdir}/usr/bin"
+  install -m755 "${srcdir}/startrocrail.sh" "${pkgdir}/usr/bin/rocrail"
+
+  install -d "${pkgdir}/usr/share/applications"
+  install -Dm644 -t "${pkgdir}/usr/share/applications" rocview.desktop
+  install -Dm644 -t "${pkgdir}/usr/share/applications" rocrail.desktop
+
+  install -d "${pkgdir}/usr/share/pixmaps"
+  install -Dm644 -t "${pkgdir}/usr/share/pixmaps" rocrail.png
+
+  #cleanup unnecessary files and wrong scripts
+  rm $pkgdir/opt/rocrail/desktoplink.sh
+  rm $pkgdir/opt/rocrail/update.sh
+  rm $pkgdir/opt/rocrail/sysupdate.sh
+  rm $pkgdir/opt/rocrail/startrocrail.sh
+  rm $pkgdir/opt/rocrail/*.desktop
+  rm $pkgdir/opt/rocrail/Rocrail-debian11-i64.zip
+
   chmod -R 755 $pkgdir/opt/rocrail
-
-  TEMPFILE="rocrail.desktop"
-  echo "[Desktop Entry]" > $TEMPFILE
-  echo "Type=Application" >> $TEMPFILE
-  echo "Version=$pkgver" >> $TEMPFILE
-  echo "Name=Rocrail" >> $TEMPFILE
-  echo "Comment=$pkgdesc" >> $TEMPFILE
-  echo "Path=/opt/rocrail/" >> $TEMPFILE
-  echo "Exec=/opt/rocrail/bin/rocview" >> $TEMPFILE
-  echo "Icon=/opt/rocrail/rocrail.png" >> $TEMPFILE
-  echo "Terminal=false" >> $TEMPFILE
-  echo "Categories=Application;" >> $TEMPFILE
-
-  chmod +x $TEMPFILE
-  mkdir -p $pkgdir/usr/share/applications
-  cp -p $TEMPFILE $pkgdir/usr/share/applications/.
-  mkdir -p $pkgdir/usr/share/pixmaps
-  cp -p rocrail.png $pkgdir/usr/share/pixmaps/.
 }

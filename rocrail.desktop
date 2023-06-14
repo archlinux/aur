@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Rocrail
+Comment=Innovative Model Railroad Control System - Server
+Exec=rocrail
+Icon=/opt/rocrail/rocrail.png
+Terminal=true
+Categories=Application;
