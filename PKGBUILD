@@ -1,8 +1,10 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 
-java_=17
+graal_=17.0.7+7.1
+jdk_=${graal_%%+*}
+java_=${jdk_%%.*}
 pkgname="jdk${java_}-graalvm-bin"
-pkgver=22.3.2
+pkgver=23.0.0
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64'
@@ -17,17 +19,18 @@ optdepends=("graaljs-jdk${java_}-bin: JavaScript component (used to be bundled w
             "graal-visualvm-jdk${java_}-bin: VisualVM component (used to be bundled with this package before the 22.2.0 release)")
 provides=("java-runtime=${java_}"
           "java-environment=${java_}")
+replaces=("native-image-jdk${java_}-bin")
 options=('staticlibs')
 install="$pkgname.install"
 source=('graalvm-rebuild-libpolyglot.hook')
 sha256sums=('SKIP')
-source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/graalvm-ce-java${java_}-linux-amd64-${pkgver}.tar.gz")
-source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/graalvm-ce-java${java_}-linux-aarch64-${pkgver}.tar.gz")
-sha256sums_x86_64=('e5a5868c9b498643fadebfba2040e4d9a19a13ea58ec77cec8d64ab6ee691d1e')
-sha256sums_aarch64=('5d8614c75f5496b37ba52c3ae80a5e887a03981c2d22ade187e8793562b66e84')
+source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${jdk_}/graalvm-community-jdk-${jdk_}_linux-x64_bin.tar.gz")
+source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${jdk_}/graalvm-community-jdk-${jdk_}_linux-aarch64_bin.tar.gz")
+sha256sums_x86_64=('094e5a7dcc4a903b70741d5c3c1688f83e83e2d44eb3d8d798c5d79ed902032c')
+sha256sums_aarch64=('cb5bedf6244d30018856559a393029e98de48c9608eb35ec6c4937dcb7d97224')
 
 package() {
-    cd "graalvm-ce-java${java_}-${pkgver}"
+    cd "graalvm-community-openjdk-${graal_}"
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
     cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" *
     install -DTm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

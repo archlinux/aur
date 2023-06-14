@@ -69,7 +69,7 @@ int main() {
   return 0;
 }
 EOF
-emcc -o hello.wasm hello.c 2>/dev/null || exit
+nice -n19 emcc -o hello.wasm hello.c 2>/dev/null || exit
 
 helloWorld=$(wasm --Builtins=wasi_snapshot_preview1 hello.wasm) || exit
 if [[ $helloWorld != 'Hello, WASM!' ]]; then
