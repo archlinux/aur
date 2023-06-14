@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mingw-w64-libjxl
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (mingw-w64)'
 arch=('any')
