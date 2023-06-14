@@ -3,7 +3,7 @@
 
 pkgname=libwacom-surface
 pkgver=2.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
 url="https://github.com/linux-surface/libwacom"
@@ -28,28 +28,34 @@ source=(
     "0005-data-Add-Microsoft-Surface-Pro-5.patch"
     "0006-data-Add-Microsoft-Surface-Pro-6.patch"
     "0007-data-Add-Microsoft-Surface-Pro-7.patch"
-    "0008-data-Add-Microsoft-Surface-Book.patch"
-    "0009-data-Add-Microsoft-Surface-Book-2-13.5.patch"
-    "0010-data-Add-Microsoft-Surface-Book-2-15.patch"
-    "0011-data-Add-Microsoft-Surface-Book-3-13.5.patch"
-    "0012-data-Add-Microsoft-Surface-Book-3-15.patch"
-    "0013-data-Add-Microsoft-Surface-Pro-7.patch"
+    "0008-data-Add-Microsoft-Surface-Pro-7.patch"
+    "0009-data-Add-Microsoft-Surface-Pro-8.patch"
+    "0010-data-Add-Microsoft-Surface-Pro-9.patch"
+    "0011-data-Add-Microsoft-Surface-Book.patch"
+    "0012-data-Add-Microsoft-Surface-Book-2-13.5.patch"
+    "0013-data-Add-Microsoft-Surface-Book-2-15.patch"
+    "0014-data-Add-Microsoft-Surface-Book-3-13.5.patch"
+    "0015-data-Add-Microsoft-Surface-Book-3-15.patch"
+    "0016-data-Add-Microsoft-Surface-Laptop-Studio.patch"
 )
 sha256sums=('853929bd73fba2064b12142dbbee4b3bf84509197ff46a4da559eddf62d32cdf'
             'SKIP'
-            '416bd97440be1bc602e79086f128b931e09c3895563995d227eb993b0c8ee57d'
-            '15179a1929df962e239521e8c15ec709e54d324fdecf45c96524a0c8d63dbd98'
-            'db77bc0f6cf9419708d1088a1a9bf38dbcc9dc8e7c6a2cd8342e7e1fea991381'
-            'ff24ca67ba308802301a9a917a2df10654fbb865381538b43cb66b86a4ca10f8'
-            'e55921b4f067cea62b7395b1d8e74fef5ea5e2674b2feaebd5d73743fc481268'
-            '58129638de2d12d43c65a552baf131d9ec3b128bdb207c3fa791491009929d3f'
-            '4c7a75a339d07edb81fe2e6ca2399064d83f2238c05b6b438491ce5f3d7c2b7c'
-            '414f998826d081905f654a92480899bf00f42324b29066e936e867c2e0c4ed4e'
-            'e7e7238f044c43171ad4f45afd1fd6fd4cd583858bcc6a1c7ad81b4bb5e379cb'
-            '8781f138968cd7a6b01c38bedcb84d13b5f572277c49d2ef878349e5f4cf7945'
-            'ec25e26b22d3a21f09357eb88cef8b148849d24c96882cf29064e4fa506f64a4'
-            '2cd13ac5b7d4bed85eefcfcaccbe2947a5c2db222da6b2515eba78fff45fedca'
-            '93a1dd06fe6a75ad93a3dd17c258e235bd45591d9346befb0759ff10cb658e69')
+            '4fd78cf73f4f9c39f21cb63f084bf81d4d863d4bda9fcd98ef9a5c73d4e60ca1'
+            'de33c691c30e1e41d2bde9c4f1fd2c223e43929946a986c404837faf62979615'
+            'bf5813eaa28fa8ec237b7bd2c97084b32d4dc2e51516e1f7c4327eb97eb91ded'
+            'a03d5e2831fceb004dc1d996b5a2bc77f7635454b635acfac5269dbdc92f9fd8'
+            '82216bbd183d0814a9ade1420f44eddec94a48d28ed3f70301fc030975966aac'
+            'ce94a3d93c3d729a4146f97b8b74384e14df9bb99b50ce639c218b5c88798b8c'
+            '4c4d3af8b63d3099b3586911a1eb9aa1c83b1d50b5de5c1f6855cf08100d1fda'
+            'aa1285286eb685b2ea4f8869f5980bf85e5af15793c3c3f22fb4ddda241edba8'
+            'b2dfd6becc1f0abefe57c05b6a65f1428ec37d61cb4bca0ade92a55ccdba5ba8'
+            '5182fbd4e2bdd35cbc8aae2fb3786f633d4c97405aead570a00048699aa67bd9'
+            'd62497be1f8bc947a14b5e1e2be9ec3ed2b94634dd99a05947cc60f2604691d7'
+            '1cb35a7e0a022cc592c580bb8303a47b8e5e01d6e26cb0ac11e1b298fb540821'
+            'f9662bf7db56c1754dba855d20abb1eb13f0f0862dd703106d04d386c5a01899'
+            '04ca5078efaee5e9eb48dfe65dc39830bc26aebe1073250040b32defb64b2800'
+            '43e7d71db1e35ef75feffd0c6e4cc1639b0f8dc542014919bb1360b496120ca0'
+            '439ac1051eaf73e81d8f4b1ef02662808944eb92cd4a2fc2bb184ad376098cdd')
 
 prepare() {
     cd "libwacom-${pkgver}"
