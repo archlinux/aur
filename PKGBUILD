@@ -2,7 +2,7 @@
 # Contributor: freb
 
 pkgname=burpsuite-pro-earlyadopter
-pkgver=2023.5.3
+pkgver=2023.6
 pkgrel=1
 pkgdesc="An integrated platform for performing security testing of web applications (professional edition) (early adopter)"
 url="https://portswigger.net/burp/"
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}-orig.jar::https://portswigger.net/burp/releases/do
   icon256.png
   icon512.png
   icon.svg)
-sha256sums=('8bc0a3e20a1f5f3bf21b38807584cdbd07004574fd263ff44f1fc30d3f34e0bd'
+sha256sums=('e49caa5a2c01dcad37ecc95c1779f46b8abe7fdfd46ce756c821834903fcb759'
             'dabd0e917c65245aeab77f251481cdc77ac04bb756f757bb477d3969b12a75c5'
             'be5226ff91b37f6102e143a1b8cf54c41ea66b2da6cff2d5df660b3b1a411c86'
             'ff0b230af06fb76af053090ac021bf45b88341d746e67f6bb9e94ba40957d9d8'
