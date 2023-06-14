@@ -7,7 +7,11 @@ url="https://www.hnsky.org/astap.htm"
 license=('LGPL3')
 source=("d20.deb::https://downloads.sourceforge.net/project/astap-program/star_databases/d20_star_database.deb")
 sha256sums=('9ae31902423ed51bbab431db78f703b77a44169b76a66789f5dbf65e83f3baa7')
-depends=('astap')
+depends=()
+optdepends=('astap-bin: binary GTk version'
+	    'astap-bin-qt5: binary Qt version'
+	    'astap: sourced Qt version'
+	    'astap-cli: CLI version')
 
 
 package() {

@@ -5,7 +5,10 @@ pkgbase = d20-star-db-astap
 	url = https://www.hnsky.org/astap.htm
 	arch = any
 	license = LGPL3
-	depends = astap
+	optdepends = astap-bin: binary GTk version
+	optdepends = astap-bin-qt5: binary Qt version
+	optdepends = astap: sourced Qt version
+	optdepends = astap-cli: CLI version
 	source = d20.deb::https://downloads.sourceforge.net/project/astap-program/star_databases/d20_star_database.deb
 	sha256sums = 9ae31902423ed51bbab431db78f703b77a44169b76a66789f5dbf65e83f3baa7
 
