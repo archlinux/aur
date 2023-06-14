@@ -27,7 +27,7 @@ except ImportError:
 	print("Done.")
 	sys.exit(1)
 
-### Global variables/Settings
+### Global
 
 YOUTUBE_VIDEO_URL = "https://www.youtube.com/watch?v={youtube_id}"
 YOUTUBE_COMMENTS_AJAX_URL = "https://www.youtube.com/comment_service_ajax"
@@ -101,12 +101,12 @@ def out_conclude(att, acc):
 		print("\nInterrupted before granted sufficient time.")
 	elif acc == 0 and att > 0:
 		print("\nSTATUS: ALARMING")
-	elif att >= acc:
+	elif att > acc:
 		print("\nSTATUS: QUESTIONABLE")
 	elif att == acc and att > 0:
 		print("\nSTATUS: HEALTHY")
 
-### Video - https://www.youtube.com/watch?v=Y6ljFaKRTrI
+### Video
 
 def video_init(youtube_id):
 	att, acc, inc = 0, 0, 0
@@ -147,8 +147,7 @@ def video_init(youtube_id):
 	except KeyboardInterrupt:
 		out_conclude(att, acc)
 
-### Comments - https://www.youtube.com/feed/history/comment_history
-### Comment url template (removed) - https://www.youtube.com/watch?v=OfsojVaqyAA&lc=Ugx5BtG_-N5pwDyvOiF4AaABAg.9NEWMl2CCJR9NI73GZeCDa
+### Comments
 
 def comments_init():
 	att, acc, ind = 0, 0, 1
