@@ -12,9 +12,10 @@ pkgbase = qucs-s
 	depends = ngspice
 	optdepends = ngspice: recommended simulation backend
 	optdepends = qucs: for Qucsator simulation backend
-	optdepends = xyce-serial: a SPICE-compatible simulation backend
-	optdepends = spiceopus: a general purpose simulation backend for optimization loops
-	optdepends = octave: a high-level language for post-simulation data processing
+	optdepends = xyce-serial: SPICE-compatible simulation backend
+	optdepends = spiceopus: general purpose simulation backend for optimization loops
+	optdepends = openvaf: compiler for Verilog-A devices support
+	optdepends = octave: high-level language for post-simulation data processing
 	source = https://github.com/ra3xdh/qucs_s/releases/download/1.1.0/qucs-s-1.1.0.tar.gz
 	sha256sums = 15aa734db9be6d8a8fc87a0782bf1be418c7bf59dfe06a957c904ff8f7d5f096
 
