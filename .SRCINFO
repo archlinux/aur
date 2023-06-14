@@ -1,6 +1,6 @@
 pkgbase = tui-deck
 	pkgdesc = A TUI frontend for Nextcloud Deck app written in GO using the Rich Interactive Widgets for Terminal UIs
-	pkgver = 0.5.14.r1.gd9201e2
+	pkgver = 0.5.14.r2.g5d068e7
 	pkgrel = 1
 	url = https://github.com/mebitek/tui-deck
 	arch = x86_64
