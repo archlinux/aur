@@ -9,6 +9,6 @@ pkgbase = shadowtube
 	depends = python-pip
 	depends = torbrowser-launcher
 	source = https://github.com/danehobrecht/shadowtube/archive/refs/tags/1.0.8.tar.gz
-	sha256sums = 560267a8fa759c728fa3f0dbb65cf24c8a6a0ad25a4ff2e3d1b841ec938a3698
+	sha256sums = 1f9c80b884e1efb2706afaa3618c228ce80604b4de34c845f681931db70272d7
 
 pkgname = shadowtube
