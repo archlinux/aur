@@ -1,55 +1,59 @@
-# Maintainer:
-# Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: éclairevoyant
+# Contributor: Felix Golatofski <contact at xdfr dot de>
+# Contributor: Andy Weidenbaum <archbaum at gmail dot com>
 # Contributor: Sebastian Lau <archlinux _at_ slau _dot_ info>
 # Contributor: Eric Ozwigh <ozwigh at gmail dot com>
 
-pkgname=veracrypt-git
-_pkgname=VeraCrypt
-pkgver=20200311
+_pkgname=veracrypt
+pkgname="$_pkgname-git"
+pkgver=1.25.9.r95.36a055f6
 pkgrel=1
+epoch=1
 pkgdesc='Disk encryption with strong security based on TrueCrypt'
 url='https://www.veracrypt.fr/'
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 license=('custom:TrueCrypt')
-depends=('fuse2>=2.8.0' 'wxgtk3>=3.0' 'libsm' 'device-mapper')
+depends=(device-mapper 'fuse2>=2.8.0' libsm wxgtk3)
+makedepends=(git yasm)
 optdepends=('sudo: mounting encrypted volumes as nonroot users')
-makedepends=('git' 'yasm')
-source=("${pkgname%-git}::git+https://github.com/veracrypt/VeraCrypt.git"
-	no-makeself.patch
-        veracrypt.desktop)
-sha512sums=('SKIP'
-            '40c269859bb97fbcceb443e5f457788bac650271ed118ec79d34f56fc340ad6e613114fe905ec5aba8c4d171c51c9a6865f97e9fa1ba01fa98ef18be4e97bbe1'
-            'f689ca64bac7042030de7714aed8cc89f2c5f87b407444b1b121491c1d89c147babaaa454ddc2a93b70ae20d4da59f96ad64f01b04bea9017d658c377faeb75d')
-provides=('veracrypt')
-conflicts=('veracrypt')
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+https://github.com/veracrypt/VeraCrypt.git"
+        no-makeself.patch
+        wx-3.2-size-warnings.patch
+        $_pkgname.desktop)
+b2sums=('SKIP'
+        'e336984d8fdbeb6d8c5048de69e23770dce21681269d29bc0f3b182df6c80e2e07e90cc01c215bb81ec1260332fa0f37f63bee6ce42930eff0f7eeffe9e20fbd'
+        '5f51de91f2ccccc08304eb82ada94ea0140143c9f13ecc6b1c91c39e921faf8e42ae0f638225845725417b3cf23fb2655d96f5b2d335409c5899444d6d043b3f'
+        '9a68587e7b7df71ccae73157131db7b1f29ac9e529812d9a7435593534b1b66a5fb34cef385436beb08a34cfa444848b3a0bce52fc6f2407fcb12001af0fa997')
 
 pkgver() {
-  cd $srcdir/${pkgname%-git}
-  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
+	git -C $_pkgname describe --long --tags | sed 's/^VeraCrypt_//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $srcdir/${pkgname%-git}/src
+	cd $_pkgname/src
 
-  chmod -R u+w . # WAT award
-  patch -Np1 < "${srcdir}/no-makeself.patch"
+	chmod -R u+w . # WAT award
+	patch -Np1 -i "${srcdir}/no-makeself.patch"
+	patch -Np1 -i "${srcdir}/wx-3.2-size-warnings.patch"
 }
 
 build() {
-  cd $srcdir/${pkgname%-git}/src
-  make PKG_CONFIG_PATH=/usr/lib/pkgconfig \
-    WX_CONFIG=/usr/bin/wx-config-gtk3 \
-    TC_EXTRA_LFLAGS+="-ldl ${LDFLAGS}" \
-    TC_EXTRA_CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}" \
-    TC_EXTRA_CFLAGS="${CFLAGS} ${CPPFLAGS}"
+	cd $_pkgname/src
+	make PKG_CONFIG_PATH=/usr/lib/pkgconfig \
+		WX_CONFIG=/usr/bin/wx-config \
+		TC_EXTRA_LFLAGS+="-ldl ${LDFLAGS}" \
+		TC_EXTRA_CXXFLAGS="${CXXFLAGS} ${CPPFLAGS}" \
+		TC_EXTRA_CFLAGS="${CFLAGS} ${CPPFLAGS}"
 }
 
 package() {
-  cd $srcdir/${pkgname%-git}/src
+	install -vDm0644 $_pkgname.desktop -t "$pkgdir/usr/share/applications/"
 
-  install -Dm 755 Main/${pkgname%-git} "${pkgdir}/usr/bin/${pkgname%-git}"
-  install -Dm 644 "${srcdir}/veracrypt.desktop" -t "${pkgdir}/usr/share/applications"
-  install -Dm 644 Resources/Icons/VeraCrypt-256x256.xpm "${pkgdir}/usr/share/pixmaps/veracrypt.xpm"
-  install -Dm 644 License.txt -t "${pkgdir}/usr/share/licenses/${pkgname%-git}"
+	cd $_pkgname/src
+
+	install -vDm0755 Main/$_pkgname -t "$pkgdir/usr/bin/"
+	install -vDm0644 Resources/Icons/VeraCrypt-256x256.xpm "$pkgdir/usr/share/pixmaps/$_pkgname.xpm"
+	install -vDm0644 License.txt "${pkgdir}/usr/share/licenses/$_pkgname/LICENSE"
 }

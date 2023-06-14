@@ -1,26 +1,28 @@
 pkgbase = veracrypt-git
 	pkgdesc = Disk encryption with strong security based on TrueCrypt
-	pkgver = 20200311
+	pkgver = 1.25.9.r95.36a055f6
 	pkgrel = 1
+	epoch = 1
 	url = https://www.veracrypt.fr/
 	arch = i686
 	arch = x86_64
 	license = custom:TrueCrypt
 	makedepends = git
 	makedepends = yasm
-	depends = fuse2>=2.8.0
-	depends = wxgtk3>=3.0
-	depends = libsm
 	depends = device-mapper
+	depends = fuse2>=2.8.0
+	depends = libsm
+	depends = wxgtk3
 	optdepends = sudo: mounting encrypted volumes as nonroot users
-	provides = veracrypt
+	provides = veracrypt=1.25.9
 	conflicts = veracrypt
 	source = veracrypt::git+https://github.com/veracrypt/VeraCrypt.git
 	source = no-makeself.patch
+	source = wx-3.2-size-warnings.patch
 	source = veracrypt.desktop
-	sha512sums = SKIP
-	sha512sums = 40c269859bb97fbcceb443e5f457788bac650271ed118ec79d34f56fc340ad6e613114fe905ec5aba8c4d171c51c9a6865f97e9fa1ba01fa98ef18be4e97bbe1
-	sha512sums = f689ca64bac7042030de7714aed8cc89f2c5f87b407444b1b121491c1d89c147babaaa454ddc2a93b70ae20d4da59f96ad64f01b04bea9017d658c377faeb75d
+	b2sums = SKIP
+	b2sums = e336984d8fdbeb6d8c5048de69e23770dce21681269d29bc0f3b182df6c80e2e07e90cc01c215bb81ec1260332fa0f37f63bee6ce42930eff0f7eeffe9e20fbd
+	b2sums = 5f51de91f2ccccc08304eb82ada94ea0140143c9f13ecc6b1c91c39e921faf8e42ae0f638225845725417b3cf23fb2655d96f5b2d335409c5899444d6d043b3f
+	b2sums = 9a68587e7b7df71ccae73157131db7b1f29ac9e529812d9a7435593534b1b66a5fb34cef385436beb08a34cfa444848b3a0bce52fc6f2407fcb12001af0fa997
 
 pkgname = veracrypt-git
-
