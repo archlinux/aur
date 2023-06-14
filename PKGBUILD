@@ -11,7 +11,7 @@ url="https://www.openssh.com/portable.html"
 license=('custom:2-term BSD licence')
 depends=('gcr-4')
 provides=('x11-ssh-askpass')
-conflicts=('x11-ssh-askpass' 'ssh-askpass-fullscreen' 'gnome-ssh-askpass' 'gnome-ssh-askpass2' 'gnome-ssh-askpass3')
+conflicts=('gnome-ssh-askpass' 'gnome-ssh-askpass2' 'gnome-ssh-askpass3')
 
 source=(https://github.com/openssh/openssh-portable/archive/${_git_commit}.tar.gz
         gnome-ssh-askpass4.sh)
