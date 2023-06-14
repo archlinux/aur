@@ -5,7 +5,7 @@
 # Contributor: Earnestly <zibeon AT googlemail.com>
 
 pkgname=gprbuild-bootstrap
-pkgdesc="Static GPRbuild to bootstrap XML/Ada and GPRbuild itself."
+pkgdesc='Static GPRbuild to bootstrap XML/Ada and GPRbuild itself.'
 pkgver=24.0w
 pkgrel=1
 epoch=1
@@ -15,21 +15,7 @@ url=https://github.com/AdaCore/gprbuild
 license=(GPL3 custom)
 
 depends=(gcc-ada)
-makedepends=(gcc-ada)
-
-source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gprbuild-$pkgver-20230324-1649D-src.tar.gz
-        https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/xmlada-$pkgver-20230324-1684A-src.tar.gz
-        https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gprconfig-kb-$pkgver-20230324-16644-src.tar.gz)
-
-#source=(file:///opt/gnatstudio-sources/gprbuild-$pkgver-20230324-1649D-src.tar.gz
-#        file:///opt/gnatstudio-sources/xmlada-$pkgver-20230324-1684A-src.tar.gz
-#        file:///opt/gnatstudio-sources/gprconfig-kb-$pkgver-20230324-16644-src.tar.gz)
-
-sha256sums=(efeb12ab26ca687a000ca781f3bce0e4ec2d4efd62b996116f2f505e50239b4f
-            c243de68f3f7c0f5e8a23d24ab0725d038f4dd2b7798855a3b91b574e44e2dc1
-            7de5388f05168fb32577556989f0bc0f4f4d615cbd6a79ad544127a090aba5f4)
-
-#sha256sums=(efeb12ab26ca687a000ca781f3bce0e4ec2d4efd62b996116f2f505e50239b4f)
+makedepends=(gcc-ada gnatstudio-sources)
 
 _gprbuild_src=gprbuild-$pkgver-20230430-16222-src
 _gprconfig_kb_src=gprconfig-kb-$pkgver-20230428-16586-src
@@ -38,6 +24,12 @@ _xmlada_src=xmlada-$pkgver-20230428-16463-src
 
 prepare()
 {
+    cd $srcdir
+    
+    tar --extract --file /opt/gnatstudio-sources/gprbuild-$pkgver-20230324-1649D-src.tar.gz
+    tar --extract --file /opt/gnatstudio-sources/xmlada-$pkgver-20230324-1684A-src.tar.gz
+    tar --extract --file /opt/gnatstudio-sources/gprconfig-kb-$pkgver-20230324-16644-src.tar.gz
+        
     cd $srcdir/$_gprbuild_src
 
     # GPRbuild hard-codes references to /usr/libexec, but ArchLinux packages
