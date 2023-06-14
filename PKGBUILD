@@ -4,21 +4,31 @@
 # https://github.com/phnx47/pkgbuilds
 
 _pkgname=renovate
-pkgname=${_pkgname}-git
-pkgver=35.24.3.r1.g39493b7
+pkgname="${_pkgname}-git"
+pkgver=35.117.4.r1.g47ed308
 pkgrel=1
-pkgdesc="Renovate - Dependency update tool (git-latest)"
-arch=(any)
+pkgdesc="Automated dependency updates (git-latest)"
+arch=('any')
 depends=('nodejs>=18.12.0')
-makedepends=('git' 'yarn' 'npm' 'node-gyp')
+makedepends=('git' 'yarn' 'npm' 'node-gyp' 'fnm')
 provides=("${_pkgname}")
 url="https://github.com/renovatebot/renovate"
 license=('AGPL3')
 source=("${pkgname}::git+${url}")
 sha256sums=('SKIP')
 
+# Cannot build with node v20
+# https://github.com/TypeStrong/ts-node/issues/1997
+_fnm_use() {
+  export FNM_DIR="${srcdir}/.fnm"
+  eval "$(fnm env --shell bash)"
+  fnm use --install-if-missing
+}
+
 build() {
   cd "${pkgname}"
+
+  _fnm_use
 
   yarn version --no-git-tag-version --new-version "$(git describe --abbrev=0 --tags)"
   yarn install --frozen-lockfile
@@ -31,7 +41,7 @@ build() {
 package() {
   cd "${pkgname}"
 
-  install -dm755 "${pkgdir}/usr/lib/node_modules/${_pkgname}"
+  install -dm 755 "${pkgdir}/usr/lib/node_modules/${_pkgname}"
   cp -r "dist" "${pkgdir}/usr/lib/node_modules/${_pkgname}"
   cp -r "node_modules" "${pkgdir}/usr/lib/node_modules/${_pkgname}"
   cp "package.json" "${pkgdir}/usr/lib/node_modules/${_pkgname}"
@@ -40,7 +50,7 @@ package() {
   chmod 775 "${pkgdir}/usr/lib/node_modules/${_pkgname}/dist/renovate.js"
   chmod 775 "${pkgdir}/usr/lib/node_modules/${_pkgname}/dist/config-validator.js"
 
-  install -dm755 "${pkgdir}/usr/bin"
+  install -dm 755 "${pkgdir}/usr/bin"
   ln -s "/usr/lib/node_modules/${_pkgname}/dist/renovate.js" "${pkgdir}/usr/bin/${_pkgname}"
 }
 
