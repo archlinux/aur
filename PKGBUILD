@@ -30,4 +30,7 @@ package() {
 	install -Dm644 bitmaps/*            "$pkgdir/usr/share/vim/vimfiles/bitmaps/"
 	install -Dm644 colors/*             "$pkgdir/usr/share/vim/vimfiles/colors/"
 	install -Dm644 doc/solarized.txt    "$pkgdir/usr/share/vim/vimfiles/doc/"
+
+	sed -nE '/^Copyright \(c\) 2011 Ethan Schoonover$/,$ p' README.mkd > LICENCE
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENCE
 }
