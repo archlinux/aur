@@ -2,7 +2,7 @@
 
 pkgname=gnome-ssh-askpass4-git
 _pkgbase=openssh-portable
-_git_commit=8023317e22368c32a6391ab8febf13067f669704
+_git_commit=8023317e22368c32a6391ab8febf13067f669704 # https://github.com/openssh/openssh-portable/pull/400
 pkgver=9.3p1.pr400.${_git_commit:0:7}
 pkgrel=1
 pkgdesc='A  passphrase requester for ssh-add using gcr.'
