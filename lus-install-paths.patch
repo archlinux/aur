@@ -1,42 +1,67 @@
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index c3367ca..b197010 100644
+index 64e000e..cee7da9 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -14,6 +14,11 @@ set(Source_Files__TopLevel
+@@ -9,7 +9,10 @@ endif()
+ 
+ #=================== Top-Level ===================
+ 
++configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/install_config.h.in ${CMAKE_CURRENT_BINARY_DIR}/install_config.h @ONLY)
++
+ set(Source_Files__TopLevel
++    ${CMAKE_CURRENT_BINARY_DIR}/install_config.h
+     ${CMAKE_CURRENT_SOURCE_DIR}/Context.h
      ${CMAKE_CURRENT_SOURCE_DIR}/Context.cpp
  )
+@@ -351,7 +354,7 @@ endif()
+ #=================== Packages & Includes ===================
  
-+if (DEFINED SHIP_BIN_DIR)
-+    set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/Context.cpp
-+        PROPERTIES COMPILE_DEFINITIONS SHIP_BIN_DIR="${SHIP_BIN_DIR}")
-+endif()
-+
- source_group("" FILES ${Source_Files__TopLevel})
- target_sources(libultraship PRIVATE ${Source_Files__TopLevel})
+ target_include_directories(libultraship
+-    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../extern
++    PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../extern ${CMAKE_CURRENT_BINARY_DIR}
+     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/../extern/spdlog/include ${CMAKE_CURRENT_SOURCE_DIR}/../extern/stb
+ )
  
 diff --git a/src/Context.cpp b/src/Context.cpp
-index 113fd2d..3792058 100644
+index cddeaf3..a239ce6 100644
 --- a/src/Context.cpp
 +++ b/src/Context.cpp
-@@ -281,6 +281,9 @@ std::string Context::GetShortName() {
+@@ -12,6 +12,7 @@
+ #elif defined(__WIIU__)
+ #include "port/wiiu/WiiUImpl.h"
+ #endif
++#include "install_config.h"
+ 
+ namespace LUS {
+ std::weak_ptr<Context> Context::mContext;
+@@ -254,6 +255,18 @@ std::string Context::GetShortName() {
  }
  
  std::string Context::GetAppBundlePath() {
-+#ifdef SHIP_BIN_DIR
-+    return SHIP_BIN_DIR;
++#ifdef CMAKE_INSTALL_PREFIX
++    static const std::string fpath = CMAKE_INSTALL_PREFIX;
++    static int exists = -1;
++
++    if (exists == -1) {
++        exists = fpath.size() > 0 && std::filesystem::is_directory(fpath);
++    }
++
++    if (exists) {
++        return fpath;
++    }
 +#else
  #ifdef __APPLE__
      FolderManager folderManager;
      return folderManager.getMainBundlePath();
-@@ -294,6 +297,7 @@ std::string Context::GetAppBundlePath() {
+@@ -264,6 +277,7 @@ std::string Context::GetAppBundlePath() {
+     if (fpath != NULL) {
+         return std::string(fpath);
+     }
++#endif
  #endif
  
      return ".";
-+#endif
- }
- 
- std::string Context::GetAppDirectoryPath() {
-@@ -304,6 +308,13 @@ std::string Context::GetAppDirectoryPath() {
+@@ -277,6 +291,13 @@ std::string Context::GetAppDirectoryPath() {
      }
  #endif
  
@@ -50,12 +75,12 @@ index 113fd2d..3792058 100644
      return ".";
  }
  
-@@ -314,4 +325,22 @@ std::string Context::GetPathRelativeToAppBundle(const std::string path) {
+@@ -287,4 +308,21 @@ std::string Context::GetPathRelativeToAppBundle(const std::string path) {
  std::string Context::GetPathRelativeToAppDirectory(const std::string path) {
      return GetAppDirectoryPath() + "/" + path;
  }
 +
-+std::string Context::FindFileFromAllAppDirectories(const char* path) {
++std::string Context::FindFileFromAllAppDirectories(const std::string path) {
 +    std::string fpath;
 +
 +    // app configuration dir (eg. ~/.local/share)
@@ -71,22 +96,28 @@ index 113fd2d..3792058 100644
 +    // current dir
 +    return "./" + std::string(path);
 +}
-+
  } // namespace LUS
 diff --git a/src/Context.h b/src/Context.h
-index 3f1b750..c31864e 100644
+index 4ba7468..e1269c2 100644
 --- a/src/Context.h
 +++ b/src/Context.h
 @@ -29,6 +29,7 @@ class Context {
      static std::string GetAppDirectoryPath();
      static std::string GetPathRelativeToAppDirectory(const std::string path);
      static std::string GetPathRelativeToAppBundle(const std::string path);
-+    static std::string FindFileFromAllAppDirectories(const char* path);
++    static std::string FindFileFromAllAppDirectories(const std::string path);
  
      Context(std::string name, std::string shortName, std::string configFilePath);
      ~Context();
+diff --git a/src/install_config.h.in b/src/install_config.h.in
+new file mode 100644
+index 0000000..029753c
+--- /dev/null
++++ b/src/install_config.h.in
+@@ -0,0 +1 @@
++#cmakedefine CMAKE_INSTALL_PREFIX "@CMAKE_INSTALL_PREFIX@"
 diff --git a/src/public/libultra/os.cpp b/src/public/libultra/os.cpp
-index 2025557..a007734 100644
+index 2025557..8bedf13 100644
 --- a/src/public/libultra/os.cpp
 +++ b/src/public/libultra/os.cpp
 @@ -14,8 +14,8 @@ int32_t osContInit(OSMesgQueue* mq, uint8_t* controllerBits, OSContStatus* statu
@@ -95,7 +126,7 @@ index 2025557..a007734 100644
  #ifndef __SWITCH__
 -    const char* controllerDb = "gamecontrollerdb.txt";
 -    int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb);
-+    std::string controllerDb = LUS::Context::FindFileFromAllAppDirectories("gamecontrollerdb.txt");
++    std::string controllerDb = LUS::Context::GetPathRelativeToAppBundle("gamecontrollerdb.txt");
 +    int mappingsAdded = SDL_GameControllerAddMappingsFromFile(controllerDb.c_str());
      if (mappingsAdded >= 0) {
          SPDLOG_INFO("Added SDL game controllers from \"{}\" ({})", controllerDb, mappingsAdded);

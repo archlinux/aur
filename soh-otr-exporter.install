@@ -1,6 +1,0 @@
-post_upgrade() {
-    cat <<'EOF'
-*** OTRGui is deprecated and removed in this package.
-*** Please use the game's builtin OTR generator.
-EOF
-}

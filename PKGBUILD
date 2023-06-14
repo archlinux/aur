@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=7.0.2.r65.g7e1ee6e23
+pkgver=7.0.2.r82.gef6227d8b
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
             'SKIP'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
             '440a1a0d09fc4bec154f089c522adb598f6e99e9d2b39b20cfce9e5e6b8155f5'
-            'fa402b929f92d32c4925a6b08197e8dd668281d5aa7e6423b2fd71894c1d3838')
+            '4893372c68554681ad05c66dc054ebbb74843dac5088de04a7ae631ddc1b2d38')
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
 # Changable options for debugging:
@@ -75,7 +75,7 @@ build() {
 
   CFLAGS="${CFLAGS/-Werror=format-security/}" \
   CXXFLAGS="${CXXFLAGS/-Werror=format-security/}" \
-    cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DSHIP_BIN_DIR=$SHIP_PREFIX .
+    cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_INSTALL_PREFIX=$SHIP_PREFIX .
 
   cmake --build build --target ZAPD --config $BUILD_TYPE
 
@@ -91,7 +91,6 @@ build() {
   fi
 
   cmake --build build --target soh --config $BUILD_TYPE
-  cmake --build build --target Assets
 }
 
 package_soh-git() {
@@ -108,7 +107,7 @@ package_soh-git() {
 
   install -Dm755 -t "${pkgdir}/${SHIP_PREFIX}" soh.otr build/soh/soh.elf build/gamecontrollerdb.txt
   install -dm755 "${pkgdir}/usr/bin/"
-  ln -s /opt/soh/soh.elf "${pkgdir}/usr/bin/soh"
+  ln -s "${SHIP_PREFIX}/soh.elf" "${pkgdir}/usr/bin/soh"
 
   install -Dm644 "${srcdir}/soh.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 soh/macosx/sohIcon.png "${pkgdir}/usr/share/pixmaps/soh.png"
@@ -125,16 +124,12 @@ package_soh-otr-exporter-git() {
   conflicts=("soh-otr-exporter")
   license=("MIT")
   depends=("${_depends_soh_otr_exporter[@]}")
-  install=soh-otr-exporter.install
 
   cd "${srcdir}/${_reponame}"
 
-  install -dm755 "${pkgdir}/${SHIP_PREFIX}/assets"
-  cp -r OTRGui/assets/extractor "${pkgdir}/${SHIP_PREFIX}/assets/extractor"
-  cp -r soh/assets/xml          "${pkgdir}/${SHIP_PREFIX}/assets/extractor/xmls"
-  cp -r OTRExporter/assets      "${pkgdir}/${SHIP_PREFIX}/assets/game"
+  DESTDIR="${pkgdir}" cmake --install build --component appimage
+  rm -f "${pkgdir}/${SHIP_PREFIX}/soh.otr" "${pkgdir}/${SHIP_PREFIX}/soh.sh"
 
-  install -Dm755 build/ZAPD/ZAPD.out  "${pkgdir}/${SHIP_PREFIX}/assets/extractor/ZAPD.out"
   install -dm755 "${pkgdir}/usr/bin"
   ln -s ${SHIP_PREFIX}/assets/extractor/ZAPD.out "${pkgdir}/usr/bin/ZAPD"
 

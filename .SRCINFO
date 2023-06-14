@@ -1,5 +1,5 @@
 pkgbase = soh-git
-	pkgver = 7.0.2.r65.g7e1ee6e23
+	pkgver = 7.0.2.r82.gef6227d8b
 	pkgrel = 1
 	url = https://shipofharkinian.com/
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = soh-git
 	sha256sums = SKIP
 	sha256sums = 25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2
 	sha256sums = 440a1a0d09fc4bec154f089c522adb598f6e99e9d2b39b20cfce9e5e6b8155f5
-	sha256sums = fa402b929f92d32c4925a6b08197e8dd668281d5aa7e6423b2fd71894c1d3838
+	sha256sums = 4893372c68554681ad05c66dc054ebbb74843dac5088de04a7ae631ddc1b2d38
 
 pkgname = soh-git
 	pkgdesc = An unofficial port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch (git)
@@ -47,7 +47,6 @@ pkgname = soh-git
 
 pkgname = soh-otr-exporter-git
 	pkgdesc = OTR generation tools for SoH. Includes asset XML files needed for generation. (git)
-	install = soh-otr-exporter.install
 	license = MIT
 	depends = libpng
 	provides = soh-otr-exporter
