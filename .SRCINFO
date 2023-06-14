@@ -1,0 +1,14 @@
+pkgbase = qubes-u2f
+	pkgdesc = Securely forward U2F challenge-response authentication between Web browser and U2F HID token without exposing the browser and USB stack to one another
+	pkgver = 1.2.10
+	pkgrel = 1
+	url = https://github.com/QubesOS/qubes-app-u2f
+	arch = any
+	makedepends = python-setuptools
+	depends = python
+	depends = python-u2flib-host
+	depends = python-requests
+	source = qubes-u2f-1.2.10.tar.gz::https://github.com/QubesOS/qubes-app-u2f/archive/refs/tags/v1.2.10.tar.gz
+	sha256sums = 07b6a32523851e1894739c6d53aa644a9485c027f93893e3f7ca7039caf041f5
+
+pkgname = qubes-u2f
