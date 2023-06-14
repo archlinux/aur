@@ -1,7 +1,7 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
 pkgname=markdownlint-cli2
-pkgver=0.7.1
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='MarkdownLint Command Line Interface'
 arch=(any)
@@ -12,8 +12,8 @@ makedepends=(
   jq
   npm
 )
-source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha512sums=(379f25c39d16b3458e7c2734ec1f5d3ca3273cc6c88fa642325b3364b55fc41c0a37f33e599a972dd387c912f6056099dc03c1c5037da83130ed57f53d1a8592)
+source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
+sha512sums=(cb44a2c2df910292b14926f4093f69ef3d437003be9dc8eb07d2290bf8df9494487ade276a60859b12d36df04141d3c5e849ed3e4e72c9729eeef7283c69675f)
 
 package() {
   npm install -g --prefix "${pkgdir}"/usr --cache "${srcdir}"/npm-cache ${pkgname}-${pkgver}.tgz
