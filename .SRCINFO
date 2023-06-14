@@ -1,7 +1,7 @@
 pkgbase = vim-colors-solarized-git
 	pkgdesc = Precision colors for machines and people.
 	pkgver = 20110509
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ethanschoonover.com/solarized
 	arch = any
 	license = MIT
@@ -9,8 +9,7 @@ pkgbase = vim-colors-solarized-git
 	depends = vim
 	provides = vim-solarized
 	conflicts = vim-solarized
-	source = vim-colors-solarized-git::git://github.com/altercation/vim-colors-solarized.git
+	source = vim-colors-solarized-git::git+https://github.com/altercation/vim-colors-solarized.git
 	sha256sums = SKIP
 
 pkgname = vim-colors-solarized-git
-

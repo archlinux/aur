@@ -1,8 +1,9 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Repentinus <aur at repentinus dot eu>
+# Contributor: Mario Finelli <mario dot finelli at yahoo dot com>
 
 pkgname=vim-colors-solarized-git
 pkgver=20110509
-pkgrel=3
+pkgrel=4
 pkgdesc="Precision colors for machines and people."
 arch=('any')
 url="http://ethanschoonover.com/solarized"
@@ -11,7 +12,7 @@ makedepends=('git')
 depends=('vim')
 conflicts=('vim-solarized')
 provides=('vim-solarized')
-source=("$pkgname::git://github.com/altercation/vim-colors-solarized.git")
+source=("$pkgname::git+https://github.com/altercation/vim-colors-solarized.git")
 sha256sums=('SKIP')
 
 pkgver() {
