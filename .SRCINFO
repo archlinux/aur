@@ -1,15 +1,15 @@
 pkgbase = graalwasm-jdk17-bin
 	pkgdesc = GraalVM-based, high-performance WebAssembly platform, Java 17 version
-	pkgver = 22.3.1
+	pkgver = 23.0.0
 	pkgrel = 1
 	url = https://github.com/oracle/graal
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	depends = jdk17-graalvm-bin
-	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.3.1/wasm-installable-svm-java17-linux-amd64-22.3.1.jar
-	sha256sums_x86_64 = 45c21f1280b5e1e2abfe4aa8cca46a51a3169a6a67105853b4c7619281d7d669
-	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-22.3.1/wasm-installable-svm-java17-linux-aarch64-22.3.1.jar
-	sha256sums_aarch64 = 0b1dfcd31637f0f204558b52125b6c18c913a078f7b2949d02d4e5287dffe9b1
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/wasm-installable-svm-java17-linux-amd64-23.0.0.jar
+	sha256sums_x86_64 = 52c92534330a0bd1c49700c5e10b4533ea88fd6a002095ecb7692ff38cec1199
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/wasm-installable-svm-java17-linux-aarch64-23.0.0.jar
+	sha256sums_aarch64 = d5342c9e04d5340b992e66f6045a4c16eed06974736e1006a3dd524f723e76cf
 
 pkgname = graalwasm-jdk17-bin

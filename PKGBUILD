@@ -2,7 +2,7 @@
 
 java_=17
 pkgname="graalwasm-jdk${java_}-bin"
-pkgver=22.3.1
+pkgver=23.0.0
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance WebAssembly platform, Java ${java_} version"
 arch=('x86_64'
@@ -10,10 +10,10 @@ arch=('x86_64'
 url='https://github.com/oracle/graal'
 license=('custom')
 depends=("jdk${java_}-graalvm-bin")
-source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/wasm-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
-source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/wasm-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('45c21f1280b5e1e2abfe4aa8cca46a51a3169a6a67105853b4c7619281d7d669')
-sha256sums_aarch64=('0b1dfcd31637f0f204558b52125b6c18c913a078f7b2949d02d4e5287dffe9b1')
+source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/wasm-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
+source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/wasm-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
+sha256sums_x86_64=('52c92534330a0bd1c49700c5e10b4533ea88fd6a002095ecb7692ff38cec1199')
+sha256sums_aarch64=('d5342c9e04d5340b992e66f6045a4c16eed06974736e1006a3dd524f723e76cf')
 
 package() {
     local file eq permissions mode name target
@@ -21,7 +21,7 @@ package() {
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
     cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" languages/ lib/ LICENSE_WASM.txt
 
-    printf '\n' >> META-INF/permissions
+    [[ -s META-INF/permissions ]] && printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
         if [[ $eq != '=' ]]; then
             printf >&2 'second word should be "=": %s %s %s\n' "$file" "$eq" "$permissions"
@@ -42,7 +42,7 @@ package() {
         chmod "$mode" -- "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$file"
     done < META-INF/permissions
 
-    printf '\n' >> META-INF/symlinks
+    [[ -s META-INF/symlinks ]] && printf '\n' >> META-INF/symlinks
     while read -r name eq target; do
         if [[ $eq != '=' ]]; then
             printf >&2 'second word should be "=": %s %s %s\n' "$name" "$eq" "$target"
