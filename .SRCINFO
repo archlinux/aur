@@ -1,6 +1,6 @@
 pkgbase = bumper
 	pkgdesc = Easily bump $pkgver in your AUR packages.
-	pkgver = 0.3.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/bcyran/bumper
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bumper
 	makedepends = go
 	provides = bumper
 	conflicts = bumper-bin
-	source = bumper-0.3.1.tar.gz::https://github.com/bcyran/bumper/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 876506c0a9d42f140ad27b72055c07b7a23b308d369c4d7820ed1a1f2eaa6307
+	source = bumper-1.0.0.tar.gz::https://github.com/bcyran/bumper/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 241d1299eaa9d9bd721fe910ffd7a3ccdc22168a7658f66cc2162261fb3717d6
 
 pkgname = bumper
