@@ -4,7 +4,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 % end
 \
-pkgver=5.15.9
+pkgver=5.15.10
 pkgrel=1
 arch=('any')
 pkgdesc="Classes and functions that enable you to use Windows-specific functions (mingw-w64)"
