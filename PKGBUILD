@@ -10,14 +10,14 @@
 
 _qt_module=qt3d
 pkgname=mingw-w64-qt5-3d-static
-pkgver=5.15.9
+pkgver=5.15.10
 pkgrel=1
 arch=('any')
 pkgdesc="C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)"
 depends=('mingw-w64-qt5-declarative-static' 'mingw-w64-assimp')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers' 'assimp')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=e94b0fa39a2f4bf260969fb18bf075dba39b2df1
+_commit=01aa0a9cb22ce5ed2b7ead03ed9cbeb5f978e897
 _basever=$pkgver
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
