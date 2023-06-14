@@ -1,5 +1,5 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
-# Contributor: Bader <Bad3r@pm.me>
+# Contributor: Bader <Bader@unsigned.sh>
 pkgname=logseq-desktop-git
 pkgver=0.9.9.r1.9a8d5ea6a
 pkgrel=1
