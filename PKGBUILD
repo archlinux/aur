@@ -1,17 +1,23 @@
-#Maintainer: Randy Heydon <randy.heydon at clockworklab dot net>
 pkgname=python-pylibftdi
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Pythonic interface to FTDI devices using libftdi"
 arch=(any)
 url="https://github.com/codedstructure/pylibftdi/"
 license=('MIT')
 depends=('python' 'libftdi')
+makedepends=('python-poetry')
 source=("https://github.com/codedstructure/pylibftdi/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('46a18b8573559fb94e3bc90456fa527b1f5ef6b2d629db9b67c9d35f30ab6bb2')
+sha256sums=('87e6502f8fddd4627f2312e496ea6992956f313dab581d02307822c7cb723d5b')
 
-package () {
+build() {
   cd $srcdir/pylibftdi-$pkgver/
-  python ./setup.py install --root=$pkgdir --optimize=1 || return 1
+  python -m build --wheel --no-isolation
+}
+
+
+package() {
+  cd $srcdir/pylibftdi-$pkgver/
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
