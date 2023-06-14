@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="ferrum-bin"
-pkgver=0.16.11
+pkgver=0.16.12
 pkgrel=1
 pkgdesc="Music library app for Mac, Linux and Windows"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libxrandr' 'pango' 'hicolor-icon-theme' 'cairo' 'glibc' 'libxext' 'als
     'libx11' 'at-spi2-core' 'gcc-libs' 'glib2' 'libxcb' 'expat' 'dbus' 'libxkbcommon' 'libxfixes' 'libdrm' 'nss' 'libxdamage')
 options=()
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Ferrum-v${pkgver}-linux.deb")
-sha256sums=('0a6bce405a762a330d034408ad49acf84a369be008ac30a85b02ab07d3977daf')
+sha256sums=('9698d0088bfdfb702e53fcb5d95aa5ad3668f14b978fb4e247443beee8c2efc9')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
     sed "s|Audio|AudioVideo|g" -i "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
