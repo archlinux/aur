@@ -1,6 +1,7 @@
 # Maintainer: Chi_Tang <me@chitang.dev>
+# Contributor: Nekoray_CI <noreply@chitang.dev>
 pkgname='nekoray-git'
-pkgver=2.15.r2.gfbffd4e
+pkgver=3.8.r0.gb747f2c
 pkgrel=1
 pkgdesc='Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)'
 arch=('x86_64')
@@ -8,8 +9,7 @@ url='https://matsuridayo.github.io'
 license=('GPL')
 makedepends=('cmake' 'git' 'ninja' 'go')
 depends=(
- 'qt5-base' 'qt5-svg' 'qt5-tools' 'qt5-x11extras'
- 'protobuf' 'yaml-cpp'
+    'qt5-base' 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'protobuf' 'yaml-cpp'
 )
 
 optdepends=(
@@ -24,7 +24,7 @@ source=(
     'git+https://github.com/MatsuriDayo/nekoray.git'
     'nekoray.desktop'
 )
-sha512sums=('SKIP' 'c8ad5a0cf5d813e1e35b827f92d526c022d529d34dd4019066b550c8f0dbdb89b0fb62e6bfc650e8c18acac826591e858eff3b2e5e6c6f5014f0f4b50f1fa88b')
+sha512sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/nekoray"
@@ -32,7 +32,6 @@ pkgver() {
 }
 
 build() {
-    cd "${srcdir}"
     cd "${srcdir}/nekoray"
    	git submodule init
    	git submodule update
