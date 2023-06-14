@@ -1,6 +1,6 @@
 pkgbase = msquic-release-git
 	pkgdesc = Microsoft implementation of the IETF QUIC protocol (release, git)
-	pkgver = 2.1.0.r3.g94bd8187d
+	pkgver = 2.2.2.r0.gb7b2d5e6d
 	pkgrel = 1
 	url = https://github.com/microsoft/msquic
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = msquic-release-git
 	provides = libmsquic.so
 	conflicts = msquic
 	conflicts = libmsquic.so
-	source = msquic-release-git::git+https://github.com/microsoft/msquic.git#branch=release/2.1
+	source = msquic-release-git::git+https://github.com/microsoft/msquic.git#branch=release/2.2
 	sha512sums = SKIP
 
 pkgname = msquic-release-git
