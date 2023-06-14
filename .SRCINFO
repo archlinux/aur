@@ -9,6 +9,6 @@ pkgbase = blender-dl
 	depends = fzf
 	depends = axel
 	source = https://github.com/snarkrans/blender-dl/blob/main/blender-dl
-	sha256sums = 8ada3f915e14d22b88b4e734369ce3cfe85bc0f18c8e57193254fbfcce13f285
+	sha256sums = 58516a002a81cab66a2eebb03f9f2e663a599f5350e3270715a32f6716961458
 
 pkgname = blender-dl
