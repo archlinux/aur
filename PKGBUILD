@@ -2,7 +2,7 @@
 
 pkgname='python-evaluate'
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='HuggigFace library for easily evaluating machine learning models and datasets'
 arch=('x86_64')
 url='https://github.com/huggingface/evaluate/'
@@ -10,8 +10,7 @@ license=('Apache')
 depends=('python-datasets>=2.0.0'
          'python-dill'
          'python-fsspec>=2021.05.0'
-         'python-huggingface-hub>=0.7.0'
-         'python-huggingface-hub<1.0.0'
+         'python-huggingface-hub'
          'python-multiprocess'
          'python-numpy>=1.17'
          'python-pandas'
