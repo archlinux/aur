@@ -27,7 +27,7 @@ prepare() {
 }
 
 package() {
-    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/listen1.AppImage"
+    install -Dm755 ../${_pkgname} "${pkgdir}/${_installdir}/listen1.AppImage"
     install -Dm644 "squashfs-root/listen1.desktop" "${pkgdir}/usr/share/applications/listen1-appimage.desktop"
 
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/16x16/apps/listen1.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/listen1-appimage.png"
