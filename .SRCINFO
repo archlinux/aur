@@ -1,0 +1,18 @@
+pkgbase = autocorrect-rs-git
+	pkgdesc = A linter and formatter to help you to improve copywriting, correct spaces, words, and punctuations between CJK (Chinese, Japanese, Korean).
+	pkgver = 2.6.2.r11.gc2c1f69
+	pkgrel = 1
+	url = https://github.com/huacnlee/autocorrect
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = cargo
+	provides = autocorrect-rs
+	provides = autocorrect
+	conflicts = autocorrect
+	options = !strip
+	options = !lto
+	source = autocorrect-git::git+https://github.com/huacnlee/autocorrect.git
+	sha256sums = SKIP
+
+pkgname = autocorrect-git
