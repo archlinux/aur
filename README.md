@@ -57,7 +57,7 @@ SocksPolicy reject *
 ```
 This step limits connection only to the local loopback address, effectively limiting connections originating from the local machine.
 - As always, [RTFM](https://2019.www.torproject.org/docs/documentation.html.en#UpToSpeed)
-## Sample outputs
+## Sample outputs (YMMV)
 ```
 Title: "Portal - 'Still Alive'"
 Video URL: https://www.youtube.com/watch?v=Y6ljFaKRTrI
