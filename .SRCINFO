@@ -1,0 +1,18 @@
+pkgbase = python-repetita-parser
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/leon-richardt/python-repetita-parser
+	arch = any
+	license = MIT
+	makedepends = python-hatch
+	makedepends = python-tomli-w
+	makedepends = python-hatchling
+	makedepends = python-installer
+	depends = python
+	depends = python-numpy
+	optdepends = python-networkx: convert topologies to NetworkX graphs
+	provides = python-repetita-parser
+	source = https://files.pythonhosted.org/packages/source/r/repetita-parser/repetita_parser-1.0.2.tar.gz
+	sha256sums = 2f7c993b4df915e4567da197d8eccdccd663316b8ee425b97680450f2cab1826
+
+pkgname = python-repetita-parser
