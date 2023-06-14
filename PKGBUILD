@@ -1,6 +1,6 @@
 # Maintainer: Abhiyan Dhakal <itsabhiyandhakal@gmail.com>
 pkgname='power-menu-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A power menu for window managers"
 arch=('x86_64')
@@ -8,7 +8,6 @@ url="https://github.com/abhiyandhakal/power-menu.git"
 license=('MIT')
 makedepends=('git')
 depends=('webkit2gtk'
-					'base-devel'
 					'curl'
 					'wget'
 					'openssl'
