@@ -4,7 +4,6 @@
 pkgname=syncthing-desktop-entries
 pkgver=1.0.1
 pkgrel=1
-epoch=1
 pkgdesc='Adds files to integrate Syncthing in your desktop environment.'
 url='https://github.com/syncthing/syncthing'
 arch=('any')

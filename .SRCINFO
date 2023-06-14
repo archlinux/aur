@@ -2,7 +2,6 @@ pkgbase = syncthing-desktop-entries
 	pkgdesc = Adds files to integrate Syncthing in your desktop environment.
 	pkgver = 1.0.1
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/syncthing/syncthing
 	arch = any
 	license = GPL
