@@ -3,4 +3,4 @@
 configpath="$HOME/.config/rocrail"
 mkdir -p $configpath
 cd $configpath
-/opt/rocrail/bin/rocrail -l /opt/rocrail/bin
+/opt/rocrail/bin/rocrail -l /opt/rocrail/bin $@
