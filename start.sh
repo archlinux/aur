@@ -75,6 +75,7 @@ bwrap --new-session --cap-drop ALL --unshare-user-try --unshare-pid --unshare-cg
     --ro-bind /opt/QQ/workarounds/xdg-open.sh /usr/bin/xdg-open \
     --ro-bind /usr/lib/snapd-xdg-open/xdg-open /snapd-xdg-open \
     --ro-bind /usr/lib/flatpak-xdg-utils/xdg-open /flatpak-xdg-open \
+    --ro-bind /etc/machine-id /etc/machine-id \
     --dev-bind /dev /dev \
     --ro-bind /sys /sys \
     --ro-bind /etc/passwd /etc/passwd \
