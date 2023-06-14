@@ -2,9 +2,9 @@
 _pkgname=mazemaze
 pkgname="${_pkgname}-git"
 pkgver=0.2.1.r69.gcff7079
-pkgrel=3
+pkgrel=4
 pkgdesc='Simple 3D OpenGL first-person maze game.'
-url="https://mira-strannaya.ru/articles/${_pkgname}"
+url="https://github.com/rsxrwscjpzdzwpxaujrr/${_pkgname}"
 arch=('x86_64' 'i686')
 license=('GPLv2')
 depends=('jsoncpp' 'sfml' 'sfgui')
@@ -14,7 +14,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replaces=()
 backup=()
-source=("git+https://github.com/mirai65536/${_pkgname}")
+source=("git+https://github.com/rsxrwscjpzdzwpxaujrr/${_pkgname}")
 md5sums=('SKIP')
 
 pkgver() {

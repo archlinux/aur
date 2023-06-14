@@ -1,8 +1,8 @@
 pkgbase = mazemaze-git
 	pkgdesc = Simple 3D OpenGL first-person maze game.
 	pkgver = 0.2.1.r69.gcff7079
-	pkgrel = 3
-	url = https://mira-strannaya.ru/articles/mazemaze
+	pkgrel = 4
+	url = https://github.com/rsxrwscjpzdzwpxaujrr/mazemaze
 	arch = x86_64
 	arch = i686
 	license = GPLv2
@@ -13,8 +13,7 @@ pkgbase = mazemaze-git
 	depends = sfgui
 	provides = mazemaze
 	conflicts = mazemaze
-	source = git+https://github.com/mirai65536/mazemaze
+	source = git+https://github.com/rsxrwscjpzdzwpxaujrr/mazemaze
 	md5sums = SKIP
 
 pkgname = mazemaze-git
-
