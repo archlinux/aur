@@ -1,6 +1,6 @@
 pkgbase = quilt-server
 	pkgdesc = Minecraft Quilt server unit files, script, and jar
-	pkgver = 1.19.4_0.5.0_0.18.6
+	pkgver = 1.20.1_0.5.1_0.19.1
 	pkgrel = 1
 	url = https://quiltmc.org
 	install = quilt-server.install
@@ -14,12 +14,12 @@ pkgbase = quilt-server
 	depends = sed
 	depends = tar
 	optdepends = netcat: required in order to suspend an idle server
-	noextract = quilt-1.19.4-0.5.0-0.18.6.jar
+	noextract = quilt-1.20.1-0.5.1-0.19.1.jar
 	options = emptydirs
 	backup = etc/conf.d/quilt
 	source = minecraft-server-1.0.2.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.2.tar.gz
-	source = quilt-installer-0.5.0.jar::https://maven.quiltmc.org/repository/release/org/quiltmc/quilt-installer/0.5.0/quilt-installer-0.5.0.jar
+	source = quilt-installer-0.5.1.jar::https://maven.quiltmc.org/repository/release/org/quiltmc/quilt-installer/0.5.1/quilt-installer-0.5.1.jar
 	sha256sums = 739d526568d440f5bca0706d6d03d64e44e4e942766d27a4f273a812341978df
-	sha256sums = dbf8cf54e546259c7d1bdbc5a4445b0a4ba9c3fafcef9efb943897b6097a77b9
+	sha256sums = 8bcb4381196fb7a881c60efac7631ae6b8bf40dbd814563fb716a8ac92364cbe
 
 pkgname = quilt-server
