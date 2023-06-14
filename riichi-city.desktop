@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Riichi City
-Comment=A Riichi Mahjong client<F9>
+Comment=Competitive urban-style Japanese mahjong platform
 Exec=/usr/bin/riichi-city
 Terminal=false
 Type=Application

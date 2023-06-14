@@ -2,7 +2,7 @@
 
 pkgname=riichi-city-bin
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Competitive urban-style Japanese mahjong platform"
 arch=('x86_64')
 url="https://www.mahjong-jp.com"
@@ -14,18 +14,18 @@ install="${pkgname}.install"
 source=("riichi-city.desktop"
         "icon.png::https://www.mahjong-jp.com/static/img/tool/download/role11/awaken_5.png"
         "riichi-city-bin-${pkgver}.zip::https://d3qgi0t347dz44.cloudfront.net/release/linuxpack/default_prod_Linux_${pkgver}.zip"
-        "LICENSE"
+        "riichi-city-terms.pdf"
         "riichi-city-bin.install")
-sha256sums=('6f667f25d34798d00d6cb733f3e01f16fa09eba3553a8aa0788bafa24d128da9'
+sha256sums=('4f8204227f3f7548a277df299b634dc5e7e5dba4de5742c04abb5abaf49dc720'
             '796cbe29af70f4b5067cbd224b66f717d910c6102addae526afc880baebf9a61'
             'a693324d95b47f82696a8d9dc66f7368617ccac2e1837c4100bd428cf8cb7436'
-            'f3a26e8e0af9d8fa9c8337109db17277c240fe6f2d895ed64ee298c5d271d71a'
+            'd1efb5dec4c56b1fd2d89b966e0096a2817767c3884a499ae33f116ab5f78fd5'
             '5bde9d74e3d6137475f8acf3d55fe938dca78aecf45797af67b84ab0283c4f29')
 
 package() {
     install -Dm644 "${srcdir}/riichi-city.desktop" "${pkgdir}/usr/share/applications/riichi-city.desktop"
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/riichi-city.png"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 riichi-city-terms.pdf "$pkgdir/usr/share/licenses/$pkgname/LICENSE.pdf"
 
     basedir="${pkgdir}/opt/riichi-city/"
     install -d "${basedir}" "${pkgdir}/usr/bin"
