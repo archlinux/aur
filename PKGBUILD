@@ -9,7 +9,7 @@ url="https://github.com/danehobrecht/shadowtube"
 license=('GPL')
 depends=("python>=3.7.3" "python-pip" "torbrowser-launcher")
 source=("https://github.com/danehobrecht/shadowtube/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1f9c80b884e1efb2706afaa3618c228ce80604b4de34c845f681931db70272d7')
+sha256sums=('b2481b588f4d78426f0276d53ec27aedd8c77b8ebee8535b835428c003177135')
 
 build() {
 	python -m venv "$srcdir"/venv    
