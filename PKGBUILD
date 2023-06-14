@@ -4,7 +4,7 @@
 
 pkgname=rocrail
 pkgver=14062023
-pkgrel=2
+pkgrel=3
 pkgdesc="Innovative Model Railroad Control System"
 arch=('x86_64')
 url="http://wiki.rocrail.net/"
@@ -38,7 +38,7 @@ package() {
   echo "Name=Rocrail" >> $TEMPFILE
   echo "Comment=$pkgdesc" >> $TEMPFILE
   echo "Path=/opt/rocrail/" >> $TEMPFILE
-  echo "Exec=/opt/rocrail/rocrail.sh" >> $TEMPFILE
+  echo "Exec=/opt/rocrail/bin/rocview" >> $TEMPFILE
   echo "Icon=/opt/rocrail/rocrail.png" >> $TEMPFILE
   echo "Terminal=false" >> $TEMPFILE
   echo "Categories=Application;" >> $TEMPFILE
