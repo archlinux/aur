@@ -14,16 +14,16 @@
 
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.15.9
+pkgver=5.15.10
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Classes for QML and JavaScript languages (mingw-w64)'
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc' 'mingw-w64-vulkan-headers' 'mingw-w64-pkg-config' 'python')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
-_commit=89bf481b9b14f038c5e16421a7fce6dc6523785f
+_commit=5352f113b3c7a5af2ad2741d593c6e6a758eb93e
 _basever=$pkgver
-pkgver+=+kde+r19
+pkgver+=+kde+r26
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
@@ -34,9 +34,9 @@ source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0002-Prevent-exporting-QML-parser-symbols-on-static-build.patch'
         '0003-Disable-d3d12-requiring-fxc.exe.patch')
 sha256sums=('SKIP'
-            '4437fc02e15a6f814af1111d34209a7424a1032aff54b22af47868fd505fad08'
-            '17792373be52f230e255125ebb9442215b77cc2ce3988071481741832dbae4c9'
-            '97a97599c90e42331554cfcef5f5e5da21642858a93c9d173eff1f1896bcde75')
+            '3070fe24d2e8a236749e22fad1acb3b0a6309bac8ab1096030d2a9865f4ef76f'
+            '2229bf17dceb44f391705167e48289e5ca7d56d4fa38841a74221ece140f663e'
+            'f3ac1da6686021fc0d7569b27ec581c0ca5b3f0e9ec12c34ab74c704239f8367')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
