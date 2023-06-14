@@ -118,7 +118,6 @@ pkgname = wxwidgets-gtk3-light
 	optdepends = webkit2gtk: for webview support
 	provides = wxwidgets
 	provides = wxwidgets-gtk3
-	provides = wxgtk3
 	provides = libwx_gtk3u_adv-3.2.so
 	provides = libwx_gtk3u_aui-3.2.so
 	provides = libwx_gtk3u_core-3.2.so

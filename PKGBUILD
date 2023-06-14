@@ -3,7 +3,7 @@
 pkgbase=wxwidgets-light
 pkgname=(
   'wxwidgets-common-light'
-   'wxwidgets-gtk3-light'
+  'wxwidgets-gtk3-light'
 #   'wxwidgets-gtk4-light'
   'wxwidgets-qt5-light'
 )
@@ -242,7 +242,6 @@ package_wxwidgets-gtk3-light() {
   provides=(
     'wxwidgets'
     'wxwidgets-gtk3'
-    'wxgtk3'
     'libwx_gtk3u_adv-3.2.so'
     'libwx_gtk3u_aui-3.2.so'
     'libwx_gtk3u_core-3.2.so'
