@@ -4,7 +4,7 @@
 pkgname=openvpn-dco-dkms
 pkgver=0.2.20230426
 _dco_commit=961c60d0d8b8d45a21028e0479397c9c5604b81e
-pkgrel=1
+pkgrel=2
 pkgdesc='Optional Data Channel Offload kernel module for OpenVPN 2.5'
 arch=('any')
 url='https://github.com/OpenVPN/ovpn-dco'
