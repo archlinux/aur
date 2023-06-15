@@ -5,13 +5,13 @@
 # Contributor: "donaldtrump" [AUR]
 pkgname=osu-lazer
 _pkgname=osu
-pkgver=2023.610.0
+pkgver=2023.614.1
 pkgrel=2
 pkgdesc="rhythm is just a *click* away!"
 arch=('x86_64')
 url="https://osu.ppy.sh/"
 license=('MIT' 'custom:CC-BY-NC-4.0')
-depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime-6.0')
+depends=('ffmpeg' 'libgl' 'sdl2' 'dotnet-runtime-6.0-bin')
 makedepends=('dotnet-sdk-6.0-bin')
 source=("https://github.com/ppy/osu/archive/$pkgver.tar.gz"
         "https://github.com/ppy/osu-resources/raw/master/LICENCE.md"
@@ -19,12 +19,12 @@ source=("https://github.com/ppy/osu/archive/$pkgver.tar.gz"
         "osu-lazer.desktop"
         "osu-lazer.xml"
         "osu-lazer-online.patch")
-sha256sums=('99c98c313f24e13cdf6837b16662ee2ba366206454565bbc4cfe31e92b4900ce'
+sha256sums=('8e9281c0167d85d011ace481055f0b183b4b68169fb4c745100ee906351af8d9'
             '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
             'b645a8653c78b136c4934194b3dce390e854b3c90c43c889631b9ab3b77022af'
             '9935414fdd95c02c7fd2d0d200ce1037dfce95cd7f1d04b25a275ce0902401c6'
             'dc79a5aa4084b77a19642336d4eacdc990b18204cb4327571c50b2b0f19eb1cf'
-            'cb20a19289f254bb2825e93b61d626008e18104a884e9e613b55b80514bb4e4f')
+            'd529e11ef84380042529c6e431640a37a3192ebc636f0028e8a6bdf6e0776197')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
