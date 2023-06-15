@@ -1,0 +1,16 @@
+pkgbase = c-munipack
+	pkgdesc = An astrophotometry software package
+	pkgver = 2.1.35
+	pkgrel = 1
+	url = https://sourceforge.net/projects/c-munipack
+	arch = x86_64
+	license = GPL2
+	makedepends = cfitsio
+	makedepends = gtk2
+	makedepends = doxygen
+	makedepends = gtest
+	makedepends = python-sphinx
+	source = https://altushost-swe.dl.sourceforge.net/project/c-munipack/C-Munipack%202.1%20Stable/2.1.35/C-Munipack-2.1.35-source.zip
+	sha512sums = 9012dfd5906694679e1e9d99d04aef6dd97086813f8d7519b7af0e7ef862be32f000e6e79ae65a515228a4224602c8e92216388e754bc1fa05514be15dd30184
+
+pkgname = c-munipack
