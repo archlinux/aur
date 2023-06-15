@@ -1,12 +1,12 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=gprbuild-toolbox
-pkgdesc='Builder toolbox for multi-language systems.'
+pkgdesc='Meta builder toolbox for multi-language systems.'
 pkgver=24.0w
 pkgrel=1
 
-arch=(i686 x86_64)
+arch=(any)
 url=https://github.com/AdaCore/gprbuild/
-license=(GPL3 custom)
+license=(none)
 
-depends=(libgpr gprtools)
+depends=(gprbuild libgpr gprtools gprname gprslave)
