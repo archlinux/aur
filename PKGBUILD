@@ -5,7 +5,7 @@
 pkgname=mipsel-elf-binutils
 _pkgname=binutils
 _target="mipsel-elf"
-pkgver=2.39
+pkgver=2.40
 pkgrel=1
 pkgdesc="A collection of binary tools for baremetal MIPS."
 url="http://www.gnu.org/software/binutils/"
@@ -14,7 +14,7 @@ license=('GPL')
 #checkdepends=(debuginfod bc)
 depends=()
 source=("https://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00')
+sha256sums=('0f8a4c272d7f17f369ded10a4aca28b8e304828e95526da482b0ccc4dfc9d8e1')
 _sysroot="/usr/lib/${_target}"
 
 prepare() {
