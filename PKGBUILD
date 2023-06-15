@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="一个基于electron的音乐软件"
 arch=("x86_64")
 url="https://github.com/lyswhut/lx-music-desktop"
-license=("APACHE")
+license=("Apache")
 _pkgname="lx-music-desktop-v${pkgver}-x64.AppImage"
 noextract=(${_pkgname})
 options=("!strip")
@@ -41,7 +41,4 @@ package() {
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/128x128/apps/lx-music-desktop.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/lx-music-desktop-appimage.png"
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/256x256/apps/lx-music-desktop.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/lx-music-desktop-appimage.png"
     install -Dm644 "squashfs-root/usr/share/icons/hicolor/512x512/apps/lx-music-desktop.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/lx-music-desktop-appimage.png"
-
-    install -Dm644 "squashfs-root/license_zh.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
 }
