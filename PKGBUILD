@@ -84,7 +84,7 @@ check() {
 }
 
 package_julia-git() {
-  optdepends=('openblas-lapack: multithreaded replacement for lapack'
+  optdepends=('blas-openblas: multithreaded replacement for lapack'
               'fftw: If using the FFTW package from julia'
               'gnuplot: If using the Gaston Package from julia')
   provides=('julia')
