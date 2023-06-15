@@ -1,4 +1,5 @@
-# Maintainer: éclairevoyant
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: éclairevoyant
 # Contributor: Manuel Palenzuela <sadshinobi at protonmail dot com>
 
 _pkgname=dwmbar
@@ -26,5 +27,5 @@ package() {
 	install -vDm755 $_pkgname -t "$pkgdir/usr/bin/"
 
 	install -vdm755 "$pkgdir/usr/share/$_pkgname/"
-	cp -a --no-preserve=ownership {config,bar.sh,modules} "$pkgdir/usr/share/$_gitname"
+	cp -a --no-preserve=ownership {config,bar.sh,modules} "$pkgdir/usr/share/$_pkgname"
 }
