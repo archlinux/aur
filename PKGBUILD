@@ -12,6 +12,7 @@ license=('GPL3')
 sha1sums=('SKIP')
 makedepends=('git')
 depends=('glibc')
+url='https://github.com/nicholascw/libjsonbuilder'
 
 pkgver() {
   cd ${srcdir}/libjsonbuilder

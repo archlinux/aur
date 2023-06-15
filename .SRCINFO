@@ -2,6 +2,7 @@ pkgbase = libjsonbuilder-git
 	pkgdesc = Simple JSON construction library in C.
 	pkgver = 20230615
 	pkgrel = 1
+	url = https://github.com/nicholascw/libjsonbuilder
 	arch = x86_64
 	license = GPL3
 	makedepends = git
