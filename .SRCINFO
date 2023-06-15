@@ -1,6 +1,6 @@
 pkgbase = vscodium-electron
 	pkgdesc = VS Code without MS branding/telemetry/licensing. - System-wide Electron edition
-	pkgver = 1.78.2.23132
+	pkgver = 1.79.2.23166
 	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium
 	arch = x86_64
@@ -23,15 +23,15 @@ pkgbase = vscodium-electron
 	optdepends = gvfs: For move to trash functionality
 	optdepends = libdbusmenu-glib: For KDE global menu
 	conflicts = vscodium
-	source = git+https://github.com/VSCodium/vscodium.git#tag=1.78.2.23132
-	source = git+https://github.com/microsoft/vscode.git#tag=1.78.2
+	source = git+https://github.com/VSCodium/vscodium.git#tag=1.79.2.23166
+	source = git+https://github.com/microsoft/vscode.git#tag=1.79.2
 	source = vscodium.sh
 	source = vscodium.js
 	source = vscodium.desktop
 	source = vscodium-uri-handler.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ea8ea35d3926dc21da3d00da3430de4a4c3efd1042478c3b9c39bcddaf9f1832
+	sha256sums = 75e5411d6f68f015ef0d1970a47b60e2d5ce765446c00ebead5f988550f823eb
 	sha256sums = 7a3dceb7a470f1dd6bc2991c28a4bfc68be6b81252ec7ff8f61f280e2e5b01f8
 	sha256sums = 204ed8761e4f57e095833aee800f5fe662667aa06c2a213ef8b733929c639237
 	sha256sums = 765db91bf3eb97936d85c53f108d739a5c95d806ff5d4808a05d2c2d9e5f8453
