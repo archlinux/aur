@@ -1,13 +1,13 @@
 pkgbase = edgar-ssh
 	pkgdesc = A small utility to maintain SSH config files
-	pkgver = 3.0
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://git.umaneti.net/edgar/about/
 	arch = any
 	license = WTFPL
 	makedepends = python-setuptools
 	depends = python-yaml
-	source = https://git.umaneti.net/edgar/snapshot/edgar-3.0.tar.gz
-	sha256sums = 5e31ecec414d6f2ff35897ad4ffdf3663b7c71f03e654ebce4b0e77dbef3c558
+	source = https://git.umaneti.net/edgar/snapshot/edgar-4.0.tar.gz
+	sha256sums = 5bf347996ee0be228c29267b8c91e58957378dea9e86cc21696daa5b0c8242a5
 
 pkgname = edgar-ssh
