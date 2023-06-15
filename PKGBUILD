@@ -1,9 +1,8 @@
 # Maintainer: WhiredPlanck
-
 pkgname=astap-bin
 _pkgname=astap
 pkgver=2023.05.31
-pkgrel=2
+pkgrel=3
 pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer. Gtk2 version."
 arch=('i686' 'x86_64')
 url="http://www.hnsky.org/astap.htm"
@@ -17,42 +16,23 @@ optdepends=('hyperleda-galaxy-db-astap: 25MB database of 1.3m galaxies and 171k 
 	    'd05-star-db-astap: 100MB database of 500 stars per square degree, reliable with 0.6-10° FOV'
 	    'd20-star-db-astap: 400MB database of 2000 stars per square degree, reliable with 0.3-10° FOV'
             'd50-star-db-astap: 900MB database of 5000 stars per square degree, reliable with 0.2-10° FOV')
+conflicts=('astap' 'astap-bin-qt5' 'astap-cli')
 
 mkinfo() { echo -e "[\e[96mMKINFO\e[0m]:  \e[1m$*\e[0m"; }
 
 
-build() {
+prepare() {
     if [[ "$CARCH" == "i686" ]]; then
       ar x "${srcdir}/${_pkgname}_i386.deb"
     else
       ar x "${srcdir}/${_pkgname}_amd64.deb"
     fi
+
+    mkinfo "Extracting data.tar.xz ..."
+    tar -xpvf "${srcdir}"/data.tar.xz
 }
 
 package() {
-    mkinfo "Extracting data.tat.xz ..."
-    tar -xpvf "${srcdir}"/data.tar.xz
-
-    mkinfo "Preparing needed directories ..."
-    mkdir -pv "${pkgdir}"/usr/{bin,lib,licenses/"${_pkgname}"}
-
-    mkinfo "Install binaries ..."
-    cp -rv "${srcdir}"/opt/"${_pkgname}" "${pkgdir}"/usr/lib/
-
-    mkinfo "Installing shared files ..."
-    cp -rv "${srcdir}"/usr/share "${pkgdir}"/usr
-
-    mkinfo "Installing licenses ..."
-    install -Dvm644 "${pkgdir}"/usr/lib/"${_pkgname}"/*.txt \
-        -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-
-    mkinfo "Modifying path to executable in desktop file ..."
-    sed -e "s|Exec=/opt/astap/astap|Exec=astap|g" \
-        -i "${pkgdir}"/usr/share/applications/*.desktop
-
-    mkinfo "Removeing unneeded resources ..."
-    rm -rv "${pkgdir}"/usr/lib/"${_pkgname}"/*.txt
-
-    mkinfo "Creating application symlinks to /usr/bin ..."
-    ln -sv ../lib/"${_pkgname}"/"${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}"
+    cp -r "${srcdir}"/opt "${pkgdir}"/opt
+    cp -r "${srcdir}"/usr "${pkgdir}"/usr
 }
