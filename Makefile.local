@@ -1,0 +1,5 @@
+CPPFLAGS+=-I/usr/include/openblas
+CUDA=1
+CUDNN=1
+CUDA_BASE=/opt/cuda
+CUDA_LIB=lib64

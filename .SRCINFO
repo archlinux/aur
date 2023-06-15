@@ -1,0 +1,25 @@
+pkgbase = bart-cuda-git
+	pkgdesc = Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magnetic Resonance Imaging. Package with GPU support, using CUDA and CUDNN
+	pkgver = 0.8.00.r345.ge7203f43
+	pkgrel = 1
+	url = https://mrirecon.github.io/bart/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = gcc>=11.2.0
+	depends = openblas
+	depends = blas-openblas
+	depends = fftw
+	depends = libpng
+	depends = cuda
+	depends = cudnn
+	optdepends = octave
+	optdepends = python3
+	provides = bart
+	conflicts = bart
+	source = bart::git+https://github.com/mrirecon/bart.git
+	source = Makefile.local
+	sha512sums = SKIP
+	sha512sums = a129d7a957daa5fdef1e920274d96cf23a1de1bbea0d802f6bd2d3ec513dc03eedaeb908c7db7d32b4e59e8b16417e113e3be0c35b06c25e5c79eb1ac985f116
+
+pkgname = bart-cuda-git
