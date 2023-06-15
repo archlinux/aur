@@ -2,7 +2,7 @@
 
 _gemname=rbvmomi2
 pkgname=ruby-$_gemname
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='Ruby interface to the VMware vSphere API'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby-builder ruby-json ruby-nokogiri ruby-optimist)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('681255fee50fa1766693d30663837ca1a8763c547fb399207d73a639025ab2b0')
+sha256sums=('64959a16cba7414feddbe8ae3e7122ac5e6ce5c895b2a2bf5d399736018cb09b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
