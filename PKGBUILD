@@ -8,10 +8,9 @@ arch=('x86_64')
 url="https://github.com/AdaCore/ada_language_server"
 license=('GPL3')
 conflicts=('ada_language_server' 'ada_language_server-git')
+provides=('ada_language_server')
 depends=('gmp' 'glibc')
 makedepends=('patchelf')
-conflicts=('ada_language_server')
-provides=('ada_language_server')
 
 source=("https://github.com/AdaCore/ada_language_server/releases/download/$pkgver/als-$pkgver-Linux_amd64.zip")
 b2sums=('b59238328b40a5f02cfe73bcf79fc62813bf94041626530949b4e66a6a15612bb6d04ee48fbfcbc59f9e2f3dd08ff4e3a5cf2a0c378ff739ec6f55f2da493350')
