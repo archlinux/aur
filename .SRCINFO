@@ -1,0 +1,13 @@
+pkgbase = gprbuild-toolbox
+	pkgdesc = Builder toolbox for multi-language systems.
+	pkgver = 24.0w
+	pkgrel = 1
+	url = https://github.com/AdaCore/gprbuild/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = custom
+	depends = libgpr
+	depends = gprtools
+
+pkgname = gprbuild-toolbox
