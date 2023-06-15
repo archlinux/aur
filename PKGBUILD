@@ -3,7 +3,7 @@
 
 pkgname=dms
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="UPnP DLNA Digital Media Server"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/anacrolix/dms/"
@@ -21,7 +21,7 @@ build() {
   go build \
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-extldflags ${LDFLAGS}" \
+    -ldflags "-extldflags \"${LDFLAGS}\"" \
     -buildmode=pie \
     .
 }
