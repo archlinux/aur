@@ -60,10 +60,10 @@ if [[ -n "$USE_VENV" ]]; then
 fi
 
 echo "Installing build toolchain..."
-pip3 install --upgrade certifi --quiet
-pip3 install --upgrade llbase --quiet
-pip3 install --no-cache --upgrade autobuild --quiet
-pip3 install --upgrade cmake ninja
+pip3 install --break-system-packages certifi
+pip3 install --break-system-packages llbase
+pip3 install --break-system-packages autobuild
+pip3 install --break-system-packages cmake ninja
 
 # vi: set ai softtabstop=2 shiftwidth=2 tabstop=2 expandtab ft=sh :
 # template end;
