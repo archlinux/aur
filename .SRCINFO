@@ -1,11 +1,16 @@
 pkgbase = w08-star-db-astap
-	pkgdesc = Wide-field database of 14000 stars up to BP-magnitude 8, for use with ASTAP
+	pkgdesc = Wide-field database (FOV>20 degrees) of stars up to magnitude 8
 	pkgver = 2021.10.24
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.hnsky.org/astap.htm
 	arch = any
 	license = LGPL3
-	depends = astap
+	optdepends = astap-bin: binary GTk version
+	optdepends = astap-bin-qt5: binary Qt version
+	optdepends = astap: sourced Qt version
+	optdepends = astap-cli: CLI version
+	optdepends = hnsky-hg: planetarium program, hg-version
+	optdepends = hnsky-bin: planetarium program, bin-version
 	source = w08.deb::https://downloads.sourceforge.net/project/astap-program/star_databases/w08_star_database_mag08_astap.deb
 	sha256sums = 523131fbf448c547d42051df5d23aea7e92b0ca75484043abb35cd128da7beed
 
