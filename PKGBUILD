@@ -2,7 +2,7 @@
 # Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 
 pkgname=roundcubemail-plugin-twofactor-git
-pkgver=r193.fbeca4c
+pkgver=r206.3c76f45
 pkgrel=1
 pkgdesc="Adds two-step verification (TOTP) to the Roundcube login process"
 url="https://github.com/alexandregz/twofactor_gauthenticator"
@@ -12,7 +12,7 @@ depends=('roundcubemail>=0.9.5')
 makedepends=('git')
 replaces=('roundcube-twofactor-git')
 install=${pkgname}.install
-source=("${pkgname}::git+https://github.com/alexandregz/twofactor_gauthenticator.git")
+source=("${pkgname}::git+https://github.com/alexandregz/twofactor_gauthenticator.git#commit=3c76f459e83f06c965e140a1f344fdcb0f4030e2")
 sha512sums=('SKIP')
 
 pkgver() {
