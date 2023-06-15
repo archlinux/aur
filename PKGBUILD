@@ -8,12 +8,12 @@
 pkgname=gnome-commander
 pkgver=1.16.0
 _pkgver=1.16
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphical two-pane filemanager for Gnome'
 arch=('i686' 'x86_64')
 url='http://gcmd.github.io/'
 license=('GPL')
-depends=('libgsf' 'exiv2' 'taglib' 'poppler-glib' 'libunique3' 'gtk2')
+depends=('libgsf' 'taglib' 'poppler-glib' 'libunique3' 'gtk2')
 makedepends=('perl-xml-parser' 'itstool' 'yelp-tools' 'meson' 'ninja')
 validpgpkeys=('7627E6FCECF4FC066A03B673F50A89A3ADE4C6E8') # Uwe Scholz
 _validpgpkeys=$(echo $validpgpkeys|tr -d \'|tr -d \( |tr -d \))
@@ -24,7 +24,7 @@ sha256sums=('d80ac70b99a7059c8f28ca0bf37305f09daeaecfceb1528d68a435ace9e8ec5d'
 
 build() {
   cd "$pkgname-$pkgver"
-   meson --prefix=/usr --buildtype=plain build 
+   meson --prefix=/usr --buildtype=plain build -Dexiv2=disabled
    ninja -C build
 }
 
