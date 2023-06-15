@@ -19,5 +19,6 @@ package() {
   cd ${_pkgname}-${pkgver}
   python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
   cd pointnet2_ops_lib
+  sed -i "s/3.7+PTX;//" setup.py
   python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
 }
