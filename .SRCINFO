@@ -1,17 +1,19 @@
 pkgbase = pcoip-client
 	pkgdesc = Teradici PCOIP client
 	pkgver = 23.01.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://teradici.com/
-	install = pcoip-client.install
 	arch = x86_64
 	license = custom:Teradici
 	makedepends = fakeroot
 	makedepends = patchelf
 	depends = openssl-1.1
 	depends = pcsclite
-	depends = qt5-networkauth
 	depends = qt5-declarative
+	depends = qt5-graphicaleffects
+	depends = qt5-networkauth
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
 	depends = protobuf3.12
 	depends = hiredis0.14
 	depends = ffmpeg4.4
@@ -21,6 +23,7 @@ pkgbase = pcoip-client
 	sha256sums = c1ce23848fb8d3b08cfcb87ab9fc0572e14e274740e8142ebd07a18c050dd16e
 
 pkgname = pcoip-client
+	install = pcoip-client.install
 
 pkgname = pcoip-client-clipboard
 	pkgdesc = Teradici PCOIP client clipboard synchronization plugin
