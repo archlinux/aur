@@ -10,13 +10,17 @@ url='https://github.com/CMU-Perceptual-Computing-Lab/openpose'
 license=("ACADEMIC OR NON-PROFIT ORGANIZATION NONCOMMERCIAL RESEARCH USE ONLY")
 depends=('caffe-cuda' 'libgl' 'glu' 'glut' 'qt6-base')
 makedepends=('cmake' 'doxygen' 'graphviz' 'wget' 'boost')
-source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('178876507c11dab3da2fcd68c748d90b')
+source=("${url}/archive/v${pkgver}.tar.gz"
+        "0001-Update-GLUT_LIBRARY-to-GLUT_LIBRARIES.patch")
+md5sums=('178876507c11dab3da2fcd68c748d90b'
+         '9c0247d59a9c281499f07dbec6201130')
 
 prepare() {
   mkdir -p openpose-$pkgver
   cd openpose-$pkgver
   find ./ -name "*.hpp" | xargs -n1 sed -i "s|models/|/usr/lib/OpenPose/models/|g"
+
+  patch -d "." -Np1 -i "${srcdir}/0001-Update-GLUT_LIBRARY-to-GLUT_LIBRARIES.patch"
 }
 
 build() {
