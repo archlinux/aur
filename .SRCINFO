@@ -1,0 +1,17 @@
+pkgbase = v50-star-db-astap
+	pkgdesc = It contains the calculated Johnson-V magnitude and colour information (GBp-GRp) for star annotations used in photometry. Size 1.0 GB
+	pkgver = 2023.03.26
+	pkgrel = 1
+	url = https://www.hnsky.org/astap.htm
+	arch = any
+	license = LGPL3
+	optdepends = astap-bin: binary GTk version
+	optdepends = astap-bin-qt5: binary Qt version
+	optdepends = astap: sourced Qt version
+	optdepends = astap-cli: CLI version
+	optdepends = hnsky-hg: planetarium program, hg-version
+	optdepends = hnsky-bin: planetarium program, bin-version
+	source = v50_star_database.deb::https://downloads.sourceforge.net/project/astap-program/star_databases/v50_star_database.deb
+	md5sums = 015a3941fa8a777d4f08832bc626778c
+
+pkgname = v50-star-db-astap
