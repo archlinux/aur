@@ -1,6 +1,6 @@
-requests
-pysocks
-cssselect
 lxml
 stem
+pysocks
 argparse
+requests
+cssselect

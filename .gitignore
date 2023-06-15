@@ -1,6 +1,7 @@
 src
-*.tar.gz
+logo
 aur.txt
+*.tar.gz
 temp.json
 Google - My Activity.html
 Google - My Activity_files

@@ -309,11 +309,6 @@ def search_dict(partial, search_key):
 ### Init
 
 def main():
-	parser = argparse.ArgumentParser(prog="shadowtube", description="A YouTube shadowban detection program.")
-	group = parser.add_mutually_exclusive_group()
-	group.add_argument("-v", "--video", metavar="VIDEO_URL", help="analyze an individual video URL ('https://youtu.be/VIDEO_ID' or 'https://www.youtube.com/watch?v=VIDEO_ID')")
-	group.add_argument("-c", "--comments", help="analyze locally available comment history", action="store_true")
-	args = parser.parse_args()
 	logo = """
  ▄█████████████▄   ▄▄▄▄ .▄▄             ╔▄,             ╓▄▄▄▄▄,    .▄▄
 ████████▀ ███████ ║█▌╜▀▀▐█▌▄▄,  ▄▄▄  .▄▄██╕ ╓▄▄, ▄Q ▄, ▄▄▀▓█▌▀▄,.▄,(██▄▄,  ▄▄▄
@@ -324,6 +319,11 @@ def main():
 
                              Created by Dane Hobrecht
 	"""
+	parser = argparse.ArgumentParser(prog="shadowtube", description="A YouTube shadowban detection program.")
+	group = parser.add_mutually_exclusive_group()
+	group.add_argument("-v", "--video", metavar="VIDEO_URL", help="analyze an individual video URL ('https://youtu.be/VIDEO_ID' or 'https://www.youtube.com/watch?v=VIDEO_ID')")
+	group.add_argument("-c", "--comments", help="analyze locally available comment history", action="store_true")
+	args = parser.parse_args()
 	print(logo)
 	if args.video:
 		tor_validate()

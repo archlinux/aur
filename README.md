@@ -71,7 +71,7 @@ X [4 / 8] Germany — 84.252.122.55
 ✓ [5 / 8] Luxembourg — 104.244.74.159
 ✓ [6 / 8] Iceland — 89.147.109.233
 X [7 / 8] United States — 199.249.230.145
-╰─> ⚠ Throttling detected
+╰─> ⚠ Throttling Detected
 ✓ [8 / 8] Austria — 109.70.100.6
 
 STATUS: QUESTIONABLE
