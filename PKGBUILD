@@ -34,7 +34,8 @@ pkgver() {
 package() {
     cd "${srcdir}/${pkgname}/"
 
-    install -Dm755 -t "${pkgdir}/usr/bin/" ${pkgname}.sh
+    install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/$pkgname/" COPYING
     install -Dm644 -t "${pkgdir}/usr/share/doc/$pkgname/" README.md
+    ln -sf "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/tico"
 }
