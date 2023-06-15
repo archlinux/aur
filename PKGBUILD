@@ -1,28 +1,29 @@
 # Maintainer: Ali Riza Keskin <aliriza.keskin@pardus.org.tr>
 pkgname="pardus-lightdm-greeter"
-pkgver="0.0.3"
+pkgver="master"
 pkgrel=1
 pkgdesc="A customizable lightdm greeter for Pardus GNU/Linux."
 arch=("any")
 url="https://github.com/pardus/pardus-lightdm-greeter"
 license=(GPL3)
 makedepends=("make")
-source=("https://github.com/pardus/$pkgname/archive/refs/tags/debian/$pkgver.zip")
-md5sums=("7021671ddb57ed9cffbcdce905d7f0d0")
+source=("https://github.com/pardus/pardus-lightdm-greeter/archive/refs/heads/master.zip")
+md5sums=("SKIP")
 
 depends=(
     python-gobject
+    python-cairo
     python-xlib
     gtk3
     lightdm
 )
 
 build() {
-    cd "$pkgname-debian-$pkgver"
+    cd "$pkgname-$pkgver"
     make
 }
 
 package() {
-  cd "$pkgname-debian-$pkgver"
+  cd "$pkgname-$pkgver"
   make install DESTDIR="${pkgdir}"
 }
