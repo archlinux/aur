@@ -10,7 +10,7 @@ url=https://github.com/AdaCore/langkit
 arch=(i686 x86_64)
 license=(Apache)
 
-depends=(gnatcoll-iconv gnatcoll-gmp python)
+depends=(gnatcoll-iconv gnatcoll-gmp python adasat)
 makedepends=(gprbuild
              texlive-bin
              python-sphinx
