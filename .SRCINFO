@@ -1,0 +1,12 @@
+pkgbase = xilinx-cmake
+	pkgdesc = helpful CMake modules for a variety of Xilinx build flows
+	pkgver = 2022.1
+	pkgrel = 1
+	url = https://github.com/Xilinx/cmakeModules
+	arch = any
+	license = GPL3
+	depends = cmake
+	source = https://github.com/Xilinx/cmakeModules/archive/v2022.1.tar.gz
+	sha256sums = af37e4394fed1c8fe3593da384f9fdf5c80c04a48b961cb43b65e13a5625fafd
+
+pkgname = xilinx-cmake
