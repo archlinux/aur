@@ -20,12 +20,12 @@ else
             echo "looks like the latest release from github is already exist." && exit 2
         fi
     done
-    rm -f Leapp_*_amd64.deb
-    wget https://asset.noovolari.com/${github_ver}/Leapp_${github_ver}_amd64.deb
+    rm -f /tmp/Leapp_*_amd64.deb
+    wget https://asset.noovolari.com/${github_ver}/Leapp_${github_ver}_amd64.deb -O /tmp/Leapp_${github_ver}_amd64.deb
     if [ $? -ne 0 ]; then
         echo "can't download https://asset.noovolari.com/${github_ver}/Leapp_${github_ver}_amd64.deb"  && exit 3
     fi
-    sha512sum=$(sha512sum Leapp_${github_ver}_amd64.deb | awk '{printf $1}')
+    sha512sum=$(sha512sum /tmp/Leapp_${github_ver}_amd64.deb | awk '{printf $1}')
     cp PKGBUILD.tpl PKGBUILD
     cp .SRCINFO.tpl .SRCINFO
     sed -i "s/VERSION/${github_ver}/g" PKGBUILD
@@ -35,6 +35,6 @@ else
     git add .SRCINFO PKGBUILD
     git commit -m "auto update to ${github_ver}"
     git push
-    rm -f Leapp_${github_ver}_amd64.deb
+    rm -f /tmp/Leapp_${github_ver}_amd64.deb
     echo "${github_ver}" >> exist_vers
 fi
