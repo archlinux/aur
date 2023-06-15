@@ -4,7 +4,7 @@ _name="Astor"
 pkgname=${_name,,}
 pkgver=7.5.3
 _jarfile="${_name}-${pkgver}-jar-with-dependencies.jar"
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical Tango control system administration tool"
 arch=('any')
 url="https://gitlab.com/tango-controls/${_name}"
@@ -18,8 +18,7 @@ source=(
 sha256sums=(
   'd575c5be3212a458ff06ce5a9bb8fefc1ef09d13531992a5f4f3827c4f89aff4'
   '25cc409561647519ad0bb2ffc00abb9cd923626f978f49c03b1f72b1fcd47d0b'
-  'adceed8e9e90b87e2c9b90e29b9fb254b96746658d642d959facdb50f5531999'
-
+  '15c1bbbf1c1544eb18af057ce4b00c65691476ac52a8b8638e0afcc0579976cd'
 )
 
 prepare() {
