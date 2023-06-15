@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium-bin.
 
 pkgname=mrcode-bin
-pkgver=1.79.0.23164
+pkgver=1.79.2.23166
 pkgrel=1
 pkgdesc="A custom build of VSCodium / VSCode (binary release)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -44,9 +44,9 @@ source_aarch64=(
     "https://github.com/zokugun/MrCode/releases/download/${pkgver}/MrCode-linux-arm64-${pkgver/+/.}.tar.gz"
 )
 sha256sums=('362ef9b395929a66442f60be0e238ac69afbbda07728e4121c352fdea236af92')
-sha256sums_x86_64=('53d8484729223b0404178f66c125bbf65f965ea35d9c03a59970f2609e955728')
-sha256sums_aarch64=('2536e6db1256477a72a0d2c0aef5bf9fe1297cd9f2c16b507bca2ddb2c0965c5')
-sha256sums_armv7h=('4380d5c5645209ac48ff1e463a3fe06ce99116d3da6a67cfcb85ee11bee810c3')
+sha256sums_x86_64=('de252cb38b438c841b61681a6c9d1552b8a2d75eb102c81d474fb78342bc8065')
+sha256sums_aarch64=('efffb27b4e30f7609d2a0eb5cc96a3119e6710f24ca176d41fb85ff6811c7b81')
+sha256sums_armv7h=('43b6c0610bf026933fc84f8c535e7a8fef467aaa87cc54d049c19e5d678e8350')
 
 shopt -s extglob
 
