@@ -17,7 +17,8 @@ depends=(
 
 build() {
     cd "sterm-$pkgver"
-    meson setup build --prefix=/usr
+    meson setup build --prefix=/usr \
+        -Ddebug=false
     ninja -C build
 }
 
