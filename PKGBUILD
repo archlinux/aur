@@ -6,13 +6,13 @@ pkgbase=devilutionx
 pkgname=("${pkgbase}" "${pkgbase}-fonts" "${pkgbase}-voices")
 _pkgname=devilutionX
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Diablo devolved for linux"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
 depends=('bzip2' 'fmt' 'libpng' 'libsodium' 'sdl2' 'sdl2_image' 'simpleini' 'zlib')
-makedepends=('cmake' 'devilutionx-graphics-tools-git' 'flac' 'gettext' 'git' 'lame' 'smpq')
+makedepends=('cmake' 'devilutionx-graphics-tools-git' 'flac' 'gettext' 'git' 'lame' 'ninja' 'smpq')
 options=('strip')
 source=("${url}/archive/${pkgver}.tar.gz"
   "${url}-assets/releases/download/v3/fonts.mpq"
