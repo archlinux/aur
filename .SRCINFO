@@ -1,0 +1,24 @@
+pkgbase = ros2-humble-base
+	pkgdesc = A set of software libraries and tools for building robot applications (base variant)
+	pkgver = 2023.06.14
+	pkgrel = 1
+	url = https://index.ros.org/p/ros_base/#humble
+	arch = any
+	license = Apache
+	makedepends = python-rosinstall_generator
+	makedepends = python-vcstool
+	depends = asio
+	depends = cmake
+	depends = eigen
+	depends = git
+	depends = python
+	depends = python-colcon-common-extensions
+	depends = python-yaml
+	depends = tinyxml2
+	depends = pybind11
+	source = ros2::git+https://github.com/ros2/ros2.git#tag=release-humble-20230614
+	source = ros2_base::git+https://github.com/ros2/variants.git#branch=master
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ros2-humble-base
