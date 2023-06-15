@@ -1,7 +1,7 @@
 pkgbase = python-translate-shell
 	pkgdesc = Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim.
 	pkgver = 0.0.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Freed-Wu/translate-shell
 	arch = any
 	license = GPL3
@@ -12,12 +12,22 @@ pkgbase = python-translate-shell
 	optdepends = python-yaml: output yaml format
 	optdepends = python-keyring: store APP secrets securely
 	optdepends = python-langdetect: detect language automatically for offline dictionary
-	optdepends = python-pystardict>=0.5.0: offline dictionary
-	optdepends = python-py-notifier: GUI notification
+	optdepends = python-pystardict: offline dictionary
+	optdepends = python-py-notifier>=0.5.0: GUI notification
 	optdepends = xsel: clipboard support
 	optdepends = xclip: clipboard support
+	optdepends = wl-clipboard: clipboard support
+	optdepends = lemonade: clipboard support
+	optdepends = doit: clipboard support
+	optdepends = tmux: clipboard support
+	optdepends = cygutils: clipboard support for Msys2
 	optdepends = espeak-ng: speaker support
 	optdepends = festival: speaker support
+	optdepends = stardict-langdao-ec-gb: translate English to Chinese
+	optdepends = stardict-langdao-gb-ec: translate Chinese to English
+	optdepends = stardict-jmdict-en-ja: translate English to Japanese
+	optdepends = stardict-jmdict-ja-en: translate Japanese to English
+	provides = stardict
 	conflicts = translate-shell
 	source = https://files.pythonhosted.org/packages/py3/t/translate-shell/translate_shell-0.0.27-py3-none-any.whl
 	sha256sums = 84167e3a5a412d5e845feff87fa002b37f372ca29f221fa8ff5ac2fd983d28a3
