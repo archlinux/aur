@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
-pkgname=distro-grub-themes-arch
-pkgver=3.1
-pkgrel=3
+pkgname='distro-grub-themes-arch'
+pkgver='3.2'
+pkgrel=1
 pkgdesc="A GRUB2 theme for Arch Linux"
 arch=('any')
 url="https://github.com/AdisonCavani/distro-grub-themes"
