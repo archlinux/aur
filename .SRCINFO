@@ -12,7 +12,6 @@ pkgbase = bart
 	depends = libpng
 	optdepends = octave
 	optdepends = python3
-	conflicts = bart-git
 	source = https://github.com/mrirecon/bart/archive/refs/tags/v0.8.00.tar.gz
 	source = Makefile.local
 	sha512sums = 2c8ebdbe6aca004debdf2ea977e07d4624612cee07f66946fd7b9608144d74ae3bad9e68ca158bec61b3f21f104df5f63457ed88423ed7bb74fd506f47532591

@@ -14,13 +14,12 @@ source=("https://github.com/mrirecon/bart/archive/refs/tags/v${pkgver}.tar.gz"
 	"Makefile.local")
 sha512sums=('2c8ebdbe6aca004debdf2ea977e07d4624612cee07f66946fd7b9608144d74ae3bad9e68ca158bec61b3f21f104df5f63457ed88423ed7bb74fd506f47532591'
             '4ab4bb30e696dd262ecf59a64ec2ae5fa8f4832153816b4966c6af6e33fcf3981a5a4083d963cd3e470cd6000df32bfff4db146e9e34672f94962b5b329f4846')
-conflicts=('bart-git')
 
 prepare() {
     cd "$pkgname"-"$pkgver"
 
     # set path for openblas/lapacke/cblas headers
-    ln -s "${srcdir}/Makefile.local"
+    ln -sf "${srcdir}/Makefile.local"
 
 }
 
