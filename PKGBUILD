@@ -2,7 +2,7 @@
 # Contributor: Thomas Andrejak <thomas.andrejak@gmail.com>
 pkgname=python-croniter
 _name=${pkgname#python-}
-pkgver=1.3.15
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A Python module to provide iteration for datetime object."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-dateutil' 'python-natsort')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytz')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('924a38fda88f675ec6835667e1d32ac37ff0d65509c2152729d16ff205e32a65')
+sha256sums=('edf332f2ef3b2b47d4c01004c640981c5a70d8ccb6b854aea8866a28b532449a')
 
 build() {
   cd "$_name-$pkgver"
