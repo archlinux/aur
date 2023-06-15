@@ -2,15 +2,25 @@
 # Contributor: Patrik Pira
 pkgname=('pcoip-client' 'pcoip-client-clipboard')
 pkgver=23.01.1
-pkgrel=1
+pkgrel=2
 _ubuntuver=22.04
 pkgdesc='Teradici PCOIP client'
 url='https://teradici.com/'
 arch=('x86_64')
 license=('custom:Teradici')
-depends=('openssl-1.1' 'pcsclite' 'qt5-networkauth' 'qt5-declarative' 'protobuf3.12' 'hiredis0.14' 'ffmpeg4.4')
+depends=(
+	'openssl-1.1'
+	'pcsclite'
+	'qt5-declarative'
+	'qt5-graphicaleffects'
+	'qt5-networkauth'
+	'qt5-quickcontrols'
+	'qt5-quickcontrols2'
+	'protobuf3.12'
+	'hiredis0.14'
+	'ffmpeg4.4'
+)
 makedepends=('fakeroot' 'patchelf')
-install=$pkgname.install
 # Find the latest at
 # https://dl.teradici.com/DeAdBCiUYInHcSTy/pcoip-client/deb/ubuntu/dists/jammy/main/binary-amd64/Packages
 source=(
@@ -29,6 +39,8 @@ prepare() {
 }
 
 package_pcoip-client() {
+	install=$pkgname.install
+
   tar -C $pkgdir/ -xvf $srcdir/pcoip-client/data.tar.gz
 
 	# Remove empty directories
