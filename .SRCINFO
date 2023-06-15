@@ -1,7 +1,7 @@
 pkgbase = d05-star-db-astap
 	pkgdesc = D05 star database for 10>FOV>0.6 degrees. Size 100 mb.
 	pkgver = 2023.03.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.hnsky.org/astap.htm
 	arch = any
 	license = LGPL3
@@ -9,7 +9,10 @@ pkgbase = d05-star-db-astap
 	optdepends = astap-bin-qt5: binary Qt version
 	optdepends = astap: sourced Qt version
 	optdepends = astap-cli: CLI version
-	source = d05.deb::https://downloads.sourceforge.net/project/astap-program/star_databases/d05_star_database.deb
+	optdepends = hnsky-hg: planetarium program, hg-version
+	optdepends = hnsky-bin: planetarium program, bin-version
+	replaces = h17-star-db-astap
+	source = d05_star_database.deb::https://downloads.sourceforge.net/project/astap-program/star_databases/d05_star_database.deb
 	sha256sums = e00b276e86c5673aef862d4fa093e739bd58cad267af916756409770fd0bd8eb
 
 pkgname = d05-star-db-astap
