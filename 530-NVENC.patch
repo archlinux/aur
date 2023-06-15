@@ -1,0 +1,26 @@
+From ca59acfc809072c55d81d0cbab2052f6717801f1 Mon Sep 17 00:00:00 2001
+From: Vasiliy Stelmachenok <ventureo@yandex.ru>
+Date: Thu, 15 Jun 2023 17:32:59 +0300
+Subject: [PATCH] NVENC: Fix magic number in patch for driver version 530.xx
+
+The hack that probably breaks compatibility with previous versions of the driver
+---
+ src/lax_encode.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lax_encode.cc b/src/lax_encode.cc
+index 0967a6c..eddb834 100644
+--- a/src/lax_encode.cc
++++ b/src/lax_encode.cc
+@@ -71,7 +71,7 @@ patch_linux (LIEF::ELF::Binary *bin)
+ 
+     {
+         // 0x235 here is an approximation (we should never have to go past that address)
+-        auto v_func_bytes = bin->get_content_from_virtual_address(offset, 0x235);
++        auto v_func_bytes = bin->get_content_from_virtual_address(offset, 0x1b8f6);
+ 
+         uint8_t *data = v_func_bytes.data();
+         size_t length = v_func_bytes.size();
+-- 
+2.41.0
+
