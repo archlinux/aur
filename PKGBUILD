@@ -1,6 +1,16 @@
 # Maintainer: elementh <hello@lucasmarino.me>
+#
+# IMPORTANT: MIGRATION
+# 
+# If you are coming from the > 0.3.2 BETA please read the instructions:
+# 
+# 1. Install `anytype-legacy`
+# 2. Follow the instructions HERE: https://community.anytype.io/t/anytype-legacy-to-beta-migration-trail-guide/9274 UP to the point 2., BUT NOT 3.
+# 3. Now install `anytype-bin` (this package) and now you can follow point 3. and login with the recovery phrase.
+# 
+# Thanks.
 pkgname=anytype-bin
-pkgver=0.31.0
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
@@ -10,15 +20,16 @@ depends=('fuse')
 options=(!strip)
 optdepends=('org.freedesktop.secrets: for not having to sign in each time')
 provides=('anytype')
-conflicts=('anytype')
+conflicts=('anytype'
+           'anytype-legacy')
 _appimage="Anytype-${pkgver}.AppImage"
 source=(
-    "Anytype-${pkgver}.AppImage::https://at9412003.fra1.digitaloceanspaces.com/Anytype-${pkgver}.AppImage"
+    "Anytype-${pkgver}.AppImage::https://anytype-release.fra1.cdn.digitaloceanspaces.com/Anytype-${pkgver}.AppImage"
     "anytype.desktop"
     "anytype.png"
     )
 noextract=("${_appimage}")
-sha256sums=('b3c6a5d11f46e3bf00f8fca641c75c751a70eada4a906f96219b1765812f7ffa'
+sha256sums=('3b36120d887f6c6af069c6a3b40dfe18765cccc62c177cbc71010f4dea32a653'
             '1bda1398291bed84ebee1d2c3e94b4c367925a8e2c0bd371aba8d6604e54281f'
             '48ee23a45c29cf081ccf5188c045150b7410007cd21743ce8592974ab18120c0')
 
