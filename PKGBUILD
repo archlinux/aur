@@ -1,6 +1,6 @@
 # Maintainer: Thomas McGrew <tjmcgrew@gmail.com>
 pkgname=dwrandomizer
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 epoch=
 pkgdesc="A Randomizer for Dragon Warrior for NES"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://dwrandomizer.com"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mcgrew/dwrandomizer/archive/$pkgver.tar.gz")
-sha256sums=('138333a9beb039b9d65b80e7aceccf823fdccd8d6c8b479f9fb74c3e20a931d4')
+sha256sums=('99068bc40d3f2cbe2fcb4e098bef0b4e8972b4150ed4aaf0c7a0b277c7d7c024')
 depends=('electron')
 makedepends=('emscripten' 'ed')
 
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname-$pkgver/build"
-    CFLAGS="${CFLAGS} -fno-stack-protector" LDFLAGS="-Wl,-O1,-z,relro,-z,now" cmake -DRELEASE=1 -DCMAKE_TOOLCHAIN_FILE=/usr/lib/emscripten/cmake/Modules/Platform/Emscripten.cmake ..
+    CFLAGS="-O2 -pipe -fno-stack-protector -fno-plt" LDFLAGS="-Wl,-O1" cmake -DRELEASE=1 -DCMAKE_TOOLCHAIN_FILE=/usr/lib/emscripten/cmake/Modules/Platform/Emscripten.cmake ..
     make
     cd "$srcdir/$pkgname-$pkgver/cli-build"
     cmake -DRELEASE=1 ..
