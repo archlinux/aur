@@ -3,7 +3,7 @@
 pkgname=astap-bin
 _pkgname=astap
 pkgver=2023.05.31
-pkgrel=1
+pkgrel=2
 pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer. Gtk2 version."
 arch=('i686' 'x86_64')
 url="http://www.hnsky.org/astap.htm"
@@ -12,6 +12,11 @@ source_i686=("${_pkgname}_i386.deb::https://sourceforge.net/projects/astap-progr
 source_x86_64=("${_pkgname}_amd64.deb::https://sourceforge.net/projects/astap-program/files/linux_installer/astap_amd64.deb/download")
 sha256sums_i686=('a3d2fd2b941979da09e520d32d340beb20786b3e75e1d60e740d0b5c8e2ca8e1')
 sha256sums_x86_64=('667c0db4ca252407bbc6a893349f9c46b1177e3171e1d9dfbe8bdda26cd1b89b')
+optdepends=('hyperleda-galaxy-db-astap: 25MB database of 1.3m galaxies and 171k other non-star objects'
+            'w08-star-db-astap: 250KB database of stars up to magnitude 8, reliable above 20° FOV'
+	    'd05-star-db-astap: 100MB database of 500 stars per square degree, reliable with 0.6-10° FOV'
+	    'd20-star-db-astap: 400MB database of 2000 stars per square degree, reliable with 0.3-10° FOV'
+            'd50-star-db-astap: 900MB database of 5000 stars per square degree, reliable with 0.2-10° FOV')
 
 mkinfo() { echo -e "[\e[96mMKINFO\e[0m]:  \e[1m$*\e[0m"; }
 
