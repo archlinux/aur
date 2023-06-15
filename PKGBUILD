@@ -9,7 +9,7 @@ url="https://github.com/zwicker-group/${_base}"
 license=(MIT)
 depends=(python-matplotlib python-numba python-scipy python-sympy python-tqdm)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
-checkdepends=(python-pytest-cov python-h5py python-pandas) # jupyter-notebook napari
+checkdepends=(python-pytest-cov python-h5py-openmpi python-pandas) # jupyter-notebook napari
 optdepends=('python-h5py: for storing data in the hierarchical file format'
   'python-pandas: for handling tabular data'
   'napari: for displaying images interactively'
