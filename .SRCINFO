@@ -1,6 +1,6 @@
 pkgbase = libtiff-git
 	pkgdesc = TIFF library and utilities
-	pkgver = 4.5.0.r66.g17adf430
+	pkgver = 4.5.1.r2.gdf665f60
 	pkgrel = 1
 	url = https://libtiff.gitlab.io/libtiff/
 	arch = i686
@@ -15,8 +15,9 @@ pkgbase = libtiff-git
 	depends = libjpeg
 	depends = xz
 	depends = zlib
+	depends = zstd
 	optdepends = freeglut: for using tiffgt
-	provides = libtiff=4.5.0.r66.g17adf430
+	provides = libtiff=4.5.1.r2.gdf665f60
 	conflicts = libtiff
 	options = staticlibs
 	source = git+https://gitlab.com/libtiff/libtiff.git
