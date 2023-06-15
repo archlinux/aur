@@ -1,0 +1,19 @@
+pkgbase = displaz-git
+	pkgdesc = A hackable LIDAR viewer (Git version)
+	pkgver = 0.4.0.r50.gb039a9d
+	pkgrel = 1
+	url = http://c42f.github.io/displaz/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = imath
+	makedepends = python-docutils
+	depends = glew
+	depends = libLASlib.so
+	depends = libglvnd
+	depends = qt5-base
+	source = git+https://github.com/c42f/displaz.git
+	sha256sums = SKIP
+
+pkgname = displaz-git

@@ -1,0 +1,5 @@
+displaz/
+src/
+pkg/
+displaz-git-*.pkg.tar*
+*.log
