@@ -23,5 +23,6 @@ build() {
 
 package() {
   cd "sterm-$pkgver"
-  ninja install -C build DESTDIR="${pkgdir}"
+  export DESTDIR="${pkgdir}" 
+  ninja install -C build
 }
