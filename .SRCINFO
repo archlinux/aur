@@ -1,0 +1,27 @@
+pkgbase = sentio-bin
+	pkgdesc = A productivity type desktop app built around the pomodoro concept.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://intentio.app/
+	arch = x86_64
+	license = Apache
+	license = CC-1.0
+	depends = gdk-pixbuf2
+	depends = webkit2gtk
+	depends = glibc
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = openssl
+	depends = dbus
+	depends = gcc-libs
+	depends = glib2
+	depends = gtk3
+	depends = cairo
+	conflicts = sentio
+	conflicts = sentio-appimage
+	source = sentio-1.0.0.deb::https://github.com/JakubGluszek/intentio/releases/download/v1.0.0/sentio_1.0.0_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/JakubGluszek/intentio/main/LICENSE
+	sha256sums = ee466721e1ced1d3d367d4bc4d41bfa21be02f8c8d1f90e200fd97e7e5a3e9b0
+	sha256sums = f79590957fc8df48d1f603b4c1c6da9fb1c26eba95cfd6de1e7cfdcc8abd98a5
+
+pkgname = sentio-bin
