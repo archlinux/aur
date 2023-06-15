@@ -2,10 +2,9 @@
 
 _name=fibers
 pkgname=guile-$_name
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
-# follow the same commit as guile-fibers-next on Guix
-_commit=745bd409bef17284648805fb985777d21dba79f7
+_commit=e94ce968caf77c487d0ceda99c417498bab6bb5e
 pkgdesc="Concurrent ML-like concurrency for Guile"
 arch=(any)
 license=(LGPL3+)
