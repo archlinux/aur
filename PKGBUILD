@@ -1,5 +1,5 @@
 # Maintainer: Ali Riza Keskin <aliriza.keskin@pardus.org.tr>
-pkgname="sterm-git"
+pkgname="sterm-app"
 pkgver="master"
 pkgrel=1
 pkgdesc="Sulincix Terminal"
