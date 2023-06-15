@@ -1,0 +1,20 @@
+pkgbase = tkgate-git
+	pkgdesc = TkGate is a event driven digital circuit simulator with a tcl/tk-based graphical editor
+	pkgver = r25.856c405
+	pkgrel = 1
+	url = https://github.com/bnoordhuis/tkgate
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = tk
+	depends = tcl
+	depends = libx11
+	depends = bash
+	depends = glibc
+	provides = tkgate
+	conflicts = tkgate
+	source = git+https://github.com/bnoordhuis/tkgate.git
+	md5sums = SKIP
+
+pkgname = tkgate-git
