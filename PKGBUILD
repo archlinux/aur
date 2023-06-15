@@ -10,7 +10,7 @@ url='https://github.com/oseledets/ttpy'
 license=('Apache')
 groups=()
 depends=('python-numpy' 'python-scipy' 'python-six')
-makedepends=('cython' 'gcc-fortran' 'python-python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('cython' 'gcc-fortran' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oseledets/$_pkgname/archive/$_pkgver.tar.gz"
         'tt-fort.tar.gz::https://github.com/oseledets/tt-fort/archive/refs/heads/master.tar.gz'
