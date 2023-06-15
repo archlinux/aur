@@ -1,0 +1,15 @@
+diff --git a/lpsymphony/configure b/lpsymphony/configure
+index b3975c2..f1488ff 100755
+--- a/lpsymphony/configure
++++ b/lpsymphony/configure
+@@ -9,8 +9,8 @@ fi
+ 
+ R="${R_HOME}/bin/R"
+ 
+-SYMPHONY_CPPFLAGS=`pkg-config --cflags SYMPHONY >/dev/null 2>&1`
+-SYMPHONY_LIBS=`pkg-config --libs SYMPHONY >/dev/null 2>&1`
++SYMPHONY_CPPFLAGS=`pkg-config --cflags symphony 2>/dev/null`
++SYMPHONY_LIBS=`pkg-config --libs symphony 2>/dev/null`
+ 
+ test -z "${SYMPHONY_LIBS}" && SYMPHONY_LIBS="-lSym -lCgl -lOsiClp -lClp -lOsi -lCoinUtils"
+ 

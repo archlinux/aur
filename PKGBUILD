@@ -1,46 +1,50 @@
-# system requirements: GNU make
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lpsymphony
-_pkgver=1.28.0
+_pkgver=1.28.1
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=${_pkgver//[:-]/.}
 pkgrel=1
-pkgdesc='Symphony integer linear programming solver in R'
-arch=('x86_64')
+pkgdesc="Symphony integer linear programming solver in R"
+arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('EPL')
+license=(EPL)
 depends=(
+  coin-or-symphony
   r
-  coin-or-asl
-  coin-or-clp
-  coin-or-coinutils
-  coin-or-osi
-  coin-or-cgl
-  make
-  glpk
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
   r-biocstyle
   r-knitr
-  r-slam
   r-testthat
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d75fab5b8cbd0c1bfac6386e0d2fee7aa87594f06da8d56b2de8b1407103cd24')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "system-symphony.patch")
+md5sums=('a04276f8329ae09e82e3e16bc3a7b78e'
+         '5fe82566bce5f45a9d9d8682e51ebfaa')
+sha256sums=('4d46f81f6bc676167c5dbd498c8415d97434274b885f11de5d29745ce6696421'
+            'e4ffaac1444e128a63ba43d0adbd3dd8b6acac0ca5e8b2d8fe43ab3ffcb92e5a')
 
 prepare() {
-  sed -i 's#CXXFLAGS="-w -g -O2"#CXXFLAGS="-w -g -O2 -I/usr/include/coin"#' "${srcdir}/${_pkgname}/configure"
-  tar cfz "${_pkgname}.tar.gz" "${_pkgname}"
+  # build against system SYMPHONY
+  patch -Np1 -i system-symphony.patch
 }
 
 build() {
-  #R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
-  R CMD INSTALL ${_pkgname}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
