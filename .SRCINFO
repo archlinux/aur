@@ -10,6 +10,7 @@ pkgbase = gtkada
 	license = custom
 	makedepends = gprbuild
 	makedepends = gprtools
+	makedepends = gprbuild-toolbox
 	depends = gcc-ada
 	depends = gtk3
 	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gtkada-24.0w-20230428-165F0-src.tar.gz
