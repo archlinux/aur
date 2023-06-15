@@ -1,7 +1,7 @@
 pkgbase = python-translate-shell
 	pkgdesc = Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim.
 	pkgver = 0.0.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Freed-Wu/translate-shell
 	arch = any
 	license = GPL3
@@ -24,7 +24,7 @@ pkgbase = python-translate-shell
 	optdepends = espeak-ng: speaker support
 	optdepends = festival: speaker support
 	optdepends = stardict-langdao-ec-gb: translate English to Chinese
-	optdepends = stardict-langdao-gb-ec: translate Chinese to English
+	optdepends = stardict-langdao-ce-gb: translate Chinese to English
 	optdepends = stardict-jmdict-en-ja: translate English to Japanese
 	optdepends = stardict-jmdict-ja-en: translate Japanese to English
 	provides = stardict

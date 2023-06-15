@@ -2,7 +2,7 @@
 _pkgname=translate-shell
 pkgname=python-$_pkgname
 pkgver=0.0.27
-pkgrel=2
+pkgrel=3
 pkgdesc="Translate text by google, bing, youdaozhiyun, haici, stardict, etc at same time from CLI, GUI (GNU/Linux, Android, macOS and Windows), REPL, python, shell and vim."
 arch=(any)
 url=https://github.com/Freed-Wu/translate-shell
@@ -26,7 +26,7 @@ optdepends=(
 	'espeak-ng: speaker support'
 	'festival: speaker support'
 	'stardict-langdao-ec-gb: translate English to Chinese'
-	'stardict-langdao-gb-ec: translate Chinese to English'
+	'stardict-langdao-ce-gb: translate Chinese to English'
 	'stardict-jmdict-en-ja: translate English to Japanese'
 	'stardict-jmdict-ja-en: translate Japanese to English'
 )
