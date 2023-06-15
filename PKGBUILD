@@ -40,6 +40,14 @@ build() {
     make doc/commands.txt
 }
 
+check() {
+    cd "$_pkgname"
+
+    make utest
+    # takes far too long:
+#    make test
+}
+
 package() {
     cd "$_pkgname"
     make PREFIX="$pkgdir"/usr install
