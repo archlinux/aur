@@ -1,0 +1,14 @@
+pkgbase = libjsonbuilder-git
+	pkgdesc = Simple JSON construction library in C.
+	pkgver = 20230615
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	provides = libjsonbuilder
+	conflicts = libjsonbuilder
+	source = libjsonbuilder::git+https://github.com/nicholascw/libjsonbuilder#branch=master
+	sha1sums = SKIP
+
+pkgname = libjsonbuilder-git
