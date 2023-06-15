@@ -9,9 +9,12 @@ pkgdesc="Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magne
 arch=('x86_64')
 url="https://mrirecon.github.io/bart/"
 license=('BSD')
-makedepends=('git')
-depends=('gcc>=11.2.0' 'openblas' 'blas-openblas' 'fftw' 'libpng' 'cuda' 'cudnn')
-optdepends=('octave' 'python3')
+makedepends=('git' 'gcc>=11.2.0')
+depends=('gcc-libs' 'openblas' 'blas-openblas' 'fftw' 'libpng' 'cuda' 'cudnn')
+optdepends=('octave: MATLAB/Octave wrapper'
+	    'python: Python wrapper'
+	    'python-numpy: Python wrapper'
+	    'python-matplotlib: Python scripts')
 source=('bart::git+https://github.com/mrirecon/bart.git'
 	'Makefile.local')
 sha512sums=('SKIP'
