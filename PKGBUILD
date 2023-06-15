@@ -2,7 +2,7 @@
 # Contributor: Yaohan Chen <yaohan.chen@gmail.com>
 pkgname=anura
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully-featured game engine, the tech behind the spectacular Frogatto & Friends"
 arch=('x86_64')
 url="https://github.com/anura-engine/anura"
@@ -27,7 +27,7 @@ prepare() {
 build() {
   cd $pkgname
 
-  export CXXFLAGS="$CXXFLAGS -Wno-error=return-type -Wno-error=dangling-reference -Wno-error=deprecated-declarations -Wno-error=odr"
+  export CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS} -Wno-error=return-type -Wno-error=dangling-reference -Wno-error=deprecated-declarations -Wno-error=odr"
   make anura
 }
 
