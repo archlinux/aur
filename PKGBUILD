@@ -14,16 +14,16 @@ depends=('grub')
 optdepends=('grub-customizer: GUI tool to configure grub')
 
 _theme_distro="arch-linux"
+_tar_name="${_theme_distro}-${pkgver}.tar"
 
-source=("https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/${_theme_distro}.tar")
-noextract=("${_theme_distro}.tar")
+source=("${_tar_name}::https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/${_theme_distro}.tar")
+noextract=("${_tar_name}")
 sha256sums=('e589bb946d6cd7bf6303142cf3aeeb872fef416fb36ff3e168a11bccfeae850b')
 
 
 prepare() {
 	mkdir -p ${_theme_distro}
-	cd ${_theme_distro}
-	bsdtar -xf "$srcdir"/${_theme_distro}.tar
+	bsdtar --cd "${_theme_distro}" -xf "${_tar_name}"
 }
 
 # example:
