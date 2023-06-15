@@ -1,7 +1,7 @@
 # Maintainer: Nogweii <packages@nogweii.net>
 pkgname=nvim-treesitter-parsers-git
-pkgver=r595.a0251c98
-pkgrel=2
+pkgver=r1067.10b0da9f
+pkgrel=1
 pkgdesc="All of the registered tree sitter parsers used by Neovim"
 arch=(x86_64)
 url="https://github.com/nvim-treesitter/nvim-treesitter"
@@ -26,13 +26,15 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_dirname}"
-	nvim -u NORC --headless --cmd "set rtp+=$(pwd)" -c "TSInstallSync all" -c "q"
+	nvim -u NONE --headless --cmd "set rtp+=$(pwd)" -c "lua require('nvim-treesitter').setup()" -c "TSInstallSync all" -c "q"
 }
 
 package() {
 	cd "$srcdir/${_dirname}"
-	mkdir -p "$pkgdir/usr/share/nvim/runtime/parser/"
-	cp parser/*.so -t "$pkgdir/usr/share/nvim/runtime/parser/"
-	mkdir -p "$pkgdir/usr/share/nvim/runtime/parser-info/"
-	cp parser-info/*.revision -t "$pkgdir/usr/share/nvim/runtime/parser-info/"
+	mkdir -p "$pkgdir/etc/xdg/nvim/parser/"
+	cp parser/*.so -t "$pkgdir/etc/xdg/nvim/parser/"
+	mkdir -p "$pkgdir/etc/xdg/nvim/parser-info/"
+	cp parser-info/*.revision -t "$pkgdir/etc/xdg/nvim/parser-info/"
+	mkdir -p "$pkgdir/etc/xdg/nvim/queries/"
+	cp -r queries/* -t "$pkgdir/etc/xdg/nvim/queries/"
 }
