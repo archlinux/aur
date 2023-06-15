@@ -10,10 +10,10 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.6.4')
+provides=('gdal=3.7.0')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.6.4
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
@@ -28,7 +28,7 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
              proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
              libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c xz
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
-             openssl pcre2 libpng podofo poppler postgresql-libs qhull
+             openssl pcre2 libpng podofo-0.9 poppler postgresql-libs qhull
              libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd)
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
@@ -39,7 +39,12 @@ optdepends=('postgresql: postgresql database support'
 options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-b2sums=('d6abdbcc87029bf230dae5586f06cbd329e5e43be37d8f5e9a72c67c93a6769458cc9c693b498e3f697b1ee1b68c9f9dbf7545ff9819fceb8fdde81b8d4ac882')
+b2sums=('400cc17fc636c637f7c40e93aed8e2db7bfbbe73741da4135cfeec8dbcda24ce0c8035214edf038afc29a916012da86a78d789729540f870231dfa6aa27e424a')
+
+prepare() {
+# Fix build with podofo-0.9
+  sed -e 's|podofo.h|podofo/podofo.h|' -i $_pkgbase-$pkgver/frmts/pdf/pdfsdk_headers.h
+}
 
 build() {
   opt_libs=""
@@ -112,7 +117,7 @@ package_gdal-ecw () {
 #              'netcdf: netCDF support'
 #              'openexr: EXR support'
 #              'openjpeg2: JP2 support'
-#              'podofo: PDF support'
+#              'podofo-0.9: PDF support'
 #              'poppler: PDF support'
 #              'postgresql-libs: PostgreSQL support'
 #              'libwebp: WebP support')
