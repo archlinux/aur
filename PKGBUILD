@@ -1,14 +1,17 @@
 # Maintainer: ml <ml-aur@ransomware.download>
 pkgname=kind
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('aarch64' 'x86_64')
 url='https://kind.sigs.k8s.io/'
 license=('Apache')
-depends=('docker' 'kubectl')
+depends=('kubectl')
 makedepends=('go' 'git')
-optdepends=('podman: provider podman ')
+optdepends=(
+  'docker: provider docker'
+  'podman: provider podman'
+)
 install=kind.install
 source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         modules-load.conf
