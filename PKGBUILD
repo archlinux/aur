@@ -3,7 +3,7 @@
 pkgname=tkgate-git
 pkgver="r25.856c405"
 pkgrel=1
-pkgdesc="TkGate is a event driven digital circuit simulator with a tcl/tk-based graphical editor"
+pkgdesc="An event driven digital circuit simulator with a tcl/tk-based graphical editor"
 arch=('i686' 'x86_64')
 url="https://github.com/bnoordhuis/tkgate"
 license=('GPL')
