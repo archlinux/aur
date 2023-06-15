@@ -2,7 +2,7 @@
 # Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
 
 pkgname=pixelorama
-pkgver=0.10.3
+pkgver=0.11
 pkgrel=1
 pkgdesc="A free & open-source 2D sprite editor"
 arch=('x86_64')
@@ -10,23 +10,22 @@ url="https://orama-interactive.itch.io/pixelorama"
 _url="https://github.com/Orama-Interactive/Pixelorama"
 license=('MIT')
 depends=('hicolor-icon-theme' 'libglvnd' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr')
-makedepends=('curl' 'godot' 'unzip' 'xorg-server-xvfb')
+makedepends=('curl' 'godot' 'unzip')
 provides=('pixelorama')
 conflicts=('pixelorama-bin' 'pixelorama-git')
 source=("${pkgname^}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-sha512sums=('1b6bd61ea5bcf9a8053c90e9b820a934710eea5de2124fd6dc0c1db68bfd739a1186ca3620294c6627749ae5409b2b539999636736be4df4575757c7bb1a1247')
+sha512sums=('b98843eda46f369488054f93d33a5fb908052cdf8555eba41d948deb048801d24ce0ab3bd670873556ca1513179091e4795a36ca83586861c3e60478f8c83ce6')
 
 prepare() {
   # Checks if the user's directory has the export templates
   # and downloads them, if necessary
 
   # Get Godot Engine version
-  _godot_bin=$(which godot)
-  _godot_version_full_string=$(strings ${_godot_bin} | grep "Godot Engine v" | sed 's/.*\ v//' | sed 's/\ .*//' | head -1)
+  _godot_version_full_string=$(godot --version)
   _godot_version=${_godot_version_full_string%.*}
   _godot_version_number=$(echo ${_godot_version} | sed 's/\.[[:alpha:]].*//')
 
-  _templates_home_dir=~/.local/share/godot/templates/${_godot_version}
+  _templates_home_dir=~/.local/share/godot/export_templates/${_godot_version}
   
   if [ ! -d ${_templates_home_dir} ]
   then
@@ -61,7 +60,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname^}-${pkgver}"
   mkdir -p build
-  xvfb-run godot --export "Linux/X11 $(getconf LONG_BIT)-bit" --path . project.godot build/${pkgname}
+  godot --export-release "Linux/X11 $(getconf LONG_BIT)-bit" --display-driver headless --path . project.godot build/${pkgname}
 }
     
 package() {
