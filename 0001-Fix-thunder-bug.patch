@@ -1,0 +1,12 @@
+--- a/Sources/Entities/Lightning.es	2023-06-15 10:17:31.538328000 +0300
++++ b/Sources/Entities/Lightning.es	2023-06-15 10:23:46.197060134 +0300
+@@ -118,9 +118,7 @@
+     }
+ 
+     // wait for sound to progress to lightning strike
+-    if (_atiThunderSounds[ m_iSoundPlaying].ti_fThunderStrikeDelay>0.0f) {
+     autowait( _atiThunderSounds[ m_iSoundPlaying].ti_fThunderStrikeDelay);
+-    }
+ 
+     // remember current time as lightning start time
+     TIME tmNow = _pTimer->CurrentTick();
