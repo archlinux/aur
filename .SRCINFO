@@ -1,7 +1,7 @@
 pkgbase = python-tensorstore
 	pkgdesc = Library for reading and writing large multi-dimensional arrays.
 	pkgver = 0.1.36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/tensorstore
 	arch = x86_64
 	license = Apache
@@ -9,6 +9,7 @@ pkgbase = python-tensorstore
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = blosc
 	depends = brotli
 	depends = bzip2

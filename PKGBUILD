@@ -2,7 +2,7 @@
 pkgname=python-tensorstore
 _pkgname=${pkgname#python-}
 pkgver=0.1.36
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for reading and writing large multi-dimensional arrays.'
 arch=('x86_64')
 url='https://github.com/google/tensorstore'
@@ -32,6 +32,7 @@ makedepends=(
     'python-installer'
     'python-setuptools'
     'python-setuptools-scm'
+    'python-wheel'
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
         'pyproject.toml.patch')
