@@ -16,12 +16,12 @@ depends=(
 )
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "sterm-$pkgver"
     meson setup build --prefix=/usr
     ninja -C build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "sterm-$pkgver"
   ninja install -C install DESTDIR="${pkgdir}"
 }
