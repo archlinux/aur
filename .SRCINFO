@@ -1,0 +1,14 @@
+pkgbase = bbsi
+	pkgdesc = Several scripts to facilitate some everyday tasks
+	pkgver = 0.2.0
+	pkgrel = 0
+	url = https://gitlab.com/os-18/bbsi
+	arch = x86_64
+	license = Boost
+	depends = bash
+	depends = ffmpeg
+	depends = yt-dlp
+	source = bbsi-0.2.0.tar.gz::https://gitlab.com/os-18/bbsi/-/archive/v0.2.0/bbsi-v0.2.0.tar.gz
+	sha256sums = f47030c22e37cdd1ee4a990c94bbed00f270e3c524c2aa895ecfe6deda7052d5
+
+pkgname = bbsi
