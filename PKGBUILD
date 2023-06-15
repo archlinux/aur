@@ -5,7 +5,7 @@ pkgname="stm32cubeide"
 pkgver=1.12.1
 _pkgver_ext=1.12.1_16088_20230420_1057
 _pkg_file_name=en.st-stm32cubeide_1.12.1_16088_20230420_1057_amd64.sh.zip
-pkgrel=2
+pkgrel=3
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
@@ -13,7 +13,7 @@ depends=('glibc' 'libusb')
 optdepends=('jlink-software-and-documentation' 'stlink' 'arm-none-eabi-gdb' 'webkit2gtk')
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
-license=('Commercial')
+license=('custom:SLA0048')
 options=(!strip)
 
 # Big thanks to user "yjun" for direct download link advice.
@@ -93,9 +93,9 @@ END
 END
 
 	msg2 'Installing desktop shortcut and icon'
-	convert "${pkgdir}/opt/stm32cubeide/icon.xpm" "${srcdir}/${pkgname}.png"
+	convert "${pkgdir}/opt/${pkgname}/icon.xpm" "${srcdir}/${pkgname}.png"
 	install -Dm 644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
+	install -Dm 644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=STM32CubeIDE
 Comment=STM32CubeIDE ${pkgver}
@@ -103,8 +103,8 @@ GenericName=STM32CubeIDE
 #Exec=env GDK_BACKEND=x11 stm32cubeide %F
 #Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 stm32cubeide %F
 Exec=stm32cubeide_wayland %F
-Icon=stm32cubeide
-Path=/opt/stm32cubeide/
+Icon=${pkgname}
+Path=/opt/${pkgname}/
 Terminal=false
 StartupNotify=true
 Type=Application
@@ -118,7 +118,9 @@ END
 	#ln -s /usr/bin/arm-none-eabi-gdb-add-index "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin
 	
 	msg2 'Create symlink from original directory name'
-	ln -s "${pkgdir}/opt/stm32cubeide" "${pkgdir}/opt/stm32cubeide_${pkgver}"
+	read -r default_install_path < "${srcdir}/build/default_install_path.txt"
+	install -d -m755  "${pkgdir}/opt/st/"
+	ln -s "/opt/${pkgname}" "${pkgdir}${default_install_path}"
 	
 	msg2 'Installation of license file'
 	install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"

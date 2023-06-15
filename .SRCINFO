@@ -1,10 +1,10 @@
 pkgbase = stm32cubeide
 	pkgdesc = Integrated Development Environment for STM32
 	pkgver = 1.12.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.st.com/en/development-tools/stm32cubeide.html
 	arch = x86_64
-	license = Commercial
+	license = custom:SLA0048
 	makedepends = imagemagick
 	depends = glibc
 	depends = libusb
