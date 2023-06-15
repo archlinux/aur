@@ -3,7 +3,7 @@
 
 pkgname=openpose
 pkgver=1.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenPose: Real-time multi-person keypoint detection library for body, face, hands, and foot estimation'
 arch=('x86_64')
 url='https://github.com/CMU-Perceptual-Computing-Lab/openpose'
