@@ -2,7 +2,7 @@
 
 PROJECT=bbsi
 DESCR="Several scripts to facilitate some everyday tasks"
-makedepends=("")
+makedepends=("make")
 depends=("bash" "ffmpeg" "yt-dlp")
 pkgver=0.2.0
 pkgrel=0

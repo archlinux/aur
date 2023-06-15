@@ -5,6 +5,7 @@ pkgbase = bbsi
 	url = https://gitlab.com/os-18/bbsi
 	arch = x86_64
 	license = Boost
+	makedepends = make
 	depends = bash
 	depends = ffmpeg
 	depends = yt-dlp
