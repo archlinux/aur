@@ -49,7 +49,7 @@ package() {
   install -Dm 644 usr/lib/initcpio/install/verity-squash-root "${pkgdir}/usr/lib/initcpio/install"
   install -Dm 755 usr/share/bash-completion/completions/verity-squash-root \
     "${pkgdir}/usr/share/bash-completion/completions/"
-  install -dm 755 "${pkgdir}/verity-squash-root/usr/lib/systemd/system"
+  install -dm 755 "${pkgdir}/usr/lib/systemd/system"
   install -Dm 644 usr/lib/systemd/system/verity-squash-root-notifiy.service \
     "${pkgdir}/usr/lib/systemd/system/verity-squash-root-notifiy.service"
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/verity-squash-root"
