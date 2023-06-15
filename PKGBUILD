@@ -1,6 +1,5 @@
-# Maintainer: Nick Logozzo <nlogozzo225@gmail.com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=nickvision-tagger
 _app_id=org.nickvision.tagger
 pkgver=2022.11.2
