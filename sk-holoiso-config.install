@@ -1,16 +1,10 @@
-pre_install() {
-    echo ""
-}
+DEVICENAME=$(cat /sys/devices/virtual/dmi/id/product_name)
 
-post_install() {
-    DEVICENAME=$(cat /sys/devices/virtual/dmi/id/product_name)
+# 安装或升级后的操作
+post_upgrade_or_install() {
 
-    echo "Enable service"
     sudo systemctl daemon-reload
-    sudo systemctl enable sk-auto-swap.service
     sudo systemctl disable --now sk-efi-mount.service
-    sudo systemctl enable sk-root-resume.service
-
   
     if [[ ! -d "/sys/class/power_supply/BAT1" ]]; then
         vp_status=$(systemctl is-enabled vpower.service 2>/dev/null)
@@ -60,33 +54,58 @@ post_install() {
         echo "" | tee /etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules
     fi
 
+
+}
+
+# 安装前的操作
+pre_install() {
+    sudo cp /etc/default/grub /etc/default/grub.sk-holoiso-config.bak
+}
+
+# 升级前的操作
+pre_upgrade() {
+    if [ ! -f "/etc/default/grub.sk-holoiso-config.bak" ]; then
+        sudo cp /etc/default/grub /etc/default/grub.sk-holoiso-config.bak
+    fi
+}
+
+# 安装后的操作
+post_install() {
+
+    post_upgrade_or_install
+
+    sudo systemctl enable sk-auto-swap.service
+    sudo systemctl enable sk-root-resume.service
+
     # OXP2 自启动相关服务
     if [[ "${DEVICENAME}" == "ONEXPLAYER 2 ARP23" ]]; then
         sudo systemctl enable --now oxp2-lsusb.service
         sudo systemctl enable --now oxp2-volume-button-fix.service
     fi
 
-    # if [[ "${DEVICENAME}" != "AIR Plus" ]]; then
-    #     sudo systemctl disable --now ayaled.service
-    # fi
+    if [[ "${DEVICENAME}" != "AIR Plus" ]]; then
+        sudo systemctl disable --now ayaled.service
+    fi
 }
 
-pre_upgrade() {
-  pre_install
-}
-
+# 升级后的操作
 post_upgrade() {
-  post_install
+    post_upgrade_or_install
 }
+
 
 pre_remove() {
     curr_version=$1
-    cp /etc/default/grub /etc/default/grub.bak-"${curr_version}"
+    # cp /etc/default/grub /etc/default/grub.bak-"${curr_version}"
 }
 
 post_remove() {
     curr_version=$1
     echo "Restore grub"
-    cp /etc/default/grub.bak-"${curr_version}" /etc/default/grub
-    rm /etc/default/grub.bak-"${curr_version}"
+    # cp /etc/default/grub.bak-"${curr_version}" /etc/default/grub
+    # rm /etc/default/grub.bak-"${curr_version}"
+    if [ -f "/etc/default/grub.sk-holoiso-config.bak" ]; then
+        sudo cp /etc/default/grub.sk-holoiso-config.bak /etc/default/grub
+        # sudo rm /etc/default/grub.sk-holoiso-config.bak
+    fi
 }
