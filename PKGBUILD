@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="leapp-appimage"
-pkgver=0.17.6
+pkgver=0.17.7
 pkgrel=1
 pkgdesc="the DevTool to access your cloud"
 arch=('x86_64')
@@ -13,12 +13,12 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::https://asset.noovolari.com/latest/Leapp-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Noovolari/leapp/master/LICENSE")
-sha256sums=('0d97a0172fd6b14d69fb569ef88eefb68ef0adce1ddaf9d0f4725819741b011a'
+sha256sums=('2a27ffdc3e2aadb2f9bbbd1c91749c5c16eea7ed6d02b7e7f78c4cf3f65367a1'
             'a830016911a348a54e89bd54f2f8b0d8fffdeac20aecfba8e36ebbf38a03f5ff')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/leapp.AppImage|g;s|/usr/share/icons/hicolor/256x256/apps/leapp.png|leapp|g' \
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|/usr/share/icons/hicolor/256x256/apps/${pkgname%-appimage}.png|${pkgname%-appimage}|g" \
         -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
