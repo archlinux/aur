@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 pkgname=python-ttpy
 _pkgname=${pkgname#python-}
-pkgver=1.20
+pkgver=1.2.0
 _pkgver=a50d5e0ce2a033a4b1aa703715cb85d715b9b34a
 pkgrel=1
 pkgdesc='Python implementation of the TT-Toolbox'
@@ -9,8 +9,8 @@ arch=('any')
 url='https://github.com/oseledets/ttpy'
 license=('Apache')
 groups=()
-depends=()
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+depends=('python-numpy' 'python-scipy' 'python-six')
+makedepends=('cython' 'gcc-fortran' 'python-python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/oseledets/$_pkgname/archive/$_pkgver.tar.gz"
         'tt-fort.tar.gz::https://github.com/oseledets/tt-fort/archive/refs/heads/master.tar.gz'
