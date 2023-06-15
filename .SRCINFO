@@ -1,6 +1,6 @@
 pkgbase = mipsel-elf-gcc
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (for baremetal MIPS)
-	pkgver = 12.2.0
+	pkgver = 13.1.0
 	pkgrel = 1
 	url = https://www.gnu.org/software/gcc/
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = mipsel-elf-gcc
 	license = LGPL
 	license = FDL
 	license = custom
-	makedepends = gcc-ada>=12
+	makedepends = gcc-ada>=13
 	depends = mipsel-elf-binutils
 	options = !ccache
 	options = !distcc
 	options = !emptydirs
 	options = !libtool
 	options = !strip
-	source = https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz
-	sha256sums = e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff
+	source = https://ftp.gnu.org/gnu/gcc/gcc-13.1.0/gcc-13.1.0.tar.xz
+	sha256sums = 61d684f0aa5e76ac6585ad8898a2427aade8979ed5e7f85492286c4dfc13ee86
 
 pkgname = mipsel-elf-gcc
