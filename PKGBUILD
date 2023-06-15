@@ -18,35 +18,32 @@ source=("git+https://github.com/godotengine/godot.git"
 sha256sums=()
 
 prepare() {
-  # Create the package folder
-  mkdir -vp $srcdir/$pkgname/ 
-
   # Clone the master branch of the Godot repository
-  git clone https://github.com/godotengine/godot.git $srcdir/$pkgname
+  git clone https://github.com/godotengine/godot.git "$srcdir"/"$pkgname"
   
   # Add the master branch of Zylann's godot_voxel repository to the Godot repository
-  git submodule add https://github.com/Zylann/godot_voxel.git $srcdir/$pkgname/modules/voxel
+  git submodule add https://github.com/Zylann/godot_voxel.git "$srcdir"/"$pkgname"/modules/voxel
 }
 
 build() {
-  cd $srcdir/$pkgname/
+  cd "$srcdir"/"$pkgname"/
   
   # Build the project
   scons platform=linuxbsd colored=yes
 }
 
 package() {
-  cd $srcdir
+  cd "$srcdir"
   
   # ?
-  install -Dm644 $srcdir/$pkgname/godot-voxel.desktop $pkgdir/usr/share/applications/godot-voxel.desktop
-  install -Dm644 $srcdir/godot-voxel/icon.svg $pkgdir/usr/share/pixmaps/godot-voxel.svg
+  install -Dm644 "$srcdir"/"$pkgname"/godot-voxel.desktop "$pkgdir"/usr/share/applications/godot-voxel.desktop
+  install -Dm644 "$srcdir"/godot-voxel/icon.svg "$pkgdir"/usr/share/pixmaps/godot-voxel.svg
 
-  cd $srcdir/$pkgname
+  cd "$srcdir"/"$pkgname"
   
   # ?
-  install -D -m755 $srcdir/bin/godot.linuxbsd.editor.x86_64 $pkgdir/usr/bin/godot-voxel
-  install -D -m644 $srcdir/$pkgname/LICENSE.txt $pkgdir/usr/share/licenses/godot-voxel/LICENSE
-  install -D -m644 $srcdir/$pkgname/misc/dist/linux/godot.6 $pkgdir/usr/share/man/man6/godot-voxel.6
+  install -D -m755 "$srcdir"/bin/godot.linuxbsd.editor.x86_64 "$pkgdir"/usr/bin/godot-voxel
+  install -D -m644 "$srcdir"/"$pkgname"/LICENSE.txt "$pkgdir"/usr/share/licenses/godot-voxel/LICENSE
+  install -D -m644 "$srcdir"/"$pkgname"/misc/dist/linux/godot.6 "$pkgdir"/usr/share/man/man6/godot-voxel.6
 }
 
