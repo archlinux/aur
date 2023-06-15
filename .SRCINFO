@@ -14,8 +14,8 @@ pkgbase = rasa
 	depends = python39
 	provides = rasa
 	provides = rasa-sdk
-	provides = python39-rasa
-	provides = python39-rasa-sdk
+	provides = python310-rasa
+	provides = python310-rasa-sdk
 	source = rasa-3.3.1::git+https://github.com/RasaHQ/rasa.git
 	md5sums = SKIP
 
