@@ -1,0 +1,29 @@
+From 1122f729cfb578cfc4b0bb04a20ea74610b74f16 Mon Sep 17 00:00:00 2001
+From: Louie Lu <git@louie.lu>
+Date: Thu, 15 Jun 2023 17:56:59 -0400
+Subject: [PATCH] Update GLUT_LIBRARY to GLUT_LIBRARIES
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c9e0e8f..5fa8fb4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -948,10 +948,10 @@ endif (WIN32)
+ # 3-D
+ if (WITH_3D_ADAM_MODEL)
+   set(OpenPose_3rdparty_libraries ${OpenPose_3rdparty_libraries}
+-      ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} ${GLEW_LIBRARY} ${FREE_IMAGE_LIBRARY})
++      ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} ${GLEW_LIBRARY} ${FREE_IMAGE_LIBRARY})
+ endif (WITH_3D_ADAM_MODEL)
+ if (WITH_3D_RENDERER)
+-  set(OpenPose_3rdparty_libraries ${OpenPose_3rdparty_libraries} ${GLUT_LIBRARY} ${OPENGL_LIBRARIES})
++  set(OpenPose_3rdparty_libraries ${OpenPose_3rdparty_libraries} ${GLUT_LIBRARIES} ${OPENGL_LIBRARIES})
+ endif (WITH_3D_RENDERER)
+ if (WITH_CERES)
+   set(OpenPose_3rdparty_libraries ${OpenPose_3rdparty_libraries} ${CERES_LIBRARIES})
+-- 
+2.41.0
+

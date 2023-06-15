@@ -8,7 +8,7 @@ pkgdesc='OpenPose: Real-time multi-person keypoint detection library for body, f
 arch=('x86_64')
 url='https://github.com/CMU-Perceptual-Computing-Lab/openpose'
 license=("ACADEMIC OR NON-PROFIT ORGANIZATION NONCOMMERCIAL RESEARCH USE ONLY")
-depends=('caffe' 'libgl' 'glu' 'glut' 'qt6-base')
+depends=('caffe-cuda' 'libgl' 'glu' 'glut' 'qt6-base')
 makedepends=('cmake' 'doxygen' 'graphviz' 'wget' 'boost')
 source=("${url}/archive/v${pkgver}.tar.gz")
 md5sums=('178876507c11dab3da2fcd68c748d90b')
@@ -40,7 +40,7 @@ build() {
     -DCaffe_LIBS:PATH="/usr/lib/libcaffe.so" \
     -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr" \
     ..
-  make
+  make -j28
 }
 
 package() {
