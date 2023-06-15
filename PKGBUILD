@@ -10,7 +10,6 @@ license=("MIT")
 _pkgname="LocalSend-${pkgver}-linux-x86-64.AppImage"
 noextract=(${_pkgname})
 options=("!strip")
-provides=("localsend-appimage")
 depends=('fuse2')
 source=("${_pkgname}::https://github.com/localsend/localsend/releases/download/v${pkgver}/${_pkgname}")
 sha512sums=("a4cf192c48feff624c9ac89b5480c2343c143b749382a4e6c125d0bafc55f526c5e0324623ca0df44e5a0970b9d6bf4288bc91ae1be10ddb76ce4973b45bb3d8")

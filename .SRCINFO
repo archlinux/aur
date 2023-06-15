@@ -6,7 +6,6 @@ pkgbase = localsend-appimage
 	arch = x86_64
 	license = MIT
 	depends = fuse2
-	provides = localsend-appimage
 	noextract = LocalSend-1.10.0-linux-x86-64.AppImage
 	options = !strip
 	source = LocalSend-1.10.0-linux-x86-64.AppImage::https://github.com/localsend/localsend/releases/download/v1.10.0/LocalSend-1.10.0-linux-x86-64.AppImage
