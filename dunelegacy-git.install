@@ -1,6 +1,6 @@
 
 post_install() {
-  echo "Remember you have to put your DUNEII datafiles under ~/.config/dunelegacy/data/"
+  echo "Remember you have to put your DUNE II datafiles under ~/.config/dunelegacy/data/"
 }
 
 post_upgrade() {
