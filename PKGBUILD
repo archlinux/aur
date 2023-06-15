@@ -20,18 +20,23 @@ arch=('any')
 license=('Apache')
 depends=(
     'asio'
+    'bullet'
     'cmake'
     'eigen'
     'git'
+    'pybind11'
     'python'
     'python-colcon-common-extensions'
+    'python-numpy'
     'python-yaml'
     'tinyxml2'
-    'pybind11'
+    'libyaml'
+    'python-lark-parser'
 )
 makedepends=(
   'python-rosinstall_generator'
   'python-vcstool'
+  'procps-ng'  # For 'free'
 )
 source=(
     "ros2::git+https://github.com/ros2/ros2.git#tag=release-humble-${pkgver//.}"
@@ -50,19 +55,19 @@ prepare() {
     fi
 
     # Clone the repos
+    printf "Cloning ros2 repositories\n"
     mkdir -p $srcdir/ros2/src
     vcs import $srcdir/ros2/src < $srcdir/ros2/ros2.repos
 
-    #
-    # Patches
-    #
+    # Apply patches
+    printf "Patching sources\n"
 
     # Missing cstdint includes
-    git -C "$srcdir/ros2/src/ros2/rcpputils" cherry-pick f96811a9047fa6a084a885219c88b415bc544487
-    git -C "$srcdir/ros2/src/eProsima/Fast-DDS" cherry-pick add29f42591fe3d785df727aea128f250040834f
-    git -C "$srcdir/ros2/src/ros-tooling/libstatistics_collector" cherry-pick 1c340c97c731019d0c7b40f8c167b0ef666bcf75
-    git -C "$srcdir/ros2/src/ros2/rclcpp/rclcpp/include/rclcpp" cherry-pick 86c77143c96d85711a87f2a5adcc4d7f0fb0dbeb
-    git -C "$srcdir/ros2/src/ros2/rosbag2" cherry-pick 65c889e1fa55dd85a148b27b8c27dadc73238e67
+    git -C "$srcdir/ros2/src/ros2/rcpputils" cherry-pick -n f96811a9047fa6a084a885219c88b415bc544487
+    git -C "$srcdir/ros2/src/eProsima/Fast-DDS" cherry-pick -n add29f42591fe3d785df727aea128f250040834f
+    git -C "$srcdir/ros2/src/ros-tooling/libstatistics_collector" cherry-pick -n 1c340c97c731019d0c7b40f8c167b0ef666bcf75
+    git -C "$srcdir/ros2/src/ros2/rclcpp/rclcpp/include/rclcpp" cherry-pick -n 86c77143c96d85711a87f2a5adcc4d7f0fb0dbeb
+    git -C "$srcdir/ros2/src/ros2/rosbag2" cherry-pick -n 65c889e1fa55dd85a148b27b8c27dadc73238e67
 }
 
 build() {
