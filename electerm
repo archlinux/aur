@@ -1,0 +1,2 @@
+#!/bin/sh
+exec electron18 /usr/share/electerm/app.asar "$@"
