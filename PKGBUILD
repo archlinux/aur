@@ -4,18 +4,30 @@ pkgname='spacer'
 pkgdesc='CLI tool to insert spacers in when command output stops'
 pkgver='0.1.6'
 pkgrel='1'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/samwho/spacer'
 license=('MIT')
-depends=()
+depends=('gcc-libs')
 optdepends=()
-makedepends=()
-checkdepends=()
+makedepends=('rust' 'gcc' 'binutils')
+checkdepends=('rust' 'git')
 provides=(spacer)
-conflicts=(spacer)
-source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/samwho/spacer/releases/download/v${pkgver}/spacer-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('1f2c04950920996c826bdfa1de543ccd117fec784663bb9cb733924ac30e9518')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/samwho/spacer/archive/v${pkgver}.tar.gz")
+sha256sums=('5d25b89722cc0247820c9dd16fdb8ad21e68019b6d8850f50c0e48686c3c73d0')
+
+build() {
+    cd "$pkgname-$pkgver"
+    cargo build --release
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    cargo test
+}
 
 package() {
-    install -Dm755 "spacer" "$pkgdir/usr/bin/spacer"
+    cd "$pkgname-$pkgver"
+    strip target/release/spacer
+    install -Dm755 "target/release/spacer" "$pkgdir/usr/bin/spacer"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
