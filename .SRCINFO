@@ -1,16 +1,15 @@
 pkgbase = r-optparse
 	pkgdesc = R command line parser inspired by Python's 'optparse'
-	pkgver = 1.7.1
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=optparse
 	arch = any
 	license = GPL
 	depends = r-getopt>=1.20.2
-	optdepends = r-covr
-	optdepends = r-knitr>=1.15.19
+	optdepends = r-knitr>=2.15.19
 	optdepends = r-stringr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/optparse_1.7.1.tar.gz
-	md5sums = 5d1638a182cfe75785ccdf1b404801ac
+	source = https://cran.r-project.org/src/contrib/optparse_1.7.3.tar.gz
+	md5sums = 48866cfb596f7dafc503c09954ab9f46
 
 pkgname = r-optparse
