@@ -1,7 +1,7 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 pkgname=codeberg-cli-git
-pkgver=0.3.4.0a15b5e
-pkgrel=2
+pkgver=0.3.5.a7b8a34
+pkgrel=1
 pkgdesc='CLI Tool for Codeberg similar to gh and glab.'
 arch=(x86_64)
 url='https://codeberg.org/RobWalt/codeberg-cli'
