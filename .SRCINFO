@@ -1,0 +1,18 @@
+pkgbase = pomota-appimage
+	pkgdesc = A simple user-friendly cross-platform tauri based pomodoro timer app that forces you to take a break
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/p32929/pomota
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = pomota
+	options = !strip
+	source = pomota-0.0.6.AppImage::https://github.com/p32929/pomota/releases/download/app-v0.0.6/pomota_0.0.6_amd64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/p32929/pomota/master/LICENSE
+	sha256sums = f77fec1d93854da07606a64125f8b9c52b2b74dfdc395ecb7f747379e5eb75d0
+	sha256sums = e3c1038536eb14a593ec4d00bceccbaa4f531674adc2dd53c4be34851b0eb8b7
+
+pkgname = pomota-appimage
