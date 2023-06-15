@@ -1,7 +1,7 @@
 pkgbase = whalebird
 	pkgdesc = An Electron based Mastodon, Pleroma, and Misskey client
-	pkgver = 5.0.6
-	pkgrel = 2
+	pkgver = 5.0.7
+	pkgrel = 1
 	url = https://whalebird.social
 	arch = x86_64
 	license = GPL3
@@ -15,10 +15,10 @@ pkgbase = whalebird
 	provides = whalebird
 	conflicts = whalebird-bin
 	conflicts = whalebird-desktop-git
-	source = https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/v5.0.6.tar.gz
+	source = https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/v5.0.7.tar.gz
 	source = whalebird.desktop
 	source = electron-builder.yml
-	md5sums = 1d539c294724f4b7c609c214888a0ec6
+	md5sums = 21329c243b3f73f1e89af4aab10237bc
 	md5sums = 2cf7ef689d208d2fa41ce3622dce3545
 	md5sums = 68af72623ba3763c9a1ea440b72a253d
 
