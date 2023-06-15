@@ -1,0 +1,28 @@
+--- CMakeLists.txt
++++ CMakeLists.txt
+
+@@ -11,7 +11,7 @@ Change the runtime path assigned during packaging
+ option(BUILD_SHARED_LIBS "Build LASlib as DLL" OFF)
+ 
+ if (BUILD_SHARED_LIBS AND UNIX AND NOT APPLE)
+-	set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib/LASlib")
++	set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+ endif()
+ 
+ add_subdirectory(LASlib/src)
+
+--- LASlib/src/CMakeLists.txt
++++ LASlib/src/CMakeLists.txt
+
+@@ -108,8 +108,8 @@ Change the installation directory
+ else()
+ 	install(TARGETS LASlib COMPONENT laslib EXPORT laslib-targets
+-		ARCHIVE DESTINATION lib/LASlib
+-		LIBRARY DESTINATION lib/LASlib
+-		RUNTIME DESTINATION lib/LASlib)
++		ARCHIVE DESTINATION lib
++		LIBRARY DESTINATION lib
++		RUNTIME DESTINATION lib)
+ 	install(EXPORT laslib-targets COMPONENT laslib DESTINATION lib/cmake/LASlib)
+ 	install(FILES ${CMAKE_SOURCE_DIR}/LASlib/src/laslib-config.cmake COMPONENT laslib DESTINATION lib/cmake/LASlib)
+ endif(MSVC)
