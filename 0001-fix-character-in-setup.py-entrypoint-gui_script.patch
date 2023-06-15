@@ -1,25 +1,20 @@
-From 2cfc50f83883e330e64054b762ef594a07bb3b90 Mon Sep 17 00:00:00 2001
-From: Basti Destruction <bastidest@mailbox.org>
-Date: Tue, 29 Dec 2020 09:33:35 +0100
-Subject: [PATCH] fix `:` character in setup.py entrypoint gui_script
-
----
- setup.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/setup.py b/setup.py
-index 62e9bb8..fc111c4 100644
+index 401add7..faf7b99 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -28,7 +28,7 @@
-     install_requires=['pillow','tkcolorpicker','wand'],
-     entry_points = {
-         "gui_scripts": [
--            "fotokilof = fotokilof:__main__",
-+            "fotokilof = fotokilof.__main__",
-         ]
-     },
+@@ -27,10 +27,10 @@ setup(
      include_package_data=True,
-
-2.29.2
-
+     packages=find_packages(),
+     install_requires=['pillow','wand','ttkbootstrap'],
+-#    entry_points = {
+-#        "gui_scripts": [
+-#            "fotokilof = fotokilof:__main__",
+-#        ]
+-#    },
++    entry_points = {
++        "gui_scripts": [
++            "fotokilof = fotokilof.__main__",
++        ]
++    },
+ )
+ 
