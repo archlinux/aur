@@ -1,6 +1,6 @@
 pkgbase = percolator-git
 	pkgdesc = Software for postprocessing of shotgun proteomics data + format converters
-	pkgver = 3.05.r140.g74a8b157
+	pkgver = 3.06.01
 	pkgrel = 1
 	url = http://percolator.ms/
 	arch = x86_64

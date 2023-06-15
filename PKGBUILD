@@ -1,7 +1,7 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgbase="percolator-git"
 pkgname=('percolator-git' 'percolator-converters-git')
-pkgver=3.05.r140.g74a8b157
+pkgver=3.06.01
 pkgrel=1
 pkgdesc="Software for postprocessing of shotgun proteomics data + format converters"
 url="http://percolator.ms/"
@@ -47,7 +47,7 @@ build() {
     cmake -DTARGET_ARCH=x86_64 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release "${srcdir}/source/src/converters"
     echo "Running make for percolator-converters ..."
     echo ".........................................."
-    make -j 4
+    make
 }
 
 package_percolator-git() {
