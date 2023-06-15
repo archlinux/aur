@@ -1,0 +1,16 @@
+pkgbase = rtl8852au-dkms-git
+	pkgdesc = The WiFi driver for Realtek chipsets RTL8832AU and RTL8852AU (e.g. ASUS USB-AX56, D-Link DW-AX1850, TP-Link AX1800)
+	pkgver = r62.bab83d7
+	pkgrel = 1
+	url = https://github.com/lwfinger/rtl8852au
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	conflicts = rtl8852au
+	source = git+https://github.com/lwfinger/rtl8852au
+	source = 40-rtl8852au-usb-modeswitch.rules
+	sha256sums = SKIP
+	sha256sums = 0764d1a35efc5434a43e685f5a1ea97019b10e124f04ddadbe89b7eb2ec88998
+
+pkgname = rtl8852au-dkms-git
