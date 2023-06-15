@@ -1,6 +1,6 @@
 pkgbase = nncmpp-git
 	pkgdesc = MPD client
-	pkgver = v2.0.0.r11.gda83dbe
+	pkgver = v2.0.0.r26.g4166b17
 	pkgrel = 1
 	url = https://git.janouch.name/p/nncmpp
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = nncmpp-git
 	makedepends = cmake
 	makedepends = pkg-config
 	makedepends = git
-	depends = readline
 	depends = ncurses
 	depends = libunistring
 	depends = curl
