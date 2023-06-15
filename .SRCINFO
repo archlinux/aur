@@ -14,6 +14,7 @@ pkgbase = bart-git
 	optdepends = octave
 	optdepends = python3
 	provides = bart
+	conflicts = bart
 	source = bart::git+https://github.com/mrirecon/bart.git
 	source = Makefile.local
 	sha512sums = SKIP
