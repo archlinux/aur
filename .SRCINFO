@@ -1,11 +1,16 @@
 pkgbase = hyperleda-galaxy-db-astap
-	pkgdesc = Massive database of galaxies and other non-star objects, for use with ASTAP
+	pkgdesc = Massive database of galaxies and other non-star objects
 	pkgver = 2019.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://leda.univ-lyon1.fr/
 	arch = any
 	license = LGPL3
-	depends = astap
+	optdepends = astap-bin: binary GTk version
+	optdepends = astap-bin-qt5: binary Qt version
+	optdepends = astap: sourced Qt version
+	optdepends = astap-cli: CLI version
+	optdepends = hnsky-hg: planetarium program, hg-version
+	optdepends = hnsky-bin: planetarium program, bin-version
 	source = hyperleda.deb::https://downloads.sourceforge.net/project/astap-program/star_databases/hyperleda.deb
 	sha256sums = 98ab5a23a468addce87f3fc534a67f8b53d64388af0e1ed162b22f3765f27758
 
