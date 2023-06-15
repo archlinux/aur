@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=pot-translation-appimage
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A cross-platform software for text translation."
 arch=("x86_64")
@@ -12,7 +12,7 @@ noextract=(${_pkgname})
 options=("!strip")
 depends=('fuse2')
 source=("${_pkgname}::https://github.com/pot-app/pot-desktop/releases/download/${pkgver}/${_pkgname}")
-sha512sums=("c1b88510a1573cdff9f8bb7b5715c9f68819aeadca67e5612ece03992e99f6c22f53c9a61bbafd60402b90238b1d28b195bc146c3249a4cc75c6e7df3c137b18")
+sha512sums=("ced925a65b3a19383789faf03d85d48f42b6dd2af1d10327f10d03baa65eff9f9ce758363b84fcf57368206552da6b7ed5d3ccd2094e83381bc481fdd93bf2d1")
 
 _installdir=/opt/appimages
 
