@@ -2,8 +2,8 @@
 # Contributor: vlad0x00 <see github>
 
 pkgname=btllib
-pkgver=1.6.0
-pkgrel=5
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="Bioinformatics Technology Lab common code library https://doi.org/10.21105/joss.04720"
 arch=('x86_64')
 url="https://github.com/bcgsc/btllib"
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=('gcc-libs' 'samtools' 'python')
 makedepends=('meson' 'ninja' 'cmake' 'git' 'doxygen' 'swig')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/btllib-${pkgver}.tar.gz")
-sha256sums=('4a122c1047785dc865b8c94063714667f8ca43b8a881754eebd96dbb44fd1c3f')
+sha256sums=('e391f56ce03f95789f7214d8d4a276892c5303b53f5a3ebf8479cc8547cc3384')
 options=('!strip')
 
 build() {
