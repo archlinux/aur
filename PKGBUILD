@@ -1,5 +1,5 @@
 pkgname=nsproxy
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A command-line tool that force applications to use a specific SOCKS5 or HTTP proxy.'
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL2')
 depends=('cmake')
 source=("$pkgname-$pkgver.zip"::"https://github.com/nlzy/$pkgname/archive/refs/tags/v$pkgver.zip")
             
-sha512sums=('a4b7679deda3dd735d496ba625fb5ad93ef4a542117ba6699be2af50ea3a30877688077cf13184ef73718eec5345ccf6cce65f26076e6a9a22fa11a093bee61f')
+sha512sums=('65d205ce5ef81ecffc7e6f939bc9281bf100bb4493241f146471427a3f3108079902cc3ae1e26a0a19d8bd8f8158d41363abdfb6b8a475677e7c02ade92e1c5c')
 
 
 
