@@ -7,7 +7,7 @@ xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
 pkgver=1.10.5
 _srcname="SeriousSamClassic-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc="Serious Sam Classic native Linux XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic"
@@ -30,7 +30,8 @@ source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgv
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-XPLUS/SamTFE-XPLUS.tar.xz.partac"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partaa"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partab"
-	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partac")
+	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partac"
+    "0001-remove_SE1_10b_depend.patch")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
@@ -43,7 +44,8 @@ sha256sums=('ecd850cabd144b29bcec97de4ad8a1ffc14144432744de9bf39fe1d00385daf6'
             '3da6b8588115cf31cb67e15f527dc8b6a83da16fe35ac8c7b78ed9522e0211a4'
             '28a90da56de5d6591a2e65154778030ba28b375d29556fd7e1db085d2c00b877'
             '93fe183a2f0a35989b3d1678dddb1c5976cda94747d4186c6f36af4ccf144443'
-            '8282f527b54e9d8fe009640b7634560f3b4bf0fc9b72cdc2f865f1c226339d35')
+            '8282f527b54e9d8fe009640b7634560f3b4bf0fc9b72cdc2f865f1c226339d35'
+            '244101d02598010e4c45e57f26e0842d4cff058e3cde5e59062b9d36b5ffaca0')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -51,6 +53,8 @@ else
 fi
 
 prepare(){
+  # Prepare patch
+  cat 0001-remove_SE1_10b_depend.patch > "$srcdir/$_srcname/0001-remove_SE1_10b_depend.patch"
 
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
@@ -78,8 +82,8 @@ prepare(){
   chmod 755 build-linux"$_bits".sh
 
   cd "$srcdir/$_srcname"
-  # patch
-  # patch -p1 < sam-1.10.4-to-1.10.5-pre.patch || return 1
+  # apply patch
+  patch -p1 < 0001-remove_SE1_10b_depend.patch || return 1
 }
 
 build(){
