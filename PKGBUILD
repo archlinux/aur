@@ -5,7 +5,7 @@
 _pkgname=dwmbar
 pkgname="$_pkgname-git"
 pkgver=0.r201.f112628
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple and modular status bar for dwm'
 # some of the modules are x86_64 ELFs
 arch=(x86_64)

@@ -1,7 +1,7 @@
 pkgbase = dwmbar-git
 	pkgdesc = Simple and modular status bar for dwm
 	pkgver = 0.r201.f112628
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thytom/dwmbar
 	arch = x86_64
 	license = GPL3
