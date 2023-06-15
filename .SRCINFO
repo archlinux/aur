@@ -1,6 +1,6 @@
 pkgbase = fcitx5-mozc-ext-neologd
 	pkgdesc = Fcitx5 Module of Mozc (Google Japanese Input OSS) with external generated dictionaries (NEologd and Sudachi.)
-	pkgver = 2.29.5111.102.g99cd187
+	pkgver = 2.29.5111.102.ga0fc18b
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = fcitx5-mozc-ext-neologd
 	conflicts = fcitx-mozc-ut-unified
 	conflicts = fcitx-mozc-ut-unified-full
 	conflicts = fcitx5-mozc
-	source = git+https://github.com/fcitx/mozc.git#commit=99cd187
+	source = git+https://github.com/fcitx/mozc.git#commit=a0fc18b
 	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-202110.zip
 	source = https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-202110.zip
 	source = git+https://chromium.googlesource.com/breakpad/breakpad#commit=8988364
