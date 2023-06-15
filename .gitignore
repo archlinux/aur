@@ -1,0 +1,6 @@
+/*
+!.gitignore
+!.gitlab-ci.yml
+!PKGBUILD
+!.SRCINFO
+!gcc10.patch

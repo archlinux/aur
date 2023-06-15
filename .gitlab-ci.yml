@@ -1,0 +1,26 @@
+include:
+- project: "common/gitlab-helper"
+  ref: master
+  file: "ci-helper.yml"
+
+workflow: !reference [ .common, workflow ]
+
+variables:
+  PKG_NAME: "astromatic-sextractor"
+
+stages:
+- build
+- test
+- deploy
+
+build-astromatic-sextractor:
+  extends: .arch-build
+  image: $CI_REGISTRY/common/gitlab-helper/archlinux-yay:master
+    
+test-astromatic-sextractor:
+  extends: .arch-test
+  needs: ["build-astromatic-sextractor"]
+  image: $CI_REGISTRY/common/gitlab-helper/archlinux-yay:master
+
+deploy-astromatic-sextractor:
+  extends: .arch-deploy
