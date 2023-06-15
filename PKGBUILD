@@ -12,9 +12,8 @@ arch=(i686 x86_64)
 license=(GPL3 custom)
 
 depends=(gcc-ada gtk3)
-makedepends=(gprbuild)
+makedepends=(gprbuild-toolbox)
 
-#source=(file:///opt/gnatstudio-sources/$pkgname-$pkgver-20230428-165F0-src.tar.gz
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230428-165F0-src.tar.gz
         Makefile.in-patch)
 sha256sums=(596d19722c0b7f6ec67d0f00918a2bfb0ae0fb7352b2182a290d5dcdf31e1ba9
