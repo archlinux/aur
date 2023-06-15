@@ -24,6 +24,7 @@ prepare() {
     _desktop_file="squashfs-root/lx-music-desktop.desktop"
     sed -i "s+Name=lx-music-desktop+Name=LX Music+" ${_desktop_file}
     sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/lx-music-desktop.AppImage+" ${_desktop_file}
+    sed -i "s+^Icon=.*+Icon=lx-music-desktop-appimage+" ${_desktop_file}
     sed -i "/^Comment=/d" ${_desktop_file}
     sed -i "/^Name[zh_CN]=/d" ${_desktop_file}
     sed -i "3iName[zh_CN]=洛雪音乐助手" ${_desktop_file}
