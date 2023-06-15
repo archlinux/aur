@@ -11,7 +11,7 @@ license=('GPL3')
 provides=('signal-cli')
 conflicts=('signal-cli')
 depends=('libsignal-client')
-makedepends=('native-image-jdk17-bin' 'gradle' 'asciidoc')
+makedepends=('jdk17-graalvm-bin' 'gradle' 'asciidoc')
 source=("https://github.com/AsamK/${_pkgname}/archive/v${pkgver}.tar.gz"
         "https://github.com/AsamK/${_pkgname}/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc")
 sha512sums=('f27618d817a28ceece6f263e6923f05c73750a9137d406f1f67e868920b655bdef345f1f2f373527716a495b9cac18e0d8adb06c68da0c79a068040b3355c9dc'
