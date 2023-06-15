@@ -4,7 +4,7 @@
 
 pkgname=simple_backup
 pkgdesc='Simple backup script that uses rsync to copy files'
-pkgver=3.3.0
+pkgver=3.4.1
 pkgrel=1
 epoch=1
 url="https://github.com/Fuxino/${pkgname}"
@@ -24,7 +24,7 @@ conflicts=('simple_backup-git')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/Fuxino/${pkgname}/archive/${pkgver}.tar.gz
         https://github.com/Fuxino/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.sig)
 validpgpkeys=('7E12BC1FF3B6EDB2CD8053EB981A2B2A3BBF5514')
-sha256sums=('b3ce5a675677208def00339f8449aaa0979be12c89a62ec6d4bc103ec117f918'
+sha256sums=('6c03338829b629b00d182525c5f0c20bb64f05c54ad13b976acc4eb2f574f115'
             'SKIP')
 
 build()
