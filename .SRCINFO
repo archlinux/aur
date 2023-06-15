@@ -1,0 +1,18 @@
+pkgbase = tauri-ui-appimage
+	pkgdesc = Create modern desktop applications with Tauri and shadcn/ui.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/agmmnn/tauri-ui
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = tauri-ui
+	options = !strip
+	source = tauri-ui-0.1.3.AppImage::https://github.com/agmmnn/tauri-ui/releases/download/v0.1.3/tauri-ui_0.1.3_amd64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/agmmnn/tauri-ui/master/LICENSE
+	sha256sums = b734d3acf7267da1290c969cf871531776e889059a8c4e93d544e240ef515f34
+	sha256sums = 28ade86a3ae7c86de8f439505b9900c83d4ce190bd8258522aa94bca93d546f4
+
+pkgname = tauri-ui-appimage
