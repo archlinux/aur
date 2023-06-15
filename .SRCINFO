@@ -1,12 +1,12 @@
 pkgbase = stylish-icon-theme-adwaita
 	pkgdesc = Modern icon theme for Linux Desktops with Adwaita Folder
-	pkgver = 23.06
+	pkgver = 23.06a
 	pkgrel = 1
-	url = https://github.com/kuroehanako/Stylish-icon-theme
+	url = https://github.com/mjkim0727/Stylish-icon-theme
 	arch = any
 	license = GPLv3
 	depends = stylish-icon-theme
-	source = stylish-icon-theme-adwaita-23.06.tar.gz::https://github.com/kuroehanako/Stylish-icon-theme/releases/download/23.06/Stylish-Adwaita.tar.gz
-	sha256sums = 88771cfeee0de1e0d29adac79cc8c05bf91c04951bda0120c84176c363aba449
+	source = stylish-icon-theme-adwaita-23.06a.tar.gz::https://github.com/mjkim0727/Stylish-icon-theme/releases/download/23.06a/Stylish-Adwaita.tar.gz
+	sha256sums = 1594642b026b797140bec317aca8ab1d5e3a428ffd1c30c8074f8d22c28b33bf
 
 pkgname = stylish-icon-theme-adwaita
