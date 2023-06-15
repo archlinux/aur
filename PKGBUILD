@@ -1,29 +1,27 @@
 # Maintainer: Ali Riza Keskin <aliriza.keskin@pardus.org.tr>
-pkgname="pardus-lightdm-greeter"
+pkgname="sterm-git"
 pkgver="master"
 pkgrel=1
-pkgdesc="A customizable lightdm greeter for Pardus GNU/Linux."
+pkgdesc="Sulincix Terminal"
 arch=("any")
-url="https://github.com/pardus/pardus-lightdm-greeter"
+url="https://gitlab.com/sulincix/sterm"
 license=(GPL3)
-makedepends=("make")
-source=("https://github.com/pardus/pardus-lightdm-greeter/archive/refs/heads/master.zip")
+makedepends=("meson" "vala")
+source=("https://gitlab.com/sulincix/sterm/-/archive/master/sterm-master.tar.gz")
 md5sums=("SKIP")
 
 depends=(
-    python-gobject
-    python-cairo
-    python-xlib
+    vte3
     gtk3
-    lightdm
 )
 
 build() {
     cd "$pkgname-$pkgver"
-    make
+    meson setup build --prefix=/usr
+    ninja -C build
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  make install DESTDIR="${pkgdir}"
+  ninja install -C install DESTDIR="${pkgdir}"
 }
