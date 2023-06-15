@@ -1,13 +1,13 @@
 pkgbase = libretro-easyrpg-player
 	pkgdesc = FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter (libretro core)
-	pkgver = 0.7.0
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://easyrpg.org/
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
-	depends = liblcf>=0.7.0
+	depends = liblcf>=0.8
 	depends = pixman
 	depends = freetype2
 	depends = libvorbis
@@ -16,7 +16,7 @@ pkgbase = libretro-easyrpg-player
 	depends = speexdsp
 	depends = wildmidi
 	depends = libretro-core-info
-	source = libretro-easyrpg-player::git+https://github.com/EasyRPG/Player.git#commit=281be71fee034ea789308919b2a77c92b7446c20
+	source = libretro-easyrpg-player::git+https://github.com/EasyRPG/Player.git#commit=f8e41f43b619413f95847536412b56f85307d378
 	sha256sums = SKIP
 
 pkgname = libretro-easyrpg-player
