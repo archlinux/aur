@@ -1,22 +1,22 @@
 pkgbase = rasa
 	pkgdesc = Open source machine learning framework to automate text- and voice-based conversations: NLU, dialogue management, connect to Slack, Facebook, and more - Create chatbots and voice assistants
-	pkgver = 3.3.1
-	pkgrel = 2
+	pkgver = 3.6.0
+	pkgrel = 1
 	url = https://github.com/RasaHQ/rasa
 	arch = x86_64
 	license = Apache License 2.0
 	makedepends = git
-	makedepends = python39
+	makedepends = python310
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-virtualenv
-	depends = python39
+	depends = python310
 	provides = rasa
 	provides = rasa-sdk
 	provides = python310-rasa
 	provides = python310-rasa-sdk
-	source = rasa-3.3.1::git+https://github.com/RasaHQ/rasa.git
+	source = rasa-3.6.0::git+https://github.com/RasaHQ/rasa.git
 	md5sums = SKIP
 
 pkgname = rasa
