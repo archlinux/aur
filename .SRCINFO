@@ -1,0 +1,16 @@
+pkgbase = ada_language_server-bin
+	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
+	pkgver = 23.0.18
+	pkgrel = 1
+	url = https://github.com/AdaCore/ada_language_server
+	arch = x86_64
+	license = GPL3
+	makedepends = patchelf
+	depends = gmp
+	depends = glibc
+	provides = ada_language_server
+	conflicts = ada_language_server
+	source = https://github.com/AdaCore/ada_language_server/releases/download/23.0.18/als-23.0.18-Linux_amd64.zip
+	b2sums = b59238328b40a5f02cfe73bcf79fc62813bf94041626530949b4e66a6a15612bb6d04ee48fbfcbc59f9e2f3dd08ff4e3a5cf2a0c378ff739ec6f55f2da493350
+
+pkgname = ada_language_server-bin
