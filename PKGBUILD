@@ -10,7 +10,7 @@ depends=(suitesparse netcdf netcdf-cxx)
 makedepends=(git autoconf automake gcc-fortran libtool)
 optdepends=('ginac: symbolic elements support',
 	    'lapack: eigenanalysis support',
-	    'openblas-lapack: eigenanalysis support, openBLAS version')
+	    'blas-openblas: eigenanalysis support, openBLAS version')
 source=("${pkgname}::git+https://public.gitlab.polimi.it/DAER/mbdyn.git"
 	"mbdyn-utils-aur.patch")
 install=mbdyn.install
