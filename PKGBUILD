@@ -1,9 +1,10 @@
 # Maintainer: David Bernheisel <david+aur at bernheisel dot com>
+# Maintainer: Matrix <thysupremematrix atttt tuta dottt io>
 # Based on the brscan4 PKGBUILD by Harey
 
 pkgname=brscan5
-pkgver=1.2.11_0
-pkgrel=2
+pkgver=1.2.12_0
+pkgrel=1
 pkgdesc='SANE drivers from Brother for compatible models'
 arch=('i686' 'x86_64')
 license=('GPL' 'custom:Brother')
@@ -11,11 +12,10 @@ url="http://support.brother.com"
 depends=('sane' 'libusb-compat')
 optdepends=('gtk2: for running brscan_gnetconfig')
 source=()
-md5sums=()
+md5sums_i686=('a323295c12bb153a0430e61d01c95ce4')
+md5sums_x86_64=('f83901b5f8beb172e638dd2e3dee765f')
 source_x86_64=("https://download.brother.com/welcome/dlf104036/${pkgname}-${pkgver/_/-}.x86_64.rpm")
-md5sums_x86_64=('b4eacf7266b791ef6c8f76238e96378a')
 source_i686=("https://download.brother.com/welcome/dlf104035/${pkgname}-${pkgver/_/-}.i386.rpm")
-md5sums_i686=('dca083bd72991c0d87ec43698721cd65')
 install="brscan5.install"
 
 build() {
