@@ -1,16 +1,17 @@
 pkgbase = pardus-lightdm-greeter
 	pkgdesc = A customizable lightdm greeter for Pardus GNU/Linux.
-	pkgver = 0.0.3
+	pkgver = master
 	pkgrel = 1
 	url = https://github.com/pardus/pardus-lightdm-greeter
 	arch = any
 	license = GPL3
 	makedepends = make
 	depends = python-gobject
+	depends = python-cairo
 	depends = python-xlib
 	depends = gtk3
 	depends = lightdm
-	source = https://github.com/pardus/pardus-lightdm-greeter/archive/refs/tags/debian/0.0.3.zip
-	md5sums = edfd97b4a1a99b9dc66cebf66bfce33b
+	source = https://github.com/pardus/pardus-lightdm-greeter/archive/refs/heads/master.zip
+	md5sums = SKIP
 
 pkgname = pardus-lightdm-greeter
