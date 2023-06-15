@@ -1,4 +1,5 @@
-pkg
-src
-session-manager-plugin.deb
-aws-session-manager-plugin*.tar
+*
+!PKGBUILD
+!.gitignore
+!.SRCINFO
+!*.patch
