@@ -6,13 +6,16 @@ pkgbase = bart-git
 	arch = x86_64
 	license = BSD
 	makedepends = git
-	depends = gcc>=11.2.0
+	makedepends = gcc>=11.2.0
+	depends = gcc-libs
 	depends = openblas
 	depends = blas-openblas
 	depends = fftw
 	depends = libpng
-	optdepends = octave
-	optdepends = python3
+	optdepends = octave: MATLAB/Octave wrapper
+	optdepends = python: Python wrapper
+	optdepends = python-numpy: Python wrapper
+	optdepends = python-matplotlib: Python scripts
 	provides = bart
 	conflicts = bart
 	source = bart::git+https://github.com/mrirecon/bart.git
