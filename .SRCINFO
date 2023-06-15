@@ -1,0 +1,18 @@
+pkgbase = ooniprobe-desktop-appimage
+	pkgdesc = The next generation OONI Probe desktop app
+	pkgver = 3.9.0
+	pkgrel = 1
+	url = https://github.com/ooni/probe-desktop
+	arch = x86_64
+	license = BSD3-Clause
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = ooniprobe-desktop
+	options = !strip
+	source = ooniprobe-desktop-3.9.0.AppImage::https://github.com/ooni/probe-desktop/releases/download/v3.9.0/ooniprobe-desktop-3.9.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/ooni/probe-desktop/master/LICENSE.md
+	sha256sums = 0c25e895bba15584d2d064d78d80020ff80eeb51f3e03bee92f0485a28e0fa8a
+	sha256sums = 1fc3f6a8bf2909bfaad6d6f4825c8e8b6dfed17e3b5270a9fd060d6de7938f8d
+
+pkgname = ooniprobe-desktop-appimage
