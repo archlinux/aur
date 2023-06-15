@@ -12,7 +12,7 @@ arch=(i686 x86_64)
 license=(GPL3 custom)
 
 depends=(gcc-ada gtk3)
-makedepends=(gprbuild-toolbox)
+makedepends=(gprbuild gprtools)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230428-165F0-src.tar.gz
         Makefile.in-patch)
