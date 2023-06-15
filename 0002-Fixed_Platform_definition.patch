@@ -1,0 +1,24 @@
+--- a/SamTFE/Sources/Engine/Graphics/DrawPort.cpp	2023-06-15 15:33:34.948634151 +0300
++++ b/SamTFE/Sources/Engine/Graphics/DrawPort.cpp	2023-06-15 15:35:00.308972920 +0300
+@@ -1168,7 +1168,8 @@
+   // if the point is out or at the edge of drawport, it is not visible by default
+   if( pixI<1 || pixI>dp_Width-2 || pixJ<1 || pixJ>dp_Height-2) return FALSE;
+ 
+-  #if defined(__arm__) || defined(PLATFORM_RISCV64)
++  #if defined(__arm__) || PLATFORM_RISCV64
++  #warning PLATFORM_NOT_X86 use GLES based GPU (Lens Flare not work)
+   // Assuming here that all ARM machine use GLES based GPU, were DEPTH reading is probably not available (or super slow)
+   return FALSE;
+   #endif
+--- a/SamTSE/Sources/Engine/Graphics/DrawPort.cpp	2023-06-15 15:33:34.948634151 +0300
++++ b/SamTSE/Sources/Engine/Graphics/DrawPort.cpp	2023-06-15 15:35:00.308972920 +0300
+@@ -1168,7 +1168,8 @@
+   // if the point is out or at the edge of drawport, it is not visible by default
+   if( pixI<1 || pixI>dp_Width-2 || pixJ<1 || pixJ>dp_Height-2) return FALSE;
+ 
+-  #if defined(__arm__) || defined(PLATFORM_RISCV64)
++  #if defined(__arm__) || PLATFORM_RISCV64
++  #warning PLATFORM_NOT_X86 use GLES based GPU (Lens Flare not work)
+   // Assuming here that all ARM machine use GLES based GPU, were DEPTH reading is probably not available (or super slow)
+   return FALSE;
+   #endif
