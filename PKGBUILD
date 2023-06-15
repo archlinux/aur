@@ -2,14 +2,14 @@
 
 pkgname=python-numpy-git
 _pkgname=numpy
-pkgver=v1.23.0.dev0.r907.gf6efa62e3c
+pkgver=v1.25.0rc1.r193.g2e8994d3d1
 pkgrel=1
 pkgdesc="Scientific tools for Python - git version"
 arch=('x86_64')
 license=('custom:BSD 3-clause')
 url="https://www.numpy.org/"
-depends=('cblas' 'lapack' 'python' 'openblas-lapack')
-optdepends=('python-nose: testsuite')
+depends=('cblas' 'lapack' 'python')
+optdepends=('python-nose: testsuite' 'openblas: faster linear algebra')
 makedepends=('python-setuptools' 'gcc-fortran' 'python-nose' 'cython')
 checkdepends=('python-pytest' 'python-hypothesis')
 conflicts=('python-numpy')

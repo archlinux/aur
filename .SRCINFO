@@ -1,6 +1,6 @@
 pkgbase = python-numpy-git
 	pkgdesc = Scientific tools for Python - git version
-	pkgver = v1.23.0.dev0.r907.gf6efa62e3c
+	pkgver = v1.25.0rc1.r193.g2e8994d3d1
 	pkgrel = 1
 	url = https://www.numpy.org/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = python-numpy-git
 	depends = cblas
 	depends = lapack
 	depends = python
-	depends = openblas-lapack
 	optdepends = python-nose: testsuite
+	optdepends = openblas: faster linear algebra
 	provides = python-numpy
 	conflicts = python-numpy
 	options = staticlibs
