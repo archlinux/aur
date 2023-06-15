@@ -10,13 +10,12 @@ arch=('any')
 url='https://github.com/OpenVPN/ovpn-dco'
 license=('GPL2')
 depends=('dkms')
-makedepends=('git')
 provides=('ovpn-dco' 'ovpn-dco-dkms')
 conflicts=('ovpn-dco' 'ovpn-dco-git' 'ovpn-dco-dkms-git')
 source=("ovpn-dco-${_dco_commit}.tar.gz::https://github.com/OpenVPN/ovpn-dco/archive/${_dco_commit}.tar.gz"
         dkms.conf.in)
 b2sums=('67576d4bd726fd9cf6f3a107dbc0d1150507942118f50f3867a690c87387ee0c5d10beb4cf88a94768f9bfe3d6a99cc16e8e53a1de06f35bfff9b6ff7bbb6301'
-        'ef58d221d70302cc41831e7ef3337954510540f2d59d85cb1f2767ee718324ad5568544053f64b7de00377d9620bb9f6df1ed1befcefabfc5530bec317ffde47')
+        '59ead5244548662b6cc8ff4e592138accba0d09b2996248cee217ec47fdb9fae565ae43ce32cb23a88f4e152bf0205ce3467de2f2090c4a1104382b68585931d')
 
 package() {
 	cd "${srcdir}"
