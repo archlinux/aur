@@ -1,6 +1,6 @@
 # Maintainer: Leon Mergen <leon@solatis.com>
 pkgname=cloudflare-warp-bin
-pkgver=2023.3.398
+pkgver=2023.3.470
 pkgrel=1
 pkgdesc="Cloudflare Warp Client"
 url="https://1.1.1.1"
@@ -19,15 +19,15 @@ changelog=$pkgname.changelog
 #
 # `curl https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages`
 source=(
-    "${pkgname}-${pkgver}-x86_64.deb::https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2023_3_398_1_amd64_9880b6c7ae_amd64.deb"
+    "${pkgname}-${pkgver}-x86_64.deb::https://pkg.cloudflareclient.com/pool/focal/main/c/cloudflare-warp/cloudflare-warp_2023.3.470-1_amd64.deb"
     "${pkgname}-${pkgver}-${pkgrel}-Release::https://pkg.cloudflareclient.com/dists/focal/Release"
     "${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages::https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages"
 )
 
-md5sums=('762831f7419edfe79374e7489cbc85e1'
+md5sums=('f4e7de64d6fdd4c794750dc186d7993b'
          'SKIP'
          'SKIP')
-sha256sums=('49d8046fc85f172dded51f217e012c15800e9a6113bd8f575fc98f8c0cdd5eb1'
+sha256sums=('642b85c831f8e4821e2abf14c519e0c0537c0c36577236b45e80836845b0fa9c'
             'SKIP'
             'SKIP')
 install=$pkgname.install
@@ -65,34 +65,34 @@ check() {
     #
     # First verify the hash of the Packages file:
     #  * narrow down to rows which contain the Package files, 'main/binary-amd64/Packages'
-    #  * narrow down to rows which have 128-character hashes (sha512)
+    #  * narrow down to rows which have 128-character hashes (sha256)
     #  * keep only the hash
-    #  * save it in a file and run it through sha512sum
+    #  * save it in a file and run it through sha256sum
     #
     # Once we verified the Packages files, look up the .deb's hash in the Packages file,
     # and verify the .deb
 
-    PKGHASH="${srcdir}/${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages.sha512"
-    DEBHASH="${srcdir}/${pkgname}-${pkgver}-x86_64.deb.sha512"
+    PKGHASH="${srcdir}/${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages.sha256"
+    DEBHASH="${srcdir}/${pkgname}-${pkgver}-x86_64.deb.sha256"
     MD5SUMS="${srcdir}/md5sums"
 
-    # This grabs the Packages sha512 hash from the Release file
-    echo "$(grep -E '^\s?[a-f0-9]{128}\s+[0-9]+\s+main/binary-amd64/Packages$' ${pkgname}-${pkgver}-${pkgrel}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages" > ${PKGHASH}
+    # This grabs the Packages sha256 hash from the Release file
+    echo "$(grep -E '^\s?[a-f0-9]{64}\s+[0-9]+\s+main/binary-amd64/Packages$' ${pkgname}-${pkgver}-${pkgrel}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages" > ${PKGHASH}
 
-    # This grabs the .deb sha512 hash from the Packages file
-    echo "$(grep -E '(Version|SHA512)' ${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages | grep -E -A1 ${pkgver} | tail -n1 | awk '{print $2}') ${pkgname}-${pkgver}-x86_64.deb" > ${DEBHASH}
+    # This grabs the .deb sha256 hash from the Packages file
+    echo "$(grep -E '(Version|SHA256)' ${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages | grep -E -A1 ${pkgver} | tail -n1 | awk '{print $2}') ${pkgname}-${pkgver}-x86_64.deb" > ${DEBHASH}
 
     echo "==> Validating package checksums"
 
-    echo "==> sha512sum: ${PKGHASH}"
-    if ! sha512sum --status --check ${PKGHASH}
+    echo "==> sha256sum: ${PKGHASH}"
+    if ! sha256sum --status --check ${PKGHASH}
     then
         echo "!!> SHA512 mismatch: ${PKGHASH}"
         exit 1
     fi
 
-    echo "==> sha512sum: ${DEBHASH}"
-    if ! sha512sum --status --check ${DEBHASH}
+    echo "==> sha256sum: ${DEBHASH}"
+    if ! sha256sum --status --check ${DEBHASH}
     then
         echo "!!> SHA512 mismatch: ${DEBHASH}"
         exit 1
