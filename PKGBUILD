@@ -3,17 +3,19 @@
 
 pkgname=bart-git
 _pkgname=bart
-pkgver=0.7.00.r358.ge35c79c
+pkgver=0.8.00.r345.ge7203f43
 pkgrel=1
 pkgdesc="Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magnetic Resonance Imaging"
 arch=('x86_64')
 url="https://mrirecon.github.io/bart/"
 license=('BSD')
 makedepends=('git')
-depends=('gcc>=11.2.0' 'openblas-lapack' 'fftw' 'libpng')
+depends=('gcc>=11.2.0' 'openblas' 'blas-openblas' 'fftw' 'libpng')
 optdepends=('octave' 'python3')
-source=('bart::git+https://github.com/mrirecon/bart.git')
-sha512sums=('SKIP')
+source=('bart::git+https://github.com/mrirecon/bart.git'
+	'Makefile.local')
+sha512sums=('SKIP'
+            '4ab4bb30e696dd262ecf59a64ec2ae5fa8f4832153816b4966c6af6e33fcf3981a5a4083d963cd3e470cd6000df32bfff4db146e9e34672f94962b5b329f4846')
 
 pkgver() {
     cd "$_pkgname"
@@ -21,6 +23,14 @@ pkgver() {
     # but also use the last tag actually describing a version, which is the latest
     # tag starting with v (for now)
     git describe --match v\* --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$_pkgname"
+
+    # set path for openblas/lapacke/cblas headers
+    ln -s "${srcdir}/Makefile.local"
+
 }
 
 build() {
