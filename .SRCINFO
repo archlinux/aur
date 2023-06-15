@@ -1,0 +1,15 @@
+pkgbase = aniship-night-appimage
+	pkgdesc = A convenient and functional unofficial client that allows for easy viewing of anime on PCs and laptops. Night(early) builds.
+	pkgver = 0.0.4.2
+	pkgrel = 2
+	url = https://t.me/aniship
+	arch = x86_64
+	license = custom
+	depends = zlib
+	depends = glibc
+	conflicts = aniship
+	options = !strip
+	source = aniship-0.0.4.2.AppImage::https://github.com/progzone122/AniShip/releases/download/v0.0.4.2night/setup-0.0.4-2.AppImage
+	sha256sums = 1fbe0e6388982d71268c4f4f04bf7c3f82ac0a6dee8310f8599d93be565525d2
+
+pkgname = aniship-night-appimage
