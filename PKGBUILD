@@ -1,7 +1,7 @@
 # Maintainer: Horror Proton <https://github.com/horror-proton>
 
 pkgname=maa-assistant-arknights
-_pkgver=v4.19.1
+_pkgver=v4.19.2-beta.1
 pkgver="$(echo ${_pkgver//-/} | sed -e 's/^v//')"
 pkgrel=1
 pkgdesc="An Arknights assistant"
@@ -10,12 +10,12 @@ url="https://github.com/MaaAssistantArknights/MaaAssistantArknights"
 license=('AGPL')
 depends=(opencv onnxruntime cpr)
 makedepends=(asio eigen git cmake)
-_fastdeploy_ref=1e4f600e5e5ab23528f77b98a8c5167b46ddfce2
+_fastdeploy_ref=356fb3f5553b879276617b77e3cd440099f8b923
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         "https://github.com/MaaAssistantArknights/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${pkgname}.install"
-md5sums=('c0b680735b057f25bcfdc7f1fa6dda0b'
-         'be1dbba8bfc1ce42dc9fd1a9c74eb79f')
+md5sums=('7def83119e964196e176c60a00c4ce6e'
+         '01060d6ad80b8517218379a2110b3672')
 
 prepare() {
     cd "$srcdir"/MaaAssistantArknights-${_pkgver#v}
