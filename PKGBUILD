@@ -16,7 +16,7 @@ md5sums=('SKIP')
 build(){
    cd "${srcdir}/${_pkgbase}"
    cmake -DCMAKE_BUILD_TYPE=Release -B ./build
-   cmake --build ./build -j $(nproc)
+   cmake --build ./build
 }
 
 package(){
