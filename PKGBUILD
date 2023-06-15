@@ -1,6 +1,6 @@
 # Maintainer: Robert Hamblin <hamblingreen@hotmail.com>
 pkgname=numen
-pkgver=0.123
+pkgver=0.7
 pkgrel=1
 pkgdesc="Voice control for handsfree computing"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('alsa-utils' 'dmenu' 'dotool' 'vosk-api')
 makedepends=('go>=1.19' 'gcc' 'scdoc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('be473e313afe4236ee259c3ca7ae1f715198905aafddb05b04a78426fb2ede005968436203dbbf6b9fafedf6f67028d3e17b1d7474558b4049144b5ddb14f5d1')
+sha512sums=('99dc883f7de187e241353d4fa5a1deb84cb24c32ac8cdc9138daffc7747c020b66428f576401bda2f139a3c022fd15c4ff4df1b8c9b87a09bc829b50035fc57b')
 
 build() {
   cd "$pkgname-$pkgver"
