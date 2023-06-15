@@ -1,7 +1,7 @@
 pkgbase = tango-cpp
 	pkgdesc = TANGO distributed control system - shared library
 	pkgver = 9.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tango-controls.org/
 	arch = x86_64
 	arch = armv7h
@@ -12,6 +12,7 @@ pkgbase = tango-cpp
 	depends = tango-idl
 	depends = omniorb>=4.2.2
 	depends = zeromq
+	depends = cppzmq
 	depends = libjpeg-turbo
 	conflicts = tango
 	source = https://gitlab.com/tango-controls/cppTango/-/archive/9.4.1/cppTango-9.4.1.tar.gz

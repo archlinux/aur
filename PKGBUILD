@@ -6,13 +6,13 @@
 pkgname=tango-cpp
 _pkgname=cppTango
 pkgver=9.4.1
-pkgrel=1
+pkgrel=2
 groups=('tango-controls')
 pkgdesc="TANGO distributed control system - shared library"
 arch=('x86_64' 'armv7h')
 url="https://www.tango-controls.org/"
 license=('GPL3')
-depends=('tango-idl' 'omniorb>=4.2.2' 'zeromq' 'libjpeg-turbo')
+depends=('tango-idl' 'omniorb>=4.2.2' 'zeromq' 'cppzmq' 'libjpeg-turbo')
 makedepends=('doxygen' 'cmake')
 conflicts=('tango')
 source=("https://gitlab.com/tango-controls/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
