@@ -2,8 +2,8 @@
 
 pkgname=hyperleda-galaxy-db-astap
 pkgver=2019.5.3
-pkgrel=4
-pkgdesc="Massive database of galaxies and other non-star objects"
+pkgrel=5
+pkgdesc="Database of 1.3m galaxies and 171k other non-star objects. Size 25MB"
 arch=('any')
 url="http://leda.univ-lyon1.fr/"
 license=('LGPL3')

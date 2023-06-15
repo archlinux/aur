@@ -1,7 +1,7 @@
 pkgbase = hyperleda-galaxy-db-astap
-	pkgdesc = Massive database of galaxies and other non-star objects
+	pkgdesc = Database of 1.3m galaxies and 171k other non-star objects. Size 25MB
 	pkgver = 2019.5.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://leda.univ-lyon1.fr/
 	arch = any
 	license = LGPL3
