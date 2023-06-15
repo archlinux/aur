@@ -18,5 +18,5 @@ index b1bad4e..c3bbdb9 100644
  
  set(CMAKE_CXX_STANDARD 23)
 -- 
-2.40.1
+2.41.0
 

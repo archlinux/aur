@@ -1,7 +1,7 @@
 pkgbase = imhex
 	pkgdesc = A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM
 	pkgver = 1.29.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://imhex.werwolv.net
 	arch = x86_64
 	license = GPL2
@@ -35,6 +35,7 @@ pkgbase = imhex
 	source = pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v1.29.0
 	source = imhex-patterns::git+https://github.com/WerWolv/ImHex-Patterns#tag=ImHex-v1.29.0
 	source = 0001-makepkg-Fix-compiler-check.patch
+	source = 0002-fix-Force-entropy-and-type-distribution-graphs-to-al.patch
 	source = pl-0001-Use-C-23-standard.patch
 	source = pl-0002-makepkg-Remove-extraneous-compiler-flags.patch
 	sha256sums = SKIP
@@ -45,9 +46,10 @@ pkgbase = imhex
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = e8696d29050d5dbf34b250d68c730e973fda88c342a801e2da36da804f4f1c45
-	sha256sums = 6e1a6a914da49a3d9c20ffa5bc728e1901dc01e962f05f70ec60c97cba2dd0d0
-	sha256sums = 9b5b3a5aac5297f7ca9c8fd94a37fc7c57e869c83f5874976a1256d0021f7618
+	sha256sums = 69c53a429d7b6bbe47c1602ff6cfaac6d28d495f96604b5395f0a0d12154c61b
+	sha256sums = 8429bf0b8f2b2631a21baccc094e85d0634941f3d8b818cbb4d75aef7529a2cd
+	sha256sums = 16316b5a6354156bc0ce53a3e81d80ef990af7e3626b7ea4348b866bb339ef13
+	sha256sums = ddbfeda031ccc161d3e3f3918207d6f7132cec72ff554ef82910da70214280ce
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -56,8 +58,9 @@ pkgbase = imhex
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 28956371b44540ff27eaf21841196afad87d2d5f0c0bf426b4d5d6774ff58a9d012c0b0bd692b8e422f24196f8bf21ec18c97e5076ed139d84d5f4c4755fee77
-	b2sums = 95658194c900d00877aa13fb206bdca5071070a7689676b1ddb4e607fb621a6d88ea994c789d02107c2864c28a08e73d21133705d059fcdf15cb3d05d344a309
-	b2sums = d1d4e35b5dce8e6a257e2978821ed60bf9715bc703d00b2ec5823c234da3f4f862f7fd89a05cd89cb5a9b7eb00bb9a695bbfa6d5ff375853afd85df9e1785fa6
+	b2sums = a09884dea7ee74dc75abd9437e2329ee454cdc4cd90dbe388d671d73ed3f6dd56ef9992c4cd0dd2937cc8eb0b67539791bd64ec76c6bb6c25a959691ba1cfb41
+	b2sums = 34a08efbc1d3e78ab6d4babe49f3bb735f8a99ba03c1aa7a208abcd31f84576562f653ecc2057515468600f584d9d1ebc27071976f83fff989a75634b98efccf
+	b2sums = ed86730af8972c6b92408f8e829d0d16ab863b23ffcd51d234371f89ce8e2194083215a1a37b3cd324ddc1c767770a1c43369d90be49fc632b4917df7d542529
+	b2sums = 6ad02f4bcfe406b23ae724e20766dbf4d32b88d63e83663baad191390002907a04c7ccd86c3640a651a46aa6db2f0889e27c5c26f4851730dc2edccf914d2ba2
 
 pkgname = imhex

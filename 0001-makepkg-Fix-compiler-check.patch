@@ -1,7 +1,7 @@
 From f9d65dc25c5446a144f2542b486bd72d2ff1320d Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 14 Nov 2022 11:58:59 +0100
-Subject: [PATCH] makepkg: Fix compiler check
+Subject: [PATCH 1/2] makepkg: Fix compiler check
 
 ---
  cmake/build_helpers.cmake | 23 +++++++++++++----------
@@ -78,5 +78,5 @@ index 4acbeaab..c1c46bb2 100644
          COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
      endif()
 -- 
-2.40.1
+2.41.0
 
