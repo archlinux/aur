@@ -16,6 +16,7 @@ source=('bart::git+https://github.com/mrirecon/bart.git'
 	'Makefile.local')
 sha512sums=('SKIP'
             '4ab4bb30e696dd262ecf59a64ec2ae5fa8f4832153816b4966c6af6e33fcf3981a5a4083d963cd3e470cd6000df32bfff4db146e9e34672f94962b5b329f4846')
+provides=('bart')
 
 pkgver() {
     cd "$_pkgname"
@@ -29,7 +30,7 @@ prepare() {
     cd "$_pkgname"
 
     # set path for openblas/lapacke/cblas headers
-    ln -s "${srcdir}/Makefile.local"
+    ln -sf "${srcdir}/Makefile.local"
 
 }
 

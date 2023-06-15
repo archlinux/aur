@@ -13,6 +13,7 @@ pkgbase = bart-git
 	depends = libpng
 	optdepends = octave
 	optdepends = python3
+	provides = bart
 	source = bart::git+https://github.com/mrirecon/bart.git
 	source = Makefile.local
 	sha512sums = SKIP
