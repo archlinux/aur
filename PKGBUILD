@@ -1,6 +1,6 @@
 pkgname=astap
 pkgver=2023.06.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer (build from source). Qt5 version."
 arch=('x86_64')
 url="http://www.hnsky.org/astap.htm"
@@ -14,6 +14,7 @@ optdepends=('hyperleda-galaxy-db-astap: 25MB database of 1.3m galaxies and 171k 
 	    'd05-star-db-astap: 100MB database of 500 stars per square degree, reliable with 0.6-10° FOV'
 	    'd20-star-db-astap: 400MB database of 2000 stars per square degree, reliable with 0.3-10° FOV'
             'd50-star-db-astap: 900MB database of 5000 stars per square degree, reliable with 0.2-10° FOV')
+conflicts=('astap-bin' 'astap-bin-qt5' 'astap-cli')
 
 build() {
     cd $srcdir/
