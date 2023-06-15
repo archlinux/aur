@@ -33,7 +33,7 @@ package() {
   cp -avR squashfs-root/ "${pkgdir}/opt/${pkgname%-bin}"
   echo "#!/usr/bin/env bash
   cd /opt/${pkgname%-bin}
-  ./AppRun" > ${pkgname%-bin}.sh
+  ./AppRun \"\$@\"" > ${pkgname%-bin}.sh
   install -Dm755 ${pkgname%-bin}.sh "${pkgdir}/usr/bin/${pkgname%-bin}"
   find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} +
 }
