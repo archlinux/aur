@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname='distro-grub-themes-arch'
 pkgver='3.2'
-pkgrel=1
+pkgrel=2
 pkgdesc="A GRUB2 theme for Arch Linux"
 arch=('any')
 url="https://github.com/AdisonCavani/distro-grub-themes"
@@ -13,11 +13,11 @@ groups=()
 depends=('grub')
 optdepends=('grub-customizer: GUI tool to configure grub')
 
-_theme_distro="arch"
+_theme_distro="arch-linux"
 
 source=("https://github.com/AdisonCavani/distro-grub-themes/releases/download/v${pkgver}/${_theme_distro}.tar")
 noextract=("${_theme_distro}.tar")
-sha256sums=('b6c69e55ecf601e8da89d38c242ca7dc6c299ed244a5781f799892f0288da8aa')
+sha256sums=('e589bb946d6cd7bf6303142cf3aeeb872fef416fb36ff3e168a11bccfeae850b')
 
 
 prepare() {
@@ -29,6 +29,7 @@ prepare() {
 # example:
 # https://github.com/archlinux/svntogit-packages/blob/packages/breeze-grub/trunk/PKGBUILD
 package() {
-	install -d "$pkgdir"/usr/share/grub/themes/
-	cp -r ${_theme_distro} "$pkgdir"/usr/share/grub/themes
+	_dest="${pkgdir}"/usr/share/grub/themes/
+	install -d "${_dest}"
+	cp -r ${_theme_distro} "${_dest}"
 }

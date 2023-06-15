@@ -10,8 +10,8 @@ pkgbase = distro-grub-themes-arch
 	provides = distro-grub-theme-arch
 	provides = grub-theme-arch
 	provides = grub-theme
-	noextract = arch.tar
-	source = https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.2/arch.tar
-	sha256sums = b6c69e55ecf601e8da89d38c242ca7dc6c299ed244a5781f799892f0288da8aa
+	noextract = arch-linux.tar
+	source = https://github.com/AdisonCavani/distro-grub-themes/releases/download/v3.2/arch-linux.tar
+	sha256sums = e589bb946d6cd7bf6303142cf3aeeb872fef416fb36ff3e168a11bccfeae850b
 
 pkgname = distro-grub-themes-arch
