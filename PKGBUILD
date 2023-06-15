@@ -1,17 +1,17 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=hex-git
 _pkgname=hex
-pkgver=r79.252e349
+pkgver=r92.62c6d43
 pkgrel=1
-pkgdesc="Hex viewer"
+pkgdesc="Interpreting hex viewer"
 url="https://git.janouch.name/p/hex"
 arch=('i686' 'x86_64')
-license=('BSD')
+license=('custom:0BSD')
 options=(zipman)
 conflicts=('hex')
 provides=('hex')
-makedepends=('cmake' 'pkg-config' 'git' 'help2man')
-depends=('readline' 'ncurses' 'libunistring' 'lua')
+makedepends=('cmake' 'pkg-config' 'git')
+depends=('ncurses' 'libunistring' 'lua')
 source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
 
