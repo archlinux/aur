@@ -10,8 +10,6 @@ license=("MIT")
 _pkgname="listen1_${pkgver}_linux_${arch}.AppImage"
 noextract=(${_pkgname})
 options=("!strip")
-provides=("listen1-appimage")
-conflicts=("listen1-appimage")
 depends=('fuse2')
 source=("${_pkgname}::https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/${_pkgname}")
 sha512sums=("9484ed3947d57adc61d9b84424e9391df75bad7f0c2c32c799f2b23d908949ee3cab3ecc95a49f9ea43efc0cf4441956d3a26e7206b788a9836a564de1b0bd6e")
@@ -22,6 +20,7 @@ prepare() {
     chmod a+x ../${_pkgname}
     ./${_pkgname} --appimage-extract >/dev/null
     sed -i "s+^Categories.*+Categories=Audio;AudioVideo+" "squashfs-root/listen1.desktop"
+    sed -i "s+^Icon=.*+Icon=listen1-appimage+" "squashfs-root/listen1.desktop"
     sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/listen1.AppImage+" "squashfs-root/listen1.desktop"
     sed -i "s/[[:space:]]%U$//" "squashfs-root/listen1.desktop"
 }
