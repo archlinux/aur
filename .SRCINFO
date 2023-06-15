@@ -1,0 +1,11 @@
+pkgbase = ananas-nanod-bin
+	pkgdesc = Analytical Analyzer of Symmetries is a software for detection and assessment of the quality of symmetry in a protein assembly. It can compute axes of symmetry for any type of point groups.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://team.inria.fr/nano-d/software/ananas/
+	arch = x86_64
+	license = unknown
+	source = https://files.inria.fr/NanoDFiles/Website/Software/AnAnaS/1.1/Linux/ananas-linux.zip
+	md5sums = eb17b1c9800f185f496be003852cb08f
+
+pkgname = ananas-nanod-bin
