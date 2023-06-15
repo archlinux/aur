@@ -3,7 +3,7 @@
 
 _gemname=CFPropertyList
 pkgname=ruby-cfpropertylist
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc='This is a module to read, write and manipulate both binary and XML property lists as defined by apple.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby-rexml)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('4c29a89116b7b3f7a62076b4acdc2c69315f51f3')
+sha1sums=('705f64ed0211b39374b5c47ac96c831577fd7e8d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
