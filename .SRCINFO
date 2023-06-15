@@ -8,10 +8,10 @@ pkgbase = deepqt
 	makedepends = python-setuptools
 	makedepends = python-pip
 	depends = python>=3.10.0
-	depends = pyside6
+	depends = python-pipx
 	source = https://github.com/VoxelCubes/DeepQt/archive/refs/tags/v1.1.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = deepqt
 	depends = python>=3.10.0
-	depends = pyside6
+	depends = python-pipx
