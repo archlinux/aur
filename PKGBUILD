@@ -4,7 +4,7 @@
 # Contributor: Jeff Mickey <j@codemac.net>
 
 pkgname=wtf
-pkgver=20230612
+pkgver=20230615
 pkgrel=1
 pkgdesc='Acronym dictionary, with additions from NetBSD and wikipedia'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('git')
 source=("https://sourceforge.net/projects/bsdwtf/files/wtf-$pkgver.tar.gz"
         'https://raw.github.com/keenerd/wtf/0623381d92b2c5d3e94b00c9eb06fb5d4d85d014/acronyms.computing'
         'LICENSE')
-b2sums=('12e79da9c962555850a818e3c45d480f3e19b2ab7f84136fefc4da74b59856c77ef0728a44e0fcd5846f227f77d1be73561d537db07bac2ca07e3d839757b370'
+b2sums=('ef6d8aa7f743b48dfc8a0924a3e1e20dba2df4f76357276eee9002b9b6cd5bda00f855c8c287fc623cb71fc46208b7d2af1ec59fc6c36e568b0ed9e804959594'
         'e0835247970d769ac0570e51af78bc4f78ebab0d7c8c056bfafcbba133893c7de8bd26d468ac9de54d4fc5626e72d0222b53552af8b44a02324e3cb121aacd21'
         '65484e19640f8e6e08c0f97f8985ccdb7dde887f1bf963503de5c7f930e0b938dd2736408382b78e914c71b0727c0e285fc7e1496b656dd4ba958f80a3f19189')
 
