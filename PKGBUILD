@@ -3,7 +3,7 @@
 pkgbase=srsran-project-git
 pkgname=$pkgbase
 _pkgname=srsRAN_Project
-pkgver=23.3.0.r1.gfbe73a4
+pkgver=23.5.0.r575.g56a771d
 pkgrel=1
 pkgdesc='The srsRAN Project is a complete 5G RAN solution, featuring an ORAN-native CU/DU developed by (SRS)'
 arch=('x86_64' 'aarch64')
