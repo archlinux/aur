@@ -101,15 +101,7 @@ script-files = [
 
 [tool.setuptools.packages.find]
 where = ["lib"]
-include = [
-  "bb",
-  "bblayers",
-  "toaster",
-  "hashserv",
-  "prserv",
-  "layerindexlib",
-  "progressbar",
-]
+exclude = ["ply", "bs4*", "simplediff"]
 
 [tool.setuptools.data-files]
 "share/man/man1" = ["doc/bitbake.1"]
