@@ -1,6 +1,6 @@
 pkgbase = projen
 	pkgdesc = Define and maintain complex project configuration through code. projen synthesizes project configuration files from a well-typed definition written in JavaScript.
-	pkgver = 0.71.97
+	pkgver = 0.71.98
 	pkgrel = 1
 	url = https://github.com/projen/projen/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = projen
 	depends = nodejs
 	optdepends = bash-completion: Bash completion
 	optdepends = zsh: zsh completion
-	noextract = projen-0.71.97.tgz
-	source = https://registry.npmjs.org/projen/-/projen-0.71.97.tgz
-	sha256sums = cd131dd256473e084fc82f4d2ffc85d80e892efef1b2a481533027ec8ea4e906
+	noextract = projen-0.71.98.tgz
+	source = https://registry.npmjs.org/projen/-/projen-0.71.98.tgz
+	sha256sums = 75b4879a31470387e5bc2339a9996004ca9cf606ec41e0d8964c3946900e4efa
 
 pkgname = projen
