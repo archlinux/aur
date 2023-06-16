@@ -3,7 +3,7 @@
 _pkgname=cwtch-ui
 pkgname=cwtch
 pkgver=1.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications"
 arch=('x86_64')
 url="https://cwtch.im/"
@@ -17,7 +17,9 @@ sha512sums=('f288aa0c245ccddf1faaaf53182de17441e2c80768a6a752c28bb72a6b2af4432ae
 prepare() {
     cd "$srcdir/$_pkgname"
     # Remove deprecated isAlwaysShown for compat with newer dart SDKs
-    sed -re 's|(scrollbarTheme: .*)isAlwaysShown: false(, )?|\1|' -i lib/themes/opaque.dart
+    sed -re 's/(scrollbarTheme: .*)isAlwaysShown: false(, )?/\1/' -i lib/themes/opaque.dart
+    # Remove Tor binary and libCwtch.so from package script, since we don't vendor them
+    sed -re 's/^cp( -r)? linux\/(libCwtch\.so|Tor) /#\0/' -i linux/package-release.sh
 }
 
 build() {
@@ -49,15 +51,7 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    builddir="$srcdir/$_pkgname/build/linux/x64/release/bundle"
-
-    # See cwtch-git PKGBUILD and linux/ package-release.sh and install-sys.sh
-    install -Dm0755 "linux/cwtch.sys.sh" "$pkgdir/usr/bin/cwtch"
-    install -Dm0644 "linux/cwtch.png" -t "$pkgdir/usr/share/icons/"
-    install -dm0755 "$pkgdir/usr/share/cwtch/"
-    cp -r "$builddir/data" "$pkgdir/usr/share/cwtch/"
-    install -dm0755 "$pkgdir/usr/lib/cwtch/"
-    install -Dm0755 "$builddir/cwtch" -t "$pkgdir/usr/lib/cwtch/"
-    cp -r "$builddir/lib/"* "$pkgdir/usr/lib/cwtch/"
-    install -Dm0644 "linux/cwtch.sys.desktop" "$pkgdir/usr/share/applications/cwtch.desktop"
+    linux/package-release.sh
+    cd build/linux/x64/release/bundle
+    INSTALL_PREFIX="$pkgdir/usr" DESKTOP_PREFIX="/usr" ./install.sh
 }

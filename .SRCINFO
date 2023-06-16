@@ -1,7 +1,7 @@
 pkgbase = cwtch
 	pkgdesc = UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications
 	pkgver = 1.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cwtch.im/
 	arch = x86_64
 	license = MIT
