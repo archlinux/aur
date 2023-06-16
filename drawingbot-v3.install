@@ -1,0 +1,7 @@
+post_install() {
+	ln -s /opt/drawingbotv3/bin/DrawingBotV3-Free /usr/bin/drawingbot-v3
+}
+
+pre_remove() {
+	rm -f /usr/bin/drawingbot-v3
+}
