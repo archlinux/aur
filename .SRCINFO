@@ -9,7 +9,6 @@ pkgbase = sirius-git
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	depends = cuda
 	depends = costa
 	depends = gsl
 	depends = spfft
@@ -25,6 +24,7 @@ pkgbase = sirius-git
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-matplotlib
+	optdepends = cuda: GPU support
 	provides = sirius
 	options = staticlibs
 	source = sirius::git+https://github.com/electronic-structure/SIRIUS.git#branch=develop
