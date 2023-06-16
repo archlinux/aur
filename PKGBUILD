@@ -7,7 +7,7 @@ pkgdesc="lytedev's customized Iosevka font primarily for the Kitty terminal emul
 arch=('any')
 url="https://github.com/lytedev/Iosevka"
 license=('SIL Open Font License v1.1')
-source=("https://files.lyte.dev/iosevkalyte/rel/iosevkalyteterm-${pkgver}.tar.zstd"
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.zstd::https://files.lyte.dev/iosevkalyte/rel/iosevkalyteterm-${pkgver}.tar.zstd"
 	"${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://files.lyte.dev/iosevkalyte/rel/iosevkalyteterm-${pkgver}-LICENSE.md")
 sha256sums=("6fee8e91286277b1e9e375d8c48c3ebede7b78b7855460f563ae6732076a495b"
 	"46ecadda73abf39cda76731a94fd357b743f882dc1156b4410a2967a811c4ff1")
