@@ -21,7 +21,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	./autogen.sh --prefix=/usr --sysconfdir=/etc
- make
+	make
 }
 
 package() {
@@ -32,9 +32,9 @@ package() {
 	ln -sf anthy-unicode.conf anthy-conf
 
 	cd ${pkgdir}/usr/bin
-	ln -sf anthy-agent anthy-agent-unicode
-	ln -sf anthy-dic-tool anthy-dic-tool-unicode
-	ln -sf anthy-morphological-analyzer anthy-morphological-analyzer-unicode
+	ln -sf anthy-agent-unicode anthy-agent
+	ln -sf anthy-dic-tool-unicode anthy-dic-tool
+	ln -sf anthy-morphological-analyzer-unicode anthy-morphological-analyzer
 
 	cd ${pkgdir}/usr/include
 	ln -sf anthy-unicode-1.0/anthy anthy
