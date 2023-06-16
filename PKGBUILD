@@ -6,7 +6,7 @@ function _nvidia_check() {
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=21.0.0_dev00.r2522.3f3b878f
+pkgver=21.0.0_dev00.r2534.10524b3c
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -19,6 +19,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git')
 md5sums=('SKIP')
+options=('!lto')
 
 export CARGO_PROFILE_RELEASE_LTO=true
 
@@ -37,7 +38,6 @@ prepare() {
 	cd "$srcdir/${_pkgname}"
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
-	sed -i 's:/usr/libexec/alvr/alvr_fw_config.sh:/usr/lib/alvr/alvr_fw_config.sh:' alvr/server_io/src/firewall.rs
 
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -49,6 +49,7 @@ build() {
 	export ALVR_LIBRARIES_DIR="$ALVR_ROOT_DIR/lib"
 	export ALVR_OPENVR_DRIVER_ROOT_DIR="$ALVR_LIBRARIES_DIR/steamvr/alvr/"
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR="$ALVR_LIBRARIES_DIR/alvr/"
+	export FIREWALL_SCRIPT_DIR="$ALVR_ROOT_DIR/share/alvr/"
 
 	if _nvidia_check; then
 		cargo run --release --frozen -p alvr_xtask -- prepare-deps --platform linux
@@ -97,5 +98,5 @@ package() {
 	install -Dm644 "packaging/firewall/$_pkgname-firewalld.xml" "$pkgdir/usr/lib/firewalld/services/${_pkgname}.xml"
 	install -Dm644 "packaging/firewall/ufw-$_pkgname" -t "$pkgdir/etc/ufw/applications.d/"
 
-	install -Dm755 packaging/firewall/alvr_fw_config.sh -t "$pkgdir/usr/lib/alvr/"
+	install -Dm755 packaging/firewall/alvr_fw_config.sh -t "$pkgdir/usr/share/alvr/"
 }
