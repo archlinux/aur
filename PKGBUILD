@@ -6,7 +6,7 @@
 pkgname=neovide-git
 _pkgname=${pkgname%-git}
 pkgver=0.10.4.r17.gf412399
-pkgrel=1
+pkgrel=2
 pkgdesc='No Nonsense Neovim Client in Rust'
 arch=(x86_64)
 url="https://github.com/$_pkgname/$_pkgname"
