@@ -1,0 +1,11 @@
+--- docs/gtkada_rm/Makefile	2023-04-27 11:28:04.735503200 +1000
++++ docs/gtkada_rm/Makefile-new	2023-06-16 16:26:36.844060535 +1000
+@@ -6,7 +6,7 @@
+ docgen:
+ 	$(MKDIR) gtkada_rm
+ 	$(MKDIR) doc_obj
+-	gnatdoc -Pgtkada_documentation.gpr --enable-build
++	gnatdoc4 -Pgtkada_documentation.gpr
+ 
+ docgen_clean:
+ 	$(RM) -rf doc_obj/*

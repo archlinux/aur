@@ -1,10 +1,9 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=gtkada
 pkgdesc='Ada bindings for the Gtk+ library.'
 pkgver=24.0w
-pkgrel=1
+pkgrel=2
 epoch=1
 
 url=https://github.com/AdaCore/gtkada
@@ -12,12 +11,14 @@ arch=(i686 x86_64)
 license=(GPL3 custom)
 
 depends=(gcc-ada gtk3)
-makedepends=(gprbuild-toolbox gnatdoc gnatcoll-gnatinspect)
+makedepends=(gprbuild-toolbox gnatdoc)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230428-165F0-src.tar.gz
-        Makefile.in-patch)
+        Makefile.in-patch
+        docs_gtkada_rm_Makefile-patch)
 sha256sums=(596d19722c0b7f6ec67d0f00918a2bfb0ae0fb7352b2182a290d5dcdf31e1ba9
-            f525df1f7c319f1dc95ddafe1a73d961ce162c6171c97b0df3ae756122ca76d4)
+            f525df1f7c319f1dc95ddafe1a73d961ce162c6171c97b0df3ae756122ca76d4
+            SKIP)
 
 _gtkada_src=gtkada-$pkgver-20230428-165F0-src
 
@@ -26,6 +27,7 @@ prepare()
 {
     cd $srcdir/$_gtkada_src
     patch -Np1 -i ../Makefile.in-patch
+    patch -Np0 -i ../docs_gtkada_rm_Makefile-patch
 }
 
 
