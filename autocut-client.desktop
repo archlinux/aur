@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=autocut-client
+Exec=/opt/autocut-client/autocut-client %U
+Terminal=false
+Type=Application
+Icon=autocut-client
+StartupWMClass=AytoCut-Client
+Comment=Quickly generate video subtitles and edit the video by selecting subtitle clips
+Categories=AudioVideo;
