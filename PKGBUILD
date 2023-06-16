@@ -1,15 +1,15 @@
 # Maintainer: Callum Osmotherly <acheronfail@gmail.com>
 pkgname=istat
-pkgver="0.3.0"
+pkgver="0.4.0"
 pkgrel=1
 pkgdesc="A lightweight and batteries-included status_command for i3 and sway"
 arch=('x86_64')
 url="https://github.com/acheronfail/istat"
 license=('GPL-3.0-only')
 depends=('gcc-libs')
-makedepends=('cargo' 'clang' 'libpulse')
+makedepends=('clang' 'libfaketime' 'libpulse' 'i3-wm' 'xorg-server-xvfb' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('e948f1d5dee35c67159ef27d74941a8410a5736bca4f243aa913b625375b109872116009b70db776d39fa11cb29d7fbe2046932c1f85c4f46887d8fc39c48d44')
+sha512sums=('646c3114c65457aedcdd845ede39aa882a37397f58b175ab3f942246f73adba00ebf6bccfe12d382b6102a420a2ca0c21d8411e814eae085948fd52cb8d48ad0')
 
 # this is effectively a no-op for standard usages of the PKGBUILD, but it exists for
 # local testing of the PKGBUILD itself in the upstream repository (when the build version
@@ -47,8 +47,13 @@ package() {
   install -Dm644 "doc/istat-ipc.1"             "$pkgdir/usr/share/man/man1/istat-ipc.1"
   install -Dm644 "doc/istat-ipc-click.1"       "$pkgdir/usr/share/man/man1/istat-ipc-click.1"
   install -Dm644 "doc/istat-ipc-custom.1"      "$pkgdir/usr/share/man/man1/istat-ipc-custom.1"
+  install -Dm644 "doc/istat-ipc-get-bar.1"     "$pkgdir/usr/share/man/man1/istat-ipc-get-bar.1"
+  install -Dm644 "doc/istat-ipc-get-config.1"  "$pkgdir/usr/share/man/man1/istat-ipc-get-config.1"
+  install -Dm644 "doc/istat-ipc-get-theme.1"   "$pkgdir/usr/share/man/man1/istat-ipc-get-theme.1"
   install -Dm644 "doc/istat-ipc-info.1"        "$pkgdir/usr/share/man/man1/istat-ipc-info.1"
   install -Dm644 "doc/istat-ipc-refresh-all.1" "$pkgdir/usr/share/man/man1/istat-ipc-refresh-all.1"
+  install -Dm644 "doc/istat-ipc-set-theme.1"   "$pkgdir/usr/share/man/man1/istat-ipc-set-theme.1"
+  install -Dm644 "doc/istat-ipc-shutdown.1"    "$pkgdir/usr/share/man/man1/istat-ipc-shutdown.1"
   install -Dm644 "doc/istat-ipc-signal.1"      "$pkgdir/usr/share/man/man1/istat-ipc-signal.1"
 
   install -Dm644 "README.md"          "$pkgdir/usr/share/doc/${pkgname}/README.md"
