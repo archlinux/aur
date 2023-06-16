@@ -1,11 +1,12 @@
 pkgbase = python-iniherit
 	pkgdesc = A ConfigParser subclass with file-specified inheritance.
 	pkgver = 0.3.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/cadithealth/iniherit
 	arch = any
 	license = MIT
 	license = custom:Public Domain
+	makedepends = python-setuptools
 	makedepends = python-pip
 	makedepends = python-wheel
 	depends = python
@@ -14,4 +15,3 @@ pkgbase = python-iniherit
 	sha256sums = 06d90849ff0c4fadb7e255ce31e7c8e188a99af90d761435c72b79b36adbb67a
 
 pkgname = python-iniherit
-
