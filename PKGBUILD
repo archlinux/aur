@@ -1,6 +1,6 @@
 # Maintainer: Romain Chardiny <romain.chardiny@gmail.com>
 pkgname=thc-hydra
-pkgver=9.4
+pkgver=9.5
 pkgrel=1
 pkgdesc="A parallelized network login cracker"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('gtk3' 'zlib' 'openssl')
 makedepends=()
 provides=('thc-hydra')
 source=("https://github.com/vanhauser-thc/thc-hydra/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('de5a1e73673fdc2f193cfb1aeec337c9d8faad52b06524850f352a797a4a5ef08cba8fc51da96fed1db01d141127e58c2aa874027f51c40a94a474de778d5241')
+sha512sums=('a8fe42d175d184cdb82072f3a963b956d767fa908aaf1cbbc0746b6a67cfd37f8b5e3ecf9be82085a7f6c1ef57e91a8bf05bfeb41e96708899b6c8d7f05eee06')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -23,3 +23,4 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
+
