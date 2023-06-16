@@ -7,88 +7,49 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=2023.6.1
+pkgver=2023.6.2
 pkgrel=1
 epoch=1
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
 depends=(
+  bluez-libs
+  ffmpeg
   gcc
-  python-aiodiscover
-  python-aiohttp
-  python-aiohttp-cors
-  python-astral
-  python-async-timeout
-  python-atomicwrites
-  python-attrs
-  python-awesomeversion
-  python-bcrypt
-  python-certifi
-  python-ciso8601
-  python-cryptography
-  python-dateutil
-  python-defusedxml
-  python-fnvhash
-  python-home-assistant-bluetooth
-  python-httpx
-  python-ifaddr
-  python-jinja
-  python-lru-dict
-  python-mutagen
-  python-orjson
-  python-pillow
-  python-pip
-  python-pyjwt
-  python-pytz
-  python-requests
-  python-ruamel-yaml
-  python-slugify
-  python-sqlalchemy
-  python-typing_extensions
-  python-ulid-transform
-  python-voluptuous
-  python-voluptuous-serialize
-  python-webrtcvad
-  python-yaml
-  python-yarl
-  python-zeroconf
-  python-setuptools
+  lapack
+  libffi
+  libjpeg-turbo
+  libtiff
+  openjpeg2
+  openssl
+  python
+  tzdata
+  zlib
 )
 makedepends=(
   git
   python-build
-  python-installer
+  python-setuptools
   python-wheel
 )
-optdepends=(
-  'net-tools: Nmap host discovery'
-  'openzwave: Z-Wave integration'
-  'python-dtlssocket: Ikea Tradfri integration'
-  'python-lxml: Meteo France integration'
-  'python-paho-mqtt: mqtt integration'
-)
-_tag=a5f86bff45c4a7422b5011a4689557d9b434728a
+_tag=e5c5790768dabd5ce257ad949a6801f4f94a5f73
 source=(
   git+https://github.com/home-assistant/home-assistant.git#tag=${_tag}
   home-assistant.service
 )
 b2sums=('SKIP'
-        'b5e181e00e499cd0c6e3922af44afe7e8043063d49c89c207beeff9b56ea2920a6f7b6d211be027cb4b6cf8450396623515dadcebdbdbdf0f934d3d16963790e')
+        '3249da47392c3100f556b7037bc3a9abdd168960a67eedb8ff68c49729c502ed8cdead16a78c5d2a1d2184dfa51e4ddc89bc09302e189a22a7482bc7b0c05352')
+
+prepare() {
+  cd home-assistant
+  # allow any setuptools and wheel to be used
+  sed 's/~=62.3//; s/~=0.37.1//' -i pyproject.toml
+}
 
 pkgver() {
   cd home-assistant
   git describe --tags
-}
-
-prepare() {
-  cd home-assistant
-  # lift hard dep constraints, we'll deal with breaking changes ourselves
-  sed 's/==/>=/g' -i pyproject.toml requirements.txt setup.cfg homeassistant/package_constraints.txt
-  # allow pip >= 20.3 to be used
-  sed 's/,<20.3//g' -i pyproject.toml requirements.txt setup.cfg homeassistant/package_constraints.txt
-  # allow any setuptools and wheel to be used
-  sed 's/~=62.3//; s/~=0.37.1//' -i pyproject.toml
 }
 
 build() {
@@ -98,7 +59,8 @@ build() {
 }
 
 package() {
-  python -m installer --destdir="${pkgdir}" home-assistant/dist/*.whl
+  install -Dm 644 home-assistant/dist/*.whl -t "${pkgdir}"/usr/share/home-assistant/
+  sed "s/@VERSION@/${pkgver}/" -i home-assistant.service
   install -Dm 644 home-assistant.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
 

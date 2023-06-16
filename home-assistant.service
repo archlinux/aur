@@ -12,7 +12,10 @@ StateDirectory=hass
 WorkingDirectory=/var/lib/hass
 Environment=HOME=/var/lib/hass
 
-ExecStart=/usr/bin/hass \
+ExecStartPre=/usr/bin/python -m venv --upgrade /var/lib/hass/.venv
+ExecStartPre=/var/lib/hass/.venv/bin/python -m pip install wheel
+ExecStartPre=/var/lib/hass/.venv/bin/python -m pip install /usr/share/home-assistant/homeassistant-@VERSION@-py3-none-any.whl
+ExecStart=/var/lib/hass/.venv/bin/hass \
   --config /var/lib/hass/ \
   --log-file /var/log/hass/home-assistant.log \
   --log-rotate-days 1
