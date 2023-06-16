@@ -2,7 +2,7 @@
 
 pkgname=go-chromecast-git
 _pkgname=go-chromecast
-pkgver=20211230
+pkgver=0.3.1.r0.g21976a4
 pkgrel=1
 pkgdesc='Implements a basic number of the google chromecast commands.'
 arch=('any')
@@ -14,7 +14,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git log -1 --format="%cd" --date=short | sed 's|-||g'
+  # cutting off 'v' prefix that presents in the git tag
+  git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
