@@ -15,18 +15,34 @@ arch=(x86_64)
 url=https://github.com/berberman/nvfetcher
 license=(MIT)
 makedepends=(ghc)
-depends=(nix-prefetch-git)
+# https://github.com/berberman/nvfetcher/issues/102
+depends=(
+	nix-prefetch-git
+	# ghc-libs
+	# haskell-shake
+	# haskell-aeson
+	# haskell-binary-instances
+	# haskell-free
+	# haskell-hspec
+	# haskell-microlens
+	# haskell-microlens-th
+	# haskell-neat-interpolation
+	# haskell-optparse-simple
+	# haskell-prettyprinter
+	# haskell-tomland
+	# haskell-validation-selective
+)
 source=("https://github.com/berberman/nvfetcher/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('072b504fbb1a99c0291a5a584a141da286eb6463128313623d54d991444578dd')
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver" || return 1
+	cd "$_pkgname-$pkgver" || return 1
 	cabal configure --disable-library-vanilla --enable-shared --enable-executable-dynamic --ghc-options=-dynamic
 	cabal build
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver" || return 1
+	cd "$_pkgname-$pkgver" || return 1
 
 	install -D dist-newstyle/build/x86_64-linux/ghc-*/nvfetcher-"$pkgver.0"/x/nvfetcher/build/nvfetcher/nvfetcher -t "$pkgdir/usr/bin"
 	install -D dist-newstyle/build/x86_64-linux/ghc-*/nvfetcher-"$pkgver.0"/build/libHSnvfetcher-0.6.1.0-inplace-ghc9.0.2.so -t "$pkgdir/usr/lib"
