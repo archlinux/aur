@@ -44,6 +44,8 @@ package()
                --prefix=$pkgdir/usr   \
                --create-missing-dirs
 
+    cp -r share/gnatdoc $pkgdir/usr/share
+    
     # Install the license.
     #
     install -D -m644   \
