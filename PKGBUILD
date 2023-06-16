@@ -1,9 +1,10 @@
-# Maintainer: tytan652 <tytan652@tytanium.xyz>
+# Maintainer: detian <dehe_tian at outlook dot com>
+# Contributor: tytan652 <tytan652@tytanium.xyz>
 
 _pkgname=nvidia-utils
 pkgname=${_pkgname}-nvlax
-pkgver=530.41.03
-pkgrel=2
+pkgver=535.54.03
+pkgrel=1
 pkgdesc="NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -43,12 +44,12 @@ source=(
   "nvlax_cpm.patch"
 )
 sha512sums=(
-  "de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770"
-  "4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499"
-  "a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989"
-  "90068122824322884ec8f3e4be2fe7f76bf07ee1163baf6da15d09ba3ff886e5c5ef72016509eef9f4af9d85f154ebbe051d5fb3af5e867f1f67f03af8068100"
-  "SKIP"
-  "3188b66c6a158ac97a9200ce96d8ada5da2f39eb6eae19e710e7c0d7e3d1b9189beb92c1446fa4b0aa937d2b0c08a2fc9a3b4b3f821566a4e629478addf9d098"
+  'de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
+  '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
+  'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
+  '45b72b34272d3df14b56136bb61537d00145d55734b72d58390af4694d96f03b2b49433beb4a5bede4d978442b707b08e05f2f31b2fcfd9453091e7f0b945cff'
+  'SKIP'
+  '3188b66c6a158ac97a9200ce96d8ada5da2f39eb6eae19e710e7c0d7e3d1b9189beb92c1446fa4b0aa937d2b0c08a2fc9a3b4b3f821566a4e629478addf9d098'
 )
 
 create_links() {
@@ -62,6 +63,7 @@ create_links() {
 }
 
 prepare() {
+  [ -z "${_pkg}" ] || rm -rf "${_pkg}"
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   bsdtar -xf nvidia-persistenced-init.tar.bz2
@@ -132,7 +134,10 @@ package() {
   install -Dm755 "libnvidia-fbc.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-fbc.so.${pkgver}"
 
   # Patched NVENC
-  ./nvlax_encode -i "libnvidia-encode.so.${pkgver}" -o "libnvidia-encode.so.${pkgver}"
+  #./nvlax_encode -i "libnvidia-encode.so.${pkgver}" -o "libnvidia-encode.so.${pkgver}"
+  # !!! Driver version 535.54.03 does not work with nvlax patcher, use workround for now !!!
+  # https://github.com/keylase/nvidia-patch/blob/3358c5d92e61d42c1557432e82ccda445d3fa082/patch.sh#LL212C10-L212C10
+  sed -i 's/\xe8\xa5\x9e\xfe\xff\x85\xc0\x41\x89\xc4/\xe8\xa5\x9e\xfe\xff\x29\xc0\x41\x89\xc4/g' "libnvidia-encode.so.${pkgver}"
   install -Dm755 "libnvidia-encode.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-encode.so.${pkgver}"
 
   # Vulkan ICD
@@ -157,6 +162,7 @@ package() {
   install -Dm755 "libnvidia-ptxjitcompiler.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-ptxjitcompiler.so.${pkgver}"
 
   # raytracing
+  install -Dm755 "nvoptix.bin" "${pkgdir}/usr/share/nvidia/nvoptix.bin"
   install -Dm755 "libnvoptix.so.${pkgver}" "${pkgdir}/usr/lib/libnvoptix.so.${pkgver}"
   install -Dm755 "libnvidia-rtcore.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-rtcore.so.${pkgver}"
 
@@ -169,7 +175,7 @@ package() {
   # Optical flow
   install -Dm755 "libnvidia-opticalflow.so.${pkgver}" "${pkgdir}/usr/lib/libnvidia-opticalflow.so.${pkgver}"
 
-  # DEBUG
+  # Debug
   install -Dm755 nvidia-debugdump "${pkgdir}/usr/bin/nvidia-debugdump"
 
   # nvidia-xconfig
@@ -214,7 +220,6 @@ package() {
   install -Dm755 systemd/system-sleep/nvidia "${pkgdir}/usr/lib/systemd/system-sleep/nvidia"
   install -Dm755 systemd/nvidia-sleep.sh "${pkgdir}/usr/bin/nvidia-sleep.sh"
   install -Dm755 nvidia-powerd "${pkgdir}/usr/bin/nvidia-powerd"
-
   install -Dm644 nvidia-dbus.conf "${pkgdir}"/usr/share/dbus-1/system.d/nvidia-dbus.conf
 
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
