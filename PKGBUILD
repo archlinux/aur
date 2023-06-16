@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=edrawmax-nativefier
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=0
 pkgdesc="edrawmax desktop built with nativefier"
 arch=('x86_64')

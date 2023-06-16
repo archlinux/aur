@@ -1,6 +1,6 @@
 pkgbase = edrawmax-nativefier
 	pkgdesc = edrawmax desktop built with nativefier
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 0
 	url = https://www.edrawmax.cn/online/zh/
 	arch = x86_64
