@@ -2,7 +2,7 @@
 
 pkgname=anthy-unicode
 pkgver=1.0.0.20211224
-pkgrel=1
+pkgrel=2
 pkgdesc='Hiragana text to Kana Kanji mixed text Japanese input method'
 arch=('x86_64')
 url='https://github.com/fujiwarat/anthy-unicode'
@@ -16,12 +16,20 @@ conflicts=('anthy')
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	./configure --prefix=/usr --sysconfdir=/etc
-	make
+ make
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make EMACS=emacs DESTDIR="${pkgdir}" install
+
+	cd ${pkgdir}/etc
+	ln -sf anthy-unicode.conf anthy-conf
+
+	cd ${pkgdir}/usr/bin
+	ln -sf anthy-agent anthy-agent-unicode
+	ln -sf anthy-dic-tool anthy-dic-tool-unicode
+	ln -sf anthy-morphological-analyzer anthy-morphological-analyzer-unicode
 
 	cd ${pkgdir}/usr/include
 	ln -sf anthy-unicode-1.0/anthy anthy
