@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-systemd-extras
 	pkgdesc = Collection of mkinitcpio install hooks for systemd based initramfs
-	pkgver = 0.3.1
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/wolegis/mkinitcpio-systemd-extras
 	arch = any
@@ -8,9 +8,11 @@ pkgbase = mkinitcpio-systemd-extras
 	depends = mkinitcpio
 	optdepends = tinyssh: for sd-tinyssh
 	optdepends = python: for converting OpenSSH host keys to tinyssh format
+	optdepends = dropbear: for sd-dropbear
 	conflicts = mkinitcpio-netconf
 	conflicts = mkinitcpio-tinyssh
-	source = repo::git+https://github.com/wolegis/mkinitcpio-systemd-extras.git#tag=v0.3.1
+	conflicts = mkinitcpio-dropbear
+	source = repo::git+https://github.com/wolegis/mkinitcpio-systemd-extras.git#tag=v0.4
 	sha256sums = SKIP
 
 pkgname = mkinitcpio-systemd-extras
