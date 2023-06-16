@@ -1,4 +1,5 @@
 pkgbase = linux-llvm
+	pkgdesc = The Linux kernel and modules - Build with LLVM/CLANG
 	pkgver = 6.3.8
 	pkgrel = 1
 	url = https://www.kernel.org/
@@ -23,6 +24,11 @@ pkgbase = linux-llvm
 	makedepends = gcc-libs
 	makedepends = glibc
 	makedepends = binutils
+	makedepends = clang
+	makedepends = llvm
+	makedepends = llvm-libs
+	makedepends = lld
+	makedepends = python
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.3.8.tar.xz
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/e7308a977d83f3cf94ed228b0f6b9b65a4d9139c/config

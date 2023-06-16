@@ -39,6 +39,7 @@ pkgrel=1
 major=6.3
 commit=e7308a977d83f3cf94ed228b0f6b9b65a4d9139c
 arch=(x86_64)
+pkgdesc='The Linux kernel and modules - Build with LLVM/CLANG'
 url='https://www.kernel.org/'
 license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio perl tar xz xmlto git)
@@ -188,7 +189,7 @@ build(){
 }
 
 _package(){
-  pkgdesc='The Linux kernel and modules with Alfred Chen PDS/BMQ CPU scheduler and Arch patches - BMQ enabled'
+  pkgdesc='The Linux kernel and modules - Build with LLVM/CLANG'
   depends=(coreutils kmod initramfs)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
