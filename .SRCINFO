@@ -9,7 +9,7 @@ pkgbase = rust-std-android
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python
-	makedepends = android-ndk
+	makedepends = android-ndk>=r25
 	depends = rust=1:1.70.0
 	optdepends = android-ndk
 	optdepends = cargo-ndk

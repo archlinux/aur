@@ -29,10 +29,10 @@ depends=(
   'rust=1:1.70.0'
 )
 makedepends=(
-  cmake
-  ninja
-  python
-  android-ndk  # If you already have android-ndk installed and `ndk-which` is in the PATH, then you can remove this dependency.
+  'cmake'
+  'ninja'
+  'python'
+  'android-ndk>=r25'  # If you already have android-ndk installed and `ndk-which` is in the PATH, then you can remove this dependency.
 )
 optdepends=(
   'android-ndk'
