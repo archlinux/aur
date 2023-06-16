@@ -43,9 +43,7 @@ url='https://www.kernel.org/'
 license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio perl tar xz xmlto git)
 makedepends+=(bison flex zstd make patch gcc gcc-libs glibc binutils)
-if [[ "$_compiler" = "2" ]]; then
-  makedepends+=(clang llvm llvm-libs lld python)
-fi
+makedepends+=(clang llvm llvm-libs lld python) # For LLVM/CLANG
 options=(!strip)
 
 archlinuxpath=https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/$commit
