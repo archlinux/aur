@@ -5,19 +5,18 @@ pkgname="stm32cubeide"
 pkgver=1.12.1
 _pkgver_ext=1.12.1_16088_20230420_1057
 _pkg_file_name=en.st-stm32cubeide_1.12.1_16088_20230420_1057_amd64.sh.zip
-pkgrel=3
+pkgrel=4
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
-depends=('glibc' 'libusb')
+depends=('glibc' 'libusb' 'ncurses5-compat-libs')
 optdepends=('jlink-software-and-documentation' 'stlink' 'arm-none-eabi-gdb' 'webkit2gtk')
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('custom:SLA0048')
 options=(!strip)
 
-# Big thanks to user "yjun" for direct download link advice.
-# cURL inspiration from davinci-resolve package maintained by "Alex S".
+# Extract actual direct download link */
 _curl_useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
                         Chrome/77.0.3865.75 \
