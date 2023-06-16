@@ -9,7 +9,7 @@ _pkgname=${_repo##*/}
 
 pkgname=$(tr A-Z a-z <<<${_pkgname//_/-})
 pkgver=${_upstreamver##v}
-pkgrel=1
+pkgrel=2
 pkgdesc="a tool to automate nix package updates"
 arch=(x86_64)
 url=https://github.com/berberman/nvfetcher
@@ -29,4 +29,5 @@ package() {
 	cd "$srcdir/$_pkgname-$pkgver" || return 1
 
 	install -D dist-newstyle/build/x86_64-linux/ghc-*/nvfetcher-"$pkgver.0"/x/nvfetcher/build/nvfetcher/nvfetcher -t "$pkgdir/usr/bin"
+	install -D dist-newstyle/build/x86_64-linux/ghc-*/nvfetcher-"$pkgver.0"/build/libHSnvfetcher-0.6.1.0-inplace-ghc9.0.2.so -t "$pkgdir/usr/lib"
 }
