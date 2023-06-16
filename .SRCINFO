@@ -1,0 +1,20 @@
+pkgbase = python-bitbake
+	pkgdesc = a generic task execution engine that allows shell and Python tasks to be run efficiently and in parallel while working within complex inter-task dependency constraints
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/openembedded/bitbake
+	arch = any
+	license = GPL2
+	makedepends = python-installer
+	makedepends = python-build
+	depends = python-codegen
+	depends = python-pyinotify
+	depends = python-ply
+	depends = python-beautifulsoup4
+	depends = python-simplediff
+	provides = python-progressbar
+	conflicts = python-progressbar
+	source = https://github.com/openembedded/bitbake/archive/refs/tags/2.4.1.tar.gz
+	sha256sums = 2bbcdb9e40229022b3bd8a6828728f7eb80680ea76bbebe8264a58bf11caccfd
+
+pkgname = python-bitbake

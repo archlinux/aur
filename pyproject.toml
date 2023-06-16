@@ -1,0 +1,118 @@
+[build-system]
+requires = ["setuptools_scm[toml] >= 6.2"]
+build-backend = "setuptools.build_meta"
+
+# https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
+[project]
+name = "bitbake"
+description = ""
+readme = "README.md"
+requires-python = ">= 3.7"
+keywords = ["yocto"]
+version = "2.4.1"
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX",
+  "Operating System :: Unix",
+  "Operating System :: MacOS",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dynamic = ["optional-dependencies"]
+dependencies = ["codegen", "pyinotify", "ply", "beautifulsoup4", "simplediff"]
+
+[[project.authors]]
+name = "Tim Ansell"
+email = "mithro@mithis.net"
+
+[[project.authors]]
+name = "Phil Blundell"
+email = "pb@handhelds.org"
+
+[[project.authors]]
+name = "Seb Frankengul"
+email = "seb@frankengul.org"
+
+[[project.authors]]
+name = "Holger Freyther"
+email = "holger@moiji-mobile.com"
+
+[[project.authors]]
+name = "Marcin Juszkiewicz"
+email = "marcin@juszkiewicz.com.pl"
+
+[[project.authors]]
+name = "Chris Larson"
+email = "kergoth@handhelds.org"
+
+[[project.authors]]
+name = "Ulrich Luckas"
+email = "luckas@musoft.de"
+
+[[project.authors]]
+name = "Mickey Lauer"
+email = "mickey@Vanille.de"
+
+[[project.authors]]
+name = "Richard Purdie"
+email = "rpurdie@rpsys.net"
+
+[[project.authors]]
+name = "Holger Schurig"
+email = "holgerschurig@gmx.de"
+
+[project.license]
+text = "GPL v2"
+
+[project.urls]
+Homepage = "https://docs.yoctoproject.org/bitbake"
+Download = "https://git.openembedded.org/bitbake"
+"Bug Report" = "https://bugzilla.yoctoproject.org"
+Source = "https://git.openembedded.org/bitbake"
+
+[tool.setuptools]
+script-files = [
+  "bin/bitbake",
+  "bin/bitbake-diffsigs",
+  "bin/bitbake-dumpsig",
+  "bin/bitbake-getvar",
+  "bin/bitbake-hashclient",
+  "bin/bitbake-hashserv",
+  "bin/bitbake-layers",
+  "bin/bitbake-prserv",
+  "bin/bitbake-selftest",
+  "bin/bitbake-server",
+  "bin/bitbake-worker",
+  "bin/git-make-shallow",
+  "bin/toaster",
+  "bin/toaster-eventreplay",
+]
+
+[tool.setuptools.packages.find]
+where = ["lib"]
+include = [
+  "bb",
+  "bblayers",
+  "toaster",
+  "hashserv",
+  "prserv",
+  "layerindexlib",
+  "progressbar",
+]
+
+[tool.setuptools.data-files]
+"share/man/man1" = ["doc/bitbake.1"]
+
+[tool.setuptools.dynamic.optional-dependencies.toaster]
+file = "toaster-requirements.txt"
