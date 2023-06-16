@@ -6,7 +6,7 @@
 pkgname=hmcl-new
 _pkgname=HMCL
 _ver=3.5.4
-_build=233
+_build=234
 pkgver=$_ver.$_build
 pkgrel=1
 pkgdesc='An unofficial build of HMCL that trying to compile and run HMCL with the latest LTS version of java. (with HMCL-Clean changes)'
@@ -27,9 +27,9 @@ source=('hmcl.desktop'
 sha256sums=('b4e8aa0f349bb3f5dd15a31c5a13ac3e10e5a5bcd2f97cf390041924275e43ef'
   '858b5082bc58ddc44fe74625937876e78442fdf5ff948d1e91cddbf170af9eeb'
   '2989a1b5301b8c7b9afdae5696c6a4e5246afa2d4f1f3d3dad5c192f036a9b4c'
-  'e8780109a4756c280ca70c8d23ec0824933be0e837fc875a66f06288c26ef865'
-  '244e98d10309d8021a3c47b22354dad5ca62258add70ea4278458858ed1253ac'
-  '00042e280ec45acf1c389e41188d542a66cf07d050451e433e9c6da7a845866f')
+  '69680efbdb9dc18ab8d6973ee4be442671133641a61602608084fb7fe67c3082'
+  '7b9511c0f0eceef29577e879a00e0ab341fddeed6e9e33f54cefbaca11ae9354'
+  '5df53d14eda958ca6eb236732308171895516813e9b666681b810eb8d3d294e0')
 
 prepare() {
   cd "$_pkgname-$pkgver"

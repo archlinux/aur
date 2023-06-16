@@ -1,4 +1,4 @@
-From f6f24ab3a9f5b46ae87c7a9677c8a63cc940fc91 Mon Sep 17 00:00:00 2001
+From f66e92cc679e0739fd99d6e60b3dd589522df414 Mon Sep 17 00:00:00 2001
 From: Aviana Cruz <gwencroft@proton.me>
 Date: Sun, 6 Nov 2022 13:33:14 +0800
 Subject: [PATCH 2/2] Cleanup
@@ -43,10 +43,10 @@ Signed-off-by: Aviana Cruz <gwencroft@proton.me>
  delete mode 100644 HMCL/src/main/java/org/jackhuang/hmcl/upgrade/UpdateHandler.java
 
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-index 292393f4b..d050f6694 100644
+index 83ece3db7..456126897 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/Launcher.java
-@@ -29,8 +29,6 @@ import org.jackhuang.hmcl.setting.SambaException;
+@@ -30,8 +30,6 @@ import org.jackhuang.hmcl.setting.SambaException;
  import org.jackhuang.hmcl.task.AsyncTaskExecutor;
  import org.jackhuang.hmcl.task.Schedulers;
  import org.jackhuang.hmcl.ui.Controllers;
@@ -55,7 +55,7 @@ index 292393f4b..d050f6694 100644
  import org.jackhuang.hmcl.util.CrashReporter;
  import org.jackhuang.hmcl.util.Lang;
  import org.jackhuang.hmcl.util.StringUtils;
-@@ -105,8 +103,6 @@ public final class Launcher extends Application {
+@@ -112,8 +110,6 @@ public final class Launcher extends Application {
                  Platform.setImplicitExit(false);
                  Controllers.initialize(primaryStage);
  
@@ -64,7 +64,7 @@ index 292393f4b..d050f6694 100644
                  primaryStage.show();
              });
          } catch (Throwable e) {
-@@ -207,10 +203,6 @@ public final class Launcher extends Application {
+@@ -213,10 +209,6 @@ public final class Launcher extends Application {
      }
  
      public static void main(String[] args) {
@@ -527,7 +527,7 @@ index d6c11595c..d75862829 100644
      public ReadOnlyObjectProperty<State> stateProperty() {
          return state.getReadOnlyProperty();
 diff --git a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
-index 461d05c15..33fddb4db 100644
+index d619d6762..1ad15d811 100644
 --- a/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
 +++ b/HMCL/src/main/java/org/jackhuang/hmcl/ui/main/MainPage.java
 @@ -54,9 +54,6 @@ import org.jackhuang.hmcl.ui.construct.TwoLineListItem;
@@ -540,7 +540,7 @@ index 461d05c15..33fddb4db 100644
  import org.jackhuang.hmcl.util.javafx.BindingMapping;
  import org.jackhuang.hmcl.util.javafx.MappedObservableList;
  import org.jackhuang.hmcl.util.platform.JavaVersion;
-@@ -78,14 +75,10 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -80,14 +77,10 @@ public final class MainPage extends StackPane implements DecoratorPage {
      private final JFXPopup popup = new JFXPopup(menu);
  
      private final StringProperty currentGame = new SimpleStringProperty(this, "currentGame");
@@ -555,11 +555,11 @@ index 461d05c15..33fddb4db 100644
      private final JFXButton menuButton;
  
      {
-@@ -113,54 +106,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -115,54 +108,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
  
          setPadding(new Insets(20));
  
--        if (Metadata.isNightly() || (Metadata.isDev() && !Objects.equals(Metadata.VERSION, config().getHideAnnouncementVersion()))) {
+-        if (Metadata.isNightly() || (Metadata.isDev() && !Objects.equals(Metadata.VERSION, config().getShownTips().get(ANNOUNCEMENT)))) {
 -            announcementPane = new VBox(16);
 -            if (Metadata.isNightly()) {
 -                announcementPane.getChildren().add(new AnnouncementCard(i18n("update.channel.nightly.title"), i18n("update.channel.nightly.hint")));
@@ -610,7 +610,7 @@ index 461d05c15..33fddb4db 100644
          StackPane launchPane = new StackPane();
          launchPane.getStyleClass().add("launch-pane");
          launchPane.setMaxWidth(230);
-@@ -230,7 +175,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -232,7 +177,7 @@ public final class MainPage extends StackPane implements DecoratorPage {
              launchPane.getChildren().setAll(launchButton, separator, menuButton);
          }
  
@@ -619,7 +619,7 @@ index 461d05c15..33fddb4db 100644
  
          menu.setMaxHeight(365);
          menu.setMaxWidth(545);
-@@ -243,37 +188,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -245,37 +190,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          });
          Bindings.bindContent(menu.getContent(), versionNodes);
      }
@@ -657,7 +657,7 @@ index 461d05c15..33fddb4db 100644
      private void launch() {
          Versions.launch(Profiles.getSelectedProfile());
      }
-@@ -282,29 +196,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -284,29 +198,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          popup.show(menuButton, JFXPopup.PopupVPosition.BOTTOM, JFXPopup.PopupHPosition.RIGHT, 0, -menuButton.getHeight());
      }
  
@@ -676,7 +676,7 @@ index 461d05c15..33fddb4db 100644
 -
 -    public void hideAnnouncementPane() {
 -        if (announcementPane != null) {
--            config().setHideAnnouncementVersion(Metadata.VERSION);
+-            config().getShownTips().put(ANNOUNCEMENT, Metadata.VERSION);
 -            Pane parent = (Pane) announcementPane.getParent();
 -            if (parent != null)
 -                parent.getChildren().remove(announcementPane);
@@ -687,7 +687,7 @@ index 461d05c15..33fddb4db 100644
      @Override
      public ReadOnlyObjectWrapper<State> stateProperty() {
          return state;
-@@ -322,30 +213,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
+@@ -324,30 +215,6 @@ public final class MainPage extends StackPane implements DecoratorPage {
          this.currentGame.set(currentGame);
      }
  
