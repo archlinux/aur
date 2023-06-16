@@ -1,0 +1,13 @@
+pkgbase = punfetch-bin
+	pkgdesc = A blazingly fast system fetch program to pair with onefetch
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://punfetch.dev/
+	arch = x86_64
+	license = MIT
+	provides = punfetch
+	conflicts = punfetch
+	source = https://github.com/ozwaldorf/punfetch/releases/download/v0.3.6/punfetch-0.3.6-x86_64.tar.gz
+	sha256sums = 5719f3dcaafa51cb53ec127a437f490549fb4ce620dfd7cec712b9c04eae7a75
+
+pkgname = punfetch-bin
