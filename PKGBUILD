@@ -1,34 +1,31 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Tarn W. Burton <twburton@gmail.com>
 pkgname=mkcl-git
-pkgver=1.1.10.19.g2dbfa99
+pkgver=v1.1.9.r515.g19222c1
 pkgrel=1
-pkgdesc="ManKai Common Lisp -- git-version"
-arch=('i686' 'x86_64')
-url="http://common-lisp.net/project/mkcl/"
-license=('LGPL3' 'custom')
-depends=('gawk')
+pkgdesc="ManKai Common Lisp"
+arch=('x86_64')
+url="https://github.com/jcbeaudoin/MKCL"
+license=('LGPL')
+options+=(!strip)
+depends=('awk' 'bash' 'glibc' 'gmp')
 makedepends=('git')
-provides=('common-lisp' 'cl-asdf')
-conflicts=('mkcl')
-source=("git+https://gitlab.common-lisp.net/mkcl/mkcl.git")
-options=('staticlibs')
-md5sums=('SKIP')
+provides=('common-lisp')
+source=('git+https://github.com/jcbeaudoin/MKCL.git')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
-  git describe --tags | sed 's|-|.|g'|cut -c2-
+  cd MKCL
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${pkgname%-git}"
-   ./configure --prefix=/usr
+  cd MKCL
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${pkgname%-git}"
-  make prefix="$pkgdir/usr" install
-  install -m 644 -D "Copyright" \
-	  "$pkgdir/usr/share/licenses/$pkgname/Copyright"
-  find "$pkgdir" -name "*.a" -exec chmod 644 {} \;
+  cd MKCL
+  make DESTDIR=$pkgdir install
 }
+
