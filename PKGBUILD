@@ -2,7 +2,7 @@
 
 pkgname='python-optimum'
 _pkgname=${pkgname#python-}
-pkgver=1.8.7
+pkgver=1.8.8
 pkgrel=1
 pkgdesc='Accelerate training and inference of transformers and diffusers with easy to use hardware optimization tools'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
 )
 groups=('huggingface')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/huggingface/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('06dc49c186fa8373367cafaedc2847881f50f924cf5637962136c20a0157dbdc')
+sha256sums=('470a50fbb2c7d1c751746f200710fe59931a8703cfcf8da910be0fd109d0aae0')
 
 build() {
     cd $_pkgname-$pkgver
