@@ -7,12 +7,12 @@
 _pkgname=stellarium
 pkgname=${_pkgname}-lite
 pkgver=23.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Stellarium without GPS and Telescope Control support (no gpsd and libindi dependencies)"
 arch=(x86_64)
 url="https://${_pkgname}.org"
 license=(GPL2)
-depends=('libpng' 'libglvnd' 'freetype2' 'openssl' 'calcmysky'
+depends=('libpng' 'libglvnd' 'freetype2' 'openssl' 'calcmysky>=0.3'
          'qt6-charts' 'qt6-multimedia' 'qt6-webengine') # 'qxlsx'
 makedepends=('cmake' 'ninja' 'mesa' 'qt6-tools')
 conflicts=(${_pkgname})
