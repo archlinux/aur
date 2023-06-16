@@ -1,0 +1,32 @@
+From b15594e90a8de4a9cd844bc80388e7b64fc4a51a Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz@archlinux.org>
+Date: Fri, 16 Aug 2019 14:20:19 -0400
+Subject: [PATCH] add pacman capability to debootstrap architecture detection
+
+---
+ debootstrap | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/debootstrap b/debootstrap
+index 29c0443..f9d49a9 100755
+--- a/debootstrap
++++ b/debootstrap
+@@ -506,6 +506,15 @@ elif in_path udpkg && \
+ 	HOST_ARCH=$(/usr/bin/udpkg --print-architecture)
+ elif [ -e "$DEBOOTSTRAP_DIR/arch" ]; then
+ 	HOST_ARCH=$(cat "$DEBOOTSTRAP_DIR/arch")
++elif in_path pacman-conf; then
++	CARCH=$(pacman-conf Architecture)
++	case $CARCH in
++		i686)    HOST_ARCH=i386 ;;
++		x86_64)  HOST_ARCH=amd64 ;;
++		armv7h)  HOST_ARCH=armhf ;;
++		aarch64) HOST_ARCH=arm64 ;;
++		*) echo "Unknown architecture: $CARCH" && exit 1
++	esac
+ fi
+ HOST_OS="$HOST_ARCH"
+ # basic host OS guessing for non-Debian systems
+-- 
+2.22.1
+
