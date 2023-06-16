@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=whalebird-appimage
-pkgver=5.0.6
+pkgver=5.0.7
 pkgrel=1
 pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}" "${pkgname%-appimage}-desktop-git")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Whalebird-${pkgver}-linux-${CARCH}.AppImage")
-sha256sums=('320f267c7ff385bc4e92b6a7d4c57fc11492dbefbbb89d7880d16d93be4fd5ea')
+sha256sums=('e9abdef30c72e9ebe60ed01dca7a2c2ffcb4d73b9157d7853b4fe716e5f1f0af')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
