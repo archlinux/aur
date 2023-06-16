@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=jamesdsp-pulse-git
 _app_id=me.timschneeberger.jdsp4linux.pulse
 pkgver=2.4.r150.g9691df5
