@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bs4Dash
-_pkgver=2.2.1
+_pkgver=2.3.0
 pkgname=r-${_pkgname,,}
-pkgver=2.2.1
-pkgrel=3
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="A 'Bootstrap 4' Version of 'shinydashboard'"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -30,7 +30,7 @@ optdepends=(
   r-thematic
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2cdca62a5b42cc02f0997a5c912d27e207da76a0d859860a65ccab9dedd9c3e6')
+sha256sums=('a15480f1cab00e79ec5cadc57a0a329301d1d48502a6d3694c534dfaf165bf25')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
