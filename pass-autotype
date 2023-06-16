@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+
+# pass-autotype This script is based on the fzf-pass script by ReekyMarko
+# https://git.reekynet.com/ReekyMarko/fzf-pass/ but using fuzzel instead of fzf,
+# which works on wayland without additional configuration. It uses wtype to
+# type the information.
+
+PROGNAME=$0
+
+if ! command -v wtype > /dev/null; then
+    echo "Please install wtype."
+    exit 1
+fi
+if ! command -v fuzzel > /dev/null; then
+    echo "Please install fuzzel."
+    exit 1
+fi
+
+function type() {
+    $(command -v wtype) -s 100 "$@"
+}
+function menu() {
+    $(command -v fuzzel) --dmenu "$@"
+}
+function notify() {
+    $(command -v notify-send) $PROGNAME "$@"
+}
+
+cache_file=${XDG_CACHE_HOME:-$HOME/.cache}/pass-autotype
+[[ -f "$cache_file" ]] && last_used="$(tail -n 1 $cache_file)\n"
+
+password_store_dir=${PASSWORD_STORE_DIR:-$HOME/.password-store}
+pass_files=$(find "$password_store_dir" -type f -name '*.gpg' |
+    sed -e "s|$password_store_dir/||g" -e 's|.gpg$||g')
+
+selected_file=$(echo -e "$last_used$pass_files" | menu)
+
+if [[ -z $selected_file ]]; then
+    exit 0
+fi
+
+echo $selected_file > $cache_file
+
+file_data="$(PASSWORD_STORE_DIR=$password_store_dir pass "$selected_file")"
+
+declare -a KEYS
+declare -A OPTS
+KEYS+=("Password")
+OPTS["Password"]="$(echo "$file_data" | head -n 1)"
+file_data="$(echo "$file_data" | tail -n +2)"
+
+# Type the password if it's the only line in the file
+if [[ -z $file_data ]]; then
+    type "${OPTS["Password"]}"
+    notify "Inserted password for $selected_file"
+    exit 0
+fi
+
+# Iterate through the file and add all the options to the hash table OPTS.  If
+# user|username exists, add also the Autotype option at the begining of the KEYS
+# array, to use it as default option.
+pattern_option="^([^:]+):\s*(.+)"
+pattern_user="^[Uu]ser(name)?"
+while IFS= read -r line; do
+    if [[ "$line" =~ $pattern_option ]]; then
+        key="${BASH_REMATCH[1]^}"
+        value="${BASH_REMATCH[2]}"
+        if [[ "$key" =~ $pattern_user ]]; then
+            key="Username"
+            KEYS=("$key" "${KEYS[@]}")
+            KEYS=("Autotype" "${KEYS[@]}")
+        else
+            KEYS+=("$key")
+        fi
+        OPTS["$key"]="$value"
+    fi
+done <<<"$file_data"
+
+RESP=$(
+    IFS=$'\n'
+    echo "${KEYS[*]}" | menu
+)
+
+if [[ -z $RESP ]]; then
+    exit 0
+fi
+
+case "$RESP" in
+Autotype)
+    type "${OPTS["Username"]}" && type -k Tab && type "${OPTS["Password"]}" && type -k "Enter"
+    notify "Inserted username and password for $selected_file"
+    ;;
+Otpauth)
+    type "$(pass otp "$selected_file")"
+    notify "Inserted otp for $selected_file"
+    ;;
+*)
+    type "${OPTS["$RESP"]}"
+    notify "Inserted $RESP for $selected_file"
+    ;;
+esac
