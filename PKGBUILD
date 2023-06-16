@@ -16,6 +16,7 @@ sha256sums=('SKIP')
 prepare() {
     cd "${srcdir}"/${_pkgbase}
     sed -i "/POST_INSTALL/d" dkms.conf
+    sed -i "/BUILD_EXCLUSIVE_KERNEL/d" dkms.conf
     echo "blacklist rtl8xxxu" > blacklist-rtl8xxxu.conf
 }
 
