@@ -1,0 +1,4 @@
+pkg/
+src/
+mediamtx-git/
+*.tar.zst
