@@ -16,5 +16,5 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    cp "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
