@@ -347,9 +347,9 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('f5cd478c3d8b908ab606afd1e95a4f8f77e7186b4a82829251d6e6aaafff825e'
-            '21b9a9e542f853cdc695648d6ab6219bd2e881a4954277f241e104723c373d42'
+sha256sums=('4323d421250e2e444c35d36f4aa8ddb56591dedc25c68d359d19c4ef9dd20955'
+            '6508516de94ed941ae755d89807610dc51fe1229dbfecdf8a82604a8d33242ce'
             '3bbc94fdb5942f005c0e0d5d222b82ce6c758a6ec4d29a3e01ebb4481d8b6ae8'
-            '4fd6b4606b720913bbdf7d0a466ee55533a573ebaceee70b10fdf91de8e8fca6')
+            'd4edb692d0a1772af639730d898282e92a3c06acc46e5a55429315b2a5763e82')
 
 # vim:set ts=8 sts=2 sw=2 et:
