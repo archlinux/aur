@@ -1,44 +1,46 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lfa
-_pkgver=1.30.0
+_pkgver=2.0.10
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=${_pkgver//[:-]/.}
 pkgrel=1
-pkgdesc='Logistic Factor Analysis for Categorical Data'
-arch=('x86_64')
+pkgdesc="Logistic Factor Analysis for Categorical Data"
+arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL3)
 depends=(
-  r
+  blas
+  lapack
   r-corpcor
+  r-rspectra
+)
+checkdepends=(
+  r-testthat
 )
 optdepends=(
+  r-bedmatrix
+  r-genio
   r-ggplot2
   r-knitr
+  r-testthat
 )
-makedepends=(git)
-source=("git+https://git.bioconductor.org/packages/${_pkgname}"
-"001-R430.patch::https://github.com/StoreyLab/lfa/commit/8f3a885eaeabe6b7201d3542be27ab86a65c2a22.patch"
-)
-sha256sums=('SKIP'
-            '6798aed2a76934262d2b6fd521dfba617ec6909cff78ca647568f6b8afc420ac')
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  # see https://github.com/StoreyLab/lfa/issues/6
-  # ignore failed part of the patch.
-  patch -p1 -i "${srcdir}/001-R430.patch" || true
-  cd $srcdir
-  tar -czf ${_pkgname}_${_pkgver}.tar.gz "${_pkgname}"
-}
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('f62a443f21fc6f29c5c75f16fa31ae2b')
+sha256sums=('b18598ee7b1e82a2865dbdfce64a841e34c08d4313d5e68812903520c97944df')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
