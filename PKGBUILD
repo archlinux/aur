@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=tasker-permissions-git
 pkgver=0.2.0.r1.gce60661
-pkgrel=2
-_electronversion=24
+pkgrel=3
+_electronversion=25
 pkgdesc="Utility to easily grant Tasker permissions"
 arch=('x86_64')
 url="https://github.com/joaomgcd/Tasker-Permissions"
@@ -16,7 +16,7 @@ source=("${pkgname%-git}::git+https://github.com/joaomgcd/Tasker-Permissions.git
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
             '018509800d5dcf4b9030c5dff291355476715443b412127f2eca712d764334cb'
-            '0951726ead4cda34ca772cbd2cd5f756b6acbace45aecab925653e1127bdb55c')
+            '614a5bf9dbdd74e288295e50df7e049f76bf887439cf1373ec620164dacd3c4b')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"

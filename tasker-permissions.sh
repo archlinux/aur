@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec electron24 /usr/lib/tasker-permissions/resources/app.asar "$@"
+exec electron25 /usr/lib/tasker-permissions/resources/app.asar "$@"
