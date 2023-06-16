@@ -1,6 +1,6 @@
 pkgbase = sirius-git
 	pkgdesc = Domain specific library for electronic structure calculations
-	pkgver = v7.4.3.r41.ga7de2eb
+	pkgver = 7.4.3.r43.gd433c14
 	pkgrel = 1
 	url = https://github.com/electronic-structure/SIRIUS
 	arch = x86_64

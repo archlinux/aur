@@ -1,7 +1,7 @@
 # Maintainer: Simon Pintarelli <simon.pintarelli@cscs.ch>
 pkgname=sirius-git
 _pkgname=sirius
-pkgver=v7.4.3.r41.ga7de2eb
+pkgver=7.4.3.r43.gd433c14
 pkgrel=1
 pkgdesc="Domain specific library for electronic structure calculations"
 arch=(x86_64)
@@ -17,20 +17,21 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
+}
+
+prepare() {
   # copied from spfft recipe (A. Kudelin)
   # Checking if nvcc is in PATH
   if command -v nvcc &> /dev/null
   then
     export _ACC=CUDA
-    export LDFLAGS="$LDFLAGS -L/opt/cuda/lib64"
     echo "GPU is enabled"
   else
     export _ACC=OFF
     echo "GPU is disabled"
   fi
-
 }
 
 build() {
