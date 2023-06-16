@@ -4,15 +4,21 @@ pkgname=ada-web-server
 epoch=1
 pkgver=23.0.0
 pkgrel=1
-pkgdesc="A complete embeddable web application framework for Ada."
+pkgdesc='A complete embeddable web application framework for Ada.'
 
 arch=(i686 x86_64)
 url=http://libre.adacore.com/tools/aws
 license=(GPL)
 groups=(gcc-ada)
 
-depends=(gnatcoll-core openssl python)
-makedepends=(gprbuild texlive-bin texlive-core texlive-latexextra python-sphinx)
+depends=(gnatcoll-core
+         openssl
+         python)
+makedepends=(gprbuild
+             texlive-bin
+             texlive-core
+             texlive-latexextra
+             python-sphinx)
 
 provides=(aws)
 
@@ -28,20 +34,20 @@ prepare()
     cd $srcdir/aws-$pkgver
 
     rmdir templates_parser
-    ln -s "$srcdir/templates-parser-$pkgver" templates_parser
+    ln -s $srcdir/templates-parser-$pkgver templates_parser
 }
 
 
 build() 
 {
-    cd "$srcdir/aws-$pkgver/templates_parser"
+    cd $srcdir/aws-$pkgver/templates_parser
 
     PRJ_BUILD=Release make DEBUG=false prefix=/usr setup 
     PRJ_BUILD=Release make DEBUG=false build
 
-    cd docs
-    mkdir -p build
-    make -j1 html latexpdf
+#    cd docs
+#    mkdir -p build
+#    make -j1 html latexpdf
 
     cd $srcdir/aws-$pkgver
     PRJ_BUILD=Release DEBUG=false make -j1 prefix=/usr SOCKET=openssl setup
@@ -60,25 +66,29 @@ package()
     cd $srcdir/aws-$pkgver
     make -j1 DESTDIR="$pkgdir" install
 
+    rm $pkgdir/usr/bin/templates2ada
+    rm $pkgdir/usr/bin/templatespp
 
     # Install the license.
+    #
     install -D -m644     \
-       "COPYING3"        \
-       "$pkgdir/usr/share/licenses/$pkgname/COPYING3"
+       COPYING3          \
+       $pkgdir/usr/share/licenses/$pkgname/COPYING3
 
     # Install the custom license.
+    #
     install -D -m644     \
-       "COPYING.RUNTIME" \
-       "$pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME"
+       COPYING.RUNTIME   \
+       $pkgdir/usr/share/licenses/$pkgname/COPYING.RUNTIME
 
 
-   # Install the templates-parser license.
-   install -D -m644     \
-      "COPYING3"        \
-      "$pkgdir/usr/share/licenses/templates-parser/COPYING3"
-
-   # Install the templates-parser custom license.
-   install -D -m644     \
-      "COPYING.RUNTIME" \
-      "$pkgdir/usr/share/licenses/templates-parser/COPYING.RUNTIME"
+#   # Install the templates-parser license.
+#   install -D -m644     \
+#      "COPYING3"        \
+#      "$pkgdir/usr/share/licenses/templates-parser/COPYING3"
+#
+#   # Install the templates-parser custom license.
+#   install -D -m644     \
+#      "COPYING.RUNTIME" \
+#      "$pkgdir/usr/share/licenses/templates-parser/COPYING.RUNTIME"
 }
