@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gcatest
-_pkgver=1.28.2
+_pkgver=2.0.6
 pkgname=r-${_pkgname,,}
-pkgver=1.28.2
+pkgver=2.0.6
 pkgrel=1
 pkgdesc='Genotype Conditional Association TEST'
 arch=('x86_64')
@@ -17,8 +17,13 @@ optdepends=(
   r-ggplot2
   r-knitr
 )
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('743c6b3790c334cbd1969376b0b28e795dfc4ee1a084390bd429cad34db84bb8')
+makedepends=('git')
+source=("git+https://git.bioconductor.org/packages/${_pkgname}")
+sha256sums=('SKIP')
+
+prepare(){
+  tar -czf ${_pkgname}_$_pkgver.tar.gz ${_pkgname}
+}
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
