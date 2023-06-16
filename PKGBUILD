@@ -7,7 +7,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 pkgver=2.0.1
 _pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -185,8 +185,8 @@ prepare() {
 
   git -c protocol.file.allow=always submodule update --init --recursive
 
-  # Fix include with GCC 12
-  sed "1i#include <mutex>" -i third_party/kineto/libkineto/src/RoctracerActivityApi.h
+  # Fix cmake prefix path (FS#78665)
+  sed -i "s|cmake_prefix_path = _osp.*|cmake_prefix_path = '/usr/lib/cmake'|g" torch/utils/__init__.py
 
   # https://bugs.archlinux.org/task/64981
   patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
