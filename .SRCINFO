@@ -1,15 +1,18 @@
 pkgbase = vieb-appimage
 	pkgdesc = Vim Inspired Electron Browser - Vim bindings for the web by design
-	pkgver = 9.7.1
+	pkgver = 10.0.0
 	pkgrel = 1
 	url = https://vieb.dev/
+	arch = aarch64
 	arch = x86_64
 	license = GPL3
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
 	options = !strip
-	source = vieb-9.7.1.AppImage::https://github.com/Jelmerro/Vieb/releases/download/9.7.1/Vieb-9.7.1.AppImage
-	sha256sums = 53beaed24fcd6ca772ba352e7a037aca9f87ef1e4c6209f0aa941f3e283fc826
+	source_aarch64 = vieb-10.0.0-aarch64.AppImage::https://github.com/Jelmerro/Vieb/releases/download/10.0.0/Vieb-10.0.0-arm64.AppImage
+	sha256sums_aarch64 = 56a1106a56aefc067359e97401a0e2a0ccd3ca9c832064ae5bd2f026bb83a9be
+	source_x86_64 = vieb-10.0.0-x86_64.AppImage::https://github.com/Jelmerro/Vieb/releases/download/10.0.0/Vieb-10.0.0.AppImage
+	sha256sums_x86_64 = 530435e472e7fbd9af4645818c9ae7316c04624fe9d86c2ca803ef5e2524a7fd
 
 pkgname = vieb-appimage
