@@ -1,0 +1,17 @@
+pkgbase = costa
+	pkgdesc = Communication-optimal shuffle and transpose algorithms.
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/eth-cscs/COSTA
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = cmake
+	depends = openmpi
+	depends = gcc-libs
+	depends = glibc
+	provides = costa
+	source = costa-2.2.2.tar.gz::https://github.com/eth-cscs/COSTA/archive/v2.2.2.tar.gz
+	sha256sums = e87bc37aad14ac0c5922237be5d5390145c9ac6aef0350ed17d86cb2d994e67c
+
+pkgname = costa
