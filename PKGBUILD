@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=QuasR
-_pkgver=1.40.0
+_pkgver=1.40.1
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.40.1
 pkgrel=1
 pkgdesc='Quantify and Annotate Short Reads in R'
 arch=('x86_64')
@@ -41,7 +41,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7da1533faeb1a1c0190c85582d23f2bc6394f23dcacc31581602947154c96426')
+sha256sums=('6fbdb7af8ca383f91d7c27a4c4d7f20abf416172045dd94c0fbcdfb778d07623')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
