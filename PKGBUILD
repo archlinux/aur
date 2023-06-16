@@ -36,7 +36,6 @@ prepare() {
       -e 's|^#CONFIG_ACS=y|CONFIG_ACS=y|g' \
       -i 'hostapd/.config'
   echo 'CONFIG_SAE=y
-CONFIG_SAE_Pa=y
 CONFIG_SAE_PK=y' >> 'hostapd/.config'
   patch -p1 < "$srcdir/hostapd-2.10-lar.patch"
 }
