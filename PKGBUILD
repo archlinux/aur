@@ -11,7 +11,7 @@ license=("MIT")
 arch=("x86_64")
 provides=("punfetch")
 conflicts=("punfetch")
-source=("https://github.com/ozwaldorf/punfetch/releases/download/v$pkgver/punfetch-$pkgver-x86_64.tar.gz")
+source=("https://github.com/ozwaldorf/punfetch/releases/download/$pkgver/punfetch-$pkgver-x86_64.tar.gz")
 sha256sums=("5719f3dcaafa51cb53ec127a437f490549fb4ce620dfd7cec712b9c04eae7a75")
 
 package() {
