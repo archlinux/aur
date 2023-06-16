@@ -1,14 +1,14 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=enzyme
 pkgver=0.0.69
-pkgrel=2
+pkgrel=3
 pkgdesc="High-performance automatic differentiation of LLVM and MLIR."
 arch=(any)
 url="https://enzyme.mit.edu"
 license=('Apache')
 groups=()
-depends=(llvm)
-makedepends=(cmake ninja clang)
+depends=(llvm clang)
+makedepends=(cmake)
 optdepends=()
 provides=()
 conflicts=()
@@ -27,8 +27,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DLLVM_DIR='/usr/lib/cmake/llvm' \
         -DClang_DIR='/usr/lib/cmake/clang' \
-        -Wno-dev \
-		-G Ninja
+        -Wno-dev
     cmake --build build
 }
 
