@@ -1,6 +1,6 @@
 pkgbase = chatall-appimage
 	pkgdesc = Concurrently chat with ChatGPT, Bing Chat, bard, Alpaca, Vincuna, Claude, ChatGLM, MOSS, iFlytek Spark, ERNIE and more, discover the best answers
-	pkgver = 1.28.29
+	pkgver = 1.28.30
 	pkgrel = 1
 	url = http://chatall.ai/
 	arch = aarch64
@@ -11,11 +11,11 @@ pkgbase = chatall-appimage
 	depends = glibc
 	conflicts = chatall
 	options = !strip
-	source_aarch64 = chatall-1.28.29-aarch64.AppImage::https://github.com/sunner/ChatALL/releases/download/v1.28.29/ChatALL-1.28.29-linux-arm64.AppImage
-	sha256sums_aarch64 = 5d48f2a9b7d9884cd05132cf1cc341c5b8bfc2fa7de9828cabe31b8064253ad2
-	source_armv7h = chatall-1.28.29-armv7h.AppImage::https://github.com/sunner/ChatALL/releases/download/v1.28.29/ChatALL-1.28.29-linux-arm64.AppImage
-	sha256sums_armv7h = 5d48f2a9b7d9884cd05132cf1cc341c5b8bfc2fa7de9828cabe31b8064253ad2
-	source_x86_64 = chatall-1.28.29-x86_64.AppImage::https://github.com/sunner/ChatALL/releases/download/v1.28.29/ChatALL-1.28.29-linux-x86_64.AppImage
-	sha256sums_x86_64 = 05a7ac8eaeed32b240dfe9af14a4361f0caa79330884f96b694992a77b23ef41
+	source_aarch64 = chatall-1.28.30-aarch64.AppImage::https://github.com/sunner/ChatALL/releases/download/v1.28.30/ChatALL-1.28.30-linux-arm64.AppImage
+	sha256sums_aarch64 = feb67498804d6b46333790e464c7609e120998255d4e85f58b260e1155c231a6
+	source_armv7h = chatall-1.28.30-armv7h.AppImage::https://github.com/sunner/ChatALL/releases/download/v1.28.30/ChatALL-1.28.30-linux-arm64.AppImage
+	sha256sums_armv7h = feb67498804d6b46333790e464c7609e120998255d4e85f58b260e1155c231a6
+	source_x86_64 = chatall-1.28.30-x86_64.AppImage::https://github.com/sunner/ChatALL/releases/download/v1.28.30/ChatALL-1.28.30-linux-x86_64.AppImage
+	sha256sums_x86_64 = 907900534c53a2f6ad8189f7a45c7877ce097a9e28630029bc9001ed4db3a78f
 
 pkgname = chatall-appimage
