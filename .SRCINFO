@@ -1,0 +1,16 @@
+pkgbase = python-swagger-ui-py
+	pkgdesc = Swagger UI for Python web framework, such Tornado, Flask and Sanic
+	pkgver = 22.07.13
+	pkgrel = 1
+	url = https://pwzer.github.io/swagger-ui-py/
+	arch = any
+	license = APACHE2
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	options = !strip
+	source = python-swagger-ui-py-22.07.13.tar.gz::https://github.com/PWZER/swagger-ui-py/archive/refs/tags/v22.07.13.tar.gz
+	sha256sums = db8e0759f477b292258c89482de487b9fc2ea6da4cf0af00c2a2995346967f13
+
+pkgname = python-swagger-ui-py
