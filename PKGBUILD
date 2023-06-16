@@ -1,4 +1,3 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=gnatcoll-core
@@ -12,7 +11,7 @@ arch=(i686 x86_64)
 license=(GPL3 custom)
 
 depends=(libgpr)
-makedepends=(gprbuild
+makedepends=(gprbuild-toolbox
              texlive-bin
              python-sphinx
              python-sphinx_rtd_theme
