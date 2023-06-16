@@ -28,6 +28,14 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 	make EMACS=emacs DESTDIR="${pkgdir}" install
 
+	cd ${pkgdir}/etc
+	ln -sf anthy-unicode.conf anthy-conf
+
+	cd ${pkgdir}/usr/bin
+	ln -sf anthy-agent anthy-agent-unicode
+	ln -sf anthy-dic-tool anthy-dic-tool-unicode
+	ln -sf anthy-morphological-analyzer anthy-morphological-analyzer-unicode
+
 	cd ${pkgdir}/usr/include
 	ln -sf anthy-unicode-1.0/anthy anthy
 
