@@ -5,7 +5,7 @@ Analyzation features:
 ## Installation
 ### Arch
 `yay -S shadowtube`
-### Other
+### Other (Unix)
 1. Clone the repository and navigate to the directory:
 ```
 git clone https://github.com/danehobrecht/shadowtube.git && cd shadowtube
