@@ -1,0 +1,18 @@
+pkgbase = openhome-appimage
+	pkgdesc = Application for importing and transferring Pokémon between save files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/andrewbenington/OpenHome
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = glibc
+	depends = hicolor-icon-theme
+	conflicts = openhome
+	options = !strip
+	source = openhome-0.1.0.AppImage::https://github.com/andrewbenington/OpenHome/releases/download/v0.1.0/OpenHome-0.1.0.AppImage
+	sha256sums = b32ecd8e82434245e594af3a363ca46ac969ea57f9251ce10c7b0037332e2d9b
+
+pkgname = openhome-appimage
