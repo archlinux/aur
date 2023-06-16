@@ -1,8 +1,8 @@
 pkgbase = assert-fortran-git
 	pkgdesc = This is an assertion module for fortran, easy to use
-	pkgver = 1.1.0
-	pkgrel = 1
-	url = https://github.com/alecksandr26/assert-fortran
+	pkgver = 1.1.1
+	pkgrel = 2
+	url = https://github.com/alecksandr26/assert-fortran-git/archive/refs/tags/v1.1.1.tar.gz
 	arch = x86_64
 	license = MIT license
 	makedepends = gcc-fortran
@@ -10,7 +10,7 @@ pkgbase = assert-fortran-git
 	makedepends = binutils
 	makedepends = coreutils
 	optdepends = valgrind
-	source = git+https://github.com/alecksandr26/assert-fortran
+	source = assert-fortran-git-1.1.1.tar.gz::https://github.com/alecksandr26/assert-fortran-git/archive/refs/tags/v1.1.1.tar.gz
 	md5sums = SKIP
 
 pkgname = assert-fortran-git
