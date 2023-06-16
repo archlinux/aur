@@ -70,6 +70,7 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         ${archlinuxpath}/config
         # PRJC patch
         prjc_v6.3-r1.patch
+        prjc-fix.patch #https://gitlab.com/alfredchen/linux-prjc/-/issues/81
         # Arch patches
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch)
 
@@ -350,6 +351,7 @@ _package-headers(){
 sha256sums=('4323d421250e2e444c35d36f4aa8ddb56591dedc25c68d359d19c4ef9dd20955'
             '6508516de94ed941ae755d89807610dc51fe1229dbfecdf8a82604a8d33242ce'
             '3bbc94fdb5942f005c0e0d5d222b82ce6c758a6ec4d29a3e01ebb4481d8b6ae8'
+            '0f90283cfd48dba2fc9c1b9cfd8c64f4706132277e5bf7f8154d7add061f80be'
             'd4edb692d0a1772af639730d898282e92a3c06acc46e5a55429315b2a5763e82')
 
 # vim:set ts=8 sts=2 sw=2 et:
