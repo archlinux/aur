@@ -60,8 +60,8 @@ build()
 
 package() 
 {
-    cd $srcdir/aws-$pkgver/templates_parser
-    make -j1 DEBUG=false DESTDIR="$pkgdir" install
+#    cd $srcdir/aws-$pkgver/templates_parser
+#    make -j1 DEBUG=false DESTDIR="$pkgdir" install
 
     cd $srcdir/aws-$pkgver
     make -j1 DESTDIR="$pkgdir" install
