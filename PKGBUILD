@@ -12,7 +12,7 @@ arch=(i686 x86_64)
 license=(GPL3 custom)
 
 depends=(gcc-ada gtk3)
-makedepends=(gprbuild-toolbox)
+makedepends=(gprbuild-toolbox gnatdoc gnatcoll-gnatinspect)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230428-165F0-src.tar.gz
         Makefile.in-patch)
@@ -44,10 +44,7 @@ build()
     # which results in build artifacts being overwritten.
     #
     make -j1 GPRBUILD_SWITCHES="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
-
-    # Defer making docs til 'gnatdoc' is split out of gnatstudio source.
-    #
-    # make docs
+    make docs
 }
 
 
