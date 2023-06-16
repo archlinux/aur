@@ -22,7 +22,7 @@ pkgver() {
 build() {
 	cd "${_pkgname}/"
 	echo "  -> Building..."
-	make CC=clang
+	CFLAGS="-fno-stack-protector" make
 }
 
 package() {
