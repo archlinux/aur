@@ -45,7 +45,7 @@ fi
 
 ###################################################################################
 
-pkgbase=linux-pds
+pkgbase=linux-cpu-optimized
 pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {

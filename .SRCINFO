@@ -1,4 +1,4 @@
-pkgbase = linux-pds
+pkgbase = linux-cpu-optimized
 	pkgdesc = The Linux kernel and modules with graysky2 kernel_compiler_patch
 	pkgver = 6.3.8
 	pkgrel = 1
@@ -36,6 +36,6 @@ pkgbase = linux-pds
 	sha256sums = 8556577053370ab2177bc32f748be176ab8d742517106e174c5ec6c08869534a
 	sha256sums = d4edb692d0a1772af639730d898282e92a3c06acc46e5a55429315b2a5763e82
 
-pkgname = linux-pds
+pkgname = linux-cpu-optimized
 
-pkgname = linux-pds-headers
+pkgname = linux-cpu-optimized-headers
