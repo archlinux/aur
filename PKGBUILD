@@ -1,13 +1,15 @@
 # Maintainer: atemmel <temmeladam@gmail.com>
 pkgname=spider
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Fast and simple terminal file manager"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/atemmel/${pkgname}"
 license=('MIT')
 depends=(
+	'curl'
 	'ncurses'
+	'tidy'
 	'zig'
 )
 makedepends=('git')
@@ -16,7 +18,7 @@ sha256sums=('SKIP')
 
 build() {
 	cd "${srcdir}/${pkgname}"
-	zig build -Drelease-fast
+	zig build -Doptimize=ReleaseFast
 }
 
 package() {
