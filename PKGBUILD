@@ -3,7 +3,7 @@ pkgbase=damask
 pkgname=('damask' 'damask-grid' 'damask-mesh' 'python-damask')
 pkgver=3.0.0~alpha7
 pkgver_=3.0.0-alpha7
-pkgrel=3
+pkgrel=4
 pkgdesc='DAMASK - The Duesseldorf Advanced Material Simulation Kit'
 arch=('x86_64')
 url='https://damask.mpie.de'
@@ -13,10 +13,12 @@ makedepends=('cmake' 'python-setuptools'
              'python-matplotlib' 'python-scipy' 'python-pandas' 'python-h5py' 'python-pyaml')
 optdepends=('paraview: post-processing')
 source=(https://damask.mpie.de/download/damask-${pkgver_}.tar.xz
+        T-init.patch
         CMakeLists.patch
         setup.patch)
 
 sha256sums=('442b06b824441293e72ff91b211a555c5d497aedf62be1c4332c426558b848a4'
+            '188a94f1d0486548acf1246531f92bca91806cf5b1a48eb33c67e9dc6297d602'
             '296d2401fdbab78083a68366bfd0c9ac0ace096305ea9acbed0581d265be4f87'
             'c98b009ac98952528d3d50a0844d433b8635206df3e0525a8018ad68c6fad947')
 
@@ -25,6 +27,7 @@ prepare() {
     sed -i '14s/19/20/g' ${pkgname}-${pkgver_}/CMakeLists.txt
     sed -i '73d;75d;77d' ${pkgname}-${pkgver_}/src/mesh/discretization_mesh.f90
     sed -i '92i    DMAddField, &' ${pkgname}-${pkgver_}/src/mesh/mesh_mech_FEM.f90
+    patch ${pkgname}-${pkgver_}/src/grid/grid_thermal_spectral.f90 "${srcdir}/T-init.patch"
     patch ${pkgname}-${pkgver_}/src/CMakeLists.txt "${srcdir}/CMakeLists.patch"
     patch ${pkgname}-${pkgver_}/python/setup.cfg "${srcdir}/setup.patch"
 }
