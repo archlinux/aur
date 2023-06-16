@@ -2,15 +2,15 @@
 
 _pkgbase=rtl8xxxu
 pkgname=rtl8xxxu-dkms-git
-pkgver=r20.08df0fb
+pkgver=r22.6289e8f
 pkgrel=1
 pkgdesc="Driver for Realtek RTL8XXXXU usb wifi chips"
 arch=('any')
-url="https://github.com/a5a5aa555oo/rtl8xxxu"
+url="https://github.com/lwfinger/rtl8xxxu"
 license=('GPL2' 'custom')
 depends=('dkms' 'linux-firmware>=20230404.2e92a49f-1')
 makedepends=('git')
-source=("git+https://github.com/a5a5aa555oo/rtl8xxxu.git")
+source=("git+https://github.com/lwfinger/rtl8xxxu")
 sha256sums=('SKIP')
 
 prepare() {
@@ -30,5 +30,5 @@ package() {
     install -Dm 644 firmware/LICENCE.rtlwifi_firmware.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
     install -Dm 644 blacklist-rtl8xxxu.conf "${pkgdir}"/etc/modprobe.d/blacklist-rtl8xxxu.conf
     install -Dm 644 -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver} *.c *.h Makefile dkms.conf
-    sed -e "s/git_103d6e9-1/${pkgver}/" -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
+    sed -e "s/git_2042944-1/${pkgver}/" -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
