@@ -1,13 +1,13 @@
 pkgbase = ttf-iosevka-lyte
 	pkgdesc = lytedev's customized Iosevka font primarily for the Kitty terminal emulator
 	pkgver = 16.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/lytedev/Iosevka
 	arch = any
 	license = SIL Open Font License v1.1
 	source = https://files.lyte.dev/iosevkalyte/rel/iosevkalyteterm-16.4.0.tar.zstd
-	source = ttf-iosevka-lyte-16.4.0-1-LICENSE.md::https://files.lyte.dev/iosevkalyte/rel/iosevkalyteterm-16.4.0-LICENSE.md
-	sha256sums = 27d9cd867b1d2c6428f142e5928279d625e36b506698a667ddbd59ed5ee7bbe4
+	source = ttf-iosevka-lyte-16.4.0-3-LICENSE.md::https://files.lyte.dev/iosevkalyte/rel/iosevkalyteterm-16.4.0-LICENSE.md
+	sha256sums = 6fee8e91286277b1e9e375d8c48c3ebede7b78b7855460f563ae6732076a495b
 	sha256sums = 46ecadda73abf39cda76731a94fd357b743f882dc1156b4410a2967a811c4ff1
 
 pkgname = ttf-iosevka-lyte
