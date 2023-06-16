@@ -1,23 +1,24 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
 	pkgver = 2.39
-	pkgrel = 4
-	url = https://github.com/karelzak/util-linux
+	pkgrel = 9
+	url = https://github.com/util-linux/util-linux
 	arch = x86_64
 	arch = aarch64
 	groups = selinux
 	license = GPL2
+	makedepends = git
+	makedepends = meson
 	makedepends = asciidoctor
+	makedepends = bash-completion
 	makedepends = libcap-ng
+	makedepends = libutempter
 	makedepends = libxcrypt
 	makedepends = python
 	makedepends = systemd
 	makedepends = libselinux
 	options = strip
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.tar.xz
-	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-2.39.tar.sign
-	source = 0001-libmount-don-t-call-hooks-after-mount-type-helper.patch
-	source = 0002-libmount-check-for-availability-of-mount-setattr.patch
+	source = git+https://github.com/karelzak/util-linux#tag=8d7cca1a88bb347d7a0b5c32d2d2b1e8d71cafcc?signed
 	source = pam-login
 	source = pam-common
 	source = pam-runuser
@@ -27,10 +28,7 @@ pkgbase = util-linux-selinux
 	source = rfkill-unblock_.service
 	source = rfkill-block_.service
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
-	sha256sums = 32b30a336cda903182ed61feb3e9b908b762a5e66fe14e43efb88d37162075cb
 	sha256sums = SKIP
-	sha256sums = e7c6a0375ca1bd4606f7a42882f20b8e3ce7c7107c790694e55699376377c0e1
-	sha256sums = 6266b8733450af97bcf0f31fa9b21bad171b53b7b49a2954812c39ea70552cb5
 	sha256sums = 99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f
 	sha256sums = 57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af
 	sha256sums = 48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1
@@ -48,6 +46,7 @@ pkgname = util-linux-selinux
 	depends = libsystemd.so
 	depends = libudev.so
 	depends = libcap-ng
+	depends = libutempter
 	depends = libxcrypt
 	depends = libcrypt.so
 	depends = util-linux-libs-selinux
@@ -57,8 +56,8 @@ pkgname = util-linux-selinux
 	optdepends = words: default dictionary for look
 	provides = rfkill
 	provides = hardlink
-	provides = util-linux=2.39-4
-	provides = selinux-util-linux=2.39-4
+	provides = util-linux=2.39-9
+	provides = selinux-util-linux=2.39-9
 	conflicts = rfkill
 	conflicts = hardlink
 	conflicts = util-linux
@@ -81,7 +80,7 @@ pkgname = util-linux-libs-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = util-linux-libs=2.39-4
+	provides = util-linux-libs=2.39-9
 	provides = libutil-linux-selinux
 	conflicts = util-linux-libs
 	conflicts = libutil-linux-selinux

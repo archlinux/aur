@@ -10,12 +10,12 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux util-linux-libs-selinux)
-_pkgmajor=2.39
-_realver=${_pkgmajor}
-pkgver=${_realver/-/}
-pkgrel=4
+_tag='8d7cca1a88bb347d7a0b5c32d2d2b1e8d71cafcc' # git rev-parse v${_tag_name}
+_tag_name=2.39
+pkgver=${_tag_name/-/}
+pkgrel=9
 pkgdesc='SELinux aware miscellaneous system utilities for Linux'
-url='https://github.com/karelzak/util-linux'
+url='https://github.com/util-linux/util-linux'
 arch=('x86_64' 'aarch64')
 groups=('selinux')
 # SELinux package maintenance note:
@@ -23,22 +23,18 @@ groups=('selinux')
 #   systemd depends on libutil-linux and util-linux depends on libudev
 #   provided by libsystemd (FS#39767).  To break this cycle, make
 #   util-linux-selinux depend on systemd at build time.
-makedepends=('asciidoctor' 'libcap-ng' 'libxcrypt' 'python' 'systemd' 'libselinux')
+makedepends=('git' 'meson' 'asciidoctor' 'bash-completion' 'libcap-ng'
+             'libutempter' 'libxcrypt' 'python' 'systemd' 'libselinux')
 license=('GPL2')
 options=('strip')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
-source=("https://www.kernel.org/pub/linux/utils/util-linux/v${_pkgmajor}/${pkgbase/-selinux}-${_realver}.tar."{xz,sign}
-        '0001-libmount-don-t-call-hooks-after-mount-type-helper.patch'
-        '0002-libmount-check-for-availability-of-mount-setattr.patch'
+source=("git+https://github.com/karelzak/util-linux#tag=${_tag}?signed"
         pam-{login,common,runuser,su}
         'util-linux.sysusers'
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('32b30a336cda903182ed61feb3e9b908b762a5e66fe14e43efb88d37162075cb'
-            'SKIP'
-            'e7c6a0375ca1bd4606f7a42882f20b8e3ce7c7107c790694e55699376377c0e1'
-            '6266b8733450af97bcf0f31fa9b21bad171b53b7b49a2954812c39ea70552cb5'
+sha256sums=('SKIP'
             '99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
             '48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1'
@@ -48,33 +44,53 @@ sha256sums=('32b30a336cda903182ed61feb3e9b908b762a5e66fe14e43efb88d37162075cb'
             '8ccec10a22523f6b9d55e0d6cbf91905a39881446710aa083e935e8073323376'
             'a22e0a037e702170c7d88460cc9c9c2ab1d3e5c54a6985cd4a164ea7beff1b36')
 
-prepare() {
-  cd "${pkgbase/-selinux}-${_realver}"
+_backports=(
+  # current stable/v2.39
+  "${_tag}..205e88e51c11d039cd80c9f1104bee5555a4ddaa"
+)
 
-  patch -Np1 < ../0001-libmount-don-t-call-hooks-after-mount-type-helper.patch
-  patch -Np1 < ../0002-libmount-check-for-availability-of-mount-setattr.patch
+_reverts=(
+)
+
+prepare() {
+  cd "${pkgbase/-selinux}"
+
+  local _c
+  for _c in "${_backports[@]}"; do
+    if [[ $_c == *..* ]]; then
+      git log --oneline --reverse "${_c}"
+    else
+      git log --oneline -1 "${_c}"
+    fi
+    git cherry-pick -n -m1 "${_c}"
+  done
+  for _c in "${_reverts[@]}"; do
+    git log --oneline -1 "${_c}"
+    git revert -n "${_c}"
+  done
 }
 
 build() {
-  cd "${pkgbase/-selinux}-${_realver}"
+  local _meson_options=(
+    -Dfs-search-path=/usr/bin:/usr/local/bin
 
-  ./configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
-    --bindir=/usr/bin \
-    --sbindir=/usr/bin \
-    --localstatedir=/var \
-    --enable-usrdir-path \
-    --enable-fs-paths-default=/usr/bin:/usr/local/bin \
-    --enable-vipw \
-    --enable-newgrp \
-    --enable-chfn-chsh \
-    --enable-write \
-    --enable-mesg \
-    --with-selinux \
-    --with-python=3
+    -Dlibuser=disabled
+    -Dncurses=disabled
+    -Dncursesw=enabled
+    -Deconf=disabled
+    -Dselinux=enabled
 
-  make
+    -Dbuild-chfn-chsh=enabled
+    -Dbuild-line=disabled
+    -Dbuild-mesg=enabled
+    -Dbuild-newgrp=enabled
+    -Dbuild-vipw=enabled
+    -Dbuild-write=enabled
+  )
+
+  arch-meson "${pkgbase/-selinux}" build "${_meson_options[@]}"
+
+  meson compile -C build
 }
 
 package_util-linux-selinux() {
@@ -83,9 +99,8 @@ package_util-linux-selinux() {
   provides=('rfkill' 'hardlink'
             "${pkgname/-selinux}=${pkgver}-${pkgrel}"
             "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
-  depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux'
-           'systemd-libs' 'libsystemd.so' 'libudev.so'
-           'libcap-ng' 'libxcrypt' 'libcrypt.so' 'util-linux-libs-selinux'
+  depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux' 'systemd-libs' 'libsystemd.so'
+           'libudev.so' 'libcap-ng' 'libutempter' 'libxcrypt' 'libcrypt.so' 'util-linux-libs-selinux'
            'libmagic.so' 'libncursesw.so')
   optdepends=('python: python bindings to libmount'
               'words: default dictionary for look')
@@ -99,7 +114,7 @@ package_util-linux-selinux() {
 
   _python_stdlib="$(python -c 'import sysconfig; print(sysconfig.get_paths()["stdlib"])')"
 
-  make -C "${pkgbase/-selinux}-${_realver}" DESTDIR="${pkgdir}" usrsbin_execdir=/usr/bin install
+  DESTDIR="${pkgdir}" meson install -C build
 
   # remove static libraries
   rm "${pkgdir}"/usr/lib/lib*.a*
