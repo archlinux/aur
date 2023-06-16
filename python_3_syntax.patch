@@ -1,0 +1,35 @@
+diff --git a/bin/vmdebootstrap b/bin/vmdebootstrap
+index d9a697d..c59da3f 100755
+--- a/bin/vmdebootstrap
++++ b/bin/vmdebootstrap
+@@ -418,7 +418,7 @@ class VmDebootstrap(cliapp.Application):  # pylint: disable=too-many-public-meth
+ 
+         # /boot partitioning offset calculation
+         # returns partoffset
+-        if self.settings['bootoffset'] and self.settings['bootoffset'] is not '0':
++        if self.settings['bootoffset'] and self.settings['bootoffset'] != '0':
+             # turn v.small offsets into something at least possible to create.
+             if self.settings['bootoffset'] < 1048576:
+                 partoffset = 1
+@@ -433,7 +433,7 @@ class VmDebootstrap(cliapp.Application):  # pylint: disable=too-many-public-meth
+ 
+         # /boot creation - move into base but keep the check
+         # needs extent, partoffset, bootsize: no return
+-        if self.settings['bootsize'] and self.settings['bootsize'] is not '0%':
++        if self.settings['bootsize'] and self.settings['bootsize'] != '0%':
+             boot_fs_type = 'ext2'
+             if self.settings['boottype'] in ('vfat', 'msdos'):
+                 boot_fs_type = 'fat16'
+diff --git a/vmdebootstrap/filesystem.py b/vmdebootstrap/filesystem.py
+index b911c05..d068b0d 100644
+--- a/vmdebootstrap/filesystem.py
++++ b/vmdebootstrap/filesystem.py
+@@ -126,7 +126,7 @@ class Filesystem(Base):
+             raise cliapp.AppException(msg)
+         root = '/dev/mapper/%s' % devices[rootindex]
+         if self.settings['bootsize'] or self.settings['use-uefi']:
+-            boot = '/dev/mapper/%s' % devices[bootindex].decode('utf-8')
++            boot = '/dev/mapper/%s' % devices[bootindex]
+         if self.settings['swap'] > 0:
+             swap = '/dev/mapper/%s' % devices[swapindex]
+         self.devices['rootdev'] = root
