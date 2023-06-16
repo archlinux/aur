@@ -4,8 +4,8 @@ pkgname=edrawmind-bin
 _softname=mindmaster
 _pkgname_nover=EdrawMind
 _pkgname=${_pkgname_nover}-10
-pkgver=10.0.6
-pkgrel=3
+pkgver=10.5.4
+pkgrel=0
 arch=('x86_64')
 options=(!strip)
 conflicts=("edrawmind" "mindmaster" "mindmaster_cn" "mindmaster_en")
@@ -13,16 +13,16 @@ replaces=("mindmaster_en")
 pkgdesc="Multi-functional, good-looking, easy-to-use professional mind mapping software"
 license=('Commercial')
 url="https://www.edrawsoft.com/download-mindmaster.html"
-source_x86_64=("https://download.edrawsoft.com/archives/${pkgname%-bin}-${pkgver}-4-${arch}.deb")
-sha256sums_x86_64=('474b570f50d59f9c52a8872331d623468968ce9222ae0443e639e96ebf79ae95')
+source_x86_64=("https://download.edrawsoft.com/archives/${pkgname%-bin}-${arch}.deb")
+sha256sums_x86_64=('bffe4f9368c20d4204e74651aeeb847de0d09032a872ac0444c53fd7a5e8a70a')
             
 prepare() {
     ar -x *.deb
-	mkdir -p ${pkgname%-bin}
-    tar -xf "${srcdir}/data.tar.zst" --xattrs-include='*' --numeric-owner -C "${pkgname%-bin}"
+    mkdir -p ${pkgname%-bin}
+    tar -xf "${srcdir}/data.tar.xz" --xattrs-include='*' --numeric-owner -C "${pkgname%-bin}"
 }
 
-package() {	
+package() {
     export LC_CTYPE="zh_CN.UTF-8"
     mv  ${srcdir}/${pkgname%-bin}/* ${pkgdir}
     
