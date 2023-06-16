@@ -1,0 +1,13 @@
+pkgbase = nvfetcher
+	pkgdesc = a tool to automate nix package updates
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/berberman/nvfetcher
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = nix-prefetch-git
+	source = https://github.com/berberman/nvfetcher/archive/refs/tags/0.6.1.tar.gz
+	sha256sums = 072b504fbb1a99c0291a5a584a141da286eb6463128313623d54d991444578dd
+
+pkgname = nvfetcher
