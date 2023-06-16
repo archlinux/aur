@@ -4,7 +4,7 @@
 #| |_) | | (_| | (__|   <| | | | | | (_) | (_) | | | |___) |
 #|_.__/|_|\__,_|\___|_|\_\_| |_| |_|\___/ \___/|_| |_|____/
 
-#Maintainer: blacksky3 <https://github.com/blacksky3>
+#Maintainer: blackmoon3 <https://github.com/blacksky3>
 #Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 #Credits: Andreas Radke <andyrtr@archlinux.org>
 #Credits: Luca Stefani <luca.stefani.ge1@gmail.com>
