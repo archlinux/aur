@@ -13,9 +13,6 @@ pkgbase = python-pid
 	makedepends = python-wheel
 	depends = python
 	source = python-pid-3.0.4.tar.gz::https://files.pythonhosted.org/packages/source/p/pid/pid-3.0.4.tar.gz
-	source = python-pid-3.0.4.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pid/pid-3.0.4.tar.gz.asc
-	validpgpkeys = 13FFEEE3DF809D320053C587D6E95F20305701A1
 	sha256sums = 0e33670e83f6a33ebb0822e43a609c3247178d4a375ff50a4689e266d853eb66
-	sha256sums = SKIP
 
 pkgname = python-pid
