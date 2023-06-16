@@ -5,7 +5,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=parted-git
-pkgver=3.4.r50.gb20227a
+pkgver=3.6.r4.g60b3300
 pkgrel=1
 pkgdesc="A program for creating, destroying, resizing, checking and copying partitions"
 arch=('x86_64')
@@ -23,17 +23,19 @@ pkgver() {
   cd $pkgname
   git describe --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
- prepare() {
+
+prepare() {
   cd $pkgname
 
   git submodule init
   git config submodule.gnulib.url "${srcdir}/gnulib-git"
+  git config protocol.file.allow always
   git submodule update
  }
 
 build() {
   cd $pkgname
-  ./bootstrap  --no-git --gnulib-srcdir=gnulib
+  ./bootstrap --no-git --gnulib-srcdir=gnulib
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
