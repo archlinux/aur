@@ -7,7 +7,7 @@ pkgbase=lib32-libproxy
 pkgname=(
   lib32-libproxy
 )
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Automatic proxy configuration management library (32-bit)"
 url="https://libproxy.github.io/libproxy/"
@@ -24,7 +24,7 @@ makedepends=(
   gsettings-desktop-schemas
   meson
 )
-_commit=8a39803dc6a71c81092eb485d4b7d0213beb4d63  # tags/0.5.1^0
+_commit=e4f467b05c8adf25e5a2d5464914fc7e92bb7990  # tags/0.5.2^0
 source=("git+https://github.com/libproxy/libproxy#commit=$_commit")
 b2sums=('SKIP')
 
