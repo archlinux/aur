@@ -12,6 +12,7 @@ license=(GPL3 custom)
 
 depends=(libgpr)
 makedepends=(gprbuild-toolbox
+             libgpr
              texlive-bin
              python-sphinx
              python-sphinx_rtd_theme

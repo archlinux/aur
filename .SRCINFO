@@ -9,6 +9,7 @@ pkgbase = gnatcoll-core
 	license = GPL3
 	license = custom
 	makedepends = gprbuild-toolbox
+	makedepends = libgpr
 	makedepends = texlive-bin
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
