@@ -1,0 +1,26 @@
+pkgbase = sd-ssh-agent
+	pkgdesc = Openssh ssh-agent with support for systemd socket-based activation
+	pkgver = 9.3p1
+	pkgrel = 1
+	url = https://www.openssh.com/portable.html
+	arch = x86_64
+	license = custom:BSD
+	makedepends = linux-headers
+	depends = glibc
+	depends = openssl
+	depends = systemd
+	source = https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.3p1.tar.gz
+	source = https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.3p1.tar.gz.asc
+	source = 0001-ssh-agent-add-systemd-socket-based-activation.patch
+	source = sd-ssh-agent.service
+	source = sd-ssh-agent.socket
+	source = 10-sd-ssh-agent-auth-sock.conf
+	validpgpkeys = 7168B983815A5EEF59A4ADFD2A3F414E736060BA
+	sha256sums = e9baba7701a76a51f3d85a62c383a3c9dcd97fa900b859bc7db114c1868af8a8
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sd-ssh-agent

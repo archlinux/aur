@@ -1,0 +1,176 @@
+From c0b82718c4994fce670926d4d5deb24459838682 Mon Sep 17 00:00:00 2001
+From: Ronan Pigott <ronan@rjp.ie>
+Date: Thu, 15 Jun 2023 13:03:38 -0700
+Subject: [PATCH] ssh-agent: add systemd socket-based activation
+
+---
+ Makefile.in  |  3 ++-
+ configure.ac | 25 +++++++++++++++++++++++++
+ ssh-agent.c  | 44 +++++++++++++++++++++++++++++++++++---------
+ 3 files changed, 62 insertions(+), 10 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 70287f51fb81..9bace646fecf 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -53,6 +53,7 @@ CHANNELLIBS=@CHANNELLIBS@
+ K5LIBS=@K5LIBS@
+ GSSLIBS=@GSSLIBS@
+ SSHDLIBS=@SSHDLIBS@
++AGENTLIBS=@AGENTLIBS@
+ LIBEDIT=@LIBEDIT@
+ LIBFIDO2=@LIBFIDO2@
+ AR=@AR@
+@@ -216,7 +217,7 @@ ssh-add$(EXEEXT): $(LIBCOMPAT) libssh.a $(SSHADD_OBJS)
+ 	$(LD) -o $@ $(SSHADD_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(CHANNELLIBS)
+ 
+ ssh-agent$(EXEEXT): $(LIBCOMPAT) libssh.a $(SSHAGENT_OBJS)
+-	$(LD) -o $@ $(SSHAGENT_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(CHANNELLIBS)
++	$(LD) -o $@ $(SSHAGENT_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(AGENTLIBS) $(LIBS) $(CHANNELLIBS)
+ 
+ ssh-keygen$(EXEEXT): $(LIBCOMPAT) libssh.a $(SSHKEYGEN_OBJS)
+ 	$(LD) -o $@ $(SSHKEYGEN_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(CHANNELLIBS)
+diff --git a/configure.ac b/configure.ac
+index 07893e870659..d12b6e9c0588 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -147,6 +147,16 @@ else
+ 	AC_MSG_RESULT([no])
+ fi
+ 
++systemd=no
++AC_ARG_WITH([systemd],
++	[  --with-systemd          Enable use of systemd socket-based activation ],
++	[  if test "x$withval" = "xyes" ; then
++		systemd=yes
++		AC_DEFINE([WITH_SYSTEMD], [1], [enable systemd socket-based activation])
++	   fi
++	]
++)
++
+ use_stack_protector=1
+ use_toolchain_hardening=1
+ AC_ARG_WITH([stackprotect],
+@@ -3376,6 +3386,18 @@ AC_CHECK_LIB([crypt], [crypt], [
+ AC_CHECK_FUNCS([crypt])
+ LIBS="$saved_LIBS"
+ 
++if test "x$systemd" == "xyes" ; then
++	# Check for sd_listen_fds in libsystemd for socket activation
++	saved_LIBS="$LIBS"
++	AC_CHECK_LIB([systemd], [sd_listen_fds], [
++		LIBS="-lsystemd $LIBS"
++		AGENTLIBS="-lsystemd $AGENTLIBS"
++	])
++	AC_CHECK_FUNCS([sd_listen_fds])
++	LIBS="$saved_LIBS"
++	AC_SUBST([AGENTLIBS])
++fi
++
+ # Check for PAM libs
+ PAM_MSG="no"
+ AC_ARG_WITH([pam],
+@@ -5632,6 +5654,9 @@ fi
+ if test ! -z "${SSHDLIBS}"; then
+ echo "         +for sshd: ${SSHDLIBS}"
+ fi
++if test ! -z "${AGENTLIBS}"; then
++echo "    +for ssh-agent: ${AGENTLIBS}"
++fi
+ 
+ echo ""
+ 
+diff --git a/ssh-agent.c b/ssh-agent.c
+index c72518ba3537..4e62dce4eebb 100644
+--- a/ssh-agent.c
++++ b/ssh-agent.c
+@@ -69,6 +69,9 @@
+ #include <stdlib.h>
+ #include <time.h>
+ #include <string.h>
++#ifdef WITH_SYSTEMD
++# include <systemd/sd-daemon.h>
++#endif
+ #include <unistd.h>
+ #ifdef HAVE_UTIL_H
+ # include <util.h>
+@@ -2000,7 +2003,7 @@ int
+ main(int ac, char **av)
+ {
+ 	int c_flag = 0, d_flag = 0, D_flag = 0, k_flag = 0, s_flag = 0;
+-	int sock, ch, result, saved_errno;
++	int sock = 0, ch, result, saved_errno;
+ 	char *shell, *format, *pidstr, *agentsocket = NULL;
+ #ifdef HAVE_SETRLIMIT
+ 	struct rlimit rlim;
+@@ -2015,6 +2018,9 @@ main(int ac, char **av)
+ 	struct pollfd *pfd = NULL;
+ 	size_t npfd = 0;
+ 	u_int maxfds;
++#ifdef WITH_SYSTEMD
++	int nfds = 0;
++#endif
+ 
+ 	/* Ensure that fds 0, 1 and 2 are open or directed to /dev/null */
+ 	sanitise_stdfd();
+@@ -2142,6 +2148,24 @@ main(int ac, char **av)
+ 
+ 	parent_pid = getpid();
+ 
++#ifdef WITH_SYSTEMD
++	nfds = sd_listen_fds(1);
++	if (nfds > 0) {
++		if (agentsocket == NULL) {
++			fprintf(stderr, "%s not set, cannot use socket-activation",
++				SSH_AUTHSOCKET_ENV_NAME);
++			exit(1);
++		} else if (!sd_is_socket_unix(SD_LISTEN_FDS_START, SOCK_STREAM, 0, agentsocket, 0)) {
++			fprintf(stderr, "Unexpected auth sock received from systemd\n");
++			exit(1);
++		} else if (nfds > 1) {
++			fprintf(stderr, "too many fds received from systemd (%d)\n", nfds);
++			exit(1);
++		}
++		strlcpy(socket_name, agentsocket, sizeof socket_name);
++		sock = SD_LISTEN_FDS_START;
++	}
++#endif
+ 	if (agentsocket == NULL) {
+ 		/* Create private directory for agent socket */
+ 		mktemp_proto(socket_dir, sizeof(socket_dir));
+@@ -2150,7 +2174,7 @@ main(int ac, char **av)
+ 			exit(1);
+ 		}
+ 		snprintf(socket_name, sizeof socket_name, "%s/agent.%ld", socket_dir,
+-		    (long)parent_pid);
++			(long)parent_pid);
+ 	} else {
+ 		/* Try to use specified agent socket */
+ 		socket_dir[0] = '\0';
+@@ -2161,14 +2185,16 @@ main(int ac, char **av)
+ 	 * Create socket early so it will exist before command gets run from
+ 	 * the parent.
+ 	 */
+-	prev_mask = umask(0177);
+-	sock = unix_listener(socket_name, SSH_LISTEN_BACKLOG, 0);
+-	if (sock < 0) {
+-		/* XXX - unix_listener() calls error() not perror() */
+-		*socket_name = '\0'; /* Don't unlink any existing file */
+-		cleanup_exit(1);
++	if (sock == 0) {
++		prev_mask = umask(0177);
++		sock = unix_listener(socket_name, SSH_LISTEN_BACKLOG, 0);
++		if (sock < 0) {
++			/* XXX - unix_listener() calls error() not perror() */
++			*socket_name = '\0'; /* Don't unlink any existing file */
++			cleanup_exit(1);
++		}
++		umask(prev_mask);
+ 	}
+-	umask(prev_mask);
+ 
+ 	/*
+ 	 * Fork, and have the parent execute the command, if any, or present
+-- 
+2.41.0
+
