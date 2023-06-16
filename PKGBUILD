@@ -3,7 +3,7 @@
 _pkgname=cwtch-server
 pkgname=$_pkgname
 pkgver=1.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Server for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications"
 arch=('x86_64')
 url="https://cwtch.im/"
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('go')
 conflicts=("$_pkgname-git")
 source=(
-    "https://git.openprivacy.ca/cwtch.im/server/archive/v$pkgver.tar.gz"
+    "$_pkgname-v$pkgver.tar.gz::https://git.openprivacy.ca/api/v1/repos/cwtch.im/server/archive/v$pkgver.tar.gz"
     "cwtch-server.service"
     "cwtch.sysusers"
     "cwtch.tmpfiles"

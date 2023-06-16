@@ -1,13 +1,13 @@
 pkgbase = cwtch-server
 	pkgdesc = Server for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications
 	pkgver = 1.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cwtch.im/
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	conflicts = cwtch-server-git
-	source = https://git.openprivacy.ca/cwtch.im/server/archive/v1.4.5.tar.gz
+	source = cwtch-server-v1.4.5.tar.gz::https://git.openprivacy.ca/api/v1/repos/cwtch.im/server/archive/v1.4.5.tar.gz
 	source = cwtch-server.service
 	source = cwtch.sysusers
 	source = cwtch.tmpfiles
