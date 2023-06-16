@@ -8,6 +8,7 @@ pkgbase = libadalang
 	arch = x86_64
 	license = Apache
 	makedepends = gprbuild
+	makedepends = gpr
 	makedepends = python-setuptools
 	makedepends = python-mako
 	makedepends = python-funcy

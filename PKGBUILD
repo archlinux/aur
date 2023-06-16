@@ -1,4 +1,3 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=libadalang
@@ -13,6 +12,7 @@ license=(Apache)
 
 depends=(gnatcoll-gmp langkit)
 makedepends=(gprbuild
+             gpr
              python-setuptools
              python-mako
              python-funcy
