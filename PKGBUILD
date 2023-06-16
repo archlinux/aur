@@ -1,7 +1,7 @@
 pkgname=hostapd-wifi6
 pkgdesc='hostapd than enabled AC/AX and ACS support and applied intel lar patch, provide useful service unit hostapd@.service and hostapd-ACS@.service'
 pkgver=2.10
-pkgrel=7
+pkgrel=8
 arch=('x86_64')
 url=https://w1.fi/hostapd
 license=('BSD')
@@ -34,7 +34,10 @@ prepare() {
   sed -e 's|^#CONFIG_IEEE80211AX=y|CONFIG_IEEE80211AX=y|g' \
       -e 's|^#CONFIG_IEEE80211AC=y|CONFIG_IEEE80211AC=y|g' \
       -e 's|^#CONFIG_ACS=y|CONFIG_ACS=y|g' \
-      -i "hostapd/.config"
+      -i 'hostapd/.config'
+  echo 'CONFIG_SAE=y
+CONFIG_SAE_Pa=y
+CONFIG_SAE_PK=y' >> 'hostapd/.config'
   patch -p1 < "$srcdir/hostapd-2.10-lar.patch"
 }
 build(){
