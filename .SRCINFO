@@ -1,0 +1,41 @@
+pkgbase = rust-std-android
+	pkgdesc = Android targets for Rust
+	pkgver = 1.70.0
+	pkgrel = 1
+	url = https://www.rust-lang.org/
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = python
+	makedepends = android-ndk
+	depends = rust=1:1.70.0
+	optdepends = android-ndk
+	optdepends = cargo-ndk
+	conflicts = rust-nightly
+	options = !debug
+	options = !emptydirs
+	options = !lto
+	options = !strip
+	options = !buildflags
+	source = https://static.rust-lang.org/dist/rustc-1.70.0-src.tar.gz
+	b2sums = 5b1fd44eaa10bf2ab76f64a3bb5c20ee4008031d05a49b0a32b3a9cb2e97d5684cf0c9a6b6883089afca6cab7a37a0a9cfa06d928ed3e6a3b6484b605e18a0f3
+
+pkgname = rust-std-i686-linux-android
+	pkgdesc = i686-linux-android target for the Rust standard library
+
+pkgname = rust-std-x86_64-linux-android
+	pkgdesc = x86_64-linux-android target for the Rust standard library
+
+pkgname = rust-std-aarch64-linux-android
+	pkgdesc = aarch64-linux-android target for the Rust standard library
+
+pkgname = rust-std-arm-linux-androideabi
+	pkgdesc = arm-linux-androideabi target for the Rust standard library
+
+pkgname = rust-std-armv7-linux-androideabi
+	pkgdesc = armv7-linux-androideabi target for the Rust standard library
+
+pkgname = rust-std-thumbv7neon-linux-androideabi
+	pkgdesc = thumbv7neon-linux-androideabi target for the Rust standard library
