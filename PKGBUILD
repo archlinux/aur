@@ -17,7 +17,7 @@ makedepends=(cmake opencl-headers python-setuptools python-numpy
              proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
              libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c libjxl xz
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
-             openssl pcre2 libpng podofo poppler postgresql-libs qhull
+             openssl pcre2 libpng podofo-0.9 poppler postgresql-libs qhull
              libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libkml-git)
 # armadillo brunsli lerc libkml rasterlite2 sfcgal tiledb
 # ogdi
@@ -26,6 +26,11 @@ source=(https://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.xz
         https://github.com/Esri/file-geodatabase-api/blob/master/FileGDB_API_1.5.1/FileGDB_API_1_5_1-64gcc51.tar.gz)
 sha256sums=('af4b26a6b6b3509ae9ccf1fcc5104f7fe015ef2110f5ba13220816398365adce'
   '1a1b5c417224e8a4dfd3f7c1f4d1911febf1de38e9b6f93a1e4523a9fce92a91')
+
+prepare() {
+  # Fix build with podofo-0.9
+  sed -e 's|podofo.h|podofo/podofo.h|' -i gdal-$pkgver/frmts/pdf/pdfsdk_headers.h
+}
 
 build() {
   tar xzvf FileGDB_API_1_5_1-64gcc51.tar.gz
@@ -78,6 +83,8 @@ build() {
     -DGDAL_USE_ZSTD=ON \
     -DGDAL_USE_LIBKML=ON \
     -DGDAL_USE_FileGDB=ON \
+    -DPODOFO_INCLUDE_DIR=/usr/include/podofo-0.9 \
+    -DPODOFO_LIBRARY=/usr/lib/podofo-0.9/libpodofo.so \
     -DFileGDB_INCLUDE_DIR=FileGDB_API-64gcc51/include \
     -DFileGDB_LIBRARY=libFileGDBAPI_gdal.so && \
   make -C build -j $(nproc)
@@ -98,7 +105,7 @@ package_gdal-libkml-filegdb () {
               'netcdf: netCDF support'
               'openexr: EXR support'
               'openjpeg2: JP2 support'
-              'podofo: PDF support'
+              'podofo-0.9: PDF support'
               'poppler: PDF support'
               'postgresql-libs: PostgreSQL support'
               'libwebp: WebP support')
