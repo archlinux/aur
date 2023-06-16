@@ -2,13 +2,13 @@
 
 _pkgname=cwtch
 pkgname=$_pkgname-git
-pkgver=1.8.0.r10.geabee616
-pkgrel=1
+pkgver=1.12.0.r0.gcc440326
+pkgrel=2
 pkgdesc="UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications (git)"
 arch=('x86_64')
 url="https://cwtch.im/"
 license=('MIT')
-depends=('libcwtch-go')
+depends=('cwtch-autobindings')
 makedepends=('flutter' 'ninja' 'git')
 provides=("$_pkgname")
 conflicts=('cwtch' 'cwtch-bin')
@@ -23,14 +23,23 @@ pkgver() {
     )
 }
 
+prepare() {
+    cd "$srcdir/$_pkgname"
+    # Remove deprecated isAlwaysShown for compat with newer dart SDKs
+    sed -re 's/(scrollbarTheme: .*)isAlwaysShown: false(, )?/\1/' -i lib/themes/opaque.dart
+    # Remove Tor binary and libCwtch.so from package script, since we don't vendor them
+    sed -re 's/^cp( -r)? linux\/(libCwtch\.so|Tor) /#\0/' -i linux/package-release.sh
+}
+
 build() {
     cd "$srcdir/$_pkgname"
 
     # If using the AUR 'flutter'/'flutter-beta' packages, we need a group.
     if ! id -nG | grep -qw flutterusers ; then
         if [ "`which flutter`" == "/usr/bin/flutter" ] ; then
-            warning "You are not in the 'flutterusers' group. The build will probably fail."
+            warning "You are not in the 'flutterusers' group. The build may fail."
             warning "Run 'sudo usermod -a -G flutterusers $USER' and reboot to fix."
+            warning "You may need to use the flutter-beta package (any channel)."
         fi
     fi
 
@@ -40,7 +49,7 @@ build() {
     flutter_set_linux="$?"
     [ "$flutter_set_linux" == "y" ] || $flutter config --enable-linux-desktop
 
-
+    warning "If the build step fails with a message about the SDK version, upgrade flutter or run \`flutter upgrade --force\`"
     # See https://git.openprivacy.ca/cwtch.im/cwtch-ui/src/branch/trunk/.drone.yml
     $flutter pub get
     $flutter build linux \
@@ -52,15 +61,7 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    builddir="$srcdir/$_pkgname/build/linux/x64/release/bundle"
-
-    # See linux/ package-release.sh and install-sys.sh
-    install -Dm0755 "linux/cwtch.sys.sh" "$pkgdir/usr/bin/cwtch"
-    install -Dm0644 "linux/cwtch.png" -t "$pkgdir/usr/share/icons/"
-    install -dm0755 "$pkgdir/usr/share/cwtch/"
-    cp -r "$builddir/data" "$pkgdir/usr/share/cwtch/"
-    install -dm0755 "$pkgdir/usr/lib/cwtch/"
-    install -Dm0755 "$builddir/cwtch" -t "$pkgdir/usr/lib/cwtch/"
-    cp -r "$builddir/lib/"* "$pkgdir/usr/lib/cwtch/"
-    install -Dm0644 "linux/cwtch.sys.desktop" "$pkgdir/usr/share/applications/cwtch.desktop"
+    linux/package-release.sh
+    cd build/linux/x64/release/bundle
+    INSTALL_PREFIX="$pkgdir/usr" DESKTOP_PREFIX="/usr" ./install.sh
 }
