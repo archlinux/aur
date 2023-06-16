@@ -2,8 +2,8 @@
 # based on PKGBUILD of mautrix-whatsapp by: Lorenz Steinert <lorenz@steinerts.de> and  Matthew Murray <matt@compti.me>
 pkgname=mautrix-discord-bin
 provides=('mautrix-discord')
-pkgver=0.4.0
-pkgrel=5
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A Matrix-Discord puppeting bridge"
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('AGPL')
@@ -21,14 +21,14 @@ source=(
         mautrix-discord.service
         log-path.diff)
 backup=("etc/${pkgname/-bin}/mautrix-discord.yaml")
-sha256sums=('0b2b93461b2da597c2e425dd9a6b4350f902a203202d035c3e05d82803daa6af'
+sha256sums=('7800d94e13b10b662589885a467ebfa1e1d1654f9e1127268f377c501f4cf476'
             '2a5adadfd712976bf42ca0f3a0695ae946d6f3d563e01d6c76f67f6bd169b961'
             '8735c5d4e8453b6b1bb741cb32bb962eee11f5d85f1332413ac15580fae0de90'
             '6961b6dd27fe246a1dddca95b90d038a26becc471c905658c2195070958cb1c3'
             '56e221937d57e932a3ae7c540aa3090c34437d8d47d93f364737289b0706030b')
-sha256sums_x86_64=('1734f2efe9c4c0f40f3a0d39d59895db316cff71d8b55ab2fbb4e71218e3caff')
-sha256sums_armv7h=('6f9e42bb6212dbb2d0cebc129ce5c3a5621502c3071cbb5633b15bd1df9727ee')
-sha256sums_aarch64=('25dc5ffd718b957a774d7a8ef8f0dbadb03cc9d1b449850af59210c3610335fe')
+sha256sums_x86_64=('a1632c495cb83d4988e228fec94bb68f57f1f4f1e456c402a9af3ce856620f6e')
+sha256sums_armv7h=('a1632c495cb83d4988e228fec94bb68f57f1f4f1e456c402a9af3ce856620f6e')
+sha256sums_aarch64=('a1632c495cb83d4988e228fec94bb68f57f1f4f1e456c402a9af3ce856620f6e')
 
 prepare() {
   cd "$srcdir/discord-$pkgver"
