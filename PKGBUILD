@@ -1,7 +1,7 @@
 # MAINTAINER: haagch <christoph.haag@collabora.com>
 
 pkgname=basalt-monado-git
-pkgver=r467.3948e54
+pkgver=r471.c028037
 pkgrel=1
 pkgdesc="Visual-Inertial Mapping with Non-Linear Factor Recovery"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('eigen' 'glew' 'libpng' 'lz4' 'bzip2' 'boost' 'gtest' 'opencv' 'libpng'
 optdepends=('librealsense: Intel realsense support')
 makedepends=('cmake' 'ninja' 'bc' 'git')
 _pkgname="basalt"
-source=('git+https://gitlab.freedesktop.org/mateosss/basalt.git#branch=xrtslam'
+source=('git+https://gitlab.freedesktop.org/mateosss/basalt.git#branch=main'
 	'279c17d9c9eb9374c89489b449f92cb93350e8cd.patch')
 sha256sums=('SKIP'
             '04d4185309a72be30f508a9961c54b5cf69da323f54ea754482a79a999914b4c')
@@ -69,12 +69,6 @@ package() {
 
 	msg "Installing files"
 	DESTDIR="${pkgdir}/" ninja -C build install
-
-	cp -Ra "${srcdir}/${_pkgname}"/data/monado/ "${pkgdir}"/usr/etc/basalt/
-	for i in "${pkgdir}"/usr/etc/basalt/monado/*.toml
-	do
-		sed -i "s#/home/mateo/Documents/apps/bsltdeps/basalt/data/#/usr/etc/basalt/#" "$i"
-	done
 
 	mkdir -p "$pkgdir"/usr/share/basalt/thirdparty/basalt-headers/thirdparty
 	cp -Ra "$srcdir"/basalt/thirdparty/basalt-headers/thirdparty/eigen "$pkgdir"/usr/share/basalt/thirdparty

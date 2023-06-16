@@ -1,6 +1,6 @@
 pkgbase = basalt-monado-git
 	pkgdesc = Visual-Inertial Mapping with Non-Linear Factor Recovery
-	pkgver = r467.3948e54
+	pkgver = r471.c028037
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/mateosss/basalt
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = basalt-monado-git
 	depends = python
 	optdepends = librealsense: Intel realsense support
 	options = !strip
-	source = git+https://gitlab.freedesktop.org/mateosss/basalt.git#branch=xrtslam
+	source = git+https://gitlab.freedesktop.org/mateosss/basalt.git#branch=main
 	source = 279c17d9c9eb9374c89489b449f92cb93350e8cd.patch
 	sha256sums = SKIP
 	sha256sums = 04d4185309a72be30f508a9961c54b5cf69da323f54ea754482a79a999914b4c
