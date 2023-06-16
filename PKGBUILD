@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="teams-for-linux-appimage"
-pkgver=1.1.4
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams for Linux client"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -13,9 +13,9 @@ _install_path="/opt/appimages"
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-arm64.AppImage")
 source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-armv7l.AppImage")
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
-sha256sums_aarch64=('1d7f2c6455d1902ace0749773b07496aa68d7644a97fbce4a7db5679aea192b2')
-sha256sums_armv7h=('9c9a7881df9477a07021ed2bf7dcc0c36620e8297a71dedeeedf8b78979d5810')
-sha256sums_x86_64=('da5f711d81d432d9ed5558586d6b167e01020bb6a928957a892216310cca6a07')
+sha256sums_aarch64=('f7e509cbdb5b95cce4f9ead6a0215de22605ef9f2475038eaf13a61fda40408e')
+sha256sums_armv7h=('c165b8c59e5061d7673e21e175473b954da6ef25e50e9724d984cc697a1026f6')
+sha256sums_x86_64=('a284b0979697f53b2d56546490b3c24b0a8837ca6551286c0fd99a5df90d0eb1')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "./${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
