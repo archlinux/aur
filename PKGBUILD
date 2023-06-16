@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.3.5.arch1
+pkgver=6.3.8.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -110,7 +110,7 @@ validpgpkeys=(
 )
 b2sums=('SKIP'
         'SKIP'
-        '256e864a94ef2750761284203e8a6de78c1f6fde18ffb88e2e366cdf82293814ed1466c21471dac71ec5f442be401c6f55618c6840e817c214d6f0c06cc33e65')
+        'b5d412bea174cc0062da714ede7eb53a15ede0f103835b23bf80e6d83cbb723c22531f72b13f854389d251af2e74bce19a5c9f19e1928ae76b0c92f7a41ff7e5')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
