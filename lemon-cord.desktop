@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=LemonCord
+StartupWMClass=discord
+Comment=A fast & light-weight Discord Client written in Rust using the wry crate
+GenericName=Internet Messenger
+Exec=/usr/bin/lemon-cord
+Icon=lemon-cord
+Type=Application
+Categories=Network;InstantMessaging;
+Path=/opt/lemon-cord
