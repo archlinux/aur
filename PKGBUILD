@@ -3,7 +3,7 @@
 
 pkgname=debootstrap-pureos
 _gitpkgname="${pkgname%-pureos}"
-pkgver=1.0.125pureos1
+pkgver=1.0.128+nmu2pureos1
 pkgrel=1
 pkgdesc='Bootstrap a basic Debian system. Custom version, required to build PureOS.'
 arch=('any')
@@ -20,7 +20,7 @@ source=(
 )
 
 sha512sums=(
-  'bce555ea8efb2ad3c91434398f5692fd00a897ac1da949ef50482e6165419e582e43001f459b81b2c72de42d8e2d6e9b3599b57c62b09184b39b8dab5fef2974'
+  '4450b1ce8bcf957b7fe606492078862b348daa5b0455660d5f17b287993827e884e5f0d54b5c78d588f0758a6def77638c0195e08125928aa290732d623422d7'
   'd70a9d096d1692f71970cc818515bd783a6031bfe2d2857134eabf6fd36e4137152ebafa8e2d4ae7c8cb442c8532cd4192715b286e38b4d947b0b467e9ed54a5'
 )
 
