@@ -1,13 +1,13 @@
 pkgbase = quill
 	pkgdesc = Asynchronous Low Latency C++ Logging Library
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/odygrd/quill
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = fmt
-	source = quill-3.0.1.tar.gz::https://github.com/odygrd/quill/archive/v3.0.1.tar.gz
-	b2sums = b3217c0b8c662bb6369232a7538ed6894596bbde7a31af9ca02b7228ac122c6ef28f449ccbc7b938e335a8a617063f23b6715503d6435d4f87d093b0247ca7f0
+	source = quill-3.0.2.tar.gz::https://github.com/odygrd/quill/archive/v3.0.2.tar.gz
+	b2sums = 38d8c02ea43c1974d0441a9b57819bce9f0ae73fd1542269b770916e16215578329630d788ca55cc41da81f24d2627be36dfb012ab5c053c654db7211d8864bf
 
 pkgname = quill
