@@ -127,7 +127,7 @@ END
 
   # See https://github.com/glandium/git-cinnabar/issues/311
   cd "$SRCDEST/mozilla-unified"
-  git config remote.origin.fetch '^refs/cinnabar/*'
+  git config remote.origin.mirror false
 }
 
 build() {
