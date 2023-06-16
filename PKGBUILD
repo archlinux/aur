@@ -1,165 +1,252 @@
-# Maintainer: MischiefTomato <mischievoustomato at protonmail dot com>
-# Contributor: Joan Figueras <ffigue at gmail dot com>
-# Contributor: Torge Matthies <openglfreak at googlemail dot com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Yoshi2889 <rick.2889 at gmail dot com>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
+#_     _            _                                _____
+#| |__ | | __ _  ___| | ___ __ ___   ___   ___  _ __ |___ /
+#| '_ \| |/ _` |/ __| |/ / '_ ` _ \ / _ \ / _ \| '_ \  |_ \
+#| |_) | | (_| | (__|   <| | | | | | (_) | (_) | | | |___) |
+#|_.__/|_|\__,_|\___|_|\_\_| |_| |_|\___/ \___/|_| |_|____/
 
-## Set 98 (Intel native) or 99 (AMD native)
-if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=0
-fi
+#Maintainer: blackmoon3 <https://github.com/blacksky3>
+#Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+#Credits: Andreas Radke <andyrtr@archlinux.org>
+#Credits: MischiefTomato <mischievoustomato at protonmail dot com>
+#Credits: Joan Figueras <ffigue at gmail dot com>
+#Credits: Torge Matthies <openglfreak at googlemail dot com>
+#Credits: Yoshi2889 <rick.2889 at gmail dot com>
+#Credits: Tobias Powalowski <tpowa@archlinux.org>
+#Credits: Thomas Baechler <thomas@archlinux.org>
 
-## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
-## Archlinux and Xanmod enable it by default.
-## Set variable "use_numa" to: n to disable (possibly increase performance)
-##                             y to enable  (stock default)
-if [ -z ${use_numa+x} ]; then
-  use_numa=y
-fi
+################################# Arch ################################
 
-## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
-## Stock Archlinux and Xanmod have this enabled. 
-## Set variable "use_tracers" to: n to disable (possibly increase performance)
-##                                y to enable  (stock default)
-if [ -z ${use_tracers+x} ]; then
-  use_tracers=y
-fi
+ARCH=x86
 
-## Choose between GCC and CLANG config (default is GCC)
+################################# Grep GCC version ################################
+
+_gccversion=$(gcc -dumpversion)
+
+################################# CC/CXX/HOSTCC/HOSTCXX ################################
+
+#Set compiler to build the kernel
+#Set '1' to build with GCC
+#Set '2' to build with CLANG and LLVM
+#Default is empty. It will build with GCC. To build with different compiler just use : env _compiler=(1 or 2) makepkg -s
 if [ -z ${_compiler+x} ]; then
-  _compiler=gcc
+  _compiler=
 fi
 
-# Compress modules with ZSTD (to save disk space)
-if [ -z ${_compress_modules+x} ]; then
-  _compress_modules=y
+if [[ "$_compiler" = "1" ]]; then
+  _compiler=1
+  BUILD_FLAGS=(CC=gcc CXX=g++ HOSTCC=gcc HOSTCXX=g++)
+elif [[ "$_compiler" = "2" ]]; then
+  _compiler=2
+  BUILD_FLAGS=(CC=clang CXX=clang++ HOSTCC=clang HOSTCXX=clang++ LD=ld.lld LLVM=1 LLVM_IAS=1)
+else
+  _compiler=1
+  BUILD_FLAGS=(CC=gcc CXX=g++ HOSTCC=gcc HOSTCXX=g++)
 fi
 
-pkgbase=linux-cpu-optimized
-_major=5.15
-_minor=2
-pkgver=${_major}.${_minor}
-_branch=5.x
+###################################################################################
+
+pkgbase=linux-pds
+pkgname=("$pkgbase" "$pkgbase-headers")
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
+  }"
+done
+pkgver=6.3.8
+_pkgver=6.3.8
 pkgrel=1
-pkgdesc='Linux with cpu optimizations'
-url="https://kernel.org/"
+major=6.3
+commit=e7308a977d83f3cf94ed228b0f6b9b65a4d9139c
 arch=(x86_64)
+pkgdesc='The Linux kernel and modules with graysky2 kernel_compiler_patch'
+url='https://www.kernel.org/'
 license=(GPL2)
-makedepends=(
-  bc kmod libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
-  git
-)
-options=('!strip')
-_srcname="linux-${pkgver}-cpu-optimized${pkgrel}"
-source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.${_minor}.tar."{xz,sign}
-  config         # the main kernel config file
-  "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.15+.patch"
-  choose-gcc-optimization.sh
-)
-validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
-  'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
-)
+makedepends=(bc kmod libelf pahole cpio perl tar xz xmlto git)
+makedepends+=(bison flex zstd make patch gcc gcc-libs glibc binutils)
+if [[ "$_compiler" = "2" ]]; then
+  makedepends+=(clang llvm llvm-libs lld python)
+fi
+options=(!strip)
 
-# Archlinux patches
-#_commit="ec9e9a4219fe221dec93fa16fddbe44a34933d8d"
-#_patches=()
-#for _patch in ${_patches[@]}; do
-    #source+=("${_patch}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${_patch}?h=packages/linux&id=${_commit}")
-    #source+=("${_patch}::https://raw.gigthubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
-#done
+archlinuxpath=https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/$commit
 
-sha256sums=('5634033a4981be42d3259f50d5371a2cdc9ace5d9860da67a2879630533ab175'
-            'SKIP'
-            'ce28a3ed16128922f2f9a3dc5d7beb82939c4ff024583e43bba410d9122af90c'
-            '380bcf40cc8396e97bd1d7f2577ab2ace51885858d3f155b1fb2dd5469efd00d'
-            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
+source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
+        ${archlinuxpath}/config
+        # CPU patches
+        0001-x86-kconfig-more-uarches-for-kernel-5.17.patch
+        0002-XANMOD-Makefile-Move-ARM-and-x86-instruction-set-sel.patch
+        # Arch patches
+        0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch)
 
-export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
-export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
-export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-prepare() {
-  cd linux-${_major}.${_minor}
+prepare(){
+  cd ${srcdir}/linux-$_pkgver
 
-  echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
-  echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
-
-  # Patching
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
+    msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-  
-  echo "Setting config..."
-  cp ../config .config
-  make olddefconfig
-  diff -u ../config .config || :
 
-  # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
+  plain ""
+
+  # Copy the config file first
+  # Copy "${srcdir}"/config to "${srcdir}"/linux-${_pkgver}/.config
+  msg2 "Copy "${srcdir}"/config to "${srcdir}"/linux-$_pkgver/.config"
+  cp "${srcdir}"/config .config
+
+  sleep 2s
+
+  plain ""
+
+  # Remove gcc-plugin if gcc version = 13.0.0
+  if [[ "$_gccversion" = "13.0.0" ]]; then
+
+    msg2 "Remove GCC_PLUGINS"
+    scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
+    scripts/config --disable CONFIG_GCC_PLUGINS
+
+    sleep 2s
+    plain ""
+  fi
+
+  # Set LTO with CLANG/LLVM
+  if [[ "$_compiler" = "2" ]]; then
+
+    msg2 "Enable THIN LTO"
+    scripts/config --enable CONFIG_LTO
+    scripts/config --enable CONFIG_LTO_CLANG
+    scripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG
+    scripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG_THIN
+    scripts/config --disable CONFIG_LTO_NONE
+    scripts/config --enable CONFIG_HAS_LTO_CLANG
+    scripts/config --disable CONFIG_LTO_CLANG_FULL
+    scripts/config --enable CONFIG_LTO_CLANG_THIN
+    scripts/config --enable CONFIG_HAVE_GCC_PLUGINS
+
+    #msg2 "Enable FULL LTO"
+    #scripts/config --enable CONFIG_LTO
+    #scripts/config --enable CONFIG_LTO_CLANG
+    #scripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG
+    #scripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG_THIN
+    #scripts/config --disable CONFIG_LTO_NONE
+    #scripts/config --enable CONFIG_HAS_LTO_CLANG
+    #scripts/config --enable CONFIG_LTO_CLANG_FULL
+    #scripts/config --disable CONFIG_LTO_CLANG_THIN
+    #scripts/config --enable CONFIG_HAVE_GCC_PLUGINS
+
+    #msg2 "Disable LTO"
+    #scripts/config --enable CONFIG_LTO_NONE
+
+    sleep 2s
+    plain ""
+  fi
+
+  msg "Apply some Archlinux config"
+
+  msg2 "Compress modules by default (following Arch's kernel)"
+  scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+
+  sleep 2s
+
+  msg2 "CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team"
   scripts/config --enable CONFIG_STACK_VALIDATION
 
-  # Enable IKCONFIG following Arch's philosophy
-  scripts/config --enable CONFIG_IKCONFIG \
-                 --enable CONFIG_IKCONFIG_PROC
+  sleep 2s
 
-  # User set. See at the top of this file
-  if [ "$use_tracers" = "n" ]; then
-    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER only if we are not compiling with clang..."
-    if [ "${_compiler}" = "gcc" ]; then
-      scripts/config --disable CONFIG_FUNCTION_TRACER \
-                     --disable CONFIG_STACK_TRACER
-    fi
+  msg2 "Enable IKCONFIG following Arch's philosophy"
+  scripts/config --enable CONFIG_IKCONFIG
+  scripts/config --enable CONFIG_IKCONFIG_PROC
+
+  sleep 2s
+
+  msg2 "Enable FUNCTION_TRACER/GRAPH_TRACER"
+  scripts/config --enable CONFIG_FUNCTION_TRACER
+  scripts/config --enable CONFIG_STACK_TRACER
+
+  sleep 2s
+
+  msg2 "Enable CONFIG_USER_NS_UNPRIVILEGED"
+  scripts/config --enable CONFIG_USER_NS
+
+  sleep 2s
+
+  #msg "Patch addition config"
+
+  #msg2 "Set CPU optimization"
+  # You can always set the CPU optimization by manualy
+  # disable CONFIG_GENERIC_CPU and set the optimization
+  # you want
+  # Ex. if you what alderlake optimization
+  #scripts/config --disable CONFIG_GENERIC_CPU
+  #scripts/config --enable CONFIG_MALDERLAKE
+
+  plain ""
+
+  msg2 "Supress depmod"
+  sed -i '2iexit 0' scripts/depmod.sh
+
+  sleep 2s
+
+  plain ""
+
+  # Setting localversion
+  msg2 "Setting localversion..."
+  # --save-scmversion as been removed in upstream
+  # https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/scripts/setlocalversion?h=v6.3-rc1&id=f6e09b07cc12a4d104bb19fe7566b0636f60c413
+  # scripts/setlocalversion --save-scmversion
+  echo "-${pkgbase}" > localversion
+
+  plain ""
+
+  # Config
+  if [[ "$_compiler" = "1" ]]; then
+    make ARCH=${ARCH} ${BUILD_FLAGS[*]} olddefconfig
+  elif [[ "$_compiler" = "2" ]]; then
+    make ARCH=${ARCH} ${BUILD_FLAGS[*]} olddefconfig
   fi
 
-  if [ "$use_numa" = "n" ]; then
-    msg2 "Disabling NUMA..."
-    scripts/config --disable CONFIG_NUMA
-  fi
-
-  # Compress modules by default (following Arch's kernel)
-  if [ "$_compress_modules" = "y" ]; then
-    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-  fi
-
-  # Let's user choose microarchitecture optimization in GCC
-  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
+  plain ""
 
   make -s kernelrelease > version
-  echo "Prepared $pkgbase version $(<version)"
+  msg2 "Prepared $pkgbase version $(<version)"
+
+  plain ""
 }
 
-build() {
-  cd linux-${_major}.${_minor}
-  make all
-  
+build(){
+  cd ${srcdir}/linux-$_pkgver
+
+  # make -j$(nproc) all
+  msg2 "make -j$(nproc) all..."
+  if [[ "$_compiler" = "1" ]]; then
+    make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
+  elif [[ "$_compiler" = "2" ]]; then
+    make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
+  fi
 }
 
-_package() {
-  pkgdesc="The linux-cpu-optimized kernel and modules"
+_package(){
+  pkgdesc='The Linux kernel and modules with graysky2 kernel_compiler_patch'
   depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
-  cd linux-${_major}.${_minor}
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  cd ${srcdir}/linux-$_pkgver
 
-  echo "Installing boot image..."
+  local kernver="$(<version)"
+  local modulesdir="${pkgdir}"/usr/lib/modules/${kernver}
+
+  msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
@@ -167,34 +254,41 @@ _package() {
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  msg2 "Installing modules..."
+  if [[ "$_compiler" = "1" ]]; then
+    make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
+  elif [[ "$_compiler" = "2" ]]; then
+    make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
+  fi
 
   # remove build and source links
-  rm "$modulesdir"/{source,build}
+  msg2 "Remove build dir and source dir..."
+  rm -rf "$modulesdir"/{source,build}
 }
 
-_package-headers() {
-  pkgdesc="Headers and scripts for building modules for the linux-cpu-optimized kernel"
-  depends=(pahole)
+_package-headers(){
+  pkgdesc="Headers and scripts for building modules for the $pkgbase package"
+  depends=("${pkgbase}" pahole)
 
-  cd linux-${_major}.${_minor}
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+  cd ${srcdir}/linux-$_pkgver
 
-  echo "Installing build files..."
-  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+  local builddir="$pkgdir"/usr/lib/modules/"$(<version)"/build
+
+  msg2 "Installing build files..."
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map *localversion* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  if [ -f tools/bpf/resolve_btfids/resolve_btfids ]; then
+    install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  fi
 
-  echo "Installing headers..."
+  msg2 "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -213,30 +307,30 @@ _package-headers() {
   # https://bugs.archlinux.org/task/71392
   install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
-  echo "Installing KConfig files..."
+  msg2 "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  echo "Removing unneeded architectures..."
+  msg2 "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
-    echo "Removing $(basename "$arch")"
+    msg2 "Removing $(basename "$arch")"
     rm -r "$arch"
   done
 
-  echo "Removing documentation..."
+  msg2 "Removing documentation..."
   rm -r "$builddir/Documentation"
 
-  echo "Removing broken symlinks..."
+  msg2 "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  echo "Removing loose objects..."
+  msg2 "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  echo "Stripping build tools..."
+  msg2 "Stripping build tools..."
   local file
   while read -rd '' file; do
-    case "$(file -bi "$file")" in
+    case "$(file -Sib "$file")" in
       application/x-sharedlib\;*)      # Libraries (.so)
         strip -v $STRIP_SHARED "$file" ;;
       application/x-archive\;*)        # Libraries (.a)
@@ -248,20 +342,18 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  echo "Stripping vmlinux..."
+  msg2 "Stripping vmlinux..."
   strip -v $STRIP_STATIC "$builddir/vmlinux"
 
-  echo "Adding symlink..."
+  msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers")
-for _p in "${pkgname[@]}"; do
-  eval "package_$_p() {
-    $(declare -f "_package${_p#$pkgbase}")
-    _package${_p#$pkgbase}
-  }"
-done
+sha256sums=('4323d421250e2e444c35d36f4aa8ddb56591dedc25c68d359d19c4ef9dd20955'
+            '6508516de94ed941ae755d89807610dc51fe1229dbfecdf8a82604a8d33242ce'
+            'cd2b90053326337c633edb7cff79a6da09f2bfc907c29a0a0efe472a3177afe8'
+            '8556577053370ab2177bc32f748be176ab8d742517106e174c5ec6c08869534a'
+            'd4edb692d0a1772af639730d898282e92a3c06acc46e5a55429315b2a5763e82')
 
 # vim:set ts=8 sts=2 sw=2 et:
