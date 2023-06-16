@@ -18,3 +18,26 @@ diff --git a/ares-PLACEHOLDER/desktop-ui/desktop-ui.cpp b/ares-PLACEHOLDER/deskt
    #else 
      return {Path::program(), name};
    #endif
+
+diff --git a/ares-PLACEHOLDER/mia/mia.cpp b/ares-PLACEHOLDER/mia/mia.cpp
+@@ -6,7 +6,7 @@
+ function<string ()> saveLocation = [] { return string{}; };
+ vector<string> media;
+ 
+-auto locate(string name) -> string {
++auto locate(const string& name) -> string {
+   string location = {Path::program(), name};
+   if(inode::exists(location)) return location;
+ 
+@@ -15,8 +15,8 @@
+     if(inode::exists(location)) return location;
+   #endif
+   
+-  directory::create({Path::userData(), "mia/"});
+-  return {Path::userData(), "mia/", name};
++  directory::create({Path::sharedData(), "ares/"});
++  return {Path::sharedData(), "ares/", name};
+ }
+ 
+ auto operator+=(string& lhs, const string& rhs) -> string& {
+

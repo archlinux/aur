@@ -2,7 +2,7 @@
 
 pkgname=ares-emu
 pkgver=132
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support"
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
@@ -15,7 +15,7 @@ source=("https://github.com/ares-emulator/ares/archive/refs/tags/v${pkgver}.tar.
         "ares-paths.patch"
         "fix-build.patch")
 sha256sums=("d66ed6af17fb92579ab6224bbaba9494e9841e97e032b0b42b128df72ea21d1c"
-        "39ed148f2cdd2bc0afde9da6a03d752ed247e731dc6257ffef9e088ffd8c28db"
+        "de3383a1bd6684b5acbded48332f9cc9725eff6e39dc9d29f080c7c32dbfa770"
         "b86020263291bd239ac5e231d6abe27f1857e66ba3d7f7bda64ae462558bb382")
 
 prepare() {
@@ -44,4 +44,7 @@ package() {
   # Also install the shaders in Ares' shared directory
   install -dm 755 "${pkgdir}/usr/share/ares"
   cp -dr --no-preserve=ownership "${srcdir}/ares-${pkgver}/ares/Shaders/" "${pkgdir}/usr/share/ares/Shaders/"
+
+  # And the database
+  cp -dr --no-preserve=ownership "${srcdir}/ares-${pkgver}/mia/Database/" "${pkgdir}/usr/share/ares/Database/"
 }
