@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=oqsprovider-git
 _pkgname=oqs-provider
-pkgver=r101.2c7a06a
-pkgrel=2
+pkgver=r108.0c91d09
+pkgrel=1
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=('x86_64')
 url="https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider"
@@ -34,8 +34,11 @@ build() {
 }
 
 package() {
-    install -D -m0755 "${srcdir}"/build/lib/oqsprovider.so "${pkgdir}"/usr/lib/ossl-modules/oqsprovider.so
-    install -D -m0755 "${srcdir}"/build/lib/oqsprovider.so.1 "${pkgdir}"/usr/lib/ossl-modules/oqsprovider.so.1
-    install -D -m0755 "${srcdir}"/build/lib/oqsprovider.so.0.5.0-dev "${pkgdir}"/usr/lib/ossl-modules/oqsprovider.so.0.5.0-dev
+    cd "${srcdir}"/build/lib/
+
+    for library in *; do
+        install -D -m0755 "${library}" "${pkgdir}"/usr/lib/ossl-modules/${library}
+    done
+
     install -D -m0644 "${srcdir}"/${pkgname}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }

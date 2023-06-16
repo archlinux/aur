@@ -1,7 +1,7 @@
 pkgbase = oqsprovider-git
 	pkgdesc = OpenSSL 3 provider containing post-quantum algorithms
-	pkgver = r101.2c7a06a
-	pkgrel = 2
+	pkgver = r108.0c91d09
+	pkgrel = 1
 	url = https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider
 	arch = x86_64
 	license = MIT
