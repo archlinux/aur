@@ -5,7 +5,7 @@
 pkgname=mindmaster_cn
 _pkgname=MindMaster-10
 _softname=mindmaster
-pkgver=10.5.2
+pkgver=10.5.4
 pkgrel=0
 arch=('x86_64')
 options=(!strip)
