@@ -2,7 +2,7 @@
 pkgname=python-anesthetic
 _name=${pkgname#python-}
 pkgver=2.0.0b37
-pkgrel=1
+pkgrel=2
 pkgdesc="nested sampling post-processing"
 arch=(any)
 url="https://github.com/handley-lab/anesthetic"
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX)
+sha256sums=('a0046181ae2eb1be63f4a1b99ca911f47cb5a0c86cabd567ce65519a6cd47507')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
