@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=joindesktop-git
 pkgver=1.1.2.r2.ga4748ff
-pkgrel=3
-_electronversion=24
+pkgrel=4
+_electronversion=25
 pkgdesc="An official desktop app for Join by Joaoapps built in Electron."
 arch=('x86_64')
 url="https://joaoapps.com/join/desktop"
@@ -17,7 +17,7 @@ source=("${pkgname%-git}::git+https://github.com/joaomgcd/JoinDesktop.git"
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
             '59746e474ebed1e32f93b2732da8d2d19fc47d53696c787142f672372606281f'
-            'a8efe0f6729d8fbbf0e0352215e56a87d43d861402f3b38754fe03d0b8f6b900')
+            '150777812a7535dfca4746d53ed1a8b5fb5a4f605274877d518c39205fd0f36b')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"

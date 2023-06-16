@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec electron24 /usr/lib/joindesktop/resources/app.asar "$@"
+exec electron25 /usr/lib/joindesktop/resources/app.asar "$@"
