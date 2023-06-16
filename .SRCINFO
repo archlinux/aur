@@ -7,7 +7,6 @@ pkgbase = nvlax-git
 	license = GPL
 	makedepends = cmake
 	makedepends = git
-	makedepends = gcc12
 	depends = nvidia-utils
 	provides = nvlax
 	provides = nvlax-git
