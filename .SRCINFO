@@ -1,7 +1,7 @@
 pkgbase = python-aqtinstall
 	pkgdesc = Another unofficial Qt installer
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 3.1.6
+	pkgrel = 1
 	url = https://github.com/miurahr/aqtinstall
 	arch = any
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = python-aqtinstall
 	depends = python-patch
 	depends = python-py7zr
 	depends = python-humanize
-	source = python-aqtinstall::git+https://github.com/miurahr/aqtinstall.git#tag=v3.1.0
+	source = python-aqtinstall::git+https://github.com/miurahr/aqtinstall.git#tag=v3.1.6
 	sha512sums = SKIP
 
 pkgname = python-aqtinstall

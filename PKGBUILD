@@ -2,8 +2,8 @@
 
 _name=aqtinstall
 pkgname=python-aqtinstall
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.1.6
+pkgrel=1
 pkgdesc="Another unofficial Qt installer"
 arch=(any)
 url="https://github.com/miurahr/aqtinstall"
