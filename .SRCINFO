@@ -1,13 +1,13 @@
 pkgbase = cwtch
 	pkgdesc = UI for Privacy Preserving Infrastructure for Asynchronous, Decentralized and Metadata Resistant Applications
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cwtch.im/
 	arch = x86_64
 	license = MIT
 	makedepends = flutter
 	makedepends = ninja
-	depends = cwtch-autobinds
+	depends = cwtch-autobindings
 	conflicts = cwtch-bin
 	conflicts = cwtch-git
 	source = cwtch-ui-v1.12.0.tar.gz::https://git.openprivacy.ca/api/v1/repos/cwtch.im/cwtch-ui/archive/v1.12.0.tar.gz
