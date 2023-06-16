@@ -3,7 +3,7 @@
 # Maintainer: seth <getchoo at tuta dot io>
 
 pkgname=prismlauncher-qt5-bin
-pkgver=7.0
+pkgver=7.1
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('java-runtime=8: support for Minecraft versions < 1.17'
             'java-runtime=17: support for Minecraft versions >= 1.17')
 source=("https://github.com/PrismLauncher/PrismLauncher/releases/download/${pkgver}/PrismLauncher-Linux-${pkgver}.tar.gz")
 noextract=("PrismLauncher-Linux-${pkgver}.tar.gz")
-sha256sums=('cef63348dce999f6d59ef5c9fb8c438fe2ae0035a81d866bb3b235bee15fb81e')
+sha256sums=('08d3be162e5a4f1b3dc0ef11453ed339c8b2371500633687e33acc3d51062fa5')
 
 package() {
     install -d "${pkgdir}/usr"
