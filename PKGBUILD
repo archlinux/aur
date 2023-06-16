@@ -15,8 +15,8 @@ pkgname=(
   dbus-selinux
   dbus-docs-selinux
 )
-pkgver=1.14.6
-pkgrel=2
+pkgver=1.14.8
+pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64 aarch64)
