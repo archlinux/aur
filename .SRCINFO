@@ -1,6 +1,6 @@
 pkgbase = libcwtch-go-git
 	pkgdesc = C bindings for the Go Cwtch library
-	pkgver = 1.9.0.r6.g397d264
+	pkgver = 1.10.5.r0.gae179fa
 	pkgrel = 1
 	url = https://cwtch.im
 	arch = x86_64
