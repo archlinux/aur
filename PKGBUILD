@@ -76,6 +76,7 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         # CPU patches
         0001-x86-kconfig-more-uarches-for-kernel-5.17.patch
         0002-XANMOD-Makefile-Move-ARM-and-x86-instruction-set-sel.patch
+        0013-optimize_harder_O3.patch
         # Arch patches
         0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch)
 
@@ -178,7 +179,13 @@ prepare(){
 
   sleep 2s
 
-  #msg "Patch addition config"
+  msg "Patch addition config"
+
+  msg2 "Enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE (O3) (0013-optimize_harder_O3.patch) (Replace O2 by O3)"
+  scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
+  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+
+  sleep 2s
 
   #msg2 "Set CPU optimization"
   # You can always set the CPU optimization by manualy
@@ -187,6 +194,7 @@ prepare(){
   # Ex. if you what alderlake optimization
   #scripts/config --disable CONFIG_GENERIC_CPU
   #scripts/config --enable CONFIG_MALDERLAKE
+  #sleep 2s
 
   plain ""
 
@@ -354,6 +362,7 @@ sha256sums=('4323d421250e2e444c35d36f4aa8ddb56591dedc25c68d359d19c4ef9dd20955'
             '6508516de94ed941ae755d89807610dc51fe1229dbfecdf8a82604a8d33242ce'
             'cd2b90053326337c633edb7cff79a6da09f2bfc907c29a0a0efe472a3177afe8'
             '8556577053370ab2177bc32f748be176ab8d742517106e174c5ec6c08869534a'
+            '85669071475af9e4ca74cb15c1f277dadd5ea7b3050f443712da77230a4aa488'
             'd4edb692d0a1772af639730d898282e92a3c06acc46e5a55429315b2a5763e82')
 
 # vim:set ts=8 sts=2 sw=2 et:
