@@ -10,6 +10,7 @@ pkgbase = sirius-git
 	depends = gcc-libs
 	depends = glibc
 	depends = cuda
+	depends = costa
 	depends = gsl
 	depends = spfft
 	depends = spla
