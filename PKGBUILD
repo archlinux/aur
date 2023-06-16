@@ -1,5 +1,6 @@
 # Maintainer: detian <dehe_tian at outlook dot com>
 # Contributor: tytan652 <tytan652@tytanium.xyz>
+# Contributor: AvianaCruz
 
 _pkgname=nvidia-utils
 pkgname=${_pkgname}-nvlax
@@ -8,11 +9,11 @@ pkgrel=1
 pkgdesc="NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
-url="https://github.com/illnyang/nvlax/"
+url="https://github.com/skbeh/nvlax/tree/fixed-version"
 depends=(
   'xorg-server' 'libglvnd' 'egl-wayland'
 )
-makedepends=('cmake' 'git' 'patchelf' 'gcc12')
+makedepends=('cmake' 'git' 'patchelf' 'ninja')
 optdepends=(
   "nvidia-settings=${pkgver}: configuration tool"
   'xorg-server-devel: nvidia-xconfig'
@@ -40,8 +41,7 @@ source=(
   "${_pkgname}.sysusers"
   "nvidia.rules"
   "${_pkg}.run::https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
-  "nvlax::git+https://github.com/illnyang/nvlax.git#commit=b3699ad40c4dfbb9d46c53325d63ae8bf4a94d7f"
-  "nvlax_cpm.patch"
+  "nvlax::git+https://github.com/skbeh/nvlax.git#commit=6930d0e3b2707e9e3cd1a9608465de19b670374e"
 )
 sha512sums=(
   'de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
@@ -49,7 +49,6 @@ sha512sums=(
   'a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989'
   '45b72b34272d3df14b56136bb61537d00145d55734b72d58390af4694d96f03b2b49433beb4a5bede4d978442b707b08e05f2f31b2fcfd9453091e7f0b945cff'
   'SKIP'
-  '3188b66c6a158ac97a9200ce96d8ada5da2f39eb6eae19e710e7c0d7e3d1b9189beb92c1446fa4b0aa937d2b0c08a2fc9a3b4b3f821566a4e629478addf9d098'
 )
 
 create_links() {
@@ -67,15 +66,12 @@ prepare() {
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   bsdtar -xf nvidia-persistenced-init.tar.bz2
-
-  cd "$srcdir"/nvlax
-  patch -Np1 < "$srcdir"/nvlax_cpm.patch
 }
 
 build() {
   cd nvlax
-  CXX=/usr/bin/g++-12 cmake -B build
-  make -C build
+  cmake -G Ninja -B build
+  ninja -C build
 
   cd build
   cp -a nvlax_fbc "$srcdir/${_pkg}"/nvlax_fbc
