@@ -1,7 +1,7 @@
 # Maintainer: Energi <bloznelis05@gmail.com>
 pkgname=typioca-git
 name=typioca
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="Minimal, terminal based typing speed tester"
 arch=(x86_64)
