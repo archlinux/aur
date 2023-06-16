@@ -1,6 +1,6 @@
 pkgbase = pipdeptree
 	pkgdesc = Command line utility to show dependency tree of Python packages
-	pkgver = 2.9.2
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://github.com/naiquevin/pipdeptree
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pipdeptree
 	makedepends = python-wheel
 	depends = python-pip
 	optdepends = python-graphviz: for generating graphical output
-	source = https://files.pythonhosted.org/packages/source/p/pipdeptree/pipdeptree-2.9.2.tar.gz
-	sha256sums = 60ff48585f6fc6e283c41893a618faf4deb77b84781c45a3da29bf0c8e0ce4a7
+	source = https://files.pythonhosted.org/packages/source/p/pipdeptree/pipdeptree-2.9.3.tar.gz
+	sha256sums = d0049795a78c600bce97663a4d0ae3ebc212f7ccc2f1bd3efef910b7e8bf4591
 
 pkgname = pipdeptree
