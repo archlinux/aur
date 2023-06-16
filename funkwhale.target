@@ -1,0 +1,6 @@
+[Unit]
+Description=Funkwhale
+Wants=funkwhale-server.service funkwhale-worker.service funkwhale-beat.service
+
+[Install]
+WantedBy=multi-user.target

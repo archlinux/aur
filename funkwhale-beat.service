@@ -1,14 +1,21 @@
 [Unit]
 Description=Funkwhale celery beat process
 After=redis.service postgresql.service
-PartOf=funkwhale.service
+PartOf=funkwhale.target
 
 [Service]
 User=funkwhale
 # adapt this depending on the path of your funkwhale installation
 WorkingDirectory=/usr/share/webapps/funkwhale/api
 EnvironmentFile=/srv/funkwhale/config/env
-ExecStart=/usr/share/webapps/funkwhale/virtualenv/bin/celery --workdir=/usr/share/webapps/funkwhale/api -A funkwhale_api.taskapp beat -l INFO --schedule=/srv/funkwhale/api/celerybeat-schedule --pidfile=/srv/funkwhale/api/celerybeat.pid
+
+ExecStart=/usr/share/webapps/funkwhale/virtualenv/bin/celery \
+    --workdir=/usr/share/webapps/funkwhale/api \
+    --app funkwhale_api.taskapp \
+    beat \
+    --schedule=/srv/funkwhale/api/celerybeat-schedule \
+    --pidfile=/srv/funkwhale/api/celerybeat.pid \
+    --loglevel INFO
 
 [Install]
 WantedBy=multi-user.target

@@ -1,6 +1,6 @@
 pkgbase = funkwhale-venv
 	pkgdesc = A community-driven project that lets you listen and share music and audio within a decentralized, open network.
-	pkgver = 1.2.8
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://funkwhale.audio/
 	install = funkwhale-venv.install
@@ -12,7 +12,6 @@ pkgbase = funkwhale-venv
 	depends = ffmpeg
 	depends = libjpeg
 	depends = libpqxx
-	depends = libldap
 	depends = libsasl
 	depends = postgresql
 	depends = redis
@@ -24,27 +23,27 @@ pkgbase = funkwhale-venv
 	provides = funkwhale
 	conflicts = funkwhale
 	options = !strip
-	source = funkwhale-1.2.8-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.2.8/download?job=build_api
-	source = funkwhale-1.2.8-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.2.8/download?job=build_front
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.2.8/deploy/funkwhale_proxy.conf
-	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.2.8/deploy/nginx.template
-	source = funkwhale.service
+	source = funkwhale-1.3.0-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.3.0/download?job=build_api
+	source = funkwhale-1.3.0-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.3.0/download?job=build_front
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.3.0/deploy/funkwhale_proxy.conf
+	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.3.0/deploy/nginx.template
+	source = funkwhale.target
 	source = funkwhale-beat.service
 	source = funkwhale-server.service
 	source = funkwhale-worker.service
 	source = apache-funkwhale.conf
 	source = env-template
 	source = funkwhale_manage
-	sha256sums = 70b2da23960531082ecd0db259fefe25cbbb4c7e88f5578739ce0bccc2b8cf69
-	sha256sums = bd110dee284f5332aa00a3be53a61a65dbd8a20c10d4229287dec9f0bfd8c2f7
+	sha256sums = 57323ce6641183bd33fcf3aa243b0b7aba667509da8c5c3446b73def40109650
+	sha256sums = 8e17543cd688572f7e48c9c416ef33c065c7c6ac01b5ae85939632030a530bf0
 	sha256sums = 2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2
-	sha256sums = 37fa894055ce94b2d0752c48a89c04d67a2610a3572a788ba7a3cf65e1641c90
-	sha256sums = 01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349
-	sha256sums = 9015716bca869766eca58f7a14eda274d211f189c5d3d7cde741739fe7744fb7
-	sha256sums = dac163ac314992692f5743fed8b0c3791e36fbb465c1c07e3fc88a51a263410a
-	sha256sums = efefea0ebd84c99ec17a766519dd3a67ddcae87af453b99fc01f47976f4425e3
-	sha256sums = 0279c68ccf7442571eb8bcab6cd0148dd89b3a1c33181406bcbb7afeecf9a2fa
+	sha256sums = 9e72558dee732c6783c597f5cb61e89ad346d4d3810d94f83afba2db580fb089
+	sha256sums = 5c821649d81d2d3a9aa52d872953696d5ae336906329a1c1b68871ce9c82fa59
+	sha256sums = 8f98e97b835225fdc2b89cfe2fa6f343d1fa36fdd5616c8585393ebd9c8169b8
+	sha256sums = aecdf1a9283b6dc905820a5dd399bb00bbcab9819227ac438cb014d4ad1b5200
+	sha256sums = d59bbf1a5bc82d2866fbfb5efa3f519469125ea9d4e24dfaa374f85ec6962ae7
+	sha256sums = a5c51df1b8160b9e871d6e211c2668a6abbfabfad9e38d53d937b36162406450
 	sha256sums = cea307055e9f8001a1507c507e1be91352d896cab17260a221f4ab8c298506d8
-	sha256sums = ff2f7db927720f11eb9a3b698ad12e5a6e0045a315969b5dd6cff2e7d95dca82
+	sha256sums = 202b1fe3ae4c8c3913d23646a8ebda7312f1725c3d69f15bee8cf599d9db62a9
 
 pkgname = funkwhale-venv

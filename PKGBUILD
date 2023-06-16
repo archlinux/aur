@@ -2,7 +2,7 @@
 
 pkgname=funkwhale-venv
 _pkgname=funkwhale
-pkgver=1.2.8
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A community-driven project that lets you listen and share music and audio within a decentralized, open network."
 arch=(any)
@@ -19,7 +19,6 @@ depends=('curl'
         'ffmpeg'
         'libjpeg'
         'libpqxx'
-        'libldap'
         'libsasl'
         'postgresql'
         'redis'
@@ -34,7 +33,7 @@ source=("${_pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "${_pkgname}-${pkgver}-front.zip::${_source_api}build_front"
         "${_source_env}funkwhale_proxy.conf"
         "${_source_env}nginx.template"
-        "funkwhale.service"
+        "funkwhale.target"
         "funkwhale-beat.service"
         "funkwhale-server.service"
         "funkwhale-worker.service"
@@ -42,28 +41,24 @@ source=("${_pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "env-template"
         "funkwhale_manage"
 )
-sha256sums=('70b2da23960531082ecd0db259fefe25cbbb4c7e88f5578739ce0bccc2b8cf69'
-            'bd110dee284f5332aa00a3be53a61a65dbd8a20c10d4229287dec9f0bfd8c2f7'
+sha256sums=('57323ce6641183bd33fcf3aa243b0b7aba667509da8c5c3446b73def40109650'
+            '8e17543cd688572f7e48c9c416ef33c065c7c6ac01b5ae85939632030a530bf0'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
-            '37fa894055ce94b2d0752c48a89c04d67a2610a3572a788ba7a3cf65e1641c90'
-            '01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349'
-            '9015716bca869766eca58f7a14eda274d211f189c5d3d7cde741739fe7744fb7'
-            'dac163ac314992692f5743fed8b0c3791e36fbb465c1c07e3fc88a51a263410a'
-            'efefea0ebd84c99ec17a766519dd3a67ddcae87af453b99fc01f47976f4425e3'
-            '0279c68ccf7442571eb8bcab6cd0148dd89b3a1c33181406bcbb7afeecf9a2fa'
+            '9e72558dee732c6783c597f5cb61e89ad346d4d3810d94f83afba2db580fb089'
+            '5c821649d81d2d3a9aa52d872953696d5ae336906329a1c1b68871ce9c82fa59'
+            '8f98e97b835225fdc2b89cfe2fa6f343d1fa36fdd5616c8585393ebd9c8169b8'
+            'aecdf1a9283b6dc905820a5dd399bb00bbcab9819227ac438cb014d4ad1b5200'
+            'd59bbf1a5bc82d2866fbfb5efa3f519469125ea9d4e24dfaa374f85ec6962ae7'
+            'a5c51df1b8160b9e871d6e211c2668a6abbfabfad9e38d53d937b36162406450'
             'cea307055e9f8001a1507c507e1be91352d896cab17260a221f4ab8c298506d8'
-            'ff2f7db927720f11eb9a3b698ad12e5a6e0045a315969b5dd6cff2e7d95dca82')
+            '202b1fe3ae4c8c3913d23646a8ebda7312f1725c3d69f15bee8cf599d9db62a9')
 install=${pkgname}.install
 
 prepare() {
   cd "$srcdir"
+
   ## change path of proxy parameters
   sed 's#/etc/nginx/funkwhale_proxy.conf#/etc/webapps/funkwhale/funkwhale_proxy.conf#' nginx.template > nginx.template.patched
-  ## remove http2, as it is not always working
-  sed -id 's#443 ssl http2;#443 ssl;#' nginx.template.patched
-
-  ## install python-ldap manually
-  sed -id 's/python-ldap/#python-ldap/' api/requirements/base.txt
 }
 
 build() {
@@ -90,28 +85,25 @@ package() {
   python -m venv "$pkgdir"/usr/share/webapps/funkwhale/virtualenv
   source "$pkgdir"/usr/share/webapps/funkwhale/virtualenv/bin/activate
 
-  pip install wheel
-   
-  # bug with python-ldap from pip, missing libldap_r.so
-  ln -s /usr/lib/libldap.so "$pkgdir"/usr/share/webapps/funkwhale/virtualenv/lib/libldap_r.so
-  args="-L$pkgdir/usr/share/webapps/funkwhale/virtualenv/lib/"
-  CFLAGS="${args}" \
-    CPPFLAGS="${args}" \
-    LDFLAGS="${args}" \
-    pip install python-ldap
-  pip install -r api/requirements.txt
+  pip install --upgrade pip wheel
+  pip install --editable ./api
 
+  # Remove srcdir references in scripts
+  find "$pkgdir"/usr/share/webapps/funkwhale/virtualenv/lib/python*/site-packages/funkwhale_api* \
+    -maxdepth 2 -type f -exec sed -i "s#${srcdir}/api#/usr/share/webapps/${_pkgname}/api#g" {} +
 
   # Remove pkgdir references in scripts
   find "$pkgdir"/usr/share/webapps/funkwhale/virtualenv/bin/ \
+    -maxdepth 1 -type f -exec sed -i "s#${pkgdir}/#/#g" {} +
+  find "$pkgdir"/usr/share/webapps/funkwhale/virtualenv/pyvenv.cfg \
     -maxdepth 1 -type f -exec sed -i "s#${pkgdir}/#/#g" {} +
   find "$pkgdir"/usr/share/webapps/funkwhale/virtualenv/ \
     -type f -name "*.py[co]" -delete
   find "$pkgdir"/usr/share/webapps/funkwhale/virtualenv/ \
     -type d -name "__pycache__" -delete
 
-  deactivate
   # deactivate virtualenv
+  deactivate
 
   # install server config
   install -d "$pkgdir"/etc/webapps/${_pkgname}/config
@@ -120,7 +112,7 @@ package() {
   install -Dm644 apache-funkwhale.conf "$pkgdir"/etc/webapps/${_pkgname}/.
   install -Dm644 env-template "$pkgdir"/etc/webapps/${_pkgname}/env.template
 
-  install -Dm644 funkwhale{,-beat,-worker,-server}.service -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 funkwhale.target funkwhale{-beat,-worker,-server}.service -t "$pkgdir/usr/lib/systemd/system/"
 
   echo -e 'u funkwhale - "Funkwhale music server" /srv/funkwhale\nm funkwhale http' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"

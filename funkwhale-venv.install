@@ -5,10 +5,24 @@ post_install() {
 
 post_upgrade() {
   #echo "Follow instructions on the upstream page or on the Arch Wiki for updating"
-  sudo systemctl stop funkwhale.service
+
+  ## for funkwhale<1.3.0
+  VER_13="1.3.0"
+  if [ $(vercmp $2 $VER_13) -lt 0 ]; then
+    sudo systemctl stop funkwhale.service
+    echo "Use funkwhale.target instead of funkwhale.service in version 1.3.0"
+    echo "The nginx config /etc/nginx/sites-available/funkwhale.conf needs to be updated, compare to /etc/webapps/funkwhale/nginx.template"
+  fi
+
+  sudo systemctl stop funkwhale.target
   sudo systemctl daemon-reload
-  sudo funkwhale_manage collectstatic --no-input
-  sudo funkwhale_manage migrate
-  sudo systemctl start funkwhale.service
+
+  VENV_BIN=/usr/share/webapps/funkwhale/virtualenv/bin
+  export $(cat /srv/funkwhale/config/env | grep -v ^# | xargs)
+
+  "${VENV_BIN}"/funkwhale-manage collectstatic --no-input
+  sudo -E "${VENV_BIN}"/funkwhale-manage migrate
+
+  sudo systemctl start funkwhale.target
 }
 

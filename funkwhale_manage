@@ -1,17 +1,25 @@
 #!/usr/bin/bash
 
-if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
-   exit 1
+VENV_BIN=/usr/share/webapps/funkwhale/virtualenv/bin
+
+if [[ ! -n "$FUNKWHALE_PATH" ]]; then
+    FUNKWHALE_PATH="${VENV_BIN}"/funkwhale-manage
 fi
 
-# change user -> funkwhale
-#sudo -u funkwhale -H bash
-su funkwhale -s /bin/bash << EOF
-export $(cat /srv/funkwhale/config/env | grep -v ^# | xargs)
-# enter virtualenv
-source /usr/share/webapps/funkwhale/virtualenv/bin/activate
-python /usr/share/webapps/funkwhale/api/manage.py $@
-deactivate
-EOF
+if [[ ! -f "$FUNKWHALE_PATH" ]]; then
+    echo "funkwhale-manage executable is not installed in $FUNKWHALE_PATH. Please pass the installation path."
+    exit 1
+fi
 
+sudo -H -u funkwhale bash -c : && RUNAS="sudo -H -u funkwhale"
+
+# change user -> funkwhale
+$RUNAS /bin/bash << EOF
+    # export environment variables
+    set -a; source /srv/funkwhale/config/env; set +a
+
+    # enter virtualenv
+    source "${VENV_BIN}"/activate
+    "${FUNKWHALE_PATH}" $@
+    deactivate
+EOF

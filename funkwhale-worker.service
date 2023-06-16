@@ -1,7 +1,7 @@
 [Unit]
 Description=Funkwhale celery worker
 After=redis.service postgresql.service
-PartOf=funkwhale.service
+PartOf=funkwhale.target
 
 [Service]
 User=funkwhale
@@ -9,7 +9,13 @@ User=funkwhale
 WorkingDirectory=/usr/share/webapps/funkwhale/api
 Environment="CELERYD_CONCURRENCY=0"
 EnvironmentFile=/srv/funkwhale/config/env
-ExecStart=/usr/share/webapps/funkwhale/virtualenv/bin/celery --workdir=/usr/share/webapps/funkwhale/api -A funkwhale_api.taskapp worker -l INFO --concurrency=${CELERYD_CONCURRENCY}
+
+ExecStart=/usr/share/webapps/funkwhale/virtualenv/bin/celery \
+    --workdir=/usr/share/webapps/funkwhale/api \
+    --app funkwhale_api.taskapp \
+    worker \
+    --loglevel INFO \
+    --concurrency=${CELERYD_CONCURRENCY}
 
 [Install]
 WantedBy=multi-user.target
