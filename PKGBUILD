@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="spacemesh-appimage"
-pkgver=0.3.8
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="Spacemesh App (Smesher + Wallet)"
 arch=('aarch64' 'x86_64')
@@ -13,8 +13,8 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::https://storage.googleapis.com/smapp/v${pkgver}/Spacemesh-${pkgver}-arm64.AppImage")
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::https://storage.googleapis.com/smapp/v${pkgver}/Spacemesh-${pkgver}.AppImage")
-sha256sums_aarch64=('ebfaa2a16ee5587e9101f38caa1fe6cea2fd407ef2f7a8dea74c7ace8160f93b')
-sha256sums_x86_64=('bfb3f6006e6eabfd0a1f959a8880cd3426c0450f16ddfff6779f7216ca3446b7')
+sha256sums_aarch64=('cef0dfe7fdf12cbb615bbbf28d5db778f940ba982167da8e22990971db964f44')
+sha256sums_x86_64=('e426b6b170df11d3ed0abfd6d0a6b627f30aa555a3b1351c9fa9f82a572d4f75')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "./${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
