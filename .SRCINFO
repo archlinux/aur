@@ -1,0 +1,17 @@
+pkgbase = k8sgpt-git
+	pkgdesc = Giving Kubernetes Superpowers to everyone
+	pkgver = v0.3.8.r3.g0f03ddc
+	pkgrel = 1
+	url = http://k8sgpt.ai/
+	arch = x86_64
+	arch = arm64
+	arch = i386
+	license = Apache
+	makedepends = go
+	makedepends = git
+	provides = k8sgpt
+	conflicts = k8sgpt
+	source = git+https://github.com/k8sgpt-ai/k8sgpt.git
+	sha256sums = SKIP
+
+pkgname = k8sgpt-git
