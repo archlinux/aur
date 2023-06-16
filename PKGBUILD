@@ -38,6 +38,5 @@ source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/$
 sha256sums=('69e70ceb7eb5d0f5c1f94a0f103e0057fcb4c469b137c5ac509c6ddf01186125')
 
 package() {
-	cd "$srcdir" || return 1
 	python -m installer --destdir="$pkgdir" ./*.whl
 }
