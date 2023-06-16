@@ -1,7 +1,7 @@
 # Maintainer: Mahor Foruzesh <mahor1221 at gmail dot com>
 
 pkgname=rye-bin
-pkgver=0.6.0
+pkgver=0.7.0
 _pkgname="${pkgname%-bin}"
 _pkg="$_pkgname-$pkgver"
 _pkgbin_x86_64="$_pkg-x86_64-linux"
@@ -22,8 +22,8 @@ provides=(rye)
 conflicts=(rye)
 source=("$_pkg.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 source_x86_64=("$_pkgbin_x86_64.gz::$url/releases/download/$pkgver/$_pkgname-x86_64-linux.gz")
-sha256sums=('d3709903f4419fbee567fac03b44698b8ce478cfed03deb513066b4e663b6400')
-sha256sums_x86_64=('bcc46559f2eda5f89e100869b3c5f1ac61559c11ff7ec3bade24607c3d646f21')
+sha256sums=('89699ea825a27aa76754c5992b095ae1ef4ba654487cba70a65f452390ecf5c5')
+sha256sums_x86_64=('73ebedb995af7a15208ebf4d327c1b7f8ef8792bcf319b90f2ecf3775b14733c')
 
 package() {
   install -Dm755 "$_pkgbin_x86_64" "$pkgdir/usr/bin/$_pkgname"
