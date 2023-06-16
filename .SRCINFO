@@ -1,6 +1,6 @@
 pkgbase = scribus-svn
 	pkgdesc = A desktop publishing program - Version from SVN
-	pkgver = 25450
+	pkgver = 25515
 	pkgrel = 1
 	url = http://www.scribus.net
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = scribus-svn
 	makedepends = cmake
 	makedepends = qt6-tools
 	depends = hunspell
-	depends = podofo
+	depends = podofo-0.9
 	depends = libcups
 	depends = graphicsmagick
 	depends = poppler

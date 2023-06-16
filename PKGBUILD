@@ -3,13 +3,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=25450
+pkgver=25515
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://www.scribus.net"
-depends=('hunspell' 'podofo' 'libcups' 'graphicsmagick' 'poppler'
+depends=('hunspell' 'podofo-0.9' 'libcups' 'graphicsmagick' 'poppler'
 	 'libcdr' 'libvisio' 'libpagemaker' 'harfbuzz-icu' 'python'
 	 'qt6-declarative' 'libmspub' 'libqxp' 'hicolor-icon-theme'
 	 'libzmf' 'libfreehand' 'qt6-base' 'qt6-5compat' 'qt6-svg')
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 build() {
-  cd $_svnmod/Scribus
+  cd ${_svnmod}/Scribus
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DWANT_GRAPHICSMAGICK:BOOL=YES \
 	-DCMAKE_LIBRARY_PATH:PATH=/usr/lib/qt6 \
