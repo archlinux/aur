@@ -44,7 +44,7 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	CFLAGS+=' -ffat-lto-objects'
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release --features embed-fonts
 }
 
 package() {
