@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=tabby
-pkgver=1.0.188
+pkgver=1.0.197
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -15,12 +15,12 @@ sha256sums=('SKIP')
 
 build(){
   cd "$srcdir/$pkgname/"
-  export ARCH=x86_64
+#  export ARCH=x86_64
   yarn install
-  ./scripts/install-deps.js
+  ./scripts/install-deps.mjs
   yarn run build
-  ./scripts/build-native.js
-  ./scripts/build-linux.js
+  ./scripts/build-native.mjs
+  ./scripts/build-linux.mjs
 }
 
 package() {
