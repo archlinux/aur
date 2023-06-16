@@ -10,9 +10,8 @@ depends=(
 	'curl'
 	'ncurses'
 	'tidy'
-	'zig'
 )
-makedepends=('git')
+makedepends=('git', 'zig-dev-bin')
 source=("git+${url}")
 sha256sums=('SKIP')
 
