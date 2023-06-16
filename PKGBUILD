@@ -6,11 +6,11 @@
 # https://releases.electronjs.org/
 # https://github.com/stha09/chromium-patches/releases
 
-_use_suffix=1
+_use_suffix=0
 pkgver=25.1.1
 _chromiumver=114.0.5735.90
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -45,6 +45,7 @@ if [[ ${_use_suffix} == 0 ]]; then
   conflicts=("electron${_major_ver}")
   # shellcheck disable=SC2034
   provides=("electron${_major_ver}")
+  replaces=("electron${_major_ver}")
 fi
 # shellcheck disable=SC2034
 options=('!lto') # Electron adds its own flags for ThinLTO
