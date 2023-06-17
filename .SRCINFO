@@ -1,0 +1,17 @@
+pkgbase = tun2socks-git
+	pkgdesc = create a network interface which passes all traffic through proxy
+	pkgver = v2.5.1.r0.g7ab86fd
+	pkgrel = 1
+	url = https://github.com/xjasonlyu/tun2socks
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	makedepends = make
+	provides = tun2socks
+	conflicts = tun2socks
+	conflicts = tun2socks-bin
+	source = git+https://github.com/xjasonlyu/tun2socks
+	b2sums = SKIP
+
+pkgname = tun2socks-git
