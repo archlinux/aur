@@ -32,7 +32,9 @@ build()
   PROCESSORS=0 \
   make
 
-  make build-doc
+  # Docs are currently broken due to missing 'sphinx_rtd_theme' python package.
+  #
+#  make build-doc
 }
 
 
