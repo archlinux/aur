@@ -1,6 +1,6 @@
 # Maintainer: igo95862 <address at domain dot tld>
 pkgname=bubblejail-git
-pkgver=r423.1820189
+pkgver=0.8.RC2.r473.150c1e8
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('any')
@@ -31,7 +31,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(git describe --abbrev=0 --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 check () {
