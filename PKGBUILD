@@ -9,7 +9,7 @@ _tbbpkgminorver=6
 
 pkgname=usd
 pkgver=23.05
-pkgrel=6
+pkgrel=7
 pkgdesc='3D VFX pipeline interchange file format'
 arch=(x86_64)
 url='https://openusd.org'
@@ -21,6 +21,7 @@ depends=(glew
          graphviz
          openexr
          opensubdiv
+         pyside2
          pyside6
          python-opengl
          qt5-base)
@@ -47,7 +48,7 @@ source=("git+$_url.git#tag=v$pkgver"
         "tbbgcc13.patch"
         "pyside6.patch"
         "materialx.patch"
-        "memset.patch"
+        "usd.sh"
         )
 sha512sums=('SKIP'
             '6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15'
@@ -55,7 +56,7 @@ sha512sums=('SKIP'
             'e9d4d37b6243b32dc4dbf1ab8b5b1c6a2ceb87a81b7ac711afd95244131ac5305e2369b93581c4670ca15f8cdc42482a8cd373e22779322d52e66e2a5ecdf08b'
             'ba35f847b023139dcc3b38ec9308d52c7358967f22c38d481a0a9d9fee1ced674b56850bc9f7e07c350a144c1e575ec1f77a1a0b970dc4ceddcae904d6bc403f'
             '167e9bb2bced935cd9513b4ecd40c9e73ada0c794f1e5f11dc3e2844bedc07ac082aa8fb88e50c86dc2c80854ed95ddc22472f6fdc978765398079164d1c15c5'
-            'SKIP')
+            '48ba8a4c84e257be868a8170a82dc0f56c281cce022bc4bdffafb07a1dbb938014a71ac40d4e5cc4f030acc11f46a785c2827edf470b2ef6b583dfbfe3dac4b8')
 
 prepare() {
   patch --directory=USD --forward --strip=1 --input="${srcdir}/pyside6.patch"
@@ -86,6 +87,7 @@ prepare() {
 build() {
   _CMAKE_FLAGS+=(
     -DCMAKE_INSTALL_PREFIX:PATH=/usr/share/usd
+    -DCMAKE_PREFIX_PATH:PATH=/usr/share/usd
     -DPXR_BUILD_TESTS=ON
     -DPXR_BUILD_DOCUMENTATION=ON
     -DBOOST_ROOT="${srcdir}"/boost
@@ -130,14 +132,8 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  mkdir -p $pkgdir/usr/bin
-  ln -s "/usr/share/usd/bin/usdview" "$pkgdir/usr/bin/usdview"
 
-  echo ""
-  echo "----------------------------------------------"
-  echo "To launch usdview use this env vars:"
-  echo "PATH       /lib:/usr/usd/share/bin"
-  echo "PYTHONPATH /usr/usd/share/lib/python"
-  echo "LD_PRELOAD /usr/lib/libjemalloc.so (Optional)"
-  echo "----------------------------------------------"
+  install -Dm755 "${srcdir}"/usd.sh "${pkgdir}"/etc/profile.d/usd.sh
+  cp -r "${srcdir}"/boost/* "${pkgdir}"/usr/share/usd
+  cp -r "${srcdir}"/tbb2019/usr/* "${pkgdir}"/usr/share/usd
 }
