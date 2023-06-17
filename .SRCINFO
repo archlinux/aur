@@ -1,0 +1,17 @@
+pkgbase = nymphcast-mediaserver-git
+	pkgdesc = Audio and video casting system with support for custom applications.
+	pkgver = 0.1.r1.gf6e615c
+	pkgrel = 1
+	url = https://github.com/MayaPosch/NymphCast
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = libnymphcast
+	depends = nymphrpc
+	depends = poco
+	depends = glibc
+	depends = gcc-libs
+	source = git+https://github.com/MayaPosch/NymphCast-MediaServer
+	sha256sums = SKIP
+
+pkgname = nymphcast-mediaserver-git
