@@ -1,12 +1,15 @@
 pkgbase = jupyterhub-idle-culler
 	pkgdesc = JupyterHub service to cull and shut down idle users and notebook servers
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jupyterhub/jupyterhub-idle-culler
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-dateutil
 	depends = python-tornado
 	source = git+https://github.com/jupyterhub/jupyterhub-idle-culler.git#tag=1.2.1

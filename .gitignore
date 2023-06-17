@@ -1,6 +1,5 @@
-src
-pkg
-jupyterhub-idle-culler
-*.pkg.tar.xz
-*.pkg.tar.zst
+jupyterhub-idle-culler/
+src/
+pkg/
+jupyterhub-idle-culler-*.pkg.tar*
 *.log
