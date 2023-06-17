@@ -2,14 +2,16 @@
 # Contributor: Sam Whited <sam@samwhited.com>
 # Contributor: geno <dev@fireorbit.de>
 # Contributor: <luntik2012@gmail.com>
+# Contributor: Julian Fairfax <juliannfairfax@protonmail.com> 
 
-pkgname=purism-chatty
-pkgver=0.4.0
+_pkg="chatty"
+pkgname="purism-${_pkg}"
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="XMPP and SMS messaging via libpurple and Modemmanager"
-url="https://source.puri.sm/Librem5/chatty"
+url="https://source.puri.sm/Librem5/${_pkg}"
 license=(GPL3)
-arch=(i686 x86_64 armv6h armv7h aarch64)
+arch=(x86_64 i686 armv6h armv7h aarch64)
 depends=(evolution-data-server
          feedbackd
          libhandy
@@ -19,14 +21,13 @@ optdepends=('libpurple-lurch: XMPP E2E OMEMO encryption'
             'purple-xmpp-http-upload: XMPP HTTP Upload - Filesharing')
 makedepends=(meson
              pkg-config)
-provides=(purism-chatty)
-conflicts=(purism-chatty)
-source=("https://source.puri.sm/Librem5/chatty/-/archive/v${pkgver}/chatty-v${pkgver}.tar.bz2")
-sha512sums=('28d4aa071555a658418087721bf53cc45b91fec6fb2aef41d29fa29f97116e38ab6c06d9d42a37ac9b36be8c1d7984f8cbc823bfb71985a39cf43631ddcce496')
+_commit="5e9dacb8080d99b15cc9e97455bf7ab41d42edd3"
+source=("git+https://source.puri.sm/Librem5/${_pkg}#commit=${_commit}")
+sha512sums=('SKIP')
 
 build() {
-	rm -rf build
-	arch-meson "chatty-v${pkgver}" build
+	git -C "${_pkg}" submodule update --init
+	arch-meson "${_pkg}" build
 	ninja -C build
 }
 
