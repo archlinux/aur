@@ -3,32 +3,34 @@
 _name=django-otp
 pkgbase=python-django-otp
 pkgname=('python-django-otp')
-pkgver=1.1.6
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="A pluggable framework for adding two-factor authentication to Django using one-time passwords"
 url="https://github.com/django-otp/django-otp"
-license=('BSD')
+license=('Unlicense')
 arch=('any')
 optdepends=('python-qrcode: For OTP setup with QR code')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-hatchling' 'python-installer')
 depends=('python-django')
-checkdepends=('python-tox')
+checkdepends=('python-freezegun' 'python-qrcode')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/${_name}/${_name}/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('58c64651a5b274542bf09604daf3e59fdb0ea4eb96e7d14e59fd10a042d86cffb5df462191198f12320ea706f4d9aa651ef2c79ad7aa33e9d4ba0d157d90f4fb')
+sha512sums=('e6201c8131e07bbb4f41aeb9f5670c06573be63950d34ffa4d225fada503ee7bdf360609bd72b7f683567e149510abd5d50d4fd30bab107a32c9a0f5122cce6a')
 
 build() {
   cd "$srcdir/${_name}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd "$srcdir/${_name}-${pkgver}"
-  tox -e py311
+  DJANGO_SETTINGS_MODULE="test_project.settings" \
+  PYTHONPATH="test" \
+  python -s -m django test django_otp
 }
 
 package() {
 
   cd "$srcdir/${_name}-${pkgver}/"
-  python setup.py install --skip-build --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
