@@ -1,7 +1,7 @@
 pkgbase = jdk20-graalvm-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 20 version
 	pkgver = 23.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.graalvm.org/
 	install = jdk20-graalvm-bin.install
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = jdk20-graalvm-bin
 	optdepends = graal-visualvm-jdk20-bin: VisualVM component (used to be bundled with this package before the 22.2.0 release)
 	provides = java-runtime=20
 	provides = java-environment=20
-	replaces = native-image-jdk20-bin
 	options = staticlibs
 	source = graalvm-rebuild-libpolyglot.hook
 	sha256sums = SKIP

@@ -5,7 +5,7 @@ jdk_=${graal_%%+*}
 java_=${jdk_%%.*}
 pkgname="jdk${java_}-graalvm-bin"
 pkgver=23.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64'
       'aarch64')
@@ -19,7 +19,6 @@ optdepends=("graaljs-jdk${java_}-bin: JavaScript component (used to be bundled w
             "graal-visualvm-jdk${java_}-bin: VisualVM component (used to be bundled with this package before the 22.2.0 release)")
 provides=("java-runtime=${java_}"
           "java-environment=${java_}")
-replaces=("native-image-jdk${java_}-bin")
 options=('staticlibs')
 install="$pkgname.install"
 source=('graalvm-rebuild-libpolyglot.hook')
