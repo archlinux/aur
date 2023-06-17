@@ -1,6 +1,6 @@
 # Maintainer: Equationzhao <equationzhao at foxmail dot com>
 pkgname='g-ls'
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=2
 pkgdesc='a powerful ls in golang'
 arch=($CARCH)
@@ -22,6 +22,5 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     install -m755 g "$pkgdir/usr/bin"
     cd man
-    gzip g.1
     install -Dm644 g.1.gz "$pkgdir/usr/share/man/man1/g.1.gz"
 }
