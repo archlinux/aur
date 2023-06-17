@@ -3,7 +3,7 @@
 pkgname=python-pytest-postgresql
 _name=${pkgname#python-}
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Test your code that relies on a running PostgreSQL Database"
 arch=(any)
 url="https://github.com/ClearcodeHQ/pytest-postgresql"
@@ -41,9 +41,8 @@ build() {
 check() {
   cd "$_archive"
 
-  # rm -rf pytest_postgresql.egg-info/
-  # python -m pytest \
-  #   -k "not test_executor_init_with_password"
+  PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest \
+    -k "not test_executor_init_with_password"
 }
 
 package() {
