@@ -17,7 +17,7 @@ source=("https://github.com/Aetf/kmscon/releases/download/v$pkgver/$pkgname-$pkg
 sha256sums=('48be605bd874260d9bd7a59e82421ceacf875e4a2c5dba9c62d7f0359df694b6')
 
 build() {
-  meson build $pkgname-$pkgver \
+  meson setup build $pkgname-$pkgver \
    --prefix=/usr \
    --libexecdir=lib \
    -D werror=false
