@@ -1,7 +1,7 @@
 pkgbase = theli
 	pkgdesc = THELI is a data processing pipeline for optical, near-infrared and mid-infrared astronomical images
 	pkgver = 3.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/schirmermischa/THELI
 	arch = x86_64
 	license = GPL3
