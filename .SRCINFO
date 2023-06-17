@@ -1,0 +1,27 @@
+pkgbase = python-ffmpeg-python-git
+	pkgdesc = Python bindings for FFmpeg with complex filtering support
+	pkgver = 0.2.0.r41.gdf129c7
+	pkgrel = 1
+	url = https://github.com/kkroening/ffmpeg-python
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mock
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = ffmpeg
+	depends = python-future
+	depends = python-graphviz
+	provides = python-ffmpeg-python
+	provides = python-ffmpeg
+	conflicts = python-ffmpeg-python
+	conflicts = python-ffmpeg
+	conflicts = python-python-ffmpeg
+	options = !emptydirs
+	source = ffmpeg-python::git+https://github.com/kkroening/ffmpeg-python
+	sha256sums = SKIP
+
+pkgname = python-ffmpeg-python-git
