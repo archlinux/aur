@@ -1,6 +1,6 @@
 pkgbase = cppcheck-git
 	pkgdesc = Tool for static C/C++ code analysis
-	pkgver = 2.7.r1629.647432580
+	pkgver = 2.7.r1730.58dd92dd1
 	pkgrel = 1
 	epoch = 1
 	url = https://cppcheck.sourceforge.io/
@@ -18,13 +18,14 @@ pkgbase = cppcheck-git
 	depends = pcre
 	depends = python
 	depends = tinyxml2
+	optdepends = qt5-tools: cppcheck-gui
+	optdepends = python-pygments: cppcheck-htmlreport
+	optdepends = clang: cppcheck-gui integration
 	provides = cppcheck
 	conflicts = cppcheck
 	source = git+https://github.com/danmar/cppcheck.git
-	source = 0001-Add-missing-rebinding-trait-to-TaggedAllocator.patch
 	source = translations-location.patch
 	b2sums = SKIP
-	b2sums = 7c7e259c20b5c6ec9cfd5831fb0bd912aa2fa5b5f6c5afc18a6741e952138eacc9a2702f1b6f009beb75ddb724af29e3c0f4905f927cc091e3caf02566ca582a
 	b2sums = 8156920eacc630cb5eceb2387937b747c84c6325bef906717cfbad68c122bdd27965da1e8070a560a0bed3a7b7c59ff5f0e116bb1d035c4c42f430c927a75b1f
 
 pkgname = cppcheck-git

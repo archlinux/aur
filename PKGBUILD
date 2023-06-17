@@ -5,7 +5,7 @@
 
 _pkgname=cppcheck
 pkgname="$_pkgname-git"
-pkgver=2.7.r1629.647432580
+pkgver=2.7.r1730.58dd92dd1
 pkgrel=1
 epoch=1
 pkgdesc='Tool for static C/C++ code analysis'
@@ -16,20 +16,17 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=(pcre python tinyxml2)
 makedepends=(clang cmake docbook-xsl git pandoc python-pygments qt5-base qt5-tools)
-optdeps=('qt5-tools: cppcheck-gui'
-         'python-pygments: cppcheck-htmlreport'
-         'clang: cppcheck-gui integration')
+optdepends=('qt5-tools: cppcheck-gui'
+            'python-pygments: cppcheck-htmlreport'
+            'clang: cppcheck-gui integration')
 source=("git+https://github.com/danmar/$_pkgname.git"
-        0001-Add-missing-rebinding-trait-to-TaggedAllocator.patch
         translations-location.patch)
 b2sums=('SKIP'
-        '7c7e259c20b5c6ec9cfd5831fb0bd912aa2fa5b5f6c5afc18a6741e952138eacc9a2702f1b6f009beb75ddb724af29e3c0f4905f927cc091e3caf02566ca582a'
         '8156920eacc630cb5eceb2387937b747c84c6325bef906717cfbad68c122bdd27965da1e8070a560a0bed3a7b7c59ff5f0e116bb1d035c4c42f430c927a75b1f')
 
 prepare() {
 	cd $_pkgname
 	patch -Np1 -i ../translations-location.patch
-	patch -Np1 -i ../0001-Add-missing-rebinding-trait-to-TaggedAllocator.patch
 }
 
 pkgver() {
