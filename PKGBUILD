@@ -3,8 +3,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-starlink-ast'
-pkgver='3.02'
-pkgrel='2'
+pkgver='3.03'
+pkgrel='1'
 pkgdesc="Interface to the Starlink AST library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -14,8 +14,8 @@ makedepends=('perl-module-build')
 checkdepends=('perl-test-deep>=0' 'perl-test-number-delta>=0')
 url='https://metacpan.org/release/Starlink-AST'
 source=("http://search.cpan.org/CPAN/authors/id/G/GS/GSB/Starlink-AST-${pkgver}.tar.gz")
-md5sums=('f8fa07d0e92b984578fda0d95faaa0ff')
-sha512sums=('4fcba8772fe35d83803ca262f885f032efa025d2bfa3950faae1b675496cfff724b0b17ded16314006bf57f582db90353cccf09f7c2e412f4ef3f64aabdb3f59')
+md5sums=('688173a0c9f9ba4debd36f864abd6b93')
+sha512sums=('c1f64b19ab50f3704a440208b0c82bfaaf10322c807f817dc52d742d2c1fdf0087ae07f392c97f277fa18862ca9ec102d219e13385cec1bd6f726c79a04d8d68')
 _distdir="Starlink-AST-${pkgver}"
 
 
