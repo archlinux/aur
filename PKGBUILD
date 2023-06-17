@@ -4,8 +4,8 @@
 
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=11.0.1
-_pkgbuild=33
+pkgver=11.1.1
+_pkgbuild=2
 pkgrel=1
 pkgdesc="A business online/offsite backup solution"
 url="https://www.crashplan.com/en-us/small-business/"
@@ -21,8 +21,8 @@ source=(https://download.crashplan.com/installs/agent/cloud/${pkgver}/${_pkgbuil
         upgrade.sh
         crashplan-pro_upgrade.service
         crashplan-pro_upgrade.path)
-sha1sums=('900872eac50395f7b432f7c1241a8fc335b52d14'
-          'f73e2b1155744594303d81b394031159e248654c'
+sha1sums=('e5d90431e418546b47f9316e036f2490986d73c5'
+          '1b6a2237ee2ae219ba40977e482e75a602f649a3'
           'a3a5ead8b8fd867f47782b12bc27b1fb145565ac'
           'c24e2ba2b2d6831246ea4af072305ddf5d1fd774'
           '0dfbf0ef3df2ad386419def132c28d63560f6e4e')
@@ -59,9 +59,11 @@ EOF
 
 package() {
   mkdir -p $pkgdir/opt/$_pkgname
-  cd $pkgdir/opt/$_pkgname
 
-  $srcdir/crashplan-install/install.sh -q -x $pkgdir/opt/ -u $USER
+  cd ${srcdir}/crashplan-install
+  ./install.sh -v -q -x $pkgdir/opt/ -u $USER
+
+  cd $pkgdir/opt/$_pkgname
 
   sed -i "s|<manifestPath.*</manifestPath>|<manifestPath>/opt/$_pkgname/manifest</manifestPath>|g" $pkgdir/opt/$_pkgname/conf/default.service.xml
 
