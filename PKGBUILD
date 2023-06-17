@@ -1,4 +1,4 @@
-# Maintainer: NullBite <aur.archlinux at nullbite dot com>
+# Maintainer: NullBite <aur.archlinux@nullbite.com>
 pkgname=packwiz-installer
 pkgver=0.5.10
 pkgrel=1
