@@ -1,0 +1,10 @@
+# source
+/*.jar
+/LICENSE.md
+
+# build
+/src/
+/pkg/
+
+# package
+/*.pkg.tar*
