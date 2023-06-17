@@ -1,53 +1,36 @@
-# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Andrew Steinke <rkcf@rkcf.me>
 # Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 
-pkgbase=python-pyalsaaudio
-pkgname=(python-pyalsaaudio python2-pyalsaaudio)
-pkgver=0.9.0
+pkgname=python-pyalsaaudio
+_name=${pkgname#python-}
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="ALSA wrappers for Python"
-arch=('i686' 'x86_64' 'armv7h')
-url="http://larsimmisch.github.io/pyalsaaudio/"
-license=('custom: PSF')
-makedepends=('python-setuptools' 'python2-setuptools' 'alsa-lib')
-source=("https://files.pythonhosted.org/packages/source/p/pyalsaaudio/pyalsaaudio-$pkgver.tar.gz")
-md5sums=('48c40424a79c2568676a41643d93f1f7')
+arch=(x86_64 i686 armv7h)
+url="https://github.com/larsimmisch/pyalsaaudio"
+license=(custom:PSF)
+depends=(alsa-lib)
+makedepends=(python-setuptools)
 
-prepare() {
-  # copy folder, so we can cleanly build for both python versions
-  cp -rup pyalsaaudio-$pkgver py2alsaaudio-$pkgver
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('d63465df6bbeda637dcd1b2a9c713f2035b0b890387258db99f28158886303fe')
+
+_archive="$_name-$pkgver"
 
 build() {
-  # build for python 3
-  cd pyalsaaudio-$pkgver
+  cd "$_archive"
+
   python setup.py build
-
-  # build for python 2
-  cd ../py2alsaaudio-$pkgver
-  python2 setup.py build
 }
 
-# package for python 3
-package_python-pyalsaaudio() {
-  depends=('python' 'alsa-lib')
-  pkgdesc+=" 3"
+package() {
+  cd "$_archive"
 
-  cd pyalsaaudio-$pkgver
+  export PYTHONHASHSEED=0
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-}
-
-# package for python 2
-package_python2-pyalsaaudio() {
-  depends=('python2' 'alsa-lib')
-  pkgdesc+=" 2"
-
-  cd py2alsaaudio-$pkgver
-
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
