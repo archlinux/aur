@@ -55,7 +55,7 @@ post_upgrade_or_install() {
     fi
 
     if [[ "${DEVICENAME}" != "Jupiter 1" ]]; then
-        sudo systemctl disable --now jupiter-controller-update.service
+        sudo systemctl mask --now jupiter-controller-update.service
     fi
 
 
