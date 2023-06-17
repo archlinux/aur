@@ -1,0 +1,18 @@
+pkgbase = vue-language-server-bin
+	pkgdesc = High-performance Vue language tooling based-on Volar.js
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/vuejs/language-tools/tree/master/packages/vue-language-server
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = vue-language-server
+	conflicts = vue-language-server
+	replaces = volar-server
+	replaces = volar-server-bin
+	noextract = language-server-1.8.0.tgz
+	source = https://registry.npmjs.org/@vue/language-server/-/language-server-1.8.0.tgz
+	sha256sums = f86562f945b33cd280cb01acc8d724ac534056a31672caf3a26178176198b807
+
+pkgname = vue-language-server-bin
