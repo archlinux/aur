@@ -24,11 +24,13 @@ prepare() {
 }
 
 build() {
-	# subshell for isolated environment, as to not alter PATH for the rest of the build
+	# subshell for isolated environment, as to not alter PATH for the rest
+	# of the build
 	(
 		# attempt to locate compatible JDK version for building, then
 		# fall back to default JDK
-		PATH="/usr/lib/jvm/java-11-openjdk/bin:/usr/lib/jvm/java-8-openjdk/bin${PATH:+:${PATH}}"
+		PATH="/usr/lib/jvm/java-8-openjdk/bin${PATH:+:${PATH}}"
+		PATH="/usr/lib/jvm/java-11-openjdk/bin${PATH:+:${PATH}}"
 		export PATH
 		cd "$srcdir/$pkgname"
 		./gradlew buildNeeded
@@ -40,12 +42,15 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -Dm644 build/dist/packwiz-installer.jar "${pkgdir}/usr/share/java/packwiz/packwiz-installer.jar"
+	install -Dm644 build/dist/packwiz-installer.jar \
+		"${pkgdir}/usr/share/java/packwiz/packwiz-installer.jar"
 
 	cd "$srcdir/$pkgname-bootstrap"
-	install -Dm644 build/libs/packwiz-installer-bootstrap-all.jar "${pkgdir}/usr/share/java/packwiz/packwiz-installer-bootstrap.jar"
+	install -Dm644 build/libs/packwiz-installer-bootstrap-all.jar \
+		"${pkgdir}/usr/share/java/packwiz/packwiz-installer-bootstrap.jar"
 
 	cd "$srcdir"
 	install -Dm755 packwiz-installer.sh "${pkgdir}/usr/bin/packwiz-installer"
-	install -Dm755 packwiz-installer-bootstrap.sh "${pkgdir}/usr/bin/packwiz-installer-bootstrap"
+	install -Dm755 packwiz-installer-bootstrap.sh \
+		"${pkgdir}/usr/bin/packwiz-installer-bootstrap"
 }
