@@ -24,6 +24,7 @@ url="https://gitlab.${_non_public_domain_name_distro}.org/tallero/${_non_public_
 makedepends=("${_pkg}"
              "git"
              "gnupg"
+             "mkinitcpio-${_non_public_domain_name_pkg}-encryption"
              "systemd")
 checkdepends=('shellcheck')
 provides=("${_pkgname}")
