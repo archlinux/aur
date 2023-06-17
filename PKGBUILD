@@ -1,13 +1,15 @@
-# _     _            _        _          _____
-#| |__ | | __ _  ___| | _____| | ___   _|___ /
-#| '_ \| |/ _` |/ __| |/ / __| |/ / | | | |_ \
-#| |_) | | (_| | (__|   <\__ \   <| |_| |___) |
-#|_.__/|_|\__,_|\___|_|\_\___/_|\_\\__, |____/
-#                                  |___/
+#_     _            _                                _____
+#| |__ | | __ _  ___| | ___ __ ___   ___   ___  _ __ |___ /
+#| '_ \| |/ _` |/ __| |/ / '_ ` _ \ / _ \ / _ \| '_ \  |_ \
+#| |_) | | (_| | (__|   <| | | | | | (_) | (_) | | | |___) |
+#|_.__/|_|\__,_|\___|_|\_\_| |_| |_|\___/ \___/|_| |_|____/
 
-#Maintainer: blacksky3 <https://github.com/blacksky3>
+#Maintainer: blackmoon3 <https://github.com/blacksky3>
 #Credits: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 #Credits: Andreas Radke <andyrtr@archlinux.org>
+#Credits: Peter Jung ptr1337 <admin@ptr1337.dev> && Piotr Gorski <piotrgorski@cachyos.org>
+#Credits: Tobias Powalowski <tpowa@archlinux.org>
+#Credits: Thomas Baechler <thomas@archlinux.org>
 
 ################################# Arch ################################
 
