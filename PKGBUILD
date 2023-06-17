@@ -2,7 +2,7 @@
 # Contributor: xiretza <xiretza+aur@xiretza.xyz>
 _pkgname=Red-Lavalink
 pkgname=python-red-lavalink
-pkgver=0.11.0rc1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Lavalink client library used in Red-DiscordBot"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python-discord' 'python-red-commons')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest-asyncio')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3daa83959a6931ef6264bbd13444c61fc87b6cf3afbefb55d06eabb8ae411dd1')
+sha256sums=('9646a35433b51f953738f9e7e6faa5def753414740df8fb91f81271c1362b71a')
 
 build() {
 	cd "$_pkgname-$pkgver"
