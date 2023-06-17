@@ -1,7 +1,7 @@
 pkgbase = python-marshmallow-enum
 	pkgdesc = Enum handling for Marshmallow
 	pkgver = 1.5.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/justanr/marshmallow_enum
 	arch = any
 	license = MIT
