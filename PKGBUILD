@@ -2,7 +2,7 @@
 
 pkgname=hunspell-ko
 _pkgname=hunspell-dict-ko
-pkgver=0.7.93
+pkgver=0.7.94
 pkgrel=1
 pkgdesc="Korean hunspell dictionary"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3' 'custom')
 makedepends=('hunspell' 'ispell' 'qt6-webengine' 'python' 'python-yaml')
 optdepends=('hunspell: the spell checking libraries and apps')
 source=($_pkgname-$pkgver.tar.gz::"https://github.com/spellcheck-ko/hunspell-dict-ko/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('a3f74ad224a74356d1a91ebdb88241fbd99958039f52a9a71390a6bd5d0ea2c5867113f25ea1f50224a5dd4362e03cf96159794d3d35e2b3e554ab945aabcff9')
+sha512sums=('1dbcd566fdf37c1cdb26601cc546fddd8f91875d4a0a96cd4e5de7ca0f23005404559859b7a4eb4362c35d232ac062c23bdc8f4416feab1c32a76651faecf524')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
