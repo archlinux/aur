@@ -1,11 +1,11 @@
 # Maintainer: Meow King <mr.ziqiyang@gmail.com>
 pkgname=flying-carpet-bin
 pkgver=7.1 # NOTE
-pkgrel=1
+pkgrel=2 # NOTE
 pkgdesc="File transfer between Android, iOS, Linux, macOS, and Windows over ad hoc WiFi. No network infrastructure required, just two devices with WiFi chips in close range. "
 arch=("x86_64")
 url="https://github.com/spieglt/FlyingCarpet"
-license=('unknown') # currently no license available, previous it is BSD 3-Clause
+license=('GPL3') # currently no license available, previous it is BSD 3-Clause
 makedepends=(
     "libarchive" # bsdtar
 )
