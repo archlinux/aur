@@ -1,7 +1,7 @@
 pkgbase = flutterup
 	pkgdesc = A flutter wrapper, to install and package flutter packages
 	pkgver = 0.2.1
-	pkgrel = 1.0
+	pkgrel = 2.0
 	url = https://github.com/Decodetalkers/flutterup
 	arch = x86_64
 	arch = aarch64
@@ -11,8 +11,11 @@ pkgbase = flutterup
 	makedepends = meson
 	makedepends = rust
 	depends = git
+	depends = ninja
 	provides = flutter
 	provides = dart
+	conflicts = flutter
+	conflicts = dart
 	source = flutterup-v0.2.1.tar.gz::https://github.com/Decodetalkers/flutterup/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = f5b5ab0b22bf686094b8b12e139d0656fcae4dd39b36d5c4ddb3007c36fc3b50
 
