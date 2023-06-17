@@ -1,6 +1,6 @@
 pkgbase = nscde
 	pkgdesc = Not so Common Desktop Environment - modern and functional CDE desktop based on FVWM
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/NsCDE/NsCDE/
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = nscde
 	optdepends = qt5-styleplugins: integrate gtk2 NsCDE theme with Qt5
 	optdepends = qt5ct: Qt5 Configuration Utility
 	optdepends = gkrellm: system monitor package fits nicely with NsCDE
-	source = https://github.com/NsCDE/NsCDE/archive/2.2/nscde-2.2.tar.gz
-	sha256sums = 671b2c9969cd04159e5b597567cb9f59a53ccb6853f2a6340876f199aa03ca4a
+	source = https://github.com/NsCDE/NsCDE/archive/2.3/nscde-2.3.tar.gz
+	sha256sums = fc4fd5f16b901b865f44b7483fa01a28189b5d5b95766375e026cc317456b297
 
 pkgname = nscde
