@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="greenpass"
-pkgver=4.2.2
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Scriptable green pass / Digital Covid Certificate verifier"
 url="https://github.com/berdav/greenpass"
@@ -22,21 +22,16 @@ depends=("python-base45"
          "python-tzlocal"
          "pyzbar"
         )
-makedepends=("python-setuptools")
-optdepends=("antigen: 48h base green pass"
-            "molecule: 72h base green pass"
-            "covid: 6m super green pass"
-            "vaccine-git: 6m super green pass"
-           )
+makedepends=("python-build" "python-installer" "python-wheel" "python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cdd7e2a54ed2cd952fec2aa5eaa9ff83c7c0802ac7fe7f5f1f866196ae63928c')
+sha256sums=('8d8d6c47e57459b8f549661446ee33d554b74ac4ea8bc594089fa916a596d9e3')
 
 build(){
  cd "$pkgname-$pkgver"
- python setup.py build
+ python -m build --wheel --no-isolation
 }
 
 package(){
  cd "$pkgname-$pkgver"
- python setup.py install --root="$pkgdir" --optimize=1
+ python -m installer --destdir="$pkgdir" dist/*.whl
 }
