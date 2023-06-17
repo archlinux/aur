@@ -1,0 +1,15 @@
+post_install() {
+	printf "pg_uuidv7 is installed, you still need to add it to postgresql.conf.
+	shared_preload_libraries = 'pg_uuidv7'
+After that you will need to restart postgres. Then you can load the extension with:
+	CREATE EXTENSION pg_uuidv7;
+"
+}
+
+pre_remove() {
+	printf "After removing pg_uuidv7 you will need to remove it from postgresql.conf
+	shared_preload_libraries = ''
+And delete the extension
+	DROP EXTENSION pg_uuidv7;
+Then restart the postgresql server."
+}
