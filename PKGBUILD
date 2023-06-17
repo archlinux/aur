@@ -9,4 +9,4 @@ arch=(any)
 url=https://github.com/AdaCore/gprbuild/
 license=(none)
 
-depends=(gprbuild libgpr gprtools gprname gprslave)
+depends=(gprbuild gprtools gprname gprslave libgpr)

@@ -6,9 +6,9 @@ pkgbase = gprbuild-toolbox
 	arch = any
 	license = none
 	depends = gprbuild
-	depends = libgpr
 	depends = gprtools
 	depends = gprname
 	depends = gprslave
+	depends = libgpr
 
 pkgname = gprbuild-toolbox
