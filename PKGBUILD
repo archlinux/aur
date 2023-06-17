@@ -23,7 +23,7 @@ license=('AGPL3')
 url="https://gitlab.${_non_public_domain_name_distro}.org/tallero/${_non_public_domain_name_pkg}/-/issues/3"
 makedepends=("${_pkg}"
              "git"
-	     "gnupg"
+             "gnupg"
              "systemd")
 checkdepends=('shellcheck')
 provides=("${_pkgname}")
@@ -93,9 +93,9 @@ package() {
   install -d -m 0700 -- "${_private_dest}"
   chown -R 962:962 "${_private_dest}"
   machinectl shell --uid=0 \
-	           --setenv=GNUPGHOME="${gnupg_homedir}" \
-	           --setenv=DISPLAY="${DISPLAY}" \
-		   .host "${_mkarchiso}" \
+                   --setenv=GNUPGHOME="${gnupg_homedir}" \
+                   --setenv=DISPLAY="${DISPLAY}" \
+                   .host "${_mkarchiso}" \
                          "${gnupg_homedir}" \
                          "${_dest}" \
                          "${pgp_key_id}" \
