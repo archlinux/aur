@@ -5,7 +5,7 @@
 pkgbase=snes9x-git
 _pkgbase=snes9x
 pkgname=(snes9x-git snes9x-gtk-git)
-pkgver=1.61.r180.gd8eb6c70
+pkgver=1.62.3.r63.g81efc82f
 pkgrel=1
 pkgdesc="Port of the Snes9x emulator (git version)"
 arch=('x86_64')
@@ -43,10 +43,10 @@ build() {
   make
 
 
-  cd "${srcdir}"/snes9x/gtk
-  cmake .
+  cd "${srcdir}" && mkdir -p build
+  cd "${srcdir}"/build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ../snes9x/gtk
   cmake --build .
-  
 }
 
 package_snes9x-git() {
@@ -74,15 +74,15 @@ package_snes9x-gtk-git() {
   conflicts=('snes9x-gtk')
   provides=('snes9x-gtk')
 
-  cd ${srcdir}/snes9x/gtk
-  cmake --install . --prefix="${pkgdir}/usr"
+  cd "${srcdir}"/build
+  DESTDIR="${pkgdir}" cmake --install .  --prefix=/usr
 
   cd "${srcdir}/${_pkgbase}"
 
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 {unix/snes9x.conf.default,docs/{control-inputs,controls,snapshots}.txt} \
     "${pkgdir}/usr/share/doc/${pkgname}/"
-  install -vDm644 LICENSE -t \
-    "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -vDm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  mv "${pkgdir}/usr/locale" "${pkgdir}/usr/share/locale"
 
 }
