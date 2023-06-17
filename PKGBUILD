@@ -8,7 +8,7 @@ url="https://github.com/igo95862/bubblejail"
 license=('GPL3+')
 depends=(
     'python'
-    'python-xdg'
+    'python-pyxdg'
     'bubblewrap'
     'python-tomli'
     'python-tomli-w'
