@@ -1,7 +1,7 @@
 # Maintainer: Equationzhao <equationzhao at foxmail dot com>
 pkgname='g-ls'
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='a powerful ls in golang'
 arch=($CARCH)
 url='https://github.com/Equationzhao/g'
