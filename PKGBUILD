@@ -1,34 +1,36 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Letu Ren <fantasquex at gmail dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 
-pkgname=python-dparse
-pkgver=0.5.1
-pkgrel=2
+pkgname='python-dparse'
+_name=${pkgname#python-}
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="Parser for Python dependency files"
-url="https://github.com/pyupio/dparse"
 arch=('any')
+url="https://github.com/pyupio/dparse"
 license=('MIT')
-depends=('python-packaging' 'python-toml' 'python-pyaml')
+depends=(
+  'python-packaging'
+  'python-toml'
+)
 makedepends=('python-setuptools')
-checkdepends=('python-pytest-runner' 'python-pipenv')
+optdepends=(
+  'python-pipenv: pipenv'
+  'python-pyyaml: conda'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('71dd0a0763fbb3f9112996c75e5f8258c77f348dfc1b9c6097a89fa377173a95')
+sha256sums=('d09c212c2998306696fbd838b0587f9c6f46caac6c72db5cdcb3837a9715cc79')
 
 build() {
-  cd "dparse-$pkgver"
+  cd ${_name}-${pkgver}
   python setup.py build
 }
 
-check() {
-  cd "dparse-$pkgver"
-  python setup.py pytest
-}
-
 package() {
-  cd "dparse-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd ${_name}-${pkgver}
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
