@@ -1,7 +1,7 @@
 pkgbase = turbo
 	pkgdesc = Incremental bundler and build system optimized for JavaScript and TypeScript, written in Rust – including Turbopack and Turborepo.
 	pkgver = 1.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://turbo.build
 	arch = x86_64
 	license = MPL

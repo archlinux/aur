@@ -2,7 +2,7 @@
 
 pkgname='turbo'
 pkgver=1.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Incremental bundler and build system optimized for JavaScript and TypeScript, written in Rust – including Turbopack and Turborepo.'
 arch=('x86_64')
 url='https://turbo.build'
@@ -38,5 +38,6 @@ package() {
 	cd "${pkgname}-${pkgver}"
 
 	install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
+	install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/go-${pkgname}"
 	install -Dm0755 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
 }
