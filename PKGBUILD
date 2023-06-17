@@ -14,8 +14,8 @@ arch=(i686 x86_64)
 url=https://github.com/AdaCore/gprbuild
 license=(GPL3 custom)
 
-depends=(gcc-ada)
 makedepends=(gcc-ada)
+provides=(gprbuild)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gprbuild-$pkgver-20230324-1649D-src.tar.gz
         https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/xmlada-$pkgver-20230324-1684A-src.tar.gz
