@@ -1,7 +1,7 @@
 pkgbase = mlpack
 	pkgdesc = A fast, flexible, scalable C++ machine learning library
-	pkgver = 4.1.0
-	pkgrel = 2
+	pkgver = 4.2.0
+	pkgrel = 1
 	url = https://mlpack.org
 	arch = x86_64
 	license = custom:BSD-3-clause
@@ -24,7 +24,7 @@ pkgbase = mlpack
 	optdepends = r: r bindings support
 	optdepends = go: go bindings support
 	options = !emptydirs
-	source = https://mlpack.org/files/mlpack-4.1.0.tar.gz
-	sha512sums = 0cab346f81b04a298f09ba28cec679c275af80c3941f31977ba5d0cfe11eed5850190ce46e71cf003996391618ad4eac2e0a54e260d264b8f8f9a02f53ec7cc7
+	source = https://mlpack.org/files/mlpack-4.2.0.tar.gz
+	sha512sums = 899a70f76bee626ef00993bedea188f8a2e9db5f0faec41cf125607b7c4bbda16d0e0343aac757618cd48fcb520f968539a8a97d89cf577037f69c624caf8bc6
 
 pkgname = mlpack
