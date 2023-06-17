@@ -6,7 +6,7 @@ arch=('x86_64')
 license=('custom')
 url="https://www.numpy.org/"
 depends=('cblas' 'lapack' 'pypy3')
-optdepends=('openblas: faster linear algebra')
+optdepends=('blas-openblas: faster linear algebra')
 makedepends=('pypy3-setuptools' 'gcc-fortran' 'pypy3-cython')
 options=('staticlibs')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
@@ -24,7 +24,7 @@ package() {
 
 	install -d "$pkgdir"/usr/bin
 	cd "$pkgdir/opt/pypy3/bin"
-	for i in f2py f2py3 f2py3.f2py3.$(pypy3 -V | head -1 | cut -d. -f2); do
+	for i in f2py f2py3 f2py3.$(pypy3 -V | head -1 | cut -d. -f2); do
 		mv $i "$pkgdir"/usr/bin/$i-pypy3
 	done
 }
