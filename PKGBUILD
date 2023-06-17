@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=mingw-w64-corrosion
-pkgver=0.3.5
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Tool for integrating Rust into an existing CMake project (MinGW-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/corrosion-rs/corrosion"
 license=('MIT')
 depends=('rust' 'cmake')
 source=("https://github.com/corrosion-rs/corrosion/archive/v$pkgver/${pkgname#mingw-w64-}-$pkgver.tar.gz")
-sha256sums=('3cee986d4a99fd965d70c96f6640eeff9723cc2815d367b22624ace53f3fd47a')
+sha256sums=('578747db4225acfccb2c251dd251212a0adcdd609fe59be5479cd63080e011e6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

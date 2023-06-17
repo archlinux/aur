@@ -1,13 +1,13 @@
 pkgbase = mingw-w64-corrosion
 	pkgdesc = Tool for integrating Rust into an existing CMake project (MinGW-w64)
-	pkgver = 0.3.5
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/corrosion-rs/corrosion
 	arch = any
 	license = MIT
 	depends = rust
 	depends = cmake
-	source = https://github.com/corrosion-rs/corrosion/archive/v0.3.5/corrosion-0.3.5.tar.gz
-	sha256sums = 3cee986d4a99fd965d70c96f6640eeff9723cc2815d367b22624ace53f3fd47a
+	source = https://github.com/corrosion-rs/corrosion/archive/v0.4.1/corrosion-0.4.1.tar.gz
+	sha256sums = 578747db4225acfccb2c251dd251212a0adcdd609fe59be5479cd63080e011e6
 
 pkgname = mingw-w64-corrosion
