@@ -1,10 +1,10 @@
 # Maintainer: Henry-ZHR <henry-zhr@qq.com>
 pkgname=python-safetensors
 pkgver=0.3.1
-pkgrel=1
-pkgdesc="Simple, safe way to store and distribute tensors"
+pkgrel=2
+pkgdesc='Simple, safe way to store and distribute tensors'
 arch=('x86_64')
-url="https://github.com/huggingface/safetensors"
+url='https://github.com/huggingface/safetensors'
 license=('Apache')
 depends=('python')
 makedepends=('python-build'
@@ -24,6 +24,7 @@ checkdepends=('python-pytorch'
               'python-jax'
               'python-flax'
               'python-jaxlib'
+              # 'python-paddlepaddle'
               'python-black'
               'python-isort'
               'flake8'
@@ -42,7 +43,9 @@ build() {
 
 check() {
   cd "safetensors-${pkgver}/bindings/python"
-  pytest tests/
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+  PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-cpython-${python_version}" pytest tests/ \
+    --ignore=tests/test_paddle_comparison.py # No working paddlepaddle package, disable it temporarily
 }
 
 package() {
