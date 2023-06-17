@@ -1,8 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-git
-pkgver=1.0.13404.r94.g98cd86ea4
-_llvmver=11
+pkgver=1.0.14382.r126.g4b858d035
+_llvmmaj=14
+_llvmver="${_llvmmaj}.0.5"
 pkgrel=1
 epoch=1
 pkgdesc='Intel Graphics Compiler for OpenCL (git version)'
@@ -16,9 +17,9 @@ conflicts=('intel-graphics-compiler' 'intel-opencl-clang')
 options=('!emptydirs' '!lto')
 source=('git+https://github.com/intel/intel-graphics-compiler.git'
         'git+https://github.com/intel/vc-intrinsics.git'
-        "git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git#branch=llvm_release_${_llvmver}0"
-        "git+https://github.com/intel/opencl-clang.git#branch=ocl-open-${_llvmver}0"
-        "git+https://github.com/llvm/llvm-project.git#tag=llvmorg-${_llvmver}.1.0"
+        "git+https://github.com/KhronosGroup/SPIRV-LLVM-Translator.git#branch=llvm_release_${_llvmmaj}0"
+        "git+https://github.com/intel/opencl-clang.git#branch=ocl-open-${_llvmmaj}0"
+        "git+https://github.com/llvm/llvm-project.git#tag=llvmorg-${_llvmver}"
         'git+https://github.com/KhronosGroup/SPIRV-Tools.git#branch=main'
         'git+https://github.com/KhronosGroup/SPIRV-Headers.git#branch=main')
 sha256sums=('SKIP'
@@ -51,7 +52,7 @@ build() {
         -DIGC_OPTION__ARCHITECTURE_TARGET='Linux64' \
         -DIGC_OPTION__CLANG_MODE='Source' \
         -DIGC_OPTION__LLD_MODE='Source' \
-        -DIGC_OPTION__LLVM_PREFERRED_VERSION="${_llvmver}.1.0" \
+        -DIGC_OPTION__LLVM_PREFERRED_VERSION="${_llvmver}" \
         -DIGC_OPTION__LLVM_MODE='Source' \
         -DIGC_OPTION__LINK_KHRONOS_SPIRV_TRANSLATOR='OFF' \
         -DIGC_OPTION__SPIRV_TOOLS_MODE='Source' \
