@@ -1,5 +1,5 @@
 pkgname=brlcad
-pkgver=7.34.0
+pkgver=7.34.2
 pkgrel=1
 pkgdesc='An extensive 3D solid modeling system.'
 url='https://brlcad.org'
@@ -14,7 +14,7 @@ source=(
     "https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/${_tag_name}.tar.gz")
 sha256sums=(
     'SKIP'
-    'bdaff958dee7b39ca66c777bb889878a707a10130ef76c47928870ff98d08c1e')
+    'be4ef557f55b25a91d6496ef2f52379db57cb7dfdb7f637c3a8cbb3742d0338d')
 
 
 _build_config='Release'
@@ -30,7 +30,8 @@ prepare() {
 
 
 build() {
-    cmake \
+    CFLAGS="${CFLAGS} -lm" \
+        cmake \
         -G Ninja \
         -S "${srcdir}/${pkgname}-${_tag_name}" \
         -B "${srcdir}/build" \
