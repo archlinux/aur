@@ -2,16 +2,16 @@
 _base=trame-vtk
 pkgname=python-${_base}
 pkgdesc="VTK widgets for trame"
-pkgver=2.4.4
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-trame-client paraview)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest)
+checkdepends=(python-pytest-xprocess) # python-pyvista
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('a48de3e7e6f0ba978dd936baa1821b9b8120f0206c53133c814d706bf69c18043c1236b22c7cc64d248c87e8a4ee61a30617642e4e66a4718a2cbeb4fdd3c679')
+sha512sums=('17da5ef550890d7aa742687d296a3464b6c910e4e1e7c0a6127cb3d7170dfb248e9fc12080b722a2186e282962fb6ad7963279bdf2d3124538e263be70906bfb')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
@@ -26,7 +26,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest
+  test-env/bin/python -m pytest --ignore=tests/test_remote_rendering.py
 }
 
 package() {
