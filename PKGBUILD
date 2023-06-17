@@ -2,16 +2,16 @@
 # Contributor: Mario Finelli <mario dot finelli at yahoo dot com>
 
 pkgname=ruby-rspec-puppet
-pkgver=2.12.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='RSpec tests for your Puppet manifests'
 arch=('any')
 url='https://github.com/puppetlabs/rspec-puppet'
 license=('MIT')
-depends=('ruby')
+depends=('ruby-rspec')
 source=("https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem")
 noextract=("${pkgname#*-}-${pkgver}.gem")
-sha256sums=('8a8549976605d5ea634490f9e414cdfac93731d10b7bf84ff837dc4afc66f978')
+sha256sums=('359cc99b2a6ed1712e7ae498c625532911b8dcff3dad48cb566619f7a223bcf8')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
