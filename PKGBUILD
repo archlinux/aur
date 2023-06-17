@@ -12,7 +12,7 @@ makedepends=('cmake')
 url="https://go.microsoft.com/fwlink/?LinkID=615560"
 license=('MIT')
 options=('staticlibs' '!strip')
-source=(directxmath-${pkgver}.tar.gz::https://github.com/microsoft/DirectXMath/archive/refs/tags/${_tag}.tar.gz)
+source=(directxmath-${_tag}.tar.gz::https://github.com/microsoft/DirectXMath/archive/refs/tags/${_tag}.tar.gz)
 sha256sums=('70a18f35343ff07084d31afa7a7978b3b59160f0533424365451c72475ff480f')
 
 build() {

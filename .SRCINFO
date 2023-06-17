@@ -9,7 +9,7 @@ pkgbase = directxmath
 	depends = sal
 	options = staticlibs
 	options = !strip
-	source = directxmath-3.1.8.tar.gz::https://github.com/microsoft/DirectXMath/archive/refs/tags/dec2022.tar.gz
+	source = directxmath-dec2022.tar.gz::https://github.com/microsoft/DirectXMath/archive/refs/tags/dec2022.tar.gz
 	sha256sums = 70a18f35343ff07084d31afa7a7978b3b59160f0533424365451c72475ff480f
 
 pkgname = directxmath
