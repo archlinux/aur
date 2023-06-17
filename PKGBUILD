@@ -68,3 +68,5 @@ package_vulkan-icd-loader-git(){
   install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}
   install -m644 "${srcdir}"/Vulkan-Loader/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
+
+# vim:set ts=8 sts=2 sw=2 et:
