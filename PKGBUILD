@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('any')
 url="https://github.com/igo95862/bubblejail"
-license=('GPL3+')
+license=('GPL3')
 depends=(
     'python'
     'python-pyxdg'
