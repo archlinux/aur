@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Coyim
+Comment=XMPP chat client supporting OTR and tor
+Categories=InstantMessaging;
+
+Icon=coyim
+Exec=/usr/bin/coyim
+Terminal=false
