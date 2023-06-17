@@ -23,7 +23,6 @@ conflicts=(lib32-vulkan-validation-layers)
 provides=(lib32-vulkan-validation-layers lib32-vulkan-validation-layers-git libVkLayer_khronos_validation.so)
 source=(git+https://github.com/KhronosGroup/Vulkan-ValidationLayers.git)
 md5sums=(SKIP)
-options=(!buildflags)
 
 pkgver(){
   cd ${srcdir}/Vulkan-ValidationLayers
