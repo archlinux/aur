@@ -1,6 +1,6 @@
 pkgbase = megaglest-data-git
 	pkgdesc = Fork of Glest, a 3D real-time strategy game in a fantastic world (data files, git version)
-	pkgver = 3.13.0.r10.gc48f8ebd
+	pkgver = 3.13.0.r15.gdf2ae0a5
 	pkgrel = 1
 	url = https://megaglest.org/
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = megaglest-data-git
 	sha256sums = SKIP
 
 pkgname = megaglest-data-git
-
