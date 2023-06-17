@@ -1,5 +1,4 @@
-/src/
-/pkg/
-/ffmpeg-python-*.tar.gz
-/LICENSE
-*.pkg.tar.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

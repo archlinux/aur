@@ -1,28 +1,69 @@
-# Maintainer: Ke Liu <spcter119@gmail.com>
+# Maintainer:
+# Contributor: xiretza
+# Contributor: getzze
+# Contributor: Ke Liu
 
-pkgname=python-ffmpeg-python
-_name=${pkgname#python-}
+_module='ffmpeg-python'
+_pkgname="$_module"
+pkgname="python-$_pkgname"
 pkgver=0.2.0
-pkgrel=2
-pkgdesc='Python bindings for FFmpeg - with complex filtering support'
-arch=('any')
-url='https://pypi.org/project/ffmpeg-python'
-license=('Apache2')
-depends=('ffmpeg' 'python' 'python-future')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/kkroening/ffmpeg-python/master/LICENSE")
-md5sums=('1aa943ce1b4e720eec77d3ec9a225724'
-         'SKIP')
+pkgrel=3
+pkgdesc="Python bindings for FFmpeg with complex filtering support"
+arch=(any)
+url=https://github.com/kkroening/ffmpeg-python
+license=('Apache')
+options=(!emptydirs)
+depends=(
+  'ffmpeg'
+  'python-future'
+  'python-graphviz'
+)
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-pytest-runner'
+  'python-setuptools'
+  'python-wheel'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-mock'
+)
+
+provides=(
+  "$pkgname"
+  'python-ffmpeg'
+)
+conflicts=(
+  "${provides[@]}"
+  'python-python-ffmpeg'
+)
+
+source=(
+  "$_pkgname-$pkgver.tar.gz"::"https://github.com/kkroening/ffmpeg-python/archive/$pkgver.tar.gz"
+)
+sha256sums=(
+  '01b6b7640f00585a404194a358358bdf7f4050cedcd99f41416ac8b27222c9f1'
+)
+
+prepare() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  sed -i -e 's/collections.Iterable/collections.abc.Iterable/g' ffmpeg/_run.py
+}
 
 build() {
-	cd "$srcdir/${_name}-$pkgver"
-	python setup.py clean --all
-	python setup.py build
+  cd "$srcdir/$_pkgname-$pkgver"
+  python -m build --no-isolation --wheel
+}
+
+check(){
+  cd "$srcdir/$_pkgname-$pkgver"
+  pytest || true
 }
 
 package() {
-	cd "$srcdir/${_name}-$pkgver"
-	python setup.py install --root "$pkgdir" --skip-build --optimize=1
-	install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$srcdir/$_pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -vDm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
