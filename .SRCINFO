@@ -1,14 +1,14 @@
 pkgbase = pot-translation-appimage
 	pkgdesc = A cross-platform software for text translation.
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://pot.pylogmon.com
 	arch = x86_64
 	license = GPL3
 	depends = fuse2
-	noextract = pot_1.5.0_amd64.AppImage
+	noextract = pot_1.6.0_amd64.AppImage
 	options = !strip
-	source = pot_1.5.0_amd64.AppImage::https://github.com/pot-app/pot-desktop/releases/download/1.5.0/pot_1.5.0_amd64.AppImage
-	sha512sums = ced925a65b3a19383789faf03d85d48f42b6dd2af1d10327f10d03baa65eff9f9ce758363b84fcf57368206552da6b7ed5d3ccd2094e83381bc481fdd93bf2d1
+	source = pot_1.6.0_amd64.AppImage::https://github.com/pot-app/pot-desktop/releases/download/1.6.0/pot_1.6.0_amd64.AppImage
+	sha512sums = 078a32bf38780f2405848655809bbb88cabab7a4483db433627674e45f8ff0c05788a4a82703bffe207f459764bd810eb0fa850acd8df1b3b868678dddd9d1bd
 
 pkgname = pot-translation-appimage
