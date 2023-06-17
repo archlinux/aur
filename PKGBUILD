@@ -19,9 +19,9 @@ source=("https://github.com/msojocs/bilibili-linux/releases/download/v${pkgver}-
         "${_pkgname}.desktop"
 	"LICENSE")
 sha256sums=('eb38b6b85b72bda3b689e424d548761405b14cca60f55508b11bb51a1f379048'
-            'e7fd848643d05bdbaab39df1fd975fed593055328862630f284ad0630a5d793d'
+            '44bed464a4b0ef123b74fca56d066f9b15b805cbe81d419dd768b186b872d279'
             '33cba5d0271d5783f353e60dacc01d2edc6629ca760d35427189e316a48f911f'
-            'e8b7502721d837ee056eeb47fe38cbe23d6a9d6fff8228b976543e33d74ea2e5'
+            '3e7b5ca32d3f29532a7101511006092a746a0433514a718f9f9c7d7342fb13b5'
             '21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468')
 prepare(){
     cd ${srcdir}
