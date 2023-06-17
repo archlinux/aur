@@ -22,14 +22,16 @@ try:
 	import socket
 	import socks
 except ImportError:
-	print("\nError: Dependency failure. Installing packages...")
-	subprocess.check_call([sys.executable, '-m', 'pip', '-r', 'install', 'requirements.txt'])
+	print("╟ Installing dependencies...", end=" ", flush=True)
+	try:
+		subprocess.check_call([sys.executable, '-m', 'pip', '-r', 'install', 'requirements.txt'])
+	except SystemError:
+		print("\nError: Failed to install dependencies."); sys.exit(1)
 	print("Done")
-	sys.exit(1)
 
 ### Global
 
-YOUTUBE_VIDEO_URL = "https://www.youtube.com/watch?v={youtube_id}"
+YOUTUBE_VIDEO_URL = "https://www.youtube.com/watch?v={video_id}"
 YOUTUBE_COMMENTS_AJAX_URL = "https://www.youtube.com/comment_service_ajax"
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
 
@@ -89,37 +91,29 @@ def tor_validate():
 
 ### Output
 
-def out_geoip():
+def status(attempts, accessed):
+	print("\nStatus:", end=" ")
+	messages = {
+		0: "N/A (Insufficient analysis time)",
+		accessed == 0: "Alarming",
+		accessed < attempts: "Questionable",
+		accessed == attempts: "Healthy"
+	}
+	print(messages.get(True, "N/A (Resolution error)"))
+
+def geoip():
 	try:
 		r = tor_session().get("https://api.seeip.org/geoip")
 		r_dict = r.json()
-		print(r_dict["country"] + " — " + r_dict["ip"])
+		print(f"[ {r_dict['country']} — {r_dict['ip']} ]")
 	except Exception:
-		print("(Unknown)")
-
-def out_conclude(att, acc):
-	if att == 0:
-		print("\nInterrupted before granted sufficient time.")
-	elif acc == 0 and att > 0:
-		print("\nSTATUS: ALARMING")
-	elif att > acc:
-		print("\nSTATUS: QUESTIONABLE")
-	elif att == acc and att > 0:
-		print("\nSTATUS: HEALTHY")
+		print("[ N/A ]")
 
 ### Video
 
-def check_session_timeout(timeout_duration):
-	start_time = time.time()
-	time.sleep(timeout_duration)
-	elapsed_time = time.time() - start_time
-	if elapsed_time >= timeout_duration:
-		print("\nError: Session time out. You are encouraged to try again.")
-		sys.exit(1)
-
-def video_init(youtube_id):
-	att, acc, inc = 0, 0, 0
-	url = "https://www.youtube.com/watch?v=" + youtube_id
+def video(video_id):
+	attempts, accessed, analyses = 0, 0, 0
+	url = "https://www.youtube.com/watch?v=" + video_id
 	try:
 		print("╟ Fetching metadata (this may take awhile)...", end=" ", flush=True)
 		while True:
@@ -130,51 +124,50 @@ def video_init(youtube_id):
 				break
 			except IndexError:
 				tor_rotate()
-				check_session_timeout(60)
 		print("Done")
 		if title == "":
 			print("\nThis video isn't available anymore.")
-			sys.exit(1)
+			sys.exit(0)
 		else:
-			print('\nTitle: "' + title + '"' + "\nVideo URL: " + url + "\n\nInterrupt (CTRL+C) to conclude the session\n")
-		while inc < 8:
+			print(f'\nTitle: "{title}"\nVideo URL: {url}\n\nInterrupt (CTRL+C) to conclude the session\n')
+		while analyses < 8:
 			tor_rotate()
 			search_response = tor_session().get("https://www.youtube.com/results?search_query=" + "+".join(title.split())).text
 			if search_response.find('"title":{"runs":[{"text":"') >= 0:
 				if search_response.find(title) >= 0:
-					acc += 1
-					inc += 1
-					print(" ✓ [" + str(inc) + "/8]", end=" ")
+					accessed += 1
+					analyses += 1
+					print(f"[ ✓ ] [ {str(analyses)}/8 ]", end=" ")
 				else:
-					inc += 1
-					print(" ✕ [" + str(inc) + "/8]", end=" ")
-				out_geoip()
-				att += 1
+					analyses += 1
+					print(f"[ ✕ ] [ {str(analyses)}/8 ]", end=" ")
+				geoip()
+				attempts += 1
 			video_response = tor_session().get(url)
 			if re.search(r"googleusercontent.com/videoplayback", video_response.content.decode("utf-8")):
-				print("╰─> ⚠ Throttling Detected")
-		out_conclude(att, acc)
+				print("╰──⚠ Throttling")
+		status(attempts, accessed)
 	except KeyboardInterrupt:
-		out_conclude(att, acc)
+		status(attempts, accessed)
 
 ### Comments
 
-def comments_init():
-	att, acc, ind = 0, 0, 1
-	print('\n"Google - My Activity.html"' + "\nhttps://www.youtube.com/feed/history/comment_history" + "\nInterrupt (CTRL+C) to conclude the session\n")
+def comments():
+	attempts, accessed, index = 0, 0, 1
+	print(f'\n"Google - My Activity.html"\nhttps://www.youtube.com/feed/history/comment_history\nInterrupt (CTRL+C) to conclude the session\n"')
 	try:
 		with io.open("Google - My Activity.html", "r", encoding = "utf-8") as raw_html:
-			html = raw_html.read().replace("\n", "").replace("'", "`")
-			text_list = str(re.findall('<div class="QTGV3c" jsname="r4nke">(.*?)</div><div class="SiEggd">', html))
-			uuid_list = str(re.findall('data-token="(.*?)" data-date', html))
-			url_list = str(re.findall('<div class="iXL6O"><a href="(.*?)" jslog="65086; track:click"', html))
+			clean_html = raw_html.read().replace("\n", "").replace("'", "`")
+			text_list = str(re.findall('<div class="QTGV3c" jsname="r4nke">(.*?)</div><div class="SiEggd">', clean_html))
+			uuid_list = str(re.findall('data-token="(.*?)" data-date', clean_html))
+			url_list = str(re.findall('<div class="iXL6O"><a href="(.*?)" jslog="65086; track:click"', clean_html))
 			for i in range(int(url_list.count("'") / 2)):
-				text = text_list.split("'")[ind]
-				uuid = uuid_list.split("'")[ind]
-				url = url_list.split("'")[ind]
+				text = text_list.split("'")[index]
+				uuid = uuid_list.split("'")[index]
+				url = url_list.split("'")[index]
 				comment_url = url + "&lc=" + uuid
-				ins = 0
-				ind += 2
+				instances = 0
+				index += 2
 				print('\n"' + text.replace("`", "'") + '"')
 				print(url + "\n")
 				for i in range(0, 3, 1):
@@ -184,29 +177,29 @@ def comments_init():
 					with open("temp.json", "r") as json:
 						j = json.read()
 						if j.find(uuid) >= 0:
-							print("✓", end=" ")
-							ins += 1
+							print("[ ✓ ]", end=" ")
+							instances += 1
 						else:
-							print("✕", end=" ")
-							if ins > 0:
-								ins -= 1
-						out_geoip()
+							print("[ ✕ ]", end=" ")
+							if instances > 0:
+								instances -= 1
+						geoip()
 					tor_rotate()
 				if private == False:
-					if ins == 3:
-						acc += 1
+					if instances == 3:
+						accessed += 1
 					attempts += 1
-		out_conclude(att, acc)
+		status(attempts, accessed)
 	except KeyboardInterrupt:
-		out_conclude(att, acc)
+		status(attempts, accessed)
 
-def comments_fetch(youtube_id):
+def comments_fetch(video_id):
 	parser = argparse.ArgumentParser()
 	try:
 		args, unknown = parser.parse_known_args()
 		output = "temp.json"
 		limit = 1000
-		if not youtube_id or not output:
+		if not video_id or not output:
 			parser.print_usage()
 			raise ValueError("Error: Faulty video I.D.")
 		if os.sep in output:
@@ -214,15 +207,14 @@ def comments_fetch(youtube_id):
 				os.makedirs(outdir)
 		count = 0
 		with io.open(output, 'w', encoding='utf8') as fp:
-			for comment in comments_download(youtube_id):
+			for comment in comments_download(video_id):
 				comment_json = json.dumps(comment, ensure_ascii=False)
 				print(comment_json.decode('utf-8') if isinstance(comment_json, bytes) else comment_json, file=fp)
 				count += 1
 				if limit and count >= limit:
 					break
 	except Exception as e:
-		print('Error:', str(e))
-		sys.exit(1)
+		print('Error:', str(e)); sys.exit(1)
 
 def find_value(html, key, num_chars=2, separator='"'):
 	pos_begin = html.find(key) + len(key) + num_chars
@@ -239,12 +231,12 @@ def ajax_request(session, url, params=None, data=None, headers=None, retries=5, 
 		else:
 			time.sleep(sleep)
 
-def comments_download(youtube_id, sleep=.1):
+def comments_download(video_id, sleep=.1):
 	global private
 	private = False
 	session = requests.Session()
 	session.headers['User-Agent'] = USER_AGENT
-	response = session.get(YOUTUBE_VIDEO_URL.format(youtube_id=youtube_id))
+	response = session.get(YOUTUBE_VIDEO_URL.format(video_id=video_id))
 	html = response.text
 	session_token = find_value(html, 'XSRF_TOKEN', 3)
 	session_token = session_token.encode('ascii').decode('unicode-escape')
@@ -308,16 +300,26 @@ def search_dict(partial, search_key):
 
 ### Init
 
+def error_handling(function):
+	def wrapper(*args, **kwargs):
+		try:
+			# Reference to wrapped (decorated) function and its respective arguments
+			return function(*args, **kwargs)
+		except Exception as e:
+			print("\nError:", str(e))
+	return wrapper
+
+@error_handling
 def main():
 	logo = """
  ▄█████████████▄   ▄▄▄▄ .▄▄             ╔▄,             ╓▄▄▄▄▄,    .▄▄
 ████████▀ ███████ ║█▌╜▀▀▐█▌▄▄,  ▄▄▄  .▄▄██╕ ╓▄▄, ▄Q ▄, ▄▄▀▓█▌▀▄,.▄,(██▄▄,  ▄▄▄
-██████▀   ███████ `▓██▄ ▐██▀██(██▀██ ██▀▓█M╫█▀▓█▌▓█╦██╢█▌ ╣█▌╟█▌▐█▌(██▀██∩██▀██∩
+██████▀   ███████ `▓██▄ ▐██▀██(██▀██ ██▀▓█M╫█▀▓█▌▓█╦██╢█▌ ╣█▌╟█▌▐█▌(██▀██∩██▀██
 ███████▄  ███████ .,╙▀██▐█▌▐██ ▄████∩██∩╢█M▓█░║█▌╚██████  ╣█▌╟█▌▐█▌(█▌(██∩██▀▀▀
 ╙████████▄██████╜ ╙█████▐█▌▐██▐██▄██∩██▄██M╚████▌ ██▌▓█▌  ╢█▌╠████▌(██▄██∩▓█▄██
  ╙▀▀▀▀▀▀▀▀▀▀▀▀▀╜    └░└  ╙└ ┘░ '╙░└░  └░'"  '╙░`  '░ `░   `"  ╙░'╙' ╙└╙░   ╙╙░
 
-                             Created by Dane Hobrecht
+                            Created by Dane Hobrecht
 	"""
 	parser = argparse.ArgumentParser(prog="shadowtube", description="A YouTube shadowban detection program.")
 	group = parser.add_mutually_exclusive_group()
@@ -330,18 +332,15 @@ def main():
 		tor_validate()
 		video_url = str(args.video)
 		if "https://www.youtube.com/watch?v=" in video_url:
-			youtube_id = video_url.replace("https://www.youtube.com/watch?v=", "")
+			video_id = video_url.replace("https://www.youtube.com/watch?v=", "")
 		elif "https://youtu.be/" in video_url:
-			youtube_id = video_url.replace("https://youtu.be/", "")
+			video_id = video_url.replace("https://youtu.be/", "")
 		else:
 			print("Invalid input.")
 			return
-		if len(youtube_id) == 11:
-			try:
-				response = tor_session().get("https://www.youtube.com/watch?v=" + youtube_id)
-			except requests.exceptions.SSLError as SSLError:
-				print("Error: Potential red flag. An SSLError occurred:", str(SSLError))
-			video_init(youtube_id)
+		if len(video_id) == 11:
+			response = tor_session().get("https://www.youtube.com/watch?v=" + video_id)
+			video(video_id)
 		else:
 			print("Invalid input.")
 	elif args.comments:
@@ -352,10 +351,9 @@ def main():
 		if confirm in ["y", "yes"]:
 			try:
 				with open("Google - My Activity.html", "r"):
-					comments_init()
+					comments()
 			except FileNotFoundError:
-				print("\nError: File does not exist.")
-				sys.exit(1)
+				print("\nError: File does not exist."); sys.exit(1)
 		elif confirm in ["n", "no", ""]:
 			sys.exit(1)
 		"""
@@ -368,8 +366,7 @@ def main():
 			try:
 				os.system("python shadowtube -h")
 			except OSError:
-				print("\nError: Missing executable.")
-				sys.exit(1)
+				print("\nError: Missing executable."); sys.exit(1)
 
 if __name__ == "__main__":
 	main()

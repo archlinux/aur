@@ -1,7 +1,7 @@
 # Maintainer: Dane Hobrecht <76x5l22l@anonaddy.me>
 
 pkgname=shadowtube
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A YouTube shadowban detection program."
 arch=('any')
