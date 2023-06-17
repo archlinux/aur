@@ -21,6 +21,7 @@ pkgbase = tube-converter
 	depends = python-pyxattr
 	depends = python-websockets
 	depends = yt-dlp
+	depends = python-psutil
 	source = git+https://github.com/NickvisionApps/tubeconverter#tag=2023.6.1
 	b2sums = SKIP
 
