@@ -1,7 +1,7 @@
 # Maintainer: jmcb <joelsgp@protonmail.com>
 pkgname=altirra
 pkgver=4.10
-pkgrel=3
+pkgrel=4
 pkgdesc='An 8-bit Atari computer emulator, on Wine'
 arch=('any')
 url='https://www.virtualdub.org/altirra.html'
@@ -38,7 +38,7 @@ package() {
     install -D -m644 -t "${_dest}/roms/" 5200.ROM ATARIBAS.ROM ATARIOSB.ROM ATARIXL.ROM
     # desktop entry
     install -D -m644 -t "${_share}/applications" ${pkgname}.desktop
-    install -D -m644 -t "${_share}/applications" ${pkgname}.desktop
+    install -D -m644 -t "${_share}/pixmaps" ${pkgname}.png
     install -D -m644 -t "${_share}/mime/packages" application-${pkgname}.xml
     # PATH symlink
     install -d "${_bin}"
