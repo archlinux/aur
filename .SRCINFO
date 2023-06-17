@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-directxmath
 	pkgdesc = All inline SIMD C++ linear algebra library for use in games and graphics apps (mingw-w64)
-	pkgver = dec2022
+	pkgver = 3.1.8
 	pkgrel = 1
 	url = https://go.microsoft.com/fwlink/?LinkID=615560
 	arch = any
