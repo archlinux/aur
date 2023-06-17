@@ -4,7 +4,7 @@
 pkgbase=leftwm
 pkgname=(leftwm leftwm-nonsystemd)
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling window manager for the adventurer"
 arch=('i686' 'x86_64')
 url="https://github.com/leftwm/leftwm"
@@ -18,7 +18,7 @@ optdepends=('bash: themes'
             'lemonbar: light weight bar'
             'polybar: light weight bar')
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('fe10c6ef9f458a889ff0020d348e0185eeba8c606e2fb8ac04a78ac214ce40bc')
+sha256sums=('97a86b2966d20fd56237905fd90692a873e979759831f6030da2db9d5dc11f2b')
 install='readme.install'
 
 prepare() {
