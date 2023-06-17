@@ -1,67 +1,51 @@
 # Maintainer: Aaron Abbott <aabmass at gmail dot com>
-pkgname=neovim-qt-git
-pkgver=v0.2.8.r0.g6e54e82
-pkgrel=1
-pkgdesc="A Qt gui for Neovim (Neovim RPC and GUI using Qt5)."
-arch=('i686' 'x86_64')
-url="https://github.com/equalsraf/neovim-qt"
-license=('custom')
-groups=()
-# not sure which qt5 dependency to add
-depends=('neovim' 'qt5-base' 'msgpack-c' 'libxkbcommon-x11')
-makedepends=('git' 'cmake')
-provides=()
-conflicts=('neovim-qt')
-replaces=()
-backup=()
-options=()
-install=neovim-qt-git.install
-source=("${pkgname}::git+${url}.git")
-noextract=()
-md5sums=('SKIP')
+#
+# Adapted from community repo neovim-qt PKGBUILD
+# https://gitlab.archlinux.org/archlinux/packaging/packages/neovim-qt/-/blob/main/PKGBUILD
 
+pkgname=neovim-qt-git
+pkgver=0.2.16.r207.gb4ca557
+pkgrel=1
+pkgdesc='GUI for Neovim (git version)'
+arch=(x86_64)
+url='https://github.com/equalsraf/neovim-qt'
+license=(ISC)
+depends=(neovim qt5-svg hicolor-icon-theme)
+makedepends=(cmake git ninja)
+checkdepends=(ttf-dejavu xorg-server-xvfb)
+source=("$pkgname::git+$url")
+conflicts=('neovim-qt')
+provides=('neovim-qt')
+b2sums=('SKIP')
+
+# Copied from https://wiki.archlinux.org/title/VCS_package_guidelines#Git
 pkgver() {
   cd "$pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  mkdir -p "${pkgname}/build"
-  cd "${pkgname}/build"
+  cmake \
+    -B build \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_C_FLAGS="$CFLAGS" \
+    -D CMAKE_CXX_FLAGS="$CXXFLAGS" \
+    -D CMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
+    -D CMAKE_INSTALL_LIBDIR=lib \
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D USE_SYSTEM_MSGPACK=on \
+    -D ENABLE_TESTS=on \
+    -G Ninja \
+    -S $pkgname
+  ninja -C build
+}
 
-  cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release \
-    -DUSE_SYSTEM_MSGPACK=ON -DCMAKE_INSTALL_PREFIX=/usr ..
-
-  make ${MAKEFLAGS}
+check() {
+  xvfb-run ninja -v -C build test
 }
 
 package() {
-  cd "${pkgname}/build"
-
-  ## cmake isn't configured to install anything, do it on our own
-  # install the binaries and libs
-  install -D -m755 bin/nvim-qt "${pkgdir}/usr/bin/nvim-qt"
-  install -D -m644 lib/libneovim-qt.a "${pkgdir}/usr/lib/libneovim-qt.a"
-
-  ## install any plugins packaged with nvim-qt
-  # need to cd so find outputs regular paths
-  cd ../src/gui/runtime
-
-  # find .vim and .txt files and install them into pkgdir
-  find . -type f -regex ".*\.\(vim\|txt\)" \
-      -exec install -D -m644 {} ${pkgdir}/usr/share/nvim/runtime/{} \;
-
-  # go back to the previous dir
-  cd -
-
-  ## other files to install
-  # install the custom license
-  install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  
-  # install desktop files
-  install -D -m644 ../src/gui/nvim-qt.desktop "${pkgdir}"/usr/share/applications/nvim-qt.desktop
-  install -D -m644 ../third-party/neovim.png "${pkgdir}"/usr/share/pixmaps/nvim-qt.png
+  DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$pkgname/LICENSE"
 }
