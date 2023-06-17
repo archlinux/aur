@@ -1,4 +1,4 @@
-# Maintainer: TJM <tommy.mairo@gmail.com>
+# Maintainer: TJM <recreation@tjm.moe>
 # Contributor: Yijian Chen <dastudiodirector@gmail.com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Henrik Ronellenfitsch <searinox@web.de>
@@ -6,13 +6,13 @@
 # Contributor: Dario 'Dax' Vilardi <dax [at] deelab [dot] org>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 pkgname=amule-dlp-git
-pkgver=2.3.3.r10607.78a95e54e
+pkgver=2.3.3.r10608.7b3a07ab5
 pkgrel=1
 pkgdesc="An eMule-like client for ed2k p2p network with DLP patch"
 arch=('i686' 'x86_64')
 url="https://github.com/persmule/amule-dlp"
 license=('GPL')
-depends=('wxgtk2' 'gd' 'geoip' 'libupnp' 'crypto++>=6.0.0' 'libsm' 'boost-libs')
+depends=('wxwidgets-gtk3' 'gd' 'geoip' 'libupnp' 'crypto++>=6.0.0' 'libsm' 'boost-libs')
 conflicts=('amule' 'amule-dlp' 'amule-dlp-hg')
 makedepends=('git' 'boost')
 optdepends=('antileech')
@@ -63,7 +63,7 @@ build() {
 	  --enable-mmap \
 	  --enable-ccache \
 	  --with-boost \
-	  --with-wxversion=3.0
+	  --with-wxversion=3.2
 
   make 
 }
