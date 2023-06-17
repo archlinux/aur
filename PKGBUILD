@@ -10,8 +10,9 @@ depends=('java-environment')
 makedepends=('git'
 'java-environment-openjdk<=11')
 _tag=7b6daaf7e552f44888d68dcd8235822dd1c2956e # git rev-parse v${pkgver}
+_tag_bootstrap=fc4cd603d04d08c09fcd83cadb9ceedf776831e7
 source=("$pkgname::git+https://github.com/packwiz/$pkgname.git#tag=$_tag"
-"$pkgname-bootstrap::git+https://github.com/packwiz/$pkgname-bootstrap.git#tag=v0.0.3"
+"$pkgname-bootstrap::git+https://github.com/packwiz/$pkgname-bootstrap.git#tag=$_tag_bootstrap"
 "packwiz-installer.sh"
 "packwiz-installer-bootstrap.sh")
 sha256sums=('SKIP'
