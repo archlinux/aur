@@ -3,23 +3,25 @@
 pkgbase='sublime-music'
 pkgname=('sublime-music')
 _module='sublime_music'
-pkgver='0.11.16'
-pkgrel=4
+pkgver='0.12.0'
+pkgrel=1
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Built using Python and GTK+.'
 url='https://sublimemusic.app'
 depends=(
     'python'
     'python-bleach'
+    'python-bottle'
     'python-dataclasses-json'
     'python-dateutil'
     'python-deepdiff'
-    'python-fuzzywuzzy'
     'python-gobject'
     'python-levenshtein'
     'python-mpv'
     'python-peewee'
+    'python-pychromecast'
     'python-requests'
     'python-semver'
+    'python-thefuzz'
 )
 optdepends=(
     'libnm-glib: for changing the Subsonic server address depending on what SSID you are connected to'
@@ -29,27 +31,29 @@ optdepends=(
     'python-bottle: support for casting downloaded files to Chromecasts on the same LAN'
 )
 makedepends=(
-    'python-setuptools'
+    'python-build'
+    'python-flit-core'
+    'python-installer'
     'python-sphinx'
 )
 license=('GPL3')
 arch=('any')
 source=(
-    'https://files.pythonhosted.org/packages/source/s/sublime-music/sublime_music-0.11.16.tar.gz'
-    'https://gitlab.com/sumner/sublime-music/-/archive/v0.11.16/sublime-music-v0.11.16.tar.gz'
+    'https://files.pythonhosted.org/packages/source/s/sublime-music/sublime_music-0.12.0.tar.gz'
+    'https://github.com/sublime-music/sublime-music/archive/refs/tags/v0.12.0.tar.gz'
 )
-sha256sums=('d798fa43b8bb8ebe9a0714927cc185283ae212bf52a9391ebedba8f22fde88e0'
-            '84165af03c7e9ae3a54801cd5b2903ed26a5fed5b35e4b561b0f8d1f6b2c5832')
+sha256sums=('458bacab6be5c926852d4a43ce675b5e767210287844c6fce921832e263db3c0'
+            'faaf102fd790ecea3d966c9d6e305567c734a1df30eaa6bbdedf93d863bc7435')
 
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     pushd "${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     # Move all of the package data resources to ${pkgdir}/usr/share/sublime-music
     data_dir=${pkgdir}/usr/share/sublime-music
@@ -65,7 +69,7 @@ package() {
 
     popd
 
-    pushd "sublime-music-v${pkgver}"
+    pushd "sublime-music-${pkgver}"
 
     desktop-file-install --dir=${pkgdir}/usr/share/applications sublime-music.desktop
     install -Dm644 sublime-music.metainfo.xml "${pkgdir}/usr/share/metainfo/sublime-music.metainfo.xml"

@@ -7,16 +7,18 @@ DESCRIPTION="A native Subsonic/Airsonic/*sonic client for Linux. Built using Pyt
 URL=https://sublimemusic.app
 DEPENDS=(
     python-bleach
+    python-bottle
     python-dataclasses-json
     python-dateutil
     python-deepdiff
-    python-fuzzywuzzy
     python-gobject
     python-levenshtein
     python-mpv
     python-peewee
+    python-pychromecast
     python-requests
     python-semver
+    python-thefuzz
 )
 LICENSE='GPL3'
 ADDITIONAL=
@@ -32,7 +34,7 @@ fi
 
 SRCS=(
     https://files.pythonhosted.org/packages/source/${PROJ_NAME:0:1}/${PROJ_NAME}/${PKG_NAME}-$1.tar.gz
-    https://gitlab.com/sumner/sublime-music/-/archive/v$1/sublime-music-v$1.tar.gz
+    https://github.com/sublime-music/sublime-music/archive/refs/tags/v$1.tar.gz
 )
 
 printf '' > PKGBUILD
@@ -62,7 +64,9 @@ optdepends=(
     'python-bottle: support for casting downloaded files to Chromecasts on the same LAN'
 )
 makedepends=(
-    'python-setuptools'
+    'python-build'
+    'python-flit-core'
+    'python-installer'
     'python-sphinx'
 )
 license=('${LICENSE}')
@@ -80,12 +84,12 @@ ${ADDITIONAL}
 
 build() {
     cd \"\${srcdir}/\${_module}-\${pkgver}\"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     pushd \"\${_module}-\${pkgver}\"
-    python setup.py install --root=\"\${pkgdir}\" --optimize=1 --skip-build
+    python -m installer --destdir=\"\${pkgdir}\" dist/*.whl
 
     # Move all of the package data resources to \${pkgdir}/usr/share/sublime-music
     data_dir=\${pkgdir}/usr/share/sublime-music
@@ -101,7 +105,7 @@ package() {
 
     popd
 
-    pushd \"${AUR_NAME}-v\${pkgver}\"
+    pushd \"${AUR_NAME}-\${pkgver}\"
 
     desktop-file-install --dir=\${pkgdir}/usr/share/applications sublime-music.desktop
     install -Dm644 sublime-music.metainfo.xml \"\${pkgdir}/usr/share/metainfo/sublime-music.metainfo.xml\"
