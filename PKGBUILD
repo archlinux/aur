@@ -1,13 +1,13 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r55.c1edfc1
+pkgver=r57.b25a2d3
 pkgrel=1
 pkgdesc="A custom configs tool for sk-holoiso"
 arch=('any')
 url="https://github.com/honjow/sk-holoiso-config"
 license=('MIT')
 makedepends=('git')
-depends=('python-gobject' 'gtk3')
+depends=('python-gobject' 'gtk3' 'openssl')
 provides=(sk-holoiso-config)
 conflicts=(sk-holoiso-config)
 source=("git+$url")

@@ -54,6 +54,10 @@ post_upgrade_or_install() {
         echo "" | tee /etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules
     fi
 
+    if [[ "${DEVICENAME}" != "Jupiter 1" ]]; then
+        sudo systemctl disable --now jupiter-controller-update.service
+    fi
+
 
 }
 
