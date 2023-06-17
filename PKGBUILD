@@ -15,13 +15,13 @@ pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Loader'
 license=(Apache-2.0)
-makedepends=(make cmake python python-lxml libx11 libxrandr wayland vulkan-headers-git git ninja glibc gcc gcc-libs)
+makedepends=(make cmake python python-lxml libx11 libxrandr wayland vulkan-headers git ninja)
 depends=(glibc)
 optdepends=('vulkan-driver: packaged vulkan driver')
 conflicts=(vulkan-icd-loader)
 provides=(vulkan-icd-loader libvulkan.so vulkan-icd-loader-git)
 source=(git+https://github.com/KhronosGroup/Vulkan-Loader.git)
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver(){
  cd ${srcdir}/Vulkan-Loader
@@ -51,12 +51,10 @@ build(){
   -DCMAKE_INSTALL_DATADIR=/share \
   -DCMAKE_SKIP_RPATH=True \
   -DBUILD_TESTS=OFF \
-  -DINSTALL_TESTS=OFF \
   -DBUILD_WSI_XCB_SUPPORT=On \
   -DBUILD_WSI_XLIB_SUPPORT=On \
   -DBUILD_WSI_WAYLAND_SUPPORT=On \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DUSE_CCACHE=OFF
+  -DCMAKE_BUILD_TYPE=Release
 
   ninja -C build_64
 }
