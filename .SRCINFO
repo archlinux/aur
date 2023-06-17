@@ -1,0 +1,16 @@
+pkgbase = ls-lint-git
+	pkgdesc = directory and filename linter
+	pkgver = 2.0.0.r22.a163b45
+	pkgrel = 1
+	url = https://github.com/loeffel-io/ls-lint
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go-pie
+	depends = glibc
+	provides = ls-lint
+	conflicts = ls-lint
+	source = ls-lint.git::git+https://github.com/loeffel-io/ls-lint
+	sha512sums = SKIP
+
+pkgname = ls-lint-git
