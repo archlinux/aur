@@ -1,0 +1,13 @@
+pkgbase = fastr-jdk20-bin
+	pkgdesc = GraalVM-based, high-performance implementation of the R language (Java 20 version)
+	pkgver = 23.0.0
+	pkgrel = 1
+	url = https://github.com/oracle/fastr
+	arch = x86_64
+	license = GPL3
+	depends = jdk20-graalvm-bin
+	depends = zlib
+	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/r-installable-ce-java20-linux-amd64-23.0.0.jar
+	sha256sums = 14d173c29f6c8fd1a843f38b07e630fe25135ce9b88b64dcd2a1a28df37df127
+
+pkgname = fastr-jdk20-bin
