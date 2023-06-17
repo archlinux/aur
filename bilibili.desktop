@@ -14,5 +14,4 @@ Name[zh_CN]=哔哩哔哩
 Name[zh_TW]=嗶哩嗶哩
 StartupNotify=true
 Terminal=false
-TerminalOptions=
 Type=Application
