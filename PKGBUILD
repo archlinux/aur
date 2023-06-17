@@ -3,7 +3,7 @@
 
 _gemname=fog-google
 pkgname=ruby-$_gemname
-pkgver=1.21.0
+pkgver=1.21.1
 pkgrel=1
 pkgdesc='This library can be used as a module for fog or as standalone provider to use the Google in applications.'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby-addressable ruby-fog-core ruby-fog-json ruby-fog-xml ruby-google-a
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('22d26064a2ed2e3044287a6a4b085329fd947a893c636853e0a73dc202c1ece8')
+sha256sums=('c815526481591a23370c93b1f70360f9e131595f945c3ef8462b2296ec3efdd9')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
