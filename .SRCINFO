@@ -1,12 +1,12 @@
 pkgbase = trurl
 	pkgdesc = Command line tool for URL parsing and manipulation
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://github.com/curl/trurl
 	arch = x86_64
 	license = custom
 	depends = curl
-	source = https://github.com/curl/trurl/archive/refs/tags/trurl-0.7.tar.gz
-	sha256sums = 11616a4c3d255ff3347cb8fc65ea4f890526f327800ec556d78e88881e2cbfa7
+	source = https://github.com/curl/trurl/archive/refs/tags/trurl-0.8.tar.gz
+	sha256sums = 7baccde1620062cf8c670121125480269b41bdc81bd4015b7aabe33debb022c6
 
 pkgname = trurl

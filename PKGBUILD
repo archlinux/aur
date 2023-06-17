@@ -4,7 +4,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=trurl
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Command line tool for URL parsing and manipulation"
 arch=(x86_64)
@@ -12,7 +12,7 @@ url="https://github.com/curl/trurl"
 license=(custom)
 depends=(curl)
 source=("https://github.com/curl/$pkgname/archive/refs/tags/$pkgname-$pkgver.tar.gz")
-sha256sums=('11616a4c3d255ff3347cb8fc65ea4f890526f327800ec556d78e88881e2cbfa7')
+sha256sums=('7baccde1620062cf8c670121125480269b41bdc81bd4015b7aabe33debb022c6')
 
 
 build() {
