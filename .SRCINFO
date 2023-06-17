@@ -1,0 +1,13 @@
+pkgbase = php-uv
+	pkgdesc = PHP libuv wrapper
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/amphp/ext-uv
+	arch = any
+	license = PHP
+	depends = php
+	backup = etc/php/conf.d/uv.ini
+	source = http://pecl.php.net/get/uv-0.3.0.tgz
+	sha512sums = f428ee2b75d82f5b841ab11bc388e8ea3552fd110ce278d8950ace74b2a932958b7698446fa13c46ec70a73bd3a29b9fe5035131174580d2c7d0e112fe771940
+
+pkgname = php-uv
