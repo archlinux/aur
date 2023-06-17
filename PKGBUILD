@@ -3,7 +3,7 @@
 # Upstream: Bitwig GmbH <support@bitwig.com>
 
 pkgname='bitwig-studio-earlyaccess'
-_pkgver='5.0_beta_10'
+_pkgver='5.0_beta_11'
 pkgver=${_pkgver}
 pkgrel='1'
 pkgdesc='Digital audio workstation for music production, remixing and live performance - early access version'
@@ -16,13 +16,13 @@ provides=('bitwig-studio-earlyaccess')
 replaces=()
 conflicts=('bitwig-studio-legacy' 'bitwig-8-track' 'bitwig-studio')
 options=(!strip)
-source=("https://downloads.bitwig.com/5.0%20Beta%2010/bitwig-studio-5.0-beta-10.deb")
+source=("https://downloads.bitwig.com/5.0%20Beta%2011/bitwig-studio-5.0-beta-11.deb")
 #source=("https://downloads.bitwig.com/${_pkgver}/bitwig-studio-${_pkgver}.deb")
 
 #beta source=("https://downloads.bitwig.com/beta/4.1/bitwig-studio-${_pkgver}.deb")
 #earlyaccess source=("https://downloads.bitwig.com/beta/${_pkgver}/bitwig-studio-${_pkgver}.deb")
 
-sha256sums=('b4d82b927d01d5d6ef307b5d9262531e48a574048119d806ad0e752008b9a0ed')
+sha256sums=('66fc591f4a5e9f36a11f8a9d438f6a0a4866b2ba206ea56c78759cadd8572dda')
 
 package() {
   # Unpack package contents
