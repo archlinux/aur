@@ -1,4 +1,3 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 # Contributor: Pierre-Marie de Rodat <pmderodat on #ada at irc.libera.chat>
@@ -15,8 +14,8 @@ arch=(i686 x86_64)
 url=https://github.com/AdaCore/gprbuild/
 license=(GPL3 custom)
 
-depends=(xmlada)
-makedepends=(gprbuild gcc-ada)
+depends=(gcc-ada xmlada)
+makedepends=(gprbuild)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gprbuild-$pkgver-20230324-1649D-src.tar.gz
         https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gprconfig-kb-$pkgver-20230324-16644-src.tar.gz
