@@ -2,7 +2,7 @@
 
 pkgname=ravenna-alsa-daemon
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A daemon for ALSA RAVENNA/AES67 Driver"
 url="https://github.com/bondagit/ravenna-alsa-lkm"
 license=("custom")
@@ -21,5 +21,6 @@ package() {
   cp -r $srcdir/ravenna-alsa-lkm/Butler/* $pkgdir/opt/ravenna-alsa/
   install -Dm755 ravenna_start.sh $pkgdir/opt/ravenna-alsa/ravenna_start.sh
   chmod +x $pkgdir/opt/ravenna-alsa/Merging_RAVENNA_Daemon
+  chmod 777 $pkgdir/opt/ravenna-alsa/merging_ravenna_daemon.conf
   echo "web_app_path=/opt/ravenna-alsa/webapp/advanced/" >> $pkgdir/opt/ravenna-alsa/merging_ravenna_daemon.conf
 }
