@@ -30,7 +30,7 @@ package() {
 	mkdir -p ${pkgdir}/usr/lib/systemd/system/
 
 	mv webby ${pkgdir}/usr/bin/
-	cp webby.service ${pkgdir}/etc/systemd/system/
+	cp webby.service ${pkgdir}/usr/lib/systemd/system/
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
