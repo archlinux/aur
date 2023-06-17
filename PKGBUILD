@@ -1,45 +1,56 @@
+# Maintainer: 
+# Contributor: slact
 pkgname=coreboot-utils
-pkgver=4.17
+pkgver=4.20.1
 pkgrel=1
-pkgdesc='Tools and utilities to work with coreboot firmware'
-url='https://www.coreboot.org/'
-license=(GPL)
-arch=(i686 x86_64)
-depends=(pciutils)
-optdepends=("python: me_cleaner support")
-provides=(ectool)
-conflicts=("coreboot-utils-git")
-makedepends=()
-source=("coreboot.${pkgver}.tar.gz::https://coreboot.org/releases/coreboot-${pkgver}.tar.xz")
-sha256sums=('95da11d1c6a450385101a68799258a398ce965f4e46cce6fe8d5ebd74e50c125')
+pkgdesc="Tools and utilities to work with coreboot firmware"
+url="https://www.coreboot.org/"
+license=('GPL2')
+arch=('x86_64')
+depends=('glibc' 'pciutils')
+optdepends=('python: me_cleaner support')
+source=("https://coreboot.org/releases/coreboot-$pkgver.tar.xz"{,.sig})
+sha256sums=('b41539a8c2eab2fec752157eb4acbd0e2a637a7203530c12e66b43a5c3c3a931'
+            'SKIP')
+validpgpkeys=('574CE6F6855CFDEB7D368E9D19796C2B3E4F7DF7') # Martin Roth (coreboot developer) <martin@coreboot.org>
+
+BUILD_AUTOPORT=y
+
+if [ "$BUILD_AUTOPORT" == y ]; then
+  makedepends=("${makedepends[@]}" go)
+fi
 
 build() {
-  cd coreboot-${pkgver}/util
-  export CFLAGS="$CFLAGS -Wno-error"
-  make -C cbfstool
-  make -C ifdtool
-  make -C nvramtool
-  make -C inteltool
-  make -C intelmetool
-  make -C superiotool
-  make -C cbmem
-  make -C ectool
-  make -C intelvbttool
+  cd "coreboot-$pkgver"
+
+  for tool in cbfstool cbmem ectool ifdtool intelmetool inteltool intelvbttool \
+    nvramtool superiotool; do
+    make -C "util/${tool}"
+  done
+
   if [ "$BUILD_AUTOPORT" == y ]; then
-	  cd autoport
-	  go build
+    cd util/autoport
+    go build
   fi
 }
 
 package() {
-  cd coreboot-${pkgver}/util
-  install -m755 -d "$pkgdir/usr/bin" "$pkgdir/usr/share/man/man8"
-  install -m755 -t "$pkgdir/usr/bin" cbfstool/{cbfstool,rmodtool} ifdtool/ifdtool nvramtool/nvramtool inteltool/inteltool superiotool/superiotool cbmem/cbmem ectool/ectool intelmetool/intelmetool intelvbttool/intelvbttool
-  install -m755 "me_cleaner/me_cleaner.py" "$pkgdir/usr/bin/me_cleaner"
-  if [ "$BUILD_AUTOPORT" == y ]; then
-	  install -m755 -t "$pkgdir/usr/bin" autoport/autoport
-  fi
-  install -m644 -t "$pkgdir"/usr/share/man/man8 inteltool/inteltool.8
+  cd "coreboot-$pkgver"
 
-  install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  for tool in cbfstool cbmem ectool ifdtool intelmetool inteltool intelvbttool \
+    nvramtool superiotool; do
+    install -Dm755 "util/${tool}/${tool}" -t "$pkgdir/usr/bin/"
+  done
+
+  install -m755 util/cbfstool/rmodtool -t "$pkgdir/usr/bin/"
+  install -m755 util/me_cleaner/me_cleaner.py "$pkgdir/usr/bin/me_cleaner"
+
+  if [ "$BUILD_AUTOPORT" == y ]; then
+    install -m755 util/autoport/autoport -t "$pkgdir/usr/bin/"
+  fi
+
+  install -Dm644 util/inteltool/inteltool.8 -t "$pkgdir/usr/share/man/man8/"
+  install -m644 util/nvramtool/cli/nvramtool.8 -t "$pkgdir/usr/share/man/man8/"
+  install -m644 util/superiotool/superiotool.8 -t "$pkgdir/usr/share/man/man8/"
+  install -Dm644 util/me_cleaner/man/me_cleaner.1 -t "$pkgdir/usr/share/man/man1/"
 }

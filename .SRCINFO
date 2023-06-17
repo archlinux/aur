@@ -1,16 +1,18 @@
 pkgbase = coreboot-utils
 	pkgdesc = Tools and utilities to work with coreboot firmware
-	pkgver = 4.17
+	pkgver = 4.20.1
 	pkgrel = 1
 	url = https://www.coreboot.org/
-	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
+	makedepends = go
+	depends = glibc
 	depends = pciutils
 	optdepends = python: me_cleaner support
-	provides = ectool
-	conflicts = coreboot-utils-git
-	source = coreboot.4.17.tar.gz::https://coreboot.org/releases/coreboot-4.17.tar.xz
-	sha256sums = 95da11d1c6a450385101a68799258a398ce965f4e46cce6fe8d5ebd74e50c125
+	source = https://coreboot.org/releases/coreboot-4.20.1.tar.xz
+	source = https://coreboot.org/releases/coreboot-4.20.1.tar.xz.sig
+	validpgpkeys = 574CE6F6855CFDEB7D368E9D19796C2B3E4F7DF7
+	sha256sums = b41539a8c2eab2fec752157eb4acbd0e2a637a7203530c12e66b43a5c3c3a931
+	sha256sums = SKIP
 
 pkgname = coreboot-utils
