@@ -2,7 +2,7 @@
 # Contributor: Francesco La Camera <fm@lacamera.org>
 pkgname=neovim-nightly
 pkgver=0.10.0.dev.20230525
-pkgrel=1
+pkgrel=2
 pkgdesc='hyperextensible Vim-based text editor'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64' 'pentium4')
 url='https://github.com/neovim/neovim/releases/tag/nightly'
@@ -16,13 +16,73 @@ optdepends=('python2-neovim: Python 2 provider'
             'xclip: X11 clipboard integration'
             'xsel: X11 clipboard integration'
             'wl-clipboard: wayland clipboard integration')
-source=("$pkgname-$pkgver::https://github.com/neovim/neovim/archive/refs/tags/nightly.tar.gz")
-provides=("neovim=$pkgver" 'vim-plugin-runtime')
+
+# get latest version
+_neovim_version() {
+  if [ -e "$srcdir/neovim-nightly/CMakeLists.txt" ] ; then
+    _regex_vmaj='^set\(NVIM_VERSION_MAJOR ([0-9]+)\)$'
+    _regex_vmin='^set\(NVIM_VERSION_MINOR ([0-9]+)\)$'
+    _regex_vpat='^set\(NVIM_VERSION_PATCH ([0-9]+)\)$'
+
+    _neovim_version_major=$(
+      grep -E "$_regex_vmaj" "$srcdir/neovim-nightly/CMakeLists.txt" \
+        | sed -E "s@$_regex_vmaj@\1@"
+    )
+    _neovim_version_minor=$(
+      grep -E "$_regex_vmin" "$srcdir/neovim-nightly/CMakeLists.txt" \
+        | sed -E "s@$_regex_vmin@\1@"
+    )
+    _neovim_version_patch=$(
+      grep -E "$_regex_vpat" "$srcdir/neovim-nightly/CMakeLists.txt" \
+        | sed -E "s@$_regex_vpat@\1@"
+    )
+  else
+    _neovim_version_major=0
+    _neovim_version_minor=10
+    _neovim_version_patch=0
+  fi
+
+  printf "%s.%s.%s" \
+    "$_neovim_version_major" \
+    "$_neovim_version_minor" \
+    "$_neovim_version_patch"
+}
+
+_pkgver() {
+  _response=$(
+    curl 'https://api.github.com/repos/neovim/neovim/releases?per_page=1&page=1' -s \
+      | grep -E -A 6 '^\s+"tag_name": "nightly".*$'
+  )
+
+  _regex_date='^\s+"created_at": "([0-9]+-[0-9]+-[0-9]+)T.*".*$'
+  _date=$(
+    echo "$_response" \
+      | grep -E "$_regex_date" \
+      | sed -E "s@$_regex_date@\1@; s@-@@g"
+    )
+
+  _regex_commit='^\s+"target_commitish": "([^"]+)".*$'
+  _commit=$(
+    echo "$_response" \
+      | grep -E "$_regex_commit" \
+      | sed -E "s@$_regex_commit@\1@"
+  )
+
+  _neovim_version=$(_neovim_version)
+
+  printf '%s.dev.%s.g%s' \
+    "$_neovim_version" \
+    "$_date" \
+    "${_commit:0:7}"
+}
+_pkgver=$(_pkgver)
+source=("$pkgname-$_pkgver::https://github.com/neovim/neovim/archive/refs/tags/nightly.tar.gz")
+provides=("neovim=$_pkgver" 'vim-plugin-runtime')
 conflicts=('neovim')
 sha256sums=('SKIP')
 
 pkgver() {
-	printf "0.10.0.dev.%s" "$(date +%Y%m%d)"	
+	printf "$_pkgver"
 }
 
 build() {
