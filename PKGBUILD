@@ -17,7 +17,7 @@ _url=https://gitlab.archlinux.org/tallero/${_pkgbase}
 url="https://gitlab.archlinux.org/archlinux/archiso/-/issues/156"
 depends=('arch-install-scripts' 'bash' 'dosfstools' 'e2fsprogs' 'erofs-utils'
 'libarchive' 'libisoburn' 'mtools' 'squashfs-tools' 'cryptsetup-nested-cryptkey')
-makedepends=('git')
+makedepends=('git' 'python-docutils')
 checkdepends=('shellcheck')
 provides=("${_pkgbase}")
 provides+=("${_pkgbase}-${_variant}")

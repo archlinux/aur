@@ -7,6 +7,7 @@ pkgbase = archiso-encryption-git
 	license = GPL3
 	checkdepends = shellcheck
 	makedepends = git
+	makedepends = python-docutils
 	depends = arch-install-scripts
 	depends = bash
 	depends = dosfstools
