@@ -8,7 +8,7 @@
 pkgname=sd-ssh-agent
 _pkgname=openssh
 pkgver=9.3p1
-pkgrel=2
+pkgrel=3
 pkgdesc="Openssh ssh-agent with support for systemd socket-based activation"
 arch=('x86_64')
 url='https://www.openssh.com/portable.html'

@@ -1,7 +1,7 @@
 pkgbase = sd-ssh-agent
 	pkgdesc = Openssh ssh-agent with support for systemd socket-based activation
 	pkgver = 9.3p1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.openssh.com/portable.html
 	arch = x86_64
 	license = custom:BSD
