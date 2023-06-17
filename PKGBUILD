@@ -1,3 +1,4 @@
+# Maintainer:
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=wxwidgets-dev-light
@@ -7,7 +8,7 @@ pkgname=(
   'wxcommon-dev-light'
 )
 pkgver=3.2.2.1
-_shortver=$(sed -E -e 's@^([0-9]+\.[0-9]+).*$@\1@' <(echo $pkgver))
+_shortver=$(printf '%s' "$pkgver" | sed -E -e 's@^([0-9]+\.[0-9]+).*$@\1@')
 pkgrel=1
 pkgdesc="wxWidgets suite for Base, GTK2 and GTK3 toolkits . Development branch (GNOME/GStreamer free!)"
 arch=('x86_64')
@@ -79,14 +80,16 @@ prepare() {
     git -c protocol.file.allow=always submodule update ${submodule}
   done
 
-  for p in "$srcdir"/*.patch ; do
-    echo "Applying patch: ${p##*/}"
-    patch -Np1 -i "$p"
+  for patch in "$srcdir"/*.patch ; do
+    if [ -f "$patch" ] ; then
+      printf 'Applying patch: %s\n' "${patch##*/}"
+      patch -Np1 -F100 -i "$patch"
+    fi
   done
 }
 
 build() {
-  echo "Build WxBASE"
+  printf 'Build WxBASE\n'
   cd "$srcdir/build-base"
   ../wxwidgets/configure \
     --prefix=/usr \
@@ -97,7 +100,7 @@ build() {
   make
   make -C ../wxwidgets/locale allmo
 
-  echo "Build WxGTK2"
+  printf 'Build WxGTK2\n'
   cd "$srcdir/build-gtk2"
   ../wxwidgets/configure \
     --prefix=/usr \
@@ -113,7 +116,7 @@ build() {
   make
   make -C ../wxwidgets/locale allmo
 
-  echo "Build WxGTK3"
+  printf 'Build WxGTK3\n'
   cd "$srcdir/build-gtk3"
   ../wxwidgets/configure \
     --prefix=/usr \
