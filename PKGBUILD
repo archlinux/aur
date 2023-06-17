@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=jamesdsp-git
-_app_id=me.timschneeberger.jdsp4linux.pipewire
-pkgver=2.4.r150.g9691df5
+_app_id=me.timschneeberger.jdsp4linux
+pkgver=2.5.1.r0.g8352d51
 pkgrel=1
 pkgdesc="An audio effect processor for PipeWire clients"
 arch=('x86_64')
