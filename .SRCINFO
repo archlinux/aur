@@ -1,4 +1,5 @@
 pkgbase = pico-sdk-git
+	pkgdesc = Raspberry Pi Pico C SDK
 	pkgver = 1.5.1.r0.g6a7db34
 	pkgrel = 2
 	url = https://www.raspberrypi.com/documentation/pico-sdk/
