@@ -1,6 +1,6 @@
 pkgbase = pico-sdk-git
 	pkgver = 1.5.1.r0.g6a7db34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.raspberrypi.com/documentation/pico-sdk/
 	arch = x86_64
 	license = BSD-3-Clause
