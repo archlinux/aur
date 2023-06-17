@@ -1,5 +1,5 @@
---- nginx-1.22.0/src/http/ngx_http_header_filter_module.c	2022-05-23 20:59:19.000000000 -0300
-+++ nginx-1.22.0_custom/src/http/ngx_http_header_filter_module.c	2022-05-27 14:54:19.000000000 -0300
+--- nginx-1.24.0/src/http/ngx_http_header_filter_module.c	2023-04-10 22:45:34.000000000 -0300
++++ nginx-1.24.0_custom/src/http/ngx_http_header_filter_module.c	2023-06-15 13:59:39.000000000 -0300
 @@ -46,9 +46,7 @@
  };
  

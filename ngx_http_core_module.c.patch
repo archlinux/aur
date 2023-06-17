@@ -1,5 +1,5 @@
---- nginx-1.22.0/src/http/ngx_http_core_module.c	2022-05-23 20:59:19.000000000 -0300
-+++ nginx-1.22.0_custom/src/http/ngx_http_core_module.c	2022-05-27 14:45:44.000000000 -0300
+--- nginx-1.24.0/src/http/ngx_http_core_module.c	2023-04-10 22:45:34.000000000 -0300
++++ nginx-1.24.0_custom/src/http/ngx_http_core_module.c	2023-06-15 13:47:41.000000000 -0300
 @@ -124,7 +124,6 @@
  static ngx_conf_enum_t  ngx_http_core_server_tokens[] = {
      { ngx_string("off"), NGX_HTTP_SERVER_TOKENS_OFF },
@@ -8,7 +8,7 @@
      { ngx_null_string, 0 }
  };
  
-@@ -3809,7 +3808,7 @@
+@@ -3898,7 +3897,7 @@
      ngx_conf_merge_value(conf->etag, prev->etag, 1);
  
      ngx_conf_merge_uint_value(conf->server_tokens, prev->server_tokens,

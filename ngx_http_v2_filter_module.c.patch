@@ -1,11 +1,11 @@
---- nginx-1.22.0/src/http/v2/ngx_http_v2_filter_module.c	2022-05-23 20:59:19.000000000 -0300
-+++ nginx-1.22.0_custom/src/http/v2/ngx_http_v2_filter_module.c	2022-05-27 15:16:55.000000000 -0300
+--- nginx-1.24.0/src/http/v2/ngx_http_v2_filter_module.c	2023-04-10 22:45:34.000000000 -0300
++++ nginx-1.24.0_custom/src/http/v2/ngx_http_v2_filter_module.c	2023-06-15 14:22:14.000000000 -0300
 @@ -148,19 +148,12 @@
      ngx_http_core_srv_conf_t  *cscf;
      u_char                     addr[NGX_SOCKADDR_STRLEN];
  
 -    static const u_char nginx[5] = "\x84\xaa\x63\x55\xe7";
-+    static const u_char nginx[3] = "\x82\xf0\x8f"; // ws
++    static const u_char nginx[3] = "\x82\xf0\x8f";
  #if (NGX_HTTP_GZIP)
      static const u_char accept_encoding[12] =
          "\x8b\x84\x84\x2d\x69\x5b\x05\x44\x3c\x86\xaa\x6f";
@@ -37,12 +37,12 @@
 -            len += 1 + sizeof(nginx);
 -        }
 +    if ( (r->headers_out.server == NULL) &&
-+         (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) ) {
-+        len += 1 + sizeof(nginx);	
++         (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) ){
++        len += 1 + sizeof(nginx);
      }
  
      if (r->headers_out.date == NULL) {
-@@ -463,47 +448,14 @@
+@@ -463,47 +448,15 @@
          pos = ngx_sprintf(pos, "%03ui", r->headers_out.status);
      }
  
@@ -57,13 +57,13 @@
 -            ngx_log_debug1(NGX_LOG_DEBUG_HTTP, fc->log, 0,
 -                           "http2 output header: \"server: %s\"",
 -                           NGINX_VER_BUILD);
--
++    if ( (r->headers_out.server == NULL) &&
++         (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) ) {
+ 
 -        } else {
 -            ngx_log_debug0(NGX_LOG_DEBUG_HTTP, fc->log, 0,
 -                           "http2 output header: \"server: nginx\"");
 -        }
-+    if ( (r->headers_out.server == NULL) &&
-+         (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) ) {
 +        ngx_log_debug0(NGX_LOG_DEBUG_HTTP, fc->log, 0,
 +                       "http2 output header: \"server: ws\"");
  

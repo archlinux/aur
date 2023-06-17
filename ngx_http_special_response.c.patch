@@ -1,5 +1,5 @@
---- nginx-1.22.0/src/http/ngx_http_special_response.c	2022-05-23 20:59:19.000000000 -0300
-+++ nginx-1.22.0_custom/src/http/ngx_http_special_response.c	2022-05-27 16:37:06.258659125 -0300
+--- nginx-1.24.0/src/http/ngx_http_special_response.c	2023-04-10 22:45:34.000000000 -0300
++++ nginx-1.24.0_custom/src/http/ngx_http_special_response.c	2023-06-17 12:08:39.692428310 -0300
 @@ -18,22 +18,8 @@
  static ngx_int_t ngx_http_send_refresh(ngx_http_request_t *r);
  
@@ -20,11 +20,11 @@
 -
  static u_char ngx_http_error_tail[] =
 -"<hr><center>nginx</center>" CRLF
-+"<hr><center>ws</center>" CRLF
++"<hr>" CRLF
  "</body>" CRLF
  "</html>" CRLF
  ;
-@@ -679,18 +665,8 @@
+@@ -680,18 +666,8 @@
      ngx_uint_t    msie_padding;
      ngx_chain_t   out[3];
  

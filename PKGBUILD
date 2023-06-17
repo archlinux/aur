@@ -1,15 +1,16 @@
 # Maintainer: Fabiano Furtado <fusca14 <at> gmail <dot> com>
-# Date: 2022-05-30
+# Date: 2023-06-17
 # Description: patches to remove the HTTP server header
 # Changes:
-#   * "ServerTokens" default value = "off"
-#   * "ServerTokens off;": "server header" removed from webserver's header response
-#   * "ServerTokens on;": default header "Server: ws"
+#   * "server_tokens" default value = "off"
+#   * "server_tokens off;": "server header" removed from http header response
+#   * "server_tokens on;": default header "Server: ws"
+#   * "server_tokens build;" is no longer valid
 
 pkgbase=nginx-without-server-header
 _pkgbase=nginx
 pkgname=(nginx-without-server-header)
-pkgver=1.22.1
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server without server header'
 arch=(x86_64)
@@ -39,14 +40,14 @@ source=($url/download/nginx-$pkgver.tar.gz
         ngx_http_v2_filter_module.c.patch)
 
 #validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
-sha512sums=('1d468dcfa9bbd348b8a5dc514ac1428a789e73a92384c039b73a51ce376785f74bf942872c5594a9fcda6bbf44758bd727ce15ac2395f1aa989c507014647dcc'
+sha512sums=('1114e37de5664a8109c99cfb2faa1f42ff8ac63c932bcf3780d645e5ed32c0b2ac446f80305b4465994c8f9430604968e176ae464fd80f632d1cb2c8f6007ff3'
             'be2858613d9cca85d80e7b894e9d5fa7892cbddd7a677d2d2f68f419d75fdc1f6802de8014f43ce063b116afd4ff17369873a6adea2dd58ac6f94e617de66fec'
             '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7'
-            '4508ce782553912cce5e4c3133a223b754c8cf52722471b4860651e9033e3e11f975738918974569719af8999b0564aa1279410f8590f7048e8e192d8f5c040f'
-            'f19a1c4f2509344fd7e23c7077a5d033d5adaa8c1e2fcf3c45d98dc757d1a7757f63e98c275c3578de8312ae39f57271b771b1b776f41c141d6bdbcbb1ae7eaf'
-            'b3ba62a1a4b17e33d726d5a93ec183fde7f90c2d1a35ef2dcde1106b9f5434da6eb2a2067462f1d3d99b55eb7729097632d0e32e78a61c62cfab5f9a1700645d'
-            '7eb21628cb73ddb2276a76e402f1e695636e2a3c7748450ad1f7658f738bc60f03d7645503c0d165204f71d80fbb3957382578cfecffac10f69664dcba0492da'
-            'a4c0dd5c89661f434cf1cf91da9bfc89e7cc425e9f8140f5801207edc0380a1ae1199b06e66d71a78f51e089aa2734c4d5fa29186f824f6d9eb216441677ddb4')
+            '73760c31feaaca08a2e540de0d9f5b6a4bc607ddbf148b97cbd9fcc0ba315362380419911b6588dee40ace08cc1eec392e5379835bb0bfa444de01c935969c6a'
+            '7d5505520358cc1f00302d5330ccc3c51cea7dab3d0521d953406e632a5894f2243eb2f8b31bd6d53c20dbd17e4b45f4e7d6848dbd921ff0a2e622e424e5da38'
+            '0ee8e33e6f515a662f03faf87bf9a67eaf820718443a084804ba1b423c56c7356830d4d86bb347d32934e2789d5e66f220a7d41a532f042b7af355497bc1e1aa'
+            'b35e021d734157cb29c4609bdfb3155e139b7e630cc705be71a5ceaf23ab60dc4eacb0259a7345592dd739dd91b12d347a319620623638709ca9f3c2a22d8931'
+            '10f25fcdf223beb0cbac3f6f1f3904057819380e61fd4307fe7833d8c40d280531c692ad3b1e21cc05361e2365d5e37466ef0ed6c2048208527e6a15a3845362')
 
 _common_flags=(
   --with-compat
@@ -126,10 +127,17 @@ package_nginx-without-server-header() {
   cd $_pkgbase-$pkgver
   make DESTDIR="$pkgdir" install
 
-  sed -e 's|\<user\s\+\w\+;|user http;|g' \
+  sed -e '2s|\<user\s\+\w\+;|user http;|' \
+    -e '8i \error_log  /var/log/nginx/error.log  error;' \
+    -e '21s|[#]||;22s|[#]||;23s|[#]||;25s|[#]||;25s|logs|/var/log/nginx|' \
+    -e '34i \\n    types_hash_max_size 4096;\n\n    server_tokens off;\n\n    root /usr/share/nginx/html;' \
     -e '44s|html|/usr/share/nginx/html|' \
     -e '54s|html|/usr/share/nginx/html|' \
     -i "$pkgdir"/etc/nginx/nginx.conf
+
+  sed -e '16s|^|#|' \
+    -e '17i fastcgi_param  SERVER_SOFTWARE    nginx;' \
+    -i "$pkgdir"/etc/nginx/fastcgi_params
 
   rm "$pkgdir"/etc/nginx/*.default
   rm "$pkgdir"/etc/nginx/mime.types  # in mailcap
