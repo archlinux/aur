@@ -1,6 +1,6 @@
 pkgbase = megaglest-git
 	pkgdesc = Fork of Glest, a 3D real-time strategy game in a fantastic world (git version)
-	pkgver = 3.13.0.r175.g8cdca11c4
+	pkgver = 3.13.0.r267.g231c639c7
 	pkgrel = 1
 	url = https://megaglest.org/
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = megaglest-git
 	depends = glew
 	depends = libircclient
 	depends = miniupnpc
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	depends = glu
 	depends = libx11
 	depends = libminiupnpc.so
@@ -32,4 +32,3 @@ pkgbase = megaglest-git
 	sha256sums = SKIP
 
 pkgname = megaglest-git
-
