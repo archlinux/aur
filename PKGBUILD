@@ -2,7 +2,7 @@
 # Contributor: Arnoud Willemsen <mail at lynthium dot com>
 
 pkgname=jdupes-git
-pkgver=1.23.0.r0.gae3cce7
+pkgver=1.25.0.r1.g36c7144
 pkgrel=1
 pkgdesc='A program for identifying duplicate files residing within specified directories (git)'
 arch=(i686 x86_64)
@@ -33,5 +33,5 @@ build() {
 package() {
     cd "${pkgname%-git}"
     make PREFIX="/usr" DESTDIR="${pkgdir}" install
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
 }
