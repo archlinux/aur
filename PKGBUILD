@@ -2,7 +2,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname='perl-astro-fits-cfitsio'
-pkgver='1.16'
+pkgver='1.17'
 pkgrel='1'
 pkgdesc="Perl extension for using the cfitsio library"
 arch=('i686' 'x86_64')
@@ -10,9 +10,10 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl' 'glibc' 'cfitsio')
 makedepends=('perl-alien-cfitsio')
+checkdepends=('perl-test2-suite')
 url='https://metacpan.org/release/Astro-FITS-CFITSIO'
 source=("https://search.cpan.org/CPAN/authors/id/P/PR/PRATZLAFF/Astro-FITS-CFITSIO-${pkgver}.tar.gz")
-sha512sums=('51d0d6355a243671a105d7637196a4262631fbc60386724952e43d2d97680528011b976101d75ef3ea7f3004118703f9d98488045d78484d8de925e4c92d4c8e')
+sha512sums=('5a2c9926401630e26a058f3d90dbfd0867b955f4be494fb927a86a0228c7edeacf5140f5705e50221a6b2791f453005a3554191e5a168430d727c65b8796d2ec')
 _distdir="Astro-FITS-CFITSIO-${pkgver}"
 
 build() {
