@@ -2,13 +2,13 @@
 # Contributor: Gabriel Morrison Lima Dantas <gabrielmldantas@gmail.com>
 # Contributor: Aleksey Kamenskikh <aleksey.kamenskikh@gmail.com>
 pkgname=mssql-server
-pkgver=15.0.4298.1
+pkgver=16.0.4045.3
 _remRevision=1
 _prodver=${pkgver}-${_remRevision}
 pkgrel=1
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
-url="https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver15"
+url="https://learn.microsoft.com/en-us/sql/linux/sql-server-linux-overview?view=sql-server-ver16"
 license=('unknown')
 depends=(
 	'libatomic_ops'
@@ -31,9 +31,9 @@ optdepends=(
 );
 
 #This is a local azure instance that resolves as an alias of "packages.microsoft.com/rhel/7/mssql-server-2019" as some regions have different dir structures
-source=("http://csd-apt-sea-d-4.southeastasia.cloudapp.azure.com/rhel/7/mssql-server-2019/${pkgname}-${_prodver}.x86_64.rpm")
+source=("http://csd-apt-sea-d-4.southeastasia.cloudapp.azure.com/rhel/8/mssql-server-2022/Packages/m/${pkgname}-${_prodver}.x86_64.rpm")
 
-sha256sums=('d5e6c61b59c86ee9003956d5d8cba3de7d59b456fa1a60deac6aa15fc1e1d922')
+sha256sums=('0d9415dc40c96e60d19af40351490e18f73af0eeee0acff5f14c24e078a29c7c')
 
 install=$pkgname.install
 
