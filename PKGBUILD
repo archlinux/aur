@@ -1,3 +1,4 @@
+# Maintainer:
 # Contributor: Darvin Delgado <dnmodder@gmail.com>
 # Contributor: Mesmer <mesmer@fisica.if.uff.br>
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
@@ -15,6 +16,7 @@ depends=(
   'c-ares'
   'curl'
   'ffmpeg'
+  'libuv'
   'openssl'
   'qt5-base'
   'qt5-svg'
@@ -95,7 +97,9 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  printf 'r%s.%s' \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

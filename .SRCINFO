@@ -15,6 +15,7 @@ pkgbase = decaf-emu-git
 	depends = c-ares
 	depends = curl
 	depends = ffmpeg
+	depends = libuv
 	depends = openssl
 	depends = qt5-base
 	depends = qt5-svg
