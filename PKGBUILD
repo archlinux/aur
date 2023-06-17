@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=cemu
 pkgname=$_pkgname-git
-pkgver=2.0.36.r0.gf48ad6a1
+pkgver=2.0.41.r1.ga533c485
 pkgrel=1
 pkgdesc="Nintendo Wii U emulator"
 arch=('x86_64')
@@ -38,7 +38,8 @@ makedepends=(
 	'rapidjson'
 	'vulkan-headers>=1:1.3.225'
 	'wayland'
-	'zarchive>=0.1.2'
+	'wayland-protocols'
+	'zarchive-git>=0.1.2'
 	'zstd'
 )
 provides=("$_pkgname")
