@@ -6,7 +6,7 @@ pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
-depends=('libcec' 'tinyxml' 'shairplay' 'libdisplay-info')
+depends=('libcec' 'tinyxml' 'shairplay' 'libdisplay-info' 'spdlog')
 makedepends=(
   'afpfs-ng' 'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'glew'
   'gperf' 'hicolor-icon-theme' 'java-runtime' 'libaacs' 'libass'
@@ -66,7 +66,7 @@ build() {
  cd ${srcdir}/kodi-build
  msg2 "cmake configure phase"
  export APP_RENDER_SYSTEM=gl
- cmake ../xbmc -DAPP_RENDER_SYSTEM=gl -DCMAKE_INSTALL_PREFIX=/usr -DX11_RENDER_SYSTEM=gl -DENABLE_INTERNAL_FMT=on -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_FSTRCMP=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_INTERNAL_CROSSGUID=ON -DENABLE_MYSQLCLIENT=ON -DHAVE_EGLEXTANGLE=1
+ cmake ../xbmc -DAPP_RENDER_SYSTEM=gl -DCMAKE_INSTALL_PREFIX=/usr -DX11_RENDER_SYSTEM=gl -DENABLE_INTERNAL_FMT=on -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_FSTRCMP=ON -DENABLE_MYSQLCLIENT=ON -DHAVE_EGLEXTANGLE=1
  msg2 "cmake build phase"
  cmake --build . -- #VERBOSE=1
 
