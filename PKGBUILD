@@ -1,14 +1,14 @@
 # Maintainer: NullBite <aur.archlinux@nullbite.com>
 pkgname=packwiz-installer
 pkgver=0.5.10
-pkgrel=2
+pkgrel=3
 pkgdesc="An installer for packwiz modpacks."
 arch=("any")
 url="https://github.com/packwiz/packwiz-installer"
 license=("MIT")
 depends=('java-runtime')
 makedepends=('git'
-'java-environment-openjdk<=11')
+'java-environment<=11')
 _tag=7b6daaf7e552f44888d68dcd8235822dd1c2956e # git rev-parse v${pkgver}
 _tag_bootstrap=fc4cd603d04d08c09fcd83cadb9ceedf776831e7
 source=("$pkgname::git+https://github.com/packwiz/$pkgname.git#tag=$_tag"
