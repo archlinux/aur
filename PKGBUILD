@@ -46,7 +46,10 @@ build()
     # which results in build artifacts being overwritten.
     #
     make -j1 GPRBUILD_SWITCHES="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
-    make docs
+
+    # Gnatdoc appears broken when trying to build docs. Disabling docs til fixed.
+    #
+#    make docs
 }
 
 
