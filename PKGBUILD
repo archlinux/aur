@@ -3,8 +3,8 @@
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname='perl-astro-fits-header'
-pkgver='3.08'
-pkgrel='3'
+pkgver='3.09'
+pkgrel='1'
 pkgdesc="Object Orientated interface to FITS HDUs"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -18,8 +18,8 @@ optdepends=('perl-starlink-ast: needed for Astro::FITS::Header::AST')
 # https://github.com/Starlink/perl-NDF
 url='https://metacpan.org/release/Astro-FITS-Header'
 source=("http://search.cpan.org/CPAN/authors/id/G/GS/GSB/Astro-FITS-Header-${pkgver}.tar.gz")
-md5sums=('dc62a668e29278bb5f0d02e26071b644')
-sha512sums=('c94a9da46212a2db95c1ce32da2609869bc85687c236919791c16b06f1787311ee3ac3323baece790c04d56818754c6f487b15c20487ded9ebe61bf97cc11c29')
+md5sums=('a473158b9fb4328d328023b2876643d5')
+sha512sums=('ab02183101b507e5094005c0c633641d26071ca4e3adbc6e362a28ce0ff568745b21e2d5818033185f5c6732592d35843ba20b4d135b525338185c5a7e33d926')
 _distdir="Astro-FITS-Header-${pkgver}"
 
 build() {
