@@ -1,6 +1,8 @@
+# Maintainer:
+
 _pkgname="dolphin"
 pkgname="$_pkgname-tabopts-git"
-pkgver=23.04.2.r3.gbb08c70a9
+pkgver=23.04.2.r11.g7f3967cf3
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 arch=(i686 x86_64)
@@ -28,9 +30,9 @@ optdepends=(
   'konsole: terminal panel'
   'purpose: share context menu'
 )
-groups=(kde-applications kde-system)
 provides=("$_pkgname" "$_pkgname-git")
 conflicts=(${provides[@]})
+groups=(kde-applications kde-system)
 source=(
   "$_pkgname"::"git+https://invent.kde.org/system/dolphin.git"
 
@@ -53,7 +55,8 @@ pkgver() {
     grep -E "$_regex" "$_file" | head -1
   )
   _version=$(
-    echo "$_line" | sed -E "s@$_regex@\1@"
+    printf '%s\n' "$_line" \
+      | sed -E "s@$_regex@\1@"
   )
   _commit=$(
     git log -S "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
@@ -65,20 +68,26 @@ pkgver() {
     git rev-parse --short HEAD
   )
 
-  echo "$_version.r$_revision.g$_hash"
+  printf '%s.r%s.g%s' \
+    "$_version" \
+    "$_revision" \
+    "$_hash"
 }
 
 prepare() {
   cd "$srcdir/$_pkgname"
 
-  for p in "$srcdir"/*.patch ; do
-    patch -Np1 -F100 -i "$p"
+  for patch in "$srcdir"/*.patch ; do
+    if [ -f "$patch" ] ; then
+      printf 'Applying patch: %s\n' "${patch##*/}"
+      patch -Np1 -F100 -i "$patch"
+    fi
   done
 }
 
 build() {
   cmake -B build -S "$_pkgname" \
-      -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=OFF
   cmake --build build
 }
 
