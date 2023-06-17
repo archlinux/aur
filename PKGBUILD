@@ -14,11 +14,8 @@ pkgrel=1
 arch=(i686 x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ValidationLayers'
 license=(Apache-2.0)
-makedepends=(cmake make python python-lxml libx11 libxrandr wayland git
-             gcc gcc-libs ninja lib32-libx11 lib32-libxrandr lib32-wayland
-             lib32-gcc-libs vulkan-headers-git vulkan-validation-layers-git 
-             vulkan-icd-loader-git)
-depends=(lib32-gcc-libs lib32-libx11 vulkan-headers-git lib32-vulkan-icd-loader-git)
+makedepends=(cmake make python lib32-libx11 lib32-libxrandr lib32-wayland vulkan-headers git ninja)
+depends=(lib32-gcc-libs lib32-libx11 vulkan-headers lib32-vulkan-icd-loader)
 conflicts=(lib32-vulkan-validation-layers)
 provides=(lib32-vulkan-validation-layers lib32-vulkan-validation-layers-git libVkLayer_khronos_validation.so)
 source=(git+https://github.com/KhronosGroup/Vulkan-ValidationLayers.git)
@@ -65,7 +62,6 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   rm -rf build_32
 
   cmake -C helper.cmake -H. -G Ninja -Bbuild_32 \
-  -DCMAKE_C_FLAGS=-m32 \
   -DCMAKE_CXX_FLAGS=-m32 \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DVULKAN_HEADERS_INSTALL_DIR=/usr \
@@ -77,13 +73,11 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   -DBUILD_LAYER_SUPPORT_FILES=ON \
   -DCMAKE_SKIP_RPATH=True \
   -DBUILD_TESTS=OFF \
-  -DINSTALL_TESTS=OFF \
   -DBUILD_WSI_XCB_SUPPORT=On \
   -DBUILD_WSI_XLIB_SUPPORT=On \
   -DBUILD_WSI_WAYLAND_SUPPORT=On \
-  -DCMAKE_BUILD_TYPE=Debug \
-  -DUSE_ROBIN_HOOD_HASHING=OFF \
-  -DUSE_CCACHE=OFF
+  -DCMAKE_BUILD_TYPE=Release \
+  -DUSE_ROBIN_HOOD_HASHING=OFF
 
   ninja -C build_32
 }
