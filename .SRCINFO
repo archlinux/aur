@@ -1,7 +1,7 @@
 pkgbase = r-echarts4r
 	pkgdesc = Create Interactive Graphs with 'Echarts JavaScript' Version 5
-	pkgver = 0.4.4
-	pkgrel = 3
+	pkgver = 0.4.5
+	pkgrel = 1
 	url = https://cran.r-project.org/package=echarts4r
 	arch = any
 	license = Apache
@@ -25,7 +25,7 @@ pkgbase = r-echarts4r
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/echarts4r_0.4.4.tar.gz
-	sha256sums = 8284256e09a7239e0cff373cd22344130ee567db5639492b246fd92a903099f7
+	source = https://cran.r-project.org/src/contrib/echarts4r_0.4.5.tar.gz
+	sha256sums = d818e778fb33a68354d940574bd776f39e0679d92af43b42ccdce50eae69eac8
 
 pkgname = r-echarts4r
