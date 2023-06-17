@@ -2,16 +2,16 @@
 _base=scikit-fem
 pkgname=python-${_base}
 pkgdesc="Simple finite element assemblers"
-pkgver=8.0.0
-pkgrel=4
-arch=('x86_64')
+pkgver=8.1.0
+pkgrel=1
+arch=(x86_64)
 url="https://github.com/kinnala/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-scipy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-matplotlib python-meshio python-h5py-openmpi python-autograd python-pyamg)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('4264d0ade27c86ed1e872d6168d1e6b38081a66ef9e000a8b331ff26291b717ac7aa6da44018203e96cefd293cf63e716088ae862b42efa8df078eeb8c883aae')
+sha512sums=('83ff1915eeef1f1e69afffb78bdfb20e8ba010cdf93fc4e5e88dfa69be5c03d0d726c31c8597c8d72d90034ba28759864dac24e777a35c0794255f7f1607bd6d')
 
 build() {
   cd ${_base}-${pkgver}
@@ -23,7 +23,6 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   MPLBACKEND=Agg test-env/bin/python -m pytest --ignore=tests/test_examples.py
-  # MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --ignore=tests/test_examples.py
 }
 
 package() {
