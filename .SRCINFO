@@ -24,7 +24,7 @@ pkgbase = leftwm-git
 pkgname = leftwm-nonsystemd-git
 	pkgdesc = A tiling window manager for the adventurer (non-systemd init)
 
-pkgname = leftwm-systemd-git
+pkgname = leftwm-git
 	pkgdesc = A tiling window manager for the adventurer (systemd init)
 	depends = gcc-libs
 	depends = systemd

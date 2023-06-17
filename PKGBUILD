@@ -3,7 +3,7 @@
 # Contributor: éclairevoyant
 
 pkgbase=leftwm-git
-pkgname=(leftwm-nonsystemd-git leftwm-systemd-git)
+pkgname=(leftwm-nonsystemd-git leftwm-git)
 pkgver=0.4.0.r68.g415dd081
 pkgrel=1
 pkgdesc="A tiling window manager for the adventurer"
@@ -60,7 +60,7 @@ package_leftwm-nonsystemd-git() {
 	_package
 }
 
-package_leftwm-systemd-git() {
+package_leftwm-git() {
 	pkgdesc+=" (systemd init)"
 	depends+=(systemd)
 	cd $pkgbase/target_systemd/release
