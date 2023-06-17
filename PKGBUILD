@@ -1,42 +1,70 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
-# Contributor: Laurent Carlier <lordheavym@gmail.com>
+#_     _            _                                _____
+#| |__ | | __ _  ___| | ___ __ ___   ___   ___  _ __ |___ /
+#| '_ \| |/ _` |/ __| |/ / '_ ` _ \ / _ \ / _ \| '_ \  |_ \
+#| |_) | | (_| | (__|   <| | | | | | (_) | (_) | | | |___) |
+#|_.__/|_|\__,_|\___|_|\_\_| |_| |_|\___/ \___/|_| |_|____/
+
+#Maintainer: blackmoon3 <https://github.com/blacksky3>
+#Credits: Laurent Carlier <lordheavym@gmail.com>
+#Credits: katt <magunasu.b97@gmail.com>
 
 pkgname=vulkan-icd-loader-git
-pkgver=1.3.231.r12.gceabdb1fa
+pkgdesc='Vulkan Installable Client Driver (ICD) Loader (git version)'
+pkgver=1.3.254.r2.gdb51885
 pkgrel=1
 arch=(x86_64)
-pkgdesc='Vulkan Installable Client Driver (ICD) Loader (git)'
-url=https://www.khronos.org/vulkan
-license=(custom)
-makedepends=(cmake python-lxml libx11 libxrandr wayland vulkan-headers-git git)
+url='https://github.com/KhronosGroup/Vulkan-Loader'
+license=(Apache-2.0)
+makedepends=(make cmake python python-lxml libx11 libxrandr wayland vulkan-headers-git git ninja glibc gcc gcc-libs)
 depends=(glibc)
-optdepends=('vulkan-driver: packaged vulkan driver') # vulkan-driver: vulkan-intel/vulkan-radeon/nvidia-utils/....
-provides=("${pkgname%-git}" libvulkan.so)
-conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}"::git+https://github.com/KhronosGroup/Vulkan-Loader.git)
-sha256sums=('SKIP')
+optdepends=('vulkan-driver: packaged vulkan driver')
+conflicts=(vulkan-icd-loader)
+provides=(vulkan-icd-loader libvulkan.so vulkan-icd-loader-git)
+source=(git+https://github.com/KhronosGroup/Vulkan-Loader.git)
+md5sums=('SKIP')
 
-pkgver() {
-    git -C "${pkgname%-git}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+pkgver(){
+ cd ${srcdir}/Vulkan-Loader
+
+ # cutting off 'foo-' prefix that presents in the git tag
+ git describe --long --tags --abbrev=7 --exclude sdk-* | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-    cmake -B build -S "${pkgname%-git}" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DVULKAN_HEADERS_INSTALL_DIR=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-        -DCMAKE_INSTALL_DATADIR=/share \
-        -DCMAKE_SKIP_RPATH=True \
-        -DBUILD_TESTS=Off \
-        -DBUILD_WSI_XCB_SUPPORT=On \
-        -DBUILD_WSI_XLIB_SUPPORT=On \
-        -DBUILD_WSI_WAYLAND_SUPPORT=On \
-        -DCMAKE_BUILD_TYPE=Release
-    cmake --build build
+prepare(){
+  cd ${srcdir}/Vulkan-Loader
+  #scripts/update_deps.py
+  #git clone https://github.com/google/googletest.git external/googletest # optional
 }
 
-package() {
-    DESTDIR="${pkgdir}" cmake --install build
-    install -Dm644 "${pkgname%-git}"/LICENSE.txt -t "${pkgdir}"/usr/share/licenses/${pkgname}
+build(){
+  cd ${srcdir}/Vulkan-Loader
+
+  rm -rf build_64
+
+  cmake -H. -G Ninja -Bbuild_64 \
+  -DCMAKE_C_FLAGS=-m64 \
+  -DCMAKE_CXX_FLAGS=-m64 \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DVULKAN_HEADERS_INSTALL_DIR=/usr \
+  -DCMAKE_INSTALL_LIBDIR=lib \
+  -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+  -DCMAKE_INSTALL_DATADIR=/share \
+  -DCMAKE_SKIP_RPATH=True \
+  -DBUILD_TESTS=OFF \
+  -DINSTALL_TESTS=OFF \
+  -DBUILD_WSI_XCB_SUPPORT=On \
+  -DBUILD_WSI_XLIB_SUPPORT=On \
+  -DBUILD_WSI_WAYLAND_SUPPORT=On \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DUSE_CCACHE=OFF
+
+  ninja -C build_64
+}
+
+package_vulkan-icd-loader-git(){
+  DESTDIR="${pkgdir}" ninja -C ${srcdir}/Vulkan-Loader/build_64/ install
+
+  # install licence
+  install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}
+  install -m644 "${srcdir}"/Vulkan-Loader/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
