@@ -1,7 +1,7 @@
 # Maintainer: Volker Schwaberow <volker@schwaberow.de>
 
 pkgname=rprobe
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="A tool in Rust that can check which HTTP or HTTPS hosts are online"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/vschwaberow/rprobe"
 license=('MIT' 'Apache')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0cb320bcba6ef5ff432dfc202bb98d0c6b08ab2e4772e5533c06e33191695cc4')
+sha256sums=('e1cfeea1860346d53f20f278c8047867843294ab23d2170d80e91fba8f16f17d')
 options=('!lto')
 
 prepare() {
