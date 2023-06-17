@@ -9,7 +9,7 @@ pkgbase = packwiz-installer
 	makedepends = java-environment-openjdk<=11
 	depends = java-environment
 	source = packwiz-installer::git+https://github.com/packwiz/packwiz-installer.git#tag=7b6daaf7e552f44888d68dcd8235822dd1c2956e
-	source = packwiz-installer-bootstrap::git+https://github.com/packwiz/packwiz-installer-bootstrap.git#tag=v0.0.3
+	source = packwiz-installer-bootstrap::git+https://github.com/packwiz/packwiz-installer-bootstrap.git#tag=fc4cd603d04d08c09fcd83cadb9ceedf776831e7
 	source = packwiz-installer.sh
 	source = packwiz-installer-bootstrap.sh
 	sha256sums = SKIP
