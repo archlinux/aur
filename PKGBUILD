@@ -8,7 +8,7 @@
 pkgname=emacs-lucid
 pkgver=28.2
 _pkgver_major=${pkgver/.*}
-pkgrel=4
+pkgrel=5
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -51,7 +51,6 @@ depends=(
   xaw3d
   zlib
 )
-optdepends=(desktop-file-utils)
 conflicts=(emacs)
 provides=("emacs=$_pkgver_major")
 validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B'  # Eli Zaretskii <eliz@gnu.org>
