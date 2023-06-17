@@ -2,13 +2,13 @@
 
 pkgname=bms-token-git
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="BMS/Secure-IT Token OATHController."
 arch=("any")
 url="https://github.com/Zedeldi/BMS-Token"
 license=("GPL3")
 depends=("python")
-makedepends=("python-build" "python-installer" "python-wheel")
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
 provides=("bms-token")
 conflicts=("bms-token")
 source=("$pkgname::git+https://github.com/Zedeldi/BMS-Token.git")
