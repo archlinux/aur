@@ -83,8 +83,10 @@ build()
         PRJ_BUILD=Release        \
         LIBRARY_TYPE=relocatable \
         GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython3.11 -gargs"
-   
-   make -C docs all
+ 
+    # Gnatdoc appears broken when trying to build docs. Disabling docs til fixed.
+    #  
+#   make -C docs all
 }
 
 
@@ -95,7 +97,7 @@ package()
    export OS=unix
    
    make DESTDIR=$pkgdir         install
-   make DESTDIR=$pkgdir -C docs install
+#   make DESTDIR=$pkgdir -C docs install
  
    ln -s /usr $pkgdir/usr/share/gnatstudio/python
 
