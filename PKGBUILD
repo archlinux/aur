@@ -2,8 +2,8 @@
 # Maintained at https://github.com/rixx/pkgbuilds, feel free to submit patches
 
 pkgname=python39
-pkgver=3.9.16
-pkgrel=4
+pkgver=3.9.17
+pkgrel=1
 _pybasever=3.9
 _pymajver=3
 pkgdesc="Major release 3.9 of the Python high-level programming language"
