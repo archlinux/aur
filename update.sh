@@ -60,8 +60,6 @@ optdepends=(
     'libnm-glib: for changing the Subsonic server address depending on what SSID you are connected to'
     'libnotify: for system song notification support'
     'python-keyring: support for storing passwords in the system keyring'
-    'python-pychromecast: support for casting to Chromecast devices'
-    'python-bottle: support for casting downloaded files to Chromecasts on the same LAN'
 )
 makedepends=(
     'python-build'

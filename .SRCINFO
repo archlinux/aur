@@ -1,7 +1,7 @@
 pkgbase = sublime-music
 	pkgdesc = A native Subsonic/Airsonic/*sonic client for Linux. Built using Python and GTK+.
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sublimemusic.app
 	arch = any
 	license = GPL3
@@ -26,8 +26,6 @@ pkgbase = sublime-music
 	optdepends = libnm-glib: for changing the Subsonic server address depending on what SSID you are connected to
 	optdepends = libnotify: for system song notification support
 	optdepends = python-keyring: support for storing passwords in the system keyring
-	optdepends = python-pychromecast: support for casting to Chromecast devices
-	optdepends = python-bottle: support for casting downloaded files to Chromecasts on the same LAN
 	source = https://files.pythonhosted.org/packages/source/s/sublime-music/sublime_music-0.12.0.tar.gz
 	source = https://github.com/sublime-music/sublime-music/archive/refs/tags/v0.12.0.tar.gz
 	sha256sums = 458bacab6be5c926852d4a43ce675b5e767210287844c6fce921832e263db3c0
