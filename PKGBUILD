@@ -2,10 +2,10 @@
 
 _githubuser=gwenhael-le-moine
 _githubrepo=x48ng
-_pkgtagname=0.12.0
+_pkgtagname=0.12.1
 
 pkgname=x48ng
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='A reboot of the x48 HP 48 emulator'
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL2')
 depends=('readline' 'libxext' 'xterm' 'xorg-mkfontscale' 'xorg-fonts-misc')
 install="${pkgname}.install"
 source=("${_githubrepo}::https://github.com/${_githubuser}/${_githubrepo}/archive/refs/tags/${_pkgtagname}.tar.gz")
-sha256sums=('ad59aa5f0730ccaab66a5703ff4ade75d7dc74da9d77be2ee6ec54d58afe99bd')
+sha256sums=('44d99b5b63300dffb5273e4ed6cc4e2f7d5fd0635d8ba692b2b4b93b7328b6cb')
 
 build() {
 	cd "${_githubrepo}-${pkgver}"
