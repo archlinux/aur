@@ -8,7 +8,7 @@ PIDFile=/run/nginx.pid
 PrivateDevices=yes
 SyslogLevel=err
 
-ExecStart=/usr/bin/nginx -g 'pid /run/nginx.pid; error_log stderr;'
+ExecStart=/usr/bin/nginx
 ExecReload=/usr/bin/nginx -s reload
 KillMode=mixed
 

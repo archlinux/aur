@@ -11,8 +11,8 @@ pkgbase=nginx-without-server-header
 _pkgbase=nginx
 pkgname=(nginx-without-server-header)
 pkgver=1.24.0
-pkgrel=1
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server without server header'
+pkgrel=2
+pkgdesc='Lightweight web server, IMAP/POP3 and TCP/UDP proxy server, without HTTP server header'
 arch=(x86_64)
 url='https://nginx.org'
 license=(custom)
@@ -30,7 +30,7 @@ backup=(etc/nginx/fastcgi.conf
         etc/nginx/win-utf
         etc/logrotate.d/nginx)
 install=nginx.install
-source=($url/download/nginx-$pkgver.tar.gz
+source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         service
         logrotate
         ngx_http_core_module.c.patch
@@ -39,15 +39,17 @@ source=($url/download/nginx-$pkgver.tar.gz
         ngx_http_special_response.c.patch
         ngx_http_v2_filter_module.c.patch)
 
-#validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
+validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
+              '13C82A63B603576156E30A4EA0EA981B66B0D967') # Konstantin Pavlov <thresh@nginx.com>
 sha512sums=('1114e37de5664a8109c99cfb2faa1f42ff8ac63c932bcf3780d645e5ed32c0b2ac446f80305b4465994c8f9430604968e176ae464fd80f632d1cb2c8f6007ff3'
-            'be2858613d9cca85d80e7b894e9d5fa7892cbddd7a677d2d2f68f419d75fdc1f6802de8014f43ce063b116afd4ff17369873a6adea2dd58ac6f94e617de66fec'
+            'SKIP'
+            '190b6f0981893cdfdf5350b775a8398c138a4ef1375d37c331a732f49897312d0391746182dd1f2e8fb1c6488b25d00fd174e92807053635842be8c6a89e15af'
             '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7'
             '73760c31feaaca08a2e540de0d9f5b6a4bc607ddbf148b97cbd9fcc0ba315362380419911b6588dee40ace08cc1eec392e5379835bb0bfa444de01c935969c6a'
             '7d5505520358cc1f00302d5330ccc3c51cea7dab3d0521d953406e632a5894f2243eb2f8b31bd6d53c20dbd17e4b45f4e7d6848dbd921ff0a2e622e424e5da38'
             '0ee8e33e6f515a662f03faf87bf9a67eaf820718443a084804ba1b423c56c7356830d4d86bb347d32934e2789d5e66f220a7d41a532f042b7af355497bc1e1aa'
             'b35e021d734157cb29c4609bdfb3155e139b7e630cc705be71a5ceaf23ab60dc4eacb0259a7345592dd739dd91b12d347a319620623638709ca9f3c2a22d8931'
-            '10f25fcdf223beb0cbac3f6f1f3904057819380e61fd4307fe7833d8c40d280531c692ad3b1e21cc05361e2365d5e37466ef0ed6c2048208527e6a15a3845362')
+            '3c9d007eb324101024bc541af60cea9a2b770f2089fa518797b33412379f329a404b76c2ec0a7441ba1e444e751a6dc45249094ec722f2d0024553ebcff16243')
 
 _common_flags=(
   --with-compat

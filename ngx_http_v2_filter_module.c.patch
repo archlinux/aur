@@ -37,7 +37,7 @@
 -            len += 1 + sizeof(nginx);
 -        }
 +    if ( (r->headers_out.server == NULL) &&
-+         (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) ){
++         (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) ) {
 +        len += 1 + sizeof(nginx);
      }
  
