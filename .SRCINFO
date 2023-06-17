@@ -1,7 +1,7 @@
 pkgbase = directxtex
 	pkgdesc = Texture processing library
-	pkgver = jan2023
-	pkgrel = 2
+	pkgver = 1.9.9
+	pkgrel = 1
 	url = https://go.microsoft.com/fwlink/?LinkId=248926
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = directxtex
 	depends = directxmath
 	options = staticlibs
 	options = !strip
-	source = directxtex-jan2023.tar.gz::https://github.com/microsoft/DirectXTex/archive/refs/tags/jan2023.tar.gz
-	sha256sums = 878107c0645742ac74f3aa0e1de504d618c685f76797503f02a8f75198f8c869
+	source = directxtex-jun2023.tar.gz::https://github.com/microsoft/DirectXTex/archive/refs/tags/jun2023.tar.gz
+	sha256sums = 51f0ff3bee0d1015c110e0c92ebdd9704aa6acd91185328fd92f10b9558f4c62
 
 pkgname = directxtex

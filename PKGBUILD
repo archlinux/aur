@@ -2,19 +2,21 @@
 
 pkgname=directxtex
 pkgdesc="Texture processing library"
-pkgver=jan2023
-pkgrel=2
+# Version from CMakeLists.txt.
+pkgver=1.9.9
+_tag=jun2023
+pkgrel=1
 arch=('x86_64')
 depends=('directx-headers-cmake' 'directxmath')
 makedepends=('cmake' 'ninja')
 url="https://go.microsoft.com/fwlink/?LinkId=248926"
 license=('MIT')
 options=('staticlibs' '!strip')
-source=(directxtex-${pkgver}.tar.gz::https://github.com/microsoft/DirectXTex/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=('878107c0645742ac74f3aa0e1de504d618c685f76797503f02a8f75198f8c869')
+source=(directxtex-${_tag}.tar.gz::https://github.com/microsoft/DirectXTex/archive/refs/tags/${_tag}.tar.gz)
+sha256sums=('51f0ff3bee0d1015c110e0c92ebdd9704aa6acd91185328fd92f10b9558f4c62')
 
 build() {
-  cmake -S DirectXTex-$pkgver -B build -G Ninja \
+  cmake -S DirectXTex-$_tag -B build -G Ninja \
     -DBUILD_DX11=OFF \
     -DBUILD_DX12=OFF \
     -DBUILD_TOOLS=OFF \
