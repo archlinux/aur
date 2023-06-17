@@ -1,8 +1,8 @@
 # Maintainer: elementh <hello@lucasmarino.me>
 pkgname=anytype-legacy
-pkgver=0.31.8
+pkgver=0.31.9
 pkgrel=1
-pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
+pkgdesc="Legacy. Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
 url="https://anytype.io/"
 license=('custom')
@@ -19,7 +19,7 @@ source=(
     "anytype.png"
     )
 noextract=("${_appimage}")
-sha256sums=('629cfeb4f52eaa3fb7c235a8ff47b24d9f282be1df7c1c847be218450cc27543'
+sha256sums=('1c67526727b152766ddc95da4e7071c08a7f1d30fe9aacbfe710a9ac1e447064'
             'e28f9c86d5c8424ac728f25b53e8fca038bb258258ceabeeea75e8d7968bbf45'
             '48ee23a45c29cf081ccf5188c045150b7410007cd21743ce8592974ab18120c0')
 
