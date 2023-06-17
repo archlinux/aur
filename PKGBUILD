@@ -3,27 +3,40 @@
 pkgname=jupyterlab-execute-time
 pkgdesc="JupyterLab extension to show execution time for each cell"
 url='https://github.com/deshaw/jupyterlab-execute-time'
-pkgver=2.3.1
+pkgver=3.0.0
 pkgrel=1
 license=('BSD')
 arch=('any')
-depends=('jupyterlab' 'jupyter-notebook')
+
+depends=('jupyterlab')
 makedepends=(
-  'python-build' 'python-installer' 'python-jupyter_packaging'
-  'python-setuptools' 'python-wheel'
+  'python-build' 'python-installer' 'python-jupyter-packaging'
+  'python-setuptools' 'python-wheel' 'npm'
 )
 
 _pypi=jupyterlab_execute_time
 source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
+  'install.json'
 )
 sha256sums=(
-  'db97e6e7ea80841db524fb8c656e1e2a9533998c5a6082dc63fe818b8f216130'
+  '2d9b08a293075a59457b442cdb856ab3ba388393e88fc3a706d798564f3b4963'
+  'fcaf662d9c5fcc529b4add01452bf3f1809c418c75d9b7e55f7fd822d407f9a3'
 )
+
+prepare() {
+  cd "$_pypi-$pkgver"
+
+  # Replace uninstallation instructions with Arch-specific ones.
+  cp "$srcdir/install.json" .
+}
 
 build() {
   cd "$_pypi-$pkgver"
-  export NODE_OPTIONS=--openssl-legacy-provider
+
+  # Not available otherwise, probably related to JupyterLab issue #14552
+  npm install @types/react
+
   python -m build --no-isolation --wheel -x
 }
 
