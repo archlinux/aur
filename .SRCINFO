@@ -1,0 +1,15 @@
+pkgbase = espresso-jdk20-bin
+	pkgdesc = GraalVM-based Java implementation as a Truffle language, Java 20 version
+	pkgver = 23.0.0
+	pkgrel = 1
+	url = https://github.com/oracle/graal
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = jdk20-graalvm-bin
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/espresso-installable-svm-java20-linux-amd64-23.0.0.jar
+	sha256sums_x86_64 = b49378fac5ace9a0142a6c7e55db77fd192f15e20c80e434212e89406418649e
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/espresso-installable-svm-java20-linux-aarch64-23.0.0.jar
+	sha256sums_aarch64 = 60565a7cc98373431fd9c616ce554d26131049de6ecaca43c2b0bacbd412afaa
+
+pkgname = espresso-jdk20-bin
