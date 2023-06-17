@@ -1,0 +1,14 @@
+pkgbase = python-coverxygen
+	pkgdesc = Generate doxygen's documentation coverage report
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/psycofdj/coverxygen
+	arch = x86_64
+	license = GPL
+	makedepends = python-build
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = python-coverxygen-1.7.0.tar.gz::https://github.com/psycofdj/coverxygen/archive/refs/tags/1.7.0.tar.gz
+	sha512sums = d31b8a5c02943ed171326cf9d926b981b5381ead64922cc415ca2360307df2b129615578087dfec5b733b0301d3f45f7d721fcc3f1d13b37057cb81296c65561
+
+pkgname = python-coverxygen
