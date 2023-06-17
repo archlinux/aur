@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=11.6.105
+pkgver=11.6.185
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -22,12 +22,14 @@ source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot
         "v8.pc"
         "v8_libbase.pc"
         "v8_libplatform.pc"
-        "d8")
+        "d8"
+        "age_table_unittest.diff")
 sha256sums=('SKIP'
             '3616bcfb15af7cd5a39bc0f223b2a52f15883a4bc8cfcfb291837c7421363d75'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
-            '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0')
+            '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
+            '868cbb6e8456bbff8f02f093f5324ff68913d5baf9f031f6cf0310180f4f4876')
 
 OUTFLD=x64.release
 
@@ -57,6 +59,9 @@ prepare() {
 
   msg2 "Using system libraries for ICU"
   $srcdir/v8/build/linux/unbundle/replace_gn_files.py --system-libraries icu
+
+  # fix build
+  git apply ${srcdir}/age_table_unittest.diff
 
   # provide pkgconfig files
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8.pc"
