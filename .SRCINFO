@@ -11,8 +11,10 @@ pkgbase = packwiz-installer
 	source = packwiz-installer::git+https://github.com/packwiz/packwiz-installer.git#tag=v0.5.10
 	source = packwiz-installer-bootstrap::git+https://github.com/packwiz/packwiz-installer-bootstrap.git#tag=v0.0.3
 	source = packwiz-installer.sh
+	source = packwiz-installer-bootstrap.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 924aff17bf4ad5fd745c5378d39ec883f685a9b0f4f754828cd99bc83c71df6d
+	sha256sums = 783990641e80a1b6603264d420ccf0ab6ad5a5c519e05a27162472c1746630cd
 
 pkgname = packwiz-installer
