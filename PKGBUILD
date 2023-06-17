@@ -27,7 +27,7 @@ package() {
 
 	mkdir -p ${pkgdir}/usr/bin/
 	mkdir -p ${pkgdir}/srv/webby/website/
-	mkdir -p ${pkgdir}/etc/systemd/system/
+	mkdir -p ${pkgdir}/usr/lib/systemd/system/
 
 	mv webby ${pkgdir}/usr/bin/
 	cp webby.service ${pkgdir}/etc/systemd/system/
