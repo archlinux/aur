@@ -1,0 +1,13 @@
+pkgbase = webby-git
+	pkgdesc = A very simple HTTP/HTTPS server and service.
+	pkgver = 1.0.0.r3.g9777700
+	pkgrel = 1
+	url = https://github.com/an-prata/webby
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = webby::git+https://github.com/an-prata/webby.git
+	sha256sums = SKIP
+
+pkgname = webby-git
