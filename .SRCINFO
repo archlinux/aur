@@ -1,0 +1,21 @@
+pkgbase = pico-sdk-git
+	pkgver = 1.5.1.r0.g6a7db34
+	pkgrel = 1
+	url = https://www.raspberrypi.com/documentation/pico-sdk/
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = arm-none-eabi-binutils
+	depends = arm-none-eabi-gcc
+	depends = arm-none-eabi-newlib
+	depends = cmake
+	provides = pico-sdk
+	provides = raspberry-pico-sdk-git
+	conflicts = raspberry-pico-sdk-git
+	conflicts = pico-sdk
+	options = !strip
+	source = git+https://github.com/raspberrypi/pico-sdk
+	source = pico-sdk.sh
+	sha256sums = SKIP
+	sha256sums = 8610406fc529818eb2f67163e19a7204cda36f8cd7ed77fb4a65154918de3acb
+
+pkgname = pico-sdk-git
