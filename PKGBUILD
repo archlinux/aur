@@ -1,7 +1,7 @@
 # Maintainer:
 
 # packaging options
-_reduce_size="false" # remove unneeded files
+#_reduce_size="true"
 _autoupdate="true"
 
 # update version
@@ -13,13 +13,13 @@ if [ x"$_autoupdate" == "xtrue" ] ; then
   }
   _pkgver=$(_get name)
 else
-  _pkgver=1.7.4545
+  _pkgver=1.7.4589
 fi
 _appimage="pcsx2-v$_pkgver-linux-AppImage-64bit-Qt.AppImage"
 
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=1.7.4545
+pkgver=1.7.4589
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -34,12 +34,9 @@ options=(!strip !debug)
 depends=()
 makedepends=()
 
-provides=(
-  'pcsx2'
-  'pcsx2-git'
-  'pcsx2-qt'
-)
+provides=("$_pkgname")
 conflicts=(${provides[@]})
+replaces=('pcsx2-bin')
 
 source=(
   "$url/releases/download/v$_pkgver/$_appimage"
