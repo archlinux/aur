@@ -2,7 +2,7 @@
 # Contributor: bitwave < aur aTt oomlu d0t de>
 # Contributor: Peter Hoeg <first name at last name dot com>
 pkgname=jdupes
-pkgver=1.24.0
+pkgver=1.25.0
 pkgrel=1
 pkgdesc='A program for identifying duplicate files residing within specified directories'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(glibc libjodycode xxhash)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         system-xxhash.patch)
-sha256sums=('76ee1ffcf958958c3e093bbe9674c9410d4b1d730081b50f6d1e2dc342b230dd'
+sha256sums=('210b7eee65a6a0eb86302a7a39d19d79add78e7ecc745b40fec8dcd6d47c4951'
             'b68853cefa710ad4941feee40fc420afc6941d8664f2a1c22d1a5678f57a6057')
 
 prepare() {
@@ -26,5 +26,5 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     make PREFIX="/usr" DESTDIR="${pkgdir}" install
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
 }
