@@ -9,6 +9,7 @@ pkgbase = python-flax
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-jax
 	depends = python-matplotlib

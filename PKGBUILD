@@ -2,7 +2,7 @@
 pkgname=python-flax
 _name=${pkgname#python-}
 pkgver=0.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A neural network library and ecosystem for JAX designed for flexibility'
 arch=('any')
 url='https://github.com/google/flax'
@@ -19,7 +19,8 @@ depends=(
     'python-tensorstore'
     'python-typing_extensions'
 )
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools'
+             'python-setuptools-scm' 'python-wheel')
 optdepends=(
     'python-orbax: Checkpointing routines for JAX.'
     'tensorboard: TensorBoard visualization and logging.'
