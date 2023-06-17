@@ -1,5 +1,5 @@
-/packwiz-installer-*.tar.zst
-/pkg/
-/src/
-/packwiz-installer-bootstrap/
-/packwiz-installer/
+*
+!PKGBUILD
+!.SRCINFO
+!packwiz-installer-bootstrap.sh
+!packwiz-installer.sh
