@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=furtherance
-pkgver=1.7.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Track your time without being tracked'
 arch=(any)

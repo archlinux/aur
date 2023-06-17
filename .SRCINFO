@@ -1,16 +1,16 @@
 pkgbase = furtherance
-        pkgdesc = Track your time without being tracked
-        pkgver = 1.7.0
-        pkgrel = 1
-        url = https://github.com/lakoliu/furtherance
-        arch = any
-        license = GPL3
-        makedepends = git
-        makedepends = meson
-        makedepends = rust
-        depends = libadwaita
-        depends = sqlite
-        source = git+https://github.com/lakoliu/furtherance#tag=v1.7.0
-        b2sums = SKIP
+	pkgdesc = Track your time without being tracked
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/lakoliu/furtherance
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = libadwaita
+	depends = sqlite
+	source = git+https://github.com/lakoliu/furtherance#tag=v1.8.1
+	b2sums = SKIP
 
 pkgname = furtherance
