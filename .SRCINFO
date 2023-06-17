@@ -1,0 +1,26 @@
+pkgbase = jdk20-graalvm-bin
+	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 20 version
+	pkgver = 23.0.0
+	pkgrel = 1
+	url = https://www.graalvm.org/
+	install = jdk20-graalvm-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = java-runtime-common
+	depends = java-environment-common
+	optdepends = graaljs-jdk20-bin: JavaScript component (used to be bundled with this package before the 22.2.0 release)
+	optdepends = graal-llvm-jdk20-bin: LLVM component (used to be bundled with this package before the 22.2.0 release)
+	optdepends = graal-visualvm-jdk20-bin: VisualVM component (used to be bundled with this package before the 22.2.0 release)
+	provides = java-runtime=20
+	provides = java-environment=20
+	replaces = native-image-jdk20-bin
+	options = staticlibs
+	source = graalvm-rebuild-libpolyglot.hook
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-20.0.1/graalvm-community-jdk-20.0.1_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = 1c965f4698a5435bb8d094c9b2a13f7079e43d9934915964a2ee15fb81b53a79
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-20.0.1/graalvm-community-jdk-20.0.1_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = ffb205a6fc0b84cbc5d38e86ce12fe01294ba1507c1a72535f63a57c57513a35
+
+pkgname = jdk20-graalvm-bin
