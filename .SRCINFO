@@ -1,5 +1,5 @@
 pkgbase = python-ffmpeg-python-git
-	pkgdesc = Python bindings for FFmpeg with complex filtering support
+	pkgdesc = (old) Python bindings for FFmpeg with complex filtering support
 	pkgver = 0.2.0.r41.gdf129c7
 	pkgrel = 1
 	url = https://github.com/kkroening/ffmpeg-python
