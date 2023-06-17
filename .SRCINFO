@@ -1,0 +1,16 @@
+pkgbase = rusty-monitor-git
+	pkgdesc = This is a simple system monitor built with Rust and GTK4
+	pkgver = r19.fefc628
+	pkgrel = 1
+	url = https://github.com/hubblexplorer/rusty-monitor
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = base
+	depends = gtk4
+	depends = glib2
+	source = rusty-monitor-git::git+https://github.com/hubblexplorer/rusty-monitor.git
+	md5sums = SKIP
+
+pkgname = rusty-monitor-git
