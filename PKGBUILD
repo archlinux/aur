@@ -9,7 +9,7 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt')
-pkgver=8.6.0.12
+pkgver=8.6.1.6
 _cudaver=12.0
 _cudnnver=8.8
 _protobuf_ver=3.20.1
@@ -39,7 +39,7 @@ source=("local://TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.tar.gz"
         '020-tensorrt-fix-python.patch'
         'TensorRT-SLA.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('033efe9dc4f3d2b179af0d5afbefd504b15dbb1547920a90115d45e559ae6e77'
+sha256sums=('0f8157a5fc5329943b338b893591373350afa90ca81239cdadd7580cd1eba254'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -49,8 +49,8 @@ sha256sums=('033efe9dc4f3d2b179af0d5afbefd504b15dbb1547920a90115d45e559ae6e77'
             'SKIP'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            '36233e5484ba7adb364699ba0e71ada119666edec55a5b96263e0c3265f8ebd3'
-            'ff3140050390f7b61703c71de0885f11583456abf2402bb6d3990add13fd0e33')
+            '78b3722003b6a62f64ef9b5d5434b69243da82d27f72940a0ea2b2b8238c91b4'
+            '5f68360b4ac4758d207e30fec89c5e829d45bb4c27cae99e3fa6d2b170789370')
 
 prepare() {
     # tensorrt git submodules
@@ -76,15 +76,12 @@ prepare() {
     # protobuf
     mkdir -p build/third_party.protobuf/src
     cp -af "protobuf-cpp-${_protobuf_ver}.tar.gz" build/third_party.protobuf/src
+
+    # fix python bindings build
+    git -C TensorRT cherry-pick --no-commit 25e2139d5ee47e2d34b2610d05d9e047b6840fa6
     
     patch -d TensorRT -Np1 -i "${srcdir}/010-tensorrt-use-local-protobuf-sources.patch"
     patch -d TensorRT -Np1 -i "${srcdir}/020-tensorrt-fix-python.patch"
-    
-    # https://github.com/NVIDIA/TensorRT/issues/2765
-    git -C TensorRT cherry-pick --no-commit a566665884c745def12ea7a3ff1a117c1c30f7c1
-    
-    # https://github.com/NVIDIA/TensorRT/issues/2714
-    git -C TensorRT cherry-pick --no-commit c46089ff8b63578dc2edfb993e7043cb4fb7cde6
 }
 
 build() {
@@ -103,20 +100,20 @@ build() {
         -Wno-dev
     cmake --build build
     
-    # python bindings
-    local _pyver
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    local -x PYTHON_MAJOR_VERSION="${_pyver%%.*}"
-    local -x PYTHON_MINOR_VERSION="${_pyver#*.}"
-    local -x TARGET_ARCHITECTURE="$CARCH"
-    local -x TRT_OSSPATH="${srcdir}/TensorRT"
-    local -x CUDA_ROOT='/opt/cuda'
-    local -x ROOT_PATH="${srcdir}/TensorRT"
-    local -x EXT_PATH="$srcdir"
-    local -x TRT_NONOSS_ROOT="${srcdir}/TensorRT-${pkgver}"
-    git -C pybind11 checkout "v${_pybind11_ver}"
-    cd TensorRT/python
-    ./build.sh
+    # python bindings (fails to build with python 3.11)
+    #local _pyver
+    #_pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+    #local -x PYTHON_MAJOR_VERSION="${_pyver%%.*}"
+    #local -x PYTHON_MINOR_VERSION="${_pyver#*.}"
+    #local -x TARGET_ARCHITECTURE="$CARCH"
+    #local -x TRT_OSSPATH="${srcdir}/TensorRT"
+    #local -x CUDA_ROOT='/opt/cuda'
+    #local -x ROOT_PATH="${srcdir}/TensorRT"
+    #local -x EXT_PATH="$srcdir"
+    #local -x TRT_NONOSS_ROOT="${srcdir}/TensorRT-${pkgver}"
+    #git -C pybind11 checkout "v${_pybind11_ver}"
+    #cd TensorRT/python
+    #./build.sh
     
     # python tools (pytorch-quantization currently fails to build)
     local _dir
@@ -159,23 +156,24 @@ package_python-tensorrt() {
               "python-tensorflow-quantization=${_tensorflow_quantization_ver}"
               "python-uff=${_uffver}")
     
+    local _pyver
+    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+    python -m installer --destdir="$pkgdir" "TensorRT-${pkgver}/python/tensorrt-${pkgver%.*}-cp${_pyver/./}-none-linux_${CARCH}.whl"
+
     local _dir
     for _dir in "TensorRT-${pkgver}"/{graphsurgeon,uff} \
-                 TensorRT/{python/build/dist,tools/{onnx-graphsurgeon,Polygraphy,tensorflow-quantization}/dist}
+                 TensorRT/tools/{onnx-graphsurgeon,Polygraphy,tensorflow-quantization}/dist
     do
         cd "${srcdir}/${_dir}"
         python -m installer --destdir="$pkgdir" *.whl
     done
     
     local _sitepkgs
-    _sitepkgs="$(python -c "import site; print(site.getsitepackages()[0])")"
+    _sitepkgs="$(python -c 'import site; print(site.getsitepackages()[0])' | sed 's|^/usr/|../../../|')"
     install -D -m644 "${srcdir}/TensorRT/NOTICE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 "${srcdir}/TensorRT-SLA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-NVIDIA-TENSORRT-SLA"
     install -D -m644 "${srcdir}/TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
-    ln -s "../../../${_sitepkgs/\/usr\//}/tensorrt-${pkgver}.dist-info/LICENSE.txt" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-python-tensorrt"
-    ln -s "../../../${_sitepkgs/\/usr\//}/graphsurgeon-${_graphsurgeon_ver}.dist-info/LICENSE.txt" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-graphsurgeon"
-    ln -s "../../../${_sitepkgs/\/usr\//}/uff-${_uffver}.dist-info/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-uff"
-    
+    ln -s "${_sitepkgs}/tensorrt-${pkgver}.dist-info/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-python-tensorrt"
+    ln -s "${_sitepkgs}/graphsurgeon-${_graphsurgeon_ver}.dist-info/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-graphsurgeon"
+    ln -s "${_sitepkgs}/uff-${_uffver}.dist-info/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-uff"
 }
