@@ -1,0 +1,22 @@
+pkgbase = anarchlinux
+	pkgdesc = Builds the Arch Linux install drive.
+	pkgver = 2023.06.17
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/archlinux/archiso/-/issues/156
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	license = AGPL3
+	checkdepends = shellcheck
+	makedepends = archiso-persistent-git
+	makedepends = archiso-profiles-git
+	makedepends = cryptsetup-nested-cryptkey
+	makedepends = fakepkg
+	makedepends = git
+	makedepends = gnupg
+	makedepends = mkinitcpio-archiso-encryption
+	makedepends = polkit
+	provides = archlinux-ereleng
+	provides = archlinux
+
+pkgname = anarchlinux
