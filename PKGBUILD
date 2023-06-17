@@ -1,13 +1,13 @@
 # Maintainer:   Razer <razer[AT]neuf[DOT]fr>
 pkgname=rf24
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=0
 pkgdesc='Linux support for RF24 radio modules'
 arch=(any)
 url='https://github.com/nRF24/RF24'
 license=('GPL2')
 source=("https://github.com/nRF24/RF24/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0fac2815d0f08e1ff2c0a903741f537609c27dde88b0347733be7b60b035ce85')
+sha256sums=('665284886e15c0bcc3a09c83537f7aade9633d7e7cee8c86f4420fad35937aef')
 
 build() {
   cd "$srcdir/RF24-$pkgver"
