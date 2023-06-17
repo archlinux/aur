@@ -6,7 +6,7 @@ url="https://stitchpanorama.sourceforge.net/Python/amoeba.py"
 arch=('any')
 license=('GPL2')
 depends=('python')
-makedepends=("python" "python2")
+makedepends=("python")
 source=("http://stitchpanorama.sourceforge.net/Python/amoeba.py"
         "deepcopy.patch"
         "setup.py")

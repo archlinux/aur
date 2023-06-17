@@ -6,7 +6,6 @@ pkgbase = python-amoeba
 	arch = any
 	license = GPL2
 	makedepends = python
-	makedepends = python2
 	depends = python
 	source = http://stitchpanorama.sourceforge.net/Python/amoeba.py
 	source = deepcopy.patch
@@ -16,4 +15,3 @@ pkgbase = python-amoeba
 	md5sums = c68322a7608767cc03012e62b3baa546
 
 pkgname = python-amoeba
-
