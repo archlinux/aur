@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=halp-bin
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="A CLI tool to get help with CLI tools"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha512sums_x86_64=('f21912afaef3925864b533f383ddaf8f3f71bd7609d7818fb7aa811a6ef2b99372554bfb4002e90e3bf78bd0e63ed377dcdb0d6cadcae0648f9edcdc48a4eb05')
+sha512sums_x86_64=('275074f1246647ccb2c0b2575fe1ee254e8608904f8c346fcdeaba206bd329aa41c947f576086d604025d2785e3a5a6a44a289085ecb0be5565c5e984e6dec59')
 
 package() {
   cd "${pkgname%-bin}-$pkgver"
