@@ -1,5 +1,5 @@
 pkgbase = kodi-eggz
-	pkgver = 21.0a1
+	pkgver = 21.0a2
 	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
@@ -58,12 +58,10 @@ pkgbase = kodi-eggz
 	depends = tinyxml
 	depends = shairplay
 	depends = libdisplay-info
-	source = git+https://github.com/xbmc/xbmc.git#tag=21.0a1-Omega
+	source = git+https://github.com/xbmc/xbmc.git#tag=21.0a2-Omega
 	source = git+https://github.com/xbmc/vfs.rar.git
-	source = 0001-patching-the-patch-for-crossguid.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c5f89b5149b3f9fef7f138a0795402bcda1b6b097fe47e35b661f997fc5eebfd
 
 pkgname = kodi-eggz
 	pkgdesc = Latest stable-ish kodi build with VFS automaticly installed

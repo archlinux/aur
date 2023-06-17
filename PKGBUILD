@@ -1,7 +1,7 @@
 pkgbase=kodi-eggz
 pkgname=kodi-eggz
-pkgver=21.0a1
-gittag=21.0a1-Omega
+pkgver=21.0a2
+gittag=21.0a2-Omega
 pkgrel=2
 arch=('x86_64')
 url="https://kodi.tv"
@@ -22,13 +22,11 @@ makedepends=(
 source=(
   "git+https://github.com/xbmc/xbmc.git#tag=$gittag"
   "git+https://github.com/xbmc/vfs.rar.git"
-  "0001-patching-the-patch-for-crossguid.patch"
 )
 
 sha256sums=(
 'SKIP'
 'SKIP'
-'c5f89b5149b3f9fef7f138a0795402bcda1b6b097fe47e35b661f997fc5eebfd'
 )
 
 pkgver() {
