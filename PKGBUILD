@@ -9,7 +9,7 @@ url="https://github.com/Kitware/${_base}"
 license=(MIT)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-fermium npm)
-checkdepends=(python-pytest)
+checkdepends=(python-pytest-xprocess) # python-seleniumbase
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('ddfda21085b9242cccb831d88172e6b43d64dc13c632b6f6fa1a820ae0370924f719525d88905f3f612a7a11d2d3f3846d775e41439444323ad3568eae62e7d6')
 
@@ -25,7 +25,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest
+  test-env/bin/python -m pytest --ignore=tests/test_reactivity.py --ignore=tests/test_vue23.py
 }
 
 package() {
