@@ -1,4 +1,4 @@
-From c0b82718c4994fce670926d4d5deb24459838682 Mon Sep 17 00:00:00 2001
+From 0e9c9f779c31d51206db84783130ca3f6a0d44f7 Mon Sep 17 00:00:00 2001
 From: Ronan Pigott <ronan@rjp.ie>
 Date: Thu, 15 Jun 2023 13:03:38 -0700
 Subject: [PATCH] ssh-agent: add systemd socket-based activation
@@ -81,7 +81,7 @@ index 07893e870659..d12b6e9c0588 100644
  echo ""
  
 diff --git a/ssh-agent.c b/ssh-agent.c
-index c72518ba3537..4e62dce4eebb 100644
+index c72518ba3537..0c31609742d3 100644
 --- a/ssh-agent.c
 +++ b/ssh-agent.c
 @@ -69,6 +69,9 @@
@@ -124,8 +124,8 @@ index c72518ba3537..4e62dce4eebb 100644
 +			fprintf(stderr, "%s not set, cannot use socket-activation",
 +				SSH_AUTHSOCKET_ENV_NAME);
 +			exit(1);
-+		} else if (!sd_is_socket_unix(SD_LISTEN_FDS_START, SOCK_STREAM, 0, agentsocket, 0)) {
-+			fprintf(stderr, "Unexpected auth sock received from systemd\n");
++		} else if (sd_is_socket_unix(SD_LISTEN_FDS_START, SOCK_STREAM, 1, agentsocket, 0) <= 0) {
++			fprintf(stderr, "Unexpected auth sock received from systemd. Expected %s\n", agentsocket);
 +			exit(1);
 +		} else if (nfds > 1) {
 +			fprintf(stderr, "too many fds received from systemd (%d)\n", nfds);
