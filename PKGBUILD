@@ -2,8 +2,8 @@
 #
 # A thanks to Daniel Bermond for some inspiration (code) in the PKGBUILD
 pkgname=caffe-cmake-git
-pkgver=1.0.r50.gc430690aa
-pkgrel=2
+pkgver=1.0.r134.g04ab089db
+pkgrel=1
 epoch=
 pkgdesc="A deep learning framework made with expression, speed, and modularity in mind. Uses cmake to build giving great flexibility."
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
         'python-yaml' 'python-pillow' 'python-six'
     # AUR:
         # required:
-            'openblas-lapack'
+            'blas-openblas'
         # not required:
             # 'nccl'
         #python:
@@ -27,12 +27,14 @@ depends=(
     # python-pydotplus (or python-pydot) is required by python executable draw_net.py
     # https://github.com/BVLC/caffe/blob/691febcb83d6a3147be8e9583c77aefaac9945f8/python/caffe/draw.py#L7-L22
 )
-makedepends=('git' 'gcc6' 'doxygen' 'texlive-core' 'cmake')
+makedepends=('git' 'gcc' 'doxygen' 'texlive-core' 'cmake')
 provides=('caffe')
 conflicts=('caffe' 'caffe-cpu' 'caffe-cpu-git' 'caffe-dr-git' 'caffe-mnc-dr-git'
            'caffe2' 'caffe2-git' 'caffe2-cpu' 'caffe2-cpu-git')
-source=("${pkgname}"::"git+https://github.com/BVLC/caffe.git")
-md5sums=('SKIP')
+source=("${pkgname}"::"git+https://github.com/BVLC/caffe.git"
+       "caffe-1.0-opencv4-fix.patch")
+md5sums=('SKIP'
+         '07001b22dd7f2133af0a4149bbcb96a5')
 
 pkgver() {
     cd "$pkgname"
@@ -47,11 +49,13 @@ prepare() {
   # give the user options as to how they will install
   # COMMENT if you do not wish to edit the configuration
   $EDITOR CMakeLists.txt
+
+  patch -Np1 -i "${srcdir}/caffe-1.0-opencv4-fix.patch"
 }
 
 build() {
   cd "${srcdir}/$pkgname"
-  mkdir "build"
+  mkdir -p "build"
   cd build
   cmake -DBLAS=open ..
   ## UNCOMMENT if you wish to have a parallelized build. Race conditions may arise.
@@ -75,9 +79,11 @@ package() {
   # move python files over
   cd "${srcdir}/$pkgname/build/install"
   mkdir -p usr
-  mkdir -p "${pkgdir}/usr/lib/python3.6/site-packages/"
+  mkdir -p "${pkgdir}/usr/lib/python3.8/site-packages/"
+
   cd "${srcdir}/$pkgname/build/install/python"
-  mv caffe/ "${pkgdir}/usr/lib/python3.6/site-packages/"
+  mv caffe/ "${pkgdir}/usr/lib/python3.8/site-packages/"
+
   mkdir -p "${pkgdir}/usr/share/Caffe/python/examples/"
   mv *.py "${pkgdir}/usr/share/Caffe/python/examples/"
 
@@ -89,7 +95,8 @@ package() {
   cd "${srcdir}/$pkgname/build/install"
   mv share/ usr/
   mv bin/ usr/
-  mv lib64 usr/lib
+  mv lib usr/lib
+  mv include/ usr/
   cp * -r "${pkgdir}"
 }
 
