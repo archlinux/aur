@@ -1,0 +1,13 @@
+pkgbase = php-language-server-git
+	pkgdesc = PHP language server implementation
+	pkgver = v5.4.6.r27.ga66d994
+	pkgrel = 1
+	url = https://github.com/zobo/php-language-server
+	arch = x86_64
+	license = ISC
+	makedepends = composer
+	depends = php
+	source = php-language-server::git+https://github.com/zobo/php-language-server.git
+	sha256sums = SKIP
+
+pkgname = php-language-server-git
