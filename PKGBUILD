@@ -6,7 +6,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
 pkgver=2.56.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SVG rendering library (mingw-w64)"
 arch=('any')
 url="https://wiki.gnome.org/action/show/Projects/LibRsvg"
@@ -63,8 +63,8 @@ build() {
       --disable-tools
     # pass static rust package to linker
     sed -i "s/^deplibs_check_method=.*/deplibs_check_method=\"pass_all\"/g" libtool
-    # add missing crt libs (bcrypt, ws2_32 and userenv) to LIBRSVG_LIBS
-    sed -i "s/^LIBRSVG_LIBS = .*/& -lbcrypt -lws2_32 -luserenv/g" Makefile
+    # add missing crt libs (bcrypt, ws2_32, userenv and ntdll) to LIBRSVG_LIBS
+    sed -i "s/^LIBRSVG_LIBS = .*/& -lbcrypt -lws2_32 -luserenv  -lntdll/g" Makefile
 
     make
     popd
