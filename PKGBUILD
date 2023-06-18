@@ -7,9 +7,10 @@ url="https://pysolfc.sourceforge.io/"
 pkgdesc="Music for PySol Fan Club Edition"
 arch=('any')
 license=('GPL3')
+conflicts=('pysolfc-music')
 depends=('pysolfc')
 source=("https://github.com/shlomif/pysol-music/archive/refs/tags/4.50.tar.gz")
-sha512sums=('SKIP')
+sha1sums=('85151a633abc3094ec9cc8348ef4fe2c197898c7')
 
 package() {
   cd pysol-music-4.50/data/music
