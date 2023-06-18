@@ -39,4 +39,6 @@ prepare() {
 
 package() {
 	cp -av usr $pkgdir/
+	# fix https://bugs.webkit.org/show_bug.cgi?id=256663
+	sed -i "s/Exec=caido/Exec=JSC_useDFGJIT=0 caido/" $pkgdir/usr/share/applications/*.desktop
 }
