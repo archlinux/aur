@@ -25,7 +25,8 @@ depends=(clang
          python-cairo
          python-yaml
          python-jedi
-         python-pycodestyle)
+         python-pycodestyle
+         python-sphinx_rtd_theme)
 
 makedepends=(gprbuild
 #             texlive-latexextra
