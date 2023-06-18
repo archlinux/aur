@@ -1,0 +1,14 @@
+pkgbase = aicommits
+	pkgdesc = A CLI that writes your git commit messages for you with AI
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/Nutlope/aicommits
+	arch = any
+	license = MIT
+	makedepends = jq
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.org/aicommits/-/aicommits-1.11.0.tgz
+	sha256sums = b74cf25eb31eb7098d01f482cd64a87e2f59d7efa11f5273fbb353f35e850c5d
+
+pkgname = aicommits
