@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methylscaper
-_pkgver=1.8.0
+_pkgver=1.8.3
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=${_pkgver//[:-]/.}
 pkgrel=1
-pkgdesc='Visualization of Methylation Data'
-arch=('any')
+pkgdesc="Visualization of Methylation Data"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL2)
 depends=(
-  r
   r-biocparallel
   r-biostrings
   r-data.table
@@ -23,19 +23,22 @@ depends=(
   r-summarizedexperiment
 )
 optdepends=(
+  r-biocstyle
   r-devtools
   r-knitr
+  r-r.utils
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('154eeadceaf54a4437e238a050bfa8ebf184241636936f430d7b791a1586f4c3')
+md5sums=('d60bd7f7fae645fd76f981abfde99c50')
+sha256sums=('d32dfafcc4ff4f12de9665ab9d16d28d45e7cb8f105403dd8ccb5315e5ece74d')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
