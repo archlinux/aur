@@ -1,0 +1,35 @@
+pkgbase = xerox-spl-driver
+	pkgdesc = Xerox SPL Linux Driver for printers and scanners. Also supports B205 B210 B215, Phaser 3020 3052 3117 3140 3155 3160 3200MFP 3250 3260 3300MFP 3320 3435 3600 6110MFP, WorkCentre 3025 3210 3215 3220 3225 3315 3325 3550 4118 PE120 PE220, FaxCentre 2218
+	pkgver = 1.00.39.3
+	pkgrel = 1
+	url = https://www.support.xerox.com
+	arch = x86_64
+	arch = i686
+	license = custom:xerox
+	makedepends = binutils
+	makedepends = tar
+	options = !strip
+	source = http://download.support.xerox.com/pub/drivers/B215/drivers/linux/ar/Xerox_B215_Linux_PrintDriver_Utilities.tar.gz
+	source = xerox_mfp-smfp.conf
+	sha256sums = ba510467069bf2b0bb13b0cee6f25516da490b0d2d5940846273dfe31a93eb3a
+	sha256sums = 2b64b114c290e9f122d9dd8b553352d32c4317d1de1cabc46cd59dc4f30974a1
+
+pkgname = xerox-spl-driver-common
+	pkgdesc = License Xerox SPL Linux Driver for printers and scanners.
+
+pkgname = xerox-spl-driver-printer
+	pkgdesc = Xerox SPL driver for printers. Also supports B205 B210 B215, Phaser 3020 3052 3117 3140 3155 3160 3200MFP 3250 3260 3300MFP 3320 3435 3600 6110MFP, WorkCentre 3025 3210 3215 3220 3225 3315 3325 3550 4118 PE120 PE220, FaxCentre 2218
+	depends = xerox-spl-driver-common
+	depends = cups
+	depends = ghostscript
+
+pkgname = xerox-spl-driver-scanner
+	pkgdesc = Xerox driver for scanners. Also supports Phaser 6110MFP, WorkCentre 3210 3220 4118 PE120 PE220
+	depends = xerox-spl-driver-common
+	depends = libxml2
+	depends = libusb-compat
+	depends = sane
+
+pkgname = xerox-spl-driver
+	depends = xerox-spl-driver-printer
+	depends = xerox-spl-driver-scanner
