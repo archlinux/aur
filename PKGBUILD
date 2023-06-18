@@ -1,44 +1,57 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=nightpdf-git
-pkgver=0.2.1.r10.g9ab6f45
+pkgver=2.0.3.r0.g190a9f7
 pkgrel=1
 pkgdesc='Dark mode PDF reader (git version)'
-arch=('any')
-url='https://github.com/joeloya/NightPDF/'
-license=('custom:WTFPL')
-depends=('sh' 'electron' 'hicolor-icon-theme')
-makedepends=('git')
+arch=('x86_64')
+url='https://github.com/Lunarequest/NightPDF/'
+license=('GPL2')
+depends=('sh' 'alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'gtk3' 'libcups' 'libdrm'
+         'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon'
+         'libxrandr' 'mesa' 'nspr' 'nss' 'pango' 'hicolor-icon-theme')
+makedepends=('git' 'libxcrypt-compat' 'yarn')
 provides=('nightpdf')
 conflicts=('nightpdf')
-source=('git+https://github.com/joeloya/NightPDF.git'
+source=('git+https://github.com/Lunarequest/NightPDF.git'
         'nightpdf.sh'
-        'nightpdf.desktop')
+        'nightpdf.desktop'
+        '010-nightpdf-remove-unwanted-targets.patch')
 sha256sums=('SKIP'
-            'cef2a1e472a922bc7a93a5ad9b380821a7588ed1b89d89c3a8e8544d675eb63d'
-            '1eb70aff787a3a18fb2d5f8f3efabefd4ee0f9a8ec0fdac02c2c25decc5c31b3')
+            '0984811e96d0350fc7c2a0cba279a96c24b671b240d2f9d5370ceece47530334'
+            '1eb70aff787a3a18fb2d5f8f3efabefd4ee0f9a8ec0fdac02c2c25decc5c31b3'
+            '4cf7cd9a7b19bd218cddf936ddf11b44560a177e5dc715fa107d9fe4bb736e62')
+
+prepare() {
+    patch -d NightPDF -Np1 -i "${srcdir}/010-nightpdf-remove-unwanted-targets.patch"
+}
 
 pkgver() {
     git -C NightPDF describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
+build() {
+    cd NightPDF
+    HOME="${srcdir}/.electron-gyp" yarn
+    HOME="${srcdir}/.electron-gyp" yarn dist
+}
+
 package() {
+    install -d -m755 "${pkgdir}/opt"
     install -D -m755 nightpdf.sh "${pkgdir}/usr/bin/nightpdf"
     install -D -m644 nightpdf.desktop -t "${pkgdir}/usr/share/applications"
-    install -D -m644 NightPDF/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -D -m644 NightPDF/{app.js,package.json} -t "${pkgdir}/usr/share/nightpdf"
-    cp -a NightPDF/app "${pkgdir}/usr/share/nightpdf"
-    
+    cp -dr --no-preserve='ownership' NightPDF/dist/linux-unpacked "${pkgdir}/opt/nightpdf"
+
     local _file
     local _res
     while read -r -d '' _file
     do
         _res="$(file -S "$_file" | grep -o '[0-9]*[[:space:]]x[[:space:]][0-9]*,' | awk '{ print $1 }')"
-        
+
         # skip duplicated icons
         [ -d "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}" ] && continue
-            
-        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
+
+        install -d -m755 "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
         install -D -m644 "$_file" "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/nightpdf.png"
     done < <(find NightPDF/build/icon.iconset -type f -name '*.png' -print0)
 }

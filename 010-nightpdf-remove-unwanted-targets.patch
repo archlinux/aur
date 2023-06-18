@@ -1,0 +1,20 @@
+--- a/electron-builder-config.js
++++ b/electron-builder-config.js
+@@ -35,16 +35,8 @@ const config = {
+ 		publish: ["github"],
+ 		target: [
+ 			{
+-				target: "AppImage",
+-				arch: ["x64", "arm64"],
+-			},
+-			{
+ 				target: "deb",
+-				arch: ["x64", "arm64"],
+-			},
+-			{
+-				target: "rpm",
+-				arch: ["x64", "arm64"],
++				arch: ["x64"],
+ 			},
+ 		],
+ 		mimeTypes: ["application/pdf", "application/x-pdf"],
