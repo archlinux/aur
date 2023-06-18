@@ -1,7 +1,7 @@
 # Maintainer: Nicola Revelant <nicolarevelant@outlook.com>
 
 pkgname=italian-draughts-git
-pkgver=1.3.2.r3.gebb11e5
+pkgver=1.3.3.r0.gb2ad56a
 pkgrel=1
 pkgdesc="Italian Draughts, a strategy game for 2 players written in C++"
 
