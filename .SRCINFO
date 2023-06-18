@@ -1,6 +1,6 @@
 pkgbase = mp-sonivoxeas
 	pkgdesc = Multiplatform Sonivox EAS for Qt
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/pedrolcl/multiplatform-sonivoxeas
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mp-sonivoxeas
 	depends = drumstick
 	depends = qt6-multimedia
 	depends = sonivox
-	source = https://github.com/pedrolcl/multiplatform-sonivoxeas/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 46b27083e92b5e6759b7ba3284a513069f6987ddfa2e07619dfeb1635e28e532
+	source = https://github.com/pedrolcl/multiplatform-sonivoxeas/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = 91cfb33602c833d366b3e51bf00d15bd69d719d397a20a1109aeff2f6422e0e8
 
 pkgname = mp-sonivoxeas

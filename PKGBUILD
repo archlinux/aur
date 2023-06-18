@@ -5,7 +5,7 @@
 
 pkgname=mp-sonivoxeas
 _pkgname=multiplatform-sonivoxeas
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Multiplatform Sonivox EAS for Qt"
 arch=(x86_64)
@@ -14,25 +14,17 @@ license=('GPL3')
 depends=(drumstick qt6-multimedia sonivox)
 makedepends=(cmake)
 source=("https://github.com/pedrolcl/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('46b27083e92b5e6759b7ba3284a513069f6987ddfa2e07619dfeb1635e28e532')
-
-prepare() {
-  cd "$_pkgname-$pkgver"
-
-  # Do not build against Qt5 because Drumstick is built against Qt6
-  sed -i 's/Qt5 //g' CMakeLists.txt
-
-  # Fix icon installation target (from 0699cdc70d25d10ccfe6aa9269333f6a374b9d7b)
-  sed -i 's#icons/hicolor/128x128#icons/hicolor/128x128/apps#g' guisynth/CMakeLists.txt
-
-  # Let WMs recognize mp_guisynth windows
-  echo "StartupWMClass=mp_GUISynth" >> guisynth/mp_guisynth.desktop
-}
+sha256sums=('91cfb33602c833d366b3e51bf00d15bd69d719d397a20a1109aeff2f6422e0e8')
 
 build() {
+
+  # https://github.com/pedrolcl/drumstick/issues/12
+  export CXXFLAGS+=" -D DRUMSTICK_EXPORT=\"__attribute__((visibility(\\\"default\\\")))\""
+
   cmake -B build -S "$_pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_QT=6
 
   cmake --build build
 }
