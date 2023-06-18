@@ -8,7 +8,7 @@
 
 pkgbase=handbrake-git
 pkgname=(handbrake-git handbrake-cli-git)
-pkgver=1.6.0.r10.g788aa707c
+pkgver=1.6.1.r48.g15dd97b9d
 pkgrel=1
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened. Last stable branch"
 arch=(i686 x86_64)
@@ -30,15 +30,16 @@ source=("${pkgname%-git}::git+https://github.com/HandBrake/HandBrake.git#branch=
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/SVT-AV1-v1.4.1.tar.gz'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/x265-snapshot-20221130-12747.tar.gz'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/zimg-3.0.4.tar.gz')
-_commondeps=(libxml2 libass libvorbis opus speex libtheora lame
+_commondeps=(libxml2 libass libvorbis opus speex libtheora lame libjpeg-turbo
              libx264.so jansson libvpx libva numactl)
-_guideps=(gst-plugins-base gtk3 librsvg libgudev)
-makedepends=(git intltool python nasm wget cmake meson
+_guideps=(gst-plugins-base gtk3 libgudev)
+makedepends=(git intltool python nasm wget cmake meson llvm clang
              x264
              "${_commondeps[@]}" "${_guideps[@]}")
 optdepends=('libdvdcss: for decoding encrypted DVDs'
             'intel-media-sdk: for enabling Intel QSV'
-            'nvidia-utils: for enabling Nvidia nvenc')
+            'nvidia-utils: for Nvidia users, enable Nvidia nvenc'
+            'cuda: for Nvidia users, enable Nvidia nvdec')
 sha256sums=('SKIP'
             '07d325da97a5a3cb58d83c54b2ce1148dc84dc9bb3971b0c30ff4cc16e159194'
             '4a4eb6cecbc8c26916ef58886d478243de8bcc46710b369c04d6891b0155ac0f'
@@ -79,7 +80,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  
+
   [ -d download ] || mkdir download
   for _tarball in ${noextract[@]}; do
     cp ../${_tarball} download/
@@ -96,6 +97,7 @@ prepare() {
     --enable-x265 \
     --enable-numa \
     --enable-fdk-aac \
+    --enable-nvdec \
     --enable-nvenc \
     --enable-qsv \
     --enable-vce
@@ -107,7 +109,7 @@ package_handbrake-git() {
   pkgdesc="Multithreaded video transcoder"
   depends=("${_commondeps[@]}" "${_guideps[@]}")
   optdepends+=('gst-plugins-good: for video previews'
-              'gst-libav: for video previews')
+               'gst-libav: for video previews')
   provides=(handbrake)
   conflicts=(handbrake)
 
