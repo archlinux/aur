@@ -16,6 +16,15 @@ post_install() {
 post_upgrade() {
 	# SUID chrome-sandbox for Electron 5+
 	chmod 4755 '/opt/PureVPN/chrome-sandbox' || true
+
+	echo "-------------------------------"
+	echo ""
+	echo ""
+	echo "After updating PureVPN it might say again \"apt: command not found\"."
+	echo "Just click \"Quit\" and open it again. The error should go away."
+	echo ""
+	echo ""
+	echo "-------------------------------"
 }
 
 post_remove() {

@@ -2,13 +2,13 @@
 # Maintainer: 1nikolas
 # Contributor: 1nikolas
 pkgname=purevpn-gui
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc='PureVPN Linux Application (GUI)'
 arch=('x86_64')
 url='https://www.purevpn.com/download/linux-vpn'
 license=('Custom')
-depends=('gtk3' 'libnotify' 'nss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'openresolv' 'openvpn' 'wireguard-tools')
+depends=('gtk3' 'libnotify' 'nss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'openresolv' 'openvpn' 'wireguard-tools' 'net-tools' 'coreutils')
 makedepends=('gcc')
 optdepends=('libappindicator-gtk3')
 options=('!strip' '!emptydirs')
@@ -17,8 +17,8 @@ source_x86_64=("https://purevpn-dialer-assets.s3.amazonaws.com/cross-platform/li
                'dpkg-query.c'
                'purevpn.desktop'
                'purevpn')
-sha512sums_x86_64=('aea0a866bb2dfe5dcad20fbc09f63c986744b19df71091dfb054ee6a0ff195b2fda45711ef381b2242efa9b1aad2d2444151a76d6e22b9f8c8bae6ad7a533c56'
-                   '51b12c730cb87e6a2218e8d35d2076e553dd8c8fdf42cab8b462cc48e5222bde0fe822c9b50a75040eb1ab47fc9bcedbae58f63d0d04e27f6cfa33db501614b2'
+sha512sums_x86_64=('fc2f844b875a44399705ea70a20feab337cbe72217b1176dbf7f5e1854cb0b1884f1df3face60533b7d8a6be3462edd7cad1db188ad179eec29a7d1611e2a74a'
+                   '23011a501725a3980441007fc579f323a9ac50821f079b6ca555ce4c2d500ada6bfa861169456ccd0a61ff4a4f4fc967358f0b25c0a082c64b169f502435287a'
                    '6d91106dee8fc9a61c5f111acb2153bbfc7212ee6feda7a744244e0da49f5b244f4a39853659c4834f9ab91683bcc4cf3eedbf64eae38828d4327c899b3f293c'
                    '20ca17878747f6c08bb8506a9e945f3475860b38a0be54e35155d920431a7250c6626b90d538d6823c52b5a56f1115ffafc2628e326326d9bc853bcdd169033a')
 
