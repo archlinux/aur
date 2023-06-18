@@ -1,7 +1,7 @@
 # Maintainer : MorsMortium <morsmortium@disroot.org>
 
 pkgname=0x0uploader
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Uploader for the 0x0 file sharing service.'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('xclip: X clipboard'
     'wl-clipboard: Wayland clipboard'
     'libnotify: Notifications')
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/MorsMortium/$pkgname/archive/$pkgver.tar.gz")
-sha1sums=('7e8855ed64dacb6d4b80af96e90017cba17ec285')
+sha1sums=('a06c5a99d5527d6caae1c92ed2098acbf51b378f')
 
 package() {
   cd "${srcdir}/${pkgname}"
