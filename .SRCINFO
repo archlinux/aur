@@ -1,15 +1,16 @@
 pkgbase = r-rcppgsl
 	pkgdesc = 'Rcpp' Integration for 'GNU GSL' Vectors and Matrices
 	pkgver = 0.3.13
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=RcppGSL
 	arch = x86_64
 	license = GPL
-	depends = r
-	depends = r-rcpp
+	checkdepends = r-tinytest
 	depends = gsl
+	depends = r-rcpp
 	optdepends = r-tinytest
 	source = https://cran.r-project.org/src/contrib/RcppGSL_0.3.13.tar.gz
+	md5sums = d03bf65ffa004822e2169c382ee1033c
 	sha256sums = fe5e73bc119c6424e1a40b6fea17417a7bba93e81dbe9b7cf86dde9b8e8d93e7
 
 pkgname = r-rcppgsl
