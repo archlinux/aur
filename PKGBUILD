@@ -1,8 +1,8 @@
 # Maintainer: Viačasłaŭ Chalikin <viachaslavic@outlook.com>
 
 pkgname=icecat-ublock-origin
-pkgver=1.49.2
-pkgrel=2
+pkgver=1.50.0
+pkgrel=1
 pkgdesc='Efficient blocker add-on for various browsers. Fast, potent, and lean'
 arch=('any')
 url=https://github.com/gorhill/uBlock
