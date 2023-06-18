@@ -4,7 +4,7 @@
 # Contributor: Artem Sereda <overmind88 at gmail dot com>
 
 pkgname=flacon
-pkgver=11.1.0
+pkgver=11.2.0
 pkgrel=1
 pkgdesc="An Audio File Encoder. Extracts audio tracks from an audio CD image to separate tracks."
 arch=(x86_64 i686 aarch64)
@@ -35,7 +35,7 @@ prepare() {
 build() {
   cd "${srcdir}/flacon/build" #-Wno-dev
   cmake ..  \
-    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTS=Yes
   make
