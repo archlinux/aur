@@ -2,7 +2,7 @@
 
 _pkgname=lbry-gtk
 pkgname=${_pkgname}-git
-pkgver=464.2100cf4
+pkgver=r492.6939df3
 pkgrel=1
 pkgdesc='Native desktop LBRY client'
 arch=('any')
