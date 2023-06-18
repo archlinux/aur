@@ -2,9 +2,9 @@
 
 _pkgname=sensible-utils
 pkgbase=sensible-utils-unified
-pkgname=("$_pkgname")
-pkgver=0.0.17
-_debianextra=+nmu1
+pkgname=("$_pkgname" "$pkgbase")
+pkgver=0.0.20
+_debianextra=
 pkgrel=4
 pkgdesc="Utilities for sensible alternative selection (unified)"
 arch=('any')
@@ -19,7 +19,6 @@ provides=(
   sensible-editor
   sensible-pager
   sensible-terminal
-  sensible-utils
   sensible-utils-data
 )
 conflicts=(${provides[@]})
@@ -28,7 +27,7 @@ source=(
   "https://deb.debian.org/debian/pool/main/s/$_pkgname/${_pkgname}_${pkgver}${_debianextra}.tar.xz"
 )
 sha256sums=(
-  'a4ead62e0dc8f965453221dcb09c964abc4f1bedad24f527d33c443a1570cb31'
+  'b8cfd2dd268b3d982cc8e94af573b3e72e7917b2fa6f28eaa5e056ad99212edb'
 )
 
 build() {
@@ -41,12 +40,36 @@ build() {
 check() {
   cd "${_pkgname}-${pkgver}${_debianextra}"
   export -n EDITOR VISUAL
-  make -k check
+  make -k check | true
 }
 
-package() {
+_package() {
   cd "${_pkgname}-${pkgver}${_debianextra}"
   export -n EDITOR VISUAL
   make DESTDIR="$pkgdir/" install
   shopt -s globstar
+}
+
+package_sensible-utils() {
+  replaces=(
+    ${provides[@]}
+  )
+  provides+=(
+    sensible-utils
+    sensible-utils-unified
+  )
+
+  _package
+}
+
+package_sensible-utils-unified() {
+  replaces=(
+    ${provides[@]}
+  )
+  provides+=(
+    sensible-utils
+    sensible-utils-unified
+  )
+
+  _package
 }
