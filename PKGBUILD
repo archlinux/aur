@@ -7,7 +7,7 @@ _module='ffmpeg-python'
 _pkgname="python-$_module"
 pkgname="$_pkgname"
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="(old) Python bindings for FFmpeg with complex filtering support"
 arch=(any)
 url=https://github.com/kkroening/ffmpeg-python
@@ -35,9 +35,10 @@ provides=(
   'python-ffmpeg'
 )
 conflicts=(
-  ${provides[@]}
+  # ${provides[@]}
   'python-python-ffmpeg'
 )
+replaces=('python-ffmpeg')
 
 source=(
   "$_module-$pkgver.tar.gz"::"https://github.com/kkroening/ffmpeg-python/archive/$pkgver.tar.gz"
