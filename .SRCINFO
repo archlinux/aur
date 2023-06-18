@@ -1,16 +1,15 @@
 pkgbase = miniplayer-git
 	pkgdesc = A curses based mpd client with basic functionality and album art written for the Kitty terminal.
-	pkgver = 1.5.0.r0.g15f21d4
-	pkgrel = 1
+	pkgver = 1.8.1.r7.g19f6759
+	pkgrel = 2
 	url = https://github.com/guardkenzie/miniplayer
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python
+	depends = python>=3.7
 	depends = python-mpd2
-	depends = python-pillow
-	depends = python-pixcat
+	depends = python-pixcat-git
 	depends = ueberzug
 	depends = python-colorthief
 	provides = miniplayer
