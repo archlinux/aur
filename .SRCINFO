@@ -1,23 +1,25 @@
 pkgbase = bsnes-qt5
-	pkgdesc = Super Nintendo emulator focusing on performance, features, and ease of use (Qt 5).
-	pkgver = 115
-	pkgrel = 2
+	pkgdesc = Super Nintendo emulator focusing on performance, features, and ease of use. (Qt 5)
+	pkgver = 20230610
+	pkgrel = 1
 	url = https://byuu.org/emulation/bsnes/
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = qt5-base
 	depends = libpulse
 	depends = libxv
 	depends = libao
 	depends = openal
 	depends = sdl2
-	conflicts = bsnes-classic
-	conflicts = bsnes-plus
+	provides = bsnes
 	conflicts = bsnes
-	source = https://github.com/bsnes-emu/bsnes/archive/v115.tar.gz
+	conflicts = bsnes-classic
+	conflicts = bsnes-hd
+	conflicts = bsnes-plus
+	source = bsnes::git+https://github.com/bsnes-emu/bsnes.git#commit=7ec3077079445c1ab591d542d475da5fa121632e
 	source = package.patch
-	sha256sums = e51d25f95b8fbcb91470b3dc8844d87206b74f3a164e41e6db271601e0cff93c
-	sha256sums = f391b8ce83ed1dfe93d83484464613de1fa1c454d69b02c5234efc9ef69fd3bb
+	sha256sums = SKIP
+	sha256sums = 12ed11da832105fd2424d4110a29b8bac546e36aceaf9196cc9290cef9706c85
 
 pkgname = bsnes-qt5
-

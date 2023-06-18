@@ -2,29 +2,33 @@
 # Contributor: Elaina Martineau <elainamartineau@gmail.com>
 
 pkgname=bsnes-qt5
-pkgver=115
-pkgrel=2
-pkgdesc='Super Nintendo emulator focusing on performance, features, and ease of use (Qt 5).'
-arch=('x86_64')
+pkgver=20230610
+_commit=7ec3077079445c1ab591d542d475da5fa121632e
+pkgrel=1
+pkgdesc='Super Nintendo emulator focusing on performance, features, and ease of use. (Qt 5)'
+arch=(x86_64)
 url='https://byuu.org/emulation/bsnes/'
-license=('GPL3')
-depends=('qt5-base' 'libpulse' 'libxv' 'libao' 'openal' 'sdl2')
-conflicts=('bsnes-classic' 'bsnes-plus' 'bsnes')
-source=("https://github.com/bsnes-emu/bsnes/archive/v${pkgver}.tar.gz" 'package.patch')
-sha256sums=('e51d25f95b8fbcb91470b3dc8844d87206b74f3a164e41e6db271601e0cff93c'
-            'f391b8ce83ed1dfe93d83484464613de1fa1c454d69b02c5234efc9ef69fd3bb')
+license=(GPL3)
+depends=(qt5-base libpulse libxv libao openal sdl2)
+makedepends=(git)
+conflicts=(bsnes bsnes-classic bsnes-hd bsnes-plus)
+provides=(bsnes)
+source=("bsnes::git+https://github.com/bsnes-emu/bsnes.git#commit=$_commit"
+         package.patch)
+sha256sums=('SKIP'
+            '12ed11da832105fd2424d4110a29b8bac546e36aceaf9196cc9290cef9706c85')
 
 prepare() {
-  cd "bsnes-${pkgver}"
+  cd "bsnes"
   patch --forward --strip=1 --input="${srcdir}/package.patch" --ignore-whitespace
 }
 
 build() {
-  cd "bsnes-${pkgver}"
+  cd "bsnes"
   make -C bsnes hiro=qt5 moc=/usr/bin/moc
 }
 
 package() {
-  cd "bsnes-${pkgver}"
+  cd "bsnes"
   make -C bsnes hiro=qt5 moc=/usr/bin/moc prefix="${pkgdir}/usr" install
 }
