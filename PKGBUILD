@@ -28,7 +28,8 @@ depends=(clang
          python-pycodestyle)
 
 makedepends=(gprbuild
-             texlive-latexextra
+#             texlive-latexextra
+             texlive-meta
              graphviz)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230428-16588-src.tar.gz
@@ -85,9 +86,9 @@ build()
         LIBRARY_TYPE=relocatable \
         GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython3.11 -gargs"
  
-    # Gnatdoc appears broken when trying to build docs. Disabling docs til fixed.
-    #  
-#   make -C docs all
+   # Gnatdoc appears broken when trying to build docs. Disabling docs til fixed.
+   #  
+   make -C docs all
 }
 
 
