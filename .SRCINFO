@@ -1,7 +1,7 @@
 pkgbase = sensible-utils-unified
 	pkgdesc = Utilities for sensible alternative selection (unified)
 	pkgver = 0.0.20
-	pkgrel = 4
+	pkgrel = 1
 	url = https://packages.debian.org/source/sid/sensible-utils
 	arch = any
 	license = GPL
