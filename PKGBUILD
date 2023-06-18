@@ -12,7 +12,7 @@ arch=(x86_64)
 url="https://nomacs.org/"
 license=(GPL3)
 depends=(exiv2 gcc-libs glibc libraw libtiff opencv qt5-base qt5-svg quazip)
-makedepends=(cmake git python qt5-tools)
+makedepends=(cmake git git-lfs qt5-tools python)
 optdepends=('qt5-imageformats: support additional image formats')
 source=("git+https://github.com/nomacs/nomacs.git#tag=${pkgver}"
         "nomacs-plugins-${_plugins_pkgver}.tar.gz::https://github.com/nomacs/nomacs-plugins/archive/${_plugins_pkgver}.tar.gz"
