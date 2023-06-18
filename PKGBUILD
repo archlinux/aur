@@ -2,17 +2,16 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 _gitname=telegram-qt
-pkgname=telegram-qt-git
+pkgbase=telegram-qt-git
+pkgname=(telegram-qt-git telegram-qt5-git telegram-qt6-git)
 pkgver=r2660.cd033446
 pkgrel=1
 pkgdesc="Qt bindings for the Telegram protocol"
 arch=(i686 x86_64)
 url="https://github.com/Kaffeine/telegram-qt"
 license=(GPL)
-depends=(qt5-declarative qt6-declarative openssl)
-makedepends=(cmake git)
-provides=(telegram-qt)
-conflicts=(telegram-qt)
+depends=(openssl)
+makedepends=(cmake git qt5-declarative qt6-declarative)
 source=("git+https://github.com/Kaffeine/$_gitname")
 md5sums=('SKIP')
 
@@ -22,17 +21,18 @@ pkgver() {
 }
 
 prepare() {
-  # Build for QT5
+  echo "--> Configuring QT5 library"
   cmake -S $_gitname -B build_qt5 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DBUILD_WITH_QT_VERSION=Qt5
-  # Build for QT6
+
+  echo "--> Configuring QT6 library"
   cmake -S $_gitname -B build_qt6 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DBUILD_WITH_QT_VERSION=Qt6
 }
 
@@ -43,9 +43,20 @@ build() {
   cmake --build build_qt6
 }
 
-package() {
+package_telegram-qt5-git() {
+  provides=(telegram-qt)
+  conflicts=(telegram-qt)
+  depends+=(qt5-declarative)
   echo "--> Installing QT5 library"
   DESTDIR="$pkgdir" cmake --install build_qt5
+}
+
+package_telegram-qt-git() {
+  depends+=(telegram-qt5-git)
+}
+
+package_telegram-qt6-git() {
+  depends+=(qt6-declarative)
   echo "--> Installing QT6 library"
   DESTDIR="$pkgdir" cmake --install build_qt6
 }

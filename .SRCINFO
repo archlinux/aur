@@ -8,12 +8,22 @@ pkgbase = telegram-qt-git
 	license = GPL
 	makedepends = cmake
 	makedepends = git
-	depends = qt5-declarative
-	depends = qt6-declarative
+	makedepends = qt5-declarative
+	makedepends = qt6-declarative
 	depends = openssl
-	provides = telegram-qt
-	conflicts = telegram-qt
 	source = git+https://github.com/Kaffeine/telegram-qt
 	md5sums = SKIP
 
 pkgname = telegram-qt-git
+	depends = openssl
+	depends = telegram-qt5-git
+
+pkgname = telegram-qt5-git
+	depends = openssl
+	depends = qt5-declarative
+	provides = telegram-qt
+	conflicts = telegram-qt
+
+pkgname = telegram-qt6-git
+	depends = openssl
+	depends = qt6-declarative
