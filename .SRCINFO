@@ -1,14 +1,14 @@
 pkgbase = go-task-git
 	pkgdesc = Task runner & Make alternative written in GO that runs taskfiles(Installs as go-task to avoid conflict with taskwarrior)
-	pkgver = 3.14.1.r12.g97d4a94
-	pkgrel = 4
+	pkgver = 3.26.0.r14.g5fdaa9aa
+	pkgrel = 1
 	url = https://github.com/go-task/task
 	arch = any
 	license = MIT
 	makedepends = go
 	makedepends = git
 	provides = go-task
-	source = task::git+https://github.com/go-task/task#branch=master
+	source = task::git+https://github.com/go-task/task#branch=main
 	sha256sums = SKIP
 
 pkgname = go-task-git

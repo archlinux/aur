@@ -1,8 +1,8 @@
 # Maintainer: Martin Rys <rys.pw/contact>
 pkgname=go-task-git
 _pkgname=task
-pkgver=3.14.1.r12.g97d4a94
-pkgrel=4
+pkgver=3.26.0.r14.g5fdaa9aa
+pkgrel=1
 pkgdesc="Task runner & Make alternative written in GO that runs taskfiles(Installs as go-task to avoid conflict with taskwarrior)"
 arch=('any')
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('go' 'git')
 provides=('go-task')
 
 _goname="github.com/go-task/task"
-source=("$_pkgname::git+https://github.com/go-task/task#branch=${BRANCH:-master}")
+source=("$_pkgname::git+https://github.com/go-task/task#branch=${BRANCH:-main}")
 sha256sums=('SKIP')
 
 pkgver() {
