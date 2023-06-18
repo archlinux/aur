@@ -1,0 +1,5 @@
+src/
+pkg/
+*.tar*
+user.js
+ujs2cfg.sh

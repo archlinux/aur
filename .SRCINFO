@@ -1,0 +1,91 @@
+pkgbase = gecko-arkenfox-autoconfig
+	pkgdesc = A split package which installs arkenfox as autoconfig.js policy on many browsers.
+	pkgver = 112.0
+	pkgrel = 1
+	url = https://github.com/arkenfox/user.js
+	arch = any
+	license = MIT
+	source = autoconfig.js
+	source = https://gist.githubusercontent.com/SpacingBat3/d9b56e0ee88f7a7201e6a45f4858b5e0/raw/d37c1853333fb7448ecb7124671a40f792751cac/ujs2cfg.sh
+	source = https://raw.githubusercontent.com/arkenfox/user.js/112.0/user.js
+	md5sums = f500bce7ef057a7db6c78bed2fe38609
+	md5sums = 121a7c8c67b8668f8553fcc49e18b4b2
+	md5sums = 4b076afb0bab5dd9c5e5566f3adee897
+	sha512sums = 695695e1279b829b4999bd0c55ad9ab5a1fca4bf67a58568c072a324781df0a712597192005ed69dc63d22cd58bd057d24858a3e445518265d785b0d0f24a9ed
+	sha512sums = 7d66fce8be8ac9ec2df5fe14c5492401e6d5deb04134232e94358f6bd2535ec14245d22194d9da6c93b972fa12d66e0029be8d233c1e0e497d673fd59a1674ec
+	sha512sums = 4ed527c990e9f74b994e47da1c71191184f3492b2b8bb178e3ba6a186dce4366cbda25a4e5edc4fee1ee4450aef3877a6d990fe708166491c3dc3ff37d86ff50
+	b2sums = 6b379e58ee3768d70cd6abdd61e36c4c01f2903ec2c24bcdae4a71d5e5f1c1961eeced5e5c63474566c9369e50f28338066e1ad3ecdf5bcbd54630b9d510340b
+	b2sums = dc413423d7c55223b8dbb61f8417ea199ed53af910d3bdd29add4c0dd2bf9a011535125fbbd74c1a3031be48d48e91f9d63ef4be21e214c8c428014d64595e7c
+	b2sums = 589ae7603e3221ce0f36a0e7b213b6343a86d2cb0bc66f82277be59cb5c9e78953cfdefdebc031a9c940d4447cdebefc9e8b15c2f37ce8b4125cbd5c90ac4d77
+
+pkgname = firefox-arkenfox-autoconfig
+	pkgdesc = Use arkenfox user.js system-wide, as firefox autoconfig.js policy
+	depends = firefox
+	provides = firefox-autoconfig
+	provides = firefox-policy
+	conflicts = firefox-autoconfig
+	conflicts = firefox-policy
+	conflicts = firefox-user-autoconfig
+
+pkgname = firefox-esr-arkenfox-autoconfig
+	pkgdesc = Use arkenfox user.js system-wide, as firefox-esr autoconfig.js policy
+	depends = firefox-esr
+	provides = firefox-esr-autoconfig
+	provides = firefox-esr-policy
+	conflicts = firefox-esr-autoconfig
+	conflicts = firefox-esr-policy
+	conflicts = firefox-esr-user-autoconfig
+
+pkgname = firefox-developer-edition-arkenfox-autoconfig
+	pkgdesc = Use arkenfox user.js system-wide, as firefox-developer-edition autoconfig.js policy
+	depends = firefox-developer-edition
+	provides = firefox-developer-edition-autoconfig
+	provides = firefox-developer-edition-policy
+	conflicts = firefox-developer-edition-autoconfig
+	conflicts = firefox-developer-edition-policy
+	conflicts = firefox-developer-edition-user-autoconfig
+
+pkgname = icecat-arkenfox-autoconfig
+	pkgdesc = Use arkenfox user.js system-wide, as icecat autoconfig.js policy
+	depends = icecat
+	provides = icecat-autoconfig
+	provides = icecat-policy
+	conflicts = icecat-autoconfig
+	conflicts = icecat-policy
+	conflicts = icecat-user-autoconfig
+
+pkgname = palemoon-arkenfox-autoconfig
+	pkgdesc = Use arkenfox user.js system-wide, as palemoon autoconfig.js policy
+	depends = palemoon
+	provides = palemoon-autoconfig
+	provides = palemoon-policy
+	conflicts = palemoon-autoconfig
+	conflicts = palemoon-policy
+	conflicts = palemoon-user-autoconfig
+
+pkgname = waterfox-g-arkenfox-autoconfig
+	pkgdesc = Use arkenfox user.js system-wide, as waterfox-g autoconfig.js policy
+	depends = waterfox-g
+	provides = waterfox-g-autoconfig
+	provides = waterfox-g-policy
+	conflicts = waterfox-g-autoconfig
+	conflicts = waterfox-g-policy
+	conflicts = waterfox-g-user-autoconfig
+
+pkgname = waterfox-g4-arkenfox-autoconfig
+	pkgdesc = Use arkenfox user.js system-wide, as waterfox-g4 autoconfig.js policy
+	depends = waterfox-g4
+	provides = waterfox-g4-autoconfig
+	provides = waterfox-g4-policy
+	conflicts = waterfox-g4-autoconfig
+	conflicts = waterfox-g4-policy
+	conflicts = waterfox-g4-user-autoconfig
+
+pkgname = waterfox-g3-arkenfox-autoconfig
+	pkgdesc = Use arkenfox user.js system-wide, as waterfox-g3 autoconfig.js policy
+	depends = waterfox-g3
+	provides = waterfox-g3-autoconfig
+	provides = waterfox-g3-policy
+	conflicts = waterfox-g3-autoconfig
+	conflicts = waterfox-g3-policy
+	conflicts = waterfox-g3-user-autoconfig
