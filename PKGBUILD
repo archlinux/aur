@@ -20,7 +20,7 @@ depends=(
   'python-pyxdg'
 
   # AUR
-  'python-ffmpeg'
+  'python-ffmpeg-python'
   'python-norbert'
   'python-musdb'
       # python-soundfile
@@ -69,8 +69,11 @@ sha256sums=(
 prepare() {
   cd "$srcdir/$_pkgname"
 
-  for i in "$srcdir"/*.patch ; do
-    patch --verbose -Np1 -F100 -i "$i"
+  for patch in "$srcdir"/*.patch ; do
+    if [ -f "$patch" ] ; then
+      printf 'Applying patch: %s\n' "${patch##*/}"
+      patch -Np1 -F100 -i "$patch"
+    fi
   done
 }
 
@@ -81,10 +84,10 @@ pkgver() {
   _file="CHANGELOG.md"
 
   _line=$(
-    grep -E "$_regex" $_file | head -1
+    grep -E "$_regex" "$_file" | head -1
   )
   _version=$(
-    echo $_line | sed -E "s@$_regex@\1@"
+    printf '%s' "$_line" | sed -E "s@$_regex@\1@"
   )
   _commit=$(
     git log -S "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
@@ -96,7 +99,10 @@ pkgver() {
     git rev-parse --short HEAD
   )
 
-  echo "$_version.r$_revision.g$_hash"
+  printf '%s.r%s.g%s' \
+    "$_version" \
+    "$_revision" \
+    "$_hash"
 }
 
 build() {
