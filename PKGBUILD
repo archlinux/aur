@@ -1,9 +1,9 @@
 # Maintainer: Amos Ng <me at amosng dot com>
 
-pkgname=cdktf-cli
+pkgname=cdktf
 pkgver=0.17.0
 pkgrel=1
-pkgdesc="Cloud Development Kit for Terraform - Updated by LFlare because the old package is not"
+pkgdesc="Cloud Development Kit for Terraform"
 arch=('any')
 url="https://github.com/hashicorp/terraform-cdk"
 license=('MPL2')
