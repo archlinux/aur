@@ -1,25 +1,26 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
+# only Intel GPUs are supported:
+# https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
+
 pkgname=openvino-git
-pkgver=2022.3.0.r1415.ge978db3132c
+pkgver=2023.0.0.r501.g3c623e890d0
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
 license=('Apache')
-depends=('protobuf' 'numactl' 'libxml2')
-# GPU (clDNN) plugin: only Intel GPUs are supported:
-# https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
-optdepends=('intel-compute-runtime: for GPU (clDNN) plugin'
-            'ocl-icd: for GPU (clDNN) plugin'
-            'libusb: for Myriad plugin'
-            'tbb: for Myriad plugin'
+depends=('pugixml' 'onetbb')
+optdepends=('intel-compute-runtime: for Intel GPU plugin'
+            'ocl-icd: for Intel GPU plugin'
+            'snappy: for tensorflow frontend'
+            'protobuf: for tensorflow, paddle and onnx frontends'
             'python: for Python API'
             'python-numpy: for Python API'
             'cython: for Python API')
-makedepends=('git' 'git-lfs' 'cmake' 'intel-compute-runtime' 'libusb' 'opencl-clhpp'
-             'ocl-icd' 'opencv' 'patchelf' 'python' 'cython' 'shellcheck' 'aria2' 'wget'
-             'tbb')
+makedepends=('git' 'git-lfs' 'cmake' 'opencl-clhpp' 'opencl-headers' 'ocl-icd' 'opencv'
+             'protobuf' 'snappy' 'python' 'python-setuptools' 'cython' 'fdupes' 'patchelf'
+             'shellcheck')
 provides=('openvino' 'intel-openvino-git')
 conflicts=('openvino' 'intel-openvino-git')
 replaces=('intel-openvino-git')
@@ -45,12 +46,14 @@ source=('git+https://github.com/openvinotoolkit/openvino.git'
         'git+https://github.com/nlohmann/json.git'
         'git+https://github.com/google/flatbuffers.git'
         'git+https://github.com/google/snappy.git'
+        'git+https://github.com/ARM-software/ComputeLibrary.git'
         'openvino.conf'
         'setupvars.sh'
         '010-ade-disable-werror.patch'
-        '020-openvino-use-protobuf-shared-libs.patch'
-        '030-openvion-fix-opencl-headers.patch')
+        '015-openvino-disable-werror.patch'
+        '020-openvino-use-protobuf-shared-libs.patch')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -74,8 +77,8 @@ sha256sums=('SKIP'
             '335a55533ab26bd1f63683921baf33b8e8e3f2732a94554916d202ee500f90af'
             'e5024ad3382f285fe63dc58faca379f11a669bbe9f5d90682c59ad588aab434c'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
-            '64284c112215ab6c78a70f04bec72b9bf2b487e4808a61a1581ac37f7c6ce34e'
-            '34b54fb39dd080e04fca2a8285030a2b9ec867b1fdf1908aec5d91a06e8ed482')
+            '7f81f5ef6600b069e7e0b8ff11b7b48768991b9b4d9cd3c4cf845cd8dc99d26d'
+            'ed7a026d3d4c40760f09f0600fa82b897172f119c8e92ffefc3f71b8cc6ebfb0')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -104,11 +107,15 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/json/nlohmann_json.url "${srcdir}/json"
     git -C openvino config --local submodule.thirdparty/flatbuffers/flatbuffers.url "${srcdir}/flatbuffers"
     git -C openvino config --local submodule.thirdparty/snappy.url "${srcdir}/snappy"
+    git -C openvino config --local submodule.ARMComputeLibrary.url "${srcdir}/ComputeLibrary"
     git -C openvino -c protocol.file.allow='always' submodule update
     
+    # ade gcc 13 fix
+    git -C openvino/thirdparty/ade cherry-pick --no-commit 7cecc9138b89e1946e3e515727bb69b2ab119806
+
     patch -d openvino/thirdparty/ade -Np1 -i "${srcdir}/010-ade-disable-werror.patch"
+    patch -d openvino -Np1 -i "${srcdir}/015-openvino-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-use-protobuf-shared-libs.patch"
-    patch -d openvino -Np1 -i "${srcdir}/030-openvion-fix-opencl-headers.patch"
 }
 
 pkgver() {
@@ -123,7 +130,7 @@ build() {
     local _ocvmaj
     _ocvmaj="$(opencv_version | awk -F'.' '{ print $1 }')"
     
-    export OpenCV_DIR="/usr/lib/cmake/opencv${_ocvmaj}"
+    local -x OpenCV_DIR="/usr/lib/cmake/opencv${_ocvmaj}"
     
     # note: does not accept 'None' build type
     cmake -B build -S openvino \
@@ -132,15 +139,16 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX:PATH='/opt/intel/openvino' \
         -DENABLE_AVX512F:BOOL='OFF' \
-        -DENABLE_PROFILING_ITT:BOOL='OFF' \
         -DENABLE_PYTHON:BOOL='ON' \
         -DENABLE_OPENCV:BOOL='OFF' \
         -DENABLE_CLANG_FORMAT:BOOL='OFF' \
         -DENABLE_NCC_STYLE:BOOL='OFF' \
+        -DENABLE_SYSTEM_PUGIXML:BOOL='ON' \
+        -DENABLE_SYSTEM_TBB:BOOL='ON' \
+        -DENABLE_SYSTEM_OPENCL:BOOL='ON' \
         -DENABLE_SYSTEM_PROTOBUF:BOOL='ON' \
-        -DENABLE_ONEDNN_FOR_GPU:BOOL='OFF' \
-        -DENABLE_INTEL_GNA:BOOL='OFF' \
-        -Dopencl_root_hints="${srcdir}/OpenCL-CLHPP/include" \
+        -DENABLE_SYSTEM_FLATBUFFERS:BOOL='OFF' \
+        -DENABLE_SYSTEM_SNAPPY:BOOL='ON' \
         -Wno-dev
     cmake --build build
 }
