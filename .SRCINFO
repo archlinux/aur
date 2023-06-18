@@ -1,0 +1,23 @@
+pkgbase = ocaml4-lablgtk2
+	pkgdesc = An Objective Caml interface to gtk2
+	pkgver = 2.18.12
+	pkgrel = 1
+	url = https://garrigue.github.io/lablgtk/
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = ocaml4
+	makedepends = ocaml4-compiler-libs
+	makedepends = ocaml4-camlp4
+	makedepends = ocaml4-camlp-streams
+	makedepends = ocaml4-findlib
+	depends = gtk2
+	depends = librsvg
+	optdepends = ocaml4: for using the tools
+	conflicts = lablgtk2
+	options = !makeflags
+	options = staticlibs
+	options = !lto
+	source = lablgtk2-2.18.12.tar.gz::https://github.com/garrigue/lablgtk/archive/2.18.12.tar.gz
+	sha512sums = 284a1234ae817c4df49809d28c103ca5e64046da5ec9ff28c6edc0ce999e9d3e6e180dd053f8b1663d4fb3b7ba19570d53b9441c8fa622add924e8d85e41b813
+
+pkgname = ocaml4-lablgtk2
