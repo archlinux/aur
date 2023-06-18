@@ -8,12 +8,13 @@
 pkgname=emacs-lucid
 pkgver=28.2
 _pkgver_major=${pkgver/.*}
-pkgrel=6
+pkgrel=7
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
 depends=(
+  cairo
   gmp
   gnutls
   hicolor-icon-theme
@@ -40,12 +41,16 @@ depends=(
   libsm
   libsystemd.so
   libtiff.so
+  libx11
+  libxcb
+  libxext
   libxfixes
   libxinerama
   libxml2.so
   libxmu
   libxpm
   libxrandr
+  libxrender
   libxt
   m17n-lib
   xaw3d
