@@ -3,8 +3,8 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Contributor: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
-pkgver=0.6.r71.g25dfa55e
-pkgrel=2
+pkgver=0.6.r78.g91993cda
+pkgrel=1
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/GTG"
@@ -15,8 +15,7 @@ makedepends=('git' 'itstool' 'meson')
 checkdepends=('python-caldav' 'python-mock' 'python-pytest') ## TODO: Drop python-mock: https://archlinux.org/todo/drop-python-mock-checkdepends/
 optdepends=('python-caldav: CalDAV syncronization'
             'python-cheetah3: for the Export and print plugin'
-            'texlive-bin: pdflatex, for the Export and print plugin'
-            'texlive-core: pdfjam, for the Export and print plugin'
+            'texlive-bin: pdflatex & pdfjam, for the Export and print plugin'
             'pdftk: for the Export and print plugin'
             'hamster-time-tracker: send a task to the Hamster time tracking applet'
             'yelp: view user manual')
