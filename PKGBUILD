@@ -2,7 +2,7 @@
 
 pkgname=trantor
 pkgver=1.5.11
-pkgrel=1
+pkgrel=2
 pkgdesc='A non-blocking I/O tcp network lib based on c++14/17'
 arch=('x86_64')
 url="https://github.com/an-tao/trantor"
@@ -11,6 +11,13 @@ depends=('c-ares' 'openssl' 'gcc-libs')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('3cff9653380f65acaa6ffa191620a2783e866a4552c3408a6919759ce4cfc1dc')
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver/"
+
+	sed -i "s/algorithm>/&\n#include <cstdint>/" trantor/utils/MsgBuffer.h
+	sed -i "s/string>/&\n#include <cstdint>/" trantor/utils/Utilities.h
+}
 
 build() {
 	cmake -B build -S "$pkgname-$pkgver" \
