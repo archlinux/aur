@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec electron /usr/share/nightpdf "$@"
+exec /opt/nightpdf/nightpdf "$@"
