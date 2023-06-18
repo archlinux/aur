@@ -1,0 +1,9 @@
+cudaroot=/opt/cuda-11.7
+libdir=${cudaroot}/targets/x86_64-linux/lib
+includedir=${cudaroot}/targets/x86_64-linux/include
+
+Name: nppitc
+Description: NVIDIA Performance Primitives - Image Processing - Threshold and Compare
+Version: 11.7
+Libs: -L${libdir} -lnppitc
+Cflags: -I${includedir}

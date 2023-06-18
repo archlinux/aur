@@ -1,0 +1,9 @@
+cudaroot=/opt/cuda-11.7
+libdir=${cudaroot}/targets/x86_64-linux/lib
+includedir=${cudaroot}/targets/x86_64-linux/include
+
+Name: nppist
+Description: NVIDIA Performance Primitives - Image Processing - Statistic and Linear
+Version: 11.7
+Libs: -L${libdir} -lnppist
+Cflags: -I${includedir}

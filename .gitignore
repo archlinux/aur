@@ -1,0 +1,6 @@
+*.run
+*.tar
+*.tar.gz
+*.zst
+pkg/
+src/

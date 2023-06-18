@@ -1,0 +1,9 @@
+cudaroot=/opt/cuda-11.7
+libdir=${cudaroot}/targets/x86_64-linux/lib
+includedir=${cudaroot}/targets/x86_64-linux/include
+
+Name: accinj64
+Description: OpenACC 64-bit Injection Library
+Version: 11.7
+Libs: -L${libdir} -laccinj64
+Cflags: -I${includedir}

@@ -1,0 +1,9 @@
+cudaroot=/opt/cuda-11.7
+libdir=${cudaroot}/targets/x86_64-linux/lib
+includedir=${cudaroot}/targets/x86_64-linux/include
+
+Name: npps
+Description: NVIDIA Performance Primitives - Signal Processing
+Version: 11.7
+Libs: -L${libdir} -lnpps
+Cflags: -I${includedir}

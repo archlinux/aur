@@ -1,0 +1,9 @@
+cudaroot=/opt/cuda-11.7
+libdir=${cudaroot}/targets/x86_64-linux/lib
+includedir=${cudaroot}/targets/x86_64-linux/include
+
+Name: nppim
+Description: NVIDIA Performance Primitives - Image Processing - Morphological
+Version: 11.7
+Libs: -L${libdir} -lnppim
+Cflags: -I${includedir}
