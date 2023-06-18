@@ -16,7 +16,7 @@ index 32012e1..1a178e8 100644
  
 -class Codec(str, Enum):
 +class Codec(StrEnum):
-     """ Enumeration of supported audio codec. """
+     """Enumeration of supported audio codec."""
  
      WAV: str = "wav"
 @@ -28,7 +28,7 @@ class Codec(str, Enum):
@@ -25,6 +25,6 @@ index 32012e1..1a178e8 100644
  
 -class STFTBackend(str, Enum):
 +class STFTBackend(StrEnum):
-     """ Enumeration of supported STFT backend. """
+     """Enumeration of supported STFT backend."""
  
      AUTO: str = "auto"
