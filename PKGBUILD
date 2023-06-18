@@ -3,14 +3,14 @@
 
 pkgname=vice-sdl2-svn
 _pkgname=vice-svn
-pkgver=r44064
+pkgver=r44069
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - SDL2 development version"
 arch=('i686' 'x86_64')
 url="http://vice-emu.sourceforge.net"
 license=('GPL')
 depends=(alsa-lib libpulse sdl2_image portaudio pciutils ffmpeg4.4)
-makedepends=(dos2unix  libpcap libxaw xa xorg-bdftopcf xorg-mkfontdir python svn) #texlive-bin #texlive-core
+makedepends=(dos2unix  libpcap libxaw texlive-bin  texlive-plaingeneric xa xorg-bdftopcf xorg-mkfontdir python svn)
 provides=('vice')
 replaces=('vice')
 conflicts=('vice' 'vice-svn')
@@ -26,8 +26,7 @@ build() {
        
     ./autogen.sh
     # Forcing use of ffmpeg 4.4.
-    PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr --libdir=/usr/lib --enable-ffmpeg --enable-sdl2ui --disable-pdf-docs
-    # June 15th, 2023: disabled pdf generation for now
+    PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr --libdir=/usr/lib --enable-ffmpeg --enable-sdl2ui --enable-pdf-docs
     make
 }
 
