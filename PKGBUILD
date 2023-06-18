@@ -2,7 +2,7 @@
 # Co-Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=apostrophe-git
-pkgver=2.6.3.r138.g717a454
+pkgver=2.6.3.r142.gb1aee4e
 pkgrel=1
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('libadwaita' 'otf-fira-mono' 'otf-fira-sans' 'python-cairo'
          'python-pypandoc' 'python-regex' 'python-setuptools' 'webkitgtk-6.0')
 makedepends=('git' 'meson' 'gobject-introspection' 'sassc')
 checkdepends=('appstream-glib')
-optdepends=('texlive-latexextra: for the pdftex module'
+optdepends=('texlive-bin: for the pdftex module'
             'mathjax: for formula preview')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

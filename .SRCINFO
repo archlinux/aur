@@ -1,6 +1,6 @@
 pkgbase = apostrophe-git
 	pkgdesc = A distraction free Markdown editor for GNU/Linux made with GTK+
-	pkgver = 2.6.3.r138.g717a454
+	pkgver = 2.6.3.r142.gb1aee4e
 	pkgrel = 1
 	url = https://world.pages.gitlab.gnome.org/apostrophe
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = apostrophe-git
 	depends = python-regex
 	depends = python-setuptools
 	depends = webkitgtk-6.0
-	optdepends = texlive-latexextra: for the pdftex module
+	optdepends = texlive-bin: for the pdftex module
 	optdepends = mathjax: for formula preview
 	provides = apostrophe
 	conflicts = apostrophe
