@@ -1,7 +1,7 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 _desc="flippy's AArch64-focused fork aiming to increase usability. Prebuilt by ophub."
-_pkgver_main=6.1.22
+_pkgver_main=6.1.34
 _pkgver_suffix=ophub
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _url_repo="https://github.com/ophub/kernel"
@@ -29,7 +29,7 @@ noextract=(
   "${_srcname}"
 )
 sha256sums=(
-  '5e91a9977449fe8ecab420fd52b8474971b20e96d48ebff47dfcb0c30526d246'
+  '5599572ee7868b6bcf4383f20723207d255c39c30d8b3c4a683baab32c00478a'
 )
 
 _dtb_common_pkg="${_pkgbase}-dtb"
