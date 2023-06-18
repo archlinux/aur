@@ -1,6 +1,6 @@
 pkgbase = azote
 	pkgdesc = Wallpaper & color manager for wlroots-based compositors and some X11 WMs
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/azote
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = azote
 	provides = azote
 	conflicts = azote
 	conflicts = azote-git
-	source = azote-1.12.0.tar.gz::https://github.com/nwg-piotr/azote/archive/v1.12.0.tar.gz
-	md5sums = 100384c25ebb4ce6d347f1a77196807b
+	source = azote-1.12.1.tar.gz::https://github.com/nwg-piotr/azote/archive/v1.12.1.tar.gz
+	md5sums = a0bc95710bfe7a37fbe479a4ada83613
 
 pkgname = azote
