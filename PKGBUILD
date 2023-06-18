@@ -13,7 +13,7 @@
 # You can pass parameters to `ninja` via MAKEFLAGS
 
 pkgname=telegram-desktop-dev
-pkgver=4.8.3
+pkgver=4.8.4
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -201,10 +201,6 @@ prepare() {
     #done
     # Patch here, if needed!
     # patch -Np1 -i "$srcdir/my_beautiful.patch"
-
-    # Ensure cppgir is not installed
-    cd "$srcdir/tdesktop/cmake"
-    git cherry-pick 6b0eeb2c15aa278ffa577bcefebcff8f2c98aca9
 
     # Official package patches
 }

@@ -32,7 +32,7 @@ def git_clone_repo(old_version: str, new_version: str) -> str:
     git_clone_command = [
         "git",
         "clone",
-        "--quiet",
+        # "--quiet",
         "--recurse-submodules",
         "--shallow-submodules",
         f"--shallow-since=v{old_version}",
