@@ -181,7 +181,7 @@ build() {
   fi
     
   if eval "${build}"; then
-    return;
+    :
   else
     echo "Error: Build failed; try searching the output for suspicious messages." >&2
     return;
