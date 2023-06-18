@@ -4,7 +4,7 @@
 
 pkgname=netdata-git
 _gitname=netdata
-pkgver=v1.38.0.r186.g76ff5ebc7
+pkgver=v1.40.0.r10.ge12b0d8ab
 pkgrel=1
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web"
 url="https://github.com/netdata/netdata/wiki"
@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('GPL')
 backup=('etc/netdata/netdata.conf')
 depends=('libmnl' 'libnetfilter_acct' 'zlib' 'judy' 'libuv' 'json-c' 'libcap' 'lz4' 'openssl' 'which' 'snappy' 'protobuf'
-         'libwebsockets' 'mongo-c-driver')
+         'libwebsockets' 'mongo-c-driver' 'libyaml')
 makedepends=('cups' 'git')
 optdepends=('nodejs: for monitoring named and SNMP devices'
             'lm_sensors: for monitoring hardware sensors'
@@ -69,7 +69,7 @@ build() {
     --sysconfdir="/etc" \
     --libexecdir="/usr/lib" \
     --localstatedir="/var" \
-    --with-zlib --with-math --with-user=netdata
+    --with-zlib --with-math --with-user=netdata --disable-httpd
   make
 }
 
