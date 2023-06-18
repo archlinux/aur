@@ -1,4 +1,4 @@
-pkgbase = cavasik
+pkgbase = cavasik-git
 	pkgdesc = Audio visualizer based on CAVA
 	pkgver = v2.0.0
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = cavasik
 	source = git+https://github.com/TheWisker/Cavasik.git
 	b2sums = SKIP
 
-pkgname = cavasik-git
+pkgname = cavasik
