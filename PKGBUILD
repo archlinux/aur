@@ -11,8 +11,8 @@ url='https://github.com/mirukana/pixcat'
 license=('LGPL3')
 depends=('python>=3.7' 'python-blessed' 'python-pillow' 'python-docopt' 'python-requests' 'python-ansiwrap')
 makedepends=('python-setuptools' 'git')
-provides=('pixcat' 'pixcat-git')
-conflicts=('pixcat' 'pixcat-git')
+provides=('pixcat')
+conflicts=('pixcat')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
