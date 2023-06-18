@@ -4,7 +4,7 @@ _electron_version=16
 _nodejs_lts_version=-lts-gallium
 
 pkgname=('trilium' 'trilium-server' 'trilium-dumpdb')
-pkgver=0.59.4
+pkgver=0.60.3
 pkgrel=1
 pkgdesc="A hierarchical note taking application with focus on building large personal knowledge bases."
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zadam/trilium/archive/refs/
 	"trilium-server.sysusers"
 	"trilium-server.tmpfiles")
 
-sha512sums=('96a4788574f66a830515eb8fe11bdc87e1083f04c3f409d095cdde2515c008c2ba32a0554d7e5cda4602c2b20861e5b442e022f3c1be4fd3397c0f9e4d24eae2'
+sha512sums=('7877c581c0ba77cba598441479d264242b19b22baf6edfc297ef3b43fc8c3f369c92fa62229c7af661f4376f5f7d54012920c683b88d3e56f5980b7a888cf110'
 	    'e9eebad02a0ee4cc385d9ec5054bb468649c61f7b788b247aa6f2ff3a6a2e0438a0088dd834efec013509eaf70b3b24a4e738ee5171ea3934440b4dd20dc2dc3'
 	    'b073a15731cced053d34534a7c34ce39b6b54bc9c818e1792d6d5fe0ef86ba83f255b75fd7a630dedad2ec0f51403dc68969d1fa3dab7472a2fc628d83c16bdd'
 	    '6b03a7cce3836966d00e282d012cce944b8b56e29200fa06e64563a95e4edde591c0018715639a5e2acdbfd11a73ccb8283fbad19efc7dff218e8398c7e12d30'
