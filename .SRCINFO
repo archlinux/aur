@@ -1,0 +1,16 @@
+pkgbase = dell-g15-controller
+	pkgdesc = AWCC alternative for Dell G15 with keyboard backlight control, power mode control and fan control.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/cemkaya-mpi/Dell-G15-Controller
+	arch = x86_64
+	license = GPLv3
+	depends = python
+	depends = python-pyusb
+	depends = pyside6
+	depends = python-pexpect
+	depends = polkit
+	source = dell-g15-controller::https://github.com/cemkaya-mpi/Dell-G15-Controller/archive/refs/tags/v2.0.tar.gz
+	sha256sums = 8207077bc44e7f305b1ccae091a3532bcd952b367d1aa6ee938749f38521a044
+
+pkgname = dell-g15-controller
