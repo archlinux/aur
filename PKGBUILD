@@ -7,16 +7,17 @@ pkgrel=1
 pkgdesc='heXon is a free and open source twin-stick-shooter created using the Dry game engine.'
 arch=('any')
 url="https://gitlab.com/luckeyproductions/games/${_pkgname}"
-license=('GPL-2.0')
+license=('GPL2')
 depends=('dry')
 provides=("${_pkgname}")
-makedepends=('git' 'gcc' 'make' 'qt5-base')
+conflicts=("${_pkgname}")
+makedepends=('git' 'qt5-base')
 sha512sums=('SKIP')
 source=("${pkgname}::git+${url}.git")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
