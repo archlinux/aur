@@ -1,0 +1,15 @@
+pkgbase = python-undetected-chromedriver
+	pkgdesc = Custom Selenium Chromedriver that passes all bot mitigation systems
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://github.com/ultrafunkamsterdam/undetected-chromedriver
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-selenium
+	depends = python-websockets
+	source = python-undetected-chromedriver-3.5.0.tar.gz::https://github.com/ultrafunkamsterdam/undetected-chromedriver/archive/2b035b4ea1d88224abd570b187f16094663462a3.tar.gz
+	sha256sums = 4db117ffa73787d9eba598ac5270bf9d03e5ba1824e0cf06325324ddf4455982
+
+pkgname = python-undetected-chromedriver
