@@ -6,8 +6,8 @@ pkgdesc="A simple command-line agenda written in C"
 arch=('x86_64')
 url="https://github.com/mxdixyz/stagenda"
 license=('MIT')
-depends=('glibc' 'make')
-makedepends=('gcc' 'git')
+depends=('glibc')
+makedepends=('gcc' 'git' 'make')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mxdixyz/stagenda/archive/refs/tags/${pkgver}.tar.gz")
 md5sums=('SKIP')
 

@@ -7,6 +7,7 @@ pkgbase = stagenda
 	license = MIT
 	makedepends = gcc
 	makedepends = git
+	makedepends = make
 	depends = glibc
 	source = stagenda-1.tar.gz::https://github.com/mxdixyz/stagenda/archive/refs/tags/1.tar.gz
 	md5sums = SKIP
