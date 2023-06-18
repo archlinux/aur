@@ -1,0 +1,34 @@
+Only in tuic.new: Cargo.lock
+Only in tuic.new: .idea
+Only in tuic.new: target
+diff --unified --recursive --text tuic.orig/tuic-server/src/server.rs tuic.new/tuic-server/src/server.rs
+--- tuic.orig/tuic-server/src/server.rs	2023-06-18 22:32:05.143833089 +0800
++++ tuic.new/tuic-server/src/server.rs	2023-06-18 22:39:30.263162332 +0800
+@@ -17,6 +17,7 @@
+     time::Duration,
+ };
+ use uuid::Uuid;
++use log::error;
+ 
+ pub struct Server {
+     ep: Endpoint,
+@@ -83,11 +84,16 @@
+                 .map_err(|err| Error::Socket("failed to create endpoint UDP socket", err))?;
+ 
+             if let Some(dual_stack) = cfg.dual_stack {
+-                socket.set_only_v6(!dual_stack).map_err(|err| {
+-                    Error::Socket("endpoint dual-stack socket setting error", err)
+-                })?;
++                match socket.set_only_v6(!dual_stack){
++                    Ok(()) => {}
++                    Err(err) => {
++                        error!("endpoint dual-stack socket setting error");
++                        error!("{err}");
++                    }
++                }
+             }
+ 
++
+             socket
+                 .bind(&SockAddr::from(cfg.server))
+                 .map_err(|err| Error::Socket("failed to bind endpoint UDP socket", err))?;

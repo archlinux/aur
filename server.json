@@ -1,15 +1,40 @@
 {
-    "port": 443,
-    "token": ["myPassword1", "myPassword2"],
-    "certificate": "/etc/tuic/cer",
-    "private_key": "/etc/tuic/key",
+    "server": "[::]:443",
 
-    "ip": "0.0.0.0",
-    "congestion_controller": "bbr",
-    "max_idle_time": 15000,
-    "authentication_timeout": 1000,
-    "alpn": ["h3"],
-    "max_udp_relay_packet_size": 1500,
-    "log_level": "info"
+    "users": {
+        "00000000-0000-0000-0000-000000000000": "PASSWORD_0",
+        "00000000-0000-0000-0000-000000000001": "PASSWORD_1"
+    },
+
+    "certificate": "PATH/TO/CERTIFICATE",
+
+    "private_key": "PATH/TO/PRIVATE_KEY",
+
+    "congestion_control": "cubic",
+
+    "alpn": ["h3", "spdy/3.1"],
+
+    "udp_relay_ipv6": true,
+
+    "zero_rtt_handshake": false,
+
+    "dual_stack": true,
+
+    "auth_timeout": "3s",
+
+    "task_negotiation_timeout": "3s",
+
+    "max_idle_time": "10s",
+
+    "max_external_packet_size": 1500,
+
+    "send_window": 16777216,
+
+    "receive_window": 8388608,
+
+    "gc_interval": "3s",
+
+    "gc_lifetime": "15s",
+
+    "log_level": "warn"
 }
-

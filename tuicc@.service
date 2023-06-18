@@ -7,7 +7,7 @@ Type=simple
 User=tuic
 Restart=on-failure
 RestartSec=5s
-ExecStart=/usr/bin/tuic-client-0.8 -c /etc/tuic/%i.json
+ExecStart=/usr/bin/tuic-client -c /etc/tuic/%i.json
 # Proc filesystem
 ProcSubset=pid
 ProtectProc=invisible
