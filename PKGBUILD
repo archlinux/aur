@@ -175,6 +175,7 @@ build() {
     :
   else
     echo "Error: Build failed; try searching the output for suspicious messages." >&2
+    return;
   fi
 }
 
