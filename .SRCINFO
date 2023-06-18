@@ -1,6 +1,6 @@
 pkgbase = python-scipy-git
 	pkgdesc = SciPy is open-source software for mathematics, science and engineering. Git version
-	pkgver = v0.17pre.r14548.gf71fe40cdc
+	pkgver = 0.17pre.r15964.g0a6aad03f6
 	pkgrel = 1
 	url = https://www.scipy.org/
 	arch = x86_64
