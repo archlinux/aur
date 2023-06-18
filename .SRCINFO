@@ -1,6 +1,6 @@
 pkgbase = lib32-llvm-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit, git)
-	pkgver = 12.0.0_r369979.3052e474eceb
+	pkgver = 17.0.0_r464799.f2d9f84b3f32
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = lib32-llvm-git
 	makedepends = lib32-zlib
 	makedepends = ninja
 	makedepends = python
+	makedepends = lib32-zstd
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git
 	sha512sums = SKIP
 
@@ -32,6 +33,6 @@ pkgname = lib32-llvm-libs-git
 	depends = lib32-libxml2
 	depends = lib32-ncurses
 	depends = lib32-zlib
+	depends = lib32-zstd
 	provides = aur-lib32-llvm-libs-git
 	provides = lib32-llvm-libs
-

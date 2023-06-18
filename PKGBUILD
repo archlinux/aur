@@ -14,12 +14,12 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=12.0.0_r369979.3052e474eceb
+pkgver=17.0.0_r464799.f2d9f84b3f32
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
 license=('custom:Apache 2.0 with LLVM Exception')
-makedepends=('cmake' 'lib32-gcc-libs' 'git' 'lib32-libffi' 'lib32-libxml2' 'lib32-zlib' 'ninja' 'python')
+makedepends=('cmake' 'lib32-gcc-libs' 'git' 'lib32-libffi' 'lib32-libxml2' 'lib32-zlib' 'ninja' 'python' 'lib32-zstd')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
 sha512sums=('SKIP')
 
@@ -112,7 +112,7 @@ conflicts=('lib32-llvm' 'lib32-clang')
 }
 
 package_lib32-llvm-libs-git() {
-    depends=('lib32-gcc-libs' 'lib32-libffi' 'lib32-libxml2' 'lib32-ncurses' 'lib32-zlib')
+    depends=('lib32-gcc-libs' 'lib32-libffi' 'lib32-libxml2' 'lib32-ncurses' 'lib32-zlib' 'lib32-zstd')
 provides=('aur-lib32-llvm-libs-git' 'lib32-llvm-libs')
     
     install -d "$pkgdir/usr/lib32"
