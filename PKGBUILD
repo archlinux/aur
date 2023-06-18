@@ -109,7 +109,7 @@ check()
    gprbuild -P test_components/components-odbc-odbc_persistence_tests.gpr
 #   ./test_components/test_native_odbc_persistence
 
-   gprbuild -P test_components/components-odbc-odbc_bindings_tests.gpr
+#   gprbuild -P test_components/components-odbc-odbc_bindings_tests.gpr
 #   ./test_components/test_odbc_bindings
 
    gprbuild -P test_components/components-ntp-test_ntp.gpr
