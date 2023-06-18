@@ -33,9 +33,12 @@ provides=(
   'python-ffmpeg'
 )
 conflicts=(
-  ${provides[@]}
+  # ${provides[@]}
+  "$_pkgname"
+
   'python-python-ffmpeg'
 )
+replaces=('python-ffmpeg-git')
 
 source=(
   "$_module"::"git+https://github.com/kkroening/ffmpeg-python"
