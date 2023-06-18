@@ -3,9 +3,9 @@
 
 _pkgname="llm"
 pkgname="${_pkgname}-git"
-pkgver=r734.4b6366c
+pkgver=r772.3becd72
 pkgrel=1
-pkgdesc="Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙"
+pkgdesc="An ecosystem of Rust libraries for working with large language models"
 arch=(any)
 url="https://github.com/rustformers/${_pkgname}"
 license=('MIT' 'APACHE')
@@ -38,7 +38,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target cargo build --frozen --release --all-features
+    RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target cargo build --frozen --release
 }
 
 check () {
