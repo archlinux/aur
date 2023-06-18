@@ -15,9 +15,10 @@ depends=(gnatcoll-core
          openssl
          python)
 makedepends=(gprbuild
-             texlive-bin
-             texlive-core
-             texlive-latexextra
+#             texlive-bin
+#             texlive-core
+#             texlive-latexextra
+             texlive-meta
              python-sphinx)
 
 provides=(aws)
