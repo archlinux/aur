@@ -1,39 +1,33 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
+# only Intel GPUs are supported:
+# https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
+
 pkgname=openvino
-pkgver=2022.3.0
-pkgrel=2
+pkgver=2023.0.0
+pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
 license=('Apache')
-depends=('protobuf' 'numactl' 'libxml2')
-# GPU (clDNN) plugin: only Intel GPUs are supported:
-# https://github.com/openvinotoolkit/openvino/issues/452#issuecomment-722941119
-optdepends=('intel-compute-runtime: for GPU (clDNN) plugin'
-            'ocl-icd: for GPU (clDNN) plugin'
-            'libusb: for Myriad plugin'
-            'tbb: for Myriad plugin'
+depends=('pugixml' 'onetbb')
+optdepends=('intel-compute-runtime: for Intel GPU plugin'
+            'ocl-icd: for Intel GPU plugin'
+            'snappy: for tensorflow frontend'
+            'protobuf: for tensorflow, paddle and onnx frontends'
             'python: for Python API'
             'python-numpy: for Python API'
             'cython: for Python API')
-makedepends=('git' 'git-lfs' 'cmake' 'intel-compute-runtime' 'libusb' 'opencl-clhpp'
-             'ocl-icd' 'opencv' 'patchelf' 'python' 'cython' 'shellcheck' 'tbb')
+makedepends=('git' 'git-lfs' 'cmake' 'opencl-clhpp' 'opencl-headers' 'ocl-icd' 'opencv'
+             'protobuf' 'snappy' 'python' 'python-setuptools' 'cython' 'fdupes' 'patchelf'
+             'shellcheck')
 provides=('intel-openvino')
 conflicts=('intel-openvino')
 replaces=('intel-openvino')
 options=('!emptydirs')
-# supported firmwares: VPU_SUPPORTED_FIRMWARES in src/plugins/intel_myriad/myriad_dependencies.cmake
-_firmware_ver=20221129_35 # FIRMWARE_PACKAGE_VERSION in src/plugins/intel_myriad/myriad_dependencies.cmake
-_gnaver=03.00.00.1910 # GNA_VERSION in cmake/dependencies.cmake
-#_tbbver=2020_617e9a71 # cmake/dependencies.cmake
-#_tbbbind_ver=2_5_static_lin_v2 # cmake/dependencies.cmake
+_gnaver=03.05.00.1906 # GNA_VERSION in cmake/dependencies.cmake
 source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
-        "https://storage.openvinotoolkit.org/dependencies/myriad/firmware_pcie-ma2x8x_${_firmware_ver}.zip"
-        "https://storage.openvinotoolkit.org/dependencies/myriad/firmware_usb-ma2x8x_${_firmware_ver}.zip"
         "https://storage.openvinotoolkit.org/dependencies/gna/gna_${_gnaver}.zip"
-        #"https://storage.openvinotoolkit.org/dependencies/thirdparty/linux/tbb${_tbbver}_lin_strip.tgz"
-        #"https://download.01.org/opencv/master/openvinotoolkit/thirdparty/linux/tbbbind_${_tbbbind_ver}.tgz"
         'oneDNN-openvinotoolkit'::'git+https://github.com/openvinotoolkit/oneDNN.git'
         'git+https://github.com/herumi/xbyak.git'
         'git+https://github.com/madler/zlib.git'
@@ -52,17 +46,20 @@ source=("git+https://github.com/openvinotoolkit/openvino.git#tag=${pkgver}"
         'git+https://github.com/oneapi-src/oneDNN.git'
         'git+https://github.com/openvinotoolkit/open_model_zoo.git'
         'git+https://github.com/nlohmann/json.git'
+        'git+https://github.com/google/flatbuffers.git'
+        'git+https://github.com/google/snappy.git'
+        'git+https://github.com/ARM-software/ComputeLibrary.git'
         'openvino.conf'
         'setupvars.sh'
         '010-ade-disable-werror.patch'
+        '015-openvino-disable-werror.patch'
         '020-openvino-use-protobuf-shared-libs.patch'
-        '030-openvino-fix-opencl-headers.patch')
-noextract=("firmware_usb-ma2x8x_${_firmware_ver}.zip"
-           "firmware_pcie-ma2x8x_${_firmware_ver}.zip")
+        '030-openvino-gcc13-fix.patch')
 sha256sums=('SKIP'
-            '5667eb028290fbec92220031590ba5f87774a7b638b13178e0dcf8447a4ee8ca'
-            '1ca3566d294c8d269f3a0ad2f5699e9dbb2679a24a455b2cc343612303d867bd'
-            '894ddbc0ae3459f04513b853b0cabc32890dd4ea37228a022b6a32101bdbb7f8'
+            '4a5be86d9c026b0e10afac2a57fc7c99d762b30e3d506abb3a3380fbcfe2726e'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -84,8 +81,9 @@ sha256sums=('SKIP'
             '335a55533ab26bd1f63683921baf33b8e8e3f2732a94554916d202ee500f90af'
             'e5024ad3382f285fe63dc58faca379f11a669bbe9f5d90682c59ad588aab434c'
             '502fcbb3fcbb66aa5149ad2cc5f1fa297b51ed12c5c9396a16b5795a03860ed0'
-            '5661837265c8e9cb1876982c7fc192ac694b7aa25448d8987c84ac545d31a4c6'
-            '5dc27990682d2d44a1397de2e2d8f822a6b627f6f799b00dd971ed7cee323a32')
+            '7f81f5ef6600b069e7e0b8ff11b7b48768991b9b4d9cd3c4cf845cd8dc99d26d'
+            '464f957236e8d084a8fe8f474ccba09e146043d21b9896239030eb67c722731e'
+            'fb6be7fefc639407ca1a8f79b6226f0c6216974a3d365b8a3c2252873b4f5ea1')
 
 export GIT_LFS_SKIP_SMUDGE='1'
 
@@ -112,24 +110,22 @@ prepare() {
     git -C openvino config --local submodule.thirdparty/onednn_gpu.url "${srcdir}/oneDNN"
     git -C openvino config --local submodule.tools/pot/thirdparty/open_model_zoo.url "${srcdir}/open_model_zoo"
     git -C openvino config --local submodule.thirdparty/json/nlohmann_json.url "${srcdir}/json"
+    git -C openvino config --local submodule.thirdparty/flatbuffers/flatbuffers.url "${srcdir}/flatbuffers"
+    git -C openvino config --local submodule.thirdparty/snappy.url "${srcdir}/snappy"
+    git -C openvino config --local submodule.ARMComputeLibrary.url "${srcdir}/ComputeLibrary"
     git -C openvino -c protocol.file.allow='always' submodule update
     
-    mkdir -p openvino/temp/vpu/firmware/{pcie,usb}-ma2x8x
-    bsdtar -xf "firmware_pcie-ma2x8x_${_firmware_ver}.zip" -C openvino/temp/vpu/firmware/pcie-ma2x8x
-    bsdtar -xf "firmware_usb-ma2x8x_${_firmware_ver}.zip"  -C openvino/temp/vpu/firmware/usb-ma2x8x
+    mkdir -p openvino/temp
     cp -af "gna_${_gnaver}" openvino/temp
-    #cp -af tbb openvino/temp
-    #cp -af "tbbbind_${_tbbbind_ver/_static*/}" openvino/temp
-    
-    printf '%s\n' "${source[1]}" > openvino/temp/vpu/firmware/pcie-ma2x8x/ie_dependency.info
-    printf '%s\n' "${source[2]}" > openvino/temp/vpu/firmware/usb-ma2x8x/ie_dependency.info
-    printf '%s\n' "${source[3]}" > "openvino/temp/gna_${_gnaver}/ie_dependency.info"
-    #printf '%s\n' "${source[4]}" > openvino/temp/tbb/ie_dependency.info
-    #printf '%s\n' "${source[5]}" > "openvino/temp/tbbbind_${_tbbbind_ver/_static*/}/ie_dependency.info"
+    printf '%s\n' "${source[1]}" > "openvino/temp/gna_${_gnaver}/ie_dependency.info"
+
+    # ade gcc 13 fix
+    git -C openvino/thirdparty/ade cherry-pick --no-commit 7cecc9138b89e1946e3e515727bb69b2ab119806
     
     patch -d openvino/thirdparty/ade -Np1 -i "${srcdir}/010-ade-disable-werror.patch"
+    patch -d openvino -Np1 -i "${srcdir}/015-openvino-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/020-openvino-use-protobuf-shared-libs.patch"
-    patch -d openvino -Np1 -i "${srcdir}/030-openvino-fix-opencl-headers.patch"
+    patch -d openvino -Np1 -i "${srcdir}/030-openvino-gcc13-fix.patch"
 }
 
 build() {
@@ -145,14 +141,16 @@ build() {
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX:PATH='/opt/intel/openvino' \
         -DENABLE_AVX512F:BOOL='OFF' \
-        -DENABLE_PROFILING_ITT:BOOL='OFF' \
         -DENABLE_PYTHON:BOOL='ON' \
         -DENABLE_OPENCV:BOOL='OFF' \
         -DENABLE_CLANG_FORMAT:BOOL='OFF' \
         -DENABLE_NCC_STYLE:BOOL='OFF' \
+        -DENABLE_SYSTEM_PUGIXML:BOOL='ON' \
+        -DENABLE_SYSTEM_TBB:BOOL='ON' \
+        -DENABLE_SYSTEM_OPENCL:BOOL='ON' \
         -DENABLE_SYSTEM_PROTOBUF:BOOL='ON' \
-        -DENABLE_ONEDNN_FOR_GPU:BOOL='OFF' \
-        -DTREAT_WARNING_AS_ERROR:BOOL='OFF' \
+        -DENABLE_SYSTEM_FLATBUFFERS:BOOL='OFF' \
+        -DENABLE_SYSTEM_SNAPPY:BOOL='ON' \
         -Wno-dev
     cmake --build build
 }
