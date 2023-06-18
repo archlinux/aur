@@ -2,8 +2,3 @@
 !/.gitignore
 !/PKGBUILD
 !/.SRCINFO
-pkg
-src
-*.zst
-llm
-ggml

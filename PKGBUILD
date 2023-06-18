@@ -4,7 +4,7 @@
 _pkgname="llm"
 pkgname="${_pkgname}-git"
 pkgver=r772.3becd72
-pkgrel=1
+pkgrel=2
 pkgdesc="An ecosystem of Rust libraries for working with large language models"
 arch=(any)
 url="https://github.com/rustformers/${_pkgname}"
