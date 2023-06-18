@@ -8,7 +8,8 @@ pkgdesc="C library for finding platform-specific dirs"
 arch=('any')
 license=('LGPL3')
 depends=('libxdg-basedir')
-makedepends=('gcc' 'make' 'cmake')
+conflicts=('appdir')
+makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Forty-Bot/appdir/archive/refs/tags/$pkgver.tar.gz")
 sha1sums=('ec762349b307d857527dcd723d7aea818f4883c0')
 
