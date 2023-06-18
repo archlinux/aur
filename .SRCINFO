@@ -1,7 +1,7 @@
 pkgbase = drogon
 	pkgdesc = A C++14/17 based HTTP web application framework running on Linux/macOS/Unix/Windows
 	pkgver = 1.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/an-tao/drogon
 	arch = x86_64
 	license = MIT
