@@ -1,12 +1,12 @@
 pkgbase = skoolkit
 	pkgdesc = A suite of tools for creating disassemblies of ZX Spectrum games.
-	pkgver = 8.9
-	pkgrel = 3
+	pkgver = 8.10
+	pkgrel = 1
 	url = https://github.com/skoolkid/skoolkit
 	arch = x86_64
 	license = GPL
 	options = !lto
-	source = skoolkit-8.9.tar.xz::https://github.com/skoolkid/skoolkit/releases/download/8.9/skoolkit-8.9.tar.xz
-	sha256sums = a3f5cf1fcf8320806f1594de73f68810da7a698635ba45e5f9ecdac4d4be2a0d
+	source = skoolkit-8.10.tar.xz::https://github.com/skoolkid/skoolkit/releases/download/8.10/skoolkit-8.10.tar.xz
+	sha256sums = 8c003553879eec8172af25e8fe99027a52a8814b9911441a7b0d473ab592a0c5
 
 pkgname = skoolkit

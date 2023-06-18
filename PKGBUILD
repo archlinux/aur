@@ -1,15 +1,15 @@
 # Maintainer: Volker Schwaberow <volker@schwaberow.de>
 
 pkgname=skoolkit
-pkgver=8.9
-pkgrel=3
+pkgver=8.10
+pkgrel=1
 pkgdesc="A suite of tools for creating disassemblies of ZX Spectrum games."
 arch=('x86_64')
 url="https://github.com/skoolkid/skoolkit"
 license=('GPL')
 dependes=('python')
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('a3f5cf1fcf8320806f1594de73f68810da7a698635ba45e5f9ecdac4d4be2a0d')
+sha256sums=('8c003553879eec8172af25e8fe99027a52a8814b9911441a7b0d473ab592a0c5')
 options=('!lto')
 
 package() {
