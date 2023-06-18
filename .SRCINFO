@@ -17,4 +17,4 @@ pkgbase = cavasik-git
 	source = git+https://github.com/TheWisker/Cavasik.git
 	b2sums = SKIP
 
-pkgname = cavasik
+pkgname = cavasik-git
