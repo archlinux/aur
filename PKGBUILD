@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="9.5.368.0"
+pkgver="10.0.0.370"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -10,7 +10,7 @@ makedepends=('p7zip' 'icoutils' 'gendesk')
 optdepends=($(pacman -Ssq tesseract-data))
 url="https://www.tracker-software.com/product/pdf-xchange-editor"
 _downloadsource="https://www.tracker-software.com/downloads"
-_x64file="EditorV9.x64.msi"
+_x64file="EditorV10.x64.msi"
 _installdir="/usr/lib"
 _programname="PDF Editor"
 _commonfiles="Common Files/Tracker Software/Common"
@@ -20,7 +20,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-md5sums=('6a6f0127ea9a75755f9d149d5f207863')
+sha256sums=('ce3253b79da93d89d750d88898c9b9c0f6cce8e71b16d9ea4d2b551f131b7058')
 
 prepare()
 {
@@ -42,7 +42,6 @@ package()
 
  mkdir -p "$pkgdir${_installdir}/$pkgname"
 
- install -Dm644 "$srcdir/FID_EOCRALicense" "$pkgdir/usr/share/licenses/$pkgname/PDF_EOCR_PluginV9.pdf"
  install -Dm644 "$srcdir/FID_ViewerDLL64" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEditCore.x64.dll"
  install -Dm755 "$srcdir/FID_EditorEXE" "$pkgdir${_installdir}/$pkgname/${_programname}/PDFXEdit.exe"
  install -Dm644 "$srcdir/FID_LiteDrvHelpLicense" "$pkgdir/usr/share/licenses/$pkgname/PDFXLicense.pdf"
@@ -59,6 +58,7 @@ package()
  install -Dm644 "$srcdir/FID_FileOpenSH64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/FileOpenSH.pvp"
  install -Dm644 "$srcdir/FID_KeybHook64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/FowpKbd64.dll"
  install -Dm644 "$srcdir/FID_GD64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/GoogleDrive.pvp"
+ install -Dm644 "$srcdir/FID_IF64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/IdentifyForms.pvp"
  install -Dm644 "$srcdir/FID_Markdown64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MarkdownPlugin.pvp"
  install -Dm644 "$srcdir/FID_ClientTelemetry64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_ClientTelemetry.dll"
  install -Dm644 "$srcdir/FID_MipCore64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/MIP/mip_core.dll"
@@ -75,6 +75,7 @@ package()
  install -Dm644 "$srcdir/FID_U3D64" "$pkgdir${_installdir}/$pkgname/${_programname}/Plugins.x64/U3DPlugin.pvp"
  install -Dm644 "$srcdir/FID_Resource" "$pkgdir${_installdir}/$pkgname/${_programname}/Resources.dat"
  install -Dm644 "$srcdir/FID_Stamps_DynamicDate" "$pkgdir${_installdir}/$pkgname/${_programname}/Stamps/ENU/DynamicDate.pdf"
+ install -Dm644 "$srcdir/FID_Stamps_Templates" "$pkgdir${_installdir}/$pkgname/${_programname}/Stamps/Templates.dat"
  install -Dm644 "$srcdir/FID_SD_OXT_cs" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-cs.oxt"
  install -Dm644 "$srcdir/FID_SD_OXT_de" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-de.oxt"
  install -Dm644 "$srcdir/FID_SD_OXT_en" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-en.oxt"
@@ -84,6 +85,26 @@ package()
  install -Dm644 "$srcdir/FID_SD_OXT_uk" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/dict-uk.oxt"
  install -Dm644 "$srcdir/FID_SD_GPLv2" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/GPLv2.txt"
  install -Dm644 "$srcdir/FID_SD_GPLv3" "$pkgdir${_installdir}/$pkgname/${_dictionaries}/GPLv3.txt"
+ install -Dm644 "$srcdir/FID_RMS_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.az-Latn-AZ.xcl"
+ install -Dm644 "$srcdir/FID_RMS_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.cs-CZ.xcl"
+ install -Dm644 "$srcdir/FID_RMS_da_DK" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.da-DK.xcl"
+ install -Dm644 "$srcdir/FID_RMS_de_DE" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.de-DE.xcl"
+ install -Dm644 "$srcdir/FID_RMS_es_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.es-ES.xcl"
+ install -Dm644 "$srcdir/FID_RMS_fi_FI" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.fi-FI.xcl"
+ install -Dm644 "$srcdir/FID_RMS_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.fr-FR.xcl"
+ install -Dm644 "$srcdir/FID_RMS_gl_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.gl-ES.xcl"
+ install -Dm644 "$srcdir/FID_RMS_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_RMS_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.hu-HU.xcl"
+ install -Dm644 "$srcdir/FID_RMS_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.ja-JP.xcl"
+ install -Dm644 "$srcdir/FID_RMS_ko_KR" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.ko-KR.xcl"
+ install -Dm644 "$srcdir/FID_RMS_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.lt-LT.xcl"
+ install -Dm644 "$srcdir/FID_RMS_nl_NL" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.nl-NL.xcl"
+ install -Dm644 "$srcdir/FID_RMS_pl_PL" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.pl-PL.xcl"
+ install -Dm644 "$srcdir/FID_RMS_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.ru-RU.xcl"
+ install -Dm644 "$srcdir/FID_RMS_tr_TR" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.tr-TR.xcl"
+ install -Dm644 "$srcdir/FID_RMS_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.uk-UA.xcl"
+ install -Dm644 "$srcdir/FID_RMS_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.zh-CN.xcl"
+ install -Dm644 "$srcdir/FID_RMS_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/AzureRMS.zh-TW.xcl"
  install -Dm644 "$srcdir/FID_BKM_ar_SA" "$pkgdir${_installdir}/$pkgname/${_languages}/Bookmarks.ar-SA.xcl"
  install -Dm644 "$srcdir/FID_BKM_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Bookmarks.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_BKM_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Bookmarks.cs-CZ.xcl"
@@ -286,6 +307,16 @@ package()
  install -Dm644 "$srcdir/FID_GD_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_GD_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_GD_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-TW.xcl"
+ install -Dm644 "$srcdir/FID_IF_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.az-Latn-AZ.xcl"
+ install -Dm644 "$srcdir/FID_IF_de_DE" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.de-DE.xcl"
+ install -Dm644 "$srcdir/FID_IF_fi_FI" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.fi-FI.xcl"
+ install -Dm644 "$srcdir/FID_IF_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.fr-FR.xcl"
+ install -Dm644 "$srcdir/FID_IF_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_IF_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ja-JP.xcl"
+ install -Dm644 "$srcdir/FID_IF_pl_PL" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.pl-PL.xcl"
+ install -Dm644 "$srcdir/FID_IF_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ru-RU.xcl"
+ install -Dm644 "$srcdir/FID_IF_tr_TR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.tr-TR.xcl"
+ install -Dm644 "$srcdir/FID_IF_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_MD_ar_SA" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.ar-SA.xcl"
  install -Dm644 "$srcdir/FID_MD_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_MD_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.cs-CZ.xcl"
@@ -651,6 +682,7 @@ package()
  install -Dm644 "$srcdir/FID_U3D_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.uk-UA.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_U3D_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/U3DPlugin.zh-TW.xcl"
+ install -Dm644 "$srcdir/FID_ImageProcessDLL" "$pkgdir${_installdir}/$pkgname/Common Files/Tracker Software/Common/PXC/OCV/x64/ImageProcess.dll"
  install -Dm644 "$srcdir/FID_REDACT_PAT_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/cs_CZ.json"
  install -Dm644 "$srcdir/FID_REDACT_PAT_en_CA" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/en_CA.json"
  install -Dm644 "$srcdir/FID_REDACT_PAT_en_GB" "$pkgdir${_installdir}/$pkgname/${_redactpatterns}/en_GB.json"
