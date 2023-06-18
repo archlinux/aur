@@ -4,7 +4,7 @@
 # If you want to turn on additional patches there are switches below.
 pkgname=unreal-engine-4
 pkgver=4.27.2
-pkgrel=11
+pkgrel=12
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -23,7 +23,7 @@ source=('unreal-engine-4.sh'
         'clang_path_fix.patch'
         'ccache_executor.patch'
         'unreal-engine-4-pacman-cache.hook')
-sha256sums=('9556a3d1cf20c479244d2186ab24cdd0bda9ef26a173ff658d17a8b9f0f008ed'
+sha256sums=('45a9ca2d3f70501c1d2eba3b78a453c98c1aecb0e9f4273cacebc6229d972dc6'
             'c04c03b2c5c933b7eb1af283d607934ad95fd57f44d62b83719061b555a85dca'
             '960c5a100e0c3732f3c73fb645d3989d39acf4576d74615bbef38ebeee008b90'
             '33982486f7fafac35a33dfa37c85cfba8543aa78b5fe13c395d9cccf691ef4b3'
@@ -61,44 +61,52 @@ fi
 
 ## Note: the resulting package will still be named containing "x86_64" unless the build was done with an "official" Arch distro for that architecture (like Arch ARM - [I don't advise using Arch ARM though])
 ## or if you manage to trick your Arch installation to accept other architecture extensions by fiddling with the $CARCH variable and /etc/pacman.conf - this method has flaws, namely due to a bug:
-## it doesn't work with "makechrootpkg" - though, this PKGBUILD doesn't work in with this method anyway because of Github SSH Agent nonsense
+## it doesn't work with "makechrootpkg" - though, this PKGBUILD doesn't work in with this method anyway because of Github SSH Agent nonsense -- if this changes in the future, let us know
 
 # Valid values are false / disabled / default, auto, and native
 arch_auto=auto
 
 if [[ ${arch_auto} == auto ]]
 then
+    opt_level=""
+  
+  if [[ ${CFLAGS} =~ -O([0-9]+) ]]; then
+    opt_level="-O${BASH_REMATCH[1]}"
+  else
+    opt_level="-O3"
+  fi
+  
   ## Architecture checks and compile flag adjustments - shellcheck throws a fit about the build function but it looks fine to me; checks for the highest available x64 support level and falls back to "native" if either not available
   if [ "$(uname -m)" == "x86_64" ]; then
     if [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v4' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v4 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v4 -mtune=x86-64-v4 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -fsanitize=bounds,alignment,object-size -fsanitize-undefined-trap-on-error -Wformat -Werror=format-security -Warray-bounds -Wvla -Wimplicit-fallthrough -Wno-unused-result -Wno-unneeded-internal-declaration"
+      export CFLAGS="${CFLAGS} -march=x86-64-v4 -mtune=x86-64-v4 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-      export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+      export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v3' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v3 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v3 -mtune=x86-64-v3 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -fsanitize=bounds,alignment,object-size -fsanitize-undefined-trap-on-error -Wformat -Werror=format-security -Warray-bounds -Wvla -Wimplicit-fallthrough -Wno-unused-result -Wno-unneeded-internal-declaration"
+      export CFLAGS="${CFLAGS} -march=x86-64-v3 -mtune=x86-64-v3 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-      export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+      export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v2' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v2 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v2 -mtune=x86-64-v2 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -fsanitize=bounds,alignment,object-size -fsanitize-undefined-trap-on-error -Wformat -Werror=format-security -Warray-bounds -Wvla -Wimplicit-fallthrough -Wno-unused-result -Wno-unneeded-internal-declaration"
+      export CFLAGS="${CFLAGS} -march=x86-64-v2 -mtune=x86-64-v2 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-      export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+      export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep 'x86_64' | grep 'supported' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /' | grep -w '^x86_64 - supported')" == 'x86_64 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64 -mtune=x86-64 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -fsanitize=bounds,alignment,object-size -fsanitize-undefined-trap-on-error -Wformat -Werror=format-security -Warray-bounds -Wvla -Wimplicit-fallthrough -Wno-unused-result -Wno-unneeded-internal-declaration"
+      export CFLAGS="${CFLAGS} -march=x86-64 -mtune=x86-64 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-      export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+      export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     fi
   elif [ "$(uname -m)" == "aarch64" ]; then
-    export CFLAGS="${CFLAGS} -march=aarch64 -mtune=aarch64 -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -fsanitize=bounds,alignment,object-size -fsanitize-undefined-trap-on-error -Wformat -Werror=format-security -Warray-bounds -Wvla -Wimplicit-fallthrough -Wno-unused-result -Wno-unneeded-internal-declaration"
+    export CFLAGS="${CFLAGS} -march=aarch64 -mtune=aarch64 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -Wp,-D_FORTIFY_SOURCE=2"
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-    export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+    export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
   else
     echo "Architecture '$(uname -m)' is not supported! Exiting."
     return
   fi
 elif [[ "${arch_auto}" == native ]]; then
-    export CFLAGS="${CFLAGS} -march=native -mtune=native -O3 -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -fsanitize=bounds,alignment,object-size -fsanitize-undefined-trap-on-error -Wformat -Werror=format-security -Warray-bounds -Wvla -Wimplicit-fallthrough -Wno-unused-result -Wno-unneeded-internal-declaration"
+    export CFLAGS="${CFLAGS} -march=native -mtune=native ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -Wp,-D_FORTIFY_SOURCE=2"
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-    export LDFLAGS="-Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+    export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
 fi
 
 prepare() {
@@ -118,6 +126,11 @@ prepare() {
     cd "${pkgname}" || return
     CURRENT_CLONED_VERSION="$(git describe --tags)"
     if [ "${CURRENT_CLONED_VERSION}" != "${pkgver}-release" ]; then
+      cd ..
+      rm -rf "${pkgname}"
+      git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${pkgname}"
+      cd "${pkgname}" || return
+    else
       rm -f .git/index.lock
       git fetch --depth=1 origin tag ${pkgver}-release
       git reset --hard ${pkgver}-release
@@ -143,34 +156,30 @@ prepare() {
   # For some reason, despite this file explicitly asking not to be removed, it was removed from the UE5 source; it has to be re-added or the build will fail - this is the UE4 package, but this will remain in place in-case this occurs for UE4 branches
   if [[ ! -f ${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies ]]
   then
-    mkdir -p ${pkgname}/Engine/Source/ThirdParty/Linux/
-    touch ${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies
-    sed -i "1c\This file must have no extension so that GitDeps considers it a binary dependency - it will only be pulled by the Setup script if Linux is enabled. Please do not remove this file." ${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies
+    mkdir -p "${srcdir}/${pkgname}/Engine/Source/ThirdParty/Linux/"
+    touch "${srcdir}/${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies"
+    sed -i "1c\This file must have no extension so that GitDeps considers it a binary dependency - it will only be pulled by the Setup script if Linux is enabled. Please do not remove this file." "${srcdir}/${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies"
   fi
-
+  
   ./Setup.sh
 }
 
 build() {
-  cd ${pkgname} || return
+  cd "${pkgname}" || return
   
-  while true; do
-    ## See "https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DeployingTheEngine/UsinganInstalledBuild/#installedbuildscriptoptions" for reference
-    if [[ ${_WithDDC} == true ]]; then
-      Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=true -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false
-    else
-      Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=false -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false
-    fi
+  ## See "https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/DeployingTheEngine/UsinganInstalledBuild/#installedbuildscriptoptions" for reference
+  if [[ ${_WithDDC} == true ]]; then
+    build='Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=true -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false'
+  else
+      build='Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=false -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false'
+  fi
     
-    exit_status=$?
-      
-    if [ ${exit_status} -eq 0 ]; then
-      break
-    else
-      echo "Error: Build failed; try searching the output for suspicious messages." >&2
-      exit ${exit_status}
-    fi
-  done
+  if eval "${build}"; then
+    return;
+  else
+    echo "Error: Build failed; try searching the output for suspicious messages." >&2
+    return;
+  fi
 }
 
 package() {
@@ -185,6 +194,7 @@ package() {
   
   cd "${srcdir}/${pkgname}" || return
   
+  install -dm755 "${pkgdir}/usr/share/applications/"
   # Icon for Desktop entry
   install -Dm770 Engine/Source/Programs/UnrealVS/Resources/Preview.png "${pkgdir}/usr/share/pixmaps/ue4editor.png"
 
@@ -195,12 +205,46 @@ package() {
   ## Set to all permissions to prevent the engine from breaking itself; more elegant solutions might exist - suggest them if they can be automated here
   ## Also, correct me if I package this improperly; I added Win64 support for the build in hopes of supporting cross-compilation
   install -dm777 "${pkgdir}/${_install_dir}/Engine"
-  mv LocalBuilds/Engine/Linux/* "${pkgdir}/${_install_dir}"
+  
+  # Copy LocalBuilds to pkg...
+  cp -flr "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/* "${pkgdir}"/"${_install_dir}"/
+  if [ -f "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/Engine/Binaries/Linux/UE4editor ]; then
+    # Can never be too careful with recursive rm...
+    rm -r "${srcdir}"/"${pkgname}"/LocalBuilds
+  fi
+
+  # Copy the rest of it to pkg... Should we be overwriting LocalBuilds?
+  cp -flr "${srcdir}"/"${pkgname}"/* "${pkgdir}"/"${_install_dir}"/
+  if [ -f "${srcdir}"/"${pkgname}"/Engine/Binaries/Linux/UE4editor ]; then
+    rm -r "${srcdir}"/"${pkgname:?}"/*
+  fi
+  
+  # if [ -f "${srcdir}/${pkgname}/cpp.hint" ] && [ ! -d "${srcdir}/${pkgname}/cpp.hint" ]; then
+  #   mv "${srcdir}/${pkgname}/cpp.hint" "${pkgdir}/${_install_dir}"
+  # elif [ -d "${srcdir}/${pkgname}/cpp.hint" ]; then
+  #   mkdir -p "${pkgdir}/${_install_dir}/cpp.hint"
+  #   mv "${srcdir}"/"${pkgname}"/cpp.hint/* "${pkgdir}/${_install_dir}/cpp.hint"
+  # fi
+  # 
+  # if [ -f "${srcdir}/${pkgname}/GenerateProjectFiles.sh" ]; then
+  #   install -Dm777 "${srcdir}/${pkgname}/GenerateProjectFiles.sh" "${pkgdir}/${_install_dir}"
+  # fi
+  
   chmod -R 777 "${pkgdir}/${_install_dir}"
   
-  chmod +x "${pkgdir}/${_install_dir}/Engine/Binaries/ThirdParty/Mono/Linux/bin/xbuild"
-  chmod +x "${pkgdir}/${_install_dir}/Engine/Binaries/ThirdParty/Mono/Linux/bin/mcs"
+  if [ -x "$(find "${pkgdir}/${_install_dir}" -type f -iname 'xbuild')" ]; then
+    find "${pkgdir}/${_install_dir}" -type f -iname 'xbuild' -exec chmod +x "{}" \;
+  fi
+  
+  if [ -x "$(find "${pkgdir}/${_install_dir}" -type f -iname 'mcs')" ]; then
+    find "${pkgdir}/${_install_dir}" -type f -iname 'mcs' -exec chmod +x "{}" \;
+  fi
+  
+  ## Do this, in case the path doesn't exist for some reason
   mkdir -p "${pkgdir}/${_install_dir}/Engine/Binaries/Android/"
+  
+  # Set permissions for /usr/bin
+  install -dm755 "${pkgdir}/usr/bin"
   
   # Launch script to initialize missing user folders for Unreal Engine
   install -Dm755 ../unreal-engine-4.sh "${pkgdir}/usr/bin/"
@@ -213,6 +257,6 @@ package() {
   # Configuring the launch script to detect when it has been run for the first time
   # Note: Requires that there isn't already a UE5 desktop entry in "${HOME}/local/share/applications/" - delete yours if you have one there before installing this
   DesktopFileChecksum=$(sha256sum "${pkgdir}/usr/share/applications/com.unrealengine.UE4Editor.desktop" | cut -f 1 -d ' ')
-  sed -i "s|ChecksumPlaceholder|${DesktopFileChecksum}|" "${pkgdir}/usr/share/applications/com.unrealengine.UE4Editor.desktop"
-  sed -i "s|InstalledLocationPlaceholder|${_install_dir}|" "${pkgdir}/usr/share/applications/com.unrealengine.UE4Editor.desktop"
+  sed -i "s|ChecksumPlaceholder|${DesktopFileChecksum}|" "${pkgdir}/usr/bin/unreal-engine-4.sh"
+  sed -i "s|InstalledLocationPlaceholder|/${_install_dir}/Engine/Binaries/|" "${pkgdir}/usr/bin/unreal-engine-4.sh"
 }

@@ -5,9 +5,9 @@ if [ "$(id -u)" -eq 0 ]; then
     return;
 fi
 
-if [ ! -d "${HOME}/.steampath" ] && [ -d "${HOME}/.steam/bin" ]; then
+if [ -d "${HOME}/.steampath" ] && [ ! -L "${HOME}/.steam/bin" ]; then
     ln -s "${HOME}/.steampath" "${HOME}/.steam/bin"
-elif [ ! -d "${HOME}/.steampath" ] && [ ! -d "${HOME}/.steam/bin" ]; then
+elif [ ! -d "${HOME}/.steampath" ] && [ ! -L "${HOME}/.steam/bin" ]; then
     mkdir -p "${HOME}/.steam/bin"
     ln -s "${HOME}/.steampath" "${HOME}/.steam/bin"
 fi
