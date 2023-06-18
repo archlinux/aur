@@ -4,7 +4,7 @@
 # If you want to turn on additional patches there are switches below.
 pkgname=unreal-engine-4
 pkgver=4.27.2
-pkgrel=12
+pkgrel=13
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -56,6 +56,12 @@ fi
 if [ -f /usr/bin/doas ] && [ -f /etc/doas.conf ]; then
   PACMAN_AUTH=(doas)
 fi
+
+## An attempt to fix the NuGet SSL issue during the build -- didn't seem to work; users had to do this manually, so we'll rollback to an alternative
+#ln -s /etc/ssl /usr/lib/ssl
+#ln -s /etc/ssl /usr/lib64/ssl
+## ---
+export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
   
 ## This is for detecting your CPU architecture automatically; set to false if you want to enforce your own makepkg.conf file
 
@@ -66,16 +72,16 @@ fi
 # Valid values are false / disabled / default, auto, and native
 arch_auto=auto
 
+opt_level=""
+  
+if [[ ${CFLAGS} =~ -O([0-9]+) ]]; then
+  opt_level="-O${BASH_REMATCH[1]}"
+else
+  opt_level="-O3"
+fi
+
 if [[ ${arch_auto} == auto ]]
 then
-    opt_level=""
-  
-  if [[ ${CFLAGS} =~ -O([0-9]+) ]]; then
-    opt_level="-O${BASH_REMATCH[1]}"
-  else
-    opt_level="-O3"
-  fi
-  
   ## Architecture checks and compile flag adjustments - shellcheck throws a fit about the build function but it looks fine to me; checks for the highest available x64 support level and falls back to "native" if either not available
   if [ "$(uname -m)" == "x86_64" ]; then
     if [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v4' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v4 - supported' ]; then
