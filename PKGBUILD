@@ -3,8 +3,8 @@
 
 pkgname=python-pixcat-git
 _pkgname=pixcat
-pkgver=r25.69e35c0
-pkgrel=1
+pkgver=0.1.4r25.69e35c0
+pkgrel=2
 pkgdesc="CLI and Python API to display images on a kitty terminal with optional resizing."
 arch=(any)
 url='https://github.com/mirukana/pixcat'
@@ -20,7 +20,7 @@ pkgver() {
 	cd "${srcdir}/${_pkgname}"
 
 	# Get the version number.
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "0.1.4r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build(){
