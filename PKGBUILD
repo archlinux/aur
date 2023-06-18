@@ -3,9 +3,9 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
-_name=pypdf
-pkgname=python-$_name
-pkgver=3.9.1
+_name="pypdf"
+pkgname="python-$_name"
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='Python library for manipulating pages of PDF files (v3+)'
 arch=(any)
@@ -15,7 +15,7 @@ depends=(python)
 conflicts=("python-pypdf2<1:2.12.1")
 makedepends=(python-setuptools python-build python-installer python-wheel python-flit-core)
 source=($pkgname-$pkgver.tar.gz::"$url/archive/$pkgver.tar.gz")
-sha256sums=('ed6dad40f8ec88c8ea642c059837d8e441a177407425d93b8faac09a9cf1eb2a')
+sha256sums=('4a06e02154f5aad2ef0cdb678d8b65834d3bebaa25b73d4a370671792f8f0358')
 
 build() {
   cd $_name-$pkgver
