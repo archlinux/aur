@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=devtoolbox
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Development tools at your fingertips"
 arch=('any')
@@ -36,7 +36,7 @@ depends=('gcr-4'
          'webkitgtk-6.0')
 makedepends=('blueprint-compiler' 'git' 'meson')
 checkdepends=('appstream-glib')
-_commit=a345dd88d1c67f682853c03984415061515a9635  # tags/v1.1^0
+_commit=26c22455e6fb31658978d438acc2ea1b9aed740d  # tags/v1.1.1^0
 source=("git+https://github.com/aleiepure/devtoolbox#commit=$_commit")
 sha256sums=('SKIP')
 
