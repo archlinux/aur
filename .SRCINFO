@@ -1,0 +1,74 @@
+pkgbase = dotnet-core-6.0
+	pkgver = 6.0.18.sdk118
+	pkgrel = 1
+	url = https://www.microsoft.com/net/core
+	arch = x86_64
+	license = MIT
+	makedepends = bash
+	makedepends = clang
+	makedepends = cmake
+	makedepends = dotnet-sdk-6.0
+	makedepends = git
+	makedepends = icu
+	makedepends = inetutils
+	makedepends = krb5
+	makedepends = libgit2
+	makedepends = libunwind
+	makedepends = libxml2
+	makedepends = lldb
+	makedepends = llvm
+	makedepends = lttng-ust2.12
+	makedepends = nodejs
+	makedepends = openssl
+	makedepends = systemd
+	makedepends = zlib
+	optdepends = bash-completion: Bash completion support
+	noextract = Private.SourceBuilt.Artifacts.6.0.116.tar.gz
+	options = !lto
+	options = staticlibs
+	source = dotnet-installer::git+https://github.com/dotnet/installer.git#tag=b8b476fbe60becae6d0c3d36b7ba964aeee3523d
+	source = https://dotnetcli.azureedge.net/source-built-artifacts/assets/Private.SourceBuilt.Artifacts.6.0.116.tar.gz
+	source = dotnet.sh
+	source = dotnet-core-runtime-disable-package-validation.patch
+	source = dotnet-core-sdk-telemetry-optout.patch
+	b2sums = SKIP
+	b2sums = abb1b6c9b647f0b34c21cac349ca63a9c1907e491ab39169398c35413ea8394880c2544e828940304bc9a45a3a5a1845d6017e6aba6350ebac7df9a09509bf29
+	b2sums = 4a64e3ee550e296bdde894f9202c6f372934cc29154f47d302599b4c368825a96a7b786faa6109a24a1101ff130fd9e4d0ccba094ec91e7f2ca645725bf71b34
+	b2sums = b9472b3967c9d7549ee2bbf0180d919748b40b1f9a65b1c3789be40f62ed17a9d37c2020409f7835570620108bd5ec43e728966d075d66bf0b7261cdd36a60c3
+	b2sums = 95b083b842da6049a084ca015b7ddc099550aa818fc382d556cca832fee52265be568d20a2c50e70819aef6cf879e7a368f7dd3b5966356643b2efdd756e73f4
+
+pkgname = dotnet-runtime-6.0
+	pkgdesc = The .NET Core runtime
+	depends = dotnet-host
+	depends = gcc-libs
+	depends = glibc
+	depends = icu
+	depends = krb5
+	depends = libunwind
+	depends = zlib
+	depends = openssl
+	optdepends = lttng-ust2.12: CoreCLR tracing
+
+pkgname = dotnet-source-built-artifacts-6.0
+	pkgdesc = Internal package for building the .NET Core SDK
+
+pkgname = aspnet-runtime-6.0
+	pkgdesc = The ASP.NET Core runtime
+	depends = dotnet-runtime-6.0
+
+pkgname = dotnet-sdk-6.0
+	pkgdesc = The .NET Core SDK
+	depends = dotnet-runtime-6.0
+	depends = dotnet-targeting-pack-6.0
+	depends = glibc
+	depends = gcc-libs
+	depends = netstandard-targeting-pack
+	optdepends = aspnet-targeting-pack-6.0: Build ASP.NET Core applications
+
+pkgname = dotnet-targeting-pack-6.0
+	pkgdesc = The .NET Core targeting pack
+	depends = netstandard-targeting-pack
+
+pkgname = aspnet-targeting-pack-6.0
+	pkgdesc = The ASP.NET Core targeting pack
+	depends = dotnet-targeting-pack-6.0
