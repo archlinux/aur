@@ -1,0 +1,11 @@
+pkgbase = q2rtx-data
+	pkgdesc = Additional data for q2rtx
+	pkgver = 1.7.0
+	pkgrel = 2
+	url = https://github.com/NVIDIA/Q2RTX
+	arch = any
+	license = custom
+	source = https://github.com/NVIDIA/Q2RTX/releases/download/v1.7.0/q2rtx-1.7.0-linux.tar.gz
+	sha256sums = 7309ad2f2d062275c651a5c0fc0552427682215a8099472e4778cb61517290f3
+
+pkgname = q2rtx-data
