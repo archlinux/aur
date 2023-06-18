@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-asus
-pkgver=6.3.6.arch1
+pkgver=6.3.8.arch1
 pkgrel=1
 pkgdesc='Linux (with asus-linux.org patches)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -29,7 +29,7 @@ options=('!strip')
 _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
-  "asus-linux-fedora-kernel::git+https://gitlab.com/asus-linux/fedora-kernel#commit=d05d9d73e54ffd6f842443a0086ca1932a39b074"
+  "asus-linux-fedora-kernel::git+https://gitlab.com/asus-linux/fedora-kernel#commit=5e0e2cc8e19744ce8438dcb25d0bb833541f13f9"
   config  # the main kernel config file
 )
 validpgpkeys=(
@@ -40,7 +40,7 @@ validpgpkeys=(
 )
 b2sums=('SKIP'
         'SKIP'
-        'c2d1c69265adc041dc0364e448f6e86dc4c9ca1207c84071abc1675dd820534a8ab5a230e579e68bfb1bf2b861f23ad34e090f8ceaef5e265ea95e2bc6946013')
+        '10f3d6c5c45bdd49b8863f3fb824404f89625c8be4633dce13ae20cd67c542114f73e30b9d09c5365a1728e0ae411f287610d064f3f9039635162191af3292bb')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -73,11 +73,6 @@ prepare() {
   for src in ../asus-linux-fedora-kernel/*.patch; do
     src="${src%%::*}"
     src="${src##*/}"
-
-    # mainlined in 6.3.4
-    if [[ $src = 0004-ALSA-hda-realtek-Add-quirk-for-2nd-ASUS-GU603.patch ]]; then
-      continue
-    fi
 
     patch -Np1 < "../asus-linux-fedora-kernel/$src"
   done
