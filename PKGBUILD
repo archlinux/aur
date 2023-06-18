@@ -6,7 +6,8 @@ pkgrel=1
 pkgdesc='Uploader for the 0x0 file sharing service.'
 arch=('any')
 url="https://codeberg.org/MorsMortium/${pkgname}"
-license=('GPL-3.0')
+license=('GPL3')
+conflicts=('0x0uploader')
 depends=('bash' 'curl')
 optdepends=('xclip: X clipboard'
     'wl-clipboard: Wayland clipboard'
