@@ -1,0 +1,15 @@
+pkgbase = ocaml4-camlp-streams
+	pkgdesc = The Stream and Genlex libraries for use with Camlp4 and Camlp5.
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://github.com/ocaml/camlp-streams
+	arch = x86_64
+	license = BSD
+	makedepends = dune
+	depends = ocaml4
+	depends = ocaml4-compiler-libs
+	options = !strip
+	source = camlp-streams-5.0.1.tar.gz::https://github.com/ocaml/camlp-streams/archive/v5.0.1.tar.gz
+	sha256sums = ad71f62406e9bb4e7fb5d4593ede2af6c68f8b0d96f25574446e142c3eb0d9a4
+
+pkgname = ocaml4-camlp-streams
