@@ -20,7 +20,7 @@ install=
 changelog=
 source=("${pkgname}::https://github.com/cemkaya-mpi/Dell-G15-Controller/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('8207077bc44e7f305b1ccae091a3532bcd952b367d1aa6ee938749f38521a044')
+sha256sums=('fa4489fffb496e846ae88c16e33323de6256420186ba071e6ee9e0f256e77513')
 
 package() {
   cd "${srcdir}/Dell-G15-Controller-$pkgver"
