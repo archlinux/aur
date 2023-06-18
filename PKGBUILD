@@ -10,7 +10,7 @@ depends=(python-pygls python-platformdirs)
 makedepends=(python-installer)
 license=(GPL3)
 _py=py3
-source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
+source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
 sha256sums=('623a7dbf37eba28257c4276420d6b42b816326cb9faee64b65716410a3a1a3e3')
 
 package() {
