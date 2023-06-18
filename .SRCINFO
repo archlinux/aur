@@ -1,0 +1,25 @@
+pkgbase = fifo-bin
+	pkgdesc = The future of browsing. Seamless experience for the EncryptOS experience, made with love by the same developers you all know, SnailDOS.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://fifo.snaildos.com
+	arch = x86_64
+	license = GNU
+	license = v3
+	depends = zlib
+	depends = libgl
+	depends = fuse2
+	provides = fifo
+	conflicts = fifo
+	noextract = Fifo.AppImage
+	options = !strip
+	source = Fifo-1.2.1.AppImage::https://github.com/SnailDOS/Fifo-Browser/releases/download/v1.2.1/Fifo-1.2.1.AppImage
+	source = https://raw.githubusercontent.com/snaildos/Fifo-Browser/main/static/icons/icon.png
+	source = https://raw.githubusercontent.com/snaildos/Fifo-Browser/main/LICENSE
+	source = https://raw.githubusercontent.com/snaildos/Fifo-Browser/main/static/fifo.desktop
+	sha256sums = 22d2553e49169f5fd5c4cc864f02ccac34c2732d41016ea68ed11ba530a6f761
+	sha256sums = 2230e5025d9fa4417c69b359bb8478d70f08450aef556227df7579779fa6ef08
+	sha256sums = 0bfebc9c7852e4cf48713cbc445971e7925122f2a202b60639ce36ca9dd3b932
+	sha256sums = 1a761bd47099164aca5fceb945a5f335ee78be485aa42baa5761021447992cba
+
+pkgname = fifo-bin
