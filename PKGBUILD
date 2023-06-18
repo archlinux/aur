@@ -9,6 +9,7 @@ arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
 depends=('webkit2gtk' 'webkit2gtk-4.1' 'libappindicator-gtk3')
+makedepends=('fuse2')
 provides=($_pkgname)
 conflicts=($_pkgname)
 _appimage=flight-core_${pkgver}_amd64.AppImage
