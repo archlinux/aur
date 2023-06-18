@@ -4,3 +4,4 @@
 !PKGBUILD
 !.SRCINFO
 !gcc10.patch
+!sextractor-2.28.0.patch

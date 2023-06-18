@@ -1,0 +1,659 @@
+diff -ur sextractor-2.28.0_old/man/Makefile.am sextractor-2.28.0/man/Makefile.am
+--- sextractor-2.28.0_old/man/Makefile.am	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/man/Makefile.am	2023-06-18 16:11:10.460047405 +0200
+@@ -26,5 +26,5 @@
+ #
+ #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+-dist_man_MANS = sex.1 sex.x
++dist_man_MANS = sex.1
+ 
+diff -ur sextractor-2.28.0_old/src/assoc.h sextractor-2.28.0/src/assoc.h
+--- sextractor-2.28.0_old/src/assoc.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/assoc.h	2023-06-18 16:11:10.463380595 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				assoc.h
+ *
+diff -ur sextractor-2.28.0_old/src/astrom.h sextractor-2.28.0/src/astrom.h
+--- sextractor-2.28.0_old/src/astrom.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/astrom.h	2023-06-18 16:11:10.463380595 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				astrom.h
+ *
+diff -ur sextractor-2.28.0_old/src/back.h sextractor-2.28.0/src/back.h
+--- sextractor-2.28.0_old/src/back.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/back.h	2023-06-18 16:11:10.463380595 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				back.h
+ *
+diff -ur sextractor-2.28.0_old/src/bpro.h sextractor-2.28.0/src/bpro.h
+--- sextractor-2.28.0_old/src/bpro.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/bpro.h	2023-06-18 16:11:10.463380595 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				bpro.h
+ *
+diff -ur sextractor-2.28.0_old/src/catout.c sextractor-2.28.0/src/catout.c
+--- sextractor-2.28.0_old/src/catout.c	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/catout.c	2023-06-18 16:11:10.463380595 +0200
+@@ -1006,7 +1006,7 @@
+       break;
+ 
+     case ASCII_SKYCAT:
+-      fprintf(ascfile, skycattail);
++      fprintf(ascfile, "%s", skycattail);
+       if (!prefs.pipe_flag)
+         fclose(ascfile);
+       break;
+Nur in sextractor-2.28.0/src: catout.c.orig.
+diff -ur sextractor-2.28.0_old/src/check.h sextractor-2.28.0/src/check.h
+--- sextractor-2.28.0_old/src/check.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/check.h	2023-06-18 16:11:10.463380595 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				check.h
+ *
+diff -ur sextractor-2.28.0_old/src/clean.c sextractor-2.28.0/src/clean.c
+--- sextractor-2.28.0_old/src/clean.c	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/clean.c	2023-06-18 16:11:10.463380595 +0200
+@@ -69,6 +69,7 @@
+   return;
+   }
+ 
++objliststruct   *cleanobjlist;
+ 
+ /******************************** endclean **********************************
+ PROTO   void endclean(void)
+Nur in sextractor-2.28.0/src: clean.c.orig.
+diff -ur sextractor-2.28.0_old/src/clean.h sextractor-2.28.0/src/clean.h
+--- sextractor-2.28.0_old/src/clean.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/clean.h	2023-06-18 16:11:10.463380595 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				clean.h
+ *
+Nur in sextractor-2.28.0/src: clean.h.orig.
+diff -ur sextractor-2.28.0_old/src/define.h sextractor-2.28.0/src/define.h
+--- sextractor-2.28.0_old/src/define.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/define.h	2023-06-18 16:11:10.463380595 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				define.h
+ *
+Nur in sextractor-2.28.0/src: define.h.orig.
+diff -ur sextractor-2.28.0_old/src/extract.h sextractor-2.28.0/src/extract.h
+--- sextractor-2.28.0_old/src/extract.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/extract.h	2023-06-18 16:11:10.463380595 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				extract.h
+ *
+Nur in sextractor-2.28.0/src: extract.h.orig.
+diff -ur sextractor-2.28.0_old/src/fft.h sextractor-2.28.0/src/fft.h
+--- sextractor-2.28.0_old/src/fft.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/fft.h	2023-06-18 16:11:10.463380595 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				fft.h
+ *
+Nur in sextractor-2.28.0/src: fft.h.orig.
+diff -ur sextractor-2.28.0_old/src/field.h sextractor-2.28.0/src/field.h
+--- sextractor-2.28.0_old/src/field.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/field.h	2023-06-18 16:11:10.463380595 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				field.h
+ *
+diff -ur sextractor-2.28.0_old/src/filter.h sextractor-2.28.0/src/filter.h
+--- sextractor-2.28.0_old/src/filter.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/filter.h	2023-06-18 16:11:10.463380595 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				filter.h
+ *
+Nur in sextractor-2.28.0/src: filter.h.orig.
+diff -ur sextractor-2.28.0_old/src/fits/fitscat_defs.h sextractor-2.28.0/src/fits/fitscat_defs.h
+--- sextractor-2.28.0_old/src/fits/fitscat_defs.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/fits/fitscat_defs.h	2023-06-18 16:11:43.515242449 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				fitscat_defs.h
+ *
+Nur in sextractor-2.28.0/src/fits: fitscat_defs.h.orig.
+diff -ur sextractor-2.28.0_old/src/flag.h sextractor-2.28.0/src/flag.h
+--- sextractor-2.28.0_old/src/flag.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/flag.h	2023-06-18 16:11:43.515242449 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				flag.h
+ *
+diff -ur sextractor-2.28.0_old/src/globals.h sextractor-2.28.0/src/globals.h
+--- sextractor-2.28.0_old/src/globals.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/globals.h	2023-06-18 16:11:43.515242449 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				globals.h
+ *
+Nur in sextractor-2.28.0/src: globals.h.orig.
+diff -ur sextractor-2.28.0_old/src/growth.h sextractor-2.28.0/src/growth.h
+--- sextractor-2.28.0_old/src/growth.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/growth.h	2023-06-18 16:11:43.515242449 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				growth.h
+ *
+Nur in sextractor-2.28.0/src: header.c.orig.
+diff -ur sextractor-2.28.0_old/src/header.h sextractor-2.28.0/src/header.h
+--- sextractor-2.28.0_old/src/header.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/header.h	2023-06-18 16:11:43.518575629 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				header.h
+ *
+diff -ur sextractor-2.28.0_old/src/image.h sextractor-2.28.0/src/image.h
+--- sextractor-2.28.0_old/src/image.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/image.h	2023-06-18 16:11:43.518575629 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				image.h
+ *
+diff -ur sextractor-2.28.0_old/src/interpolate.h sextractor-2.28.0/src/interpolate.h
+--- sextractor-2.28.0_old/src/interpolate.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/interpolate.h	2023-06-18 16:11:43.518575629 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				interpolate.h
+ *
+diff -ur sextractor-2.28.0_old/src/key.h sextractor-2.28.0/src/key.h
+--- sextractor-2.28.0_old/src/key.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/key.h	2023-06-18 16:11:43.518575629 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				key.h
+ *
+diff -ur sextractor-2.28.0_old/src/ldactoasc.c sextractor-2.28.0/src/ldactoasc.c
+--- sextractor-2.28.0_old/src/ldactoasc.c	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/ldactoasc.c	2023-06-18 16:11:43.518575629 +0200
+@@ -41,6 +41,8 @@
+ #define		SYNTAX  "ldactoasc catalog\n"
+ extern const char	notokstr[];
+ 
++int bswapflag ;
++
+ /********************************** main ************************************/
+ int	main(int argc, char *argv[])
+ 
+diff -ur sextractor-2.28.0_old/src/ldactoasc.h sextractor-2.28.0/src/ldactoasc.h
+--- sextractor-2.28.0_old/src/ldactoasc.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/ldactoasc.h	2023-06-18 16:11:43.521908810 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				ldactoasc.h
+ *
+@@ -61,10 +62,6 @@
+ 
+ /*------------ Set defines according to machine's specificities -------------*/
+ 
+-#if 0
+-#define	NO_ENVVAR
+-#endif
+-
+ /*--------------------- in case of missing constants ------------------------*/
+ 
+ #ifndef         SEEK_SET
+diff -ur sextractor-2.28.0_old/src/main.c sextractor-2.28.0/src/main.c
+--- sextractor-2.28.0_old/src/main.c	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/main.c	2023-06-18 16:11:43.521908810 +0200
+@@ -38,6 +38,9 @@
+ #include	"define.h"
+ #include	"globals.h"
+ #include	"prefs.h"
++#include	"psf.h"
++#include	"filter.h"
++#include	"som.h"
+ #include "pattern.h"
+ #define		SYNTAX \
+ EXECUTABLE " <image> [<image2>][-c <configuration_file>][-<keyword> <value>]\n" \
+@@ -48,6 +51,28 @@
+ extern const char       notokstr[];
+ extern keystruct	objkey[];
+ 
++int bswapflag ;
++sexcatstruct  thecat;
++picstruct thefield1,thefield2, thewfield1,thewfield2;
++objstruct flagobj;
++obj2struct flagobj2;
++char gstr[MAXCHAR];
++float ctg[37], stg[37];
++prefstruct              prefs;
++int      plistexist_value, plistexist_dvalue, plistexist_cdvalue,
++        plistexist_flag, plistexist_wflag, plistexist_dthresh, plistexist_var,
++        plistexist_dgeo,
++        plistoff_value, plistoff_dvalue, plistoff_cdvalue,
++        plistoff_flag[MAXFLAG], plistoff_wflag, plistoff_dthresh, plistoff_var,
++        plistoff_dgeox, plistoff_dgeoy, plistsize;
++psfstruct        *psf,*thedpsf,*thepsf;
++psfitstruct      *thepsfit,*thedpsfit;
++PIXTYPE          *checkmask;
++filterstruct     *thefilter;
++somstruct        *thesom;
++int idummy ;
++
++
+ /********************************** main ************************************/
+ int	main(int argc, char *argv[])
+ 
+@@ -58,6 +83,10 @@
+ 		**argkey, **argval,
+ 		*pstr;
+ 
++   unsigned short ashort =1 ;
++   bswapflag = *((char *)&ashort) ;
++
++
+ setlinebuf(stdout);
+  if (argc<2)
+     {
+diff -ur sextractor-2.28.0_old/src/neurro.h sextractor-2.28.0/src/neurro.h
+--- sextractor-2.28.0_old/src/neurro.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/neurro.h	2023-06-18 16:11:43.521908810 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				neurro.h
+ *
+diff -ur sextractor-2.28.0_old/src/param.h sextractor-2.28.0/src/param.h
+--- sextractor-2.28.0_old/src/param.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/param.h	2023-06-18 16:11:43.521908810 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				param.h
+ *
+diff -ur sextractor-2.28.0_old/src/paramprofit.h sextractor-2.28.0/src/paramprofit.h
+--- sextractor-2.28.0_old/src/paramprofit.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/paramprofit.h	2023-06-18 16:11:43.521908810 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				paramprofit.h
+ *
+diff -ur sextractor-2.28.0_old/src/pattern.h sextractor-2.28.0/src/pattern.h
+--- sextractor-2.28.0_old/src/pattern.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/pattern.h	2023-06-18 16:11:43.525241990 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				pattern.h
+ *
+diff -ur sextractor-2.28.0_old/src/photom.h sextractor-2.28.0/src/photom.h
+--- sextractor-2.28.0_old/src/photom.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/photom.h	2023-06-18 16:11:43.525241990 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				photom.h
+ *
+diff -ur sextractor-2.28.0_old/src/plist.h sextractor-2.28.0/src/plist.h
+--- sextractor-2.28.0_old/src/plist.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/plist.h	2023-06-18 16:11:43.525241990 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				plist.h
+ *
+Nur in sextractor-2.28.0/src: plist.h.orig.
+diff -ur sextractor-2.28.0_old/src/preflist.h sextractor-2.28.0/src/preflist.h
+--- sextractor-2.28.0_old/src/preflist.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/preflist.h	2023-06-18 16:11:43.528575170 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				preflist.h
+ *
+Nur in sextractor-2.28.0/src: preflist.h.orig.
+diff -ur sextractor-2.28.0_old/src/prefs.c sextractor-2.28.0/src/prefs.c
+--- sextractor-2.28.0_old/src/prefs.c	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/prefs.c	2023-06-18 16:11:43.528575170 +0200
+@@ -399,6 +399,7 @@
+   }
+ 
+ 
++extern int bswapflag ;
+ /********************************* preprefs **********************************/
+ /*
+ Set number of threads and endianity.
+Nur in sextractor-2.28.0/src: prefs.c.orig.
+Nur in sextractor-2.28.0/src: prefs.h.orig.
+diff -ur sextractor-2.28.0_old/src/profit.c sextractor-2.28.0/src/profit.c
+--- sextractor-2.28.0_old/src/profit.c	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/profit.c	2023-06-18 16:11:43.531908350 +0200
+@@ -1999,7 +1999,7 @@
+ 		*kernelt, *pixin,*pixin0, *mask,*maskt, *pixinout,
+ 		*dpixin,*dpixin0, *dpixout,*dpixout0, *dx,*dy,
+ 		*dgeoxpix0,*dgeoypix0, *dgeoxpix,*dgeoypix,
+-		xcin,xcout,ycin,ycout, xsin,ysin, xin,yin, x,y, val,
++		xcin,xcout,ycin,ycout, xsin,ysin, xin,yin, val,
+ 		invpixstep;
+    int		*start,*startt, *nmask,*nmaskt, *modnaxisn,
+ 		i,j,k,n,t,w,
+@@ -2263,7 +2263,7 @@
+    psfstruct	*psf;
+    float      *mask,*maskt, *ppix;
+    float       dx,dy, r,r2,rmin,rmin2,rmax,rmax2,rsig,invrsig2;
+-   int          width,height,npix,offset, psfwidth,psfheight,psfnpix,
++   int          width,height,npix,offset, psfwidth,psfheight,
+                 cpwidth, cpheight,hcpwidth,hcpheight, i,j,x,y;
+ 
+   if (!(psf=profit->psf))
+@@ -2271,7 +2271,6 @@
+ 
+   psfwidth = profit->modnaxisn[0];
+   psfheight = profit->modnaxisn[1];
+-  psfnpix = psfwidth*psfheight;
+   width = profit->modnaxisn[0];
+   height = profit->modnaxisn[1];
+   npix = width*height;
+@@ -2610,7 +2609,6 @@
+ float profit_spiralindex(profitstruct *profit)
+   {
+    objstruct	*obj;
+-   obj2struct	*obj2;
+    float	*dx,*dy, *fdx,*fdy, *gdx,*gdy, *gdxt,*gdyt, *pix,
+ 		fwhm, invtwosigma2, hw,hh, ohw,ohh, x,y,xstart, tx,ty,txstart,
+ 		gx,gy, r2, spirindex, invsig, val, sep;
+@@ -2620,7 +2618,6 @@
+   npix = profit->objnaxisn[0]*profit->objnaxisn[1];
+ 
+   obj = profit->obj;
+-  obj2 = profit->obj2;
+ /* Compute simple derivative vectors at a fraction of the object scale */
+   fwhm = profit->guessradius * 2.0 / 4.0;
+   if (fwhm < 2.0)
+@@ -3462,7 +3459,6 @@
+ 		parfitenum parfittype,
+ 		float priorcen, float priorsig)
+   {
+-   double	dtemp;
+    float	*paramptr;
+    int		index;
+ 
+@@ -3633,8 +3629,7 @@
+ 		xmmin,maxmx, maxmmin;
+    float	*x,*xmin,*xmax;
+    parfitenum	*fittype;
+-   int		*fflag,
+-		f,f1,f2, p,p1,p2, nfree, nparam, nmin,nmax;
++   int		f,f1,f2, p,p1,p2, nfree, nparam, nmin,nmax;
+ 
+   nparam = profit->nparam;
+   fittype = profit->parfittype;
+@@ -3978,7 +3973,7 @@
+   {
+    double	xscale, yscale, saspect, ctheta,stheta, flux, scaling, bn, n,
+ 		dx1cout,dx2cout, ddx1[36],ddx2[36];
+-   float	posin[PROFIT_MAXEXTRA], posout[2], dnaxisn[2],
++   float	posin[2+PROFIT_MAXEXTRA], posout[2], dnaxisn[2],
+ 		*pixin, *pixin2, *pixout,
+ 		fluxfac, amp,cd11,cd12,cd21,cd22, dx1,dx2,
+ 		x1,x10,x2, x1cin,x2cin, x1cout,x2cout, x1max,x2max, x1in,x2in,
+@@ -4657,7 +4652,7 @@
+ 			start, fac;
+    int			linecount[2+PROFIT_MAXEXTRA],
+ 			*naxisn,
+-			i,j,n, ival, nlines, kwidth,width, badpixflag, naxis;
++			i,j,n, ival, nlines, kwidth,width, naxis;
+ 
+   naxis = prof->naxis;
+   naxisn = prof->naxisn;
+@@ -4691,7 +4686,6 @@
+   kwidth = prof->kernelwidth[0];
+   nlines = prof->kernelnlines;
+ /* First step: interpolate along NAXIS1 from the data themselves */
+-  badpixflag = 0;
+   pixin = prof->pix+start;
+   pixout = prof->kernelbuf;
+   for (j=nlines; j--;)
+diff -ur sextractor-2.28.0_old/src/psf.h sextractor-2.28.0/src/psf.h
+--- sextractor-2.28.0_old/src/psf.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/psf.h	2023-06-18 16:11:43.535241530 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				psf.h
+ *
+Nur in sextractor-2.28.0/src: psf.h.orig.
+diff -ur sextractor-2.28.0_old/src/retina.h sextractor-2.28.0/src/retina.h
+--- sextractor-2.28.0_old/src/retina.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/retina.h	2023-06-18 16:11:43.535241530 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				retina.h
+ *
+Nur in sextractor-2.28.0/src: retina.h.orig.
+diff -ur sextractor-2.28.0_old/src/scan.c sextractor-2.28.0/src/scan.c
+--- sextractor-2.28.0_old/src/scan.c	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/scan.c	2023-06-18 16:11:43.535241530 +0200
+@@ -46,6 +46,7 @@
+ #include	"image.h"
+ #include	"plist.h"
+ #include	"weight.h"
++#include	"clean.h"
+ 
+ /****************************** scanimage ************************************
+ PROTO   void scanimage(picstruct *field, picstruct *dfield, picstruct *ffield,
+@@ -83,7 +84,7 @@
+    PIXTYPE		thresh, relthresh, cdnewsymbol, cdwthresh,wthresh,
+ 			*scan,*dscan,*cdscan,*dwscan,*dwscanp,*dwscann,
+ 			*cdwscan,*cdwscanp,*cdwscann,*wscand,
+-			*scant, *wscan,*wscann,*wscanp, *dgeoscanx, *dgeoscany;
++			*scant, *wscan,*wscann,*wscanp, *dgeoscanx, *dgeoscany, *dumscan;
+    FLAGTYPE		*pfscan[MAXFLAG];
+    status		cs, ps, *psstack;
+    int			*start, *end, ymax;
+@@ -778,13 +779,11 @@
+    objliststruct	objlistout, *objlist2;
+    static objstruct	obj;
+    objstruct		*cobj;
+-   pliststruct		*pixel;
+    static int		id_parent;
+    int 			i,j,n;
+ 
+   cfield = dfield? dfield: field;
+ 
+-  pixel = objlist->plist;
+   objlistout.obj = NULL;
+   objlistout.plist = NULL;
+   objlistout.nobj = objlistout.npix = 0;
+diff -ur sextractor-2.28.0_old/src/sexhead1.h sextractor-2.28.0/src/sexhead1.h
+--- sextractor-2.28.0_old/src/sexhead1.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/sexhead1.h	2023-06-18 16:11:43.538574710 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				sexhead1.h
+ *
+Nur in sextractor-2.28.0/src: sexhead1.h.orig.
+diff -ur sextractor-2.28.0_old/src/sexhead.h sextractor-2.28.0/src/sexhead.h
+--- sextractor-2.28.0_old/src/sexhead.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/sexhead.h	2023-06-18 16:11:43.535241530 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				sexhead.h
+ *
+diff -ur sextractor-2.28.0_old/src/sexheadsc.h sextractor-2.28.0/src/sexheadsc.h
+--- sextractor-2.28.0_old/src/sexheadsc.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/sexheadsc.h	2023-06-18 16:11:43.538574710 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				sexheadsc.h
+ *
+diff -ur sextractor-2.28.0_old/src/som.h sextractor-2.28.0/src/som.h
+--- sextractor-2.28.0_old/src/som.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/som.h	2023-06-18 16:11:43.538574710 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				som.h
+ *
+Nur in sextractor-2.28.0/src: som.h.orig.
+diff -ur sextractor-2.28.0_old/src/threads.h sextractor-2.28.0/src/threads.h
+--- sextractor-2.28.0_old/src/threads.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/threads.h	2023-06-18 16:11:43.538574710 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				threads.h
+ *
+diff -ur sextractor-2.28.0_old/src/types.h sextractor-2.28.0/src/types.h
+--- sextractor-2.28.0_old/src/types.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/types.h	2023-06-18 16:11:43.538574710 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				types.h
+ *
+diff -ur sextractor-2.28.0_old/src/wcs/poly.c sextractor-2.28.0/src/wcs/poly.c
+--- sextractor-2.28.0_old/src/wcs/poly.c	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/wcs/poly.c	2023-06-18 16:11:43.541907890 +0200
+@@ -736,16 +736,14 @@
+  ***/
+ void	poly_initortho(polystruct *poly, double *data, int ndata)
+   {
+-   double	*basis, *coeff, *invec,*invect0,*invect,*invect02,*invect2,
++   double	*basis, *invect0,*invect,*invect02,*invect2,
+ 		*rdiag, *deortho,
+ 		scale,s, dval;
+-   int		c,i,j,m,n, ndmc, ndim,ncoeff;
++   int		c,i,j, ndmc, ncoeff;
+ 
+ /* Prepare the vectors and counters */
+-  ndim = poly->ndim;
+   ncoeff = poly->ncoeff;
+   basis = poly->basis;
+-  coeff = poly->coeff;
+ 
+ /* Allocate memory for orthonormalization matrix and vector */
+   QCALLOC(poly->deorthomat, double, ncoeff*ncoeff);
+@@ -754,9 +752,6 @@
+ 
+ /* Do a QR decomposition of input vector set */
+ /* Vectors are stored as rows to speed up the Householder transformation */
+-  n = ncoeff;
+-  m = ndata;
+-  invec = data;
+   for (c=0; c<ncoeff; c++)
+     {
+     ndmc = ndata - c;
+diff -ur sextractor-2.28.0_old/src/wcscelsys.h sextractor-2.28.0/src/wcscelsys.h
+--- sextractor-2.28.0_old/src/wcscelsys.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/wcscelsys.h	2023-06-18 16:11:43.541907890 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				wcscelsys.h
+ *
+diff -ur sextractor-2.28.0_old/src/weight.h sextractor-2.28.0/src/weight.h
+--- sextractor-2.28.0_old/src/weight.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/weight.h	2023-06-18 16:11:43.541907890 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				weight.h
+ *
+diff -ur sextractor-2.28.0_old/src/winpos.h sextractor-2.28.0/src/winpos.h
+--- sextractor-2.28.0_old/src/winpos.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/winpos.h	2023-06-18 16:11:43.541907890 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				winpos.h
+ *
+diff -ur sextractor-2.28.0_old/src/xml.c sextractor-2.28.0/src/xml.c
+--- sextractor-2.28.0_old/src/xml.c	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/xml.c	2023-06-18 16:11:43.545241070 +0200
+@@ -697,7 +697,7 @@
+ 		name, ucd);
+       break;
+     case P_STRING:
+-      sprintf(value, (char *)key[i].ptr);
++      sprintf(value, "%s",(char *)key[i].ptr);
+       fprintf(file, "   <PARAM name=\"%s\" datatype=\"char\" arraysize=\"*\""
+ 	" ucd=\"%s\" value=\"%s\"/>\n",
+ 	name, ucd, *value? value: " ");
+@@ -706,13 +706,13 @@
+       n = *(key[i].nlistptr);
+       if (n)
+         {
+-        sprintf(value, ((char **)key[i].ptr)[0]);
++        sprintf(value, "%s", ((char **)key[i].ptr)[0]);
+         fprintf(file, "   <PARAM name=\"%s\" datatype=\"char\""
+ 		" arraysize=\"*\" ucd=\"%s\" value=\"%s",
+ 		name, ucd, *value? value: " ");
+         for (j=1; j<n; j++)
+           {
+-          sprintf(value, ((char **)key[i].ptr)[j]);
++          sprintf(value, "%s", ((char **)key[i].ptr)[j]);
+           fprintf(file, ",%s", *value? value: " ");
+           }
+         fprintf(file, "\"/>\n");
+@@ -723,7 +723,7 @@
+ 		name, ucd);
+       break;
+     case P_KEY:
+-      sprintf(value, key[i].keylist[*((int *)key[i].ptr)]);
++      sprintf(value, "%s", key[i].keylist[*((int *)key[i].ptr)]);
+       fprintf(file, "   <PARAM name=\"%s\" datatype=\"char\" arraysize=\"*\""
+ 	" ucd=\"%s\" value=\"%s\"/>\n",
+ 	name, ucd, value);
+@@ -732,13 +732,13 @@
+       n = *(key[i].nlistptr);
+       if (n)
+         {
+-        sprintf(value, key[i].keylist[((int *)key[i].ptr)[0]]);
++        sprintf(value, "%s", key[i].keylist[((int *)key[i].ptr)[0]]);
+         fprintf(file, "   <PARAM name=\"%s\" datatype=\"char\""
+ 		" arraysize=\"*\" ucd=\"%s\" value=\"%s",
+ 		name, ucd, value);
+         for (j=1; j<n; j++)
+           {
+-          sprintf(value, key[i].keylist[((int *)key[i].ptr)[j]]);
++          sprintf(value, "%s", key[i].keylist[((int *)key[i].ptr)[j]]);
+           fprintf(file, ",%s", value);
+           }
+         fprintf(file, "\"/>\n");
+Nur in sextractor-2.28.0/src: xml.c.orig.
+diff -ur sextractor-2.28.0_old/src/xml.h sextractor-2.28.0/src/xml.h
+--- sextractor-2.28.0_old/src/xml.h	2023-03-10 07:52:36.000000000 +0100
++++ sextractor-2.28.0/src/xml.h	2023-06-18 16:11:43.545241070 +0200
+@@ -1,3 +1,4 @@
++#pragma once
+ /*
+ *				xml.h
+ *
