@@ -1,5 +1,5 @@
-src/
-pkg/
-*.tar*
-user.js
-ujs2cfg.sh
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!autoconfig.js
