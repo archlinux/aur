@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-bitwarden-git
 	pkgdesc = Bitwarden addon for Firefox
-	pkgver = vNext.r1200.gd3d17f1
+	pkgver = v2023.5.0.r12847.gd3d17f1
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/bitwarden-password-manager/
 	arch = any
