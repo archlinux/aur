@@ -13,7 +13,6 @@ pkgbase = cavasik
 	depends = python-gobject
 	depends = python-cairo
 	depends = python-pydbus
-	provides = cavasik
 	conflicts = cavasik-git
 	source = git+https://github.com/TheWisker/Cavasik#tag=v2.0.0
 	b2sums = SKIP
