@@ -2,17 +2,24 @@
 # Contributor:: Ocelot <1112345@airmail.cc>
 
 pkgname=python-censys
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="An easy-to-use and lightweight API wrapper for Censys APIs."
 arch=('any')
 url="https://github.com/censys/censys-python"
 license=('APACHE')
-depends=('python' 'python-requests' 'python-backoff' 'python-rich')
+depends=(
+  'python'
+  'python-requests'
+  'python-urllib3'
+  'python-backoff'
+  'python-rich'
+  'python-argcomplete'
+)
 makedepends=('python-build' 'python-installer' 'python-poetry-core')
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3099c91db4a97018a000265a2279a8e413bf40664f0cdd6c6eee1b550d4bf9d5')
+sha256sums=('b92a864cb1d2cac8e6c50ffda98629372defd098e1d54c081c8a9ccb8c1050d4')
 
 build() {
     cd "${_name}-${pkgver}"
