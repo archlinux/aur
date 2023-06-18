@@ -1,6 +1,6 @@
 pkgbase = linker
 	pkgdesc = Open links according to content.
-	pkgver = 4.40e005b
+	pkgver = r16.55786e6
 	pkgrel = 1
 	url = https://codeberg.org/MorsMortium/linker
 	arch = any

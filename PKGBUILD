@@ -1,7 +1,7 @@
 # Maintainer : MorsMortium <morsmortium@disroot.org>
 
 pkgname=linker
-pkgver=4.40e005b
+pkgver=r16.55786e6
 pkgrel=1
 pkgdesc='Open links according to content.'
 arch=('any')
