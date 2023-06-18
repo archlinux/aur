@@ -1,0 +1,21 @@
+pkgbase = plasma5support-git
+	pkgdesc = Support components for porting from KF5/Qt5 to KF6/Qt6
+	pkgver = 5.240.0_r98.ge75d11c
+	pkgrel = 1
+	url = https://invent.kde.org/plasma/plasma5support
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules-git
+	depends = kconfig-git
+	depends = kcoreaddons-git
+	depends = ki18n-git
+	depends = kio-git
+	depends = kservice-git
+	depends = kxmlgui-git
+	depends = plasma-framework-git
+	provides = plasma5support
+	conflicts = plasma5support
+	source = git+https://invent.kde.org/plasma/plasma5support.git
+	md5sums = SKIP
+
+pkgname = plasma5support-git
