@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=gedit-plugin-markdown_preview-git
-pkgver=r164.e9ecfd9
+pkgver=r170.cc711c0
 pkgrel=1
 pkgdesc="A gedit plugin previewing markdown (.md) documents"
 arch=('any')
@@ -12,8 +12,8 @@ makedepends=('git')
 optdepends=('pymdown-extensions: extra Python Markdown extensions'
             'python-pygments: for CodeHilite extension'
             'pandoc: export and stylesheet support'
-            'texlive-bin: export to PDF with pandoc'
-            'texlive-core: export to PDF with pandoc')
+            'texlive-bin: export to PDF with pandoc (pdflatex)'
+            'texlive-fontsextra: export to PDF with pandoc (lmodern)')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/maoschanz/gedit-plugin-markdown_preview.git')
