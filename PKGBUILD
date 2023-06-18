@@ -16,7 +16,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=17.0.0_r460054.60766678c7cd
+pkgver=17.0.0_r464790.ed0620fd24a1
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -88,6 +88,7 @@ build() {
         -D LLDB_USE_SYSTEM_SIX=1 \
         -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang" \
         -D LLVM_LIT_ARGS="-sv --ignore-fail" \
+        -D LLVM_ENABLE_DUMP=ON \
         -Wno-dev
 
     ninja -C _build $NINJAFLAGS
@@ -151,7 +152,6 @@ package_llvm-git() {
     _py=$([[ "$(python -V)" =~ Python[[:space:]]*([0-9]+.[0-9]+) ]] && echo ${BASH_REMATCH[1]})
     cd llvm-project
     # Install Python bindings and optimize them
-    cp -a llvm/bindings/python/llvm  "$pkgdir"/usr/lib/python$_py/site-packages/
     cp -a clang/bindings/python/clang  "$pkgdir"/usr/lib/python$_py/site-packages/
     _python_optimize "$pkgdir"/usr/lib/python$_py/site-packages
 
