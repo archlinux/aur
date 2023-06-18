@@ -1,22 +1,22 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BioNERO
-_pkgver=1.8.2
+_pkgver=1.8.3
 pkgname=r-${_pkgname,,}
-pkgver=1.8.2
+pkgver=${_pkgver//[:-]/.}
 pkgrel=1
-pkgdesc='Biological Network Reconstruction Omnibus'
-arch=('any')
+pkgdesc="Biological Network Reconstruction Omnibus"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL3)
 depends=(
-  r
   r-biocparallel
   r-complexheatmap
   r-dynamictreecut
   r-genie3
+  r-ggdendro
   r-ggnetwork
-  r-ggnewscale
   r-ggplot2
   r-ggrepel
   r-igraph
@@ -24,31 +24,42 @@ depends=(
   r-matrixstats
   r-minet
   r-netrep
-  r-networkd3
   r-patchwork
   r-rcolorbrewer
   r-reshape2
+  r-rlang
   r-summarizedexperiment
   r-sva
   r-wgcna
+)
+checkdepends=(
+  r-networkd3
+  r-testthat
 )
 optdepends=(
   r-biocstyle
   r-covr
   r-deseq2
   r-knitr
+  r-networkd3
   r-rmarkdown
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b2f8342722b79c96e8d143c65e8a5aec9e7d600171f0abde90eb6abc12ddc001')
+md5sums=('5a5d4ebb8c7331e7d181b3bb49c70ec0')
+sha256sums=('ee4db9277d5a9a063834924dd60c30e620ad3b2fbdcc8672565c52ea89d0d1d8')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
