@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice-git
-pkgver=1.8.1.r0.g7044f2831
+pkgver=1.8.2.r6.g3e891fa60
 pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++ (git version)'
 arch=('x86_64')
@@ -34,13 +34,14 @@ pkgver() {
 
 build() {
     cmake -B build -S copperspice \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_BINDIR:PATH='lib/copperspice/bin' \
         -DCMAKE_INSTALL_INCLUDEDIR:PATH='include/copperspice' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_SKIP_RPATH:BOOL='YES' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package() {

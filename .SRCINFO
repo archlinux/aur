@@ -1,6 +1,6 @@
 pkgbase = copperspice-git
 	pkgdesc = Libraries for developing cross platform software applications in C++ (git version)
-	pkgver = 1.8.1.r0.g7044f2831
+	pkgver = 1.8.2.r6.g3e891fa60
 	pkgrel = 1
 	url = https://www.copperspice.com/
 	arch = x86_64
