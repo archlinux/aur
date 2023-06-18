@@ -1,0 +1,13 @@
+pkgbase = simplest-fetch-git
+	pkgdesc = The simplest fetch program you'll ever find, written in C.
+	pkgver = 1.0.0.r1.gaff5a4d
+	pkgrel = 1
+	url = https://github.com/an-prata/simplest-fetch
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	source = simplest-fetch::git+https://github.com/an-prata/simplest-fetch.git
+	sha256sums = SKIP
+
+pkgname = simplest-fetch-git
