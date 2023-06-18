@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r62.7ce9cfa
+pkgver=r63.7829f56
 pkgrel=1
 pkgdesc="A custom configs tool for sk-holoiso"
 arch=('any')
@@ -32,6 +32,7 @@ package() {
     # 服务
     install -dm755 "${pkgdir}/etc/systemd/system/"
     install -m644 -t "${pkgdir}/etc/systemd/system/" "${source_dir}/etc/systemd/system"/*
+    install -m644 -t "${pkgdir}/etc/" "${source_dir}/etc"/*.conf
 
     # 脚本
     install -dm755 "${pkgdir}/usr/bin/"
