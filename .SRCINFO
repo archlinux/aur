@@ -1,6 +1,6 @@
 pkgbase = redis-graph
 	pkgdesc = A graph database as a Redis module
-	pkgver = 2.10.10
+	pkgver = 2.10.11
 	pkgrel = 1
 	url = https://redis.io/docs/stack/graph/
 	arch = i686
