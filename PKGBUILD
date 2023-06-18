@@ -1,6 +1,6 @@
 # Maintainer: Jakub Skowron <jakubskowron676@gmail.com>
 pkgname=scolorpicker
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 epoch=
 pkgdesc="smooll Color Picker for X11"
@@ -8,8 +8,8 @@ arch=('x86_64')
 url="https://www.github.com/reallySmooll/scolorpicker"
 license=('MIT')
 groups=()
-depends=('libx11' 'glibc' 'xclip')
-makedepends=()
+depends=('libx11' 'glibc' 'xsel' 'libxext')
+makedepends=('cmake')
 checkdepends=()
 optdepends=()
 provides=()
@@ -30,8 +30,11 @@ validpgpkeys=()
 #}
 
 build() {
-	cd "$pkgname-$pkgver"
-	make build
+	cmake -B build -S "$pkgname-$pkgver" \
+		-DCMAKE_BUILD_TYPE='None' \
+		-DINSTALL_SYSTEM_WIDE=YES \
+		-Wno-dev
+	cmake --build build
 }
 
 #check() {
@@ -40,7 +43,6 @@ build() {
 #}
 
 package() {
-	cd "$pkgname-$pkgver"
-	make INSTALLDIR="$pkgdir/usr/bin" install
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $pkgname-$pkgver/LICENSE
 }
