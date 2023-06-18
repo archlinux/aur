@@ -6,11 +6,10 @@ pkgbase = dry-git
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = gcc
-	makedepends = make
 	makedepends = cmake
 	depends = xorg-server
 	provides = dry
+	conflicts = dry
 	source = dry-git::git+https://gitlab.com/luckeyproductions/dry.git
 	sha512sums = SKIP
 

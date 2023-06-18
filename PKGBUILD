@@ -10,13 +10,14 @@ url="https://gitlab.com/luckeyproductions/${_pkgname}"
 license=('MIT')
 depends=('xorg-server')
 provides=("${_pkgname}")
-makedepends=('git' 'gcc' 'make' 'cmake')
+conflicts=("${_pkgname}")
+makedepends=('git' 'cmake')
 sha512sums=('SKIP')
 source=("${pkgname}::git+${url}.git")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
