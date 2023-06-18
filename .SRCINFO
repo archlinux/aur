@@ -1,19 +1,21 @@
 pkgbase = python-dhall
 	pkgdesc = Python bindings for dhall, a functional configuration language
-	pkgver = 0.1.14
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://pypi.org/project/dhall
 	arch = x86_64
 	arch = i686
 	license = Apache
 	license = MIT
-	makedepends = python-pip
 	makedepends = cargo
-	makedepends = maturin
+	makedepends = python-build
+	makedepends = python-maturin
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = openssl
-	source = python-dhall-0.1.14.tar.gz::https://github.com/s-zeng/dhall-python/archive/v0.1.14.tar.gz
-	sha256sums = d6b95f03d25c80a39267891b6401be6af411e5eac44591a1654267a96533c06c
-	b2sums = 368857a5ef25d8fd0175ade30338a02fb0f91ffa5df340cc1b9ce7816f9724734a2e841ebe10c073d55c5d5136f3a62c67837a905f2c3656efbe26b36b71d9bf
+	source = python-dhall-0.1.15.tar.gz::https://github.com/s-zeng/dhall-python/archive/v0.1.15.tar.gz
+	sha256sums = f2035d053a18cbcc943d614333cf2f719e225cd61555e6ec2c89f1c87480c923
+	b2sums = 8bf32de73ed467e5d2916ebeeef8cd14cfe7b13351ed521ff96ae264b705669f84015cb96ba62f6532f44700ed24b4a884f6e4ce86b9c1342e4185626d621f8d
 
 pkgname = python-dhall
