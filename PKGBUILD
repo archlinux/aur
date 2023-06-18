@@ -2,13 +2,13 @@
 
 pkgname=spleeter
 pkgver=2.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Deezer music source separation library and tool using pretrained models'
 url='https://github.com/deezer/spleeter'
 arch=('any')
 license=('MIT')
 depends=(
-    'python-ffmpeg'
+    'python-ffmpeg-python'
     'python-h2'
     'python-httpx'
     'python-librosa'
