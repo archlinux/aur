@@ -1,9 +1,9 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dune-fem
-_tarver=2.9.0
-_tar="${_tarver}/${pkgname}-${_tarver}.tar.gz"
-pkgver="${_tarver}"
-pkgrel=2
+_tarver=v2.9.0.2
+_tar=${_tarver}/${pkgname}-${_tarver}.tar.gz
+pkgver=${_tarver/v/}
+pkgrel=1
 pkgdesc="A discretization module providing an implementation of mathematical abstractions to solve PDEs on parallel computers including local grid adaptivity, dynamic load balancing, and higher order discretization schemes"
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
@@ -16,27 +16,21 @@ optdepends=('doxygen: Generate the class documentation from C++ sources'
   'papi: for events supported'
   'dune-spgrid: for implement structured, parallel grid'
   'dune-polygongrid: for implement DUNE grid consisting of polygons')
-source=(https://dune-project.org/download/${_tar}{,.asc}
-  include.patch::https://gitlab.dune-project.org/${pkgname}/${pkgname}/-/commit/43a596eba13fa528e8c62be9ad31c9b7f63e6260.patch)
-sha512sums=('c36623035934ed7ea95d1c8c4ae2e14a11c84cdc89a8c3625ec8dd2b029824cf8aa7fc8b345ccad59c0a6a47f4688abff4c11c4d5a853cbe27becc7f793109fc'
-  'SKIP'
-  '9ab59b5daec2e39f0fd2636892aedf9fb5930d1ff27a0fdea782a818d73605363c60d78212f38bc4adcab16d9cc32a64bf534c5da9c1be012d5cd272c15a4489')
-validpgpkeys=('E5B47782DE09813BCC3518E159DA94F1FC8FD313') # Andreas Dedner <a.s.dedner@warwick.ac.uk>
+source=(https://gitlab.dune-project.org/${pkgname}/${pkgname}/-/archive/${_tar})
+sha512sums=('ea4555dcc6743da34c7babf24bd6d6897d01c25fb09aa0d9e35086572759d01466eefde04510d472ed190d690f0e69afa63dc7e5b75eb257a54370027c20e0a2')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
   export _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-  patch -p1 -i ../include.patch
-  sed -i 's/^Python-Requires: fenics-ufl==2019.1.0/Python-Requires: fenics-ufl>=2019.1.0/' dune.module
+  sed -i 's/fenics-ufl==2022.2.0/fenics-ufl>=2022.2.0/' ${pkgname}-${_tarver}/dune.module
   # https://gitlab.dune-project.org/dune-fem/dune-fem/-/issues/111
-  sed -i '/  FindPThreads.cmake/d' cmake/modules/CMakeLists.txt
-  sed -i '/  FindSIONlib.cmake/d' cmake/modules/CMakeLists.txt
-  sed -i 's/^Version: '"${pkgver%%.0}"'/Version: '"${pkgver}"'/' dune.module
+  sed -i '/  FindPThreads.cmake/d' ${pkgname}-${_tarver}/cmake/modules/CMakeLists.txt
+  sed -i '/  FindSIONlib.cmake/d' ${pkgname}-${_tarver}/cmake/modules/CMakeLists.txt
+  sed -i 's/^Version: '"${pkgver::3}"'/Version: '"${pkgver}"'/' ${pkgname}-${_tarver}/dune.module
   python -m venv --system-site-packages _skbuild/linux-${CARCH}-${_pyversion}/cmake-build/dune-env
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}-${_tarver}
 
   XDG_CACHE_HOME="${PWD}" \
     python setup.py build \
@@ -64,7 +58,7 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}-${_tarver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py --skip-cmake install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
   find "${pkgdir}" -type d -empty -delete
