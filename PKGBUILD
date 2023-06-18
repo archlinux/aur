@@ -1,18 +1,17 @@
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildbox-run-bubblewrap
-pkgver=0.0.64
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="An implementation of a runner for BuildGrid/buildbox using Bubblewrap."
 arch=(x86_64)
 url="https://buildgrid.build"
 license=('Apache')
 depends=(bubblewrap google-glog grpc util-linux-libs)
 makedepends=(benchmark 'buildbox-common' 'cmake' 'git' ninja)
-source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-run-bubblewrap#tag=0.0.64&commit=0f9a932d92305d2bc8d15a962b7caf707286f97a")
+source=("git+https://gitlab.com/BuildGrid/buildbox/buildbox-run-bubblewrap#tag=1.0.0&commit=9808341cd6d1fe3b9a71578276f8c7394070116f")
 sha256sums=('SKIP')
 
 build() {
-  sed -i 's/CMAKE_CXX_STANDARD 14/CMAKE_CXX_STANDARD 20/' buildbox-run-bubblewrap/CMakeLists.txt
   mkdir -p build
   cd build
   cmake ../buildbox-run-bubblewrap \
