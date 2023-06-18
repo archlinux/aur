@@ -1,0 +1,27 @@
+pkgbase = ocaml4
+	pkgdesc = A functional language with OO extensions
+	pkgver = 4.14.1
+	pkgrel = 1
+	url = https://caml.inria.fr/
+	arch = x86_64
+	license = LGPL2.1
+	license = custom:
+	license = QPL-1.0
+	makedepends = ncurses
+	optdepends = ncurses: advanced ncurses features
+	optdepends = tk: advanced tk features
+	options = !makeflags
+	options = !emptydirs
+	options = staticlibs
+	source = https://caml.inria.fr/distrib/ocaml-4.14/ocaml-4.14.1.tar.xz
+	sha512sums = 326a063e7e18ec55a21fbb129e4b2915733e67166ec1d94412875853aa10fbfb27fdfc9f6440ce65b188924b93f3cb8d01b0c4640179a5a12bc4e561f48b3e5b
+
+pkgname = ocaml4
+	conflicts = ocaml
+	conflicts = ocaml-compiler-libs
+
+pkgname = ocaml4-compiler-libs
+	pkgdesc = Several modules used internally by the OCaml compiler
+	license = custom: QPL-1.0
+	depends = ocaml4
+	conflicts = ocaml-compiler-libs
