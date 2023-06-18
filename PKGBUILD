@@ -12,12 +12,12 @@ license=(GPL3 custom)
 
 depends=(libgpr)
 makedepends=(gprbuild-toolbox
-             libgpr
-             texlive-bin
              python-sphinx
              python-sphinx_rtd_theme
-             texlive-core
-             texlive-latexextra)
+#             texlive-core
+#             texlive-latexextra
+#             texlive-latexrecommended
+             texlive-meta)
 
 #https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gnatcoll-core-24.0w-20230324-161A8-src.tar.gz
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-161A8-src.tar.gz)
