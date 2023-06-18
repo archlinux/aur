@@ -10,7 +10,6 @@ pkgbase = miniplayer-git
 	depends = python
 	depends = python-mpd2
 	depends = python-pillow
-	depends = python-ffmpeg
 	depends = python-pixcat
 	depends = ueberzug
 	depends = python-colorthief
