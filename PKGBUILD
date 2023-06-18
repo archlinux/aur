@@ -2,7 +2,7 @@
 
 pkgname=tbls-bin
 _name=${pkgname%-bin}
-pkgver=1.67.0
+pkgver=1.67.1
 pkgrel=1
 pkgdesc="CI-Friendly tool for documenting a database"
 arch=(x86_64)
@@ -12,7 +12,7 @@ provides=("$_name")
 conflicts=("$_name")
 
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/tbls_v${pkgver}_linux_amd64.tar.gz")
-sha256sums=('7450199007456f935214b9925ff0f45d39f01676a86da81da673d605020294a0')
+sha256sums=('8fd2fffa04f053b364f5181984bdf2dd7156eee232af2be24873a3d96a0a97d5')
 noextract=("$pkgname-$pkgver.tar.gz")
 
 _archive="$pkgname-$pkgver"
