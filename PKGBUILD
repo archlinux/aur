@@ -8,7 +8,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -26,7 +26,7 @@ source=('unreal-engine-5.sh'
         'com.unrealengine.UE4Editor.desktop'
         'use_system_clang.patch'
         'unreal-engine-5-pacman-cache.hook')
-sha256sums=('14a2f522dc4ed701678adac0d49f802ac55a0adcb3e1de6663ef9fc64c851099'
+sha256sums=('e9bab74efd9ca14bb746634ec2bbf8d93330479f505b645465cd2ad8149a5f80'
             'c04c03b2c5c933b7eb1af283d607934ad95fd57f44d62b83719061b555a85dca'
             'b0a57db9a44d0001dc76ca8504d93e273af30093c6a993a5969d82b0ace54b98'
             '9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca')
@@ -67,29 +67,37 @@ export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
 # Valid values are false / disabled / default, auto, and native
 arch_auto=false
 
+opt_level=""
+  
+if [[ ${CFLAGS} =~ -O([0-9]+) ]]; then
+  opt_level="-O${BASH_REMATCH[1]}"
+else
+  opt_level="-O3"
+fi
+
 if [[ ${arch_auto} == auto ]]
 then
   ## Architecture checks and compile flag adjustments - shellcheck throws a fit about the build function but it looks fine to me; checks for the highest available x64 support level and falls back to "native" if either not available
   if [ "$(uname -m)" == "x86_64" ]; then
     if [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v4' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v4 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v4 -mtune=x86-64-v4 -O3 -pipe -fPIC -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wformat -Werror=format-security"
+      export CFLAGS="${CFLAGS} -march=x86-64-v4 -mtune=x86-64-v4 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v3' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v3 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v3 -mtune=x86-64-v3 -O3 -pipe -fPIC -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wformat -Werror=format-security"
+      export CFLAGS="${CFLAGS} -march=x86-64-v3 -mtune=x86-64-v3 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v2' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v2 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v2 -mtune=x86-64-v2 -O3 -pipe -fPIC -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wformat -Werror=format-security"
+      export CFLAGS="${CFLAGS} -march=x86-64-v2 -mtune=x86-64-v2 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep 'x86_64' | grep 'supported' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /' | grep -w '^x86_64 - supported')" == 'x86_64 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64 -mtune=x86-64 -O3 -pipe -fPIC -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wformat -Werror=format-security"
+      export CFLAGS="${CFLAGS} -march=x86-64 -mtune=x86-64 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -Wp,-D_FORTIFY_SOURCE=2"
       export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
       export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
     fi
   elif [ "$(uname -m)" == "aarch64" ]; then
-    export CFLAGS="${CFLAGS} -march=aarch64 -mtune=aarch64 -O3 -pipe -fPIC -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wformat -Werror=format-security"
+    export CFLAGS="${CFLAGS} -march=aarch64 -mtune=aarch64 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -Wp,-D_FORTIFY_SOURCE=2"
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
     export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
   else
@@ -97,7 +105,7 @@ then
     return
   fi
 elif [[ "${arch_auto}" == native ]]; then
-    export CFLAGS="${CFLAGS} -march=native -mtune=native -O3 -pipe -fPIC -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wformat -Werror=format-security"
+    export CFLAGS="${CFLAGS} -march=native -mtune=native ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -w -Wformat -Werror=format-security -fPIC -Wp,-D_FORTIFY_SOURCE=2"
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
     export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
 fi
@@ -157,21 +165,17 @@ prepare() {
 build() {
   cd "${pkgname}" || return
   
-  while true; do 
-    if [ "${_WithDDC}" == true ]; then
-      Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=true -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false
-    else
-      Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=false -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false
-    fi
-    exit_status=$?
-    
-    if [ ${exit_status} -eq 0 ]; then
-      break
-    else
-      echo "Error: Build failed; try searching the output for suspicious messages." >&2
-      exit ${exit_status}
-    fi
-  done
+  if [ "${_WithDDC}" == true ]; then
+    build='Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=true -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false'
+  else
+    build='Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=false -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false'
+  fi
+  
+  if eval "${build}"; then
+    :
+  else
+    echo "Error: Build failed; try searching the output for suspicious messages." >&2
+  fi
 }
 
 package() {
