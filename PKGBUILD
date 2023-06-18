@@ -1,20 +1,21 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu-git
-pkgver=131.r29.gd40b890d8
+pkgver=132.r129.g5f9804fb6
 pkgrel=1
-pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support. (git version)"
+pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation. (git version)"
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
 license=("ISC")
 depends=(gtk3 libao libgl libpulse libudev.so=1-64 libxv openal sdl2 vulkan-driver vulkan-icd-loader)
-makedepends=(mesa git)
+makedepends=(mesa git clang lld)
 provides=(ares-emu)
 conflicts=(ares-emu)
+install=ares.install
 source=("git+https://github.com/ares-emulator/ares.git"
         "ares-paths.patch")
 sha256sums=("SKIP"
-           "5805cfea308e46b0a209613d4693f3bb15ebb750436fc80d478437e464b6bf52")
+           "223501d18e42f5285f7051ed9e874b159361337a55a9e0da91b0375ce66d156b")
 
 pkgver() {
   cd "${srcdir}/ares"
@@ -22,12 +23,13 @@ pkgver() {
 }
 
 prepare() {
-  # Patch Ares so that it can look for its files that are installed system-wide here
+  # Patch Ares so that it can look for its resources, that are installed in its shared data directory
   patch -Np1 -i "${srcdir}/ares-paths.patch"
 }
 
 build() {
-  make -C "${srcdir}/ares/desktop-ui" hiro=gtk3
+  # If you want to build with gcc, edit to use g++ instead of clang++
+  make -C "${srcdir}/ares/desktop-ui" hiro=gtk3 compiler=clang++
 }
 
 package() {
@@ -36,7 +38,8 @@ package() {
   install -Dm 644 "${srcdir}/ares/desktop-ui/resource/ares.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
   install -Dm 644 "${srcdir}/ares/desktop-ui/resource/ares.desktop" -t "${pkgdir}/usr/share/applications/"
 
-  # Also install the shaders in Ares' shared directory
+  # Also install shaders and databases in Ares' shared data directory
   install -dm 755 "${pkgdir}/usr/share/ares"
   cp -dr --no-preserve=ownership "${srcdir}/ares/ares/Shaders/" "${pkgdir}/usr/share/ares/Shaders/"
+  cp -dr --no-preserve=ownership "${srcdir}/ares/mia/Database/" "${pkgdir}/usr/share/ares/Database/"
 }
