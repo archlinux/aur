@@ -1,6 +1,6 @@
 # Maintainer: Dylan Delgado <dylan1496@live.com>
 pkgname=sherpa-git
-pkgver=v3.0.0alpha1.r354.g21a28e795
+pkgver=3.0.0alpha1.r354.g21a28e795
 pkgrel=1
 pkgdesc="A particle physics package for Monte Carlo simulation of collider events - git version"
 arch=('x86_64' 'i686')
