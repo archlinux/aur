@@ -1,6 +1,6 @@
 pkgname=renderdoc
 pkgver=1.27
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenGL and Vulkan debugging tool"
 arch=(x86_64)
 url="https://github.com/baldurk/renderdoc"
@@ -20,14 +20,14 @@ build() {
         -DBUILD_VERSION_DIST_CONTACT="https://aur.archlinux.org/packages/renderdoc" \
         -DBUILD_VERSION_DIST_NAME="Arch" \
         -DBUILD_VERSION_DIST_VER="${pkgver}" \
+        -DVULKAN_LAYER_FOLDER="${pkgdir}/etc/vulkan/implicit_layer.d" \
         -B"${srcdir}/${pkgname}-${pkgver}"/build \
         -H"${srcdir}/${pkgname}-${pkgver}"
   cmake --build "${srcdir}/${pkgname}-${pkgver}"/build
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C "${srcdir}/${pkgname}-${pkgver}"/build install
-  mkdir -p "${pkgdir}/usr/share/licenses/$pkgname"
+  cmake --install "${srcdir}/${pkgname}-${pkgver}"/build -v --strip --prefix "$pkgdir/usr"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
