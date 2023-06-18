@@ -1,0 +1,22 @@
+pkgbase = llm-clblast-git
+	pkgdesc = An ecosystem of Rust libraries for working with large language models (with CLBlast)
+	pkgver = r772.3becd72
+	pkgrel = 1
+	url = https://github.com/rustformers/llm
+	arch = any
+	license = MIT
+	license = APACHE
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = clblast
+	provides = llm
+	conflicts = llm
+	replaces = llama-cli
+	source = git+https://github.com/rustformers/llm
+	source = git+https://github.com/ggerganov/llama.cpp
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = llm-clblast-git
