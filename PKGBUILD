@@ -4,7 +4,7 @@
 # shellcheck shell=bash
 
 pkgname=charasay-bin
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="The future of cowsay 🐮! Colorful characters saying something 🗨️."
 arch=("x86_64" "aarch64")
