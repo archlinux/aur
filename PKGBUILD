@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=spleeter
-pkgver=2.3.1
+pkgver=2.3.2
 
 # The upstream folks don’t tag Git commits for their PyPi releases.
 # Requests to tag their releases are left unanswered [1].
@@ -11,9 +11,9 @@ pkgver=2.3.1
 # version bump [2] a reasonable approximation for the actual release.
 #
 # [1]: https://github.com/deezer/spleeter/issues/845
-# [2]: https://github.com/deezer/spleeter/commit/315e54e55062c53b0e9a78799b12f8c3fb9abc79#diff-50c86b7ed8ac2cf95bd48334961bf0530cdc77b5a56f852c5c61b89d735fd711R3
+# [2]: https://github.com/deezer/spleeter/commit/bdc27726412dd296ae9d51434db402675565d129#diff-50c86b7ed8ac2cf95bd48334961bf0530cdc77b5a56f852c5c61b89d735fd711R3
 #
-_commit=315e54e55062c53b0e9a78799b12f8c3fb9abc79
+_commit=bdc27726412dd296ae9d51434db402675565d129
 
 pkgrel=1
 pkgdesc='Deezer music source separation library and tool using pretrained models'
@@ -58,7 +58,7 @@ source=(
     'test-eval-xfail.patch'
 )
 sha512sums=(
-    'a74f5a4a318ecad6188996397b4a3fc8817c44599cf8eac45bae092f6dd8c1ea65c4687686a449fbed3b3dba066c2f3984e60258cb5bc04de1240b4592694eac'
+    '254cfdd3379f766103aba02d6783eea634681841d01fc94d65dba7c7b996d9ec441ee8185011a3bf567e02e04c1ef7c89e50a666b37b79c6053dc1104fbd53a8'
     'f573e211ca884948abf1d9f962a4d4f7e10609d3e7b714d0dde5326c6d1041ff83df26631c47e983cec962e44b2a2a2e964320d3d3d8d1d78811db991327a2f4'
     '2a54b0b27c60db02bef64195737970a8fcde9a7a79576aa1a01b8e46ba7f40d3d1d0ae02d739f2e63475a10c663ce437fbbcbcaa52b397d33b82e68d8218df85'
     '8e84da04d5c19d6fe13fc469c4e8e2d1246ad3eb734b6b65f690c7f85acbd8d2c71121ddb983b3a332a6d7eb4c2e289a445ac9364a9e681900c9b7dce572a4a1'
