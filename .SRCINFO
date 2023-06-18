@@ -1,21 +1,22 @@
 pkgbase = python-sureal
 	pkgdesc = Subjective quality scores recovery from noisy measurements
-	pkgver = 0.6.2
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/Netflix/sureal/
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-pip
 	makedepends = python-wheel
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-matplotlib
 	depends = python-pandas
-	source = https://github.com/Netflix/sureal/archive/v0.6.2/sureal-0.6.2.tar.gz
-	sha256sums = 2ce477ac79d165ffcf52f846b586bfeff102265ca6cf281db79fa55d83c8a736
+	depends = python-setupmeta
+	source = https://github.com/Netflix/sureal/archive/v0.9.0/sureal-0.9.0.tar.gz
+	sha256sums = 874112de8b158150170c4b22458d6da4f597c7153bea295880cad83a4f5a3535
 
 pkgname = python-sureal
-

@@ -1,21 +1,22 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=python-sureal
-pkgver=0.6.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Subjective quality scores recovery from noisy measurements'
 arch=('any')
 url='https://github.com/Netflix/sureal/'
 license=('Apache')
-depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pandas')
-makedepends=('python-setuptools' 'python-pip' 'python-wheel')
+depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pandas' 'python-setupmeta')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
+BUILDENV+=('!check')
 source=("https://github.com/Netflix/sureal/archive/v${pkgver}/sureal-${pkgver}.tar.gz")
-sha256sums=('2ce477ac79d165ffcf52f846b586bfeff102265ca6cf281db79fa55d83c8a736')
+sha256sums=('874112de8b158150170c4b22458d6da4f597c7153bea295880cad83a4f5a3535')
 
 build() {
     cd "sureal-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -24,6 +25,5 @@ check() {
 }
 
 package() {
-    cd "sureal-${pkgver}"
-    PYTHONHASHSEED='0' python setup.py install --root="$pkgdir" --skip-build --optimize='1'
+    python -m installer --destdir="$pkgdir" "sureal-${pkgver}/dist"/*.whl
 }
