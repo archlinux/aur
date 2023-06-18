@@ -4,6 +4,7 @@ pkgbase = stgit-git
 	pkgrel = 1
 	url = https://stacked-git.github.io/
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = cargo
 	makedepends = asciidoc

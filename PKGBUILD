@@ -6,12 +6,12 @@
 
 pkgname=stgit-git
 _pkgname=stgit
-pkgver=r2722.8ba765f6
+pkgver=r2961.69b4a105
 pkgrel=1
-pkgdesc="Pushing/popping patches to/from a stack on top of Git, similar to Quilt"
+pkgdesc="Stack-based patch management for Git"
 url="https://stacked-git.github.io/"
 license=('GPL2')
-arch=(x86_64)
+arch=(x86_64 aarch64)
 depends=('git' 'curl' 'bzip2')
 makedepends=('cargo' 'asciidoc' 'xmlto')
 conflicts=('stgit')
@@ -48,4 +48,3 @@ package() {
 	make prefix=/usr DESTDIR=${pkgdir} install-all
 	install -D -m 0644 "COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
 }
-
