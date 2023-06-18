@@ -6,7 +6,8 @@ pkgrel=1
 pkgdesc='Open links according to content.'
 arch=('any')
 url="https://codeberg.org/MorsMortium/${pkgname}"
-license=('GPL-3.0')
+license=('GPL3')
+conflicts=('linker')
 depends=('python' 'python-appdirs')
 makedepends=('git')
 sha512sums=('SKIP')
@@ -14,7 +15,7 @@ source=("${pkgname}::git+${url}.git")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
