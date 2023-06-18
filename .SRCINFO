@@ -1,13 +1,14 @@
 pkgbase = python-ping3
 	pkgdesc = Pure Python3 version of ICMP ping, shipped with command-line command
 	pkgver = 4.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kyan001/ping3
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/kyan001/ping3/archive/refs/tags/v4.0.4.tar.gz
 	sha256sums = 1a14aacf3d4b2a5456dfdff940acbf980c456388c92fe4c8d9d2ee3a38873eb5
