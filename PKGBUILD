@@ -1,17 +1,19 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=mldonkey
 _pkgver=3.1.7-2
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc='A multi-network P2P client'
 arch=(x86_64)
 url='http://mldonkey.sourceforge.net/'
 license=(GPL2)
-depends=(file gd hicolor-icon-theme miniupnpc libnatpmp libminiupnpc.so)
-makedepends=(gtk2 librsvg ocaml-num camlp4 lablgtk2)
+depends=(file gd hicolor-icon-theme libnatpmp libminiupnpc.so)
+makedepends=(gtk2 librsvg ocaml4 ocaml4-camlp4 ocaml4-lablgtk2 ocaml4-num miniupnpc)
 optdepends=('librsvg: GUI support'
-            'gtk2: GUI support')
+            'gtk2: GUI support'
+            'gtk-engine-murrine: optional theme engine')
 backup=(etc/conf.d/mldonkey)
 source=("https://github.com/ygrek/mldonkey/releases/download/release-${pkgver//./-}/mldonkey-${_pkgver}.tar.bz2"
         "https://raw.githubusercontent.com/gentoo/gentoo/master/net-p2p/mldonkey/files/cpp17-byte-namespace.patch"
