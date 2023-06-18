@@ -1,0 +1,21 @@
+pkgbase = ipscan-git
+	pkgdesc = Angry IP Scanner (or simply ipscan) is an open-source and cross-platform network scanner designed to be fast and simple to use. It scans IP addresses and ports as well as has many other features.
+	pkgver = 3.9.1.r0.g42253321
+	pkgrel = 3
+	url = https://angryip.org/
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = gradle
+	makedepends = dpkg
+	makedepends = rpm-tools
+	depends = java-runtime
+	depends = jdk17-openjdk
+	provides = ipscan
+	conflicts = ipscan
+	source = git+https://github.com/angryip/ipscan.git
+	source = ipscan.sh
+	sha256sums = SKIP
+	sha256sums = 8acc44bd1fbeb7d11e979a0933de07c4a63dcb3ce6a0a1679c610ca2e6358393
+
+pkgname = ipscan-git
