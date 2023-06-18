@@ -7,16 +7,17 @@ pkgrel=1
 pkgdesc='Native desktop LBRY client'
 arch=('any')
 url="https://codeberg.org/MorsMortium/${_pkgname}"
-license=('GPL-3.0')
+license=('GPL3')
 depends=('python' 'python-gobject' 'python-cairo' 'gtk3' 'lbrynet' 'python-setproctitle' 'jansson' 'curl' 'md4c' 'pcre2' 'imagemagick' 'appdir' 'sqlite')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 makedepends=('git')
 sha512sums=('SKIP')
 source=("${pkgname}::git+${url}.git")
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
