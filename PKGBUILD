@@ -10,7 +10,7 @@ _use_suffix=1
 pkgver=25.1.1
 _chromiumver=114.0.5735.90
 # shellcheck disable=SC2034
-pkgrel=3
+pkgrel=4
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
