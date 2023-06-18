@@ -7,6 +7,7 @@ build:
   image: registry.stefanwimmer128.io/stefanwimmer128/archlinux-chaotic-paru-user:latest
   before_script:
     - paru -Syu --noconfirm
+    - gpg --recv-key 8F3EBD3D92A3F8889867D14F96D7B3B5CF717997
   script:
     - makepkg -s --noconfirm
   artifacts:
