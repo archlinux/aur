@@ -1,4 +1,3 @@
-# Maintainer:  xiretza            <xiretza+aur@gmail.com>
 # Maintainer:  Rod Kay            <charlie5 on #ada at freenode.net>
 
 # Contributor: Patrick Kelly      <kameo76890 at gmail dot com>
@@ -24,7 +23,9 @@ depends=(clang
          gtkada
          python-gobject
          python-cairo
-         python-yaml)
+         python-yaml
+         python-jedi
+         python-pycodestyle)
 
 makedepends=(gprbuild
              texlive-latexextra
