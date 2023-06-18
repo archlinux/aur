@@ -1,6 +1,6 @@
 pkgbase = sushi-git
 	pkgdesc = A quick previewer for Nautilus
-	pkgver = 43.0+11+gf1ad337
+	pkgver = 44.2+6+g169c15d
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/sushi
 	arch = x86_64

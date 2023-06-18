@@ -3,7 +3,7 @@
 
 _pkgname="sushi"
 pkgname="${_pkgname}-git"
-pkgver=43.0+11+gf1ad337
+pkgver=44.2+6+g169c15d
 pkgrel=1
 pkgdesc="A quick previewer for Nautilus"
 url="https://gitlab.gnome.org/GNOME/${_pkgname}"
