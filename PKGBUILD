@@ -1,8 +1,7 @@
 # Maintainer:
 
 _pkgname=sensible-utils
-pkgbase=sensible-utils-unified
-pkgname=("$_pkgname" "$pkgbase")
+pkgname="$_pkgname-unified"
 pkgver=0.0.20
 _debianextra=
 pkgrel=1
@@ -43,33 +42,17 @@ check() {
   make -k check | true
 }
 
-_package() {
+package() {
+  replaces=(
+    ${provides[@]}
+  )
+  provides+=(
+    sensible-utils
+    sensible-utils-unified
+  )
+
   cd "${_pkgname}-${pkgver}${_debianextra}"
   export -n EDITOR VISUAL
   make DESTDIR="$pkgdir/" install
   shopt -s globstar
-}
-
-package_sensible-utils() {
-  replaces=(
-    ${provides[@]}
-  )
-  provides+=(
-    sensible-utils
-    sensible-utils-unified
-  )
-
-  _package
-}
-
-package_sensible-utils-unified() {
-  replaces=(
-    ${provides[@]}
-  )
-  provides+=(
-    sensible-utils
-    sensible-utils-unified
-  )
-
-  _package
 }
