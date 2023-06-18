@@ -8,7 +8,7 @@
 pkgname=emacs-lucid
 pkgver=28.2
 _pkgver_major=${pkgver/.*}
-pkgrel=5
+pkgrel=6
 pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -65,11 +65,15 @@ build() {
   cd "$srcdir"/emacs-$pkgver
 
  ./configure \
-      --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var \
-      --with-x-toolkit=lucid --with-xft --with-xaw3d \
-      --without-gconf --without-gsettings \
-      --with-modules \
-      --program-transform-name='s/^ctags$/ctags.emacs/'
+     --sysconfdir=/etc \
+     --prefix=/usr  \
+     --libexecdir=/usr/lib \
+     --localstatedir=/var \
+     --with-modules \
+     --with-x-toolkit=lucid \
+     --without-gconf \
+     --without-gsettings \
+     --program-transform-name='s/^ctags$/ctags.emacs/'
 
   make
 }
