@@ -1,15 +1,15 @@
 pkgbase = r-gower
 	pkgdesc = Gower's Distance
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=gower
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	checkdepends = r-tinytest
 	depends = r
 	optdepends = r-tinytest
 	source = https://cran.r-project.org/src/contrib/gower_1.0.1.tar.gz
+	md5sums = e83037d172ecc81bf45b69dbd902d216
 	sha256sums = 296a9d8e5efa8c3a8cc6b92cf38880915753afdef30281629af9dc8eae8315fc
 
 pkgname = r-gower
