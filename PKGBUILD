@@ -2,7 +2,7 @@
 
 _pkgname=kdenlive
 pkgname=kdenlive-appimage
-pkgver=23.04.1
+pkgver=23.04.2
 pkgrel=0
 pkgdesc="A non-linear video editor for Linux using the MLT video framework"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('breeze' 'breeze-icons')
 makedepends=('breeze' 'breeze-icons')
 _filename="${_pkgname}-${pkgver}-${arch}.AppImage"
 source=("${_filename}::https://download.kde.org/stable/kdenlive/23.04/linux/${_pkgname}-${pkgver}-x86_64.AppImage")
-md5sums=('2b092951d009b4a90d257a615a401320')
+md5sums=('bc08b8ad4acf6c9b2308863c2678ba8e')
 options=(!strip)
 prepare() 
 {
@@ -42,6 +42,6 @@ package()
   done
   install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/org.kde.kdenlive.desktop" "${pkgdir}/usr/share/applications/org.kde.kdenlive.desktop"
   
-  #Append Window Class to prevent duplicate launcher icons, since atleast version 22.04, StartUpClass entry is included in the desktop file. Removing entry for now.
+  #Append Window Class to prevent duplicate launcher icons, since at least version 22.04, StartUpClass entry is included in the desktop file. Removing entry for now.
   #echo "StartupWMClass=kdenlive" >> "${pkgdir}/usr/share/applications/org.kde.kdenlive.desktop"
 }
