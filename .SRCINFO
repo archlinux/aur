@@ -1,6 +1,6 @@
 pkgbase = ardour-git
 	pkgdesc = A multichannel hard disk recorder and digital audio workstation (git version)
-	pkgver = 7.4.r267.g6319980746
+	pkgver = 7.4.r288.gebcaffd19f
 	pkgrel = 1
 	url = https://ardour.org/
 	arch = x86_64
@@ -62,10 +62,16 @@ pkgbase = ardour-git
 	optdepends = non-session-manager: for session management
 	optdepends = xjadeo: video monitoring
 	provides = ardour
+	provides = ladspa-host
+	provides = lv2-host
+	provides = vst-host
+	provides = vst3-host
 	conflicts = ardour
 	source = ardour::git+https://github.com/Ardour/ardour.git
+	source = ardour-midi-7.zip::http://stuff.ardour.org/loops/ArdourBundledMedia.zip
 	source = ardour-7.x-vendor_qm-dsp.patch
 	sha256sums = SKIP
+	sha256sums = a00de00671cdc329b2ca35c2a5c4150af3d6588147f9dca2e3dea752aa2e234c
 	sha256sums = 6393d52d2c084e03ba24f657352a76a58d5e9f530cfeecb87babf8990c902cbc
 
 pkgname = ardour-git

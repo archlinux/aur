@@ -1,5 +1,5 @@
 pkg/
 src/
 ardour/
-ardour-git-*.pkg.tar.xz
-ardour-git-*.pkg.tar.zst
+ardour-git-*.pkg.tar.*
+ardour-midi-*.zip
