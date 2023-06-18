@@ -14,7 +14,7 @@ pkgbase = dune-fem
 	depends = dune-localfunctions>=2.9.0.2
 	depends = python-matplotlib
 	depends = python-scipy
-	depends = python-ufl
+	depends = python-fenics-ufl
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
 	optdepends = eigen: Lightweight C++ template library for vector and matrix math

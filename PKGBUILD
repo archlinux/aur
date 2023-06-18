@@ -8,7 +8,7 @@ pkgdesc="A discretization module providing an implementation of mathematical abs
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
 license=('GPL2')
-depends=("dune-alugrid>=${pkgver}" "dune-istl>=${pkgver}" "dune-localfunctions>=${pkgver}" python-matplotlib python-scipy python-ufl)
+depends=("dune-alugrid>=${pkgver}" "dune-istl>=${pkgver}" "dune-localfunctions>=${pkgver}" python-matplotlib python-scipy python-fenics-ufl)
 makedepends=(doxygen graphviz python-scikit-build python-ninja)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'
