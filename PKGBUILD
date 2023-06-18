@@ -1,18 +1,19 @@
-# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+# Maintainer: Evan Overman <evanrileyoverman@gmail.com>
+# Contributer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 
 pkgname=python-pixcat-git
 _pkgname=pixcat
 pkgver=r25.69e35c0
 pkgrel=1
-pkgdesc="CLI and Python 3.6+ API to display images on a kitty terminal with optional resizing."
+pkgdesc="CLI and Python API to display images on a kitty terminal with optional resizing."
 arch=(any)
 url='https://github.com/mirukana/pixcat'
 license=('LGPL3')
-depends=('python' 'python-blessed' 'python-pillow' 'python-docopt' 'python-requests' 'python-dataclasses' 'python-ansiwrap')
+depends=('python>=3.7' 'python-blessed' 'python-pillow' 'python-docopt' 'python-requests' 'python-ansiwrap')
 makedepends=('python-setuptools' 'git')
 provides=('pixcat')
 conflicts=('pixcat')
-source=("${_pkgname}::git://github.com/mirukana/pixcat")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {

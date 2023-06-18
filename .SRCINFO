@@ -1,5 +1,5 @@
 pkgbase = python-pixcat-git
-	pkgdesc = CLI and Python 3.6+ API to display images on a kitty terminal with optional resizing.
+	pkgdesc = CLI and Python API to display images on a kitty terminal with optional resizing.
 	pkgver = r25.69e35c0
 	pkgrel = 1
 	url = https://github.com/mirukana/pixcat
@@ -7,16 +7,15 @@ pkgbase = python-pixcat-git
 	license = LGPL3
 	makedepends = python-setuptools
 	makedepends = git
-	depends = python
+	depends = python>=3.7
 	depends = python-blessed
 	depends = python-pillow
 	depends = python-docopt
 	depends = python-requests
-	depends = python-dataclasses
 	depends = python-ansiwrap
 	provides = pixcat
 	conflicts = pixcat
-	source = pixcat::git://github.com/mirukana/pixcat
+	source = pixcat::git+https://github.com/mirukana/pixcat.git
 	sha256sums = SKIP
 
 pkgname = python-pixcat-git
