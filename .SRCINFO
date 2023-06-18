@@ -28,6 +28,7 @@ pkgbase = komikku-git
 	depends = python-rarfile
 	depends = webkit2gtk
 	depends = webkit2gtk-5.0
+	depends = python-piexif
 	provides = komikku
 	conflicts = komikku
 	source = git+https://gitlab.com/valos/komikku
