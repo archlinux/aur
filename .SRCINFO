@@ -1,13 +1,13 @@
 pkgbase = tbls
 	pkgdesc = CI-Friendly tool for documenting a database
-	pkgver = 1.67.0
+	pkgver = 1.67.1
 	pkgrel = 1
 	url = https://github.com/k1LoW/tbls
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = tbls-1.67.0.tar.gz::https://github.com/k1LoW/tbls/archive/refs/tags/v1.67.0.tar.gz
-	sha256sums = 171a0f36bf0991c4f9d4ecc29e2dcc109020519f99925702adfa6752fd816f3e
+	source = tbls-1.67.1.tar.gz::https://github.com/k1LoW/tbls/archive/refs/tags/v1.67.1.tar.gz
+	sha256sums = 7485e200a3f8b09da463b393d1d20a6dd57f2abaca7ae117a44d451b8ac3e984
 
 pkgname = tbls
