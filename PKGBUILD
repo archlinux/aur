@@ -6,11 +6,11 @@
 
 pkgname=stgit
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Stack-based patch management for Git"
 url="https://stacked-git.github.io/"
 license=('GPL2')
-arch=(x86_64)
+arch=(x86_64 aarch64)
 depends=('git' 'curl' 'bzip2')
 makedepends=('cargo' 'asciidoc' 'xmlto')
 source=(

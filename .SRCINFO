@@ -1,9 +1,10 @@
 pkgbase = stgit
 	pkgdesc = Stack-based patch management for Git
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stacked-git.github.io/
 	arch = x86_64
+	arch = aarch64
 	license = GPL2
 	makedepends = cargo
 	makedepends = asciidoc
