@@ -1,21 +1,22 @@
+# Maintainer: Vlad Pirlog <(firstname) at (lastname) dot net>
 # Contributor: Stephen Gregoratto <dev@sgregoratto.me>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gmenu
-pkgver=0.3.0
-pkgrel=3
-pkgdesc="desktop application launcher"
-url="https://code.rocketnine.space/tslocum/gmenu"
+pkgver='0.3.1'
+pkgrel=1
+pkgdesc='Desktop application launcher'
+url='https://code.rocketnine.space/tslocum/gmenu'
 license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=('go')
-depends=('gtk3' 'at-spi2-core')
+depends=('gtk4' 'libgirepository')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f7d610712a228df3472a2eef4f712838cb30ac42a55de7a99f202781da31033c')
+b2sums=('4de2afe3139889c9a686ba853812c5401bc80a7105c7816f7ddfa0e73df3b0ae2ae2cf492e7def05674d64dea3aad6c47f707a29329abcc3c332e341a6b2e632')
 
 build() {
   cd "$pkgname"
-  mkdir -p "build"
+  mkdir -p 'build'
 
   go build \
     -trimpath \
