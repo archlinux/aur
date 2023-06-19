@@ -1,7 +1,7 @@
 pkgbase = cdktf
 	pkgdesc = Cloud Development Kit for Terraform
 	pkgver = 0.17.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hashicorp/terraform-cdk
 	arch = any
 	license = MPL2
