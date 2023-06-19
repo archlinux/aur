@@ -1,7 +1,7 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=audio-sharing
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Share your computer audio"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('gst-rtsp-server' 'libadwaita')
 makedepends=('cargo' 'git' 'meson')
 checkdepends=('appstream-glib')
 source=("https://gitlab.gnome.org/World/AudioSharing/-/archive/$pkgver/AudioSharing-$pkgver.tar.gz")
-sha256sums=('ed16b967e4480ebaf5114f432e8312693e48ef4059dead88fa403fb18b2d51cc')
+sha256sums=('baebdefb33329b81a9f5aa68f4b906453625256e90e0df963ed164220a71cb1a')
 
 prepare() {
   cd "AudioSharing-$pkgver"
