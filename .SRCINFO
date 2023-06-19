@@ -1,0 +1,27 @@
+pkgbase = duckstation
+	pkgdesc = A Sony PlayStation (PSX) emulator, focusing on playability, speed, and long-term maintainability (git version)
+	pkgver = 2023.06.08
+	pkgrel = 1
+	url = https://github.com/stenzek/duckstation
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = pentium4
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = libdrm
+	makedepends = libpulse
+	makedepends = alsa-lib
+	makedepends = sndio
+	makedepends = gtk3
+	makedepends = ninja
+	depends = sdl2
+	depends = qt6-base
+	optdepends = psx-bios: PlayStation Bioses
+	source = duckstation-latest::git+https://github.com/stenzek/duckstation#commit=2d78b3f26a18600cbeb1f7add97f345d7345deeb
+	sha256sums = SKIP
+
+pkgname = duckstation
