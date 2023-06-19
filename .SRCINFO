@@ -1,7 +1,7 @@
 pkgbase = nexfil
 	pkgdesc = OSINT tool for finding profiles by username
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thewhiteh4t/nexfil
 	arch = any
 	license = MIT
@@ -13,6 +13,6 @@ pkgbase = nexfil
 	source = nexfil-1.0.5.tar.gz::https://github.com/thewhiteh4t/nexfil/archive/1a020d4403a531720d3516a65cafd573205c27a8.tar.gz
 	source = nexfil.sh
 	sha256sums = f42ad4c64beb698844c1f3209081020188d1707aa09e28e5b3c9bdd3973eebd6
-	sha256sums = 6841614614f6e46c8037ac360d38448c676da6733fea52b0e3bcd0b8538ffa29
+	sha256sums = b4245b7ed64f01bd834cac8c5c5525e09a4ff23390c810f7b3b0891ff8f53acd
 
 pkgname = nexfil

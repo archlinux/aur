@@ -3,7 +3,7 @@
 pkgname=nexfil
 pkgver=1.0.5
 _commit_hash=1a020d4403a531720d3516a65cafd573205c27a8
-pkgrel=1
+pkgrel=2
 pkgdesc="OSINT tool for finding profiles by username"
 arch=(any)
 url="https://github.com/thewhiteh4t/nexfil"
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=(
   'f42ad4c64beb698844c1f3209081020188d1707aa09e28e5b3c9bdd3973eebd6'
-  '6841614614f6e46c8037ac360d38448c676da6733fea52b0e3bcd0b8538ffa29'
+  'b4245b7ed64f01bd834cac8c5c5525e09a4ff23390c810f7b3b0891ff8f53acd'
 )
 
 _archive="$pkgname-$_commit_hash"
@@ -40,6 +40,9 @@ package() {
   cp -ar modules/ "$pkgdir/opt/nexfil/"
   cp -ar __pycache__/ "$pkgdir/opt/nexfil/"
   install -Dm644 nexfil.py "$pkgdir/opt/nexfil/nexfil.py"
+
+  install -Dm644 metadata.json "$pkgdir/opt/nexfil/metadata.json"
+  install -Dm644 url_store.json "$pkgdir/opt/nexfil/url_store.json"
 
   install -Dm 755 "$srcdir/nexfil.sh" "$pkgdir/usr/bin/nexfil"
 

@@ -1,3 +1,4 @@
 #!/bin/sh -eu
 
-python /opt/nexfil/nexfil.py "$@"
+cd /opt/nexfil/
+python nexfil.py "$@"
