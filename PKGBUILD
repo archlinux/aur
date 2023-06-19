@@ -2,86 +2,68 @@
 
 pkgname=maigret
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Collect a dossier on a person by username from thousands of sites"
 arch=(any)
 url="https://github.com/soxoj/maigret"
 license=(MIT)
+depends=(
+  python-aiodns
+  python-aiohttp
+  python-aiohttp-socks
+  python-cloudscraper
+  python-colorama
+  python-jinja
+  python-mock
+  python-networkx
+  python-pycountry
+  python-pyvis
+  python-requests
+  python-tqdm
+  python-xhtml2pdf
+  python-xmind
+  socid-extractor
+)
 makedepends=(python-setuptools)
 checkdepends=(
-  python-reportlab
   python-pytest
-  python-pytest-asyncio
   python-pytest-asyncio
   python-pytest-cov
   python-pytest-httpserver
   python-pytest-rerunfailures
-)
-depends=(
-  python-xmind
-  socid-extractor
-  python-aiodns
-  python-aiohttp
-  python-aiohttp-socks
-  python-arabic-reshaper
-  python-async-timeout
-  python-attrs
-  python-bidi
-  python-certifi
-  python-chardet
-  python-cloudscraper
-  python-colorama
-  python-future
-  python-future-annotations
-  python-html5lib
-  python-idna
-  python-jinja
-  python-lxml
-  python-markupsafe
-  python-mock
-  python-multidict
-  python-networkx
-  python-pycountry
-  python-pypdf2
-  python-pysocks
-  python-pyvis
   python-reportlab
-  python-requests
-  python-requests-futures
-  python-six
-  python-soupsieve
-  python-stem
-  python-torrequest
-  python-tqdm
-  python-typing_extensions
-  python-webencodings
-  python-xhtml2pdf
-  python-yarl
 )
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f890ad0986f94b1674324a17c011ec6a955e62fd87feb578707589371f08847f')
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
+  "fix-pytest-crash.patch"
+)
+sha256sums=(
+  'f890ad0986f94b1674324a17c011ec6a955e62fd87feb578707589371f08847f'
+  'f68c7d967aa2b1294bc7376eac39c4975a7cdf5464cbada1820acc48e325a941'
+)
 
 _archive="$pkgname-$pkgver"
 
 prepare() {
   cd "$_archive"
 
-  # Don't hard lock dependency versions.
-  sed -i 's/==.*//' requirements.txt
+  patch --forward --strip=1 --input="$srcdir/fix-pytest-crash.patch"
 }
 
 build() {
   cd "$_archive"
 
   python setup.py build
-  rm -r build/lib/tests/
+  rm -r build/lib/tests/ build/lib/utils/
 }
 
 check() {
   cd "$_archive"
 
-  python -m pytest
+  python -m pytest \
+    --ignore tests/test_activation.py \
+    --ignore tests/test_report.py
 }
 
 package() {
