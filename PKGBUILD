@@ -5,14 +5,12 @@
 
 pkgname=blast+
 pkgver=2.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)"
 arch=('i686' 'x86_64')
 url="http://blast.ncbi.nlm.nih.gov/"
 license=('custom')
-depends=('gcc12'
-         'glibc'
-         'gcc-libs'
+depends=('gcc12-libs'
          'libelf'
          'zlib'
 	 'bzip2'
