@@ -2,9 +2,9 @@
 
 _pkgname=jq.sh
 pkgname=$_pkgname-bin
-_pkgver=0.4.0-1
+_pkgver=0.5.0-1
 pkgver=${_pkgver//-/.r}
-pkgrel=2
+pkgrel=1
 pkgdesc='jq-in-shell integration library'
 _arch=any
 arch=($_arch)
@@ -15,7 +15,7 @@ optdepends=('yq: Adds support for yq, xq and tomlq')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("https://git.stefanwimmer128.io/api/v4/projects/150/packages/generic/$_pkgname/$_pkgver/$_pkgname-$_pkgver-$_arch.pkg.tar.zst")
-sha256sums=('ae8cb9b4f61db2dfb94c00cf23d187c6d1f75fa0c3700c67163120cb9a35f035')
+sha256sums=('4c7e622fd2d9fc1c6c4a532435425a8bdcae6012ef8cd53bf0d69d4abbbac723')
 
 build() {
   rm "$_pkgname-$_pkgver-$_arch.pkg.tar.zst"
