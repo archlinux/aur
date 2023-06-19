@@ -1,42 +1,27 @@
-# Maintainer: Pylogmon <pylogmon@outlook.com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Pylogmon <pylogmon@outlook.com>
 pkgname=pot-translation-git
-_pkgname=pot-translation
-reponame=pot-desktop
-prjname=pot
-pkgver=0.3.4
+pkgver=r734.1b081b9
 pkgrel=1
-pkgdesc="一个跨平台的划词翻译软件"
+pkgdesc="一个跨平台的划词翻译软件 | A cross-platform software for text translation."
 arch=('x86_64')
-url="https://github.com/pot-app/pot-desktop"
+url="https://pot.pylogmon.com/"
+_githuburl="https://github.com/pot-app/pot-desktop"
 license=('GPL3')
-provides=("$_pkgname")
-conflicts=("$_pkgname" "$_pkgname-bin")
-depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3' 'libayatana-appindicator' 'xdotool')
-makedepends=('nodejs' 'pnpm' 'rust')
-
-source=(git+$url.git)
-
-sha512sums=('SKIP')
-
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+depends=('gcc-libs' 'glibc' 'glib2' 'gdk-pixbuf2' 'hicolor-icon-theme' 'gtk3' 'openssl' 'cairo' 'libxcb' 'pango' 'webkit2gtk' 'libsoup')
+makedepends=('nodejs' 'pnpm' 'git' 'gendesk' 'rust')
+source=("git+${_githuburl}.git")
+sha256sums=('SKIP')
 pkgver() {
-    cd $srcdir/${reponame}
-    ( set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+    cd "${srcdir}/${pkgname%-translation-git}-desktop"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-prepare() {
-    cd $srcdir/${reponame}
-    sed -i "s/\"version\":.*/\"version\": \"$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' |sed 's/.\(r[0-9]\)/\-\1/')\"/g" src-tauri/tauri.conf.json
-}
-build(){
-    cd $srcdir/${reponame}
-    pnpm i
-    pnpm tauri build -b deb
+build() {
+    cd "${srcdir}/${pkgname%-translation-git}-desktop"
+    pnpm install --force && pnpm prettier --write . && pnpm tauri build -b deb
 }
 package() {
-    cd $srcdir/${reponame}
-    tar xpf src-tauri/target/release/bundle/deb/${prjname}_$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' |sed 's/.\(r[0-9]\)/\-\1/')_amd64/data.tar.gz -C ${pkgdir}
+    cp -r "${srcdir}/${pkgname%-translation-git}-desktop/src-tauri/target/release/bundle/deb/${pkgname%-translation-git}_1.6.1_amd64/data/usr" "${pkgdir}"
 }
