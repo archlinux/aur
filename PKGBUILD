@@ -11,7 +11,7 @@ arch=(any)
 license=('custom:BSD-3-clause')
 url="https://${pkgname}.github.io/${pkgname}"
 makedepends=(python git)
-depends=(inkscape texlive-core pdf2svg python-lxml python-gobject python-cssselect)
+depends=(inkscape texlive-basic pdf2svg python-lxml python-gobject python-cssselect)
 source=("git+https://github.com/${pkgname}/${pkgname}.git?signed#tag=${pkgver}")
 validpgpkeys=('32746E27876C1E5418BBBF7F7A9964831E98EED5') # Jan Winkler <enceladus@posteo.de>
 sha512sums=('SKIP')
