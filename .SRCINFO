@@ -1,7 +1,7 @@
 pkgbase = mongodb-compass-readonly
 	pkgdesc = The official GUI for MongoDB - Readonly Edition
 	pkgver = 1.37.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	arch = armv7h
@@ -12,7 +12,7 @@ pkgbase = mongodb-compass-readonly
 	makedepends = npm>=8.19.2
 	makedepends = python
 	makedepends = unzip
-	depends = electron>=22.0.0
+	depends = electron22>=22.0.0
 	depends = krb5
 	depends = libsecret
 	depends = lsb-release
