@@ -3,7 +3,7 @@
 _scriptid=21998
 pkgname=vim-openvpn
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 groups=('vim-plugins' 'neovim-plugins')
 pkgdesc="OpenVPN configuration syntax highlighter"
 arch=('any')

@@ -1,7 +1,7 @@
 pkgbase = vim-openvpn
 	pkgdesc = OpenVPN configuration syntax highlighter
 	pkgver = 1.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vim.org/scripts/script.php?script_id=1420
 	arch = any
 	groups = vim-plugins
