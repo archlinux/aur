@@ -1,4 +1,6 @@
-*.tar.gz
-*.tar.xz
-src/
-pkg/
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!flexget.service
+!flexget@.service
