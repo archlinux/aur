@@ -1,5 +1,5 @@
+carapace
 pkg
 src
-*.tar.gz
-*.tar.xz
-*.tar.zst
+*.log
+*.pkg.tar.*
