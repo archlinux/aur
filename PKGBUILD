@@ -2,13 +2,13 @@
 
 pkgname=mfakto
 pkgver=0.15pre7
-pkgrel=1
+pkgrel=2
 pkgdesc="An OpenCL program for Mersenne prefactoring."
 arch=('x86_64')
 url="https://mersenneforum.org/showthread.php?t=15646"
 license=('GPL3')
 depends=('ocl-icd' 'opencl-headers' 'opencl-driver')
-source=("https://download.mersenne.ca/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}-src.zip"
+source=("https://download.mersenne.ca/${pkgname}/${pkgname}-${pkgver}-src.zip"
 'make.patch')
 md5sums=('e382f2c58ff1b7cde193ac776878d51a'
 '93a017fa68adea89184efba1268b0aaf')
