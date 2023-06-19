@@ -12,7 +12,7 @@ license=('APACHE')
 makedepends=('pypy3' 'pypy')
 source=(https://github.com/cython/cython/archive/$pkgver/cpython-$pkgver.tar.gz)
 
-sha256sums=('6e381fa0bf08b3c26ec2f616b19ae852c06f5750f4290118bf986b6f85c8c527')
+sha256sums=('a2da56cc22be823acf49741b9aa3aa116d4f07fa8e8b35a3cb08b8447b37c607')
 
 build() {
   cd "$srcdir"
