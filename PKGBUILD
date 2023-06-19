@@ -3,7 +3,7 @@
 # Contributor: 
 
 pkgname=vim-lightline-git
-pkgver=r653.543ee32
+pkgver=r680.b1e91b4
 pkgrel=1
 pkgdesc='A light and configurable statusline/tabline for Vim'
 arch=('any')
@@ -11,8 +11,8 @@ url='https://github.com/itchyny/lightline.vim'
 license=('MIT')
 depends=('vim-runtime')
 makedepends=('git')
-source=("git://github.com/itchyny/lightline.vim.git")
-md5sums=('SKIP')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "lightline.vim"
