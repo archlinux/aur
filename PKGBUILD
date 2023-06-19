@@ -2,7 +2,7 @@
 # Contributor: 0xMRTT <0xMRTT@proton.me>
 
 pkgname=bavarder
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Chit-Chat with AI"
 arch=('any')
@@ -28,7 +28,7 @@ makedepends=(
 )
 checkdepends=('appstream-glib')
 source=(${pkgname}-${pkgver}.tar.gz::https://codeberg.org/Bavarder/Bavarder/archive/${pkgver//_/-}.tar.gz)
-b2sums=('9f9b7a53e4a3d5323deecba3460b5651151b622f23b9cbbf041d5786ab716d11995c483bf01feb231fb53ea7609d92d671744c770a2d0a1fb067b735ff78bf89')
+b2sums=('49605e7145ed657c58c94cbefb5f5c52c46adb40e4a59ea53baadc0d5055e228fdb961a1c9b801a59c075aa1f44e5f0db46be9030f8e77b6a5f9c0869793639d')
 
 build() {
   arch-meson "$pkgname" build
