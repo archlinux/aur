@@ -1,0 +1,40 @@
+[Unit]
+Description=private cloud alternative for bashhub-client
+Requires=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/%N
+User=bashhub-server
+ExecStart=/usr/bin/bashhub-server -a $ADDR --db $DB $REG
+Restart=on-failure
+BindPaths=/var/lib/%N
+CapabilityBoundingSet=
+RestrictAddressFamilies=AF_INET AF_INET6
+SystemCallArchitectures=native
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+PrivateUsers=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectKernelLogs=yes
+ProtectProc=invisible
+ProtectSystem=strict
+RestrictNamespaces=yes
+RestrictSUIDSGID=true
+RestrictRealtime=yes
+RemoveIPC=yes
+SystemCallErrorNumber=EPERM
+#SystemCallFilter=@resources
+SystemCallFilter=@system-service
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
