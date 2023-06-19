@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: duckdb
+Description: An in-process SQL OLAP database management system
+Version: 0.8.1
+Libs: -L${libdir} -lduckdb
+Cflags: -I${includedir}

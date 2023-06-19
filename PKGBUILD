@@ -1,7 +1,7 @@
 # Maintainer: Andre Smit <freevryheid@gmail.com>
 pkgname=duckdb-bin
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An in-process SQL OLAP database management system"
 arch=("x86_64")
 url="https://duckdb.org"
@@ -16,4 +16,5 @@ package() {
 	install -D -m755 $srcdir/libduckdb.so $pkgdir/usr/lib/libduckdb.so
 	install -D -m644 $srcdir/duckdb.h $pkgdir/usr/include/duckdb.h
 	install -D -m644 $srcdir/duckdb.hpp $pkgdir/usr/include/duckdb.hpp
+	install -D -m644 $startdir/duckdb.pc $pkgdir/usr/lib/pkgconfig/duckdb.pc
 }
