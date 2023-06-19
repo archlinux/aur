@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python' 'libadwaita')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
-source=("git+$url.git#tag=$pkgver")
+source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
