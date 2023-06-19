@@ -3,34 +3,28 @@
 # Contributor: Maciej Mazur <mamciek@gmail.com>
 
 pkgname=alttab
-_name=alttab
-pkgver=v1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="The task switcher for minimalistic window managers or standalone X11 session"
-url="https://github.com/sagb/alttab"
+url="https://github.com/sagb/${pkgname}"
 license=('GPL3')
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 depends=('libx11' 'libxmu' 'libxft' 'libxrender' 'libxrandr' 'libpng' 'uthash' 'libxpm')
 makedepends=('autoconf' 'automake' 'git')
-source=("git+https://github.com/sagb/alttab.git#tag=${pkgver}")
-sha1sums=('SKIP')
-
-pkgver() {
-	cd "$_name"
-	git describe --tags |sed 's/-/./g'
-}
+_commit="fad928ba0c7e48a151726e1279d28e64a53d9ecc" # 1.7.1
+source=(
+  # "git+${url}#commit=${_commit}"
+  "${url}/archive/refs/tags/v${pkgver}.tar.gz"
+ )
+sha256sums=('0926b12cc0ad9f63a6242ede3b0f9cae6f30f61ccb050740df55bfb6f531f303')
 
 build() {
-	pwd
-	ls -al
-	cd "$_name"
+	cd "${pkgname}-${pkgver}"
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	pwd
-	ls -al
-	cd "$_name"
+	cd "${pkgname}-${pkgver}"
 	make DESTDIR="$pkgdir/" install
 }
