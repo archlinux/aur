@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="neanes-appimage"
-pkgver=0.3.0beta.19
-_appver=0.3.0-beta.19
+_subver=beta.20
+pkgver="0.3.0${_subver}"
 pkgrel=1
 pkgdesc="A free and open source scorewriter for notating Byzantine chant in Byzantine notation."
 arch=('x86_64')
@@ -12,8 +12,8 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${_appver}/Neanes-${_appver}.AppImage")
-sha256sums=('08b20e6cd9b3581304a84c10296a9e2260c4374dc0d56150f946bb9d9b4ef293')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver%${_subver}}-${_subver}/Neanes-${pkgver%${_subver}}-${_subver}.AppImage")
+sha256sums=('4310776a5ab3d115284956506602ca9bdbb588ef5289a5140b948f3c9895f7e7')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
