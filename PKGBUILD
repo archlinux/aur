@@ -4,7 +4,7 @@ _pkgbase=rime-ice
 _schemas=(double_pinyin_mspy)
 _pkgname=$_pkgbase-double-pinyin-mspy
 pkgname=$_pkgname-git
-pkgver=r258.0809b29
+pkgver=r275.e32b3fa
 pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库 - 微软双拼"
 arch=("any")
@@ -20,6 +20,7 @@ conflicts=(
   "${_pkgbase}-double-pinyin"
   "${_pkgbase}-double-pinyin-flypy"
   "${_pkgbase}-double-pinyin-ziguang"
+  "${_pkgbase}-double-pinyin-abc"
 )
 source=("${_pkgname}::git+${url}.git")
 sha512sums=("SKIP")
