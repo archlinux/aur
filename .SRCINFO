@@ -1,6 +1,6 @@
 pkgbase = json2tsv-git
 	pkgdesc = JSON to TSV converter
-	pkgver = 0.8.r9.ge2eeb26
+	pkgver = 1.1.r0.g137d638
 	pkgrel = 1
 	url = https://codemadness.org/json2tsv.html
 	arch = x86_64

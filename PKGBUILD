@@ -3,7 +3,7 @@
 
 pkgname=json2tsv-git
 _pkgname=${pkgname%-git}
-pkgver=0.8.r9.ge2eeb26
+pkgver=1.1.r0.g137d638
 pkgrel=1
 pkgdesc='JSON to TSV converter'
 arch=('x86_64')
@@ -26,9 +26,7 @@ build() {
 
 package() {
   cd "${_pkgname}"
-  install -Dm755 json2tsv -t "${pkgdir}/usr/bin"
-  install -Dm644 json2tsv.1 -t "${pkgdir}/usr/share/man/man1"
-  install -Dm644 README -t "${pkgdir}/usr/share/doc/${pkgname}"
+  make DESTDIR="${pkgdir}" PREFIX=/usr MANPREFIX=/usr/share/man install
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
