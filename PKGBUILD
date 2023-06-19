@@ -1,5 +1,6 @@
 #!/bin/bash
 # Maintainer: Fredrick R. Brennan <copypaste@kittens.ph>
+# Contributor: éclairevoyant
 # Contributor: Brian BIdulock <bidulock@openss7.org>
 
 pkgbase=sensible-utils
@@ -8,7 +9,7 @@ declare -g -a pkgname=($_pkgname)
 pkgname+=(sensible-utils sensible-utils-data)
 pkgver=0.0.20
 _debianextra=''
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities for sensible alternative selection"
 arch=('any')
 url="http://packages.debian.org/source/sid/sensible-utils"
@@ -50,8 +51,6 @@ check() {
 _package_sensible() {
   cd ${pkgbase}-${pkgver}${_debianextra}
   pkgdesc="$pkgdesc (${pkgname##*-})"
-  depends+=(sensible-utils-data)
-  [ "$pkgname" == sensible-utils-data ] && depends=(bash)
   export -n EDITOR VISUAL
   make DESTDIR="$pkgdir/" install
   shopt -s globstar
@@ -60,22 +59,27 @@ _package_sensible() {
 }
 
 package_sensible-pager() {
+  depends+=(sensible-utils-data)
   CURRENTLY_PACKAGING=sensible-pager pkgdir="$pkgdir" _package_sensible
 }
 
 package_sensible-browser() {
+  depends+=(sensible-utils-data)
   CURRENTLY_PACKAGING=sensible-browser pkgdir="$pkgdir" _package_sensible
 }
 
 package_sensible-editor() {
+  depends+=(sensible-utils-data)
   CURRENTLY_PACKAGING=editor pkgdir="$pkgdir" _package_sensible
 }
 
 package_sensible-terminal() {
+  depends+=(sensible-utils-data)
   CURRENTLY_PACKAGING=terminal pkgdir="$pkgdir" _package_sensible
 }
 
 package_sensible-utils-data() {
+  depends=(bash)
   CURRENTLY_PACKAGING=gettext pkgdir="$pkgdir" _package_sensible
 }
 

@@ -1,7 +1,7 @@
 pkgbase = sensible-utils
 	pkgdesc = Utilities for sensible alternative selection
 	pkgver = 0.0.20
-	pkgrel = 2
+	pkgrel = 3
 	url = http://packages.debian.org/source/sid/sensible-utils
 	arch = any
 	license = GPL
@@ -19,12 +19,24 @@ pkgbase = sensible-utils
 	b2sums = SKIP
 
 pkgname = sensible-browser
+	depends = bash
+	depends = coreutils
+	depends = sensible-utils-data
 
 pkgname = sensible-editor
+	depends = bash
+	depends = coreutils
+	depends = sensible-utils-data
 
 pkgname = sensible-pager
+	depends = bash
+	depends = coreutils
+	depends = sensible-utils-data
 
 pkgname = sensible-terminal
+	depends = bash
+	depends = coreutils
+	depends = sensible-utils-data
 
 pkgname = sensible-utils
 	pkgdesc = Utilities for sensible alternative selection (metapackage)
@@ -37,3 +49,4 @@ pkgname = sensible-utils
 	depends = sensible-utils-data
 
 pkgname = sensible-utils-data
+	depends = bash
