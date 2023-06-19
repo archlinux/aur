@@ -3,10 +3,10 @@
 
 _major=11
 _minor=7
-_patch=0
+_patch=1
 pkgname=cuda-11.7
-pkgver=11.7.0
-_driverver=515.43.04
+pkgver=11.7.1
+_driverver=515.65.01
 # _driverver=455.32.00
 _reqdriverver=455.32
 pkgrel=1
@@ -21,14 +21,14 @@ optdepends=('gdb: for cuda-gdb'
             'java-runtime=8: for nsight and nvvp')
 options=(!strip staticlibs)
 install=cuda.install
-# See https://developer.nvidia.com/cuda-11-7-0-download-archive
+# See https://developer.nvidia.com/cuda-11-7-1-download-archive
 source=(
   "http://developer.download.nvidia.com/compute/cuda/${pkgver}/local_installers/cuda_${pkgver}_${_driverver}_linux.run"
   # "cuda-findgllib_mk.diff"
   *.pc
 )
 sha512sums=(
-  "070c9a4b3bb11503d99212cf483ead88ae182e7da7eabd7390a0211b57ea550fb8a806ed3c009b8bae654529a7dc6c11dd35c0d59066f6f4eebe064c94d4e071"  # cuda_11.7.0_515.43.04_linux.run
+  "c2b40879a4903ed6d3201ea8c0d51fb0fdc21a27445f007aba1c9827add9a2d8326ccd764d324266d8f742a1c63aca9631158886b3de49899a864224517f1c03"  # cuda_11.7.1_515.65.01_linux.run
   # "41d6b6cad934f135eafde610d1cbd862033977fd4416a4b6abaa47709a70bab7fcf6f8377c21329084fb9db13f2a8c8c20e93c15292d7d4a6448d70a33b23f1b"  # cuda-findgllib_mk.diff
   "292e9eb7ca4ba7b76293ab38aeba74fbe4803af3bbb652cc1975fbae1150ecf018b92b16e4efa672d2a16a963e2eff7f06b809cf6541cba94a0ae1a57ff96e03"  # accinj64.pc
   "a360560f0eac3cf5075f760f251c933844c7d5652d759d7fb1b8de2bf240a2b15cdfea2acc4dc08d045ee2b512aa650468a480cdb2fd35a770ee2089d1587bc1"  # cublas.pc
