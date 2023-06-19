@@ -3,7 +3,7 @@
 pkgname=shell-gpt
 _name=${pkgname/-/_}
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT"
 arch=(any)
 url="https://github.com/TheR1D/shell_gpt"
@@ -14,7 +14,6 @@ depends=(
   python-requests
   python-rich
   python-typer
-  python-typing_extensions  # Missing dep for python-typer
 )
 makedepends=(
   python-build
