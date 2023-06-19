@@ -16,11 +16,12 @@ pkgbase = moonray
 	makedepends = qt5-base
 	makedepends = qt5-script
 	depends = curl
+	depends = clang
 	depends = lua53
+	depends = optix
 	depends = python
 	optdepends = usd: hydra plugins and USD geometry objects
 	source = openmoonray::git+https://github.com/dreamworksanimation/openmoonray#tag=v1.1.0.0
-	source = CMakePresets.json
 	source = openmoonray+arras+arras4_core::git+https://github.com/dreamworksanimation/arras4_core.git#commit=2157c5103156f652b0966f23e32b97597b7ff16f
 	source = openmoonray+arras+arras_render::git+https://github.com/dreamworksanimation/arras_render.git#commit=729c4039a72e2dacb810c17fd529eaa0308435f6
 	source = openmoonray+arras+distributed+arras4_node::git+https://github.com/dreamworksanimation/arras4_node.git#commit=b02183bcab92f52d3041c254922c24fe9fc39e54
@@ -39,10 +40,8 @@ pkgbase = moonray
 	source = openmoonray+moonray+moonshine_usd::git+https://github.com/dreamworksanimation/moonshine_usd.git#commit=efe09ee4b75d678005061d121cf832fc3f2d9a9a
 	source = openmoonray+moonray+render_profile_viewer::git+https://github.com/dreamworksanimation/render_profile_viewer.git#commit=44bb5d66aa5295cc1176823d04a12cc4cd009e76
 	source = openmoonray+moonray+scene_rdl2::git+https://github.com/dreamworksanimation/scene_rdl2.git#commit=fb0c969026b1e5a3c16cc75ee3ec9ff7df85ad98
-	sha256sums = SKIP
-	sha256sums = afbd3e037a742920c5a49f3bbc70d9f488e6aaad6249db47f750e2a976d0e9b3
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = moonray.patch
+	source = optix.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -59,12 +58,19 @@ pkgbase = moonray
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = a16bdd73ee1abcc568da23db770af7ab2adc99bb117f24d6ab9a8d6f44008a15
+	sha256sums = 430856c068bb52957680d4bf77dee277c270ed326ac32632fd7af62d18ba699d
 
 pkgname = moonray
 
 pkgname = moonray-gui
 	depends = curl
+	depends = clang
 	depends = lua53
+	depends = optix
 	depends = python
 	depends = moonray
 	depends = qt6-base

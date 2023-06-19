@@ -1,6 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: adro79 <adro79@users.noreply.github.com>
 
+_tbbmajorver=2020
+_tbbpkgminorver=2
+
 pkgbase=moonray
 pkgname=($pkgbase moonray-gui)
 _pkgname=openmoonray
@@ -12,7 +15,9 @@ license=(Apache2)
 url="https://$_pkgname.org"
 _url="https://github.com/dreamworksanimation"
 depends=(curl
+         clang
          lua53
+         optix
          python)
 makedepends=(boost
              cmake
@@ -26,7 +31,6 @@ makedepends=(boost
              qt5-script)
 optdepends=('usd: hydra plugins and USD geometry objects')
 source=("$_pkgname::git+$_url/$_pkgname#tag=v$pkgver"
-        CMakePresets.json
         "$_pkgname+arras+arras4_core::git+$_url/arras4_core.git#commit=2157c5103156f652b0966f23e32b97597b7ff16f"
         "$_pkgname+arras+arras_render::git+$_url/arras_render.git#commit=729c4039a72e2dacb810c17fd529eaa0308435f6"
         "$_pkgname+arras+distributed+arras4_node::git+$_url/arras4_node.git#commit=b02183bcab92f52d3041c254922c24fe9fc39e54"
@@ -44,9 +48,10 @@ source=("$_pkgname::git+$_url/$_pkgname#tag=v$pkgver"
         "$_pkgname+moonray+moonshine::git+$_url/moonshine.git#commit=faa2940107c04676d4dd2537a8c60b62a2ec504b"
         "$_pkgname+moonray+moonshine_usd::git+$_url/moonshine_usd.git#commit=efe09ee4b75d678005061d121cf832fc3f2d9a9a"
         "$_pkgname+moonray+render_profile_viewer::git+$_url/render_profile_viewer.git#commit=44bb5d66aa5295cc1176823d04a12cc4cd009e76"
-        "$_pkgname+moonray+scene_rdl2::git+$_url/scene_rdl2.git#commit=fb0c969026b1e5a3c16cc75ee3ec9ff7df85ad98")
+        "$_pkgname+moonray+scene_rdl2::git+$_url/scene_rdl2.git#commit=fb0c969026b1e5a3c16cc75ee3ec9ff7df85ad98"
+        "moonray.patch"
+        "optix.patch")
 sha256sums=('SKIP'
-            'afbd3e037a742920c5a49f3bbc70d9f488e6aaad6249db47f750e2a976d0e9b3'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -64,7 +69,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'a16bdd73ee1abcc568da23db770af7ab2adc99bb117f24d6ab9a8d6f44008a15'
+            '430856c068bb52957680d4bf77dee277c270ed326ac32632fd7af62d18ba699d')
 
 # git submodule status | cut -c2- | awk '{s=$2; gsub("/", "+", s); gsub(".*/", "", $2); print "\"$_pkgname+" s "::git+$_url/" $2 ".git#commit=" $1 "\"" }'
 
@@ -81,13 +88,19 @@ prepare() {
 		esac
 	done
 	git -c protocol.file.allow=always submodule update
-	cp ../CMakePresets.json .
+# 	cp ../CMakePresets.json .
+	patch -Np1 -i "$srcdir/moonray.patch"
+	patch -Np1 -i "$srcdir/optix.patch" -d moonray/mcrt_denoise/lib/denoiser
 }
 
 build() {
-	cd "$_pkgname"
-	cmake --preset arch-package
-	cmake --build --preset arch-package -- -j 8
+	cd "${srcdir}"
+	export CC=clang
+	export CXX=clang++
+	mkdir -p build
+	CMAKE_PREFIX_PATH=/usr/lib/cmake/OpenImageIO:/opt/optix cmake -S openmoonray -B build
+	make -C build
+	make install -C build
 }
 
 package_moonray() {
