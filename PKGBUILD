@@ -5,8 +5,8 @@ _nodejs_lts_version=-lts-gallium
 
 pkgname=('trilium' 'trilium-server' 'trilium-dumpdb')
 pkgver=0.60.3
-pkgrel=1
-pkgdesc="A hierarchical note taking application with focus on building large personal knowledge bases."
+pkgrel=2
+pkgdesc="A hierarchical note taking application with focus on building large personal knowledge bases"
 arch=('x86_64')
 url="https://github.com/zadam/trilium"
 license=('AGPL3')
@@ -59,7 +59,7 @@ build() {
 	./bin/copy-trilium.sh $_trilium_desktop_src_dir
 	rm -rf $_trilium_desktop_src_dir/dump-db
 
-	rm -r $_trilium_desktop_src_dir/src/public/app-dist/*.mobile.*
+	rm -r $_trilium_desktop_src_dir/src/public/app-dist/mobile.*
 
 	npx electron-builder --linux --x64 --dir \
 	    --project=$_trilium_desktop_src_dir \
@@ -76,7 +76,6 @@ build() {
 	mkdir $_trilium_server_src_dir/node_modules/better-sqlite3/build/Release
 	cp ./node_modules/better-sqlite3/build/Release/better_sqlite3.node $_trilium_server_src_dir/node_modules/better-sqlite3/build/Release/better_sqlite3.node
 
-	rm -r $_trilium_server_src_dir/webpack*
 	rm -r $_trilium_server_src_dir/electron.js
 
 	# Building trilium-dumpdb
