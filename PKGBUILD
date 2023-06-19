@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc="An advanced WYSIWYM document processor & LaTeX front-end"
 arch=('x86_64')
 url="https://www.lyx.org"
-depends=('qt5-svg' 'texlive-core' 'python' 'imagemagick' 'enchant' 'hunspell'
+depends=('qt5-svg' 'texlive-basic' 'python' 'imagemagick' 'enchant' 'hunspell'
   'libmythes' 'file' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('boost' 'bc')
 optdepends=('rcs: built-in version control system'
