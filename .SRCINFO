@@ -1,6 +1,6 @@
 pkgbase = waybar-updates
 	pkgdesc = Tiny Waybar module to check Arch Linux updates from official repositories and AUR
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/L11R/waybar-updates
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = waybar-updates
 	depends = jq
 	depends = libnotify
 	provides = waybar-updates
-	source = waybar-updates-0.2.5.tar.gz::https://github.com/L11R/waybar-updates/archive/refs/tags/v0.2.5.tar.gz
-	sha256sums = 782c5eb726324885c6c03c611e5b9c1156c27438a087a9dddfa479ab75e24046
+	source = waybar-updates-0.2.6.tar.gz::https://github.com/L11R/waybar-updates/archive/refs/tags/v0.2.6.tar.gz
+	sha256sums = 9df6ec31786bc9263b26db43c4936a0014713beb6fd1ba03a1edd34b28ffb720
 
 pkgname = waybar-updates
