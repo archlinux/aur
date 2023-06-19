@@ -27,5 +27,5 @@ package() {
        "$pkgname"/bin/{license.txt,README.md,sql.exe}
 
     install -d "$pkgdir/opt/$pkgname/"
-    cp -a --no-preserve=ownership,mode "$pkgname"/* "$pkgdir/opt/$pkgname/"
+    cp -a "$pkgname"/* "$pkgdir/opt/$pkgname/"
 }
