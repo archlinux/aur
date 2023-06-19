@@ -99,7 +99,7 @@ build() {
         -DEIGEN_ROOT_DIR=/usr/include/eigen3
   )
   msg2 "Build Cork lib"
-  make -C "${srcdir}/${name}-cork" CXXFLAGS="$CXXFLAGS -DSUPPORT_TOPO_STREAM_OPERATORS"
+  make -C "${srcdir}/${name}-cork" CXXFLAGS="$CXXFLAGS -DSUPPORT_TOPO_STREAM_OPERATORS" CXX="g++"
   msg2 "Build CloudCompare"
   cmake -B build -S "${srcdir}/${name}" -G Ninja "${CMAKE_FLAGS[@]}"
 # shellcheck disable=SC2086 # allow slitting for MAKEFLAGS carrying multiple flags.
