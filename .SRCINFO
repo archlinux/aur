@@ -1,6 +1,6 @@
 pkgbase = python-bitbake-language-server
 	pkgdesc = bitbake language server
-	pkgver = 0.0.0
+	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/bitbake-language-server
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-bitbake-language-server
 	depends = python-pygls
 	depends = python-platformdirs
 	optdepends = python-beautifulsoup4
-	source = https://files.pythonhosted.org/packages/py3/b/bitbake_language_server/bitbake_language_server-0.0.0-py3-none-any.whl
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/py3/b/bitbake_language_server/bitbake_language_server-0.0.1-py3-none-any.whl
+	sha256sums = 19161c8ef7ae3c31767905a73dc7e60f810a5bff6dbd72455bba9245f5114bff
 
 pkgname = python-bitbake-language-server
