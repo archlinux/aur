@@ -3,19 +3,17 @@
 # Contributor: Brian BIdulock <bidulock@openss7.org>
 
 pkgbase=sensible-utils
-_pkgname='sensible-browser sensible-editor sensible-pager sensible-terminal sensible-utils'
+_pkgname='sensible-browser sensible-editor sensible-pager sensible-terminal'
 declare -g -a pkgname=($_pkgname)
-pkgname+=(sensible-utils-data)
+pkgname+=(sensible-utils sensible-utils-data)
 pkgver=0.0.20
 _debianextra=''
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for sensible alternative selection"
 arch=('any')
 url="http://packages.debian.org/source/sid/sensible-utils"
 license=('GPL')
 depends=('bash' 'coreutils')
-provides=($_pkgname)
-conflicts=($_pkgname)
 makedepends=('po4a')
 checkdepends=('ed' 'dash')
 _dirname=${pkgbase}_${pkgver}_$pkgrel_${_debianextra}
@@ -52,11 +50,7 @@ check() {
 _package_sensible() {
   cd ${pkgbase}-${pkgver}${_debianextra}
   pkgdesc="$pkgdesc (${pkgname##*-})"
-  provides=()
-  conflicts=()
   depends+=(sensible-utils-data)
-  [ "$pkgname" != sensible-utils-data ] && provides=($pkgname)
-  [ "$pkgname" != sensible-utils-data ] && conflicts=($pkgname)
   [ "$pkgname" == sensible-utils-data ] && depends=(bash)
   export -n EDITOR VISUAL
   make DESTDIR="$pkgdir/" install
@@ -87,8 +81,6 @@ package_sensible-utils-data() {
 
 package_sensible-utils() {
   pkgdesc="$pkgdesc (metapackage)"
-  provides=()
-  conflicts=()
   depends+=($_pkgname sensible-utils-data)
   mkdir -p "$pkgdir/usr/share/sensible-utils"
   echo 1 > "$pkgdir/usr/share/sensible-utils/.ARCH"
