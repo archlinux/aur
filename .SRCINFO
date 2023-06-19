@@ -1,11 +1,11 @@
 pkgbase = kobodeluxe
 	pkgdesc = 3rd person scrolling 2D shooter
 	pkgver = 0.5.1
-	pkgrel = 14
+	pkgrel = 15
 	url = http://www.olofson.net/kobodl/
 	arch = x86_64
-	license = GPL
-	license = LGPL
+	license = GPL2
+	license = LGPL2.1
 	depends = hicolor-icon-theme
 	depends = sdl_image
 	source = http://www.olofson.net/kobodl/download/KoboDeluxe-0.5.1.tar.gz
