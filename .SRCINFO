@@ -1,0 +1,14 @@
+pkgbase = speed-dreams-appimage
+	pkgdesc = Speed Dreams is a fork of TORCS which aims to implement exciting new features, improving visual and physics realism. Appimage version
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = http://speed-dreams.sourceforge.net/
+	arch = x86_64
+	license = GPL3
+	depends = libxcrypt-compat
+	conflicts = speed-dreams-svn
+	options = !strip
+	source = speed-dreams-2.3.0-x86_64.AppImage::https://sourceforge.net/projects/speed-dreams/files/2.3.0/speed-dreams-2.3.0-x86_64.AppImage/download
+	sha256sums = 85e097b30864ab5fb2f7e5107f39a97f3067898ac699b7fd077d99d8abc3b5b7
+
+pkgname = speed-dreams-appimage
