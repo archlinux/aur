@@ -3,7 +3,7 @@
 
 pkgname=python-pytelegrambotapi
 _pkgname=pyTelegramBotAPI
-pkgver=4.10.0
+pkgver=4.11.0
 pkgrel=1
 pkgdesc="Python Telegram bot api"
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/eternnoir/pyTelegramBotAPI"
 license=("GPLv2")
 depends=('python' 'python-requests' 'python-pytest' 'python-wheel' 'python-aiohttp')
 source=("https://github.com/eternnoir/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('18814615fe92ff9a021e56d922e86a453c8e9e4bd0582b57b9f10fbffc69f55e')
+sha256sums=('25c83bf92828ba6b6d0b7b0484978e82602d8aee92bef6183e8f495af9cd9027')
 
 package() {
     cd ${srcdir}/${_pkgname}-${pkgver}/
