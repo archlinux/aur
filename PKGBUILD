@@ -4,7 +4,7 @@
 # Contributor: Mikkel Kroman <mk at maero dot dk>
 
 pkgname=ricochet-refresh
-pkgver=3.0.15
+pkgver=3.0.16
 pkgrel=1
 pkgdesc="Anonymous metadata-resistant instant messaging with Tor Onion Services v3 support."
 arch=('i686' 'x86_64')
@@ -12,16 +12,17 @@ url="https://www.ricochetrefresh.net/"
 license=('BSD 3-Clause')
 depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols'
          'openssl' 'fmt' 'protobuf' 'tor' 'hicolor-icon-theme')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("${pkgname}::git+https://github.com/blueprint-freespeech/ricochet-refresh.git#tag=v${pkgver}-release")
 sha256sums=('SKIP')
 
 prepare() {
   cd ${pkgname}
-  git submodule update --init
+  git submodule update --init ./src/extern/tor
   mkdir -p build
   cmake -S ./src -B ./build -G"Unix Makefiles" -DCMAKE_BUILD_TYPE=MinSizeRel \
-    -DCMAKE_INSTALL_PREFIX="${pkgdir}" -DRICOCHET_REFRESH_INSTALL_DESKTOP=ON
+    -DCMAKE_INSTALL_PREFIX="${pkgdir}" -DRICOCHET_REFRESH_INSTALL_DESKTOP=ON \
+    -DUSE_SUBMODULE_FMT=OFF
 }
 
 build() {
