@@ -1,12 +1,12 @@
 pkgbase = namd-multicore-bin
 	pkgdesc = NAMD is a parallel molecular dynamics code designed for high-performance simulation of large biomolecular systems
-	pkgver = 3.0b2
+	pkgver = 3.0b3
 	pkgrel = 1
 	url = https://www.ks.uiuc.edu/Research/namd/
 	arch = x86_64
 	license = custom
 	provides = namd
-	source = local://NAMD_3.0b2_Linux-x86_64-multicore.tar.gz
-	md5sums = bd30ad108a61677cb9f439c74325f594
+	source = local://NAMD_3.0b3_Linux-x86_64-multicore-AVX512.tar.gz
+	md5sums = 044dcf416ca6e702350bda95633681d4
 
 pkgname = namd-multicore-bin
