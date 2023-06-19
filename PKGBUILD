@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=hex-git
 _pkgname=hex
-pkgver=r92.62c6d43
+pkgver=r95.f6d5527
 pkgrel=1
 pkgdesc="Interpreting hex viewer"
 url="https://git.janouch.name/p/hex"
@@ -12,6 +12,7 @@ conflicts=('hex')
 provides=('hex')
 makedepends=('cmake' 'pkg-config' 'git')
 depends=('ncurses' 'libunistring' 'lua')
+optdepends=('libxft: X11 user interface')
 source=("git+https://git.janouch.name/p/$_pkgname.git")
 md5sums=('SKIP')
 

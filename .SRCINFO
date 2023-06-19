@@ -1,6 +1,6 @@
 pkgbase = hex-git
 	pkgdesc = Interpreting hex viewer
-	pkgver = r92.62c6d43
+	pkgver = r95.f6d5527
 	pkgrel = 1
 	url = https://git.janouch.name/p/hex
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = hex-git
 	depends = ncurses
 	depends = libunistring
 	depends = lua
+	optdepends = libxft: X11 user interface
 	provides = hex
 	conflicts = hex
 	options = zipman
