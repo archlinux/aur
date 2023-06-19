@@ -11,6 +11,7 @@ pkgbase = gtkada
 	makedepends = gprbuild-toolbox
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
+	makedepends = texlive-meta
 	makedepends = gnatdoc
 	depends = gcc-ada
 	depends = gtk3
