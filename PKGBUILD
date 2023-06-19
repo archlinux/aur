@@ -14,6 +14,7 @@ depends=(gcc-ada
          gtk3)
 makedepends=(gprbuild-toolbox
              python-sphinx
+             python-sphinx_rtd_theme
              gnatdoc)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230428-165F0-src.tar.gz

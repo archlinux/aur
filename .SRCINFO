@@ -10,6 +10,7 @@ pkgbase = gtkada
 	license = custom
 	makedepends = gprbuild-toolbox
 	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	makedepends = gnatdoc
 	depends = gcc-ada
 	depends = gtk3
