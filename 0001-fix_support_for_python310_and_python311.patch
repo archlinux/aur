@@ -1,0 +1,359 @@
+diff --git a/src/core/_dt.h b/src/core/_dt.h
+index 503fdc41..4e6f4ca1 100644
+--- a/src/core/_dt.h
++++ b/src/core/_dt.h
+@@ -30,10 +30,6 @@
+ #include <utility>      // std::move, std::pair
+ #include <vector>       // std::vector
+ 
+-typedef struct _object     PyObject;
+-typedef struct _typeobject PyTypeObject;
+-typedef struct bufferinfo  Py_buffer;
+-
+ class Buffer;
+ class Column;
+ class DataTable;
+diff --git a/src/core/buffer.cc b/src/core/buffer.cc
+index 707011c2..c2b3c897 100644
+--- a/src/core/buffer.cc
++++ b/src/core/buffer.cc
+@@ -24,10 +24,10 @@
+ #include <cstring>             // std::strerror, std::memcpy
+ #include <mutex>               // std::mutex, std::lock_guard
+ #include "buffer.h"
+-#include "mmm.h"                  // MemoryMapWorker, MemoryMapManager
+-#include "python/pybuffer.h"      // py::buffer
+-#include "utils/alloc.h"          // dt::malloc, dt::realloc
+-#include "utils/arrow_structs.h"  // dt::OArrowArray
++#include "mmm.h"                              // MemoryMapWorker, MemoryMapManager
++#include "python/pybuffer.h"                  // py::buffer
++#include "utils/alloc.h"                      // dt::malloc, dt::realloc
++#include "utils/arrow_structs.h"              // dt::OArrowArray
+ #include "utils/macros.h"
+ #include "utils/misc.h"           // malloc_size
+ #include "utils/temporary_file.h"
+@@ -235,7 +235,7 @@ class BufferImpl
+         PyObject** elements = static_cast<PyObject**>(data_);
+         for (size_t i = 0; i < n; ++i) {
+           XAssert(elements[i] != nullptr);
+-          XAssert(elements[i]->ob_refcnt > 0);
++          XAssert(Py_REFCNT(elements[i]) > 0);
+         }
+       }
+     }
+@@ -929,7 +929,7 @@ class Mmap_BufferImpl : public BufferImpl, MemoryMapWorker {
+       for (size_t i = 0; i < n; ++i) {
+         data[i] = Py_None;
+       }
+-      Py_None->ob_refcnt += n;
++      Py_SET_REFCNT(Py_None, Py_REFCNT(Py_None) + n);
+     }
+     impl_->contains_pyobjects_ = true;
+     return *this;
+@@ -954,7 +954,7 @@ class Mmap_BufferImpl : public BufferImpl, MemoryMapWorker {
+           if (n_new > n_old) {
+             PyObject** data = static_cast<PyObject**>(xptr());
+             for (size_t i = n_old; i < n_new; ++i) data[i] = Py_None;
+-            Py_None->ob_refcnt += n_new - n_old;
++            Py_SET_REFCNT(Py_None, Py_REFCNT(Py_None) + n_new - n_old);
+           }
+         } else {
+           impl_->resize(newsize);
+@@ -1018,7 +1018,7 @@ class Mmap_BufferImpl : public BufferImpl, MemoryMapWorker {
+         size_t i = 0;
+         for (; i < n_copy; ++i) Py_INCREF(newdata[i]);
+         for (; i < n_new; ++i) newdata[i] = Py_None;
+-        Py_None->ob_refcnt += n_new - n_copy;
++        Py_SET_REFCNT(Py_None, Py_REFCNT(Py_None) + n_new - n_copy);
+       }
+       impl_->release();  // noexcept
+     }
+diff --git a/src/core/call_logger.h b/src/core/call_logger.h
+index b9bba2f7..5fb0a998 100644
+--- a/src/core/call_logger.h
++++ b/src/core/call_logger.h
+@@ -22,6 +22,7 @@
+ #ifndef dt_CALL_LOGGER_h
+ #define dt_CALL_LOGGER_h
+ #include "_dt.h"
++#include "python/python.h"
+ namespace dt {
+ 
+ 
+diff --git a/src/core/column/const_na.cc b/src/core/column/const_na.cc
+index 2b7cfa34..6e58cf51 100644
+--- a/src/core/column/const_na.cc
++++ b/src/core/column/const_na.cc
+@@ -69,7 +69,7 @@ static Column _fw_col(size_t nrows, SType stype) {
+     });
+ 
+   if (std::is_same<T, PyObject*>::value) {
+-    Py_None->ob_refcnt += nrows;
++    Py_SET_REFCNT(Py_None, Py_REFCNT(Py_None) + nrows);
+     buf.set_pyobjects(/* clear_data= */ false);
+   }
+   return Column(new ColClass(nrows, stype, std::move(buf)));
+@@ -86,7 +86,7 @@ static Column _special_col(size_t nrows) {
+     });
+ 
+   if (std::is_same<T, PyObject*>::value) {
+-    Py_None->ob_refcnt += nrows;
++    Py_SET_REFCNT(Py_None, Py_REFCNT(Py_None) + nrows);
+     buf.set_pyobjects(/* clear_data= */ false);
+   }
+   return Column(new ColClass(nrows, std::move(buf)));
+diff --git a/src/core/ltype.cc b/src/core/ltype.cc
+index 2ef8c98b..308fc932 100644
+--- a/src/core/ltype.cc
++++ b/src/core/ltype.cc
+@@ -23,7 +23,6 @@
+ #include "ltype.h"
+ #include "python/int.h"
+ #include "python/obj.h"
+-#include "python/python.h"
+ #include "python/tuple.h"
+ #include "utils/assert.h"
+ namespace dt {
+diff --git a/src/core/ltype.h b/src/core/ltype.h
+index 4a8c739c..654b3525 100644
+--- a/src/core/ltype.h
++++ b/src/core/ltype.h
+@@ -21,7 +21,8 @@
+ //------------------------------------------------------------------------------
+ #ifndef dt_LTYPE_h
+ #define dt_LTYPE_h
+-#include "_dt.h"     // size_t, uint8_t, PyObject
++#include "_dt.h"           // size_t, uint8_t
++#include "python/python.h" // PyObject
+ namespace dt {
+ 
+ 
+diff --git a/src/core/python/namedtuple.cc b/src/core/python/namedtuple.cc
+index faa4e8be..f25e0b53 100644
+--- a/src/core/python/namedtuple.cc
++++ b/src/core/python/namedtuple.cc
+@@ -128,7 +128,7 @@ onamedtuple::onamedtuple(const onamedtupletype& type) {
+   // with `type.v`, that is a named tuple type. Note, that
+   // there is no need to call `Py_DECREF` on `Py_TYPE(v)`,
+   // because tuple is a built-in type.
+-  Py_TYPE(v) = type.v;
++  Py_SET_TYPE(v, type.v);
+   Py_INCREF(type.v);
+ }
+ 
+diff --git a/src/core/python/obj.cc b/src/core/python/obj.cc
+index f2b72736..ea58dae1 100644
+--- a/src/core/python/obj.cc
++++ b/src/core/python/obj.cc
+@@ -64,16 +64,6 @@ PyObject* Expr_Type = nullptr;
+ // Set from expr/fexpr.cc
+ PyObject* FExpr_Type = nullptr;
+ 
+-// `_Py_static_string_init` invoked by the `_Py_IDENTIFIER` uses
+-// a designated initializer, that is not supported by the C++14 standard.
+-// Redefine `_Py_static_string_init` here to use a regular initializer.
+-#undef _Py_static_string_init
+-#define _Py_static_string_init(value) { NULL, value, NULL }
+-_Py_IDENTIFIER(stdin);
+-_Py_IDENTIFIER(stdout);
+-_Py_IDENTIFIER(stderr);
+-_Py_IDENTIFIER(write);
+-
+ 
+ 
+ //------------------------------------------------------------------------------
+@@ -1207,34 +1197,13 @@ bool is_python_system_attr(const dt::CString& attr) {
+ 
+ oobj get_module(const char* modname) {
+   py::ostring pyname(modname);
+-  #if PY_VERSION_HEX >= 0x03070000
+-    // PyImport_GetModule(name)
+-    //   Return the already imported module with the given name. If the module
+-    //   has not been imported yet then returns NULL but does not set an error.
+-    //   Returns NULL and sets an error if the lookup failed.
+-    PyObject* res = PyImport_GetModule(pyname.v);
+-    if (!res && PyErr_Occurred()) PyErr_Clear();
+-    return oobj::from_new_reference(res);
+-
+-  #else
+-    // PyImport_GetModuleDict() returns a borrowed ref
+-    oobj sys_modules(PyImport_GetModuleDict());
+-    if (sys_modules.v == nullptr) {
+-      PyErr_Clear();
+-      return oobj(nullptr);
+-    }
+-    if (PyDict_CheckExact(sys_modules.v)) {
+-      // PyDict_GetItem() returns a borowed ref, or NULL if the key is not
+-      // present (without setting an exception)
+-      return oobj(PyDict_GetItem(sys_modules.v, pyname.v));
+-    } else {
+-      // PyObject_GetItem() returns a new reference
+-      PyObject* res = PyObject_GetItem(sys_modules.v, pyname.v);
+-      if (!res) PyErr_Clear();
+-      return oobj::from_new_reference(res);
+-    }
+-
+-  #endif
++  // PyImport_GetModule(name)
++  //   Return the already imported module with the given name. If the module
++  //   has not been imported yet then returns NULL but does not set an error.
++  //   Returns NULL and sets an error if the lookup failed.
++  PyObject* res = PyImport_GetModule(pyname.v);
++  if (!res && PyErr_Occurred()) PyErr_Clear();
++  return oobj::from_new_reference(res);
+ }
+ 
+ 
+@@ -1280,31 +1249,19 @@ robj rnone()    { return robj(Py_None); }
+ 
+ robj rstdin() {
+   return robj(
+-    #ifndef Py_LIMITED_API
+-      _PySys_GetObjectId(&PyId_stdin)  // borrowed ref
+-    #else
+-      PySys_GetObject("stdin")         // borrowed ref
+-    #endif
++    PySys_GetObject("stdin")  // borrowed ref
+   );
+ }
+ 
+ robj rstdout() {
+   return robj(
+-    #ifndef Py_LIMITED_API
+-      _PySys_GetObjectId(&PyId_stdout)  // borrowed ref
+-    #else
+-      PySys_GetObject("stdout")         // borrowed ref
+-    #endif
++    PySys_GetObject("stdout")  // borrowed ref
+   );
+ }
+ 
+ robj rstderr() {
+   return robj(
+-    #ifndef Py_LIMITED_API
+-      _PySys_GetObjectId(&PyId_stderr)  // borrowed ref
+-    #else
+-      PySys_GetObject("stderr")         // borrowed ref
+-    #endif
++    PySys_GetObject("stderr")  // borrowed ref
+   );
+ }
+ 
+@@ -1314,11 +1271,7 @@ void write_to_stdout(const std::string& str) {
+   oobj writer;
+   if (py_stdout && py_stdout != Py_None) {
+     writer = oobj::from_new_reference(
+-      #ifndef Py_LIMITED_API
+-        _PyObject_GetAttrId(py_stdout, &PyId_write)  // new ref
+-      #else
+-        PyObject_GetAttrString(py_stdout, "write")   // new ref
+-      #endif
++      PyObject_GetAttrString(py_stdout, "write")  // new ref
+     );
+     if (!writer) PyErr_Clear();
+   }
+diff --git a/src/core/python/obj.h b/src/core/python/obj.h
+index 0d565855..309b7475 100644
+--- a/src/core/python/obj.h
++++ b/src/core/python/obj.h
+@@ -25,6 +25,7 @@
+ #include <string>   // std::string
+ #include <vector>   // std::vector
+ #include "_dt.h"               // general declarations
++#include "python/python.h"     // PyObject
+ #include "utils/exceptions.h"  // Error
+ namespace py {
+ 
+diff --git a/src/core/python/python.h b/src/core/python/python.h
+index 85e0d442..7f911648 100644
+--- a/src/core/python/python.h
++++ b/src/core/python/python.h
+@@ -1,5 +1,5 @@
+ //------------------------------------------------------------------------------
+-// Copyright 2018 H2O.ai
++// Copyright 2018-2022 H2O.ai
+ //
+ // Permission is hereby granted, free of charge, to any person obtaining a
+ // copy of this software and associated documentation files (the "Software"),
+@@ -19,8 +19,32 @@
+ // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ // IN THE SOFTWARE.
+ //------------------------------------------------------------------------------
++#ifndef dt_PYTHON_h
++#define dt_PYTHON_h
+ 
+-// This header must be included before <Python.h>, otherwise datatable won't
+-// compile on MacOS with Apple LLVM clang 9.1.0
++// `locale` must be included before `Python.h`, otherwise datatable won't
++// compile on macOS with Apple LLVM clang 9.1.0
+ #include <locale>
+ #include <Python.h>
++
++
++// The following code has been adopted from python/pythoncapi-compat, see
++// https://github.com/python/pythoncapi-compat/blob/main/pythoncapi_compat.h
++//
++// As per bpo-39573, `Py_SET_REFCNT()` and `Py_SET_TYPE()` are only available
++// as of python 3.9.0a4, so for older versions we have to directly change
++// the corresponding `ob_*` properties.
++#if PY_VERSION_HEX < 0x030900A4
++  static inline void _Py_SET_REFCNT(PyObject *ob, Py_ssize_t refcnt) {
++    ob->ob_refcnt = refcnt;
++  }
++  #define Py_SET_REFCNT(ob, refcnt) _Py_SET_REFCNT(reinterpret_cast<PyObject*>(ob), refcnt)
++
++  static inline void _Py_SET_TYPE(PyObject *ob, PyTypeObject *type) {
++    ob->ob_type = type;
++  }
++  #define Py_SET_TYPE(ob, type) _Py_SET_TYPE(reinterpret_cast<PyObject*>(ob), type)
++#endif
++
++#endif
++
+diff --git a/src/core/python/tuple.cc b/src/core/python/tuple.cc
+index ae9651dc..e010e44c 100644
+--- a/src/core/python/tuple.cc
++++ b/src/core/python/tuple.cc
+@@ -143,7 +143,7 @@ void otuple::make_editable() {
+     // When `v` is a namedtuple, we need to adjust python type for `v_new`.
+     // This is because `PyTuple_GetSlice()` always returns a regular tuple.
+     PyTypeObject* v_type = Py_TYPE(v);
+-    Py_TYPE(v_new) = v_type;
++    Py_SET_TYPE(v_new, v_type);
+     Py_INCREF(v_type);
+   }
+   Py_SETREF(v, v_new);
+diff --git a/src/core/python/xobject.cc b/src/core/python/xobject.cc
+index 21450525..09045d45 100644
+--- a/src/core/python/xobject.cc
++++ b/src/core/python/xobject.cc
+@@ -81,7 +81,11 @@ void XTypeMaker::initialize_type() {
+         py::ostring(class_name_), py::otuple(0), defs
+     });
+     type = reinterpret_cast<PyTypeObject*>(std::move(typeObj).release());
+-    xassert(type->tp_basicsize == sizeof(PyObject) + 16);
++    #if PY_VERSION_HEX < 0x030B0000
++      xassert(type->tp_basicsize == sizeof(PyObject) + 16);
++    #else
++      xassert(type->tp_basicsize == sizeof(PyObject) + 8);
++    #endif
+     type->tp_basicsize = static_cast<Py_ssize_t>(object_size);
+   }
+   else {
+diff --git a/src/core/utils/exceptions.h b/src/core/utils/exceptions.h
+index 32545d8e..20ae7e57 100644
+--- a/src/core/utils/exceptions.h
++++ b/src/core/utils/exceptions.h
+@@ -21,9 +21,10 @@
+ //------------------------------------------------------------------------------
+ #ifndef dt_UTILS_EXCEPTIONS_h
+ #define dt_UTILS_EXCEPTIONS_h
+-#include <exception>  // std::exception
+-#include <sstream>    // std::ostringstream
++#include <exception>        // std::exception
++#include <sstream>          // std::ostringstream
+ #include "_dt.h"
++#include "python/python.h"  // PyObject
+ 
+ class CErrno {};
+ extern CErrno Errno;
