@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-auth_pam
 	pkgdesc = Nginx mainline module to use PAM for simple http authentication
-	pkgver = 1.5.3
-	pkgrel = 2
+	pkgver = 1.5.4
+	pkgrel = 1
 	url = https://github.com/sto/ngx_http_auth_pam_module
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nginx-mainline-mod-auth_pam
 	makedepends = nginx-mainline-src
 	depends = nginx-mainline
 	depends = pam
-	source = https://github.com/sto/ngx_http_auth_pam_module/archive/v1.5.3/ngx_http_auth_pam_module-1.5.3.tar.gz
-	sha256sums = 882018fea8d6955ab3fe294aafa8ebb1fdff4eac313c29583fef02c6de76fae7
+	source = https://github.com/sto/ngx_http_auth_pam_module/archive/v1.5.4/ngx_http_auth_pam_module-1.5.4.tar.gz
+	sha256sums = 2721f6bc47f27406dfdc7e59e0c1d12c9338d99d20e01457e8bcc6e7e3cd0643
 
 pkgname = nginx-mainline-mod-auth_pam

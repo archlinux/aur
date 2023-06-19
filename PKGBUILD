@@ -1,8 +1,8 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-auth_pam
-pkgver=1.5.3
-pkgrel=2
+pkgver=1.5.4
+pkgrel=1
 _modname=ngx_http_auth_pam_module
 pkgdesc='Nginx mainline module to use PAM for simple http authentication'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('nginx-mainline-src')
 url="https://github.com/sto/ngx_http_auth_pam_module"
 license=('BSD')
 source=(https://github.com/sto/$_modname/archive/v$pkgver/$_modname-$pkgver.tar.gz)
-sha256sums=('882018fea8d6955ab3fe294aafa8ebb1fdff4eac313c29583fef02c6de76fae7')
+sha256sums=('2721f6bc47f27406dfdc7e59e0c1d12c9338d99d20e01457e8bcc6e7e3cd0643')
 
 prepare() {
 	mkdir -p build
