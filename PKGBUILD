@@ -20,7 +20,7 @@ conflicts=('mattermost-desktop')
 provides=("${_pkgname}")
 
 source=(${_pkgname}.desktop icon.svg "https://releases.mattermost.com/desktop/${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.gz")
-sha256sums=('9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093' 'cc5507133b6ef1ccaf130263f4e2527b55eecf6427eb36a899bab695bcb3803c' 'e7f219b9df0eca9bb29dc319679afaa29b83e88c338d50448d579d9b3b86af95')
+sha256sums=('8659351ccebf1fa46bf0ecae0f12261f003edd7cbab21a0a53628efbec02e141' 'cc5507133b6ef1ccaf130263f4e2527b55eecf6427eb36a899bab695bcb3803c' 'e7f219b9df0eca9bb29dc319679afaa29b83e88c338d50448d579d9b3b86af95')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}-linux-x64"
