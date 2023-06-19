@@ -10,7 +10,7 @@ license=(MIT)
 depends=(libnotify glib2)
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('3ee6e602a5a9b9d48f0ba1b4e4e70812')
+md5sums=('170568e724d01c70c9ed7f3fde8957f3')
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
