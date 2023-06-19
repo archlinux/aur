@@ -6,7 +6,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 
 pkgname=obs-studio-browser
-pkgver=29.1.2
+pkgver=29.1.3
 pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
