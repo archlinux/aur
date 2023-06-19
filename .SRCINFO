@@ -1,6 +1,6 @@
 pkgbase = r-datamods
 	pkgdesc = Modules to Import and Manipulate Data in 'Shiny'
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=datamods
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-datamods
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-validate
-	source = https://cran.r-project.org/src/contrib/datamods_1.4.0.tar.gz
-	sha256sums = 1b6f25c35298ec77325d0dee7871edc4da6aa26372d75614732c1b67eb720f13
+	source = https://cran.r-project.org/src/contrib/datamods_1.4.1.tar.gz
+	sha256sums = 74df6e6f2383ad154374f276eca00f0fd7a1133c0f7f2714986890a4744830ca
 
 pkgname = r-datamods
