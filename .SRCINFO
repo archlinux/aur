@@ -1,10 +1,10 @@
 pkgbase = story-writer-bin
 	pkgdesc = A very excellent knowledge management software.小书匠是一款非常优秀的知识管理软件.
 	pkgver = 8.12.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://soft.xiaoshujiang.com/
 	arch = x86_64
-	license = custom:Apache2.0
+	license = Apache
 	depends = glib2
 	depends = nspr
 	depends = pango
