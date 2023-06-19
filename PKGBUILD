@@ -1,30 +1,32 @@
-# Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
+# Maintainer: éclairevoyant
+# Contributor: C dot Dominik Bódi <dominik dot bodi at gmx dot de>
+
 pkgname=git-dpm
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="debian source package and patch management with git"
-arch=('any')
-url="https://git-dpm.alioth.debian.org/"
-license=('GPL2')
-depends=('dpkg'
-         'git')
-makedepends=('ghostscript')
-optdepends=('devscripts: for enhanced debian development workflow support'
-            'bzip2: for bzip2 support'
-	    'xz: for xz support'
-	    'sensible-utils: sensible alternative selection support'
-	    'pristine-tar: for re-generating upstream tarballs out of git'
-	    'sharutils: for generating shell archives support')
-source=("http://httpredir.debian.org/debian/pool/main/g/$pkgname/${pkgname}_${pkgver}.orig.tar.gz")
-sha256sums=('66063ef7d83b9b865db1547f9dc1c6e96080d1d116d1b2abefdd074d9bbc9fc4')
+arch=(any)
+url="https://tracker.debian.org/pkg/git-dpm"
+license=(GPL2)
+depends=(dpkg bash git)
+makedepends=(ghostscript)
+optdepends=(
+	'bzip2: for bzip2 support'
+	'devscripts: for enhanced debian development workflow support'
+	'pristine-tar: for re-generating upstream tarballs out of git'
+	'sensible-editor: sensible alternative selection support'
+	'sharutils: for generating shell archives support'
+	'xz: for xz support'
+)
+source=("https://ftp.debian.org/debian/pool/main/g/$pkgname/${pkgname}_${pkgver}.orig.tar.xz")
+sha256sums=('ce03811429fecafb4c3eb159c27ffd5bbf86f0fd8f6866fa2e8aad2433d3c875')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd $pkgname-$pkgver
 	./configure --prefix=/usr
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	make -C $pkgname-$pkgver DESTDIR="$pkgdir" install
 }
