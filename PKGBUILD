@@ -1,59 +1,24 @@
 # Maintainer:
 
-_pkgname=sensible-utils
-pkgbase=sensible-utils-old
+_pkgname="sensible-utils"
+pkgbase="sensible-utils-old"
+_newpkg="sensible-utils-unified"
 pkgname=("$_pkgname")
-pkgver=0.0.20
-_debianextra=
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Utilities for sensible alternative selection (unified)"
+pkgdesc="Meta package to switch to $_newpkg"
 arch=('any')
-url="https://packages.debian.org/source/sid/sensible-utils"
-license=('GPL')
-depends=('bash')
-makedepends=('po4a')
-checkdepends=('ed')
+url="https://aur.archlinux.org/packages/$_newpkg"
+license=('LGPL')
+
+depends=("$_newpkg")
 
 provides=(
-  sensible-browser
-  sensible-editor
-  sensible-pager
-  sensible-terminal
-  sensible-utils-data
+  'sensible-browser'
+  'sensible-editor'
+  'sensible-pager'
+  'sensible-terminal'
+  'sensible-utils-data'
 )
 conflicts=(${provides[@]})
-
-source=(
-  "https://deb.debian.org/debian/pool/main/s/$_pkgname/${_pkgname}_${pkgver}${_debianextra}.tar.xz"
-)
-sha256sums=(
-  'b8cfd2dd268b3d982cc8e94af573b3e72e7917b2fa6f28eaa5e056ad99212edb'
-)
-
-build() {
-  cd "${_pkgname}-${pkgver}${_debianextra}"
-  export -n EDITOR VISUAL
-  ./configure --prefix=/usr
-  make
-}
-
-check() {
-  cd "${_pkgname}-${pkgver}${_debianextra}"
-  export -n EDITOR VISUAL
-  make -k check | true
-}
-
-package() {
-  replaces=(
-    ${provides[@]}
-  )
-  provides+=(
-    sensible-utils
-    sensible-utils-unified
-  )
-
-  cd "${_pkgname}-${pkgver}${_debianextra}"
-  export -n EDITOR VISUAL
-  make DESTDIR="$pkgdir/" install
-  shopt -s globstar
-}
+replaces=(${provides[@]})
