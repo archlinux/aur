@@ -8,9 +8,9 @@ pkgrel=2
 pkgdesc="MMesh is a grid implementation based on CGAL triangulations"
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
-license=('GPL3')
+license=(GPL3)
 depends=("dune-grid>=${_dunever}" cgal)
-makedepends=(texlive-core doxygen graphviz python-scikit-build python-ninja)
+makedepends=(texlive-basic doxygen graphviz python-scikit-build python-ninja)
 optdepends=('vc: C++ Vectorization library'
   'doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'
