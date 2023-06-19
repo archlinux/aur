@@ -1,0 +1,86 @@
+# Changes in version 0.7.2:
+
+### Breaking change:
+
+- When trying to dump the control flow graph (CFG) for a BPF program (bpftool
+  prog dump xlated <program> visual), return an error if the user passed one of
+  the --json or --pretty options, instead of simply ignoring the option.
+
+### New features
+
+- Support printing the C source code (inline annotations), if available, in the
+  CFGs for programs. Also support line numbers and opcodes in the CFGs with the
+  linum and opcodes keywords, just like for regular program dumps.
+- In the Makefile's feature detection for the mirror repository, output the
+  name, results, and stderr when probing features with V=1.
+
+### Bug fixes
+
+- Fix linkage with statically built LLVM libraries for the disassembler for
+  JIT-compiled BPF programs. Some flags and libraries were missing.
+- With bpftool prog profile, profile online CPUs instead of “possible” CPUs,
+  given that some of the latter may not be online and hence not available for
+  profiling.
+- In BPF-related feature probing, avoid marking kernel config option as not set
+  if the kernel configuration file is not found.
+- In the Makefile, add missing quotes to libbpf bootstrap submake variables, to
+  fix use cases where $(HOSTCC) is set to /usr/bin/ccache /usr/bin/gcc, for
+  example.
+- Fix a bug in the JSON writer, which would produce an escaped line break
+  instead of escaped backslash for a \ character.
+- Fix another bug in the JSON writer, about an invalid JSON escape for \'.
+- Fix bug for long instructions (such as loading a 64-bit long immediate into a
+  register) not displayed properly in program CFG dumps.
+- Fix documentation about line information display for program dumps: the
+  document hinted that displaying the source line could be turn off, and that
+  the file name would be printed “on top of” the source line, but these
+  indications were not accurate.
+- Ignore $(CFLAGS), use $(EXTRA_CFLAGS) in the Makefile's feature detection
+  framework, thus mirroring the behavior of the kernel version. On top of that,
+  fix feature detection for static builds.
+- Fix the feature detection system to account for $(FEATURE_TESTS) defined in
+  the main Makefile.
+
+### Other internal changes
+
+- Add static build instructions for bpftool in the README.md of the mirror
+  repository.
+- Use bpf_{btf,link,map,prog}_get_info_by_fd() (wrappers around
+  bpf_obj_get_info_by_fd()), to improve type safety in the code, and to help
+  with the Memory Sanitizer.
+- Always disable stack protection for building BPF programs used by bpftool. If
+  present, as is the default on Gentoo for example, stack protection for the
+  clang toolchain would produce errors when trying to compile the relevant object
+  files, but stack protection is not relevant in the case of BPF programs and it
+  is safe to turn it off.
+
+### CI
+
+- Add a release workflow to build and ship static binaries for amd64 and arm64
+  (and SHA256 sums) on releases (the workflow creates a draft release when tags
+  are pushed, and attaches the assets). Also use this workflow to ship a tarball
+  containing all sources required to compile (bpftool, plus libbpf submodule).
+  Add a script to update GitHub labels for some of these release assets.
+- Add a workflow for static builds with both LLVM and libbfd disassemblers. The
+  early version for the LLVM disassembler would include compiling the LLVM
+  libraries and take around 80 minutes to complete, but later we switched to
+  downloading libraries compatible with static linking from LLVM's CI, cutting
+  down the duration for the workflow to about 2 minutes.
+- Remove deprecated Ubuntu 18.04 GitHub runner from the CI in the matrix for
+  the build workflow.
+- In workflow definitions, add concurrency groups to cancel outdated runs.
+- Add path filters to workflow definitions, to avoid running all workflows if
+  some are not relevant for a given Pull Request.
+- Add a CI workflow to make sure GitHub mirror commits have valid prefixes
+  (mirror: or sync: or ci: only, so we can easily distinguish them from the
+  commits coming from the kernel repository).
+- Switch to the Hadolint linter for checking the Dockerfile, and improve the
+  related workflow.
+
+### Known bugs
+
+- Some features requiring the use of “skeletons” (feature-clang-bpf-co-re
+  compilation option) require kernel 5.15 or more recent, with
+  CONFIG_PERF_EVENTS set, to compile bpftool (#17).
+- Command bpftool cgroup tree may be broken when running with kernels under
+  v6.1 (#41).

@@ -1,0 +1,17 @@
+pkgbase = bpftool-bin
+	pkgdesc = bpftool is a tool for inspection and simple manipulation of eBPF programs and maps
+	pkgver = 7.2.0
+	pkgrel = 1
+	url = https://github.com/libbpf/bpftool
+	changelog = CHANGELOG
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	provides = bpftool
+	conflicts = bpftool
+	source_x86_64 = https://github.com/libbpf/bpftool/releases/download/v7.2.0/bpftool-v7.2.0-amd64.tar.gz
+	b2sums_x86_64 = 30dcd2127a7d6a0a6b15140d2d849fe4548b8ea7c177607e00780ce8b25d307fa80f4f1414fbc79a3ea378f2d34cc4229b2ab29f9c7b8399dafe06bee7e60875
+	source_aarch64 = https://github.com/libbpf/bpftool/releases/download/v7.2.0/bpftool-v7.2.0-arm64.tar.gz
+	b2sums_aarch64 = bd6d0d3dce357a25279d995b8744519c9d78744dc207afb66c60805b1264838a701c786e1ba7686a433e383b9f00d43586d8bf767e31564ba00d486ed068851d
+
+pkgname = bpftool-bin
