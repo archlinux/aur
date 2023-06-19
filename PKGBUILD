@@ -1,6 +1,6 @@
 # Maintainer: Ivan Krivosheev <py.krivosheev@gmail.com>
 
-pkgname=backlight-notify
+pkgname=acpi-backlight-notify
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="ACPI backlight notification daemon"
