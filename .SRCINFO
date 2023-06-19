@@ -1,6 +1,6 @@
 pkgbase = forgit
 	pkgdesc = Utility tool powered by fzf for using git interactively
-	pkgver = 23.03.0
+	pkgver = 23.06.0
 	pkgrel = 1
 	url = https://github.com/wfxr/forgit
 	install = forgit.install
@@ -10,13 +10,16 @@ pkgbase = forgit
 	license = MIT
 	depends = bash
 	depends = fzf
+	depends = git
 	optdepends = zsh: supported shell
 	optdepends = fish: supported shell
 	optdepends = git-delta: human readable diffs
 	optdepends = diff-so-fancy: human readable diffs
 	optdepends = bat: syntax highlighting for .gitignore
 	optdepends = emoji-cli: emoji support for git log
-	source = forgit-23.03.0.tar.gz::https://github.com/wfxr/forgit/archive/23.03.0.tar.gz
-	sha256sums = f64d0a5e0d4064ce9f60825383cca84a5735b3962e6d6c984f13cf8c0b199043
+	provides = forgit
+	conflicts = forgit-git
+	source = forgit-23.06.0.tar.gz::https://github.com/wfxr/forgit/archive/23.06.0.tar.gz
+	sha256sums = 71e5fb12facf5a3c9fb28ff10698e6534891dd26c496cbb44fc1eb144d16cb27
 
 pkgname = forgit
