@@ -1,6 +1,7 @@
 [Unit]
 Description=Update tor bridges
-After=network.target
+Wants=network-online.target
+After=network-online.target
 Before=tor.service
 
 [Service]
