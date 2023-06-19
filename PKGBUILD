@@ -2,7 +2,7 @@
 
 pkgname=cdktf
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cloud Development Kit for Terraform"
 arch=('any')
 url="https://github.com/hashicorp/terraform-cdk"
@@ -12,7 +12,7 @@ makedepends=('npm' 'jq')
 noextract=("${pkgname}-${pkgver}.tgz")
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz"
         "https://raw.githubusercontent.com/hashicorp/terraform-cdk/master/LICENSE")
-sha256sums=('6c061873661a7da3727dceb3403895ddfca897deb855b189b7be363d10d0d691'
+sha256sums=('4f4004e197796d650d5ec238db3aa19cac30b53e576b819d26a35fa8ac52d872'
             '8a318096d516c4b23566f94f4129260a9d4f72672dc52405573b619451f7b6c2')
 
 package() {
