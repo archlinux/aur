@@ -1,0 +1,13 @@
+pkgbase = i-use-arch-btw-git
+	pkgdesc = Turing-complete programming language
+	pkgver = 0.1.0.r14.c511373
+	pkgrel = 1
+	url = https://github.com/overmighty/i-use-arch-btw
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	source = i-use-arch-btw::git+https://github.com/overmighty/i-use-arch-btw.git
+	md5sums = SKIP
+
+pkgname = i-use-arch-btw-git
