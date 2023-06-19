@@ -1,7 +1,7 @@
 # Maintainer: Andre Smit <freevryheid@gmail.com>
 pkgname=duckdb-bin
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="An in-process SQL OLAP database management system"
 arch=("x86_64")
 url="https://duckdb.org"
@@ -9,8 +9,8 @@ license=("MIT")
 conflicts=("duckdb" "duckdb-git")
 source=("duckdb_cli-linux-amd64-${pkgver}-${pkgrel}.zip::https://github.com/duckdb/duckdb/releases/download/v${pkgver}/duckdb_cli-linux-amd64.zip"
         "libduckdb-linux-amd64-${pkgver}-${pkgrel}.zip::https://github.com/duckdb/duckdb/releases/download/v${pkgver}/libduckdb-linux-amd64.zip")
-sha256sums=('bc5cb74015e7d164ac0cf160df62625b7024003b48a7507bcde486fcad1120b7'
-            '3d8ab93d0775b0a9518dc1a37b487882bc680df3aca5439d86bf34bed8531af4')
+sha256sums=('892ae08f39598124180fbd2912895beb116f5ca0f32e9657db2376f3d58fec97'
+            '767c4163df6c6fb8dc07d44d6db3d081437544282185f4aae9bd1a9d9517a6c9')
 package() {
 	install -D -m755 $srcdir/duckdb $pkgdir/usr/bin/duckdb
 	install -D -m755 $srcdir/libduckdb.so $pkgdir/usr/lib/libduckdb.so
