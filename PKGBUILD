@@ -7,7 +7,7 @@
 # shellcheck disable=SC2034
 _pkg="blivet"
 pkgname="${_pkg}-gui"
-pkgver=2.4.0
+pkgver=2.4.1
 _pkgver="${pkgver}-1"
 pkgrel=1
 pkgdesc='GUI tool for storage configuration'
@@ -23,16 +23,16 @@ depends=('python'
          'python-pid'
          'adwaita-icon-theme')
 makedepends=('git' 'make')
-source=("${pkgname}::git+${url}.git#tag=${_pkgver}")
-b2sums=('SKIP')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('9594d3faebcd02d9142a180e25651411690faa71e53a4d961d14d8e7d6f7a7916d084ebbf7117d48c85274eea8c16fe99f09232ec526263ae72a0798aae591bf')
 
 build() {
-  cd "${pkgname}" || exit
+  cd "${pkgname}-${pkgver}" || exit
   make
 }
 
 # shellcheck disable=SC2154
 package() {
-  cd "${pkgname}" || exit
+  cd "${pkgname}-${pkgver}" || exit
   make DESTDIR="${pkgdir}" RPM_BUILD_ROOT="${pkgdir}" install
 }
