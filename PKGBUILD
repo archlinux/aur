@@ -1,5 +1,5 @@
-# Maintainer: afward <archlinux.gargoyley@simplelogin.co>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: afward <archlinux.gargoyley@simplelogin.co>
 pkgname="yakyak-bin"
 pkgver=1.5.12beta
 pkgrel=4
