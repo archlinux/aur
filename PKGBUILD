@@ -1,7 +1,7 @@
 # Maintainer: nekgem2 <nekgem2@firemail.cc>
 pkgname=lokinet
 pkgver=0.9.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Anonymous, decentralized and IP based overlay network for the internet."
 arch=('x86_64' 'aarch64')
 url="https://lokinet.org"
@@ -16,7 +16,8 @@ source=("https://github.com/oxen-io/lokinet/releases/download/v$pkgver/lokinet-v
         'lokinet-resume.service'
         'lokinet.sysusers'
         'lokinet.tmpfiles'
-        'lokinet.rules')
+        'lokinet.rules'
+        'fix-include.patch')
 sha256sums=('c16c82c7528beae5ceca072eaf6e1a9eb4b85247f1d60352344b5ee53009391c'
             'SKIP'
             'ff5e7db4e65463e50978da0185487bd4a7f213f04bdb6256e221089f833c6ab6'
@@ -25,8 +26,13 @@ sha256sums=('c16c82c7528beae5ceca072eaf6e1a9eb4b85247f1d60352344b5ee53009391c'
             'bcf4bd7b38d2f054e25cc243353d3c9a56d1948b42ad07ee5c0260de06e8dd6c'
             '137cf7eeebc8737d62f3ccfad2398fb1c442a91cb9db7d650429b218dd949a00'
             'b0d87fd610bbc7ef56148590dbc6ed6a68f36ec88db783f408a66c815705fd75'
-            '6ea4d917ce2e46b2c31af31b8c8c28054c5f977bab5b050c44e2029ab3248713')
+            '6ea4d917ce2e46b2c31af31b8c8c28054c5f977bab5b050c44e2029ab3248713'
+            '87b563eb9941120dc9d9999345fa3aebb21884237c4226fe8419aac0c3caf9b6')
 validpgpkeys=('2CE6F2743138825B7A7E521D025C02EE3A092F2D') # Jeff Becker (probably not evil) <jeff@lokinet.io> https://lokinet.io/jeff.asc
+
+prepare() {
+	patch --directory="lokinet-v$pkgver" --forward --strip=1 --input="${srcdir}/fix-include.patch"
+}
 
 build() {
 	cd "lokinet-v$pkgver"

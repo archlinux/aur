@@ -1,0 +1,11 @@
+diff -ur lokinet-v0.9.11.orig/llarp/util/thread/queue_manager.hpp lokinet-v0.9.11/llarp/util/thread/queue_manager.hpp
+--- lokinet-v0.9.11.orig/llarp/util/thread/queue_manager.hpp	2022-11-27 20:25:58.052989500 +0200
++++ lokinet-v0.9.11/llarp/util/thread/queue_manager.hpp	2023-06-19 21:32:18.864777187 +0300
+@@ -7,6 +7,7 @@
+ #include <limits>
+ #include <string>
+ #include <type_traits>
++#include <cstdint>
+ 
+ namespace llarp
+ {

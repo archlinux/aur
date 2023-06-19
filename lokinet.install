@@ -2,6 +2,8 @@
 migrate_config() {
 	if [ ! -e etc/loki/lokinet.ini ]
 	then
+		mkdir -p etc/loki
+
 		if [ -f var/lib/lokinet/lokinet.ini ]
 		then
 			cp -f var/lib/lokinet/lokinet.ini etc/loki/lokinet.ini.new
@@ -13,10 +15,11 @@ migrate_config() {
 			pushd etc/loki/ >/dev/null
 			rm -f lokinet.ini.new
 			/usr/bin/lokinet -g ./lokinet.ini.new >/dev/null 2>&1
-			chmod 644 etc/loki/lokinet.ini.new
+			chmod 644 lokinet.ini.new
 			mv -f lokinet.ini{.new,}
 			popd >/dev/null
 
+			mkdir -p var/lib/lokinet
 			ln -sf /etc/loki/lokinet.ini var/lib/lokinet/lokinet.ini.new && mv -f var/lib/lokinet/lokinet.ini{.new,}
 		fi
 	else
@@ -24,6 +27,7 @@ migrate_config() {
 
 		if [ ! -e var/lib/lokinet/lokinet.ini ]
 		then
+			mkdir -p var/lib/lokinet
 			ln -sf /etc/loki/lokinet.ini var/lib/lokinet/lokinet.ini.new && mv -f var/lib/lokinet/lokinet.ini{.new,}
 		fi
 	fi

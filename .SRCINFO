@@ -1,7 +1,7 @@
 pkgbase = lokinet
 	pkgdesc = Anonymous, decentralized and IP based overlay network for the internet.
 	pkgver = 0.9.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lokinet.org
 	install = lokinet.install
 	arch = x86_64
@@ -30,6 +30,7 @@ pkgbase = lokinet
 	source = lokinet.sysusers
 	source = lokinet.tmpfiles
 	source = lokinet.rules
+	source = fix-include.patch
 	validpgpkeys = 2CE6F2743138825B7A7E521D025C02EE3A092F2D
 	sha256sums = c16c82c7528beae5ceca072eaf6e1a9eb4b85247f1d60352344b5ee53009391c
 	sha256sums = SKIP
@@ -40,5 +41,6 @@ pkgbase = lokinet
 	sha256sums = 137cf7eeebc8737d62f3ccfad2398fb1c442a91cb9db7d650429b218dd949a00
 	sha256sums = b0d87fd610bbc7ef56148590dbc6ed6a68f36ec88db783f408a66c815705fd75
 	sha256sums = 6ea4d917ce2e46b2c31af31b8c8c28054c5f977bab5b050c44e2029ab3248713
+	sha256sums = 87b563eb9941120dc9d9999345fa3aebb21884237c4226fe8419aac0c3caf9b6
 
 pkgname = lokinet
