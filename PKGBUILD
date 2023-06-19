@@ -53,4 +53,8 @@ package() {
   # symlink helm binary
   ln -sf /usr/bin/helm \
     "${pkgdir}"/usr/share/${pkgname}/resources/x64/helm
+
+  # symlink kubectl binary
+  ln -sf /usr/bin/kubectl \
+    "${pkgdir}"/usr/share/${pkgname}/resources/x64/kubectl
 }
