@@ -1,13 +1,13 @@
 pkgbase = r-norm
 	pkgdesc = Analysis of multivariate normal datasets with missing values
-	pkgver = 1.0.11.0
+	pkgver = 1.0.11.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=norm
 	arch = x86_64
 	license = custom
 	makedepends = gcc-fortran
 	depends = r
-	source = https://cran.r-project.org/src/contrib/norm_1.0-11.0.tar.gz
-	sha256sums = cd8a4e81782ec459cb4a9665c407147b2cd3a0d4a7562f60689415864269402e
+	source = https://cran.r-project.org/src/contrib/norm_1.0-11.1.tar.gz
+	sha256sums = c2ffe6c30fc203337bde49ef630a740141604d8e648c558e58c20116c47963bc
 
 pkgname = r-norm
