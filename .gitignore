@@ -1,0 +1,6 @@
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/eww-tray-wayland-git.install
+!/*.patch
