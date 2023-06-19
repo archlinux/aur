@@ -1,6 +1,6 @@
 pkgbase = cemu-git
 	pkgdesc = Nintendo Wii U emulator
-	pkgver = 2.0.41.r1.ga533c485
+	pkgver = 2.0.41.r2.gcd3fe068
 	pkgrel = 1
 	url = https://cemu.info/
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = cemu-git
 	makedepends = vulkan-headers>=1:1.3.225
 	makedepends = wayland
 	makedepends = wayland-protocols
-	makedepends = zarchive-git>=0.1.2
+	makedepends = zarchive>=0.1.2
 	makedepends = zstd
 	depends = discord-rpc
 	depends = gcc-libs
