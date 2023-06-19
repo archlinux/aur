@@ -1,26 +1,28 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=speedglm
+_pkgver=0.3-5
 pkgname=r-${_pkgname,,}
-pkgver=0.3_5
-pkgrel=1
-pkgdesc='Fitting Linear and Generalized Linear Models to Large Data Sets'
-arch=('any')
+pkgver=${_pkgver//[:-]/.}
+pkgrel=2
+pkgdesc="Fitting Linear and Generalized Linear Models to Large Data Sets"
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL)
 depends=(
-  r
   r-biglm
 )
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/cran/${_pkgname}/archive/refs/tags/${pkgver//_/-}.tar.gz")
-sha256sums=('01f77b3af5c48c2a8568f7bd2acd26f00b3fcd1887d187b32229bb91d4a90383')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('48a7f9d2722b0142fc0372a6d8769acf')
+sha256sums=('f8663677c10ff324c5639402060ddd2b1a1e917445cb0f8f84e146b85e82bb4b')
 
 build() {
-  R CMD INSTALL ${_pkgname}-${pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
