@@ -2,7 +2,7 @@
 
 pkgname=sing-box-beta
 _pkgname=sing-box
-_version="1.3-beta14"
+_version="1.3-rc1"
 pkgver="${_version//-/.}"
 pkgrel=1
 
@@ -14,7 +14,7 @@ license=('GPL3 with name use or association addition')
 makedepends=('go')
 
 source=("$_pkgname-$_version.tar.gz::https://github.com/SagerNet/sing-box/archive/v$_version.tar.gz")
-sha256sums=('cf3a1da5270d3aa0a79f6b3bcfecc2121e3b5cf22541f67cc8f0e1b33b6d1c2d')
+sha256sums=('6c36ac501e52a287cb424d871e41249686aea2a09ae4883580ea69ace044c36e')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -26,7 +26,7 @@ backup=("etc/$_pkgname/config.json")
 
 _tags=with_gvisor,with_quic,with_wireguard,with_utls,with_reality_server,with_clash_api
 build(){
-    cd "$_pkgname-$_version"
+    cd "$_pkgname-$_version" || return
 
     export CGO_CPPFLAGS="$CPPFLAGS"
     export CGO_CFLAGS="$CFLAGS"
