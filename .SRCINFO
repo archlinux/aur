@@ -1,0 +1,20 @@
+pkgbase = nudelta
+	pkgdesc = Open source NuPhy Console alternative
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/donn/nudelta
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = cmake
+	makedepends = yarn
+	makedepends = nodejs
+	makedepends = git
+	makedepends = gendesk
+	depends = gcc-libs
+	depends = electron
+	depends = hicolor-icon-theme
+	source = git+https://github.com/donn/nudelta.git#tag=0.7.2
+	sha256sums = SKIP
+
+pkgname = nudelta
