@@ -9,7 +9,7 @@
 pkgname=coin-or-hsl
 _pkgname=coinhsl
 pkgrel=1
-pkgver=2021.05.05
+pkgver=2022.11.09
 pkgdesc="HSL Mathematical Software Library. Including solvers for sparse linear systems of equations and sparse eigenvalue problems. Compiled with coin-or-tools, supports Ipopt."
 arch=('i686' 'x86_64')
 url="http://www.hsl.rl.ac.uk/"
@@ -19,7 +19,7 @@ optdepends=('coin-or-ipopt')
 source=("ThirdParty-HSL::git+https://github.com/coin-or-tools/ThirdParty-HSL.git"
 		"manual://${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('SKIP'
-            'f77ad752a37de8695c02c81bcc503674af76689d40a9864b6f2a7a790c3efc95')
+            'd6d9089bb9cf3eb0e4af195f1a2f10cd61da42eddf8da73a12b8c62902bceee3')
 
 build() {
   cd $srcdir/ThirdParty-HSL
