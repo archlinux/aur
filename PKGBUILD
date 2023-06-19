@@ -3,8 +3,8 @@
 
 pkgname=python-pyhanko
 _name=pyHanko
-pkgver=0.18.1
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc="Tools for stamping and signing PDF files"
 url="https://github.com/MatthiasValvekens/pyHanko"
 license=(MIT)
@@ -43,7 +43,7 @@ optdepends=(
   'python-barcode: for image support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('906ce67c1ab71ec67f2ab1412298575ba0f2acadb2fe846eb87b13529ac53e8c')
+sha256sums=('cc7baf37a7dbe926cb8950e210fb0cb80261a79fa22df690a09271847b1bd4a7')
 
 _archive="$_name-$pkgver"
 
