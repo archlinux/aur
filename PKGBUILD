@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="messages4desktop-bin"
-pkgver=p20230611
+pkgver=p20230618
 pkgrel=1
 pkgdesc="Google Messages on your desktop."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glib2' 'pango' 'at-spi2-core' 'libcups' 'dbus' 'libxrandr' 'cairo' 'gl
 makedepends=('gendesk')
 options=(!strip)
 source=("${pkgname%-appimage}-${pkgver}.7z::${url}/releases/download/${pkgver}/linux.7z")
-sha256sums=('cf6ec36a933313d493cbd9fa95b84d04c9a9cd24387640b15a46d07fe06fc8d3')
+sha256sums=('790d931b2754ff20a50e538ad6cd4bbb91aa330e600b0233f6f0d8c9cb9d2832')
    
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
