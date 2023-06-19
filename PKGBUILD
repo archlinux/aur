@@ -4,13 +4,14 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname=blast+
-pkgver=2.13.0
-pkgrel=2
+pkgver=2.14.0
+pkgrel=1
 pkgdesc="BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)"
 arch=('i686' 'x86_64')
 url="http://blast.ncbi.nlm.nih.gov/"
 license=('custom')
-depends=('glibc'
+depends=('gcc12'
+         'glibc'
          'gcc-libs'
          'libelf'
          'zlib'
@@ -25,17 +26,17 @@ depends=('glibc'
 	 'libuv'
 	 'libnghttp2'
 	 'sqlite')
-makedepends=('cpio')
+makedepends=('cpio' 'gcc12')
 # conflicts with proj on libproj.so
 conflicts=('blast' 'blast+-bin' 'ncbi-blast' 'proj')
 provides=('blast')
 replaces=('ncbi-blast')
 source=("https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-src.tar.gz")
-sha256sums=('89553714d133daf28c477f83d333794b3c62e4148408c072a1b4620e5ec4feb2')
+sha256sums=('bf477f1b0c3b82f0b7a7094bf003a9a83e37e3b0716c1df799060c4feab17500')
 
 prepare() {
     cd "$srcdir"/ncbi-blast-"$pkgver"+-src/c++ || exit
-    ./configure \
+    CC=/usr/bin/gcc-12 CXX=/usr/bin/g++-12 ./configure \
         --prefix=/usr \
         --with-dll \
         --with-mt
