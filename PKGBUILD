@@ -5,7 +5,7 @@
 pkgname=forgit-git
 _pkgname=${pkgname%-git}
 pkgver=23.06.0.r2.gc78c10a
-pkgrel=0
+pkgrel=1
 pkgdesc="Utility tool powered by fzf for using git interactively"
 arch=('any')
 url="https://github.com/wfxr/forgit"
