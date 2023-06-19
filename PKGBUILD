@@ -3,8 +3,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="qmplay2-appimage"
 _appname=QMPlay2
-pkgver=23.06.04
-pkgrel=3
+pkgver=23.06.17
+pkgrel=1
 pkgdesc="A video and audio player which can play most formats and codecs"
 arch=('x86_64')
 url="https://github.com/zaps166/QMPlay2"
@@ -14,7 +14,7 @@ depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_appname}-${pkgver}-1-${CARCH}.AppImage")
-sha256sums=('ce298fb5b1b882dc239a69cb10605e90b71d5f7f0fbcd42404cfe6b429558917')
+sha256sums=('7fe9f7ba5e4a93a98d07aa55977ea0fcba23f71fc2ae2c1e52306cff2f97541f')
      
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
