@@ -3,12 +3,12 @@
 pkgname=gawk-aregex
 _project=gawkextlib
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GAWK extension - approximate regex (fuzzy) matching"
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/gawkextlib/"
 license=('GPL')
-depends=('gawkextlib' 'tre')
+depends=('gawkextlib' 'glibc' 'tre')
 source=("https://downloads.sourceforge.net/$_project/$pkgname-$pkgver.tar.gz")
 md5sums=('e1a8610596606be18d964e478ce0a833')
 sha256sums=('dcbf5fd243a1ea09d5c5de7e49a2c15aadc78646b2100359d4ce834df0e47afe')
