@@ -1,6 +1,6 @@
 pkgname="carapace"
 pkgver=0.24.5
-pkgrel=1
+pkgrel=2
 pkgdesc="multi-shell multi-command argument completer"
 arch=("x86_64")
 url="https://rsteube.github.io/carapace-bin/"
@@ -16,7 +16,8 @@ sha256sums=(
 build(){
     cd "${srcdir}/carapace-bin"
     go generate ./cmd/...
-    ls cmd/ | xargs -I'{}' sh -c "cd ./cmd/{} && go build -v ."
+    go build -v -ldflags="-X main.version=v${pkgver}" ./cmd/carapace
+
 }
 check(){
     cd "${srcdir}/carapace-bin"
@@ -24,6 +25,6 @@ check(){
 }
 package(){
     cd "${srcdir}/carapace-bin"
-    install -Dm755 ./cmd/carapace/carapace \
+    install -Dm755 carapace \
         "${pkgdir}/usr/bin/carapace"
 }
