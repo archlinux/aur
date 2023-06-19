@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
 	pkgver = 4.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL3
@@ -31,7 +31,6 @@ pkgbase = telegram-desktop-dev
 	depends = qt6-imageformats
 	depends = qt6-svg
 	depends = qt6-wayland
-	depends = qt6-5compat
 	depends = xxhash
 	depends = glibmm-2.68
 	depends = rnnoise
