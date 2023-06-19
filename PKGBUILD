@@ -14,7 +14,7 @@ pkgdesc="HSL Mathematical Software Library. Including solvers for sparse linear 
 arch=('i686' 'x86_64')
 url="http://www.hsl.rl.ac.uk/"
 makedepends=('gcc' 'metis' 'gcc-fortran')
-depends=('openblas-lapack' 'openmp')
+depends=('blas-openblas' 'openmp')
 optdepends=('coin-or-ipopt')
 source=("ThirdParty-HSL::git+https://github.com/coin-or-tools/ThirdParty-HSL.git"
 		"manual://${_pkgname}-${pkgver}.tar.gz")
