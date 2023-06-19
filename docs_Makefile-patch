@@ -1,0 +1,10 @@
+--- docs/Makefile	2023-04-27 11:28:04.735503200 +1000
++++ docs/Makefile-new	2023-06-20 00:27:32.509108715 +1000
+@@ -1,6 +1,6 @@
+ 
+ all::
+-	${MAKE} -C gtkada_rm
++#	${MAKE} -C gtkada_rm
+ 	${MAKE} -C gtkada_ug html latexpdf
+ 
+ clean::

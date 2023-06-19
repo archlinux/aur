@@ -17,10 +17,10 @@ makedepends=(gprbuild-toolbox
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230428-165F0-src.tar.gz
         Makefile.in-patch
-        docs_gtkada_rm_Makefile-patch)
+        docs_Makefile-patch)
 sha256sums=(596d19722c0b7f6ec67d0f00918a2bfb0ae0fb7352b2182a290d5dcdf31e1ba9
             f525df1f7c319f1dc95ddafe1a73d961ce162c6171c97b0df3ae756122ca76d4
-            SKIP)
+            65b8f2d56ad688b369ae13446e9c4a839604ab6b1836aa85a385f59515d54f03)
 
 _gtkada_src=gtkada-$pkgver-20230428-165F0-src
 
@@ -29,7 +29,10 @@ prepare()
 {
     cd $srcdir/$_gtkada_src
     patch -Np1 -i ../Makefile.in-patch
-    patch -Np0 -i ../docs_gtkada_rm_Makefile-patch
+
+    # Gnatdoc appears broken when trying to build reference manual docs. Disabling til fixed.
+    #
+    patch -Np0 -i ../docs_Makefile-patch
 }
 
 
@@ -49,8 +52,6 @@ build()
     #
     make -j1 GPRBUILD_SWITCHES="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
-    # Gnatdoc appears broken when trying to build docs. Disabling docs til fixed.
-    #
     make docs
 }
 
