@@ -11,8 +11,8 @@ arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
 license=('custom:GPL2 with runtime exception')
 depends=("dune-geometry>=${pkgver}")
-makedepends=(texlive-core doxygen graphviz python-scikit-build python-ninja)
-optdepends=('texlive-core: Type setting system'
+makedepends=(texlive-basic doxygen graphviz python-scikit-build python-ninja)
+optdepends=('texlive-basic: Type setting system'
   'doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
 source=(https://dune-project.org/download/${_tar}{,.asc})

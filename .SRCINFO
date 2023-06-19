@@ -5,13 +5,13 @@ pkgbase = dune-localfunctions
 	url = https://dune-project.org/modules/dune-localfunctions
 	arch = x86_64
 	license = custom:GPL2 with runtime exception
-	makedepends = texlive-core
+	makedepends = texlive-basic
 	makedepends = doxygen
 	makedepends = graphviz
 	makedepends = python-scikit-build
 	makedepends = python-ninja
 	depends = dune-geometry>=2.9.0
-	optdepends = texlive-core: Type setting system
+	optdepends = texlive-basic: Type setting system
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
 	source = https://dune-project.org/download/2.9.0/dune-localfunctions-2.9.0.tar.gz
