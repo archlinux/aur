@@ -5,36 +5,45 @@
 
 pkgname=blast+
 pkgver=2.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc="BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)"
 arch=('i686' 'x86_64')
 url="http://blast.ncbi.nlm.nih.gov/"
 license=('custom')
-depends=('gcc12-libs'
-         'libelf'
-         'zlib'
-	 'bzip2'
-	 'lzo'
-	 'zstd'
-	 'db'
-	 'pcre'
-	 'perl'
-	 'python'
-	 'lmdb'
-	 'libuv'
-	 'libnghttp2'
-	 'sqlite')
-makedepends=('cpio' 'gcc12')
+depends=(
+        'gcc-libs'
+	'libelf'
+	'zlib'
+	'bzip2'
+	'lzo'
+	'zstd'
+	'db'
+	'pcre'
+	'perl'
+	'python'
+	'lmdb'
+	'libuv'
+	'libnghttp2'
+	'sqlite'
+)
+makedepends=('cpio' 'gcc')
 # conflicts with proj on libproj.so
 conflicts=('blast' 'blast+-bin' 'ncbi-blast' 'proj')
 provides=('blast')
 replaces=('ncbi-blast')
-source=("https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-src.tar.gz")
-sha256sums=('bf477f1b0c3b82f0b7a7094bf003a9a83e37e3b0716c1df799060c4feab17500')
+source=(
+        "https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/$pkgver/ncbi-blast-$pkgver+-src.tar.gz"
+        "cstdint.patch"
+)
+sha256sums=(
+        'bf477f1b0c3b82f0b7a7094bf003a9a83e37e3b0716c1df799060c4feab17500'
+	'7cae72ec356224d9a75c4ce1c6c276dcb22b9a36b3d92f9c57b024dff23cc7f2'
+)
 
 prepare() {
     cd "$srcdir"/ncbi-blast-"$pkgver"+-src/c++ || exit
-    CC=/usr/bin/gcc-12 CXX=/usr/bin/g++-12 ./configure \
+    patch --forward --strip 1 --input="${srcdir}/cstdint.patch"
+    ./configure \
         --prefix=/usr \
         --with-dll \
         --with-mt
