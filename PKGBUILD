@@ -12,7 +12,7 @@ license=('Unknown')
 #depends=('vim' 'neovim')
 optdepends=('vim: vim support'
             'neovim: neovim support')
-source=("openvpn.tar.bz2::http://www.vim.org/scripts/download_script.php?src_id=$_scriptid"
+source=("openvpn.tar.bz2::https://www.vim.org/scripts/download_script.php?src_id=$_scriptid"
         "openvpn.ft")
 
 sha256sums=('484f5a338a4c81662a48fd2329a94e3bda10045bcb9f4ae53fbd45f69a8eff53'
