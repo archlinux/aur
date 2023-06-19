@@ -1,5 +1,5 @@
 pkgname=pypy3-numpy
-pkgver=1.24.3
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('x86_64')
@@ -10,7 +10,7 @@ optdepends=('blas-openblas: faster linear algebra')
 makedepends=('pypy3-setuptools' 'gcc-fortran' 'pypy3-cython')
 options=('staticlibs')
 source=("https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
-sha256sums=('ab344f1bf21f140adab8e47fdbc7c35a477dc01408791f8ba00d018dd0bc5155')
+sha256sums=('f1accae9a28dc3cda46a91de86acf69de0d1b5f4edd44a9b0c3ceb8036dfff19')
 
 build() {
 	cd numpy-$pkgver
