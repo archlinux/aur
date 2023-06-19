@@ -1,6 +1,6 @@
-pkg
-src
-*.xz
-*.gz
-*.zip
-*.tar.zst
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!CHANGELOG.md
+!sqlcl.sh
