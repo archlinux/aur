@@ -3,7 +3,7 @@
 
 pkgname=xdroid-bin
 pkgver=11.1.41
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。"
 arch=('x86_64')
@@ -25,6 +25,7 @@ _date=20230525
 source=("${pkgname}-${pkgver}.tar.gz::https://d6.injdk.cn/xdroid/xDroidInstall-${arch}-v${pkgver}-${_date}.run.tar.gz")
 noextract=(${pkgname}-${pkgver}.tar.gz)
 md5sums=('96e728888c74aa01cb90d8dacf5c20f4')
+sha256sums=('08a36cea138e6aa4c61d8e264df843d1976d042f5af4ec2698e46fb3c2dc6269')
 #validpgpkeys=()
 
 package() {
@@ -46,7 +47,7 @@ EOF
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/xDroidInstall" << EOF
 #!/bin/env bash
 export LD_LIBRARY_PATH="/opt/${pkgname}:\$LD_LIBRARY_PATH"
-exec /opt/${pkgname}/xDroidInstall-${arch}-v${pkgver}.run "\$@"
+exec /opt/${pkgname}/xDroidInstall-${arch}-v${pkgver}-${_date}.run "\$@"
 EOF
     install -Dm0644 /dev/stdin  "${pkgdir}/usr/share/applications/xDroidInstall.desktop" << EOF
 [Desktop Entry]
