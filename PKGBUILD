@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="quark-player-appimage"
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="An Electron based Web Video Services Player, supporting Netflix, Youtube, Twitch, Floatplane, Hulu and More!"
 arch=('x86_64')
@@ -12,12 +12,12 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}_${pkgver}_${arch}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Alex313031/quark-player/master/LICENSE")
-sha256sums=('5608782fc8d966aa43873bcfc88d974d184375be72d51d35470a5d155504df41'
+sha256sums=('61948a997a46367a58ee14e4cfcb0a814cf9bd031fddd30a06d4373df332b60f'
             'f60c2918d56a97a03b92e13e9fc479e81db309476ec26f7c8c0df82007612117')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/quark-player.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
