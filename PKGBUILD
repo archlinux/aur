@@ -22,10 +22,11 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  make build
+  go build -o dist/tctl ./cmd/tctl
+  go build -o dist/tctl-authorization-plugin ./cmd/plugins/tctl-authorization-plugin
 
-  ./tctl completion bash > tctl.bash
-  ./tctl completion zsh > tctl.zsh
+  ./dist/tctl completion bash > tctl.bash
+  ./dist/tctl completion zsh > tctl.zsh
 }
 
 check() {
@@ -37,8 +38,8 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm755 tctl -t "${pkgdir}/usr/bin"
-  install -Dm755 tctl-authorization-plugin -t "${pkgdir}/usr/bin"
+  install -Dm755 ./dist/tctl -t "${pkgdir}/usr/bin"
+  install -Dm755 ./dist/tctl-authorization-plugin -t "${pkgdir}/usr/bin"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
