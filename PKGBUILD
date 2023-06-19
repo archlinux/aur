@@ -6,7 +6,7 @@
 # shellcheck disable=SC2034
 _pkgname="gjs"
 pkgname="${_pkgname}-git"
-pkgver=1.73.2+23+ge78966e1
+pkgver=1.76.0+106+g79d66486
 pkgrel=1
 epoch=2
 pkgdesc="Javascript Bindings for GNOME"
