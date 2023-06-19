@@ -7,7 +7,7 @@ url="https://www.amuletmc.com/"
 license=(custom)
 
 arch=(any)
-pkgver=0.10.9
+pkgver=0.10.11
 pkgrel=1
 
 depends=(python39)
