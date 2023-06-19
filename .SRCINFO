@@ -1,0 +1,18 @@
+pkgbase = mqtt_vault
+	pkgdesc = JSON database controlled via MQTT
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://bpatterson.dev/projects/mqtt_vault
+	arch = x86_64
+	license = MPL2
+	makedepends = rustup
+	makedepends = grep
+	depends = openssl>=3
+	depends = gcc-libs
+	depends = glibc
+	conflicts = mqtt_vault-bin
+	backup = usr/share/mqtt_vault/mqtt_vault.conf.sample
+	source = https://github.com/bpatterson-gh/MqttVault/releases/download/v1.0.1/mqtt_vault-1.0.1-src.tar.gz
+	sha256sums = 641501191f35b4fe58b53d6902c63cf7fe9c40140a8e756b601b6c38f37d8e54
+
+pkgname = mqtt_vault
