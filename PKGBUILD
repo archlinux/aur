@@ -2,7 +2,7 @@
 
 pkgname=webby-git
 _pkgname=webby
-pkgver=1.0.0.r3.g9777700
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='A very simple HTTP/HTTPS server and service.'
 url='https://github.com/an-prata/webby'
@@ -26,11 +26,13 @@ package() {
 	cd "${srcdir}/${_pkgname}"
 
 	mkdir -p ${pkgdir}/usr/bin/
+	mkdir -p ${pkgdir}/etc/webby/
 	mkdir -p ${pkgdir}/srv/webby/website/
 	mkdir -p ${pkgdir}/usr/lib/systemd/system/
 
 	mv webby ${pkgdir}/usr/bin/
 	cp webby.service ${pkgdir}/usr/lib/systemd/system/
+	cp config.json ${pkgdir}/etc/webby/
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
