@@ -1,55 +1,52 @@
 #!/bin/bash
 # Maintainer: Fredrick R. Brennan <copypaste@kittens.ph>
 # Contributor: Brian BIdulock <bidulock@openss7.org>
+
 pkgbase=sensible-utils
-pkgname=(sensible-pager sensible-editor sensible-browser sensible-utils-data)
-pkgver=0.0.19
+_pkgname='sensible-browser sensible-editor sensible-pager sensible-terminal sensible-utils'
+declare -g -a pkgname=($_pkgname)
+pkgname+=(sensible-utils-data)
+pkgver=0.0.20
 _debianextra=''
-pkgrel=2
+pkgrel=1
 pkgdesc="Utilities for sensible alternative selection"
 arch=('any')
 url="http://packages.debian.org/source/sid/sensible-utils"
 license=('GPL')
 depends=('bash' 'coreutils')
-provides=(sensible-pager sensible-editor sensible-browser)
-conflicts=(sensible-pager sensible-editor sensible-browser)
+provides=($_pkgname)
+conflicts=($_pkgname)
 makedepends=('po4a')
-checkdepends=('ed')
-source=("http://ftp.debian.org/debian/pool/main/s/$pkgbase/${pkgbase}_${pkgver}${_debianextra}.tar.xz"
-        "http://ftp.debian.org/debian/pool/main/s/$pkgbase/${pkgbase}_${pkgver}${_debianextra}.dsc"
-        "0001-no-fork-bomb-test.patch"
-        "0001-no-fork-bomb-test.patch.sig"
-        "sensible-utils_0.0.19.dsc.sig"
-        "sensible-utils_0.0.19.tar.xz.sig")
-sha256sums=('3af5fe874c9e643b3d413d4f1b71009194c9093225e9dd49de86e2e604721d69'
-            '758218a18c89964da1b2bcfb1e457949ef4e9ccc18a5b9061bb547b617167e1b'
-            '063c12d9dfb193f94ded0de3384a78a463c72d0fb1eb3b8edbafe418efaebc46'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+checkdepends=('ed' 'dash')
+_dirname=${pkgbase}_${pkgver}_$pkgrel_${_debianextra}
+source=("$_dirname.tar.xz::http://ftp.debian.org/debian/pool/main/s/$pkgbase/${pkgbase}_${pkgver}${_debianextra}.tar.xz"
+        "$_dirname.dsc::http://ftp.debian.org/debian/pool/main/s/$pkgbase/${pkgbase}_${pkgver}${_debianextra}.dsc"
+        sensible-utils_0.0.20_.dsc.asc)
+b2sums=('e65419e7f157f64249b429806a4d48c02c5f492fb2dbdae1a8e4966dca964a4b1b9b6fdb555f03fabb6cd219238022821a64b15f11582ffdf115fa15ab6e3e0e'
+        '8b122921916df3f4c138b99ac5183cae686e01be985db0ad2c77e3faff619779aecc596c6936c9f73f73ff3c73cf5ce30654df9158ce15caccd4ed0e0f50de09'
+        'SKIP')
 validpgpkeys=('98F28F767470129FBE3B054CE2154DD1A1C77B8B')
 
 prepare() {
-  pushd ${pkgbase}-${pkgver}${_debianextra}
-  OPWD="$PWD"
-  popd
-  patch -p0 "$OPWD/Makefile.am" < 0001-no-fork-bomb-test.patch
+  return 0
 }
 
 build() {
   cd ${pkgbase}-${pkgver}${_debianextra}
-  export -n EDITOR VISUAL
+  export -n EDITOR VISUAL PAGER TERMINAL_EMULATOR BROWSER
   ./configure --prefix=/usr
   make
 }
 
-build_sensible-utils() {
-  exit 0
-}
-
 check() {
   cd ${pkgbase}-${pkgver}${_debianextra}
-  bash -c 'make -k check'
+  test -L sh || ln -s /bin/dash sh
+  OLDPATH="$PATH"
+  export PATH=.:"$PATH"
+  sed -i -e 's@#!/bin/sh@#!/usr/bin/env sh@' ./sensible-editor
+  env -i make -k check
+  sed -i -e 's@#!/usr/bin/env sh@#!/bin/sh@' ./sensible-editor
+  export PATH="$OLDPATH"
 }
 
 _package_sensible() {
@@ -80,6 +77,10 @@ package_sensible-editor() {
   CURRENTLY_PACKAGING=editor pkgdir="$pkgdir" _package_sensible
 }
 
+package_sensible-terminal() {
+  CURRENTLY_PACKAGING=terminal pkgdir="$pkgdir" _package_sensible
+}
+
 package_sensible-utils-data() {
   CURRENTLY_PACKAGING=gettext pkgdir="$pkgdir" _package_sensible
 }
@@ -88,7 +89,7 @@ package_sensible-utils() {
   pkgdesc="$pkgdesc (metapackage)"
   provides=()
   conflicts=()
-  depends+=(sensible-pager sensible-editor sensible-browser sensible-utils-data)
+  depends+=($_pkgname sensible-utils-data)
   mkdir -p "$pkgdir/usr/share/sensible-utils"
   echo 1 > "$pkgdir/usr/share/sensible-utils/.ARCH"
 }
