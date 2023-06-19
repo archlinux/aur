@@ -53,8 +53,9 @@ package() {
         echo "1. Move config file to the right folder: sudo mv /tmp/$_binname.conf /etc"
         echo "2. Enable and start service: sudo systemctl enable $_svcname.service && sudo systemctl start $_svcname.service"
         echo "3. Check everything is running as expected: /var/vanta/vanta-cli status"
-        echo "4. Perform a clean: sudo /var/vanta/vanta-cli reset"
-        echo "5. Check your setup: sudo /var/vanta/vanta-cli doctor"
+        echo "4. Fix permission to conf: sudo chown root:root /etc/vanta.conf"
+        echo "5. Perform a clean: sudo /var/vanta/vanta-cli reset"
+        echo "6. Check your setup: sudo /var/vanta/vanta-cli doctor"
 
         echo -e "More info: https://help.vanta.com/hc/en-us/articles/360060472372-Troubleshooting-the-Vanta-Agent-on-Linux-Machines\n\n"
     fi
