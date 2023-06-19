@@ -7,6 +7,7 @@ pkgbase = ansifilter
 	arch = x86_64
 	arch = pentium4
 	arch = i486
+	arch = aarch64
 	license = GPL3
 	depends = glibc
 	depends = gcc-libs
