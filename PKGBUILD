@@ -3,14 +3,14 @@
 # Contributor: Florian Lindner <florian.lindner@xgm.de>
 _base=precice
 pkgname=${_base}-git
-pkgver=2.5.0.r100.ge3db3c1c
+pkgver=2.5.0.r353.g22cfb9d3
 pkgrel=1
 pkgdesc="A Coupling Library for Partitioned Multi-Physics Simulations on Massively Parallel Systems (git version)"
 arch=(x86_64)
 url="https://${_base}.org"
 license=(LGPL3)
 depends=(libxml2 petsc eigen jsoncpp)
-makedepends=(cmake gcc-fortran doxygen graphviz git texlive-core)
+makedepends=(cmake gcc-fortran doxygen graphviz git texlive-basic)
 checkdepends=(openssh)
 optdepends=('man-db: manual pages for precice-tools'
   'git: for Git Revision Info support')
