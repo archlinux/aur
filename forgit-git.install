@@ -1,4 +1,14 @@
-post_install()  {
-  printf ":: Bash users will need to source the scripts under\n"
-  printf ":: /usr/share/zsh/plugins/forgit.plugin.zsh to use this package.\n"
+post_install() {
+  # bash
+  printf '%b' "\033[1mBash\033[0m\n"
+  printf "To use this package source /usr/share/zsh/plugins/forgit-git/forgit.plugin.zsh\n"
+  printf "For tab completions source ~/.local/share/bash-completion/completions/git-forgit.bash afterwards\n\n"
+  # zsh
+  printf '%b' "\033[1mZsh\033[0m\n"
+  printf "To use this package source /usr/share/zsh/plugins/forgit-git/forgit.plugin.zsh\n"
+  printf "For tab completions source /usr/share/zsh/plugins/forgit-git/completions/git-forgit.zsh afterwards\n"
+}
+
+post_upgrade() {
+    post_install
 }
