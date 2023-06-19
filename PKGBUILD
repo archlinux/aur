@@ -18,7 +18,7 @@ sha256sums=('94eef946d70fcde7dffe77a667557f2f32dfb6536f9d04ec79902240f93288f9')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|Exec=AppRun|Exec=/opt/appimages/zettlr.AppImage|g;s|Icon=Zettlr|Icon=zettlr|g' -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|Icon=${_appname}|Icon=${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
 }  
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
