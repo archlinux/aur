@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altair-appimage
-pkgver=5.0.25
+pkgver=5.0.28
 pkgrel=1
 pkgdesc="A beautiful feature-rich GraphQL Client for all platforms."
 arch=('x86_64')
@@ -11,12 +11,12 @@ options=(!strip)
 conflits=("${pkgname%-appimage}" "${pkgname%-appimage}-electron")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}_${pkgver}_x86_64_linux.AppImage")
-sha256sums=('b832233654fdddf295d03b6926e6b9f6151c1c5f747c376f354b75fcf0358086')
+sha256sums=('8c8630cff6aa23e6ce0e783e5acedbb0ec9e4cdda71d61866ddb5a82ede2ad1a')
 _install_path="/opt/appimages" 
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/altair.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
    
 package() {
