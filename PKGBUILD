@@ -4,7 +4,7 @@ _pkgname=sensible-utils
 pkgname="$_pkgname-unified"
 pkgver=0.0.20
 _debianextra=
-pkgrel=1
+pkgrel=3
 pkgdesc="Utilities for sensible alternative selection (unified)"
 arch=('any')
 url="https://packages.debian.org/source/sid/sensible-utils"
@@ -45,6 +45,7 @@ check() {
 package() {
   replaces=(
     ${provides[@]}
+    sensible-utils
   )
   provides+=(
     sensible-utils
