@@ -1,32 +1,38 @@
-pkgname="args-git"
-pkgver=20160920.1_ec9e7b1
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+
+pkgname=args-git
+pkgver=6.4.6.r2.gb7d6723
 pkgrel=1
-pkgdesc="Simple CLI argument parser for bash"
-arch=("i686" "x86_64")
-license=("GPL")
-depends=()
-makedepends=(
-    "git"
-)
-source=(
-    "$pkgname::git+ssh://github.com/reconquest/args.git"
-)
-md5sums=("SKIP")
+pkgdesc="Simple header-only C++ argument parser library"
+arch=(any)
+url="https://github.com/Taywee/args"
+license=(MIT)
+makedepends=(cmake git)
+provides=(args)
+conflicts=(args)
+source=("git+https://github.com/Taywee/args.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
-    local count=$(git rev-list --count HEAD)
-    local commit=$(git rev-parse --short HEAD)
-    echo "$date.${count}_$commit"
+  cd args
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    :
+  cd args
+  cmake . \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+  make
+}
+
+check() {
+  cd args
+  ./argstest
 }
 
 package() {
-    mkdir -p $pkgdir/usr/bin
-
-    cp "$srcdir/$pkgname/args" $pkgdir/usr/bin
+  cd args
+  make DESTDIR="${pkgdir}" install
+  install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
