@@ -2,7 +2,7 @@
 
 pkgname=mangohud-lw-git
 pkgbasename="${pkgname%-lw-git}"
-pkgver=0.6.8.r159.g140c0d8
+pkgver=0.6.9.1.r79.g30748bd
 pkgrel=1
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more for Lutris Wine"
 url='https://github.com/flightlessmango/MangoHud'

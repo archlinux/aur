@@ -1,6 +1,6 @@
 pkgbase = mangohud-lw-git
 	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more for Lutris Wine
-	pkgver = 0.6.8.r159.g140c0d8
+	pkgver = 0.6.9.1.r79.g30748bd
 	pkgrel = 1
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
