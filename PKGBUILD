@@ -2,11 +2,12 @@
 _pkgname=sublime-syntax-language-server
 pkgname="python-$_pkgname"
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="sublime-syntax language server"
 arch=(any)
 url=https://github.com/Freed-Wu/sublime-syntax-language-server
 depends=(python-pygls python-platformdirs)
+optdepends=(python-beautifulsoup4)
 makedepends=(python-installer)
 license=(GPL3)
 _py=py3
