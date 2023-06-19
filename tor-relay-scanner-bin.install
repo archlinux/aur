@@ -1,0 +1,4 @@
+post_install() {
+	echo -e "\nEnable update-tor-bridges.service to update tor bridges on boot"
+	echo -e "Add %include /etc/tor/bridges to torrc to use them\n"
+}

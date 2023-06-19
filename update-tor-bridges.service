@@ -1,0 +1,11 @@
+[Unit]
+Description=Update tor bridges
+After=network.target
+Before=tor.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/tor-relay-scanner -g 20 --timeout 3 --torrc -o /etc/tor/bridges
+
+[Install]
+WantedBy=multi-user.target
