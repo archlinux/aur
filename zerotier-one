@@ -1,0 +1,5 @@
+type            = process
+command         = /usr/bin/zerotier-one
+restart	        = true
+logfile         = /var/log/dinit/zerotier-one.log
+waits-for       = network

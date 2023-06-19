@@ -1,0 +1,13 @@
+pkgbase = zerotier-one-dinit
+	pkgdesc = dinit service scripts for zerotier-one
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zerotier/ZeroTierOne
+	arch = any
+	license = GPL3
+	depends = zerotier-one
+	depends = dinit
+	source = zerotier-one
+	sha256sums = 0392bb2bdff6e162f1302dfdf96459cd2f044ae3d57c1dad11001fd43e077190
+
+pkgname = zerotier-one-dinit
