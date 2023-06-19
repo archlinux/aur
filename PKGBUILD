@@ -2,16 +2,16 @@
 # Maintainer: Manuel Reimer <mail+wine@m-reimer.de>
 
 pkgname=wine-lol-bin
-pkgver=7.0_8
+pkgver=8.7_1
 pkgrel=1
 epoch=1
 
 _ver=${pkgver%_*}
 _rev=${pkgver#*_}
 
-source=("https://github.com/GloriousEggroll/wine-ge-custom/releases/download/$_ver-GE-$_rev-LoL/wine-lutris-ge-lol-$_ver.$_rev-x86_64.tar.xz"
+source=("https://github.com/GloriousEggroll/wine-ge-custom/releases/download/$_ver-GE-$_rev-LoL/wine-lutris-ge-lol-$_ver-$_rev-x86_64.tar.xz"
         30-win32-aliases.conf)
-sha512sums=('1b161e2e38e12de8bdb7cdd4ea1e81de8b20181901f0b5e01e001e99624ac6bcc9be83e0b6a993c9bb190dd1b1a1f8efb001e795cf1390c0e03427d4a5384265'
+sha512sums=('05ad4d0c41766d645493b9a3d672da6c53aa3a81a3c11cb0fd513c5a84b0f89485779d752df2eb5d324e3cf32236266870270524bcd4754b2502b973cc39f622'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb')
 
 pkgdesc="A compatibility layer for running Windows programs - GloriousEggroll custom wine build for running League of Legends"
@@ -77,7 +77,7 @@ install=wine.install
 
 package() {
   mkdir -p "$pkgdir/opt/wine-lol"
-  cp -r "$srcdir/lutris-ge-lol-$_ver.$_rev-x86_64/." "$pkgdir/opt/wine-lol/"
+  cp -r "$srcdir/lutris-ge-lol-$_ver-$_rev-x86_64/." "$pkgdir/opt/wine-lol/"
 
   # Font aliasing settings for Win32 applications
   install -d "$pkgdir"/etc/fonts/conf.{avail,default}
