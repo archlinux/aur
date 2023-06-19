@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zettlr-appimage
 _appname=Zettlr
-pkgver=3.0.0beta4
-_pkgver=beta.4
+pkgver="3.0.0${_pkgver}"
+_pkgver=beta.5
 pkgrel=1
 pkgdesc="A Markdown Editor for the 21st century."
 arch=('x86_64')
@@ -13,8 +13,8 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 depends=('hicolor-icon-theme' 'zlib' 'glibc')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver%beta4}-${_pkgver}/Zettlr-${pkgver%beta4}-${_pkgver}-x86_64.AppImage")
-sha256sums=('8d51ff4b014c730f63ead247caa78a67422169d6043bb3416a3baebd7826168d')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver%${_pkgver}}-${_pkgver}/Zettlr-${pkgver%${_pkgver}}-${_pkgver}-x86_64.AppImage")
+sha256sums=('94eef946d70fcde7dffe77a667557f2f32dfb6536f9d04ec79902240f93288f9')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
