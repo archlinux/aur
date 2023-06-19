@@ -1,6 +1,6 @@
 pkgbase = kronos
 	pkgdesc = Sega Saturn emulator
-	pkgver = 2.3.1
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/FCare/Kronos
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = kronos
 	depends = qt5-multimedia
 	depends = sdl2
 	provides = kronos
-	source = kronos::git+https://github.com/FCare/Kronos#tag=2.3.1_official_release
-	md5sums = SKIP
+	source = https://github.com/FCare/Kronos/archive/refs/tags/2.5.0_official_release.tar.gz
+	b2sums = 108bd21f6f786d35d066f7bfe9f69118bac40870a3a81d2d0cbccd7cb30792f7401a3087ac9fa770bb4e0aa09be7e221c03b72e909cf0e06729185bc0aab20ea
 
 pkgname = kronos
