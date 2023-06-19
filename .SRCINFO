@@ -1,0 +1,20 @@
+pkgbase = chess.com
+	pkgdesc = Electron wrapper for Chess.com chess platform
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.chess.com/
+	arch = x86_64
+	license = GNU AGPL
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	provides = chess.com
+	conflicts = chess.com
+	source = chess.com.png
+	source = chess.com.desktop
+	source = no-scrollbar.css
+	sha256sums = 3aaf53d144cc6383bc614aa0b538218f187c9d299024a57884c013a55e869e4f
+	sha256sums = d55d600b9fca9a6d29ac9f49088e72ad40fdeff81a22de278145c597f9dc2421
+	sha256sums = 65f4043f2206e43cbbc510246f6a35a673e829bd8ab5b90b790b1ba7c14ea26b
+
+pkgname = chess.com

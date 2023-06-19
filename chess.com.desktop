@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Ches.com
+Comment=Play chess on Chess.com
+Exec=chess.com
+Icon=chess.com
+Terminal=false
+Categories=Game;Chess;Nativefier;
