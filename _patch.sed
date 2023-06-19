@@ -12,6 +12,14 @@ s/.\/configure (.+) \\/.\/configure \1 --enable-gssapi --with-cups-build="cups-g
 # Replace description of subpackages
 /^pkgdesc=/ s/(.*)"$/\1 - with gssapi (kerberos) enabled"/
 
+# add krb5 dependency (was removed upstream)
+# makedepends is multiline - insert after first line
+/^makedepends=/ a 'krb5'
+
+/^package_libcups-gssapi\(\)/,/depends=/ {
+    /depends=/ a depends+=("krb5")
+}
+
 # add provides fields to subpackages
 /^package_cups-gssapi\(\)/ a provides=('cups')
 /^package_libcups-gssapi\(\)/ a provides=("libcups=${pkgver%.r*}")
@@ -21,3 +29,6 @@ s/.\/configure (.+) \\/.\/configure \1 --enable-gssapi --with-cups-build="cups-g
 
 # fix usage of "${pkgbase}"
 s/\$\{pkgbase\}/cups/g
+
+# if we do more patches, use this to update pkgrel:
+# s/pkgrel=3/pkgrel=3.2/

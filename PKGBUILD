@@ -4,16 +4,16 @@
 
 pkgbase="cups-gssapi"
 pkgname=('libcups-gssapi' 'cups-gssapi')
-pkgver=2.4.2
-pkgrel=3.2
+pkgver=2.4.5
+pkgrel=1
 epoch=1
 arch=('x86_64')
 license=('Apache' 'custom')
 url="https://openprinting.github.io/cups/"
-makedepends=('libtiff' 'libpng' 'acl' 'pam' 'xdg-utils' 'krb5' 'gnutls'
-             'cups-filters' 'bc' 'colord' 'gzip' 'autoconf' 'libusb' 'dbus'
-             'avahi'  'hicolor-icon-theme' 'systemd' 'libxcrypt' 'inetutils' 'libpaper' 'valgrind'
-             'git')
+makedepends=('acl' 'pam' 'gnutls' 'cups-filters' 'colord' 
+'krb5'
+             'libusb' 'avahi'  'systemd' 'libpaper')
+#checkdepends=('valgrind')
 source=(https://github.com/OpenPrinting/cups/releases/download/v${pkgver}/cups-${pkgver}-source.tar.gz{,.sig}
         cups.logrotate
         cups.pam
@@ -22,17 +22,15 @@ source=(https://github.com/OpenPrinting/cups/releases/download/v${pkgver}/cups-$
         # bugfixes
         cups-freebind.patch
         guid.patch
-        0001_Fix_OpenSSL_crash_bug.patch
 )
-sha256sums=('f03ccb40b087d1e30940a40e0141dcbba263f39974c20eb9f2521066c9c6c908'
+sha256sums=('9a404de55f74525b0a6851df0cfdebfa1215aec0e7c2f7be6b9b09b6916fb000'
             'SKIP'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'
             '06173dfaea37bdd9b39b3e09aba98c34ae7112a2f521db45a688907d8848caa2'
             'f0b15192952c151b1843742c87850ff3a7d0f3ba5dd236ed16623ef908472ad7'
             '3385047b9ac8a7b13aeb8f0ca55d15f793ce7283516db0155fe28a67923c592d'
-            '0bf6a75ba1b051771f155d9a5d36b307a6d40c6857d645b250fe93f3fb713474'
-            '632faf08bfd1863e9ad6807aff766983e84030a0e4df441167f17de7266ca152')
+            '0bf6a75ba1b051771f155d9a5d36b307a6d40c6857d645b250fe93f3fb713474')
 #validpgpkeys=('3737FD0D0E63B30172440D2DDBA3A7AB08D76223') # CUPS.org (CUPS.org PGP key) <security@cups.org>
 #validpgpkeys+=('45D083946E3035282B3CCA9AF434104235DA97EB') # "CUPS.org <security@cups.org>"
 #validpgpkeys+=('845464660B686AAB36540B6F999559A027815955') # "Michael R Sweet <michael.r.sweet@gmail.com>"
@@ -54,10 +52,6 @@ prepare() {
 
   # FS#56818 - https://github.com/apple/cups/issues/5236
   patch -Np1 -i "${srcdir}"/guid.patch
-
-  # FS#75005 - Fix OpenSSL crash bug - "tls" pointer wasn't cleared after
-  # Fix OpenSSL crash bug - "tls" pointer wasn't cleared after
-  patch -Np1 -i "${srcdir}"/0001_Fix_OpenSSL_crash_bug.patch
 
   # Rebuild configure script
   aclocal -I config-scripts
@@ -93,17 +87,19 @@ build() {
   make
 }
 
-check() {
-  cd "cups"-${pkgver}
-#  make -k check || /bin/true
+# don't run tests - they take ages
+#check() {
+#  cd "cups"-${pkgver}
+##  make -k check || /bin/true
 #  make check
-}
+#}
 
 package_libcups-gssapi() {
 provides=("libcups=${pkgver%.r*}")
 conflicts=('libcups')
-pkgdesc="The CUPS Printing System - client libraries and headers - with gssapi (kerberos) enabled"
-depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'avahi' 'libusb' 'libxcrypt')
+pkgdesc="OpenPrinting CUPS - client libraries and headers - with gssapi (kerberos) enabled"
+depends=('gnutls' 'avahi' 'glibc' 'zlib')
+depends+=("krb5")
 
   cd cups-${pkgver}
   make BUILDROOT="${pkgdir}" install-headers install-libs
@@ -118,7 +114,7 @@ depends=('gnutls' 'libtiff>=4.0.0' 'libpng>=1.5.7' 'krb5' 'avahi' 'libusb' 'libx
 package_cups-gssapi() {
 provides=('cups')
 conflicts=('cups')
-pkgdesc="The CUPS Printing System - daemon package - with gssapi (kerberos) enabled"
+pkgdesc="OpenPrinting CUPS - daemon package - with gssapi (kerberos) enabled"
 install=cups.install
 backup=(etc/cups/cupsd.conf
         etc/cups/snmp.conf
@@ -128,9 +124,11 @@ backup=(etc/cups/cupsd.conf
         etc/cups/subscriptions.conf
         etc/logrotate.d/cups
         etc/pam.d/cups)
-depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters' 'bc'
-         'dbus' 'systemd' 'libpaper' 'hicolor-icon-theme')
-optdepends=('ipp-usb: allows to send HTTP requests via a USB connection on devices without Ethernet or WiFi connections'
+depends=('acl' 'pam' "libcups>=${pkgver}" 'cups-filters'
+         'dbus' 'systemd' 'systemd-libs' 'libpaper' 'hicolor-icon-theme'
+         'glibc' 'gcc-libs' 'avahi' 'gnutls')
+optdepends=('libusb: for usb printer backend'
+            'ipp-usb: allows to send HTTP requests via a USB connection on devices without Ethernet or WiFi connections'
             'xdg-utils: xdg .desktop file support'
             'colord: for ICC color profile support'
             'logrotate: for logfile rotation support')

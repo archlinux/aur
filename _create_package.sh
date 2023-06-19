@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# requires asp to be installed
+# requires devtools to be installed
 
 # needed for removing old contents but sparing our files
 shopt -s extglob
@@ -8,12 +8,13 @@ shopt -s extglob
 if [ -d cups ]; then
     rm -r cups
 fi
-if ls !("_create_package.sh"|"_patch.sed") >/dev/null 2>/dev/null; then
-    rm -r !("_create_package.sh"|"_patch.sed")
+if ls !("_create_package.sh"|"_patch.sed"|"_docker_validate.sh") >/dev/null 2>/dev/null; then
+    rm -r !("_create_package.sh"|"_patch.sed"|"_docker_validate.sh")
 fi
 
 # get upstream cups package
-asp export cups
+pkgctl repo clone --protocol=https cups
+rm -rf cups/.git/
 mv cups/* ./
 rmdir cups
 
@@ -25,3 +26,7 @@ rm -r -- */
 
 # update metadata
 makepkg --printsrcinfo > .SRCINFO
+
+echo "[ ] Validating package using docker"
+docker run --rm -e MAKEFLAGS -v "$(pwd):/source:ro" archlinux /source/_docker_validate.sh || (echo "[!] Failed to validate package using docker" && exit 1)
+echo "[#] Validated package using docker"
