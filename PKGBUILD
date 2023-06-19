@@ -4,15 +4,15 @@
 # Contributor: xduugu
 
 pkgname=diff-pdf-git
-pkgver=0.5.r1.g201dab3
-pkgrel=2
+pkgver=0.5.1.r0.g150de72
+pkgrel=1
 pkgdesc='A simple tool for visually comparing two PDF files'
 arch=(x86_64 i686)
 url="http://vslavik.github.io/${pkgname%-git}"
 _url="https://github.com/vslavik/${pkgname%-git}"
 license=(GPL)
 depends=(poppler-glib
-         wxgtk3)
+         wxwidgets-gtk3)
 makedepends=(git)
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
@@ -33,7 +33,7 @@ pkgver() {
 build() {
 	cd "${pkgname%-git}"
 	./configure --prefix /usr \
-		--with-wx-config=wx-config-gtk3
+		--with-wx-config=wx-config
 	make
 }
 
