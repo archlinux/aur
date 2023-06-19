@@ -3,7 +3,7 @@
 _reponame=flycast
 _pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
-pkgver=2.1.r286.gf679fd9ba
+pkgver=2.1.r292.gdca048981
 pkgrel=1
 pkgdesc="Sega Dreamcast/NAOMI/NAOMI 2/Atomiswave core (fork of reicast)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=(
 	'cmake'
 	'git'
 	'glm'
-	'glslang>=12.1'
+	'glslang>=12.2'
 	'libchdr'
 	'libgl'
 	'libzip'
