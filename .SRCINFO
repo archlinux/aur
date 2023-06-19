@@ -1,0 +1,22 @@
+pkgbase = sensible-terminal
+	pkgdesc = Meta package to switch to sensible-utils-unified
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/sensible-utils-unified
+	arch = any
+	license = LGPL
+	depends = sensible-utils-unified
+	provides = sensible-browser
+	provides = sensible-editor
+	provides = sensible-pager
+	provides = sensible-utils-data
+	conflicts = sensible-browser
+	conflicts = sensible-editor
+	conflicts = sensible-pager
+	conflicts = sensible-utils-data
+	replaces = sensible-browser
+	replaces = sensible-editor
+	replaces = sensible-pager
+	replaces = sensible-utils-data
+
+pkgname = sensible-terminal
