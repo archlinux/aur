@@ -3,7 +3,7 @@ _target='compass-isolated'
 _edition=' Isolated Edition'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r15837.g12a547bd8'
+pkgver='r15953.gdc1795286'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - git version'
@@ -12,7 +12,7 @@ pkgdesc='The official GUI for MongoDB - Isolated Edition - git version'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-_electronpkg='electron'
+_electronpkg='electron23'
 depends=("$_electronpkg>=22.0.0" 'krb5' 'libsecret' 'lsb-release')
 makedepends=('git' 'nodejs>=16.15.1' 'npm>=8.19.2' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
