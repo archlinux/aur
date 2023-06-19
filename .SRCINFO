@@ -9,7 +9,7 @@ pkgbase = mouse_m908
 	depends = libusb
 	depends = gcc-libs
 	provides = mouse_m908
-	source = https://github.com/dokutan/mouse_m908/archive/v3.3.tar.gz
-	sha256sums = bf8bd7b13fb095fd2e789476ff29c4f1f7139f8db90b6d182fc81fd00cb74f6e
+	source = https://github.com/dokutan/mouse_m908/archive/v3.4.tar.gz
+	sha256sums = 34163c9f60897d067fe1943e946224e108d4c2483b5dfb1697072e05f4a72f26
 
 pkgname = mouse_m908
