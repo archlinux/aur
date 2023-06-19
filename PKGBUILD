@@ -1,6 +1,6 @@
 pkgname=hamster-time-tracker-git
 pkgver=3.0.2.r53.gd10ae12c
-pkgrel=1
+pkgrel=2
 pkgdesc="Time tracking application that helps you to keep track on how much time you have spent during the day on activities you choose to track (git version)"
 arch=('any')
 url="https://github.com/projecthamster/hamster"

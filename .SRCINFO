@@ -1,7 +1,7 @@
 pkgbase = hamster-time-tracker-git
 	pkgdesc = Time tracking application that helps you to keep track on how much time you have spent during the day on activities you choose to track (git version)
 	pkgver = 3.0.2.r53.gd10ae12c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projecthamster/hamster
 	install = hamster-time-tracker-git.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = hamster-time-tracker-git
 	depends = python-dbus
 	depends = python-cairo
 	depends = python-gobject
-	depends = python-xdg
+	depends = python-pyxdg
 	provides = hamster-time-tracker
 	conflicts = hamster-time-tracker
 	conflicts = hamster-applet
