@@ -17,7 +17,7 @@ else
 	_electronpkg='electron22'
 fi
 
-depends=("$_electronpkg>=22.0.0" 'krb5' 'libsecret' 'lsb-release')
+depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
 makedepends=('git' 'nodejs>=16.15.1' 'npm>=8.19.2' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
