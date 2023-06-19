@@ -1,15 +1,13 @@
 pkgbase = deepin-wine-bandizip
 	pkgdesc = Bandizip is a powerful archiver which provides an ultrafast processing speed and convenient features.
 	pkgver = 7.30
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.bandisoft.com/bandizip
 	install = deepin-wine-bandizip.install
 	arch = x86_64
 	license = custom:freeware
 	depends = deepin-wine6-stable
 	depends = xdg-utils
-	depends = hicolor-icon-theme
-	provides = BANDISOFT
 	conflicts = bandizip
 	noextract = Bandizip-7.30.zip
 	source = com.deepin.bandizip_7.23_amd64.deb::https://mirrors.sdu.edu.cn/spark-store-repository/store/tools/com.deepin.bandizip/com.deepin.bandizip_7.23_amd64.deb
@@ -21,6 +19,6 @@ pkgbase = deepin-wine-bandizip
 	sha256sums = 783a2568e3734e5f3ebc442e7a90d8bc8f09ef02ef67c99da1d1a26eb5bd6c2e
 	sha256sums = d559c4b8700435463a52c8a441f553a2a0711c5bdc3d9d9bdc46d91b0f48e15f
 	sha256sums = b583f494f3fb8becff3c4716e117f17a0f80a38f30920f9584a35d24d7235b9c
-	sha256sums = 2f44effc3614f6d122f444e428332a272d6996385703cac9b89a327a363e5f0c
+	sha256sums = 546ef2b8c6bae17b39d3fadf7c8769c80adac57cafde42ae7f28cdbfcd362f84
 
 pkgname = deepin-wine-bandizip
