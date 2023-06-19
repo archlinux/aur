@@ -3,7 +3,7 @@
 _scriptid=8719
 pkgname=vim-pac
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 groups=('vim-plugins' 'neovim-plugins')
 pkgdesc="Syntax description file for PAC file format in vim/neovim"
 arch=('any')
@@ -12,7 +12,7 @@ license=('Unknown')
 #depends=('vim' 'neovim')
 optdepends=('vim: vim support'
             'neovim: neovim support')
-source=("pac.vim::http://www.vim.org/scripts/download_script.php?src_id=$_scriptid"
+source=("pac.vim::https://www.vim.org/scripts/download_script.php?src_id=$_scriptid"
         "pac.ft")
 
 sha256sums=('da679ccae369b205e565052bdff3c5bf0efc21a07d619946744a1bd03fc6ca8a'
