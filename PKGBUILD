@@ -3,7 +3,7 @@
 _pkggit=diun
 
 pkgname=diun-bin
-pkgver=4.24.0
+pkgver=4.25.0
 pkgrel=2
 pkgdesc="Receive notifications when an image is updated on a Docker registry."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('diun')
 provides=('diun')
 license=('MIT')
 source=("${_pkggit}-${pkgver}_linux_amd64.tar.gz::https://github.com/crazy-max/${_pkggit}/releases/download/v${pkgver}/${_pkggit}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('3de1b4a0314a82dcaabe0bc82fbd28aab3eaecb6fb48ee768979c61bd654defa')
+sha256sums=('f93197934e40049803f899b5cc08533a19b88e188f74f094d1cc5dac172e2b24')
 
 package() {
   cd "${srcdir}"
