@@ -1,7 +1,7 @@
 # Maintainer: Bruce Patterson <contact at bpatterson dot dev>
 pkgname='mqtt_vault-bin'
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='JSON database controlled via MQTT'
 arch=('x86_64')
 url='https://bpatterson.dev/projects/mqtt_vault'
@@ -10,7 +10,7 @@ depends=('openssl>=3' 'gcc-libs' 'glibc')
 provides=('mqtt_vault')
 conflicts=('mqtt_vault')
 backup=('usr/share/mqtt_vault/mqtt_vault.conf.sample')
-source=("$pkgname-v$pkgver.tar.gz::https://github.com/bpatterson-gh/MqttVault/releases/download/v1.0.0/mqtt_vault-$pkgver-Arch.tar.gz")
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/bpatterson-gh/MqttVault/releases/download/v$pkgver/mqtt_vault-$pkgver-Arch.tar.gz")
 sha256sums=('f79ea88494895c76b88565d71f91848716bf421129ce33c687b1e900837c16fb')
 
 package() {
