@@ -1,7 +1,7 @@
 pkgbase = curtail-git
 	pkgdesc = Simple & useful image compressor (latest commit)
 	pkgver = 1.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Huluti/Curtail
 	arch = any
 	license = GPL3

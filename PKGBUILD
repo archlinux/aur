@@ -4,7 +4,7 @@ _pkgname=curtail
 pkgname=$_pkgname-git
 pkgdesc='Simple & useful image compressor (latest commit)'
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/Huluti/Curtail"
 license=('GPL3')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Curtail
-  git describe --long --tags | sed 's/\([^-]*-g\)/\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
