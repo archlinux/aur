@@ -3,7 +3,7 @@
 _scriptid=20736
 pkgname=vim-httplog
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 groups=('vim-plugins' 'neovim-plugins')
 pkgdesc="Highlight access log of Apache, nginx, etc for vim/neovim"
 arch=('any')
@@ -12,7 +12,7 @@ license=('Unknown')
 #depends=('vim' 'neovim')
 optdepends=('vim: vim support'
             'neovim: neovim support')
-source=("httplog.vim::http://www.vim.org/scripts/download_script.php?src_id=$_scriptid"
+source=("httplog.vim::https://www.vim.org/scripts/download_script.php?src_id=$_scriptid"
         "httplog.ft")
 sha256sums=('fe5d759c491e1b249018836dd22b11672a6fb40ec6331dacf2e4ceb5c0bdebce'
             '30639fa0977b2b4d6a0dc016e9bb4fc14ebb82d08d67279fe781b76b1ed1d9d0')
