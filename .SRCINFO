@@ -1,7 +1,7 @@
 pkgbase = yakyak-bin
 	pkgdesc = Desktop chat client for Google Hangouts
 	pkgver = 1.5.12beta
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/yakyak/yakyak
 	arch = x86_64
 	license = MIT
@@ -35,7 +35,7 @@ pkgbase = yakyak-bin
 	provides = yakyak
 	conflicts = yakyak
 	source = yakyak-1.5.12beta.tar.gz::https://github.com/yakyak/yakyak/releases/download/v1.5.12-rolling-beta/yakyak-1.5.12-beta-linux-x64-pacman.tar.gz
-	source = LICENSE::https://github.com/yakyak/yakyak/raw/master/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/yakyak/yakyak/master/LICENSE
 	sha256sums = 4b49ce5b110494928e72ae3bee99597920e71ff2a4343729f3eeca55cc8bea3a
 	sha256sums = 30b1618680562dc369ceedff8a25152bffab4f6de902a53e609d4e991c422cc0
 
