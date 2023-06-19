@@ -4,7 +4,7 @@
 
 pkgname=exodus
 pkgver=23.6.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Send, receive & exchange cryptocurrency with ease on the world's leading Desktop, Mobile and Hardware wallets. Bitcoin wallet"
 arch=('x86_64')
 url="https://exodus.com"
@@ -20,7 +20,7 @@ sha256sums=('b9cc4db81dd8efbfe321394b817d641ef854d1b81a8209b330ff07aab6e8b0e0'
             '582d6782c9412cd961c55d105f38ed5c911bf8509be040b8d23a836504a25d0b')
 
 package() {
-  cd $srcdir
+  cd $srcdir/Exodus-linux-x64
 
   install -d $pkgdir/{opt/$pkgname,usr/bin}
   cp -a * $pkgdir/opt/$pkgname
