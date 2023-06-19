@@ -2,10 +2,10 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=wine-lol-staging
-pkgver=8.5
-_winever=8.5
-pkgrel=3
-pkgdesc='A compatibility layer for running Windows programs (staging branch) with LoL patches(abi.vsyscall32=0 version)'
+pkgver=8.10
+_winever=8.10
+pkgrel=1
+pkgdesc='A compatibility layer for running Windows programs (staging branch) with LoL patches'
 arch=('x86_64')
 url='https://www.wine-staging.com/'
 license=('LGPL')
