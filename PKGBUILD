@@ -2,8 +2,8 @@
 
 pkgname=python-pyffmpeg
 _py_name=${pkgname#python-}
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.4.2.18
+pkgrel=1
 pkgdesc='FFmpeg wrapper for Python'
 arch=(any)
 url="https://github.com/deuteronomy-works/$_py_name"
@@ -13,10 +13,14 @@ depends=(ffmpeg
 makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_py_name-$pkgver"
-source=("https://files.pythonhosted.org/packages/source/${_py_name::1}/$_py_name/$_archive.tar.gz")
-sha256sums=('a2daabbebc11b3293670316e073abca6a0d70df53149cb3566e72d052176b86e')
+# Project stoped posting source distributions to Pypi
+# source=("https://files.pythonhosted.org/packages/source/${_py_name::1}/$_py_name/$_archive.tar.gz")
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('1f4221015e0be228f9c1e8f6aa7373bf3177cabbb1d81369d289ecba42c905a5')
 
 build() {
+	# Project source isn't setup for build outside of CI...
+	export GITHUB_REF="$pkgver"
 	cd "$_archive"
 	python -m build -wn
 }
