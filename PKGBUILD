@@ -1,6 +1,6 @@
 # Maintainer: JayceCao <jaycecao520@gmail.com>
 pkgname=oras
-pkgver=0.16.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A command line tool that allows you to push and pull files from any OCI registry'
 arch=(x86_64)
