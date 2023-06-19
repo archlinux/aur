@@ -9,6 +9,7 @@ pkgbase = gtkada
 	license = GPL3
 	license = custom
 	makedepends = gprbuild-toolbox
+	makedepends = python-sphinx
 	makedepends = gnatdoc
 	depends = gcc-ada
 	depends = gtk3
