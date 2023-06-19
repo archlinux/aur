@@ -1,0 +1,64 @@
+Fix build with libharu >= 2.4.0
+
+diff --git a/pdf.c b/pdf.c
+index 2676cb8..4d7f126 100644
+--- a/pdf.c
++++ b/pdf.c
+@@ -109,7 +109,7 @@ static awk_scalar_t HPDF_CS_PATTERN_node;
+ /*  LineCap */
+ static awk_scalar_t HPDF_BUTT_END_node;
+ static awk_scalar_t HPDF_ROUND_END_node;
+-static awk_scalar_t HPDF_PROJECTING_SCUARE_END_node;
++static awk_scalar_t HPDF_PROJECTING_SQUARE_END_node;
+ 
+ /*  _LineJoin */
+ static awk_scalar_t HPDF_MITER_JOIN_node;
+@@ -252,7 +252,7 @@ static awk_scalar_t HPDF_ENCODER_UNKNOWN_node;
+ /* ByteType */
+ static awk_scalar_t HPDF_BYTE_TYPE_SINGLE_node;
+ static awk_scalar_t HPDF_BYTE_TYPE_LEAD_node;
+-static awk_scalar_t HPDF_BYTE_TYPE_TRIAL_node;
++static awk_scalar_t HPDF_BYTE_TYPE_TRAIL_node;
+ static awk_scalar_t HPDF_BYTE_TYPE_UNKNOWN_node;
+ 
+ /* TextAlignment */
+@@ -312,7 +312,7 @@ static const struct varinit varinit[] = {
+ 	ENTRY(HPDF_CS_PATTERN, 1)
+ 	ENTRY(HPDF_BUTT_END, 1)
+ 	ENTRY(HPDF_ROUND_END, 1)
+-	ENTRY(HPDF_PROJECTING_SCUARE_END, 1)
++	ENTRY(HPDF_PROJECTING_SQUARE_END, 1)
+ 	ENTRY(HPDF_MITER_JOIN, 1)
+ 	ENTRY(HPDF_ROUND_JOIN, 1)
+ 	ENTRY(HPDF_BEVEL_JOIN, 1)
+@@ -421,7 +421,7 @@ static const struct varinit varinit[] = {
+ 	ENTRY(HPDF_ENCODER_UNKNOWN, 1)
+ 	ENTRY(HPDF_BYTE_TYPE_SINGLE, 1)
+ 	ENTRY(HPDF_BYTE_TYPE_LEAD, 1)
+-	ENTRY(HPDF_BYTE_TYPE_TRIAL, 1)
++	ENTRY(HPDF_BYTE_TYPE_TRAIL, 1)
+ 	ENTRY(HPDF_BYTE_TYPE_UNKNOWN, 1)
+ 	ENTRY(HPDF_TALIGN_LEFT, 1)
+ 	ENTRY(HPDF_TALIGN_RIGHT, 1)
+diff --git a/pdf.h b/pdf.h
+index ca3e874..7cc998c 100644
+--- a/pdf.h
++++ b/pdf.h
+@@ -86,7 +86,7 @@
+ 
+ #define DEFAULT_HPDF_BUTT_END HPDF_BUTT_END
+ #define DEFAULT_HPDF_ROUND_END HPDF_ROUND_END
+-#define DEFAULT_HPDF_PROJECTING_SCUARE_END HPDF_PROJECTING_SCUARE_END
++#define DEFAULT_HPDF_PROJECTING_SQUARE_END HPDF_PROJECTING_SQUARE_END
+ 
+ /*  _LineJoin */
+ #define DEFAULT_HPDF_MITER_JOIN HPDF_MITER_JOIN
+@@ -229,7 +229,7 @@
+ /* ByteType */
+ #define DEFAULT_HPDF_BYTE_TYPE_SINGLE HPDF_BYTE_TYPE_SINGLE
+ #define DEFAULT_HPDF_BYTE_TYPE_LEAD HPDF_BYTE_TYPE_LEAD
+-#define DEFAULT_HPDF_BYTE_TYPE_TRIAL HPDF_BYTE_TYPE_TRIAL 
++#define DEFAULT_HPDF_BYTE_TYPE_TRAIL HPDF_BYTE_TYPE_TRAIL 
+ #define DEFAULT_HPDF_BYTE_TYPE_UNKNOWN HPDF_BYTE_TYPE_UNKNOWN 
+ 
+ /* TextAlignment */
