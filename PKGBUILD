@@ -2,25 +2,23 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=1.11.1
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('gtk3' 'jsoncpp' 'libsecret')
+depends=('gtk3' 'jsoncpp' 'libsecret' 'xdg-user-dirs' 'zenity' 'libolm')
 makedepends=('clang'
              'ninja'
+             'flutter'
              'cmake'
              'git'
-             'unzip'
-             'flutter'
-             'webkit2gtk')
-optdepends=('libolm: E2E Encryption support')
+             'gtk3')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('4fac6f3441611a444a9ee2bdcdb3d03d729d999f04a28095470b0b65503407f2')
+sha256sums=('255cc1c79c18d9e87b35e10321d00cecf495f417e18f7f46bf184d9dcc0e750b')
 
 prepare() {
   flutter --no-version-check --suppress-analytics config --enable-linux-desktop
@@ -37,7 +35,7 @@ prepare() {
   
   cd ${pkgname}-v$pkgver
   flutter --no-version-check --suppress-analytics clean
-  flutter --no-version-check --suppress-analytics pub get
+  flutter --no-version-check --suppress-analytics pub get 
 }
 
 build() {
