@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="xbyyunpan-appimage"
-pkgver=3.11.12
+pkgver=3.11.14
 pkgrel=1
 pkgdesc="小白羊网盘 - Powered by 阿里云盘Open"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -15,9 +15,9 @@ source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${url}/releases/
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/XBYDriver-${pkgver}-linux-x86_64.AppImage")
 source=("LICENSE::https://raw.githubusercontent.com/gaozhangmin/aliyunpan/main/LICENSE")
 sha256sums=('37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009')
-sha256sums_aarch64=('74c3c276b1655470bd345f4b46c3d7ec3246adaef61e6531d24374e3c481b68b')
-sha256sums_armv7h=('e4f7e538734e2462aef98d803e898279bb487b6cd106b615878e985308f1c269')
-sha256sums_x86_64=('fdbac73a7c688411a0c58c57317622bbf535d3541ab2aa4c130f0e24c6448797')
+sha256sums_aarch64=('f45865b87eb51b807a5405c68394a8ab5aeaf625032c38298f822fd85cdd5114')
+sha256sums_armv7h=('4e5a17205a1c3e13ffff68aecfd01cc309a8777cc9ea33a85af2260e63dfc9a6')
+sha256sums_x86_64=('197c9907bb14c39325a2a0e0ec0fc43ae6759f67d3761892eff137d04fe6b2cc')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "./${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
