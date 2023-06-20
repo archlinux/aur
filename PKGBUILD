@@ -1,11 +1,12 @@
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: Matthew Sexton <matthew@asylumtech.com>
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=mazter
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mazes in your terminal"
 arch=('x86_64')
-url="https://github.com/canop/${pkgname}"
+url="https://dystroy.org/mazter/"
 license=(MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
