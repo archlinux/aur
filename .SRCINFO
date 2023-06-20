@@ -18,9 +18,9 @@ pkgbase = generic-monitor-plugin
 	makedepends = vala-panel>=0.4.60
 	makedepends = budgie-desktop
 	source = https://gitlab.com/vala-panel-project/xfce4-genmon-plugin/-/archive/d8f2540730747f955f45ba1fbd32e2aaa3277ad2/xfce4-genmon-plugin-d8f2540730747f955f45ba1fbd32e2aaa3277ad2.tar.gz
-	source = git+https://gitlab.com/vala-panel-project/cmake-vala
-	sha256sums = hi
-	sha256sums = hi
+	source = https://gitlab.com/vala-panel-project/cmake-vala/-/archive/r3/cmake-vala-r3.tar.gz
+	sha256sums = 566352618c3cbd6d7218df5a93ef9dd6fda17b63d304b9f0dfc99666246cdf81
+	sha256sums = 1d0710b220f0ddc1f045dc5a310537fb8fb7ee2069156e84e28de1c2516f0903
 
 pkgname = genmon-plugin-common
 	pkgdesc = Translations and script examples for GenMon
@@ -39,10 +39,10 @@ pkgname = mate-panel-genmon
 	depends = genmon-plugin-common
 
 pkgname = xfce4-panel-genmon-ng
-	pkgdesc = Cyclically spawns a script/program, captures its output and displays the resulting string in the panel
 	depends = gtk3
 	depends = xfce4-panel>=4.11.2
 	depends = genmon-plugin-common
+	provides = xfce4-panel-genmon
 
 pkgname = vala-panel-genmon
 	pkgdesc = Cyclically spawns a script/program, captures its output and displays the resulting string in the panel
