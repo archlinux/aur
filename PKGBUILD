@@ -4,7 +4,7 @@
 _name=VSTPlugins-UhhyouPlugins
 pkgname=uhhyou-plugins
 pkgver=0.56.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A collection of synthesizer and effect VST3 plugins'
 arch=(aarch64 x86_64)
 url='https://ryukau.github.io/VSTPlugins/'
@@ -62,13 +62,17 @@ package() {
     libpango-1.0.so libgobject-2.0.so ttf-croscore)
   cd  $pkgname-build/VST3/Release
   for plugin in *.vst3; do
-    # skip vst3sdk samples
-    [ ! -f $plugin/Contents/moduleinfo.json ] && continue
     # install executable
     install -vDm755 $plugin/Contents/$CARCH-linux/*.so -t \
       "$pkgdir"/usr/lib/vst3/$plugin/Contents/$CARCH-linux
     # install resources
-    install -vDm644 $plugin/Contents/moduleinfo.json -t "$pkgdir"/usr/lib/vst3/$plugin/Contents
+    if [[ -f $plugin/Contents/moduleinfo.json ]]; then
+      install -vDm644 $plugin/Contents/moduleinfo.json \
+        -t "$pkgdir"/usr/lib/vst3/$plugin/Contents/Resources
+    else
+      install -vDm644 $plugin/Contents/Resources/moduleinfo.json \
+        -t "$pkgdir"/usr/lib/vst3/$plugin/Contents/Resources
+    fi
     [ -f $plugin/Contents/Resources/Snapshots/*.png ] &&
       install -vDm644 $plugin/Contents/Resources/Snapshots/*.png -t \
         "$pkgdir"/usr/lib/vst3/$plugin/Contents/Resources/Snapshots
