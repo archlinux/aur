@@ -6,16 +6,10 @@
 
 _pkgname="mpfr"
 pkgname="${_pkgname}-static"
-<<<<<<< HEAD
 _pkgver=4.2.0
 _patchver=9
-=======
-_pkgver=4.1.1
-_patchver=1
->>>>>>> 4de39ec (working)
 pkgrel=1
 pkgver="${_pkgver}.p${_patchver}"
-#pkgver=$_pkgver
 pkgdesc='Multiple-precision floating-point library'
 arch=(x86_64)
 url='https://www.mpfr.org/'
