@@ -1,0 +1,12 @@
+pkgbase = pacup
+	pkgdesc = Effortlessly manage and replicate your preferred pacman packages on different systems by utilizing a simple plain text file.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NathanKolpa/pacup
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	source = pacup-1.0.0.tar.gz::https://github.com/NathanKolpa/pacup/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 2783b01a9e80180dc159154fd50344684f6b265cc33a9affc1fc3607de688b38
+
+pkgname = pacup
