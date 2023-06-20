@@ -1,5 +1,5 @@
 pkgbase = soh
-	pkgver = 7.0.2
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://shipofharkinian.com/
 	arch = x86_64
@@ -20,16 +20,16 @@ pkgbase = soh
 	depends = glew
 	depends = zenity
 	depends = libpng
-	source = Shipwright-7.0.2.tar.gz::https://github.com/HarbourMasters/Shipwright/archive/refs/tags/7.0.2.tar.gz
-	source = libultraship-57660fbb186d85923a1f771bfaafe241c209e579.tar.gz::https://github.com/Kenix3/libultraship/archive/57660fbb186d85923a1f771bfaafe241c209e579.tar.gz
+	source = Shipwright-7.1.0.tar.gz::https://github.com/HarbourMasters/Shipwright/archive/refs/tags/7.1.0.tar.gz
+	source = libultraship-04ef63c74270dfe9df458bd8335aac7a7097468a.tar.gz::https://github.com/Kenix3/libultraship/archive/04ef63c74270dfe9df458bd8335aac7a7097468a.tar.gz
 	source = soh.desktop
 	source = soh-misc-otr-patches.patch
 	source = lus-install-paths.patch
-	sha256sums = d8e0ff35cf5a1e8ef5a77d9e71e1fe3060039a7d6ae5e08d035f8b991fe47487
-	sha256sums = a32064431e75f9e3621209088888a1758015d7d5a46af34ea994e8f2f475531e
+	sha256sums = d5b1fb40b817b18a567ae25d807e40e04b06d89aa7efeaed6dbb13fe19268844
+	sha256sums = a0f8bc59a3a300659dd82654981994ca4e5d06913ee27a5db8130148424e5cbc
 	sha256sums = 25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2
-	sha256sums = b7e06174915f8dc6bd8927c248fec32c1d15c943b6aaaed1c6fb7c37dcb55510
-	sha256sums = 3cf1e6c6f014357b71d935a1dd8133ec5c2c20128b7d8ccd1b764e27f3cb4782
+	sha256sums = 440a1a0d09fc4bec154f089c522adb598f6e99e9d2b39b20cfce9e5e6b8155f5
+	sha256sums = 4893372c68554681ad05c66dc054ebbb74843dac5088de04a7ae631ddc1b2d38
 
 pkgname = soh
 	pkgdesc = An unofficial port of The Legend of Zelda Ocarina of Time for PC, Wii U, and Switch
@@ -45,6 +45,5 @@ pkgname = soh
 
 pkgname = soh-otr-exporter
 	pkgdesc = OTR generation tools for SoH. Includes asset XML files needed for generation.
-	install = soh-otr-exporter.install
 	license = MIT
 	depends = libpng
