@@ -1,0 +1,23 @@
+diff -aur mohawk-1.1.0.old/mohawk/tests.py mohawk-1.1.0/mohawk/tests.py
+--- mohawk-1.1.0.old/mohawk/tests.py	2023-06-20 20:59:58.913061911 +0200
++++ mohawk-1.1.0/mohawk/tests.py	2023-06-20 21:00:20.359996947 +0200
+@@ -1,9 +1,8 @@
+ import sys
+ import warnings
+-from unittest import TestCase
++from unittest import TestCase, mock
+ from base64 import b64decode, urlsafe_b64encode
+ 
+-import mock
+ from nose.tools import eq_, raises
+ import six
+ 
+diff -aur mohawk-1.1.0.old/requirements/dev.txt mohawk-1.1.0/requirements/dev.txt
+--- mohawk-1.1.0.old/requirements/dev.txt	2023-06-20 20:59:58.916395286 +0200
++++ mohawk-1.1.0/requirements/dev.txt	2023-06-20 21:00:25.856732399 +0200
+@@ -1,5 +1,4 @@
+ # For testing.
+-mock >= 1.0.1
+ nose >= 1.3.0
+ 
+ # For documentation.
