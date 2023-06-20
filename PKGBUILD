@@ -8,7 +8,7 @@ pkgdesc="Last.fm scrobbler for cmus music player"
 url="https://github.com/Arkq/cmusfm"
 arch=('x86_64' 'i686')
 license=('GPL3')
-depends=('cmus' 'curl' 'libnotify')
+depends=('cmus' 'curl' 'libnotify' 'openssl-1.1')
 install=cmusfm.install
 
 source=(cmusfm-"$pkgver".tar.gz::https://github.com/Arkq/cmusfm/archive/v"$pkgver".tar.gz)
