@@ -1,0 +1,19 @@
+pkgbase = archy-scripts-git
+	pkgdesc = The archy linux utilty scripts
+	pkgver = 0.0.2.r9.gf46c73c
+	pkgrel = 1
+	url = https://github.com/archy-linux/archy-scripts
+	arch = any
+	groups = archy-linux
+	groups = archy
+	license = Unlicense
+	depends = xorg-xinput
+	depends = bash
+	provides = touchpad-toggle
+	provides = usbmount
+	conflicts = archy-scripts
+	source = archy-scripts::git+https://github.com/archy-linux/archy-scripts.git
+	validpgpkeys = 4514 F39E 840E 0FFC DE9D 2815 0501 802A 1D49 6528
+	sha256sums = SKIP
+
+pkgname = archy-scripts-git
