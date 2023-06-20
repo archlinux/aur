@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=yuzu
-pkgver=1471
+pkgver=1474
 pkgrel=1
 pkgdesc='Nintendo Switch emulator'
 arch=(x86_64)
@@ -46,7 +46,7 @@ makedepends=(
   vulkan-headers
 )
 options=(!debug)
-_tag=c7fc5b934848bdb4c9ddb2fae84fa1967ce0b767
+_tag=ce191ba32bed6506878ebf2b01573e67aeee2938
 source=(
   git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${_tag}
   git+https://github.com/arsenm/sanitizers-cmake.git
@@ -57,9 +57,13 @@ source=(
   git+https://github.com/bylaws/libadrenotools.git
   yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git
   yuzu-sirit::git+https://github.com/yuzu-emu/sirit.git
+  git+https://github.com/eggert/tz.git
+  git+https://github.com/lat9nq/tzdb_to_nx.git
   git+https://github.com/herumi/xbyak.git
 )
 b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -79,11 +83,19 @@ prepare() {
   git config submodule.libadrenotools.url "${srcdir}"/libadrenotools
   git config submodule.mbedtls.url "${srcdir}"/yuzu-mbedtls
   git config submodule.sirit.url "${srcdir}"/yuzu-sirit
+  git config submodule.tzdb_to_nx.url "${srcdir}"/tzdb_to_nx
   git config submodule.xbyak.url "${srcdir}"/xbyak
   git -c protocol.file.allow=always submodule update
-  cd externals/cubeb
+
+  pushd externals/cubeb
   git config submodule.cmake/sanitizers-cmake.url "${srcdir}"/sanitizers-cmake
   git -c protocol.file.allow=always submodule update
+  popd
+
+  pushd externals/nx_tzdb/tzdb_to_nx
+  git config submodule.externals/tz/tz.url "${srcdir}"/tz
+  git -c protocol.file.allow=always submodule update
+  popd
 }
 
 pkgver() {
