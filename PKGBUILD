@@ -21,6 +21,6 @@ pkgver() {
 package() {
         cd TaskDiary
         install -Dm755 ./todo "$pkgdir/usr/bin/todo"
-        install -Dm644 ./README.md "$pkgdir/usr/share/doc/taskdiary/README.md"
-        install -Dm644 ./LICENSE $pkgdir/usr/share/licenses/taskdiary/LICENSE
+        install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+        install -Dm644 ./LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
