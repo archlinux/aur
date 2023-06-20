@@ -17,13 +17,13 @@
 
 pkgname=wireguird
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="GUI frontend to connect to and manage WireGuard tunnels (GTK3)"
 arch=('x86_64')
 url="https://github.com/UnnoTed/wireguird"
 license=('MIT')
 depends=('wireguard-tools' 'gtk3' 'libayatana-appindicator' 'openresolv')
-makedepends=('gcc-go')
+makedepends=('go')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v1.0.0.tar.gz)
 sha256sums=(306ac55506cd2d74909351f9be8000b9e83d99280214e1618693b665b8b73485)
 
