@@ -18,13 +18,6 @@ pkgver() {
   printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
-
-
-package() {
-	cd "$pkgname"
-	make DESTDIR="$pkgdir/" install
-}
-
 package() {
         cd TaskDiary
         install -Dm755 ./todo "$pkgdir/usr/bin/todo"
