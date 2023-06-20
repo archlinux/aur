@@ -1,8 +1,8 @@
 # Contributor: Mike Yuan <me@yhndnzj.com>
-# Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
+# Maintainer: Asuka Minato <i at asukaminato at eu dot org>
 
 pkgname=ast-grep-bin
-pkgver=0.6.2
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="A fast and easy tool for code searching, linting, rewriting at large scale"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=(ast-grep)
 depends=(gcc-libs glibc)
 conflicts=(ast-grep)
 b2sums=('84489d87909510ed8ec39fb743c9e0983ba6a4bce03dd299cc41404d5f9050d1b08c3e28dbca3c81a1e958c5aa08aaeb8638b25a92e30ae14df8936e6c949d9c')
-b2sums_x86_64=('658e55423f430b87302cd251f29b3037ef06fda337fca4b2cb67d264e53c5186e36d8ff71387f5e6ce163ee163851136bcd15850cb37dc008be1f97d2c99ae94')
+b2sums_x86_64=('8bf0528087b219d88d0d288f7824073912f1862fe724213027013f970bd80a8ce2c9155ee8eeed1074a3b1bb16e3d1abf37ff8e7f10d4a97755dd8f50f8932f3')
 options=()
 
 package() {
