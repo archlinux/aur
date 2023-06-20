@@ -7,10 +7,9 @@ pkgbase = cpdf-bin
 	arch = i686
 	license = custom
 	makedepends = coreutils
-	makedepends = binutils
 	provides = cpdf
 	conflicts = cpdf
-	source = cpdf-bin-2.5.zip::https://github.com/coherentgraphics/cpdf-binaries/archive/refs/tags/v2.5.1.zip
-	sha256sums = 54b9364d8f07a913bece4af30ff36f48e949f9c4b11445e350d8c109d5168dd8
+	source = https://github.com/coherentgraphics/cpdf-binaries/archive/refs/tags/v2.5.1.tar.gz
+	sha256sums = d6dea9050d055f90917afe75d244a7b7b6b6bb2f52da466bc06f3ead08a3e2d6
 
 pkgname = cpdf-bin
