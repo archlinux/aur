@@ -16,7 +16,7 @@ optdepends=("${pkgname}-appmenu-valapanel: Global Menu"
             "${pkgname}-sntray: SNI System tray"
             "${pkgname}-applets-xembed: Old system tray"
             "${pkgname}-applets-icontasks: Budgie tasklist"
-            "${pkgname}-genmon: GenMon applet")
+            "${pkgname}-applets-genmon: GenMon applet")
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 

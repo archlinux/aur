@@ -17,7 +17,7 @@ pkgbase = vala-panel
 	optdepends = vala-panel-sntray: SNI System tray
 	optdepends = vala-panel-applets-xembed: Old system tray
 	optdepends = vala-panel-applets-icontasks: Budgie tasklist
-	optdepends = vala-panel-genmon: GenMon applet
+	optdepends = vala-panel-applets-genmon: GenMon applet
 	source = vala-panel::git+https://gitlab.com/vala-panel-project/vala-panel.git#tag=0.5.0
 	sha256sums = SKIP
 
