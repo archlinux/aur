@@ -1,5 +1,5 @@
 pkgbase = killport-bin
-	pkgdesc = A command-line tool to easily kill processes running on a specified port.
+	pkgdesc = Easily kill processes running on a specified port
 	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/jkfran/killport
