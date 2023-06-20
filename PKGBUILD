@@ -2,12 +2,12 @@
 _pkgname=pkgbuild-language-server
 pkgname="python-$_pkgname"
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PKGBUILD language server"
 arch=(any)
 url=https://github.com/Freed-Wu/pkgbuild-language-server
 depends=(python-pygls python-platformdirs)
-optdepends=(python-pypandoc python-markdown-it-py)
+optdepends=(python-pypandoc python-markdown-it-py pacman)
 makedepends=(python-installer)
 license=(GPL3)
 _py=py3
