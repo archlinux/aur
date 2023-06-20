@@ -1,7 +1,7 @@
 pkgbase = python-glog
 	pkgdesc = A simple Google-style logging wrapper for Python
 	pkgver = 0.3.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/benley/python-glog/
 	arch = any
 	license = BSD
@@ -12,7 +12,7 @@ pkgbase = python-glog
 	depends = python
 	depends = python-gflags
 	depends = python-six
-	source = python-glog-0.3.1.tar.gz::https://github.com/benley/python-glog/archive/0.3.1.tar.gz
+	source = https://github.com/benley/python-glog/archive/0.3.1/python-glog-0.3.1.tar.gz
 	sha256sums = b01af6f1118d2fa769c7657971deac8cecd71a3c6afe3e08328366740e802351
 
 pkgname = python-glog
