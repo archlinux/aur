@@ -1,26 +1,27 @@
 # Maintainer: Polarian <polarian@polarian.dev>
 # Co-maintainer: Lemon <lemon@lemonsh.moe>
+# Co-maintainer: Karx <yash@karx.xyz>
 
 _reponame="zdiu"
 pkgname="zdiu-git"
-pkgver=r3.27e8c52
+pkgver=0.1.1.r0.gc56402b
 pkgrel=1
 pkgdesc="CLI tool for uploading large files to Discord in parts using webhooks"
 arch=("x86_64")
-url="https://git.lemonsh.moe/lemon/zdiu"
+url="https://git.karx.xyz/karx/zdiu"
 license=("MIT")
 depends=("gtk3" "gcc-libs" "gdk-pixbuf2")
 makedepends=("cargo" "git")
-source=("$pkgname::git+https://git.lemonsh.moe/lemon/$_reponame"
+source=("$pkgname::git+https://git.karx.xyz/karx/$_reponame"
         $_reponame.desktop)
 sha256sums=('SKIP'
-            '2418d0fd956afe1498f1b8224d89a3f10e7e07dba52faddbe59fe3b21e6b81b0')
+            'b259282b904509c1ac8ff64e48e972a44d63086ad6fe7c952567a922a79126ed')
 conflicts=('zdiu')
 provides=('zdiu')
 
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -40,4 +41,5 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/licenses/$_reponame/" "$pkgname/LICENSE"
     install -Dm755 "$pkgname/target/release/$_reponame" "$pkgdir/usr/bin/$_reponame"
     install -Dm644 "$_reponame.desktop" -t "$pkgdir/usr/share/applications/"
+    install -Dm644 "$pkgname/zdiu-logo.png" "$pkgdir/usr/share/pixmaps/$_reponame.png"
 }
