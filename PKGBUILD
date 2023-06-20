@@ -31,6 +31,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "$pkgname"
+	sed -i 's,/usr/libexec,/usr/lib,g' gpgvnoexpkeysig mmdebstrap
 }
 
 build() {
@@ -46,12 +47,14 @@ package() {
 
 	mkdir -p $pkgdir/usr/bin
 	cp -a mmdebstrap $pkgdir/usr/bin/mmdebstrap
-	cp -a taridshift $pkgdir/usr/bin/mmtaridshift
 	cp -a tarfilter $pkgdir/usr/bin/mmtarfilter
 	mkdir -p $pkgdir/usr/lib/apt/solvers
 	cp -a proxysolver $pkgdir/usr/lib/apt/solvers/mmdebstrap-dump-solution
 	mkdir -p $pkgdir/usr/share/mmdebstrap
 	cp -a hooks $pkgdir/usr/share/mmdebstrap
+	mkdir -p $pkgdir/usr/lib/mmdebstrap
+	cp -a gpgvnoexpkeysig $pkgdir/usr/lib/mmdebstrap
+	cp -a ldconfig.fakechroot $pkgdir/usr/lib/mmdebstrap
 
 	mkdir -p $pkgdir/usr/share/man/man1
 	pod2man mmdebstrap > $pkgdir/usr/share/man/man1/mmdebstrap.1
