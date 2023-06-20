@@ -22,11 +22,12 @@ conflicts=(
 depends=(
   'perl>=5.16.0'
   'perl-data-dump'
+  'perl-file-sharedir'
   'perl-json'
   'perl-lwp-protocol-https'
   'perl-libwww'
   'gtk2-perl'
-  'perl-file-sharedir')
+)
 optdepends=(
   'perl-json-xs: faster JSON to HASH conversion'
   'perl-lwp-useragent-cached: cache support'
@@ -40,8 +41,16 @@ optdepends=(
   'mpv: for playing videos with MPV (recommended)'
   'gnome-icon-theme: for icons in menus'
 )
-source=("${_pkg}-${pkgver}.tar.gz::${url}/archive/$pkgver.tar.gz")
+source=(
+  "${_pkg}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+)
 sha256sums=('f36d500f733079bf8cf0fc78550ea215afa485c1ceaeec2bfdaa62a32314a7c8')
+
+
+check() {
+    cd "${_pkg}-${pkgver}"
+    ./Build test
+}
 
 package() {
     cd "${_pkg}-${pkgver}"
@@ -49,7 +58,6 @@ package() {
 	                   --installdirs vendor \
 			   --gtk
     ./Build
-    ./Build test
     ./Build install --install_path script=/usr/bin
 
     install -Dm 644 "share/${_pkgname}.desktop" \
