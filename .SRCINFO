@@ -1,0 +1,59 @@
+pkgbase = generic-monitor-plugin
+	pkgdesc = Cyclically spawns a script/program, captures its output and displays the resulting string in the panel
+	pkgver = 2021.10.27
+	pkgrel = 3
+	url = https://gitlab.com/vala-panel-project/xfce4-genmon-plugin
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = pentium4
+	license = LGPL
+	makedepends = cmake
+	makedepends = vala
+	makedepends = gtk3
+	makedepends = libpeas
+	makedepends = mate-panel
+	makedepends = xfce4-panel>=4.11.2
+	makedepends = vala-panel>=0.4.60
+	makedepends = budgie-desktop
+	source = https://gitlab.com/vala-panel-project/xfce4-genmon-plugin/-/archive/d8f2540730747f955f45ba1fbd32e2aaa3277ad2/xfce4-genmon-plugin-d8f2540730747f955f45ba1fbd32e2aaa3277ad2.tar.gz
+	source = git+https://gitlab.com/vala-panel-project/cmake-vala
+	sha256sums = hi
+	sha256sums = hi
+
+pkgname = genmon-plugin-common
+	pkgdesc = Translations and script examples for GenMon
+	arch = any
+	depends = bash
+	depends = perl
+	optdepends = xfce4-panel-genmon: XFCE4 panel applet
+	optdepends = mate-panel-genmon: MATE panel applet
+	optdepends = vala-panel-genmon: Vala panel applet
+	optdepends = budgie-genmon: Budgie panel applet
+
+pkgname = mate-panel-genmon
+	pkgdesc = Cyclically spawns a script/program, captures its output and displays the resulting string in the panel
+	depends = gtk3
+	depends = mate-panel
+	depends = genmon-plugin-common
+
+pkgname = xfce4-panel-genmon-ng
+	pkgdesc = Cyclically spawns a script/program, captures its output and displays the resulting string in the panel
+	depends = gtk3
+	depends = xfce4-panel>=4.11.2
+	depends = genmon-plugin-common
+
+pkgname = vala-panel-genmon
+	pkgdesc = Cyclically spawns a script/program, captures its output and displays the resulting string in the panel
+	depends = gtk3
+	depends = vala-panel>=0.4.60
+	depends = genmon-plugin-common
+	provides = vala-panel-applets-genmon
+
+pkgname = budgie-genmon
+	pkgdesc = Cyclically spawns a script/program, captures its output and displays the resulting string in the panel
+	depends = budgie-desktop
+	depends = gtk3
+	depends = libpeas
+	depends = genmon-plugin-common
