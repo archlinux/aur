@@ -1,15 +1,15 @@
 # Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
 # Contributor: Carl Reinke <mindless2112 gmail com>
 # shellcheck shell=bash
-# shellcheck disable=2034,2154
+# shellcheck disable=SC2034,SC2154
 
 pkgname=lix
-pkgver=0.10.11
+pkgver=0.10.12
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz"
         "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
-sha512sums=('322807d4eb4a02c8a86ebaa3da621b5c6e3093c6d4c0568870c5b71b0c3f35579dd775fa6d42e7c54e1fec106dee82a5293e00497208468a38518f6e0c8dc3e1'
+sha512sums=('1968969759ee24887acd88af9d6bd1b322d36b72aaa9657ccfcda5db35f63049f6e61975578842f72382858d0a65c706d011bc9844637409257466e4116f8e52'
             '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 
 _gitname=LixD
@@ -17,8 +17,8 @@ pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="https://www.lixgame.com/"
 license=('custom:CC0')
-depends=('allegro' 'enet' 'hicolor-icon-theme' 'liblphobos')
-makedepends=('git' 'ldc' 'dub')
+depends=('allegro' 'enet' 'hicolor-icon-theme' 'd-runtime')
+makedepends=('git' 'd-compiler' 'dub')
 _dubv=( "4.0.4+5.2.0"   # allegro
         "1.3.1"         # bolts
         "4.2.0"         # derelict-enet
@@ -74,8 +74,6 @@ _build() {
             --parallel \
         `# Forces a recompilation even if the target is up to date:` \
             --force \
-        `# Specifies the compiler binary to use:` \
-            --compiler=ldc \
         `# force FHS compatibility:` \
             --build=releaseXDG \
         `# Save result code for later when failed:` \

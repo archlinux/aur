@@ -1,6 +1,55 @@
 Version history
 ===============
 
+0.10.12
+-------
+
+2023-06-19
+
+Fix #375: Changing sound/music in the options menu will immediately play an
+example sound or the menu music at the new volume setting. You don't have to
+exit the options menu anymore to test.
+
+Fix #466: When the next level is unplayable, e.g., it lacks hatches, you
+can't run it from the next-level menu. Before, you could, and Lix crashed.
+
+Added four boolean user options: With/without the tweaker, should air clicks
+cancel the replay, and should new assignments insert or cut the replay?
+Without the tweaker, the default remains that both air clicks and new
+assignments cancel the replay. With the tweaker, by default, air clicks do
+nothing and new assignments insert.
+
+During play, the tooltip line is separate from the panel's info bar. Tooltips
+appear over the play area and have a darkened background. I hope that new
+players can now see easily: "Replaying. To play yourself, click into air."
+
+Removed the zoom button from game and editor. Everybody zooms with the mouse
+wheel, and the zoom button would zoom into the mouse cursor on the panel, thus
+oddly fixing a point on the map outside the camera. For now, the game's
+restart button is wider to cover the area of the old zoom button.
+
+Revert mouse trapping to how it was in Lix 0.10.7 and earlier: We trap the
+mouse already on mouseover when the Lix window is active.
+
+Remove the steel tile matt/8x8. This tile had no nub, had no crossed metal
+bars, and looked like geoo's concrete blocks which are earth. Remove it with
+no replacement. We'll look separately at all levels that used it.
+
+Won't Get Fooled Again: Replace important 8x8 steel with a nice-looking tile
+group to make a steel staircase. Physics stay exactly the same.
+
+All Aboard the Pain Train: Remove purely decorative 8x8 steel.
+
+Sympathy for the Lix, Race to the Depths: Remove these multiplayer levels
+with 8x8 steel. Sympathy relied on other players' mistakes. Race was too hard.
+
+Removed an undocumented feature: You could place a file gain.txt into
+music/ to change the volume of tracks.
+
+Fixed compiler warnings from DMD 2.104.0: Change "in ref" to "in".
+
+
+
 0.10.11
 -------
 
