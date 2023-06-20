@@ -1,6 +1,6 @@
 pkgbase = x265-git
 	pkgdesc = Open source H.265/HEVC video encoder (git version)
-	pkgver = 3.5.r13.g0983cffc5
+	pkgver = 3.5.r103.g34532bda1
 	pkgrel = 1
 	url = https://bitbucket.org/multicoreware/x265_git
 	arch = x86_64

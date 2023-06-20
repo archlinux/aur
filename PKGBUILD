@@ -1,7 +1,7 @@
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=x265-git
-pkgver=3.5.r13.g0983cffc5
+pkgver=3.5.r103.g34532bda1
 pkgrel=1
 pkgdesc='Open source H.265/HEVC video encoder (git version)'
 arch=('x86_64')
@@ -20,25 +20,30 @@ pkgver() {
 
 build() {
     cmake -S x265_git/source -B build-12 \
+        -G 'Unix Makefiles' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DHIGH_BIT_DEPTH='ON' \
         -DMAIN12='ON' \
         -DEXPORT_C_API='OFF' \
         -DENABLE_CLI='OFF' \
         -DENABLE_SHARED='OFF' \
+        -DCMAKE_ASM_NASM_FLAGS='-w-macro-params-legacy' \
         -Wno-dev
-    make -C build-12
+    cmake --build build-12
     
     cmake -S x265_git/source -B build-10 \
+        -G 'Unix Makefiles' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DHIGH_BIT_DEPTH='ON' \
         -DEXPORT_C_API='OFF' \
         -DENABLE_CLI='OFF' \
         -DENABLE_SHARED='OFF' \
+        -DCMAKE_ASM_NASM_FLAGS='-w-macro-params-legacy' \
         -Wno-dev
-    make -C build-10
+    cmake --build build-10
     
     cmake -S x265_git/source -B build \
+        -G 'Unix Makefiles' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DENABLE_SHARED='ON' \
         -DENABLE_HDR10_PLUS='ON' \
@@ -46,12 +51,13 @@ build() {
         -DEXTRA_LINK_FLAGS='-L.' \
         -DLINKED_10BIT='ON' \
         -DLINKED_12BIT='ON' \
+        -DCMAKE_ASM_NASM_FLAGS='-w-macro-params-legacy' \
         -Wno-dev
     ln -s ../build-10/libx265.a build/libx265_main10.a
     ln -s ../build-12/libx265.a build/libx265_main12.a
-    make -C build
+    cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
 }
