@@ -24,7 +24,7 @@ url="https://github.com/UnnoTed/wireguird"
 license=('MIT')
 depends=('wireguard-tools' 'gtk3' 'libayatana-appindicator' 'openresolv')
 makedepends=('go')
-source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz)
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
 sha256sums=(306ac55506cd2d74909351f9be8000b9e83d99280214e1618693b665b8b73485)
 
 prepare() {
