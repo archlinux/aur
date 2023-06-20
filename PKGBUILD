@@ -54,7 +54,7 @@ optdepends=(
 source=("${pkgname}::git+https://github.com/Alexays/Waybar"
         hyprctl.patch)
 sha256sums=('SKIP'
-          'b4819ed456b27c355f24c460bcf3ff2fec6dade8c210263b64361c6744a9147c')
+          '592b75ed945b66818b0ac687e3d79057031049f610d8c9366d2055821b8d0f8c') 
 
 pkgver() {
     cd "${srcdir}/${pkgname}"

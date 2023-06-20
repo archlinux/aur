@@ -45,6 +45,6 @@ pkgbase = waybar-hyprland-cava-git
 	source = waybar-hyprland-cava-git::git+https://github.com/Alexays/Waybar
 	source = hyprctl.patch
 	sha256sums = SKIP
-	sha256sums = b4819ed456b27c355f24c460bcf3ff2fec6dade8c210263b64361c6744a9147c
+	sha256sums = 592b75ed945b66818b0ac687e3d79057031049f610d8c9366d2055821b8d0f8c
 
 pkgname = waybar-hyprland-cava-git
