@@ -6,7 +6,7 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=extremetuxracer
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Downhill racing game starring Tux"
 arch=('x86_64')
@@ -14,10 +14,8 @@ url="https://sourceforge.net/projects/${pkgname}"
 license=('GPL')
 depends=('sfml' 'glu' 'freetype2')
 makedepends=('csfml')
-conflicts=('ppracer' 'etracer')
-replaces=('ppracer' 'etracer')
 source=("https://downloads.sourceforge.net/${pkgname}/etr-${pkgver}.tar.xz")
-sha512sums=('572b494e82f00853b38b3913f0ef34d0a5c0b6655626fa6c72c76f7a41f723ff6fc3c20ca54d835ed5dba462f22896882e9c37ddf5b3e840ea14af3d336addb8')
+sha512sums=('75b6f2b4d7260216fb8b5bee1412ed929712e6de04a3b32ecf65ad747c6bff30e5eb5bedde24dca0afaec816c847860d9c589c66cdff08aa4bdcec224e727f1f')
 
 build() {
   cd etr-${pkgver}
