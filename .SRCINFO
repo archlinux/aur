@@ -39,6 +39,7 @@ pkgname = mate-panel-genmon
 	depends = genmon-plugin-common
 
 pkgname = xfce4-panel-genmon-ng
+	pkgdesc = Cyclically spawns a script/program, captures its output and displays the resulting string in the panel
 	depends = gtk3
 	depends = xfce4-panel>=4.11.2
 	depends = genmon-plugin-common

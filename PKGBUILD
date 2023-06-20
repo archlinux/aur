@@ -102,6 +102,7 @@ build(){
 }
 
 package_xfce4-panel-genmon-ng(){
+  pkgdesc="${_pkgdesc[*]}"
   depends=('gtk3'
            'xfce4-panel>=4.11.2'
            "${_pkgname}-common")
