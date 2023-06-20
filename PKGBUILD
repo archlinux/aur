@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="lotti-bin"
-pkgver=0.9.382.2266
-_pkgver=0.9.382%2B2266
+pkgver=0.9.383.2267
+_pkgver=0.9.383%2B2267
 pkgrel=1
 pkgdesc="Achieve your goals and keep your data private with Lotti. This life tracking app is designed to help you stay motivated and on track, all while keeping your personal information safe and secure. Now with on-device speech recognition."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/${_pkgver}/linux.x64.tar.gz"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/matthiasn/lotti/main/assets/icon/app_icon_1024.png")
 noextract=("${pkgname%-bin}-${pkgver}.tar.gz")
-sha256sums=('3dbcaeb706e793a6f540cbee5da8478afd203f99ffe97124a5bcdc5dc413be9f'
+sha256sums=('954c618c02a31e8cb20025b44b7485dd3b393453be88fdc970146404f0b53806'
             '306adaeff6c8613e536db665d24cab8551b4a3774c5729492dd132dc690256c6')
   
 package() {
