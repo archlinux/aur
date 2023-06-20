@@ -1,13 +1,13 @@
 pkgbase = cuda11.1
 	pkgdesc = NVIDIA's GPU programming toolkit (version 11.1)
 	pkgver = 11.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.nvidia.com/cuda-zone
 	install = cuda.install
 	arch = x86_64
 	license = custom:NVIDIA
-	depends = gcc-libs
-	depends = gcc
+	depends = gcc10-libs
+	depends = gcc10
 	depends = opencl-nvidia
 	depends = nvidia-utils
 	depends = python
@@ -51,7 +51,7 @@ pkgbase = cuda11.1
 	source = nvrtc.pc
 	source = nvToolsExt.pc
 	sha256sums = 3eae6727086024925ebbcef3e9a45ad379d8490768fd00f9c2d8b6fd9cd8dd8f
-	sha256sums = 2a1c3d55d15a8b816f9dd2947ef3d0afaf748fb0dc4ec21f260c04e065769ac9
+	sha256sums = 1132d5061f3906dd2c58b52c7554fc4c6128259b38922398915d5ce4848a0006
 	sha256sums = a65f7d96e2447eb40b1be9586b90eb0bd776a8938c93d21f9606d2880b548b28
 	sha256sums = 958ef464478ef960ca07476990942ad4c656b9823cc0ef71ce0e97fcaa82c887
 	sha256sums = 3654c4773f1e3f70092098b6bb52f7c095ed43ee9a61067cc8876ad6fb03cedd
@@ -101,4 +101,3 @@ pkgname = cuda11.1-tools
 	provides = cuda-sdk
 	provides = cuda-tools=11.1
 	conflicts = cuda-tools
-

@@ -6,12 +6,12 @@ pkgbase=cuda11.1
 pkgname=('cuda11.1' 'cuda11.1-tools')
 pkgver=11.1.1
 _driverver=455.32.00
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA's GPU programming toolkit (version 11.1)"
 arch=('x86_64')
 url='https://developer.nvidia.com/cuda-zone'
 license=('custom:NVIDIA')
-depends=('gcc-libs' 'gcc' 'opencl-nvidia' 'nvidia-utils' 'python')
+depends=('gcc10-libs' 'gcc10' 'opencl-nvidia' 'nvidia-utils' 'python')
 optdepends=('gdb: for cuda-gdb')
 provides=('cuda-toolkit' 'cuda-sdk')
 replaces=('cuda-toolkit' 'cuda-sdk')
@@ -25,7 +25,7 @@ source=("http://developer.download.nvidia.com/compute/cuda/${pkgver}/local_insta
         'cusparse.pc' 'nppc.pc' 'nppial.pc' 'nppicc.pc' 'nppicom.pc' 'nppidei.pc' 'nppif.pc' 'nppig.pc' 'nppim.pc' 'nppi.pc'
         'nppist.pc' 'nppisu.pc' 'nppitc.pc' 'npps.pc' 'nvgraph.pc' 'nvidia-ml.pc' 'nvjpeg.pc' 'nvrtc.pc' 'nvToolsExt.pc')
 sha256sums=('3eae6727086024925ebbcef3e9a45ad379d8490768fd00f9c2d8b6fd9cd8dd8f'
-            '2a1c3d55d15a8b816f9dd2947ef3d0afaf748fb0dc4ec21f260c04e065769ac9'
+            '1132d5061f3906dd2c58b52c7554fc4c6128259b38922398915d5ce4848a0006'
             'a65f7d96e2447eb40b1be9586b90eb0bd776a8938c93d21f9606d2880b548b28'
             '958ef464478ef960ca07476990942ad4c656b9823cc0ef71ce0e97fcaa82c887'
             '3654c4773f1e3f70092098b6bb52f7c095ed43ee9a61067cc8876ad6fb03cedd'
@@ -90,8 +90,8 @@ build() {
 
   # Define compilers for CUDA to use.
   # This allows us to use older versions of GCC if we have to.
-  ln -s /usr/bin/gcc "${_prepdir}/opt/cuda/bin/gcc"
-  ln -s /usr/bin/g++ "${_prepdir}/opt/cuda/bin/g++"
+  ln -s /usr/bin/gcc-10 "${_prepdir}/opt/cuda/bin/gcc"
+  ln -s /usr/bin/g++-10 "${_prepdir}/opt/cuda/bin/g++"
 
   # Install profile and ld.so.config files
   install -D -m755 "${srcdir}/cuda.sh" "${_prepdir}/etc/profile.d/cuda.sh"
