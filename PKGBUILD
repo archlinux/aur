@@ -1,7 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: tarball <bootctl@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=fish-fzf
-pkgver=9.7
+pkgver=9.8
 pkgrel=1
 pkgdesc="fzf key-bindings into fish"
 arch=('any')
@@ -14,15 +15,9 @@ optdepends=(
 	'bat: required for search directory feature'
 	'git')
 makedepends=('git')
-# checkdepends=('fish-fishtape')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('44db2391d7e297ca4c4958e8cd76186f3957ee6dd8a6e5fd129c8fbcd6c6935c')
-
-# check() {
-#  cd "fzf.fish-$pkgver/"
-#  find tests -type f -exec fish -Pc 'fishtape {}' \;
-# }
+sha256sums=('49f8fa08d93b0b50d7d248150627972f83bbccb900c0b572e652317e842b7753')
 
 package() {
 	cd "fzf.fish-$pkgver/"
