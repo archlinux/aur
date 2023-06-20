@@ -32,6 +32,12 @@ prepare() {
   # Change into directory
   cd ${pkgname}-${pkgver}
 
+  # Prepare environment
+  export GOPATH=${srcdir}/go
+  export GOENV=${srcdir}/go/.config
+  export GOCACHE=${srcdir}/go/.cache
+  go clean -cache -modcache
+
   # Correct the Debian executable path to work with Arch Linux and related distros
   sed -i 's/^Exec.*$/Exec=wireguird/g' deb/usr/share/applications/${pkgname}.desktop
   mv deb/usr/local/bin deb/usr
@@ -58,7 +64,6 @@ build() {
   export GOCACHE=${srcdir}/go/.cache
 
   # Compile binary with gcc-go compiler
-  go clean -cache -modcache
   go generate
   go build -modcacherw -ldflags "-s -w" -trimpath -o bin/${pkgname}
   go clean -cache -modcache
