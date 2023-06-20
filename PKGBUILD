@@ -4,14 +4,14 @@
 
 pkgname=('pamac-aur-git')
 _pkgname=pamac
-pkgver=10.5.1.r1.g0c29027
-_pkgver=10.4.2
+pkgver=11.0.1.r0.g69d08b6
+_pkgver=11.0.1
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('libnotify' 'libpamac-git' 'libhandy')
+depends=('libnotify' 'libpamac-git' 'libhandy' 'libadwaita' 'gtk4')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome'
             'lxsession: needed for authentification in Xfce, LXDE etc.')
 makedepends=('gettext' 'itstool' 'vala' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc' 'git')
@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
