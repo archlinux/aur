@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=python-apeye
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Handy tools for working with URLs and APIs'
 arch=('any')
 url='https://apeye.readthedocs.io/'
@@ -27,7 +27,7 @@ optdepends=(
   'python-ruamel-yaml: yaml serializer'
   'python-pyaml: yaml serializer'
 )
-_commit='8a31e4b23df577610a1a9589b1d2a15e1cf86bda'
+_commit='c7878245fb4f4a71bb53d1e38b6f5e4efff70854'
 source=("$pkgname::git+https://github.com/domdfcoding/apeye#commit=$_commit")
 b2sums=('SKIP')
 
