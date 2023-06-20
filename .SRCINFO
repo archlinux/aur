@@ -1,0 +1,15 @@
+pkgbase = python-termux-language-server
+	pkgdesc = termux's build.sh language server
+	pkgver = 0.0.0
+	pkgrel = 0
+	url = https://github.com/Freed-Wu/termux-language-server
+	arch = any
+	license = GPL3
+	makedepends = python-installer
+	depends = python-pygls
+	depends = python-platformdirs
+	optdepends = python-beautifulsoup4
+	source = https://files.pythonhosted.org/packages/py3/t/termux_language_server/termux_language_server-0.0.0-py3-none-any.whl
+	sha256sums = SKIP
+
+pkgname = python-termux-language-server
