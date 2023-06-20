@@ -1,6 +1,6 @@
 pkgbase = python-sublime-syntax-language-server
 	pkgdesc = sublime-syntax language server
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/sublime-syntax-language-server
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-sublime-syntax-language-server
 	depends = python-pygls
 	depends = python-platformdirs
 	optdepends = python-beautifulsoup4
-	source = https://files.pythonhosted.org/packages/py3/s/sublime_syntax_language_server/sublime_syntax_language_server-0.0.1-py3-none-any.whl
-	sha256sums = 5bfac296c540d6b1236e07d6b8c6095059118bafed78775249cb126ca8c59737
+	source = https://files.pythonhosted.org/packages/py3/s/sublime_syntax_language_server/sublime_syntax_language_server-0.0.2-py3-none-any.whl
+	sha256sums = 0f819d3d0a4eae147fa0f3305a0337e0d76e16e6a73477e42b530713b6993c38
 
 pkgname = python-sublime-syntax-language-server
