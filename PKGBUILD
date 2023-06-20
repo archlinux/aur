@@ -1,33 +1,31 @@
 # Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
 # Contributor: Carl Reinke <mindless2112 gmail com>
 # shellcheck shell=bash
-# shellcheck disable=2034,2154
+# shellcheck disable=SC2034,SC2154
 
 pkgname=lix-git
 _pkgname=${pkgname%-git}
-pkgver=0.10.0.r1666414453.0226bd1c
+pkgver=0.10.12.r1687252947.9bfcc4ab
 pkgrel=1
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/SimonN/lix-unstable.git"
-        "$pkgname-music-2.zip::https://www.lixgame.com/dow/lix-music.zip")
+        "$pkgname-music-1.1.zip::https://www.lixgame.com/dow/lix-music.zip")
 sha512sums=('SKIP'
             '280fd25a479ac8dd24475b014234270a12ab34edca7fb2f7ce4b768259111b1e7626d3ba37ac13d810f0653d23d7c9f212776e94d2c0b31a0de580864771ce9f')
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="https://www.lixgame.com/"
 license=('custom:CC0')
-depends=('allegro' 'enet' 'hicolor-icon-theme' 'liblphobos')
-makedepends=('git' 'ldc' 'dub')
-_dubv=( "4.0.4+5.2.0"   # allegro
+depends=('allegro' 'enet' 'hicolor-icon-theme' 'd-runtime')
+makedepends=('git' 'd-compiler' 'dub')
+_dubv=( "4.0.6+5.2.0"   # allegro
         "1.3.1"         # bolts
         "4.2.0"         # derelict-enet
         "3.0.0-beta.2"  # derelict-util
         "0.4.2"         # enumap
-        "1.2.2"         # libinputvisitor
         "1.3.0"         # optional
         "0.10.6"        # sdlang-d
-        "1.0.2"         # silly
         "0.11.22"       # taggedalgebraic
         "0.7.55"        # unit-threaded
         )
@@ -41,16 +39,12 @@ source+=(   "$pkgname-allegro::git+https://github.com/SiegeLord/DAllegro5.git#ta
             "$pkgname-derelict-enet::git+https://github.com/DerelictOrg/DerelictENet.git#tag=v${_dubv[2]}"
             "$pkgname-derelict-util::git+https://github.com/DerelictOrg/DerelictUtil.git#tag=v${_dubv[3]}"
             "$pkgname-enumap::git+https://github.com/rcorre/enumap.git#tag=v${_dubv[4]}"
-            "$pkgname-libinputvisitor::git+https://github.com/Abscissa/libInputVisitor.git#tag=v${_dubv[5]}"
-            "$pkgname-optional::git+https://github.com/aliak00/optional.git#tag=v${_dubv[6]}"
-            "$pkgname-sdlang-d::git+https://github.com/Abscissa/SDLang-D.git#tag=v${_dubv[7]}"
-            "$pkgname-silly::git+https://gitlab.com/AntonMeep/silly.git#tag=v${_dubv[8]}"
-            "$pkgname-taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v${_dubv[9]}"
-            "$pkgname-unit-threaded::git+https://github.com/atilaneves/unit-threaded.git#tag=v${_dubv[10]}"
+            "$pkgname-optional::git+https://github.com/aliak00/optional.git#tag=v${_dubv[5]}"
+            "$pkgname-sdlang-d::git+https://github.com/Abscissa/SDLang-D.git#tag=v${_dubv[6]}"
+            "$pkgname-taggedalgebraic::git+https://github.com/s-ludwig/taggedalgebraic.git#tag=v${_dubv[7]}"
+            "$pkgname-unit-threaded::git+https://github.com/atilaneves/unit-threaded.git#tag=v${_dubv[8]}"
             )
 sha512sums+=(   'SKIP'
-                'SKIP'
-                'SKIP'
                 'SKIP'
                 'SKIP'
                 'SKIP'
@@ -94,8 +88,6 @@ _build() {
             --parallel \
         `# Forces a recompilation even if the target is up to date:` \
             --force \
-        `# Specifies the compiler binary to use:` \
-            --compiler=ldc \
         `# force FHS compatibility:` \
             --build=releaseXDG \
         `# Save result code for later when failed:` \
