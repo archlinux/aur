@@ -1,6 +1,6 @@
 pkgbase = taskdiary
 	pkgdesc = Simple task manager always ready on cli
-	pkgver = 1.0.r7.d4b1868
+	pkgver = 1.0.r7.d4b1868.r7.d4b1868
 	pkgrel = 1
 	url = https://github.com/ashish-kus/TaskDiary
 	arch = x86_64
