@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.1.beta1.r0.g3202f6515c
+pkgver=10.1.beta3.r0.g443b7549ad
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -58,17 +58,15 @@ provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
         sagemath-optional-packages.patch
         latte-count.patch
-        test-optional.patch
         sagemath-bliss-0.77.patch
         sagemath-tdlib-0.9.patch
         sagemath-maxima-5.47.patch)
 sha256sums=('SKIP'
             '8a5b935d2fd8815489713db6497e9d44aefd61e8553e8cd4acc2cb1adf625ccc'
             '5cd2f88965d7ebab9dfab6f5c2040d363a4a5ae41230219cc7070b907381da5a'
-            'dab5b12d85ddc023f7aff9d886cff8c4bbde903034aeb47aba21caa46352a91d'
             '1a578528bab7be3970954fdfa033afa69fe753da1bab3f41693b0e05e3c849cd'
             '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2'
-            '071ac930a22cdb42faa01fee9db0e62879cbc66d7b7cf2a99766bc3adc32b7aa')
+            '8127a3f6fd46f0320fff8c0ae764cba419a8c3b262907030d9cc4a95bcc1e744')
 
 pkgver() {
   cd sage
@@ -87,8 +85,6 @@ prepare(){
 # Arch-specific patches
 # assume all optional packages are installed
   patch -p1 -i ../sagemath-optional-packages.patch
-# don't list optional packages when running tests
-  patch -p1 -i ../test-optional.patch
 # use correct latte-count binary name
   patch -p1 -i ../latte-count.patch
 # update to tdlib 0.9 (Fedora)
