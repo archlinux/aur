@@ -2,7 +2,7 @@
 
 pkgname=python-glog
 pkgver=0.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc='A simple Google-style logging wrapper for Python'
 arch=('any')
 url='https://github.com/benley/python-glog/'
@@ -19,5 +19,10 @@ build() {
 
 package() {
     python -m installer --destdir="$pkgdir" "${pkgname}-${pkgver}/dist"/*.whl
-    install -D -m644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    local _pyver
+    _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s "../../../lib/python${_pyver}/site-packages/glog-${pkgver}.dist-info/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
