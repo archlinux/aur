@@ -6,12 +6,14 @@
 # If you are coming from the > 0.3.2 BETA please read the instructions:
 # 
 # 1. Install `anytype-legacy`
-# 2. Follow the instructions HERE: https://community.anytype.io/t/anytype-legacy-to-beta-migration-trail-guide/9274 UP to the point 2., BUT NOT 3.
+# 2. Follow the instructions HERE: https://community.anytype.io/t/anytype-legacy-to-beta-migration-trail-guide/9274 
+#    UP to the point 2., BUT NOT 3.
 # 3. Now install `anytype-bin` (this package) and now you can follow point 3. and login with the recovery phrase.
 # 
 # Thanks.
+#                                            
 pkgname=anytype-bin
-pkgver=0.32.2
+pkgver=0.32.3
 pkgrel=1
 pkgdesc="Operating environment for the new internet. Anytype is a next generation software that breaks down barriers between applications, gives back privacy and data ownership to users."
 arch=('x86_64')
@@ -30,7 +32,7 @@ source=(
     "anytype.png"
     )
 noextract=("${_appimage}")
-sha256sums=('9f3ebbbbf3805492a0bbe6f0e918c674824933c5eafd500aea86fb3a9e681f7c'
+sha256sums=('bac446c10b983444d0bbe6b6dd4796dfce2d3855cb7ec8cee9373ee7bbad0af9'
             '1bda1398291bed84ebee1d2c3e94b4c367925a8e2c0bd371aba8d6604e54281f'
             '48ee23a45c29cf081ccf5188c045150b7410007cd21743ce8592974ab18120c0')
 
