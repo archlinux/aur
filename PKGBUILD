@@ -4,26 +4,27 @@
 _pkg="mpfr"
 pkgname="lib32-${_pkg}"
 _pkgver=4.2.0
-# _patchver=13
+_patchver=9
 pkgrel=1
-pkgver="${_pkgver}"
+pkgver="${_pkgver}.p${_patchver}"
 pkgdesc='Multiple-precision floating-point library'
 arch=(x86_64)
 url="https://www.${_pkg}.org"
 license=(LGPL)
-depends=('lib32-gmp')
+depends=('lib32-gmp'
+	 "mpfr=${pkgver}")
 makedepends=('autoconf-archive' 'gcc-multilib')
 source=(
-    "${url}/${_pkg}-${_pkgver}/${_pkg}-${_pkgver}.tar.xz")
-    # patches.diff)
+    "${url}/${_pkg}-${_pkgver}/${_pkg}-${_pkgver}.tar.xz"
+    patches.diff) # wget https://www.mpfr.org/mpfr-4.2.0/allpatches -O patches.diff
 sha256sums=(
-    '06a378df13501248c1b2db5aa977a2c8126ae849a9d9b7be2546fb4a9c26d993' )
-    # '75af77904037442fcd3061a4fee2394194716c542e96989dcfac2445c842daf1')
+    '06a378df13501248c1b2db5aa977a2c8126ae849a9d9b7be2546fb4a9c26d993'
+    '06da0b2a56e365f7e74ac241926f61d2574a0754548ff8116e9ddee0dabacda0')
 
 prepare() {
   cd "${srcdir}/${_pkg}-${_pkgver}"
 
-  # patch -p1 < "$srcdir"/patches.diff
+  patch -p1 < "$srcdir"/patches.diff
   autoreconf -fiv
 }
 

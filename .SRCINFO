@@ -1,6 +1,6 @@
 pkgbase = lib32-mpfr
 	pkgdesc = Multiple-precision floating-point library
-	pkgver = 4.2.0
+	pkgver = 4.2.0.p9
 	pkgrel = 1
 	url = https://www.mpfr.org
 	arch = x86_64
@@ -8,7 +8,10 @@ pkgbase = lib32-mpfr
 	makedepends = autoconf-archive
 	makedepends = gcc-multilib
 	depends = lib32-gmp
+	depends = mpfr=4.2.0.p9
 	source = https://www.mpfr.org/mpfr-4.2.0/mpfr-4.2.0.tar.xz
+	source = patches.diff
 	sha256sums = 06a378df13501248c1b2db5aa977a2c8126ae849a9d9b7be2546fb4a9c26d993
+	sha256sums = 06da0b2a56e365f7e74ac241926f61d2574a0754548ff8116e9ddee0dabacda0
 
 pkgname = lib32-mpfr
