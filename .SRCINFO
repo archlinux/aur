@@ -1,17 +1,15 @@
 pkgbase = fexl-git
-	pkgdesc = A small embeddable interpreter for a programming language based on functions.
-	pkgver = 20131020
+	pkgdesc = Simple but powerful functional scripting language
+	pkgver = 27.18.0.r12.83e9b05
 	pkgrel = 1
-	url = http://fexl.com/code/
+	epoch = 1
+	url = https://fexl.com/
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = MIT
 	makedepends = git
-	makedepends = python2
-	source = git://github.com/chkoreff/Fexl
-	source = http://kmkeen.com/tmp/ldsed
-	md5sums = SKIP
-	md5sums = dcdf078713e95432f2ab8be9fb501fe3
+	depends = glibc
+	source = fexl::git+https://github.com/chkoreff/Fexl
+	b2sums = SKIP
 
 pkgname = fexl-git
-
