@@ -2,11 +2,12 @@
 _pkgname=autoconf-language-server
 pkgname="python-$_pkgname"
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="autoconf language server"
 arch=(any)
 url=https://github.com/Freed-Wu/autoconf-language-server
 depends=(python-pygls python-platformdirs)
+optdepends=(autoconf)
 makedepends=(python-installer)
 license=(GPL3)
 _py=py3
