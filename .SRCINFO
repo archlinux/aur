@@ -1,0 +1,10 @@
+pkgbase = hammer2rgb
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = libusb
+	source = https://github.com/sptls/hammer2rgb_linux/releases/download/1.0/hammer2rgb-1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = hammer2rgb
