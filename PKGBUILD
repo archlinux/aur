@@ -9,7 +9,7 @@ _tbbpkgminorver=6
 
 pkgname=usd
 pkgver=23.05
-pkgrel=7
+pkgrel=9
 pkgdesc='3D VFX pipeline interchange file format'
 arch=(x86_64)
 url='https://openusd.org'
@@ -56,7 +56,7 @@ sha512sums=('SKIP'
             'e9d4d37b6243b32dc4dbf1ab8b5b1c6a2ceb87a81b7ac711afd95244131ac5305e2369b93581c4670ca15f8cdc42482a8cd373e22779322d52e66e2a5ecdf08b'
             'ba35f847b023139dcc3b38ec9308d52c7358967f22c38d481a0a9d9fee1ced674b56850bc9f7e07c350a144c1e575ec1f77a1a0b970dc4ceddcae904d6bc403f'
             '167e9bb2bced935cd9513b4ecd40c9e73ada0c794f1e5f11dc3e2844bedc07ac082aa8fb88e50c86dc2c80854ed95ddc22472f6fdc978765398079164d1c15c5'
-            '48ba8a4c84e257be868a8170a82dc0f56c281cce022bc4bdffafb07a1dbb938014a71ac40d4e5cc4f030acc11f46a785c2827edf470b2ef6b583dfbfe3dac4b8')
+            '8094b0238f320044f939917cde3ff3541bfffbd65daa7848626ca4ad930635fe64c78cbdef1ee3469134b14068a12416542ac263d8115fa27e0ad70fa20a7ecd')
 
 prepare() {
   patch --directory=USD --forward --strip=1 --input="${srcdir}/pyside6.patch"
@@ -91,7 +91,7 @@ build() {
     -DPXR_BUILD_TESTS=ON
     -DPXR_BUILD_DOCUMENTATION=ON
     -DBOOST_ROOT="${srcdir}"/boost
-    -DTBB_ROOT_DIR="${srcdir}"/tbb2019/usr
+#     -DTBB_ROOT_DIR="${srcdir}"/tbb2019/usr
     -DBoost_NO_BOOST_CMAKE=ON
     -DBUILD_SHARED_LIBS=ON
     -DPXR_MALLOC_LIBRARY:path=/usr/lib/libjemalloc.so
