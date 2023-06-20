@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Malt
+Comment=Freelancing and professional networking platform
+Exec=malt
+Icon=malt
+Terminal=false
+Categories=Development;WebDevelopment;Business;Jobs;
+Keywords=freelance;missions;work;platform;professional;networking
+

@@ -1,0 +1,20 @@
+pkgbase = malt
+	pkgdesc = A native desktop application for easy access to Malt, the online freelance and professional assignment platform.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.malt.com/
+	arch = x86_64
+	license = GNU AGPL
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	provides = malt
+	conflicts = malt
+	source = gen.png
+	source = gen.desktop
+	source = no-scrollbar.css
+	sha256sums = 378a556cbdd699efe1031970cbff94c4ea5f7edca4af76b0374acfaf3430a1e5
+	sha256sums = 7e9db082baae45b560e7e8cf9d8ba176f80c93487e6fcc9eb7c227fef007ea81
+	sha256sums = 1474a74c47dfeb879d4a2538b3b24bfdca75be878fbe1c04fd82fba2e112f381
+
+pkgname = malt
