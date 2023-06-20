@@ -3,7 +3,7 @@
 
 pkgname=webcatalog-bin
 _pkgname=webcatalog
-pkgver=49.3.0
+pkgver=49.3.1
 pkgrel=1
 pkgdesc="Turn Any Websites into Real Desktop Apps"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "${_pkgname}.patch"
 )
 sha256sums=(
-    'ecd517eee6918116da5035ec1d5bda9fa5f1e65fc2c67e274bd266a7611b31b3'
+    'bbda83200fdf36323ead0751fbaad4f8cb7e4fa334ef9c223f37da00751b606b'
     '8e13556f9eab7880fbc586d625147e7602d8d99cf0f23a6a130e0eb821a9a7fd'
 )
 
