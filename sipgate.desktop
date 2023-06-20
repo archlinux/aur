@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sipgate softphone
+Comment=Make phone calls with the Sipgate softphone
+Exec=/opt/sipgate-softphone/sipgate-softphone
+Icon=/opt/sipgate-softphone/sipgate-softphone.png
+MimeType=x-scheme-handler/softphone;x-scheme-handler/tel;x-scheme-handler/callto;
+Categories=Office;
+Terminal=false
+StartupNotify=true
