@@ -8,7 +8,7 @@ pkgbase = mpfr-static
 	license = LGPL3
 	depends = glibc
 	depends = gmp
-	depends = mpfr==4.2.0.p9
+	depends = mpfr=4.2.0.p9
 	options = debug
 	source = https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.0.tar.xz
 	source = https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.0.tar.xz.sig
