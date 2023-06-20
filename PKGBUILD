@@ -1,16 +1,16 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 
 pkgname=lib32-mangohud-git
-pkgver=0.6.9.1.r68.g0ae2e42
+pkgver=0.6.9.1.r79.g30748bd
 pkgrel=1
-pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (32 bit library)."
+pkgdesc="32-bit libraries for MangoHud and MangoApp"
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
-makedepends=('git' 'glslang' 'lib32-libx11' 'libxnvctrl' 'meson' 'nlohmann-json' 'python-mako' 'vulkan-headers')
-depends=('lib32-dbus' 'lib32-vulkan-icd-loader')
-provides=('lib32-mangohud')
-conflicts=('lib32-mangohud')
+makedepends=('git' 'glfw-x11' 'glslang' 'lib32-cmocka' 'lib32-libglvnd' 'libxnvctrl' 'meson' 'nlohmann-json' 'python-mako')
+depends=('lib32-dbus' 'lib32-gcc-libs' 'lib32-libx11' 'lib32-vulkan-icd-loader')
+provides=('lib32-mangohud' 'lib32-mangoapp')
+conflicts=('lib32-mangohud' 'lib32-mangoapp')
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
@@ -22,8 +22,8 @@ pkgver() {
 build() {
     local meson_options=(
         --wrap-mode=nofallback
+        -Dmangoapp_layer=true
         -Dinclude_doc=false
-        -Dtests=disabled
         $pkgname
     )
 
@@ -34,13 +34,12 @@ build() {
 
     arch-meson "${meson_options[@]}" build --libdir lib32
 
-    ninja -C build
+    meson compile -C build
 }
 
 package() {
-    meson install --destdir="$pkgdir" -C build --tags runtime
+    meson install -C build --tags runtime,mangoapp --destdir "$pkgdir"
 
-    install -Dm664 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    rm -rf "$pkgdir/usr/share/vulkan"
+    install -Dm 0664 "$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
     rm -rf "$pkgdir/usr/bin"
 }
