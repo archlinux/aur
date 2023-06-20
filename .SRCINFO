@@ -1,16 +1,15 @@
 pkgbase = r-gifski
 	pkgdesc = Highest Quality GIF Encoder
-	pkgver = 1.12.0
+	pkgver = 1.12.0.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gifski
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = r
 	optdepends = r-ggplot2
 	optdepends = r-gapminder
-	source = https://cran.r-project.org/src/contrib/gifski_1.12.0.tar.gz
-	sha256sums = f8741330bbd14d8191acdbfdefe80d89ac5f81021bad95868b3cc33cd9dc6416
+	source = https://cran.r-project.org/src/contrib/gifski_1.12.0-1.tar.gz
+	sha256sums = c2f290d76620d1bbfa8fac477c56e411a632e999759e17068b04935b72e1f9f5
 
 pkgname = r-gifski
