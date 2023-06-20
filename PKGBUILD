@@ -2,7 +2,7 @@
 pkgbase=python-specutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('any')
@@ -19,13 +19,14 @@ makedepends=('python-setuptools-scm'
              'graphviz')
 checkdepends=('python-pytest-astropy-header'
               'python-pytest-doctestplus'
-              'python-pytest-remotedata') # gwcs, ndcube already in makedepends
+              'python-pytest-remotedata'
+              'python-matplotlib') # gwcs, ndcube already in makedepends
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://stsci.box.com/shared/static/28a88k1qfipo4yxc4p4d40v4axtlal8y.fits"
         "https://data.sdss.org/sas/dr16/sdss/spectro/redux/26/spectra/1323/spec-1323-52797-0012.fits"
         'use_local_doc_fits_offline.patch')
 #https://dr15.sdss.org/sas/dr15/manga/spectro/redux/v2_4_3/8485/stack/manga-8485-1901-LOGRSS.fits.gz
-md5sums=('078f0c62f4d75427bc4b625a4bb5058d'
+md5sums=('1245b4159174d5b96f78f42547f82773'
          '6de4c8ee5659e87a302e3de595074ba5'
          '3586c5d0810108a182ba9146908dc180'
          '49c57591fdc60365a3e31a0f10e4e57d')
@@ -51,7 +52,7 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     # skip some tests that need lots of online data or cost lots of time
-    pytest "build/lib" \
+    pytest --ignore=docs/_build \
         --ignore=build/lib/specutils/io/asdf/tags/tests/test_spectra.py \
         --ignore=build/lib/specutils/io/default_loaders/tests/test_apogee.py \
         --deselect=build/lib/specutils/tests/test_loaders.py::test_ctypye_not_compliant[remote_data_path0] \
