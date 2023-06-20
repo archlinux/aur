@@ -2,7 +2,7 @@
 # Previous Maintainer(s): parnmatt <matt@parnmatt.co.uk>, 2ion <dev@2ion.de>
 
 pkgname=cpdf-bin
-pkgver=2.5
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='Coherent PDF commandline tool binary to manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers, compress, etc.'
 arch=('x86_64' 'i686')
@@ -16,12 +16,11 @@ conflicts=('cpdf')
 [ "$CARCH" = "x86_64" ] && carch_path="Linux-Intel-64bit"
 [ "$CARCH" = "i686" ] && carch_path="Linux-Intel-32bit"
 
-_pkgname=${pkgname%-bin}
 source=("https://github.com/coherentgraphics/cpdf-binaries/archive/refs/tags/v2.5.1.tar.gz")
 sha256sums=("d6dea9050d055f90917afe75d244a7b7b6b6bb2f52da466bc06f3ead08a3e2d6")
 
 package() {
-  cd "$srcdir/cpdf-binaries-$pkgver.$pkgrel" || return 1
+  cd "$srcdir/cpdf-binaries-$pkgver" || return 1
   install -Dm755 "$carch_path/cpdf"   "${pkgdir}/usr/bin/cpdf"
   install -Dm644 LICENSE              "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -Dm644 cpdfmanual.pdf       "${pkgdir}/usr/share/doc/${_pkgname}/cpdfmanual.pdf"
