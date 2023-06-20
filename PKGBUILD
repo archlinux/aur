@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=tear-pages
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Simple script to remove the first page of a PDF"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python' 'python-pypdf2')
 makedepends=('python-setuptools')
 source=(https://pypi.python.org/packages/source/t/tear-pages/tear-pages-${pkgver}.tar.gz)
-sha256sums=('e3a9c072de96405732b20297ea044db129305968579997a232922628ae4c663b')
+sha256sums=('9810fba3f91bb0b12dc1daf6a89e46563eb0cf09fddba365c2f4baf102041f5d')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
