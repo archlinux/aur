@@ -6,9 +6,9 @@
 pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=29.0
-_pkgver=29.0.91
-pkgrel=0.91
-pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version. Uses tree-sitter."
+_pkgver=29.0.92
+pkgrel=0.92
+pkgdesc="The extensible, customizable, self-documenting real-time display editor. Pretest version"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
@@ -35,7 +35,7 @@ validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B')
 #
 source=(http://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig}
         nemacs readme_or_weep.txt)
-b2sums=('363c6ce29e04fca383b803fc9b7eced8966ee428fd18dd8a5199720e7b2d0b794328b0184cd6be9452f99989a16e23a3bfc48aabf644fa461a3d17d0d3a18fe1'
+b2sums=('a01460f9cc3ad5ef3f7698413f87b409c8c45510b018de397384f15f7fbd30b8f0e5a520c8858d8e8cce895fb3a43b9717816180ba3d38c23020d152b9d94eb1'
         'SKIP'
         '58e028b439d3c7cf03ea0be617b429a2c54e7aa1b8ca32b5ed489214daaa71e22c323de9662761ad2ce4de58e21dbe45ce6ce198f402686828574f8043d053d0'
         '98cb6458eebfa1440eea1318c6974c135d1b9e1a559fb1ca4bca35fb4697cc8cd6d33b19427efead0f3e061556ba19e774eee4f4566673494ac2470da4725b28')
@@ -57,7 +57,6 @@ build() {
     --without-m17n-flt
     --with-libotf
     --without-imagemagick
-    --with-tree-sitter
 # Beware https://debbugs.gnu.org/cgi/bugreport.cgi?bug=25228
 # dconf and gconf break font settings set in ~/.emacs
 # If you insist you'll need to play gymnastics with
@@ -68,6 +67,8 @@ build() {
     --without-gconf
 # Welcome to the JIT new world.
     --with-native-compilation=aot
+# welcome to the new syntax highlighting world.
+    --with-tree-sitter
 )
   ./configure "${confopts[@]}"
   make
