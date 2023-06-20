@@ -1,21 +1,19 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 
 pkgname=mangohud-git
-pkgver=0.6.8.r145.g020e848
+pkgver=0.6.9.1.r79.g30748bd
 pkgrel=1
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more."
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
-makedepends=('git' 'glslang' 'libx11' 'libxnvctrl' 'meson' 'python-mako' 'vulkan-headers')
-depends=('dbus' 'hicolor-icon-theme' 'vulkan-icd-loader')
-optdepends=(
-    'libxnvctrl: NVIDIA GPU stats'
-    'lib32-mangohud-git: 32-bit support'
-)
-provides=('mangohud' 'mangohud-common')
-conflicts=('mangohud' 'mangohud-common' 'mangohud-common-git')
-replaces=('mangohud-common-git')
+makedepends=('git' 'appstream' 'cmocka' 'glfw-x11' 'glslang' 'libxnvctrl' 'meson' 'nlohmann-json' 'python-mako')
+depends=('dbus' 'fmt' 'gcc-libs' 'glew' 'hicolor-icon-theme' 'libglvnd' 'libx11' 'python-matplotlib' 'python-numpy' 'spdlog' 'vulkan-icd-loader')
+optdepends=('libxnvctrl: NVIDIA GPU stats by XNVCtrl'
+            'glfw-x11: Required for MangoApp'
+            'gamescope: Use MangoApp as an overlay within gamescope')
+provides=('mangohud' 'mangoapp')
+conflicts=('mangohud' 'mangoapp' 'mangohud-common-git')
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
@@ -27,20 +25,18 @@ pkgver() {
 build() {
     local meson_options=(
         --wrap-mode=forcefallback
-        -Dtests=disabled
+        -Dmangoapp=true
+        -Dmangohudctl=true
+        -Dmangoapp_layer=true
         $pkgname
     )
     arch-meson "${meson_options[@]}" build
 
-    ninja -C build
+    meson compile -C build
 }
 
 package() {
-    meson install --destdir="$pkgdir" -C build
+    meson install -C build --destdir "$pkgdir"
 
-    if [ -f "$pkgdir/usr/lib/libMangoHud.so" ]; then
-        mv "$pkgdir/usr/lib/libMangoHud.so" "$pkgdir/usr/lib/mangohud/"
-    fi
-
-    install -Dm664 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm 0664 "$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
