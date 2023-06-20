@@ -20,8 +20,9 @@ install=
 source=("$pkgname.png"
         "$pkgname.desktop"
         "no-scrollbar.css")
-sha256sums=('0c0453d9ab323507cec3ace0783523f45ae691121fad406990644f73fa4e5ee1'
-            '791f0ed963f7823181fd6b380e312bafb6fd9dc2c2e54daeb476b3d451bcd019'
+        
+sha256sums=('791f0ed963f7823181fd6b380e312bafb6fd9dc2c2e54daeb476b3d451bcd019'
+            '0c0453d9ab323507cec3ace0783523f45ae691121fad406990644f73fa4e5ee1'
             '65f4043f2206e43cbbc510246f6a35a673e829bd8ab5b90b790b1ba7c14ea26b')
 
 
