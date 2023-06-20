@@ -1,15 +1,16 @@
 pkgbase = r-iterators
 	pkgdesc = Provides Iterator Construct
 	pkgver = 1.0.14
-	pkgrel = 1
+	pkgrel = 11
 	url = https://cran.r-project.org/package=iterators
 	arch = any
 	license = Apache
 	checkdepends = r-runit
 	depends = r
-	optdepends = r-runit
 	optdepends = r-foreach
+	optdepends = r-runit
 	source = https://cran.r-project.org/src/contrib/iterators_1.0.14.tar.gz
+	md5sums = e1d875f0ddec6834dd33e56c4f04a706
 	sha256sums = cef3075a0930e1408c764e4da56bbadd4f7d14315809df8f38dd51f80ccc677b
 
 pkgname = r-iterators
