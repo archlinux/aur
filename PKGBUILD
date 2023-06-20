@@ -1,38 +1,23 @@
 
 _pkgname=minq-youtube
 pkgname="${_pkgname}-git"
-pkgver=r2.bc198b90d80cda547291fc0b7c1b41ba3f9f49b5
+pkgver=r2.e3a4c1534e3ab5f399e2f80c5392d547185aa9fc
 pkgrel=1
 epoch=
-pkgdesc="Terminal youtube browser"
+pkgdesc='Browse youtube in your terminal. Automatically caches all network requests so that youtube can be enjoyed during an ISP outage.'
 arch=(any)
 url="https://github.com/kuche1/${_pkgname}.git"
 license=('GPL')
-groups=()
-depends=(python python-minq-storage-git)
-makedepends=(git python)
-checkdepends=()
+depends=(python python-pytube python-climage yt-dlp)
+makedepends=(git)
 optdepends=()
 provides=("${_pkgname}")
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("git+$url")
-noextract=()
-md5sums=("SKIP")
-validpgpkeys=()
+md5sums=('SKIP')
 
 pkgver() {
 	cd "${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse HEAD)"
-}
-
-check() {
-	cd "${_pkgname}"
-	python3 --version
 }
 
 package() {
@@ -42,5 +27,5 @@ package() {
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	mkdir -p "${pkgdir}/usr/bin/"
-	ln -s "/opt/${pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -s "/opt/${pkgname}/minq_youtube.py" "${pkgdir}/usr/bin/${_pkgname}"
 }
