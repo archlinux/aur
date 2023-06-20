@@ -2,7 +2,7 @@
 
 pkgname=fakturama
 pkgver=2.1.3.c
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates invoices with ZUGFeRD / XRechnung support"
 arch=('x86_64')
 url="https://www.fakturama.info"
@@ -28,12 +28,14 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://files.fakturama.info/release/v2.1.3/Installer_Fakturama_linux_x64_2.1.3c.tar.gz"
 	"fakturama2.desktop"
 	"fakturama2-clean.desktop" # version with "-clean" flag
+	"startup_script"
 )
 noextract=()
 sha256sums=(
 	"fad86a0a3f5f2b62b646129b6648c6b9097fb83a010e967ad3fed9c7d60ed38c"
-	"550964ece2b39f76e4985ecc2203fee63f57ef669d8b1ae170d80b3cfa5cb54c"
-	"96ac2d3815e37f993ea92c0598c5b4350d69e57f0c415bde7dafbecfe1e4e407"
+	"ad52a6adf49602c7a1ed0d7e90c142fe7d4c802ff223ac2de33ef5521feae795"
+	"2a2c3fda3a2c4275e112bf6c6963d76d26bcf99c75f21028ac8d7d2b012c4dd7"
+	"d39c1a14e9399070b51569f43063716dd3ef166ca946c0e6a3af47b1dde44504"
 )
 
 prepare() {
@@ -66,6 +68,9 @@ package() {
 	cp -r "$srcdir/features" "$_main_application"
 	cp -r "$srcdir/p2" "$_main_application"
 	cp -r "$srcdir/plugins" "$_main_application"
+
+	# copy startup_script
+	install -Dm 755 "$srcdir/startup_script" "$_main_application/startup_script"
 
 	# Copy other files
 	install -Dm 644 "$srcdir/icon.xpm" "$pkgdir/usr/share/pixmaps/fakturama2.xpm"

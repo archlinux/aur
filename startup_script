@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# fix DBus error
+# see: https://github.com/adoptium/adoptium-support/issues/785#issuecomment-1585740194
+# see: https://www.fakturama.info/community/postid/20535/
+mkdir -p /tmp/SWT-GDBusServer
+
+/usr/share/fakturama2/Fakturama $@
