@@ -1,9 +1,9 @@
 # Maintainer: Michael Gruz <michael.gruz@gmail.com>
 
 pkgname=cura-5-plugin-octoprint
-pkgver=3.7.2
+pkgver=3.7.3
 _pkgname=Cura-OctoPrintPlugin-${pkgver}
-pkgrel=5
+pkgrel=0
 pkgdesc="Cura plugin which enables printing directly to OctoPrint and monitoring the progress"
 arch=('any')
 license=('GPL3')
@@ -15,10 +15,10 @@ source=("https://github.com/fieldOfView/Cura-OctoPrintPlugin/archive/refs/tags/v
         "git+https://github.com/jstasiak/python-zeroconf.git"
         "git+https://github.com/pydron/ifaddr.git"
         "CMakeLists.txt.patch")
-sha256sums=('ad61c8320c78ae884ec55748758c8c04c077e381471a1471fa074c9772d80035'
+sha256sums=('6549bbafc1ac5e00e6baa57f7e2ff10ed05a37553fc647543758be1d2912fcf7'
             'SKIP'
             'SKIP'
-            'a2f55c90ff9ec928b6f204d31d5d2c7a604bfc91ee057ca5c820970526d9fb3b')
+            '080788bd6a25644c4f7120f1d570a63ce389db117553df685a940ddab29a6db2')
 
 prepare() {
   cd $srcdir/$_pkgname

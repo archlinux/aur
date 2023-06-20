@@ -1,6 +1,6 @@
 --- CMakeLists.txt
 +++ CMakeLists.txt
-@@ -15,25 +15,25 @@
+@@ -15,29 +15,29 @@
      WebcamsModel.py
      LICENSE
      README.md
@@ -25,6 +25,11 @@
  
  install(DIRECTORY ifaddr
 -    DESTINATION lib/cura/plugins/OctoPrintPlugin/ifaddr
++    DESTINATION cura/plugins/OctoPrintPlugin
+ )
+ 
+ install(DIRECTORY async-timeout
+-    DESTINATION lib/cura/plugins/OctoPrintPlugin/async-timeout
 +    DESTINATION cura/plugins/OctoPrintPlugin
  )
  
