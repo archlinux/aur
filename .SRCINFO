@@ -1,6 +1,6 @@
 pkgbase = r-ttservice
 	pkgdesc = A Service for Tidy Transcriptomics Software Suite
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ttservice
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-ttservice
 	depends = r
 	depends = r-dplyr
 	optdepends = r-methods
-	source = https://cran.r-project.org/src/contrib/ttservice_0.3.5.tar.gz
-	sha256sums = c13993c3939a714332cd4ed01d7ba2cf186424571d6282161abac90877d55618
+	source = https://cran.r-project.org/src/contrib/ttservice_0.3.6.tar.gz
+	sha256sums = eb8eec2e3216df490c639c80ca9bc03309b6c351d2f0cf7ac8c8345b50d5a184
 
 pkgname = r-ttservice
