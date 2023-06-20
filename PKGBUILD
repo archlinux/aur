@@ -1,8 +1,8 @@
 # Maintainer: Lukas Deutz <aur at deutz dot io>
 
 pkgname=filen-desktop-appimage
-pkgver=2.0.15
-pkgrel=2
+pkgver=2.0.22
+pkgrel=1
 pkgdesc="Filen.io Desktop Client - Zero knowledge end-to-end encrypted cloud storage"
 arch=('x86_64')
 url="https://filen.io/"
@@ -11,11 +11,11 @@ conflicts=()
 depends=(fuse2)
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 source=(
-  "https://cdn.filen.io/desktop/release/${pkgver}/filen_${arch[0]}.AppImage"
+  "https://cdn.filen.io/desktop/release/v${pkgver}/filen_${arch[0]}.AppImage"
   filen-desktop.desktop.patch
   filen-desktop.sh
 )
-sha512sums=('9f1c9e1aae0a5dc77d1c9c0503ab4eae80ec482848f4ae19e1dbad2b2700cda6424a7a24132ef5d97c11e89611a09ae12667adcf12ee084f66429c2b47c65d19'
+sha512sums=('b1b556342f7b9d63ae44772b3dc3e04059b2dc44f07734616f04df17c8c06ac1347f22d5c938f233ab82fc5f807ebd8d78538fd0ec03922fa6bc036db2458064'
             'ebe6e5fd8569c6ce16eb3a880bac7a119c39d718f08632e750d6d6ce8aeac2c11fb070da4cb7941c1a096fd419885203af06ff5ecc0df8a42c4c98d25f7000b0'
             '9d24075d297be466fcb2d7dead6b856b6336daf7f2dbd6fb123201a775a384d986044a2d74d47efbe3435fc1b9d165a6e5a3290ef2cfacec195b8e942ad8bdcb')
 
