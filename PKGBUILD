@@ -1,17 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deltachat-desktop-appimage
-pkgver=1.37.1
+pkgver=1.38.0
 pkgrel=1
 pkgdesc="Email-based instant messaging for Desktop."
 arch=('x86_64')
 url="https://github.com/deltachat/deltachat-desktop"
+_downloadurl="https://download.delta.chat/desktop"
 license=('GPL3')
-provides=(deltachat)
+provides=("${pkgname%-desktop-appimage}")
 conflits=("${pkgname%-appimage}")
 depends=('hicolor-icon-theme' 'zlib' 'glibc')
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/DeltaChat-${pkgver}.AppImage")
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_downloadurl}/v${pkgver}/DeltaChat-${pkgver}.AppImage")
 _install_path="/opt/appimages"
-sha256sums=('383303b6d81e7cc7ef0f3ec81b9bd8a808282d645b6a6aae59de5eff7068e2f9')
+sha256sums=('b4e0f4411698884d195389c8f3be8155a08c6c7e711212e900cbfde473edb87d')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
