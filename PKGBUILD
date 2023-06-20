@@ -2,7 +2,7 @@
 # Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 
 pkgname=roundcubemail-plugin-twofactor-git
-pkgver=r206.3c76f45
+pkgver=r210.19552fc
 pkgrel=1
 pkgdesc="Adds two-step verification (TOTP) to the Roundcube login process"
 url="https://github.com/alexandregz/twofactor_gauthenticator"
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('roundcubemail>=0.9.5')
 makedepends=('git')
 replaces=('roundcube-twofactor-git')
-install=${pkgname}.install
-source=("${pkgname}::git+https://github.com/alexandregz/twofactor_gauthenticator.git#commit=3c76f459e83f06c965e140a1f344fdcb0f4030e2")
+install="${pkgname}.install"
+source=("${pkgname}::git+https://github.com/alexandregz/twofactor_gauthenticator.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -30,5 +30,5 @@ package() {
   find . -type f -name '*php*' -exec install -m644 {} "${_instdir}"/{} \;
   find . -type f -name '*js*' -exec install -m644 {} "${_instdir}"/{} \;
   find . -type f -name '*inc' -exec install -m644 {} "${_instdir}"/{} \;
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }

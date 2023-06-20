@@ -1,6 +1,6 @@
 pkgbase = roundcubemail-plugin-twofactor-git
 	pkgdesc = Adds two-step verification (TOTP) to the Roundcube login process
-	pkgver = r206.3c76f45
+	pkgver = r210.19552fc
 	pkgrel = 1
 	url = https://github.com/alexandregz/twofactor_gauthenticator
 	install = roundcubemail-plugin-twofactor-git.install
@@ -9,7 +9,7 @@ pkgbase = roundcubemail-plugin-twofactor-git
 	makedepends = git
 	depends = roundcubemail>=0.9.5
 	replaces = roundcube-twofactor-git
-	source = roundcubemail-plugin-twofactor-git::git+https://github.com/alexandregz/twofactor_gauthenticator.git#commit=3c76f459e83f06c965e140a1f344fdcb0f4030e2
+	source = roundcubemail-plugin-twofactor-git::git+https://github.com/alexandregz/twofactor_gauthenticator.git
 	sha512sums = SKIP
 
 pkgname = roundcubemail-plugin-twofactor-git
