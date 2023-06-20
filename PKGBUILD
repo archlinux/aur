@@ -6,8 +6,8 @@
 
 pkgname=powerdevil-ddcutil
 _pkgname=${pkgname%-ddcutil}
-pkgver=5.27.5
-pkgrel=3
+pkgver=5.27.6
+pkgrel=1
 pkgdesc='Power management for KDE plasma with DDC/CI enabled'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -22,7 +22,7 @@ optdepends=('kinfocenter: for the Energy Information KCM'
             'bluez-qt: wireless power saving actions')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$pkgver/$_pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('0379862c57efef4ce980f6c9583d66deafde1ed522f0e129aa50cef038fb500e'
+sha256sums=('6b230fabf2738455e3dfc3ab15e70b942ec827dc3080434774c6cb19d3217fb5'
             'SKIP')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
