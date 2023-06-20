@@ -1,0 +1,29 @@
+pkgbase = vala-panel-applets-gpl
+	pkgdesc = Cyclically spawns a script/program, captures its output and displays the resulting string in the panel
+	pkgver = 2022.05.20
+	pkgrel = 1
+	url = https://gitlab.com/vala-panel-project/vala-panel-applets-gpl
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = vala
+	makedepends = gtk3
+	makedepends = vala-panel>=0.4.62
+	makedepends = libwnck3
+	makedepends = meson
+	makedepends = ninja
+	source = https://gitlab.com/vala-panel-project/vala-panel-applets-gpl/-/archive/74de68ced30d5195a3e47361ddfb30823be0a757/vala-panel-applets-gpl-74de68ced30d5195a3e47361ddfb30823be0a757.tar.gz
+	sha256sums = 708c419cf4e78aeb7d53514ae399dff9d0395eb3060a2c6dba91c5f027f7eef0
+
+pkgname = vala-panel-applets-xembed
+	pkgdesc = Old XEmbed system tray for vala-panel
+	depends = gtk3
+	depends = vala-panel>=0.4.62
+	depends = libx11
+	depends = libxrender
+
+pkgname = vala-panel-applets-icontasks
+	pkgdesc = Budgie's icontasks for vala-panel
+	depends = gtk3
+	depends = vala-panel>=0.4.62
+	depends = libwnck3
