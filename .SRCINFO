@@ -1,7 +1,7 @@
 pkgbase = python-torchaudio-rocm
 	pkgdesc = Data manipulation and transformation for audio signal processing, powered by PyTorch (ROCm Support)
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pytorch/audio
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = python-torchaudio-rocm
 	makedepends = python-setuptools
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = gcc11
 	makedepends = boost
 	depends = python
 	depends = python-pytorch-rocm

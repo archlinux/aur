@@ -6,14 +6,14 @@ pkgname=python-torchaudio-rocm
 _pkgname=audio
 pkgver=2.0.2
 _sox_ver=14.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch (ROCm Support)"
 arch=('x86_64' 'i686')
 url="https://github.com/pytorch/audio"
 license=('BSD')
 depends=('python' 'python-pytorch-rocm' 'bzip2' 'xz' 'opencore-amr' 'lame' 'libogg' 'libFLAC.so' 'libvorbis' 'opus' 'opusfile' 'zlib')
 optdepends=('python-kaldi-io')
-makedepends=('git' 'python-setuptools' 'cmake' 'ninja' 'gcc11' 'boost')
+makedepends=('git' 'python-setuptools' 'cmake' 'ninja' 'boost')
 conflicts=('python-torchaudio-git' 'python-torchaudio')
 source=("git+$url#tag=v${pkgver}"
         "git+https://github.com/kaldi-asr/kaldi.git"
@@ -56,10 +56,6 @@ prepare() {
 
 build() {
   cd "$srcdir/${_pkgname}"
-
-  # Allow this to build with ROCm, which is not compatible with GCC 12 yet
-  export CC=/usr/bin/gcc-11
-  export CXX=/usr/bin/g++-11
   BUILD_SOX=1 USE_ROCM=1 ROCclr_DIR=/opt/rocm/ python3 setup.py build
 }
 
