@@ -17,7 +17,7 @@
 
 pkgname=wireguird
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI frontend to connect to and manage WireGuard tunnels (GTK3)"
 arch=('x86_64')
 url="https://github.com/UnnoTed/wireguird"
@@ -58,12 +58,10 @@ build() {
   export GOCACHE=${srcdir}/go/.cache
 
   # Compile binary with gcc-go compiler
+  go clean -cache -modcache
   go generate
   go build -modcacherw -ldflags "-s -w" -trimpath -o bin/${pkgname}
-
-  # Uncomment if you want to clean the cache after compiling.
-  # Without the cache, subsequent build times will not benefit.
-  #go clean -modcache
+  go clean -cache -modcache
 
 }
 
