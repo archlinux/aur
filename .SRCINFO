@@ -1,14 +1,14 @@
 pkgbase = jdk
 	pkgdesc = Oracle Java
-	pkgver = 20
+	pkgver = 20.0.1
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = custom
 	makedepends = python-html2text
-	noextract = jdk-20_doc-all.zip
-	source = https://download.oracle.com/java/20/archive/jdk-20_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/20+36/bdc68b4b9cbc4ebcb30745c85038d91d/jdk-20_doc-all.zip
+	noextract = jdk-20.0.1_doc-all.zip
+	source = https://download.oracle.com/java/20/archive/jdk-20.0.1_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/20.0.1+9/b4887098932d415489976708ad6d1a4b/jdk-20.0.1_doc-all.zip
 	source = jdk-20_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-20-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
@@ -16,11 +16,11 @@ pkgbase = jdk
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = 1157bba2126efd115b5133cc078e6bcc52b15583657e980a5197f34a7505222e
-	sha256sums = 39ac14b6caea4552777b92baf11b4afbeb05192ca2aebc8b752ff21f52b43e64
+	sha256sums = bb118683feb4d66476198c8176a9845a9125bf5b303089b56b4b59ff9a544ccf
+	sha256sums = 36f9fa700951cb53373554be69337294ab92269f45ddce66db8c9575fbf94a8f
 	sha256sums = b5703ac13aa6ff7c8323b090a2996adc262895b6fcba6264262db3ac4789aec9
-	sha256sums = 572c5542bb6debfde01388197e429844679f1e6be7c7a39fd129a8f8cad2c562
-	sha256sums = 8b1699882c1a28b841bfc60fa958ddd5db80c56987d9da8735d31209a145f92f
+	sha256sums = def8848024c91d814e5f43a10d091c9d30917ab74b5098a7c22a5993e2f67370
+	sha256sums = 8a95581b09260cd67a26518b6a8282f3e67396b19a66d4e5f32f8285fca096be
 	sha256sums = b51dda29ac5b8a0d3386354010ccaae1de628c462d1f6bde3cfc28729b24ae0c
 	sha256sums = d27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed
 	sha256sums = 7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176
@@ -42,10 +42,10 @@ pkgname = jre
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=20
 	provides = java-runtime-jdk20
-	provides = jre20-jdk=20-1
+	provides = jre20-jdk=20.0.1-1
 	provides = java-runtime-headless=20
 	provides = java-runtime-headless-jdk=20
-	provides = jre20-jdk-headless=20-1
+	provides = jre20-jdk-headless=20.0.1-1
 	backup = etc/java-jdk/management/jmxremote.access
 	backup = etc/java-jdk/management/jmxremote.password.template
 	backup = etc/java-jdk/management/management.properties
@@ -65,12 +65,12 @@ pkgname = jdk
 	pkgdesc = Oracle Java Development Kit
 	install = jdk.install
 	depends = java-environment-common
-	depends = jre=20-1
+	depends = jre=20.0.1-1
 	depends = zlib
 	depends = hicolor-icon-theme
 	provides = java-environment=20
 	provides = java-environment-jdk=20
-	provides = jdk20-jdk=20-1
+	provides = jdk20-jdk=20.0.1-1
 
 pkgname = jdk-doc
 	pkgdesc = Oracle Java documentation
