@@ -1,7 +1,7 @@
 # Maintainer: Horror Proton <https://github.com/horror-proton>
 
 pkgname=maa-assistant-arknights
-_pkgver=v4.19.2-beta.1
+_pkgver=v4.19.2
 pkgver="$(echo ${_pkgver//-/} | sed -e 's/^v//')"
 pkgrel=1
 pkgdesc="An Arknights assistant"
@@ -14,7 +14,7 @@ _fastdeploy_ref=356fb3f5553b879276617b77e3cd440099f8b923
 source=("$url/archive/refs/tags/$_pkgver.tar.gz"
         "https://github.com/MaaAssistantArknights/FastDeploy/archive/$_fastdeploy_ref.tar.gz")
 install="${pkgname}.install"
-md5sums=('7def83119e964196e176c60a00c4ce6e'
+md5sums=('ba8be56ec20613acb2fe2ee954374dbd'
          '01060d6ad80b8517218379a2110b3672')
 
 prepare() {
