@@ -3,7 +3,7 @@
 
 pkgname=bzrtp-git
 _pkgname=bzrtp
-pkgver=4.4.0.alpha.r1.g947d708
+pkgver=5.3.0.alpha.r5.g6fc1e23
 pkgrel=1
 pkgdesc="Opensource implementation of ZRTP keys exchange protocol"
 arch=('x86_64')
@@ -24,7 +24,6 @@ pkgver() {
 build() {
   cd ${_pkgname}
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DENABLE_STATIC=NO \
       -DENABLE_STRICT=NO . 
   make
 }
