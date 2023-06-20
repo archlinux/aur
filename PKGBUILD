@@ -2,10 +2,10 @@
 
 pkgname=prusa-slicer-gtk2-bin
 _pkgname="${pkgname%-gtk2-bin}"
-pkgver=2.6.0.rc1
+pkgver=2.6.0
 _pkgver=2.6.0
-_pkgdate="202306091137"
-pkgrel=2
+_pkgdate="202306191220"
+pkgrel=1
 pkgdesc="G-code generator for 3D printers (GTK2 binary)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -16,9 +16,9 @@ options=('!strip')
 _appimage="PrusaSlicer-${pkgver}.AppImage"
 noextract=("${_appimage}")
 source=(
-    "${_appimage}::${url}/releases/download/version_${_pkgver}-rc1/PrusaSlicer-${_pkgver}-rc1+linux-x64-GTK2-${_pkgdate}.AppImage"
+    "${_appimage}::${url}/releases/download/version_${_pkgver}/PrusaSlicer-${_pkgver}+linux-x64-GTK2-${_pkgdate}.AppImage"
 )
-sha256sums=('80e4e9d50b46464a3f5ad490b6118fefdab2be9bb0748d747ea38f5ae5d03674')
+sha256sums=('16279e0c93057d06607b2a4c47d90bab1dcdba1fffd3f87afccb73d96b4a7469')
 
 prepare() {
     chmod +x ${srcdir}/${_appimage}
