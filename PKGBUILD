@@ -1,15 +1,17 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-pkgbase=python-opcodes-git
-pkgname=('python-opcodes-git' 'python-opcodes-doc-git')
-pkgver=r179.6e2b0cd
-pkgrel=4
+pkgname=python-opcodes-git
+pkgver=r180.b740e24
+pkgrel=1
 pkgdesc='Python module for instruction sets documentation in a format convenient for tools development (git version)'
 arch=('any')
 url='https://github.com/Maratyszcza/Opcodes/'
 license=('BSD')
-makedepends=('git' 'python' 'python-setuptools' 'python-sphinx' 'python-sphinx-bootstrap-theme')
+depends=('python' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
+provides=('python-opcodes')
+conflicts=('python-opcodes')
 source=('git+https://github.com/Maratyszcza/Opcodes.git')
 sha256sums=('SKIP')
 
@@ -19,8 +21,7 @@ pkgver() {
 
 build() {
     cd Opcodes
-    python setup.py build
-    python setup.py build_sphinx --all-files --source-dir="${srcdir}/Opcodes/sphinx"
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -29,21 +30,6 @@ check() {
 }
 
 package_python-opcodes-git() {
-    depends=('python' 'python-setuptools')
-    provides=('python-opcodes')
-    conflicts=('python-opcodes')
-
-    cd Opcodes
-    python setup.py install --root="$pkgdir" --skip-build --optimize='1'
-    install -D -m644 license.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python-opcodes-doc-git() {
-    pkgdesc="$(sed 's/\((git version)\)/(documentation) \1/' <<< "$pkgdesc")"
-    provides=('python-opcodes-doc')
-    conflicts=('python-opcodes-doc')
-    
-    mkdir -p "${pkgdir}/usr/share/doc/python-opcodes"
-    cp -dr --no-preserve='ownership' Opcodes/build/sphinx/html/* "${pkgdir}/usr/share/doc/python-opcodes"
+    python -m installer --destdir="$pkgdir" "Opcodes/dist"/*.whl
     install -D -m644 Opcodes/license.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

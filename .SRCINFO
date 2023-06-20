@@ -1,27 +1,20 @@
 pkgbase = python-opcodes-git
 	pkgdesc = Python module for instruction sets documentation in a format convenient for tools development (git version)
-	pkgver = r179.6e2b0cd
-	pkgrel = 4
+	pkgver = r180.b740e24
+	pkgrel = 1
 	url = https://github.com/Maratyszcza/Opcodes/
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
 	makedepends = git
-	makedepends = python
-	makedepends = python-setuptools
-	makedepends = python-sphinx
-	makedepends = python-sphinx-bootstrap-theme
-	source = git+https://github.com/Maratyszcza/Opcodes.git
-	sha256sums = SKIP
-
-pkgname = python-opcodes-git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-setuptools
 	provides = python-opcodes
 	conflicts = python-opcodes
+	source = git+https://github.com/Maratyszcza/Opcodes.git
+	sha256sums = SKIP
 
-pkgname = python-opcodes-doc-git
-	pkgdesc = Python module for instruction sets documentation in a format convenient for tools development (documentation) (git version)
-	provides = python-opcodes-doc
-	conflicts = python-opcodes-doc
-
+pkgname = python-opcodes-git
