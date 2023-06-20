@@ -1,6 +1,6 @@
 pkgbase = veracrypt-git
 	pkgdesc = Disk encryption with strong security based on TrueCrypt
-	pkgver = 1.25.9.r95.36a055f6
+	pkgver = 1.25.9.r97.2bfeba16
 	pkgrel = 1
 	epoch = 1
 	url = https://www.veracrypt.fr/
@@ -12,7 +12,7 @@ pkgbase = veracrypt-git
 	depends = device-mapper
 	depends = fuse2>=2.8.0
 	depends = libsm
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	optdepends = sudo: mounting encrypted volumes as nonroot users
 	provides = veracrypt=1.25.9
 	conflicts = veracrypt

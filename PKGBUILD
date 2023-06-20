@@ -6,14 +6,14 @@
 
 _pkgname=veracrypt
 pkgname="$_pkgname-git"
-pkgver=1.25.9.r95.36a055f6
+pkgver=1.25.9.r97.2bfeba16
 pkgrel=1
 epoch=1
 pkgdesc='Disk encryption with strong security based on TrueCrypt'
 url='https://www.veracrypt.fr/'
 arch=(i686 x86_64)
 license=('custom:TrueCrypt')
-depends=(device-mapper 'fuse2>=2.8.0' libsm wxgtk3)
+depends=(device-mapper 'fuse2>=2.8.0' libsm wxwidgets-gtk3)
 makedepends=(git yasm)
 optdepends=('sudo: mounting encrypted volumes as nonroot users')
 provides=("$_pkgname=${pkgver%%.r*}")
