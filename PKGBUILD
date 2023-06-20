@@ -5,7 +5,7 @@
 # Contributor: Patrick Lloyd <$(base64 --decode <<<'cGF0cmlja0BsbG95ZC5zaAo=')>
 
 pkgname=marp-cli-bin
-pkgver=2.5.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='A CLI interface for Marp and Marpit based converters'
 url='https://github.com/marp-team/marp-cli'
@@ -16,7 +16,7 @@ conflicts=('marp-cli')
 options=('!strip') # Stripping causes "Pkg: Error reading from file."
 replaces=('marp')
 source=("${url}/releases/download/v${pkgver}/marp-cli-v${pkgver}-linux.tar.gz" "https://raw.githubusercontent.com/marp-team/marp-cli/master/LICENSE")
-b2sums=('5ab503a1d8c51aa4ea1c3e3775f886d41dcf58a38d1c61fc1e6b59121396dfe4b76d40ba15a03627eaccf7682bee6dda9ba7c37f2d87589e4551b85633c42181'
+b2sums=('d75ae24e93a4bc23a3baa17f118b78c02f01cc5eefc307a200c461fd8015c79a30f9d11f812cd3095b7b88d503aab1a008d04b7db0470120261b2510ec220842'
         'c53efbcec37e21912a9cb464a70839674a6174b577656c738d72e803e53bb0d05050056c9144d1952a2e1db39cad66ce0176d6d17c92fa847e22a20ce98ec596')
 
 package() {
