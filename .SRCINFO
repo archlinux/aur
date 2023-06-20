@@ -1,7 +1,7 @@
 pkgbase = textadept
 	pkgdesc = Fast, minimalist, and remarkably extensible cross-platform text editor
 	pkgver = 11.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/orbitalquark/textadept
 	arch = i686
 	arch = x86_64

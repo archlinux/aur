@@ -4,7 +4,7 @@
 
 pkgname=('textadept' 'textadept-gtk3' 'textadept-curses')
 pkgver=11.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/orbitalquark/textadept"
@@ -24,6 +24,7 @@ prepare() {
 	sed -i '1008s/volatile//;1099s/volatile//;' scintilla/gtk/ScintillaGTKAccessible.cxx
 	## makes compile flags work again
 	sed -i \
+		-e 's/http:/https:/g' \
 		-e 's/CFLAGS :=/CFLAGS +=/g' \
 		-e 's/CXXFLAGS :=/CXXFLAGS +=/g' \
 		-e 's/LDFLAGS :=/LDFLAGS +=/g' \
