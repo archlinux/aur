@@ -16,7 +16,7 @@ url='https://www.mpfr.org/'
 license=(GPL3 LGPL3)
 depends=(glibc
 	 gmp
-         "${_pkgname}==${pkgver}")
+         "${_pkgname}=${pkgver}")
 source=(https://ftp.gnu.org/gnu/mpfr/mpfr-${_pkgver}.tar.xz{,.sig}
         patches.diff) # wget https://www.mpfr.org/mpfr-4.2.0/allpatches -O patches.diff
 sha512sums=(
