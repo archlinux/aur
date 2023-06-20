@@ -2,7 +2,7 @@
 # Contributor : Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=waybar-hyprland-cava-git
-pkgver=0.9.17.r159.ga9a22234
+pkgver=0.9.18.r40.gb0f89f2b
 pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland (git version)'
 arch=('x86_64' 'aarch64')
@@ -32,8 +32,13 @@ depends=(
     'libsndio.so'
     'libxkbcommon'
     'wireplumber'
-    'playerctl'
-    'cava'
+    'playerctl' 
+    'fftw' 
+    'alsa-lib' 
+    'ncurses' 
+    'iniparser' 
+    'sndio' 
+    'portaudio' 
 )
 makedepends=(
     'git'
@@ -42,6 +47,9 @@ makedepends=(
     'meson'
     'scdoc'
     'wayland-protocols'
+    'sndio' 
+    'portaudio' 
+    'libpulse'
     'curl'
 )
 backup=(
@@ -73,7 +81,6 @@ build() {
     meson --prefix=/usr \
           --buildtype=plain \
           --auto-features=enabled \
-          --wrap-mode=nodownload \
           -Dexperimental=true \
           -Dcava=enabled \
           "${srcdir}/build"
