@@ -1,5 +1,5 @@
-pkgbase = prusa-slicer-bin
-	pkgdesc = G-code generator for 3D printers (binary AppImage, includes rc releases)
+pkgbase = prusa-slicer-rc-bin
+	pkgdesc = G-code generator for 3D printers (binary AppImage, includes release candidates)
 	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/prusa3d/PrusaSlicer
@@ -10,6 +10,7 @@ pkgbase = prusa-slicer-bin
 	depends = glu
 	provides = prusa-slicer
 	conflicts = prusa-slicer
+	conflicts = prusa-slicer-bin
 	conflicts = prusa-slicer-git
 	conflicts = prusa-slicer-gtk2
 	noextract = PrusaSlicer-2.6.0.AppImage
@@ -21,4 +22,4 @@ pkgbase = prusa-slicer-bin
 	sha256sums_x86_64 = 2a286cb975a16b04a35d7a308340bea42a7e09521fe4044eb73567ca5cf8a078
 	sha256sums_x86_64 = d4bd40600dba72286081fda53c8d6fa50b927cfdf07a571538e769ee133be381
 
-pkgname = prusa-slicer-bin
+pkgname = prusa-slicer-rc-bin

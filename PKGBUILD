@@ -1,16 +1,16 @@
 # Maintainer: JP Roemer <jp+aur@roemer.im>
 
-pkgname=prusa-slicer-bin
-_pkgname="${pkgname%-bin}"
+pkgname=prusa-slicer-rc-bin
+_pkgname="${pkgname%-rc-bin}"
 pkgver=2.6.0
 _pkgver="${pkgver//_/-}"
 _pkgdate=202306191220
 pkgrel=1
-pkgdesc="G-code generator for 3D printers (binary AppImage, includes rc releases)"
+pkgdesc="G-code generator for 3D printers (binary AppImage, includes release candidates)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
 license=('AGPL3')
-conflicts=("$_pkgname" 'prusa-slicer-git' 'prusa-slicer-gtk2')
+conflicts=("$_pkgname" 'prusa-slicer-bin' 'prusa-slicer-git' 'prusa-slicer-gtk2')
 provides=("$_pkgname")
 depends=('zlib' 'fuse' 'glu')
 options=('!strip')
