@@ -4,8 +4,8 @@
 pkgbase=lx-music-desktop-git
 pkgname=(lx-music-desktop-git lx-music-desktop-electron-git)
 pkgdesc=一个免费的音乐查找助手
-pkgver=1.19.0.f10c1e9
-pkgrel=3
+pkgver=2.2.2.ea5e8b56
+pkgrel=1
 arch=(x86_64 aarch64 armv7l)
 url=https://github.com/lyswhut/lx-music-desktop
 licence=(Apache)
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             '34342d437c59c6ae352123272daa1819e275c843170bbb8b467cbbc1c4c63dac'
             '83083f9febee2332f9d038bcf5693128f3bde17b41ed094f005265eafe1eb94f'
             '47bc117b8137990e538ab4049f1b2d8b04d3d495432c4002c5343a9331dc59c7')
-_electron=electron13
+_electron=electron16
 
 pkgver(){
 	cd "${srcdir}/${pkgbase}"
