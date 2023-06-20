@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: spsf64 <at g m a i l  dot com>
 pkgname=webapp-manager
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Run websites as if they were apps"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('python-beautifulsoup4' 'python-configobj' 'python-gobject' 'python-pillow'
          'python-setproctitle' 'python-tldextract' 'dconf' 'xapp')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c37ce3025472674f13bd6c1102a7849c369de2c84ee68958e1622aa2aedd6f72')
+sha256sums=('42fff2dd90ebb24669cc4ca4dec36e05c46ac8c112d2b3fd05b1f8babdf05b8d')
 
 prepare() {
   cd "$pkgname-$pkgver"
