@@ -1,6 +1,6 @@
 
 pkgname=python-art
-pkgver=5.3
+pkgver=6.0
 pkgrel=1
 pkgdesc="ASCII art library for Python "
 arch=('any')
