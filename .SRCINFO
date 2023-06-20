@@ -1,11 +1,12 @@
 pkgbase = vamp-pyin-f0-plugin
 	pkgdesc = Probabilistic YIN algorithm for fundamental frequency (F0) estimation in monophonic audio (vamp plugin)
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.soundsoftware.ac.uk/projects/pyin
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = boost
 	depends = vamp-plugin-sdk
 	source = git+https://gitlab.com/tallero/vamp-pyin-f0-plugin
 	md5sums = SKIP

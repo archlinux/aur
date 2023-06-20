@@ -3,13 +3,14 @@
 
 pkgname=vamp-pyin-f0-plugin
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Probabilistic YIN algorithm for fundamental frequency (F0) estimation in monophonic audio (vamp plugin)"
 arch=(i686 x86_64)
 url="https://code.soundsoftware.ac.uk/projects/pyin"
 _url="https://gitlab.com/tallero/vamp-pyin-f0-plugin"
 license=('GPL')
 depends=(vamp-plugin-sdk)
+makedepends=(boost)
 #source=("http://code.soundsoftware.ac.uk/attachments/download/2627/pyin-v$pkgver.tar.gz")
 source=("git+$_url")
 md5sums=('SKIP') 
