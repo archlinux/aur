@@ -3,8 +3,8 @@
 pkgname=cura-5-modern-beta-bin
 _pkgname=cura-5-modern-beta-bin
 _shortname=cura5
-pkgver=5.2.1
-beta=
+pkgver=5.4.0
+beta=-beta.1
 subbeta=
 pkgrel=2
 pkgdesc='Cura is an open source slicing application for 3D printers (Modern AppImage, include betaversion)'
@@ -25,10 +25,10 @@ source=(
     "cura.desktop.patch"
 )
 
-sha256sums=('d110ca8e62efd5e7c647afd5374127c7b8e2b80f4308a6e83686957476465d38'
+sha256sums=('53bbfc5e08e748feaf2fc6973243e7a974ba8835ceff081be37e53a7e9b546c9'
             'f361bfaa2b63576ba829b3fb608f3f8baf5c25df51ebaba8c3554a7f3108e87d'
-            'e74fde4eda76fdc3c7f3f3ffdc2190c9b2d686ae1c49f0e11ce85c6161658685'
-            '076fee81d82b5ae55e44d230adef79cf944f51befb76f30074195ac18dd7e16a')
+            'abd972fa450409625bd54122de8a3cbb5848054afe4fc2e70e99444233037e12'
+            '82a420ff977222150fb25e6b3dafe6ab5694a958666330297e10a1b02a2a69b9')
    
 prepare() {
     cd "${srcdir}"

@@ -1,25 +1,26 @@
 --- cura.desktop
 +++ cura.desktop
 @@ -1,15 +1,57 @@
- [Desktop Entry]
--Name=Ultimaker Cura
--Name[de]=Ultimaker Cura
-+Name=Ultimaker Cura 5
-+Name[cs]=Ultimaker Cura 5
-+Name[de]=Ultimaker Cura 5
-+Name[es]=Ultimaker Cura 5
-+Name[fi]=Ultimaker Cura 5
-+Name[fr]=Ultimaker Cura 5
-+Name[hu]=Ultimaker Cura 5
-+Name[it]=Ultimaker Cura 5
+-[Desktop Entry]
+-Name=UltiMaker Cura
+-Name[de]=UltiMaker Cura
++ [Desktop Entry]
++Name=UltiMaker Cura 5
++Name[cs]=UltiMaker Cura 5
++Name[de]=UltiMaker Cura 5
++Name[es]=UltiMaker Cura 5
++Name[fi]=UltiMaker Cura 5
++Name[fr]=UltiMaker Cura 5
++Name[hu]=UltiMaker Cura 5
++Name[it]=UltiMaker Cura 5
 +Name[ja]=アルティメーカーキュラ5
 +Name[ko]=얼티메이커 큐라 5
-+Name[nl]=Ultimaker Cura 5
-+Name[pl]=Ultimaker Cura 5
-+Name[pt]=Ultimaker Cura 5
++Name[nl]=UltiMaker Cura 5
++Name[pl]=UltiMaker Cura 5
++Name[pt]=UltiMaker Cura 5
 +Name[ru]=Ультимейкер Кура 5
-+Name[tr]=Ultimaker Cura 5
-+Name[zh]=Ultimaker Cura 5
++Name[tr]=UltiMaker Cura 5
++Name[zh]=UltiMaker Cura 5
  GenericName=3D Printing Software
 +GenericName[cs]=3D-Tiskový Software
  GenericName[de]=3D-Druck-Software
@@ -37,7 +38,7 @@
 +GenericName[tr]=3D Baskı Yazılımı
 +GenericName[zh]=3D打印软件
  Comment=Cura converts 3D models into paths for a 3D printer. It prepares your print for maximum accuracy, minimum printing time and good reliability with many extra features that make your print come out great.
--Exec=Ultimaker-Cura %F
+-Exec=UltiMaker-Cura %F
 -Icon=cura-icon
 +Comment[cs]=Cura převádí 3D modely na cesty pro 3D tiskárnu. Připraví váš tisk na maximální přesnost, minimální dobu tisku a dobrou spolehlivost s mnoha dalšími funkcemi, díky nimž bude váš tisk skvělý.
 +Comment[de]=Cura wandelt 3D-Modelle in Pfade für einen 3D-Drucker um. Es bereitet Ihren Druck auf maximale Genauigkeit, minimale Druckzeit und hohe Zuverlässigkeit mit vielen zusätzlichen Funktionen vor, die Ihren Druck großartig machen.
@@ -63,5 +64,5 @@
 -Keywords=3D;Printing;
 +Categories=Graphics;3DGraphics;Engineering;
 +Keywords=3D;Printing;Slicer;
- X-AppImage-Version=5.1.1
+ X-AppImage-Version=5.3.1
 
