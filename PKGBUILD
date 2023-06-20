@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="File archiver with a high compression ratio (full package to replace p7zip)"
 url="https://7-zip.org/"
 license=('LGPL')
-arch=('x86_64' 'i686' 'aarch64')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 provides=("${_name}" 'p7zip')
 conflicts=("${provides[@]}")
 makedepends=('uasm')
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
     local targets=("Alone" "Alone2" "Alone7z" "Format7zF")
-    local -A platforms=(['x86_64']='x64' ['i686']='x86' ['aarch64']='arm64')
+    local -A platforms=(['x86_64']='x64' ['i686']='x86' ['aarch64']='arm64' ['armv7h']='arm')
     mkdir -p "build"
 
     (
