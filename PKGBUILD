@@ -1,7 +1,7 @@
 # Maintainer: Avery Warddhana <them+arch _ nullablevo id au>
 
 pkgname=python-qiling-git
-pkgver=1.4.5.r5.gfe91fe64
+pkgver=1.4.5.r87.g1706049d
 pkgrel=1
 pkgdesc="An advanced binary emulation framework"
 url='https://qiling.io/'
@@ -17,7 +17,7 @@ conflicts=(${pkgname%-*})
 source=("$pkgname::git+https://github.com/qilingframework/qiling.git#branch=dev"
         '0000-fix-qltui.patch')
 sha256sums=('SKIP'
-            'c487e8b57c5b270e2d457a844a51e40591640ca6d9c26fb1900988f0b0c1ef9b')
+            '969600021c25f6ace69c535e9484dcad20a3897762198dd546e5cda18dce2f8a')
 
 pkgver() {
     cd "${pkgname}"
