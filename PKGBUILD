@@ -1,7 +1,7 @@
 # Maintainer: Piotr Fitas <sp0tlesss@yahoo.com>
 pkgname=hammer2rgb
 pkgdesc="CLI tool for Modecom Volcano Hammer 2 RGB keyboard"
-pkgver=1.0
+pkgver=1.1
 pkgrel=2
 epoch=
 pkgdesc=""
