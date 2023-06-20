@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=searxng-git
-pkgver=1.0.0.r2771.g9b31976c
+pkgver=1.0.0.r3229.g86db08793
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
@@ -30,7 +30,8 @@ depends=(
         'python-setproctitle'
         'python-redis'
         'python-markdown-it-py'
-        'python-typing_extensions')
+        'python-typing_extensions'
+        'python-pytomlpp')
 optdepends=('python-hiredis')
 conflicts=('searx' 'searx-git')
 backup=('etc/searxng/settings.yml' 'etc/uwsgi/vassals/searxng.ini')
