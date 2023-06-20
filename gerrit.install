@@ -1,14 +1,20 @@
 post_install() {
-	echo ":: To initialize gerrit, see https://gerrit-documentation.storage.googleapis.com/Documentation/$1/index.html"
-	echo ':: To set up gerrit, run:'
-	echo '   sudo su - gerrit'
-	echo '   java -jar /usr/share/java/gerrit/gerrit.war init -d /var/lib/gerrit'
+  cat <<EOF
+:: To initialize gerrit, see:
+   https://gerrit-documentation.storage.googleapis.com/Documentation/$1/index.html
+:: To set up gerrit, run:
+   sudo install -dm750 -o gerrit -g gerrit /var/lib/gerrit
+   sudo -u gerrit gerrit init -d /var/lib/gerrit
+:: If you skip manual setup, gerrit will be initialized on first start using default settings.
+EOF
 }
 
 post_upgrade() {
-	echo ":: To upgrade gerrit, see https://gerrit-documentation.storage.googleapis.com/Documentation/$1/index.html"
-	echo ':: To update gerrit, run:'
-	echo '   sudo su - gerrit'
-	echo '   java -jar /usr/share/java/gerrit/gerrit.war init -d /var/lib/gerrit'
-	echo '   java -jar /usr/share/java/gerrit/gerrit.war reindex'
+  cat <<EOF
+:: To upgrade gerrit, see:
+   https://gerrit-documentation.storage.googleapis.com/Documentation/$1/index.html
+:: To update gerrit, run:
+   sudo -u gerrit gerrit init -d /var/lib/gerrit
+   sudo -u gerrit gerrit reindex -d /var/lib/gerrit
+EOF
 }

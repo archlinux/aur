@@ -1,25 +1,25 @@
 pkgbase = gerrit
 	pkgdesc = Web-based code review tool built on top of Git
-	pkgver = 3.7.2
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://gerritcodereview.com/
 	install = gerrit.install
 	arch = any
 	license = Apache
-	depends = java-runtime>=11
-	depends = java-runtime<13
+	depends = java-runtime-headless>=11
+	depends = java-runtime-headless<13
 	depends = libcups
 	optdepends = bcprov: Java cryptography APIs (Bouncy Castle)
 	backup = etc/default/gerritcodereview
-	source = https://gerrit-releases.storage.googleapis.com/gerrit-3.7.2.war
+	source = https://gerrit-releases.storage.googleapis.com/gerrit-3.8.0.war
 	source = gerrit.conf
+	source = gerrit.sh
 	source = gerrit.service
 	source = gerrit.sysusers
-	source = gerrit.tmpfiles
-	sha256sums = 5c1e5ba6562989ddafc528e6d4308662c77777991493c3e59e115d0803915fa9
+	sha256sums = c226a5f8ae5e519489f9ab0504bac5a0940e2d62c7925e68b786f8088b20ed37
 	sha256sums = 35becf2754e3779c750b2889909349160c2b0584ec201f6cfb5cf2c42e6fc598
-	sha256sums = fa21680907eb149707dd12b4637dd1b5c93cc019799fd61efd54d87f81b35f03
+	sha256sums = 21a61acae9f30c6918754f5e81b95b19e3d27c15a3f5f194bf9f468f08726ff8
+	sha256sums = f69605bc325622bfc3e6e97ab076c253b7c3a3c415ffb4ac52b973041bf5b094
 	sha256sums = 9f1dcfa057da72a8b4928f274920baedb2e9c4d1b3c08270720646e46a1799c6
-	sha256sums = 4cfbff3c34c8ca67482450a206e91319b2ebef3ccde77d5269ee169232109f8a
 
 pkgname = gerrit

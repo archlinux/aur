@@ -1,38 +1,40 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: tarball <bootctl@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Tyler Veness <calcmogul at gmail dot com>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Thanh Ha <thanh.ha at alumni.carleton dot ca>
 # Contributor: Marcel Huber <marcelhuberfoo at gmail dot com>
 
 pkgname=gerrit
-pkgver=3.7.2
+pkgver=3.8.0
 pkgrel=1
-pkgdesc="Web-based code review tool built on top of Git"
+pkgdesc='Web-based code review tool built on top of Git'
 arch=('any')
 url="https://gerritcodereview.com/"
 license=('Apache')
-depends=('java-runtime>=11' 'java-runtime<13' 'libcups')
+depends=('java-runtime-headless>=11' 'java-runtime-headless<13' 'libcups')
 optdepends=('bcprov: Java cryptography APIs (Bouncy Castle)')
 backup=('etc/default/gerritcodereview')
 install=gerrit.install
 source=(
   "https://gerrit-releases.storage.googleapis.com/gerrit-$pkgver.war"
   'gerrit.conf'
+  'gerrit.sh'
   'gerrit.service'
   'gerrit.sysusers'
-  'gerrit.tmpfiles')
-sha256sums=('5c1e5ba6562989ddafc528e6d4308662c77777991493c3e59e115d0803915fa9'
+)
+sha256sums=('c226a5f8ae5e519489f9ab0504bac5a0940e2d62c7925e68b786f8088b20ed37'
             '35becf2754e3779c750b2889909349160c2b0584ec201f6cfb5cf2c42e6fc598'
-            'fa21680907eb149707dd12b4637dd1b5c93cc019799fd61efd54d87f81b35f03'
-            '9f1dcfa057da72a8b4928f274920baedb2e9c4d1b3c08270720646e46a1799c6'
-            '4cfbff3c34c8ca67482450a206e91319b2ebef3ccde77d5269ee169232109f8a')
+            '21a61acae9f30c6918754f5e81b95b19e3d27c15a3f5f194bf9f468f08726ff8'
+            'f69605bc325622bfc3e6e97ab076c253b7c3a3c415ffb4ac52b973041bf5b094'
+            '9f1dcfa057da72a8b4928f274920baedb2e9c4d1b3c08270720646e46a1799c6')
 
 package() {
   install -Dvm644 "$pkgname-$pkgver.war" "$pkgdir/usr/share/java/$pkgname/$pkgname.war"
   install -Dvm644 "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
   install -Dvm644 "$pkgname.conf" "$pkgdir/etc/default/gerritcodereview"
   install -Dvm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-  install -Dvm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+  install -Dvm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:

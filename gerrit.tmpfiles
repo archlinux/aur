@@ -1,3 +1,0 @@
-d /var/lib/gerrit - gerrit gerrit
-d /var/log/gerrit - gerrit gerrit
-d /var/cache/gerrit - gerrit gerrit
