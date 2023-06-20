@@ -10,19 +10,19 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
-pkgname=mesa-git
+pkgname=mesa-git-aarch64
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=23.2.0_devel.172019.732db2b60cd.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
-arch=('x86_64')
+arch=('aarch64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
               'wayland-protocols' 'meson' 'ninja' 'glslang' 'directx-headers' 'libclc')
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'vulkan-driver' 'mesa-libgl' 'opengl-driver' 'opencl-driver')
-conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'mesa-libgl')
+provides=('mesa' 'opencl-mesa' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'vulkan-driver' 'mesa-libgl' 'opengl-driver' 'opencl-driver')
+conflicts=('mesa' 'opencl-mesa' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
@@ -119,8 +119,8 @@ build () {
        -D b_ndebug=true \
        -D b_lto=false \
        -D platforms=x11,wayland \
-       -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,i915,iris,crocus,zink,d3d12 \
-       -D vulkan-drivers=amd,intel,swrast,virtio,intel_hasvk \
+       -D gallium-drivers=nouveau,virgl,svga,swrast,zink,d3d12 \
+       -D vulkan-drivers=swrast,virtio \
        -D vulkan-layers=device-select,overlay \
        -D dri3=enabled \
        -D egl=enabled \
