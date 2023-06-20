@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=actionlint-git
-pkgver=r1
+pkgver=r1464.0a5b35d
 pkgrel=1
 pkgdesc="Static checker for GitHub Actions workflow files"
 arch=('any')
