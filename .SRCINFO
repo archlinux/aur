@@ -1,6 +1,6 @@
 pkgbase = lib32-svt-av1
 	pkgdesc = Scalable Video Technology AV1 encoder and decoder
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://gitlab.com/AOMediaCodec/SVT-AV1
 	arch = x86_64
@@ -10,11 +10,12 @@ pkgbase = lib32-svt-av1
 	makedepends = git
 	makedepends = nasm
 	makedepends = ninja
+	depends = svt-av1=1.6.0
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
 	provides = libSvtAv1Dec.so
 	provides = libSvtAv1Enc.so
-	source = git+https://gitlab.com/AOMediaCodec/SVT-AV1.git#tag=ea296ef350714fb6f105b420fb0bc321d9997ffd
+	source = git+https://gitlab.com/AOMediaCodec/SVT-AV1.git#tag=08c18ba0768ed3dbbff0903adc326fb3a7549bd9
 	b2sums = SKIP
 
 pkgname = lib32-svt-av1

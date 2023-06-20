@@ -4,7 +4,7 @@
 
 _pkgname=svt-av1
 pkgname=lib32-svt-av1
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Scalable Video Technology AV1 encoder and decoder'
 arch=('x86_64')
@@ -14,6 +14,7 @@ license=(
   'custom: Alliance for Open Media Patent License 1.0'
 )
 depends=(
+  "svt-av1=${pkgver}"
   'lib32-glibc'
   'lib32-gcc-libs'
 )
@@ -27,7 +28,7 @@ provides=(
   'libSvtAv1Dec.so'
   'libSvtAv1Enc.so'
 )
-_tag=ea296ef350714fb6f105b420fb0bc321d9997ffd
+_tag=08c18ba0768ed3dbbff0903adc326fb3a7549bd9
 source=("git+https://gitlab.com/AOMediaCodec/SVT-AV1.git#tag=${_tag}")
 b2sums=('SKIP')
 
@@ -37,7 +38,7 @@ prepare() {
 
 pkgver() {
   cd SVT-AV1
-  git describe --tags | sed 's/^v//'
+  echo "$(git describe --tags | tr -d v)"
 }
 
 build() {
