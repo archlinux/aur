@@ -1,27 +1,29 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
-pkgname=upscaler-git
-pkgver=1.0.0.r0.g712c262
+_pkgname=upscaler
+pkgname=$_pkgname-git
+pkgver=1.1.2
 pkgrel=1
-pkgdesc="Upscale and enhance images"
-arch=('x86_64')
-url="https://gitlab.com/TheEvilSkeleton/Upscaler"
+pkgdesc="Upscale and enhance images (latest commit)"
+arch=('any')
+url="https://gitlab.gnome.org/World/Upscaler"
 license=('GPL3')
-depends=('libadwaita' 'python-gobject' 'realesrgan-ncnn-vulkan')
-makedepends=('git' 'blueprint-compiler' 'meson')
+depends=('libadwaita' 'python-cffi' 'python-gobject' 'python-vulkan' 'realesrgan-ncnn-vulkan')
+makedepends=('blueprint-compiler' 'git' 'meson')
 checkdepends=('appstream-glib')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=(${pkgname%-git}::git+$url.git)
-b2sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=(git+$url.git)
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd Upscaler
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson "${pkgname%-git}" build
+  arch-meson Upscaler build
   meson compile -C build
 }
 
@@ -31,4 +33,6 @@ check() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
+  install -Dm644 Upscaler/README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+  install -Dm644 Upscaler/COPYING -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
