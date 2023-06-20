@@ -1,14 +1,19 @@
 pkgbase = python-ledgercomm
 	pkgdesc = Library to communicate with Ledger Nano S/X and Speculos.
-	pkgver = 1.1.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledgercomm
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python>=3.8.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm>=6.2
+	makedepends = python-setuptools>=45
+	makedepends = python-tomli
+	makedepends = python-wheel
+	depends = python>=3.8
 	optdepends = python-hidapi>=0.9.0.post3: HID interface communication
-	source = https://github.com/LedgerHQ/ledgercomm/archive/refs/tags/1.1.0.tar.gz
-	sha256sums = 7c8ad124d6f2438c46a2ab3725b8e6fd3e12a8e36df259f605f77207033d70a6
+	source = ledgercomm-1.2.1::git+https://github.com/LedgerHQ/ledgercomm.git#tag=v1.2.1
+	sha256sums = SKIP
 
 pkgname = python-ledgercomm
