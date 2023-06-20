@@ -3,24 +3,24 @@
 # Contributor: Benjamin Klettbach <b.klettbach@gmail.com>
 
 pkgname=obs-studio-amf
-pkgver=29.1.2
+pkgver=29.1.3
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording. Includes new AMF encoding patch & browser plugin"
 arch=('x86_64')
 url="https://obsproject.com"
 license=('GPL2')
 depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls' 'rnnoise' 'pciutils' 'nss'
-		'qt6-svg' 'qt6-wayland' 'xdg-desktop-portal' 'curl' 'jack' 'gtk-update-icon-cache' 'pipewire' 'libxcomposite' 'amf-amdgpu-pro')
+	'qt6-svg' 'qt6-wayland' 'xdg-desktop-portal' 'curl' 'jack' 'gtk-update-icon-cache' 'pipewire' 'libxcomposite' 'amf-amdgpu-pro')
 makedepends=('cmake' 'libfdk-aac' 'x264' 'swig' 'python' 'luajit' 'sndio' 'git' 'nlohmann-json' 'websocketpp' 'asio' 'amf-headers')
 provides=("obs-studio=$pkgver" "obs-websocket")
 conflicts=("obs-studio" "obs-studio-tytan652" "obs-websocket")
 optdepends=('libfdk-aac: FDK AAC codec support'
-		'libva-intel-driver: hardware encoding'
-		'libva-mesa-driver: hardware encoding'
-		'luajit: scripting support'
-		'python: scripting support'
-		'sndio: Sndio input client'
-		'v4l2loopback-dkms: virtual camera support')
+	'libva-intel-driver: hardware encoding'
+	'libva-mesa-driver: hardware encoding'
+	'luajit: scripting support'
+	'python: scripting support'
+	'sndio: Sndio input client'
+	'v4l2loopback-dkms: virtual camera support')
 source=(obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver
 	cef_binary_5060_linux64.tar.bz2::https://cdn-fastly.obsproject.com/downloads/cef_binary_5060_linux64.tar.bz2
 	7206.patch
@@ -34,22 +34,23 @@ prepare() {
 	tar -xjf ./cef_binary_5060_linux64.tar.bz2
 	cd obs-studio
 	git submodule update --init --recursive
-	patch -Np1 < "$srcdir"/7206.patch
+	patch -Np1 <"$srcdir"/7206.patch
 }
 
 build() {
 	cd obs-studio
-	mkdir -p build; cd build
+	mkdir -p build
+	cd build
 
 	cmake -DCMAKE_INSTALL_PREFIX="/usr" \
-	-DENABLE_VST=ON \
-	-DENABLE_VLC=OFF \
-	-DENABLE_BROWSER=ON \
-	-DCEF_ROOT_DIR="../../cef_binary_5060_linux64" \
-	-DENABLE_AJA=OFF \
-	-DENABLE_JACK=ON \
-	-DENABLE_NEW_MPEGTS_OUTPUT=OFF \
-	-DOBS_VERSION_OVERRIDE="$pkgver-$pkgrel" ..
+		-DENABLE_VST=ON \
+		-DENABLE_VLC=OFF \
+		-DENABLE_BROWSER=ON \
+		-DCEF_ROOT_DIR="../../cef_binary_5060_linux64" \
+		-DENABLE_AJA=OFF \
+		-DENABLE_JACK=ON \
+		-DENABLE_NEW_MPEGTS_OUTPUT=OFF \
+		-DOBS_VERSION_OVERRIDE="$pkgver-$pkgrel" ..
 
 	make
 }
