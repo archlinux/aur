@@ -1,20 +1,23 @@
 pkgbase = r-foreach
 	pkgdesc = Provides Foreach Looping Construct
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 7
 	url = https://cran.r-project.org/package=foreach
 	arch = any
 	license = Apache
-	checkdepends = r-doparallel
 	checkdepends = r-testthat
 	depends = r-iterators
-	optdepends = r-randomforest
 	optdepends = r-domc
 	optdepends = r-doparallel
-	optdepends = r-testthat
 	optdepends = r-knitr
+	optdepends = r-randomforest
 	optdepends = r-rmarkdown
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/foreach_1.5.2.tar.gz
+	source = skip-parallel-tests.patch
+	md5sums = 726beb5a50a3cec75261b4405158386c
+	md5sums = 16b5d1acf5f3a8bdb699110a292278c3
 	sha256sums = 56338d8753f9f68f262cf532fd8a6d0fe25a71a2ff0107f3ce378feb926bafe4
+	sha256sums = e6a6de407c2fb1f926514b421cbea747d5e2b910bcb02664ed445dfb2779bc9c
 
 pkgname = r-foreach
