@@ -1,13 +1,13 @@
 pkgbase = python-pdpyras
 	pkgdesc = Low-level PagerDuty REST API Client in Python
-	pkgver = 4.5.0
+	pkgver = 5.0.4
 	pkgrel = 1
 	url = https://github.com/PagerDuty/pdpyras
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/p/pdpyras/pdpyras-4.5.0.tar.gz
-	sha256sums = 0d09ab50ddd220c1b77f692ab68e1b4324c97811cdefd9c6e84665d5417e716e
+	source = https://files.pythonhosted.org/packages/source/p/pdpyras/pdpyras-5.0.4.tar.gz
+	sha256sums = f6e1f8d7f1fbccbdc83f2035b8c076bf9edff0e5e23b42289e863749de49a942
 
 pkgname = python-pdpyras
