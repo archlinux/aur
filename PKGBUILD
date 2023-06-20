@@ -1,5 +1,5 @@
 pkgname=firefox-extension-bitwarden-git
-pkgver=v2023.5.0.r12847.gd3d17f1
+pkgver=v2023.5.0.r12851.g7dbc30e
 pkgrel=1
 pkgdesc='Bitwarden addon for Firefox'
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd clients
-  git describe --long --abbrev=7 | cut -d- -f2- | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | awk '{print "'$(git tag | grep browser | tail -n1 | cut -d- -f2)'." $1}'
+  printf "%s.%s" "$(git tag | grep '^browser' | tail -n1 | cut -d- -f2)" "$(git describe --long --abbrev=7 | cut -d- -f2- | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 prepare() {
