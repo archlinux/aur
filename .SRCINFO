@@ -4,6 +4,7 @@ pkgbase = daed-bin-x64-v3
 	pkgrel = 1
 	url = https://daeuniverse.github.io/daed
 	arch = x86_64
+	license = AGPL
 	license = MIT
 	provides = daed
 	conflicts = daed-git
