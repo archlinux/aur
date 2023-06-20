@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="electronreact-appimage"
 _appname="electron-react-desktop-app"
-pkgver=0.1.5
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="Desktop application using Electron and React"
 arch=('x86_64')
@@ -12,11 +12,11 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/ElectronReact-${pkgver}.AppImage")
-sha256sums=('d809f3e848b32b66c5a85bc91f1bae17dc2be3556525f39e1f76889692234ecd')
+sha256sums=('c2221da0a24bf3668f819e2325d121e526d0a9951fe49d624d85dc01efb236fa')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/electronreact.AppImage|g;s|electron-react-desktop-app|electronreact|g' -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|${_appname}|${pkgname%-appimage}|g" -i "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
