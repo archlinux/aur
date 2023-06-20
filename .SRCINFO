@@ -1,0 +1,20 @@
+pkgbase = lichess
+	pkgdesc = Electron wrapper for Lichess.org chess platform
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://lichess.org
+	arch = x86_64
+	license = GNU AGPL
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	provides = lichess
+	conflicts = lichess
+	source = lichess.png
+	source = lichess.desktop
+	source = no-scrollbar.css
+	sha256sums = 4569f979e5247143fbcc961ce6017cbf6662b683152d245c004121488ae1ad87
+	sha256sums = 1b9991641ecbd3145673d567c4fc22c26d5e65fbf23a77301dc94d7aaf00b507
+	sha256sums = 65f4043f2206e43cbbc510246f6a35a673e829bd8ab5b90b790b1ba7c14ea26b
+
+pkgname = lichess
