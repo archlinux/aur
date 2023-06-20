@@ -1,7 +1,7 @@
 pkgbase = applecommander
 	pkgdesc = Tool that manipulates Apple ][ disk images
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://applecommander.github.io/
 	arch = x86_64
 	license = GPL2
@@ -15,9 +15,11 @@ pkgbase = applecommander
 	source = applecommander-ac.sh
 	source = applecommander-acx.sh
 	source = applecommander-gui.sh
+	source = 0001-Update-to-Gradle-8.1.1.patch
 	sha256sums = 66def97b3f6c3b6caf1e4a30580f81b2d44ec78781542a4c170b4cecf0e187e6
 	sha256sums = d7b1ddd2d4bf0eb5a1fd595352cd36b645f1342e1da427a01579bef779b29714
 	sha256sums = 35bfb9831c1f0411a2ea60b7f33c671dda4accbb413ac94ae8320450d9325a42
 	sha256sums = 034f41f16c0200e398c3a019359c6c30978eb857fec4e5eb97948f962e79e0dc
+	sha256sums = 8c1301dcdca6d2857e8ce4615aa80e21f9590de96716a8a6be168bdce7dd1da6
 
 pkgname = applecommander
