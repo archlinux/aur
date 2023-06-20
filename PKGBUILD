@@ -3,7 +3,7 @@
 pkgname=daed-bin-x64-v3
 _pkgname=daed
 pkgver=0.1.0rc
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core)."
 url="https://daeuniverse.github.io/daed"
 arch=('x86_64')
@@ -24,12 +24,14 @@ prepare() {
 package() {
 	# Install binary
 	mv "daed-linux-x86_64_v3_avx2" "${_pkgname}"
-	install -Dm755 "${_pkgname}" -t "${pkgdir}/usr/bin/"
+	install -vDm755 "${_pkgname}" -t "${pkgdir}/usr/bin/"
 
 	# Install systemd service
-	install -Dm644 "daed.service" -t "${pkgdir}/usr/lib/systemd/system/"
+	install -vDm644 "daed.service" -t "${pkgdir}/usr/lib/systemd/system/"
 
 	# Install geoip.dat & geosite.dat
-	install -Dm644 "geoip.dat" -t "${pkgdir}/usr/share/${_pkgname}/"
-	install -Dm644 "geosite.dat" -t "${pkgdir}/usr/share/${_pkgname}/"
+	install -vDm644 "geoip.dat" -t "${pkgdir}/usr/share/${_pkgname}/"
+	install -vDm644 "geosite.dat" -t "${pkgdir}/usr/share/${_pkgname}/"
+
+	echo "After installation completed, open your browser and navigate to http://localhost:2023"
 }
