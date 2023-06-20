@@ -9,6 +9,7 @@ url="https://www.gnome-look.org/p/1012423"
 _repo='https://github.com/tallero/haiku-icon-theme'
 license=('MIT')
 depends=('gtk-update-icon-cache')
+makedepends=('git')
 source=("${pkgname}::git+${_repo}")
 b2sums=('SKIP')
 

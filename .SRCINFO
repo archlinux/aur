@@ -5,6 +5,7 @@ pkgbase = haiku-icon-theme
 	url = https://www.gnome-look.org/p/1012423
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = gtk-update-icon-cache
 	source = haiku-icon-theme::git+https://github.com/tallero/haiku-icon-theme
 	b2sums = SKIP
