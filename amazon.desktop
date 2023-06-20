@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Amazon
+Comment=Play chess on lichess.org
+Exec=amazon
+Icon=amazon
+Terminal=false
+Categories=Game;Chess;Nativefier;
