@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 _pkgname=pkgbuild-language-server
 pkgname="python-$_pkgname"
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="PKGBUILD language server"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-installer)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('d620a7d194c91da4389d150061cd887c040bf7b95c5e27da5995153aec5d5dce')
+sha256sums=('b47914cdf401d22a9054f571b08c89f4814fd0c6351d877fb40b05916f0b7e56')
 
 package() {
 	python -m installer -d "$pkgdir" ./*.whl
