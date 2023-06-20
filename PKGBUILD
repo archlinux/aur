@@ -5,7 +5,7 @@
 
 _pkgname=pamac
 pkgname=${_pkgname}-all
-pkgver=10.5.1
+pkgver=11.0.1
 pkgrel=1
 _pkgfixver=$pkgver
 
@@ -13,17 +13,17 @@ pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak,
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
 license=('GPL3')
-depends=('libnotify' 'libpamac-full' 'libhandy')
+depends=('libnotify' 'libpamac-full' 'libhandy' 'libadwaita')
 optdepends=('polkit-gnome: needed for authentification in Cinnamon, Gnome')
-makedepends=('gettext' 'itstool' 'vala>=0.45' 'meson' 'ninja' 'gobject-introspection' 'xorgproto' 'asciidoc')
+makedepends=('gettext' 'vala' 'meson' 'ninja' 'gobject-introspection')
 conflicts=('pamac' 'pamac-gtk' 'pamac-cli' 'pamac-common' 'pamac-aur' 'pamac-aur-git' 'pamac-flatpak' 'pamac-flatpak-gnome')
 provides=("pamac=$pkgver-$pkgrel")
 options=(!emptydirs)
 install='pamac.install'
-source=("pamac-$pkgver.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz") 
-sha256sums=('97dd93d2cf56999c7d96f08aeb18ab54b704adb41c7a2c6f856aa9e376986bc9')
+source=("pamac-$pkgver.tar.gz::$url/-/archive/$pkgver/pamac-$pkgver.tar.gz") 
+sha256sums=('f80cc219915a8a86b685461c1ed9182fafcb84b9f72f1f4d128fadce8122eda7')
 
-_srcdir="$_pkgname-v$pkgver"
+_srcdir="$_pkgname-$pkgver"
 
 prepare() {
   cd "$_srcdir"
