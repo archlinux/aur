@@ -13,8 +13,8 @@ url="http://jiffyclub.github.io/snakeviz"
 license=('BSD')
 depends=('python' 'python-tornado')
 source=("$_pythonname-$pkgver.tar.gz::https://github.com/jiffyclub/snakeviz/archive/v$pkgver.tar.gz")
-makedepends=(python-build python-installer python-wheel)
-checkdepends=(python-pytest python-requests)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(ipython python-pytest python-requests)
 options=(!emptydirs)
 sha256sums=('511a86bbed85e4afc0de3599d62300fcc92138cd8d3aec176bef5b9fa4bfd380')
 
