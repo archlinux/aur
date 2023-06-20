@@ -1,6 +1,6 @@
 pkgbase = libheif-git
 	pkgdesc = HEIF and AVIF file format decoder and encoder (git version)
-	pkgver = 1.10.0.r0.g667eeab
+	pkgver = 1.16.2.r88.g003a55e
 	pkgrel = 1
 	url = https://github.com/strukturag/libheif/
 	arch = x86_64
@@ -11,18 +11,21 @@ pkgbase = libheif-git
 	makedepends = gdk-pixbuf2
 	makedepends = libjpeg
 	makedepends = libpng
+	makedepends = rav1e
+	makedepends = svt-av1
 	depends = aom
 	depends = dav1d
 	depends = libde265
-	depends = rav1e
+	depends = libwebp
 	depends = x265
 	optdepends = gdk-pixbuf2: for gdk-pixbuf loader
 	optdepends = libjpeg: for heif-convert and heif-enc
-	optdepends = libpng: for heif-convert, heif-enc and heif-thumbnailer
+	optdepends = libpng: for heif-convert and heif-enc
+	optdepends = svt-av1: for svt-av1 encoder
+	optdepends = rav1e: for rav1e encoder
 	provides = libheif
 	conflicts = libheif
 	source = git+https://github.com/strukturag/libheif.git
 	sha256sums = SKIP
 
 pkgname = libheif-git
-
