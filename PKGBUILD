@@ -17,7 +17,7 @@
 
 pkgname=wireguird
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI frontend to connect to and manage WireGuard tunnels (GTK3)"
 arch=('x86_64')
 url="https://github.com/UnnoTed/wireguird"
