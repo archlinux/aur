@@ -29,6 +29,9 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
+  # To run tests for actionlint, `.git` directory is needed.
+  # actionlint finds a root of repository by checking the directory.
+  mkdir -p .git
   go test -v ./ ./scripts/...
 }
 
