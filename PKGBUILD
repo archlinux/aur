@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=belcard
-pkgver=5.1.71
+pkgver=5.2.54
 pkgrel=1
 pkgdesc="A library for working with vCards"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=("belr>=$pkgver" 'gcc-libs')
 makedepends=('cmake')
 source=("belcard-$pkgver.tar.gz::https://github.com/BelledonneCommunications/belcard/archive/$pkgver.tar.gz")
-sha256sums=('764c4774ed8f4b7bf47b7fdcfec232bc66ce97816cb456e957f29b2909ae5009')
+sha256sums=('2e4774d34e6591fcecc6d8b4bcd534446e86ce2849a9ab5be26f3053dee5e092')
 
 build() {
   cmake -B build -DCMAKE_PREFIX_PATH="/usr/lib" \
