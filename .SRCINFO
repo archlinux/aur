@@ -1,6 +1,6 @@
 pkgbase = deltachat-desktop-bin
 	pkgdesc = Email-based instant messaging for Desktop.
-	pkgver = 1.37.1
+	pkgver = 1.38.0
 	pkgrel = 1
 	url = https://github.com/deltachat/deltachat-desktop
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = deltachat-desktop-bin
 	depends = gcc-libs
 	depends = libxkbcommon
 	provides = deltachat
-	source = deltachat-desktop-1.37.1.pacman::https://github.com/deltachat/deltachat-desktop/releases/download/v1.37.1/deltachat-desktop-1.37.1.pacman
-	sha256sums = a16061fdc6585b68874d68a0020df3acf4411533d3de551f24a27fe577010fda
+	source = deltachat-desktop-1.38.0.pacman::https://download.delta.chat/desktop/v1.38.0/deltachat-desktop-1.38.0.pacman
+	sha256sums = f128b4529f799f78277950744c9a17fe6dd58367c45f5ab78b2c477763767f37
 
 pkgname = deltachat-desktop-bin
