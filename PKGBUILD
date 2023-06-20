@@ -4,8 +4,8 @@
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 _projectname='zed'
 pkgname="ocaml-$_projectname"
-pkgver='3.2.1'
-pkgrel='3'
+pkgver='3.2.2'
+pkgrel='1'
 pkgdesc='Abstract engine for text edition in OCaml'
 # If you're running on aarch64, you have to add it to the arch array of the ocaml-cmdliner AUR dependency
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ license=('BSD')
 depends=('ocaml>=4.02.3' 'ocaml-react' 'ocaml-result' 'ocaml-uchar' 'ocaml-uuseg' 'ocaml-uucp>=2.0.0' 'ocaml-uutf')
 makedepends=('dune>=3.0.0')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('a1de65684d04d5d44ca4396365c98bfa070cf7c78318b53c3ad3ecca2b411450158ef7644b235490d879b37fe983f1707fef527b69af0c2958e45fd1e7a30f11')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha512sums=('cb377ff972c8ef0501a8034c53f10d26a60c7735742945d930b26a8535de2fa36ecc9538518a26f2bed8d5e61a642408c1f0886c75945b50ad6a524ed8e1193b')
 
 _sourcedirectory="$_projectname-$pkgver"
 
