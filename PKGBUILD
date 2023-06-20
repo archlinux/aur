@@ -32,6 +32,7 @@ build() {
       --name $_instname \
       --user-agent "Mozilla/5.0 (X11; Linux ${CARCH};) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.133 Safari/537.36"\
       --inject no-scrollbar.css\
+      --internal-urls ".*?\.amazon\..*" \
       --single-instance \
 
 }
