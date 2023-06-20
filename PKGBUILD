@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
 
 pkgname=drawio-desktop
-pkgver=21.4.0
+pkgver=21.5.0
 pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('any')
@@ -9,23 +9,22 @@ url='https://github.com/jgraph/drawio-desktop'
 license=('Apache')
 _electronver=21
 depends=("electron$_electronver" libnotify shared-mime-info)
-makedepends=(yarn ant 'nodejs>=12')
+makedepends=(yarn 'nodejs>=12')
 options=('!strip')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz"
         "drawio.xml")
-sha512sums=('139044ec93039c633fe022151c1b7faa64504b862d732ffef54b4b230ce0570942b4bc8253ed7251cc516cfaed26ad1e42b2b7fca6641e3a84e7619f9c049ff9'
-            '54e3d651188af4c497b3f2641f2a8905aea597c0e5d38cc0e4be1627144bbf1c38dabfb6fc1f2f0b227bf10f661275bfe73c8698372009ad42917c7511e25ae4'
+sha512sums=('89799cc867c3a89bae30ed9b92c4ede6fac6f9695a20503a5d28f4d4a2c10e3d839e955f6a434e01a73d207e3d8d42c57ff332ee990b4b6ee5799155fc0d24ff'
+            '5c8532cc3af0f6b3ee0eedf04b0d2cf9dfaaabcc530a2a8a3cef8189cc32f111a6a0849788b078205c076d71b4942014abbec03abb00e5ed8aba6b46cf87a496'
             '8899108b4112f065173a077ca68d4d915780bcc993c69924098e134fa05338a20cb0391720b7b45c27071f789fbe5a6a02228dd633570e91fb4482082c480539')
 
 build() {
   rm -rf "$srcdir/drawio-desktop-$pkgver/drawio"
   mv "$srcdir/drawio-$pkgver" "$srcdir/drawio-desktop-$pkgver/drawio"
-  cd "$srcdir/drawio-desktop-$pkgver"/drawio/etc/build
-  ant app
   cd "$srcdir/drawio-desktop-$pkgver"
 
-  rm -rf "META-INF" "WEB-INF"
+  # clean unused files up
+  rm -rfv drawio/src/main/webapp/META-INF drawio/src/main/webapp/WEB-INF
 
   # Electron version compatibility check
   # echo "Checking electron version"
@@ -37,7 +36,7 @@ build() {
   sed -e '/"electron-builder":/d' -i 'package.json'
   sed -e '/"electron-notarize":/d' -i 'package.json'
   local updater='const autoUpdater = { on: () => {}, setFeedURL: () => {}, checkForUpdates: () => {} }'
-  sed -e 's/.*require("electron-updater").*/'"$updater"'/' -e '/checkForUpdates,/d' -i 'drawio/src/main/webapp/electron.js'
+  sed -e 's/.*require("electron-updater").*/'"$updater"'/' -e '/checkForUpdates,/d' -i 'src/main/electron.js'
 
   # fix version in package.json
   sed -i 's/"version": ".*"/"version": "'"$pkgver"'"/g' package.json
@@ -47,7 +46,7 @@ build() {
   yarn autoclean -I
   yarn autoclean -F
 
-  rm -f 'package-lock.json'
+  rm -fv 'package-lock.json'
   find . -name '.yarnclean'         -exec rm -fv {} \;
   find . -name 'yarn.lock'          -exec rm -fv {} \;
   find . -name '.airtap.yml'        -exec rm -fv {} \;
@@ -62,6 +61,8 @@ build() {
   find . -name '.prettierrc.js'     -exec rm -fv {} \;
   find . -name '.travis.yml'        -exec rm -fv {} \;
   find . -name '.tonic_example.js'  -exec rm -fv {} \;
+  find . -name '.yarn-integrity'    -exec rm -fv {} \;
+  find . -name '*.ts'               -exec rm -fv {} \;
 
 }
 
@@ -69,7 +70,7 @@ package() {
   cd "$srcdir/drawio-desktop-$pkgver"
 
   mkdir -p "$pkgdir/usr/lib/draw.io"
-  cp -rp package.json *.js drawio node_modules "$pkgdir/usr/lib/draw.io"
+  cp -rp package.json *.js drawio src node_modules "$pkgdir/usr/lib/draw.io"
 
   # fix file permissions
   chmod -R g+r,o+r "$pkgdir/usr/lib/draw.io"
