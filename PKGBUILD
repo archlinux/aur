@@ -20,7 +20,7 @@ _opt_FLUTTER=1
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}-git"
-pkgver=1.2.0.r3685.g0e61d4e8
+pkgver=1.2.0.r3723.gdf707e22
 pkgrel=1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
@@ -35,7 +35,7 @@ makedepends=("${_mdp[@]}" 'rust' 'python' 'python-yaml' 'python-toml')
 makedepends+=('ninja') # vcpkg build can use the latest ninja
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
-options=('!strip' '!makeflags')
+options=('!strip' '!makeflags' '!lto')
 install="${pkgname}.install"
 source=("git+${url}.git")
 _vcs=(
