@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/stumpylog/tika-client"
 license=('GPL3')
 # depends=('')
-makedepends=('python-hatchling')
+makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/stumpylog/tika-client/archive/$pkgver.tar.gz")
 sha256sums=('5a831849655d9c22f736f20c60d1dc72cee8abf8456f4279f68a4a6a3539fcb7')
 
