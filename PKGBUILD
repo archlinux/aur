@@ -1,18 +1,16 @@
-# Maintainer: agafron
+# Maintainer: mediaget
 
 pkgname=mediaget
-#_pkgname=mediaget
-fixver=4008
+fixver=4009
 pkgver=3.200.${fixver}
-pkgrel=3
+pkgrel=1
 pkgdesc="torrent player torrent-client"
 arch=('i386' 'x86_64')
 url="https://mediaget.com/"
 license=('custom')
 depends=('libidn11' 'gcc-libs' 'vlc') 
-#conflicts=("zvvradio-git")
 source=("${pkgname}.tar.xz::https://mediaget.com/installer/mediaget_linux_${fixver}.tar.xz" "mediaget.desktop" "mediaget")
-md5sums=('c0e0834ac2fbd8252b1f4c2d1f3fe629'
+md5sums=('fc4af93780d1dfbcbe19135d93c1e54f'
          'a0d5c36d4c355317fba5eed5ad55880c'
          '70f419b3a15bee508f8bd1beb3b85342')
 
