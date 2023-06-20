@@ -1,7 +1,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=mmdebstrap
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="create a Debian chroot"
 arch=('any')
@@ -43,7 +43,7 @@ package() {
 
 	source <(perl -V:vendorarch)
 	mkdir -p $pkgdir$vendorarch
-	h2ph -d $pkgdir$vendorarch -a syscall.h
+	h2ph -d $pkgdir$vendorarch -a syscall.h sys/ioctl.h || true
 
 	mkdir -p $pkgdir/usr/bin
 	cp -a mmdebstrap $pkgdir/usr/bin/mmdebstrap
