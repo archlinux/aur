@@ -1,6 +1,6 @@
 pkgbase = python-pkgbuild-language-server
 	pkgdesc = PKGBUILD language server
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/pkgbuild-language-server
 	arch = any
@@ -11,7 +11,8 @@ pkgbase = python-pkgbuild-language-server
 	optdepends = python-pypandoc
 	optdepends = python-markdown-it-py
 	optdepends = pacman
-	source = https://files.pythonhosted.org/packages/py3/p/pkgbuild_language_server/pkgbuild_language_server-0.0.2-py3-none-any.whl
-	sha256sums = 87f9622a984caf7a6191d9b4808cc7b6baaa15feee89828d55e2995325ad799b
+	optdepends = pyalpm
+	source = https://files.pythonhosted.org/packages/py3/p/pkgbuild_language_server/pkgbuild_language_server-0.0.3-py3-none-any.whl
+	sha256sums = 89dfd2355909bfac6fa1b6a4735e24f0d4e8651e9f1688b2ce7d71dcb14ab315
 
 pkgname = python-pkgbuild-language-server
