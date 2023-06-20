@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=(i686 x86_64)
 url="https://popcorntime.app/"
@@ -38,13 +38,13 @@ _bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
 
 # Get sources only here
 source=(
-    "${_pkgname}::git+https://github.com/popcorn-official/popcorn-desktop/#${_commit_hash}"
+    "${_pkgname}::git+https://github.com/popcorn-official/${_pkgname}/#${_commit_hash}"
     "popcorntime.desktop"
     "gulp-fixes.patch"
 )
 sha256sums=('SKIP'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334'
-            'fb550e8b891209bb98a32e18c9e84d8ad1c5603d734ba009d8ebbb53f92ff0a7')
+            '99c485d7b00ae1f4820e43149d6c93aff7c9b1f40d407beef369bc757688144a')
 
 # Building the package
 prepare() {
