@@ -2,7 +2,7 @@
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=texlive-full
-pkgver=2023.20230321
+pkgver=2023.20230620
 pkgrel=1
 epoch=1
 pkgdesc="This packages provides texlive-full in /opt.  It also tricks ArchLinux into thinking it has its texlive packages installed."
@@ -11,22 +11,35 @@ arch=("x86_64")
 license=('custom')
 makedepends=('rsync')
 depends=('libxcrypt-compat' 'asymptote' 'psutils' 't1utils')
-provides=('git-latexdiff'
-'texlive-bin'
-'texlive-bibtexextra'  'texlive-core' 'texlive-fontsextra'
-'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra'
-'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers'
-'texlive-science'
-'texlive-langchinese' 'texlive-langcyrillic' 'texlive-langextra'
-'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean' 'texlive-htmlxml')
-conflicts=('git-latexdiff'
-'texlive-bin'
-'texlive-bibtexextra'  'texlive-core' 'texlive-fontsextra'
-'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra'
-'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers'
-'texlive-science'
-'texlive-langchinese' 'texlive-langcyrillic' 'texlive-langextra'
-'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean' 'texlive-htmlxml'
+provides=(git-latexdiff
+texlive-basic texlive-bibtexextra texlive-bin texlive-binextra
+texlive-context texlive-core texlive-doc
+texlive-fontsextra texlive-fontsrecommended texlive-fontutils texlive-formatsextra
+texlive-games texlive-htmlxml texlive-humanities
+texlive-langarabic texlive-langchinese texlive-langcjk texlive-langcyrillic
+texlive-langczechslovak texlive-langenglish
+texlive-langeuropean texlive-langfrench texlive-langgerman texlive-langgreek
+texlive-langitalian texlive-langjapanese texlive-langkorean texlive-langother
+texlive-langpolish texlive-langportuguese texlive-langspanish
+texlive-latex texlive-latexextra texlive-latexrecommended texlive-luatex
+texlive-mathscience texlive-metapost texlive-music
+texlive-pictures texlive-plaingeneric texlive-pstricks texlive-publishers
+texlive-science texlive-xetex
+)
+conflicts=(git-latexdiff
+texlive-basic texlive-bibtexextra texlive-bin texlive-binextra
+texlive-context texlive-core texlive-doc
+texlive-fontsextra texlive-fontsrecommended texlive-fontutils texlive-formatsextra
+texlive-games texlive-htmlxml texlive-humanities
+texlive-langarabic texlive-langchinese texlive-langcjk texlive-langcyrillic
+texlive-langczechslovak texlive-langenglish
+texlive-langeuropean texlive-langfrench texlive-langgerman texlive-langgreek
+texlive-langitalian texlive-langjapanese texlive-langkorean texlive-langother
+texlive-langpolish texlive-langportuguese texlive-langspanish
+texlive-latex texlive-latexextra texlive-latexrecommended texlive-luatex
+texlive-mathscience texlive-metapost texlive-music
+texlive-pictures texlive-plaingeneric texlive-pstricks texlive-publishers
+texlive-science texlive-xetex
 )
 source=("install-tl-unx-${pkgver}.tar.gz::https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
     "LICENSE.TL::https://tug.org/texlive/LICENSE.TL")
