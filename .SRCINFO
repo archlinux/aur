@@ -8,6 +8,7 @@ pkgbase = pkcs11-provider
 	checkdepends = expect
 	checkdepends = gnutls
 	checkdepends = nss
+	checkdepends = opensc
 	checkdepends = softhsm
 	makedepends = autoconf-archive
 	makedepends = automake

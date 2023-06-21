@@ -21,6 +21,7 @@ checkdepends=(
   expect
   gnutls
   nss
+  opensc
   softhsm
 )
 source=("git+https://github.com/latchset/pkcs11-provider#commit=$_commit")
