@@ -6,11 +6,12 @@ _bcname=GenomeInfoDb
 _bcver=1.36.0
 pkgname="r-${_bcname,,}"
 pkgver="${_bcver//[:-]/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for manipulating chromosome names, including modifying them to follow a particular naming style"
 arch=("any")
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 license=("Artistic2.0")
+
 depends=(
     "r>=4.0.0"
 	"r-biocgenerics>=0.37.0"
@@ -33,10 +34,25 @@ optdepends=(
     "r-biocstyle"
     "r-knitr"
 )
-checkdepends=(
-    "${optdepends[@]}"
-    "r-rcmdcheck"
-)
+
+# The unittests for `r-pkgcache` have circular
+# dependency chains.
+
+# As such, the tests can not be run on first build.
+# While R packages from CRAN, generally, are well-tested
+# before they are released, in some situations, you want to
+# have thorough testing on your own end.
+
+# To run the tests, first build this package without `check()`
+# (i.e., as-is) to bootstrap `r-pkgcache`. Then, on subsequent builds,
+# (assumining you have a local repository that is accessible from
+# the build chroot), uncomment the lines defining `checkdepends`, below,
+# as well as the `check()` function further down
+
+# checkdepends=(
+#     "${optdepends[@]}"
+#     "r-rcmdcheck"
+# )
 
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
 b2sums=("2bd7ed553f7a2bbe37f71d4eee98152907f47f206f657fbdbfc192d385671715be397407e3a3feb827ec73f2f1e52ce1beac68a0460de0224ed3b3c1368eddd5")
@@ -46,10 +62,10 @@ build() {
     R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}/build/"
 }
 
-check() {
-    cd "${srcdir}/${_bcname}/"
-    R_LIBS="${srcdir}/build/" R CMD check --no-manual --no-multiarch --no-vignettes .
-}
+# check() {
+#     cd "${srcdir}/${_bcname}/"
+#     R_LIBS="${srcdir}/build/" R CMD check --no-manual --no-multiarch --no-vignettes .
+# }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
