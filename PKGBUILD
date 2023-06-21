@@ -4,22 +4,23 @@
 
 _name=gaphor
 pkgname=python-${_name}
-pkgver=2.17.0
-pkgrel=2
+pkgver=2.19.0
+pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
 license=('Apache')
 depends=(
-	'gtksourceview4'
-	'python-darkdetect'
+	'gtksourceview5'
 	'python-gaphas'
 	'python-generic'
 	'python-jedi'
 	'python-tinycss2'
-	'python-typing_extensions'
+	'python-pygit2'
+#	'python-typing_extensions'
 	'python-better-exceptions'
 	'python-pydot'
+	'python-babel'
 )
 makedepends=(
 	'gendesk'
@@ -31,13 +32,16 @@ checkdepends=(
 	'python-hypothesis'
 	'python-pytest'
 	'python-pytest-mock'
-	'python-sphinx'
-	'python-xdoctest'
 	'python-pytest-archon'
+	'python-pytest-xvfb'
+	'python-sphinx'
+#	'python-babel-glade'
+	'python-xdoctest'
 	'xorg-server-xvfb'
 )
+provides=("${_name}")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c098fabf3fa7ccf6ea2408888667e8caeb34608c40c69ba57ea217020277c787')
+sha256sums=('18fbe37a12f84d704dee6d8b124de8cc62d892e9b96df2afb3139ac4e0ff1558')
 
 build() {
 	cd "${_name}-${pkgver}"
@@ -51,7 +55,10 @@ build() {
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
 #	xvfb-run --auto-servernum python -m pytest -k 'not' tests/
-	xvfb-run --auto-servernum python -m pytest -s tests/
+#	xvfb-run --auto-servernum python -m pytest -s tests/
+#	local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+#	PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-${python_version}" python -m  pytest -s tests
+	python -m pytest -s tests
 }
 
 prepare() {
