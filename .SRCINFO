@@ -1,6 +1,6 @@
 pkgbase = clash-for-windows-electron-bin
 	pkgdesc = A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron
-	pkgver = 0.20.25
+	pkgver = 0.20.26
 	pkgrel = 1
 	url = https://github.com/Fndroid/clash_for_windows_pkg
 	install = clash-for-windows-bin.install
@@ -13,7 +13,7 @@ pkgbase = clash-for-windows-electron-bin
 	depends = clash-geoip
 	optdepends = nftables: TUN mode required.
 	optdepends = iproute2: TUN mode required.
-	optdepends = clash-premium-bin>=2022.04.01: clash core
+	optdepends = clash-premium-bin: clash core
 	optdepends = clash-meta: clash core
 	provides = clash-for-windows
 	provides = clash-for-windows-electron
@@ -27,9 +27,9 @@ pkgbase = clash-for-windows-electron-bin
 	sha256sums = db2e160e5d5cf82ed69d0926ac51c0eccb9efc541f89be3bb467d85be509f735
 	sha256sums = 4bea2fe6e8580a4316451ca5c8b921bd908422d839f8bd9ceaddd709f9178153
 	sha256sums = d55c2f4088505116a5bad6d09f5ebe232e7c6a269ea6bf46daada02bc3a9f961
-	source_x86_64 = clash-for-windows-electron-bin-0.20.25-x86_64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.25/Clash.for.Windows-0.20.25-x64-linux.tar.gz
-	sha256sums_x86_64 = 8911cf2d48cef65baf28d7a053b14932d17d7b59198247bb5fd2f84d1abb504f
-	source_aarch64 = clash-for-windows-electron-bin-0.20.25-aarch64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.25/Clash.for.Windows-0.20.25-arm64-linux.tar.gz
-	sha256sums_aarch64 = 64d0491a8beee3eb65c686728c2054a2e458a4f343b545d4afc6656170ff2ce8
+	source_x86_64 = clash-for-windows-electron-bin-0.20.26-x86_64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.26/Clash.for.Windows-0.20.26-x64-linux.tar.gz
+	sha256sums_x86_64 = db0b2db0d5302790fdf1d4c011f75a08c84d0503901061468d832d484bc92507
+	source_aarch64 = clash-for-windows-electron-bin-0.20.26-aarch64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.26/Clash.for.Windows-0.20.26-arm64-linux.tar.gz
+	sha256sums_aarch64 = 21e94b91d665d345ed613418bde483c571078e9d74771f75c8a810fc563c92d4
 
 pkgname = clash-for-windows-electron-bin

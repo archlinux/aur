@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527 [AT] gmail.com>
 pkgname=clash-for-windows-electron-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.20.25
+pkgver=0.20.26
 pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron"
 arch=("x86_64" "aarch64")
@@ -16,7 +16,7 @@ depends=('electron'
 optdepends=(
     'nftables: TUN mode required.'
     'iproute2: TUN mode required.'
-    'clash-premium-bin>=2022.04.01: clash core'
+    'clash-premium-bin: clash core'
     'clash-meta: clash core'
 )
 makedepends=('asar' 'npm')
@@ -31,8 +31,8 @@ sha256sums=('9a84b05b718913d3d1fbe462a2da671abff2cb94bb2ded75a3af12204cebe32f'
             'db2e160e5d5cf82ed69d0926ac51c0eccb9efc541f89be3bb467d85be509f735'
             '4bea2fe6e8580a4316451ca5c8b921bd908422d839f8bd9ceaddd709f9178153'
             'd55c2f4088505116a5bad6d09f5ebe232e7c6a269ea6bf46daada02bc3a9f961')
-sha256sums_x86_64=('8911cf2d48cef65baf28d7a053b14932d17d7b59198247bb5fd2f84d1abb504f')
-sha256sums_aarch64=('64d0491a8beee3eb65c686728c2054a2e458a4f343b545d4afc6656170ff2ce8')
+sha256sums_x86_64=('db0b2db0d5302790fdf1d4c011f75a08c84d0503901061468d832d484bc92507')
+sha256sums_aarch64=('21e94b91d665d345ed613418bde483c571078e9d74771f75c8a810fc563c92d4')
 
 _parch=$(echo ${arch} | sed "s/x86_64/x64/;s/aarch64/arm64/")
 build() {
