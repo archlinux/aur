@@ -9,7 +9,7 @@ pkgbase = brutal-doom
 	optdepends = doomseeker
 	noextract = brutalv21.pk3
 	source = http://doomshack.org/uploads/brutalv21.pk3
-	source = https://static.allfearthesentinel.net/wads/doommetalvol5.wad
+	source = http://static.allfearthesentinel.net/wads/doommetalvol5.wad
 	source = brutal-doom
 	source = gzdoom.ini
 	source = brutal-doom.png
@@ -22,4 +22,3 @@ pkgbase = brutal-doom
 	sha256sums = 9c2b7a7cd048fd4e6a7fe65b93376cf2d9a9fa4564b8f3cc7b2baac38ea8e5f3
 
 pkgname = brutal-doom
-

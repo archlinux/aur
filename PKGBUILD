@@ -1,4 +1,4 @@
-# Maintainer: Zanny <lordzanny@gmail.com>
+# Maintainer: Melanie Scheirer <mel@nie.rs>
 # Contributor: ProfessorKaos64 <mdeguzis@gmail.com>
 
 pkgname=brutal-doom
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(gzdoom)
 optdepends=(doomseeker)
 source=('http://doomshack.org/uploads/brutalv21.pk3'
-        'https://static.allfearthesentinel.net/wads/doommetalvol5.wad'
+        'http://static.allfearthesentinel.net/wads/doommetalvol5.wad'
         'brutal-doom'
         'gzdoom.ini'
         'brutal-doom.png'
