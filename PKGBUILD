@@ -12,7 +12,7 @@ _variant=pfkernel
 
 pkgbase=linux-pf-$_variant
 pkgver=$_linux_ver.$_pf_ver
-pkgrel=1
+pkgrel=2
 pkgdesc="$_variant's Linux pf"
 url="https://pfkernel.natalenko.name/"
 arch=(x86_64)
@@ -120,6 +120,9 @@ _package() {
     VHBA-MODULE
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
+    # Extra provides from pf kernel
+    NTFS3-MODULE
+    V4L2LOOPBACK-MODULE
   )
   replaces=(
   )

@@ -1,7 +1,7 @@
 pkgbase = linux-pf-pfkernel
 	pkgdesc = pfkernel's Linux pf
 	pkgver = 6.3.8.pf5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pfkernel.natalenko.name/
 	arch = x86_64
 	license = GPL2
@@ -36,6 +36,8 @@ pkgname = linux-pf-pfkernel
 	provides = VHBA-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	provides = NTFS3-MODULE
+	provides = V4L2LOOPBACK-MODULE
 	replaces = 
 
 pkgname = linux-pf-pfkernel-headers
