@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=labelled
-_pkgver=2.11.0
+_pkgver=2.12.0
 pkgname=r-${_pkgname,,}
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Manipulating Labelled Data'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-utf8
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eddc5299ca448ea9c244960af65b95f4164495febd609f719e0f453598a0e5dd')
+sha256sums=('fe043c2cd910e692c98bf7c79d20d0d8b9e27431eb26c266d863f1956b80d2b8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
