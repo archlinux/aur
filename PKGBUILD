@@ -2,27 +2,31 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _bcname=MatrixGenerics
-_bcver=1.10.0
+_bcver=1.12.2
 pkgname=r-${_bcname,,}
-pkgver=${_bcver//[:-]/.}
-pkgrel=1
 pkgdesc="S4 Generic Summary Statistic Functions that Operate on Matrix-Like Objects"
-arch=(any)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
-license=(Artistic2.0)
+pkgver=${_bcver//[:-]/.}
+pkgrel=2
+
+arch=("any")
+license=("Artistic2.0")
+
 depends=(
     "r"
-    "r-matrixstats>=0.60.1"
+    "r-matrixstats>=1.0.0"
 )
 optdepends=(
-    "r-matrix"
-    "r-sparsematrixstats"
+    "r-delayedarray"
     "r-delayedmatrixstats"
+    "r-sparsearray"
+    "r-sparsematrixstats"
     "r-summarizedexperiment"
     "r-testthat>=2.1.0"
 )
+
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=('598942b007c8e64ae7136f43773cfa5b75bc78294197ba79e4480c54293d3adc4cb0a4caea6763191f11a81e8074271bc365d1979d52a7a7a73d79a7da19cad2')
+b2sums=("d6c496f4bbb3dbb34bea9ac080c834336f90e0d22347754af53ab84443a8d6533e04381c5d23699cb6d74597656f8425b84199f228648d355eedcb84590d9492")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
