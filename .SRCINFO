@@ -1,0 +1,21 @@
+pkgbase = kdash
+	pkgdesc = A simple and fast dashboard for Kubernetes
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://kdash.cli.rs/
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = rust
+	depends = gcc-libs
+	depends = libxcb
+	options = !lto
+	source = kdash-0.3.6.tar.gz::https://github.com/kdash-rs/kdash/archive/refs/tags/v0.3.6.tar.gz
+	b2sums = 69346ee820d9c5d23e7383995fe3a3d992cf8409942922e5c8fb631b0c4ff8a61fd6f89fadb1c573e7ab77226e87242920aa9c7fc0b2b4e882b0ccb09037558b
+
+pkgname = kdash
