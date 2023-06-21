@@ -1,0 +1,46 @@
+pkgbase = linux-pf-pfkernel
+	pkgdesc = pfkernel's Linux pf
+	pkgver = 6.3.8.pf5
+	pkgrel = 1
+	url = https://pfkernel.natalenko.name/
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = git
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = python-sphinx
+	makedepends = texlive-latexextra
+	options = !strip
+	source = https://codeberg.org/pf-kernel/linux/archive/v6.3-pf5.tar.gz
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/6.3.8.zen1-1/config
+	sha256sums = 2d111e38e68f50e2d7c5906f9f1a6f07ccbd12264c69882191433b5413214dc8
+	sha256sums = aa20c3339ed83d53bea8548399b6cba339d7b21e161249d9c8276909c29aef79
+
+pkgname = linux-pf-pfkernel
+	pkgdesc = The pfkernel's Linux pf kernel and modules
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = KSMBD-MODULE
+	provides = UKSMD-BUILTIN
+	provides = VHBA-MODULE
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = 
+
+pkgname = linux-pf-pfkernel-headers
+	pkgdesc = Headers and scripts for building modules for the pfkernel's Linux pf kernel
+	depends = pahole
+
+pkgname = linux-pf-pfkernel-docs
+	pkgdesc = Documentation for the pfkernel's Linux pf kernel
