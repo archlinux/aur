@@ -9,6 +9,8 @@ pkgdesc="CLI tool for uploading large files to Discord in parts using webhooks"
 arch=("x86_64")
 url="https://git.karx.xyz/karx/zdiu"
 license=("MIT")
+# See issue: https://github.com/briansmith/ring/issues/1444
+options=('!lto')
 depends=("gtk3" "gcc-libs" "gdk-pixbuf2")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::https://git.karx.xyz/karx/$pkgname/archive/$pkgver.tar.gz"

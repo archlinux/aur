@@ -9,6 +9,7 @@ pkgbase = zdiu
 	depends = gtk3
 	depends = gcc-libs
 	depends = gdk-pixbuf2
+	options = !lto
 	source = zdiu-0.1.1.tar.gz::https://git.karx.xyz/karx/zdiu/archive/0.1.1.tar.gz
 	source = zdiu.desktop
 	sha256sums = fc1a7116fcb91bab4d19b78a55038a571e2c920cbe2d7420f2ae790e641f5fa6
