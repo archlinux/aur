@@ -1,12 +1,12 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=embridge-bin
 pkgver=3.1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure channel between network applications and keys stored in hardware tokens'
 arch=(x86_64)
 url='https://embridge.emudhra.com'
 license=('custom')
-depends=('curl' 'libunwind' 'lttng-ust2.12' 'openssl' 'icu')
+depends=('curl' 'libunwind' 'lttng-ust2.12' 'openssl-1.1' 'icu')
 source=("emBridge-${pkgver}.zip::https://resources.emudhra.com/hs/Ubuntu/latest/emBridge.zip")
 sha512sums=('0fc4cd20e199eecbda93bdcb46c4b9c47b2f45334cb6810085035fa5ac3be137cd40b2f99ccf12cc157bcad5c10a63aa92b6b18bc0dd07677dcd9e5a4a2f42c3')
 options=('libtool' 'staticlibs' '!strip')
