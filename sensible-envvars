@@ -1,0 +1,9 @@
+#!/bin/bash
+declare -g -A SENSIBLEENVVARS
+
+SENSIBLEENVVARS=([sensible-browser]=BROWSER
+                 [sensible-editor]=EDITOR
+                 [sensible-pager]=PAGER
+                 [sensible-terminal]=TERMINAL_EMULATOR)
+
+# vim:set ts=2 sw=2 et:

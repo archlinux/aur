@@ -1,0 +1,24 @@
+#!/bin/bash
+
+source /usr/share/sensible-utils/sensible-envvars
+
+post_install() {
+  for cmd in ${!SENSIBLEENVVARS[*]}; do
+    local cmdpath
+    cmdpath="$(which $cmd)"
+    [[ -n "$cmdpath" ]] || continue
+    local envvar
+    envvar="${SENSIBLEENVVARS["$cmd"]}"
+    if [[ -z "$envvar" ]]; then
+      continue
+    fi
+    [[ -z "${!envvar}" ]] && echo "$cmdpath requires $envvar be set in the environment to work properly!"
+  done
+}
+
+post_upgrade() {
+  post_install "$@"
+}
+
+# vim:set ts=2 sw=2 et:
+

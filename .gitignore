@@ -3,3 +3,5 @@
 !/.SRCINFO
 !/PKGBUILD
 !/sensible-utils*.asc
+!/*.install
+!/sensible-envvars
