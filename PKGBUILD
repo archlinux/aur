@@ -2,15 +2,15 @@
 # Contributor: blackleg <blackleg@openmailbox.org>
 
 pkgname=xplane-sdk-devel
-pkgver=3.0.3
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="X-Plane SDK"
 url="https://developer.x-plane.com/sdk/"
 arch=("any")
 license=('custom')
 depends=(glibc)
-source=("https://developer.x-plane.com/wp-content/plugins/code-sample-generation/sample_templates/XPSDK303.zip")
-sha256sums=('11a550dc553876d8c0b7187ae2e1c7e9fee5909dce6d8469720cad51e5bcb7ff')
+source=("https://developer.x-plane.com/wp-content/plugins/code-sample-generation/sample_templates/XPSDK${pkgver//./}.zip")
+sha256sums=('c1104e83d9b54b03d0084c1db52ee6491e5290994503e8dd2d4a0af637e2bdd7')
 
 package() {
 	cd "$srcdir/SDK/CHeaders"
