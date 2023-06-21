@@ -2,14 +2,14 @@
 
 pkgname=swhkd-bin
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='sxhkd clone for Wayland, X11 or TTY. Written in Rust.'
 arch=(x86_64)
 url='https://github.com/waycrate/swhkd'
 license=(BSD)
 depends=(polkit)
 provides=(swhkd)
-conflicts=(swhkd-git swhkd-musl-git)
+conflicts=(swhkd swhkd-git swhkd-musl-git)
 source=("$pkgname-$pkgver.zip::$url/releases/download/$pkgver/glibc-x86_64-.zip"
         'https://raw.githubusercontent.com/waycrate/swhkd/19db3259a5f24e3c4395bbfeb3cfad8709d14f18/com.github.swhkd.pkexec.policy'
         'https://raw.githubusercontent.com/waycrate/swhkd/3b19fc33b32efde88311579152a1078a8004397c/LICENSE'
