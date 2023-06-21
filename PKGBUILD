@@ -4,12 +4,12 @@
 
 pkgname=minitimer
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Mini Timer - A timer in your terminal'
 arch=('x86_64' 'aarch64')
-url="https://github.com/ariadnavigo/${pkgname}"
+url="https://git.sr.ht/~ariadnavigo/minitimer/"
 license=('MIT')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('496496b1a390564f7b74551d2c0903bbcce1a43b46da2fe44a9de086ec15edba')
 conflicts=("${pkgname}-git")
 
