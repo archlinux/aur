@@ -1,6 +1,6 @@
 pkgbase = r-iranges
 	pkgdesc = Foundation of integer range manipulation in Bioconductor
-	pkgver = 2.32.0
+	pkgver = 2.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/IRanges.html
 	arch = i686
@@ -9,16 +9,16 @@ pkgbase = r-iranges
 	depends = r>=4.0.0
 	depends = r-biocgenerics>=0.39.2
 	depends = r-s4vectors>=0.33.3
-	optdepends = r-xvector
-	optdepends = r-genomicranges
-	optdepends = r-rsamtools
+	optdepends = r-biocstyle
+	optdepends = r-bsgenome.celegans.ucsc.ce2
 	optdepends = r-genomicalignments
 	optdepends = r-genomicfeatures
-	optdepends = r-bsgenome.celegans.ucsc.ce2
+	optdepends = r-genomicranges
 	optdepends = r-pasillabamsubset
+	optdepends = r-rsamtools
 	optdepends = r-runit
-	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/IRanges_2.32.0.tar.gz
-	b2sums = ae7fb953077f516f55d2b60d7944355a3672d8f33e9957ba4c8d7188bb943fce3e141c990f43cb252baa5c7e4826d21cf71ec0e62bed5df2ef38da3258222b92
+	optdepends = r-xvector
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/IRanges_2.34.0.tar.gz
+	b2sums = 80033a31e2c8364f98e735bf6448d5f928d46421e31a39360c3f82c2ab855f0afc3c97e88be53c2ed4861e277fee8a222c237a9ba0a7c337479e5d727fa819dd
 
 pkgname = r-iranges

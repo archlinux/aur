@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=IRanges
-_bcver=2.32.0
+_bcver=2.34.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -17,18 +17,18 @@ depends=(
     "r-s4vectors>=0.33.3"
 )
 optdepends=(
-    "r-xvector"
-    "r-genomicranges"
-    "r-rsamtools"
+    "r-biocstyle"
+    "r-bsgenome.celegans.ucsc.ce2"
     "r-genomicalignments"
     "r-genomicfeatures"
-    "r-bsgenome.celegans.ucsc.ce2"
+    "r-genomicranges"
     "r-pasillabamsubset"
+    "r-rsamtools"
     "r-runit"
-    "r-biocstyle"
+    "r-xvector"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=('ae7fb953077f516f55d2b60d7944355a3672d8f33e9957ba4c8d7188bb943fce3e141c990f43cb252baa5c7e4826d21cf71ec0e62bed5df2ef38da3258222b92')
+b2sums=("80033a31e2c8364f98e735bf6448d5f928d46421e31a39360c3f82c2ab855f0afc3c97e88be53c2ed4861e277fee8a222c237a9ba0a7c337479e5d727fa819dd")
 
 build() {
     R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
