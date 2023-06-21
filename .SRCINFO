@@ -1,0 +1,12 @@
+pkgbase = pcsx-rearmed-git
+	pkgdesc = Playstation 1 Emulator. Optimized for ARM.
+	pkgver = r23.r98.g8987ee2
+	pkgrel = 1
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0
+	makedepends = zip
+	source = git+https://github.com/notaz/pcsx_rearmed.git
+	md5sums = SKIP
+
+pkgname = pcsx-rearmed-git
