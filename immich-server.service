@@ -16,7 +16,7 @@ Restart=on-failure
 EnvironmentFile=/etc/immich.conf
 Environment=NODE_ENV=production
 SyslogIdentifier=immich-server
-ExecStart=node dist/apps/immich/apps/immich/src/main
+ExecStart=node dist/main immich
 
 PrivateDevices=true
 ProtectHome=true

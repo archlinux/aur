@@ -16,7 +16,7 @@ Restart=on-failure
 EnvironmentFile=/etc/immich.conf
 Environment=NODE_ENV=production
 SyslogIdentifier=immich-microservices
-ExecStart=node dist/apps/microservices/apps/microservices/src/main
+ExecStart=node dist/main microservices
 
 PrivateDevices=true
 ProtectHome=true
