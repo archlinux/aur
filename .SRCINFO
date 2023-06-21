@@ -1,7 +1,7 @@
 pkgbase = artemis-grading-bin
 	pkgdesc = Grading tool for Artemis based exercises
-	pkgver = 4.3.1
-	pkgrel = 2
+	pkgver = 4.4.0
+	pkgrel = 1
 	url = https://github.com/kit-sdq/programming-lecture-eclipse-artemis/
 	install = artemis.install
 	arch = x86_64
@@ -10,12 +10,13 @@ pkgbase = artemis-grading-bin
 	depends = java-environment>=17
 	depends = webkit2gtk
 	provides = eclipse-java
-	source_x86_64 = artemis-grading-bin-4.3.1-x86_64.tar.gz::https://github.com/kit-sdq/programming-lecture-eclipse-artemis/releases/download/v4.3.1/Artemis_Grading_Linux_x86_64.zip
+	source_x86_64 = artemis-grading-bin-4.4.0-x86_64.tar.gz::https://github.com/kit-sdq/programming-lecture-eclipse-artemis/releases/download/v4.4.0/Artemis_Grading_Linux_x86_64.zip
 	source_x86_64 = artemis.desktop
-	sha256sums_x86_64 = ca56f5611ff056a4e2cb73082083397140e14d80d576482fb2eb9a1c696601ef
+	sha256sums_x86_64 = 62a6bb93b791d41f915b1e359acfe8f5beedc4edc78af0b0a1671cfcc9e0397c
 	sha256sums_x86_64 = 4047495c70f39905c6145bf66d352236d9a9de5c734a5f0f5335046c860588b0
-	source_aarch64 = artemis-grading-bin-4.3.1-x86_64.tar.gz::https://github.com/kit-sdq/programming-lecture-eclipse-artemis/releases/download/v4.3.1/Artemis_Grading_Linux_aarch64.zip
+	source_aarch64 = artemis-grading-bin-4.4.0-x86_64.tar.gz::https://github.com/kit-sdq/programming-lecture-eclipse-artemis/releases/download/v4.4.0/Artemis_Grading_Linux_aarch64.zip
 	source_aarch64 = artemis.desktop
-	sha256sums_aarch64 = ca56f5611ff056a4e2cb73082083397140e14d80d576482fb2eb9a1c696601ef
+	sha256sums_aarch64 = 62a6bb93b791d41f915b1e359acfe8f5beedc4edc78af0b0a1671cfcc9e0397c
+	sha256sums_aarch64 = 4047495c70f39905c6145bf66d352236d9a9de5c734a5f0f5335046c860588b0
 
 pkgname = artemis-grading-bin
