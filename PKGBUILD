@@ -228,7 +228,7 @@ package_regolith-i3xrocks () {
     ./autogen.sh
     ./configure --prefix=/usr
     make && make DESTDIR="${pkgdir}" install
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/01_setup
+#    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/01_setup
     mkdir -p "${pkgdir}"/etc && install -Dm644 "${srcdir}"/i3xrocks/i3xrocks.conf "${pkgdir}"/etc/i3xrocks.conf
 }
 
@@ -238,7 +238,8 @@ package_regolith-i3xrocks-config () {
     license=('GPLv3')
     depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome' 'sysstat' 'remontoire' 'regolith-i3' 'alsa-utils' 'perl' 'iproute2' 'lm_sensors' 'curl' 'networkmanager')
     arch=('any')
-    provides=('app-launcher' 'battery' 'bluetooth' 'cpu-usage' 'disk-capacity' 'focused-window-name' 'key-indicator' 'keyboard-layout' 'media-player' 'memory' 'microphone' 'net-traffic' 'next-workspace-widget' 'nm-vpn' 'openvpn' 'temp' 'time' 'volume' 'weather' 'wifi')
+    provides=('i3xrocks-app-launcher' 'i3xrocks-battery' 'i3xrocks-bluetooth' 'i3xrocks-cpu-usage' 'i3xrocks-disk-capacity' 'i3xrocks-focused-window-name' 'i3xrocks-info' 'i3xrocks-key-indicator' 'i3xrocks-keyboard-layout' 'i3xrocks-media-player' 'i3xrocks-memory' 'i3xrocks-microphone' 'i3xrocks-net-traffic' 'i3xrocks-next-workspace-widget' 'i3xrocks-nm-vpn' 'i3xrocks-openvpn' 'i3xrocks-temp' 'i3xrocks-time' 'i3xrocks-volume' 'i3xrocks-weather' 'i3xrocks-wifi')
+    conflicts=('i3xrocks-app-launcher' 'i3xrocks-battery' 'i3xrocks-bluetooth' 'i3xrocks-cpu-usage' 'i3xrocks-disk-capacity' 'i3xrocks-focused-window-name' 'i3xrocks-info' 'i3xrocks-key-indicator' 'i3xrocks-keyboard-layout' 'i3xrocks-media-player' 'i3xrocks-memory' 'i3xrocks-microphone' 'i3xrocks-net-traffic' 'i3xrocks-next-workspace-widget' 'i3xrocks-nm-vpn' 'i3xrocks-openvpn' 'i3xrocks-temp' 'i3xrocks-time' 'i3xrocks-volume' 'i3xrocks-weather' 'i3xrocks-wifi')
 
 
     cd $srcdir/regolith-i3xrocks-config
@@ -331,7 +332,7 @@ package_regolith-desktop-config () {
     python setup.py build
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
-    move_conf "${srcdir}"/regolith-rofication/80_rofication 80_rofication
+#    move_conf "${srcdir}"/regolith-rofication/80_rofication 80_rofication
 }
 
 
