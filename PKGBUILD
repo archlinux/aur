@@ -32,7 +32,7 @@ package() {
 
 	mv webby ${pkgdir}/usr/bin/
 	cp webby.service ${pkgdir}/usr/lib/systemd/system/
-	cp config.json ${pkgdir}/etc/webby/
+	cp -n config.json ${pkgdir}/etc/webby/
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
