@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=mps
+GenericName=jetbrains-mps
+Comment=JetBrains Meta Programming System
+Icon=/opt/jetbrains-mps/bin/MPS_128.png
+Exec="/usr/bin/mps" %f
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=true
+StartupWMClass=jetbrains-mps

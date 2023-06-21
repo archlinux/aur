@@ -14,6 +14,8 @@ pkgbase = jetbrains-mps
 	optdepends = python: support for scripts like restart.py
 	optdepends = ffmpeg0.10: Multimedia plugin
 	source = https://download.jetbrains.com/mps/2021.3/MPS-2021.3.tar.gz
+	source = jetbrains-mps.desktop
 	sha256sums = e9aeb62f0d667dd285f808e3ba308f572797dbf11d51e9aa06cf49481bee857f
+	sha256sums = b948bf480e88f47776374dadcdac3da1890b0825e858ec5170c7aba6b8b9218f
 
 pkgname = jetbrains-mps

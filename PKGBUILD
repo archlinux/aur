@@ -12,10 +12,10 @@ depends=('java-environment' 'libxslt' 'gtk2' 'libglvnd' 'libxtst' 'alsa-lib')
 optdepends=('python: support for scripts like restart.py'
             'ffmpeg0.10: Multimedia plugin')
 
-source=("https://download.jetbrains.com/mps/${_pkgver}/MPS-${pkgver}.tar.gz")
-sha256sums=(
-	'e9aeb62f0d667dd285f808e3ba308f572797dbf11d51e9aa06cf49481bee857f'
-)
+source=("https://download.jetbrains.com/mps/${_pkgver}/MPS-${pkgver}.tar.gz"
+        "${pkgname}.desktop")
+sha256sums=('e9aeb62f0d667dd285f808e3ba308f572797dbf11d51e9aa06cf49481bee857f'
+            'b948bf480e88f47776374dadcdac3da1890b0825e858ec5170c7aba6b8b9218f')
 
 build() {
   cd "${srcdir}"
@@ -24,23 +24,6 @@ build() {
 }
 
 package() {
-  (
-    cat <<EOF
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=${_pkgname}
-GenericName=${pkgname}
-Comment=${pkgdesc}
-Icon=/opt/${pkgname}/bin/MPS_128.png
-Exec="/usr/bin/${_pkgname}" %f
-Terminal=false
-Categories=Development;IDE;
-StartupNotify=true
-StartupWMClass=${pkgname}
-EOF
-    ) > ${srcdir}/${pkgname}.desktop
-
   mkdir -p "${pkgdir}/opt/"
   mkdir -p "${pkgdir}/usr/bin/"
   mkdir -p "${pkgdir}/usr/share/applications/"
