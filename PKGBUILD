@@ -48,12 +48,10 @@ prepare() {
 
 build() {
     cd 'OF/apps/myApps/Oscilloscope'
-    
-    make
+    CC="gcc-6" CXX="g++-6" make
 }
 
 package() {
     cd 'OF/apps/myApps/Oscilloscope'
-
     make DESTDIR="${pkgdir}/" install
 }
