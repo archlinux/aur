@@ -1,4 +1,5 @@
-# Maintainer: Marc Mettke <mettke@itmettke.de>
+# Maintainer: jmcb <joelsgp@protonmail.com>
+# Contributor: Marc Mettke <mettke@itmettke.de>
 
 pkgname='jetbrains-mps'
 pkgver='2021.3'
