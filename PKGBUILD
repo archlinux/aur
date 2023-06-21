@@ -3,8 +3,8 @@
 # Contributor: gilcu3
 # Contributor: nickolai
 pkgname=klee
-pkgver=2.3
-pkgrel=15
+pkgver=3.0
+pkgrel=16
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -26,16 +26,15 @@ makedepends=('gperftools'
              'git')
 checkdepends=('python-tabulate')
 optdepends=()
-provides=('klee=2.3')
+provides=('klee=3.0')
 conflicts=()
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-#source=("git+https://github.com/klee/klee.git#tag=v2.2"
-source=("git+https://github.com/klee/klee.git#commit=879be792870d20a51e26f8f007d24fc0584ee514"
-        "git+https://github.com/google/googletest.git#tag=release-1.10.0") #Building from the repo so it's built with the same compiler as klee is
+source=("git+https://github.com/klee/klee.git#tag=v3.0"
+        "git+https://github.com/google/googletest.git#tag=release-1.11.0") #Building from the repo so it's built with the same compiler as klee is
 noextract=()
 md5sums=('SKIP'
          'SKIP')
@@ -43,17 +42,12 @@ validpgpkeys=()
 
 prepare() {
     cd "$srcdir/klee"
-    git cherry-pick 39f8069db879e1f859c60c821092452748b4ba37
-    git apply "../../TargetRegistryPatch"
-    git apply "../../KnownLLVMVersionPatch"
-    git apply "../../CstdintPatch"
     mkdir -p "$srcdir/build"
     cd "$srcdir/build"
     cmake -DENABLE_TCMALLOC=ON \
           -DENABLE_UNIT_TESTS=ON \
           -DENABLE_SYSTEM_TESTS=ON \
           -DENABLE_POSIX_RUNTIME=ON \
-          -DENABLE_KLEE_UCLIBC=ON \
           -DKLEE_UCLIBC_PATH="/usr/share/klee-uclibc/usr" \
           -DENABLE_SOLVER_Z3=ON \
           -DENABLE_SOLVER_STP=OFF \
@@ -64,10 +58,9 @@ prepare() {
           -DGTEST_SRC_DIR="$srcdir/googletest/googletest" \
           -DENABLE_UNIT_TESTS=ON \
           -DENABLE_SYSTEM_TESTS=ON \
-          -DUSE_CMAKE_FIND_PACKAGE=false \
-          -DLLVM_CONFIG_BINARY=/usr/bin/llvm-config-14 \
-          -DLLVMCC=/usr/lib/llvm14/bin/clang \
-          -DLLVMCXX=/usr/lib/llvm14/bin/clang++ \
+          -DENABLE_UNIT_TESTS=ON \
+          -DLLVM_DIR=/usr/lib/llvm14/lib/cmake/llvm \
+          -DGOOGLETEST_VERSION=1.11.0 \
           "$srcdir/$pkgname"
 }
 
@@ -84,5 +77,5 @@ package() {
 
 check() {
     cd "$srcdir/build"
-    make systemtests
+    make check
 }
