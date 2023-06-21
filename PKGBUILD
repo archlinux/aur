@@ -9,7 +9,7 @@ declare -g -a pkgname=($_pkgname)
 pkgname+=(sensible-utils sensible-utils-data)
 pkgver=0.0.20
 _debianextra=''
-pkgrel=3
+pkgrel=4
 pkgdesc="Utilities for sensible alternative selection"
 arch=('any')
 url="http://packages.debian.org/source/sid/sensible-utils"
@@ -19,12 +19,10 @@ makedepends=('po4a')
 checkdepends=('ed' 'dash')
 _dirname=${pkgbase}_${pkgver}_$pkgrel_${_debianextra}
 source=("$_dirname.tar.xz::http://ftp.debian.org/debian/pool/main/s/$pkgbase/${pkgbase}_${pkgver}${_debianextra}.tar.xz"
-        "$_dirname.dsc::http://ftp.debian.org/debian/pool/main/s/$pkgbase/${pkgbase}_${pkgver}${_debianextra}.dsc"
-        sensible-utils_0.0.20_.dsc.asc)
+        "$_dirname.dsc::http://ftp.debian.org/debian/pool/main/s/$pkgbase/${pkgbase}_${pkgver}${_debianextra}.dsc")
 b2sums=('e65419e7f157f64249b429806a4d48c02c5f492fb2dbdae1a8e4966dca964a4b1b9b6fdb555f03fabb6cd219238022821a64b15f11582ffdf115fa15ab6e3e0e'
-        '8b122921916df3f4c138b99ac5183cae686e01be985db0ad2c77e3faff619779aecc596c6936c9f73f73ff3c73cf5ce30654df9158ce15caccd4ed0e0f50de09'
-        'SKIP')
-validpgpkeys=('98F28F767470129FBE3B054CE2154DD1A1C77B8B')
+        '8b122921916df3f4c138b99ac5183cae686e01be985db0ad2c77e3faff619779aecc596c6936c9f73f73ff3c73cf5ce30654df9158ce15caccd4ed0e0f50de09')
+validpgpkeys=('5D0187B940A245BAD7B0F56A003A1A2DAA41085F')
 
 prepare() {
   return 0
