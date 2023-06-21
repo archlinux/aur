@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=pkgcache
-_cranver=2.1.0
+_cranver=2.1.1
 pkgname=r-${_cranname,,}
 pkgdesc="Cache ‘CRAN’-Like Metadata and R Packages"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -52,23 +52,23 @@ optdepends=(
 # the build chroot), uncomment the lines defining `checkdepends`, below,
 # as well as the `check()` function further down
 
-# checkdepends=(
-#     "${optdepends[@]}"
-#     "r-testthat>=3.0.0"
-# )
+checkdepends=(
+    "${optdepends[@]}"
+    "r-testthat>=3.0.0"
+)
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("4e17cb1484c65a42227bae87534a927cce711c5953f9f141ee4d8c4c8c8aeda4afc2f5d340aa8b1e017b1ce1170bf5fc818cb0a5fc371e599c6c28446a28fe47")
+b2sums=("b024ab6731acb4fc425f35813fcc3fd7a05cb3010609f575113d7686591c7a06a7b6efaa56513b62cef15c66dc102aab12cf5fb0d93cf32bf25add3666cc7618")
 
 build() {
     mkdir -p "${srcdir}/build/"
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-# check() {
-#     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
-# }
+check() {
+    export R_LIBS="build/"
+    R CMD check --no-manual "${_cranname}"
+}
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
