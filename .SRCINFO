@@ -17,6 +17,6 @@ pkgbase = jetbrains-mps
 	source = https://download.jetbrains.com/mps/2022.3/MPS-2022.3.tar.gz
 	source = jetbrains-mps.desktop
 	sha256sums = 6a8640ef9613fa562513788ae33d66c535ec230564d000cea61f7684a2f4042b
-	sha256sums = 6a6b1f8f43ba07cd0428f9fc755d56962e4ca0c1257d5a57b126121e16f1f56a
+	sha256sums = 4f12761b77b311b52c46be3519a4468f15bed82045670b5d238a5019f1dae2e1
 
 pkgname = jetbrains-mps

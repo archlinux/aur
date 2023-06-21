@@ -8,13 +8,14 @@ pkgdesc="JetBrains Meta Programming System"
 arch=('any')
 url="http://www.jetbrains.com/mps/index.html"
 license=('custom: MPS license agreement')
+# idk about these lol
 depends=('java-environment=17' 'libxslt' 'gtk2' 'libglvnd' 'libxtst' 'alsa-lib' 'python')
 optdepends=('ffmpeg0.10: support for multimedia plugin')
 makedepends=('imagemagick')
 source=("https://download.jetbrains.com/mps/${pkgver}/MPS-${pkgver}.tar.gz"
         "${pkgname}.desktop")
 sha256sums=('6a8640ef9613fa562513788ae33d66c535ec230564d000cea61f7684a2f4042b'
-            '6a6b1f8f43ba07cd0428f9fc755d56962e4ca0c1257d5a57b126121e16f1f56a')
+            '4f12761b77b311b52c46be3519a4468f15bed82045670b5d238a5019f1dae2e1')
 
 package() {
     _dest="opt/${pkgname}"
@@ -22,19 +23,20 @@ package() {
     _bin="${pkgdir}/usr/bin/"
     _share="${pkgdir}/usr/share/"
 
-    # todo symlink mps.sh to bin/mps
-    # todo pixmap
-
     # main files
     install -d "${pkgdir}/opt"
     cp -r "MPS ${pkgver}" "${_opt}"
 
     # desktop entry
-    install -D -m 644 "${pkgname}.desktop" "${_share}/applications"
+    install -D -m 644 -t "${_share}/applications" "${pkgname}.desktop" 
 
     install -D "${_opt}/bin/mps.svg" "${_share}/pixmaps/${pkgname}.svg"
     install -d "${_share}/pixmaps/"
     convert -background none "${_opt}/bin/mps.svg" "${_share}/pixmaps/${pkgname}.png"
+
+    # binary symlink
+    install -d "${_bin}"
+    ln -s "/${_dest}/bin/mps.sh" "${_bin}/${pkgname}"
 
     # license symlink
     _license="${_share}/licenses/${pkgname}"
