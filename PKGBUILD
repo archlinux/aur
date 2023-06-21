@@ -1,11 +1,11 @@
 # Maintainer: Stetsed <aur.arch@stetsed.xyz>
 pkgname=batterylog-git
 pkgver=r15.4ae8059
-pkgrel=1
+pkgrel=2
 pkgdesc="Battery logging tool (git version)"
 arch=('any')
 url="https://github.com/lhl/batterylog"
-license=('MIT')
+license=('GPL-3.0')
 depends=('python' 'sqlite3')
 makedepends=('git')
 source=("git+https://github.com/lhl/batterylog.git")
