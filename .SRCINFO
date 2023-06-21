@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-vision
 	pkgdesc = Google Cloud Vision API client library
-	pkgver = 3.4.2
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = https://pypi.org/project/google-cloud-vision/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-google-cloud-vision
 	depends = python-proto-plus>=1.22.0
 	depends = python-protobuf>=3.19.5
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/g/google-cloud-vision/google-cloud-vision-3.4.2.tar.gz
-	sha256sums = b8b288da5634f78ac23173dd5d5ebd86ba2b37ce5c4cbadb564caa78188e0518
+	source = https://files.pythonhosted.org/packages/source/g/google-cloud-vision/google-cloud-vision-3.4.3.tar.gz
+	sha256sums = 4527bfb1aa9f89d027db420d40de9faae4824b6406c80373a6dd827e7989c09e
 
 pkgname = python-google-cloud-vision
