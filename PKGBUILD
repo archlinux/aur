@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="warpgui-bin"
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc="GUI for Cloudflare ™ WARP"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk2' 'at-spi2-core' 'cairo' 'libx11' 'pango' 'glibc' 'gdk-pixbuf2' 'g
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-0.mrx9.x86_64.rpm")
-sha256sums=('e10d673f76fb9ac85db8f5cc72e75f51dd2809c058101bbac48088da64810a6e')
+sha256sums=('706b6405f24b3377999e6c88298f66b2ab6856633e9e257288b17dff81fbb7f0')
  
 package() {
     install -Dm755 -d "${pkgdir}/opt"
