@@ -11,7 +11,7 @@
 # java-runtime suffices.
 
 pkgname=splitter
-pkgrel=2
+pkgrel=1
 pkgver=653
 pkgdesc='Utility for splitting OpenStreetMap maps into tiles.'
 url='http://www.mkgmap.org.uk/'

@@ -1,7 +1,7 @@
 pkgbase = splitter
 	pkgdesc = Utility for splitting OpenStreetMap maps into tiles.
 	pkgver = 653
-	pkgrel = 2
+	pkgrel = 1
 	url = http://www.mkgmap.org.uk/
 	arch = any
 	license = GPL
