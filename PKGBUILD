@@ -3,7 +3,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r24266.069d7e6be
+pkgver=r24474.a67bdeb2c
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -55,14 +55,19 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/Microsoft/vcpkg.git'
         'git+https://github.com/arun11299/cpp-jwt.git'
         'git+https://github.com/bylaws/libadrenotools.git'
+        'git+https://github.com/lat9nq/tzdb_to_nx.git'
         # cubeb dependencies
         'git+https://github.com/arsenm/sanitizers-cmake.git'
         'git+https://github.com/google/googletest'
         # sirit dependencies
         'git+https://github.com/KhronosGroup/SPIRV-Headers.git'
         # libadrenotools' dependencies
-        'git+https://github.com/bylaws/liblinkernsbypass.git')
+        'git+https://github.com/bylaws/liblinkernsbypass.git'
+        # tzdb_to_nx submodules
+        'git+https://github.com/eggert/tz.git')
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -94,11 +99,10 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in {inih,cubeb,dynarmic,libressl,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet}; 
+    for submodule in {inih,cubeb,dynarmic,libressl,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet,libadrenotools,tzdb_to_nx}; 
     do
         git config --file=.gitmodules submodule.$submodule.url "$srcdir/${submodule}"
     done
-    git config --file=.gitmodules submodule.externals/libadrenotools.url "$srcdir/libadrenotools"
 
     git -c protocol.file.allow=always submodule update --init
 
@@ -115,6 +119,10 @@ prepare() {
 
     cd "$srcdir/$_pkgname/externals/libadrenotools"
     git config --file=.gitmodules submodule.lib/linkernsbypass.url "$srcdir/liblinkernsbypass"
+    git -c protocol.file.allow=always submodule update --init
+
+    cd "$srcdir/$_pkgname/externals/nx_tzdb/tzdb_to_nx/"
+    git config --file=.gitmodules submodule.externals/tz/tz.url "$srcdir/tz"
     git -c protocol.file.allow=always submodule update --init
 }
 
@@ -138,6 +146,7 @@ build() {
       -DYUZU_USE_BUNDLED_FFMPEG=OFF \
       -DYUZU_USE_BUNDLED_QT=OFF \
       -DYUZU_USE_EXTERNAL_VULKAN_HEADERS=OFF \
+      -DYUZU_DOWNLOAD_TIME_ZONE_DATA=ON \
       -DYUZU_TESTS=OFF \
       -DENABLE_QT6=OFF \
       -DUSE_DISCORD_PRESENCE=ON \
