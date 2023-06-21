@@ -2,9 +2,9 @@
 # Co-Maintainer: Martin Rys <https://rys.pw/contact>
 
 pkgname=loot
-pkgver=0.19.1
+pkgver=0.20.0
 _pkglibver=0.19.4
-pkgrel=7
+pkgrel=1
 pkgdesc="A load order optimisation tool for the Elder Scrolls (Morrowind and later) and Fallout (3 and later) games."
 arch=('x86_64')
 url="https://loot.github.io"
@@ -14,19 +14,11 @@ makedepends=('git' 'cmake' 'rust' 'cbindgen' 'boost' 'onetbb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
         "lib$pkgname-$_pkglibver.tar.gz::https://github.com/$pkgname/lib$pkgname/archive/$_pkglibver.tar.gz"
         'LOOT.desktop'
-        'tbb.patch' # https://github.com/loot/loot/issues/1864
 )
-sha256sums=('832c0a44f8f33963a90987d880e2527f0ae9a175b29451c47d486dfdf4d41df1'
+sha256sums=('25b09d8a4ae94887eb889865c889472618207c4728b12c7d252fc58ded1f9c7f'
             '819c0c8a6986a612c81729cccf51a848dac7d83f46a75d93cfbb87587f86635e'
             '3dd063fdbe33dc82a4298bd5bcd3b4e7490adab4128389c153d12c6b074b27fb'
-            '4c94372e800f764fb21218b7cbbf8421cadc60acd532e8ba66b734395f1bb343'
 )
-
-
-prepare() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	patch -p1 < "${srcdir}/tbb.patch"
-}
 
 build() {
 	# libloot
