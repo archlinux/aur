@@ -1,18 +1,26 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
-_app_id="com.github.tallero.DialAPirate"
+_pkg="DialAPirate"
+_ns="tallero"
+_app_id="com.github.${_ns}.${_pkg}"
 pkgname=dial-a-pirate
 pkgver=0.0.1
 _commit="32b7c6b"
 pkgrel=3
 pkgdesc="A LÖVE implementation of Dial-A-Pirate from the EGA version of The Secret of Monkey Island"
-arch=('i686' 'x86_64')
+arch=(
+'x86_64'
+'i686'
+'armv7h'
+'aarch64'
+'pentium4'
+)
 url="https://github.com/tallero/dial-a-pirate"
 license=('AGPL3')
 depends=('love')
 makedepends=('git' 'wget')
 options=(!strip)
-source=("${pkgname}::git+$url#commit=${_commit}"
+source=("${pkgname}::git+${url}#commit=${_commit}"
         "${pkgname}.sh"
         "${_app_id}.desktop"
         "${_app_id}.png")
