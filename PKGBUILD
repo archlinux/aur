@@ -7,28 +7,13 @@
 pkgbase=regolith-de
 pkgname=(regolith-i3 # (regolith-i3-gaps regolith-i3-gaps-session i3-snapshot i3xrocks gnome-flashback ubiquity-slideshow-regolith)
         regolith-i3xrocks # allll the i3xrocks shit
-	i3xrocks-app-launcher
-	i3xrocks-battery
-	i3xrocks-cpu-usage
-	i3xrocks-focused-window-name
-	i3xrocks-info
-	i3xrocks-key-indicator
-	i3xrocks-media-player
-	i3xrocks-memory
-	i3xrocks-net-traffic
-	i3xrocks-nm-vpn
-	i3xrocks-openvpn
-	i3xrocks-temp
-	i3xrocks-time
-	i3xrocks-volume
-	i3xrocks-weather
-	i3xrocks-wifi
+	regolith-i3xrocks-config
         regolith-styles # alll the styles shit
         regolith-st 
         regolith-desktop-config
 	remontoire-regolith)
 pkgver=1.6
-pkgrel=15
+pkgrel=18
 arch=('x86_64')
 url=https://github.com/regolith-linux/regolith-desktop
 url2=https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files
@@ -213,7 +198,7 @@ pkgdesc="Regolith's i3-gaps-based DE's underpinnings and gnome foundational depe
     optdepends=('picom: For compositing/desktop effects - strongly recommended!'
 		'unclutter-xfixes-git: For unclutter'
 		'lightdm: Display Manager - Regolith LightDM theme included in regolith-desktop-config' )
-    provides=('xrescat' 'regolith-gnome-flashback' 'i3-snapshot')
+    provides=('xrescat' 'regolith-gnome-flashback')
     conflicts=()
     groups=('regolith-de')
 
@@ -235,7 +220,7 @@ package_regolith-i3xrocks () {
     arch=('x86_64')
     depends=('glibc' 'accountsservice' 'alsa-utils' 'bc' 'ttf-font-awesome' 'xcb-util-xrm')
     conflicts=('i3xrocks')
-    provides=('i3xrocks')
+#    provides=('i3xrocks')
     groups=('regolith-de')
 
 
@@ -248,243 +233,27 @@ package_regolith-i3xrocks () {
 }
 
 
-package_i3xrocks-app-launcher () {
-    pkgdesc="App launcher blocklet for i3xrocks"
+package_regolith-i3xrocks-config () {
+    pkgdesc="Blocks and scripts needed for i3xrocks - fork of i3-blocks"
     license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome')
-    conflicts=()
-    provides=('i3xrocks-app-launcher')
-    groups=('regolith-de')
+    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome' 'sysstat' 'remontoire' 'regolith-i3' 'alsa-utils' 'perl' 'iproute2' 'lm_sensors' 'curl' 'networkmanager')
+    arch=('any')
+    provides=('app-launcher' 'battery' 'bluetooth' 'cpu-usage' 'disk-capacity' 'focused-window-name' 'key-indicator' 'keyboard-layout' 'media-player' 'memory' 'microphone' 'net-traffic' 'next-workspace-widget' 'nm-vpn' 'openvpn' 'temp' 'time' 'volume' 'weather' 'wifi')
 
 
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/app-launcher app-launcher
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/10_app-launcher 10_app-launcher
-
-#    extract_deb "${srcdir}"/i3xrocks-app-launcher_3.6.4-1_amd64.deb
-#    move_copyright
+    cd $srcdir/regolith-i3xrocks-config
+    for i in $srcdir/regolith-i3xrocks-config/scripts/*; do install -Dm755 $i $pkgdir/usr/share/i3xrocks/$(basename $i); done
+    for i in $srcdir/regolith-i3xrocks-config/conf.d/*; do install -Dm644 $i $pkgdir/etc/regolith/i3xrocks/conf.d/$(basename $i); done
 }
-
-
-package_i3xrocks-battery () {
-    pkgdesc="Battery blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome')
-    conflicts=()
-    provides=('i3xrocks-battery')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/battery battery
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/80_battery 80_battery
-}
-
-
-package_i3xrocks-cpu-usage () {
-    pkgdesc="CPU usage blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome' 'sysstat')
-    conflicts=()
-    provides=('i3xrocks-cpu-usage')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/cpu-usage cpu-usage
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/40_cpu-usage 40_cpu-usage
-}
-
-
-package_i3xrocks-focused-window-name () {
-    pkgdesc="Focused window name blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome')
-    conflicts=()
-    provides=('i3xrocks-focused-window-name')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/focused-window-name focused-window-name
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/10_focused-window-name 10_focused-window-name
-}
-
-
-package_i3xrocks-info () {
-    pkgdesc="Info/remontoire blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'remontoire' 'accountsservice' 'bc' 'ttf-font-awesome')
-    conflicts=()
-    provides=('i3xrocks-info')
-    groups=('regolith-de')
-
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/20_info 20_info
-}
-
-
-package_i3xrocks-key-indicator () {
-    pkgdesc="Key indicator blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome')
-    conflicts=()
-    provides=('i3xrocks-key-indicator')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/key-indicator key-indicator
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/20_key-indicator 20_key-indicator
-}
-
-
-package_i3xrocks-media-player () {
-    pkgdesc="media-player blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'alsa-utils' 'bc' 'ttf-font-awesome' 'playerctl' 'regolith-i3')
-    conflicts=()
-    provides=('i3xrocks-media-player')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/media-player media-player
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/30_media-player 30_media-player
-}
-
-
-package_i3xrocks-memory () {
-    pkgdesc="RAM blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome' 'perl')
-    conflicts=()
-    provides=('i3xrocks-memory')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/memory memory
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/50_memory 50_memory
-}
-
-
-package_i3xrocks-net-traffic () {
-    pkgdesc="Network traffic blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'iproute2' 'bc' 'ttf-font-awesome')
-    conflicts=()
-    provides=('i3xrocks-net-traffic')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/net-traffic net-traffic
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/30_net-traffic 30_net-traffic
-}
-
-
-package_i3xrocks-nm-vpn () {
-    pkgdesc="nmcli vpn blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'networkmanager' 'bc' 'ttf-font-awesome')
-    conflicts=()
-    provides=('i3xrocks-nm-vpn')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/nm-vpn nm-vpn
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/40_nm-vpn 40_nm-vpn
-}
-
-
-package_i3xrocks-openvpn () {
-    pkgdesc="OpenVPN blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'openvpn' 'bc' 'ttf-font-awesome')
-    conflicts=()
-    provides=('i3xrocks-openvpn')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/openvpn openvpn
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/40_openvpn 40_openvpn
-}
-
-
-package_i3xrocks-temp () {
-    pkgdesc="CPU temperature blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'lm_sensors')
-    conflicts=()
-    provides=('i3xrocks-temp')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/temp temp
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/40_temp 40_temp
-}
-
-
-
-package_i3xrocks-time () {
-    pkgdesc="Time blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'bc' 'ttf-font-awesome')
-    conflicts=()
-    provides=('i3xrocks-time')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/time time
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/90_time 90_time
-}
-
-
-package_i3xrocks-volume () {
-    pkgdesc="Volume blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'alsa-utils' 'bc' 'ttf-font-awesome')
-    conflicts=()
-    provides=('i3xrocks-volume')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/volume volume
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/80_volume 80_volume
-}
-
-
-package_i3xrocks-weather () {
-    pkgdesc="Weather blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'curl' 'bc' 'ttf-font-awesome')
-    conflicts=()
-    provides=('i3xrocks-weather')
-    groups=('regolith-de')
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/weather weather
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/20_weather 20_weather
-}
-
-
-package_i3xrocks-wifi () {
-    pkgdesc="Wifi blocklet for i3xrocks"
-    license=('GPLv3')
-    arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'networkmanager' 'bc' 'ttf-font-awesome')
-    conflicts=()
-    provides=('i3xrocks-wifi')
-    groups=('regolith-de')
-
-
-    move_script "${srcdir}"/regolith-i3xrocks-config/scripts/wifi wifi
-    move_conf "${srcdir}"/regolith-i3xrocks-config/conf.d/30_wifi 30_wifi
-}
-
 
 package_regolith-styles () {
     pkgdesc="Regolith's themes for i3, gdm, gtk, rofi, plymouth, etc."
     license=('custom: GPLv3')
     depends=("regolith-i3" "gtk3" "ttf-iosevka-nerd" "ttf-jetbrains-mono" "adwaita-icon-theme" "otf-fira-mono" "ttf-ubuntu-font-family" "arc-icon-theme" "python-appdirs")
     conflicts=("ayu-theme" "paper-icon-theme" "qogir-icon-theme" "moka-icon-theme-git" "nordic-theme-git" "gtk-theme-solarc-git" "gtk-theme-plano" "gtk-theme-plano-git" "dracula-gtk-theme")
-    provides=("ayu-theme" "paper-icon-theme" "regolith-styles" "regolith-look" "gtk-theme-solarc" "gtk-theme-plano" "dracula-gtk-theme")
+    provides=("ayu-theme" "paper-icon-theme" "regolith-look" "gtk-theme-solarc" "gtk-theme-plano" "dracula-gtk-theme")
     groups=('regolith-de')
+    options=('!strip')
 
     extract_deb "${srcdir}"/ayu-theme_0.2.2-1_amd64.deb
     extract_deb "${srcdir}"/cahuella_1.0.3-1_amd64.deb
