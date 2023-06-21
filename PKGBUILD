@@ -5,8 +5,8 @@
 
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
-pkgver=44.1+r2+g82bd40dcb
-pkgrel=2
+pkgver=44.2
+pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -18,6 +18,7 @@ depends=(
   gnome-settings-daemon
   graphene
   gsettings-desktop-schemas
+  iio-sensor-proxy
   lcms2
   libcanberra
   libgudev
@@ -47,7 +48,7 @@ _checkdepends=(
   wireplumber
   zenity
 )
-_commit=82bd40dcbcc3601da755678778f033bd9a30286d  # gnome-44
+_commit=e7ed2bf85700a2ff33b69826f6f0fff6e2f28e69  # tags/44.2^0
 source=(
   "$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
   'mr1441.patch'
