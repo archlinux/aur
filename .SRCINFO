@@ -1,7 +1,7 @@
 pkgbase = python-ezdxf
 	pkgdesc = Python interface to DXF
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ezdxf.mozman.at/
 	arch = x86_64
 	license = MIT
