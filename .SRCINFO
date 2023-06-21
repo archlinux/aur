@@ -1,0 +1,16 @@
+pkgbase = sway-vdctl-git
+	pkgdesc = A command line utility for creating and managing virtual (headless) outputs in sway & starting a vnc server for them.
+	pkgver = 0.0.1.r1.4a43da8
+	pkgrel = 1
+	url = https://github.com/odincat/sway-vdctl
+	arch = i686
+	arch = x86_64
+	makedepends = cargo
+	depends = wayvnc
+	optdepends = vinagre: vnc client for the GNOME desktop
+	provides = sway-vdctl
+	conflicts = sway-vdctl
+	source = git+https://github.com/odincat/sway-vdctl.git
+	sha512sums = SKIP
+
+pkgname = sway-vdctl-git
