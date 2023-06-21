@@ -17,7 +17,7 @@ license=('GPL2')
 conflicts=('gnome-colors-icon-theme-extras')
 replaces=('gnome-colors-icon-theme-extras')
 makedepends=('git' 'inkscape' 'imagemagick' 'gnome-icon-theme' 'gnome-icon-theme-symbolic')
-source=("git://github.com/gnome-colors/gnome-colors")
+source=("git+https://github.com/gnome-colors/gnome-colors.git")
 sha256sums=('SKIP')
 
 prepare() {

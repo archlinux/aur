@@ -12,8 +12,7 @@ pkgbase = gnome-colors-icon-theme
 	makedepends = gnome-icon-theme-symbolic
 	conflicts = gnome-colors-icon-theme-extras
 	replaces = gnome-colors-icon-theme-extras
-	source = git://github.com/gnome-colors/gnome-colors
+	source = git+https://github.com/gnome-colors/gnome-colors.git
 	sha256sums = SKIP
 
 pkgname = gnome-colors-icon-theme
-
