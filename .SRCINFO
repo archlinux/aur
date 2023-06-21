@@ -1,7 +1,7 @@
 pkgbase = wpimath
 	pkgdesc = WPILib's mathematics and controls library
 	pkgver = 2023.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wpilibsuite/allwpilib
 	arch = x86_64
 	license = BSD

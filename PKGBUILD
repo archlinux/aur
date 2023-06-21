@@ -2,7 +2,7 @@
 
 pkgname=wpimath
 pkgver=2023.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/allwpilib'
@@ -38,9 +38,8 @@ build() {
 }
 
 check() {
-  cd build
   # wpiutil test failure: JsonComparisonValuesTest.Less
-  ctest -E wpiutil --output-on-failure
+  ctest --test-dir build -E wpiutil --output-on-failure
 }
 
 package() {
