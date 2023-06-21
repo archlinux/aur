@@ -23,7 +23,7 @@ source=("git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
-	echo "dev"
+	echo "$pkgver.r$pkgrel"
 }
 
 build() {
