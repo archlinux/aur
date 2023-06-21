@@ -1,0 +1,16 @@
+pkgbase = oscilloscope-git
+	pkgdesc = Oscilloscope written in OF.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/kritzikratzi/Oscilloscope
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = openframeworks
+	makedepends = gcc6
+	source = oscilloscope::git+https://github.com/kritzikratzi/Oscilloscope.git
+	source = https://openframeworks.cc/versions/v0.10.1/of_v0.10.1_linux64gcc6_release.tar.gz
+	sha256sums = SKIP
+	sha256sums = 9cc5133028b84d5031dbd054719238095e46a5aed507f3b32265fa2906f37905
+
+pkgname = oscilloscope-git
