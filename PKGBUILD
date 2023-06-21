@@ -1,70 +1,70 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=softmaker-office-2024-bin
-pkgver=1112
+pkgver=1200
 pkgrel=1
-pkgdesc="Proprietary office suite; word processing, spreadsheets, presentations (BETA)"
+pkgdesc="Proprietary office suite; word processing, spreadsheets, presentations"
 url="https://www.softmaker.com"
 arch=('x86_64')
 license=('custom')
 depends=('hicolor-icon-theme' 'shared-mime-info' 'libxmu' 'libgl' 'libxrandr' 'libxrender'
          'libx11' 'libxext' 'libxmu' 'curl' 'desktop-file-utils')
-source=('planmaker-nx.desktop'
-        'presentations-nx.desktop'
-        'textmaker-nx.desktop'
-        'planmakernx'
-        'presentationsnx'
-        'textmakernx'
-        'softmaker-office-nx.xml')
-source_x86_64=("http://www.softmaker.net/down/softmaker-office-nx-${pkgver//./-}-amd64.tgz")
-md5sums=('95fc61a87e75e525abb5b446c4e29635'
-         '9f2e85b3a31a17e22f3f2ca12b3c3971'
-         '5d08764f8677cbbf2c6e50c01ef3c185'
-         '9fd70f26916db5e641a3d7727df4223d'
-         '052615de9b1733596832e95b22d47551'
-         '8b5e74ccb7ed223db25d0cafea36d36f'
-         'f750f31e92221d88b72f8de1075a960f')
-md5sums_x86_64=('5420958776be865700b634a94b7438da')
-sha512sums=('a2b8db4e2028bce38f37c9da2e5733aceea17cd9ebd7e96c1252e328cc7fd3e940c71967a9f41d2b04f874d86ee0050f22cead313e5fd9b5e396a6a704f475e2'
-            'fc0b0dac264df8d1a9301c6c934dc5bc6cbc2c7e6eb06a109b60e2d58429f3a61117e12585c0e42388c8b064e3ac6e55e513d1c01dc8cea5999fed7e2342e449'
-            '6733712a2efb1f5794da7127a0df12419e747a724c46f6b9daf204dc88b806ea6a230097ae1aa6a5d647ff5e36916948bc0b1dd8977a03a7517400eb0dedee46'
-            '69285ac7d4c6c0bb0a1bce9ed9a1619748fb12c6304dd1ca6ee0878250bf4345761a9b96ba23de6bc190fdb1c53fb5d11eb5d719a24998d449c1a223cb8e244f'
-            '134fbddc26091d3e8dff602d67e7bd2e01e0e6b1a0b77266b289781d912684c890f54c1b8922fd8a8c3fba21439a00a4e355bb23a1816d6b13ec1576fcb53c3e'
-            '83879bc58e22b58df193ef9434a292b3c4108d72000db85a7739317ecd10630c6ae578a97947a95c782f3838e6f155ce093399a42dc0044e623d5a437f1d4550'
-            '94bb97083f6630b883cf1f642a5170ef17de088bfa78210068b9bf65107cc2a5984927f49014cd8040a55d9e0723d3de8ee30875f3dc3bc4f752181d7e04893d')
-sha512sums_x86_64=('0ef9312ef2164739fe59fac8c1be809c60001e4af345118e2baeba1fafdf1c7c655616813e03fd59d62c7cf122cf88ddc22dbcfeabe42a41dd06fd4673759dae')
+source=('planmaker-2024.desktop'
+        'presentations-2024.desktop'
+        'textmaker-2024.desktop'
+        'planmaker24'
+        'presentations24'
+        'textmaker24'
+        'softmaker-office-2024.xml')
+source_x86_64=("http://www.softmaker.net/down/softmaker-office-2024-${pkgver//./-}-amd64.tgz")
+md5sums=('8230e66ee3219e8216482f9176038b7a'
+         '19474c324050b24180be7e693660fda1'
+         'bc895b2acaffcfdb90e4b4f95f880ae1'
+         '454f59ab470b29aa9b32a5c7a73db752'
+         'a6f3599bbc8ea60108a7097b2180c94f'
+         '8c416487ae92cb1d9cc098730541b0c2'
+         '6d6a3c1dece6d47c5a04c40398c1e8be')
+md5sums_x86_64=('c02f437da611ebb5e7df27ea0be68cf3')
+sha512sums=('1b46aa5b78199a120302764a143a7a7512d846aa394d7b28077555f67cd114dcd99eb9f6d679e34f029eb314c020db1eda83111249a465fb56dfc0c93436c4dc'
+            '3d60ca8729157ab170454b2a6fd3d7d696e31b1d9b9e325e455a2e3a1a5db57d17fee42366a41547ea7c3957838823bd8ef8805e2b23dc0fdc48544990659d7d'
+            '696f80c5fb9d2db1d34e1268ca545669028ee29910975c26e3e83c05dfee248f315b702336600745fe7f20b8ecd3ab75a87ffb571bf91f2b073a7ba7cb36b3bb'
+            '107516e6fb1234019b63fd95af1dcaad223325d901fe315b4bab46a9cae11b1d3db5130aa346670cb990cf06f7f0ae6d55200780ead59e54925247455076cd7d'
+            '2c9f577e819e7aab96f527ed6562c2b56841d340c7e1d851f4ad96e780f92af1653160b9661bfd3fa6fe208f7d659a4d96cd4e11081840487a7bb14753a79a8a'
+            '9be8b6a101b4064e1d14e45d9e81c2867f3e3dbe717820a8c3838685b036415f0584b4d9d999d1b052b675b1f4ee23d1e411321fa66ec63373cbc8ec6341f515'
+            '2cf6d62036e88a181b6a0aec73bfe92890901d02cea3bed350fd0297af1e0de0418153c8817d7c79ebf0258c3118023bc6c0300199dbb0fd9d608e16b7b22ae2')
+sha512sums_x86_64=('6501fb01bee9b85ac2b728b3e30e63781f30bfdecb5a7fc1d7526e470cbc79081332167eafd1e14b181e2b55e46db3110b61dd1dde4b835ee1ceebbb51b5a5e4')
 
 package() {
-  install -dm755 "${pkgdir}/usr/share/officenx"
-  bsdtar xf "${srcdir}/officenx.tar.lzma" -C "${pkgdir}/usr/share/officenx"
+  install -dm755 "${pkgdir}/usr/share/office2024"
+  bsdtar xf "${srcdir}/office2024.tar.lzma" -C "${pkgdir}/usr/share/office2024"
   # fix ownership
   chown -R root:root "${pkgdir}"
 
-  install -Dm 755 -t "${pkgdir}/usr/bin" "${srcdir}/planmakernx" "${srcdir}/presentationsnx" "${srcdir}/textmakernx"
+  install -Dm 755 -t "${pkgdir}/usr/bin" "${srcdir}/planmaker24" "${srcdir}/presentations24" "${srcdir}/textmaker24"
   for size in 16 32 48 64 128 256 512; do
     install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
-    ln -s "/usr/share/officenx/icons/pml_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/officenx-planmaker.png"
-    ln -s "/usr/share/officenx/icons/prl_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/officenx-presentations.png"
-    ln -s "/usr/share/officenx/icons/tml_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/officenx-textmaker.png"
+    ln -s "/usr/share/office2024/icons/pml_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/office2024-planmaker.png"
+    ln -s "/usr/share/office2024/icons/prl_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/office2024-presentations.png"
+    ln -s "/usr/share/office2024/icons/tml_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/office2024-textmaker.png"
 
     install -d "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes"
-    ln -s "/usr/share/officenx/icons/pmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmdnx.png"
-    ln -s "/usr/share/officenx/icons/prd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-prdnx.png"
-    ln -s "/usr/share/officenx/icons/tmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmdnx.png"
-    ln -s "/usr/share/officenx/icons/pmd_oth_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmdnx-oth.png"
-    ln -s "/usr/share/officenx/icons/tmd_oth_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmdnx-oth.png"
-    ln -s "/usr/share/officenx/icons/pmd_mso_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmdnx-mso.png"
-    ln -s "/usr/share/officenx/icons/prd_mso_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-prdnx-mso.png"
-    ln -s "/usr/share/officenx/icons/tmd_mso_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmdnx-mso.png"
+    ln -s "/usr/share/office2024/icons/pmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmd24.png"
+    ln -s "/usr/share/office2024/icons/prd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-prd24.png"
+    ln -s "/usr/share/office2024/icons/tmd_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmd24.png"
+    ln -s "/usr/share/office2024/icons/pmd_oth_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmd24-oth.png"
+    ln -s "/usr/share/office2024/icons/tmd_oth_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmd24-oth.png"
+    ln -s "/usr/share/office2024/icons/pmd_mso_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-pmd24-mso.png"
+    ln -s "/usr/share/office2024/icons/prd_mso_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-prd24-mso.png"
+    ln -s "/usr/share/office2024/icons/tmd_mso_${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/mimetypes/application-x-tmd24-mso.png"
   done
 
-  install -Dm644 "${srcdir}/softmaker-office-nx.xml" "${pkgdir}/usr/share/mime/packages/softmaker-office-nx.xml"
+  install -Dm644 "${srcdir}/softmaker-office-2024.xml" "${pkgdir}/usr/share/mime/packages/softmaker-office-2024.xml"
   install -dm755 "${pkgdir}/usr/share/mime-info"
-  ln -s /usr/share/officenx/mime/softmaker-office-nx.mime "${pkgdir}/usr/share/mime-info/softmaker-office-nx.mime"
+  ln -s /usr/share/office2024/mime/softmaker-office-2024.mime "${pkgdir}/usr/share/mime-info/softmaker-office-2024.mime"
 
-  install -Dm644 "${srcdir}/planmaker-nx.desktop" "${pkgdir}/usr/share/applications/planmaker-nx.desktop"
-  install -Dm644 "${srcdir}/presentations-nx.desktop" "${pkgdir}/usr/share/applications/presentations-nx.desktop"
-  install -Dm644 "${srcdir}/textmaker-nx.desktop" "${pkgdir}/usr/share/applications/textmaker-nx.desktop"
+  install -Dm644 "${srcdir}/planmaker-2024.desktop" "${pkgdir}/usr/share/applications/planmaker-2024.desktop"
+  install -Dm644 "${srcdir}/presentations-2024.desktop" "${pkgdir}/usr/share/applications/presentations-2024.desktop"
+  install -Dm644 "${srcdir}/textmaker-2024.desktop" "${pkgdir}/usr/share/applications/textmaker-2024.desktop"
 
-  install -Dm644 "${pkgdir}/usr/share/officenx/mime/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
+  install -Dm644 "${pkgdir}/usr/share/office2024/mime/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
 }
