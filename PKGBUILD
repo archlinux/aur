@@ -15,7 +15,9 @@ license=('GPL2')
 
 makedepends=('python-setuptools')
 depends=('python' 'python-certifi' 'python-chardet' 'python-urllib3' 'python-cryptography'
-         'python-pysocks' 'python-cffi' 'python-ntlm-auth' 'python-requests-ntlm' 'python-charset-normalizer')
+         'python-pysocks' 'python-cffi' 'python-ntlm-auth' 'python-requests-ntlm' 'python-charset-normalizer'
+         'python-jinja' 'python-defusedxml' 'python-markupsafe' 'python-pyopenssl' 'python-idna'
+         'python-requests' 'python-colorama' 'python-pyparsing' 'python-beautifulsoup4')
 
 changelog=CHANGELOG.md
 backup=("etc/$pkgname/default.conf")
