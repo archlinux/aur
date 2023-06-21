@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 _svt_hevc_ver='eb24a06ba4ee4948f219a3246b88439a8090bd37'
 _svt_vp9_ver='aaa8140c8cdf6c073eaa6aaa5d003d1535fd0059'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
@@ -75,6 +75,7 @@ depends=(
     'lv2'
     'ocl-icd'
     'onevpl'
+    'onevpl-intel-gpu'
     'openal'
     'opencore-amr'
     'openh264'
