@@ -6,7 +6,7 @@
 _pkgname=notesnook
 pkgname=$_pkgname-bin
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote (binary release)"
-pkgver=2.5.2
+pkgver=2.5.3
 pkgrel=1
 arch=('x86_64' 'arm64')
 url="https://github.com/streetwriters/notesnook"
@@ -18,8 +18,8 @@ provides=($_pkgname)
 _appimage="${_pkgname}_${pkgver}_linux.AppImage"
 source_x86_64=("$_appimage::$url/releases/download/v$pkgver/${_pkgname}_linux_x86_64.AppImage")
 source_arm64=("$_appimage::$url/releases/download/v$pkgver/${_pkgname}_linux_arm64.AppImage")
-sha256sums_x86_64=('f07298b21bcc468bc882ec7fea29fb332d8dbf7e763ffa22ca1519c57bd55b48')
-sha256sums_arm64=('1ee8ee0bd8536cead09aca00f01aaf614b13448af8c8c6adb919bba3fd4d83bb')
+sha256sums_x86_64=('9248187ec851dfbf9602bfe9f658936b656e6ace842b50f735f3091c797d73dd')
+sha256sums_arm64=('SKIP')
 
 _fix_permissions() (
   target=$1
@@ -47,8 +47,7 @@ prepare() {
   chmod +x "./$_appimage"
   "./$_appimage" --appimage-extract
   # Edit the shortcut
-  cd squashfs-root
-  sed -i -E "s|Exec=AppRun|Exec=$_pkgname|g" $_pkgname.desktop
+  sed -i -E "s|Exec=AppRun|Exec=$_pkgname|g" squashfs-root/$_pkgname.desktop
 }
 
 package() {
