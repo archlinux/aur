@@ -1,6 +1,6 @@
 pkgbase = modrinth-app-git
 	pkgdesc = Official Modrinth launcher. Open-source, built by the community, for the community.
-	pkgver = r135.9ea548c
+	pkgver = r147.3f46882
 	pkgrel = 1
 	url = https://github.com/modrinth/theseus
 	arch = x86_64

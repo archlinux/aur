@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app-git
 _gitname=theseus
-pkgver=r135.9ea548c
+pkgver=r147.3f46882
 pkgrel=1
 pkgdesc='Official Modrinth launcher. Open-source, built by the community, for the community.'
 url=https://github.com/modrinth/theseus
@@ -34,9 +34,10 @@ build() {
 }
 
 package() {
-	# Just copy everything from the deb bundle folder
-	# Pretty convinient isn't it?
-	# TODO: generate the "modrinth-app_0.0.1_amd64" automatically
-	cp -r "${srcdir}/theseus/target/release/bundle/deb/modrinth-app_0.0.1_amd64/data/usr/" \
+	# Grab the folder name (has the version embeeded in it)
+	folder=$(find . -type d -name "modrinth-app*") 2>/dev/null
+
+	# Then just copy everything from the deb bundle folder
+	cp -r "${folder}/data/usr/" \
 		"${pkgdir}"
 }
