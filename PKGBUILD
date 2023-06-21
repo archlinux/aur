@@ -2,9 +2,8 @@
 
 pkgname=italian-draughts-git
 pkgver=1.3.3.r0.gb2ad56a
-pkgrel=1
-pkgdesc="Italian Draughts, a strategy game for 2 players written in C++"
-
+pkgrel=2
+pkgdesc="Play Italian Draughts against the computer"
 arch=("x86_64")
 depends=("wxwidgets-gtk3")
 license=("GPL3")
@@ -13,7 +12,7 @@ source=("$pkgname"::'git+https://github.com/nicolarevelant/italian-draughts.git'
 	'italian-draughts.desktop')
 url="https://github.com/nicolarevelant/italian-draughts"
 sha256sums=('SKIP'
-	'3300918286847221d374ab02600444ecc9fe26d7cd8a90beae02d1a3dceffbf8')
+	'99625c7024e47343e9e838abdbc8d30613841afef84afb1fab54f7e024535d00')
 
 build() {
 	cd "$pkgname"
