@@ -1,7 +1,7 @@
 # Maintainer: xgjmibzr <xgjmibzr@gmail.com>
 
 pkgname=httm
-pkgver=0.29.3
+pkgver=0.29.4
 pkgrel=1
 pkgdesc="Prints the size, date and locations of available unique versions (deduplicated by modify time and size) of files residing on ZFS or BTRFS snapshots."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('btrfs-progs: BTRFS support'
             'nilfs-utils: NILFS2 support')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('bdb1dfa95d3f38201c04cb823b8f6e72f24dc722880e80031875e92b98dded4d31e841d879644e86983fdda41e224365259c88f47bad796c9d763ef2814a6d51')
+sha512sums=('6b88c51756efdf8f94f620ebf7b87b01fad7ecd612c3eb82fb4eb2cefd781b065fa72f77a9aacb549a3eb69a32191605b5724433edcad880c4dcee4c78c0dbd0')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
