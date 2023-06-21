@@ -7,7 +7,7 @@
 
 pkgname=notesnook
 pkgver=2.5.3
-pkgrel=1
+pkgrel=2
 _electronversion=21
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=('any')
@@ -16,7 +16,7 @@ license=('GPL3')
 options=(!strip)
 provides=(${pkgname})
 conflicts=(${pkgname})
-depends=("electron$_electronversion" 'libappindicator-gtk3' 'libnotify' 'libxss' 'libxtst')
+depends=("electron$_electronversion" 'libappindicator-gtk3' 'libnotify' 'libsodium' 'libxss' 'libxtst')
 makedepends=('nvm' 'git' 'yarn')
 source=("git+$url.git#tag=v$pkgver"
         "${pkgname}.desktop")
