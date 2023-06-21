@@ -2,7 +2,7 @@
 
 pkgname=regolith-full
 pkgver=1.6
-pkgrel=18
+pkgrel=19
 pkgdesc='Full Regolith Desktop Environment, for the full stock experience.'
 arch=('x86_64')
 url='https://github.com/regolith-linux/regolith-desktop'
