@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=S4Vectors
-_bcver=0.36.2
+_bcver=0.38.1
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -22,13 +22,14 @@ optdepends=(
     "r-genomicranges"
     "r-graph"
     "r-iranges"
+    "r-knitr"
     "r-matrix"
     "r-runit"
     "r-shortread"
     "r-summarizedexperiment"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=('31d38a7dbf8fffb25b5197a52b2d29d673edbc5a3cd347ebf1fb614f1f39bf7af1228516cb5e0494679ed28c3b9448c1f9b4a4b14fba41ed499a0dbe89e98e08')
+b2sums=("6058f754fe594e2bdc11a5414c6d135037ea4918008f1b9eb99a0009b9237226528eb01b43cfe8da639d288c8c02bc094fd19f0c619c60bd035cdd2b34539dda")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
