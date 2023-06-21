@@ -1,12 +1,12 @@
 # Maintainer: Jan-Jaap Korpershoek <jjkorpershoek96 at gmail dot com>
 pkgname=php-language-server
 pkgver=5.4.6
-pkgrel=3
+pkgrel=4
 pkgdesc="PHP language server implementation"
 arch=('x86_64')
 url="https://github.com/felixfbecker/php-language-server"
 license=('ISC')
-depends=('php7')
+depends=('php74')
 makedepends=('composer')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/felixfbecker/$pkgname/archive/v$pkgver.tar.gz"
