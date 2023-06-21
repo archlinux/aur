@@ -5,12 +5,18 @@ pkgver=0.1
 pkgrel=2
 pkgdesc='small naive python 3.x search engine using k-grams'
 arch=('any')
-url='https://github.com/tallero/trovotutto'
+url="https://github.com/tallero/${pkgname}"
 license=('AGPL3')
-depends=('python' 'python-nltk' 'python-pyxdg' 'python-setproctitle')
+depends=(
+  'python'
+  'python-nltk'
+  'python-pyxdg'
+  'python-setproctitle')
 makedepends=('python-setuptools')
-source=("${pkgname}::git+https://github.com/tallero/trovotutto.git#tag=${pkgver}")
-sha256sums=('SKIP')
+source=(
+  "${url}/archive/refs/tags/${pkgver}.tar.gz"
+)
+sha256sums=('2e93b85675efbeaa289bc9b531ca1f60990bee688a2cf36e9a13bf681691fe53')
 
 package() {
   cd "${pkgname}"
