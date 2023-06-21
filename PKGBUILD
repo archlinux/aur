@@ -7,7 +7,7 @@ pkgdesc="A TUI application written in python for typing!"
 arch=('any')
 url="https://github.com/kraanzu/termtyper"
 license=('MIT')
-depends=(python-rich python-textual==0.1.15 python-playsound)
+depends=(python-rich python-textual python-playsound)
 makedepends=(python-build python-installer python-wheel python-poetry git)
 provides=(termtyper)
 conflicts=(termtyper)
