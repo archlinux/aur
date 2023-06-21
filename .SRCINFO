@@ -1,25 +1,11 @@
 pkgbase = r-pkgcache
 	pkgdesc = Cache ‘CRAN’-Like Metadata and R Packages
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=pkgcache
 	arch = i686
 	arch = x86_64
 	license = MIT
-	checkdepends = r-covr
-	checkdepends = r-debugme
-	checkdepends = r-desc
-	checkdepends = r-fs
-	checkdepends = r-mockery
-	checkdepends = r-pillar
-	checkdepends = r-pingr
-	checkdepends = r-rprojroot
-	checkdepends = r-sessioninfo
-	checkdepends = r-spelling
-	checkdepends = r-webfakes>=1.1.5
-	checkdepends = r-withr
-	checkdepends = r-zip
-	checkdepends = r-testthat>=3.0.0
 	depends = r>=3.4
 	depends = r-callr>=2.0.4.9000
 	depends = r-cli>=3.2.0
