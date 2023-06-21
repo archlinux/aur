@@ -1,3 +1,12 @@
+2023-06-21 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.7.2-1:
+    [!] Fixed Steam breaking change which caused ASF not being able to receive 2FA confirmations (@ezhevita #2920 #2921).
+    Added additional bullet-proofing for validation of accounts being announced on ASF STM listing (@JustArchi #2908).
+    Made it explicit that maximum amount of Steam inventory items for ASF STM listing is 500000 (@JustArchi).
+    Fixed accepted/rejected trade offers not being retried against internal Steam failures (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2023-05-28 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.6.3-1:
     Added additional bullet-proofing for validation of accounts being announced on ASF STM listing (@JustArchi #2900 #2901).
