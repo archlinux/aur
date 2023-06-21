@@ -9,7 +9,7 @@ pkgname=(sensible-utils sensible-browser sensible-editor sensible-pager sensible
 _pkgname=(sensible-browser sensible-editor sensible-pager sensible-terminal sensible-utils-data)
 pkgver=0.0.20
 _debianextra='' # Do not remove even if empty as sometimes Debian puts e.g. +1, their version of a pkgrel.
-pkgrel=5
+pkgrel=6
 pkgdesc="Utilities for sensible alternative selection"
 arch=('any')
 url="http://packages.debian.org/source/sid/sensible-utils"
@@ -18,27 +18,33 @@ depends=('bash' 'coreutils')
 makedepends=('po4a'
              # for xargs
              'findutils')
-checkdepends=('ed'
-              # see comment in check() function
-              'dash')
+checkdepends=('ed')
 _dirname=${pkgbase}_${pkgver}_$pkgrel_${_debianextra}
 source=("$_dirname.tar.xz::http://ftp.debian.org/debian/pool/main/s/$pkgbase/${pkgbase}_${pkgver}${_debianextra}.tar.xz"
         "$_dirname.dsc::http://ftp.debian.org/debian/pool/main/s/$pkgbase/${pkgbase}_${pkgver}${_debianextra}.dsc"
+        0001-no-fork-bomb-test.patch
         sensible-utils.install
         sensible-envvars)
 # (n)vim command to regenerate:
 # :'<,'>! makepkg --geninteg 2>&1 | perl -pe '$_=~s/^[\s]*(==>|->).*//g; $_=~s/^[\s]*$//d'
 b2sums=('e65419e7f157f64249b429806a4d48c02c5f492fb2dbdae1a8e4966dca964a4b1b9b6fdb555f03fabb6cd219238022821a64b15f11582ffdf115fa15ab6e3e0e'
         '8b122921916df3f4c138b99ac5183cae686e01be985db0ad2c77e3faff619779aecc596c6936c9f73f73ff3c73cf5ce30654df9158ce15caccd4ed0e0f50de09'
-        '7ce44eb32d7630155bdf0b6bb0dcb7263c74c5d7050ace953559efdb97448b8105d971c0b721ce34033cda3f32263e524ebfded39a6b7a02652a73bc29d46b98'
+        '5d49350d8dafe08380eac326c9951fc24065ab0d867258112d28f4ca5c39170766600aa11c612c074ced4b5e35be59018aeb5a1d638a3dd51ade7d0f0f6d5bc0'
+        'c39a760655833d374dc606894452c997bd86a1645c0b5496c5546364cac07ad4205c8dae05f457bd31a210bfd4d290fbcb71cdcf584df857e93c851b384bba81'
         '8a213b98cc6d432af30ecf58d91ae88f151f2824274702f7e1bde6119b45effc4a0b15907459c9f8f1ee5af94de862e6dec579b4f07d168aaa658443764a1f19')
 # Bastien ROUCARIÈS <rouca@debian.org>
 validpgpkeys=('5D0187B940A245BAD7B0F56A003A1A2DAA41085F')
+
+prepare() {
+  cd ${pkgbase}-${pkgver}${_debianextra}
+  rm test/fork-bomb
+}
 
 build() {
   cd ${pkgbase}-${pkgver}${_debianextra}
   export -n EDITOR VISUAL PAGER TERMINAL_EMULATOR BROWSER
   ./configure --prefix=/usr
+  patch Makefile ../0001-no-fork-bomb-test.patch
   make
 }
 
@@ -46,16 +52,7 @@ build() {
 # which it isn't on Arch but is on Debian!
 check() {
   cd ${pkgbase}-${pkgver}${_debianextra}
-  OLDPATH="$PATH"
-  TEMPDIR=`mktemp -d`
-  >&2 echo Made tempdir "$TEMPDIR".
-  ln -s /bin/dash "$TEMPDIR/sh"
-  export PATH="$TEMPDIR:$PATH"
-  sed -i -e 's@#!/bin/sh@#!/usr/bin/env sh@' ./sensible-editor
   env -i make check
-  sed -i -e 's@#!/usr/bin/env sh@#!/bin/sh@' ./sensible-editor
-  export PATH="$OLDPATH"
-  rm -rv "$TEMPDIR"
 }
 
 _package_sensible() {

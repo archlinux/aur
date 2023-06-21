@@ -1,0 +1,4 @@
+6c6
+< TESTS = test/ed-as-sensible-editor test/echo-as-browser  test/ed-as-visual test/ed-as-fallback test/error-out test/fork-bomb test/shell-script test/failure-propagation test/echo-as-pager
+---
+> TESTS = test/ed-as-sensible-editor test/echo-as-browser  test/ed-as-visual test/ed-as-fallback test/error-out test/shell-script test/failure-propagation test/echo-as-pager
