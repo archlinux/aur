@@ -2,7 +2,7 @@
 # Contributor: Marc Mettke <mettke@itmettke.de>
 
 pkgname='jetbrains-mps'
-pkgver='2021.3'
+pkgver='2022.3'
 pkgrel=1
 pkgdesc="JetBrains Meta Programming System"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python: support for scripts like restart.py'
 
 source=("https://download.jetbrains.com/mps/${pkgver}/MPS-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('e9aeb62f0d667dd285f808e3ba308f572797dbf11d51e9aa06cf49481bee857f'
+sha256sums=('6a8640ef9613fa562513788ae33d66c535ec230564d000cea61f7684a2f4042b'
             'b948bf480e88f47776374dadcdac3da1890b0825e858ec5170c7aba6b8b9218f')
 
 build() {
