@@ -1,0 +1,17 @@
+pkgbase = mya-git
+	pkgdesc = A CLI tool for fetching data from MyAnimeList
+	pkgver = r134.587fa4f
+	pkgrel = 1
+	url = https://github.com/jmakhack/myanimelist-cli/tree/master
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = curl
+	depends = libcurl-compat
+	depends = json-c
+	depends = libbsd
+	source = mya-git::git+https://github.com/jmakhack/myanimelist-cli.git
+	md5sums = SKIP
+
+pkgname = mya-git
