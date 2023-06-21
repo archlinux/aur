@@ -1,32 +1,35 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-media-stack-bin
-pkgver=2021.2.3
+pkgver=23.1.5
 pkgrel=1
+epoch=1
 pkgdesc='Tools and libraries for developing media solutions on Intel products (pre-compiled binaries)'
 arch=('x86_64')
-url='https://github.com/Intel-Media-SDK/MediaSDK/'
+url='https://github.com/oneapi-src/oneVPL-intel-gpu//'
 license=('MIT')
-depends=('gcc-libs' 'libpciaccess' 'libgl' 'libdrm' 'libx11' 'libxext'
-         'libxfixes' 'wayland')
+depends=('gcc-libs' 'libgl' 'libx11' 'libxcb' 'libxext' 'libxfixes')
 optdepends=('ocl-icd: for rotate_opencl plugin'
             'intel-compute-runtime: for rotate_opencl plugin')
-makedepends=('chrpath' 'lsb-release' 'ocl-icd')
+makedepends=('chrpath' 'lsb-release')
 provides=('intel-media-sdk' 'libmfx' 'intel-gmmlib' 'intel-media-driver'
-          'libva' 'libva-utils')
+          'libva' 'libva-utils' 'onevpl' 'onevpl-intel-gpu')
 options=('!strip' '!emptydirs')
 install=intel-media-stack-bin.install
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Intel-Media-SDK/MediaSDK/releases/download/intel-mediasdk-${pkgver:2}/MediaStack.tar.gz"
-        '010-intel-media-stack-bin-fix-install.patch')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/oneapi-src/oneVPL-intel-gpu//releases/download/intel-onevpl-${pkgver}/MediaStack.tar.gz"
+        '010-intel-media-stack-bin-fix-install.patch'
+        '020-intel-media-stack-bin-fix-profile.patch')
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('230ce1418677c4bf9162d98c434aca3cf802d2ad4eb6a2a549488b3353d99a0d'
-            '500c2236c71812ca816dbc0752fa5038b41fc73a71c8d1d6684ea770f8918f74')
+sha256sums=('bf3442edbe185ef87c1199f176d772997735f1115c48cea89b4d7ffbe858664e'
+            '769757c058e750a7c4e00382719f34aa27d4d804423af0e55984b719c9332cb3'
+            'b6c8e3d9db6195b3d0d2299774b1f57ef09c2f80eda8c7f1d0507d769dcfb62f')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
     bsdtar -xf "${pkgname}-${pkgver}.tar.gz" -C "${pkgname}-${pkgver}" -s '|[^/]*/||'
     patch -d "${pkgname}-${pkgver}" -Np1 -i "${srcdir}/010-intel-media-stack-bin-fix-install.patch"
-    sed -i "/^pkgdir=/s|$|${pkgdir}|" "${pkgname}-${pkgver}/install_media.sh"
+    patch -d "${pkgname}-${pkgver}" -Np1 -i "${srcdir}/020-intel-media-stack-bin-fix-profile.patch"
+    sed -i "/^pkgdir=/s|$|'${pkgdir}'|" "${pkgname}-${pkgver}/install_media.sh"
     chmod a+x "${pkgname}-${pkgver}/install_media.sh"
 }
 
@@ -49,22 +52,17 @@ package() {
         fi
         
         printf '\n%s\n' '# add bin folder to PATH' >> "$_file"
-        printf '%s\n' "${_cmd} PATH=\"\${PATH:+\"\${PATH}\":}/opt/intel/mediasdk/bin\"" >> "$_file"
-    done < <(find "${pkgdir}/etc/profile.d" -maxdepth 1 -mindepth 1 -type f -name 'intel-mediasdk.*sh' -print0)
+        printf '%s\n' "${_cmd} PATH=\"\${PATH:+\"\${PATH}\":}/opt/intel/media/bin\"" >> "$_file"
+    done < <(find "${pkgdir}/etc/profile.d" -maxdepth 1 -mindepth 1 -type f -name 'intel-media.*sh' -print0)
     
     # add symlink for libcttmetrics.so (required by 'metrics_monitor' sample)
-    ln -s ../share/mfx/samples/_bin/libcttmetrics.so "${pkgdir}/opt/intel/mediasdk/lib64/libcttmetrics.so"
+    ln -s ../share/mfx/samples/_bin/libcttmetrics.so "${pkgdir}/opt/intel/media/lib64/libcttmetrics.so"
     
-    # fix broken symlinks for plugins
-    rm "${pkgdir}/opt/intel/mediasdk"/{lib64/mfx/plugins.cfg,plugins}
-    ln -s lib64/mfx "${pkgdir}/opt/intel/mediasdk/plugins"
-    ln -s ../../share/mfx/plugins.cfg "${pkgdir}/opt/intel/mediasdk/lib64/mfx/plugins.cfg"
-    
-    # remove insecure and unneeded '/docker/...' rpath
-    chrpath -d "${pkgdir}/opt/intel/mediasdk/lib64/iHD_drv_video.so"
+    # remove insecure rpath
+    chrpath -d "${pkgdir}/opt/intel/media/lib64/iHD_drv_video.so"
     
     # do not force the use of 'iHD' libva driver by default (let user choose)
     local _info='# uncomment the LIBVA lines bellow to use the Intel Media Driver (iHD) for VAAPI'
-    sed -i "2i${_info}" "$pkgdir/etc/profile.d"/intel-mediasdk.{,c}sh
-    sed -i '3,4s/^/#/'  "$pkgdir/etc/profile.d"/intel-mediasdk.{,c}sh
+    sed -i "2i${_info}" "${pkgdir}/etc/profile.d"/intel-media.{,c}sh
+    sed -i '3,4s/^/#/'  "${pkgdir}/etc/profile.d"/intel-media.{,c}sh
 }

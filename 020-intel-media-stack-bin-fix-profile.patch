@@ -1,0 +1,8 @@
+--- a/etc/profile.d/intel-media.sh
++++ b/etc/profile.d/intel-media.sh
+@@ -1,4 +1,4 @@
+ # add libva driver path/name exporting for intel media solution
+ export LIBVA_DRIVERS_PATH=/opt/intel/media/lib64
+ export LIBVA_DRIVER_NAME=iHD
+-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/media/lib64
++export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+"${LD_LIBRARY_PATH}":}/opt/intel/media/bin"
