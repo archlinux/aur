@@ -1,16 +1,14 @@
 pkgbase = cutlass
 	pkgdesc = CUDA Templates for Linear Algebra Subroutines
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/cutlass
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	makedepends = cuda
-	makedepends = cudann
 	makedepends = git
 	depends = cuda
-	depends = cudann
+	depends = cudnn
 	source = cutlass-3.1.0.tar.gz::https://github.com/NVIDIA/cutlass/archive/refs/tags/v3.1.0.tar.gz
 	sha256sums = 821aa2e5b709a2e5d3922dcf2c5d445b4898a6ef8bac683cfb00125eafbca029
 
