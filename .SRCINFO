@@ -1,7 +1,7 @@
 pkgbase = widgie-menu-compat
 	pkgdesc = Compatibility layer to use widgie-menu as a replacement of bemenu and dmenu
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/manner/widgie
 	arch = any
 	license = GPL3
