@@ -17,13 +17,18 @@ sha256sums=('6a8640ef9613fa562513788ae33d66c535ec230564d000cea61f7684a2f4042b'
             'b948bf480e88f47776374dadcdac3da1890b0825e858ec5170c7aba6b8b9218f')
 
 package() {
-    mkdir -p "${pkgdir}/opt/"
-    mkdir -p "${pkgdir}/usr/bin/"
-    mkdir -p "${pkgdir}/usr/share/applications/"
-    mkdir -p "${pkgdir}/usr/share/pixmaps/"
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    _dest="opt/${pkgname}"
+    _opt="${pkgdir}/${_dest}"
+    _bin="${pkgdir}/usr/bin/"
+    _share="${pkgdir}/usr/share/"
 
-    mv "${srcdir}/MPS ${pkgver}" "${pkgdir}/opt/${pkgname}"
-    install -m 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
-    ln -s "/opt/${pkgname}/license/mps_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
+    # main files
+    install -d "${pkgdir}/opt"
+    cp -r "MPS ${pkgver}" "${_opt}"
+    # desktop entry
+    install -D -m 644 "${pkgname}.desktop" "${_share}/applications"
+    # license symlink
+    _license="${_share}/licenses/${pkgname}"
+    install -d "${_license}"
+    ln -s "/${_dest}/license/mps_license.txt" "${_license}"
 }
