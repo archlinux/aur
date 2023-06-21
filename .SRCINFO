@@ -1,7 +1,7 @@
 pkgbase = materialx
 	pkgdesc = Open standard for representing rich material and look-development content in computer graphics
 	pkgver = 1.38.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://materialx.org/
 	arch = x86_64
 	license = Apache
@@ -17,6 +17,12 @@ pkgbase = materialx
 	depends = libxt
 	provides = materialx
 	source = git+https://github.com/AcademySoftwareFoundation/MaterialX.git#tag=v1.38.7
+	source = materialx-grapheditor.desktop
+	source = materialx-view.desktop
+	source = materialx.xml
 	md5sums = SKIP
+	md5sums = b6a9f9582782cc6db2aed64d97b4013f
+	md5sums = 9ba6a5cdaff0f6a983753e47454df175
+	md5sums = b0b94494e3a59b21b8ba725a75a21123
 
 pkgname = materialx
