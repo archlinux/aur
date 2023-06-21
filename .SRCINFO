@@ -1,6 +1,6 @@
 pkgbase = damo
 	pkgdesc = DAMON user-space tool
-	pkgver = 1.6.7
+	pkgver = 1.8.5
 	pkgrel = 1
 	url = https://damonitor.github.io
 	arch = any
@@ -8,9 +8,10 @@ pkgbase = damo
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
-	source = damo-1.6.7.tar.gz::https://github.com/awslabs/damo/archive/refs/tags/v1.6.7.tar.gz
-	sha256sums = 61c72dcea43a76ff729a3a06f28d8bf6dedc1b66902b9fc830ac4f355177af60
-	b2sums = 903f17f95df7657281c22e6f0d2b0d43a5ac7a16389472325a1dbae0f71400903d62aa988b80ede709817dbe115aa4ac6b3082056695363af288a9b064958f8a
+	source = damo-1.8.5.tar.gz::https://github.com/awslabs/damo/archive/refs/tags/v1.8.5.tar.gz
+	sha256sums = a6167b06c63e4fe6b1e906a36322df7fcfa58594496e48facf90a426a62990e6
+	b2sums = ae2fa6f2216c61857f9a875220ff33d1c1d2666c22d4114524e1724efcdd4b38f2483010740005dc5f3615f56328f9c71a6f28d1c662818d54dadb0dc21be1ae
 
 pkgname = damo

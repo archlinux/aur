@@ -1,38 +1,30 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=damo
-pkgver=1.6.7
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="DAMON user-space tool"
 arch=('any')
 url='https://damonitor.github.io'
 license=('GPL2')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/awslabs/damo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('61c72dcea43a76ff729a3a06f28d8bf6dedc1b66902b9fc830ac4f355177af60')
-b2sums=('903f17f95df7657281c22e6f0d2b0d43a5ac7a16389472325a1dbae0f71400903d62aa988b80ede709817dbe115aa4ac6b3082056695363af288a9b064958f8a')
+sha256sums=('a6167b06c63e4fe6b1e906a36322df7fcfa58594496e48facf90a426a62990e6')
+b2sums=('ae2fa6f2216c61857f9a875220ff33d1c1d2666c22d4114524e1724efcdd4b38f2483010740005dc5f3615f56328f9c71a6f28d1c662818d54dadb0dc21be1ae')
 
-prepare() {
+build() {
   cd "$pkgname-$pkgver"
 
-  mkdir -p build && cd build
+  mkdir build && cd build
 
-  cp ../packaging/{setup.py,pyproject.toml} .
-  sed -i "s/<<replace_me_with_the_version_number>>/$pkgver/" setup.py
-
+  cp ../packaging/{pyproject.toml,setup.py} .
   ../packaging/mk_readme.sh "$PWD" "$pkgver"
 
   mkdir -p src/damo
-  cp ../*.py src/damo
-  cp ../damo src/damo/damo.py
+  cp -p ../*.py src/damo
+  cp -p ../damo src/damo/damo.py
   touch src/damo/__init__.py
-
-  rm -f src/damo/damo_version.py
-}
-
-build() {
-  cd "$pkgname-$pkgver/build"
 
   python -m build --wheel --no-isolation
 }
