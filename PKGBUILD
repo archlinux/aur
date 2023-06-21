@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=vctrs
-_cranver=0.6.2
+_cranver=0.6.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -42,23 +42,23 @@ optdepends=(
 # the lines below, as well as the `check()` function further
 # down
 
-# checkdepends=(
-#     "${optdepends[@]}"
-#     "r-testthat>=3.0.0"
-# )
+checkdepends=(
+    "${optdepends[@]}"
+    "r-testthat>=3.0.0"
+)
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("49d9427ad542f74f71d9e5e8f4f02115cbe4029fb63a6737aae9e5371e9569e4e439f78c53ea489cf7b08b65f47882139f136b6c48af5e9a20532652572465e0")
+b2sums=('c60d9243ce99007646d6a49afff29cb814fb79dc8aae246820286268f9c22e413ec8d912f7c341ac11bdaba35232e33922bdf25b389b1a7d236c8a70b55c8a90')
 
 build() {
     mkdir -p "${srcdir}/build/"
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-# check() {
-#     cd "${srcdir}/${_cranname}/tests"
-#     R_LIBS="${srcdir}/build" Rscript --vanilla testthat.R
-# }
+check() {
+    cd "${srcdir}/${_cranname}/tests"
+    R_LIBS="${srcdir}/build" Rscript --vanilla testthat.R
+}
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
