@@ -3,14 +3,17 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=GenomicRanges
-_bcver=1.50.2
+_bcver=1.52.0
+
 pkgname=r-${_bcname,,}
+pkgdesc="Representation and manipulation of genomic intervals"
+url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
-pkgdesc="Representation and manipulation of genomic intervals"
-arch=(i686 x86_64)
-url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
-license=(Artistic2.0)
+
+arch=("i686" "x86_64")
+license=("Artistic2.0")
+
 depends=(
     "r>=4.0.0"
     "r-biocgenerics>=0.37.0"
@@ -42,6 +45,7 @@ optdepends=(
     "r-kegggraph"
     "r-keggrest"
     "r-knitr"
+    "r-matrix"
     "r-pasillabamsubset"
     "r-rmarkdown"
     "r-rnaseqdata.hnrnpc.bam.chr14"
@@ -56,7 +60,7 @@ optdepends=(
     "r-variantannotation"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("854b984dcaff9756f9d6878d0240bb9c2e879cab90476844c241c117ffdb00db27fd7f3e93a89d9fa733a270b6a84993fc20f83b09e1140a1be830f72ebf16c2")
+b2sums=("9e9f0365a23b91bb803fa5a234134635ed3eb859cb72183aee46978454eb7539f125f14e73b9c657f73d63fc5d4f3230c4ac83e8e94966aa62f115acdb009bca")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
