@@ -1,5 +1,5 @@
 # Maintainer: Stetsed <aur.arch@stetsed.xyz>
-pkgname=batterylog-framework-git
+pkgname=batterylog-git
 pkgver=r15.4ae8059
 pkgrel=1
 pkgdesc="Battery logging tool (git version)"
