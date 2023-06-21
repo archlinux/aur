@@ -3,7 +3,7 @@
 
 pkgname=sfml
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, fast, cross-platform, and object-oriented multimedia API'
 arch=('x86_64')
 url='http://www.sfml-dev.org/'
@@ -23,7 +23,8 @@ build() {
       -DSFML_USE_SYSTEM_DEPS=ON \
       -DSFML_BUILD_EXAMPLES=1 \
       -DSFML_BUILD_DOC=1 \
-      -DSFML_INSTALL_PKGCONFIG_FILES=1
+      -DSFML_INSTALL_PKGCONFIG_FILES=1 \
+      -DSFML_PKGCONFIG_INSTALL_PREFIX=/usr/share/pkgconfig
   ninja -C build
   ninja -C build doc
 }
