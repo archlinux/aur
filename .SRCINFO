@@ -1,7 +1,7 @@
 pkgbase = extremetuxracer
 	pkgdesc = Downhill racing game starring Tux
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/extremetuxracer
 	arch = x86_64
 	license = GPL
