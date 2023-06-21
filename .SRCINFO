@@ -1,7 +1,7 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
-	pkgver = 1.8.9
-	pkgrel = 3
+	pkgver = 1.8.10pre1
+	pkgrel = 1
 	url = http://www.openafs.org
 	arch = i686
 	arch = x86_64
@@ -10,22 +10,14 @@ pkgbase = openafs-modules-dkms
 	depends = dkms
 	depends = libelf
 	depends = openafs
-	provides = openafs-modules=1.8.9
+	provides = openafs-modules=1.8.10pre1
 	conflicts = openafs-features-libafs
 	conflicts = openafs-modules
 	conflicts = openafs<1.6.6-2
 	options = !emptydirs
-	source = http://openafs.org/dl/openafs/1.8.9/openafs-1.8.9-src.tar.bz2
+	source = http://openafs.org/dl/openafs/candidate/1.8.10pre1/openafs-1.8.10pre1-src.tar.bz2
 	source = dkms.conf
-	source = 0001-Linux-Replace-lru_cache_add-with-folio_add_lru.patch
-	source = 0002-LINUX-5.13-set-.proc_lseek-in-proc_ops.patch
-	source = 0003-Linux-6.3-Include-linux-filelock.h-if-available.patch
-	source = 0004-Linux-6.3-Use-mnt_idmap-for-inode-op-functions.patch
-	sha256sums = d126178be1f42cca18cb7c0c2691ac354518e3790170150a76bbd25f4d151f06
+	sha256sums = 0426a95c2a40e6f9654498e3d22d13080f693dab6db6dede9e05e5b1a15eba93
 	sha256sums = 5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0
-	sha256sums = e6c9a58f9f0f06a6b32e695548fce2178e7b34f324a3fc7bbe0a9e0e8e38d661
-	sha256sums = 5bef56051f0a8f6cf9220fc9182baee53817db8f1bb9051908783196ddbf5109
-	sha256sums = 6ff1b1fef24e7d89f99fe6f44b0cefc189f599305d62aaf8e99ca778b28d4a9a
-	sha256sums = 36ea501ab111a80156c52b951a7051a7bcf27d97cd675edea2e5d87c74e23287
 
 pkgname = openafs-modules-dkms
