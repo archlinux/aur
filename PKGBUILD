@@ -1,7 +1,7 @@
-# Maintainer: Robert Manner <the_manni at users.sf.net>
+# Maintainer: Robert Manner <rmanni@gmail.com>
 
 pkgname=widgie
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A lightweight widget library for applications which do not need a splashscreen."
 arch=('x86_64' 'aarch64')
@@ -9,17 +9,26 @@ url="https://gitlab.com/manner/widgie"
 license=('GPL3')
 conflicts=('widgie-git')
 depends=()
-optdepends=("ttf-nerd-fonts-symbols-1000-em: (or a nerd font) for icon support")
+optdepends=("ttf-nerd-fonts-symbols: (or a nerd font) for icon support")
 makedepends=(wayland-protocols wayland libxkbcommon freetype2 libxkbcommon-x11 libxcb xcb-util-image xorgproto)
 source=("https://gitlab.com/manner/widgie/-/archive/$pkgver/widgie-$pkgver.tar.gz")
-sha256sums=('7cbaa0b28b464eecd7328c9c1a503b2bf7f7f9bf7d0bc337429368439075a552')
+options=('staticlibs')
+sha256sums=('eea4d009a1cf877b8c1a030e7a651231866a02fc122f940b2a2c2beaf2f22fa8')
+
+_builddir="$pkgname-$pkgver"
+_makeflags="FEATURE_WAYLAND=shared FEATURE_X11=shared PREFIX=/usr"
 
 build() {
-  cd "$pkgname-$pkgver"
-  make 
+    cd "$_builddir"
+    make -j$(nproc) $_makeflags
+}
+
+check() {
+    cd "$_builddir"
+    make $_makeflags check
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/usr" install
+    cd "$_builddir"
+    make $_makeflags DESTDIR="$pkgdir" install
 }
