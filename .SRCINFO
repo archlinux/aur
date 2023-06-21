@@ -1,4 +1,4 @@
-pkgbase = batterylog-framework-git
+pkgbase = batterylog-git
 	pkgdesc = Battery logging tool (git version)
 	pkgver = r15.4ae8059
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = batterylog-framework-git
 	source = git+https://github.com/lhl/batterylog.git
 	sha256sums = SKIP
 
-pkgname = batterylog-framework-git
+pkgname = batterylog-git
