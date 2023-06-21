@@ -19,7 +19,7 @@ source=(
 sha256sums=('2e93b85675efbeaa289bc9b531ca1f60990bee688a2cf36e9a13bf681691fe53')
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
   python3 setup.py install --root="${pkgdir}" --optimize=1
 }
 
