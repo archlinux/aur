@@ -2,14 +2,14 @@
 
 _pkgname=scalc
 pkgname="${_pkgname}-git"
-pkgver=r278.8931273
+pkgver=r288.1dca7f1
 pkgrel=1
 pkgdesc='A very simple stack-based calculator that aims to be small, flexible, and extensible.'
-arch=('x86_64' 'aarch64')
-url="https://github.com/ariadnavigo/${_pkgname}"
+arch=('any')
+url="https://git.sr.ht/~ariadnavigo/${_pkgname}"
 license=('MIT')
 makedepends=('sline' 'git')
-source=("git+${url}.git")
+source=("git+${url}")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
 provides=(${_pkgname})
@@ -27,5 +27,5 @@ build() {
 package() {
 	cd "${_pkgname}"
 	make MANPREFIX=/usr/share/man DESTDIR="${pkgdir}" PREFIX='/usr' install
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+ 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
