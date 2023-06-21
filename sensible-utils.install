@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source /usr/share/sensible-utils/sensible-envvars
+source /etc/profile
 
 post_install() {
   for cmd in ${!SENSIBLEENVVARS[*]}; do
@@ -14,10 +15,12 @@ post_install() {
     fi
     [[ -z "${!envvar}" ]] && echo "$cmdpath requires $envvar be set in the environment to work properly!"
   done
+  return 0
 }
 
 post_upgrade() {
   post_install "$@"
+  return $?
 }
 
 # vim:set ts=2 sw=2 et:
