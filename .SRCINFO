@@ -1,0 +1,17 @@
+pkgbase = fragment-mono
+	pkgdesc = Fragment Mono font. Monospaced version of Helvetica with coding ligatures
+	pkgver = 1.011
+	pkgrel = 1
+	url = https://github.com/weiweihuanghuang/fragment-mono
+	arch = any
+	license = custom:OFL
+	source = fragment-mono-1.011.zip::https://github.com/weiweihuanghuang/fragment-mono/releases/download/1.011/fragment-mono-fonts.zip
+	source = LICENSE::https://raw.githubusercontent.com/weiweihuanghuang/fragment-mono/main/OFL.txt
+	sha512sums = ba0b1a398ffafcd954e505cc168d406f98cb602710fee086e4fc8d794d21e58f9a3a2f43fa083aaf137c315be109be31737ff3a80a2f1978dc5cc092362b8b1f
+	sha512sums = 8d17e9ab4c121a5a02beb68f827ea0598106ddbc8a4ff80809d46f7e8890f20ea4ed7102777f7f1399bc50b5354da2140ecab50aa7d2f0e47e1b19d58ff882ff
+
+pkgname = ttf-fragment-mono
+
+pkgname = woff2-fragment-mono
+
+pkgname = otf-fragment-mono
