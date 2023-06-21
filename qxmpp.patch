@@ -1,0 +1,449 @@
+diff -ruN kadu-git.orig/plugins/jabber_protocol/file-transfer/jabber-outgoing-file-transfer-handler.h kadu-git/plugins/jabber_protocol/file-transfer/jabber-outgoing-file-transfer-handler.h
+--- kadu-git.orig/plugins/jabber_protocol/file-transfer/jabber-outgoing-file-transfer-handler.h	2023-06-21 13:43:08.449550944 +0200
++++ kadu-git/plugins/jabber_protocol/file-transfer/jabber-outgoing-file-transfer-handler.h	2023-06-21 14:29:24.305814668 +0200
+@@ -22,7 +22,7 @@
+ #include "file-transfer/outgoing-file-transfer-handler.h"
+ 
+ #include <QtCore/QPointer>
+-#include <qxmpp/QXmppTransferManager.h>
++#include <QXmppQt5/QXmppTransferManager.h>
+ 
+ class JabberResourceService;
+ 
+diff -ruN kadu-git.orig/plugins/jabber_protocol/file-transfer/jabber-stream-incoming-file-transfer-handler.cpp kadu-git/plugins/jabber_protocol/file-transfer/jabber-stream-incoming-file-transfer-handler.cpp
+--- kadu-git.orig/plugins/jabber_protocol/file-transfer/jabber-stream-incoming-file-transfer-handler.cpp	2023-06-21 13:43:08.449550944 +0200
++++ kadu-git/plugins/jabber_protocol/file-transfer/jabber-stream-incoming-file-transfer-handler.cpp	2023-06-21 14:28:48.548476436 +0200
+@@ -25,7 +25,7 @@
+ #include "file-transfer/file-transfer-status.h"
+ 
+ #include <QtCore/QFileInfo>
+-#include <qxmpp/QXmppTransferManager.h>
++#include <QXmppQt5/QXmppTransferManager.h>
+ 
+ JabberStreamIncomingFileTransferHandler::JabberStreamIncomingFileTransferHandler(FileTransfer transfer)
+         : StreamIncomingFileTransferHandler{transfer}, m_inProgress{false}
+diff -ruN kadu-git.orig/plugins/jabber_protocol/file-transfer/jabber-stream-incoming-file-transfer-handler.h kadu-git/plugins/jabber_protocol/file-transfer/jabber-stream-incoming-file-transfer-handler.h
+--- kadu-git.orig/plugins/jabber_protocol/file-transfer/jabber-stream-incoming-file-transfer-handler.h	2023-06-21 13:43:08.449550944 +0200
++++ kadu-git/plugins/jabber_protocol/file-transfer/jabber-stream-incoming-file-transfer-handler.h	2023-06-21 14:29:53.573030876 +0200
+@@ -22,7 +22,7 @@
+ #include "file-transfer/stream-incoming-file-transfer-handler.h"
+ 
+ #include <QtCore/QPointer>
+-#include <qxmpp/QXmppTransferManager.h>
++#include <QXmppQt5/QXmppTransferManager.h>
+ 
+ class JabberStreamIncomingFileTransferHandler : public StreamIncomingFileTransferHandler
+ {
+diff -ruN kadu-git.orig/plugins/jabber_protocol/jabber-protocol.cpp kadu-git/plugins/jabber_protocol/jabber-protocol.cpp
+--- kadu-git.orig/plugins/jabber_protocol/jabber-protocol.cpp	2023-06-21 13:43:08.449550944 +0200
++++ kadu-git/plugins/jabber_protocol/jabber-protocol.cpp	2023-06-21 14:31:12.284508241 +0200
+@@ -74,7 +74,7 @@
+ #include <qxmpp/QXmppClient.h>
+ #include <qxmpp/QXmppMucManager.h>
+ #include <qxmpp/QXmppRosterManager.h>
+-#include <qxmpp/QXmppTransferManager.h>
++#include <QXmppQt5/QXmppTransferManager.h>
+ #include <qxmpp/QXmppVCardManager.h>
+ #include <qxmpp/QXmppVersionManager.h>
+ 
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-file-transfer-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-file-transfer-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-file-transfer-service.cpp	2023-06-21 13:43:08.449550944 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-file-transfer-service.cpp	2023-06-21 14:28:08.674394006 +0200
+@@ -36,7 +36,7 @@
+ #include "file-transfer/file-transfer-type.h"
+ #include "file-transfer/gui/file-transfer-can-send-result.h"
+ 
+-#include <qxmpp/QXmppTransferManager.h>
++#include <QXmppQt5/QXmppTransferManager.h>
+ 
+ JabberFileTransferService::JabberFileTransferService(
+     QXmppTransferManager *transferManager, Account account, QObject *parent)
+diff -ruN kadu-git.orig/plugins/jabber_protocol/jabber-protocol.cpp kadu-git/plugins/jabber_protocol/jabber-protocol.cpp
+--- kadu-git.orig/plugins/jabber_protocol/jabber-protocol.cpp	2023-06-21 14:44:38.279466744 +0200
++++ kadu-git/plugins/jabber_protocol/jabber-protocol.cpp	2023-06-21 17:37:43.268239657 +0200
+@@ -71,12 +71,12 @@
+ #include <QtNetwork/QAbstractSocket>
+ #include <QtNetwork/QNetworkProxy>
+ #include <QtNetwork/QSslSocket>
+-#include <qxmpp/QXmppClient.h>
+-#include <qxmpp/QXmppMucManager.h>
+-#include <qxmpp/QXmppRosterManager.h>
++#include <QXmppQt5/QXmppClient.h>
++#include <QXmppQt5/QXmppMucManager.h>
++#include <QXmppQt5/QXmppRosterManager.h>
+ #include <QXmppQt5/QXmppTransferManager.h>
+-#include <qxmpp/QXmppVCardManager.h>
+-#include <qxmpp/QXmppVersionManager.h>
++#include <QXmppQt5/QXmppVCardManager.h>
++#include <QXmppQt5/QXmppVersionManager.h>
+ 
+ JabberProtocol::JabberProtocol(Account account, ProtocolFactory *factory) : Protocol{account, factory}
+ {
+diff -ruN kadu-git.orig/plugins/jabber_protocol/jabber-protocol.h kadu-git/plugins/jabber_protocol/jabber-protocol.h
+--- kadu-git.orig/plugins/jabber_protocol/jabber-protocol.h	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/jabber-protocol.h	2023-06-21 17:37:43.258239472 +0200
+@@ -33,7 +33,7 @@
+ #include "protocols/services/chat-service.h"
+ 
+ #include <injeqt/injeqt.h>
+-#include <qxmpp/QXmppClient.h>
++#include <QXmppQt5/QXmppClient.h>
+ 
+ class JabberChangePasswordService;
+ class JabberChatService;
+diff -ruN kadu-git.orig/plugins/jabber_protocol/qxmpp/jabber-register-extension.cpp kadu-git/plugins/jabber_protocol/qxmpp/jabber-register-extension.cpp
+--- kadu-git.orig/plugins/jabber_protocol/qxmpp/jabber-register-extension.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/qxmpp/jabber-register-extension.cpp	2023-06-21 17:37:43.281573238 +0200
+@@ -21,8 +21,8 @@
+ #include "jabber-register-extension.moc"
+ 
+ #include <QtXml/QDomElement>
+-#include <qxmpp/QXmppClient.h>
+-#include <qxmpp/QXmppRegisterIq.h>
++#include <QXmppQt5/QXmppClient.h>
++#include <QXmppQt5/QXmppRegisterIq.h>
+ 
+ JabberRegisterExtension::JabberRegisterExtension()
+ {
+diff -ruN kadu-git.orig/plugins/jabber_protocol/qxmpp/jabber-register-extension.h kadu-git/plugins/jabber_protocol/qxmpp/jabber-register-extension.h
+--- kadu-git.orig/plugins/jabber_protocol/qxmpp/jabber-register-extension.h	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/qxmpp/jabber-register-extension.h	2023-06-21 17:37:43.268239657 +0200
+@@ -20,7 +20,7 @@
+ #pragma once
+ 
+ #include <QtCore/QSet>
+-#include <qxmpp/QXmppClientExtension.h>
++#include <QXmppQt5/QXmppClientExtension.h>
+ 
+ class QXmppRegisterIq;
+ 
+diff -ruN kadu-git.orig/plugins/jabber_protocol/qxmpp/jabber-roster-extension.cpp kadu-git/plugins/jabber_protocol/qxmpp/jabber-roster-extension.cpp
+--- kadu-git.orig/plugins/jabber_protocol/qxmpp/jabber-roster-extension.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/qxmpp/jabber-roster-extension.cpp	2023-06-21 17:37:43.274906447 +0200
+@@ -24,8 +24,8 @@
+ #include "services/jabber-error-service.h"
+ 
+ #include <QtXml/QDomElement>
+-#include <qxmpp/QXmppClient.h>
+-#include <qxmpp/QXmppRosterIq.h>
++#include <QXmppQt5/QXmppClient.h>
++#include <QXmppQt5/QXmppRosterIq.h>
+ 
+ JabberRosterExtension::JabberRosterExtension()
+ {
+diff -ruN kadu-git.orig/plugins/jabber_protocol/qxmpp/jabber-roster-extension.h kadu-git/plugins/jabber_protocol/qxmpp/jabber-roster-extension.h
+--- kadu-git.orig/plugins/jabber_protocol/qxmpp/jabber-roster-extension.h	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/qxmpp/jabber-roster-extension.h	2023-06-21 17:37:43.278239843 +0200
+@@ -20,7 +20,7 @@
+ #pragma once
+ 
+ #include <QtCore/QPointer>
+-#include <qxmpp/QXmppClientExtension.h>
++#include <QXmppQt5/QXmppClientExtension.h>
+ 
+ class JabberErrorService;
+ class Jid;
+diff -ruN kadu-git.orig/plugins/jabber_protocol/qxmpp/jabber-ssl-handler.h kadu-git/plugins/jabber_protocol/qxmpp/jabber-ssl-handler.h
+--- kadu-git.orig/plugins/jabber_protocol/qxmpp/jabber-ssl-handler.h	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/qxmpp/jabber-ssl-handler.h	2023-06-21 17:37:43.271573053 +0200
+@@ -23,7 +23,7 @@
+ #include <QtCore/QPointer>
+ #include <functional>
+ #include <injeqt/injeqt.h>
+-#include <qxmpp/QXmppClient.h>
++#include <QXmppQt5/QXmppClient.h>
+ 
+ class SslCertificateManager;
+ class QSslError;
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-avatar-downloader.cpp kadu-git/plugins/jabber_protocol/services/jabber-avatar-downloader.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-avatar-downloader.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-avatar-downloader.cpp	2023-06-21 17:37:43.201571752 +0200
+@@ -28,7 +28,7 @@
+ #include "services/jabber-vcard-downloader.h"
+ #include "services/jabber-vcard-service.h"
+ 
+-#include <qxmpp/QXmppVCardIq.h>
++#include <QXmppQt5/QXmppVCardIq.h>
+ 
+ JabberAvatarDownloader::JabberAvatarDownloader(ContactAvatarId id, JabberVCardService *vCardService, QObject *parent)
+         : QObject{parent}, m_id{std::move(id)}, m_vCardService{vCardService}
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-change-password.cpp kadu-git/plugins/jabber_protocol/services/jabber-change-password.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-change-password.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-change-password.cpp	2023-06-21 17:37:43.214905333 +0200
+@@ -24,7 +24,7 @@
+ #include "qxmpp/jabber-register-extension.h"
+ #include "services/jabber-error-service.h"
+ 
+-#include <qxmpp/QXmppRegisterIq.h>
++#include <QXmppQt5/QXmppRegisterIq.h>
+ 
+ JabberChangePassword::JabberChangePassword(
+     const QString &jid, const QString &newPassword, JabberRegisterExtension *registerExtension, QObject *parent)
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-chat-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-chat-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-chat-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-chat-service.cpp	2023-06-21 17:37:43.241572496 +0200
+@@ -53,7 +53,7 @@
+ #include "windows/message-dialog.h"
+ 
+ #include <QtGui/QTextDocument>
+-#include <qxmpp/QXmppMessage.h>
++#include <QXmppQt5/QXmppMessage.h>
+ 
+ JabberChatService::JabberChatService(QXmppClient *client, Account account, QObject *parent)
+         : ChatService{account, parent}, m_client{client}
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-chat-service.h kadu-git/plugins/jabber_protocol/services/jabber-chat-service.h
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-chat-service.h	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-chat-service.h	2023-06-21 17:37:43.211571937 +0200
+@@ -26,7 +26,7 @@
+ #include <QtCore/QMap>
+ #include <QtCore/QPointer>
+ #include <injeqt/injeqt.h>
+-#include <qxmpp/QXmppMessage.h>
++#include <QXmppQt5/QXmppMessage.h>
+ 
+ class ChatManager;
+ class ChatStorage;
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-chat-state-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-chat-state-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-chat-state-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-chat-state-service.cpp	2023-06-21 17:37:43.248239286 +0200
+@@ -30,8 +30,8 @@
+ #include "contacts/contact-set.h"
+ #include "protocols/services/chat-state.h"
+ 
+-#include <qxmpp/QXmppClient.h>
+-#include <qxmpp/QXmppMessage.h>
++#include <QXmppQt5/QXmppClient.h>
++#include <QXmppQt5/QXmppMessage.h>
+ 
+ namespace
+ {
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-contact-avatar-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-contact-avatar-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-contact-avatar-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-contact-avatar-service.cpp	2023-06-21 17:37:43.191571566 +0200
+@@ -27,8 +27,8 @@
+ #include "contacts/contact-id.h"
+ #include "misc/memory.h"
+ 
+-#include <qxmpp/QXmppClient.h>
+-#include <qxmpp/QXmppRosterManager.h>
++#include <QXmppQt5/QXmppClient.h>
++#include <QXmppQt5/QXmppRosterManager.h>
+ 
+ JabberContactAvatarService::JabberContactAvatarService(
+     QXmppClient *client, JabberVCardService *vCardService, Account account, QObject *parent)
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-contact-personal-info-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-contact-personal-info-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-contact-personal-info-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-contact-personal-info-service.cpp	2023-06-21 17:37:43.228238914 +0200
+@@ -29,7 +29,7 @@
+ #include "contacts/contact.h"
+ 
+ #include <QtCore/QDate>
+-#include <qxmpp/QXmppVCardIq.h>
++#include <QXmppQt5/QXmppVCardIq.h>
+ 
+ JabberContactPersonalInfoService::JabberContactPersonalInfoService(Account account, QObject *parent)
+         : ContactPersonalInfoService(account, parent)
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-error-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-error-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-error-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-error-service.cpp	2023-06-21 17:37:43.241572496 +0200
+@@ -20,8 +20,8 @@
+ #include "jabber-error-service.h"
+ #include "jabber-error-service.moc"
+ 
+-#include <qxmpp/QXmppIq.h>
+-#include <qxmpp/QXmppStanza.h>
++#include <QXmppQt5/QXmppIq.h>
++#include <QXmppQt5/QXmppStanza.h>
+ 
+ JabberErrorService::JabberErrorService(QObject *parent) : QObject{parent}
+ {
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-error-service.h kadu-git/plugins/jabber_protocol/services/jabber-error-service.h
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-error-service.h	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-error-service.h	2023-06-21 17:37:43.234905705 +0200
+@@ -20,8 +20,8 @@
+ #pragma once
+ 
+ #include <QtCore/QObject>
+-#include <qxmpp/QXmppClient.h>
+-#include <qxmpp/QXmppStanza.h>
++#include <QXmppQt5/QXmppClient.h>
++#include <QXmppQt5/QXmppStanza.h>
+ 
+ class QXmppIq;
+ 
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-personal-info-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-personal-info-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-personal-info-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-personal-info-service.cpp	2023-06-21 17:37:43.211571937 +0200
+@@ -29,7 +29,7 @@
+ 
+ #include "buddies/buddy-storage.h"
+ 
+-#include <qxmpp/QXmppVCardIq.h>
++#include <QXmppQt5/QXmppVCardIq.h>
+ 
+ JabberPersonalInfoService::JabberPersonalInfoService(Account account, QObject *parent)
+         : PersonalInfoService(account, parent)
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-presence-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-presence-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-presence-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-presence-service.cpp	2023-06-21 17:37:43.198238356 +0200
+@@ -23,7 +23,7 @@
+ #include "status/status-type.h"
+ #include "status/status.h"
+ 
+-#include <qxmpp/QXmppPresence.h>
++#include <QXmppQt5/QXmppPresence.h>
+ 
+ JabberPresenceService::JabberPresenceService(QObject *parent) : QObject{parent}
+ {
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-register-account.cpp kadu-git/plugins/jabber_protocol/services/jabber-register-account.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-register-account.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-register-account.cpp	2023-06-21 17:37:43.221572124 +0200
+@@ -28,8 +28,8 @@
+ #include "misc/memory.h"
+ #include "plugin/plugin-injected-factory.h"
+ 
+-#include <qxmpp/QXmppClient.h>
+-#include <qxmpp/QXmppRegisterIq.h>
++#include <QXmppQt5/QXmppClient.h>
++#include <QXmppQt5/QXmppRegisterIq.h>
+ 
+ JabberRegisterAccount::JabberRegisterAccount(Jid jid, QString password, QString email, QObject *parent)
+         : QObject{parent}, m_jid{std::move(jid)},
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-register-account.h kadu-git/plugins/jabber_protocol/services/jabber-register-account.h
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-register-account.h	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-register-account.h	2023-06-21 17:37:43.208238543 +0200
+@@ -25,7 +25,7 @@
+ #include <QtCore/QPointer>
+ #include <injeqt/injector.h>
+ #include <memory>
+-#include <qxmpp/QXmppClient.h>
++#include <QXmppQt5/QXmppClient.h>
+ 
+ class PluginInjectedFactory;
+ class JabberErrorService;
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-register-account-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-register-account-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-register-account-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-register-account-service.cpp	2023-06-21 17:37:43.208238543 +0200
+@@ -25,7 +25,7 @@
+ 
+ #include "plugin/plugin-injected-factory.h"
+ 
+-#include <qxmpp/QXmppClient.h>
++#include <QXmppQt5/QXmppClient.h>
+ 
+ JabberRegisterAccountService::JabberRegisterAccountService(QObject *parent) : QObject{parent}
+ {
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-room-chat.cpp kadu-git/plugins/jabber_protocol/services/jabber-room-chat.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-room-chat.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-room-chat.cpp	2023-06-21 17:37:43.201571752 +0200
+@@ -27,7 +27,7 @@
+ #include "chat/chat-details-room.h"
+ #include "contacts/contact-manager.h"
+ 
+-#include <qxmpp/QXmppMucManager.h>
++#include <QXmppQt5/QXmppMucManager.h>
+ 
+ JabberRoomChat::JabberRoomChat(QXmppMucRoom *room, Chat chat, QObject *parent)
+         : QObject{parent}, m_room{room}, m_chat{std::move(chat)}
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-room-chat-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-room-chat-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-room-chat-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-room-chat-service.cpp	2023-06-21 17:37:43.254906076 +0200
+@@ -32,9 +32,9 @@
+ #include "contacts/contact-manager.h"
+ #include "message/message-storage.h"
+ 
+-#include <qxmpp/QXmppClient.h>
+-#include <qxmpp/QXmppMessage.h>
+-#include <qxmpp/QXmppMucManager.h>
++#include <QXmppQt5/QXmppClient.h>
++#include <QXmppQt5/QXmppMessage.h>
++#include <QXmppQt5/QXmppMucManager.h>
+ 
+ JabberRoomChatService::JabberRoomChatService(
+     QXmppClient *client, QXmppMucManager *muc, Account account, QObject *parent)
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-roster-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-roster-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-roster-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-roster-service.cpp	2023-06-21 17:37:43.198238356 +0200
+@@ -37,7 +37,7 @@
+ #include "roster/roster-task-type.h"
+ #include "roster/roster-task.h"
+ 
+-#include <qxmpp/QXmppRosterManager.h>
++#include <QXmppQt5/QXmppRosterManager.h>
+ 
+ QSet<QString> JabberRosterService::buddyGroups(const Buddy &buddy)
+ {
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-stream-debug-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-stream-debug-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-stream-debug-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-stream-debug-service.cpp	2023-06-21 17:37:43.224905519 +0200
+@@ -23,7 +23,7 @@
+ #include "jabber-stream-debug-service.h"
+ #include "jabber-stream-debug-service.moc"
+ 
+-#include <qxmpp/QXmppClient.h>
++#include <QXmppQt5/QXmppClient.h>
+ 
+ JabberStreamDebugService::JabberStreamDebugService(QXmppClient *m_client, QObject *parent) : QObject{parent}
+ {
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-stream-debug-service.h kadu-git/plugins/jabber_protocol/services/jabber-stream-debug-service.h
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-stream-debug-service.h	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-stream-debug-service.h	2023-06-21 17:37:43.204905147 +0200
+@@ -23,7 +23,7 @@
+ #pragma once
+ 
+ #include <QtCore/QObject>
+-#include <qxmpp/QXmppLogger.h>
++#include <QXmppQt5/QXmppLogger.h>
+ 
+ class QXmppClient;
+ 
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-subscription-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-subscription-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-subscription-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-subscription-service.cpp	2023-06-21 17:37:43.228238914 +0200
+@@ -28,7 +28,7 @@
+ 
+ #include "contacts/contact-manager.h"
+ 
+-#include <qxmpp/QXmppRosterManager.h>
++#include <QXmppQt5/QXmppRosterManager.h>
+ 
+ JabberSubscriptionService::JabberSubscriptionService(QXmppRosterManager *roster, JabberProtocol *protocol)
+         : SubscriptionService{protocol}, m_roster{roster}, m_protocol{protocol}
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-vcard-downloader.cpp kadu-git/plugins/jabber_protocol/services/jabber-vcard-downloader.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-vcard-downloader.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-vcard-downloader.cpp	2023-06-21 17:37:43.218238728 +0200
+@@ -24,8 +24,8 @@
+ 
+ #include "jabber-protocol.h"
+ 
+-#include <qxmpp/QXmppVCardIq.h>
+-#include <qxmpp/QXmppVCardManager.h>
++#include <QXmppQt5/QXmppVCardIq.h>
++#include <QXmppQt5/QXmppVCardManager.h>
+ 
+ JabberVCardDownloader::JabberVCardDownloader(QXmppVCardManager *vcardManager, QObject *parent)
+         : QObject(parent), m_vcardManager{vcardManager}
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-vcard-service.cpp kadu-git/plugins/jabber_protocol/services/jabber-vcard-service.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-vcard-service.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-vcard-service.cpp	2023-06-21 17:37:43.234905705 +0200
+@@ -24,7 +24,7 @@
+ #include "jabber-vcard-service.h"
+ #include "jabber-vcard-service.moc"
+ 
+-#include <qxmpp/QXmppVCardManager.h>
++#include <QXmppQt5/QXmppVCardManager.h>
+ 
+ JabberVCardService::JabberVCardService(QXmppVCardManager *vcardManager, QObject *parent)
+         : QObject{parent}, m_vcardManager{vcardManager}
+diff -ruN kadu-git.orig/plugins/jabber_protocol/services/jabber-vcard-uploader.cpp kadu-git/plugins/jabber_protocol/services/jabber-vcard-uploader.cpp
+--- kadu-git.orig/plugins/jabber_protocol/services/jabber-vcard-uploader.cpp	2023-06-21 14:44:37.376112689 +0200
++++ kadu-git/plugins/jabber_protocol/services/jabber-vcard-uploader.cpp	2023-06-21 17:37:43.244905890 +0200
+@@ -21,7 +21,7 @@
+ #include "jabber-vcard-uploader.h"
+ #include "jabber-vcard-uploader.moc"
+ 
+-#include <qxmpp/QXmppVCardManager.h>
++#include <QXmppQt5/QXmppVCardManager.h>
+ 
+ JabberVCardUploader::JabberVCardUploader(QXmppVCardManager *vcardManager, QObject *parent)
+         : QObject{parent}, m_vcardManager{vcardManager}
