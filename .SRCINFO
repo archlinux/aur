@@ -1,7 +1,7 @@
 pkgbase = mov-cli-git
 	pkgdesc = A cli tool to browse and watch movies/shows.
-	pkgver = 1.3.8.r596.6d05915
-	pkgrel = 3
+	pkgver = 1.4.3.r0.g0b52f87
+	pkgrel = 1
 	url = https://github.com/mov-cli/mov-cli
 	arch = any
 	license = GPL3
