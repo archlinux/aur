@@ -1,6 +1,8 @@
+# Maintainer: Bipin Kumar <kbipinkumar@pm.me>
+
 pkgname=qtltools
 pkgver=1.3.1
-pkgrel=2
+pkgrel=4
 pkgdesc="A complete tool set for molecular QTL discovery and analysis. https://doi.org/10.1038/ncomms15452"
 arch=('i686' 'x86_64')
 url="https://qtltools.github.io/qtltools"
