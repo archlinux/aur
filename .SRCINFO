@@ -1,0 +1,23 @@
+pkgbase = flatpak-builder-tools
+	pkgdesc = Various helper tools for flatpak-builder
+	pkgver = 2023.06.09
+	pkgrel = 1
+	url = https://github.com/flatpak/flatpak-builder-tools
+	arch = any
+	license = MIT
+	license = unknown
+	depends = flatpak-builder
+	depends = python>=3.6
+	depends = python-toml
+	depends = python-aiohttp
+	depends = python-requirements-parser
+	depends = perl
+	depends = cpanminus
+	depends = perl-json-maybexs
+	depends = perl-lwp-protocol-https
+	depends = perl-capture-tiny
+	depends = ruby
+	source = https://github.com/flatpak/flatpak-builder-tools/archive/f47d081458f7a3d9ada77c55447b6c203252dda9.zip
+	sha512sums = 39b833e01e05ae2bc5159a4be83a263ebde5c0adbff33139ee4ab0d37bed4a647bc42a2417126bcde2ae8ba776972aae991db452a081b4c69612e9767536f62e
+
+pkgname = flatpak-builder-tools
