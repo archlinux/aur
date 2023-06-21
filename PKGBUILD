@@ -5,7 +5,7 @@
 _cranname=RCurl
 pkgname=r-${_cranname,,}
 
-_cranver=1.98-1.10
+_cranver=1.98-1.12
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 
@@ -13,7 +13,7 @@ pkgdesc="General Network (HTTP/FTP/...) Client Interface for R"
 url="https://cran.r-project.org/package=${_cranname}"
 
 arch=(i686 x86_64)
-license=(BSD3)
+license=(BSD)
 
 depends=(
     curl
@@ -23,7 +23,7 @@ depends=(
 optdepends=(r-xml)
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=('cced13aab9b590e8adbe9e46bace215e79d6a11b06e7286265ccfe2fb35c42f3c550b9e477860b8d43621bec19c2f16f176bf021b22f7a2979b5abe6809e0fdd')
+b2sums=("5aeedcb97d79abe55579519a55bae9cd2f8241b36a2f3f52d9234fdcbd5b45b2835536a69fb5802c7254f960de1fada2b13292ea3cb2d9cfb53f86c260549eac")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
