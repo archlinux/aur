@@ -1,0 +1,21 @@
+pkgbase = python-flash-attention
+	pkgdesc = Fast and memory-efficient exact attention
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/HazyResearch/flash-attention
+	arch = any
+	license = Apache
+	makedepends = cutlass
+	makedepends = ninja
+	makedepends = python-installer
+	makedepends = python-packaging
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-einops
+	depends = python-pytorch-cuda
+	source = flash-attention-1.0.7.tar.gz::https://github.com/HazyResearch/flash-attention/archive/refs/tags/v1.0.7.tar.gz
+	source = flash-attention.diff
+	sha256sums = 57969210cb7f10114685931eda93e85dc523ad2e270b385a14d804bc47499f32
+	sha256sums = SKIP
+
+pkgname = python-flash-attention
