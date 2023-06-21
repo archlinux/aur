@@ -1,0 +1,16 @@
+pkgbase = awatcher-git
+	pkgdesc = Activity and idle watchers
+	pkgver = r48.9f89fdb
+	pkgrel = 1
+	url = https://github.com/2e3s/awatcher
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = cargo
+	depends = activitywatch
+	provides = awatcher
+	conflicts = awatcher
+	source = awatcher::git+https://github.com/2e3s/awatcher
+	sha256sums = SKIP
+
+pkgname = awatcher-git
