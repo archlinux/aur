@@ -1,0 +1,85 @@
+pkgbase = vala-panel-sntray
+	pkgdesc = Plugin for xfce4-panel to show StatusNotifierItems (AppIndicators) via FlowBox
+	pkgver = 2021.10.27
+	pkgrel = 1
+	url = https://gitlab.com/vala-panel-project/xfce4-sntray-plugin
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = pentium4
+	license = LGPL
+	makedepends = cmake
+	makedepends = vala
+	makedepends = gtk3
+	makedepends = libpeas
+	makedepends = mate-panel
+	makedepends = xfce4-panel>=4.11.2
+	makedepends = vala-panel>=0.4.60
+	makedepends = budgie-desktop
+	source = https://gitlab.com/vala-panel-project/xfce4-sntray-plugin/-/archive/a5028a3cdfd38eb19593794037ac4fc97a5822e0/xfce4-sntray-plugin-a5028a3cdfd38eb19593794037ac4fc97a5822e0.tar.gz
+	source = https://gitlab.com/vala-panel-project/cmake-vala/-/archive/d041cd5bd5527926ca1217c751b9e7878eed1283/cmake-vala-d041cd5bd5527926ca1217c751b9e7878eed1283.tar.gz
+	sha256sums = 86d4ddb2fa82057d75bc52f5ced9d9192f7e9377d3bf788b229b22f994e67a73
+	sha256sums = cedc7b175d81ea3975415ad57fe9ed28c9463e4e500af9912ce1b0352c9c6b10
+
+pkgname = sntray-plugin-common
+	pkgdesc = Plugin for xfce4-panel to show StatusNotifierItems (AppIndicators) via FlowBox
+	arch = any
+	optdepends = xfce4-panel-sntray
+	optdepends = mate-panel-sntray
+	optdepends = vala-panel-sntray
+	optdepends = budgie-sntray
+	replaces = sntray-plugin-translations
+
+pkgname = mate-panel-sntray
+	depends = gtk3
+	depends = mate-panel
+	depends = sntray-plugin-common
+	optdepends = vala-panel-extras-volume: ALSA volume applet
+	optdepends = vala-panel-extras-battery: UPower battery applet
+	optdepends = vala-panel-extras-weather: Weather applet
+	optdepends = vala-panel-extras-xkb: XKB applet
+	optdepends = sni-qt: Qt applications for StatusNotifier
+	optdepends = libappindicator-gtk2: Gtk2 applications for StatusNotifier
+	optdepends = libappindicator-gtk3: Gtk3 applications for StatusNotifier
+
+pkgname = xfce4-panel-sntray
+	pkgdesc = Plugin for xfce4-panel to show StatusNotifierItems (AppIndicators) via FlowBox
+	depends = gtk3
+	depends = xfce4-panel>=4.11.2
+	depends = sntray-plugin-common
+	optdepends = vala-panel-extras-volume: ALSA volume applet
+	optdepends = vala-panel-extras-battery: UPower battery applet
+	optdepends = vala-panel-extras-weather: Weather applet
+	optdepends = vala-panel-extras-xkb: XKB applet
+	optdepends = sni-qt: Qt applications for StatusNotifier
+	optdepends = libappindicator-gtk2: Gtk2 applications for StatusNotifier
+	optdepends = libappindicator-gtk3: Gtk3 applications for StatusNotifier
+
+pkgname = vala-panel-sntray
+	pkgdesc = Plugin for vala-panel to show StatusNotifierItems (AppIndicators) via FlowBox
+	depends = gtk3
+	depends = vala-panel
+	depends = sntray-plugin-common
+	optdepends = vala-panel-extras-volume: ALSA volume applet
+	optdepends = vala-panel-extras-battery: UPower battery applet
+	optdepends = vala-panel-extras-weather: Weather applet
+	optdepends = vala-panel-extras-xkb: XKB applet
+	optdepends = sni-qt: Qt applications for StatusNotifier
+	optdepends = libappindicator-gtk2: Gtk2 applications for StatusNotifier
+	optdepends = libappindicator-gtk3: Gtk3 applications for StatusNotifier
+	provides = vala-panel-applets-sntray
+
+pkgname = budgie-sntray
+	pkgdesc = Plugin for budgie to show StatusNotifierItems (AppIndicators) via FlowBox
+	depends = budgie-desktop
+	depends = gtk3
+	depends = libpeas
+	depends = sntray-plugin-common
+	optdepends = vala-panel-extras-volume: ALSA volume applet
+	optdepends = vala-panel-extras-battery: UPower battery applet
+	optdepends = vala-panel-extras-weather: Weather applet
+	optdepends = vala-panel-extras-xkb: XKB applet
+	optdepends = sni-qt: Qt applications for StatusNotifier
+	optdepends = libappindicator-gtk2: Gtk2 applications for StatusNotifier
+	optdepends = libappindicator-gtk3: Gtk3 applications for StatusNotifier
