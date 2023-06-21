@@ -1,10 +1,10 @@
 pkgbase = batterylog-git
 	pkgdesc = Battery logging tool (git version)
 	pkgver = r15.4ae8059
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lhl/batterylog
 	arch = any
-	license = MIT
+	license = GPL-3.0
 	makedepends = git
 	depends = python
 	depends = sqlite3
