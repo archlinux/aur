@@ -23,7 +23,7 @@ pkgname=('jre17-jetbrains-imfix' 'jdk17-jetbrains-imfix')
 _majorver=17
 _ver=17.0.7
 _hgver=17.0.7
-_jbver1=985
+_jbver1=1000
 _jbver2=2
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
@@ -37,12 +37,12 @@ makedepends=('java-environment=17' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx
              'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'jcef-jetbrains' 'git')
 options=(!lto)
 source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=$_hg_tag
-        idea.patch
+        https://github.com/tangruize/JetBrainsRuntime-for-Linux-x64/raw/master/idea.patch
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
 sha256sums=('SKIP'
-            '5f984d2e050fb6a9cbc1d48df62cd3ca2ff705a8aaa7286913c337c02da9beda'
+            '6155834cc1a422508462828ad1603df7c946f4ecf073d537a7a7de43ad317458'
             '3d5ab2d5eaa994377de0554de5e59596f1fc7ab773e02d84aee83a568042b5ec'
             '442d17b0de7ddd4c49a392f4ccc60f3378b9cf54908081b802d98b89597b3ab8'
             'bdc910ffa896f92cca1d28cf9930276cb9bafbd13bfab97286b25fd7f7a6e11e')
