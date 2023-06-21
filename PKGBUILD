@@ -2,7 +2,7 @@
 
 pkgname=tango-starter
 _pkgname=starter
-pkgver=7.9
+pkgver=8.0
 _pkgver=Starter-${pkgver}
 pkgrel=1
 groups=('tango-controls')
@@ -17,7 +17,7 @@ source=(
   "tango-starter.service" "tango-sys.conf"
 )
 sha256sums=(
-  'ed108c2df5b61bafb005d459fb7e17b068bdbf1d0dd44492e6b07d350abc496f'
+  'af51cc76ffd85c3023117f9d4bf720ea53174900f00f92a8ae02c70713566aee'
   'c00c64ee4c3cda870471cb8bfe0a7e2273bf2b69056bd0687bac9d9be2cb984b'
   'befddd224a022acbded2cc0bd9ff217902cd2f7e092a901ff0c6b4065e550659'
 )
