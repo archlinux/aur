@@ -2,11 +2,11 @@
 
 _pkgname=minitimer
 pkgname="${_pkgname}-git"
-pkgver=r195.8143449
+pkgver=r209.d91979e
 pkgrel=1
 pkgdesc='A timer in your terminal'
 arch=('x86_64' 'aarch64')
-url="https://github.com/ariadnavigo/${_pkgname}.git"
+url="https://git.sr.ht/~ariadnavigo/${_pkgname}"
 license=('MIT')
 makedepends=('git')
 source=("git+${url}")
@@ -26,5 +26,5 @@ build() {
 package() {
 	cd "${_pkgname}"
 	make MANPREFIX=/usr/share/man DESTDIR="${pkgdir}" PREFIX='/usr' install
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
