@@ -8,9 +8,8 @@ pkgdesc="JetBrains Meta Programming System"
 arch=('any')
 url="http://www.jetbrains.com/mps/index.html"
 license=('custom: MPS license agreement')
-depends=('java-environment' 'libxslt' 'gtk2' 'libglvnd' 'libxtst' 'alsa-lib')
-optdepends=('python: support for scripts like restart.py'
-                        'ffmpeg0.10: Multimedia plugin')
+depends=('java-environment=17' 'libxslt' 'gtk2' 'libglvnd' 'libxtst' 'alsa-lib' 'python')
+optdepends=('ffmpeg0.10: support for multimedia plugin')
 
 source=("https://download.jetbrains.com/mps/${pkgver}/MPS-${pkgver}.tar.gz"
         "${pkgname}.desktop")
@@ -20,7 +19,7 @@ sha256sums=('6a8640ef9613fa562513788ae33d66c535ec230564d000cea61f7684a2f4042b'
 build() {
     cd "${srcdir}"
     echo "#!/bin/sh" > mps
-    echo "JDK_HOME=/usr/lib/jvm/java-8-jdk /opt/${pkgname}/bin/mps.sh" >> mps
+    echo "JDK_HOME=/usr/lib/jvm/java-17-jdk /opt/${pkgname}/bin/mps.sh" >> mps
 }
 
 package() {
