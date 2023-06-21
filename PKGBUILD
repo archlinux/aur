@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-decklink
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('x86_64')
@@ -30,7 +30,6 @@ depends=(
   libgl
   libiec61883
   libjxl.so
-  libmfx
   libmodplug
   libopenmpt.so
   libpulse
@@ -48,7 +47,6 @@ depends=(
   libvorbisenc.so
   libvorbis.so
   libvpx.so
-  libvulkan.so
   libwebp
   libx11
   libx264.so
@@ -60,6 +58,7 @@ depends=(
   libxvidcore.so
   libzimg.so
   ocl-icd
+  onevpl
   opencore-amr
   openjpeg2
   opus
@@ -69,6 +68,7 @@ depends=(
   svt-av1
   v4l-utils
   vmaf
+  vulkan-icd-loader
   xz
   zlib
 )
@@ -85,9 +85,9 @@ makedepends=(
   decklink-sdk
 )
 optdepends=('avisynthplus: for AviSynthPlus support'
-            'intel-media-sdk: for Intel Quick Sync Video'
             'ladspa: for LADSPA filters'
-            'nvidia-utils: for Nvidia NVDEC/NVENC support')
+            'nvidia-utils: for Nvidia NVDEC/NVENC support'
+            'onevpl-intel-gpu: for Intel Quick Sync Video')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
@@ -138,7 +138,6 @@ build() {
         --enable-libiec61883 \
         --enable-libjack \
         --enable-libjxl \
-        --enable-libmfx \
         --enable-libmodplug \
         --enable-libmp3lame \
         --enable-libopencore_amrnb \
@@ -159,6 +158,7 @@ build() {
         --enable-libvidstab \
         --enable-libvmaf \
         --enable-libvorbis \
+        --enable-libvpl \
         --enable-libvpx \
         --enable-libwebp \
         --enable-libx264 \
@@ -174,7 +174,8 @@ build() {
         --enable-shared \
         --enable-version3 \
         --enable-vulkan \
-        --enable-decklink
+        --enable-decklink \
+        --enable-nonfree
     make
     make tools/qt-faststart
 }
