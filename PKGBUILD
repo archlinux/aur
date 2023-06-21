@@ -1,6 +1,6 @@
 pkgname=jcef-jetbrains-git
 pkgdesc="A simple framework for embedding Chromium-based browsers into Java-based applications. (Used for JetBrainsRuntime)"
-pkgver=111.2.1.api1.11.r9.1a41a4d
+pkgver=111.2.1.api1.12.r0.57ca963
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/JetBrains/jcef"
@@ -32,6 +32,7 @@ build() {
     cd $srcdir/jcef
     export OUT_PATH="$srcdir/jcef/out/linux64"
     export OUT_NATIVE_PATH="$srcdir/jcef/jcef_build/native/Release"
+    export BUNDLE_NATIVES_PATH="$srcdir/jcef"
     JAVA_PATH="$srcdir/jcef/java"
     export CLS_PATH="$srcdir/jcef/third_party/jogamp/jar/*:$srcdir/jcef/third_party/junit/*:${JAVA_PATH}"
     mkdir -p "$OUT_PATH"
