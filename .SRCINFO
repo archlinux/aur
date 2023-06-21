@@ -1,7 +1,7 @@
 pkgbase = footage
 	pkgdesc = Trim, flip, rotate and crop individual clips. Footage is a useful tool for quickly editing short videos and screencasts. It's also capable of exporting any video into a format of your choice
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/adhami3310/Footage
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = footage
 	makedepends = cargo
 	makedepends = git
 	makedepends = meson
-	depends = a52
+	depends = a52dec
 	depends = fdkaac
 	depends = gst-editing-services
 	depends = gst-plugins-rs
