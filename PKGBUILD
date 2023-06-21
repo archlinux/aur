@@ -2,7 +2,7 @@
 
 _pkgname='moar'
 pkgname="${_pkgname}-git"
-pkgver=1.15.0.r1.g63839bd
+pkgver=1.15.2.r0.gdaafbcd
 pkgrel=1
 pkgdesc='Drop-in replacement for the less pager'
 arch=('x86_64')
