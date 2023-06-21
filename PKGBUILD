@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r72.242381d
+pkgver=r73.72fd007
 pkgrel=1
 pkgdesc="A custom configs tool for sk-holoiso"
 arch=('any')
@@ -39,9 +39,10 @@ package() {
     install -m755 -t "${pkgdir}/usr/bin/" "${source_dir}/usr/bin"/*
 
     # 主程序
-    install -m755 -t "${pkgdir}/usr/share/${pkgname}" "${source_dir}/main"/*
     install -dm755 "${pkgdir}/usr/share/${pkgname}/pages"
     install -m755 -t "${pkgdir}/usr/share/${pkgname}/pages" "${source_dir}/main/pages"/*
+    install -m755 -t "${pkgdir}/usr/share/${pkgname}" "${source_dir}/main"/*.*
+
 
     # 主程序入口
     ln -s "/usr/share/${pkgname}/sk-holoiso-config.py" "${pkgdir}/usr/bin/sk-holoiso-config"
