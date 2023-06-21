@@ -3,7 +3,7 @@
 
 _pkgbase=iwlwifi-killer-ax1675-51f1
 pkgname=${_pkgbase}-dkms
-pkgver=6.2
+pkgver=6.3
 pkgrel=1
 pkgdesc="iwlwifi module patched to support Killer AX1765i/s with device id 51F1 for kernel ($pkgver)"
 arch=('any')
@@ -15,7 +15,7 @@ install=${_pkgbase}.install
 source=("https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/linux-${pkgver}.tar.xz"
         "dkms.conf"
         "0001-killer-ax1675-51f1.patch")
-sha256sums=('74862fa8ab40edae85bb3385c0b71fe103288bce518526d63197800b3cbdecb1'
+sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'c9695d054c81b8547f117905bf4f616ad677bf868e8c355425f09cb769c509aa'
             'cfe120a534638b6e4ce40d97eec35347145828143864d68a43434c65ffd93dda')
 options=(!strip)
