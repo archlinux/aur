@@ -1,0 +1,14 @@
+pkgbase = batterylog-framework-git
+	pkgdesc = Battery logging tool (git version)
+	pkgver = r15.4ae8059
+	pkgrel = 1
+	url = https://github.com/lhl/batterylog
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = sqlite3
+	source = git+https://github.com/lhl/batterylog.git
+	sha256sums = SKIP
+
+pkgname = batterylog-framework-git
