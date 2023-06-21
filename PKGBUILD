@@ -3,10 +3,10 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=BiocGenerics
-_bcver=0.44.0
+_bcver=0.46.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="S4 generic functions used in Bioconductor"
 arch=(any)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
@@ -31,7 +31,7 @@ optdepends=(
     "r-runit"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=('a596b37fb3f00fe72a45395c4da40cdac784d8ea5b349e68e4862761720c885569d54808f4142a5f1ba13ab95b2e33e838b8fc4e067e3a92222bb7e6f3f9f42b')
+b2sums=("8f1a05c67bbd03d2110e7b5d485fc42d9cccc8d47c79bed6cdee787b3a11ff1ed17f37f5468b1900c1a651536476a2976f6a359e38f26e308a8be9510f2c3bef")
 
 build() {
     R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
