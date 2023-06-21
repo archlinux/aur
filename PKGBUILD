@@ -17,6 +17,7 @@ depends=(
     'python-huggingface-hub'
     'python-filelock'
     'python-importlib-metadata'
+    'python-setuptools'
 )
 
 build() {

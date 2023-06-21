@@ -12,6 +12,7 @@ pkgbase = python-diffusers
 	depends = python-huggingface-hub
 	depends = python-filelock
 	depends = python-importlib-metadata
+	depends = python-setuptools
 	source = python-diffusers-0.17.1::https://github.com/huggingface/diffusers/archive/refs/tags/v0.17.1.tar.gz
 	sha512sums = d5ba1881849c78e39d604774ea16ddf7cb3c32735ae4ec567e561a8fd0b295e6653118db5f0952932465f13cc0f27b457a860c6b272124798cc8958a7c6a12d5
 
