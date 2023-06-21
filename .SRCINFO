@@ -1,0 +1,27 @@
+pkgbase = auracle
+	pkgdesc = A flexible client for the AUR
+	pkgver = 2020.09.05
+	pkgrel = 5
+	url = https://github.com/falconindy/auracle
+	arch = x86_64
+	arch = i686
+	license = MIT
+	checkdepends = python
+	checkdepends = fakechroot
+	checkdepends = gtest
+	makedepends = meson
+	makedepends = perl
+	makedepends = systemd
+	depends = pacman
+	depends = libcurl.so
+	depends = libsystemd
+	source = auracle-87399290d15900a2fcbc4d1d382f57bdac2ee4be.zip::https://github.com/falconindy/auracle/archive/87399290d15900a2fcbc4d1d382f57bdac2ee4be.zip
+	source = 0001-Force-fmt-dependency-to-static.patch
+	source = 0002-Update-abseil-cpp-to-LTS-20220623.0.patch
+	source = 0003-Use-non-deprecated-meson-command.patch
+	b2sums = caab3f6b9fb6d989ae24d2142a57fa0117f079d7e7be60a68187fca043e033786e5fede2a027e75d13a78735e8f143ce87e50731e437196ec995ff2fc308c281
+	b2sums = 36c8b35b06a9f2d09669110e6ec5686bcb755ae384dbcd985691e5f635a733b9c87b31371de5fa5f743a256b2140cd6dd9c86aebb2ea4a5395377ce273fd080b
+	b2sums = df877c951a2054deca1a390cc4e3b458193a0f084e850dbf155f8cac5068753c868215f749034c2e9df914c252517d3017bff542e947477e67b426b5fd554b9c
+	b2sums = d743c7cf9a38b0088f356869800d72728672c6dea876d436405f48e4e5b83ff6c7b9f4ce4d3d4002ed25fb7630cacebb6281085cfc8e77eaa7a1730666dd8d01
+
+pkgname = auracle
