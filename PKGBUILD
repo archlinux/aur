@@ -7,10 +7,9 @@ pkgdesc="Oscilloscope written in OF."
 arch=('x86_64')
 url="https://github.com/kritzikratzi/Oscilloscope"
 license=('MIT')
-depends=()
+# from https://aur.archlinux.org/packages/openframeworks
+depends=('make' 'pkgconf' 'gcc' 'poco' 'openal' 'python-lxml' 'glew' 'glfw-x11' 'pugixml' 'freeglut' 'freeimage' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'opencv' 'libxcursor' 'assimp' 'boost' 'mpg123' 'rtaudio' 'uriparser')
 makedepends=('git'
-             # from https://aur.archlinux.org/packages/openframeworks
-             'make' 'pkgconf' 'gcc' 'poco' 'openal' 'python-lxml' 'glew' 'glfw-x11' 'pugixml' 'freeglut' 'freeimage' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'opencv' 'libxcursor' 'assimp' 'boost' 'mpg123' 'rtaudio' 'uriparser'
              'gcc6')
 checkdepends=()
 optdepends=()
