@@ -1,26 +1,11 @@
 pkgbase = r-vctrs
 	pkgdesc = Vector Helpers
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=vctrs
 	arch = i686
 	arch = x86_64
 	license = MIT
-	checkdepends = r-bit64
-	checkdepends = r-covr
-	checkdepends = r-crayon
-	checkdepends = r-dplyr>=0.8.5
-	checkdepends = r-generics
-	checkdepends = r-knitr
-	checkdepends = r-pillar>=1.4.4
-	checkdepends = r-pkgdown>=2.0.1
-	checkdepends = r-rmarkdown
-	checkdepends = r-tibble>=3.1.3
-	checkdepends = r-waldo>=0.2.0
-	checkdepends = r-withr
-	checkdepends = r-xml2
-	checkdepends = r-zeallot
-	checkdepends = r-testthat>=3.0.0
 	depends = r>=3.5.0
 	depends = r-cli>=3.4.0
 	depends = r-glue

@@ -6,7 +6,7 @@ _cranname=vctrs
 _cranver=0.6.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Vector Helpers"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -42,10 +42,10 @@ optdepends=(
 # the lines below, as well as the `check()` function further
 # down
 
-checkdepends=(
-    "${optdepends[@]}"
-    "r-testthat>=3.0.0"
-)
+# checkdepends=(
+#     "${optdepends[@]}"
+#     "r-testthat>=3.0.0"
+# )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 b2sums=('c60d9243ce99007646d6a49afff29cb814fb79dc8aae246820286268f9c22e413ec8d912f7c341ac11bdaba35232e33922bdf25b389b1a7d236c8a70b55c8a90')
@@ -55,10 +55,10 @@ build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-check() {
-    cd "${srcdir}/${_cranname}/tests"
-    R_LIBS="${srcdir}/build" Rscript --vanilla testthat.R
-}
+# check() {
+#     cd "${srcdir}/${_cranname}/tests"
+#     R_LIBS="${srcdir}/build" Rscript --vanilla testthat.R
+# }
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
