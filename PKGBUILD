@@ -4,7 +4,7 @@
 pkgbase=minizip-git
 pkgname=(minizip-git minizip-static-git)
 pkgdesc="Fork of the popular zip manipulation library found in the zlib distribution."
-pkgver=3.0.10.r51.g162ba6a
+pkgver=4.0.0.r14.g57be074
 pkgrel=1
 arch=('x86_64')
 license=('zlib')
@@ -73,7 +73,7 @@ build() {
 
 package_minizip-git() {
     conflicts=('minizip' 'minizip-ng')
-    provides=('minizip' 'minizip-ng' 'libminizip.so=3')
+    provides=('minizip' 'minizip-ng' 'libminizip.so=4')
     cd ${srcdir}/${pkgbase}/build
     make DESTDIR="${pkgdir}" install
     cd ${srcdir}/${pkgbase}/build-ng
