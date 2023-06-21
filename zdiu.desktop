@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=zdiu
+Comment=GTK implementation of ZDIMGUP
+Icon=zdiu
+Exec=/usr/bin/zdiu
+Terminal=false
