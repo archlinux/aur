@@ -1,11 +1,11 @@
 pkgbase = hammer2rgb
-	pkgver = 1.2
-	pkgrel = 3
+	pkgver = 1.3
+	pkgrel = 4
   pkgdesc = CLI tool for Modecom Volcano Hammer 2 RGB keyboard
 	arch = x86_64
 	license = GPL
 	depends = libusb
-	source = https://github.com/sptls/hammer2rgb_linux/releases/download/1.2/hammer2rgb-1.2.tar.gz
+	source = https://github.com/sptls/hammer2rgb_linux/releases/download/1.3/hammer2rgb-1.3.tar.gz
 	md5sums = SKIP
 
 pkgname = hammer2rgb
