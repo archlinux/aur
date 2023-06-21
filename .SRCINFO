@@ -1,13 +1,14 @@
 pkgbase = python-pycookiecheat
 	pkgdesc = Borrow cookies from your browser's authenticated session
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/n8henrie/pycookiecheat
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-cryptography
 	depends = python-keyring
