@@ -3,7 +3,7 @@
 
 pkgname=scummvm-git
 _pkgname=scummvm
-pkgver=r124485.c8bd7716ea3
+pkgver=r142841.b339ff8de6e
 pkgrel=1
 pkgdesc="A 'virtual machine' for several classic graphical point-and-click adventure games. - git version"
 arch=('x86_64')
@@ -37,5 +37,4 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 dists/${_pkgname}.desktop "${pkgdir}"/usr/share/applications/${_pkgname}.desktop
 }
