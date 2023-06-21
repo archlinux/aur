@@ -5,17 +5,18 @@ pkgbase = jetbrains-mps
 	url = http://www.jetbrains.com/mps/index.html
 	arch = any
 	license = custom: MPS license agreement
-	depends = java-environment
+	makedepends = imagemagick
+	depends = java-environment=17
 	depends = libxslt
 	depends = gtk2
 	depends = libglvnd
 	depends = libxtst
 	depends = alsa-lib
-	optdepends = python: support for scripts like restart.py
-	optdepends = ffmpeg0.10: Multimedia plugin
+	depends = python
+	optdepends = ffmpeg0.10: support for multimedia plugin
 	source = https://download.jetbrains.com/mps/2022.3/MPS-2022.3.tar.gz
 	source = jetbrains-mps.desktop
 	sha256sums = 6a8640ef9613fa562513788ae33d66c535ec230564d000cea61f7684a2f4042b
-	sha256sums = b948bf480e88f47776374dadcdac3da1890b0825e858ec5170c7aba6b8b9218f
+	sha256sums = 6a6b1f8f43ba07cd0428f9fc755d56962e4ca0c1257d5a57b126121e16f1f56a
 
 pkgname = jetbrains-mps
