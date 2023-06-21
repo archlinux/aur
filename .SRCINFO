@@ -1,7 +1,7 @@
 pkgbase = kathara
 	pkgdesc = Lightweight network emulation system based on Docker containers.
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kathara.org/
 	install = kathara.install
 	changelog = kathara.changelog

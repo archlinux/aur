@@ -1,6 +1,6 @@
 pkgname=kathara
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight network emulation system based on Docker containers."
 arch=('any')
 url="https://www.kathara.org/"
