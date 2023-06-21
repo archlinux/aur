@@ -9,7 +9,8 @@ url="https://github.com/kritzikratzi/Oscilloscope"
 license=('MIT')
 depends=()
 makedepends=('git'
-             'openframeworks'
+             # from https://aur.archlinux.org/packages/openframeworks
+             'make' 'pkgconf' 'gcc' 'poco' 'openal' 'python-lxml' 'glew' 'glfw-x11' 'pugixml' 'freeglut' 'freeimage' 'gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'opencv' 'libxcursor' 'assimp' 'boost' 'mpg123' 'rtaudio' 'uriparser'
              'gcc6')
 checkdepends=()
 optdepends=()
@@ -28,16 +29,25 @@ pkgver() {
     # can't use unannotated tag pkgver() example because of issue with "{"
 }
 
-build() {
-    cd "${pkgname}"
+# https://github.com/kritzikratzi/Oscilloscope#compiling-with-make-in-linux
+prepare() {
+    ln -sf 'of_v0.10.1_linux64gcc6_release' 'OF'
+    cd OF/apps/myApps
+    ln -sf "${srcdir}/${pkgname}" 'Oscilloscope'
+    cd 'Oscilloscope'
+    git submodule update --init
+}
 
-    # https://github.com/kritzikratzi/Oscilloscope#compiling-with-make-in-linux
+build() {
+    cd 'OF/apps/myApps/Oscilloscope'
+
     cp -R addons/ofxMightyUI/bin/data/* bin/data/
     cp -R addons/ofxFontAwesome/bin/data/* bin/data/
     make
 }
 
 package() {
-    cd "${pkgname}"
+    cd 'OF/apps/myApps/Oscilloscope'
+
     make DESTDIR="${pkgdir}/" install
 }
