@@ -9,7 +9,7 @@ _tbbpkgminorver=6
 
 pkgname=usd
 pkgver=23.05
-pkgrel=9
+pkgrel=10
 pkgdesc='3D VFX pipeline interchange file format'
 arch=(x86_64)
 url='https://openusd.org'
@@ -101,10 +101,10 @@ build() {
 
   # Optional components support
 
-  if [[ -d /usr/materialx ]]; then
+  if [[ -d /opt/materialx ]]; then
     _CMAKE_FLAGS+=(
     -DPXR_ENABLE_MATERIALX_SUPPORT=TRUE
-    -DMaterialX_ROOT=/usr/materialx
+    -DMaterialX_ROOT=/opt/materialx
     )
   fi
 
