@@ -16,12 +16,6 @@ source=("https://download.jetbrains.com/mps/${pkgver}/MPS-${pkgver}.tar.gz"
 sha256sums=('6a8640ef9613fa562513788ae33d66c535ec230564d000cea61f7684a2f4042b'
             'b948bf480e88f47776374dadcdac3da1890b0825e858ec5170c7aba6b8b9218f')
 
-build() {
-    cd "${srcdir}"
-    echo "#!/bin/sh" > mps
-    echo "JDK_HOME=/usr/lib/jvm/java-17-jdk /opt/${pkgname}/bin/mps.sh" >> mps
-}
-
 package() {
     mkdir -p "${pkgdir}/opt/"
     mkdir -p "${pkgdir}/usr/bin/"
@@ -30,7 +24,6 @@ package() {
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 
     mv "${srcdir}/MPS ${pkgver}" "${pkgdir}/opt/${pkgname}"
-    install -Dm 755 "${srcdir}/mps" "${pkgdir}/usr/bin/mps"
     install -m 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     ln -s "/opt/${pkgname}/license/mps_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
