@@ -1,6 +1,6 @@
 pkgbase = r-biobase
 	pkgdesc = Biobase: Base functions for Bioconductor
-	pkgver = 2.58.0
+	pkgver = 2.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/Biobase.html
 	arch = i686
@@ -8,11 +8,11 @@ pkgbase = r-biobase
 	license = Artistic2.0
 	depends = r>=2.10
 	depends = r-biocgenerics>=0.27.1
-	optdepends = r-tkwidgets
 	optdepends = r-all
-	optdepends = r-runit
 	optdepends = r-golubesets
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Biobase_2.58.0.tar.gz
-	sha256sums = db798af54eb18d83242b1ffbb1fa35b5bc0256cedf86b9a6519e2d786d20e566
+	optdepends = r-runit
+	optdepends = r-tkwidgets
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Biobase_2.60.0.tar.gz
+	b2sums = 77974e739954c05514ef19a77375977de64e05376e2959c842b771d04a635805279d9248792c809f00d5e815f97e2d329b773fe49bf46b00c568bd087de73ee1
 
 pkgname = r-biobase
