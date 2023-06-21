@@ -1,7 +1,7 @@
 pkgbase = r-sf
 	pkgdesc = Simple Features for R
 	pkgver = 1.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=sf
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,6 @@ pkgbase = r-sf
 	optdepends = r-knitr
 	optdepends = r-lwgeom>=0.2.1
 	optdepends = r-maps
-	optdepends = r-matrix
 	optdepends = r-microbenchmark
 	optdepends = r-odbc
 	optdepends = r-pbapply

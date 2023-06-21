@@ -7,7 +7,7 @@ pkgdesc="Simple Features for R"
 url="https://cran.r-project.org/package=sf"
 license=("GPL-2 | MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("i686" "x86_64")
 depends=(
@@ -31,7 +31,6 @@ optdepends=(
     "r-knitr"
     "r-lwgeom>=0.2.1"
     "r-maps"
-    "r-matrix"
     "r-microbenchmark"
     "r-odbc"
     "r-pbapply"
