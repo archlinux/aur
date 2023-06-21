@@ -1,16 +1,14 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=embridge-bin
-pkgver=3.1.7.0
-pkgrel=3
+pkgver=3.1.8.0
+pkgrel=1
 pkgdesc='Secure channel between network applications and keys stored in hardware tokens'
 arch=(x86_64)
 url='https://embridge.emudhra.com'
 license=('custom')
-depends=('curl' 'libunwind' 'openssl')
-source=("emBridge-${pkgver}.zip::https://resources.emudhra.com/hs/Ubuntu/latest/emBridge.zip"
-        "runtimeconfig.patch")
-sha512sums=('cb29bafd903768194f2bf03d3c56286b97891403792dfca4b790b8841640e869b46d94514f710f7f1138871f08d2815c5946156ede38d0a107b7197dc5f5e5fc'
-            '566fdfceb9c53614b30f4ba7851f5a9de502e9cfa1e45ed7b1a804d1c6112f25944a302ba07e89f05815acb580952aed3932a81c66dd0141c1913e7d56390309')
+depends=('curl' 'libunwind' 'lttng-ust2.12' 'openssl' 'icu')
+source=("emBridge-${pkgver}.zip::https://resources.emudhra.com/hs/Ubuntu/latest/emBridge.zip")
+sha512sums=('0fc4cd20e199eecbda93bdcb46c4b9c47b2f45334cb6810085035fa5ac3be137cd40b2f99ccf12cc157bcad5c10a63aa92b6b18bc0dd07677dcd9e5a4a2f42c3')
 options=('libtool' 'staticlibs' '!strip')
 
 package() {
@@ -30,7 +28,7 @@ cd ~/Documents/embridge
 export ASPNETCORE_ENVIRONMENT="Production"
 export ASPNETCORE_HTTPS_PORT=26769
 export ASPNETCORE_URLS="https://localhost.emudhra.com:26769"
+export CLR_ICU_VERSION_OVERRIDE=$(icu-config --version)
 /opt/eMudhra/emBridge/emBridge
 EOF
-    patch -p0 -d "${pkgdir}" -i "${srcdir}"/runtimeconfig.patch
 }
