@@ -25,11 +25,13 @@ license=('custom:UnrealEngine' 'GPL3')
 source=('unreal-engine-5.sh'
         'com.unrealengine.UE4Editor.desktop'
         'use_system_clang.patch'
-        'unreal-engine-5-pacman-cache.hook')
+        'unreal-engine-5-pacman-cache.hook'
+        'ue5editor.svg')
 sha256sums=('e9bab74efd9ca14bb746634ec2bbf8d93330479f505b645465cd2ad8149a5f80'
             'c04c03b2c5c933b7eb1af283d607934ad95fd57f44d62b83719061b555a85dca'
             'b0a57db9a44d0001dc76ca8504d93e273af30093c6a993a5969d82b0ace54b98'
-            '9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca')
+            '9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca'
+            'b00c398b63f15084c46f3963f62a45284ecd8dae9ba6f38a2c4af370bbfdab8d')
 # Not sure if compiling Unreal with LTO is legal? Lot's of different proprietary software goes into Unreal
 options=('!strip' 'staticlibs') # Package is smaller with "strip" but it takes a long time and generates many warnings
 
@@ -46,10 +48,22 @@ _use_system_clang=false
 
 # Default engine installation directory. Can be useful if you do not have a lot of space on the default storage drive
 # DON'T put a "/" at the start of the path
-_install_dir="opt/${pkgname}"
+## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
+if [ "${_ue5_install_dir}" == "" ]; then
+  export _ue5_install_dir="opt/${pkgname}"
+fi
 
 # Change this to true if you have a modern system and don't mind the extra packaging time (and size) to avoid compiling shaders on UE startup later; set to false by default for those with less robust systems
-_WithDDC=false
+## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
+if [ "${_WithDDC}" != true ] || [ "${_WithDDC}" != false ]; then
+  export _WithDDC=false
+fi
+
+# Change this if you want an alternative non-default logo for UE5's desktop icon; the default logo is enabled by default
+## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
+if [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" != 1 ] || [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" != 0 ]; then
+  export USE_DEFAULT_UE_LOGO_AT_INSTALL=1
+fi
 
 ## An attempt to fix the NuGet SSL issue during the build -- didn't seem to work; users had to do this manually, so we'll rollback to an alternative
 #ln -s /etc/ssl /usr/lib/ssl
@@ -65,7 +79,10 @@ export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
 ## it doesn't work with "makechrootpkg" - though, this PKGBUILD doesn't work in with this method anyway because of Github SSH Agent nonsense -- if this changes in the future, let us know
 
 # Valid values are false / disabled / default, auto, and native
-arch_auto=false
+
+if [ "${arch_auto}" != true ] || [ "${arch_auto}" != false ]; then
+  arch_auto=false
+fi
 
 opt_level=""
   
@@ -202,14 +219,19 @@ package() {
   install -dm755 "${pkgdir}/usr/share/pixmaps/"
   install -dm755 "${pkgdir}/usr/share/applications/"
   # Icon for Desktop entry
-  # install -Dm770 Engine/Source/Programs/UnrealVS/UnrealVS.2022/Resources/Preview.png "${pkgdir}/usr/share/pixmaps/ue5editor.png"
-  wget --output-document "ue5editor.svg" "https://raw.githubusercontent.com/EliverLara/candy-icons/master/apps/scalable/ue4editor.svg"
-  install -Dm750 ue5editor.svg "${pkgdir}/usr/share/pixmaps/ue5editor.svg"
-  wget --output-document "LICENSE" "https://raw.githubusercontent.com/EliverLara/candy-icons/master/LICENSE"
-  mkdir -p "${pkgdir}/usr/share/UnrealEngine/EliverLara-candy-icons/"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/UnrealEngine/EliverLara-candy-icons/"
-  rm ue5editor.svg
-  rm LICENSE
+  if [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" == 1 ]; then
+    install -Dm750 ue5editor.svg "${pkgdir}/usr/share/pixmaps/ue5editor.svg"
+  else
+    mv ue5editor.svg ue5editor.svg.bak
+    wget --output-document "ue5editor.svg" "https://raw.githubusercontent.com/EliverLara/candy-icons/master/apps/scalable/ue4editor.svg"
+    install -Dm750 ue5editor.svg "${pkgdir}/usr/share/pixmaps/ue5editor.svg"
+    wget --output-document "LICENSE" "https://raw.githubusercontent.com/EliverLara/candy-icons/master/LICENSE"
+    mkdir -p "${pkgdir}/usr/share/UnrealEngine/EliverLara-candy-icons/"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/UnrealEngine/EliverLara-candy-icons/"
+    rm ue5editor.svg
+    rm LICENSE
+    mv ue5editor.svg.bak ue5editor.svg
+  fi
 
   # License
   install -Dm770 LICENSE.md "${pkgdir}/usr/share/licenses/UnrealEngine/LICENSE.md"
@@ -217,44 +239,44 @@ package() {
   # Engine
   ## Set to all permissions to prevent the engine from breaking itself; more elegant solutions might exist - suggest them if they can be automated here
   ## Also, correct me if I package this improperly; I added Win64 support for the build in hopes of supporting cross-compilation
-  install -dm777 "${pkgdir}/${_install_dir}/Engine"
+  install -dm777 "${pkgdir}/${_ue5_install_dir}/Engine"
   
   # Copy LocalBuilds to pkg...
-  cp -flr "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/* "${pkgdir}"/"${_install_dir}"/
+  cp -flr "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/* "${pkgdir}"/"${_ue5_install_dir}"/
   if [ -f "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/Engine/Binaries/Linux/UnrealEditor ]; then
     # Can never be too careful with recursive rm...
     rm -r "${srcdir}"/"${pkgname}"/LocalBuilds
   fi
 
   # Copy the rest of it to pkg... Should we be overwriting LocalBuilds?
-  cp -flr "${srcdir}"/"${pkgname}"/* "${pkgdir}"/"${_install_dir}"/
+  cp -flr "${srcdir}"/"${pkgname}"/* "${pkgdir}"/"${_ue5_install_dir}"/
   if [ -f "${srcdir}"/"${pkgname}"/Engine/Binaries/Linux/UnrealEditor ]; then
     rm -r "${srcdir}"/"${pkgname:?}"/*
   fi
   
   # if [ -f "${srcdir}/${pkgname}/cpp.hint" ] && [ ! -d "${srcdir}/${pkgname}/cpp.hint" ]; then
-  #   mv "${srcdir}/${pkgname}/cpp.hint" "${pkgdir}/${_install_dir}"
+  #   mv "${srcdir}/${pkgname}/cpp.hint" "${pkgdir}/${_ue5_install_dir}"
   # elif [ -d "${srcdir}/${pkgname}/cpp.hint" ]; then
-  #   mkdir -p "${pkgdir}/${_install_dir}/cpp.hint"
-  #   mv "${srcdir}"/"${pkgname}"/cpp.hint/* "${pkgdir}/${_install_dir}/cpp.hint"
+  #   mkdir -p "${pkgdir}/${_ue5_install_dir}/cpp.hint"
+  #   mv "${srcdir}"/"${pkgname}"/cpp.hint/* "${pkgdir}/${_ue5_install_dir}/cpp.hint"
   # fi
   # 
   # if [ -f "${srcdir}/${pkgname}/GenerateProjectFiles.sh" ]; then
-  #   install -Dm777 "${srcdir}/${pkgname}/GenerateProjectFiles.sh" "${pkgdir}/${_install_dir}"
+  #   install -Dm777 "${srcdir}/${pkgname}/GenerateProjectFiles.sh" "${pkgdir}/${_ue5_install_dir}"
   # fi
   
-  chmod -R 777 "${pkgdir}/${_install_dir}"
+  chmod -R 777 "${pkgdir}/${_ue5_install_dir}"
   
-  if [ -x "$(find "${pkgdir}/${_install_dir}" -type f -iname 'xbuild')" ]; then
-    find "${pkgdir}/${_install_dir}" -type f -iname 'xbuild' -exec chmod +x "{}" \;
+  if [ -x "$(find "${pkgdir}/${_ue5_install_dir}" -type f -iname 'xbuild')" ]; then
+    find "${pkgdir}/${_ue5_install_dir}" -type f -iname 'xbuild' -exec chmod +x "{}" \;
   fi
   
-  if [ -x "$(find "${pkgdir}/${_install_dir}" -type f -iname 'mcs')" ]; then
-    find "${pkgdir}/${_install_dir}" -type f -iname 'mcs' -exec chmod +x "{}" \;
+  if [ -x "$(find "${pkgdir}/${_ue5_install_dir}" -type f -iname 'mcs')" ]; then
+    find "${pkgdir}/${_ue5_install_dir}" -type f -iname 'mcs' -exec chmod +x "{}" \;
   fi
   
   ## Do this, in case the path doesn't exist for some reason
-  mkdir -p "${pkgdir}/${_install_dir}/Engine/Binaries/Android/"
+  mkdir -p "${pkgdir}/${_ue5_install_dir}/Engine/Binaries/Android/"
   
   # Launch script to initialize missing user folders for Unreal Engine
   install -Dm755 ../unreal-engine-5.sh "${pkgdir}/usr/bin/"
@@ -268,5 +290,5 @@ package() {
   # Note: Requires that there isn't already a UE5 desktop entry in "${HOME}/local/share/applications/" - delete yours if you have one there before installing this
   DesktopFileChecksum=$(sha256sum "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop" | cut -f 1 -d ' ')
   sed -i "s|ChecksumPlaceholder|${DesktopFileChecksum}|" "${pkgdir}/usr/bin/unreal-engine-5.sh"
-  sed -i "s|InstalledLocationPlaceholder|/${_install_dir}/Engine/Binaries|" "${pkgdir}/usr/bin/unreal-engine-5.sh"
+  sed -i "s|InstalledLocationPlaceholder|/${_ue5_install_dir}/Engine/Binaries|" "${pkgdir}/usr/bin/unreal-engine-5.sh"
 }

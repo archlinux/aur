@@ -42,9 +42,11 @@ pkgbase = unreal-engine
 	source = com.unrealengine.UE4Editor.desktop
 	source = use_system_clang.patch
 	source = unreal-engine-5-pacman-cache.hook
+	source = ue5editor.svg
 	sha256sums = e9bab74efd9ca14bb746634ec2bbf8d93330479f505b645465cd2ad8149a5f80
 	sha256sums = c04c03b2c5c933b7eb1af283d607934ad95fd57f44d62b83719061b555a85dca
 	sha256sums = b0a57db9a44d0001dc76ca8504d93e273af30093c6a993a5969d82b0ace54b98
 	sha256sums = 9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca
+	sha256sums = b00c398b63f15084c46f3963f62a45284ecd8dae9ba6f38a2c4af370bbfdab8d
 
 pkgname = unreal-engine
