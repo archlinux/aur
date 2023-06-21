@@ -44,8 +44,9 @@ package() {
 
   # those files *must* be read-write for end-users; not my fault *grumble*
   chmod a+rw "${pkgdir}/opt/${pkgname}" "${pkgdir}/opt/${pkgname}/.pub-preload-cache"
-  chmod -R a+rw "${pkgdir}/opt/${pkgname}/version" "${pkgdir}/opt/${pkgname}/bin/cache" "${pkgdir}/opt/${pkgname}/.git"  
-  find "${pkgdir}/opt/${pkgname}" -name "pubspec.lock" -exec chmod a+r+ {} +
+  chmod -R a+rw "${pkgdir}/opt/${pkgname}/version" "${pkgdir}/opt/${pkgname}/bin/cache" "${pkgdir}/opt/${pkgname}/.git"
+  find "${pkgdir}/opt/${pkgname}" -name "pubspec.lock" -exec chmod a+rw {} +
+  find "${pkgdir}/opt/${pkgname}" -name "package_config.json" -exec chmod a+rw {} +
 
   # fix git ref migrations
   mv "${pkgdir}/opt/${pkgname}/.git" "${pkgdir}/opt/${pkgname}/.git-refs"
