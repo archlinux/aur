@@ -10,6 +10,7 @@ pkgbase = gnome-colors-icon-theme
 	makedepends = imagemagick
 	makedepends = gnome-icon-theme
 	makedepends = gnome-icon-theme-symbolic
+	makedepends = poppler-glib
 	conflicts = gnome-colors-icon-theme-extras
 	replaces = gnome-colors-icon-theme-extras
 	source = git+https://github.com/gnome-colors/gnome-colors.git

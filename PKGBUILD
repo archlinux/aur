@@ -16,7 +16,7 @@ url='https://github.com/gnome-colors/gnome-colors'
 license=('GPL2')
 conflicts=('gnome-colors-icon-theme-extras')
 replaces=('gnome-colors-icon-theme-extras')
-makedepends=('git' 'inkscape' 'imagemagick' 'gnome-icon-theme' 'gnome-icon-theme-symbolic')
+makedepends=('git' 'inkscape' 'imagemagick' 'gnome-icon-theme' 'gnome-icon-theme-symbolic' 'poppler-glib')
 source=("git+https://github.com/gnome-colors/gnome-colors.git")
 sha256sums=('SKIP')
 
