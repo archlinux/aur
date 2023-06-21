@@ -1,6 +1,6 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=wakapi
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 epoch=
 pkgdesc="A minimalist, self-hosted WakaTime-compatible backend for coding statistics"
@@ -22,7 +22,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/muety/wakapi/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('3b5ef9c742cfb3a58b6abeb23cd8915defa9268945818055399f074e949b9353cd1aa8d070fbb2db3872cb2ebe6d10c0d4b085c352cdde67f3dfbcb731ef88b8')
+b2sums=('ff70da1ad8690270434ea242b639cf0462f9e297dc49cbe2c77d26511a58b15ff251e008b87aea3db092841ab6c7e6a3784365fbac5351a38dab78337330c5c1')
 noextract=()
 validpgpkeys=()
 
