@@ -3,14 +3,15 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=XVector
-_bcver=0.38.0
+_bcver=0.40.0
 pkgname=r-${_bcname,,}
-pkgver=${_bcver//[:-]/.}
-pkgrel=1
 pkgdesc="Foundation of external vector representation and manipulation in Bioconductor"
-arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 license=(Artistic2.0)
+pkgver=${_bcver//[:-]/.}
+pkgrel=1
+
+arch=(i686 x86_64)
 depends=(
     "r>=4.0.0"
     "r-biocgenerics>=0.37.0"
@@ -23,8 +24,9 @@ optdepends=(
     "r-drosophila2probe"
     "r-runit"
 )
+
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=('780b75b8e12b916784852958b738acc61f865573cb7b043c7a2509be0ef637715dc086f62d905aa55af8044ab70520b4bd6fcc1f4b09d1b118a819b22d155b0d')
+b2sums=("902b3fcc354e8fce318968917f2df1b576db34b6be3dc82a70c0e1b889e86cf49b10770067c197a17bf8b26a13dbfb49f04885017c81d112afef1fe13819251e")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
