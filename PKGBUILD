@@ -47,7 +47,7 @@ package() {
   cp "$srcdir"/{materialx-grapheditor.desktop,materialx-view.desktop} "${pkgdir}"/usr/share/applications
   install -Dm644 "$srcdir"/materialx.xml "${pkgdir}"/usr/share/mime/model/materialx.xml
 
-  mv /home/adro/Applications/AUR/materialx/pkg/materialx/opt/materialx/{LICENSE,THIRD-PARTY.md} "${pkgdir}"/usr/share/licenses/materialx/
+  mv "${pkgdir}"/opt/materialx/{LICENSE,THIRD-PARTY.md} "${pkgdir}"/usr/share/licenses/materialx/
 
   ln -s /opt/materialx/bin/MaterialXView "${pkgdir}"/usr/bin/mtlxview
   ln -s /opt/materialx/bin/MaterialXGraphEditor "${pkgdir}"/usr/bin/mtlxGraphEditor
