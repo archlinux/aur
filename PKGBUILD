@@ -3,39 +3,43 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=Biostrings
-_bcver=2.66.0
+_bcver=2.68.1
+
 pkgname=r-${_bcname,,}
-pkgver=${_bcver//[:-]/.}
-pkgrel=2
 pkgdesc="Efficient manipulation of biological strings"
-arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
+pkgver=${_bcver//[:-]/.}
+pkgrel=1
+
+arch=(i686 x86_64)
 license=(Artistic2.0)
+
 depends=(
     "r>=4.0.0"
-	"r-biocgenerics>=0.37.0"
-	"r-s4vectors>=0.27.12"
-	"r-iranges>=2.23.9"
-	"r-xvector>=0.29.2"
-	r-genomeinfodb
-	r-crayon
+    "r-biocgenerics>=0.37.0"
+    "r-crayon"
+    "r-genomeinfodb"
+    "r-iranges>=2.31.2"
+    "r-s4vectors>=0.27.12"
+    "r-xvector>=0.37.1"
 )
 optdepends=(
-    r-bsgenome
-	r-bsgenome.celegans.ucsc.ce2
-	r-bsgenome.dmelanogaster.ucsc.dm3
-	r-bsgenome.hsapiens.ucsc.hg18
-	r-drosophila2probe
-	r-hgu95av2probe
-	r-hgu133aprobe
-	r-genomicfeatures
-	r-hgu95av2cdf
-	r-affy
-	r-affydata
-	r-runit
+    "r-affy>=1.41.3"
+    "r-affydata>=1.11.5"
+    "r-bsgenome.celegans.ucsc.ce2>=1.3.11"
+    "r-bsgenome.dmelanogaster.ucsc.dm3>=1.3.11"
+    "r-bsgenome.hsapiens.ucsc.hg18"
+    "r-bsgenome>=1.13.14"
+    "r-drosophila2probe"
+    "r-genomicfeatures>=1.3.14"
+    "r-hgu133aprobe"
+    "r-hgu95av2cdf"
+    "r-hgu95av2probe"
+    "r-runit"
 )
+
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('7312c508bc2fe6ea3da75edd621b41a35929f9dbdca16d25eb3724ca2cd206fd')
+b2sums=("82478d065bb98544bd4aadc35a18feeed9b6e016e89384dfedc9473d3e2fafbbb8618977efefa21c337902087ef967526edf1805b40ebc9c365cde83ede9c7eb")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
