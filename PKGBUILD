@@ -31,18 +31,25 @@ pkgver() {
 
 # https://github.com/kritzikratzi/Oscilloscope#compiling-with-make-in-linux
 prepare() {
-    ln -sf 'of_v0.10.1_linux64gcc6_release' 'OF'
+    # link downloaded openframeworks build to OF and enter it
+    ln -s --force 'of_v0.10.1_linux64gcc6_release' 'OF'
     cd OF/apps/myApps
-    ln -sf "${srcdir}/${pkgname}" 'Oscilloscope'
+    
+    # copy source code into openframeworks and enter it
+    cp -r --update "${srcdir}/${pkgname}" 'Oscilloscope'
     cd 'Oscilloscope'
+
+    # clone submodules
     git submodule update --init
+
+    # copy addon stuff (from readme instructions)
+    cp -R addons/ofxMightyUI/bin/data/* bin/data/
+    cp -R addons/ofxFontAwesome/bin/data/* bin/data/
 }
 
 build() {
     cd 'OF/apps/myApps/Oscilloscope'
-
-    cp -R addons/ofxMightyUI/bin/data/* bin/data/
-    cp -R addons/ofxFontAwesome/bin/data/* bin/data/
+    
     make
 }
 
