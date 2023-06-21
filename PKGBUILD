@@ -1,8 +1,9 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=youki
-pkgver=0.0.5
-_commit='04de7bf3b144da81f991d5756d5b284d4c87cec3'
+pkgver=0.1.0
+_commit='4dc30bf7c02be584eddfc182d4e96b7cbbb3474c'
 pkgrel=1
 pkgdesc='A container runtime written in Rust'
 arch=('x86_64')
