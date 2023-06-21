@@ -1,6 +1,6 @@
 pkgbase = metamask
 	pkgdesc = Chrome extension that enables browsing Ethereum blockchain enabled websites
-	pkgver = 10.28.1
+	pkgver = 10.32.0
 	pkgrel = 1
 	url = https://github.com/MetaMask/metamask-extension
 	arch = any
