@@ -2,7 +2,7 @@ pkgbase = argon-git
 	pkgdesc = the noble lightweight GUI package manager + update notifier (with full AUR support)
 	pkgver = 2.1.0
 	pkgrel = 1
-	url = https://github.com/14mRh4X0r/arch-argon
+	url = https://github.com/14mRh4X0r/argon
 	arch = any
 	license = GPL
 	makedepends = git
@@ -17,7 +17,7 @@ pkgbase = argon-git
 	depends = vte3
 	provides = argon
 	conflicts = argon
-	source = argon-git::git+https://github.com/14mRh4X0r/arch-argon.git
+	source = argon-git::git+https://github.com/14mRh4X0r/argon.git
 	sha512sums = SKIP
 
 pkgname = argon-git

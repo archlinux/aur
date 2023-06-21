@@ -1,19 +1,31 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Willem Mulder <14mRh4X0r@gmail.com>
 
-pkgname=argon-git
+_pkgname="argon"
+pkgname="${_pkgname}-git"
 pkgver=2.1.0
 pkgrel=1
-pkgdesc="the noble lightweight GUI package manager + update notifier (with full AUR support)"
-url="https://github.com/14mRh4X0r/arch-argon"
+_pkgdesc=("the noble lightweight GUI package manager "
+	  "+ update notifier (with full AUR support)")
+pkgdesc="${_pkgdesc[*]}"
+url="https://github.com/14mRh4X0r/${_pkgname}"
 license=('GPL')
 arch=('any')
-depends=(bash auracle-git pacman-contrib pacaur libnotify python python-gobject gtk3 vte3)
+depends=(
+  bash
+  auracle-git
+  pacman-contrib
+  pacaur
+  libnotify
+  python
+  python-gobject
+  gtk3
+  vte3)
 makedepends=(git)
-source=("argon-git::git+https://github.com/14mRh4X0r/arch-argon.git")
+source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
-provides=('argon')
-conflicts=('argon')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
 pkgver() {
   cd $pkgname
