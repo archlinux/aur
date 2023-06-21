@@ -1,22 +1,28 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname=kwok-bin
-pkgver=0.2.1
+pkgname="kwok-bin"
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Kubernetes WithOut Kubelet - Simulates thousands of Nodes and Clusters."
-arch=('x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 url="https://kwok.sigs.k8s.io/"
 _githuburl="https://github.com/kubernetes-sigs/kwok"
 license=('Apache')
-options=(!strip)
-provides=()
+provides=("${pkgname%-bin}")
 conflits=("${pkgname%-bin}")
-depends=()
-source=("${pkgname%-bin}-${pkgver}::https://github.com/kubernetes-sigs/kwok/releases/download/v0.2.0/kwok-linux-amd64"
-    "${pkgname%-bin}ctl-${pkgver}::https://github.com/kubernetes-sigs/kwok/releases/download/v0.2.0/kwokctl-linux-amd64")
-sha256sums=('7a588a90dced32dca9b79e026f677f6588ce55163ca19cc6b5994d645aec55ca'
-            'b48b06df6ec269040d2f3fd7123c63d63ba31bbd847de8b104d2119a001a5df7')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64"
+    "${pkgname%-bin}ctl-${pkgver}-aarch64::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}ctl-linux-arm64")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-arm64"
+    "${pkgname%-bin}ctl-${pkgver}-armv7h::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}ctl-linux-arm64")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-amd64"
+    "${pkgname%-bin}ctl-${pkgver}-x86_64::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}ctl-linux-amd64")
+sha256sums_aarch64=('ff7877f4b54c087fcd1dc99c6fcd2790b6d491554d21f9dee2e43337468dca25'
+                    'f96b55a17a6049a02ff4074a2df9d0d1b9bafbe5534cf549256185a24052ea3c')
+sha256sums_armv7h=('ff7877f4b54c087fcd1dc99c6fcd2790b6d491554d21f9dee2e43337468dca25'
+                   'f96b55a17a6049a02ff4074a2df9d0d1b9bafbe5534cf549256185a24052ea3c')
+sha256sums_x86_64=('1aa2ec5534b2eaa85a966751a997cb422157b8501af8a487559b0a9a239904f2'
+                   '429b0d19871dcbad1ed3a7c2190c75625d5e9048a4dadc53451d8822f9dd5287')
      
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/${pkgname%-bin}ctl-${pkgver}" "${pkgdir}/usr/bin/${pkgname%-bin}ctl"
+    install -Dm755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}ctl-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname%-bin}ctl"
 }
