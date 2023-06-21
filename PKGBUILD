@@ -3,24 +3,27 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=SummarizedExperiment
-_bcver=1.28.0
+_bcver=1.30.2
+
 pkgname=r-${_bcname,,}
+pkgdesc="SummarizedExperiment container"
+url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
-pkgdesc="SummarizedExperiment container"
-arch=(any)
-url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
+
+arch=("any")
 license=("Artistic2.0")
+
 depends=(
     "r>=4.0.0"
     "r-biobase"
     "r-biocgenerics>=0.37.0"
-    "r-delayedarray>=0.15.10"
+    "r-delayedarray>=0.26.3"
     "r-genomeinfodb>=1.13.1"
     "r-genomicranges>=1.41.5"
     "r-iranges>=2.23.9"
-    "r-matrix"
     "r-matrixgenerics>=1.1.3"
+    "r-s4arrays>=1.0.1"
     "r-s4vectors>=0.33.7"
 )
 optdepends=(
@@ -40,8 +43,9 @@ optdepends=(
     "r-testthat"
     "r-txdb.hsapiens.ucsc.hg19.knowngene"
 )
+
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=('444fcef2d5f510aed7f3f0f9f8b4f0155d92974928f2c4150329be471d855b8915c61fcaa1af6804e425e58219213673bc71772519fcd79a737d93330d9b2557')
+b2sums=("f08b14854a6ad52c6e3e805b2e42d10c2f029af86f17affed97e664172c60b377efedfcf8f05d4172a05d7de6b2178e15f00344be10e5ecb0fad7677da212d11")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
