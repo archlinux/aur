@@ -1,0 +1,37 @@
+pkgbase = goldendict
+	pkgdesc = Feature-rich dictionary lookup program supporting multiple dictionary formats
+	pkgver = 1.5.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/goldendict/goldendict
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = bzip2
+	depends = ffmpeg
+	depends = gcc-libs
+	depends = glibc
+	depends = hunspell
+	depends = libao
+	depends = libeb
+	depends = libtiff
+	depends = libvorbis
+	depends = libx11
+	depends = libxtst
+	depends = lzo
+	depends = opencc
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qt5-webkit
+	depends = qt5-x11extras
+	depends = xz
+	depends = zlib
+	depends = zstd
+	provides = goldendict=1.5.0
+	conflicts = goldendict
+	source = goldendict-1.5.0.tar.gz::https://github.com/goldendict/goldendict/archive/refs/tags/1.5.0.tar.gz
+	sha256sums = f9f8e068ece74cc026fdc5f56615246228b4e70c97c7197ccd4c14ceae412c7c
+
+pkgname = goldendict
