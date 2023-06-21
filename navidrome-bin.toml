@@ -1,4 +1,4 @@
-﻿# Folder where your music library is stored. Can be read-only
+# Folder where your music library is stored. Can be read-only
 MusicFolder = "/var/lib/navidrome/music"
 
 # Folder to store application data (DB, cache…)
