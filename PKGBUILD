@@ -10,7 +10,7 @@ arch=("x86_64")
 url="https://git.karx.xyz/karx/zdiu"
 license=("MIT")
 depends=("gtk3" "gcc-libs" "gdk-pixbuf2")
-makedepends=("cargo" "git")
+makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::https://git.karx.xyz/karx/$pkgname/archive/$pkgver.tar.gz"
         $pkgname.desktop)
 sha256sums=('fc1a7116fcb91bab4d19b78a55038a571e2c920cbe2d7420f2ae790e641f5fa6'
