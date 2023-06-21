@@ -1,7 +1,7 @@
 pkgbase = 7-zip
 	pkgdesc = File archiver with a high compression ratio
-	pkgver = 22.01
-	pkgrel = 2
+	pkgver = 23.01
+	pkgrel = 1
 	url = https://7-zip.org
 	arch = x86_64
 	license = LGPL
@@ -9,9 +9,9 @@ pkgbase = 7-zip
 	license = custom:unRAR
 	makedepends = uasm
 	makedepends = meson
-	source = https://7-zip.org/a/7z2201-src.tar.xz
+	source = https://7-zip.org/a/7z2301-src.tar.xz
 	source = meson.build
-	sha256sums = 393098730c70042392af808917e765945dc2437dee7aae3cfcc4966eb920fbc5
-	sha256sums = 8b47dd17a5094b487dc343f00113db3c08e94e929a494fbd582bd8c067e539e3
+	sha256sums = 356071007360e5a1824d9904993e8b2480b51b570e8c9faf7c0f58ebe4bf9f74
+	sha256sums = 211a57a476943e654de7408145b8d626a4dc242e74a3dcb8fc3afd0620792a03
 
 pkgname = 7-zip
