@@ -9,7 +9,7 @@ pkgname=r-${_bcname,,}
 pkgdesc="Representation and manipulation of genomic intervals"
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 pkgver=${_bcver//[:-]/.}
-pkgrel=1
+pkgrel=2
 
 arch=("i686" "x86_64")
 license=("Artistic2.0")
@@ -45,7 +45,6 @@ optdepends=(
     "r-kegggraph"
     "r-keggrest"
     "r-knitr"
-    "r-matrix"
     "r-pasillabamsubset"
     "r-rmarkdown"
     "r-rnaseqdata.hnrnpc.bam.chr14"
