@@ -1,6 +1,6 @@
 pkgbase = openturns
 	pkgdesc = Uncertainty treatment library
-	pkgver = 1.21rc1
+	pkgver = 1.21
 	pkgrel = 1
 	url = http://www.openturns.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = openturns
 	makedepends = boost
 	makedepends = spectra
 	depends = libxml2
-	depends = tbb
+	depends = onetbb
 	depends = hmat-oss
 	depends = python-matplotlib
 	depends = python-psutil
@@ -23,7 +23,7 @@ pkgbase = openturns
 	depends = hdf5
 	depends = primesieve
 	depends = pagmo
-	source = https://github.com/openturns/openturns/archive/v1.21rc1.tar.gz
-	sha256sums = f5c910931196c0ce925f67b0bffe2e7716aa59513d71443dcb661695ffd5e6fe
+	source = https://github.com/openturns/openturns/archive/v1.21.tar.gz
+	sha256sums = f91f9b37c738c99761b3fd9eb2d50b2c1e3a8e4466f0f842fdc2445128cb5bda
 
 pkgname = openturns
