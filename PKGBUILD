@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=impression
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="A straight-forward modern application to create bootable drives."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libadwaita')
 makedepends=('blueprint-compiler' 'cargo' 'meson')
 checkdepends=('appstream-glib')
 source=("https://gitlab.com/adhami3310/Impression/-/archive/v$pkgver/Impression-v$pkgver.tar.gz")
-sha256sums=('577886ea668bc6a0d97f5a4f694403184d8c03f38b7dbe66231d06ae73711646')
+sha256sums=('4b65f469af17d679ba5ab6457fe6ff421b5bdf1392cd23041f6221e1cfb1331a')
 
 prepare() {
   cd "Impression-v$pkgver"
