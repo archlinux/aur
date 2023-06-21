@@ -13,7 +13,7 @@
 
 pkgname=mesa-amdonly-gaming-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.2.0_devel.172193.87ac5d7d0a1.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.2.0_devel.173114.7cf7ea25002.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -22,7 +22,9 @@ makedepends=('git' 'python-mako' 'xorgproto'
               'llvm' 'clang'
 )
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-         'libomxil-bellagio' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat' 'llvm-libs')
+         'libomxil-bellagio' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'expat'
+         'llvm-libs' 'spirv-llvm-translator'
+)
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('mesa' 'opencl-mesa' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'vulkan-driver' 'mesa-libgl' 'opengl-driver' 'opencl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau' 'vulkan-swrast' 'mesa-libgl')
