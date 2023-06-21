@@ -1,7 +1,7 @@
 pkgbase = r-s4vectors
 	pkgdesc = Foundation of vector-like and list-like containers in Bioconductor
 	pkgver = 0.38.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/S4Vectors
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = r-s4vectors
 	optdepends = r-graph
 	optdepends = r-iranges
 	optdepends = r-knitr
-	optdepends = r-matrix
 	optdepends = r-runit
 	optdepends = r-shortread
 	optdepends = r-summarizedexperiment

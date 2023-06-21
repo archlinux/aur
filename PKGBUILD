@@ -6,7 +6,7 @@ _bcname=S4Vectors
 _bcver=0.38.1
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Foundation of vector-like and list-like containers in Bioconductor"
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/${_bcname}"
@@ -23,7 +23,6 @@ optdepends=(
     "r-graph"
     "r-iranges"
     "r-knitr"
-    "r-matrix"
     "r-runit"
     "r-shortread"
     "r-summarizedexperiment"
