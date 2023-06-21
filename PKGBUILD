@@ -4,12 +4,11 @@
 pkgname=sipgate-softphone
 appimage="${pkgname}.AppImage"
 pkgver=1.17.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Make phone calls with the Sipgate softphone'
 arch=('any')
 url="https://www.sipgate.co.uk/softphone"
 license=('Other')
-makedepends=('fd')
 source=(
     "https://sipgate-desktop-app.s3.eu-central-1.amazonaws.com/${appimage}"
     "sipgate.desktop"
@@ -20,14 +19,12 @@ package() {
     ./$appimage --appimage-extract  # extracts to squashfs-root
     DESTDIR="${pkgdir}/opt/${pkgname}/"
     mkdir -p $DESTDIR
-    cp -r squashfs-root/* $DESTDIR
+    cp -r --no-preserve=mode,ownership squashfs-root/* $DESTDIR
 
     # Copy desktop file
-    install -vDm 755 sipgate.desktop "${pkgdir}/usr/share/applications/sipgate.desktop"
-
-    # Fix directory permissions
-    cd $DESTDIR
-    fd -t d -x chmod 755 {}
+    install -vDm 644 sipgate.desktop "${pkgdir}/usr/share/applications/sipgate.desktop"
+    # Fix permissions
+    chmod +x "${pkgdir}/opt/${pkgname}/${pkgname}"
 }
 
 sha256sums=('4f4382d944d6d0912de5b6de941946c5eae173c731349a32732556ebff76f386'

@@ -1,11 +1,10 @@
 pkgbase = sipgate-softphone
 	pkgdesc = Make phone calls with the Sipgate softphone
 	pkgver = 1.17.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sipgate.co.uk/softphone
 	arch = any
 	license = Other
-	makedepends = fd
 	source = https://sipgate-desktop-app.s3.eu-central-1.amazonaws.com/sipgate-softphone.AppImage
 	source = sipgate.desktop
 	sha256sums = 4f4382d944d6d0912de5b6de941946c5eae173c731349a32732556ebff76f386
