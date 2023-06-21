@@ -6,7 +6,7 @@ pkgver=4.10.2257.0
 _debian_pkgname='libwidevinecdm0'
 _debian_pkgver=4.10.2252.0
 _debian_pkgrel=+3
-pkgrel=4
+pkgrel=5
 arch=('aarch64')
 url='https://www.widevine.com/'
 license=('custom')
@@ -74,6 +74,8 @@ package() {
   install -Dm755 libwidevinecdm.so -t "${pkgdir}/opt/WidevineCdm/chromium/"
   install -m644 manifest.json -t "${pkgdir}/opt/WidevineCdm/chromium/"
   ln -s "../../libwidevinecdm.so" "${pkgdir}/opt/WidevineCdm/chromium/_platform_specific/linux_arm64/libwidevinecdm.so"
+  # workaround for a firefox 104 issue (i.e. it's looking for libvineCdm.so instead of the proper so lib)
+  ln -s "./libwidevinecdm.so" "${pkgdir}/opt/WidevineCdm/chromium/libvineCdm.so"
 
   # These are the files for the firefox metadata package
   install -d "${pkgdir}/opt/WidevineCdm/firefox"
