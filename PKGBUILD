@@ -3,55 +3,41 @@
 
 pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
-pkgver=2.5.2
+pkgver=2.6.0
+_pkgver=2.6.0
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
-license=(AGPL3)
+license=('AGPL3')
 # wx 3.2 is not supported yet https://github.com/prusa3d/PrusaSlicer/issues/8299
-depends=(boost-libs curl glew mpfr nlopt tbb qhull openvdb
-         gtk3 libjpeg-turbo opencascade) # wxwidgets-gtk3
-makedepends=(cmake boost cereal cgal eigen expat gtest libpng systemd
-             gst-plugins-base glu webkit2gtk libnotify) # libigl not detected?
-checkdepends=(catch2)
-replaces=(slic3r-prusa3d)
+depends=('boost-libs' 'curl' 'glew' 'mpfr' 'nlopt' 'tbb' 'qhull' 'openvdb'
+         'gtk3' 'libjpeg-turbo' 'opencascade')
+makedepends=('cmake' 'boost' 'cereal' 'cgal' 'eigen' 'expat' 'gtest' 'libpng' 'systemd'
+             'gst-plugins-base' 'glu' 'webkit2gtk' 'libnotify' 'ninja' 'nanosvg')
+checkdepends=('catch2')
 # prusa-slicer uses a patched wxWidgets and does not work with upstream, commit pinned in
 # https://github.com/prusa3d/PrusaSlicer/blob/version_${pkgver}/deps/wxWidgets/wxWidgets.cmake
-_wxcommit=489f6118256853cf5b299d595868641938566cdb
-source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
+_wxcommit=78aa2dc0ea7ce99dc19adc1140f74c3e2e3f3a26
+source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${_pkgver}/${pkgname}-${pkgver}.tar.gz
         https://github.com/prusa3d/wxWidgets/archive/${_wxcommit}/wxWidgets-${_wxcommit}.tar.gz
-        ${pkgname}-fix-lcereal-p1.patch
-        ${pkgname}-fix-lcereal-p2.patch
-        ${pkgname}-boost-1.79-p1.patch
-        ${pkgname}-boost-1.79-p2.patch
-        ${pkgname}-boost-1.79-p3.patch
-        ${pkgname}-uniqueptr.patch
+        https://patch-diff.githubusercontent.com/raw/prusa3d/PrusaSlicer/pull/10390.patch
         use-system-catch2.patch)
-sha256sums=('e58278067b9d49a42dc9bb02b74307b3cb365bb737f28e246ca8c6f466095d6b'
-            'b4f0f6aea13b779e87c227dd7a062a6c2af4cad2f4e92b1272e43e2d45eedf51'
-            'fcccc601d893fc1988081e05fefe30f5561f1ef47aaf516295b31127326a4ae0'
-            '0c1084277bc6b9f0e7c28d0e47f98a3a195cdfbb3f0fe973dcb22bf4e6b24670'
-            'a1cddcfb276f2da60cd91226e09ba9869b861cab3108425c9d5c1851e8009e41'
-            'c84babe994db99856abdc62be65f7cd1ff546bebffd928c0b79a434952ec4a6d'
-            '0158f5e22face6174992e9d4bfbf90ca8d79100fdc230f5540c6f01d1bebf6a0'
-            '971c1cfd696846262b326ca58c41df9c82c17320632a29cc415124739b72c254'
+sha256sums=('a15f68e3b18a047c8c9a18a9d91629d2c777be1932087684cf6d2332d0888e77'
+            '20a7a6debad508c0b113cbfc908ca6b1d6786c77f925acad9353b78c34779495'
+            '761ed80f95614fa7ef7ca3ce063b43f773cfe5a0e1aa6dd5e5fc9b6cfe8b9c63'
             '3639dc2d290dc9a7d16259e0b421f8d21f16fb4abe46bbb3fab9328930fc5758')
 
 prepare() {
-  cd PrusaSlicer-version_${pkgver}
+  cd PrusaSlicer-version_${_pkgver}
   sed -i "s/7.6.2/7.6.3/" src/occt_wrapper/CMakeLists.txt # Hack for opencascade 7.6.3
+  patch -Np1 -i "${srcdir}"/10390.patch
   patch -p1 < ../use-system-catch2.patch # Borrowed from Debian
-  patch -p1 < ../${pkgname}-fix-lcereal-p1.patch
-  patch -p1 < ../${pkgname}-fix-lcereal-p2.patch
-  patch -p1 < ../${pkgname}-boost-1.79-p1.patch
-  patch -p1 < ../${pkgname}-boost-1.79-p2.patch
-  patch -p1 < ../${pkgname}-boost-1.79-p3.patch || true
-  patch -p1 < ../${pkgname}-uniqueptr.patch
 }
 
 build() {
   cmake -B deps -S wxWidgets-${_wxcommit} \
+    -G Ninja \
     -DCMAKE_INSTALL_PREFIX="${srcdir}"/deps/destdir/usr/local \
     -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
     -DBUILD_SHARED_LIBS=OFF \
@@ -63,16 +49,22 @@ build() {
     -DwxUSE_OPENGL=ON \
     -DwxUSE_LIBPNG=sys \
     -DwxUSE_ZLIB=sys \
-    -DwxUSE_REGEX=builtin \
+    -DwxUSE_NANOSVG=sys \
+    -DwxUSE_NANOSVG_EXTERNAL=ON \
+    -DwxUSE_NANOSVG_EXTERNAL_ENABLE_IMPL=ON \
+    -DwxUSE_REGEX=OFF \
+    -DwxUSE_LIBXPM=builtin \
     -DwxUSE_LIBJPEG=sys \
     -DwxUSE_LIBTIFF=sys \
     -DwxUSE_EXPAT=sys \
-    -DwxUSE_LIBLZMA=sys \
     -DwxUSE_LIBSDL=OFF \
-    -DwxUSE_XTEST=OFF
+    -DwxUSE_XTEST=OFF \
+    -DwxUSE_GLCANVAS_EGL=OFF \
+    -DwxUSE_WEBREQUEST=OFF
   cmake --build deps
   cmake --install deps
-  cmake -B build -S PrusaSlicer-version_${pkgver} \
+  cmake -B build -S PrusaSlicer-version_${_pkgver} \
+    -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB \
@@ -81,7 +73,7 @@ build() {
     -DSLIC3R_GTK=3 \
     -DwxWidgets_USE_STATIC=ON \
     -DCMAKE_PREFIX_PATH="${srcdir}"/deps/destdir/usr/local
-  make -C build
+  cmake --build build
 }
 
 check() {
@@ -93,7 +85,7 @@ check() {
 package_prusa-slicer() {
   optdepends=('slicer-udev: 3D printer connection rules')
 
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 
   # Desktop icons
   mkdir -p "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/
