@@ -13,7 +13,7 @@ license=('GPL')
 arch=('any')
 depends=(
   bash
-  auracle-git
+  auracle
   pacman-contrib
   pacaur
   libnotify
