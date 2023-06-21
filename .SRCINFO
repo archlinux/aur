@@ -1,19 +1,19 @@
 pkgbase = r-hexbin
 	pkgdesc = Hexagonal Binning Routines
 	pkgver = 1.28.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=hexbin
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = gcc-fortran
 	depends = r
-	optdepends = r-marray
 	optdepends = r-affy
 	optdepends = r-biobase
-	optdepends = r-limma
 	optdepends = r-knitr
+	optdepends = r-limma
+	optdepends = r-marray
 	source = https://cran.r-project.org/src/contrib/hexbin_1.28.3.tar.gz
+	md5sums = d0035d06e66b9229586590b03d258288
 	sha256sums = 0eb33511c1a4ff29dda8b89fee420ea7041033f981c7f16484c9f504d749de5f
 
 pkgname = r-hexbin
