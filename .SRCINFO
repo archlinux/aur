@@ -1,0 +1,19 @@
+pkgbase = uplink-gog
+	pkgdesc = GOG version of Uplink
+	pkgver = 1.6_gog_4
+	pkgrel = 2
+	url = https://www.gog.com/game/uplink_hacker_elite
+	arch = i686
+	arch = x86_64
+	groups = games
+	license = custom:EULA
+	depends = mesa
+	depends = libjpeg6-turbo
+	depends = sdl_mixer
+	depends = freetype2
+	source = gog_uplink_hacker_elite_2.0.0.4.sh::gogdownloader://uplink_hacker_elite/en3installer1
+	source = uplink.desktop
+	sha256sums = 275fafa60e9a12b83d7ab005afbd0a2fc3146d749c8cbd021e4beb728597d8d1
+	sha256sums = 87a4d1d312e73dbd4b8bb746a798c098c4dbfe77b8b6e0c6f1b10be3ebc60d22
+
+pkgname = uplink-gog
