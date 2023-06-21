@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=5.2.r110024.g14719b7939
+pkgver=6.1.r111232.g468615f204
 pkgrel=1
 _svt_hevc_ver='eb24a06ba4ee4948f219a3246b88439a8090bd37'
 _svt_vp9_ver='aaa8140c8cdf6c073eaa6aaa5d003d1535fd0059'
@@ -74,6 +74,7 @@ depends=(
     'lv2'
     'ocl-icd'
     'onevpl'
+    'onevpl-intel-gpu'
     'openal'
     'opencore-amr'
     'openh264'
