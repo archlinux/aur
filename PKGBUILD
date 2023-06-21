@@ -25,7 +25,7 @@ package() {
 
 	sqlite3 batterylog.db <schema.sql
 
-	install -Dm644 batterylog.system-sleep "$pkgdir/usr/lib/systemd/system-sleep/batterylog"
+	install -Dm755 batterylog.system-sleep "$pkgdir/usr/lib/systemd/system-sleep/batterylog"
 
 	install -d "$pkgdir/opt/batterylog"
 	cp -r . "$pkgdir/opt/batterylog"
