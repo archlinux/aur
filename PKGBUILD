@@ -1,12 +1,12 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
 pkgname=xstudio
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Media playback and review application designed for professionals working in the film and TV post production industries."
 arch=('x86_64')
 url="https://materialx.org/"
 license=('Apache 2.0')
-depends+=('cmake' 'opencolorio' 'spdlog' 'actor-framework' 'opencolorio' 'openexr' 'python-sphinx_rtd_theme' 'pybind11' 'qt5-base' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-declarative' 'qt5-tools' 'reproc' 'python-breathe')
+depends+=('cmake' 'opencolorio' 'spdlog' 'actor-framework' 'opencolorio' 'openexr' 'python-sphinx_rtd_theme' 'pybind11' 'qt5-base' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-declarative' 'qt5-tools' 'python-breathe')
 provides=('xstudio')
 source=(git+"https://github.com/AcademySoftwareFoundation/xstudio.git"
         "https://github.com/nlohmann/json/archive/refs/tags/v3.7.3.tar.gz"
@@ -27,6 +27,7 @@ prepare () {
   cmake ../json-3.7.3 -DJSON_BuildTests=Off
   make -j $JOBS
 
+  sed -i '358,364s/^/\/\/ /' "${srcdir}"/ffmpeg-5.1/libavutil/hwcontext_vulkan.c
   cd "${srcdir}"/ffmpeg-5.1
   ./configure \
     --extra-libs=-lpthread \
@@ -44,7 +45,6 @@ prepare () {
   make -j  $JOBS
   make DESTDIR="${srcdir}"/ffmpeg -C "${srcdir}"/ffmpeg-5.1 install
 
-  sed -i '358,364s/^/\/\/ /' "${srcdir}"/ffmpeg-5.1/libavutil/hwcontext_vulkan.c
   patch --directory="${srcdir}"/xstudio --forward --strip=1 --input="${srcdir}/reproc.patch"
 #   sed -i 's#extern/reproc#/usr#g' "${srcdir}"/xstudio/CMakeLists.txt
 
