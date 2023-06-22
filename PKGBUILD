@@ -32,6 +32,7 @@ prepare() {
   git config submodule.liblbfgs/liblbfgs.url "$srcdir/liblbfgs"
 
   git -c protocol.file.allow=always submodule update
+  git -C "${srcdir}/${_base}" clean -dfx
 }
 
 build() {
