@@ -1,5 +1,5 @@
 pkgname=escambo
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="An HTTP-based APIs test application for GNOME"
 arch=(any)
@@ -8,7 +8,7 @@ license=(GPL3)
 depends=(gtksourceview5 libadwaita python-gobject python-requests)
 makedepends=(blueprint-compiler meson)
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
-sha512sums=(7d81f6c71d52f521a191378274d98648fd102e4ba6e97cbe5e9e1ee5ecae858ea2c611c7a13ba8b891cbbbf7f88a3cc441148d0208b8261cade592d6b81af531)
+sha512sums=(2ffe84eb57e056ef490cbf559992c8c2515bc4547127631d3cb5d730ef6c3028670886a90696a9b2383a8fefca9a217b5b6441659a4b475486ee642b4e2db948)
 
 build() {
   arch-meson $pkgname-$pkgver build
