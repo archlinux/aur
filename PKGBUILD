@@ -7,15 +7,16 @@ url="https://www.freshports.org/archivers/unmakeself"
 license=('BSD')
 makedepends=()
 depends=(libarchive)
-source=("http://www.gtlib.gatech.edu/pub/gentoo/distfiles/$pkgname-$pkgver.tar.gz")
-sha384sums=('ca44712541e1df15e6755b35449df73aace4d8a1bdf9a3e6ffb0cbbf8e47e0b3ae6d3542cef8d722622362c52d97aa66')
+source=(
+    "unmakeself.c::https://cgit.freebsd.org/ports/plain/archivers/unmakeself/files/unmakeself.c?id=840ecf7efb078240a95c3a107c8f970d15d2482b"
+)
+sha384sums=('84db14f050c8f40a2d43d396fe20dcd2d10fd91058f293fc26cb66cbc4f0bd64d527171dbf254c2973e7e163b250c5a2')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    cc $(pkg-config --cflags --libs libarchive) -Wall -Wextra -o unmakeself unmakeself.c
+    cp ../config.h .
+    cc -D_GNU_SOURCE=1 $(pkg-config --cflags --libs libarchive) -Wall -Wextra -o unmakeself unmakeself.c
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
     install -D -m755 unmakeself -t "$pkgdir/usr/bin/"
 }
