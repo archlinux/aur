@@ -8,7 +8,7 @@ _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
 pkgver=r9621.89663e0db
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
@@ -126,7 +126,7 @@ build() {
     # Fix to help cmake find libusb
     CXXFLAGS+=" -I/usr/include/libusb-1.0"
     
-    [[ -d build ]] && rm -rf build
+    #[[ -d build ]] && rm -rf build
 
     cmake -B build -S "$_pkgbase" \
       -DCMAKE_INSTALL_PREFIX=/usr \
