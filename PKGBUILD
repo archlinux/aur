@@ -1,5 +1,5 @@
-# Maintainer: Bruno Pagani <archange@archlinux.org>
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Bruno Pagani <archange@archlinux.org>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 _use_suffix=1
 pkgver=21.4.4
