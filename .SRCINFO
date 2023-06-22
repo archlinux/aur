@@ -11,9 +11,9 @@ pkgbase = pynotify-git
 	makedepends = python-virtualenv
 	depends = libappindicator-gtk3
 	depends = gnome-shell-extension-appindicator
-	provides = pynotify-git
-	conflicts = pynotify-git
-	replaces = pynotify-git
+	provides = pyNotify
+	conflicts = pyNotify
+	replaces = pyNotify
 	source = git+https://github.com/fseoane/pyNotify.git
 	md5sums = SKIP
 
