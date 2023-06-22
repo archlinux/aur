@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=astc-encoder
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='A tool for compressing and decompressing images using the ASTC texture compression standard'
 arch=('x86_64')
@@ -25,11 +25,10 @@ build() {
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-        -DSHAREDLIB:BOOL='ON' \
-        -DISA_AVX2:BOOL='ON' \
-        -DISA_SSE41:BOOL='ON' \
-        -DISA_SSE2:BOOL='ON' \
-        -DUNITTEST:BOOL='ON' \
+        -DASTCENC_SHAREDLIB:BOOL='ON' \
+        -DASTCENC_ISA_AVX2:BOOL='ON' \
+        -DASTCENC_ISA_SSE41:BOOL='ON' \
+        -DASTCENC_ISA_SSE2:BOOL='ON' \
         -Wno-dev
     cmake --build build
 }
@@ -43,5 +42,4 @@ package() {
     install -D -m644 astc-encoder/Source/astcenc.h -t "${pkgdir}/usr/include"
     ln -s astcenc-sse2 "${pkgdir}/usr/bin/astcenc"
     ln -s libastcenc-sse2-shared.so "${pkgdir}/usr/lib/libastcenc.so"
-    rm "${pkgdir}/usr/bin"/test-unit*
 }
