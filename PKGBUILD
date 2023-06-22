@@ -44,7 +44,10 @@ _use_system_clang=false
 _ccache_support=false
 
 # Change this to true if you have a modern system and don't mind the extra packaging time (and size) to avoid compiling shaders on UE startup later; set to false by default for those with less robust systems
-_WithDDC=false
+## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
+if [ "${_WithDDC}" != true ] || [ "${_WithDDC}" != false ]; then
+  export _WithDDC=false
+fi
 
 ## Courtesy of the original author of this patch from https://aur.archlinux.org/packages/unreal-engine
 ## This patch is a bit more complex, so I'll try to maintain it if someone provides a new one, but don't be surprised if updates for this patch are not speedy
@@ -70,7 +73,10 @@ export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
 ## it doesn't work with "makechrootpkg" - though, this PKGBUILD doesn't work in with this method anyway because of Github SSH Agent nonsense -- if this changes in the future, let us know
 
 # Valid values are false / disabled / default, auto, and native
-arch_auto=auto
+
+if [ "${arch_auto}" != true ] || [ "${arch_auto}" != false ]; then
+  arch_auto=false
+fi
 
 opt_level=""
   
@@ -179,7 +185,7 @@ build() {
   else
       build='Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=false -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithWin32=false -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:WithLumin=false'
   fi
-    
+  
   if eval "${build}"; then
     :
   else
@@ -192,7 +198,7 @@ package() {
   # Desktop entry
   sed -i "7c\Exec=/usr/bin/unreal-engine-4.sh %U" com.unrealengine.UE4Editor.desktop
   sed -i "14c\Path=/usr/bin/" com.unrealengine.UE4Editor.desktop
-  install -Dm775 com.unrealengine.UE4Editor.desktop "${pkgdir}/usr/share/applications/com.unrealengine.UE4Editor.desktop"
+  install -Dm644 com.unrealengine.UE4Editor.desktop "${pkgdir}/usr/share/applications/com.unrealengine.UE4Editor.desktop"
   chmod +x "${pkgdir}/usr/share/applications/com.unrealengine.UE4Editor.desktop"
 
   ## Install a pacman hook to keep old builds from compounding cache by tens of GBs - 2 builds alone can reach at least 30 GBs in pacman's cache; having one only takes up about 15 GBs
@@ -202,10 +208,10 @@ package() {
   
   install -dm755 "${pkgdir}/usr/share/applications/"
   # Icon for Desktop entry
-  install -Dm770 Engine/Source/Programs/UnrealVS/Resources/Preview.png "${pkgdir}/usr/share/pixmaps/ue4editor.png"
+  install -Dm644 Engine/Source/Programs/UnrealVS/Resources/Preview.png "${pkgdir}/usr/share/pixmaps/ue4editor.png"
 
   # License
-  install -Dm770 LICENSE.md "${pkgdir}/usr/share/licenses/UnrealEngine/LICENSE.md"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/UnrealEngine/LICENSE.md"
   
   # Engine
   ## Set to all permissions to prevent the engine from breaking itself; more elegant solutions might exist - suggest them if they can be automated here
