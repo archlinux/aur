@@ -1,13 +1,17 @@
 pkgbase = python-curses-menu
 	pkgdesc = A simple console menu system using curses
-	pkgver = 0.6.0
+	pkgver = 0.6.11
 	pkgrel = 1
 	url = https://github.com/pmbarrett314/curses-menu
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
+	makedepends = python-poetry
 	depends = python
-	source = https://github.com/pmbarrett314/curses-menu/archive/0.6.0.tar.gz
-	sha512sums = e0c1c0fe5677db76febf8f5f71bf167ced45c045bdfaa24bcfd434948246e095ae0a37e41a1213b065fba2ffb91bd68a2a81311c94a69e1ad2f82920904ebe32
+	source = https://github.com/pmbarrett314/curses-menu/archive/0.6.11.tar.gz
+	sha512sums = a212cb065950362c60c4858b3d957223c179f1c27f5b4d48ec4399ad728ee950889c692d857def8fd2cb2b0ea9607ee67e1385312000bf3f76de1b2517194a52
 
 pkgname = python-curses-menu

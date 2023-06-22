@@ -1,26 +1,27 @@
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: Carlos Aznarán Laos <caznaranl@uni.pe>
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 _base=curses-menu
 pkgname=python-${_base}
-pkgver=0.6.0
+pkgver=0.6.11
 pkgrel=1
 pkgdesc="A simple console menu system using curses"
 arch=('any')
 url="https://github.com/pmbarrett314/${_base}"
 license=(MIT)
-depends=(python)
-makedepends=(python-setuptools)
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-poetry')
 # options=(!emptydirs)
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('e0c1c0fe5677db76febf8f5f71bf167ced45c045bdfaa24bcfd434948246e095ae0a37e41a1213b065fba2ffb91bd68a2a81311c94a69e1ad2f82920904ebe32')
+sha512sums=('a212cb065950362c60c4858b3d957223c179f1c27f5b4d48ec4399ad728ee950889c692d857def8fd2cb2b0ea9607ee67e1385312000bf3f76de1b2517194a52')
 
 build() {
   cd "${_base}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_base}-${pkgver}"
-  export PYTHONHASHSEED=0
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
