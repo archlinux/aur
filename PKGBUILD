@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-lwp-consolelogger'
-pkgver='1.000000'
+pkgver='1.000001'
 pkgrel='1'
 pkgdesc="LWP tracing and debugging"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=()
 checkdepends=('perl-test-failwarnings>=0' 'perl-test-fatal>=0' 'perl-test-lwp-useragent>=0' 'perl-test-most>=0')
 url='https://metacpan.org/release/LWP-ConsoleLogger'
 source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-ConsoleLogger-$pkgver.tar.gz")
-md5sums=('b9ef5b7893d3b8a1db4dd575048f26d6')
-sha512sums=('f9213a87651069f43dfb388ebbc3d8ed7ba38a3239a59235a889ad7e6f89f5f3c35a0380f7ade7fe6a2e2cd3b1687056197dae3133dc1ddbf50a55bf50e458cd')
+md5sums=('a9eeaf3c397f3a75243c715da70e5f97')
+sha512sums=('a1bf6c8ad06cbf994a080b2704d75d52e3a372a1145462d4c3a1607d1056bb0ea0636f77a956af7e60466f739184af2dd0f1e4e98c560cab1f94fa1a4c9733ba')
 _distdir="LWP-ConsoleLogger-$pkgver"
 
 build() {
