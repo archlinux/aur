@@ -3,7 +3,7 @@
 
 pkgname=bavarder
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Chit-Chat with AI"
 arch=('any')
 url="https://bavarder.codeberg.page"
@@ -21,6 +21,8 @@ depends=(
     'python-markdown'
     'pymdown-extensions'
     'webkitgtk-6.0'
+    'python-fake-useragent'
+    'python-curl-cffi'
 )
 makedepends=(
     'blueprint-compiler>=0.8.1'
