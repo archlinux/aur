@@ -1,7 +1,7 @@
 pkgbase = r-ivygapse
 	pkgdesc = A SummarizedExperiment for Ivy-GAP data
-	pkgver = 1.22.0
-	pkgrel = 3
+	pkgver = 1.22.1
+	pkgrel = 1
 	url = https://bioconductor.org/packages/ivygapSE
 	arch = any
 	license = Artistic2.0
@@ -24,7 +24,7 @@ pkgbase = r-ivygapse
 	optdepends = r-randomforest
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ivygapSE_1.22.0.tar.gz
-	sha256sums = b62e58f921b53e7b7734129f92128e1b2c8250ca964b13b5f93662c176463d9f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ivygapSE_1.22.1.tar.gz
+	sha256sums = f3485b4958d4aedffe8cefd37e389a3599bca89c1141633e04b64c50a8800abd
 
 pkgname = r-ivygapse
