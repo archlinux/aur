@@ -1,6 +1,6 @@
 pkgbase = linux-router
 	pkgdesc = Set Linux as router in one command
-	pkgver = 0.6.6
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/garywill/linux-router
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = linux-router
 	optdepends = qrencode: QR code support
 	provides = lnxrouter
 	provides = linuxrouter
-	source = https://github.com/garywill/linux-router/archive/refs/tags/0.6.6.tar.gz
-	md5sums = 4216f81b02da68b2208a886ad8ec2725
-	sha256sums = 252bace54313f7a04bdddcc7b13b6b860b74074b6605b87a8886d4f58b29b341
+	source = https://github.com/garywill/linux-router/archive/refs/tags/0.6.7.tar.gz
+	md5sums = 486e4a6d5c202085f0f9367c5207d3e8
+	sha256sums = 94d26e9e3bbe9b2bfe5b1b09fcb6237cf4623ad22f8b7698af2193e2ab78c338
 
 pkgname = linux-router
