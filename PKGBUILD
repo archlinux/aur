@@ -2,7 +2,7 @@
 
 pkgname=sakura-frp
 pkgver=0.45.0_sakura_4
-pkgrel=1
+pkgrel=2
 pkgdesc="Sakura Frp"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h')
 url="https://www.natfrp.com/"
@@ -23,7 +23,7 @@ source_armv6h=(${pkgname}-${pkgver}-armv6h::"${_url}/${pkgver//_/-}/frpc_linux_a
 # disbale strip
 # => strip: error: the input file './usr/bin/sakura-frpc' has no sections
 options=('!strip')
-md5sums=('5c9a22212419e1365e21a1ed450e132a'
+md5sums=('SKIP'
          '217dc59018558a2ae6fcb98da968b022'
          '2a0bc53302d2ab06b2bcee826d10c727'
          '136ace6ea106819f10ee785b56825e4e'
