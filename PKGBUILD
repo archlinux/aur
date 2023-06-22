@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r81.2196f3d
+pkgver=r113.7d4de48
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=('python-build'
              'git')
 source=("${_pkgbase}::git+https://github.com/ChimeraOS/device-quirks.git")
 md5sums=('SKIP')
-backup=("etc/device-quirks.conf")
+backup=("etc/device-quirks/device-quirks.conf")
 
 pkgver() {
 	cd "$srcdir/${_pkgbase}"
@@ -61,8 +61,8 @@ package() {
 	cp -rv usr/share/device-quirks/* "${pkgdir}/usr/share/device-quirks/."
 	
 	#Install device-quirks config
-	mkdir -p "${pkgdir}/etc/"
-	cp etc/device-quirks.conf "${pkgdir}/etc/"
+	mkdir -p "${pkgdir}/etc/device-quirks"
+	cp -rv etc/device-quirks/* "${pkgdir}/etc/device-quirks/."
 
 	# Install license
 	install -v -m644 -D -t "${pkgdir}/usr/share/licenses/${_pkgbase}/" LICENSE
