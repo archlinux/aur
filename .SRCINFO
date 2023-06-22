@@ -1,6 +1,6 @@
 pkgbase = simple64-git
 	pkgdesc = Nintendo64 emulator based on Mupen64Plus (git version)
-	pkgver = 2023.01.1.r0.gfa40a1b
+	pkgver = 2023.06.2.r0.ga160897
 	pkgrel = 1
 	url = https://simple64.github.io/
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = simple64-git
 	makedepends = zip
 	makedepends = vosk-api
 	depends = discord-game-sdk
+	depends = hidapi
 	depends = libpng
 	depends = qt6-base
 	depends = qt6-websockets
@@ -33,8 +34,8 @@ pkgbase = simple64-git
 	source = 020-simple64-fix-paths.patch
 	source = simple64.desktop
 	sha256sums = SKIP
-	sha256sums = a23bca8650f7052a7177c2b5cf9c4266f7087df3e96e2fb8b0ed6c2de83d9cd2
-	sha256sums = e76b47b332ea3a03be12fb59e0633c21810fdceaa508b009b4875054f6c48a97
+	sha256sums = 60ed1e91e78df8520454abf2eac1eef9efc2f6fcb62d1d9fb3eaa5d17734125f
+	sha256sums = 50be3722a8978f6e4c995898a7694b17de979f9d575ab746229dcd1468839b6b
 	sha256sums = acd624abe80b3399ef76c9f6ff45c5194ade6640a0fb18e43fd646c60345a883
 
 pkgname = simple64-git
