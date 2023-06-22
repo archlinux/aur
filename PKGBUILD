@@ -55,13 +55,13 @@ fi
 
 # Change this to true if you have a modern system and don't mind the extra packaging time (and size) to avoid compiling shaders on UE startup later; set to false by default for those with less robust systems
 ## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
-if [ "${_WithDDC}" != true ] || [ "${_WithDDC}" != false ]; then
+if [ "${_WithDDC}" != true ] && [ "${_WithDDC}" != false ]; then
   export _WithDDC=false
 fi
 
 # Change this if you want an alternative non-default logo for UE5's desktop icon; the default logo is enabled by default
 ## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
-if [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" != 1 ] || [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" != 0 ]; then
+if [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" != 1 ] && [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" != 0 ]; then
   export USE_DEFAULT_UE_LOGO_AT_INSTALL=1
 fi
 
@@ -80,7 +80,7 @@ export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
 
 # Valid values are false / disabled / default, auto, and native
 
-if [ "${arch_auto}" != true ] || [ "${arch_auto}" != false ]; then
+if [ "${arch_auto}" != true ] && [ "${arch_auto}" != false ]; then
   arch_auto=false
 fi
 
