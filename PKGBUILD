@@ -2,7 +2,7 @@
 # Contributor: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=python-social-auth-core
-pkgver=4.3.0
+pkgver=4.4.2
 pkgrel=1
 pkgdesc='Python Social Auth core component'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-six' 'python-defusedxml' 'python-pyjwt' 'python-jose' 'python-r
   'python-openid' 'python-cryptography' 'python3-saml')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('baf792268f4a928cd5f02bd538e7b6f80af493411e1ea223f0a98d50dd894d03')
+sha256sums=('0c56c3d7e5bdc8fddfcfe9f7a82f7d56d83bb378cd9898fd779c8ba804662e89')
 
 build() {
   cd social-core-"${pkgver}"
@@ -27,4 +27,6 @@ package() {
 
   install -Dm644 "${srcdir}/social-core-${pkgver}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  
+  rm -rf "${pkgdir}/usr/lib/python3.11/site-packages/social_core/tests"
 }
