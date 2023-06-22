@@ -207,7 +207,7 @@ package() {
   sed -i "14c\Path=/usr/bin/" com.unrealengine.UE5Editor.desktop
   sed -i 's/Unreal Engine 4 Editor/Unreal Engine 5 Editor/g' com.unrealengine.UE5Editor.desktop
   sed -i 's/Icon=ue4editor/Icon=ue5editor/g' com.unrealengine.UE5Editor.desktop
-  install -Dm775 com.unrealengine.UE5Editor.desktop "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop"
+  install -Dm644 com.unrealengine.UE5Editor.desktop "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop"
   chmod +x "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop"
 
   ## Install a pacman hook to keep old builds from compounding cache by tens of GBs - 2 builds alone can reach at least 30 GBs in pacman's cache; having one only takes up about 15 GBs
@@ -220,11 +220,11 @@ package() {
   install -dm755 "${pkgdir}/usr/share/applications/"
   # Icon for Desktop entry
   if [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" == 1 ]; then
-    install -Dm750 ue5editor.svg "${pkgdir}/usr/share/pixmaps/ue5editor.svg"
+    install -Dm644 ue5editor.svg "${pkgdir}/usr/share/pixmaps/ue5editor.svg"
   else
     mv ue5editor.svg ue5editor.svg.bak
     wget --output-document "ue5editor.svg" "https://raw.githubusercontent.com/EliverLara/candy-icons/master/apps/scalable/ue4editor.svg"
-    install -Dm750 ue5editor.svg "${pkgdir}/usr/share/pixmaps/ue5editor.svg"
+    install -Dm644 ue5editor.svg "${pkgdir}/usr/share/pixmaps/ue5editor.svg"
     wget --output-document "LICENSE" "https://raw.githubusercontent.com/EliverLara/candy-icons/master/LICENSE"
     mkdir -p "${pkgdir}/usr/share/UnrealEngine/EliverLara-candy-icons/"
     install -Dm644 LICENSE "${pkgdir}/usr/share/UnrealEngine/EliverLara-candy-icons/"
@@ -234,7 +234,7 @@ package() {
   fi
 
   # License
-  install -Dm770 LICENSE.md "${pkgdir}/usr/share/licenses/UnrealEngine/LICENSE.md"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/UnrealEngine/LICENSE.md"
   
   # Engine
   ## Set to all permissions to prevent the engine from breaking itself; more elegant solutions might exist - suggest them if they can be automated here
