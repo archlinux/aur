@@ -72,6 +72,7 @@ source=(
   firefox.desktop
   identity-icons-brand.svg
   0001-enable-vaapi.patch
+  0002-remove-nvidia-blocklist.patch
 )
 validpgpkeys=(
   '14F26682D0916CDD81E37B6D61B7B526D98F0353'  # Mozilla Software Releases <release@mozilla.com>
@@ -80,12 +81,14 @@ sha256sums=('aa602032f0b7065b743ba7fabf96714398aba538bcc017a4b0fff556dc69f8fe'
             'SKIP'
             '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '5c190c05fdb7dc0a7c50cc1f238620d50f3423b94eaea2d7b9d832ccd1fdffe3')
+            '1e272a01ed9a1082a0f75b512f24c475e9f0dfe33ecc9934f6d0e874aaf3391f'
+            '37447709db23189a2c0aedfc16e086b30ae3d532a7ed35b17e35f89e89bf3502')
 b2sums=('9c624a1093d00ccbfdb1f251489b4aecc597c8202e5e82b35266e32520a2b70d2001accdcc999c214d077dcda0708b50467a63fc3d67ac12d02b8153a67a71e3'
         'SKIP'
         'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        '30551e27556470266060ef4169fb9fbd2692852133160c9378b67fb53abd01a58d5aa0a01bac879ade99867a287c8a95c08c9f1ab91d43f05df4ddb5e021ec1f')
+        'b0605792080a7463bddbe9a2541441a77295753f37651ed7af056d1524524ba5b752d0b079cb95250ebc922151770483852e6f501133a3655b9db189c5303612'
+        '2596a5304979dedb4b8f74e4e2776344530edff5d775318aba6b162440418dcf2aceb0d6dce9957a81da29b92f1e68f3863d27bed9a6df440eaf030cbe5a8d85')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -107,6 +110,9 @@ prepare() {
   # https://bbs.archlinux.org/viewtopic.php?id=281398
   # https://src.fedoraproject.org/rpms/firefox/blob/rawhide/f/firefox-enable-vaapi.patch
   patch -Np1 -i ../0001-enable-vaapi.patch
+
+  # Disable NVIDIA blocklists, to make it function with libva-nvidia-driver-git AUR package
+  patch -Np1 -i ../0002-remove-nvidia-blocklist.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
