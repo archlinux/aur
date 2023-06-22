@@ -67,7 +67,7 @@ build(){
   ninja -C build_64
 }
 
-package_vulkan-validation-layers-git(){
+package(){
   DESTDIR="$pkgdir" ninja -C ${srcdir}/Vulkan-ValidationLayers/build_64/ install
 
   # install doc
