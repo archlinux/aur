@@ -9,7 +9,7 @@
 pkgname=icaclient-beta
 artefactid=icaclient
 pkgver=23.7.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology Preview]"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html'
@@ -66,7 +66,9 @@ package() {
         PKGINF="Ver.core.linuxarmhf"
     fi
 
-    mkdir -p "${pkgdir}$ICAROOT"
+    # Creating the package base
+    install -d "${pkgdir}"/{opt,usr/bin}
+    install -d "${pkgdir}$ICAROOT"
 
     cd "$ICADIR"
     install -m755 -t "${pkgdir}$ICAROOT" \
@@ -74,19 +76,15 @@ package() {
             adapter AuthManagerDaemon icasessionmgr NativeMessagingHost \
             PrimaryAuthManager ServiceRecord selfservice UtilDaemon wfica
 
+    # TODO To rewrite exclusive not inclusive?
     # copy directories
-    cp -rt "${pkgdir}$ICAROOT" config gtk help icons keyboard keystore lib nls site usb util
-    # fix permissions
-    chmod -R a+r "${pkgdir}$ICAROOT"
-
-    # Is the supress below still necessary ? If so, TO_DOCUMENT
-    rm "${pkgdir}$ICAROOT/lib/UIDialogLibWebKit.so"
+    cp -rt "${pkgdir}$ICAROOT" PKCS#11 aml bcr ceb clsync config desktop gtk help icons keyboard keystore lib nls site usb util
 
     # Install License
-    install -m644 -D -t "${pkgdir}$ICAROOT" nls/en.UTF-8/eula.txt
+    install -Dm644 -t "${pkgdir}$ICAROOT" nls/en.UTF-8/eula.txt
 
     # Install Version
-    install -m644 -D "${srcdir}/PkgId" "${pkgdir}$ICAROOT/pkginf/$PKGINF"
+    install -Dm644 "${srcdir}/PkgId" "${pkgdir}$ICAROOT/pkginf/$PKGINF"
 
     # create /config/.server to enable user customization using ~/.ICACLient/ overrides. Thanks Tomek
     touch "${pkgdir}$ICAROOT/config/.server"
@@ -94,30 +92,32 @@ package() {
     # Install wrapper script
     install -m755 "${srcdir}/wfica.sh" "${pkgdir}$ICAROOT/wfica.sh"
 
+    # Setting up /usr/bin launchers
     ln -s gst_play1.0 "${pkgdir}/$ICAROOT/util/gst_play"
     ln -s gst_read1.0 "${pkgdir}/$ICAROOT/util/gst_read"
+    ln -s /opt/Citrix/ICAClient/wfica "$pkgdir"/usr/bin/wfica
+    ln -s /opt/Citrix/ICAClient/selfservice "$pkgdir"/usr/bin/selfservice
+    ln -s /opt/Citrix/ICAClient/util/storebrowse "$pkgdir"/usr/bin/storebrowse
+    ln -s /opt/Citrix/ICAClient/util/setlog "$pkgdir"/usr/bin/setlog
+    ln -s /opt/Citrix/ICAClient/util/ctxcwalogd "$pkgdir"/usr/bin/ctxcwalogd
+    ln -s /opt/Citrix/ICAClient/util/ctx_rehash "$pkgdir"/usr/bin/ctx_rehash
+    ln -s /opt/Citrix/ICAClient/util/conncenter "$pkgdir"/usr/bin/conncenter
+    ln -s /opt/Citrix/ICAClient/util/configmgr "$pkgdir"/usr/bin/configmgr
+    ln -s /opt/Citrix/ICAClient/util/gst_play "$pkgdir"/usr/bin/gst_play
+    ln -s /opt/Citrix/ICAClient/util/gst_read "$pkgdir"/usr/bin/gst_read
 
-    # Dirty Hack
-    # wfica expects {module,wfclient,apssrv}.ini in $ICAROOT/config
-    # sadly these configs differ slightly by locale
+    # User configurations
     lang=${LANG%%_*}
     [[ -d "${pkgdir}/$ICAROOT/nls/$lang" ]] || lang='en'
     cp "${pkgdir}$ICAROOT/nls/$lang/module.ini" "${pkgdir}/$ICAROOT/config/"
     cp "${pkgdir}$ICAROOT/nls/$lang/appsrv.template" "${pkgdir}/$ICAROOT/config/appsrv.ini"
     cp "${pkgdir}$ICAROOT/nls/$lang/wfclient.template" "${pkgdir}/$ICAROOT/config/wfclient.ini"
 
-    sed -i \
-        -e 's/Ceip=Enable/Ceip=Disable/' \
-        -e 's/DisableHeartBeat=False/DisableHeartBeat=True/' \
-        "${pkgdir}$ICAROOT/config/module.ini"
-    cd "${srcdir}"
     # install freedesktop.org files
+    cd "${srcdir}"
     install -Dm644 -t "$pkgdir"/usr/share/applications citrix-{configmgr,conncenter,workspace,wfica}.desktop
+
     # install scripts
     install -Dm755 -t "${pkgdir}$ICAROOT" wfica.sh wfica_assoc.sh
     chmod +x "${pkgdir}$ICAROOT"/util/{HdxRtcEngine,ctx_app_bind,ctxcwalogd,icalicense.sh,setlog}
-
-    # make certificates available
-    rm -r "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
-    ln -s /etc/ssl/certs "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
 }
