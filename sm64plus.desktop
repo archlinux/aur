@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Super Mario 64 Plus
 Comment=Fork of SM64 Desktop with improvements
+Path=/opt/sm64plus
 Exec=/usr/bin/sm64plus
 Icon=sm64plus
 Terminal=false

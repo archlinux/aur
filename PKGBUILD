@@ -14,7 +14,7 @@
 # The sha1 should be: 9bef1128717f958171a4afac3ed78ee2bb4e86ce
 
 pkgname=sm64plus-git
-pkgver=2.1.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A standalone fork of the Super Mario 64 PC Port with quality of life improvements"
 arch=(x86_64)
@@ -32,8 +32,8 @@ install=
 source=('sm64plus::git+https://github.com/MorsGames/sm64plus' sm64plus-wrapper.sh sm64plus.desktop file://baserom.us.z64)
 noextract=()
 sha1sums=('SKIP'
-          'cd724c8043248366903993a33e9e079fbfc5e88b'
-          'd8b8b8065fac319ac095ec2248c0200a9b9d6eb4'
+          '31ed4551ebf6db2baebc330168f493b8cca5c847'
+          '4e70d3f09e1c1bd06cac62994ac4da9fcf17706b'
           '9bef1128717f958171a4afac3ed78ee2bb4e86ce')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
@@ -46,6 +46,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/sm64plus"
+	cp "$srcdir/baserom.us.z64" "$srcdir/sm64plus"
 	SM64PLUS_BASEROM_us="$srcdir/baserom.us.z64" make -j "$(nproc)"
 	convert star.ico[1] star.png
 }
@@ -53,8 +54,8 @@ build() {
 package() {
 	cd "$srcdir/sm64plus"
 	mkdir -p "$pkgdir/opt/sm64plus"
-	cp -r build/us_pc/textures -t "$pkgdir/opt/sm64plus"
-	install build/us_pc/sm64.us.f3dex2e "$pkgdir/opt/sm64plus"
+	cp -r build/us_pc/* -t "$pkgdir/opt/sm64plus"
+	install build/us_pc/sm64.us "$pkgdir/opt/sm64plus"
 	install -D "$srcdir/sm64plus-wrapper.sh" "$pkgdir/usr/bin/sm64plus"
 	install -D "$srcdir/sm64plus.desktop" -t "$pkgdir/usr/share/applications"
 	install -D star.png "$pkgdir/usr/share/pixmaps/sm64plus.png"

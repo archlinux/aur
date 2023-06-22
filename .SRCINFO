@@ -1,6 +1,6 @@
 pkgbase = sm64plus-git
 	pkgdesc = A standalone fork of the Super Mario 64 PC Port with quality of life improvements
-	pkgver = 2.1.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/MorsGames/sm64plus
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = sm64plus-git
 	source = sm64plus.desktop
 	source = file://baserom.us.z64
 	sha1sums = SKIP
-	sha1sums = cd724c8043248366903993a33e9e079fbfc5e88b
-	sha1sums = d8b8b8065fac319ac095ec2248c0200a9b9d6eb4
+	sha1sums = 31ed4551ebf6db2baebc330168f493b8cca5c847
+	sha1sums = 4e70d3f09e1c1bd06cac62994ac4da9fcf17706b
 	sha1sums = 9bef1128717f958171a4afac3ed78ee2bb4e86ce
 
 pkgname = sm64plus-git
