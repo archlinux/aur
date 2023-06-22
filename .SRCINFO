@@ -1,23 +1,22 @@
 pkgbase = update-notifier
 	pkgdesc = A simple pacman update notifier
 	pkgver = 0.7.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Chrysostomus/update-notifier
 	arch = any
-	license = MIT
+	license = custom:MIT
 	makedepends = git
 	depends = awk
 	depends = dunst>=1.3.2-2
 	depends = libnotify
-	depends = fakeroot
+	depends = bash
 	optdepends = yaourt: for AUR support
 	optdepends = gnome-terminal: for integration with gnome-update-notifications
 	optdepends = pamac: for graphical update actions
 	optdepends = yay: for AUR support
 	optdepends = trizen: for AUR support
 	optdepends = pacaur: for AUR support
-	source = git://github.com/Chrysostomus/update-notifier
+	source = git+https://github.com/Chrysostomus/update-notifier
 	md5sums = SKIP
 
 pkgname = update-notifier
-
