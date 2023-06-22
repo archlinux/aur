@@ -1,0 +1,22 @@
+pkgbase = doccreator-git
+	pkgdesc = DIAR software for synthetic document image and groundtruth generation
+	pkgver = r322.6d22082
+	pkgrel = 1
+	url = https://github.com/DocCreator/DocCreator
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	depends = tesseract
+	depends = qt5-base
+	depends = opencv
+	depends = lzham
+	depends = zlib
+	provides = doccreator
+	conflicts = doccreator
+	source = doccreator-git::git+https://github.com/DocCreator/DocCreator.git
+	source = tesseract.patch
+	sha256sums = SKIP
+	sha256sums = e00299613c83dd468bfe3ce5fddbbfbc93751f1a2f731280c46505bdbbaf6ff9
+
+pkgname = doccreator-git
