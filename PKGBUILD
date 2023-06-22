@@ -59,7 +59,7 @@ build(){
   ninja -C build_64
 }
 
-package_vulkan-icd-loader-git(){
+package(){
   DESTDIR="${pkgdir}" ninja -C ${srcdir}/Vulkan-Loader/build_64/ install
 
   # install licence
