@@ -2,8 +2,8 @@
 
 pkgname=webby-git
 _pkgname=webby
-pkgver=2.1.0
-pkgrel=1
+pkgver=2.1.0.r0.ge980882
+pkgrel=0
 pkgdesc='A very simple HTTP/HTTPS server and service.'
 url='https://github.com/an-prata/webby'
 makedepends=('git' 'go')
@@ -33,7 +33,7 @@ package() {
 	mv webby ${pkgdir}/usr/bin/
 	cp webby.service ${pkgdir}/usr/lib/systemd/system/
 
-	if [ -f "/etc/webby/config.json" ]
+	if [ ! -f "/etc/webby/config.json" ]
 	then
 		cp config.json ${pkgdir}/etc/webby/
 	fi
