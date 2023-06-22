@@ -1,0 +1,18 @@
+pkgbase = dqlite
+	pkgdesc = Distributed SQLite
+	pkgver = 1.15.1
+	pkgrel = 1
+	url = https://github.com/CanonicalLtd/dqlite
+	arch = x86_64
+	license = LGPL3
+	makedepends = tcl
+	makedepends = readline
+	makedepends = zlib
+	depends = libuv
+	depends = raft
+	depends = sqlite
+	options = strip
+	source = dqlite-1.15.1.tar.gz::https://github.com/canonical/dqlite/archive/v1.15.1.tar.gz
+	sha256sums = f5bb8bf2de732fe188bfcbb09c3c4fd02707d267734043dbb27d1215da68af4e
+
+pkgname = dqlite
