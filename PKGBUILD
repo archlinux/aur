@@ -2,7 +2,7 @@
 # https://github.com/brokenpip3/my-pkgbuilds
 
 pkgname=gpt-engineer
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Specify what you want it to build, the AI asks for clarification, and then builds it."
 arch=('any')
@@ -12,7 +12,7 @@ depends=(python-openai python-termcolor python-typer)
 makedepends=(python-build python-installer python-wheel)
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('67e26dcc41af0a6abce8d9fe8d9d812b2d6ed0eb955740abe50d7ff685ae2186')
+sha256sums=('d9217cdb02357aea0a9861b49547c231c56fb89faedfd8b195a993d1910b1ed3')
 
 
 build() {
