@@ -60,6 +60,10 @@ _use_current=${_use_current-}
 ### Enable KBUILD_CFLAGS -O3
 _cc_harder=${_cc_harder-y}
 
+### Enable KBUILD_CFLAGS -Os
+## DO NOT SET, THIS IS FOR INTERNAL CI USE ONLY.
+_cc_size=${_cc_size-}
+
 ### Set this to your number of threads you have in your machine otherwise it will default to 128
 _nr_cpus=${_nr_cpus-}
 
@@ -302,7 +306,7 @@ prepare() {
 
     ### Select CPU optimization
     if [ -n "$_processor_opt" ]; then
-        MARCH=$(echo $_processor_opt|tr '[:lower:]' '[:upper:]'&&echo)
+        MARCH="${_processor_opt^^}"
         MARCH2=M${MARCH}
         scripts/config -k -d CONFIG_GENERIC_CPU
         scripts/config -k -e CONFIG_${MARCH2}
@@ -331,8 +335,7 @@ prepare() {
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
-    local sched_name="$(echo $_cpusched|tr '[:lower:]' '[:upper:]')"
-    echo "Selecting ${sched_name} CPU scheduler..."
+    echo "Selecting ${_cpusched^^} CPU scheduler..."
 
     ### Enable KCFI
     if [ -n "$_use_kcfi" ]; then
@@ -449,10 +452,17 @@ prepare() {
     echo "Selecting '$_preempt' preempt type..."
 
     ### Enable O3
-    if [ -n "$_cc_harder" ]; then
+    if [ -n "$_cc_harder" ] && [ -z "$_cc_size" ]; then
         echo "Enabling KBUILD_CFLAGS -O3..."
         scripts/config -d CC_OPTIMIZE_FOR_PERFORMANCE \
             -e CC_OPTIMIZE_FOR_PERFORMANCE_O3
+    fi
+
+    ### Enable Os
+    if [ -n "$_cc_size" ] && [ -z "$_cc_harder" ]; then
+        echo "Enabling KBUILD_CFLAGS -Os..."
+        scripts/config -d CC_OPTIMIZE_FOR_PERFORMANCE \
+            -e CONFIG_CC_OPTIMIZE_FOR_SIZE
     fi
 
     ### Enable bbr2
@@ -463,6 +473,14 @@ prepare() {
             -e TCP_CONG_BBR2 \
             -e DEFAULT_BBR2 \
             --set-str DEFAULT_TCP_CONG bbr2
+
+        # BBR2 doesn't work properly with FQ_CODEL
+        echo "Disabling fq_codel by default..."
+        scripts/config -m NET_SCH_FQ_CODEL \
+            -e NET_SCH_FQ \
+            -d DEFAULT_FQ_CODEL \
+            -e DEFAULT_FQ \
+            --set-str DEFAULT_NET_SCH fq
     fi
 
     ### Select LRU config
