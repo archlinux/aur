@@ -9,12 +9,12 @@
 
 pkgname=lib32-vulkan-validation-layers-git
 pkgdesc='Vulkan Validation Layers (32-bit) (git version)'
-pkgver=1.3.254.r0.g1051e21
+pkgver=1.3.254.r20.gcb9c77d
 pkgrel=1
 arch=(i686 x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ValidationLayers'
 license=(Apache-2.0)
-makedepends=(cmake make python lib32-libx11 lib32-libxrandr lib32-wayland vulkan-headers git ninja)
+makedepends=(cmake python lib32-libx11 lib32-libxrandr lib32-wayland vulkan-headers git ninja make)
 depends=(lib32-gcc-libs lib32-libx11 vulkan-headers lib32-vulkan-icd-loader)
 conflicts=(lib32-vulkan-validation-layers)
 provides=(lib32-vulkan-validation-layers lib32-vulkan-validation-layers-git libVkLayer_khronos_validation.so)
@@ -28,24 +28,24 @@ pkgver(){
   git describe --long --tags --abbrev=7 --exclude sdk-* | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare(){
-export CC='gcc -m32'
-export CXX='g++ -m32'
-export ASFLAGS=--32
-export CFLAGS=-m32
-export CXXFLAGS=-m32
-export CFLAGS+=" -m32 -ffat-lto-objects"
-export CXXFLAGS+=" -m32 -ffat-lto-objects"
-export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
-
-  cd ${srcdir}/Vulkan-ValidationLayers
-
-  #rm -rf {glslang,Vulkan-Headers,SPIRV-Headers,SPIRV-Tools,robin-hood-hashing,googletest}
-
-  #sed -i s'/"commit": "release-1.8.1",/"commit": "release-1.11.0",/' scripts/known_good.json
-
-  ./scripts/update_deps.py --config release --arch 32
-}
+#prepare(){
+#export CC='gcc -m32'
+#export CXX='g++ -m32'
+#export ASFLAGS=--32
+#export CFLAGS=-m32
+#export CXXFLAGS=-m32
+#export CFLAGS+=" -m32 -ffat-lto-objects"
+#export CXXFLAGS+=" -m32 -ffat-lto-objects -Wno-error=restrict"
+#export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
+#
+#  cd ${srcdir}/Vulkan-ValidationLayers
+#
+#  #rm -rf {glslang,Vulkan-Headers,SPIRV-Headers,SPIRV-Tools,robin-hood-hashing,googletest}
+#
+#  #sed -i s'/"commit": "release-1.8.1",/"commit": "release-1.11.0",/' scripts/known_good.json
+#
+#  ./scripts/update_deps.py --config release --arch 32
+#}
 
 build(){
 export CC='gcc -m32'
@@ -54,12 +54,14 @@ export ASFLAGS=--32
 export CFLAGS=-m32
 export CXXFLAGS=-m32
 export CFLAGS+=" -m32 -ffat-lto-objects"
-export CXXFLAGS+=" -m32 -ffat-lto-objects"
+export CXXFLAGS+=" -m32 -ffat-lto-objects -Wno-error=restrict"
 export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
   cd ${srcdir}/Vulkan-ValidationLayers
 
   rm -rf build_32
+
+  ./scripts/update_deps.py --config release --arch 32
 
   cmake -C helper.cmake -H. -G Ninja -Bbuild_32 \
   -DCMAKE_CXX_FLAGS=-m32 \
