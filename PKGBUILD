@@ -6,7 +6,7 @@
 
 pkgname='goldendict'
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Feature-rich dictionary lookup program supporting multiple dictionary formats'
 arch=('i686' 'x86_64')
@@ -36,8 +36,6 @@ depends=(
     'zlib'
     'zstd'
 )
-provides=("${pkgname}=${pkgver}")
-conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('f9f8e068ece74cc026fdc5f56615246228b4e70c97c7197ccd4c14ceae412c7c')
 

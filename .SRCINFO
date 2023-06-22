@@ -1,7 +1,7 @@
 pkgbase = goldendict
 	pkgdesc = Feature-rich dictionary lookup program supporting multiple dictionary formats
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/goldendict/goldendict
 	arch = i686
@@ -29,8 +29,6 @@ pkgbase = goldendict
 	depends = xz
 	depends = zlib
 	depends = zstd
-	provides = goldendict=1.5.0
-	conflicts = goldendict
 	source = goldendict-1.5.0.tar.gz::https://github.com/goldendict/goldendict/archive/refs/tags/1.5.0.tar.gz
 	sha256sums = f9f8e068ece74cc026fdc5f56615246228b4e70c97c7197ccd4c14ceae412c7c
 
