@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ray
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
@@ -51,7 +51,7 @@ makedepends=(python python-build python-installer python-wheel python-setuptools
 _pkgname=ray
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz")
 
-sha256sums=('dab69614f6cde69d636cd35c94d49cdc87dac3af4850ae7019c7a8d52fd7ead9')
+sha256sums=('8449075a06dd5d2ffece43835ac26f9027d8a2af788ba9137f00d1c85944f053')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
