@@ -17,7 +17,7 @@ install=
 source=("rubick-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/rubick_${pkgver}_amd64.deb"
 	"LICENSE::https://raw.githubusercontent.com/rubickCenter/rubick/master/LICENSE")
 sha256sums=('a2b3d8addfb344c65ad3afd6989147c16022ddf6597222ddcb9ae2fe48dc82d1'
-            '98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77')
+	'98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77')
 
 package() {
 	bsdtar -xf data.tar.xz -C "${pkgdir}"
@@ -26,5 +26,5 @@ package() {
 	echo "#!/bin/bash" >$pkgdir/usr/bin/rubick2
 	echo "electron13 /opt/rubick2/resources/app.asar" >>$pkgdir/usr/bin/rubick2
 	install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-	sed -i 's!Exec=/opt/rubick2/rubick %U!Exec=rubick2!g' $pkgdir/usr/share/applications/rubick.desktop
+	sed -i -r 's!Exec=.*?!Exec=rubick2!g' $pkgdir/usr/share/applications/rubick.desktop
 }
