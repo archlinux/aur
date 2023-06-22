@@ -1,0 +1,20 @@
+pkgbase = python-crfsuite-git
+	pkgdesc = A Python implementation of the Metaphone and Double Metaphone algorithms
+	pkgver = 0.99.r1.g84e9a76
+	pkgrel = 1
+	url = https://github.com/scrapinghub/python-crfsuite
+	arch = any
+	license = custom:BSD-3-clause
+	makedepends = python-setuptools
+	makedepends = python-tox
+	makedepends = cython
+	makedepends = git
+	depends = python
+	source = git+https://github.com/scrapinghub/python-crfsuite.git
+	source = git+https://github.com/chokkan/crfsuite.git
+	source = git+https://github.com/chokkan/liblbfgs.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = python-crfsuite-git
