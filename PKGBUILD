@@ -3,7 +3,7 @@
 # Maintainer: Jan Cholasta <jan at cholasta net>
 
 pkgname=nblood-git
-pkgver=r13351.57dbe1dea
+pkgver=r13623.3843a7f93
 pkgrel=1
 pkgdesc='Blood port based on EDuke32 (git version)'
 arch=('i686' 'x86_64' 'aarch64')
@@ -15,6 +15,7 @@ depends=('flac'
          'libgl'
          'libogg'
          'libvorbis'
+         'libvpx'
          'sdl2'
          'sdl2_mixer'
          'timidity++')

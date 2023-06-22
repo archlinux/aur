@@ -1,6 +1,6 @@
 pkgbase = nblood-git
 	pkgdesc = Blood port based on EDuke32 (git version)
-	pkgver = r13351.57dbe1dea
+	pkgver = r13623.3843a7f93
 	pkgrel = 1
 	url = http://nukeykt.retrohost.net/
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = nblood-git
 	depends = libgl
 	depends = libogg
 	depends = libvorbis
+	depends = libvpx
 	depends = sdl2
 	depends = sdl2_mixer
 	depends = timidity++
