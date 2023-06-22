@@ -1,21 +1,21 @@
-#_     _            _                                _____
-#| |__ | | __ _  ___| | ___ __ ___   ___   ___  _ __ |___ /
-#| '_ \| |/ _` |/ __| |/ / '_ ` _ \ / _ \ / _ \| '_ \  |_ \
-#| |_) | | (_| | (__|   <| | | | | | (_) | (_) | | | |___) |
-#|_.__/|_|\__,_|\___|_|\_\_| |_| |_|\___/ \___/|_| |_|____/
+# _     _            _        _          _____
+#| |__ | | __ _  ___| | _____| | ___   _|___ /
+#| '_ \| |/ _` |/ __| |/ / __| |/ / | | | |_ \
+#| |_) | | (_| | (__|   <\__ \   <| |_| |___) |
+#|_.__/|_|\__,_|\___|_|\_\___/_|\_\\__, |____/
+#                                  |___/
 
-#Maintainer: blackmoon3 <https://github.com/blacksky3>
+#Maintainer: blacksky3 <https://github.com/blacksky3>
 #Credits: Laurent Carlier <lordheavym@gmail.com>
-#Credits: katt <magunasu.b97@gmail.com>
 
 pkgname=vulkan-icd-loader-git
 pkgdesc='Vulkan Installable Client Driver (ICD) Loader (git version)'
-pkgver=1.3.254.r2.gdb51885
+pkgver=1.3.254.r13.gb02d69f
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-Loader'
 license=(Apache-2.0)
-makedepends=(make cmake python python-lxml libx11 libxrandr wayland vulkan-headers git ninja)
+makedepends=(cmake python python-lxml libx11 libxrandr wayland vulkan-headers git ninja make)
 depends=(glibc)
 optdepends=('vulkan-driver: packaged vulkan driver')
 conflicts=(vulkan-icd-loader)
@@ -66,5 +66,3 @@ package_vulkan-icd-loader-git(){
   install -dm755 "${pkgdir}"/usr/share/licenses/${pkgname}
   install -m644 "${srcdir}"/Vulkan-Loader/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
-
-# vim:set ts=8 sts=2 sw=2 et:
