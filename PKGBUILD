@@ -1,3 +1,4 @@
+# Maintainer: Claudio Netto <nettinhorama@gmail.com>
 # Maintainer: Tsuru <tsuru@g.globo>
 
 pkgname='tsuru-bin'
