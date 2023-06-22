@@ -1,5 +1,4 @@
-# Maintainer: Cassio Almeida <jcassiocosta@gmail.com>
-# Maintainer: Claudio Netto <nettinhorama@gmail.com>
+# Maintainer: Tsuru <tsuru@g.globo>
 
 pkgname='tsuru-bin'
 pkgver=1.10.4
