@@ -1,0 +1,19 @@
+pkgbase = sofirem-git
+	pkgdesc = Software Installer Remover for Arch Linux based distros
+	pkgver = r54.ea473ba
+	pkgrel = 1
+	url = https://github.com/arcolinux/sofirem
+	install = readme.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python-psutil
+	depends = python-requests
+	depends = python-distro
+	conflicts = sofirem-dev-git
+	options = !strip
+	options = !emptydirs
+	source = sofirem::git+https://github.com/arcolinux/sofirem
+	sha256sums = SKIP
+
+pkgname = sofirem-git
