@@ -1,7 +1,7 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
 
 pkgname=puddletag-git
-pkgver=2.2.0.r10.gff36a9b
+pkgver=2.2.0.r105.gf8b8b46
 pkgrel=1
 pkgdesc="An audio tag editor for GNU/Linux, git version"
 url="https://github.com/${pkgname%%-*}/${pkgname%%-*}"
@@ -11,6 +11,7 @@ depends=('python-configobj'
          'python-mutagen'
          'python-pyparsing'
          'python-pyqt5'
+         'python-unidecode'
          'qt5-svg')
 makedepends=('git'
              'python-build'
