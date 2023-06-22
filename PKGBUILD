@@ -11,11 +11,16 @@
 _pkgname=ffmpeg
 pkgname="${_pkgname}5.1"
 pkgver=5.1.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
-arch=(x86_64)
-url=https://ffmpeg.org/
+arch=(
+  x86_64
+  i686
+  aarch64
+  armv7h
+  pentium4)
+url="https://${_pkgname}.org"
 license=(GPL3)
 depends=(
   alsa-lib
@@ -81,7 +86,8 @@ depends=(
 makedepends=(
   amf-headers
   avisynthplus
-  clang
+  # clang
+  'gcc<=12.0'
   ffnvcodec-headers
   git
   ladspa
@@ -111,7 +117,7 @@ options=(
 )
 _tag=1326fe9d4c85cca1ee774b072ef4fa337694f2e7
 source=(
-  git+https://git.ffmpeg.org/ffmpeg.git?signed#tag=${_tag}
+  "git+https://git.${_pkgname}.org/${_pkgname}.git?signed#tag=${_tag}"
   add-av_stream_get_first_dts-for-chromium.patch
 )
 b2sums=('SKIP'
@@ -119,88 +125,96 @@ b2sums=('SKIP'
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
 
 prepare() {
-  cd ffmpeg
-  patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
-  git cherry-pick -n eb0455d64690eed0068e5cb202f72ecdf899837c # https://github.com/FFmpeg/FFmpeg/commit/eb0455d64690eed0068e5cb202f72ecdf899837c
+  cd "${_pkgname}"
+
+  # https://crbug.com/1251779
+  patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch
+  # https://github.com/FFmpeg/FFmpeg/commit/eb0455d64690eed0068e5cb202f72ecdf899837c
+  git cherry-pick -n eb0455d64690eed0068e5cb202f72ecdf899837c
 }
 
 pkgver() {
-  cd ffmpeg
+  cd "${_pkgname}"
   git describe --tags | sed 's/^n//'
 }
 
 build() {
-  cd ffmpeg
-  ./configure \
-    --prefix=/usr \
-    --incdir="/usr/include/${pkgname}" \
-    --libdir="/usr/lib/${pkgname}" \
-    --shlibdir="/usr/lib/${pkgname}" \
-    --disable-debug \
-    --disable-static \
-    --disable-stripping \
-    --enable-amf \
-    --enable-avisynth \
-    --enable-cuda-llvm \
-    --enable-lto \
-    --enable-fontconfig \
-    --enable-gmp \
-    --enable-gnutls \
-    --enable-gpl \
-    --enable-ladspa \
-    --enable-libaom \
-    --enable-libass \
-    --enable-libbluray \
-    --enable-libbs2b \
-    --enable-libdav1d \
-    --enable-libdrm \
-    --enable-libfreetype \
-    --enable-libfribidi \
-    --enable-libgsm \
-    --enable-libiec61883 \
-    --enable-libjack \
-    --enable-libmfx \
-    --enable-libmodplug \
-    --enable-libmp3lame \
-    --enable-libopencore_amrnb \
-    --enable-libopencore_amrwb \
-    --enable-libopenjpeg \
-    --enable-libopus \
-    --enable-libpulse \
-    --enable-librav1e \
-    --enable-librsvg \
-    --enable-libsoxr \
-    --enable-libspeex \
-    --enable-libsrt \
-    --enable-libssh \
-    --enable-libsvtav1 \
-    --enable-libtheora \
-    --enable-libv4l2 \
-    --enable-libvidstab \
-    --enable-libvmaf \
-    --enable-libvorbis \
-    --enable-libvpx \
-    --enable-libwebp \
-    --enable-libx264 \
-    --enable-libx265 \
-    --enable-libxcb \
-    --enable-libxml2 \
-    --enable-libxvid \
-    --enable-libzimg \
-    --enable-nvdec \
-    --enable-nvenc \
-    --enable-opencl \
-    --enable-opengl \
-    --enable-shared \
-    --enable-version3 \
-    --enable-vulkan
+  cd "${_pkgname}"
+  local _build_opts=(
+    --prefix=/usr
+    --incdir="/usr/include/${pkgname}"
+    --libdir="/usr/lib/${pkgname}"
+    --shlibdir="/usr/lib/${pkgname}"
+    --disable-debug
+    --disable-static
+    --disable-stripping
+    --enable-amf
+    --enable-avisynth
+    --enable-cuda-llvm
+    --enable-lto
+    --enable-fontconfig
+    --enable-gmp
+    --enable-gnutls
+    --enable-gpl
+    --enable-ladspa
+    --enable-libaom
+    --enable-libass
+    --enable-libbluray
+    --enable-libbs2b
+    --enable-libdav1d
+    --enable-libdrm
+    --enable-libfreetype
+    --enable-libfribidi
+    --enable-libgsm
+    --enable-libiec61883
+    --enable-libjack
+    --enable-libmfx
+    --enable-libmodplug
+    --enable-libmp3lame
+    --enable-libopencore_amrnb
+    --enable-libopencore_amrwb
+    --enable-libopenjpeg
+    --enable-libopus
+    --enable-libpulse
+    --enable-librav1e
+    --enable-librsvg
+    --enable-libsoxr
+    --enable-libspeex
+    --enable-libsrt
+    --enable-libssh
+    --enable-libsvtav1
+    --enable-libtheora
+    --enable-libv4l2
+    --enable-libvidstab
+    --enable-libvmaf
+    --enable-libvorbis
+    --enable-libvpx
+    --enable-libwebp
+    --enable-libx264
+    --enable-libx265
+    --enable-libxcb
+    --enable-libxml2
+    --enable-libxvid
+    --enable-libzimg
+    --enable-nvdec
+    --enable-nvenc
+    --enable-opencl
+    --enable-opengl
+    --enable-shared
+    --enable-version3
+    --enable-vulkan)
+
+  ./configure "${_opts[@]}"
   make
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C ffmpeg install
+  make DESTDIR="${pkgdir}" \
+       -C "${_pkgname}" install
   rm -rf ${pkgdir}/usr/share
-  find ${pkgdir}/usr/bin -type f -exec mv {} {}5.1 \;
+  find ${pkgdir}/usr/bin \
+       -type f \
+       -exec mv {} {}5.1 \;
 }
 
 # vim: ts=2 sw=2 et:
