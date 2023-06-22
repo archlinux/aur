@@ -7,7 +7,7 @@
 ## GPG key: https://github.com/hexdecimal.gpg
 
 pkgname=libtcod
-pkgver=1.22.3
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="Roguelike graphics/utility library"
 arch=('x86_64')
@@ -31,6 +31,7 @@ build() {
 package() {
   cd "$pkgname/buildsys/autotools"
   make DESTDIR="$pkgdir" install
+  libtool --finish /usr/lib
   install -Dm644 "$srcdir/$pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
