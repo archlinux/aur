@@ -1,7 +1,7 @@
 pkgbase = hurl-rs
 	pkgdesc = HTTP Client to run and test requests
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Orange-OpenSource/hurl
 	arch = x86_64
 	license = Apache
@@ -18,6 +18,8 @@ pkgbase = hurl-rs
 	depends = curl
 	depends = libxml2
 	depends = openssl
+	conflicts = hurl
+	conflicts = hurl-bin
 	options = !lto
 	source = hurl-rs::git+https://github.com/Orange-OpenSource/hurl#commit=3d48b12900040db577385a752e401cf13b725ddc?signed
 	validpgpkeys = 2A8D14993928B676E424009F1283A2B4A0DCAF8D
