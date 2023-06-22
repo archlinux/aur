@@ -12,8 +12,8 @@ pkgbase=linux-jcore
 pkgname=('linux-jcore' 'linux-jcore-headers')
 _kernelname=-jcore
 _hostname=jcore
-pkgver=6.3.8
-pkgrel=2
+pkgver=6.3.9
+pkgrel=1
 pkgdesc="Kernel for Manjaro/EndeavourOS/Arch (ACS override patch include)"
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -28,8 +28,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
         '0103-Bluetooth_fix_deadlock_for_RFCOMM_sk_state_change.patch'
         # MANJARO Patches
-        '0001-nouveau-fix-client-work-fence-deletion-race.patch'
         'mt7921e_Perform_FLR_to_recovery_the_device.patch'
+        'rog_ally_sound.patch'
+        'hid-asus-rog-ally.patch'
         # Bootsplash
         '0301-revert-fbcon-remove-now-unusued-softback_lines-cursor-argument.patch'
         '0302-revert-fbcon-remove-no-op-fbcon_set_origin.patch'
@@ -49,12 +50,13 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
         '0413-bootsplash.gitpatch'
         # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('4323d421250e2e444c35d36f4aa8ddb56591dedc25c68d359d19c4ef9dd20955'
-            'b4a5b0172ffb1ed227e72d5504fc2e21fbd7e498e32a10ee993b4aeb3e28cc7a'
+sha256sums=('41ecf21399b17ab85163750ba22347d09b54fa099b80b63d0e2ef0066129b13e'
+            '4c355c0f35852dc94ed921ed144407e606097ed2b62d84dab9865c7bc03b06ec'
             '05f04019d4a2ee072238c32860fa80d673687d84d78ef436ae9332b6fb788467'
             'a8a2d8b402b2877df1a949a106c634b6c366dd33b954c4b735ce1d3778214169'
-            '0042242bb3348e83d9361c87d90f60d9ac354e9593b59dbd26b074df8f8b75fc'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
+            '2b64a6f677e3b1278f7ae0080b3e58383e097c28e63672a800272ff66d435976'
+            'bfb838dc7748af37b29c90fb216c9666a6f49e0f0e6df8827a5dfe84ef62d626'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             '50f4ccc4aeb0ffb8ec648b90a84ff188dbfed5364075cf0c6045c5696caf6ca9'
