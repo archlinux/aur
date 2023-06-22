@@ -16,7 +16,7 @@ source=(
     https://github.com/nukeop/nuclear/releases/download/v$pkgver/nuclear-v$pkgver.deb
     https://raw.githubusercontent.com/nukeop/nuclear/v$pkgver/LICENSE
 )
-sha256sums=(a9cebcf0d4145ea7ef46c5576454907e6da430c56be14e79fe116b7a2f45bd15
+sha256sums=(94500500efcd1e9b904b79f8b6ba87378d8505d096b403448fdf7a1d64d1f7fe
             SKIP)
 
 prepare() {
