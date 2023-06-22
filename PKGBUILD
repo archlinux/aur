@@ -4,14 +4,14 @@
 # Contributor: Marcin Mikołajczak <me@mkljczk.pl>
 
 pkgname=kscreenlocker-git
-pkgver=5.27.80_r1134.g0720165
+pkgver=5.27.80_r1146.g71cc703
 pkgrel=1
 pkgdesc='Library and components for secure lock screen architecture'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 groups=(plasma-git)
-depends=(kidletime-git kwayland-git kdeclarative-git perl layer-shell-qt-git)
+depends=(kidletime-git kwayland-git kdeclarative-git perl layer-shell-qt-git plasma-framework-git)
 makedepends=(git extra-cmake-modules-git kdoctools-git kcmutils-git libxcursor)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
