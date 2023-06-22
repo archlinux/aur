@@ -28,12 +28,12 @@ validpgpkeys=()
 
 
 pkgver() {
-	cd "$srcname"
+	cd pyNotify
 	printf "4.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcname"
+	cd pyNotify
  	echo "$pkgver" > pyNotify.ver
 }
 
@@ -41,7 +41,7 @@ build() {
 	#sudo pacman -S --needed libappindicator-gtk3 gnome-shell-extension-appindicator
 	#sudo pacman -S --needed git python3 python-pip python-virtualenv
 	
-	cd "$srcname"
+	cd pyNotify
 	mkdir .env 
 	python -m venv .env
 	source .env/bin/activate
@@ -67,7 +67,7 @@ build() {
 
 
 package() {
-	cd "$srcname"
+	cd pyNotify
 
 	sudo rm /opt/${srcname}/${srcname}
 	sudo rm /opt/${srcname}/${srcname}.desktop
