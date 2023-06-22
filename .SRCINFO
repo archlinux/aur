@@ -1,7 +1,7 @@
 pkgbase = ttf-huayingmincho
 	pkgdesc = Huaying Mincho 華英明朝 华英明朝
 	pkgver = 1.004
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GuiWonder/HuayingMincho
 	arch = any
 	license = custom:IPA

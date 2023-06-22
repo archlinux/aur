@@ -3,7 +3,7 @@
 pkgname=ttf-huayingmincho
 pkgver=1.004
 pkgdesc="Huaying Mincho 華英明朝 华英明朝"
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://github.com/GuiWonder/HuayingMincho'
 license=(custom:IPA)
@@ -19,6 +19,6 @@ prepare() {
     7z e -y '-x!crackme' "-o ${pkgname}-${pkgver}" "HuayingMincho.7z"
 }
 package() {
-    install -Dm444 "${srcdir}/"*.ttf -t "${pkgdir}/usr/share/fonts/TTF"
+    install -Dm444 "${srcdir}/"*.ttc -t "${pkgdir}/usr/share/fonts/TTF"
     install -Dm644 "${srcdir}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
