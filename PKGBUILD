@@ -1,4 +1,4 @@
-pkgname=wxbase
+pkgname=wxbase3.0
 pkgver=3.0.5.1
 pkgrel=1
 pkgdesc="wxWidgets base libraries for no X install (3.0 branch stable version)"

@@ -1,4 +1,4 @@
-pkgbase = wxbase
+pkgbase = wxbase3.0
 	pkgdesc = wxWidgets base libraries for no X install (3.0 branch stable version)
 	pkgver = 3.0.5.1
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = wxbase
 	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5.1/wxWidgets-3.0.5.1.tar.bz2
 	sha1sums = 406ac736f61d88a3a866aa501e01e408a642c6e7
 
-pkgname = wxbase
+pkgname = wxbase3.0
