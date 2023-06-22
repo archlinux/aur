@@ -9,12 +9,12 @@
 
 pkgname=vulkan-validation-layers-git
 pkgdesc='Vulkan Validation Layers (git version)'
-pkgver=1.3.254.r0.g1051e21
+pkgver=1.3.254.r20.gcb9c77d
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/KhronosGroup/Vulkan-ValidationLayers'
 license=(Apache-2.0)
-makedepends=(cmake make python python-lxml libx11 libxrandr wayland git ninja vulkan-headers)
+makedepends=(cmake python python-lxml libx11 libxrandr wayland vulkan-headers git ninja make)
 depends=(gcc-libs libx11 vulkan-headers vulkan-icd-loader)
 conflicts=(vulkan-validation-layers)
 provides=(vulkan-validation-layers vulkan-validation-layers-git libVkLayer_khronos_validation.so)
@@ -29,20 +29,22 @@ pkgver(){
   git describe --long --tags --abbrev=7 --exclude sdk-* | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare(){
-  cd ${srcdir}/Vulkan-ValidationLayers
-
-  #rm -rf {glslang,Vulkan-Headers,SPIRV-Headers,SPIRV-Tools,robin-hood-hashing,googletest}
-
-  #sed -i s'/"commit": "release-1.8.1",/"commit": "release-1.11.0",/' scripts/known_good.json
-
-  ./scripts/update_deps.py
-}
+#prepare(){
+#  cd ${srcdir}/Vulkan-ValidationLayers
+#
+#  #rm -rf {glslang,Vulkan-Headers,SPIRV-Headers,SPIRV-Tools,robin-hood-hashing,googletest}
+#
+#  #sed -i s'/"commit": "release-1.8.1",/"commit": "release-1.11.0",/' scripts/known_good.json
+#
+#  ./scripts/update_deps.py
+#}
 
 build(){
   cd ${srcdir}/Vulkan-ValidationLayers
 
   rm -rf build_64
+
+  ./scripts/update_deps.py
 
   cmake -C helper.cmake -H. -G Ninja -Bbuild_64 \
   -DCMAKE_CXX_FLAGS=-m64 \
