@@ -13,7 +13,7 @@ pkgbase = gomics-git
 	depends = glib2
 	provides = gomics
 	conflicts = gomics
-	source = git://github.com/salviati/gomics.git
+	source = gomics::git+https://github.com/salviati/gomics.git
 	sha256sums = SKIP
 
 pkgname = gomics-git
