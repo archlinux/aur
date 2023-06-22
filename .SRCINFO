@@ -1,0 +1,16 @@
+pkgbase = python-autoslot
+	pkgdesc = Automatic __slots__ for your Python classes
+	pkgver = 2022.12.1
+	pkgrel = 1
+	url = https://github.com/cjrh/autoslot
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pytest
+	depends = python-flit
+	source = https://files.pythonhosted.org/packages/source/a/autoslot/autoslot-2022.12.1.tar.gz
+	sha256sums = 576593ab8acf471e22b370bfb70bf94e4f4efef53ff0b720ffc0cabcc464d7a0
+
+pkgname = python-autoslot
