@@ -1,7 +1,7 @@
 pkgbase = mavlink
 	pkgdesc = Marshalling / communication library for drones.
 	pkgver = 1.0.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mavlink.io
 	arch = i686
 	arch = x86_64

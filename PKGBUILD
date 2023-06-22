@@ -4,7 +4,7 @@ pkgver=1.0.12
 pkgdesc="Marshalling / communication library for drones."
 url='https://mavlink.io'
 arch=('i686' 'x86_64')
-pkgrel=2
+pkgrel=3
 license=('GPLv3')
 makedepends=('cmake')
 depends=('python' 'python-future' 'python-pymavlink')
@@ -19,7 +19,7 @@ prepare() {
 
   git submodule init
   git config submodule."pymavlink".url "${srcdir}/${pkgname}"-pymavlink
-  git submodule update --init --recursive
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
