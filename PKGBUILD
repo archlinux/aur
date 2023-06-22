@@ -11,7 +11,7 @@ depends=("python-numpy" "python-qcelemental" "python-qcengine" "python-msgpack")
 #check ignored since psi4 package might not be installed.
 #checkdepends=("python-pytest" "python-pytest-cov" "python-pytest-pep8")
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/psi-rking/optking/archive/${pkgver}.tar.gz)
-sha256sums=("1076af33946f071edd86baf0d359b153c37bce54b6c143d286ba5559632c50b5")
+sha256sums=("7c4a2ea83b61fa91a178d2470612069eb9968ed3157336694c77805752ba545d")
 
 build() {
   cd ${_pkgname}"-"${pkgver}

@@ -10,6 +10,6 @@ pkgbase = python-optking
     depends = python-qcengine
 	depends = python-msgpack
 	source = https://github.com/psi-rking/optking/archive/0.2.1.tar.gz
-	sha256sums = 1076af33946f071edd86baf0d359b153c37bce54b6c143d286ba5559632c50b5
+	sha256sums = 7c4a2ea83b61fa91a178d2470612069eb9968ed3157336694c77805752ba545d
 
 pkgname = python-optking
