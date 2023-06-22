@@ -5,7 +5,7 @@
 _gitname=darling
 pkgbase=$_gitname-git
 pkgname='darling-git'
-pkgver=r4007.39b0f38c2
+pkgver=r4118.894d62c91
 pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
@@ -127,7 +127,6 @@ source=('darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libr
         'git+https://github.com/darlinghq/darling-ncurses.git'
         'git+https://github.com/darlinghq/darling-netcat.git'
         'git+https://github.com/darlinghq/darling-network_cmds.git'
-        'git+https://github.com/darlinghq/darling-newlkm.git'
         'git+https://github.com/darlinghq/darling-nghttp2.git'
         'git+https://github.com/darlinghq/darling-objc4.git'
         'git+https://github.com/darlinghq/darling-openal.git'
@@ -157,6 +156,7 @@ source=('darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libr
         'git+https://github.com/darlinghq/darling-SmartCardServices.git'
         'git+https://github.com/darlinghq/darling-sqlite.git'
         'git+https://github.com/darlinghq/darling-swift.git'
+        'git+https://github.com/darlinghq/darling-swift-corelibs-foundation.git'
         'git+https://github.com/darlinghq/darling-syslog.git'
         'git+https://github.com/darlinghq/darling-system_cmds.git'
         'git+https://github.com/darlinghq/darling-tcsh.git'
@@ -168,6 +168,7 @@ source=('darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libr
         'git+https://github.com/darlinghq/darling-WebCore.git'
         'git+https://github.com/darlinghq/darling-WTF.git'
         'git+https://github.com/darlinghq/darling-xar.git'
+        'git+https://github.com/darlinghq/darling-xnu.git'
         'git+https://github.com/darlinghq/darling-zip.git'
         'git+https://github.com/darlinghq/darling-zlib.git'
         'git+https://github.com/darlinghq/darling-zsh.git'
@@ -194,7 +195,7 @@ md5sums=( 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-          'SKIP' 'SKIP' 'SKIP' 'SKIP')
+          'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 options=('!buildflags')
 
 pkgver() {
@@ -304,7 +305,6 @@ prepare() {
     git config submodule.src/external/libxml2.url "$srcdir/darling-libxml2"
     git config submodule.src/external/libxpc.url "$srcdir/darling-libxpc"
     git config submodule.src/external/libxslt.url "$srcdir/darling-libxslt"
-    git config submodule.src/external/lkm.url "$srcdir/darling-newlkm"
     git config submodule.src/external/lzfse.url "$srcdir/lzfse"
     git config submodule.src/external/mail_cmds.url "$srcdir/darling-mail_cmds"
     git config submodule.src/external/man.url "$srcdir/darling-man"
@@ -356,6 +356,7 @@ prepare() {
     git config submodule.src/external/WTF.url "$srcdir/darling-WTF"
     git config submodule.src/external/xar.url "$srcdir/darling-xar"
     git config submodule.src/external/xcbuild.url "$srcdir/xcbuild"
+    git config submodule.src/external/xnu.url "$srcdir/darling-xnu"
     git config submodule.src/external/zip.url "$srcdir/darling-zip"
     git config submodule.src/external/zlib.url "$srcdir/darling-zlib"
     git config submodule.src/external/zsh.url "$srcdir/darling-zsh"
@@ -367,18 +368,23 @@ prepare() {
 
     cd "$srcdir/$_gitname/src/external/openpam/"
     git submodule init
-    git config submodule.pam_modules.url "$srcdir/darling-pam_modules"
+    git config submodule.darling/submodules/pam_modules.url "$srcdir/darling-pam_modules"
     git -c protocol.file.allow=always submodule update
 
     cd "$srcdir/$_gitname/src/external/IOKitUser"
     git submodule init
-    git config submodule.IOGraphics.url "$srcdir/darling-IOGraphics"
-    git config submodule.IOHIDFamily.url "$srcdir/darling-IOHIDFamily"
+    git config submodule.darling/submodules/IOGraphics.url "$srcdir/darling-IOGraphics"
+    git config submodule.darling/submodules/IOHIDFamily.url "$srcdir/darling-IOHIDFamily"
     git -c protocol.file.allow=always submodule update
 
     cd "$srcdir/$_gitname/src/external/metal"
     git submodule init
     git config submodule.deps/indium.url "$srcdir/indium"
+    git -c protocol.file.allow=always submodule update
+
+    cd "$srcdir/$_gitname/src/external/corefoundation"
+    git submodule init
+    git config submodule.submodules/swift-corelibs-foundation.url "$srcdir/darling-swift-corelibs-foundation"
     git -c protocol.file.allow=always submodule update
 
     echo "Updating LFS files"
