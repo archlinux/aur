@@ -1,5 +1,6 @@
 # Maintainer: Fernando Seoane <fseoane@hotmail.com>
 pkgname=pynotify-git
+pkgbase=pyNotify
 pkgver=4.0
 pkgrel=1
 epoch=
@@ -12,9 +13,9 @@ depends=('libappindicator-gtk3' 'gnome-shell-extension-appindicator')
 makedepends=('git' 'python3' 'python-pip' 'python-virtualenv')
 checkdepends=()
 optdepends=()
-provides=(pynotify-git)
-conflicts=(pynotify-git)
-replaces=(pynotify-git)
+provides=(pyNotify)
+conflicts=(pyNotify)
+replaces=(pyNotify)
 backup=()
 options=()
 install=
@@ -26,26 +27,23 @@ validpgpkeys=()
 
 
 pkgver() {
-	cd "${_pkgname}"
+	cd "${_pkgbase}"
 	printf "4.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	cd "$pkgname"
-	printf "4.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" > pyNotify.ver
 }
 
-# prepare() {
-# 	cd "$pkgname"
-# 	echo "$pkgver" > pyNotify.ver
-# }
+prepare() {
+	cd "$pkgbase"
+ 	echo "$pkgver" > pyNotify.ver
+}
 
 build() {
-	sudo pacman -S --needed libappindicator-gtk3 gnome-shell-extension-appindicator
-	sudo pacman -S --needed git python3 python-pip python-virtualenv
+	#sudo pacman -S --needed libappindicator-gtk3 gnome-shell-extension-appindicator
+	#sudo pacman -S --needed git python3 python-pip python-virtualenv
 	
-	cd "$pkgname"
+	cd "$pkgbase"
 	mkdir .env 
 	python -m venv .env
 	source .env/bin/activate
-
 	
 	python  -m pip install --upgrade pip # setuptools wheel
 
@@ -66,35 +64,29 @@ build() {
 	rm -rf .env
 }
 
-# check() {
-# 	cd "$pkgname-$pkgver"
-# 	make -k check
-# }
 
 package() {
-	cd "$pkgname"
+	cd "$pkgbase"
 
-	sudo rm /opt/${pkgname}/${pkgname}
-	sudo rm /opt/${pkgname}/${pkgname}.desktop
-	sudo rm /opt/${pkgname}/${pkgname}.conf.default
-	sudo rm /opt/${pkgname}/${pkgname}.ver
-	sudo rm /opt/${pkgname}/*.ogg
-	sudo rm /opt/${pkgname}/*.png
-	sudo rm /opt/${pkgname}/*.svg
+	sudo rm /opt/${pkgbase}/${pkgbase}
+	sudo rm /opt/${pkgbase}/${pkgbase}.desktop
+	sudo rm /opt/${pkgbase}/${pkgbase}.conf.sample
+	sudo rm /opt/${pkgbase}/${pkgbase}.ver
+	sudo rm /opt/${pkgbase}/*.ogg
+	sudo rm /opt/${pkgbase}/*.png
+	sudo rm /opt/${pkgbase}/*.svg
 
-	sudo mkdir -p /opt/${pkgname}
+	sudo mkdir -p /opt/${pkgbase}
 	
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/dist/${pkgname} /opt/${pkgname}/${pkgname}
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${pkgname}.desktop /opt/${pkgname}/${pkgname}.desktop
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/*.ogg /opt/${pkgname}/
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/*.png /opt/${pkgname}/
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/*.svg /opt/${pkgname}/
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${pkgname}.ver /opt/${pkgname}/${pkgname}.ver
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${pkgname}.conf /opt/${pkgname}/${pkgname}.conf.default
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/dist/${pkgbase} /opt/${pkgbase}/${pkgbase}
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/${pkgbase}.desktop /opt/${pkgbase}/${pkgbase}.desktop
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/*.ogg /opt/${pkgbase}/
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/*.png /opt/${pkgbase}/
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/*.svg /opt/${pkgbase}/
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/${pkgbase}.ver /opt/${pkgbase}/${pkgbase}.ver
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/${pkgbase}.conf /opt/${pkgbase}/${pkgbase}.conf.sample
 
-	desktop-file-install --dir=$HOME/.local/share/applications /opt/${pkgname}/${pkgname}.desktop
-	sudo install -Dm644 LICENSE "/usr/share/licenses/${pkgname}/LICENSE"
-    sudo install -Dm644 README.md "/usr/share/doc/${pkgname}/README.md"
-
-
+	desktop-file-install --dir=$HOME/.local/share/applications /opt/${pkgbase}/${pkgbase}.desktop
+	sudo install -Dm644 LICENSE "/usr/share/licenses/${pkgbase}/LICENSE"
+    	sudo install -Dm644 README.md "/usr/share/doc/${pkgbase}/README.md"
 }
