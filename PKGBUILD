@@ -4,7 +4,7 @@
 # Contributor: Genki Sky <alt+archlinux.org@genki.is>
 
 pkgname=tla-toolbox-nightly
-pkgver=1.8.0.r8164.g7aac787
+pkgver=1.8.0.r8165.g6c1bfb9
 majorver=${pkgver%.r*}
 pkgrel=1
 pkgdesc='IDE for the TLA+ tools (nightly)'
