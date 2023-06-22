@@ -1,6 +1,6 @@
 
 pkgname=gwyddion
-pkgver=2.62
+pkgver=2.63
 pkgrel=1
 pkgdesc="A data visualization and processing tool for scanning probe miscroscopy (SPM, i.e. AFM, STM, MFM, SNOM/NSOM, ...) and profilometry, useful also for general image and 2D data analysis"
 url="http://gwyddion.net/"
@@ -22,7 +22,7 @@ optdepends=('libxml2: import of SPML and APE DAX data files'
             'openexr: import and export of OpenEXR HDR images'
             'hdf5: import of Ergo data files')
 source=(https://downloads.sourceforge.net/sourceforge/gwyddion/$pkgname-$pkgver.tar.xz)
-sha256sums=('47d93ec1f233dbb6b0c502e0ab99ab0db5a9b8c1605625717b457709e1341fac')
+sha256sums=('152b3f0db9ebd6c844c3f5b9d4385414f6fad6d33ed1ab5ceb0c58f351224dd3')
 
 
 build() {
