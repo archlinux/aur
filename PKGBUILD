@@ -33,7 +33,8 @@ build() {
 	cmake -B build -S "$pkgname" \
 		-DCMAKE_BUILD_TYPE='None' \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_SHARED_LIBS=ON \
+		-DBUILD_OTHER_PROGS=ON
 
 	cmake --build build
 }
