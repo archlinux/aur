@@ -6,7 +6,7 @@
 pkgname=firefox-vaapi
 _pkgname=firefox
 pkgver=114.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
