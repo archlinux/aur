@@ -186,7 +186,7 @@ package_gcc11-libs() {
   pkgdesc="Runtime libraries shipped by GCC (11.x.x)"
   depends=('glibc>=2.27')
   options=(!emptydirs !strip)
-  provides=("${_pkgbase}-libs"
+  provides=("${_pkgbase}-libs=${pkgver}"
             "libgfortran.so"
             "libubsan.so"
             "libasan.so"
@@ -232,7 +232,7 @@ package_gcc11() {
     zstd
   )
   options=(!emptydirs staticlibs)
-  provides=("${_pkgbase}")
+  provides=("${_pkgbase}=${pkgver}")
 
   cd gcc-build
 
@@ -295,7 +295,7 @@ package_gcc11-fortran() {
     "${pkgbase}=$pkgver-$pkgrel"
     # libisl.so
   )
-  provides=("${_pkgbase}-fortran")
+  provides=("${_pkgbase}-fortran=${pkgver}")
 
   cd gcc-build
   make -C $CHOST/libgfortran DESTDIR="$pkgdir" install-cafexeclibLTLIBRARIES \

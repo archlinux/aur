@@ -37,14 +37,14 @@ pkgname = gcc11
 	depends = binutils>=2.28
 	depends = libmpc
 	depends = zstd
-	provides = gcc
+	provides = gcc=11.4.0
 	options = !emptydirs
 	options = staticlibs
 
 pkgname = gcc11-libs
 	pkgdesc = Runtime libraries shipped by GCC (11.x.x)
 	depends = glibc>=2.27
-	provides = gcc-libs
+	provides = gcc-libs=11.4.0
 	provides = libgfortran.so
 	provides = libubsan.so
 	provides = libasan.so
@@ -56,4 +56,4 @@ pkgname = gcc11-libs
 pkgname = gcc11-fortran
 	pkgdesc = Fortran front-end for GCC (11.x.x)
 	depends = gcc11=11.4.0-1
-	provides = gcc-fortran
+	provides = gcc-fortran=11.4.0
