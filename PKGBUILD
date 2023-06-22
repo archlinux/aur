@@ -4,7 +4,7 @@
 pkgname=waybar-hyprland-cava-git
 pkgver=0.9.18.r40.gb0f89f2b
 pkgrel=1
-pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland (git version)'
+pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland, and cava (Cross-platform Audio Visualizer) support enabled. (git version)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Alexays/Waybar/'
 license=('MIT')
