@@ -60,6 +60,10 @@ _use_current=${_use_current-}
 ### Enable KBUILD_CFLAGS -O3
 _cc_harder=${_cc_harder-y}
 
+### Enable KBUILD_CFLAGS -Os
+## DO NOT SET, THIS IS FOR INTERNAL CI USE ONLY.
+_cc_size=${_cc_size-}
+
 ### Set this to your number of threads you have in your machine otherwise it will default to 128
 _nr_cpus=${_nr_cpus-}
 
@@ -197,7 +201,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=29
+_minor=35
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -306,7 +310,7 @@ prepare() {
 
     ### Select CPU optimization
     if [ -n "$_processor_opt" ]; then
-        MARCH=$(echo $_processor_opt|tr '[:lower:]' '[:upper:]'&&echo)
+        MARCH="${_processor_opt^^}"
         MARCH2=M${MARCH}
         scripts/config -k -d CONFIG_GENERIC_CPU
         scripts/config -k -e CONFIG_${MARCH2}
@@ -335,8 +339,7 @@ prepare() {
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
-    local sched_name="$(echo $_cpusched|tr '[:lower:]' '[:upper:]')"
-    echo "Selecting ${sched_name} CPU scheduler..."
+    echo "Selecting ${_cpusched^^} CPU scheduler..."
 
     ### Enable KCFI
     if [ -n "$_use_kcfi" ]; then
@@ -453,10 +456,17 @@ prepare() {
     echo "Selecting '$_preempt' preempt type..."
 
     ### Enable O3
-    if [ -n "$_cc_harder" ]; then
+    if [ -n "$_cc_harder" ] && [ -z "$_cc_size" ]; then
         echo "Enabling KBUILD_CFLAGS -O3..."
         scripts/config -d CC_OPTIMIZE_FOR_PERFORMANCE \
             -e CC_OPTIMIZE_FOR_PERFORMANCE_O3
+    fi
+
+    ### Enable Os
+    if [ -n "$_cc_size" ] && [ -z "$_cc_harder" ]; then
+        echo "Enabling KBUILD_CFLAGS -Os..."
+        scripts/config -d CC_OPTIMIZE_FOR_PERFORMANCE \
+            -e CONFIG_CC_OPTIMIZE_FOR_SIZE
     fi
 
     ### Enable bbr2
@@ -467,6 +477,14 @@ prepare() {
             -e TCP_CONG_BBR2 \
             -e DEFAULT_BBR2 \
             --set-str DEFAULT_TCP_CONG bbr2
+
+        # BBR2 doesn't work properly with FQ_CODEL
+        echo "Disabling fq_codel by default..."
+        scripts/config -m NET_SCH_FQ_CODEL \
+            -e NET_SCH_FQ \
+            -d DEFAULT_FQ_CODEL \
+            -e DEFAULT_FQ \
+            --set-str DEFAULT_NET_SCH fq
     fi
 
     ### Select LRU config
@@ -846,9 +864,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('1e736cc9bd6036379a1d915e518abd4c2c94ad0fd1ea0da961c3489308b8fcfb'
-            'b00fb5dc7c5079c3efa1d0ee3b419376cf053c4b90ed623405096ce880e3dc8c'
+sha256sums=('be368143bc5d0dc73dd3e8c6191630c1620520379baf6f47c16116b2c0bc26ac'
+            '7dc7094a6188e0522cbe820963cadad83125abdd3c888d9a43704079ccf442b3'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            '0e0407321ff805d253a2d81a47e0df0a8087869d3c5902af03b7d12ee6981147'
-            'f3978876414beee18d6e80995b01b3d3dca1bb6bca9beacf8ac28e2ec6b08ede'
-            '69f88ce35468d190badf5e781120f16f44b416c580d22d79194d52ee29e6ce6f')
+            '9669e0c18786d5b07a38a7da14bc653c1cf43e2765a047f1d33ecb5c0ee5369d'
+            '8811cdc9215a0dfff3a922a2f9eadefb6760bfb78fb756adc88d5894403148f0'
+            '77644defe33dc78257f2f6db76b1ec9265a08e141cc177b8bf0a37ce7c8b79b5')
