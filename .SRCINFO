@@ -1,7 +1,7 @@
 pkgbase = droidcam-dkms-git
 	pkgdesc = A tool for using your android device as a wireless/usb webcam (DKMS)
 	pkgver = v2.0.0.r138.1a68890
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dev47apps.com/droidcam/linux/
 	arch = x86_64
 	license = GPL2
