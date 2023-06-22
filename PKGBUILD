@@ -1,25 +1,36 @@
-# Maintainer: Dmitry Kharitonov <arch[at]nano-model[dot]com>
+# Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep-git
 _gitname=dpsprep
-pkgver=r17.3d657d7
+pkgver=r81.89c84c3
 pkgrel=1
-pkgdesc="Python DJVU to PDF (djvu2pdf) converter which preserves OCR text and bookmarks (table of contents)"
+pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL3')
-makedepends=('git')
-depends=('djvulibre' 'java-commons-lang' 'ocrodjvu' 'pdfbeads' 'pdftk' 'python'
-         'python-argparse' 'python-sexpdata' 'ruby-iconv' 'ruby-nokogiri')
-optdepends=('jbig2enc-git: JBIG2 encoder provides much better PDF compression')
-source=("git+https://github.com/kcroker/dpsprep.git")
+makedepends=(git python-build python-installer python-wheel)
+depends=(python python-click python-djvulibre python-fpdf2 python-loguru
+         python-pillow python-pdfrw)
+optdepends=('ocrmypdf: Optional OCR and advanced PDF optimization')
+source=('git+https://github.com/kcroker/dpsprep.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_gitname/"
+    cd "${srcdir}/${_gitname}/"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    git -C "${srcdir}/${_gitname}" clean -fdx
+}
+
+build() {
+    cd "${srcdir}/${_gitname}/"
+    python -m build --wheel --no-isolation
+}
+
 package() {
-    install -D -m644 "$srcdir/$_gitname/README.md" "$pkgdir/usr/share/doc/$_gitname/README.md"
-    install -D -m755 "$srcdir/$_gitname/dpsprep" "$pkgdir/usr/bin/dpsprep"
+    cd "${srcdir}/${_gitname}/"
+    /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D -m755 bin/dpsprep "$pkgdir/usr/bin/dpsprep"
+    install -D -m755 dpsprep.1 "$pkgdir/usr/share/man/man1/dpsprep.1"
 }
