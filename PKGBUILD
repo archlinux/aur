@@ -35,7 +35,7 @@ build() {
 
 	export BUILD_DATE=`date +'%Y%m%d'`
 	export GIT_REVISON=`git rev-parse HEAD`
-	go build -ldflags="-X main.buildDate=$BUILD_DATE -X main.gitVersion=$GIT_REVISON"
+	go build -modcacherw -ldflags="-X main.buildDate=$BUILD_DATE -X main.gitVersion=$GIT_REVISON"
 }
 
 package() {
