@@ -25,7 +25,7 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-mypackagename=pyNofity
+mypackagename=pyNotify
 
 pkgver() {
 	cd "${_pkgbase}"
