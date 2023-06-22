@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/scrapinghub/${_base}"
 license=('custom:BSD-3-clause')
 depends=('python')
-makedepends=('python-setuptools' 'python-tox' 'cython' 'git')
+makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-tox' 'cython' 'git')
 # options=(!emptydirs)
 source=("git+https://github.com/scrapinghub/python-crfsuite.git"
         "git+https://github.com/chokkan/crfsuite.git"
@@ -36,13 +36,11 @@ prepare() {
 
 build() {
   cd "${_base}"
-#python setup.py build
   python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${_base}"
-#python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
