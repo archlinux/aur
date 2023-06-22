@@ -1,8 +1,8 @@
 # Maintainer: Tasos Sahanidis <aur@tasossah.com>
 # Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 pkgname=ckb-next
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, release version"
 arch=('i686' 'x86_64' 'pentium4')
 url="https://github.com/ckb-next/ckb-next"
@@ -14,11 +14,9 @@ conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next-git')
 provides=('ckb-next')
 install=ckb-next.install
 source=("https://github.com/ckb-next/$pkgname/archive/v$pkgver.tar.gz"
-        'AUR-wrapper::git+https://github.com/ckb-next/AUR-wrapper.git'
-        '0001-Fix-autostart-checkbox-detection-with-renamed-binary.patch')
-sha256sums=('12705aa86cb544a77df6d7a73744f21513bcc6cce805ed8caf5d3b72a950157e'
-            'SKIP'
-            '6cddbf71179ad385d89b9a2ed318b0fa3dd5817b5bcfd4432d22b088d183bfcd')
+        'AUR-wrapper::git+https://github.com/ckb-next/AUR-wrapper.git')
+sha256sums=('dd7c9a30ce7bf4fafcdfff974c519b2b3d2ff888c99d3255a6e0194ece5056f4'
+            'SKIP')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -36,7 +34,6 @@ build() {
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  patch -p1 -i "$srcdir/0001-Fix-autostart-checkbox-detection-with-renamed-binary.patch"
 }
 
 package() {
