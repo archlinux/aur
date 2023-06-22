@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64
-pkgver=2023.04.12
+pkgver=2023.06.2
 pkgrel=1
 pkgdesc='Nintendo64 emulator based on Mupen64Plus'
 arch=('x86_64')
 url='https://simple64.github.io/'
 license=('GPL3')
-depends=('discord-game-sdk' 'libpng' 'qt6-base' 'qt6-websockets' 'sdl2'
+depends=('discord-game-sdk' 'hidapi' 'libpng' 'qt6-base' 'qt6-websockets' 'sdl2'
          'sdl2_net' 'vulkan-icd-loader' 'zlib' 'hicolor-icon-theme')
 optdepends=('p7zip: for 7z/zip and VRU support'
             'vosk-api: for VRU support (voice recognition unit)')
@@ -20,7 +20,7 @@ source=("git+https://github.com/simple64/simple64.git#tag=v${pkgver}"
         '020-simple64-fix-paths.patch'
         'simple64.desktop')
 sha256sums=('SKIP'
-            'a23bca8650f7052a7177c2b5cf9c4266f7087df3e96e2fb8b0ed6c2de83d9cd2'
+            '60ed1e91e78df8520454abf2eac1eef9efc2f6fcb62d1d9fb3eaa5d17734125f'
             '50be3722a8978f6e4c995898a7694b17de979f9d575ab746229dcd1468839b6b'
             'acd624abe80b3399ef76c9f6ff45c5194ade6640a0fb18e43fd646c60345a883')
 
