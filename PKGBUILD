@@ -69,13 +69,13 @@ build() {
 package() {
 	cd "$pkgbase"
 
-	sudo rm /opt/${mypackagename}/${mypackagename}
-	sudo rm /opt/${mypackagename}/${mypackagename}.desktop
-	sudo rm /opt/${mypackagename}/${mypackagename}.conf.sample
-	sudo rm /opt/${mypackagename}/${mypackagename}.ver
-	sudo rm /opt/${mypackagename}/*.ogg
-	sudo rm /opt/${mypackagename}/*.png
-	sudo rm /opt/${mypackagename}/*.svg
+#	sudo rm /opt/${mypackagename}/${mypackagename}
+#	sudo rm /opt/${mypackagename}/${mypackagename}.desktop
+#	sudo rm /opt/${mypackagename}/${mypackagename}.conf.sample
+#	sudo rm /opt/${mypackagename}/${mypackagename}.ver
+#	sudo rm /opt/${mypackagename}/*.ogg
+#	sudo rm /opt/${mypackagename}/*.png
+#	sudo rm /opt/${mypackagename}/*.svg
 
 	sudo mkdir -p /opt/${mypackagename}
 	
