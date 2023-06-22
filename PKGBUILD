@@ -3,13 +3,13 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwin-git
-pkgver=5.27.80_r24848.g80b7ed62da
-pkgrel=2
+pkgver=5.27.80_r24913.gacd281f04d
+pkgrel=1
 pkgdesc='An easy to use, but flexible, composited Window Manager'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
-depends=(kscreenlocker-git xcb-util-cursor plasma-framework-git kcmutils-git breeze-git qt6-sensors pipewire libqaccessibilityclient-git libdrm lcms2 wayland-protocols-git)
+depends=(kscreenlocker-git xcb-util-cursor plasma-framework-git kcmutils-git breeze-git qt6-sensors pipewire libqaccessibilityclient-git libdrm lcms2 wayland-protocols-git libdisplay-info kglobalacceld-git)
 makedepends=(git extra-cmake-modules-git qt6-tools kdoctools-git krunner-git xorg-xwayland python)
 optdepends=('qt6-virtualkeyboard: virtual keyboard support for kwin-wayland'
             'maliit-keyboard: virtual keyboard support for kwin-wayland')
