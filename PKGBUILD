@@ -2,7 +2,7 @@
 # Contributor: bitwave < aur aTt oomlu d0t de>
 # Contributor: Peter Hoeg <first name at last name dot com>
 pkgname=jdupes
-pkgver=1.25.1
+pkgver=1.25.2
 pkgrel=1
 pkgdesc='A program for identifying duplicate files residing within specified directories'
 arch=(i686 x86_64)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(glibc libjodycode xxhash)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         system-xxhash.patch)
-sha256sums=('efcf1fd3c50747a459fcc2d007f27cb1b27b8d392651031553ecfc93943a26f2'
+sha256sums=('c137d07a70bcf70e15e92365df6b69bd210bb7856b6f10a860529aa7afc324a7'
             'b68853cefa710ad4941feee40fc420afc6941d8664f2a1c22d1a5678f57a6057')
 
 prepare() {
