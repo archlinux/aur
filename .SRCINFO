@@ -1,17 +1,16 @@
 pkgbase = apertium-anaphora
 	pkgdesc = Anaphora Resolution Module in Apertium for low resource languages
-	pkgver = 1.0.2
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://wiki.apertium.org/wiki/Anaphora_resolution_module
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = pkgconf
 	makedepends = autoconf
 	makedepends = gcc
-	depends = apertium>=3.4.2
-	source = apertium-anaphora-1.0.2.tar.gz::https://github.com/apertium/apertium-anaphora/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 35539f483b04e3e149c759e06a92c1f967dbb750897dbb7c1bfb58bec39f87ed
+	makedepends = utf8cpp
+	depends = lttoolbox>=3.7.1
+	source = apertium-anaphora-1.1.1.tar.gz::https://github.com/apertium/apertium-anaphora/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = eecec77e769291d8c228213a2e52a93239056538aa7dc7e3a97136d806124852
 
 pkgname = apertium-anaphora
-
