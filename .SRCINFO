@@ -1,10 +1,10 @@
 pkgbase = biblereader
 	pkgdesc = A GTK Frontend for libbible
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vance.fish/git/biblereader
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	depends = gtkmm3
 	depends = gcc-libs
 	depends = glibc
