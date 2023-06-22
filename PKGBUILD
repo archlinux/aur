@@ -32,7 +32,10 @@ sha256sums=('45a9ca2d3f70501c1d2eba3b78a453c98c1aecb0e9f4273cacebc6229d972dc6'
 options=('!strip' 'staticlibs') # Package is 3 Gib smaller with "strip" but it takes a long time and generates many warnings
 
 # Default engine installation directory. Can be useful if you do not have a lot of space in /opt directory.
-_install_dir="opt/${pkgname}"
+## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
+if [ "${_ue4_install_dir}" == "" ]; then
+  export _ue4_install_dir="opt/${pkgname}"
+fi
 
 # Change this to true or 1 for a potentially smaller package size by using Arch's Clang compiler
 ## Note: We can't guarantee that enabling this won't affect cross-distro compatibility given that Epic provides their own toolchain specifically
@@ -216,44 +219,44 @@ package() {
   # Engine
   ## Set to all permissions to prevent the engine from breaking itself; more elegant solutions might exist - suggest them if they can be automated here
   ## Also, correct me if I package this improperly; I added Win64 support for the build in hopes of supporting cross-compilation
-  install -dm777 "${pkgdir}/${_install_dir}/Engine"
+  install -dm777 "${pkgdir}/${_ue4_install_dir}/Engine"
   
   # Copy LocalBuilds to pkg...
-  cp -flr "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/* "${pkgdir}"/"${_install_dir}"/
+  cp -flr "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/* "${pkgdir}"/"${_ue4_install_dir}"/
   if [ -f "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/Engine/Binaries/Linux/UE4editor ]; then
     # Can never be too careful with recursive rm...
     rm -r "${srcdir}"/"${pkgname}"/LocalBuilds
   fi
 
   # Copy the rest of it to pkg... Should we be overwriting LocalBuilds?
-  cp -flr "${srcdir}"/"${pkgname}"/* "${pkgdir}"/"${_install_dir}"/
+  cp -flr "${srcdir}"/"${pkgname}"/* "${pkgdir}"/"${_ue4_install_dir}"/
   if [ -f "${srcdir}"/"${pkgname}"/Engine/Binaries/Linux/UE4editor ]; then
     rm -r "${srcdir}"/"${pkgname:?}"/*
   fi
   
   # if [ -f "${srcdir}/${pkgname}/cpp.hint" ] && [ ! -d "${srcdir}/${pkgname}/cpp.hint" ]; then
-  #   mv "${srcdir}/${pkgname}/cpp.hint" "${pkgdir}/${_install_dir}"
+  #   mv "${srcdir}/${pkgname}/cpp.hint" "${pkgdir}/${_ue4_install_dir}"
   # elif [ -d "${srcdir}/${pkgname}/cpp.hint" ]; then
-  #   mkdir -p "${pkgdir}/${_install_dir}/cpp.hint"
-  #   mv "${srcdir}"/"${pkgname}"/cpp.hint/* "${pkgdir}/${_install_dir}/cpp.hint"
+  #   mkdir -p "${pkgdir}/${_ue4_install_dir}/cpp.hint"
+  #   mv "${srcdir}"/"${pkgname}"/cpp.hint/* "${pkgdir}/${_ue4_install_dir}/cpp.hint"
   # fi
   # 
   # if [ -f "${srcdir}/${pkgname}/GenerateProjectFiles.sh" ]; then
-  #   install -Dm777 "${srcdir}/${pkgname}/GenerateProjectFiles.sh" "${pkgdir}/${_install_dir}"
+  #   install -Dm777 "${srcdir}/${pkgname}/GenerateProjectFiles.sh" "${pkgdir}/${_ue4_install_dir}"
   # fi
   
-  chmod -R 777 "${pkgdir}/${_install_dir}"
+  chmod -R 777 "${pkgdir}/${_ue4_install_dir}"
   
-  if [ -x "$(find "${pkgdir}/${_install_dir}" -type f -iname 'xbuild')" ]; then
-    find "${pkgdir}/${_install_dir}" -type f -iname 'xbuild' -exec chmod +x "{}" \;
+  if [ -x "$(find "${pkgdir}/${_ue4_install_dir}" -type f -iname 'xbuild')" ]; then
+    find "${pkgdir}/${_ue4_install_dir}" -type f -iname 'xbuild' -exec chmod +x "{}" \;
   fi
   
-  if [ -x "$(find "${pkgdir}/${_install_dir}" -type f -iname 'mcs')" ]; then
-    find "${pkgdir}/${_install_dir}" -type f -iname 'mcs' -exec chmod +x "{}" \;
+  if [ -x "$(find "${pkgdir}/${_ue4_install_dir}" -type f -iname 'mcs')" ]; then
+    find "${pkgdir}/${_ue4_install_dir}" -type f -iname 'mcs' -exec chmod +x "{}" \;
   fi
   
   ## Do this, in case the path doesn't exist for some reason
-  mkdir -p "${pkgdir}/${_install_dir}/Engine/Binaries/Android/"
+  mkdir -p "${pkgdir}/${_ue4_install_dir}/Engine/Binaries/Android/"
   
   # Set permissions for /usr/bin
   install -dm755 "${pkgdir}/usr/bin"
@@ -270,5 +273,5 @@ package() {
   # Note: Requires that there isn't already a UE5 desktop entry in "${HOME}/local/share/applications/" - delete yours if you have one there before installing this
   DesktopFileChecksum=$(sha256sum "${pkgdir}/usr/share/applications/com.unrealengine.UE4Editor.desktop" | cut -f 1 -d ' ')
   sed -i "s|ChecksumPlaceholder|${DesktopFileChecksum}|" "${pkgdir}/usr/bin/unreal-engine-4.sh"
-  sed -i "s|InstalledLocationPlaceholder|/${_install_dir}/Engine/Binaries/|" "${pkgdir}/usr/bin/unreal-engine-4.sh"
+  sed -i "s|InstalledLocationPlaceholder|/${_ue4_install_dir}/Engine/Binaries/|" "${pkgdir}/usr/bin/unreal-engine-4.sh"
 }
