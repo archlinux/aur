@@ -84,7 +84,7 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   ninja -C build_32
 }
 
-package_lib32-vulkan-validation-layers-git(){
+package(){
   DESTDIR="$pkgdir" ninja -C ${srcdir}/Vulkan-ValidationLayers/build_32/ install
 
   rm -rf "${pkgdir}"/usr/{include,share}
