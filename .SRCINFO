@@ -1,0 +1,15 @@
+pkgbase = wxbase
+	pkgdesc = wxWidgets base libraries for no X install (3.0 branch stable version)
+	pkgver = 3.0.5.1
+	pkgrel = 1
+	url = http://wxwidgets.org
+	arch = i686
+	arch = x86_64
+	license = custom:wxWindows
+	provides = wxbase
+	conflicts = wxgtk
+	conflicts = wxwidgets
+	source = https://github.com/wxWidgets/wxWidgets/releases/download/v3.0.5.1/wxWidgets-3.0.5.1.tar.bz2
+	sha1sums = 406ac736f61d88a3a866aa501e01e408a642c6e7
+
+pkgname = wxbase
