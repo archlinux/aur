@@ -1,0 +1,22 @@
+pkgbase = python-google-cloud-compute
+	pkgdesc = Google Cloud Compute python SDK
+	pkgver = 1.11.0
+	pkgrel = 1
+	url = https://github.com/googleapis/python-compute
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-build
+	depends = python
+	depends = python-google-api-core
+	depends = python-proto-plus
+	depends = python-protobuf
+	depends = python-google-auth
+	depends = python-grpcio
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/g/google-cloud-compute/google-cloud-compute-1.11.0.tar.gz
+	sha256sums = d1d05a4b3ec6f830bbdcc779a740e963a80d324a4fd6ef41a7c248a07cf96489
+
+pkgname = python-google-cloud-compute
