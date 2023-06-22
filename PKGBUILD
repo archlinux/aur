@@ -1,5 +1,5 @@
 pkgname=firefox-extension-bitwarden-git
-pkgver=v2023.5.0.r12851.g7dbc30e
+pkgver=v2023.5.1.r12857.g19d2b25
 pkgrel=1
 pkgdesc='Bitwarden addon for Firefox'
 arch=('any')
