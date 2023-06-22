@@ -1,5 +1,5 @@
 pkgbase = mindustry
-	pkgver = 7.0_145
+	pkgver = 7.0_145.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Anuken/Mindustry
@@ -11,12 +11,12 @@ pkgbase = mindustry
 	depends = java-runtime>=8
 	depends = sh
 	depends = hicolor-icon-theme
-	source = mindustry-145.tar.gz::https://github.com/Anuken/Mindustry/archive/v145.tar.gz
+	source = mindustry-145.1.tar.gz::https://github.com/Anuken/Mindustry/archive/v145.1.tar.gz
 	source = mindustry.desktop
 	source = mindustry.sh
 	source = mindustry-server.desktop
 	source = mindustry-server.sh
-	sha256sums = aa4e50656c8b1c498660e6256117b6d3e8f2951ab0c4788e24d3d472098f9a20
+	sha256sums = d6a7138c2d6db3a06cdad1e59a736b6e7a86058ea31ea1949a885b13837d7af6
 	sha256sums = e5fd49ed3456c53e91b834cb388956e3f9ded4e2c880352d36cf9c2246ca0f0b
 	sha256sums = 938f5f9f636379402ba0bb9a53345de499f4f3fd50f232b31605129dcf4ea6c9
 	sha256sums = 053030932334f40145e927f6c7e9ebf01bd28ddd1e7b9fba6234b51cc83ad241
