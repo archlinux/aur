@@ -48,7 +48,7 @@ _ccache_support=false
 
 # Change this to true if you have a modern system and don't mind the extra packaging time (and size) to avoid compiling shaders on UE startup later; set to false by default for those with less robust systems
 ## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
-if [ "${_WithDDC}" != true ] || [ "${_WithDDC}" != false ]; then
+if [ "${_WithDDC}" != true ] && [ "${_WithDDC}" != false ]; then
   export _WithDDC=false
 fi
 
@@ -77,7 +77,7 @@ export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
 
 # Valid values are false / disabled / default, auto, and native
 
-if [ "${arch_auto}" != true ] || [ "${arch_auto}" != false ]; then
+if [ "${arch_auto}" != true ] && [ "${arch_auto}" != false ]; then
   arch_auto=false
 fi
 
