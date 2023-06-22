@@ -8,9 +8,9 @@
 
 _use_suffix=1
 pkgver=25.2.0
-_chromiumver=114.0.5735.90
+_chromiumver=114.0.5735.134
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
