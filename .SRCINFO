@@ -1,10 +1,10 @@
 pkgbase = python-crfsuite-git
-	pkgdesc = A Python implementation of the Metaphone and Double Metaphone algorithms
+	pkgdesc = A python binding for crfsuite
 	pkgver = 0.99.r1.g84e9a76
 	pkgrel = 1
 	url = https://github.com/scrapinghub/python-crfsuite
 	arch = any
-	license = custom:BSD-3-clause
+	license = MIT
 	makedepends = python-build
 	makedepends = python-wheel
 	makedepends = python-installer
