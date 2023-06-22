@@ -1,4 +1,4 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Bruno Pagani <archange@archlinux.org>
 
 _use_suffix=1
