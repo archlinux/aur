@@ -3,7 +3,7 @@
 _pkgname=pacseek
 pkgname=pacseek-bin
 pkgver=1.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages (binary version)'
 arch=('x86_64')
 url="https://github.com/moson-mo/$_pkgname"
@@ -30,5 +30,5 @@ package() {
   install -Dm644 "assets/$_pkgname.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
   
   # man page
-  install -Dm644 "doc/pacseek.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
+  install -Dm644 "doc/pacseek.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
 }
