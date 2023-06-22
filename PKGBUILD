@@ -23,7 +23,7 @@ prepare() {
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
-build(){
+build() {
 	cd $pkgname
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
