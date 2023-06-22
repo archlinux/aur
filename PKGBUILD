@@ -3,14 +3,15 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=plasma-desktop-git
-pkgver=5.27.80_r10537.g60ed932eb
+pkgver=5.27.80_r10604.g99bcb0c6d
 pkgrel=1
 pkgdesc='KDE Plasma Desktop'
 arch=($CARCH)
 url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 groups=(plasma-git)
-depends=(gawk polkit-kde-agent-git libxkbfile kmenuedit-git systemsettings-git ksysguard-git baloo-git libibus accountsservice xdg-user-dirs plasma-workspace-git)
+depends=(gawk polkit-kde-agent-git libxkbfile kmenuedit-git systemsettings-git libksysguard-git baloo-git libibus accountsservice xdg-user-dirs plasma-workspace-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel scim kaccounts-integration-git intltool packagekit-qt6)
 optdepends=('plasma-nm-git: Network manager applet'
             'powerdevil-git: power management, suspend and hibernate support'
             'kscreen-git: screen management'
@@ -20,7 +21,6 @@ optdepends=('plasma-nm-git: Network manager applet'
 conflicts=(${pkgname%-git} user-manager knetattach user-manager-git knetattach-git)
 provides=(${pkgname%-git} user-manager knetattach user-manager-git knetattach-git)
 replaces=(user-manager-git knetattach-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git xf86-input-evdev xf86-input-synaptics xf86-input-libinput xorg-server-devel scim kdesignerplugin-git kaccounts-integration-git intltool packagekit-qt6 kinit-git)
 source=("git+https://github.com/KDE/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
