@@ -1,0 +1,18 @@
+pkgbase = xcursor-viewer-git
+	pkgdesc = view xcursor files in list
+	pkgver = r19.6b8a95a
+	pkgrel = 1
+	url = https://github.com/drizt/xcursor-viewer
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
+	depends = qt5-base
+	provides = xcursor-viewer
+	conflicts = xcursor-viewer
+	source = git+https://github.com/drizt/xcursor-viewer#branch=master
+	md5sums = SKIP
+
+pkgname = xcursor-viewer-git
