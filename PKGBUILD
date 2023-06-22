@@ -1,34 +1,32 @@
-# Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org
+# Maintainer: Ianis Vasilev <ianis@ivasilev.net>
+# Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 
 _pkgbase=droidcam
-pkgname=droidcam-dkms-git
-_pkgver=6.7.9
-pkgver=6.7.9.r69.1f2460a
+pkgname=$_pkgbase-dkms-git
+_pkgver_base=2.0.0
+_pkgver=v$_pkgver_base
+pkgver=v2.0.0.r138.1a68890
 pkgrel=1
 pkgdesc="A tool for using your android device as a wireless/usb webcam (DKMS)"
 arch=('x86_64')
-url="https://www.dev47apps.com/$_pkgbase/linuxx"
+url="https://www.dev47apps.com/$_pkgbase/linux/"
 license=('GPL2')
-depends=('dkms')
+depends=('dkms' 'libappindicator-gtk3')
 makedepends=('git')
 conflicts=("${_pkgbase}" "${_pkgbase}-dkms")
-#install=${pkgname}.install
-source=("${pkgname}"::"git+https://github.com/aramg/droidcam"
-        "$_pkgbase-$pkgver.zip"::"https://www.dev47apps.com/files/linux/droidcam_latest.zip"
+source=("${pkgname}"::"git+https://github.com/dev47apps/$_pkgbase"
+        "$_pkgbase-$pkgver.zip"::"https://files.dev47apps.net/linux/${_pkgbase}_${_pkgver_base}.zip"
         'dkms.conf'
-        "https://github.com/aramg/$_pkgbase/raw/master/linux/icon2.png"
         "$_pkgbase.desktop"
-        "Makefile.dkms")
+        'Makefile.dkms')
 md5sums=('SKIP'
-         '73db3a4c0f52a285b6ac1f8c43d5b4c7'
+         '2a7d1efee0e68484ca4059d3c472c018'
          '3be4282edbff37ee6649c7c06c276003'
-         '0f0e1d04146dd5be70d5028f144bd0a2'
          '22b9912d96bc7691dfb6b7f82ec0306d'
          'c4417957cf66d4e647c7d140fbaa13cd')
 sha512sums=('SKIP'
-            'cec5a798eb0f183b69e2410efa8c6b95e8221625063ca693572f9f49c997e6d9387b0886f2a57b84553384976f5846a20ef36c0a526bf3ae79deb578d05d1d56'
+            '311c681a38aa65bb1da5b156a1d3dcd6ba4c480041c25b855bdbb6ccde9f6f0934016e9d322dc9b8f882568d6ee4e8dba3315ee1c34eb41390b6af81ea90f360'
             'd1af1b94193fa65f42ca7fdc3b81180d8f141e72ead6b80e13a103e817cbcaf1470cbb9f97e8eb6c2f3012f1f2c3d3bbc9887a10f3def8fb80f1c12c7e9184de'
-            '4cedbc823498a1ff70f6df1d312f29fa609c1316d15bbc8a23c5aa5055b87cb2d156e6da12aefa0195e1adbe65b94e6a79ae799083f9da4a959c21796280c491'
             '38e7e987e71696a209dde7cafe03e0910606d0dfd45aa1829910cbc40a336464bc8299c4fef0a32f0f74914537704f242331f8dae55cdf1884291866ea8a1e4c'
             '0113f278628aeb1688618a172c9e3494ac360701aaf685ab428da7f04e034150f99f6b8307e8f9c12aa0425ad4a2c9714ccff7cea80dd0155a1deaaf1c2e412a')
 
@@ -48,13 +46,13 @@ package() {
 
   # Copy sources (including Makefile)
   install -Dm644 "$srcdir/Makefile.dkms" "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/Makefile
-  install -Dm644 "$srcdir/${pkgname}/linux/v4l2loopback/v4l2loopback-dc.c" "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/v4l2loopback-dc.c
+  install -Dm644 "$srcdir/${pkgname}/v4l2loopback/v4l2loopback-dc.c" "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/v4l2loopback-dc.c
 
   # Install droidcam program files
   install -Dm755 "$_pkgbase" "$pkgdir/usr/bin/$_pkgbase"
   install -Dm755 "$_pkgbase-cli" "$pkgdir/usr/bin/$_pkgbase-cli"
   install -Dm644 "$srcdir/icon2.png" "$pkgdir/usr/share/pixmaps/$_pkgbase.png"
-  install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
   install -Dm644 "$srcdir/$_pkgbase.desktop" "$pkgdir/usr/share/applications/$_pkgbase.desktop"
   # Set version on the desktop file
   sed -e "s/@PKGVER@/${pkgver}/" -i "$pkgdir/usr/share/applications/$_pkgbase.desktop"
