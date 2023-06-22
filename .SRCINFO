@@ -4,6 +4,7 @@ pkgbase = qrca-git
 	pkgrel = 1
 	url = https://apps.kde.org/de/qrca/
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
