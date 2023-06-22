@@ -1,0 +1,13 @@
+pkgbase = tsuru-bin
+	pkgdesc = tsuru-client is a tsuru command line tool for application developers.
+	pkgver = 1.10.4
+	pkgrel = 1
+	url = https://tsuru.io
+	arch = x86_64
+	license = BSD-3-Clause
+  conflicts = tsuru
+	provides = tsuru
+	source_x86_64 = https://github.com/tsuru/tsuru-client/releases/download/1.10.4/tsuru_1.10.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2b84500621ec583ef11f38b5b52a785db045791523bf21555b0c3083094b6238
+
+pkgname = tsuru-bin
