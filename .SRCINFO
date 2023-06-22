@@ -1,13 +1,13 @@
 pkgbase = jflap
 	pkgdesc = Software to learning the basic concepts of Formal Languages and Automata Theory
 	pkgver = 7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.jflap.org/
 	arch = any
 	license = CCPL
 	depends = java-runtime
 	noextract = JFLAP7.1.jar
-	source = https://www2.cs.duke.edu/csed/jflap/jflaptmp/july27-18/JFLAP7.1.jar
+	source = http://www2.cs.duke.edu/csed/jflap/jflaptmp/july27-18/JFLAP7.1.jar
 	source = jflap.sh
 	source = jflap.desktop
 	source = jflap.png

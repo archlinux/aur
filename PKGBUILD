@@ -2,7 +2,7 @@
 
 pkgname=jflap
 pkgver=7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Software to learning the basic concepts of Formal Languages and Automata Theory"
 arch=('any')
 url="http://www.jflap.org/"
@@ -10,7 +10,7 @@ license=('CCPL')
 noextract=("JFLAP${pkgver}.jar")
 depends=('java-runtime')
 source=(
-  "https://www2.cs.duke.edu/csed/jflap/jflaptmp/july27-18/JFLAP${pkgver}.jar"
+  "http://www2.cs.duke.edu/csed/jflap/jflaptmp/july27-18/JFLAP${pkgver}.jar"
   "${pkgname}.sh"
   "${pkgname}.desktop"
   "${pkgname}.png"
