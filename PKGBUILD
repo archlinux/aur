@@ -1,6 +1,6 @@
 # Maintainer: Bruno Carlin <bruno@bcarlin.net>
 pkgname=ember-language-server
-pkgver=2.14.0
+pkgver=2.29.0
 pkgrel=1
 pkgdesc="The Ember Language Server (ELS) implements the Language Server Protocol for Ember.js projects. "
 arch=( 'any' )
@@ -18,7 +18,7 @@ makedepends=('npm' 'jq')
 #install=
 #changelog=
 source=("https://registry.npmjs.org/@lifeart/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('f1e00ac99b110afe9550ef104e23cca3c50ed3e3611e3fa7cc505246432b528f')
+sha256sums=('85ada9470a39e2db635d9e11b676fe466194371e973c844f5de68979a32b8c72')
 noextract=("${pkgname}-${pkgver}.tgz")
 #validpgpkeys=()
 

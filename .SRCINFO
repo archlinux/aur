@@ -1,6 +1,6 @@
 pkgbase = ember-language-server
 	pkgdesc = The Ember Language Server (ELS) implements the Language Server Protocol for Ember.js projects.
-	pkgver = 2.14.0
+	pkgver = 2.29.0
 	pkgrel = 1
 	url = https://github.com/lifeart/ember-language-server
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ember-language-server
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = ember-language-server-2.14.0.tgz
-	source = https://registry.npmjs.org/@lifeart/ember-language-server/-/ember-language-server-2.14.0.tgz
-	sha256sums = f1e00ac99b110afe9550ef104e23cca3c50ed3e3611e3fa7cc505246432b528f
+	noextract = ember-language-server-2.29.0.tgz
+	source = https://registry.npmjs.org/@lifeart/ember-language-server/-/ember-language-server-2.29.0.tgz
+	sha256sums = 85ada9470a39e2db635d9e11b676fe466194371e973c844f5de68979a32b8c72
 
 pkgname = ember-language-server
