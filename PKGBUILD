@@ -3,7 +3,7 @@
 pkgname=quint
 _orgname=informalsystems
 _pkgname="@${_orgname}/${pkgname}"
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Quint is an executable specification language with design and tooling focused on usability. It is based on the Temporal Logic of Actions"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${_pkgname}/-/${pkgname}-${pkgver}.tgz"
         "https://github.com/${_orgname}/${pkgname}/raw/v${pkgver}/LICENSE")
-sha256sums=('262d3b2437ef3d5c18a3dcba868433246b9c7c8144cf83fea7a535c42eea22fa'
+sha256sums=('7abe5889f7b7df0d6f40756d3fac13aaa36adc8f0c9592edb7b76ba0ddc45e6e'
             'f6fe921a1fc4130262213e9a211327796782d6bbd234d14eba80b1285005b6e9')
 
 package() {
