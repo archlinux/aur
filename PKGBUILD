@@ -2,7 +2,7 @@
 _pkgname=serenity
 pkgname=${_pkgname}-git
 pkgver=r10.3814fe7
-pkgrel=1
+pkgrel=2
 pkgdesc='The configuration generator for sing-box'
 arch=('i686' 'x86_64')
 url='https://github.com/SagerNet/serenity'
@@ -32,7 +32,7 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  go build -buildmode=pie -trimpath -ldflags="-linkmode external -s -w" -mod=readonly -modcacherw -o serenity ../cmd/serenity 
+  go build -buildmode=pie -trimpath -tags with_acme -ldflags="-linkmode external -s -w" -mod=readonly -modcacherw -o serenity ../cmd/serenity 
   go run ../cmd/serenity completion bash >bash-completion
   go run ../cmd/serenity completion fish >fish-completion
   go run ../cmd/serenity completion zsh >zsh-completion
