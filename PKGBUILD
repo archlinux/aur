@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=fiv-git
 _pkgname=fiv
-pkgver=r465.9cdc641
+pkgver=r552.1eee183
 pkgrel=1
 pkgdesc="Image browser and viewer"
 url="https://git.janouch.name/p/fiv"
@@ -11,8 +11,19 @@ conflicts=('fiv')
 provides=('fiv')
 makedepends=('meson' 'pkg-config' 'git')
 depends=('gtk3' 'pixman' 'libjpeg-turbo' 'libwebp')
-optdepends=('libraw' 'resvg' 'librsvg' 'gdk-pixbuf2' 'libxcursor' 'libtiff'
-  'libheif' 'perl-image-exiftool')
+optdepends=(
+  'libraw: raw photo images'
+  'resvg: SVG images'
+  #'librsvg: SVG images'
+  #'gdk-pixbuf2: GdkPixbuf module support'
+  #'libxcursor: X cursor images'
+  'libtiff: TIFF images'
+  'libheif: HEIF images'
+  'perl-image-exiftool: file information'
+  'xdg-utils: reverse image search'
+  'curl: reverse image search'
+  'jq: reverse image search'
+)
 install=fiv.install
 source=(
   "git+https://git.janouch.name/p/$_pkgname.git"
