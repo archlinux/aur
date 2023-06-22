@@ -1,7 +1,7 @@
 # Maintainer: Fernando Seoane <fseoane@hotmail.com>
 pkgname=pynotify-git
 pkgbase=pynotify-git
-pkgver=5.0
+pkgver=0.5
 pkgrel=1
 epoch=
 pkgdesc="A Gnome (wayland) shell notifier for Gotify server."
@@ -29,7 +29,7 @@ mypackagename=pyNotify
 
 pkgver() {
 	cd "${_pkgbase}"
-	printf "5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "0.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
