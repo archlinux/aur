@@ -1,0 +1,8 @@
+post_install() {
+	echo " "
+	echo " "
+	echo "To enable the service, run the following command:"
+	echo "  sudo systemctl enable --now mglru-desktop-settings.service"
+	echo " "
+	echo " "
+}

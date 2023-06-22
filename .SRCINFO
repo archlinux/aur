@@ -1,0 +1,14 @@
+pkgbase = mglru-desktop-settings
+	pkgdesc = Optimizes page reclaim for desktop environments to reduce janks and improve performance under memory pressure (requires kernel 6.1)
+	pkgver = 1.0
+	pkgrel = 1
+	install = mglru-desktop-settings.install
+	arch = any
+	license = MIT
+	depends = systemd
+	source = mglru-desktop-settings.service
+	source = mglru-desktop-settings.install
+	sha256sums = 8c6ac56f422d86990d5a7ae9a2bfa6904ee74f71fab4f02b8808b947a33df673
+	sha256sums = 4dfe404bec07c3f77faf5a9e390036a95621fc08034d52faca41e86a10e29c74
+
+pkgname = mglru-desktop-settings

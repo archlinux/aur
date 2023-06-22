@@ -1,0 +1,14 @@
+[Unit]
+Description=Configure GLRU Settings for Desktop enviroments 
+ConditionPathExists=/sys/kernel/mm/lru_gen/enabled
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# Optimizes page reclaim for desktop environments to reduce janks and improve performance under memory pressure
+# https://www.kernel.org/doc/html/next/admin-guide/mm/multigen_lru.html
+ExecStart=/bin/sh -c 'echo Y > /sys/kernel/mm/lru_gen/enabled'
+ExecStart=/bin/sh -c 'echo 1000 > /sys/kernel/mm/lru_gen/min_ttl_ms'
+
+[Install]
+WantedBy=basic.target
