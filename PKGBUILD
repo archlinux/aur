@@ -66,7 +66,7 @@ export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   ninja -C build_32
 }
 
-package_lib32-vulkan-icd-loader-git(){
+package(){
   DESTDIR="${pkgdir}" ninja -C ${srcdir}/Vulkan-Loader/build_32/ install
 
   # install licence
