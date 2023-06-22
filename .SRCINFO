@@ -12,7 +12,6 @@ pkgbase = lib32-vulkan-icd-loader-git
 	makedepends = lib32-libxrandr
 	makedepends = lib32-wayland
 	makedepends = vulkan-headers
-	makedepends = lib32-vulkan-icd-loader
 	makedepends = git
 	makedepends = ninja
 	makedepends = make
