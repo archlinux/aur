@@ -1,17 +1,18 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=simple64
-pkgver=2023.06.2
+pkgver=2023.06.3
 pkgrel=1
 pkgdesc='Nintendo64 emulator based on Mupen64Plus'
 arch=('x86_64')
 url='https://simple64.github.io/'
 license=('GPL3')
-depends=('discord-game-sdk' 'hidapi' 'libpng' 'qt6-base' 'qt6-websockets' 'sdl2'
-         'sdl2_net' 'vulkan-icd-loader' 'zlib' 'hicolor-icon-theme')
-optdepends=('p7zip: for 7z/zip and VRU support'
+depends=('hidapi' 'libpng' 'qt6-base' 'qt6-websockets' 'sdl2' 'sdl2_net'
+         'vulkan-icd-loader' 'zlib' 'hicolor-icon-theme')
+optdepends=('discord-game-sdk: for Discord support'
+            'p7zip: for 7z/zip and VRU support'
             'vosk-api: for VRU support (voice recognition unit)')
-makedepends=('git' 'cmake' 'ninja' 'icoutils' 'zip' 'vosk-api')
+makedepends=('git' 'cmake' 'ninja' 'discord-game-sdk' 'icoutils' 'zip' 'vosk-api')
 provides=('m64p')
 conflicts=('m64p' 'mupen64plus')
 replaces=('m64p')
@@ -53,5 +54,5 @@ package() {
     install -D -m644 simple64/simple64/libmupen64plus.so -t "${pkgdir}/usr/lib"
     install -D -m644 simple64/simple64/simple64-{audio-sdl2,input-{qt,raphnetraw},{rsp,video}-parallel}.so -t "${pkgdir}/usr/lib/mupen64plus"
     install -D -m644 simple64/mupen64plus-core/src/api/m64p_*.h -t "${pkgdir}/usr/include/mupen64plus"
-    install -D -m644 simple64/simple64/{font.ttf,mupen64plus.ini,mupencheat.txt} -t "${pkgdir}/usr/share/mupen64plus"
+    install -D -m644 simple64/simple64/{font.ttf,mupen{64plus.ini,cheat.txt},pif.{ntsc,pal}.rom} -t "${pkgdir}/usr/share/mupen64plus"
 }
