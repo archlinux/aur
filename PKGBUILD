@@ -1,7 +1,7 @@
 # Maintainer: Isabel <isabelroseslive@gmail.com>
 pkgname=catppuccinifier-cli-git
 _pkgname=catppuccinifier
-pkgver=r37.7cda895
+pkgver=r62.6045183
 pkgrel=1
 pkgdesc="An comand line tool to catppuccinifiy your images."
 arch=('x86_64')
@@ -11,7 +11,6 @@ depends=()
 provides=('catppuccinifier')
 conflicts=('catppuccinifier')
 makedepends=('git' 'cargo')
-depends=('imagemagick')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
@@ -22,12 +21,12 @@ pkgver() {
 
 build() {
 	export RUSTUP_TOOLCHAIN=stable
-	cd "$pkgname/src/source-code/catppuccinifier-cli"
+	cd "$pkgname/src/catppuccinifier-cli"
 	cargo build --release
 }
 
 check(){
-  cd "$pkgname/src/source-code/catppuccinifier-cli"
+  cd "$pkgname/src/catppuccinifier-cli"
   cargo test --release
 }
 
@@ -35,6 +34,5 @@ package() {
 	cd "$pkgname"
 	mkdir -p "$HOME/.local/share/catppuccinifier"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
-	cp -p -r "src/releases/linux/installation-files/flavors/" "$HOME/.local/share/catppuccinifier/flavors/"
-	install -Dm755 "src/source-code/catppuccinifier-cli/target/release/catppuccinifier-cli" "$pkgdir/usr/bin/catppuccinifier"
+	install -Dm755 "src/catppuccinifier-cli/target/release/catppuccinifier-cli" "$pkgdir/usr/bin/catppuccinifier"
 }
