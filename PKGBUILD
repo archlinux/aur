@@ -1,7 +1,7 @@
 # Maintainer: Xtr126 <crawleymsh@gmail.com>
 
 pkgname="android-x86-installer-tauri-bin"
-pkgver="0.1.2"
+pkgver="0.1.3"
 pkgrel=1
 pkgdesc="Android x86 Installer"
 arch=("x86_64")
