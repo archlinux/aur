@@ -4,7 +4,7 @@
 # Contributor: Alexander Suhoverhov <cy at ngs dot ru>
 # Contributor: Jookia <166291@gmail.com>
 pkgname=xonotic-autobuild
-pkgver=20230307
+pkgver=20230622
 pkgrel=1
 pkgdesc="A free, fast-paced crossplatform first-person shooter"
 arch=('x86_64' 'aarch64')
@@ -13,18 +13,19 @@ license=('GPL')
 depends=('alsa-lib' 'curl' 'libmodplug' 'libvorbis' 'libxpm'
          'sdl2' 'gtk-update-icon-cache' 'desktop-file-utils')
 makedepends=('mesa' 'rsync')
+options=('!debug' '!strip')
 conflicts=('xonotic' 'xonotic-data' 'xonotic-git')
 
 source=("rsync://beta.xonotic.org/autobuild-Xonotic/misc/tools/rsync-updater/update-to-autobuild.sh")
-sha512sums=('2249d824f023ac4910eb44556f9dd8ff641267e8bc1e3eaa1e61b9c4a5a7ad7d1cc1d42449501f16292d1157e15a6bb12be7d468999469dd70e15992c4821aee')
-b2sums=('9b55f34fb9749d2aec4bcd08dc90a8443927c18740a8affba73360d45df3f0ed22308aaa357c474b7874731a986353ebd5738973fe0465173d4244ad8af7616d')
+sha512sums=('0424d277aa60015716706ab6f601afc30a84a8ed6db9b0382edb6f1d88b72afcbc680d402849d0d644197e96862e3305721dbe89afdb70e634421b74eede09cc')
+b2sums=('b93d73ce57b5ca77b7c6511f70f3701742eb2cdedc2d61940e94b211518fb94dc3165bacbe5eb94f183ab82570fb98f369b8a00018fed927abf001d4ca147cfb')
 
 pkgver() {
   printf $(date +%Y%m%d)
 }
 
 prepare() {
-  echo Y | sh ./update-to-autobuild.sh
+  sh ./update-to-autobuild.sh -y
 }
 
 build() {
