@@ -1,0 +1,12 @@
+pkgbase = pkgbuild-updater
+	pkgdesc = Automatic PKGBUILD updater script which fetches the new version and then pushes the update
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ire4ever1190/pkgbuild-updater
+	arch = any
+	license = MIT
+	provides = pkgbuild-updater
+	source = pkgbuild-updater-0.1.0.tar.gz::https://github.com/ire4ever1190/pkgbuild-updater/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = a0fd18d720f52c3dac0fd4c0ef871ff0738a9efba4bf3673af18834a342a1784
+
+pkgname = pkgbuild-updater
