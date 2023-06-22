@@ -3,15 +3,15 @@
 
 pkgname=tilem
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TI calculator emulator."
 arch=(i686 x86_64)
 url="http://lpg.ticalc.org/prj_tilem/index.html"
 license=(GPL)
-depends=('gtk2>=2.4' libticalcs)
+depends=('gtk2' 'libticalcs')
 makedepends=()
 install='tilem.install'
-source=(http://downloads.sourceforge.net/tilem/$pkgname-$pkgver.tar.bz2)
+source=(https://downloads.sourceforge.net/tilem/$pkgname-$pkgver.tar.bz2)
 md5sums=('44c4c671bcdaf3d1e1c27c724a1e1857')
 
 build() {
