@@ -1,6 +1,6 @@
 pkgbase = python-baichat-py
 	pkgdesc = BAIChat API Python
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://codeberg.org/Bavarder/baichat-py
 	arch = any
@@ -13,7 +13,8 @@ pkgbase = python-baichat-py
 	makedepends = python-poetry-core
 	depends = python-requests
 	depends = python-aiohttp
-	source = https://files.pythonhosted.org/packages/source/b/baichat_py/baichat_py-0.2.1.tar.gz
-	sha256sums = 834de3c8d544c9724f089d7b8051bac5787d519b769cecac9054059ef559b0fb
+	depends = python-curl-cffi
+	source = https://files.pythonhosted.org/packages/source/b/baichat_py/baichat_py-0.3.0.tar.gz
+	sha256sums = 0a411ec897e6b1ffde175c40481886cbae2adca8e68eeaa209b693851c959715
 
 pkgname = python-baichat-py
