@@ -1,0 +1,18 @@
+pkgbase = silk-guardian-dkms
+	pkgdesc = kill switch for unknown usb devices (DKMS)
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/kmille/silk-guardian
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python-jinja
+	depends = python-yaml
+	depends = python-pyusb
+	depends = dkms
+	conflicts = lkrg-dkms
+	conflicts = lkrg-dkms-git
+	source = https://github.com/kmille/silk-guardian/archive/v1.0.0.tar.gz
+	sha256sums = 8773fdd289e21fa5f1bb4bce9d0332288c0d3e23644c22fe36416f5a0cf5e647
+
+pkgname = silk-guardian-dkms
