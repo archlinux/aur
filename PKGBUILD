@@ -20,10 +20,8 @@ source=(
 	"${_pkgname}::git+https://git.sr.ht/~rjarry/${_pkgname}"
 	"makefile-fix.patch"
 )
-sha512sums=(
-	'SKIP'
-	'aa374d17c4e704ec9adf696db547e6c8bdd4b13cacc4d0dbeb4010a687e3ad14db3ae8dfee1fd588ed004fcb21b871b8f2f967c38e93765750e32f31f3b2553b'
-)
+sha512sums=('SKIP'
+            'ea2c9187c8b388cc4b00e40be9152e5eb11610d9f2c3f87020172d68cff12de4c2f2fb812bc8c8afb1f63f7a044632dfe1794d569d24a8ac43d1bdec8a1737ce')
 options=('!buildflags')
 
 pkgver () {
