@@ -1,7 +1,7 @@
 pkgbase = widevine-armv7h
 	pkgdesc = A browser plugin designed for the viewing of premium video content (version for armv7h)
 	pkgver = 4.10.2257.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.widevine.com/
 	install = widevine-armv7h.install
 	arch = armv7h
@@ -23,7 +23,7 @@ pkgbase = widevine-armv7h
 	sha256sums = SKIP
 	sha256sums = 5b1199bcd3471d126098be42ca0af0e486302df94cdf4643e4fe2a86d4c4c7d1
 	sha256sums = ebca260ca197c4eee5a8b76ae1fad2bf800ab99b40d8be0c2189b566bd9621d0
-	sha256sums = b976bb594b8b51d5eee1929defaebd0313c54ddd6d62241bfa4a7d5421491e12
-	sha256sums = 6be10c8786b24f47dbbb54ff676f28a7b49771b8d5f7c03cc3f2e73b7e18c22f
+	sha256sums = a806dc002b8072651902f77c47cba09b9d0c0dd50e196651e235255f6e0a2cbc
+	sha256sums = 5991822a0c6bf24b33eb65e6ecad1ced6df4975c2ea03df71acb2795293f7a6c
 
 pkgname = widevine-armv7h

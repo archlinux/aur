@@ -11,3 +11,7 @@ post_install() {
   echo ":: IMPORTANT (2): WidevineCDM on ARM now requires patches to glibc.  Therefore"
   echo "   a dependency to the AUR package glibc-widevine has been added."
 }
+
+post_upgrade() {
+  echo ":: IMPORTANT: Firefox users please re-register the plugin by running register_widevine_firefox"
+}

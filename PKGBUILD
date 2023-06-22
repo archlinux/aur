@@ -6,7 +6,7 @@ pkgver=4.10.2257.0
 _debian_pkgname='libwidevinecdm0'
 _debian_pkgver=4.10.2252.0
 _debian_pkgrel=+3
-pkgrel=4
+pkgrel=5
 arch=('armv7h')
 url='https://www.widevine.com/'
 license=('custom')
@@ -23,8 +23,8 @@ source=("chrome-eula_text.html::https://www.google.com/intl/en/chrome/privacy/eu
 sha256sums=(SKIP
             '5b1199bcd3471d126098be42ca0af0e486302df94cdf4643e4fe2a86d4c4c7d1'
             'ebca260ca197c4eee5a8b76ae1fad2bf800ab99b40d8be0c2189b566bd9621d0'
-            'b976bb594b8b51d5eee1929defaebd0313c54ddd6d62241bfa4a7d5421491e12'
-            '6be10c8786b24f47dbbb54ff676f28a7b49771b8d5f7c03cc3f2e73b7e18c22f')
+            'a806dc002b8072651902f77c47cba09b9d0c0dd50e196651e235255f6e0a2cbc'
+            '5991822a0c6bf24b33eb65e6ecad1ced6df4975c2ea03df71acb2795293f7a6c')
 
 prepare() {
   # Extract data.tar.gz from deb package
@@ -62,15 +62,13 @@ package() {
 
   # These are the files for the chromium metadata package
   install -d "${pkgdir}/opt/WidevineCdm/chromium/_platform_specific/linux_arm"
-  install -Dm755 opt/WidevineCdm/_platform_specific/linux_arm/libwidevinecdm.so -t "${pkgdir}/opt/WidevineCdm/chromium/"
+  install -Dm755 opt/WidevineCdm/_platform_specific/linux_arm/libwidevinecdm.so -t "${pkgdir}/opt/WidevineCdm/chromium/_platform_specific/linux_arm/"
   install -m644 manifest.json -t "${pkgdir}/opt/WidevineCdm/chromium/"
-  ln -s "../../libwidevinecdm.so" "${pkgdir}/opt/WidevineCdm/chromium/_platform_specific/linux_arm/libwidevinecdm.so"
-  # workaround for a firefox 104 issue (i.e. it's looking for libvineCdm.so instead of the proper so lib)
-  ln -s "./libwidevinecdm.so" "${pkgdir}/opt/WidevineCdm/chromium/libvineCdm.so"
 
   # These are the files for the firefox metadata package
-  install -d "${pkgdir}/opt/WidevineCdm/firefox"
-  ln -s "../chromium" "${pkgdir}/opt/WidevineCdm/firefox/${pkgver}"
+  install -d "${pkgdir}/opt/WidevineCdm/firefox/gmp-widevinecdm/${pkgver}/"
+  ln -s "../../../chromium/_platform_specific/linux_arm/libwidevinecdm.so" "${pkgdir}/opt/WidevineCdm/firefox/gmp-widevinecdm/${pkgver}/libwidevinecdm.so"
+  ln -s "../../../chromium/manifest.json" "${pkgdir}/opt/WidevineCdm/firefox/gmp-widevinecdm/${pkgver}/manifest.json"
   install -Dm644 widevine.js -t "${pkgdir}/usr/lib/firefox/browser/defaults/preferences/"
 
   # Registering scripts

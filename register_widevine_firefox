@@ -24,14 +24,14 @@ do
         else
            rm -r "${WIDEVINE_PATH}"
         fi
-        ln -s /opt/WidevineCdm/firefox "${WIDEVINE_PATH}"
+        ln -s /opt/WidevineCdm/firefox/gmp-widevinecdm "${WIDEVINE_PATH}"
         echo "Widevine already registered for profile ${prof}; re-registered"
     else
         if [[ -L "${WIDEVINE_PATH}" ]]
         then
            rm "${WIDEVINE_PATH}"
         fi
-        ln -s /opt/WidevineCdm/firefox "${HOME}/.mozilla/firefox/${prof}/gmp-widevinecdm"
+        ln -s /opt/WidevineCdm/firefox/gmp-widevinecdm "${HOME}/.mozilla/firefox/${prof}/gmp-widevinecdm"
         echo "Widevine registered for profile ${prof}"
     fi
 done
