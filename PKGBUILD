@@ -11,7 +11,7 @@ arch=('any')
 url='https://github.com/cheshirekow/cmake_format'
 license=('GPL3')
 depends=('python-setuptools' 'python-six>=1.13.0')
-optdepends=('python-yaml>=5.3' 'python-jinja>=2.10.3' 'python-argcomplete: automatic shell completion')
+optdepends=('python-yaml>=5.3: YAML config files' 'python-jinja>=2.10.3: complete HTML annotation' 'python-argcomplete: automatic shell completion')
 checkdepends=('cmake')
 provides=('python-cmakelang')
 conflicts=('python-cmakelang')
