@@ -44,7 +44,7 @@ build() {
     -DCaffe_LIBS:PATH="/usr/lib/libcaffe.so" \
     -DCMAKE_INSTALL_PREFIX:PATH="${pkgdir}/usr" \
     ..
-  make -j28
+  make
 }
 
 package() {
