@@ -1,9 +1,6 @@
-# Maintainer: flaribbit <1149761294@qq.com>
-# Maintainer: asukaminato <asukaminato@nyan.eu.org>
-pkgname=bakadict-git
-pkgdesc=离线的命令行日语词典
 _name=bakadict
 pkgver=r21.3bb4f08
+# Contributor: Asuka Minato
 pkgrel=1
 source=('git+https://github.com/flaribbit/bakadict.git#branch=master'
         .install)
