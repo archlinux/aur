@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 21 Early-Access Build
-	pkgver = 21b27
+	pkgver = 21b28
 	pkgrel = 1
 	url = https://jdk.java.net/21
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=21
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	source = https://download.java.net/java/early_access/jdk21/27/GPL/openjdk-21-ea+27_linux-x64_bin.tar.gz
-	sha256sums = 686f2ed6faecd9b5be0306df695bafa576758f00efc51b2250a8044a31ddc9af
+	source = https://download.java.net/java/early_access/jdk21/28/GPL/openjdk-21-ea+28_linux-x64_bin.tar.gz
+	sha256sums = c5ff4dc462286ead4a7f1480719f695a976a130005df30d33ba210aadc094ff9
 
 pkgname = java-openjdk-ea-bin
