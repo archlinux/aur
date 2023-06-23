@@ -2,7 +2,7 @@
 # Contributor: xantares
 
 pkgname=mingw-w64-libzip
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="A C library for reading, creating, and modifying zip archives (mingw-w64)"
 url="http://www.nih.at/libzip/index.html"
@@ -12,7 +12,7 @@ depends=('mingw-w64-xz' 'mingw-w64-zlib' 'mingw-w64-bzip2' 'mingw-w64-openssl' '
 makedepends=('mingw-w64-cmake' 'ninja')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.nih.at/libzip/libzip-${pkgver}.tar.xz")
-sha256sums=('c93e9852b7b2dc931197831438fee5295976ee0ba24f8524a8907be5c2ba5937')
+sha256sums=('cd2a7ac9f1fb5bfa6218272d9929955dc7237515bba6e14b5ad0e1d1e2212b43')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 _pkgname="libzip"
@@ -20,6 +20,7 @@ _pkgname="libzip"
 build() {
   for _arch in ${_architectures}; do
     ${_arch}-cmake -S ${_pkgname}-${pkgver} -B build/${_arch}-static -G Ninja \
+      -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_DOC=OFF \
       -DBUILD_EXAMPLES=OFF \
       -DBUILD_REGRESS=OFF \
@@ -27,6 +28,7 @@ build() {
       -DBUILD_SHARED_LIBS=OFF
 
     ${_arch}-cmake -S ${_pkgname}-${pkgver} -B build/${_arch} -G Ninja \
+      -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_DOC=OFF \
       -DBUILD_EXAMPLES=OFF \
       -DBUILD_REGRESS=OFF \
