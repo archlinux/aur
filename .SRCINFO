@@ -1,0 +1,43 @@
+pkgbase = xrt
+	pkgver = 2022.2
+	pkgrel = 1
+	url = https://github.com/Xilinx/XRT
+	arch = x86_64
+	license = EULA
+	makedepends = dkms
+	makedepends = ocl-icd
+	makedepends = boost-libs
+	makedepends = libdrm
+	makedepends = protobuf
+	makedepends = cmake
+	makedepends = boost
+	makedepends = git
+	makedepends = opencl-headers
+	makedepends = opencl-clhpp
+	makedepends = rapidjson
+	makedepends = pybind11
+	makedepends = doxygen
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-breathe
+	source = git+https://github.com/Xilinx/XRT.git#tag=202220.2.14.354
+	source = dma_ip_drivers-51b4b383a6be6311cac7747a5de889a2b72a6d57.tar.gz::https://github.com/Xilinx/dma_ip_drivers/archive/51b4b383a6be6311cac7747a5de889a2b72a6d57.tar.gz
+	source = kernel-doc::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/plain/scripts/kernel-doc?h=v4.14.52
+	source = OpenCL.pc
+	sha256sums = SKIP
+	sha256sums = 957ef7db9f4a604e340f89d748cf5fb8289f51194f4a15e09650270ab23e696d
+	sha256sums = 6956bf3fb7ba425d9d136dad908a0aa331c6faeda522d2bce0c3756c0619985b
+	sha256sums = c08a8b724d41ac17a85b3bf855f8cfdbb1ab7a49401ea22b996e5b0e6ae2a66a
+
+pkgname = xrt
+	pkgdesc = Xilinx Run Time for FPGA, with its dkms modules
+	depends = dkms
+	depends = ocl-icd
+	depends = boost-libs
+	depends = libdrm
+	depends = protobuf
+	optdepends = vivado
+	conflicts = xrt-bin
+
+pkgname = xrt-docs
+	pkgdesc = Documentation for the Xilinx Run Time
