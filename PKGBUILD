@@ -74,7 +74,7 @@ package() {
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.svg /opt/${mypackagename}/
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.ver /opt/${mypackagename}/${mypackagename}.ver
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.conf /opt/${mypackagename}/${mypackagename}.conf
-	sudo install -Dm644 --owner=root --group=root ${srcdir}/${mypackagename}/${mypackagename}.conf /etc/${mypackagename}/${mypackagename}.conf
+	sudo install -Dm644 --owner=root --group=root ${srcdir}/${mypackagename}/${mypackagename}.conf /etc/${mypackagename}.conf
 
 
 	desktop-file-install --dir=$HOME/.local/share/applications /opt/${mypackagename}/${mypackagename}.desktop
