@@ -1,0 +1,17 @@
+pkgbase = cheat-engine-zh
+	pkgdesc = Cheat Engine is a development environment focused on modding games and applications for personal use.
+	pkgver = 7.5
+	pkgrel = 1
+	url = https://cheatengine.org
+	install = cheat-engine-zh.install
+	arch = x86_64
+	license = custom:commercial
+	options = !strip
+	source = https://github.com/XDwanj/cheat-engine-zh/releases/download/v7.5/Cheat_Engine_v7.5.tar.gz
+	source = cheat-engine-zh.install
+	md5sums = 9575239e495be6ce0504cf796f7c77f5
+	md5sums = 7ce7eb2e8d6cb0ce06d64b5d2b6d74e2
+
+pkgname = cheat-engine-zh
+	depends = wine
+	optdepends = proton-ge-custom: Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll\'s custom build
