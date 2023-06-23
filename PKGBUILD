@@ -1,4 +1,4 @@
-pkgname="cairo"
+pkgname="cairo-lang"
 pkgver=2.0.0
 release="rc4"
 pkgrel=1
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/starkware-libs/$pkgname/archive/refs/tags/v$pkgver-$release.tar.gz")
+source=("https://github.com/starkware-libs/cairo/archive/refs/tags/v$pkgver-$release.tar.gz")
 noextract=()
 md5sums=()
 validpgpkeys=()
@@ -30,7 +30,7 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname-$pkgver-$release"
+	cd "cairo-$pkgver-$release"
 	cargo build --all --release --manifest-path ./Cargo.toml
 	
 }
@@ -42,7 +42,7 @@ package() {
 	mkdir -p $pkgdir/usr/bin/
 	
 	for pkg in ${pkgs[@]}; do
-		mv $pkgname-$pkgver-$release/target/release/$pkg $pkgdir/usr/bin
+		mv cairo-$pkgver-$release/target/release/$pkg $pkgdir/usr/bin
 	done
 }
 
