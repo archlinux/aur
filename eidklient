@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export LD_LIBRARY_PATH=/opt/eidklient/lib
+export QT_QPA_PLATFORM_PLUGIN_PATH=/opt/eidklient/plugins
+
+exec "/opt/eidklient/$(basename "$0")" "$@"

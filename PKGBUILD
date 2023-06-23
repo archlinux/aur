@@ -12,13 +12,22 @@ _upstream_arch=
 [[ "$CARCH" == "i686" ]] && _upstream_arch="i386"
 _appimage="eID_klient-${_upstream_arch}.AppImage"
 _url="https://eidas.minv.sk/downloadservice/eidklient/linux"
+source=(
+    eidklient
+)
 source_i686=("${_url}/eID_klient_i386.tar.gz")
 source_x86_64=("${_url}/eID_klient_x86_64.tar.gz")
+sha256sums=(
+    SKIP
+)
 # upstream update would break this PKGBUILD if we used integrity checks
 md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
 options=("!strip")
 install=eidklient.install
+makedepends=(
+    fuse2
+)
 
 prepare() {
     chmod +x "${_appimage}"
@@ -30,31 +39,27 @@ pkgver() {
 }
 
 package() {
-    depends=( "pcsclite" "ccid" "fuse2" )
+    depends=( "pcsclite" "ccid" )
     optdepends=('disig-web-signer: online certificates update support')
 
-    # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
+    # App
+    mkdir "${pkgdir}/opt"
+    cp -r "${srcdir}/squashfs-root" "${pkgdir}/opt/${pkgname}"
+
+    # Custom wrapper
+    install -Dm755 "${srcdir}/eidklient" "${pkgdir}/usr/bin/eID_Client"
 
     # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
     # It seems this is unnecessary (however it's done like this in the upstream package)
-    #ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/VirtualKeyboard"
+    #ln -s /usr/bin/eID_Client "${pkgdir}/usr/bin/VirtualKeyboard"
 
     install -dm755 "${pkgdir}/usr/lib/eID_klient"
-    ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/lib/eID_klient/VirtualKeyboard"
+    ln -s /usr/bin/eID_Client "${pkgdir}/usr/lib/eID_klient/VirtualKeyboard"
 
-    install -m644 ${srcdir}/squashfs-root/lib/libCardAPI* "${pkgdir}/usr/lib/eID_klient/"
-    install -m644 ${srcdir}/squashfs-root/lib/libbotan* "${pkgdir}/usr/lib/eID_klient/"
-    install -m644 ${srcdir}/squashfs-root/lib/libpkcs11_* "${pkgdir}/usr/lib/eID_klient/"
-    install -m644 ${srcdir}/squashfs-root/lib/libcrypto* "${pkgdir}/usr/lib/eID_klient/"
-    install -m644 ${srcdir}/squashfs-root/lib/libssl* "${pkgdir}/usr/lib/eID_klient/"
+    for lib in "${srcdir}"/squashfs-root/lib/lib{CardAPI,botan,pkcs11_,crypto,ssl}*; do
+        ln -s "/opt/${pkgname}/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
+    done
 
     # Icons + desktop file
     tar -x -C "${pkgdir}/usr" -f "${srcdir}/squashfs-root/share.tar"
-
-    # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=[^ ]*|Exec=env DESKTOPINTEGRATION=false /usr/bin/${pkgname}|"\
-        "${pkgdir}/usr/share/applications/eID_klient.desktop"
 }
