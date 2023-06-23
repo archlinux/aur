@@ -3,8 +3,8 @@ post_install() {
 You can execute bat scripts through wine to start multiple programs at the same time, like this:
 
 echo "
-start "" "z:\home\user\a.exe" &
-start "" "z:\home\user\b.exe" &
+start \"\" \"z:\home\user\a.exe\" &
+start \"\" \"z:\home\user\b.exe\" &
 pause
 " > ~/run.bat
 

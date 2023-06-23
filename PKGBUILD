@@ -13,7 +13,7 @@ source=('https://github.com/XDwanj/cheat-engine-zh/releases/download/v7.5/Cheat_
         'cheat-engine-zh.install')
 
 md5sums=('9575239e495be6ce0504cf796f7c77f5'
-         '7ce7eb2e8d6cb0ce06d64b5d2b6d74e2')
+         'e3e3f39ae2015a611660138d93fd3972')
 
 install=cheat-engine-zh.install
 package() {
