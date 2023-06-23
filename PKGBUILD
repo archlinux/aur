@@ -67,7 +67,7 @@ package() {
 	cd "$mypackagename"
 	sudo mkdir -p /opt/${mypackagename}
 	search="pynotify-git."
-	PKGDEST=$(PKGDEST//$search/$mypackagename)
+	PKGDEST=$( sed "s/$search/$mypackagename/g" <<<"$PKGDEST")
 	
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/dist/${mypackagename} /opt/${mypackagename}/${mypackagename}
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.desktop /opt/${mypackagename}/${mypackagename}.desktop
