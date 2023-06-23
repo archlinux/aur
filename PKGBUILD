@@ -1,4 +1,5 @@
 # Maintainer: Fernando Seoane <fseoane@hotmail.com>
+mypackagename=pyNotify
 pkgname=pynotify-git
 pkgbase=pynotify-git
 pkgver=0.5
@@ -6,11 +7,11 @@ pkgrel=1
 epoch=
 pkgdesc="A Gnome (wayland) shell notifier for Gotify server."
 arch=('x86_64')
-url="https://github.com/fseoane/pynotify-git.git"
+url="https://github.com/fseoane/pyNotify.git"
 license=('MIT')
 groups=()
 depends=('libappindicator-gtk3' 'gnome-shell-extension-appindicator')
-makedepends=('git' 'python3' 'python-pip' 'python-virtualenv')
+makedepends=('git' 'python3' 'python-pip')
 checkdepends=()
 optdepends=()
 provides=(pyNotify)
@@ -20,26 +21,27 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url")
+source=("$mypackagename::$url")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-mypackagename=pyNotify
+
 
 pkgver() {
-	cd "${_pkgname}"
+	#cd "${pkgname}"
+	cd "$mypackagename"
 	printf "0.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$pkgname"
+	cd "$mypackagename"
  	echo "$pkgver" > pyNotify.ver
 }
 
 build() {
 
-	cd "$pkgname"
+	cd "$mypackagename"
 	mkdir .env 
 	python -m venv .env
 	source .env/bin/activate
@@ -65,7 +67,7 @@ build() {
 
 
 package() {
-	cd "$pkgname"
+	cd "$mypackagename"
 
 	sudo mkdir -p /opt/${mypackagename}
 	
