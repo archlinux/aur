@@ -1,4 +1,4 @@
-pkgbase = pyNotify
+pkgbase = pynotify-git
 	pkgdesc = A Gnome (wayland) shell notifier for Gotify server.
 	pkgver = 0.5
 	pkgrel = 1
