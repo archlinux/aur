@@ -6,7 +6,7 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
-pkgver=0.2.3_856.2be50e4
+pkgver=0.2.3_909.2eccfd2
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
@@ -14,7 +14,6 @@ url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('AGPL3' 'GPL3')
 # depends and makedepends will be filled based on the PDF engine.
 depends=("qt${_qt_version_major}-multimedia" "qt${_qt_version_major}-svg")
-optdepends=('hicolor-icon-theme: action button icons')
 makedepends=('cmake' 'git' "qt${_qt_version_major}-tools")
 backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
 source=('git+https://github.com/stiglers-eponym/BeamerPresenter.git')
@@ -36,7 +35,7 @@ fi
 
 if [ "${_qt_version_major}" == "5" ]
 then
-    optdepends+=('gst-libav: show videos' 'gst-plugins-good: show videos')
+    optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos')
 fi
 
 
@@ -60,9 +59,8 @@ build() {
         -DUSE_MUPDF="${_use_mupdf}" \
         -DUSE_QTPDF=OFF \
         -DUSE_EXTERNAL_RENDERER=OFF \
-        -DUSE_MUJS=OFF \
-        -DUSE_MUPDF_THIRD=ON \
-        -DUSE_GUMBO=ON \
+        -DLINK_MUPDF_THIRD=ON \
+        -DLINK_GUMBO=ON \
         -DUSE_TRANSLATIONS=ON \
         -DINSTALL_LICENSE=OFF \
         -DQT_VERSION_MAJOR="${_qt_version_major}" \
