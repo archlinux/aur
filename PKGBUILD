@@ -66,7 +66,7 @@ optdepends=(
   'switcheroo-control: Multi-GPU support'
 )
 groups=(gnome)
-provides=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 _project_url="https://gitlab.gnome.org/GNOME"
 _repo_url="${_project_url}/${_pkgname}"

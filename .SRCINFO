@@ -51,7 +51,7 @@ pkgbase = gnome-shell-git
 	optdepends = gst-plugins-good: Screen recording
 	optdepends = power-profiles-daemon: Power profile switching
 	optdepends = switcheroo-control: Multi-GPU support
-	provides = gnome-shell
+	provides = gnome-shell=44.1+116+gace8676ad
 	conflicts = gnome-shell
 	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
