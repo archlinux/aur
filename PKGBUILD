@@ -3,7 +3,7 @@
 
 
 pkgname=howdy-beta-git
-pkgver=2.6.1.r183.gdb3a8cb
+pkgver=2.6.1.r187.g30728a6
 pkgrel=1
 pkgdesc="Windows Hello for Linux (Beta)"
 arch=('x86_64')
@@ -105,6 +105,6 @@ package() {
 	ln -s "/etc/howdy/cli.py" "${pkgdir}/usr/bin/howdy"
 	ln -s "/etc/howdy" "${pkgdir}/usr/lib/security/howdy"
 
-#	install -dm755 "${pkgdir}/usr/lib/howdy-gtk"
-#   cp -rv howdy-gtk/src/* "${pkgdir}/usr/lib/howdy-gtk"
+	install -dm755 "${pkgdir}/usr/lib/howdy-gtk"
+        cp -rv howdy-gtk/src/* "${pkgdir}/usr/lib/howdy-gtk"
 }
