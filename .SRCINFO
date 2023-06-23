@@ -1,0 +1,11 @@
+pkgbase = mint-backgrounds-victoria
+	pkgdesc = The backgrounds included in Linux Mint 21.2 victoria
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-victoria
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-victoria/mint-backgrounds-victoria_1.2.tar.gz
+	sha256sums = a8de3ae8baae5f58d037f2f329d5ece087397ef1e2d2835245ec570304a367d5
+
+pkgname = mint-backgrounds-victoria
