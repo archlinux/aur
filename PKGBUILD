@@ -1,9 +1,6 @@
-# Maintainer: asukaminato <asukaminato at nyan dot eu dot org>
-# Contributor: Haonan Chen <g897331845@gmail.com>
-pkgname=fcitx5-pinyin-sougou
-pkgver=20210320
 pkgrel=1
 pkgdesc="Fcitx 5 Pinyin Dictionary from https://pinyin.sogou.com/dict/"
+# Contributor: Asuka Minato
 arch=('any')
 url="https://github.com/CHN-beta/sougou-dict.git"
 license=('custom')
