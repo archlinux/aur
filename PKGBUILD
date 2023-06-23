@@ -1,6 +1,6 @@
 # Maintainer: Fernando Seoane <fseoane@hotmail.com>
 mypackagename=pyNotify
-pkgname=pynotify-git
+pkgname=pyNotify
 pkgbase=pynotify-git
 pkgver=0.5
 pkgrel=1
@@ -18,10 +18,9 @@ provides=(pyNotify)
 conflicts=(pyNotify)
 replaces=(pyNotify)
 backup=()
-options=()
+options=('PKGDEST='+"$mypackagename")
 install=
 changelog=
-source=("$mypackagename::$url")
 source=("git+$url")
 noextract=()
 md5sums=('SKIP')
