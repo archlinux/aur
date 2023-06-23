@@ -2,7 +2,7 @@
 
 pkgname=moneymanagerex
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version."
 arch=('x86_64')
 url="http://www.moneymanagerex.org/"
@@ -17,14 +17,10 @@ source=(git+https://github.com/moneymanagerex/moneymanagerex.git)
 sha512sums=('SKIP')
 _github_api_uri=https://api.github.com/repos/moneymanagerex/moneymanagerex/releases/latest
 
-pkgver() {
-  curl --silent ${_github_api_uri} | jq -r '.tag_name[1:]'
-}
-
 prepare() {
   cd "${srcdir}"/moneymanagerex
 
-  git checkout tags/$(curl --silent ${_github_api_uri} | jq -r '.tag_name')
+  git checkout tags/v${pkgver}
   git submodule update --init --recursive
 }
 
