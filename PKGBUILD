@@ -1,84 +1,51 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Rémy Oudompheng <remy@archlinux.org>
-# Maintainer: emersion <contact emersion fr>
+# Merged with official ABS python-pyelftools PKGBUILD by João, 2023/06/23 (all respective contributors apply herein)
+# Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Rémy Oudompheng <remy@archlinux.org>
+# Contributor: emersion <contact emersion fr>
 
-pkgbase=python-pyelftools-git
-pkgname=('python2-pyelftools-git' 'python-pyelftools-git')
 _pkgname=pyelftools
-pkgver=v0.27.r7.g46187f4
+pkgname=python-$_pkgname-git
+pkgver=0.29_r643.g3ee5c0e
 pkgrel=1
 pkgdesc='Python library for analyzing ELF files and DWARF debugging information'
-url='https://github.com/eliben/pyelftools'
-arch=('any')
-license=('custom:Public Domain')
-makedepends=('python-setuptools' 'python2-setuptools' 'git')
+url="https://github.com/eliben/$_pkgname"
+arch=(any)
+license=(custom:Public Domain)
+depends=(python)
+makedepends=(git python-build python-installer python-wheel python-setuptools)
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
 options=('!strip')
-source=('git+https://github.com/eliben/pyelftools.git')
-sha512sums=('SKIP')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cp -ra ${_pkgname}{,-py2}
-  cd ${_pkgname}-py2
-  sed -e 's/env python$/env python2/g' -i scripts/readelf.py
-  mv scripts/readelf.py scripts/readelf.py2
-  sed -r 's/readelf.py/\02/g' -i setup.py test/run_readelf_tests.py
+  cd $_pkgname
+  _ver="$(grep -m1 'version' setup.py | cut -d "'" -f2)"
+  echo "${_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 build() {
-  (cd ${_pkgname}
-    python setup.py build
-  )
-  (cd ${_pkgname}-py2
-    python2 setup.py build
-  )
+  cd $_pkgname
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  (cd ${_pkgname}
-    python test/run_all_unittests.py
-    python test/run_examples_test.py
-    if [ "${CARCH}" == "x86_64" ]; then
-      python test/run_readelf_tests.py
-    else
-      warning "Skipping readelf tests (require x86_64)"
-    fi
-  )
-  (cd ${_pkgname}-py2
-    python2 test/run_all_unittests.py
-    python2 test/run_examples_test.py
-    if [ "${CARCH}" == "x86_64" ]; then
-      python2 test/run_readelf_tests.py
-    else
-      warning "Skipping readelf tests (require x86_64)"
-    fi
-  )
+  cd $_pkgname
+  python test/run_all_unittests.py
+  python test/run_examples_test.py
+  if [ "$CARCH" == "x86_64" ]; then
+    python test/run_readelf_tests.py
+  else
+    echo "Skipping readelf tests (require x86_64)"
+  fi
 }
 
-package_python-pyelftools-git() {
-  depends=('python')
-  provides=('python-pyelftools')
-  conflicts=('python-pyelftools')
-
-  cd ${_pkgname}
-  python setup.py install -O1 --root="${pkgdir}" --skip-build
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.rst CHANGES -t "${pkgdir}/usr/share/doc/${pkgname}"
-  cp -r examples "${pkgdir}/usr/share/doc/${pkgname}"
-}
-
-package_python2-pyelftools-git() {
-  depends=('python2')
-  provides=('python2-pyelftools')
-  conflicts=('python2-pyelftools')
-
-  cd ${_pkgname}-py2
-  python2 setup.py install -O1 --root="${pkgdir}" --skip-build
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 README.rst CHANGES -t "${pkgdir}/usr/share/doc/${pkgname}"
-  cp -r examples "${pkgdir}/usr/share/doc/${pkgname}"
+package() {
+  cd $_pkgname
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 README.rst CHANGES -t "$pkgdir/usr/share/doc/$pkgname"
+  cp -r examples "$pkgdir/usr/share/doc/$pkgname"
 }
