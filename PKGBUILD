@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/contrib/scratchpad"
-	git log --pretty="format:%h" -n 1 scratchpad | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
