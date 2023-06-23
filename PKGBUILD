@@ -3,19 +3,33 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=orca-git
-pkgver=40.0.r65.g989596c9b
+pkgver=44.0.r93.gcc26a1f6b
 pkgrel=1
 pkgdesc="Screen reader for individuals who are blind or visually impaired (development version)"
 url="https://wiki.gnome.org/Projects/Orca"
 arch=('any')
 license=('LGPL')
-groups=('gnome')
-depends=('gtk3' 'at-spi2-atk' 'python-atspi' 'python-dbus' 'python-pyxdg' 'speech-dispatcher' 'liblouis' 'brltty'
-         'xorg-xmodmap' 'gsettings-desktop-schemas'
-         'gst-plugins-base' # playbin, audiotestsrc, basic decoders
-         'gst-plugins-good' # pulsesink, more decoders
+depends=(
+  at-spi2-core
+  brltty
+  gsettings-desktop-schemas
+  gst-plugins-base # playbin, audiotestsrc, basic decoders
+  gst-plugins-good # pulsesink, more decoders
+  gtk3
+  liblouis
+  libwnck3
+  python-atspi
+  python-setproctitle
+  speech-dispatcher
+  xorg-xkbcomp
+  xorg-xmodmap
 )
-makedepends=('itstool' 'intltool' 'git' 'yelp-tools')
+makedepends=(
+  git
+  itstool
+  yelp-tools
+)
+groups=('gnome')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://gitlab.gnome.org/GNOME/${pkgname%-git}.git")
