@@ -36,7 +36,7 @@ pkgver() {
 }
 
 prepare() {
-	cd "${pkgname}"
+	cd "$pkgname"
 	#cd "$mypackagename"
  	echo "$pkgver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" > pyNotify.ver
 }
