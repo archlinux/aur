@@ -2,7 +2,7 @@
 
 _pkgname='xorgxrdp'
 pkgname="$_pkgname-nvidia"
-pkgver=0.2.18.r42.g5f6177d
+pkgver=0.2.18.r46.gbf49ee1
 pkgrel=1
 pkgdesc='Xorg drivers for xrdp, with NVIDIA GPU support.'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ options=('staticlibs')
 source=("git+$url#branch=devel"
         "nvidia.patch::$url/pull/220.diff")
 sha256sums=('SKIP'
-            '67b625fad68f952d185bc4dd7fb12b69e4270dae2a5242523498b3ed86c022e6')
+            '88cd1c2d97565ac7576b7fa2c0e1cf6da7a3c823a5de8938f01dfbaeb67ffe67')
 install="$pkgname.install"
 
 pkgver() {
