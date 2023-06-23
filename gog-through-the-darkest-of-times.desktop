@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Through the Darkest of Times
+Comment=Historical resistance strategy game
+Exec=through-the-darkest-of-times
+Icon=gog-through-the-darkest-of-times
+Type=Application
+Terminal=false
+StartupNotify=true
+StartupWMClass=TtDoT.exe
+Categories=Game;
+Encoding=UTF-8

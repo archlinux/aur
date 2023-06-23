@@ -1,0 +1,23 @@
+pkgbase = gog-through-the-darkest-of-times
+	pkgdesc = Historical resistance strategy game set in the Third Reich. GOG version, uses Wine.
+	pkgver = 1.04.03.1.40068
+	pkgrel = 1
+	url = https://www.gog.com/game/through_the_darkest_of_times
+	install = gog-through-the-darkest-of-times.install
+	arch = x86_64
+	license = custom
+	makedepends = innoextract
+	makedepends = imagemagick
+	makedepends = lgogdownloader
+	depends = wine
+	depends = wine-mono
+	depends = wine-gecko
+	options = !strip
+	source = setup_through_the_darkest_of_times_1.04.03.1_(40068).exe::gogdownloader://through_the_darkest_of_times/en1installer0
+	source = gog-through-the-darkest-of-times.desktop
+	source = launch_gog-through-the-darkest-of-times.bash
+	sha512sums = 818a1c425838cdbaf2b4d6ce87e2bab2d2e16c810d86ed089d1e0e51e09f3e1173822ea43d748fd6952dd03b4ff18a3da9391e9d3f2edfc4a97ab72f52dbaefd
+	sha512sums = ba2f232ce143e1adf07ba178e2f69a07a16be4520777b78e2757a9b3a0005111526dc035ce7eba160651d5c846b474753db606507cee6f0a22872d27778d6b37
+	sha512sums = d2266ebfc03f36bd84abd5a643ea8eedd8b9d9b1a6c7c5b1024dd477f82fbf69c69699359e318fb908282803f9045ab09dbb356f45e689bf50fc108cc894d172
+
+pkgname = gog-through-the-darkest-of-times
