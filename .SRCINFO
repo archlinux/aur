@@ -1,0 +1,12 @@
+pkgbase = xdg-desktop-portal-xapp-bin
+	pkgdesc = XDG-DESKTOP-PORTAL for Cinnamon/MATE/Xfce4
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/linuxmint/xdg-desktop-portal-xapp
+	arch = x86_64
+	license = LGPL-2.1+
+	depends = xdg-desktop-portal
+	source = https://github.com/linuxmint/xdg-desktop-portal-xapp/releases/download/master.mint21/packages.tar.gz
+	sha512sums = 30c999a58dbdfb890d95351ca746750dd6ddf88541e0122f5de073d8f66671900ac65cc1cece22ce21d3cb9fba5a992200e410ca6e386a2ff30c5b321f6cb3fd
+
+pkgname = xdg-desktop-portal-xapp-bin
