@@ -1,7 +1,7 @@
 # Maintainer: otreblan <otreblain@gmail.com>
 
 pkgname=doccreator-git
-pkgver=r322.6d22082
+pkgver=r323.8cfcc1d
 pkgrel=1
 pkgdesc='DIAR software for synthetic document image and groundtruth generation'
 arch=('x86_64')
@@ -10,10 +10,10 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 license=('LGPL')
 depends=('tesseract' 'qt5-base' 'opencv' 'lzham' 'zlib')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'dos2unix')
 source=("${pkgname}::git+${url}.git" "tesseract.patch")
 sha256sums=('SKIP'
-            'e00299613c83dd468bfe3ce5fddbbfbc93751f1a2f731280c46505bdbbaf6ff9')
+            '82e4af8fbe7953573268c167fd3b385f4527d18cf1c9ddc1e5529d5a0a23963e')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
@@ -26,6 +26,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$pkgname"
 
+	find . -exec dos2unix "{}" +
 	patch --forward --strip=1 --input="$srcdir/tesseract.patch"
 }
 
