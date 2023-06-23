@@ -7,6 +7,7 @@ pkgdesc="bitbake language server"
 arch=(any)
 url=https://github.com/Freed-Wu/bitbake-language-server
 depends=(python-pygls python-platformdirs)
+optdepends=(python-bitbake)
 makedepends=(python-installer)
 license=(GPL3)
 _py=py3
