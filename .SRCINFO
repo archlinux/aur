@@ -16,4 +16,4 @@ pkgbase = pynotify-git
 	source = git+https://github.com/fseoane/pyNotify.git
 	md5sums = SKIP
 
-pkgname = pynotify-git
+pkgname = pyNotify
