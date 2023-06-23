@@ -6,7 +6,7 @@ url=https://github.com/ValdikSS/tor-relay-scanner
 arch=(x86_64)
 depends=(python)
 optdepends=(tor tor-browser)
-install=tor-relay-scanner-bin.install
+install=$pkgname.install
 source=(tor-relay-scanner-$pkgver.pyz::https://github.com/ValdikSS/tor-relay-scanner/releases/download/$pkgver/tor-relay-scanner-$pkgver.pyz
 	update-tor-bridges.service)
 b2sums=(5377ebdca8a70643a212e72c585b19c7397433c3701085db0c42cc8b6dc848144c56990ae028311f59135c7530f4e4d0e05949c2bb22e6a4bff779e96d4b8a75
