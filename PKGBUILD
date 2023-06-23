@@ -1,9 +1,6 @@
-# Contributor: navigaid <navigaid@gmail.com>
-
-pkgname=gopherjs
-pkgdesc="A compiler from Go to JavaScript for running Go code in a browser"
 pkgver=1.18.0_beta2
 _go=1.18.5
+# Contributor: Asuka Minato
 url="https://github.com/gopherjs/gopherjs"
 license=(BSD2)
 depends=(glibc)
