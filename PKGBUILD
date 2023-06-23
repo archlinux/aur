@@ -66,7 +66,7 @@ build() {
 package() {
 	cd "$mypackagename"
 	sudo mkdir -p /opt/${mypackagename}
-	search="pynotify-git"
+	search="pynotify-git."
 	PKGDEST=$(PKGDEST//$search/$mypackagename)
 	
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/dist/${mypackagename} /opt/${mypackagename}/${mypackagename}
