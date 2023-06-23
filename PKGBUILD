@@ -1,7 +1,7 @@
 # Maintainer: CallMeEchoCodes <romanbarrettsarpi@pm.me>
 pkgname=fetcho
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='A simple fetch made in C++'
 arch=('any')
 url="https://github.com/CallMeEchoCodes/fetcho"
@@ -14,5 +14,4 @@ package() {
 build() {
    make RELEASE=1 -C "$srcdir/fetcho" build
 }
-depends=('procps-ng')
 sha256sums=('SKIP')
