@@ -2,7 +2,7 @@
 # Maintainer: Greg White <gwhite@kupulau.com>
 
 pkgname=brave-nightly-bin
-pkgver=1.55.5
+pkgver=1.55.8
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default (nightly binary release).'
 arch=(x86_64 aarch64)
@@ -22,8 +22,8 @@ source_x86_64=("https://github.com/brave/brave-browser/releases/download/v${pkgv
 source_aarch64=("https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-browser-nightly_${pkgver}_arm64.deb")
 sha512sums=('191500db5dd9692d362745e0055f9ac570c7ca2043edcf3e2eb9dcf8039615022f3459c909ed29d89410886481723d2d439086f1938249674ea32654819190c4')
 
-sha512sums_x86_64=('bde1d0c1f0d9a08f3d1ed70ecff30efb4040927415771e85427523cb4063a43dccdbd7efacfe26d4fc0eb88bf429e39bf6c1f25612782bd1709318f6ab5ad108')
-sha512sums_aarch64=('04ca5c5b876094872be51ba35b151dfd986f6b52c5af69d21fdfc0ac193de9320acc907847ac184206c03e73d7bfb0e52b0d2dddc37f46bc8b94e13bb13820cc')
+sha512sums_x86_64=('c24eaa9e7616d6bd17a4d8b22bf2a46b183f016fea6d828ce0526833c83853e5ce22cce8676b0b37d3b6a9471429f85842c003af278fb1848b78e44f9f048e1a')
+sha512sums_aarch64=('SKIP')
 
 prepare() {
   mkdir -p brave
