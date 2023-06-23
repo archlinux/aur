@@ -39,7 +39,7 @@ pkgver() {
 }
 
 package() {
-    depends=( "pcsclite" "ccid" )
+    depends=( "pcsclite" "ccid" "qt5-base" "qt5-svg" )
     optdepends=('disig-web-signer: online certificates update support')
 
     # App
@@ -62,4 +62,17 @@ package() {
 
     # Icons + desktop file
     tar -x -C "${pkgdir}/usr" -f "${srcdir}/squashfs-root/share.tar"
+
+    # Use system Qt 5
+    mkdir "${pkgdir}/opt/${pkgname}/lib/system"
+    for lib in "${pkgdir}/opt/${pkgname}/lib/libQt5"*; do
+        lib_basename="$(basename "${lib}")"
+        ln -s "/usr/lib/${lib_basename%.5}" "${pkgdir}/opt/${pkgname}/lib/system/${lib_basename}"
+    done
+
+    # # Enable Wayland
+    for lib in "${pkgdir}/opt/${pkgname}/lib/libwayland-"*; do
+        lib_basename="$(basename "${lib}")"
+        ln -s "/usr/lib/${lib_basename}" "${pkgdir}/opt/${pkgname}/lib/system/${lib_basename}"
+    done
 }

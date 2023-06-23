@@ -19,4 +19,6 @@ pkgbase = eidklient
 pkgname = eidklient
 	depends = pcsclite
 	depends = ccid
+	depends = qt5-base
+	depends = qt5-svg
 	optdepends = disig-web-signer: online certificates update support
