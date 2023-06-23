@@ -2,7 +2,7 @@
 
 pkgname=imaginer-git
 _pkgname=Imaginer
-pkgver=0.1.5
+pkgver=0.2.2.r24.gff2c4bf
 pkgrel=1
 pkgdesc="Imagine with AI"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://imaginer.codeberg.page"
 license=('GPL3')
 depends=('libadwaita' 'python-gobject' 'python-lxml' 'python-openai' 'python-pillow'
          'python-requests')
-makedepends=('blueprint-compiler' 'meson')
+makedepends=('git' 'blueprint-compiler' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -35,5 +35,5 @@ package() {
   meson install -C build --destdir "$pkgdir"
 
   # fix binary permissions
-  chmod 0755 "$pkgdir/usr/bin/$pkgname"
+  chmod 0755 "$pkgdir/usr/bin/${pkgname%-git}"
 }
