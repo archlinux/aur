@@ -18,14 +18,13 @@ provides=(pyNotify)
 conflicts=(pyNotify)
 replaces=(pyNotify)
 backup=()
-options=('PKGDEST=$mypackagename')
+options=()
 install=
 changelog=
 source=("git+$url")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
-
 
 
 pkgver() {
@@ -67,7 +66,7 @@ build() {
 
 package() {
 	cd "$mypackagename"
-
+	PKGDEST="$mypackagename"
 	sudo mkdir -p /opt/${mypackagename}
 	
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/dist/${mypackagename} /opt/${mypackagename}/${mypackagename}
