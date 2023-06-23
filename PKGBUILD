@@ -3,13 +3,14 @@
 
 pkgname=conceal
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line recycle bin"
 arch=('x86_64')
 url="https://github.com/TD-Sky/conceal"
 license=('MIT')
 conflicts=('conceal-bin')
 depends=('skim')
+optdepends=('fzf: supports fzf as finder')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('1c53e545eed0a3f6ebdbff4d72a9c7c2e89cbbf4d2e1f16076b8a7e7e2cd1c71')
