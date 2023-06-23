@@ -3,7 +3,7 @@
 
 pkgname='tsuru-bin'
 pkgver=1.15.5
-pkgrel=2
+pkgrel=3
 pkgdesc='tsuru-client is a tsuru command line tool for application developers.'
 url='https://tsuru.io'
 arch=('aarch64' 'i686' 'x86_64')

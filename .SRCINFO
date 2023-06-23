@@ -1,7 +1,7 @@
 pkgbase = tsuru-bin
 	pkgdesc = tsuru-client is a tsuru command line tool for application developers.
 	pkgver = 1.15.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tsuru.io
 	license = BSD-3-Clause
 	conflicts = tsuru
