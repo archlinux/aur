@@ -4,7 +4,7 @@
 # This PKGBUILD is based on https://aur.archlinux.org/packages/jdtls, thank you
 
 pkgname=lemminx
-pkgver=0.26.0
+pkgver=0.26.1
 _jarname="${pkgname}-${pkgver}.jar"
 pkgrel=1
 pkgdesc='Eclipse XML language server'
@@ -16,7 +16,7 @@ makedepends=()
 # https://download.eclipse.org/lemminx/releases/
 source=("${_jarname}::https://download.eclipse.org/lemminx/releases/${pkgver}/org.eclipse.lemminx-uber.jar"
         'launcher.sh')
-sha512sums=('af21fba774f0b9fd285ca222502d0ac7c0dafc703fedc92ef63a7d9b36b68d43d76fd9c7e592403ee2a888bf5d9f2d6261501fcea487b3c87c46393a5ef0d4c5'
+sha512sums=('46a5be4801784a6b5799a6c60b33f57d38f10147bf39d520cb1f5bce71c8883c8e63a7230882170d979a01bb7978f086bb738b032b2b8e195e4a1d964c27fd44'
             '21973956910861bb7c608a0240cc8fd2ef15a5753bfee8df36dfda39721a06d474a66c59a22501b990fb3d3d063531a385dca62a7e91b248c1cb9509aff77cec')
 
 package() {
