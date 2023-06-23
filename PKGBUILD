@@ -8,7 +8,7 @@ url="https://github.com/daeuniverse/dae"
 license=('AGPL')
 makedepends=(clang go)
 source=(
-    "$_pkgname-$pkgver.zip::https://github.com/daeuniverse/dae/releases/download/v$pkgver/dae-full-src.zip"
+    "$pkgname-$pkgver.zip::https://github.com/daeuniverse/dae/releases/download/v$pkgver/dae-full-src.zip"
 )
 sha256sums=('870d597d5b7278b644ab9f3c5ccc31dd0ec7f6d90aca22a21c19005724070a72')
 
