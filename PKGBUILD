@@ -29,20 +29,22 @@ validpgpkeys=()
 
 
 pkgver() {
+	cd "${pkgname}"
 	#cd "${pkgname}"
-	printf "$( pwd)"
-	cd "${mypackagename}"
+	#cd "${mypackagename}"
 	printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$mypackagename"
+	cd "${pkgname}"
+	#cd "$mypackagename"
  	echo "$pkgver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" > pyNotify.ver
 }
 
 build() {
 
-	cd "$mypackagename"
+	cd "${pkgname}"
+	#cd "$mypackagename"
 	mkdir .env 
 	python -m venv .env
 	source .env/bin/activate
@@ -68,7 +70,8 @@ build() {
 
 
 package() {
-	cd "$mypackagename"
+	cd "${pkgname}"
+	#cd "$mypackagename"
 
 	sudo mkdir -p /opt/${mypackagename}
 	
