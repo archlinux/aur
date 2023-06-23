@@ -1,6 +1,6 @@
 pkgbase = rusty-monitor-git
 	pkgdesc = This is a simple system monitor built with Rust and GTK4
-	pkgver = r19.fefc628
+	pkgver = r24.b86860a
 	pkgrel = 1
 	url = https://github.com/hubblexplorer/rusty-monitor
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = rusty-monitor-git
 	depends = base
 	depends = gtk4
 	depends = glib2
+	depends = pciutils
 	source = rusty-monitor-git::git+https://github.com/hubblexplorer/rusty-monitor.git
 	md5sums = SKIP
 
