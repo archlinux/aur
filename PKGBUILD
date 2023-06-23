@@ -1,6 +1,6 @@
 # Maintainer: Vibhav Pant <vibhavp at gmail dot com>
 pkgname=kernel-install-ukify
-pkgver=v1.0.0
+pkgver=v1.1.0
 pkgrel=1
 pkgdesc="kernel-install plugin to generate unified kernel images (UKIs) from initrds"
 url="https://github.com/vibhavp/kernel-install-ukify"
