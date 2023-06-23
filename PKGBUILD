@@ -44,18 +44,18 @@ build() {
 	python -m venv .env
 	source .env/bin/activate
 	
-	python -m pip install --upgrade pip setuptools wheel
+	python -m pip install --upgrade pip #setuptools wheel
 
 	python -m pip cache purge
 
-	python -m pip install gotify[stream]
+	#python -m pip install gotify[stream]
 	python -m pip install pyinstaller
-	python -m pip install pygame
-	python -m pip install pygobject
-	python -m pip install asyncio
-	python -m pip install pystray
-	python -m pip install pillow
-	python -m pip install psutil
+	# python -m pip install pygame
+	# python -m pip install pygobject
+	# python -m pip install asyncio
+	# python -m pip install pystray
+	# python -m pip install pillow
+	# python -m pip install psutil
 
 	pyinstaller --onefile --windowed pyNotify.py
 
@@ -74,7 +74,7 @@ package() {
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.svg /opt/${mypackagename}/
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.ver /opt/${mypackagename}/${mypackagename}.ver
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.conf /opt/${mypackagename}/${mypackagename}.conf
-	sudo install -Dm644 --owner=root --group=root ${srcdir}/${mypackagename}/${mypackagename}.conf /etc/${mypackagename}.conf
+	# sudo install -Dm644 --owner=root --group=root ${srcdir}/${mypackagename}/${mypackagename}.conf /etc/${mypackagename}.conf
 
 
 	desktop-file-install --dir=$HOME/.local/share/applications /opt/${mypackagename}/${mypackagename}.desktop

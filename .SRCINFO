@@ -13,6 +13,8 @@ pkgbase = pynotify-git
 	provides = pyNotify
 	conflicts = pyNotify
 	replaces = pyNotify
+	backup = etc/pyNotify.conf
+	backup = opt/pyNotify/pyNotify.conf
 	source = git+https://github.com/fseoane/pyNotify.git
 	md5sums = SKIP
 
