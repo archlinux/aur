@@ -1,6 +1,8 @@
 # Maintainer: SwimmingTiger <hu60.cn@gmail.com>
+# Maintainer: sunflowercx <1527981693@qq.com>
+
 pkgname=winegame
-pkgver=0.5.10.5
+pkgver=0.5.12.2
 pkgrel=1
 epoch=
 pkgdesc="开源游戏平台，帮您在UOS/Linux系统中运行Windows游戏"
@@ -22,12 +24,12 @@ depends=(
     'xorg-xrandr'
     'python-pillow'
     'python-requests'
-    'gnome-desktop'
     'webkit2gtk'
     'mesa-demos'
     'python-dbus'
     'python-distro'
     'python-lxml'
+    'python-certifi'
 )
 makedepends=(
     'p7zip'
@@ -54,8 +56,8 @@ replaces=()
 backup=()
 options=()
 changelog=
-source=("https://file.winegame.net/packages/debian/0.5.10.5/net.winegame.client_0.5.10.5_amd64.deb")
-sha512sums=('f6e7b688002400a58b862270150fe2a01649b52afeaf1976fbe31f4b8c8fd1a2c363a43e51d47fc0d607db99d3c2d2c300c790e06e2449486a07038981688fdc')
+source=("https://file.winegame.net/packages/debian/0.5.12.2/net.winegame.client_0.5.12.2_amd64.deb")
+sha512sums=('81d6579e51cf47db3827c02a0e778dfb49e0b95c00ee16dc31d283a1e6cfb9c558df763427bc1f3cb512d39d5c9a83bea171b59b2eb5cfacb91233d4801cc40a')
 validpgpkeys=()
 
 package() {
