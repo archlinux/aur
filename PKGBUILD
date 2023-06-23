@@ -66,6 +66,8 @@ build() {
 package() {
 	cd "$mypackagename"
 	sudo mkdir -p /opt/${mypackagename}
+	original=$PKGDEST
+	PKGDEST=$(original//$pkgbase/$mypackagename)
 	
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/dist/${mypackagename} /opt/${mypackagename}/${mypackagename}
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.desktop /opt/${mypackagename}/${mypackagename}.desktop
