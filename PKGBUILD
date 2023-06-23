@@ -1,8 +1,8 @@
 # Maintainer: lilikoi <jamilbio20@gmail.com>
 pkgname='chatgpt.sh'
 pkgver=0.14.21
-_commit=a7670c6e1bd5885beae85c3e61deb9d2fffb6367
-pkgrel=1
+_commit=0f8f9c892a30de8efc531203355a637896341f54
+pkgrel=2
 pkgdesc='Shell wrapper for text and chat completions, DALL-E, Whisper, and awesome-chatgpt-prompts(-zh).'
 url='https://github.com/mountaineerbr/shellChatGPT'
 arch=('any')
