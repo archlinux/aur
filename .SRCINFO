@@ -1,35 +1,35 @@
 pkgbase = python-spectral-cube
 	pkgdesc = Library for reading and analyzing astrophysical spectral data cubes
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = http://spectral-cube.readthedocs.io
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-sphinx-astropy
-	makedepends = python-astropy
 	makedepends = python-dask
-	makedepends = python-toolz
 	makedepends = python-radio_beam
 	makedepends = python-casa-formats-io
-	source = https://files.pythonhosted.org/packages/source/s/spectral-cube/spectral-cube-0.6.0.tar.gz
-	md5sums = 3bde90bb005a31a4e138ca84f30ec367
+	source = https://files.pythonhosted.org/packages/source/s/spectral-cube/spectral-cube-0.6.1.tar.gz
+	md5sums = db0b768215175a955c7ca7547b76f932
 
 pkgname = python-spectral-cube
 	depends = python-numpy>=1.8
 	depends = python-astropy>=4.0
-	depends = python-radio_beam
+	depends = python-radio_beam>=0.3.3
 	depends = python-joblib
 	depends = python-dask
-	depends = python-toolz
 	depends = python-six
-	depends = python-fsspec
-	depends = python-zarr
 	depends = python-casa-formats-io
 	optdepends = python-scipy: Used for subcube creation
 	optdepends = python-bottleneck: Speeds up median and percentile operations on cubes with missing data
-	optdepends = python-regions>=0.3: Serialises/Deserialises DS9/CRTF region files and handles them. Used when extracting a subcube from region
+	optdepends = python-regions>=0.7: Serialises/Deserialises DS9/CRTF region files and handles them. Used when extracting a subcube from region
 	optdepends = python-spectral-cube-doc: Documentation for spectral-cube
+	optdepends = python-fsspec: Used for storing computations to disk when using the dask-enabled classes
+	optdepends = python-zarr: Used for storing computations to disk when using the dask-enabled classes
 
 pkgname = python-spectral-cube-doc
 	pkgdesc = Documentation for Python Radio Beam module
