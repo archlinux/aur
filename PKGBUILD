@@ -17,7 +17,7 @@ optdepends=()
 provides=(pyNotify)
 conflicts=(pyNotify)
 replaces=(pyNotify)
-backup=()
+backup=('/etc/pyNotify.conf' '/opt/pyNotify/pyNotify.conf')
 options=()
 install=
 changelog=
@@ -44,7 +44,7 @@ build() {
 	python -m venv .env
 	source .env/bin/activate
 	
-	python  -m pip install --upgrade pip setuptools wheel
+	python -m pip install --upgrade pip setuptools wheel
 
 	python -m pip cache purge
 
@@ -73,7 +73,9 @@ package() {
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.png /opt/${mypackagename}/
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.svg /opt/${mypackagename}/
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.ver /opt/${mypackagename}/${mypackagename}.ver
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.conf /opt/${mypackagename}/${mypackagename}.conf.sample
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.conf /opt/${mypackagename}/${mypackagename}.conf
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.conf /etc/${mypackagename}/${mypackagename}.conf
+
 
 	desktop-file-install --dir=$HOME/.local/share/applications /opt/${mypackagename}/${mypackagename}.desktop
 	sudo install -Dm644 LICENSE "/usr/share/licenses/${mypackagename}/LICENSE"
