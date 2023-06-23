@@ -1,0 +1,13 @@
+pkgbase = tgswitch-bin
+	pkgdesc = The tgswitch command line tool lets you switch between different versions of terragrunt. Pre-compiled.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/warrensbox/tgswitch
+	arch = x86_64
+	license = MIT
+	provides = tgswitch
+	conflicts = tgswitch
+	source = https://github.com/warrensbox/tgswitch/releases/download/0.6.0/tgswitch_0.6.0_linux_amd64.tar.gz
+	sha256sums = d1513d77b64645b864b04431dc093c651f7a6bb97ef24037a7d75e90dea1601b
+
+pkgname = tgswitch-bin
