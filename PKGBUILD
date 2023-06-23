@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib
 pkgver=0.4.13
-pkgrel=2
+pkgrel=3
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -21,7 +21,7 @@ sha256sums=('45766238b57b992851763c64bc943858aebafe4cad7b3df6cde844690bc34293')
 build() {
     cd $srcdir/jax-jaxlib-v$pkgver
     python build/build.py \
-        --target_cpu_features x86_64
+        --target_cpu_features release
 }
 
 package() {
