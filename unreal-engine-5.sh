@@ -3,6 +3,10 @@
 ## I keep getting this question/comment, so I'll explain the reason for this here for those who feel compelled to ask again:
 # This file mainly exists to stop stubborn people who have a bad habit of running everything as root and to make sure specific paths exists to avoid arbitrary legacy compatibility issues.
 # It also assists with determining user-chosen custom install locations and ensuring the path to the editor binary path isn't entirely lost in the event 'UnrealEdior' is ever relocated to somewhere else for any arbitrary reason upstream decides.
+# If someone really wants to run Unreal with unmitigated admin privileges, any resulting damage is on YOU and not me.
+# You can still find the binary or modify this script/PKGBUILD yourself.
+# I am *not* going to troubleshoot short-sighted and insecure 'root everything' nonsense.
+# Additionally, I will remind you that "/opt" *is used by default* but the option is, again, ultimately up to the you where the installation resides.
 
 if [ "$(id -u)" -eq 0 ]; then
     echo "ERROR: Run this as an unprivileged user; not as root."
