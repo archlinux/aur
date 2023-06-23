@@ -30,8 +30,7 @@ validpgpkeys=()
 
 pkgver() {
 	#cd "${pkgname}"
-	echo "$( pwd)"
-	echo "$( pwd)" > pyNotify.pwd
+	printf "$( pwd)"
 	cd "${mypackagename}"
 	printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
