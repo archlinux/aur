@@ -3,7 +3,7 @@
 pkgname=python-scikit-build-core
 pkgdesc='Next generation Python CMake adaptor and Python API for plugins'
 url='https://scikit-build-core.readthedocs.io/'
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 arch=('any')
 license=('Apache')
@@ -35,7 +35,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '99cef7978be1d7580f7c59f12023dcaefd79f57c7057957e02a91fd5ac1f4d2e'
+  '54f06b23dea20284730c437d6af4298299165950a55cb7fb933915e1070a35a1'
 )
 
 build() {
@@ -47,7 +47,7 @@ check() {
   cd "$_pypi-$pkgver"
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "dist/$_pypi-$pkgver"-*.whl
-  test-env/bin/python -m pytest -v -m "not isolated"
+  test-env/bin/python -m pytest -v -k "not pep518_sdist"
 }
 
 package() {
