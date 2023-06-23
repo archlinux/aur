@@ -3,7 +3,7 @@
 
 pkgname=keepass-readable-passphrase-generator
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Readable Passphrase Generator generates passphrases which are (mostly) grammatically correct but nonsensical."
 url="https://github.com/ligos/readablepassphrasegenerator"
 license=('Apache')
@@ -13,5 +13,5 @@ source=("https://github.com/ligos/readablepassphrasegenerator/releases/download/
 sha256sums=('fb5413ba6a83fa01d39c7fe388dd54645cb972c5e6e9d578587f365562e9b024')
 
 package() {
-    install -Dm644 "${srcdir}/ReadablePassphrase.${pkgver}.plgx" "${pkgdir}/usr/share/keepass/Plugins/ReadablePassphrase.plgx"
+    install -Dm644 "${srcdir}/ReadablePassphrase.${pkgver}.plgx" "${pkgdir}/usr/share/keepass/plugins/ReadablePassphrase.plgx"
 }
