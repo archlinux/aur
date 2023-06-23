@@ -16,8 +16,7 @@ makedepends=('python-setuptools-scm'
              'python-sphinx-astropy'
              'python-dask'
              'python-radio_beam'
-             'python-casa-formats-io'
-             )
+             'python-casa-formats-io')
 #checkdepends=('python-pytest-astropy-header'
 #              'python-joblib'
 #              'python-reproject'
@@ -41,9 +40,9 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-#   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
-#       build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
-#   PYTHONPATH="../build/lib" make -C docs html
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 #check() {  # Takes over 20 min, lots of fails
