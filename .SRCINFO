@@ -6,8 +6,9 @@ pkgbase = bctoolbox
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
+	depends = gcc-libs
+	depends = libdecaf
 	depends = mbedtls2-dtls
-	depends = bcunit
 	source = https://gitlab.linphone.org/BC/public/bctoolbox/-/archive/5.2.73/bctoolbox-5.2.73.tar.bz2
 	sha256sums = 575b56339805837799c173508f657008f123f6474077b10bdfe6660659402ca4
 
