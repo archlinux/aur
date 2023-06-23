@@ -22,6 +22,7 @@ options=()
 install=
 changelog=
 source=("$mypackagename::$url")
+source=("git+$url")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
@@ -29,15 +30,14 @@ validpgpkeys=()
 
 
 pkgver() {
-	cd "${pkgname}"
 	#cd "${pkgname}"
-	#cd "${mypackagename}"
+	cd "${mypackagename}"
 	printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$pkgname"
-	#cd "$mypackagename"
+	#cd "$pkgname"
+	cd "${mypackagename}"
  	echo "$pkgver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" > pyNotify.ver
 }
 
