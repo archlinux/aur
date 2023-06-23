@@ -28,14 +28,14 @@ validpgpkeys=()
 mypackagename=pyNotify
 
 pkgver() {
-	cd "${_pkgbase}"
+	cd "${_pkgname}"
 	printf "0.6.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	cd "$pkgname"
 	printf "4.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" > pyNotify.ver
 }
 
 # prepare() {
-# 	cd "$pkgbase"
+# 	cd "$_pkgname"
 #  	echo "$pkgver" > pyNotify.ver
 # }
 
@@ -43,7 +43,7 @@ build() {
 	#sudo pacman -S --needed libappindicator-gtk3 gnome-shell-extension-appindicator
 	#sudo pacman -S --needed git python3 python-pip python-virtualenv
 	
-	cd "$pkgbase"
+	cd "$pkgname"
 	mkdir .env 
 	python -m venv .env
 	source .env/bin/activate
@@ -69,7 +69,7 @@ build() {
 
 
 package() {
-	cd "$pkgbase"
+	cd "$pkgname"
 
 #	sudo rm /opt/${mypackagename}/${mypackagename}
 #	sudo rm /opt/${mypackagename}/${mypackagename}.desktop
@@ -79,17 +79,17 @@ package() {
 #	sudo rm /opt/${mypackagename}/*.png
 #	sudo rm /opt/${mypackagename}/*.svg
 
-	sudo mkdir -p /opt/${mypackagename}
+	sudo mkdir -p ${pkgdir}/opt/${mypackagename}
 	
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/dist/${mypackagename} /opt/${mypackagename}/${mypackagename}
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/${mypackagename}.desktop /opt/${mypackagename}/${mypackagename}.desktop
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/*.ogg /opt/${mypackagename}/
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/*.png /opt/${mypackagename}/
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/*.svg /opt/${mypackagename}/
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/${mypackagename}.ver /opt/${mypackagename}/${mypackagename}.ver
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgbase}/${mypackagename}.conf /opt/${mypackagename}/${mypackagename}.conf.sample
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/dist/${mypackagename} ${pkgdir}/opt/${mypackagename}/${mypackagename}
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${mypackagename}.desktop ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/*.ogg ${pkgdir}/opt/${mypackagename}/
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/*.png ${pkgdir}/opt/${mypackagename}/
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/*.svg ${pkgdir}/opt/${mypackagename}/
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${mypackagename}.ver ${pkgdir}/opt/${mypackagename}/${mypackagename}.ver
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${mypackagename}.conf ${pkgdir}/opt/${mypackagename}/${mypackagename}.conf.sample
 
-	desktop-file-install --dir=$HOME/.local/share/applications /opt/${mypackagename}/${mypackagename}.desktop
-	sudo install -Dm644 LICENSE "/usr/share/licenses/${pkgbase}/LICENSE"
-    	sudo install -Dm644 README.md "/usr/share/doc/${pkgbase}/README.md"
+	desktop-file-install --dir=$HOME/.local/share/applications ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
+	sudo install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	sudo install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
