@@ -1,8 +1,8 @@
 pkgbase = fastqc
 	pkgdesc = A quality control tool for high throughput sequence data.
 	pkgver = 0.12.1
-	pkgrel = 3
-	url = http://www.bioinformatics.babraham.ac.uk/projects/fastqc
+	pkgrel = 4
+	url = https://www.bioinformatics.babraham.ac.uk/projects/fastqc
 	arch = any
 	license = GPL3
 	makedepends = ant
@@ -10,9 +10,11 @@ pkgbase = fastqc
 	depends = perl
 	depends = java-runtime>=11
 	depends = ttf-dejavu
-	source = fastqc-0.12.1::https://github.com/s-andrews/FastQC/archive/refs/tags/v0.12.1.tar.gz
+	source = fastqc-0.12.1.tar.gz::https://github.com/s-andrews/FastQC/archive/refs/tags/v0.12.1.tar.gz
+	source = fastqc.sh
 	source = fastqc.patch::https://github.com/s-andrews/FastQC/commit/e73f094ec165882cc71707a5dd5d3dd263a51b83.patch
-	md5sums = 2d22a29649394f589e6f03d8d8c3eec9
-	md5sums = 37a54b16eeb73d39a88893e326192e29
+	sha256sums = cad8bfd11ecf388204c28a62b162dda032aac8ecd08819c49b053aa66613e92b
+	sha256sums = e1b8e3d5ef1b5804af65f888edbd89c98018b8b43fc114e7cc6bada741c9a352
+	sha256sums = 61cdeadcc3f2885a4aa5412ea2b215364f279ffc5aecec513afa2bc00c182c15
 
 pkgname = fastqc
