@@ -1,34 +1,19 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
 
 # Maintainer: Your Name <youremail@domain.com>
+# Contributor: Asuka Minato
 pkgname=ummguard
 pkgver=1.0.3
 pkgrel=1
-epoch=
 pkgdesc="保持软件始终运行,软件闪退后自动拉起"
 arch=(x86_64 aarch64)
 url="https://fatecore.com/p/ummguard/"
 license=('PRIVATE')
-groups=()
 depends=(electron7 bash)
 makedepends=(npm asar)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
 options=(!strip)
-install=
-changelog=
 source=("https://fatecore-apps-1253910480.cos.ap-shanghai.myqcloud.com/ummguard/ummguard-1.0.3-win.zip"
         )
-noextract=()
 sha256sums=('058c97657c0866af241814759d627c4fad431ee309a7a354226f6fbf3be7e330')
-validpgpkeys=()
 
 prepare() {
 	bsdtar -xvpf *.exe
