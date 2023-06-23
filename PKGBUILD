@@ -2,7 +2,7 @@
 
 pkgname=rustgenhash
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit to generate and analyze hashes"
 arch=('x86_64')
 url="https://github.com/vschwaberow/rustgenhash"
@@ -14,7 +14,7 @@ options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
