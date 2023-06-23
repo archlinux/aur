@@ -1,7 +1,7 @@
 pkgbase = chatgpt.sh
 	pkgdesc = Shell wrapper for text and chat completions, DALL-E, Whisper, and awesome-chatgpt-prompts(-zh).
-	pkgver = 0.14.21
-	pkgrel = 3
+	pkgver = 0.14.22
+	pkgrel = 1
 	url = https://github.com/mountaineerbr/shellChatGPT
 	arch = any
 	license = GPL3
@@ -18,7 +18,7 @@ pkgbase = chatgpt.sh
 	optdepends = xclip: copy output to clipboard
 	optdepends = python: count input tokens (tiktoken)
 	provides = chatgpt.sh
-	source = chatgpt.sh-0.14.21::git+https://github.com/mountaineerbr/shellChatGPT.git#commit=5d29582f91ca4b6b9bfb389986f9da80c258f1db
+	source = chatgpt.sh-0.14.22::git+https://github.com/mountaineerbr/shellChatGPT.git#commit=b02d728ebad707dc7aefc6e20f784a2a8532ed3d
 	sha256sums = SKIP
 
 pkgname = chatgpt.sh
