@@ -1,16 +1,16 @@
 pkgbase = python-passwdgen
 	pkgdesc = A simple password generation utility
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thanethomson/passwdgen
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-flit-core
 	depends = python
 	depends = python-pyperclip
-	provides = passwdgen
 	source = https://files.pythonhosted.org/packages/source/p/passwdgen/passwdgen-0.4.0.tar.gz
 	sha256sums = 081437e2f2958a0df934ec6de37c383f0c465675709f4e650f46c89c08484c94
 
