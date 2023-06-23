@@ -5,7 +5,7 @@ _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-gcc
 pkgver=13.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection - cross compiler for aarch64'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
@@ -15,7 +15,7 @@ makedepends=($_arch-binutils git)
 provides=($_arch-gcc)
 conflicts=($_arch-gcc)
 options=(!emptydirs !strip staticlibs)
-_commit=ffc6b225c955a3d8478de1beba5ad08a7396648c
+_commit=fd8fc2c2ef69013043d0484b93054fb39b37664e
 source=(git+https://gcc.gnu.org/git/gcc.git#commit=${_commit})
 
 sha256sums=('SKIP')
