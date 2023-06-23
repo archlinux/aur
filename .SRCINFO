@@ -1,13 +1,17 @@
 pkgbase = vstar-aavso
 	pkgdesc = VStar is a multi-platform, easy-to-use variable star data visualization and analysis tool that was originally developed as part of the AAVSOs Citizen Sky project.
 	pkgver = 2.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.aavso.org/vstar
 	arch = any
 	license = AGPL3
 	makedepends = ant
 	depends = java-environment-common
-	source = https://github.com/AAVSO/VStar/archive/refs/tags/2.22.0.tar.gz
+	source = vstar-aavso-2.22.0.tar.gz::https://github.com/AAVSO/VStar/archive/refs/tags/2.22.0.tar.gz
+	source = vstar
+	source = vstar.desktop
 	sha256sums = 12d2a1bd9b8a620090139c7658a079b38816730408cb86d9fc956ba817b11473
+	sha256sums = 3ff10bedbc12dc37a7995602c67298e0df6a701bc568a29c1821d07e2046187d
+	sha256sums = a7f7ed7413eb454f89a5674e00077a661ed6d96d8b7c4356f2ac27278a83a272
 
 pkgname = vstar-aavso
