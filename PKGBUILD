@@ -30,14 +30,12 @@ mypackagename=pyNotify
 pkgver() {
 	cd "${_pkgname}"
 	printf "0.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	cd "$pkgname"
-	printf "0.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" > pyNotify.ver
 }
 
-# prepare() {
-# 	cd "$_pkgname"
-#  	echo "$pkgver" > pyNotify.ver
-# }
+prepare() {
+	cd "$pkgname"
+ 	echo "$pkgver" > pyNotify.ver
+}
 
 build() {
 	#sudo pacman -S --needed libappindicator-gtk3 gnome-shell-extension-appindicator
