@@ -1,6 +1,6 @@
 pkgbase = hyprland-scratchpad-git
 	pkgdesc = A helper for scratchpads within Hyprland.
-	pkgver = r34.c19c544
+	pkgver = 814e260
 	pkgrel = 1
 	url = https://github.com/hyprwm/contrib
 	arch = any
