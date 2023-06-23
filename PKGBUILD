@@ -30,6 +30,7 @@ validpgpkeys=()
 
 pkgver() {
 	#cd "${pkgname}"
+	pwd
 	cd "$mypackagename"
 	printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
