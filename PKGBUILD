@@ -78,6 +78,6 @@ package() {
 	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${mypackagename}.conf /opt/${mypackagename}/${mypackagename}.conf.sample
 
 	desktop-file-install --dir=$HOME/.local/share/applications /opt/${mypackagename}/${mypackagename}.desktop
-	sudo install -Dm644 LICENSE "usr/share/licenses/${pkgname}/LICENSE"
+	sudo install -Dm644 LICENSE "/usr/share/licenses/${pkgname}/LICENSE"
 	sudo install -Dm644 README.md "/usr/share/doc/${pkgname}/README.md"
 }
