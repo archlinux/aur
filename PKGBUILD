@@ -1,5 +1,5 @@
 # Maintainer: Fernando Seoane <fseoane@hotmail.com>
-mypackagename=pyNotify
+mypackagename=pyNotify   # only if github repo has a different name than this pkgbase/pkgname
 pkgname=pynotify-git
 pkgbase=pynotify-git
 pkgver=0.5
@@ -29,7 +29,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "$mypackagename"
-	printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "0.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
