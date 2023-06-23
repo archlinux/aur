@@ -1,20 +1,13 @@
-# Contributor: Otreblan <otreblain@gmail.com>
-# Contributor: Teodor Nikolov <teodor.nikolov22@gmail.com>
-# Contributor: Asuka Minato
-
 pkgname=libtree-bin
 pkgver=3.1.1
+# Contributor: Asuka Minato
 pkgrel=1
 pkgdesc="ldd as a tree"
 arch=('x86_64' 'i686' aarch64 armv7h armv6h)
 url="https://github.com/haampie/libtree"
 license=('MIT')
-depends=()
-makedepends=()
 conflicts=(libtree libtree-git)
-optdepends=()
 provides=(libtree)
-checkdepends=()
 source=(https://raw.githubusercontent.com/haampie/libtree/37d3d040dfe18b2762995c058818928559d7ca2a/LICENSE)
 source_x86_64=("$pkgname-$pkgver-x86_64::https://github.com/haampie/libtree/releases/download/v${pkgver}/libtree_x86_64")
 source_i686=("$pkgname-$pkgver-i686::https://github.com/haampie/libtree/releases/download/v${pkgver}/libtree_i686")
