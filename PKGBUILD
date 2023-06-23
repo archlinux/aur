@@ -3,7 +3,7 @@
 pkgname=keepass-plugin-hibpofflinecheck
 _pluginname=HIBPOfflineCheck
 pkgver=1.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Keepass plugin that performs offline checks against the haveibeenpwned passwords file"
 depends=('keepass')
 arch=('any')
@@ -22,5 +22,5 @@ build() {
 }
 
 package() {
-	install -Dm644 "${srcdir}/${_pluginname}-${pkgver}/build.plgx" "${pkgdir}/usr/share/keepass/Plugins/${_pluginname}.plgx"
+	install -Dm644 "${srcdir}/${_pluginname}-${pkgver}/build.plgx" "${pkgdir}/usr/share/keepass/plugins/${_pluginname}.plgx"
 }
