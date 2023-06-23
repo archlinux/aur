@@ -3,7 +3,7 @@
 
 pkgbase=plasma-workspace-git
 pkgname=(plasma-workspace-git plasma-wayland-session-git)
-pkgver=5.27.80_r13857.gb5c675324
+pkgver=5.27.80_r13935.g85014ec0a
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=($CARCH)
@@ -11,8 +11,8 @@ url='https://kde.org/plasma-desktop/'
 license=(LGPL)
 depends=(knotifyconfig-git libksysguard-git ktexteditor-git libqalculate kde-cli-tools-git appstream-qt phonon-qt6-git
          xorg-xrdb xorg-xsetroot kactivitymanagerd-git kholidays-git xorg-xmessage milou-git prison-git kwin-git
-         plasma-integration-git kdelibs4support-git kpeople-git kactivities-stats-git libkscreen-git kquickcharts-git kuserfeedback-git layer-shell-qt-git)
-makedepends=(git extra-cmake-modules-git kdoctools-git gpsd baloo-git networkmanager-qt-git kdesignerplugin-git kinit-git plasma-wayland-protocols-git)
+         plasma-integration-git kpeople-git kactivities-stats-git libkscreen-git kquickcharts-git kuserfeedback-git layer-shell-qt-git)
+makedepends=(git extra-cmake-modules-git kdoctools-git gpsd baloo-git networkmanager-qt-git plasma-wayland-protocols-git plasma5support-git)
 conflicts=(${pkgbase%-git})
 provides=(${pkgbase%-git})
 groups=(plasma-git)
