@@ -3,8 +3,8 @@
 pkgname=flaresolverr-bin
 _pkgname=flaresolverr
 __pkgname=FlareSolverr
-pkgver=3.2.0
-pkgrel=3
+pkgver=3.2.1
+pkgrel=1
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=('x86_64')
 url='https://github.com/FlareSolverr/FlareSolverr'
