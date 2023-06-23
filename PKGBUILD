@@ -1,7 +1,7 @@
-# Maintainer: Frédéric Mangano-Tarumi <fmang+aur mg0.fr>
+# Maintainer: Frédéric Mangano <fmang+aur mg0.fr>
 
 pkgname='oshu'
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Fast port of the osu! rhythm game'
 url='https://github.com/fmang/oshu/'
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('sdl2' 'sdl2_image' 'ffmpeg' 'cairo' 'pango')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fmang/oshu/archive/$pkgver.tar.gz")
-sha256sums=('ae538aa02aa6058d0dc9db2b60feb07edda5f62c4cc6a3d8efae7d918a7c1003')
+sha256sums=('2f576ffd87af58bc246f7e3277ec4193799648b56909a309990ba73af6070ad4')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
