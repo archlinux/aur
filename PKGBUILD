@@ -11,12 +11,14 @@ license=('GPL')
 depends=(
 		"python-psutil"
 		"python-argparse-shim"  # Arch bug report "https://bugs.archlinux.org/task/78484"
-		"lenovolegionlinux-git"
 		"acpid"
 )
 makedepends=(
 		"git" 
 		"python"
+)
+conflicts(
+		"lenovolegionlinux-git"
 )
 options=(!makeflags !buildflags !strip)
 changelog=
