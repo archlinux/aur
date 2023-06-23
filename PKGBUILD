@@ -2,7 +2,8 @@
 
 pkgname=mhap
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
+pkgdesc='A locality-sensitive hashing to detect long-read overlaps. https://doi.org/10.1038/nbt.3238'
 arch=('any')
 url=https://github.com/marbl/MHAP
 license=('Apache')

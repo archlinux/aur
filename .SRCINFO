@@ -1,6 +1,7 @@
 pkgbase = mhap
+	pkgdesc = A locality-sensitive hashing to detect long-read overlaps. https://doi.org/10.1038/nbt.3238
 	pkgver = 2.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marbl/MHAP
 	arch = any
 	license = Apache
