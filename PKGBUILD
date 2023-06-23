@@ -13,12 +13,9 @@ _upstream_arch=
 _appimage="eID_klient-${_upstream_arch}.AppImage"
 _archive="eID_klient_${_upstream_arch}.tar.gz"
 _url="https://eidas.minv.sk/downloadservice/eidklient/linux"
-# alternative version URI: https://eidas.minv.sk/TCTokenService/download/linux/ubuntu/version.txt
-source=("${_url}/eID_klient_release_notes.txt")
 source_i686=("${_url}/${_archive}")
 source_x86_64=("${_url}/${_archive}")
 # upstream update would break this PKGBUILD if we used integrity checks
-md5sums=('SKIP')
 md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
 options=("!strip")
@@ -30,8 +27,7 @@ prepare() {
 }
 
 pkgver() {
-    # Match version from upstream release notes
-    grep -Pom1 'verzia \K[0-9.]+' eID_klient_release_notes.txt
+    strings "${srcdir}/squashfs-root/eID_Client" | grep -Pom1 '^eID_klient_v\K[0-9.]+'
 }
 
 package() {
