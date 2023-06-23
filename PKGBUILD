@@ -1,38 +1,32 @@
-# Maintainer: Cravix < dr dot neemous at gmail dot com >
+# Maintainer: Reto <reto@sligthlybroken.com>
+# Contributor: Cravix < dr dot neemous at gmail dot com >
 
 pkgname=limnoria
-_pkgname=Limnoria
-pkgver=20210411
-_pkgver=2021-04-11
+pkgver=2023.5.27
 pkgrel=1
-pkgdesc="An IRC bot based on Supybot, with sqlite3 support and other features"
+pkgdesc="A robust, full-featured and user/programmer-friendly Python IRC bot"
 arch=('any')
 url="https://github.com/ProgVal/Limnoria"
-license=('3-clause BSD')
-depends=('python>=3.4')
-makedepends=('git')
-optdepends=("python-charade: Detect page's encoding"
-    "python-pytz: Enable Time plugin to calculate the time in specified timezone"
-    "python-dateutil: Enable Time plugin to parse the input time string"
-    "python-gnupg: GnuPG support"
-    "python-feedparser: RSS plugin support"
-    "python-sqlalchemy: Aka plugin support"
-    "python-pysocks: SOCKS proxy support"
-    "python-mock: For testing only"
-    "python-cryptography: ECDSA support")
-conflicts=('limnoria-python3' 'limnoria-git' 'limnoria-python3-git')
-source=("https://github.com/ProgVal/Limnoria/archive/master-${_pkgver}.tar.gz")
-md5sums=('5822c4292697e35d758d716d0a810327')
-install=".install"
+license=('BSD')
+depends=('python')
+makedepends=(python-build python-installer python-wheel python-setuptools)
+optdepends=(
+'python-chardet: to detect encoding of incoming IRC lines, if they are not in UTF-8'
+'python-gnupg: for authenticated based on GPG tokens'
+'python-pysocks: for SOCKS proxy (typically used to connect to IRC via Tor)'
+'python-cryptography: required to load the Fediverse plugin (used to implement HTTP signatures)'
+'python-feedparser: required to load the RSS plugin'
+'python-dateutil: enable fancy time string parsing in the Time plugin'
+)
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('1ea3415c398f534be1d5c034b3058aef4f0c9c270011e891c5fff2696d8e87f5')
 
 build() {
-    cd "$srcdir/$_pkgname-master-${_pkgver}"
-
-    python3 setup.py build
+    cd "$srcdir/$pkgname-$pkgver" || exit 1
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/$_pkgname-master-${_pkgver}"
-
-    python3 setup.py install --root="$pkgdir" || return 1
+    cd "$srcdir/$pkgname-$pkgver" || exit 1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
