@@ -1,0 +1,15 @@
+pkgbase = web-greeter-theme-shikai
+	pkgdesc = Modern lightdm webkit2 theme
+	pkgver = v1.4.3
+	pkgrel = 1
+	url = https://github.com/TheWisker/Shikai
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = lightdm
+	depends = web-greeter
+	conflicts = web-greeter-theme-shikai
+	source = git+https://github.com/TheWisker/Shikai.git
+	sha256sums = SKIP
+
+pkgname = web-greeter-theme-shikai
