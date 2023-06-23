@@ -3,7 +3,7 @@ Description=CrashPlanPRO Backup Engine
 After=network.target
 
 [Service]
-Type=simple
+Type=forking
 EnvironmentFile=/opt/crashplan/bin/run.conf
 WorkingDirectory=/opt/crashplan
 ExecStart=/opt/crashplan/bin/service.sh start
