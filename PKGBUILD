@@ -1,7 +1,7 @@
 # Maintainer: Nikhil Singh <nik.singh710@gmail.com>
 
 pkgname=hyprland-scratchpad-git
-pkgver=814e260
+pkgver=r51.93b6aba
 pkgrel=1
 pkgdesc="A helper for scratchpads within Hyprland."
 arch=("any")
