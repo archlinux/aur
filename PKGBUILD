@@ -2,7 +2,7 @@
 
 pkgname=hyprland-scratchpad-git
 pkgver=r51.93b6aba
-pkgrel=2
+pkgrel=1
 pkgdesc="A helper for scratchpads within Hyprland."
 arch=("any")
 url="https://github.com/hyprwm/contrib"
