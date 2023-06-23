@@ -18,7 +18,7 @@ provides=(pyNotify)
 conflicts=(pyNotify)
 replaces=(pyNotify)
 backup=()
-options=('PKGDEST='"$mypackagename")
+options=('PKGDEST=$mypackagename')
 install=
 changelog=
 source=("git+$url")
