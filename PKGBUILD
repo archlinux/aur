@@ -1,7 +1,8 @@
 # Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=steamguard-cli
-pkgver=0.8.0
+_pkgname=steamguard
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A linux utility for generating 2FA codes for Steam and managing Steam trade confirmations."
 arch=('x86_64')
@@ -9,7 +10,7 @@ url='https://github.com/dyc3/steamguard-cli'
 license=('GPL3')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dyc3/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('27f243a03b1df2b6ebcb4958a9c7f11cbd47f0716c3f7c0c7fa06898afaf6c37')
+sha256sums=('a8c2075f9229f3eb35d216c43cd5108155a82062218ea6eb77e17be6388d8ead')
 options=(!lto)
 
 prepare() {
@@ -24,8 +25,8 @@ build() {
     cargo build --frozen --release --all-features
 
     # completion
-    "target/release/$pkgname" completion --shell bash > "$srcdir/$pkgname-$pkgver/$pkgname"
-    "target/release/$pkgname" completion --shell zsh > "$srcdir/$pkgname-$pkgver/_$pkgname"
+    "target/release/$_pkgname" completion --shell bash > "$srcdir/$pkgname-$pkgver/$pkgname"
+    "target/release/$_pkgname" completion --shell zsh > "$srcdir/$pkgname-$pkgver/_$_pkgname"
 }
 
 check() {
@@ -37,7 +38,7 @@ check() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     # NOTE: Install as steamguard, otherwise completions won't work
-    install -Dm0755 "target/release/$pkgname" "$pkgdir/usr/bin/steamguard"
-    install -Dm0644 "$pkgname" "$pkgdir/usr/share/bash-completion/completions/steamguard"
-    install -Dm0644 -t "$pkgdir/usr/share/zsh/site-functions/" "_$pkgname"
+    install -Dm0755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm0644 "$pkgname" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+    install -Dm0644 -t "$pkgdir/usr/share/zsh/site-functions/" "_$_pkgname"
 }
