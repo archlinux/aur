@@ -1,8 +1,8 @@
 # Maintainer: lilikoi <jamilbio20@gmail.com>
 pkgname='chatgpt.sh'
 pkgver=0.14.21
-_commit=0f8f9c892a30de8efc531203355a637896341f54
-pkgrel=2
+_commit=5d29582f91ca4b6b9bfb389986f9da80c258f1db
+pkgrel=3
 pkgdesc='Shell wrapper for text and chat completions, DALL-E, Whisper, and awesome-chatgpt-prompts(-zh).'
 url='https://github.com/mountaineerbr/shellChatGPT'
 arch=('any')
@@ -28,6 +28,7 @@ package() {
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "man/${pkgname}.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+	install -Dm644 "man/${pkgname}.txt" "$pkgdir/usr/share/doc/${pkgname}/${pkgname}.txt"
 	install -Dm644 "man/${pkgname}.html" "$pkgdir/usr/share/doc/${pkgname}/${pkgname}.html"
 	install -Dm644 "man/README.md" "$pkgdir/usr/share/doc/${pkgname}/${pkgname}.md"
 	install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
