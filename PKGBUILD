@@ -1,9 +1,6 @@
-# Contributor: Axel Navarro <navarroaxel at gmail>
-# Contributor: Asuka Minato
-
-pkgname=orogene-bin
 _pkgname=orogene
 pkgver=0.3.27
+# Contributor: Asuka Minato
 pkgrel=1
 pkgdesc='A next-generation platform and package manager for Node.js-compatible and frontend JavaScript projects'
 arch=('x86_64')
