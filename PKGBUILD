@@ -3,7 +3,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=cosmic-epoch-git
-pkgver=r71.f6346d0
+pkgver=r72.290fd03
 pkgrel=1
 pkgdesc="Cosmic desktop environment from System76's Pop!_OS written in Rust utilizing Iced inspired by GNOME"
 arch=('x86_64' 'aarch64')
@@ -81,10 +81,6 @@ prepare() {
     git -c protocol.file.allow=always submodule update "${submodule#*::}"
   done
 
-  # Don't use settings_jammy branch
-  # https://github.com/pop-os/cosmic-epoch/issues/116
-  sed -i '0,/branch = "settings_jammy"/{/branch = "settings_jammy"/d;}' cosmic-settings/Cargo.toml
-
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
   for submodule in "${_submodules[@]}"; do
@@ -124,9 +120,9 @@ check() {
 
 #  export CARGO_HOME="$srcdir/cargo-home"
 #  export RUSTUP_TOOLCHAIN=stable
-#  for p in cosmic-applibrary cosmic-settings do;
-#    pushd ${p}
-#    nice just test
+#  for p in cosmic-applibrary cosmic-bg cosmic-launcher cosmic-panel cosmic-settings; do
+#    pushd "${p}"
+#    nice just check
 #    popd
 #  done
 }
