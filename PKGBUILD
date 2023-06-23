@@ -7,11 +7,11 @@
 _pkgname=pyelftools
 pkgname=python-$_pkgname-git
 pkgver=0.29_r643.g3ee5c0e
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for analyzing ELF files and DWARF debugging information'
 url="https://github.com/eliben/$_pkgname"
 arch=(any)
-license=(custom:Public Domain)
+license=("custom:Public Domain")
 depends=(python)
 makedepends=(git python-build python-installer python-wheel python-setuptools)
 conflicts=(${pkgname%-git})
