@@ -5,7 +5,7 @@ pkgdesc='A no-frills local HTTP proxy server powered by a proxy auto-config (PAC
 url=https://github.com/williambailey/pacproxy
 arch=(x86_64)
 license=(Apache)
-install=pacproxy.install
+install=$pkgname.install
 source=(pacproxy\_$pkgver\_linux_amd64.tar.gz::https://github.com/williambailey/pacproxy/releases/download/v$pkgver/pacproxy\_$pkgver\_linux_amd64.tar.gz
 	pacproxy.service)
 b2sums=(dcae9efaea616187bfa7639beba60221a4b8e6864dbb01e37064a1d0614c636477fd034b3fb65a78fbea2360a5191ba652a4d79ef70be4afe7a4079408e02fbd
