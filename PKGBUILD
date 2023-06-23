@@ -79,17 +79,17 @@ package() {
 #	sudo rm /opt/${mypackagename}/*.png
 #	sudo rm /opt/${mypackagename}/*.svg
 
-	sudo mkdir -p ${pkgdir}/opt/${mypackagename}
+	sudo mkdir -p /opt/${mypackagename}
 	
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/dist/${mypackagename} ${pkgdir}/opt/${mypackagename}/${mypackagename}
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${mypackagename}.desktop ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/*.ogg ${pkgdir}/opt/${mypackagename}/
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/*.png ${pkgdir}/opt/${mypackagename}/
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/*.svg ${pkgdir}/opt/${mypackagename}/
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${mypackagename}.ver ${pkgdir}/opt/${mypackagename}/${mypackagename}.ver
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${mypackagename}.conf ${pkgdir}/opt/${mypackagename}/${mypackagename}.conf.sample
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/dist/${mypackagename} /opt/${mypackagename}/${mypackagename}
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${mypackagename}.desktop /opt/${mypackagename}/${mypackagename}.desktop
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/*.ogg /opt/${mypackagename}/
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/*.png /opt/${mypackagename}/
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/*.svg /opt/${mypackagename}/
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${mypackagename}.ver /opt/${mypackagename}/${mypackagename}.ver
+	sudo install -Dm755 --owner=root --group=users ${srcdir}/${pkgname}/${mypackagename}.conf /opt/${mypackagename}/${mypackagename}.conf.sample
 
-	desktop-file-install --dir=$HOME/.local/share/applications ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
-	sudo install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	sudo install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	desktop-file-install --dir=$HOME/.local/share/applications /opt/${mypackagename}/${mypackagename}.desktop
+	sudo install -Dm644 LICENSE "usr/share/licenses/${pkgname}/LICENSE"
+	sudo install -Dm644 README.md "/usr/share/doc/${pkgname}/README.md"
 }
