@@ -4,7 +4,7 @@
 _pkgname=eww
 pkgbase="$_pkgname-git"
 pkgname=($_pkgname-{x11,wayland}-git)
-pkgver=0.4.0.r32.gb31e397
+pkgver=0.4.0.r34.g25e50ed
 pkgrel=1
 pkgdesc="ElKowar's wacky widgets"
 arch=(x86_64)
@@ -15,8 +15,10 @@ makedepends=(cargo-nightly git)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$pkgbase.install
-source=("git+$url.git?signed")
-b2sums=('SKIP')
+source=("git+$url.git?signed"
+        0001-comply-with-rust-lang-rfcs-2140.patch)
+b2sums=('SKIP'
+        'fafbf79bd0c74780e53887784102102758e2d3a411c2c95fb77b5cb75b4c9bb53cda92b9b80e463704a38edb5161187f86c5c57dcb32bd768fd56addc2df937b')
 validpgpkeys=(
 	'94E8F34BCE4F4BA8ED9B29BD50E76B4711E4C3E4' # Leon Kowarschick <5300871+elkowar@users.noreply.github.com>
 	'5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23' # GitHub (web-flow commit signing) <noreply@github.com>
@@ -24,6 +26,9 @@ validpgpkeys=(
 
 prepare() {
 	cd $_pkgname
+
+	patch -Np1 -i "$srcdir/0001-comply-with-rust-lang-rfcs-2140.patch"
+
 	export RUSTUP_TOOLCHAIN=nightly
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
