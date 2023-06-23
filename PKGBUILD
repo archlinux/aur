@@ -12,9 +12,8 @@ pkgname=(
  dotnet-targeting-pack-6.0
  aspnet-targeting-pack-6.0
 )
-pkgver=6.0.18.sdk118
-_bootstrapver=
-pkgrel=2
+pkgver=6.0.19.sdk119
+pkgrel=1
 arch=(x86_64)
 url=https://www.microsoft.com/net/core
 license=(MIT)
@@ -44,7 +43,7 @@ options=(
   !lto
   staticlibs
 )
-_tag=b8b476fbe60becae6d0c3d36b7ba964aeee3523d
+_tag=044cde2ce094aec972314deb9e1c92129b7947b9
 source=(
   dotnet-installer::git+https://github.com/dotnet/installer.git#tag=${_tag}
   dotnet.sh
@@ -57,12 +56,6 @@ b2sums=('SKIP'
         '95b083b842da6049a084ca015b7ddc099550aa818fc382d556cca832fee52265be568d20a2c50e70819aef6cf879e7a368f7dd3b5966356643b2efdd756e73f4')
 
 prepare() {
-  if [[ -n $_bootstrapver ]]; then
-    curl -O https://dotnetcli.azureedge.net/source-built-artifacts/assets/Private.SourceBuilt.Artifacts.${_bootstrapver}.tar.gz
-  else
-    cp -r /usr/share/dotnet .
-  fi
-
   # fix bootstrap
   cd dotnet-installer
   git remote set-url origin https://github.com/dotnet/installer.git
@@ -72,20 +65,19 @@ pkgver() {
   cd dotnet-installer
 
   if [[ $(git describe --tags) != v6.0.* ]]; then
-    echo "Invalid SDK version"
+    msg "Invalid SDK version"
     exit 1
   fi
 
   local _standardver=$(xmllint --xpath "//*[local-name()='NETStandardLibraryRefPackageVersion']/text()" eng/Versions.props)
 
   if [[ $_standardver != 2.1.0 ]]; then
-    echo "Invalid Standard version"
+    msg "Invalid Standard version"
     exit 1
   fi
 
   local _sdkver=$(xmllint --xpath "//*[local-name()='VersionSDKMinor']/text()" eng/Versions.props)$(xmllint --xpath "//*[local-name()='VersionFeature']/text()" eng/Versions.props)
   local _runtimever=$(xmllint --xpath "//*[local-name()='MicrosoftNETCoreAppRuntimewinx64PackageVersion']/text()" eng/Versions.props)
-
 
   echo "${_runtimever}.sdk${_sdkver}"
 }
@@ -106,6 +98,9 @@ build() {
 
   cd dotnet-installer
 
+  local _bootstrapver=$(xmllint --xpath "//*[local-name()='PrivateSourceBuiltArtifactsPackageVersion']/text()" eng/Versions.props)
+  local _previousver=$(pacman -Q dotnet-source-built-artifacts-6.0 | sed -r 's/.*([0-9]\.[0-9])\.[0-9]\.sdk([0-9]+)-.*/\1.\2/')
+
   ./build.sh \
     /p:ArcadeBuildTarball=true \
     /p:TarballDir="${srcdir}"/sources
@@ -119,9 +114,8 @@ build() {
   patch -Np1 -i ../../../dotnet-core-sdk-telemetry-optout.patch
   popd
 
-  if [[ -n $_bootstrapver ]]; then
-    ln -sf "${srcdir}"/Private.SourceBuilt.Artifacts.${_bootstrapver}.tar.gz packages/archive/
-    ./prep.sh
+  if [[ $_bootstrapver != $_previousver ]]; then
+    ./prep.sh --bootstrap
     ./build.sh \
       -- \
       /v:n \
@@ -131,9 +125,10 @@ build() {
       /p:PrebuiltPackagesPath="${srcdir}"/sources/packages \
       /p:SkipPortableRuntimeBuild=true
   else
+    cp -r /usr/share/dotnet .
     ln -sf /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz packages/archive/
     ./build.sh \
-      --with-sdk "${srcdir}"/dotnet \
+      --with-sdk "${srcdir}"/sources/dotnet
       -- \
       /v:n \
       /p:ContinueOnPrebuiltBaselineError=true \
