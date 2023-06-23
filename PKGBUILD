@@ -1,9 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
 
 # Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
+# Contributor: Asuka Minato
 pkgname=ecode-bin
 pkgver=0.4.8
 pkgrel=1
@@ -11,21 +8,8 @@ pkgdesc="Lightweight multi-platform code editor designed for modern hardware wit
 url="https://github.com/SpartanJ/ecode"
 license=('MIT')
 arch=('x86_64' 'aarch64')
-epoch=
-groups=()
 depends=(gcc-libs libglvnd sdl2 bash glibc libelf)
-makedepends=()
-checkdepends=()
-optdepends=()
 provides=(ecode)
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-noextract=()
-validpgpkeys=()
 source=(LICENSE::https://raw.githubusercontent.com/SpartanJ/ecode/main/LICENSE
 ecode.sh)
 source_x86_64=("https://github.com/SpartanJ/ecode/releases/download/ecode-$pkgver/ecode-linux-$pkgver-x86_64.tar.gz")
