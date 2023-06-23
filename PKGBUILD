@@ -1,7 +1,7 @@
 # Maintainer: jfx <me at jfx dot ac>
 
 pkgname=spotify-snapstore
-pkgver=1.2.11.916.geb595a67
+pkgver=1.2.13.661.ga588f749
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 conflicts=('spotify')
@@ -19,11 +19,11 @@ options=('!strip')
 # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/spotify
 source=('spotify.protocol'
         'LICENSE'
-        "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7_67.snap"
+        "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7_68.snap"
 )
 sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
-            '3d5a9fda88a076a22bb6d0b6b586334865f03a4e852ca8e022468e3dd3520a81dea314721e26e54ba9309603e08f66588f005ee8970e73eccbf805ff70e89dca'
+            '4c7192471d2c18e54407a6ce1d61e2cb51b401cab48546bde2d1bfbfe8b90c0f8296e239f29aa3f20610eb593f0022c95d353233c480f760bc0cad46a35f17f3'
 )
 
 package() {
