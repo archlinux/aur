@@ -5,11 +5,11 @@ if [ "$(id -u)" -eq 0 ]; then
     return;
 fi
 
-if [ -d "${HOME}/.steampath" ] && [ ! -L "${HOME}/.steam/bin" ]; then
+if [ -d "${HOME}/.steam" ] && [ ! -L "${HOME}/.steam/bin" ]; then
     ln -s "${HOME}/.steampath" "${HOME}/.steam/bin"
 elif [ ! -d "${HOME}/.steampath" ] && [ ! -L "${HOME}/.steam/bin" ]; then
     mkdir -p "${HOME}/.steam/bin"
-    ln -s "${HOME}/.steampath" "${HOME}/.steam/bin"
+    ln -s "${HOME}/.steam" "${HOME}/.steam/bin"
 fi
 
 if [ ! -d "${HOME}/.config/Epic/UnrealEngine/5.0/Intermediate/" ]; then

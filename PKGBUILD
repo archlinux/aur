@@ -27,7 +27,7 @@ source=('unreal-engine-5.sh'
         'use_system_clang.patch'
         'unreal-engine-5-pacman-cache.hook'
         'ue5editor.svg')
-sha256sums=('e9bab74efd9ca14bb746634ec2bbf8d93330479f505b645465cd2ad8149a5f80'
+sha256sums=('2ce4f82af94311656c0bed179cb36349df917f5d59793693ccdc7618e5cf2c3c'
             'c04c03b2c5c933b7eb1af283d607934ad95fd57f44d62b83719061b555a85dca'
             'b0a57db9a44d0001dc76ca8504d93e273af30093c6a993a5969d82b0ace54b98'
             '9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca'
