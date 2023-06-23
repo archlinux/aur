@@ -1,9 +1,6 @@
-# Maintainer: asukaminato <asukaminato@nyan.eu.org>
-pkgname=eigenmath-git
-pkgver=r2386.058d263
-pkgrel=1
 pkgdesc="Symbolic math app"
 arch=('any')
+# Contributor: Asuka Minato
 url="https://github.com/georgeweigt/eigenmath"
 license=('BSD')
 provides=('eigenmath')
