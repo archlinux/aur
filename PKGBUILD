@@ -2,12 +2,12 @@
 
 pkgname=chrysalis
 pkgdesc='Graphical configurator for Kaleidoscope-powered keyboards'
-pkgver=0.12.0
+pkgver=0.13.2
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/keyboardio/${pkgname^}"
 license=(GPL3)
-_electron=electron17 # upstream claims there are bugs dealing with firmware with 18+
+_electron=electron23
 depends=("$_electron"
          fuse2
          uucp)
@@ -15,11 +15,15 @@ makedepends=(git
              jq
              moreutils
              node-gyp
-             yarn)
+             nodejs-lts-hydrogen
+             npm
+             squashfs-tools
+             yarn
+             zip)
 _archive="${pkgname^}-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz"
         "$pkgname.sh")
-sha256sums=('35f260867ceedf91f4e33df95ada40f9344593fb106ded980c166b3bcaab8fec'
+sha256sums=('d3d3ec1c56d620d6f88d1e5d21143b99ccc2b497b15f5b5bea080d082b165ecb'
             '9de3ff052ca4600862b8663b93bf2b4223cf2e637995c67e1fe4cb4ed893b39f')
 
 _yarnargs="--cache-folder '$srcdir/node_modules'"
@@ -27,14 +31,17 @@ _yarnargs="--cache-folder '$srcdir/node_modules'"
 prepare() {
 	local _electronVersion=$($_electron --version | sed -e 's/^v//')
 	cd "$_archive"
-	jq 'del(.devDependencies["electron"])' package.json | sponge package.json
+	npm config set fund false
+	jq '		del(.devDependencies["electron"]) |
+			.build.linux.target = ["dir"]' \
+		package.json | sponge package.json
 	yarn $_yarnargs install --frozen-lockfile --ignore-scripts
 	yarn $_yarnargs add -D --no-lockfile --ignore-scripts electron@$_electronVersion
 }
 
 build() {
 	cd "$_archive"
-	yarn $_yarnargs run build:linux
+	yarn $_yarnargs run make
 }
 
 package() {
