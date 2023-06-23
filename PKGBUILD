@@ -4,17 +4,17 @@
 pkgname=wine-lol-staging
 pkgver=8.10
 _winever=8.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A compatibility layer for running Windows programs (staging branch) with LoL patches'
 arch=('x86_64')
-url='https://www.wine-staging.com/'
+url='https://wiki.winehq.org/Wine-Staging'
 license=('LGPL')
 provides=('wine-lol')
 
 options=('staticlibs' '!lto' '!strip')
 
-source=("git+https://github.com/wine-staging/wine-staging.git#tag=v${_winever}"
-        "git+https://github.com/wine-mirror/wine.git#tag=wine-${_winever}"
+source=("git+https://gitlab.winehq.org/wine/wine-staging.git#tag=v${_winever}"
+        "git+https://gitlab.winehq.org/wine/wine.git#tag=wine-${_winever}"
         "0004-LoL-broken-client-update-fix.patch"
         "0005-LoL-client-slow-start-fix.patch"
         "0008-ntdll-nopguard-call_vectored_handlers.patch"
@@ -94,43 +94,46 @@ optdepends=(
 
 prepare() {
     # restore the wine tree to its git origin state, without wine-staging patches
-    printf '%s\n' '  -> Cleaning wine source code tree...'
+    echo '  -> Cleaning wine source code tree...'
     git -C wine reset --hard HEAD  # restore tracked files
     git -C wine clean -xdf         # delete untracked files
 
     # change back to the wine upstream commit that this version of wine-staging is based in
-    printf '%s\n' '  -> Changing wine HEAD to the wine-staging base commit...'
+    echo '  -> Changing wine HEAD to the wine-staging base commit...'
     git -C wine config --local advice.detachedHead false
     git -C wine checkout wine-${_winever}
 
     # RCS Launcher Optional, not necessary since 64bit update as only thing useful there is missing fonts patch
-    printf '%s\n' '  -> Applying wine-staging patches...'
+    echo '  -> Applying wine-staging patches...'
     cd "${srcdir}/wine"
     "${srcdir}/wine-staging/staging/patchinstall.py" --all
 
     cd "${srcdir}/wine"
 
     # RCS Launcher, Something with resolving long paths and symlinks, needed confirmed 8.5
-    printf 'Apply 0004-LoL-broken-client-update-fix\n'
+    echo 'Apply 0004-LoL-broken-client-update-fix'
     patch -Np1 < "${srcdir}/0004-LoL-broken-client-update-fix.patch"
 
     # LCU Launcher, Hack for league to start in reasonable time
-    printf 'Apply 0005-LoL-client-slow-start-fix.patch\n'
+    echo 'Apply 0005-LoL-client-slow-start-fix.patch'
     patch -Np1 < "${srcdir}/0005-LoL-client-slow-start-fix.patch"
 
     # Game, Add some nops around exception dispatch for pacman/stub.dll to be able to hook
-    printf 'Apply 0008-ntdll-nopguard-call_vectored_handlers.patch\n'
+    echo 'Apply 0008-ntdll-nopguard-call_vectored_handlers.patch'
     patch -Np1 < "${srcdir}/0008-ntdll-nopguard-call_vectored_handlers.patch"
 
     # Game Optional, only necessary when starting LoL.exe wine manually (e.g. when running .rofl files)
-    printf 'Apply 0009-kernel32-dont-create-console-when-not-cui.patch\n'
+    echo 'Apply 0009-kernel32-dont-create-console-when-not-cui.patch'
     patch -Np1 < "${srcdir}/0009-kernel32-dont-create-console-when-not-cui.patch"
+
+    # Clean up .orig files
+    echo "Clean up .orig files"
+    find ./ -name '*.orig' -delete
 }
 
 build() {
-    # does not compile without remove these flags as of 4.10
-    export CFLAGS="${CFLAGS/-fno-plt/}"
-    export LDFLAGS="${LDFLAGS/,-z,now/}"
+    cd "${srcdir}/wine"
+    autoreconf -f
 
     printf '%s\n' '  -> Building wine-lol-staging-64...'
     mkdir -p "${srcdir}/build-64"
@@ -145,7 +148,7 @@ build() {
         --enable-win64 \
         --disable-tests \
         --disable-winemenubuilder
-    make -j`nproc`
+    make -j"$(nproc)"
 
     printf '%s\n' '  -> Building wine-lol-staging-32...'
     mkdir -p "${srcdir}/build-32"
@@ -161,7 +164,7 @@ build() {
         --with-wine64="${srcdir}/build-64" \
         --disable-tests \
         --disable-winemenubuilder
-    make -j`nproc`
+    make -j"$(nproc)"
 }
 
 package() {
