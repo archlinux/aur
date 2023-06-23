@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
 
 pkgname=python-jaxlib-cuda
-pkgver=0.4.12
-pkgrel=6
+pkgver=0.4.13
+pkgrel=1
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -20,8 +20,8 @@ conflicts=('python-jaxlib')
 provides=("python-jaxlib=$pkgver")
 source=("jaxlib-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v${pkgver}.tar.gz"
         'bazelrc.user')
-sha256sums=('90bdaf1351809f6d73ffc20dbdd4390293742a62368e33870ef3a67e2ce52647'
-            'SKIP')
+sha256sums=('45766238b57b992851763c64bc943858aebafe4cad7b3df6cde844690bc34293'
+            '07da4c3594dad382ee02748b860c629ffa083ba37ad22a892291bdc72efbac5e')
 
 prepare() {
     # Allow any bazel version
