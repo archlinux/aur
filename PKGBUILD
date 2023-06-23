@@ -31,12 +31,12 @@ validpgpkeys=()
 pkgver() {
 	#cd "${pkgname}"
 	cd "$mypackagename"
-	printf "0.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
 	cd "$mypackagename"
- 	echo "$pkgver" > pyNotify.ver
+ 	echo "$pkgver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)" > pyNotify.ver
 }
 
 build() {
