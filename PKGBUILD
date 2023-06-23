@@ -3,7 +3,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 _base=CryptoParser
 pkgname=python-${_base,,}
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Cryptographic protocol parser"
 arch=(any)
