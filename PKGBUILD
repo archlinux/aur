@@ -32,7 +32,7 @@ sha256sums=('9a84b05b718913d3d1fbe462a2da671abff2cb94bb2ded75a3af12204cebe32f'
             'db2e160e5d5cf82ed69d0926ac51c0eccb9efc541f89be3bb467d85be509f735'
             '4bea2fe6e8580a4316451ca5c8b921bd908422d839f8bd9ceaddd709f9178153'
             'd55c2f4088505116a5bad6d09f5ebe232e7c6a269ea6bf46daada02bc3a9f961'
-            '2c2fb104cb0312977c30b60711e174661df92ce6dc585f902409de88174edb4a')
+            '570e7221c38bf5afd213dc47c01ec461504af74cfe2cfd0ec4bf076eef004f53')
 sha256sums_x86_64=('deadc2a21223e0169e747471e9c0cfa95bbf9645bd6534f287342aa050b853d1')
 
 _parch=$(echo ${arch} | sed "s/x86_64/x64/;s/aarch64/arm64/")
