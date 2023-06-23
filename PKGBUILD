@@ -1,7 +1,7 @@
 # Maintainer: Markus Pesch <markus.pesch@cryptic.systems>
 
 pkgname=mint-backgrounds
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="The backgrounds of Linux Mint"
 license=('Various')
@@ -34,4 +34,5 @@ depends=(
   'mint-backgrounds-una'
   'mint-backgrounds-vanessa'
   'mint-backgrounds-vera'
+  'mint-backgrounds-victoria'
 )

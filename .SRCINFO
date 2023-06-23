@@ -1,6 +1,6 @@
 pkgbase = mint-backgrounds
 	pkgdesc = The backgrounds of Linux Mint
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	arch = any
 	license = Various
@@ -31,5 +31,6 @@ pkgbase = mint-backgrounds
 	depends = mint-backgrounds-una
 	depends = mint-backgrounds-vanessa
 	depends = mint-backgrounds-vera
+	depends = mint-backgrounds-victoria
 
 pkgname = mint-backgrounds
