@@ -1,4 +1,6 @@
-# Maintainer: Caleb Fontenot <foley2431@gmail.com>
+# Maintainer: Guillaume ETHEVE <admin@guillaume-etheve.fr>
+# Contributor: Caleb Fontenot <foley2431@gmail.com>
+
 
 pkgname=howdy-beta-git
 pkgver=2.6.1.r183.gdb3a8cb
@@ -82,21 +84,21 @@ package() {
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/howdy/LICENSE"
 
-	install -dm700 "${pkgdir}/etc/howdy"
-	install -dm700 "${pkgdir}/usr/lib/security"
+	install -dm755 "${pkgdir}/etc/howdy"
+	install -dm755 "${pkgdir}/usr/lib/security"
 
 	cp -r howdy/src/* -t "${pkgdir}/etc/howdy"
 	#cp -r howdy/src/config.ini -t "${pkgdir}/etc/howdy"
 
 
-	install -dm700 "${pkgdir}/etc/howdy/dlib-data"
-	install -Dm600 "${srcdir}/dlib_face_recognition_resnet_model_v1.dat" "${pkgdir}/etc/howdy/dlib-data"
-	install -Dm600 "${srcdir}/mmod_human_face_detector.dat" "${pkgdir}/etc/howdy/dlib-data"
-	install -Dm600 "${srcdir}/shape_predictor_5_face_landmarks.dat" "${pkgdir}/etc/howdy/dlib-data"
+	install -dm755 "${pkgdir}/etc/howdy/dlib-data"
+	install -Dm644 "${srcdir}/dlib_face_recognition_resnet_model_v1.dat" "${pkgdir}/etc/howdy/dlib-data"
+	install -Dm644 "${srcdir}/mmod_human_face_detector.dat" "${pkgdir}/etc/howdy/dlib-data"
+	install -Dm644 "${srcdir}/shape_predictor_5_face_landmarks.dat" "${pkgdir}/etc/howdy/dlib-data"
 
 	install -Dm700 "howdy/src/cli.py" "${pkgdir}/etc/howdy/cli.py"
-	find ${pkgdir}/etc/howdy -type f -exec chmod 600 {} +
-	find ${pkgdir}/etc/howdy -type d -exec chmod 700 {} +
+	find ${pkgdir}/etc/howdy -type f -exec chmod 644 {} +
+	find ${pkgdir}/etc/howdy -type d -exec chmod 755 {} +
 
 	install -dm755 "${pkgdir}/usr/bin/"
 	chmod 755 "${pkgdir}/etc/howdy/cli.py"
