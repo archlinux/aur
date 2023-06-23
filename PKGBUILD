@@ -6,16 +6,25 @@ _name="pep517"
 _pkgname="python-${_name}"
 pkgname="python2-${_name}"
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrappers to build Python packages using PEP 517 hooks"
 arch=('any')
 license=('MIT')
 url="https://github.com/pypa/${_name}"
-depends=('python2-toml' 'python2-importlib-metadata' 'python2-zipp')
+depends=(
+  'python2-toml'
+  'python2-importlib-metadata'
+  'python2-zipp')
 makedepends=('python2-setuptools')
-checkdepends=('python-mock' 'python-pytest-flake8' 'python-testpath' 'python-pip')
-source=("https://pypi.io/packages/source/p/pep517/pep517-$pkgver.tar.gz")
-sha512sums=('4981aacef2b7bf86205a93753699c1af557a1af6e33214d8ecc99922ba48988a0cedd0e3194839f790c37b751d6caf3c85fd7538f0e33d15a7c97cf20174e4fd')
+checkdepends=(
+  'python-mock'
+  'python-pytest-flake8'
+  'python-testpath'
+  'python-pip')
+_source_url="https://pypi.io/packages/source"
+source=("${_source_url}/p/${_name}/${_name}-${pkgver}.tar.gz")
+sha512sums=(
+  '4981aacef2b7bf86205a93753699c1af557a1af6e33214d8ecc99922ba48988a0cedd0e3194839f790c37b751d6caf3c85fd7538f0e33d15a7c97cf20174e4fd')
 
 prepare() {
   cd "${_name}-${pkgver}" || exit
@@ -39,6 +48,9 @@ build() {
 # shellcheck disable=SC2154
 package() {
   cd "${_name}-${pkgver}-py2" || exit
-  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  python2 setup.py install --root="${pkgdir}" \
+                           --optimize=1 \
+                           --skip-build
+  install -Dm644 LICENSE \
+                 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
