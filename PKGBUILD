@@ -4,7 +4,7 @@
 
 _pkgname=eww
 pkgname="$_pkgname-tray-wayland-git"
-pkgver=r26.5f69d75
+pkgver=r29.be553cb
 pkgrel=1
 pkgdesc="ElKowar's wacky widgets (ralismark's fork) (Wayland build with systray support)"
 arch=('x86_64')
