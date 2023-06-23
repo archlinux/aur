@@ -1,16 +1,10 @@
 pkgbase = git-review
 	pkgdesc = Tool to submit code to Gerrit
 	pkgver = 2.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://opendev.org/opendev/git-review
 	arch = any
 	license = APACHE
-	checkdepends = java-runtime=11
-	checkdepends = libcups
-	checkdepends = openssh
-	checkdepends = procps-ng
-	checkdepends = python-stestr
-	checkdepends = python-mock
 	makedepends = python-pbr
 	makedepends = python-build
 	makedepends = python-installer

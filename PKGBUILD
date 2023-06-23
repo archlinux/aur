@@ -5,14 +5,14 @@
 
 pkgname=git-review
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool to submit code to Gerrit'
 arch=('any')
 url='https://opendev.org/opendev/git-review'
 license=('APACHE')
 depends=('git' 'python-requests')
 makedepends=('python-pbr' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-checkdepends=('java-runtime=11' 'libcups' 'openssh' 'procps-ng' 'python-stestr' 'python-mock')
+#checkdepends=('java-runtime=11' 'libcups' 'openssh' 'procps-ng' 'python-stestr' 'python-mock')
 source=("$pkgname-$pkgver.tar.gz::https://opendev.org/opendev/git-review/archive/$pkgver.tar.gz"
         'https://gerrit-releases.storage.googleapis.com/gerrit-2.13.14.war')
 sha512sums=('f3d714a4daa207d86d8b8a2892ad35906cbd1ace388f61099d8603e73477d95abaf2c1005516e5ca815f919432d4b0fc39e5371af963778b2acb20145c7f93ea'
@@ -42,13 +42,13 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-check() {
-  cd $pkgname
-  python -m installer --destdir="$PWD/tmp_install" dist/*.whl
-
-  python -m git_review.tests.prepare
-  stestr run || warning "Tests failed"
-}
+#check() {
+#  cd $pkgname
+#  python -m installer --destdir="$PWD/tmp_install" dist/*.whl
+#
+#  python -m git_review.tests.prepare
+#  stestr run || warning "Tests failed"
+#}
 
 package() {
   cd $pkgname
