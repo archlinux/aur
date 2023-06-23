@@ -1,9 +1,6 @@
-# Contributor: Nicola Squartini <tensor5@gmail.com> (electron-launcher.sh script)
-# Contributor: Matthew McGinn <mamcgi@gmail.com>
-# Contributor: Asuka Minato
-
 _projectname='electron'
 _pkgname="${_projectname}2"
+# Contributor: Asuka Minato
 pkgname="$_pkgname-bin"
 pkgver='2.0.18'
 pkgrel='1'
