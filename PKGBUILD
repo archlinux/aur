@@ -1,9 +1,6 @@
-# Maintainer: Maarten de Vries <maarten@de-vri.es>
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
-# Contributor: Markus Martin <markus@archwyrm.net>
-# Contributor: Asuka Minato
 
 pkgname=yaml-cpp0.6
+# Contributor: Asuka Minato
 pkgver=0.6.3
 pkgrel=1
 pkgdesc="YAML parser and emitter in C++, written around the YAML 1.2 spec"
