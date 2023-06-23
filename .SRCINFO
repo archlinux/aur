@@ -78,4 +78,4 @@ pkgname = gnome-shell-git
 	depends = mutter
 	depends = unzip
 	depends = upower
-	depends = libgnome-shell-12.so
+	depends = libmutter-12.so

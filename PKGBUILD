@@ -115,7 +115,7 @@ check() {
 }
 
 package() {
-  depends+=("lib${_pkgname}-12.so")
+  depends+=("libmutter-12.so")
   meson install -C build --destdir "${pkgdir}"
 }
 
