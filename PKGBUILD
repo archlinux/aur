@@ -11,7 +11,7 @@ arch=('any')
 url='https://opendev.org/opendev/git-review'
 license=('APACHE')
 depends=('git' 'python-requests')
-makedepends=('python-pbr')
+makedepends=('python-pbr' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('java-runtime=11' 'libcups' 'openssh' 'procps-ng' 'python-stestr' 'python-mock')
 source=("$pkgname-$pkgver.tar.gz::https://opendev.org/opendev/git-review/archive/$pkgver.tar.gz"
         'https://gerrit-releases.storage.googleapis.com/gerrit-2.13.14.war')
@@ -39,19 +39,19 @@ prepare() {
 
 build() {
   cd $pkgname
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd $pkgname
-  python setup.py install --root="$PWD/tmp_install" --optimize=1
+  python -m installer --destdir="$PWD/tmp_install" dist/*.whl
 
   python -m git_review.tests.prepare
-  PYTHONPATH="$PWD/tmp_install/usr/lib/python3.10/site-packages:$PYTHONPATH" PATH="$PWD/tmp_install/usr/bin:$PATH" stestr run || warning "Tests failed"
+  stestr run || warning "Tests failed"
 }
 
 package() {
   cd $pkgname
-  python setup.py install --optimize=1 --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 git-review.1 "$pkgdir"/usr/share/man/man1/git-review.1
 }
