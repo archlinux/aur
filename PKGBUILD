@@ -27,7 +27,7 @@ depends=(
   gnome-settings-daemon
   gsettings-desktop-schemas
   gtk4
-  libadwaita
+  libadwaita-git
   libcanberra-pulse
   libgdm
   libgweather-4
@@ -35,7 +35,7 @@ depends=(
   libnma-gtk4
   libsecret
   libsoup3
-  mutter
+  mutter-git
   unzip
   upower
 )
