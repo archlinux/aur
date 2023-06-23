@@ -1,35 +1,19 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
 
 # Maintainer: Your Name <youremail@domain.com>
+# Contributor: Asuka Minato
 pkgname=piano-rs-git
 pkgver=v0.1.0.r99.ge7d1163
 pkgrel=1
-epoch=
 pkgdesc="A multiplayer piano using UDP sockets that can be played using computer keyboard, in the terminal"
 arch=('any')
 url="https://github.com/ritiek/piano-rs/"
 license=('MIT')
-groups=()
 depends=(glibc gcc-libs alsa-lib)
 makedepends=(git cargo)
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("git+https://github.com/ritiek/piano-rs.git"
 piano-rs.sh)
-noextract=()
 sha256sums=('SKIP'
             '99d9bea2b2bc084e48a703fc1dad2066e9b419b7869ea69f43d673f3cfae9b45')
-validpgpkeys=()
 pkgver() {
   cd "piano-rs"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
