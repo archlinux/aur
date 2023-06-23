@@ -1,7 +1,7 @@
 pkgbase = r-rsnps
 	pkgdesc = Get 'SNP' ('Single-Nucleotide' 'Polymorphism') Data on the Web
-	pkgver = 0.5.0.0
-	pkgrel = 6
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://cran.r-project.org/package=rsnps
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = r-rsnps
 	optdepends = r-markdown
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = https://cran.r-project.org/src/contrib/rsnps_0.5.0.0.tar.gz
-	sha256sums = 99e175037573fe06615111802bac9701ff385eceda1f34828ea4bf06851ccede
+	source = https://cran.r-project.org/src/contrib/rsnps_0.6.0.tar.gz
+	sha256sums = 22046736203b3101a2f487c60603299b7d6947c2a7cde829b4fcf1f8fb1781d3
 
 pkgname = r-rsnps
