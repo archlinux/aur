@@ -45,19 +45,19 @@ build() {
 
 package() {
 	cd "$mypackagename"
-	sudo mkdir -p ${pkgdir}/opt/${mypackagename}
+	mkdir -p ${pkgdir}/opt/${mypackagename}
 	
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/dist/${mypackagename} ${pkgdir}/opt/${mypackagename}/${mypackagename}
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.desktop ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.ogg ${pkgdir}/opt/${mypackagename}/
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.png ${pkgdir}/opt/${mypackagename}/
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.svg ${pkgdir}/opt/${mypackagename}/
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.ver ${pkgdir}/opt/${mypackagename}/${mypackagename}.ver
-	sudo install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.conf ${pkgdir}/opt/${mypackagename}/${mypackagename}.conf
-	sudo install -Dm644 --owner=root --group=root ${srcdir}/${mypackagename}/${mypackagename}.conf ${pkgdir}/etc/${mypackagename}.conf
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/dist/${mypackagename} ${pkgdir}/opt/${mypackagename}/${mypackagename}
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.desktop ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.ogg ${pkgdir}/opt/${mypackagename}/
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.png ${pkgdir}/opt/${mypackagename}/
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.svg ${pkgdir}/opt/${mypackagename}/
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.ver ${pkgdir}/opt/${mypackagename}/${mypackagename}.ver
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.conf ${pkgdir}/opt/${mypackagename}/${mypackagename}.conf
+	install -Dm644 --owner=root --group=root ${srcdir}/${mypackagename}/${mypackagename}.conf ${pkgdir}/etc/${mypackagename}.conf
 
 
 	desktop-file-install --dir=$HOME/.local/share/applications ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
-	sudo install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${mypackagename}/LICENSE"
-	sudo install -Dm644 README.md "${pkgdir}/usr/share/doc/${mypackagename}/README.md"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${mypackagename}/LICENSE"
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/${mypackagename}/README.md"
 }
