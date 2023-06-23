@@ -1,17 +1,12 @@
-# Contributor: Hao Long <imlonghao@archlinuxcn.org>
-# Contributor: Daniel M. Capella <polycitizen@gmail.com>
-# Contributor: Asuka Minato
-
 pkgname=gitleaks-bin
 _pkgname=gitleaks
+# Contributor: Asuka Minato
 pkgver=8.16.3
 pkgrel=1
 pkgdesc='Audit Git repos for secrets and keys'
 url=https://github.com/gitleaks/gitleaks
 arch=('x86_64' 'i686' armv7h armv6h aarch64)
 license=('MIT')
-depends=()
-makedepends=()
 provides=($_pkgname)
 source_x86_64=(https://github.com/gitleaks/gitleaks/releases/download/v"$pkgver"/gitleaks_"$pkgver"_linux_x64.tar.gz)
 source_i686=(https://github.com/gitleaks/gitleaks/releases/download/v"$pkgver"/gitleaks_"$pkgver"_linux_x32.tar.gz)
