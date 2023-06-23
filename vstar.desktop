@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name= vstar
+GenericName= vstar
+Comment=VStar is a multi-platform, easy-to-use variable star data visualization and analysis tool that was originally developed as part of the AAVSOs Citizen Sky project
+Exec=vstar
+Icon=vstaricon
+Terminal=false
+Type=Application
+Categories=Application;Sciences;Java,Other;
+
