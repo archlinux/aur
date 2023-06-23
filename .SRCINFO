@@ -1,0 +1,33 @@
+pkgbase = p11-kit-git
+	pkgdesc = Loads and enumerates PKCS#11 modules
+	pkgver = 0.24.1
+	pkgrel = 1
+	url = https://p11-glue.freedesktop.org
+	arch = x86_64
+	license = BSD
+	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = libtasn1
+	makedepends = libffi
+	makedepends = systemd
+	makedepends = bash-completion
+	source = git+https://github.com/p11-glue/p11-kit
+	sha256sums = SKIP
+
+pkgname = p11-kit-git
+	install = p11-kit.install
+	depends = libp11-kit=0.24.1-1
+	depends = coreutils
+	depends = libp11-kit.so
+	depends = libsystemd.so
+	provides = p11-kit
+	conflicts = p11-kit
+
+pkgname = libp11-kit-git
+	pkgdesc = Loads and enumerates PKCS#11 modules (library)
+	depends = glibc
+	depends = libtasn1
+	depends = libffi
+	provides = libp11-kit.so
+	provides = libp11-kit
+	conflicts = libp11-kit
