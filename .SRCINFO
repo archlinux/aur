@@ -1,0 +1,18 @@
+pkgbase = python-dynesty
+	pkgdesc = A dynamic nested sampling package for computing Bayesian posteriors and evidences.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/joshspeagle/dynesty
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	conflicts = python-dynesty-git
+	source = https://files.pythonhosted.org/packages/source/d/dynesty/dynesty-2.1.2.tar.gz
+	sha256sums = c5c17472c92f0372bf795534e65e3a170e2228afe9c6cbace0d0b5772f9a8bbb
+
+pkgname = python-dynesty
