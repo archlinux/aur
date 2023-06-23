@@ -1,6 +1,6 @@
 # Maintainer: Fernando Seoane <fseoane@hotmail.com>
 mypackagename=pyNotify
-pkgname=pyNotify
+pkgname=pynotify-git
 pkgbase=pynotify-git
 pkgver=0.5
 pkgrel=1
