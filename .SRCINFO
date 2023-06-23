@@ -8,7 +8,6 @@ pkgbase = pynotify-git
 	makedepends = git
 	makedepends = python3
 	makedepends = python-pip
-	makedepends = python-virtualenv
 	depends = libappindicator-gtk3
 	depends = gnome-shell-extension-appindicator
 	provides = pyNotify
