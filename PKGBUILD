@@ -4,11 +4,12 @@
 
 pkgname=(python2-wxpython3)
 pkgver=3.0.2.0
-pkgrel=10
+pkgrel=11
 pkgdesc="wxWidgets 3 Legacy GTK 3 GUI toolkit for Python 2."
 depends=(
   'python2'
   'sdl'
+  'gtk3'
 )
 provides=(
   "python2-wxpython=${pkgver}"
