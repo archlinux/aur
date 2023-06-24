@@ -1,3 +1,0 @@
-post_install() {
-   echo "To use this library, set LD_PRELOAD=mklfakeintel.so environment variable."
-}

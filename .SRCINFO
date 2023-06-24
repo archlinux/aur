@@ -3,7 +3,6 @@ pkgbase = mkl-fake-intel
 	pkgver = 1
 	pkgrel = 1
 	url = https://danieldk.eu/mkl-amd-zen/
-	install = mkl-fake-intel.install
 	arch = x86_64
 	license = custom
 	source = mklfakeintel.c
