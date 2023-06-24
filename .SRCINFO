@@ -1,13 +1,14 @@
 pkgbase = pyocd-pemicro
 	pkgdesc = PEMicro probe plugin for pyOCD
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyocd/pyocd-pemicro
 	arch = any
 	license = BSD
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools-scm
-	makedepends = python-setuptools-scm-git-archive
 	depends = python-pypemicro
 	depends = python-six
 	source = https://github.com/pyocd/pyocd-pemicro/archive/refs/tags/v1.1.5.tar.gz

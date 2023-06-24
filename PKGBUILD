@@ -2,28 +2,27 @@
 
 pkgname=pyocd-pemicro
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="PEMicro probe plugin for pyOCD"
 arch=('any')
 url="https://github.com/pyocd/pyocd-pemicro"
 license=('BSD')
 depends=('python-pypemicro'
 	 'python-six')
-makedepends=('python-setuptools'
-             'python-setuptools-scm'
-             'python-setuptools-scm-git-archive')
+makedepends=('python-build'
+	     'python-installer'
+	     'python-wheel'
+	     'python-setuptools-scm')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 md5sums=('83c5d259d913c4aa7e0fe38d8d913f3f')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  python setup.py build
+    cd "$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  
-  python setup.py install --root="$pkgdir" --optimize=1
+    cd "$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
