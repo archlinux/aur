@@ -24,7 +24,7 @@ noextract=()
 sha512sums=('SKIP')
 
 prepare() {
-  sudo pacman -S nerd-fonts
+    sudo pacman -S nerd-fonts
 }
 
 build() {
@@ -34,5 +34,5 @@ build() {
 package() {
 	cd $pkgname
 	sudo cp lmaofetch /usr/bin
-  sudo chmod +x /usr/bin/lmaofetch
+    sudo chmod +x /usr/bin/lmaofetch
 }
