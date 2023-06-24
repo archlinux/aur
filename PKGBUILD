@@ -5,7 +5,7 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
  
 pkgname=godot-voxel
-pkgver=4.1.0
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="The Godot game engine with Zylann's voxel tools module"
 url="https://voxel-tools.readthedocs.io/en/latest/"
@@ -13,8 +13,8 @@ license=('MIT')
 arch=('x86_64')
 makedepends=('scons' 'gcc')
 depends=('pkgconf' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'mesa' 'glu' 'libglvnd' 'alsa-lib' 'pulseaudio')
-source=("godot::git+https://github.com/godotengine/godot.git"
-        "godot_voxel::git+https://github.com/Zylann/godot_voxel.git"
+source=("godot::git+https://github.com/godotengine/godot.git#branch=4.0"
+        "godot_voxel::git+https://github.com/Zylann/godot_voxel.git#branch=godot4"
         "godot-voxel.desktop" )
 sha256sums=('SKIP'
             'SKIP'
