@@ -1,7 +1,7 @@
 # Maintainer: chomsky <ivanonarch at tutanota dot com>
 pkgname='lobster-git'
 _pkgname='lobster'
-pkgver='r83.af89b22'
+pkgver='4.0.0.r19.g7bbd799'
 pkgrel=1
 pkgdesc="Shell script to watch Movies/TV Shows from the terminal"
 arch=('any')
@@ -16,11 +16,11 @@ source=('lobster::git+https://github.com/justchokingaround/lobster.git')
 md5sums=('SKIP')
 
 pkgver() {
-        cd "$srcdir/${_pkgname}"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/${pkgname%-git}"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-        cd "$srcdir/${_pkgname%-VCS}"
-        install -Dm755 "./lobster.sh" "$pkgdir/usr/bin/lobster"
+    cd "$srcdir/${_pkgname%-VCS}"
+    install -Dm755 "./lobster.sh" "$pkgdir/usr/bin/lobster"
 }
