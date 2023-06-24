@@ -21,10 +21,10 @@ build() {
 }
 package() {
 	cd "$_pkgname"
-	install -m755 -d ${pkgdir}/usr/bin
-	install -m755 -d ${pkgdir}/lib/systemd/system
-	install -m755 -d ${pkgdir}/etc/awol
-	install -m644 awold.service ${pkgdir}/lib/systemd/system
-	install -m755 awold.conf "$pkgdir"/etc/awol
-	install -m755 awold "$pkgdir"/usr/bin
+	install -dm755 ${pkgdir}/usr/bin
+	install -dm755 ${pkgdir}/usr/lib/systemd/system
+	install -dm755 ${pkgdir}/etc/awol
+	install -Dm644 awold.service ${pkgdir}/usr/lib/systemd/system/
+	install -Dm644 awold.conf "$pkgdir"/etc/awol/
+	install -Dm755 awold "$pkgdir"/usr/bin/
 }
