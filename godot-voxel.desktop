@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Godot Voxel
-Comment=The Godot game engine with Zylann's voxel tools module
+Comment=The Godot game engine with Zylann's voxel tools module.
 Exec=/usr/bin/godot-voxel %U
 Icon=godot
 Terminal=false
