@@ -1,8 +1,8 @@
 # Maintainer: Andrius Lukosevicius <niobium93@gmail.com>
 
 pkgname=obs-vaapi
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="OBS Studio VAAPI support via GStreamer"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/fzwoch/obs-vaapi"
