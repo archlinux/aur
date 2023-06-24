@@ -1,17 +1,16 @@
 pkgbase = cpachecker
 	pkgdesc = Tool for configurable software verification.
-	pkgver = 1.9
-	pkgrel = 2
+	pkgver = 2.2
+	pkgrel = 3
 	url = https://svn.sosy-lab.org/software/cpachecker/trunk
 	arch = x86_64
 	license = Apache Version 2.0
-	depends = java-environment=11
+	depends = java-environment=17
 	depends = python
 	depends = bash
 	depends = jre-openjdk
 	conflicts = cpachecker-svn
-	source = https://cpachecker.sosy-lab.org/CPAchecker-1.9-unix.tar.bz2
-	md5sums = feee336b472cda8e81e70b7b6fa49c6e
+	source = https://cpachecker.sosy-lab.org/CPAchecker-2.2-unix.zip
+	md5sums = 90a858f808b708fd161e12cf8f1b460e
 
 pkgname = cpachecker
-
