@@ -6,8 +6,10 @@ pkgbase = lmaofetch
 	arch = any
 	groups = unknown
 	license = MIT
-	depends = git
-	source = https://codeberg.org/p3nguin-kun/lmaofetch
+	makedepends = git
+	depends = bash
+	optdepends = nerd-fonts: Icon font
+	source = lmaofetch::git+https://codeberg.org/p3nguin-kun/lmaofetch
 	sha512sums = SKIP
 
 pkgname = lmaofetch

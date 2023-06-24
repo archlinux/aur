@@ -8,10 +8,10 @@ arch=('any')
 url="https://codeberg.org/p3nguin-kun/lmaofetch"
 license=('MIT')
 groups=('unknown')
-depends=('git')
-makedepends=()
+depends=('bash')
+makedepends=('git')
 checkdepends=()
-optdepends=()
+optdepends=('nerd-fonts: Icon font')
 provides=()
 conflicts=()
 replaces=()
@@ -19,12 +19,11 @@ backup=()
 options=()
 #install=
 changelog=
-source=("https://codeberg.org/p3nguin-kun/lmaofetch")
+source=("$pkgname::git+https://codeberg.org/p3nguin-kun/lmaofetch")
 noextract=()
 sha512sums=('SKIP')
 
 prepare() {
-	cd $pkgname
   sudo pacman -S nerd-fonts
 }
 
