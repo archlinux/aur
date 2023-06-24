@@ -1,4 +1,4 @@
-# Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
+# Maintainer: Alex Medvědů <a13xie@mcld.eu>
 
 pkgname=ppm-git
 _pkgname=ppm
@@ -10,7 +10,6 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/pragtical/plugin-managerr"
 license=('MIT')
 depends=('pragtical' 'lua' 'zlib' 'libzip' 'libgit2' 'mbedtls2')
-# vim needed for xxd
 makedepends=('git' 'cmake' 'gcc')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
