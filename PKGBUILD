@@ -2,7 +2,7 @@
 
 pkgname=emote
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 url="https://github.com/tom-james-watson/Emote"
 pkgdesc="Emoji Picker for Linux written in GTK3"
 arch=('any')
@@ -16,9 +16,9 @@ sha256sums=('29814ec5dc5cef61f99a8c651fccefb8de7a034325a5b97a921f4b852509d3ca'
 
 prepare() {
   local staticdir=$srcdir/Emote-$pkgver/static rootdir
-  # Remove "X-Flatpak=..." and replace "Icon=..." while copying
-  # com.tomjwatson.Emote.desktop to emote.desktop
-  sed -E '/^X-Flatpak=/d; s/^(Icon)=.*/\1=emote/' \
+  # Remove "X-Flatpak=..." and "X-GNOME-Autostart-enabled=...", and replace
+  # "Icon=..." while copying com.tomjwatson.Emote.desktop to emote.desktop
+  sed -E '/^X-(Flatpak|GNOME-Autostart-enabled)=/d; s/^(Icon)=.*/\1=emote/' \
     "$staticdir/com.tomjwatson.Emote.desktop" |
     install -Dm 644 /dev/stdin "$staticdir/emote.desktop"
   # Duplicate logo.svg as emote.svg to save renaming it later
@@ -42,4 +42,7 @@ build() {
 package() {
   cd "$srcdir/Emote-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  # Start automatically by default
+  install -Dm 644 "$pkgdir/usr/share/applications/emote.desktop" "$pkgdir/etc/xdg/autostart/emote.desktop"
 }
