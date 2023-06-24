@@ -1,8 +1,8 @@
 pkgbase = pamac-cli
 	pkgdesc = Pamac cli frontend for libalpm
-	pkgver = 10.1.2
+	pkgver = 11.0.0
 	pkgrel = 1
-	url = https://gitlab.manjaro.org/applications/pamac
+	url = https://gitlab.manjaro.org/applications/pamac-cli
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -11,33 +11,12 @@ pkgbase = pamac-cli
 	arch = aarch64
 	license = GPL3
 	makedepends = gettext
-	makedepends = itstool
-	makedepends = vala>=0.36.6
+	makedepends = vala
 	makedepends = meson
-	makedepends = asciidoc
 	makedepends = ninja
-	makedepends = gobject-introspection
-	depends = glib2>=2.42
-	depends = json-glib
-	depends = libsoup
-	depends = pacman>=5.2
-	depends = dbus-glib
-	depends = desktop-file-utils
-	depends = appstream-glib
-	depends = gnutls
-	depends = archlinux-appstream-data
-	depends = git
-	optdepends = 
-	provides = pamac
-	conflicts = pamac
-	conflicts = pamac-aur
-	conflicts = pamac-aur-git
-	replaces = pamac
-	options = !emptydirs
-	source = pamac-10.1.2-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/bd6b8e8cf727cf94a1c9f4467a9157d94cad781f/pamac-bd6b8e8cf727cf94a1c9f4467a9157d94cad781f.tar.gz
-	source = meson.build
-	sha256sums = 9f172520c904ed79dd831f84b96dbe28a96d132391889fbf8207c98589221921
-	sha256sums = 13159694127c05fdc41f1ad83aa20e6d1c7c44d73b15046c62613d7f8e522c22
+	makedepends = asciidoc
+	depends = libpamac
+	source = https://gitlab.manjaro.org/applications/pamac-cli/-/archive/11.0.0/pamac-cli-11.0.0.tar.gz
+	sha256sums = 76cec50d63079619560118ace18a9478e860351614ef5d3bbaa8d78c8eec56f2
 
 pkgname = pamac-cli
-
