@@ -5,7 +5,7 @@ pkgrel=1
 epoch=
 pkgdesc="A simple system fetch written in Bash"
 arch=('any')
-url="git+https://codeberg.org/p3nguin-kun/lmaofetch"
+url="https://codeberg.org/p3nguin-kun/lmaofetch"
 license=('MIT')
 groups=('unknown')
 depends=('git')
@@ -19,7 +19,7 @@ backup=()
 options=()
 #install=
 changelog=
-source=("git+https://codeberg.org/p3nguin-kun/lmaofetch")
+source=("https://codeberg.org/p3nguin-kun/lmaofetch")
 noextract=()
 sha512sums=('SKIP')
 
