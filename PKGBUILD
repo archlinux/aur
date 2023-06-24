@@ -4,7 +4,7 @@
 
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-git
-pkgver=r255.c3dc0b6
+pkgver=r255.cb8b29f
 pkgrel=1
 pkgdesc="LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux. PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!"
 arch=("x86_64")
