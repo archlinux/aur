@@ -1,0 +1,51 @@
+pkgbase = blas-aocl
+	pkgdesc = AMD Optimizing CPU Libraries (Provides BLAS/CBLAS/LAPACK/LAPACKE system-wide)
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://developer.amd.com/amd-aocl/
+	arch = x86_64
+	license = custom
+
+pkgname = blas-aocl-gcc
+	depends = aocl-gcc
+	provides = blas
+	provides = cblas
+	provides = lapack
+	provides = lapacke
+	conflicts = blas
+	conflicts = cblas
+	conflicts = lapack
+	conflicts = lapacke
+
+pkgname = blas64-aocl-gcc
+	depends = aocl-gcc
+	provides = blas64
+	provides = cblas64
+	provides = lapack64
+	provides = lapacke64
+	conflicts = blas64
+	conflicts = cblas64
+	conflicts = lapack64
+	conflicts = lapacke64
+
+pkgname = blas-aocl-aocc
+	depends = aocl-aocc
+	provides = blas
+	provides = cblas
+	provides = lapack
+	provides = lapacke
+	conflicts = blas
+	conflicts = cblas
+	conflicts = lapack
+	conflicts = lapacke
+
+pkgname = blas64-aocl-aocc
+	depends = aocl-aocc
+	provides = blas64
+	provides = cblas64
+	provides = lapack64
+	provides = lapacke64
+	conflicts = blas64
+	conflicts = cblas64
+	conflicts = lapack64
+	conflicts = lapacke64
