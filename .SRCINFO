@@ -1,14 +1,14 @@
 pkgbase = monitorctl-bin
 	pkgdesc = A way to control monitor brightness through the command line (binary release)
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/5iddy/monitorctl
 	arch = x86_64
 	license = MIT
 	provides = monitorctl
 	conflicts = monitorctl
 	source = https://github.com/5iddy/monitorctl/releases/download/monitorctl-v0.1.2/monitorctl
-	source = https://raw.githubusercontent.com/5iddy/monitorctl/c204eb04fe440febca77e206f450dbc96d4f8f75/README.md
+	source = https://raw.githubusercontent.com/5iddy/monitorctl/monitorctl-v0.1.2/README.md
 	sha256sums = 7e577700d305b385baec20b6fda148ab3f263475041a09ce574cdfe920b739d8
 	sha256sums = SKIP
 
