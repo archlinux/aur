@@ -21,7 +21,7 @@ makedepends=(
   git
   python-build
   python-installer
-  python-setuptoos
+  python-setuptools
 )
 optdepends=(
   "lenovolegionlinux-dkms-git: DKMS module"
