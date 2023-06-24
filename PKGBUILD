@@ -11,7 +11,7 @@ url="https://github.com/fseoane/pyNotify.git"
 license=('MIT')
 groups=()
 depends=('libappindicator-gtk3' 'gnome-shell-extension-appindicator')
-makedepends=('git' 'curl' 'wget' 'unzip')
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=(pyNotify)
@@ -26,11 +26,6 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-
-# build() {
-# 	#cd "$mypackagename"
-# 	sh build.4.AUR-bin.sh
-# }
 
 package() {
 	cd "${mypackagename}.${pkgver}_Arch_amd64"
