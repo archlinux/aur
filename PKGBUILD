@@ -1,19 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=planify
 _app_id=io.github.alainm23.planify
-pkgver=3.0.7+47+g696fb7ab
-pkgrel=3
+pkgver=4.1
+pkgrel=1
 pkgdesc="Task manager with Todoist support"
 arch=('x86_64')
 url="https://useplanner.com"
 license=('GPL3')
 depends=('evolution-data-server' 'granite7' 'gtksourceview5' 'libadwaita'
-         'webkitgtk-6.0')
+         'libportal-gtk4' 'webkitgtk-6.0')
 makedepends=('git' 'gobject-introspection' 'meson' 'vala')
 checkdepends=('appstream')
 conflicts=('elementary-planner')
 replaces=('elementary-planner')
-_commit=696fb7ab3c66ea4a14a5167cb5b44e9444294ecb  # 4.0 beta on FlatHub
+_commit=547b32bb3a56fd62559db18986c3fb769b15d0a4  # tags/4.1^0
 source=("git+https://github.com/alainm23/planify.git#commit=$_commit")
 sha256sums=('SKIP')
 
