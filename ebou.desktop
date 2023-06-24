@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Ebou
+Comment=A cross platform Mastodon Client written in Rust
+Exec=ebou
+Terminal=false
+Type=Application
+Icon=ebou
+StartupWMClass=Ebou
+Categories=Internet;
