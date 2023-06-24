@@ -22,6 +22,7 @@ pkgbase = lilypond-devel
 	makedepends = tex-gyre-fonts
 	makedepends = texlive-langcyrillic
 	makedepends = texlive-metapost
+	makedepends = texlive-fontutils
 	makedepends = zip
 	depends = gcc-libs
 	depends = ghostscript

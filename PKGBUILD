@@ -21,7 +21,7 @@ groups=('pro-audio')
 depends=('gcc-libs' 'ghostscript' 'glibc' 'gsfonts' 'guile2.2')
 makedepends=('fontconfig' 'fontforge' 'freetype2' 'glib2' 'imagemagick' 'pango'
 'python' 'rsync' 't1utils' 'texinfo' 'texlive-core' 'tex-gyre-fonts'
-'texlive-langcyrillic' 'texlive-metapost' 'zip')
+'texlive-langcyrillic' 'texlive-metapost' 'texlive-fontutils' 'zip')
 optdepends=(
   'python: for lilypond-book and other scripts'
   'tex-gyre-fonts: for extra fonts'
