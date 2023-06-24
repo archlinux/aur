@@ -7,7 +7,7 @@
 # Contributor: vEX <vex at niechift dot com>
 
 pkgname=pcsx2
-pkgver=1.7.4592
+pkgver=1.7.4628
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -57,7 +57,7 @@ makedepends=(
 )
 optdepends=('qt6-wayland: Wayland support'
             'libpulse: PulseAudio support')
-_tag=b6923f49b159303bd3a2281021d22cdb6b8ea308
+_tag=b44e10df3c1f483a4a2990447a6d39bafd200912
 options=(!lto)
 source=(
 	git+https://github.com/PCSX2/pcsx2.git#tag=${_tag}
