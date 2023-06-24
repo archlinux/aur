@@ -1,12 +1,12 @@
 pkgbase = entt
 	pkgdesc = A header-only, tiny and easy to use entity-component system (and much more) written in modern C++
-	pkgver = 3.11.1
+	pkgver = 3.12.2
 	pkgrel = 1
 	url = https://skypjack.github.io/entt/
 	arch = any
 	license = MIT
 	makedepends = cmake
-	source = https://github.com/skypjack/entt/archive/v3.11.1.tar.gz
-	sha256sums = 0ac010f232d3089200c5e545bcbd6480cf68b705de6930d8ff7cdb0a29f5b47b
+	source = https://github.com/skypjack/entt/archive/v3.12.2.tar.gz
+	sha256sums = 3f3e43988218daecc0530ccaf45e960f7f7416e1fcf2c69799160c18b6a2fee3
 
 pkgname = entt
