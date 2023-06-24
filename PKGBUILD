@@ -4,9 +4,9 @@
 
 pkgname=unvanquished
 pkgver=0.54.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://www.unvanquished.net'
 license=('GPL3')
 makedepends=('cmake')
@@ -146,6 +146,11 @@ package() {
 	install -m 755 irt_core-*.nexe         "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 nacl_helper_bootstrap   "${pkgdir}/usr/lib/unvanquished/"
 	install -m 755 nacl_loader             "${pkgdir}/usr/lib/unvanquished/"
+
+	if [ "${CARCH}" == "aarch64" ]; then
+		install -m 755 nacl_helper_bootstrap-armhf "${pkgdir}/usr/lib/unvanquished/"
+		cp -r lib-armhf "${pkgdir}/usr/lib/unvanquished/"
+	fi
 
 	cd "${srcdir}/${_unvanquished}/dist/configs"
 
