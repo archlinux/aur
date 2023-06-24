@@ -1,4 +1,4 @@
-*.appimage
+*.AppImage
 /pkg
 /src
 *.tar.zst
