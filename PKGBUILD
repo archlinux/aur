@@ -2,7 +2,7 @@
 
 _pkgname='quikc'
 pkgname='quikc-git'
-pkgver=r267.c83d32e
+pkgver=r271.8d79f62
 pkgrel=1
 url="https://github.com/Ramenu/$_pkgname"
 pkgdesc='A minimalistic, safety-focused build system for C/C++'
@@ -11,6 +11,8 @@ makedepends=('cargo' 'git')
 depends=('python')
 license=('MIT')
 source=("$_pkgname::git+$url.git")
+optdepends=('gcc: GNU C/C++ compiler'
+		    'clang: LLVM C/C++ frontend')
 b2sums=('SKIP')
 
 pkgver() {
