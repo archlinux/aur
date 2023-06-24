@@ -1,11 +1,11 @@
 pkgbase = esphome-flasher-git
 	pkgdesc = Simple GUI tool to flash ESPs over USB
-	pkgver = 1.4.0.r6.g09e119a
-	pkgrel = 2
+	pkgver = 1.4.0.r17.gdf73bb5
+	pkgrel = 1
 	url = https://github.com/esphome/esphome-flasher
 	arch = any
 	license = MIT
-	depends = esptool
+	depends = esptool=3.2
 	depends = python
 	depends = python-requests
 	depends = python-wxpython

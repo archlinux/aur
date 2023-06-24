@@ -1,12 +1,12 @@
 pkgname=esphome-flasher-git
 _pkgname=esphome-flasher
-pkgver=1.4.0.r6.g09e119a
-pkgrel=2
+pkgver=1.4.0.r17.gdf73bb5
+pkgrel=1
 pkgdesc="Simple GUI tool to flash ESPs over USB"
 arch=("any")
 url="https://github.com/esphome/esphome-flasher"
 license=('MIT')
-depends=("esptool" "python" "python-requests" "python-wxpython")
+depends=("esptool=3.2" "python" "python-requests" "python-wxpython")
 provides=("esphomeflasher")
 conflicts=("esphomeflasher")
 source=("${pkgname%-*}::git+$url")
