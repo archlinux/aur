@@ -1,20 +1,19 @@
 pkgbase = daed
 	pkgdesc = A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core).
-	pkgver = 0.1.0rc
-	pkgrel = 1
+	pkgver = 0.1.0
+	pkgrel = 2
 	url = https://github.com/daeuniverse/daed
 	arch = x86_64
 	license = AGPL
 	license = MIT
-	makedepends = git
 	makedepends = pnpm
 	makedepends = clang
 	makedepends = go
 	provides = daed
 	conflicts = daed
 	options = !debug
-	source = git+https://github.com/daeuniverse/daed.git#branch=release-v0.1.0rc
-	sha256sums = SKIP
+	source = daed-0.1.0.zip::https://github.com/daeuniverse/daed/releases/download/v0.1.0/daed-full-src.zip
+	sha256sums = 8e22425eb581e180fc134d191c4b50f40ab3954b990350b07aef57467a3caf3c
 
 pkgname = daed
 	depends = v2ray-geoip
