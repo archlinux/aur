@@ -1,0 +1,17 @@
+pkgbase = radio-canada-fonts
+	pkgdesc = The Radio-Canada typeface, from Canada's public broadcaster
+	pkgver = 2.104
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Radio+Canada
+	arch = any
+	license = custom:OFL
+	source = radio-canada-fonts-e771e71ec5da5ce50306edcc15a4b29a237d23d6.tar.gz::https://github.com/cbcrc/radiocanadafonts/archive/e771e71ec5da5ce50306edcc15a4b29a237d23d6.zip
+	b2sums = 785016235ab574326aaa9e0f817e37c13444a1a3a7050495cc0bef01539b799903630c1f04ad7b6cd7cdb6b3c718d66798d4434d91a4daa949eb262ef6e6fcbe
+
+pkgname = otf-radio-canada
+
+pkgname = ttf-radio-canada
+
+pkgname = ttf-radio-canada-variable
+
+pkgname = woff2-radio-canada
