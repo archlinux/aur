@@ -1,6 +1,6 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=netpad-player
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="网络画板，用核心技术赋能智慧数学教育"
 arch=(x86_64 aarch64)
@@ -9,11 +9,10 @@ license=('custom')
 depends=(bash electron)
 makedepends=(asar gendesk)
 source=("https://www.netpad.net.cn/download/NetpadPlayer-${pkgver}.exe")
-sha256sums=('db37a6bb0659602ba130243b9e1d51f27a35b517aa227e0a21105de0bce02ad5')
+sha256sums=('9b8cc93f27c6ab8fa382564ef8e111a324fa9f1b19f86eb36619ce79017cd679')
 
 prepare() {
 	find $srcdir -name app.asar -exec asar e {} ./app \;
-	rm -vrf app/compile
 }
 
 package() {
