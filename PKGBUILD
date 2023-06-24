@@ -11,7 +11,7 @@ depends=(
     'python-aiohttp'
     'python-aiofiles'
     'python-biliass'
-    'python-dicttoxml'
+    'python-dict2xml'
     'ffmpeg'
 )
 makedepends=(python-build python-installer python-wheel python-poetry-core)
