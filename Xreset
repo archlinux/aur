@@ -1,9 +1,5 @@
 #!/bin/sh
-source /etc/xdm-xfreq/xdm-xfreq.rc
-
-if [[ -v XDM_SYNERGYS_STATE ]]; then
-	killall $XDM_SYNERGYS_BIN > /dev/null 2>&1
-fi
+source /etc/xdm-hallo/xdm-hallo.rc
 
 chmod 622 /dev/console
 chown root /dev/console

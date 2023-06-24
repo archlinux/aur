@@ -1,0 +1,93 @@
+#!/bin/sh
+
+WIDTH = 1024
+HEIGHT = 768
+if [[ -v DISPLAY ]]; then
+	if [[ -e $(type -P xdpyinfo) ]]; then
+		read WIDTH HEIGHT <<< $(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3, $4}')
+	elif [[ -e $(type -P xwininfo) ]]; then
+		read WIDTH HEIGHT <<< $(xwininfo -root | awk -F'[ x+]+' '/-geometry /{print $3, $4}')
+	fi
+fi
+
+source /etc/xdm-hallo/xdm-theme.rc
+
+# Keyboard NumLock ON
+XDM_HALLO_KEYB_LED_PATH=numlockx
+XDM_HALLO_KEYB_LED_ARGS=""
+
+# Screen settings
+XDM_HALLO_SCREEN_SET_PATH=xset
+XDM_HALLO_SCREEN_SET_ARGS="dpms"
+
+# Background color
+XDM_HALLO_BG_COLOR_PATH=xsetroot
+XDM_HALLO_BG_COLOR_ARGS="-solid $BACKGROUND"
+
+# Background picture
+if [[ -v WALLPAPER && -e $WALLPAPER ]]; then
+	XDM_HALLO_BG_WALLPAPER_PATH=display
+	XDM_HALLO_BG_WALLPAPER_ARGS="-backdrop -window root $WALLPAPER"
+fi
+
+# Clock settings
+XDM_HALLO_CLOCK_PATH=xclock
+XDM_HALLO_CLOCK_ARGS="-twentyfour -geometry $CLOCKGEOMETRY"
+XDM_HALLO_CLOCK_PID="/var/run/xdm-hallo-clock.pid"
+
+# Buttons and Notify settings
+XDM_HALLO_BUTTONS_PATH=xmessage
+XDM_HALLO_BUTTONS_ARGS="-geometry $MENUGEOMETRY"
+XDM_HALLO_BUTTONS_PID="/var/run/xdm-hallo-buttons.pid"
+XDM_HALLO_BUTTONS_MENU="-buttons \:\):99,PowerOff:11,Halt:12,Reboot:13,Sleep:14,Rescue:15"
+XDM_HALLO_BUTTONS_PWROFF="-buttons PowerOff?:11,Cancel?:12 -default Cancel? -timeout 6"
+XDM_HALLO_BUTTONS_HALT="-buttons Halt?:11,Cancel?:12 -default Cancel? -timeout 6"
+XDM_HALLO_BUTTONS_REBOOT="-buttons Reboot?:11,Cancel?:12 -default Cancel? -timeout 6"
+XDM_HALLO_BUTTONS_RESCUE="-buttons Rescue?:11,Cancel?:12 -default Cancel? -timeout 6"
+XDM_HALLO_BUTTONS_SUBMENU="-buttons \<\<:99,Screenshot:11,ScreenSaver=5min:20,ScreenSaver=7min:21,ScreenSaver=10min:22,ScreenSaver=12min:23,ScreenSaver=15min:24,ScreenSaver=20min:25"
+
+XDM_HALLO_NOTIFY_PATH=xmessage
+XDM_HALLO_NOTIFY_ARGS="-geometry $NOTIFYGEOMETRY -timeout $NOTIFYTIMEOUT -buttons"
+
+# Screenshot
+XDM_HALLO_SCREENSHOT_PATH=scrot
+XDM_HALLO_SCREENSHOT_ARGS="-d 6 /tmp/%Y%m%d-%H%M%S-\$wx\$h.png"
+
+# Screen saver (Comment the following variables to disable xscreensaver & enable xset)
+XDM_HALLO_SCREENSAVER_PATH=xscreensaver
+XDM_HALLO_SCREENSAVER_ARGS="-no-splash -no-capture-stderr"
+XDM_HALLO_SCREENSAVER_CMD=xscreensaver-command
+XDM_HALLO_SCREENSAVER_LOCK="-lock"
+XDM_HALLO_SCREENSAVER_MODE="-demo"
+XDM_HALLO_SCREENSAVER_PREF="-prefs"
+# xset timeout values
+XDM_HALLO_SCREENSAVER[0]=300
+XDM_HALLO_SCREENSAVER[1]=420
+XDM_HALLO_SCREENSAVER[2]=600
+XDM_HALLO_SCREENSAVER[3]=720
+XDM_HALLO_SCREENSAVER[4]=900
+XDM_HALLO_SCREENSAVER[5]=1500
+
+# PowerOff
+XDM_HALLO_POWEROFF_CMD="systemctl poweroff"
+
+# Halt
+XDM_HALLO_HALT_CMD="systemctl halt"
+
+# Reboot
+XDM_HALLO_REBOOT_CMD="systemctl reboot"
+
+# Suspend to sleep
+XDM_HALLO_SLEEP_CMD="systemctl suspend"
+
+# Rescue level
+XDM_HALLO_RESCUE_CMD="systemctl rescue"
+
+# Users settings
+USERTMPFS="/var/run/user/$(id --user)"
+if [ -d $USERTMPFS ]; then
+	XSESSION_ERR_PATH="$USERTMPFS/.xsession-errors"
+else
+	XSESSION_ERR_PATH="$HOME/.xsession-errors"
+fi
+XSESSION_LAST_NUM=1

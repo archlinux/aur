@@ -1,10 +1,10 @@
 post_install() {
 cat << EOF
 To enable and start the Display Manager, execute:
-  systemctl enable xdm-xfreq
-  systemctl start xdm-xfreq
+  systemctl enable xdm-hallo
+  systemctl start xdm-hallo
 Theme is linked from the following file:
-  /etc/xdm-xfreq/xdm-theme.rc -> /etc/xdm-xfreq/theme/your-theme.rc
+  /etc/xdm-hallo/xdm-theme.rc -> /etc/xdm-hallo/theme/chocolate.rc
 EOF
 }
 

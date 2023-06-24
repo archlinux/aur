@@ -3,7 +3,7 @@
 # General
 FOREGROUND="cyan"
 BACKGROUND="#000077"
-WALLPAPER="/etc/xdm-xfreq/theme/wallpaper.jpg"
+WALLPAPER="/etc/xdm-hallo/theme/wallpaper.jpg"
 
 # Greeter
 GREETFONT="-xos4-terminus-*-*-*-*-12-*-*-*-*-*-*-*"
@@ -36,7 +36,7 @@ LISTFACE="DejaVuSans-9"
 CMDFACE="DejaVuSans-9"
 
 # Logo
-LOGOFILENAME="/etc/xdm-xfreq/theme/logo.xpm"
+LOGOFILENAME="/etc/xdm-hallo/theme/logo.xpm"
 LOGOPADDING="0"
 
 # Menu
@@ -53,21 +53,6 @@ CLOCKGEOMETRY="96x32-0+0"
 # Notification
 NOTIFYTIMEOUT="15"
 NOTIFYGEOMETRY="+24+64"
-
-# XFreq
-XFREQFONT="-xos4-terminus-medium-*-*-*-14-*-*-*-*-*-*-*"
-XFREQFILLGFX="1"
-XFREQSHOWFREQ="1"
-XFREQSHOWCYCLES="0"
-XFREQSHOWIPS="0"
-XFREQSHOWIPC="0"
-XFREQSHOWCPI="0"
-XFREQSHOWRATIO="1"
-XFREQSHOWCSTATE="0"
-XFREQWALLBOARD="1"
-XFREQFOREGROUND="0x737373"
-XFREQBACKGROUND="0x000088"
-XFREQGEOMETRY="0:0x0+24+48,1:0x0-24+48,2:0x0+24-16,3:0x0+672-16,4:0x0-24-16,5:0x0+672+48"
 
 # WM
 WMBORDERCOLOR=$BACKGROUND

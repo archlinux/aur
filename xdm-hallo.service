@@ -1,0 +1,11 @@
+[Unit]
+Description=X-Window Display Manager
+After=systemd-user-sessions.service
+
+[Service]
+ExecStartPre=/usr/lib/systemd/scripts/xdm-hallo-xdesktops /usr/share/xsessions 1
+ExecStart=/usr/bin/xdm -nodaemon -config /etc/X11/xdm/xdm-hallo/xdm-config
+ExecStopPost=/usr/bin/rm -f /var/run/xdm-hallo-buttons.pid /var/run/xdm-hallo-clock.pid /var/run/xdm-hallo-gui.pid /var/run/xdm-hallo.Xresources
+
+[Install]
+Alias=display-manager.service

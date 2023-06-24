@@ -1,5 +1,5 @@
 #!/bin/sh
-source /etc/xdm-xfreq/xdm-xfreq.rc
+source /etc/xdm-hallo/xdm-hallo.rc
 
 # provided by xlogin*login.translations:<Key>:set-session-argument()
 case $# in

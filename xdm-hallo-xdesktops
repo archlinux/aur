@@ -1,0 +1,137 @@
+#!/bin/sh
+
+source /etc/xdm-hallo/xdm-hallo.rc
+
+declare -i X=0
+case $# in
+3)
+	declare K=$3
+;&
+2)
+	X=$2
+;&
+1)
+	declare P=$1
+	if [[ $P == "--help" ]]; then
+		echo "Usage: $(basename $0) XSessionDir [DesktopNum] [AbortKey]"
+		exit 0
+	elif [ -d $P ]; then
+
+		if [[ -v XSESSION_LAST_NUM ]]; then
+			X=$XSESSION_LAST_NUM
+		fi
+
+		declare G
+		declare -i I=1
+		if (( $X == $I )); then
+			G="xlogin*greeting: [F1] XSession*\\040\\040\\040"
+		else
+			G="xlogin*greeting: [F1] XSession\\040\\040\\040"
+		fi
+		echo "xlogin*login.translations: #override \\" > /var/run/xdm-hallo.Xresources
+		echo "    <Key>F1: set-session-argument() finish-field()\n\\" >> /var/run/xdm-hallo.Xresources
+
+		declare D A
+		for D in $P/*.desktop
+		do
+			I=$(( I + 1 ))
+			declare N=$(grep "Name=" $D | cut -d "=" -f 2)
+			declare R=$(grep -w "Exec" $D | cut -d "=" -f 2)
+			if (( $X == $I )); then
+				A=$R
+				G=$G"[F$I] ${N}*\\040\\040\\040"
+			else
+				G=$G"[F$I] ${N}\\040\\040\\040"
+			fi
+			echo "    <Key>F${I}: set-session-argument(${R}) finish-field()\n\\" >> /var/run/xdm-hallo.Xresources
+		done
+		if [[ -v K && $K == "AbortKey" ]]; then
+			echo "    Ctrl<Key>R: abort-display()\n\\" >> /var/run/xdm-hallo.Xresources
+			echo "    Ctrl<Key>S: abort-session()\n\\" >> /var/run/xdm-hallo.Xresources
+			echo "    Ctrl<Key>C: restart-session()\n\\" >> /var/run/xdm-hallo.Xresources
+		else
+			echo "    Ctrl<Key>C: erase-line()\n\\" >> /var/run/xdm-hallo.Xresources
+			echo "    Ctrl<Key>\\: erase-to-end-of-line()\n\\" >> /var/run/xdm-hallo.Xresources
+		fi
+		echo "    <Key>Delete: delete-character()\n\\" >> /var/run/xdm-hallo.Xresources
+		echo "    <Key>Left: move-backward-character()\n\\" >> /var/run/xdm-hallo.Xresources
+		echo "    <Key>Right: move-forward-character()\n\\" >> /var/run/xdm-hallo.Xresources
+		echo "    <Key>Home: move-to-begining()\n\\" >> /var/run/xdm-hallo.Xresources
+		echo "    <Key>End: move-to-end()\n\\" >> /var/run/xdm-hallo.Xresources
+		echo "    Ctrl<Key>KP_Enter: set-session-argument(failsafe) finish-field()\n\\" >> /var/run/xdm-hallo.Xresources
+		echo "    <Key>KP_Enter: set-session-argument($A) finish-field()\n\\" >> /var/run/xdm-hallo.Xresources
+		echo "    Ctrl<Key>Return: set-session-argument(failsafe) finish-field()\n\\" >> /var/run/xdm-hallo.Xresources
+		echo "    <Key>Return: set-session-argument($A) finish-field()" >> /var/run/xdm-hallo.Xresources
+		echo "" >> /var/run/xdm-hallo.Xresources
+		echo $G >> /var/run/xdm-hallo.Xresources
+
+		echo "*Foreground:"$FOREGROUND >> /var/run/xdm-hallo.Xresources
+		echo "*Background:"$BACKGROUND >> /var/run/xdm-hallo.Xresources
+
+		echo "xlogin*greetFont:"$GREETFONT >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*greetFace:"$GREETFACE >> /var/run/xdm-hallo.Xresources
+
+		echo "xlogin*font:"$LOGINFONT >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*face:"$LOGINFACE >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*promptFont:"$PROMPTFONT >> /var/run/xdm-hallo.Xresources
+		echo "xlogin.Login.promptFace:"$PROMPTFACE >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*failFont:"$FAILFONT >> /var/run/xdm-hallo.Xresources
+		echo "xlogin.Login.failFace:"$FAILFACE >> /var/run/xdm-hallo.Xresources
+
+		echo "xlogin*greetColor:"$GREETFOREGROUND >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*background:"$LOGINBACKGROUND >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*foreground:"$LOGINFOREGROUND >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*shdColor:"$LOGINSHDCOLOR >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*hiColor:"$LOGINHICOLOR >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*failColor:"$FAILFOREGROUND >> /var/run/xdm-hallo.Xresources
+
+		echo "xlogin*fail:"$FAILTEXT >> /var/run/xdm-hallo.Xresources
+		echo "xlogin.Login.failTimeout:"$FAILTIMEOUT >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*sepWidth:0" >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*borderWidth:1" >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*frameWidth:1" >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*innerFramesWidth:2" >> /var/run/xdm-hallo.Xresources
+		echo "xlogin*useShape:true" >> /var/run/xdm-hallo.Xresources
+
+		if [[ -v LOGOFILENAME && -e $LOGOFILENAME ]]; then
+			echo "xlogin*logoFileName:"$LOGOFILENAME >> /var/run/xdm-hallo.Xresources
+		fi
+		echo "xlogin*logoPadding:"$LOGOPADDING >> /var/run/xdm-hallo.Xresources
+
+		echo "Chooser*label.font:"$LABELFONT >> /var/run/xdm-hallo.Xresources
+		echo "Chooser*label.face:"$LABELFACE >> /var/run/xdm-hallo.Xresources
+		echo "Chooser*list.face:"$LISTFACE >> /var/run/xdm-hallo.Xresources
+		echo "Chooser*Command.Face:"$CMDFACE >> /var/run/xdm-hallo.Xresources
+		echo "Chooser*allowShellResize:false" >> /var/run/xdm-hallo.Xresources
+		echo "Chooser*viewport.forceBars:false" >> /var/run/xdm-hallo.Xresources
+		echo "Chooser*label.label:XDMCP Host Menu from CLIENTHOST" >> /var/run/xdm-hallo.Xresources
+
+		echo "Xmessage*font:"$MENUFONT >> /var/run/xdm-hallo.Xresources
+		echo "Xmessage*Text.face:"$MENUFACE >> /var/run/xdm-hallo.Xresources
+		echo "Xmessage*message.scrollVertical:never" >> /var/run/xdm-hallo.Xresources
+		echo "Xmessage*message.scrollHorizontal:never" >> /var/run/xdm-hallo.Xresources
+		echo "Xmessage*borderWidth:0" >> /var/run/xdm-hallo.Xresources
+		echo "Xmessage*Text.borderWidth:0" >> /var/run/xdm-hallo.Xresources
+		echo "Xmessage*Command.highlightThickness:1" >> /var/run/xdm-hallo.Xresources
+		echo "Xmessage*Command.internalWidth:12" >> /var/run/xdm-hallo.Xresources
+		echo "Xmessage*Command.internalHeight:4" >> /var/run/xdm-hallo.Xresources
+		echo "Xmessage*Command.shapeStyle:rectangle" >> /var/run/xdm-hallo.Xresources
+
+		echo "XClock*face:"$CLOCKFACE >> /var/run/xdm-hallo.Xresources
+		echo "XClock*strftime:"$CLOCKFORMAT >> /var/run/xdm-hallo.Xresources
+		echo "XClock*update:"$CLOCKUPDATE >> /var/run/xdm-hallo.Xresources
+		echo "XClock*analog:false" >> /var/run/xdm-hallo.Xresources
+		echo "XClock*borderWidth:0" >> /var/run/xdm-hallo.Xresources
+
+		exit 0
+	else
+		echo "$(basename $0): cannot access $P: No such directory."
+		exit 2
+	fi
+;;
+*)
+	echo "$(basename $0): Malformed options."
+	echo "Try '$(basename $0) --help' for more information."
+	exit 1
+;;
+esac

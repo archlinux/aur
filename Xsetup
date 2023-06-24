@@ -1,52 +1,52 @@
 #!/bin/sh
-source /etc/xdm-xfreq/xdm-xfreq.rc
+source /etc/xdm-hallo/xdm-hallo.rc
 
 function PopUp ()
 {
-	$XDM_XFREQ_BUTTONS_PATH $XDM_XFREQ_BUTTONS_ARGS $* "" &
+	$XDM_HALLO_BUTTONS_PATH $XDM_HALLO_BUTTONS_ARGS $* "" &
 	PID=$!
-	echo $PID > $XDM_XFREQ_BUTTONS_PID
+	echo $PID > $XDM_HALLO_BUTTONS_PID
 	wait $PID
 }
 
-if [[ -v XDM_XFREQ_KEYB_LED_PATH ]]; then
-	$XDM_XFREQ_KEYB_LED_PATH $XDM_XFREQ_KEYB_LED_ARGS
+if [[ -v XDM_HALLO_KEYB_LED_PATH ]]; then
+	$XDM_HALLO_KEYB_LED_PATH $XDM_HALLO_KEYB_LED_ARGS
 fi
 
-if [[ -v XDM_XFREQ_BG_COLOR_PATH ]]; then
-	$XDM_XFREQ_BG_COLOR_PATH $XDM_XFREQ_BG_COLOR_ARGS
+if [[ -v XDM_HALLO_BG_COLOR_PATH ]]; then
+	$XDM_HALLO_BG_COLOR_PATH $XDM_HALLO_BG_COLOR_ARGS
 fi
 
-if [[ -v XDM_XFREQ_BG_WALLPAPER_PATH ]]; then
-	$XDM_XFREQ_BG_WALLPAPER_PATH $XDM_XFREQ_BG_WALLPAPER_ARGS
+if [[ -v XDM_HALLO_BG_WALLPAPER_PATH ]]; then
+	$XDM_HALLO_BG_WALLPAPER_PATH $XDM_HALLO_BG_WALLPAPER_ARGS
 fi
 
-if [[ -v XDM_XFREQ_CLOCK_PATH ]]; then
-	$XDM_XFREQ_CLOCK_PATH $XDM_XFREQ_CLOCK_ARGS & echo $! > $XDM_XFREQ_CLOCK_PID
+if [[ -v XDM_HALLO_CLOCK_PATH ]]; then
+	$XDM_HALLO_CLOCK_PATH $XDM_HALLO_CLOCK_ARGS & echo $! > $XDM_HALLO_CLOCK_PID
 fi
 
-if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
+if [[ -v XDM_HALLO_BUTTONS_PATH ]]; then
   (
     declare -i LOOP=1
     declare -i RC=0
     while (( LOOP == 1 ))
       do
-	PopUp $XDM_XFREQ_BUTTONS_MENU
+	PopUp $XDM_HALLO_BUTTONS_MENU
 	RC=$?
 	case $RC in
 	99)
-		PopUp $XDM_XFREQ_BUTTONS_SUBMENU
+		PopUp $XDM_HALLO_BUTTONS_SUBMENU
 		RC=$?
 		case $RC in
 		11)
-			if [[ -v XDM_XFREQ_SCREENSHOT_PATH ]]; then
-				$XDM_XFREQ_SCREENSHOT_PATH $XDM_XFREQ_SCREENSHOT_ARGS -e "$XDM_XFREQ_NOTIFY_PATH $XDM_XFREQ_NOTIFY_ARGS '' \$f" &
+			if [[ -v XDM_HALLO_SCREENSHOT_PATH ]]; then
+				$XDM_HALLO_SCREENSHOT_PATH $XDM_HALLO_SCREENSHOT_ARGS -e "$XDM_HALLO_NOTIFY_PATH $XDM_HALLO_NOTIFY_ARGS '' \$f" &
 			fi
 		;;
 		20|21|22|23|24|25)
-			TIMEOUT=${XDM_XFREQ_SCREENSAVER[$(( $RC - 20 ))]}
-			if [[ -v XDM_XFREQ_SCREEN_SET_PATH ]]; then
-				$XDM_XFREQ_SCREEN_SET_PATH $XDM_XFREQ_SCREEN_SET_ARGS $TIMEOUT $TIMEOUT $TIMEOUT
+			TIMEOUT=${XDM_HALLO_SCREENSAVER[$(( $RC - 20 ))]}
+			if [[ -v XDM_HALLO_SCREEN_SET_PATH ]]; then
+				$XDM_HALLO_SCREEN_SET_PATH $XDM_HALLO_SCREEN_SET_ARGS $TIMEOUT $TIMEOUT $TIMEOUT
 			fi
 		;;
 		*)
@@ -57,11 +57,11 @@ if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
 		esac
 	;;
 	11)
-		PopUp $XDM_XFREQ_BUTTONS_PWROFF
+		PopUp $XDM_HALLO_BUTTONS_PWROFF
 		RC=$?
 		case $RC in
 		11)
-			$XDM_XFREQ_POWEROFF_CMD
+			$XDM_HALLO_POWEROFF_CMD
 		;;
 		*)
 			if (( $RC > 128 )); then
@@ -71,11 +71,11 @@ if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
 		esac
 	;;
 	12)
-		PopUp $XDM_XFREQ_BUTTONS_HALT
+		PopUp $XDM_HALLO_BUTTONS_HALT
 		RC=$?
 		case $RC in
 		11)
-			$XDM_XFREQ_HALT_CMD
+			$XDM_HALLO_HALT_CMD
 		;;
 		*)
 			if (( $RC > 128 )); then
@@ -85,11 +85,11 @@ if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
 		esac
 	;;
 	13)
-		PopUp $XDM_XFREQ_BUTTONS_REBOOT
+		PopUp $XDM_HALLO_BUTTONS_REBOOT
 		RC=$?
 		case $RC in
 		11)
-			$XDM_XFREQ_REBOOT_CMD
+			$XDM_HALLO_REBOOT_CMD
 		;;
 		*)
 			if (( $RC > 128 )); then
@@ -99,14 +99,14 @@ if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
 		esac
 	;;
 	14)
-		$XDM_XFREQ_SLEEP_CMD
+		$XDM_HALLO_SLEEP_CMD
 	;;
 	15)
-		PopUp $XDM_XFREQ_BUTTONS_RESCUE
+		PopUp $XDM_HALLO_BUTTONS_RESCUE
 		RC=$?
 		case $RC in
 		11)
-			$XDM_XFREQ_RESCUE_CMD
+			$XDM_HALLO_RESCUE_CMD
 		;;
 		*)
 			if (( $RC > 128 )); then
@@ -123,8 +123,4 @@ if [[ -v XDM_XFREQ_BUTTONS_PATH ]]; then
 	esac
       done
   ) &
-fi
-
-if [[ -v XDM_XFREQ_GUI_PATH ]]; then
-	$XDM_XFREQ_GUI_PATH $XDM_XFREQ_GUI_ARGS & echo $! > $XDM_XFREQ_GUI_PID
 fi

@@ -1,30 +1,14 @@
 #!/bin/sh
-source /etc/xdm-xfreq/xdm-xfreq.rc
+source /etc/xdm-hallo/xdm-hallo.rc
 
 # kill all and clean-up.
-if [ -r $XDM_XFREQ_GUI_PID ]; then
-	kill $(cat $XDM_XFREQ_GUI_PID) > /dev/null 2>&1
-	rm $XDM_XFREQ_GUI_PID
+if [ -r $XDM_HALLO_BUTTONS_PID ]; then
+	kill $(cat $XDM_HALLO_BUTTONS_PID) > /dev/null 2>&1
+	rm $XDM_HALLO_BUTTONS_PID
 fi
-if [ -r $XDM_XFREQ_BUTTONS_PID ]; then
-	kill $(cat $XDM_XFREQ_BUTTONS_PID) > /dev/null 2>&1
-	rm $XDM_XFREQ_BUTTONS_PID
-fi
-if [ -r $XDM_XFREQ_CLOCK_PID ]; then
-	kill $(cat $XDM_XFREQ_CLOCK_PID) > /dev/null 2>&1
-	rm $XDM_XFREQ_CLOCK_PID
-fi
-
-if [[ -v XDM_SYNERGYS_STATE ]]; then
-	pidof $XDM_SYNERGYS_BIN > $XDM_SYNERGYS_PID
-	declare -i STATE=$?
-	if (( $STATE == 1 )); then
-		${XDM_SYNERGYS_AUTH}${USER} > /dev/null 2>&1
-		declare -i RC=$?
-		if (( $RC == 0 )); then
-			$XDM_SYNERGYS_PRE $USER $XDM_SYNERGYS_BIN $XDM_SYNERGYS_ARGS
-		fi
-	fi
+if [ -r $XDM_HALLO_CLOCK_PID ]; then
+	kill $(cat $XDM_HALLO_CLOCK_PID) > /dev/null 2>&1
+	rm $XDM_HALLO_CLOCK_PID
 fi
 
 chown $USER /dev/console
