@@ -36,8 +36,8 @@ package() {
 	cd "${mypackagename}.${pkgver}_Arch_amd64"
 	mkdir -p ${pkgdir}/opt/${mypackagename}
 	
-	cp ${srcdir}/../README ${pkgdir}/opt/${mypackagename}/
-	cp ${srcdir}/../LICENSE ${pkgdir}/opt/${mypackagename}/
+	#cp ${srcdir}/../README ${pkgdir}/opt/${mypackagename}/
+	#cp ${srcdir}/../LICENSE ${pkgdir}/opt/${mypackagename}/
 
 	install -Dm755 --owner=root --group=users ${mypackagename} ${pkgdir}/opt/${mypackagename}/${mypackagename}
 	install -Dm755 --owner=root --group=users ${mypackagename}.desktop ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
@@ -50,6 +50,6 @@ package() {
 
 
 	desktop-file-install --dir=$pkgdir/usr/share/applications ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${mypackagename}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${mypackagename}/README.md"
+	#install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${mypackagename}/LICENSE"
+	#install -Dm644 README.md "${pkgdir}/usr/share/doc/${mypackagename}/README.md"
 }
