@@ -1,13 +1,12 @@
 pkgbase = miasm-git
 	pkgdesc = Machine code manipulation library
-	pkgver = 0.1.3.dev413
+	pkgver = 0.1.5.dev14
 	pkgrel = 1
 	url = https://miasm.re/
 	arch = any
 	license = GPL2
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = git+https://github.com/cea-sec/miasm.git
 	sha256sums = SKIP
 
@@ -20,13 +19,3 @@ pkgname = python-miasm-git
 	optdepends = python-z3: additional features based on constraint solving
 	provides = python-miasm
 	conflicts = python-miasm
-
-pkgname = python2-miasm-git
-	depends = python2
-	depends = python2-pyparsing
-	depends = python2-future
-	optdepends = python2-llvmlite: jit with LLVM engine, bridge between Miasm and LLVM IRs
-	optdepends = python2-pycparser: additional features based on type manipulations
-	optdepends = python2-z3: additional features based on constraint solving
-	provides = python2-miasm
-	conflicts = python2-miasm
