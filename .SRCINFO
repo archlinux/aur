@@ -1,11 +1,10 @@
 pkgbase = python-trame-client
 	pkgdesc = Internal client of trame
-	pkgver = 2.9.2
+	pkgver = 2.9.4
 	pkgrel = 1
 	url = https://github.com/Kitware/trame-client
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-xprocess
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -13,7 +12,7 @@ pkgbase = python-trame-client
 	makedepends = nodejs-lts-fermium
 	makedepends = npm
 	depends = python
-	source = trame-client-2.9.2.tar.gz::https://github.com/Kitware/trame-client/archive/v2.9.2.tar.gz
-	sha512sums = ddfda21085b9242cccb831d88172e6b43d64dc13c632b6f6fa1a820ae0370924f719525d88905f3f612a7a11d2d3f3846d775e41439444323ad3568eae62e7d6
+	source = trame-client-2.9.4.tar.gz::https://github.com/Kitware/trame-client/archive/v2.9.4.tar.gz
+	sha512sums = f8cb0625081d9246c1c31d1b987eb4d3723cb45cb9ef88cb8959d1564565e3093eeb0cc9ae628a2c6f59caed3cc3c85d64053d65b089213494becfd717a5ab8b
 
 pkgname = python-trame-client
