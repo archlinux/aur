@@ -1,6 +1,6 @@
 pkgbase = soundkonverter-dark-theme-git
 	pkgdesc = Front-end to various audio converters (Git - with custom colors for dark themes)
-	pkgver = 3.0.1.r28.ge2927e9
+	pkgver = 3.0.1.r30.g87a37e1
 	pkgrel = 1
 	url = https://www.linux-apps.com/content/show.php?content=29024
 	arch = x86_64
@@ -11,8 +11,10 @@ pkgbase = soundkonverter-dark-theme-git
 	makedepends = kinit
 	makedepends = git
 	depends = hicolor-icon-theme
+	depends = cdparanoia
 	depends = kdelibs4support
 	depends = libkcddb
+	depends = kdbusaddons
 	depends = taglib
 	depends = phonon-qt5
 	optdepends = faac: faac backend
