@@ -2,7 +2,6 @@
 pkgname=codemerx-decompile-bin
 pkgver=0.9.2
 pkgrel=1
-epoch=
 pkgdesc="The first standalone .NET decompiler for Mac, Linux and Windows"
 arch=(x86_64)
 url="https://decompiler.codemerx.com/"
@@ -18,7 +17,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/codemerx/CodemerxDecompile/
 
 package() {
 	install -d $pkgdir/opt/$pkgname
-	# find $srcdir -not -path "*resources*" -type f -delete
 	cp -av $srcdir/CodemerxDecompile-linux-x64/resources $pkgdir/opt/$pkgname/
 	echo -e "#!/bin/bash\nelectron7 /opt/$pkgname/resources/app" | install -Dm755 /dev/stdin $pkgdir/usr/bin/CodemerxDecompile
 
