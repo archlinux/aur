@@ -1,0 +1,13 @@
+pkgbase = lmaofetch
+	pkgdesc = A simple system fetch written in Bash
+	pkgver = 1.0
+	pkgrel = 1
+	url = git+https://codeberg.org/p3nguin-kun/lmaofetch
+	arch = any
+	groups = unknown
+	license = MIT
+	depends = git
+	source = git+https://codeberg.org/p3nguin-kun/lmaofetch
+	sha512sums = SKIP
+
+pkgname = lmaofetch
