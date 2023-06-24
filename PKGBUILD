@@ -3,7 +3,7 @@
 pkgname=python-scikit-build-core
 pkgdesc='Next generation Python CMake adaptor and Python API for plugins'
 url='https://scikit-build-core.readthedocs.io/'
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 arch=('any')
 license=('Apache')
@@ -19,6 +19,7 @@ depends=(
 )
 makedepends=('python-build' 'python-hatchling' 'python-hatch-vcs' 'python-installer')
 checkdepends=(
+  'cython'
   'gcc-fortran'
   'git'
   'pybind11'
@@ -35,7 +36,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '54f06b23dea20284730c437d6af4298299165950a55cb7fb933915e1070a35a1'
+  'fa53b045c0869005a21af6aa5f6c2bd70d0a1af93e8a098ea6ee1b47e3dea183'
 )
 
 build() {
@@ -48,6 +49,19 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer "dist/$_pypi-$pkgver"-*.whl
   test-env/bin/python -m pytest -v -k "not pep518_sdist"
+
+  local _examples=(abi3 c cython fortran pybind11)
+  for _example in "${_examples[@]}"; do
+    echo ""
+    echo "Building example docs/examples/getting_started/$_example"
+    cd "$srcdir/$_pypi-$pkgver/docs/examples/getting_started/$_example"
+    "$srcdir/$_pypi-$pkgver"/test-env/bin/python -m build --no-isolation --wheel
+
+    echo "Testing example docs/examples/getting_started/$_example"
+    "$srcdir/$_pypi-$pkgver"/test-env/bin/python -m installer dist/example-*.whl
+    "$srcdir/$_pypi-$pkgver"/test-env/bin/python ../test.py
+    "$srcdir/$_pypi-$pkgver"/test-env/bin/pip uninstall -yq example
+  done
 }
 
 package() {
