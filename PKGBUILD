@@ -13,7 +13,6 @@ pkgdesc="Cyber Security ALL-IN-ONE Platform"
 arch=('x86_64')
 url="https://github.com/yaklang/yakit"
 license=('AGPL3')
-license=('custom')
 options=(!strip)
 depends=('zlib' 'hicolor-icon-theme' 'fuse2' )
 provides=('yakit')
