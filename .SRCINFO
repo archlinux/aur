@@ -1,34 +1,20 @@
 pkgbase = apache-spark
-	pkgdesc = Apache Spark is a unified analytics engine for large-scale data processing.
-	pkgver = 3.3.0
-	pkgrel = 0
+	pkgdesc = A unified analytics engine for large-scale data processing
+	pkgver = 3.4.1
+	pkgrel = 1
 	url = http://spark.apache.org
 	install = apache-spark.install
 	arch = any
 	license = APACHE
-	depends = java-environment>=6
-	depends = java-environment<=11
-	optdepends = python2: python2 support for pyspark
-	optdepends = ipython2: ipython2 support for pyspark
-	optdepends = python: python3 support for pyspark
-	optdepends = ipython: ipython3 support for pyspark
-	optdepends = r: support for sparkR
-	optdepends = rsync: support rsync hadoop binaries from master
-	optdepends = hadoop: support for running on YARN
-	backup = etc/apache-spark/spark-env.sh
-	source = https://archive.apache.org/dist/spark/spark-3.3.0/spark-3.3.0-bin-hadoop3.tgz
+	depends = inetutils
+	depends = java-runtime-headless<=17
+	source = https://dlcdn.apache.org/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz
+	source = apache-spark.sh
 	source = apache-spark-master.service
-	source = apache-spark-slave@.service
-	source = spark-env.sh
-	source = spark-daemon-run.sh
-	source = run-master.sh
-	source = run-slave.sh
-	sha256sums = 306b550f42ce1b06772d6084c545ef8448414f2bf451e0b1175405488f2a322f
-	sha256sums = e4333e4a484543786e82d1f7af144ad99d9cc666d2e2742f30b5120996f32183
-	sha256sums = e656ef5599d095472641e6fd58e9046d7db3f983b334e9a695e278ba799afc5b
-	sha256sums = 0e9c3721cfac02e3b67248e1dfe2def49a9fc6408092b291b1c67e89a9c130cb
-	sha256sums = 6ded9f6b31b8be5fa782fc18ec0991eb7cb18fbea65b8e7560587c3fbe7f20f7
-	sha256sums = 1134342330c7680e7d9847cc4de2c0f97ecd55ee7db1c6068bc45219b5838e98
-	sha256sums = 4e1159b25d0f6f3dcdf72d1a5f186e5693a5e9d8690ad1600a9e44aa43022e29
+	source = apache-spark-worker@.service
+	sha256sums = de24e511aebd95e7408c636fde12d19391f57a33730fe30735d6742180e338d4
+	sha256sums = 0cc82baad4d878d4e2bc5864a00b99d38f2906781ea47ee6282546788e797049
+	sha256sums = de54c025ca8ce34a7b4fd95ec7b8d5dec44582787a0bd8da09232f26e2182c9a
+	sha256sums = 47e6c154daecf7631ac9a33fe53a76888070c823c4381fcbde8d98377e586505
 
 pkgname = apache-spark

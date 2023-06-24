@@ -1,0 +1,1 @@
+export PATH=$PATH:/opt/apache-spark/bin:/opt/apache-spark/sbin

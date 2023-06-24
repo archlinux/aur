@@ -3,10 +3,13 @@ Description=Apache Spark Standalone Master
 After=network.target
 
 [Service]
+Type=forking
 User=apache-spark
 Group=apache-spark
 Environment=SPARK_LOG_DIR=/var/log/apache-spark
-ExecStart=/opt/apache-spark/sbin/run-master.sh
+ExecStart=/opt/apache-spark/sbin/start-master.sh
+ExecStop=/opt/apache-spark/sbin/stop-master.sh
+SuccessExitStatus=143
 
 [Install]
 WantedBy=multi-user.target
