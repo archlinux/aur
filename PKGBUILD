@@ -1,22 +1,22 @@
-# Maintainer: mehalter <micah at mehalter.com>
+# Maintainer: Pellegrino Prevete <pellegrinoprevete at gmail.com>
+# Contributor: mehalter <micah at mehalter.com>
 # Contributor: xsmile <>
 
 pkgname=myetherwallet
-_pkgname=MyEtherWallet
-pkgver=6.4.5
-_pkgversuffix=
+_pkg=MyEtherWallet
+pkgver=6.7.3
 pkgrel=1
 pkgdesc='Client-side interface for interacting with the Ethereum blockchain'
 arch=(any)
 depends=(xdg-utils)
-url=https://github.com/MyEtherWallet/MyEtherWallet
+url="https://github.com/${_pkg}/${_pkg}"
 license=(MIT)
-source=($url/releases/download/v$pkgver$_pkgversuffix/$_pkgname-v$pkgver$_pkgversuffix.zip{,.sig}
-        myetherwallet.desktop
-        myetherwallet
+source=("${url}/releases/download/v${pkgver}/${_pkg}-v${pkgver}.zip"{,.sig}
+        "${pkgname}.desktop"
+        "${pkgname}"
         LICENSE)
-sha256sums=('7afadec54bd0a5c706088a16f31be0db04ce21ce39b17de66805c51a6a52a309'
-            '93f3a7cb4066a45705b92fa5b4cbb64b646a67760494ab4bf6460996e0862b26'
+sha256sums=('4627d06dce696f5325eefe460959eae381ec8be31b7b2ae38d3c3cb1f3f97f31'
+            'SKIP'
             'b49e3bb0cded23c40820281a110d2baed5d1f7aa036635108323d0133e0e30e9'
             '814f489e4e6e0ce172513febf58d6821e7b77cd2e644152aec4888228fe41da5'
             '42039cf560b0b2b35463f33656d9639c8f9b98e9a4f57723dbab0a90a4ad8ad6')
@@ -31,13 +31,18 @@ prepare() {
 
 package() {
   # Lib directory
-  install -d "$pkgdir"/opt/$pkgname
-  cp -a css fonts img js workbox-* *.css *.html *.js *.png "$pkgdir"/opt/$pkgname
+  install -d "${pkgdir}/opt/${pkgname}"
+  cp -a css fonts img js workbox-* *.css *.html *.js *.png \
+       "${pkgdir}/opt/${pkgname}"
   # Executable
-  install -Dm755 "$srcdir"/$pkgname -t "$pkgdir"/usr/bin
+  install -Dm755 "${srcdir}/${pkgname}" \
+          -t "$pkgdir"/usr/bin
   # License
-  install -Dm644 "$srcdir"/LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm644 "${srcdir}/LICENSE" \
+          -t "${pkgdir}/usr/share/licenses/${pkgname}"
   # Menu entry and icon
-  install -Dm644 "$srcdir"/$pkgname.desktop -t "$pkgdir"/usr/share/applications
-  install -Dm644 favicon.png "$pkgdir"/usr/share/pixmaps/$pkgname.png
+  install -Dm644 "${srcdir}/${pkgname}.desktop" \
+          -t "$pkgdir"/usr/share/applications
+  install -Dm644 favicon.png \
+          "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
