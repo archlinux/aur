@@ -13,6 +13,7 @@ makedepends=("git"
 		"lm_sensors"
 		"i2c-tools" 
 		"dmidecode"
+		"lenovolegionlinux-git"
 )
 depends=(lenovolegionlinux-git)
 conflicts=(
