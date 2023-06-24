@@ -10,9 +10,9 @@
 
 _pkgname="libadwaita"
 pkgbase="${_pkgname}-git"
-pkgname=("${_pkgname}-git"
-         "${_pkgname}-git-docs"
-         "${_pkgname}-git-demos")
+pkgname=("${pkgbase}"
+         "${_pkgname}-docs-git"
+         "${_pkgname}-demos-git")
 pkgver=1.3.rc+311+ge810d86b
 pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
@@ -36,10 +36,13 @@ build() {
 }
 
 check() {
-  export XDG_RUNTIME_DIR="$PWD/runtime-dir" WAYLAND_DISPLAY=wayland-5
+  export XDG_RUNTIME_DIR="$PWD/runtime-dir" \
+         WAYLAND_DISPLAY=wayland-5
 
   mkdir -p -m 700 "$XDG_RUNTIME_DIR"
-  weston --backend=headless-backend.so --socket=$WAYLAND_DISPLAY --idle-time=0 &
+  weston --backend=headless-backend.so \
+         --socket=$WAYLAND_DISPLAY \
+         --idle-time=0 &
   _w=$!
 
   trap "kill $_w; wait" EXIT
@@ -59,7 +62,7 @@ _pick() {
 
 package_libadwaita-git() {
   depends+=(libgtk-4.so)
-  provides+=("${_pkgname}" libadwaita-1.so)
+  provides+=("${_pkgname}=${pkgver}" libadwaita-1.so)
   conflicts=("${_pkgname}")
 
   meson install -C build --destdir "${pkgdir}"
@@ -74,15 +77,16 @@ package_libadwaita-git() {
   _pick demo usr/share/metainfo/org.gnome.Adwaita1.Demo.metainfo.xml
 }
 
-package_libadwaita-git-docs() {
+package_libadwaita-docs-git() {
   pkgdesc+=" (documentation)"
   depends=()
-  mv docs/* "$pkgdir"
+  mv docs/* "${pkgdir}"
 }
 
-package_libadwaita-git-demos() {
+package_libadwaita-demos-git() {
   pkgdesc+=" (demo applications)"
-  depends=($_pkgname-git)
+  provides=("${_pkgname}-demos=${pkgver}")
+  depends=("${_pkgname}-git")
   mv demo/* "${pkgdir}"
 }
 
