@@ -16,13 +16,13 @@ depends=(
   python-yaml
   python-pyqt5
   polkit
+  python-wheel
 )
 makedepends=(
   git
   python-build
   python-installer
   python-setuptools
-  python-wheel
 )
 optdepends=(
   "lenovolegionlinux-dkms-git: DKMS module"
