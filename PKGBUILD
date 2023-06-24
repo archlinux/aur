@@ -20,6 +20,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=None \
 		-DBUILD_SHARED_LIBS=1 \
+		-DBUILD_TESTING=OFF \
 		-DQuotient_ENABLE_E2EE=ON
 
 	cmake --build build
@@ -28,4 +29,11 @@ build() {
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
 	install -Dm 644 "libQuotient-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	# NOTE: There does not seem to be a way to inhibit generating the
+	# Android Native Development Kit (NDK) build file without patching
+	# libQuotient's build script. This file has a generic name which
+	# will conflict with the official `libquotient` package, so it must
+	# therefore be removed manually.
+	rm -r "${pkgdir}/usr/share/ndk-modules"
 }
