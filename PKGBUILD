@@ -2,7 +2,7 @@
 
 pkgname=python-ray
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
             'python-fsspec: for ray[data]'
             'python-aiohttp: for ray[default, serve]'
             'python-aiosignal: for ray[default, serve]'
-            'python-aiohttps_cors: for ray[default, serve]'
+            'python-aiohttps-cors: for ray[default, serve]'
             'python-aioredis: for ray[default, serve]'
             'python-colorful: for ray[default, serve]'
             'python-frozenlist: for ray[default, serve]'
@@ -25,7 +25,7 @@ optdepends=(
             'python-requests: for ray[default, serve, tune]'
             'python-gpustat: for ray[default, serve]'
             'python-opencensus: for ray[default, serve]'
-            'python-prometheus-client: for ray[default, serve]'
+            'python-prometheus_client: for ray[default, serve]'
             'python-smart-open: for ray[default, serve]'
             'uvicorn: for ray[serve]'
             'python-starlette: for ray[serve]'
