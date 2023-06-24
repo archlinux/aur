@@ -2,20 +2,17 @@
 
 _pkgname=maui-agenda
 pkgname=$_pkgname-git
-pkgver=0.1.1.r0.gfb2ef22
+pkgver=0.5.0.r0.g822eb2d
 pkgrel=1
 pkgdesc='Calendar application built with MauiKit'
 url='https://invent.kde.org/maui/agenda'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-license=(GPL3)
-depends=(akonadi-contacts
-         calendarsupport
-         eventviews
-         kconfig
+license=(LGPL3)
+depends=(akonadi
          kcoreaddons
          ki18n
-         libakonadi
-         mauikit-git
+         mauikit-calendar
+         mauikit
          qt5-base
          qt5-declarative)
 makedepends=(git extra-cmake-modules)
@@ -43,4 +40,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "${srcdir}/$_pkgname/licenses/"* -t "${pkgdir}/usr/share/licenses/$_pkgname"
 }
