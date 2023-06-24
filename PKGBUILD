@@ -50,10 +50,10 @@ build() {
 	
 }
 package() {
-  mkdir -p "${pkgdir}/usr/share/{applications/,icons/,polkit-1/actions/}"
-  mkdir -p "${pkgdir}/usr/{local/bin,bin/,share/legion_linux}"
-  mkdir -p "${pkgdir}/etc/systemd/system"
-  mkdir -p "${pkgdir}/etc/acpi/{events,actions}"
+  mkdir -p ${pkgdir}/usr/share/{applications/,icons/,polkit-1/actions/}
+  mkdir -p ${pkgdir}/usr/{local/bin,bin/,share/legion_linux}
+  mkdir -p ${pkgdir}/etc/systemd/system
+  mkdir -p ${pkgdir}/etc/acpi/{events,actions}
 
   cd "${srcdir}/${_pkgname}/python/legion_linux"
   python -m installer --destdir="$pkgdir" dist/*.whl
@@ -73,7 +73,7 @@ package() {
   cd "${srcdir}/${_pkgname}/extra"
   install -Dm664 service/*.service "${pkgdir}/etc/systemd/system" 
 	install -Dm664 service/*.path "${pkgdir}/etc/systemd/system"
-  install -Dm664 service/profiles/* "${pkgdir}/usr/share/legion_linux/.env"
+  install -Dm664 service/profiles/* "${pkgdir}/usr/share/legion_linux/"
   install -Dm664 service/profiles/* "${pkgdir}/usr/share/legion_linux/"
 	
 # ACPI service
