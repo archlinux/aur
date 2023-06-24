@@ -1,25 +1,27 @@
 # Maintainer:
 
-# packaging options
-#_reduce_size="true"
-_autoupdate="true"
+# packaging options, convert to lowercase
+_reduce_size=$( printf '%s' "$_reduce_size" | sed -e 's/^\(.*\)$/\L\1/' )
+_autoupdate=$( printf '%s' "$_autoupdate" | sed -e 's/^\(.*\)$/\L\1/' )
 
 # update version
-if [ x"$_autoupdate" == "xtrue" ] ; then
-  _get() {
-    curl https://api.github.com/repos/PCSX2/pcsx2/tags -s \
-      | awk -F '"' '/"'"$1"'":/{print $4}' \
-      | head -1 | sed 's/^v//'
-  }
-  _pkgver=$(_get name)
-else
-  _pkgver=1.7.4589
-fi
+case "$_autoupdate" in
+  'true'|'t'|'yes'|'y'|'1'|'')
+    _get() {
+      curl https://api.github.com/repos/PCSX2/pcsx2/tags -s \
+        | awk -F '"' '/"'"$1"'":/{print $4}' \
+        | head -1 | sed 's/^v//'
+    }
+    _pkgver=$(_get name)
+    ;;
+  *)
+    _pkgver=1.7.4632
+esac
 _appimage="pcsx2-v$_pkgver-linux-AppImage-64bit-Qt.AppImage"
 
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=1.7.4589
+pkgver=1.7.4632
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -48,14 +50,17 @@ sha256sums=(
 )
 
 pkgver() {
-  if [ "$_reduce_size" == "true" ] ; then
-    printf "%s.%s" \
-      "$_pkgver" \
-      "small"
-  else
-    printf "%s" \
-      "$_pkgver"
-  fi
+  case "$_reduce_size" in
+  'true'|'t'|'yes'|'y'|'1')
+      printf "%s.%s" \
+        "$_pkgver" \
+        "small"
+      ;;
+    *)
+      printf "%s" \
+        "$_pkgver"
+      ;;
+  esac
 }
 
 build() {
