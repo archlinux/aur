@@ -4,7 +4,7 @@ pkgname=snort-nfqueue
 _pkgname=snort3
 _openappid=26425
 pkgver=3.1.64.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A lightweight network IDS / IPS with NFQUEUE and OpenAppID support.'
 arch=('i686' 'x86_64')
 url='https://www.snort.org'
@@ -46,6 +46,8 @@ prepare() {
     cd "${_pkgname}-${pkgver}"
     patch -p0 < "${srcdir}"/cstdint.patch
     patch -p0 < "${srcdir}"/tcmjem.patch
+    # Workaround https://github.com/intel/hyperscan/issues/388
+    sed -i '/HAVE_HS_COMPILE_LIT/d' config.cmake.h.in cmake/sanity_checks.cmake
 }
 
 build() {
