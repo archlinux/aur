@@ -12,13 +12,15 @@ depends=(electron7 bash
 	# namcap tells me following
 	glibc krb5 zlib libx11 curl gcc-libs glib2 lttng-ust)
 provides=(CodemerxDecompile)
+# https://bbs.archlinux.org/viewtopic.php?id=253279 spend some hours to figure this out :(
+options=('staticlibs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/codemerx/CodemerxDecompile/releases/download/${pkgver}/CodemerxDecompile-linux-x64.tar.gz"
 )
 
 package() {
 	install -d $pkgdir/opt/$pkgname
-	cp -av $srcdir/CodemerxDecompile-linux-x64/resources $pkgdir/opt/$pkgname/
-	echo -e "#!/bin/bash\nelectron7 /opt/$pkgname/resources/app" | install -Dm755 /dev/stdin $pkgdir/usr/bin/CodemerxDecompile
+	cp -a $srcdir/CodemerxDecompile-linux-x64/resources/app $pkgdir/opt/$pkgname/
+	echo -e "#!/bin/bash\nelectron7 /opt/$pkgname/app" | install -Dm755 /dev/stdin $pkgdir/usr/bin/CodemerxDecompile
 
 	# completions
 	find $srcdir -name "CodemerxDecompile" -type f -path "*completions/bash*" -exec install -Dm755 {} -t "${pkgdir}"/usr/share/bash-completion/completions/ \;
