@@ -1,6 +1,6 @@
 pkgbase = godot-voxel
 	pkgdesc = The Godot game engine with Zylann's voxel tools module
-	pkgver = 4.1.0
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://voxel-tools.readthedocs.io/en/latest/
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = godot-voxel
 	depends = libglvnd
 	depends = alsa-lib
 	depends = pulseaudio
-	source = godot::git+https://github.com/godotengine/godot.git
-	source = godot_voxel::git+https://github.com/Zylann/godot_voxel.git
+	source = godot::git+https://github.com/godotengine/godot.git#branch=4.0
+	source = godot_voxel::git+https://github.com/Zylann/godot_voxel.git#branch=godot4
 	source = godot-voxel.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
