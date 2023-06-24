@@ -1,10 +1,8 @@
-import os
 from setuptools import setup
 
 
 setup(
     name="Emote",
-    version=os.environ.get("EMOTE_VERSION"),
     packages=["emote"],
     setup_requires=["setuptools"],
     entry_points={
@@ -13,14 +11,15 @@ setup(
         ]
     },
     install_requires=[
-        "pygobject",
-        "manimpango"
+        "manimpango",
+        "setproctitle",
+        "dbus-python",
     ],
-    package_data={
-        "emote": [
-            "static/*"
-        ]
-    },
-    data_files=[("share/applications", ["snap/gui/emote.desktop"]),
-                ("share/icons", ["snap/gui/emote.svg"])]
+    # This is relative to the emote package
+    package_data={"emote": ["static/*"]},
+    # Unlike these, which are relative to setup.py
+    data_files=[
+        ("share/applications", ["static/emote.desktop"]),
+        ("share/icons/hicolor/scalable/apps", ["static/emote.svg"]),
+    ],
 )
