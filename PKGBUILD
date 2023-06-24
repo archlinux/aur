@@ -3,7 +3,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 _base=CryptoLyzer
 pkgname=python-${_base,,}
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Fast and flexible server cryptographic (TLS/SSL) settings analyzer library"
 arch=(any)
@@ -12,7 +12,7 @@ license=(MPL2)
 depends=(python-attrs python-certvalidator python-cryptoparser python-dateutil python-requests python-urllib3)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(https://gitlab.com/coroner/${_base}/-/archive/v${pkgver}/${_base,,}-v${pkgver}.tar.gz)
-sha512sums=('831c7953071b4a3fd71739b7b6724dbf0e1ddeb902a58797a6d4fb619a7402758ace50ef3f824caf3984eba47f79b17fa40054a63a368e3969137ffa0c671fec')
+sha512sums=('ab774ec331630227fb4e9ac9ed488a1e6931f9d17f647ba81f484cb7d6827f15a5b62c144d8a7151d32f864c7b5b826ee1c350daf15c4a628c88f77cb3dfd1f0')
 
 build() {
   cd ${_base,,}-v${pkgver}
