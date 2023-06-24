@@ -1,52 +1,49 @@
 pkgbase = freetype2-git
 	pkgdesc = Font rasterization library (from git)
-	pkgver = 2.12.0+p2+g385345037
+	pkgver = 2.13.1+p0+ge4586d960
 	pkgrel = 1
 	epoch = 1
 	url = https://www.freetype.org/
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = GPL
-	makedepends = libx11
-	makedepends = qt5-base
-	makedepends = meson
-	makedepends = librsvg
 	makedepends = git
-	depends = zlib
-	depends = bzip2
-	depends = sh
-	depends = libpng
-	depends = harfbuzz
+	makedepends = librsvg
+	makedepends = libx11
+	makedepends = meson
+	makedepends = qt5-base
 	depends = brotli
-	options = debug
+	depends = bzip2
+	depends = libpng
+	depends = sh
+	depends = zlib
+	depends = harfbuzz
 	source = git+https://gitlab.freedesktop.org/freetype/freetype.git
 	source = git+https://gitlab.freedesktop.org/freetype/freetype-demos.git
 	source = 0001-Enable-table-validation-modules.patch
 	source = 0002-Enable-subpixel-rendering.patch
-	source = 0003-Enable-infinality-subpixel-hinting.patch
-	source = 0004-Enable-long-PCF-family-names.patch
+	source = 0003-Enable-long-PCF-family-names.patch
 	source = freetype2.sh
 	validpgpkeys = E30674707856409FF1948010BE6C3AAC63AD8E3F
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 12c869eeba212c74d07d3d7815848b047ecb5282d5463dffb3bb6d219315d4da
-	sha256sums = 2497dcb3650271db9bb7ad4f3379b5b3c6a19f5ca5388dd9ba7d42b5c15c8c4f
-	sha256sums = caa0bc7d3dfa3b4c6b9beecda6141405dafe540f99a655dc83d1704fa232ac20
-	sha256sums = 8bf978cd1abd73f54c53f7d214c368b1fd8921cd9800d2cc84427c662ffbbdcb
-	sha256sums = f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = 2c148694e150b3faae9dc46ead824ae6d94cfe34f2918bc9066f45bab7e6b6f77b4d4b2fee00c3d466d866e1985132cea4a774dcf1bab95409b7cf55efff01e1
+	b2sums = 9598d13eae0411878c1af8e5d875c3b1fc09f4e6649edfbbf3b0a819c4c585648521f0b30ffd1318f5106cfde9c899d3db70c8ffe36dac59f3f98b5fd7dab115
+	b2sums = 66deb179d1f1f4e2e35f6d50acfbacce80595d5128f5fed8c1871838c210dbf1a7173a87dd937d64997844c8f478c8f81120f71e33b9d59d980e179d103ff31c
+	b2sums = a964f46886b5017a5c180f29408f72ae8aba29f37404c48b4681ff12ca0a2cfa2a8e219480e98d63d45fb5c266a6e5826df170c9a0d701cd866e395c5ac6e87d
 
 pkgname = freetype2-git
 	install = freetype2.install
 	provides = libfreetype.so
-	provides = freetype2=2.12.0+p2+g385345037
+	provides = freetype2=2.13.1+p0+ge4586d960
 	conflicts = freetype2
 	backup = etc/profile.d/freetype2.sh
 
 pkgname = freetype2-demos-git
 	pkgdesc = Freetype tools and demos (from git)
 	depends = freetype2-git
-	depends = libx11
 	depends = librsvg
+	depends = libx11
 	optdepends = qt5-base: ftinspect
-	provides = freetype2-demos=2.12.0+p2+g385345037
+	provides = freetype2-demos=2.13.1+p0+ge4586d960
 	conflicts = freetype2-demos
