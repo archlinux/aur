@@ -2,7 +2,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=zesarux-git
-pkgver=10.3.r19.g3a5ffbb
+pkgver=10.3.r173.gef5e6d1
 _ver=10.10
 pkgrel=1
 pkgdesc="A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support. Development version."
@@ -14,7 +14,7 @@ depends=('libxxf86vm' 'aalib' 'libcaca' 'alsa-lib')
 optdepends=('libpulse: for support Pulseaudio'
 	'openssl: for enable SSL functions'
 	'sdl: for support sdl video and audio output')
-source=('zesarux-code::git+https://github.com/chernandezba/zesarux.git'
+source=('zesarux-code::git+https://github.com/chernandezba/zesarux.git#commit=ef5e6d1'
 	zesarux.desktop
 	zesarux.png)
 install="zesarux.install"
