@@ -2,9 +2,9 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lfa
-_pkgver=2.0.10
+_pkgver=2.0.11
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Logistic Factor Analysis for Categorical Data"
 arch=(x86_64)
@@ -27,8 +27,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f62a443f21fc6f29c5c75f16fa31ae2b')
-sha256sums=('b18598ee7b1e82a2865dbdfce64a841e34c08d4313d5e68812903520c97944df')
+md5sums=('58264321db9388649768e3fc74e9a4ab')
+sha256sums=('dadae77049d248b2f2768fe6a679fb203b38fc5471df1524c79a31cabb4b2674')
 
 build() {
   mkdir -p build

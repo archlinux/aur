@@ -1,6 +1,6 @@
 pkgbase = r-lfa
 	pkgdesc = Logistic Factor Analysis for Categorical Data
-	pkgver = 2.0.10
+	pkgver = 2.0.11
 	pkgrel = 1
 	url = https://bioconductor.org/packages/lfa
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = r-lfa
 	optdepends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/lfa_2.0.10.tar.gz
-	md5sums = f62a443f21fc6f29c5c75f16fa31ae2b
-	sha256sums = b18598ee7b1e82a2865dbdfce64a841e34c08d4313d5e68812903520c97944df
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/lfa_2.0.11.tar.gz
+	md5sums = 58264321db9388649768e3fc74e9a4ab
+	sha256sums = dadae77049d248b2f2768fe6a679fb203b38fc5471df1524c79a31cabb4b2674
 
 pkgname = r-lfa
