@@ -2,7 +2,7 @@
 # Contributor: Sebastian Lau <lauseb644@gmail.com>
 
 pkgname=nemo-repairer
-pkgver=5.6.0
+pkgver=5.8.0
 pkgrel=1
 pkgdesc="Nemo extension for filename encoding repair"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('nemo>=3.2')
 makedepends=('intltool' 'meson' 'samurai')
 replaces=('nemo-filename-repairer')
 source=("nemo-extensions-$pkgver.tar.gz::https://github.com/linuxmint/nemo-extensions/archive/$pkgver.tar.gz")
-sha256sums=('6c334b320541672b1c6ac8ec2ffade5a0eb413549fa680ccce56914055f537f0')
+sha256sums=('66140a8d7365c1333f219d3012bf51c9462df4f8b1187d08716c9c577a77af28')
 
 
 build() {
