@@ -29,8 +29,8 @@ cat <<EOT | tee /tmp/mmc0.dts
   max-frequency = <200000000>;
   cap-mmc-highspeed;
   mmc-hs200-1_8v;
-//  mmc-hs400-1_8v;
-//  hs400-ds-delay = <0x14014>;
+  mmc-hs400-1_8v;
+  hs400-ds-delay = <0x14014>;
   no-sd;
   no-sdio;
   status = "okay";

@@ -6,15 +6,18 @@
 # Succesfull boot also depends on devictree-overlays from:
 # https://github.com/ericwoud/buildR64arch
 
+# Optional settings:
+#_lto="true"      # Uncomment this line to enable CLANG-LTO
+#_debugfs="true"  # Uncomment this line to set CONFIG_DEBUG_FS=y
+
 pkgbase=linux-bpir64-git
 _srcname=linux
 _gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/${_srcname}"
 _gitbranch="linux-rolling-stable"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPI-R64 and BPI-R3"
-#_lto="true"  # Uncomment this line to enable CLANG-LTO
 pkgver=6.3.3.bpi
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -67,6 +70,7 @@ prepare() {
 #  sed -i 's/mt6795-sony-xperia-m5/mt7986a-bananapi-bpi-r3/g' ./arch/arm64/boot/dts/mediatek/Makefile
 
   cp -vf ${startdir}/defconfig ./arch/arm64/configs/bpir_defconfig
+  [[ "$_debugfs" == "true" ]] && echo -e "\nCONFIG_DEBUG_FS=y" >>./arch/arm64/configs/bpir_defconfig
   make ${MAKEFLAGS} $_llvm bpir_defconfig
   rm -vf ./arch/arm64/configs/bpir_defconfig
 
