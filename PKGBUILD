@@ -1,7 +1,7 @@
-# Maintainer: René Wagner < rwagner at rw-net dot de >
+# Maintainer: René Wagner < rwa at clttr dot info >
 
 pkgname=phosta
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='photo stats for your terminal'
 arch=('x86_64' 'i686' 'aarch64')
