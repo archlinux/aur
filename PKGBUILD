@@ -57,7 +57,8 @@ package() {
 	install -Dm644 --owner=root --group=root ${srcdir}/${mypackagename}/${mypackagename}.conf ${pkgdir}/etc/${mypackagename}.conf
 
 
-	desktop-file-install --dir=$HOME/.local/share/applications ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
+	#desktop-file-install --dir=$HOME/.local/share/applications ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
+	desktop-file-install --dir=$pkgdir/usr/share/applications ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${mypackagename}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${mypackagename}/README.md"
 }
