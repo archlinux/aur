@@ -15,8 +15,8 @@ makedepends=("git"
 		"dmidecode"
 )
 depends=(lenovolegionlinux-git)
-optdepends=(
-		"legion-fan-utils-linux-git: Systemd service that will apply a given profile"
+conflicts=(
+  legion-fan-utils-linux-git
 )
 source=("${_pkgname}::git+https://github.com/johnfanv2/LenovoLegionLinux")
 sha256sums=('SKIP')
