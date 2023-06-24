@@ -2,7 +2,7 @@
 mypackagename=pyNotify   # only if github repo has a different name than this pkgbase/pkgname
 pkgname=pynotify-git
 pkgbase=pynotify-git
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 epoch=
 pkgdesc="A Gnome (wayland) shell notifier for Gotify server."
