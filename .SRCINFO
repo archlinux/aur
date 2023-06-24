@@ -1,6 +1,6 @@
 pkgbase = python-py-cord
 	pkgdesc = Pycord is a maintained fork of discord.py, a python wrapper for the Discord API
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/Pycord-Development/pycord
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-py-cord
 	provides = python-discord
 	provides = python-pycord
 	conflicts = python-discord
-	source = pycord-2.4.0.tar.gz::https://github.com/Pycord-Development/pycord/archive/v2.4.0.tar.gz
-	sha256sums = 4239c02f5ba2696529b20f53de408154664b5deb0167267e4f51779227b0202a
+	source = pycord-2.4.1.tar.gz::https://github.com/Pycord-Development/pycord/archive/v2.4.1.tar.gz
+	sha256sums = c8e24951b940b67f432babcd4aa7fcc4664e2d7225874a6592bc186a221f48b8
 
 pkgname = python-py-cord
