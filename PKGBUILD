@@ -18,11 +18,11 @@ depends=('zlib' 'hicolor-icon-theme' 'fuse2' )
 provides=('yakit')
 
 
-source_x86_64=("${_Pkgname}-${pkgver}-x86_64.AppImage::https://github.com/yaklang/yakit/releases/download/v${pkgver//_/-}.${pkgrel}-${sp}/${_Pkgname}-${pkgver//_/-}.${pkgrel}-${sp}-linux-amd64.AppImage")
+source_x86_64=("${_Pkgname}-${pkgver//_/-}.${pkgrel}-${sp}-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v${pkgver//_/-}.${pkgrel}-${sp}/${_Pkgname}-${pkgver//_/-}.${pkgrel}-${sp}-linux-amd64.AppImage")
 sha256sums_x86_64=('735fb2d221cb9499152a9ccdac2ee35cd1b1fd654ab61759a1e58f5f429fab05')
 
 
-_appimage="${_Pkgname}-${pkgver}-${arch}.AppImage"
+_appimage="${_Pkgname}-${pkgver//_/-}.${pkgrel}-${sp}-linux-amd64.AppImage"
 noextract=("${_appimage}")
 
 prepare() {

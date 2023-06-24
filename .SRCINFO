@@ -9,9 +9,9 @@ pkgbase = yakit-appimage
 	depends = hicolor-icon-theme
 	depends = fuse2
 	provides = yakit
-	noextract = Yakit-1.2-x86_64.AppImage
+	noextract = Yakit-1.2.1-sp5-linux-amd64.AppImage
 	options = !strip
-	source_x86_64 = Yakit-1.2-x86_64.AppImage::https://github.com/yaklang/yakit/releases/download/v1.2.1-sp5/Yakit-1.2.1-sp5-linux-amd64.AppImage
+	source_x86_64 = Yakit-1.2.1-sp5-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v1.2.1-sp5/Yakit-1.2.1-sp5-linux-amd64.AppImage
 	sha256sums_x86_64 = 735fb2d221cb9499152a9ccdac2ee35cd1b1fd654ab61759a1e58f5f429fab05
 
 pkgname = yakit-appimage
