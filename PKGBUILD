@@ -1,0 +1,52 @@
+# Maintainer: Fernando Seoane <fseoane@hotmail.com>
+mypackagename=pyNotify   # only if github repo has a different name than this pkgbase/pkgname
+pkgname=pynotify-bin
+pkgbase=pynotify-bin
+pkgver=0.6      # remember to also change the version number bellow in the pkgver() function
+pkgrel=1
+epoch=
+pkgdesc="A Gnome (wayland) shell notifier for Gotify server."
+arch=('x86_64')
+url="https://github.com/fseoane/pyNotify.git"
+license=('MIT')
+groups=()
+depends=('libappindicator-gtk3' 'gnome-shell-extension-appindicator')
+makedepends=('git' 'curl' 'wget' 'unzip')
+checkdepends=()
+optdepends=()
+provides=(pyNotify)
+conflicts=(pyNotify)
+replaces=(pyNotify)
+backup=('etc/pyNotify.conf' 'opt/pyNotify/pyNotify.conf')
+options=()
+install=
+changelog=
+source=("https://github.com/fseoane/pyNotify/releases/download/v${pkgver}/${mypackagename}.${pkgver}_Arch_amd64.zip")
+noextract=()
+md5sums=('SKIP')
+validpgpkeys=()
+
+
+build() {
+	#cd "$mypackagename"
+	sh build.4.AUR-bin.sh
+}
+
+package() {
+	cd "$mypackagename"
+	mkdir -p ${pkgdir}/opt/${mypackagename}
+	
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename} ${pkgdir}/opt/${mypackagename}/${mypackagename}
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.desktop ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.ogg ${pkgdir}/opt/${mypackagename}/
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.png ${pkgdir}/opt/${mypackagename}/
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/*.svg ${pkgdir}/opt/${mypackagename}/
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.ver ${pkgdir}/opt/${mypackagename}/${mypackagename}.ver
+	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename}.conf ${pkgdir}/opt/${mypackagename}/${mypackagename}.conf
+	install -Dm644 --owner=root --group=root  ${srcdir}/${mypackagename}/${mypackagename}.conf ${pkgdir}/etc/${mypackagename}.conf
+
+
+	desktop-file-install --dir=$pkgdir/usr/share/applications ${pkgdir}/opt/${mypackagename}/${mypackagename}.desktop
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${mypackagename}/LICENSE"
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/${mypackagename}/README.md"
+}
