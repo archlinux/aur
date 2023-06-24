@@ -1,7 +1,7 @@
 pkgbase = libtiff-lerc
 	pkgdesc = Library for manipulation of TIFF images
-	pkgver = 4.5.0
-	pkgrel = 2
+	pkgver = 4.5.1
+	pkgrel = 1
 	url = http://www.simplesystems.org/libtiff/
 	arch = x86_64
 	license = custom
@@ -16,12 +16,11 @@ pkgbase = libtiff-lerc
 	depends = xz
 	depends = zstd
 	depends = lerc
-	optdepends = freeglut: for using tiffgt
 	provides = libtiff=4.5.0
 	provides = libtiff.so
 	provides = libtiffxx.so
 	conflicts = libtiff
-	source = https://download.osgeo.org/libtiff/tiff-4.5.0.tar.gz
-	sha256sums = c7a1d9296649233979fa3eacffef3fa024d73d05d589cb622727b5b08c423464
+	source = https://download.osgeo.org/libtiff/tiff-4.5.1.tar.gz
+	b2sums = ee496a5deeb49b6c4f866dbac0736c4bb84c29f45ae07cea52297679269a835761a3e54eeca5d75903e3d65f8117d4bbd16abdf1487813a31f9c9eb8d03e04c4
 
 pkgname = libtiff-lerc
