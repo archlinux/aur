@@ -1,0 +1,15 @@
+pkgbase = todesk
+	pkgdesc = ToDesk 不一样的远程连接体验
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://www.todesk.com/
+	arch = x86_64
+	license = custom
+	provides = todesk
+	conflicts = todesk
+	conflicts = todesk-bin
+	options = !strip
+	source = todesk.pkg.tar.zst::https://newdl.todesk.com/linux/todesk_4.1.0_x86_64.pkg.tar.zst
+	md5sums = 62996717cf85b3d4eed3cec064115709
+
+pkgname = todesk
