@@ -34,4 +34,5 @@ build() {
 package() {
 	cd $pkgname
 	sudo cp lmaofetch /usr/bin
+  sudo chmod +x /usr/bin/lmaofetch
 }
