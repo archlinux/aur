@@ -8,35 +8,43 @@
 # Contributor: zerathidune <zerathidune @ gmail . com>
 
 pkgname=bluej
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="A free Java Development Environment designed for beginners, used by millions worlwide."
 arch=('any')
 url="https://www.${pkgname}.org"
 license=('GPL2' 'Apache' 'BSD' 'CDDL' 'CPL' 'custom')
 depends=('gtk2' 'archlinux-java-run' 'java-runtime=17' 'java-environment=17' 'java17-openjfx')
+makedepends=('zstd')
 source=("https://www.${pkgname}.org/download/files/BlueJ-linux-${pkgver//.}.deb"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}.xml")
-noextract=("BlueJ-linux-${pkgver//.}.deb")
-sha256sums=('b4e6f5e7053d3a352dd03f25fc991a1988fce0bec75781549d0401e5c440c46d'
-            'fa1e1b8524e32ec4151565b901411a08458855e4a8f2a77ae77827af86db85a9'
+#noextract=("BlueJ-linux-${pkgver//.}.deb")
+sha256sums=('b0e4fcea8a4c6bdcadc4995f51122c0f4e8788ffa3fa8cf7950d03aa62d5d701'
+            '6154ee3e8a270fc7831ffef58cce202ed435f56b0e16636fdbeee891fb1e079d'
             'a845f3997ce91cfb1eeb882f4a6e1e4408b7a7d7c2e164495b5a077bdf353e7f'
             'e05453bd791b34ab6cfd6b67250dd18210f47505344b7980ad28bf922c014772')
 
+
+prepare() {
+  cd "${srcdir}"
+  tar --use-compress-program=unzstd -xvf data.tar.zst
+}
 package() {
 cd "${srcdir}"
-ar p "BlueJ-linux-${pkgver//.}.deb" data.tar.xz | tar xJ
 
 mkdir -p "${pkgdir}/opt/${pkgname}"
 mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/examples"
 
-rm -R "usr/share/${pkgname}/javafx"
-rm -R "usr/share/${pkgname}/jdk"
+#rm -R "usr/share/${pkgname}/javafx"
+#rm -R "usr/share/${pkgname}/jdk"
+#cd "usr/share/${pkgname}"
+#find -type f -name "javafx-*" -delete
+#cd "${srcdir}"
 
 cp -r "usr/share/${pkgname}" "${pkgdir}/opt"
-cp -r usr/share/doc/BlueJ/*/ "${pkgdir}/usr/share/doc/${pkgname}/examples"
+#cp -r usr/share/doc/BlueJ/*/ "${pkgdir}/usr/share/doc/${pkgname}/examples"
 
 install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"

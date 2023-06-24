@@ -1,25 +1,23 @@
 #!/bin/sh
-if [ -e /usr/lib/jvm/java-17-openjfx/lib ]; then
-        JAVAFXPATH=/usr/lib/jvm/java-17-openjfx
+if [ -e /usr/lib/jvm/java-20-openjfx/lib ]; then
+        JAVAFXPATH=/usr/lib/jvm/java-20-openjfx/lib
 else
-        JAVAFXPATH=/usr/lib/jvm/java-17-openjdk
+        JAVAFXPATH=/usr/lib/jvm/java-20-openjdk/lib
 fi
 
-CP="/opt/bluej/bluej.jar"
-JAVAFXJARS="$JAVAFXPATH/lib/javafx.base.jar"
-JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/lib/javafx.controls.jar"
-JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/lib/javafx.fxml.jar"
-JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/lib/javafx.graphics.jar"
-JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/lib/javafx.media.jar"
-JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/lib/javafx.properties.jar"
-JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/lib/javafx.swing.jar"
-JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/lib/javafx.web.jar"
+CP="/opt/bluej/boot.jar"
+#JAVAFXJARS="$JAVAFXPATH/javafx.base.jar"
+#JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/javafx.controls.jar"
+#JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/javafx.fxml.jar"
+#JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/javafx.graphics.jar"
+#JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/javafx.media.jar"
+#JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/javafx.swing.jar"
+#JAVAFXJARS="$JAVAFXJARS:$JAVAFXPATH/javafx.web.jar"
+JAVAFXJARS=`ls -1 /opt/bluej/javafx* | paste -sd ":" -`
 CP="$CP:$JAVAFXJARS"
-JFXRTOPT="-javafxpath=$JAVAFXPATH"
-JFXRTOPT2="-javafxjars=$JAVAFXJARS"
 
-archlinux-java-run -a 17 -b 17 -- \
+archlinux-java-run -a 20 -b 20 -- \
         -Djdk.gtk.version=2 \
         -Dawt.useSystemAAFontSettings=on -Xmx512M \
-        -cp "$CP" bluej.Boot ${JFXRTOPT:+"$JFXRTOPT"} ${JFXRTOPT2:+"$JFXRTOPT2"} \
+        -cp "$CP" bluej.Boot \
         "$@"
