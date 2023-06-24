@@ -1,14 +1,14 @@
 pkgbase = daed-bin-x64-v3
 	pkgdesc = A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core).
-	pkgver = 0.1.0rc
-	pkgrel = 2
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://daeuniverse.github.io/daed
 	arch = x86_64
 	license = AGPL
 	license = MIT
 	provides = daed
 	conflicts = daed-git
-	source = https://github.com/daeuniverse/daed/releases/download/v0.1.0rc/daed-linux-x86_64_v3_avx2.zip
+	source = https://github.com/daeuniverse/daed/releases/download/v0.1.0/daed-linux-x86_64_v3_avx2.zip
 	sha512sums = bdfdb87ee872c03a01e18f7b9908c1e6739c505f9b3da8fc60892d8eaaa7299fc8bcaa3d9bd97180aa132d02d381c50c3212d591c8a096a4da1f6f6669a531ee
 
 pkgname = daed-bin-x64-v3
