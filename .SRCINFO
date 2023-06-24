@@ -1,0 +1,16 @@
+pkgbase = awol
+	pkgdesc = Anti-WOL (sleep / shutdown / restart on WOL) daemon
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/mjasnik/awol
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = asio
+	depends = systemd
+	provides = awol
+	conflicts = awol-git
+	source = awol::git+https://gitlab.com/mjasnik/awol
+	md5sums = SKIP
+
+pkgname = awol
