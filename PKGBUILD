@@ -33,7 +33,7 @@ validpgpkeys=()
 # }
 
 package() {
-	cd "$pkgdir"
+	cd "${mypackagename}.${pkgver}_Arch_amd64"
 	mkdir -p ${pkgdir}/opt/${mypackagename}
 	
 	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename} ${pkgdir}/opt/${mypackagename}/${mypackagename}
