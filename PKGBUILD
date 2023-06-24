@@ -27,10 +27,10 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 
-build() {
-	#cd "$mypackagename"
-	sh build.4.AUR-bin.sh
-}
+# build() {
+# 	#cd "$mypackagename"
+# 	sh build.4.AUR-bin.sh
+# }
 
 package() {
 	cd "$mypackagename"
