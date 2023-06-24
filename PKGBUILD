@@ -1,7 +1,7 @@
 # Tpaefawzen <GitHub: Tpaefaezen>
 pkgname=misc-tools-git
 pkgver=r281.3548ffb
-pkgrel=1
+pkgrel=2
 pkgdesc="ShellShoccar-jpn's miscellaneous tools"
 arch=(any)
 url="https://github.com/ShellShoccar-jpn/misc-tools"
@@ -38,8 +38,7 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 
 # obtained things
-# excluding items found on other official packages such as coreutils and util-linux
-	_bins=(# base64
+	_bins=(base64
 		enumdate
 		exflock
 		fsed
@@ -53,20 +52,20 @@ package() {
 		mkcgipost
 		mkcookie
 		mkstemp
-		# mktemp
+		mktemp
 		name-cgi
 		pcllock
 		pexlock
 		pshlock
 		punlock
-		# rev
+		rev
 		sendjpmail
 		sendu8mail
-		# seq
+		seq
 		sessionf
 		sigamp
 		tarize
-		# truncate
+		truncate
 		unescoct
 		urldecode
 		urlencode
@@ -78,14 +77,13 @@ package() {
 		C_SRC/herewego
 		C_SRC/linets
 		C_SRC/ptw
-		# C_SRC/sleep
+		C_SRC/sleep
 		C_SRC/tscat
 		C_SRC/typeliner
 		C_SRC/valve)
 
 
 # finally
-	install -d "$pkgdir/usr/bin/"
-	install -Dm755 "${_bins[@]}" "$pkgdir/usr/bin/"
-				
+	install -d "$pkgdir/opt/${pkgname%-git}/bin/"
+	install -Dm755 "${_bins[@]}" "$pkgdir/opt/${pkgname%-git}/bin/"
 }

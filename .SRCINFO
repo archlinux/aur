@@ -1,7 +1,7 @@
 pkgbase = misc-tools-git
 	pkgdesc = ShellShoccar-jpn's miscellaneous tools
 	pkgver = r281.3548ffb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ShellShoccar-jpn/misc-tools
 	arch = any
 	groups = shellshocar-jpn
