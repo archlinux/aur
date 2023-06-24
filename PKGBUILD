@@ -3,14 +3,14 @@
 _name=pyrodigal
 pkgname=python-${_name}
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cython bindings to Prodigal, an ORF finder for genomes and metagenomes"
 url="https://github.com/althonos/pyrodigal"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 license=("LGPL3")
 groups=()
 makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer')
-depends=('python')
+depends=('python' 'python-archspec')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
 sha256sums=(d516577aa6f8177af20d176c0757bbce17361dafb5cffc28b2a32cff1256c325)
