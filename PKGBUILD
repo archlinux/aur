@@ -27,7 +27,7 @@ optdepends=(
 )
 
 conflicts=(
-  "legion-fan-utils-linux-git: Systemd service that will apply a given profile" #Not needed merge in LLL
+  legion-fan-utils-linux-git
 )
 
 source=("${_pkgname}::git+https://github.com/johnfanv2/LenovoLegionLinux")
