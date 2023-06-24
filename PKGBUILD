@@ -1,6 +1,6 @@
 # Maintainer: Eric Langlois <eric@langlois.xyz>
 pkgname=duplicacy-web
-pkgver=1.6.3
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Cross-platform cloud backup tool with a web GUI"
 arch=('x86_64' 'i686' 'arm' 'aarch64' 'armv7h')
@@ -17,9 +17,9 @@ source_aarch64=("$pkgname::https://acrosync.com/$pkgname/${pkgname//-/_}_linux_a
 sha256sums=('f169ca1196a3d99661b5fdf9b61d18c3f7a1341f6d90c1411874a9ebfecce10a'
             '33325dd4c621676af89c4f6c27105fb16e0b9b00e962e6496f7d532f907646bf'
             'f6da608f2babc6db66aed83e0ba7e1ce130680b15d2dbe01019cb01c88abc7db')
-sha256sums_x86_64=('7e20fefb806578792002199246596d86246a013a11892c68c9b7365d3b080661')
-sha256sums_arm=('28033dafc2b6dfa6c78ea028736f947b8c5dc138b4f9629d0e0616c26cfd05f7')
-sha256sums_aarch64=('43d09b28a3b1a8ec06369ee86982c9a74a817f2e52cb8e7d18122fd808f93f95')
+sha256sums_x86_64=('88383f7fea8462539cab7757dfa167bf42e37cbc19531b9de97373bc20efd317')
+sha256sums_arm=('e2e1bfd03fa158b532a582c60aa4c7953d132573db6254d051bb5744c64acf22')
+sha256sums_aarch64=('8ff18950d2c2d8ba9774c1b0add992ebdcdf984ed36a446cd8b7a8623088ee37')
 
 package() {
 	install -m755 -D -t "$pkgdir/usr/bin" "$pkgname"
