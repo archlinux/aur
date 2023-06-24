@@ -18,7 +18,7 @@ optdepends=('smartmontools')
 makedepends=('perl-module-install')
 install=${pkgname}.install
 backup=('etc/ocsinventory/ocsinventory-agent.cfg')
-source=("https://github.com/OCSInventory-NG/UnixAgent/releases/download/v2.10.0/Ocsinventory-Unix-Agent-2.10.0.tar.gz"
+source=("https://github.com/OCSInventory-NG/UnixAgent/releases/download/v${pkgver}/Ocsinventory-Unix-Agent-${pkgver}.tar.gz"
     "modules.conf" "ocsinventory-agent" "ocsinventory-agent.cfg")
 md5sums=('2ba754c69247889ee96a4d82fc7b6f03'
      '3c1235643decce6f1a29c5644d2b527b'
