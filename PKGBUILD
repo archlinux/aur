@@ -2,7 +2,7 @@
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 
 pkgname=xfce4-panel-profiles
-pkgver=1.0.13
+pkgver=1.0.14
 pkgrel=1
 pkgdesc="Simple application to manage Xfce panel layouts"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('intltool')
 conflicts=('xfpanel-switch')
 replces=('xfpanel-switch')
 source=("https://archive.xfce.org/src/apps/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('bc387c13f94109422dc72b0fcb919b0dc11619ba589d03e492252b0d2513b170')
+sha256sums=('6d08354e8c44d4b0370150809c1ed601d09c8b488b68986477260609a78be3f9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
