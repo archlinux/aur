@@ -1,37 +1,31 @@
+# Maintainer: Callum Parsey <callum@neoninteger.au>
+# Contributor: [object Object] <objekt-Objekt@proton.me>
+
 pkgname=libquotient-encryption
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
-pkgdesc="A Qt5 library to write cross-platform clients for Matrix, with experimental encryption support enabled"
+pkgdesc="A Qt library to write cross-platform clients for Matrix (with experimental encryption support)"
 arch=(x86_64 aarch64)
 url="https://github.com/quotient-im/libQuotient"
-license=("LGPL2")
-depends=("qt5-base" "qt5-multimedia" "qtkeychain-qt5" "libolm")
-makedepends=("git" "cmake" "make" "gcc")
-provides=("libquotient")
+license=("LGPL2.1")
+depends=("gcc-libs" "glibc" "libolm" "openssl" "qt5-base" "qt5-multimedia" "qtkeychain-qt5")
+makedepends=("cmake")
+provides=("libquotient" "libQuotient.so=${pkgver%.*}-64")
 conflicts=("libquotient")
-source=("${pkgname}.tar.gz::https://github.com/quotient-im/libQuotient/archive/refs/tags/0.7.1.tar.gz")
-sha512sums=("88819cafb49712d53c692008be69ea1fc01ca1ac6aedc15696eba2f830956660d185fb07273d50c7dc3e9208314ac24838746d5d9e70b3aad7fccbd15fd7c545")
-
-prepare() {
-	mkdir -p "build"
-}
+source=("https://github.com/quotient-im/libQuotient/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=("62ff42c8fe321e582ce8943417c1d815ab3f373a26fa0d99a5926e713f6a9382")
 
 build() {
-	cd "build"
-	cmake ../"libQuotient-0.7.1" \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DCMAKE_INSTALL_LIBDIR=lib \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DBUILD_SHARED_LIBS=1 \
-	-DQuotient_ENABLE_E2EE=ON
+	cmake -B build -S "libQuotient-${pkgver}" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=None \
+		-DBUILD_SHARED_LIBS=1 \
+		-DQuotient_ENABLE_E2EE=ON
 
-	make -j $(nproc)
+	cmake --build build
 }
 
 package() {
-	cd "build"
-	make -j $(nproc) DESTDIR="${pkgdir}" install
-
-	cd "../libQuotient-0.7.1"
-	install -Dm 644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	DESTDIR="${pkgdir}" cmake --install build
+	install -Dm 644 "libQuotient-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
