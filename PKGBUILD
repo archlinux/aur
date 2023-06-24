@@ -14,7 +14,7 @@ url="https://github.com/yaklang/yakit"
 license=('custom')
 options=(!strip)
 depends=('zlib' 'hicolor-icon-theme' 'fuse2' )
-provides=('yakit-bin')
+provides=('yakit')
 
 
 source_x86_64=("${_Pkgname}-${pkgver}-x86_64.AppImage::https://github.com/yaklang/yakit/releases/download/v${pkgver//_/-}.${pkgrel}-sp5/${_Pkgname}-${pkgver//_/-}.${pkgrel}-sp5-linux-amd64.AppImage")
