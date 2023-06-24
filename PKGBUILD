@@ -4,7 +4,7 @@
 _pkgname=themix-plugin-base16
 _reponame=$_pkgname
 pkgname="${_pkgname}-git"
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Import and export plugin for Themix GUI designer to use color palettes from Base16 project"
 arch=('x86_64' 'i686')
