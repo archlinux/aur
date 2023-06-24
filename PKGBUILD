@@ -3,7 +3,7 @@
 
 _basename=gossip
 pkgname=${_basename}-git
-pkgver=0.7.0.r600.g0f4f108
+pkgver=0.8.0.r653.g7b3a290
 pkgrel=1
 pkgdesc="gossip nostr client, rust, egui based."
 arch=('x86_64')
@@ -31,7 +31,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   CARGO_TARGET_DIR=target
   RUSTFLAGS="-C link-arg=-fuse-ld=mold -C target-cpu=native --cfg tokio_unstable"
-  cargo build
+  cargo build --release --features=lang-cjk,video-ffmpeg
 }
 
 package() {
