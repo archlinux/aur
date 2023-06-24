@@ -1,10 +1,13 @@
 pkgbase = key2root
 	pkgdesc = Authenticate with keyfile and run a process as root
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://maandree.se/proj/key2root.html
 	arch = x86_64
 	license = custom:ISC
+	depends = libar2simplified>=1.1.2
+	depends = libar2
+	depends = libblake
 	source = key2root-1.0.tar.gz::https://git.maandree.se/key2root/snapshot/key2root-1.0.tar.gz
 	sha256sums = c365a009daf784398a0d93b0875a263a078cbc8f417c9e262bd83bab57b0a19e
 
