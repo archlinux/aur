@@ -3,9 +3,9 @@
 
 pkgname=fast_float
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and exact implementation of the C++ from_chars functions:4x faster than strtod'
-arch=(x86_64)
+arch=(any)
 url="https://github.com/fastfloat/$pkgname"
 license=(Apache Boost MIT)
 makedepends=(cmake)
@@ -15,11 +15,11 @@ b2sums=('39133eda20acd5f1f049e8040815a67aee588ab93be4953bde3b9227fb691e099581ef7
 build() {
 	cmake -B build -S $pkgname-$pkgver \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX="/usr"
-	make -C build
+		-DCMAKE_INSTALL_PREFIX='/usr'
+	cmake --build build
 }
 
 package() {
-	make -C build DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 $pkgname-$pkgver/LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

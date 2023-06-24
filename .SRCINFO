@@ -1,9 +1,9 @@
 pkgbase = fast_float
 	pkgdesc = Fast and exact implementation of the C++ from_chars functions:4x faster than strtod
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fastfloat/fast_float
-	arch = x86_64
+	arch = any
 	license = Apache
 	license = Boost
 	license = MIT
