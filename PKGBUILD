@@ -33,7 +33,7 @@ validpgpkeys=()
 # }
 
 package() {
-	cd "$mypackagename"
+	cd "$pkgdir"
 	mkdir -p ${pkgdir}/opt/${mypackagename}
 	
 	install -Dm755 --owner=root --group=users ${srcdir}/${mypackagename}/${mypackagename} ${pkgdir}/opt/${mypackagename}/${mypackagename}
