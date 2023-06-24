@@ -1,6 +1,6 @@
 pkgbase = libadwaita-git
 	pkgdesc = Building blocks for modern adaptive GNOME applications
-	pkgver = 1.3.rc+60+g24f9bbe0
+	pkgver = 1.3.rc+311+ge810d86b
 	pkgrel = 1
 	url = https://gnome.pages.gitlab.gnome.org/libadwaita
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = libadwaita-git
 	makedepends = sassc
 	makedepends = gobject-introspection
 	makedepends = vala
-	depends = gtk4
+	depends = gtk4>=4.11
 	source = libadwaita::git+https://gitlab.gnome.org/GNOME/libadwaita
 	sha256sums = SKIP
 
 pkgname = libadwaita-git
-	depends = gtk4
+	depends = gtk4>=4.11
 	depends = libgtk-4.so
 	provides = libadwaita
 	provides = libadwaita-1.so

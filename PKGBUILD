@@ -13,13 +13,13 @@ pkgbase="${_pkgname}-git"
 pkgname=("${_pkgname}-git"
          "${_pkgname}-git-docs"
          "${_pkgname}-git-demos")
-pkgver=1.3.rc+60+g24f9bbe0
+pkgver=1.3.rc+311+ge810d86b
 pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
 url="https://gnome.pages.gitlab.gnome.org/${_pkgname}"
 arch=('x86_64' 'i686' 'pentium4')
 license=(LGPL)
-depends=(gtk4)
+depends=("gtk4>=4.11")
 makedepends=(git meson gi-docgen sassc gobject-introspection vala)
 checkdepends=(weston)
 source=("${_pkgname}::git+https://gitlab.gnome.org/GNOME/${_pkgname}")
