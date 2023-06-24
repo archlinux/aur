@@ -6,8 +6,8 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language
-_swiftver=swift-5.8-RELEASE
-pkgver=5.8.0
+_swiftver=swift-5.8.1-RELEASE
+pkgver=5.8.1
 pkgrel=1
 
 pkgdesc="The Swift programming language and debugger"
