@@ -2,32 +2,29 @@
 
 _pluginname=scale-to-sound
 pkgname=obs-$_pluginname
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A plugin for OBS Studio that adds a filter which makes a source scale based on the audio levels of any audio source you choose"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/scale-to-sound.1336/"
 license=("GPL2")
-depends=("obs-studio")
+depends=("obs-studio" "glibc")
 makedepends=("cmake")
 options=('debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Qufyy/obs-scale-to-sound/archive/$pkgver.tar.gz")
-sha256sums=("de5ddefaa798ac65a3a3d336b6eb084c8cb1e55b9071abfc1c221f41471658e0")
+sha256sums=("5927c05083c21738fe03fb78b947ff4b53b54bf6f70d1c37d349453326771e00")
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  cmake -B build \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  cmake -B build -S "$pkgname-$pkgver" \
+  -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
-  -DBUILD_STANDALONE=ON
+  -DLINUX_PORTABLE=OFF \
+  -Wno-dev
 
-  make -C build
+  cmake --build build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  make -C build DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" cmake --install build
 }
