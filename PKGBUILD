@@ -1,13 +1,13 @@
 # Maintainer:
 
-# set source
-# 0 for bitbucket, 1 for chaotic-aur
-_pkg=0
+# set source - chaotic-aur or bitbucket (default) 
+_pkg='chaotic-aur'
+_caur_pkgrel=1.1
 
 _pkgname=art-rawconverter
 pkgname="$_pkgname-bin"
 pkgver=1.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('x86_64')
 url="https://bitbucket.org/agriggio/art"
@@ -18,6 +18,7 @@ makedepends=()
 
 optdepends=(
   'art-rawconverter-imageio: add support for additional image formats'
+  'lcms2-ff: lcms2 with fast-float plugin for improved export speed'
   'perl-image-exiftool: metadata support for CR3 images'
 )
 
@@ -27,19 +28,19 @@ provides=('art-rawconverter')
 options=(!strip !debug)
 
 case "$_pkg" in
-  '1')
+  '1'|'chaotic-aur'|'caur')
     # chaotic-aur
     _url="https://cdn-mirror.chaotic.cx/chaotic-aur/$CARCH"
-    _dl_url="$_url/art-rawconverter-$pkgver-$pkgrel-$CARCH.pkg.tar.zst"
+    _dl_url="$_url/art-rawconverter-$pkgver-$_caur_pkgrel-$CARCH.pkg.tar.zst"
 
     source=(
-      "$_pkgname-$pkgver.tar.xz"::"$_dl_url"
+      "$_pkgname-$pkgver-caur.tar.xz"::"$_dl_url"
     )
     sha256sums+=(
       'SKIP'
     )
     ;;
-  '0'|*)
+  *)
     # bitbucket
     _dl_url="$url/downloads/ART-$pkgver-linux64.tar.xz"
     source=(
@@ -56,9 +57,11 @@ esac
 
 prepare() {
   case "$_pkg" in
-    '1')
+    '1'|'chaotic-aur'|'caur')
+      # chaotic-aur
       ;;
-    '0'|*)
+    *)
+      # bitbucket
       cp -rl "$srcdir/ART-$pkgver-linux64" "$srcdir/$_pkgname-$pkgver"
       cp "$srcdir/blackfoxx-GTK3-20_.css" "$srcdir/$_pkgname-$pkgver/themes"
 
@@ -84,16 +87,21 @@ package() {
     'libcanberra'
     'libiptcdata'
     'libraw'
+    'mimalloc'
+    'opencolorio'
+    'openmp'
   )
 
   case "$_pkg" in
-    '1')
+    '1'|'chaotic-aur'|'caur')
+      # chaotic-aur
       mv "$srcdir/usr" "$pkgdir"
 
       ln -s "ART" "$pkgdir/usr/bin/art"
       ln -s "ART-cli" "$pkgdir/usr/bin/art-cli"
       ;;
-    '0'|*)
+    *)
+      # bitbucket
       OPT_PATH="opt/$_pkgname"
 
       # Install the package files
