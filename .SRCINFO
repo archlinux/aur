@@ -1,17 +1,17 @@
 pkgbase = r-aroma.apd
 	pkgdesc = A Probe-Level Data File Format Used by 'aroma.affymetrix' [deprecated]
-	pkgver = 0.6.1
-	pkgrel = 1
+	pkgver = 0.7.0
+	pkgrel = 2
 	url = https://cran.r-project.org/package=aroma.apd
 	arch = any
 	license = LGPL
-	depends = r
 	depends = r-r.huge
 	depends = r-r.methodss3
 	depends = r-r.oo
 	depends = r-r.utils
 	optdepends = r-affxparser
-	source = https://cran.r-project.org/src/contrib/aroma.apd_0.6.1.tar.gz
-	sha256sums = d30f3bcfa756958107f3b3f1e11151278463dcc36da7bdc66819864ab4b6c82f
+	source = https://cran.r-project.org/src/contrib/aroma.apd_0.7.0.tar.gz
+	md5sums = 8378b2a1880dc55fdc8047b63705da05
+	sha256sums = 9d60ead247edb7bf8d172f14881222adda0893a693f997b0da00c29cfd37d1f6
 
 pkgname = r-aroma.apd

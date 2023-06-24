@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=aroma.apd
-_pkgver=0.6.1
+_pkgver=0.7.0
 pkgname=r-${_pkgname,,}
-pkgver=0.6.1
-pkgrel=1
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="A Probe-Level Data File Format Used by 'aroma.affymetrix' [deprecated]"
-arch=('any')
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('LGPL')
+license=(LGPL)
 depends=(
-  r
   r-r.huge
   r-r.methodss3
   r-r.oo
@@ -20,14 +20,15 @@ optdepends=(
   r-affxparser
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d30f3bcfa756958107f3b3f1e11151278463dcc36da7bdc66819864ab4b6c82f')
+md5sums=('8378b2a1880dc55fdc8047b63705da05')
+sha256sums=('9d60ead247edb7bf8d172f14881222adda0893a693f997b0da00c29cfd37d1f6')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
