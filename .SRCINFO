@@ -1,7 +1,7 @@
 pkgbase = perl-git-repository
 	pkgdesc = Perl interface to Git repositories
 	pkgver = 1.325
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Git-Repository
 	arch = any
 	license = PerlArtistic
@@ -15,7 +15,10 @@ pkgbase = perl-git-repository
 	options = purge
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/B/BO/BOOK/Git-Repository-1.325.tar.gz
-	md5sums = 34979454fb75e50810458cde7313d920
+	source = tests_git_editor_fix.patch
+	source = tests_git_file_protocol_fix.patch
 	sha256sums = 9b2a4fa194f4a0eb452355d0c808727e5e9c16c145ac7d24c3ea96d0abefed43
+	sha256sums = f1f15501d09fcb6b403e9a022e83bbd0b756b8a050fc839a0f66613e73aaacc4
+	sha256sums = 63577a73e0339a6bb7b40d93ec26f7f5d4fb3316d080b69f3f3ddf069d4f796c
 
 pkgname = perl-git-repository

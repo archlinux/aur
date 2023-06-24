@@ -1,0 +1,10 @@
+--- t/21-submodule.t
++++ t/21-submodule.t
+@@ -44,6 +44,7 @@ From https://github.com/eserte/Git-Repository/commit/e957384f
+ # now test adding a submodule
+ my $r = test_repository(@init);
+ $r->run(
++    ('-c', 'protocol.file.allow=always'),
+     submodule => add => $s->work_tree => 'sub',
+     { env => { GIT_WORK_TREE => undef } }
+ );

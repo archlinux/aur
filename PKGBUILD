@@ -3,18 +3,33 @@
 
 pkgname=perl-git-repository
 pkgver=1.325
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl interface to Git repositories"
 _dist=Git-Repository
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=(purge '!emptydirs')
+url="https://metacpan.org/release/$_dist"
+
 depends=(perl perl-git-version-compare perl-system-command perl-namespace-clean)
 checkdepends=(git perl-test-requires-git)
-url="https://metacpan.org/release/$_dist"
-source=("https://cpan.metacpan.org/authors/id/B/BO/BOOK/$_dist-$pkgver.tar.gz")
-md5sums=('34979454fb75e50810458cde7313d920')
-sha256sums=('9b2a4fa194f4a0eb452355d0c808727e5e9c16c145ac7d24c3ea96d0abefed43')
+
+source=(
+  "https://cpan.metacpan.org/authors/id/B/BO/BOOK/$_dist-$pkgver.tar.gz"
+  'tests_git_editor_fix.patch'
+  'tests_git_file_protocol_fix.patch'
+)
+sha256sums=(
+  '9b2a4fa194f4a0eb452355d0c808727e5e9c16c145ac7d24c3ea96d0abefed43'
+  'f1f15501d09fcb6b403e9a022e83bbd0b756b8a050fc839a0f66613e73aaacc4'
+  '63577a73e0339a6bb7b40d93ec26f7f5d4fb3316d080b69f3f3ddf069d4f796c'
+)
+
+prepare() {
+  cd "$_dist-$pkgver"
+  patch -p0 -i "$srcdir/tests_git_editor_fix.patch"
+  patch -p0 -i "$srcdir/tests_git_file_protocol_fix.patch"
+}
 
 build() {
   cd "$srcdir/$_dist-$pkgver"
