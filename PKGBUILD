@@ -4,8 +4,8 @@
 _pkgname=RcppGSL
 _pkgver=0.3.13
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=3
+pkgver=${_pkgver//-/.}
+pkgrel=4
 pkgdesc="'Rcpp' Integration for 'GNU GSL' Vectors and Matrices"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
