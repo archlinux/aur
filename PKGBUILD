@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-forge-git
 _uuid=forge@jmmaranan.com
-pkgver=70.r5.g27620b8
+pkgver=70.r7.gc674825
 pkgrel=1
 pkgdesc="Tiling and Window Manager for Gnome-Shell"
 arch=('any')
@@ -21,9 +21,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/forge"
-
-  # msgfmt: found 3 fatal errors
-  rm po/it.po
 }
 
 build() {
