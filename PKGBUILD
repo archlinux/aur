@@ -20,14 +20,14 @@ arch=(
 license=(GPL)
 depends=(
   accountsservice
-  gcr-4
-  gjs
+  gcr-4-git
+  "gjs-git>=1.76.0"
   gnome-autoar
   gnome-session
   gnome-settings-daemon
   gsettings-desktop-schemas
   gtk4
-  libadwaita-git
+  "libadwaita-git>=1.3"
   libcanberra-pulse
   libgdm
   libgweather-4
@@ -35,7 +35,7 @@ depends=(
   libnma-gtk4
   libsecret
   libsoup3
-  mutter-git
+  "mutter-git>=44.1"
   unzip
   upower
 )
