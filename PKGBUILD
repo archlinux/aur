@@ -36,7 +36,8 @@ package() {
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/pixmaps"
-    cp -a "${srcdir}/squashfs-root/eiskaltdcpp.png" "${pkgdir}/usr/share/pixmaps/"
+    #cp -a "${srcdir}/squashfs-root/eiskaltdcpp.png" "${pkgdir}/usr/share/pixmaps/eiskaltdcpp.png"
+    install -Dm644 "${srcdir}/squashfs-root/eiskaltdcpp.png" "${pkgdir}/usr/share/pixmaps/eiskaltdcpp.png"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
