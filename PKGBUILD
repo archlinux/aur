@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=4.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
 license=('GPL')
@@ -33,6 +33,7 @@ depends=('intel-mkl'
          'zlib')
 makedepends=('java-environment'
              'gcc-fortran'
+             'texlive-latex'
              'tk')
 optdepends=('texlive-bin: LaTeX sty files'
             'gcc-fortran: needed to compile some CRAN packages'
