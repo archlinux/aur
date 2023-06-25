@@ -1,13 +1,16 @@
 pkgbase = vim-autoformat-git
 	pkgdesc = Provides easy code formatting by integrating existing formatters
-	pkgver = r491.781c72c
-	pkgrel = 1
+	pkgver = r548.7b35295
+	pkgrel = 2
 	url = https://github.com/chiel92/vim-autoformat
 	arch = any
 	groups = vim-plugins
 	groups = neovim-plugins
 	license = MIT
 	makedepends = git
+	makedepends = neovim
+	makedepends = python-pynvim
+	makedepends = vim
 	source = vim-autoformat-git::git+https://github.com/chiel92/vim-autoformat
 	md5sums = SKIP
 
@@ -21,4 +24,3 @@ pkgname = neovim-autoformat-git
 	depends = python-pynvim
 	provides = vim-autoformat
 	conflicts = vim-autoformat
-

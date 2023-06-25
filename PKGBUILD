@@ -1,14 +1,15 @@
-# Maintainer: lmartinez-mirror
+# Maintainer: Junxuan Liao <mikeljx at 126 dot com>
+# Contributor: lmartinez-mirror
 pkgbase=vim-autoformat-git
 pkgname=('vim-autoformat-git' 'neovim-autoformat-git')
-pkgver=r491.781c72c
-pkgrel=1
+pkgver=r548.7b35295
+pkgrel=2
 pkgdesc="Provides easy code formatting by integrating existing formatters"
 arch=('any')
 url="https://github.com/chiel92/vim-autoformat"
 license=('MIT')
 groups=('vim-plugins' 'neovim-plugins')
-makedepends=('git')
+makedepends=('git' 'neovim' 'python-pynvim' 'vim')
 source=("$pkgbase::git+$url")
 md5sums=('SKIP')
 
