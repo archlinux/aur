@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-libxml2
 	pkgdesc = XML parsing library, version 2 (android)
-	pkgver = 2.10.3
+	pkgver = 2.10.4
 	pkgrel = 1
 	url = http://www.xmlsoft.org/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = android-aarch64-libxml2
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.10.3/libxml2-v2.10.3.tar.gz
-	md5sums = 4a8bc66943dd13f7ff2ee8816b808969
+	source = https://gitlab.gnome.org/GNOME/libxml2/-/archive/v2.10.4/libxml2-v2.10.4.tar.gz
+	md5sums = af682edd332aa9940c02c66dcbe4ccf3
 
 pkgname = android-aarch64-libxml2
