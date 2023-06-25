@@ -2,14 +2,14 @@
 # Maintainer: robertfoster
 
 pkgname=yap-git
-pkgver=r72.3cbac23
+pkgver=r73.6b8ec80
 pkgrel=1
 pkgdesc="Package software with ease"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/M0Rf30/yap"
 license=('GPL3')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+# provides=("${pkgname%-git}")
+# conflicts=("${pkgname%-git}")
 depends=('glibc')
 makedepends=('git' 'go')
 optdepends=(
