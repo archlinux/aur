@@ -2,18 +2,18 @@
 # Contributor: Hussain Jasim <hussainmkj@gmail.com>
 # Contributors: Flemming Madsen (arch at themadsens dot dk), Sébastien Duquette <ekse.0x@gmail.com>
 pkgname=tclx
-pkgver=8.4.4
+pkgver=8.6.2
 _tclsrcver=8.6.13
-pkgrel=5
+pkgrel=1
 pkgdesc="Provides OS primitives, file scanning, data records etc. for Tcl"
 url="https://github.com/flightaware/tclx"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('BSD')
 depends=('tcl=8.6.13' 'tk' 'libtirpc')
-source=("https://github.com/flightaware/tclx/archive/v${pkgver}.tar.gz" \
+source=("https://github.com/flightaware/tclx/archive/refs/tags/v${pkgver}.tar.gz" \
         "http://downloads.sourceforge.net/sourceforge/tcl/tcl${_tclsrcver}-src.tar.gz" \
         "interperrorline.patch")
-md5sums=('7ab5ccc83a46b41e0f9e757d04001ecd'
+md5sums=('1591f3d11846010a0c016ccea0c866dc'
          '0e4358aade2f5db8a8b6f2f6d9481ec2'
          '3254188674bfa4cdf58605d0d69586d0')
 
