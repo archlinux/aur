@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.17.3
+Name=Minecraft World Downloader
+Comment=Download Minecraft worlds, extend server's render distance. 1.12.2 - 1.20.1 
+Path=/usr/bin
+Exec=minecraft-world-downloader
+Icon=minecraft-world-downloader
+Terminal=false
+MimeType=application/java-archive
