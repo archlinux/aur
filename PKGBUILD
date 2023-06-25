@@ -9,12 +9,12 @@ _L53X_VER=3.5.5.1
 
 pkgname=librealsense
 pkgver=2.53.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300) and the T265 tracking camera."
 arch=('x86_64')
 url="https://github.com/IntelRealSense/librealsense"
 license=('Apache')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 depends=('glfw-x11' 'glu' 'gtk3' 'libusb')
 source=("https://github.com/IntelRealSense/librealsense/archive/refs/tags/v${pkgver}.tar.gz"
     "https://librealsense.intel.com/Releases/RS4xx/FW/D4XX_FW_Image-${_RS4XX_VER}.bin"
@@ -61,7 +61,7 @@ build() {
     -DBUILD_WITH_OPENMP=on \
     -DBUILD_EXAMPLES=true \
     -DBUILD_WITH_TM2=true
-  make
+  make -j4
 }
 
 package() {
