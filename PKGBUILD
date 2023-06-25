@@ -1,17 +1,17 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='vrf-decompiler'
 _reponame='ValveResourceFormat'
-pkgver='0.3.2'
+pkgver='0.4.0'
 pkgrel='1'
 pkgdesc="File data viewer and decompiler for Valve's Source 2 resource file format"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/SteamDatabase/$_reponame"
 license=('MIT')
-depends=('dotnet-runtime' 'skia-sharp')
-makedepends=('dotnet-sdk')
+depends=('dotnet-runtime>=7.0.0' 'skia-sharp')
+makedepends=('dotnet-sdk>=7.0.0')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('8c1d92eb0eb069beee345d974d5103446b3498141bcbcaa4f95d2817f45ac7a442351b6733e491bc888960b5723542160147d9b3cd5e5952aaf408cfe24eed7c')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha512sums=('f5698c28a01838ca2a0c6ff75ebe36a278171dbafb4f7ba464722aaf0785a23a7a0290888f0659577a8559dad89801ee63847b976e737087b345d8e5b6fcf329')
 
 _sourcedirectory="$_reponame-$pkgver"
 
