@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="p3x-redis-ui-appimage"
-pkgver=2023.4.102
+pkgver=2023.4.104
 pkgrel=1
 pkgdesc="A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app"
 arch=('x86_64')
@@ -13,13 +13,13 @@ providers=(patrikx3)
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/P3X-Redis-UI-${pkgver}.AppImage"
-    "LICENSE::${_githuburl}/raw/master/LICENSE")
-sha256sums=('976712322b899c80d05b61c50e52ab75fd772253cddd72f8c7b1c76678ef9126'
-            '1603d2311d0db46bd4cf9ff5654093339a9864ef3fb2869b7eeb456189aeb60f')
+    "LICENSE::https://raw.githubusercontent.com/patrikx3/redis-ui/master/LICENSE")
+sha256sums=('787b277b2973597afcd167e254359b231623adead62d52da837e555656702c77'
+            'ea85619a42664bcb55b4621943d509bce1b857e814dbb0338520b208940bb610')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/p3x-redis-ui.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
