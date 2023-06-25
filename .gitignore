@@ -1,0 +1,5 @@
+*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/java-version-and-build-version.patch

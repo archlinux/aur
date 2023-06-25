@@ -1,0 +1,37 @@
+diff --git a/build.gradle b/build.gradle
+index 5c8d228..125c0e3 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -7,27 +7,24 @@ plugins {
+ 
+     id 'jacoco'
+ 
+-    id 'com.github.johnrengelman.shadow' version '6.0.0'
++    id 'com.github.johnrengelman.shadow' version '8.1.1'
+     id 'com.github.ben-manes.versions' version '0.33.0'
+-    id 'com.palantir.git-version' version '0.12.3'
+ }
+ 
+-sourceCompatibility = 1.7
++sourceCompatibility = 1.8
+ 
+-/* git version */
+-def gitVersionDetails = versionDetails()
+-version = gitVersionDetails.lastTag
++version = "${System.env.BUILD_VERSION}"
+ 
+ jar {
+     manifest {
+         attributes 'Main-Class': 'cli.Main',
+                 'Implementation-Title': 'Email to PDF Converter',
+-                'Implementation-Version': archiveVersion.get() + "+${gitVersionDetails.branchName}.${gitVersionDetails.gitHash}"
++                'Implementation-Version': version
+     }
+ }
+ 
+ shadowJar {
+-    baseName = 'emailconverter'
++    archiveBaseName.set('emailconverter')
+ }
+ 
+ repositories {
