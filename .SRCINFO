@@ -1,6 +1,6 @@
 pkgbase = git-commit
 	pkgdesc = Git commit simulator using Conventional Commits conventions
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 2
 	url = https://github.com/KunalSin9h/git-commit.git
 	arch = x86_64
