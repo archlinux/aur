@@ -1,13 +1,13 @@
 # Maintainer: deserts <int8@foxmail.com>
 pkgname=gprojector
-pkgver=3.0.7
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Interactive tool for exploring map projections"
 arch=("any")
 url="https://www.giss.nasa.gov/tools/gprojector/"
 license=("custom")
 groups=("nasa-tools")
-depends=("java-runtime>=9"
+depends=("java-runtime>=11"
          "hicolor-icon-theme"
          "desktop-file-utils")
 makedepends=("unzip")
