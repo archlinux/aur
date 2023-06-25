@@ -3,10 +3,10 @@
 pkgname=aws-lambda-powertools-python
 newpkgname=powertools-lambda-python
 pkgver=2.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A developer toolkit to implement Serverless best practices and increase developer velocity'
 arch=(any)
-url="https://github.com/awslabs/aws-lambda-powertools-python"
+url="https://github.com/aws-powertools/$newpkgname"
 license=("MIT")
 depends=("python")
 makedepends=("python-build" "python-installer" "python-poetry")
