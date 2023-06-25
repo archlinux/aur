@@ -4,7 +4,7 @@
 _android_arch=armv7a-eabi
 
 pkgname=android-${_android_arch}-libpng
-pkgver=1.6.39
+pkgver=1.6.40
 pkgrel=1
 pkgdesc="A collection of routines used to create PNG format graphics (android)"
 arch=('any')
@@ -14,7 +14,7 @@ depends=("android-${_android_arch}-zlib")
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("http://downloads.sourceforge.net/sourceforge/libpng/libpng-$pkgver.tar.xz")
-sha256sums=('1f4696ce70b4ee5f85f1e1623dc1229b210029fa4b7aee573df3e2ba7b036937')
+sha256sums=('535b479b2467ff231a3ec6d92a525906fb8ef27978be4f66dbe05d3f3a01b3a1')
 
 build() {
     cd "$srcdir/libpng-$pkgver"
