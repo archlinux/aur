@@ -17,7 +17,6 @@ pkgbase = lbry-gtk-git
 	depends = md4c
 	depends = pcre2
 	depends = imagemagick
-	depends = appdir
 	depends = sqlite
 	provides = lbry-gtk
 	conflicts = lbry-gtk
