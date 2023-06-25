@@ -1,6 +1,6 @@
 pkgbase = electronreact-appimage
 	pkgdesc = Desktop application using Electron and React
-	pkgver = 0.3.5
+	pkgver = 0.4.10
 	pkgrel = 1
 	url = https://github.com/ito-rui/electron-react-desktop-app
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = electronreact-appimage
 	depends = hicolor-icon-theme
 	conflicts = electronreact
 	options = !strip
-	source = electronreact-0.3.5.AppImage::https://github.com/ito-rui/electron-react-desktop-app/releases/download/v0.3.5/ElectronReact-0.3.5.AppImage
-	sha256sums = c2221da0a24bf3668f819e2325d121e526d0a9951fe49d624d85dc01efb236fa
+	source = electronreact-0.4.10.AppImage::https://github.com/ito-rui/electron-react-desktop-app/releases/download/v0.4.10/ElectronReact-0.4.10.AppImage
+	sha256sums = f1e869b7f5652b10a55ba7c2ec051bb2323222e0c6fce7091964a14c7023ef42
 
 pkgname = electronreact-appimage
