@@ -1,0 +1,12 @@
+pkgbase = fallout2-ce-game
+	pkgdesc = Fallout 2 for modern operating systems
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/alexbatalov/fallout2-ce
+	arch = x86_64
+	license = custom:SUL
+	depends = sdl2
+	source = fallout2-ce-1.2.0.tar.gz::https://github.com/alexbatalov/fallout2-ce/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 7ae550f10dfd5319128d5276509da870f0651ee69f4216502e75cb35035866c8
+
+pkgname = fallout2-ce-game
