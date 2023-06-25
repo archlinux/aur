@@ -2,7 +2,7 @@
 
 pkgname='spacer-bin'
 pkgdesc='CLI tool to insert spacers in when command output stops'
-pkgver='0.1.6'
+pkgver='0.1.8'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/samwho/spacer'
@@ -14,7 +14,7 @@ checkdepends=()
 provides=(spacer)
 conflicts=(spacer)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/samwho/spacer/releases/download/v${pkgver}/spacer-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('1f2c04950920996c826bdfa1de543ccd117fec784663bb9cb733924ac30e9518')
+sha256sums=('27069a355be4d63d7dc84a46cb187f4b813e34d9ed8ce54d830ba030d196325a')
 
 package() {
     install -Dm755 "spacer" "$pkgdir/usr/bin/spacer"
