@@ -1,19 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="migasfree-play-bin"
-pkgver=5.4.0
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="Migasfree Client front-end. Allow install/uninstall available applications and printers."
 arch=('x86_64')
 url="https://github.com/migasfree/migasfree-play"
 license=('custom')
 options=(!strip)
-providers=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-depends=(libxdamage dbus nspr expat libcups 'hicolor-icon-theme' cairo 'gcc-libs' libxrandr glibc pango libxkbcommon glib2 libx11 'alsa-lib' libxcb sh libxext libxcomposite mesa nodejs libxfixes gtk3 libdrm 'at-spi2-core' nss )
+depends=('expat' 'hicolor-icon-theme' 'bash' 'glib2' 'libxrandr' 'at-spi2-core' 'libxkbcommon' 'cairo' 'libxdamage' 'glibc' 'libcups' \
+    'nspr' 'nodejs' 'alsa-lib' 'nss' 'libdrm' 'dbus' 'libx11' 'gcc-libs' 'mesa' 'libxext' 'libxcb' 'gtk3' 'libxcomposite' 'libxfixes' 'pango')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('99c0e8fa7fe55cafacf253f716d7bb6326248a39b426fd8dd2cb82091e43dfe6')
+sha256sums=('aa88984c061201df8247902d49c98be956dfbf959bbfe25a00aa8e924b15e9dc')
 package() {
-    bsdtar -xvf data.tar.zst -C "${pkgdir}"
+    bsdtar -xvf "${srcdir}/data.tar.zst" -C "${pkgdir}" --gname root --uname root
     chmod 755 "${pkgdir}/etc/sudoers.d/${pkgname%-bin}"
     install -Dm644 "${pkgdir}/usr/share/${pkgname%-bin}/"LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
