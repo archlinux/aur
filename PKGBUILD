@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="selenium-ide-appimage"
 pkgver=4.0.0alpha.40
-_subver=alpha.40
-pkgrel=5
+_pkgver=4.0.0-alpha.40
+pkgrel=6
 pkgdesc="Open Source record and playback test automation for the web."
 arch=('x86_64')
 url="https://selenium.dev/selenium-ide/"
@@ -12,13 +12,13 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver%${_subver}}-${_subver}/Selenium.IDE-${pkgver%${_subver}}-${_subver}.AppImage")
-sha256sums=('f3d5bed40face93acef42f843f6ae9ebd0cc174269ffe4d6af18ae0fc62856c8')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${_pkgver}/Selenium.IDE-${_pkgver}.AppImage")
+sha256sums=('7518b54eafac442e800bc572a4f7bf879d661c923c8166599cf865ae2ad67429')
     
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/selenium-ide.AppImage|g;s|@seleniumhqselenium-ide|selenium-ide|g' \
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun|/opt/${_install_path}/${pkgname%-appimage}.AppImage|g;s|@seleniumhq${pkgname%-appimage}|${pkgname%-appimage}|g" \
         -i "${srcdir}/squashfs-root/@seleniumhq${pkgname%-appimage}.desktop"
 }
 
