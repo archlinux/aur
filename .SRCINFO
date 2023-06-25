@@ -6,6 +6,8 @@ pkgbase = libadwaita-git
 	arch = x86_64
 	arch = i686
 	arch = pentium4
+	arch = aarch64
+	arch = armv7h
 	license = LGPL
 	checkdepends = weston
 	makedepends = git
@@ -25,11 +27,11 @@ pkgname = libadwaita-git
 	provides = libadwaita-1.so
 	conflicts = libadwaita
 
-pkgname = libadwaita-docs-git
+pkgname = libadwaita-git-docs
 	pkgdesc = Building blocks for modern adaptive GNOME applications (documentation)
 	depends = 
 
-pkgname = libadwaita-demos-git
+pkgname = libadwaita-git-demos
 	pkgdesc = Building blocks for modern adaptive GNOME applications (demo applications)
 	depends = libadwaita-git
 	provides = libadwaita-demos=1.3.rc+311+ge810d86b
