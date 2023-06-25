@@ -1,7 +1,7 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
 
 pkgname=lib32-mangohud-git
-pkgver=0.6.9.1.r79.g30748bd
+pkgver=0.6.9.1.r84.gbc8acf9
 pkgrel=1
 pkgdesc="32-bit libraries for MangoHud and MangoApp"
 url='https://github.com/flightlessmango/MangoHud'
@@ -22,8 +22,8 @@ pkgver() {
 build() {
     local meson_options=(
         --wrap-mode=nofallback
-        -Dmangoapp_layer=true
         -Dinclude_doc=false
+        -Dwith_wayland=enabled
         $pkgname
     )
 
