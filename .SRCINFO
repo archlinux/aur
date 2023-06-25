@@ -1,0 +1,22 @@
+pkgbase = com.ancientspider.deepin
+	pkgdesc = 蜘蛛纸牌
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = deepin-wine5
+	depends = glibc
+	depends = freetype2
+	depends = xdg-utils
+	depends = libx11
+	depends = gtk2
+	depends = fontconfig
+	depends = pango
+	depends = bash
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = at-spi2-core
+	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.ancientspider.deepin/com.ancientspider.deepin_1.0.0deepin4_i386.deb
+	sha256sums = d92c5032e1a18108a19d661bd61dff619d27142d2464dbd480aa4f6d1d1433bc
+
+pkgname = com.ancientspider.deepin
