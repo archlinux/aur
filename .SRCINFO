@@ -1,0 +1,14 @@
+pkgbase = eiskaltdcpp-qt-appimage
+	pkgdesc = Qt5-based DC and ADC client for EiskaltDC++ core. Qt, appimage version
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/eiskaltdcpp/
+	arch = x86_64
+	license = GPL3
+	conflicts = eiskaltdcpp-qt
+	conflicts = eiskaltdcpp-qt-git
+	options = !strip
+	source = eiskaltdcpp-qt-2.4.2-x86_64.AppImage::https://sourceforge.net/projects/eiskaltdcpp/files/Linux/eiskaltdcpp-qt-2.4.2-x86_64.AppImage/download
+	sha256sums = 84c794afb7d7edea9b93d4c8e472ba8b18cc3d10a4f9fcbb12890a4fa659c8c4
+
+pkgname = eiskaltdcpp-qt-appimage
