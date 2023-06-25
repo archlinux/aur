@@ -1,14 +1,12 @@
 pkgbase = sbx-h6-rgb-git
 	pkgdesc = Creative SoundblasterX RGB LED setter
-	pkgver = r12.edbf86a
+	pkgver = r16.95b4ef9
 	pkgrel = 1
 	url = https://github.com/Oscillope/sbx-h6-rgb
 	arch = any
-	license = None
+	license = GPL3
 	makedepends = git
 	source = git+https://github.com/Oscillope/sbx-h6-rgb.git
-	source = sbx-h6-off.service
 	sha256sums = SKIP
-	sha256sums = d5478d5fb69a17b1bb4e72ef18f207ce2ddf30df6a08df410422f8d0e2f4227c
 
 pkgname = sbx-h6-rgb-git
