@@ -2,7 +2,7 @@
 
 pkgname='spacer'
 pkgdesc='CLI tool to insert spacers in when command output stops'
-pkgver='0.1.6'
+pkgver='0.1.8'
 pkgrel='1'
 arch=('x86_64' 'aarch64')
 url='https://github.com/samwho/spacer'
@@ -13,7 +13,7 @@ makedepends=('rust' 'gcc' 'binutils')
 checkdepends=('rust' 'git')
 provides=(spacer)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/samwho/spacer/archive/v${pkgver}.tar.gz")
-sha256sums=('5d25b89722cc0247820c9dd16fdb8ad21e68019b6d8850f50c0e48686c3c73d0')
+sha256sums=('f50133bfef2b2bf3c5eb40fd7da06fd030f24dffb71557668ac919471bf49048')
 
 build() {
     cd "$pkgname-$pkgver"
