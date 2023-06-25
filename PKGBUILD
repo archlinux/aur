@@ -17,7 +17,6 @@ depends=(
   python-pyqt5
   polkit
   python-wheel
-  wget
 )
 makedepends=(
   git
@@ -65,8 +64,8 @@ package() {
 
 #Custom files also use in gentoo (fix root gui application and desktop file)
   mkdir -p files && cd files
-  wget https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/lenovolegionlinux/files/legion_cli.policy
-  wget https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/lenovolegionlinux/files/legion_gui.desktop
+  curl https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/lenovolegionlinux/files/legion_cli.policy -o legion_cli.policy
+  curl https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/lenovolegionlinux/files/legion_gui.desktop -o legion_gui.desktop
 
 #Install custom files
   install -Dm644 legion_cli.policy "${pkgdir}/usr/share/polkit-1/actions/"
