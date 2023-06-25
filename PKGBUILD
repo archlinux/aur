@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="alephium-wallet-appimage"
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="The official Alephium wallet for desktop"
 arch=('x86_64')
@@ -12,12 +12,11 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Alephium-${pkgver}.AppImage")
-sha256sums=('b25e0f60593b684f815dd75a0291f863b9943dd9be1207b48f2e9da7984dee21')
+sha256sums=('9853c2aafa3b608a4f2f623129accb499ba25a1201ecb82c7a4c773d6a51f65b')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/alephium-wallet.AppImage|g;s|Finance|Finance;Utility|g' \
-        -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|Finance|Finance;Utility|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
