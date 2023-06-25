@@ -1,6 +1,6 @@
-Wed, 21 Jun 2023 15:26:27 +0000 Kathara Team <******@kathara.org>
+Sun, 25 Jun 2023 16:11:02 +0000 Kathara Team <******@kathara.org>
 
-* Release v3.6.0
+* Release v3.6.2
     * Fix FilesystemMixin APIs for file modifications
     * Add a warning if a meta is repeated on the same device
     * Add support for Docker Images tags in "kathara settings"
