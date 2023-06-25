@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-plus-appimage
-pkgver=3.1.21
+pkgver=3.1.22
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly."
 arch=('x86_64')
@@ -13,12 +13,12 @@ conflicts=("${pkgname%-appimage}" "${pkgname%-plus-appimage}" "${pkgname%-plus-a
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-${arch}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/mvdicarlo/postybirb-plus/master/LICENSE")
-sha256sums=('9e4f772f7b2f51b780b2734823566244d2c13266da5912fa4cdd215fc3c6ceac'
+sha256sums=('84429e11fac4ab31460f67ee7c504f56fcdbf99dcdf86d2dfdb469b0be45cc44'
             'a0b91aa0ffc9564128c6599eac1fc0ba93b8fe477dff6258ef315f0019b5726d')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+  chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+  "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+  sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
   install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
