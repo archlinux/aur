@@ -1,6 +1,6 @@
 pkgbase = intelxed
 	pkgdesc = Intel x86 encoder decoder
-	pkgver = 2022.10.11
+	pkgver = 2023.06.07
 	pkgrel = 1
 	url = https://intelxed.github.io
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = intelxed
 	makedepends = mbuild
 	makedepends = doxygen
 	conflicts = xed
-	source = https://github.com/intelxed/xed/archive/refs/tags/v2022.10.11.tar.gz
-	sha256sums = 3ddd354d15481b62c1ace0c1faf0496b1ea933d43f7431a2dff93e19b530240f
+	source = https://github.com/intelxed/xed/archive/refs/tags/v2023.06.07.tar.gz
+	sha256sums = f6af487ec1f962036d9004d23945787e0f26340a977f633e4474c455fa87fe31
 
 pkgname = intelxed
