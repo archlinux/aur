@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tagspaces-appimage
-pkgver=5.3.5
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="An offline, open source, document manager with tagging support"
 arch=('x86_64')
@@ -15,9 +15,9 @@ source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/downloa
 sha256sums=('cfb89dbe54ac7823014956912c6fb891f9e08eb0ef05864a105c9ea078a391ac')
 
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/tagspaces.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 
 package() {
