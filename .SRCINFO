@@ -1,7 +1,7 @@
 pkgbase = vdr-fritzbox
 	pkgdesc = Connects to the Fritz!Box to inform you about incoming and outgoing calls
-	pkgver = 1.5.3
-	pkgrel = 26
+	pkgver = 1.5.4
+	pkgrel = 1
 	url = https://github.com/jowi24/vdr-fritz
 	arch = x86_64
 	arch = i686
@@ -14,14 +14,18 @@ pkgbase = vdr-fritzbox
 	depends = libgcrypt
 	depends = vdr-api=2.6.3
 	backup = etc/vdr/conf.avail/50-fritzbox.conf
-	source = https://github.com/jowi24/vdr-fritz/releases/download/1.5.3/vdr-fritzbox-1.5.3.tgz
-	source = vdr-fritzbox-libnetpp-boost-1.67-fix.patch::https://github.com/jowi24/libnetpp/commit/212847f0efaeffee8422059b8e202d844174aaf3.patch
-	source = vdr-fritzbox-libnetpp-add-missing-map.patch::https://github.com/jowi24/libnetpp/commit/fd5d3a23d8855745452bf5d8867c79cef6c489a7.patch
+	source = vdr-fritzbox-1.5.4.tar.gz::https://github.com/jowi24/vdr-fritz/archive/refs/tags/1.5.4.tar.gz
+	source = vdr-fritzbox-libconvpp-1.5.4.tar.gz::https://github.com/jowi24/libconvpp/archive/286a289e30417ac534c861529ae245ccb44286e5.tar.gz
+	source = vdr-fritzbox-libfritzpp-1.5.4.tar.gz::https://github.com/jowi24/libfritzpp/archive/c74fd462285ade1054784b97b6dce22d55196c01.tar.gz
+	source = vdr-fritzbox-liblogpp-1.5.4.tar.gz::https://github.com/jowi24/liblogpp/archive/d61e25f4548f40261e6db62a967776cfa16e599a.tar.gz
+	source = vdr-fritzbox-libnetpp-1.5.4.tar.gz::https://github.com/jowi24/libnetpp/archive/b32ecc8e64508f3b1158a2adcbd82034c71d7a38.tar.gz
 	source = vdr-fritzbox-detach_thread.patch
 	source = 50-fritzbox.conf
-	sha256sums = d09471c229206e268216828c1a2d2bb7a15fc26530e0cb67bfbdb8ba934e2b0e
-	sha256sums = 8f5796a9dc725c627cc556fecd271f24f6a0a5c7fbc0a64df807cd4f3c6efa3a
-	sha256sums = 3a3642b4bdde2e9b14f596d0806b472abe6c63e474947c6a8379d8bd2806e8a8
+	sha256sums = 0c1568f7745457bad05368e14f83c7a1a94aa0cb2b3f607557350b0aa8a1e0b0
+	sha256sums = 5408184b0e516cb8feb3198c6d719f300adf62839206c26817b57506f508a9a6
+	sha256sums = 3aeb90212180fc29c30ff1d0fa041a43c3306ce1616b0b1fa3e04aebb5bcded4
+	sha256sums = 6f228b1250611b2f7f38cd143a82463486bc98d07566d4d310a4040887420269
+	sha256sums = 97035c688eb6fe5ea0376506fcf03f355a4853315b4276c0bc8ffb09d2ff2cea
 	sha256sums = 64af3529c3ea466911ee89f4848019421716a53526ee74a534ed713ccc5625ba
 	sha256sums = f80efa7827c89f30d0ce25df00e6bb0efdf0e8fe68e9ca15c7f15caea731ba33
 
