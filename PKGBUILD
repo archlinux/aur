@@ -6,7 +6,7 @@
 # see: https://photivo.org/download/gimp#photivo_to_gimp
 
 pkgname=photivo-git
-pkgver=20201119_b821057
+pkgver=20230625_f22d1a3
 pkgrel=1
 epoch=1
 pkgdesc="Free and open source photo processor"
