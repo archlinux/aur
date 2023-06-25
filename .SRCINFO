@@ -1,7 +1,7 @@
 pkgbase = r-mkl
 	pkgdesc = Language and environment for statistical computing and graphics, linked to the Intel(R) MKL.
 	pkgver = 4.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.r-project.org/
 	install = r-mkl.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = r-mkl
 	makedepends = java-environment
 	makedepends = gcc-fortran
 	makedepends = texlive-latex
+	makedepends = texlive-latexrecommended
 	makedepends = tk
 	depends = intel-mkl
 	depends = bzip2
