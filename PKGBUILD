@@ -6,7 +6,7 @@ _desktopfile="eiskaltdcpp-qt.desktop"
 
 pkgname=eiskaltdcpp-qt-appimage
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt5-based DC and ADC client for EiskaltDC++ core. Qt, appimage version"
 arch=('x86_64')
 url="https://sourceforge.net/projects/eiskaltdcpp/"
@@ -36,7 +36,6 @@ package() {
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/pixmaps"
-    #cp -a "${srcdir}/squashfs-root/eiskaltdcpp.png" "${pkgdir}/usr/share/pixmaps/eiskaltdcpp.png"
     install -Dm644 "${srcdir}/squashfs-root/eiskaltdcpp.png" "${pkgdir}/usr/share/pixmaps/eiskaltdcpp.png"
 
     # Symlink executable
