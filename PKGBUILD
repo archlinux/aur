@@ -7,7 +7,7 @@
 
 pkgname=dis4irc
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern Discord <-> IRC bridge"
 arch=('any') # Java :)
 url="https://github.com/zachbr/Dis4IRC"

@@ -1,12 +1,12 @@
 pkgbase = dis4irc
 	pkgdesc = A modern Discord <-> IRC bridge
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zachbr/Dis4IRC
 	install = dis4irc.install
 	arch = any
 	license = MIT
-	depends = java-runtime>=8
+	depends = java-runtime>=11
 	noextract = Dis4IRC-1.6.0.jar
 	options = !strip
 	backup = etc/dis4irc/config.hocon
