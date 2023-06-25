@@ -24,7 +24,7 @@ noextract=()
 sha512sums=('SKIP')
 
 prepare() {
-    sudo pacman -S nerd-fonts
+    sudo pacman -S --noconfirm ttf-nerd-fonts-symbols
 }
 
 build() {
