@@ -1,18 +1,19 @@
 pkgbase = hadoop
 	pkgdesc = An open-source software for reliable, scalable, distributed computing
 	pkgver = 3.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hadoop.apache.org/
 	install = hadoop.install
 	arch = x86_64
-	license = apache
+	license = APACHE
 	makedepends = cmake
-	makedepends = gcc
-	makedepends = java-environment<=11
+	makedepends = gcc12
+	makedepends = java-environment=11
 	makedepends = make
 	makedepends = maven
+	makedepends = pkgconfig
 	depends = inetutils
-	depends = java-runtime-headless-openjdk=11
+	depends = java-runtime-headless=11
 	depends = openssh
 	depends = protobuf
 	conflicts = yarn
