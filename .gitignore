@@ -1,4 +1,4 @@
-/src
-*.gz
-*.zst
-/pkg
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD

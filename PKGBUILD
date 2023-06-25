@@ -1,33 +1,40 @@
-# Maintainer: Wenxuan Zhang <wenxuangm@gmail.com>
-_pkgname=csview
+# Maintainer: éclairevoyant
+# Contributor: Wenxuan Zhang <wenxuangm at gmail dot com>
+
 pkgname=csview
-pkgver=1.0.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A high performance csv viewer with cjk/emoji support"
 arch=(i686 x86_64)
-url='https://github.com/wfxr/csview'
-license=('MIT' 'APACHE')
-depends=()
-makedepends=('rust' 'cargo')
-conflicts=("csview-git" "csview-bin")
-provides=()
+url="https://github.com/wfxr/$pkgname"
+license=(Apache MIT)
+depends=(gcc-libs)
+makedepends=(cargo git)
+source=("git+$url.git?signed#commit=d1991e60b2126763fb6ee935c9324baf77b9dcd8")
+b2sums=('SKIP')
+validpgpkeys=(DC6FB7FC761E848F76E98B4FCCAF35548C65530F) # Wenxuan Zhang <wenxuangm@gmail.com>
 
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('d9c425b57954b04b44bc4fcd11605832')
+prepare() {
+	cd $pkgname
+
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-	cd "$srcdir/${_pkgname}-${pkgver}"
-	cargo build --release --locked
+	cd $pkgname
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 package() {
-	cd "$srcdir/${_pkgname}-${pkgver}"
-	install -Dm755 "target/release/${_pkgname}"        "$pkgdir/usr/bin/${_pkgname}"
-	install -Dm644 "completions/fish/${_pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-	install -Dm644 "completions/zsh/_${_pkgname}"      "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
-	install -Dm644 "README.md"                         "$pkgdir/usr/share/doc/${_pkgname}/README.md"
-	install -Dm644 "LICENSE-MIT"                       "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE-MIT"
-	install -Dm644 "LICENSE-APACHE"                    "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE-APACHE"
-}
+	cd $pkgname
 
-# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
+	install -Dm755 target/release/$pkgname        -t "$pkgdir/usr/bin/"
+	install -Dm644 completions/fish/$pkgname.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+	install -Dm644 completions/zsh/_$pkgname      -t "$pkgdir/usr/share/zsh/site-functions/"
+	install -Dm644 README.md                      -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE-{APACHE,MIT}           -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
