@@ -2,8 +2,8 @@
 pkgname="epub-reader-appimage"
 _pkgname="Epub-Reader"
 _appname="EpubReader"
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Epub/Book Reader Application built with ElectronJS"
 arch=('x86_64')
 url="https://mignaway.github.io/epub-reader-website/"
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname%-appimage}.png")
-sha256sums=('7a5fb39aa92955eee0dab439b473e462414fcd850fd914c69defcf6bc32cc1be'
+sha256sums=('e0ffa61a33131541064cc926094ee7cc0dac5db73096757ec522cca9906ddfcb'
             '52c03602fcee0ab80ce0f8350c9c6acd55f1cee270d80fa9e4b6dd30c9d56a19')
 build() {
     cd "${srcdir}/${_appname}-${pkgver}"
