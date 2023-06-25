@@ -1,0 +1,13 @@
+pkgbase = try
+	pkgdesc = Try lets you run a command and inspect its effects before changing your live system
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/binpash/try
+	arch = any
+	license = MIT
+	depends = bash
+	provides = try
+	source = try-0.1.0.tar.gz::https://github.com/binpash/try/archive/refs/tags/v0.1.0.tar.gz
+	sha512sums = 096214cdaf6c085ae9105d4140f00fbc01e8f99d834c4be7d607166318aba48a66e3a6055b2943b1ffe399f6b756638004ef814c41067cbe1b5aaab5e4fc4aeb
+
+pkgname = try
