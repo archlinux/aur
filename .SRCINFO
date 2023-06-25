@@ -1,7 +1,7 @@
 pkgbase = sox-dsd-git
-	pkgdesc = SoX Resampler library dsd branch
+	pkgdesc = SoX Resampler library dsd fork
 	pkgver = 14.4.2.r69.g0be259ea
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sox.sourceforge.net/
 	arch = i686
 	arch = x86_64
