@@ -1,6 +1,6 @@
 pkgbase = lvce-appimage
 	pkgdesc = VS Code inspired text editor that mostly runs in a webworker
-	pkgver = 0.15.31
+	pkgver = 0.15.34
 	pkgrel = 1
 	url = https://lvce-editor.github.io/lvce-editor
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lvce-appimage
 	depends = glibc
 	conflicts = lvce
 	options = !strip
-	source = lvce-0.15.31.AppImage::https://github.com/lvce-editor/lvce-editor/releases/download/v0.15.31/Lvce-v0.15.31.AppImage
+	source = lvce-0.15.34.AppImage::https://github.com/lvce-editor/lvce-editor/releases/download/v0.15.34/Lvce-v0.15.34.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/lvce-editor/lvce-editor/main/LICENSE
-	sha256sums = b58310647a6d95d780237686057e15225d75b9337abfebfab21fc4d4567a7465
+	sha256sums = c5f73d26a1287d953733c88cdd95a340e831c83235a6b9dd543acaee7e486c2d
 	sha256sums = 7736b1dbda2b18af09232f9eb619e4d3d79d855058cc7494853f25d1553ed00b
 
 pkgname = lvce-appimage

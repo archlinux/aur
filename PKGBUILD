@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-appimage
-pkgver=0.15.31
+pkgver=0.15.34
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
 arch=('x86_64')
@@ -13,12 +13,12 @@ options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Lvce-v${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/lvce-editor/lvce-editor/main/LICENSE")
-sha256sums=('b58310647a6d95d780237686057e15225d75b9337abfebfab21fc4d4567a7465'
+sha256sums=('c5f73d26a1287d953733c88cdd95a340e831c83235a6b9dd543acaee7e486c2d'
             '7736b1dbda2b18af09232f9eb619e4d3d79d855058cc7494853f25d1553ed00b')
       
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    ./"${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
       
