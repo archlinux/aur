@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-hue-lights
 	pkgdesc = Gnome Shell extension for Philips Hue compatible lights controlled by the Philips Hue Bridge and for controlling Philips Hue HDMI sync box.
-	pkgver = 29
+	pkgver = 30
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/vchlum/hue-lights
@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-hue-lights
 	makedepends = gettext
 	makedepends = git
 	depends = gnome-shell
-	source = git+https://github.com/vchlum/hue-lights.git#commit=732b1f7ad9f18e246f01fe116bec36f0fcc3f73c
+	source = git+https://github.com/vchlum/hue-lights.git#commit=c8039c790a74dbc72319979fdef916842a9d0106
 	sha512sums = SKIP
 
 pkgname = gnome-shell-extension-hue-lights
