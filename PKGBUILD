@@ -1,6 +1,6 @@
 pkgname=tor-relay-scanner-bin
-pkgver=0.0.9
-pkgrel=6
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Tor relay availability checker'
 url=https://github.com/ValdikSS/tor-relay-scanner
 arch=(x86_64)
@@ -9,7 +9,7 @@ optdepends=(tor-browser)
 install=$pkgname.install
 source=(tor-relay-scanner-$pkgver.pyz::https://github.com/ValdikSS/tor-relay-scanner/releases/download/$pkgver/tor-relay-scanner-$pkgver.pyz
 	update-tor-bridges.service)
-b2sums=(5377ebdca8a70643a212e72c585b19c7397433c3701085db0c42cc8b6dc848144c56990ae028311f59135c7530f4e4d0e05949c2bb22e6a4bff779e96d4b8a75
+b2sums=(5259c833d3447ae4044b4382178fbf321f6f56193847f1f195c8f197153569de41861c9af088e2de45b85b4a66107f14510e98c6e3a9de46a2faed491b732aba
 	10bbe01d67e84fd614dd6dddb855040d117b1cd7cdb326e9680b43233dc56fbae62e11a8a8c59e71947a9842f87802a1591c3b94cf8d529568c7701358421ec2)
 
 package() {
