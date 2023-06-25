@@ -1,17 +1,23 @@
 pkgbase = webcord-appimage
 	pkgdesc = A Discord and SpaceBar electron-based client implemented without Discord API.
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/SpacingBat3/WebCord
+	arch = aarch64
+	arch = armv7h
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = glibc
 	conflicts = webcord
 	options = !strip
-	source = webcord-4.2.0.AppImage::https://github.com/SpacingBat3/WebCord/releases/download/v4.2.0/WebCord-4.2.0-x64.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/SpacingBat3/WebCord/master/LICENSE
-	sha256sums = c64a7975a8403942e936dcb18e2f288cccbb194144fdd0de0f377631b060f291
 	sha256sums = 7e8ddf98c883358508999fe6c1296b44353e624f8a4f7b6754fcfcc9aafa4456
+	source_aarch64 = webcord-4.3.0-aarch64.AppImage::https://github.com/SpacingBat3/WebCord/releases/download/v4.3.0/WebCord-4.3.0-arm64.AppImage
+	sha256sums_aarch64 = 74eaec4f8ccd540d56851734c45b6a6fe279894da41b474d47cffb11b19bf8f4
+	source_armv7h = webcord-4.3.0-armv7h.AppImage::https://github.com/SpacingBat3/WebCord/releases/download/v4.3.0/WebCord-4.3.0-armv7l.AppImage
+	sha256sums_armv7h = f5de8b79dfdd5122a17a4b667b1f2cbe2bccde12d1a9a4ff828e2c4d57569eab
+	source_x86_64 = webcord-4.3.0-x86_64.AppImage::https://github.com/SpacingBat3/WebCord/releases/download/v4.3.0/WebCord-4.3.0-x64.AppImage
+	sha256sums_x86_64 = 0749fd2551673191d33dd56c3eb963288d560661c61f2abcae66826c08bd903b
 
 pkgname = webcord-appimage
