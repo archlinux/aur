@@ -2,7 +2,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=bazarr
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Subtitle download automation for Sonarr and Radarr."
 arch=('any')
@@ -33,7 +33,7 @@ source=(
 )
 noextract=("bazarr-${pkgver}.zip")
 
-sha256sums=('3ee54ad63acd8f16a011262f82a4417f1cec57f2b11614dd3b29623bcb26c1e7'
+sha256sums=('8076da46a504c137d81b8909dc1371686ef81032d6ee485fbc293a7644402edf'
             '26518fb173e38c73c59c9ca8024cef546f8d0041044a49de414146bf2e15f631'
             '92fd48cbd7e5fe3a0388bbe756a52098fc461ef2dc87d9e886452e4f15acdcdc'
             '573beeac951d427e980332ce4d8645ae2299082e6c9c04f96e2a41a98c3acc60'
