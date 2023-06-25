@@ -1,7 +1,7 @@
 pkgbase = r-rcppziggurat
 	pkgdesc = 'Rcpp' Integration of Different "Ziggurat" Normal RNG Implementations
 	pkgver = 0.1.6
-	pkgrel = 6
+	pkgrel = 7
 	url = https://cran.r-project.org/package=RcppZiggurat
 	arch = x86_64
 	license = GPL

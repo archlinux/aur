@@ -4,8 +4,8 @@
 _pkgname=RcppZiggurat
 _pkgver=0.1.6
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
-pkgrel=6
+pkgver=${_pkgver//-/.}
+pkgrel=7
 pkgdesc="'Rcpp' Integration of Different \"Ziggurat\" Normal RNG Implementations"
 arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
