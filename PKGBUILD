@@ -5,7 +5,7 @@ _py="python"
 _pkg="lvm"
 pkgname="${_py}-${_pkg}"
 pkgver=2.02.188
-_pkgver="2.02.188(2) (2021-05-07)"
+_pkgver="${pkgver}(2) (2021-05-07)"
 pkgrel=1
 arch=(
   x86_64
