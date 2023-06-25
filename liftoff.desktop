@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Liftoff
+Comment=A mobile and desktop lemmy client written in flutter
+Exec=Liftoff
+Icon=liftoff
+Terminal=false
+StartupNotify=false
+Categories=Network;X-SocialMedia
