@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: zhuangzhuang <xufengyuan20080802@outlook.com>
 pkgname="rubick-bin"
-pkgver=2.2.7
+pkgver=2.2.8
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip' '!emptydirs')
 install="${pkgname}.install"
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 	"LICENSE::https://raw.githubusercontent.com/rubickCenter/rubick/master/LICENSE")
-sha256sums=('a2b3d8addfb344c65ad3afd6989147c16022ddf6597222ddcb9ae2fe48dc82d1'
+sha256sums=('2e844a3e4dadfa4ab065554d0333c6d04eafe7f96c306f4b011f5f5a7f0675a2'
             '98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77')
 
 package(){
