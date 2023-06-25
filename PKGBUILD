@@ -2,7 +2,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=intelxed-git
-pkgver=2022.10.11.r0.g9fc12ab
+pkgver=2023.06.07.r0.g4dc7713
 pkgrel=1
 pkgdesc="Intel x86 encoder decoder"
 arch=('x86_64')
