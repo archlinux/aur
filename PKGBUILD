@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: zhuangzhuang <xufengyuan20080802@outlook.com>
 pkgname="rubick-bin"
-pkgver=2.2.8
+pkgver=2.2.10
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
@@ -18,10 +18,10 @@ options=('!strip' '!emptydirs')
 install="${pkgname}.install"
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
 	"LICENSE::https://raw.githubusercontent.com/rubickCenter/rubick/master/LICENSE")
-sha256sums=('2e844a3e4dadfa4ab065554d0333c6d04eafe7f96c306f4b011f5f5a7f0675a2'
+sha256sums=('0b80970e1785ffc5a75a85aea09cf84d77f1ac021b11d0e2f2c571beac5b9ddf'
             '98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77')
 
 package(){
-	bsdtar -xf data.tar.xz -C "${pkgdir}"
+	bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 	install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
