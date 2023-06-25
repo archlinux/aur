@@ -1,11 +1,11 @@
 pkgbase = tinygltf
 	pkgdesc = Header only C++ tiny glTF library(loader/saver)
-	pkgver = 2.8.9
+	pkgver = 2.8.13
 	pkgrel = 1
 	url = https://github.com/syoyo/tinygltf
 	arch = any
 	license = MIT
-	source = tinygltf-2.8.9.tar.gz::https://github.com/syoyo/tinygltf/archive/refs/tags/v2.8.9.tar.gz
-	sha256sums = cfff42b9246e1e24d36ec4ae94a22d5f4b0a1c63c796babb5c2a13fe66aed5e9
+	source = tinygltf-2.8.13.tar.gz::https://github.com/syoyo/tinygltf/archive/refs/tags/v2.8.13.tar.gz
+	sha256sums = 72c3e5affa8389442582e4cf67426376e2dff418e998e19822260f4bf58b74b8
 
 pkgname = tinygltf
