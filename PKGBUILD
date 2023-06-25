@@ -9,9 +9,10 @@
 
 ### PKGBUILD METADATA ###
 
-pkgname=webcord-vencord-git
+_pkgname=webcord
+pkgname="${_pkgname}-vencord-git"
 pkgver=4.3.0.r852.123e818
-pkgrel=2
+pkgrel=3
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch with Vencord)."
 arch=("any")
 
@@ -27,11 +28,11 @@ optdepends=(
   'org.freedesktop.secrets: Encryption using stored key in the secret service'
 )
 makedepends=('npm' 'git' 'imagemagick' 'typescript' 'asar' 'p7zip' 'pnpm')
-provides=("${pkgname%-vencord-git}")
-conflicts=("${pkgname%-vencord-git}")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=(
-  "${pkgname%-vencord-git}::git+https://github.com/${_author}/${_repo}.git"
-  "${pkgname%-vencord-git}.desktop"
+  "${_pkgname}::git+https://github.com/${_author}/${_repo}.git"
+  "${_pkgname}.desktop"
   "vencord::git+https://github.com/vendicated/vencord.git"
 )
 md5sums=(
@@ -82,7 +83,7 @@ fi
 ### PKGBUILD STANDARD FUNCTIONS ###
 
 prepare() {
-  cd "${srcdir:?}/${pkgname%-vencord-git}"
+  cd "${srcdir:?}/${_pkgname}"
   _TIMES_MAX=1
   if [[ "${_LOCKFILE}" == "true" ]]; then
     ((_TIMES_MAX++))
@@ -94,23 +95,23 @@ prepare() {
   pnpm install --frozen-lockfile
   pnpm run buildWeb
 
-  cd "${srcdir:?}/${pkgname%-vencord-git}"
+  cd "${srcdir:?}/${_pkgname}"
 
   sed -i "354i \ \ session.defaultSession.loadExtension(\"/usr/share/webcord/vencord-ext\").then(() => console.log(\"Vencord loaded.\"));" "${srcdir:?}/webcord/sources/code/common/main.ts"
 
   _echo_times "Generating / updating a changelog..."
-  _changelog vty > "${_pkgbuilddir:?}/${pkgname%-git}.changelog"
+  _changelog vty > "${_pkgbuilddir:?}/${_pkgname}-vencord.changelog"
 }
 
 pkgver() {
-  cd "${srcdir:?}/${pkgname%-vencord-git}"
+  cd "${srcdir:?}/${_pkgname}"
   printf "%s.r%s.%s" "$(npm pkg get version | sed 's~-~_~g;s~"\([^"]*\)"~\1~g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   _TIMES=1
   _TIMES_MAX=6
-  cd "${srcdir:?}/${pkgname%-vencord-git}"
+  cd "${srcdir:?}/${_pkgname}"
 
   # Remove unnecesary developer dependencies
 
@@ -138,13 +139,13 @@ package() {
   _TIMES_MAX=2
   _pack "${pkgdir:?}/usr/share/"
   _echo_times "Adding other files to package..."
-  _script "${pkgdir:?}/usr/bin/${pkgname%-vencord-git}"
+  _script "${pkgdir:?}/usr/bin/${_pkgname}"
   cd "${srcdir:?}"
-  install -Dm755 "${pkgname%-vencord-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-vencord-git}.desktop"
-  install -Dm644 "${pkgname%-vencord-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-vencord-git}/COPYING"
+  install -Dm755 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/COPYING"
   if [[ -n "${_LOCAL_PACKAGES[*]}" ]]; then
-    install -dm755 "${pkgdir:?}/usr/share/${pkgname%-vencord-git}/node_modules"
-    ln -st "${pkgdir:?}/usr/share/${pkgname%-vencord-git}/node_modules" \
+    install -dm755 "${pkgdir:?}/usr/share/${_pkgname}/node_modules"
+    ln -st "${pkgdir:?}/usr/share/${_pkgname}/node_modules" \
       "/usr/lib/node_modules/semver" "/usr/lib/node_modules/marked"
   fi
 
@@ -152,14 +153,14 @@ package() {
 
   install -dm755 "${pkgdir:?}/usr/share/icons"
   cp -R "iconThemes/themeId-1/" "${pkgdir}/usr/share/icons/hicolor"
-  chmod 0644 "${pkgdir}/usr/share/icons"/*/*/*/"${pkgname%-vencord-git}."*
+  chmod 0644 "${pkgdir}/usr/share/icons"/*/*/*/"${_pkgname}."*
 
   # Documentation
 
   install -dm755 "${pkgdir}/usr/share/docs"
-  cp -R "${pkgname%-vencord-git}/docs/" "${pkgdir}/usr/share/docs/${pkgname%-vencord-git}/"
-  chmod 0644 "${pkgdir}/usr/share/docs/${pkgname%-vencord-git}/"
-  _changelog md > "${pkgdir}/usr/share/docs/${pkgname%-vencord-git}/Changelog.md"
+  cp -R "${_pkgname}/docs/" "${pkgdir}/usr/share/docs/${_pkgname}/"
+  chmod 0644 "${pkgdir}/usr/share/docs/${_pkgname}/"
+  _changelog md > "${pkgdir}/usr/share/docs/${_pkgname}/Changelog.md"
 
   # Get supported electron version and add it to the dependencies.
   #  (`-n "$pkgdir"` check also prevents adding it to .SRCINFO)
@@ -167,8 +168,8 @@ package() {
   # commented the line above because _getelectron had some error and this does literally nothing afaik, since electron22 still doesn't work
 
   # Add changelog file to the package if present
-  if [[ -f "${_pkgbuilddir}/${pkgname%-vencord-git}.changelog" ]]; then
-    [[ -n "$pkgdir" ]] && changelog="${pkgname%-vencord-git}.changelog"
+  if [[ -f "${_pkgbuilddir}/${_pkgname}.changelog" ]]; then
+    [[ -n "$pkgdir" ]] && changelog="${_pkgname}.changelog"
   fi
 }
 
@@ -187,7 +188,7 @@ depends+=(
 # Generates a "buildInfo.json" metadata file.
 _gen_buildinfo() {
   _echo_times "Generating build configuration..."
-  cd "${srcdir:?}/${pkgname%-vencord-git}"
+  cd "${srcdir:?}/${_pkgname}"
   printf '{"type":"%s","commit":"%s","features":{"updateNotifications":%s}}' \
     "${_RELEASE_TYPE:=devel}" "$(git rev-parse HEAD)" "${_UPDATE_NOTIFICATIONS:=true}" > buildInfo.json
 }
@@ -196,7 +197,7 @@ _gen_buildinfo() {
 _changelog() {
   local tag_cur tag_prev format title oldpwd
   oldpwd="$PWD"
-  cd "${srcdir:?}/${pkgname%-vencord-git}"
+  cd "${srcdir:?}/${_pkgname}"
   case "$1" in
     "md")
       title="# Changelog for \`${pkgname}\`\n\n## Changes since %s\n\n%s\n\n## Changes since %s\n\n%s"
@@ -240,11 +241,11 @@ _npm() {
 
 # Cleanup script to remove useless files before packaging the application.
 _cleanup() {
-  cd "${srcdir:?}/${pkgname%-vencord-git}"
+  cd "${srcdir:?}/${_pkgname}"
   _echo_times "Cleaning up workspace..."
 
   _PACKAGE_IGNORE=(
-    "../${pkgname%-vencord-git}.asar" "../iconThemes" "sources/assets/icons/app.ico"
+    "../${_pkgname}.asar" "../iconThemes" "sources/assets/icons/app.ico"
     "sources/assets/icons/app.icns" "app/code/build" "sources/code/build" 
     "schemas" "../docs" "build"
   )
@@ -266,7 +267,7 @@ _print() {
 
 # A function used for to compile the code to JavaScript files.
 _compile() {
-  cd "${srcdir:?}/${pkgname%-vencord-git}"
+  cd "${srcdir:?}/${_pkgname}"
   _echo_times "Compiling TypeScript to Javascript..."
   tsc || { echo "Failed to compile TypeScript sources to JavaScript"; exit 1; }
   _postcompile
@@ -275,14 +276,14 @@ _compile() {
 # A function that returns the currently supported Electron major release.
 _getelectron(){
   local OLDPWD=$PWD;
-  cd "${srcdir:?}/${pkgname%-vencord-git}";
+  cd "${srcdir:?}/${_pkgname}";
   echo $(($(npm pkg get devDependencies.electron | sed 's~"\([^"]*\)"~\1~g;s~.* <\([0-9]*\).*~\1~')-1));
   cd "$OLDPWD";
 }
 
 # A function to convert the base icon into another sizes.
 _genico(){
-  _icons=("${srcdir:?}/${pkgname%-vencord-git}/sources/assets/icons/app.png")
+  _icons=("${srcdir:?}/${_pkgname}/sources/assets/icons/app.png")
   mkdir "${srcdir:?}/iconThemes"
   cd "${srcdir:?}/iconThemes"
   _sizes=(512 256 128 96 64 48 32 24 22 18 16 8)
@@ -296,7 +297,7 @@ _genico(){
       _msg="Generating images: F=$(basename "${_file}"); S=${_size}x${_size}"
       _print "${_old_msg}" "${_msg}"
       _outdir="themeId-${_i}/${_size}x${_size}/apps"
-      _out="${_outdir}/${pkgname%-vencord-git}.${_ext}"
+      _out="${_outdir}/${_pkgname}.${_ext}"
       _outln="${_outdir}/${_repo}.${_ext}"
       mkdir -p "$(dirname "$_out")"
       if [[ "${_ext}" == "png" ]]; then
@@ -315,17 +316,17 @@ _genico(){
 
 # A function to pack the application data into the ASAR archive.
 _pack() {
-  cd "${srcdir:?}/${pkgname%-vencord-git}"
+  cd "${srcdir:?}/${_pkgname}"
   # Package to ASAR
   _echo_times "Packaging app to ASAR archive..."
-  install -dm755 "${1}/${pkgname%-vencord-git}"
+  install -dm755 "${1}/${_pkgname}"
   cd "${srcdir:?}"
 
   cp -r "${srcdir:?}/vencord/dist/chromium-unpacked" ./vencord-ext
-  find "./vencord-ext" -type f -exec install -Dm644 "{}" "${1}/${pkgname%-vencord-git}/{}" \;
+  find "./vencord-ext" -type f -exec install -Dm644 "{}" "${1}/${_pkgname}/{}" \;
 
-  cd "${srcdir:?}/${pkgname%-vencord-git}"
-  asar pack --exclude-hidden . "${1}/${pkgname%-vencord-git}/app.asar" || {
+  cd "${srcdir:?}/${_pkgname}"
+  asar pack --exclude-hidden . "${1}/${_pkgname}/app.asar" || {
     echo "Failed to package to ASAR!"
     exit 2
   }
@@ -333,7 +334,7 @@ _pack() {
 
 # A postcompile step to remove build dependencies.
 _postcompile() {
-  cd "${srcdir:?}/${pkgname%-vencord-git}"
+  cd "${srcdir:?}/${_pkgname}"
   _echo_times "Removing build dependencies..."
   rm -R tsconfig.json sources/code &
   _npm --omit=dev ci &
@@ -346,7 +347,7 @@ _postcompile() {
 # system-wide Electron binary.
 _script() {
   mkdir -p "$(dirname "$1")"
-  #echo -ne "#!/bin/bash\nelectron$(_getelectron) /usr/share/${pkgname%-vencord-git}/app.asar \"\$@\"\nexit \$?">"$1"
+  #echo -ne "#!/bin/bash\nelectron$(_getelectron) /usr/share/${_pkgname}/app.asar \"\$@\"\nexit \$?">"$1"
   echo -ne "#!/bin/bash
     CONFIG=\${XDG_CONFIG_HOME:-~/.config}
     FLAGS=\"\$CONFIG/webcord-flags.conf\"
@@ -355,6 +356,6 @@ _script() {
         USER_FLAGS=\"\$(cat \"\$FLAGS\")\"
     fi
 
-    electron /usr/share/${pkgname%-vencord-git}/app.asar \$USER_FLAGS \"\$@\"\nexit \$?">"$1"
+    electron /usr/share/${_pkgname}/app.asar \$USER_FLAGS \"\$@\"\nexit \$?">"$1"
   chmod 755 "$1"
 }
