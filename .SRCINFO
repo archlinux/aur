@@ -1,7 +1,7 @@
 pkgbase = r-ucminf
 	pkgdesc = General-Purpose Unconstrained Non-Linear Optimization
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ucminf
 	arch = x86_64
 	license = GPL
