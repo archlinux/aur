@@ -1,7 +1,7 @@
 pkgbase = lr2oraja
 	pkgdesc = The latest build of beatoraja, but compiled using LR2 judges and gauges.
 	pkgver = build4501107977
-	pkgrel = 2
+	pkgrel = 3
 	arch = x86_64
 	license = GPL3
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = lr2oraja
 	license = unknown
 	license = unknown
 	depends = liberica-jre-8-full-bin
+	depends = portaudio
 	source = https://github.com/wcko87/lr2oraja/releases/download/build4501107977/LR2oraja.zip
 	source = https://github.com/pfych/lr2oraja-pkgbuild/releases/download/skin/skin.zip
 	source = https://github.com/TNG-dev/tachi-beatoraja-ir/releases/download/v2.2.0/bokutachiIR-2.2.0.jar
