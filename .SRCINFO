@@ -1,7 +1,7 @@
 pkgbase = liftoff-bin
 	pkgdesc = A mobile and desktop lemmy client written in flutter
 	pkgver = 0.9.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/liftoff-app/liftoff
 	arch = x86_64
 	license = GPL2

@@ -2,7 +2,7 @@
 
 pkgname=liftoff-bin
 pkgver=0.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A mobile and desktop lemmy client written in flutter"
 _pkgname="${pkgname%-bin}"
 
@@ -21,6 +21,6 @@ package() {
 	cp -ar --no-preserve=ownership data "$pkgdir/opt/$_pkgname/data"
 	cp -ar --no-preserve=ownership lib "$pkgdir/opt/$_pkgname/lib"
 	cp -a --no-preserve=ownership Liftoff "$pkgdir/opt/$_pkgname/Liftoff"
-	ln -s "$pkgdir/opt/$_pkgname/Liftoff" -t "$pkgdir/usr/bin"
+	ln -s "/opt/$_pkgname/Liftoff" -t "$pkgdir/usr/bin"
 	chown -R root:root "$pkgdir/"
 }
