@@ -1,0 +1,24 @@
+diff --git a/gen.jdt/build.gradle b/gen.jdt/build.gradle
+index 0dec746..3366c29 100644
+--- a/gen.jdt/build.gradle
++++ b/gen.jdt/build.gradle
+@@ -1,5 +1,18 @@
+ description = 'GumTree tree generator for Java code (Eclipse JDT based).'
+ 
+ dependencies {
+-	implementation 'org.eclipse.jdt:org.eclipse.jdt.core:3.26.0'
++    implementation('org.eclipse.jdt:org.eclipse.jdt.core') { version { strictly '3.26.0' } }
++    implementation('org.eclipse.platform:org.eclipse.core.resources') { version { strictly '3.15.0' } }
++    implementation('org.eclipse.platform:org.eclipse.core.expressions') { version { strictly '3.7.100' } }
++    implementation('org.eclipse.platform:org.eclipse.core.runtime') { version { strictly '3.22.0' } }
++    implementation('org.eclipse.platform:org.eclipse.osgi') { version { strictly '3.16.300' } }
++    implementation('org.eclipse.platform:org.eclipse.equinox.common') { version { strictly '3.15.0' } }
++    implementation('org.eclipse.platform:org.eclipse.core.jobs') { version { strictly '3.11.0' } }
++    implementation('org.eclipse.platform:org.eclipse.equinox.registry') { version { strictly '3.10.200' } }
++    implementation('org.eclipse.platform:org.eclipse.equinox.preferences') { version { strictly '3.8.200' } }
++    implementation('org.eclipse.platform:org.eclipse.core.contenttype') { version { strictly '3.7.1000' } }
++    implementation('org.eclipse.platform:org.eclipse.equinox.app') { version { strictly '1.5.100' } }
++    implementation('org.eclipse.platform:org.eclipse.core.filesystem') { version { strictly '1.9.0' } }
++    implementation('org.eclipse.platform:org.eclipse.text') { version { strictly '3.12.0' } }
++    implementation('org.eclipse.platform:org.eclipse.core.commands') { version { strictly '3.10.0' } }
+ }
