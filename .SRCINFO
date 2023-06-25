@@ -1,6 +1,6 @@
 pkgbase = python-snap7
 	pkgdesc = ctypes based python wrapper for snap7
-	pkgver = 1.1
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/gijzelaerr/python-snap7
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-snap7
 	makedepends = python-setuptools
 	depends = snap7
 	depends = python
-	source = https://github.com/gijzelaerr/python-snap7/archive/1.1.tar.gz
-	sha256sums = c284b8773f1ba96e576a163a22b572a87f7534bd949ccc903aba2751e459971b
+	source = https://github.com/gijzelaerr/python-snap7/archive/1.3.tar.gz
+	sha256sums = 0636464c0613203cacb1f96a2eec6aed23758a375c24fa124bcaf242a45cbd6b
 
 pkgname = python-snap7
