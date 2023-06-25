@@ -1,6 +1,6 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=thextech-supermariobrosx
-pkgver=1.3.6
+pkgver=v1.3.r1900.g530c013a
 pkgrel=1
 pkgdesc="The full port of the SMBX engine from VB6 into C++ and SDL2, FreeImage and MixerX, with SMBX 1.3 game assets."
 arch=('i386' 'x86_64' 'aarch64')
@@ -18,6 +18,11 @@ sha256sums=("SKIP"
 "SKIP"
 "f46693ed08b59d6beba12c324e5c2384a09b77b76c02dda22846ddca7e808043")
 noextract=()
+
+pkgver() {
+    cd "${srcdir}/TheXTech"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/lastlocal.//'
+}
 
 prepare() {
 	cd "${srcdir}/TheXTech"
