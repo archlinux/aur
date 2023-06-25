@@ -7,8 +7,11 @@ pkgname="${_py}-${_pkg}"
 pkgver=2.02.188
 pkgrel=1
 arch=(
+  x86_64
   i686
-  x86_64)
+  pentium4
+  aarch64
+  armv7h)
 url="http://sourceware.org/${_pkg}"
 license=('LGPL2.1')
 pkgdesc="Python 2 bindings for LVM"
