@@ -1,0 +1,18 @@
+pkgbase = try-git
+	pkgdesc = Run a command and inspect its effects before changing your live system.
+	pkgver = r135.b2df6b6
+	pkgrel = 1
+	url = https://github.com/binpash/try
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = pandoc
+	depends = bash
+	optdepends = bash-completion: to have CLI completions
+	provides = try
+	conflicts = try
+	source = try::git+https://github.com/binpash/try.git
+	md5sums = SKIP
+
+pkgname = try-git
