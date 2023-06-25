@@ -1,6 +1,7 @@
 # Maintainer: Radu Potop <radu@wooptoo.com>
 
 pkgname=aws-lambda-powertools-python
+newpkgname=powertools-lambda-python
 pkgver=2.18.0
 pkgrel=1
 pkgdesc='A developer toolkit to implement Serverless best practices and increase developer velocity'
@@ -12,12 +13,12 @@ makedepends=("python-build" "python-installer" "python-poetry")
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$newpkgname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$newpkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
