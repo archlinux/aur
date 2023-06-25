@@ -1,7 +1,7 @@
 pkgbase = pacman-offline
 	pkgdesc = offline system update with pacman
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eworm-de/pacman-offline
 	arch = any
 	license = GPL
@@ -9,7 +9,6 @@ pkgbase = pacman-offline
 	makedepends = discount
 	depends = systemd
 	depends = pacman
-	depends = pacutils
 	backup = etc/pacman.d/offline.conf
 	source = https://www.eworm.de/download/pacman-offline/pacman-offline-0.1.4.tar.xz
 	source = https://www.eworm.de/download/pacman-offline/pacman-offline-0.1.4.tar.xz.asc

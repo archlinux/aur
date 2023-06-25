@@ -2,12 +2,12 @@
 
 pkgname=pacman-offline
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='offline system update with pacman'
 arch=('any')
 url='https://github.com/eworm-de/pacman-offline'
 license=('GPL')
-depends=('systemd' 'pacman' 'pacutils')
+depends=('systemd' 'pacman')
 makedepends=('git' 'discount')
 backup=('etc/pacman.d/offline.conf')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
