@@ -1,7 +1,7 @@
 pkgbase = r-robustbase
 	pkgdesc = Basic Robust Statistics
 	pkgver = 0.99.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=robustbase
 	arch = x86_64
 	license = GPL
