@@ -1,8 +1,8 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=cxx-common
-pkgver=0.1.8
-pkgrel=3
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Common dependency management for various Trail of Bits C++ codebases"
 arch=('x86_64')
 url="https://github.com/lifting-bits/cxx-common"
@@ -10,18 +10,18 @@ license=('Apache')
 depends=()
 makedepends=('clang' 'lld' 'cmake' 'ninja' 'git' 'python' 'python-setuptools')
 checkdepends=()
-options=('staticlibs' '!strip')
+options=('staticlibs')
 source=("https://github.com/lifting-bits/cxx-common/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c3b7825739ea353460b969ed6fc5502eaf882bf11a9a9d881c8b7bbd49e4f1de')
+sha256sums=('922b92b1fc99e16e4828b2e2463dec5605d131b152de138b5f1990e21bdeee0b')
 
 package() {
-    export LLVM_VER=12
+    export LLVM_VER=15
     export TRIPLET=x64-linux-rel
     export VCPKG_DEFAULT_HOST_TRIPLET=$TRIPLET # https://github.com/lifting-bits/cxx-common/pull/876
 
     cd "$srcdir/$pkgname-$pkgver"
     mkdir -p "$pkgdir/opt/$pkgname"
-    ./build_dependencies.sh --release --clean \
+    ./build_dependencies.sh --release \
         --export-dir "$pkgdir/opt/$pkgname" \
         llvm-$LLVM_VER
 
