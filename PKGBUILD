@@ -10,15 +10,15 @@ pkgname=(
 
 # Follow handbrakes most current stable branch 1.6.x
 # https://github.com/HandBrake/HandBrake/commits/1.6.x
-readonly _commit=131bdd646c2ab4b5f56e5ca4587ac177ad44fda2
+readonly _commit=27dd8b5cd62feb7091352cff8f1d45cc2e4770e7
 
 pkgver() {
   git -C HandBrake/ gc --auto --prune=now
   git -C HandBrake/ describe ${_commit} | sed -e 's/^v//g' -e 's/-/.r/' -e 's/-/./'
 }
 
-pkgver=1.6.1.r47.g131bdd646
-pkgrel=1
+pkgver=1.6.1.r49.g27dd8b5cd
+pkgrel=2
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
@@ -82,7 +82,9 @@ sha256sums=('SKIP')
 
 prepare() {
   # contrib: update SVT-AV1 to version 1.5.
-  #git -C HandBrake/ cherry-pick 968992f
+  git -C HandBrake/ cherry-pick 968992f
+  # contrib: update SVT-AV1 to version 1.6.0.
+  git -C HandBrake/ cherry-pick 8c2907e
   :
 }
 
