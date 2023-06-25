@@ -1,18 +1,18 @@
 pkgbase = gpt-engineer
 	pkgdesc = Specify what you want it to build, the AI asks for clarification, and then builds it.
-	pkgver = 0.0.3
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/AntonOsika/gpt-engineer
+	install = gpt-engineer.install
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-openai
 	depends = python-termcolor
 	depends = python-typer
-	source = gpt-engineer-0.0.3.tar.gz::https://github.com/AntonOsika/gpt-engineer/archive/refs/tags/v0.0.3.tar.gz
-	sha256sums = 67e26dcc41af0a6abce8d9fe8d9d812b2d6ed0eb955740abe50d7ff685ae2186
+	source = gpt-engineer-0.0.7.tar.gz::https://github.com/AntonOsika/gpt-engineer/archive/refs/tags/v0.0.7.tar.gz
+	sha256sums = 237977ed3b9e5dff8f457e68e7df08ef342a527e86790342ded16db75deea866
 
 pkgname = gpt-engineer

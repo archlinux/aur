@@ -1,0 +1,4 @@
+post_install() {
+    echo -e "\nWarning: the author started to collect analytics"
+    echo -e "\nTo optout set COLLECT_LEARNINGS_OPT_OUT env to true"
+}
