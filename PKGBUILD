@@ -1,34 +1,34 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname=cellframe-node
-pkgver=5.1.401
+pkgver=5.2.176
 pkgrel=1
 pkgdesc="Cellframe blockchain node with a powerful SDK"
 arch=('x86_64' 'aarch64')
 url="https://cellframe.net"
 license=('LGPL3')
-depends=(python logrotate)
-makedepends=(git cmake python)
+makedepends=(git cmake)
+depends=(logrotate)
 provides=("cellframe-node" "cellframe-node-cli" "cellframe-node-tool")
 options=(!buildflags !makeflags)
-source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=aa0762992c8180e45a5b0408bbc63041f51626a3
-		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=ae76c56a2ed4a3faa55744b111986e347930d5a7
-		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=e1bb25c8ae5c68a99676928182d1611d2bc75e38
-		cellframe-node.cfg
-		Backbone.cfg
-		kelvpn-minkowski.cfg
-		mileena.cfg
+source=(git+https://gitlab.demlabs.net/cellframe/$pkgname.git#commit=d1ab3fc78d9c552ad6315fe6fd2cafd33f59410e
+		git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=f11700de7f924d6f09a433fa8e02bff1b5bedcc1
+		git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=e5602cd2a5cdb65d4d1e7cc97ce1f74f7468024a
+		git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=6330b7b12d9f7ece29f683fb8b396ecce702d84a
+		raiden.cfg
+		riemann.cfg
 		subzero.cfg
+		cellframe-node.cfg
 		cellframe-node.service
 		cellframe-node.logrotate
 		LICENSE)
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '47f1aa606f2b91d4dfbc22ea263d540a'
-         'bdb3e59a8487196036c22a02d1184214'
-         '1cb6e993aa362a71782764a8d2523c8d'
-         'f5bc95f5f8915d074c66398b2acb0907'
-         'be8dc9bddf5354074993df8377da03a4'
+         'SKIP'
+         '1b3d9dbaa7bee6559426c670306e4c2a'
+         '2bfdff51919fe20d56e3f1d6badd23b9'
+         '14bab19dd6632b295110fab884f89d92'
+         '08f08ee541825c83a6bbe3da82bd3556'
          'f6fa69bc2e3896fda661c84d2a2c3192'
          '4ccc93f9055e3382025564a729430d34'
          'e6a600fd5e1d9cbde2d983680233ad02')
@@ -37,20 +37,18 @@ install=$pkgname.install
 backup=('opt/cellframe-node/etc/cellframe-node.cfg')
 
 prepare() {
-	cd "$srcdir"
-	wget https://raw.githubusercontent.com/hyttmi/Cellframe/main/cellframe-patches/fix_python3.11.patch
-	patch -p1 < fix_python3.11.patch
 	rm -rf "$srcdir/$pkgname/cellframe-sdk"
 	rm -rf "$srcdir/$pkgname/python-cellframe"
+	rm -rf "$srcdir/$pkgname/dap-sdk"
 	ln -sf "$srcdir/cellframe-sdk" "$srcdir/$pkgname/cellframe-sdk"
 	ln -sf "$srcdir/python-cellframe" "$srcdir/$pkgname/python-cellframe"
+	ln -sf "$srcdir/dap-sdk" "$srcdir/$pkgname/dap-sdk"
 }
 
 build() {
 	cd "$pkgname"
 	cmake -B build \
 		-DCMAKE_BUILD_TYPE='Release' \
-		-DCREATE_DEFAULT_CONFIG=OFF \
         -Wno-dev
 	cmake --build build -j$(nproc)
 }
@@ -79,7 +77,7 @@ package() {
 		ln -sf "/opt/$pkgname/bin/$_executables" "$pkgdir/usr/local/bin/$_executables"
 	done
 
-	for _nets in Backbone.cfg kelvpn-minkowski.cfg mileena.cfg subzero.cfg
+	for _nets in raiden.cfg riemann.cfg subzero.cfg
 	do
 		install -Dm 666 "$srcdir/$_nets" -t "$_prefix/etc/network" || return 1
 	done
