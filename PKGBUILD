@@ -2,7 +2,7 @@
 
 pkgname=semgrep-bin
 _name=semgrep
-pkgver=1.27.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
@@ -21,10 +21,10 @@ optdepends=(
 provides=('semgrep')
 options=('!strip')
 source=(
-  "https://files.pythonhosted.org/packages/09/8f/2b2821959bcbd4c4dae10c85d74e28f1a3cb894d80dc9cc1205dd91f52a3/semgrep-1.27.0-cp37.cp38.cp39.py37.py38.py39-none-any.whl"
+  "https://files.pythonhosted.org/packages/cb/d8/1e3f1733998c7a2954df307527943629b892ed62415ba48982a5408f37b1/semgrep-1.28.0-cp37.cp38.cp39.cp310.cp311.py37.py38.py39.py310.py311-none-any.whl"
 )
 sha256sums=(
-  '7118fcd5d5e9004e92d045da8ec46290e2003f39547f8d858620c25a3bfec194'
+  '804695261b05257713f4e1846c8a31b7c8ae9a1664ec1dd368d68ee46989bb4e'
 )
 
 package() {
