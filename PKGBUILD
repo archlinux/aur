@@ -3,7 +3,7 @@
 pkgname=ada-web-server
 epoch=1
 pkgver=23.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete embeddable web application framework for Ada.'
 
 arch=(i686 x86_64)
