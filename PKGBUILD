@@ -4,7 +4,7 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='mozc'
-pkgver=2.28.5105.102
+pkgver=2.29.5135.102
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'emacs-mozc: Emacs integration')
 conflicts=('mozc-ut')
 options=(!distcc !ccache)
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=4081973241bcd600ecc9e0dcdccc299fe53ca005")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=cb3150e6d6d2e80e7bfff35944c20510e557dcad")
 sha256sums=('SKIP')
 
 prepare() {
