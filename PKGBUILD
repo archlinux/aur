@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=pacman-offline
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='offline system update with pacman'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git' 'discount')
 backup=('etc/pacman.d/offline.conf')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("https://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('e96897ab8aeb0f10a2b8e10258519a389a119ce4cb7b395baa718096fb7268c4'
+sha256sums=('f5dc53d0d7d2ff4ff86ed4d8b46059ff5682181b88e31b2f0e65bc24fa223989'
             'SKIP')
 
 package() {
