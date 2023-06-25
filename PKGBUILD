@@ -1,8 +1,9 @@
 # Maintainer: Techcable <$username @ techcable.net>
 # Contributor: Dan Shick <dan.shick@gmail.com>
+# Contributor: Bao Trinh <qubidt at gmail dot com>
 
 pkgname=senpai-irc
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='TUI IRC Client Created by ~taiite'
 url=https://sr.ht/~taiite/senpai/
@@ -19,17 +20,11 @@ license=('ISC')
 # Also the binary is aliased to "senpai-irc" as a secondary name
 conflicts=('senpai-irc-git' 'senpai')
 makedepends=('go' 'scdoc')
-source=(
-  "senpai-v${pkgver}.tar.gz::https://git.sr.ht/~taiite/senpai/archive/v0.1.0.tar.gz"
-  # This is needed until issue 95 is resolved: https://todo.sr.ht/~taiite/senpai/95
-  "0001-Temporary-hack-to-workaround-WHO-flooding-bug.patch"
-)
-sha256sums=('98e1f16ed97433e1e8c8bdabac1cac1920ddcab90e6cef36d8817a41b45a94ff'
-            'e86dc1bcb4d7cd1c39ed38a7b5c036065345a5af9b9f119762997e109cd22ceb')
+source=("senpai-v${pkgver}.tar.gz::https://git.sr.ht/~taiite/senpai/archive/v${pkgver}.tar.gz")
+sha256sums=('9786fd83f3e1067549c3c88455a1f66ec66d993fe597cee334d217a5d1cf4803')
 
 prepare () {
     cd "${srcdir}/senpai-v${pkgver}"
-    patch --strip=1 --input="${srcdir}/0001-Temporary-hack-to-workaround-WHO-flooding-bug.patch"
     make clean
 }
 
@@ -39,20 +34,13 @@ build () {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build ./cmd/senpai
-    make doc/senpai.1
-    make doc/senpai.5
+    make GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw" all
 }
 
 package () {
-    mkdir -p "${pkgdir}/usr/bin"
-    mkdir -p "${pkgdir}/usr/share/man/man1"
-    mkdir -p "${pkgdir}/usr/share/man/man5"
-    cp "${srcdir}/senpai-v${pkgver}/senpai" "${pkgdir}/usr/bin/senpai"
-    cp "${srcdir}/senpai-v${pkgver}/doc/senpai.1" "${pkgdir}/usr/share/man/man1/"
-    cp "${srcdir}/senpai-v${pkgver}/doc/senpai.5" "${pkgdir}/usr/share/man/man5/"
+    cd "${srcdir}/senpai-v${pkgver}"
+    make "DESTDIR=${pkgdir}" "PREFIX=/usr" install
     # Alias binary as "senpai-irc" (gives compat with senpai-irc-git)
     ln -s "${pkgdir}/usr/bin/senpai" "senpai-irc"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
