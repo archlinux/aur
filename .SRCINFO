@@ -1,11 +1,12 @@
 pkgbase = sacad
 	pkgdesc = Smart Automatic Cover Art Downloader
 	pkgver = 2.7.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/desbma/sacad
 	arch = any
 	license = MPL2
 	makedepends = python-pip
+	makedepends = python-setuptools
 	depends = python
 	depends = python-aiohttp
 	depends = python-appdirs
