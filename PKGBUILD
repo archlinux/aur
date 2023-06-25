@@ -10,8 +10,8 @@
 ### PKGBUILD METADATA ###
 
 pkgname=webcord-vencord-git
-pkgver=4.2.0.r845.66c71e5
-pkgrel=1
+pkgver=4.3.0.r852.123e818
+pkgrel=2
 pkgdesc="A Discord and Fosscord client made with the Electron (master branch with Vencord)."
 arch=("any")
 
@@ -20,7 +20,7 @@ _author="SpacingBat3"
 
 url="https://github.com/${_author}/${_repo}"
 license=('MIT')
-depends=('electron24')
+depends=('electron')
 optdepends=(
   'xdg-desktop-portal-impl: Screen share UI and other portals under Wayland'
   'pipewire: WebRTC screen sharing under Wayland'
@@ -91,12 +91,12 @@ prepare() {
   fi
 
   cd "${srcdir:?}/vencord"
-  pnpm install
+  pnpm install --frozen-lockfile
   pnpm run buildWeb
 
   cd "${srcdir:?}/${pkgname%-vencord-git}"
 
-  sed -i "361i session.defaultSession.loadExtension(\"/usr/share/webcord/vencord-ext\").then(() => console.log(\"Vencord loaded.\"));" "${srcdir:?}/webcord/sources/code/common/main.ts"
+  sed -i "354i \ \ session.defaultSession.loadExtension(\"/usr/share/webcord/vencord-ext\").then(() => console.log(\"Vencord loaded.\"));" "${srcdir:?}/webcord/sources/code/common/main.ts"
 
   _echo_times "Generating / updating a changelog..."
   _changelog vty > "${_pkgbuilddir:?}/${pkgname%-git}.changelog"
@@ -355,6 +355,6 @@ _script() {
         USER_FLAGS=\"\$(cat \"\$FLAGS\")\"
     fi
 
-    electron24 /usr/share/${pkgname%-vencord-git}/app.asar \$USER_FLAGS \"\$@\"\nexit \$?">"$1"
+    electron /usr/share/${pkgname%-vencord-git}/app.asar \$USER_FLAGS \"\$@\"\nexit \$?">"$1"
   chmod 755 "$1"
 }
