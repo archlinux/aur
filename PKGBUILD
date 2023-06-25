@@ -34,7 +34,8 @@ prepare() {
         _old_install_cmd='setup.py install --skip-build --prefix $(pythonprefix)' \
         _new_install_cmd='-m installer --destdir=$(DESTDIR) dist/*.whl' \
         _makefile="${srcdir}/LVM2.${pkgver}/${_py}/Makefile.in" \
-        _setup="${srcdir}/LVM2.${pkgver}/${_py}/setup.py.in" 
+        _version="${srcdir}/LVM2.${pkgver}/VERSION" 
+
   cd "LVM2.${pkgver}"
 
   sed -i "s%${_old_build_cmd}%${_new_build_cmd}%g" \
@@ -42,7 +43,7 @@ prepare() {
   sed -i "s%${_old_install_cmd}%${_new_install_cmd}%g" \
          "${_makefile}"
   sed -i "s%${_pkgver}%${pkgver}%g" \
-         "${_setup}"
+         "${_version}"
 }
 
 build() {
