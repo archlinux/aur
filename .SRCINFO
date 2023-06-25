@@ -1,7 +1,7 @@
 pkgbase = r-sass
 	pkgdesc = Syntactically Awesome Style Sheets ('Sass')
 	pkgver = 0.4.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=sass
 	arch = x86_64
 	license = MIT
