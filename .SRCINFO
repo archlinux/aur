@@ -1,7 +1,7 @@
 pkgbase = r-igraph
 	pkgdesc = Network Analysis and Visualization
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=igraph
 	arch = x86_64
 	license = GPL
