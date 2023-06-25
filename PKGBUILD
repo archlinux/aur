@@ -4,7 +4,7 @@
 # If you want to turn on additional patches there are switches below.
 pkgname=unreal-engine-4
 pkgver=4.27.2
-pkgrel=13
+pkgrel=14
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -23,7 +23,7 @@ source=('unreal-engine-4.sh'
         'clang_path_fix.patch'
         'ccache_executor.patch'
         'unreal-engine-4-pacman-cache.hook')
-sha256sums=('42be68b1a709db22d04ac2de96334ac7f44b86944777caa418b1ab35545c24df'
+sha256sums=('2283c445f2576de661d6e691d735a62c2b35273de7ab260ec4991a764aa5e5cd'
             'c04c03b2c5c933b7eb1af283d607934ad95fd57f44d62b83719061b555a85dca'
             '960c5a100e0c3732f3c73fb645d3989d39acf4576d74615bbef38ebeee008b90'
             '33982486f7fafac35a33dfa37c85cfba8543aa78b5fe13c395d9cccf691ef4b3'
