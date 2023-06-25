@@ -9,7 +9,7 @@ _update_pkgver_hash=c893f6be
 
 pkgname=linuxqq-nt-bwrap
 pkgver="${_update_pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
 arch=('x86_64' 'aarch64')  # 龙架构版本停留在 3.1.0 未更新，故不纳入此包中
 url='https://im.qq.com/linuxqq/index.shtml'

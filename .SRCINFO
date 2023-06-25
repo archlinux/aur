@@ -1,7 +1,7 @@
 pkgbase = linuxqq-nt-bwrap
 	pkgdesc = New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks
 	pkgver = 3.1.2_13107
-	pkgrel = 2
+	pkgrel = 3
 	url = https://im.qq.com/linuxqq/index.shtml
 	install = linuxqq-nt-bwrap.install
 	arch = x86_64
