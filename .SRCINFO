@@ -1,6 +1,6 @@
 pkgbase = desktop-notifier-appimage
 	pkgdesc = Application which sent a notifier when data change about a link
-	pkgver = 0.0.6
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/maxgfr/desktop-notifier
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = desktop-notifier-appimage
 	depends = glibc
 	conflicts = desktop-notifier
 	options = !strip
-	source = desktop-notifier-0.0.6.AppImage::https://github.com/maxgfr/desktop-notifier/releases/download/0.0.6/Desktop.Notifier-0.0.5.AppImage
-	sha256sums = 621fea17078c909a3f02d90b8f34048f9713a4d6cd264b6956cbb4d41258dbea
+	source = desktop-notifier-0.0.8.AppImage::https://github.com/maxgfr/desktop-notifier/releases/download/0.0.8/Desktop.Notifier-0.0.7.AppImage
+	sha256sums = bcde59d6d7501d990adfe88f08c9794153df98177da073b80442fab2c8d13abe
 
 pkgname = desktop-notifier-appimage

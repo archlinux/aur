@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="desktop-notifier-appimage"
-pkgver=0.0.6
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Application which sent a notifier when data change about a link"
 arch=('x86_64')
@@ -10,11 +10,11 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/Desktop.Notifier-0.0.5.AppImage")
-sha256sums=('621fea17078c909a3f02d90b8f34048f9713a4d6cd264b6956cbb4d41258dbea')
+source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/Desktop.Notifier-0.0.7.AppImage")
+sha256sums=('bcde59d6d7501d990adfe88f08c9794153df98177da073b80442fab2c8d13abe')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
