@@ -7,6 +7,9 @@ pkgbase = email-to-pdf-converter-bin
 	license = APACHE
 	depends = jre-openjdk
 	depends = wkhtmltopdf
+	provides = email-to-pdf-converter
+	conflicts = email-to-pdf-converter
+	replaces = email-to-pdf-converter
 	source = email-to-pdf-converter.jar::https://github.com/nickrussler/email-to-pdf-converter/releases/download/2.5.3/emailconverter-2.5.3-all.jar
 	sha256sums = 67608fe75bad3eae422e5b8ad8e4cde1de9d54254237bc2173c0e2301f02f2cf
 
