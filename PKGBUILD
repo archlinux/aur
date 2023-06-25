@@ -2,15 +2,15 @@
 
 pkgname=lib32-mangohud-git
 pkgver=0.6.9.1.r84.gbc8acf9
-pkgrel=1
+pkgrel=2
 pkgdesc="32-bit libraries for MangoHud and MangoApp"
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
 makedepends=('git' 'glfw-x11' 'glslang' 'lib32-cmocka' 'lib32-libglvnd' 'libxnvctrl' 'meson' 'nlohmann-json' 'python-mako')
 depends=('lib32-dbus' 'lib32-gcc-libs' 'lib32-libx11' 'lib32-vulkan-icd-loader')
-provides=('lib32-mangohud' 'lib32-mangoapp')
-conflicts=('lib32-mangohud' 'lib32-mangoapp')
+provides=('lib32-mangohud')
+conflicts=('lib32-mangohud')
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
