@@ -1,6 +1,6 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=thextech-adventuresofdemo
-pkgver=1.3.6
+pkgver=v1.3.r1900.g530c013a
 pkgrel=1
 pkgdesc="The full port of the SMBX engine from VB6 into C++ and SDL2, FreeImage and MixerX, with AoD game assets."
 arch=('i386' 'x86_64' 'aarch64')
@@ -18,6 +18,11 @@ sha256sums=("SKIP"
 "SKIP"
 "46731b984b5c278528b85d0293c9aea1c85685c96cd3771b1e726c919e17de32")
 noextract=()
+
+pkgver() {
+    cd "${srcdir}/TheXTech"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/lastlocal.//'
+}
 
 prepare() {
 	cd "${srcdir}/TheXTech"
