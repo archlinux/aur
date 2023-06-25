@@ -1,7 +1,7 @@
 pkgbase = vim-copilot-git
 	pkgdesc = (Neo)Vim plugin for GitHub Copilot automated code completion. Requires a subscription.
-	pkgver = r29.2f4f925
-	pkgrel = 2
+	pkgver = 1.9.0.r0.g98c2939
+	pkgrel = 1
 	url = https://github.com/github/copilot.vim
 	arch = any
 	groups = vim-plugins
