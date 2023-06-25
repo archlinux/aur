@@ -1,0 +1,24 @@
+pkgbase = cn.com.dywt.epl.deepin
+	pkgver = 5.92
+	pkgrel = 1
+	url = https://deepin-wine.i-m.dev
+	arch = x86_64
+	license = private
+	depends = deepin-wine5
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = freetype2
+	depends = xdg-utils
+	depends = libx11
+	depends = gtk2
+	depends = fontconfig
+	depends = pango
+	depends = bash
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = at-spi2-core
+	source = cn.com.dywt.epl.deepin-5.92.deb::https://com-store-packages.uniontech.com/appstore/pool/appstore/c/cn.com.dywt.epl.deepin/cn.com.dywt.epl.deepin_5.92deepin1_i386.deb
+	sha256sums = ad22e30a619410dca09f29d05b8b6bc4ae9dac10031cb012967c3e6350f00825
+
+pkgname = cn.com.dywt.epl.deepin
