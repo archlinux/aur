@@ -1,0 +1,13 @@
+pkgbase = gumtree-tree-sitter-git
+	pkgver = r36.34eda51
+	pkgrel = 1
+	url = https://github.com/GumTreeDiff/tree-sitter-parser
+	arch = any
+	license = GPL3
+	makedepends = python
+	depends = python-tree-sitter
+	depends = python-yaml
+	source = tree-sitter-parser::git+https://github.com/GumTreeDiff/tree-sitter-parser
+	sha256sums = SKIP
+
+pkgname = gumtree-tree-sitter-git
