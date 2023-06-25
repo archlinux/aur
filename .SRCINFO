@@ -1,7 +1,7 @@
 pkgbase = sanjuuni
 	pkgdesc = Converts images and videos into a format that can be displayed in ComputerCraft.
-	pkgver = 0.3
-	pkgrel = 2
+	pkgver = 0.4
+	pkgrel = 1
 	url = https://github.com/MCJack123/sanjuuni
 	arch = x86_64
 	arch = i386
@@ -17,7 +17,9 @@ pkgbase = sanjuuni
 	depends = ffmpeg
 	depends = poco
 	depends = zlib
-	source = https://github.com/MCJack123/sanjuuni/archive/0.3.tar.gz
-	sha256sums = bee5f95cde853a95e9caea3153cdd2bf7c731f7247ff15064b83044a0a0e3aba
+	optdepends = ocl-icd: OpenCL GPU support
+	optdepends = opencl-clhpp: OpenCL GPU support
+	source = https://github.com/MCJack123/sanjuuni/archive/0.4.tar.gz
+	sha256sums = 6ac8dcba831ad88a5f8600d7dcf7552813e7cb8c9fb0b7f1db5fcdf21fd3232a
 
 pkgname = sanjuuni
