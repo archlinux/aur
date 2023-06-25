@@ -4,8 +4,8 @@
 _pkgname=hvac
 pkgname=python-$_pkgname
 # https://github.com/hvac/hvac/releases
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Python 2.7/3.X client for HashiCorp Vault'
 url='https://python-hvac.org/'
 license=(Apache)
@@ -17,7 +17,7 @@ checkdepends=(python-pytest python-authlib python-flask python-flask-sqlalchemy
               consul)
 # Upstream intentionally prune tests from sdists (https://github.com/hvac/hvac/pull/356)
 source=("https://github.com/$_pkgname/$_pkgname/archive/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha512sums=('b9201aaaabbc3f6831951022152be0a05f486a021728a543ca32f88efcb1f29e9d62c0a20afcafbb0e9354a6c1d44ad64b5b0685daf7070cb8b618156b9454c7')
+sha512sums=('f5de49b33c257ccfcdc662ed269e843d3f76912bc2e773663e72c8425d1ccc317cdc137dc7bb978e0e966bc6248f34953306fc919fba2cc8f97f0a695b5daf2b')
 
 prepare() {
   # /usr/bin/vault not working in clean chroots as it requires CAP_IPC_LOCK
