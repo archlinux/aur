@@ -1,3 +1,6 @@
+2023-06-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.4.7.3-1:
+    [!] Fixed Steam breaking change which caused ASF failing to addlicense packages (@MetalfanBlackness #2927 #2925).
 2023-06-21 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.4.7.2-1:
     [!] Fixed Steam breaking change which caused ASF not being able to receive 2FA confirmations (@ezhevita #2920 #2921).
