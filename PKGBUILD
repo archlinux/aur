@@ -7,11 +7,11 @@ pkgver=0.921
 pkgrel=1
 pkgdesc="A bash script that generates and securely manages/stores Google Authenticator codes."
 arch=('x86_64' 'i686')
-url="https://github.com/TechtonicSoftware/GAShell"
+url="https://github.com/DDoctorzeus/GAShell"
 license=('GNU V3')
 depends=('sed' 'oath-toolkit' 'openssl' 'zbar' 'curl')
 provides=('gashell')
-source=(https://github.com/TechtonicSoftware/$_pkgname/archive/$pkgver.tar.gz)
+source=(https://github.com/DDoctorzeus/$_pkgname/archive/$pkgver.tar.gz)
 sha256sums=('5e7b77e2576b82e56e73d8741ac7173e1e78b44fa9b414bb76ff2016ea4c0193')
 
 package() {
