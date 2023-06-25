@@ -1,7 +1,7 @@
 # Maintainer: Robert Hamblin <hamblingreen@hotmail.com>
 pkgname=dotool
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Command to simulate input anywhere"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://git.sr.ht/~geb/dotool"
@@ -19,9 +19,9 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  mkdir -p "$pkgdir/usr/local/bin"
+  mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/etc/udev/rules.d/"
-  install dotool dotoolc dotoold "$pkgdir/usr/local/bin/"
-  install "80-dotool.rules" "$pkgdir/etc/udev/rules.d/80-dotool.rules"
+  install dotool dotoolc dotoold "$pkgdir/usr/bin/"
+  install -Dm 0644 "80-dotool.rules" "$pkgdir/etc/udev/rules.d/80-dotool.rules"
 }
 
