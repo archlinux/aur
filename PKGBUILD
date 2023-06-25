@@ -8,7 +8,7 @@ pkgdesc="An automatic 3D finite element mesh generator with pre and post-process
 arch=('x86_64')
 url="https://gmsh.info"
 license=('custom')
-makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig' 'texlive-basic' 'voro++'
+makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig' 'texlive-meta' 'voro++'
              'fltk' 'med-openmpi' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
              'glu' 'cgns' 'lapack')
 options=(!emptydirs)
