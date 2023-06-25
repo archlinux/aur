@@ -1,28 +1,34 @@
-# Maintainer: Oskar Roesler <oskar at oskar-roesler dot de>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete at gmail dot com>
+# Contributor: Oskar Roesler <oskar at oskar-roesler dot de>
 
-pkgname=python2-cffi
-pkgver=1.15.0
+_py="python2"
+_pkg="cffi"
+pkgname="${_py}-${_pkg}"
+pkgver=1.15.1
 pkgrel=3
 pkgdesc="Foreign Function Interface for Python calling C code"
 arch=('x86_64')
-url="https://cffi.readthedocs.org/"
+url="https://${_pkg}.readthedocs.org/"
 license=('MIT')
-depends=('python2-pycparser')
-makedepends=('python2-setuptools')
-source=("https://foss.heptapod.net/pypy/cffi/-/archive/v$pkgver/cffi-v$pkgver.tar.bz2")
-sha256sums=('96034f9bb04fde361656e0edae8510f7f3a17e24d5fda11a13b82ee03ad0e23c')
+depends=("${_py}-pycparser")
+makedepends=("${_py}-setuptools")
+_pypi_url="https://pypi.io/packages/source"
+source=("${_pypi_url}/c/${_pkg}/${_pkg}-$pkgver.tar.gz")
+sha256sums=(
+  'd400bfb9a37b1351253cb402671cea7e89bdecc294e8016a707f6d1d8ac934f9')
 
 build() {
-  cd "$srcdir"/cffi-v$pkgver
-  python2 setup.py build
+  cd "$srcdir/${_pkg}-${pkgver}"
+  "${_py}" setup.py build
 }
 
 package() {
-  cd cffi-v$pkgver
+  cd "${_pkg}-$pkgver"
 
   # remove files created during check() for reproducible SOURCES.txt
-  rm -rf testing/cffi{0,1}/__pycache__/
+  rm -rf testing/"${_pkg}"{0,1}/__pycache__/
 
-  python2 setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  "${_py}" setup.py install --root="$pkgdir" \
+                           --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
