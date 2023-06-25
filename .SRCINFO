@@ -1,6 +1,6 @@
 pkgbase = metronome-appimage
 	pkgdesc = A metronome built w/ Tauri + React. Tempo tapper, themes, hotkeys and more!
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://zane.pw/metronome
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = metronome-appimage
 	depends = hicolor-icon-theme
 	conflicts = metronome
 	options = !strip
-	source = metronome-0.1.5.AppImage::https://github.com/ZaneH/metronome/releases/download/app-v0.1.5/metronome_0.1.5_amd64.AppImage
-	sha256sums = 48d016040e465a1e5e88f6e8d0272a4151d79be702938cfee5b4d0c022daefdd
+	source = metronome-0.1.6.AppImage::https://github.com/ZaneH/metronome/releases/download/app-v0.1.6/metronome_0.1.6_amd64.AppImage
+	sha256sums = 8180341445fbd9770946cdc0b59e2ed644e2fd5cd490a3a475e96ddbdf0ee375
 
 pkgname = metronome-appimage

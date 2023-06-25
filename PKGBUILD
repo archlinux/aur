@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="metronome-appimage"
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A metronome built w/ Tauri + React. Tempo tapper, themes, hotkeys and more!"
 arch=("x86_64")
@@ -12,11 +12,11 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/app-v${pkgver}/${pkgname%-appimage}_${pkgver}_amd64.AppImage")
-sha256sums=('48d016040e465a1e5e88f6e8d0272a4151d79be702938cfee5b4d0c022daefdd')
+sha256sums=('8180341445fbd9770946cdc0b59e2ed644e2fd5cd490a3a475e96ddbdf0ee375')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed "s|Exec=metronome|Exec=${_install_path}/${pkgname%-appimage}.AppImage --no-sandbox %U|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    sed "s|Exec=${pkgname%-appimage}|Exec=${_install_path}/${pkgname%-appimage}.AppImage --no-sandbox %U|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
