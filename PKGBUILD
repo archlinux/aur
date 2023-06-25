@@ -1,4 +1,4 @@
-# Maintainer: Gerald Wu <gerald at geraldwu dot com>
+# Maintainer: Amos Ng <aur at amosng dot com>
 
 pkgname=cdktf-cli
 pkgver=0.15.5
