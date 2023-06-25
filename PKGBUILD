@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="modv-appimage"
-pkgver=3.28.0
+pkgver=3.29.1
 pkgrel=1
 pkgdesc="modular audio visualisation powered by JavaScript"
 arch=("x86_64")
@@ -14,12 +14,12 @@ conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/modV-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/vcync/modv/next/LICENSE")
-sha256sums=('c7d4c3935cfef7c6b703ccb6d1e88b9a0f235f40d7a16fe8e2f64012c6602b74'
+sha256sums=('987b13cbd076f0113a4a11df8cd132e1580dec7abe5ea69fa12a6e5e5a5f7992'
             '4ff9462e56a52889b0005f007e0a66930c6b19687751f551bf7316b6ee35119e')
         
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
