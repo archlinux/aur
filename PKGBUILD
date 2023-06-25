@@ -2,17 +2,18 @@
 
 pkgname=chunghwa-post-webatm
 epoch=1
-pkgver=1.2202.9.1
+pkgver=1.2212.26.1
 pkgrel=1
 pkgdesc='WebATM plugin for Chunghwa Post (中華郵政 WebATM 元件)'
 arch=(any)
 url='https://webatm.post.gov.tw/'
 license=(unknown)
-depends=(wine-winscard lib32-gnutls lib32-pcsclite)
+# Per https://bugs.winehq.org/show_bug.cgi?id=54661, 32-bit winscard.dll will be supported through wow64 thunks
+depends=(wine-wow64 gnutls pcsclite)
 makedepends=(msitools gendesk pev imagemagick)
 source=("ATMSetup-$pkgver.msi"::"https://webatm.post.gov.tw/postatm/cab/ATMSetup.msi"
         "$pkgname")
-sha256sums=('6e5efba81938520e590e40d2b73b34a4bde28a5d6d61317def5a2148e5c8d205'
+sha256sums=('9aa944a921ac278e9bcaa25459d49d56825ed8c7fbe0a49adb61bb0746deaa02'
             '2a21dba5dea4132d3693cf3d6332cee2f3a0be650f0e19e76ece27cd834abb75')
 
 prepare() {
