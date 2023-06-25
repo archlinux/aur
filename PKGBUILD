@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="ntrack-appimage"
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A desktop app where you can easily keep track of your time-based tasks."
 arch=('x86_64')
@@ -11,11 +11,11 @@ depends=('zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
-sha256sums=('4d26c9382f70c4a78fb0c4be3e0f29c3e5c875583c8e90857f56f10872a55282')
+sha256sums=('890e23d3b55dd921a5a4d9c2ac83a806e2f63eb67ba01b12d97640b05d28ff9a')
       
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
   
