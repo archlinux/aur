@@ -11,6 +11,7 @@ pkgbase = lenovolegionlinux-git
 	depends = python-yaml
 	depends = python-argcomplete
 	depends = polkit 
+	depends = wget
 	makedepends = python-installer
         makedepends = python-setuptools
         depends = python-wheel
