@@ -1,16 +1,21 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=mari0-ae
-pkgver=13.1
-pkgrel=2
+pkgver=r569.f6b0877
+pkgrel=1
 pkgdesc="Mari0: Alesan99's Entities"
 arch=('i386' 'x86_64')
 url="https://github.com/alesan99/mari0_ae"
 license=('custom')
 depends=('love10')
-makedepends=('zip')
+makedepends=('zip' 'git')
 conflicts=('mari0')
 source=("git+https://github.com/alesan99/mari0_ae.git")
 sha256sums=("SKIP")
+
+pkgver() {
+    cd "${srcdir}/mari0_ae"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
 	cd "${srcdir}/mari0_ae"
