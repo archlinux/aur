@@ -1,27 +1,21 @@
 pkgname=python-ssdeep
-pkgver=3.4
+pkgver=3.4.1
 pkgrel=1
 pkgdesc='Python wrapper for ssdeep fuzzy hashing library'
 arch=('i686' 'x86_64')
 license=('LGPL3')
 url='https://pypi.python.org/pypi/ssdeep'
-makedepends=('python-setuptools' 'python-pip')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'ssdeep' 'python-pytest-runner')
 depends=('python' 'python-cffi' 'ssdeep')
-checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DinoTools/python-ssdeep/archive/${pkgver}.tar.gz")
-sha256sums=('1924ca700aedd6563b9939cac6519d5aa24c4c3c24e09a748b31c09955b09ad4')
+sha256sums=('6f984a1248ee6b434bab0e2b274621f1888d81b8241858d30f981214263b17fa')
 
 build() {
-   cd python-ssdeep-${pkgver}
-   python3 setup.py build
+   cd $pkgname-$pkgver
+   python -m build --wheel --no-isolation
 }
 
-check() {
-   cd "${srcdir}"/python-ssdeep-${pkgver}
-   python3 setup.py test
-}
- 
 package() {
-   cd python-ssdeep-${pkgver}
-   python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+   cd $pkgname-$pkgver
+   python -m installer --destdir="$pkgdir" dist/*.whl
 } 
