@@ -1,0 +1,13 @@
+pkgbase = liftoff-bin
+	pkgdesc = A mobile and desktop lemmy client written in flutter
+	pkgver = 0.9.12
+	pkgrel = 1
+	url = https://github.com/liftoff-app/liftoff
+	arch = x86_64
+	license = GPL2
+	provides = liftoff
+	conflicts = liftoff
+	source = liftoff-bin-0.9.12.tar.gz::https://github.com/liftoff-app/liftoff/releases/download/v0.9.12/liftoff-v0.9.12-x86_64-linux.tar.gz
+	sha256sums = 54fe9571ddcea3f63ee2a3d6f5337f20851833b8c216c0a2828d761a5cda473d
+
+pkgname = liftoff-bin
