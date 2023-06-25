@@ -25,7 +25,7 @@ optdepends=('7-zip: File archiver with a high compression ratio'
 provides=('peazip')
 conflicts=('peazip-gtk2-bin' 'peazip-qt5' 'peazip-qt5-bin')
 source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.Qt5-1.${CARCH}.rpm")
-sha256sums=('c8ebcacdba92685fd1a769c74a7df224e5dee1c0c63d1f42450e380cf9b7f279')
+sha256sums=('6f016f2ea50e52d0590981a7ce533fa59b1fbabd2755de2e718048c3322bf522')
 
 prepare() {
 	rm -r usr/share/peazip/batch/{SendTo,'Windows 11 mini context menu','macOS service menus',*.bat}
