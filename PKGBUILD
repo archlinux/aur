@@ -5,6 +5,7 @@ pkgdesc='Python bindings to the tree-sitter parsing library'
 arch=('any')
 url='https://github.com/tree-sitter/py-tree-sitter'
 license=('MIT')
+depends=('python')
 makedepends=(
   'python-build'
   'python-installer'
