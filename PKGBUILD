@@ -11,7 +11,7 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-libssh
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Library for accessing ssh client services through C libraries (android)"
 license=('LGPL')
@@ -44,8 +44,8 @@ build() {
     source android-env ${_android_arch}
 
     version=$(cat ${ANDROID_PREFIX_INCLUDE}/openssl/opensslv.h | grep "OPENSSL_VERSION_TEXT" | sed 's/^[^\"]*"OpenSSL //' | sed 's/ .*$//')
-    libssl=$(ls ${ANDROID_PREFIX_LIB}/libssl_*.so)
-    libcrypto=$(ls ${ANDROID_PREFIX_LIB}/libcrypto_*.so)
+    libssl=${ANDROID_PREFIX_LIB}/libssl.so
+    libcrypto=${ANDROID_PREFIX_LIB}/libcrypto.so
 
     #static build
     mkdir -p "${srcdir}"/build-static && cd "${srcdir}"/build-static

@@ -1,7 +1,7 @@
 pkgbase = android-x86-64-libssh
 	pkgdesc = Library for accessing ssh client services through C libraries (android)
 	pkgver = 0.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.libssh.org/
 	arch = any
 	groups = android-libssh
