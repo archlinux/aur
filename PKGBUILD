@@ -12,6 +12,11 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 depends=('glibc')
 makedepends=('git' 'go')
+optdepends=(
+  'apk-tools: for alpine experimenting on native host'
+  'dpkg: for deb experimenting on native host'
+  'rpm-tools: for rpm experimenting on native host'
+)
 source=("${pkgname%-git}::git+${url}")
 
 pkgver() {
