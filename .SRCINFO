@@ -1,6 +1,6 @@
 pkgbase = qtvsplayer-bin
 	pkgdesc = QtVsPlayer for Hikvision, QtVsPlayer can read local video files of Hikvision and display blue, green and red vector.It read real time live stream
-	pkgver = 1.0.46
+	pkgver = 1.0.47
 	pkgrel = 1
 	url = https://github.com/surfzoid/QtVsPlayer
 	arch = aarch64
@@ -16,9 +16,9 @@ pkgbase = qtvsplayer-bin
 	depends = gcc-libs
 	depends = openal
 	conflicts = qtvsplayer
-	source_aarch64 = qtvsplayer-1.0.46-aarch64.deb::https://github.com/surfzoid/QtVsPlayer/releases/download/1.0.46/QtVsPlayer_1.0.46_bullseye-arm64.deb
-	sha256sums_aarch64 = 04bc6eb3865463cc756f40c82bf159fe0c00d3ca86be4a2de008f8077c97cf7e
-	source_x86_64 = qtvsplayer-1.0.46-x86_64.deb::https://github.com/surfzoid/QtVsPlayer/releases/download/1.0.46/QtVsPlayer_1.0.46_ubuntu-latest-amd64.deb
-	sha256sums_x86_64 = 8ccaa29a2c8564dde5848de1da5160d5f8bfda0828d3806803341a427282a99d
+	source_aarch64 = qtvsplayer-1.0.47-aarch64.deb::https://github.com/surfzoid/QtVsPlayer/releases/download/1.0.47/QtVsPlayer_1.0.47_bullseye-arm64.deb
+	sha256sums_aarch64 = 5d72f307ffbc365a66b9c319016a527ab0b506c311fc08a1ad48b2af44a838f2
+	source_x86_64 = qtvsplayer-1.0.47-x86_64.deb::https://github.com/surfzoid/QtVsPlayer/releases/download/1.0.47/QtVsPlayer_1.0.47_ubuntu-latest-amd64.deb
+	sha256sums_x86_64 = 150b55d08bce62d8e2e30b53073e91643ff20f108dfedc89bed84a8dda3681d1
 
 pkgname = qtvsplayer-bin
