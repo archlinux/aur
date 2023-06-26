@@ -1,6 +1,6 @@
 pkgbase = aliyunpan-odomu-appimage
 	pkgdesc = 阿里云盘小白羊版 v3 修复版
-	pkgver = 3.23.62510
+	pkgver = 3.23.62621
 	pkgrel = 0
 	url = https://github.com/odomu/aliyunpan
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = aliyunpan-odomu-appimage
 	provides = aliyunpan-odomu
 	conflicts = aliyunpan-odomu
 	replaces = aliyunpan-liupan1890
-	source_x86_64 = aliyunpan-odomu-3.23.62510-x86_64.AppImage::https://github.com/odomu/aliyunpan/releases/download/v3.23.62510/alixby-3.23.62510-linux-x86_64.AppImage
-	sha256sums_x86_64 = 61ea1de1f1a65831da0d3662b1c8a11286f242e2f59a06d2479bc2742accea31
-	source_aarch64 = aliyunpan-odomu-3.23.62510-aarch64.AppImage::https://github.com/odomu/aliyunpan/releases/download/v3.23.62510/alixby-3.23.62510-linux-arm64.AppImage
-	sha256sums_aarch64 = 9c8d7cec209637be372dc565364363890afeca1d5a7b3b05b39d7a68fd5b39d3
+	source_x86_64 = aliyunpan-odomu-3.23.62621-x86_64.AppImage::https://github.com/odomu/aliyunpan/releases/download/v3.23.62621/alixby-3.23.62621-linux-x86_64.AppImage
+	sha256sums_x86_64 = b4174782625490c455125fb3fc2e7cfd0f6ac07f7ccbecedc83e535d3831c349
+	source_aarch64 = aliyunpan-odomu-3.23.62621-aarch64.AppImage::https://github.com/odomu/aliyunpan/releases/download/v3.23.62621/alixby-3.23.62621-linux-arm64.AppImage
+	sha256sums_aarch64 = 80ede60ca8513c319565c5315624f2bb82a72e1203ffdf1b60b6df4f451264a7
 
 pkgname = aliyunpan-odomu
