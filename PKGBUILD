@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.1.11
+pkgver=7.1.1.12
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -34,7 +34,7 @@ makedepends=(
 )
 source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('4a8b0fb3a498bd7ac294e4f6f463597d19267a012d38e48c8d6a822735bf797e'
+sha256sums=('a761aa8c3b0690910600ba838d15379b676820f1ed912382d31c9b5da1ca1878'
             'SKIP'
             '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
@@ -104,7 +104,7 @@ build() {
         --with-dejavu-font-dir='/usr/share/fonts/TTF' \
         --with-gs-font-dir='/usr/share/fonts/gsfonts' \
         --with-urw-base35-font-dir='/usr/share/fonts/gsfonts' \
-        --with-windows-font-dir='/usr/share/fonts/WindowsFonts' \
+        --with-windows-font-dir='/usr/local/share/fonts/WindowsFonts' \
         --with-apple-font-dir='/usr/share/fonts/TTF' \
         --with-fontpath='/usr/share/fonts/Type1' \
         PSDelegate='/usr/bin/gs' \
