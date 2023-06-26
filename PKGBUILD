@@ -53,4 +53,37 @@ build() {
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
 	install -Dm644 "libQuotient-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	# The header files expect to be installed in a system directory called
+	# `Quotient` as evidenced by their nested include statements. Since we
+	# install the headers to `/usr/include/QuotientE2EE` to prevent conflicts
+	# with software that use the official non-encryption package, we need to
+	# adjust the include statements in the headers to make sure that the right
+	# ones are used. We can't do this in the `prepare()` step because the build
+	# system stores the headers alongside the source code in a directory called
+	# `Quotient` and we therefore cannot change the include statements without
+	# also moving the entire source tree. So we have to let the library compile
+	# with unmodified headers, and then change them after CMake has installed
+	# them to the right place.
+	#
+	# Reference:
+	# - `s/<expression>/<replacement>/g` means to replace all instances of text
+	#   which match the provided basic regular expression with the provided
+	#   replacement text
+	# - The content of the expression between `\(` and `\)` represents a
+	#   sub-expression. The `\1` in the replacement means to include the text
+	#   which matched the first sub-expression verbatim.
+	# - `[[:blank:]]*` matches an arbitrary amount of white-space (space or
+	#   horizontal tab characters)
+	# - Places where a forward slash needs to be part of the expression or
+	#   replacement text are escaped with a backslash, i.e. `\/`
+	# - So the expression reads: match all instances of text which are of the
+	#   form `# include <Quotient/`, with everything but the final forward
+	#   slash contained in a sub-expression, and with an arbitrary amount of
+	#   white-space allowed
+	# - And the replacement text will be whatever text matched the first
+	#   sub-expression (i.e. `# include <Quotient` but with the right amount
+	#   of white-space) followed by `E2EE/`.
+	find "${pkgdir}/usr/include/QuotientE2EE" -name '*.h' -exec sed -i \
+		's/\(#[[:blank:]]*include[[:blank:]]*<Quotient\)\//\1E2EE\//g' '{}' \;
 }
