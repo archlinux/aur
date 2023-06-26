@@ -1,35 +1,33 @@
-# Maintainer: Scott Little swlittle7 [at] gmail [dot] com
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Scott Little swlittle7 [at] gmail [dot] com
+
 pkgname=nat
-pkgver=2.1.11
-pkgrel=3
-epoch=
+_pkgname=natls
+pkgver=2.1.14
+pkgrel=1
 pkgdesc="The Better ls"
 arch=(x86_64)
 url="https://github.com/willdoescode/nat"
 license=('MIT')
-groups=()
-depends=()
 makedepends=("cargo")
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/willdoescode/nat/archive/v2.1.11.tar.gz")
-noextract=()
-sha256sums=("23cf03b63c2815eca433df8b79cf758b19804ab1d69e46c8a4a877f71590ded6")
-validpgpkeys=()
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
+sha256sums=('bcce7eebf7f9396f76556b067df1223c54119a82140df7d109e1d3073899c85c')
+
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
 	cd "$pkgname-$pkgver"
-	cargo build --release
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release --all-features
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm755 target/release/natls "$pkgdir"/usr/local/bin/natls
+	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$_pkgname"
 }
