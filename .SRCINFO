@@ -1,18 +1,16 @@
 pkgbase = slepc4py
 	pkgdesc = Python bindings for SLEPc
-	pkgver = 3.13.0
+	pkgver = 3.19.1
 	pkgrel = 1
-	url = https://gitlab.com/slepc/slepc4py
+	url = https://slepc.upv.es
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = slepc
 	depends = petsc
-	depends = petsc4py
 	depends = openmpi
 	depends = python-numpy
-	source = https://gitlab.com/slepc/slepc4py/-/archive/3.13.0/slepc4py-3.13.0.tar.gz
-	sha256sums = 780eff0eea1a5217642d23cd563786ef22df27e1d772a1b0bb4ccc5701df5ea5
+	source = https://slepc.upv.es/download/distrib/slepc-3.19.1.tar.gz
+	md5sums = 00c1fa02e573e3a2f43fecb9298a00a3
 
 pkgname = slepc4py
-
