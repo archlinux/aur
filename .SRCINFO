@@ -1,14 +1,13 @@
 pkgbase = movgrab
-	pkgdesc = A command-line movie downloader.
-	pkgver = 1.2.1
+	pkgdesc = command-line movie downloader
+	pkgver = 3.1.2
 	pkgrel = 1
-	url = http://sites.google.com/site/columscode/home/movgrab
+	url = https://github.com/ColumPaget/Movgrab
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = openssl
-	source = http://sites.google.com/site/columscode/files/movgrab-1.2.1.tar.gz
-	md5sums = db162d6963b9753d6235f23419d08a5a
+	depends = openssl-1.1
+	source = movgrab-3.1.2.tar.gz::https://github.com/ColumPaget/Movgrab/archive/refs/tags/3.1.2.tar.gz
+	b2sums = dcd98949f276bc722417f73ae4ddcd37b55c0ce857fb05bbc8311770c052c3d33f52e799ded59598366f03925ca58e3ea40997699deb2e7bd5ee9f8f37a299ea
 
 pkgname = movgrab
-
