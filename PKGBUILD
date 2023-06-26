@@ -47,7 +47,7 @@ prepare() {
   git config submodule.libraries/tomlplusplus.active false
   git config submodule.libraries/filesystem.active false
   git config submodule.libraries/zlib.active false
-  git -c protocol.file.allow=always submodule update
+  git submodule--helper update
 }
 
 build() {
