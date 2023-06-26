@@ -6,13 +6,13 @@
 # - target framework not v4.8
 
 pkgname=eddie-ui-git
-pkgver=2.22.2
+pkgver=2.23.0
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - UI - beta'
 arch=('i686' 'x86_64')
 url=https://eddie.website
 license=(GPLv3)
-depends=(mono curl openvpn sudo desktop-file-utils libnotify libayatana-appindicator patchelf)
+depends=(mono curl openvpn sudo polkit desktop-file-utils libnotify libayatana-appindicator patchelf)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
 makedepends=('cmake')
 provides=('eddie-ui')
