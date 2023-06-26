@@ -2,7 +2,7 @@
 
 pkgname=super_clipboard
 _pkgname=superclipboard
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Manage your clipboard history with a beautiful and simple interface"
 arch=('x86_64')
@@ -11,10 +11,12 @@ license=('MIT')
 depends=()
 optdepends=()
 makedepends=()
-source=("$url/releases/download/v${pkgver}/super_clipboard_x86_64-linux.tar.gz")
+source=("$url/releases/download/v${pkgver}/${_pkgname}_x86_64-linux.tar.gz")
 sha512sums=('SKIP')
 
 package() {
-    install -Dm 755 "$srcdir/super_clipboard" "$pkgdir/usr/bin/$_pkgname"
+    # install binary
+    install -Dm 755 "$srcdir/${_pkgname}" "$pkgdir/usr/bin/$_pkgname"
+    # install license
     install -Dm 644 LICENSE -t "$pkgdir/licenses/$pkgname"
 }
