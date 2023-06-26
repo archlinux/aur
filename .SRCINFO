@@ -1,6 +1,6 @@
 pkgbase = editenv
 	pkgdesc = A simple command line tool for conveniently storing and editing environment variables.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://gitlab.com/a4to/editenv
 	install = editenv.install
@@ -8,9 +8,9 @@ pkgbase = editenv
 	license = MIT
 	depends = dialog
 	depends = xsel
-	source = https://concise.cc/pkg/editenv-0.1.1-1-any.pkg.tar.xz
+	source = https://concise.cc/pkg/editenv-0.1.2-1-any.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 8891d07d85e8b328013550eedf53df51
-	sha512sums = f0142e72cd6778948a146424a9bab983db13715e2a6913ae1c94f388b3a2c91e36b3bdb1c39e54d69f0e6562ac33f3f1132fa8af776b7aa2c585b8a1b34879a3
+	md5sums = 48647e3f8232ad942a70124db4a696f5
+	sha512sums = f1c48bca1cce1e6ea7bae1610a0be6bb1f5e75e55b6e3721e3f09de90e8382147f90b05768e7abb505fefe6c56d20cc636291b98b44ff5242a25e09485ecdd0f
 
 pkgname = editenv
