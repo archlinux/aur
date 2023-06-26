@@ -1,12 +1,12 @@
 pkgbase = cmake-format
 	pkgdesc = Source code formatter for CMake listfiles
 	pkgver = 0.6.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cheshirekow/cmake_format
 	arch = any
 	license = GPL3
 	checkdepends = cmake
-	depends = python-setuptools
+	makedepends = python-setuptools
 	depends = python-six>=1.13.0
 	optdepends = python-yaml>=5.3: YAML config files
 	optdepends = python-jinja>=2.10.3: complete HTML annotation

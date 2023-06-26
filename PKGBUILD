@@ -5,12 +5,13 @@
 
 pkgname=cmake-format
 pkgver=0.6.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Source code formatter for CMake listfiles'
 arch=('any')
 url='https://github.com/cheshirekow/cmake_format'
 license=('GPL3')
-depends=('python-setuptools' 'python-six>=1.13.0')
+depends=('python-six>=1.13.0')
+makedepends=('python-setuptools')
 optdepends=('python-yaml>=5.3: YAML config files' 'python-jinja>=2.10.3: complete HTML annotation' 'python-argcomplete: automatic shell completion')
 checkdepends=('cmake')
 provides=('python-cmakelang')
