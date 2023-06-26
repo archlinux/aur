@@ -1,17 +1,17 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=norka
-pkgver=0.7.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Note-taking software with Markdown support designed for Pantheon'
 arch=('any')
 url='https://tenderowl.com/work/norka/'
 license=('MIT')
-depends=('granite' 'gtksourceview3' 'gtkspell3' 'python-cairo' 'python-gobject' 'python-mistune2'
+depends=('granite' 'gtksourceview5' 'gtkspell3' 'libadwaita' 'python-cairo' 'python-gobject' 'python-mistune'
          'python-requests' 'webkit2gtk')
-makedepends=('appstream-glib' 'meson')
+makedepends=('appstream-glib' 'meson' 'cmake')
 source=("https://github.com/TenderOwl/Norka/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('4184940d3f73d60ef7b2a8793d4b23f56aaf24500e37984385f3186068fe5f7a')
+sha256sums=('b9b0098eb42a82db8e1e696006412056e64d0ae826d0c97c328aeb05e65202dc')
 
 build() {
   arch-meson Norka-$pkgver build
