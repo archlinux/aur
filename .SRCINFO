@@ -1,0 +1,13 @@
+pkgbase = vim-monkey-c
+	pkgdesc = Monkey C syntax highlighting
+	pkgver = r6.2b3b5df
+	pkgrel = 1
+	url = https://github.com/klimeryk/vim-monkey-c
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vim
+	source = git+https://github.com/klimeryk/vim-monkey-c.git
+	md5sums = SKIP
+
+pkgname = vim-monkey-c
