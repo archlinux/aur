@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.10.16.r0.g558d51f
-pkgrel=2
+pkgver=0.10.17.r12.g8131675
+pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/${pkgname%-git}"
@@ -35,7 +35,7 @@ depends=(bc
          pcre
          pdftk
          perl
-         podofo
+         podofo-tools
          poppler
          povray
          procps-ng
@@ -44,7 +44,8 @@ depends=(bc
          sile
          sqlite
          tex-gyre-fonts
-         texlive-core
+         texlive-basic
+         texlive-binextra
          ttf-hack
          xcftools
          xorg-server-xvfb
@@ -58,6 +59,7 @@ _lua_deps=(colors-git
 _perl_deps=(yaml
             yaml-merge-simple)
 _python_deps=(isbnlib
+              deepl
               pandocfilters
               pantable
               ruamel-yaml
