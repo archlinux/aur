@@ -5,7 +5,7 @@
 
 set -eu  # Bail if unexpected things happen
 
-PACMAN=
+unset PACMAN
 PATH=/usr/bin:$PATH
 
 pkgdir=${0%%/*}  # dirname $0
@@ -17,7 +17,10 @@ else
   makepkg -f
 fi
 
-namcap PKGBUILD
-namcap ./*.tar.xz
+shopt -s nullglob
+for specimen in PKGBUILD *.tar.{xz,zst}; do
+  echo "++ namcap of $specimen"
+  namcap "$specimen"
+done
 
 makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2
