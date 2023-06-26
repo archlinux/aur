@@ -1,0 +1,23 @@
+pkgbase = python-returns
+	pkgdesc = Make your functions return something meaningful, typed, and safe
+	pkgver = 0.20.1
+	pkgrel = 1
+	url = https://pypi.org/project/parsita
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-mypy-plugins
+	checkdepends = python-pytest-subtests
+	checkdepends = python-pytest-randomly
+	checkdepends = python-hypothesis
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-typing_extensions
+	source = python-returns-0.20.1.tar.gz::https://github.com/dry-python/returns/archive/refs/tags/0.20.1.tar.gz
+	sha256sums = 8ae4dea988623699f0447f773a3f0a15409d4c96a39d7e3fa2c55c0391de438e
+	b2sums = 89b8399c806380080a0a75c0b6c684a2a28349afcdf356d1a7e35ac3e667b643c9bdc8108fdcadc97bdd8c9981d504c1a35be07ea898be1ec174ce6ca29ef868
+
+pkgname = python-returns
