@@ -2,7 +2,7 @@
 
 pkgname=casile
 pkgver=0.10.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/$pkgname"
@@ -35,7 +35,7 @@ depends=(bc
          pcre
          pdftk
          perl
-         podofo
+         podofo-tools
          poppler
          povray
          procps-ng
@@ -44,7 +44,8 @@ depends=(bc
          sile
          sqlite
          tex-gyre-fonts
-         texlive-core
+         texlive-basic
+         texlive-binextra
          ttf-hack
          xcftools
          xorg-server-xvfb
