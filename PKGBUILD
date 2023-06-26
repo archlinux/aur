@@ -1,9 +1,8 @@
-# Maintainer: Brendan Szymanski <hello@bscubed.dev>
-# Co-Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
-
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r24521.3a991f3ae
+pkgver=1478.r0.g3a991f3
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -93,7 +92,8 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    #echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/^mainline-//;s/\([^-]*-g\)/r\1/;s/-/./g' | cut -c 3- # Thanks to tleydxdy for this
 }
 
 prepare() {
