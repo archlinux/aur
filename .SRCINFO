@@ -1,0 +1,13 @@
+pkgbase = wlr-protocols-git
+	pkgdesc = Wayland protocols designed for use in wlroots (and other compositors).
+	pkgver = 0.0.0.r104.g4264185
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/wlroots/wlr-protocols
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = wayland
+	source = wlr-protocols-git::git+https://gitlab.freedesktop.org/wlroots/wlr-protocols
+	sha512sums = SKIP
+
+pkgname = wlr-protocols-git
