@@ -2,8 +2,8 @@
 
 pkgname=footage
 pkgdesc="Trim, flip, rotate and crop individual clips. Footage is a useful tool for quickly editing short videos and screencasts. It's also capable of exporting any video into a format of your choice"
-pkgver=1.1
-pkgrel=4
+pkgver=1.2
+pkgrel=1
 arch=('any')
 url="https://gitlab.com/adhami3310/Footage"
 license=('GPL3')
