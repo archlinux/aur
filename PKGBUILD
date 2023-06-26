@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-forge
 _pkgname=forge
 _gnomever=44
-pkgver=70
+pkgver=71
 pkgrel=1
 pkgdesc="Tiling window manager for Gnome-Shell"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPLv3')
 depends=('gnome-shell')
 makedepends=('intltool' 'gettext' 'git' 'sassc')
 source=("https://github.com/jmmaranan/${_pkgname}/archive/refs/tags/v${_gnomever}-${pkgver}.tar.gz")
-sha256sums=("476d951ae8d2d64dfbb572ae6dfe526c18e241742a8fae694f04040969444d32")
+sha256sums=("12f2b6ef371efa7d56857c0f03f56f39b4d4f023f6fdc1890a19428779be6787")
 
 build() {
 	cd "${srcdir}/${_pkgname}-${_gnomever}-${pkgver}/"

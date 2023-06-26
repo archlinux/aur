@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-forge
 	pkgdesc = Tiling window manager for Gnome-Shell
-	pkgver = 70
+	pkgver = 71
 	pkgrel = 1
 	url = https://github.com/jmmaranan/forge
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-forge
 	makedepends = git
 	makedepends = sassc
 	depends = gnome-shell
-	source = https://github.com/jmmaranan/forge/archive/refs/tags/v44-70.tar.gz
-	sha256sums = 476d951ae8d2d64dfbb572ae6dfe526c18e241742a8fae694f04040969444d32
+	source = https://github.com/jmmaranan/forge/archive/refs/tags/v44-71.tar.gz
+	sha256sums = 12f2b6ef371efa7d56857c0f03f56f39b4d4f023f6fdc1890a19428779be6787
 
 pkgname = gnome-shell-extension-forge
