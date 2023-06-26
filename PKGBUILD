@@ -1,7 +1,7 @@
 # Maintainer: Mykyta Poturai <mykyta.poturai@tutanota.com>
 pkgname=hey-mail-bin
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.11
+pkgrel=1
 pkgdesc="Hey Mail desktop app"
 url="https://hey.com/apps/"
 arch=('x86_64')
@@ -17,9 +17,9 @@ backup=()
 options=()
 install=
 changelog=
-SNAPNAME="lfWUNpR7PrPGsDfuxIhVxbj0wZHoH7bK_11.snap"
+SNAPNAME="lfWUNpR7PrPGsDfuxIhVxbj0wZHoH7bK_21.snap"
 source=("https://api.snapcraft.io/api/v1/snaps/download/$SNAPNAME")
-md5sums=('d10ba9275dbf23f6c8a08165e5b786b4')
+md5sums=('901b9dbecc18bd4116223217dcad068e')
 
 #curl -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/hey-mail
 build() {
