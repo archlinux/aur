@@ -6,7 +6,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 
 pkgname=notesnook
-pkgver=2.5.4
+pkgver=2.5.5
 pkgrel=1
 _electronversion=21
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
