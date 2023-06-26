@@ -1,42 +1,28 @@
-# Maintainer: Erfan Kheyrollahi <ekm507@gmail.com>
+# Maintainer: Nima Fanniasl <nma.fanniasl@gmail.com>
 
-# Contributor: Komeil Parseh <ahmdparsh129@gmail.com>
-
-pkgname="araste-git"
-_gitname="araste"
-pkgver=r1.3_352.c893c71
+pkgname=araste-git
+pkgver=3.1
 pkgrel=1
 pkgdesc="Making ascii-art out of Persian/Arabic text"
-arch=("any")
-url="https://github.com/ekm507/araste"
-license=("AGPLv3")
+arch=('any')
+url="https://github.com/ekm507/araste/"
+license=('AGPLv3')
 depends=("python" "python-setuptools" "python-pip")
 makedepends=("git")
-install="beauty.install"
-source=("araste::git+https://github.com/ekm507/araste.git")
-md5sums=("SKIP")
+source=("araste-git::git+https://github.com/ekm507/araste.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed "s/\([^-]*-g\)/r\1/;s/-/./g" ||
-    printf "r%s_%s.%s" "$(python -c 'from araste import __version__;print(__version__)')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+	cd "${srcdir}/${pkgname}"
+	git describe --tags main | cut -d- -f1 | sed 's/v//g'
 }
+
 build() {
-    cd "${srcdir}/${_gitname}"
-    python setup.py build
+	cd "${srcdir}/${pkgname}"
+	python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${_gitname}"
-
-    install -d "${pkgdir}/usr/share/licenses/${_gitname}"
-    install -d "${pkgdir}/usr/share/man/man1/"
-
-    install -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
-    install -m644 "assest/${_gitname}.1.gz" "${pkgdir}/usr/share/man/man1/${_gitname}.1.gz"
-
-    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+	cd "${srcdir}/${pkgname}"
+	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
 }
