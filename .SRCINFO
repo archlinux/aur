@@ -1,11 +1,11 @@
 pkgbase = prismlauncher-bin
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://prismlauncher.org
 	arch = x86_64
 	license = GPL3
-	depends = java-runtime
+	depends = java-runtime=17
 	depends = libgl
 	depends = qt6-base
 	depends = qt6-5compat
@@ -13,8 +13,11 @@ pkgbase = prismlauncher-bin
 	depends = qt6-imageformats
 	depends = zlib
 	depends = hicolor-icon-theme
+	optdepends = glfw: to use system GLFW libraries
+	optdepends = openal: to use system OpenAL libraries
+	optdepends = visualvm: Profiling support
+	optdepends = xorg-xrandr: for older minecraft versions
 	optdepends = java-runtime=8: support for Minecraft versions < 1.17
-	optdepends = java-runtime=17: support for Minecraft versions >= 1.17
 	provides = prismlauncher
 	conflicts = prismlauncher
 	noextract = PrismLauncher-Linux-Qt6-7.1.tar.gz
