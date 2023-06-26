@@ -13,7 +13,7 @@ license=("MIT")
 conflicts=("$_pkgname" "${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname" "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md")
-sha512sums_x86_64=('$7470d7693c216c16f5e8f59aec6e3ba240c88afbf4293a15e4601d262bf81daed8a5920c2d10860cbca6ace2d450c05fac4f16fb3537b1239c7d8dbe84a6016a' '$1081f197883ec65fe5003030686ba8090cc208cf1d41309d19e0ade6ca4dd48a983e0c59dd328ca33714d7b0472e38a7dc994ce04acd48750c0f1e69174abda8')
+sha512sums_x86_64=('7470d7693c216c16f5e8f59aec6e3ba240c88afbf4293a15e4601d262bf81daed8a5920c2d10860cbca6ace2d450c05fac4f16fb3537b1239c7d8dbe84a6016a' '1081f197883ec65fe5003030686ba8090cc208cf1d41309d19e0ade6ca4dd48a983e0c59dd328ca33714d7b0472e38a7dc994ce04acd48750c0f1e69174abda8')
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "{pkgdir}/usr/bin/$_pkgname
