@@ -1,6 +1,6 @@
 pkgbase = browsr
 	pkgdesc = TUI File Browser App
-	pkgver = 1.10.7
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/juftin/browsr
 	arch = any
@@ -12,15 +12,13 @@ pkgbase = browsr
 	makedepends = python-hatchling
 	makedepends = python-wheel
 	depends = python-art
-	depends = python-fsspec
 	depends = python-pandas
 	depends = python-rich-click
 	depends = python-rich-pixels
-	depends = python-textual
-	depends = python-universal_pathlib
+	depends = python-textual-universal-directorytree
 	depends = python-pillow
 	depends = python-pymupdf
-	source = browsr-1.10.7.tar.gz::https://github.com/juftin/browsr/archive/v1.10.7.tar.gz
-	sha512sums = fd8fe8245398d3a702a10d870572207cf808acfc76162e99c9f2d85c12f6a9df5bcc5a2a69fab4481899a7bf7c80f99180e038c4ad30aa869621e4cd6448c38a
+	source = browsr-1.11.0.tar.gz::https://github.com/juftin/browsr/archive/v1.11.0.tar.gz
+	sha512sums = ebbd21060e5b40bdd7d1e6023948d7567d16b31ce24083b975dd3722a94596bdd7d4f3e19de5d736b8e5c0e173cb37f11e9baa262a3cfcbbb948ca62836776f7
 
 pkgname = browsr

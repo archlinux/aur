@@ -1,17 +1,17 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=browsr
-pkgver=1.10.7
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="TUI File Browser App"
 arch=(any)
 url="https://github.com/juftin/${pkgname}"
 license=(MIT)
-depends=(python-art python-fsspec python-pandas python-rich-click python-rich-pixels
-  python-textual python-universal_pathlib python-pillow python-pymupdf)
+depends=(python-art python-pandas python-rich-click python-rich-pixels
+  python-textual-universal-directorytree python-pillow python-pymupdf)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest python-requests)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('fd8fe8245398d3a702a10d870572207cf808acfc76162e99c9f2d85c12f6a9df5bcc5a2a69fab4481899a7bf7c80f99180e038c4ad30aa869621e4cd6448c38a')
+sha512sums=('ebbd21060e5b40bdd7d1e6023948d7567d16b31ce24083b975dd3722a94596bdd7d4f3e19de5d736b8e5c0e173cb37f11e9baa262a3cfcbbb948ca62836776f7')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -22,7 +22,7 @@ check() {
   cd ${pkgname}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest -k 'not github_screenshot and not screenshot_license and not textual_app_context_path_github'
+  test-env/bin/python -m pytest
 }
 
 package() {
