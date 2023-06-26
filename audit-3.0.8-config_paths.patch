@@ -1,0 +1,36 @@
+diff -ruN a/audisp/plugins/remote/au-remote.conf b/audisp/plugins/remote/au-remote.conf
+--- a/audisp/plugins/remote/au-remote.conf	2022-03-29 22:52:34.000000000 +0200
++++ b/audisp/plugins/remote/au-remote.conf	2022-04-21 11:11:55.685862988 +0200
+@@ -5,7 +5,7 @@
+ 
+ active = no
+ direction = out
+-path = /sbin/audisp-remote
++path = /usr/bin/audisp-remote
+ type = always
+ #args =
+ format = string
+diff -ruN a/audisp/plugins/syslog/syslog.conf b/audisp/plugins/syslog/syslog.conf
+--- a/audisp/plugins/syslog/syslog.conf	2022-03-29 22:52:34.000000000 +0200
++++ b/audisp/plugins/syslog/syslog.conf	2022-04-21 11:12:54.669352650 +0200
+@@ -8,7 +8,7 @@
+ 
+ active = no
+ direction = out
+-path = /sbin/audisp-syslog
++path = /usr/bin/audisp-syslog
+ type = always 
+ args = LOG_INFO
+ format = string
+diff -ruN a/audisp/plugins/zos-remote/audispd-zos-remote.conf b/audisp/plugins/zos-remote/audispd-zos-remote.conf
+--- a/audisp/plugins/zos-remote/audispd-zos-remote.conf	2022-03-29 22:52:34.000000000 +0200
++++ b/audisp/plugins/zos-remote/audispd-zos-remote.conf	2022-04-21 11:12:26.419277793 +0200
+@@ -8,7 +8,7 @@
+ 
+ active = no
+ direction = out
+-path = /sbin/audispd-zos-remote
++path = /usr/bin/audispd-zos-remote
+ type = always 
+ args = /etc/audit/zos-remote.conf
+ format = string
