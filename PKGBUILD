@@ -1,9 +1,10 @@
 # Mantainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Fabio Loli <fabio.loli@disroot.org>
 
 _pkgname="trovotutto"
 pkgname="${_pkgname}-git"
-pkgver=0.1
-pkgrel=2
+pkgver=0.1+1+g79846bc
+pkgrel=1
 pkgdesc='small naive python 3.x search engine using k-grams'
 arch=('any')
 url="https://github.com/tallero/${_pkgname}"
@@ -21,6 +22,12 @@ source=(
 )
 sha256sums=('SKIP')
 
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
+# shellcheck disable=SC2154
 package() {
   cd "${_pkgname}"
   python3 setup.py install --root="${pkgdir}" --optimize=1
