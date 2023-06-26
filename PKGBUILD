@@ -1,14 +1,18 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=autobrr
-pkgver=1.26.2
+pkgver=1.27.1
 pkgrel=1
 pkgdesc='The modern download automation tool for torrents'
 arch=('x86_64')
 url='https://autobrr.com'
 license=('GPL2')
 depends=('glibc')
-makedepends=('git' 'go' 'yarn')
+makedepends=(
+  'git'
+  'go'
+  'nodejs'
+)
 optdepends=(
   'postgresql'
   'qbittorrent'
@@ -20,7 +24,7 @@ optdepends=(
   'lidarr'
 )
 options=('!lto')
-_commit='43ccf404da109827c8ca1de0cb6054f0f7fe1c31'
+_commit='ecc84f5f2d2f66c6044a237edc607946ac62b7b8'
 source=(
   "$pkgname::git+https://github.com/autobrr/autobrr#commit=$_commit"
   'systemd.service'
@@ -48,9 +52,14 @@ prepare() {
   export GOPATH="${srcdir}"
   go mod download
 
-  # download yarn dependencies
+  # setup corepack
+  mkdir tmp-bin
+  corepack enable --install-directory "$(pwd)/tmp-bin"
+  export PATH="$(pwd)/tmp-bin:$PATH"
+
+  # download node dependencies
   cd web
-  yarn install
+  pnpm install --frozen-lockfile
 }
 
 build() {
@@ -61,7 +70,7 @@ build() {
 
   # build web app
   pushd web
-  yarn build
+  pnpm run build
   popd
 
   # set Go flags
