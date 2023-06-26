@@ -1,0 +1,18 @@
+pkgbase = ruby-google-apis-generator
+	pkgdesc = Code generator for legacy Google REST clients
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/google/google-api-ruby-client
+	arch = any
+	license = Apache 2.0
+	depends = ruby-activesupport
+	depends = ruby-gems
+	depends = ruby-google-apis-core
+	depends = ruby-google-apis-discovery_v1
+	depends = ruby-thor
+	noextract = google-apis-generator-0.12.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/google-apis-generator-0.12.0.gem
+	sha256sums = b657528b59b27b6c14adf08182dfcb5729994c03eacbe5dedf093971701615e1
+
+pkgname = ruby-google-apis-generator
