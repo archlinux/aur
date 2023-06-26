@@ -21,7 +21,6 @@ pkgbase = aurutils
 	optdepends = bat: view-delta example script
 	optdepends = git-delta: view-delta example script
 	optdepends = python-srcinfo: sync-rebuild example script
-	optdepends = python-pyxdg: sync-rebuild example script
 	source = aurutils-17.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/17.tar.gz
 	sha256sums = f1a0054cdc7c7bb4ad5d522064ce3eeff3e76b3dc9fbc6648a17d8333b32cdf9
 

@@ -19,8 +19,7 @@ optdepends=('bash-completion: bash completion'
             'ninja: aur-sync ninja support'
             'bat: view-delta example script'
             'git-delta: view-delta example script'
-            'python-srcinfo: sync-rebuild example script'
-            'python-pyxdg: sync-rebuild example script')
+            'python-srcinfo: sync-rebuild example script')
 
 build() {
     cd "$pkgname-$pkgver"
