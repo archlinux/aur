@@ -1,7 +1,7 @@
 pkgbase = prismlauncher
 	pkgdesc = Minecraft launcher with ability to manage multiple instances.
 	pkgver = 7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://prismlauncher.org
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = prismlauncher
 	makedepends = ghc-filesystem
 	makedepends = gamemode
 	depends = java-runtime=17
-	depends = java-runtime=8
 	depends = libgl
 	depends = qt6-base
 	depends = qt6-5compat
@@ -30,6 +29,7 @@ pkgbase = prismlauncher
 	optdepends = openal: to use system OpenAL libraries
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
+	optdepends = java-runtime=8: for older minecraft versions
 	source = https://github.com/PrismLauncher/PrismLauncher/releases/download/7.1/PrismLauncher-7.1.tar.gz
 	sha256sums = dc7aeff6e0dc12f4f2065e718418a4110ccdbad3e49fbd58e416a213fde7ebb1
 
