@@ -1,11 +1,10 @@
 # Maintainer: Nemo <archlinux at captnemo dot in>
 pkgname=notable-insiders-electron
 pkgdesc='Insider build of the Notable note-taking app'
-_electron=electron20
-packager="nemo"
+_electron=electron23
 _pkgver="1.9.0-beta.10"
 pkgver=${_pkgver/-/.}
-pkgrel=3
+pkgrel=4
 arch=('any')
 url='https://github.com/notable/notable-insiders'
 license=('UNLICENSED')
@@ -26,7 +25,7 @@ build() {
 
   cat > notable.sh <<EOF
 #!/bin/sh
-exec $_electron /usr/lib/${pkgname} "\$@"x
+exec $_electron /usr/lib/${pkgname} "\$@"
 EOF
   chmod +x notable.sh
 }
