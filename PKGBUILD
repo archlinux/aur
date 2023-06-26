@@ -1,7 +1,7 @@
 # Maintainer: bastidest <bastidest at mailbox dot org>
 
 pkgname=email-to-pdf-converter
-pkgver=2.5.3
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Converts email files (eml, msg) to pdf"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('jre-openjdk' 'wkhtmltopdf')
 makedepends=('gradle')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         "java-version-and-build-version.patch")
-sha256sums=('bc4eb5a77bff392c70c8e3b1395c300e9d5b5b6ac8ea2f1d8474a58b23fef0ae'
+sha256sums=('5dd4107a4aa337ee05d584549d36db95ec31a8cef942ef86410433631ee7ec97'
             '5c007032df5b81eaa10ebbef8f3011031ea983c97575783a318640fc8a4b35bc')
 
 prepare() {
