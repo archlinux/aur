@@ -1,27 +1,21 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='nanonote'
-pkgver=1.3.0
-pkgrel=3
+pkgname=nanonote
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='Minimalist note taking application'
 arch=('x86_64')
 url='https://github.com/agateau/nanonote'
 license=('BSD')
 depends=('hicolor-icon-theme' 'qt5-base')
 makedepends=('extra-cmake-modules' 'git' 'python-jinja' 'python-pyaml' 'qt5-tools')
-source=("git+${url}.git#tag=${pkgver}"
-        "git+${url%/*}/qpropgen.git"
-        "git+https://github.com/itay-grudev/SingleApplication.git")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+source=("git+${url}.git#tag=${pkgver}")
+sha256sums=('SKIP')
+
 
 prepare() {
   cd "${pkgname}"
-  # Submodule list: https://github.com/agateau/nanonote/raw/master/.gitmodules
   git submodule init
-  git config 'submodule.qpropgen.url' "${srcdir}/qpropgen"
-  git config 'submodule.singleapplication.url' "${srcdir}/SingleApplication"
   git submodule update
 }
 
