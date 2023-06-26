@@ -1,0 +1,22 @@
+pkgbase = python-pytest-mypy-plugins
+	pkgdesc = pytest plugin for testing mypy types, stubs, and plugins
+	pkgver = 1.11.1
+	pkgrel = 1
+	url = https://pypi.org/project/pytest-mypy-plugins
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-yaml
+	depends = python-pytest
+	depends = mypy
+	depends = python-decorator
+	depends = python-jinja
+	depends = python-regex
+	depends = python-packaging
+	depends = python-chevron
+	source = python-pytest-mypy-plugins-1.11.1.tar.gz::https://github.com/typeddjango/pytest-mypy-plugins/archive/refs/tags/1.11.1.tar.gz
+	sha256sums = bba330c9ae81668069f9bcdfaa8af799e7f913eb3bae29113732336a97cbda3b
+	b2sums = a21b089321a3d632225e0ac6aa921b23bba111dcc5234c2ada32522b7659533970a9bd19bb432d3304b0291e32ba067ab75c549c4552ca742835155ab8e711b1
+
+pkgname = python-pytest-mypy-plugins
