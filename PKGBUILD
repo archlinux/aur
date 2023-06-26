@@ -1,9 +1,10 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: Edmund Lodewijks <e.lodewijks@gmail.com>
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=fvwm
-pkgver=2.6.9
-pkgrel=3
-pkgdesc="A multiple large virtual desktop window manager originally derived from twm"
+pkgver=2.7.0
+pkgrel=1
+pkgdesc="Fvwm2 - a virtual window manager. Only gets serious bugfixes. New version is Fvwm3."
 arch=('x86_64')
 url="http://www.fvwm.org"
 license=('GPL' 'custom')
@@ -13,7 +14,7 @@ optdepends=('perl-tk: for ClickToFocus support'
             'perl-x11-protocol: for ClickToFocus support')
 options=('!emptydirs' '!makeflags')
 source=(https://github.com/fvwmorg/fvwm/releases/download/${pkgver}/fvwm-${pkgver}.tar.gz fvwm.desktop)
-sha256sums=('1bc64cf3ccd0073008758168327a8265b8059def9b239b451d6b9fab2cc391ae'
+sha256sums=('66826dd60b774447170037d9078fd43e75f7230a49acfb84a988eebce7e3418b'
             '51d345f995f57c6d881d48bf535f71d75041a9bf1f0fa41dd99e1b22fd66aaf3')
 
 build() {

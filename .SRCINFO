@@ -1,7 +1,7 @@
 pkgbase = fvwm
-	pkgdesc = A multiple large virtual desktop window manager originally derived from twm
-	pkgver = 2.6.9
-	pkgrel = 3
+	pkgdesc = Fvwm2 - a virtual window manager. Only gets serious bugfixes. New version is Fvwm3.
+	pkgver = 2.7.0
+	pkgrel = 1
 	url = http://www.fvwm.org
 	arch = x86_64
 	license = GPL
@@ -19,10 +19,9 @@ pkgbase = fvwm
 	optdepends = perl-x11-protocol: for ClickToFocus support
 	options = !emptydirs
 	options = !makeflags
-	source = https://github.com/fvwmorg/fvwm/releases/download/2.6.9/fvwm-2.6.9.tar.gz
+	source = https://github.com/fvwmorg/fvwm/releases/download/2.7.0/fvwm-2.7.0.tar.gz
 	source = fvwm.desktop
-	sha256sums = 1bc64cf3ccd0073008758168327a8265b8059def9b239b451d6b9fab2cc391ae
+	sha256sums = 66826dd60b774447170037d9078fd43e75f7230a49acfb84a988eebce7e3418b
 	sha256sums = 51d345f995f57c6d881d48bf535f71d75041a9bf1f0fa41dd99e1b22fd66aaf3
 
 pkgname = fvwm
-
