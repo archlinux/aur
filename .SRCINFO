@@ -1,0 +1,12 @@
+pkgbase = plasma-applet-commandoutput
+	pkgdesc = Run command every second and displays the output.
+	pkgver = 12
+	pkgrel = 1
+	url = https://github.com/Zren/plasma-applet-commandoutput
+	arch = any
+	license = GPL-2.0
+	depends = plasma-workspace
+	source = https://github.com/Zren/plasma-applet-commandoutput/archive/v12.tar.gz
+	md5sums = 08a8dbbcc9529c75183630a920869bc1
+
+pkgname = plasma-applet-commandoutput
