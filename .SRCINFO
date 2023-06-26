@@ -1,7 +1,7 @@
 pkgbase = php-ssh-git
 	pkgdesc = An SSH2 extension for PHP
 	pkgver = r269.5c08a92
-	pkgrel = 3
+	pkgrel = 4
 	url = http://pecl.php.net/package/ssh2
 	install = php-ssh.install
 	arch = i686
