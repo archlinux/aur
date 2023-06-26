@@ -1,38 +1,48 @@
-# Maintainer: Anatol Pomozov <anatol pomozov at gmail>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete at gmail dot com
+# Contributor: Anatol Pomozov <anatol pomozov at gmail dot com>
 
-pkgname=python2-rpm
-pkgver=4.15.1
+_py="python2"
+_pkg="rpm"
+pkgname="${_py}-${_pkg}"
+pkgver=4.15.1.3
 pkgrel=1
 pkgdesc="Python2 bindings for RPM Package Manager"
 arch=('x86_64')
-url='http://www.rpm.org/'
+url="http://www.${_pkg}.org"
 license=('GPL2')
-depends=('python2')
-makedepends=('python2' 'nss')
-source=(https://github.com/rpm-software-management/rpm/archive/rpm-$pkgver-release.zip)
-sha256sums=('326284e6912f632601490aaa3321c0bbef091d981804a485fa2256c123b9222f')
+depends=("${_py}")
+makedepends=("${_py}" 'nss')
+_repo_url="https://github.com/${_pkg}-software-management/${_pkg}"
+source=(
+  "${_repo_url}/archive/refs/tags/${_pkg}-${pkgver}.tar.gz")
+sha256sums=(
+  '2c4f4f93bfd833c62bf9fa07398b6f7c707297254e259bdb72b9f7b3ec6a1c88')
+
+_project_dir="${_pkg}-${_pkg}-${pkgver}"
 
 prepare() {
-	cd rpm-rpm-$pkgver-release
-
-	autoreconf -i
+  cd "${_project_dir}"
+  
+  autoreconf -i
 }
 
 build() {
-	cd rpm-rpm-$pkgver-release
-
-	./configure \
-		--prefix=/usr  \
-		--sysconfdir=/etc  \
-		--localstatedir=/var \
-		--enable-python \
-		--without-lua \
-		CPPFLAGS="`pkg-config --cflags nss`" \
-		PYTHON=python2
-	make
+  cd "${_project_dir}"
+  local _configure_opts=(
+          --prefix=/usr
+          --sysconfdir=/etc
+          --localstatedir=/var
+          --enable-python
+          --without-lua )
+  
+  ./configure "${_configure_opts[@]}" \
+              CPPFLAGS="`pkg-config --cflags nss`" \
+              PYTHON="${_py}"
+  make
 }
 
 package() {
-	cd rpm-rpm-$pkgver-release/python
-	python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd "${_project_dir}/python"
+  "${_py}" setup.py install --root="${pkgdir}" \
+                            --optimize=1
 }
