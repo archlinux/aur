@@ -11,7 +11,7 @@ pkgver=1.76.0+106+g79d66486
 pkgrel=2
 epoch=2
 pkgdesc="Javascript Bindings for GNOME"
-url="https://wiki.gnome.org/Projects/Gjs"
+url="https://gitlab.gnome.org/GNOME/${_pkgname}"
 arch=(
   x86_64
   i686
@@ -40,8 +40,7 @@ provides=(
   "lib_${_pkgname}.so"
   "${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-_repo_url="https://gitlab.gnome.org/GNOME/${_pkgname}.git"
-source=("git+${_repo_url}")
+source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
