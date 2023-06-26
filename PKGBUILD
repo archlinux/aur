@@ -3,8 +3,8 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.29.0
-pkgrel=3
+pkgver=1.30.1
+pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL2')
@@ -20,11 +20,10 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp#commit=f01f810714443d0f10c333d4d1d9c0383be41375"
         "libromfs::git+https://github.com/WerWolv/libromfs#commit=80b9adea2003eb01fa4cf2ecb0d77f2d9c0dd32a"
         "capstone::git+https://github.com/capstone-engine/capstone#commit=e9fd6f4800be1584124e9eee92cf15ab947d33ec"
-        "libwolv::git+https://github.com/WerWolv/libwolv#commit=49489507989d767d131342cf3e2c192288cecf14"
+        "libwolv::git+https://github.com/WerWolv/libwolv#commit=128bed69ea0cf4a904e17f5690aa751b6e4b8568"
         "pattern_language::git+https://github.com/WerWolv/PatternLanguage#tag=ImHex-v$pkgver"
         "imhex-patterns::git+https://github.com/WerWolv/ImHex-Patterns#tag=ImHex-v$pkgver"
         0001-makepkg-Fix-compiler-check.patch
-        0002-fix-Force-entropy-and-type-distribution-graphs-to-al.patch
         pl-0001-Use-C-23-standard.patch
         pl-0002-makepkg-Remove-extraneous-compiler-flags.patch)
 sha256sums=('SKIP'
@@ -35,10 +34,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '69c53a429d7b6bbe47c1602ff6cfaac6d28d495f96604b5395f0a0d12154c61b'
-            '8429bf0b8f2b2631a21baccc094e85d0634941f3d8b818cbb4d75aef7529a2cd'
-            '16316b5a6354156bc0ce53a3e81d80ef990af7e3626b7ea4348b866bb339ef13'
-            'ddbfeda031ccc161d3e3f3918207d6f7132cec72ff554ef82910da70214280ce')
+            '8e422b77cbd5358205405268668b348700e30eb4efae175e73b11b0d5571d3a5'
+            '9450b68e9fa61ade7ca64251bd1c1e3ed281ccae3795d933f7212ea7927770ab'
+            'e55aecea0c46a0d7627476c43767de827e253399dee588ddfb4cb70853bceb8a')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -47,10 +45,9 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'a09884dea7ee74dc75abd9437e2329ee454cdc4cd90dbe388d671d73ed3f6dd56ef9992c4cd0dd2937cc8eb0b67539791bd64ec76c6bb6c25a959691ba1cfb41'
-        '34a08efbc1d3e78ab6d4babe49f3bb735f8a99ba03c1aa7a208abcd31f84576562f653ecc2057515468600f584d9d1ebc27071976f83fff989a75634b98efccf'
-        'ed86730af8972c6b92408f8e829d0d16ab863b23ffcd51d234371f89ce8e2194083215a1a37b3cd324ddc1c767770a1c43369d90be49fc632b4917df7d542529'
-        '6ad02f4bcfe406b23ae724e20766dbf4d32b88d63e83663baad191390002907a04c7ccd86c3640a651a46aa6db2f0889e27c5c26f4851730dc2edccf914d2ba2')
+        'afd4c41f6065b72f6cb6e6a0677f0ff56a165202752a9357e7585eba710816fcdeb4fe04897bcb9f8c40e29de8df92abf1da0873b9d5440c6551ab2683b1ac42'
+        '61be56bfa2fc9dc5e4a8e5af1c82852326c662fffcc98c094aaa68945cb00c21f856e0c3bba6b815fe584bc65bad564ddda632486021943ab939e829cf9ad892'
+        'f9067bd94f1c7ed4551fe31408eebc151884a20f292a48bf23f2c4fc963b3af076c464f8fcbfb97cd3c713b4088a66e5cef8b41c2ce94e39af04e5dc5c1f377d')
 options=(!lto !strip)
 
 prepare() {
@@ -73,8 +70,7 @@ prepare() {
     submodule update
 
   git apply \
-    "$srcdir/0001-makepkg-Fix-compiler-check.patch" \
-    "$srcdir/0002-fix-Force-entropy-and-type-distribution-graphs-to-al.patch"
+    "$srcdir/0001-makepkg-Fix-compiler-check.patch"
 
   git -C lib/external/pattern_language apply \
     "$srcdir/pl-0001-Use-C-23-standard.patch" \
