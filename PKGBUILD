@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="icalingua++-appimage"
-pkgver=2.9.13
+pkgver=2.9.17
 pkgrel=1
 pkgdesc="A branch of deleted Icalingua, with limited support"
 arch=("x86_64")
@@ -12,11 +12,11 @@ provides=()
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Icalingua++-${pkgver}.AppImage")
-sha256sums=('6be3e59cd5c1fb0fd6aae67d6206963dfd160a1eb7f9a2ef3a0d1efa5b0b1121')
+sha256sums=('25d0a7ec4b67c96f42d3b571835fec0f9a68579a857f510eaea0a2a237e138e5')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/icalingua++.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%++-appimage}.desktop"
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%++-appimage}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
