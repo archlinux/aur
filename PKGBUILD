@@ -1,5 +1,6 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 # Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Maintainer: seth <getchoo at tuta dot io>
 # Contributor: Elijah Gregg <lovetocode999 at tilde dot team>
 # Contributor: Lenny McLennington <lennymclennington@protonmail.com>
 # Contributor: Miko <mikoxyzzz@gmail.com>
@@ -13,14 +14,15 @@ pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://prismlauncher.org"
 license=('GPL3')
-depends=('java-runtime' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6' 'cmark' 'tomlplusplus')
+depends=('java-runtime=17' 'libgl' 'qt6-base' 'qt6-5compat' 'qt6-svg' 'qt6-imageformats' 'zlib' 'hicolor-icon-theme' 'quazip-qt6' 'cmark' 'tomlplusplus')
 provides=('prismlauncher')
 conflicts=('prismlauncher')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'java-environment' 'scdoc' 'ghc-filesystem' 'gamemode')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'jdk17-openjdk' 'scdoc' 'ghc-filesystem' 'gamemode')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
+            'java-runtime=8: for older minecraft versions'
 )
 options=(debug)
 source=("git+https://github.com/PrismLauncher/PrismLauncher.git"
@@ -35,6 +37,7 @@ pkgver() {
 
 prepare() {
   cd "PrismLauncher"
+
   git submodule init
   git config submodule.libraries/cmark.active false
   git config submodule.libraries/extra-cmake-modules.active false
@@ -47,6 +50,7 @@ prepare() {
 }
 
 build() {
+  export PATH="/usr/lib/jvm/java-17-openjdk/bin:$PATH"
 
   cmake -DCMAKE_BUILD_TYPE= \
     -DCMAKE_INSTALL_PREFIX="/usr" \
