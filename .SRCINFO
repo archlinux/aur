@@ -1,7 +1,7 @@
 pkgbase = python-vharfbuzz
 	pkgdesc = A user-friendlier way to use Harfbuzz in Python
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/simoncozens/vharfbuzz
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = python-vharfbuzz
 	depends = python
 	depends = python-fonttools
 	depends = python-uharfbuzz
-	source = https://files.pythonhosted.org/packages/source/v/vharfbuzz/vharfbuzz-0.1.4.tar.gz
-	sha256sums = 4e956b3a64c8af78ee1d682759a08121dd621e8667e2482d99d5d5038facc145
+	source = https://files.pythonhosted.org/packages/source/v/vharfbuzz/vharfbuzz-0.2.0.tar.gz
+	sha256sums = b835f67d8ab1578c2600020c7c0ddd0688569aad4dd15bab4931053a3491a666
 
 pkgname = python-vharfbuzz
