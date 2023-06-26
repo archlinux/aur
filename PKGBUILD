@@ -2,7 +2,7 @@
 pkgname=python-odrive
 _name=${pkgname#python-}
 pkgver=0.6.5.post2
-pkgrel=1
+pkgrel=2
 pkgdesc="Control utilities for the ODrive high performance motor controller"
 arch=('any')
 license=('MIT')
@@ -16,5 +16,5 @@ sha256sums=('8fd8fd957eb67c477d01eed8cbac1fd557229cdfd81c7ebdb3f4d5cee21caa19')
 noextract=()
 
 package() {
-    python -m installer --destdir="$pkgdir" *.whl
+    python -m installer --destdir="$pkgdir" "${_name//-/_}-$pkgver-py3-none-any.whl"
 }
