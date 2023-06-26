@@ -1,6 +1,6 @@
 pkgbase = proto-bin
 	pkgdesc = A multi-language version and dependency manager
-	pkgver = 0.10.6
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/moonrepo/proto
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = proto-bin
 	depends = git
 	provides = proto
 	conflicts = proto
-	source = proto-bin-0.10.6.tar.xz::https://github.com/moonrepo/proto/releases/download/v0.10.6/proto_cli-x86_64-unknown-linux-gnu.tar.xz
-	sha512sums = 7d7b60bbf6f2877b5797e70675cea93f20c2c40693b1406a66438d429bd0c172ce129ea3fe30d198ae0462692d960d38c663e8fa8d42676f07de282743bbd874
+	source = proto-bin-0.11.0.tar.xz::https://github.com/moonrepo/proto/releases/download/v0.11.0/proto_cli-x86_64-unknown-linux-gnu.tar.xz
+	sha512sums = 7320c7bdb599b0d2dc23450ec4aa2971aea5d91429793ec39c957bfa05f6d6b282a82a5f69fa1f87932edac3006614cbb2675ba256da8783333f1c70d32a4ad3
 
 pkgname = proto-bin
