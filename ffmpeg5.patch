@@ -1,126 +1,434 @@
-diff --git a/src/utils/ffmpeg-priv.c b/src/utils/ffmpeg-priv.c
-index a3a801a9..9d696f17 100644
---- a/src/utils/ffmpeg-priv.c
-+++ b/src/utils/ffmpeg-priv.c
-@@ -23,31 +23,22 @@
- 
- #ifndef HAVE_FUN_avcodec_encode_video2
- int avcodec_encode_video2 (AVCodecContext *avctx, AVPacket *avpkt, const AVFrame *frame, int *got_packet_ptr) {
--	int error=avcodec_encode_video(avctx, avpkt->data, avpkt->size,frame);
--	if (error<0){
--		return error;
--	}else{
--		if (error>0) {
--			*got_packet_ptr=1;
--			avpkt->size=error;
--		}else *got_packet_ptr=0;
--	}
--	return 0;
--}
--#endif
-+    int ret;
- 
-+    *got_packet_ptr = 0;
- 
-+    ret = avcodec_send_frame(avctx, frame);
-+    if (ret < 0)
-+        return ret;
- 
--#ifndef HAVE_FUN_avcodec_get_context_defaults3 /**/
--int avcodec_get_context_defaults3 (AVCodecContext *s, AVCodec *codec) {
--	avcodec_get_context_defaults(s);
--	return 0;
--}
-+    ret = avcodec_receive_packet(avctx, avpkt);
-+    if (!ret)
-+        *got_packet_ptr = 1;
-+    if (ret == AVERROR(EAGAIN))
-+        return 0;
- 
--AVCodecContext *avcodec_alloc_context3(AVCodec *codec){
--	return avcodec_alloc_context();
-+    return ret;
- }
--
- #endif
- 
- 
-diff --git a/src/utils/ffmpeg-priv.h b/src/utils/ffmpeg-priv.h
-index 18338201..3ffeb088 100644
+Description: Port to ffmpeg 5.0 API
+ Not well-tested since we currently don't build the test suite.
+ .
+ Also closes a presumed memory leak in
+ src/utils/jpgloader-ffmpeg.c:jpeg2yuv()
+Author: Dennis Filder <d.filder@web.de>
+Last-Update: 2022-06-28
+Bug-Debian: https://bugs.debian.org/1004819
 --- a/src/utils/ffmpeg-priv.h
 +++ b/src/utils/ffmpeg-priv.h
-@@ -79,6 +79,29 @@ static inline int avcodec_decode_video2(AVCodecContext *avctx, AVFrame *picture,
-                          AVPacket *avpkt){
+@@ -66,6 +66,7 @@
+ 
+ #if defined(HAVE_LIBAVCODEC_AVCODEC_H)
+ #if LIBAVCODEC_VERSION_INT <= AV_VERSION_INT(52,24,0)
++#if 0
+ /*should work as long as nobody uses avformat.h*/
+ typedef struct AVPacket{
+ 	uint8_t *data;
+@@ -81,6 +82,7 @@
  	return avcodec_decode_video(avctx,picture, got_picture_ptr,avpkt->data,avpkt->size);
  }
-+#else
-+static inline int avcodec_decode_video2(AVCodecContext *avctx, AVFrame *frame, int *got_frame, AVPacket *pkt)
-+{
-+    int ret;
-+
-+    *got_frame = 0;
-+
-+    if (pkt) {
-+        ret = avcodec_send_packet(avctx, pkt);
-+        // In particular, we don't expect AVERROR(EAGAIN), because we read all
-+        // decoded frames with avcodec_receive_frame() until done.
-+        if (ret < 0)
-+            return ret == AVERROR_EOF ? 0 : ret;
-+    }
-+
-+    ret = avcodec_receive_frame(avctx, frame);
-+    if (ret < 0 && ret != AVERROR(EAGAIN) && ret != AVERROR_EOF)
-+        return ret;
-+    if (ret >= 0)
-+        *got_frame = 1;
-+
-+    return 0;
-+}
  #endif
++#endif
  #if HAVE_AVCODEC_OLD_CODEC_IDS
  #include <libavcodec/old_codec_ids.h>
-@@ -119,11 +142,6 @@ extern "C" {
+ #endif
+@@ -117,13 +119,17 @@
+ #endif
+ 
+ #ifndef HAVE_FUN_avcodec_encode_video2
++#if 0
  int avcodec_encode_video2 (AVCodecContext *avctx, AVPacket *avpkt, const AVFrame *frame, int *got_packet_ptr);
  #endif
++#endif
  
--#ifndef HAVE_FUN_avcodec_get_context_defaults3 /**/
--int avcodec_get_context_defaults3 (AVCodecContext *s, AVCodec *codec);
--AVCodecContext *avcodec_alloc_context3(AVCodec *codec);
--#endif
--
+ #ifndef HAVE_FUN_avcodec_get_context_defaults3 /**/
++#if 0
+ int avcodec_get_context_defaults3 (AVCodecContext *s, AVCodec *codec);
+ AVCodecContext *avcodec_alloc_context3(AVCodec *codec);
+ #endif
++#endif
+ 
  #ifndef HAVE_FUN_avcodec_open2 /**/
  int avcodec_open2 (AVCodecContext *avctx, AVCodec *codec, AVDictionary **options);
+--- a/src/utils/ffmpeg-priv.c
++++ b/src/utils/ffmpeg-priv.c
+@@ -23,6 +23,7 @@
+ 
+ 
+ #ifndef HAVE_FUN_avcodec_encode_video2
++#if 0
+ int avcodec_encode_video2 (AVCodecContext *avctx, AVPacket *avpkt, const AVFrame *frame, int *got_packet_ptr) {
+ 	int error=avcodec_encode_video(avctx, avpkt->data, avpkt->size,frame);
+ 	if (error<0){
+@@ -36,10 +37,12 @@
+ 	return 0;
+ }
  #endif
-diff --git a/src/utils/jpgloader-ffmpeg.c b/src/utils/jpgloader-ffmpeg.c
-index 62cf41db..9952fab7 100644
---- a/src/utils/jpgloader-ffmpeg.c
-+++ b/src/utils/jpgloader-ffmpeg.c
-@@ -75,7 +75,6 @@ mblk_t *jpeg2yuv(uint8_t *jpgbuf, int bufsize, MSVideoSize *reqsize){
- 		return NULL;
++#endif
+ 
+ 
+ 
+ #ifndef HAVE_FUN_avcodec_get_context_defaults3 /**/
++#if 0
+ int avcodec_get_context_defaults3 (AVCodecContext *s, AVCodec *codec) {
+ 	avcodec_get_context_defaults(s);
+ 	return 0;
+@@ -48,6 +51,7 @@
+ AVCodecContext *avcodec_alloc_context3(AVCodec *codec){
+ 	return avcodec_alloc_context();
+ }
++#endif
+ 
+ #endif
+ 
+--- a/src/videofilters/videodec.c
++++ b/src/videofilters/videodec.c
+@@ -49,8 +49,8 @@
+ 
+ 
+ typedef struct DecState{
+-	AVCodecContext av_context;
+-	AVCodec *av_codec;
++	AVCodecContext *av_contextp;
++	const AVCodec *av_codec;
+ 	enum CodecID codec;
+ 	mblk_t *input;
+ 	YuvBuf outbuf;
+@@ -66,11 +66,14 @@
+ }DecState;
+ 
+ 
++/*
++ * FIXME: With the ffmpeg 5.0 API this ought to return an error when
++ * allocation fails.
++ */
+ static void dec_init(MSFilter *f, enum CodecID cid){
+ 	DecState *s=(DecState *)ms_new0(DecState,1);
+ 	ms_ffmpeg_check_init();
+ 
+-	avcodec_get_context_defaults3(&s->av_context, NULL);
+ 	s->allocator = ms_yuv_buf_allocator_new();
+ 	s->av_codec=NULL;
+ 	s->codec=cid;
+@@ -86,6 +89,10 @@
+ 	if (s->av_codec==NULL){
+ 		ms_error("Could not find decoder %i!",s->codec);
  	}
++	s->av_contextp = avcodec_alloc_context3(s->av_codec);
++	if (s->av_contextp==NULL){
++		ms_error("Could not allocate AVCodecContext!");
++	}
+ 	s->orig = av_frame_alloc();
+ 	if (!s->orig) {
+ 		ms_error("Could not allocate frame");
+@@ -119,9 +126,8 @@
+ 		av_frame_free(&s->orig);
+ 		s->orig = NULL;
+ 	}
+-	if (s->av_context.codec!=NULL){
+-		avcodec_close(&s->av_context);
+-		s->av_context.codec=NULL;
++	if (s->av_contextp && s->av_contextp->codec!=NULL){
++		avcodec_free_context(&s->av_contextp);
+ 	}
+ 	ms_yuv_buf_allocator_free(s->allocator);
+ 	if (s->input!=NULL) freemsg(s->input);
+@@ -160,16 +166,16 @@
  
--	avcodec_get_context_defaults3(&av_context,NULL);
- 	if (avcodec_open2(&av_context,codec,NULL)<0){
- 		ms_error("jpeg2yuv: avcodec_open failed");
- 		return NULL;
-diff --git a/src/videofilters/ffmpegjpegwriter.c b/src/videofilters/ffmpegjpegwriter.c
-index 5ee16b8d..8d1638f6 100644
---- a/src/videofilters/ffmpegjpegwriter.c
-+++ b/src/videofilters/ffmpegjpegwriter.c
-@@ -174,7 +174,7 @@ static void jpg_process(MSFilter *f){
- 			sws_freeContext(sws_ctx);
+ 	s->first_image_decoded = FALSE;
+ 	ms_average_fps_init(&s->fps, "Video decoder: FPS: %f");
+-	if (s->av_context.codec==NULL){
++	if (s->av_contextp && s->av_contextp->codec==NULL){
+ 		/* we must know picture size before initializing snow decoder*/
+ #if HAVE_AVCODEC_SNOW
+ 		if (s->codec!=CODEC_ID_SNOW){
+ #endif
+-			error=avcodec_open2(&s->av_context, s->av_codec, NULL);
++			error=avcodec_open2(s->av_contextp, s->av_codec, NULL);
+ 			if (error!=0) ms_error("avcodec_open() failed: %i",error);
+ 			if (s->codec==CODEC_ID_MPEG4 && s->dci_size>0){
+-				s->av_context.extradata=s->dci;
+-				s->av_context.extradata_size=s->dci_size;
++				s->av_contextp->extradata=s->dci;
++				s->av_contextp->extradata_size=s->dci_size;
+ 			}
+ #if HAVE_AVCODEC_SNOW
+ 		}
+@@ -256,15 +262,15 @@
+ 		uint32_t h = ntohl(*(uint32_t*)inm->b_rptr);
+ 		if (!s->snow_initialized){
+ 			int error;
+-			s->av_context.width=h>>16;
+-			s->av_context.height=h&0xffff;
+-			error=avcodec_open2(&s->av_context, s->av_codec, NULL);
++			s->av_contextp->width=h>>16;
++			s->av_contextp->height=h&0xffff;
++			error=avcodec_open2(s->av_contextp, s->av_codec, NULL);
+ 			if (error!=0) ms_error("avcodec_open() failed for snow: %i",error);
+ 			else {
+ 				s->snow_initialized=TRUE;
+ 				ms_message("Snow decoder initialized,size=%ix%i",
+-				s->av_context.width,
+-				s->av_context.height);
++				s->av_contextp->width,
++				s->av_contextp->height);
+ 			}
+ 		}
+ 		inm->b_rptr+=4;
+@@ -628,7 +634,7 @@
+ }
  
- 			av_frame_unref(s->pict);
--			avpicture_fill((AVPicture*)s->pict,(uint8_t*)jpegm->b_rptr,avctx->pix_fmt,avctx->width,avctx->height);
-+			av_image_fill_arrays(s->pict->data,s->pict->linesize,(uint8_t*)jpegm->b_rptr,avctx->pix_fmt,avctx->width,avctx->height, 1);
- 			packet.data=comp_buf;
- 			packet.size=(int)comp_buf_sz;
- 			packet.pts = frame_ts;
-diff --git a/src/videofilters/h264dec.cpp b/src/videofilters/h264dec.cpp
-index e3cd82cc..bed94bb0 100644
+ static mblk_t *get_as_yuvmsg(MSFilter *f, DecState *s, AVFrame *orig){
+-	AVCodecContext *ctx=&s->av_context;
++	AVCodecContext *ctx=s->av_contextp;
+ 	mblk_t *yuv_msg;
+ 
+ 	if (ctx->width==0 || ctx->height==0){
+@@ -662,7 +668,7 @@
+ #endif
+ 		ms_error("%s: error in ms_sws_scale().",f->desc->name);
+ 	}
+-	mblk_set_timestamp_info(yuv_msg, (uint32_t)orig->pkt_pts);
++	mblk_set_timestamp_info(yuv_msg, (uint32_t)orig->pts);
+ 	return yuv_msg;
+ }
+ /* Bitmasks to select bits of a byte from low side */
+@@ -671,7 +677,7 @@
+ static void dec_process_frame(MSFilter *f, mblk_t *inm){
+ 	DecState *s=(DecState*)f->data;
+ 
+-	int got_picture;
++	int got_picture = 0;
+ 	/* get a picture from the input queue */
+ 
+ 	if (f->desc->id==MS_H263_DEC_ID) inm=skip_rfc2429_header(inm);
+@@ -720,12 +726,27 @@
+ 				pkt.data = frame->b_rptr;
+ 				pkt.size = remain;
+ 				pkt.pts = frame_ts;
+-				len=avcodec_decode_video2(&s->av_context, s->orig, &got_picture,&pkt);
+-
+-				if (len<=0) {
+-					ms_warning("ms_AVdecoder_process: error %i.",len);
+-					ms_filter_notify_no_arg(f,MS_VIDEO_DECODER_DECODING_ERRORS);
+-					break;
++				{
++					int ret1 = avcodec_send_packet(s->av_contextp, &pkt), ret2;
++					char errmsg[AV_ERROR_MAX_STRING_SIZE];
++					if (ret1 < 0) {
++						av_strerror(ret1, errmsg, sizeof(errmsg));
++						ms_warning("ms_AVdecoder_process: avcodec_send_packet failed: %s.",errmsg);
++					} else {
++						ret2 = avcodec_receive_frame(s->av_contextp, s->orig);
++						if (ret2 < 0) {
++							av_strerror(ret2, errmsg, sizeof(errmsg));
++							ms_warning("ms_AVdecoder_process: avcodec_receive_frame failed: %s.",errmsg);
++						} else {
++							got_picture=1;
++						}
++					}
++					if (ret1 == 0 && ret2 == 0)
++						len = pkt.size;
++					else {
++						ms_filter_notify_no_arg(f,MS_VIDEO_DECODER_DECODING_ERRORS);
++						break;
++					}
+ 				}
+ 				if (got_picture) {
+ 					mblk_t *om = get_as_yuvmsg(f,s,s->orig);
+--- a/src/videofilters/videoenc.c
++++ b/src/videofilters/videoenc.c
+@@ -37,6 +37,8 @@
+ 
+ #include "rfc2429.h"
+ 
++#include <libavutil/imgutils.h>
++#include <libavutil/opt.h>
+ 
+ #if LIBAVCODEC_VERSION_MAJOR >= 57
+ 
+@@ -129,7 +131,6 @@
+ 
+ void ms_ffmpeg_check_init(){
+ 	if(!avcodec_initialized){
+-		avcodec_register_all();
+ 		avcodec_initialized=TRUE;
+ #ifdef ENABLE_LOG_FFMPEG
+ 		av_log_set_level(AV_LOG_WARNING);
+@@ -139,8 +140,8 @@
+ }
+ 
+ typedef struct EncState{
+-	AVCodecContext av_context;
+-	AVCodec *av_codec;
++	AVCodecContext *av_contextp;
++	const AVCodec *av_codec;
+ 	AVFrame* pict;
+ 	enum CodecID codec;
+ 	mblk_t *comp_buf;
+@@ -243,7 +244,7 @@
+ 	s->qmin=2;
+ 	s->req_vfu=FALSE;
+ 	s->framenum=0;
+-	s->av_context.codec=NULL;
++	s->av_contextp->codec=NULL;
+ 	s->vconf_list = get_vconf_list(s);
+ 	s->vconf = ms_video_find_best_configuration_for_bitrate(s->vconf_list, 500000,ms_factory_get_cpu_count(f->factory));
+ 	s->pict = av_frame_alloc();
+@@ -265,11 +266,21 @@
+ 	enc_init(f,CODEC_ID_MJPEG);
+ }
+ 
++/*
++ * FIXME: With the ffmpeg 5.0 API this ought to return an error when
++ * allocation fails.
++ */
+ static void prepare(EncState *s){
+-	AVCodecContext *c=&s->av_context;
++	AVCodecContext *c=s->av_contextp;
+ 	const int max_br_vbv=128000;
+ 
+-	avcodec_get_context_defaults3(c, NULL);
++	if (s->av_contextp != NULL)
++		avcodec_free_context(&s->av_contextp);
++	s->av_contextp = avcodec_alloc_context3(NULL);
++	if (!s->av_contextp) {
++		ms_error("Could not allocate AVCodecContext.");
++		return;
++	}
+ 	if (s->codec==CODEC_ID_MJPEG)
+ 	{
+ 		ms_message("Codec bitrate set to %i",(int)c->bit_rate);
+@@ -327,13 +338,13 @@
+ }
+ 
+ static void prepare_h263(EncState *s){
+-	AVCodecContext *c=&s->av_context;
++	AVCodecContext *c=s->av_contextp;
+ 	/* we don't use the rtp_callback but use rtp_mode that forces ffmpeg to insert
+ 	Start Codes as much as possible in the bitstream */
+ #if LIBAVCODEC_VERSION_INT < ((52<<16)+(0<<8)+0)
+         c->rtp_mode = 1;
+ #endif
+-	c->rtp_payload_size = s->mtu/2;
++	av_opt_set_int((struct MpegEncContext *) c->priv_data, "ps", s->mtu/2, 0);
+ 	if (s->profile==0){
+ 		s->codec=CODEC_ID_H263;
+ 	}else{
+@@ -349,7 +360,7 @@
+ }
+ 
+ static void prepare_mpeg4(EncState *s){
+-	AVCodecContext *c=&s->av_context;
++	AVCodecContext *c=s->av_contextp;
+ 	c->max_b_frames=0; /*don't use b frames*/
+ }
+ 
+@@ -383,22 +394,21 @@
+ 		ms_error("could not find encoder for codec id %i",s->codec);
+ 		return;
+ 	}
+-	error=avcodec_open2(&s->av_context, s->av_codec, NULL);
++	error=avcodec_open2(s->av_contextp, s->av_codec, NULL);
+ 	if (error!=0) {
+ 		ms_error("avcodec_open() failed: %i",error);
+ 		return;
+ 	}
+ 	ms_video_starter_init(&s->starter);
+-	ms_debug("image format is %i.",s->av_context.pix_fmt);
+-	ms_message("qmin=%i qmax=%i",s->av_context.qmin,s->av_context.qmax);
++	ms_debug("image format is %i.",s->av_contextp->pix_fmt);
++	ms_message("qmin=%i qmax=%i",s->av_contextp->qmin,s->av_contextp->qmax);
+ 	s->framenum=0;
+ }
+ 
+ static void enc_postprocess(MSFilter *f){
+ 	EncState *s=(EncState*)f->data;
+-	if (s->av_context.codec!=NULL){
+-		avcodec_close(&s->av_context);
+-		s->av_context.codec=NULL;
++	if (s->av_contextp->codec!=NULL){
++		avcodec_free_context(&s->av_contextp);
+ 	}
+ 	if (s->comp_buf!=NULL)	{
+ 		freemsg(s->comp_buf);
+@@ -469,7 +479,7 @@
+ 		/*frame->b_rptr=packet->b_wptr=packet->b_rptr+get_gbsc(packet->b_rptr, MIN(packet->b_rptr+s->mtu,frame->b_wptr));*/
+ 		frame->b_rptr = packet->b_wptr =
+ 			packet->b_rptr + get_gbsc_bytealigned(packet->b_rptr, MIN(packet->b_rptr+s->mtu,frame->b_wptr));
+-		add_rfc2190_header(&packet, &s->av_context ,is_iframe);
++		add_rfc2190_header(&packet, s->av_contextp ,is_iframe);
+ 		mblk_set_timestamp_info(packet,timestamp);
+ 		ms_queue_put(f->outputs[0],packet);
+ 	}
+@@ -805,8 +815,8 @@
+ static void process_frame(MSFilter *f, mblk_t *inm){
+ 	EncState *s=(EncState*)f->data;
+ 
+-	AVCodecContext *c=&s->av_context;
+-	int error,got_packet;
++	AVCodecContext *c=s->av_contextp;
++	int got_packet=0;
+ 	mblk_t *comp_buf=s->comp_buf;
+ 	int comp_buf_sz= (int) (dblk_lim(comp_buf->b_datap)-dblk_base(comp_buf->b_datap));
+ 	YuvBuf yuv;
+@@ -816,7 +826,7 @@
+ 	ms_yuv_buf_init_from_mblk(&yuv, inm);
+ 	/* convert image if necessary */
+ 	av_frame_unref(s->pict);
+-	avpicture_fill((AVPicture*)s->pict,yuv.planes[0],c->pix_fmt,c->width,c->height);
++	av_image_fill_arrays(s->pict->data, s->pict->linesize, yuv.planes[0],c->pix_fmt,c->width,c->height, 32);
+ 
+ 	/* timestamp used by ffmpeg, unset here */
+ 	s->pict->pts=AV_NOPTS_VALUE;
+@@ -841,10 +851,21 @@
+ #endif
+ 	packet.data=comp_buf->b_wptr;
+ 	packet.size=comp_buf_sz;
+-	error=avcodec_encode_video2(c, &packet, s->pict, &got_packet);
+-
+-	if (error<0) ms_warning("ms_AVencoder_process: error %i.",error);
+-	else if (got_packet){
++	{
++		int ret1 = avcodec_send_frame(c, s->pict), ret2;
++		char errmsg[AV_ERROR_MAX_STRING_SIZE];
++		if (ret1 < 0) {
++			av_strerror(ret1, errmsg, sizeof(errmsg));
++			ms_warning("ms_AVencoder_process: avcodec_send_frame failed: %s.",errmsg);
++		} else {
++			ret2 = avcodec_receive_packet(c, &packet);
++			if (ret2 < 0) {
++				av_strerror(ret2, errmsg, sizeof(errmsg));
++				ms_warning("ms_AVencoder_process: avcodec_receive_packet failed: %s.",errmsg);
++			} else got_packet=1;
++		}
++	}
++	if (got_packet){
+ 		bool_t is_iframe = FALSE;
+ 		s->framenum++;
+ 		if (s->framenum==1){
+@@ -867,7 +888,7 @@
+ static void enc_process(MSFilter *f){
+ 	mblk_t *inm;
+ 	EncState *s=(EncState*)f->data;
+-	if (s->av_context.codec==NULL) {
++	if (s->av_contextp && s->av_contextp->codec==NULL) {
+ 		ms_queue_flush(f->inputs[0]);
+ 		return;
+ 	}
+@@ -894,7 +915,7 @@
+ 
+ 	if (s->vconf.required_bitrate > s->vconf.bitrate_limit)
+ 		s->vconf.required_bitrate = s->vconf.bitrate_limit;
+-	if (s->av_context.codec != NULL) {
++	if (s->av_contextp && s->av_contextp->codec != NULL) {
+ 		/* Do not change video size if encoder is running */
+ 		if (!ms_video_size_equal(s->vconf.vsize, vsize)) {
+ 			ms_warning("Video configuration: cannot change video size when encoder is running, actual=%dx%d, wanted=%dx%d", vsize.width, vsize.height, s->vconf.vsize.width, s->vconf.vsize.height);
 --- a/src/videofilters/h264dec.cpp
 +++ b/src/videofilters/h264dec.cpp
-@@ -66,17 +66,15 @@ typedef struct _DecData{
+@@ -54,7 +54,7 @@
+ 	MSVideoSize vsize;
+ 	struct SwsContext *sws_ctx;
+ 	MSAverageFPS fps;
+-	AVCodecContext av_context;
++	AVCodecContext *av_contextp;
+ 	unsigned int packet_num;
+ 	uint8_t *bitstream;
+ 	int bitstream_size;
+@@ -67,18 +67,19 @@
  static void ffmpeg_init(void){
  	static bool_t done=FALSE;
  	if (!done){
@@ -131,15 +439,48 @@ index e3cd82cc..bed94bb0 100644
  
  static void dec_open(DecData *d){
 -	AVCodec *codec;
-+	const AVCodec *codec;
++	const AVCodec *codec=avcodec_find_decoder(CODEC_ID_H264);
  	int error;
- 	codec=avcodec_find_decoder(CODEC_ID_H264);
+-	codec=avcodec_find_decoder(CODEC_ID_H264);
  	if (codec==NULL) ms_fatal("Could not find H264 decoder in ffmpeg.");
 -	avcodec_get_context_defaults3(&d->av_context, NULL);
- 	error=avcodec_open2(&d->av_context,codec, NULL);
+-	error=avcodec_open2(&d->av_context,codec, NULL);
++	d->av_contextp = avcodec_alloc_context3(codec);
++	if (!d->av_contextp) {
++		ms_fatal("Could not allocate AVCodecContext!");
++	}
++	error=avcodec_open2(d->av_contextp,codec, NULL);
  	if (error!=0){
  		ms_fatal("avcodec_open() failed.");
-@@ -164,7 +162,7 @@ static mblk_t *get_as_yuvmsg(MSFilter *f, DecData *s, AVFrame *orig){
+ 	}
+@@ -114,7 +115,7 @@
+ }
+ 
+ static void dec_reinit(DecData *d){
+-	avcodec_close(&d->av_context);
++	avcodec_free_context(&d->av_contextp);
+ 	dec_open(d);
+ }
+ 
+@@ -126,7 +127,7 @@
+ static void dec_uninit(MSFilter *f){
+ 	DecData *d=(DecData*)f->data;
+ 	delete d->unpacker;
+-	avcodec_close(&d->av_context);
++	avcodec_free_context(&d->av_contextp);
+ 	if (d->sps) freemsg(d->sps);
+ 	if (d->pps) freemsg(d->pps);
+ 	if (d->orig) av_frame_free(&d->orig);
+@@ -137,7 +138,7 @@
+ }
+ 
+ static mblk_t *get_as_yuvmsg(MSFilter *f, DecData *s, AVFrame *orig){
+-	AVCodecContext *ctx=&s->av_context;
++	AVCodecContext *ctx=s->av_contextp;
+ 	MSPicture pic = {0};
+ 	mblk_t *yuv_msg;
+ 
+@@ -165,7 +166,7 @@
  		ms_error("%s: error in sws_scale().",f->desc->name);
  	}
  #if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(50,43,0) // backward compatibility with Debian Squeeze (6.0)
@@ -148,61 +489,131 @@ index e3cd82cc..bed94bb0 100644
  #endif
  	return yuv_msg;
  }
-diff --git a/src/videofilters/videodec.c b/src/videofilters/videodec.c
-index d5dbcaa2..2b223349 100644
---- a/src/videofilters/videodec.c
-+++ b/src/videofilters/videodec.c
-@@ -69,7 +69,6 @@ static void dec_init(MSFilter *f, enum CodecID cid){
- 	DecState *s=(DecState *)ms_new0(DecState,1);
- 	ms_ffmpeg_check_init();
- 
--	avcodec_get_context_defaults3(&s->av_context, NULL);
- 	s->allocator = ms_yuv_buf_allocator_new();
- 	s->av_codec=NULL;
- 	s->codec=cid;
-@@ -661,7 +660,7 @@ static mblk_t *get_as_yuvmsg(MSFilter *f, DecState *s, AVFrame *orig){
+@@ -326,9 +327,25 @@
+ #if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(50,43,0) // backward compatibility with Debian Squeeze (6.0)
+ 				pkt.pts = frame_ts;
  #endif
- 		ms_error("%s: error in ms_sws_scale().",f->desc->name);
+-				len=avcodec_decode_video2(&d->av_context,d->orig,&got_picture,&pkt);
++				{
++					len = -1;
++					char errmsg[AV_ERROR_MAX_STRING_SIZE];
++					int ret1 = avcodec_send_packet(d->av_contextp, &pkt), ret2;
++					if (ret1 < 0) {
++						av_strerror(ret1, errmsg, sizeof(errmsg));
++						ms_warning("ms_AVdecoder_process: avcodec_send_packet failed: %s.", errmsg);
++					} else {
++						ret2 = avcodec_receive_frame(d->av_contextp, d->orig);
++						if (ret2 < 0) {
++							av_strerror(ret2, errmsg, sizeof(errmsg));
++							ms_warning("ms_AVdecoder_process: avcodec_receive_frame failed: %s.",errmsg);
++						} else {
++							got_picture=1;
++							len = pkt.size;
++						}
++					}
++				}
+ 				if (len<=0) {
+-					ms_warning("ms_AVdecoder_process: error %i.",len);
+ 					ms_filter_notify_no_arg(f,MS_VIDEO_DECODER_DECODING_ERRORS);
+ 					requestPLI = TRUE;
+ 					break;
+--- a/src/utils/jpgloader-ffmpeg.c
++++ b/src/utils/jpgloader-ffmpeg.c
+@@ -62,7 +62,7 @@
+ 
+ mblk_t *jpeg2yuv(uint8_t *jpgbuf, int bufsize, MSVideoSize *reqsize){
+ #if !defined(NO_FFMPEG) && !TARGET_OS_IPHONE /* this code must never be used for iOS */
+-	AVCodecContext av_context;
++	AVCodecContext *av_contextp;
+ 	int got_picture=0;
+ 	mblk_t *ret;
+ 	struct SwsContext *sws_ctx;
+@@ -71,52 +71,77 @@
+ 	AVCodec *codec=avcodec_find_decoder(CODEC_ID_MJPEG);
+ 	AVFrame* orig = av_frame_alloc();
+ 
++	if (orig==NULL){
++		ms_error("Could not allocate AVFrame.");
++		return NULL;
++	}
++
+ 	if (codec==NULL){
+ 		ms_error("Could not find MJPEG decoder in ffmpeg.");
++		av_frame_free(&orig);
+ 		return NULL;
  	}
--	mblk_set_timestamp_info(yuv_msg, (uint32_t)orig->pkt_pts);
-+	mblk_set_timestamp_info(yuv_msg, (uint32_t)orig->pts);
- 	return yuv_msg;
- }
- /* Bitmasks to select bits of a byte from low side */
-diff --git a/src/videofilters/videoenc.c b/src/videofilters/videoenc.c
-index 42d3a05e..7e3575d4 100644
---- a/src/videofilters/videoenc.c
-+++ b/src/videofilters/videoenc.c
-@@ -128,7 +128,6 @@ void ms_ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list vl)
  
- void ms_ffmpeg_check_init(){
- 	if(!avcodec_initialized){
--		avcodec_register_all();
- 		avcodec_initialized=TRUE;
- #ifdef ENABLE_LOG_FFMPEG
- 		av_log_set_level(AV_LOG_WARNING);
-@@ -268,7 +267,6 @@ static void prepare(EncState *s){
- 	AVCodecContext *c=&s->av_context;
- 	const int max_br_vbv=128000;
+-	avcodec_get_context_defaults3(&av_context,NULL);
+-	if (avcodec_open2(&av_context,codec,NULL)<0){
++	av_contextp = avcodec_alloc_context3(codec);
++	if (!av_contextp) {
++		ms_error("jpeg2yuv: avcodec_alloc_context3 failed");
++		av_frame_free(&orig);
++		return NULL;
++	}
++	if (avcodec_open2(av_contextp,codec,NULL)<0){
+ 		ms_error("jpeg2yuv: avcodec_open failed");
++		av_frame_free(&orig);
++		avcodec_free_context(&av_contextp);
+ 		return NULL;
+ 	}
+ 	av_init_packet(&pkt);
+ 	pkt.data=jpgbuf;
+ 	pkt.size=bufsize;
  
--	avcodec_get_context_defaults3(c, NULL);
- 	if (s->codec==CODEC_ID_MJPEG)
- 	{
- 		ms_message("Codec bitrate set to %i",(int)c->bit_rate);
-@@ -332,7 +330,6 @@ static void prepare_h263(EncState *s){
- #if LIBAVCODEC_VERSION_INT < ((52<<16)+(0<<8)+0)
-         c->rtp_mode = 1;
+-	if (avcodec_decode_video2(&av_context,orig,&got_picture,&pkt) < 0) {
+-		ms_error("jpeg2yuv: avcodec_decode_video failed");
+-		avcodec_close(&av_context);
++	int ret1 = avcodec_send_packet(av_contextp, &pkt), ret2;
++	if (ret1 < 0) {
++		ms_warning("jpeg2yuv: avcodec_send_packet failed: %s.",av_err2str(ret1));
++		av_frame_free(&orig);
++		avcodec_free_context(&av_contextp);
+ 		return NULL;
++	} else {
++		ret2 = avcodec_receive_frame(av_contextp, orig);
++		if (ret2 < 0) {
++			ms_warning("jpeg2yuv: avcodec_receive_frame failed: %s.",av_err2str(ret2));
++			av_frame_free(&orig);
++			avcodec_free_context(&av_contextp);
++			return NULL;
++		}
+ 	}
+ 	ret=ms_yuv_buf_alloc(&dest, reqsize->width,reqsize->height);
+ 	/* not using SWS_FAST_BILINEAR because it doesn't play well with
+ 	 * av_context.pix_fmt set to AV_PIX_FMT_YUVJ420P by jpeg decoder */
+-	sws_ctx=sws_getContext(av_context.width,av_context.height,av_context.pix_fmt,
++	sws_ctx=sws_getContext(av_contextp->width,av_contextp->height,av_contextp->pix_fmt,
+ 		reqsize->width,reqsize->height,AV_PIX_FMT_YUV420P,SWS_BILINEAR,
+                 NULL, NULL, NULL);
+ 	if (sws_ctx==NULL) {
+ 		ms_error("jpeg2yuv: ms_sws_getContext() failed.");
+-		avcodec_close(&av_context);
++		av_frame_free(&orig);
++		avcodec_free_context(&av_contextp);
+ 		freemsg(ret);
+ 		return NULL;
+ 	}
+ 
+ #if LIBSWSCALE_VERSION_INT >= AV_VERSION_INT(0,9,0)
+-	if (sws_scale(sws_ctx,(const uint8_t* const *)orig->data,orig->linesize,0,av_context.height,dest.planes,dest.strides)<0){
++	if (sws_scale(sws_ctx,(const uint8_t* const *)orig->data,orig->linesize,0,av_contextp->height,dest.planes,dest.strides)<0){
+ #else
+-	if (sws_scale(sws_ctx,(uint8_t**)orig->data,orig->linesize,0,av_context.height,dest.planes,dest.strides)<0){
++	if (sws_scale(sws_ctx,(uint8_t**)orig->data,orig->linesize,0,av_contextp->height,dest.planes,dest.strides)<0){
  #endif
--	c->rtp_payload_size = s->mtu/2;
- 	if (s->profile==0){
- 		s->codec=CODEC_ID_H263;
- 	}else{
-@@ -815,7 +812,7 @@ static void process_frame(MSFilter *f, mblk_t *inm){
- 	ms_yuv_buf_init_from_mblk(&yuv, inm);
- 	/* convert image if necessary */
- 	av_frame_unref(s->pict);
--	avpicture_fill((AVPicture*)s->pict,yuv.planes[0],c->pix_fmt,c->width,c->height);
-+	av_image_fill_arrays(s->pict->data,s->pict->linesize,yuv.planes[0],c->pix_fmt,c->width,c->height,1);
- 
- 	/* timestamp used by ffmpeg, unset here */
- 	s->pict->pts=AV_NOPTS_VALUE;
+ 		ms_error("jpeg2yuv: ms_sws_scale() failed.");
+ 		sws_freeContext(sws_ctx);
+-		avcodec_close(&av_context);
++		av_frame_free(&orig);
++		avcodec_free_context(&av_contextp);
+ 		freemsg(ret);
+ 		return NULL;
+ 	}
+ 	sws_freeContext(sws_ctx);
+ 	av_frame_free(&orig);
+-	avcodec_close(&av_context);
++	avcodec_context_free(av_contextp);
+ 	return ret;
+ #elif TARGET_OS_IPHONE
+ 	MSPicture dest;
