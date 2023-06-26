@@ -1,6 +1,6 @@
 pkgbase = icalingua++-appimage
 	pkgdesc = A branch of deleted Icalingua, with limited support
-	pkgver = 2.9.17
+	pkgver = 2.9.18
 	pkgrel = 1
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = icalingua++-appimage
 	depends = glibc
 	conflicts = icalingua++
 	options = !strip
-	source = icalingua++-2.9.17.AppImage::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.9.17/Icalingua++-2.9.17.AppImage
-	sha256sums = 25d0a7ec4b67c96f42d3b571835fec0f9a68579a857f510eaea0a2a237e138e5
+	source = icalingua++-2.9.18.AppImage::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.9.18/Icalingua++-2.9.18.AppImage
+	sha256sums = ed09e738e99aa0a8c7ae6a4d6794f1761a934b192d66a7d428b1f69eb2cc0969
 
 pkgname = icalingua++-appimage
