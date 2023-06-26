@@ -1,7 +1,7 @@
 pkgbase = cavasik-git
 	pkgdesc = Audio visualizer based on CAVA
 	pkgver = v2.0.0
-	pkgrel = 15
+	pkgrel = 16
 	url = https://github.com/TheWisker/Cavasik
 	arch = any
 	license = GPL3
