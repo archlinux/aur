@@ -3,8 +3,8 @@
 
 _pyname=htmllistparse
 pkgname=python-htmllistparse
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc='Python parser for Apache/nginx-style HTML directory listing'
 url=https://github.com/gumblex/htmllisting-parser
 license=(MIT)
@@ -19,7 +19,7 @@ depends=(python
          "${_pydeps[@]/#/python-}")
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('9ac274a165a02bf503656df4b48e1ae9eec0df40723a5f998f9023d3df3c8e32')
+sha256sums=('6dc8a6bf03c843b9d325843a26a2351a795b573cd92a2c9b8271621019c64082')
 
 build() {
 	cd "$_archive"
