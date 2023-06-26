@@ -2,7 +2,7 @@
 
 _appname=oidc_login
 pkgname=nextcloud-app-${_appname/_/-}
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='App for authenticating Nextcloud users using SAML'
 arch=(x86_64)
@@ -12,7 +12,7 @@ makedepends=(nextcloud
              rsync
              yq)
 source=("$_appname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_appname.tar.gz")
-sha256sums=('d8e0fff6f12696793cedcc5f0042a0213c278856de8485b9e58fa765a611b740')
+sha256sums=('088000fd6cd5117612dd00b1251e676a54ad236a62c60a768b6a1e43ba037346')
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
 # 1. Call respective function helpers in check() and package() *after* cd'ing to the source directory
