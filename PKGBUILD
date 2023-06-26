@@ -2,8 +2,8 @@
 
 pkgname=python-collidoscope
 _pyname=${pkgname#python-}
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.6.5
+pkgrel=1
 pkgdesc='brute force detection of glyph collisions'
 arch=(any)
 url="https://github.com/simoncozens/$_pyname"
@@ -18,7 +18,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('9bc0e3d4298291f0238e89413d8bb26e20f6e668a38ab8b1d0afd341bd739eef')
+sha256sums=('0fb33327c1598c0fcd4970aa08943d6b4d853cf8b7b785b4abae704480dc7d20')
 
 build() {
 	cd "$_archive"
