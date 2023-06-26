@@ -33,16 +33,16 @@
 # have been modified.
 
 pkgname=ventoy
-pkgver=1.0.91
+pkgver=1.0.93
 _grub_ver=2.04                  # (Jul 2019)
 #_unifont_ver=15.0.01            # FIXME see NOTE below
 _ipxe_ver=3fe683e               # (Sep 29 2019)
 _edk2_ver=stable201911          # (Dec 2019)
-_diet_ver=0.34                  # FIXME repo pkg needs a patch, see below, build our own (64/32)
+_diet_ver=0.34                  # FIXME AUR pkg needs a patch, see below, build our own (64/32)
 _musl_ver=1.2.4                 # upstream uses 1.2.1, use repo for 64-bit, build our own 32-bit
 _kern_hdrs_musl_ver=4.19.88     # for busybox 32-bit
 _fuse_ver=2.9.9                 # need a static lib built against musl, build our own (64/32)
-_exfat_ver=1.3.0                # see comments below for why we build our own
+_exfat_ver=1.3.0                # (Sep 2018) old! FIXME see comments below for why we build our own
 _lz4_ver=1.8.1.2                # (Jan 2018) old! FIXME statically linked into unsquashfs
 _xz_ver=5.0.4                   # (Jun 2012) old! FIXME statically linked into unsquashfs
 _lzo_ver=2.08                   # (Jun 2014) old! FIXME statically linked into unsquashfs
@@ -127,7 +127,7 @@ noextract=(
   cryptsetup-"$_crypt_ver".tar.xz
   wimboot-"$_wimboot_ver".tar.gz
 )
-sha256sums=('f807e417fab6f7a97a91c45c21d5456aac2ceb6c20f494ba7f0a83b91e25811d'
+sha256sums=('e0ebe7e49ce778c35533f682ffc5428f1cfd713349d07f821beb1001776a60c7'
             'e5292496995ad42dabe843a0192cf2a2c502e7ffcc7479398232b10a472df77d'
             'db2a9018392a3984d1e1e649bde0ffc19c90fa4d96b9fd2d4caaf9c1ca2af68b'
             'SKIP'
@@ -1205,8 +1205,7 @@ _create_img() (
       -e '/^echo.*2D/s|^|test -w /var/log \&\& |' \
       -e '/^date/s|^|test -w /var/log \&\& |' -i "$tmpdir"/Ventoy2Disk.sh
 
-  sed -e 's|#!/bin/sh|#!/usr/bin/env bash|' \
-      -e 's|\^ \\-s,|\^ -s,|' -i "$tmpdir"/tool/{VentoyWorker.sh,ventoy_lib.sh}
+  sed -e 's|#!/bin/sh|#!/usr/bin/env bash|' -i "$tmpdir"/tool/{VentoyWorker.sh,ventoy_lib.sh}
 )
 
 build() {
