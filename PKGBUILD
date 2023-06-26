@@ -5,15 +5,15 @@
 _microarchitecture=0
 
 ## Major kernel version
-_major=6.2
+_major=6.4
 ## Minor kernel version
-_minor=1
+_minor=0
 
 ## PKGBUILD ##
 
 pkgbase=linux-multimedia
-#pkgver=${_major}
-pkgver=${_major}.${_minor}
+pkgver=${_major}
+#pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
@@ -38,7 +38,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-sha256sums=('2fcc07e1c90ea4ce148f50f9beeb0dca0b6e4b379a768de8abc7a4a26f252534'
+sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -52,9 +52,11 @@ prepare() {
   cd $_srcname
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+  make defconfig
+  make -s kernelrelease > version
+  make mrproper
   
   ## --- Patches
   
@@ -80,6 +82,7 @@ prepare() {
   echo "Setting config..."
   cp ${srcdir}/linux-tkg/linux-tkg-config/${_major}/config.x86_64 .config
   make olddefconfig
+  diff -u ../config .config || :
 
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
