@@ -2,7 +2,7 @@
 
 pkgname=zlib-ng-compat
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="zlib replacement with optimizations for 'next generation' systems (replaces zlib)"
 arch=('i686' 'x86_64')
 url="https://github.com/zlib-ng/zlib-ng"
@@ -24,6 +24,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
+    -DWITH_GTEST=OFF \
     -DZLIB_COMPAT=ON \
     ./
   make -C "_build"
