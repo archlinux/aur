@@ -7,7 +7,7 @@
 
 pkgname=notesnook
 pkgver=2.5.5
-pkgrel=1
+pkgrel=2
 _electronversion=21
 pkgdesc="A fully open source & end-to-end encrypted note taking alternative to Evernote"
 arch=('any')
@@ -41,7 +41,7 @@ build() {
   npm run build:web
 
   # Prepare files to pack with electron
-  cd apps/web/desktop
+  cd apps/desktop
   npm install
   rm -rf ./build && cp -r ../build ./
   npm run build
@@ -51,7 +51,7 @@ build() {
 }
 
 package() {
-  cd notesnook/apps/web/desktop
+  cd notesnook/apps/desktop
   install -d "${pkgdir}"/{opt/${pkgname},usr/bin}
 
   # Copy electron build
