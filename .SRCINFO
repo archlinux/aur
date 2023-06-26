@@ -1,6 +1,6 @@
 pkgbase = responsivelyapp-appimage
 	pkgdesc = A modified web browser that helps in responsive web development. A web developer's must have dev-tool.
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://responsivelyapp.app/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = responsivelyapp-appimage
 	depends = hicolor-icon-theme
 	conflicts = responsivelyapp
 	options = !strip
-	source = responsivelyapp-1.4.0.AppImage::https://github.com/responsively-org/responsively-app-releases/releases/download/v1.4.0/ResponsivelyApp-1.4.0.AppImage
-	sha256sums = 0224c0efb54d9142c7b052f8849c1d5bbde0ec4a59343eaf2e66bb8a215d5643
+	source = responsivelyapp-1.5.0.AppImage::https://github.com/responsively-org/responsively-app-releases/releases/download/v1.5.0/ResponsivelyApp-1.5.0.AppImage
+	sha256sums = 1751e58069a2dcf4ef2be2a718bfb852f8e811e733af8f5c19939601885fd42a
 
 pkgname = responsivelyapp-appimage
