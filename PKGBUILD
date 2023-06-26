@@ -3,7 +3,7 @@
 pkgname=remine
 pkgver=0.1.6
 pkgrel=1
-pkgdesc="A simple command line tool for list and quickly update issues"
+pkgdesc="A simple command line tool for redmine to list and quickly update issues"
 arch=(any)
 url="https://github.com/schelmo/remine"
 license=('MIT')
