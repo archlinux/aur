@@ -1,4 +1,6 @@
 # Maintainer : Adrien Czerny <adrien@czerny.fr>
+# Contributor: Felix Golatofski <contact@xdfr.de>
+# Contributor: Marcos Heredia <chelqo@gmail.com>
 
 pkgname=cinnamon-applet-cinnamenu
 pkgver=5.8
