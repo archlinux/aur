@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname='python-gcsfs'
 _module='gcsfs'
-pkgver='2023.4.0'
+pkgver='2023.6.0'
 pkgrel=1
 pkgdesc="Pythonic file-system interface for Google Cloud Storage."
 url="http://gcsfs.readthedocs.io/en/latest/"
@@ -9,15 +9,15 @@ url="http://gcsfs.readthedocs.io/en/latest/"
 depends=('python' 'python-fsspec>=0.6.0' 'python-google-auth'
     'python-google-auth-oauthlib'
     'python-requests' 'python-decorator')
-makedepends=()
+makedepends=('python-setuptools')
 optdepends=()
 license=('BSD')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dask/gcsfs/archive/$pkgver.tar.gz")
-sha256sums=('18ad72346f5a128a28324a889c1c1b0656a5d88e54e0f9b5a9446ab008d9935d')
+sha256sums=('b2dc7641a4ef121cfa08805448839d17125c9af05e9dfe8bee13470a7040c994')
 
 #check() {
-    #cd "${srcdir}/${_module}-${pkgver}"
+    #cd "${_module}-${pkgver}"
     #pytest
 #}
 
