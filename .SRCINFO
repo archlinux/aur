@@ -1,0 +1,13 @@
+pkgbase = callisto
+	pkgdesc = A featureful runtime for Lua 5.4
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://jtbx.github.io/callisto
+	arch = x86_64
+	license = GPL
+	depends = readline
+	options = !emptydirs
+	source = https://github.com/jtbx/callisto/releases/download/v0.1.0/callisto-0.1.0.tgz
+	sha256sums = 825aa7717e21ebe443b0a71a5961c6c144a82e6be09b38d91e494008f5a73f3f
+
+pkgname = callisto
