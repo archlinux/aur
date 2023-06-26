@@ -1,8 +1,8 @@
 # Maintainer: detiam <dehe_tian@outlook.com>
 
 pkgname=balena-etcher-electron-bin
-pkgver=1.18.4
-pkgrel=2
+pkgver=1.18.8
+pkgrel=1
 pkgdesc="Flash OS images to SD cards & USB drives, safely and easily (use system electron runtime)"
 arch=(x86_64)
 url="https://www.balena.io/etcher"
@@ -10,7 +10,8 @@ license=("Apache License 2.0")
 provides=("balena-etcher-appimage=${pkgver}")
 conflicts=('balena-etcher-appimage' 'balena-etcher')
 depends=(
-  electron
+  "electron>=19"
+  "electron<20"
   gconf
   gtk3
   nss
@@ -32,7 +33,8 @@ source=(
     "https://github.com/balena-io/etcher/releases/download/v${pkgver}/balenaEtcher-${pkgver}-x64.AppImage"
     "balena-etcher-electron.sh"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('2028eb86e04d32396dbf25ef3a68a2adad44eec74a33690d7514a6828a5ec498'
+            '553d29f91b6e9fd65e8c7af0b100fa17d4ed299045f5196b2ef23795e99e1c77')
 _image="$(basename "${source[0]}")"
 
 prepare() {

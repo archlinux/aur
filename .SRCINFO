@@ -1,12 +1,13 @@
 pkgbase = balena-etcher-electron-bin
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily (use system electron runtime)
-	pkgver = 1.18.4
-	pkgrel = 2
+	pkgver = 1.18.8
+	pkgrel = 1
 	url = https://www.balena.io/etcher
 	arch = x86_64
 	license = Apache License 2.0
 	makedepends = fuse2
-	depends = electron
+	depends = electron>=19
+	depends = electron<20
 	depends = gconf
 	depends = gtk3
 	depends = nss
@@ -22,13 +23,13 @@ pkgbase = balena-etcher-electron-bin
 	depends = libusb
 	optdepends = libappindicator-gtk3
 	optdepends = libnotify: for notifications
-	provides = balena-etcher-appimage=1.18.4
+	provides = balena-etcher-appimage=1.18.8
 	conflicts = balena-etcher-appimage
 	conflicts = balena-etcher
 	options = !strip
-	source = https://github.com/balena-io/etcher/releases/download/v1.18.4/balenaEtcher-1.18.4-x64.AppImage
+	source = https://github.com/balena-io/etcher/releases/download/v1.18.8/balenaEtcher-1.18.8-x64.AppImage
 	source = balena-etcher-electron.sh
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 2028eb86e04d32396dbf25ef3a68a2adad44eec74a33690d7514a6828a5ec498
+	sha256sums = 553d29f91b6e9fd65e8c7af0b100fa17d4ed299045f5196b2ef23795e99e1c77
 
 pkgname = balena-etcher-electron-bin
