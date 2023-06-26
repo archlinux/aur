@@ -2,7 +2,7 @@
 
 _pkgname='quikc'
 pkgname='quikc-git'
-pkgver=r271.8d79f62
+pkgver=r280.5aa0b48
 pkgrel=1
 url="https://github.com/Ramenu/$_pkgname"
 pkgdesc='A minimalistic, safety-focused build system for C/C++'
@@ -31,6 +31,8 @@ build() {
 
 package() {
 	cd "$_pkgname"
+	install -Dm644 ./manpages/quikc.7 "$pkgdir/usr/share/man/man7/quikc.7"
+	install -Dm644 ./manpages/quikc-init.7 "$pkgdir/usr/share/man/man7/quikc-init.7"
 	install -Dm755 ./target/release/quikc -t "$pkgdir/usr/bin/"
 	install -Dm755 ./quikc-init -t "$pkgdir/usr/bin/"
 }
