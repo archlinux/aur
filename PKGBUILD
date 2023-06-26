@@ -2,12 +2,12 @@
 #             <ranaivoarivony-razanajato@hareno.me>
 
 pkgname=osl-git
-pkgver=0.9.6.r0.ga1c6c2c
+pkgver=0.9.6.r4.g22f2d8b
 pkgrel=1
 pkgdesc="OpenScop Library"
 arch=('i686' 'x86_64')
 url="http://icps.u-strasbg.fr/people/bastoul/public_html/development/openscop/index.html"
-license=('LGPL')
+license=('BSD')
 depends=("gmp")
 makedepends=("git")
 provides=("osl")
