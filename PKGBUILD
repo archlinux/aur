@@ -29,7 +29,7 @@ pkgname=vitis
 _srcname=Xilinx_Unified
 pkgver=2023.1
 _more_ver=0507_1903
-pkgrel=1
+pkgrel=2
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vitis.html"
 arch=('x86_64')
@@ -102,7 +102,7 @@ package() {
 	"$_relocator"
 	# Now remove the remaining traces of $pkgdir
 	sed -i -e "s|$pkgdir||g" "$_relocator"
-	sed -i -e "s|$pkgdir||g" "$pkgdir/opt/Xilinx/Vitis/2022.2/data/emulation/qemu/comp/qemu/environment-setup-x86_64-petalinux-linux"
+	sed -i -e "s|$pkgdir||g" "$pkgdir/opt/Xilinx/Vitis/$pkgver/data/emulation/qemu/comp/qemu/environment-setup-x86_64-petalinux-linux"
 	# clean up artefacts, remove leading $pkgdir from paths
 	rm -rf "$pkgdir/opt/Xilinx/.xinstall/"
 	find "$pkgdir/opt/Xilinx/" -name '*settings64*' -exec sed -i -e "s|$pkgdir||g" '{}' \+
