@@ -1,44 +1,42 @@
-# Maintainer: ThatOneCalculator <kainoa@t1c.dev>
+# Maintainer: éclairevoyant
+# Contributor: ThatOneCalculator <kainoa at t1c dot dev>
 
-_pkgname="hyprpicker"
-pkgname="${_pkgname}-git"
-pkgver=r8.0fc1134
+_pkgname=hyprpicker
+pkgname="$_pkgname-git"
+pkgver=0.1.1.r1.1d05cc3
 pkgrel=1
-pkgdesc="A wlroots-compatible Wayland color picker that does not suck."
-arch=(any)
-url="https://github.com/hyprwm/hyprpicker"
-license=('BSD')
-depends=(wayland)
+pkgdesc="A wlroots-compatible Wayland color picker that does not suck"
+arch=(x86_64)
+url="https://github.com/hyprwm/$_pkgname"
+license=(BSD)
+depends=(cairo gcc-libs glibc wayland)
 makedepends=(
-	git
 	cmake
-	ninja
-	gcc
 	gdb
+	git
+	libglvnd
+	libjpeg-turbo
 	meson
+	ninja
+	pango
 	wayland-protocols
-	xorgproto)
-source=("${_pkgname}::git+https://github.com/hyprwm/hyprpicker.git")
-conflicts=("${_pkgname}")
-provides=(hyprpicker)
-sha256sums=('SKIP')
-options=(!makeflags !buildflags !strip)
+	xorgproto
+)
+source=("git+$url.git")
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+	git -C $_pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	make all
+	make -C $_pkgname all
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
-	install -Dm755 build/hyprpicker -t "${pkgdir}/usr/bin"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+	cd $_pkgname
+	install -vDm755 build/hyprpicker -t "$pkgdir/usr/bin/"
+	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
