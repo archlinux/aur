@@ -1,17 +1,21 @@
-# Maintainer: farwayer <farwayer@gmail.com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: farwayer <farwayer@gmail.com>
 
 _gemname=google-cloud-storage
 pkgname=ruby-${_gemname}
-pkgver=1.16.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc="google-cloud-storage is the official library for Google Cloud Storage."
 arch=('any')
 depends=(
-  ruby
-  'ruby-digest-crc>=0.4' 'ruby-digest-crc<1'
-  'ruby-google-api-client>=0.23' 'ruby-google-api-client<1'
-  'ruby-googleauth>=0.6.2' 'ruby-googleauth<0.10'
-  'ruby-google-cloud-core>=1.2' 'ruby-google-cloud-core<2'
+  'ruby-addressable'
+  'ruby-digest-crc'
+  'ruby-google-apis-iamcredentials_v1'
+  'ruby-google-apis-storage_v1'
+  'ruby-googleauth'
+  'ruby-google-cloud-core'
+  'ruby-mini_mime'
+
 )
 url="https://rubygems.org/gems/${_gemname}"
 noextract=($_gemname-$pkgver.gem)
@@ -20,7 +24,7 @@ license=('MIT')
 source=(
   "https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
-sha256sums=('98623fd5c9737b230ea6951c583ac806e09da9e36bed7f578d484a9833cd5453')
+sha256sums=('299a1e055c9277c8120f7c10d21d37e4d8c17c7b963350c0e0bff7e9d9a570ea')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
