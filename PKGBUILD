@@ -1,7 +1,8 @@
-# Maintainer: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
+# Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
+
 pkgname=keepass-twofishcipher
 _pkgname=TwofishCipher
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Enables KeePass to encrypt databases using the Twofish algorithm."
 license=('GPL3')
@@ -9,7 +10,7 @@ depends=('keepass')
 arch=('any')
 url="http://gogogadgetscott.info/keepass/twofishcipher/"
 source=("http://gogogadgetscott.info/keepass/twofishcipher/$_pkgname-$pkgver.zip")
-sha256sums=('d0ebc7f1e709eaddcd37a1d4ea4a5c9bc5b924588390bf93a5840b5ba0114124')
+sha256sums=('a1549af5c3db5d22aaef01539b8851ac5e11ca909bb609f0dcdeebf6dbd9f0b4')
 
 package() {
     mkdir -p "${pkgdir}"/usr/share/keepass
