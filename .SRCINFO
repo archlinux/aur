@@ -1,0 +1,17 @@
+pkgbase = python-textual-universal-directorytree
+	pkgdesc = textual plugin for a DirectoryTree compatible with remote filesystems
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/juftin/textual-universal-directorytree
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-wheel
+	depends = python-textual
+	depends = python-universal_pathlib
+	source = python-textual-universal-directorytree-1.0.1.tar.gz::https://github.com/juftin/textual-universal-directorytree/archive/v1.0.1.tar.gz
+	sha512sums = 8c108b8d553e7a9b4582c6e4f95eeb34a353664a798c2b37e7264ba02a5b796cac530eb9c06c69948c5fcb505f65ff55dac1f36de4013790f3217dcb5dcc9cf6
+
+pkgname = python-textual-universal-directorytree
