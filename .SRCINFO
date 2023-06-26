@@ -1,7 +1,7 @@
 pkgbase = python-usfm2osis-cw-git
 	pkgdesc = Tools for converting Bibles from USFM to OSIS XML (CrossWire Development Fork)
 	pkgver = r139.a861a53
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/JohnAustinDev/Module-tools/
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = python-usfm2osis-cw-git
 	provides = python-usfm2osis
 	conflicts = python-usfm2osis
 	options = !emptydirs
-	source = git://github.com/alerque/usfm2osis.git#branch=module-tools-sync
+	source = git+https://github.com/alerque/usfm2osis.git#branch=module-tools-sync
 	sha256sums = SKIP
 
 pkgname = python-usfm2osis-cw-git

@@ -3,7 +3,7 @@
 pkgname=python-usfm2osis-cw-git
 _pypiname=usfm2osis
 pkgver=r139.a861a53
-pkgrel=2
+pkgrel=3
 _branch=module-tools-sync
 pkgdesc='Tools for converting Bibles from USFM to OSIS XML (CrossWire Development Fork)'
 arch=(any)
@@ -17,7 +17,7 @@ makedepends=(git
 options=(!emptydirs)
 provides=("${pkgname%-cw-git}")
 conflicts=("${pkgname%-cw-git}")
-source=("git://github.com/alerque/$_pypiname.git#branch=$_branch")
+source=("git+https://github.com/alerque/$_pypiname.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
