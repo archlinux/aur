@@ -1,6 +1,6 @@
 pkgbase = home-assistant
 	pkgdesc = Open source home automation that puts local control and privacy first
-	pkgver = 2023.6.2
+	pkgver = 2023.6.3
 	pkgrel = 1
 	epoch = 1
 	url = https://home-assistant.io/
@@ -22,7 +22,7 @@ pkgbase = home-assistant
 	depends = python
 	depends = tzdata
 	depends = zlib
-	source = git+https://github.com/home-assistant/home-assistant.git#tag=e5c5790768dabd5ce257ad949a6801f4f94a5f73
+	source = git+https://github.com/home-assistant/home-assistant.git#tag=78222bd51cda9177a6dfa664933fa1bd25d7bda5
 	source = home-assistant.service
 	b2sums = SKIP
 	b2sums = 3249da47392c3100f556b7037bc3a9abdd168960a67eedb8ff68c49729c502ed8cdead16a78c5d2a1d2184dfa51e4ddc89bc09302e189a22a7482bc7b0c05352
