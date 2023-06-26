@@ -1,6 +1,6 @@
 pkgbase = oh-my-posh
 	pkgdesc = A prompt theme engine for any shell.
-	pkgver = 17.4.0
+	pkgver = 17.5.1
 	pkgrel = 1
 	url = https://github.com/JanDeDobbeleer/oh-my-posh
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = oh-my-posh
 	makedepends = go
 	makedepends = gcc
 	depends = glibc
-	source = oh-my-posh-17.4.0.tar.gz::https://github.com/JanDeDobbeleer/oh-my-posh/archive/v17.4.0.tar.gz
-	sha256sums = d7123d917b38901ce52a0d2264a95db20c98f02c4a427b06286936cfe1aea94f
+	source = oh-my-posh-17.5.1.tar.gz::https://github.com/JanDeDobbeleer/oh-my-posh/archive/v17.5.1.tar.gz
+	sha256sums = 29abe3604ae034be278c13b2d698a7c3336fcd0fb19ff20afbdc080b3a54bb29
 
 pkgname = oh-my-posh
