@@ -1,52 +1,61 @@
-# Maintainer: Brad Pitcher <bradpitcher@gmail.com>
-# Contributor: Carlos Aznarán <caznaranl@uni.pe>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Brad Pitcher <bradpitcher@gmail.com>
 # Contributor: Jelle van der Waa <jelle@archlinux.org>
 
 _base=trimesh
 pkgname=python-${_base}
-pkgver=3.21.5
+pkgver=3.22.1
 pkgrel=1
-pkgdesc='Python library for loading and using triangular meshes.'
-arch=('any')
-url="https://trimsh.org"
-license=('MIT')
+pkgdesc="Import, export, process, analyze and view triangular meshes"
+arch=(any)
+url="https://${_base}.org"
+license=(MIT)
 depends=(python python-numpy)
-makedepends=(python-setuptools)
-checkdepends=(python-scipy python-networkx python-rtree python-lxml
-              python-shapely python-pillow python-sympy python-requests
-              python-msgpack python-pyglet python-jsonschema
-              python-svg.path python-collada python-pyinstrument
-              python-mapbox-earcut openscad)
-optdepends=('python-networkx: graph operations'
-            'python-pyglet: preview windows'
-            'python-rtree: vector path handling'
-            'python-scipy: convex hulls'
-            'python-shapely: vector path handling'
-            'python-pillow: load images'
-            'python-jsonschema: validate JSON schemas like GLTF'
-            'python-requests: network requests'
-            'python-msgpack: serialize into msgpack'
-            'python-lxml: handle XML better and faster than built- in XML'
-            'python-sympy: do analytical math'
-            'python-svg.path: handle SVG format path strings'
-            'python-xxhash: hash ndarrays faster than built-in MD5/CRC'
-            'python-collada: parse collada/dae/zae files')
+makedepends=(python-build python-installer python-setuptools python-wheel)
+checkdepends=(python-pytest python-scipy python-lxml python-rtree python-networkx
+  python-jsonschema python-pillow python-requests python-shapely python-pyinstrument
+  python-collada python-svg.path python-mapbox-earcut) # python-sympy python-msgpack python-pyglet openscad
+optdepends=('python-scipy: convex hulls'
+  'python-lxml: handle XML better and faster than built- in XML'
+  'python-networkx: graph operations'
+  'python-shapely: vector path handling'
+  'python-rtree: vector path handling'
+  'python-requests: network requests'
+  'python-sympy: do analytical math'
+  'python-xxhash: hash ndarrays faster than built-in MD5/CRC'
+  'python-msgpack: serialize into msgpack'
+  'python-chardet: encoding'
+  'python-colorlog: print logs with colors'
+  'python-pillow: load images'
+  'python-svg.path: handle SVG format path strings'
+  'python-jsonschema: validate JSON schemas like GLTF'
+  'python-collada: parse collada/dae/zae files'
+  'python-pyglet: preview windows'
+  'python-meshio: load mesh formats'
+  'python-scikit-image: for voxel ops'
+  'python-mapbox-earcut: triangulate polygons'
+  'python-psutil: get memory usage'
+  'python-ruff: static code analyzer'
+  'autopep8: code formatter'
+  'python-pytest: test runner'
+  'python-pyinstrument: sampling based profiler') # python-xatlas python-fcl python-glooey
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/mikedh/${_base}/archive/${pkgver}.tar.gz)
-sha512sums=('4bf6879294042aea9bce65a79c1717de1bec92a0a9f6f420ed98dbc4cb5260dba4656ee0074f77d46d37c910838c7a4b7c7dff0249aa38109bb677993f886291')
+sha512sums=('27952e0d29ccd110d4087b4144e0923706bed3cd0734e7a17d7f55738c6322849c5dad04ab4ecfe0638bc16d65d1e647d08905a396dd6ebd1f78c833a8b95636')
 
 build() {
   cd ${_base}-${pkgver}
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd ${_base}-${pkgver}
-  python -m unittest discover tests
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
 }
 
 package() {
   cd ${_base}-${pkgver}
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
