@@ -2,13 +2,14 @@
 
 pkgbase=sheepshaver-git
 pkgname=(sheepshaver-git sheepnet-dkms-git)
-pkgver=r2667.g4671258b
+pkgver=r2687.g720eb598
 pkgrel=1
 pkgdesc="An Open Source PowerMac Emulator"
 arch=('x86_64')
 url="http://sheepshaver.cebix.net"
 license=('GPL')
 depends=('gtk2' 'sdl' 'vde2')
+makedepends=('git')
 source=('git+https://github.com/cebix/macemu'
         'SheepShaver.sysctl'
         'SheepShaver.desktop'
