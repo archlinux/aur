@@ -4,7 +4,7 @@
 # Contributor: hagabaka
 
 pkgname='peazip-qt5'
-pkgver=9.2.0
+pkgver=9.3.0
 pkgrel=1
 pkgdesc='Free file archiver utility, open, extract RAR TAR ZIP archives'
 license=('GPL3')
@@ -19,7 +19,7 @@ options=('!strip')
 source=("git+https://github.com/peazip/PeaZip.git#tag=$pkgver"
 "help-$pkgver.pdf::https://github.com/peazip/PeaZip/releases/download/$pkgver/peazip_help.pdf")
 sha512sums=('SKIP'
-            '021d371b6d83120eaa162312c410eea4738007d7ffca7015da9cc7307efdecdfa8659d7aca95fe0edf7e042582ff1e16a33fa4754ad00e07dc4482ed420f2178')
+            '8c9e691d84a065508fe12a46214e3dab4ea00de534012f21fdb32fb9f686074806c1e871fe40b6c9be79eb221828231dd0e9d93ec9744112c730126f7565e40a')
 
 build() {
   cd "$srcdir/PeaZip/peazip-sources/dev"
