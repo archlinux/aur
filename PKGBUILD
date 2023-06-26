@@ -1,12 +1,11 @@
 # Maintainer: Ashutosh Padelkar <a dot padelkar 1 at gmail dot com> 
 pkgname=tempo-git
-pkgver=r4f9d8db
+pkgver=rf08960e
 pkgrel=1
 pkgdesc="Pulsar Timing Software"
 arch=('i686' 'x86_64')
-url="http://tempo.sourceforge.net/tempo_idx.html"
+url="https://tempo.sourceforge.net/"
 license=('GPL2')
-depends=('atlas-lapack-base' 'tcsh' 'python')
 makedepends=('git' 'tcsh')
 provides=(${pkgname%-git})
 backup=()
@@ -17,6 +16,12 @@ source=('tempo.cfg'
 md5sums=('616816caf04a2a5bab7d9a148a0af736'
          'SKIP')
 
+
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s" "$(git rev-parse --short HEAD)"
+}
+
 build() {
   cd "$srcdir/${pkgname%-git}"
 
@@ -25,10 +30,6 @@ build() {
   make
 }
 
-pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  printf "r%s" "$(git rev-parse --short HEAD)"
-}
 
 check() {
   cd "$srcdir/${pkgname%-git}"
