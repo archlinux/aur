@@ -5,7 +5,7 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
  
 pkgname=godot-voxel
-pkgver=4.0.4
+pkgver=4.0
 pkgrel=1
 pkgdesc="The Godot game engine with Zylann's voxel tools module"
 url="https://voxel-tools.readthedocs.io/en/latest/"
