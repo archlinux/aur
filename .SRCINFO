@@ -15,9 +15,11 @@ pkgbase = glslviewer
 	source = glslviewer::git+https://github.com/patriciogonzalezvivo/glslViewer#tag=3.2.2
 	source = git+https://github.com/patriciogonzalezvivo/ada
 	source = git+https://github.com/mackron/miniaudio
+	source = vera-pixel-h-build-fix.patch::https://github.com/patriciogonzalezvivo/vera/commit/33f15d158cc82a27d6958f5eb2cad992a728a6a3.diff
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 674e62c4fbba426cf21f7e98670198a4
 
 pkgname = glslviewer
 

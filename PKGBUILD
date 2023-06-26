@@ -12,10 +12,12 @@ depends=('glu' 'glfw-x11' 'ncurses' 'ffmpeg')
 makedepends=('cmake' 'git')
 source=("$pkgbase::git+https://github.com/patriciogonzalezvivo/glslViewer#tag=$pkgver"
         "git+https://github.com/patriciogonzalezvivo/ada"
-        "git+https://github.com/mackron/miniaudio")
+        "git+https://github.com/mackron/miniaudio"
+        "vera-pixel-h-build-fix.patch::https://github.com/patriciogonzalezvivo/vera/commit/33f15d158cc82a27d6958f5eb2cad992a728a6a3.diff")
 md5sums=('SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+         '674e62c4fbba426cf21f7e98670198a4')
 
 prepare() {
   cd "$pkgbase"
@@ -23,6 +25,8 @@ prepare() {
   git config submodule.deps/ada.url "$srcdir/ada"
   git config submodule.deps/miniaudio.url "$srcdir/miniaudio"
   git submodule update
+
+  patch -p1 -d deps/vera/ < "$srcdir/vera-pixel-h-build-fix.patch"
 }
 
 build() {
