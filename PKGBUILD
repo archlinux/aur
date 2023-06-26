@@ -4,7 +4,7 @@
 
 _name=passman
 pkgname=nextcloud-app-passman
-pkgver=2.4.5
+pkgver=2.4.6
 pkgrel=1
 pkgdesc="Passman is a full featured password manager"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL3')
 makedepends=('nextcloud' 'yq')
 options=('!strip')
 source=("nextcloud-app-passman-${pkgver}.tar.gz::https://releases.passman.cc/passman_${pkgver}.tar.gz")
-sha512sums=('bd3cef4f12d7419887569cc7f70b59060e1a7552347db0ca7f6243bb1dcc9af31d20d534b65e9a498d24f801dab17e21849f1af74642b5f9d64baf0ff1141778')
+sha512sums=('62dcdde8cca3d94b99273330d6195e4be970618ee08ac1268a0865187c927f4f8739d3abe9b2ba3ad50ee8045effcd7a48d9de5de15b1874e4766f3e71447aa9')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
