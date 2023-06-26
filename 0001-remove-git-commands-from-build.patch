@@ -1,0 +1,42 @@
+From a01b4e0c43656d2b5db3e6f725b28517e25d3100 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Mon, 26 Jun 2023 14:11:04 -0400
+Subject: [PATCH] remove git commands from build
+
+---
+ meson.build | 18 ------------------
+ 1 file changed, 18 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 5253f52..f6b93c7 100644
+--- a/meson.build
++++ b/meson.build
+@@ -28,24 +28,6 @@ run_command(
+ )
+ 
+ 
+-# Get protocol extensions
+-git = find_program('git')
+-run_command(
+-	git,
+-	'submodule',
+-	'add',
+-	'https://github.com/swaywm/wlr-protocols.git',
+-	'wlr-protocols/'
+-)
+-run_command(
+-	git,
+-	'submodule',
+-	'update',
+-	'--init',
+-	'--recursive'
+-)
+-
+-
+ # Run wayland-scanner
+ wayland_scanner = find_program('wayland-scanner')
+ run_command(
+-- 
+2.41.0
+
