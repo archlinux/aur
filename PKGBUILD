@@ -1,46 +1,50 @@
+# Maintainer: éclairevoyant
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Giovanni Scafora <giovanni at archlinux dot org>
+# Contributor: Tom Newsom <Jeepster at gmx dot co dot uk>
+
 _pkgname=ccache
-pkgname=${_pkgname}-git
-pkgver=v3.7.1_1007_gdec7a318
+pkgname="$_pkgname-git"
+pkgver=4.8.2.r4.2737d79e
 pkgrel=1
-pkgdesc="a fast compiler cache"
-arch=('i686' 'x86_64')
+pkgdesc='Compiler cache that speeds up recompilation by caching previous compilations'
+arch=(i686 x86_64)
 url="https://ccache.dev"
-license=('GPL3')
-depends=('zlib' 'libb2')
-makedepends=('cmake' 'git' 'asciidoc')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
+license=(GPL3)
+depends=(gcc-libs glibc hiredis zstd libzstd.so)
+makedepends=(asciidoctor cmake git perl)
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
 source=("git+https://github.com/ccache/ccache.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe | sed 's/[- ]/_/g'
+	git -C $_pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${srcdir}/${_pkgname}
-  cmake -B build -S . \
-      -DCMAKE_BUILD_TYPE='None' \
-      -DCMAKE_INSTALL_PREFIX='/usr' \
-      -DCMAKE_INSTALL_SYSCONFDIR='/etc'
-  make -C build
-  make -C build doc-html
-  make -C build doc-man-page
+  cd $_pkgname
+  cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
+    -Wno-dev \
+    -B build \
+    -S .
+  make VERBOSE=1 -C build
 }
 
 check() {
-  cd ${srcdir}/${_pkgname}
-  make -C build check
+  cd $_pkgname
+  make VERBOSE=1 check -C build
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}
+  cd $_pkgname
 
-  install -Dm 755 build/ccache -t "${pkgdir}/usr/bin"
-  install -Dm 644 build/doc/ccache.1 -t "${pkgdir}/usr/share/man/man1"
-  install -Dm 644 build/doc/{AUTHORS,MANUAL,NEWS}.html README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
-  install -Dm 644 build/doc/LICENSE.html -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+  make DESTDIR="${pkgdir}" install -C build
+  make DESTDIR="${pkgdir}" install -C build/doc
+
+  install -Dm 644 doc/*.md doc/*.adoc -t "${pkgdir}/usr/share/doc/${pkgname}"
 
   install -d "${pkgdir}/usr/lib/ccache/bin"
   local _prog
