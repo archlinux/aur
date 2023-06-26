@@ -2,7 +2,7 @@
 # Contributor: David P. <megver83@parabola.nu>
 
 pkgname=liblinphone
-pkgver=5.2.33
+pkgver=5.2.73
 pkgrel=1
 pkgdesc='A high-level SIP library'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('GPL')
 depends=(belcard belle-sip jsoncpp-cmake mediastreamer xerces-c lime)
 makedepends=(cmake doxygen graphviz python-pystache python-sphinx xsd)
 source=("https://gitlab.linphone.org/BC/public/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d4e1428f05d478309d0ee969ae2d59debe2fac97f927f24a89946f0cf46e45e6')
+sha256sums=('d73c22664cd202e612dce42d71f6d2327b5b7b218e568368738bbc380113f1d6')
 
 prepare() {
     cd "$pkgname-$pkgver"
