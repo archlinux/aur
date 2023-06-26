@@ -1,8 +1,8 @@
-# Maintainer: Mitch Bigelow <ipha00@gmail.com>
-#
+# Maintainer: Antoine Viallon <antoine-aur@lesviallon.fr>
+# Contributor: Mitch Bigelow <ipha00@gmail.com>
 
 pkgname=realsr-ncnn-vulkan-git
-pkgver=20200606.r0.g1a7c13e
+pkgver=20220728.r0.gb7f890e
 pkgrel=1
 pkgdesc="realsr super resolution implemented with ncnn library"
 url="https://github.com/nihui/realsr-ncnn-vulkan"
@@ -13,7 +13,7 @@ conflicts=('realsr-ncnn-vulkan')
 provides=('realsr-ncnn-vulkan')
 arch=('i686' 'x86_64')
 source=(
-    "git://github.com/nihui/realsr-ncnn-vulkan.git"
+    "git+https://github.com/nihui/realsr-ncnn-vulkan.git"
 )
 sha256sums=(
     'SKIP'
