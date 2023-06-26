@@ -1,6 +1,7 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
+
 pkgname=linkinator
-pkgver=2.16.1
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Find broken links, missing images, etc in your HTML"
 arch=(any)
@@ -9,6 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
+sha256sums=('81870d86ffb4db067314bfe88e7882775c19a73252ee029516ba0e6f91c7dfee')
 noextract=($pkgname-$pkgver.tgz)
 options=(!strip)
 
@@ -18,4 +20,3 @@ package() {
   chown -R root:root "${pkgdir}"
 }
 
-sha256sums=('22ae4bf765d2d4f0d0f078363c600c19e0ce5ef3701064967cc795445f52af62')
