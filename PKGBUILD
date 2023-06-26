@@ -1,9 +1,9 @@
 # Maintainer: Ben Cooper <contactme at bengcooper dot co dot uk>
 
 pkgname=onedev
-pkgver=8.4.2
+pkgver=8.5.0
 pkgrel=1
-_buildid=3835
+_buildid=3841
 arch=('x86_64')
 depends=('java-runtime-headless=17' 'git>2.11.1' 'fontconfig' 'ttf-dejavu')
 url="https://code.onedev.io/onedev/server"
@@ -14,7 +14,7 @@ source=("https://code.onedev.io/~downloads/projects/160/builds/$_buildid/artifac
         "sysusers.conf"
         "onedev.service"
         "onedev-upgrade.sh")
-sha256sums=('3fe13b146936cefae88620ec434f224fc478938405108b0222c493f22a8ce7ef'
+sha256sums=('b726126db87eb1e063cdb9c603d0edd5ec370efd82e2bd8c33138c30a8c69b6a'
             'ed8573826c9c89d7a35e3f8b52d4de69c9377fc713b5227bf30f12a45f0c2c82'
             '56c7dea1e61cf81d6dddc34fa098fa5a7ed892b1d3e506cf003b0c2c71bb5866'
             '779eef381def984fed476f253e0cc0e140e379196f8ec2f1656942e1025951f1')
