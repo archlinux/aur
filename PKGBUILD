@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 
 pkgname=pict-rs
-_pkgver=0.4.0-beta.16
+_pkgver=0.4.0-rc.8
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc='A simple image hosting service'
@@ -17,8 +17,8 @@ depends=(
 makedepends=('rust' 'protobuf')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$_pkgver.crate")
-sha512sums=('e1a2e1fbe1cd82512556d8bda85d8bd4ec04bcfc2d644b35a9d93a939f5e51331280ecfa9f346d07c7ed8fcbf0ee99fdbaa2a57cefbe6a1a9319614cec61fcf6')
-b2sums=('d47622d23e782b46a02b0414e122af578207eb15fed2382afe06630d52521d51d836e0b2accc779dd7afa32f2e27d441410f9b136c7af34e00488d8bc017ccc1')
+sha512sums=('0888a00b920c886e43dce081cdd667352e94549d60d7c38db35acbc194d619fb93a8e15ee94e6a679d3e376284467c3d8023e9a4354f23672e71fec6897783e5')
+b2sums=('7ec1b79d81843c6d76013ecd2f5f724110092c672f8f98816a8ba8d8341f2f652caac56529e749f1698878c392e2d3fef7b1741cfae02ad4af819d625435565e')
 
 prepare() {
   cd "$pkgname-$_pkgver"
