@@ -19,6 +19,7 @@ pkgbase = hyprpicker-git
 	depends = gcc-libs
 	depends = glibc
 	depends = wayland
+	optdepends = wl-clipboard: --autocopy
 	provides = hyprpicker=0.1.1
 	conflicts = hyprpicker
 	source = git+https://github.com/hyprwm/hyprpicker.git

@@ -22,6 +22,7 @@ makedepends=(
 	wayland-protocols
 	xorgproto
 )
+optdepends=('wl-clipboard: --autocopy')
 source=("git+$url.git")
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
