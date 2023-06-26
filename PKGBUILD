@@ -38,6 +38,7 @@ b2sums=(
 prepare() {
   # replace the use of /sbin with /usr/bin in configs
   patch -Np1 -d "${_pkg}-${pkgver}" -i "../${_pkg}-${pkgver}-config_paths.patch"
+  # https://github.com/swig/swig/issues/1699
   sed -i "20i %immutable audit_rule_data::buf;" \
          "${_pkg}-${pkgver}/bindings/swig/src/auditswig.i"
 }
