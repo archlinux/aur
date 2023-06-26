@@ -1,8 +1,9 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=nscript-git
+_gitname="nscript"
 pkgver=20100904
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple stack-based scripting language."
 url="http://github.com/nikki93/nscript"
 arch=('i686' 'x86_64')
@@ -10,10 +11,9 @@ license=('custom:none')
 makedepends=("git")
 conflicts=("nscript")
 provides=("nscript")
-source=('git://github.com/nikki93/nscript.git')
+source=('git+https://github.com/nikki93/nscript.git')
 md5sums=('SKIP')
 
-_gitname="nscript"
 
 pkgver() {
   cd "$_gitname"

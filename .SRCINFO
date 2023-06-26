@@ -1,7 +1,7 @@
 pkgbase = nscript-git
 	pkgdesc = A simple stack-based scripting language.
 	pkgver = 20100904
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/nikki93/nscript
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = nscript-git
 	makedepends = git
 	provides = nscript
 	conflicts = nscript
-	source = git://github.com/nikki93/nscript.git
+	source = git+https://github.com/nikki93/nscript.git
 	md5sums = SKIP
 
 pkgname = nscript-git
-
