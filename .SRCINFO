@@ -1,0 +1,14 @@
+pkgbase = zsh-ansimotd-git
+	pkgdesc = Zsh plugin for displaying colorful ansi MOTD
+	pkgver = r29.2d1e85c
+	pkgrel = 1
+	url = https://github.com/yuhonas/zsh-ansimotd
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	provides = zsh-ansimotd
+	source = git+https://github.com/yuhonas/zsh-ansimotd.git
+	sha512sums = SKIP
+
+pkgname = zsh-ansimotd-git
