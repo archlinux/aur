@@ -1,0 +1,14 @@
+pkgbase = ruby-google-apis-discovery_v1
+	pkgdesc = simple REST client for API Discovery Service V1
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/google/google-api-ruby-client
+	arch = any
+	license = Apache 2.0
+	depends = ruby-google-apis-core
+	noextract = google-apis-discovery_v1-0.14.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/google-apis-discovery_v1-0.14.0.gem
+	sha256sums = a2236bee42f3150b83a255f4b6024761d80a8126b69d208855729c9e26f42b3d
+
+pkgname = ruby-google-apis-discovery_v1
