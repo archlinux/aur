@@ -1,5 +1,5 @@
 pkgname=python-mujoco
-pkgver=2.3.5
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="Mujoco's Python bindings"
 depends=('python' 'absl-py' 'python-glfw' 'python-numpy' 'python-opengl' 'mujoco')
@@ -9,7 +9,7 @@ url="https://github.com/deepmind/mujoco"
 license=('LGPL3')
 source=("https://github.com/deepmind/mujoco/archive/refs/tags/$pkgver.tar.gz"
 "mujoco.patch")
-sha256sums=('882d855d833375ad27adfa2d9cf4ec2381a1069ebe8fbc4578d876deb4e0b33f'
+sha256sums=('3ede20f8be574baa65ee6164f90c91b787adbe2b877cc4cc8bd1c6678f747354'
             '3d6b5be9b65081e6bc18209f320c608b5e94b659c34483a4f49fb5bad56addd4')
 
 build() {
