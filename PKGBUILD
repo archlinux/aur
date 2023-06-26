@@ -1,38 +1,45 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Mario Rodas
 # Contributor: Oozyslug <oozyslug at gmail dot com>
 # Contributor: koral <koral at mailoo dot org>
 
-pkgname=nix-git
-pkgver=2.2.r4369.g9fe0343
+pkgbase=nix-git
+pkgname=(nix-git nix-docs-git)
+_pkgname=${pkgbase%-git}
+pkgver=2.2.r7982.g60f06a1
 pkgrel=1
-pkgdesc="A purely functional package manager"
+pkgdesc='A purely functional package manager'
 arch=(x86_64 i686)
-url="https://github.com/NixOS/${pkgname%-git}"
+url="https://nixos.org/$_pkgname"
 license=(LGPL2)
-depends=(boost
-         brotli
-         bzip2
-         curl
-         editline
-         gc
-         libseccomp
-         libsodium
-         openssl
-         sqlite)
 makedepends=(autoconf-archive
+             aws-crt-cpp
+             aws-sdk-cpp
+             boost
+             brotli
+             bzip2
+             curl
+             editline
+             gc
              git
+             graphviz
              gtest
              jq
              libcpuid
-             lowdown)
-backup=("etc/${pkgname%-git}/${pkgname%-git}.conf")
-install="${pkgname%-git}.install"
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url"
+             libseccomp
+             libsodium
+             lowdown
+             mdbook
+             mdbook-linkcheck
+             nix-busybox
+             nlohmann-json
+             openssl
+             rapidcheck
+             sqlite)
+source=("$_pkgname::git+https://github.com/NixOS/nix.git"
         nix.conf
         sysusers.conf
         tmpfiles.conf
@@ -46,35 +53,72 @@ sha256sums=('SKIP'
             'c353524861487ef7f7e862bdaaa70e2a3a29e08d2ee31947ebf9e01237c5c50d')
 
 prepare() {
-	cd "$pkgname"
-  ./bootstrap.sh
+	cd "$_pkgname"
+	sed -i "s:\$(bindir):src/nix:g" doc/manual/local.mk
+	./bootstrap.sh
 }
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags --abbrev=7 HEAD |
-    sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$pkgname"
-  CXXFLAGS='-D_GLIBCXX_USE_CXX11_ABI=0' \
-  ./configure \
-    --prefix=/usr \
-    --libexecdir=/usr/lib/nix \
-    --sysconfdir=/etc \
-    --localstatedir=/nix/var \
-    --enable-gc
-  make builddir="$srcdir/$pkgname-$pkgver"
+	cd "$_pkgname"
+	CXXFLAGS='-D_GLIBCXX_USE_CXX11_ABI=0' \
+	./configure \
+		--prefix=/usr \
+		--libexecdir="/usr/lib/$_pkgname" \
+		--sysconfdir=/etc \
+		--localstatedir=/nix/var \
+		--with-sandbox-shell=/usr/lib/nix/busybox \
+		--enable-static=rapidcheck \
+		--enable-gc \
+		--enable-lto
+	make
 }
 
-package() {
-  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname-daemon.conf"
-  install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname-daemon.conf"
-  install -vDm644 user.tmpfiles.conf "$pkgdir/usr/share/user-tmpfiles.d/$pkgname-daemon.conf"
-  install -vDm644 user.environment.conf "$pkgdir/usr/lib/environment.d/$pkgname-daemon.conf"
-  install -vDm644 nix.conf -t "$pkgdir/etc/$pkgname"
-  cd "$pkgname"
-  make DESTDIR="$pkgdir" install
+package_nix-git() {
+	depends=(aws-crt-cpp
+	         aws-sdk-cpp
+	         boost-libs
+	         brotli
+	         curl
+	         editline
+	         gc
+	         gcc-libs
+	         glibc
+	         libarchive
+	         libcpuid
+	         libseccomp
+	         libsodium
+	         lowdown
+	         nix-busybox
+	         openssl
+	         sqlite)
+	provides=("$_pkgname=$pkgver")
+	conflicts=("$_pkgname")
+	backup=("etc/$_pkgname/$_pkgname.conf")
+	install="$_pkgname.install"
+	install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname-daemon.conf"
+	install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$_pkgname-daemon.conf"
+	install -vDm644 user.tmpfiles.conf "$pkgdir/usr/share/user-tmpfiles.d/$_pkgname-daemon.conf"
+	install -vDm644 user.environment.conf "$pkgdir/usr/lib/environment.d/$_pkgname-daemon.conf"
+	install -vDm644 nix.conf -t "$pkgdir/etc/$_pkgname"
+	cd "$_pkgname"
+	make DESTDIR="$pkgdir" install
+	rm -rf \
+		"$pkgdir/etc/init" \
+		"$pkgdir/etc/profile.d/nix.sh" \
+		"$pkgdir/etc/profile.d/nix.fish"
+	mv "$pkgdir/usr/share/doc" nix-docs
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING
+}
 
+package_nix-docs-git() {
+	pkgdesc+=" (documentation)"
+	cd "$_pkgname"
+	install -vd "$pkgdir/usr/share/doc"
+	mv nix-docs/nix "$pkgdir/usr/share/doc"
 }
