@@ -2,7 +2,7 @@
 
 pkgname=python-alpaca-py
 _pkgname=alpaca-py
-pkgver=0.5.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="The Official Python SDK for Alpaca APIs"
 url="https://github.com/alpacahq/alpaca-py"
@@ -10,8 +10,8 @@ makedepends=('python-setuptools' 'cython')
 depends=('python-msgpack' 'python-pandas' 'python-pydantic' 'python-requests' 'python-websockets')
 license=('Apache-2.0')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/bd/d1/8af3117a78258ce661924d2bbaae313d343716c67e15c421022f5465d2c3/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('53c16c61512bbafe68585dcede3ad357dfcef68ae8b98ccda415d0fd00be9d65')
+source=("https://files.pythonhosted.org/packages/4c/ed/00f8d479aa29602c849dd2852872ab2b3d4b676a9b4f2a0587d80a1bb618/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('8344f74d76cac660451c31d9f2a7afbb6d99d7a88681c24ebeeeabd19bef3744')
 
 build() {
     cd "$srcdir"/${_pkgname}-${pkgver}
