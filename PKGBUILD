@@ -1,4 +1,5 @@
-# Mantainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Mantainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Fabio Loli <fabio.loli@disroot.org>
 
 pkgname=trovotutto
 pkgver=0.1
@@ -14,7 +15,7 @@ depends=(
   'python-setproctitle')
 makedepends=('python-setuptools')
 source=(
-  "${url}/archive/refs/tags/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
 sha256sums=('2e93b85675efbeaa289bc9b531ca1f60990bee688a2cf36e9a13bf681691fe53')
 
