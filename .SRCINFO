@@ -1,6 +1,6 @@
 pkgbase = nzyme-bin
 	pkgdesc = Nzyme is a free and open next-generation WiFi defense system.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://assets.nzyme.org/releases/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = nzyme-bin
 	depends = libpcap
 	depends = wireless_tools
 	depends = postgresql
-	source = https://assets.nzyme.org/releases//nzyme-1.2.1.deb
-	sha256sums = b01c938a05767242606f0d855d6835b2216b1ad6ae8760c695c924797617d6a1
+	source = https://assets.nzyme.org/releases//nzyme-1.2.2.deb
+	sha256sums = fb59a0b60736a5ddb03a8c69c2a1b925b25726b32bf32b6e38b710741e5b122b
 
 pkgname = nzyme-bin
