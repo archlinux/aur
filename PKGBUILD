@@ -1,29 +1,15 @@
 pkgname="cairo-lang"
 pkgver=2.0.0
 release="rc4"
-pkgrel=1
-epoch=
+pkgrel="4"
 pkgdesc="Cairo language installation"
 arch=("x86_64")
 url="https://cairo-by-example.com/"
 license=('MIT')
-groups=()
 depends=("git" "rustup")
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("https://github.com/starkware-libs/cairo/archive/refs/tags/v$pkgver-$release.tar.gz")
-noextract=()
-md5sums=()
-validpgpkeys=()
 sha256sums=("e3dd3ce3f9ab5b69c44d01b13777d92516dcd830efb6a3d2cd46915d4f03e8a9")
+
 prepare() {
 	rustup override set stable
 	rustup update
