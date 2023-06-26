@@ -3,10 +3,10 @@
 pkgname=cpp2il-dev-git
 _pkgname=cpp2il-dev
 pkgver=2022.1.0.pre.release.12.r6.g2acc70e
-pkgrel=1
+pkgrel=2
 pkgdesc="Work-in-progress tool to reverse unity's IL2CPP toolchain. (git version) (development branch)"
 arch=('x86_64' 'aarch64')
-url='https://github.com/SamboyCoding/Cpp2IL'
+url='https://github.com/SamboyCoding/Cpp2IL/tree/development'
 license=('MIT')
 depends=('dotnet-runtime')
 makedepends=('git' 'dotnet-host' 'dotnet-sdk')
