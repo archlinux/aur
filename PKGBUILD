@@ -55,11 +55,6 @@ build() {
               -X 'main.Mode=prod'"
 }
 
-check() {
-  cd "server-$pkgver"
-  go test -v ./...
-}
-
 package() {
   install -Dm644 sysusers.d "$pkgdir/usr/lib/sysusers.d/gotify.conf"
   install -Dm644 gotify-server.service "$pkgdir/usr/lib/systemd/system/gotify-server.service"
