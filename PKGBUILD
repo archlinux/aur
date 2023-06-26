@@ -2,7 +2,7 @@
 
 pkgbase=glslviewer
 pkgname=('glslviewer' 'glslviewer-examples')
-pkgver=3.1.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Console-based GLSL Sandbox for 2D/3D shaders"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/patriciogonzalezvivo/glslViewer"
 license=('BSD-3-Clause')
 depends=('glu' 'glfw-x11' 'ncurses' 'ffmpeg')
 makedepends=('cmake' 'git')
-source=("$pkgbase::git+https://github.com/patriciogonzalezvivo/glslViewer#tag=v$pkgver"
+source=("$pkgbase::git+https://github.com/patriciogonzalezvivo/glslViewer#tag=$pkgver"
         "git+https://github.com/patriciogonzalezvivo/ada"
         "git+https://github.com/mackron/miniaudio")
 md5sums=('SKIP'
