@@ -1,10 +1,15 @@
 pkgbase = r-cpp11
 	pkgdesc = A C++11 Interface for R's C Interface
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=cpp11
 	arch = any
 	license = MIT
+	checkdepends = r-decor
+	checkdepends = r-knitr
+	checkdepends = r-mockery
+	checkdepends = r-progress
+	checkdepends = r-testthat
 	depends = r
 	optdepends = r-bench
 	optdepends = r-brio
@@ -19,16 +24,15 @@ pkgbase = r-cpp11
 	optdepends = r-lobstr
 	optdepends = r-mockery
 	optdepends = r-progress
+	optdepends = r-rcpp
 	optdepends = r-rmarkdown
 	optdepends = r-scales
-	optdepends = r-rcpp
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-vctrs
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/cpp11_0.4.3.tar.gz
-	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	md5sums = af41a95ad71f4179f680c8e3138d5ba5
 	sha256sums = f1a60e4971a86dbbcf6a16bbd739b59bb66d9c45d93cfd8dedc2a87e302598f1
-	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-cpp11
