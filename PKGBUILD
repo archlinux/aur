@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggfun
-_pkgver=0.1.0
+_pkgver=0.1.1
 pkgname=r-${_pkgname,,}
-pkgver=0.1.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Miscellaneous Functions for 'ggplot2'"
-arch=('any')
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('Artistic2.0')
+license=(Artistic2.0)
 depends=(
-  r
   r-ggplot2
   r-rlang
 )
@@ -23,14 +23,15 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('59e5ca8936c4394732b352dabee6a85cb08b952d3f272e243db0171b44593e63')
+md5sums=('d8345e6cce668ebe3afe2ef3fe9686c0')
+sha256sums=('9845ed6069cd877da59055207b39ea2e30e895b3e9e29f384a985b3d819fd7bf')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:

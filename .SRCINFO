@@ -1,11 +1,10 @@
 pkgbase = r-ggfun
 	pkgdesc = Miscellaneous Functions for 'ggplot2'
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggfun
 	arch = any
 	license = Artistic2.0
-	depends = r
 	depends = r-ggplot2
 	depends = r-rlang
 	optdepends = r-ggnewscale
@@ -14,7 +13,8 @@ pkgbase = r-ggfun
 	optdepends = r-prettydoc
 	optdepends = r-rmarkdown
 	optdepends = r-tidyr
-	source = https://cran.r-project.org/src/contrib/ggfun_0.1.0.tar.gz
-	sha256sums = 59e5ca8936c4394732b352dabee6a85cb08b952d3f272e243db0171b44593e63
+	source = https://cran.r-project.org/src/contrib/ggfun_0.1.1.tar.gz
+	md5sums = d8345e6cce668ebe3afe2ef3fe9686c0
+	sha256sums = 9845ed6069cd877da59055207b39ea2e30e895b3e9e29f384a985b3d819fd7bf
 
 pkgname = r-ggfun
