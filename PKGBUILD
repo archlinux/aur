@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.4592.r0.gb6923f49b
+pkgver=1.7.4643.r0.gd51d51b3c
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -140,12 +140,13 @@ build() {
 }
 
 package() {
+    ls pcsx2
     install -dm755  "${pkgdir}"/opt/
     cp -r build/bin "${pkgdir}"/opt/"${pkgname%-git}"
     install -Dm755 pcsx2-qt.sh "$pkgdir"/usr/bin/pcsx2-qt
     install -Dm644 pcsx2/.github/workflows/scripts/linux/pcsx2-qt.desktop \
     "${pkgdir}"/usr/share/applications/PCSX2.desktop
-    install -Dm644 pcsx2/pcsx2/Resources/AppIcon64.png \
+    install -Dm644 pcsx2/bin/resources/icons/AppIconLarge.png \
     "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/PCSX2.png
     install -Dm644 -t "${pkgdir}"/opt/"${pkgname%-git}"/resources/ patches.zip
 }
