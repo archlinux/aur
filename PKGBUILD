@@ -3,8 +3,8 @@
 
 _name=dpath
 pkgname=python-dpath
-pkgver=2.0.6
-pkgrel=2
+pkgver=2.1.6
+pkgrel=1
 pkgdesc='A python library for accessing and searching dictionaries via /slashed/paths ala xpath'
 arch=(any)
 url="https://pypi.org/project/$_name"
@@ -14,7 +14,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_name-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/d/$_name/$_archive.tar.gz")
-sha512sums=('6a008d6d12fadf9a45677b89b8a803f33ba9a83e54aec67c155d4e749bff4e60a5411a65a9361f3b70fa319b82ad2580735af407478bf7be022b81fc0b4a2434')
+sha512sums=('2f2dac39b6e1ad2effd8d61ac4acf6619205423389ecebc54061aa10ec11ce3236ea666b632a7dca349e9b7a6579815c97e01c930eaa1a99d965e37b9825b82c')
 
 build() {
 	cd "$_archive"
