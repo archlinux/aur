@@ -1,7 +1,7 @@
 pkgbase = python-ipp
 	pkgdesc = Intel® Integrated Performance Primitives
 	pkgver = 2021.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.intel.com/content/www/us/en/developer/tools/oneapi/ipp.html
 	arch = x86_64
 	license = custom
