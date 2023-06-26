@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="moonplayer-appimage"
 _appname=com.github.coslyk.MoonPlayer
-pkgver=4.1
-pkgrel=3
+pkgver=4.2
+pkgrel=1
 pkgdesc="All-in-One video player that can play videos from Youtube, Bilibili etc. as well as local videos."
 arch=("x86_64")
 url="https://coslyk.github.io/moonplayer.html"
@@ -13,11 +13,12 @@ depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/MoonPlayer--x86_64.AppImage")
-sha256sums=('b81b809dcbbd4dd9364d7123500b97e29f1a3ed85410700c58ce3235ef4be3de')
+sha256sums=('0c0cb1f6ba8acb67e10be566b4cd43aac59b4b18f49e588e940dc35730c7e842')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|Exec=moonplayer|Exec=/opt/appimages/moonplayer.AppImage|g;s|Icon=com.github.coslyk.MoonPlayer|Icon=moonplayer|g' -i "${srcdir}/squashfs-root/${_appname}.desktop"
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|Exec=${pkgname%-appimage}|Exec=${_install_path}/${pkgname%-appimage}.AppImage|g;s|Icon=${_appname}|Icon=${pkgname%-appimage}|g" \
+        -i "${srcdir}/squashfs-root/${_appname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"

@@ -1,7 +1,7 @@
 pkgbase = moonplayer-appimage
 	pkgdesc = All-in-One video player that can play videos from Youtube, Bilibili etc. as well as local videos.
-	pkgver = 4.1
-	pkgrel = 3
+	pkgver = 4.2
+	pkgrel = 1
 	url = https://coslyk.github.io/moonplayer.html
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = moonplayer-appimage
 	depends = zlib
 	depends = glibc
 	options = !strip
-	source = moonplayer-4.1.AppImage::https://github.com/coslyk/moonplayer/releases/download/v4.1/MoonPlayer--x86_64.AppImage
-	sha256sums = b81b809dcbbd4dd9364d7123500b97e29f1a3ed85410700c58ce3235ef4be3de
+	source = moonplayer-4.2.AppImage::https://github.com/coslyk/moonplayer/releases/download/v4.2/MoonPlayer--x86_64.AppImage
+	sha256sums = 0c0cb1f6ba8acb67e10be566b4cd43aac59b4b18f49e588e940dc35730c7e842
 
 pkgname = moonplayer-appimage
