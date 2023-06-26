@@ -2,23 +2,23 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname='gstarcad-bin'
 _appname="com.gstarcad.cad"
-pkgver=23.1
-pkgrel=2
+pkgver=23.1.1
+pkgrel=1
 pkgdesc="浩辰 CAD.Free trial for 30 days"
-arch=('x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 license=('custom')
 url="https://www.gstarcad.com/cad_linux/"
-depends=('glibc' 'libxcb' 'libsm' 'mesa' 'qt5-svg' 'xdg-utils' 'gcc-libs' 'sh' 'freetype2' 'xcb-util-renderutil' \
-    'libxkbcommon-x11' 'libxshmfence' 'libxkbcommon' 'libice' 'expat' 'libxext' 'systemd-libs' 'libdrm' 'libxfixes' \
-    'libxxf86vm' 'mono' 'fontconfig' 'libcups' 'libxdamage' 'libglvnd' 'zlib' 'xcb-util-wm' 'xcb-util-keysyms' \
-    'libx11' 'qt5-base' 'xcb-util-image')
-optdepends=()
-options=(!strip)
-source=("${pkgname}-${pkgver}.deb::https://hccad.gstarcad.cn/linux2023/v${pkgver}/uos/signed_${_appname}_${pkgver}_amd64.deb")
-sha256sums=('3400c8d30e809539d1eb65e05ef63efc3e581c106cb6d6a7e495c2c71665e636')
+depends=('sh' 'libxxf86vm' 'libsm' 'hicolor-icon-theme' 'libxkbcommon' 'xcb-util-image' 'xdg-utils' 'xcb-util-keysyms' \
+    'fontconfig' 'libcups' 'xcb-util-wm' 'libice' 'xcb-util-renderutil' 'qt5-base' 'freetype2' 'libxfixes' 'libxext' \
+    'libxcb' 'gcc-libs' 'expat' 'mesa' 'libxdamage' 'libx11' 'zlib' 'systemd-libs' 'libxshmfence' 'qt5-svg' \
+    'libxkbcommon-x11' 'libglvnd' 'glibc' 'libdrm')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::https://hccad.gstarcad.cn/linux2023/v3.0/v${pkgver}/deb/${pkgname%-bin}_${pkgver}_arm64.deb")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::https://hccad.gstarcad.cn/linux2023/v3.0/v${pkgver}/deb/${pkgname%-bin}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::https://hccad.gstarcad.cn/linux2023/v3.0/v${pkgver}/deb/${pkgname%-bin}_${pkgver}_amd64.deb")
+sha256sums_aarch64=('29de9bb281ada1a1f22e4b15b8e05e4ff1a588873b0f86b64e28db287d2c77f2')
+sha256sums_armv7h=('29de9bb281ada1a1f22e4b15b8e05e4ff1a588873b0f86b64e28db287d2c77f2')
+sha256sums_x86_64=('fe5abf637b282efe0822670e4bea11c6655b502a28b9132cdbfd10ce4d63f62a')
 package(){
-    bsdtar -xf data.tar.xz -C "${pkgdir}"
-    install -Dm644 "${pkgdir}/opt/apps/${_appname}/entries/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
-    rm -rf "${pkgdir}/opt/apps/${_appname}/info" "${pkgdir}/opt/apps/${_appname}/entries/autostart"
-    install -Dm644 "${pkgdir}/opt/apps/${_appname}/files/license.pdf" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    bsdtar -xf data.tar.xz -C "${pkgdir}" --gname root --uname root
+    install -Dm644 "${pkgdir}/opt/apps/${pkgname%-bin}/v2023/files/Licenses/"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
