@@ -1,10 +1,11 @@
 pkgbase = aechoterm-bin
-	pkgdesc = A free, cross-platform terminal and file management tool for accessing remote servers with SSH and SFTP protocols.闪令是一款免费的、跨平台的,以SSH、SFTP协议访问远程服务器的终端、文件管理工具
+	pkgdesc = A free, cross-platform terminal and file management tool for accessing remote servers with SSH and SFTP protocols. 闪令是一款免费的、跨平台的,以SSH、SFTP协议访问远程服务器的终端、文件管理工具
 	pkgver = 4.0.0.0.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://ec.nantian.com.cn/
+	arch = aarch64
 	arch = x86_64
-	license = unknown
+	license = custom
 	depends = nodejs
 	depends = nss
 	depends = lib32-gcc-libs
@@ -38,8 +39,9 @@ pkgbase = aechoterm-bin
 	depends = libxcomposite
 	depends = sh
 	conflicts = aechoterm
-	options = !strip
-	source = aechoterm-4.0.0.0.2.7.deb::https://ec.cnd.nantiangzzx.com/Aechoterm_4.0.0_amd64.deb
-	sha256sums = 3c1681aae8b3426577fbcab4401ba2af7a9f77152e1836029d9f45748ab58904
+	source_aarch64 = aechoterm-4.0.0.0.2.7-aarch64.deb::https://ec.cnd.nantiangzzx.com/aechoterm_4.0.0_arm64.deb
+	sha256sums_aarch64 = b6c3ad256bdde7d31bcdf0125a47a4b6438e69d899ae6188d7ac1898dcb4f2fb
+	source_x86_64 = aechoterm-4.0.0.0.2.7-x86_64.deb::https://ec.cnd.nantiangzzx.com/Aechoterm_4.0.0_amd64.deb
+	sha256sums_x86_64 = 3c1681aae8b3426577fbcab4401ba2af7a9f77152e1836029d9f45748ab58904
 
 pkgname = aechoterm-bin
