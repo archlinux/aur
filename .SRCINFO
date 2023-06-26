@@ -1,0 +1,14 @@
+pkgbase = ruby-gems
+	pkgdesc = Ruby wrapper for the RubyGems.org API
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/rubygems/gems
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = gems-1.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/gems-1.2.0.gem
+	sha256sums = 343d74bd54d906f38193f3ccd983f9d08c4b54cd01ee7e5fe8467ab41a9946f0
+
+pkgname = ruby-gems
