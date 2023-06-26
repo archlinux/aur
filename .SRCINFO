@@ -1,0 +1,13 @@
+pkgbase = bcmatroska2
+	pkgdesc = A C library for working with matroska files
+	pkgver = 5.2.1
+	pkgrel = 1
+	url = http://www.linphone.org/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = glibc
+	source = https://gitlab.linphone.org/BC/public/bcmatroska2/-/archive/5.2.1/bcmatroska2-5.2.1.tar.gz
+	sha256sums = 473aa34b66c5b138a882afaa2d16feb042a7df8b71542566d53d80ae745d051a
+
+pkgname = bcmatroska2
