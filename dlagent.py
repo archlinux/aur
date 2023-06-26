@@ -33,7 +33,7 @@ def show_progress(count, block_size, total_size):
     bar.update(min(count * block_size, total_size))
 
 if "www.bricsys.com" in file_url:
-    if 'fr' in locale.getdefaultlocale()[0]:
+    if 'fr' in locale.getlocale()[0]:
         print("Veuillez entrer votre nom d'utilisateur/email Bricsys avec votre mot de passe pour télécharger le fichier source")
     else:
         print("Please provide your Bricsys username/email along with your password to download the source file")
@@ -52,7 +52,7 @@ if "www.bricsys.com" in file_url:
     try:
         _csrf = soup.find_all("token")[0]["data-token"]
     except IndexError:
-        if 'fr' in locale.getdefaultlocale()[0]:
+        if 'fr' in locale.getlocale()[0]:
             print("Mauvais identifiants Bricsys !")
         else:
             print("Wrong Bricsys credentials !")
