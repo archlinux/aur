@@ -1,37 +1,20 @@
-# Maintainer:  thoth <thoth@mailoo.org>
+# Maintainer: Octopus118 <idlansdowne at gmail dot com>
 pkgname=python-odrive
-_pkgnamepython=odrive
-pkgver=0.4.11
+_name=${pkgname#python-}
+pkgver=0.6.5.post2
 pkgrel=1
-pkgdesc="python tools for odrive motors"
+pkgdesc="Control utilities for the ODrive high performance motor controller"
 arch=('any')
-url="https://github.com/madcowswe/ODrive"
 license=('MIT')
-depends=('ipython' 'python-pyusb' 'python-pyserial' 'python-requests' 'python-intelhex')
+depends=('python-aiohttp' 'python-appdirs' 'ipython' 'python-pyelftools' 'python-pyusb' 'python-setuptools')
+makedepends=(python-installer)
 optdepends=('python-matplotlib: required to run the liveplotter')
 
+source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
 
-source=("https://files.pythonhosted.org/packages/source/${_pkgnamepython::1}/${_pkgnamepython}/${_pkgnamepython}-${pkgver}.tar.gz")
-
-
-sha256sums=('fa0db10c827192955bdbfa6327e4e839c7999b4086b5162e1569dc149530bab7')
+sha256sums=('8fd8fd957eb67c477d01eed8cbac1fd557229cdfd81c7ebdb3f4d5cee21caa19')
 noextract=()
 
-build() {
-  cd "${srcdir}/${_pkgnamepython}-${pkgver}"
-  python setup.py build
-}
-
 package() {
-  cd "${srcdir}/${_pkgnamepython}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  mkdir -p ${pkgdir}/usr/lib/udev/rules.d
-  echo 'SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="0d[0-9][0-9]", MODE="0666"' | tee ${pkgdir}/usr/lib/udev/rules.d/91-odrive.rules
-
-  wget "https://github.com/madcowswe/ODrive/raw/master/LICENSE.md"
-  install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python -m installer --destdir="$pkgdir" *.whl
 }
-
-
-
-# vim:set ts=2 sw=2 et:
