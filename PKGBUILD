@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Link Dupont <link@subpop.net>
 pkgname=libdbus-minimal
-pkgver=1.14.4
+pkgver=1.14.8
 pkgrel=1
 pkgdesc="DBus library"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL' 'custom')
 provides=('libdbus' 'libdbus-1.so')
 conflicts=('libdbus')
 source=("https://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.xz"{,.asc})
-sha256sums=('7c0f9b8e5ec0ff2479383e62c0084a3a29af99edf1514e9f659b81b30d4e353e'
+sha256sums=('a6bd5bac5cf19f0c3c594bdae2565a095696980a683a0ef37cb6212e093bde35'
             'SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
@@ -24,16 +24,16 @@ build() {
       --localstatedir=/var \
       --runstatedir=/run \
       --libexecdir=/usr/lib/dbus-1.0 \
+      --enable-option-checking \
       --enable-shared \
       --enable-ld-version-script \
-      --disable-static \
-      --disable-option-checking \
       --disable-silent-rules \
       --disable-maintainer-mode \
       --disable-developer \
       --disable-debug \
       --disable-dependency-tracking \
       --disable-largefile \
+      --disable-static \
       --disable-fast-install \
       --disable-libtool-lock \
       --disable-ansi \
@@ -61,15 +61,14 @@ build() {
       --disable-x11-autolaunch \
       --disable-compile-warnings \
       --disable-Werror \
+      --disable-qt-help \
       --disable-relocation \
       --disable-stats \
       --disable-user-session \
-      --disable-containers \
       --with-pic \
       --with-gnu-ld \
-      --without-gcov \
-      --without-valgrind \
-      --without-x \
+      --without-aix-soname \
+      --without-sysroot \
       --without-session-socket-dir \
       --without-test-socket-dir \
       --without-system-pid-file \
@@ -80,6 +79,10 @@ build() {
       --without-dbus-user \
       --without-test-user \
       --without-dbus-daemondir \
+      --without-gcov \
+      --without-valgrind \
+      --without-x \
+      --without-qchdir \
       --without-systemdsystemunitdir \
       --without-systemduserunitdir \
       --without-dbus-test-dir \
