@@ -1,40 +1,56 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
-_cranname=clock
-_cranver=0.6.1
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+_pkgname=clock
+_pkgver=0.7.0
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="Date-Time Types and Tools"
-arch=(i686 x86_64)
-url="https://cran.r-project.org/package=${_cranname}"
+arch=(x86_64)
+url="https://cran.r-project.org/package=${_pkgname}"
 license=(MIT)
-depends=(r-rlang r-tzdb r-vctrs)
-makedepends=(r-cpp11)
-optdepends=(
-    r-covr
-    r-knitr
-    r-magrittr
-    r-pillar
-    r-rmarkdown
-    r-testthat
-    r-withr
+depends=(
+  r-cli
+  r-lifecycle
+  r-rlang
+  r-tzdb
+  r-vctrs
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
-        "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('f80c385fd8229538968ffb71d7de53ddc82bfcec6641f8e76f299546c43c1702'
-            'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
+makedepends=(
+  r-cpp11
+)
+checkdepends=(
+  r-slider
+  r-testthat
+)
+optdepends=(
+  r-covr
+  r-knitr
+  r-magrittr
+  r-pillar
+  r-rmarkdown
+  r-slider
+  r-testthat
+  r-withr
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('d28202660aa1adbc17c996def84ad6d8')
+sha256sums=('54e57a3b3f8c308d67536e2a75d48f3493cf7fe821bfa4da9159b4fb2ceca874')
 
 build() {
   mkdir -p build
-  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 
-  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-
-  install -Dm644 CRAN-MIT-TEMPLATE "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
-  install -Dm644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
