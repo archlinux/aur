@@ -1,9 +1,13 @@
 pkgbase = python2-pycurl
 	pkgdesc = A Python 2 interface to libcurl
-	pkgver = 7.44.1
+	pkgver = 7.45.1
 	pkgrel = 7
-	url = https://pypi.org/project/pycurl/7.44.1
+	url = https://pypi.org/project/pycurl/7.45.1
 	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = aarch64
+	arch = armv7h
 	license = LGPL2.1
 	license = MIT
 	makedepends = python2-setuptools
@@ -11,7 +15,7 @@ pkgbase = python2-pycurl
 	depends = glibc
 	depends = openssl
 	depends = python2
-	source = pycurl-REL_7_44_1.tar.gz::https://github.com/pycurl/pycurl/archive/refs/tags/REL_7_44_1.tar.gz
-	b2sums = 0b16d6598cb873f3f071fd61640c2685b0eb99aba2ac071ee533e5db24e38278d157ead5bd7123d426bdb548a36c92b0868bd46178c5c33dbc25f0c6d680d3f2
+	source = pycurl-REL_7_45_1.tar.gz::https://github.com/pycurl/pycurl/archive/refs/tags/REL_7_45_1.tar.gz
+	b2sums = f0cb9cc7687f75d73a1ddab2345b1bbb9ab9b6672344211c510d3b6e1d8a0a34c85beb94850a6079d00dbd19fce6ea6ca3998a0ad329250445aa705007554163
 
 pkgname = python2-pycurl

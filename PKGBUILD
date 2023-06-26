@@ -1,14 +1,21 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer:  Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: prg <prg-archlinux@xannode.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Angel 'angvp' Velasquez <angvp[at]archlinux.com.ve>
 
-pkgname='python2-pycurl'
-_name="${pkgname#python2-}"
-pkgver=7.44.1
+_py="python2"
+_name="pycurl"
+pkgname="${_py}-${_name}"
+pkgver=7.45.1
 pkgrel=7
 pkgdesc='A Python 2 interface to libcurl'
-arch=('x86_64')
+arch=(
+  x86_64
+  i686
+  pentium4
+  aarch64
+  armv7h)
 url="https://pypi.org/project/${_name}/${pkgver}"
 _repourl="https://github.com/${_name}/${_name}"
 license=('LGPL2.1' 'MIT')
@@ -16,19 +23,21 @@ depends=(
   'curl'
   'glibc'
   'openssl'
-  'python2'
+  "${_py}"
 )
-makedepends=('python2-setuptools')
+makedepends=("${_py}-setuptools")
 _tagname="REL_${pkgver//./_}"
 _tarname="${_name}-${_tagname}"
-source=("${_tarname}.tar.gz::${_repourl}/archive/refs/tags/${_tagname}.tar.gz")
-b2sums=('0b16d6598cb873f3f071fd61640c2685b0eb99aba2ac071ee533e5db24e38278d157ead5bd7123d426bdb548a36c92b0868bd46178c5c33dbc25f0c6d680d3f2')
+source=(
+  "${_tarname}.tar.gz::${_repourl}/archive/refs/tags/${_tagname}.tar.gz")
+b2sums=(
+  'f0cb9cc7687f75d73a1ddab2345b1bbb9ab9b6672344211c510d3b6e1d8a0a34c85beb94850a6079d00dbd19fce6ea6ca3998a0ad329250445aa705007554163')
 
 prepare() {
   cd "${_tarname}"
 
-  printf "Changing hashbangs in *.py files to refer to 'python2'... "
-  sed -e '1s|#![ ]*[a-z0-9._/]*/bin/[a-z0-9._/ ]*python.*|#!/usr/bin/env python2|' \
+  printf "Changing hashbangs in *.py files to refer to '${_py}'... "
+  sed -e "1s|#![ ]*[a-z0-9._/]*/bin/[a-z0-9._/ ]*python.*|#!/usr/bin/env ${_py}|" \
       -i $(find . -name '*.py')
   echo 'done'
 
@@ -39,12 +48,17 @@ prepare() {
 
 build() {
   cd "${_tarname}"
-  python2 setup.py build
+  "${_py}" setup.py build
 }
 
 package() {
+  local _py_opts=(
+          --root="${pkgdir}"
+          --prefix='/usr'
+          --optimize=1
+          --skip-build)
   cd "${_tarname}"
-  python2 setup.py install --root="${pkgdir}" --prefix='/usr' --optimize=1 --skip-build
+  "${_py}" setup.py install "${_py_opts[@]}"
 
   grep -A 100000 -e "^License$" 'README.rst' > 'LICENSE.rst'
   install --verbose -Dm 644 'LICENSE.rst' 'COPYING-MIT' -t "${pkgdir}/usr/share/licenses/${pkgname}"
