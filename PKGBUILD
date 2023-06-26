@@ -2,7 +2,7 @@
 #             <ranaivoarivony-razanajato@hareno.me>
 
 pkgname=osl
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="OpenScop Library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=("gmp")
 provides=("osl")
 source=(https://github.com/periscop/openscop/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('0d8682eb81ab493ba81fe15ca0dfca23')
+md5sums=('f833e4186d4af2402fcbf8e104306ab6')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
