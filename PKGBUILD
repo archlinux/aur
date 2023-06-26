@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="icalingua++-electron-bin"
-pkgver=2.9.18
+pkgver=2.9.19
 pkgrel=1
 pkgdesc="A branch of deleted Icalingua, with limited support"
 arch=("aarch64" "armv7h" "x86_64")
@@ -16,10 +16,10 @@ source=("${pkgname%-electron-bin}.png::https://raw.githubusercontent.com/Icaling
     "${pkgname%-electron-bin}.sh")
 sha256sums=('5743ef3d19be5e41e83c3a1171a807cd0505d7f5d5f9c5abdff8926dccadc6de'
             'b088d20934708c53e50492694efefbf9a9dcb62fefb8d1d4976f36f32f84af86'
-            'db782695e4b12d7fa1cb6c0a9468eb47781b3f34cd8c37061bdbf847fe0f9f2f')
-sha256sums_aarch64=('16d116308c7ee86b404762739a8ecadc70bc06fa281b88cc84f437cd71c93647')
-sha256sums_armv7h=('9ec70ccd0d2bec6b8b75e1a226936f8a86d1c15628ed78795db784e8e3927122')
-sha256sums_x86_64=('6ca0f9dcb12864135986146bf378cfcbfed7a3ab70072b2eb4e59b672f26ab76')
+            'fa173daad247b6139b13417050086824d372bbb55ba93eace11bda4b1e1e0674')
+sha256sums_aarch64=('828060b129d72d6531002dc3211e12a3c08cb41ac71c994c34c8e58f0b9f4c5f')
+sha256sums_armv7h=('345c3997de83035709da237ec703fdcce4d267564541c2870c5c13943014f403')
+sha256sums_x86_64=('84f458fac40816965d3489d1092e092d771203775febc143805e959c02b30676')
 
 package() {
     install -Dm644 "${srcdir}/${pkgname%-electron-bin}-${pkgver}-${CARCH}.asar" "${pkgdir}/opt/${pkgname%-electron-bin}/${pkgname%-electron-bin}.asar"
