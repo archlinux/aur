@@ -1,4 +1,4 @@
-# Mantainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Mantainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 _pkgname="trovotutto"
 pkgname="${_pkgname}-git"
