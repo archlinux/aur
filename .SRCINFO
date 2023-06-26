@@ -1,0 +1,20 @@
+pkgbase = moul-assh
+	pkgdesc = make your ssh client smarter
+	pkgver = 2.15.0
+	pkgrel = 1
+	url = https://github.com/moul/assh
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/moul/assh.git#commit=610085dfcc7eab4a282b0db65beddb4840f95032
+	sha256sums = SKIP
+
+pkgname = moul-assh
