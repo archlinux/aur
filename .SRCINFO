@@ -1,6 +1,6 @@
 pkgbase = python-dm-control
 	pkgdesc = DeepMind's software stack for physics-based simulation and Reinforcement Learning environments, using MuJoCo.
-	pkgver = 1.0.12
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://github.com/deepmind/dm_control
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = python-dm-control
 	depends = python-requests
 	depends = python-scipy
 	depends = python-tqdm
-	source = https://github.com/deepmind/dm_control/archive/refs/tags/1.0.12.tar.gz
-	sha256sums = 99d62b2ffe6378cd2f051141cc2a86707adca09d262dad0fa805640993e6840f
+	source = https://github.com/deepmind/dm_control/archive/refs/tags/1.0.13.tar.gz
+	sha256sums = ed4913b6fd7851d4fee20e29183a40251cb7a16149820b15458ff1142457e997
 
 pkgname = python-dm-control
