@@ -4,6 +4,7 @@
 # Contributor: dr460nf1r3 <aur@dr460nf1r3.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Fabio Loli <fabio.loli@disroot.org>
 
 _pkgname="gjs"
 pkgname="${_pkgname}-git"
