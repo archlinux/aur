@@ -16,11 +16,11 @@ depends=(
 install="${pkgname}.install"
 _distdir="KMbeuUXv${pkgver//./_}_multi_language"
 source=(
-  "KMbeuUXv${pkgver//./_}_multi_language.tar.gz"
+  "KMbeuUXv${pkgver//./_}_multi_language.tar.gz::https://dl.konicaminolta.eu/de?tx_kmdownloadcentersite_downloadproxy[fileId]=951f83f68051fc0335ff27f72165fad5&tx_kmdownloadcentersite_downloadproxy[documentId]=138068&tx_kmdownloadcentersite_downloadproxy[system]=KonicaMinolta&tx_kmdownloadcentersite_downloadproxy[language]=DE&type=1558521685"
   'LICENSE'
 )
 sha512sums=('2753f3d72589994564e75e7f0514ce4cf81317b9887c49496e776a9e6331151eda56c371344fb6f38c0496b3f4a12631b8fb7c1c2de770095953d39fe664ed26'
-            '95f5ceb1406e689c840411cef8f7803d9be6829c75a6eb8474ad3a1374ffca68db06cd56cf782578c02b2f7f3b190bb76f99f01e38a18254d7f0a6fbb48159f4')
+            '0a2af3c51430b64d69583518abe75ba5d420c556cdb172fe8ca3c9c9dfb8005d300c875f9c88bc2e94024f0b67a84b91e20625bee31c40ee866ce152618943d1')
 
 package() {
   cd "$srcdir"
