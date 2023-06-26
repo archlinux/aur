@@ -5,15 +5,39 @@ pkgname=libquotient-encryption
 pkgver=0.7.2
 pkgrel=1
 pkgdesc="A Qt library to write cross-platform clients for Matrix (with experimental encryption support)"
-arch=(x86_64 aarch64)
+arch=("x86_64" "aarch64")
 url="https://github.com/quotient-im/libQuotient"
 license=("LGPL2.1")
 depends=("gcc-libs" "glibc" "libolm" "openssl" "qt5-base" "qt5-multimedia" "qtkeychain-qt5")
 makedepends=("cmake")
-provides=("libquotient" "libQuotient.so=${pkgver%.*}-64")
-conflicts=("libquotient")
-source=("https://github.com/quotient-im/libQuotient/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=("62ff42c8fe321e582ce8943417c1d815ab3f373a26fa0d99a5926e713f6a9382")
+provides=("libQuotientE2EE.so=${pkgver%.*}-64")
+source=("https://github.com/quotient-im/libQuotient/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "namespace.patch")
+sha256sums=("62ff42c8fe321e582ce8943417c1d815ab3f373a26fa0d99a5926e713f6a9382"
+            "cfb01b1855ac31fdfa614b3802b0cfc9890b92b7a4dade71f5f94f775773a94e")
+
+prepare() {
+	# This patch makes the following changes to CMakeLists.txt:
+	# - Adds a new variable called `${LIBRARY_NAME}` which is currently set
+	#   to `QuotientE2EE`, which will replace `${PROJECT_NAME}` in all cases
+	#   where the name needs to be changed
+	# - Replaces the name of the library target with `${LIBRARY_NAME}` so that
+	#   the generated shared objects are called `libQuotientE2EE.so*`
+	# - All references to `${PROJECT_NAME}` which really refer to the library
+	#   target instead of the CMake project as a whole have been changed
+	# - Changed the output names of the `pkg-config` script and the output
+	#   CMake files (i.e. `QuotientE2EEConfig.cmake`,
+	#   `QuotientE2EETargets.cmake` and so on)
+	# - Changed the install directories for the config files and headers to use
+	#   `QuotientE2EE` instead of `Quotient`
+	# - Disable generating files for integration with the Android Native
+	#   Development Kit, as these files have generic names which will conflict
+	#   with the official Arch `libquotient` package
+	# Also, the template files for the `pkg-config` script (`Quotient.pc.in`)
+	# and CMake script (`QuotientConfig.cmake.in`) have been adjusted to use
+	# `${LIBRARY_NAME}` where necessary instead of hard-coding `Quotient`.
+	patch -Np0 -d . -i namespace.patch
+}
 
 build() {
 	cmake -B build -S "libQuotient-${pkgver}" \
@@ -28,12 +52,5 @@ build() {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
-	install -Dm 644 "libQuotient-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
-	# NOTE: There does not seem to be a way to inhibit generating the
-	# Android Native Development Kit (NDK) build file without patching
-	# libQuotient's build script. This file has a generic name which
-	# will conflict with the official `libquotient` package, so it must
-	# therefore be removed manually.
-	rm -r "${pkgdir}/usr/share/ndk-modules"
+	install -Dm644 "libQuotient-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
