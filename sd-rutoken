@@ -10,6 +10,9 @@ build() {
     (
       echo "[Unit]"
       echo "DefaultDependencies=no"
+      echo "[Service]"
+      echo "ExecStart="
+      echo "ExecStart=/usr/bin/pcscd --foreground --disable-polkit"
     ) > "$BUILDROOT/usr/lib/systemd/system/pcscd.service.d/mkinitcpio.conf"
 
     add_systemd_unit "pcscd.socket"
