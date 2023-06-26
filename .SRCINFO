@@ -1,6 +1,6 @@
 pkgbase = email-to-pdf-converter-bin
 	pkgdesc = Converts email files (eml, msg) to pdf
-	pkgver = 2.5.3
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/nickrussler/email-to-pdf-converter
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = email-to-pdf-converter-bin
 	provides = email-to-pdf-converter
 	conflicts = email-to-pdf-converter
 	replaces = email-to-pdf-converter
-	source = email-to-pdf-converter.jar::https://github.com/nickrussler/email-to-pdf-converter/releases/download/2.5.3/emailconverter-2.5.3-all.jar
-	sha256sums = 67608fe75bad3eae422e5b8ad8e4cde1de9d54254237bc2173c0e2301f02f2cf
+	source = email-to-pdf-converter-2.6.0.jar::https://github.com/nickrussler/email-to-pdf-converter/releases/download/2.6.0/emailconverter-2.6.0-all.jar
+	sha256sums = 961affdb375110ca67a03d28cbe52c8387d2091973017875f6c5f9081c35b9fe
 
 pkgname = email-to-pdf-converter-bin

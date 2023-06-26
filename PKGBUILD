@@ -2,8 +2,8 @@
 
 _name=email-to-pdf-converter
 pkgname=${_name}-bin
-pkgver=2.5.3
-pkgrel=2
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Converts email files (eml, msg) to pdf"
 arch=('any')
 url="https://github.com/nickrussler/${_name}"
@@ -12,11 +12,11 @@ depends=('jre-openjdk' 'wkhtmltopdf')
 provides=("${_name}")
 conflicts=("${_name}")
 replaces=("${_name}")
-source=("${_name}.jar"::"https://github.com/nickrussler/${_name}/releases/download/${pkgver}/emailconverter-${pkgver}-all.jar")
-sha256sums=('67608fe75bad3eae422e5b8ad8e4cde1de9d54254237bc2173c0e2301f02f2cf')
+source=("${_name}-${pkgver}.jar"::"https://github.com/nickrussler/${_name}/releases/download/${pkgver}/emailconverter-${pkgver}-all.jar")
+sha256sums=('961affdb375110ca67a03d28cbe52c8387d2091973017875f6c5f9081c35b9fe')
 
 package() {
-  install -Dm644 "${_name}.jar" "$pkgdir/usr/share/java/${_name}/${_name}.jar"
+  install -Dm644 "${_name}-${pkgver}.jar" "$pkgdir/usr/share/java/${_name}/${_name}.jar"
   install -Dm755\
     <(echo -e "#/bin/sh\nexec /usr/bin/java -jar '/usr/share/java/${_name}/${_name}.jar' \"\$@\"")\
     "${pkgdir}/usr/bin/${_name}"
