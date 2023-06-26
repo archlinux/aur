@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="onekey-wallet-appimage"
-pkgver=4.7.0
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions."
 arch=('x86_64')
@@ -12,10 +12,10 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/OneKey-Wallet-${pkgver}-linux-x86_64.AppImage")
-sha256sums=('a951fb4c0ec1ce1e0e196f43893dbee8a3a1aa38f68738da8d976dab92ed61f0')
+sha256sums=('5843708914509bd285701d2e1ad2eb6851817af7a453caa9a962d8176874bf8c')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
