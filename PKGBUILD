@@ -1,13 +1,14 @@
-# Maintainer: Fijxu <fijxu <at> zzls <dot> xyz>
+# Maintainer: Fijxu <fijxu[at]zzls[dot]xyz>
 
 pkgname=ilspycmd-git
 _pkgname=ILSpy
-pkgver=r7449.311658c71
+pkgver=r7469.bf0d74d0c
 pkgrel=1
 pkgdesc=".NET Decompiler with support for PDB generation, ReadyToRun, Metadata (&more) - cross-platform! (git version)"
 arch=('any')
 url="https://github.com/icsharpcode/ILSpy"
-depends=('dotnet-sdk')
+depends=('dotnet-runtime')
+makedepends=('git' 'dotnet-host' 'dotnet-sdk')
 license=('MIT')
 source=("git+https://github.com/icsharpcode/ILSpy")
 sha512sums=('SKIP')
@@ -19,7 +20,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname/ICSharpCode.ILSpyCmd"
-	dotnet publish -c Release -r linux-x64 -o ../publish --no-self-contained
+	dotnet build -c Release -r linux-x64 -o ../publish --no-self-contained
 }
 
 package() {
