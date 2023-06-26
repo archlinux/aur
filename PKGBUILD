@@ -1,7 +1,7 @@
-# Maintainer: farwayer <farwayer@gmail.com>
+# Contributor: farwayer <farwayer@gmail.com>
 
 _name=google-cloud-core
-_v=1.3.2
+_v=1.6.0
 _r=1
 _gem=$_name-$_v.gem
 
@@ -11,15 +11,15 @@ pkgrel=$_r
 pkgdesc="google-cloud-core is the internal shared library for google-cloud-ruby."
 arch=('any')
 depends=(
-  ruby
-  'ruby-google-cloud-env>=1' 'ruby-google-cloud-env<2'
+  'ruby-google-cloud-env'
+  'ruby-google-cloud-errors'
 )
 url="https://rubygems.org/gems/$_name"
 noextract=($_gem)
 options=(!emptydirs)
 license=('MIT')
 source=(https://rubygems.org/downloads/$_gem)
-sha256sums=('189cb6526ff79da633a2920ff43e928ed2beb14d058d552b353a3c0d9c811e0d')
+sha256sums=('ea1744cd5a3085d3072de3fab9106afc769cd198609ebb5c6eeb5f13da46b72a')
 
 package() {
   local _gemdir="$pkgdir/$(ruby -e'puts Gem.default_dir')"
