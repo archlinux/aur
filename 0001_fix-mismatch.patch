@@ -1,0 +1,32 @@
+commit 6d32fca6b60e22e2c918705efa0791d237b12d5c
+Author: Sven Nierlein <sven@consol.de>
+Date:   Wed Mar 8 09:10:15 2023 +0100
+
+    fix building on fedora rawhide
+    
+    fixes builds on rawhide.
+    ```
+    [  112s] src/naemon/notifications.c:57:13: error: conflicting types for 'notification_reason_name' due to enum/integer mismatch; have 'const char *(enum NotificationReason)' [-Werror=enum-int-mismatch]
+    [  112s]    57 | const char *notification_reason_name(enum NotificationReason reason)
+    [  112s]       |             ^~~~~~~~~~~~~~~~~~~~~~~~
+    [  112s] In file included from src/naemon/notifications.c:1:
+    [  112s] src/naemon/notifications.h:86:13: note: previous declaration of 'notification_reason_name' with type 'const char *(unsigned int)'
+    [  112s]    86 | const char *notification_reason_name(unsigned int reason_type);
+    [  112s]       |             ^~~~~~~~~~~~~~~~~~~~~~~~
+    [  113s] cc1: all warnings being treated as errors
+    [  113s] make[1]: *** [Makefile:2017: src/naemon/notifications.lo] Error 1
+    ```
+
+diff --git a/src/naemon/notifications.h b/src/naemon/notifications.h
+index ee15f1dc..fade769e 100644
+--- a/src/naemon/notifications.h
++++ b/src/naemon/notifications.h
+@@ -83,7 +83,7 @@ typedef struct notify_list {
+ 	struct notify_list *next;
+ } notification;
+ 
+-const char *notification_reason_name(unsigned int reason_type);
++const char *notification_reason_name(enum NotificationReason reason_type);
+ int check_service_notification_viability(service *, int, int);			/* checks viability of notifying all contacts about a service */
+ int is_valid_escalation_for_service_notification(service *, serviceescalation *, int);	/* checks if an escalation entry is valid for a particular service notification */
+ int should_service_notification_be_escalated(service *);			/* checks if a service notification should be escalated */

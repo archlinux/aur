@@ -2,11 +2,12 @@
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 
 pkgname=naemon
-pkgver=1.0.10
+pkgver=1.4.1
+_commit=b99a43b01f280a9dfaf96c72a75e654b9d5fc4fa
 pkgrel=1
 pkgdesc="System and network monitoring application"
 arch=('i686' 'x86_64')
-url="http://naemon.org"
+url="https://www.naemon.io/"
 license=('GPL2')
 depends=('icu' 'glib2')
 optdepends=('logrotate'
@@ -14,23 +15,28 @@ optdepends=('logrotate'
             'naemon-livestatus: Event broker'
             'monitoring-plugins')
 makedepends=('gperf' 'help2man')
-source=("naemon-git::git+https://github.com/naemon/naemon-core.git#commit=c2a8730538846f342911764cd7731015f1a6f284"
+source=("naemon-git::git+https://github.com/naemon/naemon-core.git#commit=$_commit"
         $pkgname-tmpfiles.conf
         $pkgname.service
-        overflow.patch)
+        0001_fix-mismatch.patch)
 sha512sums=('SKIP'
             '756e61e4da56ce614824c3b289d2ee0f4464bf5bcd868dcadbf31c3320967e0179aa6c5aedc16e4bb40c480ab2da8ab08c43e750168e86963a9cd552db01ea1d'
             '28944f2bd918c0718496ce490d0c2da97a127f71cfb23348620cb6c86fc88e206a07409d32dc8c9a9b5b2d1a8106b400c3e1edf3a6b7aca30ac125a38ebed3b2'
-            'ec1ccf09f8c02e8f6dfdf2f6b80eed4b3e07df85703d89bdfdefe0bd9380b832a7f9a1c2976f17f55d74dbb3b1888ae28bf0551c78cb8bbc3acb08cd1e4a85da')
+            '7478d6429d436bbdda101a0c2c4e918310fd4a6f94590d8302868e1120853ce66129b3ac55bece88edc7b77c3c5bd6a0ae0451a4ba65771ec45a7b7011890fdd')
 backup=('etc/logrotate.d/naemon'
         'etc/naemon/naemon.cfg'
         'etc/naemon/resource.cfg')
 install=$pkgname.install
 
+
+prepare() {
+  cd "$srcdir/$pkgname-git"
+  patch -Np1 -i "$srcdir"/0001_fix-mismatch.patch
+}
+
 build() {
   cd "$srcdir/$pkgname-git"
 
-  patch -p1 < $srcdir/overflow.patch
   ./autogen.sh
   ./configure --prefix=/usr \
               --bindir=/usr/bin \
