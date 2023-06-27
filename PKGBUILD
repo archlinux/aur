@@ -16,7 +16,6 @@ conflicts=(nixnote2-git)
 provides=("nixnote=${pkgver%.r*}" "$_pkgname=${pkgver%.r*}")
 replaces=(nevernote nixnote nixnote-beta)
 source=("$pkgname:desktop.patch")
-sha256sums=(4f12cddc49e0c694f41e344acebc0d8a3bce07a3496098eb2fae258ba9044967)
 noextract=("${source[@]%%::*}")  # Don't extract anything
 
 _version_file=$pkgname-PKGBUILD-version  # For version from the download URL
@@ -56,9 +55,6 @@ prepare() {
 
   # Directories are extracted with no permissions for group and other. Fix:
   find squashfs-root -type d -exec chmod go+rx -- {} +
-
-  # Have the .desktop point explicitly at the icon
-  patch -d squashfs-root/usr/share/applications < "$pkgname:desktop.patch"
 }
 
 
