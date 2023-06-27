@@ -37,17 +37,17 @@ package() {
 	install -vDm 644 {README,RELEASE}.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 	install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-	# build bash completions
+	# bash completions
 	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
 	install -vDm 644 ${_cli_name}.bash "${pkgdir}/usr/share/bash-completion/completions/${_cli_name}"
 	install -vDm 644 ${_cli_name}.bash "${pkgdir}/usr/share/bash-completion/completions/jfrog"
 
-	# build zsh completions
+	# zsh completions
 	mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
 	install -vDm 644 ${_cli_name}.zsh "${pkgdir}/usr/share/zsh/site-functions/_${_cli_name}"
 	install -vDm 644 ${_cli_name}.zsh "${pkgdir}/usr/share/zsh/site-functions/_jfrog"
 
-	# build fish completions
+	# fish completions
 	mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
 	install -vDm 644 ${_cli_name}.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${_cli_name}.fish"
 	echo "complete -c jfrog -w ${_cli_name}" > "${pkgdir}/usr/share/fish/vendor_completions.d/jfrog.fish"
