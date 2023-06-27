@@ -24,7 +24,7 @@ optdepends=(
 source=(
 	"tatsumato.sh"
 )
-sha256sums=('8d7bbfd9307087fb90ead36079106ffc7fdb35372f16819b4f6495caaa26e4e6')
+sha256sums=('7c3bf3995e48deff5a9e97f609e02fd5f87ea88987166bcf06af715a358e57df')
 package() {
 	install -D -m0755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }

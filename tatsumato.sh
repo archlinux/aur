@@ -17,20 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-human=true
-verbose=false
-disphelp=false
-silent=false
-use_i3lock=false
-control_player=false
-control_anki=false
-dmenu_nag=false
-
-pomtime=25
-brktime=5
-lngbrkt=10
-longbrk=3
-endtime=0
 readonly lock_timeout=10s
 
 while getopts 'a p H v h s i d    t: b: l: L: k:' flag; do
@@ -52,6 +38,21 @@ while getopts 'a p H v h s i d    t: b: l: L: k:' flag; do
 	*) echo "Unknown argument ${flag}" && exit 1 ;;
 	esac
 done
+
+readonly human=${human:-true}
+readonly verbose=${verbose:-false}
+readonly disphelp=${disphelp:-false}
+readonly silent=${silent:-false}
+readonly use_i3lock=${use_i3lock:-false}
+readonly control_player=${control_player:-false}
+readonly control_anki=${control_anki:-false}
+readonly dmenu_nag=${dmenu_nag:-false}
+
+readonly pomtime=${pomtime:-25}
+readonly brktime=${brktime:-5}
+readonly lngbrkt=${lngbrkt:-10}
+readonly longbrk=${longbrk:-3}
+readonly endtime=${endtime:-0}
 
 show_help() {
 	local -r prog=$(basename -- "$0")
