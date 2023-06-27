@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=poedit-git
-pkgver=3.3.oss.r0.g87c598d3c
+pkgver=3.3.2.oss.r0.gb4688c518
 pkgrel=1
 epoch=
 pkgdesc="Translations editor for Mac, Windows and Unix"
@@ -10,6 +10,8 @@ url="https://github.com/vslavik/poedit"
 license=('MIT')
 groups=()
 depends=(aspell
+        cld2
+        cpprestsdk
         expat
         gettext
         gtkspell3
@@ -52,7 +54,9 @@ build() {
 
     ./bootstrap
     ./configure --prefix=/usr \
-        --libexecdir=/usr/lib/poedit
+        --libexecdir=/usr/lib/poedit \
+        --with-cld2=yes \
+        --with-cpprest=yes
 
     make CPPFLAGS+=' -DUCHAR_TYPE=uint16_t'
 }
