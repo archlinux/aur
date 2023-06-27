@@ -2,14 +2,14 @@ pkgbase = lmaofetch
 	pkgdesc = A simple system fetch written in Bash
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://codeberg.org/p3nguin-kun/lmaofetch
+	url = https://github.com/p3nguin-kun/lmaofetch
 	arch = any
 	groups = unknown
 	license = MIT
 	makedepends = git
 	depends = bash
 	optdepends = nerd-fonts: Icon font
-	source = lmaofetch::git+https://codeberg.org/p3nguin-kun/lmaofetch
+	source = lmaofetch::git+https://github.com/p3nguin-kun/lmaofetch
 	sha512sums = SKIP
 
 pkgname = lmaofetch
