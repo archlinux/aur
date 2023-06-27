@@ -30,5 +30,8 @@ s/.\/configure (.+) \\/.\/configure \1 --enable-gssapi --with-cups-build="cups-g
 # fix usage of "${pkgbase}"
 s/\$\{pkgbase\}/cups/g
 
+# remove cups-filters make dependency as it is just causing trouble, and should only be a post-install dependency (already is for cups, not for libcups)
+/^makedepends=/ s/'cups-filters' //
+
 # if we do more patches, use this to update pkgrel:
 # s/pkgrel=3/pkgrel=3.2/

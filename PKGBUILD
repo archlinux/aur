@@ -4,13 +4,13 @@
 
 pkgbase="cups-gssapi"
 pkgname=('libcups-gssapi' 'cups-gssapi')
-pkgver=2.4.5
+pkgver=2.4.6
 pkgrel=1
 epoch=1
 arch=('x86_64')
 license=('Apache' 'custom')
 url="https://openprinting.github.io/cups/"
-makedepends=('acl' 'pam' 'gnutls' 'cups-filters' 'colord' 
+makedepends=('acl' 'pam' 'gnutls' 'colord' 
 'krb5'
              'libusb' 'avahi'  'systemd' 'libpaper')
 #checkdepends=('valgrind')
@@ -23,7 +23,7 @@ source=(https://github.com/OpenPrinting/cups/releases/download/v${pkgver}/cups-$
         cups-freebind.patch
         guid.patch
 )
-sha256sums=('9a404de55f74525b0a6851df0cfdebfa1215aec0e7c2f7be6b9b09b6916fb000'
+sha256sums=('58e970cf1955e1cc87d0847c32526d9c2ccee335e5f0e3882b283138ba0e7262'
             'SKIP'
             'd87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9'
             '57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5'

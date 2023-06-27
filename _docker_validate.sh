@@ -17,5 +17,5 @@ else
     cp -r /source build
     cd build
     echo "[ ] Starting to build"
-    makepkg -risc --noconfirm
+    makepkg -isc --noconfirm
 fi
