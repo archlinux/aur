@@ -1,6 +1,6 @@
 pkgbase = python-result
 	pkgdesc = A rust-like result type for Python
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://pypi.org/project/result
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-result
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = python-result-0.10.0.tar.gz::https://pypi.org/packages/source/r/result/result-0.10.0.tar.gz
-	sha256sums = 28bc217336c2f1d339b494241ccf3714e36e6bd90abc04df318d65dccb61594f
-	b2sums = d53ea34c72ae5f1b5e8dcb83d6be2baa7e859e7bb9e56514f12d7d2cebd7e87249b40dba85b8aa08781bf10927dfa5d2f4e29978fce39158df5ca0876ae3ff5b
+	source = python-result-0.11.0.tar.gz::https://pypi.org/packages/source/r/result/result-0.11.0.tar.gz
+	sha256sums = e587b5d1c11b18f6caad0e5b9b2ab981218e4ce84116ebdf969d1dac583ac58e
+	b2sums = a0ef22e30831896c3eb00f6da759c1bbd5d9937d6f84a4baf389ea85d8efd7f29eb15ef50c22ca89ef0333c2caa1e7b0a22eea865f084f81680add2733c83d88
 
 pkgname = python-result
