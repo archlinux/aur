@@ -13,7 +13,7 @@ fi
 
 rm -- "$tmpfile" 2>/dev/null
 
-if ! curl -sL --fail "$hostsource" -o "$tmpfile"; then
+if ! curl --max-time 60 -sL --fail "$hostsource" -o "$tmpfile"; then
 	echo "Couldn't download from $hostsource to $tmpfile. Check your internet connection."
 	exit 1
 fi
