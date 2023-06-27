@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# A convenience script for the package creator.
+# This script is not run by makepkg or your AUR helper
+
+pkgdir=${0%%/*}  # dirname $0
+cd -P -- "$pkgdir" || exit 1  # Allow to be called from any director
+
+pkgname=nixnote2-appimage
+
+shopt -s nullglob
+for item in pkg/ src/ *AppImage "$pkgname"-*.pkg.tar*; do
+  if [[ -e $item ]]; then
+    echo Removing "$item"
+    rm -r "$item"
+  fi
+done
