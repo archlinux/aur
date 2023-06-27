@@ -15,7 +15,7 @@ makedepends=(git)
 conflicts=(nixnote2-git)
 provides=("nixnote=${pkgver%.r*}" "$_pkgname=${pkgver%.r*}")
 replaces=(nevernote nixnote nixnote-beta)
-_appimage=NixNote2-x86_64.AppImage
+_appimage="NixNote2-${CARCH}.AppImage"
 source=('https://github.com/robert7/nixnote2/releases/download/continuous/'"$_appimage")
 b2sums=(SKIP)  # Source will change as new versions are released
 noextract=("${source[@]%%::*}")  # Don't auto-extract anything
