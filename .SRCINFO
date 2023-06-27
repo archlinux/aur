@@ -1,7 +1,7 @@
 pkgbase = busybox-coreutils
 	pkgdesc = POSIX-compliant utility applets from BusyBox.
 	pkgver = 1.36.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://busybox.net/
 	arch = any
 	license = GPL

@@ -3,7 +3,7 @@
 _pkgbase="busybox"
 pkgname="$_pkgbase-coreutils"
 pkgver=1.36.0
-pkgrel=1
+pkgrel=2
 pkgdesc="POSIX-compliant utility applets from BusyBox."
 arch=('any')
 url="https://busybox.net/"
