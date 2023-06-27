@@ -1,10 +1,11 @@
-# Maintainer: Barfin
+# Contributor: Barfin
 # Contributor: Johannes Wienke <languitar@semipol.de>
 # Contributor: Felix Golatofski <contact@xdfr.de>
+
 pkgname=elan
-pkgver=6.2
+pkgver=6.5
 pkgrel=1
-pkgdesc="A video and audio annotation tool"
+pkgdesc="video and audio annotation tool"
 arch=(any)
 url="https://tla.mpi.nl/tools/tla-tools/elan/"
 license=('GPL3')
@@ -12,7 +13,7 @@ depends=('java-runtime>=9')
 makedepends=('maven' 'java-environment>=9')
 source=("http://www.mpi.nl/tools/elan/ELAN_$(echo "${pkgver}" | sed 's/\./-/g')_src.zip"
         "elan")
-sha256sums=('96e45fb994aa45dc8eb37dbf5c357847de043150d8a986ae303093c630c4cafe'
+sha256sums=('819cf6004f5de7f0d8c63ae97e636955298f8a738ba6d74d1172ae96efa3284f'
             'c933caffc0daf1655ffb91564d234209205d9f49e0006c432d63a97a16f43363')
 
 build() {
