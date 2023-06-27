@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="ostara-appimage"
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A desktop application that provides various features to monitor and interact with Spring Boot Applications via Actuator."
 arch=("x86_64")
@@ -12,7 +12,7 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Ostara-${pkgver}.AppImage")
-sha256sums=('309d68bd333b6a294f4046100ff665b6feb1dfa8352c1a254d03c56c4153de14')
+sha256sums=('48a04002d9cc49a606127051a25f27b220d0244351520d439a5040f3927bfeb1')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
