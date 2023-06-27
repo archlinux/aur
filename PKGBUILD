@@ -9,8 +9,8 @@ pkgdesc="A library for bits of crypto UI and parsing"
 url="https://gitlab.gnome.org/GNOME/gcr"
 arch=(x86_64)
 license=(GPLv2)
-depends=(gtk3 gtk4 libgcrypt p11-kit openssh libsecret)
-makedepends=(gobject-introspection vala libxslt git gi-docgen meson)
+depends=(glib2 libgcrypt p11-kit openssh libsecret systemd)
+makedepends=(gobject-introspection vala libxslt git gi-docgen gtk3 meson)
 options=(debug)
 source=("git+https://gitlab.gnome.org/GNOME/gcr.git")
 sha256sums=('SKIP')
@@ -35,7 +35,7 @@ check() {
 }
 
 package_gcr-git() {
-  provides=(gcr libgck-2.so libgcr-4-{gtk3,gtk4}.so)
+  provides=(gcr libgck-2.so libgcr-4.so libgcr-4-{gtk3,gtk4}.so)
   conflicts=(gcr)
   backup=(etc/security/limits.d/10-gcr.conf)
   install=gcr.install
@@ -50,12 +50,12 @@ package_gcr-git() {
 END
 
   mkdir -p doc/usr/share
-  mv {"$pkgdir",doc}/usr/share/doc
+  mv {"${pkgdir}",doc}/usr/share/doc
 }
 
 package_gcr-docs-git() {
   provides=(gcr-docs)
-  conflics=(gcr-docs)
+  conflicts=(gcr-docs)
   pkgdesc+=" (documentation)"
   depends=()
 
