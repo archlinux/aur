@@ -37,4 +37,5 @@ package() {
   rm ${pkgdir}${site_packages}/trame/__init__.py
   rm ${pkgdir}${site_packages}/trame/modules/__init__.py
   rm ${pkgdir}${site_packages}/trame/widgets/__init__.py
+  rm ${pkgdir}${site_packages}/trame/tools/__init__.py
 }
