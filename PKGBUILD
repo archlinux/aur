@@ -6,7 +6,7 @@
 
 #  printf "'SKIP'%.0s\n" {1..43}
 pkgname=ossia-score-git
-pkgver=r9202.f90a636c8
+pkgver=r10561.f50f60fc9
 pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
@@ -50,7 +50,6 @@ source=(
 "git+https://github.com/jcelerier/libartnet"
 "git+https://github.com/jcelerier/libremidi"
 "git+https://github.com/jcelerier/libsamplerate"
-"git+https://github.com/ossia/max-sdk.git"
 "git+https://github.com/kokkos/mdspan"
 "git+https://github.com/jcelerier/nano-signal-slot"
 "git+https://github.com/jcelerier/oscpack"
@@ -77,19 +76,15 @@ source=(
 "git+https://github.com/nettoyeurny/opensl_stream.git"
 "git+https://github.com/jcelerier/pure-data.git"
 "git+https://github.com/jcelerier/libsndfile"
-"git+https://github.com/ned14/llfio"
 "git+https://github.com/ned14/llfio.git"
 "git+https://github.com/ned14/ntkernel-error-category.git"
 "git+https://github.com/jcelerier/magicitems"
 "git+https://github.com/microsoft/mimalloc"
-"git+https://github.com/ned14/outcome"
 "git+https://github.com/ned14/outcome.git"
 "git+https://github.com/ned14/boostdoc.git"
 "git+https://github.com/ned14/hugo-theme-docdock.git"
 "git+https://github.com/ned14/status-code.git"
-"git+https://github.com/ned14/status-code.git"
 "git+https://github.com/jcelerier/phantomstyle"
-"git+https://github.com/ned14/quickcpplib"
 "git+https://github.com/ned14/quickcpplib.git"
 "git+https://github.com/martinmoene/byte-lite.git"
 "git+https://github.com/martinmoene/gsl-lite.git"
@@ -109,10 +104,6 @@ source=(
 )
 
 sha256sums=('SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
 'SKIP'
 'SKIP'
 'SKIP'
@@ -264,7 +255,6 @@ build() {
     git config submodule.3rdparty/libartnet.url $srcdir/libartnet
     git config submodule.3rdparty/libremidi.url $srcdir/libremidi
     git config submodule.3rdparty/libsamplerate.url $srcdir/libsamplerate
-    git config submodule.3rdparty/max-sdk.url $srcdir/max-sdk
     git config submodule.3rdparty/mdspan.url $srcdir/mdspan
     git config submodule.3rdparty/nano-signal-slot.url $srcdir/nano-signal-slot
     git config submodule.3rdparty/oscpack.url $srcdir/oscpack
@@ -289,8 +279,8 @@ build() {
   )
 
 
-  git checkout master
-  git submodule update --init --recursive
+  #git checkout master
+  #git submodule update --init --recursive
 
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
