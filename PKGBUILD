@@ -1,5 +1,5 @@
-# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=girens
 pkgver=2.0.1
