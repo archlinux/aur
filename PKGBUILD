@@ -1,27 +1,26 @@
-# Maintainer: Wenxuan Zhang <wenxuangm@gmail.com>
-_pkgname=csview
-pkgname=csview-bin
-pkgver=1.0.1
-pkgrel=1
-pkgdesc='A high performance csv viewer with cjk/emoji support'
-arch=(i686 x86_64)
-url='https://github.com/wfxr/csview'
-license=("MIT" "APACHE")
-makedepends=('rust' 'cargo')
-conflicts=("csview" "csview-git")
-provides=("csview")
+# Maintainer: éclairevoyant
+# Contributor: Wenxuan Zhang <wenxuangm at gmail dot com>
 
-source=("${_pkgname}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-md5sums=('384d2d9881dacc2bbe60254ed5f8da1d')
+_pkgname=csview
+pkgname="$_pkgname-bin"
+pkgver=1.2.2
+pkgrel=1
+pkgdesc='High performance CSV viewer with CJK/emoji support'
+arch=(i686 x86_64)
+url="https://github.com/wfxr/$_pkgname"
+license=(Apache MIT)
+depends=(glibc gcc-libs)
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("$url/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums=('a90854eae7777006b27eb9d787a2aaa81f8188a19dcf09dd8caff3a0ae090709')
 
 package() {
-	cd "${srcdir}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu"
-	install -Dm755 "${_pkgname}"                       "$pkgdir/usr/bin/${_pkgname}"
-	install -Dm644 "completions/fish/${_pkgname}.fish" "$pkgdir/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-	install -Dm644 "completions/zsh/_${_pkgname}"      "$pkgdir/usr/share/zsh/site-functions/_${_pkgname}"
-	install -Dm644 "README.md"                         "$pkgdir/usr/share/doc/${_pkgname}/README.md"
-	install -Dm644 "LICENSE-MIT"                       "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE-MIT"
-	install -Dm644 "LICENSE-APACHE"                    "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE-APACHE"
-}
+	cd $_pkgname-v$pkgver-x86_64-unknown-linux-gnu
 
-# vim:set noet sts=0 sw=4 ts=4 ft=PKGBUILD:
+	install -Dm755 $_pkgname                       -t "$pkgdir/usr/bin/"
+	install -Dm644 completions/fish/$_pkgname.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+	install -Dm644 completions/zsh/_$_pkgname      -t "$pkgdir/usr/share/zsh/site-functions/"
+	install -Dm644 README.md                       -t "$pkgdir/usr/share/doc/$_pkgname/"
+	install -Dm644 LICENSE-{APACHE,MIT}            -t "$pkgdir/usr/share/licenses/$_pkgname/"
+}
