@@ -1,13 +1,11 @@
 pkgbase = gshowtv
 	pkgdesc = TV program schedule viewer and a Personal Video Recorder GUI
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/gshowtv
 	arch = x86_64
 	license = GPL
-	makedepends = gnome-doc-utils
 	depends = glade-perl
-	depends = gnome-doc-utils
 	depends = gtk2-perl
 	depends = libgnome
 	depends = perl-libintl-perl
@@ -21,4 +19,3 @@ pkgbase = gshowtv
 	md5sums = 600379731e8c8b297b216290773c8f94
 
 pkgname = gshowtv
-
