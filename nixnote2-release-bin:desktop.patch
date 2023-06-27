@@ -6,6 +6,7 @@
  Exec=nixnote2
 -Icon=nixnote2
 +Icon=/usr/share/icons/hicolor/48x48/apps/nixnote2.png
++Icon=/usr/share/icons/hicolor/scalable/apps/nixnote2.svg
  StartupNotify=true
  Terminal=false
  Type=Application
