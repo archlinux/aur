@@ -1,13 +1,13 @@
 pkgname=mathematica-documentation-en
-pkgver=13.1.0
+pkgver=13.2
 pkgrel=1
 pkgdesc="Mathematica Documentation (en)"
 url="http://www.wolfram.com/mathematica/"
 license=("proprietary")
 arch=('any')
-depends=('mathematica')
+depends=('mathematica-light')
 source=("local://WLDocs_${pkgver}_LINUX.sh")
-md5sums=('2e7887e63fafa176a252982fbcbec493')
+md5sums=('31db62eb7df9c937447fdbb48e933c49')
 
 package() {
     sh ${srcdir}/WLDocs_${pkgver}_LINUX.sh -- \
