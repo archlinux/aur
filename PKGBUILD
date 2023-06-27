@@ -3,7 +3,7 @@
 
 pkgname=jfrog-cli
 pkgver=2.40.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64')
 url="https://github.com/jfrog/jfrog-cli"
@@ -24,6 +24,10 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	go build -o ${_cli_name}
+
+	./${_cli_name} completion bash > ${_cli_name}.bash
+	./${_cli_name} completion zsh > ${_cli_name}.zsh
+	./${_cli_name} completion fish > ${_cli_name}.fish
 }
 
 package() {
@@ -35,14 +39,16 @@ package() {
 
 	# build bash completions
 	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
-	./${_cli_name} completion bash > "${pkgdir}/usr/share/bash-completion/completions/${_cli_name}"
+	install -vDm 644 ${_cli_name}.bash "${pkgdir}/usr/share/bash-completion/completions/${_cli_name}"
+	install -vDm 644 ${_cli_name}.bash "${pkgdir}/usr/share/bash-completion/completions/jfrog"
 
 	# build zsh completions
 	mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
-	./${_cli_name} completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_${_cli_name}"
+	install -vDm 644 ${_cli_name}.zsh "${pkgdir}/usr/share/zsh/site-functions/_${_cli_name}"
+	install -vDm 644 ${_cli_name}.zsh "${pkgdir}/usr/share/zsh/site-functions/_jfrog"
 
 	# build fish completions
 	mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
-	./${_cli_name} completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/${_cli_name}.fish"
+	install -vDm 644 ${_cli_name}.fish "${pkgdir}/usr/share/fish/vendor_completions.d/${_cli_name}.fish"
 	echo "complete -c jfrog -w ${_cli_name}" > "${pkgdir}/usr/share/fish/vendor_completions.d/jfrog.fish"
 }
