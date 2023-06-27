@@ -8,6 +8,7 @@ pkgbase = spark-dwine-helper
 	depends = sh
 	depends = zenity
 	depends = p7zip
+	depends = deepin-wine-helper
 	optdepends = noto-fonts-cjk: recommended fonts
 	provides = spark-wine
 	conflicts = spark-dwine-helper
