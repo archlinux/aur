@@ -1,0 +1,12 @@
+pkgbase = vim-zoom
+	pkgdesc = Toggle zoom in / out individual windows (splits)
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/dhruvasagar/vim-zoom
+	arch = any
+	license = MIT
+	depends = vim
+	source = vim-zoom-0.3.4.tar.gz::https://github.com/dhruvasagar/vim-zoom/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = 5ad53b9d1dab364870b9ce8a33aaf9dd423ce0190b65e36fc41f543b4ce21610
+
+pkgname = vim-zoom
