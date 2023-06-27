@@ -1,6 +1,6 @@
 # Maintainer: nullobsi <me at nullob dot si>
 pkgname=beatoraja-modernchic
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Cross-platform rhythm game based on Java and libGDX."
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=()
 install=
 source=("https://mocha-repository.info/download/beatoraja${pkgver}-modernchic.zip" 'beatoraja.sh')
 noextract=()
-sha256sums=('2ad9c5b04d970eb4d2d3ddf935785a8701adbd8379f86e396ab30a5e2810bf6e'
+sha256sums=('1e23fef219cf54abdec821a25c9699ad271ad79d8e156f3c691c9b653bad6032'
             'e3ecfadd046942b8e1bbf686e6d5e0573cc312b6d463f45b2940056cf4239f78')
 
 build() {
