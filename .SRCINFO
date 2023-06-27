@@ -1,6 +1,6 @@
 pkgbase = keydb
 	pkgdesc = A Multithreaded fork of Redis.
-	pkgver = 6.2.1
+	pkgver = 6.3.3
 	pkgrel = 1
 	url = https://keydb.dev
 	install = keydb.install
@@ -14,6 +14,7 @@ pkgbase = keydb
 	makedepends = openssl
 	makedepends = systemd
 	makedepends = tcl
+	makedepends = snappy
 	depends = grep
 	depends = libatomic_ops
 	depends = numactl
@@ -23,7 +24,7 @@ pkgbase = keydb
 	provides = redis=6.2.6
 	backup = etc/keydb/keydb.conf
 	backup = etc/keydb/sentinel.conf
-	source = https://github.com/JohnSully/KeyDB/archive/v6.2.1.tar.gz
+	source = https://github.com/JohnSully/KeyDB/archive/v6.3.3.tar.gz
 	source = keydb-5.0-use-system-jemalloc.patch
 	source = keydb.conf-sane-defaults.patch
 	source = keydb-sentinel.service
