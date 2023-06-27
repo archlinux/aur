@@ -4,7 +4,7 @@
 _pkgname=hyprpicker
 pkgname="$_pkgname-git"
 pkgver=0.1.1.r1.1d05cc3
-pkgrel=1
+pkgrel=2
 pkgdesc="A wlroots-compatible Wayland color picker that does not suck"
 arch=(x86_64)
 url="https://github.com/hyprwm/$_pkgname"
@@ -39,5 +39,7 @@ build() {
 package() {
 	cd $_pkgname
 	install -vDm755 build/hyprpicker -t "$pkgdir/usr/bin/"
-	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -vDm644 LICENSE          -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -vDm644 doc/$_pkgname.1  -t "$pkgdir/usr/share/man/man1/"
+	install -vDm644 README.md        -t "$pkgdir/usr/share/doc/$_pkgname/"
 }
