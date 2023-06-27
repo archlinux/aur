@@ -34,6 +34,7 @@ source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config  # the main kernel config file
   rust-toolchain
+  0001-Fix-Rust-out-of-tree-module-build.patch
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
@@ -43,7 +44,8 @@ validpgpkeys=(
 )
 b2sums=('SKIP'
         'abebdbea9a869a1c26b896345544a8a6171ea91fba5a5038e47b32ca1e97f5c6b2866b3657cb5061b5a4f536e288d202b660769b06729ed7541ab50efef6784f'
-        '901111182b9026f9592306b116bb6b9db02e27af803c5d5db856b5141f383305d0558b42f37a00b1a8112689d21334e4d49c69c8b96fa9cdd605b828b3abcc7a')
+        '901111182b9026f9592306b116bb6b9db02e27af803c5d5db856b5141f383305d0558b42f37a00b1a8112689d21334e4d49c69c8b96fa9cdd605b828b3abcc7a'
+        '60fcfd6703fc06511e8dbf6968189b8d7b8ed0b3676ced50eff1f9f36e4d99fb61491c4c7dadf4b6bcdf14b35dd3e6870bf1c70f5344d2c5a6f91c646de62227')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
