@@ -10,6 +10,6 @@ pkgbase = selenium-ide-appimage
 	conflicts = selenium-ide
 	options = !strip
 	source = selenium-ide-4.0.0alpha.40.AppImage::https://github.com/SeleniumHQ/selenium-ide/releases/download/4.0.0-alpha.40/Selenium.IDE-4.0.0-alpha.40.AppImage
-	sha256sums = 7518b54eafac442e800bc572a4f7bf879d661c923c8166599cf865ae2ad67429
+	sha256sums = f88978219a1b1d78354a6c8929076492953973cfda1b97b3aa14f8a23395f7fd
 
 pkgname = selenium-ide-appimage

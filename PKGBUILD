@@ -13,7 +13,7 @@ depends=('zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/${_pkgver}/Selenium.IDE-${_pkgver}.AppImage")
-sha256sums=('7518b54eafac442e800bc572a4f7bf879d661c923c8166599cf865ae2ad67429')
+sha256sums=('f88978219a1b1d78354a6c8929076492953973cfda1b97b3aa14f8a23395f7fd')
     
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
