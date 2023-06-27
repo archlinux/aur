@@ -1,6 +1,6 @@
 pkgbase = schemaspy
 	pkgdesc = Graphical Database Schema Metadata Browser
-	pkgver = 6.1.0
+	pkgver = 6.2.3
 	pkgrel = 1
 	url = http://schemaspy.sourceforge.net/
 	install = schemaspy.install
@@ -10,9 +10,8 @@ pkgbase = schemaspy
 	depends = bash
 	depends = graphviz
 	provides = schemaspy
-	noextract = schemaspy-6.1.0.jar
-	source = schemaspy-6.1.0.jar::https://github.com/schemaspy/schemaspy/releases/download/v6.1.0/schemaspy-6.1.0.jar
-	sha256sums = 873e4c76907cd6075ca45eb3bccf50c80e8ffe7b0350b1dc29287578c232ff51
+	noextract = schemaspy-6.2.3.jar
+	source = schemaspy-6.2.3.jar::https://github.com/schemaspy/schemaspy/releases/download/v6.2.3/schemaspy-6.2.3.jar
+	sha256sums = 164059a38b514f4771a8a9560f0dbe669d012a3cfdd00b4456c586799c846c09
 
 pkgname = schemaspy
-

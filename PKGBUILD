@@ -1,6 +1,6 @@
 # Maintainer: Simone Cimarelli a.k.a. AquilaIrreale <aquilairreale@ymail.com>
 pkgname=schemaspy
-pkgver=6.1.0
+pkgver=6.2.3
 pkgrel=1
 pkgdesc="Graphical Database Schema Metadata Browser"
 arch=(any)
@@ -12,7 +12,7 @@ install=${pkgname}.install
 _jarname="schemaspy-${pkgver}.jar"
 source=("$_jarname::https://github.com/schemaspy/schemaspy/releases/download/v${pkgver}/${_jarname}")
 noextract=("${_jarname}")
-sha256sums=('873e4c76907cd6075ca45eb3bccf50c80e8ffe7b0350b1dc29287578c232ff51')
+sha256sums=('164059a38b514f4771a8a9560f0dbe669d012a3cfdd00b4456c586799c846c09')
 
 build() {
   msg2 "Generate start script..."
