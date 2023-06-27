@@ -6,7 +6,7 @@
 # - target framework not v4.8
 
 pkgname=eddie-ui-git
-pkgver=2.23.0
+pkgver=2.23.1
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - UI - beta'
 arch=('i686' 'x86_64')
