@@ -7,7 +7,7 @@ arch=('any')
 url="https://apps.gnome.org/app/com.rafaelmardojai.Blanket"
 license=('GPL3')
 depends=('gst-plugins-bad-libs' 'gst-plugins-base' 'gst-plugins-good' 'gst-python'
-         'libadwaita>1.4' 'python-gobject')
+         'libadwaita>=1.4' 'python-gobject')
 makedepends=('blueprint-compiler' 'meson' 'git')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")

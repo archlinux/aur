@@ -13,7 +13,7 @@ pkgbase = blanket-git
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-python
-	depends = libadwaita>1.4
+	depends = libadwaita>=1.4
 	depends = python-gobject
 	provides = blanket
 	conflicts = blanket
