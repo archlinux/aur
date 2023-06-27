@@ -22,32 +22,22 @@ noextract=("${source[@]%%::*}")  # Don't auto-extract anything
 
 
 prepare() {
-  wget -N "$url/$_appimage_path"  # Only download again if server version is newer
-
-  # Make download executable
-  chmod 755 "$_appimage"
-
-  # Extract user resources from inside the AppImage
-  # All files in the directories specified are extracted
-  # Note that --appimage-extract currently doesn't support recursive extraction:
-  # https://github.com/AppImage/AppImageKit/issues/370
   local extract_dirs=(usr/share/applications
                       usr/share/doc/nixnote2
                       usr/share/icons
                       usr/share/man/man1
-                      usr/share/nixnote2
-                      usr/share/nixnote2/help
-                      usr/share/nixnote2/translations)
+                      usr/share/nixnote2)
 
-  # Due to this issue, all --appimage-extract target directories must already exist
-  # https://github.com/AppImage/AppImageKit/issues/363
-  local dir
+  # Extract selected goodness from the AppImage
+  # All files in the directories specified are extracted recursively
+  chmod u+x "$_appimage"
+   # Option --appimage-extract complains if given multiple arguments, so here we go loopy-loo
   for dir in "${extract_dirs[@]}"; do
-    mkdir -p squashfs-root/"$dir"
-    "./$_appimage" --appimage-extract "$dir/*"
+    "./$_appimage" --appimage-extract "$dir"
   done
 
-  rm -r squashfs-root/usr/share/"$_pkgname"/{java,images}  # Remove non-human resources
+  # Remove non-human readable resources
+  rm -r squashfs-root/usr/share/"$_pkgname"/{java,images,translations}
   gzip -9 squashfs-root/usr/share/man/man1/*  # On Arch, all pages are gzipped
 }
 
