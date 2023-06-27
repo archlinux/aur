@@ -1,7 +1,7 @@
 # Maintainer: Raphael Nestler (rnestler) <raphael.nestler@gmail.com>
 
 pkgbase=linux-rust
-pkgver=6.3.8.arch1
+pkgver=6.3.9.arch1
 pkgrel=1
 pkgdesc='Rust Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
