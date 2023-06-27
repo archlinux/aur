@@ -1,22 +1,37 @@
+# To use Qt6 build, set QT6_BUILD environment variable. Example:
+# QT6_BUILD=1 makepkg -si
+
 pkgname=torrent-file-editor
-pkgver=0.3.17
-pkgrel=3
-pkgdesc='Cross-platform application intended to create and edit .torrent and uTorrent .dat files.'
+pkgver=0.3.18
+pkgrel=1
+pkgdesc='Qt based GUI tool designed to create and edit .torrent files'
 arch=('x86_64')
 url="https://${pkgname}.github.io/"
 license=('GPL3')
-depends=('qt5-base')
-makedepends=('cmake' 'qt5-tools')
 
-_commit='1ae5f71c3d52fae924efa71b0d8e5893a9ceb2c5'
-_snapshot="${pkgname}-${_commit}"
+if [ "${QT6_BUILD}" ]; then
+    depends=('qt6-base')
+    makedepends=('cmake' 'qt6-tools' 'qt6-5compat')
+    _buildflag='QT6_BUILD=1'
+else
+    depends=('qt5-base')
+    makedepends=('cmake' 'qt5-tools')
+    _buildflag='QT5_BUILD=1'
+fi
 
-source=("${pkgname}-${pkgver}-${_commit:0:7}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${_commit}.tar.gz")
-sha256sums=('a0fcfd43f7fb641e64a32919921761df84e06d78531ad45070f367a1f01e7e6e')
+_snapshot="${pkgname}-${pkgver}"
+source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${_snapshot}.tar.gz")
+sha256sums=('29977de90102242eb3136031f167a8614efb852519bdc515393191b9088e171c')
+
+prepare() {
+    # Fix wrong app version in the source
+    sed -i "s/set(APP_VERSION .*)/set(APP_VERSION \"${pkgver}\")/;" "${_snapshot}/CMakeLists.txt"
+}
 
 build() {
     cmake -B "build" -S "${_snapshot}" \
-        -DCMAKE_INSTALL_PREFIX=/usr
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        "-D${_buildflag}"
 
     cmake --build "build"
 }
