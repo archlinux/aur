@@ -1,32 +1,28 @@
-# Maintainer: Milan Toth <milgra@milgra.com>
+# Maintainer: éclairevoyant
+# Contributor: Milan Toth <milgra at milgra dot com>
 
 pkgname=sov
-pkgver=0.87b
+pkgver=0.92b
 pkgrel=1
-pkgdesc='An overview application for sway'
-arch=('i686' 'x86_64')
-url='https://github.com/milgra/sov'
-license=('GPL3')
-depends=('wayland' 'freetype2' 'libpng' 'libgl' 'libegl' 'glew' )
-makedepends=('meson' 'ninja' 'pkg-config' 'wayland-protocols' )
-source=(
-	"${pkgname}-${pkgver}.tar.xz::https://github.com/milgra/sov/releases/download/${pkgver}/sov-${pkgver}.tar.xz"
-)
-
-sha256sums=(
-        '29a960c63b2c55c6863b2f12c54f6b878930eea2ed7e8045335554bc418f3314'
-)
+pkgdesc='Overview application for sway'
+arch=(i686 x86_64)
+url="https://github.com/milgra/$pkgname"
+license=(GPL3)
+depends=(freetype2 glew libegl libgl libpng libxkbcommon wayland)
+makedepends=(meson ninja pkg-config wayland-protocols)
+source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"{,.sha256sum})
+sha256sums=('946c711131fda1d795675c3097dc1b4cb60db771bb379b57e19727404b48460b'
+            'SKIP')
 
 prepare() {
-	cd "${pkgname}-${pkgver}"
+	sha256sum -c $pkgname-$pkgver.tar.xz.sha256sum
 }
 
 build() {
-	mkdir -p build
-	arch-meson build "${pkgname}-${pkgver}" --buildtype=release
-	ninja -C build
+	arch-meson $pkgname-$pkgver build --buildtype=release
+	meson compile -C build
 }
 
 package() {
-	DESTDIR="${pkgdir}" ninja -C build install
+	meson install -C build --destdir "$pkgdir"
 }
