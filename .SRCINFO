@@ -1,6 +1,6 @@
 pkgbase = cellframe-node
 	pkgdesc = Cellframe blockchain node with a powerful SDK
-	pkgver = 5.2.176
+	pkgver = 5.2.177
 	pkgrel = 1
 	url = https://cellframe.net
 	install = cellframe-node.install
@@ -18,7 +18,7 @@ pkgbase = cellframe-node
 	backup = opt/cellframe-node/etc/cellframe-node.cfg
 	source = git+https://gitlab.demlabs.net/cellframe/cellframe-node.git#commit=d1ab3fc78d9c552ad6315fe6fd2cafd33f59410e
 	source = git+https://gitlab.demlabs.net/dap/dap-sdk.git#commit=f11700de7f924d6f09a433fa8e02bff1b5bedcc1
-	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=e5602cd2a5cdb65d4d1e7cc97ce1f74f7468024a
+	source = git+https://gitlab.demlabs.net/cellframe/cellframe-sdk.git#commit=0ec679d61c89c2cd23cd133217c162de6116bee5
 	source = git+https://gitlab.demlabs.net/cellframe/python-cellframe.git#commit=6330b7b12d9f7ece29f683fb8b396ecce702d84a
 	source = raiden.cfg
 	source = riemann.cfg
