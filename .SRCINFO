@@ -1,15 +1,14 @@
 pkgbase = tagscanner
 	pkgdesc = Powerful tool for organizing and managing your music collection
-	pkgver = 6.1.6
+	pkgver = 6.1.15
 	pkgrel = 1
 	url = https://www.xdlab.ru/en/
 	arch = x86_64
 	license = custom
 	depends = wine
 	source = tagscanner.sh
-	source = https://www.xdlab.ru/files/tagscan-6.1.6_x64.zip
+	source = https://www.xdlab.ru/files/tagscan-6.1.15_x64.zip
 	md5sums = 2a07e489f02b4897ff10f818309101d7
-	md5sums = da34c4741e274268cd89704ef1feffbb
+	md5sums = e12c755721592fdbad220b9d199a90c3
 
 pkgname = tagscanner
-
