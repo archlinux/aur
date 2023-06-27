@@ -1,15 +1,15 @@
 pkgbase = deckboard-appimage
 	pkgdesc = Control your PC with your phone in easy way possible.
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://deckboard.app/
 	arch = x86_64
-	license = unknown
+	license = custom
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
 	options = !strip
-	source = deckboard-2.1.3.AppImage::https://github.com/rivafarabi/deckboard/releases/download/v2.1.3/Deckboard-2.1.3.AppImage
-	sha256sums = f3aae1b649599430cb8a3f33d9eb6d5a633d7288c9330ca424f3afaf3514f409
+	source = deckboard-2.1.4.AppImage::https://github.com/rivafarabi/deckboard/releases/download/v2.1.4/Deckboard-2.1.4.AppImage
+	sha256sums = 19658130fc270129d037ada198f4e29952ecfe82d1e4d03dbcd7e927a6850e44
 
 pkgname = deckboard-appimage
