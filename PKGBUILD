@@ -2,7 +2,7 @@
 
 pkgname=projectable
 _binname=prj
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A TUI file manager built for projects."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dzfrias/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('9add5870d108af8ea9e77b9862541870b48d8fd71c15955181157db514bdaf7a')
+sha256sums=('7cc43db900f016219ca8e742f2f34d7d0389130fcc240d67ab50547a8d268f31')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -27,12 +27,11 @@ build() {
     cargo build --frozen --release --all-features
 }
 
-# Uncomment next release when tests works again, project works fine, the problem come from the tests
-#check() {                       - 
-#    cd "$pkgname-$pkgver"
-#    export RUSTUP_TOOLCHAIN=stable
-#    cargo test --frozen --all-features
-#}
+check() { 
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
+}
 
 package() {
     cd "$pkgname-$pkgver"
