@@ -2,8 +2,8 @@
 # Maintainer: Jean-Michaël Celerier <jeanmichael.celerier@gmail.com>
 
 pkgname=ossia-score-appimage
-pkgver=3.0.3
-_pkgver=3.0.3
+pkgver=3.1.11
+_pkgver=3.1.11
 pkgrel=1
 pkgdesc="an interactive sequencer for the intermedia arts."
 arch=('x86_64')
@@ -12,8 +12,9 @@ license=('GPLv3')
 depends=('glib2' 'jack' 'avahi')
 source=("score.AppImage::https://github.com/ossia/score/releases/download/v${_pkgver}/ossia.score-${_pkgver}-linux-amd64.AppImage"
         "ossia-score")
-sha512sums=('1f386fe0adb9bcab048e2dd08f955ad9b43fde9025c7348ab0bcf322d8033d29c39a49b6bb86bce2cd40b510976b471760cb25861ce86db70bbe286c2a44ed01'
-    '2a78deed52bf1bcb1abad9b0319c483aef91c16648e45a96a58162f536fb79ce06f92c5f622b547e9cef63e4cf751ce2142fc1f29ae29e470944d35b3d192ba2')
+sha512sums=('3093ef7561dcab08bd5ff54d54ad556ccb4398734f11a57529ed2e9e69597cecea12e0b571fbdef33a6219268e207cc21bc08a30ae2d85db895cde02a3409244'
+            '2a78deed52bf1bcb1abad9b0319c483aef91c16648e45a96a58162f536fb79ce06f92c5f622b547e9cef63e4cf751ce2142fc1f29ae29e470944d35b3d192ba2')
+
 package() {
   # Extract AppImage
   chmod +x score.AppImage
