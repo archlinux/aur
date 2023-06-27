@@ -1,10 +1,10 @@
-# Maintainer: olddog <jeff@impcode.com>
+# Contributor: olddog <jeff@impcode.com>
 # Contributer: kaptoxic
 # Contributor: carloratm <carlo.ratm@gmail.com>
 
 pkgname=barman
 _realname=barman
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   streaming-server.conf-template
 )
 
-md5sums=('0871b16e19453ea57ffb55cee2198c6d'
+md5sums=('9bfd312f8675d679a1d09e79dd31b205'
          '0e48345895f88b3939543c00928a199b'
          '58c5b20b8e1272ab4ce46757f6613e0d'
          'b43254374978938f7d21035a3356b531'
