@@ -8,7 +8,7 @@ pkgname=(
     lib32-gst-plugins-bad-libs
     lib32-gst-plugins-bad
 )
-pkgver=1.22.3
+pkgver=1.22.4
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -19,16 +19,19 @@ makedepends=(
     # superproject
     git meson lib32-gstreamer lib32-gst-plugins-{base,good} wayland-protocols
 
+	# gst-plugins-bad-libs
+	lib32-gst-plugins-base-libs lib32-libgudev lib32-openjpeg2 lib32-orc
+
     # gst-plugins-bad
-    lib32-vulkan-icd-loader vulkan-headers lib32-vulkan-validation-layers lib32-shaderc lib32-libusb lib32-libdc1394
+    lib32-vulkan-icd-loader vulkan-headers lib32-vulkan-validation-layers lib32-shaderc lib32-libusb lib32-libdc1394 lib32-srt
     libltc lib32-bluez-libs lib32-libavtp lib32-libbs2b lib32-bzip2 lib32-chromaprint lib32-libdca lib32-faac lib32-faad2
     lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-libkate lib32-liblrdf lib32-ladspa lib32-libde265 lib32-lilv lib32-lv2
-    lib32-mjpegtools lib32-libmpcdec lib32-neon lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch
-    lib32-spandsp lib32-libsrtp lib32-zvbi lib32-libnice lib32-webrtc-audio-processing lib32-wildmidi
-    lib32-zbar lib32-nettle lib32-libxml2 lib32-gsm lib32-json-glib lib32-libva lib32-libxkbcommon-x11
+    lib32-mjpegtools lib32-libmpcdec lib32-neon lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch lib32-x265
+    lib32-spandsp lib32-libsrtp lib32-zvbi lib32-libnice lib32-webrtc-audio-processing lib32-wildmidi lib32-libass lib32-libwebp
+    lib32-zbar lib32-nettle lib32-libxml2 lib32-gsm lib32-json-glib lib32-libva lib32-libxkbcommon-x11 lib32-libmodplug lib32-aom
 
     # gst-plugins-ugly
-    lib32-a52dec lib32-opencore-amr lib32-libcdio lib32-libdvdread lib32-libmpeg2 lib32-libsidplay lib32-x264
+    lib32-a52dec lib32-opencore-amr lib32-libcdio lib32-libdvdread lib32-libmpeg2 lib32-x264
 
     # gst-libav
     lib32-ffmpeg
@@ -42,7 +45,7 @@ source=(
 )
 sha256sums=('SKIP'
             '0cfce6cad2d9fc55fe36e4ca48ec8aa33106cc1f778ddf0ae47362d230e5539b'
-            '9fda6342fb1cbb29dab7ac46e277eee7272b119efee770e72e7d972621fc1e7e')
+            '951edc965cce062b3a08048297c9d66ff264eed5d8e884170706e4854c9f92df')
 validpgpkeys=(D637032E45B8C6585B9456565D2EEE6F6F349D7C) # Tim Müller <tim@gstreamer-foundation.org>
 
 pkgver() {
@@ -81,9 +84,11 @@ build() {
   local meson_options=(
     --libdir=lib32
     --libexecdir=lib32
+    # Superproject options
     -D devtools=disabled
     -D doc=disabled
     -D examples=disabled
+    -D gobject-cast-checks=disabled
     -D ges=disabled
     -D gpl=enabled
     -D gst-examples=disabled
@@ -91,23 +96,32 @@ build() {
     -D libav=disabled
     -D libnice=disabled
     -D omx=disabled
-    -D orc=disabled
+    -D orc-source=system
+    -D package-origin="https://www.archlinux.org/"
+
+    # Package names
+    -D gst-plugins-bad:package-name="Arch Linux lib32-gst-plugins-bad $pkgver-$pkgrel"
+    -D gst-plugins-ugly:package-name="Arch Linux lib32-gst-plugins-ugly $pkgver-$pkgrel"
+    -D gst-libav:package-name="Arch Linux lib32-gst-libav $pkgver-$pkgrel"
     -D python=disabled
     -D qt5=disabled
     -D rs=disabled
     -D rtsp_server=disabled
     -D sharp=disabled
+    -D vaapi=disabled
     -D base=disabled # already in repo
     -D good=disabled # already in repo
     -D gstreamer=disabled # already in repo
+
     # package scoped
     -D libav=enabled
     -D ugly=enabled
     -D bad=enabled
     # subprojects
     -D gst-plugins-bad:directfb=disabled
+    -D gst-plugins-bad:directshow=disabled
+    -D gst-plugins-bad:directsound=disabled
     -D gst-plugins-bad:flite=disabled
-    -D gst-plugins-bad:gobject-cast-checks=disabled
     -D gst-plugins-bad:gs=disabled
     -D gst-plugins-bad:iqa=disabled
     -D gst-plugins-bad:isac=disabled
@@ -116,8 +130,6 @@ build() {
     -D gst-plugins-bad:openh264=disabled
     -D gst-plugins-bad:openni2=disabled
     -D gst-plugins-bad:opensles=disabled
-    -D gst-plugins-bad:package-name="Arch Linux gst-plugins-bad $pkgver-$pkgrel"
-    -D gst-plugins-bad:package-origin="https://www.archlinux.org/"
     -D gst-plugins-bad:tinyalsa=disabled
     -D gst-plugins-bad:voaacenc=disabled
     -D gst-plugins-bad:voamrwbenc=disabled
@@ -137,23 +149,17 @@ build() {
     -D gst-plugins-bad:wpe=disabled # due to no lib32-wpe support
     -D gst-plugins-bad:zxing=disabled # due to no lib32-zxing support
     -D gst-plugins-bad:amfcodec=disabled # only support windows
-    -D gst-plugins-bad:directshow=disabled # only support windows
-
-    -D gst-plugins-ugly:gobject-cast-checks=disabled
-    -D gst-plugins-ugly:package-name="Arch Linux gst-plugins-ugly $pkgver-$pkgrel"
-    -D gst-plugins-ugly:package-origin="https://www.archlinux.org/"
-
-    -D gst-libav:package-name="Arch Linux gst-libav $pkgver-$pkgrel"
-    -D gst-libav:package-origin="https://www.archlinux.org/"
+    -D gst-plugins-ugly:sidplay=disabled
   )
 
   arch-meson gstreamer build "${meson_options[@]}"
+  meson configure build  # Print config
   meson compile -C build
 }
 
 check() (
-  mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
-  export XDG_RUNTIME_DIR
+  export XDG_RUNTIME_DIR="$PWD/runtime-dir"
+  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
 
   # Flaky due to timeouts
   xvfb-run -s '-nolisten local' \
@@ -243,7 +249,7 @@ package_lib32-gst-plugins-ugly() {
   pkgdesc+=" - ugly plugins"
   depends=(
     "lib32-gst-plugins-base-libs>=$pkgver"
-    lib32-libdvdread lib32-libmpeg2 lib32-a52dec lib32-libsidplay lib32-libcdio lib32-x264 lib32-opencore-amr
+    lib32-libdvdread lib32-libmpeg2 lib32-a52dec lib32-libcdio lib32-x264 lib32-opencore-amr
   )
   replaces=('lib32-gst-plugins-ugly-latest')
 
