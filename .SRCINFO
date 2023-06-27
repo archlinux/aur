@@ -1,9 +1,8 @@
 pkgbase = haskell-htrace
 	pkgdesc = Hierarchical tracing for debugging of lazy evaluation
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/htrace
-	install = haskell-htrace.install
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
@@ -13,4 +12,3 @@ pkgbase = haskell-htrace
 	md5sums = 09c98ce2b002e15a45bc8269cfe6aef6
 
 pkgname = haskell-htrace
-
