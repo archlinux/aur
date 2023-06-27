@@ -1,3 +1,4 @@
+# Maintainer: Diego Frias <styx5242@gmail.com>
 # Maintainer: Ayoub Canon <imkonnu@gmail.com>
 
 pkgname=projectable
