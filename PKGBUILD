@@ -1,7 +1,7 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=haskell-bytestring-builder
-pkgver=0.10.8.1.0
+pkgver=0.10.8.2.0
 pkgrel=1
 pkgdesc="Provides methods for fully evaluating data structures (deep evaluation)"
 arch=('i686' 'x86_64')
@@ -9,9 +9,8 @@ makedepends=('ghc')
 url="https://github.com/lpsmith/bytestring-builder"
 license=('BSD3')
 source=(${pkgname#haskell-}-$pkgver.tar.gz::https://codeload.github.com/lpsmith/${pkgname#haskell-}/tar.gz/v$pkgver)
-sha256sums=('030e668719f9dc7e6e229cb5ad424be0edfba267475f36885626b1ed0fc7e271')
+sha256sums=('bd526451a59582faee30900fda7f140094202abe6966d0578e32eaf3c999a623')
 options=('strip')
-install=bytestring-builder.install
 
 build() {
   cd "$srcdir/${pkgname#haskell-}-$pkgver"
