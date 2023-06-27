@@ -1,7 +1,7 @@
 # Maintainer: Popkornium18 <mail@popkornium18.de>
 pkgname=audiotag
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple command line audio tagger written in python3"
 arch=("any")
 url="https://github.com/Popkornium18/audiotag"
