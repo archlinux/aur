@@ -4,7 +4,7 @@ pkgname=flaresolverr-bin
 _pkgname=flaresolverr
 __pkgname=FlareSolverr
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A proxy server to bypass Cloudflare protection'
 arch=('x86_64')
 url='https://github.com/FlareSolverr/FlareSolverr'
@@ -15,13 +15,13 @@ depends=('alsa-lib' 'at-spi2-core' 'bash' 'bzip2' 'cairo' 'dbus' 'expat' 'gcc-li
 conflicts=('flaresolverr' 'flaresolverr-git')
 options=('!strip')
 install='flaresolverr.install'
-source=("https://github.com/${__pkgname}/${__pkgname}/releases/download/v${pkgver}/${_pkgname}_linux_x64.tar.gz"
+source=(${_pkgname}-${pkgver}.tar.gz::"https://github.com/${__pkgname}/${__pkgname}/releases/download/v${pkgver}/${_pkgname}_linux_x64.tar.gz"
         "https://raw.githubusercontent.com/${__pkgname}/${__pkgname}/v${pkgver}/LICENSE"
         "flaresolverr.service"
         "flaresolverr.sysusers"
         "flaresolverr.tmpfiles"
         "flaresolverr.install")
-sha512sums=('c7f6d13831c1c271006599ae88f9e0bee0c56355eacb9e7fbab069aaafcbb9aee9e30726a9b3519e23f73f9a8c75d60d75551fe1da381f94b5adaacc155fd9cf'
+sha512sums=('73ada6e0ce3a97ad917a9ab894321954beba443a08bf39bf9a34075bc588d620235135bd89615275e8ae6858ee42b5c5e2019a4954d44831f122785a6b8f36a4'
             'ea3aa3af56f503faa7cae884748386ddd87aa7887d1dd3ec010270510c6b477a2627efde3ebddaf60f414d0a5eb34964464c212219cd5423efd0303a7055fc54'
             '7e3c7292c16103be75e5f6caaea1b70e9b1be72d54a7594e666cb95061d23c72aa93aa8510891f4821c19979d0199852f4f587ec392aa12e92bfffb06a1a6bf8'
             '0423d10d964a187e5a153140597e7cee3a6112bf6569dfcda7848bfbce4e5660534db3bdbe4a4de9a63fbf0ecc2b874937afd94495691f76176243d2ac4b080d'
