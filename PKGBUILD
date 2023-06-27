@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Goy <kuon@goyman.com>
 
 pkgname=front-panel-designer-eu
-pkgver=6.3.5
+pkgver=6.3.6
 pkgrel=1
 epoch=
 pkgdesc="Free CAD software for front panel design"
@@ -15,13 +15,13 @@ options=(!strip)
 source_x86_64=(
 "https://assets.schaeffer-ag.de/fpd/Version-$pkgver/FrontDesign-EU-$pkgver-amd64.AppImage"
 "front-panel-express-eu.desktop")
-md5sums_x86_64=("7022edbb8558937ebfb22ca533b51fd3" "d34b7ed5d87a206fe8b50fd4a8f8e167")
+md5sums_x86_64=("eb8b7da86c84aa727f00b7990743da4d" "d34b7ed5d87a206fe8b50fd4a8f8e167")
 noextract=("FrontDesign-EU-$pkgver-amd64.AppImage")
 
 
 prepare() {
     rm FrontDesign-EU-$pkgver-amd64.AppImage
-    cp -L ../FrontDesign-EU-$pkgver-amd64.AppImage . 
+    cp -L ../FrontDesign-EU-$pkgver-amd64.AppImage .
 }
 
 build() {
@@ -31,7 +31,7 @@ build() {
     cd tmp
     ../FrontDesign-EU-$pkgver-amd64.AppImage --appimage-extract
 
-    # fix AppImage 
+    # fix AppImage
     rm squashfs-root/usr/lib/libgmodule-2.0.so.0
 
     # save and unset SOURCE_DATE_EPOCH for appimagetool
