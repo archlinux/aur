@@ -3,7 +3,7 @@
 _target=aarch64-none-elf
 pkgname=$_target-gdb
 pkgver=13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Debugger for the ARM64 Baremetal target'
 arch=(i686 x86_64)
 url='https://www.gnu.org/software/gdb/'

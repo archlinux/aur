@@ -1,7 +1,7 @@
 pkgbase = aarch64-none-elf-gdb
 	pkgdesc = The GNU Debugger for the ARM64 Baremetal target
 	pkgver = 13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/gdb/
 	arch = i686
 	arch = x86_64
