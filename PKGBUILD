@@ -9,8 +9,9 @@ pkgdesc='Evernote clone (formerly Nevernote) - git checkout'
 url="https://github.com/robert7/$_pkgname"
 arch=(x86_64 i686 pentium4)
 license=(GPL3)
-depends=(hunspell java-runtime hicolor-icon-theme poppler-qt5 tidy qt5-webkit)
+depends=(curl gcc-libs glibc hunspell java-runtime hicolor-icon-theme poppler-qt5 tidy qt5-base qt5-declarative qt5-webkit)
 makedepends=(boost gcc git qt5-tools)
+conflicts=(nixnote2-appimage)
 provides=("nixnote=${pkgver%.r*}" "$_pkgname=${pkgver%.r*}")
 replaces=(nevernote nixnote nixnote-beta)
 source=("git+${url}.git"  tidy-source-dir-location.patch)
