@@ -1,4 +1,4 @@
-pkgbase = dailyverse-cli
+pkgbase = dailyverse-cli-git
 	pkgdesc = Daily verse software
 	pkgver = 1.0.0
 	pkgrel = 1
