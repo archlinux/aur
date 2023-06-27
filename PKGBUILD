@@ -1,16 +1,13 @@
 pkgname=got
-_pkgname=got
-pkgver=0.5.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Simple golang package and CLI tool to download large files faster than cURL and Wget!'
 arch=('x86_64' 'arm64')
 url="https://github.com/melbahja/$pkgname"
 license=('MIT')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 makedepends=('go')
-source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('831de393264de9fcaf40171477142dc0a537501ed86a8c39e08e33e2815d36f1')
+source=(${pkgname}-${pkgver}.tar.gz::"$url/archive/v$pkgver.tar.gz")
+sha256sums=('b955baa729f7f7c0ddda9fe2a777e3ecfb25443839b894d4723262e382eadcc8')
 
 prepare(){
 	cd "$pkgname-$pkgver"
