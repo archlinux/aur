@@ -37,8 +37,9 @@ prepare() {
   # Note that --appimage-extract currently doesn't support recursive extraction:
   # https://github.com/AppImage/AppImageKit/issues/370
   local extract_dirs=(usr/share/applications
-                      usr/share/man/man1
+                      usr/share/doc/nixnote2
                       usr/share/icons
+                      usr/share/man/man1
                       usr/share/nixnote2
                       usr/share/nixnote2/help
                       usr/share/nixnote2/translations)
