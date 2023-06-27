@@ -2,7 +2,7 @@
 
 pkgname=stdin-to-modbus-shm
 pkgrel=1
-pkgver=1.1.2
+pkgver=1.1.3
 pkgdesc="Read instructions from stdin and write them to a modbus shared memory"
 url="https://github.com/NikolasK-source/stdin_to_modbus_shm"
 license=('MIT')
