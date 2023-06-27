@@ -1,4 +1,4 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Chris Lane <aur at chrislane dot com>
 # Contributor: American_Jesus <american.jesus.pt AT gmail DOT com>
 # Contributor: Federico Damián <federicodamians@gmail.com>
