@@ -23,8 +23,8 @@ source=(
 )
 noextract=("$pkgname-${pkgver}${pkgsuffix}.tgz")
 sha256sums=('957c72feec7a07b22a885fb2e96efc79f784f730ce411ce8758b024e775164e9'
-            '409c31aad182fcaab45d13ab56e82333eb47a846f42b184007c17756eb780684'
-            '976b1c9a3b22551f8b28b8ce152da1f71b0d32b4e0e08986549f9ff881b48875'
+            '946908b3762977d52ce16b8e3c8cc6eda04d2b5c1a718a8075188971d6bbc63d'
+            '0cefc73b1dc4f8dcbd833bea57bed096aac11e91970fadc43cd75e159cfc8af0'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
             'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
             '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
