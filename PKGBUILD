@@ -50,7 +50,7 @@ _disable_debug=y
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20230609.r0.g53ab6975c12d
+pkgver=20230627.r0.g53cdf865f90b
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -59,12 +59,12 @@ url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python')
-_lucjanver=6.3
+_lucjanver=6.4
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
-        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -226,7 +226,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -326,5 +326,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            'bc576268e8c8b238967de07aa26347b425395c582fd03088724fd80feddf504183325db12f769fa56ce60c66e847dd33000a566d3e57ad96cbc3b6414fa5f4dd'
-            '6c445b92e0fe9af56f4c005dfef993e6f6b597ae49c2456812a481e39283709704d087f35be676b5d8af0345053652e736d90a88d837bf80ea82ee1c71cc6a67')
+            'a577b74a51232272a1edd210c151259a163c6c677468e572c43aeb3f18fbfe4cc92bb73d40d83b1b3a8341f3afd2c78a08306c77e40e1ec5f83b6ccead589183'
+            'af48c2cd8229e2260a2665131443786ce6efa63b928f919f3da939a349082e521fec76d2c9f1b928c72157217fe4e2702d9b6d427aa8f52ada911f55f4fcce12')
