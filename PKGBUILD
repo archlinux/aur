@@ -82,6 +82,8 @@ package() {
 
   install -Dm664 service/profiles/* "${pkgdir}/etc/legion_linux/"
   install -Dm664 service/profiles/* "${pkgdir}/etc/legion_linux/"
+
+  install -Dm775 service/fancurve-set "${pkgdir}/usr/bin/fancurve-set
 	
 # ACPI service
   install -Dm775 acpi/actions/battery-legion-quiet.sh "${pkgdir}/etc/acpi/actions/"
