@@ -1,7 +1,7 @@
 pkgbase = haskell-hscurses
 	pkgdesc = NCurses bindings for Haskell
 	pkgver = 1.4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hackage.haskell.org/package/hscurses
 	arch = i686
 	arch = x86_64

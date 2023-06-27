@@ -4,7 +4,7 @@
 _hkgname=hscurses
 pkgname=haskell-hscurses
 pkgver=1.4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="NCurses bindings for Haskell"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('LGPL')
