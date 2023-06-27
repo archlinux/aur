@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqmagick
-_pkgver=0.1.5
+_pkgver=0.1.6
 pkgname=r-${_pkgname,,}
-pkgver=0.1.5
-pkgrel=4
+pkgver=0.1.6
+pkgrel=1
 pkgdesc='Sequence Manipulation Utilities'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -26,7 +26,7 @@ optdepends=(
   r-rsamtools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6facd51e9b7bb68c1b59e61c6fea07a6042d26d78f81eda4ba754c84ba6e3b40')
+sha256sums=('4f872c7b3f39e5b21a5820478102e0b39ecf5d7e2a12dfba263568ab250ab1f5')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
