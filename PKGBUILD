@@ -1,14 +1,14 @@
-# Maintainer : Immae <ismael.bouya@normalesup.org>
+# Contributor: Immae <ismael.bouya@normalesup.org>
 
 pkgname=dash-static
-pkgver=0.5.11.3
+pkgver=0.5.12
 pkgrel=1
 pkgdesc="POSIX compliant shell that aims to be as small as possible. Statically compiled"
 arch=('x86_64')
 url="http://gondor.apana.org.au/~herbert/dash/"
 license=('BSD')
 source=("http://gondor.apana.org.au/~herbert/dash/files/dash-${pkgver}.tar.gz")
-sha512sums=('ffe69b8de3586aba298d936168c329524e385252e12979aa1db28761e882048eb5a80673e93a2a2227f61b52fd8b56546b78c5db9c21a022072f536267f8bc20')
+sha512sums=('13bd262be0089260cbd13530a9cf34690c0abeb2f1920eb5e61be7951b716f9f335b86279d425dbfae56cbd49231a8fdffdff70601a5177da3d543be6fc5eb17')
 
 
 build () {
