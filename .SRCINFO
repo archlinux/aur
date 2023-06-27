@@ -1,10 +1,14 @@
 pkgbase = mockplus-dt-font-agent-bin
 	pkgdesc = Mockplus DT - Font Agent
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mockplus.cn/dt
 	arch = any
 	license = custom
+	depends = fontconfig
+	depends = freetype2
+	depends = libevent
+	depends = nlohmann-json
 	provides = mockplus-dt-font-agent
 	source = mockplus-dt-font-agent.zip::https://dt.mockplus.cn/plugin-downloads/MockplusDTFontAgentInstall_linux_v1.0.2.zip
 	sha512sums = 7223c1594ac223c3232fa2548a56b54d471d580e0b9b723b8a62a0f63f98ca48651983aed123a261f8a2c92209086d78ed1edb4ee962c8032eb78f1e807c64da
