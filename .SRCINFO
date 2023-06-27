@@ -1,0 +1,12 @@
+pkgbase = rmd-bin
+	pkgdesc = Scrapes Reddit to download media of your choice
+	pkgver = 3.1.5
+	pkgrel = 1
+	url = https://github.com/shadowmoose/RedditDownloader
+	arch = x86_64
+	license = custom:none
+	options = !strip
+	source = rmd-3.1.5::https://github.com/shadowmoose/RedditDownloader/releases/download/3.1.5/RMD-ubuntu
+	sha256sums = bc6df5d89a8bab9d409eb7c4dfbd31167988e5e3f50bd3663d2dc44868a48567
+
+pkgname = rmd-bin
