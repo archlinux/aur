@@ -1,7 +1,7 @@
 # Maintainer Chris Werner Rau <aur@cwrau.io>
 
 pkgname=gopass-fuse
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Virtual mount for gopass password manager"
 license=('APACHE')
@@ -21,4 +21,3 @@ package() {
 }
 
 #vim: syntax=sh
-

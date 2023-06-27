@@ -1,6 +1,6 @@
 pkgbase = gopass-fuse
 	pkgdesc = Virtual mount for gopass password manager
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	arch = x86_64
 	license = APACHE
