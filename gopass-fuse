@@ -58,10 +58,6 @@ class File(Entry):
 
     @property
     def content(self):
-        if time() > self.expiration:
-            self.loaded = False
-            self.__cached_content = None
-
         if self.loaded:
             return self.__cached_content
         raise FuseOSError(errno.EIO)
@@ -198,7 +194,9 @@ class GopassFilesystem(LoggingMixIn, Operations):
             return entry
 
     def get_file_content(self, file: File) -> Union[str, None]:
-        if not file.loaded:
+        if not file.loaded or time() > file.expiration:
+            file.loaded = False
+            file.content = None
             secret: Union[str, None] = get_secret(file)
             if secret is None:
                 raise FuseOSError(errno.EIO)
