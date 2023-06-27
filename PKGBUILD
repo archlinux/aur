@@ -14,7 +14,7 @@ backup=('etc/screenrc' 'etc/pam.d/screen')
 options=('!strip')
 
 pkgver() {
-  _srcname=$(curl -Lsf "https://www.archlinux.org/packages/community/${CARCH}/${_pkgname}/json" |sed 's/^.*"filename" *: *"\([^,]*\)".*$/\1/')
+  _srcname=$(curl -Lsf "https://www.archlinux.org/packages/extra/${CARCH}/${_pkgname}/json" |sed 's/^.*"filename" *: *"\([^,]*\)".*$/\1/')
   [ -n "$_srcname" ]
   IFS='-' read -ra ver <<< "$_srcname"
   echo "$_srcname" > srcname
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   _srcname=$(cat srcname)
   cd ..
-  curl -fLR {-o,-z}"$_srcname" "https://mirror.pkgbuild.com/community/os/${CARCH}/$_srcname"
+  curl -fLR {-o,-z}"$_srcname" "https://mirror.pkgbuild.com/extra/os/${CARCH}/$_srcname"
 }
 
 package() {
