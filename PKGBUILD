@@ -55,8 +55,12 @@ build() {
     ./bootstrap
     ./configure --prefix=/usr \
         --libexecdir=/usr/lib/poedit \
-        --with-cld2=yes \
-        --with-cpprest=yes
+        --with-gtk=3 \
+        --without-opengl \
+        --with-sdl \
+        --enable-webview \
+        --with-cxx=14 \
+        --enable-stl
 
     make CPPFLAGS+=' -DUCHAR_TYPE=uint16_t'
 }
