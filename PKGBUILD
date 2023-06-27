@@ -52,11 +52,6 @@ prepare() {
     "./$_appimage" --appimage-extract "$dir/*"
   done
 
-  # Save version of extracted files for pkgver() in `makepkg -e`
-  [[ $_appimage_path =~ /releases/download/v([^/]+).* ]]
-  local version=${BASH_REMATCH[1]}
-  echo ${version//-/.} >| "$_version_file"
-
   rm -r squashfs-root/usr/share/"$_pkgname"/{java,images}  # Remove non-human resources
 
   # Directories are extracted with no permissions for group and other. Fix:
@@ -68,7 +63,7 @@ prepare() {
 
 
 pkgver() {
-    cat "$_version_file"
+    sed 's/-/./' squashfs-root/usr/share/nixnote2/build-version.txt
 }
 
 
