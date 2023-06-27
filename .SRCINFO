@@ -1,0 +1,14 @@
+pkgbase = miru-git
+	pkgdesc = Bittorrent streaming software for cats
+	pkgver = 4.1.2
+	pkgrel = 1
+	url = https://github.com/ThaUnknown/miru
+	arch = any
+	license = GPL-3.0
+	depends = xdg-utils
+	depends = pnpm
+	conflicts = miru-bin
+	source = git+https://github.com/ThaUnknown/miru
+	sha256sums = SKIP
+
+pkgname = miru-git
