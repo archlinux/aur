@@ -2,7 +2,7 @@
 
 pkgname=python-pglast
 _pkgname="${pkgname#python-}"
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc='PostgreSQL language AST and statement prettifier'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
   'python-sphinx'
 )
 checkdepends=('python-pytest' 'python-pytest-cov')
-_commit='2ee74d4426e63d9d825da1bb7bd5a6b393c6f192'
+_commit='b3621287060efee72af488161c60dd61cc53bce7'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'github.com-pganalyze-libpg_query::git+https://github.com/pganalyze/libpg_query'
