@@ -1,7 +1,7 @@
 # Maintainer: rern <rernrern@gmail.com>
 
 pkgname=bluealsa
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Bluetooth audio ALSA backend'
 arch=( x86_64
@@ -21,7 +21,7 @@ optdepends=( 'lame: build with mp3 support'
              'readline: build with bluealsa-rfcomm tool'
              'spandsp: build mSBC codec support' )
 source=( https://github.com/Arkq/bluez-alsa/archive/refs/tags/v$pkgver.tar.gz )
-sha512sums=('8a79e5a1189db2d39b2d772cb8f8cd51ebb96b9bd91489556195e83dfd16f40a581dce68c5ad9e886b66cec8a03ae7f959e8288bb4c5c87ea5a2bbd6aee9c5f0')
+sha512sums=('8a9f4a7ae861519652e956386b08d94bfae126bad470e45a2c7b0a0e0441bd132adfa82b35978856a0f8f47b54a5ca9922fee7886838a4a4dd589cb0af2be16e')
 
 build() {
 	local flags
