@@ -10,7 +10,7 @@ pkgdesc='Evernote clone (formerly Nevernote) - latest binary release'
 url="https://github.com/robert7/$_pkgname"
 arch=(x86_64)
 license=(GPL3)
-depends=(hicolor-icon-theme zlib)
+depends=(glibc hicolor-icon-theme zlib)
 makedepends=(git)
 conflicts=(nixnote2-git)
 provides=("nixnote=${pkgver%.r*}" "$_pkgname=${pkgver%.r*}")

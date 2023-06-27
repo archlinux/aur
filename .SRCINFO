@@ -6,6 +6,7 @@ pkgbase = nixnote2-appimage
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	depends = glibc
 	depends = hicolor-icon-theme
 	depends = zlib
 	provides = nixnote=2.1.9.f9cbad2
