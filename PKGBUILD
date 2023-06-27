@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="zxinfo-file-browser-appimage"
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Organize and manage your emulator files for ZX Spectrum & ZX 81 - powered by the web"
 arch=('x86_64')
 url="https://github.com/thomasheckmann/zxinfo-file-browser"
@@ -12,12 +12,12 @@ depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/thomasheckmann/zxinfo-file-browser/master/LICENSE")
-sha256sums=('def30cb30ae79e87ac92b454bdaad1c78b94ac5c367395aa0ed82f2367ef5359'
-            '2042c6124204156b44ed7676a90f1e0bb9ddfee1f76d20f7b6f220a90398f74e')
+sha256sums=('79fa2a8d3180916fa8b9b9af842cf36253327d90ca24be78dc891b76dd68dc7f'
+            '20601ac9c5fef78c9428d16ab2fd5cd072c04e84312f96deae51f06b530be52d')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/zxinfo-file-browser.AppImage|g;s|/usr/share/icons/hicolor/256x256/apps/zxinfo-file-browser.png|zxinfo-file-browser|g' \
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|/usr/share/icons/hicolor/256x256/apps/${pkgname%-appimage}.png|${pkgname%-appimage}|g" \
         -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {
