@@ -1,0 +1,19 @@
+pkgbase = ebou-git
+	pkgdesc = Mastodon Client Written in Rust!
+	pkgver = 0.2.0.742.r14.g27ac6c8
+	pkgrel = 1
+	url = https://github.com/terhechte/Ebou
+	arch = any
+	license = GPL
+	makedepends = cargo
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = xdotool
+	depends = libsoup
+	depends = gst-libav
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	source = git+https://github.com/terhechte/Ebou.git
+	sha256sums = SKIP
+
+pkgname = ebou-git
