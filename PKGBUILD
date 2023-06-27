@@ -1,7 +1,7 @@
 # Maintainer: Jeremy Baxter <jtbx@disroot.org>
 
 pkgname=maxfetch
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A nice fetching program written in sh"
 arch=("any")
