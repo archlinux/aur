@@ -1,0 +1,45 @@
+pkgbase = vte-git
+	pkgdesc = Virtual Terminal Emulator widget (common files)
+	pkgver = 0.73.0.r26.g092d8b8f
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/vte
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = aarch64
+	arch = armv7h
+	license = LGPL
+	makedepends = fribidi
+	makedepends = gi-docgen
+	makedepends = git
+	makedepends = gnutls
+	makedepends = gobject-introspection
+	makedepends = gperf
+	makedepends = gtk3
+	makedepends = gtk4
+	makedepends = meson
+	makedepends = pcre2
+	makedepends = systemd
+	makedepends = vala
+	depends = sh
+	options = !emptydirs
+	options = !lto
+	source = vte::git+https://gitlab.gnome.org/GNOME/vte
+	sha256sums = SKIP
+
+pkgname = vte-git
+	pkgdesc = Virtual Terminal Emulator widget (common files) (metapackage)
+	depends = sh
+	depends = vte-common-git
+	depends = vte3-git
+	depends = vte4-git
+	depends = vte-docs-git
+
+pkgname = vte-common-git
+	provides = vte-common=0.73.0.r26.g092d8b8f
+	conflicts = vte-common
+
+pkgname = vte-docs-git
+	pkgdesc = Virtual Terminal Emulator widget (common files) (documentation)
+	provides = vte-docs=0.73.0.r26.g092d8b8f
+	conflicts = vte-docs
