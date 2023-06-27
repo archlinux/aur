@@ -11,7 +11,6 @@
 # CLANGD_DOXYGEN:
 #   'n' - do not apply this patch
 #   'y' - apply this patch
-#   'noast' - apply this patch with parse comments without AST
 #
 # Resolve forwarded parameters in hover (D130265)
 # CLANGD_RESOLVEFWDPARAMS:
@@ -53,7 +52,6 @@
 
 : ${CLANGD_DEFAULT_PATCH_STATE:=n}
 : ${CLANGD_DOXYGEN:=$CLANGD_DEFAULT_PATCH_STATE}
-: ${CLANGD_MACROEVAL:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_RESOLVEFWDPARAMS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_CODELENS:=$CLANGD_DEFAULT_PATCH_STATE}
 : ${CLANGD_POSTFIXCOMPLETION:=$CLANGD_DEFAULT_PATCH_STATE}
@@ -63,7 +61,7 @@
 : ${CLANGD_HOVERBITFIELDSMASK:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.r13572.gd965960fcf90
+pkgver=17.r16019.g1fce8df53a30
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -73,7 +71,6 @@ makedepends=('cmake' 'ninja' 'zlib' 'zstd' 'libffi' 'libedit' 'ncurses'
              'libxml2' 'python-setuptools' 'python-psutil' 'python-sphinx')
 options=('staticlibs' '!lto') # Getting thousands of test failures with LTO
 source=('git+https://github.com/llvm/llvm-project.git'
-        'hover-doxygen-noast.patch'
         'hover-doxygen.patch'
         'doxygen-more-fields.patch'
         'hover-resolve-forward-params.patch'
@@ -84,8 +81,7 @@ source=('git+https://github.com/llvm/llvm-project.git'
         'hover-hex-formats.patch'
         'hover-bit-fields-mask.patch')
 sha256sums=('SKIP'
-            '843bf80065da5929276e070a5e66cd2a8391090bba2ac2f9c48be0a9bb35d315'  # hover-doxygen-noast
-            'b00ed1cef0ee45f7db596d268bb1e0af6da986590830ee33c7da7596a3c32fc0'  # hover-doxygen
+            '5717119e9370b894ce3155d4222d87652a2d67cdf6a83c0e1f8fc075da809cad'  # hover-doxygen
             '8e9aa2930380bbdcf4ae48ba309c558db9ccdbbb90f92d247a58ac9c758c87aa'  # doxygen-more-fields
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
             '35153f4775647bd7172a460de595f8b1cab4db0ae85283cd1119864f5328ea48'  # lsp-codelens
@@ -104,14 +100,10 @@ pkgver() {
 prepare() {
     mkdir -p build
     cd ${srcdir}/llvm-project
-    
+
     # Hover patches
     if [ "$CLANGD_DOXYGEN" != "n" ]; then
-        if [ "$CLANGD_DOXYGEN" = "noast" ]; then
-            patch -p1 -i ${srcdir}/hover-doxygen-noast.patch
-        else
-            patch -p1 -i ${srcdir}/hover-doxygen.patch
-        fi
+        patch -p1 -i ${srcdir}/hover-doxygen.patch
         patch -p1 -i ${srcdir}/doxygen-more-fields.patch
     fi
     if [ "$CLANGD_RESOLVEFWDPARAMS" != "n" ]; then
@@ -123,22 +115,22 @@ prepare() {
     if [ "$CLANGD_HOVERINHEX" != "n" ]; then
         patch -p1 -i ${srcdir}/hover-hex-formats.patch
     fi
-    
+
     # LSP patches
     if [ "$CLANGD_CODELENS" != "n" ]; then
         patch -p1 -i ${srcdir}/lsp-codelens.patch
     fi
-    
+
     # Code-completion patches
     if [ "$CLANGD_POSTFIXCOMPLETION" != "n" ]; then
         patch -p1 -i ${srcdir}/postfix-completion.patch
     fi
-    
+
     # Refactoring patches
     if [ "$CLANGD_EXTRACTFUNC" != "n" ]; then
         patch -p1 -i ${srcdir}/refactor-extract-function.patch
     fi
-    
+
     # Inlay hints patches
     if [ "$CLANGD_INLAYHINTSPADS" != "n" ]; then
         patch -p1 -i ${srcdir}/inlay-hints-paddings.patch
@@ -147,7 +139,7 @@ prepare() {
 
 build() {
     cd build
-    
+
     cmake -B . -S "${srcdir}/llvm-project/llvm" \
         -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/opt/clangd \

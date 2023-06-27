@@ -1,5 +1,5 @@
 diff --git a/clang-tools-extra/clangd/CMakeLists.txt b/clang-tools-extra/clangd/CMakeLists.txt
-index 183a3666ee58..fd248d65fae2 100644
+index 3911fb6c6c74..ee1e9c28f6a9 100644
 --- a/clang-tools-extra/clangd/CMakeLists.txt
 +++ b/clang-tools-extra/clangd/CMakeLists.txt
 @@ -107,6 +107,7 @@ add_clang_library(clangDaemon
@@ -11,7 +11,7 @@ index 183a3666ee58..fd248d65fae2 100644
    TidyProvider.cpp
    TUScheduler.cpp
 diff --git a/clang-tools-extra/clangd/CodeComplete.cpp b/clang-tools-extra/clangd/CodeComplete.cpp
-index 260c44b2064b..6ab9e1ebe093 100644
+index f4f93a01ec90..d5c2e04819dd 100644
 --- a/clang-tools-extra/clangd/CodeComplete.cpp
 +++ b/clang-tools-extra/clangd/CodeComplete.cpp
 @@ -454,11 +454,11 @@ struct CodeCompletionBuilder {
@@ -176,10 +176,10 @@ index 566756ac9c8c..24416b5c9d23 100644
  /// Formats the signature for an item, as a display string and snippet.
  /// e.g. for const_reference std::vector<T>::at(size_type) const, this returns:
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index 3eb090071574..d965fa2928b6 100644
+index 5184fcbe4b58..864690ad8ff5 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -345,7 +345,7 @@ void enhanceFromIndex(HoverInfo &Hover, const NamedDecl &ND,
+@@ -346,7 +346,7 @@ void enhanceFromIndex(HoverInfo &Hover, const NamedDecl &ND,
    LookupRequest Req;
    Req.IDs.insert(ID);
    Index->lookup(Req, [&](const Symbol &S) {
@@ -188,7 +188,7 @@ index 3eb090071574..d965fa2928b6 100644
    });
  }
  
-@@ -604,10 +604,11 @@ HoverInfo getHoverContents(const NamedDecl *D, const PrintingPolicy &PP,
+@@ -622,10 +622,11 @@ HoverInfo getHoverContents(const NamedDecl *D, const PrintingPolicy &PP,
  
    HI.Name = printName(Ctx, *D);
    const auto *CommentD = getDeclForComment(D);
@@ -202,7 +202,7 @@ index 3eb090071574..d965fa2928b6 100644
  
    HI.Kind = index::getSymbolInfo(D).Kind;
  
-@@ -661,7 +662,8 @@ getPredefinedExprHoverContents(const PredefinedExpr &PE, ASTContext &Ctx,
+@@ -679,7 +680,8 @@ getPredefinedExprHoverContents(const PredefinedExpr &PE, ASTContext &Ctx,
    HoverInfo HI;
    HI.Name = PE.getIdentKindName();
    HI.Kind = index::SymbolKind::Variable;
@@ -212,7 +212,7 @@ index 3eb090071574..d965fa2928b6 100644
    if (const StringLiteral *Name = PE.getFunctionName()) {
      HI.Value.emplace();
      llvm::raw_string_ostream OS(*HI.Value);
-@@ -781,7 +783,7 @@ HoverInfo getDeducedTypeHoverContents(QualType QT, const syntax::Token &Tok,
+@@ -854,7 +856,7 @@ HoverInfo getDeducedTypeHoverContents(QualType QT, const syntax::Token &Tok,
  
      if (const auto *D = QT->getAsTagDecl()) {
        const auto *CommentD = getDeclForComment(D);
@@ -221,7 +221,7 @@ index 3eb090071574..d965fa2928b6 100644
        enhanceFromIndex(HI, *CommentD, Index);
      }
    }
-@@ -881,7 +883,8 @@ std::optional<HoverInfo> getHoverContents(const Attr *A, ParsedAST &AST) {
+@@ -954,7 +956,8 @@ std::optional<HoverInfo> getHoverContents(const Attr *A, ParsedAST &AST) {
      llvm::raw_string_ostream OS(HI.Definition);
      A->printPretty(OS, AST.getASTContext().getPrintingPolicy());
    }
@@ -231,7 +231,7 @@ index 3eb090071574..d965fa2928b6 100644
    return HI;
  }
  
-@@ -1344,6 +1347,10 @@ markup::Document HoverInfo::present() const {
+@@ -1454,6 +1457,10 @@ markup::Document HoverInfo::present() const {
  
    // Put a linebreak after header to increase readability.
    Output.addRuler();
@@ -242,7 +242,7 @@ index 3eb090071574..d965fa2928b6 100644
    // Print Types on their own lines to reduce chances of getting line-wrapped by
    // editor, as they might be long.
    if (ReturnType) {
-@@ -1352,15 +1359,44 @@ markup::Document HoverInfo::present() const {
+@@ -1462,15 +1469,44 @@ markup::Document HoverInfo::present() const {
      // Parameters:
      // - `bool param1`
      // - `int param2 = 5`
@@ -291,7 +291,7 @@ index 3eb090071574..d965fa2928b6 100644
    }
  
    // Don't print Type after Parameters or ReturnType as this will just duplicate
-@@ -1406,8 +1442,30 @@ markup::Document HoverInfo::present() const {
+@@ -1515,8 +1551,30 @@ markup::Document HoverInfo::present() const {
      Output.addParagraph().appendText(OS.str());
    }
  
@@ -325,7 +325,7 @@ index 3eb090071574..d965fa2928b6 100644
    if (!Definition.empty()) {
      Output.addRuler();
 diff --git a/clang-tools-extra/clangd/Hover.h b/clang-tools-extra/clangd/Hover.h
-index 891a9d9ec554..c3d0a5e4b19a 100644
+index 6a6110091291..c1be1d6062e9 100644
 --- a/clang-tools-extra/clangd/Hover.h
 +++ b/clang-tools-extra/clangd/Hover.h
 @@ -11,6 +11,7 @@
@@ -807,10 +807,10 @@ index 1aa526529923..8e13f3a5aa6e 100644
    CB(S.Type);
    auto RawCharPointerCB = [&CB](const char *&P) {
 diff --git a/clang-tools-extra/clangd/index/SymbolCollector.cpp b/clang-tools-extra/clangd/index/SymbolCollector.cpp
-index 5c8112e60b22..4f9ce1b0480b 100644
+index 5e19f1b56ff8..d712ae4c078d 100644
 --- a/clang-tools-extra/clangd/index/SymbolCollector.cpp
 +++ b/clang-tools-extra/clangd/index/SymbolCollector.cpp
-@@ -922,16 +922,17 @@ const Symbol *SymbolCollector::addDeclaration(const NamedDecl &ND, SymbolID ID,
+@@ -924,16 +924,17 @@ const Symbol *SymbolCollector::addDeclaration(const NamedDecl &ND, SymbolID ID,
        *ASTCtx, *PP, CodeCompletionContext::CCC_Symbol, *CompletionAllocator,
        *CompletionTUInfo,
        /*IncludeBriefComments*/ false);
@@ -906,10 +906,10 @@ index f9f13b930d62..4efbf004cfcc 100644
    void Func() override {}
  };
 diff --git a/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp b/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp
-index 25d6a7b189ed..a6b454da3bd8 100644
+index fc330a4b8fd3..5851c6bace90 100644
 --- a/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/CodeCompleteTests.cpp
-@@ -2448,9 +2448,9 @@ TEST(SignatureHelpTest, InstantiatedSignatures) {
+@@ -2451,9 +2451,9 @@ TEST(SignatureHelpTest, InstantiatedSignatures) {
  
  TEST(SignatureHelpTest, IndexDocumentation) {
    Symbol Foo0 = sym("foo", index::SymbolKind::Function, "@F@\\0#");
@@ -1060,7 +1060,7 @@ index faab6253e283..70f28a4cc90e 100644
  
  TEST_F(CompletionStringTest, MultipleAnnotations) {
 diff --git a/clang-tools-extra/clangd/unittests/HoverTests.cpp b/clang-tools-extra/clangd/unittests/HoverTests.cpp
-index 5ad9d69cb0dc..1759d45028a9 100644
+index 7002e27e9938..89cc2d43a2ca 100644
 --- a/clang-tools-extra/clangd/unittests/HoverTests.cpp
 +++ b/clang-tools-extra/clangd/unittests/HoverTests.cpp
 @@ -10,6 +10,7 @@
@@ -1071,7 +1071,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
  #include "TestFS.h"
  #include "TestIndex.h"
  #include "TestTU.h"
-@@ -48,7 +49,8 @@ TEST(Hover, Structured) {
+@@ -50,7 +51,8 @@ TEST(Hover, Structured) {
           HI.NamespaceScope = "";
           HI.Name = "foo";
           HI.Kind = index::SymbolKind::Function;
@@ -1081,7 +1081,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
           HI.Definition = "void foo()";
           HI.ReturnType = "void";
           HI.Type = "void ()";
-@@ -65,7 +67,8 @@ TEST(Hover, Structured) {
+@@ -67,7 +69,8 @@ TEST(Hover, Structured) {
           HI.NamespaceScope = "ns1::ns2::";
           HI.Name = "foo";
           HI.Kind = index::SymbolKind::Function;
@@ -1091,7 +1091,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
           HI.Definition = "void foo()";
           HI.ReturnType = "void";
           HI.Type = "void ()";
-@@ -153,8 +156,8 @@ TEST(Hover, Structured) {
+@@ -157,8 +160,8 @@ TEST(Hover, Structured) {
         [](HoverInfo &HI) {
           HI.Name = "__func__";
           HI.Kind = index::SymbolKind::Variable;
@@ -1102,7 +1102,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
           HI.Value = "\"foo\"";
           HI.Type = "const char[4]";
         }},
-@@ -167,8 +170,8 @@ TEST(Hover, Structured) {
+@@ -171,8 +174,8 @@ TEST(Hover, Structured) {
         [](HoverInfo &HI) {
           HI.Name = "__func__";
           HI.Kind = index::SymbolKind::Variable;
@@ -1113,7 +1113,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
           HI.Type = "const char[]";
         }},
        // Anon namespace and local scope.
-@@ -746,7 +749,8 @@ class Foo final {})cpp";
+@@ -753,7 +756,8 @@ class Foo final {})cpp";
           HI.Definition = "template <> class Foo<int *>";
           // FIXME: Maybe force instantiation to make use of real template
           // pattern.
@@ -1123,7 +1123,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
         }},
        {// Template Type Parameter
         R"cpp(
-@@ -798,7 +802,8 @@ class Foo final {})cpp";
+@@ -805,7 +809,8 @@ class Foo final {})cpp";
           HI.NamespaceScope = "";
           HI.Definition = "float y()";
           HI.LocalScope = "X::";
@@ -1133,7 +1133,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
           HI.Type = "float ()";
           HI.ReturnType = "float";
           HI.Parameters.emplace();
-@@ -814,7 +819,8 @@ class Foo final {})cpp";
+@@ -821,7 +826,8 @@ class Foo final {})cpp";
           HI.NamespaceScope = "";
           HI.Definition = "void setY(float v)";
           HI.LocalScope = "X::";
@@ -1143,7 +1143,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
           HI.Type = "void (float)";
           HI.ReturnType = "void";
           HI.Parameters.emplace();
-@@ -833,7 +839,8 @@ class Foo final {})cpp";
+@@ -840,7 +846,8 @@ class Foo final {})cpp";
           HI.NamespaceScope = "";
           HI.Definition = "X &setY(float v)";
           HI.LocalScope = "X::";
@@ -1153,7 +1153,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
           HI.Type = "X &(float)";
           HI.ReturnType = "X &";
           HI.Parameters.emplace();
-@@ -853,7 +860,8 @@ class Foo final {})cpp";
+@@ -860,7 +867,8 @@ class Foo final {})cpp";
           HI.NamespaceScope = "";
           HI.Definition = "void setY(float v)";
           HI.LocalScope = "X::";
@@ -1163,7 +1163,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
           HI.Type = "void (float)";
           HI.ReturnType = "void";
           HI.Parameters.emplace();
-@@ -1254,7 +1262,7 @@ class Foo final {})cpp";
+@@ -1333,7 +1341,7 @@ class Foo final {})cpp";
      EXPECT_EQ(H->LocalScope, Expected.LocalScope);
      EXPECT_EQ(H->Name, Expected.Name);
      EXPECT_EQ(H->Kind, Expected.Kind);
@@ -1172,7 +1172,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
      EXPECT_EQ(H->Definition, Expected.Definition);
      EXPECT_EQ(H->Type, Expected.Type);
      EXPECT_EQ(H->ReturnType, Expected.ReturnType);
-@@ -1540,7 +1548,8 @@ TEST(Hover, All) {
+@@ -1625,7 +1633,8 @@ TEST(Hover, All) {
              HI.NamespaceScope = "";
              HI.Type = "void (int)";
              HI.Definition = "void foo(int)";
@@ -1182,7 +1182,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
              HI.ReturnType = "void";
              HI.Parameters = {
                  {{"int"}, std::nullopt, std::nullopt},
-@@ -1559,7 +1568,8 @@ TEST(Hover, All) {
+@@ -1644,7 +1653,8 @@ TEST(Hover, All) {
              HI.NamespaceScope = "";
              HI.Type = "int (int)";
              HI.Definition = "int foo(int)";
@@ -1192,7 +1192,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
              HI.ReturnType = "int";
              HI.Parameters = {
                  {{"int"}, std::nullopt, std::nullopt},
-@@ -1707,7 +1717,8 @@ TEST(Hover, All) {
+@@ -1792,7 +1802,8 @@ TEST(Hover, All) {
              HI.NamespaceScope = "";
              HI.Definition = "typedef int Foo";
              HI.Type = "int";
@@ -1202,7 +1202,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// Typedef with embedded definition
-@@ -1722,7 +1733,8 @@ TEST(Hover, All) {
+@@ -1807,7 +1818,8 @@ TEST(Hover, All) {
              HI.NamespaceScope = "";
              HI.Definition = "typedef struct Bar Foo";
              HI.Type = "struct Bar";
@@ -1212,7 +1212,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// Namespace
-@@ -1769,7 +1781,7 @@ TEST(Hover, All) {
+@@ -1854,7 +1866,7 @@ TEST(Hover, All) {
              HI.NamespaceScope = "ns::";
              HI.Type = "void ()";
              HI.Definition = "void foo()";
@@ -1221,7 +1221,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
              HI.ReturnType = "void";
              HI.Parameters = std::vector<HoverInfo::Param>{};
            }},
-@@ -1837,10 +1849,18 @@ TEST(Hover, All) {
+@@ -1924,10 +1936,18 @@ TEST(Hover, All) {
              HI.Kind = index::SymbolKind::Class;
              HI.NamespaceScope = "";
              HI.Definition = "class Foo {}";
@@ -1242,7 +1242,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
              void foo();
              void g() { [[f^oo]](); }
              void foo() {}
-@@ -1851,7 +1871,22 @@ TEST(Hover, All) {
+@@ -1938,7 +1958,22 @@ TEST(Hover, All) {
              HI.NamespaceScope = "";
              HI.Type = "void ()";
              HI.Definition = "void foo()";
@@ -1266,7 +1266,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
              HI.ReturnType = "void";
              HI.Parameters = std::vector<HoverInfo::Param>{};
            }},
-@@ -1869,7 +1904,8 @@ TEST(Hover, All) {
+@@ -1956,7 +1991,8 @@ TEST(Hover, All) {
              HI.Kind = index::SymbolKind::Enum;
              HI.NamespaceScope = "";
              HI.Definition = "enum Hello {}";
@@ -1276,7 +1276,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// Enumerator
-@@ -1940,7 +1976,8 @@ TEST(Hover, All) {
+@@ -2027,7 +2063,8 @@ TEST(Hover, All) {
              HI.NamespaceScope = "";
              HI.Type = "int";
              HI.Definition = "static int hey = 10";
@@ -1286,7 +1286,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
              // FIXME: Value shouldn't be set in this case
              HI.Value = "10 (0xa)";
            }},
-@@ -1992,7 +2029,8 @@ TEST(Hover, All) {
+@@ -2079,7 +2116,8 @@ TEST(Hover, All) {
              HI.NamespaceScope = "";
              HI.Type = "int ()";
              HI.Definition = "template <> int foo<int>()";
@@ -1296,7 +1296,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
              HI.ReturnType = "int";
              HI.Parameters = std::vector<HoverInfo::Param>{};
              // FIXME: We should populate template parameters with arguments in
-@@ -2029,7 +2067,8 @@ TEST(Hover, All) {
+@@ -2116,7 +2154,8 @@ TEST(Hover, All) {
              HI.Definition = "void indexSymbol()";
              HI.ReturnType = "void";
              HI.Parameters = std::vector<HoverInfo::Param>{};
@@ -1306,7 +1306,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// Simple initialization with auto
-@@ -2198,7 +2237,8 @@ TEST(Hover, All) {
+@@ -2285,7 +2324,8 @@ TEST(Hover, All) {
              HI.Name = "auto";
              HI.Kind = index::SymbolKind::TypeAlias;
              HI.Definition = "Bar";
@@ -1316,7 +1316,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// trailing return type
-@@ -2211,7 +2251,8 @@ TEST(Hover, All) {
+@@ -2298,7 +2338,8 @@ TEST(Hover, All) {
              HI.Name = "decltype";
              HI.Kind = index::SymbolKind::TypeAlias;
              HI.Definition = "Bar";
@@ -1326,7 +1326,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// auto in function return
-@@ -2224,7 +2265,8 @@ TEST(Hover, All) {
+@@ -2311,7 +2352,8 @@ TEST(Hover, All) {
              HI.Name = "auto";
              HI.Kind = index::SymbolKind::TypeAlias;
              HI.Definition = "Bar";
@@ -1336,7 +1336,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// auto& in function return
-@@ -2238,7 +2280,8 @@ TEST(Hover, All) {
+@@ -2325,7 +2367,8 @@ TEST(Hover, All) {
              HI.Name = "auto";
              HI.Kind = index::SymbolKind::TypeAlias;
              HI.Definition = "Bar";
@@ -1346,7 +1346,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// auto* in function return
-@@ -2252,7 +2295,8 @@ TEST(Hover, All) {
+@@ -2339,7 +2382,8 @@ TEST(Hover, All) {
              HI.Name = "auto";
              HI.Kind = index::SymbolKind::TypeAlias;
              HI.Definition = "Bar";
@@ -1356,7 +1356,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// const auto& in function return
-@@ -2266,7 +2310,8 @@ TEST(Hover, All) {
+@@ -2353,7 +2397,8 @@ TEST(Hover, All) {
              HI.Name = "auto";
              HI.Kind = index::SymbolKind::TypeAlias;
              HI.Definition = "Bar";
@@ -1366,7 +1366,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// decltype(auto) in function return
-@@ -2279,7 +2324,8 @@ TEST(Hover, All) {
+@@ -2366,7 +2411,8 @@ TEST(Hover, All) {
              HI.Name = "decltype";
              HI.Kind = index::SymbolKind::TypeAlias;
              HI.Definition = "Bar";
@@ -1376,7 +1376,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// decltype(auto) reference in function return
-@@ -2369,8 +2415,8 @@ TEST(Hover, All) {
+@@ -2456,8 +2502,8 @@ TEST(Hover, All) {
              HI.Name = "decltype";
              HI.Kind = index::SymbolKind::TypeAlias;
              HI.Definition = "Bar";
@@ -1387,7 +1387,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// decltype of var with decltype.
-@@ -2440,7 +2486,8 @@ TEST(Hover, All) {
+@@ -2527,7 +2573,8 @@ TEST(Hover, All) {
              HI.Name = "auto";
              HI.Kind = index::SymbolKind::TypeAlias;
              HI.Definition = "cls_type // aka: cls";
@@ -1397,7 +1397,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// auto on alias
-@@ -2452,7 +2499,8 @@ TEST(Hover, All) {
+@@ -2539,7 +2586,8 @@ TEST(Hover, All) {
              HI.Name = "auto";
              HI.Kind = index::SymbolKind::TypeAlias;
              HI.Definition = "templ<int>";
@@ -1407,7 +1407,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// Undeduced auto declaration
-@@ -2543,7 +2591,8 @@ TEST(Hover, All) {
+@@ -2630,7 +2678,8 @@ TEST(Hover, All) {
              HI.Kind = index::SymbolKind::Struct;
              HI.NamespaceScope = "";
              HI.Name = "cls<cls<cls<int>>>";
@@ -1417,7 +1417,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            }},
        {
            R"cpp(// type with decltype
-@@ -2838,13 +2887,15 @@ TEST(Hover, All) {
+@@ -2925,7 +2974,8 @@ TEST(Hover, All) {
           HI.Name = "nonnull";
           HI.Kind = index::SymbolKind::Unknown; // FIXME: no suitable value
           HI.Definition = "__attribute__((nonnull))";
@@ -1425,7 +1425,9 @@ index 5ad9d69cb0dc..1759d45028a9 100644
 +         HI.Documentation = SymbolDocumentationOwned::descriptionOnly(
 +             Attr::getDocumentation(attr::NonNull).str());
         }},
-   };
+       {
+           R"cpp(
+@@ -2966,7 +3016,8 @@ TEST(Hover, All) {
  
    // Create a tiny index, so tests above can verify documentation is fetched.
    Symbol IndexSym = func("indexSymbol");
@@ -1435,7 +1437,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
    SymbolSlab::Builder Symbols;
    Symbols.insert(IndexSym);
    auto Index =
-@@ -2877,7 +2928,7 @@ TEST(Hover, All) {
+@@ -2999,7 +3050,7 @@ TEST(Hover, All) {
      EXPECT_EQ(H->LocalScope, Expected.LocalScope);
      EXPECT_EQ(H->Name, Expected.Name);
      EXPECT_EQ(H->Kind, Expected.Kind);
@@ -1444,7 +1446,37 @@ index 5ad9d69cb0dc..1759d45028a9 100644
      EXPECT_EQ(H->Definition, Expected.Definition);
      EXPECT_EQ(H->Type, Expected.Type);
      EXPECT_EQ(H->ReturnType, Expected.ReturnType);
-@@ -3044,7 +3095,8 @@ TEST(Hover, DocsFromIndex) {
+@@ -3015,17 +3066,17 @@ TEST(Hover, Providers) {
+     const char *Code;
+     const std::function<void(HoverInfo &)> ExpectedBuilder;
+   } Cases[] = {{R"cpp(
+-                  struct Foo {};                     
++                  struct Foo {};
+                   Foo F = Fo^o{};
+                 )cpp",
+                 [](HoverInfo &HI) { HI.Provider = ""; }},
+                {R"cpp(
+-                  #include "foo.h"                   
++                  #include "foo.h"
+                   Foo F = Fo^o{};
+                 )cpp",
+                 [](HoverInfo &HI) { HI.Provider = "\"foo.h\""; }},
+                {R"cpp(
+-                  #include "all.h"  
++                  #include "all.h"
+                   Foo F = Fo^o{};
+                 )cpp",
+                 [](HoverInfo &HI) { HI.Provider = "\"foo.h\""; }},
+@@ -3045,7 +3096,7 @@ TEST(Hover, Providers) {
+                 )cpp",
+                 [](HoverInfo &HI) { HI.Provider = "\"foo.h\""; }},
+                {R"cpp(
+-                  #include "foo.h"    
++                  #include "foo.h"
+                   Foo A;
+                   Foo B;
+                   Foo C = A ^+ B;
+@@ -3168,7 +3219,8 @@ TEST(Hover, DocsFromIndex) {
    auto AST = TU.build();
    Symbol IndexSym;
    IndexSym.ID = getSymbolID(&findDecl(AST, "X"));
@@ -1454,7 +1486,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
    SymbolSlab::Builder Symbols;
    Symbols.insert(IndexSym);
    auto Index =
-@@ -3053,7 +3105,7 @@ TEST(Hover, DocsFromIndex) {
+@@ -3177,7 +3229,7 @@ TEST(Hover, DocsFromIndex) {
    for (const auto &P : T.points()) {
      auto H = getHover(AST, P, format::getLLVMStyle(), Index.get());
      ASSERT_TRUE(H);
@@ -1463,7 +1495,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
    }
  }
  
-@@ -3078,7 +3130,8 @@ TEST(Hover, DocsFromAST) {
+@@ -3202,7 +3254,8 @@ TEST(Hover, DocsFromAST) {
    for (const auto &P : T.points()) {
      auto H = getHover(AST, P, format::getLLVMStyle(), nullptr);
      ASSERT_TRUE(H);
@@ -1473,7 +1505,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
    }
  }
  
-@@ -3125,7 +3178,9 @@ TEST(Hover, DocsFromMostSpecial) {
+@@ -3249,7 +3302,9 @@ TEST(Hover, DocsFromMostSpecial) {
      for (const auto &P : T.points(Comment)) {
        auto H = getHover(AST, P, format::getLLVMStyle(), nullptr);
        ASSERT_TRUE(H);
@@ -1484,7 +1516,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
      }
    }
  }
-@@ -3157,7 +3212,14 @@ TEST(Hover, Present) {
+@@ -3281,7 +3336,14 @@ TEST(Hover, Present) {
                  {{"typename"}, std::string("T"), std::nullopt},
                  {{"typename"}, std::string("C"), std::string("bool")},
              };
@@ -1500,7 +1532,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
              HI.Definition =
                  "template <typename T, typename C = bool> class Foo {}";
              HI.Name = "foo";
-@@ -3165,8 +3227,17 @@ TEST(Hover, Present) {
+@@ -3289,8 +3351,17 @@ TEST(Hover, Present) {
            },
            R"(class foo
  
@@ -1519,7 +1551,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
  
  template <typename T, typename C = bool> class Foo {})",
        },
-@@ -3185,17 +3256,37 @@ template <typename T, typename C = bool> class Foo {})",
+@@ -3309,17 +3380,37 @@ template <typename T, typename C = bool> class Foo {})",
              HI.Parameters->push_back(P);
              P.Default = "default";
              HI.Parameters->push_back(P);
@@ -1559,7 +1591,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
            "\n"
            "// In namespace ns\n"
            "ret_type foo(params) {}",
-@@ -3585,7 +3676,7 @@ TEST(Hover, SpaceshipTemplateNoCrash) {
+@@ -3731,7 +3822,7 @@ TEST(Hover, SpaceshipTemplateNoCrash) {
  
    template <typename T>
    struct S {
@@ -1568,7 +1600,7 @@ index 5ad9d69cb0dc..1759d45028a9 100644
      friend auto operator<=>(S, S) = default;
    };
    static_assert(S<void>() =^= S<void>());
-@@ -3595,7 +3686,10 @@ TEST(Hover, SpaceshipTemplateNoCrash) {
+@@ -3741,7 +3832,10 @@ TEST(Hover, SpaceshipTemplateNoCrash) {
    TU.ExtraArgs.push_back("-std=c++20");
    auto AST = TU.build();
    auto HI = getHover(AST, T.point(), format::getLLVMStyle(), nullptr);
