@@ -1,14 +1,14 @@
 pkgbase = python-arg
 	pkgdesc = A simple argument parser for Python
 	pkgver = 1.0.1
-	pkgrel = 1
-	url = https://github.com/maandree/python-arg
+	pkgrel = 2
+	url = https://codeberg.org/maandree/python-arg
 	arch = any
 	license = custom:ISC
 	makedepends = python
 	makedepends = python2
-	source = python-arg-1.0.1.tar.gz::https://github.com/maandree/python-arg/archive/1.0.1.tar.gz
-	sha256sums = 1f392bf5e671de0b68d93b5ce717ec658ff944b4c88a25b640db518e76a26ae5
+	source = python-arg-1.0.1.tar.gz::https://codeberg.org/maandree/python-arg/archive/1.0.1.tar.gz
+	sha256sums = 4a48e68ccd1d3b48618204feb9c36744137934d515cc8f5bb98441552a72a00f
 
 pkgname = python-arg
 
