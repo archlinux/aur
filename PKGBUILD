@@ -2,12 +2,12 @@
 
 pkgname=daily-wallpaper-git
 pkgver=0.8.0.r9.gad7fb04
-pkgrel=1
+pkgrel=2
 pkgdesc="Change wallpaper automatically with a photo of the day"
 arch=('any')
 url="https://github.com/atareao/daily-wallpaper"
 license=('MIT')
-depends=('dbus-python' 'python-gobject' 'python-lxml' 'python-cssselect' 'python-requests' 'python-crontab' 'python-plumbum' 'gtk3' 'libnotify')
+depends=('dbus-python' 'python-gobject' 'python-lxml' 'python-cssselect' 'python-requests' 'python-python-crontab' 'python-plumbum' 'gtk3' 'libnotify')
 optdepends=('cron: automatic download')
 makedepends=('git')
 provides=("${pkgname%-git}")

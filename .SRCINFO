@@ -1,7 +1,7 @@
 pkgbase = daily-wallpaper-git
 	pkgdesc = Change wallpaper automatically with a photo of the day
 	pkgver = 0.8.0.r9.gad7fb04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/atareao/daily-wallpaper
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = daily-wallpaper-git
 	depends = python-lxml
 	depends = python-cssselect
 	depends = python-requests
-	depends = python-crontab
+	depends = python-python-crontab
 	depends = python-plumbum
 	depends = gtk3
 	depends = libnotify
