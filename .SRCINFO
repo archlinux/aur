@@ -1,6 +1,6 @@
-pkgbase = nixnote2-release-bin
+pkgbase = nixnote2-appimage
 	pkgdesc = Evernote clone (formerly Nevernote) - latest binary release
-	pkgver = 2.1.0.beta4
+	pkgver = 2.1.9.f9cbad2
 	pkgrel = 1
 	url = https://github.com/robert7/nixnote2
 	arch = x86_64
@@ -8,15 +8,14 @@ pkgbase = nixnote2-release-bin
 	makedepends = git
 	depends = hicolor-icon-theme
 	depends = zlib
-	provides = nixnote=2.1.0.beta4
-	provides = nixnote2=2.1.0.beta4
+	provides = nixnote=2.1.9.f9cbad2
+	provides = nixnote2=2.1.9.f9cbad2
 	conflicts = nixnote2-git
 	replaces = nevernote
 	replaces = nixnote
 	replaces = nixnote-beta
-	noextract = nixnote2-release-bin:desktop.patch
-	source = nixnote2-release-bin:desktop.patch
-	sha256sums = 4f12cddc49e0c694f41e344acebc0d8a3bce07a3496098eb2fae258ba9044967
+	noextract = https://github.com/robert7/nixnote2/releases/download/continuous/NixNote2-x86_64.AppImage
+	source = https://github.com/robert7/nixnote2/releases/download/continuous/NixNote2-x86_64.AppImage
+	b2sums = SKIP
 
-pkgname = nixnote2-release-bin
-
+pkgname = nixnote2-appimage

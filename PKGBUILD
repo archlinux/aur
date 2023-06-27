@@ -4,7 +4,7 @@ OPTIONS=(!strip)  # Stripping an AppImage renders it non-functional
 
 _pkgname=nixnote2
 pkgname=${_pkgname}-appimage
-pkgver=2.1.0.beta4
+pkgver=2.1.9.f9cbad2
 pkgrel=1
 pkgdesc='Evernote clone (formerly Nevernote) - latest binary release'
 url="https://github.com/robert7/$_pkgname"
