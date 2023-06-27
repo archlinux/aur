@@ -59,6 +59,6 @@ package() {
   # User resources
   cp -pr "$srcdir"/squashfs-root/usr .
 
-  # AppImage as /usr/bin/nixnote2 for .desktop file
+  # Copy AppImage itself as /usr/bin/nixnote2
   install -Dm755 -T "$srcdir/$_appimage" usr/bin/"$_pkgname"
 }
