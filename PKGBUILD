@@ -53,6 +53,7 @@ prepare() {
   done
 
   rm -r squashfs-root/usr/share/"$_pkgname"/{java,images}  # Remove non-human resources
+  gzip -9 squashfs-root/usr/share/man/man1/*  # On Arch, all pages are gzipped
 }
 
 
