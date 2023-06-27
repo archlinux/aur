@@ -39,7 +39,14 @@ pkgver() {
 }
 
 package() {
-    depends=( "pcsclite" "ccid" "qt5-base" "qt5-svg" )
+    depends=(
+        ccid
+        gcc-libs
+        glibc
+        pcsclite
+        qt5-base
+        qt5-svg
+    )
     optdepends=('disig-web-signer: online certificates update support')
 
     # App

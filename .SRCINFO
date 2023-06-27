@@ -17,8 +17,10 @@ pkgbase = eidklient
 	md5sums_x86_64 = SKIP
 
 pkgname = eidklient
-	depends = pcsclite
 	depends = ccid
+	depends = gcc-libs
+	depends = glibc
+	depends = pcsclite
 	depends = qt5-base
 	depends = qt5-svg
 	optdepends = disig-web-signer: online certificates update support
