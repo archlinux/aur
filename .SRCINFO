@@ -1,6 +1,6 @@
 pkgbase = cab
 	pkgdesc = MacPorts-like maintenance command of Haskell cabal packages
-	pkgver = 0.2.17
+	pkgver = 0.2.21
 	pkgrel = 1
 	url = http://www.mew.org/~kazu/proj/cab
 	arch = i686
@@ -12,8 +12,7 @@ pkgbase = cab
 	depends = haskell-conduit
 	depends = haskell-conduit-extra
 	depends = haskell-resourcet
-	source = https://hackage.haskell.org/packages/archive/cab/0.2.17/cab-0.2.17.tar.gz
-	sha512sums = e1734c81f192a35a97bbc91e2cbecd5b207de3c366c12ffa3f23e91dc0a57b6613efb535bf268146b2c4f9aa3cb1f81545d3ee6abb7dc6dd8854ee6e825e28b5
+	source = https://hackage.haskell.org/packages/archive/cab/0.2.21/cab-0.2.21.tar.gz
+	sha512sums = 2f05e1e0fad999cbbf99805c2b3609d53bae8492fd1deed17a721aa2ead13a1f4acfe6c95522097dd1dd01d89468e34856d4cf89e540c1d01ab9cc569f060541
 
 pkgname = cab
-

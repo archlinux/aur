@@ -1,9 +1,9 @@
-# $Id$
-# Maintainer: Emanuel Couto <unit73e at gmail dot com>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Emanuel Couto <unit73e at gmail dot com>
 
 _hkgname=cab
 pkgname=cab
-pkgver=0.2.17
+pkgver=0.2.21
 pkgrel=1
 pkgdesc="MacPorts-like maintenance command of Haskell cabal packages"
 url="http://www.mew.org/~kazu/proj/cab"
@@ -13,7 +13,7 @@ depends=('ghc-libs' 'haskell-attoparsec' 'haskell-conduit' 'haskell-conduit-extr
          'haskell-resourcet')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('e1734c81f192a35a97bbc91e2cbecd5b207de3c366c12ffa3f23e91dc0a57b6613efb535bf268146b2c4f9aa3cb1f81545d3ee6abb7dc6dd8854ee6e825e28b5')
+sha512sums=('2f05e1e0fad999cbbf99805c2b3609d53bae8492fd1deed17a721aa2ead13a1f4acfe6c95522097dd1dd01d89468e34856d4cf89e540c1d01ab9cc569f060541')
 
 build() {
     cd "${srcdir}/${_hkgname}-${pkgver}"
