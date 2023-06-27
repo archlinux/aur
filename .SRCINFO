@@ -1,7 +1,7 @@
 pkgbase = mimeo
 	pkgdesc = Open files by MIME-type or file name using regular expressions.
 	pkgver = 2023
-	pkgrel = 1
+	pkgrel = 12
 	url = https://xyne.dev/projects/mimeo
 	arch = any
 	license = GPL
