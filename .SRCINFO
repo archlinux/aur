@@ -1,20 +1,19 @@
 pkgbase = query-master-appimage
 	pkgdesc = Just another MySQL GUI client
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/invisal/query-master
 	arch = any
 	license = MIT
 	makedepends = yarn
+	makedepends = npm
 	makedepends = gendesk
 	depends = zlib
 	depends = glibc
 	depends = hicolor-icon-theme
 	conflicts = query-master
-	conflicts = live++
-	conflicts = live++-appimage
 	options = !strip
-	source = query-master-0.1.3.tar.gz::https://github.com/invisal/query-master/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = 865a0e93430f265268ae140dde4e655beb412b48efea7cafb7f9436b1cf54c31
+	source = query-master-0.1.4.tar.gz::https://github.com/invisal/query-master/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = fef118954e467f654b61a6889f39042837d661e72dbecfa231af7709cd63f508
 
 pkgname = query-master-appimage
