@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-hybrid-pack-git
 	pkgdesc = Vapoursynth plugins from Hybrid Encoder
-	pkgver = r140.8eba504
+	pkgver = r144.7efca43
 	pkgrel = 1
 	url = https://github.com/Selur/VapoursynthScriptsInHybrid
 	arch = any

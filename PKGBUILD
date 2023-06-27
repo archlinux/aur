@@ -1,7 +1,7 @@
 # Maintainer: Drommer <drommer@github.com>
 
 pkgname=vapoursynth-plugin-hybrid-pack-git
-pkgver=r140.8eba504
+pkgver=r144.7efca43
 pkgrel=1
 pkgdesc="Vapoursynth plugins from Hybrid Encoder"
 arch=('any')
@@ -28,12 +28,12 @@ prepare () {
   mv -f "$srcdir/mvsfunc_h/mvsfunc.py" "$srcdir/mvsfunc_h/mvsfunc_h.py"
   sed -i "s|mvsfunc|mvsfunc_h|" "$srcdir/mvsfunc_h/__init__.py"
 
-  for plug in $(find . -name "*.py" -execdir basename {} .py ';'); do
-    mv -f "$plug.py" "${plug}_h.py"
-    sed -i "s|\<$plug\>|${plug}_h|g" *.py
+  for plug in $(find . -name "*.py" -execdir basename {} .py ';') mvsfunc; do
+    [ -f $plug.py ] && mv -f "$plug.py" "${plug}_h.py"
+    sed -i "/from/b;/import/ s|\<$plug\>|${plug}_h|g" *.py
+    sed -i "/import/ s|from \<$plug\>|from ${plug}_h|g" *.py
+    sed -i "/http/b; s|\<$plug\>\.|${plug}_h\.|g" *.py
   done
-
-  sed -i "s|\<mvsfunc\>|mvsfunc_h|g" *.py
 }
 
 package() {
