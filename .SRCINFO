@@ -1,0 +1,24 @@
+pkgbase = r-tidylog
+	pkgdesc = Logging for 'dplyr' and 'tidyr' Functions
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=tidylog
+	arch = any
+	license = MIT
+	checkdepends = r-forcats
+	checkdepends = r-testthat
+	depends = r-clisymbols
+	depends = r-dplyr
+	depends = r-glue
+	depends = r-tidyr
+	optdepends = r-bench
+	optdepends = r-covr
+	optdepends = r-forcats
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/tidylog_1.0.2.tar.gz
+	md5sums = 17c4e3a5589ac9a1a0653ba54e979d52
+	sha256sums = 67625de38920e1c3c9f6a996de4ef406a0d23eeef6d3b846e52630afc0a8ca1c
+
+pkgname = r-tidylog
