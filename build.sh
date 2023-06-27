@@ -9,6 +9,7 @@ docker run \
     docker.io/archlinux -c '\
         pacman -Sy --noconfirm archlinux-keyring && \
         pacman -Syu --noconfirm pacman-contrib pacman git sudo binutils && \
+        git config --global --add safe.directory /srv && \
         git clean -fdx && \
         chmod a+w PKGBUILD .SRCINFO . && \
         sudo -u nobody updpkgsums && \
