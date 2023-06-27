@@ -1,13 +1,13 @@
 # Maintainer: Techcable <$USER at techcable dot net>
 # Based off janet-spork from amano.kenji
 pkgname=janet-spork-git
-pkgver=0.r251.ac1d647
+pkgver=0.r431.c87fe62
 pkgrel=1
 pkgdesc="Various Janet utility modules - the official "Contrib" library."
 arch=(any)
 url="https://github.com/janet-lang/spork"
 license=('MIT')
-depends=('janet-lang')
+depends=('janet')
 makedepends=('git')
 provides=('janet-spork')
 conflicts=("janet-spork")
