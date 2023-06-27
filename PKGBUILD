@@ -1,7 +1,7 @@
 # Maintainer: Raphael Nestler (rnestler) <raphael.nestler@gmail.com>
 
 pkgbase=linux-rust
-pkgver=6.2.13.arch1
+pkgver=6.3.9.arch1
 pkgrel=1
 pkgdesc='Rust Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -9,39 +9,62 @@ url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc libelf pahole cpio perl tar xz gettext
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
-  git rustup llvm lld
+  bc
+  cpio
+  gettext
+  git
+  llvm
+  lld
+  libelf
+  pahole
+  perl
+  rustup
+  tar
+  xz
+
+  # htmldocs
+  graphviz
+  imagemagick
+  python-sphinx
+  texlive-latexextra
 )
 options=('!strip')
 _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
-  config         # the main kernel config file
+  config  # the main kernel config file
   rust-toolchain
+  0001-Fix-Rust-out-of-tree-module-build.patch
 )
 validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
-  'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
+  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
+  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+  A2FF3A36AAA56654109064AB19802F8B0D70FC30  # Jan Alexander Steffens (heftig)
+  C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
-
-sha256sums=('SKIP'
-            '6368e9c43f78544bce1f74ff5dcaad2cda95e05b4447c7f01e698e964c006a36'
-            '875ed8a3f782904d26619155f27f94e35d1fde02eb2948c463dd2c8441e0f450')
+b2sums=('SKIP'
+        'abebdbea9a869a1c26b896345544a8a6171ea91fba5a5038e47b32ca1e97f5c6b2866b3657cb5061b5a4f536e288d202b660769b06729ed7541ab50efef6784f'
+        '901111182b9026f9592306b116bb6b9db02e27af803c5d5db856b5141f383305d0558b42f37a00b1a8112689d21334e4d49c69c8b96fa9cdd605b828b3abcc7a'
+        '60fcfd6703fc06511e8dbf6968189b8d7b8ed0b3676ced50eff1f9f36e4d99fb61491c4c7dadf4b6bcdf14b35dd3e6870bf1c70f5344d2c5a6f91c646de62227')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
+_make() {
+  test -s version
+  make LLVM=1 KERNELRELEASE="$(<version)" "$@"
+}
+
 prepare() {
   cd $_srcname
 
   echo "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
+  make LLVM=1 defconfig
+  make LLVM=1 -s kernelrelease > version
+  make LLVM=1 mrproper
 
   local src
   for src in "${source[@]}"; do
@@ -60,40 +83,51 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
-  make LLVM=1 olddefconfig
+  _make olddefconfig
   diff -u ../config .config || :
 
-  make LLVM=1 -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make LLVM=1 htmldocs all
+  _make htmldocs all
 }
 
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
-  depends=(coreutils kmod initramfs)
-  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  depends=(
+    coreutils
+    initramfs
+    kmod
+  )
+  optdepends=(
+    'wireless-regdb: to set the correct wireless channels of your country'
+    'linux-firmware: firmware images needed for some devices'
+  )
+  provides=(
+    KSMBD-MODULE
+    VIRTUALBOX-GUEST-MODULES
+    WIREGUARD-MODULE
+  )
+  replaces=(
+    virtualbox-guest-modules-arch
+    wireguard-arch
+  )
 
   cd $_srcname
-  local kernver="$(<version)"
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
+  local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(_make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -116,6 +150,9 @@ _package-headers() {
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -158,7 +195,7 @@ _package-headers() {
 
   # Rust support
   echo "Installing Rust files..."
-  install -Dt "$builddir/rust" -m644 rust/target.json
+  install -Dt "$builddir/rust" -m644 scripts/target.json
   install -Dt "$builddir/rust" -m644 rust/*.rmeta
   install -Dt "$builddir/rust" -m644 rust/*.so
   install -Dt "$builddir" -m644 ../../rust-toolchain
@@ -206,7 +243,11 @@ _package-docs() {
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=(
+  "$pkgbase"
+  "$pkgbase-headers"
+  "$pkgbase-docs"
+)
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
