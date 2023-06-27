@@ -20,6 +20,7 @@ source=('https://github.com/robert7/nixnote2/releases/download/continuous/'"$_ap
 b2sums=(SKIP)  # Source will change as new versions are released
 noextract=("${source[@]%%::*}")  # Don't auto-extract anything
 
+shopt -s extglob  # Used to ignore .gz files below (must be set outside function)
 
 prepare() {
   local extract_dirs=(usr/share/applications
@@ -38,7 +39,12 @@ prepare() {
 
   # Remove non-human readable resources
   rm -r squashfs-root/usr/share/"$_pkgname"/{java,images,translations}
-  gzip -9 squashfs-root/usr/share/man/man1/*  # On Arch, all pages are gzipped
+
+  # On Arch, all man pages are gzipped, but...
+  # gzip can't be told not to ask about overwriting existing .gz files
+  # If stdin is not a tty, it skips them, but exits non-zero.
+  # So pre-filter any .gz files with an extended glob
+  gzip -9 --force squashfs-root/usr/share/man/man1/!(*.gz)
 }
 
 
