@@ -1,7 +1,7 @@
 pkgbase = labview-2022
 	pkgdesc = A system-design platform and development environment for a visual programming language from National Instruments.
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://download.ni.com/support/softlib/labview/labview_development_system/2022%20Q3/Patches/f1/Linux/lv2022Q3_f1Patch_full-linux-mac.iso
 	arch = x86_64
 	license = custom:LabVIEW-2022

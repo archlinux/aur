@@ -6,7 +6,7 @@
 _release='2022'
 pkgname="labview-2022"
 pkgver="1"
-pkgrel=2
+pkgrel=3
 pkgdesc='A system-design platform and development environment for a visual programming language from National Instruments.'
 url="https://download.ni.com/support/softlib/labview/labview_development_system/2022%20Q3/Patches/f1/Linux/lv2022Q3_f1Patch_full-linux-mac.iso"
 arch=('x86_64')
@@ -95,7 +95,7 @@ sha256sums=(
 )
 
 prepare() {
-    cd ${srcdir}
+    cd "${srcdir}"
     for file in ${source[@]}; do if [ ${file: -4} == ".rpm" ]; then bsdtar -xf "${file#file://}"; fi; done
 }
             
@@ -120,8 +120,8 @@ package() {
   cp "${pkgdir}/opt/natinst/LabVIEW-2022-64/etc/desktop/icons/128x128/natinst-labview.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/natinst-labview.png"
 
   for file in "${pkgdir}"/opt/natinst/LabVIEW-"2022-64"/etc/desktop/icons/48x48/application-x-*.png; do
-    cp "$file" ${pkgdir}/usr/share/icons/hicolor/48x48/mimetypes/
-    cp "$file" ${pkgdir}/usr/share/icons/hicolor/128x128/mimetypes/
+    cp "$file" "${pkgdir}"/usr/share/icons/hicolor/48x48/mimetypes/
+    cp "$file" "${pkgdir}"/usr/share/icons/hicolor/128x128/mimetypes/
   done
 
   mkdir -p "${pkgdir}/usr/share/applications"
@@ -129,7 +129,9 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share/mime/packages"
   cp "${pkgdir}/opt/natinst/LabVIEW-2022-64/etc/desktop/mime/labview.xml" "${pkgdir}/usr/share/mime/packages"
-  
+
+  ln -s "${pkgdir}/opt/natinst/LabVIEW-2022-64/labviewprofull" "${pkgdir}/usr/local/bin/labview"
+ 
   # apply patch 1
  # cp -p "${srcdir}/labview" "${pkgdir}/opt/natinst/LabVIEW-2022-64/"
  # cp -rp "${srcdir}/vi.lib" "${pkgdir}/opt/natinst/LabVIEW-2022-64/"
