@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/tree-sitter-parser"
-  git submodule update --init --recursive
+  git submodule update --init --recursive --depth 1
   touch "./file.py"
   python "./tree-sitter-parser.py" "./file.py" python > /dev/null
 }
