@@ -2,25 +2,25 @@
 
 pkgname=catppuccin-gtk-theme-mocha
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Soothing pastel theme for GTK3 - Mocha'
 arch=('any')
 license=('GPL3')
 url='https://github.com/catppuccin/gtk'
-source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Blue-Dark.zip"
-        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Flamingo-Dark.zip"
-        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Green-Dark.zip"
-        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Lavender-Dark.zip"
-        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Maroon-Dark.zip"
-        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Mauve-Dark.zip"
-        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Peach-Dark.zip"
-        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Pink-Dark.zip"
-        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Red-Dark.zip"
-        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Rosewater-Dark.zip"
-        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Sapphire-Dark.zip"
-        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Sky-Dark.zip"
-        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Teal-Dark.zip"
-        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Yellow-Dark.zip")
+source=("$pkgname-$pkgver-blue.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Blue-dark.zip"
+        "$pkgname-$pkgver-flamingo.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Flamingo-dark.zip"
+        "$pkgname-$pkgver-green.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Green-dark.zip"
+        "$pkgname-$pkgver-lavender.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Lavender-dark.zip"
+        "$pkgname-$pkgver-maroon.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Maroon-dark.zip"
+        "$pkgname-$pkgver-mauve.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Mauve-dark.zip"
+        "$pkgname-$pkgver-peach.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Peach-dark.zip"
+        "$pkgname-$pkgver-pink.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Pink-dark.zip"
+        "$pkgname-$pkgver-red.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Red-dark.zip"
+        "$pkgname-$pkgver-rosewater.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Rosewater-dark.zip"
+        "$pkgname-$pkgver-sapphire.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Sapphire-dark.zip"
+        "$pkgname-$pkgver-sky.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Sky-dark.zip"
+        "$pkgname-$pkgver-teal.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Teal-dark.zip"
+        "$pkgname-$pkgver-yellow.zip::$url/releases/download/v$pkgver/Catppuccin-Mocha-Standard-Yellow-dark.zip")
 sha256sums=('da7a5bf1c10b9c82ad861161bce35c2325b5ced639b8991c127c02b2c95323a6'
             '54863fbaa88e149ef686622c108ef1d5a4a5e9a8520b21e64053ce5bb028f9d7'
             '4098cb3e40a0aa1ae0a2ca5ba2b9d1a480b45cb8fde71163fa6e94fa75008cb3'
@@ -39,47 +39,47 @@ sha256sums=('da7a5bf1c10b9c82ad861161bce35c2325b5ced639b8991c127c02b2c95323a6'
 package() {
 	install -d "$pkgdir/usr/share/themes/"
 	cp -a --no-preserve=ownership \
-		"Catppuccin-Mocha-Standard-Blue-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Blue-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Blue-Dark" \
-        "Catppuccin-Mocha-Standard-Flamingo-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Flamingo-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Flamingo-Dark" \
-        "Catppuccin-Mocha-Standard-Green-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Green-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Green-Dark" \
-        "Catppuccin-Mocha-Standard-Lavender-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Lavender-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Lavender-Dark" \
-        "Catppuccin-Mocha-Standard-Maroon-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Maroon-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Maroon-Dark" \
-        "Catppuccin-Mocha-Standard-Mauve-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Mauve-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Mauve-Dark" \
-        "Catppuccin-Mocha-Standard-Peach-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Peach-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Peach-Dark" \
-        "Catppuccin-Mocha-Standard-Pink-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Pink-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Pink-Dark" \
-        "Catppuccin-Mocha-Standard-Red-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Red-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Red-Dark" \
-        "Catppuccin-Mocha-Standard-Rosewater-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Rosewater-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Rosewater-Dark" \
-        "Catppuccin-Mocha-Standard-Sapphire-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Sapphire-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Sapphire-Dark" \
-        "Catppuccin-Mocha-Standard-Sky-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Sky-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Sky-Dark" \
-        "Catppuccin-Mocha-Standard-Teal-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Teal-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Teal-Dark" \
-        "Catppuccin-Mocha-Standard-Yellow-Dark-hdpi" \
-        "Catppuccin-Mocha-Standard-Yellow-Dark-xhdpi" \
-        "Catppuccin-Mocha-Standard-Yellow-Dark" \
+		"Catppuccin-Mocha-Standard-Blue-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Blue-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Blue-dark" \
+        "Catppuccin-Mocha-Standard-Flamingo-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Flamingo-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Flamingo-dark" \
+        "Catppuccin-Mocha-Standard-Green-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Green-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Green-dark" \
+        "Catppuccin-Mocha-Standard-Lavender-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Lavender-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Lavender-dark" \
+        "Catppuccin-Mocha-Standard-Maroon-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Maroon-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Maroon-dark" \
+        "Catppuccin-Mocha-Standard-Mauve-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Mauve-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Mauve-dark" \
+        "Catppuccin-Mocha-Standard-Peach-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Peach-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Peach-dark" \
+        "Catppuccin-Mocha-Standard-Pink-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Pink-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Pink-dark" \
+        "Catppuccin-Mocha-Standard-Red-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Red-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Red-dark" \
+        "Catppuccin-Mocha-Standard-Rosewater-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Rosewater-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Rosewater-dark" \
+        "Catppuccin-Mocha-Standard-Sapphire-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Sapphire-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Sapphire-dark" \
+        "Catppuccin-Mocha-Standard-Sky-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Sky-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Sky-dark" \
+        "Catppuccin-Mocha-Standard-Teal-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Teal-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Teal-dark" \
+        "Catppuccin-Mocha-Standard-Yellow-dark-hdpi" \
+        "Catppuccin-Mocha-Standard-Yellow-dark-xhdpi" \
+        "Catppuccin-Mocha-Standard-Yellow-dark" \
 		"$pkgdir/usr/share/themes"
 }
