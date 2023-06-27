@@ -1,11 +1,11 @@
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 6b83886..bb479af 100644
+index 9e5bab2..d89b25a 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -4162,6 +4162,14 @@
- 		nomsi		[MSI] If the PCI_MSI kernel config parameter is
- 				enabled, this kernel boot option can be used to
- 				disable the use of MSI interrupts system-wide.
+@@ -4235,6 +4235,14 @@
+                nomsi           [MSI] If the PCI_MSI kernel config parameter is
+                                enabled, this kernel boot option can be used to
+                                disable the use of MSI interrupts system-wide.
 +                pci_acs_override [PCIE] Override missing PCIe ACS support for:
 +                                downstream
 +                                        All downstream ports - full ACS capabilities
@@ -14,11 +14,11 @@ index 6b83886..bb479af 100644
 +                                id:nnnn:nnnn
 +                                        Specific device - full ACS capabilities
 +                                        Specified as vid:did (vendor/device ID) in hex
- 		noioapicquirk	[APIC] Disable all boot interrupt quirks.
- 				Safety option to keep boot IRQs enabled. This
- 				should never be necessary.
+                noioapicquirk   [APIC] Disable all boot interrupt quirks.
+                                Safety option to keep boot IRQs enabled. This
+                                should never be necessary.
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 285acc4..d1cf120 100644
+index c525867..726e5f0 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
 @@ -194,6 +194,107 @@ static int __init pci_apply_final_quirks(void)
@@ -129,12 +129,12 @@ index 285acc4..d1cf120 100644
  /*
   * Decoding should be disabled for a PCI device during BAR sizing to avoid
   * conflict. But doing so may cause problems on host bridge and perhaps other
-@@ -4980,6 +5081,8 @@ static const struct pci_dev_acs_enabled {
- 	{ PCI_VENDOR_ID_NXP, 0x8d9b, pci_quirk_nxp_rp_acs },
- 	/* Zhaoxin Root/Downstream Ports */
- 	{ PCI_VENDOR_ID_ZHAOXIN, PCI_ANY_ID, pci_quirk_zhaoxin_pcie_ports_acs },
-+        /* allow acs for any */
-+        { PCI_ANY_ID, PCI_ANY_ID, pcie_acs_overrides },
- 	{ 0 }
+@@ -5015,6 +5116,8 @@ static const struct pci_dev_acs_enabled {
+        { PCI_VENDOR_ID_ZHAOXIN, PCI_ANY_ID, pci_quirk_zhaoxin_pcie_ports_acs },
+        /* Wangxun nics */
+        { PCI_VENDOR_ID_WANGXUN, PCI_ANY_ID, pci_quirk_wangxun_nic_acs },
++       /* allow acs for any */
++       { PCI_ANY_ID, PCI_ANY_ID, pcie_acs_overrides },
+        { 0 }
  };
- 
+
