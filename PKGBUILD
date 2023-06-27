@@ -1,7 +1,7 @@
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=git-standup
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Recall what you did on the last working day"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('make')
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('d5862e2922fa4562e388746a318525e2')
+md5sums=('49c02d823a7bc9358d7a4b14d0c754d8')
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
