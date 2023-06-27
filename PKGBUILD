@@ -3,8 +3,8 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=r9602.14290bc2f
-pkgrel=2
+pkgver=2530.r0.g7fb3648
+pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
 url='https://github.com/citra-emu/citra-canary'
@@ -42,6 +42,7 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
         "vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
         "git+https://github.com/yuzu-emu/sirit.git"
+        "library-headers::git+https://github.com/citra-emu/ext-library-headers.git"
         # cubeb's submodule
         "git+https://github.com/google/googletest"
         "git+https://github.com/arsenm/sanitizers-cmake"
@@ -81,16 +82,18 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
+         'SKIP'
          'SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    #echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/^mainline-//;s/\([^-]*-g\)/r\1/;s/-/./g' | cut -c 8- # Get canary version plus commit
 }
 
 prepare() {
     cd "$srcdir/$_pkgname"
-    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sdl2,lodepng,libusb,inih};
+    for submodule in {boost,nihstro,soundtouch,catch2,dynarmic,xbyak,fmt,enet,libressl,cubeb,discord-rpc,cpp-jwt,teakra,zstd,libyuv,cryptopp-cmake,cryptopp,dds-ktx,openal-soft,glslang,vma,vulkan-headers,sdl2,lodepng,libusb,inih,sirit,library-headers};
     do
     git config --file=.gitmodules submodule.${submodule}.url "$srcdir/${submodule}"
     done
