@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggplotify
-_pkgver=0.1.0
+_pkgver=0.1.1
 pkgname=r-${_pkgname,,}
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Convert Plot to 'grob' or 'ggplot' Object"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -28,7 +28,7 @@ optdepends=(
   r-vcd
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('178f73d6d3dc391c3efb1a62c95fe38587044f9e3288dffb915d3687941bb38a')
+sha256sums=('33385d1caa185ff98983a117e9a6949844e4a2d1b0067ea668ad6763a0b68ef4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
