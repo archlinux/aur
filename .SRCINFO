@@ -1,9 +1,11 @@
 pkgbase = gnome-terminal-git
 	pkgdesc = The GNOME Terminal Emulator
-	pkgver = 3.41.90+29+g9100fd9a
+	pkgver = 3.47.0+142+g25d1133d
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Terminal
 	arch = x86_64
+	groups = gnome-extra
+	groups = gnome-extra-git
 	license = GPL
 	makedepends = docbook-xsl
 	makedepends = git
@@ -11,8 +13,8 @@ pkgbase = gnome-terminal-git
 	makedepends = libnautilus-extension
 	makedepends = meson
 	makedepends = yelp-tools
-	depends = vte3-git
 	depends = gsettings-desktop-schemas
+	depends = vte3
 	source = git+https://gitlab.gnome.org/GNOME/gnome-terminal.git
 	b2sums = SKIP
 
