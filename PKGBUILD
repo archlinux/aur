@@ -42,6 +42,6 @@ package () {
     cd "${srcdir}/senpai-v${pkgver}"
     make "DESTDIR=${pkgdir}" "PREFIX=/usr" install
     # Alias binary as "senpai-irc" (gives compat with senpai-irc-git)
-    ln -s "${pkgdir}/usr/bin/senpai" "senpai-irc"
+    ln -sf "${pkgdir}/usr/bin/senpai" "senpai-irc"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
