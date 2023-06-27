@@ -4,7 +4,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=4.8.0.37
+pkgver=4.8.0.39
 pkgrel=1
 _ffmpeg_ver=2023_03_08
 pkgdesc='Bring together your videos, music, photos, and live television'
@@ -60,7 +60,7 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
 noextract=('license.docx')
 backup=('etc/conf.d/emby-server')
 install=emby-server.install
-sha256sums=('2e7df2ccb8de3baa0691881da9a9fd8297b8c86f288e5ac24464859ca1f6ae28'
+sha256sums=('f9f0ec291795ce8bf59e981b607ac7c97959fd24ada591c94ea906c13162931d'
             '4db44f783278eaacda5554c6b8b20a0cbcb2f7a07dacab1019fdbee9c9f69f57'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
             '8bd03d803e295bea89e9c7bad17e774218f8dc4be9826af124b1f83bc4b256b6'
