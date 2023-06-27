@@ -1,21 +1,21 @@
 pkgbase = linux-xanmod-linux-bin-x64v2
 	pkgdesc = The Linux kernel and modules with Xanmod patches - Current Stable (MAIN) - Prebuilt version - x64v2
-	pkgver = 6.3.9
+	pkgver = 6.4.0
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = jq
 	makedepends = curl
-	noextract = https://github.com/xanmod/linux/releases/download/6.3.9-xanmod1/linux-image-6.3.9-x64v2-xanmod1_6.3.9-x64v2-xanmod1-0.20230622.3042e27_amd64.deb
-	noextract = https://github.com/xanmod/linux/releases/download/6.3.9-xanmod1/linux-headers-6.3.9-x64v2-xanmod1_6.3.9-x64v2-xanmod1-0.20230622.3042e27_amd64.deb
+	noextract = https://github.com/xanmod/linux/releases/download/6.4.0-xanmod1/linux-image-6.4.0-x64v2-xanmod1_6.4.0-x64v2-xanmod1-0.20230627.e91276b_amd64.deb
+	noextract = https://github.com/xanmod/linux/releases/download/6.4.0-xanmod1/linux-headers-6.4.0-x64v2-xanmod1_6.4.0-x64v2-xanmod1-0.20230627.e91276b_amd64.deb
 	options = !strip
-	source = https://github.com/xanmod/linux/releases/download/6.3.9-xanmod1/linux-image-6.3.9-x64v2-xanmod1_6.3.9-x64v2-xanmod1-0.20230622.3042e27_amd64.deb
-	source = https://github.com/xanmod/linux/releases/download/6.3.9-xanmod1/linux-headers-6.3.9-x64v2-xanmod1_6.3.9-x64v2-xanmod1-0.20230622.3042e27_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/6.4.0-xanmod1/linux-image-6.4.0-x64v2-xanmod1_6.4.0-x64v2-xanmod1-0.20230627.e91276b_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/6.4.0-xanmod1/linux-headers-6.4.0-x64v2-xanmod1_6.4.0-x64v2-xanmod1-0.20230627.e91276b_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 8f1f16aba9f8aa9d17263a6a5adb87aaad234d48e5028f32c34e407fa1e4564a
-	sha256sums = 910a8e074d2e4f65871f18451e84ac59885ea9a7afa61b26f5a3b5461b3beb2f
+	sha256sums = 96c02eb0b92b7e00cb99d748f10d4e1f375bbd55d4b7a04a4f013925823f16c0
+	sha256sums = 71a4fd43537615778f72258d774cbc530e617951fc210e9c3c74b5865eb58457
 
 pkgname = linux-xanmod-linux-bin-x64v2
 
