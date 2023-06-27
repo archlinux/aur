@@ -1,17 +1,17 @@
 pkgbase = python3-gpg_batch_sign
 	pkgdesc = A module and stand-alone script for batch-signing files with GPG.
-	pkgver = 2021.11.20
-	pkgrel = 4
+	pkgver = 2022
+	pkgrel = 6
 	url = https://xyne.dev/projects/python3-gpg_batch_sign
 	arch = any
 	license = GPL
 	depends = python3
-	source = https://xyne.dev/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2021.11.20.tar.xz
-	source = https://xyne.dev/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2021.11.20.tar.xz.sig
+	source = https://xyne.dev/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2022.tar.xz
+	source = https://xyne.dev/projects/python3-gpg_batch_sign/src/python3-gpg_batch_sign-2022.tar.xz.sig
 	validpgpkeys = D89FAAEB4CECAFD199A2F5E612C6F735F7A9A519
-	md5sums = 3e6972122f14ef911e0e5203a4f0bef6
-	md5sums = 0a9fec316b961c527977c2d3f820965d
-	sha512sums = 336133cd07c332cb3cb3c0f6fae63b1905455ea27c5c2d892b54ca2068f10769b889879e34e1db6473940590040ac5984ce41d5b77b38a1707d470a37780bdfd
-	sha512sums = 3a91d7411f39091d8fb39f9c266f6e6fbae7a0d7d842d1cee7fb1fcf123d94212815fe801e952e896af1d741a52b86a0d9da32b38801d8da2f523facbd394eeb
+	md5sums = bb35cd96fd71f822ceebec9589409e30
+	md5sums = f39a32c297d9dcdb7c79866623e4e5e6
+	sha512sums = 05c4cb69bf381a45476cc13eb4275294e9bb8d5d85cb54a13591e0081a1b7e69ae3f93490f31581115012a426192306d1be8690f37eff27543c43e8f19a7b522
+	sha512sums = 420d039f57951bfba3bc656825ec3f7a683c2380a2352b67420005e808856e16d0d08f8c8a16332839908b9b4ddd5e7f3493b210e8d0f54bbe81896e981b637b
 
 pkgname = python3-gpg_batch_sign
