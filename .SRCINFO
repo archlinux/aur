@@ -1,6 +1,6 @@
 pkgbase = station-appimage
 	pkgdesc = One app to rule them all!
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://getstation.com/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = station-appimage
 	depends = hicolor-icon-theme
 	conflicts = station
 	options = !strip
-	source = station-2.1.0.AppImage::https://github.com/getstation/desktop-app/releases/download/v2.1.0/Station-x86_64.AppImage
-	sha256sums = 6efbbade6ff6c29f2ed7cee62e9518b335fe49176835e6322da49c56504d5034
+	source = station-2.2.0.AppImage::https://github.com/getstation/desktop-app/releases/download/v2.2.0/Station-x86_64.AppImage
+	sha256sums = 7027bec4dc8a596fb3e305c2d3b6dfd47cfc24c52215106ab6102754f684bc29
 
 pkgname = station-appimage
