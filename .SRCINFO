@@ -1,6 +1,6 @@
 pkgbase = devdash
 	pkgdesc = Highly Configurable Terminal Dashboard for Developers
-	pkgver = 0.2.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Phantas0s/devdash
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = devdash
 	arch = aarch64
 	license = Apache
 	makedepends = go
-	source = devdash-0.2.0.tar.gz::https://github.com/Phantas0s/devdash/archive/v0.2.0.tar.gz
-	md5sums = 8cb76d65dfcbc1609bb8cda7c30b1174
+	source = devdash-0.5.0.tar.gz::https://github.com/Phantas0s/devdash/archive/v0.5.0.tar.gz
+	b2sums = d3a7af042f3deb25d88d27be76ed61f0
 
 pkgname = devdash
-
