@@ -1,9 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: yuioto <yuiotochan@outlook.com>
 # Contributor: Shunsuke Shibayama <sbym1346@gmail.com>
 
 pkgname=erg
-pkgver=0.5.8
+pkgver=0.6.15
 pkgrel=1
 pkgdesc='Statically typed language that builds upon the Python ecosystem'
 url='https://github.com/erg-lang/erg'
@@ -12,7 +12,7 @@ arch=('x86_64')
 depends=('python')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('344a4f2528e4b5d7b46c95d1cf10c4b50cb8d2dd606a0eeed218906c2ee7218c')
+sha256sums=('619d36a4cf32e7299196ea8d073fb212b747c7581c41b3b5a94170532c94ef6c')
 
 ## We don't turn on --all-features here because they change the language
 ## of the error messages
