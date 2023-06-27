@@ -1,16 +1,16 @@
 pkgbase = ttf-lxgw-neo-xihei-screen
 	pkgdesc = 霞鹜新晰黑屏幕阅读版。霞鹜新晰黑 的屏幕阅读版本，将原版 霞鹜新晰黑 加粗 6 个单位后，调整度量数据与 Android 默认字体 Roboto 相同。
-	pkgver = 1.101
+	pkgver = 1.102
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwNeoXiHei-Screen
 	changelog = changelog.txt
 	arch = any
 	license = custom:IPA
 	conflicts = ttf-lxgw-neo-xihei-screen
-	source = ttf-lxgw-neo-xihei-screen-1.101-1.ttf::https://github.com/lxgw/LxgwNeoXiHei-Screen/releases/download/v1.101/LXGWNeoXiHeiScreen.ttf
+	source = ttf-lxgw-neo-xihei-screen-1.102-1.ttf::https://github.com/lxgw/LxgwNeoXiHei-Screen/releases/download/v1.102/LXGWNeoXiHeiScreen.ttf
 	source = LICENSE_CHS.md
 	source = LICENSE.md
-	sha256sums = 8b5fef64136353785527db8bc40ff135e1b483e6f3097c92c68e205b642f6f08
+	sha256sums = 56b01ec79ad85ffa10c02c72db867371f87849edcba5b42091ea8d7cc335fe6c
 	sha256sums = bdadacd0751cbb3c9f040d1314ab9b855c3ebf1b540fa6dcf44524cd49819fa1
 	sha256sums = 1483c7de02dcf8b9c54b3b1aacabf7d6bdf32d412ca6724c0292ea68e862d8cf
 
