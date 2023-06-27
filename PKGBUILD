@@ -1,19 +1,18 @@
-# $Id$
-# Maintainer: Emanuel Couto <unit73e at gmail dot com>
+# Contributor: Emanuel Couto <unit73e at gmail dot com>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 
 _hkgname=ObjectName
 pkgname=haskell-objectname
-pkgver=1.1.0.1
+pkgver=1.1.0.2
 pkgrel=1
 pkgdesc="Explicitly handled object names"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('custom:BSD3')
 arch=('i686' 'x86_64')
-depends=('ghc-libs' 'haskell-transformers')
+depends=('ghc-libs')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('e0b94813d29ccba4a54c699e039ab101039a9482f594c990547a04f9de511e4d27d5a93fc5f176ea5e3a8d940d31477f0e69dcd6f7c867f67bb117933d2cce64')
+sha512sums=('a45f1f4e5ca613dabf3988b06572697f9775936080268056ded9895f930fc4a305816c8ef9f889173c57c400a7a96d120b410b7140f6b4b8d53a53e08f365df0')
 
 build() {
     cd ${srcdir}/${_hkgname}-${pkgver}
