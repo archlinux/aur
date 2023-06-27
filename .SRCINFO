@@ -1,7 +1,7 @@
 pkgbase = python-extruct
 	pkgdesc = Extract embedded metadata from HTML markup
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scrapinghub/extruct
 	arch = any
 	license = custom
@@ -9,7 +9,6 @@ pkgbase = python-extruct
 	depends = python-lxml
 	depends = python-requests
 	depends = python-rdflib
-	depends = python-rdflib-jsonld
 	depends = python-pyrdfa3
 	depends = python-mf2py
 	depends = python-six
