@@ -15,16 +15,11 @@ makedepends=(git)
 conflicts=(nixnote2-git)
 provides=("nixnote=${pkgver%.r*}" "$_pkgname=${pkgver%.r*}")
 replaces=(nevernote nixnote nixnote-beta)
-source=("$pkgname:desktop.patch")
-noextract=("${source[@]%%::*}")  # Don't extract anything
+_appimage=NixNote2-x86_64.AppImage
+source=('https://github.com/robert7/nixnote2/releases/download/continuous/'"$_appimage")
+b2sums=(SKIP)  # Source will change as new versions are released
+noextract=("${source[@]%%::*}")  # Don't auto-extract anything
 
-_version_file=$pkgname-PKGBUILD-version  # For version from the download URL
-
-_appimage_path=$(curl -s 'https://github.com/robert7/nixnote2/releases' |
-                 sed -En 's:.*(/releases/download/v[^"/]+/[^"/]+[Aa]pp[Ii]mage)".*:\1:p' |
-                 head -n1)
-
-_appimage=${_appimage_path##*/}  # basename of AppImage
 
 prepare() {
   wget -N "$url/$_appimage_path"  # Only download again if server version is newer
