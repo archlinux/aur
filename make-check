@@ -1,16 +1,15 @@
 #!/bin/bash
 
-# A convenience script for the package creator.
-# This file is not run on package installation.
+# A convenience script for the package maintainers.
+# This file is neither installed nor run on package installation.
 
 set -euo pipefail
-shopt -s failglob
 
-# Reset customised values to defaults
-PACMAN=
+unset PACMAN
 PATH=/usr/bin:$PATH
 
-# Compressing is slow when building many times
+# Compressing is slow when building many times, and
+# it's mostly an already compressed AppImage anyway
 export PKGEXT=.pkg.tar
 
 pkgdir=${0%%/*}  # dirname $0
@@ -22,7 +21,10 @@ else
   makepkg -f "$@"
 fi
 
-namcap PKGBUILD
-namcap ./*.pkg.*
+shopt -s nullglob
+for specimen in PKGBUILD *pkg.tar{,.{xz,zst}}; do
+  echo "++ namcap of $specimen"
+  namcap "$specimen"
+done
 
 makepkg --printsrcinfo >| .SRCINFO && echo "Updated .SRCINFO" >&2
