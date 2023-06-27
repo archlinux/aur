@@ -1,5 +1,5 @@
 pkgbase = vte-git
-	pkgdesc = Virtual Terminal Emulator widget (common files)
+	pkgdesc = Virtual Terminal Emulator widget
 	pkgver = 0.73.0.r26.g092d8b8f
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/vte
@@ -28,7 +28,7 @@ pkgbase = vte-git
 	sha256sums = SKIP
 
 pkgname = vte-git
-	pkgdesc = Virtual Terminal Emulator widget (common files) (metapackage)
+	pkgdesc = Virtual Terminal Emulator widget (metapackage)
 	depends = sh
 	depends = vte-common-git
 	depends = vte3-git
@@ -36,10 +36,11 @@ pkgname = vte-git
 	depends = vte-docs-git
 
 pkgname = vte-common-git
+	pkgdesc = Virtual Terminal Emulator widget (common files)
 	provides = vte-common=0.73.0.r26.g092d8b8f
 	conflicts = vte-common
 
 pkgname = vte-docs-git
-	pkgdesc = Virtual Terminal Emulator widget (common files) (documentation)
+	pkgdesc = Virtual Terminal Emulator widget (documentation)
 	provides = vte-docs=0.73.0.r26.g092d8b8f
 	conflicts = vte-docs

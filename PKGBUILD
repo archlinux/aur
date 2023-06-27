@@ -14,7 +14,7 @@ pkgname=(
   "${_pkg}-docs-git")
 pkgver=0.73.0.r26.g092d8b8f
 pkgrel=1
-pkgdesc="Virtual Terminal Emulator widget (common files)"
+pkgdesc="Virtual Terminal Emulator widget"
 arch=(
   x86_64
   i686
@@ -97,6 +97,7 @@ _pick() {
 }
 
 package_vte-common-git() {
+  pkgdesc+=" (common files)"
   provides+=("${_pkgname}=${pkgver}")
   conflicts+=("${_pkgname}")
   DESTDIR="${pkgdir}" ninja install -C build
