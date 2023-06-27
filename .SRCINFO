@@ -1,0 +1,21 @@
+pkgbase = tatsumato
+	pkgdesc = Tatsumoto's Pomodoro timer written in Bash
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://tatsumoto.neocities.org/blog/table-of-contents
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = util-linux
+	depends = sound-theme-freedesktop
+	depends = libpulse
+	depends = libnotify
+	optdepends = i3-wm: focus mpv when a break starts
+	optdepends = socat: pause and unpause mpv between pomodoros (+ requires 'wis/mpvSockets')
+	optdepends = i3lock: lock and unlock screen between pomodoros
+	optdepends = curl: control Anki's review screen via AnkiConnect
+	optdepends = dmenu: for interactivity (can use 'rofi' instead)
+	source = tatsumato.sh
+	sha256sums = 8d7bbfd9307087fb90ead36079106ffc7fdb35372f16819b4f6495caaa26e4e6
+
+pkgname = tatsumato
