@@ -1,0 +1,26 @@
+diff --git a/sandboxes/wx_gl_test/CMakeLists.txt b/sandboxes/wx_gl_test/CMakeLists.txt
+index b94029a84..dcde03def 100644
+--- a/sandboxes/wx_gl_test/CMakeLists.txt
++++ b/sandboxes/wx_gl_test/CMakeLists.txt
+@@ -4,7 +4,7 @@ project(wxGL_Test)
+ 
+ add_executable(wxgltest WIN32 main.cpp )
+ 
+-set (wxWidgets_CONFIG_OPTIONS "--toolkit=gtk${SLIC3R_GTK}")
++set (wxWidgets_CONFIG_OPTIONS "--toolkit=gtk${SLIC3R_GTK} ${wxWidgets_CONFIG_OPTIONS}")
+ find_package(wxWidgets 3.1 REQUIRED COMPONENTS core base gl html)
+ find_package(OpenGL REQUIRED)
+ find_package(NanoSVG REQUIRED)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 50eccfc84..914cad4b7 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -48,7 +48,7 @@ if (SLIC3R_GUI)
+     endif()
+ 
+     if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+-        set (wxWidgets_CONFIG_OPTIONS "--toolkit=gtk${SLIC3R_GTK}")
++        set (wxWidgets_CONFIG_OPTIONS "--toolkit=gtk${SLIC3R_GTK} ${wxWidgets_CONFIG_OPTIONS}")
+         if (SLIC3R_WX_STABLE)
+             find_package(wxWidgets 3.0 REQUIRED COMPONENTS base core adv html gl)
+         else ()
