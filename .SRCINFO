@@ -1,7 +1,7 @@
 pkgbase = tts
 	pkgdesc = Coqui-TSS for inference
 	pkgver = 0.14.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coqui-ai/TTS
 	arch = any
 	license = MPL2
@@ -12,7 +12,7 @@ pkgbase = tts
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
-	depends = python-torch
+	depends = python-pytorch
 	depends = python-torchaudio
 	depends = python-soundfile
 	depends = python-librosa
