@@ -2,6 +2,9 @@
 # Contributor: Dan Shick <dan.shick@gmail.com>
 # Contributor: Bao Trinh <qubidt at gmail dot com>
 
+# This package is mirored on github at Techcable/aur-senpai
+# PRs and issues welcome
+
 pkgname=senpai-irc
 pkgver=0.2.0
 pkgrel=1
