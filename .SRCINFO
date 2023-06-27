@@ -1,6 +1,6 @@
 pkgbase = python-qbittorrent-api
 	pkgdesc = Python client for qBittorrent v4.1+ Web API
-	pkgver = 2023.6.49
+	pkgver = 2023.6.50
 	pkgrel = 1
 	url = https://pypi.org/project/qbittorrent-api
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-qbittorrent-api
 	depends = python-urllib3
 	depends = python-six
 	depends = python-setuptools
-	source = python-qbittorrent-api-2023.6.49.tar.gz::https://github.com/rmartin16/qbittorrent-api/archive/refs/tags/v2023.6.49.tar.gz
-	sha256sums = 1f165664a2f2224f4ab4fac3d4c878f8f281b3c7893175e190d84999f7e989da
-	b2sums = eb96b1a0a086a43abdacb4f46e1b96eafe82e257789bf08c0c9f318533129e3f0e762c70bda6ef4dc8b5fa68f075efcb49675da634a998071093272eb4cdd59f
+	source = python-qbittorrent-api-2023.6.50.tar.gz::https://github.com/rmartin16/qbittorrent-api/archive/refs/tags/v2023.6.50.tar.gz
+	sha256sums = bd2629be4b92917df8d157727761f3b1dea7eec8561d004d128dd9fa2fe0b6e5
+	b2sums = 3605ea6fec820be7642e5559a019fb27733eaa2cbb79a41ca8de5d373330ab4408af8d228e9dd25e6b110ecb4aa58b8e18cad68d6557f2dfe5152203290af465
 
 pkgname = python-qbittorrent-api
