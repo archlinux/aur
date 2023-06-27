@@ -7,6 +7,7 @@
 # You can still find the binary or modify this script/PKGBUILD yourself.
 # I am *not* going to troubleshoot short-sighted and insecure 'root everything' nonsense.
 # Additionally, I will remind you that "/opt" *is used by default* but the option is, again, ultimately up to the you where the installation resides.
+# This is the difference between handing someone you don't know a loaded "gun" versus handing it to them with the safety on.
 
 if [ "$(id -u)" -eq 0 ]; then
     echo "ERROR: Run this as an unprivileged user; not as root."
