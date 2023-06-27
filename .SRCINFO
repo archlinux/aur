@@ -1,15 +1,14 @@
 pkgbase = haskell-vinyl
 	pkgdesc = Extensible records for Haskell with lenses using modern GHC features.
-	pkgver = 0.5.1
+	pkgver = 0.14.3
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/vinyl
-	install = haskell-vinyl.install
 	arch = any
 	license = MIT
-	depends = ghc
+	makedepends = ghc
+	depends = ghc-libs
 	options = strip
-	source = http://hackage.haskell.org/packages/archive/vinyl/0.5.1/vinyl-0.5.1.tar.gz
-	sha512sums = 2bfb61372f92ffec85769f8525323fd076347a6fd45f28c85840f03e433dedf7dc77c77e4b3d915ae38a95c6453b70df6ac90c6a6f6d20cb714bac3a8f31c2e1
+	source = http://hackage.haskell.org/packages/archive/vinyl/0.14.3/vinyl-0.14.3.tar.gz
+	sha512sums = d4624cc91c1471b73e10e1f0c7076d6e286dcbaf9f70b3f82b5a9d43c4fee64c5ca7c388b1558adbaafb8111e1dfc837353ed94aaf52f15360a0c69766d775ca
 
 pkgname = haskell-vinyl
-
