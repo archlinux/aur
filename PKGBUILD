@@ -1,18 +1,23 @@
-# Maintainer: sukanka <su975853527@gmail.com>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=logr
-_pkgver=1.3.3
+_pkgver=1.3.4
 pkgname=r-${_pkgname,,}
-pkgver=1.3.3
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Creates Log Files'
-arch=('any')
+pkgdesc="Creates Log Files"
+arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('CC0')
+license=(custom:CC0)
 depends=(
-  r
-  r-this.path
+  r-common
   r-withr
+)
+checkdepends=(
+  r-dplyr
+  r-testthat
+  r-tidylog
 )
 optdepends=(
   r-covr
@@ -22,15 +27,26 @@ optdepends=(
   r-testthat
   r-tidylog
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d29da1f9afd3df1b5b85e86ca7c298d324a0cdb7a26e3717e4f2e8df1a176321')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "$pkgname-CC0.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt")
+md5sums=('6fba6b60eead4c8c31ead6ce7b13232c'
+         '65d3616852dbf7b1a6d4b53b00626032')
+sha256sums=('9a5222cb75501a3e3085d46db188b712e65af064d849b52a2793be3295f72b10'
+            'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -Dm644 "$pkgname-CC0.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-# vim:set ts=2 sw=2 et:

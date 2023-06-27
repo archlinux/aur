@@ -1,12 +1,14 @@
 pkgbase = r-logr
 	pkgdesc = Creates Log Files
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=logr
 	arch = any
-	license = CC0
-	depends = r
-	depends = r-this.path
+	license = custom:CC0
+	checkdepends = r-dplyr
+	checkdepends = r-testthat
+	checkdepends = r-tidylog
+	depends = r-common
 	depends = r-withr
 	optdepends = r-covr
 	optdepends = r-dplyr
@@ -14,7 +16,11 @@ pkgbase = r-logr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-tidylog
-	source = https://cran.r-project.org/src/contrib/logr_1.3.3.tar.gz
-	sha256sums = d29da1f9afd3df1b5b85e86ca7c298d324a0cdb7a26e3717e4f2e8df1a176321
+	source = https://cran.r-project.org/src/contrib/logr_1.3.4.tar.gz
+	source = r-logr-CC0.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
+	md5sums = 6fba6b60eead4c8c31ead6ce7b13232c
+	md5sums = 65d3616852dbf7b1a6d4b53b00626032
+	sha256sums = 9a5222cb75501a3e3085d46db188b712e65af064d849b52a2793be3295f72b10
+	sha256sums = a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499
 
 pkgname = r-logr
