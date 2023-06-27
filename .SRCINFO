@@ -13,6 +13,7 @@ pkgbase = backup2l
 	depends = sed
 	optdepends = bzip2: external compressor
 	optdepends = cron: for the daily backup
+	backup = etc/backup2l.conf
 	source = backup2l-1.6.tar.gz::https://github.com/gkiefer/backup2l/archive/refs/tags/v1.6.tar.gz
 	source = install-sh.patch
 	b2sums = 940a931899cf31acd3da80cf6b2d3846882b01b37fbecedc72d7fdf7ca6d4485648f1e14c630808b04725da02a3ea25570271c8a891be18035053e34cc2e9a41

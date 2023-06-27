@@ -7,6 +7,7 @@ pkgdesc="Low-maintenance backup/restore tool"
 arch=('any')
 url="https://gkiefer.github.io/backup2l/"
 license=('GPL')
+backup=('etc/backup2l.conf')
 depends=('awk' 'bash' 'findutils' 'grep' 'gzip' 'sed')
 optdepends=('bzip2: external compressor'
             'cron: for the daily backup')
