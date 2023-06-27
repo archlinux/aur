@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="laradumps-appimage"
-pkgver=1.7.2
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A friendly app designed to boost your Laravel PHP coding and debugging experience."
 arch=('x86_64')
@@ -13,11 +13,11 @@ depends=('zlib' 'hicolor-icon-theme' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/LaraDumps-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/laradumps/app/main/LICENSE")
-sha256sums=('4fa9437f2d1e813d4f8975de7e212ec551296ccdd0494a773696d316cda233fc'
-            '3150b483ca39a02e6651234966f2a19ba17486a87e8f26f9bdb7f4242e08af65')
+sha256sums=('181fd606d6f4574938b90c0ded4b5bc3d2b8fceb7373aef9e681187d1a1597ef'
+            '9893d51d32c0a06c98d8d1b8c22a022ae4af24d9cc61468a9f38e6ecc9553102')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {

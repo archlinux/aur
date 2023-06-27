@@ -1,6 +1,6 @@
 pkgbase = laradumps-appimage
 	pkgdesc = A friendly app designed to boost your Laravel PHP coding and debugging experience.
-	pkgver = 1.7.2
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://laradumps.dev/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = laradumps-appimage
 	depends = glibc
 	conflicts = laradumps
 	options = !strip
-	source = laradumps-1.7.2.AppImage::https://github.com/laradumps/app/releases/download/v1.7.2/LaraDumps-1.7.2.AppImage
+	source = laradumps-2.0.1.AppImage::https://github.com/laradumps/app/releases/download/v2.0.1/LaraDumps-2.0.1.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/laradumps/app/main/LICENSE
-	sha256sums = 4fa9437f2d1e813d4f8975de7e212ec551296ccdd0494a773696d316cda233fc
-	sha256sums = 3150b483ca39a02e6651234966f2a19ba17486a87e8f26f9bdb7f4242e08af65
+	sha256sums = 181fd606d6f4574938b90c0ded4b5bc3d2b8fceb7373aef9e681187d1a1597ef
+	sha256sums = 9893d51d32c0a06c98d8d1b8c22a022ae4af24d9cc61468a9f38e6ecc9553102
 
 pkgname = laradumps-appimage
