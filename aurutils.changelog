@@ -1,3 +1,145 @@
+## 17
+
+* `aur-sync`
+  + `--no-build` now prints `AURDEST` paths regardless of `AUR_SYNC_USE_NINJA` (#1096)
+
+* `examples`
+  + remove `python-pyxdg` dependency (#1096)
+  + fixes for `sync-rebuild` (#1096)
+
+## 16.5
+
+* `examples`
+  + add `--chroot`, `--user` for `sync-rebuild`
+
+## 16.4
+
+* `aur-repo-parse`
+  + improve `Repository` field
+  + check database extension
+
+* `examples`
+  + add AUR dependency resolution for `sync-rebuild`
+
+## 16.3
+* `aur-sync`
+  + only print queue with `--no-build` to standard output
+
+## 16.2
+
+* `aur-sync`
+  + `--save` now applies when building packages
+
+## 16.1
+
+* `examples`
+  + fixes for `sync-rebuild`
+
+## 16
+
+* `aur-repo`
+  + `--status` is now the default
+  + add `Repository` to `--json` / `--jsonl` output
+
+* `aur-format`
+  + add `%R` format option
+
+* `perl`
+  + `write_json()` now returns a string
+
+* `aur`
+  `--env` now prints `PERL5LIB`
+
+## 15.7
+
+* `aur-repo`
+  + add `--search`, `--search-by` (#1057)
+
+* `aur-sync`
+  + `--save`: do not use `/dev/stdout` (#1083)
+
+## 15.6
+
+* `examples`
+  + remove `AUR_EXEC_PATH` from `sync-asroot` [fixup]
+
+## 15.5
+
+* `aur-build`
+  + support makepkg configuration in `/etc/aurutils` (#1076)
+
+* `aur-depends`
+  + add `--jsonl`
+
+## 15.4
+
+* `aur-sync`
+  + add `--save`
+
+* `examples`
+  + `sync-asroot` now works with `AUR_PAGER=ranger` (#1077)
+  + `sync-rebuild` python rewrite
+
+## 15.3
+
+* `aur-pkglist`, `aur-view`, `aur-search`
+  + prefix errors with command name
+
+## 15.2
+
+* `aur-chroot`
+  + adjust default `makepkg`, `pacman` paths depending on `devtools` version (#1072)
+
+## 15.1
+
+* `aur-pkglist`
+  + remove deprecated options (`-J` (`--json`), `-I`, `-S`) [fixup]
+
+## 15
+
+* `aur-repo`
+  + add `--format` (`-f`), `--delim`
+
+* `aur-format`
+  + support `aur-repo-parse --jsonl` input (`AUR::Json.pm`)
+
+* `aur-pkglist`
+  + remove deprecated options (`-J` (`--json`), `-I`, `-S`)
+  + update documentation
+
+* `examples`
+  + `sync-rebuild` now respects package `epoch`
+
+## 14.1
+
+* `aur-sync`
+  + fix exit codes for `tsort`, `aur-repo-parse`
+
+## 14
+
+* `aur-depends`
+  + add `Self` dependency for every target (#1065)
+
+* `aur-sync`
+  + `--rebuild-tree` now implies `--no-provides` (#1068)
+  + add `--no-sync` (`aur-build --no-sync`) (#1064)
+
+## 13.8
+
+* `aur-depends`
+  + add `--show-all` (alias for `--all`)
+  + prune virtual targets with `--all`
+
+## 13.7
+
+* `aur-depends`
+  + fix regression in 13.6
+
+## 13.6
+
+* `aur-depends`
+  + fix output when non-AUR targets are specified on the command-line (#1062)
+
 ## 13.5
 
 * `aur-build`
