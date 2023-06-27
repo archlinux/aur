@@ -9,7 +9,7 @@ arch=(i686 x86_64)
 url="https://github.com/milgra/$pkgname"
 license=(GPL3)
 depends=(freetype2 glew libegl libgl libpng libxkbcommon wayland)
-makedepends=(meson ninja pkg-config wayland-protocols)
+makedepends=(meson wayland-protocols)
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.xz"{,.sha256sum})
 sha256sums=('946c711131fda1d795675c3097dc1b4cb60db771bb379b57e19727404b48460b'
             'SKIP')
