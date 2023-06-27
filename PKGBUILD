@@ -1,27 +1,29 @@
 # Contributor: Daniel YC Lin <dlin (at) gmail.com>
-# Maintainer: Daniel YC Lin <dlin (at) gmail.com>
+
 pkgname=bcpp
-pkgver=20180401
+pkgver=20230130
 pkgrel=1
 pkgdesc="utility for indents C/C++ source programs"
-arch=('i686' 'x86_64' sh4)
-url="http://dickey.his.com/bcpp/bcpp.html"
+arch=('i686' 'x86_64')
+url="https://invisible-island.net/bcpp/bcpp.html"
 license=("custom")
-makedepends=(gcc)
-depends=(bash)
-source=(http://invisible-island.net/datafiles/release/bcpp.tar.gz)
+depends=(gcc-libs glibc)
+source=(https://invisible-island.net/archives/${pkgname}/${pkgname}-${pkgver}.tgz)
+b2sums=('f51ae04ef75125d2040f9ef2ab9fb5513ad83fc6095b85bc091bf109d43b066723743c02f703b90f5d4faeb368da86d611d9ce46237c10e31b861b473de49282')
+
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --mandir=/usr/share/man || return 1
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
-  cp code/bcpp.cfg "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/etc"
+  cp code/bcpp.cfg "$pkgdir/etc/"
   mkdir -p "$pkgdir/usr/share/licenses/bcpp"
   install -m644 COPYING "$pkgdir/usr/share/licenses/bcpp/"
 }
-md5sums=('c3559098a2af739aafdf7ca265c02d49')
+
