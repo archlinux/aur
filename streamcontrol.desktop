@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=StreamControl
+GenericName=Stream Overlay Controller
+Exec=StreamControl %F
+Terminal=false
+Categories=AudioVideo;
