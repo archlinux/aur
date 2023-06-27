@@ -29,6 +29,7 @@ provides=(
 	'iproute2'
 	'procps-ng'
 	'sed'
+	'sh'
 	'tar'
 	'util-linux'
 	'vi'

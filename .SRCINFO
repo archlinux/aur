@@ -21,6 +21,7 @@ pkgbase = busybox-coreutils
 	provides = iproute2
 	provides = procps-ng
 	provides = sed
+	provides = sh
 	provides = tar
 	provides = util-linux
 	provides = vi
