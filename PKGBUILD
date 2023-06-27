@@ -1,5 +1,6 @@
 # Maintainer: Cheems Bread <CheemsBread505@proton.me>
 pkgname='dailyverse-cli'
+pkgbase='dailyverse-cli-git'
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Daily verse software"
