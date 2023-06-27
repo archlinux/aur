@@ -4,7 +4,7 @@
 # Contributor: Dan Fuhry <dan@fuhry.com>
 
 pkgname=envoyproxy
-pkgver=1.25.0
+pkgver=1.26.2
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
@@ -25,12 +25,10 @@ makedepends=(
 )
 source=(
     "https://github.com/$pkgname/envoy/archive/v$pkgver.tar.gz"
-    use_bazelisk.patch
     0001-arch-dynamically-link-libpsl.patch
 )
-sha512sums=('bb8beeaab9791fe242e66a405237946d37209212dcafb5cbf8c552735d1712c8c625789e94a0c07bba2b0021ba12567e2a054badb0da8c3071fd707d28c0425a'
-            '248d0903c0aaa680065cdb308068e7f999f2ba7e2ffbc3b743715d2db968858f41cf104c59e1e98d6cda74baea54755e7c9edc29711c3b1daa87d63107ee4017'
-            '0c5d5afd48ea87c8de030bbdf1a3c525be962983d6c09504599ff4be2dce90d2c98a5351ae34fa883feb8223f82b1e55d97b88cab4f3e1a7efff722dd30afbae')
+sha512sums=('12e138851f2f98e4c7f7c9e7e5f8c1198a9a0fc01f31527ff558ec48353f93dba63c36ba61d7a2e865bc5ad5c02c0c7b409683b975e05548210d27cdd60cb2ec'
+            '58f7f40a420e1dc7ba845c5349a7596126b4eecc39ca15ebb94fbfe9cd944109318e7577329242164d4dd4ae3a99359723f41dc7265a0334cba06e556c7e8be3')
 
 prepare() {
   cd "envoy-$pkgver"
@@ -72,6 +70,14 @@ build() {
     --copt=-DNDEBUG \
     --copt=-ffunction-sections \
     --copt=-fdata-sections \
+    --cxxopt=-std=c++17 \
+    --host_cxxopt=-std=c++17 \
+    --cxxopt='-includecstdint' \
+    --host_cxxopt='-includecstdint' \
+    --cxxopt='-includestring' \
+    --host_cxxopt='-includestring' \
+    --cxxopt='-includestring_view' \
+    --host_cxxopt='-includestring_view' \
     //source/exe:envoy-static
 }
 

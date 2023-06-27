@@ -1,16 +1,16 @@
-diff -Naur envoy-1.24.0.a/.bazelrc envoy-1.24.0.b/.bazelrc
---- envoy-1.24.0.a/.bazelrc	2022-10-28 13:01:39.695492669 -0400
-+++ envoy-1.24.0.b/.bazelrc	2022-10-28 13:01:23.165203442 -0400
-@@ -43,7 +43,7 @@
+diff -Naur envoy-1.26.2.a/.bazelrc envoy-1.26.2.b/.bazelrc
+--- envoy-1.26.2.a/.bazelrc	2023-06-05 04:42:11.000000000 -0400
++++ envoy-1.26.2.b/.bazelrc	2023-06-26 18:38:28.905340126 -0400
+@@ -58,7 +58,7 @@
  build:linux --fission=dbg,opt
  build:linux --features=per_object_debug_info
  build:linux --action_env=BAZEL_LINKLIBS=-l%:libstdc++.a
 -build:linux --action_env=BAZEL_LINKOPTS=-lm
 +build:linux --action_env=BAZEL_LINKOPTS=-lm:-lpsl
  
- # We already have absl in the build, define absl=1 to tell googletest to use absl for backtrace.
- build --define absl=1
-@@ -151,7 +151,7 @@
+ # TODO(keith): remove once https://github.com/DataDog/dd-opentracing-cpp/pull/252 is integrated
+ # this avoids warnings/errors on arm64 Linux builds
+@@ -170,7 +170,7 @@
  build:libc++ --action_env=LDFLAGS=-stdlib=libc++
  build:libc++ --action_env=BAZEL_CXXOPTS=-stdlib=libc++
  build:libc++ --action_env=BAZEL_LINKLIBS=-l%:libc++.a:-l%:libc++abi.a
