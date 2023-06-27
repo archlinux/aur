@@ -1,8 +1,10 @@
 pkgbase = min-browser-bin
 	pkgdesc = A fast, minimal browser that protects your privacy
-	pkgver = 1.28.0beta
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://minbrowser.org/
+	arch = aarch64
+	arch = armv7h
 	arch = x86_64
 	license = Apache
 	depends = gtk3
@@ -32,7 +34,11 @@ pkgbase = min-browser-bin
 	depends = at-spi2-core
 	depends = gcc-libs
 	depends = pango
-	source = min-browser-1.28.0beta.deb::https://github.com/minbrowser/min/releases/download/1.28.0-beta/min-1.28.0-beta-amd64.deb
-	sha256sums = c6f8b354b8fe613c5a9d748e4a944f9552038091a7c9a10cdc9078c625efbc51
+	source_aarch64 = min-browser-1.28.0-aarch64.deb::https://github.com/minbrowser/min/releases/download/v1.28.0/min-1.28.0-arm64.deb
+	sha256sums_aarch64 = cf2462783c13a3a83fe20db8aadb87baf788c3973cfcc02b1b562adf8fb902ec
+	source_armv7h = min-browser-1.28.0-armv7h.deb::https://github.com/minbrowser/min/releases/download/v1.28.0/min-1.28.0-armv7l.deb
+	sha256sums_armv7h = 409fb65c277b82c5831578ba4c0095afaaab3922ff121ce53ed14dac1d77a2e3
+	source_x86_64 = min-browser-1.28.0-x86_64.deb::https://github.com/minbrowser/min/releases/download/v1.28.0/min-1.28.0-amd64.deb
+	sha256sums_x86_64 = 9d04d8d3415edc7336166574c43a84a3b0bc9db4ce8e35f9b7a5a65b584fd15a
 
 pkgname = min-browser-bin
