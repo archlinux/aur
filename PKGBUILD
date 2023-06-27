@@ -4,7 +4,7 @@
 pkgname=blockbench
 _pkgname=Blockbench
 pkgver=4.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A low-poly 3D model editor"
 arch=('x86_64')
 url="https://blockbench.net/"
@@ -16,6 +16,7 @@ _pkgname=blockbench
 _electron=electron
 _electronDist=/usr/lib/${_electron}
 _electronVersion=$(cat ${_electronDist}/version)
+_electronVersionMajor=${_electronVersion%%.*}
 
 depends=("${_electron}" 'giblib')
 makedepends=(git npm)
@@ -36,11 +37,11 @@ build() {
 
 package() {
   install -d "${pkgdir}/usr/"{bin,share/{pixmaps,applications}}
-  install -d "${pkgdir}/${_electronDist}/resources"
-  echo -e "#!/bin/bash\nexec ${_electron} ${_electronDist}/resources/${_pkgname}.asar \"\$@\"" > "${pkgdir}/usr/bin/${_pkgname}"
+  install -d "${pkgdir}/${_electronDist}${_electronVersionMajor}/resources"
+  echo -e "#!/bin/bash\nexec ${_electron} ${_electronDist}${_electronVersionMajor}/resources/${_pkgname}.asar \"\$@\"" > "${pkgdir}/usr/bin/${_pkgname}"
   chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
   install "${srcdir}/${_pkgname}/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  install "${srcdir}/${_pkgname}/dist/linux-unpacked/resources/app.asar" "${pkgdir}/${_electronDist}/resources/${_pkgname}.asar"
-  cp -r "${srcdir}/${_pkgname}/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}/${_electronDist}/resources/${_pkgname}.asar.unpacked"
+  install "${srcdir}/${_pkgname}/dist/linux-unpacked/resources/app.asar" "${pkgdir}${_electronDist}${_electronVersionMajor}/resources/${_pkgname}.asar"
+  cp -r "${srcdir}/${_pkgname}/dist/linux-unpacked/resources/app.asar.unpacked" "${pkgdir}${_electronDist}${_electronVersionMajor}/resources/${_pkgname}.asar.unpacked"
 }
