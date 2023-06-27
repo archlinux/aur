@@ -16,7 +16,6 @@ pkgbase = lobster-git
 	optdepends = vlc: An alternative video player,
 	optdepends = ffmpeg: for downloading videos,
 	optdepends = rofi: external launcher,
-	optdepends = socat: for interacting with the mpv socket, used for the history feature,
 	optdepends = ueberzugpp: used for image preview with fzf
 	provides = lobster
 	conflicts = lobster
