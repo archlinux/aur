@@ -5,23 +5,21 @@
 # This package is mirored on github at Techcable/aur-senpai
 # PRs and issues welcome
 
-pkgname=senpai-irc
+pkgname=senpai
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI IRC Client Created by ~taiite'
 url=https://sr.ht/~taiite/senpai/
 arch=(x86_64 aarch64)
 license=('ISC')
-# NOTE: The `senpai` package is unrelated, but provides a binary with a similar name
+# Due to a naming conflict, this package was previously named 'senpai-irc'
 #
-# As a result, our packages conflicts. Both packages seem to be low-usage in practice,
-# so I am going to stick with the binary's original name.
+# As of Jun 27, 2023, the other package has been removed.
+# I have renamed the package to be more accurate.
 #
-# Please comment on the AUR board or email me if you want to install both packages and
-# this is an issue for you (I'm sure I can work something out)
-#
-# Also the binary is aliased to "senpai-irc" as a secondary name
-conflicts=('senpai-irc-git' 'senpai')
+# The binary continues to be aliased to "senpai-irc" for clarity and compatibility.
+replaces=('senpai-irc')
+conflicts=('senpai-git' 'senpai-irc-git')
 makedepends=('go' 'scdoc')
 source=("senpai-v${pkgver}.tar.gz::https://git.sr.ht/~taiite/senpai/archive/v${pkgver}.tar.gz")
 sha256sums=('9786fd83f3e1067549c3c88455a1f66ec66d993fe597cee334d217a5d1cf4803')

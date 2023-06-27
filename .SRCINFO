@@ -1,16 +1,17 @@
-pkgbase = senpai-irc
+pkgbase = senpai
 	pkgdesc = TUI IRC Client Created by ~taiite
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~taiite/senpai/
 	arch = x86_64
 	arch = aarch64
 	license = ISC
 	makedepends = go
 	makedepends = scdoc
+	conflicts = senpai-git
 	conflicts = senpai-irc-git
-	conflicts = senpai
+	replaces = senpai-irc
 	source = senpai-v0.2.0.tar.gz::https://git.sr.ht/~taiite/senpai/archive/v0.2.0.tar.gz
 	sha256sums = 9786fd83f3e1067549c3c88455a1f66ec66d993fe597cee334d217a5d1cf4803
 
-pkgname = senpai-irc
+pkgname = senpai
