@@ -2,7 +2,7 @@
 _base=trame-vtk
 pkgname=python-${_base}
 pkgdesc="VTK widgets for trame"
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -11,7 +11,7 @@ depends=(python-trame-client paraview)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-xprocess python-pillow) # python-pixelmatch python-pyvista
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ab9ae30477326149ef23f7ef49ebc4db96f90c141973c96a883943c7585174b683173f123c977aa8a0c504a84c2791d78aef0ecb8dc4f13b3d21fe0949a4a98d')
+sha512sums=('b49a68862c0ab4cdc0f30d17a8e9cf3651810dbb01a52f6daec212d7a3347814292960615ba8a18597796314a9b9c8e8da8cac1cce810addcfd386bd694213f3')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
