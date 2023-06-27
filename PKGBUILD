@@ -4,7 +4,7 @@
 
 pkgname=dott-rs-bin
 _pkgname=dott
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="The dotfile manager you never knew you didn'n need"
 arch=(x86_64)
@@ -13,7 +13,7 @@ license=("MIT")
 conflicts=("$_pkgname" "${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/$_pkgname" "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md")
-sha512sums_x86_64=('7470d7693c216c16f5e8f59aec6e3ba240c88afbf4293a15e4601d262bf81daed8a5920c2d10860cbca6ace2d450c05fac4f16fb3537b1239c7d8dbe84a6016a' '1081f197883ec65fe5003030686ba8090cc208cf1d41309d19e0ade6ca4dd48a983e0c59dd328ca33714d7b0472e38a7dc994ce04acd48750c0f1e69174abda8')
+sha512sums_x86_64=('ee63fdc0af7b2878beb0904efbedcbfa69af403a2037c9f99e8cdd6ca0d9c681dfa8830008816684d48050b31bfeb155f1423fa9bde46f986369f1c7b8a754af' '4c303a2f5621f70dd9046583b4ea2e7da072ce63543985a505250a8cf0ddc5ef475f9056e7c6184723439a8d2ca842a8328448fdee8a204e4230705170ba3b9d')
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/$_pkgname"
