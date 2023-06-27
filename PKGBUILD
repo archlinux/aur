@@ -1,4 +1,5 @@
-# Maintainer: Diab Neiroukh <lazerl0rd at thezest dot dev>
+# Maintainer: Kai Korla <kai at korla dot cloud>
+# Contributor: Diab Neiroukh <lazerl0rd at thezest dot dev>
 # Contributor: Andrew Crerar <crerar@archlinux.org>
 # Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -7,7 +8,7 @@
 # Contributor: nofxx <x@<nick>.com>
 
 pkgname="keydb"
-pkgver="6.2.1"
+pkgver="6.3.3"
 pkgrel=1
 arch=("aarch64" "i686" "x86_64")
 pkgdesc="A Multithreaded fork of Redis."
@@ -46,6 +47,7 @@ makedepends=(
 	"openssl"
 	"systemd"
 	"tcl"
+	"snappy"
 )
 provides=(
 	"redis=6.2.6"
