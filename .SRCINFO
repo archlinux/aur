@@ -2,7 +2,7 @@ pkgbase = jaziku
 	pkgdesc = Jaziku is statistical inference software for the teleconnections analysis
 	pkgver = 1.0.0
 	pkgrel = 2
-	url = https://bitbucket.org/XavierCLL/jaziku
+	url = https://github.com/XavierCLL/Jaziku
 	arch = i686
 	arch = x86_64
 	license = GPLv3
@@ -18,8 +18,7 @@ pkgbase = jaziku
 	depends = dos2unix
 	optdepends = ncl: maps
 	optdepends = hpgl: interpolation
-	source = jaziku-1.0.0.tar.bz2::https://bitbucket.org/XavierCLL/jaziku/get/py3.tar.bz2
-	md5sums = SKIP
+	source = https://github.com/XavierCLL/Jaziku/archive/refs/heads/py3.zip
+	sha256sums = SKIP
 
 pkgname = jaziku
-
