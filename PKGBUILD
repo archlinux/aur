@@ -4,7 +4,7 @@
 # Maintainer: ahmedmoselhi
 # Co-Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=slimjet
-pkgver=39.0.5.0
+pkgver=40.0.0
 pkgrel=1
 _libffmpegverurl="https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt"
 _libffmpegver=0.77.0
@@ -23,13 +23,13 @@ source=("${pkgname}-${pkgver}_amd64.deb::${_downurl}/release/${pkgname}_amd64.de
     "libffmpeg-${_libffmpegver}.zip::${_libffmpegverurl}/releases/download/${_libffmpegver}/${_libffmpegver}-linux-x64.zip"
     "LICENSE.html::${url}/en/webhelp/index.htm"
     "${pkgname}.install")
-sha256sums=('c95000371f69e3d3d9bbfdc36f5dc4e66c32eadfa2107e2900387c20a399c34b'
+sha256sums=('3ce02b395d82e88e6452d3d0797741ccf630c536c21d3a7adbae42ce7cf79826'
             '9d56e4e6c9081fb5bdb92896b630a0bcb4274f33f5e7c96c16b945bc30fd7d02'
             '2c9dac1462b349e7c077ea33cdc91ff46563b2ca0457617958772a689b4c8d43'
             '2bfc097100279ec967fe51bd413140dfd10e095ac8005729455f9fef884723c8')
 
 package() {
-    bsdtar -xf data.tar.xz -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
     install -Dm644 "${srcdir}/libffmpeg.so" -t "${pkgdir}/opt/${pkgname}"
     find "${pkgdir}" -type d -exec chmod 755 {} \;
     install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
