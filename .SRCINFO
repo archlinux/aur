@@ -1,7 +1,7 @@
 pkgbase = python-arg
 	pkgdesc = A simple argument parser for Python
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/maandree/python-arg
 	arch = any
 	license = custom:ISC
@@ -11,5 +11,9 @@ pkgbase = python-arg
 	sha256sums = 4a48e68ccd1d3b48618204feb9c36744137934d515cc8f5bb98441552a72a00f
 
 pkgname = python-arg
+	pkgdesc = A simple argument parser for Python (Python 3 module)
+	depends = python
 
 pkgname = python2-arg
+	pkgdesc = A simple argument parser for Python (Python 2 module)
+	depends = python2

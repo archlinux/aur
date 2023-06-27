@@ -2,7 +2,7 @@
 pkgbase=python-arg
 pkgname=(python-arg python2-arg)
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple argument parser for Python"
 arch=('any')
 url="https://codeberg.org/maandree/python-arg"
@@ -23,11 +23,17 @@ check() {
 }
 
 package_python-arg() {
+    pkgdesc="A simple argument parser for Python (Python 3 module)"
+    depends=(python)
+
     cd "$srcdir/$pkgbase"
     make DESTDIR="$pkgdir" PREFIX=/usr PYTHON_MAJOR=3 install
 }
 
 package_python2-arg() {
+    pkgdesc="A simple argument parser for Python (Python 2 module)"
+    depends=(python2)
+
     cd "$srcdir/$pkgbase"
     make DESTDIR="$pkgdir" PREFIX=/usr PYTHON_MAJOR=2 install
 }
