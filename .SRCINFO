@@ -1,13 +1,13 @@
 pkgbase = neonmodem
 	pkgdesc = Neon Modem Overdrive is a BBS-style, multi-backend discussion board TUI
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/mrusme/neonmodem
 	arch = x86_64
 	license = GPL3
 	makedepends = go
 	depends = glibc
-	source = neonmodem-1.0.3.tar.gz::https://github.com/mrusme/neonmodem/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = d8306c3281538f880c29cd7280fa182b298184ee8aa2f2ea9197ba393f859f4c
+	source = neonmodem-1.0.4.tar.gz::https://github.com/mrusme/neonmodem/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = 8af5151395bcc7080d32d9a921b79b1b3e862de6df92412285f3f21eb0771109
 
 pkgname = neonmodem
