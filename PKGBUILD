@@ -10,7 +10,7 @@ license=("GPL")
 depends=("bash")
 provides=("maxfetch")
 source=("${pkgname}::https://raw.githubusercontent.com/jobcmax/maxfetch/main/maxfetch")
-sha256sums=("716a6061d1b7f83485dd58fb85b327c088d977454e9ebbcfbadf45101b6edfea")
+sha256sums=("0a71270e123fbe5b67f559dffc81ac7321c3611b277c359b1ef27afae28af13d")
 
 package() {
 	mkdir -p "${pkgdir}"/usr/bin
