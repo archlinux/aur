@@ -3,24 +3,43 @@
 _pkgbase="busybox"
 pkgname="$_pkgbase-coreutils"
 pkgver=1.36.0
-pkgrel=2
+pkgrel=3
 pkgdesc="POSIX-compliant utility applets from BusyBox."
 arch=('any')
 url="https://busybox.net/"
 license=('GPL')
-depends=('coreutils')
+depends=()
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=('busybox' 'coreutils' 'gawk')
-source=("https://busybox.net/downloads/$_pkgbase-$pkgver.tar.bz2"
-        ".config")
-sha256sums=("542750c8af7cb2630e201780b4f99f3dcceeb06f505b479ec68241c1e6af61a5"
-            "669c0938e2f5af1693a1fa851245d367b959eea70e3eea6fdd906d07630ebeff")
+provides=(
+	'awk'
+	'busybox'
+	'coreutils'
+	'findutils'
+	'inetutils'
+	'gawk'
+	'tar'
+	'util-linux'
+	'which'
+)
+conflicts=(
+	'awk'
+	'busybox'
+	'coreutils'
+	'findutils'
+	'inetutils'
+	'gawk'
+	'tar'
+	'util-linux'
+	'which'
+)
+source=("https://busybox.net/downloads/$_pkgbase-$pkgver.tar.bz2")
+sha256sums=("542750c8af7cb2630e201780b4f99f3dcceeb06f505b479ec68241c1e6af61a5")
 
 prepare() {
-	cp .config "$_pkgbase-$pkgver/"
+	cd "$_pkgbase-$pkgver"
+	make defconfig
 }
 
 build() {
