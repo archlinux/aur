@@ -1,0 +1,24 @@
+pkgbase = crates_cli
+	pkgdesc = A CLI for search crate.io in terminal
+	pkgver = master
+	pkgrel = 1
+	url = https://gitcode.net/dnrops/crates_cli.git
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	depends = git
+	depends = pacman
+	optdepends = asp: downloading repo pkgbuilds
+	optdepends = bat: colored pkgbuild printing
+	optdepends = devtools: build in chroot
+	backup = etc/crates_cli.conf
+	source = crates_cli-master.tar.gz::https://gitcode.net/dnrops/crates_cli/-/archive/master/crates_cli-master.tar.gz
+	sha256sums = SKIP
+
+pkgname = crates_cli
