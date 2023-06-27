@@ -1,24 +1,23 @@
-# Upstream Project Author: Roger Meier <roger.meier@pobox.com>
-# PKGBUILD Maintainer: Bumsik Kim <k.bumsik@gmail.com>
+# Contributor: Bumsik Kim <k.bumsik@gmail.com>
 
 pkgname=coolterm-bin
 binname=coolterm
-pkgver=1.7.0
+pkgver=2.0.1
 pkgrel=1
-pkgdesc='A simple GUI serial port terminal application (no terminal emulation)'
-arch=('any')
+pkgdesc='simple GUI serial port terminal application (no terminal emulation)'
+arch=(i686 x86_64)
 url="http://freeware.the-meiers.org/"
 license=(custom)
-makedepends=('unzip' 'gendesk')
+makedepends=('gendesk')
 depends=('gtk3')
-optdepends=('')
-
-source=('src.zip::http://freeware.the-meiers.org/CoolTermLinux.zip'
-        'coolterm.sh'
+source=('coolterm.sh'
         'LICENSE')
-sha256sums=('d105dbdfbfea59a6b1ee6806c573736788fe248bdd57fae8aedc20353c2c738a'
-            'c9f4eb8afba21a3076b233bc2b27c6a5d8b1f5a0966ee1dfdefd258895afe79a'
+source_i686=(${binname}-${pkgver}_32.zip::http://freeware.the-meiers.org/CoolTermLinux32Bit.zip)
+source_x86_64=(${binname}-${pkgver}_64.zip::http://freeware.the-meiers.org/CoolTermLinux64Bit.zip)
+sha256sums=('c9f4eb8afba21a3076b233bc2b27c6a5d8b1f5a0966ee1dfdefd258895afe79a'
             '3309abddebf57f96282762a63fe7937852fbad4e79e119fbe4c6aa227b197e94')
+sha256sums_i686=('fb4072c5a37744bd685e19d1fd63f649ac9824512cb1e860f24128dfc2172ab4')
+sha256sums_x86_64=('5b5c2d620d20e19f8e9aeef463ee2dcc23f7c843b6da2e36da05f045d6d668ce')
 
 prepare() {
 	gendesk -f --pkgname="$binname" --pkgdesc="$pkgdesc" --categories=Utility PKGBUILD
@@ -26,7 +25,7 @@ prepare() {
 
 package() {
 	install -d "$pkgdir"/opt/"$binname"
-	cd CoolTermLinux
+	cd CoolTermLinux*
 	cp -R * "$pkgdir/opt/$binname"
 	cd ..
 

@@ -1,20 +1,20 @@
 pkgbase = coolterm-bin
-	pkgdesc = A simple GUI serial port terminal application (no terminal emulation)
-	pkgver = 1.7.0
+	pkgdesc = simple GUI serial port terminal application (no terminal emulation)
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = http://freeware.the-meiers.org/
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = custom
-	makedepends = unzip
 	makedepends = gendesk
 	depends = gtk3
-	optdepends = 
-	source = src.zip::http://freeware.the-meiers.org/CoolTermLinux.zip
 	source = coolterm.sh
 	source = LICENSE
-	sha256sums = d105dbdfbfea59a6b1ee6806c573736788fe248bdd57fae8aedc20353c2c738a
 	sha256sums = c9f4eb8afba21a3076b233bc2b27c6a5d8b1f5a0966ee1dfdefd258895afe79a
 	sha256sums = 3309abddebf57f96282762a63fe7937852fbad4e79e119fbe4c6aa227b197e94
+	source_i686 = coolterm-2.0.1_32.zip::http://freeware.the-meiers.org/CoolTermLinux32Bit.zip
+	sha256sums_i686 = fb4072c5a37744bd685e19d1fd63f649ac9824512cb1e860f24128dfc2172ab4
+	source_x86_64 = coolterm-2.0.1_64.zip::http://freeware.the-meiers.org/CoolTermLinux64Bit.zip
+	sha256sums_x86_64 = 5b5c2d620d20e19f8e9aeef463ee2dcc23f7c843b6da2e36da05f045d6d668ce
 
 pkgname = coolterm-bin
-
