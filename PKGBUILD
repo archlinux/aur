@@ -1,4 +1,5 @@
-# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Maintainer:  Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Patrice Peterson <runiq at archlinux dot us>
 # Contributor: Chris Brannon <cmbrannon79@gmail.com>
