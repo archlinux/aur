@@ -1,17 +1,17 @@
 pkgbase = haskell-regex-pcre-builtin
 	pkgdesc = The PCRE backend to accompany regex-base, with bundled code
-	pkgver = 0.94.4.8.8.35
+	pkgver = 0.95.2.3.8.44
 	pkgrel = 1
 	url = https://hackage.haskell.org/package/regex-pcre-builtin
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
-	depends = ghc
+	makedepends = ghc
+	depends = ghc-libs
 	depends = haskell-regex-base
 	options = strip
 	options = staticlibs
-	source = https://hackage.haskell.org/packages/archive/regex-pcre-builtin/0.94.4.8.8.35/regex-pcre-builtin-0.94.4.8.8.35.tar.gz
-	sha256sums = 0bd1b695de953ba4b6e6e0de007021c346cb2a6c8e09356fbcd34f8a79d2ea78
+	source = https://hackage.haskell.org/packages/archive/regex-pcre-builtin/0.95.2.3.8.44/regex-pcre-builtin-0.95.2.3.8.44.tar.gz
+	sha256sums = cacea6a45faf93df8afbf50ecb09f87acabfed0477cba4746205649eb52ec55e
 
 pkgname = haskell-regex-pcre-builtin
-
