@@ -1,4 +1,5 @@
-# Maintainer: kyngs
+# Maintainer: kyngs <aurmail at kyngs dot xyz>
+# Contributor: Mihai Bisog <mihai.bisog@gmail.com>
 pkgname=xfstk-dldr
 pkgver=1.8.6
 pkgrel=3
