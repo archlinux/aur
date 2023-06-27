@@ -1,7 +1,7 @@
 pkgbase = pathvector
 	pkgdesc = declarative edge routing platform that automates route optimization and control plane configuration with secure and repeatable routing policy
 	pkgver = 6.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pathvector.io/
 	arch = x86_64
 	license = MIT

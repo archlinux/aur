@@ -2,7 +2,7 @@
 
 pkgname=pathvector
 pkgver=6.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="declarative edge routing platform that automates route optimization and control plane configuration with secure and repeatable routing policy"
 arch=('x86_64')
 url="https://pathvector.io/"
@@ -13,6 +13,8 @@ sha256sums=('44925a6d8c8a0f9bac0f813f6b9984824aee500d79443ec1bedda5a662c578aa')
 
 prepare() {
   cd "$pkgname-$pkgver"
+
+  sed -i "/version = \"devel\"/s/devel/${pkgver}/" main.go
 
   mkdir -p build/
 }
