@@ -53,9 +53,6 @@ prepare() {
   done
 
   rm -r squashfs-root/usr/share/"$_pkgname"/{java,images}  # Remove non-human resources
-
-  # Directories are extracted with no permissions for group and other. Fix:
-  find squashfs-root -type d -exec chmod go+rx -- {} +
 }
 
 
