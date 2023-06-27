@@ -1,11 +1,10 @@
 pkgbase = xmltv-druid
 	pkgdesc = XMLTV configurator (for gShowTV)
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gshowtv.sourceforge.net/xmltv-druid.html
 	arch = x86_64
 	license = GPL
-	makedepends = gnome-doc-utils
 	depends = gtk2-perl
 	depends = glade-perl
 	depends = gnome-perl
@@ -15,4 +14,3 @@ pkgbase = xmltv-druid
 	md5sums = 625391aa24138a395b64273020bc1396
 
 pkgname = xmltv-druid
-

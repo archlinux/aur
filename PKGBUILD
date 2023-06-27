@@ -2,12 +2,11 @@
 
 pkgname=xmltv-druid
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="XMLTV configurator (for gShowTV)"
 arch=('x86_64')
 url="http://gshowtv.sourceforge.net/xmltv-druid.html"
 license=('GPL')
-makedepends=('gnome-doc-utils')
 # 'gtk2-perl' depends on 'libgnome'
 depends=('gtk2-perl' 'glade-perl' 'gnome-perl' 'gnome-terminal' 'xmltv')
 source=(https://downloads.sourceforge.net/project/gshowtv/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz)
@@ -31,7 +30,7 @@ prepare() {
   #foreach my $gi (sort </usr/bin/tv_grab_* /usr/local/bin/tv_grab_* /usr/bin/vendor_perl/tv_grab_* $ENV{"HOME"}/bin/tv_grab_*>) {
   sed -i 's|\(foreach my $gi (sort </usr/bin/tv_grab_\* /usr/local/bin/tv_grab_\*\)|\1 /usr/bin/vendor_perl/tv_grab_\* $ENV{"HOME"}/bin/tv_grab_\*|' xmltv-druid
 
-  # Fix: 
+  # Fix:
   #system("gnome-terminal --hide-menubar -title='TV Grabber configuration' -e \"$grabber --configure\"");
   #-->
   #system("gnome-terminal --hide-menubar --title='TV Grabber configuration' -e \"$grabber --configure\"");
@@ -41,6 +40,6 @@ prepare() {
 package() {
   cd $pkgname-$pkgver
   install -Dm644 README "$pkgdir/usr/share/$pkgname/README"
-  make install PREFIX="$pkgdir/usr/" 
+  make install PREFIX="$pkgdir/usr/"
 }
 
