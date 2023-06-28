@@ -1,6 +1,6 @@
 pkgname=python-time-machine
 _pkgname=${pkgname:7}
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Travel through time in your tests."
 arch=(any)
