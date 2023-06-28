@@ -1,11 +1,12 @@
 pkgbase = entrez-direct
 	pkgdesc = Entrez Direct - CLI utilities for accessing NCBI databases
 	pkgver = 19.2.20230324
-	pkgrel = 2
+	pkgrel = 3
 	url = https://eutils.ncbi.nlm.nih.gov/
 	install = entrez-direct.install
 	arch = x86_64
 	license = custom
+	makedepends = go
 	source = ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/versions/19.2.20230324/edirect-19.2.20230324.tar.gz
 	source = einfo.wrapper
 	sha256sums = b707699b51e8251e299438e09d94c671c95bc9c714d96e30f94dc853bbcdf03c

@@ -1,11 +1,12 @@
 # Maintainer: Mattéo Delabre <aur.matteo@delab.re>
 pkgname=entrez-direct
 pkgver=19.2.20230324
-pkgrel=2
+pkgrel=3
 pkgdesc='Entrez Direct - CLI utilities for accessing NCBI databases'
 arch=('x86_64')
 url='https://eutils.ncbi.nlm.nih.gov/'
 license=('custom')
+makedepends=(go)
 install=entrez-direct.install
 source=(
     "ftp://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/versions/$pkgver/edirect-$pkgver.tar.gz"
