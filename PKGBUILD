@@ -13,7 +13,7 @@ optdepends=('libnotify: Playback notifications')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source_x86_64=("https://github.com/ciderapp/${_pkgname}/releases/download/v${pkgver}/cider_${pkgver}_amd64.deb")
-sha256sums_x86_64=('5239ac373e4dd8cabee92d3b2b9bab42850213a8d30b7d0cada41c20317b5d6a')
+sha256sums_x86_64=('9bcf27d7ae9d3dc6e5f56f7024997a506410f4a5a2d442005bde2b396f136b12')
 
 package() {
   # Extract package data
