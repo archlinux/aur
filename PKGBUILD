@@ -26,16 +26,9 @@ depends=(
 makedepends=(dconf
              desktop-file-utils
              docbook-xsl
-             evolution-data-server
-             gnome-desktop
-             gtkspell3
              hicolor-icon-theme
              highlight
              itstool
-             libcanberra
-             libcryptui
-             libpst
-             libytnef
              networkmanager
              )
 optdepends=('highlight: text highlight plugin')
@@ -64,10 +57,10 @@ build() {
                 -DLIBEXEC_INSTALL_DIR=/usr/lib \
                 -DSYSCONF_INSTALL_DIR=/etc \
                 -DENABLE_CONTACT_MAPS=ON \
-                -DENABLE_GTK_DOC=ON \
+                -DENABLE_GTK_DOC=OFF \
                 -DENABLE_PLUGINS=all \
                 -DENABLE_SMIME=ON \
-                -DENABLE_WEATHER=OFF \
+                -DENABLE_WEATHER=ON \
 
         ninja
 }
