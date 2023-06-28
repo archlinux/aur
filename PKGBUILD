@@ -1,31 +1,20 @@
-# Maintainer: Phillip Smith <pkgbuild@phs.id.au>
-# http://github.com/fukawi2/aur-packages
-
-### I AM ONLY THE PACKAGER, NOT THE DEVELOPER
-### Please ask support questions about this software in one of:
-###   1) The AUR comments; OR
-###   2) Upstream forums/maillist etc; OR
-###   3) The ArchLinux forums
-### I do not always know enough about the software itself, or don't have the
-### time to promptly respond to direct emails.
-### If you have found a problem with the package/PKGBUILD (as opposed to
-### the software) then please do email me or post an AUR comment.
+# Contributor: Phillip Smith <pkgbuild@phs.id.au>
 
 pkgname=sysusage
-pkgver=5.5
+pkgver=5.7.1
 pkgrel=1
-pkgdesc="Monitor your systems informations and generate periodical graph reports using rrdtool. All reports are shown throught a web interface."
+pkgdesc="Monitor your system, generate periodical graph reports, serve through a web interface"
 arch=('any')
 url="http://sysusage.darold.net/"
 license=('GPL3')
 depends=('inetutils' 'rrdtool' 'sysstat' 'perl' 'perl-proc-queue' 'procps-ng')
 backup=('etc/sysusage.cfg')
 install="$pkgname.install"
-source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('181fc8df2624bbb224981dc450353b6c')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/darold/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
+b2sums=('2854c16a1d09dbb262407cf426a09554dbf03f1aa15c4ae9e40ce5314db03718f24cf9b0ed44b52428a5d703e0e95f0fb680ac73472e092327650e764ecc84c4')
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   
   perl Makefile.PL \
     BINDIR=/usr/bin \
@@ -40,9 +29,9 @@ build() {
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
   
-	install -dm755 "$pkgdir"/var/lib/sysusage
+  install -dm755 "$pkgdir"/var/lib/sysusage
   
   install -Dm644 Sar.pm "$pkgdir"/usr/share/perl5/vendor_perl/SysUsage/Sar.pm
   install -Dm644 sysusage.cfg "$pkgdir"/etc/sysusage.cfg
