@@ -1,4 +1,5 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Thien An Dang Thanh <thienandangthanh@gmail.com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
