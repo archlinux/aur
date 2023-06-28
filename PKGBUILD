@@ -1,8 +1,8 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 _pkgname=srsly
 pkgname=python-${_pkgname}
-pkgver=2.4.4
+pkgver=2.4.6
 pkgrel=1
 pkgdesc='Modern high-performance serialization utilities for Python'
 arch=(x86_64 aarch64)
@@ -10,6 +10,7 @@ url='https://pypi.org/project/srsly/'
 license=(MIT)
 depends=(
 	cython
+	python-catalogue
 	python-pytest
 	python-pytest-timeout
 	python-pytz
@@ -18,7 +19,7 @@ depends=(
 )
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('7e2ea79b2375b059c31dd89ccfb994d2dcd1ae025d836cc52b058ffac90be1405baedf916c7c3ee66387e8095d6bfe21f8ea38198f767aa3208830c9386fe7e0')
+b2sums=('b02e4d7e1fdab87968d47653c29d4d5794c8ebfe8698f7447e33338a2706769e8383aec8e92d4df614ad9d17ada6edbaef8c619bbbc02e37251b36c0825b8bdf')
 
 build() {
 	cd "srsly-${pkgver}"
