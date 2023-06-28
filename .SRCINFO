@@ -1,11 +1,14 @@
 pkgbase = horcrux-git
 	pkgdesc = Split your file into encrypted fragments so that you don't need to remember a passcode
 	pkgver = 0.3.r16.g6575949
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jesseduffield/horcrux
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	optdepends = horcrux-ui: graphical user interface
+	provides = horcrux
+	conflicts = horcrux-bin
 	options = !strip
 	source = git+https://github.com/jesseduffield/horcrux
 	sha256sums = SKIP

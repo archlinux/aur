@@ -2,12 +2,15 @@
 
 pkgname="horcrux-git"
 pkgver=0.3.r16.g6575949
-pkgrel=1
+pkgrel=2
 pkgdesc="Split your file into encrypted fragments so that you don't need to remember a passcode"
 arch=("x86_64")
 url="https://github.com/jesseduffield/horcrux"
 license=("MIT")
+provides=("horcrux")
+conflicts=("horcrux-bin")
 makedepends=("go")
+optdepends=("horcrux-ui: graphical user interface")
 source=("git+$url")
 sha256sums=("SKIP")
 options=("!strip")
@@ -29,6 +32,6 @@ build(){
 
 package(){
  cd "horcrux"
- install -D -m 0755 "horcrux" "$pkgdir/usr/bin/horcrux"
- install -D -m 0644 "LICENSE" "$pkgdir/usr/share/licenses/horcrux/LICENSE"
+ install -D -m 755 "horcrux" "$pkgdir/usr/bin/horcrux"
+ install -D -m 644 "LICENSE" "$pkgdir/usr/share/licenses/horcrux/LICENSE"
 }
