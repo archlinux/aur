@@ -1,21 +1,23 @@
 pkgbase = sos
-	pkgdesc = A unified tool for collecting system logs and other debug information
-	pkgver = 3.6
-	pkgrel = 2
+	pkgdesc = unified tool for collecting system logs and other debug information
+	pkgver = 4.5.5
+	pkgrel = 1
 	url = https://github.com/sosreport/sos
 	arch = any
 	license = GPL2
-	checkdepends = python-nose
+	checkdepends = python-pexpect
 	checkdepends = python-coverage
+	checkdepends = python-pycodestyle
+	checkdepends = python-pyaml
 	makedepends = python-sphinx
+	makedepends = python-setuptools
 	depends = python
 	depends = python-six
 	depends = python-lxml
 	backup = etc/sos.conf
-	source = https://github.com/sosreport/sos/archive/3.6.tar.gz
+	source = sos-4.5.5.tar.gz::https://github.com/sosreport/sos/archive/4.5.5.tar.gz
 	source = https://patch-diff.githubusercontent.com/raw/sosreport/sos/pull/1198.patch
-	sha256sums = 0e19b80e307140a3af78adb2fe5b821ab3c8fc6fb63d3851c78ef83de2680fd3
-	sha256sums = 10478856a9edd42a32d52c1af1b65c86532aed8c0f5b892ce531fb8d3cb41759
+	sha256sums = 8a5ebe38ade95f0cd7d5b2388fedd91239c117709c0f7d533824112cda65b605
+	sha256sums = 2b99f0cb275438c3b1a5f6e260bd057851c14408398e0d25486c642c1c739723
 
 pkgname = sos
-
