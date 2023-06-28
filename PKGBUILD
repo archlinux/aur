@@ -1,32 +1,52 @@
-pkgname=tepl-git
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+
 _pkgname=tepl
-pkgver=5.1.1+106+g86f30c2
+pkgname="${_pkgname}-git"
+pkgver=6.0.0.0+8+g31106a1
 pkgrel=1
-pkgdesc="Library that eases the development of GtkSourceView-based text editors and IDEs"
+_pkgdesc=("Library that eases the development of GtkSourceView-based "
+         "text editors and IDEs")
+pkgdesc="${_pkgdesc[@]}"
 arch=(x86_64)
 url="https://wiki.gnome.org/Projects/Tepl"
 license=(LGPL2.1)
-depends=('amtk' 'gtksourceview4' 'uchardet')
-makedepends=('git' 'gobject-introspection' 'gtk-doc' 'meson' 'vala')
-provides=('tepl')
-conflicts=('tepl')
-source=("git+https://gitlab.gnome.org/GNOME/tepl.git/")
+depends=(
+  'amtk'
+  'cairo'
+  'glib2'
+  'glibc'
+  'gsettings-desktop-schemas'
+  'gtk3'
+  'gtksourceview4'
+  'icu'
+  'pango'
+)
+makedepends=(
+  'git'
+  'gobject-introspection'
+  'gtk-doc'
+  'meson'
+)
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git/")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "${_pkgname}"
   git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-  arch-meson $_pkgname build
-  ninja -C build
+  arch-meson "${_pkgname}" build
+  meson compile -C build
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  xvfb-run -s '-screen 0 1920x1080x24 -nolisten local' \
+    meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "${pkgdir}"
 }
