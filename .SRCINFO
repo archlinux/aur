@@ -1,12 +1,11 @@
 pkgbase = python-prospector
 	pkgdesc = Python static analysis tool
-	pkgver = 1.9.0
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://github.com/PyCQA/prospector/
 	arch = any
 	license = GPL2
-	makedepends = python-build
-	makedepends = python-installer
+	makedepends = python-poetry
 	makedepends = python-wheel
 	depends = python-pylint
 	depends = python-pylint-celery
@@ -29,7 +28,7 @@ pkgbase = python-prospector
 	optdepends = mypy: optional type checking
 	optdepends = python-pyroma: check setup.py
 	optdepends = python-vulture: find dead code
-	source = https://files.pythonhosted.org/packages/source/p/prospector/prospector-1.9.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/prospector/prospector-1.10.2.tar.gz
 	sha256sums = 599f31516f857d785058773875e9358702ad653e65461e8cad44134d8ee17b1f
 
 pkgname = python-prospector

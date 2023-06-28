@@ -1,9 +1,9 @@
-# Maintainer: jmcb <joelsgp@protonmail.com>
+# Contributor: jmcb <joelsgp@protonmail.com>
 # Contributor: Jonas DOREL <jonas at dorel dot me>
 
-pkgname='python-prospector'
-_name='prospector'
-pkgver='1.9.0'
+pkgname=python-prospector
+_name=prospector
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Python static analysis tool"
 url="https://github.com/PyCQA/prospector/"
@@ -28,8 +28,7 @@ optdepends=('python-bandit: security linter'
             'mypy: optional type checking'
             'python-pyroma: check setup.py'
             'python-vulture: find dead code')
-makedepends=('python-build'
-             'python-installer'
+makedepends=('python-poetry'
              'python-wheel')
 license=('GPL2')
 arch=('any')
