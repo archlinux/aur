@@ -2,7 +2,7 @@
 
 pkgname=mashmap
 _pkgname=MashMap
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='Fast approximate aligner for long DNA sequences' 
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=('glibc' 'gsl' 'zlib' 'gcc-libs' 'perl' 'python')
 makedepends=('cmake' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/marbl/MashMap/archive/refs/tags/v${pkgver}.tar.gz"
         )
-b2sums=('609e531a32e6e9042ec692cfb137a16fb39e7ff65e3f3f7d56a44dfba173bd79719893f55475a5a05e7b31d2e6278a5834ab31dba4603dbc2736ed947636179a')
+b2sums=('735906136710a8e43f3e6ea360fbe553e30bf2cc363a6cf05b0b732fdebbdad9c8a25105c73e52d0a020f39df315a74a64c177a7ef777b59bd87f24cc8f0e937')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
