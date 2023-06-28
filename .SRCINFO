@@ -1,47 +1,47 @@
 pkgbase = linux-zencjk
-	pkgdesc = Linux ZEN with CJK Patch
-	pkgver = 5.8.13.zen1
-	pkgrel = 2
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.8.13-zen1
+	pkgdesc = Linux ZEN (with cjktty patch)
+	pkgver = 6.4.zen1
+	pkgrel = 1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v6.4-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
-	makedepends = kmod
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = git
 	makedepends = libelf
 	makedepends = pahole
-	makedepends = xmlto
-	makedepends = python-sphinx
-	makedepends = python-sphinx_rtd_theme
-	makedepends = graphviz
-	makedepends = imagemagick
-	makedepends = git
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.8.13-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v6.4-zen1
 	source = config
-	source = sphinx-workaround.patch
-	source = https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/stable-proposed/extra-kernel/linux-kernel/autobuild/patches/8000-feature-aosc-univt.patch
+	source = 0001-cjktty.patch::https://github.com/zhmars/cjktty-patches/raw/master/v6.x/cjktty-6.4.patch
+	source = 0002-cjktty-32.patch::https://github.com/zhmars/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
-	sha256sums = SKIP
-	sha256sums = 78c336773e9b063c5d8824003540b34f6a014ee888e59f779a27ab6973f3d305
-	sha256sums = 8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c
-	sha256sums = acf96c21e7836ac80b7f6d9427c25784e0187fc0206d5e51d4b5defc68b8ba58
+	validpgpkeys = C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D
+	b2sums = SKIP
+	b2sums = a5cb57a26c3216d51cbaab30ca5dac2b5973d0c20c6ec2f6ec2d3d9f40e24a07c5208288b9fbbf3938ffa343d223a245b42c988d1c5eecb87e197ae817acee81
+	b2sums = 137f469cf6931c2ea64393b808cf7d31497ef361170f624b105fc8920168354fa7ac27dcf5eaa929832ed7fd4a391c65561c7736619c740edb267f4fad50bc58
+	b2sums = 57168ff1b8b203e435a54cc814824eab707d2f27f034df9a3fa313779aa8451cf4d86b61aef4b46ad343ead9ba9181016c2dd22ee90263ea79cc4506b3351fa5
 
 pkgname = linux-zencjk
-	pkgdesc = The Linux ZEN with CJK Patch kernel and modules
+	pkgdesc = The Linux ZEN (with cjktty patch) kernel and modules
 	depends = coreutils
-	depends = kmod
 	depends = initramfs
-	optdepends = crda: to set the correct wireless channels of your country
+	depends = kmod
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = KSMBD-MODULE
+	provides = UKSMD-BUILTIN
+	provides = VHBA-MODULE
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	replaces = 
 
 pkgname = linux-zencjk-headers
-	pkgdesc = Headers and scripts for building modules for the Linux ZEN with CJK Patch kernel
-
-pkgname = linux-zencjk-docs
-	pkgdesc = Documentation for the Linux ZEN with CJK Patch kernel
-
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN (with cjktty patch) kernel
+	depends = pahole
