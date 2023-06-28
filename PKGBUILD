@@ -1,6 +1,6 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 pkgname=gnome-shell-extension-net-speed
-pkgver=7
+pkgver=8
 pkgrel=1
 pkgdesc="Show current net speed on panel."
 arch=('any')
