@@ -1,7 +1,7 @@
 pkgbase = nginx-without-server-header
 	pkgdesc = Lightweight web server, IMAP/POP3 and TCP/UDP proxy server, without HTTP server header
 	pkgver = 1.24.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://nginx.org
 	install = nginx.install
 	arch = x86_64

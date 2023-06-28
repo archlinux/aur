@@ -11,8 +11,10 @@ pkgbase=nginx-without-server-header
 _pkgbase=nginx
 pkgname=(nginx-without-server-header)
 pkgver=1.24.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight web server, IMAP/POP3 and TCP/UDP proxy server, without HTTP server header'
+_prefix_relative='etc/nginx'
+_prefix_full='/'$_prefix_relative
 arch=(x86_64)
 url='https://nginx.org'
 license=(custom)
@@ -20,14 +22,14 @@ depends=(pcre2 zlib openssl geoip mailcap libxcrypt)
 checkdepends=(perl perl-gd perl-io-socket-ssl perl-fcgi perl-cache-memcached
               memcached ffmpeg) 
 conflicts=(nginx nginx-src)
-backup=(etc/nginx/fastcgi.conf
-        etc/nginx/fastcgi_params
-        etc/nginx/koi-win
-        etc/nginx/koi-utf
-        etc/nginx/nginx.conf
-        etc/nginx/scgi_params
-        etc/nginx/uwsgi_params
-        etc/nginx/win-utf
+backup=($_prefix_relative/fastcgi.conf
+        $_prefix_relative/fastcgi_params
+        $_prefix_relative/koi-win
+        $_prefix_relative/koi-utf
+        $_prefix_relative/nginx.conf
+        $_prefix_relative/scgi_params
+        $_prefix_relative/uwsgi_params
+        $_prefix_relative/win-utf
         etc/logrotate.d/nginx)
 install=nginx.install
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
@@ -103,8 +105,8 @@ build() {
   cd $_pkgbase-$pkgver
 
   ./configure \
-    --prefix=/etc/nginx \
-    --conf-path=/etc/nginx/nginx.conf \
+    --prefix=$_prefix_full \
+    --conf-path=$_prefix_full/nginx.conf \
     --sbin-path=/usr/bin/nginx \
     --pid-path=/run/nginx.pid \
     --lock-path=/run/lock/nginx.lock \
@@ -117,6 +119,7 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
+    --modules-path=/var/lib/nginx/modules \
     --with-cc-opt="$CFLAGS $CPPFLAGS" \
     --with-ld-opt="$LDFLAGS" \
     ${_common_flags[@]} \
@@ -135,23 +138,26 @@ package_nginx-without-server-header() {
     -e '34i \\n    types_hash_max_size 4096;\n\n    server_tokens off;\n\n    root /usr/share/nginx/html;' \
     -e '44s|html|/usr/share/nginx/html|' \
     -e '54s|html|/usr/share/nginx/html|' \
-    -i "$pkgdir"/etc/nginx/nginx.conf
+    -i "$pkgdir$_prefix_full"/nginx.conf
 
   sed -e '16s|^|#|' \
     -e '17i fastcgi_param  SERVER_SOFTWARE    nginx;' \
-    -i "$pkgdir"/etc/nginx/fastcgi_params
+    -i "$pkgdir$_prefix_full"/fastcgi_params
 
-  rm "$pkgdir"/etc/nginx/*.default
-  rm "$pkgdir"/etc/nginx/mime.types  # in mailcap
+  rm "$pkgdir$_prefix_full"/*.default
+  rm "$pkgdir$_prefix_full"/mime.types  # in mailcap
 
   install -d "$pkgdir"/var/lib/nginx
   install -dm700 "$pkgdir"/var/lib/nginx/proxy
+
+  install -dm750 "$pkgdir"/var/lib/nginx/modules/
+  ln -s /var/lib/nginx/modules/ "$pkgdir$_prefix_full"/modules
 
   chmod 755 "$pkgdir"/var/log/nginx
   chown root:root "$pkgdir"/var/log/nginx
 
   install -d "$pkgdir"/usr/share/nginx
-  mv "$pkgdir"/etc/nginx/html/ "$pkgdir"/usr/share/nginx
+  mv "$pkgdir$_prefix_full"/html/ "$pkgdir"/usr/share/nginx
 
   install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
   install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
