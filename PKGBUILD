@@ -2,7 +2,7 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1478.r0.g3a991f3
+pkgver=1479.r0.ge6255ba
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -10,8 +10,20 @@ url='https://github.com/yuzu-emu/yuzu-mainline'
 license=('GPL2')
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu-git' 'yuzu-canary-git' 'yuzu')
-# Set "!strip" to keep the debugging symbols within the package for debugging
-options=("lto" "strip") #Set LTO (Flatpak builds with Full GCC LTO)
+_debug=false # set to true to debug yuzu. Whenever debugging with gdb, remember to enter `handle SIGSEGV nostop` before `run`, as yuzu uses SIGSEGV for memory access!!!!!!!!`
+if [ "$_debug" = false ]
+then
+    options=("lto" "strip")
+    _cmake_build_type=Release
+    _yuzu_lto=ON
+else
+    options=("!lto" "!strip" "debug")
+    _cmake_build_type=Debug
+    _yuzu_lto=OFF
+fi
+
+
+
 depends=('fmt'
          'cubeb'
          'mbedtls'
@@ -136,12 +148,12 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_C_COMPILER=gcc \
       -DCMAKE_CXX_COMPILER=g++ \
-      -DCMAKE_C_FLAGS="$CFLAGS -flto=auto" \
-      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=auto" \
-      -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+      -DCMAKE_C_FLAGS="$CFLAGS" \
+      -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
+      -DCMAKE_BUILD_TYPE=$_cmake_build_type \
       -DYUZU_USE_QT_WEB_ENGINE=ON \
       -DYUZU_USE_QT_MULTIMEDIA=ON \
-      -DYUZU_ENABLE_LTO=ON \
+      -DYUZU_ENABLE_LTO=$_yuzu_lto \
       -DYUZU_USE_EXTERNAL_SDL2=OFF \
       -DYUZU_USE_BUNDLED_FFMPEG=OFF \
       -DYUZU_USE_BUNDLED_QT=OFF \
