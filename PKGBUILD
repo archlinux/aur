@@ -27,7 +27,7 @@ makedepends=(
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-groups=(gnome)
+groups=(gnome gnome-git)
 source=("git+${url}")
 sha256sums=('SKIP')
 

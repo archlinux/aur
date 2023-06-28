@@ -9,6 +9,7 @@ pkgbase = gnome-user-share-git
 	arch = aarch64
 	arch = armv7h
 	groups = gnome
+	groups = gnome-git
 	license = GPL
 	makedepends = git
 	makedepends = meson
