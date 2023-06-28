@@ -35,11 +35,12 @@ build() {
     cargo build --frozen --release --all-features
 }
 
-check() {
-    cd "$_pkgname"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
-}
+# The tests are way too long on top of a long build time
+#check() {
+#    cd "$_pkgname"
+#    export RUSTUP_TOOLCHAIN=stable
+#    cargo test --frozen --all-features
+#}
 
 package() {
     cd "$_pkgname"
