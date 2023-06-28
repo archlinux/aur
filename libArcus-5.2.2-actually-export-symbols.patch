@@ -1,0 +1,90 @@
+diff -up libArcus-5.2.2/include/Arcus/Error.h.export libArcus-5.2.2/include/Arcus/Error.h
+--- libArcus-5.2.2/include/Arcus/Error.h.export	2022-11-30 09:32:40.000000000 -0500
++++ libArcus-5.2.2/include/Arcus/Error.h	2023-03-08 12:26:40.095859666 -0500
+@@ -5,6 +5,7 @@
+ #define ARCUS_ERROR_H
+ 
+ #include "Arcus/Types.h"
++#include "ArcusExport.h"
+ 
+ namespace Arcus
+ {
+@@ -32,7 +33,7 @@ enum class ErrorCode
+ /**
+  * A class representing an error with an error code and an error message.
+  */
+-class Error
++class ARCUS_EXPORT Error
+ {
+ public:
+     /**
+diff -up libArcus-5.2.2/include/Arcus/MessageTypeStore.h.export libArcus-5.2.2/include/Arcus/MessageTypeStore.h
+--- libArcus-5.2.2/include/Arcus/MessageTypeStore.h.export	2022-11-30 09:32:40.000000000 -0500
++++ libArcus-5.2.2/include/Arcus/MessageTypeStore.h	2023-03-08 12:26:40.095859666 -0500
+@@ -8,12 +8,14 @@
+ 
+ #include "Arcus/Types.h"
+ 
++#include "ArcusExport.h"
++
+ namespace Arcus
+ {
+ /**
+  * A class to manage the different types of messages that are available.
+  */
+-class MessageTypeStore
++class ARCUS_EXPORT MessageTypeStore
+ {
+ public:
+     MessageTypeStore();
+@@ -87,7 +89,7 @@ public:
+     void dumpMessageTypes();
+ 
+ private:
+-    class Private;
++    class ARCUS_NO_EXPORT Private;
+     const std::unique_ptr<Private> d;
+ };
+ } // namespace Arcus
+diff -up libArcus-5.2.2/include/Arcus/Socket.h.export libArcus-5.2.2/include/Arcus/Socket.h
+--- libArcus-5.2.2/include/Arcus/Socket.h.export	2022-11-30 09:32:40.000000000 -0500
++++ libArcus-5.2.2/include/Arcus/Socket.h	2023-03-08 12:26:40.096859680 -0500
+@@ -9,6 +9,8 @@
+ #include "Arcus/Error.h"
+ #include "Arcus/Types.h"
+ 
++#include "ArcusExport.h"
++
+ namespace Arcus
+ {
+ class SocketListener;
+@@ -21,7 +23,7 @@ class SocketListener;
+  *
+  * Please see the README in libArcus for more details.
+  */
+-class Socket
++class ARCUS_EXPORT Socket
+ {
+ public:
+     Socket();
+diff -up libArcus-5.2.2/include/Arcus/SocketListener.h.export libArcus-5.2.2/include/Arcus/SocketListener.h
+--- libArcus-5.2.2/include/Arcus/SocketListener.h.export	2023-03-08 12:27:19.364375316 -0500
++++ libArcus-5.2.2/include/Arcus/SocketListener.h	2023-03-08 12:27:41.511666142 -0500
+@@ -6,6 +6,8 @@
+ 
+ #include "Arcus/Types.h"
+ 
++#include "ArcusExport.h"
++
+ namespace Arcus
+ {
+ class Socket;
+@@ -24,7 +26,7 @@ class Error;
+  * signal from a subclass of this class, to make sure the actual event
+  * is handled on the main thread.
+  */
+-class SocketListener
++class ARCUS_EXPORT SocketListener
+ {
+ public:
+     SocketListener() : _socket(nullptr)
