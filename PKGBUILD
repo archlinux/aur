@@ -20,6 +20,7 @@ depends=(
 makedepends=(
   # 'git'
   'python-setuptools')
+groups=(gnome-extra)
 source=(
   # "${_pkg}-${pkgver}::git+${url}#tag=${pkgver}")
   "${url}/-/archive/${pkgver}/${_pkg}-${pkgver}.tar.gz")

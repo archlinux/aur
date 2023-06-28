@@ -4,6 +4,7 @@ pkgbase = daty
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Daty
 	arch = x86_64
+	groups = gnome-extra
 	license = AGPLv3
 	makedepends = python-setuptools
 	depends = libhandy0
