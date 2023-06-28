@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.1.35 Kernel Configuration
+# Linux/arm64 6.1.36 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.0"
 CONFIG_CC_IS_GCC=y
@@ -10464,7 +10464,7 @@ CONFIG_CIFS_DFS_UPCALL=y
 # CONFIG_CIFS_SWN_UPCALL is not set
 CONFIG_CIFS_FSCACHE=y
 # CONFIG_SMB_SERVER is not set
-CONFIG_SMBFS_COMMON=m
+CONFIG_SMBFS=m
 CONFIG_CODA_FS=m
 # CONFIG_AFS_FS is not set
 CONFIG_9P_FS=m

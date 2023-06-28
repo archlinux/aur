@@ -10,7 +10,7 @@ _srcname=linux-6.1
 _kernelname=${pkgbase#linux}
 _desc='AArch64 multi-platform LTS'
 pkgdesc="The Linux Kernel and modules - ${_desc}"
-pkgver=6.1.35
+pkgver=6.1.36
 pkgrel=1
 arch=('aarch64')
 url='https://github.com/lynix/linux-aarch64-lts'
@@ -28,10 +28,10 @@ source=(
     'config' 'linux.preset'
 )
 sha256sums=('2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb'
-            'd838506aa063b8e41aeaf2372d1332725f9b5db8a334121c7ee626dfc40688c5'
+            'e5af3f72906e169cff7f09965a643e82d310e49d709ad2b373e07d2c06ce8688'
             '013ab7f5bcf2cd486e819fb13fde1f673ac72978984a8befea13938eaf8ddd8e'
             'bcb8a42654df5f9670367950daaa01b165c15618f827d18b7b2a8d53d39227a4'
-            '034845fbe302ad50e5e58398f89498cea64e22abfdb20fbdb5221e4f2af4cd4a'
+            'beb55ca8b848efddd7655fc517663e16dad5dd8678c296af1550b99d983d57b7'
             '6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255')
 
 prepare() {
