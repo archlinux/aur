@@ -1,6 +1,6 @@
 pkgbase = civo-bin
 	pkgdesc = Civo CLI is a tool to manage your Civo.com account from the terminal
-	pkgver = 1.0.56
+	pkgver = 1.0.57
 	pkgrel = 1
 	url = https://github.com/civo/cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = civo-bin
 	provides = civo
 	conflicts = civo
 	conflicts = civo-git
-	source = civo-bin-1.0.56.deb::https://github.com/civo/cli/releases/download/v1.0.56/civo_amd64.deb
-	sha256sums = 229ca2450309523bb621a4356896df54a1a1303677d0edb18c453a262db9826d
+	source = civo-bin-1.0.57.deb::https://github.com/civo/cli/releases/download/v1.0.57/civo_amd64.deb
+	sha256sums = ebad9fca3e62c5bbf7dc144c5f445d62c2502755b04dddfef6b62917652d1041
 
 pkgname = civo-bin
