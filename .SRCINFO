@@ -1,6 +1,6 @@
 pkgbase = mounriver-studio-toolchain-bin
-	pkgver = 1.70
-	pkgrel = 3
+	pkgver = 1.80
+	pkgrel = 0
 	url = http://www.mounriver.com/
 	arch = x86_64
 	license = GPL2
@@ -15,10 +15,10 @@ pkgbase = mounriver-studio-toolchain-bin
 	optdepends = ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A
 	optdepends = wchisp: WCH ISP Tool in Rust
 	provides = MRS-Toolchain
-	noextract = mounriver-studio-toolchain-bin-1.70.tar.xz
+	noextract = mounriver-studio-toolchain-bin-1.80.tar.xz
 	options = !strip
-	source = mounriver-studio-toolchain-bin-1.70.tar.xz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_X64_V170.tar.xz
-	sha256sums = 0de1b2699de07e17baf802a5709c0931ef00642fe39dc999cd65d4049853778d
+	source = mounriver-studio-toolchain-bin-1.80.tar.xz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V1.80.tar.xz
+	sha256sums = 873c5806667c963f076bb9555922c9008c508fc31781f4e070298045abee9924
 
 pkgname = mounriver-studio-toolchain-bin
 	pkgdesc = This MRS Toolchain includes the tool chain for RISC-V kernel chip under Linux x64 and the debug download tool OpenOCD.
