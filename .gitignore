@@ -1,5 +1,6 @@
 sdo/*
 *.pkg.tar
+*.pkg.tar.zst
 *.tar.gz
 .idea/*
 *.part
