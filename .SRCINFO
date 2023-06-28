@@ -1,20 +1,22 @@
 pkgbase = d-feet-git
 	pkgdesc = D-Bus debugger for GNOME
-	pkgver = 0.3.16.r1.g7874512
+	pkgver = 0.3.16.r15.g4f00ee6
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/d-feet
 	arch = any
 	license = GPL2
 	checkdepends = xorg-server-xvfb
-	makedepends = meson
 	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = python-pycodestyle
+	makedepends = yelp-tools
 	depends = gtk3
-	depends = glib2
 	depends = python-gobject
-	depends = python>=2.7
 	provides = d-feet
 	conflicts = d-feet
 	source = git+https://gitlab.gnome.org/GNOME/d-feet.git
-	sha256sums = SKIP
+	source = meson-drop-unused-argument.patch
+	sha512sums = SKIP
+	sha512sums = 019dbeff67c22eccab4e34ed3c3aa292a86c6113f0f9575ecbec948aa5e2fc06f0f862d8e07d8ce566045e6aeb985cebddbc3c70ce6cffc8a074c1e08c80e27c
 
 pkgname = d-feet-git
