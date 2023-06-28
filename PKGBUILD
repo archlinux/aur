@@ -81,9 +81,7 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB \
       -DCMAKE_PREFIX_PATH="${srcdir}"/wxwidgets-install/usr \
-      -DwxWidgets_ROOT_DIR="${srcdir}"/wxwidgets-install/usr \
-      -DwxWidgets_INCLUDE_DIRS="${srcdir}"/wxwidgets-install/usr/include \
-      -DwxWidgets_CONFIG_OPTIONS="--prefix=${srcdir}/wxwidgets-install/usr/include" \
+      -DwxWidgets_CONFIG_OPTIONS="--prefix=${srcdir}/wxwidgets-install/usr" \
       -DCMAKE_EXECUTE_PROCESS_COMMAND_ECHO=STDOUT \
       -DSLIC3R_FHS=ON \
       -DSLIC3R_PCH=OFF \
