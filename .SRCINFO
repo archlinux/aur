@@ -5,13 +5,14 @@ pkgbase = ajnin
 	url = https://github.com/b1f6c1c4/ajnin
 	arch = any
 	license = AGPL3
-	makedepends = antlr4=4.11.1
+	makedepends = antlr4>=4.13.0
 	makedepends = cmake>=3.17
 	makedepends = git
 	makedepends = pandoc
 	depends = boost>=1.75.0
+	depends = antlr4-runtime>=4.13.0
 	depends = ninja
 	source = https://github.com/b1f6c1c4/ajnin/archive/v0.5/ajnin-0.5.tar.gz
-	sha256sums = 883460340093753665c8da8f80102d432624be1f7d13129005567b03daab4924
+	sha256sums = 7fbdf6f980490463407a9e601707e85880519aff52d006643dd8226e0830abe6
 
 pkgname = ajnin
