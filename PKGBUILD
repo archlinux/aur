@@ -1,7 +1,7 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-html-git
-pkgver=0.19.0.r0.gd93af48
+pkgver=0.19.0.r18.gab91d87
 pkgrel=1
 pkgdesc="HTML5 grammar for tree-sitter"
 arch=('x86_64')
@@ -28,7 +28,7 @@ prepare() {
 build() {
 	cd "$pkgname/src/"
 	cc $CFLAGS -std=c99 -c parser.c
-	c++ $CPPFLAGS -fPIC -c scanner.cc
+	cc $CFLAGS -fPIC -std=c99 -c scanner.c
 	c++ $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
 }
 
