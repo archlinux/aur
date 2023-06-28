@@ -4,14 +4,14 @@
 
 pkgname=mopidy-spotify-git
 _pkgname="mopidy-spotify"
-pkgver=576.984151a
-pkgrel=1
+pkgver=4.1.1.r67.g984151a
+pkgrel=2
 pkgdesc="Mopidy extension for playing music from Spotify (git version)"
 arch=('any')
 url="https://github.com/mopidy/mopidy-spotify"
 license=('APACHE')
 conflicts=('mopidy-spotify')
-provides=('mopidy-spotify')
+provides=("mopidy-spotify=$pkgver")
 depends=(
   'mopidy>=3.4'
   python-pykka
@@ -27,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver () {
   cd "${srcdir}/${_pkgname}"
-  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
