@@ -2,7 +2,7 @@
 
 pkgname=python-djlint
 _pkg="${pkgname#python-}"
-pkgver=1.25.0
+pkgver=1.31.1
 pkgrel=1
 pkgdesc='HTML Template Linter and Formatter'
 arch=('any')
@@ -22,7 +22,7 @@ depends=(
 	'python-yaml')
 makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/d/$_pkg/$_pkg-$pkgver.tar.gz")
-sha256sums=('1b9e5265e51c224ef5c6b8d434151293943ddae8602fb544063f33039738d17c')
+sha256sums=('a11739e2f919f760b3986eb13d06e00171f3bd342b8d88e9bd914a4260eaa8ce')
 
 build() {
 	cd "$_pkg-$pkgver"
