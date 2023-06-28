@@ -14,7 +14,7 @@ depends=(gtk4
          libphonenumber
          libsignon-glib
          nss
-         webkit2gtk
+         webkitgtk-6.0
          )
 makedepends=(git
              gnome-common
@@ -53,7 +53,7 @@ build() {
                 -DENABLE_UOA=OFF \
                 -DENABLE_VALA_BINDINGS=ON \
                 -DWITH_PHONENUMBER=ON \
-                -DENABLE_WEATHER=OFF \
+                -DENABLE_WEATHER=ON \
 
         ninja
 }
