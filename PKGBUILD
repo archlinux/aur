@@ -1,18 +1,19 @@
-# Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
+# Maintainer: Sandwich <sandwich@archworks.co>
+# Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=pixelfed
-pkgver=0.10.9
+pkgver=0.11.8
 pkgrel=1
 pkgdesc='A free and ethical photo sharing platform, powered by ActivityPub federation'
 arch=(any)
 url="https://github.com/pixelfed/pixelfed"
 license=(AGPL)
 backup=(etc/webapps/pixelfed/env)
-depends=(php php-intl)
-makedepends=("composer" "unzip")
-optdepends=('mysql'
-            'postgresql'
-            'php-fpm'
+depends=(php php-sodium)
+makedepends=('composer' 'unzip')
+optdepends=('postgresql'
+            'mysql'
+            'php-fpm>=8.1'
             'php-pgsql'
             'php-gd'
             'php-imagick'
@@ -20,19 +21,26 @@ optdepends=('mysql'
             'jpegoptim'
             'optipng'
             'pngquant'
+            'ffmpeg'
             )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pixelfed/pixelfed/archive/v${pkgver}.tar.gz"
         "pixelfed-queue.service"
         "pixelfed-scheduler.service"
         "pixelfed-scheduler.timer")
-sha256sums=('d843796473858de2f0f3cda11db2f711b8303a058660d62c6696d4cb828a8a45'
+sha256sums=('cf98d50225dd83d612bc16d2b0eb0415f09e74413e28795c4d320fda029aa1ff'
             '535d230e7178f4aec6165e998540150c1ad38e7b9824ce6a08325a2443579a1b'
             'dd35ce78248b5b9df52b127e5ad0039a062027942688fa21eb20bfbb8274d33c'
             'dc724f129786a3175bf7d0d6f740a767e63ef95b4de6ecb89727230b7d67924d')
 
 build() {
     cd "$pkgname-$pkgver"
-    # BUG: This fails if the builder has not enabled several php extensions.
+
+    # Enable required PHP extensions
+    sudo sed -i 's/;extension=bcmath/extension=bcmath/' /etc/php/php.ini
+    sudo sed -i 's/;extension=intl/extension=intl/' /etc/php/php.ini
+    sudo sed -i 's/;extension=iconv/extension=iconv/' /etc/php/php.ini
+    sudo sed -i 's/;extension=sodium/extension=sodium/' /etc/php/php.ini
+
     composer install --no-ansi --no-interaction --no-progress --no-scripts --optimize-autoloader
 }
 
@@ -57,4 +65,7 @@ package() {
 
     install -d "$pkgdir/usr/lib/systemd/system"
     cp "$srcdir"/*{.service,.timer} "$pkgdir/usr/lib/systemd/system/"
+
+    # Adjust the env file
+    echo "Adjust the /etc/webapps/pixelfed/env file according to your needs."
 }
