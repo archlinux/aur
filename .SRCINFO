@@ -1,16 +1,17 @@
-pkgbase = gamja-git
+pkgbase = gamja
 	pkgdesc = Simple IRC web client
-	pkgver = v1.0.0.beta.1.r85.g3e309e9
+	pkgver = 1.0.0.beta.8
 	pkgrel = 1
 	url = https://sr.ht/~emersion/gamja/
 	arch = any
 	license = AGPL3
 	makedepends = npm
-	makedepends = git
 	provides = gamja
 	conflicts = gamja
-	backup = usr/share/webapps/gamja/config.json
-	source = gamja::git+https://git.sr.ht/~emersion/gamja
-	sha256sums = SKIP
+	backup = etc/webapps/gamja/config.json
+	source = gamja-1.0.0.beta.8::https://git.sr.ht/~emersion/gamja/archive/v1.0.0-beta.8.tar.gz
+	source = config.example.json
+	sha256sums = 4e4aad554d5cf785d1cd626d27877cb68d6e8a65221da52a9e92c109f4d25845
+	sha256sums = 2ea3471ae8a508d59862acac86d388472468a34380da993d1edac6f2a4ba73cf
 
-pkgname = gamja-git
+pkgname = gamja

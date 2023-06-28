@@ -1,0 +1,38 @@
+{
+	// IRC server settings.
+	"server": {
+		// WebSocket URL or path to connect to (string). Defaults to "/socket".
+		"url": "wss://irc.example.org",
+		// Channel(s) to auto-join (string or array of strings).
+		"autojoin": "#gamja",
+		// Controls how the password UI is presented to the user. Set to
+		// "mandatory" to require a password, "optional" to accept one but not
+		// require it, "disabled" to never ask for a password, "external" to
+		// use SASL EXTERNAL, "oauth2" to use SASL OAUTHBEARER. Defaults to
+		// "optional".
+		"auth": "optional",
+		// Default nickname (string). If it contains a "*" character, it will
+		// be replaced with a random string.
+		"nick": "asdf",
+		// Don't display the login UI, immediately connect to the server
+		// (boolean).
+		"autoconnect": true,
+		// Interval in seconds to send PING commands (number). Set to 0 to
+		// disable. Enabling PINGs can have an impact on client power usage and
+		// should only be enabled if necessary.
+		"ping": 60
+	},
+	// OAuth 2.0 settings.
+	"oauth2": {
+		// OAuth 2.0 server URL (string). The server must support OAuth 2.0
+		// Authorization Server Metadata (RFC 8414) or OpenID Connect
+		// Discovery.
+		"url": "https://auth.example.org",
+		// OAuth 2.0 client ID (string).
+		"client_id": "asdf",
+		// OAuth 2.0 client secret (string).
+		"client_secret": "ghjk",
+		// OAuth 2.0 scope (string).
+		"scope": "profile"
+	}
+}
