@@ -1,6 +1,6 @@
 pkgbase = tepl-git
 	pkgdesc = Library that eases the development of GtkSourceView-based text editors and IDEs
-	pkgver = 6.0.0.0+8+g31106a1
+	pkgver = 6.5.1+2+ga58b1fb
 	pkgrel = 1
 	url = https://gitlab.gnome.org/swilmet/tepl
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = tepl-git
 	depends = gtksourceview4
 	depends = icu
 	depends = pango
-	provides = tepl=6.0.0.0+8+g31106a1
+	provides = tepl=6.5.1+2+ga58b1fb
 	conflicts = tepl
 	source = git+https://gitlab.gnome.org/swilmet/tepl.git
 	sha256sums = SKIP

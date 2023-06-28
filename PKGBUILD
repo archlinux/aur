@@ -2,7 +2,7 @@
 
 _pkgname=tepl
 pkgname="${_pkgname}-git"
-pkgver=6.0.0.0+8+g31106a1
+pkgver=6.5.1+2+ga58b1fb
 pkgrel=1
 _pkgdesc=("Library that eases the development of GtkSourceView-based "
          "text editors and IDEs")
