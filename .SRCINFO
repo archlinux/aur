@@ -1,9 +1,9 @@
 pkgbase = daty-git
 	pkgdesc = Daty Wikidata Editor
-	pkgver = 1.0beta+78+g81b9736
-	pkgrel = 4
+	pkgver = 1.0beta+81+g1a5dce4
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/daty
-	arch = any
+	arch = x86_64
 	license = AGPLv3
 	makedepends = git
 	makedepends = python-setuptools
