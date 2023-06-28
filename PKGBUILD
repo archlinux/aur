@@ -1,36 +1,32 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
 _pkgname=dephell_specifier
 pkgname=python-dephell-specifier
-pkgver=0.2.2
-pkgrel=5
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Work with version specifiers"
 arch=('any')
 url="https://github.com/dephell/${_pkgname}"
 license=('MIT')
 depends=('python-packaging')
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel python-flit-core)
 checkdepends=('python-pytest')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b5ec6409a1916980c4861da2cb7538246555bff4b95bef2c952c56bd19eb2de6')
-b2sums=('eb7656c3c713fd842cc4b3f342d77d88efef773e03845a28244b4071a1db8d73051d4afc17301823878ddadd01c58be19a5fc6f8e5fed03ae73fb97b5c44ea83')
+source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/dephell/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz)
+b2sums=('c3c33abad8b079755635a8f14f78272c33608fb4a6fd042222e254d66240352ec7ed863be66e5c4f88d3a3cdc0216a2ac13cd24d4f0128649cd6896bccfac489')
 
 build(){
-    cd "${srcdir}"/${_pkgname}-${pkgver}
-
-    python setup.py build
+    cd ${_pkgname}-${pkgver}
+    python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "${srcdir}"/${_pkgname}-${pkgver}
-
+    cd ${_pkgname}-${pkgver}
     python -m pytest
 }
 
 package() {
-    cd "${srcdir}"/${_pkgname}-${pkgver}
-
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    cd ${_pkgname}-${pkgver}
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
