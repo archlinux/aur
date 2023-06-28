@@ -1,0 +1,15 @@
+pkgbase = pulsarctl
+	pkgdesc = Control Xanova Pulsar XK400 backlight and keylight effects
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/aedalzotto/pulsarctl
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = argparse
+	depends = hidapi
+	source = https://github.com/aedalzotto/pulsarctl/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = d5ae0cea0f226da54bf1fcf3fa3109c23c8f487477b275c594f15ce3af39100f
+
+pkgname = pulsarctl
