@@ -1,12 +1,13 @@
 pkgbase = opensuperclone-git
 	pkgdesc = Fork of HDDSuperClone
-	pkgver = r184.d2c9fa0
+	pkgver = r222.6b340ff
 	pkgrel = 1
 	url = https://github.com/ISpillMyDrink/OpenSuperClone
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = vim
 	depends = gtk3
 	depends = libusb-compat
 	depends = libconfig

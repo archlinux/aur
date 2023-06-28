@@ -2,14 +2,14 @@
 
 pkgname=opensuperclone-git
 _pkgname=OpenSuperClone
-pkgver=r184.d2c9fa0
+pkgver=r222.6b340ff
 pkgrel=1
 pkgdesc="Fork of HDDSuperClone"
 arch=('x86_64')
 url="https://github.com/ISpillMyDrink/OpenSuperClone"
 license=('GPL2')
 depends=('gtk3' 'libusb-compat' 'libconfig')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'vim')
 optdepends=('dkms: for virtual drive and direct mode support')
 source=("git+https://github.com/ISpillMyDrink/OpenSuperClone.git")
 sha512sums=('SKIP')
