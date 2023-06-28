@@ -1,0 +1,16 @@
+pkgbase = python-wyoming
+	pkgdesc = Protocol for Rhasspy Voice Assistant
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://github.com/rhasspy/rhasspy3
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/w/wyoming/wyoming-0.0.1.tar.gz
+	sha256sums = 10851b28bf0334534d1a62d172ed769a5c381fe8001e6094c34f5e2c6d2cf3e3
+
+pkgname = python-wyoming
