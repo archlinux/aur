@@ -1,23 +1,23 @@
-# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+# Contributor: Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 
 pkgname=texel
-pkgver=1.06
+pkgver=1.08
 pkgrel=1
-pkgdesc="A free UCI compliant open source chess engine developed by Peter Österlund"
+pkgdesc="free UCI compliant open source chess engine developed by Peter Österlund"
 arch=('i686' 'x86_64')
-url="http://chessprogramming.wikispaces.com/Texel"
+url="https://github.com/peterosterlund2/texel"
 license=('GPL')
 depends=('gcc-libs')
-source=("https://github.com/B4dT0bi/texel/archive/${pkgver}.zip")
-md5sums=('3ae1db48a1b70b0fe8cff0772ac5a2dc')
-_bits=32 ; [[ "$CARCH" = 'x86_64' ]] && _bits=64
+makedepends=(cmake)
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/peterosterlund2/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('2bd2a389ef447d91a11df8d03def12b6405c83c37a6462b5f4b4add60efeaf0a5c9e6ae831524b7af6f12a5fa38a439b6e903402d6453540988f9f55ed46c4a7')
+
 
 build() {
-	cd "${srcdir}/texel-${pkgver}/"
-	make texel$_bits
+	cmake -B build -S "$pkgname-$pkgver"
+  cmake --build build
 }
 
 package() {
-	cd "${srcdir}/texel-${pkgver}/"
-	install -Dm0755 $pkgname$_bits ${pkgdir}/usr/bin/$pkgname
+	install -Dm0755 build/$pkgname ${pkgdir}/usr/bin/$pkgname
 }
