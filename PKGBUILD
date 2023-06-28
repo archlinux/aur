@@ -1,7 +1,7 @@
 # Maintainer: flaviofearn <flavioislima@gmail.com>
 
 pkgname=hyperplay
-_pkgver=v0.2.3
+_pkgver=v0.3.0
 pkgver=${_pkgver#v}
 pkgrel=1
 pkgdesc="An open source Web3 gaming platform."
@@ -13,7 +13,7 @@ depends=('fuse2' 'gawk')
 _filename=hyperplay-${pkgver}.pacman
 source=("$url/releases/download/${_pkgver}/${_filename}")
 noextract=("${_filename}")
-md5sums=('50d55cde342aaa9c9ff8fa79e68e44a2')
+md5sums=('2acd7e5b8c40476e188a3d3348ca415c')
 options=(!strip)
 
 package() {
