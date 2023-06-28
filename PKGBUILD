@@ -2,7 +2,7 @@
 _pkgname=tg
 pkgname=telegram-$_pkgname
 pkgver=0.19.0
-pkgrel=3
+pkgrel=4
 pkgdesc="terminal telegram client that really works"
 arch=('any')
 url="https://github.com/paul-nameless/tg"
@@ -32,7 +32,7 @@ prepare() {
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
 
-	python -m build --wheel --no-isolation
+	python setup.py bdist_wheel
 }
 
 package() {
