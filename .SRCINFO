@@ -1,16 +1,15 @@
 pkgbase = ytfind-bin
 	pkgdesc = A program that searches invidious and gives you video titles and IDs
-	pkgver = 1.3
-	pkgrel = 2
-	url = https://github.com/305a385/ytfind/
+	pkgver = 1.4
+	pkgrel = 0
+	url = https://codeberg.org/305a385/ytfind/
 	arch = x86_64
 	license = AGPL3
-	makedepends = git
 	depends = curl
 	noextract = ytfind
-	source = https://github.com/305a385/ytfind/releases/download/v1.3/GNU-Linux-x86_64
-	source = https://github.com/305a385/ytfind/releases/download/v1.3/ytfind.1
-	sha256sums = 5425960f70d58abd00832a0c1bd5b258b2b17a90b518af260597e4efe3ee2657
-	sha256sums = SKIP
+	source = https://codeberg.org/attachments/c09e598f-4335-4099-932a-a7d9110e6475
+	source = https://codeberg.org/attachments/01d37a81-18dc-4725-82bd-7afe86f6cd06
+	sha512sums = df2b54ef15cadbae570ebf5d14ae940da465547e148f341da61d130af67b627e7339b621dc1e9625d21f68ba67a6c91a62a193e4244dda3d1415c34497387f4f
+	sha512sums = 2f2a406a964eda26e81c49ef317a3e7bcad673b74bb4ad5094857c041ebb4fa7341c367230b4380b5b4f7d0b6b9ae4ecc4860c1ce036855a44d7ec042b1d38c3
 
 pkgname = ytfind-bin
