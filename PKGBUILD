@@ -1,0 +1,29 @@
+pkgname=python-wyoming-piper
+_pkgname=wyoming_piper
+pkgdesc="Wyoming Server for Piper"
+pkgver=0.0.3
+pkgrel=1
+arch=(any)
+url="http://github.com/rhasspy/rhasspy3"
+license=('MIT')
+depends=(python python-wyoming piper-tts)
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/w/$_pkgname/$_pkgname-$pkgver.tar.gz"
+        wyoming-piper.conf
+        wyoming-piper.service)
+sha256sums=('be5ecb8d6ff61c1c7aa3ffafa5aa7ec121b75d7cc3c0569c36671b794ffc6ceb'
+            '43bc755507af4b46efaacb8d408470ab8fa0f3423a84cf9cc31237b679a7bf73'
+            '0b0ada9789cda4333712427f97082410c2eb3cd2657ebd516521c1d52e16d388')
+
+build() {
+  cd $_pkgname-$pkgver
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd $_pkgname-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 ../wyoming-piper.service -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm644 ../wyoming-piper.conf "$pkgdir/etc/conf.d/wyoming-piper"
+}
