@@ -6,8 +6,8 @@
 _pkgbin=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-git"
-pkgdesc="Ledger Live - Desktop (git-main)"
-pkgver=2.59.0.r0.gaf7634d
+pkgdesc="Maintain your Ledger devices (git-main)"
+pkgver=2.62.2.r0.g0a331c7
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
