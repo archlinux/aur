@@ -33,7 +33,7 @@ makedepends=('python-poetry'
 license=('GPL2')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('599f31516f857d785058773875e9358702ad653e65461e8cad44134d8ee17b1f')
+sha256sums=('cc8f09e79bdd32247edddf05b666940e88ad96338a84f5717b1e8c0678337821')
 
 build() {
     cd "$_name-$pkgver"
