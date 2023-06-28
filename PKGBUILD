@@ -1,15 +1,15 @@
-# Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
+# Contributor: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 
 pkgname=keepass-keetheme
-pkgver=0.10.0
-pkgrel=2
-pkgdesc="A plugin that provides a dark theme for keepass"
-arch=('x86_64' 'aarch64')
+pkgver=0.10.2
+pkgrel=1
+pkgdesc="plugin that provides a dark theme for keepass"
+arch=('any')
 url="https://github.com/xatupal/KeeTheme"
 license=('MIT')
 depends=('keepass')
 source=("https://github.com/xatupal/KeeTheme/releases/download/v${pkgver}/KeeTheme.plgx")
-sha256sums=('56136b3fc96d6100935bac9a67e67b44eda3056749b8f40cf897cba534f5afd1')
+sha256sums=('e3886e0f8955ae826e7ea95a4896e89a40cabdc0e4a493c8d32bd5aa622090c3')
 
 package() {
     path="usr/share/keepass/Plugins"
