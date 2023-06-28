@@ -1,26 +1,44 @@
-pkgname=gnome-chess-git
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+
 _pkgname=gnome-chess
-pkgver=3.37.2+3+gaf4e19f
+pkgname="${_pkgname}-git"
+pkgver=43.2+6+g389df74
 pkgrel=1
 pkgdesc="Play the classic two-player boardgame of chess"
 url="https://wiki.gnome.org/Apps/Chess"
 arch=(x86_64)
 license=(GPL)
-depends=('gtk3' 'librsvg')
-makedepends=('gobject-introspection' 'yelp-tools' 'appstream-glib' 'vala' 'git' 'meson') 
-optdepends=('gnuchess: Play against computer')
-provides=('gnome-chess')
-conflicts=('gnome-chess')
-source=("git+https://gitlab.gnome.org/GNOME/gnome-chess.git")
+depends=(
+  gtk4
+  libadwaita
+  librsvg
+)
+makedepends=(
+  git
+  gobject-introspection
+  meson
+  vala
+  yelp-tools
+)
+optdepends=(
+  'gnuchess: Play against computer')
+groups=(gnome-extra gnome-extra-git)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "${_pkgname}"
   git describe --tags | sed 's/-/+/g'
 }
 
+prepare() {
+  cd "${_pkgname}"
+}
+
 build() {
-  arch-meson $_pkgname build
+  arch-meson "${_pkgname}" build
   meson compile -C build
 }
 
@@ -29,5 +47,7 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir="${pkgdir}"
 }
+
+# vim:set sw=2 sts=-1 et:
