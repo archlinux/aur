@@ -1,6 +1,6 @@
 pkgbase = hugo-extended-cli
 	pkgdesc = Extended version of Hugo
-	pkgver = 0.113.0
+	pkgver = 0.114.1
 	pkgrel = 1
 	url = https://gohugo.io/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hugo-extended-cli
 	conflicts = hugo
 	conflicts = hugo-git
 	conflicts = hugo-extended-bin
-	source = https://github.com/gohugoio/hugo/releases/download/v0.113.0/hugo_0.113.0_checksums.txt
+	source = https://github.com/gohugoio/hugo/releases/download/v0.114.1/hugo_0.114.1_checksums.txt
 	md5sums = SKIP
 
 pkgname = hugo-extended-cli
