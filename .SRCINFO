@@ -1,13 +1,13 @@
 pkgbase = audiveris-git
 	pkgdesc = Music score OMR engine - current
-	pkgver = 5.1.0.rc.r723.g3353f409c
-	pkgrel = 2
+	pkgver = 5.2.5.r259.g0eabc0405
+	pkgrel = 1
 	url = https://github.com/Audiveris/audiveris
 	arch = x86_64
 	license = AGPL3
-	makedepends = java-environment=11
+	makedepends = java-environment>=17
 	makedepends = gradle
-	depends = java-runtime=11
+	depends = java-runtime>=17
 	depends = archlinux-java-run>=7
 	depends = tesseract-data-eng
 	depends = freetype2
