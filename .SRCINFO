@@ -1,13 +1,12 @@
 pkgbase = nocache
 	pkgdesc = minimize caching effects
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/Feh/nocache
 	arch = i686
 	arch = x86_64
 	license = FreeBSD License
-	source = git+https://github.com/Feh/nocache.git#commit=e4e77a48528739188dccbdbd8b4d2d2d49aa0d99
-	sha256sums = SKIP
+	source = nocache-1.2.tar.gz::https://github.com/Feh/nocache/archive/refs/tags/v1.2.tar.gz
+	sha256sums = 2f8c6adbc82da4477416e1eaf9d435cf52f602d07064602f433d4ba4ecad5fdd
 
 pkgname = nocache
-
