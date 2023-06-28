@@ -2,13 +2,13 @@
 
 pkgname=xwaylandvideobridge-cursor-mode-2-git
 _pkgname=xwaylandvideobridge
-pkgver=r108.75f6852
+pkgver=r112.b327a9b
 pkgrel=1
 pkgdesc="A tool to make it easy to stream wayland windows and screens to Xwayland applicatons that don't have native pipewire support. Patched to use cursor mode 2."
 arch=(x86_64)
 url='https://invent.kde.org/system/xwaylandvideobridge'
 license=(GPL2)
-depends=('ninja' 'qt5-base' 'qt5-x11extras' 'qt5-declarative' 'kcoreaddons' 'kwindowsystem' 'knotifications' 'ki18n' 'libxcb' 'kpipewire'  'gcc-libs' 'glibc' 'hicolor-icon-theme' 'extra-cmake-modules')
+depends=('ninja' 'qt5-base' 'qt5-x11extras' 'qt5-declarative' 'kcoreaddons' 'kwidgetsaddons' 'kwindowsystem' 'knotifications' 'ki18n' 'libxcb' 'kpipewire'  'gcc-libs' 'glibc' 'hicolor-icon-theme' 'extra-cmake-modules')
 makedepends=('git')
 conflicts=('xwaylandvideobridge-bin' 'xwaylandvideobridge-git')
 source=("${pkgname}::git+https://invent.kde.org/system/xwaylandvideobridge.git" "cursor-mode.patch")
