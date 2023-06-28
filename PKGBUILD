@@ -3,12 +3,18 @@
 
 pkgname=xairedit
 pkgver=1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Remote control program for Behringer X-AIR mixers"
 arch=('x86_64' 'armv7h')
 url="https://www.behringer.com/downloads.html"
 license=('custom:MUSIC Group End User License Agreement')
-depends=('libxext' 'alsa-lib' 'freetype2' 'mesa' 'mesa-libgl' 'libcurl-gnutls')
+depends=(
+  alsa-lib
+  freetype2
+  libcurl-gnutls
+  libglvnd
+  libxext
+)
 source=("EULA_2012-09-12.pdf"
         "xairedit.desktop")
 source_x86_64=("https://mediadl.musictribe.com/download/software/behringer/XAIR/X-AIR-Edit_LINUX_${pkgver}.tar.gz")
