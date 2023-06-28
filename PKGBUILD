@@ -1,7 +1,7 @@
 # Maintainer: hinto.janai <hinto.janai@protonmail.com>
 pkgname=festival-gui-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Festival music player GUI"
 arch=('x86_64')
 url="https://github.com/hinto-janai/festival"
@@ -18,6 +18,11 @@ package() {
 
 	# Icon
 	install -Dm644 festival.png "${pkgdir}/usr/share/pixmaps/festival.png"
+
+	# FIXME:
+	# This is a workaround to lowercase
+	# the binary in the `.desktop` file.
+	sed -i 's/Exec=Festival/Exec=festival/' festival.desktop
 
 	# `.desktop` file.
 	install -Dm644 festival.desktop "${pkgdir}/usr/share/applications/festival.desktop"
