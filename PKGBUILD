@@ -2,13 +2,13 @@
 _pkgname=telegram-tg
 pkgname=$_pkgname-git
 pkgver=0.19.0.r3.2b0c0cf
-pkgrel=1
+pkgrel=2
 pkgdesc="terminal telegram client that really works"
 arch=(any)
 url="https://github.com/paul-nameless/tg"
 license=('Unlicense')
 depends=('python-telegram>=0.15.0' 'python3' 'python-setuptools')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-poetry' 'python-installer' 'python-wheel')
 optdepends=(
 	'libnotify: for notifications, you could also use other programs: see config'
 	'ffmpeg: to record voice msgs and upload videos correctly'
@@ -39,11 +39,11 @@ prepare() {
 build() {
 	cd "$srcdir/$_pkgname"
 
-	python3 setup.py build
+	python setup.py bdist_wheel
 }
 
 package() {
 	cd "$srcdir/$_pkgname"
 
-	python3 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
