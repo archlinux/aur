@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=v0.7
+Name=reJ
+GenericName=reJ
+Comment=Java bytecode editor
+Categories=Development;
+Exec=rej
+Icon=java
+Terminal=false
+Type=Application
+Name[en_US]=reJ
+GenericName[en_US]=reJ
+Comment[en_US]=Java bytecode editor

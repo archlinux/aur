@@ -1,0 +1,17 @@
+pkgbase = rej
+	pkgdesc = Graphical Java bytecode inspection and manipulation tool
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://rejava.sourceforge.net/
+	arch = any
+	license = LGPLv2.1
+	depends = java-runtime
+	provides = rej
+	source = https://master.dl.sourceforge.net/project/rejava/reJ/reJ%20v0.7/rej_v0.7_bin.zip
+	source = rej.sh
+	source = rej.desktop
+	sha256sums = 9aac91c38c23523bc005cab40bef809088bfcd1f3876af6b67333fcc9d95e82a
+	sha256sums = 956e920ba23d7588df23172f29e98089ac9042dc3f8d00a29422c8ec2260f9c5
+	sha256sums = a253b423b552409518cd2d95907440b0471295bc1beade3701ab4b9123034004
+
+pkgname = rej

@@ -1,0 +1,6 @@
+*
+!.gitignore
+!rej.sh
+!rej.desktop
+!PKGBUILD
+!.SRCINFO
