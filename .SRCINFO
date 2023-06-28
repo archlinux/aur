@@ -1,13 +1,13 @@
 pkgbase = drawio-desktop
 	pkgdesc = Diagram drawing application built on web technology
 	pkgver = 21.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jgraph/drawio-desktop
 	arch = any
 	license = Apache
 	makedepends = yarn
 	makedepends = nodejs>=12
-	depends = electron21
+	depends = electron24
 	depends = libnotify
 	depends = shared-mime-info
 	options = !strip
