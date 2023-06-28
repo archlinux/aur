@@ -8,8 +8,8 @@ pkgdesc="Service and tools for management of snap packages."
 depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
-pkgver=2.59.5
-pkgrel=2
+pkgver=2.60
+pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -19,11 +19,9 @@ options=('!strip' 'emptydirs' '!lto')
 install=snapd.install
 source=(
     "$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
-    "0001-snap-confine-add-tmpfs-mount-rule-to-apparmor-profil.patch"
 )
 sha256sums=(
-    'd2d9efbc2db7fa79edf0c73286320ab5ba039ae30874e88725ef326c618ae5df'
-    '03caf6a339e29bfdaa443c36d2b3f7350f1869c8b6cab86ba5fb46d858fef596'
+    '1d940ba7cee1b6a1fd961c591abf8fdde9d313eff0fb8b6967ad01f40426f33e'
 )
 
 
@@ -202,4 +200,9 @@ package() {
   rm -fv "$pkgdir/usr/lib/snapd/snapd.core-fixup.sh"
   rm -fv "$pkgdir/usr/bin/ubuntu-core-launcher"
   rm -fv "$pkgdir/usr/lib/snapd/system-shutdown"
+
+  # Remove prompt services
+  rm -fv "$pkgdir/usr/lib/systemd/system/snapd.aa-prompt-listener.service"
+  rm -fv "$pkgdir/usr/lib/systemd/user/snapd.aa-prompt-ui.service"
+  rm -fv "$pkgdir/usr/share/dbus-1/services/io.snapcraft.Prompt.service"
 }
