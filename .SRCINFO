@@ -1,0 +1,12 @@
+pkgbase = contentreader-pdf
+	pkgdesc = Content AI ContentReader is the best PDF manipulation software for Linux so far.
+	pkgver = 15.1.0.1778
+	pkgrel = 1
+	url = https://contentai.ru/pdf-editor-office
+	arch = i686
+	license = custom
+	options = !strip
+	source = https://cdn.contentai.ru/CRLinux/ContentReaderPDF15.rpm
+	md5sums = 972c1e12145db7d0d3e88254869ca27a
+
+pkgname = contentreader-pdf
