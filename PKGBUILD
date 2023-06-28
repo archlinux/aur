@@ -1,12 +1,12 @@
 # Maintainer: Přemysl Eric Janouch <p@janouch.name>
 pkgname=ponymap-git
 _pkgname=ponymap
-pkgver=r87.9c16e19
+pkgver=r117.11567dc
 pkgrel=1
 pkgdesc="Experimental network scanner"
 url="https://git.janouch.name/p/ponymap"
 arch=('i686' 'x86_64')
-license=('BSD')
+license=('custom:0BSD')
 options=(zipman)
 conflicts=('ponymap')
 provides=('ponymap')
