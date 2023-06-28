@@ -1,7 +1,7 @@
 # Maintainer: Roman Vishnevsky <aka [dot] x0x01 [at] gmail [dot] com>
 
 pkgname=torrserver-bin
-pkgver=123
+pkgver=124
 pkgrel=1
 pkgdesc="Torrent to http. Streams media torrent files as media streams without fully downloading"
 arch=('x86_64' 'armv7h' 'aarch64' 'i686')
@@ -18,10 +18,10 @@ source_aarch64=("$pkgname-$pkgver-aarch64::https://github.com/YouROK/TorrServer/
 source_i686=("$pkgname-$pkgver-i686::https://github.com/YouROK/TorrServer/releases/download/MatriX.$pkgver/TorrServer-linux-386")
 b2sums=('7b2dbfd1486e3abbe6977f5229746943ed4dbb588100d8bc768068574a3a3d2a01915a54e57a9203445fc4e3e72f09b562894d4164a854bc6dc56cab4764d4ad'
         '20d847419c499b2286abe6d12113443446feff6aa6c2dac5e60d4c1bbfb0845d682761bde2880eacb2f9b29c12f3213ef6f9f3ae7e141586bd8483da00b9f440')
-b2sums_x86_64=('e61472ed93d72bc43d67296531ac543ffd561b88b3d2478ba2b4451abe348ac06b482bf3bcce2ee545c7385c8a284cba4325795b912bd2a32885591193f0a2ce')
-b2sums_armv7h=('1984fc9532e5b830046fcc3176b6670506e17080d7e43c2dde04eff383d20a207efdfa05f0e60f6b669d842ab48b4f26bfccd48334a5e7aa27955a2884156a13')
-b2sums_aarch64=('0c3c2ff1acdd52d6f5fcd353752991c53e0329abd53363bd4f44f9e09fb6a01bad912e7ff0b8716f857c074e78ce3e12ec182d791513093f679cf3ae16b5e46f')
-b2sums_i686=('12a26531c426548932d68a9223c10ebb070de30264b61bef4cc364a31f857201af35a08a5bee3336a2ca0ae5b0a8305f4bd57033f8fdf5efb5f1873f94d43a67')
+b2sums_x86_64=('dbee652dd25c5dca172d7a137d4160a07e66047bb5e9b5556e4388214a7e833dcaec87ca51d11819e531f1807ef0145019755907f0655848627c4f1dbd7310c9')
+b2sums_armv7h=('0110fcfaf2dfa4e626857c37b11e1509611b9242c7d724e42e0665066065bd0aaaba209c794316ee0a14db36ad87f0e89e9b336bf49c1750ba1b204948c01a1f')
+b2sums_aarch64=('676360ee5c140824fc5144061cabde264eb18bd741e87623c00fe62a6e62b4d201075aaa28cb90278d1f74f82818bcb3cf23cb9b2d8727c5f997d9de08e1e5dc')
+b2sums_i686=('0c87b38c7b22ee6d6125475e51015cbfa9914bf765c2f141f4672c490b71895a5431caf4b8a75d84b905e8e693421efa773373f833868512c5bcb403f954c878')
 
 prepare() {
     patch -uN --follow-symlinks torrserver.service --input="${srcdir}/systemd.patch"
