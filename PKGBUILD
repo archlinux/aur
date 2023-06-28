@@ -1,29 +1,51 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Pellegrino Prevete(tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgname=gnome-tweaks-git
-pkgver=3.34.0.r21.g39cde84
+_oldpkgname="gnome-tweak-tool"
+_pkgname="gnome-tweaks"
+pkgname="${_pkgname}-git"
+pkgver=42.beta.r74.g8ef4ef3
 pkgrel=1
 pkgdesc="Graphical interface for advanced GNOME 3 settings (Tweak Tool)"
 url="https://wiki.gnome.org/Apps/Tweaks"
 arch=(any)
 license=(GPL)
-depends=(gnome-settings-daemon python-gobject libhandy)
-makedepends=(git meson)
-groups=(gnome-extra)
-provides=(gnome-tweaks)
-conflicts=(gnome-tweaks)
-source=("git+https://gitlab.gnome.org/GNOME/gnome-tweaks.git")
+depends=(
+  gnome-settings-daemon
+  libhandy
+  python-gobject
+)
+makedepends=(
+  git
+  meson
+)
+groups=(
+  gnome-extra
+  gnome-extra-git)
+provides=(
+  "${_oldpkgname}=${pkgver}"
+  "${_oldpkgname}-git=${pkgver}"
+  "${_pkgname}=${pkgver}"
+)
+conflicts=("${_pkgname}"
+           "${_oldpkgname}")
+replaces=("${_oldpkgname}")
+source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd gnome-tweaks
+  cd "${_pkgname}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${_pkgname}"
+}
+
 build() {
-  arch-meson gnome-tweaks build
-  ninja -C build
+  arch-meson "${_pkgname}" build
+  meson compile -C build
 }
 
 check() {
@@ -31,5 +53,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "${pkgdir}"
 }
