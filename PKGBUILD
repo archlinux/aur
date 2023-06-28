@@ -2,10 +2,10 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='snmp_exporter'
-pkgver='0.21.0'
+pkgver='0.22.0'
 pkgrel='1'
 pkgdesc='SNMP exporter for Prometheus'
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 _uri='github.com/prometheus'
 url="https://${_uri}/${pkgname}"
 license=('Apache')
@@ -13,13 +13,12 @@ makedepends=('go' 'yamllint')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.service"
         "${pkgname}.sysusers")
-sha256sums=('a6ed31a8fd723a8c7d2880fd21d93fd2c9ae24fa4fdeb3834e72dccd8a3e1fb3'
+sha256sums=('494146497dc3b714d1a28dc3f81d2c273e62148633c3ca1b43acd137bf584c1e'
             '0f1b59f5b416b37665ddb5ab3cf40a4fc4bf0c4622f68da018793194dc2f1206'
             '2747fabb4e56b808361eb7dd7acf9729ab8973d1ebe2f857dd56f6c71f71e45f')
 backup=("etc/prometheus/snmp.yml")
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
   mkdir -p "${GOPATH}/src/${_uri}"
