@@ -1,12 +1,12 @@
 pkgbase = igdesk
 	pkgdesc = IG DESK is a free signature tool developed by Intesi Group for all users who need to digitally sign documents from their desktop quickly and easily.
-	pkgver = 1.2
-	pkgrel = 549
+	pkgver = 1.3_555
+	pkgrel = 1
 	url = https://www.intesigroup.com/it/software-firma-digitale/ig-desk/
 	arch = x86_64
-	noextract = igdesk-1.2-x86_64.AppImage
+	noextract = igdesk-1.3_555-x86_64.AppImage
 	options = !strip
-	source_x86_64 = https://github.com/intesi-group/ig-desk/releases/download/v1.2-549/IGDesk-1.2_549-x86_64.AppImage
-	sha256sums_x86_64 = bd979ed7a77b71223125bdd6c2642b5ff672d0e0afa28b87c4072d3cb4f615b6
+	source_x86_64 = https://github.com/intesi-group/ig-desk/releases/download/v1.3-555/IGDesk-1.3_555-x86_64.AppImage
+	sha256sums_x86_64 = e728d0eaac777fc442f60bd8209d869b139bfad499f30e03d9781a1829a386c7
 
 pkgname = igdesk
