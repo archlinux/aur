@@ -1,7 +1,7 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=mdliveview
-pkgver=0.1
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Mdliveview is a lightweight Markdown file viewer with autoreload"
 url="https://github.com/Geballin/Mdliveview"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ backup=()
 install=
 source=("https://github.com/Geballin/Mdliveview/archive/${pkgver}.tar.gz")
 
-md5sums=(9ea267e491da0229681c821ccf60c90f)
+md5sums=(b985690f7cfd8dab58166325ca47b6f3)
 
 build() {
   cd ${srcdir}/Mdliveview-${pkgver}
