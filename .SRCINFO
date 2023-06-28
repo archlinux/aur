@@ -1,13 +1,14 @@
 pkgbase = r-plogr
 	pkgdesc = The 'plog' C++ Logging Library
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 11
 	url = https://cran.r-project.org/package=plogr
 	arch = any
 	license = MIT
 	depends = r
 	optdepends = r-rcpp
 	source = https://cran.r-project.org/src/contrib/plogr_0.2.0.tar.gz
+	md5sums = 655c301276dac0098568248e47602851
 	sha256sums = 0e63ba2e1f624005fe25c67cdd403636a912e063d682eca07f2f1d65e9870d29
 
 pkgname = r-plogr
