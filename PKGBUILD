@@ -1,16 +1,16 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-pkgname='typewriter'
-pkgver=0.4.3
+pkgname=typewriter
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Minimal writer with autosave'
 arch=('x86_64')
 url='https://github.com/manexim/typewriter'
 license=('GPL3')
-depends=('granite' 'gtksourceview3')
-makedepends=('meson' 'vala')
+depends=('granite' 'gtksourceview4' 'libhandy')
+makedepends=('meson' 'vala' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('32749d2441bc54a441ee4eba2a9cf77ee30ef19dcb6ba49400f11450926b8807')
+sha256sums=('6b8bd3fc30af7681f76a8f77af65ddd003fae0b55fc1337af2e12fec8990da5a')
 
 build() {
   arch-meson "${pkgname}-${pkgver}" 'build'
