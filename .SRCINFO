@@ -1,0 +1,18 @@
+pkgbase = oha-git
+	pkgdesc = Ohayou(おはよう), HTTP load generator, inspired by rakyll/hey with tui animation
+	pkgver = 0.6.0.r2.g0dd7056
+	pkgrel = 1
+	url = https://github.com/hatoo/oha
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = openssl
+	provides = oha=0.6.0.r2.g0dd7056
+	conflicts = oha
+	source = git+https://github.com/hatoo/oha.git
+	sha256sums = SKIP
+
+pkgname = oha-git
