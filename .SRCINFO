@@ -6,7 +6,7 @@ pkgbase = fclash
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = dpkg
-	depends = libappindicator-gtk3
+	depends = libayatana-appindicator
 	source = https://github.com/Fclash/Fclash/releases/download/v1.4.1/cn.kingtous.fclash-1.4.1-x86_64.deb
 	sha256sums = SKIP
 
