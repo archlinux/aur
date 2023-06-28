@@ -1,17 +1,16 @@
-# Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
+# Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=typedb-server
 _pkgname=typedb
-pkgver=2.11.0
+pkgver=2.18.0
 pkgrel=1
-pkgdesc="TypeDB: a strongly-typed database"
+pkgdesc="TypeDB: a strongly-typed database (server package)"
 arch=('i686' 'x86_64')
-url="https://github.com/vaticle/${pkgname}"
+url="https://github.com/vaticle/${_pkgname}"
 license=('AGPL-3.0')
-makedepends=()
 depends=('jre-openjdk')
 source=("https://github.com/vaticle/${_pkgname}/releases/download/${pkgver}/${pkgname}-linux-${pkgver}.tar.gz")
-sha256sums=('807b90e911c795188f129e03415ae95ffb1a2ee6ff211d48bbcb8f0f86f1d9f0')
+sha256sums=('a780944a1f2c79d6b388733a55f72e782c9d1e9d9034780a401fca316233f326')
 _dirname="${pkgname}-linux-${pkgver}"
 
 package() {
