@@ -1,0 +1,17 @@
+pkgbase = hey-git
+	pkgdesc = HTTP load generator, ApacheBench (ab) replacement
+	pkgver = 0.1.4.r5.g8985827
+	pkgrel = 1
+	url = https://github.com/rakyll/hey
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = hey=0.1.4.r5.g8985827
+	conflicts = hey
+	source = git+https://github.com/rakyll/hey.git
+	sha256sums = SKIP
+
+pkgname = hey-git
