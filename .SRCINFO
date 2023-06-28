@@ -1,4 +1,4 @@
-pkgbase = waybar-hyprland-no-systemd
+	pkgbase = waybar-hyprland-no-systemd
 	pkgdesc = Highly customizable Wayland bar for Sway and Wlroots based compositors, with workspaces support for Hyprland, without systemd dependency
 	pkgver = 0.9.17
 	pkgrel = 0
