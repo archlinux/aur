@@ -1,39 +1,33 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Martynas Mickevičius <self@2m.lt>
 
 pkgname=jabba
-pkgver=0.11.2
-pkgrel=4
+pkgver=0.12.2
+pkgrel=1
 pkgdesc="Java Version Manager."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
-url="https://github.com/shyiko/jabba"
+url="https://github.com/Jabba-Team/jabba"
 license=('Apache')
 options=('!strip' '!emptydirs')
 makedepends=('git' 'go')
 depends=('glibc')
-source=("https://github.com/shyiko/jabba/archive/${pkgver}.tar.gz")
-sha256sums=('33874c81387f03fe1a27c64cb6fb585a458c1a2c1548b4b86694da5f81164355')
+source=(${pkgname}-${pkgver}.tar.gz::"$url/archive/${pkgver}.tar.gz")
+sha256sums=('44bd276fde1eaab56dc8a32ec409ba6eee5007f3a640951b3e8908c50f032bcd')
 
-prepare() {
-  cd $srcdir/$pkgname-$pkgver
-  echo "!! This patch will create new files -- if it says Skipped patch, it means it failed. If so, do a clean build [remove src]"
-  patch -Np1 < ../../fix-golang-glide.patch
-  
-}
 
 build() {
-  export GOPATH=$srcdir/gopath
-  mkdir -p $GOPATH
+  cd ${pkgname}-${pkgver}
 
-  mkdir -p "$GOPATH/src/github.com/shyiko"
-  mv "$srcdir/$pkgname-$pkgver" "$GOPATH/src/github.com/shyiko/jabba"
-  cd "$GOPATH/src/github.com/shyiko/jabba"
-
-  make fetch
-  make VERSION=$pkgver build
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+    .
 }
 
 package() {
-  install -D -m755 "$srcdir/gopath/src/github.com/shyiko/jabba/jabba" "$pkgdir/usr/bin/jabba"
+  install -D -m755 "${pkgname}-${pkgver}/jabba" "$pkgdir/usr/bin/jabba"
 }
 
