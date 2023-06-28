@@ -14,8 +14,7 @@ license=('AGPL3')
 depends=('boost-libs' 'curl' 'glew' 'mpfr' 'nlopt' 'tbb' 'qhull' 'openvdb'
          'gtk3' 'libjpeg-turbo' 'opencascade')
 makedepends=('cmake' 'boost' 'cereal' 'cgal' 'eigen' 'expat' 'gtest' 'libpng' 'systemd'
-             'gst-plugins-base' 'glu' 'webkit2gtk' 'libnotify' 'ninja' 'nanosvg' 'git')
-checkdepends=('catch2')
+             'gst-plugins-base' 'glu' 'webkit2gtk' 'libnotify' 'ninja' 'nanosvg' 'git' 'catch2')
 # prusa-slicer uses a patched wxWidgets and does not work with upstream, commit pinned in
 # https://github.com/prusa3d/PrusaSlicer/blob/version_${pkgver}/deps/wxWidgets/wxWidgets.cmake
 _wxcommit=78aa2dc0ea7ce99dc19adc1140f74c3e2e3f3a26
@@ -24,12 +23,14 @@ source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${_pkgver}/${pkgn
         https://patch-diff.githubusercontent.com/raw/prusa3d/PrusaSlicer/pull/10390.patch
         use-system-catch2.patch
         prusaslicer-allow-over-setting-wxwidgets-config-options.patch
+        fixCheckResizerFlags.patch::https://github.com/prusa3d/PrusaSlicer/commit/24a5ebd65c9d25a0fd69a3716d079fd1b00eb15c.patch
         nanosvg-use-library-impl.patch)
 sha256sums=('a15f68e3b18a047c8c9a18a9d91629d2c777be1932087684cf6d2332d0888e77'
             '20a7a6debad508c0b113cbfc908ca6b1d6786c77f925acad9353b78c34779495'
             '761ed80f95614fa7ef7ca3ce063b43f773cfe5a0e1aa6dd5e5fc9b6cfe8b9c63'
             '3639dc2d290dc9a7d16259e0b421f8d21f16fb4abe46bbb3fab9328930fc5758'
-            'f00a25f909cb66362911bd48d2fff505f272f9747fae7497b2ffc6a89c354147'
+            '47bf192f90155af669f6ae8ef06a4e73723367717abe70f77883aefdfcc1014d'
+            'b55f5db832e801d2c97820d8d60a2309500e783f4372f802b16b06352447e61d'
             '4aeed62c069b925fa80e4c91bc20d88d3c7bcd65df5ef1199d45bbdb1f9180d6')
 
 prepare() {
@@ -38,7 +39,7 @@ prepare() {
   patch -Np1 -i "${srcdir}"/10390.patch
   patch -Np1 -i "${srcdir}"/prusaslicer-allow-over-setting-wxwidgets-config-options.patch
   patch -Np1 -i "${srcdir}"/use-system-catch2.patch # Borrowed from Debian
-  # patch -Np1 -i "${srcdir}"/nanosvg-use-library-impl.patch
+  patch -Np1 -i "${srcdir}"/fixCheckResizerFlags.patch
 }
 
 build() {
@@ -77,7 +78,6 @@ build() {
   echo "Building PrusaSlicer"
   cmake -B build -S PrusaSlicer-version_${_pkgver} \
       -G Ninja \
-      -DCMAKE_FIND_DEBUG_MODE=1 \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB \
       -DCMAKE_PREFIX_PATH="${srcdir}"/wxwidgets-install/usr \
@@ -90,17 +90,24 @@ build() {
 }
 
 check() {
-  cd PrusaSlicer-version_${_pkgver}/build
+  cd build
 
-  ctest -v
+  LD_LIBRARY_PATH="${srcdir}/wxwidgets-install/usr/lib/" ctest -v
 }
 
 package_prusa-slicer() {
   optdepends=('slicer-udev: 3D printer connection rules')
 
-  cd PrusaSlicer-version_${_pkgver}
   # DESTDIR="$pkgdir" make install
   DESTDIR="$pkgdir" ninja -C build install
+
+  # package vendored wxwidgets
+  cp -ar wxwidgets-install/usr/lib "${pkgdir}"/usr/lib/prusa-wxwidgets
+  mv "${pkgdir}"/usr/bin/prusa-slicer "${pkgdir}"/usr/share/PrusaSlicer
+  mv "${pkgdir}"/usr/bin/prusa-gcodeviewer "${pkgdir}"/usr/share/PrusaSlicer
+  echo -e '#!/usr/bin/sh\nLD_LIBRARY_PATH="/usr/lib/prusa-wxwidgets" /usr/share/PrusaSlicer/prusa-slicer "${@}"' > "${pkgdir}"/usr/bin/prusa-slicer
+  echo -e '#!/usr/bin/sh\nLD_LIBRARY_PATH="/usr/lib/prusa-wxwidgets" /usr/share/PrusaSlicer/prusa-gcodeviewer "${@}"' > "${pkgdir}"/usr/bin/prusa-gcodeviewer
+  chmod a+x "${pkgdir}"/usr/bin/prusa-slicer "${pkgdir}"/usr/bin/prusa-gcodeviewer
 
   # Desktop icons
   mkdir -p "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/
