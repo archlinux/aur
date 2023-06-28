@@ -1,17 +1,35 @@
-pkgname=gnome-user-share-git
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Roman Kyrylych <roman@archlinux.org>
+
 _pkgname=gnome-user-share
-pkgver=3.34.0+8+g94ff55d
+pkgname="${_pkgname}-git"
+pkgver=43.0+9+gab7aacf
 pkgrel=1
 pkgdesc="Easy to use user-level file sharing for GNOME"
-arch=(x86_64)
-url="https://gitlab.gnome.org/GNOME/gnome-user-share"
+arch=(
+  x86_64
+  i686
+  pentium4
+  aarch64
+  armv7h
+)
+url="https://gitlab.gnome.org/GNOME/${_pkgname}"
 license=(GPL)
-depends=('mod_dnssd' 'dconf' 'gtk3' 'libnotify' 'libcanberra')
-makedepends=('libnautilus-extension' 'git' 'meson' 'yelp-tools')
-provides=('gnome-user-share')
-conflicts=('gnome-user-share')
-source=("git+https://gitlab.gnome.org/GNOME/gnome-user-share.git")
-sha512sums=('SKIP')
+depends=(
+  glib2
+  dconf
+  mod_dnssd
+  systemd
+)
+makedepends=(
+  git
+  meson
+)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+groups=(gnome)
+source=("git+${url}")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -19,11 +37,12 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_pkgname build \
-    -D httpd=/usr/bin/httpd \
-    -D modules_path=/usr/lib/httpd/modules \
-    -D nautilus_extension=true
-  ninja -C build
+  local meson_opts=(
+    -D httpd=/usr/bin/httpd
+    -D modules_path=/usr/lib/httpd/modules
+  )
+  arch-meson "${_pkgname}" build "${meson_opts[@]}"
+  meson compile -C build
 }
 
 check() {
@@ -31,5 +50,7 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "${pkgdir}"
 }
+
+# vim:set sw=2 sts=-1 et:
