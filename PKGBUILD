@@ -5,8 +5,8 @@
 
 _pkgname=syncthing-gtk
 pkgname=$_pkgname-git
-pkgver=0.9.4.5.r2.g4064562
-pkgrel=2
+pkgver=0.9.4.5.r49.g8efdb24
+pkgrel=1
 pkgdesc='GTK3 based GUI and notification area icon for Syncthing. Git version.'
 arch=('any')
 url='https://github.com/syncthing-gtk/syncthing-gtk'
