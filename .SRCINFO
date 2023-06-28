@@ -1,14 +1,13 @@
 pkgbase = rtl8xxxu-dkms-git
 	pkgdesc = Driver for Realtek RTL8XXXXU usb wifi chips
 	pkgver = r22.6289e8f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lwfinger/rtl8xxxu
 	arch = any
 	license = GPL2
-	license = custom
 	makedepends = git
 	depends = dkms
-	depends = linux-firmware>=20230404.2e92a49f-1
+	depends = linux-firmware>=20230625.ee91452d-1
 	source = git+https://github.com/lwfinger/rtl8xxxu
 	sha256sums = SKIP
 
