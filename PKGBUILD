@@ -1,7 +1,7 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 
 pkgname=shadowsocks-go
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A versatile and efficient proxy platform for secure communications"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ backup=(
     "etc/$pkgname/upsks.json"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('caeed7223f6da343c22855a7321b08ee66a38ee5d14b04dba388066980904f0f0157214cf04ac5c638d15e06f1b7de226508b934029ffd8cb50968b72888981e')
+b2sums=('86de0804bcb8b6b120f2d3ef6d4717fd3fbbb6b56cf4d105cd2621a0720fd3905fef824d36168e01c27202eed536cca4226fcaed0ff8e2ddb773ae85c79d9b09')
 
 build() {
     cd "$pkgname-$pkgver"
