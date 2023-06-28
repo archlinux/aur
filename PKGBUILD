@@ -5,7 +5,7 @@
 # This file is inspired by Dan Trickey PKGBUILD's
 
 pkgname=webots-bin
-pkgver=2023a
+pkgver=2023b
 pkgrel=1
 pkgdesc="Mobile robot simulation software."
 arch=('x86_64')
@@ -19,8 +19,8 @@ optdepends=('alsa-lib' 'cairo'  'dbus' 'desktop-file-utils' 'expat' 'fontconfig'
 conflicts=('webots')
 options=('!strip' '!emptydirs')
 install=webots.install
-source_x86_64=('https://github.com/cyberbotics/webots/releases/download/R2023a/webots_2023a_amd64.deb')
-sha512sums_x86_64=('cd604ff84ae07977b74ba46e508a29435829ff3909fbb0bd2fb3547edcc4011c38d0e160de8831b4e24ea6e3d8d0095a969908f2a6ac30a65bd0457895f7160c')
+source_x86_64=('https://github.com/cyberbotics/webots/releases/download/R2023b/webots_2023b_amd64.deb')
+sha512sums_x86_64=('0a1b4d6d1fa307d577cc3dc4be2ec1f1e94dae8b0124006efd94ce05b042fddc50cf88dae545d00aa43f5225818c35970039b9f63f0a9900f3f1b36cf390db3e')
 
 package(){
 
