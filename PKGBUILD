@@ -1,9 +1,9 @@
 # Maintainer: Raphael Emberger(raember) <raphael.emberger@hotmail.ch>
 # Contributor: Hervé Bitteur <herve.bitteur@audiveris.com>
 pkgname=audiveris
-pkgver=5.2.5
-_gitcommit=3353f40
-_tag=5.3-alpha
+pkgver=5.3.0
+_gitcommit=0eabc04
+_tag=5.3
 pkgrel=1
 pkgdesc="Music score OMR engine"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   "$pkgname-${pkgver/_/-}.tar.gz::https://github.com/Audiveris/$pkgname/archive/${pkgver/_/-}.tar.gz"
   "$pkgname"
 )
-sha256sums=('4c9969b24208e5b2862e78f354eb05136af0ad9369b4b23129d3efa7be1883ff'
+sha256sums=('a163412a197a0e5e95cea64c4a0ef9e3b60ce95da0b6c6ee2766a6a5c4fea7d2'
             'f8c61a27680a5255940d6837601dc461b517110e13aa9673c88f4c0300bfa255')
 
 prepare() {
