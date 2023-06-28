@@ -1,6 +1,6 @@
 pkgbase = linux-bcachefs-git
 	pkgdesc = Linux
-	pkgver = 6.3.8.arch1
+	pkgver = 6.4.arch1.r1189870.16a40584720d
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = linux-bcachefs-git
 	makedepends = python-sphinx
 	makedepends = texlive-latexextra
 	options = !strip
-	source = linux-archlinux::git+https://github.com/archlinux/linux.git?signed#tag=v6.3.8-arch1
+	source = linux-bcachefs::git+https://github.com/koverstreet/bcachefs.git#branch=master
 	source = git+https://github.com/graysky2/kernel_compiler_patch.git
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -28,7 +28,7 @@ pkgbase = linux-bcachefs-git
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = b5d412bea174cc0062da714ede7eb53a15ede0f103835b23bf80e6d83cbb723c22531f72b13f854389d251af2e74bce19a5c9f19e1928ae76b0c92f7a41ff7e5
+	b2sums = e8f31ba2ea64eaa238b3ce67630bc8123ecd08122690344369aa333f8db300ea87b49d69e190545a42d5a802a9b0a103216f6e8d5c204df08947667514b0b8bd
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem

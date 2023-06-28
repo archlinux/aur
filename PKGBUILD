@@ -60,10 +60,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.3.8.arch1
+pkgver=6.4.arch1.r1189870.16a40584720d
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=v${pkgver%.*}-${pkgver##*.}
+_srcver_tag=6.4.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -86,10 +86,13 @@ makedepends=(
 )
 options=('!strip')
 
-_reponame="linux-archlinux"
-_repo_url="https://github.com/archlinux/linux.git"
+_reponame="linux-bcachefs"
+_repo_url="https://github.com/koverstreet/bcachefs.git"
 
-_repo_url_bcachefs="https://github.com/koverstreet/bcachefs.git"
+_repo_url_arch="https://github.com/archlinux/linux.git"
+
+_reponame_upstream="linux"
+_repo_url_upstream="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git"
 
 _reponame_kernel_patch="kernel_compiler_patch"
 _repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}.git"
@@ -98,7 +101,8 @@ _kernel_patch_name="more-uarches-for-kernel-5.17+.patch"
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
-    "${_reponame}::git+${_repo_url}?signed#tag=$_srcver_tag"
+    "${_reponame}::git+${_repo_url}#branch=master"
+    #"${_reponame_upstream}::git+${_repo_url_upstream}"
     "git+${_repo_url_kernel_patch}"
     config # kernel config file
 )
@@ -110,15 +114,15 @@ validpgpkeys=(
 )
 b2sums=('SKIP'
         'SKIP'
-        'b5d412bea174cc0062da714ede7eb53a15ede0f103835b23bf80e6d83cbb723c22531f72b13f854389d251af2e74bce19a5c9f19e1928ae76b0c92f7a41ff7e5')
+        'e8f31ba2ea64eaa238b3ce67630bc8123ecd08122690344369aa333f8db300ea87b49d69e190545a42d5a802a9b0a103216f6e8d5c204df08947667514b0b8bd')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 _make() {
-  test -s version
-  make KERNELRELEASE="$(<version)" "$@"
+    test -s version
+    make KERNELRELEASE="$(<version)" "$@"
 }
 
 prepare() {
@@ -131,10 +135,15 @@ prepare() {
     make -s kernelrelease > version
     make mrproper
 
-    msg2 "Fetch and merge master from ${_repo_url_bcachefs} ..."
-    git remote add bcachefs_master "${_repo_url_bcachefs}" || true
-    git fetch bcachefs_master master
+    msg2 "Fetch and merge stable tag from ${_repo_url_arch} ..."
+    git remote add arch_stable "${_repo_url_arch}" || true
+    git fetch arch_stable "v${_srcver_tag%.*}-${_srcver_tag##*.}"
     git merge --no-edit --no-commit FETCH_HEAD
+
+    #msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
+    #git remote add upstream_stable "${srcdir}/${_reponame_upstream}" || true
+    #git fetch upstream_stable $v{_srcver_tag//.arch*/}
+    #git merge --no-edit --no-commit FETCH_HEAD
 
     FullPatchesArray=(
         $_reponame_kernel_patch/$_kernel_patch_name
@@ -181,6 +190,11 @@ prepare() {
     cat .config > "$startdir/config.last"
 }
 
+pkgver() {
+    cd "${srcdir}/${_reponame}"
+    printf "%s.r%s.%s" "${_srcver_tag//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
     cd $_reponame
     _make all htmldocs
@@ -220,7 +234,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
-    _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build and source links
