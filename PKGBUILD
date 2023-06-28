@@ -1,6 +1,6 @@
 pkgname="carapace"
-pkgver=0.24.5
-pkgrel=2
+pkgver=0.25.0
+pkgrel=1
 pkgdesc="multi-shell multi-command argument completer"
 arch=("x86_64")
 url="https://rsteube.github.io/carapace-bin/"
