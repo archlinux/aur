@@ -69,6 +69,10 @@ build() {
   ninja -C wxwidgets-build
   ninja -C wxwidgets-build install
 
+  # -z muldefs allows for symbols to be overridden at link time.
+  # In this case we have wxwidgets and prusa-slicer linked against nanosvg and
+  # finally prusa-slicer needs to be linked against wxWidgets as well. As both
+  # contain nanosvg symbols this usually fails.
   export LDFLAGS="$LDFLAGS -z muldefs"
   echo "Building PrusaSlicer"
   cmake -B build -S PrusaSlicer-version_${_pkgver} \
