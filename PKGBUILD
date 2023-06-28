@@ -5,7 +5,7 @@ pkgbase=prusa-slicer
 pkgname=(prusa-slicer slicer-udev)
 pkgver=2.6.0
 _pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -22,14 +22,12 @@ source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${_pkgver}/${pkgn
         https://github.com/prusa3d/wxWidgets/archive/${_wxcommit}/wxWidgets-${_wxcommit}.tar.gz
         https://patch-diff.githubusercontent.com/raw/prusa3d/PrusaSlicer/pull/10390.patch
         use-system-catch2.patch
-        prusaslicer-allow-over-setting-wxwidgets-config-options.patch
         fixCheckResizerFlags.patch::https://github.com/prusa3d/PrusaSlicer/commit/24a5ebd65c9d25a0fd69a3716d079fd1b00eb15c.patch
         nanosvg-use-library-impl.patch)
 sha256sums=('a15f68e3b18a047c8c9a18a9d91629d2c777be1932087684cf6d2332d0888e77'
             '20a7a6debad508c0b113cbfc908ca6b1d6786c77f925acad9353b78c34779495'
             '761ed80f95614fa7ef7ca3ce063b43f773cfe5a0e1aa6dd5e5fc9b6cfe8b9c63'
             '3639dc2d290dc9a7d16259e0b421f8d21f16fb4abe46bbb3fab9328930fc5758'
-            '47bf192f90155af669f6ae8ef06a4e73723367717abe70f77883aefdfcc1014d'
             'b55f5db832e801d2c97820d8d60a2309500e783f4372f802b16b06352447e61d'
             '4aeed62c069b925fa80e4c91bc20d88d3c7bcd65df5ef1199d45bbdb1f9180d6')
 
@@ -37,7 +35,6 @@ prepare() {
   cd PrusaSlicer-version_${_pkgver}
   sed -i "s/7.6.2/7.6.3/" src/occt_wrapper/CMakeLists.txt # Hack for opencascade 7.6.3
   patch -Np1 -i "${srcdir}"/10390.patch
-  patch -Np1 -i "${srcdir}"/prusaslicer-allow-over-setting-wxwidgets-config-options.patch
   patch -Np1 -i "${srcdir}"/use-system-catch2.patch # Borrowed from Debian
   patch -Np1 -i "${srcdir}"/fixCheckResizerFlags.patch
 }
@@ -46,10 +43,9 @@ build() {
   echo "Building Prusa wxWidgets"
   cmake -B wxwidgets-build -S wxWidgets-${_wxcommit} \
     -G Ninja \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DCMAKE_INSTALL_LIBDIR=lib/wxwidgets-prusa \
+    -DCMAKE_INSTALL_PREFIX="${srcdir}"/wxwidgets-install \
     -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
-    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_SHARED_LIBS=OFF \
     -DwxBUILD_TOOLKIT=gtk3 \
     -DwxUSE_MEDIACTRL=OFF \
     -DwxUSE_DETECT_SM=OFF \
@@ -71,28 +67,26 @@ build() {
     -DwxUSE_GLCANVAS_EGL=OFF \
     -DwxUSE_WEBREQUEST=OFF
   ninja -C wxwidgets-build
-  DESTDIR="${srcdir}"/wxwidgets-install ninja -C wxwidgets-build install
-  ln -s wxrc-3.2 wxwidgets-install/usr/bin/wxrc
-  ln -s "${srcdir}"/wxwidgets-install/usr/lib/wx/config/gtk3-unicode-3.2 wxwidgets-install/usr/bin/wx-config-3.2
+  ninja -C wxwidgets-build install
 
+  export LDFLAGS="$LDFLAGS -z muldefs"
   echo "Building PrusaSlicer"
   cmake -B build -S PrusaSlicer-version_${_pkgver} \
       -G Ninja \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB \
-      -DCMAKE_PREFIX_PATH="${srcdir}"/wxwidgets-install/usr \
-      -DwxWidgets_CONFIG_OPTIONS="--prefix=${srcdir}/wxwidgets-install/usr" \
-      -DCMAKE_EXECUTE_PROCESS_COMMAND_ECHO=STDOUT \
+      -DCMAKE_PREFIX_PATH="${srcdir}"/wxwidgets-install \
       -DSLIC3R_FHS=ON \
       -DSLIC3R_PCH=OFF \
-      -DSLIC3R_GTK=3
+      -DSLIC3R_GTK=3 \
+      -DwxWidgets_USE_STATIC=ON
   ninja -C build
 }
 
 check() {
   cd build
 
-  LD_LIBRARY_PATH="${srcdir}/wxwidgets-install/usr/lib/" ctest -v
+  ctest -v
 }
 
 package_prusa-slicer() {
@@ -100,14 +94,6 @@ package_prusa-slicer() {
 
   # DESTDIR="$pkgdir" make install
   DESTDIR="$pkgdir" ninja -C build install
-
-  # package vendored wxwidgets
-  cp -ar wxwidgets-install/usr/lib "${pkgdir}"/usr/lib/prusa-wxwidgets
-  mv "${pkgdir}"/usr/bin/prusa-slicer "${pkgdir}"/usr/share/PrusaSlicer
-  mv "${pkgdir}"/usr/bin/prusa-gcodeviewer "${pkgdir}"/usr/share/PrusaSlicer
-  echo -e '#!/usr/bin/sh\nLD_LIBRARY_PATH="/usr/lib/prusa-wxwidgets" /usr/share/PrusaSlicer/prusa-slicer "${@}"' > "${pkgdir}"/usr/bin/prusa-slicer
-  echo -e '#!/usr/bin/sh\nLD_LIBRARY_PATH="/usr/lib/prusa-wxwidgets" /usr/share/PrusaSlicer/prusa-gcodeviewer "${@}"' > "${pkgdir}"/usr/bin/prusa-gcodeviewer
-  chmod a+x "${pkgdir}"/usr/bin/prusa-slicer "${pkgdir}"/usr/bin/prusa-gcodeviewer
 
   # Desktop icons
   mkdir -p "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/
