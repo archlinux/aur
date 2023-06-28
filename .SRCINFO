@@ -1,7 +1,7 @@
 pkgbase = lavagna
 	pkgdesc = A collaborative blackboard, ideal for simple sketches during online meetings
 	pkgver = 2.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alepez/lavagna
 	arch = x86_64
 	license = APACHE
