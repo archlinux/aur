@@ -1,11 +1,11 @@
 pkgbase = ponymap-git
 	pkgdesc = Experimental network scanner
-	pkgver = r87.9c16e19
+	pkgver = r117.11567dc
 	pkgrel = 1
 	url = https://git.janouch.name/p/ponymap
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = custom:0BSD
 	makedepends = cmake
 	makedepends = pkg-config
 	makedepends = git
