@@ -3,7 +3,7 @@
 
 _name='facerecognition'
 pkgname=('nextcloud-app-facerecognition')
-pkgver=0.9.10_beta.1
+pkgver=0.9.20
 pkgrel=1
 pkgdesc='Nextcloud app that implement a basic facial recognition system'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('nextcloud' 'yq')
 depends=('php-pdlib')
 options=('!strip')
 source=("${_name}-v${pkgver}.tar.gz::${url}/releases/download/v${pkgver/_/-}/${_name}.tar.gz")
-sha512sums=('3f3a33be3bae194fefb15759a938c93822c84dc36ac43ac439d7fa528f7d8cf6f71de1682371f2c278cd41e93cfb6ac0fd737f95fdddc15fa19e38d2b3b0b5a0')
+sha512sums=('76cebad4d0dfa51956b1b82899f8c5d5b678c983293ebd629a17f5e625853e794be121403ff705406adc5c14ef7fcfe4e9e078a8f2d9e13a1296f8ab611537cb')
 
 
 # BEGIN boilerplate nextcloud app version clamping, see also other packages in group
