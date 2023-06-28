@@ -1,28 +1,17 @@
-# Maintainer: Chjara Yebgui <tuxcrafting@cronut.cafe>
+# Contributor: Chjara Yebgui <tuxcrafting@cronut.cafe>
+
 pkgname=fasmg
-pkgver=jmhx
+pkgver=k328
 pkgrel=2
-epoch=
 pkgdesc="Assembler with advanced macro-instruction abilities"
 arch=('x86_64')
 url='http://flatassembler.net/'
 license=('BSD')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
 options=(!strip)
-install=
-changelog=
 source=("https://flatassembler.net/$pkgname.$pkgver.zip")
 noextract=("$pkgname.$pkgver.zip")
-sha512sums=('e77d44f62936a30adf88107f8cda8c74261697909221ec98968fc3cf94409e7bb81c1dcd59f6e528636686eb63de1428326271ab42410ca38b022432c7e3ab1a')
-validpgpkeys=()
+sha512sums=('30b3ba34cefa997d979e10ef558016c8c9320b3392f959554f5384e27c38ca5b893784985d418e297f297e758865847a70fa9b68a2043de621a3ad7fba715475')
+
 
 prepare() {
     [ -d "$pkgname-$pkgver" ] || mkdir "$pkgname-$pkgver"
