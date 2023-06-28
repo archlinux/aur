@@ -1,34 +1,39 @@
 # Maintainer: Rhys Perry <rhysperry111@gmail.com>
+# Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=komga
-# AUTOMATICALLY UPDATED BY SCRIPT ON NEW RELEASE #
-pkgver=0.165.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Media server for comics/mangas/BDs with API and OPDS support "
-arch=('any')
-url="https://komga.org"
-license=('MIT')
-depends=('java-runtime-headless>=8')
-backup=(etc/komga.conf)
-source=("https://github.com/gotson/komga/releases/download/v${pkgver}/komga-${pkgver}.jar"
-        "komga"
-        "komga.sysusers"
-        "komga.service"
-        "komga.tmpfiles"
-        "komga.env")
+pkgdesc='Media server for comics/mangas/BDs with API and OPDS support'
+arch=(any)
+url=https://komga.org
+license=(MIT)
+depends=('java-runtime-headless>=17')
+backup=(etc/${pkgname}.conf)
+install=${pkgname}.install
+source=("https://github.com/gotson/komga/releases/download/v${pkgver}/${pkgname}-${pkgver}.jar"
+        "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/gotson/komga/v${pkgver}/LICENSE"
+        "${pkgname}"
+        "${pkgname}.env"
+        "${pkgname}.install"
+        "${pkgname}.service"
+        "${pkgname}.sysusers"
+        "${pkgname}.tmpfiles")
+sha256sums=('6f26fe823de4cc66a799f55f0171e205a9b64122d10b3f9a4f7bde489a94915b'
+            '0c34b357f56a8d8947e5bf153d8a02ca378611f089d8a3c371667f28c223653f'
+            '79ed4053c4775286e7c534da74bb14619f93931262234e029a64eb3838ca31f7'
+            'a0265a0b8ee1bc887033830c21915939efb6872337dccd5b79edb4ca9e403c1d'
+            '16bde60b72dd632304e89d3c7f032555c848a7add3ad43da6640c34338320fe1'
+            'afab9337acdcd5da316bf2d1615b8baed5397372a8ba917383ba480d7f30a699'
+            '26347d880e10a24d3b4a17a8c6d9dc7c15cda21f50d6a07a8602ab67cd6f2d02'
+            '81687c1769a6dcf0df72fed1bc23146f0a36525f8a0f2c279d31bc79b4809a0f')
+
 package() {
-  cd "$pkgdir"
-  install -Dm755 "$srcdir"/komga-"$pkgver".jar usr/share/java/komga/komga.jar
-  install -Dm755 "$srcdir"/komga usr/bin/komga
-  install -Dm644 "${srcdir}/komga.service" "${pkgdir}/usr/lib/systemd/system/komga.service"
-  install -Dm644 "${srcdir}/komga.sysusers" "${pkgdir}/usr/lib/sysusers.d/komga.conf"
-  install -Dm644 "${srcdir}/komga.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/komga.conf"
-  install -Dm644 "${srcdir}/komga.env" "${pkgdir}/etc/komga.conf"
+    install -Dm755 ${pkgname}-${pkgver}.jar ${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar
+    install -Dm755 ${pkgname} -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/komga.service"
+    install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/komga.conf"
+    install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/komga.conf"
+    install -Dm644 "${srcdir}/${pkgname}.env" "${pkgdir}/etc/komga.conf"
+    install -Dm644 "${pkgname}-${pkgver}-LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-# AUTOMATICALLY ADDED BY SCRIPT ON NEW RELEASE #
-md5sums=('947383c4248bbfa5126559e57b8be97e'
-         'e5713c297be47045511f06664574754f'
-         'cce81e91d6710d7413f4c934834ef8e4'
-         '537b1c70998d793639a3132345af33f6'
-         'ed67e35d511c361799745573dd77a16a'
-         '48cc6870981e1fa66a7def9bc2029425')

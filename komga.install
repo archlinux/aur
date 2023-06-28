@@ -1,0 +1,7 @@
+post_upgrade() {
+    if (( $(echo "$2 1.0.0" | awk '{print ($1 < $2)}') )); then
+        echo "          Komga 1.0.0 brings breaking changes, please read"
+        echo "          <https://komga.org/installation/upgrade.html>"
+        echo "          before starting the new version."
+    fi
+}
