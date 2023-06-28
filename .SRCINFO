@@ -1,6 +1,6 @@
 pkgbase = tree-sitter-php-git
 	pkgdesc = PHP grammar for tree-sitter
-	pkgver = 0.19.0.r52.gb065fc4
+	pkgver = 0.19.0.r129.gd38adb2
 	pkgrel = 1
 	url = https://github.com/tree-sitter/tree-sitter-php
 	arch = x86_64

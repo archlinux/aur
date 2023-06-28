@@ -1,7 +1,7 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-php-git
-pkgver=0.19.0.r52.gb065fc4
+pkgver=0.19.0.r129.gd38adb2
 pkgrel=1
 pkgdesc="PHP grammar for tree-sitter"
 arch=('x86_64')
@@ -28,7 +28,7 @@ prepare() {
 build() {
 	cd "$pkgname/src/"
 	cc $CFLAGS -std=c99 -c parser.c
-	c++ $CPPFLAGS -c scanner.cc
+	cc $CFLAGS -std=c99 -c scanner.c
 	c++ $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
 }
 
