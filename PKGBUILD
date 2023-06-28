@@ -3,27 +3,20 @@
 # 2.7M   this
 
 pkgname=getdp
-pkgver=3.3.0
+pkgver=3.5.0
 pkgrel=1
-pkgdesc='A General Environment for the Treatment of Discrete Problems'
+pkgdesc='general environment for the Treatment of Discrete Problems'
 arch=('x86_64')
 url='http://getdp.info/'
 license=('LGPL3')
-
-depends=('python'
-'gmsh'
-)
- 
+depends=('python' 'gmsh')
 makedepends=('gcc' 'gcc-libs' 'cmake' 'git'
-'arpack' 'openblas' 'lapack' 'swig'
-'flex' 'bison'
-'texinfo'
+             'arpack' 'openblas' 'lapack' 'swig'
+             'flex' 'bison' 'texinfo')
 # gcc-fortran Kernel PeWe SparskitZ
-)
-
 # source=("$pkgname::git+https://gitlab.onelab.info/$pkgname/$pkgname")
 source=("http://$pkgname.info/src/$pkgname-$pkgver-source.tgz")
-sha256sums=('SKIP')
+sha256sums=('0bf76c49efa9b88401a457c12f7aabd97597ad49ef632d3fb9308aa8ea437bdc')
 
 prepare() {
   cd "${srcdir}/$pkgname-$pkgver-source"
