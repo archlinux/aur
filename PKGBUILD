@@ -6,7 +6,7 @@ function _nvidia_check() {
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=21.0.0_dev00.r2534.10524b3c
+pkgver=21.0.0_dev00.r2562.338b0222
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -15,9 +15,9 @@ license=('MIT')
 groups=()
 depends=('vulkan-driver' 'libunwind' 'libdrm')
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack' 'libxrandr' 'nasm' 'unzip' 'ffnvcodec-headers' 'jq')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname"::'git+https://github.com/alvr-org/ALVR.git')
 md5sums=('SKIP')
 options=('!lto')
 
@@ -27,15 +27,15 @@ export RUSTUP_TOOLCHAIN=stable
 export CARGO_TARGET_DIR=target
 
 pkgver() {
-	cd "$srcdir/${_pkgname}"
+	cd "$srcdir/$_pkgname"
 
-	ver=$(cargo metadata --frozen --filter-platform "$CARCH-unknown-linux-gnu" --format-version 1 | jq ".workspace_members[0]" -r | awk '{print $2}')
+	ver=$(cargo read-manifest --frozen --manifest-path "$_pkgname/server/Cargo.toml" | jq '.version' -r)
 
 	printf "%s.r%s.%s" "${ver//-/_}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/${_pkgname}"
+	cd "$srcdir/$_pkgname"
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan_layer/layer/alvr_x86_64.json
 
@@ -43,7 +43,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/${_pkgname}"
+	cd "$srcdir/$_pkgname"
 
 	export ALVR_ROOT_DIR=/usr
 	export ALVR_LIBRARIES_DIR="$ALVR_ROOT_DIR/lib"
@@ -72,7 +72,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${_pkgname}"
+	cd "$srcdir/$_pkgname"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm755 target/release/alvr_dashboard -t "$pkgdir/usr/bin/"
 
@@ -88,15 +88,15 @@ package() {
 	install -Dm644 alvr/vulkan_layer/layer/alvr_x86_64.json -t "$pkgdir/usr/share/vulkan/explicit_layer.d/"
 
 	# Desktop
-	install -Dm644 packaging/freedesktop/alvr.desktop -t "$pkgdir/usr/share/applications"
+	install -Dm644 "alvr/xtask/resources/$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
 	# Icons
 	install -d $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps/
 	cp -ar icons/* $pkgdir/usr/share/icons/
 
 	# Firewall
-	install -Dm644 "packaging/firewall/$_pkgname-firewalld.xml" "$pkgdir/usr/lib/firewalld/services/${_pkgname}.xml"
-	install -Dm644 "packaging/firewall/ufw-$_pkgname" -t "$pkgdir/etc/ufw/applications.d/"
+	install -Dm644 alvr/xtask/firewall/alvr-firewalld.xml "$pkgdir/usr/lib/firewalld/services/${_pkgname}.xml"
+	install -Dm644 alvr/xtask/firewall/ufw-alvr -t "$pkgdir/etc/ufw/applications.d/"
 
-	install -Dm755 packaging/firewall/alvr_fw_config.sh -t "$pkgdir/usr/share/alvr/"
+	install -Dm755 alvr/xtask/firewall/alvr_fw_config.sh -t "$pkgdir/usr/share/alvr/"
 }
