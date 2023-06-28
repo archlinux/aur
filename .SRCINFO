@@ -1,6 +1,6 @@
 pkgbase = d-spy-git
 	pkgdesc = A D-Bus explorer for GNOME
-	pkgver = 1.2.1.r0.g4daf6fb
+	pkgver = 1.6.0.r4.g3d393d9
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/d-spy
 	arch = x86_64
