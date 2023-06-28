@@ -1,0 +1,39 @@
+From 906bbb8969c8712e108bd6a721114cc199bb684c Mon Sep 17 00:00:00 2001
+From: Phil Davis <phil@jankaritech.com>
+Date: Mon, 30 Jan 2023 12:39:44 +0545
+Subject: [PATCH] declare addressDataProperties to avoid PHP 8.2 deprecation
+ notice
+
+---
+ lib/CardDAV/Xml/Request/AddressBookMultiGetReport.php    | 9 ++++++++-
+ ...ultiGetTest.php => AddressBookMultiGetReportTest.php} | 6 +++---
+ 2 files changed, 11 insertions(+), 4 deletions(-)
+ rename tests/Sabre/CardDAV/Xml/Request/{AddressBookMultiGetTest.php => AddressBookMultiGetReportTest.php} (93%)
+
+diff --git a/lib/CardDAV/Xml/Request/AddressBookMultiGetReport.php b/lib/CardDAV/Xml/Request/AddressBookMultiGetReport.php
+index c11d2dd736..491f969088 100644
+--- a/lib/CardDAV/Xml/Request/AddressBookMultiGetReport.php
++++ b/lib/CardDAV/Xml/Request/AddressBookMultiGetReport.php
+@@ -38,7 +38,7 @@ class AddressBookMultiGetReport implements XmlDeserializable
+     public $hrefs;
+ 
+     /**
+-     * The mimetype of the content that should be returend. Usually
++     * The mimetype of the content that should be returned. Usually
+      * text/vcard.
+      *
+      * @var string
+@@ -53,6 +53,13 @@ class AddressBookMultiGetReport implements XmlDeserializable
+      */
+     public $version = null;
+ 
++    /**
++     * An array with requested vcard properties.
++     *
++     * @var array
++     */
++    public $addressDataProperties;
++
+     /**
+      * The deserialize method is called during xml parsing.
+      *
