@@ -1,6 +1,6 @@
 pkgbase = python-qiskit
 	pkgdesc = An open-source SDK for working with quantum computers at the level of circuits, algorithms, and application modules
-	pkgver = 0.43.1
+	pkgver = 0.43.2
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-qiskit
 	optdepends = python-qiskit-machine-learning: sample datasets and quantum classification algorithms
 	optdepends = python-qiskit-nature: ground state energy computations, excited states and dipole moments of molecules
 	optdepends = python-qiskit-optimization: quantum optimization algorithms
-	source = qiskit-metapackage-0.43.1.tar.gz::https://github.com/Qiskit/qiskit-metapackage/archive/0.43.1.tar.gz
-	b2sums = 5d161992ebf0b4900b1e466adad6d14d9fdd6bc12e215805363b948fb73761f5d1e977945a8b4db31dfdfa9675051288f7d3a0b63ccb3972fe44d25b567ed180
+	source = qiskit-metapackage-0.43.2.tar.gz::https://github.com/Qiskit/qiskit-metapackage/archive/0.43.2.tar.gz
+	b2sums = 9692b69a4cb1d8350be4578313e85d7939970cf003975dad10cf2a70772b4e5826f94bdc2d50d23f0519380f96c7f49d13a5b2792411124b358e15e7e4dd0b2d
 
 pkgname = python-qiskit
