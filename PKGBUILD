@@ -3,7 +3,7 @@
 
 pkgname=python-holidays
 _pkgname=${pkgname:7}
-pkgver=0.26
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="Generate and work with holidays in Python"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=(python-build python-installer python-wheel python-setuptools)
 depends=(python 'python-convertdate>=2.3.0' python-korean_lunar_calendar python-hijri-converter)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('e3f8411a9754c8fc717d3802bf6e6312684fe63432d060c05681ac40704a8915')
+sha256sums=('5d9a7ca1763cfa3d329b88b66b591a12dc4267302428a7cf158136d0310eaeec')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
