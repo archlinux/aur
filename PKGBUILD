@@ -2,12 +2,12 @@
 
 pkgname=radeon-profile-git
 pkgver=20200824.r22.g295d189
-pkgrel=1
+pkgrel=2
 pkgdesc="App for display info about radeon card"
 url="http://github.com/emerge-e-world/radeon-profile"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('qt5-base' 'qt5-charts' 'libxkbcommon-x11' 'libxrandr')
+depends=('qt5-base' 'qt5-charts' 'libxkbcommon-x11' 'libxrandr' 'libx11' 'gcc-libs' 'glibc')
 makedepends=('qt5-tools' 'git')
 optdepends=('radeon-profile-daemon: system daemon for reading card info'
 	'sudo: start with root privilages without password'
