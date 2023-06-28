@@ -1,6 +1,6 @@
 pkgbase = auther-git
 	pkgdesc = A cross-platform OTP token manager
-	pkgver = r46.9e20e96
+	pkgver = r47.5533a9e
 	pkgrel = 1
 	url = https://gitlab.com/dg10a/auther.git
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = auther-git
 	md5sums = SKIP
 
 pkgname = auther-git
-

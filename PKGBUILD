@@ -1,8 +1,8 @@
-# Maintainer: Dasith Gunawardhana <dasith.gunawardhana@gmail.com>
+# Maintainer: Dasith Gunawardhana <dasith@dg10a.com>
 
 _pkgname=auther
 pkgname=${_pkgname}-git
-pkgver=r46.9e20e96
+pkgver=r47.5533a9e
 pkgrel=1
 pkgdesc="A cross-platform OTP token manager"
 arch=('x86_64')
@@ -25,7 +25,7 @@ prepare() {
 	cd "$srcdir/${_pkgname}"
 	git submodule init
 	git config submodule.deps/keepassxc.url "$srcdir/keepassxc"
-	git submodule update
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
