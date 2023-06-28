@@ -5,14 +5,15 @@ KBUILD_CPUTYPE=${KBUILD_CPUTYPE:GENERIC_CPU} # See arch/x86/Kconfig.cpu for poss
 
 # Internals
 
-_linux_ver=6.3.8
-_pf_ver=pf5
+_linux_ver=6.4.0
+_pf_ver=pf1
+_zen_ver=6.4
 _zen_tag=zen1-1
 _variant=pfkernel
 
 pkgbase=linux-pf-$_variant
 pkgver=$_linux_ver.$_pf_ver
-pkgrel=2
+pkgrel=1
 pkgdesc="$_variant's Linux pf"
 url="https://pfkernel.natalenko.name/"
 arch=(x86_64)
@@ -39,10 +40,10 @@ _srcname=linux
 source=(
     "https://codeberg.org/pf-kernel/linux/archive/v${_linux_ver%.*}-${_pf_ver}.tar.gz"
     # Use linux-zen as base config and merge pf's defaults
-    "https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${_linux_ver}.${_zen_tag}/config"
+    "https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${_zen_ver}.${_zen_tag}/config"
 )
-sha256sums=('2d111e38e68f50e2d7c5906f9f1a6f07ccbd12264c69882191433b5413214dc8'
-            'aa20c3339ed83d53bea8548399b6cba339d7b21e161249d9c8276909c29aef79')
+sha256sums=('fe0e6f25178ed37801ab40a7c446220c83417ad63ad39a7adfa4f11de93ca0ff'
+            'aec310553aa9b98572c25d37dfc33a62f5f853441a91cafc5cb1b8c19d7d9be3')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -57,7 +58,7 @@ prepare() {
   cd $_srcname
 
   # Hack for kernel release name
-  # It should be $_linux_ver-$_pf_ver-$pkgrel-pf
+  # It should be $_linux_ver-$_pf_ver-$pkgrel-pf-pfkernel
   if test "$(grep --max-count 1 "SUBLEVEL = " Makefile | sed "s/SUBLEVEL = //")" != "${_linux_ver##*.}"
   then
       echo "Fixing SUBLEVEL value in Makefile..."
