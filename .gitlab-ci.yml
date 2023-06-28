@@ -4,9 +4,9 @@ stages:
 
 build:
   stage: build
-  image: registry.stefanwimmer128.eu/stefanwimmer128/archlinux-chaotic-paru-user:latest
+  image: registry.stefanwimmer128.io/stefanwimmer128/archlinux-chaotic-paru-user:latest
   before_script:
-    paru -Syu --noconfirm jq.sh-bin getoptions
+    paru -Syu --noconfirm
   script:
     - makepkg -s --noconfirm
   artifacts:
