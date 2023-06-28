@@ -4,7 +4,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gerbv
-pkgver=2.9.5
+pkgver=2.9.8
 pkgrel=1
 pkgdesc="An open source Gerber file (RS-274X only) viewer"
 #url="http://gerbv.gpleda.org/"
@@ -16,7 +16,7 @@ optdepends=('cairo: for better graphics')
 changelog=ChangeLog
 #source=("https://downloads.sourceforge.net/gerbv/$pkgname-$pkgver.tar.gz")
 source=("gerbv-$pkgver.tgz::https://github.com/gerbv/gerbv/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a90b3e50941bed90eaf45e9b0d19b2d074eec1f433dcf3a1b3cbf14d8dc7c1ec')
+sha256sums=('8908bf8981b764ca02df89dd72c6324df7cd322a744db6fefc6475b03c63ec49')
 
 prepare () {
   cd $pkgname-$pkgver
