@@ -22,7 +22,7 @@ index 0c86cd1b..7d5c282b 100644
  
      "pxar-bin",
  ]
-@@ -101,7 +98,6 @@ proxmox-rrd = { path = "proxmox-rrd" }
+@@ -102,7 +99,6 @@ proxmox-rrd = { path = "proxmox-rrd" }
  
  # regular crates
  anyhow = "1.0"
@@ -30,7 +30,7 @@ index 0c86cd1b..7d5c282b 100644
  base64 = "0.13"
  bitflags = "1.2.1"
  bytes = "1.0"
-@@ -114,7 +110,6 @@ flate2 = "1.0"
+@@ -115,7 +111,6 @@ flate2 = "1.0"
  foreign-types = "0.3"
  futures = "0.3"
  h2 = { version = "0.3", features = [ "stream" ] }
@@ -38,7 +38,7 @@ index 0c86cd1b..7d5c282b 100644
  hex = "0.4.3"
  http = "0.2"
  hyper = { version = "0.14", features = [ "full" ] }
-@@ -152,120 +147,37 @@ walkdir = "2"
+@@ -151,119 +146,38 @@ walkdir = "2"
  xdg = "2.2"
  zstd = { version = "0.6", features = [ "bindgen" ] }
  
@@ -67,8 +67,6 @@ index 0c86cd1b..7d5c282b 100644
 -num-traits.workspace = true
 -once_cell.workspace = true
 -openssl.workspace = true
--pam-sys.workspace = true
--pam.workspace = true
 -percent-encoding.workspace = true
 -regex.workspace = true
 -rustyline.workspace = true
@@ -95,6 +93,7 @@ index 0c86cd1b..7d5c282b 100644
 -proxmox-auth-api = { workspace = true, features = [ "api", "pam-authenticator" ] }
 -proxmox-compression.workspace = true
 -proxmox-http = { workspace = true, features = [ "client-trait", "proxmox-async", "rate-limited-stream" ] } # pbs-client doesn't use these
+-proxmox-human-byte.workspace = true
 -proxmox-io.workspace = true
 -proxmox-lang.workspace = true
 -proxmox-ldap.workspace = true
@@ -157,6 +156,7 @@ index 0c86cd1b..7d5c282b 100644
 +proxmox-compression = { path = "../proxmox/proxmox-compression" }
 +proxmox-fuse = { path = "../proxmox-fuse" }
 +proxmox-http = { path = "../proxmox/proxmox-http" }
++proxmox-human-byte = { path = "../proxmox/proxmox-human-byte" }
 +proxmox-io = { path = "../proxmox/proxmox-io" }
 +proxmox-lang = { path = "../proxmox/proxmox-lang" }
 +proxmox-rest-server = { path = "../proxmox/proxmox-rest-server" }
