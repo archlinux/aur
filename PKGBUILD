@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-themes
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc='A collection of Mint themes. Includes GTK2, GTK3, Cinnamon and Xfce components.'
 arch=('any')
@@ -11,9 +11,6 @@ depends=(
     ttf-ubuntu-font-family
 )
 makedepends=(
-    gtk3
-    inkscape
-    optipng
     python
     sassc
 )
@@ -26,15 +23,18 @@ conflicts=(
     mint-y-theme
     mint-cinnamon-themes
 )
+options=('!strip')
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('d10547873eb284750412c812aed5d684c77abf5dbcb4fea818f0545ccabf9840')
+sha256sums=('9442d467523784f31346b2546983568ddc51fdf9f8cc163f16d9905fe0da0ecb')
 
 build() {
-	cd "${pkgname}"
-	make
+  cd "${srcdir}/${pkgname}"
+  make clean
+  make
 }
 
 package() {
-  cd "${srcdir}"/"${pkgname}"
-  cp -r usr $pkgdir
+  cd "${srcdir}/${pkgname}"
+  cp -r usr "${pkgdir}/"
 }
+
