@@ -5,7 +5,7 @@ pkgdesc="simple tool to look for registered domains similar to your own, only di
 url="https://github.com/elceef/dnstwist"
 arch=('any')
 license=('Apache')
-depends=("python-dnspython" "python-pygeoip" "python-requests" "python-ssdeep" "python-tld" "python-whois")
+depends=("python-dnspython" "python-geoip2" "python-requests" "python-ssdeep" "python-tld" "python-whois")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/elceef/dnstwist/archive/${pkgver}.tar.gz")
 md5sums=('ddee7bf47842c0986d8e23a707702529')
 
