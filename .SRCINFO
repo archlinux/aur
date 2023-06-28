@@ -1,0 +1,16 @@
+pkgbase = c_formatter_42
+	pkgdesc = C formatter for 42 norminette
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/dawnbeen/c_formatter_42
+	arch = x86_64
+	license = GPL
+	depends = python>=3.7
+	depends = python-setuptools
+	depends = gcc-libs
+	depends = zlib
+	depends = glibc
+	source = c_formatter_42-0.2.2.tar.gz::https://github.com/dawnbeen/c_formatter_42/archive/refs/tags/v0.2.2.tar.gz
+	sha512sums = e1000aa3f21797070b94c52b4bbf63329743d44d252cb25bdd9cb94ffaa4a33deb45b92d592cc55d31e2da9edd4263511fe9e3ae97d733d6b391c21dee23e580
+
+pkgname = c_formatter_42
