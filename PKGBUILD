@@ -1,17 +1,16 @@
-# Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
+# Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=typedb
 _pkgname=typedb-all
-pkgver=2.11.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="TypeDB: a strongly-typed database"
 arch=('i686' 'x86_64')
 url="https://github.com/vaticle/${pkgname}"
 license=('AGPL-3.0')
-makedepends=()
 depends=('jre-openjdk')
 source=("https://github.com/vaticle/${pkgname}/releases/download/${pkgver}/${_pkgname}-linux-${pkgver}.tar.gz")
-sha256sums=('7ca57b00627cd241c1c5c5a4307b9c9da73a76a03a80fb477af3845cfeb79945')
+sha256sums=('3c72e2abbb98b87c08e306e493dfcc3ac7c0cea97b3495b14899bc9abd6292d8')
 _dirname="$pkgname-all-linux-$pkgver"
 
 package() {
