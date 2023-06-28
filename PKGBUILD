@@ -2,8 +2,9 @@
 # Maintainer: Grey Christoforo <grey at christoforo dot net>
 
 pkgname=python-cadquery
-pkgver=2.1.r531.g03c3266
-pkgrel=2
+_build_hash=03c3266b8d61d487349a15f73d3b3cb13bce625f  # can't go beyond this atm because python-ocp is stuck because opencascade is out of date
+pkgver=2.1.r531
+pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
 arch=(x86_64)
 url="https://github.com/CadQuery/cadquery"
@@ -11,30 +12,37 @@ license=('Apache')
 conflicts=(python-cadquery-git)
 depends=(
 python
-'python-ocp>=7.5.3.0.r7'
+python-ocp
 python-ezdxf
 python-multimethod
 nlopt
 casadi
+python-typish
+python-nptyping
 )
 checkdepends=(
 python-pytest
 python-typing_extensions
+python-docutils
 )
 makedepends=(
 git
+python-setuptools-scm
+python-build
+python-installer
+python-wheel
 )
-source=(git+https://github.com/CadQuery/cadquery#commit=03c3266b8d61d487349a15f73d3b3cb13bce625f)
+source=(git+https://github.com/CadQuery/cadquery#commit=${_build_hash})
 sha256sums=('SKIP')
 
 pkgver() {
   cd cadquery
-  git describe --long --tags | sed 's/-/.r/;s/-/./'
+  git describe --tags | rev | cut -d- -f2- | rev | sed 's/-/.r/'
 }
 
 build() {
   cd cadquery
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -44,9 +52,5 @@ check() {
 
 package() {
   cd cadquery
-  python setup.py install --root="${pkgdir}/" --prefix=/usr --optimize=1 --skip-build
-
-  # don't package test dir
-  _i_dir="${pkgdir}/$(python -c 'import sys; print(sys.path[-1])')"
-  rm -rf "${_i_dir}/tests"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
