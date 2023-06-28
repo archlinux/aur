@@ -37,9 +37,6 @@ build() {
         --prefix=/usr \
         --sysconfdir=/etc \
         --libexecdir=/usr/lib/${_pkgname} \
-        --with-gtk=3.0 \
-        --disable-hal \
-        --disable-sendto \
         --disable-static
     make
 }
