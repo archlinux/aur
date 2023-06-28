@@ -1,13 +1,13 @@
 # Maintainer: Liuhaoyu <liuhaoyu62@126.com>
 pkgname=passwdqc
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="pwqcheck (password strength checker) and pwqgen (random passphrase generator) from passwdqc"
 arch=('any')
 url="http://www.openwall.com/passwdqc/"
 license=('BSD' 'custom:BSD Revised')
 source=(http://www.openwall.com/passwdqc/$pkgname-$pkgver.tar.gz)
-md5sums=('b9789cf265c9867f34654e2a683ad057')
+md5sums=('fd4d6fff2951256c3c0d013becef1298')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
