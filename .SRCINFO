@@ -1,0 +1,18 @@
+pkgbase = isitup
+	pkgdesc = Check whether a website is up or down
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/lord63/isitup
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-click
+	source = https://files.pythonhosted.org/packages/source/i/isitup/isitup-0.3.1.tar.gz
+	sha256sums = 8db270ef375f5597baeed1e3ed152b98a23c212f3353341adc4d0b3bd57ae842
+
+pkgname = isitup
