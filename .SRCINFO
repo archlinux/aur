@@ -1,0 +1,14 @@
+pkgbase = asus-cirrus-firmware-git
+	pkgdesc = ASUS Cirrus firmwares for various sound devices
+	pkgver = r3.5d521dc
+	pkgrel = 1
+	url = https://gitlab.com/asus-linux/firmware
+	arch = any
+	license = custom
+	makedepends = git
+	source = asus-firmware::git+https://gitlab.com/asus-linux/firmware
+	source = LICENSE.cirrus
+	sha256sums = SKIP
+	sha256sums = de3ab9496897105826e50ad621689963289e0fe3635b80fc9f420100dcc8304a
+
+pkgname = asus-cirrus-firmware-git
