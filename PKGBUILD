@@ -1,14 +1,14 @@
 # Maintainer: Alessandro Pezzato <alessandro@pezzato.net>
 
 pkgname=lavagna
-pkgver=2.1.3
+pkgver=2.1.8
 pkgrel=1
 pkgdesc='A collaborative blackboard, ideal for simple sketches during online meetings'
 arch=(x86_64)
 url='https://github.com/alepez/lavagna'
 license=(APACHE MIT)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/alepez/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('f22c089c39d86c4cfd75d9042f54cb2b9250bd9d8aa7048c1e37eae65e012e38')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/alepez/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('406f313876c551f4ea811be0fa80478c4ec4d020ac86d6516518d9d60e63a9ab')
 
 prepare() {
   cd "$pkgname-$pkgver"
