@@ -1,6 +1,6 @@
 pkgbase = smoldyn
-	pkgdesc = A particle-based biochemical simulator for modeling molecular diffusion, surface interactions, and chemical reactions
-	pkgver = 2.58
+	pkgdesc = particle-based biochemical simulator for modeling molecular diffusion, surface interactions, and chemical reactions
+	pkgver = 2.71
 	pkgrel = 1
 	url = http://www.smoldyn.org
 	arch = i686
@@ -15,9 +15,7 @@ pkgbase = smoldyn
 	depends = freeglut
 	depends = glu
 	depends = libxmu
-	provides = smoldyn
-	source = smoldyn::http://www.smoldyn.org/smoldyn-2.58.tgz
-	md5sums = SKIP
+	source = http://www.smoldyn.org/smoldyn-2.71.tgz
+	b2sums = d8bd2ca49f13fdb185eded14c467adf8af8a23b62abc8b23a2495231baae43aef34ce1dbc4ba2a85aadcbf2cf483e3b4c8d8326da31e02ac9ba19cac01c8959a
 
 pkgname = smoldyn
-
