@@ -1,38 +1,42 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=palmerpenguins
-_cranver=0.1.1
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+_pkgname=palmerpenguins
+_pkgver=0.1.1
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=6
 pkgdesc="Palmer Archipelago (Antarctica) Penguin Data"
 arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=(custom:CC0)
-depends=(r)
-optdepends=(
-    r-knitr
-    r-rmarkdown
-    r-tibble
-    r-ggplot2
-    r-dplyr
-    r-tidyr
-    r-recipes
+depends=(
+  r
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
-        "${_cranname}-LICENSE.md::https://raw.githubusercontent.com/allisonhorst/${_cranname}/v0.1.0/LICENSE.md")
+optdepends=(
+  r-dplyr
+  r-ggplot2
+  r-knitr
+  r-recipes
+  r-rmarkdown
+  r-tibble
+  r-tidyr
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
+        "$pkgname-CC0.txt::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt")
+md5sums=('dff628ed0c5f7b8e265127221491934e'
+         '65d3616852dbf7b1a6d4b53b00626032')
 sha256sums=('2a40d48ba6c7978fdf2a6daf647ccb39cd17590680138931d11194d3dd1a30b4'
-            '8e2c443dd9aea6fcd6c293dbf66935bd5ef502fc0ca9b466c773cf9316d5e04c')
+            'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 
 build() {
   mkdir -p build
-  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 
-  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-
-  install -Dm644 "${_cranname}-LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -Dm644 "$pkgname-CC0.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
