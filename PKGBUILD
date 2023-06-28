@@ -1,22 +1,28 @@
-# Maintainer: ny-a <nyaarch64@gmail..com>
+# Contributor: ny-a <nyaarch64@gmail..com>
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=kpatch
-pkgver=0.9.5
+pkgver=0.9.8
 pkgrel=1
 pkgdesc='Live kernel patching'
 arch=(i686 x86_64)
 url=https://github.com/dynup/kpatch
 license=(GPL2)
 depends=(bash libelf)
-source=(kpatch-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha512sums=('2bbf42170695d1fd9ed82dae366f68f47c35d3389cc098ce2aed53710edaf7cb24566b28325bc5ee23e603f66bfba0e93e5e7b753e3b31264a823462b24eb8d6')
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
+sha512sums=('ab3a771dfcde92a9eee768afcf7fddb6f1ad5ba9e8c7f44d579d258ce9b6ee1722869b1b70c4597ae951b0faf71413efa26a5b135f50308c996b284a9dcee5b7')
 
 prepare() {
-  cd kpatch-$pkgver
+  cd $pkgname-$pkgver
 
   # Fix search structure
   sed -i 's#libexec#lib#g' kpatch-build/kpatch-build
+
+  # Change default bindir
+  sed -i 's#SBIN#BIN#g' kpatch/Makefile
+
+  # Fix file path in systemd service file
+  sed -i 's#sbin#bin#' contrib/kpatch.service
 
   # Linux 5.2 introduced API changes to the stack trace code
   # The kmod core module hasn't been updated to support them, so it currently doesn't build
@@ -27,29 +33,17 @@ prepare() {
 }
 
 build() {
-  cd kpatch-$pkgver
-  make
+  cd $pkgname-$pkgver
+  make PREFIX=/usr
 }
 
 package() {
-  cd kpatch-$pkgver
-  make DESTDIR="$pkgdir" install
+  cd $pkgname-$pkgver
+  make PREFIX=/usr LIBEXEC=lib DESTDIR="$pkgdir" install
 
   cd "$pkgdir"
 
   # Remove incompatible init system file
   rm etc/init/kpatch.conf
   rmdir -p etc/init
-
-  cd usr
-
-  # Fix directory structure
-  mv local/* .
-  rmdir local
-  mv lib{exec,}/kpatch
-  mv {s,}bin/kpatch
-  rmdir libexec sbin
-
-  # Fix file path in systemd service file
-  sed -i 's#local/s##' lib/systemd/system/kpatch.service
 }
