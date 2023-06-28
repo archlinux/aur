@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=icetea
-_pkgver=1.17.0
+_pkgver=1.18.1
 pkgname=r-${_pkgname,,}
-pkgver=1.17.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='Integrating Cap Enrichment with Transcript Expression Analysis'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dd59b807050066a80056f087e5f0f49e5886efc78f9634c8190b08935a06b237')
+sha256sums=('6969d2bf2345c6b426b993a0a68ce1d78648e8c7e4e597c5f4814446f1d15202')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
