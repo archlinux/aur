@@ -1,7 +1,7 @@
 # Maintainer: Fabio Manganiello <fabio@manganiello.tech>
 
 pkgname=platypush-git
-pkgver=0.24.5.r0.08c3a1e1
+pkgver=0.50.1.r0.f3b2386e
 pkgrel=1
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
@@ -36,6 +36,7 @@ depends=(
 )
 
 optdepends=(
+    'ffmpeg: Audio, streaming and several camera integrations'
 	'libtorrent: Support for torrent download'
 	'opencv: Support for cameras and image processing over the OpenCV integration'
     'py-trello: Trello integration'
@@ -89,7 +90,6 @@ optdepends=(
 	'python-rtmidi: MIDI integration'
 	'python-snowboy: Snowboy integration'
 	'python-sounddevice: Sound integration'
-	'python-soundfile: Sound integration'
 	'python-telegram-bot: Telegram integration'
 	'python-tensorflow: Tensorflow integration'
     'python-todoist-python: Todoist integration'
@@ -105,7 +105,7 @@ conflicts=('platypush')
 provides=('platypush')
 options=(!strip)
 source=("master.tar.gz::https://git.platypush.tech/platypush/platypush/archive/master.tar.gz")
-sha512sums=('44e4cbf0abfad50da63ec4029f8157b024d3ac5d795ff1ee443552aa91ea0cd4c5038778c70e5f417da2db16114ad62023f376364eccd3a81d332c77eaa58c0a')
+sha512sums=('175a6c665162900691b76479102b97bbb2b25e3e1fc229a1e3bfbf0f12d3fa7820924f5746c8ac154ad6c36545d1556025de26aea280ab1222312180fa82546e')
 
 package() {
     cd "${srcdir}/platypush"
