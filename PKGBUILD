@@ -1,13 +1,14 @@
 # Maintainer: Zach Hoffman <zrhoffman@apche.org>
 pkgname=f5fpc
 pkgver=7242.2023.0427.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0'
 arch=(x86_64 armv7h)
 
 source=('LICENSE')
-source_x86_64=("linux_f5cli-${pkgver}-${pkgrel}.${CARCH}.deb::https://vpn.mtu.edu/public/download/linux_f5cli.${CARCH}.deb")
-source_armv7h=("linux_f5cli-${pkgver}-${pkgrel}.${CARCH}.deb::https://vpn.mtu.edu/public/download/linux_f5cli.armhf.deb")
+mirror=huskyonnet-ns.uw.edu
+source_x86_64=("linux_f5cli-${pkgver}-${pkgrel}.${CARCH}.deb::https://${mirror}/public/download/linux_f5cli.${CARCH}.deb")
+source_armv7h=("linux_f5cli-${pkgver}-${pkgrel}.${CARCH}.deb::https://${mirror}/public/download/linux_f5cli.armhf.deb")
 b2sums_x86_64=('4aabd0a14c13d7985c63f659d772b05efed36d4cb1131b70c3040a112e3312db90fcbd5038b25d0e6822fbc999e7f4a34c306641d5ff1e214225909f6e1a63b1')
 b2sums_armv7h=('80f83c43e7cb06e8a96c4b52be2bd7376d71603452dd36c1c807668d941795f849062dc542d171e9c253d758d52d9f1024c6da5367855874f7bef9d4ac127dfe')
 b2sums=('c864e69799ffc4c13bf8af7d76bcc8beed195d9a41acb01d459aaa0c3cd5bae75290ef7be1fa6a0bfd6472e1c3f8df3a7f5d59767861ded0dc4a373a3ead447c')
