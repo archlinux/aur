@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-paperwm-redux-git
 _pkgname=PaperWM
-pkgver=r2198.d6385e5
+pkgver=r2204.5f6a290
 pkgrel=1
 pkgdesc="Fork of PaperWM (a gnome scrolling window manager) focused on supporting the latest Gnome release(s) and continually implementing fixes and new features quickly."
 arch=('any')
