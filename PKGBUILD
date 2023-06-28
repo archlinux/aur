@@ -1,12 +1,13 @@
 # Maintainer: Zach Hoffman <zrhoffman@apache.org>
 pkgname=f5vpn
 pkgver=7242.2023.0427.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM'
 arch=('x86_64')
+mirror=huskyonnet-ns.uw.edu
 source=('LICENSE'
         'no-desktop-file-dbus.patch')
-source_x86_64=("linux_${pkgname}-${pkgver}-${pkgrel}.${CARCH}.rpm::https://vpn.mtu.edu/public/download/linux_${pkgname}.${CARCH}.rpm")
+source_x86_64=("linux_${pkgname}-${pkgver}-${pkgrel}.${CARCH}.rpm::https://${mirror}/public/download/linux_${pkgname}.${CARCH}.rpm")
 b2sums_x86_64=('9978e7c94d9c22d8183589a31a701cbb7b48e7802ed3b23cb1ee39abfe28282c1767579e5eff5f561e30efc39d80b1a95e1e970d849874253b84c4838891dadd')
 b2sums=('c864e69799ffc4c13bf8af7d76bcc8beed195d9a41acb01d459aaa0c3cd5bae75290ef7be1fa6a0bfd6472e1c3f8df3a7f5d59767861ded0dc4a373a3ead447c'
 '5be3f5ebd0358e022c85081b45bc23b1e847542ae9035bece95c40fa5113a1fd9159ced013950d237206c2e6be94caa38b9d6414ea29ab65cd80043a2dfbfe5a')
