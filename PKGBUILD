@@ -47,16 +47,16 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-pkgver=6.3.8.zen1
+pkgver=6.4.0.zen1
 pkgrel=1
-major=6.3
-commit=d97b80d0946aec57e5610de3ae3499728b519732
-versiontag=6.3.8-zen1
+major=6.4
+commit=e63a6b30adfd9c0b870daa2a14300a893b69cf17
+versiontag=6.4-zen1
 arch=(x86_64)
-pkgdesc="The Zen kernel and modules - BMQ enabled"
 url='https://www.kernel.org/'
 license=(GPL2)
-makedepends=(bc kmod libelf pahole cpio perl tar xz xmlto git)
+makedepends=(bc cpio gettext git libelf pahole perl tar xz kmod xmlto)
+makepends+=(graphviz imagemagick python-sphinx texlive-latexextra) # htmldocs
 makedepends+=(bison flex zstd make patch gcc gcc-libs glibc binutils)
 if [[ "$_compiler" = "2" ]]; then
   makedepends+=(clang llvm llvm-libs lld python)
@@ -68,9 +68,7 @@ patchpath=https://raw.githubusercontent.com/blacksky3/patches/main/$major
 
 source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$major.tar.xz
         https://github.com/zen-kernel/zen-kernel/releases/download/v$versiontag/v$versiontag.patch.xz
-        ${archlinuxpath}/config
-        # PRJC fix
-        prjc-fix.patch) #https://gitlab.com/alfredchen/linux-prjc/-/issues/81
+        ${archlinuxpath}/config)
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -146,6 +144,71 @@ prepare(){
     plain ""
   fi
 
+  msg "Apply config from Cachyos"
+
+  # NUMA is optimized for multi-socket motherboards.
+  # A single multi-core CPU actually runs slower with NUMA enabled.
+  # See, https://bugs.archlinux.org/task/31187
+  msg2 "Disable NUMA"
+  scripts/config --disable CONFIG_NUMA
+  scripts/config --disable CONFIG_AMD_NUMA
+  scripts/config --disable CONFIG_X86_64_ACPI_NUMA
+  scripts/config --disable CONFIG_NODES_SPAN_OTHER_NODES
+  scripts/config --disable CONFIG_NUMA_EMU
+  scripts/config --disable CONFIG_USE_PERCPU_NUMA_NODE_ID
+  scripts/config --disable CONFIG_ACPI_NUMA
+  scripts/config --disable CONFIG_ARCH_SUPPORTS_NUMA_BALANCING
+  scripts/config --disable CONFIG_NODES_SHIFT
+  scripts/config --disable CONFIG_NODES_SHIFT
+  scripts/config --disable CONFIG_NEED_MULTIPLE_NODES
+  scripts/config --disable CONFIG_NUMA_BALANCING
+  scripts/config --disable CONFIG_NUMA_BALANCING_DEFAULT_ENABLED
+
+  sleep 2s
+
+  # Disable debug to lower the size of the kernel
+  msg2 "Disable debug to lower the size of the kernel"
+  scripts/config --disable CONFIG_DEBUG_INFO
+  scripts/config --disable CONFIG_DEBUG_INFO_BTF
+  scripts/config --disable CONFIG_DEBUG_INFO_DWARF4
+  scripts/config --disable CONFIG_DEBUG_INFO_DWARF5
+  scripts/config --disable CONFIG_PAHOLE_HAS_SPLIT_BTF
+  scripts/config --disable CONFIG_DEBUG_INFO_BTF_MODULES
+  scripts/config --disable CONFIG_SLUB_DEBUG
+  scripts/config --disable CONFIG_PM_DEBUG
+  scripts/config --disable CONFIG_PM_ADVANCED_DEBUG
+  scripts/config --disable CONFIG_PM_SLEEP_DEBUG
+  scripts/config --disable CONFIG_ACPI_DEBUG
+  scripts/config --disable CONFIG_SCHED_DEBUG
+  scripts/config --disable CONFIG_LATENCYTOP
+  scripts/config --disable CONFIG_DEBUG_PREEMPT
+
+  sleep 2s
+
+  msg "Apply config from linux-prjc (AUR)"
+
+  # Disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
+  # And can easily overwhelm a system with 32 GB of memory using a tmpfs build
+  # partition ... this was introduced by FS#66260, see:
+  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
+  msg2 "Disable debug to lower the size of the kernel"
+  scripts/config --disable CONFIG_CGROUP_BPF
+  scripts/config --disable CONFIG_BPF_LSM
+  scripts/config --disable CONFIG_BPF_PRELOAD
+  scripts/config --disable CONFIG_BPF_LIRC_MODE2
+  scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
+
+  sleep 2s
+
+  # https://gitlab.com/alfredchen/linux-prjc/-/issues/81
+  # Disable mellanox module
+  msg2 "Disable mellanox module"
+  scripts/config --disable CONFIG_MLX5_CORE
+
+  sleep 2s
+
+  msg "Enable PDS or BMQ"
+
   msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler"
   scripts/config --enable CONFIG_SCHED_ALT
 
@@ -159,7 +222,7 @@ prepare(){
 
   plain ""
 
-  msg2 "Supress depmod"
+  msg "Supress depmod"
   sed -i '2iexit 0' scripts/depmod.sh
 
   sleep 2s
@@ -167,7 +230,7 @@ prepare(){
   plain ""
 
   # Setting localversion
-  msg2 "Setting localversion..."
+  msg "Setting localversion..."
   # --save-scmversion as been removed in upstream
   # https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/scripts/setlocalversion?h=v6.3-rc1&id=f6e09b07cc12a4d104bb19fe7566b0636f60c413
   # scripts/setlocalversion --save-scmversion
@@ -185,7 +248,7 @@ prepare(){
   plain ""
 
   make -s kernelrelease > version
-  msg2 "Prepared $pkgbase version $(<version)"
+  msg "Prepared $pkgbase version $(<version)"
 
   plain ""
 }
@@ -204,7 +267,7 @@ build(){
 
 _package(){
   pkgdesc="The Zen kernel and modules - BMQ enabled"
-  depends=(coreutils kmod initramfs)
+  depends=(coreutils initramfs kmod)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE VHBA-MODULE UKSMD-BUILTIN)
@@ -224,9 +287,9 @@ _package(){
 
   msg2 "Installing modules..."
   if [[ "$_compiler" = "1" ]]; then
-    make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
+    ZSTD_CLEVEL=19 make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
   elif [[ "$_compiler" = "2" ]]; then
-    make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
+    ZSTD_CLEVEL=19 make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
   fi
 
   # remove build and source links
@@ -318,9 +381,8 @@ _package-headers(){
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
-sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
-            'bf7a69a915a24fc6902731e7c9b99ab3bda00995260630cc37fcde54f1f19e21'
-            'aa20c3339ed83d53bea8548399b6cba339d7b21e161249d9c8276909c29aef79'
-            '0f90283cfd48dba2fc9c1b9cfd8c64f4706132277e5bf7f8154d7add061f80be')
+sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
+            '72356a9b2482a44e935be0651e374ceb3640e71ba1f2d31dd1ab1986c4c6d9a0'
+            'aec310553aa9b98572c25d37dfc33a62f5f853441a91cafc5cb1b8c19d7d9be3')
 
 # vim:set ts=8 sts=2 sw=2 et:
