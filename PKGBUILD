@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=libnbd
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=1
 pkgdesc="NBD client library in userspace"
 arch=('x86_64')
@@ -14,7 +14,6 @@ _dldir="${pkgver%.*}"
 source=(
 		"http://download.libguestfs.org/libnbd/${_dldir}-stable/libnbd-${pkgver}.tar.gz"
 		"http://download.libguestfs.org/libnbd/${_dldir}-stable/libnbd-${pkgver}.tar.gz.sig"
-		0001-ocaml-allow-callbacks-to-be-run-outside-of-block.patch
 )
 
 prepare() {
@@ -40,6 +39,5 @@ check() {
   make check
 }
 
-sha256sums=('287755d8ba24ed7e71c09a3c97cb5152d0af01e9d33386e0868fc6de07dee576'
-            'SKIP'
-            '20b11c9b0eedb40a46c47f00705ef77a15a1bc8e0087d561fa7558a741b99712')
+sha256sums=('644520e2925af1f45ca24934feda3cc8519a287f5f26cb4069f0244681d19463'
+            'SKIP')
