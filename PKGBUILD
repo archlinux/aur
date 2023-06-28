@@ -1,9 +1,9 @@
 # Maintainer: Alynx Zhou <alynx.zhou@gmail.com>
 pkgname=gyroflow
 # Hyphens are not allowed in `pkgver`.
-_pkgver=1.2.0
+_pkgver=1.5.1
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 pkgdesc="Video stabilization using gyroscope data"
 arch=("x86_64")
 url="https://gyroflow.xyz/"
@@ -12,7 +12,7 @@ depends=("libc++" "qt6-base" "qt6-quick3d" "qt6-declarative" "qt6-3d" "pulseaudi
 makedepends=("cargo" "opencl-headers")
 source=("https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${_pkgver}.tar.gz"
         "gyroflow.desktop")
-sha512sums=('92ff3a5e7a7e1916d3617ea3d132ea5ab6171e8cea81a00db46da289e66873eda86a57c2cb4d999524cc1375d82744f38caf241599a9490af883eb8e6d8f56b9'
+sha512sums=('d76577ddffda61e5821dace9185beb9d3d6e4d4989b6b4a1c86952bff1b70b0ad97d75c4405aa1425d4bf83f64990e54e4216ab32ea7761d90e1ac67a455055e'
             '03279c2568350619f1cbdd88960e77773f55bafa4da81de4fb9276743fa66ff11edd0149af9caae7ecba3afa3b8704217552634973373aaaf98f20f64fa95a84')
 
 prepare() {
