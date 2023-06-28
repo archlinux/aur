@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Horcrux
+Comment=Split your file into encrypted fragments so that you don't need to remember a passcode
+Exec=horcrux-ui
+Icon=horcrux
+Type=Application
+Categories=Utility

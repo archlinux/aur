@@ -1,0 +1,19 @@
+pkgbase = horcrux-ui-git
+	pkgdesc = GUI for horcrux
+	pkgver = 0.1.r12.gd35f41a
+	pkgrel = 1
+	url = https://github.com/jesseduffield/horcrux-ui
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = horcrux
+	provides = horcrux-ui
+	options = !strip
+	source = git+https://github.com/jesseduffield/horcrux-ui
+	source = horcrux.desktop
+	source = horcrux.png
+	sha256sums = SKIP
+	sha256sums = c451a7bf1a01a6f1fa120334f058aaf3b45109e9f7ad60175c13785eb39e186f
+	sha256sums = fba920923cb8e5a778723ba5b3b4615ccfaef7cd1f49fa080da44e2aff3c7b91
+
+pkgname = horcrux-ui-git
