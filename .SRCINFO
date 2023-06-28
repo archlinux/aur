@@ -1,6 +1,6 @@
 pkgbase = biying_search_file
 	pkgdesc = This is a CLI for search file in biying
-	pkgver = r13.1f37804
+	pkgver = r14.4cedf9a
 	pkgrel = 1
 	url = https://gitcode.net/dnrops/biying_search_file.git
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = biying_search_file
 	makedepends = git
 	makedepends = cargo
 	depends = base
-	depends = gtk4
 	depends = glib2
 	depends = pciutils
+	conflicts = biying_search_file
 	source = biying_search_file::git+https://gitcode.net/dnrops/biying_search_file.git
 	md5sums = SKIP
 
