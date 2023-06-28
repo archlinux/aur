@@ -2,16 +2,16 @@
 
 pkgname=sos
 pkgver=4.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="unified tool for collecting system logs and other debug information"
 arch=('any')
 url="https://github.com/sosreport/sos"
 license=('GPL2')
-depends=('python'
-	 'python-six'
-	 'python-lxml')
+depends=(python
+         python-pexpect
+         python-pyaml)
 makedepends=('python-sphinx' 'python-setuptools') 
-checkdepends=(python-pexpect python-coverage python-pycodestyle python-pyaml)
+checkdepends=(python-coverage python-pycodestyle)
 backup=('etc/sos.conf')
 _archpullreq="1198.patch"
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/sosreport/sos/archive/$pkgver.tar.gz"
