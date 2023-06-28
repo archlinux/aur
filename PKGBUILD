@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=anchor-wallet-bin
-pkgver=1.3.9
+pkgver=1.3.12
 pkgrel=1
 pkgdesc="EOSIO Desktop Wallet and Authenticator"
 arch=("x86_64")
@@ -11,7 +11,7 @@ optdepends=("xdotool: for Auto-type feature")
 provides=("keeweb")
 conflicts=("anchor-wallet" "anchor-wallet-git")
 source=("$pkgname-$pkgver.deb::$url/releases/download/v${pkgver}/linux-anchor-wallet-${pkgver}-amd64.deb")
-sha256sums=('90cb69f7d6eadae4a6ad61d29ad0019dca5014dca872d9b3169910a77aaba4fe')
+sha256sums=('6428d246fe23eca5f3d143324e70f9a910a84f2c7d705ef887ceab15d7b99ac1')
 
 prepare() {
   bsdtar xf data.tar.xz

@@ -1,6 +1,6 @@
 pkgbase = anchor-wallet-bin
 	pkgdesc = EOSIO Desktop Wallet and Authenticator
-	pkgver = 1.3.9
+	pkgver = 1.3.12
 	pkgrel = 1
 	url = https://github.com/greymass/anchor
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = anchor-wallet-bin
 	provides = keeweb
 	conflicts = anchor-wallet
 	conflicts = anchor-wallet-git
-	source = anchor-wallet-bin-1.3.9.deb::https://github.com/greymass/anchor/releases/download/v1.3.9/linux-anchor-wallet-1.3.9-amd64.deb
-	sha256sums = 90cb69f7d6eadae4a6ad61d29ad0019dca5014dca872d9b3169910a77aaba4fe
+	source = anchor-wallet-bin-1.3.12.deb::https://github.com/greymass/anchor/releases/download/v1.3.12/linux-anchor-wallet-1.3.12-amd64.deb
+	sha256sums = 6428d246fe23eca5f3d143324e70f9a910a84f2c7d705ef887ceab15d7b99ac1
 
 pkgname = anchor-wallet-bin
