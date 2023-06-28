@@ -8,7 +8,7 @@ _pkgdesc=("Library that eases the development of GtkSourceView-based "
          "text editors and IDEs")
 pkgdesc="${_pkgdesc[@]}"
 arch=(x86_64)
-url="https://wiki.gnome.org/Projects/Tepl"
+url="https://gitlab.gnome.org/swilmet/${_pkgname}"
 license=(LGPL2.1)
 depends=(
   'amtk'
@@ -29,7 +29,7 @@ makedepends=(
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git/")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
