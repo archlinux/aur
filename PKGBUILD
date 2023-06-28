@@ -1,12 +1,11 @@
-# Maintainer: Qingxu <me@linioi.com>
+# Contributor: Qingxu <me@linioi.com>
+
 pkgname=switchhosts
-pkgver=4.0.3
-_subpkgver=6070
+pkgver=4.1.2
+_subpkgver=6086
 pkgrel=1
-pkgdesc="An App for hosts management & switching."
-arch=(
-    'any'
-)
+pkgdesc="app for hosts management & switching"
+arch=('any')
 url="https://github.com/oldj/SwitchHosts"
 license=('Apache')
 provides=('switchhosts')
@@ -33,21 +32,19 @@ optdepends=(
 )
 makedepends=(
     'nodejs'
-    'electron'
+    'electron19'
     'npm'
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}/SwitchHosts-v${pkgver}.tar.gz"
 )
-sha256sums=(
-    '4a3ad76fa95103c4ba041a6220987d658fc57cb697cbbd0bdd43a66cd1b7cbff'
-)
+sha256sums=('7e966120286ea9a77288e3df7393c5b0230b4dcfa427a7012237ae6ff399afe9')
 
 prepare() {
     cd SwitchHosts-${pkgver}
     # use system electron version
     # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
-    electronVer=$(electron --version | tail -c +2)
+    electronVer=$(electron19 --version | tail -c +2)
     sed -i "/electronDownload/,/}/d" scripts/make.js
     sed -i "/directories/i\  electronVersion: \`$electronVer\`," scripts/make.js
     sed -i "/directories/i\  electronDist: \`/usr/lib/electron\`," scripts/make.js
@@ -69,20 +66,7 @@ build() {
 }
 
 package() {
-    cd ${srcdir}
     tar -xvf SwitchHosts-${pkgver}/dist/SwitchHosts_linux_${pkgver}\(${_subpkgver}\).pacman -C ${pkgdir}
     rm -f ${pkgdir}/.PKGINFO ${pkgdir}/.MTREE ${pkgdir}/.INSTALL
 }
 
-post_install() {
-    # Link to the binary
-    ln -sf '/opt/SwitchHosts/switchhosts' '/usr/bin/switchhosts'
-    # SUID chrome-sandbox for Electron 5+
-    chmod 4755 '/opt/SwitchHosts/chrome-sandbox' || true
-    update-mime-database /usr/share/mime || true
-    update-desktop-database /usr/share/applications || true
-}
-
-post_remove() {
-    rm -f '/usr/bin/switchhosts'
-}
