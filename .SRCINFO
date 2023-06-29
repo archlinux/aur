@@ -1,7 +1,7 @@
 pkgbase = serenity-git
 	pkgdesc = The configuration generator for sing-box
-	pkgver = r10.3814fe7
-	pkgrel = 2
+	pkgver = r11.306a414
+	pkgrel = 1
 	url = https://github.com/SagerNet/serenity
 	arch = i686
 	arch = x86_64
