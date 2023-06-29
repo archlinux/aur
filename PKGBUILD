@@ -2,7 +2,7 @@
 # Maintainer: Carlos Alexandro Becker <carlos at becker dot software>
 
 pkgname='goreleaser-pro-bin'
-pkgver=1.19.0
+pkgver=1.19.1
 pkgrel=1
 pkgdesc='Deliver Go binaries as fast and easily as possible'
 url='https://goreleaser.com'
@@ -11,17 +11,17 @@ license=('Copyright Becker Software LTDA')
 provides=('goreleaser' 'goreleaser-pro')
 conflicts=('goreleaser' 'goreleaser-pro')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v1.19.0-pro/goreleaser-pro_Linux_arm64.tar.gz")
-sha256sums_aarch64=('a42a1e3e5e30f35fc77a1d971f6cf81afa5bf45874a01947403e80bbae34381e')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v1.19.1-pro/goreleaser-pro_Linux_arm64.tar.gz")
+sha256sums_aarch64=('01798c1f4806f9fa669b4f8f5208cc2d545dd35cb16fdd1db22c36619d2ec671')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v1.19.0-pro/goreleaser-pro_Linux_armv6.tar.gz")
-sha256sums_armv6h=('3bbfa36d92a55310a02d4655f8b33336099e59537f5db544f2b67d9b825c717d')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v1.19.1-pro/goreleaser-pro_Linux_armv6.tar.gz")
+sha256sums_armv6h=('108785e8346a570f4aa2f1c51a1b9efbba7a22c47054e24216d9f5791f89a252')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v1.19.0-pro/goreleaser-pro_Linux_i386.tar.gz")
-sha256sums_i686=('03c21b674dd4be5087b2f1e6b51b29d20fea400f0825103c9d295cdd195e559f')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v1.19.1-pro/goreleaser-pro_Linux_i386.tar.gz")
+sha256sums_i686=('6fc2a19bc41f453607d175585e3e1149d27af63715bb013dcb0573ed1047db71')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v1.19.0-pro/goreleaser-pro_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('b8ac59d4a9281ad03540a330de5c90b9ffb439249912f4c65aed948dcdc5b3a4')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/goreleaser/goreleaser-pro/releases/download/v1.19.1-pro/goreleaser-pro_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('ffd942a02e4ade03a1610bb4f7079e5124336967043d7fadd758099060f04066')
 
 package() {
   # bin
