@@ -1,12 +1,14 @@
 pkgbase = audela-svn
 	pkgdesc = AudeLA is a TCL extension aimed at providing amateur astronomers with image processing, telescope controling, ccd camera driving, and various astronomical algorithms
-	pkgver = 3.0.0
+	pkgver = r15879
 	pkgrel = 1
 	url = https://sourceforge.net/projects/audela/
 	arch = x86_64
 	license = GPL
 	makedepends = subversion
 	makedepends = libjpeg6-turbo
+	depends = tcl
+	depends = tk
 	source = svn+https://svn.code.sf.net/p/audela/code/trunk/audela
 	sha256sums = SKIP
 
