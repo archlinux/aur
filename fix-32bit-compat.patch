@@ -1,0 +1,85 @@
+From b3116376e7fe711e9348de13d9941773bf874821 Mon Sep 17 00:00:00 2001
+From: psykose <alice@ayaya.dev>
+Date: Thu, 15 Jun 2023 07:45:15 +0000
+Subject: [PATCH 1/2] fix compatibility with exiv2 on 32-bit systems
+
+---
+ gexiv2/gexiv2-metadata.cpp  | 2 +-
+ gexiv2/gexiv2-stream-io.cpp | 2 +-
+ gexiv2/gexiv2-stream-io.h   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/gexiv2/gexiv2-metadata.cpp b/gexiv2/gexiv2-metadata.cpp
+index c67529e..53535d1 100644
+--- a/gexiv2/gexiv2-metadata.cpp
++++ b/gexiv2/gexiv2-metadata.cpp
+@@ -60,7 +60,7 @@ public:
+ #if defined(_MSC_VER)
+     typedef int64_t seek_offset_t;
+ #else
+-    typedef long seek_offset_t;
++    typedef int64_t seek_offset_t;
+ #endif
+ 
+ #if EXIV2_TEST_VERSION(0,27,99)
+diff --git a/gexiv2/gexiv2-stream-io.cpp b/gexiv2/gexiv2-stream-io.cpp
+index 9749edb..98952a2 100644
+--- a/gexiv2/gexiv2-stream-io.cpp
++++ b/gexiv2/gexiv2-stream-io.cpp
+@@ -120,7 +120,7 @@ int StreamIo::putb (Exiv2::byte data) {
+     return EOF;
+ }
+ 
+-int StreamIo::seek (long offset, Position position) {
++int StreamIo::seek (int64_t offset, Position position) {
+     // FIXME: handle Error
+     switch (position) {
+         case (beg):
+diff --git a/gexiv2/gexiv2-stream-io.h b/gexiv2/gexiv2-stream-io.h
+index 56a03e5..e25df5c 100644
+--- a/gexiv2/gexiv2-stream-io.h
++++ b/gexiv2/gexiv2-stream-io.h
+@@ -46,7 +46,7 @@ public:
+     size_type read (Exiv2::byte* buf, size_type rcount) override;
+ 	int getb () override;
+ 	void transfer (Exiv2::BasicIo& src) override;
+-	int seek (long offset, Position pos) override;
++	int seek (int64_t offset, Position pos) override;
+ 	Exiv2::byte* mmap (bool isWriteable = false) override;
+ 	int munmap () override;
+     size_type tell() const override;
+-- 
+GitLab
+
+
+From 45b0763a1e7bee1614542f31be7d6fa4f7ceb019 Mon Sep 17 00:00:00 2001
+From: psykose <alice@ayaya.dev>
+Date: Thu, 15 Jun 2023 07:45:47 +0000
+Subject: [PATCH 2/2] fix floating point comparisons in tests
+
+asserting perfect float equality is not guaranteed to pass. in this case, it fails on x86 32-bit
+
+the correct way is to use 'almost' equal which takes epsilon into account.
+---
+ test/python/gexiv2.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/test/python/gexiv2.py b/test/python/gexiv2.py
+index fa80f9f..4f2506a 100644
+--- a/test/python/gexiv2.py
++++ b/test/python/gexiv2.py
+@@ -48,9 +48,9 @@ class TestGexiv2(unittest.TestCase):
+         md.open_path(self.get_sample_path(sample))
+ 
+         (lo, la, alt) = md.get_gps_info()
+-        self.assertEqual(lo, -1.508425)
+-        self.assertEqual(la, 48.631806166666664)
+-        self.assertEqual(alt, -0.926000)
++        self.assertAlmostEqual(lo, -1.508425)
++        self.assertAlmostEqual(la, 48.631806166666664)
++        self.assertAlmostEqual(alt, -0.926000)
+ 
+     def test_xmp_packet_formatting(self):
+         sample = 'CaorVN.jpeg'
+-- 
+GitLab

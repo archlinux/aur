@@ -1,4 +1,6 @@
 gexiv2-*.tar.gz
+*.patch
+!fix-32bit-compat.patch
 lib32-libgexiv2-*.pkg.tar.xz
 lib32-libgexiv2-*.pkg.tar.zst
 src/
