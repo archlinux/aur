@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.22.0+r1287+g4aa3718c2d
+pkgver=1.22.0+r1499+g33fb3bfd60
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -129,6 +129,7 @@ build() {
     -D gst-plugins-bad:voamrwbenc=disabled
     -D gst-plugins-bad:wasapi2=disabled
     -D gst-plugins-bad:wasapi=disabled
+    -D gst-plugins-bad:qt6d3d11=disabled
     -D gst-plugins-bad:webrtcdsp=disabled # TODO wait pkg 'webrtc-audio-processing-1'
     -D gst-plugins-bad:opencv=disabled # due to no lib32-opencv
     -D gst-plugins-bad:msdk=disabled # due to no msdk (32-bit) support
