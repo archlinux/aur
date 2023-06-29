@@ -6,13 +6,13 @@
 
 pkgname=amarok
 pkgver=2.9.71
-pkgrel=3
+pkgrel=4
 pkgdesc="The powerful music player for KDE"
 arch=("x86_64")
 url="http://${pkgname}.kde.org/"
 license=("FDL" "GPL2" "LGPL2.1")
-depends=("kcmutils" "kdoctools" "kdnssd" "kirigami2" "knewstuff" "ktexteditor" "liblastfm-qt5" "libofa" "mariadb" "phonon-qt5" "qt5-script" "qt5-tools" "qt5-webengine" "taglib-extras" "threadweaver")
-makedepends=("extra-cmake-modules" "gdk-pixbuf2" "git" "knotifyconfig" "loudmouth")
+depends=("kcmutils" "kdoctools" "kdnssd" "kirigami2" "knewstuff" "ktexteditor" "liblastfm-qt5" "libofa" "mariadb" "phonon-qt5" "qt5-webengine" "taglib-extras" "threadweaver")
+makedepends=("extra-cmake-modules" "gdk-pixbuf2" "git" "knotifyconfig" "qt5-tools" "loudmouth")
 optdepends=(
   "ifuse: support for Apple iPod Touch and iPhone"
   "loudmouth: backend needed by mp3tunes for syncing"
