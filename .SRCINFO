@@ -1,0 +1,16 @@
+pkgbase = 3dprinter-udev-rules
+	pkgdesc = Rules for udev to give regular users access to operate 3D printers.
+	pkgver = 0.3
+	pkgrel = 0
+	url = https://github.com/hroncok/3dprinter-udev-rules
+	install = 3dprinter-udev.install
+	arch = any
+	license = MIT-0
+	makedepends = systemd
+	depends = systemd
+	source = 3dprinter-udev-rules-0.3.tar.gz::https://github.com/hroncok/3dprinter-udev-rules/archive/v0.3.tar.gz
+	source = 3dprinter-udev.install
+	sha512sums = 78c6107c12742aeb25351874e86a4681e608433708646642c0e44257c9426c6fd753da15f07cc9fc2ba69717e26298552fdbf2cd8e93c1a90964529f0bdb45f8
+	sha512sums = ce2d4a2215cdafc07e3cf88325ae50babfe61e18b327f669577a1c20aa9756152492cfab41ffeb08f371da00b58935f8b74f7fd282f29c6376ac99fe84633f23
+
+pkgname = 3dprinter-udev-rules
