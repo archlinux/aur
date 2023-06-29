@@ -15,6 +15,6 @@ pkgbase = bilibili-electron-bin
         source = bilibili-electron
         sha256sums = e25a1e8feef615fd29722c64eeca9a0be95ee3c816074208939d26031171f3cd
         sha256sums = 256fb103121107cf757ecd89caecffb792fd448ae139a1f18d017171ac8a3a06
-        sha256sums = 5bd642f412a7b182fe5c371a0382f5e232df30048735a60fec935df159ff8933
+        sha256sums = 0f4e10c86a6ab59e4a0395960bf396201190af22ca488f8fb85e4fd941ee9665
 
 pkgname = bilibili-electron
