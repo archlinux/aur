@@ -15,8 +15,6 @@ url="https://gitlab.gnome.org/GNOME/${_pkgbase}"
 license=('GPL3')
 makedepends=('meson')
 checkdepends=('appstream-glib')
-provides=("${_pkgbase}")
-conflicts=("${_pkgbase}")
 source=("git+${url}.git")
 b2sums=('SKIP')
 
@@ -54,6 +52,10 @@ package_d-spy-git() {
     'libadwaita'
     'libdspy'
   )
+  provides=(
+    "${_pkgbase}=${pkgver}")
+  conflicts=(
+    "${_pkgbase}")
   
   meson install -C build --destdir "${pkgdir}"
   cd "${pkgdir}"
@@ -61,9 +63,15 @@ package_d-spy-git() {
 }
 
 package_libdspy-git() {
-	pkgdesc='D-Spy library for IDE integration'
-	license=('LGPL3')
-	depends=('glib2')
-
-	mv library/* "${pkgdir}"
+  pkgdesc='D-Spy library for IDE integration'
+  license=(
+    'LGPL3')
+  depends=(
+    'glib2')
+  provides=(
+    "libdspy=${pkgver}")
+  conflicts=(
+    "libdspy")
+  
+  mv library/* "${pkgdir}"
 }
