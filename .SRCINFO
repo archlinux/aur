@@ -1,6 +1,6 @@
 pkgbase = mullvad-browser
 	pkgdesc = Privacy-focused web browser developed by Mullvad VPN and the Tor Project
-	pkgver = 12.0.7
+	pkgver = 12.5
 	pkgrel = 1
 	arch = x86_64
 	license = GPL
@@ -47,11 +47,11 @@ pkgbase = mullvad-browser
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = https://cdn.mullvad.net/browser/12.0.7/src-firefox-mullvad-browser-102.12.0esr-12.0-1-build1.tar.xz
-	source = https://cdn.mullvad.net/browser/12.0.7/src-firefox-mullvad-browser-102.12.0esr-12.0-1-build1.tar.xz.asc
+	source = https://cdn.mullvad.net/browser/12.5/src-firefox-mullvad-browser-102.12.0esr-12.5-1-build2.tar.xz
+	source = https://cdn.mullvad.net/browser/12.5/src-firefox-mullvad-browser-102.12.0esr-12.5-1-build2.tar.xz.asc
 	source = mullvad-browser.desktop
 	validpgpkeys = EF6E286DDA85EA2A4BA7DE684E2C6E8793298290
-	sha256sums = 78a66c3bca36e8ff8e8c7c981ea9a04cc4c7d95177dd661d4c09ce2b41944d8c
+	sha256sums = 3c320c496014ae81e6c2c52c7c788c63d9ca62ede425bc697c9ae042a825ebd3
 	sha256sums = SKIP
 	sha256sums = 9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70
 
