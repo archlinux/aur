@@ -1,4 +1,4 @@
-# Maintainer: Miroslav Koškár <http://mkoskar.com/>
+# Maintainer: Miroslav Koškár <https://mkoskar.com/>
 
 pkgname='away'
 pkgver=0.9.5
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Terminal locking program'
 url='https://packages.debian.org/sid/away'
 license=(GPL)
-arch=(i686 x86_64)
+arch=(x86_64)
 depends=(pam)
 
 source=(

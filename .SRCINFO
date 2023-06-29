@@ -3,7 +3,6 @@ pkgbase = away
 	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://packages.debian.org/sid/away
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = pam
@@ -17,4 +16,3 @@ pkgbase = away
 	sha256sums = d6efaf99cf53af47ce9e48eda930a15a6a0c3a233a9aaa1b443495fbe2efad87
 
 pkgname = away
-
