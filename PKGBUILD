@@ -10,7 +10,7 @@ arch=('x86_64')
 url='https://baohe.zto.com'
 license=('custom')
 provides=()
-_filename=CgRReWSBZxyAC_08BnO6gfh_sXg.AppIma
+_filename=CgRRbWSb07WATnVHBn5OkGX3MTs.AppIma
 source=(
   "https://fscdn.zto.com/fs41/M09/8A/36/CgRRbWSb07WATnVHBn5OkGX3MTs.AppIma"
 )
