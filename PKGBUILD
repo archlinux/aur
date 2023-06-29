@@ -1,31 +1,54 @@
-pkgname=gnome-maps-git
-_pkgname=gnome-maps
-pkgver=3.35.2+5+g00e18e1
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+
+_pkgname="gnome-maps"
+pkgname="${_pkgname}-git"
+pkgver=44.0+90+g4f3f61b8
 pkgrel=1
 pkgdesc="A simple GNOME 3 maps application"
 url="https://wiki.gnome.org/Apps/Maps"
-arch=(x86_64)
+arch=(
+  x86_64
+  i686
+  pentium4
+  aarch64
+  armv7h
+)
 license=(GPL)
-depends=('geocode-glib' 'geoclue2' 'gjs' 'libchamplain' 'libgee' 'folks' 'gfbgraph')
-makedepends=('gobject-introspection' 'git' 'meson' 'yelp-tools')
-provides=('gnome-maps')
-conflicts=('gnome-maps')
-groups=('gnome')
-source=("git+https://gitlab.gnome.org/GNOME/gnome-maps.git")
+depends=(
+  geoclue
+  geocode-glib-2
+  gjs
+  gtk4
+  libadwaita
+  libgweather-4
+  librest
+  libshumate
+  libxml2
+)
+makedepends=(
+  git
+  gobject-introspection
+  meson
+  yelp-tools
+)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+groups=("gnome" "gnome-git")
+source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd "${_pkgname}"
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
 prepare() {
-  cd $_pkgname
+  cd "${_pkgname}"
 }
 
 build() {
-  arch-meson $_pkgname build
-  ninja -C build
+  arch-meson "${_pkgname}" build
+  meson compile -C build
 }
 
 check() {
@@ -33,5 +56,7 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "${pkgdir}"
 }
+
+# vim:set sw=2 sts=-1 et:
