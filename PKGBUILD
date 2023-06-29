@@ -1,6 +1,6 @@
 # Maintainer: Simeon Schaub <simeondavidschaub99@gmail.com>
 pkgname=juliaup
-pkgver=1.10.0
+pkgver=1.11.12
 pkgrel=1
 pkgdesc="An experimental Julia version manager"
 arch=('x86_64' 'x86' 'aarch64')
@@ -13,11 +13,11 @@ optdepends=()
 provides=('julia')
 conflicts=('julia' 'julia-bin')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('e20475bbe2b7aa678e5d28f106bcbf90')
+md5sums=('4fa550098209bb27ce17f9778f111be2')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
-  cargo build --release
+  cargo build --release --bin juliaup --bin julialauncher --features binjulialauncher
 }
 
 package() {
