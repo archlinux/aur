@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-bin
-pkgver=v0.5.3
+pkgver=v0.5.4
 pkgrel=1
 pkgdesc="Curl impersonate scripts and executable. Libcurl is a special compilation of curl that makes it impersonate Firefox and Chrome"
 url="https://github.com/lwthiker/curl-impersonate"
@@ -17,13 +17,13 @@ source_aarch64=(
   "curl-impersonate_aarch64.tar.gz::https://github.com/lwthiker/curl-impersonate/releases/download/${pkgver}/curl-impersonate-${pkgver}.aarch64-linux-gnu.tar.gz"
 )
 
-md5sums_x86_64=('bdf72dc6135ce72df03e546466b87b3e')
-md5sums_aarch64=('d40f89d8972ff19dfb0e8f05adc828ce')
+md5sums_x86_64=('bc3fa875c62548d00f24f8a983de6508')
+md5sums_aarch64=('a715557815a0a3aa85bee207bbb8d875')
 
 package () {
   mkdir -p "${pkgdir}/usr/bin/"
   install -Dm755 curl_* "${pkgdir}/usr/bin/"
   install -Dm755 curl-impersonate-* "${pkgdir}/usr/bin/"
 }
-md5sums_x86_64=('bdf72dc6135ce72df03e546466b87b3e')
-md5sums_aarch64=('d40f89d8972ff19dfb0e8f05adc828ce')
+md5sums_x86_64=('bc3fa875c62548d00f24f8a983de6508')
+md5sums_aarch64=('a715557815a0a3aa85bee207bbb8d875')
