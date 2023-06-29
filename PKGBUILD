@@ -2,7 +2,7 @@
 pkgbase=libarcus-5
 pkgname=(libarcus5 python-arcus)
 pkgver=5.2.2
-pkgrel=0
+pkgrel=1
 url="https://github.com/Ultimaker/libArcus"
 arch=('x86_64')
 license=('LGPLv3+')
@@ -62,8 +62,8 @@ build() {
 
 package_libarcus5() {
 	pkgdesc="Communication library between internal components for Ultimaker software"
-	provides=('libarcus')
-	conflicts=('libarcus')
+	provides=('arcus' 'libarcus')
+	conflicts=('arcus' 'libarcus')
 	cd $srcdir/libArcus-${pkgver}
 	DESTDIR="${pkgdir}" cmake --install build
 	rm -r "$pkgdir"/usr/lib/python3.11

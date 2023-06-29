@@ -1,6 +1,6 @@
 pkgbase = libarcus-5
 	pkgver = 5.2.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/Ultimaker/libArcus
 	arch = x86_64
 	license = LGPLv3+
@@ -38,7 +38,9 @@ pkgbase = libarcus-5
 
 pkgname = libarcus5
 	pkgdesc = Communication library between internal components for Ultimaker software
+	provides = arcus
 	provides = libarcus
+	conflicts = arcus
 	conflicts = libarcus
 
 pkgname = python-arcus
