@@ -1,6 +1,6 @@
 pkgbase = nwg-displays
 	pkgdesc = Output management utility for sway and Hyprland Wayland compositors
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-displays
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = nwg-displays
 	provides = nwg-displays
 	conflicts = nwg-displays
 	conflicts = nwg-displays-git
-	source = nwg-displays-0.3.4.tar.gz::https://github.com/nwg-piotr/nwg-displays/archive/v0.3.4.tar.gz
-	md5sums = 12977279911f4c3968f56f32ddd147e6
+	source = nwg-displays-0.3.5.tar.gz::https://github.com/nwg-piotr/nwg-displays/archive/v0.3.5.tar.gz
+	md5sums = 07525e31264b0bca0d402fe48f84af47
 
 pkgname = nwg-displays
