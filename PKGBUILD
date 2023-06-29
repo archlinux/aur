@@ -2,7 +2,7 @@
 
 pkgname=blahaj
 _pkgname="${pkgname^^}"
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Gay sharks at your local terminal - lolcat-like CLI tool"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('crystal' 'libyaml')
 makedepends=('shards')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GeopJr/BLAHAJ/archive/v${pkgver}.tar.gz")
-sha256sums=('bc0d95aac4c4afce9f268782e44325ba3e934d9cdc29dd2e4f98a9730a0c6131')
+sha256sums=('027e2aa8cc13690a99f0a1051509b420a2afc3ff08ed3014977351e12678d496')
 
 build () {
 	cd "${_pkgname}-${pkgver}"
