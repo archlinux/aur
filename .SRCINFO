@@ -1,6 +1,6 @@
 pkgbase = tatsumato
 	pkgdesc = Tatsumoto's Pomodoro timer written in Bash
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://tatsumoto.neocities.org/blog/table-of-contents
 	arch = any
@@ -16,6 +16,6 @@ pkgbase = tatsumato
 	optdepends = curl: control Anki's review screen via AnkiConnect
 	optdepends = dmenu: for interactivity (can use 'rofi' instead)
 	source = tatsumato.sh
-	sha256sums = 7c3bf3995e48deff5a9e97f609e02fd5f87ea88987166bcf06af715a358e57df
+	sha256sums = 3e8d3ee5f0beac50f38dc805072aa8eee45eaedfbdbd38a79c235bf42f2b381e
 
 pkgname = tatsumato

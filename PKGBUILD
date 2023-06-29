@@ -1,7 +1,7 @@
 # Maintainer: Ren Tatsumoto <tatsu at autistici dot org>
 
 pkgname=tatsumato
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Tatsumoto's Pomodoro timer written in Bash"
 arch=('any')
@@ -24,7 +24,7 @@ optdepends=(
 source=(
 	"tatsumato.sh"
 )
-sha256sums=('7c3bf3995e48deff5a9e97f609e02fd5f87ea88987166bcf06af715a358e57df')
+sha256sums=('3e8d3ee5f0beac50f38dc805072aa8eee45eaedfbdbd38a79c235bf42f2b381e')
 package() {
 	install -D -m0755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
