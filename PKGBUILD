@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 
 pkgname=bee-host
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="A native messaging host application for Browser's Exernal Editor extension."
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}::https://github.com/rosmanov/bee-host/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9e505aa37d3ff8b5c0ff2f5191fc5a1d73b8dab6c52f08472899a97ef1ba039e')
+sha256sums=('e45bb1ff96a0e2899b0ed47164b36073cb03a10b6386ba8ce8126c1091dc8037')
 
 
 build() {
@@ -18,9 +18,9 @@ build() {
 	mkdir -p build_dir
 	cd build_dir
 	cmake ../	\
-	         	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-	         	-DCMAKE_INSTALL_PREFIX=/ \
-	         	-DCMAKE_INSTALL_LIBDIR:PATH=lib
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+		-DCMAKE_INSTALL_PREFIX=/ \
+		-DCMAKE_INSTALL_LIBDIR:PATH=lib
 	make
 }
 
