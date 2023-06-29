@@ -1,9 +1,10 @@
+# Mantainer: sgar < swhaat at github >
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 # Contributor: Mohammad Hossein Sekhavat <sekhavat17@gmail.com>
 
 _pkgname=streamlit
 pkgname=python-streamlit
-pkgver=1.13.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='The fastest way to build data apps in Python'
 arch=('any')
@@ -13,12 +14,12 @@ depends=(
   python-altair
   python-astor
   python-attrs
-  python-base58
   python-blinker
   python-cachetools
   python-click
   python-dateutil
   python-gitpython
+  python-importlib-metadata
   python-numpy
   python-packaging
   python-pandas
@@ -42,7 +43,7 @@ makedepends=(
 
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
 )
-sha512sums=('515a86f4380f2065fd69f0df58d511c03a7985d30ea8c569c8f0959ece4a305008b9807dbb4e6b5e2b8376af97a5ffeeabae1b4510669db21d3a83c53f1ee638')
+sha512sums=('782382b7ea67144f5d73856fb0c51921d6001c6013b6fcb1e3c1a0e97b71ca47ea9250399ebb1a91e37ae961477ebe75e77619b5b51a61014afbd1c22d50da47')
 
 build() {
   cd "${_pkgname}-${pkgver}"
