@@ -5,14 +5,14 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 _pkgname='flow'
 pkgname="$_pkgname-git"
-pkgver='0.206.0.r15989.ga83926f29'
+pkgver='0.210.1.r16210.g91277a006'
 pkgrel='1'
 pkgdesc='A static type checker for JavaScript - git version'
 # If you're running on aarch64, you have to add it to the arch array of the cppo, ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://$_pkgname.org"
 license=('MIT')
-makedepends=('git' 'ocaml>=4.14.0' 'camlp-streams' 'dune>=3.0.0' 'ocaml-base>=0.14.1' 'ocaml-core_kernel>=0.14.1' 'ocaml-dtoa>=0.3.2' 'ocaml-fileutils>=0.6.3' 'ocaml-inotify>=2.4.1' 'ocaml-lwt>=5.4.0' 'ocaml-lwt_log>=1.1.1' 'ocaml-ppx_deriving' 'ocaml-ppx_gen_rec' 'ocaml-ppx_let>=0.14.0' 'ocaml-ppxlib' 'ocaml-sedlex>=2.3' 'ocaml-visitors' 'ocaml-wtf8')
+makedepends=('git' 'ocaml>=4.14.0' 'camlp-streams' 'dune>=3.0.0' 'ocaml-base>=0.14.1' 'ocaml-core_kernel>=0.14.1' 'ocaml-dtoa>=0.3.2' 'ocaml-fileutils>=0.6.3' 'ocaml-inotify>=2.4.1' 'ocaml-lwt>=5.4.0' 'ocaml-lwt_log>=1.1.1' 'ocaml-ppx_deriving' 'ocaml-ppx_gen_rec' 'ocaml-ppx_let>=0.14.0' 'ocaml-ppxlib' 'ocaml-visitors' 'ocaml-wtf8')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
@@ -20,7 +20,7 @@ source=(
 	'add-streams-dep.diff'
 )
 sha512sums=('SKIP'
-            '0b7359e263c113bf1e411a648d8ea754872cc7eef0c171d78a3053cf236642cb55314da5c1c283607fd08c0c3583d8e2f9d9536e9ff1b1892cd3ce6d5bb5c21a')
+            'd31ccf6d3f7dcd31b421659eb46d8cbb428dd9e5ce8521b6f0d66e5d37f40498a5a9ac6e3db0428bd845f3efcebf73c63ceef07d5bcf02b96dbe10370735638c')
 
 _sourcedirectory="$pkgname"
 
