@@ -1,9 +1,9 @@
-# Maintainer: Miroslav Koškár <http://mkoskar.com/>
+# Maintainer: Miroslav Koškár <https://mkoskar.com/>
 
 _basename=libxinerama-randr
 
 pkgname=libxinerama-randr-git
-pkgver=1.1.4.r3.g55d1524
+pkgver=1.1.4.r4.g95bc09e
 pkgrel=1
 pkgdesc='Fork of libXinerama using RANDR for it to work in Zaphod mode'
 url=https://github.com/mkoskar/libxinerama-randr
