@@ -1,6 +1,6 @@
 pkgname=fetcher-rs
 _pkgname=fetcher
-pkgver=0.12.2
+pkgver=0.13.1
 pkgrel=1
 pkgdesc='Automatic news fetching and parsing'
 arch=('any')
