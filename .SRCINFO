@@ -1,7 +1,7 @@
 pkgbase = discord-canary-electron-bin
 	pkgdesc = Discord Canary (popular voice + video app) using the system provided electron for increased security and performance
 	pkgver = 0.0.161
-	pkgrel = 2
+	pkgrel = 3
 	url = https://canary.discordapp.com
 	arch = x86_64
 	license = custom
