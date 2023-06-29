@@ -1,19 +1,21 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=breeze-gtk-git
-pkgver=5.19.80.r386.84530ae
+pkgver=5.27.80.r512.cbab51e
 pkgrel=1
 pkgdesc="Breeze widget theme for GTK 2 and 3. (GIT version)"
 arch=('x86_64')
-url='https://quickgit.kde.org/?p=breeze-gtk.git'
+url='https://invent.kde.org/plasma/breeze-gtk'
 license=('LGPL')
-depends=('qt5-base')
-makedepends=('git'
-             'extra-cmake-modules'
-             'sassc'
-             'breeze'
-             'python-cairo'
-             )
+depends=('qt6-base')
+makedepends=(
+  'git'
+  'extra-cmake-modules'
+  'sassc'
+  'breeze'
+  'python-cairo'
+  'qt6-tools'
+)
 conflicts=('breeze-gtk')
 provides=('breeze-gtk')
 source=('git+https://invent.kde.org/plasma/breeze-gtk.git')
@@ -25,20 +27,16 @@ pkgver(){
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare(){
-  mkdir -p build
-}
-
 build(){
-  cd build
-  cmake ../breeze-gtk \
+  cmake -S breeze-gtk -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DBUILD_WITH_QT6=ON
 
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build
 }
