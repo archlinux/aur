@@ -8,7 +8,7 @@ pkgname=(
   lib32-libproxy
 )
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic proxy configuration management library (32-bit)"
 url="https://libproxy.github.io/libproxy/"
 arch=(x86_64)
@@ -25,8 +25,12 @@ makedepends=(
   meson
 )
 _commit=e4f467b05c8adf25e5a2d5464914fc7e92bb7990  # tags/0.5.2^0
-source=("git+https://github.com/libproxy/libproxy#commit=$_commit")
-b2sums=('SKIP')
+source=(
+  "git+https://github.com/libproxy/libproxy#commit=$_commit"
+  0001-Fix-crash-querying-URLs-without-a-host.patch
+)
+b2sums=('SKIP'
+        '32672271cce8d52c6051e51d5ccaf6186bcc26a582cd7e746e53ccc5c632c2f3019a1abfdc2c08ba9bf32a62af87ad027fce0a54b48c4abfdc8c4b7c700c7007')
 
 pkgver() {
   cd libproxy
@@ -35,6 +39,9 @@ pkgver() {
 
 prepare() {
   cd libproxy
+
+  # https://bugs.archlinux.org/task/78881
+  git apply -3 ../0001-Fix-crash-querying-URLs-without-a-host.patch
 }
 
 build() {
