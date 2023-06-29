@@ -2,19 +2,19 @@
 # Contributor: Matej Grabovsky <matej.grabovsky at gmail>
 _projectname='sedlex'
 pkgname="ocaml-$_projectname"
-pkgver='3.1'
-pkgrel='3'
+pkgver='3.2'
+pkgrel='1'
 pkgdesc='Unicode-friendly OCaml lexer generator'
 # If you're running on aarch64, you have to add it to the arch array of the ocaml-biniou, ocaml-easy-format and ocaml-yojson AUR dependencies
 arch=('x86_64' 'aarch64')
 url="https://github.com/ocaml-community/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.14.0' 'ocaml-gen' 'ocaml-ppxlib>=0.26.0')
-makedepends=('dune>=2.8.0')
+depends=('ocaml>=4.08.0' 'ocaml-gen' 'ocaml-ppxlib>=0.26.0')
+makedepends=('dune>=3.0.0')
 checkdepends=('ocaml-ppx_expect')
 options=('!strip')
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('27c7954c03a9d78f252167708afe7d91648ad3d3aa529e00c73da75bac49c2cf552cc9d27d29f1d9a04b1e2b47b7c6de9e9850c53124ad9f311d0a8f54bb9cae')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('00e257d1b97e99d49028d2e38b20a05c6aa151c362991c37c17522bf58c19e273b762ea39dd9783ed9ecc60d11dadeabb0487e16b4af91536e45e7e18c86cfe9')
 
 _sourcedirectory="$_projectname-$pkgver"
 
