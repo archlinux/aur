@@ -1,4 +1,4 @@
-# Maintainer: Miroslav Koškár <http://mkoskar.com/>
+# Maintainer: Miroslav Koškár <https://mkoskar.com/>
 
 _basename='libaosd-xinerama'
 
@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='libaosd (Atheme OSD) with Xinerama support and aosd_cat enhancements'
 url='https://github.com/mkoskar/libaosd-xinerama'
 license=(MIT)
-arch=(i686 x86_64)
+arch=(x86_64)
 depends=(libxcomposite libxinerama pango)
 provides=(libaosd)
 conflicts=(libaosd)
