@@ -2,9 +2,9 @@
 # Contributor: lsf
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
-pkgver=3.160.19
+pkgver=3.162.8
 pkgrel=1
-_electronversion=24
+_electronversion=25
 pkgdesc="An end-to-end encrypted notes app for digitalists and professionals."
 arch=('x86_64' 'aarch64')
 url="https://standardnotes.com"
@@ -14,9 +14,9 @@ makedepends=('git' 'libxcrypt-compat' 'nvm' 'python' 'yarn')
 source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@${pkgver}.tar.gz"
         "standard-notes.desktop"
         "standard-notes.sh")
-sha256sums=('38fbd5f39ce8395f55eec57b7a073c8e50484b47206563674d9f5fda2fdcdbf5'
+sha256sums=('f3cb7a25196f8bd219ad67dfa8fabe4f725f36a926d0f1ff17859675222aaa1a'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
-            'ed0d43584fe185020e316c6f4b9c0f3ae660c8ad98f5c931fc0b973a7cef21ac')
+            '340c01f232b7d4bbf3778e66666c78567bf61ef71a3db4a0d8d00d83565be1a3')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -49,7 +49,7 @@ build() {
   fi
 
   _ensure_local_nvm
-  yarn install
+  yarn install --immutable
   yarn build:desktop
 
   cd packages/desktop
