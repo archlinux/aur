@@ -1,6 +1,6 @@
 # Maintainer: Alad Wenter <alad@archlinux.org>
 pkgname=kittypack
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Query package information from archweb API"
 arch=('any')
