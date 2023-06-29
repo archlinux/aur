@@ -1,2 +1,0 @@
-#!/bin/sh
-exec /opt/nixnote2/nixnote2
