@@ -1,6 +1,6 @@
 # Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=tiddlydesktop
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 pkgdesc="TiddlyDesktop is a special purpose web browser for working with locally stored TiddlyWikis."
 url="https://github.com/Jermolene/TiddlyDesktop"
@@ -16,8 +16,8 @@ source=(https://github.com/Jermolene/TiddlyDesktop/releases/download/v${pkgver}/
         tiddlydesktop.sh
 		tiddlydesktop.desktop)
 
-sha256sums=('d5877decda12444f8d6e300bd909118134d86d084fa6929d117feb7019109e1e'
-            '7d746fc1d6040afdcf61d72d3f679479ee8fbf5336040732d84065663c9356fd'
+sha256sums=('8ce28b6f933bd34ecdf53a5771cba75f1f47c1e031f923c0478e37286e083539'
+            'cc181d057a7d9a1102373091880346205996e652d132e899dc16aaf406696c7d'
             '9f47a64b912a2ab3efc67a94559130c6d4e76a74b6a4a37c400972ef768b87e0'
             'a81adff1a65143c21a0b486ad6219ad493c75db53672bc229e08f0012c40b153')
 
