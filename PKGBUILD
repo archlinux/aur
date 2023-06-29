@@ -10,7 +10,7 @@
 
 pkgname=ros2-iron-base
 pkgver=2023.05.23
-pkgrel=1
+pkgrel=2
 _rosdist="Iron Irwini"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}
@@ -30,14 +30,15 @@ depends=(
     'python'
     'python-colcon-common-extensions'
     'python-lark-parser'
+    'python-netifaces'
     'python-numpy'
     'python-yaml'
     'tinyxml2'
 )
 makedepends=(
+  'procps-ng'  # For 'free'
   'python-rosinstall_generator'
   'python-vcstool'
-  'procps-ng'  # For 'free'
 )
 source=(
     "ros2::git+https://github.com/ros2/ros2.git#tag=release-${_rosdist_short}-${pkgver//.}"
