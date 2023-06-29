@@ -4,7 +4,7 @@
 
 pkgname=mosh
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Mobile shell, surviving disconnects with local echo and line editing'
 arch=(x86_64)
 url='https://mosh.org/'
@@ -14,6 +14,12 @@ makedepends=(git)
 options=(!emptydirs)
 source=("git+https://github.com/mobile-shell/mosh#tag=$pkgname-$pkgver")
 b2sums=('SKIP')
+
+prepare() {
+  cd $pkgname
+  # protobuf 23 requires C++17
+  sed -e 's|\[11\]|\[17\]|' -i configure.ac
+}
 
 build() {
   cd $pkgname
