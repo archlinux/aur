@@ -1,6 +1,6 @@
 pkgbase = dlib
 	pkgdesc = A general purpose cross-platform C++ library designed using contract programming and modern C++ techniques
-	pkgver = 19.24
+	pkgver = 19.24.2
 	pkgrel = 1
 	url = http://dlib.net
 	arch = x86_64
@@ -13,10 +13,11 @@ pkgbase = dlib
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = libx11
+	optdepends = ffmpeg: for FFmpeg support
 	optdepends = giflib: for GIF support
 	optdepends = libwebp: for WebP support
 	optdepends = sqlite: for sqlite support
-	source = https://codeload.github.com/davisking/dlib/tar.gz/refs/tags/v19.24
-	sha256sums = 3cc42e84c7b1bb926c6451a21ad1595f56c5b10be3a1d7aa2f3c716a25b7ae39
+	source = https://codeload.github.com/davisking/dlib/tar.gz/refs/tags/v19.24.2
+	sha256sums = 0f5c7e3de6316a513635052c5f0a16a84e1cef26a7d233bf00c21348462b6d6f
 
 pkgname = dlib
