@@ -2,7 +2,7 @@
 pkgbase=libarcus-5
 pkgname=(libarcus5 python-arcus)
 pkgver=5.2.2
-pkgrel=1
+pkgrel=2
 url="https://github.com/Ultimaker/libArcus"
 arch=('x86_64')
 license=('LGPLv3+')
