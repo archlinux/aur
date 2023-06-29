@@ -1,6 +1,6 @@
 pkgbase = tcolors-git
 	pkgdesc = Get & Set terminal ANSI colors
-	pkgver = r10.c76f999
+	pkgver = r11.fed0e89
 	pkgrel = 1
 	url = https://github.com/mkoskar/tcolors
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = tcolors-git
 	sha256sums = SKIP
 
 pkgname = tcolors-git
-

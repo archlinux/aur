@@ -1,9 +1,9 @@
-# Maintainer: Miroslav Koškár <http://mkoskar.com/>
+# Maintainer: Miroslav Koškár <https://mkoskar.com/>
 
 _basename='tcolors'
 
 pkgname='tcolors-git'
-pkgver=r10.c76f999
+pkgver=r11.fed0e89
 pkgrel=1
 pkgdesc='Get & Set terminal ANSI colors'
 url='https://github.com/mkoskar/tcolors'
