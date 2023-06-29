@@ -1,14 +1,14 @@
 pkgbase = belcard
 	pkgdesc = A library for working with vCards
-	pkgver = 5.2.54
+	pkgver = 5.2.73
 	pkgrel = 1
 	url = http://www.linphone.org/
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	depends = belr>=5.2.54
+	depends = belr>=5.2.73
 	depends = gcc-libs
-	source = belcard-5.2.54.tar.gz::https://github.com/BelledonneCommunications/belcard/archive/5.2.54.tar.gz
-	sha256sums = 2e4774d34e6591fcecc6d8b4bcd534446e86ce2849a9ab5be26f3053dee5e092
+	source = belcard-5.2.73.tar.gz::https://github.com/BelledonneCommunications/belcard/archive/5.2.73.tar.gz
+	sha256sums = 3cea0f7168d62061b75dd2e6d187b053df596493003a960d896f2880b6c0d697
 
 pkgname = belcard
