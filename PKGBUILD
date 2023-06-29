@@ -1,7 +1,7 @@
 # Maintainer: Yuri dos Santos <yrds96@protonmail.com>
 
 pkgname=cppaper
-pkgver=0.14.1
+pkgver=0.17.3
 pkgrel=1
 makedepends=('meson' 'gcc')
 pkgdesc="A Static Site/Blog Generator written in c++"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=('cppaper')
 changelog=
 source=("https://github.com/Yrds/cppaper/archive/refs/tags/$pkgver.tar.gz")
-b2sums=("c926adfad1002537ae8681e9fc7e11df777ff6583c6a6646eb578c2809b60f2689a7d66f614e6b1baecde29c87ee7102a9568762fb975080c53715c5cbb10dac")
+b2sums=("3fdf69289929fd1f1228fca917a4a3a0912add2519165c8c0e4e18bc9adc7fccf2b7ce76879f25713656bee95df18933be5f187bba3dcd358f16dfbc6a8ab9e6")
 validpgpkeys=()
 
 build() {
