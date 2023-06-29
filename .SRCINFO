@@ -1,6 +1,6 @@
 pkgbase = gedit-git
 	pkgdesc = GNOME Text Editor
-	pkgver = 3.37.1.r60.g3385da8ee
+	pkgver = 45.0.r1.g8b240c60a
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Gedit
 	arch = i686
@@ -8,20 +8,22 @@ pkgbase = gedit-git
 	arch = armv7h
 	arch = aarch64
 	groups = gnome
+	groups = gnome-git
 	license = GPL
-	makedepends = yelp-tools
-	makedepends = vala
-	makedepends = gobject-introspection
 	makedepends = git
+	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	makedepends = meson
-	depends = gtksourceview4
-	depends = gsettings-desktop-schemas
-	depends = libpeas
-	depends = gspell
-	depends = python-gobject
+	makedepends = vala
+	makedepends = yelp-tools
 	depends = dconf
-	depends = tepl>5.0.0
+	depends = gsettings-desktop-schemas
+	depends = gspell
+	depends = gtksourceview4
+	depends = libgedit-gtksourceview
+	depends = libpeas
+	depends = python-gobject
+	depends = tepl-git>=6
 	optdepends = gedit-plugins: Additional features
 	provides = gedit
 	conflicts = gedit
@@ -31,4 +33,3 @@ pkgbase = gedit-git
 	sha256sums = SKIP
 
 pkgname = gedit-git
-
