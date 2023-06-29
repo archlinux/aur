@@ -1,6 +1,6 @@
 pkgbase = quba-appimage
 	pkgdesc = A viewer for electronic invoices
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/ZUGFeRD/quba-viewer
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = quba-appimage
 	depends = glibc
 	conflicts = quba
 	options = !strip
-	source = quba-1.2.1.AppImage::https://github.com/ZUGFeRD/quba-viewer/releases/download/v1.2.1/Quba-1.2.1.AppImage
-	sha256sums = e32fda4c8967538647a6f546e3ccee3f437ce8cf75bb7793dc7349fe90dcbf97
+	source = quba-1.3.0.AppImage::https://github.com/ZUGFeRD/quba-viewer/releases/download/v1.3.0/Quba-1.3.0.AppImage
+	sha256sums = 8aa8bda9dbb18f991ce112c352b5c9d5bf251d81fd1c2a73447c4dd034560f32
 
 pkgname = quba-appimage
