@@ -1,47 +1,66 @@
-# Maintainer:  Håvard Pettersson <mail@haavard.me>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
-# Contributor: Thayer Williams <thayer@archlinux.org>
-# Contributor: Jeff 'codemac' Mickey <jeff@archlinux.org>
+# Maintainer: éclairevoyant
+# Contributor: éclairevoyant
+# Contributor: Håvard Pettersson <mail at haavard dot me>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: T dot J dot  Townsend <blakkheim at archlinux dot org>
+# Contributor: Sergej Pupykin <pupykin dot s+arch at gmail dot com>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski at archlinux dot org>
+# Contributor: Thorsten Töpper <atsutane-tu at freethoughts dot de>
+# Contributor: Thayer Williams <thayer at archlinux dot org>
+# Contributor: Jeff 'codemac' Mickey <jeff at archlinux dot org>
 
 _pkgname=dmenu
-pkgname=$_pkgname-git
-pkgver=4.6.2.gbf3deb6
+pkgname="$_pkgname-git"
+pkgver=5.2.r6.0fe460d
 pkgrel=1
-pkgdesc="A generic menu for X"
-url="http://tools.suckless.org/dmenu/"
-arch=('i686' 'x86_64')
-license=('MIT')
-depends=('sh' 'libxinerama' 'libxft')
-makedepends=('git')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=(git://git.suckless.org/$_pkgname)
-sha256sums=('SKIP')
+pkgdesc="Generic menu for X"
+arch=(i686 x86_64)
+url="https://tools.suckless.org/dmenu/"
+license=(MIT)
+depends=(
+	coreutils
+	fontconfig
+	freetype2
+	glibc
+	libfontconfig.so
+	libx11
+	libxft
+	libxinerama
+	sh
+)
+makedepends=(git)
+provides=("$_pkgname=${pkgver%%.r*}")
+conflicts=("$_pkgname")
+source=("git+https://git.suckless.org/$_pkgname")
+b2sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --tags --long | sed 's/-/./g'
+	git -C $_pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd $_pkgname
-  # to use a custom config.h, place it in the package directory
-  if [[ -f ${SRCDEST}/config.h ]]; then
-      cp "${SRCDEST}/config.h" .
-  fi
+	cd $_pkgname
+	# to use a custom config.h, place it in the package directory
+	if [[ -f ${SRCDEST}/config.h ]]; then
+		cp "${SRCDEST}/config.h" .
+	fi
+
+	cat >> config.mk <<eof
+CPPFLAGS+=${CPPFLAGS}
+CFLAGS+=${CFLAGS}
+LDFLAGS+=${LDFLAGS}
+eof
 }
 
 build(){
-  cd $_pkgname
-  make \
-    X11INC=/usr/include/X11 \
-    X11LIB=/usr/lib/X11
+	make -C $_pkgname \
+		11INC=/usr/include/X11 \
+		X11LIB=/usr/lib/X11 \
+		FREETYPEINC=/usr/include/freetype2
 }
 
 package() {
-  cd $_pkgname
-  make PREFIX=/usr DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	cd $_pkgname
+	make PREFIX=/usr DESTDIR="$pkgdir" install
+	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
 }
