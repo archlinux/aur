@@ -1,4 +1,5 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: SanskritFritz (gmail)
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Diogo Leal <estranho@diogoleal.com>
 
 pkgname=boswars
