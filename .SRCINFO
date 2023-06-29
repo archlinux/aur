@@ -1,7 +1,7 @@
 pkgbase = texpresso-git
 	pkgdesc = Live rendering and error reporting for LaTeX
 	pkgver = r34.eae4844
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/let-def/texpresso
 	arch = x86_64
 	license = MIT
