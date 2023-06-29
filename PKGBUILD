@@ -3,7 +3,7 @@
 # Contributor: Ivelin Velkov <ivelin dot velkov at gmail dot com>
 
 pkgname=teams-for-linux-git
-pkgver=1.0.26.r0.geacbbfc
+pkgver=1.1.8.r0.g23897f7
 pkgrel=1
 pkgdesc="Unofficial Microsoft Teams client for Linux using system electron (develop branch)."
 arch=("aarch64" "armv7h" "i686" "x86_64")
@@ -31,7 +31,13 @@ pkgver() {
 
 _electronDist=/usr/lib/electron
 _electronVerFun() {
-    tail /usr/lib/electron/version
+  _completeVer="$(tail /usr/lib/electron/version)"
+  while ! curl -sf https://github.com/electron/electron/releases/download/v$_completeVer/electron-v$_completeVer-linux-x64.zip; do
+    _baseVer="${_completeVer%.*}"
+    _suffix="$((${_completeVer#*.*.} - 1))"
+    _completeVer="${_baseVer}.${_suffix}"
+  done
+  echo "$_completeVer"
 }
 
 prepare() {
