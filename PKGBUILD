@@ -4,8 +4,8 @@ _name=swow
 _upstream=swow/swow
 pkgbase=php-swow
 pkgname=('php-swow' 'php-legacy-swow')
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.3.1
+pkgrel=0
 pkgdesc="Swow coroutine IO extension for PHP"
 arch=('x86_64' 'arm64')
 url="https://github.com/swow/swow"
@@ -13,7 +13,7 @@ license=('APACHE')
 makedepends=('php' 'php-legacy')
 depends=('glibc')
 source=("$_name-$pkgver.tar.gz::https://github.com/${_upstream}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('eb39340483472c4c1adfd15742d4a2600ec44035fe339cd6b8dda3662c4a1d732dc43ec1f3d8dbd978aa1791e2668af515bc4a7286fb32879df9221dfa21e511')
+sha512sums=('1134439609b5252befed00b5904fb1bf502b495f278ad6d011eaa9ab971fcec8128ee8c947ee6dfc187850db8e5a902e8cf4372e8233b74ebaed1dca12684ef7')
 
 prepare() {
     mv -v "${_name}-${pkgver}" "$pkgbase-$pkgver"
