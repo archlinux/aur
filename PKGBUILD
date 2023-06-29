@@ -3,7 +3,7 @@
 
 pkgname=nvidia-container-toolkit
 
-pkgver=1.13.2
+pkgver=1.13.3
 pkgrel=1
 
 pkgdesc='NVIDIA container runtime toolkit'
@@ -20,7 +20,7 @@ options=(!lto)
 backup=('etc/nvidia-container-runtime/config.toml')
 
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('cf5acb95ddce98ace727e806f52ad3d89f211f4d0b00131d9ab8cbdd0ee04e0a')
+sha256sums=('6f9199bf4a9b1bec17cb6a452e0771f7dc3bbf32234491eddfb7796130eac52a')
 
 _srcdir="nvidia-container-toolkit-${pkgver}"
 
