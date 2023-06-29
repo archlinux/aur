@@ -18,6 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 readonly lock_timeout=10s
+readonly lock_color=111111
 
 while getopts 'a p H v h s i d    t: b: l: L: k:' flag; do
 	case $flag in
@@ -102,7 +103,7 @@ play_bell() {
 notify() {
 	assert_installed notify-send
 	$verbose && echo "$@"
-	notify-send "Pomodoro" "$@" >/dev/null 2>&1 &
+	notify-send "Pomodoro" "$*" >/dev/null 2>&1 &
 	$silent || play_bell
 }
 
@@ -158,7 +159,7 @@ lock_screen() {
 	assert_installed i3lock
 	(
 		sleep "$lock_timeout"
-		i3lock --color=111111
+		i3lock --color="$lock_color"
 	) &
 }
 
@@ -187,7 +188,7 @@ dmenu_nagscreen() {
 	case $(dmenu_report) in
 	*start*) return ;;
 	*exit) exit ;;
-	*) echo "Invalid command" && exit 1 ;;
+	*) echo "Invalid command or no command provided." && exit 1 ;;
 	esac
 }
 
@@ -201,6 +202,7 @@ main() {
 		do_pomodoro "$time" "$mode"
 
 		if [[ ${mode,,} == "pomodoro" ]]; then
+			# after pomodoro
 			pomcount=$((pomcount + 1)) endcount=$((endcount + 1))
 			if [[ $endtime -gt 0 ]] && [[ $endcount -ge $endtime ]]; then
 				echo "Finished."
@@ -216,6 +218,7 @@ main() {
 			$use_i3lock && lock_screen
 			$control_anki && close_review_window
 		else
+			# after break
 			mode="Pomodoro" time=$pomtime
 			$use_i3lock && unlock_screen
 			$control_player && pause_player
