@@ -1,0 +1,123 @@
+diff -up libSavitar-5.2.2/include/Savitar/Face.h.export libSavitar-5.2.2/include/Savitar/Face.h
+--- libSavitar-5.2.2/include/Savitar/Face.h.export	2022-12-30 05:56:38.000000000 -0500
++++ libSavitar-5.2.2/include/Savitar/Face.h	2023-03-09 10:02:47.418615400 -0500
+@@ -4,9 +4,11 @@
+ #ifndef FACE_H
+ #define FACE_H
+ 
++#include "SavitarExport.h"
++
+ namespace Savitar
+ {
+-class Face
++class SAVITAR_EXPORT Face
+ {
+ public:
+     /**
+diff -up libSavitar-5.2.2/include/Savitar/MeshData.h.export libSavitar-5.2.2/include/Savitar/MeshData.h
+--- libSavitar-5.2.2/include/Savitar/MeshData.h.export	2022-12-30 05:56:38.000000000 -0500
++++ libSavitar-5.2.2/include/Savitar/MeshData.h	2023-03-09 10:02:47.418615400 -0500
+@@ -14,9 +14,11 @@
+ 
+ #include <pugixml.hpp>
+ 
++#include "SavitarExport.h"
++
+ namespace Savitar
+ {
+-class MeshData
++class SAVITAR_EXPORT MeshData
+ {
+ public:
+     /**
+diff -up libSavitar-5.2.2/include/Savitar/Namespace.h.export libSavitar-5.2.2/include/Savitar/Namespace.h
+--- libSavitar-5.2.2/include/Savitar/Namespace.h.export	2022-12-30 05:56:38.000000000 -0500
++++ libSavitar-5.2.2/include/Savitar/Namespace.h	2023-03-09 10:03:16.981007419 -0500
+@@ -10,6 +10,8 @@
+ 
+ #include <pugixml.hpp>
+ 
++#include "SavitarExport.h"
++
+ namespace xml_namespace
+ {
+ using xmlns_map_t = std::map<std::string, std::set<std::string>>;
+@@ -17,8 +19,8 @@ using xmlns_map_t = std::map<std::string
+ [[nodiscard]] std::string getCuraUri();
+ [[nodiscard]] std::string getDefaultUri();
+ 
+-[[nodiscard]] xmlns_map_t getAncestralNamespaces(const pugi::xml_node& xml_node);
+-[[nodiscard]] std::set<std::string> getNamesFor(const xmlns_map_t& map, const std::string& uri);
++[[nodiscard]] xmlns_map_t SAVITAR_EXPORT getAncestralNamespaces(const pugi::xml_node& xml_node);
++[[nodiscard]] std::set<std::string> SAVITAR_EXPORT getNamesFor(const xmlns_map_t& map, const std::string& uri);
+ } // namespace xml_namespace
+ 
+-#endif
+\ No newline at end of file
++#endif
+diff -up libSavitar-5.2.2/include/Savitar/Scene.h.export libSavitar-5.2.2/include/Savitar/Scene.h
+--- libSavitar-5.2.2/include/Savitar/Scene.h.export	2022-12-30 05:56:38.000000000 -0500
++++ libSavitar-5.2.2/include/Savitar/Scene.h	2023-03-09 10:02:47.418615400 -0500
+@@ -12,9 +12,11 @@
+ 
+ #include <pugixml.hpp>
+ 
++#include "SavitarExport.h"
++
+ namespace Savitar
+ {
+-class Scene
++class SAVITAR_EXPORT Scene
+ {
+ public:
+     /**
+diff -up libSavitar-5.2.2/include/Savitar/SceneNode.h.export libSavitar-5.2.2/include/Savitar/SceneNode.h
+--- libSavitar-5.2.2/include/Savitar/SceneNode.h.export	2022-12-30 05:56:38.000000000 -0500
++++ libSavitar-5.2.2/include/Savitar/SceneNode.h	2023-03-09 10:02:47.418615400 -0500
+@@ -13,9 +13,11 @@
+ 
+ #include <pugixml.hpp>
+ 
++#include "SavitarExport.h"
++
+ namespace Savitar
+ {
+-class SceneNode
++class SAVITAR_EXPORT SceneNode
+ {
+ public:
+     SceneNode() = default;
+diff -up libSavitar-5.2.2/include/Savitar/ThreeMFParser.h.export libSavitar-5.2.2/include/Savitar/ThreeMFParser.h
+--- libSavitar-5.2.2/include/Savitar/ThreeMFParser.h.export	2022-12-30 05:56:38.000000000 -0500
++++ libSavitar-5.2.2/include/Savitar/ThreeMFParser.h	2023-03-09 10:02:47.418615400 -0500
+@@ -8,11 +8,13 @@
+ #include <pugixml.hpp>
+ 
+ #include <string>
++
++#include "SavitarExport.h"
+ namespace Savitar
+ {
+ class Scene;
+ 
+-class ThreeMFParser
++class SAVITAR_EXPORT ThreeMFParser
+ {
+ public:
+     ThreeMFParser();
+diff -up libSavitar-5.2.2/include/Savitar/Vertex.h.export libSavitar-5.2.2/include/Savitar/Vertex.h
+--- libSavitar-5.2.2/include/Savitar/Vertex.h.export	2022-12-30 05:56:38.000000000 -0500
++++ libSavitar-5.2.2/include/Savitar/Vertex.h	2023-03-09 10:02:47.418615400 -0500
+@@ -4,9 +4,11 @@
+ #ifndef VERTEX_H
+ #define VERTEX_H
+ 
++#include "SavitarExport.h"
++
+ namespace Savitar
+ {
+-class Vertex
++class SAVITAR_EXPORT Vertex
+ {
+ public:
+     /**
