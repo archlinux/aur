@@ -2,7 +2,7 @@
 
 pkgname=libnbd
 pkgver=1.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="NBD client library in userspace"
 arch=('x86_64')
 url="https://gitlab.com/nbdkit/libnbd"
@@ -15,12 +15,6 @@ source=(
 		"http://download.libguestfs.org/libnbd/${_dldir}-stable/libnbd-${pkgver}.tar.gz"
 		"http://download.libguestfs.org/libnbd/${_dldir}-stable/libnbd-${pkgver}.tar.gz.sig"
 )
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  patch -p1 < "${srcdir}/0001-ocaml-allow-callbacks-to-be-run-outside-of-block.patch"
-}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
