@@ -1,16 +1,16 @@
 pkgbase = invoiceninja-desktop
 	pkgdesc = Desktop version for Invoice Ninja
-	pkgver = 5.0.100
+	pkgver = 5.0.121
 	pkgrel = 1
 	url = https://github.com/invoiceninja/admin-portal
 	arch = i686
 	arch = x86_64
 	license = unknown
-	makedepends = flutter
+	makedepends = fvm-bin
 	provides = invoiceninja-desktop
-	source = https://github.com/invoiceninja/admin-portal/archive/refs/tags/v5.0.100.tar.gz
+	source = https://github.com/invoiceninja/admin-portal/archive/refs/tags/v5.0.121.tar.gz
 	source = invoiceninja-desktop.desktop
-	sha256sums = cb1c92b63c528471d7804d3a2fc1bb2590ba184b35841ac21fc4e40d5632b9c2
+	sha256sums = 1059e354cb5bd08ed273a953c9fb3f9b3fa90535780726b44a358f4ae487a63f
 	sha256sums = beb5d95b727169634e0ee42bf4d4f556ac1fa2d2f73a9d9a61c29820c13dc1c6
 
 pkgname = invoiceninja-desktop
