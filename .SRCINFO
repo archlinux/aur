@@ -20,7 +20,7 @@ pkgname = p11-kit-git
 	depends = coreutils
 	depends = libp11-kit.so
 	depends = libsystemd.so
-	provides = p11-kit
+	provides = p11-kit=0.25.0+1+g76be1cf
 	conflicts = p11-kit
 
 pkgname = libp11-kit-git
@@ -28,6 +28,6 @@ pkgname = libp11-kit-git
 	depends = glibc
 	depends = libtasn1
 	depends = libffi
-	provides = libp11-kit.so
+	provides = libp11-kit.so=0.25.0+1+g76be1cf
 	provides = libp11-kit
 	conflicts = libp11-kit

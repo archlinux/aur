@@ -67,7 +67,7 @@ package_p11-kit-git() {
            "lib${_pkgbase}.so"
            libsystemd.so)
   conflicts=("${_pkgbase}")
-  provides=("${_pkgbase}")
+  provides=("${_pkgbase}=${pkgver}")
   install="${_pkgbase}.install"
 
   meson install -C build --destdir "${pkgdir}"
@@ -88,7 +88,7 @@ package_libp11-kit-git() {
   pkgdesc+=" (library)"
   depends=(glibc libtasn1 libffi)
   conflicts=("lib${_pkgbase}")
-  provides=("lib${_pkgbase}.so"
+  provides=("lib${_pkgbase}.so=${pkgver}"
             "lib${_pkgbase}")
 
   mv lib/* "${pkgdir}"
