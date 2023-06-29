@@ -1,17 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="sengi-bin"
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.6.3
+pkgrel=1
 pkgdesc="Mastodon & Pleroma Multi-account Desktop Client"
 arch=('x86_64')
 url="https://github.com/NicolasConstant/sengi"
+_downurl="https://github.com/NicolasConstant/sengi-electron"
 license=('AGPL3')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
-depends=('nss' 'at-spi2-core' 'alsa-lib' 'gtk3' 'libxtst' 'libxrender' 'nspr' 'mesa' 'libxcursor' \
-    'pango' 'gcc-libs' 'libxext' 'hicolor-icon-theme' 'libxrandr' 'libxcomposite' 'libxfixes' 'libxcb' \
-    'libcups' 'gdk-pixbuf2' 'expat' 'glib2' 'libxdamage' 'libx11' 'glibc' 'libdrm' 'libxi' 'dbus' 'cairo')
-source=("${pkgname%-bin}${pkgver}.deb::${url}/releases/download/${pkgver}/Sengi-${pkgver}-linux.deb")
-sha256sums=('47ed30e21f70cf199f6ef433f7fb3a620ba7c27b920cb7c7fa0c74db19829062')
+depends=('nss' 'at-spi2-core' 'alsa-lib' 'gtk3' 'nspr' 'mesa' 'libxkbcommon' 'pango' 'gcc-libs' 'libxext' 'libdrm' 'dbus' 'cairo' \
+    'hicolor-icon-theme' 'libxrandr' 'libxcomposite' 'libxfixes' 'libxcb' 'libcups' 'expat' 'glib2' 'libxdamage' 'libx11' 'glibc')
+source=("${pkgname%-bin}${pkgver}.deb::${_downurl}/releases/download/v${pkgver}/Sengi-${pkgver}-linux.deb")
+sha256sums=('d1f0244ec5e9d46a1c859c0f0372f4fd505de9a7454b98d48854064b757f513c')
 package() {
-    bsdtar -xvf data.tar.xz -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 }
