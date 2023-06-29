@@ -6,7 +6,7 @@
 
 pkgname=amarok
 pkgver=2.9.71
-pkgrel=2
+pkgrel=3
 pkgdesc="The powerful music player for KDE"
 arch=("x86_64")
 url="http://${pkgname}.kde.org/"
@@ -19,15 +19,20 @@ optdepends=(
 )
 source=(
   "https://download.kde.org/unstable/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz"
+  "desktop_remove_busactivatable.patch"
   "ffmpeg5_cmakelist_configure.patch::https://invent.kde.org/multimedia/amarok/-/merge_requests/45.diff"
 )
 sha256sums=(
   "6a404829d336f69415fb6bb4ea1d5566759fb95e3e84f904ee9ef82a7be4e84f"
+  "92083012e10b0fae50f0caa2ef198f085f97d5856796fc9ef36d699b555353ed"
   "77a1f8cbc7f786e5616fbb5922dcf193614dbdf2a1d3fa2b2196c3fdb2f0387b"
 )
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Patching to remove DBusActivatable=true to make shortcut works as expected
+  patch -Np1 -i "${srcdir}/desktop_remove_busactivatable.patch"
 
   # Patching to fix FFMPEG5 and CMakeLists bug with config.h definition position https://invent.kde.org/multimedia/amarok/-/merge_requests/45
   patch -Np1 -i "${srcdir}/ffmpeg5_cmakelist_configure.patch"
