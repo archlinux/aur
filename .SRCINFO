@@ -8,7 +8,6 @@ pkgbase = bilibili-electron-bin
         makedepends = asar
         depends = electron
         depends = ffmpeg
-        optdepends = electron17: Only if you would like to install Electron 17.
         provides = bilibili-electron
         conflicts = bilibili-bin
         source = bilibili-electron.desktop

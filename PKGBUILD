@@ -13,7 +13,6 @@ url="https://github.com/msojocs/bilibili-linux"
 provides=(${_pkgname})
 conflicts=("bilibili-bin")
 depends=("electron" "ffmpeg")
-optdepends=("electron17: Only if you would like to install Electron 17.")
 makedepends=("asar")
 source_x86_64=("${pkgname}-${pkgver}-x86_64-linux.tar.gz::${url}/releases/download/continuous/bilibili-continuous-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64-linux.tar.gz::${url}/releases/download/continuous/bilibili-continuous-arm64.tar.gz")
