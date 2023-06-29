@@ -1,18 +1,21 @@
 pkgbase = r-timechange
 	pkgdesc = Efficient Manipulation of Date-Times
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=timechange
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	checkdepends = r-testthat
 	makedepends = r-cpp11
 	depends = cctz
 	depends = r
-	optdepends = r-testthat
 	optdepends = r-knitr
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/timechange_0.2.0.tar.gz
+	source = system-cctz.patch
+	md5sums = 9e8dea7a23e233cccec70f7838381582
+	md5sums = a573af9ccae2bad5627178a50de35e5b
 	sha256sums = 3d602008052123daef94a5c3f5154c5461b4ec0432ab70c37273d7ddd252f7f1
+	sha256sums = 77d128c19ede66d6f0a27d3751c15da2ac322bdf2ca0914d047ac36396156001
 
 pkgname = r-timechange
