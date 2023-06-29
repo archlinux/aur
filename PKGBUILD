@@ -1,22 +1,22 @@
 # Maintainer: Bikash Thapa Magar <thpsbikash@gmail.com>
 # Contributor: Beej Jorgensen <beej@beej.us>
 pkgname=jhelioviewer
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="Visualization software for solar image data"
 arch=('x86_64')
-url="http://www.jhelioviewer.org/"
+url="https://www.jhelioviewer.org/"
 license=('MPL')
 depends=('java-runtime')
 makedepends=()
 noextract=()
 source=("$pkgname"
   "${pkgname}.desktop"
-  'http://swhv.oma.be/download/JHelioviewer_4_5_0_amd64.rpm'
+  'http://swhv.oma.be/download/JHelioviewer_4_5_1_x86_64.rpm'
 )
 md5sums=('173482ed34e21169a138e92de47656c6'
          '4cdedcd67c7371762d4ad17b7ce91a32'
-         'e6d33cfb350fd575adee7f1bc5511fd5')
+         '540286169ef4b5f0c73707419ab8cb01')
 
 package() {
   # install files
