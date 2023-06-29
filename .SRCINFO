@@ -1,0 +1,14 @@
+pkgbase = zrok
+	pkgdesc = An open source sharing solution built on OpenZiti
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/openziti/zrok
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	provides = zrok
+	conflicts = zrok
+	source_x86_64 = zrok-0.4.1.tar.gz::https://github.com/openziti/zrok/releases/download/v0.4.1/zrok_0.4.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = af1676d4da36e246601bc808b6a3e741eec8d0e4fb9e90c307266b2d8ea5b490
+
+pkgname = zrok
