@@ -4,7 +4,7 @@
 pkgname=avogadro2
 _pkgname=avogadroapp
 pkgver=1.97.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced molecular editor. https://doi.org/10.1186/1758-2946-4-17"
 arch=('x86_64')
 url="https://two.avogadro.cc"
@@ -26,7 +26,7 @@ build() {
       -DCMAKE_INSTALL_LIBDIR=lib \
       -DBUILD_SHARED_LIBS=ON \
       -DENABLE_TESTING=OFF \
-      -DUSE_VTK=OFF \
+      -DUSE_VTK=ON \
       "${srcdir}/${_pkgname}-$pkgver"
   make
 }
