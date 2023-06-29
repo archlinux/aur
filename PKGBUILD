@@ -54,6 +54,7 @@ pkgrel=1
 major=6.4
 commit=1b45fa8cd58990bf455b429c598b6d4bad155172
 arch=(x86_64)
+pkgdesc='The Linux kernel and modules with Alfred Chen PDS/BMQ CPU scheduler with Arch and other improvement patches - BMQ enabled'
 url='https://www.kernel.org/'
 license=(GPL2)
 makedepends=(bc cpio gettext git libelf pahole perl tar xz kmod xmlto)
