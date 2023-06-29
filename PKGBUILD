@@ -29,5 +29,5 @@ prepare() {
 
 package() {
   cd $pkgname
-  sudo make install
+  sudo make DESTDIR="$pkgdir" install
 }
