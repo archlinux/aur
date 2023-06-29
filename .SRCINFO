@@ -1,6 +1,6 @@
 pkgbase = python-asyncssh
 	pkgdesc = Asynchronous SSHv2 client and server library
-	pkgver = 2.13.1
+	pkgver = 2.13.2
 	pkgrel = 1
 	url = http://asyncssh.readthedocs.org/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-asyncssh
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/asyncssh/asyncssh-2.13.1.tar.gz
-	sha256sums = ebbb83c05c0b45cf230de1ef2f06059e360f9afa5c3ddf60fc92faf7b94ff887
+	source = https://files.pythonhosted.org/packages/source/a/asyncssh/asyncssh-2.13.2.tar.gz
+	sha256sums = 991e531c4bb7dbec62b754878d96a3246338aac11a28ce3c3e99018fb2f5828c
 
 pkgname = python-asyncssh
