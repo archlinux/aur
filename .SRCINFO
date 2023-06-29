@@ -1,16 +1,19 @@
 pkgbase = php-swow
 	pkgdesc = Swow coroutine IO extension for PHP
-	pkgver = 1.2.0
-	pkgrel = 3
+	pkgver = 1.3.1
+	pkgrel = 0
 	url = https://github.com/swow/swow
 	arch = x86_64
 	arch = arm64
 	license = APACHE
 	makedepends = php
 	makedepends = php-legacy
+	makedepends = postgresql-libs
 	depends = glibc
-	source = swow-1.2.0.tar.gz::https://github.com/swow/swow/archive/refs/tags/v1.2.0.tar.gz
-	sha512sums = eb39340483472c4c1adfd15742d4a2600ec44035fe339cd6b8dda3662c4a1d732dc43ec1f3d8dbd978aa1791e2668af515bc4a7286fb32879df9221dfa21e511
+	source = swow-1.3.1.tar.gz::https://github.com/swow/swow/archive/refs/tags/v1.3.1.tar.gz
+	source = pdo_pgsql_lo_lseek64.patch::https://github.com/dixyes/swow/commit/e49489a74e3a4effa8b4fb690448435843592127.patch
+	sha512sums = 1134439609b5252befed00b5904fb1bf502b495f278ad6d011eaa9ab971fcec8128ee8c947ee6dfc187850db8e5a902e8cf4372e8233b74ebaed1dca12684ef7
+	sha512sums = 02458eb29916fdab27a8ca58174b0427acf170bbff11d0b81c5c8d765c3ec4609ae28ddd2447b40a5cefc0e314462894ab9e0d9b6dc0db888e3feeef5fafb9d0
 
 pkgname = php-swow
 	depends = glibc

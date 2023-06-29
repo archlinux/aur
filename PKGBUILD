@@ -10,10 +10,14 @@ pkgdesc="Swow coroutine IO extension for PHP"
 arch=('x86_64' 'arm64')
 url="https://github.com/swow/swow"
 license=('APACHE')
-makedepends=('php' 'php-legacy')
+makedepends=('php' 'php-legacy' 'postgresql-libs')
 depends=('glibc')
-source=("$_name-$pkgver.tar.gz::https://github.com/${_upstream}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('1134439609b5252befed00b5904fb1bf502b495f278ad6d011eaa9ab971fcec8128ee8c947ee6dfc187850db8e5a902e8cf4372e8233b74ebaed1dca12684ef7')
+source=(
+    "$_name-$pkgver.tar.gz::https://github.com/${_upstream}/archive/refs/tags/v${pkgver}.tar.gz"
+    "pdo_pgsql_lo_lseek64.patch::https://github.com/dixyes/swow/commit/e49489a74e3a4effa8b4fb690448435843592127.patch"
+)
+sha512sums=('1134439609b5252befed00b5904fb1bf502b495f278ad6d011eaa9ab971fcec8128ee8c947ee6dfc187850db8e5a902e8cf4372e8233b74ebaed1dca12684ef7'
+            '02458eb29916fdab27a8ca58174b0427acf170bbff11d0b81c5c8d765c3ec4609ae28ddd2447b40a5cefc0e314462894ab9e0d9b6dc0db888e3feeef5fafb9d0')
 
 prepare() {
     mv -v "${_name}-${pkgver}" "$pkgbase-$pkgver"
@@ -23,11 +27,13 @@ prepare() {
     cp -av "$pkgbase-$pkgver" "${pkgname[1]}-$pkgver"
 
     (
+        patch --directory="$pkgbase-$pkgver" --forward --strip=1 --input="${srcdir}/pdo_pgsql_lo_lseek64.patch"
         cd "$pkgbase-$pkgver/ext"
         phpize
     )
 
     (
+        patch --directory="${pkgname[1]}-$pkgver" --forward --strip=1 --input="${srcdir}/pdo_pgsql_lo_lseek64.patch"
         cd "${pkgname[1]}-$pkgver/ext"
         phpize-legacy
     )
@@ -56,6 +62,7 @@ build() {
 check() {
     local EXTRA_PHPT_ARGS="-n --show-diff"
     (
+        /usr/bin/php -d extension=${srcdir}/${pkgbase}-${pkgver}/ext/modules/swow.so --ri swow
         export TEST_PHP_EXECUTABLE=/usr/bin/php
         local TEST_PHP_ARGS="${EXTRA_PHPT_ARGS} -d extension=${srcdir}/${pkgbase}-${pkgver}/ext/modules/swow.so"
         cd "$pkgbase-$pkgver/ext"
@@ -63,6 +70,7 @@ check() {
     )
 
     (
+        /usr/bin/php-legacy -d extension=${srcdir}/${pkgname[1]}-${pkgver}/ext/modules/swow.so --ri swow
         export TEST_PHP_EXECUTABLE=/usr/bin/php-legacy
         local TEST_PHP_ARGS="${EXTRA_PHPT_ARGS} -d extension=${srcdir}/${pkgname[1]}-${pkgver}/ext/modules/swow.so"
         cd "${pkgname[1]}-$pkgver/ext"
