@@ -1,40 +1,23 @@
-# Maintainer: Morten Linderud <morten@linderud.pw>  
-
-pkgbase="python-giturlparse"
-pkgname=("python-giturlparse" "python2-giturlparse")
-_pkgname='giturlparse.py'
-pkgver=0.0.5
-pkgrel=3
-pkgdesc='Parse & rewrite git urls (supports GitHub, Bitbucket, Assembla ...)'
-url='https://github.com/FriendCode/giturlparse.py'
+# Maintainer: Mumulhl <mumulhl@duck.com>
+pkgname='python-giturlparse'
+_module='giturlparse'
+pkgver='0.10.0'
+pkgrel=1
+pkgdesc="A Git URL parsing module (supports parsing and rewriting)"
+url="https://github.com/nephila/giturlparse"
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+license=('APACHE')
 arch=('any')
-license=('Apache')
-makedepends=('python' 'python-setuptools'
-             'python2' 'python2-setuptools')
-source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/FriendCode/giturlparse.py/archive/${pkgver}.tar.gz")
-sha256sums=('91e398db31d295ba75b25b74a80835e2e24d6bdb818201aa58169833551745ca')
-
-prepare() {
-  cp -a ${_pkgname}-$pkgver{,-py2}
-}
+source=("$_module-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('c9413cbe83397214cba449b1274f1626b68682ab0a2eeba17a86d10e9a833dee')
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py build
-
-    cd "${srcdir}/${_pkgname}-${pkgver}-py2"
-    python2 setup.py build
+    cd "$_module-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
-package_python-giturlparse() {
-    depends=('python')
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+package() {
+    cd "$_module-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-package_python2-giturlparse() {
-    depends=('python2')
-    cd "${srcdir}/${_pkgname}-${pkgver}-py2"
-    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-}
-# vim:set ft=sh ts=2 sw=2 et:
