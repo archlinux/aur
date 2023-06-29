@@ -6,7 +6,7 @@
 
 pkgname=dropbox-cli
 pkgver=2022.12.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface for Dropbox"
 arch=("any")
 url="http://www.${pkgname%-cli}.com"
@@ -18,7 +18,7 @@ source=(
   "${pkgname%-cli}d-fallback.patch"
 )
 sha256sums=(
-  "80170c4ab287e24dc131d32c237c2f44f811e33a393c32c32deae21875ad7894"
+  "74f005606ee3c52b0430773d66420e4257309fcbe6fb260cfb203eb57d46378f"
   "9ae702ebf0699ac56fbf99c577ddaf22701dfd1c9e40d6ec5ac56475c2636f48"
 )
 
