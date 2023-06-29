@@ -5,7 +5,7 @@
 
 pkgname=libopenshot
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
@@ -25,6 +25,7 @@ depends=(
 makedepends=(
   catch2
   cmake
+  cppzmq
   doxygen
   ffmpeg
   jsoncpp
@@ -39,6 +40,11 @@ provides=(libopenshot.so)
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
 sha512sums=('8891077af28a4db6bc3a7cd078ce5570a8f62e0795c13b0fff795eba60c3e977ece70247033ee4017c9785592355b7421655246a5d6807a5790bd18927739795')
 b2sums=('5bc371481ddf69b5de909963cb83d1128066280e1259ae8b23f7ef5450f3da00ef1137dcefe2978e10d1a51931529f104aebdf0601be4b066c7ed371ea43439e')
+
+prepare() {
+# protobuf 23 requiers C++17
+  sed -e 's|CMAKE_CXX_STANDARD 14|CMAKE_CXX_STANDARD 17|' -i $pkgname-$pkgver/CMakeLists.txt
+}
 
 build() {
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
