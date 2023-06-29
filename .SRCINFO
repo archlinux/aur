@@ -1,6 +1,6 @@
 pkgbase = python-svneverever
 	pkgdesc = Collects path entries across SVN history
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/hartwork/svneverever
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = python-svneverever
 	license = GPL3
 	depends = python
 	depends = python-pysvn
-	source = https://files.pythonhosted.org/packages/source/s/svneverever/svneverever-1.7.1.tar.gz
-	md5sums = f4018bbdf4e2075ca12001fb9cb6e283
+	source = https://files.pythonhosted.org/packages/source/s/svneverever/svneverever-1.7.2.tar.gz
+	md5sums = 08cafcd00bc35b47fb07ad1fa7c91172
 
 pkgname = python-svneverever
