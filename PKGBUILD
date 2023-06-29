@@ -1,7 +1,7 @@
-pkgname=xdg-utils-no-open
+pkgname=xdg-utils-custom-open
 _pkgname=xdg-utils
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks"
 arch=('any')
 url="http://www.freedesktop.org/wiki/Software/xdg-utils/"
