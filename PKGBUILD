@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=station-appimage
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="One app to rule them all!"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}")
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Station-x86_64.AppImage")
-sha256sums=('7027bec4dc8a596fb3e305c2d3b6dfd47cfc24c52215106ab6102754f684bc29')
+sha256sums=('98edbc4274b5e37fafb90a84ea0d21a73c9377811c5904fceb8f9d237041fc91')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
