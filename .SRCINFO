@@ -10,4 +10,3 @@ pkgbase = gtk3-theme-mist-git
 	sha256sums = SKIP
 
 pkgname = gtk3-theme-mist-git
-

@@ -1,4 +1,4 @@
-# Maintainer: Miroslav Koškár <http://mkoskar.com/>
+# Maintainer: Miroslav Koškár <https://mkoskar.com/>
 
 _basename='gtk-theme-mist'
 
