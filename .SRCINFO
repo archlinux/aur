@@ -1,12 +1,24 @@
 pkgbase = ffuf-bin
 	pkgdesc = Fast web fuzzer written in Go
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ffuf/ffuf
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	arch = i686
 	arch = x86_64
 	license = MIT
 	provides = ffuf
-	source = ffuf-2.0.0.tar.gz::https://github.com/ffuf/ffuf/releases/download/v2.0.0/ffuf_2.0.0_linux_amd64.tar.gz
-	sha256sums = 6055a909159970f9a23ff249f67634304f2910df4ec94b1a66381742a85c4ccf
+	source_aarch64 = ffuf-2.0.0-aarch64.tar.gz::https://github.com/ffuf/ffuf/releases/download/v2.0.0/ffuf_2.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 459c74a8b69b37503917a1fd4501fab374f043479ecf7c4ec5c0e7d537e43be1
+	source_armv6h = ffuf-2.0.0-armv6h.tar.gz::https://github.com/ffuf/ffuf/releases/download/v2.0.0/ffuf_2.0.0_linux_armv6.tar.gz
+	sha256sums_armv6h = 352dc044ed6a9ccd5c54c31efe5e57a0c8a9ca0b67caad4efd83e65a4cd18127
+	source_armv7h = ffuf-2.0.0-armv7h.tar.gz::https://github.com/ffuf/ffuf/releases/download/v2.0.0/ffuf_2.0.0_linux_arm64.tar.gz
+	sha256sums_armv7h = 459c74a8b69b37503917a1fd4501fab374f043479ecf7c4ec5c0e7d537e43be1
+	source_i686 = ffuf-2.0.0-i686.tar.gz::https://github.com/ffuf/ffuf/releases/download/v2.0.0/ffuf_2.0.0_linux_386.tar.gz
+	sha256sums_i686 = 8e1c8f142687830f7859c9dbbd86fe2210a8383206d58608c716cd063bb9b460
+	source_x86_64 = ffuf-2.0.0-x86_64.tar.gz::https://github.com/ffuf/ffuf/releases/download/v2.0.0/ffuf_2.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6055a909159970f9a23ff249f67634304f2910df4ec94b1a66381742a85c4ccf
 
 pkgname = ffuf-bin
