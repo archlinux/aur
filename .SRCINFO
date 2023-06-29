@@ -1,6 +1,6 @@
 pkgbase = taler-exchange
 	pkgdesc = Exchange implementation
-	pkgver = 0.8.5
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://taler.net/
 	arch = i686
@@ -14,10 +14,10 @@ pkgbase = taler-exchange
 	depends = postgresql
 	conflicts = taler-exchange-git
 	conflicts = taler-exchange-bin
-	source = http://ftp.gnu.org/gnu/taler/taler-exchange-0.8.5.tar.gz
-	source = http://ftp.gnu.org/gnu/taler/taler-exchange-0.8.5.tar.gz.sig
+	source = http://ftp.gnu.org/gnu/taler/taler-exchange-0.9.2.tar.gz
+	source = http://ftp.gnu.org/gnu/taler/taler-exchange-0.9.2.tar.gz.sig
 	validpgpkeys = D8423BCB326C7907033929C7939E6BE1E29FC3CC
-	sha256sums = 8de8502a40d87439045de9ff2d29f48198b8b58a7291833dd96df965b48b363e
+	sha256sums = ee20b88fc0201537b397b8c3de494a2a3bb5859131fdeb1d99573988851fcec8
 	sha256sums = SKIP
 
 pkgname = taler-exchange
