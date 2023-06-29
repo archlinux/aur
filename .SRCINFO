@@ -1,6 +1,6 @@
 pkgbase = basic-blackjack-bin
 	pkgdesc = An overly-simplified version of the Blackjack card game
-	pkgver = 0.2.6
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/devklick/basic-blackjack
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = basic-blackjack-bin
 	depends = libxfixes
 	conflicts = basic-blackjack
 	conflicts = basic-blackjack
-	source = basic-blackjack-0.2.6.deb::https://github.com/devklick/basic-blackjack/releases/download/v0.2.6/BasicBlackjack_v0.2.6.deb
-	sha256sums = ce40a68774a91ed7eb30f92b4d5500eb93f757fffad84687eb9510cc00fb0942
+	source = basic-blackjack-0.2.9.deb::https://github.com/devklick/basic-blackjack/releases/download/v0.2.9/BasicBlackjack_v0.2.9.deb
+	sha256sums = 4b29dba34569f075506d11674c706af56bf9c5342e2cb49716c9a832fba84594
 
 pkgname = basic-blackjack-bin
