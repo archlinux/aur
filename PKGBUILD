@@ -24,7 +24,7 @@ makedepends=('go')
 depends=('libseccomp' 'nvidia-container-toolkit>=1.9.0')
 options=(!lto)
 
-source=("v${pkgver}-${pkgrel}.tar.gz"::"${url}/archive/v${toolkit_ver}.tar.gz")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz"::"${url}/archive/v${toolkit_ver}.tar.gz")
 sha256sums=('cf5acb95ddce98ace727e806f52ad3d89f211f4d0b00131d9ab8cbdd0ee04e0a')
 
 _srcdir="nvidia-container-toolkit-${toolkit_ver}"
