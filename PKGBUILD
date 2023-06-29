@@ -13,7 +13,7 @@ amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 pkgname=opencl-amd
 pkgdesc="ROCr OpenCL stack, supports Vega 10 and later products - Legacy OpenCL stack (Proprietary), supports legacy products older than Vega 10 - This package is intended to work along with the free amdgpu stack."            
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -22,7 +22,7 @@ makedepends=('wget')
 depends=('libdrm' 'ocl-icd' 'gcc-libs' 'numactl')
 provides=('opencl-driver' 'rocm-core' 'hip' 'hip-dev' 'hip-doc' 'hip-samples' 'hsakmt-roct-dev' 'hsa-rocr' 'hsa-rocr-dev' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 
 	'rocm-hip-runtime' 'rocm-ocl-icd' 'rocm-opencl' 'rocm-opencl-dev' 'rocm-opencl-runtime' 'rocm-clang-ocl' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb' 'rocprofiler' 'rocprofiler-dev' 'roctracer' 'roctracer-dev' 'hsa-amd-aqlprofile' 'openmp-extras-runtime' 'rocm-cmake' 'rocm-utils' 'rocm-smi-lib')
-conflicts=('rocm-opencl-runtime' 'rocm-core' 'hip' 'hip-dev' 'hip-doc' 'hip-samples' 'hsakmt-roct-dev' 'hsa-rocr' 'hsa-rocr-dev' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 
+conflicts=('rocm-opencl-runtime' 'rocm-core' 'hip' 'hipcc' 'hip-dev' 'hip-doc' 'hip-samples' 'hsakmt-roct-dev' 'hsa-rocr' 'hsa-rocr-dev' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 
 	'rocm-hip-runtime' 'rocm-ocl-icd' 'rocm-opencl' 'rocm-opencl-dev' 'rocm-opencl-runtime' 'rocm-clang-ocl' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb' 'rocprofiler' 'rocprofiler-dev' 'roctracer' 'roctracer-dev' 'hsa-amd-aqlprofile' 'openmp-extras-runtime' 'rocm-cmake' 'rocm-utils' 'rocm-smi-lib')
 optdepends=('clinfo' 'opencl-amd-dev')
 
@@ -32,6 +32,7 @@ source=(
 # ROCM
 "https://repo.radeon.com/rocm/apt/5.6/pool/main/r/rocm-core/rocm-core_5.6.0.50600-67~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.6/pool/main/c/comgr/comgr_2.5.0.50600-67~22.04_amd64.deb"
+"https://repo.radeon.com/rocm/apt/5.6/pool/main/h/hipcc/hipcc_1.0.0.50600-67~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.6/pool/main/h/hip-dev/hip-dev_5.6.31061.50600-67~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.6/pool/main/h/hip-doc/hip-doc_5.6.31061.50600-67~22.04_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.6/pool/main/h/hip-samples/hip-samples_5.6.31061.50600-67~22.04_amd64.deb"
@@ -74,6 +75,7 @@ sha256sums=(
 
 "b3aa409ca50633a733c9f4a241320c7b87307a2d57e6aa6729d1b3ffefbc8a7a"
 "c37f779b02789ab8b8175fad4ba759c40010bb7cfdaf653c9918c21523db067e"
+"34e9b10bd79f6c15b5b540a5ebad335cdfba0e862b204e77a32210bf43e58a2a"
 "27a243bdfbc7a070f41cb019d59b3c92d3422817a4faf41054dfebd6125696fd"
 "086027a9bfdd955050b1b1fad9724fd5218548f7f7f94cb56550b138d9043e83"
 "94e0057411b70913c688a8f64e2df6254d3e46947beb5f6e5396188f65be9858"
@@ -127,6 +129,7 @@ egz() {
 package() {
 	egz "${srcdir}/rocm-core_5.6.0.50600-67~22.04_amd64.deb"
 	egz "${srcdir}/comgr_2.5.0.50600-67~22.04_amd64.deb"
+	egz "${srcdir}/hipcc_1.0.0.50600-67~22.04_amd64.deb"
 	egz "${srcdir}/hip-dev_5.6.31061.50600-67~22.04_amd64.deb"
 	egz "${srcdir}/hip-doc_5.6.31061.50600-67~22.04_amd64.deb"
 	egz "${srcdir}/hip-samples_5.6.31061.50600-67~22.04_amd64.deb"
