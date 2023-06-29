@@ -25,9 +25,9 @@ options=(!makeflags !lto)
 # See:
 # https://github.com/NVIDIA/libnvidia-container/blob/c8f267be0bac1c654d59ad4ea5df907141149977/mk/elftoolchain.mk
 # https://github.com/NVIDIA/libnvidia-container/blob/c8f267be0bac1c654d59ad4ea5df907141149977/mk/nvidia-modprobe.mk
-source=("https://github.com/NVIDIA/${pkgbase}/archive/v${pkgver}.tar.gz"
-        "https://sourceforge.net/projects/elftoolchain/files/Sources/elftoolchain-${_elfver}/elftoolchain-${_elfver}.tar.bz2"
-        "https://github.com/NVIDIA/nvidia-modprobe/archive/${_nvmpver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/NVIDIA/${pkgbase}/archive/v${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}-elftoolchain-${_elfver}.tar.bz2::https://sourceforge.net/projects/elftoolchain/files/Sources/elftoolchain-${_elfver}/elftoolchain-${_elfver}.tar.bz2"
+        "${pkgname}-${pkgver}-nvidia-modprobe-${nvmpver}.tar.gz::https://github.com/NVIDIA/nvidia-modprobe/archive/${_nvmpver}.tar.gz"
         fix_rpc_flags.patch
         fix_git_rev_unavail.patch
         fix_libelf_so_name.patch
