@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=polspline
-_pkgver=1.1.22
+_pkgver=1.1.23
 pkgname=r-${_pkgname,,}
-pkgver=1.1.22
+pkgver=1.1.23
 pkgrel=1
 pkgdesc='Polynomial Spline Routines'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b2f2198f020d7d492a87bad2b58a6cc9ae91d95b7330dd12b9b1145c72d7457b')
+sha256sums=('8363bddf702542783c7c48a12f5fd5bcf3c003ebff88ad5c31f1fb04f49149e1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
