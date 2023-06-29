@@ -9,7 +9,7 @@ pkgbase = nvidia-container-runtime
 	depends = libseccomp
 	depends = nvidia-container-toolkit>=1.9.0
 	options = !lto
-	source = nvidia-container-runtime-3.13.1-2.tar.gz::https://github.com/NVIDIA/nvidia-container-toolkit/archive/v1.13.2.tar.gz
-	sha256sums = cf5acb95ddce98ace727e806f52ad3d89f211f4d0b00131d9ab8cbdd0ee04e0a
+	source = nvidia-container-runtime-3.13.1-2.tar.gz::https://github.com/NVIDIA/nvidia-container-toolkit/archive/v1.13.3.tar.gz
+	sha256sums = 6f9199bf4a9b1bec17cb6a452e0771f7dc3bbf32234491eddfb7796130eac52a
 
 pkgname = nvidia-container-runtime
