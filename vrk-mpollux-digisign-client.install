@@ -1,0 +1,69 @@
+pre_install() {
+    ps -ef | grep DigiSignApplication | grep -v grep | awk '{print $2}' | xargs kill -9 > /dev/null 2>&1
+    rm -rf $HOME/.digisign
+    rm -rf $HOME/.digisign_logs
+    mkdir $HOME/.digisign
+    mkdir $HOME/.digisign_logs
+    chmod 750 $HOME/.digisign
+    chmod 750 $HOME/.digisign_logs
+}
+
+pre_upgrade() {
+    ps -ef | grep DigiSignApplication | grep -v grep | awk '{print $2}' | xargs kill -9 > /dev/null 2>&1
+    rm -rf $HOME/.digisign
+    rm -rf $HOME/.digisign_logs
+    mkdir $HOME/.digisign
+    mkdir $HOME/.digisign_logs
+    chmod 750 $HOME/.digisign
+    chmod 750 $HOME/.digisign_logs
+}
+
+post_install() {
+    if [ ! -d /tmp/.digisign_logs ]; then
+        mkdir -p /tmp/.digisign_logs
+        chmod 777 /tmp/.digisign_logs
+    fi
+
+    exec > /tmp/.digisign_logs/postinst.log 2>&1
+
+    set -x
+
+    ldconfig
+
+    #old certificate will be removed after uninstall
+    /usr/bin/DigiSignApplication.bin /Install
+
+    if [ -x /usr/bin/update-menus ] ; then update-menus ; fi
+}
+
+post_upgrade() {
+    if [ ! -d /tmp/.digisign_logs ]; then
+        mkdir -p /tmp/.digisign_logs
+        chmod 777 /tmp/.digisign_logs
+    fi
+
+    exec > /tmp/.digisign_logs/postinst.log 2>&1
+
+    set -x
+
+    ldconfig
+
+    #old certificate will be removed after uninstall
+    /usr/bin/DigiSignApplication.bin /Install
+
+    if [ -x /usr/bin/update-menus ] ; then update-menus ; fi
+}
+
+post_rm() {
+    ldconfig
+    ps -ef | grep DigiSignApplication | grep -v grep | awk '{print $2}' | xargs kill -9  > /dev/null 2>&1
+
+    rm /etc/xdg/Fujitsu/Seed.txt
+    rm /etc/xdg/Fujitsu/SSLCA.cer
+    rm /etc/xdg/Fujitsu/SSL.p12
+    rm -rf /tmp/.digisign_logs
+    rm `find /home -name ds_nssdinstalled.txt`
+    rm /usr/share/p11-kit/modules/digisign.module
+
+    if [ -x /usr/bin/update-menus ] ; then update-menus ; fi
+}
