@@ -2,7 +2,7 @@
 
 pkgname=naikari-git
 _pkgname=naikari
-pkgver=0.7.0.r5.ga24f647fa
+pkgver=0.8.0.r6.ga65637c91
 pkgrel=1
 pkgdesc="Freeform 2-D space trading and mercenary game. Development branch."
 arch=('x86_64')
