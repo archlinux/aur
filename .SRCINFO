@@ -1,6 +1,6 @@
 pkgbase = p11-kit-git
 	pkgdesc = Loads and enumerates PKCS#11 modules
-	pkgver = 0.24.1
+	pkgver = 0.25.0+1+g76be1cf
 	pkgrel = 1
 	url = https://p11-glue.freedesktop.org
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = p11-kit-git
 
 pkgname = p11-kit-git
 	install = p11-kit.install
-	depends = libp11-kit=0.24.1-1
+	depends = libp11-kit=0.25.0+1+g76be1cf-1
 	depends = coreutils
 	depends = libp11-kit.so
 	depends = libsystemd.so

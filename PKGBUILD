@@ -8,7 +8,7 @@ pkgbase="${_pkgbase}-git"
 pkgname=(
   "${pkgbase}"
   "lib${pkgbase}")
-pkgver=0.24.1
+pkgver=0.25.0+1+g76be1cf
 pkgrel=1
 pkgdesc="Loads and enumerates PKCS#11 modules"
 _ns="${_base}-glue"
@@ -27,6 +27,11 @@ source=(
   "git+${_repo_url}")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${_pkgbase}"
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
   cd "${_pkgbase}"
 }
@@ -38,7 +43,7 @@ build() {
   arch-meson "${_pkgbase}" build \
     -D gtk_doc=true \
     -D man=true \
-    -D trust_paths="${_etc_ns}:${_share_ns}"
+    -D trust_paths="${_etc_tp}:${_share_tp}"
   meson compile -C build
 }
 
@@ -89,7 +94,7 @@ package_libp11-kit-git() {
   mv lib/* "${pkgdir}"
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" \
-          -m644 "${_pkgbase}-$pkgver/COPYING"
+          -m644 "${_pkgbase}/COPYING"
 }
 
 # vim:set sw=2 et:
