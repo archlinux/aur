@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='core'
 pkgname="ocaml-$_projectname"
-pkgver='0.16.0'
+pkgver='0.16.1'
 pkgrel='1'
 epoch='1'
 pkgdesc="Industrial strength alternative to OCaml's standard library"
@@ -13,8 +13,8 @@ license=('MIT')
 depends=('ocaml>=4.14.0' 'ocaml-base>=0.16.0' 'ocaml-base_bigstring>=0.16.0' 'ocaml-base_quickcheck>=0.16.0' 'ocaml-bin_prot>=0.16.0' 'ocaml-fieldslib>=0.16.0' 'ocaml-jane-street-headers>=0.16.0' 'ocaml-jst-config>=0.16.0' 'ocaml-ppx_assert>=0.16.0' 'ocaml-ppx_base>=0.16.0' 'ocaml-ppx_hash>=0.16.0' 'ocaml-ppx_inline_test>=0.16.0' 'ocaml-ppx_jane>=0.16.0' 'ocaml-ppx_optcomp>=0.16.0' 'ocaml-ppx_sexp_conv>=0.16.0' 'ocaml-ppx_sexp_message>=0.16.0' 'ocaml-sexplib>=0.16.0' 'ocaml-splittable_random>=0.16.0' 'ocaml-stdio>=0.16.0' 'ocaml-time_now>=0.16.0' 'ocaml-typerep>=0.16.0' 'ocaml-variantslib>=0.16.0')
 makedepends=('dune>=2.0.0')
 options=('!strip')
-source=("$pkgname-$epoch:$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('2483cec4f5c5984203fc203b121bf1236cf8dff3713dba3fe127a419cc397179ad0b7cb4d1e5072e8dc155ec8a20d5d9aa6a112db1e24e68a11536a54f6819a1')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('5f9f4400b6e42b74ffd57223cb67884368d324739565bbb20162547ede8bd6d0ece3cc265503b674829f9cf373784e8036d4c73e26e9196aa5446de69b63e181')
 
 _sourcedirectory="$_projectname-$pkgver"
 
