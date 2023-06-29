@@ -1,7 +1,7 @@
 # Maintainer: kyngs <aurmail at kyngs dot xyz>
 pkgname=miru-git
 pkgrel=1
-pkgver=4.1.2
+pkgver=4.1.2.r1.g851281b
 pkgdesc="Bittorrent streaming software for cats"
 arch=("any")
 url="https://github.com/ThaUnknown/miru"
@@ -16,7 +16,7 @@ sha256sums=(
 conflicts=("miru-bin")
 
 pkgver() {
-  git -C "miru" describe --tags | sed 's/v//g'
+  git -C "miru" describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^version_//' | sed 's/v//g'
 }
 
 build() {

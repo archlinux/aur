@@ -1,6 +1,6 @@
 pkgbase = miru-git
 	pkgdesc = Bittorrent streaming software for cats
-	pkgver = 4.1.2
+	pkgver = 4.1.2.r1.g851281b
 	pkgrel = 1
 	url = https://github.com/ThaUnknown/miru
 	arch = any
