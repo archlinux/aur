@@ -30,5 +30,5 @@ prepare() {
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
-  install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/neofetch/LICENSE.md"
+  install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/lmaofetch/LICENSE.md"
 }
