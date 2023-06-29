@@ -1,6 +1,6 @@
 pkgbase = r-downlit
 	pkgdesc = Syntax Highlighting and Automatic Linking
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=downlit
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = r-downlit
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/downlit_0.4.2.tar.gz
-	sha256sums = 33dff66909104d1a5ba8e57b1288986e82b61fd5e91dce0cd358d53724b37e3c
+	source = https://cran.r-project.org/src/contrib/downlit_0.4.3.tar.gz
+	sha256sums = 6c0fbe98ece8a511973263f8e8a35574df0cfc45edea7452b53b8d326436b3bd
 
 pkgname = r-downlit

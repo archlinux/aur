@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=downlit
-_pkgver=0.4.2
+_pkgver=0.4.3
 pkgname=r-${_pkgname,,}
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Syntax Highlighting and Automatic Linking'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('33dff66909104d1a5ba8e57b1288986e82b61fd5e91dce0cd358d53724b37e3c')
+sha256sums=('6c0fbe98ece8a511973263f8e8a35574df0cfc45edea7452b53b8d326436b3bd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
