@@ -1,5 +1,5 @@
 pkgbase = nixnote2-appimage
-	pkgdesc = Evernote clone (formerly Nevernote) - latest binary release
+	pkgdesc = Evernote clone - latest AppImage release
 	pkgver = 2.1.9.f9cbad2
 	pkgrel = 1
 	url = https://github.com/robert7/nixnote2
