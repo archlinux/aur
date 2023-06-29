@@ -1,6 +1,6 @@
 pkgbase = qt-sdk
 	pkgdesc = Qt SDK for both hosts and a variety of targets
-	pkgver = 6.5.1
+	pkgver = 6.6.0beta1
 	pkgrel = 1
 	url = http://www.chaos-reins.com/qpi/
 	arch = x86_64
@@ -20,8 +20,9 @@ pkgbase = qt-sdk
 	makedepends = mold
 	optdepends = qtcreator: Integrated IDE development
 	provides = qt-sdk
+	conflicts = litehtml
 	options = !strip
-	source = https://download.qt.io/official_releases/qt/6.5/6.5.1/single/qt-everywhere-src-6.5.1.tar.xz
-	sha256sums = a2d88a6f8c3835dca52f3b7433149c3de606a96bbf024640c27657276cc7350a
+	source = https://download.qt.io/development_releases/qt/6.6/6.6.0-beta1/single/qt-everywhere-src-6.6.0-beta1.tar.xz
+	sha256sums = 65d2370489a95787121da96dad2a47250068aeacead13682dd06bd717f990aec
 
 pkgname = qt-sdk
