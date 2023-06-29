@@ -2,8 +2,8 @@
 # Contributor: Steve Engledow <steve@engledow.me>
 
 pkgname=amazon-workspaces-bin
-pkgver=4.5.0.2006
-pkgrel=4
+pkgver=4.6.0.4187
+pkgrel=1
 _aptdist=focal
 pkgdesc='Amazon Workspace Client'
 arch=('x86_64')
@@ -28,8 +28,8 @@ source=(
     "$pkgname-$pkgver.info::https://d3nt0h4h6pmmc4.cloudfront.net/ubuntu/dists/${_aptdist}/main/binary-amd64/Packages"
 )
 
-sha256sums=('d72b23d36d1f60e98846f651dbbfbb64da9dcea900d906eb0b00d4d7ca2ec5a2'
-            'fbaac63a54bf9256b15d242bc59a152ffe66a07cdba9b724957cfde2fa9a1f1e')
+sha256sums=('03e6fbf5ec21e210487fc8e02b420d20b164b53a914693a05d11f4146ce257a7'
+            '02cb06036b712ffc8daf6b2ee536bb8d5f654c2cd914eae7aa7351284045bb82')
 
 prepare() {
     # Verify the checksum
