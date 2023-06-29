@@ -1,35 +1,63 @@
 # Maintainer: Liam Timms <timms5000@gmail.com>
 # Maintainer: Sin Kim <kimsin98@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _pkgname=datalad
 pkgname=python-$_pkgname
 pkgver=0.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Keep code, data, containers under control with git and git-annex'
-arch=('any')
+arch=(any)
 url='https://github.com/datalad/datalad'
-license=('MIT')
-depends=('python' 'git-annex'
-         'python-platformdirs' 'python-chardet' 'python-distro' 'python-iso8601' 'python-humanize'
-         'python-fasteners' 'python-packaging' 'patool' 'python-tqdm' 'python-annexremote'
-         'python-looseversion'
-         'python-boto' 'python-keyring' 'python-keyrings-alt' 'python-msgpack' 'python-requests'
-         'python-gitlab')
-makedepends=('python-setuptools')
+license=(MIT)
+depends=(git-annex
+         patool
+         python
+         python-annexremote
+         python-boto
+         python-chardet
+         python-distro
+         python-fasteners
+         python-gitlab
+         python-humanize
+         python-iso8601
+         python-keyring
+         python-keyrings-alt
+         python-looseversion
+         python-msgpack
+         python-packaging
+         python-platformdirs
+         python-setuptools # used at runtime
+         python-requests
+         python-tqdm)
+makedepends=(python-{build,installer,wheel})
+checkdepends=(mypy
+              python-beautifulsoup4
+              python-httpretty
+              python-pytest
+              python-types-python-dateutil
+              python-types-requests
+              python-vcrpy)
 optdepends=('python-requests-ftp: extra downloaders'
             'python-argcomplete: optional CLI completion'
             'python-pyperclip: clipboard manipulations'
             'python-dateutil: support for more date formats')
-source=("${_pkgname}-$pkgver.tar.gz::https://github.com/datalad/${_pkgname}/archive/$pkgver.tar.gz")
-sha512sums=('0e0f58eef9e37672de55c7d3964ccdf38d69005411344013e8accb330f493a8350f1058ff8a435bc8c01fa2750d1941a5da25682b0cc85b5c9d4376b4dca7217')
+_archive="$_pkgname-$pkgver"
+source=("$url/archive/$pkgver/$_archive.tar.gz")
+sha256sums=('d2438fd654c906eade783a5a549f3398beefdaa3182e23d3e3c484c5ecdf9f7f')
 
 build() {
-    cd "$srcdir/${_pkgname}-$pkgver"
-    python setup.py build
+	cd "$_archive"
+	python -m build -wn
+}
+
+check() {
+	cd "$_archive"
+	pytest
 }
 
 package() {
-    cd "$srcdir/${_pkgname}-$pkgver"
-    python setup.py install --skip-build --root="$pkgdir" --optimize=1
-    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	cd "$_archive"
+	python -m installer -d "$pkgdir" dist/*.whl
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING
 }
