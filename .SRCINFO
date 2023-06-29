@@ -1,6 +1,6 @@
 pkgbase = kokkos
 	pkgdesc = C++ performance portability programming ecosystem
-	pkgver = 4.0.01
+	pkgver = 4.1.00
 	pkgrel = 1
 	url = https://github.com/kokkos/kokkos
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kokkos
 	depends = bash
 	depends = hwloc
 	conflicts = trilinos
-	source = kokkos-4.0.01.tar.gz::https://github.com/kokkos/kokkos/archive/4.0.01.tar.gz
-	sha512sums = cf6742f4be777b52673858b49cf68fdf335e760509688483e62ef41af5026070f69dcf39d010134c85dc6c4868f82a38900872be11ed43190432c8530b90deee
+	source = kokkos-4.1.00.tar.gz::https://github.com/kokkos/kokkos/archive/4.1.00.tar.gz
+	sha512sums = 07ec941bf8f8a7f641ec260c48a8b5180278fee34b32571b9c724a072ebfb0a85b4a9939d66cb73a5c9172c0c662a94056040feae4569c0ddcf7f07f93a864f6
 
 pkgname = kokkos
