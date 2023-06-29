@@ -5,6 +5,7 @@ pkgbase = alacritty-theme-git
 	url = https://github.com/alacritty/alacritty-theme
 	arch = any
 	license = apache
+	makedepends = git
 	depends = alacritty
 	source = alacritty-theme::git+https://github.com/alacritty/alacritty-theme
 	b2sums = SKIP

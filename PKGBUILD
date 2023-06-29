@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/${_pkg}/${_pkgname}"
 license=('apache')
 depends=("${_pkg}")
-makedepends=()
+makedepends=("git")
 source=(
   "${_pkgname}::git+${url}"
 )
