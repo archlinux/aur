@@ -46,21 +46,27 @@ prepare() {
 }
 
 build() {
-  local working_dir=${srcdir}/${_source_archive_name}
-  local build_dir=${working_dir}/build
+	local working_dir=${srcdir}/${_source_archive_name}
+	local build_dir=${working_dir}/build
 
-  rm -Rf ${build_dir}
-  mkdir -p ${build_dir}
-  cd ${build_dir}
+	rm -Rf ${build_dir}
+	mkdir -p ${build_dir}
+	cd ${build_dir}
 
-  cmake \
-    -G Ninja \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_TOOLCHAIN_FILE=${startdir}/toolchain.cmake \
-    -DCMAKE_BUILD_TYPE=Release -DWITH_DOCS=ON -DBUILD_QBS=OFF -DBUILD_WITH_CRASHPAD=OFF \
-    ${working_dir}
+	qt_cmake_in_play=$(which qt-cmake || echo /usr/lib/qt6/bin/qt-cmake)
+	echo "Using qt-cmake: ${qt_cmake_in_play}"
 
-  ninja all
+	${qt_cmake_in_play} \
+	-G Ninja \
+	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DQT_CHAINLOAD_TOOLCHAIN_FILE=${startdir}/toolchain.cmake \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DWITH_DOCS=ON \
+	-DBUILD_QBS=OFF \
+	-DBUILD_WITH_CRASHPAD=OFF \
+	${working_dir}
+
+	ninja all
 }
 
 package() {
