@@ -3,7 +3,7 @@
 
 pkgname=muffet-git
 pkgdesc="Fast website link checker (git)"
-pkgver=2.8.1.r0.g7c3af1f
+pkgver=2.9.1.r1.g4536090
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/raviqqe/muffet"
