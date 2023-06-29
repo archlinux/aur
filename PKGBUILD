@@ -2,8 +2,8 @@
 
 _pyname=copulae
 pkgname=python-$_pyname
-pkgver=0.7.7
-pkgrel=3
+pkgver=0.7.8
+pkgrel=1
 pkgdesc='Multivariate data modelling with Copulas in Python'
 arch=(x86_64 aarch64)
 url='https://copulae.readthedocs.io'
@@ -12,7 +12,7 @@ depends=(python-statsmodels python-scikit-learn python-wrapt)
 makedepends=(python-setuptools cython python-build python-installer python-wheel)
 checkdepends=(python-pytest)
 source=($pkgname-$pkgver.tar.gz::https://github.com/DanielBok/copulae/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('2823ee639a1cd1742bd56c06fa5ebd553d76a822c1e755799da8583255522a35')
+sha256sums=('448305afa4382a949d5c2c6d94f4f63e1292bf26fe7d8159a38c022a7249dde6')
 
 build() {
   cd "$srcdir/$_pyname-$pkgver"
