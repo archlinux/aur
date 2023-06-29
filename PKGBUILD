@@ -5,13 +5,13 @@ _upstream=swow/swow
 _branch=develop
 pkgbase=php-swow-git
 pkgname=('php-swow-git' 'php-legacy-swow-git')
-pkgver=1.2.0.r8.g6a901f36
+pkgver=1.3.1.r6.gb97bd1eb
 pkgrel=1
 pkgdesc="Swow coroutine IO extension for PHP, git \"${_branch}\" branch"
 arch=('x86_64' 'arm64')
 url="https://github.com/swow/swow"
 license=('APACHE')
-makedepends=('php' 'php-legacy')
+makedepends=('php' 'php-legacy' 'postgresql-libs')
 depends=('glibc')
 source=("${_name}-${_branch}::git+https://github.com/${_upstream}.git#branch=${_branch}")
 sha512sums=('SKIP')
@@ -61,6 +61,7 @@ build() {
 check() {
     local EXTRA_PHPT_ARGS="-n --show-diff"
     (
+        /usr/bin/php -d extension=${srcdir}/${_name}-${_branch}/ext/modules/swow.so --ri swow
         export TEST_PHP_EXECUTABLE=/usr/bin/php
         local TEST_PHP_ARGS="${EXTRA_PHPT_ARGS} -d extension=${srcdir}/${_name}-${_branch}/ext/modules/swow.so"
         cd "${_name}-${_branch}/ext"
@@ -69,6 +70,7 @@ check() {
     )
 
     (
+        /usr/bin/php-legacy -d extension=${srcdir}/${_name}-${_branch}-legacy/ext/modules/swow.so --ri swow
         export TEST_PHP_EXECUTABLE=/usr/bin/php-legacy
         local TEST_PHP_ARGS="${EXTRA_PHPT_ARGS} -d extension=${srcdir}/${_name}-${_branch}-legacy/ext/modules/swow.so"
         cd "${_name}-${_branch}-legacy/ext"

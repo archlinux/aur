@@ -1,6 +1,6 @@
 pkgbase = php-swow-git
 	pkgdesc = Swow coroutine IO extension for PHP, git "develop" branch
-	pkgver = 1.2.0.r8.g6a901f36
+	pkgver = 1.3.1.r6.gb97bd1eb
 	pkgrel = 1
 	url = https://github.com/swow/swow
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = php-swow-git
 	license = APACHE
 	makedepends = php
 	makedepends = php-legacy
+	makedepends = postgresql-libs
 	depends = glibc
 	source = swow-develop::git+https://github.com/swow/swow.git#branch=develop
 	sha512sums = SKIP
