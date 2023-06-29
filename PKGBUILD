@@ -29,5 +29,5 @@ prepare() {
 
 package() {
   cd $pkgname
-  make install
+  sudo make install
 }
