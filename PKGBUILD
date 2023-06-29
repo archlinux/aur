@@ -2,11 +2,11 @@
 
 pkgname=zlib-git
 pkgver=1.2.13.r20.g48c3741
-pkgrel=1
+pkgrel=2
 pkgdesc="A massively spiffy yet delicately unobtrusive compression library (git develop branch)"
 arch=('i686' 'x86_64')
 url="https://www.zlib.net/"
-license=('ZLIB')
+license=('custom')
 depends=('glibc')
 makedepends=('git')
 provides=("zlib=$pkgver" 'libz.so')
@@ -41,6 +41,5 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  sed -n '/Copyright (C) 1995-/,/madler@alumni.caltech.edu/p' "zlib.h" > "_LICENSE"
-  install -Dm644 "_LICENSE" "$pkgdir/usr/share/licenses/zlib/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/zlib"
 }
