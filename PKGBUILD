@@ -2,7 +2,7 @@
 pkgbase=python-sncosmo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Python library for supernova cosmology"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ checkdepends=('python-pytest'
               'python-matplotlib')
 #             'python-yaml'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('952e48f8b499e611d44e652f9c337e35')
+md5sums=('bb629cae828f3c03596aeebd6b226eef')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
