@@ -3,7 +3,7 @@
 
 pkgname=yacd-meta-ghp-bin
 _pkgname=Yacd-meta
-pkgver=20230621.1
+pkgver=20230629.1
 pkgrel=1
 
 pkgdesc='Yet Another Clash Dashboard (prebuild gh-pages)'

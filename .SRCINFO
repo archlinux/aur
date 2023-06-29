@@ -1,6 +1,6 @@
 pkgbase = yacd-meta-ghp-bin
 	pkgdesc = Yet Another Clash Dashboard (prebuild gh-pages)
-	pkgver = 20230621.1
+	pkgver = 20230629.1
 	pkgrel = 1
 	url = https://github.com/MetaCubeX/Yacd-meta
 	arch = any
