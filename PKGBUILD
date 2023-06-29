@@ -1,6 +1,6 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=moonraker-git
-pkgver=r1742.eff0901
+pkgver=r1790.5d8422e
 pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
@@ -21,7 +21,7 @@ depends=(klipper
          curl
          libgpiod)
 #checkdepends=("python-pytest>=7.0" python-pytest-asyncio python-pytest-timeout)
-makedepends=(git)
+makedepends=(git python-build python-installer python-wheel python-pdm)
 optdepends=("polkit: enable service and machine control through moonraker"
             "python-preprocess-cancellation: enables exclude object processing"
             "python-apprise: enable [notifier] module for sending notifications"
@@ -36,7 +36,7 @@ source=('git+https://github.com/Arksine/moonraker.git#branch=master' 'moonraker.
 sha256sums=('SKIP'
             'b118f346ec57228add79b9c37555adc5dbae4cb6de0e39659912376b5ad2e932'
             '85855665ec1ff10c95529f456d8b00314d8909db4d83be48bb76d0fc2a5fd3d0'
-            'd99c172a24e166b724bb0603a8909f2137a75b7e0d1cf9c883d9300f2a29f382'
+            '0e25de29530273a362505c91898a6f8cc6f198f84102ff4fecf318dec39d53de'
             '5611f1a48bb18d0d95a31eaead4f59d84c0ae5e3c407f3488770e2236b97c3bf'
             'cef040e973a9bb697659d1506a37a5f829551d5cc96e3f81ff588d5bd67cf1d0'
             '549309fd129c8c665a5aed2d4229c20e5a9927f4fbdc937e0982db4785b9ee0d'
@@ -52,7 +52,7 @@ pkgver() {
 build() {
   cd "$srcdir/${pkgname%-git}"
 
-  python -m compileall -o 0 -o 1 moonraker # emulate typical setup.py output
+  python -m build --wheel --no-isolation
 }
 
 #check() {
@@ -62,6 +62,9 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
+
+  python -m installer --destdir="${pkgdir}" --prefix="/opt/${pkgname%-git}" dist/*.whl
+  rm -rf "$pkgdir/opt/${pkgname%-git}/bin" # clean bin/moonraker as it doesn't work with /opt prefix
 
   install -Dm644 "$srcdir/moonraker.conf" "$pkgdir/etc/klipper/moonraker.conf"
   install -Dm644 "$srcdir/moonraker.service" "$pkgdir/usr/lib/systemd/system/moonraker.service"
@@ -73,7 +76,4 @@ package() {
   # match directory owner/group and mode from [extra]/polkit
   install -d -o root -g 102 -m 0750 "$pkgdir"/usr/share/polkit-1/rules.d
   install -Dm644 "$srcdir/moonraker.rules" "$pkgdir/usr/share/polkit-1/rules.d/moonraker.rules"
-
-  install -dm755 "$pkgdir/opt/moonraker"
-  GLOBIGNORE=.git cp -r * "$pkgdir/opt/moonraker"
 }
