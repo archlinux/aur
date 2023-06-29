@@ -2,7 +2,7 @@
 
 pkgname=dnsproxy
 pkgver=0.50.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support"
 arch=('x86_64')
 url="https://github.com/AdguardTeam/dnsproxy"
@@ -19,7 +19,7 @@ backup=($_conf)
 
 build(){
     cd "${srcdir}/${pkgname}-${pkgver}"
-    go build -mod=vendor -v -trimpath -buildmode=pie
+    go build --ldflags "-s -w -X main.VersionString=${pkgver}" -mod=vendor -v -trimpath -buildmode=pie
 }
 
 package() {
