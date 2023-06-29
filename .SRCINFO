@@ -1,6 +1,6 @@
 pkgbase = python-flower
 	pkgdesc = Real-time monitor and web admin for Celery distributed task queue
-	pkgver = 1.2.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/mher/flower
 	arch = any
@@ -9,10 +9,13 @@ pkgbase = python-flower
 	checkdepends = python-tornado
 	checkdepends = python-celery
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-redis
 	depends = python-humanize
 	depends = python-prometheus_client
-	source = https://github.com/mher/flower/archive/v1.2.0.tar.gz
-	sha256sums = 974b873cb28deaf5960425fbe4aec7f2abc23653bb2b37d2a56062aa25e2de4d
+	source = python-flower-2.0.0.tar.gz::https://github.com/mher/flower/archive/v2.0.0.tar.gz
+	sha256sums = 5acc2de1968763571674b6c4cd0988e78fb132b47369af3f151fe5af4cb25f12
 
 pkgname = python-flower
