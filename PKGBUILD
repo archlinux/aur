@@ -3,13 +3,14 @@
 pkgname=curaengine-5
 _pkgname=curaengine
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers."
 url="https://github.com/Ultimaker/CuraEngine"
 arch=('x86_64')
 license=('AGPL')
+provides=('curaengine')
+conflicts=('curaengine')
 depends=('libarcus5' 'polyclipping')
-checkdepends=('cppunit')
 makedepends=( 'boost'
               'cmake'
               'git'
