@@ -2,7 +2,7 @@
 # Contributor: Oscar Rainford <oscar@fourbs.com.au>
 
 pkgname=openwebstart-bin
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="An open source reimplementation of the Java Web Start technology."
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
   "itw-settings.desktop"
 )
 sha256sums=(
-  "e531b2fc040a9a71d7e3bf9eec2d147c9ed18c4d1fb7e5ef22fe46fec0a6b0a3"
+  "e52f84c742acb2ef7ce7661aaed6eb4827aaa26ef15842c885a1ecd599f9a6be"
   "e8a2f8208cbfb350a0277102a71fb314da29203e60bf1a48122f3a06635da2f8"
   "b7c75989d4b7cb8468956eebfcbe09ee1cc9e44d536ae5e4d27dddef95dfc9a5"
   "3d7f40d37b54fe4257cf5e6f508ea90c439f54d646602982dd50d1ba7cde0835"
