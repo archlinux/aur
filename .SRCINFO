@@ -1,7 +1,7 @@
 pkgbase = cloudflarespeedtest
 	pkgdesc = Cloudflare IP Batch Test Tool
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XIU2/CloudflareSpeedTest
 	arch = x86_64
 	license = GPL3

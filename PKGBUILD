@@ -2,7 +2,7 @@
 
 pkgname=cloudflarespeedtest
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 pkgdesc="Cloudflare IP Batch Test Tool"
 makedepends=('go' 'git')
@@ -14,7 +14,8 @@ sha256sums=('SKIP')
 build() {
   cd "CloudflareSpeedTest"
   sed -i s@ip.txt@/usr/share/cloudflarespeedtest/ip.txt@g main.go
-  go build -ldflags="-X main.version=v$pkgver -linkmode=external" -o $pkgname
+  sed -i s@ipv6.txt@/usr/share/cloudflarespeedtest/ipv6.txt@g main.go
+  go build -ldflags="-s -w -X main.version=v$pkgver" -o $pkgname
 }
 
 package() {
