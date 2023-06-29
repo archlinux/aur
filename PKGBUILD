@@ -50,24 +50,16 @@ prepare(){
   patch -Np1 -i "${srcdir}/fix_libelf_so_name.patch"
 
   deps_dir="deps/src/"
+  mkdir -p "${deps_dir}"
   # mimic behavior from:
   # https://github.com/NVIDIA/libnvidia-container/blob/56704b8dd297bf4daf82a2da4b270dc7f14e0008/mk/libtirpc.mk
-  for dep in "elftoolchain-${_elfver}.tar.bz2" "${_nvmpver}.tar.gz"; do
-    dep_dir="${deps_dir}/${dep%.tar*}"
-    mkdir -p ${dep_dir}
-    # untar the download into the deps dir
-    tar -xf "${srcdir}/${dep}" -C "${dep_dir}" --strip-components=1
-    # tell make to ignore this target, it's already done
-    touch "${dep_dir}/.download_stamp"
+  for dep in "elftoolchain-${_elfver}" "nvidia-modprobe-${_nvmpver}"; do
+    mv "${srcdir}/${dep}" "${deps_dir}"
+    touch "${deps_dir}/${dep}/.download_stamp"
   done
 
   patch -Np1 -i "${srcdir}/fix_elftoolchain.patch"
-
-  # the tar isn't named correctly, so the dir needs moving
-  if [ ! -d "${deps_dir}/nvidia-modprobe-${_nvmpver}" ]; then
-    mv "${deps_dir}/${_nvmpver}" "${deps_dir}/nvidia-modprobe-${_nvmpver}"
-    patch -d "${deps_dir}/nvidia-modprobe-${_nvmpver}" -p1 < "mk/nvidia-modprobe.patch"
-  fi
+  patch -d "${deps_dir}/nvidia-modprobe-${_nvmpver}" -p1 < "mk/nvidia-modprobe.patch"
 }
 
 build(){
