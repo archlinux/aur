@@ -2,9 +2,9 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BioNERO
-_pkgver=1.8.3
+_pkgver=1.8.5
 pkgname=r-${_pkgname,,}
-pkgver=${_pkgver//[:-]/.}
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Biological Network Reconstruction Omnibus"
 arch=(any)
@@ -46,8 +46,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5a5d4ebb8c7331e7d181b3bb49c70ec0')
-sha256sums=('ee4db9277d5a9a063834924dd60c30e620ad3b2fbdcc8672565c52ea89d0d1d8')
+md5sums=('e673d1c24445c648a2a152f8408d4f09')
+sha256sums=('b59711d1b75a2aec1e469b41d62c76ad402e68775e6b7c8db91f976299c13b5b')
 
 build() {
   mkdir -p build
