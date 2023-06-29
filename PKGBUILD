@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="batch-explorer-bin"
-pkgver=2.17.0stable.801
-_appver=2.17.0-stable.801
+pkgver=2.18.0stable.868
+_appver=2.18.0-stable.868
 pkgrel=1
 pkgdesc="A client tool to help create, debug and monitor Azure Batch Applications"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=('nspr' 'libxfixes' 'libxcb' 'alsa-lib' 'at-spi2-core' 'readline' 'libxs
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${_appver}/${pkgname%-bin}_${_appver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/Azure/BatchExplorer/main/LICENSE")
-sha256sums=('91e41bda7f79eb4ae5f15c7780c8b837bdfda35ba0037e807759c051817f0262'
+sha256sums=('69752b0627371fa8425ede726709e124036cd6259525238a9819fb4e2b184be9'
             '0b9ebab8a849f3ae8ed5bd7a35022bff9dce901efeeb53e855e91c02c8500ab0')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
