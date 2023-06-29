@@ -27,7 +27,8 @@ build() {
 
 package() {
     cd "miru/dist"
-    ar vx "linux-Miru-${pkgver}.deb"
+    debs=(*.deb)
+    ar vx "${debs[0]}"
 
     tar -xJ -f data.tar.xz -C "${pkgdir}"
     install -D -m644 "${pkgdir}/opt/Miru/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
