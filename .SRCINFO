@@ -1,6 +1,6 @@
 pkgbase = rambox-appimage
 	pkgdesc = Free and Open Source messaging and emailing app that combines common web applications into one.
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://rambox.app/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = rambox-appimage
 	conflicts = rambox-pro
 	conflicts = rambox-pro-bin
 	options = !strip
-	source = rambox-2.1.3.AppImage::https://github.com/ramboxapp/download/releases/download/v2.1.3/Rambox-2.1.3-linux-x64.AppImage
+	source = rambox-2.1.4.AppImage::https://github.com/ramboxapp/download/releases/download/v2.1.4/Rambox-2.1.4-linux-x64.AppImage
 	source = LICENSE.html::https://rambox.app//eula/
-	sha256sums = c2f8c2af553eff5fc6b5e6cc3562638b3cde82a67ec165d4ae63ac858b4cabaa
-	sha256sums = f921b22ff50ad1a50faf4b670991bf2abab7f211c0c682cdeef9f69ac508817f
+	sha256sums = dfc13d6233faae288abdd0e8bd3b227a55a2dc83bbe20eabee2bbb195f05f850
+	sha256sums = 7488a4177a1a7b6a62c7f08e5c2bdcd8472836456b3eb657d2840b4b4ccff1ff
 
 pkgname = rambox-appimage
