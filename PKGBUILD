@@ -53,6 +53,7 @@ major=6.4
 commit=e63a6b30adfd9c0b870daa2a14300a893b69cf17
 versiontag=6.4-zen1
 arch=(x86_64)
+pkgdesc="The Zen kernel and modules - BMQ enabled"
 url='https://www.kernel.org/'
 license=(GPL2)
 makedepends=(bc cpio gettext git libelf pahole perl tar xz kmod xmlto)
