@@ -3,7 +3,7 @@
 pkgname=chrysalis
 pkgdesc='Graphical configurator for Kaleidoscope-powered keyboards'
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://github.com/keyboardio/${pkgname^}"
 license=(GPL3)
@@ -41,16 +41,16 @@ prepare() {
 
 build() {
 	cd "$_archive"
-	yarn $_yarnargs run make
+	yarn $_yarnargs run package
 }
 
 package() {
 	sed -E "s/electron/$_electron/" "$pkgname.sh" |
 		install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
 	cd "$_archive"
-	local _dist=dist/linux-unpacked/resources
+	local _dist=out/${pkgname^}-linux-x64/resources
 	install -Dm0644 -t "$pkgdir/usr/lib/$pkgname/" "$_dist/app.asar"
-	cp -a "$_dist/static" "$pkgdir/usr/lib/$pkgname"
+	cp -a "$_dist/app.asar.unpacked" "$_dist/static" "$pkgdir/usr/lib/$pkgname/"
 	install -Dm0644 -t "$pkgdir/usr/lib/$pkgname/" NEWS.md
 	mkdir -p "$pkgdir/usr/lib/udev/rules.d/"
 	ln -s /usr/lib/chrysalis/static/udev/60-kaleidoscope.rules "$pkgdir/usr/lib/udev/rules.d/"
