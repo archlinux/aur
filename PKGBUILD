@@ -1,5 +1,4 @@
-# Maintainer: éclairevoyant
-# Contributor: syntheit <daniel at matv dot io>
+# Maintainer: Trenzalore
 
 _major=72
 _gitname=icu
