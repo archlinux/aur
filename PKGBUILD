@@ -3,18 +3,18 @@
 # Maintainer: PumpkinCheshire <me @ pumpkincheshire dot com>
 
 pkgname=rife-ncnn-vulkan
-pkgver=20220330
+pkgver=20221029
 pkgrel=1
 pkgdesc="RIFE, Real-Time Intermediate Flow Estimation for Video Frame Interpolation implemented with ncnn library."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/nihui/rife-ncnn-vulkan"
 license=('MIT')
-depends=('vulkan-icd-loader' 'libwebp')
-makedepends=('git' 'cmake' 'glslang-git' 'vulkan-headers' 'ncnn')
+depends=('vulkan-icd-loader' 'libwebp' 'ncnn')
+makedepends=('git' 'cmake' 'glslang' 'vulkan-headers' 'ncnn')
 provides=("rife-ncnn-vulkan")
 conflicts=("rife-ncnn-vulkan-git" "rife-ncnn-vulkan-bin")
 source=("https://github.com/nihui/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('a330d083389a5686b90499bf655396a3a95806134fde4aaac1ed02052f944b282d6b073e0a4ae085b1612e17136f07da988197f8b43f7bd22b8d40e84082bf45')
+b2sums=('8c279d63b101c5ff8aa0a4205276326031d4bf5418e5fcf3752bb626a108f4fea640403a30da96a7fd62dcd186552f5a228e3c731a968764d00a308eff3cf0c8')
 
 prepare() {
     sed -i 's|path_t model = PATHSTR("rife-HD")|path_t model = PATHSTR("/usr/share/rife-ncnn-vulkan/rife-HD")|' "${pkgname}-${pkgver}"/src/main.cpp
