@@ -1,6 +1,6 @@
 pkgbase = saber-appimage
 	pkgdesc = A (work-in-progress) cross-platform libre handwritten notes app
-	pkgver = 0.13.1
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/adil192/saber
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = saber-appimage
 	depends = hicolor-icon-theme
 	conflicts = saber
 	options = !strip
-	source = saber-0.13.1.AppImage::https://github.com/adil192/saber/releases/download/v0.13.1/Saber-0.13.1-x86_64.AppImage
-	sha256sums = 0ff45d83c8c8a5e6c427c5f345d336a0fca204ed0015d5fa87a93da644fa51be
+	source = saber-0.14.0.AppImage::https://github.com/adil192/saber/releases/download/v0.14.0/Saber-0.14.0-x86_64.AppImage
+	sha256sums = 1c91dd01d6b28e4ad0012d3e0180a8c5148d29c1b210c15ff9e3f20ab3a2173f
 
 pkgname = saber-appimage
