@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=diffenator2
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='Compare two font families, descendent of fontdiffenator'
 arch=(any)
@@ -30,7 +30,7 @@ makedepends=(python-{build,installer,wheel}
              python-poetry-{core,dynamic-versioning})
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('7c702715698dc597f2047505b00b419f7ef96aa40a6aa6db7f0d22394e42320e')
+sha256sums=('30dc494bae0c2f3246bd70af1e97448f9bb72737e2298490a6ba2c73a0415ba5')
 
 build() {
 	cd "$_archive"
