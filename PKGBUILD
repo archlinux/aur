@@ -1,5 +1,5 @@
 # Maintainer: Fabiano Furtado <fusca14 <at> gmail <dot> com>
-# Date: 2023-06-17
+# Date: 2023-06-29
 # Description: patches to remove the HTTP server header
 # Changes:
 #   * "server_tokens" default value = "off"
@@ -11,7 +11,7 @@ pkgbase=nginx-without-server-header
 _pkgbase=nginx
 pkgname=(nginx-without-server-header)
 pkgver=1.24.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight web server, IMAP/POP3 and TCP/UDP proxy server, without HTTP server header'
 _prefix_relative='etc/nginx'
 _prefix_full='/'$_prefix_relative
