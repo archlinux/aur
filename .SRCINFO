@@ -1,6 +1,6 @@
 pkgbase = fluent-icon-theme-git
 	pkgdesc = A Fluent design icon theme
-	pkgver = 2022.11.05.r3.g36702f7
+	pkgver = 2023.06.07.r3.gb2c2bdc
 	pkgrel = 1
 	url = https://www.pling.com/p/1477945
 	arch = any
@@ -21,13 +21,6 @@ pkgname = fluent-round-icon-theme-git
 	provides = fluent-round-icon-theme
 	provides = fluent-icon-theme
 	conflicts = fluent-round-icon-theme
-	conflicts = fluent-icon-theme
-
-pkgname = fluent-black-icon-theme-git
-	pkgdesc = A Fluent design icon theme (black version)
-	provides = fluent-black-icon-theme
-	provides = fluent-icon-theme
-	conflicts = fluent-black-icon-theme
 	conflicts = fluent-icon-theme
 
 pkgname = fluent-cursor-theme-git

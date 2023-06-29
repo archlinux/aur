@@ -1,7 +1,7 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-pkgname=('fluent-icon-theme-git' 'fluent-round-icon-theme-git' 'fluent-black-icon-theme-git' 'fluent-cursor-theme-git')
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+pkgname=('fluent-icon-theme-git' 'fluent-round-icon-theme-git' 'fluent-cursor-theme-git')
 pkgbase=fluent-icon-theme-git
-pkgver=2022.11.05.r3.g36702f7
+pkgver=2023.06.07.r3.gb2c2bdc
 pkgrel=1
 pkgdesc="A Fluent design icon theme"
 arch=('any')
@@ -41,15 +41,6 @@ package_fluent-round-icon-theme-git() {
 
   cd "$srcdir/Fluent-icon-theme"
   ./install.sh -a -d "$pkgdir/usr/share/icons" -r
-}
-
-package_fluent-black-icon-theme-git() {
-  pkgdesc+=" (black version)"
-  provides=("${pkgname%-git}" 'fluent-icon-theme')
-  conflicts=("${pkgname%-git}" 'fluent-icon-theme')
-
-  cd "$srcdir/Fluent-icon-theme"
-  ./install.sh -a -d "$pkgdir/usr/share/icons" -b
 }
 
 package_fluent-cursor-theme-git() {
