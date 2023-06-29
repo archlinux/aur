@@ -1,4 +1,5 @@
 # Maintainer: flaviofearn <flavioislima@gmail.com>
+# Maintainer: blingus <brett@hyperplay.xyz>
 
 pkgname=hyperplay
 _pkgver=v0.3.0
