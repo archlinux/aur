@@ -1,4 +1,5 @@
 pkgbase = linux-pds
+	pkgdesc = The Linux kernel and modules with Alfred Chen PDS/BMQ CPU scheduler with Arch and other improvement patches - PDS enabled
 	pkgver = 6.4.0
 	pkgrel = 1
 	url = https://www.kernel.org/

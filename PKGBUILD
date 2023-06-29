@@ -54,6 +54,7 @@ pkgrel=1
 major=6.4
 commit=1b45fa8cd58990bf455b429c598b6d4bad155172
 arch=(x86_64)
+pkgdesc='The Linux kernel and modules with Alfred Chen PDS/BMQ CPU scheduler with Arch and other improvement patches - PDS enabled'
 url='https://www.kernel.org/'
 license=(GPL2)
 makedepends=(bc cpio gettext git libelf pahole perl tar xz kmod xmlto)
@@ -255,7 +256,7 @@ prepare(){
   # Disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
   # And can easily overwhelm a system with 32 GB of memory using a tmpfs build
   # partition ... this was introduced by FS#66260, see:
-  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7  
+  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
   msg2 "Disable debug to lower the size of the kernel"
   scripts/config --disable CONFIG_CGROUP_BPF
   scripts/config --disable CONFIG_BPF_LSM
