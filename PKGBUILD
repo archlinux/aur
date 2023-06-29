@@ -1,4 +1,4 @@
-# Maintainer: Miroslav Koškár <http://mkoskar.com/>
+# Maintainer: Miroslav Koškár <https://mkoskar.com/>
 
 pkgname='xcursor-grounation'
 pkgver=20160115
