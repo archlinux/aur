@@ -1,0 +1,22 @@
+pkgbase = cinnamon-styles-artwork
+	pkgdesc = Some theme and icon styles for Cinnamon. Based on mint-artwork
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/linuxmint/mint-artwork
+	arch = x86_64
+	license = GPL3
+	depends = bibata-cursor-theme
+	depends = cinnamon
+	depends = mint-l-icons
+	depends = mint-l-theme
+	depends = mint-x-icons
+	depends = mint-y-icons
+	depends = mint-themes
+	optdepends = lightdm-slick-greeter-mint-theme: Additional options
+	conflicts = mint-artwork
+	source = 00_mint-x.styles
+	source = 00_mint-y.styles
+	sha256sums = c68c276279c1056792127acd2d4b1408a7e4b3bdc677f2cce31f338dede9a267
+	sha256sums = 08b906701cf73e5bae20d2303e8a0a2a348e571f15d4d2ae42e4a77160a6ef96
+
+pkgname = cinnamon-styles-artwork

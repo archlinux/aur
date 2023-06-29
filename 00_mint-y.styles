@@ -1,0 +1,73 @@
+{
+  "styles": [
+    {
+      "name": "Mint-Y",
+      "default": "mixed",
+      "mixed": [
+          {"name": "blue", "color": "#0c75de", "themes": "Mint-Y-Blue", "cinnamon": "Mint-Y-Dark-Blue", "cursor": "Bibata-Modern-Classic"},
+          {"name": "navy", "color": "#004988", "color2": "#b8d8eb", "themes": "Mint-Y-Blue", "icons": "Mint-Y-Navy", "cinnamon": "Mint-Y-Dark-Blue", "cursor": "Bibata-Modern-Classic"},
+          {"name": "aquasand", "color": "#1f9ede", "color2": "#f9c470", "themes": "Mint-Y-Aqua", "icons": "Mint-Y-Sand", "cinnamon": "Mint-Y-Dark-Aqua", "cursor": "Bibata-Modern-Classic", "default": "true"},
+          {"name": "aqua", "color": "#1f9ede", "themes": "Mint-Y-Aqua", "cinnamon": "Mint-Y-Dark-Aqua", "cursor": "Bibata-Modern-Classic"},
+          {"name": "teal", "color": "#199ca8", "themes": "Mint-Y-Teal", "cinnamon": "Mint-Y-Dark-Teal", "cursor": "Bibata-Modern-Classic"},
+          {"name": "cyan", "color": "#199ca8", "color2": "#00bcd4", "themes": "Mint-Y-Teal", "icons": "Mint-Y-Cyan", "cinnamon": "Mint-Y-Dark-Teal", "cursor": "Bibata-Modern-Classic"},
+          {"name": "green", "color": "#35a854", "themes": "Mint-Y", "cinnamon": "Mint-Y-Dark", "cursor": "Bibata-Modern-Classic"},
+          {"name": "sand", "color": "#c5a07c", "themes": "Mint-Y-Sand", "cinnamon": "Mint-Y-Dark-Sand", "cursor": "Bibata-Modern-Classic"},
+          {"name": "grey", "color": "#70737a", "themes": "Mint-Y-Grey", "cinnamon": "Mint-Y-Dark-Grey", "cursor": "Bibata-Modern-Classic"},
+          {"name": "orange", "color": "#ff7139", "themes": "Mint-Y-Orange", "cinnamon": "Mint-Y-Dark-Orange", "cursor": "Bibata-Modern-Classic"},
+          {"name": "yaru", "color": "#ff7139", "color2": "#676767", "themes": "Mint-Y-Orange", "icons": "Mint-Y-Yaru", "cinnamon": "Mint-Y-Dark-Orange", "cursor": "Bibata-Modern-Classic"},
+          {"name": "red", "color": "#e82127", "themes": "Mint-Y-Red", "cinnamon": "Mint-Y-Dark-Red", "cursor": "Bibata-Modern-Classic"},
+          {"name": "pink", "color": "#e54980", "themes": "Mint-Y-Pink", "cinnamon": "Mint-Y-Dark-Pink", "cursor": "Bibata-Modern-Classic"},
+          {"name": "purple", "color": "#8c5dd9", "themes": "Mint-Y-Purple", "cinnamon": "Mint-Y-Dark-Purple", "cursor": "Bibata-Modern-Classic"}
+        ],
+      "dark": [
+          {"name": "blue", "color": "#0c75de", "themes": "Mint-Y-Dark-Blue", "icons": "Mint-Y-Blue", "cursor": "Bibata-Modern-Classic"},
+          {"name": "navy", "color": "#004988", "color2": "#b8d8eb", "themes": "Mint-Y-Dark-Blue", "icons": "Mint-Y-Navy", "cursor": "Bibata-Modern-Classic"},
+          {"name": "aquasand", "color": "#1f9ede", "color2": "#f9c470", "themes": "Mint-Y-Dark-Aqua", "icons": "Mint-Y-Sand", "cursor": "Bibata-Modern-Classic", "default": "true"},
+          {"name": "aqua", "color": "#1f9ede", "themes": "Mint-Y-Dark-Aqua", "icons": "Mint-Y-Aqua", "cursor": "Bibata-Modern-Classic"},
+          {"name": "teal", "color": "#199ca8", "themes": "Mint-Y-Dark-Teal", "icons": "Mint-Y-Teal", "cursor": "Bibata-Modern-Classic"},
+          {"name": "cyan", "color": "#199ca8", "color2": "#00bcd4", "themes": "Mint-Y-Dark-Teal", "icons": "Mint-Y-Cyan", "cursor": "Bibata-Modern-Classic"},
+          {"name": "green", "color": "#35a854", "themes": "Mint-Y-Dark", "icons": "Mint-Y", "cursor": "Bibata-Modern-Classic"},
+          {"name": "sand", "color": "#c5a07c", "themes": "Mint-Y-Dark-Sand", "icons": "Mint-Y-Sand", "cursor": "Bibata-Modern-Classic"},
+          {"name": "grey", "color": "#70737a", "themes": "Mint-Y-Dark-Grey", "icons": "Mint-Y-Grey", "cursor": "Bibata-Modern-Classic"},
+          {"name": "orange", "color": "#ff7139", "themes": "Mint-Y-Dark-Orange", "icons": "Mint-Y-Orange", "cursor": "Bibata-Modern-Classic"},
+          {"name": "yaru", "color": "#ff7139", "color2": "#676767", "themes": "Mint-Y-Dark-Orange", "icons": "Mint-Y-Yaru", "cursor": "Bibata-Modern-Classic"},
+          {"name": "red", "color": "#e82127", "themes": "Mint-Y-Dark-Red", "icons": "Mint-Y-Red", "cursor": "Bibata-Modern-Classic"},
+          {"name": "pink", "color": "#e54980", "themes": "Mint-Y-Dark-Pink", "icons": "Mint-Y-Pink", "cursor": "Bibata-Modern-Classic"},
+          {"name": "purple", "color": "#8c5dd9", "themes": "Mint-Y-Dark-Purple", "icons": "Mint-Y-Purple", "cursor": "Bibata-Modern-Classic"}
+        ],
+      "light": [
+          {"name": "blue", "color": "#0c75de", "themes": "Mint-Y-Blue", "cursor": "Bibata-Modern-Classic"},
+          {"name": "navy", "color": "#004988", "color2": "#b8d8eb", "themes": "Mint-Y-Blue", "icons": "Mint-Y-Navy", "cursor": "Bibata-Modern-Classic"},
+          {"name": "aquasand", "color": "#1f9ede", "color2": "#f9c470", "themes": "Mint-Y-Aqua", "icons": "Mint-Y-Sand", "cursor": "Bibata-Modern-Classic", "default": "true"},
+          {"name": "aqua", "color": "#1f9ede", "themes": "Mint-Y-Aqua", "cursor": "Bibata-Modern-Classic"},
+          {"name": "teal", "color": "#199ca8", "themes": "Mint-Y-Teal", "cursor": "Bibata-Modern-Classic"},
+          {"name": "cyan", "color": "#199ca8", "color2": "#00bcd4", "themes": "Mint-Y-Teal", "icons": "Mint-Y-Cyan", "cursor": "Bibata-Modern-Classic"},
+          {"name": "green", "color": "#35a854", "themes": "Mint-Y", "cursor": "Bibata-Modern-Classic"},
+          {"name": "sand", "color": "#c5a07c", "themes": "Mint-Y-Sand", "cursor": "Bibata-Modern-Classic"},
+          {"name": "grey", "color": "#70737a", "themes": "Mint-Y-Grey", "cursor": "Bibata-Modern-Classic"},
+          {"name": "orange", "color": "#ff7139", "themes": "Mint-Y-Orange", "cursor": "Bibata-Modern-Classic"},
+          {"name": "yaru", "color": "#ff7139", "color2": "#676767", "themes": "Mint-Y-Orange", "icons": "Mint-Y-Yaru", "cursor": "Bibata-Modern-Classic"},
+          {"name": "red", "color": "#e82127", "themes": "Mint-Y-Red", "cursor": "Bibata-Modern-Classic"},
+          {"name": "pink", "color": "#e54980", "themes": "Mint-Y-Pink", "cursor": "Bibata-Modern-Classic"},
+          {"name": "purple", "color": "#8c5dd9", "themes": "Mint-Y-Purple", "cursor": "Bibata-Modern-Classic"}
+        ]
+    },
+    {
+      "name": "Adwaita",
+      "default": "mixed",
+      "mixed": [
+          {"default": "true", "name": "blue", "color": "#3584e4", "themes": "Adwaita", "cinnamon": "Mint-Y-Dark-Blue", "cursor": "Bibata-Modern-Classic"}
+      ],
+      "dark": [
+          {"name": "blue", "color": "#15539e", "themes": "Adwaita-dark", "icons": "Adwaita", "cinnamon": "Mint-Y-Dark-Blue", "cursor": "Bibata-Modern-Classic"}
+      ]
+    },
+    {
+      "name": "HighContrast",
+      "default": "light",
+      "light": [
+          {"default": "true", "name": "contrast", "color": "#000000", "themes": "HighContrast", "cinnamon": "Mint-Y-Dark-Grey", "cursor": "Bibata-Modern-Classic"}
+      ]
+    }
+  ]
+}
