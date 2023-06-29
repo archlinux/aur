@@ -1,7 +1,7 @@
 pkgbase = boswars
 	pkgdesc = Futuristic real-time strategy game
-	pkgver = 2.7
-	pkgrel = 5
+	pkgver = 2.8
+	pkgrel = 1
 	url = http://www.boswars.org
 	arch = i686
 	arch = x86_64
@@ -10,19 +10,17 @@ pkgbase = boswars
 	makedepends = coreutils
 	depends = sdl
 	depends = libpng
-	depends = lua51
+	depends = lua
 	depends = libvorbis
 	depends = libtheora
 	depends = libgl
-	depends = python2
-	source = http://www.boswars.org/dist/releases/boswars-2.7-src.tar.gz
+	source = http://www.boswars.org/dist/releases/boswars-2.8-src.tar.gz
 	source = boswars.sh
 	source = boswars.png
 	source = boswars.desktop
-	sha256sums = dc3718f531e9ea413cf37e1333b62a4c5e69f1405502d9c59b9e424635135e3e
-	sha256sums = 8f90601f1aedee2d2b097b3a47200013ec61639ca3dd6c8936dfc733eb5dc634
+	sha256sums = 5185206990bf6765c7a5d3802ce6e6048a1087cf4c307b099a5691a3eec6b86a
+	sha256sums = 757b934f61d8e12825ca6a788a0802020c156fba1377582f301c599a68ca82f8
 	sha256sums = f89454681f02df31f5714747563ce30c4643cda96d91b7fc29216dacf92e8b10
 	sha256sums = 666712c9cf7fff391e6a67f99fdc12f6fce45777ee0891a808cb2a00910c739c
 
 pkgname = boswars
-

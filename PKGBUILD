@@ -2,54 +2,40 @@
 # Contributor: Diogo Leal <estranho@diogoleal.com>
 
 pkgname=boswars
-pkgver=2.7
-pkgrel=5
+pkgver=2.8
+pkgrel=1
 pkgdesc="Futuristic real-time strategy game"
 url="http://www.boswars.org"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('sdl' 'libpng' 'lua51' 'libvorbis' 'libtheora' 'libgl' 'python2')
+depends=('sdl' 'libpng' 'lua' 'libvorbis' 'libtheora' 'libgl')
 makedepends=('glu' 'coreutils') # nproc is in coreutils
 source=("http://www.boswars.org/dist/releases/$pkgname-$pkgver-src.tar.gz"
         "boswars.sh"
         "boswars.png"
         "boswars.desktop")
-sha256sums=('dc3718f531e9ea413cf37e1333b62a4c5e69f1405502d9c59b9e424635135e3e'
-            '8f90601f1aedee2d2b097b3a47200013ec61639ca3dd6c8936dfc733eb5dc634'
+sha256sums=('5185206990bf6765c7a5d3802ce6e6048a1087cf4c307b099a5691a3eec6b86a'
+            '757b934f61d8e12825ca6a788a0802020c156fba1377582f301c599a68ca82f8'
             'f89454681f02df31f5714747563ce30c4643cda96d91b7fc29216dacf92e8b10'
             '666712c9cf7fff391e6a67f99fdc12f6fce45777ee0891a808cb2a00910c739c')
-
-prepare() {
-  cd $pkgname-$pkgver-src
-
-  # use python2 in doc generator scripts
-  sed 's|env python$|&2|' -i doc/scripts/*.py
-  # fix 'zlib too far back error' of png images (needed for libpng>=1.6)
-  msg2 "Fixing PNG images…"
-  for _f in {maps/antarticum.map/terrain,graphics/ui/ui_*,units/{radar/*,tree*/tree0?}}.png
-  do
-    pngfix -e -w --out=$_f.fixed $_f || : # ignore exit code
-    mv $_f.fixed $_f
-  done
-}
 
 build() {
   cd $pkgname-$pkgver-src
 
   # speed up build process with parallel building
-  python2 make.py -j $(nproc)
+  python make.py -j $(nproc)
 }
 
 package(){
   cd $pkgname-$pkgver-src
 
   # data
-  install -d "$pkgdir"/opt/bos/languages
-  install -m644 languages/*.po "$pkgdir"/opt/bos/languages
-  cp -r campaigns doc graphics intro maps patches scripts sounds units "$pkgdir"/opt/bos
+  install -d "$pkgdir"/usr/share/boswars/languages
+  install -m644 languages/*.po "$pkgdir"/usr/share/boswars/languages
+  cp -r campaigns doc graphics intro maps patches scripts sounds units "$pkgdir"/usr/share/boswars/
 
   # binary + launcher
-  install -Dm755 fbuild/release/boswars "$pkgdir"/opt/bos/boswars
+  install -Dm755 fbuild/release/boswars "$pkgdir"/usr/share/boswars/boswars
   install -Dm755 ../boswars.sh "$pkgdir"/usr/bin/boswars
   # .desktop entry
   install -Dm644 ../boswars.png "$pkgdir"/usr/share/pixmaps/boswars.png
@@ -57,5 +43,5 @@ package(){
   # license + doc
   install -d "$pkgdir"/usr/share/{licenses/$pkgname,doc}
   install -m644 COPYRIGHT.txt "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s /opt/bos/doc "$pkgdir"/usr/share/doc/$pkgname
+  ln -s /usr/share/boswars/doc "$pkgdir"/usr/share/doc/$pkgname
 }

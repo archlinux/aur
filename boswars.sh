@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec /opt/bos/boswars -d /opt/bos $*
+exec /usr/share/boswars/boswars -d /usr/share/boswars/ $*
