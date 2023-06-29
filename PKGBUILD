@@ -241,6 +241,8 @@ done
   #-DFEATURE_opengles3=ON \
 
   # pch are massive running out of space on 22GB drive vs 6GB build
+				#-DQT_HOST_PATH=/usr/lib/qt6/bin \
+				#-DQt6HostInfo_DIR=/usr/lib/cmake/Qt6HostInfo \
   local _configure_line_fn=configure_line
   local _configure_line="cmake \
                                 -GNinja \
@@ -257,6 +259,7 @@ done
                                 -DCMAKE_INSTALL_PREFIX:PATH=${_installprefix} \
                                 -DBUILD_qtwebengine=OFF \
                                 -DINPUT_linker=mold \
+				-DCMAKE_TOOLCHAIN_FILE=${startdir}/toolchain.cmake \
 				${additional_args}
                                 ${_srcdir}
     "
