@@ -7,7 +7,7 @@
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
 pkgver=3.48.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
