@@ -5,7 +5,7 @@
 # Contributor: Ferik <djferik at gmail dot com>
 
 pkgname=masterpdfeditor
-pkgver=5.9.40
+pkgver=5.9.50
 pkgrel=4
 pkgdesc='A complete solution for viewing, creating and editing PDF files'
 url='https://code-industry.net/free-pdf-editor/'
@@ -15,9 +15,7 @@ makedepends=('patchelf')
 source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt5.x86_64.tar.gz"
                masterpdfeditor5.desktop
                license.txt)
-sha1sums_x86_64=('9207e438dc8fd08e4ee1d99d80576134b3f720bc'
-                 'b33e7148123565fd4cc15d41c493f6ab27d37ba4'
-                 '75ab655977f493aa46fd3aa6cb1cbfcf19b40d97')
+sha1sums_x86_64=( '1eff250fb0baa6c554ba8b25cf150e17541f9e2c')
 
 package() {
   depends=('libgl' 'nspr' 'nss' 'qt5-base' 'qt5-svg' 'qt5-declarative' 'sane')
@@ -27,7 +25,7 @@ package() {
 
   cd "$pkgdir/opt/master-pdf-editor-${pkgver%%.*}"
   ln -sr masterpdfeditor${pkgver%%.*} -t "$pkgdir/usr/bin/"
-  install -Dm644 ${srcdir}/masterpdfeditor${pkgver%%.*}.desktop -t "$pkgdir/usr/share/applications/"
-  install -Dm644 ${srcdir}/license.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 masterpdfeditor${pkgver%%.*}.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 license.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
   patchelf --remove-rpath masterpdfeditor${pkgver%%.*}
 }
