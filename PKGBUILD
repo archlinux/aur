@@ -4,7 +4,7 @@
 pkgname=sdl3-git
 pkgver=prerelease.3.0.0.r1826.g4d23eaf81
 pkgrel=1
-pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
+pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
 license=('MIT')
@@ -18,7 +18,7 @@ optdepends=('alsa-lib: ALSA audio driver'
 	         'pipewire: PipeWire audio driver'
 	         'libdecor: Wayland client decorations')
 source=("git+https://github.com/libsdl-org/SDL")
-provides=("sdl2=$pkgver" "sdl2" "sdl3")
+provides=("sdl2=$pkgver" "sdl2" "sdl3" "sdl2-git" "sdl3-git")
 conflicts=(sdl2 sdl2-minimal-hg sdl3)
 sha512sums=('SKIP')
 validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
