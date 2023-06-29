@@ -7,8 +7,6 @@ pkgbase = masterpdfeditor
 	license = custom
 	makedepends = patchelf
 	source_x86_64 = https://code-industry.net/public/master-pdf-editor-5.9.50-qt5.x86_64.tar.gz
-	source_x86_64 = masterpdfeditor5.desktop
-	source_x86_64 = license.txt
 	sha1sums_x86_64 = 1eff250fb0baa6c554ba8b25cf150e17541f9e2c
 
 pkgname = masterpdfeditor
