@@ -1,6 +1,6 @@
 # Maintainer: p3nguin-kun <p3nguinkun@proton.me>
 pkgname=lmaofetch
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="A simple system fetch written in Bash"
@@ -27,12 +27,8 @@ prepare() {
     sudo pacman -S --noconfirm ttf-nerd-fonts-symbols
 }
 
-build() {
-	cd $pkgname
-}
-
 package() {
-	cd $pkgname
-	sudo cp lmaofetch /usr/bin
-    sudo chmod +x /usr/bin/lmaofetch
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
+  install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/neofetch/LICENSE.md"
 }
