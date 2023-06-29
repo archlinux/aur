@@ -1,6 +1,6 @@
 # Maintainer: Cheems Bread <CheemsBread505@proton.me>
 pkgname=neogo
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="neofetch but in golang"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL v3.0')
 depends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CheemsBread505/neogo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b8f66e6aad6b40578daba3359e2e2bda21ddd20db03c0a16df135dbba09ff2fe')
+sha256sums=('15c40aeb628dcfd1df6e4356b672c1dec28e9bed261828329bff640328f3d247')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
