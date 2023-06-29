@@ -9,7 +9,7 @@ _building=true
 pkgname=qtcreator-prerelease
 _pkgvermajmin=11.0
 _pkgver=${_pkgvermajmin}.0
-_verpostfix="beta1"
+_verpostfix="beta2"
 pkgver="${_pkgver}${_verpostfix}"
 pkgrel=1
 _urlbase="https://download.qt.io/official_releases"
@@ -23,7 +23,7 @@ arch=('x86_64')
 url='http://qt.io/ide'
 license=('GPL')
 provides=('qtcreator')
-conflicts=('qtcreator')
+conflicts=('qtcreator' 'litehtml')
 depends=('python-beautifulsoup4' 'qt6-base' 'qt6-tools' 'qt6-declarative' 'qt6-quickcontrols2' 'clang' 'llvm' 'lld')
 install=qtcreator-prerelease.install
 optdepends=('qt6-doc: integrated Qt documentation'
@@ -38,7 +38,7 @@ optdepends=('qt6-doc: integrated Qt documentation'
             'valgrind: analyze support')
 makedepends=('clang' 'qt6-base' 'patchelf')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_source_archive_name}.tar.xz")
-sha512sums=('63da6541f33eb14c24305c2adea69b64673e070e978f18a110c7fe33b692833a5d29e339e1847849c26436e5c12655eb8b27e351a51bd910c9464b677c8b2736')
+sha512sums=('26178a3962d266a6b202fc76bd7472d3b7da891097149dde3311a34f28c70c21891245cbe3437ea8cdf1085b462ab2ec2348ee694e513c669e999404145f6079')
 
 prepare() {
   local working_dir=${srcdir}/${_source_archive_name}
@@ -55,8 +55,8 @@ build() {
 
   cmake \
     -G Ninja \
-    -DCMAKE_TOOLCHAIN_FILE=${startdir}/toolchain.cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_TOOLCHAIN_FILE=${startdir}/toolchain.cmake \
     -DCMAKE_BUILD_TYPE=Release -DWITH_DOCS=ON -DBUILD_QBS=OFF -DBUILD_WITH_CRASHPAD=OFF \
     ${working_dir}
 
