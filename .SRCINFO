@@ -1,7 +1,7 @@
 pkgbase = r-compcoder
 	pkgdesc = RNAseq data simulation, differential expression analysis and performance comparison of differential expression methods
-	pkgver = 1.36.0
-	pkgrel = 3
+	pkgver = 1.36.1
+	pkgrel = 1
 	url = https://bioconductor.org/packages/compcodeR
 	arch = any
 	license = GPL
@@ -42,7 +42,7 @@ pkgbase = r-compcoder
 	optdepends = r-tcc
 	optdepends = r-testthat
 	optdepends = r-tidytree
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/compcodeR_1.36.0.tar.gz
-	sha256sums = 37db7ec5b3bd62ccf2179fe9778475006df653a8f685f00d99758793b3b16a34
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/compcodeR_1.36.1.tar.gz
+	sha256sums = c5d563af67454afa4ae8c011956d5c34f60b5c99c3c440e8a7bacb12e223fa02
 
 pkgname = r-compcoder
