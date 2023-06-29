@@ -1,0 +1,4 @@
+inih/
+src/
+pkg/
+*.tar.zst
