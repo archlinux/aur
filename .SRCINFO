@@ -1,6 +1,6 @@
 pkgbase = python-finvizfinance
 	pkgdesc = Finviz Finance. Information downloader.
-	pkgver = 0.12.2
+	pkgver = 0.14.5
 	pkgrel = 1
 	url = https://pypi.org/project/finvizfinance
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-finvizfinance
 	depends = python-requests
 	depends = python-bs4
 	depends = python-lxml
-	source = https://files.pythonhosted.org/packages/source/f/finvizfinance/finvizfinance-0.12.2.tar.gz
-	sha256sums = 6f6126e9836e6ef09a46f9f66e25354d7e250ef3336690d3939de16462eb51bc
+	source = https://files.pythonhosted.org/packages/source/f/finvizfinance/finvizfinance-0.14.5.tar.gz
+	sha256sums = c97fe0e69d681d9108113aed943988561665d0d4dbd64ffa0b666a2899c25899
 
 pkgname = python-finvizfinance

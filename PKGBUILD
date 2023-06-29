@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-finvizfinance
 _pkgname=${pkgname:7}
-pkgver=0.12.2
+pkgver=0.14.5
 pkgrel=1
 pkgdesc="Finviz Finance. Information downloader."
 arch=('any')
@@ -16,7 +16,7 @@ depends=(python
     python-lxml
 )
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('6f6126e9836e6ef09a46f9f66e25354d7e250ef3336690d3939de16462eb51bc')
+sha256sums=('c97fe0e69d681d9108113aed943988561665d0d4dbd64ffa0b666a2899c25899')
 
 prepare() {
     cd ${srcdir}/${_pkgname}-${pkgver}
