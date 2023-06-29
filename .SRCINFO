@@ -1,7 +1,7 @@
 pkgbase = nix-melt
 	pkgdesc = A ranger-like flake.lock viewer
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nix-community/nix-melt
 	arch = x86_64
 	arch = i686

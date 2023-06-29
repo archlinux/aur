@@ -2,7 +2,7 @@
 
 pkgname=nix-melt
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A ranger-like flake.lock viewer'
 url='https://github.com/nix-community/nix-melt'
 license=('MPL2')
@@ -41,7 +41,7 @@ package() {
     target/release/nix-melt
 
   install -Dm0644 "artifacts/nix-melt.1" "$pkgdir/usr/share/man/man1/nix-melt.1"
-  install -Dm0644 "artifacts/nix-melt.bash" "$pkgdir/usr/share/bash-completions/nix-melt"
+  install -Dm0644 "artifacts/nix-melt.bash" "$pkgdir/usr/share/bash-completion/completions/nix-melt"
   install -Dm0644 "artifacts/nix-melt.fish" "$pkgdir/usr/share/fish/vendor_completions.d/nix-melt.fish"
   install -Dm0644 "artifacts/_nix-melt" "$pkgdir/usr/share/zsh/site-functions/_nix-melt"
 
