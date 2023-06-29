@@ -1,7 +1,7 @@
 # Maintainer: Maciek Borzecki <maciek.borzecki@gmail.com>
 pkgname=fnotifystat
-pkgver=0.02.07
-pkgrel=2
+pkgver=0.02.10
+pkgrel=1
 pkgdesc="file activity monitoring tool"
 arch=('x86_64')
 url="https://github.com/ColinIanKing/fnotifystat"
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=()
 optdepends=('bash-completion: bash completion support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ColinIanKing/fnotifystat/archive/refs/tags/V${pkgver}.tar.gz")
-sha256sums=('fa0d1bfcb96cdc427b5042d4bfe6e1cb2dc52936e222b5b7aeba3d25a97ee20a')
+sha256sums=('cef782ca0697dfd98c8db4688caf37749b1a5299681cc1ba6956f051d1312e24')
 
 prepare() {
 	  cd "$pkgname-$pkgver"
