@@ -2,6 +2,7 @@ pkgbase = authme-bin
 	pkgdesc = Simple cross-platform two-factor (2FA) authenticator app for desktop.
 	pkgver = 4.1.0
 	pkgrel = 1
+	url = https://authme.levminer.com/
 	arch = x86_64
 	license = GPL3
 	depends = glib2
