@@ -1,7 +1,7 @@
 pkgbase = hyprpicker
 	pkgdesc = A wlroots-compatible Wayland color picker that does not suck.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyprwm/hyprpicker
 	arch = x86_64
 	license = BSD
@@ -17,6 +17,7 @@ pkgbase = hyprpicker
 	makedepends = xorgproto
 	depends = cairo
 	depends = wayland
+	optdepends = wl-clipboard: Allows --autocopy to automatically copy the output to the clipboard.
 	source = hyprpicker-0.1.1.tar.gz::https://github.com/hyprwm/hyprpicker/archive/v0.1.1.tar.gz
 	sha256sums = f6a5e57dc69e3b0499a34f4533583bd7d7770f5a1a9834f521b532f0d1ec26e0
 
