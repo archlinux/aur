@@ -3,7 +3,6 @@ pkgbase = canon-pixma-mx920-complete
 	pkgver = 3.90.2.10
 	pkgrel = 2
 	url = http://www.canon.co.uk/Support/Consumer_Products/product_ranges/printers/pixma/index.aspx
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = libcups
@@ -17,4 +16,3 @@ pkgbase = canon-pixma-mx920-complete
 	sha256sums = 44f7e0ae35093c3c79021ce35faa8d23e013ef7cdc183e395e877965ff6957c0
 
 pkgname = canon-pixma-mx920-complete
-

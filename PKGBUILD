@@ -1,4 +1,4 @@
-# Maintainer: Miroslav Koškár <http://mkoskar.com/>
+# Maintainer: Miroslav Koškár <https://mkoskar.com/>
 
 # Based on canon-pixma-mx870-complete-3.30-1 by:
 #   Maintainer: Jeremy Sands <cto@jeremysands.com>
@@ -13,7 +13,7 @@ pkgrel=2
 pkgdesc='Complete driver set (printing and scanning) for Canon Pixma MX920 series'
 url='http://www.canon.co.uk/Support/Consumer_Products/product_ranges/printers/pixma/index.aspx'
 license=(custom)
-arch=(i686 x86_64)
+arch=(x86_64)
 depends=(libcups popt libpng12 libusb-compat libtiff)
 
 case $CARCH in
