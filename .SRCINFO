@@ -1,0 +1,17 @@
+pkgbase = tmux-mpi-git
+	pkgdesc = TMUX-MPI: A tool for launching MPI processes in tmux windows.
+	pkgver = r47.3d5d534
+	pkgrel = 1
+	url = https://github.com/wrs20/tmux-mpi
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = dtach
+	depends = python-libtmux
+	depends = tmux
+	provides = tmux-mpi
+	source = tmux-mpi::git+https://github.com/wrs20/tmux-mpi.git
+	sha256sums = SKIP
+
+pkgname = tmux-mpi-git
