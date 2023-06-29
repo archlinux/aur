@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=opencpu
-_pkgver=2.2.9
+_pkgver=2.2.10
 pkgname=r-${_pkgname,,}
-pkgver=2.2.9
+pkgver=2.2.10
 pkgrel=1
 pkgdesc='Producing and Reproducing Results'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-unix
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('13e3d1976caf3b3b34bd8b95294868ac0ade3e73a3511354625fa4a863c874a3')
+sha256sums=('8ab04c9b8edf566705c2052a3f65d8491c51196d3bc4ab761435db3f1f1bf972')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
