@@ -6,7 +6,7 @@ pkgbase = sdl3-git
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = MIT
+	license = zlib
 	makedepends = alsa-lib
 	makedepends = mesa
 	makedepends = libpulse
@@ -37,16 +37,9 @@ pkgbase = sdl3-git
 	optdepends = jack: JACK audio driver
 	optdepends = pipewire: PipeWire audio driver
 	optdepends = libdecor: Wayland client decorations
-	provides = sdl2=prerelease.3.0.0.r1826.g4d23eaf81
-	provides = sdl2
 	provides = sdl3
-	provides = sdl2-git
-	provides = sdl3-git
-	conflicts = sdl2
-	conflicts = sdl2-minimal-hg
 	conflicts = sdl3
-	source = git+https://github.com/libsdl-org/SDL
-	validpgpkeys = 1528635D8053A57F77D1E08630A59377A7763BE6
+	source = git+https://github.com/libsdl-org/SDL.git
 	sha512sums = SKIP
 
 pkgname = sdl3-git

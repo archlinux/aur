@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 3)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
-license=('MIT')
+license=('zlib')
 depends=('glibc' 'libxext' 'libxrender' 'libx11' 'libgl' 'libxcursor' 'hidapi' 'libusb')
 makedepends=('alsa-lib' 'mesa' 'libpulse' 'libxrandr' 'libxinerama' 'wayland' 'libxkbcommon'
              'wayland-protocols' 'ibus' 'fcitx5' 'libxss' 'cmake' 'jack' 'ninja' 'pipewire'
@@ -17,11 +17,10 @@ optdepends=('alsa-lib: ALSA audio driver'
             'jack: JACK audio driver'
 	         'pipewire: PipeWire audio driver'
 	         'libdecor: Wayland client decorations')
-source=("git+https://github.com/libsdl-org/SDL")
-provides=("sdl2=$pkgver" "sdl2" "sdl3" "sdl2-git" "sdl3-git")
-conflicts=(sdl2 sdl2-minimal-hg sdl3)
+source=("git+https://github.com/libsdl-org/SDL.git")
+provides=("sdl3")
+conflicts=("sdl3")
 sha512sums=('SKIP')
-validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
 
 pkgver() {
   cd SDL
