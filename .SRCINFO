@@ -1,7 +1,7 @@
 pkgbase = xdg-utils-no-open
 	pkgdesc = Command line tools that assist applications with a variety of desktop integration tasks
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.freedesktop.org/wiki/Software/xdg-utils/
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = xdg-utils-no-open
 	makedepends = git
 	depends = sh
 	depends = xorg-xset
-	optdepends = linopen: for xdg-open support
+	depends = xdg-open-impl
 	provides = xdg-utils
 	conflicts = xdg-utils
 	source = https://portland.freedesktop.org/download/xdg-utils-1.1.2.tar.gz

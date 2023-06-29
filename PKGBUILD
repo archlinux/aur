@@ -1,14 +1,13 @@
 pkgname=xdg-utils-no-open
 _pkgname=xdg-utils
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks"
 arch=('any')
 url="http://www.freedesktop.org/wiki/Software/xdg-utils/"
 license=('MIT')
-depends=('sh' 'xorg-xset') # xset needed inside xdg-screensaver
+depends=('sh' 'xorg-xset' 'xdg-open-impl') # xset needed inside xdg-screensaver
 makedepends=('docbook-xsl' 'lynx' 'xmlto' 'git')
-optdepends=('linopen: for xdg-open support')
 provides=('xdg-utils')
 conflicts=('xdg-utils')
 source=(https://portland.freedesktop.org/download/$_pkgname-$pkgver.tar.gz)
