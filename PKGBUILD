@@ -1,6 +1,6 @@
 appname=amethyst
 pkgname=$appname-player-git
-pkgver=063b08bf68220f1705abf8643051ba6c1ca0e26b
+pkgver=ac298c7b70f1eda6a794a548bb4ba98594400334
 pkgrel=1
 pkgdesc="Audio Player"
 arch=('x86_64' 'aarch64')
