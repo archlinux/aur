@@ -7,8 +7,8 @@
 # Contributor: dieghen89 <dieghen89 at gmail dot com>
 
 pkgname=musique
-pkgver=1.10.1
-pkgrel=3
+pkgver=1.11
+pkgrel=1
 pkgdesc='A finely crafted music player'
 arch=('x86_64')
 url='https://flavio.tordini.org/musique'

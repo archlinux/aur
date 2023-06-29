@@ -1,7 +1,7 @@
 pkgbase = musique
 	pkgdesc = A finely crafted music player
-	pkgver = 1.10.1
-	pkgrel = 3
+	pkgver = 1.11
+	pkgrel = 1
 	url = https://flavio.tordini.org/musique
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = musique
 	depends = taglib
 	depends = mpv
 	optdepends = finetune
-	source = git+https://github.com/flaviotordini/musique.git#tag=1.10.1
+	source = git+https://github.com/flaviotordini/musique.git#tag=1.11
 	source = git+https://github.com/flaviotordini/http.git
 	source = git+https://github.com/flaviotordini/idle.git
 	source = git+https://github.com/flaviotordini/media.git
