@@ -1,7 +1,7 @@
 pkgbase = fclones-gui
 	pkgdesc = Interactive duplicate file finder and remover
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkolaczk/fclones-gui
 	arch = x86_64
 	license = MIT

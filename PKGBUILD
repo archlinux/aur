@@ -1,7 +1,7 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 pkgname=fclones-gui
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Interactive duplicate file finder and remover'
 url='https://github.com/pkolaczk/fclones-gui'
 arch=('x86_64')
@@ -32,5 +32,5 @@ package() {
 
   cd "$pkgname-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm755 target/release/fclones-gui "$pkgdir/usr/bin/fclones-gui"
+  install -Dm755 target/x86_64-unknown-linux-gnu/release/fclones-gui "$pkgdir/usr/bin/fclones-gui"
 }
