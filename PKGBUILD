@@ -4,11 +4,11 @@
 _pkgname=OpenBLAS
 _blasver=3.11.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-BUILDFLAG="USE_OPENMP=1 USE_THREAD=1 USE_TLS=1 DYNAMIC_ARCH=1 CROSS=1 HOSTCC=gcc"
+BUILDFLAG="USE_OPENMP=1 USE_THREAD=1 USE_TLS=1 DYNAMIC_ARCH=1 CROSS=1 HOSTCC=gcc MAKE_NB_JOBS=0"
 
 pkgname=mingw-w64-openblas-lapack
 pkgver=0.3.23
-pkgrel=2
+pkgrel=3
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD (mingw-w64)"
 arch=('any')
 url="https://www.openblas.net/"
@@ -47,7 +47,7 @@ build() {
       _BUILDFLAG="${BUILDFLAG} BINARY=64"
     fi
 
-    make ${_BUILDFLAG} CC=${_arch}-gcc FC=${_arch}-gfortran shared
+    LANG=C make -j 1 ${_BUILDFLAG} CC=${_arch}-gcc FC=${_arch}-gfortran shared
     popd
   done
 }
@@ -64,7 +64,7 @@ package() {
       _BUILDFLAG="${BUILDFLAG} BINARY=64"
     fi
 
-    make ${_BUILDFLAG} CC=${_arch}-gcc FC=${_arch}-gfortran PREFIX="/usr/${_arch}" DESTDIR="${pkgdir}" install
+    LANG=C make -j 1 ${_BUILDFLAG} CC=${_arch}-gcc FC=${_arch}-gfortran PREFIX="/usr/${_arch}" DESTDIR="${pkgdir}" install
     install -Dm644 libopenblas.dll.a "${pkgdir}/usr/${_arch}/lib"
 
     ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}/bin/"*.dll
@@ -88,6 +88,12 @@ package() {
     ln -sf libopenblas.a liblapack.a
     ln -sf libopenblas.dll.a liblapacke.dll.a
     ln -sf libopenblas.a liblapacke.a
+
+    cd "${pkgdir}/usr/${_arch}/lib/pkgconfig/"
+    ln -sf openblas.pc blas.pc
+    ln -sf openblas.pc cblas.pc
+    ln -sf openblas.pc lapack.pc
+    ln -sf openblas.pc lapacke.pc
 
     popd
   done
