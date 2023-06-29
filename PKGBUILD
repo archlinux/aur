@@ -1,39 +1,83 @@
-pkgname=libpeas-git
-_pkgname=libpeas
-pkgver=1.26.0+5+g53a4f19
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+
+_pkg="peas"
+_pkgname="lib${_pkg}"
+pkgbase="${_pkgname}-git"
+pkgname=(
+  "${pkgbase}"
+  "${_pkgname}-docs-git"
+)
+pkgver=1.36.0+98+gbaa78f5
 pkgrel=1
 pkgdesc="A GObject plugins library"
-arch=(x86_64)
-url="https://wiki.gnome.org/Projects/Libpeas"
-license=(GPL2)
-depends=(gtk3 gobject-introspection-runtime)
-makedepends=(gtk-doc python-gobject glade gobject-introspection git meson vala)
+url="https://wiki.gnome.org/Projects/Lib${_pkg}"
+arch=(
+  x86_64
+  i686
+  pentium4
+  aarch64
+  armv7h
+)
+license=(LGPL)
+depends=(
+  gobject-introspection-runtime
+  gtk3
+)
+makedepends=(
+  gi-docgen
+  git
+  glade
+  gobject-introspection
+  lua51-lgi
+  meson
+  python-gobject
+  vala
+)
 checkdepends=(xorg-server-xvfb)
-optdepends=('python-gobject: Python loader')
-provides=(libpeas libpeas{,-gtk}-1.0.so)
-conflicts=(libpeas)
-source=("git+https://gitlab.gnome.org/GNOME/libpeas.git")
+optdepends=(
+  'python-gobject: Python loader')
+source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha512sums=('SKIP')
 
-
 pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/^libpeas-//;s/-/+/g'
+  cd "${_pkgname}"
+  git describe --tags | sed "s/^${_pkgname}-//;s/-/+/g"
 }
 
 build() {
-  arch-meson $_pkgname build -D vapi=true -D gtk_doc=true
-  ninja -C build
+  local meson_options=(
+    -D gtk_doc=true
+    -D vapi=true
+  )
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
 
 check() {
-  dbus-run-session xvfb-run \
-    -s '-screen 0 1920x1080x24 -nolisten local' \
+  xvfb-run -s '-nolisten local' \
     meson test -C build --print-errorlogs
 }
 
-package() {
-  DESTDIR="$pkgdir" meson install -C build
+package_libpeas-git() {
+  provides=(
+    "${_pkgname}=${pkgver}"
+    "${_pkgname}"{,-gtk}"-1.0.so")
+  conflicts=("${_pkgname}")
+
+  meson install -C build --destdir "${pkgdir}"
+
+  mkdir -p doc/usr/share
+  mv {"$pkgdir",doc}/usr/share/doc
 }
 
-# vim:set ts=2 sw=2 et:
+package_libpeas-docs-git() {
+  pkgdesc+=" (documentation)"
+  depends=()
+  provides=(
+    "${_pkgname}-docs=${pkgver}")
+  conflicts=("${_pkgname}-docs")
+
+  mv doc/* "$pkgdir"
+}
+
+# vim:set sw=2 sts=-1 et:
