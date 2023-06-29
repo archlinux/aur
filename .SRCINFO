@@ -1,6 +1,6 @@
 pkgbase = escambo-git
 	pkgdesc = HTTP-based APIs test application
-	pkgver = 0.1.0.r154.5aa141f
+	pkgver = 0.1.2.r199.434e58f
 	pkgrel = 1
 	url = https://github.com/CleoMenezesJr/escambo
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = escambo-git
 	makedepends = blueprint-compiler
 	makedepends = meson
 	makedepends = git
+	depends = gtksourceview5
 	depends = libadwaita
 	depends = python-gobject
 	depends = python-requests
