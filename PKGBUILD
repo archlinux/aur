@@ -1,7 +1,7 @@
 # Maintainer: Jorge Alejandro Jimenez Luna <jorgeajimenezl17@gmail.com>
 
 pkgname=proxyswarm
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Lightweight proxy that allows redirect HTTP(S) traffic through a proxy."
 arch=('x86_64')
