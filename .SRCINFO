@@ -1,6 +1,6 @@
 pkgbase = jdk17-graalvm-ee-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 17 version
-	pkgver = 23.0.0
+	pkgver = 17.0.7
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = jdk17-graalvm-ee-bin.install
