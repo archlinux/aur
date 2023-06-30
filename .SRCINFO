@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-libinih
+	pkgdesc = 'A simple .INI file parser written in C (mingw-w64)
+	pkgver = 56
+	pkgrel = 1
+	url = https://github.com/benhoyt/inih
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-meson
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = https://github.com/benhoyt/inih/archive/refs/tags/r56.tar.gz
+	sha256sums = 4f2ba6bd122d30281a8c7a4d5723b7af90b56aa828c0e88256d7fceda03a491a
+
+pkgname = mingw-w64-libinih
