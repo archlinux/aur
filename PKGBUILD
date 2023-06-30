@@ -3,8 +3,8 @@
 # Contributor: Danibspi danibspi <at> gmail <dot> com
 
 pkgname=bcunit
-pkgver=5.2.0+1+ge910154
-_commit=e9101548b1aba4298a18c3817ebee053c7f3a0a7
+pkgver=5.2.0+4+g0e0faa2
+_commit=0e0faa2bd876784f78ff446d617b8ee8e40bceab
 pkgrel=1
 pkgdesc="Lightweight system for writing, administering, and running unit tests in C"
 arch=(x86_64)
