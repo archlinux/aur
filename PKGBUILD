@@ -3,7 +3,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-cry
-pkgver=0.6.7
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="OCaml native module for icecast/shoutcast source protocol(s)"
 arch=('i686' 'x86_64')
@@ -29,4 +29,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('d60c44a1f6b4a6414ee50f2d81da70f7d37c4f7496a7cd8c1f1025980d3dd37d')
+sha256sums=('0d9ef968f6352e9d64e8af27702361e643f7d2a1795deff0781d88460e289579')
