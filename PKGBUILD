@@ -3,8 +3,8 @@
 
 pkgname=lib32-gegl
 _pkgbase=gegl
-pkgver=0.4.44
-_commit=f58385300356e739491b4cf803e0f9591e34dd40  # tags/GEGL_0_4_44
+pkgver=0.4.46
+_commit=e6cb97763e422d8853fc95c665f8b0c73f025dd8  # tags/GEGL_0_4_46
 pkgrel=1
 pkgdesc="Graph based image processing framework (32-bit)"
 arch=('x86_64')
