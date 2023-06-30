@@ -3,7 +3,7 @@
 _pkgbase=rtl8xxxu
 pkgname=rtl8xxxu-dkms-git
 pkgver=r22.6289e8f
-pkgrel=2
+pkgrel=3
 pkgdesc="Driver for Realtek RTL8XXXXU usb wifi chips"
 arch=('any')
 url="https://github.com/lwfinger/rtl8xxxu"
@@ -18,6 +18,7 @@ prepare() {
     sed -i "/POST_INSTALL/d" dkms.conf
     sed -i "/BUILD_EXCLUSIVE_KERNEL/d" dkms.conf
     echo "blacklist rtl8xxxu" > blacklist-rtl8xxxu.conf
+    echo "options rtl8xxxu_git ht40_2g=1" > rtl8xxxu_git.conf
 }
 
 pkgver() {
@@ -27,7 +28,7 @@ pkgver() {
 
 package() {
     cd "${srcdir}"/${_pkgbase}
-    install -Dm 644 blacklist-rtl8xxxu.conf "${pkgdir}"/etc/modprobe.d/blacklist-rtl8xxxu.conf
+    install -Dm 644 -t "${pkgdir}"/etc/modprobe.d blacklist-rtl8xxxu.conf rtl8xxxu_git.conf
     install -Dm 644 -t "${pkgdir}"/usr/src/${_pkgbase}-${pkgver} *.c *.h Makefile dkms.conf
     sed -e "s/git_2042944-1/${pkgver}/" -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf
 }
