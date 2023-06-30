@@ -12,10 +12,9 @@ pkgver=${_srctag//-/.}
 pkgrel=3
 epoch=1
 
-#_winever=${pkgver%.*}
-#_winever=$pkgver
 _pkgbasever=${pkgver/rc/-rc}
 _winever=$_pkgbasever
+#_winever=${_pkgbasever%.*}
 
 source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#commit=${_commit}
         proton-wine-ge::git+https://github.com/GloriousEggroll/proton-wine.git
