@@ -1,0 +1,12 @@
+pkgbase = librewolf-gnome-search-provider
+	pkgdesc = GNOME shell search provider for LibreWolf (Based on firefox-gnome-search-provider)
+	pkgver = 1
+	pkgrel = 1
+	install = librewolf-gnome-search-provider.install
+	arch = any
+	license = GPL3
+	depends = librewolf
+	source = librewolf-search-provider.ini
+	sha256sums = 914e023463ce7f818540552f29a7420bba6da4133dfbee8815baeed24725ad0f
+
+pkgname = librewolf-gnome-search-provider

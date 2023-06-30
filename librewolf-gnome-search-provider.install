@@ -1,0 +1,8 @@
+post_install() {
+	echo ""
+	echo "****LibreWolf GNOME Search Provider Was Installed!****"
+	echo ""
+	echo "Remember to enable gnome shell search in LibreWolf configuration:"
+	echo "Go to about:config and set browser.gnome-search-provider.enabled to true"
+	echo ""
+}
