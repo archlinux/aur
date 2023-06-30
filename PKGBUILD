@@ -4,7 +4,7 @@
 
 _majorver=11
 _minorver=0
-_securityver=7
+_securityver=15
 _updatever=1
 _tag_ver="${_majorver}.${_minorver}.${_securityver}+${_updatever}"
 pkgver="${_majorver}.${_minorver}.${_securityver}.u${_updatever}"
@@ -60,18 +60,16 @@ backup=(
 install='install_jdk11-openjdk-dcevm.sh'
 
 source=(
-  java11-openjdk-dcevm-${_tag_ver}.tar.gz::https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases/download/dcevm-${_tag_ver}/java11-openjdk-dcevm-linux.tar.gz
+  java11-openjdk-dcevm-${_tag_ver}.tar.gz::https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases/download/dcevm-${_tag_ver}/Openjdk11u-dcevm-linux-x64.tar.gz
   freedesktop-java.desktop
   freedesktop-jconsole.desktop
   freedesktop-jshell.desktop
 )
 
-sha256sums=(
-  '0f91ac2f31ccd1a13bbbfd2bd84d3dee2170d3befd8aeaa30f00256553cf3515'
-  '428325db0d1483e73bf075fa6ef06c7a50dcbf452651751e93c4c0cb018c127a'
-  'a51ea0dc28347d43175832546454cf13b8c453408c4439df962a157f4af7e81c'
-  'bba0bbf1cef35199c7e6fc0531142d15c2a1231f4c9d9c292316d0d415eae148'
-)
+b2sums=('c61a4a731083488d9dc1b4ab4b2fde26ac9607b736b80bae31c4c2726fc0dc4f9e20cb7a198fef143dba4e474f6e27dc1a0ab756320aa426b84e383167f897b8'
+        'aa36d91c29dc026188b39a4c4dbc783f11c6dc4dcd49b2a3c81c4f8275dc775f51aec5bea76e62ed0a7298eb01cde432caf84db68380385bee4760fbc5a81473'
+        'd3ca17323864dbec4fcb3d7c2a13255e16aa9aaa745b32708189d6bb4ac5e782a0c818b0b76a3ee19447370259a1ba738b46096313c9e6c659063ec459415ad0'
+        '56b4a166aa89b2f3d1d7858430ebf0b9f41a9c47d7d3de1ffb44fe932cce7ebc7ace1b5ceb0de12aaaf98672a9c3a1804cb3dbf2166796aed21abea9058585cc')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-openjdk-dcevm
 _jdkdir=dcevm-${_tag_ver}
