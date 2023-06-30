@@ -1,14 +1,14 @@
 # Maintainer: AtticFinder65536 <atticfinder -AT- rocklabs -DOT- xyz>
 
 pkgname=('archisteamfarm')
-pkgver=5.4.6.3
+pkgver=5.4.7.3
 pkgrel=1
 pkgdesc="Powerful CLI program primarily for Steam trading card farming based on SteamKit2"
 url="https://github.com/JustArchiNET/ArchiSteamFarm"
 license=('Apache')
 source=("${pkgname}-${pkgver}".tar.gz::https://github.com/JustArchiNET/ArchiSteamFarm/archive/refs/tags/${pkgver}.tar.gz
 	'archisteamfarm')
-b2sums=('c5b35b85830f6a65cc15fc5215c063fe65d268a8526d7005cffe551aa035e224a0928bbe9ffce6def20285cce2d993612715a53e8713d1f8cedb1e25f7b7ba6c'
+b2sums=('c1775e5a5dfebde10354f3218619969831500f85a5becdfe6f28ff230f1522127b4aad346873159441c6cba1333e931064b800090b069b7ae3c75b27ef17dbd9'
 	'67a16d35a30213440e7b9ae9ae0b8e75a6f7e8aad8c6d28bcca2f6ca3e32d8c1e6a66c3369c88b7b752107a809687d5314e714230afe2c137b4026b1ab0297fe')
 arch=('any')
 depends=('dotnet-runtime-7.0')
