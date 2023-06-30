@@ -1,13 +1,13 @@
 pkgbase = lets-bin
 	pkgdesc = CLI task runner for productive developers - a better alternative to make
-	pkgver = 0.0.50
+	pkgver = 0.0.52
 	pkgrel = 1
 	url = https://lets-cli.org/
 	license = MIT
 	conflicts = lets
 	provides = lets
 	arch = x86_64
-	source_x86_64 = https://github.com/lets-cli/lets/releases/download/v0.0.50/lets_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = ad481948bd9edccfee4b677e4fd4ebce4d8f2327ac26b719144afd75b6295fd7
+	source_x86_64 = https://github.com/lets-cli/lets/releases/download/v0.0.52/lets_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 1b34c399546fffe7bc16f842a55a75d66a92270164820c25306901a9790e71bd
 	
 pkgname = lets-bin
