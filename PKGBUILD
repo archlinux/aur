@@ -2,7 +2,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 libname=libblockdev
 pkgname=$libname-lean
-pkgver=2.28
+pkgver=3.0
 pkgrel=1
 pkgdesc="Lean version of libblockdev without any of the plugins"
 arch=('x86_64')
