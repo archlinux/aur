@@ -6,11 +6,16 @@
 
 pkgname=onlyoffice-documentserver-bin
 pkgver=7.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Online office suite comprising viewers and editors for texts, spreadsheets and presentations"
 arch=('x86_64')
 url="https://github.com/ONLYOFFICE/DocumentServer"
-depends=('rabbitmq' 'postgresql' 'nginx')
+depends=('rabbitmq')
+optdepends=(
+'postgresql: PostgreSQL database'
+'mariadb: MariaDB database'
+'nginx: reverse-proxy'
+)
 conflicts=('onlyoffice-documentserver')
 license=('AGPL')
 source=("https://github.com/ONLYOFFICE/DocumentServer/releases/download/v${pkgver}/onlyoffice-documentserver.x86_64.rpm"
