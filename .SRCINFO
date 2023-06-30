@@ -1,0 +1,13 @@
+pkgbase = mhwd-manjaro-bin
+	pkgdesc = This will download, extract and install the latest needed packages from manjaro to run the mhwd command
+	pkgver = 1
+	pkgrel = 1
+	url = https://mirror.csclub.uwaterloo.ca/manjaro/stable/extra/x86_64/
+	arch = any
+	license = GPL
+	depends = gcc-libs
+	depends = hwinfo
+	provides = mhwd-manjaro-bin
+	conflicts = mhwd-manjaro-bin
+
+pkgname = mhwd-manjaro-bin
