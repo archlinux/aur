@@ -2,7 +2,7 @@
 pkgname=amdgpu_top-git
 _pkgname=amdgpu_top
 pkgver=v0.1.10.r0.g9ac1c31
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool that shows AMD GPU utilization"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/Umio-Yasuno/amdgpu_top"
@@ -30,14 +30,14 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
-    export RUSTUP_TOOLCHAIN=1.69
+    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
 	cd "$srcdir/$_pkgname"
-	export RUSTUP_TOOLCHAIN=1.69
+	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release
 }
