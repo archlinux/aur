@@ -1,9 +1,9 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='cfn-guard-git'
-pkgver=2.1.3.r1.g7ec8f6d
+pkgver=3.0.0.r0.gc7bcce2
 pkgrel=1
-pkgdesc='A set of tools to check AWS CloudFormation templates for policy compliance using a simple, policy-as-code, declarative syntax'
+pkgdesc='Guard offers a policy-as-code domain-specific language (DSL) to write rules and validate JSON- and YAML-formatted data such as CloudFormation Templates, K8s configurations, and Terraform JSON plans/configurations against those rules.'
 url='https://github.com/aws-cloudformation/cloudformation-guard'
 depends=('gcc-libs')
 makedepends=('rust')
@@ -21,6 +21,9 @@ pkgver() {
 build() {
   cd "$srcdir"/cloudformation-guard
   cargo build --release
+  target/release/cfn-guard completions --shell='zsh' > cfn-guard.zsh
+  target/release/cfn-guard completions --shell='bash' > cfn-guard.bash
+  target/release/cfn-guard completions --shell='fish' > cfn-guard.fish
 }
 
 package() {
@@ -28,4 +31,11 @@ package() {
   install -Dm755 target/release/cfn-guard "$pkgdir/usr/bin/cfn-guard"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-*}/README.md"
+  install -Dm644 cfn-guard.zsh "$pkgdir/usr/share/zsh/site-functions/_cfn-guard"
+  install -Dm644 cfn-guard.bash "$pkgdir/usr/share/bash-completion/completions/cfn-guard"
+  install -Dm644 cfn-guard.fish "$pkgdir/usr/share/fish/completions/cfn-guard.fish"
+}
+
+check() {
+  "$srcdir"/cloudformation-guard/target/release/cfn-guard --version
 }
