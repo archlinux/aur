@@ -1,0 +1,341 @@
+diff '--color=auto' --unified --recursive --text doccreator-git/software/DocCreator/CMakeLists.txt doccreator-git2/software/DocCreator/CMakeLists.txt
+--- doccreator-git/software/DocCreator/CMakeLists.txt	2023-06-30 14:18:05.876354271 -0500
++++ doccreator-git2/software/DocCreator/CMakeLists.txt	2023-06-30 14:23:40.120257279 -0500
+@@ -27,272 +27,7 @@
+ 
+ FIND_PACKAGE(OpenGL REQUIRED)  #required ???
+ 
+-
+-OPTION(BUILD_TESSERACT "Build tesseract from sources" OFF)
+-
+-IF(NOT BUILD_TESSERACT)
+-  FIND_PACKAGE(Tesseract QUIET)
+-  #if Tesseract is found, Tesseract_TESSDATA_PARENT_DIR should be set
+-  IF(NOT Tesseract_FOUND)
+-    SET(BUILD_TESSERACT ON CACHE STRING "Build Leptonica/Tesseract from sources." FORCE)
+-  else()
+-    message(STATUS "Found Tesseract.")
+-  ENDIF(NOT Tesseract_FOUND)
+-ENDIF(NOT BUILD_TESSERACT)
+-
+-
+-######################################## TESSERACT
+-
+-IF(BUILD_TESSERACT)
+-  
+-  message(STATUS "Will download and build leptonica and tesseract from sources")
+-
+-  SET(LEPTONICA_VERSION 1.80.0)
+-  SET(TESSERACT_VERSION 41) #library suffixe
+-  SET(TESSERACT_ARCHIVE_VERSION 4.1.1)
+-  SET(LEPTONICA_SRC_DIR "${PROJECT_SOURCE_DIR}/thirdparty/leptonica-${LEPTONICA_VERSION}")
+-  SET(TESSERACT_SRC_DIR "${PROJECT_SOURCE_DIR}/thirdparty/tesseract-${TESSERACT_ARCHIVE_VERSION}")
+-  #TODO: check that directories exist
+-
+-  IF (NOT EXISTS ${LEPTONICA_SRC_DIR} OR NOT EXISTS ${TESSERACT_SRC_DIR} OR NOT EXISTS ${PROJECT_SOURCE_DIR}/thirdparty/tessdata/fra.traineddata) 
+-
+-    SET(LEPTONICA_URL "https://github.com/DanBloomberg/leptonica/archive/${LEPTONICA_VERSION}.tar.gz")
+-    #SET(LEPTONICA_URL "http://dept-info.labri.fr/~mansenca/leptonica-${LEPTONICA_VERSION}.tar.gz") 
+-    SET(TESSERACT_URL "https://github.com/tesseract-ocr/tesseract/archive/${TESSERACT_ARCHIVE_VERSION}.tar.gz")
+-    SET(LEPTONICA_ARCHIVE "leptonica.tar.gz")
+-    SET(TESSERACT_ARCHIVE "tesseract.tar.gz")
+-    IF(NOT EXISTS ${PROJECT_SOURCE_DIR}/thirdparty/${TESSERACT_ARCHIVE})
+-      MESSAGE(STATUS "  downloading leptonica & tesseract")
+-      FILE(DOWNLOAD ${LEPTONICA_URL} ${PROJECT_SOURCE_DIR}/thirdparty/${LEPTONICA_ARCHIVE} STATUS status LOG log)
+-      LIST(GET status 0 status_code)
+-      LIST(GET status 1 status_string)
+-      IF(NOT status_code EQUAL 0)
+-        MESSAGE(FATAL_ERROR "error: downloading ${LEPTONICA_URL} failed: status code=${status_code} string=${status_string}, log=${log}")
+-      ENDIF()
+-      
+-      FILE(DOWNLOAD ${TESSERACT_URL} ${PROJECT_SOURCE_DIR}/thirdparty/${TESSERACT_ARCHIVE} STATUS status LOG log)
+-      LIST(GET status 0 status_code)
+-      LIST(GET status 1 status_string)
+-      IF(NOT status_code EQUAL 0)
+-        MESSAGE(FATAL_ERROR "error: downloading ${TESSERACT_URL} failed: status code=${status_code} string=${status_string}, log=${log}")
+-      ENDIF()
+-      MESSAGE(STATUS "  downloading done.")
+-    ENDIF()
+-    #download tessdata
+-    SET(TESSDATA_URL https://github.com/tesseract-ocr/tessdata_best/raw/master)
+-    IF(NOT EXISTS ${PROJECT_SOURCE_DIR}/thirdparty/tessdata/eng.traineddata)
+-      MESSAGE(STATUS "  downloading tesseract language models")
+-      SET(TESSDATA_ENG_URL "${TESSDATA_URL}/eng.traineddata")
+-      FILE(DOWNLOAD ${TESSDATA_ENG_URL} ${PROJECT_SOURCE_DIR}/thirdparty/tessdata/eng.traineddata STATUS status LOG log)
+-      LIST(GET status 0 status_code)
+-      LIST(GET status 1 status_string)
+-      IF(NOT status_code EQUAL 0)
+-        MESSAGE(FATAL_ERROR "error: downloading ${TESSDATA_ENG_URL} failed: status code=${status_code} string=${status_string}, log=${log}")
+-      ENDIF()
+-
+-      SET(TESSDATA_FRA_URL "${TESSDATA_URL}/fra.traineddata")
+-      FILE(DOWNLOAD ${TESSDATA_FRA_URL} ${PROJECT_SOURCE_DIR}/thirdparty/tessdata/fra.traineddata STATUS status LOG log)
+-      LIST(GET status 0 status_code)
+-      LIST(GET status 1 status_string)
+-      IF(NOT status_code EQUAL 0)
+-        MESSAGE(FATAL_ERROR "error: downloading ${TESSDATA_FRA_URL} failed: status code=${status_code} string=${status_string}, log=${log}")
+-      ENDIF()
+-      MESSAGE(STATUS "  downloading done.")
+-    ENDIF()
+-
+-    EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E tar xzf ${PROJECT_SOURCE_DIR}/thirdparty/${LEPTONICA_ARCHIVE} WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/thirdparty )
+-    EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E tar xzf ${PROJECT_SOURCE_DIR}/thirdparty/${TESSERACT_ARCHIVE} WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/thirdparty )
+-    MESSAGE(STATUS "  decompression done.")
+-  ENDIF()
+-
+-
+-
+-  IF(NOT MSVC AND NOT MINGW)
+-    SET(LEPTONICA_LIBRARY "${PROJECT_BINARY_DIR}/leptonica/lib/${CMAKE_STATIC_LIBRARY_PREFIX}leptonica${CMAKE_STATIC_LIBRARY_SUFFIX}")
+-    SET(TESSERACT_LIBRARY "${PROJECT_BINARY_DIR}/tesseract/lib/${CMAKE_STATIC_LIBRARY_PREFIX}tesseract${CMAKE_STATIC_LIBRARY_SUFFIX}")
+-  ELSE(NOT MSVC AND NOT MINGW)
+-
+-    #set(MY_DEFINITION 
+-    #  $<$<CONFIG:Debug>:definition_for_debug>
+-    #  $<$<CONFIG:RelWithDebInfo>:definition_for_rel_with_debug>
+-    #  $<$<CONFIG:Release>:definition_for_release> 
+-    #  $<$<CONFIG:MinSizeRel>:definition_for_tight_release>
+-    #  )
+-    
+-    #set(DEBUG_EXT "$<$<CONFIG:Debug>:d>")
+-    set(DEBUG_EXT "")
+-    IF(NOT CMAKE_CONFIGURATION_TYPES)
+-      #mono-config, e.g., ninja
+-      IF("${CMAKE_BUILD_TYPE}" STREQUAL "Debug" OR
+-         "${CMAKE_BUILD_TYPE}" STREQUAL "RelWithDebugInfo")
+-	       set(DEBUG_EXT "d")
+-      ENDIF()
+-    ENDIF()
+-    
+-
+-    SET(LEPTONICA_LIBRARY "${PROJECT_BINARY_DIR}/leptonica/lib/${CMAKE_STATIC_LIBRARY_PREFIX}leptonica-${LEPTONICA_VERSION}${DEBUG_EXT}${CMAKE_STATIC_LIBRARY_SUFFIX}")
+-    SET(TESSERACT_LIBRARY "${PROJECT_BINARY_DIR}/tesseract/lib/${CMAKE_STATIC_LIBRARY_PREFIX}tesseract${TESSERACT_VERSION}${DEBUG_EXT}${CMAKE_STATIC_LIBRARY_SUFFIX}")
+-
+-  ENDIF(NOT MSVC AND NOT MINGW)
+-
+-
+-  include(ExternalProject)
+-
+-  #build static library with -DSTATIC=ON
+-  ExternalProject_Add(leptonica
+-    URL ${LEPTONICA_SRC_DIR}
+-    PREFIX ${PROJECT_BINARY_DIR}/leptonica
+-    PATCH_COMMAND patch -p0 < ${PROJECT_SOURCE_DIR}/thirdparty/leptonica-1.80.0.patch
+-    CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${PROJECT_BINARY_DIR}/leptonica -DSTATIC=ON -DSW_BUILD=OFF -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+-    BUILD_BYPRODUCTS ${LEPTONICA_LIBRARY}
+-    )
+-
+-  #-DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER} is to ensure that leptonica&tesseract are built with the same compiler than DocCreator
+-  # It is for example useful on Linux, when compiled with a non-default compiler.
+-
+-  ExternalProject_Get_Property(leptonica binary_dir)
+-  ExternalProject_Get_Property(leptonica source_dir)
+-  ExternalProject_Get_Property(leptonica install_dir)
+-  set(leptonica_prefix "${install_dir}")
+-
+-  set(Lept_INCLUDE_DIRS "${install_dir}/include;${install_dir}/include/leptonica") #(not needed to install tesseract), just later
+-  set(lept_lib_dirs "${install_dir}/lib")
+-
+-  #library is in ${binary_dir}/src
+-  #headers are in ${source_dir}/src
+-
+-  ADD_LIBRARY(leptonicaLib STATIC IMPORTED GLOBAL)
+-  SET_TARGET_PROPERTIES(leptonicaLib PROPERTIES IMPORTED_LOCATION ${LEPTONICA_LIBRARY})
+-  ADD_DEPENDENCIES(leptonicaLib leptonica)
+-
+-  ExternalProject_Get_Property(leptonica install_dir)
+-  message("leptonica install_dir=${install_dir}")
+-  message("Leptonica_INCLUDE_DIRS=${Leptonica_INCLUDE_DIRS}")
+-  set(Lept_INCLUDE_DIRS "${install_dir}/include;${install_dir}/include/leptonica")
+-  message("moi Lept_INCLUDE_DIRS=${Lept_INCLUDE_DIRS}")
+-  message("Leptonica_LIBRARIES=${Leptonica_LIBRARIES}")
+-
+-  #Tesseract is built with -std=c++11
+-  #If clang is used, we ensure that libc++ is also used.
+-  SET(ADDITIONAL_FLAG "")
+-  IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+-    SET(ADDITIONAL_FLAG "-DCMAKE_CXX_FLAGS=-stdlib=libc++")
+-  ENDIF()
+-
+-  ExternalProject_Add(tesseract
+-    DEPENDS leptonica
+-    URL ${TESSERACT_SRC_DIR}
+-    PREFIX ${PROJECT_BINARY_DIR}/tesseract
+-    CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DLeptonica_DIR=${install_dir}/cmake -DCMAKE_INSTALL_PREFIX=${PROJECT_BINARY_DIR}/tesseract -DSTATIC=ON -DBUILD_TRAINING_TOOLS=OFF -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER} ${ADDITIONAL_FLAG}
+-    BUILD_BYPRODUCTS ${TESSERACT_LIBRARY}
+-    )
+-
+-  ExternalProject_Get_Property(tesseract binary_dir)
+-  ExternalProject_Get_Property(tesseract source_dir)
+-  ExternalProject_Get_Property(tesseract install_dir)
+-  set(tesseract_prefix "${install_dir}")
+-  set(Tesseract_INCLUDE_DIRS "${install_dir}/include;${install_dir}/include/tesseract") 
+-  set(tess_lib_dirs "${install_dir}/lib") 
+-
+-  ADD_LIBRARY(tesseractLib STATIC IMPORTED GLOBAL)
+-  SET_TARGET_PROPERTIES(tesseractLib PROPERTIES IMPORTED_LOCATION ${TESSERACT_LIBRARY})
+-  ADD_DEPENDENCIES(tesseractLib tesseract)
+-
+-  #TODO: the following libraries are already searched by leptonica.
+-  #they are in ${install_dir}/cmake/LeptonicaTargets-release.cmake
+-  # but I don't know how to retrieve them.
+-  # As we use ExternalProject_Add(),
+-  # LeptonicaTargets-release.cmake is only created during the build phase (and not the configuration phase)
+-  # We cannot use find_package(leptonica) to get them.
+-
+-  FIND_PACKAGE(ZLIB QUIET)  #ZLIB brought by PNG on linux but not on OSX 
+-  IF(ZLIB_FOUND)
+-    SET(OTHER_LIBS ${ZLIB_LIBRARIES})
+-  ENDIF()
+-
+-  FIND_PACKAGE(PNG QUIET)
+-  IF(PNG_FOUND)
+-    SET(OTHER_LIBS "${PNG_LIBRARIES};${OTHER_LIBS}")
+-  ENDIF()
+-
+-  FIND_PACKAGE(JPEG QUIET)
+-  IF(JPEG_FOUND)
+-    SET(OTHER_LIBS "${JPEG_LIBRARIES};${OTHER_LIBS}")
+-  ENDIF()
+-
+-  FIND_PACKAGE(TIFF QUIET)
+-  IF(TIFF_FOUND)
+-    SET(OTHER_LIBS "${TIFF_LIBRARIES};${OTHER_LIBS}")
+-  ENDIF()
+-
+-  FIND_PACKAGE(GIF QUIET)
+-  IF(GIF_FOUND)
+-    SET(OTHER_LIBS "${GIF_LIBRARIES};${OTHER_LIBS}")
+-  ENDIF()
+-
+-  message("OTHER_LIBS=${OTHER_LIBS}")
+-  
+-  FIND_PACKAGE(PkgConfig QUIET)
+-  IF (PKG_CONFIG_FOUND)
+-    message("search with pkg config")
+-    pkg_check_modules(WEBP QUIET libwebp)
+-    IF(WEBP_FOUND)
+-      #SET(OTHER_LIBS "${WEBP_LIBRARIES};${OTHER_LIBS}")
+-      message("WEBP_FOUND=${WEBP_FOUND} by pkg: $WEBP_LIBRARY=${WEBP_LIBRARY} $WEBP_LIBRARIES=${WEBP_LIBRARIES} WEBP=${WEBP}")
+-    ENDIF()
+-    pkg_check_modules(JP2K QUIET libopenjp2)
+-    IF(JP2K_FOUND)
+-      #SET(OTHER_LIBS "${JP2K_LIBRARIES};${OTHER_LIBS}")
+-      message("JP2K_FOUND=${JP2K_FOUND} by pkg: $JP2K_LIBRARY=${WEBP_LIBRARY} $JP2K_LIBRARIES=${WEBP_LIBRARIES} JP2K=${JP2K}")
+-    ENDIF()
+-  ENDIF()
+-  if(NOT WEBP)
+-    message("search webp directly")
+-    find_path(WEBP_INCLUDE_DIR /webp/decode.h)
+-    find_library(WEBP_LIBRARY NAMES webp)
+-    if (WEBP_INCLUDE_DIR AND WEBP_LIBRARY)
+-      message("WEBP_FOUND2=${WEBP_FOUND}: $WEBP_LIBRARY=${WEBP_LIBRARY} $WEBP_LIBRARIES=${WEBP_LIBRARIES} WEBP=${WEBP}")
+-      set(OTHER_LIBS "${WEBP_LIBRARY};${OTHER_LIBS}")
+-    endif()
+-  endif()
+-  if(NOT JP2K)
+-    message("search jp2k directly")
+-    find_path(JP2K_INCLUDE_DIR /openjpeg-2.3/openjpeg.h)
+-    find_library(JP2K_LIBRARY NAMES openjp2)
+-    if (JP2K_INCLUDE_DIR AND JP2K_LIBRARY)
+-      message("JP2K_FOUND2=${JP2K_FOUND}: $JP2K_LIBRARY=${JP2K_LIBRARY} $JP2K_LIBRARIES=${JP2K_LIBRARIES} JP2K=${JP2K}")
+-      set(OTHER_LIBS "${JP2K_LIBRARY};${OTHER_LIBS}")
+-    endif()
+-  endif()
+-
+-  message("OTHER_LIBS=${OTHER_LIBS}")
+-    
+-  SET(Lept_LIBRARIES "${LEPTONICA_LIBRARY};${OTHER_LIBS}")
+-  SET(Tesseract_LIBRARIES ${TESSERACT_LIBRARY})
+-  IF(MSVC OR MINGW)
+-    SET(Tesseract_LIBRARIES "${TESSERACT_LIBRARY};Ws2_32")
+-  ENDIF()
+-
+-  message("Lept_LIBRARIES=${Lept_LIBRARIES}")
+-  message("Tesseract_LIBRARIES=${Tesseract_LIBRARIES}")
+-
+-
+-  #install tessdata
+-  install(DIRECTORY ${PROJECT_SOURCE_DIR}/thirdparty/tessdata DESTINATION share/DocCreator)
+-
+-  set(Tesseract_TESSDATA_PARENT_DIR "") #empty to be found dynamically
+-
+-ENDIF()
+-
+-SET(Tesseract_LIBRARIES "${Tesseract_LIBRARIES};${Lept_LIBRARIES}")
+-message("Tesseract_LIBRARIES=${Tesseract_LIBRARIES}")
+-
+-
+-######################################## TESSERACT
+-
+-
+-
+-
++include(FindPkgConfig)
+ 
+ SET(
+   DocCreatorQ_headers
+@@ -555,7 +290,13 @@
+ 
+ ADD_SUBDIRECTORY(${CMAKE_CURRENT_SOURCE_DIR}/src/Degradations/Distortion3DModel)
+ 
+-SET(EXTRA_LIBS ${QT_LIBRARIES} ${Lipsum4Qt_LIBRARIES} ${DocCreator_LIBRARIES} ${OpenCV_LIBS} ${DOC3D_LIBRARIES} ${Tesseract_LIBRARIES})
++# Shared libraries
++pkg_check_modules(libraries
++	REQUIRED IMPORTED_TARGET
++		tesseract
++)
++
++SET(EXTRA_LIBS ${QT_LIBRARIES} ${Lipsum4Qt_LIBRARIES} ${DocCreator_LIBRARIES} ${OpenCV_LIBS} ${DOC3D_LIBRARIES})
+ 
+ #message("EXTRA_LIBS=${EXTRA_LIBS}")
+ 
+@@ -579,7 +320,7 @@
+ 
+ ADD_LIBRARY(${LIBNAME} STATIC ${DocCreatorQ_sources} ${DocCreatorQ_headers} ${MOC_LIB})
+ TARGET_INCLUDE_DIRECTORIES(${LIBNAME} PUBLIC ${FRAMEWORK_INCLUDE_DIRS} $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>)
+-TARGET_LINK_LIBRARIES(${LIBNAME} ${EXTRA_LIBS})
++TARGET_LINK_LIBRARIES(${LIBNAME} ${EXTRA_LIBS} PkgConfig::libraries)
+ TARGET_COMPILE_OPTIONS(${LIBNAME} PRIVATE ${WARNING_FLAGS})
+ SET_TARGET_PROPERTIES(${LIBNAME} PROPERTIES
+   CXX_STANDARD 11
+@@ -588,7 +329,7 @@
+   )
+ 
+ ADD_EXECUTABLE(${PROGNAME} ${DocCreator_sources} ${DocCreator_headers} ${DocCreator_rcs} ${WIN_RESOURCE_FILE})
+-TARGET_INCLUDE_DIRECTORIES(${PROGNAME} PRIVATE ${FRAMEWORK_INCLUDE_DIRS} ${DOC3D_INCLUDE_DIRS} $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src> $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/GenerateDocument> ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${Lept_INCLUDE_DIRS} ${Tesseract_INCLUDE_DIRS})
++TARGET_INCLUDE_DIRECTORIES(${PROGNAME} PRIVATE ${FRAMEWORK_INCLUDE_DIRS} ${DOC3D_INCLUDE_DIRS} $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src> $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/GenerateDocument> ${CMAKE_BINARY_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${Lept_INCLUDE_DIRS})
+ SET_TARGET_PROPERTIES(${PROGNAME} PROPERTIES INSTALL_RPATH "${PROG_RPATH}")
+ TARGET_COMPILE_OPTIONS(${PROGNAME} PRIVATE ${WARNING_FLAGS})
+ SET_TARGET_PROPERTIES(${PROGNAME} PROPERTIES
+@@ -599,7 +340,7 @@
+ # Cf http://www.kitware.com/blog/home/post/510
+ #As CMAKE_MACOSX_RPATH is defined to 1,
+ # Cmake  will automatically add an RPATH to this executable which is the absolute location of libDocCreator in the build tree.
+-TARGET_LINK_LIBRARIES(${PROGNAME} ${EXTRA_LIBS} ${LIBNAME})
++TARGET_LINK_LIBRARIES(${PROGNAME} ${EXTRA_LIBS} ${LIBNAME} PkgConfig::libraries)
+ #TARGET_LINK_LIBRARIES(${PROGNAME} ${ALL_LIBS})
+ 
+ 
+@@ -617,7 +358,7 @@
+ 
+ set(PROG_RPATH "@loader_path/../lib") #B: necessary as we install libs (LipsumQt, framework, doc3D) in ../lib directory [Non-bundle case]
+ set(PROG_RPATH "${PROG_RPATH};${QT_INSTALL_PATH}") #B: necessary as Qt libs are marked @rpath in exe
+-set(PROG_RPATH "${PROG_RPATH};${LEPTONICA_INSTALL_PATH};${TESSERACT_INSTALL_PATH}") #B: added to be able to launch app without install
++set(PROG_RPATH "${PROG_RPATH};${LEPTONICA_INSTALL_PATH}") #B: added to be able to launch app without install
+ #message("PROG_RPATH=${PROG_RPATH}")
+ SET_TARGET_PROPERTIES(${PROGNAME} PROPERTIES INSTALL_RPATH "${PROG_RPATH}")
+ 
+@@ -628,12 +369,6 @@
+ #GET_TARGET_PROPERTY(CURRENT_INSTALL_RPATHS2 ${PROGNAME} INSTALL_RPATH)
+ #message("DEBUG ======= CURRENT_INSTALL_RPATHS2=${CURRENT_INSTALL_RPATHS2}")
+ 
+-IF(BUILD_TESSERACT)
+-  add_dependencies(${PROGNAME} tesseractLib)  #B: to be able to compile with "make -j 9"
+-ENDIF(BUILD_TESSERACT)
+-
+-
+-
+ IF(UNIX)
+   install(TARGETS ${PROGNAME} RUNTIME DESTINATION bin)
+ ENDIF(UNIX)

@@ -1,0 +1,23 @@
+pkgbase = doccreator-distortion3d-git
+	pkgdesc = DIAR software for synthetic document image and groundtruth generation
+	pkgver = r395.50cfbc7
+	pkgrel = 1
+	url = https://github.com/DocCreator/DocCreator
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	makedepends = git
+	makedepends = dos2unix
+	depends = tesseract
+	depends = qt5-base
+	depends = opencv
+	depends = lzham
+	depends = zlib
+	provides = doccreator
+	conflicts = doccreator
+	source = doccreator-distortion3d-git::git+https://github.com/DocCreator/DocCreator.git#branch=Distortion3D
+	source = tesseract.patch
+	sha256sums = SKIP
+	sha256sums = b5c373b692c868f2f69a96efb9cf7611d520768052c9bc26de7b57e7a30c8914
+
+pkgname = doccreator-distortion3d-git
