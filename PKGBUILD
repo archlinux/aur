@@ -1,4 +1,6 @@
-# Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
+# Maintainer: arti
+# Maintainer: redtide <redtid3@gmail.com>
+# Contributor: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=wdisplays
 pkgver=1.1
@@ -24,4 +26,3 @@ package() {
   cd "$pkgname-$pkgver"
   DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
 }
-
