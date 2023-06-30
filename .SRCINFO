@@ -1,0 +1,13 @@
+pkgbase = nodejs-whistle-plugins-script
+	pkgdesc = The plugin for the extension script for whistle
+	pkgver = 1.2.9
+	pkgrel = 1
+	url = https://github.com/whistle-plugins/whistle.script
+	arch = any
+	license = MIT
+	depends = nodejs-whistle
+	noextract = whistle.script-1.2.9.tgz
+	source = https://registry.npmjs.org/whistle.script/-/whistle.script-1.2.9.tgz
+	sha1sums = 90d3520aefce5366390b2501c3a7faf51313cf9c
+
+pkgname = nodejs-whistle-plugins-script
