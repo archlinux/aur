@@ -1,0 +1,24 @@
+pkgbase = video_cut
+	pkgdesc = This is a CLI for search file in biying
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitcode.net/dnrops/video_cut.git
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = base
+	depends = glib2
+	depends = pciutils
+	depends = ffmpeg
+	conflicts = video_cut
+	source = video_cut::git+https://gitcode.net/dnrops/video_cut.git
+	md5sums = SKIP
+
+pkgname = video_cut
