@@ -20,7 +20,6 @@ source=("git+https://github.com/libsdl-org/SDL.git#branch=SDL2")
 provides=("sdl2=$pkgver")
 conflicts=(sdl2 sdl2-minimal-hg)
 sha512sums=('SKIP')
-validpgpkeys=('1528635D8053A57F77D1E08630A59377A7763BE6') # Sam Lantinga
 
 pkgver() {
   cd SDL
