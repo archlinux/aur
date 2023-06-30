@@ -1,6 +1,6 @@
 # Maintainer: swearchnick <swearchnick[at]gmail[dot]com>
 pkgname="pdf-xchange"
-pkgver="10.0.0.370"
+pkgver="10.0.1.371"
 pkgrel="1"
 pkgdesc="Feature-rich PDF editor/viewer. Create, view, edit and annotate plus much more."
 license=('Custom')
@@ -20,7 +20,7 @@ _redactpatterns="$_commonfiles/RedactPatterns"
 _tesseract="$_commonfiles/Tesseract"
 
 source=("$pkgname-$pkgver.msi::$_downloadsource/$_x64file")
-sha256sums=('ce3253b79da93d89d750d88898c9b9c0f6cce8e71b16d9ea4d2b551f131b7058')
+sha256sums=('8d61f711d884f45371317ab782d90ff78da235b2ab5a82c4b12ac1ead1e236d1')
 
 prepare()
 {
@@ -308,15 +308,20 @@ package()
  install -Dm644 "$srcdir/FID_GD_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_GD_zh_TW" "$pkgdir${_installdir}/$pkgname/${_languages}/GoogleDrive.zh-TW.xcl"
  install -Dm644 "$srcdir/FID_IF_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.az-Latn-AZ.xcl"
+ install -Dm644 "$srcdir/FID_IF_da_DK" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.da-DK.xcl"
  install -Dm644 "$srcdir/FID_IF_de_DE" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.de-DE.xcl"
+ install -Dm644 "$srcdir/FID_IF_es_ES" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.es-ES.xcl"
  install -Dm644 "$srcdir/FID_IF_fi_FI" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.fi-FI.xcl"
  install -Dm644 "$srcdir/FID_IF_fr_FR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.fr-FR.xcl"
  install -Dm644 "$srcdir/FID_IF_hr_HR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.hr-HR.xcl"
+ install -Dm644 "$srcdir/FID_IF_hu_HU" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.hu-HU.xcl"
  install -Dm644 "$srcdir/FID_IF_ja_JP" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ja-JP.xcl"
+ install -Dm644 "$srcdir/FID_IF_lt_LT" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.lt-LT.xcl"
  install -Dm644 "$srcdir/FID_IF_pl_PL" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.pl-PL.xcl"
  install -Dm644 "$srcdir/FID_IF_ru_RU" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.ru-RU.xcl"
  install -Dm644 "$srcdir/FID_IF_tr_TR" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.tr-TR.xcl"
  install -Dm644 "$srcdir/FID_IF_uk_UA" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.uk-UA.xcl"
+ install -Dm644 "$srcdir/FID_IF_zh_CN" "$pkgdir${_installdir}/$pkgname/${_languages}/IdentifyForms.zh-CN.xcl"
  install -Dm644 "$srcdir/FID_MD_ar_SA" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.ar-SA.xcl"
  install -Dm644 "$srcdir/FID_MD_az_Latn_AZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.az-Latn-AZ.xcl"
  install -Dm644 "$srcdir/FID_MD_cs_CZ" "$pkgdir${_installdir}/$pkgname/${_languages}/Markdown.cs-CZ.xcl"
