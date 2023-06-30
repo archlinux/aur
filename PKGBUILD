@@ -8,8 +8,8 @@ arch=('any')
 _url="https://github.com/VincentWei"
 url="${_url}/MiniGUI"
 license=('GPLv3')
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=(minigui-{,{mgutils,mgplus,mgeff,mgncs,mgncs4touch,mg-tools,mg-tests,mg-samples,mg-demos,cell-phone-ux-demo,res,docs}-})
+conflicts=(minigui-{,{mgutils,mgplus,mgeff,mgncs,mgncs4touch,mg-tools,mg-tests,mg-samples,mg-demos,cell-phone-ux-demo,res,docs}-})
 # replaces=(${pkgname})
 depends=(
         chipmunk
