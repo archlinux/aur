@@ -1,17 +1,17 @@
 # Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 
 pkgname=ttf-roboto-flex
-pkgver=3.100
-pkgrel=3
+pkgver=3.200
+pkgrel=1
 epoch=1
 pkgdesc="Upgrades Roboto to become a more powerful typeface system"
-arch=('any')
 url="https://github.com/googlefonts/roboto-flex"
-license=('custom:OFL')
+arch=(any)
+license=(custom:OFL)
 source=("$url/releases/download/$pkgver/roboto-flex-fonts.zip"
         "$url/raw/main/OFL.txt")
-sha256sums=('02e0f5db84e69f254958434269d83aa6057b06f3c2a21042bb81b1afe1a0c8c6'
-            'SKIP')
+sha256sums=('0f66ef8a6412cdbd186822e671c0d960c2f487a4dac980e1b35d31ac8f06b2c9'
+            '454ec26838f2b8f2e2588e759dd3742577e0d305d3359a7b81c86641fcab7d21')
 
 package() {
   cd roboto-flex-fonts/
