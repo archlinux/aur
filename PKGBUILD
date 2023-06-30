@@ -1,7 +1,7 @@
 # Maintainer: sataa
 pkgname=update-grub
 pkgver=0.0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Simple wrapper around grub-mkconfig"
 arch=('any')
 url='https://packages.ubuntu.com/jammy/admin/grub-common'
