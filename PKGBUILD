@@ -2,7 +2,7 @@
 # Contributors: Frederic Bezies, Ronan Rabouin
 
 pkgname=yamagi-quake2-ctf
-pkgver=1.08
+pkgver=1.09
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Three Wave Capture The Flag for yamagi-quake2"
@@ -13,7 +13,7 @@ makedepends=('cmake' 'ninja')
 source=("http://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('f20d0f6c49484f68d21ab002ace9fa90ca09d8f1ee7400724385f6641201a3e5'
+sha256sums=('c57faed3e6e78091f836dc8bfe522021eb9f1e86e8bb9690608549c79ebbb073'
             '9a9abd8d720a719180713163261fed154ec34787c82dda2b9465aefd9890b64c'
             '1191c20ea0e7609d28b44d678ff02b2f06b95a7037d1adfd02e963a62b8f3af2')
 
