@@ -1,0 +1,46 @@
+#!/bin/bash
+
+post_install() {
+    exec_all systemctl --user --now enable docker-desktop
+
+    # Enable file sharing (https://docs.docker.com/desktop/faqs/linuxfaqs/#how-do-i-enable-file-sharing)
+    TMP_SCRIPT=$(mktemp)
+    cat > $TMP_SCRIPT <<EOF
+grep -q "\$USER" /etc/subuid || (echo "\$USER:100000:65536" | sudo tee -a /etc/subuid)
+grep -q "\$USER" /etc/subgid || (echo "\$USER:100000:65536" | sudo tee -a /etc/subgid)
+EOF
+
+    chmod 755 $TMP_SCRIPT
+    exec_all sh $TMP_SCRIPT
+    rm -f $TMP_SCRIPT
+}
+
+pre_remove() {
+    exec_all systemctl --user --now disable docker-desktop
+}
+
+post_remove() {
+    exec_all systemctl --user daemon-reload
+}
+
+post_upgrade () {
+    exec_all systemctl --user daemon-reload
+    exec_all systemctl --user restart docker-desktop
+}
+
+sudo_exec() {
+    local cmd="${*:2}"
+    local dbus_addr="unix:path=/run/user/$(id --user $1)/bus"
+    local sudo_cmd="sudo -u ${1} DBUS_SESSION_BUS_ADDRESS=${dbus_addr}"
+
+    ${sudo_cmd} ${cmd}
+}
+
+exec_all () {
+    local command="${*}"
+    local users; readarray -t users <<< "$(loginctl --no-legend list-users | awk '{print $2;}')"
+
+    for user in "${users[@]}"; do
+	sudo_exec "${user}" "${command}"
+    done
+}
