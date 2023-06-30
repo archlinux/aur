@@ -1,7 +1,7 @@
 pkgbase = onnxruntime-cuda-bin
 	pkgdesc = Cross-platform, high performance ML inferencing and training accelerator (CUDA execution provider)
 	pkgver = 1.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.onnxruntime.ai/
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = onnxruntime-cuda-bin
 	depends = nsync
 	depends = abseil-cpp
 	provides = onnxruntime
+	provides = onnxruntime-cuda
 	conflicts = onnxruntime
 	conflicts = onnxruntime-bin
 	conflicts = onnxruntime-cuda
