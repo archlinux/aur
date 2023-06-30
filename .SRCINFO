@@ -1,12 +1,13 @@
 pkgbase = isitup
 	pkgdesc = Check whether a website is up or down
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lord63/isitup
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-pypandoc
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
