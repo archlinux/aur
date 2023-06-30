@@ -7,11 +7,11 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.11.52.beta2.33.gc78ac77
-pkgrel=2
+pkgver=3.11.52.beta6.24.gc78ac77
+pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
-url=https://github.com/Samsagax/gamescope
+url=https://github.com/ChimeraOS/gamescope
 license=(BSD)
 conflicts=(gamescope)
 provides=(gamescope)
@@ -43,7 +43,7 @@ makedepends=(
   wayland-protocols
 )
 _tag=c78ac77a0ab7f5370a50f690ec32b2e1cb4a3f52
-source=("git+https://github.com/Samsagax/gamescope.git#commit=${_tag}"
+source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
         "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
