@@ -12,6 +12,7 @@ pkgbase = libblockdev-lean
 	makedepends = autoconf-archive
 	makedepends = libbytesize
 	depends = parted
+	depends = nvme-cli
 	provides = libblockdev
 	conflicts = libblockdev
 	source = libblockdev-lean-3.0.tar.gz::https://github.com/storaged-project/libblockdev/archive/3.0-1.tar.gz
