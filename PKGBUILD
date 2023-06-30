@@ -2,7 +2,7 @@
 # Contributors: Frederic Bezies, Ronan Rabouin
 
 pkgname=yamagi-quake2
-pkgver=8.10
+pkgver=8.20
 pkgrel=1
 pkgdesc="Enhanced Quake II engine optimized for modern systems"
 url="https://www.yamagi.org/quake2/"
@@ -16,7 +16,7 @@ makedepends=('openal' 'mesa' 'curl')
 install=$pkgname.install
 source=("https://deponie.yamagi.org/quake2/quake2-$pkgver.tar.xz"
         "$pkgname.desktop")
-sha256sums=('93d625f67bd365d943113f6aa7c65f6fd2bd4c46c4ab77eedc4642735c143ea1'
+sha256sums=('d38a3fcd801d747901c3422672fceb8e2d603b3ae3b6bf3a69c879aad3761715'
             '7049a1798e38a263fb2660b94fb70f5154fad1f807259d41649e12cea1a6757c')
 
 build() {
