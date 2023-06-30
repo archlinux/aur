@@ -2,7 +2,7 @@
 # Contributors: Frederic Bezies, Ronan Rabouin
 
 pkgname=yamagi-quake2-xatrix
-pkgver=2.10
+pkgver=2.11
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Quake II - Mission Pack 1 ('The Reckoning') for yamagi-quake2"
@@ -13,7 +13,7 @@ install=$pkgname.install
 source=("https://deponie.yamagi.org/quake2/${pkgname#*-}-$pkgver.tar.xz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('80b7824959e2c04e8c0289f47d49c950492ddc5da4d77da11effafb7903b2e48'
+sha256sums=('656a7093c1fd8c9adba6f1e37f8e573487485adb555b841804ad692e49427183'
             '7c60d4bd78a528f5cf08425cfdcb87dacf574d3912c44439e623e35f37fbc972'
             'e65add2561c7dc4a14061e17a24436f768b69968fbc6fa06022acf9e17d80854')
 
