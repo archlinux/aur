@@ -4,8 +4,8 @@
 # Contributor: Maurizio Porrato <maurizio.porrato@gmail.com>
 
 pkgname=janus-gateway
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.1.4
+pkgrel=1
 pkgdesc='An open source, general purpose, WebRTC server'
 arch=(x86_64 i686)
 url='https://janus.conf.meetecho.com'
@@ -79,7 +79,7 @@ source=(
   'janus.service'
   'janus.conf'
 )
-sha256sums=('f87d322cbe0cd8a7f1e83082445e4d62106a42ca5cfa8b636df1eb5ab8b1ce7b'
+sha256sums=('292397ee925b957fec3e946b8b40d559fcdfc80d171ab9618f10df0e1ebe800f'
             'cf2b6c8fdcd60ccfa179c4cd207a23ee7edfee90588c2c3847aa6cda418bed7f'
             'bd6d7615e722adb64816fae3c5323f6aeb1b9561c39f1652568ed494ffdaa191')
 
