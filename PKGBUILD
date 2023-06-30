@@ -4,7 +4,7 @@
 pkgname=freefem
 pkgver=4.13.0
 _pkgver=4.13
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDE oriented language using the finite element method'
 arch=('x86_64')
 url="https://freefem.org/index.html"
@@ -16,7 +16,7 @@ optdepends=( 'cblas' 'fftw' 'nlopt' 'coin-or-ipopt' 'scotch' 'mumps' 'scalapack'
 conflicts=('freefem-ext-dl' 'freefem-git')
 provides=('freefem')
 source=($pkgname-$pkgver.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v${_pkgver}.tar.gz)
-sha256sums=('d296adc42c6b0cc5f148c44b00bea15939d6c0dbe391613dea8a0693c2c0e3b7')
+sha256sums=('aefd4ff02333209f7433abef2e74acb621b6946063ff27e81cf2da43120b6ae4')
 
 prepare() {
   cd FreeFem-sources-${_pkgver}
