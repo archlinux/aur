@@ -68,14 +68,14 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         ${patchpath}/arch/v6.4-arch1/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
         # Other patches
         # Sirlucjan
-        ${patchpath}/sirlucjan/0001-bfq-cachyos-patches-v1.patch
-        ${patchpath}/sirlucjan/0001-block-set-rq_affinity-to-force-full-multithreading-I-v1.patch
-        ${patchpath}/sirlucjan/0001-btrfs-6.4-merge-changes-from-dev-tree-v1.patch
-        ${patchpath}/sirlucjan/0001-drm-6.4-Add-HDR-patches-v1.patch
-        ${patchpath}/sirlucjan/0001-hid-6.4-merge-changes-from-dev-tree-v1.patch
-        ${patchpath}/sirlucjan/0001-x86-Avoid-relocation-information-in-final-vmlinux-v1.patch
-        ${patchpath}/sirlucjan/0001-zstd-6.4-import-v1.5.5-v1.patch
-        ${patchpath}/sirlucjan/0001-zstd-modules-cachyos-patches-v1.patch
+        ${patchpath}/sirlucjan/bfq/0001-bfq-cachyos-patches-v1.patch
+        ${patchpath}/sirlucjan/block/0001-block-set-rq_affinity-to-force-full-multithreading-I-v1.patch
+        ${patchpath}/sirlucjan/btrfs/0001-btrfs-6.4-merge-changes-from-dev-tree-v1.patch
+        ${patchpath}/sirlucjan/drm/0001-drm-6.4-Add-HDR-patches-v1.patch
+        ${patchpath}/sirlucjan/hid/0001-hid-6.4-merge-changes-from-dev-tree-v1.patch
+        ${patchpath}/sirlucjan/x86/0001-x86-Avoid-relocation-information-in-final-vmlinux-v1.patch
+        ${patchpath}/sirlucjan/zstd/0001-zstd-6.4-import-v1.5.5-v1.patch
+        ${patchpath}/sirlucjan/zstd/0001-zstd-modules-cachyos-patches-v1.patch
         # TKG
         ${patchpath}/tkg/0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch
         ${patchpath}/tkg/0002-mm-Support-soft-dirty-flag-read-with-reset.patch
@@ -506,6 +506,6 @@ for _p in "${pkgname[@]}"; do
     $(declare -f "_package${_p#$pkgbase}")
     _package${_p#$pkgbase}
   }"
-done            
+done
 
 # vim:set ts=8 sts=2 sw=2 et:
