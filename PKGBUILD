@@ -1,10 +1,10 @@
-# Maintainer: Max Bruckner
+# Maintainer: sataa
 pkgname=update-grub
 pkgver=0.0.1
 pkgrel=7
 pkgdesc="Simple wrapper around grub-mkconfig"
 arch=('any')
-url='http://packages.ubuntu.com/precise/grub2-common'
+url='https://packages.ubuntu.com/jammy/admin/grub-common'
 license=('GPL2')
 depends=('grub')
 source=( 'update-grub' )
