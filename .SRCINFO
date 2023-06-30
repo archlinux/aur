@@ -1,0 +1,24 @@
+pkgbase = onnxruntime-cuda-bin
+	pkgdesc = Cross-platform, high performance ML inferencing and training accelerator (CUDA execution provider)
+	pkgver = 1.15.1
+	pkgrel = 1
+	url = https://www.onnxruntime.ai/
+	arch = x86_64
+	license = MIT
+	depends = cudnn
+	depends = nccl
+	depends = openmpi
+	depends = nsync
+	depends = abseil-cpp
+	provides = onnxruntime
+	conflicts = onnxruntime
+	conflicts = onnxruntime-bin
+	conflicts = onnxruntime-cuda
+	conflicts = onnxruntime-git
+	options = !strip
+	source = https://github.com/microsoft/onnxruntime/releases/download/v1.15.1/onnxruntime-linux-x64-gpu-1.15.1.tgz
+	source = onnxruntime.zip::https://github.com/microsoft/onnxruntime/archive/refs/tags/v1.15.1.zip
+	sha256sums = eab891393025edd5818d1aa26a42860e5739fcc49e3ca3f876110ec8736fe7f1
+	sha256sums = 55a3dcb9dc959a007e8d043509a9dc0b5dbccdfe9e7f8a5ea75f7add0a71e733
+
+pkgname = onnxruntime-cuda-bin
