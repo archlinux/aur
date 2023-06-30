@@ -1,0 +1,12 @@
+pkgbase = mimic-voices
+	pkgdesc = Voice models for Mimic 3 text to speech system
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://mycroft.ai/mimic-3/
+	arch = any
+	license = CC-BY-SA-4.0
+	makedepends = git-lfs
+	depends = mimic
+	options = !strip
+
+pkgname = mimic-voices
