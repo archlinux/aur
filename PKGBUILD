@@ -3,7 +3,7 @@
 
 pkgname=torrent-file-editor
 pkgver=0.3.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt based GUI tool designed to create and edit .torrent files'
 arch=('x86_64')
 url="https://${pkgname}.github.io/"
@@ -21,12 +21,7 @@ fi
 
 _snapshot="${pkgname}-${pkgver}"
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${_snapshot}.tar.gz")
-sha256sums=('29977de90102242eb3136031f167a8614efb852519bdc515393191b9088e171c')
-
-prepare() {
-    # Fix wrong app version in the source
-    sed -i "s/set(APP_VERSION .*)/set(APP_VERSION \"${pkgver}\")/;" "${_snapshot}/CMakeLists.txt"
-}
+sha256sums=('78b69e0151c5998b4df8b69225e7930c18b7d4419eeaabcad769df0f38a86292')
 
 build() {
     cmake -B "build" -S "${_snapshot}" \
