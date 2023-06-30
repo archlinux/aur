@@ -1,24 +1,45 @@
-# Maintainer: robertfoster
-pkgname=mimic
-_pkgname=mimic3
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: robertfoster
+
+pkgname="mimic"
 pkgver=0.2.4
-pkgrel=2
-pkgdesc="Text-to-speech voice synthesis from the Mycroft project."
-arch=(x86_64 i686)
-url="https://mimic.mycroft.ai/"
-license=('AGPL3')
-depends=('python' 'python-dataclasses-json' 'python-epitran' 'python-gruut-ipa' 'python-phonemes2ids' 'python-xdgenvpy')
-makedepends=('python')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MycroftAI/${_pkgname}/archive/refs/tags/release/v${pkgver}.tar.gz")
+pkgrel=3
+pkgdesc="A fast, local, neural text to speech system for Mycroft"
+url="https://mycroft.ai/mimic-3/"
+license=("AGPL3")
+arch=("any")
+provides=("mimic")
+conflicts=("mimic-bin")
+depends=("espeak-phonemizer"
+         "python"
+         "python-dataclasses-json"
+         "python-epitran"
+         "python-gruut-ipa" # requirements.txt wants python-gruut, which has broken dependencies in aur
+         "python-numpy"
+         "python-onnxruntime"
+         "python-phonemes2ids"
+         "python-quart"
+         "python-quart-cors"
+         "python-requests"
+         "python-swagger-ui-py"
+         "python-tqdm"
+         "python-xdgenvpy")
+makedepends=("python-build" "python-installer" "python-setuptools" "python-wheel")
+source=("https://github.com/MycroftAI/mimic3/releases/download/release%2Fv$pkgver/mycroft_mimic3_tts-$pkgver.tar.gz")
+sha256sums=('60cd282274c94967e11845b9127ff2eb7ba936341de0e231107297c0c70d2a27')
+options=("!strip")
 
-build() {
-  cd "${srcdir}/${_pkgname}-release-v${pkgver}"
-  python setup.py build
+build(){
+ cd "mycroft_mimic3_tts-$pkgver"
+ python -m build --wheel --no-isolation
 }
 
-package() {
-  cd "${srcdir}/${_pkgname}-release-v${pkgver}"
-  python setup.py install --root="$pkgdir" --optimize=1
+package(){
+ cd "mycroft_mimic3_tts-$pkgver"
+ python -m installer --destdir="$pkgdir" dist/*.whl
+ ln -s "/usr/bin/mimic3" "$pkgdir/usr/bin/mimic"
+ ln -s "/usr/bin/mimic3-download" "$pkgdir/usr/bin/mimic-download"
+ ln -s "/usr/bin/mimic3-server" "$pkgdir/usr/bin/mimic-server"
 }
 
-sha256sums=('6c14e2453a4ee533864fb2b586110c912b3ceb383589265cce1b37fc82e48923')
+
