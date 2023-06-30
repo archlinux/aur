@@ -2,9 +2,9 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=readr
-_cranver=2.1.2
 pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
+pkgver=2.1.2
+_cranver=${pkgver}
 pkgrel=1
 pkgdesc="Read Rectangular Text Data"
 arch=(i686 x86_64)
