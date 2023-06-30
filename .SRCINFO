@@ -1,6 +1,6 @@
 pkgbase = ocaml-ssl
 	pkgdesc = OCaml SSL Library
-	pkgver = 0.5.13
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-ssl
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ocaml-ssl
 	options = zipman
 	options = !makeflags
 	options = staticlibs
-	source = https://github.com/savonet/ocaml-ssl/archive/refs/tags/0.5.13.tar.gz
-	sha256sums = d84e1d25a60a766a9ccc30a3a46229fd83414252f502ff27acba037b473dec7c
+	source = https://github.com/savonet/ocaml-ssl/archive/refs/tags/0.6.0.tar.gz
+	sha256sums = ae0523dfabf919b060925980aad2bf33043f5000aa4fc4dd2dca4f21721395a9
 
 pkgname = ocaml-ssl
