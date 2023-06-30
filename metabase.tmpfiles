@@ -1,0 +1,2 @@
+f /etc/metabase.conf 0640 root metabase
+d /var/lib/metabase 0750 metabase metabase

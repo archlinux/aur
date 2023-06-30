@@ -1,0 +1,23 @@
+pkgbase = metabase
+	pkgdesc = The simplest, fastest way to get business intelligence and analytics to everyone in your company
+	pkgver = 0.46.6
+	pkgrel = 1
+	url = https://www.metabase.com/
+	arch = x86_64
+	license = AGPL
+	depends = jre-openjdk-headless
+	noextract = metabase.jar
+	options = !strip
+	backup = etc/metabase.conf
+	source = https://downloads.metabase.com/v0.46.6/metabase.jar
+	source = metabase.conf
+	source = metabase.service
+	source = metabase.sysusers
+	source = metabase.tmpfiles
+	sha256sums = 8511069190e54d08cdd35dbf89333c2031eb5bbdb637ee20546b6c547e91e64a
+	sha256sums = 911f8e307d972cf965bd26314b3eaa29debb370f661843b08da04e32ce9e826f
+	sha256sums = 63e23295b3a94eaa5a4e9fc18b51328d55a4a689170f4f0f5766a9b3a9433a1b
+	sha256sums = c670b2c4c4663590ab2ced38b19b196f1b31ab1c6339ef7caa9225e94db82c92
+	sha256sums = 71478a76412929d5d35ce8aafb85a27a3c73b10a37235ed2ad890c47cb31812b
+
+pkgname = metabase

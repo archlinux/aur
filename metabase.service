@@ -1,0 +1,16 @@
+[Unit]
+Description=Metabase server
+After=network-online.target
+
+[Service]
+User=metabase
+EnvironmentFile=/etc/metabase.conf
+WorkingDirectory=/var/lib/metabase
+ExecStart=/usr/bin/java -jar /usr/bin/metabase
+Type=simple
+SyslogIdentifier=metabase
+SuccessExitStatus=143
+TimeoutStopSec=120
+
+[Install]
+WantedBy=multi-user.target
