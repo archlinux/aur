@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-exiv2
 	pkgdesc = Exif and Iptc metadata manipulation library and tools (mingw-w64)
-	pkgver = 0.27.5
+	pkgver = 0.28.0
 	pkgrel = 1
 	url = http://www.exiv2.org
 	arch = any
@@ -11,10 +11,11 @@ pkgbase = mingw-w64-exiv2
 	depends = mingw-w64-gettext
 	depends = mingw-w64-libiconv
 	depends = mingw-w64-expat
+	depends = mingw-w64-libinih
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/Exiv2/exiv2/archive/v0.27.5.tar.gz
-	sha256sums = 1da1721f84809e4d37b3f106adb18b70b1b0441c860746ce6812bb3df184ed6c
+	source = https://github.com/Exiv2/exiv2/archive/v0.28.0.tar.gz
+	sha256sums = 04c0675caf4338bb96cd09982f1246d588bcbfe8648c0f5a30b56c7c496f1a0b
 
 pkgname = mingw-w64-exiv2
