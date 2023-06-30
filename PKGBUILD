@@ -1,4 +1,5 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Contributor: jmcb <joelsgp@protonmail.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname='snapshot'
 pkgver='44.2'
