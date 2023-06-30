@@ -1,6 +1,6 @@
 pkgbase = vmn-git
 	pkgdesc = Simplistic cli music player built on mpv and curses
-	pkgver = 0.4.1
+	pkgver = 0.4.1+1+g82c2b99
 	pkgrel = 1
 	url = https://github.com/Dudemanguy/vmn
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = vmn-git
 	depends = ffmpeg
 	depends = mpv
 	depends = ncurses
-	source = git+https://github.com/Dudemanguy/vmn.git#commit=302896226dcc41d83928385d26dd438b326e174c
+	source = git+https://github.com/Dudemanguy/vmn.git
 	sha512sums = SKIP
 
 pkgname = vmn-git
