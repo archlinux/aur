@@ -1,6 +1,6 @@
 pkgbase = atoms
 	pkgdesc = Easily manage Linux Chroot(s) and Containers
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/AtomsDevs/Atoms
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = atoms
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = adobe-source-code-pro-fonts
 	depends = libadwaita
 	depends = podman
 	depends = proot-termux
@@ -25,7 +26,7 @@ pkgbase = atoms
 	depends = python-uproot
 	depends = python-urllib3
 	depends = vte4
-	source = git+https://github.com/AtomsDevs/Atoms.git#commit=d09f54f95f21912e14ceb15f961d15f12a3f789f
+	source = git+https://github.com/AtomsDevs/Atoms.git#commit=1fea993d2bc28623479ee46f95e2138ef889b536
 	source = git+https://github.com/AtomsDevs/atoms-cli.git
 	source = git+https://github.com/AtomsDevs/atoms-core.git
 	source = git+https://github.com/AtomsDevs/servicectl.git

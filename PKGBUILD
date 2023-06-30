@@ -1,19 +1,20 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('atoms' 'atoms-cli' 'atoms-core' 'servicectl-atoms')
 pkgbase=atoms
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Easily manage Linux Chroot(s) and Containers"
 arch=('any')
 url="https://github.com/AtomsDevs/Atoms"
 license=('GPL3')
-depends=('libadwaita' 'podman' 'proot-termux' 'python-certifi' 'python-chardet'
-         'python-gobject' 'python-idna' 'python-orjson' 'python-requests'
-         'python-tabulate' 'python-uproot' 'python-urllib3' 'vte4')
+depends=('adobe-source-code-pro-fonts' 'libadwaita' 'podman' 'proot-termux'
+         'python-certifi' 'python-chardet' 'python-gobject' 'python-idna'
+         'python-orjson' 'python-requests' 'python-tabulate' 'python-uproot'
+         'python-urllib3' 'vte4')
 makedepends=('git' 'meson' 'python-build' 'python-installer' 'python-setuptools'
              'python-wheel')
 checkdepends=('appstream-glib')
-_commit=d09f54f95f21912e14ceb15f961d15f12a3f789f  # tags/1.1.1^0
+_commit=1fea993d2bc28623479ee46f95e2138ef889b536  # tags/1.1.2^0
 source=("git+https://github.com/AtomsDevs/Atoms.git#commit=${_commit}"
         'git+https://github.com/AtomsDevs/atoms-cli.git'
         'git+https://github.com/AtomsDevs/atoms-core.git'
