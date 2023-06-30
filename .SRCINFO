@@ -1,22 +1,22 @@
-pkgbase = jdk17-graalvm-ee-bin
-	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 17 version
-	pkgver = 23.0.0
+pkgbase = jdk20-graalvm-ee-bin
+	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 20 version
+	pkgver = 20.0.1
 	pkgrel = 1
 	url = https://www.graalvm.org/
-	install = jdk17-graalvm-ee-bin.install
+	install = jdk20-graalvm-ee-bin.install
 	arch = x86_64
 	arch = aarch64
 	license = custom:OTN
 	depends = java-runtime-common
 	depends = java-environment-common
-	provides = java-runtime=17
-	provides = java-environment=17
+	provides = java-runtime=20
+	provides = java-environment=20
 	options = staticlibs
 	source = graalvm-ee-rebuild-libpolyglot.hook
 	sha256sums = 7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca
-	source_x86_64 = https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = 93db5fd373fc8eb5a5578387f7646cfd414b82e8cfaf9dbcd0145ceae0137398
-	source_aarch64 = https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-aarch64_bin.tar.gz
-	sha256sums_aarch64 = 73256df1af0507f8cb230bafe506e4dcaba2b3e6d8bb1324bf5a02198890ef97
+	source_x86_64 = https://download.oracle.com/graalvm/20/latest/graalvm-jdk-20_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = 0aef42ae97bc98acbd11dce81018a7916250fced6ee9f95a934816813e48e4f4
+	source_aarch64 = https://download.oracle.com/graalvm/20/latest/graalvm-jdk-20_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = f1c175018acd6e9976a7374420e44b8c55b5871c2b0452435aba8a136fe8caae
 
-pkgname = jdk17-graalvm-ee-bin
+pkgname = jdk20-graalvm-ee-bin
