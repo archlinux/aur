@@ -1,6 +1,6 @@
 pkgbase = brave
 	pkgdesc = Web browser that blocks ads and trackers by default
-	pkgver = 1.52.126
+	pkgver = 1.52.129
 	pkgrel = 1
 	url = https://www.brave.com/download
 	arch = x86_64
@@ -65,9 +65,9 @@ pkgbase = brave
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	options = !lto
-	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.52.126
-	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.52.126
-	source = chromium-mirror::git+https://github.com/chromium/chromium.git#tag=114.0.5735.133
+	source = brave-browser::git+https://github.com/brave/brave-browser.git#tag=v1.52.129
+	source = brave::git+https://github.com/brave/brave-core.git#tag=v1.52.129
+	source = chromium-mirror::git+https://github.com/chromium/chromium.git#tag=114.0.5735.198
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
 	source = https://github.com/foutrelis/chromium-launcher/archive/refs/tags/v8/chromium-launcher-8.tar.gz
 	source = chromium-launcher-electron-app.patch

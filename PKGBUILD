@@ -28,7 +28,7 @@
 : "${COMPONENT:=4}"
 
 pkgname=brave
-pkgver=1.52.126
+pkgver=1.52.129
 pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default'
 arch=(x86_64)
@@ -46,7 +46,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-_chromium_ver=114.0.5735.133
+_chromium_ver=114.0.5735.198
 _launcher_ver=8
 source=("brave-browser::git+https://github.com/brave/brave-browser.git#tag=v$pkgver"
         "brave::git+https://github.com/brave/brave-core.git#tag=v$pkgver"
