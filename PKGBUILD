@@ -41,20 +41,12 @@ fi
 ###################################################################################
 
 pkgbase=linux-pds
-pkgname=("$pkgbase" "$pkgbase-headers")
-for _p in "${pkgname[@]}"; do
-  eval "package_$_p() {
-    $(declare -f "_package${_p#$pkgbase}")
-    _package${_p#$pkgbase}
-  }"
-done
 pkgver=6.4.0
 _pkgver=6.4
 pkgrel=1
 major=6.4
 commit=1b45fa8cd58990bf455b429c598b6d4bad155172
 arch=(x86_64)
-pkgdesc='The Linux kernel and modules with Alfred Chen PDS/BMQ CPU scheduler with Arch and other improvement patches - PDS enabled'
 url='https://www.kernel.org/'
 license=(GPL2)
 makedepends=(bc cpio gettext git libelf pahole perl tar xz kmod xmlto)
@@ -507,5 +499,13 @@ sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
             '9a0fd7b40032514b83ec200cd7aeffccf835889c4b86c012e1b9f50fffbfd1a2'
             '8b7be40de00645ca42ee5c7079bf7d7531de75ecdff97a30914d5d604d7efb58'
             '7352643e67f651d322b2443e25f7b6ab30a667e3dde6fc2688cb75c24ef0ae84')
+
+pkgname=($pkgbase $pkgbase-headers)
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
+  }"
+done            
 
 # vim:set ts=8 sts=2 sw=2 et:

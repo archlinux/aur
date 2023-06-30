@@ -1,5 +1,4 @@
 pkgbase = linux-pds
-	pkgdesc = The Linux kernel and modules with Alfred Chen PDS/BMQ CPU scheduler with Arch and other improvement patches - PDS enabled
 	pkgver = 6.4.0
 	pkgrel = 1
 	url = https://www.kernel.org/
@@ -98,5 +97,19 @@ pkgbase = linux-pds
 	sha256sums = 7352643e67f651d322b2443e25f7b6ab30a667e3dde6fc2688cb75c24ef0ae84
 
 pkgname = linux-pds
+	pkgdesc = The Linux kernel and modules with Alfred Chen PDS/BMQ CPU scheduler with Arch and other improvement patches - PDS enabled
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
 pkgname = linux-pds-headers
+	pkgdesc = Headers and scripts for building modules for the linux-pds package
+	depends = linux-pds
+	depends = pahole
