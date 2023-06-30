@@ -1,0 +1,9 @@
+post_upgrade()
+{
+    echo
+    echo "IMPORTANT:"
+    echo 'hastebin requires that $HASTEBIN_TOKEN or --token contain a valid '
+    echo 'Hastebin API token, which can be generated at '
+    echo 'https://www.toptal.com/developers/hastebin/documentation'
+    echo
+}

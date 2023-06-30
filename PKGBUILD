@@ -1,5 +1,5 @@
 pkgname='hastebin'
-release='1.4'
+release='1.5'
 pkgver="${release}.0"
 pkgrel=1
 pkgdesc='Upload data to hastebin.com via stdin'
@@ -10,12 +10,12 @@ depends=('python' 'python-requests')
 conflicts=("${pkgname}-git")
 optdepends=('xclip: default --clip-command')
 source=("${url}/archive/refs/tags/${release}.tar.gz")
+install='hastebin.install'
 sha256sums=(
-    'a8b5d5164e11cc485e973c8f1d090553e78ff1dfcfe3f3664aa8cea37bef6bd8'
+    'c85bb82389887758b6b8329805a368269247135a8a2e47067a0d9b40e4d08475'
 )
 
 package()
 {
     install -Dm755 "${srcdir}/${pkgname}-${release}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
-
