@@ -3,9 +3,9 @@
 # Contributer: Bruce Zhang
 
 pkgname=lx-music
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
-_electron=electron
+_electron=electron22
 pkgdesc='An Electron-based music player'
 arch=('x86_64' 'aarch64')
 url='https://github.com/lyswhut/lx-music-desktop'
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "$pkgname.desktop"
         'dev-app-update.yml'
         )
-sha256sums=('0284e7f3ed72a79e0d7466017a381110ddefd92a980d629aa7faed429c301468'
+sha256sums=('abd3e2c0ff64e4f263e3e807eca621c66c8712785eb7e21845e44fee147ea0da'
             '1171a3688a136b75aa0493d5737cfb1e8c386a48030c8ca313d4cac48c0630e3'
             '732e98dfe569768c3cc90abbe8b1f6d24726dd2cb61317f57f8d5fe77fdefe2f'
             'ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423')
@@ -26,6 +26,7 @@ prepare() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
 	local electronDist="/usr/lib/${_electron}"
 	local electronVersion="$(< $electronDist/version)"
+	# electronVersion="${electronVersion%.*}.0"
 	jq ".devDependencies.electron = \"$electronVersion\"" package.json | sponge package.json
 	jq ".build.electronDist = \"$electronDist\"" package.json | sponge package.json
 	jq ".build.electronVersion = \"$electronVersion\"" package.json | sponge package.json
