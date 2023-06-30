@@ -1,15 +1,16 @@
 pkgbase = hastebin
 	pkgdesc = Upload data to hastebin.com via stdin
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/kevr/hastebin
+	install = hastebin.install
 	arch = any
 	license = GPL2
 	depends = python
 	depends = python-requests
 	optdepends = xclip: default --clip-command
 	conflicts = hastebin-git
-	source = https://github.com/kevr/hastebin/archive/refs/tags/1.4.tar.gz
-	sha256sums = a8b5d5164e11cc485e973c8f1d090553e78ff1dfcfe3f3664aa8cea37bef6bd8
+	source = https://github.com/kevr/hastebin/archive/refs/tags/1.5.tar.gz
+	sha256sums = c85bb82389887758b6b8329805a368269247135a8a2e47067a0d9b40e4d08475
 
 pkgname = hastebin
