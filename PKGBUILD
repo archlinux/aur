@@ -9,118 +9,145 @@
 
 pkgbase=calibre-git
 pkgname=calibre-git
-pkgver=5.34.0.r114.g0cf7af69ac
+pkgver=6.22.0.r1.gca2b4e02ed
 pkgrel=1
-_dictionaries_commit="8cd38fb5138f2e456506aaa889ec2b7042a7439e"
-pkgdesc="Ebook management application"
-arch=('i686' 'x86_64')
-url="https://calibre-ebook.com/"
-license=('GPL3')
-_py_deps=('apsw' 'beautifulsoup4' 'cchardet' 'cssselect' 'css-parser' 'dateutil' 'dnspython'
-          'feedparser' 'html2text' 'html5-parser' 'jeepney' 'lxml' 'markdown' 'mechanize' 'msgpack'
-          'netifaces' 'unrardll' 'pillow' 'psutil' 'py7zr' 'pychm' 'pygments' 'pyqt5'
-          'pyqtwebengine' 'regex' 'zeroconf')
-depends=('hunspell' 'hyphen' 'icu' 'jxrlib' 'libmtp' 'libstemmer' 'libusb'
-         'libwmf' 'mathjax' 'mtdev' 'optipng' 'podofo'
-         "${_py_deps[@]/#/python-}" 'qt5-imageformats' 'qt5-svg' 'ttf-liberation' 'udisks2')
-makedepends=('git' 'qt5-x11extras' 'sip' 'pyqt-builder' 'xdg-utils' 'rapydscript-ng' 'python-sphinx')
-checkdepends=('xorg-server-xvfb')
-optdepends=('poppler: required for converting pdf to html')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" 'calibre-common' 'calibre-python3')
-replaces=('calibre-common-git' 'calibre-python3-git')
+pkgdesc='Ebook management application'
+arch=(x86_64 i686)
+url=https://calibre-ebook.com
+license=(GPL3)
+_pydeps=(apsw
+         beautifulsoup4
+         faust-cchardet
+         css-parser
+         cssselect
+         dateutil
+         dnspython
+         feedparser
+         html2text
+         html5-parser
+         jeepney
+         lxml
+         markdown
+         mechanize
+         msgpack
+         netifaces
+         pdftotext
+         pillow
+         psutil
+         py7zr
+         pychm
+         pycryptodome
+         pygments
+         pyqt6
+         pyqt6-webengine
+         regex
+         unrardll
+         zeroconf)
+depends=(hunspell
+         hyphen
+         icu
+         jxrlib
+         libmtp
+         libstemmer
+         libusb
+         libwmf
+         mathjax
+         mtdev
+         optipng
+         podofo
+         "${_pydeps[@]/#/python-}"
+         qt6-imageformats
+         qt6-svg
+         qt6-webengine
+         ttf-liberation
+         uchardet
+         udisks2)
+makedepends=(cmake
+             git
+             pyqt-builder
+             rapydscript-ng
+             sip
+             xdg-utils)
+optdepends=('poppler: required for converting pdf to html'
+            'python-fonttools: required for font subset feature in epub editor'
+            'speech-dispatcher: TTS support in the viewer')
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}"
+           calibre-common
+           calibre-python3)
+replaces=(calibre-common-git
+          calibre-python3-git)
 source=("git+https://github.com/kovidgoyal/${pkgbase%-git}.git?signed"
         "git+https://github.com/kovidgoyal/${pkgbase%-git}-translations.git?signed"
-        "dictionaries-${_dictionaries_commit}.tar.gz::https://github.com/LibreOffice/dictionaries/archive/${_dictionaries_commit}.tar.gz"
-        "user-agent-data.json")
+        user-agent-data.json)
 sha256sums=('SKIP'
             'SKIP'
-            '50a90de207ce177cb415e3694d16906cfcb7bdb0f8602b8a23bca25f8276d46a'
             '26e00a8de411f3a134735d508f4bb7b85f9c1abe5b9d031d3d50d59450e74bd6')
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
 pkgver() {
-    cd "${pkgbase%-git}"
-
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${pkgbase%-git}"
+	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
-    cd "${pkgbase%-git}"
+	cd "${pkgbase%-git}"
+	python setup.py git_version
 
-    python setup.py git_version
+	# Link translations to build dir
+	ln -sfT ../calibre-translations translations
 
-    # Link translations to build dir
-    ln -sfT ../calibre-translations translations
+	# Desktop integration (e.g. enforce arch defaults)
+	# Use uppercase naming scheme, don't delete config files under fakeroot.
+	sed -e "/import config_dir/,/os.rmdir(config_dir)/d" \
+		-e "s/'ctc-posml'/'text' not in mt and 'pdf' not in mt and 'xhtml'/" \
+		-e "s/^Name=calibre/Name=Calibre/g" \
+		-i  src/calibre/linux.py
 
-    # Desktop integration (e.g. enforce arch defaults)
-    # Use uppercase naming scheme, don't delete config files under fakeroot.
-    sed -e "/import config_dir/,/os.rmdir(config_dir)/d" \
-        -e "s/^Name=calibre/Name=Calibre/g" \
-        -i  src/calibre/linux.py
+	# Remove unneeded files
+	rm -f resources/$pkgname-portable.*
 }
 
 build() {
-    cd "${pkgbase%-git}"
-
-    # Don't use the bootstrapper, since it tries to checkout/pull the
-    # translations repo and generally touch the internet. Instead call each
-    # *needed* subcommmand.
-    # LANG='en_US.UTF-8' python2 setup.py bootstrap
-
-    LANG='en_US.UTF-8' python setup.py build
-    LANG='en_US.UTF-8' python setup.py iso639
-    LANG='en_US.UTF-8' python setup.py iso3166
-    LANG='en_US.UTF-8' python setup.py translations
-    LANG='en_US.UTF-8' python setup.py gui
-    LANG='en_US.UTF-8' python setup.py resources \
-        --path-to-liberation_fonts /usr/share/fonts/liberation --system-liberation_fonts \
-        --path-to-mathjax /usr/share/mathjax --system-mathjax \
-        --path-to-hyphenation "${srcdir}"/dictionaries-${_dictionaries_commit}
-    LANG='en_US.UTF-8' python setup.py man_pages
-
-    # This tries to download new user-agent data, so pre-seed a
-    # recently-generated copy to allow offline builds.
-    cp ../user-agent-data.json resources/
-    LANG='en_US.UTF-8' python setup.py recent_uas || true
+	cd "${pkgbase%-git}"
+	export LANG='en_US.UTF-8'
+	python setup.py build
+	python setup.py iso639
+	python setup.py iso3166
+	python setup.py resources \
+		--system-liberation_fonts --path-to-liberation_fonts /usr/share/fonts/liberation \
+		--system-mathjax --path-to-mathjax /usr/share/mathjax
+	python setup.py gui
 }
 
 check() {
-    cd "${pkgbase%-git}"
-
-    _test_excludes=(
-        # merely testing if a runtime-optional feature optdepend is importable
-        'speech_dispatcher'
-        # tests if a completely unused module is bundled
-        'pycryptodome'
-        # only fails on local builds, and that intermittently
-        'test_searching'
-    )
-
-    LANG='en_US.UTF-8' python setup.py test "${_test_excludes[@]/#/--exclude-test-name=}"
+	cd "${pkgbase%-git}"
+	export LANG='en_US.UTF-8'
+	python -m unittest discover
 }
 
 package() {
-    cd "${pkgbase%-git}"
+	cd "${pkgbase%-git}"
+	export LANG='en_US.UTF-8'
 
-    # If this directory doesn't exist, zsh completion won't install.
-    install -d "${pkgdir}/usr/share/zsh/site-functions"
+	# If this directory doesn't exist, zsh completion won't install.
+	install -d "${pkgdir}/usr/share/zsh/site-functions"
 
-    LANG='en_US.UTF-8' python setup.py install \
-        --staging-root="${pkgdir}/usr" \
-        --prefix=/usr \
-        --system-plugins-location=/usr/share/calibre/system-plugins
+	python setup.py install \
+		--staging-root="${pkgdir}/usr" \
+		--prefix=/usr \
+		--system-plugins-location=/usr/share/calibre/system-plugins
 
-    cp -a man-pages/ "${pkgdir}/usr/share/man"
+	cp -a man-pages/ "${pkgdir}/usr/share/man"
 
-    # not needed at runtime
-    rm -r "${pkgdir}"/usr/share/calibre/rapydscript/
+	# not needed at runtime
+	rm -r "${pkgdir}"/usr/share/calibre/rapydscript/
 
-    # Compiling bytecode FS#33392
-    # This is kind of ugly but removes traces of the build root.
-    while read -rd '' _file; do
-        _destdir="$(dirname "${_file#${pkgdir}}")"
-        python3 -m compileall -d "${_destdir}" "${_file}"
-        python3 -O -m compileall -d "${_destdir}" "${_file}"
-    done < <(find "${pkgdir}"/usr/lib/ -name '*.py' -print0)
+	# Compiling bytecode FS#33392
+	# This is kind of ugly but removes traces of the build root.
+	while read -rd '' _file; do
+		_destdir="$(dirname "${_file#${pkgdir}}")"
+		python -m compileall -d "${_destdir}" "${_file}"
+		python -O -m compileall -d "${_destdir}" "${_file}"
+	done < <(find "${pkgdir}"/usr/lib/ -name '*.py' -print0)
 }
