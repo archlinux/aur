@@ -1,5 +1,4 @@
 pkgbase = linux-bore-eevdf
-	pkgdesc = The Linux kernel and modules with Masahito Suzuki BORE CPU and Peter Zijlstra EEVDF scheduler with Arch and other improvement patches
 	pkgver = 6.4.0
 	pkgrel = 1
 	url = https://www.kernel.org/
@@ -90,5 +89,19 @@ pkgbase = linux-bore-eevdf
 	sha256sums = 7352643e67f651d322b2443e25f7b6ab30a667e3dde6fc2688cb75c24ef0ae84
 
 pkgname = linux-bore-eevdf
+	pkgdesc = The Linux kernel and modules with Masahito Suzuki BORE CPU and Peter Zijlstra EEVDF scheduler with Arch and other improvement patches
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
 pkgname = linux-bore-eevdf-headers
+	pkgdesc = Headers and scripts for building modules for the linux-bore-eevdf package
+	depends = linux-bore-eevdf
+	depends = pahole
