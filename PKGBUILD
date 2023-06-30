@@ -37,7 +37,8 @@ package() {
   rmdir "$LIBDIR/doc"
 
   install -d -m755 "${DATADIR:=$pkgdir/usr/share/$pkgname}"
-  mv "$LIBDIR/COPYING" "$DATADIR"
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  mv "$LIBDIR/COPYING" "$pkgdir/usr/share/licenses/$pkgname"
   mv "$LIBDIR/README" "$DATADIR"
   mv "$LIBDIR/INSTALL" "$DATADIR"
   mv "$LIBDIR/test" "$DATADIR"
