@@ -3,7 +3,7 @@
 
 pkgname=minecraft-technic-launcher
 # Find the latest version number at https://api.technicpack.net/launcher/version/stable4
-pkgver=4.774
+pkgver=4.777
 pkgrel=2
 pkgdesc='Choose from thousands of community-made Minecraft modpacks'
 arch=('any')
