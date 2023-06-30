@@ -8,7 +8,7 @@ pkgdesc="An in-development indie sandbox game about innovation and exploration--
 license=('custom')
 #  Versioning
 _release=stable # the name of the version's release type ("stable", "unstable", "pre")
-_pkgver=1.18.5
+_pkgver=1.18.6
 pkgver=${_pkgver//-/_} # allows usage of versions with hyphens in _pkgver
 pkgrel=1
 #  Requirements
@@ -24,7 +24,7 @@ _ignored=("vs_server_$_pkgver.tar.gz"
           "ModMaker.exe"
           "icons.icns"
           "MonoMac.dll" "launchmac")
-md5sums=('2fc1d1f19f23fb8dbf19a690b64dd4af')
+md5sums=('6e89043f9f91762cb5e385a46be6b272')
 
 # Installation
 prepare() {
@@ -39,7 +39,6 @@ package() {
     mkdir -p "$pkgdir"/usr/share/"$pkgname"/
     mv * "$pkgdir"/usr/share/"$pkgname"/
     for f in "${_ignored[@]}"; do
-        echo "$pkgdir"/usr/share/"$pkgname"/"$f"
         [[ -f "$pkgdir"/usr/share/"$pkgname"/"$f" ]] && 
             rm -f "$pkgdir"/usr/share/"$pkgname"/"$f"
     done
