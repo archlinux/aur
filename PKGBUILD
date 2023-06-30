@@ -2,12 +2,13 @@
 
 pkgname='blackd-systemd'
 pkgver='23.3.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="systemd service for blackd, the uncompromising Python code formatter daemon"
 arch=('any')
 url="https://github.com/psf/black"
 license=('MIT')
 depends=('python-black'
+         'python-aiohttp'
          'systemd')
 makedepends=()
 checkdepends=()

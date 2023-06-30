@@ -1,11 +1,12 @@
 pkgbase = blackd-systemd
 	pkgdesc = systemd service for blackd, the uncompromising Python code formatter daemon
 	pkgver = 23.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/psf/black
 	arch = any
 	license = MIT
 	depends = python-black
+	depends = python-aiohttp
 	depends = systemd
 	source = blackd.service
 	sha256sums = 470c44b5f3671aa604558e2d393e4ca9a8122094903bbaf1d0a91fe1ee090151
