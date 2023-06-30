@@ -7,12 +7,22 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9621.89663e0db
-pkgrel=2
+pkgver=r9634.ca2d87e5e
+pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra/"
-options=("!lto") #Use LTO, free performance
+_debug=false #Set debug to true to build citra so it can be debugged with gdb.
+if [ $_debug = "false" ]
+then
+    options=("lto" "strip" "!debug")
+    _cmake_build_type=Release
+    _enable_lto=ON
+else
+    options=("!lto" "!strip" "debug")
+    _cmake_build_type=Debug
+    _enable_lto=off
+fi
 license=('GPL2')
 depends=('ffmpeg' 'speexdsp' 'boost-libs' 'mbedtls' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'libfdk-aac' 'sndio')
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt6-tools' 'qt6-multimedia' 'gcc' 'glslang')
@@ -130,7 +140,8 @@ build() {
 
     cmake -B build -S "$_pkgbase" \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_BUILD_TYPE=$_cmake_build_type \
+      -DENABLE_LTO=$_enable_lto \
       -DENABLE_QT_TRANSLATION=ON \
       -DCITRA_ENABLE_COMPATIBILITY_REPORTING=ON \
       -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
@@ -141,8 +152,8 @@ build() {
       -DUSE_SYSTEM_SDL2=ON \
       -DCMAKE_C_COMPILER=gcc \
       -DCMAKE_CXX_COMPILER=g++ \
-      -DCMAKE_C_FLAGS="$CFLAGS -flto=auto" \
-      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=auto" \
+      -DCMAKE_C_FLAGS="$CFLAGS" \
+      -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
       -Wno-dev
 
     cmake --build build   
