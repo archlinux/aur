@@ -485,10 +485,7 @@ sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
             '8b7be40de00645ca42ee5c7079bf7d7531de75ecdff97a30914d5d604d7efb58'
             '7352643e67f651d322b2443e25f7b6ab30a667e3dde6fc2688cb75c24ef0ae84')
 
-pkgname=(
-  "$pkgbase"
-  "$pkgbase-headers"
-)
+pkgname=($pkgbase $pkgbase-headers)
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
