@@ -1,0 +1,14 @@
+pkgbase = metabase-driver-clickhouse
+	pkgdesc = ClickHouse driver for Metabase
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://github.com/ClickHouse/metabase-clickhouse-driver
+	arch = any
+	license = APACHE2
+	depends = metabase
+	noextract = clickhouse.metabase-driver.jar
+	options = !strip
+	source = https://github.com/ClickHouse/metabase-clickhouse-driver/releases/download/1.1.7/clickhouse.metabase-driver.jar
+	sha256sums = 43d23c91efef447084a1f22e053d26be5524b72eac2ec76eef7bd3c0799f848e
+
+pkgname = metabase-driver-clickhouse
