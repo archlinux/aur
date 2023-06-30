@@ -15,12 +15,12 @@ pkgbase = openrc
 	optdepends = opentmpfiles: adds support for systemd-style tmpfiles.d
 	optdepends = bash-completion: tab completion for openrc commands in bash shells
 	optdepends = zsh-completions: tab completion for openrc commands in zsh shells
-	provides = openrc
+	provides = openrc=0.47.1
 	provides = librc.so
 	provides = init-rc
 	provides = libeinfo.so
 	provides = svc-manager
-	conflicts = openrc
+	conflicts = openrc-git
 	backup = etc/openrc/inittab
 	backup = etc/openrc/rc.conf
 	backup = etc/openrc/conf.d/bootmisc

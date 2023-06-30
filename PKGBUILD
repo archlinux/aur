@@ -18,8 +18,8 @@ optdepends=('openrc-arch-services-git: collection of services for Arch'
             'bash-completion: tab completion for openrc commands in bash shells'
             'zsh-completions: tab completion for openrc commands in zsh shells')
 makedepends=('meson' 'pam' 'psmisc')
-provides=('openrc' 'librc.so' 'init-rc' 'libeinfo.so' 'svc-manager')
-conflicts=('openrc')
+provides=("openrc=$pkgver" 'librc.so' 'init-rc' 'libeinfo.so' 'svc-manager')
+conflicts=('openrc-git')
 backup=(etc/openrc/inittab
         etc/openrc/rc.conf
         etc/openrc/conf.d/{bootmisc,consolefont,devfs,dmesg,fsck,hostname,hwclock,keymaps}
