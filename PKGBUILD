@@ -2,10 +2,10 @@
 # Contributor : Steven Guikal <aur-void@fluix.one>
 pkgname=sline
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple line-editing and command history library.'
 arch=(x86_64)
-url='https://sr.ht/~arivigo/sline/'
+url='https://sr.ht/~ariadnavigo/sline/'
 license=('MIT')
 depends=(glibc)
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~ariadnavigo/${pkgname}/archive/${pkgver}.tar.gz")
