@@ -1,10 +1,11 @@
 pkgbase = fvm-bin
 	pkgdesc = Flutter Version Management: A simple CLI to manage Flutter SDK versions.
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fluttertools/fvm
 	arch = x86_64
 	license = MIT
+	provides = fvm
 	source = https://github.com/fluttertools/fvm/releases/download/2.4.1/fvm-2.4.1-linux-x64.tar.gz
 	sha256sums = 78498cfe331b9f4d2c8ebd97ebe17d3b19ac20c391c3d688525baf764170c0b9
 
