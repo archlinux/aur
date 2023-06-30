@@ -2,7 +2,7 @@
 
 pkgname=python-phonemes2ids
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Flexible tool for assigning integer ids to phonemes"
 arch=('any')
 depends=('python')
@@ -16,6 +16,7 @@ package() {
   cd ${pkgname##python-}-$pkgver
 
   python setup.py install --root="$pkgdir" --optimize=1
+  rm -rf "${pkgdir}/python-phonemes2ids/usr/lib/python3.11/site-packages/tests/"
 }
 
 sha256sums=('4af10276c90a0713c0886c18fe4cbf3f8c66c9750b97ce1a818cfc742f69fad2')

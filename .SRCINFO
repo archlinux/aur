@@ -1,7 +1,7 @@
 pkgbase = python-phonemes2ids
 	pkgdesc = Flexible tool for assigning integer ids to phonemes
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhasspy/phonemes2ids
 	arch = any
 	license = MIT
