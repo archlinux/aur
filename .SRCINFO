@@ -1,10 +1,11 @@
 pkgbase = hnsky-bin
 	pkgdesc = Semi professional free planetarium program
 	pkgver = 4.2.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/hnsky/
 	arch = x86_64
 	license = GPL3
+	optdepends = kchmviewer: A .chm files (MS HTML help file format) viewer
 	optdepends = hyperleda-galaxy-db-astap: 25MB database of 1.3m galaxies and 171k other non-star objects
 	optdepends = w08-star-db-astap: 250KB database of stars up to magnitude 8, reliable above 20° FOV
 	optdepends = d05-star-db-astap: 100MB database of 500 stars per square degree, reliable with 0.6-10° FOV
