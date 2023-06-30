@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=5.2.r108909.g16af424bf9
+pkgver=6.1.r111306.g915701939c
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ depends=('alsa-lib' 'aom' 'aribb24' 'avisynthplus' 'bzip2' 'celt' 'codec2'
          'sndio' 'speex' 'spirv-tools' 'srt' 'svt-av1' 'svt-hevc' 'svt-vp9' 'tesseract'
          'twolame' 'v4l-utils' 'vapoursynth' 'vid.stab' 'vmaf' 'vulkan-icd-loader' 'x264'
          'x265' 'xvidcore' 'xz' 'zeromq' 'zimg' 'zlib' 'zvbi'
-         'chromaprint-fftw' 'davs2' 'flite1' 'libklvanc-git' 'librist' 'pocketsphinx'
+         'chromaprint-fftw' 'davs2' 'flite1' 'libklvanc-git' 'librist'
          'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2')
 makedepends=('git' 'clang' 'amf-headers' 'nasm' 'opencl-headers'
              'vulkan-headers' 'decklink-sdk')
@@ -32,24 +32,30 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswscale.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git')
 conflicts=('ffmpeg')
-_svt_hevc_ver='b62f72e752243cee4104cfb41dc7ee409d3ac3e9'
-_svt_vp9_ver='d9ef3cc13159143b9afc776c04f67cdfa6284046'
+_svt_hevc_ver='eb24a06ba4ee4948f219a3246b88439a8090bd37'
+_svt_vp9_ver='aaa8140c8cdf6c073eaa6aaa5d003d1535fd0059'
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
-        #"010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        "006-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+        "010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         #"020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-fix-segfault-with-avisynthplus.patch'
         'LICENSE')
 sha256sums=('SKIP'
-            'e310eedb3dc88c8ad6ffcd6cb6bde1f593ded330ea99b0356724c9d22bcfde4c'
-            '2df82046908015bf26bc1303275cf52ba01fa380029a54ea6415373e389e423c'
+            'b04d0707e14f43df1243a403d74cab434197ece9491d6590523a184e776496ba'
+            'e8fdc940474f3819b9a8d30cab8164774584c051322acb6194bcb03d56e8175a'
+            'd8b91ea5f07d0208cbe0290567083808708014a1953fda322d13cb619349c9ee'
+            'd1ad786df86354d218a70b306a50961736c0a6e2d2716bf8de3db31d79957df9'
             '0d6b53940a81ebaf4e6b1a2208a178eb8a824d6a3d8e863bf9c4c7e0060d88ec'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
-    #patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+    cp --remove-destination "$(readlink "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch")" \
+        "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    patch -Np1 -i "006-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
     #patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
@@ -70,6 +76,8 @@ build() {
     ./configure \
         --prefix='/usr' \
         --enable-lto \
+         --cc=$CC \
+         --cxx=$CXX \
         \
         --disable-rpath \
         --enable-gpl \
@@ -180,7 +188,7 @@ build() {
         --enable-opencl \
         --enable-opengl \
         --disable-openssl \
-        --enable-pocketsphinx \
+        --disable-pocketsphinx \
         --enable-sndio \
         --enable-sdl2 \
         --enable-vapoursynth \
