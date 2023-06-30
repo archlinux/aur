@@ -2,7 +2,7 @@
 
 pkgname=erigon
 pkgdesc='Ethereum implementation on the efficiency frontier.'
-pkgver=2.46.0
+pkgver=2.47.0
 pkgrel=1
 epoch=1
 url='https://github.com/ledgerwatch/erigon'
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('go')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ledgerwatch/erigon/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('8c46839b8ea68c4ff3d3aabdec60bb0fbd59dc3151b031cc3dbce15c85cb9b1ffea155877d9d63aff87b304dac018efc3902cf6f25355d8fa774b239f0b77fd3')
+b2sums=('2c8eb7bc581ab20fac836feee5d5d66aede312f84404c655d725674a6b1485cf3f62d808953de7e1bb88768c0ecc9a375a800e87a5dea734f4d906b5a7531147')
 
 build() {
     cd ${pkgname}-${pkgver}
@@ -24,11 +24,12 @@ build() {
 package() {
     cd ${pkgname}-${pkgver}
 
-    install -Dm755 build/bin/erigon "${pkgdir}"/usr/bin/erigon
-    install -Dm755 build/bin/rpcdaemon "${pkgdir}"/usr/bin/erigon-rpcdaemon
-    install -Dm755 build/bin/sentry "${pkgdir}"/usr/bin/erigon-sentry
-    install -Dm755 build/bin/downloader "${pkgdir}"/usr/bin/erigon-downloader
-    install -Dm755 build/bin/txpool "${pkgdir}"/usr/bin/erigon-txpool
-    install -Dm755 build/bin/integration "${pkgdir}"/usr/bin/erigon-integration
-    install -Dm755 build/bin/hack "${pkgdir}"/usr/bin/erigon-hack
+    for binary in build/bin/*; do
+        filename=${binary##*/}
+        if [[ "${filename}" = "erigon" ]]; then
+            install -Dm755 "${binary}" "${pkgdir}/usr/bin/${filename}"
+        else
+            install -Dm755 "${binary}" "${pkgdir}/usr/bin/erigon-${filename}"
+        fi
+    done
 }
