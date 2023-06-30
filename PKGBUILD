@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=snapshot
-pkgver=44.0
+pkgver=44.2
 pkgrel=1
 pkgdesc='Take pictures and videos on your computer, tablet, or phone'
 arch=(x86_64 aarch64)
@@ -25,7 +25,7 @@ makedepends=(
 	clang
 )
 source=("$url/-/archive/$pkgver/snapshot-$pkgver.tar.gz")
-b2sums=('1139df7e83e690cffbf2b6fe775ac220e30c2b2122861b77395accf281e12ebc7e546038d9b60ac31e29fc8a31dcca61b5df23202d4109a7db0e04ab81d7c285')
+b2sums=('7c260ea2b32d48c3e48d5017cd2a142b0516b7c3d49dfa6586f36b495d2f393b31658e8f38e3b9d540690a2eae17517bef15a4482abc7e1bc13ab7cf97cff90e')
 
 build() {
 	arch-meson $pkgname-$pkgver build
