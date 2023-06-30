@@ -2,7 +2,7 @@
 # Contributor yochananmarqos
 
 pkgname=powerline-go
-pkgver=1.23
+pkgver=1.24
 pkgrel=1
 pkgdesc="A beautiful, useful and fast prompt for your shell"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 makedepends=('go-pie' 'git')
 optdepends=('powerline-fonts')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('56c1e8818eb2695ed9bad94feab388f041cf857f5f8073aaa950c1a6925c5b54')
+sha256sums=('08d958c49269e7025a998a617f3d6a0b6dcd7432437f950f0d0e3335bf7b59b3')
 
 build() {
     export GOPATH="${srcdir}/gopath"
