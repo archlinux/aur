@@ -1,12 +1,13 @@
 pkgbase = zrok-bin
 	pkgdesc = An open source sharing solution built on OpenZiti
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openziti/zrok
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = Apache
+	depends = glibc
 	provides = zrok
 	conflicts = zrok
 	source_x86_64 = zrok-bin-0.4.2-linux-amd64.tar.gz::https://github.com/openziti/zrok/releases/download/v0.4.2/zrok_0.4.2_linux_amd64.tar.gz
