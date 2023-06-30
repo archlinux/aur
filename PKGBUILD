@@ -7,104 +7,119 @@
 
 pkgname=openssh-gssapi
 _pkgname=openssh
-pkgver=9.0p1
+pkgver=9.3p1
 _patch=1
-pkgrel=2
-pkgdesc='Premier connectivity tool for remote login with the SSH protocol'
+pkgrel=1
+pkgdesc="SSH protocol implementation with GSSAPI support"
+arch=('x86_64')
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
 conflicts=(${_pkgname})
 provides=(${_pkgname})
-arch=('x86_64')
-depends=('glibc' 'krb5' 'openssl' 'libedit' 'ldns' 'libxcrypt' 'libcrypt.so' 'zlib' 'pam')
-makedepends=('linux-headers' 'libfido2' 'git')
-checkdepends=('inetutils')
-optdepends=('xorg-xauth: X11 forwarding'
-            'x11-ssh-askpass: input passphrase in X'
-            'libfido2: FIDO/U2F support')
-
-validpgpkeys=('7168B983815A5EEF59A4ADFD2A3F414E736060BA')
-source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgver}.tar.gz"{,.asc}
-        "${pkgname}-${pkgver}-${_patch}-gssapi.patch::https://sources.debian.org/data/main/o/openssh/1:${pkgver}-${_patch}/debian/patches/gssapi.patch"
-        'sshdgenkeys.service'
-        'sshd.service'
-        'sshd.conf'
-        'sshd.pam')
-sha256sums=('03974302161e9ecce32153cfa10012f1e65c8f3750f573a73ab1befd5972a28a'
+depends=(
+  'glibc'
+  'krb5' 'libkrb5.so' 'libgssapi_krb5.so'
+  'ldns'
+  'libedit'
+  'libxcrypt' 'libcrypt.so'
+  'openssl'
+  'pam' 'libpam.so'
+  'zlib'
+)
+makedepends=('libfido2' 'linux-headers' 'git')
+optdepends=(
+  'libfido2: FIDO/U2F support'
+  'x11-ssh-askpass: input passphrase in X'
+  'xorg-xauth: X11 forwarding'
+)
+backup=(
+  'etc/pam.d/sshd'
+  'etc/ssh/ssh_config'
+  'etc/ssh/sshd_config'
+)
+source=(
+  "https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgver}.tar.gz"{,.asc}
+  "${_pkgname}-9.0p1-sshd_config.patch"
+  "${pkgname}-${pkgver}-${_patch}-gssapi.patch::https://sources.debian.org/data/main/o/openssh/1:${pkgver}-${_patch}/debian/patches/gssapi.patch"
+  'sshdgenkeys.service'
+  'sshd.service'
+  'sshd.conf'
+  'sshd.pam'
+)
+sha256sums=('e9baba7701a76a51f3d85a62c383a3c9dcd97fa900b859bc7db114c1868af8a8'
             'SKIP'
-            'd2f4c7bb1bc33540605a3bb0c9517d7b4ed2f5d77c24f7afcd64891be59f4ed2'
-            '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
+            '27e43dfd1506c8a821ec8186bae65f2dc43ca038616d6de59f322bd14aa9d07f'
+            'ff64c0e69f878dc29621cc677f90f8436131ba078630cb44c2fc419a4448c57e'
+            'e5305767b2d317183ad1c5022a5f6705bd9014a8b22495a000fd482713738611'
             'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
             '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
             '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
-
-backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
-
-install=install
+b2sums=('45578edf98bba3d23c7cefe60d8a7d3079e7c6676459f7422ace7a2461ab96943fbcadb478633a80f40bc098f2435722850b563714adb78b14922be53cb5753d'
+        'SKIP'
+        '29e1a1c2744e0234830c6f93a46338ea8dc943370e20a24883d207d611025e54643da678f2826050c073a36be48dfdc7329d4cfb144c2ff90607a5f10f73dc59'
+        '1b4c456fb111c76e3f868190d2cc4b832c4dee2f4d12d6f00312311626d9e84ac2bf1082732a0cdf3a9c834246deb0f2a82cddd03d03c7cb31a0a5864f344945'
+        '09fad3648f48f13ee80195b90913feeba21240d121b1178e0ce62f4a17b1f7e58e8edc22c04403e377ab300f5022a804c848f5be132765d5ca26a38aab262e50'
+        '07ad5c7fb557411a6646ff6830bc9d564c07cbddc4ce819641d31c05dbdf677bfd8a99907cf529a7ee383b8c250936a6423f4b4b97ba0f1c14f627bbd629bd4e'
+        '27571f728c3c10834a81652f3917188436474b588f8b047462e44b6c7a424f60d06ce8cb74839b691870177d7261592207d7f35d4ae6c79af87d6a7ea156d395'
+        '557d015bca7008ce824111f235da67b7e0051a693aaab666e97b78e753ed7928b72274af03d7fde12033986b733d5f996faf2a4feb6ecf53f39accae31334930')
+validpgpkeys=('7168B983815A5EEF59A4ADFD2A3F414E736060BA')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    patch -p1 -i ../${pkgname}-${pkgver}-${_patch}-gssapi.patch
-    autoreconf
+  patch -Np1 -d "$_pkgname-$pkgver" -i ../${_pkgname}-9.0p1-sshd_config.patch
+  patch -Np1 -d "$_pkgname-$pkgver" -i ../${pkgname}-${pkgver}-${_patch}-gssapi.patch
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  autoreconf
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+  local configure_options=(
+    --prefix=/usr
+    --sbindir=/usr/bin
+    --libexecdir=/usr/lib/ssh
+    --sysconfdir=/etc/ssh
+    --disable-strip
+    --with-ldns
+    --with-libedit
+    --with-security-key-builtin
+    --with-ssl-engine
+    --with-pam
+    --with-privsep-user=nobody
+    --with-kerberos5=/usr
+    --with-xauth=/usr/bin/xauth
+    --with-pid-dir=/run
+    --with-default-path='/usr/local/sbin:/usr/local/bin:/usr/bin'
+    --with-gssapi
+  )
 
-    ./configure \
-        --prefix=/usr \
-        --sbindir=/usr/bin \
-        --libexecdir=/usr/lib/ssh \
-        --sysconfdir=/etc/ssh \
-        --disable-strip \
-        --with-ldns \
-        --with-libedit \
-        --with-security-key-builtin \
-        --with-ssl-engine \
-        --with-pam \
-        --with-privsep-user=nobody \
-        --with-kerberos5=/usr \
-        --with-xauth=/usr/bin/xauth \
-        --with-md5-passwords \
-        --with-pid-dir=/run \
-        --with-default-path='/usr/local/sbin:/usr/local/bin:/usr/bin' \
-        --with-gssapi \
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    make
+  ./configure "${configure_options[@]}"
+  make
 }
 
 check() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
-    # Tests require openssh to be already installed system-wide,
-    # also connectivity tests will fail under makechrootpkg since
-    # it runs as nobody which has /bin/false as login shell.
-
-    if [[ -e /usr/bin/scp && ! -e /.arch-chroot ]]; then
-        make tests
-    fi
+  # NOTE: make t-exec does not work in our build environment
+  make file-tests interop-tests unit
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
-    make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
 
-    ln -sf ssh.1.gz "${pkgdir}"/usr/share/man/man1/slogin.1.gz
-    install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENCE"
+  ln -sf ssh.1.gz "${pkgdir}"/usr/share/man/man1/slogin.1.gz
+  install -Dm644 LICENCE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 
-    install -Dm644 ../sshdgenkeys.service "${pkgdir}"/usr/lib/systemd/system/sshdgenkeys.service
-    install -Dm644 ../sshd.service "${pkgdir}"/usr/lib/systemd/system/sshd.service
-    install -Dm644 ../sshd.conf "${pkgdir}"/usr/lib/tmpfiles.d/sshd.conf
-    install -Dm644 ../sshd.pam "${pkgdir}"/etc/pam.d/sshd
+  install -Dm644 ../sshdgenkeys.service -t "${pkgdir}"/usr/lib/systemd/system/
+  install -Dm644 ../sshd.service -t "${pkgdir}"/usr/lib/systemd/system/
+  install -Dm644 ../sshd.conf -t "${pkgdir}"/usr/lib/tmpfiles.d/
+  install -Dm644 ../sshd.pam "${pkgdir}"/etc/pam.d/sshd
 
-    install -Dm755 contrib/findssl.sh "${pkgdir}"/usr/bin/findssl.sh
-    install -Dm755 contrib/ssh-copy-id "${pkgdir}"/usr/bin/ssh-copy-id
-    install -Dm644 contrib/ssh-copy-id.1 "${pkgdir}"/usr/share/man/man1/ssh-copy-id.1
-
-    sed \
-        -e '/^#ChallengeResponseAuthentication yes$/c ChallengeResponseAuthentication no' \
-        -e '/^#PrintMotd yes$/c PrintMotd no # pam does that' \
-        -e '/^#UsePAM no$/c UsePAM yes' \
-        -i "${pkgdir}"/etc/ssh/sshd_config
+  install -Dm755 contrib/findssl.sh -t "${pkgdir}"/usr/bin/
+  install -Dm755 contrib/ssh-copy-id -t "${pkgdir}"/usr/bin/
+  install -Dm644 contrib/ssh-copy-id.1 -t "${pkgdir}"/usr/share/man/man1/
 }
+
+# vim: ts=2 sw=2 et:
