@@ -29,7 +29,7 @@ package() {
   cd "${srcdir}"/inih-r${pkgver}
   for _arch in ${_architectures}; do
     DESTDIR="$pkgdir" ninja -C build-${_arch} install
-    #rm -r "$pkgdir"/usr/${_arch}/lib
+    ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
   done
 }
