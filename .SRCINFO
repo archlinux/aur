@@ -28,6 +28,8 @@ pkgbase = jdk11-openjdk-dcevm
 	provides = jdk-openjdk=11.0.15.u1
 	provides = openjdk11-src=11.0.15.u1
 	provides = openjdk-src=11.0.15.u1
+	conflicts = jdk11-openjdk-dcevm-conflicts-fixed
+	replaces = jdk11-openjdk-dcevm-conflicts-fixed
 	backup = etc/jdk11-openjdk-dcevm/net.properties
 	backup = etc/jdk11-openjdk-dcevm/logging.properties
 	backup = etc/jdk11-openjdk-dcevm/security/java.security

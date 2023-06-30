@@ -1,4 +1,4 @@
-# Maintainer: therealfarfetchd <aur@therealfarfetchd.dev>
+# Maintainer: nycex <bernhard / ithnet.com>
 
 # Based on jdk11-adoptopenjdk
 
@@ -22,6 +22,8 @@ optdepends=(
   'gtk2: for the Gtk+ 2 look and feel'
   'gtk3: for the Gtk+ 3 look and feel'
 )
+conflicts=('jdk11-openjdk-dcevm-conflicts-fixed')
+replaces=('jdk11-openjdk-dcevm-conflicts-fixed')
 
 provides=(
   "java-runtime-headless=${_majorver}"
