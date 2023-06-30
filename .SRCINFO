@@ -1,5 +1,4 @@
 pkgbase = linux-zen-bmq
-	pkgdesc = The Zen kernel and modules - BMQ enabled
 	pkgver = 6.4.0.zen1
 	pkgrel = 1
 	url = https://www.kernel.org/
@@ -34,5 +33,19 @@ pkgbase = linux-zen-bmq
 	sha256sums = aec310553aa9b98572c25d37dfc33a62f5f853441a91cafc5cb1b8c19d7d9be3
 
 pkgname = linux-zen-bmq
+	pkgdesc = The Zen kernel and modules - BMQ enabled
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+	provides = VHBA-MODULE
+	provides = UKSMD-BUILTIN
 
 pkgname = linux-zen-bmq-headers
+	pkgdesc = Headers and scripts for building modules for the linux-zen-bmq kernel
+	depends = linux-zen-bmq
+	depends = pahole

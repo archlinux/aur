@@ -40,20 +40,12 @@ fi
 ###################################################################################
 
 pkgbase=linux-zen-bmq
-pkgname=("$pkgbase" "$pkgbase-headers")
-for _p in "${pkgname[@]}"; do
-  eval "package_$_p() {
-    $(declare -f "_package${_p#$pkgbase}")
-    _package${_p#$pkgbase}
-  }"
-done
 pkgver=6.4.0.zen1
 pkgrel=1
 major=6.4
 commit=e63a6b30adfd9c0b870daa2a14300a893b69cf17
 versiontag=6.4-zen1
 arch=(x86_64)
-pkgdesc="The Zen kernel and modules - BMQ enabled"
 url='https://www.kernel.org/'
 license=(GPL2)
 makedepends=(bc cpio gettext git libelf pahole perl tar xz kmod xmlto)
@@ -385,5 +377,13 @@ _package-headers(){
 sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
             '72356a9b2482a44e935be0651e374ceb3640e71ba1f2d31dd1ab1986c4c6d9a0'
             'aec310553aa9b98572c25d37dfc33a62f5f853441a91cafc5cb1b8c19d7d9be3')
+
+pkgname=($pkgbase $pkgbase-headers)
+for _p in "${pkgname[@]}"; do
+  eval "package_$_p() {
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
+  }"
+done            
 
 # vim:set ts=8 sts=2 sw=2 et:
