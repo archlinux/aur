@@ -5,7 +5,7 @@ pkgver=44.2
 pkgrel=1
 pkgdesc='Take pictures and videos on your computer, tablet, or phone'
 arch=(x86_64 aarch64)
-url='https://gitlab.gnome.org/Incubator/snapshot'
+url='https://gitlab.gnome.org/GNOME/Incubator/snapshot'
 license=(GPL3)
 depends=(
 	glib2
