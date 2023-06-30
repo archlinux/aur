@@ -1,6 +1,6 @@
 pkgbase = qemu-git
 	pkgdesc = A generic and open source machine emulator and virtualizer. Git version.
-	pkgver = 8.0.0.r2024.g79dbd910c9
+	pkgver = 8.0.0.r2304.g408015a97d
 	pkgrel = 1
 	epoch = 19
 	url = https://wiki.qemu.org/
@@ -70,9 +70,11 @@ pkgbase = qemu-git
 	source = git+https://gitlab.com/qemu-project/qemu.git
 	source = qemu-guest-agent.service
 	source = 65-kvm.rules
+	source = dbus.patch
 	sha256sums = SKIP
 	sha256sums = c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88
 	sha256sums = a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c
+	sha256sums = 8e34f65bc6e4923a13b5542b11ad29fc3fe3dc8ebf82cbb5bf43848e7b4b75eb
 
 pkgname = qemu-git
 	pkgdesc = QEMU Git version.

@@ -16,7 +16,7 @@ pkgname=(
   qemu-guest-agent-git
 )
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=8.0.0.r2024.g79dbd910c9
+pkgver=8.0.0.r2304.g408015a97d
 pkgrel=1
 epoch=19
 arch=(i686 x86_64)
@@ -86,10 +86,12 @@ makedepends=(
 )
 source=(git+https://gitlab.com/qemu-project/qemu.git
         qemu-guest-agent.service
-        65-kvm.rules)
+        65-kvm.rules
+        dbus.patch)
 sha256sums=('SKIP'
             'c39bcde4a09165e64419fd2033b3532378bba84d509d39e2d51694d44c1f8d88'
-            'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c')
+            'a66f0e791b16b03b91049aac61a25950d93e962e1b2ba64a38c6ad7f609b532c'
+            '8e34f65bc6e4923a13b5542b11ad29fc3fe3dc8ebf82cbb5bf43848e7b4b75eb')
 
 case $CARCH in
   i?86) _corearch=i386 ;;
@@ -105,6 +107,8 @@ prepare() {
   cd "${srcdir}/${_gitname}"
   mkdir build-{full,headless}
   mkdir -p extra-arch-{full,headless}/usr/{bin,share/qemu}
+  # Fix for bug https://gitlab.com/qemu-project/qemu/-/issues/1739
+  patch -Np1 -i ../dbus.patch
 }
 
 build() {
