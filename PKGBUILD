@@ -2,7 +2,7 @@
 
 pkgname=whisper.cpp
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of OpenAI's Whisper model in C/C++"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggerganov/whisper.cpp"
@@ -10,7 +10,7 @@ license=("MIT")
 depends=('glibc' 'gcc-libs' 'sdl2')
 makedepends=('cmake' 'git')
 
-source=("${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
