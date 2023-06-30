@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=tasker-permissions-git
-pkgver=0.2.0.r1.gce60661
-pkgrel=3
+pkgver=0.2.0.r2.ga137604
+pkgrel=1
 _electronversion=25
 pkgdesc="Utility to easily grant Tasker permissions"
 arch=('x86_64')
 url="https://github.com/joaomgcd/Tasker-Permissions"
-license=('ISC')
+license=('Apache')
 depends=('android-tools' "electron${_electronversion}")
 makedepends=('git' 'npm')
 provides=("${pkgname%-git}")
