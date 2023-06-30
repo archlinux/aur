@@ -5,7 +5,7 @@ pkgver=2.40
 pkgrel=1
 pkgdesc="Exports Discord chat logs to a file"
 url="https://github.com/Tyrrrz/DiscordChatExporter"
-license=('GPL')
+license=('GPL3')
 source=("${pkgname}-${pkgver}".tar.gz::https://github.com/Tyrrrz/DiscordChatExporter/archive/refs/tags/${pkgver}.tar.gz
 	'discordchatexporter-cli')
 b2sums=('4082f4b039796ee446ff33866970913cf4cc63860b28b13cac1dd466ed425879c4f964019f65e6537c4c94be8ca50f5876f4e58fdca47f1d19f9887aed31fb0a'
