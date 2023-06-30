@@ -1,18 +1,22 @@
-# Maintainer: Endo Aya <endoaya@protonmail.ch>
+# Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
+# Contributor: Endo Aya <endoaya@protonmail.ch>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 _pkgbasename=libxpm
 pkgname=lib32-$_pkgbasename
-pkgver=3.5.13
-pkgrel=2
+pkgver=3.5.16
+pkgrel=1
 pkgdesc="X11 pixmap library (32-bit)"
 arch=(x86_64)
 license=('custom')
 url="https://xorg.freedesktop.org/"
-depends=(lib32-libxt lib32-libxext lib32-gcc-libs $_pkgbasename)
+depends=(lib32-libxt lib32-libxext lib32-gcc-libs ncompress $_pkgbasename)
 makedepends=(xorg-util-macros gcc-multilib pkg-config)
 options=('!libtool')
-source=(${url}/releases/individual/lib/libXpm-${pkgver}.tar.bz2)
-sha512sums=('3b8f6e926272f39b1d95135c2274c00f5aaee1f9fb2ef79f71628df5edeb7ba20158819ef6a778101cc4092493a3b5b613c53634fdccadcc0fc85f0605e5e9a5')
+source=(${url}/releases/individual/lib/libXpm-${pkgver}.tar.xz{,.sig})
+sha512sums=('ee564311f8c1c9c08ed1035d55c287ecf7c20c6fee09ad448acfab59f38fd1ef381d4a24b4af2b581f3033730eebc7c690918e52ba706de689d1ef11085edac2'
+            'SKIP')
+#validpgpkeys=('4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E') # Alan Coopersmith <alan.coopersmith@oracle.com>
+validpgpkeys=('3BB639E56F861FA2E86505690FDD682D974CA72A') # Matt Turner <mattst88@gmail.com>
 
 build() {
   export CC="gcc -m32"
