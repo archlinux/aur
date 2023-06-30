@@ -1,12 +1,12 @@
 pkgbase = wpc-bin
 	pkgdesc = Automatic Wallpaper Changer which can retrieve wallpapers from Wallhaven and Reddit (binary release)
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/jkotra/wpc
 	arch = x86_64
 	license = MIT
 	depends = gnome-shell
-	source = https://github.com/jkotra/wpc/releases/download/1.7.0/wpc_1.7.0_linux.tar.xz
-	sha256sums = f55a2d0dd2e72b2e6ed1cfd9e31c9aac8076c54159f1d2f0d597c5618150e77e
+	source = https://github.com/jkotra/wpc/releases/download/1.8.0/wpc_1.8.0_linux.tar.xz
+	sha256sums = c6498416ef7e425e359fdfe7a3111a37049103c2196bf9ce6250868e67dc2419
 
 pkgname = wpc-bin
