@@ -1,8 +1,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=glib-networking
-pkgver=2.76.0
-pkgrel=2
+pkgver=2.76.1
+pkgrel=1
 epoch=1
 pkgdesc="Network extensions for GLib"
 url="https://gitlab.gnome.org/GNOME/glib-networking"
@@ -19,7 +19,7 @@ makedepends=(
   meson
 )
 checkdepends=(ca-certificates)
-_commit=eab226398f9872c381033f7cb3af43dcb66600f4  # tags/2.76.0^0
+_commit=31c21c5efe2a1b930c7029c1e66340de9f97dafc  # tags/2.76.1^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -30,9 +30,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-
-  # Fix tests with libproxy 0.5
-  git cherry-pick -n a7db10e8862050f19af5c2eebcd1d590a04d5ced
 }
 
 build() {
