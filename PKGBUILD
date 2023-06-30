@@ -1,13 +1,14 @@
+# Maintainer: VitalyR <vr AT vitalyr DOT com>
 # Maintainer: ltoenning <dev@ltoenning.de>
 pkgname=ripes-git
-pkgver=2.2.3
-pkgrel=2
+pkgver=2.2.6
+pkgrel=1
 pkgdesc="A graphical processor simulator and assembly editor for the RISC-V ISA"
 arch=('x86_64')
 url="https://github.com/mortbopet/Ripes"
 license=('MIT')
-depends=('qt5-base' 'qt5-charts')
-makedepends=('cmake' 'git')
+depends=('qt6-base' 'qt6-charts')
+makedepends=('cmake' 'git' 'gcc12')
 
 
 source=("${pkgname}-${pkgver}::git+https://github.com/mortbopet/Ripes.git"
@@ -37,7 +38,7 @@ prepare(){
     git config submodule.external/ELFIO.url "$srcdir/ELFIO"
     git config submodule.external/VSRTL.url "$srcdir/VSRTL"
     git config submodule.external/libelfin.url "$srcdir/libelfin"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
     # Configure git submodules of VSRTL
     cd $srcdir/${pkgname}-${pkgver}/external/VSRTL
@@ -45,20 +46,21 @@ prepare(){
     git config submodule.external/better-enums.url "$srcdir/better-enums"
     git config submodule.external/cereal.url "$srcdir/cereal"
     git config submodule.external/Signals.url "$srcdir/Signals"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
     # Configure git submodules of libelfin
     cd $srcdir/${pkgname}-${pkgver}/external/libelfin
     git submodule init
     git config submodule.external/cpp-mmaplib.url "$srcdir/cpp-mmaplib"
-    git submodule update
+    git -c protocol.file.allow=always submodule update
 
 }
 
 build(){
     cd $srcdir/${pkgname}-${pkgver}/build
-    cmake -DCMAKE_BUILD_TYPE=Release ..
-    make -j $(nproc)
+
+    CC=gcc-12 CXX=g++-12 cmake -DCMAKE_BUILD_TYPE=Release ..
+    CC=gcc-12 CXX=g++-12 make -j $(nproc)
 }
 
 package(){
