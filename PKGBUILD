@@ -1,7 +1,7 @@
 # Maintainer: Mike Yuan <me@yhndnzj.com>
 
 pkgname=ast-grep
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A fast and easy tool for code searching, linting, rewriting at large scale"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('c02205db09b885e5c542be35b7ca1b9fade7ecb804584537d3d1aacaefe22f9e3db87ad209262a916998f4239dec9df0c2fb7f38eb612b791a907d99329a01ee')
+b2sums=('91d04ea9d2293f4b91358624de46c270905631becbe50a4ab5e5a057b925493b55afdecdaa3825e8329dbdbca7307943502ab565768491a499a33af72454513e')
 options=('!lto')
 
 prepare() {
