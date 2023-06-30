@@ -1,12 +1,14 @@
 pkgbase = python-accimage
 	pkgdesc = high performance image loading and augmenting routines mimicking PIL.Image interface
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pytorch/accimage
 	arch = x86_64
 	license = bsd
+	makedepends = python-pip
+	makedepends = python-ipp-include
 	depends = python-ipp
-	source = https://github.com/pytorch/accimage/releases/tag/v0.2.0
-	sha256sums = e967a30a553a5ae83f79c8acbe13dbb9fd69c03b7067a13f12cf5620ef4ff4e3
+	source = https://github.com/pytorch/accimage/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 2122fa7ac3c570975fac47ad3d4d1fdbaefedf27430cba70efb674e83de3450b
 
 pkgname = python-accimage
