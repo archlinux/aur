@@ -1,0 +1,18 @@
+pkgbase = python-bip32
+	pkgdesc = A basic implementation of the bip-0032.
+	pkgver = 3.4
+	pkgrel = 1
+	url = http://github.com/darosior/python-bip32
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-base58
+	depends = python-coincurve
+	source = git+https://github.com/darosior/python-bip32.git#commit=1492d39312f1d9630363c292f6ab8beb8ceb16dd
+	b2sums = SKIP
+
+pkgname = python-bip32
