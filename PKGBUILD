@@ -6,7 +6,7 @@ pkgver=pce.0.2.2.745.g9353360d
 pkgrel=1
 pkgdesc="PCE is a collection of microcomputer emulators"
 arch=('x86_64')
-url="http://www.hampa.ch/pce/index.html"
+url="http://www.hampa.ch/pce"
 license=('GPLv2')
 depends=('libx11' 'libxau' 'libxcb' 'libxdmcp' 'ncurses' 'readline' 'sdl2')
 makedepends=('git' 'm68k-elf-gcc')
@@ -14,43 +14,43 @@ provides=("pce")
 conflicts=("pce")
 source=(
   'git://git.hampa.ch/pce.git'
-  'http://www.hampa.ch/pce/rom/atarist/tos-1.00-uk.rom'
-  'http://www.hampa.ch/pce/rom/atarist/tos-1.00-us.rom'
-  'http://www.hampa.ch/pce/rom/atarist/tos-1.02-uk.rom'
-  'http://www.hampa.ch/pce/rom/atarist/tos-1.02-us.rom'
-  'http://www.hampa.ch/pce/rom/atarist/tos-1.04-uk.rom'
-  'http://www.hampa.ch/pce/rom/atarist/tos-1.04-us.rom'
-  'http://www.hampa.ch/pce/rom/atarist/tos-2.06-uk.rom'
-  'http://www.hampa.ch/pce/rom/atarist/tos-2.06-us.rom'
-  'http://www.hampa.ch/pce/rom/ibmpc/award-2.05.rom'
-  'http://www.hampa.ch/pce/rom/ibmpc/ibm-pc-1981-04-24.rom'
-  'http://www.hampa.ch/pce/rom/ibmpc/ibm-pc-1981-10-19.rom'
-  'http://www.hampa.ch/pce/rom/ibmpc/ibm-pc-1982-10-27.rom'
-  'http://www.hampa.ch/pce/rom/ibmpc/ibm-xt-1982-11-08.rom'
-  'http://www.hampa.ch/pce/rom/ibmpc/ibm-xt-1986-05-09.rom'
-  'http://www.hampa.ch/pce/rom/ibmpc/ibm-basic-1.00.rom'
-  'http://www.hampa.ch/pce/rom/ibmpc/ibm-basic-1.10.rom'
-  'http://www.hampa.ch/pce/rom/ibmpc/kyocera.rom'
-  'http://www.hampa.ch/pce/rom/ibmpc/olivetti-m24-1.21.rom'
-  'http://www.hampa.ch/pce/rom/ibmpc/olivetti-m24-1.43.rom'
-  'http://www.hampa.ch/pce/rom/ibmpc/phoenix-2.51.rom'
-  'http://www.hampa.ch/pce/rom/video/genoa-ega-2.41.rom'
-  'http://www.hampa.ch/pce/rom/video/ibm-ega.rom'
-  'http://www.hampa.ch/pce/rom/video/et4000.rom'
-  'http://www.hampa.ch/pce/rom/video/ibm-vga.rom'
-  'http://www.hampa.ch/pce/rom/video/mx86200.rom'
-  'http://www.hampa.ch/pce/rom/video/tvga-d3.0.rom'
-  'http://www.hampa.ch/pce/rom/video/tvga-d3.0-pce.rom'
-  'http://www.hampa.ch/pce/rom/video/tvga-c4.3.rom'
-  'http://www.hampa.ch/pce/rom/mac/mac-128k.rom'
-  'http://www.hampa.ch/pce/rom/mac/mac-512k.rom'
-  'http://www.hampa.ch/pce/rom/mac/mac-plus-3.rom'
-  'http://www.hampa.ch/pce/rom/mac/mac-se.rom'
-  'http://www.hampa.ch/pce/rom/mac/mac-classic.rom'
-  'http://www.hampa.ch/pce/rom/rc759/rc759-1-2.1.rom'
-  'http://www.hampa.ch/pce/rom/rc759/rc759-1-5.1.rom'
-  'http://www.hampa.ch/pce/rom/rc759/rc759-2-4.0.rom'
-  'http://www.hampa.ch/pce/rom/rc759/rc759-2-5.1.rom'
+  "${url}/rom/atarist/tos-1.00-uk.rom"
+  "${url}/rom/atarist/tos-1.00-us.rom"
+  "${url}/rom/atarist/tos-1.02-uk.rom"
+  "${url}/rom/atarist/tos-1.02-us.rom"
+  "${url}/rom/atarist/tos-1.04-uk.rom"
+  "${url}/rom/atarist/tos-1.04-us.rom"
+  "${url}/rom/atarist/tos-2.06-uk.rom"
+  "${url}/rom/atarist/tos-2.06-us.rom"
+  "${url}/rom/ibmpc/award-2.05.rom"
+  "${url}/rom/ibmpc/ibm-pc-1981-04-24.rom"
+  "${url}/rom/ibmpc/ibm-pc-1981-10-19.rom"
+  "${url}/rom/ibmpc/ibm-pc-1982-10-27.rom"
+  "${url}/rom/ibmpc/ibm-xt-1982-11-08.rom"
+  "${url}/rom/ibmpc/ibm-xt-1986-05-09.rom"
+  "${url}/rom/ibmpc/ibm-basic-1.00.rom"
+  "${url}/rom/ibmpc/ibm-basic-1.10.rom"
+  "${url}/rom/ibmpc/kyocera.rom"
+  "${url}/rom/ibmpc/olivetti-m24-1.21.rom"
+  "${url}/rom/ibmpc/olivetti-m24-1.43.rom"
+  "${url}/rom/ibmpc/phoenix-2.51.rom"
+  "${url}/rom/video/genoa-ega-2.41.rom"
+  "${url}/rom/video/ibm-ega.rom"
+  "${url}/rom/video/et4000.rom"
+  "${url}/rom/video/ibm-vga.rom"
+  "${url}/rom/video/mx86200.rom"
+  "${url}/rom/video/tvga-d3.0.rom"
+  "${url}/rom/video/tvga-d3.0-pce.rom"
+  "${url}/rom/video/tvga-c4.3.rom"
+  "${url}/rom/mac/mac-128k.rom"
+  "${url}/rom/mac/mac-512k.rom"
+  "${url}/rom/mac/mac-plus-3.rom"
+  "${url}/rom/mac/mac-se.rom"
+  "${url}/rom/mac/mac-classic.rom"
+  "${url}/rom/rc759/rc759-1-2.1.rom"
+  "${url}/rom/rc759/rc759-1-5.1.rom"
+  "${url}/rom/rc759/rc759-2-4.0.rom"
+  "${url}/rom/rc759/rc759-2-5.1.rom"
   )
 sha512sums=('SKIP'
             '64a90a40473ef340c429a76f12b23c4d7cceee808abc23d8cd54a977afdef7ae8a96918462450aed9b8dce578a4690982dd21fe39ac69e60c780bd90fbff11ac'
@@ -109,17 +109,56 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   # fix location of example configs
-  mkdir -p "${pkgdir}/usr/share/pce-git"
-  mv "${pkgdir}/usr/etc" "${pkgdir}/usr/share/pce-git/config-examples"
+  mkdir -p "${pkgdir}/usr/share/${_pkgname}"
+  mv "${pkgdir}/usr/etc/pce" "${pkgdir}/usr/share/${_pkgname}/config"
+  rm -rf "${pkgdir}/usr/etc"
 
   # install doc files
-  mkdir -p "$pkgdir/usr/share/doc/pce-git"
+  mkdir -p "$pkgdir/usr/share/doc/${_pkgname}"
   cd "$srcdir/${_pkgname}/doc"
-  cp -r * "$pkgdir/usr/share/doc/pce-git/"
+  cp -r * "$pkgdir/usr/share/doc/${_pkgname}/"
   cd "$srcdir/${_pkgname}"
-  cp AUTHORS COPYING NEWS README TODO "$pkgdir/usr/share/doc/pce-git/"
+  cp AUTHORS COPYING NEWS README TODO "$pkgdir/usr/share/doc/${_pkgname}/"
 
   # install roms
-  mkdir -p "${pkgdir}/usr/share/pce-git/roms"
-  cp "$srcdir/"*.rom "${pkgdir}/usr/share/pce-git/roms/"
+  for rom in "atarist/tos-1.00-uk.rom" \
+             "atarist/tos-1.00-us.rom" \
+             "atarist/tos-1.02-uk.rom" \
+             "atarist/tos-1.02-us.rom" \
+             "atarist/tos-1.04-uk.rom" \
+             "atarist/tos-1.04-us.rom" \
+             "atarist/tos-2.06-uk.rom" \
+             "atarist/tos-2.06-us.rom" \
+             "ibmpc/award-2.05.rom" \
+             "ibmpc/ibm-pc-1981-04-24.rom" \
+             "ibmpc/ibm-pc-1981-10-19.rom" \
+             "ibmpc/ibm-pc-1982-10-27.rom" \
+             "ibmpc/ibm-xt-1982-11-08.rom" \
+             "ibmpc/ibm-xt-1986-05-09.rom" \
+             "ibmpc/ibm-basic-1.00.rom" \
+             "ibmpc/ibm-basic-1.10.rom" \
+             "ibmpc/kyocera.rom" \
+             "ibmpc/olivetti-m24-1.21.rom" \
+             "ibmpc/olivetti-m24-1.43.rom" \
+             "ibmpc/phoenix-2.51.rom" \
+             "video/genoa-ega-2.41.rom" \
+             "video/ibm-ega.rom" \
+             "video/et4000.rom" \
+             "video/ibm-vga.rom" \
+             "video/mx86200.rom" \
+             "video/tvga-d3.0.rom" \
+             "video/tvga-d3.0-pce.rom" \
+             "video/tvga-c4.3.rom" \
+             "mac/mac-128k.rom" \
+             "mac/mac-512k.rom" \
+             "mac/mac-plus-3.rom" \
+             "mac/mac-se.rom" \
+             "mac/mac-classic.rom" \
+             "rc759/rc759-1-2.1.rom" \
+             "rc759/rc759-1-5.1.rom" \
+             "rc759/rc759-2-4.0.rom" \
+             "rc759/rc759-2-5.1.rom"; do
+    mkdir -p "${pkgdir}/usr/share/${_pkgname}/`dirname ${rom}`"
+    cp "${srcdir}/`basename ${rom}`" "${pkgdir}/usr/share/${_pkgname}/${rom}"
+  done
 }
