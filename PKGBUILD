@@ -6,7 +6,7 @@
 
 pkgname=openrc
 pkgver=0.47.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Dependency based init system that works with sysvinit and systemd or on its own.'
 arch=('i686' 'x86_64')
 url='https://github.com/OpenRC/openrc'

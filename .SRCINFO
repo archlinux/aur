@@ -1,7 +1,7 @@
 pkgbase = openrc
 	pkgdesc = Dependency based init system that works with sysvinit and systemd or on its own.
 	pkgver = 0.47.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenRC/openrc
 	arch = i686
 	arch = x86_64
