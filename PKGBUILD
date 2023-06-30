@@ -1,7 +1,7 @@
 # Maintainer: rern <rernrern@gmail.com>
 
 pkgname=camillagui-backend
-pkgver=1.0.0.rc5
+pkgver=1.0.0.rc6
 pkgrel=1
 pkgdesc='Backend server for camillagui'
 url=https://github.com/HEnquist/camillagui-backend
@@ -12,7 +12,7 @@ source=(https://github.com/HEnquist/camillagui-backend/archive/refs/tags/v${pkgv
         camilladsp.service
         camillagui.service
         camilladsp.yml)
-sha256sums=('dc2479998c8224077ba13be26e9ceca55b69731b12f14262c8e118c4d46ac23e'
+sha256sums=('9c895682debb8cb4f937604b99a6096f07d458217191001e37b6dfea33f31ea6'
             'ae407cec95b855efc240d85c89018a9d953a9bebf2de41def28541128320d38e'
             '993f05f04e1627b1739046e3c59d880deec1d4849525fa0e633dda5493923b48'
             '816138c492d68e291375971a95f88e13d665a21e39202dfce7443c57b4d1d240'
