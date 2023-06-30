@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r76.484a46b
+pkgver=r77.f74cc63
 pkgrel=1
 pkgdesc="A custom configs tool for sk-holoiso"
 arch=('any')
@@ -47,8 +47,9 @@ package() {
     # 主程序入口
     ln -s "/usr/share/${pkgname}/sk-holoiso-config.py" "${pkgdir}/usr/bin/sk-holoiso-config"
 
-    install -Dm644 "${source_dir}/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules" "${pkgdir}/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules"
-    install -Dm644 "${source_dir}/etc/default/grub" "${pkgdir}/etc/default/grub"
+    install -Dm644 -t "${pkgdir}/etc/default/" "${source_dir}/etc/default"/*
+
+    install -Dm644 "${source_dir}/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules" "${pkgdir}/etc/udev/rules.d/99-disable-bluetooth-autosuspend.rules"    
     install -Dm644 "${source_dir}/etc/fonts/conf.d/99-noto-cjk.conf" "${pkgdir}/etc/fonts/conf.d/99-noto-cjk.conf"
 
     # 程序图标
