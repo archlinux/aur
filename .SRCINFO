@@ -1,12 +1,12 @@
 pkgbase = python-smart_open
 	pkgdesc = Library for efficient streaming of very large files from/to S3, HDFS, WebHDFS, HTTP, or local (compressed) files
 	pkgver = 6.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RaRe-Technologies/smart_open
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python-boto3
+	optdepends = python-boto3: AWS support
 	optdepends = python-bz2file: Handling bz2 files
 	optdepends = python-requests: HTTP support
 	optdepends = python-paramiko: SSH support
