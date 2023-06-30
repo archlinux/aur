@@ -1,8 +1,8 @@
 # Maintainer: Paweł Otlewski <pawel@idkcloud.com>
 
 pkgname=rke-bin
-pkgver=1.4.5
-pkgrel=2
+pkgver=1.4.6
+pkgrel=1
 pkgdesc="Rancher Kubernetes Engine, an extremely simple, lightning fast Kubernetes installer that works everywhere."
 arch=('x86_64' 'aarch64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/rancher/rke'
@@ -11,9 +11,9 @@ provides=('rke')
 conflicts=('rke')
 
 case "${CARCH}" in
-  x86_64)  _CARCH=amd64 && sha256sums=('dc151d80e0af7cea78054a0ba73fa029d10cc276e83b4f0756d2e0815b3ab3ab');;
-  arm*)    _CARCH=arm   && sha256sums=('80fa92e7d146f9a69bff98d9c5fc6d4a1e3592a1f9dbdb19f3863663fd6f628e');;
-  aarch64) _CARCH=arm64 && sha256sums=('0e5ad0b2400b8d580e91cbc32e9c567bc0b870b6fc86b28b910216eca5ef6bdf');;
+  x86_64)  _CARCH=amd64 && sha256sums=('12d8fee6f759eac64b3981ef2822353993328f2f839ac88b3739bfec0b9d818c');;
+  arm*)    _CARCH=arm   && sha256sums=('e77a1a19fa7ba7d755f4a03b66f4774e34b4910c69a9f557502dedf4b3768d11');;
+  aarch64) _CARCH=arm64 && sha256sums=('a82781f71817d1e584d3124792ce07872c3525787b8ad89dbf3c5328f6f55810');;
 esac
 
 source=("rke-${pkgver}-${pkgrel}"::"https://github.com/rancher/rke/releases/download/v${pkgver}/rke_linux-${_CARCH}")
