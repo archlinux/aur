@@ -1,46 +1,47 @@
-# Maintainer: navigaid <navigaid@gmail.com>
-# Maintainer: shi liang <shiliang2008@msn.com>
+# Maintainer: 
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
+# Contributor: navigaid <navigaid@gmail.com>
+# Contributor: shi liang <shiliang2008@msn.com>
 
 pkgname=naiveproxy-git
-_pkgname=naiveproxy
-pkgver=v93.0.4577.63.2.r3.g696e87142
+pkgver=114.0.5735.91.4test.r0.g4b250049a
 pkgrel=1
-pkgdesc='Make a fortune quietly'
-arch=('x86_64' 'amd64' 'i386' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
-url='https://github.com/klzgrad/naiveproxy'
-license=('BSD')
-depends=('nspr')
-source=('git+https://github.com/klzgrad/naiveproxy.git' 'naiveproxy.service')
-makedepends=("clang" "lld" "ninja" "gn" "python2" "gcc" "llvm")
-optdepends=("ccache: Speed up compilation")
+pkgdesc="Make a fortune quietly"
+arch=(x86_64)
+url="https://github.com/klzgrad/naiveproxy"
+license=(BSD)
+depends=(gcc-libs glibc)
+makedepends=(git python unzip ninja)
+provides=(naiveproxy)
+conflicts=(naiveproxy)
 backup=(etc/naiveproxy/config.json)
-md5sums=('SKIP' 'SKIP')
-provides=('naiveproxy')
-conflicts=('naiveproxy' 'naiveproxy-bin')
+source=("git+https://github.com/klzgrad/naiveproxy.git"
+        'naiveproxy.service')
+sha256sums=('SKIP'
+            '90176b9a4d92157dfba0e18b95e7eef4babda0db3448389b8e9142d971d72d7a')
 
 prepare() {
-  cd ${srcdir}/${_pkgname}/src
-  #sed -ri "s|./gn/out/||" build.sh
+  cd naiveproxy/src
   chmod a+x build.sh
   ./get-clang.sh
 }
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd naiveproxy
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build(){
-  cd ${srcdir}/${_pkgname}/src
+  cd naiveproxy/src
   ./build.sh
 }
 
 package(){
   install -Dm 0644 -o root "naiveproxy.service" -t "${pkgdir}/usr/lib/systemd/system/"
-  cd ${srcdir}/${_pkgname}
-  install -Dm755 src/out/Release/naive ${pkgdir}/usr/bin/naiveproxy
+  cd naiveproxy
+  install -Dm755 src/out/Release/naive ${pkgdir}/usr/bin/naive
   install -Dm644 src/config.json ${pkgdir}/etc/naiveproxy/config.json
   install -Dm644 README.md ${pkgdir}/usr/share/doc/naiveproxy/README.md
   install -Dm644 USAGE.txt ${pkgdir}/usr/share/doc/naiveproxy/USAGE.txt
-  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/naiveproxy/LICENSE
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
