@@ -1,0 +1,19 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+pkgname="git-good-bin"
+pkgver=0.1.4
+pkgrel=1
+pkgdesc="Just a simple git client using electron and nodegit, focus on lightweight and performance"
+arch=("x86_64")
+url="https://github.com/weedz/git-good"
+license=('GPL3')
+depends=('krb5' 'gcc-libs' 'e2fsprogs' 'bash' 'python' 'glibc' 'openssl' 'electron')
+conflicts=("${pkgname%-bin}")
+source=("${pkgname%-bin}-${pkgver}.zst::${url}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}.r0.ge8ae0d8-1-x86_64.pkg.tar.zst")
+sha256sums=('6c1ac4182dd94bab96251c94443156ed3b0c9822ef3366bead9a4123fb2886a1')
+package() {
+    install -Dm755 -d "${pkgdir}/opt"
+    cp -r "${srcdir}/usr/share/${pkgname%-bin}" "${pkgdir}/opt"
+    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/opt/${pkgname%-bin}"
+    sed "s|Exec=${pkgname%-bin}|Exec=/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+}
