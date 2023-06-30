@@ -1,13 +1,12 @@
 pkgbase = ttf-sawarabi-mincho
 	pkgdesc = A mincho font for Japanese
-	pkgver = 20210415
+	pkgver = 20220815
 	pkgrel = 1
 	url = http://sawarabi-fonts.osdn.jp/
 	arch = any
 	license = Creative Commons Attribution 3.0
 	depends = fontconfig
-	source = http://jaist.dl.osdn.jp/sawarabi-fonts/74954/sawarabi-mincho-20210415.tar.xz
-	md5sums = 4d374a093260edfd6f01ca2ff0900060
+	source = http://jaist.dl.osdn.jp/sawarabi-fonts/77638/sawarabi-mincho-20220815.tar.xz
+	md5sums = 4c8a7e9c441186dc09d954730ddcf0d8
 
 pkgname = ttf-sawarabi-mincho
-
