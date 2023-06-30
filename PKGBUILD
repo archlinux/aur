@@ -2,9 +2,9 @@
 
 _pkgname=linuxwave
 pkgname=$_pkgname-git
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
-pkgdesc="Generate music from the entropy of Linux"
+pkgdesc="Generate music from the entropy of Linux (latest commit)"
 arch=('any')
 url="https://github.com/orhun/linuxwave"
 license=('MIT')
