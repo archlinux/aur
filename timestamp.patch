@@ -7,8 +7,8 @@
 -  updated timestamp NOT NULL,
 +  updated timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
    accessed timestamp NOT NULL default '2000-01-01 00:00:00'
- ) ENGINE=MyISAM;
- 
+ ) ENGINE=InnoDB;
+
 @@ -20,7 +20,7 @@
    user varchar(255) default NULL,
    device varchar(255) default NULL,
@@ -16,8 +16,8 @@
 -  updated timestamp NOT NULL,
 +  updated timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
    accessed timestamp NOT NULL default '2000-01-01 00:00:00'
- ) ENGINE=MyISAM;
- 
+ ) ENGINE=InnoDB;
+
 @@ -33,7 +33,7 @@
    name varchar(255) NOT NULL default '',
    device varchar(255) NOT NULL default '',
@@ -99,66 +99,3 @@
    accessed timestamp NOT NULL default '2000-01-01 00:00:00',
    comment text,
    KEY index_property_pipe_device (device(64),pipe(64),name(64),count)
-@@ -254,7 +254,7 @@
- 
- CREATE TABLE IF NOT EXISTS property_hist (
-   id bigint unsigned NOT NULL default '0',
--  date timestamp NOT NULL,
-+  date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-   object varchar(255) NOT NULL default '',
-   name varchar(255) NOT NULL default '',
-   count int(11) NOT NULL default '0',
-@@ -266,7 +266,7 @@
- 
- CREATE TABLE IF NOT EXISTS property_device_hist (
-   id bigint unsigned NOT NULL default '0',
--  date timestamp NOT NULL,
-+  date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-   device varchar(255) NOT NULL default '',
-   name varchar(255) NOT NULL default '',
-   count int(11) NOT NULL default '0',
-@@ -278,7 +278,7 @@
- 
- CREATE TABLE IF NOT EXISTS property_class_hist (
-   id bigint unsigned NOT NULL default '0',
--  date timestamp NOT NULL,
-+  date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-   class varchar(255) NOT NULL default '',
-   name varchar(255) NOT NULL default '',
-   count int(11) NOT NULL default '0',
-@@ -290,7 +290,7 @@
- 
- CREATE TABLE IF NOT EXISTS property_attribute_class_hist (
-   id bigint unsigned NOT NULL default '0',
--  date timestamp NOT NULL,
-+  date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-   class varchar(255) NOT NULL default '',
-   attribute varchar(255) NOT NULL default '',
-   name varchar(255) NOT NULL default '',
-@@ -304,7 +304,7 @@
- 
- CREATE TABLE IF NOT EXISTS property_attribute_device_hist (
-   id bigint unsigned NOT NULL default '0',
--  date timestamp NOT NULL,
-+  date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-   device varchar(255) NOT NULL default '',
-   attribute varchar(255) NOT NULL default '',
-   name varchar(255) NOT NULL default '',
-@@ -318,7 +318,7 @@
- 
- CREATE TABLE IF NOT EXISTS property_pipe_class_hist (
-   id bigint unsigned NOT NULL default '0',
--  date timestamp NOT NULL,
-+  date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-   class varchar(255) NOT NULL default '',
-   pipe varchar(255) NOT NULL default '',
-   name varchar(255) NOT NULL default '',
-@@ -332,7 +332,7 @@
- 
- CREATE TABLE IF NOT EXISTS property_pipe_device_hist (
-   id bigint unsigned NOT NULL default '0',
--  date timestamp NOT NULL,
-+  date timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-   device varchar(255) NOT NULL default '',
-   pipe varchar(255) NOT NULL default '',
-   name varchar(255) NOT NULL default '',
