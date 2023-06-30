@@ -6,7 +6,7 @@
 
 pkgname=openrc
 pkgver=0.47.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Dependency based init system that works with sysvinit and systemd or on its own.'
 arch=('i686' 'x86_64')
 url='https://github.com/OpenRC/openrc'
@@ -18,8 +18,7 @@ optdepends=('openrc-arch-services-git: collection of services for Arch'
             'bash-completion: tab completion for openrc commands in bash shells'
             'zsh-completions: tab completion for openrc commands in zsh shells')
 makedepends=('meson' 'pam' 'psmisc')
-provides=("openrc=$pkgver" 'librc.so' 'init-rc' 'libeinfo.so' 'svc-manager')
-conflicts=('openrc-git')
+provides=('librc.so' 'init-rc' 'libeinfo.so' 'svc-manager')
 backup=(etc/openrc/inittab
         etc/openrc/rc.conf
         etc/openrc/conf.d/{bootmisc,consolefont,devfs,dmesg,fsck,hostname,hwclock,keymaps}
