@@ -1,0 +1,103 @@
+pkgbase = minigui-git
+	pkgver = 5.0.11.r12.g0d1f1f02
+	pkgrel = 1
+	url = https://github.com/VincentWei/MiniGUI
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = automake
+	depends = chipmunk
+	depends = freetype2
+	depends = harfbuzz
+	depends = libdrm
+	depends = libevdev
+	depends = libjpeg-turbo
+	depends = libinput
+	depends = libpng
+	depends = kmod
+	depends = mtdev
+	depends = util-linux
+	depends = sqlite
+	depends = systemd
+	depends = pkgconf
+	depends = zlib
+	provides = minigui
+	conflicts = minigui
+	options = !strip
+	source = minigui-git::git+https://github.com/VincentWei/MiniGUI.git
+	source = minigui-mgutils::git+https://github.com/VincentWei/mgutils.git
+	source = minigui-mgplus::git+https://github.com/VincentWei/mgplus.git
+	source = minigui-mgeff::git+https://github.com/VincentWei/mgeff.git
+	source = minigui-mgncs::git+https://github.com/VincentWei/mgncs.git
+	source = minigui-mgncs4touch::git+https://github.com/VincentWei/mgncs4touch.git
+	source = minigui-mg-tools::git+https://github.com/VincentWei/mg-tools.git
+	source = minigui-mg-tests::git+https://github.com/VincentWei/mg-tests.git
+	source = minigui-mg-samples::git+https://github.com/VincentWei/mg-samples.git
+	source = minigui-mg-demos::git+https://github.com/VincentWei/mg-demos.git
+	source = minigui-cell-phone-ux-demo::git+https://github.com/VincentWei/cell-phone-ux-demo.git
+	source = minigui-res::git+https://github.com/VincentWei/minigui-res.git
+	source = minigui-docs::git+https://github.com/VincentWei/minigui-docs.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = minigui-git
+	pkgdesc = A modern and proven cross-platform window system for embedded systems or smart IoT devices.
+	depends = minigui-mgutils
+	depends = minigui-mgplus
+	depends = minigui-mgeff
+	depends = minigui-mgncs
+	depends = minigui-mgncs4touch
+	depends = minigui-mg-tools
+	depends = minigui-mg-tests
+	depends = minigui-mg-samples
+	depends = minigui-mg-demos
+	depends = minigui-cell-phone-ux-demo
+	depends = minigui-res
+	depends = minigui-docs
+
+pkgname = minigui-mgutils-git
+	pkgdesc = A component of MiniGUI, provides users with a number of common dialog templates
+
+pkgname = minigui-mgplus-git
+	pkgdesc = A MiniGUI component which provides support for advanced 2D graphics functions
+
+pkgname = minigui-mgeff-git
+	pkgdesc = An animation framework for MiniGUI
+
+pkgname = minigui-mgncs-git
+	pkgdesc = mGNCS provides a new control set and a new framework for MiniGUI apps.
+
+pkgname = minigui-mgncs4touch-git
+	pkgdesc = A set of mGNCS-compliant controls for devices with a touch screen.
+
+pkgname = minigui-mg-tools-git
+	pkgdesc = A modern and proven cross-platform window system for embedded systems or smart IoT devices.
+
+pkgname = minigui-mg-tests-git
+	pkgdesc = Test code of MiniGUI Core
+
+pkgname = minigui-mg-samples-git
+	pkgdesc = Basic Samples for MiniGUI Core and Key MiniGUI Components.
+
+pkgname = minigui-mg-demos-git
+	pkgdesc = A set of demos as supplements of cell-phone-ux-demo
+
+pkgname = minigui-cell-phone-ux-demo-git
+	pkgdesc = This UX demo shows the new features of MiniGUI core, mGEff, mGNCS, and mGNCS4Touch components.
+
+pkgname = minigui-res-git
+	pkgdesc = Resources package for MiniGUI
+
+pkgname = minigui-docs-git
+	pkgdesc = Documents for MiniGUI Core and MiniGUI Components.
