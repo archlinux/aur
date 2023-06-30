@@ -1,7 +1,7 @@
 pkgbase = speedreader
 	pkgdesc = Cross-platform speed reading developed with Qt
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.vanniktech.de/SpeedReader
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = speedreader
 	depends = qt5-svg
 	depends = qt5-webkit
 	source = https://github.com/vanniktech/SpeedReader/archive/v1.4.0.tar.gz
-	md5sums = 39abd4e23f8e5f3dee3c3cd2c1451c03
+	sha256sums = c448ac448656eecf52a6a6ed0e71285d32a99e64b6fb225877d366716a83b800
 
 pkgname = speedreader
-
