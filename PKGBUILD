@@ -3,7 +3,7 @@
 
 pkgname=asus-cirrus-firmware-git
 pkgver=r3.5d521dc
-pkgrel=2
+pkgrel=3
 pkgdesc="ASUS Cirrus firmwares for various sound devices"
 url="https://gitlab.com/asus-linux/firmware"
 license=('custom')
@@ -35,7 +35,7 @@ prepare() {
 package() {
     cd ${srcdir}/asus-firmware
 
-    make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware install-xz
+    ZSTD_CLEVEL=19 make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware install-zst
 
     install -Dm644 "${srcdir}"/LICENSE.cirrus "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.cirrus
 }

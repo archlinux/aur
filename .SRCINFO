@@ -1,7 +1,7 @@
 pkgbase = asus-cirrus-firmware-git
 	pkgdesc = ASUS Cirrus firmwares for various sound devices
 	pkgver = r3.5d521dc
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/asus-linux/firmware
 	arch = any
 	license = custom
