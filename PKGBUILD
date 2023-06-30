@@ -2,8 +2,8 @@
 
 pkgname="metabase-driver-csv"
 pkgver=1.3.1
-pkgrel=1
-pkgdesc="A CSV metabase driver "
+pkgrel=2
+pkgdesc="CSV driver for Metabase"
 arch=("any")
 url="https://github.com/Markenson/csv-metabase-driver"
 license=("custom:none")
@@ -14,5 +14,6 @@ noextract=("csv.metabase-driver.jar")
 options=("!strip")
 
 package(){
+ install -d -m 750 "$pkgdir/var/lib/metabase"
  install -D -m 644 "csv.metabase-driver.jar" -t "$pkgdir/var/lib/metabase/plugins"
 }
