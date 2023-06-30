@@ -76,12 +76,12 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-manjusaka
-_major=6.3
-pkgver=${_major}.9
+_major=6.4
+pkgver=${_major}.0
 _branch=6.x
-xanmod=1
+xanmod=2
 _revision=
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Xanmod - Current Stable (CURRENT)'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -115,7 +115,7 @@ done
 
 sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'
             'SKIP'
-            'f6010d895c549ba8fc7e4728208c04de988486de0c30a1cdf50e04855d37675d'
+            'c3ed02baf2b503ab53ff86363ee21643408e1d14e4b4046a09acbca1788e0201'
             '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
