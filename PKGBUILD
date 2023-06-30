@@ -4,7 +4,7 @@
 
 pkgname=unvanquished
 pkgver=0.54.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.'
 arch=('x86_64' 'aarch64')
 url='https://www.unvanquished.net'
@@ -148,8 +148,11 @@ package() {
 	install -m 755 nacl_loader             "${pkgdir}/usr/lib/unvanquished/"
 
 	if [ "${CARCH}" == "aarch64" ]; then
+		armlibdir="${pkgdir}/usr/lib/unvanquished/lib-armhf"
+		install -d -m 755 "${armlibdir}"
 		install -m 755 nacl_helper_bootstrap-armhf "${pkgdir}/usr/lib/unvanquished/"
-		cp -r lib-armhf "${pkgdir}/usr/lib/unvanquished/"
+		install -m 755 lib-armhf/ld-linux-armhf "${armlibdir}"
+		install -m 755 lib-armhf/lib*.so.* "${armlibdir}"
 	fi
 
 	cd "${srcdir}/${_unvanquished}/dist/configs"
