@@ -1,7 +1,7 @@
 pkgbase = update-grub
 	pkgdesc = Simple wrapper around grub-mkconfig
 	pkgver = 0.0.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://packages.ubuntu.com/jammy/admin/grub-common
 	arch = any
 	license = GPL2
