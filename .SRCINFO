@@ -1,6 +1,6 @@
 pkgbase = rtaudio-git
 	pkgdesc = RTAudio git version without JACK support(fix for pipewire)
-	pkgver = r647.268e64a
+	pkgver = r660.b4db7db
 	pkgrel = 1
 	arch = i686
 	arch = x86_64

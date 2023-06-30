@@ -1,7 +1,7 @@
 # RTAudio git version
 # Maintainer: cropinghigh <joinmark60@gmail.com>
 pkgname=rtaudio-git
-pkgver=r647.268e64a
+pkgver=r660.b4db7db
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="RTAudio git version without JACK support(fix for pipewire)"
@@ -21,6 +21,8 @@ pkgver() {
 build() {
     cd "$srcdir/rtaudio"
 #     patch < "$srcdir/alsa_pcm.patch"
+    #required for correct SDR++ work
+    git checkout -b master_old 46b01b5b13
     mkdir build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX:PATH="/usr" -DRTAUDIO_API_JACK=OFF ..
