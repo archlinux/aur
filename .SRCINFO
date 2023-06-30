@@ -1,0 +1,15 @@
+pkgbase = icu72
+	pkgdesc = International Components for Unicode library (version 72)
+	pkgver = 72.1
+	pkgrel = 1
+	url = https://github.com/unicode-org/icu
+	arch = x86_64
+	license = custom:icu
+	depends = gcc-libs
+	depends = sh
+	provides = icu72
+	conflicts = icu72
+	source = https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-Fedora_Linux36-x64.tgz
+	b2sums = 9a5e257bb5558bf55d086e4308bc15e7e9cad8d47d9d67e6cac32f6f5164cf965d53d32002b8958076ef75607506be6c3e2844d6541d66d9021bf3d7ad84a9f3
+
+pkgname = icu72
