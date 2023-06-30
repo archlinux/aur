@@ -3,12 +3,22 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=2530.r0.g7fb3648
+pkgver=2534.r0.g80acb73
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
 url='https://github.com/citra-emu/citra-canary'
-options=("!lto") #Set LTO
+_debug=false # Set _debug to true to enable building a build that can be debugged with gdb
+if [ $_debug = "false" ]
+then
+    options=("lto" "strip" "!debug")
+    _cmake_build_type=Release
+    _enable_lto=true
+else
+    options=("!lto" "!strip" "debug")
+    _cmake_build_type=Debug
+    _enable_lto=false
+fi
 provides=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 conflicts=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 license=('GPL2')
@@ -122,11 +132,12 @@ build() {
     # Fix to help cmake find libusb
     CXXFLAGS+=" -I/usr/include/libusb-1.0"
     
-    [[ -d build ]] && rm -rf build
+    #[[ -d build ]] && rm -rf build
 
     cmake -B build -S "$_pkgname" \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_BUILD_TYPE=$_cmake_build_type \
+      -DENABLE_LTO=$_enable_lto \
       -DENABLE_QT_TRANSLATION=ON \
       -DCITRA_ENABLE_COMPATIBILITY_REPORTING=ON \
       -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
@@ -135,8 +146,8 @@ build() {
       -DUSE_SYSTEM_SDL2=ON \
       -DCMAKE_C_COMPILER=gcc \
       -DCMAKE_CXX_COMPILER=g++ \
-      -DCMAKE_C_FLAGS="$CFLAGS -flto=auto" \
-      -DCMAKE_CXX_FLAGS="$CXXFLAGS -flto=auto" \
+      -DCMAKE_C_FLAGS="$CFLAGS" \
+      -DCMAKE_CXX_FLAGS="$CXXFLAGS" \
       -Wno-dev
 
     cmake --build build   
