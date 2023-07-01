@@ -1,0 +1,13 @@
+pkgbase = crates-cli-git
+	pkgdesc = Prepare Rust projects to be released on the Arch Linux User Repository.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://dnrops.gitee.io
+	arch = x86_64
+	license = MIT
+	provides = crates-cli
+	conflicts = crates-cli
+	source = crates-cli-git::git+https://gitcode.net/dnrops/crates-cli-git.git
+	sha256sums = SKIP
+
+pkgname = crates-cli-git
