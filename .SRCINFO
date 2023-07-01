@@ -1,25 +1,33 @@
 pkgbase = libinput-three-finger-drag
 	pkgdesc = Input device management and event handling library
-	pkgver = 1.19.3
-	pkgrel = 0
+	pkgver = 1.23.0
+	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/libinput/
 	arch = x86_64
 	license = custom:X11
-	makedepends = gtk3
-	makedepends = meson
+	checkdepends = python-pytest
+	makedepends = check
 	makedepends = git
-	depends = mtdev
-	depends = systemd
+	makedepends = gtk4
+	makedepends = meson
+	makedepends = wayland-protocols
 	depends = libevdev
 	depends = libwacom
-	depends = cmake
-	depends = wayland-protocols
-	optdepends = gtk3: libinput debug-gui
+	depends = mtdev
+	depends = systemd
+	optdepends = gtk4: libinput debug-gui
 	optdepends = python-pyudev: libinput measure
 	optdepends = python-libevdev: libinput measure
-	provides = libinput=1.19.3
+	provides = libinput=1.23.0
 	conflicts = libinput
-	source = libinput::git+https://github.com/jasper-van-bourgognie/libinput#tag=1.19.3-3fd
-	md5sums = SKIP
+	source = git+https://gitlab.freedesktop.org/libinput/libinput.git?signed#tag=c76559bb72b7ba3f1d3c80b72c8f686a2990cdaa
+	source = 0001-Three-finger-dragging-TFD-state-machine.patch
+	source = 0002-Cleanup.patch
+	source = 0003-TFD-add-debounce-state-for-touch-count-decrease.patch
+	validpgpkeys = 772183A93E722C0CD301BE62872C444A692EF9A5
+	b2sums = SKIP
+	b2sums = 3eebc915aaccaec1a9164813ddea7b014a025baa7efff544700b48bb30d4fcd7827b871277b5b6ca0c3fde8b943fab2ccbc42f0f0d2da9b71a8c3f3c61a31765
+	b2sums = 44eba06688dc591aaed4f9962a9bf8c14a8faa16a25d2e09c0f9c05cd29444f342edbf78e62f4eebfaca1a67c5ea63ce0bd9f0441e211d09c30cf1ef2d559cd9
+	b2sums = e3dd24b99ec9e7afeb0a328840bd240d2beb2cd1d01939320da32fa090418b716d84345e8be251c24f0e41278d535437a506bd6245848a83dfb05ee7dd9b5f14
 
 pkgname = libinput-three-finger-drag
