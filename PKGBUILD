@@ -1,7 +1,7 @@
 #Maintainer: Daniel Lehmann <daniellehmann28@outlook.de>
 pkgname=powershell-empire-git
 _name=Empire
-pkgver=5.1.2.r0.ge782c80
+pkgver=5.4.2.r1.ge46e61a
 pkgrel=1
 pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
 url="https://github.com/BC-SECURITY/Empire"
