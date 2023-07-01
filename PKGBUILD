@@ -1,7 +1,7 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=fvtt-player-client
 pkgver=1.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Foundry VTT Desktop Client'
 arch=('x86_64')
 url='https://github.com/theripper93/fvtt-player-client'
