@@ -52,7 +52,7 @@ _use_system_clang=false
 # DON'T put a "/" at the start of the path
 ## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
 if [ "${_ue5_install_dir}" == "" ]; then
-  export _ue5_install_dir="opt/${pkgname}"
+  export _ue5_install_dir="opt/unreal-engine"
 fi
 
 # Change this to true if you have a modern system and don't mind the extra packaging time (and size) to avoid compiling shaders on UE startup later; set to false by default for those with less robust systems
