@@ -2,8 +2,8 @@
 #
 
 pkgname=arch-cli-git
-_pkgname="aur-cli"
-pkgver=1.0.0
+_pkgname="arch-cli"
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Prepare Rust projects to be released on the Arch Linux User Repository."
 url="https://dnrops.gitee.io"
