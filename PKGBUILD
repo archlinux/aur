@@ -4,7 +4,7 @@ _java=17
 _jdk=${_java}.0.7
 _jdkname="java-${_java}-zulu-prime"
 _pkgver_major="23"
-_pkgver_minor="05.0.0"
+_pkgver_minor="06.0.0"
 _pkgver_build="2"
 
 pkgname="jdk${_java}-zulu-prime-bin"
@@ -35,8 +35,8 @@ provides=(
 install="$pkgname.install"
 source_x86_64=("https://cdn.azul.com/zing-zvm/ZVM${_pkgver_major}.${_pkgver_minor}/zing${pkgver//_/-}-jdk${_jdk}-linux_x64.tar.gz")
 source_aarch64=("https://cdn.azul.com/zing-zvm/ZVM${_pkgver_major}.${_pkgver_minor}/zing${pkgver//_/-}-jdk${_jdk}-linux_aarch64.tar.gz")
-sha256sums_x86_64=('9168a4caa77c407b72074d187caefa2dbc1a8464f0806aa69ecb5c7229ece293')
-sha256sums_aarch64=('610d34408b9811c239508d5f3804fcc29d6c7446e9e146fcab288183d03763ec')
+sha256sums_x86_64=('11e474f0dd242c88ff7865923117484aeaeab4eb4ca518bf2f5f6bdf0f65e842')
+sha256sums_aarch64=('d5454ab98ea8fff5fdbc0ded3aad5a5d0eb46be15557ad5c2d56420b772555b6')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
