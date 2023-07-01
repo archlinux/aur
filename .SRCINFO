@@ -1,0 +1,13 @@
+pkgbase = arch-cli-git
+	pkgdesc = Prepare Rust projects to be released on the Arch Linux User Repository.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://dnrops.gitee.io
+	arch = x86_64
+	license = MIT
+	provides = aur-cli
+	conflicts = aur-cli
+	source = arch-cli-git::git+https://gitcode.net/dnrops/aur-cli-git.git
+	sha256sums = SKIP
+
+pkgname = arch-cli-git
