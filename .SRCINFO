@@ -5,7 +5,8 @@ pkgbase = docker-desktop
 	url = https://www.docker.com/products/docker-desktop/
 	install = docker-desktop.install
 	arch = x86_64
-	license = custom:unknown
+	license = custom: Docker Agreement
+	makedepends = w3m
 	depends = docker>=23.0.0
 	depends = curl
 	depends = qemu>=5.2.0
