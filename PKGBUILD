@@ -111,7 +111,7 @@ build() {
   unset LDFLAGS
 
   VENDOR_NAME="JetBrains s.r.o."
-  JDK_BUILD_NUMBER=$(git log --simplify-by-decoration --decorate=short --pretty=short | grep "jbr-" | cut -d "(" -f2 | cut -d ")" -f1 | awk '{print $2}' | sort -t "-" -k 2 -g | tail -n 1 | tr -d "," | awk -F "-|[+]" '{print $3}')
+  JDK_BUILD_NUMBER=$(git log --simplify-by-decoration --decorate=short --pretty=short | grep "jdk-" | cut -d "(" -f2 | cut -d ")" -f1 | awk '{print $2}' | sort -t "-" -k 2 -g | tail -n 1 | tr -d "," | awk -F "-|[+]" '{print $3}')
   VENDOR_VERSION_STRING="JBR-${_ver}+${JDK_BUILD_NUMBER}-${_jbver1}.${_jbver2}-jcef"
 
   bash configure \
