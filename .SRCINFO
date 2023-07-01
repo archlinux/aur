@@ -1,12 +1,14 @@
 pkgbase = r-fontliberation
 	pkgdesc = Liberation Fonts
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=fontLiberation
 	arch = any
 	license = custom:OFL
 	depends = r
+	depends = ttf-liberation
 	source = https://cran.r-project.org/src/contrib/fontLiberation_0.1.0.tar.gz
+	md5sums = 7a317aca78d58fc0b2417380cc702864
 	sha256sums = acdea423e005873aa509e280074a3cef4796e4f7e9d77b3945d77b451ea039f0
 
 pkgname = r-fontliberation
