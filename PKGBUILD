@@ -2,7 +2,7 @@
 
 pkgname=localsend-git
 _pkgname=localsend
-pkgver=v1.10.0.r3.g3fc51a6
+pkgver=v1.10.0.r33.g91e165b
 pkgrel=1
 pkgdesc='An open source cross-platform alternative to AirDrop '
 url=https://github.com/localsend/localsend
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(zenity xdg-user-dirs libayatana-appindicator)
 conflicts=('localsend-bin')
 provides=('localsend')
-makedepends=('flutter' 'git')
+makedepends=('cmake' 'ninja' 'flutter' 'git')
 source=("git+https://github.com/localsend/localsend" "${_pkgname}.desktop")
 sha256sums=('SKIP' 'SKIP')
 
@@ -23,6 +23,13 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
+
+	# Kinda sketch I admit it
+	# Only have one "safe.directory=/opt/flutter" in the git config
+	export GITCONF=$(git config --list --global)
+	if ! [[ "$GITCONF" == *"safe.directory=/opt/flutter"* ]]; then
+		git config --global --add safe.directory /opt/flutter
+	fi
 	
 	flutter pub get
 	flutter pub run build_runner build
