@@ -40,7 +40,7 @@ depends=(
 	libliftoff
 	libdisplay-info
 	pango
-    wlroots)
+    wlroots-git)
 makedepends=(
 	git
 	cmake
@@ -56,7 +56,7 @@ source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
 conflicts=("${_pkgname}")
 provides=(hyprland)
 sha256sums=('SKIP'
-    'SKIP')
+    '739f35a7ee075c8326d6b3c003c974f537dd09efe7c82eb4f19a3a9bc6f53958')
 options=(!makeflags !buildflags !strip)
 
 pkgver() {
