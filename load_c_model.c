@@ -88,10 +88,9 @@ int main()
 
     void* buff = TF_TensorData(OutputValues[0]);
     float* offsets = buff;
-    return offsets[0] != 20.0f; // true/1 for failure, false/0 for success.
     // printf("Result Tensor :\n");
     // printf("%f\n",offsets[0]);
     // printf("Expected :\n");
     // printf("20.000000\n");
-    // return 0;
+    return offsets[0] != 20.0f; // true/1 for failure, false/0 for success.
 }
