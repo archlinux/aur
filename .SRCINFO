@@ -8,6 +8,6 @@ pkgbase = dnsch
 	depends = bash
 	depends = coreutils
 	source = dnsch.sh
-	sha256sums = SKIP
+	md5sums = SKIP
 
 pkgname = dnsch

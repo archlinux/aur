@@ -8,7 +8,7 @@ maintainer="Mohammad Rosstami <mohammad.jayant@gmail.com>"
 source=("dnsch.sh")
 depends=('bash' 'coreutils')
 pkgrel=1
-sha256sums=('SKIP')
+md5sums=('SKIP')
 package() {
   install -Dm755 dnsch.sh "${pkgdir}/usr/bin/dnsch"
 }
