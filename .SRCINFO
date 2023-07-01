@@ -9,6 +9,8 @@ pkgbase = kwin-polonium
 	makedepends = typescript
 	depends = kwin
 	source = polonium-0.5.1.tar.gz::https://github.com/zeroxoneafour/polonium/archive/refs/tags/v0.5.1.tar.gz
+	source = 1e608a46dd96ff0ea35bf4de285d3716591d74f7.patch
 	sha1sums = d57d1479523bc09318c2396eca731aa573f7b6d2
+	sha1sums = 952db69991f4453ab8c7bdb87c39823af4dae866
 
 pkgname = kwin-polonium

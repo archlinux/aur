@@ -1,0 +1,22 @@
+From 1e608a46dd96ff0ea35bf4de285d3716591d74f7 Mon Sep 17 00:00:00 2001
+From: Vaughan Milliman <vaughanm1@protonmail.com>
+Date: Tue, 27 Jun 2023 19:05:28 -0500
+Subject: [PATCH] makefile bugfix
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 1a9dc03..ff90d84 100644
+--- a/Makefile
++++ b/Makefile
+@@ -37,7 +37,7 @@ res: $(PKGDIR)
+ 	sed -i "s/%VERSION%/$(VERSION)/" $(PKGDIR)/metadata.json
+ 	sed -i "s/%NAME%/$(NAME)/" $(PKGDIR)/metadata.json
+ 
+-src: polonium.mjs
++src: polonium.mjs $(PKGDIR)
+ 	mv -f polonium.mjs $(PKGDIR)/contents/code/main.mjs
+ 	cp -f src/qml/* $(PKGDIR)/contents/code/
+ 
