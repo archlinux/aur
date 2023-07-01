@@ -9,11 +9,14 @@
 #Credits: Andreas Radke <andyrtr@archlinux.org>
 #Credits: Peter Jung ptr1337 <admin@ptr1337.dev> && Piotr Gorski <piotrgorski@cachyos.org>
 #Credits: Tobias Powalowski <tpowa@archlinux.org>
-#Credits: Thomas Baechler <thomas@archlinux.org>
 
 ################################# Arch ################################
 
 ARCH=x86
+
+################################# Grep GCC version ################################
+
+_gccversion=$(gcc -dumpversion)
 
 ################################# CC/CXX/HOSTCC/HOSTCXX ################################
 
@@ -66,9 +69,11 @@ source=(https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$_pkgver.tar.xz
         ${patchpath}/arch/v6.4-arch1/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
         # Other patches
         # Sirlucjan
+        ${patchpath}/sirlucjan/amd/0001-amd-6.4-merge-changes-from-dev-tree-v2.patch
         ${patchpath}/sirlucjan/bfq/0001-bfq-cachyos-patches-v1.patch
         ${patchpath}/sirlucjan/block/0001-block-set-rq_affinity-to-force-full-multithreading-I-v1.patch
         ${patchpath}/sirlucjan/btrfs/0001-btrfs-6.4-merge-changes-from-dev-tree-v1.patch
+        ${patchpath}/sirlucjan/clang/0001-clang-6.4-add-miscellaneous-fixes-for-clang-v1.patch
         ${patchpath}/sirlucjan/drm/0001-drm-6.4-Add-HDR-patches-v1.patch
         ${patchpath}/sirlucjan/hid/0001-hid-6.4-merge-changes-from-dev-tree-v1.patch
         ${patchpath}/sirlucjan/x86/0001-x86-Avoid-relocation-information-in-final-vmlinux-v1.patch
@@ -128,16 +133,16 @@ prepare(){
 
   plain ""
 
-  # Remove gcc-plugin if gcc version = 13.0.0
-  if [[ "$_gccversion" = "13.0.0" ]]; then
-
-    msg2 "Remove GCC_PLUGINS"
-    scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
-    scripts/config --disable CONFIG_GCC_PLUGINS
-
-    sleep 2s
-    plain ""
-  fi
+  #  # Remove gcc-plugin if gcc version = 13.0.0
+  #  if [[ "$_gccversion" = "13.0.0" ]]; then
+  #
+  #    msg2 "Remove GCC_PLUGINS"
+  #    scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
+  #    scripts/config --disable CONFIG_GCC_PLUGINS
+  #
+  #    sleep 2s
+  #    plain ""
+  #  fi
 
   # Set LTO with CLANG/LLVM
   if [[ "$_compiler" = "2" ]]; then
@@ -256,13 +261,6 @@ prepare(){
 
   sleep 2s
 
-  # https://gitlab.com/alfredchen/linux-prjc/-/issues/81
-  # Disable mellanox module
-  msg2 "Disable mellanox module"
-  scripts/config --disable CONFIG_MLX5_CORE
-
-  sleep 2s
-
   msg "Patch addition config"
 
   msg2 "Enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE (O3) (0013-optimize_harder_O3.patch) (Replace O2 by O3)"
@@ -282,6 +280,13 @@ prepare(){
   scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LVL 19
   scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
   scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22
+
+  sleep 2s
+
+  msg2 "Add NVIDIA Shield and Google Stadia support"
+  scripts/config --module CONFIG_HID_SHIELD
+  scripts/config --enable CONFIG_SHIELD_FF
+  scripts/config --enable CONFIG_HID_STADIA_FF
 
   sleep 2s
 
@@ -309,11 +314,7 @@ prepare(){
   plain ""
 
   # Config
-  if [[ "$_compiler" = "1" ]]; then
-    make ARCH=${ARCH} ${BUILD_FLAGS[*]} olddefconfig
-  elif [[ "$_compiler" = "2" ]]; then
-    make ARCH=${ARCH} ${BUILD_FLAGS[*]} olddefconfig
-  fi
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} olddefconfig
 
   plain ""
 
@@ -328,11 +329,7 @@ build(){
 
   # make -j$(nproc) all
   msg2 "make -j$(nproc) all..."
-  if [[ "$_compiler" = "1" ]]; then
-    make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
-  elif [[ "$_compiler" = "2" ]]; then
-    make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
-  fi
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
 }
 
 _package(){
@@ -358,15 +355,9 @@ _package(){
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
-  if [[ "$_compiler" = "1" ]]; then
   # ZSTD_CLEVEL=19
   # Keep it not far away Arch use it in official repo, since we use sirlucjan xstd patch
-    make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
-  elif [[ "$_compiler" = "2" ]]; then
-  # ZSTD_CLEVEL=19
-  # Keep it not far away Arch use it in official repo, since we use sirlucjan xstd patch
-    make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
-  fi
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
 
   # remove build and source links
   msg2 "Remove build dir and source dir..."
@@ -461,9 +452,11 @@ sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
             'ab8e459ac900f4f2b2677d9692177afdfb215e75b8315259ef8bdd0a1ea032e1'
             '2e1347610aac92178772c27b9f75e7f123a55dd22df5ecc68a261b12a2ded213'
             'db411b01a5896283fdaf1cf30733d41e9740320a3f422b23ee8b376b8a5e8930'
+            '1827e974d83d452c8a07bf1a6a1593d214f9a9fe61d3dba8a072c2b1c42673d2'
             '12de7fe29e482e6f0edfd48123c468a309b69d3cca1be4a773c1b96ef6697d22'
             '5d0faf58c6c9e58d709ec2e136bdd576ebd4c0f7d630bef5a05bf188dd482579'
             '2cab3863f3e21a8f8e83b3f86743c57c3f37bf086cc01ebf4573c218df229655'
+            '47b6485d9a31eba9589d3ea295239411fc5ae71972cf2e5b94172290d8c12186'
             '5b9a5d0c5c81960d981d01febe201689794b58bb835b2cadadfbdda42b74f47f'
             '0867b5cb21a0765fd7b76d3724fc8a258bedbba974b6e4dbd62348f6ce7d9cee'
             '81cc1547d62933e04aed15c57b9e93101e546298b1fef5f63a6b1469471acebe'
