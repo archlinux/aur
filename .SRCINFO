@@ -1,0 +1,11 @@
+pkgbase = data
+	pkgver = 0.0.0.0.0.1
+	pkgrel = 1
+	url = https://humaninstrumentalityproject.org
+	arch = any
+
+pkgname = data
+
+pkgname = gnome-data
+
+pkgname = libdata
