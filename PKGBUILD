@@ -5,8 +5,8 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname=lightzone
-pkgver=4.2.4
-pkgrel=2
+pkgver=5.0.0beta1
+pkgrel=1
 pkgdesc="Open-source professional-level digital darkroom software"
 url="https://github.com/ktgw0316/LightZone/"
 license=("custom:BSD-3-Clause")
@@ -35,16 +35,8 @@ makedepends=('java-environment=17'
     'libtiff')
 
 git_url=${url}
-patch_name="4.2.4..c4a6bf715b7bce3fac2524c4943fd3a8fa6b486d.patch"
-source=("${git_url}/archive/${pkgver}.zip"
-        "${git_url}/compare/${patch_name}")
-md5sums=('b1d18105ca726aadb0fe223242587b46'
-         'ed8150a7f783fee958e7273fa8121408')
-
-prepare() {
-  cd "${srcdir}/LightZone-${pkgver}/"
-  patch -Np1 -i "${srcdir}/${patch_name}"
-}
+source=("${git_url}/archive/${pkgver}.zip")
+md5sums=('a39a95294e622238f0e0d6eea92cb22d')
 
 build() {
   if [ -d /usr/lib/jvm/java-17-openjdk ]; then
