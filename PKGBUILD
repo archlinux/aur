@@ -1,28 +1,56 @@
-# Maintainer: Ricardo Liang (rliang) <ricardoliang@gmail.com>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 
-pkgname=gnome-characters-git
-pkgver=3.30.0+20+ga4ac93e
+_pkgname="gnome-characters"
+pkgname="${_pkgname}-git"
+pkgver=44.0+31+g142609f
 pkgrel=1
 pkgdesc="A character map application"
-arch=(x86_64)
-url="https://gitlab.gnome.org/GNOME/gnome-characters"
+url="https://gitlab.gnome.org/GNOME/${_pkgname}"
+arch=(
+  x86_64
+  i686
+  pentium4
+  aarch64
+  armv7h
+  armv6l
+)
 license=(GPL2)
-provides=(gnome-characters)
-conflicts=(gnome-characters)
-depends=(gjs gtk3 libunistring gnome-desktop)
-makedepends=(meson intltool gobject-introspection appstream-glib git gperf)
-groups=(gnome)
-source=("git+https://gitlab.gnome.org/GNOME/gnome-characters.git")
+depends=(
+  emoji-font
+  gjs
+  gnome-desktop-4
+  gtk4
+  libadwaita
+)
+makedepends=(
+  appstream-glib
+  git
+  gobject-introspection
+  gperf
+  meson
+)
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+groups=(
+  gnome
+  gnome-git
+)
+source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd gnome-characters
+  cd "${_pkgname}"
   git describe --tags | sed 's/^v//;s/-/+/g'
 }
 
+prepare() {
+  cd "${_pkgname}"
+}
+
 build() {
-  arch-meson gnome-characters build
-  ninja -C build
+  arch-meson "${_pkgname}" build
+  meson compile -C build
 }
 
 check() {
@@ -30,5 +58,7 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "${pkgdir}"
 }
+
+# vim:set sw=2 sts=-1 et:

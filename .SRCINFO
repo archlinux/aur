@@ -1,25 +1,30 @@
 pkgbase = gnome-characters-git
 	pkgdesc = A character map application
-	pkgver = 3.30.0+20+ga4ac93e
+	pkgver = 44.0+31+g142609f
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-characters
 	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = aarch64
+	arch = armv7h
+	arch = armv6l
 	groups = gnome
+	groups = gnome-git
 	license = GPL2
-	makedepends = meson
-	makedepends = intltool
-	makedepends = gobject-introspection
 	makedepends = appstream-glib
 	makedepends = git
+	makedepends = gobject-introspection
 	makedepends = gperf
+	makedepends = meson
+	depends = emoji-font
 	depends = gjs
-	depends = gtk3
-	depends = libunistring
-	depends = gnome-desktop
-	provides = gnome-characters
+	depends = gnome-desktop-4
+	depends = gtk4
+	depends = libadwaita
+	provides = gnome-characters=44.0+31+g142609f
 	conflicts = gnome-characters
-	source = git+https://gitlab.gnome.org/GNOME/gnome-characters.git
+	source = git+https://gitlab.gnome.org/GNOME/gnome-characters
 	sha256sums = SKIP
 
 pkgname = gnome-characters-git
-
