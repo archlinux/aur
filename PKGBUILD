@@ -1,7 +1,7 @@
 # Maintainer: Mattia Borda <mattiagiovanni.borda@icloud.com>
 
 pkgname=tube-converter
-pkgver=2023.6.2
+pkgver=2023.6.3
 pkgrel=1
 pkgdesc='An easy-to-use video downloader'
 arch=(aarch64 armv7h x86_64 i686)
