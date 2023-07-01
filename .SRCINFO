@@ -1,7 +1,6 @@
 pkgbase = cura-5-plugin-octoprint
-	pkgdesc = Cura plugin which enables printing directly to OctoPrint and monitoring the progress
 	pkgver = 3.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fieldofview/OctoPrintPlugin
 	arch = any
 	license = GPL3
@@ -19,7 +18,9 @@ pkgbase = cura-5-plugin-octoprint
 	sha256sums = 080788bd6a25644c4f7120f1d570a63ce389db117553df685a940ddab29a6db2
 
 pkgname = cura5-plugin-octoprint
+	pkgdesc = Cura plugin which enables printing directly to OctoPrint and monitoring the progress
 	conflicts = cura5-plugin-octoprint-git
 
 pkgname = cura-5-plugin-octoprint
+	pkgdesc = Cura AppImage plugin which enables printing directly to OctoPrint and monitoring the progress
 	conflicts = cura-5-plugin-octoprint-git
