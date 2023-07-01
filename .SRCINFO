@@ -1,6 +1,6 @@
 pkgbase = libpeas-git
 	pkgdesc = A GObject plugins library
-	pkgver = 1.36.0+98+gbaa78f5
+	pkgver = 1.99.0+1+g338cf0e
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/Libpeas
 	arch = x86_64
@@ -24,14 +24,14 @@ pkgbase = libpeas-git
 	source = git+https://gitlab.gnome.org/GNOME/libpeas.git
 	sha512sums = SKIP
 
-pkgname = libpeas-git
-	provides = libpeas=1.36.0+98+gbaa78f5
-	provides = libpeas-1.0.so
-	provides = libpeas-gtk-1.0.so
-	conflicts = libpeas
+pkgname = libpeas2-git
+	provides = libpeas2=1.99.0+1+g338cf0e
+	provides = libpeas2-1.0.so
+	provides = libpeas2-gtk-1.0.so
+	conflicts = libpeas2
 
-pkgname = libpeas-docs-git
+pkgname = libpeas2-docs-git
 	pkgdesc = A GObject plugins library (documentation)
 	depends = 
-	provides = libpeas-docs=1.36.0+98+gbaa78f5
-	conflicts = libpeas-docs
+	provides = libpeas2-docs=1.99.0+1+g338cf0e
+	conflicts = libpeas2-docs

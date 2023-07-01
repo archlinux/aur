@@ -4,10 +4,10 @@ _pkg="peas"
 _pkgname="lib${_pkg}"
 pkgbase="${_pkgname}-git"
 pkgname=(
-  "${pkgbase}"
-  "${_pkgname}-docs-git"
+  "${_pkgname}2-git"
+  "${_pkgname}2-docs-git"
 )
-pkgver=1.36.0+98+gbaa78f5
+pkgver=1.99.0+1+g338cf0e
 pkgrel=1
 pkgdesc="A GObject plugins library"
 url="https://wiki.gnome.org/Projects/Lib${_pkg}"
@@ -58,11 +58,11 @@ check() {
     meson test -C build --print-errorlogs
 }
 
-package_libpeas-git() {
+package_libpeas2-git() {
   provides=(
-    "${_pkgname}=${pkgver}"
-    "${_pkgname}"{,-gtk}"-1.0.so")
-  conflicts=("${_pkgname}")
+    "${_pkgname}2=${pkgver}"
+    "${_pkgname}2"{,-gtk}"-1.0.so")
+  conflicts=("${_pkgname}2")
 
   meson install -C build --destdir "${pkgdir}"
 
@@ -70,12 +70,12 @@ package_libpeas-git() {
   mv {"$pkgdir",doc}/usr/share/doc
 }
 
-package_libpeas-docs-git() {
+package_libpeas2-docs-git() {
   pkgdesc+=" (documentation)"
   depends=()
   provides=(
-    "${_pkgname}-docs=${pkgver}")
-  conflicts=("${_pkgname}-docs")
+    "${_pkgname}2-docs=${pkgver}")
+  conflicts=("${_pkgname}2-docs")
 
   mv doc/* "$pkgdir"
 }
