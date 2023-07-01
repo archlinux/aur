@@ -6,12 +6,16 @@
 
 pkgname="metabase"
 pkgver=0.46.6
-pkgrel=2
+pkgrel=3
 pkgdesc="The simplest, fastest way to get business intelligence and analytics to everyone in your company"
 arch=("x86_64" "aarch64")
 url="https://www.metabase.com/"
 license=("AGPL")
 depends=("jre-openjdk-headless")
+optdepends=("metabase-driver-clickhouse: connect to clickhouse databases"
+            "metabase-driver-csv: connect to csv files"
+            "metabase-driver-duckdb: connect to duckdb files"
+           )
 source=("https://downloads.metabase.com/v$pkgver/metabase.jar"
         "metabase"
         "metabase.conf"
