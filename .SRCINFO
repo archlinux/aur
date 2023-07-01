@@ -37,7 +37,7 @@ pkgbase = gnome-builder-git
 	depends = libdex
 	depends = libgit2-glib
 	depends = libpanel
-	depends = libpeas>=1.36.0+98
+	depends = libpeas2
 	depends = libportal-gtk4
 	depends = meson
 	depends = python-gobject
@@ -75,7 +75,7 @@ pkgname = gnome-builder-git
 	depends = libdex
 	depends = libgit2-glib
 	depends = libpanel
-	depends = libpeas>=1.36.0+98
+	depends = libpeas2
 	depends = libportal-gtk4
 	depends = meson
 	depends = python-gobject

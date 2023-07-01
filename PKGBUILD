@@ -35,7 +35,7 @@ depends=(
   libdex
   libgit2-glib
   libpanel
-  'libpeas>=1.36.0+98'
+  libpeas2
   libportal-gtk4
   meson
   python-gobject
