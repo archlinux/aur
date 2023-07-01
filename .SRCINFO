@@ -1,4 +1,4 @@
-pkgbase = blueprint-compiler-health
+pkgbase = blueprint-compiler-health-git
 	pkgdesc = A markup language for GTK user interfaces
 	pkgver = 0.8.1
 	pkgrel = 1
@@ -10,6 +10,6 @@ pkgbase = blueprint-compiler-health
 	source = git+https://gitlab.gnome.org/jwestman/blueprint-compiler#commit=87cedc2c7e
 	sha256sums = SKIP
 
-pkgname = blueprint-compiler-health
+pkgname = blueprint-compiler-health-git
 	provides = blueprint-compiler=0.8.1
 	conflicts = blueprint-compiler
