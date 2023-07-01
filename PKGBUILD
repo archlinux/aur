@@ -1,21 +1,26 @@
 # Maintainer: Pouyan Heyratpour <pouyan@janstun.com>
 
 pkgname=polywatch
-_pkgname=polywatch
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="File change watcher"
+pkgdesc="File change watcher with filter & rate limit feature which run command(s) when file change events happen"
 arch=('any')
 url="https://pouyanh.github.io/polywatch/"
 license=('GPL3')
-depends=('go')
+depends=()
+makedepends=('go')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pouyanh/polywatch/archive/v${pkgver}.tar.gz)
-md5sums=('4482bc06dfad33ee98d04691a6863d04')
+md5sums=('90bc6e427ff6f1914163de1024123290')
 
-package() {
-  cd "${_pkgname}-${pkgver}"
+build() {
+  cd "${pkgname}-${pkgver}"
 
   go mod tidy
   go build ./cmd/polywatch
-  install -Dm 755 polywatch -t "${pkgdir}/usr/bin/${_pkgname}"
+}
+
+package() {
+  cd "${pkgname}-${pkgver}"
+
+  install -Dm 755 polywatch -t "${pkgdir}/usr/bin"
 }
