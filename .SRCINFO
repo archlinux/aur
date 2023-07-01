@@ -10,7 +10,7 @@ pkgbase = editenv
 	depends = xsel
 	source = https://concise.cc/pkg/editenv-0.2.0-1-any.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 5d8ee1e5e41e64c4d18719b46a0a0c80
-	sha512sums = 1cb12b918e4320b62526685ef5812e03e2769a24da5433a7de949f92a7ff374c5b1634a64d1b21a18a2f2616561342dfd77cf5c5ba8990080b3b32dea58c0e85
+	md5sums = 945d53ac2a015e8c0138b9f24fde8235
+	sha512sums = 6394a9cc7afe56384b388d157d76a1cbc1cd75c42adaecca5f09ab15de185008a6b175ab554f9d310e2be26c465f678956e5b7c1571d357c20df937b7ae9713f
 
 pkgname = editenv
