@@ -2,7 +2,7 @@
 _basename=xfce-winxp-tc
 pkgname=('xfce-winxp-tc-git' 'libwintc-git')
 pkgver=r245.ab3d5ec
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows XP Total Conversion for XFCE"
 arch=('x86_64')
 url="https://github.com/rozniak/xfce-winxp-tc"
@@ -10,6 +10,11 @@ license=('GPL')
 makedepends=('git' 'cmake' 'python' 'xorg-xcursorgen' 'ruby-sass' 'garcon')
 source=("${_basename}"::"git+https://github.com/rozniak/xfce-winxp-tc.git")
 md5sums=('SKIP')
+
+prepare() {
+	cd "$srcdir/${_basename}/packaging"
+	sed -i 's/distro_in_use=.*$/distro_in_use=arch/' distid.sh
+}
 
 pkgver() {
 	cd "${_basename}"
