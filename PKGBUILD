@@ -8,6 +8,10 @@ pkgrel=1
 arch=(
   any
 )
+depends=(
+  'archlinux-desktop'
+)
+
 build() {
   echo "stub"
 }
