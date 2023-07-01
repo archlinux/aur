@@ -1,0 +1,10 @@
+[Unit]
+Description=Ingestor, aggregator and analyzer for your DNS traffic
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/go-dnscollector -config /etc/go-dnscollector/config.yml
+
+[Install]
+WantedBy=multi-user.target
