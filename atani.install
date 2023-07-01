@@ -1,0 +1,23 @@
+pre_install() {
+	#in case of manual install
+	rm -f /usr/bin/atani /usr/share/applications/atani.desktop /usr/share/pixmaps/atani.png
+	rm -rf /opt/atani
+}
+
+post_install() {
+	ln -s /opt/atani/atani /usr/bin/atani
+}
+
+pre_upgrade() {
+	rm -f /usr/bin/atani /usr/share/applications/atani.desktop /usr/share/pixmaps/atani.png
+	rm -rf /opt/atani
+}
+
+pre_remove() {
+	rm -f /usr/bin/atani /usr/share/applications/atani.desktop /usr/share/pixmaps/atani.png
+	rm -rf /opt/atani
+}
+
+post_remove() {
+	rm -rf ~/.config/Atani
+}

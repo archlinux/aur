@@ -1,0 +1,18 @@
+pkgbase = atani
+	pkgdesc = The all-in-one crypto platform you’ve been dreaming about. Exchanges, wallets and taxes under one roof
+	pkgver = 14.29.0
+	pkgrel = 1
+	url = https://atani.com/
+	install = atani.install
+	arch = amd64
+	license = unknown
+	makedepends = squashfs-tools
+	depends = nss
+	depends = gtk3
+	provides = atani
+	conflicts = atani-snap
+	replaces = atani-snap
+	source = https://api.snapcraft.io/api/v1/snaps/download/fRYdkXBDVAKnSXTJG5xa4PwBR4RqGDkV_181.snap
+	sha384sums = 8d0112c2917b99e8cf406b3b9d117981a32f21f73ab46e596110177ab2fbd79d8002401cac5845dd4574e2c3cc67c129
+
+pkgname = atani
