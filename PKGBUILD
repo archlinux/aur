@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ecp
-_pkgver=3.1.4
+_pkgver=3.1.5
 pkgname=r-${_pkgname,,}
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc='Non-Parametric Multiple Change-Point Analysis of Multivariate Data'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-r.rsp
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1b98bf25a7659517dc98d1b950fe2a5fed9ef8f750893b3a9e06e9c6d59cc04d')
+sha256sums=('9e2389632447a80a5e9937f15a98c092c33f5460e6ceb904971fcff3eda8a29e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
