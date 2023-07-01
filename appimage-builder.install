@@ -1,0 +1,13 @@
+# Full credits to "LuciRose431" in the AUR
+
+pre_install(){
+        ln -s /usr/lib/libfakeroot/libfakeroot.so /usr/lib/libfakeroot/libfakeroot-sysv.so
+        ln -s /usr/bin/fakeroot /usr/bin/fakeroot-sysv
+        ln -s /usr/bin/faked /usr/bin/faked-sysv
+}
+
+pre_remove(){
+        unlink /usr/lib/libfakeroot/libfakeroot-sysv.so 
+        unlink /usr/bin/fakeroot-sysv 
+        unlink /usr/bin/faked-sysv
+}
