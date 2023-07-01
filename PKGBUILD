@@ -1,6 +1,6 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=quik
-pkgver=10.2.3
+pkgver=10.3.0
 pkgrel=1
 stratver=3.0.5
 pkgdesc="Trading terminal in Wine"
@@ -10,7 +10,7 @@ depends=('wine')
 noextract=('keygen.zip')
 
 source=(
-"ftp://ftp.quik.ru/public/updates/10.2/quik_${pkgver}_upd.zip"
+"ftp://ftp.quik.ru/public/updates/10.3/quik_${pkgver}_upd.zip"
 "ftp://ftp.quik.ru/public/updates/10.2/StratVolat_${stratver}_upd.zip"
 "keygen.zip::ftp://ftp.quik.ru/public/updates/keygen_1.3.0_upd.zip"
 'quik'
@@ -19,7 +19,7 @@ source=(
 'ip.cfg'
 )
 sha256sums=(
-'546660a5f7eed334c7f3ad47854997cde0fded23a07c9212d16a9428479b742b'
+'7f030f3330c18712e40c51fa123ecd38e52c1e49457bfbb86e3f9b5237e98f78'
 'd32095309cd7359f4078a74179d8ae42e013e3fd3ad75837f0fa3941e7091b75'
 'bc66665d2209836abe51ae9258c289c0f682dba4ea5261f9319996a60a6a4ae7'
 '133bcae46a8f0547603fb2f157b89bf4be59291bf9292695f723d7d5b1cf01dc'
