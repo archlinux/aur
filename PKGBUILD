@@ -9,7 +9,7 @@
 # Contributor: SandaruKasa <echo c2FuZGFydWthc2ErYXVyQHlhLnJ1Cg== | base64 -d>
 
 pkgname=stockfish
-pkgver=15.1
+pkgver=16
 pkgrel=1
 epoch=1
 pkgdesc="A strong UCI chess engine"
@@ -18,7 +18,7 @@ url="https://stockfishchess.org/"
 license=('GPL3')
 depends=('glibc')
 source=("$pkgname-$pkgver.zip::https://github.com/official-stockfish/Stockfish/archive/sf_$pkgver.zip")
-sha512sums=('ecc7c5ea7afb4f70b272a342285e99341707ebae994a90e372c1fadd18c228d8f5d64e59b06a8d55d6df6219a307593437658bdde612cf856a7d738e44d316ec')
+sha512sums=('4c1ee8e36a8786392409fd0fa85d3751f6595b69529df09db3011229019a3f76b410dc84a077774ec1095c8a7bcde529db4cd0766f103ce94fc59fc186e6ee89')
 
 build() {
   cd "Stockfish-sf_${pkgver}/src"
