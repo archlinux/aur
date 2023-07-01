@@ -30,7 +30,8 @@ build() {
   elif [[ "$CARCH" == "i686" ]]; then
     _arch=x86-32
   elif grep -wq avx512dq /proc/cpuinfo && grep -wq avx512vl /proc/cpuinfo && grep -wq avx512_vnni /proc/cpuinfo; then
-    _arch=x86-64-vnni512
+    # 256 bit operands are faster on most hardware
+    _arch=x86-64-vnni256
   elif grep -wq avx512f /proc/cpuinfo && grep -wq avx512bw /proc/cpuinfo; then
     _arch=x86-64-avx512
   elif grep -wq bmi2 /proc/cpuinfo; then
