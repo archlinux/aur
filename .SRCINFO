@@ -1,0 +1,15 @@
+pkgbase = blueprint-compiler-health
+	pkgdesc = A markup language for GTK user interfaces
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://jwestman.pages.gitlab.gnome.org/blueprint-compiler
+	arch = any
+	license = LGPL
+	makedepends = meson
+	depends = python-gobject
+	source = git+https://gitlab.gnome.org/jwestman/blueprint-compiler#commit=87cedc2c7e
+	sha256sums = SKIP
+
+pkgname = blueprint-compiler-health
+	provides = blueprint-compiler=0.8.1
+	conflicts = blueprint-compiler
