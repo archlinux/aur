@@ -1,5 +1,5 @@
 diff --git a/main.js b/main.js
-index 43d7c2f..1902616 100644
+index 43d7c2f..99a9551 100644
 --- a/main.js
 +++ b/main.js
 @@ -6,7 +6,7 @@ const main_utils = require('./main_utils')
@@ -71,6 +71,15 @@ index 43d7c2f..1902616 100644
        // backgroundColor: store.get('app-theme-bg', 'black')
      }
      if (utils.is_mac()) {
+@@ -610,7 +613,7 @@ function createMainWindow() {
+         if (utils.is_mac()) {
+           app.dock.hide() //dock图标随主窗口关闭
+         }
+-        main_utils.notify_all_windows('fake-close') //让前端先做好重绘，再hide，使得重新show的开始不会大闪烁，可以接受吧
++        // main_utils.notify_all_windows('fake-close') //让前端先做好重绘，再hide，使得重新show的开始不会大闪烁，可以接受吧
+         //延迟的关闭给人感觉更差
+         // setTimeout(() => { //并不需要延迟，从任务管理器看，他是能关闭的
+         // }, 100)
 @@ -702,7 +705,7 @@ function createSettingWindow() {
    } else {
      settingWindow = new BrowserWindow({

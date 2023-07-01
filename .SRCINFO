@@ -1,7 +1,7 @@
 pkgbase = irreader1.5.9
 	pkgdesc = 万能订阅阅读器，订阅任何网站。this is the last free version
 	pkgver = 1.5.9
-	pkgrel = 8
+	pkgrel = 9
 	url = http://irreader.fatecore.com/
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = irreader1.5.9
 	source = patch
 	source = irreader1.5.9.desktop
 	sha256sums = 5cf058020acf85478b263ca367a66ea6e943860c1532132e0c7dbab401374702
-	sha256sums = 0a861e557f0cb3cc3db0c2f503a62c1935774a2eaed54ae907d2bbe4c5986607
+	sha256sums = bc6c922bc765915241c867105b4322dfd244cc9969442f14d225278b30151cd0
 	sha256sums = 62d1f86255c32b15e557b227d9c38cc6adb7b6af1c9c52dd4842d47e76eb2aee
 	source_x86_64 = https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v6-linux-glibc-x64.tar.gz
 	sha256sums_x86_64 = d31475a48731bda50747d4187f46f028565e84086473b55e165e9e4447430164
