@@ -10,7 +10,7 @@ pkgbase = tap
 	optdepends = fzf: fuzzy searching
 	optdepends = fd: faster find
 	optdepends = skim: fzf alternative
-	source = tap-0.2.0.tar.gz::https://github.com/timdubbins/tap/archive/v0.2.0.tar.gz
-	sha256sums = c8013780fc418385415ee1cb2b1cf5b5b54607a3d195bdd0a7bcb2df2dbe480a
+	source = tap-0.2.0.tar.gz::https://github.com/timdubbins/tap/rchive/v0.2.0.tar.gz
+	sha256sums = d104a305fdbad800cc18938e05c397b60cc978fdddd701b850b393bcff8bb490
 
 pkgname = tap
