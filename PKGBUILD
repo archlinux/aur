@@ -1,6 +1,6 @@
 # Maintainer: Vladyslav Aviedov <vladaviedov at protonmail dot com>
 pkgname=focalboard-server-bin
-pkgver=7.10.1
+pkgver=7.11.0
 pkgrel=1
 epoch=
 pkgdesc="Focalboard is an open source, self-hosted alternative to Trello, Notion, and Asana."
@@ -22,7 +22,7 @@ changelog=
 source=("https://github.com/mattermost/focalboard/releases/download/v${pkgver}/focalboard-server-linux-amd64.tar.gz"
         'focalboard.service')
 noextract=()
-sha256sums=('f884a36014da43c54ee314baef46729ff4240f3c5d4fb6401be2e4899ee04caa'
+sha256sums=('d8ca49fb52fdda8ecf96fbcabcf4c3e166b51779888355acac8bd9c62e692df8'
             '607d16cb2544101d0e4291e7804c3137b90b620107a37431c0f3d71e93c4fcd5')
 validpgpkeys=()
 
@@ -35,7 +35,6 @@ package() {
   cp bin/focalboard-server "${PACKAGE_FOLDER}/bin"
   cp -r pack/* "${PACKAGE_FOLDER}/pack"
   cp config.json "${PACKAGE_FOLDER}"
-  cp MIT-COMPILED-LICENSE.md "${PACKAGE_FOLDER}/license"
   cp NOTICE.txt "${PACKAGE_FOLDER}/license"
   cp webapp-NOTICE.txt "${PACKAGE_FOLDER}/license"
 
