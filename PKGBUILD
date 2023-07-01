@@ -94,16 +94,16 @@ prepare(){
 
   plain ""
 
-  # Remove gcc-plugin if gcc version = 13.0.0
-  if [[ "$_gccversion" = "13.0.0" ]]; then
-
-    msg2 "Remove GCC_PLUGINS"
-    scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
-    scripts/config --disable CONFIG_GCC_PLUGINS
-
-    sleep 2s
-    plain ""
-  fi
+  #  # Remove gcc-plugin if gcc version = 13.0.0
+  #  if [[ "$_gccversion" = "13.0.0" ]]; then
+  #
+  #    msg2 "Remove GCC_PLUGINS"
+  #    scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
+  #    scripts/config --disable CONFIG_GCC_PLUGINS
+  #
+  #    sleep 2s
+  #    plain ""
+  #  fi
 
   # Set LTO with CLANG/LLVM
   if [[ "$_compiler" = "2" ]]; then
@@ -232,11 +232,7 @@ prepare(){
   plain ""
 
   # Config
-  if [[ "$_compiler" = "1" ]]; then
-    make ARCH=${ARCH} ${BUILD_FLAGS[*]} olddefconfig
-  elif [[ "$_compiler" = "2" ]]; then
-    make ARCH=${ARCH} ${BUILD_FLAGS[*]} olddefconfig
-  fi
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} olddefconfig
 
   plain ""
 
@@ -251,11 +247,7 @@ build(){
 
   # make -j$(nproc) all
   msg2 "make -j$(nproc) all..."
-  if [[ "$_compiler" = "1" ]]; then
-    make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
-  elif [[ "$_compiler" = "2" ]]; then
-    make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
-  fi
+  make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
 }
 
 _package(){
@@ -279,11 +271,7 @@ _package(){
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
-  if [[ "$_compiler" = "1" ]]; then
-    ZSTD_CLEVEL=19 make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
-  elif [[ "$_compiler" = "2" ]]; then
-    ZSTD_CLEVEL=19 make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
-  fi
+  ZSTD_CLEVEL=19 make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
 
   # remove build and source links
   msg2 "Remove build dir and source dir..."
@@ -384,6 +372,6 @@ for _p in "${pkgname[@]}"; do
     $(declare -f "_package${_p#$pkgbase}")
     _package${_p#$pkgbase}
   }"
-done            
+done
 
 # vim:set ts=8 sts=2 sw=2 et:
