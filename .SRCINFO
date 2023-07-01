@@ -1,7 +1,7 @@
 pkgbase = libnetceiver
 	pkgdesc = Library and tools to access the REEL NetCeiver
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vdr-projects/libnetceiver
 	arch = x86_64
 	arch = arm
@@ -11,7 +11,9 @@ pkgbase = libnetceiver
 	license = LGPL2.1
 	makedepends = libxml2
 	source = libnetceiver-0.0.6.tar.gz::https://github.com/vdr-projects/libnetceiver/archive/refs/tags/0.0.6.tar.gz
+	source = libnetceiver-tnftp-autodetect.patch::https://patch-diff.githubusercontent.com/raw/vdr-projects/libnetceiver/pull/2.patch
 	sha256sums = 0e4c94356455e3f285ac477d6133c256d5c4118b0f5f0a542db333c7ad5d3770
+	sha256sums = c931848467b3081db9abe8d94c79d6c7931ad89500c0b90c714f16288d3f560f
 
 pkgname = libnetceiver
 	pkgdesc = NetCeiver client protocol library
@@ -25,4 +27,4 @@ pkgname = libnetceiver-tools
 	pkgdesc = NetCeiver client protocol library tools
 	depends = libnetceiver
 	depends = glibc
-	depends = lftp
+	depends = tnftp6
