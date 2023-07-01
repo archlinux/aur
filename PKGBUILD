@@ -1,9 +1,9 @@
 # Maintainer: goetzc
 
 _name=tremulous
-_version=1.3.0-alpha.0.14
+_version=1.3.0-alpha.0.15
 pkgname="${_name}-grangerhub-bin"
-pkgver=1.3.0_alpha.0.14
+pkgver=1.3.0_alpha.0.15
 pkgrel=1.1
 pkgdesc="Team based FPS/RTS hybrid built on the open ioq3 engine. GrangerHub"
 url="https://github.com/grangerhub/tremulous"
@@ -43,7 +43,7 @@ package() {
   install -D -m644 "${srcdir}/GPL" "${pkgdir}/usr/share/licenses/${pkgname}/GPL"
 }
 
-sha256sums=('cc2c085c75b8ef8f77173bd918feec0628377e40ec87d49e851881df07fe6358'
+sha256sums=('66369ea4cfb9e4cad5618b7264c04025ce73e8af5f3a9785856cf3b610d1a54a'
             '93acf31a216c88eb358ab2a2156a882939ddba65f5e6f23093bd773d389d03ee'
             '59dd383809cfe1064505adf436c921b0783eb542720e97a73291746b17f85399'
             '9af436e7f004abeb043276de6948d6142a8a4cfb554993b7aa8d9e09e41acafa'
