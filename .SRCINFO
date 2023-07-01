@@ -1,19 +1,22 @@
 pkgbase = r-gargle
 	pkgdesc = Utilities for Working with Google APIs
-	pkgver = 1.2.1
-	pkgrel = 1
+	pkgver = 1.5.1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=gargle
 	arch = any
-	license = GPL3
-	depends = r>=3.5
-	depends = r-cli>=3.0.0
-	depends = r-fs>=1.3.1
-	depends = r-glue>=1.3.0
-	depends = r-httr>=1.4.0
+	license = MIT
+	checkdepends = r-httpuv
+	checkdepends = r-sodium
+	checkdepends = r-testthat
+	depends = r-cli
+	depends = r-fs
+	depends = r-glue
+	depends = r-httr
 	depends = r-jsonlite
+	depends = r-lifecycle
+	depends = r-openssl
 	depends = r-rappdirs
-	depends = r-rlang>=1.0.0
-	depends = r-rstudioapi
+	depends = r-rlang
 	depends = r-withr
 	optdepends = r-aws.ec2metadata
 	optdepends = r-aws.signature
@@ -21,11 +24,11 @@ pkgbase = r-gargle
 	optdepends = r-httpuv
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	optdepends = r-mocker
 	optdepends = r-sodium
 	optdepends = r-spelling
-	optdepends = r-testthat>=3.1.2
-	source = https://cran.r-project.org/src/contrib/gargle_1.2.1.tar.gz
-	sha256sums = f367e2c82f403167ae84058303a4fb0402664558a2abf0b495474a7ef1a2f020
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/gargle_1.5.1.tar.gz
+	md5sums = ffbccb99846ff6eec001a12cd740f811
+	sha256sums = e3ba27b5405de5fe06c8d245a6b357d291ed0cbaeab54c807e5ceee83efcb9a5
 
 pkgname = r-gargle
