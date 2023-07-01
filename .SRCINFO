@@ -1,11 +1,11 @@
 pkgbase = r-ids
-	pkgdesc = Generate random or human readable and pronounceable identifiers.
+	pkgdesc = Generate Random Identifiers
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 7
 	url = https://cran.r-project.org/package=ids
 	arch = any
-	license = GPL3
-	depends = r>=3.2
+	license = MIT
+	checkdepends = r-testthat
 	depends = r-openssl
 	depends = r-uuid
 	optdepends = r-knitr
@@ -13,7 +13,7 @@ pkgbase = r-ids
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/ids_1.0.1.tar.gz
+	md5sums = da97e1c97b795a9c0e4f51dcb1d928bb
 	sha256sums = b6212a186063c23116c5cbd3cca65dbb8977dd737261e4526ebee8f64852cfe8
 
 pkgname = r-ids
-
