@@ -4,7 +4,7 @@
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
 # Contributor: Mark Peschel <mpeschel10@gmail.com>
 
-pkgbase=tensorflow
+pkgbase=tensorflow-amd-git
 pkgname=(tensorflow-amd-git python-tensorflow-amd-git tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
 pkgver=2.12.0
 pkgrel=2
