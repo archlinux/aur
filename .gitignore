@@ -1,0 +1,5 @@
+/target
+deps.png
+pkg/
+Cargo.lock
+/aur-cli-git
