@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=fvtt-desktop-client
-Comment=Foundry VTT Desktop Client
+Name=FoundryVTT Desktop Client 
+Comment=FoundryVTT Desktop Client
 GenericName=fvtt-desktop-client
 Exec=fvtt-desktop-client %U
 Icon=fvtt-desktop-client
