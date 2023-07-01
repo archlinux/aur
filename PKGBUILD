@@ -18,6 +18,8 @@ _cachy_config=${_cachy_config-y}
 # 'tt' - select 'Task Type Scheduler by Hamad Marri'
 # 'hardened' - select 'BORE Scheduler hardened' ## kernel with hardened config and hardening patches with the bore scheduler
 # 'cachyos' - select 'EEVDF-BORE Variant Scheduler' EEVDF includes latency nice
+# 'eevdf' - select 'EEVDF Scheduler' EEVDF includes latency nice
+# 'rt' - select CFS, but includes a series of realtime patches
 _cpusched=${_cpusched-pds}
 
 ## Apply some suggested sysctl values from the bore developer
@@ -134,14 +136,6 @@ _use_auto_optimization=${_use_auto_optimization-y}
 # disable debug to lower the size of the kernel
 _disable_debug=${_disable_debug-}
 
-### Selecting the ZSTD kernel and modules compression level
-# ATTENTION - one of two predefined values should be selected!
-# 'ultra' - highest compression ratio
-# 'normal' - standard compression ratio
-# WARNING: the ultra settings can sometimes
-# be counterproductive in both size and speed.
-_zstd_level_value=${_zstd_level_value-normal}
-
 # Clang LTO mode, only available with the "llvm" compiler - options are "none", "full" or "thin".
 # ATTENTION - one of three predefined values should be selected!
 # "full: uses 1 thread for Linking, slow and uses more memory, theoretically with the highest performance gains."
@@ -164,6 +158,8 @@ _use_lto_suffix=${_use_lto_suffix-y}
 _use_kcfi=${_use_kcfi-}
 
 # Build the zfs module in to the kernel
+# WARNING: The ZFS module doesn't build with selected RT sched due to licensing issues.
+# If you use ZFS, refrain from building the RT kernel
 _build_zfs=${_build_zfs-}
 
 # Enable bcachefs
@@ -178,12 +174,12 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.4
-_minor=0
+_minor=1
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-#_stable=${_major}.${_minor}
-_stable=${_major}
+_stable=${_major}.${_minor}
+#_stable=${_major}
 #_stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
@@ -222,6 +218,8 @@ case "$_cpusched" in
     cachyos) # CachyOS Scheduler (EEVDF + BORE)
         source+=("${_patchsource}/sched/0001-EEVDF.patch"
                  "${_patchsource}/sched/0001-bore-eevdf.patch");;
+    eevdf) # EEVDF Scheduler
+        source+=("${_patchsource}/sched/0001-EEVDF.patch");;
     pds|bmq) # BMQ/PDS scheduler
         source+=("${_patchsource}/sched/0001-prjc-cachy.patch"
                  linux-cachyos-prjc.install);;
@@ -230,6 +228,9 @@ case "$_cpusched" in
     bore) ## BORE Scheduler
         [ -n "$_tune_bore" ] && source+=("${_patchsource}/misc/0001-bore-tuning-sysctl.patch")
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
+    rt) ## CFS with RT patches
+        source+=("${_patchsource}/misc/0001-rt.patch"
+                 linux-cachyos-rt.install);;
     hardened) ## Hardened Patches with BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
@@ -305,7 +306,8 @@ prepare() {
         bmq) scripts/config -e SCHED_ALT -e SCHED_BMQ -d SCHED_PDS -e PSI_DEFAULT_DISABLED;;
         tt)  scripts/config -e TT_SCHED -e TT_ACCOUNTING_STATS;;
         bore|hardened|cachyos) scripts/config -e SCHED_BORE;;
-        cfs) ;;
+        cfs|eevdf) ;;
+        rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -e PREEMPT_LAZY -d PREEMPT_DYNAMIC -e HAVE_PREEMPT_LAZY -d PREEMPT_BUILD;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
@@ -405,16 +407,20 @@ prepare() {
     echo "Selecting '$_tickrate' tick type..."
 
     ### Select preempt type
-    [ -z "$_preempt" ] && _die "The value is empty. Choose the correct one again."
 
-    case "$_preempt" in
-        full) scripts/config -e PREEMPT_BUILD -d PREEMPT_NONE -d PREEMPT_VOLUNTARY -e PREEMPT -e PREEMPT_COUNT -e PREEMPTION -e PREEMPT_DYNAMIC;;
-        voluntary) scripts/config -e PREEMPT_BUILD -d PREEMPT_NONE -e PREEMPT_VOLUNTARY -d PREEMPT -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_DYNAMIC;;
-        server) scripts/config -e PREEMPT_NONE_BUILD -e PREEMPT_NONE -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPTION -d PREEMPT_DYNAMIC;;
-        *) _die "The value '$_preempt' is invalid. Choose the correct one again.";;
-    esac
+    # We should not set up the PREEMPT for RT kernels
+    if [ "$_cpusched" != "rt" ]; then
+        [ -z "$_preempt" ] && _die "The value is empty. Choose the correct one again."
 
-    echo "Selecting '$_preempt' preempt type..."
+        case "$_preempt" in
+            full) scripts/config -e PREEMPT_BUILD -d PREEMPT_NONE -d PREEMPT_VOLUNTARY -e PREEMPT -e PREEMPT_COUNT -e PREEMPTION -e PREEMPT_DYNAMIC;;
+            voluntary) scripts/config -e PREEMPT_BUILD -d PREEMPT_NONE -e PREEMPT_VOLUNTARY -d PREEMPT -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_DYNAMIC;;
+            server) scripts/config -e PREEMPT_NONE_BUILD -e PREEMPT_NONE -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPTION -d PREEMPT_DYNAMIC;;
+            *) _die "The value '$_preempt' is invalid. Choose the correct one again.";;
+        esac
+
+        echo "Selecting '$_preempt' preempt type..."
+    fi
 
     ### Enable O3
     if [ -n "$_cc_harder" ] && [ -z "$_cc_size" ]; then
@@ -569,17 +575,6 @@ prepare() {
             -d LRNG_RUNTIME_FORCE_SEEDING_DISABLE
     fi
 
-    ### Selecting the ZSTD modules and kernel compression level
-    [ -z "$_zstd_level_value" ] && _die "The value is empty. Choose the correct one again."
-
-    case "$_zstd_level_value" in
-        ultra) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 19 -e MODULE_COMPRESS_ZSTD_ULTRA --set-val MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22 --set-val ZSTD_COMPRESSION_LEVEL 22;;
-        normal) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 9 -d MODULE_COMPRESS_ZSTD_ULTRA --set-val ZSTD_COMPRESSION_LEVEL 19;;
-        *) _die "The value '$_zstd_level_value' is invalid. Choose the correct one again.";;
-    esac
-
-    echo "Selecting '$_zstd_level_value' ZSTD modules and kernel compression level..."
-
     ### Disable DEBUG
     if [ -n "$_disable_debug" ]; then
         scripts/config -d DEBUG_INFO \
@@ -698,7 +693,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist  modules_install  # Suppress depmod
 
     # remove build and source links
@@ -812,9 +807,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('b59eb04a8715af9f686978812e6d4a466172bb859f80657076de14cd0828b4fac15b688ff8959f5c65485f7f6bef26590412c66821e720de843cb8666f226c90'
+b2sums=('8551ab8fb2e973855f7fe8cf0ea2f999ae943dc140291849ff89fb9870798347c07b13f9e3fbdd91122ec53d6f52d73f394e432ff0c8290c0298638ba7ccc405'
         '133085b75ef7a5234a6090a375134ba7d5970d8e136530d66085f013ea0f9e50c16c475cb74a18bbad9a82f1b43306b4db754ecdaa1c17e5c8acdbf981ccbfb6'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        'aec8d5a9716fb5139303d6deeae6fe0cc1fef731de9be7da3448859dea0c1fb71c8be74e43d9af48e517fb8bac89209d5ea2fcfc9338196c72524509b0cbb8c0'
-        '5e0b365a5fb3e6afcca0f0b1b7da1c5168f708c1c44559edf97f5b09fc0b3c640902d8aefe14a2802e28035e69e3849a438bcc5162a989061c441741b63145dd'
+        'f4a301541d03659f767f6f7eee7c2bb67e75bb7528846a656034af4af7c59c6a2864764f23afcc44a8bfc37b44f415591c355e3993b26ade3d6fc95e1cc2bd0f'
+        '9c1419224b4c1d15f74bbfd11102699af78e0a4340f78e1972163f670e6a4df5812549a823448f6df97d0dd79ab4ad8587dc24a84261b5ab902c4ce87ac23cc1'
         '21f2753be26455812dde25232265a5660feed49751be36e1dcc1e6a9993de673380c2b210d58d4041096442f11080c7206846f140082e927284f6d001eea0d23')
