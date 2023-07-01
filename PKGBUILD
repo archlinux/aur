@@ -4,7 +4,8 @@ _pkgname="nats-server"
 pkgname="${_pkgname}-bin"
 pkgdesc="Simple, secure and high performance open source messaging system"
 pkgver=2.9.19
-pkgrel=1
+pkgrel=2
+provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=("${_pkgname}")
 arch=("x86_64")
