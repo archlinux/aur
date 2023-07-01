@@ -1,36 +1,36 @@
 pkgbase = r-googledrive
-	pkgdesc = Manage Google Drive files from R
-	pkgver = 2.0.0
+	pkgdesc = An Interface to Google Drive
+	pkgver = 2.1.1
 	pkgrel = 2
 	url = https://cran.r-project.org/package=googledrive
 	arch = any
-	license = GPL3
-	depends = r>=3.3
-	depends = r-cli>=3.0.0
-	depends = r-gargle>=1.2.0
-	depends = r-glue>=1.4.2
+	license = MIT
+	checkdepends = r-dplyr
+	checkdepends = r-mockr
+	checkdepends = r-testthat
+	depends = r-cli
+	depends = r-gargle
+	depends = r-glue
 	depends = r-httr
 	depends = r-jsonlite
 	depends = r-lifecycle
 	depends = r-magrittr
-	depends = r-purrr>=0.2.3
-	depends = r-rlang>=0.4.9
-	depends = r-tibble>=2.0.0
+	depends = r-pillar
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-tibble
 	depends = r-uuid
-	depends = r-vctrs>=0.3.0
+	depends = r-vctrs
 	depends = r-withr
-	optdepends = r-covr
 	optdepends = r-curl
-	optdepends = r-downlit
-	optdepends = r-dplyr>=1.0.0
+	optdepends = r-dplyr
 	optdepends = r-knitr
 	optdepends = r-mockr
 	optdepends = r-rmarkdown
-	optdepends = r-roxygen2
-	optdepends = r-sodium
 	optdepends = r-spelling
-	optdepends = r-testthat>=3.0.0
-	source = https://cran.r-project.org/src/contrib/googledrive_2.0.0.tar.gz
-	sha256sums = 605c469a6a086ef4b049909c2e20a35411c165ce7ce4f62d68fd39ffed8c5a26
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/googledrive_2.1.1.tar.gz
+	md5sums = 2741deb58d88bacd81489316df7cf9e2
+	sha256sums = 0b8b4f74ba3630b0347249a32a80bc5fc2e8b63ad2952702f30162bd2d38fb82
 
 pkgname = r-googledrive
