@@ -1,15 +1,15 @@
 # Maintainer: Michael Gruz <michael.gruz@gmail.com>
 
-pkgname=cura-5-plugin-octoprint
+pkgbase=cura-5-plugin-octoprint
+pkgname=(cura5-plugin-octoprint cura-5-plugin-octoprint)
 pkgver=3.7.3
 _pkgname=Cura-OctoPrintPlugin-${pkgver}
-pkgrel=0
+pkgrel=1
 pkgdesc="Cura plugin which enables printing directly to OctoPrint and monitoring the progress"
 arch=('any')
 license=('GPL3')
 url="https://github.com/fieldofview/OctoPrintPlugin"
 depends=('python' 'python-zeroconf')
-conflicts=('cura-5-plugin-octoprint-git')
 makedepends=('git' 'cmake')
 source=("https://github.com/fieldOfView/Cura-OctoPrintPlugin/archive/refs/tags/v${pkgver}.tar.gz"
         "git+https://github.com/jstasiak/python-zeroconf.git"
@@ -30,14 +30,26 @@ prepare() {
 }
 
 build() {
-  mkdir -p "$_pkgname"/build
-  cd "$_pkgname"/build
+  mkdir -p ${srcdir}/${_pkgname}/build5
+  cd ${srcdir}/${_pkgname}/build5
+  cmake -DCMAKE_INSTALL_PREFIX=/usr/lib/cura ..
+  make
+
+  mkdir -p ${srcdir}/${_pkgname}/build-5
+  cd ${srcdir}/${_pkgname}/build-5
   cmake -DCMAKE_INSTALL_PREFIX=/opt/cura5/share ..
   make
 }
 
-package() {
-  cd "$srcdir/$_pkgname/build"
+package_cura5-plugin-octoprint() {
+  conflicts=('cura5-plugin-octoprint-git')
+  cd ${srcdir}/${_pkgname}/build5
+  make DESTDIR="$pkgdir/" install
+}
+
+package_cura-5-plugin-octoprint() {
+  conflicts=('cura-5-plugin-octoprint-git')
+  cd ${srcdir}/${_pkgname}/build-5
   make DESTDIR="$pkgdir/" install
 }
 
