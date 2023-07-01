@@ -1,27 +1,41 @@
-pkgname=gnome-health-git
-pkgver=0.92.6+5+g6edaad5
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+
+_pkg="Health"
+_pkgname="gnome-health"
+pkgname="${_pkgname}-git"
+pkgver=0.94.0+89+g3023723
 pkgrel=1
 pkgdesc="A health tracking app for the GNOME desktop"
 arch=(x86_64)
-url="https://gitlab.gnome.org/Cogitri/Health"
+url="https://gitlab.gnome.org/World/${_pkg}"
 license=(GPL3)
-depends=('libadwaita')
-makedepends=('git' 'meson')
-provides=('gnome-health')
-conflicts=('gnome-health')
-source=("git+https://gitlab.gnome.org/Cogitri/Health.git")
+depends=(
+  'libadwaita'
+  'rust'
+)
+makedepends=(
+  'blueprint-compiler-health'
+  'git'
+  'meson')
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+source=("git+${url}")
 b2sums=('SKIP')
 
 pkgver() {
-  cd Health
+  cd "${_pkg}"
   git describe --tags | sed 's/-/+/g'
 }
 
+prepare() {
+  cd "${_pkg}"
+}
+
 build() {
-  arch-meson Health build
+  arch-meson "${_pkg}" build
   meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "${pkgdir}"
 }
