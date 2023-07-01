@@ -1,7 +1,7 @@
 # Maintainer: Andrew Ryan <dnrops@outlook.com>
 #
 
-pkgname=aur_cli
+pkgname=aur-cli-git
 pkgver=0.1.3
 pkgrel=1
 pkgdesc="Prepare Rust projects to be released on the Arch Linux User Repository."
