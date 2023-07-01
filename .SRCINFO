@@ -1,5 +1,5 @@
 pkgbase = video-cut-git
-	pkgdesc = Prepare Rust projects to be released on the Arch Linux User Repository.
+	pkgdesc = Rust writed CLI for cut video in terminal.
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://dnrops.gitee.io
