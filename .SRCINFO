@@ -1,7 +1,7 @@
 pkgbase = r-ggplot2
 	pkgdesc = Create Elegant Data Visualisations Using the Grammar of Graphics
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ggplot2
 	arch = any
 	license = MIT
@@ -25,7 +25,6 @@ pkgbase = r-ggplot2
 	depends = r-vctrs
 	depends = r-withr
 	optdepends = r-covr
-	optdepends = r-ragg
 	optdepends = r-dplyr
 	optdepends = r-ggplot2movies
 	optdepends = r-hexbin
@@ -38,6 +37,7 @@ pkgbase = r-ggplot2
 	optdepends = r-munsell
 	optdepends = r-profvis
 	optdepends = r-quantreg
+	optdepends = r-ragg
 	optdepends = r-rcolorbrewer
 	optdepends = r-rgeos
 	optdepends = r-rmarkdown
@@ -47,8 +47,7 @@ pkgbase = r-ggplot2
 	optdepends = r-vdiffr
 	optdepends = r-xml2
 	source = https://cran.r-project.org/src/contrib/ggplot2_3.4.2.tar.gz
-	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	md5sums = ae74c0829b62eb7ff8a425df4645c85f
 	sha256sums = 70230aa70a2c6f844fc41dd93e5f62af6859dfed390026ae58f223637e5283ca
-	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-ggplot2
