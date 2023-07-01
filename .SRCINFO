@@ -11,6 +11,7 @@ pkgbase = luminance
 	provides = luminance
 	conflicts = luminance
 	source = git+https://github.com/sidevesh/Luminance.git
+	source = git+https://github.com/ahshabbir/ddcbc-api.git
 	sha256sums = SKIP
 
 pkgname = luminance
