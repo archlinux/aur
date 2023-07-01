@@ -1,0 +1,13 @@
+pkgbase = dnsch
+	pkgdesc = A simple package that helps you to set your Arch linux system on shecan or google
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mohammadrostamiorg/dnsChanger
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	source = dnsch.sh
+	sha256sums = 3448ffdbff984ed51c6c8f64179b7884691e5c09f3038e816edd166067841b65
+
+pkgname = dnsch
