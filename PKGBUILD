@@ -13,7 +13,7 @@ depends=('gtk3' 'ddcutil')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("git+https://github.com/sidevesh/$_pkgname.git" "git+https://github.com/ahshabbir/ddcbc-api.git")
-sha256sums=('SKIP')
+sha256sums=('SKIP', 'SKIP')
 
 prepare() {
   cd "$srcdir/$_pkgname"
