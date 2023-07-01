@@ -8,9 +8,10 @@ major_version=1
 minor_version=2
 patch_version=2
 sp_version=''
+_sp_version=''
 
 pkgname="${_pkgname}"-appimage
-pkgver="${major_version}.${minor_version}.${patch_version}${sp_version}"
+pkgver="${major_version}.${minor_version}.${patch_version}${_sp_version}"
 pkgrel=1
 pkgdesc="Cyber Security ALL-IN-ONE Platform"
 arch=('x86_64')
