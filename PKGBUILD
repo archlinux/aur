@@ -3,7 +3,7 @@
 pkgname=curaengine-5
 _pkgname=curaengine
 pkgver=5.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Engine for processing 3D models into 3D printing instruction for Ultimaker and other GCode based 3D printers."
 url="https://github.com/Ultimaker/CuraEngine"
 arch=('x86_64')
@@ -18,6 +18,7 @@ makedepends=( 'boost'
               'protobuf'
               'range-v3'
               'rapidjson'
+              'spdlog'
               'stb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Ultimaker/${_pkgname}/archive/${pkgver}.tar.gz"
         "cmake.patch"
