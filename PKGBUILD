@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSstatsConvert
-_pkgver=1.10.1
+_pkgver=1.10.2
 pkgname=r-${_pkgname,,}
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc='Import Data from Various Mass Spectrometry Signal Processing Tools to MSstats Format'
 arch=('any')
@@ -23,7 +23,7 @@ optdepends=(
   r-tinytest
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f1f656f1887be5ce34bfee45bd3cdf2dc5c604d781d4a99b79ccebf3c8124524')
+sha256sums=('23f86efbd8f9a2765ed7f975fb7062b3613b267963b01c82fe2c77878d79323b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
