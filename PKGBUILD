@@ -23,8 +23,8 @@ source=(
   # "git+${_repo_url}#commit=${_commit}")
   "${_repo_url}/-/archive/${_commit}/${_pkgname}-${_commit}.tar.gz"
 )
-sha256sums=(
-  'SKIP'
+sha512sums=(
+  '19104642fd397b664ff08c513b2f9008d96f9da7665fb6552c0f866fe45685fd778f315ade2bc0dacd2616bbec0b0a032f4d1fe17632f8de97780869fe9e1a8c'
 )
 
 build() {
