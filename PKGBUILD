@@ -3,7 +3,7 @@
 # Maintainer:  Salama <salama@salama.xyz>
 
 pkgname=i2p-bin
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="https://geti2p.net"
@@ -31,7 +31,7 @@ source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
         'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh')
 
-sha256sums=('c9879b8f69ea13c758672c2fa083dc2e0abb289e0fc9a55af98f9f1795f82659'
+sha256sums=('977ebce33001345731de6fe0b623f59a867de6fa6a6c46d8ad686e306310b28d'
             'SKIP'
             '925d931aae2bd03c08555536b1c836654a72cc4acfd9f440f1ad43958ba2108d'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
