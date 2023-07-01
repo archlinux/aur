@@ -1,23 +1,25 @@
 pkgbase = r-reprex
 	pkgdesc = Prepare Reproducible Example Code via the Clipboard
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=reprex
 	arch = any
 	license = MIT
-	depends = r>=3.4
-	depends = pandoc>=2.0
-	depends = r-callr>=3.6.0
-	depends = r-cli>=3.2.0
-	depends = r-clipr>=0.4.0
+	checkdepends = r-mockr
+	checkdepends = r-styler
+	checkdepends = r-testthat
+	depends = pandoc
+	depends = r-callr
+	depends = r-cli
+	depends = r-clipr
 	depends = r-fs
 	depends = r-glue
-	depends = r-knitr>=1.23
+	depends = r-knitr
 	depends = r-lifecycle
-	depends = r-rlang>=1.0.0
+	depends = r-rlang
 	depends = r-rmarkdown
 	depends = r-rstudioapi
-	depends = r-withr>=2.3.0
+	depends = r-withr
 	optdepends = r-covr
 	optdepends = r-fortunes
 	optdepends = r-miniui
@@ -26,9 +28,10 @@ pkgbase = r-reprex
 	optdepends = r-sessioninfo
 	optdepends = r-shiny
 	optdepends = r-spelling
-	optdepends = r-styler>=1.2.0
-	optdepends = r-testthat>=3.0.2
+	optdepends = r-styler
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/reprex_2.0.2.tar.gz
-	sha1sums = 35537ec74176b4f09e50867ca16b4c28f5b82eff
+	md5sums = dfda2989d9317160661dcec6a8f2fed8
+	sha256sums = a85b16e26112364a65c886efea050df08c17aadf1411fd14ec27d9ef13e87092
 
 pkgname = r-reprex
