@@ -2,7 +2,9 @@
 
 _pkgname="blueprint-compiler"
 pkgname="blueprint-compiler-health"
-pkgver=0.8.1
+_commit="93f2a27e"
+_pkgver=0.8.1
+pkgver="${pkgver}+${_commit}"
 pkgrel=1
 _ns=jwestman
 pkgdesc='A markup language for GTK user interfaces'
@@ -23,7 +25,7 @@ sha256sums=(
   'SKIP')
 
 build() {
-  arch-meson "${_pkgname}" build
+  arch-meson "${_pkgname}" build --prefix=/usr
   meson compile -C build
 }
 
