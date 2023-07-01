@@ -9,7 +9,7 @@ pkgbase = openai-client-git
 	depends = python-pip>=20.0
 	provides = openai-client
 	options = !strip
-	source = git+https://github.com/awesomeDev12/openai-client.git
+	source = git+https://github.com/anirbandey1/openai-client.git
 	sha512sums = SKIP
 
 pkgname = openai-client-git
