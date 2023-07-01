@@ -1,6 +1,6 @@
 pkgbase = whitesur-kvantum-theme-git
 	pkgdesc = WhiteSur theme for Kvantum
-	pkgver = r59.bfb90f2
+	pkgver = r110.248d4c0
 	pkgrel = 1
 	url = https://github.com/vinceliuice/WhiteSur-kde
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = whitesur-kvantum-theme-git
 	depends = kvantum-qt5
 	provides = whitesur-kvantum-theme
 	conflicts = whitesur-kvantum-theme
+	conflicts = whitesur-kde-theme
 	conflicts = whitesur-kde-theme-git
 	source = git+https://github.com/vinceliuice/WhiteSur-kde.git
 	sha256sums = SKIP

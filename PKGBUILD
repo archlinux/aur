@@ -1,19 +1,23 @@
-# Maintainer:
+# Maintainer: ArcanusNEO <admin@transcliff.top>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: librewish
 pkgname=whitesur-kvantum-theme-git
 _gitname=WhiteSur-kde
-pkgver=r59.bfb90f2
+pkgver=r110.248d4c0
 pkgrel=1
 pkgdesc="WhiteSur theme for Kvantum"
 arch=('any')
-url="https://github.com/vinceliuice/WhiteSur-kde"
+url="https://github.com/vinceliuice/${_gitname}"
 license=('GPL3')
 depends=('kvantum-qt5')
 makedepends=('git')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" 'whitesur-kde-theme-git')
-source=('git+https://github.com/vinceliuice/WhiteSur-kde.git')
+conflicts=(
+  "${pkgname%-git}"
+  'whitesur-kde-theme'
+  'whitesur-kde-theme-git'
+)
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
