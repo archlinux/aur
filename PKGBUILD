@@ -11,7 +11,7 @@
 pkgname=unreal-engine-git
 _pkgname=unreal-engine
 pkgver=5.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -142,8 +142,8 @@ prepare() {
   # Download Unreal Engine source or update if the folder exists
   if [[ ! -d "${_pkgname}" ]]
   then
-    git clone --depth=1 --branch=ue5-main git@github.com:EpicGames/UnrealEngine "${_pkgname}"
-    # git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${_pkgname}"
+    # git clone --depth=1 --branch=ue5-main git@github.com:EpicGames/UnrealEngine "${_pkgname}"
+    git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${_pkgname}"
     cd "${_pkgname}" || return
   else
     cd "${_pkgname}" || return
