@@ -2,7 +2,7 @@
 _basename=xfce-winxp-tc
 pkgname=('xfce-winxp-tc-git' 'libwintc-git')
 pkgver=r245.ab3d5ec
-pkgrel=2
+pkgrel=3
 pkgdesc="Windows XP Total Conversion for XFCE"
 arch=('x86_64')
 url="https://github.com/rozniak/xfce-winxp-tc"
@@ -58,4 +58,9 @@ package_xfce-winxp-tc-git() {
 		make DESTDIR="$pkgdir/" install
 		cd -
 	done
+
+	# Workaround for `notepad` collision with `wine`
+	cd "$pkgdir"
+	mv usr/bin/notepad usr/bin/wintc-notepad
+	sed -i 's/Exec=notepad/Exec=wintc-notepad/' usr/share/applications/notepad.desktop
 }
