@@ -9,5 +9,5 @@ Target = usr/lib/modules/*/vmlinuz
 Description = Updating GRUB Config
 Depends = grub
 When = PostTransaction
-Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
+Exec = /usr/share/libalpm/scripts/grub-hook.sh
 
