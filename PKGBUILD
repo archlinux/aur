@@ -12,8 +12,15 @@ makedepends=('git')
 depends=('gtk3' 'ddcutil')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("git+https://github.com/sidevesh/$_pkgname.git")
+source=("git+https://github.com/sidevesh/$_pkgname.git" "git+https://github.com/ahshabbir/ddcbc-api.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  git submodule init
+  git config submodule.ddcbc-api.url "$srcdir/ddcbc-api"
+  git -c protocol.file.allow=always submodule update
+}
 
 build() {
   cd "$srcdir/$_pkgname"
