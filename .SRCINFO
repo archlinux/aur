@@ -1,5 +1,5 @@
 pkgbase = webcord-bin
-	pkgdesc = A Discord and SpaceBar Electron-based client implemented without Discord API
+	pkgdesc = A Discord and SpaceBar Electron-based client implemented without Discord API (binary release)
 	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/SpacingBat3/WebCord
