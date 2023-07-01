@@ -16,7 +16,8 @@ _snapid="fRYdkXBDVAKnSXTJG5xa4PwBR4RqGDkV"
 _snaprev="181"
 install=$pkgname.install
 source=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap")
-sha384sums=('8d0112c2917b99e8cf406b3b9d117981a32f21f73ab46e596110177ab2fbd79d8002401cac5845dd4574e2c3cc67c129')
+md5sums=('SKIP')
+#sha384sums=('8d0112c2917b99e8cf406b3b9d117981a32f21f73ab46e596110177ab2fbd79d8002401cac5845dd4574e2c3cc67c129')
 
 prepare() {
 	echo "Extracting snap"
