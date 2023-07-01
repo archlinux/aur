@@ -1,7 +1,7 @@
 pkgbase = omegat-beta
 	pkgdesc = Beta version of a multiplatform CAT tool application, written in Java
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://omegat.org/
 	arch = any
 	license = GPL3
@@ -10,9 +10,9 @@ pkgbase = omegat-beta
 	provides = omegat
 	conflicts = omegat
 	options = !strip
-	source = http://downloads.sourceforge.net/omegat/OmegaT_6.0.0_Without_JRE.zip
+	source = https://downloads.sourceforge.net/project/omegat/OmegaT%20-%20Standard/OmegaT%206.0.0/OmegaT_6.0.0_Without_JRE.zip
 	source = omegat.sh
-	sha256sums = 5359befba67e6c9eb8ad882a28795adc628300e2702639c822e44a1f48d7406b
+	sha256sums = 76c6d3e62b9906e7542f82b0e2b76f8b8cbdf2672f9d8363f6346f0b9c09a182
 	sha256sums = 8a6893d382d37c7a12f81370920ca362a8b36e81cec4121942f58613d18b5ade
 
 pkgname = omegat-beta
