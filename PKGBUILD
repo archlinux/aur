@@ -9,6 +9,7 @@
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine-git
+_pkgname=unreal-engine
 pkgver=5.2.1
 pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
@@ -139,19 +140,19 @@ prepare() {
   fi
 
   # Download Unreal Engine source or update if the folder exists
-  if [[ ! -d "${pkgname}" ]]
+  if [[ ! -d "${_pkgname}" ]]
   then
-    #git clone --depth=1 --branch=ue5-main git@github.com:EpicGames/UnrealEngine "{$pkgname}"
-    git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${pkgname}"
-    cd "${pkgname}" || return
+    git clone --depth=1 --branch=ue5-main git@github.com:EpicGames/UnrealEngine "${_pkgname}"
+    # git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${_pkgname}"
+    cd "${_pkgname}" || return
   else
-    cd "${pkgname}" || return
+    cd "${_pkgname}" || return
     CURRENT_CLONED_VERSION="$(git describe --tags)"
     if [ "${CURRENT_CLONED_VERSION}" != "${pkgver}-release" ]; then
       cd ..
-      rm -rf "${pkgname}"
-      git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${pkgname}"
-      cd "${pkgname}" || return
+      rm -rf "${_pkgname}"
+      git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${_pkgname}"
+      cd "${_pkgname}" || return
     else
       rm -f .git/index.lock
       git fetch --depth=1 origin tag ${pkgver}-release
@@ -171,18 +172,18 @@ prepare() {
   fi
 
   # For some reason, despite this file explicitly asking not to be removed, it was removed from the UE5 source; it has to be re-added or the build will fail
-  if [[ ! -f ${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies ]]
+  if [[ ! -f ${_pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies ]]
   then
-    mkdir -p "${srcdir}/${pkgname}/Engine/Source/ThirdParty/Linux/"
-    touch "${srcdir}/${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies"
-    sed -i "1c\This file must have no extension so that GitDeps considers it a binary dependency - it will only be pulled by the Setup script if Linux is enabled. Please do not remove this file." "${srcdir}/${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies"
+    mkdir -p "${srcdir}/${_pkgname}/Engine/Source/ThirdParty/Linux/"
+    touch "${srcdir}/${_pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies"
+    sed -i "1c\This file must have no extension so that GitDeps considers it a binary dependency - it will only be pulled by the Setup script if Linux is enabled. Please do not remove this file." "${srcdir}/${_pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies"
   fi
   
   ./Setup.sh
 }
 
 build() {
-  cd "${pkgname}" || return
+  cd "${_pkgname}" || return
   
   if [ "${_WithDDC}" == true ]; then
     build='Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:WithDDC=true -set:HostPlatformOnly=false -set:WithLinux=true -set:WithWin64=true -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false'
@@ -223,7 +224,7 @@ package() {
   if [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" == 1 ]; then
     install -Dm644 ue5editor.svg "${pkgdir}/usr/share/pixmaps/ue5editor.svg"
   else
-    cd "${srcdir}/${pkgname}" || return
+    cd "${srcdir}/${_pkgname}" || return
     wget --output-document "ue5editor.svg" "https://raw.githubusercontent.com/EliverLara/candy-icons/master/apps/scalable/ue4editor.svg"
     install -Dm644 ue5editor.svg "${pkgdir}/usr/share/pixmaps/ue5editor.svg"
     wget --output-document "LICENSE" "https://raw.githubusercontent.com/EliverLara/candy-icons/master/LICENSE"
@@ -234,7 +235,7 @@ package() {
   fi
 
   # License
-  install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE.md "${pkgdir}/usr/share/licenses/UnrealEngine/LICENSE.md"
+  install -Dm644 "${srcdir}"/"${_pkgname}"/LICENSE.md "${pkgdir}/usr/share/licenses/UnrealEngine/LICENSE.md"
   
   # Engine
   ## Set to all permissions to prevent the engine from breaking itself; more elegant solutions might exist - suggest them if they can be automated here
@@ -242,27 +243,27 @@ package() {
   install -dm777 "${pkgdir}/${_ue5_install_dir}/Engine"
   
   # Copy LocalBuilds to pkg...
-  cp -flr "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/* "${pkgdir}"/"${_ue5_install_dir}"/
-  if [ -f "${srcdir}"/"${pkgname}"/LocalBuilds/Engine/Linux/Engine/Binaries/Linux/UnrealEditor ]; then
+  cp -flr "${srcdir}"/"${_pkgname}"/LocalBuilds/Engine/Linux/* "${pkgdir}"/"${_ue5_install_dir}"/
+  if [ -f "${srcdir}"/"${_pkgname}"/LocalBuilds/Engine/Linux/Engine/Binaries/Linux/UnrealEditor ]; then
     # Can never be too careful with recursive rm...
-    rm -r "${srcdir}"/"${pkgname}"/LocalBuilds
+    rm -r "${srcdir}"/"${_pkgname}"/LocalBuilds
   fi
 
   # Copy the rest of it to pkg... Should we be overwriting LocalBuilds?
-  cp -flr "${srcdir}"/"${pkgname}"/* "${pkgdir}"/"${_ue5_install_dir}"/
-  if [ -f "${srcdir}"/"${pkgname}"/Engine/Binaries/Linux/UnrealEditor ]; then
-    rm -r "${srcdir}"/"${pkgname:?}"/*
+  cp -flr "${srcdir}"/"${_pkgname}"/* "${pkgdir}"/"${_ue5_install_dir}"/
+  if [ -f "${srcdir}"/"${_pkgname}"/Engine/Binaries/Linux/UnrealEditor ]; then
+    rm -r "${srcdir}"/"${_pkgname:?}"/*
   fi
   
-  # if [ -f "${srcdir}/${pkgname}/cpp.hint" ] && [ ! -d "${srcdir}/${pkgname}/cpp.hint" ]; then
-  #   mv "${srcdir}/${pkgname}/cpp.hint" "${pkgdir}/${_ue5_install_dir}"
-  # elif [ -d "${srcdir}/${pkgname}/cpp.hint" ]; then
+  # if [ -f "${srcdir}/${_pkgname}/cpp.hint" ] && [ ! -d "${srcdir}/${_pkgname}/cpp.hint" ]; then
+  #   mv "${srcdir}/${_pkgname}/cpp.hint" "${pkgdir}/${_ue5_install_dir}"
+  # elif [ -d "${srcdir}/${_pkgname}/cpp.hint" ]; then
   #   mkdir -p "${pkgdir}/${_ue5_install_dir}/cpp.hint"
-  #   mv "${srcdir}"/"${pkgname}"/cpp.hint/* "${pkgdir}/${_ue5_install_dir}/cpp.hint"
+  #   mv "${srcdir}"/"${_pkgname}"/cpp.hint/* "${pkgdir}/${_ue5_install_dir}/cpp.hint"
   # fi
   # 
-  # if [ -f "${srcdir}/${pkgname}/GenerateProjectFiles.sh" ]; then
-  #   install -Dm777 "${srcdir}/${pkgname}/GenerateProjectFiles.sh" "${pkgdir}/${_ue5_install_dir}"
+  # if [ -f "${srcdir}/${_pkgname}/GenerateProjectFiles.sh" ]; then
+  #   install -Dm777 "${srcdir}/${_pkgname}/GenerateProjectFiles.sh" "${pkgdir}/${_ue5_install_dir}"
   # fi
   
   chmod -R 777 "${pkgdir}/${_ue5_install_dir}"
