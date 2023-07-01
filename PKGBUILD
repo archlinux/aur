@@ -1,9 +1,9 @@
-# Maintainer: Jakub Klinkovský <j.l.k@gmx.com>
+# Maintainer: Jakub Klinkovský <lahwaacz@archlinux.org>
 
 _pkgname=mwparserfromhell
 pkgname=python-mwparserfromhell-git
 pkgdesc="A Python parser for MediaWiki wikicode"
-pkgver=0.6.4.r1.g6665505
+pkgver=0.6.4.r4.g0f89f44
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/earwig/mwparserfromhell"
@@ -13,7 +13,7 @@ makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-runner')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
-source=('git+https://github.com/earwig/mwparserfromhell')
+source=('git+https://github.com/earwig/mwparserfromhell.git')
 md5sums=('SKIP')
 
 options=('!strip')
