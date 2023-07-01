@@ -1,7 +1,7 @@
 pkgname=webcord
 pkgver=4.3.0
 pkgrel=1
-pkgdesc="A Discord and Fosscord client made with the Electron API."
+pkgdesc='A Discord and SpaceBar Electron-based client implemented without Discord API'
 arch=('any')
 _repo='WebCord'
 url="https://github.com/SpacingBat3/${_repo}"
