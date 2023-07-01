@@ -1,0 +1,35 @@
+From 028e7f7c4e6a2d3c93d179f4701111713c34cef3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Gabriel=20F=C3=A9ron?= <g@leirbag.net>
+Date: Wed, 2 Feb 2022 22:43:23 +0100
+Subject: [PATCH] Remove SentryLogger
+
+---
+ cura/CuraApplication.py      | 3 ---
+ plugins/Cura-OctoPrintPlugin | 1 +
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+ create mode 160000 plugins/Cura-OctoPrintPlugin
+
+diff --git a/cura/CuraApplication.py b/cura/CuraApplication.py
+index bf60da374b..146db339c9 100755
+--- a/cura/CuraApplication.py
++++ b/cura/CuraApplication.py
+@@ -782,9 +782,6 @@ class CuraApplication(QtApplication):
+             self._plugin_registry.addPluginLocation(os.path.join(os.path.abspath(os.path.dirname(__file__)), "..", "plugins"))
+             self._plugin_registry.preloaded_plugins.append("ConsoleLogger")
+ 
+-        # Since it's possible to get crashes in code before the sentrylogger is loaded, we want to start this plugin
+-        # as quickly as possible, as we might get unsolvable crash reports without it.
+-        self._plugin_registry.preloaded_plugins.append("SentryLogger")
+         self._plugin_registry.loadPlugins()
+ 
+         if self.getBackend() is None:
+diff --git a/plugins/Cura-OctoPrintPlugin b/plugins/Cura-OctoPrintPlugin
+new file mode 160000
+index 0000000000..7bd73946fb
+--- /dev/null
++++ b/plugins/Cura-OctoPrintPlugin
+@@ -0,0 +1 @@
++Subproject commit 7bd73946fbf22d18337dc900a81a011ece26bee0
+-- 
+2.34.1
+
