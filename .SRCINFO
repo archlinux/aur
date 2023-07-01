@@ -5,9 +5,8 @@ pkgbase = kenbunshoku-haki
 	url = https://github.com/Raissadev/monitor-system
 	arch = x86_64
 	license = GPL3
-	depends = go
-	depends = libcaca
+	makedepends = go
 	source = https://github.com/Raissadev/monitor-system/releases/download/v1.1/kenbunshoku-haki-1.1.tar.gz
-	sha256sums = 55da8c3e967190c44bada09d57221b9e6e15614244795d208fd5a1b82ed0120d
+	sha256sums = 0b65a1697e4e87e437f42739a02d57710d1fc2fa7856e3a6e6b240c02c4be2c8
 
 pkgname = kenbunshoku-haki
