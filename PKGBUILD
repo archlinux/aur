@@ -1,6 +1,6 @@
 # Maintainer: Tim Dubbins <timdubbins@gmail.com>
 pkgname=tap
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="An audio player for the terminal, written in rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 optdepends=('fzf: fuzzy searching' 'fd: faster find' 'skim: fzf alternative')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/timdubbins/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('4051069fcfbc1ef993e160c36d92fd1c733841312e482b2d1eaa7e22d0bc431a')
+sha256sums=('c8013780fc418385415ee1cb2b1cf5b5b54607a3d195bdd0a7bcb2df2dbe480a')
 
 prepare() {
     cd "$pkgname-$pkgver"
