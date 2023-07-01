@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=vtt-desktop-client
-Comment=VTT Desktop Client
-GenericName=vtt-desktop-client
-Exec=vtt-desktop-client %U
-Icon=vtt-desktop-client
-Type=Application
-StartupNotify=true
-Categories=Game;Network;Utility

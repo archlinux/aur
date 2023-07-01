@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=fvtt-desktop-client
+Comment=Foundry VTT Desktop Client
+GenericName=fvtt-desktop-client
+Exec=fvtt-desktop-client %U
+Icon=fvtt-desktop-client
+Type=Application
+StartupNotify=true
+Categories=Game;Network
