@@ -102,7 +102,6 @@ package_libgpr()
 package_gprbuild()
 {
     conflicts=(gprbuild-bootstrap)
-#    depends=(gprtools)
 
     cd $srcdir/$_gprbuild_src
 
@@ -131,7 +130,6 @@ package_gprbuild()
 package_gprtools()
 {
     conflicts=(gprbuild-bootstrap)
-#    depends=(libgpr xmlada)
 
     cd $srcdir/$_gprbuild_src
 
@@ -149,7 +147,6 @@ package_gprtools()
 package_gprname()
 {
     conflicts=(gprbuild-bootstrap)
-#    depends=(libgpr xmlada)
 
     cd $srcdir/$_gprbuild_src
 
@@ -162,8 +159,6 @@ package_gprname()
 
 package_gprslave()
 {
-#    depends=(libgpr xmlada)
-
     cd $srcdir/$_gprbuild_src
 
     mkdir -p $pkgdir/usr/bin
