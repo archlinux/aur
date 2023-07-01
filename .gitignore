@@ -1,4 +1,4 @@
-*.tar*
-pkg/
-src/
-drafting/
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD

@@ -1,11 +1,13 @@
 pkgbase = drafting-git
-	pkgdesc = a UI designer for GTK 4 that can be used standalone or integrated with GTK 4-based IDEs
-	pkgver = r683.586f095
+	pkgdesc = UI designer for GTK 4 that can be used standalone or integrated with GTK 4-based IDEs
+	pkgver = r857.0c81b82
 	pkgrel = 1
 	epoch = 0
 	url = https://gitlab.gnome.org/chergert/drafting
 	arch = x86_64
 	license = GPL3
+	makedepends = git
+	makedepends = itstool
 	makedepends = meson
 	makedepends = ninja
 	depends = gtk4>=4.3.0
