@@ -34,7 +34,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm644 ./build/app "$pkgdir/usr/bin/com.sidevesh.Luminance"
+  install -Dm755 ./build/app "$pkgdir/usr/bin/com.sidevesh.Luminance"
   install -Dm644 "./install_files/com.sidevesh.Luminance.desktop" "$pkgdir/usr/share/applications/com.sidevesh.Luminance.desktop"
   install -Dm644 "./install_files/com.sidevesh.Luminance.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/com.sidevesh.Luminance.gschema.xml"
   install -Dm644 "./install_files/44-backlight-permissions.rules" "$pkgdir/usr/lib/udev/rules.d/44-backlight-permissions.rules"
