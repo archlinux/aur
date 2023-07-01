@@ -13,6 +13,7 @@ pkgbase = gsequencer
 	makedepends = fftw
 	makedepends = glib2
 	makedepends = gobject-introspection
+	makedepends = json-glib
 	makedepends = gtk4
 	makedepends = gtk-doc
 	makedepends = jack
