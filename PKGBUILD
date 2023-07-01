@@ -15,5 +15,7 @@ md5sums=('4482bc06dfad33ee98d04691a6863d04')
 package() {
   cd "${_pkgname}-${pkgver}"
 
+  go mod tidy
+  go build ./cmd/polywatch
   install -Dm 755 polywatch -t "${pkgdir}/usr/bin/${_pkgname}"
 }
