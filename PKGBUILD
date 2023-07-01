@@ -3,8 +3,8 @@
 
 pkgname=python-ginga
 _pyname=${pkgname#python-}
-pkgver=4.0.1
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
 arch=('any')
 url="https://ejeschke.github.io/ginga"
@@ -16,11 +16,11 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest-astropy-header'
               'python-photutils'
               'python-pillow'
-              'python-scipy'
+              'python-regions'
               'python-astlib'
               'python-starlink-pyast')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4fb8b5ba37dbf9fa52f57da0fe4fdd96')
+md5sums=('f620f74ebe99f2c4250dc4af3a4a9441')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
