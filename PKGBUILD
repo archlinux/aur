@@ -1,28 +1,80 @@
-# Maintainer: Pranav K Anupam <pranavanupam@yahoo.com>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Pranav K Anupam <pranavanupam@yahoo.com>
 # Contributor: Alex Branham <branham@utexas.edu>
-_cranname=tidyverse
-_cranver=1.3.2
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-tidyverse
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Easily Install and Load the Tidyverse"
-arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL3' 'custom')
-depends=('r>=3.3' 'r-broom>=0.7.10' 'r-cli>=3.1.0' 'r-crayon>=1.4.2' 'r-dbplyr>=2.1.1' 'r-dplyr>=1.0.7' 'r-dtplyr>=1.2.0' 'r-forcats>=0.5.1' 'r-ggplot2>=3.3.5' 'r-googledrive>=2.0.0' 'r-googlesheets4>=1.0.0' 'r-haven>=2.4.3' 'r-hms>=1.1.1' 'r-httr>=1.4.2' 'r-jsonlite>=1.7.2' 'r-lubridate>=1.8.0' 'r-magrittr>=2.0.1' 'r-modelr>=0.1.8' 'r-pillar>=1.6.4' 'r-purrr>=0.3.4' 'r-readr>=2.1.1' 'r-readxl>=1.3.1' 'r-reprex>=2.0.1' 'r-rlang>=0.4.12' 'r-rstudioapi>=0.13' 'r-rvest>=1.0.2' 'r-stringr>=1.4.0' 'r-tibble>=3.1.6' 'r-tidyr>=1.1.4' 'r-xml2>=1.3.3')
-makedepends=('gcc-fortran')
-optdepends=('r-feather' 'r-knitr' 'r-rmarkdown' 'r-testthat' 'r-covr' 'r-glue')
-sha256sums=('37fbf8b72e49e96b1770dfb8e37f3e9e29269e8d6c96d6d3902561252ec1cf61')
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 
-build(){
-    cd "${srcdir}"
-    R CMD INSTALL ${_pkgtar} -l ${srcdir}
+_pkgname=tidyverse
+_pkgver=2.0.0
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=3
+pkgdesc="Easily Install and Load the 'Tidyverse'"
+arch=(any)
+url="https://cran.r-project.org/package=${_pkgname}"
+license=(MIT)
+depends=(
+  r-broom
+  r-cli
+  r-conflicted
+  r-dbplyr
+  r-dplyr
+  r-dtplyr
+  r-forcats
+  r-ggplot2
+  r-googledrive
+  r-googlesheets4
+  r-haven
+  r-hms
+  r-httr
+  r-jsonlite
+  r-lubridate
+  r-magrittr
+  r-modelr
+  r-pillar
+  r-purrr
+  r-ragg
+  r-readr
+  r-readxl
+  r-reprex
+  r-rlang
+  r-rstudioapi
+  r-rvest
+  r-stringr
+  r-tibble
+  r-tidyr
+  r-xml2
+)
+checkdepends=(
+  r-mockr
+  r-testthat
+)
+optdepends=(
+  r-covr
+  r-feather
+  r-glue
+  r-knitr
+  r-mockr
+  r-rmarkdown
+  r-testthat
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('f5705d42feb6697e214d8b007fda2f55')
+sha256sums=('3d3c2d135056333247d309d1c2cc98cc0d87e2c781f4c6fbceab28d28c0728e5')
+
+build() {
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+}
+
 package() {
-    cd "${scrdir}"
-    install -dm0755 "$pkgdir/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
-}
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+}
