@@ -2,7 +2,7 @@
 # Contributor:  Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname=ffmpeg-normalize
-pkgver=1.27.3
+pkgver=1.27.4
 pkgrel=1
 pkgdesc="Audio normalization using ffmpeg."
 arch=(any)
@@ -11,13 +11,8 @@ license=(MIT)
 depends=('ffmpeg' 'python-colorlog' 'python-ffmpeg-progress-yield' 'python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('d13dea89e30a55beac7e28b494a86309c653332e8a969860d3f5ca46c43fd2a00e145a1de8b6f2f72eba9a041fcfb4bc332183baaec44ef2a2841ea0ce006854')
+sha512sums=('e588227206b53e0405fb59511db03f78ba66b2fdecfb55c91db3800aa25cc2867a6d9a7ad9e76f96b1400e08b984c1261cc2ba67cf76a71e85641dd2728f25c9')
 
-prepare() {
-#Fix: round percentage in test
-#Source: https://github.com/slhck/ffmpeg-normalize/pull/234
-    sed -i 's/100.0%/100%/g' "$pkgname-$pkgver"/test/test.py
-}
 build() {
   cd "${pkgname}-${pkgver}"
   python setup.py build
