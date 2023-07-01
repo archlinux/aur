@@ -1,6 +1,7 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
 _base="p11"
 _pkgbase="${_base}-kit"
