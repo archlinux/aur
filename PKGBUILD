@@ -11,7 +11,7 @@
 pkgname=unreal-engine-git
 _pkgname=unreal-engine
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
