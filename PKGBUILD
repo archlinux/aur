@@ -1,7 +1,7 @@
 # Maintainer: tblFlip <root@tblflip.de>
 
 pkgname=liftoff-bin
-pkgver=0.9.19
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="A mobile and desktop lemmy client written in flutter"
 _pkgname="${pkgname%-bin}"
@@ -17,7 +17,7 @@ source=(
 )
 
 sha256sums=(
-	"12b650e4757602b8447511029c2a4a1c40b1161d4d6def8f077241443f7a8e6c"
+	"dd18440468abe9dc9a943ff935f408e3c119f19aa75c23f03ebabfc3ba3ae843"
 	"4295302ec05ff67bb0ed808c1d0b316402010218e064957d655a1274a83cf80c"
 	"930a365a43afed19a6f212a0c036e580596ce072d8a56504d295503672cb4eb3"
 )
