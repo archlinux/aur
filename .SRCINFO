@@ -1,7 +1,7 @@
 pkgbase = clash-for-windows-chinese-git
 	pkgdesc = clash_for_windows的中文版本，复刻自clash for windows chinese。The Chinese version of clash_for_windows, reproduced from "clash for windows chinese".
 	pkgver = 0.20.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fndroid/clash_for_windows_pkg
 	install = clash-for-windows.install
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = clash-for-windows-chinese-git
 	source = clash-for-windows-chinese.desktop
 	source = cfw
 	sha256sums = deadc2a21223e0169e747471e9c0cfa95bbf9645bd6534f287342aa050b853d1
-	sha256sums = 85f82c08fa10fc452daf8773e3680238e0276eb9b087c6bfe4f63c8cd819ef34
-	sha256sums = 0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782
-	sha256sums = f842f09d3b2ac2fa7e6b98159723c4f7605de0191779c61bc7b424ede58cd96c
-	sha256sums = 2451fc0eff3f48c48e4eb818d1e1ce62182737db19b95541cb13ec81183550c7
+    sha256sums = eee840a4c5d633c9923f8d3e5d91c4515951cc53471ac38fe54ef98d73715ac7
+    sha256sums = 0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782
+    sha256sums = 66e0d326e375ad0fbf88325c34e0dd82e676b9214f4838979dab3d9d11c4fecb
+    sha256sums = 2451fc0eff3f48c48e4eb818d1e1ce62182737db19b95541cb13ec81183550c7
 
 pkgname = clash-for-windows-chinese-git
