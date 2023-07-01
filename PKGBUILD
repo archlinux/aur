@@ -3,9 +3,9 @@
 
 pkgname=crates-cli-git
 _pkgname="crates-cli"
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="Prepare Rust projects to be released on the Arch Linux User Repository."
+pkgdesc="Rust writed CLI for search crates in terminal"
 url="https://dnrops.gitee.io"
 license=("MIT")
 arch=("x86_64")
