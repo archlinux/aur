@@ -12,7 +12,7 @@ makedepends=('git')
 depends=('gtk3' 'ddcutil')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("git+https://github.com/sidevesh/$_pkgname.git" "git+https://github.com/ahshabbir/ddcbc-api.git")
+source=("git+https://github.com/sidevesh/$_pkgname.git#tag=$pkgver" "git+https://github.com/ahshabbir/ddcbc-api.git")
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
@@ -27,11 +27,6 @@ build() {
   ./build.sh
 }
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
   cd "$srcdir/$_pkgname"
   install -Dm755 ./build/app "$pkgdir/usr/bin/com.sidevesh.Luminance"
@@ -39,19 +34,4 @@ package() {
   install -Dm644 "./install_files/com.sidevesh.Luminance.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/com.sidevesh.Luminance.gschema.xml"
   install -Dm644 "./install_files/44-backlight-permissions.rules" "$pkgdir/usr/lib/udev/rules.d/44-backlight-permissions.rules"
   install -Dm644 "./icons/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.sidevesh.Luminance.svg"
-}
-
-post_install() {
-  /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
-  /usr/bin/gtk-update-icon-cache /usr/share/icons/hicolor/
-}
-
-post_upgrade() {
-  /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
-  /usr/bin/gtk-update-icon-cache /usr/share/icons/hicolor/
-}
-
-post_remove() {
-  /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
-  /usr/bin/gtk-update-icon-cache /usr/share/icons/hicolor/
 }
