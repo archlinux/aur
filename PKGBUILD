@@ -1,4 +1,3 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 # Contributor: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
