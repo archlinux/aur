@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = unreal-engine
+
+[Action]
+Description = Leaving only one Unreal Engine 5 package in cache to save storage space...
+Depends = pacman-contrib
+When = PostTransaction
+Exec = /bin/sh -c '/usr/bin/paccache -rvk1 unreal-engine'
