@@ -14,7 +14,7 @@ depends=(
   'rust'
 )
 makedepends=(
-  'blueprint-compiler-health'
+  'blueprint-compiler-health-git'
   'git'
   'meson')
 provides=("${_pkgname}=${pkgver}")
