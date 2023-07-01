@@ -21,7 +21,7 @@ provides=("openai-client")
 # backup=(~/.config/openai-client)
 # backup=(home/${USER}/.config/openai-client)
 
-source=("git+https://github.com/awesomeDev12/openai-client.git")
+source=("git+https://github.com/anirbandey1/openai-client.git")
 
 # sha512sums=("SKIP")
 sha512sums=("SKIP")
@@ -37,16 +37,26 @@ package() {
   mkdir -p "${pkgdir}/opt"
   mkdir -p "${pkgdir}/opt/openai-client"
 
-  cp "${srcdir}/openai-client/scripts/launchers/launch_arch.sh" "${pkgdir}/usr/bin/openai-client"
+  install -Dm 755 "${srcdir}/openai-client/scripts/launchers/launch_arch.sh" "${pkgdir}/usr/bin/openai-client"
 
-  cp "${srcdir}/openai-client/desktop/openai-client.jpg" "${pkgdir}/usr/share/icons/openai-client.jpg"  
-  cp "${srcdir}/openai-client/desktop/openai-client.desktop" "${pkgdir}/usr/share/applications/openai-client.desktop"  
+  icon_sizes=("16x16" "32x32" "48x48" "64x64" "128x128" "256x256")
+  for icon_size in ${icon_sizes[@]}; do 
+    echo $icon_size
+    install -D "${srcdir}/openai-client/icons/${icon_size}.png"  "${pkgdir}/usr/share/icons/hicolor/${icon_size}/apps/openai-client.png"
+
+  done
+
+
+
+
+  install -D "${srcdir}/openai-client/desktop/openai-client.jpg" "${pkgdir}/usr/share/icons/openai-client.jpg"  
+  install -D "${srcdir}/openai-client/desktop/openai-client.desktop" "${pkgdir}/usr/share/applications/openai-client.desktop"  
 
 
   # Create python virtualenv
 
-  pip install --upgrade pip
-  pip install --upgrade venvs
+  # pip install --upgrade pip
+  # pip install --upgrade venvs
   mkdir -p venv "${srcdir}/.venvs"
   python -m venv "${srcdir}/.venvs/openai-client-venv"
 
