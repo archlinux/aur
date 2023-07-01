@@ -1,0 +1,16 @@
+pkgbase = luminance
+	pkgdesc = A simple GTK application to control brightness of displays including external displays supporting DDC/CI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sidevesh/Luminance
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	depends = ddcutil
+	provides = luminance
+	conflicts = luminance
+	source = git+https://github.com/sidevesh/Luminance.git
+	sha256sums = SKIP
+
+pkgname = luminance
