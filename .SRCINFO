@@ -1,7 +1,7 @@
 pkgbase = uranium-5
 	pkgdesc = Python framework for building 3D printing related applications
 	pkgver = 5.3.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/Ultimaker/Uranium
 	arch = any
 	license = LGPL
