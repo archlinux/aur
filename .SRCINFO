@@ -1,6 +1,6 @@
 pkgbase = qualcoder-bin
-	pkgdesc = Qualitative data analysis application written in python3 and Qt6.
-	pkgver = 3.1
+	pkgdesc = Qualitative data analysis for text, images, audio and video written in python3 and Qt6
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://github.com/ccbogel/QualCoder
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = qualcoder-bin
 	conflicts = qualcoder
 	source = qualcoder.png
 	source = qualcoder.desktop
-	source = https://github.com/ccbogel/QualCoder/releases/download/3.1/QualCoder-3.1
+	source = QualCoder-3.3::https://github.com/ccbogel/QualCoder/releases/download/3.3/QualCoder-3.3-Ubuntu-22.04
 	sha256sums = f587124e59e9bc49741627a260862b5f26b9a899bad826008d4946ddb252539a
 	sha256sums = e09cdab17e0f6b868c621bc9b580ce9de02371b188800ca9a794a1ed34412bc7
-	sha256sums = 017272ff145d46e9d0848c57feb05f3517ea9a6ba3411b87c75cef0dc2150360
+	sha256sums = 16f0ae61b679f23db3432b73e56784e3c1c4d6c8e1087ed50131d166e2060384
 
 pkgname = qualcoder-bin
