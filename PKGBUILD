@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r80.dda2bde
+pkgver=r81.7d3a88e
 pkgrel=1
 pkgdesc="A custom configs tool for sk-holoiso"
 arch=('any')
