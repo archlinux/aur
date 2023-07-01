@@ -2,18 +2,18 @@
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=0
+_microarchitecture=98
 
 ## Major kernel version
 _major=6.4
 ## Minor kernel version
-_minor=0
+_minor=1
 
 ## PKGBUILD ##
 
 pkgbase=linux-multimedia
-pkgver=${_major}
-#pkgver=${_major}.${_minor}
+#pkgver=${_major}
+pkgver=${_major}.${_minor}
 pkgrel=1
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
@@ -38,7 +38,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
+sha256sums=('0d9daa9f1c176fb13b9447f6e3d80e82b49043f0d344c247bbf09b4e625beef3'
             'SKIP'
             'SKIP'
             'SKIP'
