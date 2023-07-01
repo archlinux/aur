@@ -3,5 +3,6 @@ pkgbase = life
 	pkgrel = 1
 	url = https://humaninstrumentalityproject.org
 	arch = any
+	depends = archlinux-desktop
 
 pkgname = life
