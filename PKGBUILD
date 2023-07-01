@@ -1,17 +1,17 @@
-# Maintainer: Ivan Gabaldon <aur[at]inetol[dot]net>
+# Maintainer: Ivan Gabaldon <aur[at]inetol.net>
 # Contributor: sukanka <su975853527 at gmail.com>
 
 pkgname=tradingview
-pkgver=2.3.4
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Experience extra power, extra speed and extra flexibility, all with the same UX you know and love'
 arch=('x86_64')
 url='https://www.tradingview.com/desktop/'
 license=('custom')
 makedepends=('squashfs-tools')
-source=("$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_38.snap"
+source=("$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_39.snap"
         "$pkgname.desktop")
-b2sums=('424defb3d5f7f112460cefc22110841fc21070ae18f9d6cf3dad6fd109dac4a705c4890ca476e29fc5b1250bc3db7014ffcc0ec645d860540029073468044f41'
+b2sums=('af5dc7f6d9ace62fdfbde1d2a07d7f62ec87046fe77af0818f19b7cffa9606dfe2785106cfc98d55a65d89b19927ecff328958b3feef0b73f9539592b8bc74bd'
         '25d9a755a7af64a8ea212dfacb0611d2b928e9e1b293fe015329aff0470dd46b79acabac28c102a5af4d2f663d9324153c56c8803d605183c36bfbc3a8c6bb6d')
 
 prepare() {
