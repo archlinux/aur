@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.12.0
 _pkgver=2.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -24,17 +24,20 @@ arch=('x86_64')
 depends=('c-ares' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'openmp')
 makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'roctracer' 'rccl' 'git' 'miopen' 'python-pip' 'python-wheel'
              'python-installer' 'python-setuptools' 'python-h5py' 'python-keras-applications'
-             'python-keras-preprocessing' 'cython' 'patchelf' 'python-requests')
+             'python-keras-preprocessing' 'cython' 'patchelf' 'python-requests'
+             'gcc12')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
         tensorflow-2.10-sparse-transpose-op2.patch
         https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
-        fix-c++17-compat.patch)
+        fix-c++17-compat.patch
+        cudnn-fix.patch)
 
 sha512sums=('9273720b5be08e5d3dc76aafa4af6b27a2d50afd02b181e7632f3d70961995b2e0e5acb13e70c9b704ef475617c23d70047fbe74d5b63b156cf8f2fa8a856b84'
             '45325ef3130aa95d48121d8c39bb4e683bdb5faa936ff29af953a2c359edb441a29e2dc0cae53ec6c08eee0432c0eeeaa7a40fbd063467b7f3c250d0f7f8ffed'
             'e2adb747cd1fe3c90686831703618af3f8bc8197a96d9e1e90e66db38dbc4e7a94d88dac755b25e288002983a87fcffbfb0d7c2e356d979d4635301c3daf9281'
-            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e')
+            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
+            '0e2c5e1afea7a62f98cb3ed296184ec11f40a893eb2263e87436f55bcb31eb40094b58bdc49aba95b8e971121d41efc9e143197ca4b19740b6eb6e003ec35141')
 
 # consolidate common dependencies to prevent mishaps
 _common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
@@ -85,6 +88,8 @@ prepare() {
   sed -i -E "s/find_packages/find_namespace_packages/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
 
   patch -Np1 -i "${srcdir}/tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-${_pkgver}
+  # https://github.com/tensorflow/tensorflow/issues/60398
+  patch -Np0 -i "${srcdir}/cudnn-fix.patch"
 
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-rocm
   cp -r tensorflow-${_pkgver} tensorflow-${_pkgver}-opt-rocm
