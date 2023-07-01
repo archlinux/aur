@@ -2,11 +2,11 @@
 pkgname=python-fastkde
 _name=${pkgname#python-}
 pkgver=1.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast kernel density estimation"
 arch=(any)
-url="https://bitbucket.org/lbl-cascade/fastkde"
-license=()
+url="https://github.com/LBL-EESA/fastkde"
+license=(LBNL)
 groups=()
 depends=(python-numpy python-scipy cython)
 makedepends=(python-build python-installer)

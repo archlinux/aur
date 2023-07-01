@@ -1,9 +1,10 @@
 pkgbase = python-fastkde
 	pkgdesc = Fast kernel density estimation
 	pkgver = 1.0.20
-	pkgrel = 1
-	url = https://bitbucket.org/lbl-cascade/fastkde
+	pkgrel = 2
+	url = https://github.com/LBL-EESA/fastkde
 	arch = any
+	license = LBNL
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python-numpy
