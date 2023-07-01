@@ -1,0 +1,6 @@
+pkgbase = life
+	pkgver = 0.0.0.0.0.1
+	pkgrel = 1
+	url = https://humaninstrumentalityproject.org
+
+pkgname = life
