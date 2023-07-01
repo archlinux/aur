@@ -1,6 +1,6 @@
 pkgname='alacritty-git'
 _pkgname="alacritty"
-pkgver=0.13.0.2131.gb9c88687
+pkgver=0.13.0.2135.g1a67fc35
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686' 'aarch64')
@@ -37,7 +37,9 @@ package_alacritty-git() {
 
 	mkdir -p "$pkgdir/usr/share/man/man1"
 	scdoc < extra/man/alacritty.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty.1.gz" > /dev/null
+	scdoc < extra/man/alacritty.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty.5.gz" > /dev/null
 	scdoc < extra/man/alacritty-msg.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty-msg.1.gz" > /dev/null
+	scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty-bindings.5.gz" > /dev/null
 
 	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
 	install -D -m644 "extra/linux/org.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/org.alacritty.Alacritty.appdata.xml"
