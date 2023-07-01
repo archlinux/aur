@@ -3,7 +3,7 @@
 
 pkgname=arch-cli-git
 _pkgname="arch-cli"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Prepare Rust projects to be released on the Arch Linux User Repository."
 url="https://dnrops.gitee.io"
