@@ -8,7 +8,7 @@
 
 # Maintainer: Nick Cottrell <ncottrellweb@gmail.com>
 pkgname=rz-jsdec-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=v0.4.0.r3.2852f3f
+pkgver=v0.5.0.r2.edb49c1
 pkgrel=1
 pkgdesc="Provides js decompiler for rizin"
 arch=('any')
