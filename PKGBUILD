@@ -4,7 +4,7 @@ pkgbase=cura5
 pkgname=cura-5
 _pkgname=cura
 pkgver=5.3.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A software solution for 3D printing aimed at RepRaps and the Ultimaker."
 depends=('3dprinter-udev-rules'
          'cura-resources-materials'
@@ -28,6 +28,7 @@ depends=('3dprinter-udev-rules'
 makedepends=('qt6-tools'
              'cmake'
              'ninja'
+             'patch'
              'python-sip4'
              'python-pyqt6-sip')
 optdepends=('python-zeroconf: network printing support'

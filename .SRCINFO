@@ -1,13 +1,14 @@
 pkgbase = cura5
 	pkgdesc = A software solution for 3D printing aimed at RepRaps and the Ultimaker.
 	pkgver = 5.3.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://ultimaker.com/software/ultimaker-cura
 	arch = any
 	license = LGPLv3
 	makedepends = qt6-tools
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = patch
 	makedepends = python-sip4
 	makedepends = python-pyqt6-sip
 	depends = 3dprinter-udev-rules
