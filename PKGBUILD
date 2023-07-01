@@ -2,9 +2,9 @@
 
 _pkgname="blueprint-compiler"
 pkgname="blueprint-compiler-health"
-_commit="93f2a27e"
+_commit="93f2a27e35905420e70bfdb5c2f04d6af43b357d"
 _pkgver=0.8.1
-pkgver="${_pkgver}+${_commit}"
+pkgver="${_pkgver}+$(echo ${_commit} | cut -c 1-8)"
 pkgrel=1
 _ns=jwestman
 pkgdesc='A markup language for GTK user interfaces'
@@ -15,17 +15,20 @@ depends=(
   python-gobject
 )
 makedepends=(
+  # git
   meson
 )
-_commit="93f2a27e"
 _repo_url="https://gitlab.gnome.org/${_ns}/${_pkgname}"
 source=(
-  "git+${_repo_url}#commit=${_commit}")
+  # "git+${_repo_url}#commit=${_commit}")
+  "${_repo_url}/-/archive/${_commit}/${_pkgname}-${_commit}.tar.gz"
+)
 sha256sums=(
-  'SKIP')
+  'SKIP'
+)
 
 build() {
-  arch-meson "${_pkgname}" build --prefix=/usr
+  arch-meson "${_pkgname}-${_commit}" build --prefix=/usr
   meson compile -C build
 }
 
