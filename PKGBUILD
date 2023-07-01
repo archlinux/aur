@@ -2,10 +2,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MCMCglmm
-_pkgver=2.34
+_pkgver=2.35
 pkgname=r-${_pkgname,,}
-pkgver=2.34
-pkgrel=4
+pkgver=2.35
+pkgrel=1
 pkgdesc='MCMC Generalised Linear Mixed Models'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -29,7 +29,7 @@ optdepends=(
   r-rgl
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('829151cca93b05979ece98157e7789d5e5c1c0b4942d69aa9886de03d16091f1')
+sha256sums=('cc10f074a78702bfe46e342235eff747cd52993ade76f59cf8fa9e80968179a6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
