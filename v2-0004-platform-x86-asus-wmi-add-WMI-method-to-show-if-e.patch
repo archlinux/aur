@@ -1,7 +1,7 @@
-From 2fb35e005be26d242d6a3e94db7fbcbaed9aa0e9 Mon Sep 17 00:00:00 2001
+From c43a477f701c2c97e13f1a2ee6e1304beeddbf56 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 4 Jun 2023 20:01:57 +1200
-Subject: [PATCH 10/11] platform/x86: asus-wmi: add WMI method to show if egpu
+Subject: [PATCH v2 4/8] platform/x86: asus-wmi: add WMI method to show if egpu
  connected
 
 Exposes the WMI method which tells if the eGPU is properly connected
@@ -35,18 +35,18 @@ index eb29e3023c7b..878daf7c2036 100644
 +			* 0 - False,
 +			* 1 - True
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index d63d0111cb8b..26155bdc48da 100644
+index fb27218e51cf..0c8a4a46b121 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
-@@ -245,6 +245,7 @@ struct asus_wmi {
+@@ -243,6 +243,7 @@ struct asus_wmi {
  
  	bool charge_mode_available;
  	bool egpu_enable_available;
-+	bool egpu_connected_available;
++	bool egpu_connect_available;
  	bool dgpu_disable_available;
  	bool gpu_mux_mode_available;
  
-@@ -711,6 +712,22 @@ static ssize_t egpu_enable_store(struct device *dev,
+@@ -709,6 +710,22 @@ static ssize_t egpu_enable_store(struct device *dev,
  }
  static DEVICE_ATTR_RW(egpu_enable);
  
@@ -69,7 +69,7 @@ index d63d0111cb8b..26155bdc48da 100644
  /* gpu mux switch *************************************************************/
  static ssize_t gpu_mux_mode_show(struct device *dev,
  				 struct device_attribute *attr, char *buf)
-@@ -3762,6 +3779,7 @@ static struct attribute *platform_attributes[] = {
+@@ -3645,6 +3662,7 @@ static struct attribute *platform_attributes[] = {
  	&dev_attr_touchpad.attr,
  	&dev_attr_charge_mode.attr,
  	&dev_attr_egpu_enable.attr,
@@ -77,28 +77,28 @@ index d63d0111cb8b..26155bdc48da 100644
  	&dev_attr_dgpu_disable.attr,
  	&dev_attr_gpu_mux_mode.attr,
  	&dev_attr_lid_resume.attr,
-@@ -3794,6 +3812,8 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
+@@ -3677,6 +3695,8 @@ static umode_t asus_sysfs_is_visible(struct kobject *kobj,
  		ok = asus->charge_mode_available;
  	else if (attr == &dev_attr_egpu_enable.attr)
  		ok = asus->egpu_enable_available;
 +	else if (attr == &dev_attr_egpu_connected.attr)
-+		ok = asus->egpu_connected_available;
++		ok = asus->egpu_connect_available;
  	else if (attr == &dev_attr_dgpu_disable.attr)
  		ok = asus->dgpu_disable_available;
  	else if (attr == &dev_attr_gpu_mux_mode.attr)
-@@ -4060,6 +4080,7 @@ static int asus_wmi_add(struct platform_device *pdev)
+@@ -3943,6 +3963,7 @@ static int asus_wmi_add(struct platform_device *pdev)
  
  	asus->charge_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_CHARGE_MODE);
  	asus->egpu_enable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU);
-+	asus->egpu_connected_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU_CONNECTED);
++	asus->egpu_connect_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_EGPU_CONNECTED);
  	asus->dgpu_disable_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_DGPU);
  	asus->gpu_mux_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_MUX);
  	asus->kbd_rgb_mode_available = asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_TUF_RGB_MODE);
 diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index dc5e8038d88b..bfc284fe4d68 100644
+index 329efc086993..2034648f8cdf 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
-@@ -104,7 +104,9 @@
+@@ -100,7 +100,9 @@
  /* Charging mode - 1=Barrel, 2=USB */
  #define ASUS_WMI_DEVID_CHARGE_MODE	0x0012006C
  
@@ -110,5 +110,5 @@ index dc5e8038d88b..bfc284fe4d68 100644
  
  /* dgpu on/off */
 -- 
-2.40.1
+2.41.0
 

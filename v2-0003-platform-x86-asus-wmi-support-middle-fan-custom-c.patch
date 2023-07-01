@@ -1,7 +1,7 @@
-From 21a0a1c935b8dde224e24ca027ff49bee7bfed01 Mon Sep 17 00:00:00 2001
+From 3b638cb413bfa9f50433676fdc82bf63ef0fb3d9 Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 4 Jun 2023 19:37:34 +1200
-Subject: [PATCH 09/11] platform/x86: asus-wmi: support middle fan custom
+Subject: [PATCH v2 3/8] platform/x86: asus-wmi: support middle fan custom
  curves
 
 Adds support for fan curves defined for the middle fan which
@@ -9,15 +9,15 @@ is available on some ASUS ROG laptops.
 
 Signed-off-by: Luke D. Jones <luke@ljones.dev>
 ---
- drivers/platform/x86/asus-wmi.c            | 75 +++++++++++++++++++++-
+ drivers/platform/x86/asus-wmi.c            | 77 +++++++++++++++++++++-
  include/linux/platform_data/x86/asus-wmi.h |  1 +
- 2 files changed, 74 insertions(+), 2 deletions(-)
+ 2 files changed, 76 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index 8cc532166559..d63d0111cb8b 100644
+index 375d25ae0aca..fb27218e51cf 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
-@@ -114,6 +114,7 @@ module_param(fnlock_default, bool, 0444);
+@@ -113,6 +113,7 @@ module_param(fnlock_default, bool, 0444);
  #define FAN_CURVE_BUF_LEN		32
  #define FAN_CURVE_DEV_CPU		0x00
  #define FAN_CURVE_DEV_GPU		0x01
@@ -25,7 +25,7 @@ index 8cc532166559..d63d0111cb8b 100644
  /* Mask to determine if setting temperature or percentage */
  #define FAN_CURVE_PWM_MASK		0x04
  
-@@ -255,7 +256,8 @@ struct asus_wmi {
+@@ -253,7 +254,8 @@ struct asus_wmi {
  
  	bool cpu_fan_curve_available;
  	bool gpu_fan_curve_available;
@@ -35,7 +35,7 @@ index 8cc532166559..d63d0111cb8b 100644
  
  	struct platform_profile_handler platform_profile_handler;
  	bool platform_profile_support;
-@@ -2082,6 +2084,8 @@ static ssize_t pwm1_enable_store(struct device *dev,
+@@ -2080,6 +2082,8 @@ static ssize_t pwm1_enable_store(struct device *dev,
  		asus->custom_fan_curves[FAN_CURVE_DEV_CPU].enabled = false;
  	if (asus->gpu_fan_curve_available)
  		asus->custom_fan_curves[FAN_CURVE_DEV_GPU].enabled = false;
@@ -44,7 +44,7 @@ index 8cc532166559..d63d0111cb8b 100644
  
  	return count;
  }
-@@ -2533,6 +2537,9 @@ static int fan_curve_get_factory_default(struct asus_wmi *asus, u32 fan_dev)
+@@ -2531,6 +2535,9 @@ static int fan_curve_get_factory_default(struct asus_wmi *asus, u32 fan_dev)
  	if (fan_dev == ASUS_WMI_DEVID_GPU_FAN_CURVE)
  		fan_idx = FAN_CURVE_DEV_GPU;
  
@@ -54,7 +54,7 @@ index 8cc532166559..d63d0111cb8b 100644
  	curves = &asus->custom_fan_curves[fan_idx];
  	err = asus_wmi_evaluate_method_buf(asus->dsts_id, fan_dev, mode, buf,
  					   FAN_CURVE_BUF_LEN);
-@@ -2821,6 +2828,42 @@ static SENSOR_DEVICE_ATTR_2_RW(pwm2_auto_point7_pwm, fan_curve,
+@@ -2819,6 +2826,42 @@ static SENSOR_DEVICE_ATTR_2_RW(pwm2_auto_point7_pwm, fan_curve,
  static SENSOR_DEVICE_ATTR_2_RW(pwm2_auto_point8_pwm, fan_curve,
  			       FAN_CURVE_DEV_GPU | FAN_CURVE_PWM_MASK, 7);
  
@@ -97,7 +97,7 @@ index 8cc532166559..d63d0111cb8b 100644
  static struct attribute *asus_fan_curve_attr[] = {
  	/* CPU */
  	&sensor_dev_attr_pwm1_enable.dev_attr.attr,
-@@ -2858,6 +2901,24 @@ static struct attribute *asus_fan_curve_attr[] = {
+@@ -2856,6 +2899,24 @@ static struct attribute *asus_fan_curve_attr[] = {
  	&sensor_dev_attr_pwm2_auto_point6_pwm.dev_attr.attr,
  	&sensor_dev_attr_pwm2_auto_point7_pwm.dev_attr.attr,
  	&sensor_dev_attr_pwm2_auto_point8_pwm.dev_attr.attr,
@@ -122,7 +122,7 @@ index 8cc532166559..d63d0111cb8b 100644
  	NULL
  };
  
-@@ -2877,6 +2938,9 @@ static umode_t asus_fan_curve_is_visible(struct kobject *kobj,
+@@ -2875,6 +2936,9 @@ static umode_t asus_fan_curve_is_visible(struct kobject *kobj,
  	if (asus->gpu_fan_curve_available && attr->name[3] == '2')
  		return 0644;
  
@@ -132,7 +132,7 @@ index 8cc532166559..d63d0111cb8b 100644
  	return 0;
  }
  
-@@ -2906,7 +2970,12 @@ static int asus_wmi_custom_fan_curve_init(struct asus_wmi *asus)
+@@ -2904,7 +2968,14 @@ static int asus_wmi_custom_fan_curve_init(struct asus_wmi *asus)
  	if (err)
  		return err;
  
@@ -142,11 +142,13 @@ index 8cc532166559..d63d0111cb8b 100644
 +	if (err)
 +		return err;
 +
-+	if (!asus->cpu_fan_curve_available && !asus->gpu_fan_curve_available && !asus->mid_fan_curve_available)
++	if (!asus->cpu_fan_curve_available
++		&& !asus->gpu_fan_curve_available
++		&& !asus->mid_fan_curve_available)
  		return 0;
  
  	hwmon = devm_hwmon_device_register_with_groups(
-@@ -2975,6 +3044,8 @@ static int throttle_thermal_policy_write(struct asus_wmi *asus)
+@@ -2973,6 +3044,8 @@ static int throttle_thermal_policy_write(struct asus_wmi *asus)
  		asus->custom_fan_curves[FAN_CURVE_DEV_CPU].enabled = false;
  	if (asus->gpu_fan_curve_available)
  		asus->custom_fan_curves[FAN_CURVE_DEV_GPU].enabled = false;
@@ -156,10 +158,10 @@ index 8cc532166559..d63d0111cb8b 100644
  	return 0;
  }
 diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index 94e3172b9c72..dc5e8038d88b 100644
+index 2c03bda7703f..329efc086993 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
-@@ -87,6 +87,7 @@
+@@ -83,6 +83,7 @@
  #define ASUS_WMI_DEVID_MID_FAN_CTRL 0x00110031
  #define ASUS_WMI_DEVID_CPU_FAN_CURVE	0x00110024
  #define ASUS_WMI_DEVID_GPU_FAN_CURVE	0x00110025
@@ -168,5 +170,5 @@ index 94e3172b9c72..dc5e8038d88b 100644
  /* Power */
  #define ASUS_WMI_DEVID_PROCESSOR_STATE	0x00120012
 -- 
-2.40.1
+2.41.0
 

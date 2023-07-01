@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.3.8.arch1
+pkgver=6.3.9.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -43,9 +43,7 @@ source=(
   0001-Revert-PCI-Add-a-REBAR-size-quirk-for-Sapphire-RX-56.patch
   0001-constgran-v2.patch
   0001-linux6.1.y-bore2.2.1.patch
-
-  0029-patch02_gu604v_wmi_keys.patch
-
+  
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
   0035-Add_quirk_for_polling_the_KBD_port.patch
   0036-Block_a_rogue_device_on_ASUS_TUF_A16.patch
@@ -56,14 +54,23 @@ source=(
   0003-HID-asus-Add-support-for-ASUS-ROG-Z13-keyboard.patch
   0004-HID-asus-add-keycodes-for-0x6a-0x4b-and-0xc7.patch
   0005-HID-asus-reformat-the-hotkey-mapping-block.patch
-  0006-platform-x86-asus-wmi-add-support-for-ASUS-screenpad.patch
-  0007-platform-x86-asus-wmi-add-support-for-showing-charge.patch
-  0008-platform-x86-asus-wmi-add-support-for-showing-middle.patch
-  0009-platform-x86-asus-wmi-support-middle-fan-custom-curv.patch
-  0010-platform-x86-asus-wmi-add-WMI-method-to-show-if-egpu.patch
-  0011-platform-x86-asus-wmi-support-setting-mini-LED-mode.patch
-  
+
+  0001-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-GX650P.patch
+  0002-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-GA402X.patch
+  v2-0001-platform-x86-asus-wmi-add-support-for-showing-cha.patch
+  v2-0002-platform-x86-asus-wmi-add-support-for-showing-mid.patch
+  v2-0003-platform-x86-asus-wmi-support-middle-fan-custom-c.patch
+  v2-0004-platform-x86-asus-wmi-add-WMI-method-to-show-if-e.patch
+  v2-0005-platform-x86-asus-wmi-don-t-allow-eGPU-switching-.patch
+  v2-0006-platform-x86-asus-wmi-add-safety-checks-to-gpu-sw.patch
+  v2-0007-platform-x86-asus-wmi-support-setting-mini-LED-mo.patch
+  v2-0008-platform-x86-asus-wmi-expose-dGPU-and-CPU-tunable.patch
+  v4-0001-platform-x86-asus-wmi-add-support-for-ASUS-screen.patch
+
   0038-mediatek-pci-reset.patch
+  0040-workaround_hardware_decoding_amdgpu.patch
+  0041-flush_and_deleyed_gfxoff_on_suspend_amdgpu.patch
+
 
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
@@ -78,7 +85,7 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            '21b9a9e542f853cdc695648d6ab6219bd2e881a4954277f241e104723c373d42'
+            '6508516de94ed941ae755d89807610dc51fe1229dbfecdf8a82604a8d33242ce'
             'bc8b5f303e3507c01d8543fb4352ed7dcdb9ed4eb2854788d39510f88d67f454'
             '81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
@@ -87,7 +94,6 @@ sha256sums=('SKIP'
             '7b16fce20b03babc9e149030f43e283534835bbd8835ba0a794fd0205fea1708'
             'efbf65b17fb48fd22f199b6fddd05f159f8ea31faad5543f2c07fddf45eb9f12'
             'd4f8e606eaad9a1fe302f04b9023a3980eb2305108c0d8c90654d23e53ff8bef'
-            'cdbcec3031878cdb7ffab32034e4ee31bbd0ec214088f95dc446a13320985631'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
             '1740589bbf5eb2c292904e508270ed221e1382f78bcb7cf1c72f1dc12f767e69'
@@ -97,13 +103,20 @@ sha256sums=('SKIP'
             '655a7650a21ce4f725caf6fa248295edefa25a248aeaecf3d65a058503ae2530'
             '7ce4b001a81b15b5b5275620fc0cee3d251d753698ae3db4593619a2121e1f2e'
             'c7d44e1eb82b4711b4cc86016a1886a573f1abc893dbdd201d4a6d0326859b85'
-            '66ee16ec4e39973905905d66eb043a55fdeaae470902be6adf893ce1a4ac4cbe'
-            '2c6b2efef195cc54d641374cad669884dede99a8b934e2b2b168c6ae35554f2c'
-            '73db9582e8d5fa41a1a7ed38bd0a012cd28573d1d2eda44152ce13477bdd7999'
-            'c7430e0ad27f9a1cd1677da1a7471dcf63088cb21cd943427454889c69e7f829'
-            '976abe70d2a1604ce2335a7d7ce5d9722db93e389413a0b6a7f3ea72f795b65b'
-            '8a0ee3fbb3c95cd4d5cedd62517384374462d5157f3104013e5cbe6d91317e95'
-            'a768687d858b608c01e22664817a80602e8c17911487fac71430f70b0c52b9f9'
+            '58c46d5d5b3428bd3c9354cf66542ae91323b116dc52826ca5eed2e522b67b0a'
+            '06fd2961548a7d3e31bcd388e67d07f9840c74a7811f70810a7ca1f946e59c9e'
+            '454dc9b16fd2559843d78a93905a39b1668eaaecb0bf0a9dccf432199f9b96be'
+            '5a82899580abaaab4cd818c96407b6be5b2d6b6d1004355eab12fedebdb968a0'
+            'a75528877f5db652b4e0b5e68f2ec39557bcad9786c6f6419327d3e08d1fe9be'
+            'cbf0738ba984d0fa9ad396ec1e5b2a6ed1e2411dc81b17423fdceef423a484b2'
+            '9f98765b43f5f31b33ed05f3611508113b02518e680ee82b251de80dae2e141d'
+            '5e58aa605c2ae00c0925e1fbb838a8041e7cf2eb78c0d6167e59dbe27b536565'
+            '137f16f59a63568b3546649346ef1bc2211c03da28178a94bf8cd104051f67b8'
+            '1983fbb75a4e8c76ffeca51b42dcb3cdcd4a6a5b4aafdb02b3dcbf3c5c9a94ad'
+            '2e0274f6681d22f0350bb04cab4bbe796e97c9bb1bd297054eaf900046036d81'
+            'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
+            'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
+            'e2c81fc2af08c175a7642d4f4f90e398702d9d903857cf0bba81db99f146a561'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85'
             '982a31e47d3d586789e1b3cdda25f75e3b71d810e7494202089b8f2cef7c0ef9')
@@ -281,7 +294,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links

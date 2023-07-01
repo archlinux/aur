@@ -1,7 +1,7 @@
-From 7fc27f5a4d3f2f6f0f01c42470ad67342a8bf767 Mon Sep 17 00:00:00 2001
+From dcc493d84f202bbdf97eb48660179724f744c76d Mon Sep 17 00:00:00 2001
 From: "Luke D. Jones" <luke@ljones.dev>
 Date: Sun, 4 Jun 2023 19:07:31 +1200
-Subject: [PATCH 08/11] platform/x86: asus-wmi: add support for showing middle
+Subject: [PATCH v2 2/8] platform/x86: asus-wmi: add support for showing middle
  fan RPM
 
 Some newer ASUS ROG laptops now have a middle/center fan in addition
@@ -17,10 +17,10 @@ Signed-off-by: Luke D. Jones <luke@ljones.dev>
  2 files changed, 92 insertions(+)
 
 diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
-index fd1ce1650187..8cc532166559 100644
+index f23375d5fb82..375d25ae0aca 100644
 --- a/drivers/platform/x86/asus-wmi.c
 +++ b/drivers/platform/x86/asus-wmi.c
-@@ -73,6 +73,7 @@ module_param(fnlock_default, bool, 0444);
+@@ -72,6 +72,7 @@ module_param(fnlock_default, bool, 0444);
  
  #define ASUS_WMI_FNLOCK_BIOS_DISABLED	BIT(0)
  
@@ -28,7 +28,7 @@ index fd1ce1650187..8cc532166559 100644
  #define ASUS_GPU_FAN_DESC		"gpu_fan"
  #define ASUS_FAN_DESC			"cpu_fan"
  #define ASUS_FAN_MFUN			0x13
-@@ -231,8 +232,10 @@ struct asus_wmi {
+@@ -229,8 +230,10 @@ struct asus_wmi {
  
  	enum fan_type fan_type;
  	enum fan_type gpu_fan_type;
@@ -39,7 +39,7 @@ index fd1ce1650187..8cc532166559 100644
  	int agfn_pwm;
  
  	bool fan_boost_mode_available;
-@@ -2131,6 +2134,31 @@ static ssize_t fan2_label_show(struct device *dev,
+@@ -2129,6 +2132,31 @@ static ssize_t fan2_label_show(struct device *dev,
  	return sysfs_emit(buf, "%s\n", ASUS_GPU_FAN_DESC);
  }
  
@@ -71,7 +71,7 @@ index fd1ce1650187..8cc532166559 100644
  static ssize_t pwm2_enable_show(struct device *dev,
  				struct device_attribute *attr,
  				char *buf)
-@@ -2177,6 +2205,52 @@ static ssize_t pwm2_enable_store(struct device *dev,
+@@ -2175,6 +2203,52 @@ static ssize_t pwm2_enable_store(struct device *dev,
  	return count;
  }
  
@@ -124,7 +124,7 @@ index fd1ce1650187..8cc532166559 100644
  /* Fan1 */
  static DEVICE_ATTR_RW(pwm1);
  static DEVICE_ATTR_RW(pwm1_enable);
-@@ -2186,6 +2260,10 @@ static DEVICE_ATTR_RO(fan1_label);
+@@ -2184,6 +2258,10 @@ static DEVICE_ATTR_RO(fan1_label);
  static DEVICE_ATTR_RW(pwm2_enable);
  static DEVICE_ATTR_RO(fan2_input);
  static DEVICE_ATTR_RO(fan2_label);
@@ -135,7 +135,7 @@ index fd1ce1650187..8cc532166559 100644
  
  /* Temperature */
  static DEVICE_ATTR(temp1_input, S_IRUGO, asus_hwmon_temp1, NULL);
-@@ -2194,10 +2272,13 @@ static struct attribute *hwmon_attributes[] = {
+@@ -2192,10 +2270,13 @@ static struct attribute *hwmon_attributes[] = {
  	&dev_attr_pwm1.attr,
  	&dev_attr_pwm1_enable.attr,
  	&dev_attr_pwm2_enable.attr,
@@ -149,7 +149,7 @@ index fd1ce1650187..8cc532166559 100644
  
  	&dev_attr_temp1_input.attr,
  	NULL
-@@ -2223,6 +2304,11 @@ static umode_t asus_hwmon_sysfs_is_visible(struct kobject *kobj,
+@@ -2221,6 +2302,11 @@ static umode_t asus_hwmon_sysfs_is_visible(struct kobject *kobj,
  	    || attr == &dev_attr_pwm2_enable.attr) {
  		if (asus->gpu_fan_type == FAN_TYPE_NONE)
  			return 0;
@@ -161,7 +161,7 @@ index fd1ce1650187..8cc532166559 100644
  	} else if (attr == &dev_attr_temp1_input.attr) {
  		int err = asus_wmi_get_devstate(asus,
  						ASUS_WMI_DEVID_THERMAL_CTRL,
-@@ -2266,6 +2352,7 @@ static int asus_wmi_hwmon_init(struct asus_wmi *asus)
+@@ -2264,6 +2350,7 @@ static int asus_wmi_hwmon_init(struct asus_wmi *asus)
  static int asus_wmi_fan_init(struct asus_wmi *asus)
  {
  	asus->gpu_fan_type = FAN_TYPE_NONE;
@@ -169,7 +169,7 @@ index fd1ce1650187..8cc532166559 100644
  	asus->fan_type = FAN_TYPE_NONE;
  	asus->agfn_pwm = -1;
  
-@@ -2280,6 +2367,10 @@ static int asus_wmi_fan_init(struct asus_wmi *asus)
+@@ -2278,6 +2365,10 @@ static int asus_wmi_fan_init(struct asus_wmi *asus)
  	if (asus_wmi_dev_is_present(asus, ASUS_WMI_DEVID_GPU_FAN_CTRL))
  		asus->gpu_fan_type = FAN_TYPE_SPEC83;
  
@@ -181,10 +181,10 @@ index fd1ce1650187..8cc532166559 100644
  		return -ENODEV;
  
 diff --git a/include/linux/platform_data/x86/asus-wmi.h b/include/linux/platform_data/x86/asus-wmi.h
-index b57f3591676a..94e3172b9c72 100644
+index f90cafe26af1..2c03bda7703f 100644
 --- a/include/linux/platform_data/x86/asus-wmi.h
 +++ b/include/linux/platform_data/x86/asus-wmi.h
-@@ -84,6 +84,7 @@
+@@ -80,6 +80,7 @@
  #define ASUS_WMI_DEVID_FAN_CTRL		0x00110012 /* deprecated */
  #define ASUS_WMI_DEVID_CPU_FAN_CTRL	0x00110013
  #define ASUS_WMI_DEVID_GPU_FAN_CTRL	0x00110014
@@ -193,5 +193,5 @@ index b57f3591676a..94e3172b9c72 100644
  #define ASUS_WMI_DEVID_GPU_FAN_CURVE	0x00110025
  
 -- 
-2.40.1
+2.41.0
 

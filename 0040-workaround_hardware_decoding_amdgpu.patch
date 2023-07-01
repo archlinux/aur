@@ -1,0 +1,28 @@
+From 6ed6ec89ec57aa7049544b212f199bb4272eefb3 Mon Sep 17 00:00:00 2001
+From: Arglebargle <arglebargle@arglebargle.dev>
+Date: Tue, 27 Jun 2023 02:00:23 -0700
+Subject: [PATCH] HACK: workaround hardware decoding lagging/hanging
+
+Workaround issues with hardware decoding lagging or hanging the gpu
+
+See this thread: https://gitlab.freedesktop.org/drm/amd/-/issues/2535
+---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_ring_mux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_ring_mux.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_ring_mux.c
+index 73516abef662..f59eceb9589f 100644
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_ring_mux.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_ring_mux.c
+@@ -28,7 +28,7 @@
+ #include "amdgpu.h"
+ 
+ #define AMDGPU_MUX_RESUBMIT_JIFFIES_TIMEOUT (HZ / 2)
+-#define AMDGPU_MAX_LAST_UNSIGNALED_THRESHOLD_US 10000
++#define AMDGPU_MAX_LAST_UNSIGNALED_THRESHOLD_US 200000
+ 
+ static const struct ring_info {
+ 	unsigned int hw_pio;
+-- 
+GitLab
+
