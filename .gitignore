@@ -1,0 +1,26 @@
+# Downloaded by makepkg
+tensorflow-upstream/
+tensorflow-upstream-*/
+bazel_nojdk-5.4.0-linux-x86_64
+*.tar.gz
+
+# Work dirs for makepkg
+src/
+pkg/
+
+# Produced by makepkg
+*.zst
+*.whl
+
+# Can't have nested directories for some reason, so compress the test materials.
+!c_model.tar.gz
+c_model
+c_model_test
+*.out
+__pycache__
+
+# Made by me, manually, when doing overnight builds.
+*.log
+
+# Made by repro command to test reproducible build.
+cache

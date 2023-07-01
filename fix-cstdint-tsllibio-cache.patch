@@ -1,0 +1,20 @@
+--- a/tensorflow/lite/kernels/internal/spectrogram.cc	2023-03-20 19:12:24.000000000 -0400
++++ b/tensorflow/lite/kernels/internal/spectrogram.cc	2023-05-15 16:46:34.302037661 -0400
+@@ -13,6 +13,7 @@
+ limitations under the License.
+ ==============================================================================*/
+ 
++#include <cstdint>
+ #include "tensorflow/lite/kernels/internal/spectrogram.h"
+ 
+ #include <assert.h>
+--- a/tensorflow/tsl/lib/io/cache.h	2023-03-20 19:12:24.000000000 -0400
++++ b/tensorflow/tsl/lib/io/cache.h	2023-05-15 15:16:44.582352729 -0400
+@@ -16,6 +16,7 @@
+ #ifndef TENSORFLOW_TSL_LIB_IO_CACHE_H_
+ #define TENSORFLOW_TSL_LIB_IO_CACHE_H_
+ 
++#include <cstdint>
+ #include "tensorflow/tsl/platform/stringpiece.h"
+ 
+ // A Cache is an interface that maps keys to values.  It has internal

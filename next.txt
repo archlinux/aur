@@ -1,0 +1,59 @@
+push
+incorporate logspam fix
+download and build and test
+official tensorflow tests
+try building it with latest git version. Maybe we don't need to stabilize?
+verify all the dirnames are accurate. I have probably mixed up tensorflow-upstream and tensorflow-rocm and tensorflow-opt-rocm...
+
+# Later
+set up monthly(?) test builds so I can fix the build when upstream makes changes
+    just put in a calendar reminder. Do it on the 21st or someth.
+set up urlwatch
+makepkg --printsrcinfo > .SRCINFO
+Fix whatever's wrong duing the python packaging step that spits out all those warnings
+party. I am so glad this is over.
+https://wiki.archlinux.org/title/Arch_packaging_standards -> reproducible
+
+# Maybe
+make test.py actually fail if something goes wrong
+try arch4edu rocm. Copy the rest of their build approach. I think it's likely we can make this work...
+set up "auto-build" system. One script to run, log, then test. etc.
+    systemd timer, stuff like that
+more complete testing of tensorflow. What other functions are there? can I do gpt-2?
+documentation
+    what environment variables can you use to suppress verbose logging?
+    export TF_CPP_MAX_VLOG_LEVEL=-1 # optional; see https://github.com/RadeonOpenCompute/ROCm/issues/1594
+    what about the other thing? NUMA returned -1 or something
+    document other ways to install
+publicity
+can we patch the whole project to bazel 6+ lol
+recruit someone with a different gfx architecture to test
+    actually, just post to the aur and see if there's even any interest. The Docker container works well enough.
+also, compile for optimized
+    I have an amd cpu and do not now how to confirm if haswell optimization is working or not.
+    So compiling optimized is left as an exercise for the reader.
+    how test if actually optimized? haswell architecture
+
+# Notes
+Working builds:
+Download and run the rocm/tensorflow docker image
+    https://github.com/mpeschel10/test-tensorflow-rocm
+
+Download and install the wheel
+    # For python older than 3.11, pip has builds from 3.7 to 3.10
+    # find rocm last release via https://github.com/tensorflow/build#community-supported-tensorflow-builds
+    # to http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild
+    # to http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/artifact/packages-3.11/tensorflow_rocm-2.12.0.550-cp311-cp311-manylinux2014_x86_64.whl
+    curl http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/artifact/packages-3.11/tensorflow_rocm-2.12.0.550-cp311-cp311-manylinux2014_x86_64.whl > ~/Downloads/tensorflow_rocm.whl
+    pip install tensorflow_rocm.whl
+    
+Compile it:
+    Last functional build on jenkins was http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/
+    Possibly from https://github.com/ROCmSoftwarePlatform/tensorflow-upstream, branch r2.12-rocm-enhanced
+    revision 18ddd5aa0329993f581bdb433b999b85c15f69e3 
+    copy most of the stuff from the docker build file
+    makepkg
+    it works!!!
+
+
+

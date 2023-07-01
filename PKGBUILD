@@ -1,43 +1,43 @@
-# Maintainer: anakano <azusanakan0 at outlook dot com>
-# Contributor: wuxxin <wuxxin@gmail.com>
-# Contributor: acxz <akashpatel2008 at yahoo dot com>
-# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
-# Contributor: Konstantin Gizdov (kgizdov) <arch@kge.pw>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Maintainer: Konstantin Gizdov (kgizdov) <arch@kge.pw>
 # Contributor: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
+# Contributor: Mark Peschel <mpeschel10@gmail.com>
 
-pkgbase=tensorflow-amd-git
-
-# Flags for building without/with cpu optimizations
-_build_no_opt=1
-_build_opt=1
-
-pkgname=()
-[ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-amd-git python-tensorflow-amd-git)
-[ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
-
-pkgver=2.11.0
-_srcname="tensorflow"
-_pkgver=2.11.0
-pkgrel=1
-pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream)"
+pkgbase=tensorflow
+pkgname=(tensorflow-amd-git python-tensorflow-amd-git tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
+pkgver=2.12.0
+pkgrel=2
+pkgdesc="Library for scalable machine learning (with ROCm)"
 url="https://www.tensorflow.org/"
 license=('APACHE')
 arch=('x86_64')
-depends=('c-ares' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'openmp')
-makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'rccl' 'git' 'miopen' 'python-pip' 'python-wheel'
-             'python-setuptools' 'python-h5py' 'python-keras-applications' 'python-keras-preprocessing'
-             'cython' 'patchelf' 'python-requests')
-optdepends=('tensorboard: Tensorflow visualization toolkit')
-source=("tensorflow::git+https://github.com/ROCmSoftwarePlatform/tensorflow-upstream.git#branch=r2.11-rocm-enhanced"
-        fix-c++17-compat.patch
-        fix-cusolver-version.patch
-        remove-log-spam.patch)
 
-sha512sums=('SKIP'
-            'e919b77f17c8508c21607a988e4451542900bb2a1453b55bff865e3b2602faebf4543bd640f60d84ac9b8d7b8599986f115077f7d411732fba3866cb5d6ad2e2'
-            'fc263a0d0d318899914b26e8e06b3beb7c8e55118f5eb54c94fd97d8749151decfe6bf399130db43481d12908f4fdb58ff388acbcd90507d84f1d06d96f6019f'
-            'fde73feeb2bbb814ba229c2b879e5e5944fd658e9810937753a25f2650f57c49f8a435924b47a1a54eb2852f9713b19a15d42b307593e26a74ad65aeee22c36a')
+depends=('c-ares' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'openmp' \
+         'rocrand' 'rccl' 'miopen-hip' 'hipfft' \
+         'lib32-icu' 'zlib' 'glibc' 'gcc-libs' 'hsa-rocr' 'hip-runtime-amd' )
+         # lib32-icu etc. were discovered with namcap. 
+makedepends=('python-numpy' 'git' 'python-wheel' \
+             'python-installer' 'python-setuptools' 'python-h5py' 'python-keras-applications' \
+             'python-keras-preprocessing' 'cython' 'patchelf' 'python-requests' \
+             'java-environment=11' 'coreutils' 'base-devel' \
+             'rocm-core' 'roctracer' 'hipsparse' 'hipsolver' 'hipblas' 'hipcub' )
+             # bazel: Don't need bazel since this PKGBUILD downloads and installs bazel 5.4.0 locally
+             #  java-environment=11: outdated bazel needs jdk 11
+             # coreutils: df, for our check if there's enough space on /tmp. 
+             # base-devel: fakeroot and some other things
+             # rocm-core: /opt/rocm/.info/version, which the official docker image seems to need.
+optdepends=('tensorboard: Tensorflow visualization toolkit')
+source=("tensorflow-upstream.tar.gz::https://github.com/ROCmSoftwarePlatform/tensorflow-upstream/archive/18ddd5aa0329993f581bdb433b999b85c15f69e3.tar.gz"
+        tensorflow-2.10-sparse-transpose-op2.patch
+        https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
+        fix-c++17-compat.patch
+        fix-cstdint-tsllibio-cache.patch)
+sha512sums=('9bb41c8cd4c5bb539420a10c5a299cb8ad2f93764991175cb48be8efe7dc1010f4cd374a89533cdee7f83c1c2edbcfd3301a04c8dcc0ea97d850da6ea49595f9'
+            '45325ef3130aa95d48121d8c39bb4e683bdb5faa936ff29af953a2c359edb441a29e2dc0cae53ec6c08eee0432c0eeeaa7a40fbd063467b7f3c250d0f7f8ffed'
+            'e2adb747cd1fe3c90686831703618af3f8bc8197a96d9e1e90e66db38dbc4e7a94d88dac755b25e288002983a87fcffbfb0d7c2e356d979d4635301c3daf9281'
+            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
+            '78bffffdb6fa58dfcfae37b4458c198a644605b9e9136ceef079d4d5002fad6f2ae39dee15e77e35c198267574860554a69e98674882164fad4b63e9ab68fb05')
 
 # consolidate common dependencies to prevent mishaps
 _common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
@@ -71,133 +71,140 @@ check_dir() {
 }
 
 prepare() {
+  [ -d tensorflow-upstream-rocm ] && rm -rf tensorflow-upstream-rocm
+  mv tensorflow-upstream-18ddd5aa0329993f581bdb433b999b85c15f69e3 tensorflow-upstream-rocm
+  
   # Allow any bazel version
-  echo "*" > $_srcname/.bazelversion
+  echo "*" > tensorflow-upstream-rocm/.bazelversion
+
+  # Since Tensorflow is currently incompatible with Bazel 6, we're going to use
+  # a local Bazel 5 to fix that. Stupid problems call for stupid solutions.
+  install -Dm755 "${srcdir}"/bazel_nojdk-5.4.0-linux-x86_64 bazel/bazel
+  bazel --version
 
   # Get rid of hardcoded versions. Not like we ever cared about what upstream
   # thinks about which versions should be used anyway. ;) (FS#68772)
-  sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" $_srcname/tensorflow/tools/pip_package/setup.py
+  sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" tensorflow-upstream-rocm/tensorflow/tools/pip_package/setup.py
 
-  cd "${srcdir}/$_srcname"
-  # change rocblas.h to rocblas/rocblas.h
-  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocm_blas.h
-  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/core/util/gpu_solvers.h
-  sed -i 's/rocm\/include\/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/stream_executor/rocm/rocblas_wrapper.h
-  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/compiler/xla/stream_executor/rocm/rocm_blas.cc
-  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/compiler/xla/stream_executor/rocm/rocm_blas.h
-  sed -i 's/rocblas.h"/rocblas\/rocblas.h"/g' tensorflow/compiler/xla/stream_executor/rocm/rocblas_wrapper.h
-
-  patch -Np1 -i "${srcdir}/fix-cusolver-version.patch"
-  patch -Np1 -i "${srcdir}/remove-log-spam.patch"
-  cd "${srcdir}"
-
-  cp -r $_srcname tensorflow-amd-git
-  cp -r $_srcname tensorflow-opt-amd-git
-
-  # These environment variables influence the behavior of the configure call below.
-  export PYTHON_BIN_PATH=/usr/bin/python
-  export USE_DEFAULT_PYTHON_LIB_PATH=1
-  export TF_NEED_JEMALLOC=1
-  export TF_NEED_KAFKA=1
-  export TF_NEED_OPENCL_SYCL=0
-  export TF_NEED_AWS=1
-  export TF_NEED_GCP=1
-  export TF_NEED_HDFS=1
-  export TF_NEED_S3=1
-  export TF_ENABLE_XLA=1
-  export TF_NEED_GDR=0
-  export TF_NEED_VERBS=0
-  export TF_NEED_OPENCL=0
-  export TF_NEED_MPI=0
-  export TF_NEED_TENSORRT=0
-  export TF_NEED_NGRAPH=0
-  export TF_NEED_IGNITE=0
-  export TF_NEED_ROCM=1
-  # Uncomment this when you want to specify specific ROCM_ARCH(s)
-  # Otherwise tensorflow will automatically detect your architecture
-  # See: https://github.com/tensorflow/tensorflow/commit/c04822a49d669f2d74a566063852243d993e18b1
-  # export TF_ROCM_AMDGPU_TARGETS=gfx803,gfx900,gfx904,gfx906,gfx908
-  # See https://github.com/tensorflow/tensorflow/blob/master/third_party/systemlibs/syslibs_configure.bzl
-  export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,lmdb,nasm,png,pybind11,zlib"
-  export TF_SET_ANDROID_WORKSPACE=0
-  export TF_DOWNLOAD_CLANG=0
-  export TF_NCCL_VERSION=$(pkg-config nccl --modversion | grep -Po '\d+\.\d+')
-  export TF_IGNORE_MAX_BAZEL_VERSION=1
-  export NCCL_INSTALL_PATH=/usr
-  # Does tensorflow really need the compiler overridden in 5 places? Yes.
-  export CC=gcc-11
-  export CXX=g++-11
-  export GCC_HOST_COMPILER_PATH=/usr/bin/${CC}
-  export HOST_C_COMPILER=/usr/bin/${CC}
-  export HOST_CXX_COMPILER=/usr/bin/${CXX}
-  export TF_CUDA_CLANG=0  # Clang currently disabled because it's not compatible at the moment.
-  export CLANG_CUDA_COMPILER_PATH=/usr/bin/clang
-  export TF_CUDA_PATHS=/opt/cuda,/usr/lib,/usr
-  export TF_CUDA_VERSION=$(/opt/cuda/bin/nvcc --version | sed -n 's/^.*release \(.*\),.*/\1/p')
-  export TF_CUDNN_VERSION=$(sed -n 's/^#define CUDNN_MAJOR\s*\(.*\).*/\1/p' /usr/include/cudnn_version.h)
-  # https://github.com/tensorflow/tensorflow/blob/1ba2eb7b313c0c5001ee1683a3ec4fbae01105fd/third_party/gpus/cuda_configure.bzl#L411-L446
-  # according to the above, we should be specifying CUDA compute capabilities as 'sm_XX' or 'compute_XX' from now on
-  # add latest PTX for future compatibility
-  export
-  TF_CUDA_COMPUTE_CAPABILITIES=sm_52,sm_53,sm_60,sm_61,sm_62,sm_70,sm_72,sm_75,sm_80,sm_86,sm_87,compute_87
-
-  export BAZEL_ARGS="--config=mkl -c opt"
+  # setup.py generates ~1Mb of warnings if you don't explicitly include namespace packages.
+  sed -i -E "s/find_packages/find_namespace_packages/" tensorflow-upstream-rocm/tensorflow/tools/pip_package/setup.py
+  
+  patch -Np1 -i "${srcdir}/tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-upstream-rocm || :
+  # Patch for gcc13: cstdint is no longer implicitly included in some headers, so include it explicitly.
+  # See https://gcc.gnu.org/gcc-13/porting_to.html
+  patch -Np1 -i "${srcdir}/fix-cstdint-tsllibio-cache.patch" -d tensorflow-upstream-rocm || :
+  
+  [ -d tensorflow-upstream-opt-rocm ] && rm -rf tensorflow-upstream-opt-rocm
+  # Note that cp may not replace files if they already exist.
+  # Very confusing to make changes in -rocm and not have them show up in -opt-rocm...
+  cp -r tensorflow-upstream-rocm tensorflow-upstream-opt-rocm
+  
+  if [ ! -f "/opt/rocm/bin/target.lst" ]; then
+    echo WARNING: If you are building for GPUs not currently installed in your machine,
+    echo \ or if you are getting random segfaults and suspect that this build is not
+    echo \ properly targeting your architecture,
+    echo \ you must provide a target list in /opt/rocm/bin/target.lst
+    echo Something of the form:
+    echo -e "gfx803\ngfx900\ngfx906\ngfx908\ngfx90a\ngfx1030\ngfx904"
+    echo You can see the architectures installed on your machine by running
+    echo "pacman -S rocminfo"
+    echo "/opt/rocm/bin/rocminfo | grep gfx"
+  fi
 }
 
 build() {
-  if [ "$_build_no_opt" -eq 1 ]; then
-    echo "Building with rocm and without non-x86-64 optimizations"
-    cd "${srcdir}"/tensorflow-amd-git
-    export CC_OPT_FLAGS="-march=x86-64"
-    export TF_NEED_CUDA=0
-    export TF_NEED_ROCM=1
-    ./configure
-    bazel \
-      build \
-        ${BAZEL_ARGS[@]} \
-        //tensorflow:libtensorflow.so \
-        //tensorflow:libtensorflow_cc.so \
-        //tensorflow:install_headers \
-        //tensorflow/tools/pip_package:build_pip_package
-    bazel-bin/tensorflow/tools/pip_package/build_pip_package --gpu "${srcdir}"/tmprocm
-  fi
+  # Use outdated bazel since tensorflow is configured for that,
+  #  and use outdated java since bazel needs specifically java 11.
+  PATH="/usr/lib/jvm/java-11-openjdk/bin:$PATH"
+  export PATH="${srcdir}/bazel:$PATH"
+  # bazel somehow caches the jvm,
+  #  so if you pacman -R jre11-openjdk; pacman -S jre-openjdk to see if modern java also works,
+  #  this script may still build as though java 20 is ok.
+  # For a clean test, rm -rf ~/.cache/bazel
+  
+  # These environment variables influence the behavior of the configure call.
+  export PYTHON_BIN_PATH=/usr/bin/python
+  export USE_DEFAULT_PYTHON_LIB_PATH=1
+  export TF_SET_ANDROID_WORKSPACE=0
+  export TF_DOWNLOAD_CLANG=0
+  
+  # See https://github.com/tensorflow/tensorflow/blob/master/third_party/systemlibs/syslibs_configure.bzl
+  # Important since boringssl may no longer build due to dangling pointer warning as of 2023-06-04
+  export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,lmdb,nasm,png,pybind11,zlib"
+  
+  # Don't need --config=rocm, since it's included from .tf_configure.bazelrc
+  export BAZEL_ARGS="--config=opt"
 
-
-  if [ "$_build_opt" -eq 1 ]; then
-    echo "Building with rocm and with non-x86-64 optimizations"
-    cd "${srcdir}"/tensorflow-opt-amd-git
-    export CC_OPT_FLAGS="-march=haswell -O3"
-    export TF_NEED_CUDA=0
-    export TF_NEED_ROCM=1
-    ./configure
-    bazel \
-      build --config=avx2_linux \
-        ${BAZEL_ARGS[@]} \
-        //tensorflow:libtensorflow.so \
-        //tensorflow:libtensorflow_cc.so \
-        //tensorflow:install_headers \
-        //tensorflow/tools/pip_package:build_pip_package
-    bazel-bin/tensorflow/tools/pip_package/build_pip_package --gpu "${srcdir}"/tmpoptrocm
+  tmp_size=`df /tmp | sed -rn "s|tmpfs +([[:digit:]]+) +.*|\1|p"`
+  if [ -z "$tmp_size" ]; then
+      echo Please confirm your /tmp directory is larger than 8 gigabytes\;
+      echo if it isn\'t, you may run into errors during the build due to running out of space
+      echo \ if you are building for multiple architectures.
+      echo Find /tmp size with "df -h".
+      echo You can remount it larger with "mount -o remount,size=12G /tmp"
+      echo \ if it is tmpfs and you have enough RAM.
+  else
+      if [ "$tmp_size" -lt 8388608 ]; then
+          echo WARNING: Your /tmp directory is less than 8 gigibytes.
+          echo You may run into errors during the build due to /tmp running out of space
+          echo \ if you are building for multiple architectures.
+          echo You can remount it larger with "mount -o remount,size=12G /tmp"
+          echo \ if it is tmpfs and you have enough RAM.
+      fi
   fi
+  
+  echo "Building with rocm and without non-x86-64 optimizations"
+  cd "${srcdir}"/tensorflow-upstream-rocm
+  
+  export CC_OPT_FLAGS="-march=x86-64"
+  export TF_NEED_CUDA=0
+  export TF_NEED_ROCM=1
+  ./configure
+  
+  bazel \
+    build ${BAZEL_ARGS[@]} \
+      //tensorflow:libtensorflow.so \
+      //tensorflow:libtensorflow_cc.so \
+      //tensorflow:install_headers \
+      //tensorflow/tools/pip_package:build_pip_package
+  bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}"/tmprocm --rocm
+  
+  echo "Building with rocm and non-x86-64 optimizations"
+  cd "${srcdir}"/tensorflow-upstream-opt-rocm
+  
+  export CC_OPT_FLAGS="-march=haswell -O3"
+  export TF_NEED_CUDA=0
+  export TF_NEED_ROCM=1
+  ./configure
+  
+  bazel \
+    build ${BAZEL_ARGS[@]} \
+      //tensorflow:libtensorflow.so \
+      //tensorflow:libtensorflow_cc.so \
+      //tensorflow:install_headers \
+      //tensorflow/tools/pip_package:build_pip_package
+  bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}"/tmpoptrocm --rocm
 }
 
 _package() {
   # install headers first
   install -d "${pkgdir}"/usr/include/tensorflow
   cp -r bazel-bin/tensorflow/include/* "${pkgdir}"/usr/include/tensorflow/
+
   # install python-version to get all extra headers
   WHEEL_PACKAGE=$(find "${srcdir}"/$1 -name "tensor*.whl")
-  pip install --ignore-installed --upgrade --root "${pkgdir}"/ $WHEEL_PACKAGE --no-dependencies
+  python -m installer --destdir="$pkgdir" $WHEEL_PACKAGE
+
   # move extra headers to correct location
   local _srch_path="${pkgdir}/usr/lib/python$(get_pyver)"/site-packages/tensorflow/include
   check_dir "${_srch_path}"  # we need to quit on broken search paths
-  find "${_srch_path}" -maxdepth 1 -mindepth 1 -type d -print0 | while read -rd $'\0' _folder; do
-    cp -nr "${_folder}" "${pkgdir}"/usr/include/tensorflow/
-  done
+  cp -rf "${_srch_path}"/* "${pkgdir}"/usr/include/tensorflow/
+
   # clean up unneeded files
   rm -rf "${pkgdir}"/usr/bin
   rm -rf "${pkgdir}"/usr/lib
   rm -rf "${pkgdir}"/usr/share
+
   # make sure no lib objects are outside valid paths
   local _so_srch_path="${pkgdir}/usr/include"
   check_dir "${_so_srch_path}"  # we need to quit on broken search paths
@@ -226,13 +233,11 @@ _package() {
   # Fix interoperability of C++14 and C++17. See https://bugs.archlinux.org/task/65953
   patch -Np0 -i "${srcdir}"/fix-c++17-compat.patch -d "${pkgdir}"/usr/include/tensorflow/absl/base
 
-  # Fix FS#75571
-  find "${pkgdir}"/usr/lib -type f -exec patchelf --replace-needed libiomp5.so libomp.so '{}' \; -print
 }
 
 _python_package() {
   WHEEL_PACKAGE=$(find "${srcdir}"/$1 -name "tensor*.whl")
-  pip install --ignore-installed --upgrade --root "${pkgdir}"/ $WHEEL_PACKAGE --no-dependencies
+  python -m installer --destdir="$pkgdir" $WHEEL_PACKAGE
 
   # create symlinks to headers
   local _srch_path="${pkgdir}/usr/lib/python$(get_pyver)"/site-packages/tensorflow/include/
@@ -245,49 +250,45 @@ _python_package() {
 
   # tensorboard has been separated from upstream but they still install it with
   # tensorflow. I don't know what kind of sense that makes but we have to clean
-  # it out from this pacakge.
+  # it out from this package.
   rm -rf "${pkgdir}"/usr/bin/tensorboard
 
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 
 package_tensorflow-amd-git() {
-  pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream with ROCM)"
-  depends+=(rocm-hip-sdk miopen rccl)
   conflicts=(tensorflow)
   provides=(tensorflow)
-
-  cd "${srcdir}"/tensorflow-amd-git
+  
+  cd "${srcdir}"/tensorflow-upstream-rocm
   _package tmprocm
 }
 
 package_tensorflow-opt-amd-git() {
-  pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream with ROCM and AVX2 CPU optimizations)"
-  depends+=(rocm-hip-sdk miopen rccl)
+  pkgdesc="Library for scalable machine learning (with ROCm and non-x86 optimizations)"
   conflicts=(tensorflow)
-  provides=(tensorflow tensorflow-amd-git)
-
-  cd "${srcdir}"/tensorflow-opt-amd-git
+  provides=(tensorflow)
+  
+  cd "${srcdir}"/tensorflow-upstream-opt-rocm
   _package tmpoptrocm
 }
 
 package_python-tensorflow-amd-git() {
-  pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream with ROCM)"
-  depends+=(tensorflow-amd-git rocm-hip-sdk miopen rccl "${_common_py_depends[@]}")
+  depends+=(tensorflow "${_common_py_depends[@]}")
   conflicts=(python-tensorflow)
   provides=(python-tensorflow)
 
-  cd "${srcdir}"/tensorflow-amd-git
+  cd "${srcdir}"/tensorflow-upstream-rocm
   _python_package tmprocm
 }
 
 package_python-tensorflow-opt-amd-git() {
-  pkgdesc="Library for computation using data flow graphs for scalable machine learning (AMD upstream with ROCM and AVX2 CPU optimizations)"
-  depends+=(tensorflow-opt-amd-git rocm-hip-sdk miopen rccl "${_common_py_depends[@]}")
+  pkgdesc="Library for scalable machine learning (with ROCm and non-x86 optimizations)"
+  depends+=(tensorflow "${_common_py_depends[@]}")
   conflicts=(python-tensorflow)
-  provides=(python-tensorflow python-tensorflow-amd-git)
+  provides=(python-tensorflow)
 
-  cd "${srcdir}"/tensorflow-opt-amd-git
+  cd "${srcdir}"/tensorflow-upstream-opt-rocm
   _python_package tmpoptrocm
 }
 
