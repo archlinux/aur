@@ -1,7 +1,7 @@
 # Maintainer: Tim Dubbins <timdubbins@gmail.com>
 pkgname=tap
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An audio player for the terminal, written in rust"
 arch=('x86_64')
 url="https://github.com/timdubbins/tap"
