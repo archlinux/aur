@@ -71,11 +71,26 @@ def test_compile():
 
 def test_save():
     print('Checking if we can save a model...')
-    subprocess.run(['python', 'make_c_model.py'])
-    exception_on_error_code(
-        ['diff', '-r', 'c_model', 'c_model_test'],
-        'Saved model is not bitwise identical to what I expected'
-    )
+
+    import numpy as np
+    import tensorflow as tf
+
+    tf.keras.utils.set_random_seed(531)
+    expected_model = tf.keras.Sequential([
+        tf.keras.layers.Dense(4, activation='relu'),
+        tf.keras.layers.Dense(4, activation='sigmoid'),
+        tf.keras.layers.Dense(4, activation='tanh'),
+        tf.keras.layers.Dense(4, activation='linear'),
+    ])
+
+    i = tf.constant([[10, 20, 99, 10000], [0.1, -12, -0.4, 0]])
+    expected_model(i)
+    expected_model.save('c_model_test')
+    observed_model = tf.keras.models.load_model('c_model_test')
+    if np.any((expected_model(i) != observed_model(i))):
+        print('Expected:', expected_model(i))
+        print('Observed:', observed_model(i))
+        raise Exception('Saving python model fails somehow')
     print('Model saves ok.')
 
 def test_libiomp5_so():
@@ -86,7 +101,7 @@ def test_libiomp5_so():
     #  or else protobuf will error for loading tensorflow twice when we import tensorflow.
     print('It\'s probably ok.')
 
-def test_tf_finds_gpu():
+def test_tf_sees_gpu():
     import tensorflow as tf
     if not len(tf.config.list_physical_devices('GPU')) > 0:
         raise Exception('tf.config.list_physical_devices(\'GPU\') returns empty list; no GPUs found')
@@ -146,12 +161,12 @@ def check_packages(tensorflow_path, python_tensorflow_path):
     test_compile()
     install(python_tensorflow_path)
 
+    test_save()
     test_libiomp5_so()
 
-    test_tf_finds_gpu()
+    test_tf_sees_gpu()
     test_tf_short()
     test_tf_mnist()
-    test_save()
 
 def main():
     patterns = [
