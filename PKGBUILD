@@ -1,26 +1,33 @@
-# Maintainer: Hafeoz <hafeoz@kolabnow.com>
+# Maintainer: Sieve Lau <sievelau@gmail.com>
+# Contributor: Hafeoz <hafeoz@kolabnow.com>
 
 pkgname=danmakufactory
-_pkgname=DanmakuFactory
-pkgver=1.63
+pkgver=r41.41a5f26
 pkgrel=1
 pkgdesc='A tool for converting XML danmaku to ass subtitles.'
 url="https://github.com/hihkm/DanmakuFactory"
 arch=(x86_64)
 license=(MIT)
 makedepends=()
-options=()
 source=(
-  "$_pkgname-$pkgver.tar.gz::https://github.com/hihkm/$_pkgname/archive/v$pkgver.tar.gz"
+  "${pkgname}::git+https://github.com/hihkm/DanmakuFactory.git"
 )
-sha512sums=('e94fc800cdf4e68ddb28001075a3dd7eb91fd7a9a528fdc0e454aab94fae717a1d53929065e7e34df89b5e53285405cb8826be874b06b93d7c3d65f815f21505')
+md5sums=('SKIP')
+
+pkgver(){
+        cd $srcdir/${pkgname}
+        ( set -o pipefail
+        git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+        )
+}
 
 build() {
-  cd $_pkgname-$pkgver
+  cd "$srcdir/${pkgname}"
   make
 }
 
 package() {
-  cd $_pkgname-$pkgver
+  cd "$srcdir/${pkgname}"
   install -Dm755 DanmakuFactory $pkgdir/usr/bin/DanmakuFactory
 }
