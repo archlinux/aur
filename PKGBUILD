@@ -2,7 +2,7 @@
 _pkgbase="bpftune"
 pkgname="$_pkgbase-git"
 pkgver=r421.bfec666
-pkgrel=1
+pkgrel=2
 pkgdesc="BPF/tracing tools for auto-tuning Linux"
 arch=("x86_64")
 url="https://github.com/oracle-samples/bpftune"
@@ -25,6 +25,14 @@ CC=clang
 pkgver() {
 	cd "$_pkgbase"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$srcdir/$_pkgbase"
+	sed -i 's/\/lib64/\/lib/' include/bpftune/libbpftune.h
+	sed -i 's/\/lib64/\/lib/g' src/Makefile
+	sed -i 's/\/sbin/\/bin/g' src/Makefile
+	sed -i 's/\/sbin/\/bin/g' src/bpftune.service
 }
 
 build() {
