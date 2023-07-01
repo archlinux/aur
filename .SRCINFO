@@ -1,10 +1,11 @@
 pkgbase = r-mockr
 	pkgdesc = Mocking in R
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=mockr
 	arch = any
 	license = GPL3
+	checkdepends = r-testthat
 	depends = r-rlang
 	depends = r-withr
 	optdepends = r-covr
@@ -15,6 +16,7 @@ pkgbase = r-mockr
 	optdepends = r-testthat
 	optdepends = r-usethis
 	source = https://cran.r-project.org/src/contrib/mockr_0.2.1.tar.gz
+	md5sums = 64562ef53ff44054bec118181cd72e65
 	sha256sums = 23ef5941eeed6a20b7670e78ef54a406ecd1eb9b57da2d4ca92ae03696f27a58
 
 pkgname = r-mockr
