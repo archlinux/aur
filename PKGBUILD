@@ -10,7 +10,7 @@
 pkgbase=tensorflow-amd-git
 pkgname=(tensorflow-amd-git python-tensorflow-amd-git tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
 pkgver=2.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for scalable machine learning (with ROCm)"
 url="https://www.tensorflow.org/"
 license=('APACHE')
