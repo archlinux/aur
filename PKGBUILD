@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epiR
-_pkgver=2.0.61
+_pkgver=2.0.62
 pkgname=r-${_pkgname,,}
-pkgver=2.0.61
+pkgver=2.0.62
 pkgrel=1
 pkgdesc='Tools for the Analysis of Epidemiological Data'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('48110dc8b9305bad27bdffaa247c1b99714181685e6bd20e3bf4ea8fdec8d9ba')
+sha256sums=('e93eb6647190a933f8ee3536cdfbd924e9b71ee3cf1d54ff4fd152e88e3fac48')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
