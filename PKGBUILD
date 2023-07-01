@@ -1,35 +1,52 @@
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 # Maintainer: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 
+_pkgname=gnome-font-viewer
 pkgname=gnome-font-viewer-git
-pkgver=3.30.0+38+g85c4210
+pkgver=44.0+9+g54e4844
 pkgrel=1
 pkgdesc="A font viewer utility for GNOME"
-url="https://gitlab.gnome.org/GNOME/gnome-font-viewer"
+url="https://gitlab.gnome.org/GNOME/${_pkgname}"
 arch=(x86_64)
 license=(GPL)
-provides=(gnome-font-viewer)
-conflicts=(gnome-font-viewer)
-depends=(gtk3 gnome-desktop)
-makedepends=(git meson)
-groups=(gnome)
-source=("git+https://gitlab.gnome.org/GNOME/gnome-font-viewer.git")
+depends=(
+  gnome-desktop-4
+  gtk4
+  libadwaita
+)
+makedepends=(
+  git
+  meson
+)
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+groups=(
+  gnome
+  gnome-git
+)
+source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd gnome-font-viewer
+  cd "${_pkgname}"
   git describe --tags | sed 's/-/+/g'
 }
 
+prepare() {
+  cd "${_pkgname}"
+}
+
 build() {
-  arch-meson gnome-font-viewer build
-  ninja -C build
+  arch-meson "${_pkgname}" build
+  meson compile -C build
 }
 
 check() {
-  cd build
-  meson test
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+  meson install -C build --destdir "${pkgdir}"
 }
+
+# vim:set sw=2 sts=-1 et:
