@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-zimg
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("zimg-${pkgver}.tar.gz::https://github.com/sekrit-twc/zimg/archive/release-${pkgver}.tar.gz")
-sha256sums=('219d1bc6b7fde1355d72c9b406ebd730a4aed9c21da779660f0a4c851243e32f')
+sha256sums=('a9a0226bf85e0d83c41a8ebe4e3e690e1348682f6a2a7838f1b8cbff1b799bcf')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
