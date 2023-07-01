@@ -9,6 +9,7 @@
 #Credits: Andreas Radke <andyrtr@archlinux.org>
 #Credits: Peter Jung ptr1337 <admin@ptr1337.dev> && Piotr Gorski <piotrgorski@cachyos.org>
 #Credits: Tobias Powalowski <tpowa@archlinux.org>
+#Credits: Thomas Baechler <thomas@archlinux.org>
 
 ################################# Arch ################################
 
