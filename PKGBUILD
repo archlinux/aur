@@ -3,7 +3,7 @@
 
 pkgname=go-task
 _pkgname=task
-pkgver=3.26.0
+pkgver=3.27.1
 pkgrel=1
 pkgdesc="Task runner & Make alternative that runs taskfiles (Installs as go-task to avoid conflict with taskwarrior)"
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(go)
 depends=(glibc)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f27bb58235af96e49ab5cd9b3baec6ade0e5053b63a3c77ca7c673b0f8f3bd28')
+sha256sums=('508b6612ca30ef4404aa674a2fb2a93e414eb5b06afe34e090145e70f0dc940a')
 
 _archive="$_pkgname-$pkgver"
 
