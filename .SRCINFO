@@ -1,6 +1,6 @@
 pkgbase = blueprint-compiler-health
 	pkgdesc = A markup language for GTK user interfaces
-	pkgver = +93f2a27e
+	pkgver = 0.8.1+93f2a27e
 	pkgrel = 1
 	url = https://jwestman.pages.gitlab.gnome.org/blueprint-compiler
 	arch = any
@@ -11,5 +11,5 @@ pkgbase = blueprint-compiler-health
 	sha256sums = SKIP
 
 pkgname = blueprint-compiler-health
-	provides = blueprint-compiler=+93f2a27e
+	provides = blueprint-compiler=0.8.1+93f2a27e
 	conflicts = blueprint-compiler
