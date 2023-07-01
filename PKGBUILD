@@ -1,26 +1,64 @@
-# Maintainer: Pranav K Anupam <pranavanupam@yahoo.com>
-_cranname=dtplyr
-_cranver=1.2.2
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-dtplyr
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
-pkgdesc="Provides a data.table backend for 'dplyr'"
-arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL3' 'custom')
-depends=('r>=3.3' 'r-crayon' 'r-data.table>=1.13.0' 'r-dplyr>=1.0.3' 'r-ellipsis' 'r-glue' 'r-lifecycle' 'r-rlang' 'r-tibble' 'r-tidyselect' 'r-vctrs')
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Pranav K Anupam <pranavanupam@yahoo.com>
 
-optdepends=('r-bench' 'r-covr' 'r-knitr' 'r-rmarkdown' 'r-testthat>=3.0.0' 'r-tidyr>=1.1.0')
-sha256sums=('f85928fe63701bc3a0cadf705ba660834a2aaeab37cf20addab406430e53e2d4')
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+_pkgname=dtplyr
+_pkgver=1.3.1
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=5
+pkgdesc="Data Table Back-End for 'dplyr'"
+arch=(any)
+url="https://cran.r-project.org/package=${_pkgname}"
+license=(MIT)
+depends=(
+  r-cli
+  r-data.table
+  r-dplyr
+  r-glue
+  r-lifecycle
+  r-rlang
+  r-tibble
+  r-tidyselect
+  r-vctrs
+)
+checkdepends=(
+  r-testthat
+  r-tidyr
+)
+optdepends=(
+  r-bench
+  r-covr
+  r-knitr
+  r-rmarkdown
+  r-testthat
+  r-tidyr
+  r-waldo
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('d1cc10d74af58ac44a99392237aca50e')
+sha256sums=('a5a9689a640b8bd1274519af220c33deaa3919654acac4ebdff1ff365cc8d6e5')
 
-build(){
-cd "${srcdir}"
-R CMD INSTALL ${_pkgtar} -l ${srcdir}
+prepare() {
+  # fix snapshot test
+  sed -i 's/\.\.\. with 26 more rows/i 26 more rows/' \
+      "$_pkgname/tests/testthat/_snaps/step.md"
 }
+
+build() {
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+}
+
 package() {
-cd "${scrdir}"
-install -dm0755 "$pkgdir/usr/lib/R/library"
-cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
