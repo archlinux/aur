@@ -1,26 +1,70 @@
-# Maintainer: Adria Arrufat <swiftscythe at gmail dot com>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Adria Arrufat <swiftscythe at gmail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Maintainer: Tim Jester-Pfadt <t.jp<at>gmx.de>
+# Contributor: Tim Jester-Pfadt <t.jp<at>gmx.de>
 
 _pkgname=gnome-builder
-pkgname=gnome-builder-git
-pkgver=42.alpha1+10+gc550764ec
+pkgname="${_pkgname}-git"
+pkgver=45.alpha+1+g9da28eaa8
 pkgrel=1
 pkgdesc='An IDE for writing GNOME-based software'
-arch=(i686 x86_64)
-url='https://wiki.gnome.org/Apps/Builder'
+arch=(
+  x86_64
+  i686
+  pentium4
+  aarch64
+  armv7h
+)
+url=https://wiki.gnome.org/Apps/Builder
 license=(GPL3)
-conflicts=(gnome-builder)
-provides=(gnome-builder)
-depends=(gtksourceview4 devhelp libgit2-glib gjs python-gobject clang desktop-file-utils libhandy-git
-         ctags libpeas vte3 vala python-jedi autoconf-archive sysprof flatpak gspell libdazzle
-         template-glib jsonrpc-glib python-sphinx webkit2gtk glade sysprof libportal cmark)
-makedepends=(intltool llvm gobject-introspection gtk-doc yelp-tools appstream-glib vala git
-             mm-common meson)
-optdepends=('gnome-code-assistance: Legacy assistance services'
-            'python-lxml: documentation support for Python auto-completion')
-groups=(gnome-extra)
-source=("git+https://gitlab.gnome.org/GNOME/gnome-builder.git")
+depends=(
+  autoconf-archive
+  clang
+  cmark
+  ctags
+  d-spy
+  desktop-file-utils
+  devhelp
+  editorconfig-core-c
+  flatpak-builder
+  gjs
+  glib2
+  gtksourceview5
+  jsonrpc-glib
+  libadwaita
+  libdex
+  libgit2-glib
+  libpanel
+  'libpeas>=1.36.0+98'
+  libportal-gtk4
+  meson
+  python-gobject
+  python-lxml
+  python-sphinx
+  sysprof
+  template-glib
+  vala
+  vte4
+  webkitgtk-6.0
+)
+makedepends=(
+  appstream-glib
+  git
+  gobject-introspection
+  llvm
+  mm-common
+  python-lsp-server
+  python-sphinx_rtd_theme
+  yelp-tools
+)
+checkdepends=(weston)
+optdepends=(
+  'gnome-code-assistance: Legacy assistance services'
+  'python-lxml: documentation support for Python auto-completion')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+groups=(gnome-extra gnome-extra-git)
+source=("git+https://gitlab.gnome.org/GNOME/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -28,22 +72,45 @@ pkgver() {
   git describe --tags | sed 's/^GNOME_BUILDER_//;s/_/./g;s/-/+/g'
 }
 
-build() {
-  arch-meson $_pkgname build \
-    --buildtype debugoptimized \
-    -D docs=true \
-    -D help=true \
-    -D plugin_editorconfig=true
-  ninja -C build
+prepare() {
+  cd "${_pkgname}"
 }
 
-check() {
-  # some tests need an installed gnome-builder
-  xvfb-run meson test -C build || :
+build() {
+  local meson_options=(
+    --buildtype debugoptimized
+    -D docs=true
+    -D help=true
+    -D plugin_editorconfig=true
+  )
+  arch-meson "${_pkgname}" build "${meson_options[@]}"
+  meson compile -C build
 }
+
+check() (
+  export XDG_RUNTIME_DIR="$PWD/runtime-dir" WAYLAND_DISPLAY=wayland-5
+
+  mkdir -p -m 700 "$XDG_RUNTIME_DIR"
+  weston --backend=headless-backend.so --socket=$WAYLAND_DISPLAY --idle-time=0 &
+  _w=$!
+
+  trap "kill $_w; wait" EXIT
+
+  dbus-run-session meson test -C build --print-errorlogs
+)
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  depends+=(libgit2.so)
+  optdepends=(
+    'bash-language-server: Shell code assistance'
+    'python-lsp-server: Python code assistance'
+  )
+  groups=(
+    gnome-extra
+    gnome-extra-git
+  )
+  meson install -C build --destdir "${pkgdir}"
 }
+
 # vim:set ts=2 sw=2 et:
 
