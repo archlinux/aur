@@ -4,8 +4,7 @@ pkgbase=cura-5-plugin-octoprint
 pkgname=(cura5-plugin-octoprint cura-5-plugin-octoprint)
 pkgver=3.7.3
 _pkgname=Cura-OctoPrintPlugin-${pkgver}
-pkgrel=1
-pkgdesc="Cura plugin which enables printing directly to OctoPrint and monitoring the progress"
+pkgrel=2
 arch=('any')
 license=('GPL3')
 url="https://github.com/fieldofview/OctoPrintPlugin"
@@ -42,12 +41,14 @@ build() {
 }
 
 package_cura5-plugin-octoprint() {
+  pkgdesc="Cura plugin which enables printing directly to OctoPrint and monitoring the progress"
   conflicts=('cura5-plugin-octoprint-git')
   cd ${srcdir}/${_pkgname}/build5
   make DESTDIR="$pkgdir/" install
 }
 
 package_cura-5-plugin-octoprint() {
+  pkgdesc="Cura AppImage plugin which enables printing directly to OctoPrint and monitoring the progress"
   conflicts=('cura-5-plugin-octoprint-git')
   cd ${srcdir}/${_pkgname}/build-5
   make DESTDIR="$pkgdir/" install
