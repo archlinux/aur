@@ -38,20 +38,20 @@ package() {
   cp "./install_files/com.sidevesh.Luminance.desktop" "$pkgdir/usr/share/applications/com.sidevesh.Luminance.desktop"
   cp "./install_files/com.sidevesh.Luminance.gschema.xml" "$pkgdir/usr/share/glib-2.0/schemas/"
   cp "./install_files/44-backlight-permissions.rules" "$pkgdir/usr/lib/udev/rules.d/44-backlight-permissions.rules"
-  cp "./install_files/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.sidevesh.Luminance.svg"
+  cp "./icons/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.sidevesh.Luminance.svg"
 }
 
 post_install() {
   /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
-  /usr/bin/gtk-update-icon-cache "$pkgdir/usr/share/icons/hicolor/"
+  /usr/bin/gtk-update-icon-cache /usr/share/icons/hicolor/
 }
 
 post_upgrade() {
   /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
-  /usr/bin/gtk-update-icon-cache "$pkgdir/usr/share/icons/hicolor/"
+  /usr/bin/gtk-update-icon-cache /usr/share/icons/hicolor/
 }
 
 post_remove() {
   /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
-  /usr/bin/gtk-update-icon-cache "$pkgdir/usr/share/icons/hicolor/"
+  /usr/bin/gtk-update-icon-cache /usr/share/icons/hicolor/
 }
