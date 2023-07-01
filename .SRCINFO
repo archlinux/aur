@@ -1,0 +1,13 @@
+pkgbase = domust-bin
+	pkgdesc = Domust is a home automation system that allows you to control your home form your computer.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lucafulgenzi/domust
+	arch = x86_64
+	license = AGPL-3.0
+	provides = domust
+	conflicts = domust
+	source = https://github.com/lucafulgenzi/domust/releases/download/0.1.0/domust-0.1.0-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = domust-bin
