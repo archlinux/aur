@@ -1,12 +1,12 @@
 #Maintainer: Daniel Lehmann <daniellehmann28@outlook.de>
 pkgname=powershell-empire-git
 _name=Empire
-pkgver=5.1.2
+pkgver=5.1.2.r0.ge782c80
 pkgrel=1
 pkgdesc="Empire is a PowerShell and Python 3.x post-exploitation framework"
 url="https://github.com/BC-SECURITY/Empire"
 arch=('any')
-depends=('dotnet-sdk-6.0' 'powershell' 'openssl' 'python-docopt' 'python-prompt_toolkit' 'python-terminaltables' 'python-requests' python-socketio python-humanize python-setuptools python-pyperclip python-uvicorn python-fastapi python-sqlalchemy python-jose python-passlib python-sqlalchemy-utc python-pymysql)
+depends=('dotnet-sdk-6.0' 'powershell' 'openssl' 'python-docopt' 'python-prompt_toolkit' 'python-terminaltables' 'python-requests' python-socketio python-humanize python-setuptools python-pyperclip uvicorn python-fastapi python-sqlalchemy python-jose python-passlib python-sqlalchemy-utc python-pymysql)
 optdepends=(
     'mysql: stager data can be placed in database'
     'xar: enables generating .dmg stagers'

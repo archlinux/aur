@@ -1,6 +1,6 @@
 pkgbase = powershell-empire-git
 	pkgdesc = Empire is a PowerShell and Python 3.x post-exploitation framework
-	pkgver = 5.1.2
+	pkgver = 5.1.2.r0.ge782c80
 	pkgrel = 1
 	url = https://github.com/BC-SECURITY/Empire
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = powershell-empire-git
 	depends = python-humanize
 	depends = python-setuptools
 	depends = python-pyperclip
-	depends = python-uvicorn
+	depends = uvicorn
 	depends = python-fastapi
 	depends = python-sqlalchemy
 	depends = python-jose
