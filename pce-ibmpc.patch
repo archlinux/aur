@@ -1,0 +1,131 @@
+--- pce-ibmpc.cfg.orig	2023-06-30 15:21:33.814803824 -0400
++++ pce-ibmpc.cfg	2023-06-30 16:36:30.813460122 -0400
+@@ -17,6 +17,7 @@
+ # is added to the beginning of the search path.
+ path = "rom"
+ path = "/usr/share/pce/ibmpc"
++path = "/usr/share/pce/video"
+ path = "-."
+ 
+ 
+@@ -80,7 +81,7 @@
+ cpu {
+ 	# The CPU model.
+ 	# Recognized models are: 8086, 8088, 80186, 80188
+-	model = "80186"
++	model = "8088"
+ 
+ 	# This sets the CPU speed with respect to the emulated
+ 	# system clock. A value of 1 emulates a 4.77MHz CPU.
+@@ -126,14 +127,14 @@
+ 	# The main BIOS
+ 	format  = "binary"
+ 	address = 0xfe000
+-	file    = "ibm-pc-1982.rom"
++	file    = "ibm-pc-1982-10-27.rom"
+ }
+ 
+ load {
+ 	# The ROM BASIC
+ 	format  = "binary"
+ 	address = 0xf6000
+-	file    = "basic-1.10.rom"
++	file    = "ibm-basic-1.10.rom"
+ }
+ 
+ load {
+@@ -262,7 +263,7 @@
+ 		address = 0xc0000
+ 		size    = 32768
+ 		default = 0xff
+-		file    = "ibmvga.rom"
++		file    = "ibm-vga.rom"
+ 	}
+ }
+ 
+@@ -291,7 +292,7 @@
+ 		address = 0xc0000
+ 		size    = 16384
+ 		default = 0xff
+-		file    = "ibmega.rom"
++		file    = "ibm-ega.rom"
+ 	}
+ }
+ 
+@@ -402,9 +403,9 @@
+ 	sample_rate = 44100
+ 
+ 	#driver = "null"
+-	#driver = "wav:wav=speaker.wav:lowpass=0:wavfilter=0"
++	#driver = "wav:wav=/tmp/speaker.wav:lowpass=0:wavfilter=0"
+ 	#driver = "oss:dev=/dev/dsp:wav=speaker.wav:lowpass=0:wavfilter=0"
+-	driver = "sdl:wav=speaker.wav:lowpass=0:wavfilter=0"
++	driver = "sdl:wav=/tmp/speaker.wav:lowpass=0:wavfilter=0"
+ }
+ 
+ 
+@@ -456,14 +457,14 @@
+ 	# all platforms.
+ 	#driver = "mouse:xmul=1:xdiv=1:ymul=1:ydiv=1"
+ 	#driver = "null"
+-	#driver = "posix:file=serport1.out"
++	#driver = "posix:file=/tmp/serport1.out"
+ 	#driver = "pty:symlink=com1"
+-	driver = "stdio:file=serport1.out:flush=1"
++	driver = "stdio:file=/tmp/serport1.out:flush=1"
+ 	#driver = "tios:file=/dev/ttyS0"
+ 	#driver = "tcp:port=5555:telnet=1:telnetinit=1:usectl=1"
+ 
+ 	# Log all traffic to this file. This is for debugging.
+-	#log = "serport1.log"
++	#log = "/tmp/serport1.log"
+ }
+ 
+ serial {
+@@ -480,14 +481,14 @@
+ 	# LPT1
+ 	address = 0x378
+ 
+-	driver = "stdio:file=parport1.out"
++	driver = "stdio:file=/tmp/parport1.out"
+ }
+ 
+ parport {
+ 	# LPT2
+ 	address = 0x278
+ 
+-	driver = "stdio:file=parport2.out"
++	driver = "stdio:file=/tmp/parport2.out"
+ }
+ 
+ 
+@@ -505,13 +506,13 @@
+ 	# it does not exist.
+ 	# Setting this is equivalent to setting a write image and
+ 	# not setting a read image.
+-	file = "cas1.pti"
++	file = "/tmp/cas1.pti"
+ 
+ 	# The read tape image.
+-	#read = "cas1.pti
++	#read = "/tmp/cas1.pti
+ 
+ 	# The write tape image.
+-	#write = "cas1.pti"
++	#write = "/tmp/cas1.pti"
+ }
+ 
+ 
+@@ -557,9 +558,9 @@
+ 		# The hard disk BIOS
+ 		format  = "binary"
+ 		address = 0xc8000
+-		file    = "ibm-hdc-1985-10-28.rom"
+-	#	file    = "sms-hdc-1986.rom"
+-	#	file    = "dtc-hdc-1988-05-31.rom"
++		file    = "ibm-xebec-hdc-1985.rom"
++	#	file    = "dtc-hdc-1988.rom"
++	#	MISSING file    = "sms-hdc-1986.rom" 
+ 	}
+ 
+ 	# The XT hard disk controller

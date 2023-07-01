@@ -53,6 +53,7 @@ source=(
   "${url}/rom/rc759/rc759-1-5.1.rom"
   "${url}/rom/rc759/rc759-2-4.0.rom"
   "${url}/rom/rc759/rc759-2-5.1.rom"
+  'pce-ibmpc.patch'
   )
 sha512sums=('SKIP'
             '64a90a40473ef340c429a76f12b23c4d7cceee808abc23d8cd54a977afdef7ae8a96918462450aed9b8dce578a4690982dd21fe39ac69e60c780bd90fbff11ac'
@@ -93,7 +94,8 @@ sha512sums=('SKIP'
             '7538472a1abd85cd4635d2301e7a2add24bf808ad8d2d2e6b38ee18e0c1971f35fd71450f10c17f1e22c6dbf30fef038dc7dae383ca94c9bfe78224f750711ad'
             '0086c238b47df27a92d6b42e3b7288e38fd8cdfa7fbe8683e4c875bdc2497b5f3642eb95dc75d0912272e92da428bdcc5ff5576c15c87a1809df35b9bc09b106'
             '3926e96914e55f977c5da397671a84523e14a93e1d0d0ae46df8466e4a7da42ed146bb2441bfc88445083fa6d9e339cf9b734489ec29ac7b7c71970ae4405504'
-            '61e5402000725497b26fc608161c222ad945087638c245b8e20ec475d880c826658627f404fc05d1cc06a0e348ab6be6812c883a6372531f0f053f04babe65ad')
+            '61e5402000725497b26fc608161c222ad945087638c245b8e20ec475d880c826658627f404fc05d1cc06a0e348ab6be6812c883a6372531f0f053f04babe65ad'
+            '30a041dd73c85de6c4169dd92bdfbfe680326749907757a13eb567135087ddee99fdaae1b86fcffcc89e2e91fd3de08076d537b25dc7fc03a872dadadcdef76d')
 
 pkgver() {
   #ln -sf BambuStudio "BambuStudio"
@@ -116,6 +118,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share/${_pkgname}"
   mv "${pkgdir}/usr/etc/pce" "${pkgdir}/usr/share/${_pkgname}/config"
   rm -rf "${pkgdir}/usr/etc"
+  cd "${pkgdir}/usr/share/${_pkgname}/config"
+  patch -p0 < "$srcdir/pce-ibmpc.patch"
 
   # install doc files
   mkdir -p "$pkgdir/usr/share/doc/${_pkgname}"
