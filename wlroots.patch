@@ -1,0 +1,103 @@
+diff --unified --recursive --text package.orig/hyprland/CMakeLists.txt package.new/hyprland/CMakeLists.txt
+--- package.orig/hyprland/CMakeLists.txt	2023-07-01 15:03:39.947388996 +0300
++++ package.new/hyprland/CMakeLists.txt	2023-07-01 17:06:18.435153913 +0300
+@@ -71,8 +71,6 @@
+ 
+ include_directories(
+   .
+-  "subprojects/wlroots/include/"
+-  "subprojects/wlroots/build/include/"
+   "subprojects/udis86/"
+   "protocols/")
+ set(CMAKE_CXX_STANDARD 23)
+@@ -87,7 +85,7 @@
+ 
+ find_package(PkgConfig REQUIRED)
+ find_package(OpenGL REQUIRED)
+-pkg_check_modules(deps REQUIRED IMPORTED_TARGET wayland-server wayland-client wayland-cursor wayland-protocols cairo libdrm xkbcommon libinput pango pangocairo pixman-1) # we do not check for wlroots, as we provide it ourselves
++pkg_check_modules(deps REQUIRED IMPORTED_TARGET wayland-server wayland-client wayland-cursor wayland-protocols cairo libdrm xkbcommon libinput pango pangocairo pixman-1 wlroots) # we do check for wlroots
+ 
+ file(GLOB_RECURSE SRCFILES CONFIGURE_DEPENDS "src/*.cpp")
+ 
+@@ -178,7 +176,6 @@
+ target_link_libraries(Hyprland PkgConfig::deps)
+ 
+ target_link_libraries(Hyprland
+-        ${CMAKE_SOURCE_DIR}/subprojects/wlroots/build/libwlroots.so.12032 # wlroots is provided by us
+         OpenGL::EGL
+         OpenGL::GL
+         Threads::Threads
+diff --unified --recursive --text package.orig/hyprland/Makefile package.new/hyprland/Makefile
+--- package.orig/hyprland/Makefile	2023-07-01 15:03:39.947388996 +0300
++++ package.new/hyprland/Makefile	2023-07-01 17:08:07.119499917 +0300
+@@ -24,16 +24,12 @@
+ 
+ all:
+ 	$(MAKE) clear
+-	$(MAKE) fixwlr
+-	cd ./subprojects/wlroots && meson setup build/ --buildtype=release && ninja -C build/ && mkdir -p ${PREFIX}/lib/ && cp ./build/libwlroots.so.12032 ${PREFIX}/lib/ || echo "Could not install libwlroots to ${PREFIX}/lib/libwlroots.so.12032"
+ 	cd subprojects/udis86 && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B./build -G Ninja && cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF`
+ 	$(MAKE) release
+ 	$(MAKE) -C hyprctl all
+ 
+ install:
+ 	$(MAKE) clear
+-	$(MAKE) fixwlr
+-	cd ./subprojects/wlroots && meson setup build/ --buildtype=release && ninja -C build/ && mkdir -p ${PREFIX}/lib/ && cp ./build/libwlroots.so.12032 ${PREFIX}/lib/ || echo "Could not install libwlroots to ${PREFIX}/lib/libwlroots.so.12032"
+ 	cd subprojects/udis86 && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -S . -B./build -G Ninja && cmake --build ./build --config Release --target all -j`nproc 2>/dev/null || getconf NPROCESSORS_CONF` && cd ../..
+ 	$(MAKE) release
+ 	$(MAKE) -C hyprctl all
+@@ -53,12 +49,9 @@
+ 
+ 	mkdir -p ${PREFIX}/include/hyprland
+ 	mkdir -p ${PREFIX}/include/hyprland/protocols
+-	mkdir -p ${PREFIX}/include/hyprland/wlroots
+ 	mkdir -p ${PREFIX}/share/pkgconfig
+ 	
+ 	find src -name '*.h*' -print0 | cpio --quiet -0dump ${PREFIX}/include/hyprland
+-	cd subprojects/wlroots/include && find . -name '*.h*' -print0 | cpio --quiet -0dump ${PREFIX}/include/hyprland/wlroots && cd ../../..
+-	cd subprojects/wlroots/build/include && find . -name '*.h*' -print0 | cpio --quiet -0dump ${PREFIX}/include/hyprland/wlroots && cd ../../../..
+ 	cp ./protocols/*-protocol.h ${PREFIX}/include/hyprland/protocols
+ 	cp ./build/hyprland.pc ${PREFIX}/share/pkgconfig
+ 	if [ -d /usr/share/pkgconfig ]; then cp ./build/hyprland.pc /usr/share/pkgconfig 2>/dev/null || true; fi
+@@ -103,12 +96,9 @@
+ 
+ 	mkdir -p ${PREFIX}/include/hyprland
+ 	mkdir -p ${PREFIX}/include/hyprland/protocols
+-	mkdir -p ${PREFIX}/include/hyprland/wlroots
+ 	mkdir -p ${PREFIX}/share/pkgconfig
+ 	
+ 	find src -name '*.h*' -print0 | cpio --quiet -0dump ${PREFIX}/include/hyprland
+-	cd subprojects/wlroots/include && find . -name '*.h*' -print0 | cpio --quiet -0dump ${PREFIX}/include/hyprland/wlroots && cd ../../..
+-	cd subprojects/wlroots/build/include && find . -name '*.h*' -print0 | cpio --quiet -0dump ${PREFIX}/include/hyprland/wlroots && cd ../../../..
+ 	cp ./protocols/*-protocol.h ${PREFIX}/include/hyprland/protocols
+ 	cp ./build/hyprland.pc ${PREFIX}/share/pkgconfig
+ 	if [ -d /usr/share/pkgconfig ]; then cp ./build/hyprland.pc /usr/share/pkgconfig 2>/dev/null || true; fi
+diff --unified --recursive --text package.orig/hyprland/hyprland.pc.in package.new/hyprland/hyprland.pc.in
+--- package.orig/hyprland/hyprland.pc.in	2023-07-01 15:03:39.954055686 +0300
++++ package.new/hyprland/hyprland.pc.in	2023-07-01 17:07:04.560834387 +0300
+@@ -5,4 +5,4 @@
+ URL: https://github.com/hyprwm/Hyprland
+ Description: Hyprland header files
+ Version: @HYPRLAND_VERSION@
+-Cflags: -I"${includedir}/hyprland/protocols" -I"${includedir}/hyprland/wlroots" -I"${includedir}"
++Cflags: -I"${includedir}/hyprland/protocols" -I"${includedir}"
+diff --unified --recursive --text package.orig/hyprland/meson.build package.new/hyprland/meson.build
+--- package.orig/hyprland/meson.build	2023-07-01 15:03:39.954055686 +0300
++++ package.new/hyprland/meson.build	2023-07-01 17:06:32.994842398 +0300
+@@ -39,7 +39,7 @@
+   ],
+   language: 'cpp')
+ 
+-wlroots = subproject('wlroots', default_options: ['examples=false'])
++wlroots = dependency('wlroots', default_options: ['examples=false'])
+ have_xwlr = wlroots.get_variable('features').get('xwayland')
+ xcb_dep = dependency('xcb', required: get_option('xwayland'))
+ 
+@@ -96,5 +96,5 @@
+   url: 'https://github.com/hyprwm/Hyprland',
+   description: 'Hyprland header files',
+   install_dir: pkg_install_dir,
+-  subdirs: ['', 'hyprland/protocols', 'hyprland/wlroots'],
++  subdirs: ['', 'hyprland/protocols'],
+ )
