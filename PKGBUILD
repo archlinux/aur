@@ -5,8 +5,8 @@
 
 pkgname=emby-server-beta
 pkgver=4.8.0.39
-pkgrel=1
-_ffmpeg_ver=2023_03_08
+pkgrel=2
+_ffmpeg_ver=2023_04_28
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('x86_64')
 url='https://emby.media'
@@ -61,7 +61,7 @@ noextract=('license.docx')
 backup=('etc/conf.d/emby-server')
 install=emby-server.install
 sha256sums=('f9f0ec291795ce8bf59e981b607ac7c97959fd24ada591c94ea906c13162931d'
-            '4db44f783278eaacda5554c6b8b20a0cbcb2f7a07dacab1019fdbee9c9f69f57'
+            'd8067b22297ff9cc63577ac8725b179df16d53112110f1e5b841416da0548198'
             '0351d6e9118853e3aa275d62b67dce4444b3d85130b05fb889b2069f364f47ca'
             '8bd03d803e295bea89e9c7bad17e774218f8dc4be9826af124b1f83bc4b256b6'
             'a7f2e38d2d196984d1c1632c851215aea9072b3af998d10a6b68477ad886ea14'
