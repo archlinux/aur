@@ -7,7 +7,7 @@ pkgbase = blueprint-compiler-health
 	license = LGPL
 	makedepends = meson
 	depends = python-gobject
-	source = git+https://gitlab.gnome.org/jwestman/blueprint-compiler#commit=87cedc2c7e
+	source = git+https://gitlab.gnome.org/jwestman/blueprint-compiler#commit=93f2a27e
 	sha256sums = SKIP
 
 pkgname = blueprint-compiler-health

@@ -15,7 +15,7 @@ depends=(
 makedepends=(
   meson
 )
-_commit="87cedc2c7e"
+_commit="93f2a27e"
 _repo_url="https://gitlab.gnome.org/${_ns}/${_pkgname}"
 source=(
   "git+${_repo_url}#commit=${_commit}")
