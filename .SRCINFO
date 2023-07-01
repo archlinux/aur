@@ -1,5 +1,5 @@
 pkgbase = flutter-light
-	pkgver = 3.7.12
+	pkgver = 3.10.5
 	pkgrel = 1
 	url = https://flutter.dev
 	arch = x86_64
@@ -12,19 +12,17 @@ pkgbase = flutter-light
 	optdepends = android-studio
 	optdepends = intellij-idea-community-edition
 	optdepends = intellij-idea-ultimate-edition
+	optdepends = cmake
 	optdepends = ninja
 	optdepends = perl
 	optdepends = python
-	options = !emptydirs
+	options = emptydirs
 	options = !strip
 	source = flutter.sh
-	source = flutter.csh
-	sha256sums = 1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a
-	sha256sums = 7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f
+	sha256sums = 5993b28055a91eea1888ebda54b08e2131b6fae9ff41d35318df1042cc5f9b07
 
 pkgname = flutter-light-common
 	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android. Using the dart package provided by Arch devs (slower updates)
-	install = flutter-light.install
 	arch = x86_64
 	arch = aarch64
 	depends = git
@@ -41,19 +39,19 @@ pkgname = flutter-light-common
 	backup = opt/flutter/packages/flutter/pubspec.yaml
 
 pkgname = flutter-light-android-arm
-	depends = flutter
+	depends = flutter-light-common
 
 pkgname = flutter-light-android-arm64
-	depends = flutter
+	depends = flutter-light-common
 
 pkgname = flutter-light-android-x86
-	depends = flutter
+	depends = flutter-light-common
 
 pkgname = flutter-light-android-x64
-	depends = flutter
+	depends = flutter-light-common
 
 pkgname = flutter-light-web
-	depends = flutter
+	depends = flutter-light-common
 
 pkgname = flutter-light-linux
-	depends = flutter
+	depends = flutter-light-common

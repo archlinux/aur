@@ -4,35 +4,39 @@
 
 pkgname=('flutter-light-common' 'flutter-light-android-arm' 'flutter-light-android-arm64' 'flutter-light-android-x86' 'flutter-light-android-x64' 'flutter-light-web' 'flutter-light-linux')
 pkgbase=flutter-light
-_pkgname=flutter
-pkgver=3.7.12
+pkgver=3.10.5
 pkgrel=1
 makedepends=("python")
-optdepends=("android-sdk" "android-studio" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "ninja" "perl" "python")
+optdepends=("android-sdk" "android-studio" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "cmake" "ninja" "perl" "python")
 
 arch=("x86_64" "aarch64")
-url="https://${_pkgname}.dev"
+url="https://flutter.dev"
 license=("custom" "BSD" "CCPL")
-options=("!emptydirs" "!strip")
+options=("emptydirs" "!strip")
 source=(
-  "${_pkgname}.sh"
-  "${_pkgname}.csh"
+  "flutter.sh"
 )
 
-sha256sums=('1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
-            '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
+sha256sums=('5993b28055a91eea1888ebda54b08e2131b6fae9ff41d35318df1042cc5f9b07')
 
 prepare() {
-  rm -rf $srcdir/$_pkgname
-  git clone https://github.com/flutter/flutter.git --depth 1 -b $pkgver $_pkgname
-  cd $srcdir/$_pkgname
-  rm -rf bin/cache .pub-cache
-  #sed -i "s/\$FLUTTER_ROOT\/bin\/cache\/dart-sdk/\/opt\/dart-sdk/g" "${srcdir}/${_pkgname}/bin/internal/shared.sh"
-  sed -i "/\"\$FLUTTER_ROOT\/bin\/internal\/update_dart_sdk.sh\"/d" "${srcdir}/${_pkgname}/bin/internal/shared.sh"
-  mkdir -p "${srcdir}/${_pkgname}/bin/cache/"
-  ln -sf "/opt/dart-sdk" "${srcdir}/${_pkgname}/bin/cache/dart-sdk"
-  ln -s "${srcdir}/${_pkgname}/bin/internal/engine.version" "${srcdir}/${_pkgname}/bin/cache/engine.stamp"
-  "${srcdir}/${_pkgname}/bin/flutter" precache
+  if [ ! -e $srcdir/flutter ]; then
+    git clone https://github.com/flutter/flutter.git --depth 1 -b stable
+  fi
+  cd $srcdir/flutter
+  git clean -dfx
+  _ver=$(git tag -l)
+  if [[ $_ver != $pkgver  ]]; then
+	git pull --update-shallow
+  fi
+  _ver=$(git tag -l)
+  if [[ $_ver != $pkgver  ]]; then
+  	exit 1
+  fi
+  sed -i "/\"\$FLUTTER_ROOT\/bin\/internal\/update_dart_sdk.sh\"/d" "${srcdir}/flutter/bin/internal/shared.sh"
+  mkdir -p "${srcdir}/flutter/bin/cache/"
+  ln -sf "/opt/dart-sdk" "${srcdir}/flutter/bin/cache/"
+  "${srcdir}/flutter/bin/flutter" --no-version-check precache
 }
 
 package_flutter-light-common() {
@@ -40,82 +44,79 @@ package_flutter-light-common() {
   conflicts=(flutter)
   depends=("git" "glu" "java-environment>=8" "libglvnd" "unzip" "dart" "flutter-light-android-arm64" "dart")
   arch=("x86_64" "aarch64")
-  backup=("opt/${_pkgname}/packages/${_pkgname}_test/pubspec.yaml" "opt/${_pkgname}/packages/${_pkgname}/pubspec.yaml")
+  backup=("opt/flutter/packages/flutter_test/pubspec.yaml" "opt/flutter/packages/flutter/pubspec.yaml")
   pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android. Using the dart package provided by Arch devs (slower updates)"
-  install="${pkgbase}.install"
   
-  install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
-  install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/etc/profile.d/${_pkgname}.sh"
-  install -Dm755 "${srcdir}/${_pkgname}.csh" "${pkgdir}/etc/profile.d/${_pkgname}.csh"
-  install -dm755 "${pkgdir}/opt/${_pkgname}"
+  install -Dm644 "${srcdir}/flutter/LICENSE" "${pkgdir}/usr/share/licenses/flutter/LICENSE"
+  install -Dm755 "${srcdir}/flutter.sh" "${pkgdir}/usr/bin/flutter"
+  install -dm755 "${pkgdir}/opt/flutter"
   install -dm755 "${pkgdir}/usr/bin"
-  cp -ra "${srcdir}/${_pkgname}" "${pkgdir}/opt/"
-  rm -rf ${pkgdir}/opt/${_pkgname}/bin/cache/artifacts/engine/{android*,linux*}
-  rm -rf "${pkgdir}/opt/${_pkgname}/bin/cache/flutter_web_sdk"
-  find "${pkgdir}/opt/${_pkgname}" -type d -exec chmod a+rx {} +
-  find "${pkgdir}/opt/${_pkgname}" -type f -exec chmod a+r {} +
+  cp -ra "${srcdir}/flutter" "${pkgdir}/opt/"
+  rm -rf ${pkgdir}/opt/flutter/bin/cache/artifacts/engine/{android*,linux*} ${pkgdir}/opt/flutter/bin/cache/flutter_web_sdk
+
+  # version overriding, something broken; not my fault *grumble*
+  echo "${pkgver}" > "${pkgdir}/opt/flutter/version" 
+  find "${pkgdir}/opt/flutter" -type d -exec chmod a+rx {} +
+  find "${pkgdir}/opt/flutter" -type f -exec chmod a+r {} +
+
   # those files *must* be read-write for end-users; not my fault *grumble*
-  chmod a+rw "${pkgdir}/opt/${_pkgname}/version" "${pkgdir}/opt/${_pkgname}/bin/cache/lockfile" "${pkgdir}/opt/${_pkgname}/bin/cache/usbmuxd.stamp" "${pkgdir}/opt/${_pkgname}/bin/cache/libimobiledevice.stamp"
-  ln -s "/opt/${pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/"
+  chmod a+rw "${pkgdir}/opt/flutter"
+  chmod -R a+rw "${pkgdir}/opt/flutter/version" "${pkgdir}/opt/flutter/bin/cache" "${pkgdir}/opt/flutter/.git"
+  find "${pkgdir}/opt/flutter" -name "pubspec.lock" -exec chmod a+rw {} +
+  find "${pkgdir}/opt/flutter" -name "package_config.json" -exec chmod a+rw {} +
+  find "${pkgdir}/opt/${pkgname}" -name "package_config.json" -exec chmod a+rw {} +
 }
 
 package_flutter-light-android-arm() {
-  depends=("flutter")
+  depends=("flutter-light-common")
   
-  install -dm755 "${pkgdir}/opt/${_pkgname}/bin/cache/artifacts/engine"
-  cp -ra "${srcdir}/${_pkgname}/bin/cache/artifacts/engine/android-arm" "${pkgdir}/opt/${_pkgname}/bin/cache/artifacts/engine"
-  cp -ra ${srcdir}/${_pkgname}/bin/cache/artifacts/engine/android-arm-* ${pkgdir}/opt/${_pkgname}/bin/cache/artifacts/engine
-  
-  find "${pkgdir}/opt/${_pkgname}" -type d -exec chmod a+rx {} +
-  find "${pkgdir}/opt/${_pkgname}" -type f -exec chmod a+r {} +
+  install -dm755 "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
+  cp -ra "${srcdir}/flutter/bin/cache/artifacts/engine/android-arm" "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
+  cp -ra ${srcdir}/flutter/bin/cache/artifacts/engine/android-arm-* ${pkgdir}/opt/flutter/bin/cache/artifacts/engine
+  chmod -R a+rw "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
 }
 
 package_flutter-light-android-arm64() {
-  depends=("flutter")
+  depends=("flutter-light-common")
   
-  install -dm755 "${pkgdir}/opt/${_pkgname}/bin/cache/artifacts/engine"
-  cp -ra ${srcdir}/${_pkgname}/bin/cache/artifacts/engine/android-arm64* ${pkgdir}/opt/${_pkgname}/bin/cache/artifacts/engine
+  install -dm755 "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
+  cp -ra ${srcdir}/flutter/bin/cache/artifacts/engine/android-arm64* ${pkgdir}/opt/flutter/bin/cache/artifacts/engine
   
-  find "${pkgdir}/opt/${_pkgname}" -type d -exec chmod a+rx {} +
-  find "${pkgdir}/opt/${_pkgname}" -type f -exec chmod a+r {} +
+  chmod -R a+rw "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
 }
 
 package_flutter-light-android-x86() {
-  depends=("flutter")
+  depends=("flutter-light-common")
 
-  install -dm755 "${pkgdir}/opt/${_pkgname}/bin/cache/artifacts/engine"
-  cp -ra ${srcdir}/${_pkgname}/bin/cache/artifacts/engine/android-x86* ${pkgdir}/opt/${_pkgname}/bin/cache/artifacts/engine
+  install -dm755 "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
+  cp -ra ${srcdir}/flutter/bin/cache/artifacts/engine/android-x86* ${pkgdir}/opt/flutter/bin/cache/artifacts/engine
   
-  find "${pkgdir}/opt/${_pkgname}" -type d -exec chmod a+rx {} +
-  find "${pkgdir}/opt/${_pkgname}" -type f -exec chmod a+r {} +
+  chmod -R a+rw "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
 }
 
 package_flutter-light-android-x64() {
-  depends=("flutter")
+  depends=("flutter-light-common")
 
-  install -dm755 "${pkgdir}/opt/${_pkgname}/bin/cache/artifacts/engine"
-  cp -ra ${srcdir}/${_pkgname}/bin/cache/artifacts/engine/android-x64 ${pkgdir}/opt/${_pkgname}/bin/cache/artifacts/engine
+  install -dm755 "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
+  cp -ra ${srcdir}/flutter/bin/cache/artifacts/engine/android-x64 ${pkgdir}/opt/flutter/bin/cache/artifacts/engine
   
-  find "${pkgdir}/opt/${_pkgname}" -type d -exec chmod a+rx {} +
-  find "${pkgdir}/opt/${_pkgname}" -type f -exec chmod a+r {} +
+  chmod -R a+rw "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
 }
 
 package_flutter-light-web() {
-  depends=("flutter")
+  depends=("flutter-light-common")
 
-  install -dm755 "${pkgdir}/opt/${_pkgname}/bin/cache"
-  cp -ra "${srcdir}/${_pkgname}/bin/cache/flutter_web_sdk" "${pkgdir}/opt/${_pkgname}/bin/cache"
+  install -dm755 "${pkgdir}/opt/flutter/bin/cache"
+  cp -ra "${srcdir}/flutter/bin/cache/flutter_web_sdk" "${pkgdir}/opt/flutter/bin/cache"
   
-  find "${pkgdir}/opt/${_pkgname}" -type d -exec chmod a+rx {} +
-  find "${pkgdir}/opt/${_pkgname}" -type f -exec chmod a+r {} +
+  chmod -R a+rw "${pkgdir}/opt/flutter/bin/cache/flutter_web_sdk"
 }
 
 package_flutter-light-linux() {
-  depends=("flutter")
+  depends=("flutter-light-common")
 
-  install -dm755 "${pkgdir}/opt/${_pkgname}/bin/cache/artifacts/engine"
-  cp -ra ${srcdir}/${_pkgname}/bin/cache/artifacts/engine/linux* ${pkgdir}/opt/${_pkgname}/bin/cache/artifacts/engine
+  install -dm755 "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
+  cp -ra ${srcdir}/flutter/bin/cache/artifacts/engine/linux* ${pkgdir}/opt/flutter/bin/cache/artifacts/engine
   
-  find "${pkgdir}/opt/${_pkgname}" -type d -exec chmod a+rx {} +
-  find "${pkgdir}/opt/${_pkgname}" -type f -exec chmod a+r {} +
+  chmod -R a+rw "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
 }
