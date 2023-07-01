@@ -44,6 +44,9 @@ prepare() {
 	rm -rf CMakeLists.txt
 	cp -a ${srcdir}/CMakeLists.txt ${srcdir}/CPackConfig.cmake ${srcdir}/Doxyfile .
 	sed -i 's|qsb |qsb-qt6 |g' scripts/compile-shaders
+	patch -Np1 < ${srcdir}/Uranium-5.3.0-qt-6.5-hack.patch
+	patch -Np1 < ${srcdir}/Uranium-5.3.0-qt-try-ints-then-bytes-for-gl-mask-functions.patch
+
 }
 
 build() {
