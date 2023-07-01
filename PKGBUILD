@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.12.0
 _pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -80,6 +80,9 @@ prepare() {
   # Get rid of hardcoded versions. Not like we ever cared about what upstream
   # thinks about which versions should be used anyway. ;) (FS#68772)
   sed -i -E "s/'([0-9a-z_-]+) .= [0-9].+[0-9]'/'\1'/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
+
+  # setup.py generates ~1Mb of warnings if you don't explicitly include namespace packages.
+  sed -i -E "s/find_packages/find_namespace_packages/" tensorflow-${_pkgver}/tensorflow/tools/pip_package/setup.py
 
   patch -Np1 -i "${srcdir}/tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-${_pkgver}
 
