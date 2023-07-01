@@ -1,7 +1,7 @@
 pkgbase = powershell-empire
 	pkgdesc = Empire is a PowerShell and Python 3.x post-exploitation framework
 	pkgver = 5.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/BC-SECURITY/Empire
 	arch = any
 	license = BSD-3-Clause
@@ -16,7 +16,7 @@ pkgbase = powershell-empire
 	depends = python-humanize
 	depends = python-setuptools
 	depends = python-pyperclip
-	depends = python-uvicorn
+	depends = uvicorn
 	depends = python-fastapi
 	depends = python-sqlalchemy
 	depends = python-jose
