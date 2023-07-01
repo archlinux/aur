@@ -13,6 +13,6 @@ pkgbase = atani
 	conflicts = atani-snap
 	replaces = atani-snap
 	source = https://api.snapcraft.io/api/v1/snaps/download/fRYdkXBDVAKnSXTJG5xa4PwBR4RqGDkV_181.snap
-	sha384sums = 8d0112c2917b99e8cf406b3b9d117981a32f21f73ab46e596110177ab2fbd79d8002401cac5845dd4574e2c3cc67c129
+	md5sums = SKIP
 
 pkgname = atani
