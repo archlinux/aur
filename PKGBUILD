@@ -11,7 +11,7 @@
 pkgname=unreal-engine-git
 _pkgname=unreal-engine
 pkgver=5.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -53,7 +53,7 @@ _use_system_clang=false
 # DON'T put a "/" at the start of the path
 ## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
 if [ "${_ue5_install_dir}" == "" ]; then
-  export _ue5_install_dir="opt/unreal-engine"
+  export _ue5_install_dir="opt/${_pkgname}"
 fi
 
 # Change this to true if you have a modern system and don't mind the extra packaging time (and size) to avoid compiling shaders on UE startup later; set to false by default for those with less robust systems
