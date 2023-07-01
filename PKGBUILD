@@ -6,7 +6,7 @@ pkgbase=linux-firmware-git
 pkgname=(linux-firmware-whence-git linux-firmware-git amd-ucode-git
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-git
 )
-pkgver=20221214.f3c283e
+pkgver=20230625.ee91452d
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
@@ -15,23 +15,9 @@ arch=('any')
 makedepends=('git')
 options=(!strip)
 #branch=main
-source=("${pkgbase}::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git?signed"
-         0001-Add-support-for-compressing-firmware-in-copy-firmware.patch
-         0001-Add-support-for-compressing-firmware-in-copy-firmware-modified.patch
-         allow-inplace-rebuild.patch)
-sha256sums=('SKIP'
-            '41c73f88ac68a3aef01fd406ce6cdb87555c65e4816dab12df10740875551aa7'
-            'b3b94f7671c632e8d353e7fb9a3eb967b795b3b2f28a7c1994f28ed69f0dde9f'
-            '33a486fc036ec2d2e99799550b61eab395e2dd27b0e02e52e0bd8b9f3810d003')
+source=("${pkgbase}::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git?signed")
+sha256sums=('SKIP')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
-
-prepare() {
-  cd ${pkgbase}
-
-  # add firmware compression support - patch taken from Fedora
-  patch -Np1 -i ../0001-Add-support-for-compressing-firmware-in-copy-firmware-modified.patch
-  patch -Np1 -i ../allow-inplace-rebuild.patch
-}
 
 pkgver() {
   cd ${pkgbase}
@@ -80,17 +66,25 @@ package_linux-firmware-git() {
 
   cd ${pkgbase}
 
-  make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware installcompress
+  # reverted to xz compression (https://bugs.archlinux.org/task/78892)
+  #ZSTD_CLEVEL=19 make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware install-zst
+  make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware install-xz
 
-  # Trigger a microcode reload for configurations not using early updates
-  echo 'w /sys/devices/system/cpu/microcode/reload - - - - 1' |
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/${pkgname%-git}.conf"
+  # useless without CONFIG_MICROCODE_LATE_LOADING
+  # https://bugs.archlinux.org/task/46591
+  #
+  # # Trigger a microcode reload for configurations not using early updates
+  # echo 'w /sys/devices/system/cpu/microcode/reload - - - - 1' |
+  #   install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/${pkgname%-git}.conf"
 
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname%-git}" -m644 LICEN*
 
-  # split
   cd "${pkgdir}"
 
+  # remove arm64 firmware https://bugs.archlinux.org/task/76583
+  rm usr/lib/firmware/mrvl/prestera/mvsw_prestera_fw_arm64-v4.1.img.xz
+
+  # split
   _pick linux-firmware-nfp usr/lib/firmware/netronome
   _pick linux-firmware-nfp usr/share/licenses/${pkgname%-git}/LICENCE.Netronome
 
@@ -100,7 +94,7 @@ package_linux-firmware-git() {
   _pick linux-firmware-marvell usr/share/licenses/${pkgname%-git}/LICENCE.{Marvell,NXP}
 
   _pick linux-firmware-qcom usr/lib/firmware/{qcom,a300_*}
-  _pick linux-firmware-qcom usr/share/licenses/${pkgname%-git}/LICENSE.qcom
+  _pick linux-firmware-qcom usr/share/licenses/${pkgname%-git}/LICENSE.qcom*
 
   _pick linux-firmware-liquidio usr/lib/firmware/liquidio
   _pick linux-firmware-liquidio usr/share/licenses/${pkgname%-git}/LICENCE.cavium_liquidio
@@ -147,8 +141,6 @@ package_linux-firmware-marvell-git() {
   depends=('linux-firmware-whence')
 
   mv -v linux-firmware-marvell/* "${pkgdir}"
-  # remove arm64 firmware #76583
-  rm "${pkgdir}"/usr/lib/firmware/mrvl/prestera/mvsw_prestera_fw_arm64-v4.1.img.xz
 }
 
 package_linux-firmware-qcom-git() {
