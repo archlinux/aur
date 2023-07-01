@@ -1,9 +1,10 @@
-push
-incorporate logspam fix
 download and build and test
+
+incorporate logspam fix
 official tensorflow tests
 try building it with latest git version. Maybe we don't need to stabilize?
 verify all the dirnames are accurate. I have probably mixed up tensorflow-upstream and tensorflow-rocm and tensorflow-opt-rocm...
+get cracking on fix for the tensorflow-rocm issue with the thing not exposing to the other thing
 
 # Later
 set up monthly(?) test builds so I can fix the build when upstream makes changes

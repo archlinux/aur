@@ -1,8 +1,11 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
-# Maintainer: Konstantin Gizdov (kgizdov) <arch@kge.pw>
+# Maintainer: Mark Peschel <mpeschel10@gmail.com>
+# Contributor: anakano <azusanakan0 at outlook dot com>
+# Contributor: wuxxin <wuxxin@gmail.com>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Contributor: Konstantin Gizdov (kgizdov) <arch@kge.pw>
 # Contributor: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
-# Contributor: Mark Peschel <mpeschel10@gmail.com>
 
 pkgbase=tensorflow-amd-git
 pkgname=(tensorflow-amd-git python-tensorflow-amd-git tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
@@ -119,8 +122,8 @@ build() {
   export PATH="${srcdir}/bazel:$PATH"
   # bazel somehow caches the jvm,
   #  so if you pacman -R jre11-openjdk; pacman -S jre-openjdk to see if modern java also works,
-  #  this script may still build as though java 20 is ok.
-  # For a clean test, rm -rf ~/.cache/bazel
+  #  makepkg may still build as though java 20 is ok.
+  # For a clean test, you must rm -rf ~/.cache/bazel
   
   # These environment variables influence the behavior of the configure call.
   export PYTHON_BIN_PATH=/usr/bin/python
