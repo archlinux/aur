@@ -1,27 +1,61 @@
-# Maintainer: Pranav K Anupam <pranavanupam@yahoo.com>
-_cranname=googlesheets4
-_cranver=1.0.1
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-googlesheets4
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Pranav K Anupam <pranavanupam@yahoo.com>
+
+_pkgname=googlesheets4
+_pkgver=1.1.1
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=2
 pkgdesc="Access Google Sheets using the Sheets API V4"
-arch=('any')
-url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL3')
-depends=('r>=3.4' 'r-cellranger' 'r-cli>=3.0.0'  'r-curl' 'r-gargle>=1.2.0' 'r-glue>=1.3.0' 'r-googledrive>=2.0.0' 'r-httr' 'r-ids'  'r-magrittr' 'r-purrr' 'r-rematch2' 'r-rlang>=1.0.2' 'r-tibble>=2.1.1' 'r-vctrs>=0.2.3')
+arch=(any)
+url="https://cran.r-project.org/package=${_pkgname}"
+license=(MIT)
+depends=(
+  r-cellranger
+  r-cli
+  r-curl
+  r-gargle
+  r-glue
+  r-googledrive
+  r-httr
+  r-ids
+  r-lifecycle
+  r-magrittr
+  r-purrr
+  r-rematch2
+  r-rlang
+  r-tibble
+  r-vctrs
+  r-withr
+)
+checkdepends=(
+  r-testthat
+)
+optdepends=(
+  r-readr
+  r-rmarkdown
+  r-spelling
+  r-testthat
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('8b017d8e142ceb41bd0baaee823a6508')
+sha256sums=('c5cc63348c54b9de8492e7b12b249245746ea1ff33e306f12431f4fc9386fccf')
 
-optdepends=('r-covr' 'r-readr' 'r-rmarkdown' 'r-sodium' 'r-spelling' 'r-testthat>=3.1.3' 'r-withr')
-sha256sums=('284ecbce98944093cb065c1b0b32074eae7b45fd74b87d7815c7ca6deca76591')
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-
-build(){
-cd "${srcdir}"
-R CMD INSTALL ${_pkgtar} -l ${srcdir}
+build() {
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
+}
+
 package() {
-cd "${scrdir}"
-install -dm0755 "$pkgdir/usr/lib/R/library"
-cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
-}
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+}
