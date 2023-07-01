@@ -3,7 +3,7 @@
 _major=72
 _gitname=icu
 _pkgname=$_gitname$_major
-pkgname="$_pkgname"
+pkgname="$_pkgname-bin"
 pkgver="$_major.1"
 pkgrel=1
 pkgdesc="International Components for Unicode library (version 72)"
