@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 optdepends=('fzf: fuzzy searching' 'fd: faster find' 'skim: fzf alternative')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/timdubbins/$pkgname/rchive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/timdubbins/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('d104a305fdbad800cc18938e05c397b60cc978fdddd701b850b393bcff8bb490')
 
 prepare() {
