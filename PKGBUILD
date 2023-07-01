@@ -4,7 +4,7 @@
 pkgname=vdr-mcli
 pkgver=1.0.1
 _vdrapi=2.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='This is a "plugin" for the Video Disk Recorder (VDR) to access DVB-streams produced by the NetCeiver-hardware.'
 url="https://github.com/vdr-projects/vdr-plugin-mcli/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ source=("$pkgname-${pkgver}.tar.gz::https://github.com/vdr-projects/vdr-plugin-m
         "vdr-mcli.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 sha256sums=('317cb962980985bf965e1ffdf9c8833c96a619bb5f0ea4fbd2c9c1cb7b3094f7'
-            'ee239172f41171e23e6bef1628fbea40e653003ad4e80591b6a6d689361dd27e'
+            '867cb2c49614281b7055388f8306cdb027915bbd2a7423484f0e56623ecb6bba'
             '65ed34d3b2ab22acba8879caeaf96ebbace0137b0b99f1e77b7993c1b5ed808b')
 
 build() {
