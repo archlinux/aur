@@ -112,16 +112,16 @@ prepare(){
 
   plain ""
 
-  # Remove gcc-plugin if gcc version = 13.0.0
-  if [[ "$_gccversion" = "13.0.0" ]]; then
-
-    msg2 "Remove GCC_PLUGINS"
-    scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
-    scripts/config --disable CONFIG_GCC_PLUGINS
-
-    sleep 2s
-    plain ""
-  fi
+  #  # Remove gcc-plugin if gcc version = 13.0.0
+  #  if [[ "$_gccversion" = "13.0.0" ]]; then
+  #
+  #    msg2 "Remove GCC_PLUGINS"
+  #    scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
+  #    scripts/config --disable CONFIG_GCC_PLUGINS
+  #
+  #    sleep 2s
+  #    plain ""
+  #  fi
 
   # Set LTO with CLANG/LLVM
   if [[ "$_compiler" = "2" ]]; then
@@ -237,13 +237,6 @@ prepare(){
   scripts/config --disable CONFIG_BPF_PRELOAD
   scripts/config --disable CONFIG_BPF_LIRC_MODE2
   scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
-
-  sleep 2s
-
-  # https://gitlab.com/alfredchen/linux-prjc/-/issues/81
-  # Disable mellanox module
-  msg2 "Disable mellanox module"
-  scripts/config --disable CONFIG_MLX5_CORE
 
   sleep 2s
 
