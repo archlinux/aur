@@ -6,7 +6,7 @@
 _release='2022'
 pkgname="labview-2022"
 pkgver="1"
-pkgrel=4
+pkgrel=5
 pkgdesc='A system-design platform and development environment for a visual programming language from National Instruments.'
 url="https://download.ni.com/support/softlib/labview/labview_development_system/2022%20Q3/Patches/f1/Linux/lv2022Q3_f1Patch_full-linux-mac.iso"
 arch=('x86_64')
@@ -85,7 +85,7 @@ package() {
   cp "${pkgdir}/usr/local/natinst/LabVIEW-2022-64/etc/desktop/mime/labview.xml" "${pkgdir}/usr/share/mime/packages"
 
   mkdir -p "${pkgdir}/usr/local/bin"
-  ln -s "${pkgdir}/usr/local/natinst/LabVIEW-2022-64/labviewprofull" "${pkgdir}/usr/local/bin/labview"
+  ln -s "/usr/local/natinst/LabVIEW-2022-64/labviewprofull" "${pkgdir}/usr/local/bin/labview"
  
   # apply patch 1
  # cp -p "${srcdir}/labview" "${pkgdir}/opt/natinst/LabVIEW-2022-64/"
