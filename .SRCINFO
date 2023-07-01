@@ -1,0 +1,16 @@
+pkgbase = labwc-tweaks-git
+	pkgdesc = Simple configuration GUI application for labwc
+	pkgver = r57.c52dc16
+	pkgrel = 1
+	url = https://github.com/labwc/labwc-tweaks
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	depends = gtk3
+	depends = libxml2
+	depends = wayland
+	depends = wayland-protocols
+	source = labwc-tweaks::git+https://github.com/labwc/labwc-tweaks.git
+	sha512sums = SKIP
+
+pkgname = labwc-tweaks-git
