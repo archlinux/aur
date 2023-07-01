@@ -1,4 +1,4 @@
-pkgbase = tensorflow
+pkgbase = tensorflow-amd-git
 	pkgdesc = Library for scalable machine learning (with ROCm)
 	pkgver = 2.12.0
 	pkgrel = 2
