@@ -2,14 +2,13 @@
 
 pkgname=popart
 pkgver=2019.07.15
-pkgrel=3
+pkgrel=4
 pkgdesc="Full-feature software for haplotype network reconstruction. https://doi.org/10.1111/2041-210X.12410"
 arch=('x86_64')
 url="https://popart.maths.otago.ac.nz/"
 license=('LGPL')
-depends=('lpsolve' 'qt5-base' 'hicolor-icon-theme')
-makedepends=('git' 'gendesk' 'suitesparse' 'marble')
-optdepends=('marble: map fucntion')
+depends=('lpsolve' 'qt5-base' 'hicolor-icon-theme' 'marble')
+makedepends=('git' 'gendesk' 'suitesparse')
 source=("git+https://github.com/jessicawleigh/popart-current.git")
 md5sums=('SKIP')
 pkgver(){
