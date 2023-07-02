@@ -1,7 +1,7 @@
 pkgbase = python-barbicanclient
 	pkgdesc = Client library for the Barbican Key Management API
 	pkgver = 5.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/python-barbicanclient/
 	arch = any
 	license = Apache

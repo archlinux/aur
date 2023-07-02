@@ -2,7 +2,7 @@
 
 pkgname=python-barbicanclient
 pkgver=5.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Client library for the Barbican Key Management API'
 arch=('any')
 url="https://docs.openstack.org/$pkgname/"
@@ -19,19 +19,19 @@ sha512sums=('3eeb1a6c2e4d0d6dbf24e2c331a004a1208517fc54db79964a9527f8decd622228b
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py build
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   # Skip failing test: MismatchError: 0 != None
   sed -i '/test_should_show_usage_with_help_flag/a\        return' barbicanclient/tests/test_barbican.py
   stestr run
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
