@@ -1,19 +1,21 @@
 # Maintainer: Dee.H.Y <dongfengweixiao at hotmail dot com>
 pkgname=dahliaos-clock-git
 pkgver=r39.5889188
-pkgrel=1
+pkgrel=2
 pkgdesc="dahliaOS built-in clock and alarms application."
 arch=('x86_64')
 url="https://github.com/dahliaOS/clock"
 license=('Apache')
 depends=('gtk3')
-makedepends=('git' 'flutter>=3.10.0' 'cmake' 'ninja' 'imagemagick' 'clang>=11.0.0')
+makedepends=('git' 'cmake' 'ninja' 'imagemagick' 'clang>=11.0.0')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/dahliaOS/clock.git'
-        "${pkgname%-git}.desktop")
+  "${pkgname%-git}.desktop"
+  "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.5-stable.tar.xz")
 sha256sums=('SKIP'
-            '0f974e8e9c49f61aa068254fe7fc31b1b38e1382011176f71f5da6c6318fde51')
+  '0f974e8e9c49f61aa068254fe7fc31b1b38e1382011176f71f5da6c6318fde51'
+  '86643cbfe8acf766a226a6cd4625bb8301c2601ea9bb825448318c8669b72a13')
 
 pkgver() {
   cd "$srcdir/clock"
@@ -22,8 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/clock"
-  flutter config --enable-linux-desktop
-  flutter build linux
+  $srcdir/flutter/bin/flutter build linux
 }
 
 package() {
