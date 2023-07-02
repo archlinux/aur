@@ -2,7 +2,7 @@
 
 pkgname=python-futurist
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Code from the future, delivered to you in the now.'
 arch=('any')
 url='https://docs.openstack.org/futurist/'
@@ -17,17 +17,17 @@ sha512sums=('1af2ea994f82a1814b54a779ab42bbbf3f7ef9d5fa8cd723b8c20df3eba038e23e0
 export PBR_VERSION=$pkgver
 
 build() {
-  cd futurist-$pkgver
+  cd futurist
   python setup.py build
 }
 
 check() {
-  cd futurist-$pkgver
+  cd futurist
   stestr run
 }
 
 package() {
-  cd futurist-$pkgver
+  cd futurist
   python setup.py install --root="$pkgdir" --optimize=1
 }
 

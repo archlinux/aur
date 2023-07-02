@@ -1,7 +1,7 @@
 pkgbase = python-futurist
 	pkgdesc = Code from the future, delivered to you in the now.
 	pkgver = 2.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/futurist/
 	arch = any
 	license = Apache
