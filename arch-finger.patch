@@ -1,7 +1,7 @@
-diff '--color=auto' -rupN adduser-debian-3.132.orig/adduser adduser-debian-3.132/adduser
---- adduser-debian-3.132.orig/adduser	2023-03-07 20:17:55.743091131 +1030
-+++ adduser-debian-3.132/adduser	2023-03-07 20:19:16.165702456 +1030
-@@ -1185,16 +1185,14 @@ sub ch_comment {
+diff '--color=auto' -rupN adduser-debian-3.137.orig/adduser adduser-debian-3.137/adduser
+--- adduser-debian-3.137.orig/adduser	2023-07-02 10:45:48.007039732 +0930
++++ adduser-debian-3.137/adduser	2023-07-02 10:46:01.457448798 +0930
+@@ -1296,16 +1296,14 @@ sub ch_comment {
      my $chfn = &which('chfn');
      my $comment = shift;
      if($comment =~ /,/) {

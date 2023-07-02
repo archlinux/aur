@@ -7,7 +7,7 @@
 # `conflicts` directives. Neither scenario is ideal, so just use the old name.
 pkgname=adduser-deb
 _pkgname=adduser-debian
-pkgver=3.132
+pkgver=3.137
 pkgrel=1
 pkgdesc="Debian's 'adduser' and 'deluser' commands for creating and removing users"
 arch=("any")
@@ -43,10 +43,10 @@ source=("https://salsa.debian.org/debian/adduser/-/archive/debian/${pkgver}/${_p
         "arch-finger.patch"
         "arch-license-path.patch"
         "arch-policy.patch")
-sha256sums=('dfeb96647b7f4e84eb26f78ae60da1a64b2d8f0071bbf9ba00c513db20a1bcef'
-            '0acd60ff4efb100b3f15042c3d31c447a387140240d72b81be25b6afdf952e02'
-            '7c6bbbb2cd59127b698977db8a9ffbe77815b4e1e2761f353a7946516147129e'
-            '320d34f3e08a4546c1737370c17c091810a364ab184638fbcf2759fef8e0a1ea')
+sha256sums=('28cdbd0b393a7ce2eb018caaf8dc1c0917d0937720372dc2d2cedbf0e4d2e9c1'
+            'a65b9919007d55fd5ace456276493e78a6cd2183d1277c458c74879cc2519e81'
+            '24329842e91bf863621eccb8abebcf2419019a572ea33dc61e85a8ad0b929545'
+            'e427698b1ff381bc5c6b1a696e28fdfc4aa9ffbb6a8124a4d612ded31b30e9ef')
 
 prepare() {
   # Arch's UID/GID policy differs a little from Debian's. I've included a patch
@@ -78,7 +78,7 @@ prepare() {
   # to make this customisable by the packager would be a good idea.
   patch -Np0 -d . -i arch-license-path.patch
   cd ${_pkgname}-${pkgver}
-  sed -i "s/my \$version = \"VERSION\"/my \$version = \"${pkgver}-arch${pkgrel}\"/" adduser deluser
+  sed -i "s/my \$version = \"DVERSION\"/my \$version = \"${pkgver}-arch${pkgrel}\"/" {add,del}user
   cd ..
 
   # On Arch, `chfn` comes from the `util-linux` package rather than `shadow`.
@@ -151,21 +151,22 @@ build() {
 package() {
   cd ${_pkgname}-${pkgver}
 
-  # Binaries
-  install -Dm755 adduser "${pkgdir}/usr/bin/adduser"
-  install -Dm755 deluser "${pkgdir}/usr/bin/deluser"
-  install -Dm755 AdduserCommon.pm "${pkgdir}/usr/share/perl5/vendor_perl/Debian/AdduserCommon.pm"
+  # Binaries and helper scripts
+  install -d "${pkgdir}/usr/bin" "${pkgdir}/usr/share/perl5/vendor_perl/Debian"
+  install -m755 {add,del}user "${pkgdir}/usr/bin"
+  install -m755 Adduser{Common,Logging,Retvalues}.pm \
+          "${pkgdir}/usr/share/perl5/vendor_perl/Debian"
   ln -s adduser "${pkgdir}/usr/bin/addgroup"
   ln -s deluser "${pkgdir}/usr/bin/delgroup"
 
   # Configuration files
-  install -Dm644 adduser.conf "${pkgdir}/etc/adduser.conf"
-  install -Dm644 deluser.conf "${pkgdir}/etc/deluser.conf"
+  install -d "${pkgdir}/etc"
+  install -m644 {add,del}user.conf "${pkgdir}/etc"
 
   # Documentation
   cd debian
   install -d "${pkgdir}/usr/share/doc/adduser"
-  install -Dm644 copyright NEWS README "${pkgdir}/usr/share/doc/adduser"
+  install -m644 copyright NEWS README "${pkgdir}/usr/share/doc/adduser"
 
   # Manpages
   # This is more than a mouthful, so let's work through it step-by-step.

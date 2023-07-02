@@ -1,7 +1,7 @@
-diff '--color=auto' -rupN adduser-debian-3.132.orig/AdduserCommon.pm adduser-debian-3.132/AdduserCommon.pm
---- adduser-debian-3.132.orig/AdduserCommon.pm	2023-03-07 18:08:25.694341050 +1030
-+++ adduser-debian-3.132/AdduserCommon.pm	2023-03-07 18:11:00.172778792 +1030
-@@ -286,18 +286,18 @@ sub preseed_config {
+diff '--color=auto' -rupN adduser-debian-3.137.orig/AdduserCommon.pm adduser-debian-3.137/AdduserCommon.pm
+--- adduser-debian-3.137.orig/AdduserCommon.pm	2023-07-02 10:32:42.759707646 +0930
++++ adduser-debian-3.137/AdduserCommon.pm	2023-07-02 10:34:38.413283193 +0930
+@@ -293,18 +293,18 @@ sub preseed_config {
          backup => 0,
          backup_to => ".",
          dshell => "/bin/bash",
@@ -25,7 +25,7 @@ diff '--color=auto' -rupN adduser-debian-3.132.orig/AdduserCommon.pm adduser-deb
          users_group => undef,
          grouphomes => "no",
          letterhomes => "no",
-@@ -306,8 +306,8 @@ sub preseed_config {
+@@ -313,8 +313,8 @@ sub preseed_config {
          sys_dir_mode => "0755",
          setgid_home => "no",
          no_del_paths => "^/bin\$ ^/boot\$ ^/dev\$ ^/etc\$ ^/initrd ^/lib ^/lost+found\$ ^/media\$ ^/mnt\$ ^/opt\$ ^/proc\$ ^/root\$ ^/run\$ ^/sbin\$ ^/srv\$ ^/sys\$ ^/tmp\$ ^/usr\$ ^/var\$ ^/vmlinu",
@@ -36,10 +36,10 @@ diff '--color=auto' -rupN adduser-debian-3.132.orig/AdduserCommon.pm adduser-deb
          exclude_fstypes => "(proc|sysfs|usbfs|devpts|devtmpfs|devfs|afs)",
          skel_ignore_regex => "\.(dpkg|ucf)-(old|new|dist)\$",
          extra_groups => "users",
-diff '--color=auto' -rupN adduser-debian-3.132.orig/adduser.conf adduser-debian-3.132/adduser.conf
---- adduser-debian-3.132.orig/adduser.conf	2023-03-07 18:08:25.694341050 +1030
-+++ adduser-debian-3.132/adduser.conf	2023-03-07 18:12:36.269287490 +1030
-@@ -21,21 +21,21 @@
+diff '--color=auto' -rupN adduser-debian-3.137.orig/adduser.conf adduser-debian-3.137/adduser.conf
+--- adduser-debian-3.137.orig/adduser.conf	2023-07-02 10:32:42.759707646 +0930
++++ adduser-debian-3.137/adduser.conf	2023-07-02 10:34:38.413283193 +0930
+@@ -31,21 +31,21 @@
  # Specify inclusive ranges of UIDs and GIDs from which UIDs and GIDs
  # for system users, system groups, non-system users and non-system groups
  # can be dynamically allocated.
@@ -69,7 +69,7 @@ diff '--color=auto' -rupN adduser-debian-3.132.orig/adduser.conf adduser-debian-
  
  # Specify a file or a directory containing UID and GID pool.
  #UID_POOL=/etc/adduser-pool.conf
-@@ -52,7 +52,8 @@
+@@ -62,7 +62,8 @@
  # non-system users are placed into.
  # It is a configuration error to define both variables
  # even if the values are consistent.
@@ -79,7 +79,7 @@ diff '--color=auto' -rupN adduser-debian-3.132.orig/adduser.conf adduser-debian-
  #USERS_GID=100
  #USERS_GROUP=users
  
-@@ -71,13 +72,13 @@
+@@ -81,13 +82,13 @@
  
  # Non-system user- and groupnames are checked against this regular
  # expression.
@@ -97,10 +97,10 @@ diff '--color=auto' -rupN adduser-debian-3.132.orig/adduser.conf adduser-debian-
  
  # When populating the newly created home directory of a non-system user,
  # files in SKEL matching this regex are not copied.
-diff '--color=auto' -rupN adduser-debian-3.132.orig/doc/adduser.conf.5 adduser-debian-3.132/doc/adduser.conf.5
---- adduser-debian-3.132.orig/doc/adduser.conf.5	2023-03-07 18:08:25.697674494 +1030
-+++ adduser-debian-3.132/doc/adduser.conf.5	2023-03-07 18:10:36.715337017 +1030
-@@ -62,17 +62,17 @@ Defaults to \fIusers\fP.
+diff '--color=auto' -rupN adduser-debian-3.137.orig/doc/adduser.conf.5 adduser-debian-3.137/doc/adduser.conf.5
+--- adduser-debian-3.137.orig/doc/adduser.conf.5	2023-07-02 10:32:42.763041082 +0930
++++ adduser-debian-3.137/doc/adduser.conf.5	2023-07-02 10:34:38.413283193 +0930
+@@ -76,17 +76,17 @@ Defaults to \fIusers\fP.
  .B FIRST_SYSTEM_GID " and " LAST_SYSTEM_GID
  specify an inclusive range of GIDs from which GIDs
  for system groups can be dynamically allocated.
@@ -121,7 +121,7 @@ diff '--color=auto' -rupN adduser-debian-3.132.orig/doc/adduser.conf.5 adduser-d
  Please note that system software,
  such as the users allocated by the \fIbase-passwd\fP package,
  may assume that UIDs less than 100 are unallocated.
-@@ -80,7 +80,7 @@ may assume that UIDs less than 100 are u
+@@ -94,7 +94,7 @@ may assume that UIDs less than 100 are u
  .B FIRST_UID " and " LAST_UID
  specify an inclusive range of UIDs from which UIDs
  for non-system users can be dynamically allocated.
@@ -130,18 +130,18 @@ diff '--color=auto' -rupN adduser-debian-3.132.orig/doc/adduser.conf.5 adduser-d
  .TP
  .B GID_POOL
  See \fBUID_POOL\fP.
-@@ -113,7 +113,7 @@ user and group creation in \fBadduser\fR
- unless \-\-allow\-bad\-names is set.
- With \-\-allow\-bad\-names set,
+@@ -127,7 +127,7 @@ user and group creation in \fBadduser\fR
+ unless \fB\-\-allow\-bad\-names\fR is set.
+ With \fB\-\-allow\-bad\-names\fR set,
  weaker checks are performed.
 -Defaults to the most conservative \fI^[a\-z][\-a\-z0\-9_]*$\fP.
 +Defaults to the Arch policy \fI^[a\-zA\-Z0\-9_][\-a\-zA\-Z0\-9_]*\\$?$\fP.
  See \fBSYS_NAME_REGXEX\fP and \fBValid names\fP,
  below, for more information.
  .TP
-@@ -161,7 +161,7 @@ system user and group creation in adduse
- unless \-\-allow\-bad\-names is set.
- With \-\-allow\-bad\-names set,
+@@ -175,7 +175,7 @@ system user and group creation in adduse
+ unless \fB\-\-allow\-bad\-names\fP is set.
+ With \fB\-\-allow\-bad\-names\fP set,
  weaker checks are performed.
 -Defaults to the most conservative \fI^[a\-z_][\-a\-z0\-9_]*$\fP.
 +Defaults to the Arch policy \fI^[a\-zA\-Z0\-9_][\-a\-zA\-Z0\-9_]*\\$?$\fP.
