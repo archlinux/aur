@@ -1,18 +1,17 @@
-# Maintainer: Gokberk Yaltirakli <aur at gkbrk dot com>
+# Contributor: Gokberk Yaltirakli <aur at gkbrk dot com>
 # Contributor: /dev/rs0 <rs0@secretco.de.com>
 
 pkgname=urlcrazy
-pkgver=0.5
-pkgrel=4
-pkgdesc="Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage."
-
+pkgver=0.7.3
+pkgrel=1
+pkgdesc="Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage"
 arch=('any')
 license=('custom')
-url="https://www.morningstarsecurity.com/research/urlcrazy"
+url="https://github.com/urbanadventurer/urlcrazy"
+depends=('ruby-json' 'ruby-colorize' 'ruby-async' 'ruby-async-dns' 'ruby-async-http')
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('b04745000e2c27fd85f7b6af98bdac81b7d1685da87267fc47adea0735a42b95')
 
-depends=('ruby')
-source=("https://www.morningstarsecurity.com/downloads/urlcrazy-${pkgver}.tar.gz")
-sha256sums=('744bfee0933dc8f1f2432528d5f7c5ce770416146ddc67b984b5117426e99dcd')
 
 package() {
     install -d "${pkgdir}/usr/bin"
