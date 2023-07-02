@@ -1,14 +1,14 @@
 pkgbase = xcman
 	pkgdesc = Minimal compositing manager for X
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://codeberg.org/maandree/xcman
 	arch = x86_64
 	license = custom:ISC
 	depends = libxcomposite
 	depends = libxdamage
 	depends = libxrender
-	source = xcman-1.1.tar.gz::https://codeberg.org/maandree/xcman/archive/1.1.tar.gz
-	sha256sums = bf1b6a712bf759ccd40afac3203b82907f114a1862e597f96c27764ce5cc9ede
+	source = xcman-1.1.1.tar.gz::https://codeberg.org/maandree/xcman/archive/1.1.1.tar.gz
+	sha256sums = 4724a190506574f036fdad82255983aaa8eecb8cd2a65627d106c23d7f9a6ee6
 
 pkgname = xcman
