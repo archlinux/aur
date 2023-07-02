@@ -13,9 +13,9 @@ depends=('python-pbr' 'python-prettytable' 'python-requests' 'python-oslo-i18n'
 checkdepends=('python-fixtures' 'python-oslotest' 'python-openstackclient'
               'python-requests-mock' 'python-stestr' 'python-testscenarios'
               'python-testtools' 'python-mock' 'python-httplib2')
-source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz"
+source=("https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz"
         'trove.bash_completion')
-sha512sums=('eb4209713ef06d711e61820212ac0d7318e32bce85280432883a1182cf57a9c8de8b504318330985d0e32dafbda0fb258298216b3b5e4ded7412140f0b137013'
+sha512sums=('406299dc950cd80a5cb419a559af2a7274419b7c150f1162caa66fb8979db1f946e7fda35f627565c2ee67a19be755f3519660c00f9206e8023dc74a44bb97c2'
             '53a8603e7add596e847fcfcea9b454168956af581fb48794ab0ac08f6dce1d8c71ef47682e8b974bf184fc19e8473d362c75e9d70cd99d761ca7e113ea1f0ee9')
 
 export PBR_VERSION=$pkgver
