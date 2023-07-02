@@ -1,6 +1,6 @@
 pkgbase = ags
 	pkgdesc = Engine to run adventure/quest games
-	pkgver = 3.6.0.49
+	pkgver = 3.6.0.50
 	pkgrel = 1
 	url = https://github.com/adventuregamestudio/ags
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ags
 	depends = libtheora
 	depends = libvorbis
 	depends = freetype2
-	source = ags-3.6.0.49.tar.gz::https://github.com/adventuregamestudio/ags/archive/v3.6.0.49.tar.gz
-	sha256sums = 94b8365f979e188efb2f473a95d0d98f3b53ccb0c0019ab359f3f353176fec2f
+	source = ags-3.6.0.50.tar.gz::https://github.com/adventuregamestudio/ags/archive/v3.6.0.50.tar.gz
+	sha256sums = d22e16153a26787303aca12de7d6ead767258bdbc797e54fce183dcf0743a9a1
 
 pkgname = ags
