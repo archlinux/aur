@@ -1,0 +1,13 @@
+diff --git a/ui/base/interaction/interactive_test_internal.h b/ui/base/interaction/interactive_test_internal.h
+index c1f8ffc55f43d..a3b2b33623af2 100644
+--- a/ui/base/interaction/interactive_test_internal.h
++++ b/ui/base/interaction/interactive_test_internal.h
+@@ -333,7 +333,7 @@ struct ArgsExtractor<R(Args...)> {
+ };
+ 
+ template <typename F>
+-using ReturnTypeOf = MaybeBindTypeHelper<F>::ReturnType;
++using ReturnTypeOf = typename MaybeBindTypeHelper<F>::ReturnType;
+ 
+ template <size_t N, typename F>
+ using NthArgumentOf = std::tuple_element_t<

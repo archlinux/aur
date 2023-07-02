@@ -1,0 +1,12 @@
+diff --git a/include/internal/cef_types_wrappers.h b/include/internal/cef_types_wrappers.h
+index 53e07cd4..23305149 100644
+--- a/include/internal/cef_types_wrappers.h
++++ b/include/internal/cef_types_wrappers.h
+@@ -31,6 +31,7 @@
+ #define CEF_INCLUDE_INTERNAL_CEF_TYPES_WRAPPERS_H_
+ #pragma once
+ 
++#include <cstdint>
+ #include <limits>
+ 
+ #include "include/internal/cef_string.h"

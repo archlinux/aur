@@ -1,0 +1,26 @@
+diff --git a/third_party/test_fonts/fontconfig/BUILD.gn b/third_party/test_fonts/fontconfig/BUILD.gn
+index 040fdbb14968d..23cec0f24ca93 100644
+--- a/third_party/test_fonts/fontconfig/BUILD.gn
++++ b/third_party/test_fonts/fontconfig/BUILD.gn
+@@ -44,7 +44,7 @@ if (is_linux || is_chromeos) {
+       # be listed in deps, not data_deps (https://crbug.com/919422).
+       deps = [ "//third_party/test_fonts" ]
+       args = []
+-      outputs = [ "$root_out_dir/fontconfig_caches/fb5c91b2895aa445d23aebf7f9e2189c-le64.cache-9" ]
++      outputs = [ "$root_out_dir/fontconfig_caches/fb5c91b2895aa445d23aebf7f9e2189c-le64.cache-8" ]
+     }
+   }
+ }
+diff --git a/third_party/test_fonts/fontconfig/generate_fontconfig_caches.cc b/third_party/test_fonts/fontconfig/generate_fontconfig_caches.cc
+index 905854b7552ca..42ef73d847652 100644
+--- a/third_party/test_fonts/fontconfig/generate_fontconfig_caches.cc
++++ b/third_party/test_fonts/fontconfig/generate_fontconfig_caches.cc
+@@ -56,7 +56,7 @@ int main() {
+   FcFini();
+ 
+   // Check existence of intended fontconfig cache file.
+-  auto cache = fontconfig_caches + "/" + kCacheKey + "-le64.cache-9";
++  auto cache = fontconfig_caches + "/" + kCacheKey + "-le64.cache-8";
+   bool cache_exists = access(cache.c_str(), F_OK) == 0;
+   return !cache_exists;
+ }

@@ -1,0 +1,58 @@
+diff --git a/CMakeLists.txt.in b/CMakeLists.txt.in
+index f98fd510..6504a994 100644
+--- a/CMakeLists.txt.in
++++ b/CMakeLists.txt.in
+@@ -214,6 +214,9 @@ find_package(CEF REQUIRED)
+ # Define CEF-based targets.
+ #
+ 
++option(CEF_EXAMPLES "build CEF examples" OFF)
++option(CEF_TESTS "build CEF tests" OFF)
++
+ # Include the libcef_dll_wrapper target.
+ # Comes from the libcef_dll/CMakeLists.txt file in the binary distribution
+ # directory.
+@@ -222,13 +225,16 @@ add_subdirectory(${CEF_LIBCEF_DLL_WRAPPER_PATH} libcef_dll_wrapper)
+ # Include application targets.
+ # Comes from the <target>/CMakeLists.txt file in the current directory.
+ # TODO: Change these lines to match your project target when you copy this file.
+-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests")
++if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests" AND CEF_EXAMPLES)
+   add_subdirectory(tests/cefsimple)
++endif()
++
++if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests" AND CEF_TESTS)
+   add_subdirectory(tests/gtest)
+   add_subdirectory(tests/ceftests)
+ endif()
+ 
+-if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/cefclient")
++if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/cefclient" AND CEF_EXAMPLES)
+   add_subdirectory(tests/cefclient)
+ endif()
+ 
+diff --git a/cmake/cef_variables.cmake.in b/cmake/cef_variables.cmake.in
+index 03f73349..f8e61a6a 100644
+--- a/cmake/cef_variables.cmake.in
++++ b/cmake/cef_variables.cmake.in
+@@ -234,7 +234,6 @@ if(OS_LINUX)
+     chrome_100_percent.pak
+     chrome_200_percent.pak
+     resources.pak
+-    icudtl.dat
+     locales
+     )
+ 
+diff --git a/tools/make_cmake.py b/tools/make_cmake.py
+index b81c3969..42c4b5ca 100644
+--- a/tools/make_cmake.py
++++ b/tools/make_cmake.py
+@@ -248,7 +248,7 @@ if __name__ == "__main__":
+   # Read the gypi files and combine into a single dictionary.
+   variables1 = read_gypi_variables('cef_paths')
+   variables2 = read_gypi_variables('cef_paths2')
+-  variables = dict(variables1.items() + variables2.items())
++  variables = variables1 | variables2
+ 
+   # Process the cmake template.
+   process_cmake_template(sys.argv[1], sys.argv[2], variables)
