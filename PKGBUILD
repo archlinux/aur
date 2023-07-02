@@ -2,7 +2,7 @@
 
 pkgname=python-troveclient
 pkgver=8.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Client library for OpenStack DBaaS API'
 arch=('any')
 url="https://docs.openstack.org/$pkgname/"
