@@ -1,7 +1,7 @@
 # Maintainer: Swyter <swyterzone+aur@gmail.com>
 
 pkgname=intel-gpa-bin
-url='https://www.intel.com/content/www/us/en/developer/tools/graphics-performance-analyzers/download.html'
+url='https://intel.com/content/www/us/en/developer/tools/graphics-performance-analyzers/overview.html'
 pkgrel=4
 pkgver=23.2.1686276958
 options=(!strip)
@@ -73,20 +73,21 @@ package() {
     #    0089a98e 48 89 e2        MOV        RDX,RSP
     #    0089a991 e8 8a 6d        CALL       <EXTERNAL>::sched_getaffinity
     #             a1 ff
-    #    0089a996 41 8b 04 24     MOV        EAX,dword ptr [R12] # swy: <--
-    #    0089a99a 85 c0           TEST       EAX,EAX
-    #    0089a99c 74 53           JZ         LAB_0089a9f1
+    #    0089a996 41 8b 04 24     MOV        EAX,dword ptr [R12] /* swy: <-- restore the saved param_1 thrashed register after the call */
+    #    0089a99a 85 c0           TEST       EAX,EAX             /* swy: if (param_1 == 0) */
+    #    0089a99c 74 53           JZ         LAB_0089a9f1        /* swy: goto ret_early; */
 
     # patched disassembly:
     #    0089a98c 31 c0           XOR        EAX,EAX
     #    0089a98e 48 89 e2        MOV        RDX,RSP
     #    0089a991 e8 8a 6d        CALL       <EXTERNAL>::sched_getaffinity
     #             a1 ff
-    #    0089a996 31 c0           XOR        EAX,EAX /* swy: set param_1 to zero */
-    #    0089a998 90              NOP
-    #    0089a999 90              NOP
-    #    0089a99a 85 c0           TEST       EAX,EAX /* swy: if (param_1 == 0) */
-    #    0089a99c 74 53           JZ         LAB_0089a9f1
+    #    0089a996 31 c0           XOR        EAX,EAX             /* swy: <-- patched; set param_1 to zero */
+    #    0089a998 90              NOP                            /* swy: <-- patched; nothing */
+    #    0089a999 90              NOP                            /* swy: <-- patched; even more nothing; byte pad */
+    #    0089a99a 85 c0           TEST       EAX,EAX             /* swy: if (param_1 == 0) */
+    #    0089a99c 74 53           JZ         LAB_0089a9f1        /* swy: goto ret_early; */
+
 
     # sed -i -e 's|\xff\x41\x8b\x04\x24\x85\xc0\x74|\xff\x31\xc0\x90\x90\x85\xc0\x74|g' '${pkgdir}/opt/intel/gpa/*.so'
 
