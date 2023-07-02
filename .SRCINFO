@@ -1,0 +1,18 @@
+pkgbase = kde-thumbnailer-qoi
+	pkgdesc = KDE thumbnailer for QOI (Quite OK Image Format)
+	pkgver = 10_c75b6185e0a70b16e7ba2e1601c4766290909a03
+	pkgrel = 1
+	url = https://github.com/tobozo/kde-thumbnailer-qoi
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = libgsf
+	depends = plasma-desktop
+	source = kde-thumbnailer-qoi::git+https://github.com/tobozo/kde-thumbnailer-qoi.git#commit=c75b6185e0a70b16e7ba2e1601c4766290909a03
+	source = qoi::git+https://github.com/phoboslab/qoi.git#commit=7094132132f76df0239e4954ecbd91f855c8d6a2
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = kde-thumbnailer-qoi
