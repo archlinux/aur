@@ -2,7 +2,7 @@
 
 pkgname=intel-gpa-bin
 url='https://www.intel.com/content/www/us/en/developer/tools/graphics-performance-analyzers/download.html'
-pkgrel=3
+pkgrel=4
 pkgver=23.2.1686276958
 options=(!strip)
 arch=('x86_64')
@@ -54,6 +54,9 @@ package() {
 
     # swy: don't hide the error/warning logging when running on a terminal
     sed -i -e 's|> /dev/null 2>&1||g' ${pkgdir}/usr/bin/gpa-*
+
+    # swy: strip out the whole forced opt-in Google Analytics functionality
+    rm -rf "${pkgdir}/opt/intel/gpa/IntelAnalytics"
 
     # swy: fix the crash at startup on AMD CPUs: terminate called after throwing an instance of 'CpuEnumerator::InconsistentProcessAffinity'
     #                                            what():  This process is restricted and not able to run on all logical processors managed by OS
