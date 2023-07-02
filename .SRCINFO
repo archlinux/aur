@@ -24,6 +24,6 @@ pkgbase = python-manilaclient
 	depends = python-six
 	depends = python-keystoneclient
 	source = https://opendev.org/openstack/python-manilaclient/archive/4.4.0.tar.gz
-	sha512sums = 1d86b641f247c5afd81f6b022ae18e99b2b5ec39437da63506a5f31e0d64d6765bc572f34f1e10ff49c8700c610527db076591685eca117c05feee8b8b3e4ef6
+	sha512sums = d1240c6ddbc90b0269f9d3b4a57ed8b7b1cb220c9bbde6541d65f6cbb1d0a7c15cc51a6894342a5195f749fcfa5835ce1fcb6b8148ad6a4a9a35eab34f24eb7e
 
 pkgname = python-manilaclient
