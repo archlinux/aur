@@ -8,7 +8,7 @@ _JVM=''; _JRE='glibc' # built in jre. This works best with 3.0.1 and 3.12.0 serv
 
 set -u
 pkgname='mirth-connect-administrator-launcher'
-pkgver='1.3.1'
+pkgver='1.4.0'
 pkgrel='1'
 pkgdesc='hl7 connector by Nextgen client'
 arch=('x86_64')
@@ -21,10 +21,10 @@ source=(
   "https://s3.amazonaws.com/downloads.mirthcorp.com/connect-client-launcher/mirth-administrator-launcher-${pkgver}-unix.tar.gz"
   '0000-mirth-connector-enable-DH768.patch'
 )
-md5sums=('8a0b852509f44bfd583be128a7028fe4'
-         '34263d26eda5b5899969224bd3df1815')
-sha256sums=('9d0d01389875c601b7349b2470ebc308a40a7d66f190294bb4f7aa3cf3321738'
-            '45c43153a3841bdba9a0a3e9ee7883f54daaec18a3558434912656bc02688ca9')
+md5sums=('975dad867c1fe3e3c2e77f1dbc427f67'
+         'ff479eaafa09a22efcd7c12bb04ef886')
+sha256sums=('26edbf2bc2b9fc5c7d3da5a3a7fbda4a84361600870c1be76b4f932119e94c08'
+            '591f6761809493519051fb49513200bf58392d594d91ab5151607ec293260177')
 
 prepare() {
   set -u
@@ -48,13 +48,16 @@ package() {
   cp -pr . "${pkgdir}/usr/lib/${pkgname}"
   rmdir "${pkgdir}/usr/lib/${pkgname}"/{logs,cache,data} # repeated below
   rm -rf "${pkgdir}/usr/lib/${pkgname}"/{javachecker,mcadministrator}/{macos,windows,windows-x64}
+  # Eliminate AV files that cause missing dependencies
+  rm -f "${pkgdir}/usr/lib/${pkgname}"/jre/lib/amd64/libavplugin*
+  rm -f "${pkgdir}/usr/lib/${pkgname}"/jre/lib/amd64/libfxplugins.so
 
   if [ -d "${pkgdir}/usr/lib/${pkgname}/jre" ]; then
     rm -rf "${pkgdir}/usr/lib/${pkgname}/jre/man"
     local _p
-    for _p in "${pkgdir}/usr/lib/${pkgname}/jre/lib"/*.jar.pack "${pkgdir}/usr/lib/${pkgname}/jre/lib/ext"/*.jar.pack; do
-      jre/bin/unpack200 -r "${_p}" "${_p%.pack}"
-    done
+    #for _p in "${pkgdir}/usr/lib/${pkgname}/jre/lib"/*.jar.pack "${pkgdir}/usr/lib/${pkgname}/jre/lib/ext"/*.jar.pack; do
+    #  jre/bin/unpack200 -r "${_p}" "${_p%.pack}"
+    #done
   fi
 
   install -Dm755 <(cat << EOF
