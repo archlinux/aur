@@ -30,7 +30,7 @@ pkgver() {
 }
 
 prepare() {
-  mkdir build
+  mkdir -p build
 
   # Use xmlconf from conformance test suite
   ln -s xmlconf build/xmlconf
