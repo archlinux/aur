@@ -1,7 +1,7 @@
 pkgbase = pynotify-bin
 	pkgdesc = A Gnome (wayland) shell notifier for Gotify server.
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fseoane/pyNotify.git
 	arch = x86_64
 	license = MIT
