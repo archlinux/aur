@@ -11,8 +11,8 @@ depends=('python-pbr' 'python-six' 'python-keystoneauth1'
          'python-osc-lib')
 checkdepends=('python-oslotest' 'python-openstackclient' 'python-stestr'
               'python-wsgi-intercept')
-source=("https://github.com/openstack/osc-placement/archive/$pkgver.tar.gz")
-sha512sums=('f301cfda3fdb2135c80650c3b8dfcc4926fbaa118869b4f417536be4f9cbcf64634b0b3715d3dcd983177f2a59a614d71353ad95aec43d8e3bd4d851d687bcea')
+source=("https://opendev.org/openstack/osc-placement/archive/$pkgver.tar.gz")
+sha512sums=('2bf949f0be6c3b84288b992c09c722b2875e3419a0f74bffb7d17e2fa9093483d0c8b116cfb95fb3fd1ef296790e4aeebd1c5bda34a5824bbf8b9f812a409f4c')
 
 export PBR_VERSION=$pkgver
 
