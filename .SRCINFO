@@ -1,6 +1,6 @@
 pkgbase = notion-app-nativefier
 	pkgdesc = Notion in shared Electron runtime
-	pkgver = 2022.12.26
+	pkgver = 2023.07.03
 	pkgrel = 1
 	url = https://www.notion.so
 	arch = x86_64
