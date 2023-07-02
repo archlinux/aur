@@ -2,7 +2,7 @@
 
 pkgname=python-ironicclient
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python client library for Ironic'
 arch=('any')
 url="https://docs.openstack.org/$pkgname/"
@@ -21,17 +21,17 @@ sha512sums=('412a23a562c5da100507291cf9a92104225183191e13f33c7c01e3f14ddf3599a79
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py build
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   stestr run
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
 }
 

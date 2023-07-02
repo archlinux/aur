@@ -1,7 +1,7 @@
 pkgbase = python-ironicclient
 	pkgdesc = Python client library for Ironic
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/python-ironicclient/
 	arch = any
 	license = Apache
