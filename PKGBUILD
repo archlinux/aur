@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-alt-pytest-asyncio
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Alternative pytest plugin to pytest-asyncio'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-pytest')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 checkdepends=('python-noseofyeti' 'python-nest-asyncio')
 source=("https://github.com/delfick/alt-pytest-asyncio/archive/release-$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('5e35f444ffa1cfbc00a74784f2bb01d4f9ca0852a88e9561afcbba79752575c9c1660d1f189799ab17fd1a31afcf20f590683149c5439c07299d8c3e6e6949d0')
+sha512sums=('ebc9ef357604fbad81f987ede1614dc0f062096dfd21a27fb39679a918a768250c39d64b91e25569872998b6616b070ca6d73a08b73a41cbb2c31eac8fb13a3b')
 
 build() {
   cd alt-pytest-asyncio-release-$pkgver
