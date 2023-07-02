@@ -12,8 +12,8 @@ depends=('python-pbr' 'python-yaml' 'python-yaql' 'python-six'
 checkdepends=('python-subunit' 'python-oslotest' 'python-oslotest'
               'python-testrepository' 'python-testscenarios' 'python-testtools'
               'python-stestr' 'python-mock')
-source=("https://github.com/openstack/murano-pkg-check/archive/$pkgver.tar.gz")
-sha512sums=('98a08661957e09c9ee0b4f018bd874696e586d296c9233514d7f46099d02068a72185317708fd9755917ed6fb1b773d9ccad70b9fd841af59e91f7969d93b6b5')
+source=("https://opendev.org/openstack/murano-pkg-check/archive/$pkgver.tar.gz")
+sha512sums=('efc83424137deb304559ef884eb6ab686369cd25718ae64c2eeb52d3d9f666ca8dee62414eea993120376fb49b4d348f14dc9c26c05353288a2330b592595710')
 
 export PBR_VERSION=$pkgver
 
