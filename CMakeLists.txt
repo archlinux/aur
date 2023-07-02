@@ -96,7 +96,7 @@ endif()
 if(BUILD_PYTHON)
     set(SIP_EXTRA_FILES_DEPEND python/SocketListener.sip python/Types.sip python/PythonMessage.sip python/Error.sip)
     set(SIP_EXTRA_SOURCE_FILES python/PythonMessage.cpp)
-    set(SIP_EXTRA_OPTIONS -g -n PyQt5.sip) # -g means always release the GIL before calling C++ methods. -n PyQt5.sip is required to not get the PyCapsule error
+    set(SIP_EXTRA_OPTIONS -g -n PyQt6.sip) # -g means always release the GIL before calling C++ methods. -n PyQt6.sip is required to not get the PyCapsule error
     add_sip_python_module(pyArcus python/pyArcus.sip Arcus)
 endif()
 
