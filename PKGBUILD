@@ -10,7 +10,7 @@
 pkgbase=tensorflow-amd-git
 pkgname=(tensorflow-amd-git python-tensorflow-amd-git tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
 pkgver=2.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Library for scalable machine learning (with ROCm)"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -31,16 +31,18 @@ makedepends=('python-numpy' 'git' 'python-wheel' \
              # base-devel: fakeroot and some other things
              # rocm-core: /opt/rocm/.info/version, which the official docker image seems to need.
 optdepends=('tensorboard: Tensorflow visualization toolkit')
-source=("tensorflow-upstream.tar.gz::https://github.com/ROCmSoftwarePlatform/tensorflow-upstream/archive/18ddd5aa0329993f581bdb433b999b85c15f69e3.tar.gz"
+source=("tensorflow-upstream.tar.gz::https://github.com/ROCmSoftwarePlatform/tensorflow-upstream/archive/de8086e14ae3152906e1137c212d2f7bb8ea463a.tar.gz"
         tensorflow-2.10-sparse-transpose-op2.patch
         https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
         fix-c++17-compat.patch
-        fix-cstdint-tsllibio-cache.patch)
+        fix-cstdint-tsllibio-cache.patch
+        remove-log-spam.patch)
 sha512sums=('9bb41c8cd4c5bb539420a10c5a299cb8ad2f93764991175cb48be8efe7dc1010f4cd374a89533cdee7f83c1c2edbcfd3301a04c8dcc0ea97d850da6ea49595f9'
             '45325ef3130aa95d48121d8c39bb4e683bdb5faa936ff29af953a2c359edb441a29e2dc0cae53ec6c08eee0432c0eeeaa7a40fbd063467b7f3c250d0f7f8ffed'
             'e2adb747cd1fe3c90686831703618af3f8bc8197a96d9e1e90e66db38dbc4e7a94d88dac755b25e288002983a87fcffbfb0d7c2e356d979d4635301c3daf9281'
             'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
-            '78bffffdb6fa58dfcfae37b4458c198a644605b9e9136ceef079d4d5002fad6f2ae39dee15e77e35c198267574860554a69e98674882164fad4b63e9ab68fb05')
+            '78bffffdb6fa58dfcfae37b4458c198a644605b9e9136ceef079d4d5002fad6f2ae39dee15e77e35c198267574860554a69e98674882164fad4b63e9ab68fb05'
+            'fde73feeb2bbb814ba229c2b879e5e5944fd658e9810937753a25f2650f57c49f8a435924b47a1a54eb2852f9713b19a15d42b307593e26a74ad65aeee22c36a')
 
 # consolidate common dependencies to prevent mishaps
 _common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
@@ -96,6 +98,8 @@ prepare() {
   # Patch for gcc13: cstdint is no longer implicitly included in some headers, so include it explicitly.
   # See https://gcc.gnu.org/gcc-13/porting_to.html
   patch -Np1 -i "${srcdir}/fix-cstdint-tsllibio-cache.patch" -d tensorflow-upstream-rocm || :
+  # Patch to tensorflow/core/common_runtime/gpu_fusion_pass.cc so "ROCm Fusion is enabled." doesn't spam.
+  patch -Np1 -i "${srcdir}/remove-log-spam.patch" -d tensorflow-upstream-rocm || :
   
   [ -d tensorflow-upstream-opt-rocm ] && rm -rf tensorflow-upstream-opt-rocm
   # Note that cp may not replace files if they already exist.

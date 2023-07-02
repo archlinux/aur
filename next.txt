@@ -1,10 +1,7 @@
-download and build and test
-
-incorporate logspam fix
-official tensorflow tests
-try building it with latest git version. Maybe we don't need to stabilize?
-verify all the dirnames are accurate. I have probably mixed up tensorflow-upstream and tensorflow-rocm and tensorflow-opt-rocm...
-get cracking on fix for the tensorflow-rocm issue with the thing not exposing to the other thing
+urlwatch at http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/
+    systemd timer
+tensorflow-rocm issue with the thing not exposing to the other thing
+    https://github.com/rocm-arch/tensorflow-rocm/issues/52
 
 # Later
 set up monthly(?) test builds so I can fix the build when upstream makes changes
@@ -17,9 +14,9 @@ https://wiki.archlinux.org/title/Arch_packaging_standards -> reproducible
 
 # Maybe
 make test.py actually fail if something goes wrong
-try arch4edu rocm. Copy the rest of their build approach. I think it's likely we can make this work...
 set up "auto-build" system. One script to run, log, then test. etc.
     systemd timer, stuff like that
+    check latests builds and the thing from official tensorflow pointing to official rocm build
 more complete testing of tensorflow. What other functions are there? can I do gpt-2?
 documentation
     what environment variables can you use to suppress verbose logging?
@@ -30,10 +27,7 @@ publicity
 can we patch the whole project to bazel 6+ lol
 recruit someone with a different gfx architecture to test
     actually, just post to the aur and see if there's even any interest. The Docker container works well enough.
-also, compile for optimized
-    I have an amd cpu and do not now how to confirm if haswell optimization is working or not.
-    So compiling optimized is left as an exercise for the reader.
-    how test if actually optimized? haswell architecture
+I have an amd cpu and do not now how to confirm if haswell optimization is working or not.
 
 # Notes
 Working builds:
