@@ -2,8 +2,8 @@
 
 _pkgname=tacentview
 pkgname=$_pkgname-bin
-pkgver=1.0.39
-_pkgver=1.0-39
+pkgver=1.0.40
+_pkgver=1.0.40
 pkgrel=1
 pkgdesc="An image and texture viewer for tga, png, apng, exr, dds, ktx, ktx2, astc, pkm, qoi, gif, hdr, jpg, tif, ico, webp, and bmp files. Uses Dear ImGui, OpenGL and Tacent (binary release)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('ISC')
 conflicts=($_pkgname)
 provides=($_pkgname)
 source=("$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/tacentview_$_pkgver.deb")
-sha256sums=('05375e0400371ebf34974abc98936f1fcde5d79889eada49871cdfa5cd04c628')
+sha256sums=('2fc2099ac7ca790360bbf00c4595f3af1cee10367f42220302a475ffc83717bf')
 
 prepare() {
   # Extract
