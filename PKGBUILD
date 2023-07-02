@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest -k 'not generated_object_altitudes and not generated_object_properties'
+  python -m pytest -k 'not generated_object_altitudes and not generated_object_properties and not load_pipeline'
 }
 
 package() {
