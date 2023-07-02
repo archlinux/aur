@@ -1,10 +1,11 @@
 pkgbase = libgedit-gtksourceview-git
-	pkgdesc = Library that extends GtkTextView, the standard GTK widget for multiline text editing.
+	pkgdesc = A library that extends GtkTextView, the standard GTK widget for multiline text editing.
 	pkgver = 299.0.3+5+gffb59486
 	pkgrel = 1
-	url = https://github.com/gedit-technology/libgedit-gtksourceview
+	url = https://gedit-technology.net
 	arch = x86_64
 	license = LGPL2.1
+	checkdepends = xorg-server-xvfb
 	makedepends = git
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
@@ -14,7 +15,7 @@ pkgbase = libgedit-gtksourceview-git
 	provides = libgedit-gtksourceview=299.0.3+5+gffb59486
 	provides = libgedit-gtksourceview-300.so
 	conflicts = libgedit-gtksourceview
-	source = libgedit-gtksourceview-299.0.3+5+gffb59486.tar.gz::git+https://github.com/gedit-technology/libgedit-gtksourceview
+	source = libgedit-gtksourceview::git+https://github.com/gedit-technology/libgedit-gtksourceview
 	sha256sums = SKIP
 
 pkgname = libgedit-gtksourceview-git
