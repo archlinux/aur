@@ -1,7 +1,7 @@
 # Maintainer: CallMeEchoCodes <romanbarrettsarpi@pm.me>
 _pkgname=fetcho
 pkgname=${_pkgname}-git
-pkgver=v1.0.0.r1.ga6328a5
+pkgver=v1.1.0.r0.gbece325
 pkgrel=1
 pkgdesc='A simple fetch made in C++'
 arch=('any')
@@ -20,5 +20,5 @@ pkgver() {
    cd "${_pkgname}"
    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-depends=('procps-ng')
+depends=('libprocps')
 sha256sums=('SKIP')
