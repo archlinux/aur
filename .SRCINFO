@@ -1,0 +1,21 @@
+pkgbase = gswww-git
+	pkgdesc = A Graphical Solution to your Wayland Wallpaper Woes
+	pkgver = r33.5d7aa2d
+	pkgrel = 1
+	url = https://github.com/Ph1lll/Gswww
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = swww
+	depends = gtk4
+	optdepends = webp-pixbuf-loader: Render .webp images
+	provides = gswww
+	conflicts = gswww
+	options = !lto
+	source = gswww::git+https://github.com/Ph1lll/Gswww.git
+	sha256sums = SKIP
+
+pkgname = gswww-git
