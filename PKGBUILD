@@ -1,11 +1,10 @@
-# Maintainer: Yurii Kolesykov <root@yurikoles.com>
-# Contributor: Carson Black <uhhadd AT gmail DOT com>
-# Contributor: Johannes Dewender arch at JonnyJD dot net
-# Contributor: Eduardo Robles Elvira <edulix AT gmail DOT com>
-# Contributor: Jon Nordby <jononor@gmail.com>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+#
+# PRs are welcome here: https://github.com/yurikoles-aur/obs-build
+#
 
 pkgname=obs-build
-pkgver=20230105
+pkgver=20230628
 pkgrel=1
 license=(GPL)
 pkgdesc='OBS build script, can be used with OBS or stand alone'
@@ -13,9 +12,9 @@ url=https://github.com/openSUSE/obs-build
 arch=(any)
 depends=(perl)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openSUSE/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('ff519234c06dfe3711a1e1964c65b9948380382c29439df07e1e97962803beb7')
+sha256sums=('97362f0c417a60edde276e5c6d32ce81ec0eda1e5f6ad277228779758dd2a479')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
