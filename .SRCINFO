@@ -5,7 +5,7 @@ pkgbase = gnome-health-git
 	url = https://gitlab.gnome.org/World/Health
 	arch = x86_64
 	license = GPL3
-	makedepends = blueprint-compiler-health-git
+	makedepends = blueprint-compiler-health=0.8.1+87cedc2c
 	makedepends = git
 	makedepends = meson
 	depends = libadwaita

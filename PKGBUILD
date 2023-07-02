@@ -4,6 +4,7 @@ _pkg="Health"
 _pkgname="gnome-health"
 pkgname="${_pkgname}-git"
 pkgver=0.94.0+89+g3023723
+_bcver="0.8.1+87cedc2c"
 pkgrel=1
 pkgdesc="A health tracking app for the GNOME desktop"
 arch=(x86_64)
@@ -14,7 +15,7 @@ depends=(
   'rust'
 )
 makedepends=(
-  'blueprint-compiler-health-git'
+  "blueprint-compiler-health=${_bcver}"
   'git'
   'meson')
 provides=("${_pkgname}=${pkgver}")
