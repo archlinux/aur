@@ -2,7 +2,7 @@
 
 pkgname=python-muranoclient
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python client library for Murano'
 arch=('any')
 url="https://docs.openstack.org/$pkgname/"
@@ -21,19 +21,19 @@ sha512sums=('d1e73369eccb114aa4793f3c2109f604d7d8a4d17fa0cf79d6550cd3e10cb254eee
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py build
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   # Fix test function name for Python 3
   sed -i 's/assertItemsEqual/assertCountEqual/g' muranoclient/tests/unit/osc/v1/*.py
   stestr run
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
