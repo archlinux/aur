@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 url='https://codeberg.org/maandree/libkeccak'
 license=('custom:ISC')
 _compiler=gcc
-depends=('glibc' 'musl' "${_compiler}")
+depends=('musl' "${_compiler}")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 b2sums=('645ae0cb8bb8c8f512487eec876bc63bd8c2e2a5243e3ebe32aca2e4cc79a3271a18a8295d097f6a1e536444bcf1af6331507ccf814bab2ae838c005434ca84f')
 

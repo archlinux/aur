@@ -6,7 +6,6 @@ pkgbase = libkeccak-musl
 	arch = x86_64
 	arch = i686
 	license = custom:ISC
-	depends = glibc
 	depends = musl
 	depends = gcc
 	source = libkeccak-1.4.tar.gz::https://codeberg.org/maandree/libkeccak/archive/1.4.tar.gz
