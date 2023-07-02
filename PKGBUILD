@@ -6,7 +6,7 @@ _shortname=cura5
 pkgver=5.4.0
 beta=-beta.1
 subbeta=
-pkgrel=2
+pkgrel=3
 pkgdesc='Cura is an open source slicing application for 3D printers (Modern AppImage, include betaversion)'
 arch=('x86_64')
 url="https://ultimaker.com/software/ultimaker-cura"
@@ -20,7 +20,7 @@ options=(!strip)
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=(
     "https://github.com/Ultimaker/Cura/releases/download/${pkgver}${beta}/Ultimaker-Cura-${pkgver}${beta}${subbeta}-linux-modern.AppImage"
-    "https://raw.githubusercontent.com/Ultimaker/Cura/${pkgver}/LICENSE"
+    "https://raw.githubusercontent.com/Ultimaker/Cura/${pkgver}${beta}${subbeta}/LICENSE"
     "${_shortname}.sh"
     "cura.desktop.patch"
 )
