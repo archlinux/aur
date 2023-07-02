@@ -1,13 +1,13 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yade
 pkgver=2023.02a
-pkgrel=3
+pkgrel=4
 pkgdesc="Yet Another Dynamic Engine, free software for discrete element modeling."
 arch=("x86_64")
 url='https://yade-dem.org/doc/index.html'
 license=('GPL2')
 depends=(
-    'openblas' 'cgal' 'coin-or-clp' 'freeglut' 'gl2ps'
+    'blas-openblas' 'cgal' 'coin-or-clp' 'freeglut' 'gl2ps'
     'gts' 'ipython' 'libqglviewer'
     # 'openmpi'
     'python-mpmath' 'python-xlib' 'python-future' 'python-pyqt5'
@@ -35,11 +35,13 @@ source=("trunk-${pkgver}.tar.gz::https://gitlab.com/yade-dev/trunk/-/archive/${p
 "suitesparse-ver.patch"
 'qtwebkit.patch'
 'remove-metis.patch'
+'py311.patch::https://gitlab.com/yade-dev/trunk/-/merge_requests/931.patch'
 )
 sha512sums=('d93247bf86f9aa711b27b4258b711d5be448c8bffb78df8bc3a0691bb0d986ffe876a47a70eed43b1729b496ffd892f4d1137a397bc038539e95b695173da53c'
             '209893bfa477a0cc1086dde2c3fa216a4e4e28da612b4d55f9be2250cc2f15cbf8266749ffd44b89039efd0dc02e6a2076db0fff12f15e9a8b7c8a3d792b4104'
             '6725a5f8d3bde9add6597085c0e635aeb0480fdddb5335c07206185f5de4ea66ef4ed16e12e4b6533b996f3d2c62ddc6a618cc682c2a976516447a24b10a5288'
-            'ebbbb16ebc7f5fa383425149030f37e3309dd1411bc4ac464fd81dcd3e2e3acfc0ac141a631b287e91e8fab1f0e8d6f77dad476936edb9f297e11ea5f4c26422')
+            'ebbbb16ebc7f5fa383425149030f37e3309dd1411bc4ac464fd81dcd3e2e3acfc0ac141a631b287e91e8fab1f0e8d6f77dad476936edb9f297e11ea5f4c26422'
+            'bb151cbbad973eb3857800e3f0c03e510f623bfae9b3feefc2da4980857e0fd3956f868986cf3d3748c0b164ad896e804622b9da76932c3699dbb711e5388bca')
 options=('!buildflags' '!lto')
 
 prepare(){
@@ -51,16 +53,15 @@ prepare(){
     patch --strip=1 < ../suitesparse-ver.patch
     patch --strip=1 < ../qtwebkit.patch
     patch --strip=1 < ../remove-metis.patch
+    patch --strip=1 < ../py311.patch
 }
 
 
 build(){
-    cd build
 
-    # YADE_EXTRA_CMAKE_ARGS and YADE_CMAKE_FLAGS are preserved for future use.
     # To speed up compilation you can try (27 requires over 50GiB RAM)
     # -DCMAKE_UNITY_BUILD=ON -DCMAKE_UNITY_BUILD_BATCH_SIZE=27
-    cmake ../trunk \
+    cmake -B build -S trunk \
         -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DruntimePREFIX=/usr \
         -DNOSUFFIX=ON -DPYTHON_VERSION=-1 \
         -DFORCE_FREEGLUT_PATH=/usr/include \
@@ -72,10 +73,10 @@ build(){
         -DENABLE_MASK_ARBITRARY=ON -DENABLE_PARTIALSAT=ON  \
         -DENABLE_POTENTIAL_BLOCKS=ON  -DVECTORIZE=ON \
         -DENABLE_USEFUL_ERRORS=OFF \
-        -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_CXX_FLAGS="${YADE_EXTRA_CMAKE_ARGS} ${YADE_CMAKE_FLAGS}"
+        -DCMAKE_BUILD_TYPE=None  -Wno-dev \
+        -DCMAKE_CXX_FLAGS=-DNDEBUG
 
-    cmake --build .
+    cmake --build build
 }
 
 package(){
