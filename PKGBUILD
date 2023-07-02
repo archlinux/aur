@@ -11,7 +11,7 @@ license=('LGPL2.1')
 depends=(
   'gcc-libs'
   'glibc'
-  'glslang' 'libSPIRV.so'
+  'glslang' #'libSPIRV.so'
   'libdovi' 'libdovi.so'
   'lcms2' 'liblcms2.so'
   'shaderc' 'libshaderc_shared.so'
@@ -25,9 +25,7 @@ makedepends=(
   'vulkan-headers'
   'python-jinja'
   'python-markupsafe'
-  'shaderc'
   'glad'
-  'libdovi'
 )
 _pkgver=$(echo $pkgver | cut -d . -f 1-3)
 provides=(
