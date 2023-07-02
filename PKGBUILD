@@ -2,50 +2,46 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=libplacebo-git
-pkgver=5.229.1.246.g2f48906f
+pkgver=6.287.0rc1.57.g363cada9
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://code.videolan.org/videolan/libplacebo'
 arch=('x86_64')
 license=('LGPL2.1')
-depends=('libvulkan.so'
-         'liblcms2.so'
-         'glslang'
-         'libepoxy.so'
-#          'glfw'
-         'libshaderc_shared.so'
-         'libavcodec.so'
-         'libavutil.so'
-         'libavformat.so'
-         'libdovi.so'
-         )
-makedepends=('git'
-             'meson'
-             'ninja'
-             'vulkan-headers'
-             'vulkan-icd-loader'
-             'python-jinja'
-             'python-markupsafe'
-             'ffmpeg'
-             'lcms2'
-             'shaderc'
-             'glad'
-             'nuklear'
-             'libdovi'
-             )
+depends=(
+  'gcc-libs'
+  'glibc'
+  'glslang' 'libSPIRV.so'
+  'libdovi' 'libdovi.so'
+  'lcms2' 'liblcms2.so'
+  'shaderc' 'libshaderc_shared.so'
+  'libunwind'
+  'vulkan-icd-loader' 'libvulkan.so'
+)
+makedepends=(
+  'git'
+  'meson'
+  'ninja'
+  'vulkan-headers'
+  'python-jinja'
+  'python-markupsafe'
+  'shaderc'
+  'glad'
+  'libdovi'
+)
 _pkgver=$(echo $pkgver | cut -d . -f 1-3)
-provides=("libplacebo=${_pkgver}"
-          'libplacebo.so'
-          )
+provides=(
+  "libplacebo=${_pkgver}"
+  'libplacebo.so'
+)
 conflicts=('libplacebo')
-source=('git+https://code.videolan.org/videolan/libplacebo.git'
-        )
+source=('git+https://code.videolan.org/videolan/libplacebo.git')
 sha256sums=('SKIP')
 options=('debug')
 
 pkgver() {
   cd libplacebo
-  echo "$(git describe --long --tags | tr - . | tr -d v)"
+  echo "$(git describe --long --tags | sed 's|-rc|rc|g' | tr - . | tr -d v)"
 }
 
 prepare() {
