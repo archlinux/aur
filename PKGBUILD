@@ -1,8 +1,9 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Diogo Alexandre <diogo464 at d464 dot sh>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Luís Ferreira <net dot lsferreira at contact, backwards>
 
 pkgname=railwayapp-cli
-pkgver=3.0.18
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Command Line Interface for Railway.app"
 arch=('x86_64' 'aarch64' 'i686')
@@ -12,7 +13,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0d5477f722e58246c29b7ab8c35d11427bebc986341e0b39d01d9bbba7ecda57')
+sha256sums=('68083661599e2f4b7fada400071b9f311fc56c7d4625407f7ca011bfa285694f')
 
 prepare() {
 	cd "cli-$pkgver"
