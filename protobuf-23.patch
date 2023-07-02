@@ -1,0 +1,481 @@
+diff --git a/caffe2/core/blob.h b/caffe2/core/blob.h
+index cb571bbe9f8..412d86beafd 100644
+--- a/caffe2/core/blob.h
++++ b/caffe2/core/blob.h
+@@ -8,11 +8,11 @@
+ #include <vector>
+ #include "caffe2/core/common.h"
+ 
+-#include <ATen/core/blob.h>
+-#include <c10/util/typeid.h>
+ #include "caffe2/core/logging.h"
+ #include "caffe2/core/tensor.h"
+ #include "caffe2/core/tensor_int8.h"
++#include <ATen/core/blob.h>
++#include <c10/util/typeid.h>
+ 
+ namespace caffe2 {
+ 
+diff --git a/caffe2/core/context.h b/caffe2/core/context.h
+index 36fd4e400fe..efee6d167de 100644
+--- a/caffe2/core/context.h
++++ b/caffe2/core/context.h
+@@ -6,13 +6,13 @@
+ #include <random>
+ #include <unordered_map>
+ 
+-#include <c10/util/typeid.h>
+ #include "caffe2/core/allocator.h"
+ #include "caffe2/core/context_base.h"
+ #include "caffe2/core/event.h"
+ #include "caffe2/core/logging.h"
+ #include "caffe2/proto/caffe2_pb.h"
+ 
++#include <c10/util/typeid.h>
+ #include <c10/util/ArrayRef.h>
+ 
+ #if !defined(CAFFE2_IS_XPLAT_BUILD) && !defined(C10_MOBILE)
+diff --git a/caffe2/core/context_base.h b/caffe2/core/context_base.h
+index cc8cc4c5bb6..624766b620a 100644
+--- a/caffe2/core/context_base.h
++++ b/caffe2/core/context_base.h
+@@ -6,6 +6,10 @@
+ #include <memory>
+ #include <unordered_map>
+ 
++#include "caffe2/core/common.h"
++#include "caffe2/core/logging.h"
++#include "caffe2/proto/caffe2_pb.h"
++
+ #include <c10/macros/Macros.h>
+ #include <c10/core/Allocator.h>
+ #include <c10/util/typeid.h>
+@@ -13,10 +17,6 @@
+ #include <c10/util/Registry.h>
+ #include <c10/core/CopyBytes.h>
+ 
+-#include "caffe2/core/common.h"
+-#include "caffe2/core/logging.h"
+-#include "caffe2/proto/caffe2_pb.h"
+-
+ namespace caffe2 {
+ class Event;
+ 
+diff --git a/caffe2/core/context_gpu.cu b/caffe2/core/context_gpu.cu
+index 3359e88bcba..ff5904358f2 100644
+--- a/caffe2/core/context_gpu.cu
++++ b/caffe2/core/context_gpu.cu
+@@ -4,11 +4,6 @@
+ #include <string>
+ #include <unordered_map>
+ 
+-#include <ATen/Context.h>
+-#include <c10/cuda/CUDAFunctions.h>
+-#include <c10/cuda/CUDACachingAllocator.h>
+-#include "cub/util_allocator.cuh"
+-
+ // Needed to be included first to check the CAFFE2_USE_CUDNN macros.
+ #include "caffe2/core/macros.h"
+ 
+@@ -23,6 +18,11 @@
+ #include "caffe2/utils/string_utils.h"
+ #include "caffe2/utils/cub_namespace.cuh"
+ 
++#include <ATen/Context.h>
++#include <c10/cuda/CUDAFunctions.h>
++#include <c10/cuda/CUDACachingAllocator.h>
++#include "cub/util_allocator.cuh"
++
+ C10_DEFINE_string(
+     caffe2_cuda_memory_pool,
+     "",
+diff --git a/caffe2/core/operator.h b/caffe2/core/operator.h
+index ff845e0343a..47d15c7f222 100644
+--- a/caffe2/core/operator.h
++++ b/caffe2/core/operator.h
+@@ -13,11 +13,6 @@
+ #include <typeinfo>
+ #include <vector>
+ 
+-#include <c10/macros/Macros.h>
+-#include <c10/util/Registry.h>
+-#include <c10/util/string_view.h>
+-#include <c10/util/typeid.h>
+-#include <c10/core/Stream.h>
+ #include "caffe2/core/blob.h"
+ #include "caffe2/core/common.h"
+ #include "caffe2/core/net.h"
+@@ -31,6 +26,12 @@
+ #include "caffe2/proto/caffe2_pb.h"
+ #include "caffe2/utils/proto_utils.h"
+ 
++#include <c10/macros/Macros.h>
++#include <c10/util/Registry.h>
++#include <c10/util/string_view.h>
++#include <c10/util/typeid.h>
++#include <c10/core/Stream.h>
++
+ #if defined(EXPOSE_C2_OPS) || \
+     !defined(CAFFE2_IS_XPLAT_BUILD) && !defined(C10_MOBILE)
+ #include <ATen/core/TensorBody.h>
+diff --git a/caffe2/core/types.h b/caffe2/core/types.h
+index f83a58910e6..f68334281a8 100644
+--- a/caffe2/core/types.h
++++ b/caffe2/core/types.h
+@@ -7,8 +7,8 @@
+ 
+ #include "caffe2/core/common.h"
+ #include "caffe2/core/logging.h"
+-#include <c10/util/typeid.h>
+ #include "caffe2/proto/caffe2_pb.h"
++#include <c10/util/typeid.h>
+ #include <c10/util/Half.h>
+ 
+ namespace caffe2 {
+diff --git a/caffe2/onnx/backend.cc b/caffe2/onnx/backend.cc
+index d1607ea97f4..02104268bcc 100644
+--- a/caffe2/onnx/backend.cc
++++ b/caffe2/onnx/backend.cc
+@@ -1796,19 +1796,19 @@ void Caffe2Backend::BuildTensorFillingOp(
+           c2_op, c2_values, onnx_tensor);
+       // NOLINTNEXTLINE(bugprone-branch-clone)
+     } else if (onnx_tensor.data_type() == TensorProto::BOOL) {
+-      ConvertIntegralValueToCaffe2<::google::protobuf::int8>(
++      ConvertIntegralValueToCaffe2<::google::protobuf::int32>(
+           c2_op, c2_values, onnx_tensor);
+     } else if (onnx_tensor.data_type() == TensorProto::UINT8) {
+-      ConvertIntegralValueToCaffe2<::google::protobuf::uint8>(
++      ConvertIntegralValueToCaffe2<::google::protobuf::uint32>(
+           c2_op, c2_values, onnx_tensor);
+     } else if (onnx_tensor.data_type() == TensorProto::INT8) {
+-      ConvertIntegralValueToCaffe2<::google::protobuf::int8>(
++      ConvertIntegralValueToCaffe2<::google::protobuf::int32>(
+           c2_op, c2_values, onnx_tensor);
+     } else if (onnx_tensor.data_type() == TensorProto::UINT16) {
+-      ConvertIntegralValueToCaffe2<::google::protobuf::uint16>(
++      ConvertIntegralValueToCaffe2<::google::protobuf::uint32>(
+           c2_op, c2_values, onnx_tensor);
+     } else if (onnx_tensor.data_type() == TensorProto::INT16) {
+-      ConvertIntegralValueToCaffe2<::google::protobuf::int16>(
++      ConvertIntegralValueToCaffe2<::google::protobuf::int32>(
+           c2_op, c2_values, onnx_tensor);
+     } else if (onnx_tensor.data_type() == TensorProto::INT32) {
+       ConvertIntegralValueToCaffe2<::google::protobuf::int32>(
+diff --git a/caffe2/operators/cross_entropy_op.cu b/caffe2/operators/cross_entropy_op.cu
+index a2734e46b21..681b66e2c7f 100644
+--- a/caffe2/operators/cross_entropy_op.cu
++++ b/caffe2/operators/cross_entropy_op.cu
+@@ -1,10 +1,10 @@
+ #include <assert.h>
+-#include <cub/block/block_reduce.cuh>
+ 
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/cross_entropy_op.h"
+ #include "caffe2/operators/operator_fallback_gpu.h"
+ #include "caffe2/utils/cub_namespace.cuh"
++#include <cub/block/block_reduce.cuh>
+ 
+ namespace caffe2 {
+ 
+diff --git a/caffe2/operators/deform_conv_op.cu b/caffe2/operators/deform_conv_op.cu
+index 0257be46d2c..f23c4138e7d 100644
+--- a/caffe2/operators/deform_conv_op.cu
++++ b/caffe2/operators/deform_conv_op.cu
+@@ -58,13 +58,13 @@
+  * \author Yuwen Xiong, Haozhi Qi, Jifeng Dai
+  */
+ 
+-#include <cub/block/block_reduce.cuh>
+ #include <vector>
+ #include "caffe2/core/common.h"
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/deform_conv_op.h"
+ #include "caffe2/operators/deform_conv_op_impl.h"
+ #include "caffe2/utils/GpuAtomics.cuh"
++#include <cub/block/block_reduce.cuh>
+ 
+ namespace caffe2 {
+ 
+diff --git a/caffe2/operators/distance_op.cu b/caffe2/operators/distance_op.cu
+index a360166854f..8ad3598f164 100644
+--- a/caffe2/operators/distance_op.cu
++++ b/caffe2/operators/distance_op.cu
+@@ -1,5 +1,3 @@
+-#include <cub/block/block_reduce.cuh>
+-
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/distance_op.h"
+ #include "caffe2/utils/conversions.h"
+diff --git a/caffe2/operators/find_op.cu b/caffe2/operators/find_op.cu
+index 0418a71fbcd..66dde0c30d9 100644
+--- a/caffe2/operators/find_op.cu
++++ b/caffe2/operators/find_op.cu
+@@ -1,7 +1,7 @@
+-#include <cub/block/block_reduce.cuh>
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/find_op.h"
+ #include "caffe2/utils/cub_namespace.cuh"
++#include <cub/block/block_reduce.cuh>
+ 
+ namespace caffe2 {
+ 
+diff --git a/caffe2/operators/generate_proposals_op.cu b/caffe2/operators/generate_proposals_op.cu
+index b6372665193..d926b9d189c 100644
+--- a/caffe2/operators/generate_proposals_op.cu
++++ b/caffe2/operators/generate_proposals_op.cu
+@@ -1,4 +1,3 @@
+-#include <cub/cub.cuh>
+ #include "caffe2/core/context.h"
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/generate_proposals_op.h"
+@@ -6,6 +5,7 @@
+ #include "caffe2/operators/generate_proposals_op_util_nms.h"
+ #include "caffe2/operators/generate_proposals_op_util_nms_gpu.h"
+ #include "caffe2/utils/cub_namespace.cuh"
++#include <cub/cub.cuh>
+ 
+ #if defined(USE_ROCM)
+ #include <cfloat>
+diff --git a/caffe2/operators/layer_norm_op.cu b/caffe2/operators/layer_norm_op.cu
+index 750c49b204d..801a62a1ead 100644
+--- a/caffe2/operators/layer_norm_op.cu
++++ b/caffe2/operators/layer_norm_op.cu
+@@ -1,10 +1,10 @@
+-#include "caffe2/core/export_c10_op_to_caffe2.h"
+ #include "caffe2/operators/layer_norm_op.h"
+ 
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/utils/math.h"
+ #include "caffe2/utils/math/reduce.cuh"
+ #include "caffe2/utils/math/utils.h"
++#include "caffe2/core/export_c10_op_to_caffe2.h"
+ 
+ namespace caffe2 {
+ 
+diff --git a/caffe2/operators/lengths_pad_op.cu b/caffe2/operators/lengths_pad_op.cu
+index 7b2c2cf2e10..cb146218803 100644
+--- a/caffe2/operators/lengths_pad_op.cu
++++ b/caffe2/operators/lengths_pad_op.cu
+@@ -1,6 +1,5 @@
+-#include "caffe2/operators/lengths_pad_op.h"
+-
+ #include "caffe2/core/context_gpu.h"
++#include "caffe2/operators/lengths_pad_op.h"
+ 
+ namespace caffe2 {
+ REGISTER_CUDA_OPERATOR(LengthsPad, LengthsPadOp<CUDAContext>);
+diff --git a/caffe2/operators/normalize_ops.cu b/caffe2/operators/normalize_ops.cu
+index e4d1f34b754..93496bbac99 100644
+--- a/caffe2/operators/normalize_ops.cu
++++ b/caffe2/operators/normalize_ops.cu
+@@ -1,11 +1,10 @@
+ #include <algorithm>
+ 
+-#include <cub/block/block_reduce.cuh>
+-
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/normalize_l1_op.h"
+ #include "caffe2/operators/normalize_op.h"
+ #include "caffe2/utils/cub_namespace.cuh"
++#include <cub/block/block_reduce.cuh>
+ 
+ namespace caffe2 {
+ 
+diff --git a/caffe2/operators/one_hot_ops.cu b/caffe2/operators/one_hot_ops.cu
+index 87e8196765e..9c80868ccaa 100644
+--- a/caffe2/operators/one_hot_ops.cu
++++ b/caffe2/operators/one_hot_ops.cu
+@@ -1,9 +1,9 @@
+-#include <cub/block/block_reduce.cuh>
+-
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/one_hot_ops.h"
+ #include "caffe2/utils/cub_namespace.cuh"
+ 
++#include <cub/block/block_reduce.cuh>
++
+ namespace caffe2 {
+ 
+ __global__ void OneHotOpKernel(
+diff --git a/caffe2/operators/pack_segments.cu b/caffe2/operators/pack_segments.cu
+index 372638abdd2..462054d365c 100644
+--- a/caffe2/operators/pack_segments.cu
++++ b/caffe2/operators/pack_segments.cu
+@@ -1,7 +1,7 @@
+-#include <cub/cub.cuh>
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/pack_segments.h"
+ #include "caffe2/utils/cub_namespace.cuh"
++#include <cub/cub.cuh>
+ 
+ namespace caffe2 {
+ 
+diff --git a/caffe2/operators/pow_op.cu b/caffe2/operators/pow_op.cu
+index ed4b16c940e..f1f366b5878 100644
+--- a/caffe2/operators/pow_op.cu
++++ b/caffe2/operators/pow_op.cu
+@@ -1,11 +1,11 @@
+ #define CUB_STDERR
+-#include <cub/block/block_load.cuh>
+-#include <cub/block/block_reduce.cuh>
+-#include <cub/device/device_reduce.cuh>
+ #include "caffe2/core/common_gpu.h"
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/pow_op.h"
+ #include "caffe2/utils/conversions.h"
++#include <cub/block/block_load.cuh>
++#include <cub/block/block_reduce.cuh>
++#include <cub/device/device_reduce.cuh>
+ 
+ namespace caffe2 {
+ 
+diff --git a/caffe2/operators/reduce_front_back_max_ops.cu b/caffe2/operators/reduce_front_back_max_ops.cu
+index 2ea25de4600..e8754b080c2 100644
+--- a/caffe2/operators/reduce_front_back_max_ops.cu
++++ b/caffe2/operators/reduce_front_back_max_ops.cu
+@@ -1,7 +1,7 @@
+-#include <cub/block/block_reduce.cuh>
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/reduce_front_back_max_ops.h"
+ #include "caffe2/utils/cub_namespace.cuh"
++#include <cub/block/block_reduce.cuh>
+ 
+ #if defined(USE_ROCM)
+ #include <cfloat>
+diff --git a/caffe2/operators/reduce_front_back_sum_mean_ops.cu b/caffe2/operators/reduce_front_back_sum_mean_ops.cu
+index a7ad6dd5008..632879cd7f1 100644
+--- a/caffe2/operators/reduce_front_back_sum_mean_ops.cu
++++ b/caffe2/operators/reduce_front_back_sum_mean_ops.cu
+@@ -1,7 +1,7 @@
+-#include <cub/block/block_reduce.cuh>
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/reduce_front_back_sum_mean_ops.h"
+ #include "caffe2/utils/cub_namespace.cuh"
++#include <cub/block/block_reduce.cuh>
+ 
+ namespace caffe2 {
+ 
+diff --git a/caffe2/operators/rmac_regions_op.cu b/caffe2/operators/rmac_regions_op.cu
+index 6b79e0c4c8b..b664da3e65b 100644
+--- a/caffe2/operators/rmac_regions_op.cu
++++ b/caffe2/operators/rmac_regions_op.cu
+@@ -1,9 +1,9 @@
+-#include <cub/block/block_reduce.cuh>
+-#include "caffe2/utils/cub_namespace.cuh"
+-
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/rmac_regions_op.h"
+ 
++#include <cub/block/block_reduce.cuh>
++#include "caffe2/utils/cub_namespace.cuh"
++
+ #if defined(USE_ROCM)
+ #include <cfloat>
+ #endif
+diff --git a/caffe2/operators/sequence_ops.cu b/caffe2/operators/sequence_ops.cu
+index 2ceb5236ef7..bdcef7975b1 100644
+--- a/caffe2/operators/sequence_ops.cu
++++ b/caffe2/operators/sequence_ops.cu
+@@ -1,14 +1,14 @@
+ #include <algorithm>
+ 
+-#include <cub/cub.cuh>
+-#include "caffe2/utils/cub_namespace.cuh"
+-
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/sequence_ops.h"
+ 
+ #include "caffe2/core/operator.h"
+ #include "caffe2/core/tensor.h"
+ 
++#include <cub/cub.cuh>
++#include "caffe2/utils/cub_namespace.cuh"
++
+ namespace caffe2 {
+ 
+ namespace {
+diff --git a/caffe2/operators/softmax_ops.cu b/caffe2/operators/softmax_ops.cu
+index ebf0700c9ef..3a2332c7e90 100644
+--- a/caffe2/operators/softmax_ops.cu
++++ b/caffe2/operators/softmax_ops.cu
+@@ -1,11 +1,11 @@
+ #include <cfloat>
+-#include <cub/block/block_reduce.cuh>
+ 
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/operators/softmax_op.h"
+ #include "caffe2/operators/softmax_with_loss_op.h"
+ #include "caffe2/operators/spatial_softmax_with_loss_op.h"
+ #include "caffe2/utils/cub_namespace.cuh"
++#include <cub/block/block_reduce.cuh>
+ 
+ namespace caffe2 {
+ 
+diff --git a/caffe2/operators/summarize_op.cu b/caffe2/operators/summarize_op.cu
+index eac14e2cd1a..c81480073d0 100644
+--- a/caffe2/operators/summarize_op.cu
++++ b/caffe2/operators/summarize_op.cu
+@@ -1,11 +1,11 @@
++#include "caffe2/operators/summarize_op.h"
++#include "caffe2/core/context_gpu.h"
++
+ #include <cuda.h>
+ #include <thrust/device_vector.h>
+ #include <thrust/transform_reduce.h>
+ #include <thrust/system/cuda/execution_policy.h>
+ 
+-#include "caffe2/operators/summarize_op.h"
+-#include "caffe2/core/context_gpu.h"
+-
+ namespace caffe2 {
+ 
+ namespace {
+diff --git a/caffe2/sgd/adagrad_fused_op_gpu.cu b/caffe2/sgd/adagrad_fused_op_gpu.cu
+index 434a9b797cf..e9d50432481 100644
+--- a/caffe2/sgd/adagrad_fused_op_gpu.cu
++++ b/caffe2/sgd/adagrad_fused_op_gpu.cu
+@@ -1,11 +1,11 @@
+-#include <ATen/ATen.h>
+-#include <c10/core/GeneratorImpl.h>
+ #include <algorithm>
+ 
++#include "caffe2/utils/math.h"
++#include <ATen/ATen.h>
+ #include "caffe2/utils/cub_namespace.cuh"
+ #include <cub/device/device_radix_sort.cuh>
+ #include "caffe2/sgd/adagrad_fused_op_gpu.cuh"
+-#include "caffe2/utils/math.h"
++#include <c10/core/GeneratorImpl.h>
+ 
+ namespace caffe2 {
+ 
+diff --git a/caffe2/sgd/adagrad_op_gpu.cu b/caffe2/sgd/adagrad_op_gpu.cu
+index b80d29700c3..e5b7a84c11f 100644
+--- a/caffe2/sgd/adagrad_op_gpu.cu
++++ b/caffe2/sgd/adagrad_op_gpu.cu
+@@ -1,10 +1,10 @@
+ #include <algorithm>
+ 
+-#include <cub/block/block_reduce.cuh>
+ #include "caffe2/core/common_gpu.h"
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/sgd/adagrad_op.h"
+ #include "caffe2/utils/cub_namespace.cuh"
++#include <cub/block/block_reduce.cuh>
+ 
+ namespace caffe2 {
+ 
+diff --git a/caffe2/sgd/adam_op_gpu.cu b/caffe2/sgd/adam_op_gpu.cu
+index 6f9c3234204..d6ed51559c0 100644
+--- a/caffe2/sgd/adam_op_gpu.cu
++++ b/caffe2/sgd/adam_op_gpu.cu
+@@ -1,8 +1,8 @@
+-#include <cub/block/block_reduce.cuh>
+ #include "caffe2/core/common_gpu.h"
+ #include "caffe2/core/context_gpu.h"
+ #include "caffe2/sgd/adam_op.h"
+ #include "caffe2/utils/cub_namespace.cuh"
++#include <cub/block/block_reduce.cuh>
+ 
+ namespace caffe2 {
+ 

@@ -7,7 +7,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 pkgver=2.0.1
 _pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -76,7 +76,8 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         disable-werror3.patch
         disable-werror4.patch
         ffmpeg4.4.patch
-        rocblas-batched.patch)
+        rocblas-batched.patch
+        protobuf-23.patch)
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -128,7 +129,8 @@ b2sums=('SKIP'
         '96de2729b29c7ce3e4fdd8008f575d24c2c3ef9f85d6217e607902d7b870ac71b9290fde71e87a68d75bb75ef28eacbf5ce04e071146809ccf1e76a03f97b479'
         'eea86bbed0a37e1661035913536456f90e0cd1e687c7e4103011f0688bc8347b6fc2ff82019909c41e7c89ddbc3b80dde641e88abf406f4faebc71b0bb693d25'
         '6286b05d5b5143f117363e3ce3c7d693910f53845aeb6f501b3eea64aa71778cb2d7dcd4ac945d5321ef23b4da02446e86dedc6a9b6a998df4a7f3b1ce50550a'
-        '232d2aca7cae8da511d1451890f8696d47da72276929ac5731a1a1a481d2a515fa7288bf33730d8ea2c892616551a74ca2439b53de6b1dfee156c30919120741')
+        '232d2aca7cae8da511d1451890f8696d47da72276929ac5731a1a1a481d2a515fa7288bf33730d8ea2c892616551a74ca2439b53de6b1dfee156c30919120741'
+        '96bf490c74ebedc5a0bc2592677b3a0d2c94517c4fb014f5fb91b2638571d5e6ba27ab1a439c0a13403c8c039413be98e9cdbbcc999f491000fcfb90b1c81b67')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -211,6 +213,11 @@ prepare() {
 
   # fix https://github.com/pytorch/pytorch/issues/97640
   patch -Np1 -i "${srcdir}/rocblas-batched.patch"
+
+  # protobuf 23 requires C++17
+  find -name CMakeLists.txt | xargs sed -e 's|CXX_STANDARD 14|CXX_STANDARD 17|' -e 's|CXX_STANDARD 11|CXX_STANDARD 17|' -i
+  # Sort includes to workaround conflicting _Float16 definitions https://forums.developer.nvidia.com/t/including-cub-header-breakes-compilation-with-gcc-12-and-sse2-or-better/255018
+  patch -Np1 -i "${srcdir}/protobuf-23.patch"
 
   cd "${srcdir}"
 
