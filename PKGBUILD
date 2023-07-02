@@ -3,18 +3,18 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=validatornu
-pkgver=22.9.29
+pkgver=23.4.11
 pkgrel=1
 pkgdesc="The Nu Html Checker, a command line tool for HTML5 markup validation"
 arch=('any')
 url="https://validator.github.io/validator/"
 license=('MIT' 'BSD' 'Apache' 'CDDL' 'EPL' 'MPL')
-depends=('java-environment>=8')
+depends=('bash' 'java-environment>=8')
 source=("validatornu"
         "https://registry.npmjs.org/vnu-jar/-/vnu-jar-$pkgver.tgz"
         "https://raw.githubusercontent.com/validator/validator/$pkgver/CREDITS")
 sha256sums=('96cd47b569b8c79a60f3bea22159444919b418ef20d8beb4b223a6389aabbf25'
-            '651b8183b1ffed596260b19b4e2865ff6f4711b1881fdbfe5525af4a72f7cd63'
+            'cbba595a86d680d48e9c5261a16d9ef409e5658ad8aa47081c593690a652cf0f'
             'b7f78e603da0e9aa19adb63a3c12af5c8c16e40c43ac115a017cc7ed2517e9fb')
 
 package() {
