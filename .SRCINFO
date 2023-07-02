@@ -1,7 +1,7 @@
 pkgbase = python-asyncpraw
 	pkgdesc = Asynchronous Python Reddit API wrapper
-	pkgver = 7.5.0
-	pkgrel = 2
+	pkgver = 7.7.0
+	pkgrel = 1
 	url = https://github.com/praw-dev/asyncpraw
 	arch = any
 	license = BSD
@@ -14,7 +14,7 @@ pkgbase = python-asyncpraw
 	depends = python-aiofiles
 	depends = python-asyncio_extras
 	options = !emptydirs
-	source = https://github.com/praw-dev/asyncpraw/archive/refs/tags/v7.5.0.tar.gz
-	sha256sums = b2957a53eabef5405960c548b02cd49dca903133059e938375b5cde4b842aac8
+	source = https://github.com/praw-dev/asyncpraw/archive/refs/tags/v7.7.0.tar.gz
+	sha256sums = 3d1fccc6c43a5ce60f8be4d80238e24592e9de7a26cb5604cd184dd540bd8fd5
 
 pkgname = python-asyncpraw
