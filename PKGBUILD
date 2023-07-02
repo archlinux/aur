@@ -3,17 +3,17 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=geany-tags
-pkgver=20210529
+pkgver=20230702
 pkgrel=1
 pkgdesc='Geany tags for C, C++, CSS, GLSL, Java, JavaScript, LaTeX, PHP, Python, Ruby, Tcl, Vala and more'
 url='http://wiki.geany.org/tags/start'
-license=('GPL')
-arch=('any')
-depends=('geany')
-source=('geany-tags.tar.bz2::http://wiki.geany.org/get_tags')
-sha1sums=('20ffeea7da17e4e6a2ced9c5bd19392787b87a03')
+license=(GPL)
+arch=(any)
+depends=(geany)
+source=("$pkgname-$pkgver.tar.bz2::http://wiki.geany.org/get_tags")
+sha256sums=('11dbd860569da25ded2d289560bbb0e214c5501ed448aa3d18304eae2cdf9300')
 
 package() {
     cd tags
-    find . -type f -exec install -Dm0644 '{}' "$pkgdir/usr/share/geany/tags/{}" \;
+    find . -type f -exec install -vDm 644 '{}' "$pkgdir/usr/share/geany/tags/{}" \;
 }
