@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('GPL')
 url='https://v3.sk/~lkundrak/dev86/'
 depends=('glibc')
-source=("https://sources.archlinux.org/other/community/dev86/${pkgname}-${pkgver}.tar.gz"
+source=("https://sources.archlinux.org/other/packages/dev86/${pkgname}-${pkgver}.tar.gz"
         'bin86-0.16.17-x86_64-1.patch')
 sha1sums=('35a1222350adce5b6d62dd56f3477d9416c59174'
           '2c967c062fbee4e40ca1bf55feec2033e132e0a9')
