@@ -3,7 +3,7 @@ _pkgver=1.0.6
 _appimage="${_pkgname}-${_pkgver}-x86_64.AppImage"
 _desktopfile="org.free_astro.siril.desktop"
 
-pkgname=siril
+pkgname=siril-appimage
 pkgver='1.0.6'
 pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone). Appimage version."

@@ -1,4 +1,4 @@
-pkgbase = siril
+pkgbase = siril-appimage
 	pkgdesc = An astronomical image processing software for Linux. (IRIS clone). Appimage version.
 	pkgver = 1.0.6
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = siril
 	source = Siril-1.0.6-x86_64.AppImage::https://free-astro.org/download/Siril-1.0.6-x86_64.AppImage
 	sha256sums = 2d97a05f250984bc27f7f38dacc518cd19c5dfbc55a1cd13a1f3792736dc3958
 
-pkgname = siril
+pkgname = siril-appimage
