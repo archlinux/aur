@@ -2,29 +2,34 @@
 
 pkgname=libkeccak-musl
 _pkgname=libkeccak
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc='Keccak-family hashing library (musl-version)'
 arch=('x86_64' 'i686')
-url='https://github.com/maandree/libkeccak'
+url='https://codeberg.org/maandree/libkeccak'
 license=('custom:ISC')
 _compiler=gcc
 depends=('glibc' 'musl' "${_compiler}")
-source=("${url}/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('cbd8466a8be32db633aadcc1cdfd7c09eedd0606d274d0f5e43b0055a5f87672c1ba27052fd03423779b84648379f0095310d8367cef2ed7ba70d49a66e03249')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+b2sums=('645ae0cb8bb8c8f512487eec876bc63bd8c2e2a5243e3ebe32aca2e4cc79a3271a18a8295d097f6a1e536444bcf1af6331507ccf814bab2ae838c005434ca84f')
 
 prepare() {
-  cd ${_pkgname}-${pkgver}
+  cd ${_pkgname}
   sed -i 's#FLAGS\s\+=#FLAGS +=#g' optimised.mk
 }
 
 build() {
-  cd ${_pkgname}-${pkgver}
-  make CONFIGFILE=optimised.mk PREFIX=/usr/lib/musl CC="musl-${_compiler}"
+  cd ${_pkgname}
+  make CONFIGFILE=optimised.mk PREFIX=/usr/lib/musl CC="musl-${_compiler} -std=c99"
+}
+
+check() {
+  cd ${_pkgname}
+  make CONFIGFILE=optimised.mk PREFIX=/usr/lib/musl CC="musl-${_compiler} -std=c99" check
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}
+  cd ${_pkgname}
   make CONFIGFILE=optimised.mk PREFIX=/usr/lib/musl DESTDIR="${pkgdir}" install
   rm -r -- "${pkgdir}/usr/lib/musl/share"
 }
