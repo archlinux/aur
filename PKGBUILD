@@ -16,8 +16,8 @@ depends=('python-pbr' 'python-jmespath'
 checkdepends=('python-dogpile.cache' 'python-future' 'python-fixtures'
               'python-mock' 'python-subunit' 'python-requests-mock'
               'python-testtools' 'python-stestr' 'python-oslotest')
-source=("https://github.com/openstack/shade/archive/$pkgver.tar.gz")
-sha512sums=('dda29a5cbe41a2dc1641accdca66d80fd2afb58855ae3a9d99fb11a5b3407fa3afe7b5a8dc04150526050ff968f117202150330133a894553a51844a375f8c1f')
+source=("https://opendev.org/openstack/shade/archive/$pkgver.tar.gz")
+sha512sums=('1ada0eacca29775c497d2382d09ad882323e3fc315cf03728f01e5d29e66700dec1ec284a3db8a04442d8bbc83227009d4e94b027883fb594a065dae921629a8')
 
 export PBR_VERSION=$pkgver
 
