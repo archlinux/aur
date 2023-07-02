@@ -5,13 +5,14 @@ pkgbase = libgedit-gtksourceview
 	url = https://gedit-technology.net
 	arch = x86_64
 	license = LGPL2.1
+	checkdepends = xorg-server-xvfb
 	makedepends = gobject-introspection
 	makedepends = gtk-doc
 	makedepends = meson
 	depends = gtk3
 	depends = libxml2
 	provides = libgedit-gtksourceview-300.so
-	source = https://gedit-technology.net/tarballs/libgedit-gtksourceview/libgedit-gtksourceview-299.0.3.tar.xz
+	source = libgedit-gtksourceview-299.0.3.tar.xz::https://gedit-technology.net/tarballs/libgedit-gtksourceview/libgedit-gtksourceview-299.0.3.tar.xz
 	sha256sums = d80ec2afe87be45eadfff9396814545be15ac32e16f67fd07480e69c100c8659
 
 pkgname = libgedit-gtksourceview

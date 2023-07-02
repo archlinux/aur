@@ -1,5 +1,6 @@
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 # Contributor: Mark Wagie (yochananmarqos) <mark.wagie@proton.me>
+# Contributor: Fabio Loli (fabiololix) <fabio.loli@disroot.org>
 
 _pkgname=gedit
 pkgname="lib${_pkgname}-gtksourceview"
@@ -20,11 +21,18 @@ makedepends=(
   'gtk-doc'
   'meson'
 )
-provides=("${pkgname}-300.so")
+checkdepends=(
+  'xorg-server-xvfb'
+)
+provides=(
+  "${pkgname}-300.so"
+)
 _github_repo="https://github.com/${_pkgname}-technology/${pkgname}"
+_github_tarball="${_github_url}/archive/refs/tags/${pkgver}.tar.gz"
+_tarball="${url}/tarballs/${pkgname}/${pkgname}-${pkgver}.tar.xz"
 source=(
-  "${url}/tarballs/${pkgname}/${pkgname}-${pkgver}.tar.xz"
-  # "${_github_url}/archive/refs/tags/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.xz::${url}/tarballs/${pkgname}/${pkgname}-${pkgver}.tar.xz"
+  # "${pkgname}-${pkgver}.tar.gz::${_github_tarball}"
 )
 sha256sums=(
   # '68b7825d4577cfb94bd688364cfa581e441eccd8e7f73769648be4f69ae5c06a'
@@ -32,7 +40,7 @@ sha256sums=(
 )
 
 build() {
-  arch-meson "${pkgname}" build
+  arch-meson "${pkgname}-${pkgver}" build
   meson compile -C build
 }
 
