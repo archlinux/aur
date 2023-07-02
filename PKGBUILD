@@ -17,19 +17,19 @@ sha512sums=('c46462166fde0a98e14b60532e8d0f264b9866568eb3650dd04c1af5e8867780d0b
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   # Remove functional tests as they're complicated to run
   rm -fr aodhclient/tests/functional
   python setup.py build
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   stestr run
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
