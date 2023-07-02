@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=qualV
-_pkgver=0.3-4
+_pkgver=0.3-5
 pkgname=r-${_pkgname,,}
-pkgver=0.3.4
-pkgrel=4
+pkgver=0.3.5
+pkgrel=1
 pkgdesc='Qualitative Validation Methods'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ab10da9f4b330364951ea000aaa35f2b4a7ca0945586615869a80428d4fe7266')
+sha256sums=('e60825afab3de2b1cb257c55dfc380d1448962e429df180b2add104752771827')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
