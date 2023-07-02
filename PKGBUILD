@@ -16,7 +16,7 @@ depends=('python-pbr' 'python-cliff' 'python-jsonschema' 'python-testtools'
          'python-debtcollector')
 checkdepends=('python-hacking' 'python-mock' 'python-oslotest')
 source=("https://opendev.org/openstack/tempest/archive/$pkgver.tar.gz")
-sha512sums=('4ab1d3ac193788ccb302163e58d93f55672d6971d3a26380ac2a4c42579a5ae6fe187059d83fe070cdb408aac97e99fda63b6b1a0cf2b3839df9e0335e4e9905')
+sha512sums=('13ed84ea72b2c8e8451becf3afb0c15d6666fbb44cc6afe4ca24c3b33e6f44718a818b7a91b8571ce22936095b48feb5b1c76c248be1a1ab5afadf395b89d014')
 
 export PBR_VERSION=$pkgver
 
