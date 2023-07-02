@@ -1,4 +1,4 @@
-pkgname=virtualmoonatlas
+pkgname=virtualmoonatlas-git
 pkgver=8.2
 pkgrel=1
 pkgdesc="Software for Moon observation and survey"
