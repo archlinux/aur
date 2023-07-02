@@ -1,6 +1,6 @@
 pkgbase = wish-edict
 	pkgdesc = Japanese-English dictionaries EDICT2 and KANJIDIC for Wish
-	pkgver = 20221014
+	pkgver = 20230702
 	pkgrel = 1
 	url = http://www.edrdg.org/jmdict/edict.html
 	arch = any

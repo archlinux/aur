@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Mangano <fmang+aur mg0.fr>
 
 pkgname=wish-edict
-pkgver=20230701
+pkgver=20230702
 pkgrel=1
 pkgdesc='Japanese-English dictionaries EDICT2 and KANJIDIC for Wish'
 license=('Creative Commons BY-SA')
@@ -13,6 +13,10 @@ depends=('wish')
 source=('http://ftp.edrdg.org/pub/Nihongo/kanjidic.gz'
         'http://ftp.edrdg.org/pub/Nihongo/edict2.gz')
 sha256sums=(SKIP SKIP)
+
+pkgver() {
+	date +%Y%m%d
+}
 
 build() {
 	cd "$srcdir"
