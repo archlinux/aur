@@ -1,6 +1,6 @@
 pkgbase = gswww-git
 	pkgdesc = A Graphical Solution to your Wayland Wallpaper Woes
-	pkgver = r33.5d7aa2d
+	pkgver = r35.d49b492
 	pkgrel = 1
 	url = https://github.com/Ph1lll/Gswww
 	arch = x86_64
