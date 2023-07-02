@@ -1,6 +1,6 @@
 # Maintainer: Phillip Davies (ph1lll) <philliptdavies@gmail.com>
 pkgname=gswww-git
-pkgver=r33.5d7aa2d
+pkgver=r35.d49b492
 pkgrel=1
 pkgdesc="A Graphical Solution to your Wayland Wallpaper Woes"
 arch=('x86_64' 'aarch64')
@@ -35,6 +35,6 @@ package() {
 	cd "$srcdir/gswww"
 
 	install -Dm755 target/release/gswww -t "$pkgdir/usr/bin/"
-	install -Dm644 assets/intergration/Gswww.png -t "$pkgdir/usr/share/pixmaps/"
-	install -Dm644 assets/intergration/Gswww.desktop -t "$pkgdir/usr/share/applications"
+	install -Dm644 assets/intergration/com.github.Ph1lll.Gswww.png -t "$pkgdir/usr/share/pixmaps/"
+	install -Dm644 assets/intergration/com.github.Ph1lll.Gswww.desktop -t "$pkgdir/usr/share/applications"
 }
