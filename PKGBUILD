@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton8-4
-_commit=dc67f6a51b578e6ba3659600db2f50646a112887
+_srctag=GE-Proton8-5
+_commit=c10e04a5b7d858dce00d7cb55ad2eb8f404162f9
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
-_monover=7.4.1
-pkgrel=2
+_monover=8.0.0
+pkgrel=1
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -106,6 +106,9 @@ source=(
     gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     graphene::git+https://github.com/ebassi/graphene.git
+    openfst::git+https://github.com/alphacep/openfst.git
+    kaldi::git+https://github.com/alphacep/kaldi.git
+    vosk-api::git+https://github.com/alphacep/vosk-api.git
     libdisplay-info-dxvk::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
@@ -192,6 +195,9 @@ prepare() {
         dav1d
         gst-plugins-rs
         graphene
+        openfst
+        kaldi
+        vosk-api
         wine-staging
         protonfixes-gloriouseggroll::protonfixes
         gst-plugins-bad
@@ -365,9 +371,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
-            '1286afc67b0a329f5e2d98d9e803ca5906a841ad5486e9b3b1fefa1124b15622'
+            '14c7d76780b79dc62d8ed9d1759e7adcfa332bb2406e2e694dee7b2128cc7a77'
             'a7c82094e1ca3101a0e63c73d01728630f1333ddade38088fadc3bdc9527e0cd'
             '6db2946f8125c5b3216f4fc6493ef090eb84311f889ee3225c2c7178af989b69')
 # Optional patches
