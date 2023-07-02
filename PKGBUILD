@@ -3,7 +3,7 @@
 pkgbase=aliyunpan-odomu-appimage
 pkgname=aliyunpan-odomu
 pkgver=3.23.62819
-pkgrel=0
+pkgrel=1
 pkgdesc="阿里云盘小白羊版 v3 修复版"
 arch=('x86_64' 'aarch64')
 url="https://github.com/odomu/aliyunpan"
@@ -24,13 +24,14 @@ sha256sums_aarch64=('3fcbd56158e7152ed4196a09ce2cfc634ecad9b8c2aa29efcf64d097495
 _install_path="/opt/appimages"
 
 prepare() {
+    cd ${srcdir}
     chmod a+x ${pkgname}-${pkgver}-${CARCH}.AppImage
     "./${pkgname}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed 's|AppRun|/opt/appimages/aliyunpan-odomu.AppImage|g' -i "${srcdir}/squashfs-root/alixby.desktop"
 }
 
 package() {
-    install -Dm755 "${pkgname}-${pkgver}-${CARCH}.AppImage" "${pkgdir}/${_install_path}/${pkgname}.AppImage"
+    install -Dm755 "${srcdir}"/${pkgname}-${pkgver}-${CARCH}.AppImage "${pkgdir}"/${_install_path}/${pkgname}.AppImage
 
     local _icon
     for _icon in 16 32 64 128 256; do
