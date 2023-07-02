@@ -1,7 +1,7 @@
 pkgname="openai-client-git"
 _pkgname="openai-client"
 pkgdesc="OpenAI client made using PySide6 Qt"
-pkgver=1.0.r62.9e6f6e4
+pkgver=1.0.r65.2384bcf
 pkgrel=1
 arch=("x86_64")
 
@@ -38,40 +38,23 @@ package() {
 
   # Make necessary directories
 
-  mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}/usr/share"
-  mkdir -p "${pkgdir}/usr/share/icons"
-  mkdir -p "${pkgdir}/usr/share/applications"
-  mkdir -p "${pkgdir}/opt"
-  mkdir -p "${pkgdir}/opt/openai-client"
 
   # install -Dm 755 "${srcdir}/openai-client/scripts/launchers/launch_arch.sh" "${pkgdir}/usr/bin/openai-client"
   install -Dm 755 "${srcdir}/openai-client/scripts/run.sh" "${pkgdir}/usr/bin/openai-client"
 
-  icon_sizes=("16x16" "32x32" "48x48" "64x64" "128x128" "256x256")
-  for icon_size in ${icon_sizes[@]}; do 
-    echo $icon_size
-    install -D "${srcdir}/openai-client/icons/${icon_size}.png"  "${pkgdir}/usr/share/icons/hicolor/${icon_size}/apps/openai-client.png"
-
-  done
-
-
-
-
-  install -D "${srcdir}/openai-client/desktop/openai-client.jpg" "${pkgdir}/usr/share/icons/openai-client.jpg"  
-  install -D "${srcdir}/openai-client/desktop/openai-client.desktop" "${pkgdir}/usr/share/applications/openai-client.desktop"  
+  mkdir -pv "${pkgdir}/usr" 
+  cp -rv "${srcdir}/openai-client/share" "${pkgdir}/usr"
 
 
   # Create python virtualenv
 
   # pip install --upgrade pip
   # pip install --upgrade venvs
-  mkdir -p venv "${srcdir}/.venvs"
-  python -m venv "${srcdir}/.venvs/openai-client-venv"
+  python -m venv "${srcdir}/.venv"
 
 
   # Check if virtualenv is created
-  if [ -f "${srcdir}/.venvs/openai-client-venv/bin/activate" ]; then
+  if [ -f "${srcdir}/.venv/bin/activate" ]; then
       echo "Good to go"
       echo "Python virtualenv created properly"
   else
@@ -83,7 +66,7 @@ package() {
 
   # Install python libraries in the virtualenv
 
-  source "${srcdir}/.venvs/openai-client-venv/bin/activate"
+  source "${srcdir}/.venv/bin/activate"
   pip install --upgrade pip
 
   pip install --upgrade -r "${srcdir}/openai-client/requirements.txt"
