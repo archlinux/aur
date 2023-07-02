@@ -2,7 +2,7 @@
 
 pkgname=python-tempest
 pkgver=34.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenStack Integration Testing'
 arch=('any')
 url='https://docs.openstack.org/tempest/'
@@ -21,7 +21,7 @@ sha512sums=('13ed84ea72b2c8e8451becf3afb0c15d6666fbb44cc6afe4ca24c3b33e6f44718a8
 export PBR_VERSION=$pkgver
 
 build() {
-  cd tempest-$pkgver
+  cd tempest
   python setup.py build
 }
 
@@ -32,7 +32,7 @@ build() {
 #}
 
 package() {
-  cd tempest-$pkgver
+  cd tempest
   python setup.py install --root="$pkgdir" --optimize=1
 }
 

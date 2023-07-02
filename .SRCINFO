@@ -1,7 +1,7 @@
 pkgbase = python-tempest
 	pkgdesc = OpenStack Integration Testing
 	pkgver = 34.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/tempest/
 	arch = any
 	license = Apache
