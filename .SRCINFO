@@ -1,8 +1,9 @@
 pkgbase = domino-chain
 	pkgdesc = Clone of the puzzle game Pushover (Amiga).
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://domino-chain.gitlab.io/
+	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -32,4 +33,3 @@ pkgbase = domino-chain
 	md5sums = 4ac36ca43ea455b5c251ec4558d83162
 
 pkgname = domino-chain
-

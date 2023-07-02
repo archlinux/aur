@@ -2,9 +2,9 @@
 
 pkgname=domino-chain
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Clone of the puzzle game Pushover (Amiga)."
-arch=('i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url="https://domino-chain.gitlab.io/"
 license=('GPL3')
 depends=('boost-libs' 'fribidi' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'libpng' 'lua52' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'zlib')
