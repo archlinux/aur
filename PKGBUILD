@@ -11,7 +11,7 @@ license=('GPL')
 depends=('pidgin' 'kwallet')
 makedepends=('cmake')
 # The original url is dynamically generated at regular intervals and cannot be relied on.
-source=("https://sources.archlinux.org/other/community/$pkgname/127136-PidginKWallet-$pkgver.tar.bz2")
+source=("https://sources.archlinux.org/other/packages/$pkgname/127136-PidginKWallet-$pkgver.tar.bz2")
 sha512sums=('836bd2acefe9f6e9adc157217d917dfcf9bf8acc9934f9f036c367c9424a730f036174c3ef273f84677a60bb098146606ef59fb6de3a1c9708fb5e2fbac59adc')
 
 build() {
