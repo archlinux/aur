@@ -1,12 +1,13 @@
 pkgbase = polkit-qt5-git
 	pkgdesc = A library that allows developers to access PolicyKit API with a nice Qt-style API
-	pkgver = v0.114.0.r5.g5dce8b6
+	pkgver = v0.114.0.r13.g590e710
 	pkgrel = 1
 	url = https://invent.kde.org/libraries/polkit-qt-1
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = git
+	makedepends = cmake
 	depends = polkit
 	depends = qt5-base
 	provides = polkit-qt5

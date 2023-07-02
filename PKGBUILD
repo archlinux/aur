@@ -2,14 +2,14 @@
 
 _pkgname=polkit-qt5
 pkgname=$_pkgname-git
-pkgver=v0.114.0.r5.g5dce8b6
+pkgver=v0.114.0.r13.g590e710
 pkgrel=1
 pkgdesc='A library that allows developers to access PolicyKit API with a nice Qt-style API'
 arch=('i686' 'x86_64')
 url='https://invent.kde.org/libraries/polkit-qt-1'
 license=('LGPL')
 depends=('polkit' 'qt5-base')
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://invent.kde.org/libraries/polkit-qt-1.git")
