@@ -6,6 +6,7 @@ pkgbase = sbx-h6-rgb-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = hidapi
 	source = git+https://github.com/Oscillope/sbx-h6-rgb.git
 	sha256sums = SKIP
 
