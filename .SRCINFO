@@ -1,19 +1,21 @@
 pkgbase = cavalier-git
 	pkgdesc = Audio visualizer based on CAVA
-	pkgver = 2022.12.18.r2.g56aed27
+	pkgver = V2023.7.0.beta1.r18.gb526da8
 	pkgrel = 1
-	url = https://github.com/fsobolev/cavalier
+	url = https://github.com/NickvisionApps/cavalier
 	arch = any
 	license = MIT
+	makedepends = blueprint-compiler
+	makedepends = dotnet-sdk>=7
 	makedepends = git
-	makedepends = meson
 	depends = cava
+	depends = dotnet-runtime>=7
 	depends = libadwaita
-	depends = python-cairo
-	depends = python-gobject
+	depends = iniparser
+	depends = fftw
 	provides = cavalier
 	conflicts = cavalier
-	source = git+https://github.com/fsobolev/cavalier.git
+	source = git+https://github.com/NickvisionApps/cavalier
 	b2sums = SKIP
 
 pkgname = cavalier-git
