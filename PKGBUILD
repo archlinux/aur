@@ -21,23 +21,23 @@ sha512sums=('406299dc950cd80a5cb419a559af2a7274419b7c150f1162caa66fb8979db1f946e
 export PBR_VERSION=$pkgver
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   sed -i '/simplejson/d' requirements.txt
   sed -i 's/assertItemsEqual/assertCountEqual/g' troveclient/tests/osc/v1/test_database_logs.py
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py build
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   stestr run
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
   install -D --mode 644 $srcdir/trove.bash_completion $pkgdir/usr/share/bash-completion/completions/trove
 }
