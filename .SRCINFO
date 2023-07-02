@@ -1,6 +1,6 @@
 pkgbase = cinelerra-gg
 	pkgdesc = Professional video editing and compositing environment
-	pkgver = 2023.03
+	pkgver = 2023.06
 	pkgrel = 1
 	url = https://www.cinelerra-gg.org
 	arch = x86_64
@@ -39,7 +39,7 @@ pkgbase = cinelerra-gg
 	depends = openexr
 	depends = opus
 	conflicts = cin
-	source = cinelerra-gg::git://git.cinelerra-gg.org/goodguy/cinelerra.git#tag=2023-03
+	source = cinelerra-gg::git://git.cinelerra-gg.org/goodguy/cinelerra.git#tag=2023-06
 	sha256sums = SKIP
 
 pkgname = cinelerra-gg
