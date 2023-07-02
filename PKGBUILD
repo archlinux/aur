@@ -2,7 +2,7 @@
 
 pkgname=python-manilaclient
 pkgver=4.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Client library for OpenStack Manila API'
 arch=('any')
 url="http://docs.openstack.org/$pkgname"
@@ -19,17 +19,17 @@ sha512sums=('d1240c6ddbc90b0269f9d3b4a57ed8b7b1cb220c9bbde6541d65f6cbb1d0a7c15cc
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py build
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   stestr run
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
 }
 

@@ -1,7 +1,7 @@
 pkgbase = python-manilaclient
 	pkgdesc = Client library for OpenStack Manila API
 	pkgver = 4.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://docs.openstack.org/python-manilaclient
 	arch = any
 	license = Apache
