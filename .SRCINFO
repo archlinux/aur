@@ -1,6 +1,6 @@
 pkgbase = wlroots-nvidia-git
 	pkgdesc = Modular Wayland compositor library (git version with nvidia patches)
-	pkgver = 0.16.0.r58.g77d9fc08
+	pkgver = 0.16.0.r623.gbbd53b3b
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/wlroots/wlroots
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = wlroots-nvidia-git
 	depends = libudev.so
 	depends = libxcb
 	depends = libxkbcommon
+	depends = libdisplay-info
+	depends = libliftoff
 	depends = opengl-driver
 	depends = pixman
 	depends = wayland
@@ -36,6 +38,6 @@ pkgbase = wlroots-nvidia-git
 	source = wlroots-nvidia-git::git+https://gitlab.freedesktop.org/wlroots/wlroots.git
 	source = nvidia.patch
 	sha256sums = SKIP
-	sha256sums = ab3aabd4be34c9a4d7fef86be37aa6c971b1106fb2bf7d7651c809338aff298c
+	sha256sums = 96d948ba58376178420bed763820fd274d230a1f7a82873a5b63de4c9a14e15f
 
 pkgname = wlroots-nvidia-git

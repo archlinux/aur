@@ -1,12 +1,13 @@
 # Maintainer: Kuan-Yen Chou <kychou2@illinois.edu>
 
 pkgname=wlroots-nvidia-git
-pkgver=0.16.0.r58.g77d9fc08
+pkgver=0.16.0.r623.gbbd53b3b
 pkgrel=1
 pkgdesc='Modular Wayland compositor library (git version with nvidia patches)'
-depends=(libglvnd libinput libudev.so libxcb libxkbcommon opengl-driver pixman
-         wayland xcb-util-errors xcb-util-renderutil xcb-util-wm seatd
-         vulkan-icd-loader vulkan-validation-layers xorg-xwayland)
+depends=(libglvnd libinput libudev.so libxcb libxkbcommon libdisplay-info
+         libliftoff opengl-driver pixman wayland xcb-util-errors
+         xcb-util-renderutil xcb-util-wm seatd vulkan-icd-loader
+         vulkan-validation-layers xorg-xwayland)
 makedepends=(git glslang meson ninja systemd vulkan-headers wayland-protocols
              xorg-xwayland)
 optdepends=('xorg-xwayland: Xwayland support')
@@ -18,7 +19,7 @@ conflicts=(wlroots wlroots-git)
 source=("$pkgname::git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "nvidia.patch")
 sha256sums=('SKIP'
-            'ab3aabd4be34c9a4d7fef86be37aa6c971b1106fb2bf7d7651c809338aff298c')
+            '96d948ba58376178420bed763820fd274d230a1f7a82873a5b63de4c9a14e15f')
 
 pkgver() {
     cd "$srcdir/$pkgname"
