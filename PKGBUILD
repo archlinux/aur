@@ -6,15 +6,16 @@ pkgname=(
   'libpipewire-git'
   'pipewire-docs-git'
   'pipewire-audio-git'
-  'pipewire-jack-git'
   'pipewire-alsa-git'
+  'pipewire-jack-git'
+  'pipewire-ffado-git'
   'pipewire-pulse-git'
-  'pipewire-zeroconf-git'
-  'pipewire-v4l2-git'
   'pipewire-roc-git'
+  'pipewire-v4l2-git'
   'pipewire-x11-bell-git'
+  'pipewire-zeroconf-git'
 )
-pkgver=0.3.71.152.g85af2bdef
+pkgver=0.3.72.36.gc13696aca
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -126,7 +127,6 @@ package_pipewire-git() {
     'libcamera.so'
     'libcrypto.so'
     'libdbus-1.so'
-    'libffado.so'
     'libglib-2.0.so'
     'libncursesw.so'
     'libreadline.so'
@@ -134,17 +134,18 @@ package_pipewire-git() {
     'libvulkan.so'
   )
   optdepends=(
-    'pipewire-docs-git: Documentation'
-    'pipewire-jack-git: JACK support'
     'pipewire-alsa-git: ALSA support'
     'pipewire-audio-git: Audio support'
+    'pipewire-ffado-git: FireWire support'
+    'pipewire-docs-git: Documentation'
+    'pipewire-jack-git: JACK support'
     'pipewire-pulse-git: PulseAudio support'
-    'pipewire-session-manager: Session manager'
-    'gst-plugin-pipewire-git: gstreamer support'
-    'pipewire-zeroconf-git: Zeroconf support'
-    'pipewire-v4l2-git: V4L2 interceptor'
     'pipewire-roc-git: ROC support'
+    'pipewire-session-manager: Session manager'
+    'pipewire-v4l2-git: V4L2 interceptor'
     'pipewire-x11-bell-git: X11 bell'
+    'pipewire-zeroconf-git: Zeroconf support'
+    'gst-plugin-pipewire-git: gstreamer support'
     'realtime-privileges: realtime privileges with rt module'
     'rtkit: realtime privileges with rtkit module'
   )
@@ -183,15 +184,18 @@ package_pipewire-git() {
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-fallback-sink.so"
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-filter-chain.so"
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-loopback.so"
+  _pick audio "usr/lib/pipewire-${_ver}/"libpipewire-module-netjack2-*.so
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-pipe-tunnel.so"
   _pick audio "usr/lib/pipewire-${_ver}/libpipewire-module-protocol-simple.so"
-  _pick audio "usr/lib/pipewire-${_ver}/"libpipewire-module-rtp-*.so
+  _pick audio "usr/lib/pipewire-${_ver}/"libpipewire-module-rtp-{sap,sink,source}.so
   _pick audio usr/lib/spa-0.2/{aec,audio*,avb,ffmpeg,bluez5,volume}
   _pick audio usr/lib/systemd/user/filter-chain.service
   _pick audio usr/share/man/man1/pw-{cat,mididump}.1
   _pick audio usr/share/pipewire/filter-chain*
   _pick audio usr/share/pipewire/pipewire-{aes67,avb}.conf
   _pick audio usr/share/spa-0.2/bluez5
+
+  _pick ffado "usr/lib/pipewire-${_ver}/"libpipewire-module-ffado*.so
 
   _pick docs usr/share/doc
 
@@ -218,6 +222,7 @@ package_pipewire-git() {
 
   _pick zeroconf "usr/lib/pipewire-${_ver}/libpipewire-module-zeroconf-discover.so"
   _pick zeroconf "usr/lib/pipewire-${_ver}/libpipewire-module-raop-discover.so"
+  _pick zeroconf "usr/lib/pipewire-${_ver}/libpipewire-module-rtp-session.so"
 
   _pick v4l2 usr/bin/pw-v4l2
   _pick v4l2 "usr/lib/pipewire-${_ver}/v4l2"
@@ -244,7 +249,6 @@ package_pipewire-git() {
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rt.so"
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rtkit.so"
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-session-manager.so"
-
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
@@ -326,7 +330,7 @@ package_pipewire-audio-git() {
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rtp-sink.so"
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rtp-source.so"
 
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 pipewire/COPYING
+  install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
 }
 
 package_pipewire-alsa-git() {
@@ -362,6 +366,21 @@ package_pipewire-alsa-git() {
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
+
+package_pipewire-ffado-git() {
+  pkgdesc+=" - FireWire support (GIT version)"
+  depends=(
+    "libpipewire-${pkgver}.so"
+    "pipewire-git=${pkgver}"
+    "pipewire-audio-git=${pkgver}"
+    'libffado.so'
+  )
+
+  mv ffado/* "${pkgdir}"
+
+  install -Dt "$pkgdir/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+}
+
 
 package_pipewire-jack-git() {
   pkgdesc+=" - JACK support (GIT version)"
@@ -465,26 +484,6 @@ package_pipewire-roc-git() {
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
-package_pipewire-zeroconf-git() {
-  pkgdesc+=" - Zeroconf support (GIT version)"
-  depends=(
-    "pipewire-git=${pkgver}"
-    "libpipewire-${_ver}.so"
-    'glibc'
-    'libavahi-client.so'
-    'libavahi-common.so'
-  )
-  provides=("pipewire-zeroconf=${pkgver}")
-  conflicts=('pipewire-zeroconf')
-
-  mv zeroconf/* "${pkgdir}"
-
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-raop-discover.so"
-  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-zeroconf-discover.so"
-
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
-}
-
 package_pipewire-v4l2-git() {
   pkgdesc+=" - V4L2 interceptor (GIT version)"
   depends=(
@@ -520,6 +519,27 @@ package_pipewire-x11-bell-git() {
   mv x11-bell/* "${pkgdir}"
 
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-x11-bell.so"
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
+}
+
+package_pipewire-zeroconf-git() {
+  pkgdesc+=" - Zeroconf support (GIT version)"
+  depends=(
+    "pipewire-git=${pkgver}"
+    "libpipewire-${_ver}.so"
+    "pipewire-audio-git=${pkgver}"
+    'glibc'
+    'libavahi-client.so'
+    'libavahi-common.so'
+  )
+  provides=("pipewire-zeroconf=${pkgver}")
+  conflicts=('pipewire-zeroconf')
+
+  mv zeroconf/* "${pkgdir}"
+
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-raop-discover.so"
+  chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-zeroconf-discover.so"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
