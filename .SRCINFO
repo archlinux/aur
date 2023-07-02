@@ -1,6 +1,6 @@
 pkgbase = dektec-drivers-dkms
 	pkgdesc = Linux DKMS for Dektec device drivers
-	pkgver = 2022.12.2
+	pkgver = 2023.06.0
 	pkgrel = 1
 	url = https://github.com/tsduck/dektec-dkms
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dektec-drivers-dkms
 	provides = dektec-drivers-dkms
 	conflicts = dektec-drivers-dkms
 	conflicts = dektec-dkms
-	source = dektec-drivers-dkms-2022.12.2.tar.gz::https://github.com/tsduck/dektec-dkms/archive/refs/tags/v2022.12.2.tar.gz
-	sha256sums = 75ec6248f75c93f221471b3e5edbd4a7dca436df84910805f7dcba29e24af28f
+	source = dektec-drivers-dkms-2023.06.0.tar.gz::https://github.com/tsduck/dektec-dkms/archive/refs/tags/v2023.06.0.tar.gz
+	sha256sums = af23f4b0a3393ca75903025219c869b8822483b3b45f3cb300ee319404ae26bb
 
 pkgname = dektec-drivers-dkms
