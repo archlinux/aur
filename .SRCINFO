@@ -1,10 +1,10 @@
 pkgbase = virtualmoonatlas-git
 	pkgdesc = Software for Moon observation and survey
-	pkgver = 8.2
+	pkgver = v8.2.1.g107c3ba4
 	pkgrel = 1
 	url = https://www.ap-i.net/avl/en/start
 	arch = x86_64
-	license = GPLv2
+	license = GPL2
 	makedepends = lazarus
 	makedepends = wget
 	makedepends = cspice
