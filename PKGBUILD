@@ -2,7 +2,7 @@
 
 pkgname=python-aodhclient
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Client library for the Aodh API'
 arch=('any')
 url="https://docs.openstack.org/$pkgname/"

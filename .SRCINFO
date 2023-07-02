@@ -1,7 +1,7 @@
 pkgbase = python-aodhclient
 	pkgdesc = Client library for the Aodh API
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/python-aodhclient/
 	arch = any
 	license = Apache
