@@ -10,8 +10,8 @@ license=('Apache')
 depends=('python-six' 'python-pbr' 'python-babel' 'python-dateutil'
          'python-ply')
 checkdepends=('python-fixtures' 'python-testtools' 'python-stestr')
-source=("https://github.com/openstack/yaql/archive/$pkgver.tar.gz")
-sha512sums=('70871113c5c8395e5340123a166ebd261cb60d17ec57af5d656feeb0d3329d614ca9d8915906325354cb8f0ceeadf6bbd9bd0ae87200c20efa1f66248f979a06')
+source=("https://opendev.org/openstack/yaql/archive/$pkgver.tar.gz")
+sha512sums=('75371b535067aac766302b74a8633230a48d2a0791e3d360e97f7d09175cccddb14d6306bd183f01a6ed6d8fb7fc5815a5f256fdbb1a73277d45bc110bd6e1c4')
 
 export PBR_VERSION=$pkgver
 
