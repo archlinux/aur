@@ -1,0 +1,15 @@
+pkgbase = rofi-tt
+	pkgdesc = menu interface for trash taste podcast
+	pkgver = 8.bee3118
+	pkgrel = 1
+	url = https://github.com/pog102/rofi-tt
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = rofi
+	depends = mpv
+	source = git+https://github.com/pog102/rofi-tt.git
+	md5sums = SKIP
+
+pkgname = rofi-tt
