@@ -2,7 +2,7 @@
 
 pkgname=popart
 pkgver=2019.07.15
-pkgrel=4
+pkgrel=5
 pkgdesc="Full-feature software for haplotype network reconstruction. https://doi.org/10.1111/2041-210X.12410"
 arch=('x86_64')
 url="https://popart.maths.otago.ac.nz/"
@@ -29,6 +29,6 @@ package() {
 cd icons
 for size in 16 32 64 128 256
 do
-  install -Dm 644 ${size}x${size}/popart.png $pkgdir/usr/share/icons/hicolor/${size}x${size}/popart.png
+  install -Dm 644 ${size}x${size}/popart.png $pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/popart.png
 done
 }

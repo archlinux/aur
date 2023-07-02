@@ -1,7 +1,7 @@
 pkgbase = popart
 	pkgdesc = Full-feature software for haplotype network reconstruction. https://doi.org/10.1111/2041-210X.12410
 	pkgver = 2019.07.15
-	pkgrel = 4
+	pkgrel = 5
 	url = https://popart.maths.otago.ac.nz/
 	arch = x86_64
 	license = LGPL
