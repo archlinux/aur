@@ -1,10 +1,11 @@
 pkgbase = fetcho
 	pkgdesc = A simple fetch made in C++
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CallMeEchoCodes/fetcho
 	arch = any
 	license = MPL-2.0
+	depends = libprocps
 	provides = fetcho
 	source = fetcho::git+https://github.com/CallMeEchoCodes/fetcho.git#tag=v1.1.0
 	sha256sums = SKIP
