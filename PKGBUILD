@@ -1,19 +1,21 @@
 # Maintainer: Dee.H.Y <dongfengweixiao at hotmail dot com>
 pkgname=dahliaos-files-git
 pkgver=r101.4166d0a
-pkgrel=2
+pkgrel=3
 pkgdesc="File manager application for dahliaOS."
 arch=('x86_64')
 url="https://github.com/dahliaOS/files"
 license=('Apache')
 depends=('gtk3')
-makedepends=('git' 'flutter>=3.10.0' 'cmake' 'ninja' 'imagemagick' 'clang>=11.0.0')
+makedepends=('git' 'cmake' 'ninja' 'imagemagick' 'clang>=11.0.0')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/dahliaOS/files.git'
-        "${pkgname%-git}.desktop")
+  "${pkgname%-git}.desktop"
+  "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.10.5-stable.tar.xz")
 sha256sums=('SKIP'
-            '41a11b723315c19014d21c4b177c513251d03ea773783ab674296035fb52d13c')
+  '41a11b723315c19014d21c4b177c513251d03ea773783ab674296035fb52d13c'
+  '86643cbfe8acf766a226a6cd4625bb8301c2601ea9bb825448318c8669b72a13')
 
 pkgver() {
   cd "$srcdir/files"
@@ -22,8 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/files"
-  flutter config --enable-linux-desktop
-  flutter build linux
+  $srcdir/flutter/bin/flutter build linux
 }
 
 package() {
