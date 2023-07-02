@@ -1,11 +1,11 @@
 # Maintainer: Alex Palaistras <alex+archlinux@deuill.org>
 _pkgname=bandcamp_tagplayer
 pkgname=python-bandcamp-tagplayer-git
-pkgver=r112.d5c1998
+pkgver=r113.4bcb4fd
 pkgrel=1
 arch=("any")
 pkgdesc="Autoloads an MPD playlist with a Bandcamp genre or user library"
-url="https://github.com/greggparrish/bandcamp_tagplayer"
+url="https://github.com/deuill/bandcamp_tagplayer"
 license=("Unlicense")
 depends=(
     'python'
@@ -31,26 +31,26 @@ optdepends=(
     'mpd: For playing generated playlists'
 )
 makedepends=(
-	'git'
+    'git'
     'python-build'
-	'python-installer'
-	'python-wheel'
+    'python-installer'
+    'python-wheel'
     'python-setuptools'
 )
-source=("$_pkgname::git+https://github.com/greggparrish/bandcamp_tagplayer")
+source=("$_pkgname::git+https://github.com/deuill/bandcamp_tagplayer")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$_pkgname"
+    cd "$_pkgname"
     python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$_pkgname"
+    cd "$_pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }

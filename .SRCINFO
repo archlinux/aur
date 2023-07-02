@@ -2,7 +2,7 @@ pkgbase = python-bandcamp-tagplayer-git
 	pkgdesc = Autoloads an MPD playlist with a Bandcamp genre or user library
 	pkgver = r112.d5c1998
 	pkgrel = 1
-	url = https://github.com/greggparrish/bandcamp_tagplayer
+	url = https://github.com/deuill/bandcamp_tagplayer
 	arch = any
 	license = Unlicense
 	makedepends = git
@@ -29,7 +29,7 @@ pkgbase = python-bandcamp-tagplayer-git
 	depends = python-urllib3
 	depends = python-wcwidth
 	optdepends = mpd: For playing generated playlists
-	source = bandcamp_tagplayer::git+https://github.com/greggparrish/bandcamp_tagplayer
+	source = bandcamp_tagplayer::git+https://github.com/deuill/bandcamp_tagplayer
 	sha256sums = SKIP
 
 pkgname = python-bandcamp-tagplayer-git
