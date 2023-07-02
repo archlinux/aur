@@ -1,4 +1,4 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Max Backstroem <aur@backstroem.net>
 # Contributor: John Hamelink <me@johnhame.link>
 
 pkgname=python-mopidy-tidal
