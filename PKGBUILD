@@ -24,7 +24,7 @@ source=(${pkgname}::git+"${url}".git
 md5sums=('SKIP'
 	'de5fab845f7f96b49956c7dc21268593'
 	'749322fc2b48a839a79a638d879e77a4'
-	'52a8a90977335fdecf3ce6f8530830b1'
+	'ce89e5d2ce27de70b5e6b53cbaf595f0'
         '63619dfc5bb5b2dbecfb1d6037095338'
         '90e34ac4e5a79f71af3eaab8cebf1198')
 
