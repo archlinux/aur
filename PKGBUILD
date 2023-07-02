@@ -1,4 +1,5 @@
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Mark Wagie (yochananmarqos) <mark.wagie@proton.me>
 
 _pkgname=libgedit-gtksourceview
 pkgname="${_pkgname}-git"
@@ -17,9 +18,13 @@ depends=(
 makedepends=(
   'git'
   'gobject-introspection'
+  'gtk-doc'
   'meson'
 )
-provides=("${_pkgname}=${pkgver}")
+provides=(
+  "${_pkgname}=${pkgver}"
+  "${_pkgname}-300.so"
+)
 conflicts=("${_pkgname}")
 source=("git+${url}")
 sha256sums=('SKIP')
@@ -35,6 +40,7 @@ build() {
 }
 
 check() {
+  export NO_AT_BRIDGE=1
   xvfb-run -s '-screen 0 1920x1080x24 -nolisten local' \
     meson test -C build --print-errorlogs
 }
@@ -42,3 +48,5 @@ check() {
 package() {
   meson install -C build --destdir "${pkgdir}"
 }
+
+# vim:set sw=2 sts=-1 et:
