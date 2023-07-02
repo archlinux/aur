@@ -2,7 +2,7 @@
 
 pkgname=python-saharaclient
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python client library for Sahara'
 arch=('any')
 url="http://docs.openstack.org/$pkgname/"
