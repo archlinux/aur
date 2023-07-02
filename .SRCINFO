@@ -1,0 +1,16 @@
+pkgbase = turbopilot-bin
+	pkgdesc = an open source large-language-model based code completion engine that runs locally on CPU
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/ravenscroftj/turbopilot/
+	arch = x86_64
+	license = BSD
+	provides = codegen-serve
+	provides = codegen
+	provides = codegen-quantize
+	source = turbopilot-bin-0.0.5.zip::https://github.com/ravenscroftj/turbopilot/releases/download/v0.0.5/turbopilot-Linux-X64-avx2-openblas.zip
+	source = https://raw.githubusercontent.com/ravenscroftj/turbopilot/92b65229b9821bd233679f464b27a2faa4a43e03/LICENSE.md
+	sha256sums = 695902d9271b0350001bf1f80e13c44ec08223ae2b8bbc3b2b3eac94507a86d3
+	sha256sums = ad440eed5aebf40261f955c276a71f63f384c54ab929ea32ce49a42f59385e17
+
+pkgname = turbopilot-bin
