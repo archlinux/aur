@@ -1,7 +1,7 @@
-# Maintainer: Florian Pritz <bluewind@xinu.at>
+# Maintainer: Florian Pritz <bluewind@archlinux.org>
 
 pkgname=perl-software-license
-pkgver=0.104002
+pkgver=0.104004
 pkgrel=1
 pkgdesc='packages that provide templated software licenses'
 arch=(any)
@@ -12,8 +12,8 @@ makedepends=('perl-extutils-makemaker>=6.78')
 checkdepends=(perl-try-tiny)
 url=https://metacpan.org/release/Software-License
 source=("https://cpan.metacpan.org/authors/id/L/LE/LEONT/Software-License-$pkgver.tar.gz")
-md5sums=(80b99d810ccaede171bcad323471b2a2)
-sha512sums=(80303349f1d1febfb61322d106587880e0191500229110eebf1b8fb6653dc212720a29c60d9575bd4bb077b83755592303dc4205df276193d8fa0252f21e01aa)
+md5sums=(8a51125cdb46859eeabc0c4474ae375e)
+sha512sums=(0dfb3a75d0fb4f430560f995193d11f4de7e1bcd0d240f8c4586b8b2ede93635ff8ac88bcbda4ffb9fd6cec61c6c1bdeb84bb0103c0870d76f267bf4d9ce48c8)
 _ddir="Software-License-$pkgver"
 
 build()
