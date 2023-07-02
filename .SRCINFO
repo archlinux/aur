@@ -1,7 +1,7 @@
 pkgbase = python-yaql
 	pkgdesc = YAQL - Yet Another Query Language
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://yaql.readthedocs.io
 	arch = any
 	license = Apache

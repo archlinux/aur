@@ -2,7 +2,7 @@
 
 pkgname=python-yaql
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='YAQL - Yet Another Query Language'
 arch=('any')
 url='https://yaql.readthedocs.io'
@@ -16,19 +16,19 @@ sha512sums=('75371b535067aac766302b74a8633230a48d2a0791e3d360e97f7d09175cccddb14
 export PBR_VERSION=$pkgver
 
 build() {
-  cd yaql-$pkgver
+  cd yaql
   python setup.py build
 }
 
 check() {
-  cd yaql-$pkgver
+  cd yaql
   # Fix test function name for Python 3
   sed -i 's/assertItemsEqual/assertCountEqual/g' yaql/tests/*.py
   stestr run --test-path ./yaql/tests
 }
 
 package() {
-  cd yaql-$pkgver
+  cd yaql
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
