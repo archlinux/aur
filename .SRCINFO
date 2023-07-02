@@ -1,12 +1,12 @@
 pkgbase = celestia-appimage
 	pkgdesc = Real-time space simulation
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CelestiaProject/Celestia
 	arch = x86_64
 	license = GPL
-	depends = gtkglext
-	depends = luajit
+	depends = gtk2
+	options = !strip
 	source = https://github.com/CelestiaProject/Celestia/releases/download/1.6.3/celestia-1.6.3-lp154.2.1.Build2.2.glibc2.29-x86_64.AppImage
 	sha256sums = 7c3c586d4e9e8e91c7d660a5312e95fd80600c482b84dadfa13f81bfc907f8ef
 
