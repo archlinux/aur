@@ -3,20 +3,22 @@ pkgbase = python2-libxml2
 	pkgver = 2.9.14
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
+	arch = x86_64
 	arch = aarch64
 	arch = i686
 	arch = pentium4
-	arch = x86_64
+	arch = armv7h
+	arch = armv6l
 	license = MIT
 	makedepends = git
+	depends = icu
+	depends = ncurses
 	depends = python2
 	depends = libxml2
-	depends = zlib
 	depends = readline
-	depends = ncurses
 	depends = xz
-	depends = icu
-	source = libxml2::git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=7846b0a677f8d3ce72486125fa281e92ac9970e8
+	depends = zlib
+	source = ::git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=7846b0a677f8d3ce72486125fa281e92ac9970e8
 	source = no-fuzz.diff
 	source = https://www.w3.org/XML/Test/xmlts20130923.tar.gz
 	sha256sums = SKIP

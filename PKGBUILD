@@ -5,19 +5,36 @@
 # Contributor: John Proctor <jproctor@prium.net>
 # Contributor: MarsSeed <marcell.meszaros@runbox.eu>
 
-_pkgname=libxml2
-pkgname=python2-$_pkgname
+_py="python2"
+_pkg="libxml2"
+pkgname="${_py}-${_pkg}"
 pkgver=2.9.14
 pkgrel=1
 pkgdesc='XML parsing library, version 2'
-url='https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home'
-arch=(aarch64 i686 pentium4 x86_64)
+url="https://gitlab.gnome.org/GNOME/${_pkg}/-/wikis/home"
+arch=(
+  x86_64
+  aarch64
+  i686
+  pentium4
+  armv7h
+  armv6l)
 license=(MIT)
-depends=(python2 $_pkgname zlib readline ncurses xz icu)
-makedepends=(git)
+depends=(
+  icu
+  ncurses
+  "${_py}"
+  "${_pkg}"
+  readline
+  xz
+  zlib
+)
+makedepends=(
+  git
+)
 _commit=7846b0a677f8d3ce72486125fa281e92ac9970e8  # tags/v2.9.14^0
 _w3_tests="https://www.w3.org/XML/Test/xmlts20130923.tar.gz"
-source=("${_pkgname}::git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
+source=("${_pkgname}::git+https://gitlab.gnome.org/GNOME/${_pkg}.git#commit=$_commit"
         no-fuzz.diff # Do not run fuzzing tests
         "${_w3_tests}")
 sha256sums=('SKIP'
@@ -51,14 +68,16 @@ prepare() {
 }
 
 build() (
+  local _configure_opts=(
+    --prefix=/usr
+    --with-threads
+    --with-history
+    --with-python="/usr/bin/${_py}"
+    --with-icu
+)
   cd build
 
-  "../${_pkgname}/configure" \
-    --prefix=/usr \
-    --with-threads \
-    --with-history \
-    --with-python=/usr/bin/python2 \
-    --with-icu
+  "../${_pkgname}/configure" "${_configure_opts[@]}"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
   make
 
@@ -70,24 +89,24 @@ check() {
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
+  make -C build install --destdir "${pkgdir}"
 
-  python2 -m compileall -d /usr/lib "$pkgdir/usr/lib"
-  python2 -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
+  python2 -m compileall -d /usr/lib "${pkgdir}/usr/lib"
+  python2 -O -m compileall -d /usr/lib "${pkgdir}/usr/lib"
 
-  install -Dm 644 build/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 build/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   rm -rf "${pkgdir}/usr/bin/"
   rm -rf "${pkgdir}/usr/bin/"
-  rm -rf "${pkgdir}/usr/include/libxml2/libxml"
+  rm -rf "${pkgdir}/usr/include/${_pkg}/libxml"
   rm -rf "${pkgdir}/usr/lib/cmake"
-  rm -rf "${pkgdir}/usr/lib/libxml2"*
+  rm -rf "${pkgdir}/usr/lib/${_pkg}"*
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
   rm -rf "${pkgdir}/usr/lib/xml2Conf.sh"
   rm -rf "${pkgdir}/usr/share/aclocal"
-  rm -rf "${pkgdir}/usr/share/doc/libxml2"
-  rm -rf "${pkgdir}/usr/share/doc/libxml2-python-${pkgver}"
-  rm -rf "${pkgdir}/usr/share/gtk-doc/html/libxml2"
+  rm -rf "${pkgdir}/usr/share/doc/${_pkg}"
+  rm -rf "${pkgdir}/usr/share/doc/${_pkg}-python-${pkgver}"
+  rm -rf "${pkgdir}/usr/share/gtk-doc/html/${_pkg}"
   rm -rf "${pkgdir}/usr/share/man/man1"
   rm -rf "${pkgdir}/usr/share/man/man3"
 }
