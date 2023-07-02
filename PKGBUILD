@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.1.beta3.r0.g443b7549ad
+pkgver=10.1.beta4.r0.g3230f00aeb
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -40,7 +40,7 @@ optdepends=('cython: to compile cython code'
   'latte-integrale: integral point count in polyhedra'
   'python-jupymake: polymake backend for polyhedral computations'
   'shared_meataxe: faster matrix arithmetic over finite fields'
-  'openblas: faster linear algebra'
+  'blas-openblas: faster linear algebra'
   'sirocco: for computing the fundamental group of the complement of a plane curve'
   'dot2tex: for displaying some diagrams'
   'cryptominisat5: SAT solver'
@@ -58,15 +58,11 @@ provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
         sagemath-optional-packages.patch
         latte-count.patch
-        sagemath-bliss-0.77.patch
-        sagemath-tdlib-0.9.patch
-        sagemath-maxima-5.47.patch)
+        sagemath-tdlib-0.9.patch)
 sha256sums=('SKIP'
             '8a5b935d2fd8815489713db6497e9d44aefd61e8553e8cd4acc2cb1adf625ccc'
             '5cd2f88965d7ebab9dfab6f5c2040d363a4a5ae41230219cc7070b907381da5a'
-            '1a578528bab7be3970954fdfa033afa69fe753da1bab3f41693b0e05e3c849cd'
-            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2'
-            '8127a3f6fd46f0320fff8c0ae764cba419a8c3b262907030d9cc4a95bcc1e744')
+            '56a83abecf2ff5a500442adc7a50abbb70006037dd39c39dcdb04b3ca9fb51e2')
 
 pkgver() {
   cd sage
@@ -76,13 +72,6 @@ pkgver() {
 prepare(){
   cd sage
 
-# Upstream patches
-# Fix build with bliss 0.77 https://github.com/sagemath/sage/pull/35344
-  patch -p1 -i ../sagemath-bliss-0.77.patch
-# Fixes for maxima 5.47 https://github.com/sagemath/sage/pull/35707
-  patch -p1 -i ../sagemath-maxima-5.47.patch
-
-# Arch-specific patches
 # assume all optional packages are installed
   patch -p1 -i ../sagemath-optional-packages.patch
 # use correct latte-count binary name
