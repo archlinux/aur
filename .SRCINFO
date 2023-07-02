@@ -1,16 +1,16 @@
 pkgbase = virtualmoonatlas
 	pkgdesc = Software for Moon observation and survey
-	pkgver = 7.0
+	pkgver = 8.2
 	pkgrel = 1
-	url = http://virtualmoon.sourceforge.net/
+	url = https://www.ap-i.net/avl/en/start
 	arch = x86_64
-	license = GPLv2
-	makedepends = lazarus
-	makedepends = wget
-	depends = libpasastro
+	license = GPL2
+	depends = gtk2
 	provides = virtualmoonatlas
-	source = virtualmoonatlas::git+https://github.com/pchev/virtualmoon.git#tag=v7.0
-	md5sums = SKIP
+	conflicts = virtualmoonatlas-git
+	source = virtualmoon_8.2_amd64.deb::https://sourceforge.net/projects/virtualmoon/files/1-%20virtualmoon/Version%208.0/virtualmoon_8.2_amd64.deb/download
+	source = virtualmoon-basedata_8.2_all.deb::https://sourceforge.net/projects/virtualmoon/files/1-%20virtualmoon/Version%208.0/virtualmoon-basedata_8.2_all.deb/download
+	sha256sums = 2c41599fc15c759794857d8ca15c681dfac7c8e2eb5eb0b71aab3b5d6a43ef30
+	sha256sums = 860d4b6a545721bcb420b4b45ad7b1487697af1888c2e2acb3f582dc79e9cb91
 
 pkgname = virtualmoonatlas
-

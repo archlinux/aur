@@ -1,27 +1,31 @@
 # Maintainer: rapiertg <rapiertg@gmail.com>
+_pkgname=virtualmoon
 pkgname=virtualmoonatlas
-pkgver=7.0
+pkgver=8.2
 pkgrel=1
 pkgdesc="Software for Moon observation and survey"
 arch=('x86_64')
-url="http://virtualmoon.sourceforge.net/"
-license=('GPLv2')
-makedepends=('lazarus' 'wget')
-depends=('libpasastro')
+url="https://www.ap-i.net/avl/en/start"
+license=('GPL2')
+makedepends=()
+depends=('gtk2')
 provides=('virtualmoonatlas')
-md5sums=('SKIP')
+conflicts=('virtualmoonatlas-git')
+source=("virtualmoon_${pkgver}_amd64.deb::https://sourceforge.net/projects/virtualmoon/files/1-%20virtualmoon/Version%208.0/virtualmoon_${pkgver}_amd64.deb/download"
+	"virtualmoon-basedata_${pkgver}_all.deb::https://sourceforge.net/projects/virtualmoon/files/1-%20virtualmoon/Version%208.0/virtualmoon-basedata_${pkgver}_all.deb/download")
+sha256sums=('2c41599fc15c759794857d8ca15c681dfac7c8e2eb5eb0b71aab3b5d6a43ef30'
+            '860d4b6a545721bcb420b4b45ad7b1487697af1888c2e2acb3f582dc79e9cb91')
 
-source=("virtualmoonatlas::git+https://github.com/pchev/virtualmoon.git#tag=v7.0")
-
-build() {
-cd "$srcdir/${pkgname}"
-./configure fpc=/usr/lib/fpc/3.0.4/units/x86_64-linux/ lazarus=/usr/lib/lazarus prefix=$pkgdir/usr
-make
+extract_deb() {
+	local tmpdir="$(basename "${1%.deb}")"
+	rm -Rf "$tmpdir"
+	mkdir "$tmpdir"
+	cd "$tmpdir"
+	ar x "$1"
+	tar -C "${pkgdir}" -xf data.tar.xz
 }
 
 package() {
-cd "$srcdir/${pkgname}"
-make install
-./install_data.sh $pkgdir/usr
-chmod 755 $pkgdir/usr/share
+	extract_deb "${srcdir}/virtualmoon_${pkgver}_amd64.deb"
+	extract_deb "${srcdir}/virtualmoon-basedata_${pkgver}_all.deb"
 }
