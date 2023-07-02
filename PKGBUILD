@@ -11,8 +11,8 @@ depends=('python-pbr' 'python-six' 'python-monotonic' 'python-prettytable'
          'python-wheel')
 checkdepends=('python-eventlet' 'python-oslotest' 'python-stestr'
               'python-testrepository' 'python-testscenarios' 'python-testtools')
-source=("https://github.com/openstack/futurist/archive/$pkgver.tar.gz")
-sha512sums=('843dddb5aacde60772be4e92b7c514393ccc51849da8c34ce0bdfa77155bcd4d002a1986143f2ba575ff6eb4f2cae036536da484ed0cc494caaf26b417ebb8e1')
+source=("https://opendev.org/openstack/futurist/archive/$pkgver.tar.gz")
+sha512sums=('1af2ea994f82a1814b54a779ab42bbbf3f7ef9d5fa8cd723b8c20df3eba038e23e0e29a905ba4364b2332c9bdb997d6ec5331c10cdeacb29d498b2692a7033cd')
 
 export PBR_VERSION=$pkgver
 
