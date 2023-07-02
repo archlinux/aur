@@ -1,6 +1,6 @@
 pkgbase = ghcup-hs-bin
 	pkgdesc = an installer for the general purpose language Haskell
-	pkgver = 0.1.19.3
+	pkgver = 0.1.19.4
 	pkgrel = 1
 	url = https://www.haskell.org/ghcup/
 	install = ghcup-hs-bin.install
@@ -13,14 +13,14 @@ pkgbase = ghcup-hs-bin
 	optdepends = wget
 	optdepends = ncurses5-compat-libs: using older ghc's linking against libtinfo.so.5
 	conflicts = ghcup-git
-	source_x86_64 = ghcup-0.1.19.3-1-x86_64::https://downloads.haskell.org/~ghcup/0.1.19.3/x86_64-linux-ghcup-0.1.19.3
-	sha256sums_x86_64 = fc9bf8acfbfba519ae3c6f6533c559332f0661900eaa8903ca073f2f97471230
-	source_aarch64 = ghcup-0.1.19.3-1-aarch64::https://downloads.haskell.org/~ghcup/0.1.19.3/aarch64-linux-ghcup-0.1.19.3
-	sha256sums_aarch64 = 0ef062d46916c11cae1088e15ba7aa79897b0b43cb7fdbaca627f04b53eaa61d
-	source_armv7h = ghcup-0.1.19.3-1-armv7h::https://downloads.haskell.org/~ghcup/0.1.19.3/armv7-linux-ghcup-0.1.19.3
-	sha256sums_armv7h = 90b504d5cdc34ab826ca0f95eb241f322553d3d070c8559ca20006446e7fe8e8
-	source_i686 = ghcup-0.1.19.3-1-i686::https://downloads.haskell.org/~ghcup/0.1.19.3/i386-linux-ghcup-0.1.19.3
-	sha256sums_i686 = 9cb03a18733e7925089509452f74135caa6b4fc69527760a2621d36c6b5440c7
+	source_x86_64 = ghcup-0.1.19.4-1-x86_64::https://downloads.haskell.org/~ghcup/0.1.19.4/x86_64-linux-ghcup-0.1.19.4
+	sha256sums_x86_64 = c79d45273c44f13bcbd8265ef05a6bad58de1563cc54b93b8a75b7e3cdf8f44d
+	source_aarch64 = ghcup-0.1.19.4-1-aarch64::https://downloads.haskell.org/~ghcup/0.1.19.4/aarch64-linux-ghcup-0.1.19.4
+	sha256sums_aarch64 = 9850348d3a302f73d27a50108b611d8b66904658c1a46160f7f3bdd4c327d325
+	source_armv7h = ghcup-0.1.19.4-1-armv7h::https://downloads.haskell.org/~ghcup/0.1.19.4/armv7-linux-ghcup-0.1.19.4
+	sha256sums_armv7h = 85980b3e64b5d2ce5420baa6ad5230e4df153db578b4ace238bb748158a3d5ef
+	source_i686 = ghcup-0.1.19.4-1-i686::https://downloads.haskell.org/~ghcup/0.1.19.4/i386-linux-ghcup-0.1.19.4
+	sha256sums_i686 = fb7e501fcb2c1309257a7cd718e7dd1f906173fe8ba8ab172de31d18b0f307ae
 
 pkgname = ghcup-hs-bin
 
