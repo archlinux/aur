@@ -3,7 +3,7 @@ pkgbase=python-gammapy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc="A Python package for gamma-ray astronomy"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ makedepends=('cython'
 #              'python-scipy'
 #              'python-regions')
 checkdepends=('python-pytest-astropy-header'
-              'python-pytest-remotedata'
+#             'python-pytest-remotedata'
               'python-scipy'
               'python-regions'
               'python-click'
@@ -37,7 +37,7 @@ checkdepends=('python-pytest-astropy-header'
 #             'jupyter-nbformat'
 #             'python-sphinx'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4294a87c34a161d4021c7bb7d11bf6f5')
+md5sums=('59386ea8a1677a023d9d6a4a306dc35b')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
@@ -62,12 +62,13 @@ check() {
 
     ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname}*egg-info \
         build/lib.linux-${CARCH}-cpython-$(get_pyver)/${_pyname}-${pkgver}-py$(get_pyver .).egg-info
-#   PYTHONPATH="build/lib.linux-${CARCH}-cpython $(get_pyver)" pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed"
-    pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes
+    PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" || warning "Tests failed" # -vv --color=yes
+#   PYTHONPATH="build/lib.linux-${CARCH}-cpython-$(get_pyver)" pytest -vv --color=yes
+#   pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" #|| warning "Tests failed" # -vv --color=yes
 }
 
 package_python-gammapy() {
-    depends=('python>=3.8' 'python-scipy>1.10' 'python-yaml>=5.1' 'python-astropy>=5.0' 'python-regions>=0.5.0' 'python-click>=7.0' 'python-pydantic>=1.4' 'python-iminuit>=2.8.0' 'python-matplotlib>=3.4')
+    depends=('python>=3.8' 'python-scipy>1.10' 'python-yaml>=5.3' 'python-astropy>=5.0' 'python-regions>=0.5.0' 'python-click>=7.0' 'python-pydantic>=1.4' 'python-iminuit>=2.8.0' 'python-matplotlib>=3.4')
     optdepends=('python-pandas: For working with tables'
                 'python-emcee: For fitting by MCMC sampling'
                 'python-corner: For MCMC corner plots'
