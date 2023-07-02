@@ -3,13 +3,13 @@
 # Contributor: Thiago L. A. Miller <thiago_leisrael@hotmail.com>
 pkgname=salmon
 pkgver=1.10.2
-pkgrel=1
+pkgrel=3
 pkgdesc="Highly-accurate & wicked fast transcript-level quantification from RNA-seq reads using lightweight alignments"
 arch=('x86_64')
 url="https://combine-lab.github.io/$pkgname/"
 license=('GPL3')
-depends=('intel-tbb'  'jemalloc' 'boost-libs')
-makedepends=('boost>=1.55' 'cmake' 'unzip' 'cereal' 'curl' 'bzip2')
+depends=('intel-tbb' 'bzip2' 'jemalloc' 'boost-libs' 'gcc-libs' 'xz' 'zlib' 'glibc')
+makedepends=('boost>=1.55' 'cmake' 'unzip' 'cereal' 'curl' 'bzip2' 'python-sphinx')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/COMBINE-lab/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('976989182160fef3afb4429ee8b85d8dd39ed6ca212bb14d6a65cde0e985fb98')
@@ -38,6 +38,9 @@ build() {
     -DUSE_SHARED_LIBS=ON
 
   cmake --build build
+  # build manpages
+  cd doc
+  make man
 }
 
 check() {
@@ -53,6 +56,10 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644  include/{*.h,*.hpp,*.tpp} -t ${pkgdir}/usr/include/${pkgname}
+
+  #install manpages
+  install -d ${pkgdir}/usr/share/man/man1/
+  install -Dm644 doc/build/man/salmon.1 ${pkgdir}/usr/share/man/man1/salmon.1
 
   # clear cmake files
   rm -rf ${pkgdir}/usr/lib/{graphdump,ntcard,twopaco}
