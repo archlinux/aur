@@ -5,7 +5,7 @@
 pkgname='zeronet-conservancy'
 _gitname='zeronet-conservancy'
 _gitroot='https://github.com/zeronet-conservancy/zeronet-conservancy.git'
-pkgver=0.7.8.1
+pkgver=0.7.9
 pkgrel=1
 arch=('any')
 url='https://github.com/zeronet-conservancy/zeronet-conservancy/'
