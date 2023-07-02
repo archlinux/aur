@@ -11,8 +11,8 @@ depends=('python-pbr' 'python-cliff' 'python-osc-lib' 'python-oslo-i18n'
          'python-oslo-serialization' 'python-oslo-utils' 'python-osprofiler'
          'python-keystoneauth1' 'python-six' 'python-pyparsing')
 checkdepends=('python-oslotest' 'python-stestr' 'python-testtools')
-source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('e6b11178651bbac814050bace5bd4101562c7bb430b6acd1ccedac4c89c97fa50b661d9ae1f25b8099853c55af7246995b573d839c404e64afe2629024adcf93')
+source=("https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('c46462166fde0a98e14b60532e8d0f264b9866568eb3650dd04c1af5e8867780d0b3b7eb578adbba29fc44b88c3c04fb2d5c4bf8ebcfed8abffb5ffca813bee9')
 
 export PBR_VERSION=$pkgver
 
