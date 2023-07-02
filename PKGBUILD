@@ -2,7 +2,7 @@
 
 pkgname=python-muranopkgcheck
 pkgver=0.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Murano package validator tool'
 arch=('any')
 url='https://docs.openstack.org/murano-pkg-check/'
@@ -18,18 +18,18 @@ sha512sums=('efc83424137deb304559ef884eb6ab686369cd25718ae64c2eeb52d3d9f666ca8de
 export PBR_VERSION=$pkgver
 
 build() {
-  cd murano-pkg-check-$pkgver
+  cd murano-pkg-check
   python setup.py build
 }
 
 check() {
-  cd murano-pkg-check-$pkgver
+  cd murano-pkg-check
   #stestr run
   python setup.py test
 }
 
 package() {
-  cd murano-pkg-check-$pkgver
+  cd murano-pkg-check
   python setup.py install --root="$pkgdir" --optimize=1
 }
 

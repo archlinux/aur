@@ -1,7 +1,7 @@
 pkgbase = python-muranopkgcheck
 	pkgdesc = Murano package validator tool
 	pkgver = 0.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://docs.openstack.org/murano-pkg-check/
 	arch = any
 	license = Apache
