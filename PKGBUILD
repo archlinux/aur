@@ -1,6 +1,6 @@
 # Maintainer: Kevin S <aur@eldenring.mozmail.com>
 pkgname=audiobookshelf-git
-pkgver=v2.2.0.r3.gdc779a3
+pkgver=v2.2.23.r28.gd86a3b3d
 pkgrel=1
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=('any')
@@ -8,6 +8,7 @@ url="https://github.com/advplyr/audiobookshelf"
 license=('GPL3')
 depends=('ffmpeg')
 makedepends=('nodejs' 'npm' 'git')
+optdepends=('tone-bin')
 provides=("audiobookshelf")
 conflicts=("audiobookshelf")
 backup=('etc/conf.d/audiobookshelf')
@@ -21,7 +22,7 @@ source=(${pkgname}::git+"${url}".git
         'audiobookshelf.tmpfiles')
 
 md5sums=('SKIP'
-	'5880b13a80fdc51b15604f0e5f30da09'
+	'de5fab845f7f96b49956c7dc21268593'
 	'749322fc2b48a839a79a638d879e77a4'
 	'52a8a90977335fdecf3ce6f8530830b1'
         '63619dfc5bb5b2dbecfb1d6037095338'
@@ -46,7 +47,7 @@ build() {
 	cd client
 	rm -rf node_modules
 	npm ci --unsafe-perm=true --allow-root
-	npm run generate
+	NODE_OPTIONS=--openssl-legacy-provider	npm run generate
 	cd ..
 
 	echo ">>> Building Server"
