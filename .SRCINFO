@@ -1,6 +1,6 @@
 pkgbase = python-pyperscan-git
 	pkgdesc = A hyperscan binding for Python, which supports vectorscan
-	pkgver = 0.2.2.r18.ge807359
+	pkgver = 0.2.2.r38.gebc6404
 	pkgrel = 1
 	url = https://github.com/onekey-sec/pyperscan
 	arch = x86_64
@@ -18,8 +18,7 @@ pkgbase = python-pyperscan-git
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = python-maturin>=0.14
-	makedepends = python-maturin<0.15
+	makedepends = python-maturin
 	depends = python
 	provides = python-pyperscan
 	source = git+https://github.com/vlaci/pyperscan.git

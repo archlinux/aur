@@ -2,7 +2,7 @@
 
 _pyname=pyperscan
 pkgname=python-${_pyname}-git
-pkgver=0.2.2.r18.ge807359
+pkgver=0.2.2.r38.gebc6404
 pkgrel=1
 pkgdesc='A hyperscan binding for Python, which supports vectorscan'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,7 @@ makedepends=(git
              python-installer 
              python-wheel 
              python-setuptools 
-             'python-maturin>=0.14' 
-             'python-maturin<0.15')
+             python-maturin)
 checkdepends=(python-pytest python-pytest-cov)
 source=("git+https://github.com/vlaci/pyperscan.git"
          "git+https://github.com/VectorCamp/vectorscan#commit=b4bba94b1a250603b0b198e0394946e32f6c3f30"
