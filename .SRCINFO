@@ -1,6 +1,6 @@
 pkgbase = xmlcopyeditor
 	pkgdesc = XML editor based on Scintilla.
-	pkgver = 1.3.0.0
+	pkgver = 1.3.1.0
 	pkgrel = 1
 	url = http://xml-copy-editor.sourceforge.net
 	install = xmlcopyeditor.install
@@ -15,10 +15,9 @@ pkgbase = xmlcopyeditor
 	depends = libxml2
 	depends = libxslt
 	depends = pcre
-	depends = wxgtk3
+	depends = wxwidgets-gtk3
 	depends = xerces-c
-	source = https://sourceforge.net/projects/xml-copy-editor/files/xmlcopyeditor-linux/1.3.0.0/xmlcopyeditor-1.3.0.0.tar.gz
-	sha512sums = 5feebc56124601c1a8b7a3079b8f766c6282c256e39a2e34cdf64156ba910195a1b64fecea41d0a4022f00dcd3cd4f46f433fff3766acb6239ca70d7675b14c0
+	source = https://sourceforge.net/projects/xml-copy-editor/files/xmlcopyeditor-linux/1.3.1.0/xmlcopyeditor-1.3.1.0.tar.gz
+	sha512sums = ea262e1ac6536b71e3328e695ae5825a9aff7db7a8024eedc1b3f568a75deda06f0aaff838438f91ba44de5280d6288dc8dc2d85f74f1eb638ecc01e60481be7
 
 pkgname = xmlcopyeditor
-
