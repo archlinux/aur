@@ -1,32 +1,47 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
-_cranname=websocket
-_cranver=1.4.1
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=3
+_pkgname=websocket
+_pkgver=1.4.1
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=4
 pkgdesc="'WebSocket' Client Library"
-arch=(i686 x86_64)
-url="https://cran.r-project.org/package=${_cranname}"
+arch=(x86_64)
+url="https://cran.r-project.org/package=${_pkgname}"
 license=(GPL2)
-depends=(openssl r-r6 r-later)
-makedepends=(r-cpp11 r-asioheaders)
-optdepends=(
-    r-httpuv
-    r-testthat
-    r-knitr
-    r-rmarkdown
+depends=(
+  openssl
+  r-later
+  r-r6
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+makedepends=(
+  r-asioheaders
+  r-cpp11
+  websocketpp
+)
+optdepends=(
+  r-httpuv
+  r-knitr
+  r-rmarkdown
+  r-testthat
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('4e9a99ca5f1d29209393c3569b1efaa4')
 sha256sums=('281fa0e5d8739ef90626117c8d5ca9e30c7aeb642346d16706cbca34a46749cf')
+
+prepare() {
+  cd "$_pkgname/src"
+  # Use system websocketpp
+  sed -i 's|PKG_CPPFLAGS = -I./lib|PKG_CPPFLAGS =|' Makevars.in
+  sed -i 's/ws_websocketpp/websocketpp/g' websocket_defs.h websocket.cpp websocket_connection.cpp websocket_connection.h client.hpp
+}
 
 build() {
   mkdir -p build
-  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
