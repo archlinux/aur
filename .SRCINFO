@@ -1,0 +1,42 @@
+pkgbase = libxml2-2.9
+	pkgdesc = XML C parser and toolkit
+	pkgver = 2.9.10
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git
+	makedepends = python
+	depends = icu
+	depends = ncurses
+	depends = readline
+	depends = xz
+	depends = zlib
+	source = git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=41a34e1f4ffae2ce401600dbb5fe43f8fe402641
+	source = libxml2-2.9.8-python3-unicode-errors.patch
+	source = fix-relaxed-approach-to-nested-documents.patch
+	source = libxml2-2.9.10-CVE-2019-20388.patch
+	source = libxml2-2.9.10-CVE-2020-7595.patch
+	source = libxml2-2.9.10-parenthesize-type-checks.patch
+	source = libxml2-2.9.10-CVE-2020-24977.patch
+	source = libxml2-2.9.10-fix-integer-overflow.patch
+	source = libxml2-2.9.10-icu68.patch
+	source = https://www.w3.org/XML/Test/xmlts20130923.tar.gz
+	sha256sums = SKIP
+	sha256sums = 37eb81a8ec6929eed1514e891bff2dd05b450bcf0c712153880c485b7366c17c
+	sha256sums = 50f04807b86a179d051fb86755e82f55ba7aac9d0c005eefea93d2599a911d01
+	sha256sums = cfe1b3e0f026df6f979dbd77c1dcd1268e60acf3d7a8ff3f480b4e67bfcc19d6
+	sha256sums = c6105ff40d7b1b140fcd821b5d64ab8c7b596708071c26964727e7352b07ac7e
+	sha256sums = b63c161e4c8a6f0a65ba091c3d3ed09d3110d21f997ee61077c782b311fd4b33
+	sha256sums = 62eafffc2b4949489c261c63883d27c2e83d688f1d4c899000b283e4c2a682be
+	sha256sums = fd227780ad5699bebca7ef412d2d50fb1d21a54f6e3fdcad0bda5bdc8f8b2525
+	sha256sums = f02a435761f26ff664041d49f9d05924dc627bf103c7f542feee891f69aa84a2
+	sha256sums = 9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f
+
+pkgname = libxml2-2.9
+	optdepends = python: Python bindings
+	provides = libxml2.so=2.9.10
+
+pkgname = libxml2-2.9-docs
+	pkgdesc = XML C parser and toolkit (documentation)
+	depends = 
