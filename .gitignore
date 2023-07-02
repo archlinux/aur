@@ -1,0 +1,6 @@
+*.tar*
+pkg/
+src/
+*.log
+LICENSE
+*.AppImage
