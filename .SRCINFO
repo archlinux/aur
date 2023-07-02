@@ -1,18 +1,19 @@
 pkgbase = popart
 	pkgdesc = Full-feature software for haplotype network reconstruction. https://doi.org/10.1111/2041-210X.12410
 	pkgver = 2019.07.15
-	pkgrel = 2
-	url = http://popart.otago.ac.nz/index.shtml
+	pkgrel = 3
+	url = https://popart.maths.otago.ac.nz/
 	arch = x86_64
-	license = LGPLv2
+	license = LGPL
 	makedepends = git
-	depends = marble
+	makedepends = gendesk
+	makedepends = suitesparse
+	makedepends = marble
 	depends = lpsolve
 	depends = qt5-base
-	depends = suitesparse
+	depends = hicolor-icon-theme
+	optdepends = marble: map fucntion
 	source = git+https://github.com/jessicawleigh/popart-current.git
-	source = popart.desktop
 	md5sums = SKIP
-	md5sums = 4c6ec3407fb15aa4531e8ec13d59da34
 
 pkgname = popart

@@ -2,16 +2,16 @@
 
 pkgname=popart
 pkgver=2019.07.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Full-feature software for haplotype network reconstruction. https://doi.org/10.1111/2041-210X.12410"
 arch=('x86_64')
-url="http://popart.otago.ac.nz/index.shtml"
-license=('LGPLv2')
-depends=('marble' 'lpsolve' 'qt5-base' 'suitesparse')
-makedepends=('git')
-source=("git+https://github.com/jessicawleigh/popart-current.git" "popart.desktop")
-md5sums=('SKIP'
-         '4c6ec3407fb15aa4531e8ec13d59da34')
+url="https://popart.maths.otago.ac.nz/"
+license=('LGPL')
+depends=('lpsolve' 'qt5-base' 'hicolor-icon-theme')
+makedepends=('git' 'gendesk' 'suitesparse' 'marble')
+optdepends=('marble: map fucntion')
+source=("git+https://github.com/jessicawleigh/popart-current.git")
+md5sums=('SKIP')
 pkgver(){
   cd $srcdir/${pkgname}-current
   printf $(TZ=UTC git log --no-walk --pretty="%cd" --decorate=full --date=format-local:%Y.%m.%d | head -n 1)
@@ -20,11 +20,16 @@ build() {
   cd $srcdir/${pkgname}-current
   qmake -makefile LPSOLVEDIR=/usr/bin/lp_solve MARBLEDIR=/usr/bin/marble popart.pro
   make
+  gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec="$pkgname" --icon="$pkgname.png"
 }
 
 package() {
-  install -d "$pkgdir"/usr/{bin,share/{popart,applications}}
-  mv "$srcdir"/popart-current/* "$pkgdir"/usr/share/popart
-  ln -s /usr/share/popart/popart "$pkgdir"/usr/bin/popart
-  install -Dm755 ${srcdir}/popart.desktop ${pkgdir}/usr/share/applications/popart.desktop
+  cd $srcdir/$pkgname-current
+  install -Dm755 $pkgname $pkgdir/usr/bin/$pkgname
+  install -Dm755 $pkgname.desktop ${pkgdir}/usr/share/applications/$pkgname.desktop
+cd icons
+for size in 16 32 64 128 256
+do
+  install -Dm 644 ${size}x${size}/popart.png $pkgdir/usr/share/icons/hicolor/${size}x${size}/popart.png
+done
 }
