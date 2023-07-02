@@ -1,34 +1,34 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-blazarclient
-pkgver=3.4.0
+pkgver=3.6.0
 pkgrel=2
 pkgdesc='Client library for the Blazar API'
 arch=('any')
 url="https://docs.openstack.org/$pkgname/"
 license=('Apache')
-depends=('python-pbr' 'python-cliff' 'python-prettytable' 'python-babel'
-         'python-babel' 'python-oslo-log' 'python-oslo-i18n'
-         'python-oslo-utils' 'python-keystoneauth1' 'python-osc-lib')
+depends=('python-pbr' 'python-cliff' 'python-prettytable' 'python-oslo-i18n'
+         'python-oslo-log' 'python-oslo-utils' 'python-keystoneauth1'
+         'python-osc-lib')
 checkdepends=('python-oslotest' 'python-fixtures' 'python-stestr'
               'python-testtools')
-source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('b328dd76757af74fa2bafb45a0d9711fafdbe58117693247bd799e04d54a7051674cfecc414da720574f6450b51ec861113cdafd9f9baea886af9afeff0ed2b7')
+source=("https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('2063a1426360a5685020c8dda1908956e715ce3f55b1b106ed1a4f4ea7d8a299741339f8f361f31f214c745932742debfd26ebe9d88b2c5d586bef5a551b9ae9')
 
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py build
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   stestr run
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
