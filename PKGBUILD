@@ -1,6 +1,6 @@
 pkgname=another-redis-desktop-manager
-pkgver=1.6.0
-pkgrel=1
+pkgver=1.6.1
+pkgrel=2
 pkgdesc="A faster, better and more stable redis desktop manager, compatible with Linux, windows, mac. What's more, it won't crash when loading massive keys." # 包描述
 arch=('any')
 url="https://github.com/qishibo/AnotherRedisDesktopManager"
@@ -9,7 +9,7 @@ provides=('another-redis-desktop-manager' 'another-redis-desktop-manager.Appimag
 conflicts=('another-redis-desktop-manager' 'another-redis-desktop-manager-Appimage')
 image="${pkgname}.AppImage"
 source=("${image}::${url}/releases/download/v${pkgver}/Another-Redis-Desktop-Manager.${pkgver}.AppImage") #源码
-md5sums=('c3c88c5c9fffae3af497ef657c425bb6')
+md5sums=('2dc2354795df12b7ed539e4fc52f01ce')
 options=(!strip)
 
 

@@ -1,7 +1,7 @@
 pkgbase = another-redis-desktop-manager
 	pkgdesc = A faster, better and more stable redis desktop manager, compatible with Linux, windows, mac. What's more, it won't crash when loading massive keys.
-	pkgver = 1.6.0
-	pkgrel = 1
+	pkgver = 1.6.1
+	pkgrel = 2
 	url = https://github.com/qishibo/AnotherRedisDesktopManager
 	arch = any
 	license = MIT
@@ -9,7 +9,8 @@ pkgbase = another-redis-desktop-manager
 	provides = another-redis-desktop-manager.Appimage
 	conflicts = another-redis-desktop-manager
 	conflicts = another-redis-desktop-manager-Appimage
-	source = another-redis-desktop-manager.AppImage::https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.6.0/Another-Redis-Desktop-Manager.1.6.0.AppImage
-	md5sums = c3c88c5c9fffae3af497ef657c425bb6
+	options = !strip
+	source = another-redis-desktop-manager.AppImage::https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.6.1/Another-Redis-Desktop-Manager.1.6.1.AppImage
+	md5sums = 2dc2354795df12b7ed539e4fc52f01ce
 
 pkgname = another-redis-desktop-manager
