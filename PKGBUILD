@@ -1,43 +1,60 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
-pkgname=python2-pycoin
-pkgver=0.70
+_py="python2"
+_pkg="pycoin"
+pkgname="${_py}-${_pkg}"
+pkgver=0.92.20220213
 pkgrel=1
 pkgdesc="Python-based Bitcoin utility library"
-arch=('any')
-depends=('python2')
-makedepends=('python2-setuptools')
-url="https://github.com/richardkiss/pycoin"
+arch=(any)
+depends=(
+  "${_py}"
+)
+makedepends=(
+  "${_py}-setuptools"
+)
+_ns="richardkiss"
+url="https://github.com/${_ns}/${_pkg}"
 license=('MIT')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/1a/7d/c7e3cff25378560080a0d927975c2c0c2435d72b2c319aae922227d00ff9/pycoin-0.70.tar.gz)
-md5sums=('865bcd796f63873d678dc75687a82861')
-sha256sums=('5057b55c56582044c8f73ad5e5ca3d27d3032c33cbff4d808915c37b78ffcd25')
-provides=('pycoin2' 'python2-pycoin')
+_pypi_url="https://files.pythonhosted.org/packages/source"
+source=(
+  "${_pypi_url}/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz"
+)
+sha256sums=(
+  'a9bda3b5bfdb1c94a6b6741b6131600a0058d0e0acaf1b1627b48915e103cad7'
+)
+provides=(
+  "${_pkg}2"
+)
 
 prepare(){
-  cd "$srcdir/${pkgname#python2-}-$pkgver"
+  cd "${srcdir}/${_pkg}-${pkgver}"
 
   msg2 'Fixing Python version...'
-  find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/python#/usr/bin/python2#g'
-  find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/env python#/usr/bin/env python2#g'
+  find . -type f -print0 \
+    | xargs -0 sed -i "s#/usr/bin/python#/usr/bin/${_py}#g"
+  find . -type f -print0 \
+    | xargs -0 sed -i "s#/usr/bin/env python#/usr/bin/env ${_py}#g"
 }
 
 build() {
-  cd "$srcdir/${pkgname#python2-}-$pkgver"
+  cd "${srcdir}/${_pkg}-${pkgver}"
 
   msg2 'Building...'
-  python setup.py build
+  "${_py}" setup.py build
 }
 
 package() {
-  cd "$srcdir/${pkgname#python2-}-$pkgver"
+  cd "${srcdir}/${_pkg}-${pkgver}"
 
   msg2 'Installing...'
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  "${_py}" setup.py install --root="${pkgdir}" \
+                            --optimize=1
 
   msg2 'Renaming binaries...'
-  for _bin in $(find "$pkgdir/usr/bin" -mindepth 1 -type f -printf '%f\n'); do
-    mv "$pkgdir/usr/bin/$_bin" "$pkgdir/usr/bin/pycoin2-$_bin"
+  for _bin in $(find "${pkgdir}/usr/bin" -mindepth 1 -type f -printf '%f\n'); do
+    mv "${pkgdir}/usr/bin/${_bin}" "${pkgdir}/usr/bin/${_pkg}2-${_bin}"
   done
 }
