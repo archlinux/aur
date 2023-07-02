@@ -1,0 +1,15 @@
+pkgbase = gnome-health
+	pkgdesc = A health tracking app for the GNOME desktop
+	pkgver = 0.94.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Health
+	arch = x86_64
+	license = GPL3
+	makedepends = blueprint-compiler-health=0.8.1+93f2a27e
+	makedepends = meson
+	depends = libadwaita
+	depends = rust
+	source = https://gitlab.gnome.org/World/Health/-/archive/0.94.0/Health-0.94.0.tar.gz
+	sha512sums = 2cf4314de185c2ad8c42cd51385e7b9ab895932a429e6afb2ece29f24da951b49cb5e8ef184c377cc48a1e6bf6f997c0cd539623a4c5603e91dff70219c4bcab
+
+pkgname = gnome-health
