@@ -6,7 +6,7 @@ _commit=c10e04a5b7d858dce00d7cb55ad2eb8f404162f9
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.0
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -120,6 +120,7 @@ source=(
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     0001-AUR-Pkgbuild-changes.patch
     0002-AUR-Do-not-update-cargo-crates.patch
+    0003-AUR-Remove-opensft-kaldi-and-vosk-from-build-because.patch
 )
 # Optional patches
 source+=(
@@ -256,7 +257,7 @@ prepare() {
 
     patch -p1 -i "$srcdir"/0001-AUR-Pkgbuild-changes.patch
     patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
-
+    patch -p1 -i "$srcdir"/0003-AUR-Remove-opensft-kaldi-and-vosk-from-build-because.patch
     patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
 
     # Remove repos from srcdir to save space
@@ -379,8 +380,9 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '14c7d76780b79dc62d8ed9d1759e7adcfa332bb2406e2e694dee7b2128cc7a77'
-            'a7c82094e1ca3101a0e63c73d01728630f1333ddade38088fadc3bdc9527e0cd'
-            '6db2946f8125c5b3216f4fc6493ef090eb84311f889ee3225c2c7178af989b69')
+            '9266599d3eccde9cf6189358c9b7e7518cbf68717260093ebee7dc886ac646cc'
+            '3029f2ebc347c59f9dc64525e31bb0f22a05322d9dffcbe846feb44a79747c18'
+            '66d12c661b00082233b44ed22bd44df752b92be9bee7701789e2cb9b2acb2ee0')
 # Optional patches
 sha256sums+=(
             '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f'
