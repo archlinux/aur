@@ -1,19 +1,21 @@
 pkgbase = perl-perl-prereqscanner
 	pkgdesc = a tool to scan your Perl code for its prerequisites
-	pkgver = 1.025
+	pkgver = 1.100
 	pkgrel = 1
 	url = https://metacpan.org/release/Perl-PrereqScanner
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-moose
 	depends = perl-getopt-long-descriptive
 	depends = perl-module-path
+	depends = perl-moo
 	depends = perl-ppi
 	depends = perl-string-rewriteprefix
+	depends = perl-type-tiny
+	depends = perl-namespace-autoclean
 	options = !emptydirs
 	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Perl-PrereqScanner-1.025.tar.gz
-	sha256sums = ac9acde2c608d270336cc1b312cc49a52c603c1163e196fee749cd296321eca7
+	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Perl-PrereqScanner-1.100.tar.gz
+	sha256sums = 01181d38a2e7aff838d262122563c50636ba4b3652ee5d1d4f8ef5ba3f5b186b
 
 pkgname = perl-perl-prereqscanner
