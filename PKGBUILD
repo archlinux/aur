@@ -1,4 +1,5 @@
-# Maintainer : Marcos Heredia <chelqo@gmail.com> (REALLY FROM OPENSUSE.ORG!!)
+# Maintainer : Marcos Heredia <chelqo@gmail.com> 
+# Contributor: www.opensuse.com
 # Contributor: Javier "Phrodo_00" Aravena <phrodo.00@gmail.com>
 # Contributor: Ivan Stojic <ivstojic@inet.hr>
 # Contributor: Paul N. Maxwell <msg.maxwel@gmail.com>
@@ -6,7 +7,7 @@
 # Contributor: hxtk
 
 pkgname=gelemental
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="gElemental is a periodic table viewer that provides detailed information on the chemical elements"
 arch=('i686' 'x86_64')
@@ -15,7 +16,7 @@ license=('GPL')
 depends=('gtkmm' 'gdk-pixbuf2')
 makedepends=('gawk' 'make' 'gettext' 'libtool' 'pkgconf' 'intltool' 'perl>=5.8.1' 'doxygen')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/ginggs/${pkgname}/archive/v${pkgver}.tar.gz)
-md5sums=('3a44c8ff878ec3436343299608a31a26')
+md5sums=('cbbc25d9648c76d8f17a96db3fa30314')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}

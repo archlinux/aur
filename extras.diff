@@ -1,4 +1,0 @@
-24c24
-< #include <glib/gmem.h>
----
-> #include <glib.h>
