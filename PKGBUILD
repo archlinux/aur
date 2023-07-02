@@ -2,7 +2,7 @@
 
 _gemname=fog-vsphere
 pkgname=ruby-$_gemname
-pkgver=3.6.0
+pkgver=3.6.2
 pkgrel=1
 pkgdesc='Fog for vSphere'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby-fog-core ruby-rbvmomi2)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('fa72bbdb91bf346446f7c4c5423c3b97176b758b40bf71dbbdaf1e8878a5ae0b')
+sha256sums=('f361ef5c07cf9c1224894c3b1117144fcaa4f39bbc11d791cdfb9d7313b3929f')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
