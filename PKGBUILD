@@ -2,7 +2,7 @@
 
 pkgname=python-osc-placement
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenStackClient plugin for the Placement service'
 arch=('any')
 url="http://docs.openstack.org/osc-placement"
@@ -17,17 +17,17 @@ sha512sums=('2bf949f0be6c3b84288b992c09c722b2875e3419a0f74bffb7d17e2fa9093483d0c
 export PBR_VERSION=$pkgver
 
 build() {
-  cd osc-placement-$pkgver
+  cd osc-placement
   python setup.py build
 }
 
 check() {
-  cd osc-placement-$pkgver
+  cd osc-placement
   stestr run
 }
 
 package() {
-  cd osc-placement-$pkgver
+  cd osc-placement
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
