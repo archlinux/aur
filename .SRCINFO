@@ -1,12 +1,13 @@
 pkgbase = colorpick-git
 	pkgdesc = Color picker and contrast checker
-	pkgver = r55.623074a
+	pkgver = r57.e13ad60
 	pkgrel = 1
 	url = https://github.com/agateau/colorpick
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = git
+	depends = extra-cmake-modules
 	depends = qt5-base
 	depends = kguiaddons
 	depends = kwidgetsaddons

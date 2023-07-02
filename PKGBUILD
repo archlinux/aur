@@ -2,13 +2,14 @@
 
 _pkgname=colorpick
 pkgname=$_pkgname-git
-pkgver=r55.623074a
+pkgver=r57.e13ad60
 pkgrel=1
 pkgdesc="Color picker and contrast checker"
 url=https://github.com/agateau/$_pkgname
 arch=(x86_64)
 license=(BSD)
 depends=(
+  extra-cmake-modules # ECM
   qt5-base
   kguiaddons
   kwidgetsaddons
