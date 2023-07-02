@@ -3,7 +3,7 @@
 pkgname=python-passwdgen
 _name=passwdgen
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc=" A simple password generation utility"
 arch=('any')
 url="https://github.com/thanethomson/passwdgen"
@@ -26,4 +26,5 @@ check() {
 package() {
     cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

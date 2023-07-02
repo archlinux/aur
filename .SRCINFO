@@ -1,7 +1,7 @@
 pkgbase = python-passwdgen
 	pkgdesc = A simple password generation utility
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thanethomson/passwdgen
 	arch = any
 	license = MIT
