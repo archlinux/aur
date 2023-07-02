@@ -1,6 +1,6 @@
 pkgbase = sk-holoiso-config
 	pkgdesc = A custom configs tool for sk-holoiso
-	pkgver = r83.2097f07
+	pkgver = r84.4ae4031
 	pkgrel = 1
 	url = https://github.com/honjow/sk-holoiso-config
 	install = sk-holoiso-config.install
