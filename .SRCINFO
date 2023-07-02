@@ -26,6 +26,7 @@ pkgbase = autosuspend
 	optdepends = python-dateutil: iCalendar checks
 	optdepends = python-tzlocal: iCalendar checks
 	optdepends = python-requests-file: file:// URL support
+	optdepends = python-jsonpath-ng: JSONPath checks
 	optdepends = iputils: ping check
 	optdepends = xprintidle: X server idle time check
 	backup = etc/autosuspend.conf

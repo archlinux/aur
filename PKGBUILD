@@ -17,6 +17,7 @@ optdepends=('python-dbus: logind session discovery'
             'python-dateutil: iCalendar checks'
             'python-tzlocal: iCalendar checks'
             'python-requests-file: file:// URL support'
+            'python-jsonpath-ng: JSONPath checks'
             'iputils: ping check'
             'xprintidle: X server idle time check')
 makedepends=('python-setuptools'
