@@ -1,15 +1,17 @@
 pkgbase = blueprint-compiler-health-git
 	pkgdesc = A markup language for GTK user interfaces
-	pkgver = 0.8.1
+	pkgver = 0.8.1+87cedc2c
 	pkgrel = 1
 	url = https://jwestman.pages.gitlab.gnome.org/blueprint-compiler
 	arch = any
 	license = LGPL
 	makedepends = meson
 	depends = python-gobject
-	source = git+https://gitlab.gnome.org/jwestman/blueprint-compiler#commit=87cedc2c7e
-	sha256sums = SKIP
+	source = https://gitlab.gnome.org/jwestman/blueprint-compiler/-/archive/87cedc2c7e48b01dc1b07aef937e2fe02111b18c/blueprint-compiler-health-87cedc2c7e48b01dc1b07aef937e2fe02111b18c.tar.gz
+	sha512sums = 0efab0dfed53715f856e9b933e7a9965d01e59c7f2152146a1294d02471d5d200020a0a8812bd4662be3438c5e8ba5b293ec1a6c0e47c4036b85d3024ef239e0
 
 pkgname = blueprint-compiler-health-git
-	provides = blueprint-compiler=0.8.1
+	provides = blueprint-compiler=0.8.1+87cedc2c
+	provides = blueprint-compiler-health=0.8.1+87cedc2c
 	conflicts = blueprint-compiler
+	conflicts = blueprint-compiler-health
