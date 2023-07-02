@@ -12,7 +12,8 @@
 ## Mozc compile option
 _bldtype=Release
 #_mozc_commit=2edd09333c097a7dec05798c1b0b9310ee68b18f
-_mozc_commit=2edd0933
+#_mozc_commit=2edd0933
+_mozc_commit=dd27342a26f9453d00624a3b6abdc28a004947f3
 
 _zipcode_rel=202110
 
@@ -31,12 +32,12 @@ _sudachidict_date=20230110
 
 pkgbase=mozc-with-jp-dict
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.28.5029.102.20230115
+pkgver=2.29.5135.102.20230115
 pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
-makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'gtk2' 'mesa' 'subversion' 'clang' 'emacs' 'ibus' 'ruby')
+makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'gtk2' 'mesa' 'subversion' 'clang' 'emacs' 'ibus' 'ruby' 'ruby-parallel')
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcode_rel}.zip"
         "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcode_rel}.zip"
@@ -89,6 +90,10 @@ prepare() {
   # disable fcitx4 target
   rm unix/fcitx/fcitx.gyp
 
+  # disable emace gyp target
+  rm unix/emacs/emacs.gyp
+  rm gyp/tests.gyp
+
   # disable android-ndk requirement, even if we don't need it bazel will complain
   sed "/android_ndk_repository/d" -i WORKSPACE.bazel
 
@@ -100,6 +105,9 @@ prepare() {
 
   # use libstdc++ instead of libc++
   sed '/stdlib=libc++/d;/-lc++/d' -i gyp/common.gypi
+
+  # nm -f posix
+  sed 's|\-f p |-f posix |' -i third_party/gyp/pylib/gyp/generator/ninja.py
 }
 
 build() {
@@ -117,6 +125,10 @@ build() {
   #mv -v "$srcdir/jawiki-latest-all-titles-in-ns0.gz" ./
 
   cd "${srcdir}/mozcdict-ext/" || exit
+
+  # gem parallel
+  [[ "$GEM_HOME"=="" ]] && GEM_HOME="/usr/lib/ruby/gems/3.0.0/"
+
   msg '2. Run the ruby scripts as in original utdict.rb based on neologd.rb(mozcdict-ext) , it may take some time...'
   ruby utdict/utdict.rb -f mozcdic-ut.txt -i ${srcdir}/mozc/src/data/dictionary_oss/id.def > all-dict.txt
 
@@ -141,11 +153,16 @@ build() {
 
   cd ${srcdir}/mozc/src || exit
 
-  _targets="unix/fcitx5:fcitx5-mozc.so server:mozc_server gui/tool:mozc_tool renderer/qt:mozc_renderer unix/ibus:ibus_mozc unix/emacs:mozc_emacs_helper"
-
   export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
   export QT_BASE_PATH=/usr/include/qt
-  bazel build --copt=-fPIC --compilation_mode opt --config oss_linux $_targets
+
+  # fcitx5
+  GYP_DEFINES="use_fcitx=0 use_libibus=0" ../scripts/configure
+  TARGETS="gui/gui.gyp:mozc_tool unix/fcitx5/fcitx5.gyp:fcitx5-mozc"
+  python build_mozc.py build ${TARGETS} -c ${_bldtype}
+
+  # others(ibus emacs_helper mozc_server)
+  bazel build --config oss_linux package
 
   # Extract license part of mozc
   head -n 29 server/mozc_server.cc > LICENSE
@@ -171,7 +188,7 @@ package_mozc-with-jp-dict-common() {
   install -D -m 644 third_party/gyp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/gyp/LICENSE"
   install -D -m 644 third_party/ipa_font/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/ipa_font/LICENSE"
   install -D -m 644 third_party/japanese_usage_dictionary/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/japanese_usage_dictionary/LICENSE"
-  install -D -m 644 third_party/jsoncpp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/jsoncpp/LICENSE"
+  install -D -m 644 third_party/protobuf/third_party/jsoncpp/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/jsoncpp/LICENSE"
   install -D -m 644 third_party/protobuf/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/prptobuf/LICENSE"
   install -D -m 644 third_party/wtl/LICENSE "$pkgdir/usr/share/licenses/$pkgname/third_party/wtl/LICENSE"
   ../scripts/install_server_bazel
@@ -188,7 +205,7 @@ package_fcitx5-mozc-with-jp-dict() {
   export _bldtype
   cd mozc/src || exit
 
-  ../scripts/install_fcitx5_bazel
+  ../scripts/install_fcitx5
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
   install -m 644 LICENSE data/installer/*.html "$pkgdir/usr/share/licenses/$pkgname/"
 }
