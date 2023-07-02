@@ -1,0 +1,16 @@
+pkgbase = sirilic
+	pkgdesc = Siril's Interactive Companion
+	pkgver = 1.15.2
+	pkgrel = 1
+	url = https://siril.org/docs/sirilic/
+	arch = x86_64
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-wxpython
+	source = https://gitlab.com/free-astro/sirilic/-/archive/V1.15.2/sirilic-V1.15.2.tar.bz2
+	sha256sums = df2a3f5b8d53f79e30cbd4130263b543e1ef034782b25e393a7a6df8ddd4fb9f
+
+pkgname = sirilic
