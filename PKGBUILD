@@ -1,50 +1,50 @@
-# Maintainer: dreamscached <dreamscache.d@gmail.com>
-pkgname=recaf
-pkgver=2.21.7
+# Maintainer: Dwi Mulia Mokoginta <dwi-mulia-mokoginta@protonmail.com>
+# Contributor: dreamscached <dreamscache.d@gmail.com>
+
+_pkgname=recaf
+pkgname="${_pkgname}"
+pkgver=2.21.13
 pkgrel=1
 pkgdesc="A modern Java bytecode editor"
 arch=("any")
 url="https://github.com/Col-E/Recaf"
 license=("MIT")
+
 depends=("java-runtime" "java-openjfx" "ttf-font")
-makedepends=("jdk-openjdk")
-noextract=("$pkgname-$pkgver-J8-jar-with-dependencies.jar")
+makedepends=("jdk17-openjdk")
+
+conflicts=("$_pkgname-bin" "$_pkgname-git")
+replaces=("$_pkgname")
+provides=("$_pkgname")
+
 source=(
-    "https://github.com/Col-E/Recaf/releases/download/$pkgver/$pkgname-$pkgver-J8-jar-with-dependencies.jar"
-    "https://raw.githubusercontent.com/Col-E/Recaf/$pkgver/LICENSE"
+    "https://github.com/Col-E/Recaf/archive/refs/tags/$pkgver.tar.gz"
+    "LICENSE::https://raw.githubusercontent.com/Col-E/Recaf/$pkgver/LICENSE"
 )
 sha256sums=(
-    "ea3f2bc4c6c77b5c3a03d38763101ea5c516ebb47da5028f7893b177d15efcad"
+    "c0b76ece9e838253b065a8703404e75363e52b4ca9cd6e47c5b680642bd8340c"
     "a13cb1a246bc0986c7185510a7ea9880e9f8eaf6d3a0437e2f3f2e2e85e9abb5"
 )
 
-prepare() {
-    # Extract logo
-    jar xf "$srcdir/$pkgname-$pkgver-J8-jar-with-dependencies.jar" icons/logo.png
+build() {
+  cd "$srcdir/Recaf-$pkgver"
+
+  JAVA_HOME="/usr/lib/jvm/java-17-openjdk/" ./mvnw clean package
 }
 
 package() {
-    # Install LICENSE to canonical location
-    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$srcdir/Recaf-$pkgver"
 
-    # Install JAR to canonical location
-    install -Dm755 "$srcdir/$pkgname-$pkgver-J8-jar-with-dependencies.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm644 "src/main/resources/icons/logo.png" "$pkgdir/usr/share/pixmaps/recaf.png"
 
-    # Install logo to canonical location
-    install -Dm644 "$srcdir/icons/logo.png" "$pkgdir/usr/share/pixmaps/recaf.png"
+    install -Dm755 "target/$_pkgname-$pkgver-J8-jar-with-dependencies.jar" "$pkgdir/usr/share/java/$_pkgname/$_pkgname.jar"
 
-    # Build exec script
-    printf '#!/usr/bin/env bash\nexec java -cp "/usr/lib/jvm/default-runtime/lib/*:/usr/share/java/%s/%s.jar" "me.coley.recaf.Recaf" "$@"' "$pkgname" "$pkgname" > "$srcdir/recaf"
-
-    # Write .desktop file
-    printf "[Desktop Entry]\nType=Application\nVersion=1.0\nName=Recaf\nComment=%s\nPath=/usr/bin\nExec=recaf %%u\nIcon=recaf\nTerminal=false\nCategories=Development;Java" "$pkgdesc" > "$srcdir/recaf.desktop"
-
-    # Install exec script to canonical location
+    printf '#!/usr/bin/env bash\nexec java -cp "/usr/lib/jvm/default-runtime/lib/*:/usr/share/java/%s/%s.jar" "me.coley.recaf.Recaf" "$@"' "$_pkgname" "$_pkgname" > "$srcdir/recaf"
     install -Dm755 "$srcdir/recaf" "$pkgdir/usr/bin/recaf"
 
-    # Install .desktop to canonical location
+    printf "[Desktop Entry]\nType=Application\nVersion=1.0\nName=Recaf\nComment=%s\nPath=/usr/bin\nExec=sh -c 'if [ -n \"\$0\" ]; then recaf --input=\"\$0\"; else recaf; fi' %%u\nIcon=recaf\nTerminal=false\nMimeType=application/java-archive\nCategories=Development;Java" "$pkgdesc" > "$srcdir/recaf.desktop"
     install -Dm644 "$srcdir/recaf.desktop" "$pkgdir/usr/share/applications/recaf.desktop"
 
-    # Modify permissions
-    chmod 775 "$pkgdir/usr/bin/$pkgname"
+    chmod 775 "$pkgdir/usr/bin/$_pkgname"
 }
