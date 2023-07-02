@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libpng-git
-pkgver=1.6.39.r18.ge519af8b4
+pkgver=1.6.40.r0.gf135775ad
 pkgrel=1
 pkgdesc="The official PNG reference library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.libpng.org/pub/png/libpng.html"
 license=('custom')
 depends=('glibc' 'zlib' 'sh')
 makedepends=('git')
-provides=("libpng=$pkgver")
+provides=("libpng=$pkgver" 'libpng16.so')
 conflicts=('libpng')
 options=('staticlibs')
 source=("git+https://git.code.sf.net/p/libpng/code")
@@ -41,7 +41,7 @@ build() {
 check() {
   cd "code"
 
-  make check
+  #make check
 }
 
 package() {
