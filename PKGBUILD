@@ -1,5 +1,7 @@
-# Maintainer: Alad Wenter <alad@mailbox.org>
+# Maintainer: Daniel Poellmann <aur@<lastname><firstname>.de>
+# Contributor: Alad Wenter <alad@mailbox.org>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
+
 pkgname=kkrieger
 pkgver=0.1
 pkgrel=4
@@ -9,12 +11,11 @@ url='http://www.pouet.net/prod.php?which=12036'
 license=('freeware')
 depends=('wine')
 makedepends=('gendesk')
-source=("$pkgname-$pkgver.zip::http://web.archive.org/web/20110717024227/http://kk.kema.at/files/$pkgname-beta.zip"
-        "$pkgname.sh")
-sha256sums=('367f28c37b8b4ed006205dcbdeae825e5341671d4b8f610db22c071aca379445'
-            'd14adaf2e933da5cbe3db564b6fbc3fb970358112b5b59e24e86e7efbfbbcd44')
+source=("$pkgname-$pkgver.zip::http://web.archive.org/web/20110717024227/http://kk.kema.at/files/$pkgname-beta.zip")
+sha256sums=('367f28c37b8b4ed006205dcbdeae825e5341671d4b8f610db22c071aca379445')
 
-build() { 
+build() {
+  echo -e "#!/bin/sh\nwine /usr/share/kkrieger/kkrieger.exe" > kkrieger.sh
   gendesk -n
 }
 
@@ -24,5 +25,3 @@ package() {
   install -Dm644 pno0001.exe "$pkgdir/usr/share/$pkgname/$pkgname.exe"
   install -Dm644 readme.txt "$pkgdir/usr/share/doc/$pkgname/readme.txt"
 }
-
-# vim:set ts=2 sw=2 et:
