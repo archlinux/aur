@@ -2,7 +2,7 @@
 
 pkgname=python-mistralclient
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mistral Client Library'
 arch=('any')
 url="https://docs.openstack.org/$pkgname/"
@@ -19,19 +19,19 @@ sha512sums=('2033b69138aea8776285893514e0d81893746becc2c6c9131a8d400d624b51d7e9b
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py build
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   # Skip failing test
   sed -i '/^    def test_get_request_options_with_profile_enabled/a\        return' mistralclient/tests/unit/test_httpclient.py
   stestr run
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   python setup.py install --root="$pkgdir" --optimize=1
 }
 

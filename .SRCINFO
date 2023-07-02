@@ -1,7 +1,7 @@
 pkgbase = python-mistralclient
 	pkgdesc = Mistral Client Library
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.openstack.org/python-mistralclient/
 	arch = any
 	license = Apache
