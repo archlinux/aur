@@ -1,7 +1,7 @@
 pkgbase = cura-5-beta-bin
 	pkgdesc = Cura is an open source slicing application for 3D printers (include betaversion)
 	pkgver = 5.4.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://ultimaker.com/software/ultimaker-cura
 	arch = x86_64
 	license = LGPL3
@@ -15,7 +15,7 @@ pkgbase = cura-5-beta-bin
 	conflicts = cura-5-modern-beta-bin
 	options = !strip
 	source = https://github.com/Ultimaker/Cura/releases/download/5.4.0-beta.1/Ultimaker-Cura-5.4.0-beta.1-linux.AppImage
-	source = https://raw.githubusercontent.com/Ultimaker/Cura/5.4.0/LICENSE
+	source = https://raw.githubusercontent.com/Ultimaker/Cura/5.4.0-beta.1/LICENSE
 	source = cura5.sh
 	source = cura.desktop.patch
 	sha256sums = fe02756c5c79fa58e63f7a50aab0074534ca9f87ea79f897c2381198bb69315c
