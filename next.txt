@@ -1,23 +1,14 @@
-urlwatch at http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/
-    systemd timer
-tensorflow-rocm issue with the thing not exposing to the other thing
-    https://github.com/rocm-arch/tensorflow-rocm/issues/52
-
-# Later
-set up monthly(?) test builds so I can fix the build when upstream makes changes
-    just put in a calendar reminder. Do it on the 21st or someth.
-set up urlwatch
-makepkg --printsrcinfo > .SRCINFO
-Fix whatever's wrong duing the python packaging step that spits out all those warnings
+test with gfx803
 party. I am so glad this is over.
-https://wiki.archlinux.org/title/Arch_packaging_standards -> reproducible
 
 # Maybe
+https://wiki.archlinux.org/title/Arch_packaging_standards -> reproducible
 make test.py actually fail if something goes wrong
 set up "auto-build" system. One script to run, log, then test. etc.
     systemd timer, stuff like that
     check latests builds and the thing from official tensorflow pointing to official rocm build
 more complete testing of tensorflow. What other functions are there? can I do gpt-2?
+    there are official tests... somehow...
 documentation
     what environment variables can you use to suppress verbose logging?
     export TF_CPP_MAX_VLOG_LEVEL=-1 # optional; see https://github.com/RadeonOpenCompute/ROCm/issues/1594

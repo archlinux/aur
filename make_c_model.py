@@ -21,4 +21,4 @@ repr(module(input_data))
 
 module.save('c_model') # save_format='tf' is the default.
 import subprocess
-subprocess.run(['tar', '-cvf', 'c_model.tar.gz', 'c_model'])
+subprocess.run(['tar', '-czvf', 'c_model.tar.gz', 'c_model'])
