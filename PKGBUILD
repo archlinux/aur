@@ -1,8 +1,9 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
+_name=gnocchiclient
 pkgname=python-gnocchiclient
 pkgver=7.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings to the Gnocchi API'
 arch=('any')
 url='https://gnocchi.xyz/gnocchiclient/'
@@ -12,18 +13,18 @@ depends=('python-pbr' 'python-cliff' 'python-ujson' 'python-keystoneauth1'
          'python-dateutil' 'python-debtcollector')
 checkdepends=('python-testtools' 'python-fixtures' 'python-openstackclient'
               'python-pytest' 'python-pytest-xdist')
-source=("https://github.com/gnocchixyz/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('a840301898cc6ea5ffaeabedee56b9651baf96ea3af247c1f99d7c79ad99cda5c9c4a566d90f65f6e4f4e5888e324b1c65209d9a14f290d5ab4b76739103d2a0')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha512sums=('b2202c3c5f250670b53aabcfc774774243fea2d6488a09c048d20d59d3fd2b5b17dadb7068141f4af0d3240ed234c60039fbfc32f0c44e82b58b24a8a9630962')
 
 export PBR_VERSION=$pkgver
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_name-$pkgver
   python setup.py build
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_name-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
