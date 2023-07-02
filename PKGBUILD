@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=emojimart
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Modern emoji picker popup for desktop"
 arch=('x86_64')
@@ -8,9 +8,10 @@ url="https://github.com/vemonet/EmojiMart"
 license=('MIT')
 depends=('gtk3' 'webkit2gtk')
 makedepends=('cargo' 'setconf' 'yarn')
-optdepends=('xdotool: automatically paste to your currently focused app (X11 only)')
+optdepends=('xdotool: automatically paste to your currently focused app (X11)'
+            'ydotool: automatically paste to your currently focused app (Wayland)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f20f643d621ddc2cd24b5e678f4925f17391239f389865720d0114c53304508a')
+sha256sums=('493b631ba6276d0b1d0ad2ccc1e1b999aeb98802fbd6da49b02926995c9df0bf')
 
 prepare() {
   cd "EmojiMart-$pkgver"
@@ -18,14 +19,11 @@ prepare() {
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
 
-  # yarn.lock is used
-  rm -f package-lock.json
-
   yarn install
 
   # Desktop file
-  setconf public/EmojiMart.desktop Exec "$pkgname"
-  setconf public/EmojiMart.desktop Icon "$pkgname"
+  setconf resources/EmojiMart.desktop Exec "$pkgname"
+  setconf resources/EmojiMart.desktop Icon "$pkgname"
 
   cd src-tauri
   cargo fetch --target "$CARCH-unknown-linux-gnu"
@@ -54,7 +52,7 @@ package() {
 
   install -Dm644 src-tauri/icons/icon.png \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-  install -Dm644 public/EmojiMart.desktop \
+  install -Dm644 resources/EmojiMart.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
