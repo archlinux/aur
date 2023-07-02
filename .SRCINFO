@@ -1,6 +1,6 @@
 pkgbase = ibazel
 	pkgdesc = Tool for building Bazel targets when source files change.
-	pkgver = 0.21.0
+	pkgver = 0.23.2
 	pkgrel = 1
 	url = https://github.com/bazelbuild/bazel-watcher
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = ibazel
 	makedepends = git
 	makedepends = python
 	depends = bazel
-	source = https://github.com/bazelbuild/bazel-watcher/archive/v0.21.0.tar.gz
-	sha256sums = c6413d3298c51d968bbbe8a01f481b83947e55eae6af78c0b8268a91e02d7989
+	source = https://github.com/bazelbuild/bazel-watcher/archive/v0.23.2.tar.gz
+	sha256sums = e7f68d8b37955931ae73611225f05c9f1b678871891c486c450846276550966b
 
 pkgname = ibazel
