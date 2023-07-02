@@ -1,6 +1,7 @@
 pkgname="openai-client-git"
+_pkgname="openai-client"
 pkgdesc="OpenAI client made using PySide6 Qt"
-pkgver="1.0.0"
+pkgver=1.0.r62.9e6f6e4
 pkgrel=1
 arch=("x86_64")
 
@@ -13,7 +14,7 @@ license=('MIT')
 options=(!strip)
 
 # use pacman -Qs "package-name"
-depends=("git>=2.0" "python>=3.5" "python-pip>=20.0")
+depends=("git" "python" "python-pip")
 
 provides=("openai-client")
 
@@ -26,6 +27,13 @@ source=("git+https://github.com/anirbandey1/openai-client.git")
 # sha512sums=("SKIP")
 sha512sums=("SKIP")
 
+
+  
+pkgver() {
+  cd "${_pkgname}"
+  printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
 
   # Make necessary directories
@@ -37,7 +45,8 @@ package() {
   mkdir -p "${pkgdir}/opt"
   mkdir -p "${pkgdir}/opt/openai-client"
 
-  install -Dm 755 "${srcdir}/openai-client/scripts/launchers/launch_arch.sh" "${pkgdir}/usr/bin/openai-client"
+  # install -Dm 755 "${srcdir}/openai-client/scripts/launchers/launch_arch.sh" "${pkgdir}/usr/bin/openai-client"
+  install -Dm 755 "${srcdir}/openai-client/scripts/run.sh" "${pkgdir}/usr/bin/openai-client"
 
   icon_sizes=("16x16" "32x32" "48x48" "64x64" "128x128" "256x256")
   for icon_size in ${icon_sizes[@]}; do 
@@ -85,13 +94,12 @@ package() {
 
   # Convert python source code to executable using pyinstaller
 
-  cd "${srcdir}"
-  pyinstaller "${srcdir}/openai-client/main.py"
+  cd "${srcdir}/openai-client"
+  pyinstaller -F "${srcdir}/openai-client/main.py"
 
-  cp -r "${srcdir}/dist/main" "${pkgdir}/opt/openai-client/binaries"
+  # cp -r "${srcdir}/dist/main" "${pkgdir}/opt/openai-client/binaries"
+  install -Dm 755 "${srcdir}/openai-client/dist/main" "${pkgdir}/opt/openai-client/main"
 
-
-  chmod +x "${pkgdir}/usr/bin/openai-client"
 
 
 
