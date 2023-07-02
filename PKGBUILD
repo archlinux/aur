@@ -3,7 +3,7 @@
 _name=Moodle-DL
 pkgname=moodle-dl
 pkgver=2.3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Moodle downloader that downloads course content fast from Moodle (eg. lecture pdfs)'
 arch=('any')
 url='https://github.com/C0D3D3V/Moodle-DL'
@@ -12,7 +12,7 @@ depends=('ffmpeg'
          'python>=3.7'
          'python-aiodns>=3.0.0'
          'python-aiofiles>=22.1.0'
-         'python-aiohttp>=3.8.3'
+         'python-aiohttp>=3.8.4'
          'python-certifi>=2020.4.5.2'
          'python-colorama>=0.4.6'
          'python-colorlog>=6.7.0'
