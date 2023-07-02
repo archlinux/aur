@@ -15,8 +15,8 @@ depends=('python-six' 'python-requests' 'python-yaml'
 checkdepends=('python-fixtures' 'python-requests-mock' 'python-mock'
               'python-babel' 'python-oslotest' 'python-testtools' 'python-tempest'
               'python-stestr' 'python-ddt' 'python-openstackclient')
-source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('03863aa6142737e246646c056773fd848d1fde73fc5590f9ba3c4768e9948dd304b53740f2f0e0dbad342cd41f9b0f6b570e8227da8e7e8f79f82a8c48704a29')
+source=("https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('412a23a562c5da100507291cf9a92104225183191e13f33c7c01e3f14ddf3599a79d69d2be289c28cd891ffeb63ae1e0a2755961ac6d3fe692b2732457416ea2')
 
 export PBR_VERSION=$pkgver
 
