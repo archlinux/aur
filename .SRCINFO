@@ -1,6 +1,6 @@
 pkgbase = nekoray-git
 	pkgdesc = Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)
-	pkgver = 3.9.r0.gc20adf6
+	pkgver = 3.9.r1.g789ce90
 	pkgrel = 1
 	url = https://matsuridayo.github.io
 	arch = x86_64
