@@ -26,7 +26,7 @@ provides=(
   "${_pkgname}-300.so"
 )
 conflicts=("${_pkgname}")
-source=("git+${url}")
+source=("${_pkgname}-${pkgver}.tar.gz::git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {

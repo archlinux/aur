@@ -14,7 +14,7 @@ pkgbase = libgedit-gtksourceview-git
 	provides = libgedit-gtksourceview=299.0.3+5+gffb59486
 	provides = libgedit-gtksourceview-300.so
 	conflicts = libgedit-gtksourceview
-	source = git+https://github.com/gedit-technology/libgedit-gtksourceview
+	source = libgedit-gtksourceview-299.0.3+5+gffb59486.tar.gz::git+https://github.com/gedit-technology/libgedit-gtksourceview
 	sha256sums = SKIP
 
 pkgname = libgedit-gtksourceview-git
