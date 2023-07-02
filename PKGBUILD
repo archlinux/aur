@@ -5,7 +5,7 @@ _desktopfile="org.free_astro.siril.desktop"
 
 pkgname=siril-appimage
 pkgver='1.0.6'
-pkgrel=1
+pkgrel=2
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone). Appimage version."
 arch=('x86_64')
 license=('GPL3')

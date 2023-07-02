@@ -1,7 +1,7 @@
 pkgbase = siril-appimage
 	pkgdesc = An astronomical image processing software for Linux. (IRIS clone). Appimage version.
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.siril.org/
 	arch = x86_64
 	license = GPL3
