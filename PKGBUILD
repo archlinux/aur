@@ -2,7 +2,7 @@
 
 pkgname=python-shade
 pkgver=1.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple client library for interacting with OpenStack clouds'
 arch=('any')
 url='http://docs.openstack.org/shade/'
@@ -23,25 +23,25 @@ export PBR_VERSION=$pkgver
 
 prepare() {
   # Fix test function name
-  cd shade-$pkgver
+  cd shade
   sed -i 's/assertItemsEqual/assertCountEqual/g' shade/tests/unit/*.py
   rm shade/tests/unit/test_caching.py
 }   
     
 build() {
-  cd shade-$pkgver
+  cd shade
   # Fix TypeError: a bytes-like object is required, not 'str' for Python 3
   sed -i 's/base64.b64encode(user_data)/base64.b64encode(user_data.encode())/g' shade/tests/unit/test_create_server.py
   python setup.py build
 }
 
 check() {
-  cd shade-$pkgver
+  cd shade
   stestr run
 }
 
 package(){
-  cd shade-$pkgver
+  cd shade
   python setup.py install --root="$pkgdir" --optimize=1
 }
 
