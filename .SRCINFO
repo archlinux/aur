@@ -1,6 +1,6 @@
 pkgbase = topinambour-git
 	pkgdesc = vte terminal based on the ruby-gtk3 bindings
-	pkgver = 2.0.4.r53.g4e66128
+	pkgver = 2.0.4.r68.g437f5ff
 	pkgrel = 1
 	url = https://github.com/cedlemo/topinambour
 	arch = i686
@@ -11,10 +11,9 @@ pkgbase = topinambour-git
 	depends = ruby
 	depends = ruby-gtk3
 	depends = ruby-vte3
-	source = git://github.com/cedlemo/topinambour
+	source = git+https://github.com/cedlemo/topinambour
 	source = topinambour-git.desktop
 	sha256sums = SKIP
 	sha256sums = d02e118197802a75c30c83fa687361d1303f47446bbbf12f918c00302ff60db1
 
 pkgname = topinambour-git
-

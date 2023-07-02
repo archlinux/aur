@@ -1,5 +1,5 @@
 pkgname=topinambour-git
-pkgver=2.0.4.r53.g4e66128
+pkgver=2.0.4.r68.g437f5ff
 pkgrel=1
 pkgdesc="vte terminal based on the ruby-gtk3 bindings"
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/cedlemo/topinambour"
 license=('GPL')
 depends=('fish' 'ruby' 'ruby-gtk3' 'ruby-vte3')
 makedepends=('git')
-source=('git://github.com/cedlemo/topinambour' 'topinambour-git.desktop')
+source=('git+https://github.com/cedlemo/topinambour' 'topinambour-git.desktop')
 sha256sums=('SKIP'
             'd02e118197802a75c30c83fa687361d1303f47446bbbf12f918c00302ff60db1')
 
