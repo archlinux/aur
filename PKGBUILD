@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.4643.r0.gd51d51b3c
+pkgver=1.7.4671.r0.gdb0c7ca90
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -41,6 +41,7 @@ makedepends=(
     git
     ninja
     libpulse
+    libpipewire
     p7zip
     qt6-wayland
     qt6-tools
@@ -48,6 +49,7 @@ makedepends=(
 optdepends=(
     'qt6-wayland: Wayland support'
     'libpulse: Pulseaudio support'
+    'libpipewire: Pipewire support'
 )
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
