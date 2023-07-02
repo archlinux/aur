@@ -12,8 +12,8 @@ depends=('python-pbr' 'python-iso8601' 'python-keystoneauth1'
          'python-prettytable' 'python-requests' 'python-six' 'python-stevedore')
 checkdepends=('python-mock' 'python-subunit' 'python-tempest'
               'python-testrepository')
-source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('76d379c51399233f5084ea7a75c2a2ebb1e178cf448601ef343b3b415c8ea42c90d3d287895b04b761b6e50e410a51be3ea8e3e65a5ef021f57ef7a27eafd55a')
+source=("https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('60db2c0c23404083e760fd5180ac2d2e6cb6e71198a784fff40770700dc0b8922b91ed5ed2f02fae99a4ba8224231059fc01f76d8142e3949357d6fe8c4e72e3')
 
 export PBR_VERSION=$pkgver
 
