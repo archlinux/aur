@@ -1,3 +1,5 @@
-/pkg
-/src
-colorpick*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+
