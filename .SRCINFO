@@ -1,4 +1,4 @@
-pkgbase = virtualmoonatlas
+pkgbase = virtualmoonatlas-git
 	pkgdesc = Software for Moon observation and survey
 	pkgver = 8.2
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = virtualmoonatlas
 	source = virtualmoonatlas::git+https://github.com/pchev/virtualmoon.git
 	md5sums = SKIP
 
-pkgname = virtualmoonatlas
+pkgname = virtualmoonatlas-git
