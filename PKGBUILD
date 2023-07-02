@@ -13,8 +13,8 @@ depends=('python-pbr' 'python-requests' 'python-cliff'
 checkdepends=('python-fixtures' 'python-requests-mock' 'python-stestr'
               'python-testtools' 'python-oslotest' 'python-oslo-config'
               'python-openstackclient')
-source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('b97fe7b8f116d6b03f14b105364c68f97423fc98903dbd8c907888c0c69b2d10641df2a80454ea28e739522ae0fb9c3786c0dfda00c2da1d1aeb9db31ab2564e')
+source=("https://opendev.org/openstack/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('3eeb1a6c2e4d0d6dbf24e2c331a004a1208517fc54db79964a9527f8decd622228b40987174a7ebd67cf58872028e8ebf97b83d4e234b38a27cad7bf392f5985')
 
 export PBR_VERSION=$pkgver
 
