@@ -2,39 +2,40 @@
 # Contributor: Nick Logozzo <nlogozzo225@gmail.com>
 pkgname=tagger
 _app_id=org.nickvision.tagger
-pkgver=2022.11.2
+pkgver=2023.7.0
 pkgrel=1
 pkgdesc="An easy-to-use music tag (metadata) editor"
 arch=('x86_64' 'aarch64')
 url="https://github.com/NickvisionApps/Tagger"
 license=('GPL3')
-depends=('chromaprint' 'jsoncpp' 'libadwaita' 'libcurlpp' 'taglib')
-makedepends=('meson')
+depends=('chromaprint' 'dotnet-runtime>=7' 'ffmpeg' 'libadwaita')
+makedepends=('blueprint-compiler' 'dotnet-sdk>=7')
 checkdepends=('appstream-glib')
 conflicts=('nickvision-tagger')
 replaces=('nickvision-tagger')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('fc6857bc3146c22dc04c9b05b7bdcf43fffabbf52d5649c634eaf159da0c456e')
+sha256sums=('c7acbb81061f9ecc7ff3e09cf7f35920685166ea596c3821936efaff8ea92258')
+
+prepare() {
+  cd "Tagger-$pkgver"
+  dotnet tool restore
+}
 
 build() {
-  arch-meson "Tagger-$pkgver" build
-  meson compile -C build
+  cd "Tagger-$pkgver"
+  dotnet cake --target=Publish --prefix=/usr --ui=gnome
 }
 
 check() {
   cd "Tagger-$pkgver"
-  appstream-util validate-relax --nonet "${_app_id}.metainfo.xml"
-  desktop-file-validate "${_app_id}.desktop"
+  appstream-util validate-relax --nonet \
+    "_nickbuild/usr/share/metainfo/${_app_id}.metainfo.xml"
+  desktop-file-validate "_nickbuild/usr/share/applications/${_app_id}.desktop"
 }
 
 package() {
-  meson install -C build --destdir "$pkgdir"
-
-  # conflicts with system chromaprint
-  rm "$pkgdir/usr/bin/fpcalc"
-
-  # File (usr/bin/org.nickvision.tagger) has the world writable bit set.
-  chmod 0755 "$pkgdir/usr/bin/${_app_id}"
+  cd "Tagger-$pkgver"
+  dotnet cake --target=Install --destdir="$pkgdir"
 
   ln -s "/usr/bin/${_app_id}" "$pkgdir/usr/bin/$pkgname"
 }
