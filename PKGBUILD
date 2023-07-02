@@ -14,7 +14,7 @@ depends=(
 	'python-tomli-w'
 	'xdg-dbus-proxy'
 	'hicolor-icon-theme'
-	'python-pyqt5'
+	'python-pyqt6'
 	'desktop-file-utils'
 	'libnotify'
 )
