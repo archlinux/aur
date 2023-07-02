@@ -1,7 +1,7 @@
+# Maintainer: Marc Riera <marcriera@softcatala.org>
 # Contributor: Kevin Brubeck Unhammer <unhammer@fsfe.org>
-# Maintainer: Kevin Brubeck Unhammer <unhammer@fsfe.org>
 pkgname=vislcg3
-pkgver=1.3.2
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Compiler and parser for Constraint Grammar (CG), a paradigm for robust, rule-based Natural Language Parsing."
 url="https://visl.sdu.dk/cg3.html"
@@ -10,8 +10,8 @@ makedepends=('boost' 'gperftools' 'cmake')
 depends=('icu')
 optdepends=('perl: cg3-autobin.pl auto-compile-and-run wrapper')
 arch=('i686' 'x86_64')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TinoDidriksen/cg3/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ce1a954f761137cad0b740c4f5e37220589cbd056b4fd69e30dd51e141d96da3')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GrammarSoft/cg3/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('306b4ba85cd48d3992c44fb2e03c9614f00ae59ad3ede7730a1e499666b54706')
 install='vislcg3.install'
 
 package () {
