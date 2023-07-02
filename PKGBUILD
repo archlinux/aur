@@ -2,7 +2,7 @@
 # Contributor: Kindritskiy Maksym <kindritskiy.m@gmail.com>
 
 pkgname=lets
-pkgver=0.0.50
+pkgver=0.0.52
 pkgrel=1
 pkgdesc="CLI task runner for productive developers"
 url="https://github.com/${pkgname}-cli/${pkgname}"
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(glibc)
 makedepends=(go)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('39b1f64d5763eb40c97e67216c9297f6b779015dd251c3481489ba1f07eb3a9f00457024312bf84e7706d59e05e543b301c227eb959502e4c9250a3c9d2a26ca')
+sha512sums=('94704c9f121f6a804fd54afe9c803b7fc7fc32254dd1277c60a409e2fc73db6d232a87a64caaa1fa54afb3aec764ad0d57817d9f544b939d252e72abd2245aff')
 
 prepare() {
   cd ${pkgname}-${pkgver}
