@@ -1,7 +1,7 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=todoist-nativefier
-pkgver=2022.12.26
+pkgver=2023.07.03
 pkgrel=1
 pkgdesc='Todoist in shared Electron runtime'
 arch=('x86_64')
@@ -21,7 +21,7 @@ _name=Todoist
 prepare() {
   cat > "${pkgname}" <<EOF
 #!/usr/bin/env bash
-exec electron${_electronv} /usr/share/${pkgname} "\$@"
+exec electron${_electron} /usr/share/${pkgname} "\$@"
 EOF
   gendesk \
     --pkgname "${pkgname}" \
