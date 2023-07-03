@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=decompose-git
-pkgver=r38.bcb0046
+pkgver=r95.c3950ba
 pkgrel=1
 pkgdesc="Development Environment Compose - templating framework to help \
   developers easily create and switch environments"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/dmp1ce/decompose"
 license=('custom')
 depends=('bash' 'bash-completion')
-makedepends=('txt2man')
+makedepends=('txt2man' 'git')
 source=("${pkgname}::git+https://github.com/dmp1ce/decompose.git"
         "${pkgname}-mo::git+https://github.com/tests-always-included/mo.git")
 sha256sums=("SKIP" "SKIP")
@@ -22,8 +22,9 @@ pkgver() {
 prepare() {
   # Put 'mo' submodule into the correct location
   cd "$pkgname"
-  git config submodule.mo.url "$srcdir/${pkgname}-mo"
-  git submodule update
+  git submodule init
+  git config submodule.libs/mo.url "$srcdir/${pkgname}-mo"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
