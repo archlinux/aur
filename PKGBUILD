@@ -6,8 +6,8 @@
 
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
-pkgver=470.182.03
-pkgrel=2
+pkgver=470.199.02
+pkgrel=1
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -16,13 +16,11 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=('nvidia-drm-outputclass.conf'
         'nvidia-470xx-utils.sysusers'
         'nvidia-470xx.rules'
-        "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
-        "kernel-6.3.patch")
+        "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'e307e5fe005dfafee35c179c5f215e22a85dfd367a9b60d5092eee96f869d8ce4595fae33ce6febb74721974c6f781a53418ce1a3210768632347471ae3f5594'
-            '73619d65bd3267427acaf2deee07a2c98c490df937aa13e2c95d54cfd19ce2a82a91d3a5aa886dbe88f6230251f9cf54c38f5841cfacd77e53301e8d61fa3d7d'
-            'e7343f022263690030bdcbc9b91cd775c7c8c24da4f75e6583494464d92eeeb01965bc9e628566faaf6c91fb5519881346d44c4e7d1c7fe8b7c6da89a7620036')
+            'e1265b6266473af652e9d7bf85dcd76e312af281c5f4f158ab322e34d378738acb87c30cfff7bf1f6e1b238883e7f665d9fc5151b1e0078dd9aece5a52655405')
 
 create_links() {
     # create soname links
@@ -41,8 +39,6 @@ prepare() {
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
     cd kernel
-
-    patch -p1 -i "$srcdir/kernel-6.3.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
