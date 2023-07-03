@@ -8,8 +8,7 @@ pkgdesc="Interactive Unigine Benchmark: walk through a lab of a lone professor"
 arch=('x86_64')
 url="https://benchmark.unigine.com/superposition"
 license=('custom:UNIGINE Engine')
-depends=('libgl' 'gcc-libs' 'libxrandr' 'libxinerama' 'fontconfig' 'qt5-declarative' 'libxkbcommon-x11' 'openssl-1.0')
-optdepends=('openal: sound support')
+depends=('libgl' 'gcc-libs' 'libxrandr' 'libxinerama' 'fontconfig' 'qt5-declarative' 'libxkbcommon-x11')
 options=("!strip")
 source=("https://assets.unigine.com/d/${_pkgname}-${pkgver}.run" "Superposition.desktop")
 sha512sums=('00a680b789ec69f6453e31fbd233bc018cc9f3ca8595ea9367dda49bbdde453643863d90b84b068f444fc3ec023bdd4f35326cffb1fbf8653ced29c587524dd6'
@@ -30,9 +29,13 @@ package() {
     cat >> "${pkgdir}/usr/bin/unigine-superposition" << \here
 #!/bin/sh
 cd /opt/unigine-superposition/bin
-LD_LIBRARY_PATH=/usr/lib/openssl-1.0 ./launcher
+./launcher
 here
     chmod a+x "${pkgdir}/usr/bin/unigine-superposition"
+    # fix openssl1.0 stuff
+    rm "${pkgdir}/opt/unigine-superposition/bin/qt/lib/libcrypto.so"
+    find "${pkgdir}/opt/unigine-superposition/bin/qt" -name "*.so*" -exec chmod a+x {} \;
+    ln -s /opt/unigine-superposition/bin/qt/lib/libcrypto.so.1.0.0 "${pkgdir}/opt/unigine-superposition/bin/qt/lib/libcrypto.so"
     # misc
     install -Dm644 docs/Superposition_Benchmark_End-User_License_Agreement.pdf "${pkgdir}"/usr/share/licenses/${pkgname}/license
     install -Dm644 docs/Superposition_Benchmark_User_Manual.pdf "${pkgdir}"/usr/share/doc/${pkgname}/User_Manual.pdf
