@@ -1,6 +1,6 @@
 pkgbase = toit
 	pkgdesc = Toit programming language SDK
-	pkgver = 2.0.0alpha.88
+	pkgver = 2.0.0alpha.89
 	pkgrel = 1
 	url = https://toitlang.org
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = toit
 	makedepends = vim
 	depends = gcc-libs
 	depends = esptool
-	source = git+https://github.com/toitlang/toit.git#commit=e4cbdf47532c6275c3168b71488568a801e11cc5
+	source = git+https://github.com/toitlang/toit.git#commit=7691be7be7bb5a96bbdbec50ad5d5f4c615ade9d
 	md5sums = SKIP
 
 pkgname = toit
