@@ -130,6 +130,7 @@ package_libxml2-2.9() {
   ln -s "${_libdir}/cmake/${_pkgname}" \
         "${pkgdir}/usr/lib/cmake/${pkgbase}"
 
+  mkdir "${pkgdir}/usr/lib/pkgconfig"
   ln -s "${_libdir}/pkgconfig/${_pkg}-2.0.pc" \
         "${pkgdir}/usr/lib/pkgconfig/${_pkg}2.9-2.0.pc"
 
