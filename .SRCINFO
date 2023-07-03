@@ -1,6 +1,6 @@
 pkgbase = teams-for-linux-appimage
 	pkgdesc = Unofficial Microsoft Teams for Linux client
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://github.com/IsmaelMartinez/teams-for-linux
 	arch = aarch64
@@ -13,11 +13,11 @@ pkgbase = teams-for-linux-appimage
 	depends = fuse2
 	conflicts = teams-for-linux
 	options = !strip
-	source_aarch64 = teams-for-linux-1.1.8-aarch64.AppImage::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.1.8/teams-for-linux-1.1.8-arm64.AppImage
-	sha256sums_aarch64 = 14b061ca9d5c05da6cc49d21855bc864c261e25bc7d6d66bde0edd7135c48912
-	source_armv7h = teams-for-linux-1.1.8-armv7h.AppImage::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.1.8/teams-for-linux-1.1.8-armv7l.AppImage
-	sha256sums_armv7h = 96d6125f71a3ec007dbf2837094ec39e238eb69c778f8638419aa4e318dbe2b3
-	source_x86_64 = teams-for-linux-1.1.8-x86_64.AppImage::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.1.8/teams-for-linux-1.1.8.AppImage
-	sha256sums_x86_64 = 661628e8808b996c3d8a43d4d5f65ba1c5d7c662f21b41d3ccc39c71199c880d
+	source_aarch64 = teams-for-linux-1.1.9-aarch64.AppImage::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.1.9/teams-for-linux-1.1.9-arm64.AppImage
+	sha256sums_aarch64 = 818864d23e95698fa9933fe0b7f6b95cdbe60a751dcba748e9c1aba0d6db172f
+	source_armv7h = teams-for-linux-1.1.9-armv7h.AppImage::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.1.9/teams-for-linux-1.1.9-armv7l.AppImage
+	sha256sums_armv7h = 228021400cde649e541e746c18f9fbe730e00cdd783a11c699af6b8c99984fe7
+	source_x86_64 = teams-for-linux-1.1.9-x86_64.AppImage::https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.1.9/teams-for-linux-1.1.9.AppImage
+	sha256sums_x86_64 = a9441eaf02f74fa4329fe5fcdfe13a1cc768606aea64d872b33eca0feac48feb
 
 pkgname = teams-for-linux-appimage
