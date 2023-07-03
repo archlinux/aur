@@ -81,13 +81,14 @@ package_minigui-mgutils-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
-#     source "${srcdir}/myconfig.sh"
     cd "${srcdir}/${pkgname%-git}"
+
     ./autogen.sh
     ./configure --prefix=/usr \
-                --disable-static $GOPTS
-#
-#     build/buildlib-linux-pc-mstudio
+        --disable-static \
+        --with-targetname=mstudio \
+        --with-libsuffix=msd
+
     make -j$NR_JOBS
     make DESTDIR="$pkgdir" install
 }
@@ -99,13 +100,14 @@ package_minigui-mgplus-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
-#     source "${srcdir}/myconfig.sh"
     cd "${srcdir}/${pkgname%-git}"
+
     ./autogen.sh
-#     ./configure --prefix=/usr \
-#                 --disable-static $GOPTS
-#
-    build/buildlib-linux-pc-mstudio
+    ./configure --prefix=/usr \
+        --disable-static \
+        --with-targetname=mstudio \
+        --with-libsuffix=msd
+
     make -j$NR_JOBS
     make DESTDIR="$pkgdir" install
 }
@@ -120,10 +122,9 @@ package_minigui-mgeff-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
-#     source "${srcdir}/myconfig.sh"
     cd "${srcdir}/${pkgname%-git}"
     ./autogen.sh
-    ./configure $prefix_config \
+    ./configure --prefix=/usr \
                 --with-targetname=mstudio \
                 --with-libsuffix=msd
 
@@ -141,13 +142,17 @@ package_minigui-mgncs-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
-#     source "${srcdir}/myconfig.sh"
     cd "${srcdir}/${pkgname%-git}"
     ./autogen.sh
-#     ./configure --prefix=/usr \
-#                 --disable-static $GOPTS
-#
-    build/buildlib-linux-pc-mstudio
+    ./configure --prefix=/usr \
+        --disable-static \
+        --with-targetname=mstudio \
+        --with-libsuffix=msd  \
+        --enable-guibuilder-support  \
+        --enable-datasource          \
+        --enable-old-mledit          \
+        --enable-texteditor
+
     make -j$NR_JOBS
     make DESTDIR="$pkgdir" install
 }
@@ -166,13 +171,15 @@ package_minigui-mgncs4touch-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
-#     source "${srcdir}/myconfig.sh"
     cd "${srcdir}/${pkgname%-git}"
+
     ./autogen.sh
-#     ./configure --prefix=/usr \
-#                 --disable-static $GOPTS
-#
-    build/buildlib-linux-pc-mstudio
+    ./configure --prefix=/usr \
+        --disable-static \
+        --with-targetname=mstudio \
+        --with-libsuffix=msd  \
+        --enable-guibuilder-support
+
     make -j$NR_JOBS
     make DESTDIR="$pkgdir" install
 }
@@ -187,13 +194,10 @@ package_minigui-mg-tools-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
-#     source "${srcdir}/myconfig.sh"
     cd "${srcdir}/${pkgname%-git}"
     ./autogen.sh
-#     ./configure --prefix=/usr \
-#                 --disable-static $GOPTS
-#
-    build/buildlib-linux-pc-mstudio
+    ./configure --prefix=/usr
+
     make -j$NR_JOBS
     make DESTDIR="$pkgdir" install
 }
@@ -208,13 +212,10 @@ package_minigui-mg-tests-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
-#     source "${srcdir}/myconfig.sh"
     cd "${srcdir}/${pkgname%-git}"
     ./autogen.sh
-#     ./configure --prefix=/usr \
-#                 --disable-static $GOPTS
-#
-    build/buildlib-linux-pc-mstudio
+    ./configure --prefix=/usr
+
     make -j$NR_JOBS
     make DESTDIR="$pkgdir" install
 }
@@ -232,13 +233,10 @@ package_minigui-mg-samples-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
-#     source "${srcdir}/myconfig.sh"
     cd "${srcdir}/${pkgname%-git}"
     ./autogen.sh
-#     ./configure --prefix=/usr \
-#                 --disable-static $GOPTS
-#
-    build/buildlib-linux-pc-mstudio
+    ./configure --prefix=/usr
+
     make -j$NR_JOBS
     make DESTDIR="$pkgdir" install
 }
@@ -257,13 +255,10 @@ package_minigui-mg-demos-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
-#     source "${srcdir}/myconfig.sh"
     cd "${srcdir}/${pkgname%-git}"
     ./autogen.sh
-#     ./configure --prefix=/usr \
-#                 --disable-static $GOPTS
-#
-    build/buildlib-linux-pc-mstudio
+    ./configure --prefix=/usr
+
     make -j$NR_JOBS
     make DESTDIR="$pkgdir" install
 }
@@ -283,13 +278,12 @@ package_minigui-cell-phone-ux-demo-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
-#     source "${srcdir}/myconfig.sh"
     cd "${srcdir}/${pkgname%-git}"
+
+    sed -i 's|$(prefix)/bin/etc|/etc |g' etc/Makefile.am
     ./autogen.sh
-#     ./configure --prefix=/usr \
-#                 --disable-static $GOPTS
-#
-    build/buildlib-linux-pc-mstudio
+    ./configure --prefix=/usr
+
     make -j$NR_JOBS
     make DESTDIR="$pkgdir" install
 }
@@ -301,13 +295,11 @@ package_minigui-res-git() {
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
-#     source "${srcdir}/myconfig.sh"
     cd "${srcdir}/${pkgname%-git}"
+    sed -i 's|prefix = $(TOPDIR)/usr/local|prefix = $(prefix)|g' config.linux
     ./autogen.sh
-#     ./configure --prefix=/usr \
-#                 --disable-static $GOPTS
-#
-    build/buildlib-linux-pc-mstudio
+    ./configure --prefix=/usr
+
     make -j$NR_JOBS
     make DESTDIR="$pkgdir" install
 }
@@ -333,9 +325,65 @@ package_minigui-git() {
     conflicts=(${pkgname%-git})
 
     cd "${srcdir}/${pkgbase}"
+
+    sed -i 's|$(prefix)/etc|/etc |g' etc/Makefile.am
     ./autogen.sh
-#     build/buildlib-linux-pc-mstudio --prefix=/usr
-    build/buildlib-linux-minimal --prefix=/usr
+
+    ./configure \
+        $prefix_config \
+        --prefix=/usr \
+        --disable-static \
+        --with-targetname=mstudio \
+        --with-libsuffix=msd \
+        --enable-pcxvfb \
+        --disable-qvfbial \
+        --disable-consoleial \
+        --disable-dummyial \
+        --disable-autoial \
+        --disable-videodummy \
+        --disable-videoqvfb \
+        --disable-videofbcon \
+        --disable-videocommlcd \
+        --with-ttfsupport=ft2 \
+        --enable-qpfsupport \
+        --enable-upfsupport \
+        --enable-gb18030support \
+        --enable-unicodesupport \
+        --enable-aboutdlg \
+        --disable-savescreen \
+        --disable-splash \
+        --disable-screensaver \
+        --with-runmode=ths \
+        --enable-ctrlstatic \
+        --enable-ctrlbutton \
+        --enable-ctrlsledit \
+        --enable-ctrlbidisledit \
+        --enable-ctrlnewtextedit \
+        --enable-ctrllistbox \
+        --enable-ctrlpgbar \
+        --enable-ctrlcombobox \
+        --enable-ctrlpropsheet \
+        --enable-ctrltrackbar \
+        --enable-ctrlscrollbar \
+        --enable-ctrlnewtoolbar \
+        --enable-ctrlmenubtn \
+        --enable-ctrlscrollview \
+        --enable-ctrltextedit \
+        --enable-ctrlmonthcal \
+        --enable-ctrltreeview \
+        --enable-ctrltreeview-rdr \
+        --enable-ctrlspinbox \
+        --enable-ctrlcoolbar \
+        --enable-ctrllistview \
+        --enable-ctrliconview \
+        --enable-ctrlgridview \
+        --enable-ctrlanimation \
+        --disable-watermark \
+        --disable-pngsupport \
+        --disable-videodrm
+
+    sed -i 's|/local||g' etc/mvfb.cfg
+    sed -i 's|/local||g' etc/MiniGUI.cfg
 
     make -j$NR_JOBS
     make DESTDIR="$pkgdir" install
@@ -351,9 +399,8 @@ package_minigui-ministudo-git() {
     # build GUIBuilder
     cd "${srcdir}/${pkgname%-git}"
     ./autogen.sh
-    ./configure $prefix_config \
-                --enable-werror \
-                --prefix=/usr \
+    ./configure --prefix=/usr \
+        --enable-werror
 
     make
     make DESTDIR="$pkgdir" install
