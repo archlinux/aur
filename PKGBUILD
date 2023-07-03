@@ -20,8 +20,6 @@ source=('git+https://github.com/oracle-samples/bpftune')
 #noextract=()
 md5sums=('SKIP')
 
-CC=clang
-
 pkgver() {
 	cd "$_pkgbase"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -37,10 +35,10 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_pkgbase"
-	make
+	CC=clang make
 }
 
 package() {
 	cd "$srcdir/$_pkgbase"
-	make DESTDIR="$pkgdir" install
+	CC=clang make DESTDIR="$pkgdir" install
 }
