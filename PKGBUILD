@@ -40,7 +40,7 @@ package() {
 	cd "$srcdir/llvm"
 		install -Dm644 ./LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 		install -dm755 "$pkgdir/opt/sycl"
-		cp -Ra "$srcdir/llvm/build" "$pkgdir/opt/sycl"
+		cp -Ra "$srcdir/llvm/build/." "$pkgdir/opt/sycl"
 		find "${pkgdir}/opt/sycl" -type d -exec chmod a+rx {} +
 		find "${pkgdir}/opt/sycl" -type f -exec chmod a+r {} +
 	cd "$srcdir"
