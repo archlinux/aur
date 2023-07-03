@@ -19,7 +19,7 @@ conflicts=('python-scipy')
 makedepends=('cython' 'gcc-fortran' 'procps-ng' 'pybind11' 'python-pythran' 'python-setuptools')
 checkdepends=('python-pytest')
 optdepends=('python-pillow: for image saving module')
-source=("https://github.com/scipy/scipy/releases/download/v${pkgver}/scipy-${pkgver}.tar.gz")
+source=("https://github.com/scipy/scipy/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2cf9dfb80a7b4589ba4c40ce7588986d6d5cebc5457cad2c2880f6bc2d42f3a5')
 
 build() {
