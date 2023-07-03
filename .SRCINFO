@@ -1,7 +1,7 @@
 pkgbase = another-redis-desktop-manager-appimage
 	pkgdesc = A faster, better and more stable redis desktop manager
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qishibo/AnotherRedisDesktopManager
 	arch = x86_64
 	license = MIT

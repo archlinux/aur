@@ -6,7 +6,7 @@ _pkgname=another-redis-desktop-manager
 
 pkgname="${_pkgname}-appimage"
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster, better and more stable redis desktop manager"
 arch=('x86_64')
 url="https://github.com/qishibo/AnotherRedisDesktopManager"
@@ -47,7 +47,7 @@ package() {
 
     # Icon images
     install -Dm0644 "${srcdir}/squashfs-root/another-redis-desktop-manager.png" \
-        "${pkgdir}/usr/share/icons/hicolor/512x512/another-redis-desktop-manager.png"
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/another-redis-desktop-manager.png"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
