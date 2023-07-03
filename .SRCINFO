@@ -14,7 +14,7 @@ pkgbase = python2-libxml2
 	depends = icu
 	depends = ncurses
 	depends = python2
-	depends = libxml2-2.9
+	depends = libxml2=2.9.10
 	depends = readline
 	depends = xz
 	depends = zlib

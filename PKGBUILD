@@ -9,6 +9,7 @@ _py="python2"
 _pkg="libxml2"
 pkgname="${_py}-${_pkg}"
 pkgver=2.9.14
+_pkgver=2.9.10
 pkgrel=1
 pkgdesc='XML parsing library, version 2'
 _url="https://gitlab.gnome.org/GNOME/${_pkg}"
@@ -26,7 +27,7 @@ depends=(
   icu
   ncurses
   "${_py}"
-  "${_pkg}-2.9"
+  "${_pkg}=${_pkgver}"
   readline
   xz
   zlib
@@ -88,23 +89,25 @@ build() (
   local _ldflags=(
     "-L/usr/lib/${_pkg}-2.9"
   )
-  local _flags=(
-    CFLAGS=${_cflags[*]}
-    LDFLAGS=${_ldflags[*]}
-  )
 
   cd build
 
-  ${_flags[@]} \
+  CFLAGS="${_cflags[*]}" \
+  LDFLAGS="${_ldflags[*]}" \
     "../${pkgname}/configure" "${_configure_opts[@]}"
+
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
-  ${_flags[@]} \
-  make
+
+  CFLAGS="${_cflags[*]}" \
+  LDFLAGS="${_ldflags[*]}" \
+    make
 
   find doc -type f -exec chmod 0644 {} +
 )
 
 check() {
+  CFLAGS="${_cflags[*]}" \
+  LDFLAGS="${_ldflags[*]}" \
   make -C build check
 }
 
