@@ -103,7 +103,10 @@ pkgname = minigui-chipmunk-git
 	depends = cmake
 	depends = gtk2
 	provides = minigui-chipmunk
+	provides = chipmunk
 	conflicts = minigui-chipmunk
+	conflicts = chipmunk
+	replaces = chipmunk
 
 pkgname = minigui-mgncs4touch-git
 	pkgdesc = A set of mGNCS-compliant controls for devices with a touch screen.

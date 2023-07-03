@@ -8,7 +8,6 @@ arch=('x86_64')
 _url="https://github.com/VincentWei"
 url="${_url}/MiniGUI"
 license=('GPLv3')
-# replaces=(${pkgname})
 depends=(
         freetype2
         gtk2
@@ -167,8 +166,9 @@ package_minigui-chipmunk-git() {
             cmake
             gtk2
             )
-    provides=(${pkgname%-git})
-    conflicts=(${pkgname%-git})
+    provides=(${pkgname%-git} chipmunk)
+    conflicts=(${pkgname%-git} chipmunk)
+    replaces=(chipmunk)
 
     cd "${srcdir}/${pkgname%-git}"
 
