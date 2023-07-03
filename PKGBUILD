@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=monit-appimage
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="展示各种信息的桌面小组件"
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Monit-${pkgver}-linux-x86_64.AppImage"
     "LICENSE::https://raw.githubusercontent.com/fzf404/monit/main/LICENSE")
-sha256sums=('b9bf71dcaccbea4b50ba691fa3628b2ab4b08cc3c4d2d648f6af667d48be81a4'
-            'a1d101c81e481ecb6e5ded277789b4fb293b489ac9d75953a18b37223ccb3709')
+sha256sums=('380996cea6c85387a5d0f91bd725c32f7007ecf1ee0bb5f248bb998430f7877e'
+            'ff7c320ce0d7663a98fe147ee42af554853380f3ba2a2aad67091bdbf895a276')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
