@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="houdunren-camera-electron-bin"
-pkgver=1.0.41
+pkgver=1.0.48
 pkgrel=1
 pkgdesc="Desktop camera software that can be used for online live streaming, distance learning, and video conferencing.桌面摄像头软件，可用于在线直播、远程教学、视频会议"
 arch=('any')
@@ -12,7 +12,7 @@ mkdenpends=('nodejs >=16.4' 'pnpm' 'gendesk')
 conflicts=("${pkgname%-electron-bin}" "${pkgname%-electron-bin}-appimage" "${pkgname%-electron-bin}-bin")
 source=("${pkgname%-appimage}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname%-electron-bin}.sh")
-sha256sums=('df569a055346c200493f1f0278d58bcd0204366819f3949ebe8f94e21e9c107c'
+sha256sums=('3328f21f7a46a726b7f4954cd34b0f4a478768b42c39c6efd24d235326b962d3'
             '29289c31ab49bacb8be38d16297e49c6f2cbfe030e7936102f5fcf1941f1efe3')
 build() {
     cd "${srcdir}/camera-${pkgver}"

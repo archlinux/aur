@@ -1,6 +1,6 @@
 pkgbase = houdunren-camera-electron-bin
 	pkgdesc = Desktop camera software that can be used for online live streaming, distance learning, and video conferencing.桌面摄像头软件，可用于在线直播、远程教学、视频会议
-	pkgver = 1.0.41
+	pkgver = 1.0.48
 	pkgrel = 1
 	url = https://www.houdunren.com/
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = houdunren-camera-electron-bin
 	conflicts = houdunren-camera
 	conflicts = houdunren-camera-appimage
 	conflicts = houdunren-camera-bin
-	source = houdunren-camera-electron-bin-1.0.41.tar.gz::https://github.com/houdunwang/camera/archive/refs/tags/v1.0.41.tar.gz
+	source = houdunren-camera-electron-bin-1.0.48.tar.gz::https://github.com/houdunwang/camera/archive/refs/tags/v1.0.48.tar.gz
 	source = houdunren-camera.sh
-	sha256sums = df569a055346c200493f1f0278d58bcd0204366819f3949ebe8f94e21e9c107c
+	sha256sums = 3328f21f7a46a726b7f4954cd34b0f4a478768b42c39c6efd24d235326b962d3
 	sha256sums = 29289c31ab49bacb8be38d16297e49c6f2cbfe030e7936102f5fcf1941f1efe3
 
 pkgname = houdunren-camera-electron-bin
