@@ -3,7 +3,7 @@
 pkgname=python-pytest-postgresql
 _name=${pkgname#python-}
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Test your code that relies on a running PostgreSQL Database"
 arch=(any)
 url="https://github.com/ClearcodeHQ/pytest-postgresql"
@@ -19,6 +19,9 @@ makedepends=(
   python-build
   python-installer
   python-wheel
+)
+checkdepends=(
+  postgresql
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
