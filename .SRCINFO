@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
-	pkgver = 2.39
-	pkgrel = 9
+	pkgver = 2.39.1
+	pkgrel = 1
 	url = https://github.com/util-linux/util-linux
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = util-linux-selinux
 	makedepends = systemd
 	makedepends = libselinux
 	options = strip
-	source = git+https://github.com/karelzak/util-linux#tag=8d7cca1a88bb347d7a0b5c32d2d2b1e8d71cafcc?signed
+	source = git+https://github.com/util-linux/util-linux#tag=722ea47989cef5d892711614c4a2767213b177d8?signed
 	source = pam-login
 	source = pam-common
 	source = pam-runuser
@@ -56,8 +56,8 @@ pkgname = util-linux-selinux
 	optdepends = words: default dictionary for look
 	provides = rfkill
 	provides = hardlink
-	provides = util-linux=2.39-9
-	provides = selinux-util-linux=2.39-9
+	provides = util-linux=2.39.1-1
+	provides = selinux-util-linux=2.39.1-1
 	conflicts = rfkill
 	conflicts = hardlink
 	conflicts = util-linux
@@ -80,7 +80,7 @@ pkgname = util-linux-libs-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = util-linux-libs=2.39-9
+	provides = util-linux-libs=2.39.1-1
 	provides = libutil-linux-selinux
 	conflicts = util-linux-libs
 	conflicts = libutil-linux-selinux

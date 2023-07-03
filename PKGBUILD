@@ -10,10 +10,10 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux util-linux-libs-selinux)
-_tag='8d7cca1a88bb347d7a0b5c32d2d2b1e8d71cafcc' # git rev-parse v${_tag_name}
-_tag_name=2.39
+_tag='722ea47989cef5d892711614c4a2767213b177d8' # git rev-parse v${_tag_name}
+_tag_name=2.39.1
 pkgver=${_tag_name/-/}
-pkgrel=9
+pkgrel=1
 pkgdesc='SELinux aware miscellaneous system utilities for Linux'
 url='https://github.com/util-linux/util-linux'
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ makedepends=('git' 'meson' 'asciidoctor' 'bash-completion' 'libcap-ng'
 license=('GPL2')
 options=('strip')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
-source=("git+https://github.com/karelzak/util-linux#tag=${_tag}?signed"
+source=("git+https://github.com/util-linux/util-linux#tag=${_tag}?signed"
         pam-{login,common,runuser,su}
         'util-linux.sysusers'
         '60-rfkill.rules'
@@ -45,8 +45,6 @@ sha256sums=('SKIP'
             'a22e0a037e702170c7d88460cc9c9c2ab1d3e5c54a6985cd4a164ea7beff1b36')
 
 _backports=(
-  # current stable/v2.39
-  "${_tag}..205e88e51c11d039cd80c9f1104bee5555a4ddaa"
 )
 
 _reverts=(
@@ -55,19 +53,20 @@ _reverts=(
 prepare() {
   cd "${pkgbase/-selinux}"
 
-  local _c
+  local _c _l
   for _c in "${_backports[@]}"; do
-    if [[ $_c == *..* ]]; then
-      git log --oneline --reverse "${_c}"
-    else
-      git log --oneline -1 "${_c}"
-    fi
-    git cherry-pick -n -m1 "${_c}"
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git cherry-pick --mainline 1 --no-commit "${_c}"
   done
   for _c in "${_reverts[@]}"; do
-    git log --oneline -1 "${_c}"
-    git revert -n "${_c}"
+    if [[ "${_c}" == *..* ]]; then _l='--reverse'; else _l='--max-count=1'; fi
+    git log --oneline "${_l}" "${_c}"
+    git revert --mainline 1 --no-commit "${_c}"
   done
+
+  # do not mark dirty
+  sed -i '/dirty=/c dirty=' tools/git-version-gen
 }
 
 build() {
