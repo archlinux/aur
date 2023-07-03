@@ -11,20 +11,22 @@ pkgname="${_py}-${_pkg}"
 pkgver=2.9.14
 pkgrel=1
 pkgdesc='XML parsing library, version 2'
-url="https://gitlab.gnome.org/GNOME/${_pkg}/-/wikis/home"
+_url="https://gitlab.gnome.org/GNOME/${_pkg}"
+url="${_url}/-/wikis/home"
 arch=(
   x86_64
   aarch64
   i686
   pentium4
   armv7h
-  armv6l)
+  armv6l
+)
 license=(MIT)
 depends=(
   icu
   ncurses
   "${_py}"
-  "${_pkg}"
+  "${_pkg}-2.9"
   readline
   xz
   zlib
@@ -34,51 +36,69 @@ makedepends=(
 )
 _commit=7846b0a677f8d3ce72486125fa281e92ac9970e8  # tags/v2.9.14^0
 _w3_tests="https://www.w3.org/XML/Test/xmlts20130923.tar.gz"
-source=("${_pkgname}::git+https://gitlab.gnome.org/GNOME/${_pkg}.git#commit=$_commit"
-        no-fuzz.diff # Do not run fuzzing tests
-        "${_w3_tests}")
-sha256sums=('SKIP'
-            '3fc010d8c42b93e6d6f1fca6b598a561e9d2c8780ff3ca0c76a31efabaea404f'
-            '9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f')
+source=(
+  "${pkgname}::git+${_url}#commit=$_commit"
+  no-fuzz.diff # Do not run fuzzing tests
+  "${_w3_tests}"
+)
+sha256sums=(
+  'SKIP'
+  '3fc010d8c42b93e6d6f1fca6b598a561e9d2c8780ff3ca0c76a31efabaea404f'
+  '9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f'
+)
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --tags | sed 's/-rc/rc/;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname}"
+  git describe --tags \
+    | sed 's/-rc/rc/;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
+  local _msg="Use xmlconf from conformance test suite"
   mkdir -p build
+  ln -s xmlconf build/xmlconf || echo "${_msg}"
 
-  # Use xmlconf from conformance test suite
-  ln -s xmlconf build/xmlconf
-
-  cd "${_pkgname}"
+  cd "${pkgname}"
 
   # Take patches from https://src.fedoraproject.org/rpms/libxml2/tree/master
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
-    [[ $src = *.diff ]] || continue
-    echo "Applying patch $src..."
-    git apply -3 "../$src"
+    [[ "${src}" = *.diff ]] || continue
+    echo "Applying patch ${src}..."
+    git apply -3 "../${src}"
   done
 
   autoreconf -fiv
 }
 
 build() (
+  local _configure="../${pkgname}/configure"
   local _configure_opts=(
     --prefix=/usr
     --with-threads
     --with-history
     --with-python="/usr/bin/${_py}"
     --with-icu
-)
+  )
+  local _cflags=(
+    "-I/usr/include/${_pkg}-2.9"
+  )
+  local _ldflags=(
+    "-L/usr/lib/${_pkg}-2.9"
+  )
+  local _flags=(
+    CFLAGS=${_cflags[*]}
+    LDFLAGS=${_ldflags[*]}
+  )
+
   cd build
 
-  "../${_pkgname}/configure" "${_configure_opts[@]}"
+  ${_flags[@]} \
+    "../${pkgname}/configure" "${_configure_opts[@]}"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
+  ${_flags[@]} \
   make
 
   find doc -type f -exec chmod 0644 {} +
@@ -89,12 +109,15 @@ check() {
 }
 
 package() {
-  make -C build install --destdir "${pkgdir}"
+  make DESTDIR="${pkgdir}" -C build install
+  "${_py}" -m compileall \
+           -d /usr/lib "${pkgdir}/usr/lib"
+  "${_py}" -O \
+           -m compileall \
+           -d /usr/lib "${pkgdir}/usr/lib"
 
-  python2 -m compileall -d /usr/lib "${pkgdir}/usr/lib"
-  python2 -O -m compileall -d /usr/lib "${pkgdir}/usr/lib"
-
-  install -Dm 644 build/COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 build/COPYING \
+          -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   rm -rf "${pkgdir}/usr/bin/"
   rm -rf "${pkgdir}/usr/bin/"
