@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="nora-bin"
-pkgver=2.2.0stable
-_appver=2.2.0-stable
+pkgver=2.3.0stable
+_appver=2.3.0-stable
 pkgrel=1
 pkgdesc="An elegant music player built using Electron and React. Inspired by Oto Music for Android by Piyush Mamidwar."
 arch=('x86_64')
@@ -12,9 +12,9 @@ depends=('hicolor-icon-theme' 'glibc' 'libcups' 'mesa' 'dbus' 'libxfixes' 'libx1
     'nspr' 'libxext' 'at-spi2-core' 'libvips' 'glib2' 'alsa-lib' 'gtk3' 'libxrandr' 'expat' 'libxdamage' 'libxcb' 'gcc-libs' \
     'libxcomposite' 'nss')
 options=(!strip)
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${_appver}/Nora.Setup.${_appver}-linux-amd64.deb"
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${_appver}/Nora-Setup-${_appver}-linux-amd64.deb"
     "LICENSE.txt::https://raw.githubusercontent.com/Sandakan/Nora/master/LICENSE.txt")
-sha256sums=('6680d4b1da3b25ab490764f317d57cc3ca4fccecdd5973933f4d40d031ead74c'
+sha256sums=('ec64f6e43ba3926a9517a4771e56c2092f5eb751d4e3ba75d7ba0e2a3fc0b767'
             '7c27f3771d31e4ba1a227b2aec04ff8892512ba80dd0fb9435115a6523e2980e')
 
 package() {

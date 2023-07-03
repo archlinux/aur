@@ -1,6 +1,6 @@
 pkgbase = nora-bin
 	pkgdesc = An elegant music player built using Electron and React. Inspired by Oto Music for Android by Piyush Mamidwar.
-	pkgver = 2.2.0stable
+	pkgver = 2.3.0stable
 	pkgrel = 1
 	url = https://github.com/Sandakan/Nora
 	arch = x86_64
@@ -33,9 +33,9 @@ pkgbase = nora-bin
 	conflicts = nora
 	conflicts = nora-appimage
 	options = !strip
-	source = nora-2.2.0stable.deb::https://github.com/Sandakan/Nora/releases/download/v2.2.0-stable/Nora.Setup.2.2.0-stable-linux-amd64.deb
+	source = nora-2.3.0stable.deb::https://github.com/Sandakan/Nora/releases/download/v2.3.0-stable/Nora-Setup-2.3.0-stable-linux-amd64.deb
 	source = LICENSE.txt::https://raw.githubusercontent.com/Sandakan/Nora/master/LICENSE.txt
-	sha256sums = 6680d4b1da3b25ab490764f317d57cc3ca4fccecdd5973933f4d40d031ead74c
+	sha256sums = ec64f6e43ba3926a9517a4771e56c2092f5eb751d4e3ba75d7ba0e2a3fc0b767
 	sha256sums = 7c27f3771d31e4ba1a227b2aec04ff8892512ba80dd0fb9435115a6523e2980e
 
 pkgname = nora-bin
