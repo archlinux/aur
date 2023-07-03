@@ -112,7 +112,7 @@ check() {
 }
 
 package_libxml2-2.9() {
-  local _libdir"/usr/lib/${pkgbase}"
+  local _libdir="/usr/lib/${pkgbase}"
   optdepends=('python: Python bindings')
   provides=(
     "${_pkgname}=${pkgver}"
