@@ -5,7 +5,7 @@ pkgbase = lib32-nvidia-470xx-utils
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/470.182.03/NVIDIA-Linux-x86_64-470.182.03.run
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/470.199.02/NVIDIA-Linux-x86_64-470.199.02.run
 	sha512sums = e1265b6266473af652e9d7bf85dcd76e312af281c5f4f158ab322e34d378738acb87c30cfff7bf1f6e1b238883e7f665d9fc5151b1e0078dd9aece5a52655405
 
 pkgname = lib32-nvidia-470xx-utils
