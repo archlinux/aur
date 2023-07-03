@@ -1,9 +1,9 @@
 # Maintainer: xeruf <27jf at pm dot me>
 
-_electron_version=19
+_electron_version=""
 _pkgname=stretchly
 pkgname=${_pkgname}-xeruf-git
-pkgver=1239.537339b
+pkgver=1386.c4b77ac
 pkgrel=1
 pkgdesc="The break reminder app with more restrictive menus"
 arch=('i686' 'x86_64')
