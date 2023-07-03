@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Lise++
+Comment=Lise++ Rare Isotope Beam Production Package
+Exec=/opt/lise-app/run_lise.sh
+Icon=/opt/lise-app/emblem_little.gif
+Terminal=false
+StartupNotify=false
+Categories=Education;
