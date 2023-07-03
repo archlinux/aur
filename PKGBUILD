@@ -11,8 +11,8 @@ fi
 
 ## Build dlib with which Basic Linear Algebra Subprograms
 ## Choice:
-## - BLAS : use the package that provide `blas` ('blas'/'openblas') if none installed 'blas' will be installed
-## - OpenBLAS : will just force 'openblas' to be installed and used
+## - BLAS : use the package that provide `blas` ('blas'/'blas-openblas') if none installed 'blas' will be installed
+## - OpenBLAS : will just force 'blas-openblas' to be installed and used
 ## - IntelMKL : will use Intel Math Kernel Library 'intel-mkl'
 ## - BuiltIn : will use the built-in BLAS
 ##
@@ -24,13 +24,13 @@ fi
 
 pkgname=obs-face-tracker
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/face-tracker.1294/"
 license=("GPL2")
-depends=("obs-studio>=28")
-makedepends=("cmake")
+depends=("obs-studio>=28" "glibc" "gcc-libs" "qt6-base")
+makedepends=("cmake" "git")
 options=('debug')
 source=(
   "$pkgname::git+https://github.com/norihiro/obs-face-tracker.git#tag=$pkgver"
@@ -48,9 +48,9 @@ if [[ $OBS_FT_ENABLE_CUDA == 'ON' ]]; then
 fi
 
 if [[ $OBS_FT_USE_AS_BLAS == 'BLAS' ]]; then
-  depends+=('cblas' 'lapack')
+  depends+=('blas' 'cblas' 'lapack')
 elif [[ $OBS_FT_USE_AS_BLAS == 'OpenBLAS' ]]; then
-  depends+=('openblas' 'cblas' 'lapack')
+  depends+=('blas-openblas' 'openblas')
 elif [[ $OBS_FT_USE_AS_BLAS == 'IntelMKL' ]]; then
   depends+=('intel-mkl')
 fi
@@ -63,22 +63,18 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"
-  cmake -B build \
-  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  cmake -B build -S $pkgname \
+  -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
   -DQT_VERSION=6 \
-  -DDLIB_USE_CUDA=$OBS_FT_ENABLE_CUDA
+  -DDLIB_USE_CUDA=$OBS_FT_ENABLE_CUDA \
+  -Wno-dev
 
-  make -C build
+  cmake --build build
 }
 
 package() {
-  cd "$pkgname"
-  make -C build DESTDIR="$pkgdir/" install
-
-  # Remove libvisca header to prevent possible conflict with any libvisca package
-  rm -rf "$pkgdir"/usr/include
+  DESTDIR="$pkgdir" cmake --install build
 }
