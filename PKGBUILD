@@ -1,7 +1,8 @@
-# Maintainer: yukichan
+# Maintainer: Yugami
+# Contributor: yukichan
 
 pkgname=yuki-iptv-git
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="IPTV player with EPG support (Astroncia IPTV fork)"
 arch=('any')

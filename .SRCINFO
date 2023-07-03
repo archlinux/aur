@@ -1,6 +1,6 @@
 pkgbase = yuki-iptv-git
 	pkgdesc = IPTV player with EPG support (Astroncia IPTV fork)
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/yuki-iptv/yuki-iptv
 	arch = any
