@@ -3,10 +3,10 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=Rsamtools
-_bcver=2.14.0
+_bcver=2.16.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Binary alignment (BAM), FASTA, variant call (BCF), and tabix file import"
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
@@ -31,6 +31,7 @@ optdepends=(
     "r-bsgenome.hsapiens.ucsc.hg19"
     "r-genomicalignments"
     "r-genomicfeatures"
+    "r-knitr"
     "r-rnaseqdata.hnrnpc.bam.chr14"
     "r-runit"
     "r-shortread>=1.19.10"
@@ -38,7 +39,7 @@ optdepends=(
     "r-txdb.hsapiens.ucsc.hg18.knowngene"
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=("434adeaa9f5aad6b7fa7e4422de5bcfc6596c0d150a2b266c2838a28e20da9cfe65cd4dd0972e6d00d7ec746af5e8fc024415e17432edbe71088b4e3902c62dd")
+b2sums=("0ba9dd1f362c265e8436bacc4644c57acdabb9ea21beb397f92d24f5a10a9afeec44eda7981f54a9cc29fff62187bf03e25f4dc29f893e6ef9112994d32629c1")
 
 options=(!lto !buildflags staticlibs)
 
