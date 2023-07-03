@@ -3,8 +3,8 @@
 
 _pkgname=csvtk
 pkgname=${_pkgname}-bin
-pkgver=0.25.0
-pkgrel=2
+pkgver=0.26.0
+pkgrel=1
 pkgdesc="A cross-platform, efficient and practical CSV/TSV toolkit in Golang"
 arch=('x86_64')
 url=https://bioinf.shenwei.me/csvtk/
@@ -15,8 +15,8 @@ source=(
   "${_pkgname}"-"${pkgver}"::https://github.com/shenwei356/"${_pkgname}"/archive/v"${pkgver}".tar.gz
   "${_pkgname}"-"${pkgver}"-binary.tar.gz::https://github.com/shenwei356/"${_pkgname}"/releases/download/v"${pkgver}"/"${_pkgname}"_linux_amd64.tar.gz
 )
-sha256sums=('47d244068274ad5070ef50cafee243d1035c51692b025bf074d0b7be3f8a7d1c'
-            'f7b173cb40ca84cad834ccb65721b6ef96849f07718ce854c47ca65a04710d9e')
+sha256sums=('849b8c69fdd886bda077eb76b01de27701e06dff6496695ce60a18fdd6a07ff0'
+            'd8b276cf2ddd46e39537b3d9c9223c95c90cc2b39c28a1254ebfa37011a52138')
 
 package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
