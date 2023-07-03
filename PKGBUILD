@@ -10,8 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 optdepends=('fzf: fuzzy searching' 'fd: faster find' 'skim: fzf alternative')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/timdubbins/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('d104a305fdbad800cc18938e05c397b60cc978fdddd701b850b393bcff8bb490')
-
+sha256sums=('3d8d1c238f6259eb2dad6393746fc22610ddbc684e095ab713c0bea9334bdf83')
 prepare() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
