@@ -2,7 +2,7 @@
 
 pkgname=pissircd-git
 pkgver=r9061.193da4738
-pkgrel=5
+pkgrel=6
 pkgdesc="PissIRCd is an open source IRC server based on UnrealIRCd with Pissnet tweaks."
 arch=('x86_64')
 url="https://github.com/pissnet/pissircd"
@@ -47,6 +47,7 @@ build() {
   ./autogen.sh
   ./configure \
     --with-pidfile=/run/pissircd/ircd.pid \
+    --with-controlfile=/run/pissircd/ircd.sock \
     --with-showlistmodes \
     --enable-ssl=/usr \
     --with-bindir=/usr/bin \
