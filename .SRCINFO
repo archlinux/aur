@@ -1,6 +1,6 @@
 pkgbase = icalingua++-appimage
 	pkgdesc = A branch of deleted Icalingua, with limited support
-	pkgver = 2.9.20
+	pkgver = 2.9.21
 	pkgrel = 1
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
@@ -11,11 +11,11 @@ pkgbase = icalingua++-appimage
 	depends = glibc
 	conflicts = icalingua++
 	options = !strip
-	source_aarch64 = icalingua++-2.9.20-aarch64.AppImage::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.9.20/Icalingua++-2.9.20-arm64.AppImage
-	sha256sums_aarch64 = e9bbcbe92c58bb37728eccd352d25d04e383449a4055d8e7157fbc3b9ab40f8f
-	source_armv7h = icalingua++-2.9.20-armv7h.AppImage::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.9.20/Icalingua++-2.9.20-armv7l.AppImage
-	sha256sums_armv7h = 380b87779a63cd9d154c5d6b5248d59b00287d90c3b170e766bf2aec9bb606ce
-	source_x86_64 = icalingua++-2.9.20-x86_64.AppImage::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.9.20/Icalingua++-2.9.20.AppImage
-	sha256sums_x86_64 = 6611da970af4c4c751d0db8efa7c7033947dee05108462b8a86d86347f141f8c
+	source_aarch64 = icalingua++-2.9.21-aarch64.AppImage::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.9.21/Icalingua++-2.9.21-arm64.AppImage
+	sha256sums_aarch64 = c77eecc59b702eae076e8168de15a57c8afbb8b5f31d849523a646963510638d
+	source_armv7h = icalingua++-2.9.21-armv7h.AppImage::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.9.21/Icalingua++-2.9.21-armv7l.AppImage
+	sha256sums_armv7h = c869047720e9321b392e760f7bf7364b96008a1d5e3aec56ae999da4ab5398b8
+	source_x86_64 = icalingua++-2.9.21-x86_64.AppImage::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.9.21/Icalingua++-2.9.21.AppImage
+	sha256sums_x86_64 = 196dba86c2762085c41803182041e793d463d82a6b0905e2147cb08018b4c0b3
 
 pkgname = icalingua++-appimage
