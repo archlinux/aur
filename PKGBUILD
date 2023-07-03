@@ -1,7 +1,7 @@
 # Maintainer: f4iey (f4iey@f6kgl.ampr.org)
 
 pkgname=klog-bin
-pkgver=2.3
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="A multiplatform free hamradio logger"
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,13 +13,13 @@ conflicts=(klog)
 
 if [ "$CARCH" == "x86_64" ]; then
     debfile="klog_${pkgver}-${pkgrel}_amd64.deb"
-    sha256sums=(810825b916cae73a334766b2d6b80892d6157facfd4dd52360390c0478350238)
+    sha256sums=(9e5a5b06f38f018a7d03aeb28d11d7c8d13881a082f06dc0a40b3994247ac459)
 elif [ "$CARCH" == "i686" ]; then
     debfile="klog_${pkgver}-${pkgrel}_i386.deb"
-    sha256sums=(f45fda198d4992771c4886d729d01443b8c626c20fda62cd648e2fcf26ae14ee)
+    sha256sums=(9412951ca07f33fc736f5152dfc438545d9a6df4f9276a97bc472da0d507a12b)
 elif [ "$CARCH" == "armv7h" ]; then
     debfile="klog_${pkgver}-${pkgrel}_armhf.deb"
-    sha256sums=(6a978b879e9a684fff32b3ba6fe5466e283062b17c910a8d871ae4f34fdfa7cf)
+    sha256sums=(c052b3e55899d4c323a4eb461371495099d9e2b1a4574e11c05fb071914d65bb)
 fi
 
 source=("http://ftp.fr.debian.org/debian/pool/main/k/klog/${debfile}")
