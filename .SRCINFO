@@ -1,7 +1,7 @@
 pkgbase = ttkmusicplayer-bin
 	pkgdesc = TTKMusicPlayer that imitation Kugou music, the music player uses of qmmp core library based on Qt for windows and linux.(支持网易云音乐、酷我音乐、酷狗音乐)
-	pkgver = 3.3.0.0
-	pkgrel = 2
+	pkgver = 3.4.0.0
+	pkgrel = 1
 	url = https://github.com/Greedysky/TTKMusicPlayer
 	arch = x86_64
 	license = GPL3
@@ -42,8 +42,8 @@ pkgbase = ttkmusicplayer-bin
 	depends = libxdamage
 	depends = qt5-declarative
 	conflicts = ttkmusicplayer
-	noextract = ttkmusicplayer-3.3.0.0.7z
-	source = ttkmusicplayer-3.3.0.0.7z::https://github.com/Greedysky/TTKMusicPlayer/releases/download/3.3.0.0/ttkmusicplayer-linux-x64.7z
-	sha256sums = faf2f6d37ba8226e1e49a65d2c6d8f8bebc5dcf02f1e82b70cbf773a3e39280a
+	noextract = ttkmusicplayer-3.4.0.0.7z
+	source = ttkmusicplayer-3.4.0.0.7z::https://github.com/Greedysky/TTKMusicPlayer/releases/download/3.4.0.0/ttkmusicplayer-linux-x64.7z
+	sha256sums = 8e69eceff065b67479ecd38841287842c87c093e719a2596309476944d3a2809
 
 pkgname = ttkmusicplayer-bin
