@@ -5,7 +5,7 @@
 pkgname=python-psycogreen
 _pkgname=psycogreen
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="psycopg2 integration with coroutine libraries"
 url=https://github.com/psycopg/psycogreen/
 arch=('any')
