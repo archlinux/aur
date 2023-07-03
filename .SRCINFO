@@ -1,0 +1,14 @@
+pkgbase = torbridge-cli
+	pkgdesc = Command-line interface tool to fetch Tor bridges from BridgeDB
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zolagonano/torbridge-cli
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = base-devel
+	depends = rust
+	source = git+https://github.com/zolagonano/torbridge-cli.git#tag=0.1.0
+	sha256sums = SKIP
+
+pkgname = torbridge-cli
