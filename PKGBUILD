@@ -29,12 +29,12 @@ _ensure_local_nvm() {
     unset npm_config_prefix
     export NVM_DIR=${srcdir}/.nvm
     . /usr/share/nvm/init-nvm.sh
+    _node_version=$(jq -r '.engines.node' package.json)
 }
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
     _ensure_local_nvm
-    _node_version=$(jq -r '.engines.node' package.json)
     # ` || false` is a workaround until this upstream fix is released:
     # https://github.com/nvm-sh/nvm/pull/2698
     nvm ls "$_node_version" &>/dev/null ||
