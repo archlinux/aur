@@ -1,7 +1,7 @@
 pkgbase = r-stringi
 	pkgdesc = Fast and Portable Character String Processing Facilities
 	pkgver = 1.7.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=stringi
 	arch = i686
 	arch = x86_64
