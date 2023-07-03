@@ -1,5 +1,4 @@
-/pkg/
-/src/
-/*.tar*
-/polkit-qt5/
-
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

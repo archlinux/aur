@@ -1,40 +1,42 @@
-# Maintainer: Dāvis Mosāns <davispuh at gmail dot com>
+# Maintainer:
+# Contributor: Dāvis Mosāns <davispuh at gmail dot com>
 
-_pkgname=polkit-qt5
-pkgname=$_pkgname-git
-pkgver=v0.114.0.r13.g590e710
+_pkgname="polkit-qt5"
+pkgname="$_pkgname-git"
+pkgver=0.114.0.r13.g590e710
 pkgrel=1
 pkgdesc='A library that allows developers to access PolicyKit API with a nice Qt-style API'
 arch=('i686' 'x86_64')
 url='https://invent.kde.org/libraries/polkit-qt-1'
 license=('LGPL')
+
 depends=('polkit' 'qt5-base')
 makedepends=('git' 'cmake')
+
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://invent.kde.org/libraries/polkit-qt-1.git")
+
+source=("$_pkgname"::"git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir"
-    mkdir -p build
+  cd "$srcdir"
+  mkdir -p build
 }
 
 build() {
-    cd "$srcdir/build"
-    cmake "$srcdir/$_pkgname" \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DLIB_DESTINATION=/usr/lib
-     make
+  cmake -B build -S "$_pkgname" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIB_DESTINATION=/usr/lib
+  cmake --build build
 }
 
 package() {
-    cd "$srcdir/build"
-    make DESTDIR="${pkgdir}" install
+  DESTDIR="$pkgdir" cmake --install build
 }
