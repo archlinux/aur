@@ -6,10 +6,12 @@ _pkgname=another-redis-desktop-manager
 
 pkgname="${_pkgname}-appimage"
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A faster, better and more stable redis desktop manager"
 arch=('x86_64')
 url="https://github.com/qishibo/AnotherRedisDesktopManager"
+provides=('another-redis-desktop-manager' 'another-redis-desktop-manager-appimage')
+conflicts=('another-redis-desktop-manager')
 license=("MIT")
 depends=('fuse2')
 options=(!strip)
