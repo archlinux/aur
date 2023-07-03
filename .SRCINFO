@@ -1,6 +1,6 @@
 pkgbase = fastfetch-bin
 	pkgdesc = Like neofetch, but much faster because written in C.
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fastfetch-bin
 	depends = sh
 	depends = glibc
 	conflicts = fastfetch
-	source = fastfetch-1.12.0.tar.gz::https://github.com/LinusDierheimer/fastfetch/releases/download/1.12.0/fastfetch-1.12.0-Linux.tar.gz
-	sha256sums = 3366b60682dff32b8458cfb7f7c08040fad1df8604b9d6a9c165198371caba0f
+	source = fastfetch-1.12.1.tar.gz::https://github.com/LinusDierheimer/fastfetch/releases/download/1.12.1/fastfetch-1.12.1-Linux.tar.gz
+	sha256sums = 8328b1177bc3445298136d61a7ac3ae4d3d793666b4a88eed93241d00b64da94
 
 pkgname = fastfetch-bin
