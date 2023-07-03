@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=rio
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     'rio.desktop')
 b2sums=(
-    '90ddf0b0097e33e6d9bb1a346470e4cab2f7278ebb6531f6356e6ed7286f68ee6e358d106b460bc6c607e3b7c23a2dbbba0a2343fdd4f263f2987846587622ac'
+    'f21b8e6ac01c52c3021c977f078534ce28c6d8a9c76bdeb9bc3ce82cf3ebc0eed232c2b0727e1f49467ff31a2217952137fca2f04c5c9b50636e58e37a4a61f1'
     'cdb6a76cae33968b23a5d950c727151b152ea2c2951df0eda08e825d366eb41d7c9182aabb6cf85efe62a66010ce50096582b6300659f781dd5bd0e7a3646041')
 backup=()
 
