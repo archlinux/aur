@@ -1,0 +1,11 @@
+pkgbase = xcursor-borealis
+	pkgdesc = Cursor theme using a custom color palette inspired by boreal colors.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/alvatip/Borealis-cursors
+	arch = any
+	license = GPL3
+	source = https://github.com/alvatip/Borealis-cursors/releases/download/2.0/Borealis-cursors.tar.gz
+	sha256sums = d317240580fa61122d7eb25e789082ebf338685ea053d08052e1cb76ddcc0183
+
+pkgname = xcursor-borealis
