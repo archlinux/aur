@@ -1,5 +1,3 @@
-# Maintainer: Colin Wallace <wallacoloo@gmail.com>
-
 pkgname=hase-git
 pkgver=341.da32fd2
 pkgrel=1
