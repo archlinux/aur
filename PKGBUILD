@@ -112,6 +112,7 @@ check() {
 }
 
 package_libxml2-2.9() {
+  local _libdir"/usr/lib/${pkgbase}"
   optdepends=('python: Python bindings')
   provides=(
     "${_pkgname}=${pkgver}"
@@ -122,11 +123,14 @@ package_libxml2-2.9() {
 
   make DESTDIR="${pkgdir}" install
 
-  ln -s "/usr/lib/${pkgbase}/${_pkgname}.so.${pkgver}" \
+  ln -s "${_libdir}/${_pkgname}.so.${pkgver}" \
         "${pkgdir}/usr/lib/${_pkgname}.so.${pkgver}"
-  ln -s "/usr/lib/${pkgbase}/cmake/${_pkgname}" \
+
+  mkdir "${pkgdir}/usr/lib/cmake"
+  ln -s "${_libdir}/cmake/${_pkgname}" \
         "${pkgdir}/usr/lib/cmake/${pkgbase}"
-  ln -s "/usr/lib/${pkgbase}/pkgconfig/${_pkg}-2.0.pc" \
+
+  ln -s "${_libdir}/pkgconfig/${_pkg}-2.0.pc" \
         "${pkgdir}/usr/lib/pkgconfig/${_pkg}2.9-2.0.pc"
 
   mkdir -p ../doc/usr/share
