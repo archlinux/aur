@@ -1,6 +1,6 @@
 pkgbase = frappe-books-bin
 	pkgdesc = Modern desktop accounting for freelancers and small-businesses.
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://frappebooks.com/
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = frappe-books-bin
 	conflicts = frappe-books-appimage
 	conflicts = frappebooks
 	conflicts = frappebooks-appimage
-	source = frappe-books-0.16.0.deb::https://github.com/frappe/books/releases/download/v0.16.0/frappe-books_0.16.0_amd64.deb
-	sha256sums = 48f3d2d732115eaa228de544144d8a6f0b7589158856463a090a4802a48efa31
+	source = frappe-books-0.17.0.deb::https://github.com/frappe/books/releases/download/v0.17.0/frappe-books_0.17.0_amd64.deb
+	sha256sums = dab42f516e357aaf82e4f0229e7e743247ea994608ea005bd87a045f45542a95
 
 pkgname = frappe-books-bin
