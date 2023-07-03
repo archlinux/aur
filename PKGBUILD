@@ -1,7 +1,7 @@
 # Maintainer: gilcu3 <gilcu3 at gmail dot com>
 
 pkgname=bombsquad-server
-pkgver=1.7.15
+pkgver=1.7.21
 pkgrel=1
 pkgdesc='An explosive arcade-style party game, local server'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ license=('unknown')
 depends=('openal' 'libgl' 'sdl2' 'libvorbis' 'libogg' 'python')
 source=('bombsquad-server.sh')
 sha256sums=('82f833063fd6995823c8ba341879bac38d69a3470c1acbf4a7ffa7e3399c73f2')
-sha256sums_x86_64=('1c1e9e9398e77d81cafcb279ee2fe3bb599081456047201adacc8cafd9a0db8e')
-sha256sums_aarch64=('7a5da3e3715c9b5482a2e0ce46e6a3d5d1c8c96957ba1821322f48840c7c5c6e')
+sha256sums_x86_64=('56ce2120b41a3bef9f3c06f9d7295f02f1cc4617235fdece3ec20cf82a0fb9a7')
+sha256sums_aarch64=('0e738fea533dd2cefbefd6124c397c2cd9fb032d120e48347adb118a994e1b90')
 source_x86_64=("https://files.ballistica.net/bombsquad/builds/BombSquad_Server_Linux_x86_64_${pkgver}.tar.gz")
 source_aarch64=("https://files.ballistica.net/bombsquad/builds/BombSquad_Server_Linux_Arm64_${pkgver}.tar.gz")
 
