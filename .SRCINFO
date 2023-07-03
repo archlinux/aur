@@ -1,0 +1,16 @@
+pkgbase = python-pixelmatch
+	pkgdesc = A pixel-level image comparison library
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/whtsky/pixelmatch-py
+	arch = any
+	license = custom
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	source = https://pypi.org/packages/source/p/pixelmatch/pixelmatch-0.3.0.tar.gz
+	sha512sums = 8d5f9ba9dc727900292edb8ad0787c1ba1e5b50099275265fa40979cf571d441f5fd70995214049e5fa3eb5ce6680c58e889c6fb650922b8420c01dc630c8354
+
+pkgname = python-pixelmatch
