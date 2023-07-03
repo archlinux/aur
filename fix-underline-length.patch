@@ -1,0 +1,24 @@
+diff --color -ura a/doc/source/actionAngle.rst b/doc/source/actionAngle.rst
+--- a/doc/source/actionAngle.rst	2023-07-03 11:10:41.000000000 +0800
++++ b/doc/source/actionAngle.rst	2023-07-03 14:15:12.138910664 +0800
+@@ -865,7 +865,7 @@
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+ Reverse action-angle transformations for one-dimensional potentials
+-------------------------------------------------------------------
++-------------------------------------------------------------------
+ 
+ The ``actionAngleVerticalInverse`` class also allows to compute the phase-space
+ coordinates for given actions and angles in one-dimensional potentials. This
+diff --color -ura a/doc/source/whatsnew.rst b/doc/source/whatsnew.rst
+--- a/doc/source/whatsnew.rst	2023-07-03 11:10:41.000000000 +0800
++++ b/doc/source/whatsnew.rst	2023-07-03 14:14:41.658803903 +0800
+@@ -396,7 +396,7 @@
+   * Add Python and C implementation of Dormand-Prince 8(5,3) integrator.
+ 
+ Pre-v1.5
+-+++++
+++++++++++
+ 
+ v1.4
+ ----
