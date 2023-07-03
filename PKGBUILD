@@ -5,7 +5,7 @@
 
 _name=linode_api4
 pkgname="python-$_name"
-pkgver=5.3.0
+pkgver=5.6.0
 pkgrel=1
 pkgdesc="Bindings for the Linode API v4"
 arch=('any')
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('python-setuptools' 'python-requests')
 replaces=('python-linode-api')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('90a79e3da512746b3510592a6fed70d8f7b25016f9d5bba9e6207f37cacc2221')
+sha256sums=('3db6105732d3bf1ff328796063b305d1d3977a4ff4433e024da06666243e468a')
 
 build () {
   cd "$_name-$pkgver"
