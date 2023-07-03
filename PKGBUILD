@@ -4,7 +4,7 @@
 pkgname=mcomix
 # Might want to move to date-based versions.
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A user-friendly, customizable image viewer specifically designed to handle comic books"
 arch=('any')
 url="https://sourceforge.net/p/mcomix/wiki/Home/"
@@ -19,16 +19,24 @@ optdepends=(
   'unrar: for rar compressed comics'
   'unzip: for zip compressed comics'
 )
-source=("https://downloads.sourceforge.net/project/${pkgname}/MComix-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3faa22ca77392c9496e686706193219c8d2435c213ed52ae69212e0def7060d5')
+source=(
+  "https://downloads.sourceforge.net/project/${pkgname}/MComix-${pkgver}/${pkgname}-${pkgver}.tar.gz"
+  "01-pillow_version.patch"
+)
+sha256sums=('3faa22ca77392c9496e686706193219c8d2435c213ed52ae69212e0def7060d5'
+            '11964ff2ba788bcff91c7b1188c7d64f45ca139968b9ff7578eeda15430d9464')
 
-build(){
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  patch -p0 < "$srcdir/01-pillow_version.patch"
+}
+
+build() {
   cd "${pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
