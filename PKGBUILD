@@ -40,6 +40,8 @@ makedepends=(
   'python-yaml'
 )
 checkdepends=(
+  'inetutils'     'xmlstarlet'
+
   'python-mock'   'python-nose'   'python-pycodestyle'   'python-pylint'   'python-pytest'
   'python-pytest-cov'
 )
