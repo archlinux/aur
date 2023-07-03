@@ -2,8 +2,8 @@
 
 pkgname=popura
 _pkgname="popura"
-pkgver=0.4.2+popura1
-_commit=60cbddf9a3c2697d8b11b48337d5efb350f4ed1a
+pkgver=0.4.6
+_commit=e6ee65440d6835523d8f05a5baa174a0056f160f
 pkgrel=1
 pkgdesc="Popura ポプラ: alternative Yggdrasil network client"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
