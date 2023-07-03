@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export LD_PRELOAD=/opt/d.launcher2/libmissingsymbols.so
+
+exec "/opt/d.launcher2/_$(basename "$0")" "$@"
