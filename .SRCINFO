@@ -1,6 +1,6 @@
 pkgbase = vigad-appimage
 	pkgdesc = Extract live-data from your screen.
-	pkgver = 0.1.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://vigad.wordpress.com/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = vigad-appimage
 	depends = glibc
 	conflicts = vigad-bin
 	options = !strip
-	source = vigad-0.1.1.AppImage::https://github.com/VisualGameData/VIGAD/releases/download/v0.1.1/Vigad-0.1.1.AppImage
+	source = vigad-1.0.0.AppImage::https://github.com/VisualGameData/VIGAD/releases/download/v1.0.0/Vigad-1.0.0.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/VisualGameData/VIGAD/main/LICENSE
-	sha256sums = 064d044a5266e5215a52cb78b3e3ebb71db8cc3bf4528542294864b6cb0c0a5e
+	sha256sums = bd5a3dd6607f23236e376ab32b4ee01957e9816690808b078c707a865eb56b88
 	sha256sums = a987d5add58c58a7d976130c1fa78f6ddace5f5cdb2c1bac8cc6dbdb8e54376d
 
 pkgname = vigad-appimage
