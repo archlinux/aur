@@ -1,43 +1,49 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=tweenr
-_cranver=2.0.2
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+_pkgname=tweenr
+_pkgver=2.0.2
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=3
 pkgdesc="Interpolate Data for Smooth Animations"
-arch=(i686 x86_64)
-url="https://cran.r-project.org/package=${_cranname}"
+arch=(x86_64)
+url="https://cran.r-project.org/package=${_pkgname}"
 license=(MIT)
 depends=(
-    r-farver
-    r-magrittr
-    r-rlang
-    r-vctrs
+  r-farver
+  r-magrittr
+  r-rlang
+  r-vctrs
 )
-makedepends=(r-cpp11)
-checkdepends=(r-testthat)
-optdepends=(r-testthat r-covr)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
-        "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('64bbfded418d4880e3636f434571c20303d2f66be6950d64583a864fbb661ff3'
-            'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
+makedepends=(
+  r-cpp11
+)
+checkdepends=(
+  r-testthat
+)
+optdepends=(
+  r-covr
+  r-testthat
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('df4d4c8b2934f45fd8a838b14716744a')
+sha256sums=('64bbfded418d4880e3636f434571c20303d2f66be6950d64583a864fbb661ff3')
 
 build() {
   mkdir -p build
-  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 check() {
-  cd "${_cranname}/tests"
-  R_LIBS="${srcdir}/build" NOT_CRAN=true Rscript --vanilla testthat.R
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 
-  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-
-  install -Dm644 CRAN-MIT-TEMPLATE "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
-  install -Dm644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
