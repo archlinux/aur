@@ -1,7 +1,7 @@
 pkgbase = lise-app
 	pkgdesc = Lise++ Rare Isotope Beam Production Package
 	pkgver = 16.3.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lise.nscl.msu.edu/lise.html
 	arch = x86_64
 	source = https://lise.nscl.msu.edu/download/Linux/lise-app_16.3.11.run
