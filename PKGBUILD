@@ -1,50 +1,22 @@
+# Contributor: Gabriel Moura <develop@srmoura.com.br>
+# Maintainer: Bink <B-Interactive@users.noreply.github.com>
+
 pkgname=bibleanalyzer
-pkgver=5.2
+pkgver=5.5.1
 pkgrel=1
-pkgdesc="Bible Analyzer - Bible Study and Analysis Software"
+pkgdesc="Bible Analyzer - A FREE Bible Study Solution"
 arch=("any")
 url="http://www.bibleanalyzer.com"
 license=('Custon:bibleanalyzer')
-depends=("python>=2.7" "python2-wxpython3" "python2-pillow>=3.1" "python2-espeak>=0.3" "python2-configobj>=4.7" "xsel" "gst-plugins-ugly")
-
-source=("https://www.bibleanalyzer.com/bibleanalyzer_5.2-1_all.deb")
+depends=("python310" "python-wxpython>=4.2.0" "python-espeak" "webkit2gtk")
+source=("https://www.bibleanalyzer.com/bibleanalyzer_${pkgver}_all.deb")
+sha256sums=('60ed9c1590aeccf2981df47b7fb4b8d12a398e8398e2288223352308000672ff')
 
 package() {
-	tar -xf data.tar.xz -C "${pkgdir}"/
+	tar -xf data.tar.zst -C "${pkgdir}"/
 	install -Dm644 "$pkgdir/usr/share/doc/bibleanalyzer/copyright" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	
+
+	mkdir -p "$pkgdir/usr/lib/x86_64-linux-gnu"
+    ln -s "/usr/share/espeak-data" "$pkgdir/usr/lib/x86_64-linux-gnu/espeak-data"
+    ln -s "/usr/lib/webkit2gtk-4.0" "$pkgdir/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0"
 }
-
-post_install(){
-	if [ "$1" = "configure" ] && [ -x "`which update-menus 2>/dev/null`" ]; then
-    update-menus
-fi
-
-if [ "$1" = "configure" ] && [ -x "`which update-desktop-database 2>/dev/null`" ]; then
-    update-desktop-database /usr/share/applications/
-fi
-
-if [ "$1" = "configure" ] && [ -x "`which update-mime-database 2>/dev/null`" ]; then
-    update-mime-database /usr/share/mime    
-fi
-
-if [ "$1" = "configure" ] && [ -x "`which gtk-update-icon-cache 2>/dev/null`" ] && [ -x /usr/share/icons/gnome/index.theme ]; then
-    gtk-update-icon-cache --force /usr/share/icons/gnome
-fi
-
-if [ "$1" = "configure" ] && [ -x "`which locale-gen 2>/dev/null`" ]; then
-    locale-gen pt_BR
-fi
-}
-post_remove(){
-	if [ -x "`which update-menus 2>/dev/null`" ]; then update-menus ; fi
-
-if [ -x "`which update-desktop-database 2>/dev/null`" ]; then update-desktop-database /usr/share/applications/ ; fi
-
-if [ -x "`which update-mime-database 2>/dev/null`" ]; then update-mime-database /usr/share/mime ; fi
-
-if [ -x "`which gtk-update-icon-cache 2>/dev/null`" ] && [ -x /usr/share/icons/gnome/index.theme ]; then gtk-update-icon-cache --force /usr/share/icons/gnome ; fi
-
-}
-md5sums=('9cdc55b5ffade3f31264772699a58405')
-sha512sums=('cb9aa86c4f3cd5bdfbdc78a41c021a31e3cd25256e44911b9e5e02c2d62121d7686524678a25c7d8c03dff478bf4c96df37d02748009480ccd9c79e099a4abe0')
