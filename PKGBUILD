@@ -1,5 +1,3 @@
-# Maintainer: Colin Wallace <wallacoloo@gmail.com>
-
 _pkgname=sparrow3d
 pkgname="$_pkgname-git"
 pkgver=820.143acbc
