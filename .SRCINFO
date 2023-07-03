@@ -1,0 +1,14 @@
+pkgbase = cleanpkgdir
+	pkgdesc = Prunes old packages from provided directory
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/greypilgrim/rust-scripts
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = rust
+	depends = cargo
+	source = rust-scripts-0.1.0-dev.tar.gz::https://gitlab.com/greypilgrim/rust-scripts/-/archive/0.1.0-dev/rust-scripts-0.1.0-dev.tar.gz
+	sha256sums = 21446e8174f2c2a72dcdd8a415dc8d99f932eda70f02989f5d1543702f450e2c
+
+pkgname = cleanpkgdir
