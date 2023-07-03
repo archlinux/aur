@@ -15,7 +15,7 @@ pkgname=discord-electron
 _pkgname=discord
 _electron=22
 pkgver=0.0.27
-pkgrel=5
+pkgrel=6
 pkgdesc="Discord using system provided electron (v${_electron}) for increased security and performance"
 arch=('x86_64')
 provides=("${_pkgname}")
@@ -34,13 +34,13 @@ optdepends=(
 source=("https://dl.discordapp.net/apps/linux/${pkgver}/discord-${pkgver}.tar.gz"
 	'discord-launcher.sh')
 sha512sums=('285a0119b4740402a3fa94d3679a52bc8d883413ee32187e90087960a4d34aaf316788d2708bbccafe3f995c2b99767b45bc4b7c731704ef887a8de1b3d3926f'
-            '1da218eb240901ed48c392c154d061b02024daeb02ee7d991cdbc97ecba30a6f06af25abb602880872d89dcc63a8cd4d149c12414086b081035938deff8fe26d')
+            '4bbe010c28926ca898ac33da15ce8373060af44e0583e6956671fa2ee8a2a379a88a6ff9b4f886806fc05117428834852ba2e81a9163381c678c240067b7abd0')
 
 _krisp_b2sum='592f55259500afc0d7fd334a10d3c1991fae05db870bf12437edc43cf693988195341f2cb827aba333c0e65fb4cb40dccfcc5d6a84dea4a1645f9563505b6496'
 
 prepare() {
 	# prepare launcher script
-	sed -i "s|@PKGNAME@|${_pkgname}|g;s|@PKGVER@|${_pkgver}|g;s|@ELECTRON@|${_electron}|g;s|@KRISPB2@|${_krisp_b2sum}|g" discord-launcher.sh
+	sed -i "s|@PKGNAME@|${_pkgname}|g;s|@PKGVER@|${pkgver}|g;s|@ELECTRON@|${_electron}|g;s|@KRISPB2@|${_krisp_b2sum}|g" discord-launcher.sh
 
 	# fix the .desktop file
 	sed -i "s|Exec=.*|Exec=/usr/bin/${_pkgname}|" Discord/$_pkgname.desktop
