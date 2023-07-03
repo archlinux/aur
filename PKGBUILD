@@ -22,7 +22,7 @@ prepare() {
 pkgver() {
 	cd "$srcdir/$pkgname"
 	#printf "%s.r%s.%s" "$(awk -F: '/minecraftVersion/ {gsub(/"|,|\s/,""); printf $2}' work/BuildData/info.json)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	printf "%s.r%s.%s" "$(awk -F= '/^mcVersion/ {gsub(/"|,|\s/,""); printf $2}' gradle.properties)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(awk -F= '/^mcVersion/ {gsub(/"|,|\s/,""); printf $2}' gradle.properties)" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
