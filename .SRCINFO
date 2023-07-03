@@ -1,0 +1,16 @@
+pkgbase = juicefs-git
+	pkgdesc = A distributed POSIX file system built on top of Redis and S3 (Community Edition).
+	pkgver = 1.1.0dev.r2642.def71fa8e
+	pkgrel = 1
+	url = https://github.com/juicedata/juicefs
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	conflicts = juicefs
+	source = juicefs::git+https://github.com/juicedata/juicefs.git
+	sha256sums = SKIP
+
+pkgname = juicefs-git
