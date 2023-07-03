@@ -1,5 +1,6 @@
-# Maintainer: chenlong <dragonlayoutt@gmail.com>
-# Based  on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
+# Maintainer: AzureZeng <weedycn at outlook.com>
+# Contributor: chenlong <dragonlayoutt at gmail.com>
+# Based on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 _pkgname=another-redis-desktop-manager
 
