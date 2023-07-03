@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=piclist-appimage
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 pkgdesc="a cloud storage platform management and file upload tool based on PicGo, which has been deeply redeveloped.一款云储存/图床管理和文件上传客户端工具,基于PicGo深度二次开发."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/PicList-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/Kuingsmile/PicList/dev/LICENSE")
-sha256sums=('3d5c191f92357f8ac36ec6b515fe558c0f6f2f7da77dd11846c64e29eec6a63d'
+sha256sums=('a7bad617e43713f5c59999d6d471eaeea90ecbccf234a64bb3e5244f3b2843ff'
             'cddebc59798c76d191fc65eb4176d960e4e157177c9d81db80eaff8d84d86a1c')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
