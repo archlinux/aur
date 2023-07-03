@@ -13,7 +13,7 @@ pkgbase = moosync-git
 	depends = alsa-lib
 	provides = moosync
 	conflicts = moosync
-	source = git+https://github.com/Moosync/Moosync.git
+	source = git+https://github.com/Moosync/Moosync.git#branch=dev
 	source = moosync-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v7.1.0/Moosync-7.1.0-linux-x64.pacman
 	source = moosync
 	source = moosync.desktop

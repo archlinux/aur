@@ -11,13 +11,13 @@ license=('GPL3')
 provides=("${_pkgname}")
 depends=('electron' 'libvips' 'alsa-lib')
 makedepends=('yarn' 'node-gyp' 'cargo')
-source=("git+https://github.com/Moosync/Moosync.git" "${_pkgname}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v7.1.0/Moosync-7.1.0-linux-x64.pacman" moosync moosync.desktop builder-args.sh)
+source=("git+https://github.com/Moosync/Moosync.git#branch=dev" "${_pkgname}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v7.1.0/Moosync-7.1.0-linux-x64.pacman" moosync moosync.desktop builder-args.sh)
 conflicts=("${_pkgname}")
 sha256sums=('SKIP'
-            '0f0a11ca8512bd285c993bee45b611f725df37f0f3dca7acfddc16145abf80ad'
-            '36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba'
-            '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd'
-            'bb106abfddfa388cdd9953b034e3176f87eac636932d793b2f5293576cc017bb')
+  '0f0a11ca8512bd285c993bee45b611f725df37f0f3dca7acfddc16145abf80ad'
+  '36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba'
+  '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd'
+  'bb106abfddfa388cdd9953b034e3176f87eac636932d793b2f5293576cc017bb')
 _sourcedirectory="Moosync"
 
 pkgver() {
@@ -26,34 +26,34 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$_sourcedirectory/"
+  cd "$srcdir/$_sourcedirectory/"
 
-    # Remove electron from package.json
-    sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/electron/version")"'"|' 'package.json'
+  # Remove electron from package.json
+  sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/electron/version")"'"|' 'package.json'
 
-    # Remove postinstall from package.json
-    sed -i -e 's/\"postinstall\":.*/\"postinstall\": \"patch-package\",/' package.json
+  # Remove postinstall from package.json
+  sed -i -e 's/\"postinstall\":.*/\"postinstall\": \"patch-package\",/' package.json
 
-    yarn install --ignore-engines || true
+  yarn install --ignore-engines || true
 
-    . "$srcdir/builder-args.sh"
-    yarn electron:build -- $ELECTRON_BUILDER_ARCH_ARGS --linux --dir 
+  . "$srcdir/builder-args.sh"
+  yarn electron:build -- $ELECTRON_BUILDER_ARCH_ARGS --linux --dir
 }
 
 package() {
-    install -d "${pkgdir}/opt/Moosync/"
+  install -d "${pkgdir}/opt/Moosync/"
 
-    # Move compiled app to pkgdir
-    mv ${srcdir}/${_sourcedirectory}/dist_electron/linux*unpacked/* "${pkgdir}/opt/Moosync/"
+  # Move compiled app to pkgdir
+  mv ${srcdir}/${_sourcedirectory}/dist_electron/linux*unpacked/* "${pkgdir}/opt/Moosync/"
 
-    # Install icons
-    for _size in 16 32 48 256 512; do
-		install -Dm644 "${srcdir}/${_sourcedirectory}/build/icons/${_size}x${_size}.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/moosync.png"
-	done
+  # Install icons
+  for _size in 16 32 48 256 512; do
+    install -Dm644 "${srcdir}/${_sourcedirectory}/build/icons/${_size}x${_size}.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/moosync.png"
+  done
 
-    install -d "${pkgdir}/usr/bin"
-    install "moosync" "${pkgdir}/usr/bin/moosync"
+  install -d "${pkgdir}/usr/bin"
+  install "moosync" "${pkgdir}/usr/bin/moosync"
 
-    # Place desktop entry and icons
-    desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "moosync.desktop"
+  # Place desktop entry and icons
+  desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "moosync.desktop"
 }
