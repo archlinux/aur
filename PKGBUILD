@@ -1,16 +1,16 @@
 # Maintainer: KirottuM <arnovaara@gmail.com>
 pkgname="watershot"
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A simple wayland native screenshot tool."
 arch=("x86_64")
 url="github.com/Kirottu/watershot"
 license=('GPL3')
-depends=(grim)
+depends=(grim vulkan-driver)
 provides=(watershot)
 makedepends=(git cargo)
 source=("https://github.com/Kirottu/watershot/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5329af1f6cd73b68875514d9c715702571398347107d4e991b8b437ecd36788a')
+sha256sums=('102314abdaf4236b8074f95894d117594db4643decb6976689a1936d49b69296')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,4 +29,3 @@ package() {
   export RUSTUP_TOOLCHAIN=stable
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname}"
 }
-
