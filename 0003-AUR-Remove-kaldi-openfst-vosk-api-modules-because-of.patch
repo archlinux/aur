@@ -1,0 +1,157 @@
+From 060ec92c2d16339f9f9dcbf0d97ca9a5329d2620 Mon Sep 17 00:00:00 2001
+From: Stelios Tsampas <loathingkernel@gmail.com>
+Date: Mon, 3 Jul 2023 12:01:24 +0300
+Subject: [PATCH 3/3] AUR Remove kaldi, openfst, vosk-api modules because of
+ missing blas, lapack lib32 from Arch
+
+Revert "build: import kaldi, openfst, vosk-api modules from upstream"
+
+This reverts commit 9c5af861877180a4a1c9966a51c7f0b7afbcabbc.
+---
+ .gitmodules | 10 -------
+ Makefile.in | 77 +----------------------------------------------------
+ kaldi       |  1 -
+ openfst     |  1 -
+ vosk-api    |  1 -
+ 5 files changed, 1 insertion(+), 89 deletions(-)
+ delete mode 160000 kaldi
+ delete mode 160000 openfst
+ delete mode 160000 vosk-api
+
+diff --git a/.gitmodules b/.gitmodules
+index cfcf0f66..a245d681 100755
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -76,13 +76,3 @@
+ [submodule "glslang"]
+ 	path = glslang
+ 	url = https://github.com/KhronosGroup/glslang
+-[submodule "openfst"]
+-	path = openfst
+-	url = https://github.com/alphacep/openfst
+-[submodule "kaldi"]
+-	path = kaldi
+-	url = https://github.com/alphacep/kaldi
+-	branch = vosk
+-[submodule "vosk-api"]
+-	path = vosk-api
+-	url = https://github.com/alphacep/vosk-api
+diff --git a/Makefile.in b/Makefile.in
+index cbebe144..ff735c90 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -546,81 +546,6 @@ $(OBJ)/.steamexe-post-build64:
+ 	cp $(STEAMEXE_SRC)/64/libsteam_api.so $(DST_LIBDIR64)/
+ 	touch $@
+ 
+-##
+-## openfst
+-##
+-
+-OPENFST_SOURCE_ARGS = \
+-  --include src/include/fst/config.h.in \
+-  --exclude aclocal.m4 \
+-  --exclude ar-lib \
+-  --exclude autom4te.cache \
+-  --exclude compile \
+-  --exclude config.guess \
+-  --exclude config.h.in \
+-  --exclude config.sub \
+-  --exclude configure \
+-  --exclude depcomp \
+-  --exclude install-sh \
+-  --exclude ltmain.sh \
+-  --exclude m4/libtool.m4 \
+-  --exclude m4/ltoptions.m4 \
+-  --exclude m4/ltsugar.m4 \
+-  --exclude m4/ltversion.m4 \
+-  --exclude m4/lt~obsolete.m4 \
+-  --exclude Makefile.in \
+-  --exclude missing \
+-  --exclude test-driver \
+-
+-OPENFST_CONFIGURE_ARGS = \
+-  --enable-silent-rules \
+-  --enable-static \
+-  --disable-shared \
+-  --enable-far \
+-  --enable-ngram-fsts \
+-  --enable-lookahead-fsts \
+-  --with-pic \
+-  --disable-bin \
+-
+-$(eval $(call rules-source,openfst,$(SRCDIR)/openfst))
+-$(eval $(call rules-autoconf,openfst,32))
+-$(eval $(call rules-autoconf,openfst,64))
+-
+-
+-##
+-## kaldi
+-##
+-
+-KALDI_SOURCE_ARGS = \
+-  --exclude src/**/CMakeLists.txt \
+-
+-KALDI_CMAKE_ARGS = \
+-  -DKALDI_VERSION=5.5-proton \
+-  -DBLAS_LIBRARIES=-lblas \
+-  -DLAPACK_LIBRARIES=-llapack \
+-  -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+-  -DBUILD_SHARED_LIBS=OFF \
+-  -DKALDI_BUILD_TEST=OFF \
+-  -DKALDI_BUILD_EXE=OFF \
+-
+-KALDI_DEPENDS = openfst
+-
+-$(eval $(call rules-source,kaldi,$(SRCDIR)/kaldi))
+-$(eval $(call rules-cmake,kaldi,32))
+-$(eval $(call rules-cmake,kaldi,64))
+-
+-##
+-## vosk
+-##
+-
+-VOSK_CMAKE_ARGS = \
+-  -DBUILD_SHARED_LIBS=ON \
+-
+-VOSK_DEPENDS = openfst kaldi
+-
+-$(eval $(call rules-source,vosk,$(SRCDIR)/vosk-api))
+-$(eval $(call rules-cmake,vosk,32))
+-$(eval $(call rules-cmake,vosk,64))
+ 
+ ##
+ ## wine
+@@ -657,7 +582,7 @@ WINE_CONFIGURE_ARGS64 = --enable-win64 \
+   VKD3D_PE_CFLAGS="-I$(VULKAN_HEADERS_DST64)/include -I$(VKD3D_DST64)/include/vkd3d" \
+   VKD3D_PE_LIBS="-L$(VKD3D_DST64)/bin -l:libvkd3d-1.dll -l:libvkd3d-shader-1.dll"
+ 
+-WINE_DEPENDS = gst_orc gstreamer gst_base vkd3d openfst kaldi vosk
++WINE_DEPENDS = gst_orc gstreamer gst_base vkd3d
+ 
+ $(eval $(call rules-source,wine,$(SRCDIR)/wine))
+ $(eval $(call rules-autoconf,wine,32))
+diff --git a/kaldi b/kaldi
+deleted file mode 160000
+index a25f216f..00000000
+--- a/kaldi
++++ /dev/null
+@@ -1 +0,0 @@
+-Subproject commit a25f216f5ce4eec5e45a6ab7651e20c9840a05cd
+diff --git a/openfst b/openfst
+deleted file mode 160000
+index 7dfd8081..00000000
+--- a/openfst
++++ /dev/null
+@@ -1 +0,0 @@
+-Subproject commit 7dfd808194105162f20084bb4d8e4ee4b65266d5
+diff --git a/vosk-api b/vosk-api
+deleted file mode 160000
+index 12f29a34..00000000
+--- a/vosk-api
++++ /dev/null
+@@ -1 +0,0 @@
+-Subproject commit 12f29a3415e4967e088ed09202bfb0007e5a1787
+-- 
+2.41.0
+
