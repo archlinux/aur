@@ -22,10 +22,12 @@ source=(
   "$_srcname::git+https://gitlab.freedesktop.org/drm/xe/kernel.git#branch=${_branch}"
   config         # the main kernel config file
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  uAPI-bits-for-small-bar.patch
 )
 sha256sums=('SKIP'
             '76ada98e3b96875fc391a39040afb7566c9f4c17cac89f20832e44dae89a0414'
-            'edb89714a248c3f6d33de7ebe576623cf80e5bc70bb66ab29cf949171ec84d9f')
+            'edb89714a248c3f6d33de7ebe576623cf80e5bc70bb66ab29cf949171ec84d9f'
+            '6bdb36ff27d0b5999a3ce4d9e0a79900d4cee0fd8cbb8a4389c3195228972d39')
 
 pkgver() {
   cd $_srcname
