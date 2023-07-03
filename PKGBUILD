@@ -4,7 +4,7 @@
 
 _gemname=sexp_processor
 pkgname="ruby-${_gemname}"
-pkgver=4.17.0
+pkgver=4.16.1
 pkgrel=1
 pkgdesc="A branch of ParseTree that brings several sexp processing tools."
 arch=(any)
