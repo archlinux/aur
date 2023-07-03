@@ -12,8 +12,8 @@ pkgbase = libxml2-2.9
 	depends = readline
 	depends = xz
 	depends = zlib
-	source = git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=41a34e1f4ffae2ce401600dbb5fe43f8fe402641
-	source = libxml2-2.9.8-python3-unicode-errors.patch
+	source = git+https://gitlab.gnome.org/GNOME/libxml2#commit=41a34e1f4ffae2ce401600dbb5fe43f8fe402641
+	source = .8-python3-unicode-errors.patch
 	source = fix-relaxed-approach-to-nested-documents.patch
 	source = libxml2-2.9.10-CVE-2019-20388.patch
 	source = libxml2-2.9.10-CVE-2020-7595.patch
@@ -35,6 +35,7 @@ pkgbase = libxml2-2.9
 
 pkgname = libxml2-2.9
 	optdepends = python: Python bindings
+	provides = libxml2=2.9.10
 	provides = libxml2.so=2.9.10
 
 pkgname = libxml2-2.9-docs

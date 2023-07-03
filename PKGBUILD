@@ -5,8 +5,9 @@
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: John Proctor <jproctor@prium.net>
 
-_pkg="libxml2"
-pkgbase="${_pkg}-2.9"
+_pkg="libxml"
+_pkgname="${_pkg}2"
+pkgbase="${_pkgname}-2.9"
 pkgname=(
   "${pkgbase}"
   "${pkgbase}"-docs
@@ -14,7 +15,8 @@ pkgname=(
 pkgver=2.9.10
 pkgrel=1
 pkgdesc="XML C parser and toolkit"
-url="https://gitlab.gnome.org/GNOME/${_pkg}/-/wikis/home"
+_url="https://gitlab.gnome.org/GNOME/${_pkgname}"
+url="${_url}/-/wikis/home"
 arch=(x86_64)
 license=(custom:MIT)
 depends=(
@@ -32,15 +34,15 @@ makedepends=(
 _commit=41a34e1f4ffae2ce401600dbb5fe43f8fe402641 # tags/v2.9.10^0
 # _commit=3ebf94cd96ba78ea25f929a1c948ad54a262e75e # tags/v2.4.30^0
 source=(
-  "git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
-        libxml2-2.9.8-python3-unicode-errors.patch
+  "git+${_url}#commit=$_commit"
+        "${_pkgbase}.8-python3-unicode-errors.patch"
         fix-relaxed-approach-to-nested-documents.patch
-        libxml2-2.9.10-CVE-2019-20388.patch
-        libxml2-2.9.10-CVE-2020-7595.patch
-        libxml2-2.9.10-parenthesize-type-checks.patch
-        libxml2-2.9.10-CVE-2020-24977.patch
-        libxml2-2.9.10-fix-integer-overflow.patch
-        libxml2-2.9.10-icu68.patch
+        "${pkgbase}.10-CVE-2019-20388.patch"
+        "${pkgbase}.10-CVE-2020-7595.patch"
+        "${pkgbase}.10-parenthesize-type-checks.patch"
+        "${pkgbase}.10-CVE-2020-24977.patch"
+        "${pkgbase}.10-fix-integer-overflow.patch"
+        "${pkgbase}.10-icu68.patch"
   https://www.w3.org/XML/Test/xmlts20130923.tar.gz
 )
 sha256sums=(
@@ -57,23 +59,22 @@ sha256sums=(
 )
 
 pkgver() {
-  cd "${_pkg}"
+  cd "${_pkgname}"
   git describe --tags | sed 's/-rc/rc/;s/^v//;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-  cd "${_pkg}"
+  cd "${_pkgname}"
 
   # From https://src.fedoraproject.org/rpms/libxml2/tree/master
-  patch -Np1 -i ../libxml2-2.9.8-python3-unicode-errors.patch
-  patch -Np1 -i ../fix-relaxed-approach-to-nested-documents.patch
-  patch -Np1 -i ../libxml2-2.9.10-CVE-2019-20388.patch
-  patch -Np1 -i ../libxml2-2.9.10-CVE-2020-7595.patch
-  patch -Np1 -i ../libxml2-2.9.10-parenthesize-type-checks.patch
-  patch -Np1 -i ../libxml2-2.9.10-CVE-2020-24977.patch
-  patch -Np1 -i ../libxml2-2.9.10-fix-integer-overflow.patch
+  patch -Np1 -i "../fix-relaxed-approach-to-nested-documents.patch"
+  patch -Np1 -i "../${pkgbase}.8-python3-unicode-errors.patch"
+  patch -Np1 -i "../${pkgbase}.10-CVE-2019-20388.patch"
+  patch -Np1 -i "../${pkgbase}.10-parenthesize-type-checks.patch"
+  patch -Np1 -i "../${pkgbase}.10-CVE-2020-24977.patch"
+  patch -Np1 -i "../${pkgbase}.10-fix-integer-overflow.patch"
 
-  patch -Np1 -i ../libxml2-2.9.10-icu68.patch
+  patch -Np1 -i "../${pkgbase}.10-icu68.patch"
 
   NOCONFIGURE=1 ./autogen.sh
 }
@@ -94,7 +95,7 @@ build() {
     --disable-static
   )
 
-  cd "${_pkg}"
+  cd "${_pkgname}"
 
   ./configure "${configure_options[@]}"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -102,21 +103,25 @@ build() {
 }
 
 check() {
-  cd "${_pkg}"
+  cd "${_pkgname}"
   make check
 }
 
 package_libxml2-2.9() {
   optdepends=('python: Python bindings')
-  provides=("libxml2.so=${pkgver}")
+  provides=(
+    "${_pkgname}=${pkgver}"
+    "${_pkgname}.so=${pkgver}"
+  )
 
-  cd libxml2
+  cd "${_pkgname}"
 
   make DESTDIR="${pkgdir}" install
 
   mkdir -p ../doc/usr/share
   mv "${pkgdir}/usr/share/"{doc,gtk-doc} -t ../doc/usr/share
-  mv "${pkgdir}/usr/share/aclocal/libxml.m4" "${pkgdir}/usr/share/aclocal/libxml-${pkgver}.m4"
+  mv "${pkgdir}/usr/share/aclocal/${_pkg}.m4" \
+     "${pkgdir}/usr/share/aclocal/${_pkg}-${pkgver}.m4"
 
   install -Dm644 Copyright -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
@@ -127,7 +132,7 @@ package_libxml2-2.9-docs() {
 
   mv doc/* "${pkgdir}"
 
-  install -Dm644 "${_pkg}/Copyright" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "${_pkgname}/Copyright" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set sw=2 sts=-1 et:
