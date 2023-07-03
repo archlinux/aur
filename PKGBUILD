@@ -1,8 +1,8 @@
 # Maintainer: Reverier-Xu <reverier.xu@outlook.com>
 pkgname=bitwave-git
 _pkgname=bitwave-git
-pkgver=v0.2.5dev.r1.ge4cd883
-pkgrel=5
+pkgver=v0.2.5dev.r2.g7651d02
+pkgrel=1
 pkgdesc="A simple media player based on Qt and MPV."
 arch=('x86_64')
 url="https://github.com/Reverier-Xu/BitWave"
