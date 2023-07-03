@@ -1,0 +1,12 @@
+pkgbase = ros2-humble-pcl-msgs
+	pkgdesc = Package containing PCL (Point Cloud Library)-related ROS messages.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://index.ros.org/p/pcl_msgs
+	arch = any
+	license = BSD
+	depends = ros2-humble
+	source = https://github.com/ros-perception/pcl_msgs/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 9a3256d5bd44a2e99526c5cf4ed16198471d2b43c63be74a5fcf8d0dcbb29489
+
+pkgname = ros2-humble-pcl-msgs
