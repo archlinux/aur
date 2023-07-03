@@ -34,16 +34,16 @@ makedepends=(
 _commit=41a34e1f4ffae2ce401600dbb5fe43f8fe402641 # tags/v2.9.10^0
 # _commit=3ebf94cd96ba78ea25f929a1c948ad54a262e75e # tags/v2.4.30^0
 source=(
-  "git+${_url}#commit=$_commit"
-        "${_pkgbase}.8-python3-unicode-errors.patch"
-        fix-relaxed-approach-to-nested-documents.patch
-        "${pkgbase}.10-CVE-2019-20388.patch"
-        "${pkgbase}.10-CVE-2020-7595.patch"
-        "${pkgbase}.10-parenthesize-type-checks.patch"
-        "${pkgbase}.10-CVE-2020-24977.patch"
-        "${pkgbase}.10-fix-integer-overflow.patch"
-        "${pkgbase}.10-icu68.patch"
-  https://www.w3.org/XML/Test/xmlts20130923.tar.gz
+  "git+${_url}.git#commit=$_commit"
+  "${_pkgbase}.8-python3-unicode-errors.patch"
+  fix-relaxed-approach-to-nested-documents.patch
+  "${pkgbase}.10-CVE-2019-20388.patch"
+  "${pkgbase}.10-CVE-2020-7595.patch"
+  "${pkgbase}.10-parenthesize-type-checks.patch"
+  "${pkgbase}.10-CVE-2020-24977.patch"
+  "${pkgbase}.10-fix-integer-overflow.patch"
+  "${pkgbase}.10-icu68.patch"
+  "https://www.w3.org/XML/Test/xmlts20130923.tar.gz"
 )
 sha256sums=(
   'SKIP'
@@ -117,6 +117,13 @@ package_libxml2-2.9() {
   cd "${_pkgname}"
 
   make DESTDIR="${pkgdir}" install
+
+  ln -s "/usr/lib/${pkgbase}/${_pkgname}.so.${pkgver}" \
+        "${pkgdir}/usr/lib/${_pkgname}.so.${pkgver}"
+  ln -s "/usr/lib/${pkgbase}/cmake/${_pkgname}" \
+        "${pkgdir}/usr/lib/cmake/${pkgbase}"
+  ln -s "/usr/lib/${pkgbase}/pkgconfig/${_pkg}-2.0.pc" \
+        "${pkgdir}/usr/lib/pkgconfig/${_pkg}2.9-2.0.pc"
 
   mkdir -p ../doc/usr/share
   mv "${pkgdir}/usr/share/"{doc,gtk-doc} -t ../doc/usr/share
