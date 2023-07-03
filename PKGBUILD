@@ -199,6 +199,7 @@ package_minigui-mgncs4touch-git() {
 
     cd "${srcdir}/${pkgname%-git}"
 
+    sed -i 's|$(prefix)/etc|/etc|g;s|	$(INSTALL_DATA)|#	$(INSTALL_DATA)|g' etc/Makefile.am
     ./autogen.sh
     ./configure --prefix=/usr \
         --disable-static \
