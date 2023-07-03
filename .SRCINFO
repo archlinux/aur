@@ -1,5 +1,5 @@
 pkgbase = libre-menu-editor
-	pkgdesc = Edit the menu
+	pkgdesc = Customize the menu
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://codeberg.org/libre-menu-editor/libre-menu-editor

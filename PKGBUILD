@@ -1,9 +1,9 @@
-# Maintainer: Anonymous <libre-menu-editor@proton.me>
+# Maintainer: https://codeberg.org/libre-menu-editor/libre-menu-editor/issues
 
 pkgname=libre-menu-editor
 pkgver=1.0
 pkgrel=1
-pkgdesc="Edit the menu"
+pkgdesc="Customize the menu"
 arch=("any")
 url="https://codeberg.org/libre-menu-editor/libre-menu-editor"
 license=("GPL3")
