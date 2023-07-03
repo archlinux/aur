@@ -2,17 +2,20 @@
 
 pkgname=simple-image-filter-git
 proname=simple-image-filter-process
-pkgver=1.0.3.r15.g6ee139f
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Deepin DDe simple image filter qt"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/dependon/simple-image-filter"
 license=('GPLv3')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-git})
 #replaces=(${pkgname})
-depends=( 'qt5-tools' 'dtkwidget' 'dtkgui' )
-makedepends=('git' 'qconf')
+depends=(qt5-tools)
+makedepends=(git
+             qconf
+             pkgconfig
+             make)
 backup=()
 options=('!strip')
 #install=${pkgname}.install
