@@ -2,7 +2,7 @@
 
 _pkgname=mercury-browser
 pkgname=${_pkgname}-bin
-pkgver=112.0.3
+pkgver=115.0.0
 pkgrel=1
 pkgdesc="Firefox fork with compiler optimizations and patches from Librewolf, Waterfox, and GNU IceCat."
 arch=('x86_64')
@@ -16,10 +16,10 @@ optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Sound'
             'upower: Battery API')
-source=("https://github.com/Alex313031/Mercury/releases/download/v.$pkgver/Mercury-$pkgver.en-US.linux-x86_64.tar.bz2"
+source=("https://github.com/Alex313031/Mercury/releases/download/v.$pkgver/mercury-115.0.en-US.linux-x86_64.tar.bz2"
         "$_pkgname.sh"
         "$_pkgname.desktop")
-sha256sums=('6f2cf65a3fde0b7b4b0eb74de97228791e359bcc6b9722ef051f8d5d1a0e2c23'
+sha256sums=('f785b59cbb0ad12d5ec67be9452dff4854e9e3e67c13cc33860b0888f7bab7f1'
             '3e70b82d2f477d5d032338a3c66a3ececaaaf5bf606ab5f5d018321a6fb6afab'
             '8370ee50614115b06e0f8fa96dfbc2db80e2b9ab41368bf9b4ba42fb8ded9982')
 
