@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="znote-appimage"
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter."
-arch=('x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 url="https://znote.io"
 _githuburl="https://github.com/alagrede/znote-app"
 license=('custom')
@@ -11,19 +11,23 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 options=(!strip)
 _install_path="/opt/appimages"
-source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage"
-    "LICENSE.html::${url}/cgu.html")
-sha256sums=('0539da87e1fcdec26f1af179ee78b5c27da9638a8e9cb8d55fae9c30e039c4a3'
-            'd2a438038502a65cda1f2586eeb5a1e677a4608ad31d22c72acbc88bf0dd160a')
+source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-arm64.AppImage")
+source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}-arm64.AppImage")
+source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
+source=("LICENSE.html::${url}/cgu.html")
+sha256sums=('7085547bfd2eab7db1d63350989f5b74b1d0104f9713e76e51420fb45f4d967c')
+sha256sums_aarch64=('76b173f88124f843f7db92e2be872b528910212ae59bf98c7731a63dccdc4714')
+sha256sums_armv7h=('76b173f88124f843f7db92e2be872b528910212ae59bf98c7731a63dccdc4714')
+sha256sums_x86_64=('5bbefe4bd8421bc352c066bddf28a7a96be6583298058f8e74b3fb7f7571aeec')
      
 prepare() {
-    chmod a+x "znote-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
-    sed 's|AppRun|/opt/appimages/znote.AppImage|g' -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
      
 package() {
-    install -Dm755 "${srcdir}/znote-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
+    install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
     for icons in 8x8 32x32 64x64 128x128 256x256; do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${icons}/apps/${pkgname%-appimage}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${icons}/apps"
