@@ -1,0 +1,25 @@
+pkgbase = iptvnator-electron-bin
+	pkgdesc = Cross-platform IPTV player application with multiple features, such as support of m3u and m3u8 playlists, favorites, TV guide, TV archive/catchup and more.Use system electron.
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://iptvnator.vercel.app/
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = MIT
+	depends = electron
+	depends = hicolor-icon-theme
+	conflicts = iptvnator
+	conflicts = iptvnator-appimage
+	source = LICENSE::https://raw.githubusercontent.com/4gray/iptvnator/electron/LICENSE.md
+	source = iptvnator-electron.sh
+	sha256sums = 475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74
+	sha256sums = c8e74aa21853464a44867923e80fb2ea137cec344a617b75c672781dfde74ada
+	source_aarch64 = iptvnator-0.13.0-aarch64.AppImage::https://github.com/4gray/iptvnator/releases/download/v0.13.0/IPTVnator-0.13.0-arm64.AppImage
+	sha256sums_aarch64 = 7604191492d8943e589be03714b2c626b641d1481514f06b972686a868f9db54
+	source_armv7h = iptvnator-0.13.0-armv7h.AppImage::https://github.com/4gray/iptvnator/releases/download/v0.13.0/IPTVnator-0.13.0-armv7l.AppImage
+	sha256sums_armv7h = fd7ea5414b21af7e8fb79527cf38d32c271d4505ca60f3b1c0e829fefba8fcfa
+	source_x86_64 = iptvnator-0.13.0-x86_64.AppImage::https://github.com/4gray/iptvnator/releases/download/v0.13.0/IPTVnator-0.13.0.AppImage
+	sha256sums_x86_64 = 57e690bfa3308a95bbc2da65099ee348e405625c4f07837f41e7f7f4ec674e8d
+
+pkgname = iptvnator-electron-bin
