@@ -49,7 +49,7 @@ _disable_debug=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-sched-ext-git
-pkgver=3.1.r921111.g7130c7d74aa3
+pkgver=6.4.0.r1186562.g1f602cd4c170
 _srcname=sched_ext
 pkgrel=1
 pkgdesc='Linux Kernel based on the sched_ext branch'
@@ -58,12 +58,12 @@ url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python')
-_lucjanver=6.3
+_lucjanver=6.4
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git+https://github.com/sched-ext/sched_ext.git#branch=sched_ext"
-        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config'
         # sched_ext Schedulers precompiled
@@ -82,7 +82,9 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 pkgver() {
   cd $_srcname
-  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+
+  _ver="$(cat Makefile | grep -m3 -e VERSION -e PATCHLEVEL -e SUBLEVEL | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 _make() {
@@ -234,7 +236,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -356,8 +358,8 @@ for _p in "${pkgname[@]}"; do
 done
 
 b2sums=('SKIP'
-        '07b4e2f4ce58c29fa811799b4caabbf4a73cb95db2637a3c4f980cbf169aad76963d5add3cc9956d0a9abd6b66bf0b27f5dd1a9cec6211596d711017636f9a4e'
-        '3ebf9af689982e628b9bbef3d998183b02350f96ea70dcf6077f3e4dd6eb4b972c2a8f6fae59de9bcd156cf529f1ddbeb8942826d6cbd2f3dac15dc2f2bde80f'
+        '0ec7df7055b9f13574b7a2ff4d36f4046dd2e9f9d6462ccc35e12ab3ca36fad90d0e9bd7ec2a8676bdbaf9b1d851caa0dfb2e5f9aff086c536fabb46221544f5'
+        'cef2996678a48f6bc4462a93b5d0c063a32761a7626e5b5729961c8ba6bbfa483b638353968b7d2ba9bfee6a97b3581de123c07670c2acbdb15c688bee204a1b'
         'd13ab55728b87f18e16f23831aed6d5677f14a77733f030a2477514bfb46fd6eb8f108e060e349c9232349ff225284b8c6e3516c6a9d9afe64514b49f52d4352'
         'a6d9c881ab2ce1fa9c5ce1fb0cd1fadd76e3bcbe1b09572aca561b49ccb373ca94e2127cfdb6dc64b517d531108390f3dcb8684a2be4f17899db8c92232a48ef'
         '98c81b50f301c5c409de53ff5466189ddc3aa33cc924685ddec92cf7137d7f8bfd0fd8d7658f4ae5504bea162b330f3b973c408acf873f5958ef73da745a9c79'
