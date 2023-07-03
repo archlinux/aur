@@ -1,6 +1,6 @@
 pkgbase = spdk
 	pkgdesc = spdk: headers, libs, and scripts
-	pkgver = 23.01
+	pkgver = 23.05
 	pkgrel = 3
 	url = https://spdk.io/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = spdk
 	depends = util-linux-libs
 	provides = spdk
 	provides = python-spdk
-	source = spdk::git+https://github.com/spdk/spdk.git#tag=v23.01
+	source = spdk::git+https://github.com/spdk/spdk.git#tag=v23.05
 	sha256sums = SKIP
 
 pkgname = spdk

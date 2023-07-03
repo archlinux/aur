@@ -1,7 +1,7 @@
 # Maintainer: CyanWoods <i at cyanwoods dot com>
 pkgbase=spdk
 pkgname=('spdk' 'python-spdk')
-pkgver=23.01
+pkgver=23.05
 pkgrel=3
 pkgdesc='spdk: headers, libs, and scripts'
 arch=('x86_64')
