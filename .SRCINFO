@@ -1,5 +1,5 @@
 pkgbase = systemback-efiboot
-	pkgdesc = Simple system backup and restore application with extra features
+	pkgdesc = Boot files for Systemback
 	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/shadichy/systemback-archlinux
