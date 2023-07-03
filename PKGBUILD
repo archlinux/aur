@@ -2,7 +2,7 @@
 
 pkgname=php-imap
 pkgver=8.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="PHP extension for imap (excluded from official php packages)"
 arch=('x86_64')
 license=('PHP')
@@ -11,6 +11,7 @@ makedepends=('apache' 'aspell' 'gdbm' 'enchant' 'gd' 'gmp' 'icu' 'libsodium' 'li
              'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre2' 'libnsl'
              'oniguruma' 'patchelf')
 checkdepends=('procps-ng')
+depends=('php' 'c-client' 'libxcrypt')
 source=(
   "https://php.net/distributions/php-${pkgver}.tar.xz"
 )
@@ -65,8 +66,5 @@ build() {
 }
 
 package() {
-	pkgdesc='imap module for PHP'
-	depends=('php' 'c-client' 'libxcrypt')
-
 	install -D -m755 "${srcdir}/build/modules/imap.so" "${pkgdir}/usr/lib/php/modules/imap.so"
 }
