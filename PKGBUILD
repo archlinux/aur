@@ -1,6 +1,6 @@
 # Maintainer: icxes <dev.null@need.moe>
 pkgname=copyparty
-pkgver="1.7.6"
+pkgver="1.8.0"
 pkgrel=1
 pkgdesc="Portable file sharing hub"
 arch=("any")
@@ -15,11 +15,12 @@ optdepends=("ffmpeg: thumbnails for videos, images (slower) and audio, music tag
             "libkeyfinder-git: detection of musical keys" 
             "qm-vamp-plugins: BPM detection" 
             "python-pyopenssl: ftps functionality" 
+            "python-argon2_cffi: hashed passwords in config" 
             "python-impacket-git: smb support (bad idea)"
 )
 source=("https://github.com/9001/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 backup=("etc/${pkgname}.d/init" )
-sha256sums=("e44bfb2e998677a160343ed4aa87741e653dbc27db594e6a00935e89b90cd3f4")
+sha256sums=("e8ac0442abbf4c95428db0ad35a6965ad73038e0f384795907cde08af9e76612")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
