@@ -1,4 +1,6 @@
 # Maintainer: Alexander Jacocks <alexander@redhat.com>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
+# Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=1oom-git
 _pkgname=1oom
