@@ -1,0 +1,16 @@
+pkgbase = soapyfcdpp-git
+	pkgdesc = Soapy SDR plugin for Funcube Dongle Pro+
+	pkgver = r57.45fb07c
+	pkgrel = 1
+	url = https://github.com/pothosware/SoapyFCDPP
+	arch = any
+	license = BSL
+	makedepends = git
+	makedepends = cmake
+	depends = soapysdr
+	depends = alsa-lib
+	depends = hidapi
+	source = soapyfcdpp-git::git+https://github.com/pothosware/SoapyFCDPP.git
+	sha256sums = SKIP
+
+pkgname = soapyfcdpp-git
