@@ -1,21 +1,22 @@
 pkgbase = stormchecker
-	pkgdesc = Storm is a tool for the analysis of systems involving random or probabilistic phenomena
-	pkgver = 1.3.0
+	pkgdesc = A modern probabilistic model checker
+	pkgver = 1.8.1
 	pkgrel = 1
-	url = http://www.stormchecker.org/
+	url = https://www.stormchecker.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	depends = boost
+	depends = eigen
 	depends = glpk
+	depends = gmp
 	depends = hwloc
 	depends = xerces-c
 	depends = z3
-	depends = carl-master14-git
-	provides = stormchecker
-	conflicts = stormchecker
-	source = https://github.com/moves-rwth/storm/archive/1.3.0.tar.gz
-	md5sums = 894ae6d2addff46380bf640f61bbf92c
+	depends = carl-storm
+	optdepends = spot: support for LTL formulas
+	source = storm-1.8.1.tar.gz::https://github.com/moves-rwth/storm/archive/1.8.1.tar.gz
+	sha256sums = 13de6e7816f2b796db3557ac6b058e2ccab9cd129e243cfce93dd7cdd82f3ee1
 
 pkgname = stormchecker
-
