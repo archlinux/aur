@@ -1,0 +1,19 @@
+pkgbase = youtube-downloader-appimage
+	pkgdesc = A simple cross platform desktop application that downloads video/audio from youtube videos.Built with Electron, Node/Typescript, and React
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/AnthonyGress/youtube-downloader
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = yt-dlp
+	conflicts = youtube-downloader
+	options = !strip
+	source = youtube-downloader-1.1.5.AppImage::https://github.com/AnthonyGress/youtube-downloader/releases/download/v1.1.5/Youtube-Downloader-1.1.5.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/AnthonyGress/youtube-downloader/main/LICENSE
+	sha256sums = 8bce9da8a9258bc2a41c8512241bd0c03c668890d72ba706cd39d0a280db3eed
+	sha256sums = 65cb0d2fdca7e4375a2ab466fb1e37fef2514eb10c88c5cf8998893a77295176
+
+pkgname = youtube-downloader-appimage
