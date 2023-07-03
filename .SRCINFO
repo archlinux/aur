@@ -1,17 +1,20 @@
 pkgbase = 1oom-git
 	pkgdesc = 1oom is a Master of Orion (1993) game engine recreation.
-	pkgver = r777.912dce1
-	pkgrel = 2
+	pkgver = r1047.813ab8df
+	pkgrel = 1
 	url = https://gitlab.com/Tapani_/1oom
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	depends = libsamplerate
+	depends = sdl2
 	depends = sdl2_mixer
+	depends = libsamplerate
+	depends = soundfont-fluid
 	provides = 1oom
 	conflicts = 1oom
-	source = git+https://gitlab.com/Tapani_/1oom.git
-	sha256sums = SKIP
+	source = git+https://github.com/1oom-fork/1oom.git
+	source = 1oom_classic_sdl2.sh
+	md5sums = SKIP
+	md5sums = 41b52627b2d52b477adcbc2a9a627b37
 
 pkgname = 1oom-git
-
