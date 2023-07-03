@@ -3,7 +3,7 @@
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname='trafficserver'
-pkgver=9.2.0
+pkgver=9.2.1
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
@@ -23,7 +23,7 @@ source=(
     trafficserver.lib_perl_Makefile.in.patch
     trafficserver.src_tscore_unit_tests.patch)
 
-sha256sums=('45cc8198e2b0a12fad41d1cdc7e59675a64e1a38c6845923924de7bcfb5f74e4'
+sha256sums=('c9080a521758f258391ff7ceb99b824bcc652b3fd9125a3580697bb2e5eb43b2'
             '8c9dbabfe7a8e0ecf9f3edb3673d1ff0cd63bf79551389047a723479b8d21fac'
             'a4e6a00dea61aa3f98413f092711afb90795ef35676f6a8e3970f4163d360202'
             'fc0b437ef9f9c56ceaaa99eea7075abe15200ff540cfc505e42b0a8f762128b1'
