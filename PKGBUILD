@@ -13,11 +13,11 @@ conflicts=('ddev')
 depends=('docker' 'mkcert')
 optdepends=('bash-completion: subcommand completion support')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev/ddev/releases/download/v1.22.0-alpha3/ddev_linux-arm64.v1.22.0-alpha3.tar.gz")
-sha256sums_aarch64=('9cd222d4dcdfb52ed2fe19c196a7992b3c3477ce61f73cbde5a32b43123689bb')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ddev/ddev/releases/download/v1.22.0-beta1/ddev_linux-arm64.v1.22.0-beta1.tar.gz")
+sha256sums_aarch64=('2cfa8a5c79f33ff26df9fc80c923efe8eefda296de828016279d1ce15a523c0d')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev/ddev/releases/download/v1.22.0-alpha3/ddev_linux-amd64.v1.22.0-alpha3.tar.gz")
-sha256sums_x86_64=('c7233ea489314686709e8ebed489a9f728c777ef34f879ebc8c3bdaf40e6018a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ddev/ddev/releases/download/v1.22.0-beta1/ddev_linux-amd64.v1.22.0-beta1.tar.gz")
+sha256sums_x86_64=('315d6af24a46ca6ef3fbc9ae62010824891893d31b994ecbb3c4fa80b8cbae84')
 
 package() {
   # bin
