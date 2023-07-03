@@ -54,5 +54,6 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+    mkdir -p "${pkgdir}"/usr/share/usd/plugin/usd
+    cp -r "${srcdir}"/build/plugins/usdFbx "${pkgdir}"/usr/share/usd/plugin/usd/usdFbx
 }
