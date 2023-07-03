@@ -1,10 +1,11 @@
 # Maintainer: Ben Parsons <9parsonsb[at]gmail[dot]com>
+# Contributor: Chris Dill <chrisdude134[at]gmail[dot]com>
 # Contributor: Filipe Nascimento <flipee at tuta dot io>
 # Contributor: Sven Lechner <sven[dot]lechner[at]rwth-aachen[dot]de>
 
 pkgname=act-runner
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A runner for Gitea Actions based on GitHub's Act"
 arch=('x86_64')
 url="https://gitea.com/gitea/act_runner"
