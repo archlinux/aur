@@ -8,8 +8,8 @@ pkgdesc="A state-of-the art tool intended for facial landmark detection, head po
 arch=('x86_64')
 url="https://github.com/TadasBaltrusaitis/${_pkgname}"
 license=('custom')
-depends=('dlib' 'openblas' 'opencv')
-makedepends=('cmake' 'qt6-base' 'tbb' 'wget')
+depends=('boost-libs' 'dlib' 'gcc-libs' 'glibc' 'openblas' 'opencv')
+makedepends=('cmake' 'qt6-base' 'tbb' 'wget' 'boost')
 source=("${url}/archive/refs/tags/${_pkgname}_${pkgver}.tar.gz")
 sha256sums=('928e6346bcff41393393a364df99bf09c3410fab85b569f2023e3224d2a1981a')
 
