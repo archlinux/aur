@@ -1,7 +1,7 @@
 # Maintainer:  taotieren <admin@taotieren.com>
 
 pkgbase=minigui-git
-pkgname=(minigui{,-{mgutils,mgplus,mgeff,mgncs,mgncs4touch,mg-tools,mg-tests,mg-samples,mg-demos,cell-phone-ux-demo,res,docs,ministudo}}-git)
+pkgname=(minigui{,-{mgutils,mgplus,mgeff,mgncs,chipmunk,mgncs4touch,mg-tools,mg-tests,mg-samples,mg-demos,cell-phone-ux-demo,res,docs,ministudo}}-git)
 pkgver=5.0.11.r12.g0d1f1f02
 pkgrel=1
 arch=('x86_64')
@@ -49,12 +49,14 @@ source=("${pkgbase}::git+${url}.git"
         "minigui-mg-tests::git+${_url}/mg-tests.git"
         "minigui-mg-samples::git+${_url}/mg-samples.git"
         "minigui-mg-demos::git+${_url}/mg-demos.git"
+        "minigui-chipmunk::git+${_url}/chipmunk.git"
         "minigui-cell-phone-ux-demo::git+${_url}/cell-phone-ux-demo.git"
         "minigui-res::git+${_url}/minigui-res.git"
         "minigui-docs::git+${_url}/minigui-docs.git"
         "minigui-ministudio::git+https://github.com/FMSoftCN/ministudo-guibuilder.git")
 
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -143,7 +145,7 @@ package_minigui-mgncs-git() {
     conflicts=(${pkgname%-git})
 
     cd "${srcdir}/${pkgname%-git}"
-    sed -i 's|$(prefix)/etc|/etc|g;s|	$(INSTALL_DATA) mgncs.cfg /etc/mgncs.cfg|#	$(INSTALL_DATA) mgncs.cfg /etc/mgncs.cfg|g' etc/Makefile.am
+    sed -i 's|$(prefix)/etc|/etc|g;s|	$(INSTALL_DATA)|#	$(INSTALL_DATA)|g' etc/Makefile.am
     ./autogen.sh
     ./configure --prefix=/usr \
         --disable-static \
@@ -158,6 +160,31 @@ package_minigui-mgncs-git() {
     make DESTDIR="$pkgdir" install
 }
 
+package_minigui-chipmunk-git() {
+    pkgdesc="Chipmunk is a simple, lightweight, fast and portable 2D rigid body physics library written in C. "
+    url="${_url}/chipmunk"
+    depends=(
+            cmake
+            ninja
+            gtk2
+            )
+    provides=(${pkgname%-git})
+    conflicts=(${pkgname%-git})
+
+    cd "${srcdir}/${pkgname%-git}"
+
+# Ninja build
+# see：https://wiki.archlinux.org/title/CMake_package_guidelines
+#     cmake -DCMAKE_BUILD_TYPE=Release \
+    cmake -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -B build \
+        -G Ninja
+
+    ninja -C build
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgbase%-git}/build install
+}
+
 package_minigui-mgncs4touch-git() {
     pkgdesc="A set of mGNCS-compliant controls for devices with a touch screen."
     url="${_url}/mgncs4touch"
@@ -167,7 +194,7 @@ package_minigui-mgncs4touch-git() {
             minigui-mgplus
             minigui-mgeff
             minigui-mgncs
-            chipmunk
+            minigui-chipmunk
             )
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
@@ -274,7 +301,7 @@ package_minigui-cell-phone-ux-demo-git() {
             minigui-mgeff
             minigui-mgncs
             minigui-mgncs4touch
-            chipmunk
+            minigui-chipmunk
             )
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
@@ -392,7 +419,7 @@ package_minigui-git() {
 
 package_minigui-ministudo-git() {
     pkgdesc="GUIBuilder of miniStudio."
-    depends=(minigui{,-{mgutils,mgplus,mgeff,mgncs,mgncs4touch,mg-tools,mg-tests,mg-samples,mg-demos,cell-phone-ux-demo,res,docs}})
+    depends=(minigui{,-{mgutils,mgplus,mgeff,mgncs,mgncs4touch,mg-tools,mg-tests,mg-samples,mg-demos,cell-phone-ux-demo,chipmunk,res,docs}})
     url="https://github.com/FMSoftCN/ministudo-guibuilder"
 
     provides=(${pkgname%-git})
