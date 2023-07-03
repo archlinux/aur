@@ -2,7 +2,7 @@
 pkgname=lise-app
 pkgver=16.3.11
 arch=('x86_64')
-pkgrel=1
+pkgrel=2
 pkgdesc='Lise++ Rare Isotope Beam Production Package'
 url='https://lise.nscl.msu.edu/lise.html'
 OPTIONS=!strip
@@ -23,9 +23,9 @@ sha256sums=(
 build()
 {
   echo ${srcdir}
-  cp emblem_little.gif lise-app/
   chmod +x ./${_runname}
   ./${_runname} --noexec
+  cp emblem_little.gif lise-app/
 }
 package()
 {
