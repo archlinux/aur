@@ -1,0 +1,26 @@
+diff --git a/libosmscout-client/CMakeLists.txt b/libosmscout-client/CMakeLists.txt
+index 597cf6073..72760db8e 100644
+--- a/libosmscout-client/CMakeLists.txt
++++ b/libosmscout-client/CMakeLists.txt
+@@ -50,7 +50,7 @@ if(APPLE AND OSMSCOUT_BUILD_FRAMEWORKS)
+ endif()
+ 
+ if(WIN32)
+-	target_link_libraries(OSMScoutClient Ws2_32.lib)
++	target_link_libraries(OSMScoutClient ws2_32)
+ endif()
+ 
+ if(NOT EXCLUDE_HEADER)
+diff --git a/libosmscout-import/CMakeLists.txt b/libosmscout-import/CMakeLists.txt
+index 23a8ece57..f2ec0dbe3 100644
+--- a/libosmscout-import/CMakeLists.txt
++++ b/libosmscout-import/CMakeLists.txt
+@@ -190,7 +190,7 @@ if(APPLE AND OSMSCOUT_BUILD_FRAMEWORKS)
+ endif()
+ 
+ if(WIN32)
+-	target_link_libraries(OSMScoutImport Ws2_32.lib)
++	target_link_libraries(OSMScoutImport ws2_32)
+ endif()
+ 
+ if(NOT EXCLUDE_HEADER)
