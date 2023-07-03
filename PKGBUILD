@@ -7,7 +7,7 @@
 _gitname='vte'
 _pkgname='vte4'
 pkgname="$_pkgname-git"
-pkgver=0.73.0.r23.gdce7b5f0
+pkgver=0.73.0.r26.g092d8b8f
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget"
 # https://wiki.gnome.org/Apps/Terminal/VTE
@@ -33,10 +33,14 @@ makedepends=(
 )
 
 provides=(
+  "vte4=$pkgver"
   'libvte-2.91-gtk4.so=0-64'
-  'vte4'
+  'vte-common'
+  'vte-git'
 )
 conflicts=(
+  'vte-common'
+  'vte-git'
   'vte4'
 )
 
@@ -50,12 +54,17 @@ sha256sums=(
 pkgver() {
   cd "$srcdir/$_gitname"
 
+  _regex="^\s+version:\s+'([0-9]+\\.[0-9]+\\.[0-9]+)',\$"
+  _file='meson.build'
+
+  _line=$(
+    grep -E "$_regex" "$_file" | head -1
+  )
   _version=$(
-    grep -E "^\s+version:\s+'([0-9]+\.[0-9]+\.[0-9]+)',\$" meson.build \
-      | sed -E "s@^\s+version:\s+'([0-9]+\.[0-9]+\.[0-9]+)',\$@\1@"
+    echo "$_line" | sed -E "s@$_regex@\1@"
   )
   _commit=$(
-    git log -S "$_version" -1 --pretty=oneline | sed 's@\ .*$@@'
+    git log -S "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
   )
   _revision=$(
     git rev-list --count $_commit..HEAD
@@ -64,7 +73,10 @@ pkgver() {
     git rev-parse --short HEAD
   )
 
-  echo "$_version.r$_revision.g$_hash"
+  printf '%s.r%s.g%s' \
+    "$_version" \
+    "$_revision" \
+    "$_hash"
 }
 
 build() {
