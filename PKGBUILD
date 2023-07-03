@@ -1,7 +1,7 @@
 # Maintainer: Asuka Minato <i at asukaminato dot eu dot org>
 pkgname=irreader
 pkgver=1.6.11
-pkgrel=1
+pkgrel=2
 pkgdesc="订阅网页、RSS和Podcast，具备急速的阅读体验，"
 arch=(x86_64 aarch64)
 url="http://irreader.fatecore.com/"

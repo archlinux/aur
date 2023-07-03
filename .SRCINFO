@@ -1,7 +1,7 @@
 pkgbase = irreader
 	pkgdesc = 订阅网页、RSS和Podcast，具备急速的阅读体验，
 	pkgver = 1.6.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://irreader.fatecore.com/
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,8 @@ pkgbase = irreader
 	makedepends = npm
 	depends = electron11
 	depends = bash
+	depends = gcc-libs
+	depends = glibc
 	options = !strip
 	source = http://irreader.fatecore.com/download/irreader-1.6.11.zip
 	source = irreader.desktop
