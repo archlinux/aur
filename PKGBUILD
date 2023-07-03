@@ -1,4 +1,3 @@
-# maintainer: Colin Wallace <colin@mooooo.ooo>
 _name=escpos
 pkgname='python-escpos'
 pkgver=2.2.0
