@@ -1,6 +1,6 @@
 # Maintainer: honjow
 pkgname=sk-holoiso-config
-pkgver=r90.161ed7c
+pkgver=r91.7013c10
 pkgrel=1
 pkgdesc="A custom configs tool for sk-holoiso"
 arch=('any')
@@ -50,7 +50,7 @@ package() {
     install -Dm644 -t "${pkgdir}/etc/default/" "${source_dir}/etc/default"/*
 
     install -dm755 "${pkgdir}/boot"
-    install -m644 -t "${pkgdir}/boot/" "${source_dir}/etc"/*_acpi_override
+    install -m644 -t "${pkgdir}/boot/" "${source_dir}/boot"/*_acpi_override
 
     install -Dm644 "${source_dir}/etc/X11/Xsession.d/50rotate-screen" "${pkgdir}/etc/X11/Xsession.d/50rotate-screen"
 
