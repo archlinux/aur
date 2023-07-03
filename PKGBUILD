@@ -165,7 +165,6 @@ package_minigui-chipmunk-git() {
     url="${_url}/chipmunk"
     depends=(
             cmake
-            ninja
             gtk2
             )
     provides=(${pkgname%-git})
@@ -177,12 +176,11 @@ package_minigui-chipmunk-git() {
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
 #     cmake -DCMAKE_BUILD_TYPE=Release \
     cmake -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -B build \
-        -G Ninja
+        -DCMAKE_INSTALL_PREFIX=/usr
 
-    ninja -C build
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgbase%-git}/build install
+    make
+
+    make DESTDIR="$pkgdir" install
 }
 
 package_minigui-mgncs4touch-git() {

@@ -101,7 +101,6 @@ pkgname = minigui-chipmunk-git
 	pkgdesc = Chipmunk is a simple, lightweight, fast and portable 2D rigid body physics library written in C.
 	url = https://github.com/VincentWei/chipmunk
 	depends = cmake
-	depends = ninja
 	depends = gtk2
 	provides = minigui-chipmunk
 	conflicts = minigui-chipmunk
