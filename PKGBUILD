@@ -1,12 +1,12 @@
 # Submiter: AdrianoML <adriano.lols@gmail.com>
 
 pkgname=steascree
-pkgver=1.5.4.r4.g98748f9
+pkgver=1.5.4.r12.g93a2436
 pkgrel=1
 pkgdesc="A QT screenshot \"injector\" for the steam screenshot uploader"
 arch=('x86_64')
 url="https://github.com/Foyl/SteaScree/"
-source=('git://github.com/Foyl/SteaScree/' 'steascree.desktop')
+source=('SteaScree::git+https://github.com/Foyl/SteaScree/' 'steascree.desktop')
 license=('GPL3')
 depends=('qt5-base')
 makedepends=('git' 'cmake')
