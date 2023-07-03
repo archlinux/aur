@@ -1,3 +1,27 @@
+## GE-Proton8-6
+
+HOTFIX:
+
+- fixed FFXIV Hydaelyn new player intro video not playing (again)
+
+## GE-Proton8-5
+
+- Gears 5 now works with EAC without any workarounds needed. If you previously used proton-ge to play, go into the game folder and remove these folders:
+
+/GearGame/Binaries/Steam/EasyAntiCheat-backup
+/Engine/Binaries/ThirdParty/GFSDK_Aftermath
+
+Then verify the integrity of the game files so that it re-downloads the originals.
+
+- protonfix added for Two Worlds audio (thanks marciocr)
+- protonfix added for APB Reloaded (thanks telqor)
+- dxvk updated to latest git
+- vkd3d-proton updated to latest git
+- wine updated to latest bleeding edge
+- staging patches rebased
+- steam_helper updates imported from upstream
+- imported kaldi, openfst, vosk-api modules from upstream
+
 ## GE-Proton8-4
 
 * protonfixes: fix for Moero Chronicle (Thanks Kaedras and Snaggly)
