@@ -1,0 +1,20 @@
+pkgbase = tidgi-appimage
+	pkgdesc = Customizable personal knowledge-base with Github as unlimited storage and blogging platform.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://tidgi.fun/
+	arch = aarch64
+	arch = x86_64
+	license = MPL2
+	depends = glibc
+	depends = zlib
+	conflicts = tidgi
+	options = !strip
+	source = LICENSE::https://raw.githubusercontent.com/tiddly-gittly/TidGi-Desktop/master/LICENSE
+	sha512sums = 75e77d3b0ea76296483fe50f695aae6c581508b527fabcd82858854d24a2ed4649d5edb359a4d437787e3b2f17a75340c6c53088d4dc871164d8f00bfd137d54
+	source_aarch64 = tidgi-0.8.0-aarch64.AppImage::https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.8.0/TidGi-0.8.0-arm64.AppImage
+	sha512sums_aarch64 = fe69cd2f10188f8df8fa81100859123ea40e577d1501a75cff1139b069059867a1aa7f4e4f0d13e3cedea3df7055d583d5b1bcdd2f968db626273f7bacd963f8
+	source_x86_64 = tidgi-0.8.0-x86_64.AppImage::https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.8.0/TidGi-0.8.0-x64.AppImage
+	sha512sums_x86_64 = d28ded7b1d5c60a0c7109fcf4dfe7ad031b9155887c2c7c9ac69ddaae4ffd60416729421d47798443a6f35caf07c12902524e52e55f2035c73094f83a81b5072
+
+pkgname = tidgi-appimage
