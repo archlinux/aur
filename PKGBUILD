@@ -2,7 +2,7 @@
 
 pkgname=appflowy-bin
 _pkgname=appflowy
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="Open source alternative to Notion"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('appflowy')
 conflicts=('appflowy')
 depends=('xdg-user-dirs' 'gtk3' 'libkeybinder3' 'openssl-1.1')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AppFlowy-IO/appflowy/releases/download/${pkgver}/AppFlowy_x86_64-unknown-linux-gnu_ubuntu-20.04.tar.gz")
-b2sums=('1e76ad3c49f69f4d60a47b8638fd8b985b645514b5cad5744544490b0aa9434a399553d93ef86532c714670ff65ebf006b24d5a35d0c087f4d36586872132c90')
+b2sums=('182736c758cecbbfd7f6fea8ae36e961777b5854a60ccc164044ae8c1b2a57ca3ca69cf953bd755fce320a58d76d084ec9fbefa9446cc736acca35cc0bb39317')
 
 package(){
 	cd AppFlowy
