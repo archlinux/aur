@@ -3,7 +3,7 @@
 pkgname=python-mirakuru
 _name=${pkgname#python-}
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Start your subprocess and wait for a clear indication that it's running"
 arch=(any)
 url="https://github.com/ClearcodeHQ/mirakuru"
@@ -18,8 +18,9 @@ makedepends=(
 )
 checkdepends=(
   openbsd-netcat
-  python-pytest
+  procps-ng
   python-daemon
+  python-pytest
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")

@@ -1,13 +1,14 @@
 pkgbase = python-mirakuru
 	pkgdesc = Start your subprocess and wait for a clear indication that it's running
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ClearcodeHQ/mirakuru
 	arch = any
 	license = LGPL3
 	checkdepends = openbsd-netcat
-	checkdepends = python-pytest
+	checkdepends = procps-ng
 	checkdepends = python-daemon
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
