@@ -1,7 +1,6 @@
 pkgname=papermc-git
-pkgver=1.18.1.r6575.29bd57b4c
+pkgver=1.20.1.r7924.4356758
 pkgrel=1
-epoch=1
 pkgdesc="Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance, built from the latest sources upstream"
 arch=('any')
 url="https://papermc.io/"
@@ -12,6 +11,8 @@ provides=("papermc=${pkgver}")
 install="paper.install"
 source=("$pkgname"::'git+https://github.com/PaperMC/Paper.git#branch=master')
 md5sums=('SKIP')
+
+_server_root="/srv/papermc"
 
 prepare() {
 	cd "$srcdir/$pkgname"
@@ -37,12 +38,12 @@ build() {
 package() {
 	_bundlerver="$(awk -F= '/^version/ {gsub(/"|,|\s/,""); printf $2}' $srcdir/$pkgname/gradle.properties)"
 	
-	install -Dm644 "$srcdir/$pkgname/build/libs/paper-bundler-${_bundlerver}-reobf.jar" "${pkgdir}/srv/papermc/papermc.${pkgver}.jar"
-	install -D "$srcdir/$pkgname/LICENSE.md" "${pkgdir}/srv/papermc/LICENSE"
-	install -D "$srcdir/$pkgname/licenses/GPL.md" "${pkgdir}/srv/papermc/LICENSE_GPL"
-	install -D "$srcdir/$pkgname/licenses/MIT.md" "${pkgdir}/srv/papermc/LICENSE_MIT"
+	install -Dm644 "$srcdir/$pkgname/build/libs/paper-bundler-${_bundlerver}-reobf.jar" "${pkgdir}${_server_root}/papermc.${pkgver}.jar"
+	install -D "$srcdir/$pkgname/LICENSE.md" "${pkgdir}${_server_root}/LICENSE"
+	install -D "$srcdir/$pkgname/licenses/GPL.md" "${pkgdir}${_server_root}/LICENSE_GPL"
+	install -D "$srcdir/$pkgname/licenses/MIT.md" "${pkgdir}${_server_root}/LICENSE_MIT"
 
-	ln -s "papermc.${pkgver}.jar" "${pkgdir}/srv/papermc/papermc_server.jar"
+	ln -s "papermc.${pkgver}.jar" "${pkgdir}${_server_root}/papermc_server.jar"
 }
 
 

@@ -1,8 +1,7 @@
 pkgbase = papermc-git
 	pkgdesc = Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance, built from the latest sources upstream
-	pkgver = 1.18.1.r6575.29bd57b4c
+	pkgver = 1.20.1.r7924.4356758
 	pkgrel = 1
-	epoch = 1
 	url = https://papermc.io/
 	install = paper.install
 	arch = any
@@ -12,7 +11,7 @@ pkgbase = papermc-git
 	makedepends = maven
 	depends = java-runtime-headless>=17
 	depends = awk
-	provides = papermc=1.18.1.r6575.29bd57b4c
+	provides = papermc=1.20.1.r7924.4356758
 	source = papermc-git::git+https://github.com/PaperMC/Paper.git#branch=master
 	md5sums = SKIP
 
