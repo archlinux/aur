@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=nile-git
-pkgver=r54.61ea662
+pkgver=r55.99a6140
 pkgrel=1
 pkgdesc="Unofficial Amazon Games client"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/imLinguin/nile"
 license=('GPL3')
-depends=('bash' 'python-json5' 'python-protobuf' 'python-pycryptodome'
-         'python-requests' 'python-zstandard')
+depends=('bash' 'python-json5' 'python-platformdirs' 'python-protobuf'
+         'python-pycryptodome' 'python-requests' 'python-zstandard')
 makedepends=('git' 'pyinstaller')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
