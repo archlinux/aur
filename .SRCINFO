@@ -1,6 +1,6 @@
 pkgbase = argc
 	pkgdesc = An elegant command-line options, arguments and sub-commands parser for bash
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/sigoden/argc
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = argc
 	license = Apache
 	makedepends = cargo
 	depends = gcc-libs
-	source = argc-1.6.0.tar.gz::https://github.com/sigoden/argc/archive/v1.6.0.tar.gz
-	sha512sums = 7e493b8264d72d9cacead50d1304c3a1d2c46ddc53ff6bee472dac21c415f35b17b4891f3ff68e9ed3d77ad2024a499c91c3ba74b4414b6649e2d71bd9663740
+	source = argc-1.7.0.tar.gz::https://github.com/sigoden/argc/archive/v1.7.0.tar.gz
+	sha512sums = 65f005b05d29ffa8eaac0153ebacd22a2afeac00f334b6aa850f1dd9ab9102c6279a630d80aed7435ed2b03cc87e16c0f8141f05782809d37cf3bc0439ec2106
 
 pkgname = argc
