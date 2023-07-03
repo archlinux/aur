@@ -143,6 +143,7 @@ package_minigui-mgncs-git() {
     conflicts=(${pkgname%-git})
 
     cd "${srcdir}/${pkgname%-git}"
+    sed -i 's|$(prefix)/etc|/etc|g' etc/Makefile.am
     ./autogen.sh
     ./configure --prefix=/usr \
         --disable-static \
