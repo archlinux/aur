@@ -1,7 +1,7 @@
 pkgbase = irreader
 	pkgdesc = 订阅网页、RSS和Podcast，具备急速的阅读体验，
 	pkgver = 1.6.11
-	pkgrel = 2
+	pkgrel = 3
 	url = http://irreader.fatecore.com/
 	arch = x86_64
 	arch = aarch64
