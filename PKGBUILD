@@ -1,12 +1,12 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=c0d8ee415cd4ee268264ef2c7bfa53f576599cfa  # tags/2.56.1
+_commit=5c74c40bb3f4f7e6c347e7712e0293188e70c6ed  # tags/2.56.2
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-librsvg
-pkgver=2.56.1
-pkgrel=2
+pkgver=2.56.2
+pkgrel=1
 pkgdesc="SVG rendering library (mingw-w64)"
 arch=('any')
 url="https://wiki.gnome.org/action/show/Projects/LibRsvg"
