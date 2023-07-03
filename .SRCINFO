@@ -1,0 +1,17 @@
+pkgbase = ros2-humble-pcl-conversions
+	pkgdesc = Provides conversions from PCL data types and ROS message types.
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://index.ros.org/p/pcl_conversions/
+	arch = any
+	license = BSD
+	depends = ros2-humble
+	depends = ros2-humble-pcl-msgs
+	depends = pcl
+	depends = openmpi
+	depends = nlohmann-json
+	depends = eigen
+	source = https://github.com/ros-perception/pcl_conversions/archive/refs/tags/2.4.1.tar.gz
+	sha256sums = cb1b36f65aeeacbbdeca0baf13907f38cadaf272bee46cf6775f0b3974d4cb0d
+
+pkgname = ros2-humble-pcl-conversions
