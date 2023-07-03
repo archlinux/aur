@@ -27,10 +27,10 @@ detailed authorial information on package sources.
 
 === The PKGBUILD
 
-`Copyright (c) 2019 Elias Yuan, GPLv3.0+`
+`Copyright (c) 2019 Elias Elwyn, GPLv3.0+`
 
 Please refer to link:COPYING[COPYING], or contact
-<mailto:cecilelias.yuan@gmail.com[cecilelias.yuan@gmail.com]>.
+<mailto:a@jthv.ai[a@jthv.ai]>.
 
 This script is free software: you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by the

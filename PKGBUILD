@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Contributor: Elias Yuan <cecilelias.yuan@gmail.com>
+# Contributor: Elias Elwyn <a@jthv.ai>
 pkgname=('neon-knights-openbox-blue' 'neon-knights-openbox-green' 'neon-knights-openbox-orange' 'neon-knights-openbox-red' 'neon-knights-openbox-violet' 'neon-knights-openbox-yellow')
 _theme=('Neon_Knights_Blue_Ob' 'Neon_Knights_Green_Ob' 'Neon_Knights_Orange_Ob' 'Neon_Knights_Red_Ob' 'Neon_Knights_Violet_Ob' 'Neon_Knights_Yellow_Ob')
 _de="Openbox"
