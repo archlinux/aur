@@ -1,36 +1,49 @@
-# Maintainer : Juraj Matuš <matus.juraj at yandex dot com>
-
-_lang=slk-eng
-pkgname=dict-freedict-${_lang}
-pkgver=0.2
+# Maintainer: Daudi Wampamba Bandres <me@daudi.dev>
+pkgname='intel-llvm-git'
+pkgver=r477981.a8b03562c5f3
 pkgrel=1
-pkgdesc="Slovak -> English dictionary for dictd et al. from Freedict.org"
-arch=('any')
-url="https://freedict.org/"
-license=('GPL')
-optdepends=('dictd: dict client and server')
-makedepends=('dictd' 'freedict-tools')
-install=install.sh
-source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}.${pkgrel}/freedict-${_lang}-${pkgver}.${pkgrel}.src.tar.xz")
-sha512sums=('ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac')
+pkgdesc="Intel LLVM"
+arch=("x86_64")
+url="https://github.com/intel/llvm"
+license=('custom:Apache License v2.0 with LLVM Exception')
+groups=()
+depends=('cuda' 'hip-runtime-amd')
+makedepends=('git' 'cmake' 'python' 'ninja' 'cuda' 'opencl-headers')
+checkdepends=("python-psutil")
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+source=('llvm::git+https://github.com/intel/llvm#branch=sycl' "intel-llvm.sh" "intel-llvm.conf")
+noextract=()
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
-build()
-{
-	cd $_lang
-	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
+pkgver() {
+	cd "$srcdir/llvm"
+	# Git, no tags available
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package()
-{
-	install -m 755 -d "${pkgdir}/usr/share/dictd"
-	install -m 644 -t "${pkgdir}/usr/share/dictd/" \
-		${_lang}/build/dictd/${_lang}.{dict.dz,index}
+build() {
+	cd "$srcdir/llvm"
+		python ./buildbot/configure.py --cuda --hip -t release --cmake-opt="-DLLVM_INSTALL_UTILS=ON" --cmake-opt="-DSYCL_PI_TESTS=OFF"
+		python ./buildbot/compile.py
+}
 
-	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
-	do
-		if test -f ${file}
-		then
-			install -m 644 -Dt "${pkgdir}/usr/share/doc/freedict/${_lang}/" ${file}
-		fi
-	done
+#check() {
+#	cd "$srcdir/llvm"
+#		python ./buildbot/check.py -o "$srcdir/llvm/build"
+#}
+
+package() {
+	cd "$srcdir/llvm"
+		install -Dm644 ./LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+		install -dm755 "$pkgdir/opt/sycl"
+		cp -Ra "$srcdir/llvm/build" "$pkgdir/opt/sycl"
+		find "${pkgdir}/opt/sycl" -type d -exec chmod a+rx {} +
+		find "${pkgdir}/opt/sycl" -type f -exec chmod a+r {} +
+	cd "$srcdir"
+		install -Dm755 ./intel-llvm.sh "$pkgdir/etc/profile.d/intel-llvm.sh"
+		install -Dm644 ./intel-llvm.conf "$pkgdir/etc/ld.so.conf.d/intel-llvm.conf"
 }
