@@ -1,18 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="saber-appimage"
 _appname="com.adilhanney.saber"
-pkgver=0.14.0
+pkgver=0.14.3
 pkgrel=1
 pkgdesc="A (work-in-progress) cross-platform libre handwritten notes app"
 arch=('x86_64')
 url="https://github.com/adil192/saber"
 license=('GPL3')
-options=(!strip)
+options=('!strip')
 conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Saber-${pkgver}-${CARCH}.AppImage")
-sha256sums=('1c91dd01d6b28e4ad0012d3e0180a8c5148d29c1b210c15ff9e3f20ab3a2173f')
+sha256sums=('034e75ca0fcf4877dd55bb8eecc8bbea3e20587f0b2369cbb5cb3ed947b4bcc9')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
