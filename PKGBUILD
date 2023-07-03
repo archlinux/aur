@@ -3,7 +3,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=dada2
-_bcver=1.26.0
+_bcver=1.28.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -30,7 +30,7 @@ optdepends=(
 	r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('6c9ee66abfa2e21096b8a3669346a445ee051308d9773f2d9e6e4ea230c1aeb1')
+sha256sums=("a1c16ef613167458db8c91c2abb67ee9e2fc09e295a3911bf0cfff6c4010beef")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
