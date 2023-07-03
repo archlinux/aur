@@ -1,29 +1,24 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=liberror
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Library for custom errors"
 arch=(i686 x86_64)
-url="https://github.com/maandree/liberror"
-license=('custom:ISC')
+url="https://codeberg.org/maandree/liberror"
+license=('ISC')
 depends=()
 checkdepends=()
 makedepends=()
-source=(liberror-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(8603ed823a587f4f9af7d286e49dbd4d1f16cadda05853904a4f9e12c3967bfe)
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  printf '%s\n' 'CC = gcc' >> config.mk
-}
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+sha256sums=(3af9a50b44b086c37698b6df097edba29a9208aa36b28e38ae1b470e77348e27)
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
