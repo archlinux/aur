@@ -1,0 +1,2 @@
+# Atmle-ICE programmer rules (https://www.microchip.com/DevelopmentTools/ProductDetails/ATATMEL-ICE)
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2141", GROUP="uucp", MODE="0660"
