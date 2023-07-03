@@ -5,7 +5,7 @@
 pkgname='vtunerc-dkms'
 pkgdesc='Kernel module to create virtual DVB devices'
 pkgver=1.4
-pkgrel=12
+pkgrel=13
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='http://code.google.com/p/vtuner'
 license=('GPL2')
@@ -25,6 +25,7 @@ source=("vtuner.linux-driver-rel${pkgver}.tar.gz::https://github.com/lecotex/vtu
         '0011-Kernel-5.3.patch'
         '0012-Kernel-5.6.patch'
         '0013-Kernel-5.17.patch'
+        '0014-Kernel-6.4.patch'
         '93-vtunerc.rules'
         'dkms.conf')
 sha256sums=('c6ba0cfd808e3f8473a5ea25d4ac2871b826edc62de5f3624c0bd812aad63bc1'
@@ -41,8 +42,9 @@ sha256sums=('c6ba0cfd808e3f8473a5ea25d4ac2871b826edc62de5f3624c0bd812aad63bc1'
             '4d32789ead0ee2c2ec4aaf1014ddf0bc3e084c0f580f960e61210591995df785'
             'bfe467a73435391c0a24c58199fd440482d80dfa15f7648dcf72767a878c7f9e'
             '6a52ae33b2d2b93001b00a2c1d34cb02327d35a487ca09a85ad3ecde59acc9d2'
+            'd8f24969ceb8c3cc3ba418c392dc67cfb25d34a233dc11fac67c55641d672bba'
             '4b2d860cac8c8bab2d8fa79760d4405bef6fd042f4e78b680d25d1a5ebcbf83d'
-            '073339a8a54640fbcf2cb976314a43049e47ea6fd6016d7fc2cd7a0075ad385a')
+            'd13cc9a2e3778dddda263159a9bde32245bb32b7166632b4cbd9f015f390825c')
 
 package() {
 	install -dm755 ${pkgdir}/usr/src/vtunerc-${pkgver}/patches

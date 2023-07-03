@@ -1,7 +1,7 @@
 pkgbase = vtunerc-dkms
 	pkgdesc = Kernel module to create virtual DVB devices
 	pkgver = 1.4
-	pkgrel = 12
+	pkgrel = 13
 	url = http://code.google.com/p/vtuner
 	arch = x86_64
 	arch = i686
@@ -28,6 +28,7 @@ pkgbase = vtunerc-dkms
 	source = 0011-Kernel-5.3.patch
 	source = 0012-Kernel-5.6.patch
 	source = 0013-Kernel-5.17.patch
+	source = 0014-Kernel-6.4.patch
 	source = 93-vtunerc.rules
 	source = dkms.conf
 	sha256sums = c6ba0cfd808e3f8473a5ea25d4ac2871b826edc62de5f3624c0bd812aad63bc1
@@ -44,7 +45,8 @@ pkgbase = vtunerc-dkms
 	sha256sums = 4d32789ead0ee2c2ec4aaf1014ddf0bc3e084c0f580f960e61210591995df785
 	sha256sums = bfe467a73435391c0a24c58199fd440482d80dfa15f7648dcf72767a878c7f9e
 	sha256sums = 6a52ae33b2d2b93001b00a2c1d34cb02327d35a487ca09a85ad3ecde59acc9d2
+	sha256sums = d8f24969ceb8c3cc3ba418c392dc67cfb25d34a233dc11fac67c55641d672bba
 	sha256sums = 4b2d860cac8c8bab2d8fa79760d4405bef6fd042f4e78b680d25d1a5ebcbf83d
-	sha256sums = 073339a8a54640fbcf2cb976314a43049e47ea6fd6016d7fc2cd7a0075ad385a
+	sha256sums = d13cc9a2e3778dddda263159a9bde32245bb32b7166632b4cbd9f015f390825c
 
 pkgname = vtunerc-dkms

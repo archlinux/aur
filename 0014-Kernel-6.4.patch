@@ -1,0 +1,26 @@
+From 1c4da361564ace29eead5138d3aeacbbebb3a29c Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tmn505@gmail.com>
+Date: Mon, 3 Jul 2023 14:03:26 +0200
+Subject: [PATCH 14/14] Kernel 6.4
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=dcfbb67e48a2becfce7990386e985b9c45098ee5
+---
+ vtunerc_ctrldev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vtunerc_ctrldev.c b/vtunerc_ctrldev.c
+index 36c24b5bbfa3..2385380db7c5 100644
+--- a/vtunerc_ctrldev.c
++++ b/vtunerc_ctrldev.c
+@@ -364,7 +364,7 @@ int vtunerc_register_ctrldev(struct vtunerc_ctx *ctx)
+ 		printk(KERN_WARNING "vtunerc%d: unable to create dev\n",
+ 				ctx->idx);
+ 
+-	pclass = class_create(THIS_MODULE, "vtuner");
++	pclass = class_create("vtuner");
+ 	if (IS_ERR(pclass)) {
+ 		printk(KERN_ERR "vtunerc%d: unable to register major %d\n",
+ 				ctx->idx, VTUNERC_CTRLDEV_MAJOR);
+-- 
+2.41.0
+
