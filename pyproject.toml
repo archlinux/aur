@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=40.8.0", "wheel", 'pyusb', 'pyserial', 'pillow', 'qrcode', "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-escpos"
+version = "2.2.0"
+description = "Python ESC/POS is a library which lets the user have access to all those printers handled by ESC/POS commands, as defined by Epson, from a Python application."
+readme = "README.rst"
+requires-python = ">=3.6"
+license = {text = "GNU GPL v3"}
+keywords = ["egg", "bacon", "sausage", "tomatoes", "Lobster Thermidor"]
+authors = [
+  {email = "manpaz@bashlinux.com"},
+  {name = "Manuel F Martinez and others"}
+]
+maintainers = [
+  {name = "Bill Sideris", email = "bill88t@feline.gr"}
+]
+
+[project.urls]
+"Homepage" = "https://github.com/python-escpos/python-escpos"
+"Issue Tracker" = "https://github.com/python-escpos/python-escpos/issues"
