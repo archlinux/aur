@@ -131,27 +131,6 @@ index cbebe144..ff735c90 100644
  
  $(eval $(call rules-source,wine,$(SRCDIR)/wine))
  $(eval $(call rules-autoconf,wine,32))
-diff --git a/kaldi b/kaldi
-deleted file mode 160000
-index a25f216f..00000000
---- a/kaldi
-+++ /dev/null
-@@ -1 +0,0 @@
--Subproject commit a25f216f5ce4eec5e45a6ab7651e20c9840a05cd
-diff --git a/openfst b/openfst
-deleted file mode 160000
-index 7dfd8081..00000000
---- a/openfst
-+++ /dev/null
-@@ -1 +0,0 @@
--Subproject commit 7dfd808194105162f20084bb4d8e4ee4b65266d5
-diff --git a/vosk-api b/vosk-api
-deleted file mode 160000
-index 12f29a34..00000000
---- a/vosk-api
-+++ /dev/null
-@@ -1 +0,0 @@
--Subproject commit 12f29a3415e4967e088ed09202bfb0007e5a1787
 -- 
 2.41.0
 
