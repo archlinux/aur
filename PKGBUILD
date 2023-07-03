@@ -1,8 +1,6 @@
-# Maintainer: Ashwini Sahu <ashwinisahu990@gmail.com>
-
 pkgname=arcolinux-betterlockscreen
-pkgver=21.08.03
-_pkgver=21.08-03
+pkgver=24
+_pkgver=23.06-01
 pkgrel=1
 pkgdesc="ArcoLinux-betterlockscreen"
 arch=('any')
@@ -12,7 +10,7 @@ depends=('python3' 'python-gobject' 'python-psutil' 'betterlockscreen')
 makedepends=('tar')
 provides=('template')
 source=("arcolinux-betterlockscreen-${_pkgver}.tar.gz::https://github.com/arcolinux/arcolinux-betterlockscreen/archive/refs/tags/${_pkgver}.tar.gz")
-md5sums=('71ac732ad37c26f83ed2a0ef42eeb020')
+md5sums=('7a6d775143cde6e837ab64d5c3193331')
 
 package() {
 	cd "$srcdir/arcolinux-betterlockscreen-${_pkgver}/usr"
