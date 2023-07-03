@@ -1,3 +1,8 @@
+set up automatic "walking back" commit.
+    Instead of downloading archives based on commits, download the repo and then in prepare(),
+    do git revert --no-commit 0766c053..HEAD
+    git commit -m "Reverting to known good build commit."
+    Finish update_last_successful.py
 test with gfx803
 party. I am so glad this is over.
 

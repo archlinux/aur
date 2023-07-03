@@ -10,7 +10,11 @@
 pkgbase=tensorflow-amd-git
 pkgname=(tensorflow-amd-git python-tensorflow-amd-git tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
 pkgver=2.12.0
-pkgrel=4
+_known_good_commit=de8086e14ae3152906e1137c212d2f7bb8ea463a
+# You can find the latest probably successful official build at:
+# http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/
+# Specifically, the revision for the "ROCmSoftwarePlatform/tensorflow-upstream" repository.
+pkgrel=5
 pkgdesc="Library for scalable machine learning (with ROCm)"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -19,7 +23,7 @@ arch=('x86_64')
 depends=('c-ares' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'openmp' \
          'rocrand' 'rccl' 'miopen-hip' 'hipfft' \
          'lib32-icu' 'zlib' 'glibc' 'gcc-libs' 'hsa-rocr' 'hip-runtime-amd' )
-         # lib32-icu etc. were discovered with namcap. 
+         # lib32-icu etc. were discovered with namcap.
 makedepends=('python-numpy' 'git' 'python-wheel' \
              'python-installer' 'python-setuptools' 'python-h5py' 'python-keras-applications' \
              'python-keras-preprocessing' 'cython' 'patchelf' 'python-requests' \
@@ -31,13 +35,13 @@ makedepends=('python-numpy' 'git' 'python-wheel' \
              # base-devel: fakeroot and some other things
              # rocm-core: /opt/rocm/.info/version, which the official docker image seems to need.
 optdepends=('tensorboard: Tensorflow visualization toolkit')
-source=("tensorflow-upstream.tar.gz::https://github.com/ROCmSoftwarePlatform/tensorflow-upstream/archive/de8086e14ae3152906e1137c212d2f7bb8ea463a.tar.gz"
+source=('tensorflow-upstream-rocm::git+https://github.com/ROCmSoftwarePlatform/tensorflow-upstream#branch=r2.12-rocm-enhanced'
         tensorflow-2.10-sparse-transpose-op2.patch
         https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
         fix-c++17-compat.patch
         fix-cstdint-tsllibio-cache.patch
         remove-log-spam.patch)
-sha512sums=('9bb41c8cd4c5bb539420a10c5a299cb8ad2f93764991175cb48be8efe7dc1010f4cd374a89533cdee7f83c1c2edbcfd3301a04c8dcc0ea97d850da6ea49595f9'
+sha512sums=( SKIP
             '45325ef3130aa95d48121d8c39bb4e683bdb5faa936ff29af953a2c359edb441a29e2dc0cae53ec6c08eee0432c0eeeaa7a40fbd063467b7f3c250d0f7f8ffed'
             'e2adb747cd1fe3c90686831703618af3f8bc8197a96d9e1e90e66db38dbc4e7a94d88dac755b25e288002983a87fcffbfb0d7c2e356d979d4635301c3daf9281'
             'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
@@ -76,8 +80,9 @@ check_dir() {
 }
 
 prepare() {
-  [ -d tensorflow-upstream-rocm ] && rm -rf tensorflow-upstream-rocm
-  mv tensorflow-upstream-18ddd5aa0329993f581bdb433b999b85c15f69e3 tensorflow-upstream-rocm
+  cd tensorflow-upstream-rocm
+  git revert --no-commit "$_known_good_commit..HEAD"
+  cd ..
   
   # Allow any bazel version
   echo "*" > tensorflow-upstream-rocm/.bazelversion
@@ -94,15 +99,15 @@ prepare() {
   # setup.py generates ~1Mb of warnings if you don't explicitly include namespace packages.
   sed -i -E "s/find_packages/find_namespace_packages/" tensorflow-upstream-rocm/tensorflow/tools/pip_package/setup.py
   
-  patch -Np1 -i "${srcdir}/tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-upstream-rocm || :
+  patch -Np1 -i "${srcdir}/tensorflow-2.10-sparse-transpose-op2.patch" -d tensorflow-upstream-rocm
   # Patch for gcc13: cstdint is no longer implicitly included in some headers, so include it explicitly.
   # See https://gcc.gnu.org/gcc-13/porting_to.html
-  patch -Np1 -i "${srcdir}/fix-cstdint-tsllibio-cache.patch" -d tensorflow-upstream-rocm || :
-  # Patch to tensorflow/core/common_runtime/gpu_fusion_pass.cc so "ROCm Fusion is enabled." doesn't spam.
-  patch -Np1 -i "${srcdir}/remove-log-spam.patch" -d tensorflow-upstream-rocm || :
+  patch -Np1 -i "${srcdir}/fix-cstdint-tsllibio-cache.patch" -d tensorflow-upstream-rocm
+  # Patch tensorflow/core/common_runtime/gpu_fusion_pass.cc to fix "ROCm Fusion is enabled." log spam.
+  patch -Np1 -i "${srcdir}/remove-log-spam.patch" -d tensorflow-upstream-rocm
   
   [ -d tensorflow-upstream-opt-rocm ] && rm -rf tensorflow-upstream-opt-rocm
-  # Note that cp may not replace files if they already exist.
+  # cp may not replace files if they already exist, even if contents are different.
   # Very confusing to make changes in -rocm and not have them show up in -opt-rocm...
   cp -r tensorflow-upstream-rocm tensorflow-upstream-opt-rocm
   
@@ -113,7 +118,7 @@ prepare() {
     echo \ you must provide a target list in /opt/rocm/bin/target.lst
     echo Something of the form:
     echo -e "gfx803\ngfx900\ngfx906\ngfx908\ngfx90a\ngfx1030\ngfx904"
-    echo You can see the architectures installed on your machine by running
+    echo You can see the architectures of cards in your machine by running
     echo "pacman -S rocminfo"
     echo "/opt/rocm/bin/rocminfo | grep gfx"
   fi
