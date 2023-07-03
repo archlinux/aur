@@ -2,14 +2,14 @@
 
 pkgname=libnotify-git
 _pkgname=libnotify
-pkgver=0.7.12.r0.8162b1d
+pkgver=0.8.2.r0.69aff6e
 pkgrel=1
 pkgdesc="Library for sending desktop notifications"
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://gitlab.gnome.org/GNOME/libnotify'
 depends=()
-makedepends=('pkgconfig' 'meson' 'xmlto' 'git' 'gobject-introspection' 'gtk-doc' 'gnome-common-git')
+makedepends=('pkgconfig' 'meson' 'xmlto' 'git' 'gobject-introspection' 'gtk-doc' 'gnome-common' 'gi-docgen')
 options=('!libtool')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=0.7.12")
