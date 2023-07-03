@@ -1,7 +1,7 @@
 # Maintainer: f4iey <f4iey@f4iey.fr>	
 
 pkgname=not1mm-git
-pkgver=r617.206f291
+pkgver=r693.945c55b
 pkgrel=1
 pkgdesc="Not1MM != N1MM, An amateur radio contest logger for Linux."
 arch=('any')
