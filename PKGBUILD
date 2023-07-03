@@ -87,6 +87,7 @@ build() {
     --libdir="/usr/lib/${pkgbase}"
     --includedir="/usr/include/${pkgbase}"
     --with-history
+    --without-docbook
     --with-icu
     --without-python
     --with-threads
@@ -115,6 +116,7 @@ package_libxml2-2.9() {
 
   mkdir -p ../doc/usr/share
   mv "${pkgdir}/usr/share/"{doc,gtk-doc} -t ../doc/usr/share
+  mv "${pkgdir}/usr/share/aclocal/libxml.m4" "${pkgdir}/usr/share/aclocal/libxml-${pkgver}.m4"
 
   install -Dm644 Copyright -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
