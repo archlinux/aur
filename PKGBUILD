@@ -3,7 +3,7 @@
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-xe-next-git
-pkgver=6.3.r1173523.ef153c77d25f
+pkgver=6.4.r1189870.53bd6056f6ec
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge Intel Xe driver'
 _product="${pkgbase%-git}"
@@ -25,7 +25,7 @@ source=(
   uAPI-bits-for-small-bar.patch
 )
 sha256sums=('SKIP'
-            '76ada98e3b96875fc391a39040afb7566c9f4c17cac89f20832e44dae89a0414'
+            '606c0edffde27de962e71e97df2bccb77fb43ff8296c72a90d9e319312824738'
             'edb89714a248c3f6d33de7ebe576623cf80e5bc70bb66ab29cf949171ec84d9f'
             '6bdb36ff27d0b5999a3ce4d9e0a79900d4cee0fd8cbb8a4389c3195228972d39')
 
