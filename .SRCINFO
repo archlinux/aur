@@ -1,6 +1,6 @@
 pkgbase = dnschanger-bin
 	pkgdesc = Dns Changer for Windows, Linux operating systems
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://dnschanger.github.io/
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = dnschanger-bin
 	depends = libx11
 	depends = hicolor-icon-theme
 	conflicts = dnschanger
-	source = dnschanger-2.1.0.deb::https://github.com/DnsChanger/dnsChanger-desktop/releases/download/v2.1.0/DNS.Changer-linux-amd64-2.1.0.deb
+	source = dnschanger-2.1.1.deb::https://github.com/DnsChanger/dnsChanger-desktop/releases/download/v2.1.1/DNS.Changer-linux-amd64-2.1.1.deb
 	source = LICENSE::https://raw.githubusercontent.com/DnsChanger/dnsChanger-desktop/main/LICENSE
-	sha256sums = 270224ed5f0d3eb3a1928d524c6be43747ecfa28b7a998a5fac6729a483c207a
+	sha256sums = 31bf3de2b5df7d8d789e324d01249a0aed94804401dffaa6c6216af46a7528a5
 	sha256sums = d8cd7d03b1c407ad97d6059dd8d6821ce42ab3bd8e9d39caab2fe4e730c8f737
 
 pkgname = dnschanger-bin

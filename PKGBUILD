@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dnschanger-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Dns Changer for Windows, Linux operating systems"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libdrm' 'pango' 'nss' 'libxfixes' 'gtk3' 'glib2' 'at-spi2-core' 'libxr
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/DNS.Changer-linux-amd64-${pkgver}.deb"
    "LICENSE::https://raw.githubusercontent.com/DnsChanger/dnsChanger-desktop/main/LICENSE")
-sha256sums=('270224ed5f0d3eb3a1928d524c6be43747ecfa28b7a998a5fac6729a483c207a'
+sha256sums=('31bf3de2b5df7d8d789e324d01249a0aed94804401dffaa6c6216af46a7528a5'
             'd8cd7d03b1c407ad97d6059dd8d6821ce42ab3bd8e9d39caab2fe4e730c8f737')
  
 package() {
