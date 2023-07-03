@@ -2,18 +2,34 @@
 
 _name=pytest-shell-utilities
 pkgname=python-pytest-shell-utilities
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Pytest plugin providing fixtures and code to help with running shell commands on tests"
 arch=(any)
 url="https://github.com/saltstack/pytest-shell-utilities"
 license=(Apache)
-depends=(python python-attrs python-pytest python-pytest-helpers-namespace python-pytest-skip-markers python-psutil python-typing-extensions)
-makedepends=(python-build python-installer python-setuptools python-setuptools-declarative-requirements python-setuptools-scm python-toml python-wheel)
+depends=(
+  python
+  python-attrs
+  python-pytest
+  python-pytest-helpers-namespace
+  python-pytest-skip-markers
+  python-psutil
+  python-typing-extensions
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-setuptools-declarative-requirements
+  python-setuptools-scm
+  python-toml
+  python-wheel
+)
 checkdepends=(python-pytest-subtests)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('98a78d7a9c5385e066f04bbfeb5df1b43d76d9d3d45749c4267385f58b99f751')
-b2sums=('bb3760f626857bca6eac3c27132416db882becfb5da551cab19d513d700367943697e0ffb980b4189bb7965d0f082f3fcee408ea6bb18e156d87cfc36c5c130a')
+sha256sums=('7f9a1aac43fad962da11e0ba1ae771eb3b84b73fc4bee94a8f563159231e1920')
+b2sums=('240104a95deefddc68f4c563d52184a0a9068b28748beadf7dbe25ade31d9cc8745bf535d05d8df0165fa28ab9f0313fb37fd6cd4ca09db8709e6b9a27264089')
 
 build() {
   cd $_name-$pkgver
