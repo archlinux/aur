@@ -1,0 +1,16 @@
+pkgbase = samora-lang
+	pkgdesc = Samora Lang - A Simple Interpreted Programming Language just for Educational Purposes
+	pkgver = 1.20.4.r.
+	pkgrel = 1
+	url = https://github.com/GraHms/Samora-Lang
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = go
+	provides = samora
+	source = git+https://github.com/GraHms/Samora-Lang
+	md5sums = SKIP
+
+pkgname = samora-lang
