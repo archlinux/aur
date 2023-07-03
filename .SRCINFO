@@ -1,17 +1,16 @@
 pkgbase = headsetcontrol-git
 	pkgdesc = Sidetone and Battery status for Logitech G930, G533, G633, G933 SteelSeries Arctis 7/PRO 2019 and Corsair VOID (Pro)
-	pkgver = 2.3.r52.gc7122e9
-	pkgrel = 1
+	pkgver = 2.7.0.r1.gbd8aed3
+	pkgrel = 2
 	url = https://github.com/Sapd/HeadsetControl
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
 	depends = hidapi
-	provides = headsetcontrol
+	provides = headsetcontrol=2.7.0.r1.gbd8aed3
 	conflicts = headsetcontrol
 	source = headsetcontrol::git+https://github.com/Sapd/HeadsetControl.git
 	sha256sums = SKIP
 
 pkgname = headsetcontrol-git
-
