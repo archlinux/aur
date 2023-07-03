@@ -1,6 +1,6 @@
 pkgbase = renpy-git
 	pkgdesc = Visual novel engine Ren'Py along with its platdeps libs (dev channel)
-	pkgver = 14267.fe2d76bdd
+	pkgver = 14429.c7c499c6c
 	pkgrel = 1
 	url = http://www.renpy.org
 	install = renpy.install
@@ -18,7 +18,7 @@ pkgbase = renpy-git
 	makedepends = python-wheel
 	depends = ffmpeg
 	depends = fribidi
-	depends = python-pygame_sdl2-git
+	depends = python-pygame-sdl2
 	depends = sdl2_image
 	depends = sdl2_mixer
 	depends = sdl2_gfx
