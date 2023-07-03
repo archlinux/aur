@@ -139,7 +139,8 @@ package_libxml2-2.9() {
   mv "${pkgdir}/usr/share/aclocal/${_pkg}.m4" \
      "${pkgdir}/usr/share/aclocal/${_pkg}2.9.m4"
 
-  install -Dm644 Copyright -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 Copyright \
+          -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_libxml2-2.9-docs() {
@@ -148,7 +149,9 @@ package_libxml2-2.9-docs() {
 
   mv doc/* "${pkgdir}"
 
-  install -Dm644 "${_pkgname}/Copyright" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "${_pkgname}-${_commit}"
+  install -Dm644 "Copyright" \
+          -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim:set sw=2 sts=-1 et:
