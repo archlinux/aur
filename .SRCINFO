@@ -1,6 +1,6 @@
 pkgbase = perl-crypt-openssl-verify
 	pkgdesc = OpenSSL Verify certificate verification in XS.
-	pkgver = 0.35
+	pkgver = 0.36
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Crypt-OpenSSL-Verify
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = perl-crypt-openssl-verify
 	depends = perl
 	depends = perl-crypt-openssl-x509
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-module/Crypt/Crypt-OpenSSL-Verify-0.35.tar.gz
-	sha256sums = 0cfb1d340be7009d404115f733ee00b5bf5e388e6af7bfb7593e7da7d21fdd90
+	source = http://cpan.perl.org/modules/by-module/Crypt/Crypt-OpenSSL-Verify-0.36.tar.gz
+	sha256sums = deefdae6b14877f590f08c4eb50e3cd3710aa3ee62412c08d183f55b3af73e9e
 
 pkgname = perl-crypt-openssl-verify
