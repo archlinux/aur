@@ -1,6 +1,6 @@
 pkgbase = starc-appimage
-	pkgdesc = Text editor for film, theatre, radio scripts or comic books.
-	pkgver = 0.5.3a
+	pkgdesc = Intuitive writing app with smart features and a streamlined process for film, TV, radio, stage and more.
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://starc.app/
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = starc-appimage
 	depends = zlib
 	depends = bash
 	depends = patch
-	provides = starc=0.5.3a
+	provides = starc=0.5.4
 	conflicts = starc
 	options = !strip
-	source = starc-appimage-0.5.3a::https://github.com/story-apps/starc/releases/download/v0.5.3a/starc-setup.AppImage
+	source = starc-appimage-0.5.4::https://github.com/story-apps/starc/releases/download/v0.5.4/starc-setup.AppImage
 	source = starc.desktop.patch
 	source = starc.sh
-	sha256sums = 35710c38d7d6b3b06c68eefa14647c07f1f683122f177451bcd02fadf40dc5ad
-	sha256sums = 583fcc57942d9c9e1a8e41a0a95fcc3f4cdd1660767e014921c30a3fa272f5fa
+	sha256sums = 9b2091c718924bd7bb14cb7cc5d96d526f294ecdf6fdaa957b1b926ac7f63040
+	sha256sums = d004ebb0e333f4d3e3072cc0fa9db65cd79bdcfb959d8b86faec568643a75b91
 	sha256sums = 642005557de950e4fd37bc87fe2fb051e7f93f61e7287161fe3c99c9918977c7
 
 pkgname = starc-appimage
