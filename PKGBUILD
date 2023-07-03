@@ -1,4 +1,4 @@
-pkgname=mingw-w64-hdf5
+pkgname=mingw-w64-hdf5110
 pkgver=1.10.2
 _pkgver=${pkgver}
 pkgrel=1
@@ -8,6 +8,8 @@ url="http://www.hdfgroup.org/HDF5/"
 license=('custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib')
 makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
+provides=('mingw-w64-hdf5')
+conflicts=('mingw-w64-hdf5')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${pkgver:0:4}/hdf5-${pkgver/_/-}/src/hdf5-${pkgver/_/-}.tar.bz2"
         attribute-before-function.patch)
