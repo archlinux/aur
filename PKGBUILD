@@ -1,16 +1,27 @@
-# Maintainer: Lubosz Sarnecki <lubosz at gmail dot com>
-# Past Maintainer: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
+# Maintainer: Matthew Sexton <matthew@asylumtech.com>
+# Contributor: Lubosz Sarnecki <lubosz at gmail dot com>
+# Contributor: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
 
 pkgname=siril-git
-_gitname=siril
-pkgver=0.9.12.2520.85ba0388
-pkgrel=1
+_pkgname=${pkgname%-git}
+pkgver=1.2.0.6073.e36485055
+pkgrel=2
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('gtk3' 'fftw' 'cfitsio' 'gsl' 'libconfig' 'opencv' 'exiv2' 'libheif' 'libraw')
-makedepends=('intltool')
 url="https://www.siril.org/"
+depends=(
+		'gtk3'
+		'fftw'
+		'cfitsio'
+		'gsl'
+		'opencv'
+		'exiv2'
+		'libxisf'
+		'ffms2'
+		)
+checkdepends=('criterion' 'libcurl-gnutls')
+makedepends=('git' 'cmake' 'meson' 'ninja')
 optdepends=('libpng: PNG import'
 'libjpeg: JPEG import and export'
 'libtiff: TIFF import and export'
@@ -19,27 +30,32 @@ optdepends=('libpng: PNG import'
 )
 source=('git+https://gitlab.com/free-astro/siril.git')
 sha1sums=('SKIP')
-provides=($_gitname=$pkgver)
-conflicts=($_gitname)
-replaces=($_gitname)
+provides=($_pkgname=$pkgver)
+conflicts=($_pkgname)
+replaces=($_pkgname)
 
 pkgver() {
-	cd "${srcdir}/${_gitname}"
+	cd "${srcdir}/${_pkgname}"
 	printf "%s.%s.%s" "$(git describe | cut -d "-" -f1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-	cd "${_gitname}"
+prepare() {
+	cd "${srcdir}/${_pkgname}"
 	git submodule update --init --recursive
-	./autogen.sh --prefix=/usr
-	make
+}
+
+build() {
+	cd "${srcdir}/${_pkgname}"
+	arch-meson _build -D criterion=true -D enable-libcurl=yes
+	meson compile -C _build
+}
+
+check() {
+  cd "${srcdir}/${_pkgname}"
+  meson test -C _build --print-errorlogs
 }
 
 package() {
-	cd "${_gitname}"
-	make DESTDIR="${pkgdir}" install
-	install -v -d ${pkgdir}/usr/share/applications/
-	install -v -d ${pkgdir}/usr/share/mime/packages/
-	install -v -m 644 platform-specific/linux/org.free_astro.siril.desktop ${pkgdir}/usr/share/applications/
-	install -v -m 644 platform-specific/linux/siril.xml ${pkgdir}/usr/share/mime/packages/
+	cd "${srcdir}/${_pkgname}"
+	meson install -C _build --destdir "$pkgdir"
 }
