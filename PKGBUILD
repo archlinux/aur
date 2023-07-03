@@ -4,10 +4,10 @@ _bcname=BSgenome.Hsapiens.NCBI.GRCh38
 _bcver=1.3.1000
 pkgname="r-${_bcname,,}"
 pkgver="${_bcver//[:-]/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Full genome sequences for Homo sapiens (GRCh38)"
 arch=("any")
-url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
+url="https://bioconductor.org/packages/release/data/annotation/html/${_bcname}.html"
 license=("Artistic2.0")
 depends=(
     "r"
@@ -15,7 +15,7 @@ depends=(
 )
 
 source=("https://bioconductor.org/packages/release/data/annotation/src/contrib/${_bcname}_${_bcver}.tar.gz")
-b2sums=('db497e7de36335b0d5716ffef6082e1f6e147557c9743362d0d7c59da17fb974521b59bff1ae65f1f16e8d146e5baf6c130a9536565d1384d00347b21034601a')
+b2sums=("db497e7de36335b0d5716ffef6082e1f6e147557c9743362d0d7c59da17fb974521b59bff1ae65f1f16e8d146e5baf6c130a9536565d1384d00347b21034601a")
 
 build() {
     mkdir -p "${srcdir}/build/"
