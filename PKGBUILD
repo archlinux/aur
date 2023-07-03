@@ -215,6 +215,8 @@ package_minigui-mg-tools-git() {
     pkgdesc="A modern and proven cross-platform window system for embedded systems or smart IoT devices."
     url="${_url}/mg-tools"
     depends=(
+            freetype2
+            openssl
             minigui
             minigui-mgutils
             )
