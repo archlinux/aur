@@ -13,8 +13,12 @@ makedepends=(git)
 provides=(1oom)
 conflicts=(1oom)
 source=(  'git+https://github.com/1oom-fork/1oom.git'
+          'Master_of_Orion_cover.png'
+          '1oom.desktop'
           '1oom_classic_sdl2.sh' )
 md5sums=('SKIP'
+         '49248e72b7ddc5209cca2c1c61099d85'
+         'ccac2feb67cecfc30b8156edf106b7ca'
          '41b52627b2d52b477adcbc2a9a627b37')
 
 pkgver() {
@@ -48,4 +52,10 @@ package() {
   # install launch script
   mv "$pkgdir/usr/bin/1oom_classic_sdl2" "$pkgdir/usr/bin/1oom_classic_sdl2-bin"
   install -m 0755 "${srcdir}/1oom_classic_sdl2.sh" "$pkgdir/usr/bin/1oom_classic_sdl2"
+
+  # install icon
+  install -Dm 0644 ${srcdir}/Master_of_Orion_cover.png $pkgdir/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png
+
+  # install desktop file
+  install -Dm644 ${srcdir}/${_pkgname}.desktop $pkgdir/usr/share/applications/${_pkgname}.desktop
 }

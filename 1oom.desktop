@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Master of Orion (1oom)
+Path=/usr/bin
+Exec=1oom_classic_sdl2
+Icon=1oom
+Terminal=false
+Categories=Games;
