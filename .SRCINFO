@@ -1,6 +1,6 @@
 pkgbase = r-sparsematrixstats
 	pkgdesc = Summary Statistics for Rows and Columns of Sparse Matrices
-	pkgver = 1.12.1
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sparseMatrixStats
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = r-sparsematrixstats
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sparseMatrixStats_1.12.1.tar.gz
-	sha256sums = 60e6b36774598e9ea70c9f11f759f1dc3099aa3bce947b54f67f9467d076c47f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sparseMatrixStats_1.12.2.tar.gz
+	sha256sums = 81372abd32422f2f8fc2ece0cc75db3b6b2ad1e8a7c5482243115e6fdea74a02
 
 pkgname = r-sparsematrixstats
