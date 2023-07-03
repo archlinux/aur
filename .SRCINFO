@@ -1,6 +1,6 @@
 pkgbase = python-trame-vtk
 	pkgdesc = VTK widgets for trame
-	pkgver = 2.5.3
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://github.com/Kitware/trame-vtk
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-trame-vtk
 	makedepends = python-wheel
 	depends = python-trame-client
 	depends = paraview
-	source = trame-vtk-2.5.3.tar.gz::https://github.com/Kitware/trame-vtk/archive/v2.5.3.tar.gz
-	sha512sums = f3cfbc9e8e6daf53f64a869659eb8bbe2f841b7e89d7dd498a184c352f883e0f6d45ceae29e56ffe0118fa9aed03d3e6391cadcd12cb2cc7b6bcf2272e575857
+	source = trame-vtk-2.5.4.tar.gz::https://github.com/Kitware/trame-vtk/archive/v2.5.4.tar.gz
+	sha512sums = bc2745283f910634a07bc91793dbc56a5146c030b2c19817564bffd8e967db25b789262d47a918e3396fa7e0b183b41322e49e96d1875bbd96bf63bacb280b9a
 
 pkgname = python-trame-vtk
