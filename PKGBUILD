@@ -4,7 +4,7 @@
 
 pkgname=gotosocial
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ActivityPub social network server written in Golang'
 arch=('x86_64')
 url='https://gotosocial.org'
@@ -65,6 +65,7 @@ prepare() {
   mkdir build
 
   # download dependencies
+  export GOPATH="${srcdir}"
   go mod download
 
   # use FHS directories
@@ -78,17 +79,19 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOPATH="${srcdir}"
 
   # generate up-to-date swagger.yaml
   swagger generate spec --scan-models --exclude-deps -o web/assets/swagger.yaml
   sed -e "s/REPLACE_ME/$pkgver/" -i web/assets/swagger.yaml
 
   go build -v \
-    -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
+    -ldflags "-compressdwarf=false \
+    -linkmode external \
+    -extldflags ${LDFLAGS} \
     -X main.Version=$pkgver" \
     -o build \
     ./cmd/...
