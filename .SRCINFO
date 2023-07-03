@@ -1,0 +1,20 @@
+pkgbase = carl-storm
+	pkgdesc = The Computer ARithmetic and Logic library for the probabilistic model checker Storm
+	pkgver = 14.25
+	pkgrel = 1
+	url = https://github.com/moves-rwth/carl-storm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = boost
+	depends = cln
+	depends = eigen
+	depends = ginac
+	depends = gmp
+	conflicts = carl
+	replaces = carl-master14
+	source = carl-storm-14.25.tar.gz::https://github.com/moves-rwth/carl-storm/archive/14.25.tar.gz
+	sha256sums = 511740d53c2a6a41c3ccb3bd3b2d9ec89d0576f37b8804fc15fbe083e7a357da
+
+pkgname = carl-storm
