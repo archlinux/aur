@@ -4,10 +4,10 @@ _bcname=BSgenome.Scerevisiae.UCSC.sacCer2
 _bcver=1.4.0
 pkgname="r-${_bcname,,}"
 pkgver="${_bcver//[:-]/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Saccharomyces cerevisiae (Yeast) full genome (UCSC version sacCer2)"
 arch=("any")
-url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
+url="https://bioconductor.org/packages/release/data/annotation/html/${_bcname}.html"
 license=("Artistic2.0")
 depends=(
     "r"
