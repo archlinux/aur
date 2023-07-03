@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-toolkit-appimage
-pkgver=1.3.7
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A cross platform desktop app written in Typescript/Node using React and Electron. Android-Toolkit is a GUI for adb and can be used to modify android devices such as firesticks and google TVs."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Android-Toolkit-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/AnthonyGress/Android-Toolkit/main/LICENSE")
-sha256sums=('f8f1f6974ed047d99448838d1c6b15e6903f6e94503b9a6cc0ee61dce4e8daaa'
+sha256sums=('5e65462ffcb5c037b06344c8933b6f13a797d66795ef4b7993f4d254511d18f8'
             '65cb0d2fdca7e4375a2ab466fb1e37fef2514eb10c88c5cf8998893a77295176')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
