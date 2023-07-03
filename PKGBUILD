@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SWATH2stats
-_pkgver=1.30.0
+_pkgver=1.30.1
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.30.1
 pkgrel=1
 pkgdesc='Transform and Filter SWATH Data for Statistical Packages'
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b6f013416966850c8632d26cccd0c71c267b4ea0491557b0f7ca1fdd5880005a')
+sha256sums=('1800c75add448c03110caedf58cfd73eac83fe7983c0f7293eebf9a61ccc6d42')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
