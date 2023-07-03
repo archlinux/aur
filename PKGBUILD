@@ -115,9 +115,9 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "patch-${pkgver}-xanmod${xanmod}${_revision}.xz::https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}${_revision}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
-        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}.x/0001-bore.patch"
-        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}.x/0002-glitched-cfs.patch"
-        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}.x/0003-glitched-cfs-additions.patch")
+        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0001-bore.patch"
+        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0002-glitched-cfs.patch"
+        "https://raw.githubusercontent.com/micros24/linux-xanmod-bore/${_major}/0003-glitched-cfs-additions.patch")
         #"patch-${pkgver}-xanmod${xanmod}.xz::https://sourceforge.net/projects/xanmod/files/releases/stable/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
