@@ -1,22 +1,24 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=hush3
-pkgver=3.7.1
+pkgver=3.9.4
 pkgrel=1
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
 arch=('x86_64')
 license=('GPL3')
 depends=('libsodium' 'lib32-zlib')
-makedepends=('unzip' 'wget' 'git' 'python' 'rust' 'curl' 'autoconf=2.69')
+makedepends=('unzip' 'wget' 'git' 'python' 'rust' 'curl' 'autoconf')
 conflicts=('hush3-bin')
-source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('878da198f978c4bfa6e4c6953dda8389ebe1281372f722669e5d89656661d48c')
+source=("$url/archive/v$pkgver.tar.gz"
+        "hushd.service")
+sha512sums=('747b558d26edce888f4e855b51193b166972d3b0bbebebe12b73e3e23d0cf5c446a5f25076e61ebd7422af194edc356c6ae5274066097b8effb31254acf166a1'
+            'f8ab447fc4d91a86090326427fbbe8eda019fcfddf0ba1654f599903b25f4084eacc510f262ce03f176e7fd22316c55e5d8cf43dd9a4ccea375643e8fa8270c6')
 
 build() {
   tar xzvf v$pkgver.tar.gz
   cd "$pkgname"
-  ./zcutil/build.sh -j$(nproc)
+  ./build.sh -j$(nproc)
 }
 
 package() {
@@ -28,11 +30,6 @@ package() {
   install -Dm755 "${srcdir}/$pkgname/src/hush-smart-chain" "${pkgdir}/opt/$pkgname/hush-smart-chain"
   install -Dm755 "${srcdir}/$pkgname/src/hush-tx" "${pkgdir}/opt/$pkgname/hush-tx"
 
-  # rename KMD binaries used as to not overwrite any installed
-  install -Dm755 "${srcdir}/$pkgname/src/komodo-cli" "${pkgdir}/opt/$pkgname/hush-komodo-cli"
-  install -Dm755 "${srcdir}/$pkgname/src/komodod" "${pkgdir}/opt/$pkgname/hush-komodod"
-  install -Dm755 "${srcdir}/$pkgname/src/komodo-tx" "${pkgdir}/opt/$pkgname/hush-komodo-tx"
-
   # install required sapling files and asmap.dat
   install -Dm644 "${srcdir}/$pkgname/sapling-output.params" "${pkgdir}/opt/$pkgname/sapling-output.params"
   install -Dm644 "${srcdir}/$pkgname/sapling-spend.params" "${pkgdir}/opt/$pkgname/sapling-spend.params"
@@ -43,18 +40,18 @@ package() {
   install -Dm644 "${srcdir}/$pkgname/doc/man/hushd.1" "${pkgdir}/usr/share/man/man1/hushd.1"
   install -Dm644 "${srcdir}/$pkgname/doc/man/hush-tx.1" "${pkgdir}/usr/share/man/man1/hush-tx.1"
 
-  # links scripts to /usr/bin
+  # create symlinks
   install -d "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hush-cli "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hushd "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hush-smart-chain "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hush-tx "${pkgdir}/usr/bin"
-  ln -s /opt/${pkgname}/hush-komodo-cli "${pkgdir}/usr/bin"
-  ln -s /opt/${pkgname}/hush-komodod "${pkgdir}/usr/bin"
-  ln -s /opt/${pkgname}/hush-komodo-tx "${pkgdir}/usr/bin"
 
   install -d "${pkgdir}/usr/share/hush"
   ln -s /opt/${pkgname}/sapling-output.params "${pkgdir}/usr/share/hush"
   ln -s /opt/${pkgname}/sapling-spend.params "${pkgdir}/usr/share/hush"
   ln -s /opt/${pkgname}/asmap.dat "${pkgdir}/usr/share/hush"
+
+  # install systemd service
+  install -Dm644 -t "${pkgdir}"/usr/lib/systemd/user "${srcdir}"/hushd.service
 }
