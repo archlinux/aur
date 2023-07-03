@@ -1,0 +1,12 @@
+[Unit]
+Description=Act Runner
+After=gitea.service
+
+[Service]
+type=exec
+ExecStart=/usr/bin/act_runner -c /etc/act_runner/act_runner.yaml daemon
+PrivateDevices=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

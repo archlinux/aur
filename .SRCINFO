@@ -1,14 +1,19 @@
-pkgbase = act
-	pkgdesc = Run your GitHub Actions locally
-	pkgver = 0.2.45
+pkgbase = act-runner
+	pkgdesc = A runner for Gitea Actions based on GitHub's Act
+	pkgver = 0.2.3
 	pkgrel = 1
-	url = https://github.com/nektos/act
-	arch = i686
+	url = https://gitea.com/gitea/act_runner
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = docker
-	source = act-0.2.45.tar.gz::https://github.com/nektos/act/archive/v0.2.45.tar.gz
-	sha256sums = 49f6afd10253b4c4dfe36f89f633dfea325d5133a6eee8842e320994b2a08f39
+	depends = gitea
+	provides = act_runner
+	source = act_runner-0.2.3.tar.gz::https://gitea.com/gitea/act_runner/archive/v0.2.3.tar.gz
+	source = act_runner.service
+	source = act_runner.yaml
+	sha256sums = SKIP
+	sha256sums = d776f0d17d6daf7fdaf1ce36ac7e1b66317d23cf334f644b6f85735313a18e41
+	sha256sums = c7daf8870a1b8ac67358b912e0511be1f815345a6b7bd9643050e9c3a48f83e9
 
-pkgname = act
+pkgname = act-runner
