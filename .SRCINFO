@@ -8,9 +8,9 @@ pkgbase = uefi-firmware-parser-git
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	provides = uefi-firmware-parser
 	conflicts = uefi-firmware-parser
 	source = uefi-firmware-parser::git+https://github.com/theopolis/uefi-firmware-parser#branch=master
 	sha1sums = SKIP
 
 pkgname = uefi-firmware-parser-git
-

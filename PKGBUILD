@@ -9,6 +9,7 @@ license=(MIT)
 url='https://github.com/theopolis/uefi-firmware-parser'
 depends=(python)
 conflicts=('uefi-firmware-parser')
+provides=('uefi-firmware-parser')
 makedepends=(python-setuptools)
 source=(uefi-firmware-parser::git+https://github.com/theopolis/uefi-firmware-parser#branch=master)
 sha1sums=('SKIP')
