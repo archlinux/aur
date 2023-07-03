@@ -2,7 +2,7 @@ pkgbase = python-psycogreen
 	pkgdesc = psycopg2 integration with coroutine libraries
 	pkgver = 1.0.2
 	pkgrel = 1
-	url = https://bitbucket.org/dvarrazzo/psycogreen
+	url = https://github.com/psycopg/psycogreen/
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
@@ -11,4 +11,3 @@ pkgbase = python-psycogreen
 	md5sums = 4f6f68ba5ffb1d6908160de3dacd3618
 
 pkgname = python-psycogreen
-
