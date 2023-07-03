@@ -22,6 +22,7 @@ prepare() {
 	rm *.gz
 	bsdtar -xvpf *.exe ./resources
 	asar e ./**/app.asar ./app
+	echo "exports.is_vip = () => true;" >> ./**/libuser.js
 	pushd app
 	cp -av $srcdir/napi-* ./node_modules/sqlite3/lib/binding
 	rm -vrf ./node_modules/node-gyp/
