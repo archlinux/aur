@@ -1,7 +1,7 @@
 pkgbase = forgit
 	pkgdesc = Utility tool powered by fzf for using git interactively
 	pkgver = 23.07.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wfxr/forgit
 	install = forgit.install
 	arch = any
