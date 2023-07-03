@@ -18,7 +18,7 @@ pkgbase = python2-libxml2
 	depends = readline
 	depends = xz
 	depends = zlib
-	source = python2-libxml2::git+https://gitlab.gnome.org/GNOME/libxml2#commit=7846b0a677f8d3ce72486125fa281e92ac9970e8
+	source = python2-libxml2::git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=7846b0a677f8d3ce72486125fa281e92ac9970e8
 	source = no-fuzz.diff
 	source = https://www.w3.org/XML/Test/xmlts20130923.tar.gz
 	sha256sums = SKIP

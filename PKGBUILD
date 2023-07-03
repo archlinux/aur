@@ -38,7 +38,7 @@ makedepends=(
 _commit=7846b0a677f8d3ce72486125fa281e92ac9970e8  # tags/v2.9.14^0
 _w3_tests="https://www.w3.org/XML/Test/xmlts20130923.tar.gz"
 source=(
-  "${pkgname}::git+${_url}#commit=$_commit"
+  "${pkgname}::git+${_url}.git#commit=$_commit"
   no-fuzz.diff # Do not run fuzzing tests
   "${_w3_tests}"
 )
