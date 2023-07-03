@@ -14,7 +14,7 @@ _known_good_commit=de8086e14ae3152906e1137c212d2f7bb8ea463a
 # You can find the latest probably successful official build at:
 # http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/
 # Specifically, the revision for the "ROCmSoftwarePlatform/tensorflow-upstream" repository.
-pkgrel=5
+pkgrel=6
 pkgdesc="Library for scalable machine learning (with ROCm)"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -81,7 +81,7 @@ check_dir() {
 
 prepare() {
   cd tensorflow-upstream-rocm
-  git revert --no-commit "$_known_good_commit..HEAD"
+  git revert --no-commit "$_known_good_commit..HEAD" || :
   cd ..
   
   # Allow any bazel version
