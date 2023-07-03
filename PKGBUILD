@@ -1,4 +1,4 @@
-# Maintainer: zhullyb <zhullyb at outlook dot com>
+# Maintainer: jpberdejo <jpberdejo at gmail dot com>
 pkgname=dolphin-megasync-bin
 pkgver=5.2.0
 pkgrel=1
