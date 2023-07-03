@@ -9,8 +9,8 @@ pkgname=(
   libxml2
   libxml2-docs
 )
-pkgver=2.10.4
-pkgrel=6
+pkgver=2.11.4
+pkgrel=1
 pkgdesc="XML C parser and toolkit"
 url="https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home"
 arch=(x86_64)
@@ -26,16 +26,14 @@ makedepends=(
   git
   python
 )
-_commit=223cb03a5d27b1b2393b266a8657443d046139d6  # tags/v2.10.4^0
+_commit=2e9f7860a9cb8be29eca90b7409ef0278d30ef10  # tags/v2.11.4^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
-  0001-Fix-python3-unicode-errors.patch
-  0002-HACK-Don-t-run-fuzzing-tests.patch
+  0001-HACK-Don-t-run-fuzzing-tests.patch
   https://www.w3.org/XML/Test/xmlts20130923.tar.gz
 )
 b2sums=('SKIP'
-        'ec5a0955906c5fdd4bc65248bdb46f315460f4b2208bf37c49f55ef7468585786bdf563aa3e9357370d4f1ff947a6d4467869eeb2ca6b77ca5e40ffa45213a13'
-        'ec247c8caad963307d8f487176fde518cfb087bbff3f10c2a5846b90a04c9909c2f0e6aaf8ded4784f46586eafb16df493caf1debc20ff10014f03b1f1f8241d'
+        '5f47a4949e9485c40b5685840d48aef87aa7919eb7e0afd679b598ee054392f18a657947c10c627d3239937e53611f8263c47312d26b093aa5973854307f53aa'
         '63a47bc69278ef510cd0b3779aed729e1b309e30efa0015d28ed051cc03f9dfddb447ab57b07b3393e8f47393d15473b0e199c34cb1f5f746b15ddfaa55670be')
 
 pkgver() {
@@ -49,11 +47,8 @@ prepare() {
   # Use xmlconf from conformance test suite
   ln -s ../xmlconf
 
-  # https://gitlab.gnome.org/GNOME/libxml2/-/issues/64
-  git apply -3 ../0001-Fix-python3-unicode-errors.patch
-
   # Do not run fuzzing tests
-  git apply -3 ../0002-HACK-Don-t-run-fuzzing-tests.patch
+  git apply -3 ../0001-HACK-Don-t-run-fuzzing-tests.patch
 
   NOCONFIGURE=1 ./autogen.sh
 }
