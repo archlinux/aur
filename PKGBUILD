@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tagspaces-appimage
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="An offline, open source, document manager with tagging support"
 arch=('x86_64')
@@ -9,10 +9,10 @@ _githuburl="https://github.com/tagspaces/tagspaces"
 license=('AGPL3')
 depends=('zlib' 'glibc' 'hicolor-icon-theme')
 _install_path="/opt/appimages"
-options=(!strip)
+options=('!strip')
 conflicts=("${pkgname%-appimage}")
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-linux-x86_64-${pkgver}.AppImage")
-sha256sums=('cfb89dbe54ac7823014956912c6fb891f9e08eb0ef05864a105c9ea078a391ac')
+sha256sums=('283d85456da6a611b784997c44f1bfb51fd2245365c316c3c29fb1b5785c56c8')
 
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"

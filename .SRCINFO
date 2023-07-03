@@ -1,6 +1,6 @@
 pkgbase = tagspaces-appimage
 	pkgdesc = An offline, open source, document manager with tagging support
-	pkgver = 5.4.0
+	pkgver = 5.4.1
 	pkgrel = 1
 	url = https://www.tagspaces.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tagspaces-appimage
 	depends = hicolor-icon-theme
 	conflicts = tagspaces
 	options = !strip
-	source = tagspaces-5.4.0.AppImage::https://github.com/tagspaces/tagspaces/releases/download/v5.4.0/tagspaces-linux-x86_64-5.4.0.AppImage
-	sha256sums = cfb89dbe54ac7823014956912c6fb891f9e08eb0ef05864a105c9ea078a391ac
+	source = tagspaces-5.4.1.AppImage::https://github.com/tagspaces/tagspaces/releases/download/v5.4.1/tagspaces-linux-x86_64-5.4.1.AppImage
+	sha256sums = 283d85456da6a611b784997c44f1bfb51fd2245365c316c3c29fb1b5785c56c8
 
 pkgname = tagspaces-appimage
