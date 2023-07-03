@@ -1,21 +1,21 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="frappe-books-appimage"
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Modern desktop accounting for freelancers and small-businesses."
 arch=('x86_64')
 url="https://frappebooks.com/"
 _githuburl="https://github.com/frappe/books"
 license=('AGPL3')
-options=(!strip)
+options=('!strip')
 conflicts=("${pkgname%-appimage}" "frappebooks" "frappebooks-appimage")
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Frappe-Books-${pkgver}.AppImage")
-sha256sums=('b1791ded5e77d4d5164c3e2eb70f2cadee1c0527313dbab7289f07de7e1ec291')
+sha256sums=('acaea291c19e05a088c851273f0a74374b57840d203dff0fa9ab00bfc28a7819')
 prepare() {
-    chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
-    "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|Finance|Utility|g" -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
 package() {

@@ -1,6 +1,6 @@
 pkgbase = frappe-books-appimage
 	pkgdesc = Modern desktop accounting for freelancers and small-businesses.
-	pkgver = 0.16.0
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://frappebooks.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = frappe-books-appimage
 	conflicts = frappebooks
 	conflicts = frappebooks-appimage
 	options = !strip
-	source = frappe-books-0.16.0.AppImage::https://github.com/frappe/books/releases/download/v0.16.0/Frappe-Books-0.16.0.AppImage
-	sha256sums = b1791ded5e77d4d5164c3e2eb70f2cadee1c0527313dbab7289f07de7e1ec291
+	source = frappe-books-0.17.0.AppImage::https://github.com/frappe/books/releases/download/v0.17.0/Frappe-Books-0.17.0.AppImage
+	sha256sums = acaea291c19e05a088c851273f0a74374b57840d203dff0fa9ab00bfc28a7819
 
 pkgname = frappe-books-appimage
