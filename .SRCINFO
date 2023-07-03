@@ -1,7 +1,7 @@
 pkgbase = openasar-git
 	pkgdesc = Open-source alternative of Discord desktop's app.asar
 	pkgver = r810.cd44357
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GooseMod/OpenAsar
 	install = openasar-git.install
 	arch = i686

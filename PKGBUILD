@@ -2,7 +2,7 @@
 _pkgname='openasar'
 pkgname="${_pkgname}-git"
 pkgver=r810.cd44357
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source alternative of Discord desktop's app.asar"
 arch=('i686' 'x86_64')
 url="https://github.com/GooseMod/OpenAsar"
@@ -14,13 +14,13 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}.git" "post-upgrade-discord" "openasar-git-discord-upgrade.hook" "openasar-git-discord-ptb-upgrade.hook" "openasar-git-discord-canary-upgrade.hook" "openasar-git-discord-development-upgrade.hook" "pre-remove-discord" "openasar-git-discord-remove.hook")
 sha1sums=('SKIP'
-          'b649b6095fdf719d8124a877a47dbfaaed938039'
-          'bc184134bd132d14c8758e49e7e51ecec25c7347'
-          '7444c2a0937e95e93c80b8647e1a5074c7ba3684'
-          '4ad3c320455b7276bbf0d636160423ed68d4f907'
-          '219ecd2ee201f6c73065415208717d1e2fd5e8ef'
-          '1ee057b1413aae0131f841118467bbdf4954a04e'
-          '8c0d5675af76b48575611b03c8e2f2a6a5ca8cde')
+	'b649b6095fdf719d8124a877a47dbfaaed938039'
+	'bc184134bd132d14c8758e49e7e51ecec25c7347'
+	'7444c2a0937e95e93c80b8647e1a5074c7ba3684'
+	'4ad3c320455b7276bbf0d636160423ed68d4f907'
+	'219ecd2ee201f6c73065415208717d1e2fd5e8ef'
+	'1ee057b1413aae0131f841118467bbdf4954a04e'
+	'8c0d5675af76b48575611b03c8e2f2a6a5ca8cde')
 install="$pkgname.install"
 
 pkgver() {
