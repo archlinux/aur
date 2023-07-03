@@ -49,7 +49,7 @@ _disable_debug=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-tip-git
-pkgver=6.3.r12785.gda1c4f07aa4d
+pkgver=6.4.0.r1188886.g12f69e436304
 _srcname=tip
 pkgrel=1
 pkgdesc='Linux Kernel based on the tip branch'
@@ -58,12 +58,12 @@ url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'python')
-_lucjanver=6.3
+_lucjanver=6.4
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git"
-        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -73,7 +73,9 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 pkgver() {
   cd $_srcname
-  git describe --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g;s/\.rc/rc/'
+
+  _ver="$(cat Makefile | grep -m3 -e VERSION -e PATCHLEVEL -e SUBLEVEL | grep -o "[[:digit:]]*" | paste -sd'.')"
+  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
 _make() {
@@ -325,5 +327,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            'bc576268e8c8b238967de07aa26347b425395c582fd03088724fd80feddf504183325db12f769fa56ce60c66e847dd33000a566d3e57ad96cbc3b6414fa5f4dd'
-            '4670e9124a6efe520897ca2979d5b96ec98bd9cf88bda82f720ff5fd4fd843110ecc1fc8a02837a4395713c469e1c8c3743a2b687fdd9dd4b5b43aa2cae767b3')
+            'a577b74a51232272a1edd210c151259a163c6c677468e572c43aeb3f18fbfe4cc92bb73d40d83b1b3a8341f3afd2c78a08306c77e40e1ec5f83b6ccead589183'
+            'eaee90c07e1e0c1e35ccf678bca148a6e3b6a762eeef1db96f917e05ffd506e5dce90ff4f518ea33cfb6910cbdfcaacef1735d8c5e01336faaaf0dfef88cb7ef')
