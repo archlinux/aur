@@ -143,7 +143,7 @@ package_minigui-mgncs-git() {
     conflicts=(${pkgname%-git})
 
     cd "${srcdir}/${pkgname%-git}"
-    sed -i 's|$(prefix)/etc|/etc|g' etc/Makefile.am
+    sed -i 's|$(prefix)/etc|/etc|g;s|	$(INSTALL_DATA) mgncs.cfg /etc/mgncs.cfg|#	$(INSTALL_DATA) mgncs.cfg /etc/mgncs.cfg|g' etc/Makefile.am
     ./autogen.sh
     ./configure --prefix=/usr \
         --disable-static \
@@ -281,7 +281,7 @@ package_minigui-cell-phone-ux-demo-git() {
 
     cd "${srcdir}/${pkgname%-git}"
 
-    sed -i 's|$(prefix)/bin/etc|/etc |g' etc/Makefile.am
+    sed -i 's|$(prefix)/bin/etc|/etc|g' etc/Makefile.am
     ./autogen.sh
     ./configure --prefix=/usr
 
@@ -327,7 +327,7 @@ package_minigui-git() {
 
     cd "${srcdir}/${pkgbase}"
 
-    sed -i 's|$(prefix)/etc|/etc |g' etc/Makefile.am
+    sed -i 's|$(prefix)/etc|/etc|g' etc/Makefile.am
     ./autogen.sh
 
     ./configure \
