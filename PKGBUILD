@@ -2,7 +2,7 @@ _pkgname=flycast
 pkgname="$_pkgname"
 pkgver=2.1
 _tag="V$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc='A multi-platform Sega Dreamcast, Naomi and Atomiswave emulator'
 arch=('x86_64' 'i686')
 url="https://github.com/flyinghead/flycast"
@@ -62,6 +62,12 @@ prepare() {
     git submodule set-url ${submodule} "${srcdir}/${submodule##*/}"
     git -c protocol.file.allow=always submodule update ${submodule}
   done
+
+  # add missing include
+  _file='core/deps/breakpad/src/client/linux/handler/minidump_descriptor.h'
+  if ! grep cstdint "$_file" > /dev/null ; then
+    sed -Ei 's@^(#include "common/using_std_string.h")$@\1\n#include <cstdint>@' "$_file"
+  fi
 }
 
 build() {
