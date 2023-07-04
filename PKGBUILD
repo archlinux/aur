@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="airdrop-tool-bin"
 _appname=airdrop_tool
-pkgver=0.2.52
+pkgver=0.2.53
 pkgrel=1
 pkgdesc="Fetch & analyse blockchain tickets. View leaderboards and user tickets. Calculate and perform provably fair airdrops."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('libx11' 'nss' 'dbus' 'expat' 'cairo' 'alsa-lib' 'libxcb' 'libxext' 'me
     'hicolor-icon-theme' 'libdrm' 'gcc-libs' 'glibc' 'libxcomposite' 'libcups' 'glib2' 'nspr' 'libxrandr' 'libxdamage' 'pango' 'gtk3')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_appname}.deb"
     "LICENSE::https://raw.githubusercontent.com/BTS-CM/airdrop_tool/main/License.md")
-sha256sums=('5c5c60bde4c5cb64196da118449261d2ead27b9b52e15085259e3680972575f9'
+sha256sums=('50ccc010acbe76210fd1f8184979464d4369c5fe462cb4ff3bba09aa8a9e5b03'
             '48ecd55adc52c7a1ad9e3f699b9e2348bca9bb6797ce8ad4e9cbe38f7aa11c8a')
 package() {
     bsdtar -xvf "${srcdir}/data.tar.xz" -C "${pkgdir}"
