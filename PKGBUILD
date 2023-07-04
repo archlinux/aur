@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=compcodeR
-_pkgver=1.36.1
+_pkgver=1.36.2
 pkgname=r-${_pkgname,,}
-pkgver=1.36.1
+pkgver=1.36.2
 pkgrel=1
 pkgdesc='RNAseq data simulation, differential expression analysis and performance comparison of differential expression methods'
 arch=('any')
@@ -51,7 +51,7 @@ optdepends=(
   r-tidytree
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c5d563af67454afa4ae8c011956d5c34f60b5c99c3c440e8a7bacb12e223fa02')
+sha256sums=('00d7e51bf54d059e2a4d7ad0537c5a6e256ee48da59374b68e8c111522937310')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
