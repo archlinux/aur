@@ -3,7 +3,7 @@
 # Contributor: sanduhrs <stefan.auditor@erdfisch.de>
 pkgname=gnome-shell-extension-caffeine-git
 _uuid=caffeine@patapon.info
-pkgver=44.r4.gd4c4897
+pkgver=48.r50.gf1f2eca
 pkgrel=1
 pkgdesc="Disable the screensaver and auto suspend"
 arch=('any')
@@ -43,8 +43,10 @@ package() {
   rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/"
 
   cd "$_uuid/locale"
-    for locale in */; do
-      install -Dm644 "${locale}/LC_MESSAGES"/*.mo -t \
-        "$pkgdir/usr/share/locale/${locale}/LC_MESSAGES/"
-    done
+  for lang in $(ls *.po); do
+    echo "lang: ${lang}"
+    lang=${lang::-3}
+    install -d "$pkgdir/usr/share/locale/${lang//_/-}/LC_MESSAGES"
+    msgfmt -c -o "$pkgdir/usr/share/locale/${lang//_/-}/LC_MESSAGES/${pkgname%-git}.mo" "${lang}.po"
+  done
 }
