@@ -1,6 +1,6 @@
 # Maintainer: p3nguin-kun <p3nguinkun@proton.me>
 pkgname=lmaofetch
-pkgver=1.1
+pkgver=2.0
 pkgrel=1
 epoch=
 pkgdesc="A simple system fetch written in Bash"
@@ -24,7 +24,7 @@ noextract=()
 sha512sums=('SKIP')
 
 prepare() {
-    sudo pacman -S --noconfirm ttf-nerd-fonts-symbols
+    sudo pacman -S --needed --noconfirm ttf-nerd-fonts-symbols
 }
 
 package() {
