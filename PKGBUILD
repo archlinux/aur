@@ -1,30 +1,34 @@
-# system requirements: C++17
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rfast
-_pkgver=2.0.7
+_pkgver=2.0.8
 pkgname=r-${_pkgname,,}
-pkgver=2.0.7
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='A Collection of Efficient and Extremely Fast R Functions'
-arch=('x86_64')
+pkgdesc="A Collection of Efficient and Extremely Fast R Functions"
+arch=(x86_64)
 url="https://cran.r-project.org/package=${_pkgname}"
-license=('GPL')
+license=(GPL)
 depends=(
-  r
+  blas
+  lapack
   r-rcpp
-  r-rcpparmadillo
   r-rcppziggurat
 )
+makedepends=(
+  r-rcpparmadillo
+)
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8f86159a4760a7124e1c91ae0b022c7e496f81590ea4e4af702bea44e8dedf8f')
+md5sums=('c566094df35be55dd733727cf69121b0')
+sha256sums=('1bb2c8f0580d0fe27e2b06d1dd069d09588f410e4a895147cca445f32092c4b0')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
