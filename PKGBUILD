@@ -10,7 +10,7 @@ arch=("any")
 url="https://github.com/Col-E/Recaf"
 license=("MIT")
 
-depends=("java-runtime" "java-openjfx" "ttf-font")
+depends=("java-runtime" "java17-openjfx" "ttf-font")
 makedepends=("jdk17-openjdk")
 
 conflicts=("$_pkgname-bin" "$_pkgname-git")
