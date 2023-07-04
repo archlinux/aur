@@ -5,7 +5,6 @@ pkgbase = easyeda-bin
 	url = https://easyeda.com/
 	arch = x86_64
 	license = custom
-	makedepends = unzip
 	depends = gtk3
 	depends = nss
 	depends = libxss
