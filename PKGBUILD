@@ -15,15 +15,17 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/med-${pkgver}_SRC"
-  curl -L https://raw.githubusercontent.com/archlinux/svntogit-community/packages/med/trunk/hdf5-1.12.patch | patch -p1
+  curl -L https://raw.githubusercontent.com/archlinux/svntogit-community/packages/med-openmpi/trunk/hdf5-1.12.patch | patch -p1
   sed -i "s|Lmcons.h|lmcons.h|g" src/2.3.6/ci/MEDunvCr.c src/ci/MEDmeshUniversalNameWr.c
+  sed -i "s|DESTINATION lib\${LIB_SUFFIX}|LIBRARY DESTINATION lib\${LIB_SUFFIX} ARCHIVE DESTINATION lib\${LIB_SUFFIX} RUNTIME DESTINATION bin|g" src/CMakeLists.txt tools/medimport/CMakeLists.txt
+  sed -i "s|SET(INSTALL_CMAKE_CONFIG_DIR cmake)|SET(INSTALL_CMAKE_CONFIG_DIR share/cmake/medfile)|g" CMakeLists.txt
 }
 
 build() {
   cd "${srcdir}/med-${pkgver}_SRC"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    CPPFLAGS="-DH5_USE_110_API" ${_arch}-cmake -DMEDFILE_BUILD_TESTS=OFF -DMEDFILE_INSTALL_DOC=OFF ..
+    CPPFLAGS="-DH5_USE_110_API" ${_arch}-cmake -DMEDFILE_BUILD_TESTS=OFF -DMEDFILE_INSTALL_DOC=OFF -DHDF5_ROOT_DIR=/usr/${_arch} ..
     make
     popd
   done
@@ -34,7 +36,7 @@ package() {
     cd "$srcdir"/med-${pkgver}_SRC/build-${_arch}
     make install DESTDIR="$pkgdir"
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
-    mv "$pkgdir"/usr/${_arch}/lib/*.dll "$pkgdir"/usr/${_arch}/bin
+    rm "$pkgdir"/usr/${_arch}/bin/xmdump*
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
