@@ -1,12 +1,12 @@
 pkgname=plasma5-applets-caraoke-git
 pkgver=r21.799745c
-pkgrel=1
+pkgrel=2
 pkgdesc="kde widget for representation of karaoke styled lyrics."
 arch=("x86_64")
 url="https://github.com/Copay/caraoke-plasmoid"
 license=("custom:unknown")
 depends=("plasma-workspace")
-makedepends=("git" "kdelibs4support" "extra-cmake-modules" "cmake" "make")
+makedepends=("git" "extra-cmake-modules" "cmake" "make")
 provides=("plasma5-applets-caraoke")
 conflicts=("plasma5-applets-caraoke")
 source=("git+${url}.git")
@@ -21,7 +21,7 @@ build(){
     rm -rf build
     mkdir build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX="$(kf5-config --prefix)" ..
+    cmake -DCMAKE_INSTALL_PREFIX="$(qtpaths --install-prefix)" ..
     make
 }
 package(){
