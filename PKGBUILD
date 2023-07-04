@@ -1,25 +1,24 @@
 pkgname=('mingw-w64-protobuf')
 _pkgname=protobuf
-pkgver=21.12
+pkgver=23.3
 pkgrel=1
 pkgdesc="Protocol Buffers - Google's data interchange format (mingw-w64)"
 arch=('any')
 url='https://developers.google.com/protocol-buffers/'
 license=('BSD')
-depends=(mingw-w64-zlib)
-makedepends=(mingw-w64-configure protobuf unzip)
+depends=(mingw-w64-zlib mingw-w64-abseil-cpp)
+makedepends=(mingw-w64-cmake protobuf)
 options=(!strip !buildflags staticlibs)
-source=("https://github.com/protocolbuffers/${_pkgname}/releases/download/v$pkgver/${_pkgname}-all-$pkgver.tar.gz")
-sha256sums=('2c6a36c7b5a55accae063667ef3c55f2642e67476d96d355ff0acb13dbb47f09')
+source=("https://github.com/protocolbuffers/${_pkgname}/releases/download/v$pkgver/${_pkgname}-$pkgver.tar.gz")
+sha256sums=('3a5f47ad3aa10192c5577ff086b24b9739a36937c34ceab6db912a16a3ef7f8e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
-  ./autogen.sh
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    LIBS="-lssp" ${_arch}-configure --with-protoc=/usr/bin/protoc ..
+    ${_arch}-cmake -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_ABSL_PROVIDER=package ..
     make
     popd
   done
