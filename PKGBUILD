@@ -1,4 +1,4 @@
-# Maintainer: matt quintanilla <matt @ matt quintanilla. xyz matt @ matt quintanilla 45 @ gmail . com>
+# Maintainer: james smith <cinemassacres @ gmail . com>
 pkgname=lemoa-git
 pkgver=0.2.0.r97.e51da62
 pkgrel=1
