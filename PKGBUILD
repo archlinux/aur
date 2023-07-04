@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=dicionario.js-bin
-pkgver=2.3.1
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="Simple dictionary in which you record your own words."
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('nss' 'nodejs' 'nspr' 'gtk3' 'glibc' 'alsa-lib' 'libxcomposite' 'mesa' 
     'pango' 'libxext' 'gcc-libs' 'libx11' 'libxfixes' 'libxkbcommon' 'glib2' 'libxdamage' 'libdrm' 'dbus' 'libcups' 'expat')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/ArthurLobopro/dicionario.js/main/LICENSE")
-sha256sums=('668d8b6f5ac514263fb814755d7c49c0541ace9938517e0950a8cc2d743f9718'
-            '08b5d8040de362bf504006f6f6c1699130fa365344de6c325d5c481279e285b4')
+sha256sums=('d495f71d2019c7e44c8fa16b64d1cb9dfbae04411fc5c86ca4eed491a183351a'
+            'c898d2875697b8ed803b6f18c641a194614b29c26c638eb8135398bc80255e26')
    
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
