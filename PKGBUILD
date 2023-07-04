@@ -30,13 +30,6 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-
-	# patch hardcoded path to ectool
-	sed -i 's,/usr/local/,/usr/,g' fanctrl.py
-}
-
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
