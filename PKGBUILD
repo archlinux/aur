@@ -8,7 +8,8 @@ url="https://www.seven.io/en/docs/apps/desktop/"
 _githuburl="https://github.com/seven-io/desktop"
 license=('MIT')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
-depends=()
+depends=('libcups' 'dbus' 'libdrm' 'nspr' 'pango' 'libxcb' 'glib2' 'alsa-lib' 'glibc' 'gcc-libs' 'gtk3' 'nss' 'libxfixes' \
+    'at-spi2-core' 'libxrandr' 'expat' 'libxext' 'libx11' 'libxkbcommon' 'cairo' 'libxcomposite' 'mesa' 'libxdamage')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('a7a9efc3ab8ff386a5c9827dbc825daf482e18f2e8528bd936925e5d6c2aa8a6')
 package() {
