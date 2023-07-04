@@ -1,24 +1,24 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
 pkgname=libparser
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
-pkgdesc="Context-free grammar parsing library"
+pkgdesc="Right-context-sensitive grammar parsing library"
 arch=(x86_64)
-url="https://github.com/maandree/libparser"
-license=('custom:ISC')
+url="https://codeberg.org/maandree/libparser"
+license=('ISC')
 depends=()
 checkdepends=()
 makedepends=()
-source=(libparser-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(76b3a146be70ba1e413bcfef1cbcbfa0a4f4731aea349e86a266c2e9d8f32106)
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+sha256sums=(6610809e88d0ca7d3bf3cd2597fa95a8ba235b9c1d3a0a4502831010ec553e15)
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr DESTDIR="$pkgdir" install
 }
