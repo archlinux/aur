@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="open-video-downloader-appimage"
 pkgver=2.4.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform GUI for youtube-dl made in Electron and node.js"
 arch=('x86_64')
 url="https://github.com/StefanLobbenmeier/youtube-dl-gui"
@@ -14,8 +14,8 @@ source=("${pkgname%-appimage}-${pkgver}.AppImage::${url}/releases/download/v${pk
 sha256sums=('e99cf7780eebbe74a1e45cbac822f965c7e7299193adce39b37240d75d8e2389')
     
 prepare() {
-    chmod a+x "${pkgdir}/${pkgname%-appimage}-${pkgver}.AppImage"
-    "${pkgdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
     sed "s|AppRun|${_install_path}/${pkgname%-appimage}.AppImage|g;s|youtube-dl-gui|${pkgname%-appimage}|g;s|X-utility|Utility|g" \
         -i "${srcdir}/squashfs-root/${pkgname%-appimage}.desktop"
 }
