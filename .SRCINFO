@@ -1,0 +1,24 @@
+pkgbase = r-revdbayes
+	pkgdesc = Ratio-of-Uniforms Sampling for Bayesian Extreme Value Analysis
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=revdbayes
+	arch = x86_64
+	license = GPL
+	checkdepends = r-testthat
+	makedepends = r-rcpparmadillo
+	depends = lapack
+	depends = r-bayesplot
+	depends = r-exdex
+	depends = r-rcpp
+	depends = r-rust
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-microbenchmark
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/revdbayes_1.5.1.tar.gz
+	md5sums = 8c788cda2718c61c29690c3167b50105
+	sha256sums = 771418eb0fe983f82be6c4f101fd2a7fe070e21130cb0ae9edae49d88d670207
+
+pkgname = r-revdbayes
