@@ -1,5 +1,4 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
-# Co-Maintainer: xiota
 # Contributor: David Garfias <jose.garfias@ingenieria.unam.edu>
 # Contributor: Igor <f2404@yandex.ru>
 # Contributor: Lubosz Sarnecki <lubosz@gmail.com>
@@ -10,7 +9,8 @@ _pkgname="${_pkg}-common"
 pkgbase="${_pkg}-git"
 pkgname=(
   "${pkgbase}"
-  "${_pkgname}-git"
+  "${_pkg}-common-git"
+  "${_pkg}three-git"
   "${_pkg}-docs-git")
 pkgver=0.73.0.r26.g092d8b8f
 pkgrel=1
@@ -23,7 +23,6 @@ arch=(
   armv7h)
 license=('LGPL')
 url="https://gitlab.gnome.org/GNOME/${_pkg}"
-depends=(sh)
 makedepends=(
   fribidi
   gi-docgen
@@ -42,7 +41,7 @@ options=(
   !emptydirs
   !lto)
 source=(
-  "${_pkg}::git+${url}"
+  "${_pkg}::git+${url}.git"
 )
 sha256sums=(
   'SKIP'
@@ -76,6 +75,7 @@ build() {
   local meson_options=(
     -D b_lto=false
     -D docs=true
+    -D gtk3=true
     -D gtk4=true
   )
   arch-meson "${_pkg}" build "${meson_options[@]}"
@@ -98,11 +98,14 @@ _pick() {
 
 package_vte-common-git() {
   pkgdesc+=" (common files)"
-  provides+=("${_pkgname}=${pkgver}")
-  conflicts+=("${_pkgname}")
-  DESTDIR="${pkgdir}" ninja install -C build
+  depends=(sh)
+  provides+=("${_pkg}-common=${pkgver}")
+  conflicts+=("${_pkg}-common")
+
   meson install -C build --destdir "${pkgdir}"
+
   cd "${pkgdir}"
+
   _pick gtk3 "usr/bin/${_pkg}-2.91"
   _pick gtk3 "usr/include/${_pkg}-2.91"
   _pick gtk3 "usr/lib/lib${_pkg}-2.91.so"*
@@ -123,20 +126,58 @@ package_vte-common-git() {
   _pick docs usr/share/doc
 }
 
+package_vte-git() {
+  pkgdesc+=" (GTK4)"
+  depends=(
+    fribidi
+    gnutls
+    gtk4
+    pcre2
+    systemd
+    vte-common
+  )
+  provides+=(
+    libvte-2.91-gtk4.so
+    "${_pkg}4-git=${pkgver}"
+    "${_pkg}4=${pkgver}"
+  )
+  conflicts+=(
+    "${_pkg}4-git"
+    "${_pkg}4"
+  )
+
+  mv gtk4/* "$pkgdir"
+}
+
+package_vtethree-git() {
+  pkgdesc+=" (GTK3)"
+  depends=(
+    fribidi
+    gnutls
+    gtk3
+    pcre2
+    systemd
+    vte-common
+  )
+  provides+=(
+    libvte-2.91.so
+    "${_pkg}3-git=${pkgver}"
+    "${_pkg}3=${pkgver}"
+  )
+  conflicts+=(
+    "${_pkg}3-git"
+    "${_pkg}3"
+  )
+
+  mv gtk3/* "$pkgdir"
+}
+
 package_vte-docs-git() {
   provides+=("${_pkg}-docs=${pkgver}")
   conflicts+=("${_pkg}-docs")
   pkgdesc+=" (documentation)"
 
   mv docs/* "$pkgdir"
-}
-
-package_vte-git() {
-  pkgdesc+=" (metapackage)"
-  depends+=("${_pkgname}-git"
-            "${_pkg}3-git"
-            "${_pkg}4-git"
-            "${_pkg}-docs-git")
 }
 
 # vim:set sw=2 sts=-1 et:

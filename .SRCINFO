@@ -21,24 +21,44 @@ pkgbase = vte-git
 	makedepends = pcre2
 	makedepends = systemd
 	makedepends = vala
-	depends = sh
 	options = !emptydirs
 	options = !lto
-	source = vte::git+https://gitlab.gnome.org/GNOME/vte
+	source = vte::git+https://gitlab.gnome.org/GNOME/vte.git
 	sha256sums = SKIP
 
 pkgname = vte-git
-	pkgdesc = Virtual Terminal Emulator widget (metapackage)
-	depends = sh
-	depends = vte-common-git
-	depends = vte3-git
-	depends = vte4-git
-	depends = vte-docs-git
+	pkgdesc = Virtual Terminal Emulator widget (GTK4)
+	depends = fribidi
+	depends = gnutls
+	depends = gtk4
+	depends = pcre2
+	depends = systemd
+	depends = vte-common
+	provides = libvte-2.91-gtk4.so
+	provides = vte4-git=0.73.0.r26.g092d8b8f
+	provides = vte4=0.73.0.r26.g092d8b8f
+	conflicts = vte4-git
+	conflicts = vte4
 
 pkgname = vte-common-git
 	pkgdesc = Virtual Terminal Emulator widget (common files)
+	depends = sh
 	provides = vte-common=0.73.0.r26.g092d8b8f
 	conflicts = vte-common
+
+pkgname = vtethree-git
+	pkgdesc = Virtual Terminal Emulator widget (GTK3)
+	depends = fribidi
+	depends = gnutls
+	depends = gtk3
+	depends = pcre2
+	depends = systemd
+	depends = vte-common
+	provides = libvte-2.91.so
+	provides = vte3-git=0.73.0.r26.g092d8b8f
+	provides = vte3=0.73.0.r26.g092d8b8f
+	conflicts = vte3-git
+	conflicts = vte3
 
 pkgname = vte-docs-git
 	pkgdesc = Virtual Terminal Emulator widget (documentation)
