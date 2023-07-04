@@ -15,5 +15,4 @@ pkgbase = lemoa-git
 	conflicts = lemoa
 	source = git+https://github.com/lemmygtk/lemoa.git
 	sha256sums = SKIP
-
 pkgname = lemoa-git
