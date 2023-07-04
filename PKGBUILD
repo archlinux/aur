@@ -1,10 +1,11 @@
 #!/bin/bash
-# Maintainer: Fedor Piecka <teplavoda at gmail dot com>
+# Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
-pkgname=eidklient
+_pkgname=eidklient
+pkgname="${_pkgname}-native"
 pkgver=4.7
 pkgrel=1
-pkgdesc="Slovak eID Client"
+pkgdesc="Slovak eID Client - uses system-provided libraries, supports Wayland, …"
 arch=('i686' 'x86_64')
 url="https://www.slovensko.sk/"
 license=('custom')
@@ -32,6 +33,12 @@ install=eidklient.install
 makedepends=(
     fuse2
 )
+provides=(
+    "${_pkgname}"
+)
+conflicts=(
+    "${_pkgname}"
+)
 
 : "${pkgname}"
 : "${pkgver}"
@@ -49,6 +56,8 @@ makedepends=(
 : "${options[@]}"
 : "${install}"
 : "${makedepends[@]}"
+: "${provides[@]}"
+: "${conflicts[@]}"
 
 prepare() {
     chmod +x "${_appimage}"
@@ -79,7 +88,7 @@ package() {
 
     # App
     mkdir "${pkgdir}/opt"
-    cp -r "${srcdir}/squashfs-root" "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/squashfs-root" "${pkgdir}/opt/${_pkgname}"
 
     # Custom wrapper
     install -Dm755 "${srcdir}/eidklient" "${pkgdir}/usr/bin/eID_Client"
@@ -92,7 +101,7 @@ package() {
     ln -s /usr/bin/eID_Client "${pkgdir}/usr/lib/eID_klient/VirtualKeyboard"
 
     for lib in "${srcdir}"/squashfs-root/lib/lib{CardAPI,botan,pkcs11_,crypto,ssl}*; do
-        ln -s "/opt/${pkgname}/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
+        ln -s "/opt/${_pkgname}/lib/${lib##*/}" "${pkgdir}/usr/lib/eID_klient/"
     done
 
     # Icons + desktop file
