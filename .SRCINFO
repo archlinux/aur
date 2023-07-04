@@ -1,6 +1,6 @@
 pkgbase = hyprland-autoname-workspaces-git
 	pkgdesc = Hyprland autoname workspace.
-	pkgver = 1.1.1.r1.g770b598
+	pkgver = 1.1.2.r0.g20809ce
 	pkgrel = 1
 	url = https://github.com/hyprland-community/hyprland-autoname-workspaces
 	arch = x86_64
