@@ -9,7 +9,7 @@ _pkgname="vte3"
 pkgname="$_pkgname-git"
 pkgver=0.73.0.r26.g092d8b8f
 pkgrel=1
-pkgdesc="Virtual Terminal Emulator widget for use with GTK3"
+pkgdesc="Virtual Terminal Emulator widget (GTK3)"
 arch=('x86_64')
 license=('LGPL')
 options=('!emptydirs')
@@ -36,12 +36,18 @@ provides=(
   "vte3=$pkgver"
   'libvte-2.91.so'
   'vte-common'
+
   'vte-git'
+  'vte-common-git'
+  'vtethree-git'
 )
 conflicts=(
-  'vte-common'
-  'vte-git'
   'vte3'
+  'vte-common'
+
+  'vte-git'
+  'vte-common-git'
+  'vtethree-git'
 )
 
 source=(
