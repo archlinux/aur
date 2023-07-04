@@ -1,3 +1,4 @@
+#!/bin/bash
 # Maintainer: Fedor Piecka <teplavoda at gmail dot com>
 
 pkgname=eidklient
@@ -29,12 +30,31 @@ makedepends=(
     fuse2
 )
 
+: "${pkgname}"
+: "${pkgver}"
+: "${pkgrel}"
+: "${pkgdesc}"
+: "${arch[@]}"
+: "${url}"
+: "${license[@]}"
+: "${source[@]}"
+: "${source_i686[@]}"
+: "${source_x86_64[@]}"
+: "${sha256sums[@]}"
+: "${md5sums_i686[@]}"
+: "${md5sums_x86_64[@]}"
+: "${options[@]}"
+: "${install}"
+: "${makedepends[@]}"
+
 prepare() {
     chmod +x "${_appimage}"
     ./"${_appimage}" --appimage-extract
 }
 
 pkgver() {
+    : "${srcdir:?}"
+
     strings "${srcdir}/squashfs-root/eID_Client" | grep -Pom1 '^eID_klient_v\K[0-9.]+'
 }
 
@@ -48,6 +68,11 @@ package() {
         qt5-svg
     )
     optdepends=('disig-web-signer: online certificates update support')
+
+    : "${depends[@]}"
+    : "${optdepends[@]}"
+    : "${pkgdir:?}"
+    : "${srcdir:?}"
 
     # App
     mkdir "${pkgdir}/opt"
