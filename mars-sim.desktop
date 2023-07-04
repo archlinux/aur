@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=mars-sim
+Comment=Mars Simulation Project
+Exec=mars-sim
+Icon=mars-sim
+Terminal=false
+StartupNotify=false
+Categories=Astronomy;Science;Education;Java;
