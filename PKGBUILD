@@ -1,22 +1,30 @@
-# Maintainer: Sasasu <sasasu [at] archlinuxcn.org>
+# Maintainer: Juicedata <team@juicefs.io>
+# Contributor: Herald Yu <yuhr123@gmail.com>
 
 pkgname=juicefs
-pkgver=4.3.8
+_pkgname=juicefs
+pkgver=1.0.4
+_pkgver=$(echo $pkgver | sed -E 's/^([0-9\.]+)([^0-9].*)?$/\1-\2/' | sed -E 's/-$//')
 pkgrel=1
-pkgdesc="A shared POSIX file system for the cloud"
-arch=('i686' 'x86_64')
-url="https://juicefs.com/"
-license=('custom')
-depends=('python')
-source=("juicefs-$pkgver-$pkgrel::https://juicefs.com/static/juicefs")
-sha512sums=('7662f1b95c0a88e9ac93bcaffa06b49898f67172bc52d2ac0fb187158e8934ef39e703825850f4e3ba27e4caf40f4e2f7639db144356da3e64c18e5f5f2f37e6')
-
+pkgdesc="A distributed POSIX file system built on top of Redis and S3 (Community Edition)."
+arch=('x86_64' 'aarch64')
+url="https://github.com/juicedata/juicefs"
+license=('Apache')
+conflicts=('juicefs')
+depends=('glibc')
+makedepends=('go' 'git')
+source=("juicefs-$_pkgver.tar.gz::https://github.com/juicedata/juicefs/archive/refs/tags/v$_pkgver.tar.gz")
+sha256sums=('177917ee5646138e529f9890a311fecfcb89ee9d5fdc2e5aabf8c7ebacb014ba')
+prepare() {
+    cd "$_pkgname-$_pkgver"
+}
 build() {
-  cd "${srcdir}/"
+    cd "$_pkgname-$_pkgver"
+    make
 }
 
 package() {
-  cd "${srcdir}/"
-  install -Dm755 "${srcdir}/juicefs-$pkgver-$pkgrel" "${pkgdir}/usr/bin/juicefs"
-  ln -s "/usr/bin/juicefs" "${pkgdir}/usr/bin/mount.juicefs"
+    cd "$_pkgname-$_pkgver"
+    install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
+    ln -s /usr/bin/$_pkgname "$pkgdir"/usr/bin/mount.$_pkgname
 }
