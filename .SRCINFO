@@ -1,0 +1,14 @@
+pkgbase = linescroll
+	pkgdesc = linescroll, monitor log file activity
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://gitlab.com/edneville/linescroll
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = https://gitlab.com/edneville/linescroll/-/archive/v0.1.2/linescroll-v0.1.2.tar.gz
+	sha512sums = 5eb10ec75ca7eec559da06c24ae48bc9c8b567ee605399aa050513b149fead53491a3f729ed01f7b412d6ae578620fc7c87ef0935246e1d59e4980646265bf36
+
+pkgname = linescroll
