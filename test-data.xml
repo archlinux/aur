@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<designspace format="4.1">
+<!-- Test data courtesy MFEK Sans project: https://github.com/indestructible-type/MFEK-Sans -->
+
+  <axes>
+    <axis tag="TRMA" name="Rounded" minimum="0" maximum="1000" default="0"></axis>
+    <axis tag="wght" name="Weight" minimum="400" maximum="900" default="400">
+      <map input="400" output="400"/>
+      <map input="500" output="470"/>
+      <map input="600" output="550"/>
+      <map input="700" output="650"/>
+      <map input="800" output="766"/>
+      <map input="900" output="900"/>
+    </axis>
+    <axis tag="wdth" name="Width" minimum="50" maximum="100" default="100"></axis>
+  </axes>
+
+  <sources>
+    <source filename="../ufo/regular.ufo" name="MFEK Sans Regular" familyname="MFEK Sans" stylename="Regular">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </source>
+    <source filename="../ufo/black.ufo" name="MFEK Sans Black" familyname="MFEK Sans" stylename="Black">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </source>
+    <source filename="../ufo/rounded-regular.ufo" name="MFEK Sans Rounded Regular" familyname="MFEK Sans Rounded" stylename="Regular">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </source>
+    <source filename="../ufo/rounded-black.ufo" name="MFEK Sans Rounded black" familyname="MFEK Sans Rounded" stylename="Black">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </source>
+    <source filename="../ufo/ultracondensed-regular.ufo" name="MFEK Sans Ultra Condensed Regular" familyname="MFEK Sans" stylename="Ultra Condensed Regular">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </source>
+    <source filename="../ufo/ultracondensed-black.ufo" name="MFEK Sans Ultra Condensed Black" familyname="MFEK Sans" stylename="Ultra Condensed Black">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </source>
+    <source filename="../ufo/roundedultracondensed-regular.ufo" name="MFEK Sans Rounded Ultra Condensed Regular" familyname="MFEK Sans Rounded" stylename="Ultra Condensed Regular">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </source>
+    <source filename="../ufo/roundedultracondensed-black.ufo" name="MFEK Sans Rounded Ultra Condensed Black" familyname="MFEK Sans Rounded" stylename="Ultra Condensed Black">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </source>
+  </sources>
+
+  <instances>
+
+<!-- REGULAR -->
+    <instance postscriptfontname="MFEKSans-Regular" familyname="MFEK Sans" name="MFEK Sans Regular" stylemapfamilyname="MFEK Sans" stylemapstylename="regular" stylename="Regular" filename="../instance_ufo/MFEKSans-Regular.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSans-Medium" familyname="MFEK Sans" name="MFEK Sans Medium" stylemapfamilyname="MFEK Sans Medium" stylemapstylename="regular" stylename="Medium" filename="../instance_ufo/MFEKSans-Medium.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="470"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSans-SemiBold" familyname="MFEK Sans" name="MFEK Sans SemiBold" stylemapfamilyname="MFEK Sans SemiBold" stylemapstylename="regular" stylename="SemiBold" filename="../instance_ufo/MFEKSans-SemiBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="550"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSans-Bold" familyname="MFEK Sans" name="MFEK Sans Bold" stylemapfamilyname="MFEK Sans" stylemapstylename="bold" stylename="Bold" filename="../instance_ufo/MFEKSans-Bold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="650"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSans-ExtraBold" familyname="MFEK Sans" name="MFEK Sans ExtraBold" stylemapfamilyname="MFEK Sans ExtraBold" stylemapstylename="regular" stylename="ExtraBold" filename="../instance_ufo/MFEKSans-ExtraBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="766"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSans-Black" familyname="MFEK Sans" name="MFEK Sans Black" stylemapfamilyname="MFEK Sans Black" stylemapstylename="regular" stylename="Black" filename="../instance_ufo/MFEKSans-Black.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </instance>
+
+<!-- SemiCondensed -->
+    <instance postscriptfontname="MFEKSansSemiCondensed-Regular" familyname="MFEK Sans" name="MFEK Sans SemiCondensed Regular" stylemapfamilyname="MFEK Sans SemiCondensed" stylemapstylename="regular" stylename="SemiCondensed Regular" filename="../instance_ufo/MFEKSansSemiCondensed-Regular.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="87.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansSemiCondensed-Medium" familyname="MFEK Sans" name="MFEK Sans SemiCondensed Medium" stylemapfamilyname="MFEK Sans SemiCondensed Medium" stylemapstylename="regular" stylename="SemiCondensed Medium" filename="../instance_ufo/MFEKSansSemiCondensed-Medium.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="470"/>
+        <dimension name="Width" xvalue="87.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansSemiCondensed-SemiBold" familyname="MFEK Sans" name="MFEK Sans SemiCondensed SemiBold" stylemapfamilyname="MFEK Sans SemiCondensed SemiBold" stylemapstylename="regular" stylename="SemiCondensed SemiBold" filename="../instance_ufo/MFEKSansSemiCondensed-SemiBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="550"/>
+        <dimension name="Width" xvalue="87.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansSemiCondensed-Bold" familyname="MFEK Sans" name="MFEK Sans SemiCondensed Bold" stylemapfamilyname="MFEK Sans SemiCondensed" stylemapstylename="bold" stylename="SemiCondensed Bold" filename="../instance_ufo/MFEKSansSemiCondensed-Bold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="650"/>
+        <dimension name="Width" xvalue="87.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansSemiCondensed-ExtraBold" familyname="MFEK Sans" name="MFEK Sans SemiCondensed ExtraBold" stylemapfamilyname="MFEK Sans SemiCondensed ExtraBold" stylemapstylename="regular" stylename="SemiCondensed ExtraBold" filename="../instance_ufo/MFEKSansSemiCondensed-ExtraBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="766"/>
+        <dimension name="Width" xvalue="87.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansSemiCondensed-Black" familyname="MFEK Sans" name="MFEK Sans SemiCondensed Black" stylemapfamilyname="MFEK Sans SemiCondensed Black" stylemapstylename="regular" stylename="SemiCondensed Black" filename="../instance_ufo/MFEKSansSemiCondensed-Black.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="87.5"/>
+      </location>
+    </instance>
+
+<!-- Condensed -->
+    <instance postscriptfontname="MFEKSansCondensed-Regular" familyname="MFEK Sans" name="MFEK Sans Condensed Regular" stylemapfamilyname="MFEK Sans Condensed" stylemapstylename="regular" stylename="Condensed Regular" filename="../instance_ufo/MFEKSansCondensed-Regular.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="75"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansCondensed-Medium" familyname="MFEK Sans" name="MFEK Sans Condensed Medium" stylemapfamilyname="MFEK Sans Condensed Medium" stylemapstylename="regular" stylename="Condensed Medium" filename="../instance_ufo/MFEKSansCondensed-Medium.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="470"/>
+        <dimension name="Width" xvalue="75"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansCondensed-SemiBold" familyname="MFEK Sans" name="MFEK Sans Condensed SemiBold" stylemapfamilyname="MFEK Sans Condensed SemiBold" stylemapstylename="regular" stylename="Condensed SemiBold" filename="../instance_ufo/MFEKSansCondensed-SemiBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="550"/>
+        <dimension name="Width" xvalue="75"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansCondensed-Bold" familyname="MFEK Sans" name="MFEK Sans Condensed Bold" stylemapfamilyname="MFEK Sans Condensed" stylemapstylename="bold" stylename="Condensed Bold" filename="../instance_ufo/MFEKSansCondensed-Bold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="650"/>
+        <dimension name="Width" xvalue="75"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansCondensed-ExtraBold" familyname="MFEK Sans" name="MFEK Sans Condensed ExtraBold" stylemapfamilyname="MFEK Sans Condensed ExtraBold" stylemapstylename="regular" stylename="Condensed ExtraBold" filename="../instance_ufo/MFEKSansCondensed-ExtraBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="766"/>
+        <dimension name="Width" xvalue="75"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansCondensed-Black" familyname="MFEK Sans" name="MFEK Sans Condensed Black" stylemapfamilyname="MFEK Sans Condensed Black" stylemapstylename="regular" stylename="Condensed Black" filename="../instance_ufo/MFEKSansCondensed-Black.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="75"/>
+      </location>
+    </instance>
+
+<!-- ExtraCondensed -->
+    <instance postscriptfontname="MFEKSansExtraCondensed-Regular" familyname="MFEK Sans" name="MFEK Sans ExtraCondensed Regular" stylemapfamilyname="MFEK Sans ExtraCondensed" stylemapstylename="regular" stylename="ExtraCondensed Regular" filename="../instance_ufo/MFEKSansExtraCondensed-Regular.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="62.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansExtraCondensed-Medium" familyname="MFEK Sans" name="MFEK Sans ExtraCondensed Medium" stylemapfamilyname="MFEK Sans ExtraCondensed Medium" stylemapstylename="regular" stylename="ExtraCondensed Medium" filename="../instance_ufo/MFEKSansExtraCondensed-Medium.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="470"/>
+        <dimension name="Width" xvalue="62.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansExtraCondensed-SemiBold" familyname="MFEK Sans" name="MFEK Sans ExtraCondensed SemiBold" stylemapfamilyname="MFEK Sans ExtraCondensed SemiBold" stylemapstylename="regular" stylename="ExtraCondensed SemiBold" filename="../instance_ufo/MFEKSansExtraCondensed-SemiBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="550"/>
+        <dimension name="Width" xvalue="62.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansExtraCondensed-Bold" familyname="MFEK Sans" name="MFEK Sans ExtraCondensed Bold" stylemapfamilyname="MFEK Sans ExtraCondensed" stylemapstylename="bold" stylename="ExtraCondensed Bold" filename="../instance_ufo/MFEKSansExtraCondensed-Bold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="650"/>
+        <dimension name="Width" xvalue="62.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansExtraCondensed-ExtraBold" familyname="MFEK Sans" name="MFEK Sans ExtraCondensed ExtraBold" stylemapfamilyname="MFEK Sans ExtraCondensed ExtraBold" stylemapstylename="regular" stylename="ExtraCondensed ExtraBold" filename="../instance_ufo/MFEKSansExtraCondensed-ExtraBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="766"/>
+        <dimension name="Width" xvalue="62.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansExtraCondensed-Black" familyname="MFEK Sans" name="MFEK Sans ExtraCondensed Black" stylemapfamilyname="MFEK Sans ExtraCondensed Black" stylemapstylename="regular" stylename="ExtraCondensed Black" filename="../instance_ufo/MFEKSansExtraCondensed-Black.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="62.5"/>
+      </location>
+    </instance>
+
+<!-- UltraCondensed -->
+    <instance postscriptfontname="MFEKSansUltraCondensed-Regular" familyname="MFEK Sans" name="MFEK Sans UltraCondensed Regular" stylemapfamilyname="MFEK Sans UltraCondensed" stylemapstylename="regular" stylename="UltraCondensed Regular" filename="../instance_ufo/MFEKSansUltraCondensed-Regular.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansUltraCondensed-Medium" familyname="MFEK Sans" name="MFEK Sans UltraCondensed Medium" stylemapfamilyname="MFEK Sans UltraCondensed Medium" stylemapstylename="regular" stylename="UltraCondensed Medium" filename="../instance_ufo/MFEKSansUltraCondensed-Medium.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="470"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansUltraCondensed-SemiBold" familyname="MFEK Sans" name="MFEK Sans UltraCondensed SemiBold" stylemapfamilyname="MFEK Sans UltraCondensed SemiBold" stylemapstylename="regular" stylename="UltraCondensed SemiBold" filename="../instance_ufo/MFEKSansUltraCondensed-SemiBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="550"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansUltraCondensed-Bold" familyname="MFEK Sans" name="MFEK Sans UltraCondensed Bold" stylemapfamilyname="MFEK Sans UltraCondensed" stylemapstylename="bold" stylename="UltraCondensed Bold" filename="../instance_ufo/MFEKSansUltraCondensed-Bold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="650"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansUltraCondensed-ExtraBold" familyname="MFEK Sans" name="MFEK Sans UltraCondensed ExtraBold" stylemapfamilyname="MFEK Sans UltraCondensed ExtraBold" stylemapstylename="regular" stylename="UltraCondensed ExtraBold" filename="../instance_ufo/MFEKSansUltraCondensed-ExtraBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="766"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansUltraCondensed-Black" familyname="MFEK Sans" name="MFEK Sans UltraCondensed Black" stylemapfamilyname="MFEK Sans UltraCondensed Black" stylemapstylename="regular" stylename="UltraCondensed Black" filename="../instance_ufo/MFEKSansUltraCondensed-Black.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="0"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </instance>
+
+<!-- ROUNDED -->
+    <instance postscriptfontname="MFEKSansRounded-Regular" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded Regular" stylemapfamilyname="MFEK Sans Rounded" stylemapstylename="regular" stylename="Regular" filename="../instance_ufo/MFEKSansRounded-Regular.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRounded-Medium" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded Medium" stylemapfamilyname="MFEK Sans Rounded Medium" stylemapstylename="regular" stylename="Medium" filename="../instance_ufo/MFEKSansRounded-Medium.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="470"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRounded-SemiBold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded SemiBold" stylemapfamilyname="MFEK Sans Rounded SemiBold" stylemapstylename="regular" stylename="SemiBold" filename="../instance_ufo/MFEKSansRounded-SemiBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="550"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRounded-Bold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded Bold" stylemapfamilyname="MFEK Sans Rounded" stylemapstylename="bold" stylename="Bold" filename="../instance_ufo/MFEKSansRounded-Bold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="650"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRounded-ExtraBold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded ExtraBold" stylemapfamilyname="MFEK Sans Rounded ExtraBold" stylemapstylename="regular" stylename="ExtraBold" filename="../instance_ufo/MFEKSansRounded-ExtraBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="766"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </instance>
+    
+    <instance postscriptfontname="MFEKSansRounded-Black" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded Black" stylemapfamilyname="MFEK Sans Rounded Black" stylemapstylename="regular" stylename="Black" filename="../instance_ufo/MFEKSansRounded-Black.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="100"/>
+      </location>
+    </instance>
+
+<!-- SemiCondensed -->
+    <instance postscriptfontname="MFEKSansRoundedSemiCondensed-Regular" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded SemiCondensed Regular" stylemapfamilyname="MFEK Sans Rounded SemiCondensed" stylemapstylename="regular" stylename="SemiCondensed Regular" filename="../instance_ufo/MFEKSansRoundedSemiCondensed-Regular.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="87.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedSemiCondensed-Medium" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded SemiCondensed Medium" stylemapfamilyname="MFEK Sans Rounded SemiCondensed Medium" stylemapstylename="regular" stylename="SemiCondensed Medium" filename="../instance_ufo/MFEKSansRoundedSemiCondensed-Medium.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="470"/>
+        <dimension name="Width" xvalue="87.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedSemiCondensed-SemiBold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded SemiCondensed SemiBold" stylemapfamilyname="MFEK Sans Rounded SemiCondensed SemiBold" stylemapstylename="regular" stylename="SemiCondensed SemiBold" filename="../instance_ufo/MFEKSansRoundedSemiCondensed-SemiBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="550"/>
+        <dimension name="Width" xvalue="87.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedSemiCondensed-Bold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded SemiCondensed Bold" stylemapfamilyname="MFEK Sans Rounded SemiCondensed" stylemapstylename="bold" stylename="SemiCondensed Bold" filename="../instance_ufo/MFEKSansRoundedSemiCondensed-Bold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="650"/>
+        <dimension name="Width" xvalue="87.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedSemiCondensed-ExtraBold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded SemiCondensed ExtraBold" stylemapfamilyname="MFEK Sans Rounded SemiCondensed ExtraBold" stylemapstylename="regular" stylename="SemiCondensed ExtraBold" filename="../instance_ufo/MFEKSansRoundedSemiCondensed-ExtraBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="766"/>
+        <dimension name="Width" xvalue="87.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedSemiCondensed-Black" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded SemiCondensed Black" stylemapfamilyname="MFEK Sans Rounded SemiCondensed Black" stylemapstylename="regular" stylename="SemiCondensed Black" filename="../instance_ufo/MFEKSansRoundedSemiCondensed-Black.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="87.5"/>
+      </location>
+    </instance>
+
+<!-- Condensed -->
+    <instance postscriptfontname="MFEKSansRoundedCondensed-Regular" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded Condensed Regular" stylemapfamilyname="MFEK Sans Rounded Condensed" stylemapstylename="regular" stylename="Condensed Regular" filename="../instance_ufo/MFEKSansRoundedCondensed-Regular.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="75"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedCondensed-Medium" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded Condensed Medium" stylemapfamilyname="MFEK Sans Rounded Condensed Medium" stylemapstylename="regular" stylename="Condensed Medium" filename="../instance_ufo/MFEKSansRoundedCondensed-Medium.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="470"/>
+        <dimension name="Width" xvalue="75"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedCondensed-SemiBold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded Condensed SemiBold" stylemapfamilyname="MFEK Sans Rounded Condensed SemiBold" stylemapstylename="regular" stylename="Condensed SemiBold" filename="../instance_ufo/MFEKSansRoundedCondensed-SemiBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="550"/>
+        <dimension name="Width" xvalue="75"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedCondensed-Bold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded Condensed Bold" stylemapfamilyname="MFEK Sans Rounded Condensed" stylemapstylename="bold" stylename="Condensed Bold" filename="../instance_ufo/MFEKSansRoundedCondensed-Bold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="650"/>
+        <dimension name="Width" xvalue="75"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedCondensed-ExtraBold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded Condensed ExtraBold" stylemapfamilyname="MFEK Sans Rounded Condensed ExtraBold" stylemapstylename="regular" stylename="Condensed ExtraBold" filename="../instance_ufo/MFEKSansRoundedCondensed-ExtraBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="766"/>
+        <dimension name="Width" xvalue="75"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedCondensed-Black" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded Condensed Black" stylemapfamilyname="MFEK Sans Rounded Condensed Black" stylemapstylename="regular" stylename="Condensed Black" filename="../instance_ufo/MFEKSansRoundedCondensed-Black.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="75"/>
+      </location>
+    </instance>
+
+<!-- ExtraCondensed -->
+    <instance postscriptfontname="MFEKSansRoundedExtraCondensed-Regular" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded ExtraCondensed Regular" stylemapfamilyname="MFEK Sans Rounded ExtraCondensed" stylemapstylename="regular" stylename="ExtraCondensed Regular" filename="../instance_ufo/MFEKSansRoundedExtraCondensed-Regular.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="62.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedExtraCondensed-Medium" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded ExtraCondensed Medium" stylemapfamilyname="MFEK Sans Rounded ExtraCondensed Medium" stylemapstylename="regular" stylename="ExtraCondensed Medium" filename="../instance_ufo/MFEKSansRoundedExtraCondensed-Medium.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="470"/>
+        <dimension name="Width" xvalue="62.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedExtraCondensed-SemiBold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded ExtraCondensed SemiBold" stylemapfamilyname="MFEK Sans Rounded ExtraCondensed SemiBold" stylemapstylename="regular" stylename="ExtraCondensed SemiBold" filename="../instance_ufo/MFEKSansRoundedExtraCondensed-SemiBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="550"/>
+        <dimension name="Width" xvalue="62.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedExtraCondensed-Bold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded ExtraCondensed Bold" stylemapfamilyname="MFEK Sans Rounded ExtraCondensed" stylemapstylename="bold" stylename="ExtraCondensed Bold" filename="../instance_ufo/MFEKSansRoundedExtraCondensed-Bold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="650"/>
+        <dimension name="Width" xvalue="62.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedExtraCondensed-ExtraBold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded ExtraCondensed ExtraBold" stylemapfamilyname="MFEK Sans Rounded ExtraCondensed ExtraBold" stylemapstylename="regular" stylename="ExtraCondensed ExtraBold" filename="../instance_ufo/MFEKSansRoundedExtraCondensed-ExtraBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="766"/>
+        <dimension name="Width" xvalue="62.5"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedExtraCondensed-Black" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded ExtraCondensed Black" stylemapfamilyname="MFEK Sans Rounded ExtraCondensed Black" stylemapstylename="regular" stylename="ExtraCondensed Black" filename="../instance_ufo/MFEKSansRoundedExtraCondensed-Black.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="62.5"/>
+      </location>
+    </instance>
+
+<!-- UltraCondensed -->
+    <instance postscriptfontname="MFEKSansRoundedUltraCondensed-Regular" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded UltraCondensed Regular" stylemapfamilyname="MFEK Sans Rounded UltraCondensed" stylemapstylename="regular" stylename="UltraCondensed Regular" filename="../instance_ufo/MFEKSansRoundedUltraCondensed-Regular.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="400"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedUltraCondensed-Medium" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded UltraCondensed Medium" stylemapfamilyname="MFEK Sans Rounded UltraCondensed Medium" stylemapstylename="regular" stylename="UltraCondensed Medium" filename="../instance_ufo/MFEKSansRoundedUltraCondensed-Medium.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="470"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedUltraCondensed-SemiBold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded UltraCondensed SemiBold" stylemapfamilyname="MFEK Sans Rounded UltraCondensed SemiBold" stylemapstylename="regular" stylename="UltraCondensed SemiBold" filename="../instance_ufo/MFEKSansRoundedUltraCondensed-SemiBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="550"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedUltraCondensed-Bold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded UltraCondensed Bold" stylemapfamilyname="MFEK Sans Rounded UltraCondensed" stylemapstylename="bold" stylename="UltraCondensed Bold" filename="../instance_ufo/MFEKSansRoundedUltraCondensed-Bold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="650"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedUltraCondensed-ExtraBold" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded UltraCondensed ExtraBold" stylemapfamilyname="MFEK Sans Rounded UltraCondensed ExtraBold" stylemapstylename="regular" stylename="UltraCondensed ExtraBold" filename="../instance_ufo/MFEKSansRoundedUltraCondensed-ExtraBold.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="766"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </instance>
+
+    <instance postscriptfontname="MFEKSansRoundedUltraCondensed-Black" familyname="MFEK Sans Rounded" name="MFEK Sans Rounded UltraCondensed Black" stylemapfamilyname="MFEK Sans Rounded UltraCondensed Black" stylemapstylename="regular" stylename="UltraCondensed Black" filename="../instance_ufo/MFEKSansRoundedUltraCondensed-Black.ufo">
+      <location>
+        <dimension name="Rounded" xvalue="1000"/>
+        <dimension name="Weight" xvalue="900"/>
+        <dimension name="Width" xvalue="50"/>
+      </location>
+    </instance>
+  </instances>
+
+  <lib>
+    <dict>
+      <key>org.statmake.stylespace</key>
+      <dict>
+        <key>axes</key>
+        <array>
+
+          <dict>
+            <key>name</key>
+            <string>Rounded</string>
+            <key>tag</key>
+            <string>TRMA</string>
+            <key>locations</key>
+            <array>
+
+              <dict>
+                <key>name</key>
+                <string>Regular</string>
+                <key>value</key>
+                <integer>0</integer>
+              </dict>
+
+              <dict>
+                <key>name</key>
+                <string>Rounded</string>
+                <key>value</key>
+                <string>1000</string>
+              </dict>
+
+            </array>
+          </dict>
+
+          <dict>
+            <key>name</key>
+            <string>Weight</string>
+            <key>tag</key>
+            <string>wght</string>
+            <key>locations</key>
+            <array>
+
+              <dict>
+                <key>name</key>
+                <string>Regular</string>
+                <key>value</key>
+                <integer>400</integer>
+                <key>linked_value</key>
+                <integer>700</integer>
+                <key>flags</key>
+                <array>
+                  <string>ElidableAxisValueName</string>
+                </array>
+              </dict>
+
+              <dict>
+                <key>name</key>
+                <string>Medium</string>
+                <key>value</key>
+                <integer>500</integer>
+              </dict>
+
+              <dict>
+                <key>name</key>
+                <string>SemiBold</string>
+                <key>value</key>
+                <integer>600</integer>
+              </dict>
+
+              <dict>
+                <key>name</key>
+                <string>Bold</string>
+                <key>value</key>
+                <integer>700</integer>
+              </dict>
+
+              <dict>
+                <key>name</key>
+                <string>ExtraBold</string>
+                <key>value</key>
+                <integer>800</integer>
+              </dict>
+
+              <dict>
+                <key>name</key>
+                <string>Black</string>
+                <key>value</key>
+                <integer>900</integer>
+              </dict>
+
+            </array>
+          </dict>
+
+          <dict>
+            <key>name</key>
+            <string>Width</string>
+            <key>tag</key>
+            <string>wdth</string>
+            <key>locations</key>
+            <array>
+
+              <dict>
+                <key>name</key>
+                <string>Medium</string>
+                <key>value</key>
+                <integer>100</integer>
+              </dict>
+
+              <dict>
+                <key>name</key>
+                <string>Semi-Condensed</string>
+                <key>value</key>
+                <string>87.5</string>
+              </dict>
+
+              <dict>
+                <key>name</key>
+                <string>Condensed</string>
+                <key>value</key>
+                <string>75</string>
+              </dict>
+
+              <dict>
+                <key>name</key>
+                <string>Extra-Condensed</string>
+                <key>value</key>
+                <string>62.5</string>
+              </dict>
+
+              <dict>
+                <key>name</key>
+                <string>Ultra-Condensed</string>
+                <key>value</key>
+                <string>50</string>
+              </dict>
+
+            </array>
+          </dict>
+        </array>
+      </dict>
+    </dict>
+  </lib>
+
+</designspace>

@@ -1,15 +1,20 @@
 pkgbase = xidel-bin
 	pkgdesc = Command line tool to process HTML/XML/JSON locally or from online sources
 	pkgver = 0.9.8
-	pkgrel = 1
-	url = http://videlibri.sourceforge.net/xidel.html
+	pkgrel = 2
+	url = https://www.videlibri.de/xidel.html
 	arch = x86_64
 	license = GPL3
-	optdepends = openssl: https connections
+	optdepends = openssl: for making https connections
 	provides = xidel
 	conflicts = xidel
-	source = xidel-0.9.8.deb::https://sourceforge.net/projects/videlibri/files/Xidel/Xidel 0.9.8/xidel_0.9.8-1_amd64.deb/download
-	sha256sums = f6a6e29b77547d5ae38383440bd653b3eaf9eeb470def14cc48154a4f6925f69
+	source = xidel-bin-0.9.8-2.tar.gz::https://jaist.dl.sourceforge.net/project/videlibri/Xidel/Xidel%200.9.8/xidel-0.9.8.linux64.tar.gz
+	source = LICENSE::https://sourceforge.net/p/videlibri/code/ci/tip/tree/programs/internet/xidel/COPYING?format=raw
+	source = test-data.xml
+	source = test-result.txt
+	b2sums = 37305eacceaade671ec9f8a5e665274adf4807e0304ffaf1fecf4be75c7df5cd0247451cc540b86f12c8c10b84e42ff98fc1141550a961d8a368817fc8ca0763
+	b2sums = ab7e38fc42fb6686add7393ecc3c7ec622cc0d72d0304ded3e56c2f96dc8433c584520896a30c037affa44461ecccfaf3ffa4a97a7e050e8ed0ec4c592caa45c
+	b2sums = 39e648523811611682aef0f950e9bb9faadc60472346b450d23afdaa75032202be1d45d066387c8b57203e4f9e62bf4d300f6397943e233ffb92460ed82a4560
+	b2sums = deb94456e0458387884dca3b83a160770302c70d2f3bdf4ec8d230e0dcbcafdbfe6e0c8be92f08120a172e503c0cf44d9c64ba388c79062bb2623b3070b9b5ba
 
 pkgname = xidel-bin
-
