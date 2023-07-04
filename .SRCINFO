@@ -1,6 +1,6 @@
 pkgbase = python-psd-tools
 	pkgdesc = Python package for working with Adobe Photoshop PSD files
-	pkgver = 1.9.27
+	pkgver = 1.9.28
 	pkgrel = 1
 	url = https://github.com/psd-tools/psd-tools
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-psd-tools
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-scikit-image
-	source = https://github.com/psd-tools/psd-tools/archive/v1.9.27.tar.gz
-	b2sums = 4b46d4c198acfc89927ae1f0b8881029e9d7588633017ea7b9d075e4a7db4c859a7c2ef6e87cfce3381890f3af94c36fd6809e4366250f5328327b69b71af05a
+	source = https://github.com/psd-tools/psd-tools/archive/v1.9.28.tar.gz
+	b2sums = f96e642e6329f41ffdb9c590e8622c4cdf51ff35b8aeeea34a767cd03050f8a4fc582980a90ae5145c4ab292a4647b95809a4d0e5b33bc9119a5c412b3bed8ef
 
 pkgname = python-psd-tools
