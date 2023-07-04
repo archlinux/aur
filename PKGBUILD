@@ -1,6 +1,6 @@
 # Maintainer: Bogdan Danylchenko <exp.wez@gmail.com>
 pkgname=hexa-git
-pkgver=289
+pkgver=230
 pkgrel=1
 pkgdesc="Hexa is a programming language in an early stage of development"
 arch=('x86_64')
@@ -19,7 +19,8 @@ pkgver() {
 
 build() {
 	cd $srcdir/hexa
-    node bootstrap.js hexa.json
+	node bootstrap.js hexa.json
+	node hexa-node.js hexa.json
 }
 
 package() {
@@ -29,7 +30,9 @@ package() {
 	mkdir -p $pkgdir/usr/share/hexa
 	mkdir -p $pkgdir/usr/share/hexa/library
 
-	cp $srcdir/hexa/hexa.js $pkgdir/usr/share/hexa/hexa.js
+	cp $srcdir/hexa/hexa-node.js $pkgdir/usr/share/hexa/hexa-node.js
+	cp $srcdir/hexa/repl.json $pkgdir/usr/share/hexa/repl.json
+	cp $srcdir/hexa/repl.hexa $pkgdir/usr/share/hexa/repl.hexa
 	cp -a $srcdir/hexa/library $pkgdir/usr/share/hexa
 	cp $srcdir/hexa/LICENSE $pkgdir/usr/share/licenses/hexa-git/LICENSE
 
