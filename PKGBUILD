@@ -21,9 +21,12 @@ source_x86_64=("${_url}/eID_klient_x86_64.tar.gz")
 sha256sums=(
     SKIP
 )
-# upstream update would break this PKGBUILD if we used integrity checks
-md5sums_i686=('SKIP')
-md5sums_x86_64=('SKIP')
+sha256sums_i686=(
+    bccec263730fe6851db836915379bf32241df40f3a544e8b9b0362e0308bdec1
+)
+sha256sums_x86_64=(
+    ab07ca3ee4c9dc8cdb83feb349d2e60aa45fd00b9f1e5828d6820593af2759cb
+)
 options=("!strip")
 install=eidklient.install
 makedepends=(
@@ -41,8 +44,8 @@ makedepends=(
 : "${source_i686[@]}"
 : "${source_x86_64[@]}"
 : "${sha256sums[@]}"
-: "${md5sums_i686[@]}"
-: "${md5sums_x86_64[@]}"
+: "${sha256sums_i686[@]}"
+: "${sha256sums_x86_64[@]}"
 : "${options[@]}"
 : "${install}"
 : "${makedepends[@]}"
