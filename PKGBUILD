@@ -3,7 +3,7 @@ _name=${pkgname#python-}
 
 # Maintainer: Bill Sideris <bill88t@feline.gr>
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Python ESC/POS is a library which lets the user have access to all those printers handled by ESC/POS commands, as defined by Epson, from a Python application.'
 arch=('any')
 license=('GPL3')
