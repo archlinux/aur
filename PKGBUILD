@@ -1,7 +1,7 @@
 # Maintainer: gee
 
 pkgname=reshade-shaders-git
-pkgver=r21.7c48ddc
+pkgver=r25.bf2aff5
 pkgrel=1
 pkgdesc='A collection of post-processing shaders written in the ReShade FX shader language, to be used by vkBasalt'
 arch=('any')
