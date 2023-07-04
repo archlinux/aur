@@ -3,6 +3,7 @@ pkgbase = ttf-lxgw-marker-gothic
 	pkgrel = 0
 	url = https://github.com/lxgw/LxgwMarkerGothic
 	arch = any
+	groups = lxgw-font
 	license = custom:SIL OFL
 	depends = fontconfig
 	source = LxgwMarkerGothic-Regular-0.200.ttf::https://github.com/lxgw/LxgwMarkerGothic/releases/download/v0.200/LxgwMarkerGothic-Regular.ttf

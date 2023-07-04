@@ -11,7 +11,7 @@ license=("custom:SIL OFL")
 #conflicts=()
 depends=('fontconfig')
 makedepends=()
-
+groups=(lxgw-font)
 source=("LxgwMarkerGothic-Regular-${pkgver}.ttf::${url}/releases/download/v${pkgver}/LxgwMarkerGothic-Regular.ttf")
 
 sha256sums=('5a7a9babea09e3dd12814d487010962c3b3a9b51a538c496bec662d7ab65789c')
