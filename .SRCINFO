@@ -1,17 +1,24 @@
 pkgbase = antares-sql-appimage
 	pkgdesc = A modern, fast and productivity driven SQL client with a focus in UX.
-	pkgver = 0.7.11
+	pkgver = 0.7.12
 	pkgrel = 1
 	url = https://antares-sql.app/
+	arch = aarch64
+	arch = armv7h
 	arch = x86_64
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = zlib
 	depends = glibc
+	provides = antares-sql
 	options = !strip
-	source = antares-sql-0.7.11.AppImage::https://github.com/antares-sql/antares/releases/download/v0.7.11/Antares-0.7.11-linux_x86_64.AppImage
 	source = LICENSE::https://raw.githubusercontent.com/antares-sql/antares/master/LICENSE
-	sha256sums = 7c406953073368131c3b1010fa436730d7239aa0b4a0d072d43f3401df84541a
 	sha256sums = 7b960bb0bed7d2228b6a8a879558c97906cc041ab14ab1d1089959902f386613
+	source_aarch64 = antares-sql-0.7.12-aarch64.AppImage::https://github.com/antares-sql/antares/releases/download/v0.7.12/Antares-0.7.12-linux_arm64.AppImage
+	sha256sums_aarch64 = 698664c5edc495bd44e94a84b3721cd27473556034e37d1ad48d2e6e1e34bfae
+	source_armv7h = antares-sql-0.7.12-armv7h.AppImage::https://github.com/antares-sql/antares/releases/download/v0.7.12/Antares-0.7.12-linux_armv7l.AppImage
+	sha256sums_armv7h = 33b792372dd840f4dc4a3fc71724eafa29dd8091ed70d622aed379d5aee31647
+	source_x86_64 = antares-sql-0.7.12-x86_64.AppImage::https://github.com/antares-sql/antares/releases/download/v0.7.12/Antares-0.7.12-linux_x86_64.AppImage
+	sha256sums_x86_64 = 6adea55c55e308b4a55458007851432ea486d5537bb7bd9049cb834781d6430d
 
 pkgname = antares-sql-appimage
