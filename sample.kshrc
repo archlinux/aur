@@ -60,6 +60,9 @@ typeset -A color=(
 	#[spaced_dots]=$'\E[4:5m'
 )
 
+# Get the effective user ID now to avoid running id(1) every time $PS1 is printed
+integer euid=$(id -u)
+
 PS1.get()
 {
 	ret=$?  # Workaround $? bug in ksh < 2021-03-16 (cf. https://github.com/ksh93/ksh/pull/226)
@@ -74,10 +77,10 @@ PS1.get()
 		/)		;;  # Do nothing
 		*)		pwd=${pwd##*/} ;;
 	esac
-	if [[ $(id -u) == 0 ]]; then
-		PS1='${color[bright_lavender]}${pwd} ${color[red]}#${color[reset]} '
+	if ((euid == 0)); then
+		.sh.value='${color[bright_lavender]}${pwd} ${color[red]}#${color[reset]} '
 	else
-		PS1='${color[ultramarine_blue]}${pwd} ${color[cyan_process]}\$${color[reset]} '
+		.sh.value='${color[ultramarine_blue]}${pwd} ${color[cyan_process]}\$${color[reset]} '
 	fi
 
 	return $ret
