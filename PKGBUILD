@@ -1,15 +1,16 @@
 # Maintainer: éclairevoyant
 
 pkgname=wayshot
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Screenshot tool for wlroots compositors"
 arch=(x86_64)
-url="https://git.sr.ht/~shinyzenith/$pkgname"
+url="https://github.com/waycrate/$pkgname"
 license=(BSD)
+depends=(gcc-libs glibc)
 optdepends=('slurp: for area selection')
 makedepends=(cargo git scdoc)
-source=("git+$url#commit=31baff5229bc8f5bd835b1b7b649513b437dfe5e?signed")
+source=("git+$url#commit=43fae61e239d75b8381f1e07e09e40dc2103cc8e?signed")
 b2sums=('SKIP')
 validpgpkeys=('C18E2B48B8DA9B624C8B72D66DD485917B553B7B') # Shinyzenith#6969 (gpgkeypair) <aakashsensharma@gmail.com>
 
