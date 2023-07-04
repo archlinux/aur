@@ -3,7 +3,7 @@
 pkgname=samora-lang
 pkgver=1.20.4.r.
 pkgrel=1
-pkgdesc="Samora Lang - A Simple Interpreted Programming Language just for Educational Purposes"
+pkgdesc="Samora Lang - A Simple Interpreted Programming Language just for Educational Purposes."
 arch=('x86_64' 'i686')
 url="https://github.com/GraHms/Samora-Lang"
 license=('MIT')
