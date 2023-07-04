@@ -8,7 +8,7 @@
 
 # Optional settings:
 #_lto="true"      # Uncomment this line to enable CLANG-LTO
-_debugfs="true"  # Uncomment this line to set CONFIG_DEBUG_FS=y
+#_debugfs="true"  # Uncomment this line to set CONFIG_DEBUG_FS=y
 
 pkgbase=linux-bpir64-git
 _srcname=linux
@@ -17,7 +17,7 @@ _gitbranch="linux-rolling-stable"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPI-R64 and BPI-R3"
 pkgver=6.3.9.bpi
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -72,7 +72,7 @@ prepare() {
   cp -vf ${startdir}/defconfig ./arch/arm64/configs/bpir_defconfig
   [[ "$_debugfs" == "true" ]] && echo -e "\nCONFIG_DEBUG_FS=y" >>./arch/arm64/configs/bpir_defconfig
   make ${MAKEFLAGS} $_llvm bpir_defconfig
-#  rm -vf ./arch/arm64/configs/bpir_defconfig
+  rm -vf ./arch/arm64/configs/bpir_defconfig
 
   if [ ! -z "$(cat .config | grep CONFIG_OF_OVERLAY=y)" ]; then
     cp -vf "${srcdir}/configfs.c" "./drivers/of/"
