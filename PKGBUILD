@@ -1,16 +1,17 @@
 # Maintainer: gee
-# contributors: yochananmarqos, bpierre, PedroHLC, rodrigo21
+# contributors: yochananmarqos, bpierre, PedroHLC, rodrigo21, FabioLolix
 pkgname='vkbasalt'
-pkgver=0.3.2.9
+pkgver=0.3.2.10
 pkgrel=1
 pkgdesc='A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
 license=('zlib')
-makedepends=('meson' 'ninja' 'glslang' 'libx11' 'spirv-headers' 'vulkan-headers')
 depends=('gcc-libs' 'glslang' 'libx11')
+makedepends=('meson' 'ninja' 'spirv-headers' 'vulkan-headers')
+optdepends=('reshade-shaders-git')
 source=("${url}/releases/download/v${pkgver}/vkBasalt-${pkgver}.tar.gz")
-sha256sums=('15cbac85be0f3ec811aeb5496d7966a4ee96b6031ad3da510f28ce9541ba6860')
+sha256sums=('eb196ff446fa36ec0ca99c4406d753c1fa210afddeec5e7a76e1c2e74ed605e3')
 install=vkbasalt.install
 
 prepare() {
@@ -31,10 +32,9 @@ build() {
 }
 
 package() {
-  optdepends=('reshade-shaders-git')
   cd ${srcdir}/vkBasalt-${pkgver}
 
   DESTDIR="${pkgdir}" ninja -C build install
   install -Dm 644 config/vkBasalt.conf "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/vkBasalt"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

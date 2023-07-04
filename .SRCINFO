@@ -1,6 +1,6 @@
 pkgbase = vkbasalt
 	pkgdesc = A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.
-	pkgver = 0.3.2.9
+	pkgver = 0.3.2.10
 	pkgrel = 1
 	url = https://github.com/DadSchoorse/vkBasalt
 	install = vkbasalt.install
@@ -8,15 +8,13 @@ pkgbase = vkbasalt
 	license = zlib
 	makedepends = meson
 	makedepends = ninja
-	makedepends = glslang
-	makedepends = libx11
 	makedepends = spirv-headers
 	makedepends = vulkan-headers
 	depends = gcc-libs
 	depends = glslang
 	depends = libx11
-	source = https://github.com/DadSchoorse/vkBasalt/releases/download/v0.3.2.9/vkBasalt-0.3.2.9.tar.gz
-	sha256sums = 15cbac85be0f3ec811aeb5496d7966a4ee96b6031ad3da510f28ce9541ba6860
+	optdepends = reshade-shaders-git
+	source = https://github.com/DadSchoorse/vkBasalt/releases/download/v0.3.2.10/vkBasalt-0.3.2.10.tar.gz
+	sha256sums = eb196ff446fa36ec0ca99c4406d753c1fa210afddeec5e7a76e1c2e74ed605e3
 
 pkgname = vkbasalt
-	optdepends = reshade-shaders-git
