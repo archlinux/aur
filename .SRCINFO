@@ -1,20 +1,21 @@
 pkgbase = qcl
 	pkgdesc = Quantum Computation Language
-	pkgver = 0.6.4
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = http://tph.tuwien.ac.at/~oemer/qcl.html
+	changelog = CHANGELOG.txt
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = flex
-	depends = bison
+	makedepends = flex
+	makedepends = bison
 	depends = readline
-	depends = ncurses
 	depends = plotutils
-	source = http://tph.tuwien.ac.at/~oemer/tgz/qcl-0.6.4.tgz
+	source = http://tph.tuwien.ac.at/~oemer/tgz/qcl-0.6.7.tgz
 	source = makefile.patch
-	md5sums = a440b8b4441ba31f7d66ca76b4894a38
-	md5sums = 632c461469fd01012d4bc1cb7c3924b6
+	source = CHANGELOG.txt
+	b2sums = b4d345f06a3988652ffed71ce0133247ef07a8149a4b7c4719424b020274f095432b82d3edea85a0acbd0f185f9c3211614714dea09f5cc2e3df59ae81dd8b0d
+	b2sums = eaf473703c7d985aa5d8b4c47c563a4067f2f895a1e79414b3591c98e988d79617ee49eaee2ae1bd701ecc40a8a7d9d0e1995b9fb2e889433b028f6a87ba9b60
+	b2sums = 6e2e7733725a80c58d5c3b39ac3e11d7bc3e4e6a1df1b02e1a32cf912f04218eda918f0fb20cf99ad46cb42593abff683392cebaa8d7e2a12a12843928a09d54
 
 pkgname = qcl
-

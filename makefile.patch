@@ -1,9 +1,9 @@
-diff -aur package.pristine/Makefile package.new/Makefile
---- package.pristine/Makefile	2017-01-21 13:16:38.006668631 +0100
-+++ package.new/Makefile	2017-01-21 13:19:46.427337356 +0100
+diff -aur qcl-0.6.7-old/Makefile qcl-0.6.7/Makefile
+--- qcl-0.6.7-old/Makefile	2022-12-22 02:54:06.000000000 +0200
++++ qcl-0.6.7/Makefile	2023-07-04 23:58:41.310442493 +0300
 @@ -12,13 +12,15 @@
  
- VERSION=0.6.4
+ VERSION=0.6.7
  
 +PREFIX=/usr
 +
@@ -19,13 +19,23 @@ diff -aur package.pristine/Makefile package.new/Makefile
  
  ARCH = `g++ -dumpmachine || echo bin`
  
-@@ -82,7 +84,8 @@
+@@ -48,8 +50,8 @@
+ # explicit linking against libtermcap or libncurses may be required
+ 
+ RLOPT = -DQCL_USE_READLINE
+-#RLLIB = -lreadline
+-RLLIB = -lreadline -lncurses
++RLLIB = -lreadline
++#RLLIB = -lreadline -lncurses
+ 
+ # Interrupt support
+ #
+@@ -87,7 +89,7 @@
  #CXX = g++
  #CPP = $(CC) -E
  CXXFLAGS = -c $(ARCHOPT) $(DEBUG) $(PLOPT) $(RLOPT) $(IRQOPT) $(ENCOPT) -I$(QCDIR) -DDEF_INCLUDE_PATH="\"$(QCLDIR)\""
--LDFLAGS = $(ARCHOPT) -L$(QCDIR) $(DEBUG) $(PLLIB) -lm -lfl -lqc $(RLLIB) 
-+#LDFLAGS = $(ARCHOPT) -L$(QCDIR) $(DEBUG) $(PLLIB) -lm -lfl -lqc $(RLLIB) 
-+LDFLAGS = $(ARCHOPT) -L$(QCDIR) $(DEBUG) $(PLLIB) -lm -L/usr/lib/libfl.a -lqc $(RLLIB) 
+-LDFLAGS = $(ARCHOPT) -L$(QCDIR) $(DEBUG) $(PLLIB) -lm $(LEXLIB) -lqc $(RLLIB) 
++LDFLAGS = $(ARCHOPT) -L$(QCDIR) $(DEBUG) $(PLLIB) -lm -L/usr/lib/libfl.a -lqc $(RLLIB)
  
  FILESCC = $(wildcard *.cc)
  FILESH = $(wildcard *.h)

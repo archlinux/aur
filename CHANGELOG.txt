@@ -1,0 +1,100 @@
+Changes in 0.6.7:
+
+ * fixed bug when allocating 32 or more qubits at once
+ * spectrum now gives peak probabilty
+
+Changes in 0.6.6:
+
+ * Fixed the != operator for quantum condition (was treated as ==).
+   Thanks to Sebastian Schmitt for spotting this bug.
+ 
+Changes in 0.6.5:
+
+ * Removed -lfl (i.e. linking against libflex) from the linker options.
+ * Removed some copiler warnings in bitvec.cc
+ * updated changelog (this file)
+
+Changes in 0.6.4:
+
+ * Dump format supports polar coordinates. 
+ * Minor updates for gcc 4.7. 
+ * Dropped the 32-bit binary package. 
+
+Changes in 0.6.3:
+
+ * This is a minor bugfix release to fix the emulation of the conditional swap gate (Fredkin gate). 
+   Thanks to Jaroslaw Miszczak for spotting this bug.
+
+Changes in 0.6.2:
+
+ * Code cleanups to make gcc 4.1 happy
+ * Binary distribution for AMD64 plattform
+ * Output defaults to decimal for <= 64 qubits
+ * Minor changes in the Makefile 
+    
+Changes in 0.6.1:
+ * Fixed -x option bug
+ * new option --qcluserdir, --include-path renamed to --qcldir
+ * new enviroment variable QCLUSERDIR
+
+Changes in 0.6.0:
+ * Code cleanups for ISO C++ compliance
+ * Dropped static binary support
+
+Changes in 0.5.1:
+ * Double declaration as "qufunct operator" for non-boolean implementations
+   of basis permutations
+ * Recursive operator definitions
+ * New auto-dump format which displays registers 
+ * Sample implementation of Deutsch's algorithm
+
+Changes in 0.5.0:
+
+ * Conditional Operators and quantum conditions (experimental)
+ * Vectors, matrices and tensors (see linalg.qcl)
+ * New elementary operators (see default.qcl)
+ * Plotting of states and spectrums via the new "plot" command
+ * New and revised sample programs
+ * break-statement for loops
+ * Bitwise not, and, or, xor as built-in functions
+ * Built in function bit(n,i) (i-th bit of binary expansion of n)
+ * Improved TeXmacs support 
+ * Support for keyboard interrupts (SIGINT, SIGTSTP)
+ * Optimizations in the simulation layer (more than 300% speedup in some
+   cases)
+ * Removal of legacy code for old complex- and string-classes 
+ * Improved support for non-Intel plattforms
+ * Rewrite of Error handling to use C++ exceptions
+ * Major code-cleanups
+ * Minor bug fixes
+
+Changes in 0.4.3:
+
+ * Color XTerm and TeXmacs support (by Andrey G. Grozin).
+ * Bug with random() on non-GNU systems fixed (thanks to Joel Hegg).
+ * Internal changes.
+
+Changes in 0.4.2:
+
+ * Compile glitch fixed with RedHat 7.2.
+ * Nicer output of quantum states.
+
+Changes in 0.4.1:
+
+ * ANSI C++ complience (except for local array variables).
+ * Fixed unitarity testing for matrix operators.
+ * Minor bugfixes.
+
+Changes in 0.4.0:
+
+ * As the available documentation already exceeds the size of the
+   source code by an order of magnitude, the manual is no longer part
+   of the main distribution. If you are new to QCL, you probably want
+   do check out the Documentation section below.
+ * A sample inplementation of Grover's Database Search algorithm is
+   contained in the lib directory.
+ * The QCL searchpath now also looks for qcl-files in ./lib.
+ * Besides the dynamically linked program, the binary package now
+   also contains a static binary qcl-static.
+ * minor bugfixes.
+
