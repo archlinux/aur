@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="electron-egg-bin"
 _appname="ee"
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.5.1
+pkgrel=1
 pkgdesc="A simple, cross platform, enterprise desktop software development framework"
 arch=('x86_64')
 url="https://www.kaka996.com/"
@@ -13,7 +13,7 @@ depends=('gcc-libs' 'hicolor-icon-theme' 'cairo' 'libxcomposite' 'libxext' 'gtk3
     'libxrandr' 'dbus' 'nspr' 'wayland' 'libxfixes' 'mesa' 'expat' 'at-spi2-core' 'glibc' 'libcups' 'libdrm' 'libxkbcommon' 'pango' 'libxcb')
 makedepends=('pnpm')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('eff22be2951d44ef83fc7f524895837fd729ef3af5a5fdbb1c40280634dad004')
+sha256sums=('7c304f14d033f1ae535cf9ad1f8d645d612b7a402d25e99d28b119b5f7a3fb75')
 build() {
     cd "${srcdir}/${pkgname%-bin}-${pkgver}"
     #For Chinese only
@@ -21,8 +21,7 @@ build() {
     #npm config set registry=https://registry.npmmirror.com
     #npm config set disturl=https://registry.npmmirror.com/-/binary/node
     #npm config set electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-   pnpm install
-   pnpm run build-lp-64
+   pnpm install && pnpm run build-lp-64
 }
 package() {
     bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}/out/${_appname}-linux-${pkgver}-x64.pacman" -C "${srcdir}"

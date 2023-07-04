@@ -1,7 +1,7 @@
 pkgbase = electron-egg-bin
 	pkgdesc = A simple, cross platform, enterprise desktop software development framework
-	pkgver = 3.4.0
-	pkgrel = 2
+	pkgver = 3.5.1
+	pkgrel = 1
 	url = https://www.kaka996.com/
 	arch = x86_64
 	license = Apache
@@ -33,7 +33,7 @@ pkgbase = electron-egg-bin
 	depends = libxcb
 	conflicts = electron-egg
 	conflicts = electron-egg-appimage
-	source = electron-egg-3.4.0.tar.gz::https://github.com/dromara/electron-egg/archive/refs/tags/v3.4.0.tar.gz
-	sha256sums = eff22be2951d44ef83fc7f524895837fd729ef3af5a5fdbb1c40280634dad004
+	source = electron-egg-3.5.1.tar.gz::https://github.com/dromara/electron-egg/archive/refs/tags/v3.5.1.tar.gz
+	sha256sums = 7c304f14d033f1ae535cf9ad1f8d645d612b7a402d25e99d28b119b5f7a3fb75
 
 pkgname = electron-egg-bin
