@@ -1,13 +1,14 @@
 pkgbase = spotify-player
 	pkgdesc = A command driven spotify player.
 	pkgver = 0.14.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aome510/spotify-player
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = MIT
 	makedepends = cargo
+	makedepends = pkg-config
 	depends = alsa-lib
 	depends = openssl
 	depends = dbus

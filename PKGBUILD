@@ -2,13 +2,13 @@
 
 pkgname=spotify-player
 pkgver=0.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A command driven spotify player."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/aome510/spotify-player"
 license=('MIT')
 depends=('alsa-lib' 'openssl' 'dbus')
-makedepends=('cargo')
+makedepends=('cargo' 'pkg-config')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aome510/spotify-player/archive/v${pkgver}.tar.gz")
 sha512sums=('8332840a79e64cb02f6b8c27d146bd6ad6f7f18d7ca67dc3e8f40505630b85da0166ca141e00ddb4e9785d88ab1377171043de04bc97e7ee46d16300a6f532b5')
 
