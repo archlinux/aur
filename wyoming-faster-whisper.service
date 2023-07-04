@@ -1,0 +1,24 @@
+[Unit]
+Description=Wyoming Server for Faster Whisper
+Wants=network.target
+
+[Service]
+Restart=on-failure
+User=wyoming-faster-whisper
+Group=wyoming-faster-whisper
+DynamicUser=true
+StateDirectory=wyoming-faster-whisper
+WorkingDirectory=/var/lib/wyoming-faster-whisper
+
+EnvironmentFile=/etc/conf.d/wyoming-faster-whisper
+ExecStart=python3 -m wyoming_faster_whisper \
+    --model $MODEL \
+    --uri $URI \
+    --beam-size $BEAM_SIZE \
+    --language $LANGUAGE \
+    --data-dir /var/lib/wyoming-faster-whisper/data \
+    --download-dir /var/lib/wyoming-faster-whisper/data
+
+[Install]
+WantedBy=multi-user.target
+

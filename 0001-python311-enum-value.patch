@@ -1,0 +1,12 @@
+diff --unified --recursive --text wyoming_faster_whisper-0.0.3/wyoming_faster_whisper/download.py wyoming_faster_whisper-0.0.3.new/wyoming_faster_whisper/download.py
+--- wyoming_faster_whisper-0.0.3/wyoming_faster_whisper/download.py	2023-05-09 21:37:24.000000000 +0200
++++ wyoming_faster_whisper-0.0.3.new/wyoming_faster_whisper/download.py	2023-07-06 11:27:47.307167961 +0200
+@@ -86,7 +86,7 @@
+ 
+     dest_dir.mkdir(parents=True, exist_ok=True)
+ 
+-    model_url = URL_FORMAT.format(model=model)
++    model_url = URL_FORMAT.format(model=model.value)
+     with urlopen(model_url) as response:
+         with tarfile.open(mode="r|*", fileobj=response) as tar_gz:
+             tar_gz.extractall(dest_dir)
