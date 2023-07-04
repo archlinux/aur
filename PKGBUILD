@@ -10,7 +10,7 @@ arch=("any")
 provides=("mprisence")
 conflicts=("mprisence")
 source=("https://github.com/phusitsom/mprisence/releases/download/v$pkgver/mprisence-$pkgver-x86_64.tar.gz" "https://raw.githubusercontent.com/phusitsom/mprisence/main/systemd/mprisence.service")
-sha256sums=("da19cb27262dc93b24628bdaa30638281c878364f9b7d16c043cab9f9b713919" "8103053db7f9850d775785db8a56461a4440220b231144899bf8da38a0f7363c")
+sha256sums=("25ba6c7f0c3fa5ebd85941c8ad0830ec67210d5512ddbd509bd498e48558f068" "8103053db7f9850d775785db8a56461a4440220b231144899bf8da38a0f7363c")
 
 package() {
 	install -Dm755 mprisence -t "$pkgdir/usr/bin"
