@@ -1,0 +1,21 @@
+diff --git a/src/common.h b/src/common.h
+index f839972..f9340cf 100644
+--- a/src/common.h
++++ b/src/common.h
+@@ -33,6 +33,7 @@
+ 
+ /* GLib */
+ #include <glib.h>
++#include "non-fatal-assertions.h"
+ 
+ /* Internationalization */
+ #ifdef ENABLE_NLS
+@@ -95,7 +96,7 @@
+ #define STRRECAT(str,addstr)	str = strrecat( str, addstr )
+ 
+ /* For when a switch should never default */
+-#define SWITCH_FAIL		default: g_assert_not_reached( ); exit( EXIT_FAILURE );
++#define SWITCH_FAIL		default: g_assert_not_reached( );;
+ 
+ /* Cylindrical-space distance */
+ #define	_RTZDIST1(v1,v2)	SQR(v1.r) + SQR(v2.r) + SQR(v2.z - v1.z)

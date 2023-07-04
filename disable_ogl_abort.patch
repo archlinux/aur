@@ -1,0 +1,25 @@
+diff --git a/src/ogl.c b/src/ogl.c
+index 0872d2c..7bca61c 100644
+--- a/src/ogl.c
++++ b/src/ogl.c
+@@ -386,12 +386,19 @@ _ogl_error(const char* fname, int lnum)
+ 			case GL_INVALID_FRAMEBUFFER_OPERATION:
+ 				estr = "INVALID_FRAMEBUFFER_OPERATION";
+ 				break;
++			default:
++				estr = "??? memory corrupt!"
++				;
+ 		}
+ 
+-		g_warning("%s:%d: GL error: %s\n", fname, lnum, estr);
++		g_critical("%s:%d: GL error: %s\n", fname, lnum, estr);
+ 	}
+ 	if (found_err)
++#ifndef NO_NON_FATAL_ASSERTIONS
++		g_critical("OpenGL error, continuing anyway!");
++#else
+ 		abort();
++#endif /* NO_NON_FATAL_ASSERTIONS */
+ }
+ 
+ /* (Re)draws the viewport
