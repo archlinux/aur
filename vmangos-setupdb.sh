@@ -1,8 +1,15 @@
 #!/bin/bash
 
+IS_UPDATE=1
+SCRIPT_DIR=/usr/share/vmangos/sql
+DB_NAMES=('realmd' 'mangos' 'characters' 'logs')
+DBADDRESS=127.0.0.1
+DBPORT=3306
+DBUSER=mangos
+DBPASSWORD=mangos
+
 main() {
     database_status
-    declare_vars
     is_update
     if [[ ${IS_UPDATE} == 0 ]]; then
         setup_user
@@ -12,12 +19,6 @@ main() {
     if [[ ${IS_UPDATE} == 0 ]]; then
 		print_instructions
 	fi
-}
-
-declare_vars () {
-    IS_UPDATE=1
-    SCRIPT_DIR=/usr/share/vmangos/sql
-    DB_NAMES=('realmd' 'mangos' 'characters' 'logs')
 }
 
 is_update () {
@@ -37,17 +38,13 @@ database_status () {
 }
 
 setup_user () {
-    local dbaddress=127.0.0.1
-    local dbport=3306
-    local dbuser=mangos
-    local dbpassword=mangos
-    mysql --silent --quick --execute "CREATE USER IF NOT EXISTS '${dbuser}'@'localhost' IDENTIFIED BY '${dbpassword}';"
+    mysql --silent --quick --execute "CREATE USER IF NOT EXISTS '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASSWORD}';"
     for db in ${DB_NAMES[@]}; do
-        mysql --silent --quick --execute "GRANT ALL PRIVILEGES ON ${db}.* TO '${dbuser}'@'localhost';"
+        mysql --silent --quick --execute "GRANT ALL PRIVILEGES ON ${db}.* TO '${DBUSER}'@'localhost';"
     done && echo "-- Created a database user and granted it privileges"
     mysql --silent --quick --execute "FLUSH PRIVILEGES"
-    sed --in-place --regexp-extended "s/(.+Database.Info.+\").*;.*;.*;.*;(.+)/\1${dbaddress};${dbport};${dbuser};${dbpassword};\2/" /etc/vmangos/mangosd.conf && echo "-- Modified mangosd.conf"
-    sed --in-place --regexp-extended "s/(.+DatabaseInfo.+\").*;.*;.*;.*;(.+)/\1${dbaddress};${dbport};${dbuser};${dbpassword};\2/" /etc/vmangos/realmd.conf && echo "-- Modified realmd.conf"
+    sed --in-place --regexp-extended "s/(.+Database.Info.+\").*;.*;.*;.*;(.+)/\1${DBADDRESS};${DBPORT};${DBUSER};${DBPASSWORD};\2/" /etc/vmangos/mangosd.conf && echo "-- Modified mangosd.conf"
+    sed --in-place --regexp-extended "s/(.+DatabaseInfo.+\").*;.*;.*;.*;(.+)/\1${DBADDRESS};${DBPORT};${DBUSER};${DBPASSWORD};\2/" /etc/vmangos/realmd.conf && echo "-- Modified realmd.conf"
 }
 
 setup_db () {
