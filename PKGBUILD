@@ -25,7 +25,7 @@ source=(
   uAPI-bits-for-small-bar.patch
 )
 sha256sums=('SKIP'
-            '606c0edffde27de962e71e97df2bccb77fb43ff8296c72a90d9e319312824738'
+            'f5516aae6fcfdc305c5375f7426ce1058d6926ced170404fab876727d4cb2777'
             'edb89714a248c3f6d33de7ebe576623cf80e5bc70bb66ab29cf949171ec84d9f'
             '6bdb36ff27d0b5999a3ce4d9e0a79900d4cee0fd8cbb8a4389c3195228972d39')
 
