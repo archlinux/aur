@@ -21,7 +21,7 @@ package() {
     install -d "$pkgdir"/opt/$pkgname
     find . -name "resources" -type d -exec cp -av {} $pkgdir/opt/$pkgname/ \;
     echo -e "#!/bin/bash\nelectron12 /opt/$pkgname/resources/app.asar" | install -Dm755 /dev/stdin $pkgdir/usr/bin/flat
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
     install -Dm644 $pkgname.desktop -t "$pkgdir"/usr/share/applications/
     find . -name "logo-2844c382.svg" -exec install -Dm644 {} "$pkgdir"/usr/share/pixmaps/$pkgname.svg \;
 }
