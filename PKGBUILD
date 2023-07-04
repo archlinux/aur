@@ -2,7 +2,7 @@
 #
 # shellcheck disable=all
 pkgname=ebou-git
-pkgver=0.2.0.742.r14.g27ac6c8
+pkgver=0.2.0.742.r24.g241e66e
 pkgrel=1
 pkgdesc="Mastodon Client Written in Rust!"
 arch=(any)
