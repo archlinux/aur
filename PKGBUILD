@@ -23,7 +23,7 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DCMAKE_INCLUDE_DIRECTORIES_PROJECT_BEFORE=ON \
-      -DHDF5_INSTALL_CMAKE_DIR="lib/cmake" \
+      -DHDF5_INSTALL_CMAKE_DIR="cmake/hdf5" \
       -DHDF5_ENABLE_Z_LIB_SUPPORT=ON \
       -DHDF5_ENABLE_SZIP_SUPPORT=ON \
       -DHDF5_BUILD_CPP_LIB=ON \
@@ -31,6 +31,7 @@ build() {
       -DBUILD_TESTING=OFF \
       -DHDF5_BUILD_TOOLS=OFF \
       -DHDF5_BUILD_EXAMPLES=OFF \
+      -DHDF5_BUILD_UTILS=OFF \
       -D_PAC_C_MAX_REAL_PRECISION=33 \
       ..
     make
@@ -42,7 +43,6 @@ package() {
   for _arch in $_architectures; do
     cd "$srcdir/hdf5-${pkgver/_/-}-2/build-${_arch}"
     make DESTDIR="${pkgdir}" install
-    rm "$pkgdir"/usr/${_arch}/bin/*.exe
     rm "$pkgdir"/usr/${_arch}/share/{COPYING,*.txt}
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
