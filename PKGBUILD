@@ -4,7 +4,7 @@
 
 pkgname=pokerth
 pkgver=1.1.2
-pkgrel=25
+pkgrel=26
 pkgdesc="Client to online Poker game written in C++/QT"
 arch=('i686' 'x86_64')
 url="http://www.pokerth.net/"
@@ -17,11 +17,13 @@ makedepends=('boost')
 source=(https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz
         ${pkgname}-${pkgver}.patch
         ${pkgname}-${pkgver}.patch.2019
-        ${pkgname}-${pkgver}.patch.2020)
+        ${pkgname}-${pkgver}.patch.2020
+        ${pkgname}-${pkgver}.patch.2023)
 md5sums=('8fd7d7fc7ece17315e58aa3240dd4586'
          '0ef5541fc6008dfb2521dcab47afb659'
          '50d427bd8afc57fb61e186de6c4e5601'
-         'e5bf2357733b4508737f8271f3c1e65f')
+         'e5bf2357733b4508737f8271f3c1e65f'
+         '38e079c6c4943cc4466c5bb402bd8dd6')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver-rc"
@@ -36,6 +38,10 @@ prepare() {
   # change to permit building with boost 1.74
   # see also DEFINE+="BOOST_BIND_GLOBAL_PLACEHOLDERS" in build below
   patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2020"
+  # ----------------------------------------------------------------------------
+  # change to explicitly link /usr/lib/libabsl_log_internal_message.so and
+  #                           /usr/lib/libabsl_log_internal_check_op.so
+  patch -Np1 -i "${srcdir}/pokerth-1.1.2.patch.2023"
   # ----------------------------------------------------------------------------
 
   # good idea to do this at all times

@@ -1,0 +1,13 @@
+--- pokerth-1.1.2-rc/pokerth_game.pro	2023-07-04 22:43:50.069300036 +0200
++++ pokerth-1.1.2-rc/pokerth_game.pro	2023-07-04 23:39:38.849095436 +0200
+@@ -524,7 +524,9 @@
+ 		kFreeBSD = $$find(UNAME, "kFreeBSD")
+ 		LIBS += -lsqlite3 \
+ 				-ltinyxml \
+-				-lprotobuf
++				-lprotobuf \
++      			/usr/lib/libabsl_log_internal_message.so \
++	    		/usr/lib/libabsl_log_internal_check_op.so
+ 		LIBS += $$BOOST_LIBS
+ 		LIBS += -lSDL \
+ 				-lSDL_mixer \
