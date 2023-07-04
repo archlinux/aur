@@ -1,0 +1,20 @@
+pkgbase = razer-bw-te-ctl-git
+	pkgdesc = Razer BlackWidow Tournament Edition configuration tool
+	pkgver = r13.f85f79d
+	pkgrel = 1
+	url = https://git.janouch.name/p/razer-bw-te-ctl
+	arch = i686
+	arch = x86_64
+	license = custom:0BSD
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = git
+	makedepends = help2man
+	depends = libusb
+	provides = razer-bw-te-ctl
+	conflicts = razer-bw-te-ctl
+	options = zipman
+	source = git+https://git.janouch.name/p/razer-bw-te-ctl
+	md5sums = SKIP
+
+pkgname = razer-bw-te-ctl-git
