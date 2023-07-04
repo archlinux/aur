@@ -1,0 +1,15 @@
+pkgbase = hid-ite8291r3-dkms-git
+	pkgdesc = Linux kernel driver for the ITE 8291 (rev 0.03) RGB keyboard backlight controller
+	pkgver = r14.7ad5991
+	pkgrel = 1
+	url = https://github.com/pobrn/hid-ite8291r3
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	provides = hid-ite8291r3-dkms
+	conflicts = hid-ite8291r3
+	source = hid-ite8291r3::git+https://github.com/pobrn/hid-ite8291r3.git
+	sha256sums = SKIP
+
+pkgname = hid-ite8291r3-dkms-git
