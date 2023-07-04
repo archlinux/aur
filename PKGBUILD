@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux
-pkgver=6.4.1.arch1
+pkgver=6.4.1.arch2
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -38,7 +38,7 @@ validpgpkeys=(
   C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
 b2sums=('SKIP'
-        '22a8dbe4eff1ac6b812e0fc9fe559316d465b05359290517e1576e9f65e93cd078525913ed95f779da288551d5233d82084645c99e07a35a7aade5b3fb7562f0')
+        '358b19fb90a490107fc5ca3b644a87adc918ebf3898474b3dc095c570063d30351a5459c947cc78f81f92bf49a3bd03fcf8b60f4dcd1760d621a81d2aca7e3a4')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
