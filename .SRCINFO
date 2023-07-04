@@ -1,7 +1,7 @@
 pkgbase = skychart-git
 	pkgdesc = Free software to draw sky charts, also known as Cartes du Ciel. Git version
 	pkgver = V42.574.gff350c53
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ap-i.net/skychart/start
 	arch = x86_64
 	license = GPL

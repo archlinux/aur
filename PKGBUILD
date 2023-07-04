@@ -1,7 +1,7 @@
 _pkgname=skychart
 pkgname=skychart-git
 pkgver=V42.574.gff350c53
-pkgrel=1
+pkgrel=2
 pkgdesc="Free software to draw sky charts, also known as Cartes du Ciel. Git version"
 arch=('x86_64')
 license=('GPL')
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-	cd "${_pkaname}"
+	cd "${_pkgname}"
 	echo pkgdir $pkgdir
 	mkdir -p "$pkgdir/usr"
 	make install
