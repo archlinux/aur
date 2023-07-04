@@ -1,6 +1,6 @@
 # Maintainer: Rishabh Das <rdas@tutanota.com>
 pkgname='uair'
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="An extensible pomodoro timer"
 arch=('x86_64')
@@ -9,20 +9,11 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('rust' 'scdoc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/metent/$pkgname/archive/v$pkgver.tar.gz")
-b2sums=('621d00413678ccfc48a83f4af8072e0f6ec69b6c40037e896c0a5fb6bc391a5ab4da26fc97ef9c4ee00ce480cfce7b28529bdc34d6d5596dcdb7e5ffa1fe9c8c')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
-	cargo update
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
+b2sums=('c02e0a330b4f16c1811781a7b02455e8cb5f26d565d004332ef949931137a5b830ca8cdf544da27d5d309800620fa069f476637dd8a7bb4a958da0813aa71f4e')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+	cargo build --locked --release
 
 	scdoc < docs/uair.1.scd > docs/uair.1
 	scdoc < docs/uairctl.1.scd > docs/uairctl.1
