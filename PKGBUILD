@@ -2,7 +2,7 @@
 
 _pkgname=hexon
 pkgname=${_pkgname}-git
-pkgver=r491.f160b5f
+pkgver=r503.9969fcc
 pkgrel=1
 pkgdesc='heXon is a free and open source twin-stick-shooter created using the Dry game engine.'
 arch=('any')
@@ -30,9 +30,9 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -Dm 644 hexon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/hexon.svg
-  install -Dm 755 hexon ${pkgdir}/usr/bin/hexon
-  install -Dm 755 hexon.desktop ${pkgdir}/usr/share/applications/hexon.desktop
-  mkdir -p ${pkgdir}/usr/share/luckey/hexon
-  cp -R "${srcdir}/${pkgname}/Resources/." ${pkgdir}/usr/share/luckey/hexon/
+  install -Dm 644 ${_pkgname}.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg
+  install -Dm 755 ${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+  install -Dm 755 ${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
+  mkdir -p ${pkgdir}/usr/share/luckey/${_pkgname}
+  cp -R "${srcdir}/${pkgname}/Resources/." ${pkgdir}/usr/share/luckey/${_pkgname}/
 }
