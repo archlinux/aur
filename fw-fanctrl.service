@@ -1,0 +1,13 @@
+[Unit]
+Description=FrameWork Fan Controller
+After=multi-user.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/python3 /usr/bin/fw-fanctrl --config /etc/fw-fanctrl/config.json --no-log
+# make sure to reenable automatic fan control on shutdown
+ExecStopPost=/usr/bin/ectool --interface=lpc autofanctrl
+
+[Install]
+WantedBy=multi-user.target

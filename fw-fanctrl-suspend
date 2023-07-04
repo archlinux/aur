@@ -1,0 +1,6 @@
+#!/bin/sh
+
+case \$1 in
+    pre)  runuser -l $(logname) -c "fw-fanctrl sleep" ;;
+    post) runuser -l $(logname) -c "fw-fanctrl defaultStrategy" ;;
+esac
