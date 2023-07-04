@@ -25,16 +25,15 @@ check() {
 }
 
 package() {
-  cd $pkgname
+  local _npmdir=/usr/lib/node_modules/$pkgname
+  install -d "$pkgdir"/{usr/bin,usr/share/doc/$pkgname,$_npmdir}
+  ln -s $_npmdir/bin/$pkgname.js "$pkgdir"/usr/bin/$pkgname
 
+  cd $pkgname
   npm prune --production
 
-  install -d "$pkgdir"/usr/{bin,share/doc/$pkgname}
-  ln -s ../lib/node_modules/$pkgname/bin/$pkgname.js "$pkgdir"/usr/bin/$pkgname
-  install -Dt "$pkgdir"/usr/lib/node_modules/$pkgname/bin bin/$pkgname.js
-  rsync -r --exclude __tests__ --exclude lib/testUtils lib \
-    "$pkgdir"/usr/lib/node_modules/$pkgname
-  cp -r node_modules package.json "$pkgdir"/usr/lib/node_modules/$pkgname
+  rsync -r --exclude __tests__ --exclude lib/testUtils lib "$pkgdir"/$_npmdir
+  cp -r bin node_modules package.json "$pkgdir"/$_npmdir
   cp -r {CHANGELOG,CONTRIBUTING,README}.md docs "$pkgdir"/usr/share/doc/$pkgname
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
