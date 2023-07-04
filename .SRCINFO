@@ -1,5 +1,5 @@
 pkgbase = vte4-git
-	pkgdesc = Virtual Terminal Emulator widget
+	pkgdesc = Virtual Terminal Emulator widget (GTK4)
 	pkgver = 0.73.0.r26.g092d8b8f
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/vte
@@ -19,11 +19,11 @@ pkgbase = vte4-git
 	depends = vte-common
 	provides = vte4=0.73.0.r26.g092d8b8f
 	provides = libvte-2.91-gtk4.so=0-64
-	provides = vte-common
 	provides = vte-git
-	conflicts = vte-common
-	conflicts = vte-git
 	conflicts = vte4
+	conflicts = vte-git
+	conflicts = vte-common-git
+	conflicts = vtethree-git
 	source = vte::git+https://gitlab.gnome.org/GNOME/vte
 	sha256sums = SKIP
 

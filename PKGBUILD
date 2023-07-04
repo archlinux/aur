@@ -9,7 +9,7 @@ _pkgname='vte4'
 pkgname="$_pkgname-git"
 pkgver=0.73.0.r26.g092d8b8f
 pkgrel=1
-pkgdesc="Virtual Terminal Emulator widget"
+pkgdesc="Virtual Terminal Emulator widget (GTK4)"
 # https://wiki.gnome.org/Apps/Terminal/VTE
 url="https://gitlab.gnome.org/GNOME/vte"
 arch=('x86_64')
@@ -35,13 +35,14 @@ makedepends=(
 provides=(
   "vte4=$pkgver"
   'libvte-2.91-gtk4.so=0-64'
-  'vte-common'
   'vte-git'
 )
 conflicts=(
-  'vte-common'
-  'vte-git'
   'vte4'
+
+  'vte-git'
+  'vte-common-git'
+  'vtethree-git'
 )
 
 source=(
