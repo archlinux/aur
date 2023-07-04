@@ -1,20 +1,11 @@
 pkgbase = zenmap-python3-git
-	pkgdesc = Graphical Nmap frontend and results viewer - rerwite in python 3
-	pkgver = 7.93
+	pkgdesc = zenmap-python3-git is deprecated. please use https://aur.archlinux.org/packages/zenmap
+	pkgver = 9
 	pkgrel = 1
-	url = https://github.com/nmap/nmap
+	url = https://aur.archlinux.org/packages/zenmap
 	arch = any
 	license = GPL2
-	makedepends = unzip
-	depends = python
-	depends = python-cairo
-	depends = nmap
-	depends = gtk3
-	depends = python-gobject
-	optdepends = gksu: starting zenmap as root
+	depends = zenmap
 	provides = zenmap
-	conflicts = zenmap
-	source = nmap.zip::https://github.com/nmap/nmap/archive/refs/heads/master.zip
-	md5sums = SKIP
 
 pkgname = zenmap-python3-git
