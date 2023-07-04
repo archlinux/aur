@@ -15,7 +15,7 @@ while read -r line; do
             #
             # This is the removal case, so we save the kernel
             mkdir /usr/lib/modules/running-kernel
-            cp --archive --link /usr/lib/modules/{$kver}/{kernel,modules*} \
+            cp --archive --link /usr/lib/modules/${kver}/{kernel,modules*} \
                 /usr/lib/modules/running-kernel/
         fi
         # If we are re-removing the running kernel, (after removing + reinstalling),
