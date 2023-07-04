@@ -65,10 +65,17 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}"
     rm -rf "${srcdir}/build"
-    meson --prefix=/usr "${srcdir}/build"
+    meson --prefix=/usr \
+          --buildtype=plain \
+          --auto-features=enabled \
+          -Dexperimental=true \
+          -Dcava=disabled \
+          -Dtests=disabled \
+          "${srcdir}/build"
     ninja -C "${srcdir}/build"
 }
 
 package() {
     DESTDIR="$pkgdir" ninja -C "${srcdir}/build" install
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
