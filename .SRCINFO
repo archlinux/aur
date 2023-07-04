@@ -1,6 +1,6 @@
 pkgbase = python-mmpose
 	pkgdesc = OpenMMLab Pose Estimation Toolbox and Benchmark
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/open-mmlab/mmpose
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-mmpose
 	optdepends = python-onnxruntime
 	optdepends = python-requests
 	optdepends = python-trimesh
-	source = python-mmpose-1.0.0.tar.gz::https://github.com/open-mmlab/mmpose/archive/refs/tags/v1.0.0.tar.gz
-	sha512sums = 89f815c9eea10c152471e1eae43ed2914122520e7e3573e90b5e23e192494c90ce9a0cdaaf27616b30a0f17b177d50ca6aac587b3f27608d2beb17521b9290be
+	source = python-mmpose-1.1.0.tar.gz::https://github.com/open-mmlab/mmpose/archive/refs/tags/v1.1.0.tar.gz
+	sha512sums = 2424ba70bd7eed103dfa1fecea387d97043d35e0ac3e02f91c7b82150189c0903791cabd8f5b7bf7307072157b8eb8b7af3e35f83ddc44c6155bc10f12203b80
 
 pkgname = python-mmpose
