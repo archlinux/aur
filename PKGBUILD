@@ -2,8 +2,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=tree-sitter-typescript-git
-pkgver=0.20.0.r0.gef6ee5b
-pkgrel=1
+pkgver=0.20.2.r10.g3429d8c
+pkgrel=2
 pkgdesc="TypeScript and TSX grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-typescript"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/^rust-//;s/-/.r/;s/-/./'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # prepare() {
