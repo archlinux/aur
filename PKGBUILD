@@ -1,8 +1,10 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
-pkgname=('alice-vision' 'alice-vision-cuda')
+
+pkgbase=alice-vision
+pkgname=('alice-vision') # 'alice-vision-cuda'
 pkgver=2.4.0
-pkgrel=16
+pkgrel=17
 pkgdesc="Photogrammetric Computer Vision Framework which provides a 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
 url="https://alicevision.github.io/"
@@ -17,8 +19,9 @@ source=("git+https://github.com/alicevision/AliceVision#tag=v${pkgver}"
         "nanoflann::git+https://github.com/alicevision/nanoflann.git"
         "cmake_cxx_std_14.patch"
         "openexr3.patch"
-        "iomanip.patch::https://github.com/alicevision/AliceVision/commit/711eda620449c080b642fc7cb6118758535ab614.patch"
-        "isnormal.patch::https://github.com/alicevision/AliceVision/commit/22fd9d4ba3f8b5344261cedfd9bc3cd4cb58eece.patch"
+        "iomanip.patch"
+        "isnormal.patch"
+        "gcc-13.patch"
 )
 sha256sums=('SKIP'
             'SKIP'
@@ -26,7 +29,8 @@ sha256sums=('SKIP'
             'caf2bf06bd7c6a2387f01f312d94b649ef3e4363b18fcdf95986cd71a0d6c275'
             'de9def936b143b6a95d8afc93e4673e8f8b0e434785b65c557353549efd95c1b'
             '3daa4788b181f2f92b31531c24c2ccff6d1546d7824addcd8058c415138346ea'
-            '91b2942041511044c6d486f3ed0f29ce9d498906be7a2230703a706ea6a92743')
+            '91b2942041511044c6d486f3ed0f29ce9d498906be7a2230703a706ea6a92743'
+            '5b0397325cfcc1a6fb11eda915ee9a72ea1cab8d2c699be2271343b49a07792a')
 
 prepare() {
   cd AliceVision
@@ -67,6 +71,9 @@ prepare() {
 
   # fix missing isnormal() from std namespace
   git apply -v "${srcdir}"/isnormal.patch
+
+  # fix build with GCC 13
+  git apply -v "${srcdir}"/gcc-13.patch
 }
 
 build() {
@@ -82,7 +89,6 @@ build() {
     -GNinja \
     -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin \
     -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin \
     -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin \
@@ -101,30 +107,29 @@ build() {
     -DALICEVISION_USE_OPENCV=ON
   ninja -C build
 
-  cmake \
-    -Bbuild-cuda \
-    -GNinja \
-    -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin \
-    -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin \
-    -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin \
-    -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon \
-    -DPopSift_DIR=/usr \
-    -DCCTag_DIR=/usr/lib/cmake/CCTag \
-    -DUNCERTAINTYTE_DIR=/usr \
-    -DMAGMA_ROOT=/usr \
-    -DALICEVISION_CUDA_CC_LIST="52;53;60;61;62;70;72;75;80;86;87;89;90" \
-    -DALICEVISION_BUILD_EXAMPLES=OFF \
-    -DALICEVISION_USE_CUDA=ON \
-    -DALICEVISION_USE_CCTAG=ON \
-    -DALICEVISION_USE_POPSIFT=ON \
-    -DALICEVISION_USE_UNCERTAINTYTE=ON \
-    -DALICEVISION_USE_ALEMBIC=ON \
-    -DALICEVISION_USE_OPENGV=ON \
-    -DALICEVISION_USE_OPENCV=ON
-  ninja -C build
+#  cmake \
+#    -Bbuild-cuda \
+#    -GNinja \
+#    -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
+#    -DCMAKE_INSTALL_PREFIX=/usr \
+#    -DCOINUTILS_INCLUDE_DIR_HINTS=/usr/include/coin \
+#    -DCLP_INCLUDE_DIR_HINTS=/usr/include/coin \
+#    -DOSI_INCLUDE_DIR_HINTS=/usr/include/coin \
+#    -DLEMON_INCLUDE_DIR_HINTS=/usr/include/lemon \
+#    -DPopSift_DIR=/usr \
+#    -DCCTag_DIR=/usr/lib/cmake/CCTag \
+#    -DUNCERTAINTYTE_DIR=/usr \
+#    -DMAGMA_ROOT=/usr \
+#    -DALICEVISION_CUDA_CC_LIST="52;53;60;61;62;70;72;75;80;86;87;89;90" \
+#    -DALICEVISION_BUILD_EXAMPLES=OFF \
+#    -DALICEVISION_USE_CUDA=ON \
+#    -DALICEVISION_USE_CCTAG=ON \
+#    -DALICEVISION_USE_POPSIFT=ON \
+#    -DALICEVISION_USE_UNCERTAINTYTE=ON \
+#    -DALICEVISION_USE_ALEMBIC=ON \
+#    -DALICEVISION_USE_OPENGV=ON \
+#    -DALICEVISION_USE_OPENCV=ON
+#  ninja -C build-cuda
 }
 
 package_alice-vision() {

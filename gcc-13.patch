@@ -1,0 +1,24 @@
+diff --git a/src/aliceVision/keyframe/KeyframeSelector.hpp b/src/aliceVision/keyframe/KeyframeSelector.hpp
+index c5bfff9e1..7d055a6a7 100644
+--- a/src/aliceVision/keyframe/KeyframeSelector.hpp
++++ b/src/aliceVision/keyframe/KeyframeSelector.hpp
+@@ -17,6 +17,7 @@
+ #include <vector>
+ #include <memory>
+ #include <limits>
++#include <cstdint>
+ 
+ namespace aliceVision {
+ namespace image {
+diff --git a/src/aliceVision/keyframe/SharpnessSelectionPreset.hpp b/src/aliceVision/keyframe/SharpnessSelectionPreset.hpp
+index cbac01f96..150ed09b0 100644
+--- a/src/aliceVision/keyframe/SharpnessSelectionPreset.hpp
++++ b/src/aliceVision/keyframe/SharpnessSelectionPreset.hpp
+@@ -10,6 +10,7 @@
+ #include <iostream>
+ #include <algorithm>
+ #include <stdexcept>
++#include <cstdint>
+ 
+ namespace aliceVision {
+ namespace keyframe {
