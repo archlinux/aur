@@ -1,14 +1,14 @@
 pkgbase = ooniprobe-cli
 	pkgdesc = Next generation OONI Probe CLI
-	pkgver = 3.17.5
+	pkgver = 3.18.0
 	pkgrel = 1
 	url = https://ooni.org/
 	arch = x86_64
 	license = GPL3
-	makedepends = go1.19
+	makedepends = go
 	depends = glibc
-	source = probe-cli-3.17.5.tar.gz::https://github.com/ooni/probe-cli/archive/refs/tags/v3.17.5.tar.gz
-	sha256sums = 6e0f7c1fb725943c74dacc799389ebe8d042238cde32b3d5b8f1dbfa04b10880
-	sha512sums = 685c21d433cbc9b0381a376936e31a8bedcd68753cc2be6d7c32a7ccd1506a6d6d023a240459c9614cbb0ce56815b224dc6581116325781e0fecb991583a0e7c
+	source = probe-cli-3.18.0.tar.gz::https://github.com/ooni/probe-cli/archive/refs/tags/v3.18.0.tar.gz
+	sha256sums = d28c050226c9282d7155da6cabf5547ddd43dc11eecacc485b6c05161c2d1d88
+	sha512sums = 25023b3392f78a49732a1ee9186021f238e38f7e9b32940e3e28cef0da790b57459d65e340874a0d7220ddeec19518fcd7a8296115fabc38f68c4e502146d407
 
 pkgname = ooniprobe-cli

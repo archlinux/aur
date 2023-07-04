@@ -3,18 +3,18 @@
 
 _pkgname=probe-cli
 pkgname=ooniprobe-cli
-pkgver=3.17.5
-_pkgver=3.17.5
+pkgver=3.18.0
+_pkgver=3.18.0
 pkgrel=1
 pkgdesc='Next generation OONI Probe CLI'
 arch=('x86_64')
 url='https://ooni.org/'
 license=('GPL3')
 depends=('glibc')
-makedepends=('go1.19')
+makedepends=('go')
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/ooni/${_pkgname}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('6e0f7c1fb725943c74dacc799389ebe8d042238cde32b3d5b8f1dbfa04b10880')
-sha512sums=('685c21d433cbc9b0381a376936e31a8bedcd68753cc2be6d7c32a7ccd1506a6d6d023a240459c9614cbb0ce56815b224dc6581116325781e0fecb991583a0e7c')
+sha256sums=('d28c050226c9282d7155da6cabf5547ddd43dc11eecacc485b6c05161c2d1d88')
+sha512sums=('25023b3392f78a49732a1ee9186021f238e38f7e9b32940e3e28cef0da790b57459d65e340874a0d7220ddeec19518fcd7a8296115fabc38f68c4e502146d407')
 
 build() {
   cd "${_pkgname}-${_pkgver}"
@@ -24,7 +24,7 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-ldflags=-linkmode=external -buildmode=pie -trimpath -modcacherw'
-  go1.19 build ./cmd/ooniprobe
+  go build ./cmd/ooniprobe
 }
 
 package() {
