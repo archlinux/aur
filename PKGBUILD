@@ -15,7 +15,7 @@ source=("https://flat-storage.oss-accelerate.aliyuncs.com/versions/latest/stable
 )
 md5sums=('dcb2a9a765f7e4db74f4e4019e26a7e5'
          '51dc5dc7139da3157a898b0265f34ab6'
-         'db475d15705f92bb376f7306fda88648')
+         '1d7d38434279d9a35429cd2546df622e')
 
 package() {
     install -d "$pkgdir"/opt/$pkgname

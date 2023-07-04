@@ -1,0 +1,19 @@
+pkgbase = flat-bin
+	pkgdesc = the client of Agora Flat open source classroom.
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://flat.whiteboard.agora.io/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = electron12
+	depends = bash
+	provides = flat
+	source = https://flat-storage.oss-accelerate.aliyuncs.com/versions/latest/stable/win/Flat-x64-2.2.3.exe
+	source = https://raw.githubusercontent.com/netless-io/flat/main/LICENSE
+	source = flat-bin.desktop
+	md5sums = dcb2a9a765f7e4db74f4e4019e26a7e5
+	md5sums = 51dc5dc7139da3157a898b0265f34ab6
+	md5sums = 1d7d38434279d9a35429cd2546df622e
+
+pkgname = flat-bin
