@@ -1,15 +1,14 @@
 pkgbase = python2-logbook
 	pkgdesc = Logging sytem for Python that replaces the standard library’s logging module
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://logbook.readthedocs.io/en/stable/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = python2-setuptools
 	makedepends = cython2
-	makedepends = python2-six
-	depends = python-six
+	depends = python2-six
 	source = python2-logbook-1.5.3.tar.gz::https://github.com/mitsuhiko/logbook/archive/1.5.3.tar.gz
 	source = python2-logbook-sqlalchemy-1.4.patch::https://github.com/getlogbook/logbook/pull/316.patch
 	source = python-logbook-1.5.3-reproducibility.patch::https://github.com/getlogbook/logbook/commit/7b51f1adbdfd71180b8da9b1462552db32350b1d.patch
