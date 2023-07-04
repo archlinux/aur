@@ -2,8 +2,8 @@
 # Contributor: Excitable Snowball <excitablesnowball@gmail.com>
 _base=sphinxcontrib-katex
 pkgname=python-${_base}
-pkgver=0.9.6
-pkgrel=2
+pkgver=0.9.7
+pkgrel=1
 pkgdesc="A Sphinx extension for rendering math in HTML pages"
 arch=(any)
 url="https://github.com/hagenw/${_base}"
@@ -12,7 +12,7 @@ depends=(python-sphinx)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-sphinx-insipid-theme)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('e8a4d5f971447accd7d261b229480a7bc60f37540987ae61017736119aa0529579cef08b6e4368a74a3b422e991f8870c55369cf543393747d6ce4024619be6f')
+sha512sums=('41346091a8d03c14b57b0214e98f73798cc8c6d9f091da7029faf371cdc5aa5226b380ae642654e09412432a8e248b2378171d7bbfd693d3063f7a6376d10d42')
 
 build() {
   cd ${_base}-${pkgver}
