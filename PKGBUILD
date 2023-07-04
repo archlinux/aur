@@ -3,7 +3,7 @@
 pkgbase='citra-canary-bin'
 pkgname=('citra-canary-bin' 'citra-qt-canary-bin')
 pkgrel=1
-pkgver=2330_20221203_bf469e3
+pkgver=2485_20230516_391fbec
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 license=('GPL2')
 arch=('x86_64')
@@ -15,8 +15,8 @@ _ref="$(echo $pkgver | cut -d'_' -f2)-$(echo $pkgver | cut -d'_' -f3)"
 source=("https://github.com/citra-emu/citra-canary/releases/download/canary-$_canary_id/citra-linux-$_ref.tar.xz"
         "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.desktop")
 
-sha256sums=('8ff83f1e26e5da216cd5a04873c625a7002420c853ce5cec7916b24c459891b0'
-            'b4c9433fbcbb1b9ddf19f009252e89d8d653ebac7f67d5d0beb49259f583ab69')
+sha256sums=('d4efc831b46fe46737cee5f22564702bf0e7c5e68a2fcc0ebf6153e002f8c977'
+            '427e450b7f54c1a764eb96d109b45e67cbc8003bdca379cef7df7652ed539526')
 
 package_citra-canary-bin() {
     depends=('ffmpeg-compat-57' 'libsndio-61-compat' 'sdl2')
