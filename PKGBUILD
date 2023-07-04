@@ -1,7 +1,7 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=asdf-vm
-pkgver=0.11.3
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Extendable version manager with support for Ruby, Node.js, Elixir, Erlang & more'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
 )
 install=asdf-vm.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/asdf-vm/asdf/archive/v${pkgver}.tar.gz")
-sha256sums=('344cf4489180fc6409feba60b0c02a12df54eef470422b3f75bb757456b60bee')
+sha256sums=('8416d3556f093b3f2f9931b30165efd8800c520c129bed22a537f889aa6dff90')
 
 package() {
   cd "asdf-${pkgver}"
