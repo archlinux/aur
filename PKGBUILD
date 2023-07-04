@@ -1,8 +1,8 @@
 # Maintainer: Janne Veteläinen <janne.p.w.vetelainen@gmail.com>
 
 pkgname=vmangos-git
-pkgver=r5353.5c195daad
-pkgrel=2
+pkgver=r5569.3ee1945cd
+pkgrel=1
 pkgdesc="World of Warcraft Vanilla server emulator"
 arch=('x86_64')
 url="https://github.com/vmangos/"
@@ -34,15 +34,13 @@ source=(
     "vmangos-mangosd.service"
     "vmangos-mangosd.socket"
 )
-sha256sums=(
-    'SKIP'
-    'SKIP'
-    '8061858ce3617c236cd09e72ab9ccdb39afd1b0f76659fdeead6861d247d5832'
-    '4e48db8fa3291429f7b0a5fe7a5a696ddc1809efd781b78355e4d6804d4dadc3'
-    'f7306b4d4ff7ed563ce2ccbdee38c9c0cdce009d4a91feee7e0a6b7940b1ea83'
-    'aade06747e04a22878203a5b2bddc577eff50addde231b9adbac5356ccd054d1'
-    'c3cee4cb049545cb9c0857f8977120d219d8afcf5c1cb0531546d38ecde98783'
-)
+sha256sums=('SKIP'
+            'SKIP'
+            '8061858ce3617c236cd09e72ab9ccdb39afd1b0f76659fdeead6861d247d5832'
+            '4e48db8fa3291429f7b0a5fe7a5a696ddc1809efd781b78355e4d6804d4dadc3'
+            'f7306b4d4ff7ed563ce2ccbdee38c9c0cdce009d4a91feee7e0a6b7940b1ea83'
+            'aade06747e04a22878203a5b2bddc577eff50addde231b9adbac5356ccd054d1'
+            'c3cee4cb049545cb9c0857f8977120d219d8afcf5c1cb0531546d38ecde98783')
 
 pkgver() {
     cd ${srcdir}/${pkgname}
@@ -101,8 +99,4 @@ package() {
     install -Dm644 ${srcdir}/${pkgname}/sql/migrations/world_db_updates.sql -T ${pkgdir}/usr/share/vmangos/sql/migrations/mangos_db_updates.sql
     install -Dm644 ${srcdir}/${pkgname}/sql/migrations/characters_db_updates.sql -t ${pkgdir}/usr/share/vmangos/sql/migrations
     install -Dm644 ${srcdir}/${pkgname}/sql/migrations/logs_db_updates.sql -t ${pkgdir}/usr/share/vmangos/sql/migrations
-
-    for file in $(find ${srcdir}/${pkgname}/sql/custom -name '*.sql'); do
-        install -Dm644 ${file} -t ${pkgdir}/usr/share/vmangos/sql/custom
-    done
 }

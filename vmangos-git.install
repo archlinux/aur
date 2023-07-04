@@ -18,7 +18,7 @@ post_install() {
         4. Move the extracted data to /var/lib/vmangos:
             1. ./dbc to /var/lib/vmangos/5875/dbc
             2. ./maps, ./vmaps, ./mmaps to /var/lib/vmangos
-            3. ./Buildings, ./Cameras, config.json and offmesh.txt can be deleted.
+            3. ./Buildings, ./Cameras, ./config.json and ./offmesh.txt can be deleted.
         5. Change ownership of the files:
             # chown -R vmangos:vmangos /var/lib/vmangos 
 
@@ -35,8 +35,6 @@ post_install() {
 EOF
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
 post_upgrade() {
     cat << EOF
 
@@ -45,4 +43,3 @@ post_upgrade() {
 
 EOF
 }
-
