@@ -1,7 +1,7 @@
 pkgbase = reader-bin
 	pkgdesc = A minimal command line reader offering better readability of web pages on the CLI.
 	pkgver = 0.4.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/mrusme/reader
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=reader-bin
 pkgver=0.4.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A minimal command line reader offering better readability of web pages on the CLI."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mrusme/reader"
