@@ -27,7 +27,6 @@ depends=(
   libgl
   libharfbuzz.so
   libpcap.so
-  libpipewire
   libpng
   libsamplerate.so
   libudev.so
@@ -48,6 +47,7 @@ makedepends=(
   clang
   cmake
   git
+  libpipewire
   libpulse
   lld
   llvm
@@ -179,6 +179,6 @@ eof
 	cd $pkgname
 	install -Dm644 .github/workflows/scripts/linux/pcsx2-qt.desktop \
 		-t "$pkgdir/usr/share/applications/"
-	install -Dm644 pcsx2/Resources/AppIcon64.png \
+	install -Dm644 bin/resources/icons/AppIconLarge.png \
 		"$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
 }
