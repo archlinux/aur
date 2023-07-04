@@ -19,10 +19,10 @@ optdepends=("ihaskell: support for Haskell"
             "r: support for R (requires the \"IRkernel\" package)")
 
 conflicts=("nteract-bin" "nteract-appimage")
-replaces=("$pkgname")
-provides=("$pkgname")
+replaces=("${pkgname}")
+provides=("${pkgname}")
 
-source=(v${pkgver}.tar.gz::https://github.com/nteract/nteract/archive/refs/tags/v${pkgver}.tar.gz
+source=("v${pkgver}.tar.gz::https://github.com/nteract/nteract/archive/refs/tags/v${pkgver}.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/nteract/nteract/main/LICENSE")
 
 sha256sums=('5132a05ca269aa3b1b0a96cbe4a7b9956454069029173f6f1cb3d73a59a83073'
@@ -44,10 +44,11 @@ build() {
 }
 
 package() {
-  install -Dm 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm 644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/applications/desktop/static/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/applications/desktop/dist/linux-unpacked" "${pkgdir}/opt/${pkgname}"
+  install -Dm 644 "LICENSE" 		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 "${pkgname}.desktop"	"${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  
+  install -Dm 644 "${srcdir}/${pkgname}-${pkgver}/applications/desktop/static/icon.png"		"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm 755 "${srcdir}/${pkgname}-${pkgver}/applications/desktop/dist/linux-unpacked"	"${pkgdir}/opt/${pkgname}"
   
   chmod u+s "${pkgdir}/opt/${pkgname}/chrome-sanbox"
 }
