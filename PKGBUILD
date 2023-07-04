@@ -1,7 +1,7 @@
 # Maintainer: Ailton Baúque <ailtonbauque@outlook.com>
 
 pkgname=samora-lang
-pkgver=1.20.4.r.
+pkgver=1.20.4.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 pkgrel=1
 pkgdesc="Samora Lang - A Simple Interpreted Programming Language just for Educational Purposes."
 arch=('x86_64' 'i686')
@@ -24,10 +24,10 @@ source=("git+$url")
 noextract=()
 md5sums=('SKIP')
 
-pkgver(){
-  cd "${srcdir}"
-  printf "1.20.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+#pkgver(){
+#  cd "${srcdir}"
+#  printf "1.20.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
 
 prepare() {
   cd "${srcdir}/Samora-Lang"
