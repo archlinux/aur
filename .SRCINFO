@@ -1,6 +1,6 @@
 pkgbase = java-debug
 
-    pkgver = 0.46.0
+    pkgver = 0.47.0
     pkgrel = 1
     pkgdesc = The debug server implementation for Java.
     url = https://github.com/microsoft/java-debug
@@ -10,7 +10,7 @@ pkgbase = java-debug
     depends = java-runtime>=17
     makedepends = jdk17-openjdk
 
-    source = java-debug-0.46.0.tar.gz::https://github.com/microsoft/java-debug/archive/refs/tags/0.46.0.tar.gz
+    source = java-debug-0.47.0.tar.gz::https://github.com/microsoft/java-debug/archive/refs/tags/0.47.0.tar.gz
     sha256sums = 7c1cce4ade940f38ef568c630ef079e11928ee72ae1fccb039c26bc22322c206
 
 pkgname = java-debug
