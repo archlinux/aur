@@ -4,7 +4,7 @@
 # Contributor: Arne Hoch <arne@derhoch.de>
 
 pkgname=sqlcl
-pkgver='23.1.0.089.0929'
+pkgver='23.2.0.178.1027'
 pkgrel=1
 pkgdesc='SQL Developer command line interface for Oracle'
 arch=('any')
@@ -14,7 +14,7 @@ changelog=CHANGELOG.md
 depends=('bash' 'java-runtime>=8')
 source=("$pkgname-$pkgver.zip::https://download.oracle.com/otn_software/java/sqldeveloper/$pkgname-$pkgver.zip"
         "$pkgname.sh")
-sha256sums=('093f0d752bd9a497e168b7f3de4a3b68ea977bfe5948e2602ad91dd3a0147568'
+sha256sums=('c06a8b955f3cc9826b55b94acde1ba55eadfb048028b5250778f4e3599940786'
             '34c5f2be48639dcd8ec9f38f950916a394ae399a0e583fbde4020acdccf951e0')
 
 package() {

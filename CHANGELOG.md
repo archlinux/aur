@@ -1,5 +1,52 @@
 # SQLcl Release Notes 23.1.0.089.0929
 
+## New Features in 23.2.0
+
+### Named Connections
+
+The connmgr command manages a collection of connections. It allows you to list, show, test and clone connections. It also allows you to import connections from Oracle SQL Developer.
+
+```sh
+connmgr import <sql-developer-connections.xml>
+connmgr list <connection 1> ... <connection n>
+
+connmgr show <connection-name> USER: hr URL: jdbc:oracle:thin:@//hostname:1521/ORCL
+
+connmgr connmgr test DB213P Oracle Database 21c Enterprise Edition Release 21.0.0.0.0 - Production Connection Test Successful
+
+connmgr clone -ORIGINAL DB213P clone ``` connmgr list ... clone ... 
+```
+
+### Saved Connections
+
+The Connect command has been further expanded to include functionality to allow a user to save a connection. This has two formats.
+
+While a user is connecting with the connect command, a `-save <connection-name>` parameter is supported which allows the user to name the current connection details used as a named connection.
+Secondly, an existing connection previously created, can also be saved using `connect -save <connection-name>`
+Connect or reconnect with that saved connection using `connect -name <connection-name>`
+
+### OCI DB Metrics
+
+The ocidbmetrics command collects metrics from the Oracle Database Dictionary and sends them to the Oracle Cloud Infrastructure (OCI) Metrics service.
+
+The command facilitates setting up a new user with the necessary permissions and initiates the collection of metrics with a 15 second time interval between iterations.
+
+You must have an OCI profile setup to use this feature
+
+```sh
+ocidbmetrics setup myuser
+ocidbmetrics collect -compartmentId [compartmentId_ocid] -region [region_ocid]
+```
+
+## Issues Fixed in 23.2.0
+
+- PLSQL: SHOW ERRORS PERFORMANCE ISSUES WHEN CONNECTING WITH PECULIAR PASSWORD
+- LIQUIBASE: SQLCL 22.3 HAS \ INSTEAD OF / IN CONTROLLER.XML ON WINDOWS AS COMPARED TO LINUX/UNIX.
+- LIQUIBASE: COMMENTS ADDED TO CONTROLLER.XML FILE IN SQLCL 23.1
+- LIQUIBASE: APEX EXPORT FEEDBACK TO DEPLOYMENT SYSTEM CONVERTS THE NAME TO LOWERCASE
+- LIQUIBASE: SQLCL HAS \ INSTEAD OF / IN CONTROLLER.XML ON WINDOWS AS COMPARED TO LINUX/UNIX.
+- CONNECTIONS: ERROR SHOWN WITH SQLCL WHEN LOGIN.SQL HAS "SHOW CONNECTION"
+
 ## New features in 23.1.0.089.0929
 
 * New features for 22.4.0
