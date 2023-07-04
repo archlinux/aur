@@ -1,20 +1,20 @@
 pkgbase = lemoa-git
 	pkgdesc = Native Gtk client for Lemmy
-	pkgver = 0.2.0.r97.e51da62
-	pkgrel = 1
-	url = https://github.com/lemmygtk/lemoa
-	arch = x86_64
-	license = GPL3
-	makedepends = cargo
-	makedepends = git
-	makedepends = meson
-	makedepends = ninja
-	depends = gtk4
-	depends = libadwaita
-	provides = lemoa
-	conflicts = lemoa
-	source = git+https://github.com/lemmygtk/lemoa.git
-	sha256sums = SKIP
+pkgver = 0.2.0.r97.e51da62
+pkgrel = 1
+url = https://github.com/lemmygtk/lemoa
+arch = x86_64
+license = GPL3
+makedepends = cargo
+makedepends = git
+makedepends = meson
+makedepends = ninja
+depends = gtk4
+depends = libadwaita
+provides = lemoa
+conflicts = lemoa
+source = git+https://github.com/lemmygtk/lemoa.git
+sha256sums = SKIP
 pkgname = lemoa-git
 
 
