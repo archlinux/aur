@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=elemntary-bin
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A GUI application that allows your to control Wahoo Elemnt bicycle computers from a desktop PC providing some insights and hidden features.'
 arch=('x86_64')
 url="https://github.com/vti/elemntary"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('at-spi2-core' 'java-runtime' 'glibc' 'libxcomposite' 'libxcb' 'glib2' 'gcc-libs' 'libxext' 'bash' 'pango' 'dbus' \
     'mesa' 'expat' 'cairo' 'libx11' 'libcups' 'gtk3' 'libdrm' 'nspr' 'nodejs' 'libxrandr' 'libxkbcommon' 'libxfixes' 'nss' 'alsa-lib' 'libxdamage')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
-source=("${pkgname%-bin}-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.zip")
+source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.zip")
 sha256sums=('b04a4f7f2801db40f4b02794c416890ca573254124b4c4a0b8c86b028fd607ae')
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
