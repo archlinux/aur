@@ -51,7 +51,7 @@ _disable_debug=
 pkgbase=linux-tip-git
 pkgver=6.4.0.r1188886.g12f69e436304
 _srcname=tip
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Kernel based on the tip branch'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -328,4 +328,4 @@ done
 
 sha512sums=('SKIP'
             'a577b74a51232272a1edd210c151259a163c6c677468e572c43aeb3f18fbfe4cc92bb73d40d83b1b3a8341f3afd2c78a08306c77e40e1ec5f83b6ccead589183'
-            'eaee90c07e1e0c1e35ccf678bca148a6e3b6a762eeef1db96f917e05ffd506e5dce90ff4f518ea33cfb6910cbdfcaacef1735d8c5e01336faaaf0dfef88cb7ef')
+            '72f5e1a76e39b54c73a418d7e8538177604e712aeb352cc7519bbf51684117b041f7f3e5b900ee603217d69ba9c794c50d3849c2a77469df419b8d3360c89e35')
