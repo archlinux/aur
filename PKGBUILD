@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc="A Discord Rich Presence client for MPRIS-compatible media players with support for album art."
 url="https://github.com/phusitsom/mprisence"
 license=("MIT")
-arch=("any")
+arch=("x86_64")
 provides=("mprisence")
 conflicts=("mprisence")
 source=("https://github.com/phusitsom/mprisence/releases/download/v$pkgver/mprisence-$pkgver-x86_64.tar.gz" "https://raw.githubusercontent.com/phusitsom/mprisence/main/systemd/mprisence.service")
-sha256sums=("25ba6c7f0c3fa5ebd85941c8ad0830ec67210d5512ddbd509bd498e48558f068" "8103053db7f9850d775785db8a56461a4440220b231144899bf8da38a0f7363c")
+sha256sums=("0690a028cf96ad083f6fff3e82d83343b950c08045f8de38cece453414ea5c24" "https://raw.githubusercontent.com/phusitsom/mprisence/main/systemd/mprisence.service")
 
 package() {
 	install -Dm755 mprisence -t "$pkgdir/usr/bin"
