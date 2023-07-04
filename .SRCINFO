@@ -1,6 +1,6 @@
 pkgbase = hexa-git
 	pkgdesc = Hexa is a programming language in an early stage of development
-	pkgver = 230
+	pkgver = 231
 	pkgrel = 1
 	url = https://github.com/hexalang/hexa
 	arch = x86_64

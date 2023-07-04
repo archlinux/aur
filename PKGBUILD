@@ -1,6 +1,6 @@
 # Maintainer: Bogdan Danylchenko <exp.wez@gmail.com>
 pkgname=hexa-git
-pkgver=230
+pkgver=231
 pkgrel=1
 pkgdesc="Hexa is a programming language in an early stage of development"
 arch=('x86_64')
