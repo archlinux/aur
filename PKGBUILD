@@ -1,9 +1,10 @@
-# Maintainer: Kim Taehwan <ktcar214@ktcar214.com>
+# Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
+# Contributor: Kim Taehwan <ktcar214@ktcar214.com>
 # Contributor: Edward Pacman <edward@edward-p.xyz>
 
 _projectname=dnsproxy
 pkgname=dnsproxy-adguard
-pkgver=0.43.1
+pkgver=0.51.0
 pkgrel=1
 pkgdesc="Simple DNS proxy with DoH, DoT, and DNSCrypt support by AdguardTeam"
 arch=('x86_64')
