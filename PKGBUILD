@@ -11,7 +11,14 @@ pkgname="${_pkgname}-${_variant}"
 pkgver=2.24.33
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (legacy)"
-arch=(any)
+arch=(
+  x86_64
+  i686
+  pentium4
+  aarch64
+  armv7h
+  armv6l
+)
 url="https://www.${_pkg}.org/"
 _ns="tallero"
 _url="https://gitlab.gnome.org/${_ns}/${_pkg}"
