@@ -1,6 +1,6 @@
 pkgbase = joshuto
 	pkgdesc = ranger-like terminal file manager written in Rust
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/kamiyaa/joshuto
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = joshuto
 	optdepends = xclip: for clipboard support on X11
 	optdepends = xsel: for clipboard support on X11
 	optdepends = wl-clipboard: for clipboard support on Wayland
-	source = joshuto-0.9.4.tar.gz::https://github.com/kamiyaa/joshuto/archive/refs/tags/v0.9.4.tar.gz
-	sha256sums = 5632b0430cee850678e0f004427a3eaf6718e4761f9dd337a920d57919ba50b1
+	source = joshuto-0.9.5.tar.gz::https://github.com/kamiyaa/joshuto/archive/refs/tags/v0.9.5.tar.gz
+	sha256sums = 14155a02cfeb0993a4906635a3c121589451e155e067d1c0d1673abdd1494ca8
 
 pkgname = joshuto
