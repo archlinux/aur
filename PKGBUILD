@@ -14,14 +14,14 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('941c193ca7addf631615d6c714429f1f332e77750f075b555223105b9703f788')
 
 build() {
-	cmake -B build -S "${pkgname}-${pkgver}" \
-		-DCMAKE_BUILD_TYPE='None' \
-		-DCMAKE_INSTALL_PREFIX='/usr' \
-		-Wno-dev
-	cmake --build build
+    cmake -B build -S "${pkgname}-${pkgver}" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+    cmake --build build
 }
 
 package() {
-	DESTDIR="${pkgdir}" cmake --install build
-	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    DESTDIR="${pkgdir}" cmake --install build
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
