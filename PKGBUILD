@@ -1,5 +1,5 @@
 pkgname="lnn"
-pkgver="0.1.5"
+pkgver="0.1.6"
 pkgrel=1
 pkgdesc="A tool to hardlink directories"
 arch=("any")
@@ -7,7 +7,7 @@ url="https://github.com/JanzenJohn/lnn"
 license=("GPL")
 makedepends=("rust" "git" "wget" "tar")
 source=("https://github.com/JanzenJohn/lnn/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=("a7cc65e586bf9925caac847fa0d3a39fb3ff0fcb183c0df6b7661673fdea9e34")
+sha256sums=("39fbdb254cd8ce9089e467aaf6a7309cd23a488998b3f1af4f60d79d00fd9104")
 
 build() {
     cd lnn-$pkgver
