@@ -1,0 +1,25 @@
+post_install(){
+  cat <<INFO
+
+jellyfin-vue has been installed, but does not come with its own webserver. A webserver (suxh as nginx or apache) will need to be set up to serve the files under /usr/share/jellyfin-vue/
+
+A very basic nginx configuration might look like:
+
+```
+  server {
+      listen 80;
+      server_name jellyfin-vue.example.com;
+
+      root /usr/share/jellyfin-vue/;
+      location / {
+          # First attempt to serve request as file, then as directory, then fall back to redirecting to index.html
+          # This is needed for history mode in Vue router: https://router.vuejs.org/guide/essentials/history-mode.html#nginx
+          try_files \$uri \$uri/ /index.html;
+      }
+  }
+```
+
+jellyfin-vue will prompt the user for a server URL unless "defaultServerURLs" is configured in /usr/share/jellyfin-vue/config.json
+
+INFO
+}
