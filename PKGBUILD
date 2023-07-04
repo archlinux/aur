@@ -1,5 +1,6 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Marcell Meszaros (MarsSeed) <marcell.meszaros@runbox.eu>
 
 # shellcheck disable=SC2034
 _name="pep517"
@@ -16,11 +17,6 @@ depends=(
   'python2-importlib-metadata'
   'python2-zipp')
 makedepends=('python2-setuptools')
-checkdepends=(
-  'python-mock'
-  'python-pytest-flake8'
-  'python-testpath'
-  'python-pip')
 _source_url="https://pypi.io/packages/source"
 source=("${_source_url}/p/${_name}/${_name}-${pkgver}.tar.gz")
 sha512sums=(
