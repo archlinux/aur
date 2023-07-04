@@ -14,6 +14,7 @@ pkgbase=linux-bpir64-git
 _srcname=linux
 _gitroot="https://git.kernel.org/pub/scm/linux/kernel/git/stable/${_srcname}"
 _gitbranch="linux-rolling-stable"
+#_gitbranch="linux-rolling-lts"
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for BPI-R64 and BPI-R3"
 pkgver=6.3.9.bpi
