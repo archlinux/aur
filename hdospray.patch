@@ -1,0 +1,31 @@
+diff --git a/hdOSPRay/rendererPlugin.h b/hdOSPRay/rendererPlugin.h
+index 0c29367..4bb3f36 100644
+--- a/hdOSPRay/rendererPlugin.h
++++ b/hdOSPRay/rendererPlugin.h
+@@ -20,9 +20,9 @@ public:
+     virtual void
+     DeleteRenderDelegate(HdRenderDelegate* renderDelegate) override;
+ 
+-    virtual bool IsSupported() const override;
++    virtual bool IsSupported(bool gpuEnabled = true) const override;
+ 
+ private:
+     HdOSPRayRendererPlugin(const HdOSPRayRendererPlugin&) = delete;
+     HdOSPRayRendererPlugin& operator=(const HdOSPRayRendererPlugin&) = delete;
+-};
+\ No newline at end of file
++};
+
+diff --git a/hdOSPRay/rendererPlugin.cpp b/hdOSPRay/rendererPlugin.cpp
+index 39ee34b..9b75149 100644
+--- a/hdOSPRay/rendererPlugin.cpp
++++ b/hdOSPRay/rendererPlugin.cpp
+@@ -81,7 +81,7 @@ HdOSPRayRendererPlugin::DeleteRenderDelegate(HdRenderDelegate* renderDelegate)
+ }
+
+ bool
+-HdOSPRayRendererPlugin::IsSupported() const
++HdOSPRayRendererPlugin::IsSupported(bool gpuEnabled) const
+ {
+     return true;
+ }

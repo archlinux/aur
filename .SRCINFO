@@ -1,0 +1,21 @@
+pkgbase = usd-hdospray
+	pkgdesc = OSPRay interactive rendering plugin for USD Hydra
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/ospray/hdospray
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = usd
+	depends = python
+	depends = gcc
+	depends = ospray
+	depends = openimagedenoise
+	depends = embree
+	options = !lto
+	source = git+https://github.com/ospray/hdospray#tag=v0.11.0-usdv22.08
+	source = hdospray.patch
+	sha512sums = SKIP
+	sha512sums = 2454ba6f961013b7c80ac6d444a005a6792c1d02f1a76810c53cdf5efaf0367f3d364567776a5660f0024c64e9436895793aaabd9e61221b92917f38aff6a28a
+
+pkgname = usd-hdospray
