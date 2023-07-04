@@ -4,7 +4,7 @@
 
 pkgname=domust-bin
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Domust is a home automation system that allows you to control your home form your computer."
 url="https://github.com/lucafulgenzi/domust"
 license=("AGPL-3.0")
@@ -13,7 +13,7 @@ arch=("x86_64")
 provides=("domust")
 conflicts=("domust")
 source=("https://github.com/lucafulgenzi/domust/releases/download/${pkgver}/domust-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=("6565d579154bc04413d49d6b415c263ebb4c02321936f4cb42e7395aec1a6883")
+sha256sums=('6565d579154bc04413d49d6b415c263ebb4c02321936f4cb42e7395aec1a6883')
 
 package() {
     install -Dm755 domust -t "$pkgdir/usr/bin"
