@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-medcoupling
+	pkgdesc = Field data manipulation library (mingw-w64)
+	pkgver = 9.11.0
+	pkgrel = 1
+	url = https://www.salome-platform.org/downloads
+	arch = any
+	license = LGPL
+	makedepends = mingw-w64-cmake
+	makedepends = mingw-w64-boost
+	depends = mingw-w64-med
+	depends = mingw-w64-metis
+	depends = mingw-w64-scotch
+	depends = mingw-w64-libxml2
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://git.salome-platform.org/gitpub/tools/medcoupling.git#tag=V9_11_0
+	md5sums = SKIP
+
+pkgname = mingw-w64-medcoupling
