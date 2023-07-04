@@ -1,7 +1,7 @@
 pkgbase = mir
 	pkgdesc = Canonical's display server
-	pkgver = 2.10.0
-	pkgrel = 2
+	pkgver = 2.13.0
+	pkgrel = 1
 	url = https://mir-server.io
 	arch = x86_64
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = mir
 	makedepends = python-dbusmock
 	makedepends = umockdev
 	makedepends = wlcs
+	makedepends = libxkbcommon-x11
 	depends = gtest
 	depends = boost-libs
 	depends = capnproto
@@ -46,7 +47,7 @@ pkgbase = mir
 	optdepends = qt5-wayland: required for miral demos
 	optdepends = xcursor-dmz: opt requirement for miral demos
 	optdepends = qtubuntu: opt requirement for miral demos
-	source = https://github.com/MirServer/mir/archive/v2.10.0.tar.gz
-	sha256sums = 242370eb99286473ffd4be60d4b9ea3f4b92d2399c0c1ed2591c2d2b661e3302
+	source = https://github.com/MirServer/mir/archive/v2.13.0.tar.gz
+	sha256sums = d4ab2f979ba8570f53f0d7ed702a8ed7d9876ede246cc0ff68c17a1031be422d
 
 pkgname = mir
