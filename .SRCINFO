@@ -7,8 +7,8 @@ pkgbase = octave-sparsersb
 	arch = any
 	groups = octave-forge
 	license = GPL3
-	makedepends = librsb>=1.2.0.9
 	depends = octave>=4.4.0
+	depends = librsb>=1.2.0.9
 	noextract = sparsersb-1.0.9.tar.gz
 	source = https://downloads.sourceforge.net/octave/sparsersb-1.0.9.tar.gz
 	sha256sums = b98bffc26fc031988106a24e05122d8ca7b6203fe960ac68112f93f0699fdcff
