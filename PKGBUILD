@@ -25,7 +25,7 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver(){
-  cd "${_pkgname}"
+  cd "${srcdir}"
   printf "1.20.4.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
