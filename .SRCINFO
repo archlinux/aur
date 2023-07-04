@@ -1,10 +1,13 @@
 pkgbase = cf-wagdns-bin
 	pkgdesc = A simple cloudflare ddns updater script, with helpful error messages and simple configuration, and the ability to update Access Group rules.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hdert/cf-wagdns
 	arch = x86_64
 	license = GPL-3.0-or-later
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
 	provides = cf-wagdns
 	conflicts = cf-wagdns
 	source = https://github.com/hdert/cf-wagdns/releases/download/v0.1.0/cf-wagdns-0.1.0-x86_64.tar.gz

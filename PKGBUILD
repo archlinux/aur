@@ -4,10 +4,15 @@
 
 pkgname=cf-wagdns-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple cloudflare ddns updater script, with helpful error messages and simple configuration, and the ability to update Access Group rules."
 url="https://github.com/hdert/cf-wagdns"
 license=("GPL-3.0-or-later")
+depends=(
+    "gcc-libs"
+    "glibc"
+    "openssl"
+)
 arch=("x86_64")
 provides=("cf-wagdns")
 conflicts=("cf-wagdns")
