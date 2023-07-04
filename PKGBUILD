@@ -1,21 +1,18 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=dnglab-bin
-_pkg="${pkgname%-bin}"
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Camera RAW to DNG file format converter"
-arch=('x86_64' 'aarch64')
+arch=('aarch64' 'x86_64')
 url="https://github.com/dnglab/dnglab"
 license=('LGPL2.1')
-depends=('gcc-libs')
-provides=("$_pkg")
-conflicts=("$_pkg")
-source_x86_64=("$_pkg-$pkgver-x86_64::$url/releases/download/v$pkgver/${_pkg}_linux_x64")
-source_aarch64=("$_pkg-$pkgver-aarch64::$url/releases/download/v$pkgver/${_pkg}_linux_aarch64")
-sha256sums_x86_64=('c133219d218eae9f8b68155e64c40c0cedc7303ceaa0e6c7916e10860c25bc49')
-sha256sums_aarch64=('11edebd3172ea5f1e763046589f7632e9fda6412d489cd4492df9fd4d7ddd18c')
-
+depends=('glibc' 'gcc-libs')
+conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+sha256sums_aarch64=('0628d17de9838b76724ec14221ea09e02a12862dc50223150e942b54df6d030a')
+sha256sums_x86_64=('661aee0dfeed35f3472d15fa48cb00fcfca738a3214cb296bdf2a1659e17f251')
 package() {
-	install -Dv "$_pkg-$pkgver-$CARCH" "$pkgdir/usr/bin/$_pkg"
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 }
