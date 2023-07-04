@@ -5,7 +5,7 @@
 
 pkgname=bigloo-devel
 pkgver=4.5b
-pkgrel=11
+pkgrel=12
 epoch=1
 _suffix=unstable
 pkgdesc="Fast scheme compiler"
@@ -21,7 +21,7 @@ options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
 provides=("bigloo=$pkgver")
 source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-${_suffix}.tar.gz bigloo-emacs.patch)
-sha256sums=('6b504864d23a655776931d3cfaa4c0e83f26df7f5bd686726b7672e6b8608eb7'
+sha256sums=('7d22aa949bc1f3a93953284ba938071819b50235e407af1f7281dbd4aa77ebc0'
             '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0')
 
 prepare() {
