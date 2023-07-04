@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Flat
+Comment=the client of Agora Flat open source classroom.
+Comment[zh_CN]=Agora Flat 开源教室的客户端。
+Exec=flat
+Icon=flat-bin
+Terminal=false
+StartupNotify=false
+Categories=Education;
