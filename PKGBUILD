@@ -2,15 +2,11 @@
 
 pkgname=php-imap
 pkgver=8.2.7
-pkgrel=3
+pkgrel=4
 pkgdesc="PHP extension for imap (excluded from official php packages)"
 arch=('x86_64')
 license=('PHP')
 url='https://www.php.net/'
-makedepends=('apache' 'aspell' 'gdbm' 'enchant' 'gd' 'gmp' 'icu' 'libsodium' 'libxslt' 'libzip' 'net-snmp'
-             'postgresql-libs' 'sqlite' 'systemd' 'tidy' 'unixodbc' 'curl' 'libtool' 'postfix' 'freetds' 'pcre2' 'libnsl'
-             'oniguruma' 'patchelf')
-checkdepends=('procps-ng')
 depends=('php' 'c-client' 'libxcrypt')
 source=(
   "https://php.net/distributions/php-${pkgver}.tar.xz"
