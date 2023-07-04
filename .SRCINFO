@@ -1,6 +1,6 @@
 pkgbase = binggpt-desktop-bin
 	pkgdesc = Desktop application of new Bing's AI-powered chat
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/dice2o/BingGPT
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = binggpt-desktop-bin
 	depends = alsa-lib
 	depends = gtk3
 	depends = nss
-	provides = binggpt-desktop=0.3.6
+	provides = binggpt-desktop=0.3.7
 	conflicts = binggpt-desktop
-	source = https://github.com/dice2o/BingGPT/releases/download/v0.3.6/BingGPT-0.3.6-linux-x64.deb
-	sha256sums = 563a3537677effa76b688dabd21b9f45e93f70b541c6dae5b8edd30833abdf74
+	source = https://github.com/dice2o/BingGPT/releases/download/v0.3.7/BingGPT-0.3.7-linux-x64.deb
+	sha256sums = 09f791fd5bab28a5754df34575a115e8e14c262a2cb1244749d5128a73593ca2
 
 pkgname = binggpt-desktop-bin
