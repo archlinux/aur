@@ -1,0 +1,10 @@
+--- src/nteract-0.28.0/package.json	2021-01-26 12:09:27.000000000 +0700
++++ package.json	2023-07-04 14:36:07.557769436 +0700
+@@ -65,6 +65,7 @@
+     "prettify": "prettier --write '**/*.{ts,tsx,js,json}' '!**/{dist,lib.git,.next,package.json,build,mathjax-electron}/**'",
+     "pack": "lerna run pack --scope nteract --stream",
+     "dist": "lerna run dist --scope nteract --stream",
++    "dist:linux": "lerna run dist:linux --scope nteract --stream",
+     "dist:all": "lerna run dist:all --scope nteract --stream",
+     "report:all": "npm run report:jext && npm run report:desktop",
+     "report:jext": "tsc -b applications/jupyter-extension",

@@ -1,16 +1,11 @@
 [Desktop Entry]
-Comment=Interactive literate coding notebook!
-Exec=/opt/nteract/nteract
-GenericName[en_US]=nteract
-GenericName=nteract
-Icon=/opt/nteract/resources/static/icon.png
-MimeType=application/x-ipynb+json;
-Name[en_US]=nteract
 Name=nteract
-Path=/opt/nteract/
-StartupWMClass=nteract
-StartupNotify=true
+Exec=/opt/nteract/nteract %U
 Terminal=false
 Type=Application
-X-KDE-SubstituteUID=false
-Categories=Science;Development;
+Icon=nteract
+StartupWMClass=nteract
+Comment=Interactive literate coding notebook!
+MimeType=application/x-ipynb+json;
+StartupNotify=true
+Categories=Science;
