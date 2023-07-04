@@ -1,27 +1,43 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Maurizio Porrato <maurizio.porrato@gmail.com>
 
-pkgname=python2-wokkel
-pkgver=0.7.1
-pkgrel=3
-_libname=${pkgname/python2-/}
+_py=python2
+_pkg=wokkel
+pkgname="${_py}-${_pkg}"
+# pkgver=0.7.1
+pkgver=18.0.0
+pkgrel=1
 pkgdesc="Twisted Jabber support library"
-license=('custom:"Wokkel License"')
-url="http://wokkel.ik.nu/"
-source=("http://wokkel.ik.nu/releases/$pkgver/wokkel-$pkgver.tar.gz")
+license=(
+  'custom:"Wokkel License"'
+)
+url="http://${_pkg}.ik.nu/"
+_url="https://github.com/ralphm/${_pkg}"
 arch=(any)
-makedepends=('python2-setuptools')
-depends=('python2-twisted')
+depends=(
+  "${_py}-twisted"
+)
+makedepends=(
+  "${_py}-setuptools"
+)
+source=(
+  "${_pkg}-${pkgver}.tar.gz::${_url}/archive/refs/tags/${pkgver}.tar.gz"
+)
+sha256sums=(
+  'dc980eb2c2ebea2a7b7f5b05883bbfdb10bea4ca495853326470e9cb5b1f9b7b'
+)
 
 build() {
-	cd "$srcdir/$_libname-$pkgver"
-	python2 setup.py build
+  cd "${_pkg}-${pkgver}"
+  "${_py}" setup.py build
 }
 
 package() {
-	cd "$srcdir/$_libname-$pkgver"
-	python2 setup.py install --skip-build -O1 --root="$pkgdir"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${_pkg}-${pkgver}"
+  "${_py}" setup.py install --skip-build \
+                            -O1 \
+                            --root="${pkgdir}"
+  install -Dm644 LICENSE \
+          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-sha256sums=('5306591c28f406873fad1d4eba27e5e081a4a7f37e3725b24afd47b3137f4965')
