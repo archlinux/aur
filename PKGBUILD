@@ -12,12 +12,12 @@ url="https://github.com/AdguardTeam/dnsproxy"
 license=('Apache')
 source=("dnsproxy-adguard.service"
         "dnsproxy-adguard"
-       "https://github.com/AdguardTeam/dnsproxy/archive/v${pkgver}.tar.gz")
+       "${_projectname}-${pkgver}.tar.gz::https://github.com/AdguardTeam/dnsproxy/archive/v${pkgver}.tar.gz")
 makedepends=("go" "git")
 backup=(etc/conf.d/dnsproxy-adguard)
-sha256sums=('7a6c7a49bae6865e23db6ea0bb438a5588769cae742936bfd4c6d7b0a0c6b424'
+sha256sums=('7d212da820b200b678edcffe2b23e56a6fc25f065acc051fbc6eaa76747795f1'
             'de2afa0883f2829a1f7487899ddc9e711913686aea1ce186a60aad022604df4b'
-            '2e69c1bd610727acdf24a37010fac3d1dfd6bf66527552b3221d22cc11d51296')
+            '230f13bcfe48a650c0ffd0574092fd956f5fb6351c622ae869d2bd0058a539b4')
 
 build(){
     cd "${srcdir}/${_projectname}-${pkgver}"
