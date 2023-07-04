@@ -1,0 +1,20 @@
+pkgbase = tux-git
+	pkgdesc = A 3D platform game featuring the famous Linux mascot.
+	pkgver = r170.a33c631
+	pkgrel = 1
+	url = https://gitlab.com/luckeyproductions/games/tux
+	arch = any
+	license = GPL3
+	license = CC0
+	license = CC-BY-3.0
+	license = CC-BY-4.0
+	license = CC-BY-SA-4.0
+	makedepends = git
+	makedepends = qt5-base
+	depends = dry
+	provides = tux
+	conflicts = tux
+	source = tux-git::git+https://gitlab.com/luckeyproductions/games/tux.git
+	sha512sums = SKIP
+
+pkgname = tux-git
