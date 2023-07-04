@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-de-bin
 	pkgdesc = Standalone Web Browser from Mozilla — Nightly build (de-DE)
-	pkgver = 116.0a1.20230607
+	pkgver = 116.0a1.20230703
 	pkgrel = 1
 	url = https://www.mozilla.org/de-DE/firefox/nightly
 	arch = i686
