@@ -3,7 +3,7 @@
 _pkgname=py-build-cmake
 pkgname=python-$_pkgname
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern, PEP 517 compliant build backend for creating Python packages with extensions built using CMake.'
 arch=('any')
 url='https://github.com/tttapa/py-build-cmake'
@@ -25,7 +25,7 @@ build() {
 check() {
   cd $_pkgname
 
-  pytest
+  PYTHONPATH=src pytest
 }
 
 package() {
