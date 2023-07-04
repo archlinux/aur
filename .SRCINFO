@@ -1,0 +1,16 @@
+pkgbase = nasa-skyviewer-git
+	pkgdesc = An OpenGL-based program to display HEALPix-based skymaps stored in FITS format files
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/nasa-lambda/skyviewer
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = qconf
+	makedepends = cfitsio
+	makedepends = libqglviewer
+	makedepends = healpix
+	source = nasa-skyviewer-git::git+https://github.com/nasa-lambda/skyviewer.git
+	sha256sums = SKIP
+
+pkgname = nasa-skyviewer-git
