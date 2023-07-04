@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('azote')
-pkgver=1.12.1
+pkgver=1.12.2
 pkgrel=1
 pkgdesc="Wallpaper & color manager for wlroots-based compositors and some X11 WMs"
 arch=('any')
@@ -10,19 +10,19 @@ provides=('azote')
 conflicts=('azote' 'azote-git')
 depends=('python' 'python-setuptools' 'python-gobject' 'python-pillow' 'gtk3' 'python-cairo' 'python-send2trash')
 optdepends=('imagemagick: for screen color picker'
-            'grim: for screen color picker on sway/Wayfire'
-			'slurp: for screen color picker on sway/Wayfire'
+            'grim: for screen color picker on wlroots'
+			'slurp: for screen color picker on wlroots'
 			'maim: for screen color picker on X11-based WMs'
 			'libappindicator-gtk3: for tray status icon'
 			'python-yaml: for alacritty.yml toolbox'
-			'swaybg: for setting background on wlroots-based compositors other than sway'
+			'swaybg: for setting background on wlroots-based compositors'
 			'feh: for setting background on X11-based WMs'
 			'xorg-xrandr: for checking outputs on X11-based WMs'
 			'wlr-randr-git: for checking outputs on wlroots-based compositors other than sway and Hyprland')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/$pkgname/archive/v$pkgver.tar.gz")
 
-md5sums=('a0bc95710bfe7a37fbe479a4ada83613')
+md5sums=('61dc9d08697eb718694d528a66a99821')
 
 package() {
   install -D -m 755 "$pkgname"-"$pkgver"/dist/azote "$pkgdir"/usr/bin/azote
