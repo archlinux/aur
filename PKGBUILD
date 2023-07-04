@@ -1,23 +1,32 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 
-pkgname=python2-semantic
+_py="python2"
+_pkg="semantic"
+pkgname="${_py}-${_pkg}"
 pkgver=1.0.3
 pkgrel=2
 pkgdesc='Library for extracting semantic information from text, such as dates and numbers'
-url='http://packages.python.org/semantic'
+url="http://packages.python.org/${_pkg}"
 arch=(any)
 license=(BSD)
-depends=(python2-quantities)
-source=(https://pypi.python.org/packages/source/s/semantic/semantic-$pkgver.tar.gz)
+depends=("${_py}-quantities")
+_pypi_url="https://pypi.python.org/packages/source"
+source=(
+  "${_pypi_url}/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz"
+)
 sha512sums=(SKIP)
 
 build() {
-  cd $srcdir/semantic-$pkgver
-  python2 setup.py build || return 1
+  cd "${srcdir}/${_pkg}-${pkgver}"
+  "${_py}" setup.py build || return 1
 }
 
 package() {
-  cd $srcdir/semantic-$pkgver
-  python2 setup.py install --prefix=/usr --root=$pkgdir || return 1
+  cd "${srcdir}/${_pkg}-${pkgver}"
+  "${_py}" setup.py install --prefix=/usr \
+                            --root=$pkgdir || return 1
 }
+
+# vim:set sw=2 sts=-1 et:
