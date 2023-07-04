@@ -1,8 +1,8 @@
 # Maintainer: Ícar N. S. <aur@icarns.xyz>
 
 pkgname=yarn-berry
-pkgver=3.6.0
-pkgrel=2
+pkgver=3.6.1
+pkgrel=1
 pkgdesc='Fast, reliable, and secure dependency management - Active development trunk'
 arch=(any)
 provides=('yarn')
@@ -11,7 +11,7 @@ url='https://yarnpkg.com/'
 license=('BSD')
 depends=('nodejs')
 source=("https://github.com/yarnpkg/berry/archive/refs/tags/@yarnpkg/cli/$pkgver.tar.gz")
-sha256sums=('8a03438caad6b0597bcb8b04ff0ea39ab0664b29dbd8fdafa8b6b59f9b864c2d')
+sha256sums=('d5e7df78ab3fba1f2076a43d40fbb6e9a37101599f3a757d9cae6eb182cdcd2f')
 
 package() {
   cd berry--yarnpkg-cli-${pkgver}
