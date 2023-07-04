@@ -1,0 +1,20 @@
+pkgbase = simple-image-filter
+	pkgdesc = Deepin DDe simple image filter qt
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/dependon/simple-image-filter
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = qconf
+	makedepends = pkgconfig
+	makedepends = make
+	depends = qt5-tools
+	provides = simple-image-filter
+	conflicts = simple-image-filter
+	conflicts = simple-image-filter
+	options = !strip
+	source = simple-image-filter::git+https://github.com/dependon/simple-image-filter.git
+	sha256sums = SKIP
+
+pkgname = simple-image-filter
