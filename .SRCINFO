@@ -1,0 +1,20 @@
+pkgbase = durian-ocr-git
+	pkgdesc = durian-ocr is no dtk deepin-ocr. This is a ocr tool ui.
+	pkgver = 1.0.0.r0.gbf3d466
+	pkgrel = 1
+	url = https://github.com/dependon/durian-ocr
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = qconf
+	makedepends = pkgconfig
+	makedepends = cmake
+	makedepends = make
+	depends = qt5-tools
+	provides = durian-ocr-git
+	conflicts = durian-ocr-git
+	conflicts = durian-ocr
+	source = durian-ocr::git+https://github.com/dependon/durian-ocr.git
+	sha256sums = SKIP
+
+pkgname = durian-ocr-git
