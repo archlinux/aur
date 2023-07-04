@@ -1,0 +1,14 @@
+pkgbase = juicefs
+	pkgdesc = A shared POSIX file system for the cloud
+	pkgver = 4.3.8
+	pkgrel = 1
+	url = https://juicefs.com/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = python
+	source = juicefs-4.3.8-1::https://juicefs.com/static/juicefs
+	sha512sums = 7662f1b95c0a88e9ac93bcaffa06b49898f67172bc52d2ac0fb187158e8934ef39e703825850f4e3ba27e4caf40f4e2f7639db144356da3e64c18e5f5f2f37e6
+
+pkgname = juicefs
+
