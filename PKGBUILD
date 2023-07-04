@@ -3,7 +3,7 @@
 
 pkgname=canonical-multipass-git
 _pkgname=multipass
-pkgver=1.8.0.r203.g09cd5195
+pkgver=1.12.0.r226.g50ed575c
 pkgrel=1
 pkgdesc="Multipass orchestrates virtual Ubuntu instances"
 arch=('x86_64')
@@ -34,7 +34,7 @@ build() {
   rm -rf build
   mkdir -p build
   cd build
-  #export CXXFLAGS='-Wno-error=cpp -Wno-error=deprecated-declarations'
+  export CXXFLAGS='-Wno-error'
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }

@@ -1,6 +1,6 @@
 pkgbase = canonical-multipass-git
 	pkgdesc = Multipass orchestrates virtual Ubuntu instances
-	pkgver = 1.8.0.r203.g09cd5195
+	pkgver = 1.12.0.r226.g50ed575c
 	pkgrel = 1
 	url = https://multipass.run
 	arch = x86_64
