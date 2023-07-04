@@ -23,8 +23,8 @@ if [[ -z "$OBS_FT_USE_AS_BLAS" ]]; then
 fi
 
 pkgname=obs-face-tracker
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.7.1
+pkgrel=1
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/face-tracker.1294/"
@@ -63,18 +63,22 @@ prepare() {
 }
 
 build() {
-  cmake -B build -S $pkgname \
+  cd "$pkgname"
+  cmake -B build \
   -DCMAKE_BUILD_TYPE=None \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DCMAKE_INSTALL_LIBDIR=lib \
   -DLINUX_PORTABLE=OFF \
   -DQT_VERSION=6 \
-  -DDLIB_USE_CUDA=$OBS_FT_ENABLE_CUDA \
-  -Wno-dev
+  -DDLIB_USE_CUDA=$OBS_FT_ENABLE_CUDA
 
-  cmake --build build
+  make -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  cd "$pkgname"
+  make -C build DESTDIR="$pkgdir/" install
+
+  # Remove libvisca header to prevent possible conflict with any libvisca package
+  rm -rf "$pkgdir"/usr/include
 }
