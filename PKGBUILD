@@ -10,7 +10,7 @@ makedepends=('git' 'nodejs')
 depends=('nodejs')
 provides=('hexa')
 source=("hexa::git+https://github.com/hexalang/hexa" "hexa.sh")
-md5sums=('SKIP' 'ba6c114926428fc72cfa569490f547b0')
+md5sums=('SKIP' '8e53c16d280ac91c0544d1770a7f04a7')
 
 pkgver() {
 	cd "$SRCDEST"/hexa
