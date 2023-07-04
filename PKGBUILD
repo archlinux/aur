@@ -1,6 +1,6 @@
 pkgname=mingw-w64-hdf5
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
 url="http://www.hdfgroup.org/HDF5/"
