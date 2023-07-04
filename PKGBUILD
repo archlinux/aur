@@ -1,6 +1,6 @@
 # Maintainer: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 pkgname=java-debug
-pkgver=0.46.0
+pkgver=0.47.0
 pkgrel=1
 pkgdesc="The debug server implementation for Java."
 arch=(any)
@@ -14,10 +14,10 @@ sha256sums=('7c1cce4ade940f38ef568c630ef079e11928ee72ae1fccb039c26bc22322c206')
 
 build() {
     prev_java_ver=$(archlinux-java get)
-    sudo archlinux-java set java-17-openjdk
+    archlinux-java set java-17-openjdk
     cd "${srcdir}/${pkgname}-${pkgver}"
     ./mvnw clean install
-    sudo archlinux-java set "$prev_java_ver"
+    archlinux-java set "$prev_java_ver"
 }
 
 package() {
