@@ -1,4 +1,4 @@
-# Maintainer: matt quintanilla <matt @ matt quintanilla .xyz matt quintanilla 45 @gmail.com>
+# Maintainer: matt quintanilla <matt @ matt quintanilla. xyz matt @ matt quintanilla 45 @ gmail . com>
 pkgname=lemoa-git
 pkgver=0.2.0.r97.e51da62
 pkgrel=1
@@ -28,4 +28,3 @@ package() {
   cd lemoa
   DESTDIR="${pkgdir}" ninja -C _build install
 }
-
