@@ -28,7 +28,7 @@ pkgbase = linux-bcachefs-git
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 203acd823b0aa5ccd69303e0db1f9601ea3bb37dee0420c222880d7986a9e27bbaf5955a88057fc3d8f2b158e792a68ae65a7eaa6a692cc85fc2caea756112b1
+	b2sums = 5ed0bfaff8f3cd10192399f12d8a220f7960c3555df025ec8450334b561c9ccc34fcd7d577ef134a79a2800c8904d37861615557ac7b4aaff7ad99b129726287
 
 pkgname = linux-bcachefs-git
 	pkgdesc = The Linux kernel and modules ~ featuring Kent Overstreet's bcachefs filesystem
