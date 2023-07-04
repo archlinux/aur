@@ -1,9 +1,10 @@
-# Maintainer: Rayr <https://rayr.ml/LinkInBio>
+# Maintainer: Jeidnx <jeidnx@domainhier.de>
+# Contributor: Rayr <https://rayr.ml/LinkInBio>
 # Contributor: Daniel Peukert <daniel@peukert.cc>
 # Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 _projectname='spot'
 pkgname="$_projectname-client-git"
-pkgver='r698.4b1209d'
+pkgver=r838.cbd3140
 pkgrel='2'
 pkgdesc='Gtk/Rust native Spotify client - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -11,27 +12,16 @@ url="https://github.com/xou816/$_projectname"
 license=('MIT')
 depends=('alsa-lib' 'cairo' 'glib2' 'glibc' 'graphene' 'gtk4' 'libadwaita' 'libpulse' 'openssl' 'pango' 'clang')
 optdepends=('org.freedesktop.secrets')
-makedepends=('cargo' 'git' 'meson>=0.50.0')
+makedepends=('cargo' 'git' 'meson>=0.50.0' 'blueprint-compiler')
 checkdepends=('appstream-glib')
 provides=("$_projectname-client")
 conflicts=("$_projectname-client")
 options=('!lto') # build breaks with LTO enabled (https://gitlab.com/dpeukert/pkgbuilds/-/issues/38)
-source=(
-	"$pkgname::git+$url"
-	'disable-clippy.patch'
-)
-sha512sums=('SKIP'
-            '1cb0faced2e6801cb994e9af7b81411355837b2efcd9c82b82751508e0bfcc967c50b3d6296bfdb8c017bbf2e7a503a3920d36cb896e44c896c23f5b9e1d13f1')
+source=("$pkgname::git+$url")
+sha512sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 _builddirectory='build'
-
-prepare() {
-	cd "$srcdir/$_sourcedirectory/"
-
-	# Disable clippy tests, as they don't realy make sense for user builds (https://gitlab.com/dpeukert/pkgbuilds/-/issues/37)
-	patch --forward -p1 < '../disable-clippy.patch'
-}
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
