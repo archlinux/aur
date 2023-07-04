@@ -13,44 +13,44 @@ makedepends=('git' 'yarn' 'asar')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
-	'icon.png'::'https://github.com/bbg-contributors/bbg-resources/raw/main/icon.png'
-	"${_pkgname}::git+${url}.git"
+    'icon.png'::'https://github.com/bbg-contributors/bbg-resources/raw/main/icon.png'
+    "${_pkgname}::git+${url}.git"
 )
 sha256sums=(
-	'SKIP'
-	'SKIP'
+    'SKIP'
+    'SKIP'
 )
 
 pkgver() {
-	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd "$srcdir/${_pkgname}"
+    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
-	cd "$srcdir/${_pkgname}"
-	git submodule update --init --recursive
+    cd "$srcdir/${_pkgname}"
+    git submodule update --init --recursive
 
-	# https://github.com/bbg-contributors/bbg/blob/c6f3cff622d45dac06d5ec25266e4c68e34e5bae/App/start.js#L274-L278
-	touch App/is_aur_build
+    # https://github.com/bbg-contributors/bbg/blob/c6f3cff622d45dac06d5ec25266e4c68e34e5bae/App/start.js#L274-L278
+    touch App/is_aur_build
 }
 
 build() {
-	cd "$srcdir/${_pkgname}"
-	yarn install
-	asar pack . app.asar
-	mv app.asar ../"app-${pkgver}.asar"
+    cd "$srcdir/${_pkgname}"
+    yarn install
+    asar pack . app.asar
+    mv app.asar ../"app-${pkgver}.asar"
 }
 
 package() {
-	cd "$srcdir"
-	install -Dm644 "app-${pkgver}.asar" "${pkgdir}/usr/lib/${_pkgname}/app.asar"
-	install -Dm644 icon.png "${pkgdir}/usr/share/icons/${_pkgname}.png"
+    cd "$srcdir"
+    install -Dm644 "app-${pkgver}.asar" "${pkgdir}/usr/lib/${_pkgname}/app.asar"
+    install -Dm644 icon.png "${pkgdir}/usr/share/icons/${_pkgname}.png"
     install -Dm755 /dev/stdin ${pkgdir}/usr/bin/${_pkgname} << EOF
 #!/bin/sh
 
 exec electron /usr/lib/bbg/app.asar "\$@"
 EOF
-	install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" << EOF
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" << EOF
 [Desktop Entry]
 Name=bbg
 Comment=blog generator
