@@ -1,7 +1,7 @@
 # Maintainer: Bart Libert <bart plus aur at libert dot email>
 
 pkgname=yojenkins
-pkgver=0.0.85
+pkgver=0.0.86
 pkgrel=1
 pkgdesc="A CLI tool to interface with Jenkins"
 arch=('any')
@@ -28,7 +28,7 @@ depends=(
     )
 _wheel=${pkgname//-/_}-$pkgver-py3-none-any.whl
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
-sha512sums=('23088d39e0290c3c041799bd9e68ff4b003a5c750b7756b0e6420c266d524b6a9809b87cec94a263a7214a73e1774c2695bb0e1d66469c992e2d094d851390fe')
+sha512sums=('6cc4f817e15dfc738f15d36975f2fcaad7d64b75cb1499062da6f52d36bc0aaaa4cbe496f4ae129f87dfab4ab06bc82d9848f062df2366ce313fdd0ef1bd0517')
 
 makedepends=(python-installer python-wheel)
 
