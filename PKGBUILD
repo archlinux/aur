@@ -3,16 +3,16 @@
 _pkgname=fsv
 pkgname=fsv3
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D file system explorer (GTK3 port)"
 arch=('x86_64')
 url="https://github.com/jabl/fsv"
 license=('LGPL2.1')
 depends=(cglm gtk3 glu libepoxy gdk-pixbuf2 zlib glibc gettext glib2)
 makedepends=(meson ninja)
-provides=(fsv)
-conflicts=(fsv)
-replaces=(fsv)
+provides=(fsv2)
+conflicts=(fsv2)
+replaces=(fsv2 fsv)
 source=("$_pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/refs/tags/$_pkgname-$pkgver.tar.gz"
 	disable_assertions.patch
 	disable_ogl_abort.patch
