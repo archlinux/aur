@@ -1,13 +1,13 @@
 # Maintainer: Carl Kittelberger <icedream@icedream.pw>
 pkgname=fw-fanctrl-git
 pkgver=r23.e7150cc
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple systemd service to better control Framework Laptop's fan"
 arch=(any)
 url="https://github.com/TamtamHero/fw-fanctrl"
 license=('BSD-3')
 groups=()
-depends=(python-watchdog)
+depends=(python-watchdog fw-ectool-git)
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -40,7 +40,6 @@ prepare() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
-	install -Dm0755 ./bin/ectool "${pkgdir}"/usr/bin/ectool
 	install -Dm0755 ./fanctrl.py "${pkgdir}"/usr/bin/fw-fanctrl
 	install -Dm0655 ./config.json "${pkgdir}"/etc/fw-fanctrl/config.json
 	install -Dm0655 "${srcdir}/fw-fanctrl.service" "${pkgdir}"/usr/lib/systemd/system/fw-fanctrl.service
