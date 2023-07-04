@@ -1,4 +1,5 @@
-# Co-maintainer: Jovial Joe Jayarson <jovial7joe@hotmail.com>
+# Maintainer: Shivanshu <87352198+totoro-ghost@users.noreply.github.com>
+# Contributor: Jovial Joe Jayarson <jovial7joe@hotmail.com>
 
 pkgname=sddm-theme-astronaut
 _themename=astronaut
@@ -14,8 +15,6 @@ source=("git+https://github.com/joe733/sddm-theme-astronaut.git")
 md5sums=("SKIP")
 package() {
   cd "${srcdir}/${pkgname}"
-
   _themedir="${pkgdir}/usr/share/sddm/themes/$_themename"
-
   find . -type f -exec install -Dm644 {} "${_themedir}/{}" \;
 }
