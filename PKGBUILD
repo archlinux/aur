@@ -5,7 +5,7 @@
 pkgname=siril-git
 _pkgname=${pkgname%-git}
 pkgver=1.2.0.6073.e36485055
-pkgrel=2
+pkgrel=3
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -19,13 +19,13 @@ depends=(
 		'exiv2'
 		'libxisf'
 		'ffms2'
+		'libraw'
 		)
 checkdepends=('criterion' 'libcurl-gnutls')
 makedepends=('git' 'cmake' 'meson' 'ninja')
 optdepends=('libpng: PNG import'
 'libjpeg: JPEG import and export'
 'libtiff: TIFF import and export'
-'ffms2: films native support as image sequences and import'
 'libcurl-gnutls: online astrometry'
 )
 source=('git+https://gitlab.com/free-astro/siril.git')
