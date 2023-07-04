@@ -51,7 +51,7 @@ _disable_debug=
 pkgbase=linux-sched-ext-git
 pkgver=6.4.0.r1186562.g1f602cd4c170
 _srcname=sched_ext
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Kernel based on the sched_ext branch'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -359,7 +359,7 @@ done
 
 b2sums=('SKIP'
         '0ec7df7055b9f13574b7a2ff4d36f4046dd2e9f9d6462ccc35e12ab3ca36fad90d0e9bd7ec2a8676bdbaf9b1d851caa0dfb2e5f9aff086c536fabb46221544f5'
-        'cef2996678a48f6bc4462a93b5d0c063a32761a7626e5b5729961c8ba6bbfa483b638353968b7d2ba9bfee6a97b3581de123c07670c2acbdb15c688bee204a1b'
+        '358b19fb90a490107fc5ca3b644a87adc918ebf3898474b3dc095c570063d30351a5459c947cc78f81f92bf49a3bd03fcf8b60f4dcd1760d621a81d2aca7e3a4'
         'd13ab55728b87f18e16f23831aed6d5677f14a77733f030a2477514bfb46fd6eb8f108e060e349c9232349ff225284b8c6e3516c6a9d9afe64514b49f52d4352'
         'a6d9c881ab2ce1fa9c5ce1fb0cd1fadd76e3bcbe1b09572aca561b49ccb373ca94e2127cfdb6dc64b517d531108390f3dcb8684a2be4f17899db8c92232a48ef'
         '98c81b50f301c5c409de53ff5466189ddc3aa33cc924685ddec92cf7137d7f8bfd0fd8d7658f4ae5504bea162b330f3b973c408acf873f5958ef73da745a9c79'
