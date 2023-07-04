@@ -8,6 +8,7 @@ pkgbase = streamcontrol-git
 	arch = aarch64
 	license = custom
 	makedepends = qt5-script
+	makedepends = make
 	provides = streamcontrol
 	conflicts = streamcontrol
 	source = git+https://github.com/farpenoodle/StreamControl.git
