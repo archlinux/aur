@@ -20,22 +20,14 @@ pkgbase = open3d-git
 	optdepends = pybind11: System pybind11 support
 	optdepends = python: Python support
 	optdepends = jupyter-notebook: Jupyter notebook support
-	source = open3d-git::git+https://github.com/intel-isl/Open3D.git
+	source = open3d-git::git+https://github.com/isl-org/Open3D.git
 	source = fix_3rdparty_path.patch
 	sha256sums = SKIP
 	sha256sums = 3bf6b79fd075b356a5c2d86a557e0bc6e6df0e84d53c2077d2c6685641838d81
 
 pkgname = open3d-git
-	depends = eigen
-	depends = glew
-	depends = glfw-x11
-	depends = jsoncpp
-	depends = libjpeg-turbo
-	depends = libpng
-	depends = mesa
-	depends = xorg-server-devel
 	optdepends = openmp: Multiprocess support
-	provides = open3d
+	provides = open3d=r2539.f3c7158a
 	conflicts = open3d
 
 pkgname = python-open3d-git
@@ -46,33 +38,13 @@ pkgname = python-open3d-git
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = mesa
+	depends = xorg-server-devel
 	depends = open3d-git
 	depends = python
-	depends = xorg-server-devel
 	optdepends = jupyter-notebook: Jupyter notebook support
 	optdepends = openmp: Multiprocess support
 	optdepends = pybind11: System pybind11 support
-	provides = python-py3d
-	conflicts = python-open3d-git
-	conflicts = python-py3d
-	conflicts = python-py3d-git
-
-pkgname = python-py3d-git
-	depends = eigen
-	depends = glew
-	depends = glfw-x11
-	depends = jsoncpp
-	depends = libjpeg-turbo
-	depends = libpng
-	depends = mesa
-	depends = open3d-git
-	depends = python
-	depends = xorg-server-devel
-	optdepends = jupyter-notebook: Jupyter notebook support
-	optdepends = openmp: Multiprocess support
-	optdepends = pybind11: System pybind11 support
-	provides = python-open3d
-	conflicts = python-py3d-git
+	provides = python-open3d=r2539.f3c7158a
+	provides = python-py3d=r2539.f3c7158a
 	conflicts = python-open3d
-	conflicts = python-open3d-git
-
+	conflicts = python-py3d
