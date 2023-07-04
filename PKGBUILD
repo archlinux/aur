@@ -28,3 +28,4 @@ package() {
   cd lemoa
   DESTDIR="${pkgdir}" ninja -C _build install
 }
+
