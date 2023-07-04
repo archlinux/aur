@@ -1,43 +1,20 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Maintainer :  Biginoz 
 # Contributor :  Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
 # Contributor : Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
-
-
 pkgname=whalebird-bin
-_name="${pkgname%-bin}"
-
-pkgver=5.0.5
-#_ver=4.6.0-rc.1
-#pkgver="${_ver/-}"
+pkgver=5.0.7
 pkgrel=1
-
-pkgdesc='Electron based multi-platform client for Mastodon, Misskey & Pleroma'
+pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
 arch=('x86_64')
-url="https://$_name.social"
-license=('MIT')
-
-provides=("$_name")
-conflicts=("$_name")
-
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
-
-_url="https://github.com/h3poteto/$_name-desktop/releases/download/v$pkgver/${_name^}-$pkgver-linux-x86_64.rpm"
-source=("$_url")
-sha256sums=('9fa1528da3c35f057d0db05991b23faaae194e34afe6c5f09a42a6dd28f1e59a')
-#_url="https://github.com/h3poteto/$_name-desktop/releases/download/$_ver/${_name^}-$_ver-linux-x64.rpm"
-#source=("$_url")
-#sha256sums=($(curl -sL "$_url.shasum" | grep "${_name^}-$_ver-linux-x64.rpm" | cut -d\  -f1))
-
-
+url="https://whalebird.social/"
+_githuburl="https://github.com/h3poteto/whalebird-desktop"
+license=('GPL3')
+depends=('glibc' 'pango' 'libxkbcommon' 'libxdamage' 'wayland' 'glib2' 'expat' 'libcups' 'nspr' 'nss' 'mesa' 'libdrm' 'cairo' 'libx11' \
+  'libxcb' 'gcc-libs' 'libxcomposite' 'dbus' 'at-spi2-core' 'hicolor-icon-theme' 'libxext' 'libxrandr' 'libxfixes' 'alsa-lib' 'gtk3')
+conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
+source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/Whalebird-${pkgver}-linux-amd64.deb")
+sha256sums=('cd7969a3cc7866e71602a97653f8ff9c9546ca7819886f42f5be5b0501a718c4')
 package() {
-  install -Dm644 "opt/${_name^}/LICENSE"* -t"$pkgdir/usr/share/licenses/$_name/"
-  cp -R usr/share/* "$pkgdir/usr/share/"
-  cp -R opt "$pkgdir/"
-  install -dm755 "$pkgdir/usr/bin"
-  ln -s "/opt/${_name^}/$_name" "$pkgdir/usr/bin/"
+    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 }
-
-
-# vim: ts=2 sw=2 et ft=PKGBUILD:
-
-
