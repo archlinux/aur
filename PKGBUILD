@@ -11,10 +11,9 @@ _upstream_arch=
 [[ "$CARCH" == "x86_64" ]] && _upstream_arch="x86_64"
 [[ "$CARCH" == "i686" ]] && _upstream_arch="i386"
 _appimage="eID_klient-${_upstream_arch}.AppImage"
-_archive="eID_klient_${_upstream_arch}.tar.gz"
 _url="https://eidas.minv.sk/downloadservice/eidklient/linux"
-source_i686=("${_url}/${_archive}")
-source_x86_64=("${_url}/${_archive}")
+source_i686=("${_url}/eID_klient_i386.tar.gz")
+source_x86_64=("${_url}/eID_klient_x86_64.tar.gz")
 # upstream update would break this PKGBUILD if we used integrity checks
 md5sums_i686=('SKIP')
 md5sums_x86_64=('SKIP')
