@@ -1,4 +1,5 @@
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Timm Preetz <timm@preetz.us>
 # Contributor: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 
