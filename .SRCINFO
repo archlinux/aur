@@ -1,7 +1,7 @@
 pkgbase = calckey-beta
 	pkgdesc = A fun, new way to experience social media
-	pkgver = 14.0.0rc2c
-	pkgrel = 2
+	pkgver = 14.0.0rc3
+	pkgrel = 1
 	url = https://calckey.org
 	install = calckey.install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = calckey-beta
 	optdepends = ffmpeg: Media encode functionality
 	optdepends = nginx: Reverse-proxy
 	options = debug
-	source = git+https://codeberg.org/calckey/calckey.git#commit=349411ac76
+	source = git+https://codeberg.org/calckey/calckey.git#commit=5ab80337dbfca728d71855fb5febd8cf197ae6af
 	source = calckey.install
 	source = calckey.service
 	source = calckey.sh

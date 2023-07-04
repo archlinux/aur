@@ -4,8 +4,8 @@
 
 pkgname=calckey-beta
 _pkgname=calckey
-pkgver=14.0.0rc2c
-pkgrel=2
+pkgver=14.0.0rc3
+pkgrel=1
 pkgdesc='A fun, new way to experience social media'
 url='https://calckey.org'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('nodejs' 'npm' 'postgresql' 'redis' 'pnpm' 'zip')
 makedepends=('git' 'python' 'rust')
 options=('debug')
 install='calckey.install'
-commit=349411ac76
+commit=5ab80337dbfca728d71855fb5febd8cf197ae6af
 optdepends=('ffmpeg: Media encode functionality'
             'nginx: Reverse-proxy')
 source=("git+https://codeberg.org/calckey/calckey.git#commit=$commit"
