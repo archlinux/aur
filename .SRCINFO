@@ -1,14 +1,15 @@
 pkgbase = python-dj-database-url
 	pkgdesc = Use Database URLs in your Django Application
-	pkgver = 0.5.0
-	pkgrel = 0
-	url = https://github.com/kennethreitz/dj-database-url
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/jazzband/dj-database-url
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = python-setuptools
-	depends = python
-	source = https://github.com/kennethreitz/dj-database-url/archive/v0.5.0.tar.gz
-	sha512sums = 541d5177bff0fcc21372d2d9dc699ba11de1b1cabf10d61fb9f1e844a6dd4d46df5c7fdb6ccb4505cf984e41d7a2ae4e3af5e7d05072b0ed6982499eac5aac66
+	depends = python-django
+	depends = python-typing_extensions
+	source = dj-database-url-2.0.0.tar.gz::https://github.com/jazzband/dj-database-url/archive/v2.0.0.tar.gz
+	sha512sums = d2600997023b1e58c1e6285268a400aed57fbdff972a36025f47bcc2e57d3179f266379d7042dc75c6048b35f7aef8547828c88a2fad1e80f087e6f5680668b0
 
 pkgname = python-dj-database-url
