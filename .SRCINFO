@@ -1,9 +1,10 @@
 pkgbase = arianna
 	pkgdesc = EPub Reader for mobile devices
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/graphics/arianna
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	license = LGPL
 	license = MIT
