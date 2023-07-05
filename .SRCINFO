@@ -1,0 +1,13 @@
+pkgbase = tthsum
+	pkgdesc = generates or checks TTH message digests
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = http://tthsum.devs.nu
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	source = tthsum-1.3.2.tar.gz::http://tthsum.devs.nu/pkg/tthsum-1.3.2.tar.gz
+	md5sums = 4a3afe8e9bb5787c0db2de06484f18c1
+
+pkgname = tthsum
