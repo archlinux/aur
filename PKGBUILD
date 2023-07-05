@@ -1,7 +1,7 @@
 # Maintainer: Anagastes
 
 pkgname=element-bin-deb-package
-pkgver=1.11.34
+pkgver=1.11.35
 pkgrel=1
 pkgdesc="All-in-one secure chat app for teams, friends and organisations (stable .deb build)."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('sqlcipher')
 source=("https://packages.element.io/debian/pool/main/e/element-desktop/element-desktop_"${pkgver}"_amd64.deb"
         "element-desktop-stable-bin.sh")
-sha256sums=('e952d0c79d5ea8822a14e931e1a1e4358934db0ef576f8c95e9beb79af794ac6'
+sha256sums=('7c744ba3fc01c260dcf82af64c7878bebb4908e7fac61a77e3386ab07679b3d3'
             'b682d6ec847e0b6e5406313fbb6a5ed8c445eda2a873432b5645693a258ba98b')
 replaces=('element-desktop' 'element-desktop-stable-bin' 'element-desktop-stable-bin-deb-package')
 conflicts=('element-desktop' 'element-desktop-stable-bin' 'element-desktop-stable-bin-deb-package')
