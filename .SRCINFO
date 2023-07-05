@@ -1,10 +1,11 @@
 pkgbase = nvimpager-git
 	pkgdesc = Use nvim as a pager to view manpages, diffs, etc with nvim's syntax highlighting
-	pkgver = 0.10.4.r18.g7a0b5dd
+	pkgver = 0.12.0.r1.ga1c3916
 	pkgrel = 1
 	url = https://github.com/lucc/nvimpager
 	arch = any
 	license = BSD
+	checkdepends = busted
 	makedepends = git
 	makedepends = scdoc
 	depends = neovim>=0.4.4
