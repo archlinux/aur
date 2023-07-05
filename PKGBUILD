@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gphotos-sync
-pkgver=3.1.2
-pkgrel=2
+pkgver=3.1.3
+pkgrel=1
 epoch=2
 pkgdesc='Google Photos and Albums backup tool'
 arch=(any)
@@ -24,7 +24,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('cf4b6f04e4b5a0c2b0fcba92673c7dabd4048b933a82c4673cf3f8c763c4d9a9')
+sha256sums=('b92ae4f5a30d47b0f6d63399618bf8c897d724b898f78d0f87d7e4f93e226c67')
 
 prepare() {
 	cd "$_archive"
