@@ -1,7 +1,7 @@
 pkgbase = qemu-screamer-git
 	pkgdesc = QEMU PowerPC with sound support for Macintosh emulation
-	pkgver = r96011.c108debd27
-	pkgrel = 2
+	pkgver = r99787.448771a270
+	pkgrel = 1
 	url = https://github.com/mcayland/qemu/tree/screamer
 	arch = x86_64
 	license = GPL2
@@ -12,7 +12,11 @@ pkgbase = qemu-screamer-git
 	depends = libpulse
 	depends = vte3
 	depends = libslirp
+	depends = dtc
+	optdepends = qemu-common: for qemu-bridge-helper
 	source = git+https://github.com/mcayland/qemu.git#branch=screamer
+	source = suppress-gcc13-warning.patch
 	sha256sums = SKIP
+	sha256sums = 6fe10a16301cb3e18aff8ff40e2b24b2cc91cfe523f5ccbdd3d7264a043dfbeb
 
 pkgname = qemu-screamer-git
