@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=R62.31.gf5a443bf
+pkgver=R63.32.g1e2cc799
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('x86_64')
@@ -41,6 +41,8 @@ pkgver() {
 prepare() {
   mkdir -p build
   mkdir -p vapoursynth/doc/_static
+
+  sed 's|VAPOURSYNTH_VERSION|$(top_srcdir)/VAPOURSYNTH_VERSION|g' -i vapoursynth/Makefile.am
 
 }
 
