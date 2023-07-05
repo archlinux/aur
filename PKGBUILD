@@ -12,10 +12,10 @@ provides=('dl')
 conflicts=('dl')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/local-deploy/dl/releases/download/1.0.5/dl-1.0.5-linux-arm64.tar.gz")
-sha256sums_aarch64=('5e7670fc0da9a18525e66f1837d511aa0fafeaacfb3a90c7710d5fd4199eb140')
+sha256sums_aarch64=('1a334f756a1f623d0518394c001b3e8cfc02c1ca7b3a90193e7e941595064efa')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/local-deploy/dl/releases/download/1.0.5/dl-1.0.5-linux-amd64.tar.gz")
-sha256sums_x86_64=('fb57b0c7704160a5ee6058ea3da53effcec8647c8724f2bed296081fe0d20049')
+sha256sums_x86_64=('a67812f419fc6076fcc83f745f0bbdab3b0e41de4977c6e97abd925b00718794')
 
 package() {
   # bin
@@ -27,6 +27,6 @@ package() {
   # completions
   install -m 0755 -d "${pkgdir}/usr/share/bash-completion/completions/"
   install -m 0755 -d "${pkgdir}/usr/share/zsh/site-functions/"
-  install -Dm644 ".github/scripts/packages/completions/bash" "${pkgdir}/usr/share/bash-completion/completions/dl"
-  install -Dm644 ".github/scripts/packages/completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_dl"
+  install -Dm644 "./github/scripts/packages/completions/bash" "${pkgdir}/usr/share/bash-completion/completions/dl"
+  install -Dm644 "./github/scripts/packages/completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_dl"
 }
