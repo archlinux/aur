@@ -8,8 +8,10 @@ pkgbase = mprisence
 	provides = mprisence
 	conflicts = mprisence
 	source = https://github.com/phusitsom/mprisence/releases/download/v0.2.0/mprisence-0.2.0-x86_64.tar.gz
+	source = https://raw.githubusercontent.com/phusitsom/mprisence/main/LICENSE
 	source = https://raw.githubusercontent.com/phusitsom/mprisence/main/systemd/mprisence.service
 	sha256sums = 157c9b6284f5fbf65fd89f7a1b92c3af227b583503687715fd2c0c22d99e55a5
+	sha256sums = 2efd06eb77e15171ec8727caece105c68fcf253f57d5af76d7964c69f16fbb7d
 	sha256sums = 8103053db7f9850d775785db8a56461a4440220b231144899bf8da38a0f7363c
 
 pkgname = mprisence
