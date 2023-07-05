@@ -1,0 +1,138 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH CHEETAH 1 "2005 Apr 04"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+cheetah \- Python template command-line tool
+.SH SYNOPSIS
+.B cheetah, cheetah-compile
+.PP
+.B cheetah COMMAND
+.RI [ options ] " FILE" ...
+.br
+.B cheetah-compile
+.RI [ options ] " FILE" ...
+.SH DESCRIPTION
+This manual page documents briefly the
+\fBcheetah\fP command-line tool.  This manual page was written for the Debian
+distribution because the original program does not have a manual page.
+.PP
+.\" TeX users may be more comfortable with the \fB<whatever>\fP and
+.\" \fI<whatever>\fP escape sequences to invode bold face and italics, 
+.\" respectively.
+\fBcheetah\fP is a Python-powered template engine and code generator. It can be
+used as a standalone utility or it can be combined with other tools. Cheetah
+has many potential uses, but web developers looking for a viable alternative to
+ASP, JSP, PHP and PSP are expected to be its principle user group.
+.PP
+The \fBcheetah\fP command-line tool is the standalone utility portion of the
+software suite.  \fBcheetah-compile\fP is a convenience script that for the
+"\fBcheetah compile ...\fP" command. The utility accepts a single command
+possible options and a list of files.  If \fBFILE\fP is a single "-", read
+standard input and write standard output.
+.SH COMMANDS
+.\" cheetah compile [options] [FILES ...]     : Compile template definitions
+.\" cheetah fill [options] [FILES ...]        : Fill template definitions
+.\" cheetah help                              : Print this help message
+.\" cheetah options                           : Print options help message
+.\" cheetah test                              : Run Cheetah's regression tests
+.\" cheetah version                           : Print Cheetah version number
+The possible \fBcheetah\fP commands are listed below. You may abbreviate the
+command to the first letter; e.g., 'h' == 'help'.
+.TP
+.B compile
+Compile template definitions
+.TP
+.B fill
+Fill template definitions
+.TP
+.B help
+Print commands help message
+.TP
+.B options
+Print options help message for compile and fill commands
+.TP
+.B test
+Run regression tests
+.TP
+.B version
+Print version number
+.\".B 
+.SH OPTIONS
+.\" --idir DIR, --odir DIR : input/output directories (default: current dir)
+.\" --iext EXT, --oext EXT : input/output filename extensions
+.\" (default for compile: tmpl/py,  fill: tmpl/html)
+.\" -R            : recurse subdirectories looking for input files
+.\" --debug       : print lots of diagnostic output to standard error
+.\" --env         : put the environment in the searchList
+.\" --flat        : no destination subdirectories
+.\" --nobackup    : don't make backups
+.\" --pickle FILE : unpickle FILE and put that object in the searchList
+.\" --stdout, -p  : output to standard output (pipe)
+The options for
+.B cheetah
+apply to the
+.B compile
+and
+.B fill
+commands. A summary of options is included below.
+.TP
+.B \-\-idir DIR
+Input directories(default: current dir)
+.TP
+.B \-\-odir ODIR
+Output directories (default: current dir)
+.TP
+.B \-\-iext IEXT
+Input extension.  The default input extension for both the
+\fBcompile\fP and \fBfill\fP commands is "\fBtmpl\fP".
+.TP
+.B \-\-oext OEXT
+Output extension.  The default output extension for the
+\fBcompile\fP command is "\fBpy\fP".  The default output extension for \fBfill\fP
+is "\fBhtml\fB".
+.TP
+.B \-R
+Recurse subdirectories looking for input files
+.TP
+.B \-\-debug
+Print lots of diagnostic output to the standard error file descriptor
+.TP
+.B \-\-env
+Print the environment in the searchList
+.TP
+.B \-\-flat
+No destination subdirectories
+.TP
+.B \-\-nobackup
+Do not make backups
+.TP
+.B \-\-pickle FILE
+unpickle FILE and put that output in the searchList
+.TP
+.B \-\-stdout, \-p
+Output to standard output file descriptor (pipe)
+.SH SEE ALSO
+.BR pydoc(1)
+.br
+The programs are documented fully on the project website
+.IR http://cheetahtemplate.sourceforge.net.
+You can also browse the Python library files and their docstring descriptions
+by using the standard pydoc utility.
+.SH AUTHOR
+This manual page was written by Chad C. Walstrom <chewie@debian.org>,
+for the Debian project and is dedicated to the Public Domain.
+
