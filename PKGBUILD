@@ -5,7 +5,7 @@
 
 # Maintainer: Stephen <stephenvdw.social@gmail.com>
 pkgname=ytbgmplayer-git
-pkgver=1.3.0.r5.82c629b
+pkgver=1.3.1.r81.6aedb94
 pkgrel=1
 # epoch=
 pkgdesc="A lightweight youtube background music player"
@@ -34,7 +34,7 @@ md5sums=("SKIP")
 
 pkgver(){
 	cd "${_pkgname}"
-	printf "1.3.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "1.3.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
