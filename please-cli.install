@@ -1,0 +1,3 @@
+post_install() {
+    echo 'Set your OpenAI API key either as environment variable $OPENAI_API_KEY or under OPENAI_API_KEY in your keychain.'
+}
