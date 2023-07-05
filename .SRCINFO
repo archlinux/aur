@@ -1,15 +1,13 @@
 pkgbase = python-django-taggit
 	pkgdesc = Simple tagging application for Django
-	pkgver = 1.3.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/jazzband/django-taggit/
 	arch = any
 	license = BSD
-	makedepends = python-django
-	makedepends = python-mock
-	makedepends = python-isort
-	source = python-django-taggit-1.3.0.tar.gz::https://github.com/jazzband/django-taggit/archive/1.3.0.tar.gz
-	sha256sums = d36b16107717db86829ad9077bdb3acfe67450708c5d4df5caa26888752d4a49
+	makedepends = python-setuptools
+	depends = python-django
+	source = python-django-taggit-4.0.0.tar.gz::https://github.com/jazzband/django-taggit//archive/4.0.0.tar.gz
+	sha256sums = 3fffde3126519d2466642eb86102d2b68414db66280134a563da31d808c456b4
 
 pkgname = python-django-taggit
-

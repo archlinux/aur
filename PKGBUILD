@@ -1,26 +1,26 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
-pkgname=python-django-taggit
-pkgver=1.3.0
+_name=django-taggit
+pkgname=python-${_name}
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Simple tagging application for Django"
 arch=('any')
 url="https://github.com/jazzband/django-taggit/"
 license=('BSD')
-makedepends=('python-django' 'python-mock' 'python-isort')
-source=($pkgname-$pkgver.tar.gz::https://github.com/jazzband/django-taggit/archive/$pkgver.tar.gz)
-sha256sums=('d36b16107717db86829ad9077bdb3acfe67450708c5d4df5caa26888752d4a49')
+depends=(python-django)
+makedepends=(python-setuptools)
+source=($pkgname-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz)
+sha256sums=('3fffde3126519d2466642eb86102d2b68414db66280134a563da31d808c456b4')
 
-# tests fail
-# check() {
-#   cd "${srcdir}"/django-taggit-$pkgver
-# 
-#   python setup.py test
-# }
+
+build() {
+    cd "$_name-$pkgver"
+    python setup.py build
+}
 
 package() {
-  cd "${srcdir}"/django-taggit-$pkgver
-  
-  python setup.py install --root="${pkgdir}" --optimize=1
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+    cd "$_name-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1
 }
