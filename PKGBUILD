@@ -25,6 +25,7 @@ optdepends=(
 	'cygutils: clipboard support for Msys2'
 	'espeak-ng: speaker support'
 	'festival: speaker support'
+	'python-pygls: LSP support'
 	'stardict-langdao-ec-gb: translate English to Chinese'
 	'stardict-langdao-ce-gb: translate Chinese to English'
 	'stardict-jmdict-en-ja: translate English to Japanese'
