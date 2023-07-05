@@ -3,7 +3,7 @@
 pkgname=jupyterlab-translate
 pkgdesc="JupyterLab language pack translations helper"
 url='https://github.com/jupyterlab/jupyterlab-translate'
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=2
 arch=('any')
 license=('BSD')
@@ -23,7 +23,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz"
 )
 sha256sums=(
-  '75dca8f73552b86fb8d33268722630429c8f85a247a93f2ff3097d92a8990eaf'
+  '90bb0a0586e5e317432a05d9fe05918bd869c59ae9356cf3557b8f0f2eddfa45'
 )
 
 build() {
