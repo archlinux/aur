@@ -4,12 +4,11 @@ pkgbase = lmaofetch
 	pkgrel = 1
 	url = https://github.com/p3nguin-kun/lmaofetch
 	arch = any
-	groups = unknown
 	license = MIT
 	makedepends = git
 	depends = bash
-	optdepends = nerd-fonts: Icon font
-	source = lmaofetch::git+https://github.com/p3nguin-kun/lmaofetch
+	depends = ttf-nerd-fonts-symbols
+	source = lmaofetch::git+https://github.com/p3nguin-kun/lmaofetch#tag=2.0
 	sha512sums = SKIP
 
 pkgname = lmaofetch

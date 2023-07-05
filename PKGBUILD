@@ -7,27 +7,16 @@ pkgdesc="A simple system fetch written in Bash"
 arch=('any')
 url="https://github.com/p3nguin-kun/lmaofetch"
 license=('MIT')
-groups=('unknown')
-depends=('bash')
+depends=('bash' 'ttf-nerd-fonts-symbols')
 makedepends=('git')
-checkdepends=()
-optdepends=('nerd-fonts: Icon font')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
 #install=
 changelog=
-source=("$pkgname::git+https://github.com/p3nguin-kun/lmaofetch")
+source=("$pkgname::git+https://github.com/p3nguin-kun/lmaofetch#tag=${pkgver}")
 noextract=()
 sha512sums=('SKIP')
-
-prepare() {
-    sudo pacman -S --needed --noconfirm ttf-nerd-fonts-symbols
-}
 
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" install
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/lmaofetch/LICENSE"
 }
