@@ -8,4 +8,4 @@ WorkingDirectory=/usr/share/headshotbox/
 Restart=on-failure
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
