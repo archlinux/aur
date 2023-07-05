@@ -5,9 +5,9 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=102.12.0
-pkgrel=2
-_commit=b2d463b0e331795eebe3ee62f2c58c1bd05b9899
+pkgver=102.13.0
+pkgrel=1
+_commit=8c8a8ecc9322b0954e3d51f661866dbde1e6b1c3
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -28,15 +28,13 @@ options=(!emptydirs !makeflags !strip)
 source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_commit}.tar.gz
         icecat.desktop icecat-safe.desktop
         missing_cstdint.patch::https://hg.mozilla.org/mozilla-central/raw-rev/61f052c26dd1
-        RsdparsaSdpGlue.patch
-        mp4parse_macro_mul.patch)
+        RsdparsaSdpGlue.patch)
 
-sha256sums=('0f629c78f24dc56b7369b337aa8d72d948c1d00a2c1f6761468c9511ca8320be'
+sha256sums=('9648c2b137ff7b3bf56dbb633bb9097427cbbe5f4b21c293eb0b00e4fea2daa1'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
             'ca3cedc5edce26040d3caf735afa8744fe08f3a1695eb2cda3796f4f336632d3'
-            '2a12b187a8803b0c3a4385d4567e1debf8bfa3e17c4c8cefdf39fb7434d3d932'
-            '53a45dd7ffd004d04c89492fd6c9aa1759f44f212730479d98e72ce20a74e254')
+            '2a12b187a8803b0c3a4385d4567e1debf8bfa3e17c4c8cefdf39fb7434d3d932')
 
 prepare() {
   cd gnuzilla-${_commit}
@@ -70,10 +68,6 @@ prepare() {
   # https://hg.mozilla.org/mozilla-central/rev/61f052c26dd1
   patch -Np1 -i ../../../missing_cstdint.patch
   patch -Np1 -i ../../../RsdparsaSdpGlue.patch
-
-  # fix mp4parse (thank you @seo.disparate :: https://aur.archlinux.org/packages/icecat#comment-918458)
-  patch -Np1 -i ../../../mp4parse_macro_mul.patch
-  sed -e 's|src/lib.rs":"73114a5c28472e77082ad259113ffafb418ed602c1741f26da3e10278b0bf93e|src/lib.rs":"bded10689ddd8fd3fcb4ab01be1ecf3642691d68c3651fc4b00f3ccba67fc7cd|' -i third_party/rust/mp4parse/.cargo-checksum.json
 
   # Patch to move files directly to /usr/lib/icecat. No more symlinks.
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
