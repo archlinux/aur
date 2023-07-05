@@ -15,7 +15,7 @@ source=(git+https://github.com/shadichy/systemback-archlinux.git)
 md5sums=('SKIP')
 
 build() {
-    cd "../${sb}"
+    cd "${srcdir}/${sb}-archlinux/${sb}"
     qmake-qt5 $([ "$LLVM" ] && [ "$LLVM" != 0 ] && echo "-spec linux-clang")
     make -j$(nproc --all)
     lrelease-qt5 systemback.pro
@@ -29,7 +29,7 @@ package_libsystemback() {
     mkdir -p ${pkgdir}/usr/share/${sb}/scripts
     mkdir -p ${pkgdir}/usr/share/licenses/${sb}
 
-    cd "../${sb}"
+    cd "${srcdir}/${sb}-archlinux/${sb}"
 
     install -dm755 ${pkgdir}/usr/lib/${sb}
     install -dm755 ${pkgdir}/usr/include/lib${sb}
@@ -47,7 +47,7 @@ package_systemback-cli() {
     mkdir -p ${pkgdir}/usr/bin
     install -dm755 ${pkgdir}/usr/bin
 
-    cd "../${sb}"
+    cd "${srcdir}/${sb}-archlinux/${sb}"
 
     install -m755 ${sb}-cli/${sb}-cli ${pkgdir}/usr/bin
 }
@@ -73,7 +73,7 @@ package_systemback() {
     mkdir -p ${pkgdir}/$icondir/48x48/apps
     mkdir -p ${pkgdir}/$icondir/64x64/apps
 
-    cd "../${sb}"
+    cd "${srcdir}/${sb}-archlinux/${sb}"
 
     install -dm664 ${pkgdir}/etc/${sb}
     install -dm644 ${pkgdir}/usr/share/${sb}/lang
