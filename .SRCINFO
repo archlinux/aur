@@ -1,7 +1,7 @@
 pkgbase = compiz
 	pkgdesc = Composite manager for Aiglx and Xgl, with plugins and CCSM
 	pkgver = 0.9.14.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/compiz
 	arch = i686
 	arch = x86_64
@@ -10,19 +10,19 @@ pkgbase = compiz
 	license = MIT
 	makedepends = boost
 	makedepends = cmake
-	makedepends = intltool
 	makedepends = cython
+	makedepends = intltool
 	depends = boost-libs
-	depends = xorg-server
 	depends = fuse2
 	depends = glibmm
-	depends = libwnck3
-	depends = python-gobject
-	depends = python-cairo
-	depends = protobuf
-	depends = metacity
 	depends = glu
+	depends = libwnck3
 	depends = libxslt
+	depends = metacity
+	depends = protobuf
+	depends = python-cairo
+	depends = python-gobject
+	depends = xorg-server
 	optdepends = xorg-xprop: grab various window properties for use in window matching rules
 	provides = ccsm=0.9.14.2
 	provides = compiz-bcop=0.9.14.2

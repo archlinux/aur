@@ -8,29 +8,29 @@
 
 pkgname=compiz
 pkgver=0.9.14.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
 license=('GPL' 'LGPL' 'MIT')
 depends=(
   'boost-libs'
-  'xorg-server'
   'fuse2'
   'glibmm'
-  'libwnck3'
-  'python-gobject'
-  'python-cairo'
-  'protobuf'
-  'metacity'
   'glu'
+  'libwnck3'
   'libxslt'
+  'metacity'
+  'protobuf'
+  'python-cairo'
+  'python-gobject'
+  'xorg-server'
 )
 makedepends=(
   'boost'
   'cmake'
-  'intltool'
   'cython'
+  'intltool'
 )
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
@@ -100,6 +100,7 @@ build() {
   cd build
 
   cmake .. \
+    -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
