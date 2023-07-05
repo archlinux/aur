@@ -1,0 +1,14 @@
+pkgbase = bmpflash-git
+	pkgdesc = A command line utility for setting up the on-board Flash of BMP v2.3+ hardware for use in standalone mode
+	pkgver = r155.346831e
+	pkgrel = 1
+	url = https://github.com/blackmagic-debug/bmpflash
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = meson
+	depends = libusb
+	source = git+https://github.com/blackmagic-debug/bmpflash.git
+	b2sums = SKIP
+
+pkgname = bmpflash-git
