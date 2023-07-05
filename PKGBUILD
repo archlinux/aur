@@ -40,7 +40,7 @@ source=(
   "${_url}/archive/${_pkg}-${pkgver}/${_pkg}-${pkgver}.tar.gz"
 )
 sha512sums=(
-  '6d205c61e3ee651c46408746c32af30336ae26b6bbbf49a304f1228149d0de0cbe6ec41b5cc55b0edc163b0e0e6e4db88d19216d29ad5c8e366e6f45ba81b45e'
+  'c571a5c6fd0abb59e60baec0f9c7b909ec2d133db52353c58288f7477ac2bc905219b308122761e41509d4bbdfc145375bdc6f76f608eb557e44163bb37b111a'
 )
 
 build() {
