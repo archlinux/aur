@@ -73,7 +73,7 @@ _subarch=39
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.4
+pkgver=6.4.1
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -94,15 +94,15 @@ makedepends=(
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld)
 options=('!strip')
 _srcname=linux-${pkgver}
-_kernel_base_commit=6995e2de6891c724bfeb2db33d7b87775f913ad1
-_kernel_arch_tag=${pkgver}-arch1
-_arch_config_commit=50de1591172a64cb6fac2820e9653a179fd8a230
+_kernel_base_commit=59377679473491963a599bfd51cc9877492312ee
+_kernel_arch_tag=${pkgver}-arch2
+_arch_config_commit=2261c9db3308c82a0ebf15631bd762330a8ea572
 _prjc_version=6.4-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20230105
 source=(
   "https://www.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar".{xz,sign}
-  "${pkgbase}-${pkgver}-config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux/-/raw/${_arch_config_commit}/config"
+  "${pkgbase}-${pkgver}-config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${_arch_config_commit}/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "0001-${pkgbase}-${pkgver}-v${_kernel_arch_tag}.patch::https://github.com/archlinux/linux/compare/${_kernel_base_commit}..v${_kernel_arch_tag}.patch"
@@ -112,12 +112,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('b59eb04a8715af9f686978812e6d4a466172bb859f80657076de14cd0828b4fac15b688ff8959f5c65485f7f6bef26590412c66821e720de843cb8666f226c90'
+b2sums=('8551ab8fb2e973855f7fe8cf0ea2f999ae943dc140291849ff89fb9870798347c07b13f9e3fbdd91122ec53d6f52d73f394e432ff0c8290c0298638ba7ccc405'
         'SKIP'
-        '66e3411d77df938089541bb087474b0ebb733a86eb91c8f5e783a92a8156cf4d3addaa6f58048fac17f2a92195aff9b3b0bff77138421f4dd404f71b5daa64ea'
+        'f0089150c3bd1c53bcaa17ee8dafb1d972508611493741f4d8f5d93d5500e0fa85c50a8cca35321080c62b5a6a607f54197402de84a60d849dc7b569bbe67b59'
         '73438f4785fc533c901c6f4fd538f0e4a23526b15d43bfb35cc70c066c24d60006797a08e9c1bb388ca7feb7d946a7fce3b21f1065c66eeab5e8f923f817e96b'
         'd178dad69501967382d5c841f65e4f57651042bee8117041a9baa35ab3fa73af8174b8b999ae9e72ec381c52744ccaaabb77944d59f123c04b6ed5626432d843'
-        '51899017ff42c3c8d5d4d4630665c8bbe8f17549c4034acdfe2de5ed8f2e78c97d88f00ec68f3964b36cb65aeb58a54e32cb224ed349044fd4088d514cd3e635')
+        '62d9b1bb2c8ece6ba1c788f7d06f96626122bb3a87b58abc4a2b507b7dc98b13820998126a9ca617aff8936b8ae230a871a074bd600124486d82a70ba696ec83')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
@@ -152,17 +152,6 @@ prepare() {
 
   echo "Setting config..."
   cp ../${pkgbase}-${pkgver}-config .config
-
-  # disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
-  # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
-  # partition ... this was introduced by FS#66260, see:
-  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-  scripts/config --disable CONFIG_DEBUG_INFO
-  scripts/config --disable CONFIG_CGROUP_BPF
-  scripts/config --disable CONFIG_BPF_LSM
-  scripts/config --disable CONFIG_BPF_PRELOAD
-  scripts/config --disable CONFIG_BPF_LIRC_MODE2
-  scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
 
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   scripts/config --enable CONFIG_PSI_DEFAULT_DISABLED
@@ -258,7 +247,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  _make LLVM=$_LLVM LLVM_IAS=$_LLVM INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 _make LLVM=$_LLVM LLVM_IAS=$_LLVM INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
@@ -339,9 +328,8 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  #echo "Stripping vmlinux..."
+  echo "Stripping vmlinux..."
   strip -v $STRIP_STATIC "$builddir/vmlinux"
-  # not needed since not building with CONFIG_DEBUG_INFO=y
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
