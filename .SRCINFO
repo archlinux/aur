@@ -1,6 +1,6 @@
 pkgbase = python-datashader
 	pkgdesc = Quickly and accurately render even the largest data
-	pkgver = 0.15.0
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://datashader.org
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-datashader
 	depends = python-pillow
 	depends = python-scipy
 	depends = python-xarray
-	source = datashader-0.15.0.tar.gz::https://github.com/holoviz/datashader/archive/v0.15.0.tar.gz
-	sha512sums = 5605f0b2e05a633d9987b6c3198d71be648dfbd6d35ee9023e5091e8df3fd57a8fa841c4ea85490f0426c7f859285008bff9407ea88b73fa909937e5218d9ae7
+	source = datashader-0.15.1.tar.gz::https://github.com/holoviz/datashader/archive/v0.15.1.tar.gz
+	sha512sums = c01f2faaa6d25e056eb669f9d2b1257ab41b9c7fd4ab9620921ade31b32b3ef9aaec4a4457c49323ec72d6a3448a7d6627f3fd5dad5d96f133fa0dff7c84136c
 
 pkgname = python-datashader
