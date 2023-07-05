@@ -1,21 +1,17 @@
 pkgbase = jello-bin
-	pkgdesc = Filter JSON and JSON Lines data with Python syntax
-	pkgver = 1.5.5
+	pkgdesc = CLI tool to filter JSON and JSON Lines data with Python syntax. (Similar to jq)
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/kellyjonbrazil/jello
-	changelog = CHANGELOG
 	arch = x86_64
 	license = MIT
+	depends = glibc
 	depends = gcc-libs
 	provides = jello
 	conflicts = jello
-	source = LICENSE-1.5.5::https://raw.githubusercontent.com/kellyjonbrazil/jello/v1.5.5/LICENSE
-	source = README-1.5.5.md::https://raw.githubusercontent.com/kellyjonbrazil/jello/v1.5.5/README.md
-	source = jello-1.5.5-man.1::https://raw.githubusercontent.com/kellyjonbrazil/jello/v1.5.5/man/jello.1
+	source = jello-1.6.0.deb::https://github.com/kellyjonbrazil/jello/releases/download/v1.6.0/jello_1.6.0-1_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/kellyjonbrazil/jello/master/LICENSE
+	sha256sums = 5c8b082bc14489d192a8a85390a7a7556e20fd4501ade3a905d949e0e038bd07
 	sha256sums = 1a404c97debd32c80005736bd368078ccc8f858c8ebafa2576b0c3919afb92c4
-	sha256sums = 6e8a96724f65210e404db5fccdd56c010a011bf9bfe76dc1d32c9e28e46b5e39
-	sha256sums = 8aa6657d1cff24bf93345db817c46e134ebf26cf552c3d303c00efb2602a39df
-	source_x86_64 = jello-bin-1.5.5.tar.gz::https://github.com/kellyjonbrazil/jello/releases/download/v1.5.5/jello-1.5.5-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a05bbe6f515ac4d0f783b35fa678b3ae1abebdf937042a658249b42d56b2e292
 
 pkgname = jello-bin
