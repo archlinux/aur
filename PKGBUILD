@@ -1,6 +1,6 @@
 # Maintainer: alba4k <blaskoazzolaaaron@gmail.com>
 pkgname=albafetch-git
-pkgver=4.0.r23.1b95c8d
+pkgver=4.0.r24.dd4af93
 pkgrel=1
 pkgdesc="Neofetch, but written in C; both faster and worse than the original (latest commit)"
 arch=(x86_64 aarch64)
@@ -19,9 +19,12 @@ pkgver() {
 
 package() {
     cd albafetch
-    mkdir -p "$pkgdir/usr/bin/"
+    mkdir -p "$pkgdir/usr/bin"
     make CC=gcc DESTDIR="$pkgdir" install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
+
+    mkdir -p "$pkgdir/etc/xdg"
+    cat ../../template.conf albafetch.conf > "$pkgdir/etc/xdg/albafetch.conf.example"
 }
 
