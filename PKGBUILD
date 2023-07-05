@@ -25,7 +25,7 @@ optdepends=('python2: build python wrapping'
 makedepends=('cmake' 'git')
 options=(!lto)
 source=("https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.gz"
-        "InsightToolkit-gcc13-fix.patch::https://github.com/FabioLolix/ITK/commit/93bd9fe07e250bdac948ae6f2c2cc749f165f0e9.patch")
+        "InsightToolkit-gcc13-fix.patch::https://github.com/InsightSoftwareConsortium/ITK/pull/4066/commits/93bd9fe07e250bdac948ae6f2c2cc749f165f0e9.patch")
 sha512sums=('29359839c0fb13acd430410e6adadbecb4d9d8cb4871a0aba0ac67b539c235354a591655dd654f43daa5f035a33721671d665eee8a4a129a9d0d3419e2356e97'
             '1435e87705a4bd53ae70c221b2541a8912b08f21e62de87c25520d3cc7e9784ae8deb8bcbd37ccd28b17e57d0069919ad103e93030b99417131e708abc9a0a38')
 
