@@ -1,7 +1,7 @@
 # Maintainer: matt quintanilla <matt @ matt quintanilla . xyz>
 pkgname=lemoa-git
 pkgver=0.2.0.r97.e51da62
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Gtk client for Lemmy"
 arch=(x86_64)
 url="https://github.com/lemmygtk/lemoa"
