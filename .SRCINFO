@@ -1,14 +1,13 @@
 pkgbase = python2-pox
 	pkgdesc = Utilities for filesystem exploration and automated builds
-	pkgver = 0.2.1
+	pkgver = 0.2.9
 	pkgrel = 1
-	url = http://www.cacr.caltech.edu/~mmckerns/pox.htm
+	url = https://github.com/uqfoundation/pox
 	arch = any
-	license = CUSTOM
-	makedepends = python2-distribute
+	license = BSD
+	makedepends = python2-setuptools
 	depends = python2
-	source = https://pypi.python.org/packages/source/p/pox/pox-0.2.1.zip
-	md5sums = 517dc13c2bc2429d36a0c636f3ce42db
+	source = https://files.pythonhosted.org/packages/source/p/pox/pox-0.2.9.zip
+	sha256sums = f08b5453edf94fd6fdb28e043658cdd6151d5fd8384066a24fad8d4bd7e637c0
 
 pkgname = python2-pox
-
