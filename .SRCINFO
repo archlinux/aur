@@ -1,0 +1,22 @@
+pkgbase = python-aiosignald-git
+	pkgdesc = Interact with the signal messaging network in python with sweet, sweet autocompletion
+	pkgver = 0.3.7.r0.gf10ceae
+	pkgrel = 1
+	url = https://git.sr.ht/~nicoco/aiosignald
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = AGPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = signald
+	provides = python-aiosignald=0.3.7.r0.gf10ceae
+	conflicts = python-aiosignald
+	source = git+https://git.sr.ht/~nicoco/aiosignald
+	sha256sums = SKIP
+
+pkgname = python-aiosignald-git
