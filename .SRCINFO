@@ -1,7 +1,7 @@
 pkgbase = python-ocrmypdf-papermerge
 	pkgdesc = OCRmyPDF Papermerge plugin
 	pkgver = 0.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/papermerge/OCRmyPDF_papermerge
 	arch = any
 	license = Apache
@@ -13,6 +13,8 @@ pkgbase = python-ocrmypdf-papermerge
 	depends = python-jinja
 	depends = python-lxml
 	source = https://files.pythonhosted.org/packages/source/o/ocrmypdf-papermerge/ocrmypdf_papermerge-0.4.6.tar.gz
+	source = 001_files-in-base.patch
 	sha256sums = 373b7c23488d3b432f6fdb2ea40360f631f4e0290c128a296619f1d84174917b
+	sha256sums = b2f940c015e006ee98926e75fdd62a7241ccb5a3d4b91e3d29ff2bb06eed6194
 
 pkgname = python-ocrmypdf-papermerge

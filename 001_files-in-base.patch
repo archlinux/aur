@@ -1,0 +1,12 @@
+--- ocrmypdf_papermerge-0.4.6/pyproject.toml
++++ ocrmypdf_papermerge-0.4.6/pyproject.toml
+@@ -5,7 +5,7 @@
+ authors = ["Eugen Ciur <eugen@papermerge.com>"]
+ maintainers = ["Eugen Ciur <eugen@papermerge.com>"]
+ license = "Apache-2.0"
+-include = ["LICENSE", "changelog.md", "README.md", "ocrmypdf_papermerge/templates/*"]
++include = ["ocrmypdf_papermerge/templates/*"]
+ readme = "README.md"
+ classifiers = [
+     "License :: OSI Approved :: Apache Software License",
+
