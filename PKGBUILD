@@ -2,13 +2,13 @@
 pkgname=supersonic-desktop-bin
 _pkgname=Supersonic
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers."
 arch=('x86_64')
 url="https://github.com/dweymouth/supersonic"
 license=('GPL3')
 provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage" "${pkgname%-desktop-bin}")
+conflicts=("${pkgname%-bin}")
 depends=('glibc' 'libglvnd' 'libx11' 'mpv')
 source=("${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.xz")
 sha256sums=('a12d1ead738ff20146c39b264018dd99cb9c7788ab35cc2a8b2a5443cf509cc2')
