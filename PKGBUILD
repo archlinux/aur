@@ -6,13 +6,13 @@ pkgname=('marble-git'
          'libastro-git'
          'marble-data-git'
 	 'marble-common-git')
-pkgver=20.12.3.427.ge1d1826c6
+pkgver=20.12.3.454.g2edf1673f
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
 url='https://www.kde.org/applications/system/marble'
 license=('GPL')
-makedepends=('git' 'gpsd' 'quazip' 'shapelib' 'libwlocate' 'phonon-qt5'
+makedepends=('git' 'quazip' 'shapelib' 'libwlocate' 'phonon-qt5'
 	     'extra-cmake-modules' 'krunner' 'python' 'qt5-webengine'
 	     'qt5-tools' 'qt5-serialport' 'kparts' 'knewstuff' 'opencv'
 	     'hicolor-icon-theme')
@@ -44,6 +44,7 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DQT_PLUGINS_DIR=lib/qt/plugins \
     -DBUILD_TESTING=OFF \
+    -DCMAKE_CXX_STANDARD=17 \
     -DBUILD_MARBLE_EXAMPLES=OFF \
     -DBUILD_MARBLE_TOOLS=ON \
     -DBUILD_MARBLE_TESTS=ON \
@@ -64,7 +65,9 @@ package_libastro-git() {
 }
 
 package_marble-git() {
-  depends=('marble-common-git' 'knewstuff' 'kparts')
+  depends=('marble-common-git' 'gpsd' 'qt5-serialport' 'krunner' 'qt5-webengine'
+	   'protobuf' 'knewstuff' 'kparts' 'shapelib' 'libwlocate' 'phonon-qt5'
+	   'qt5-location' 'qt5-webchannel' 'gcc-libs')
   conflicts=('kdeedu-marble<15.04.3-3' 'marble-qt' 'marble')
   provides=('marble')
   groups=('kde-applications' 'kdeedu')
