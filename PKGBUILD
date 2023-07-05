@@ -4,7 +4,7 @@
 
 pkgname=domust-bin
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Domust is a home automation system that allows you to control your home form your computer."
 url="https://github.com/lucafulgenzi/domust"
 license=("AGPL-3.0")
@@ -19,7 +19,7 @@ package() {
     install -Dm755 domust -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 domust-completion "$pkgdir/usr/share/bash-completion/completions/domust-completion"
+    install -Dm644 domust-completion "$pkgdir/usr/share/bash-completion/completions/domust"
 
     mkdir -p $pkgdir/$HOME/.config/domust
     [[ -f $HOME/.config/domust/config.yaml ]] || touch $HOME/.config/domust/config.yaml
