@@ -26,7 +26,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DMEDCOUPLING_BUILD_DOC=OFF -DMEDCOUPLING_ENABLE_PYTHON=OFF -DMEDCOUPLING_BUILD_TESTS=OFF \
-      -DCONFIGURATION_ROOT_DIR="$srcdir"/medcoupling/configuration -DMEDCOUPLING_USE_64BIT_IDS=OFF ..
+      -DCONFIGURATION_ROOT_DIR="$srcdir"/medcoupling/configuration -DMEDCOUPLING_USE_64BIT_IDS=OFF -DBOOST_ROOT_DIR=/usr/${_arch} ..
     make
     popd
   done
