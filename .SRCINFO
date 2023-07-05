@@ -1,7 +1,7 @@
 pkgbase = python-configula
 	pkgdesc = creates config for papermerge-core
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/papermerge/configula
 	arch = any
 	license = Apache
@@ -11,6 +11,8 @@ pkgbase = python-configula
 	makedepends = python-poetry-core
 	depends = python-tomlkit
 	source = https://files.pythonhosted.org/packages/source/c/configula/configula-0.5.2.tar.gz
+	source = 001_files-in-base.patch
 	sha256sums = d293087a584ff94c48b96b9bb0b1ae9cbc61ed1efdacd6bf66ffd750c91d900a
+	sha256sums = ebf889321789bd70fe010518a57a42df47ac4ca964fcd02d6cc8d7a145aca43a
 
 pkgname = python-configula

@@ -1,0 +1,11 @@
+--- configula-0.5.2/pyproject.toml
++++ configula-0.5.2/pyproject.toml
+@@ -5,7 +5,6 @@
+ authors = ["Eugen Ciur <eugen@papermerge.com>"]
+ maintainers = ["Eugen Ciur <eugen@papermerge.com>"]
+ license = "Apache-2.0"
+-include = ["LICENSE", "changelog.md", "README.md"]
+ readme = "README.md"
+ classifiers = [
+     "License :: OSI Approved :: Apache Software License",
+
