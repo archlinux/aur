@@ -25,11 +25,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  echo 
-  echo "PWD is $PWD"
-  echo "SRC dir is $srcdir"
-  echo "SRC/GITNAME dir is $srcdir/$_gitname"
-
   # run cmake
   cmake -S . -B build
   # create swwm5 executable
@@ -39,7 +34,6 @@ build() {
 
 package() {
   # install swmm executable
-  #install -D -m755 "$srcdir/$_gitname/src/swmm5" "$pkgdir/usr/bin/swmm5"
   install -D -m755 "$srcdir/$_gitname/build/bin/runswmm" "$pkgdir/usr/bin/swmm5"
   install -D -m755 "$srcdir/$_gitname/build/bin/libswmm5.so" "$pkgdir/usr/lib/libswmm5.so"
 
