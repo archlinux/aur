@@ -1,5 +1,5 @@
-/icon-theme-nuovext
-/nuovext-icon-theme
-/pkg
-/src
-*.tar*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!nuovext-icon-theme.install

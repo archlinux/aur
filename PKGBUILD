@@ -1,27 +1,26 @@
-# Maintainer: RedTide
+# Maintainer: redtide <redtid3@gmail.com>
 
+_pkgname=icon-theme-nuovext
 pkgname=nuovext-icon-theme
-reponame=icon-theme-nuovext
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="nuoveXT2 icon theme"
 arch=('any')
-url="https://github.com/redtide/$reponame"
-license=('GPL')
+url="https://github.com/redtide/$_pkgname"
+license=('LGPL3')
 depends=('gtk-update-icon-cache')
-makedepends=('git')
 install=nuovext-icon-theme.install
-source=(git://github.com/redtide/$reponame.git)
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 md5sums=('SKIP')
 
 build() {
-  cd $reponame
+  cd "$_pkgname-$pkgver"
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $reponame
+  cd "$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
