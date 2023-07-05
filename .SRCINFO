@@ -1,6 +1,6 @@
 pkgbase = python-pyobjcryst
 	pkgdesc = Python bindings to ObjCryst++, the Object-Oriented Crystallographic Library.
-	pkgver = 2.2.1
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://www.diffpy.org/pyobjcryst/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = python-pyobjcryst
 	depends = python-numpy
 	depends = boost-libs
 	depends = libobjcryst
-	source = pyobjcryst-2.2.1.tar.gz::https://github.com/diffpy/pyobjcryst/archive/v2.2.1.tar.gz
-	sha256sums = 3804259ebf29a0c4a593a7fb1c356bbaaa8455715affa297517abb92bf8d13e6
+	source = pyobjcryst-2.2.4.tar.gz::https://github.com/diffpy/pyobjcryst/archive/v2.2.4.tar.gz
+	sha256sums = 842764e944d9efb9d7494d44b49c74e3cd29bb40bb9535a06e6f730cae10c2dd
 
 pkgname = python-pyobjcryst
