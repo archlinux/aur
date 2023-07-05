@@ -1,0 +1,25 @@
+pkgbase = ghc9.6-bin
+	pkgdesc = Legacy binary GHC 9.6 installed on /usr/bin/ghc-9.6 (Mar/2023 - May/2023).
+	pkgver = 9.6.2
+	pkgrel = 1
+	url = http://www.haskell.org/ghc/
+	install = ghc.install
+	arch = x86_64
+	license = custom
+	checkdepends = python2
+	makedepends = ghc
+	makedepends = perl
+	makedepends = libxslt
+	makedepends = docbook-xsl
+	depends = gcc
+	depends = gmp
+	depends = libffi
+	depends = perl
+	provides = ghc9.6
+	conflicts = ghc9.6
+	noextract = ghc-9.6.2-x86_64-deb10-linux.tar.xz
+	options = staticlibs
+	source = https://www.haskell.org/ghc/dist/9.6.2/ghc-9.6.2-x86_64-deb10-linux.tar.xz
+	sha256sums = 63d4bbcee19a343bcdb7bc7c6ca85b1f666a26c7a64fba9014d2160ec3d4ad20
+
+pkgname = ghc9.6-bin
