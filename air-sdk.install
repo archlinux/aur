@@ -1,12 +1,15 @@
 post_install() {
     echo ""
-    echo "The AIR SDK has been installed to /opt/air-sdk/$1/"
+    echo "The AIR SDK has been installed to /opt/air-sdk/$1"
+    echo "and sym-linked to /opt/air-sdk/AIRSDK"
+    echo ""
     echo "You need to relogin in order for the AIR SDK binaries to appear in your PATH"
     echo ""
 }
 
 post_upgrade() {
     echo ""
-    echo "The updated AIR SDK has been installed to /opt/air-sdk/$1/"
+    echo "The updated AIR SDK has been installed to /opt/air-sdk/$1"
+    echo "and sym-linked to /opt/air-sdk/AIRSDK"
     echo ""
 }
