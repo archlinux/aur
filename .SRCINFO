@@ -1,0 +1,16 @@
+pkgbase = dl-bin
+	pkgdesc = Deploy Local - site deployment assistant locally. A convenient wrapper over docker-compose, which simplifies the local deployment of the project.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://local-deploy.github.io
+	license = MIT
+	conflicts = dl
+	provides = dl
+	arch = aarch64
+	source_aarch64 = https://github.com/local-deploy/dl/releases/download/1.0.5/dl-1.0.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = 5e7670fc0da9a18525e66f1837d511aa0fafeaacfb3a90c7710d5fd4199eb140
+	arch = x86_64
+	source_x86_64 = https://github.com/local-deploy/dl/releases/download/1.0.5/dl-1.0.5-linux-amd64.tar.gz
+	sha256sums_x86_64 = fb57b0c7704160a5ee6058ea3da53effcec8647c8724f2bed296081fe0d20049
+	
+pkgname = dl-bin
