@@ -7,8 +7,8 @@
 # you can use this to bootstrap compilation.
 pkgname=ghc9.4-bin
 pkgver=9.4.5
-pkgrel=1
-pkgdesc='Legacy binary GHC 9.4 installed on /usr/bin/ghc-9.4 (Oct/2021 - Oct/2021).'
+pkgrel=2
+pkgdesc='Legacy binary GHC 9.4 installed on /usr/bin/ghc-9.4 (Aug/2022 - Apr/2023).'
 arch=('x86_64')
 url='http://www.haskell.org/ghc/'
 license=('custom')

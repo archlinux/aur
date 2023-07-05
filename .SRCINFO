@@ -1,7 +1,7 @@
 pkgbase = ghc9.4-bin
-	pkgdesc = Legacy binary GHC 9.4 installed on /usr/bin/ghc-9.4 (Oct/2021 - Oct/2021).
+	pkgdesc = Legacy binary GHC 9.4 installed on /usr/bin/ghc-9.4 (Aug/2022 - Apr/2023).
 	pkgver = 9.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.haskell.org/ghc/
 	install = ghc.install
 	arch = x86_64
