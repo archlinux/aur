@@ -2,7 +2,7 @@
 
 pkgname=headshotbox
 pkgver=0.18.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Headshot Box generates statistics for your Counter-Strike: Global Offensive matches."
 arch=('any')
@@ -38,6 +38,7 @@ package() {
   install -m644 "${srcdir}/${_pkg}/${_jar}" "${pkgdir}/usr/share/headshotbox/${_jar}"
 
   cp -r "${srcdir}/${_pkg}/libs" "${pkgdir}/usr/share/headshotbox/"
+  install -m0644 -D "${srcdir}/${_pkg}/libs/libprotobuf.so.7" "${pkgdir}/usr/lib32/libprotobuf.so.7"
 
   install -m0644 -D headshotbox.service "${pkgdir}/etc/systemd/user/headshotbox.service"
   install -m0644 -D headshotbox.service "${pkgdir}/etc/systemd/user/headshotbox@.service"

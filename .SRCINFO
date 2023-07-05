@@ -1,7 +1,7 @@
 pkgbase = headshotbox
 	pkgdesc = Headshot Box generates statistics for your Counter-Strike: Global Offensive matches.
 	pkgver = 0.18.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/bugdone/headshotbox
 	install = headshotbox.install
