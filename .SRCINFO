@@ -1,6 +1,6 @@
 pkgbase = ytui-music
 	pkgdesc = Listen to music from youtube inside terminal with sleek tui
-	pkgver = 2.0.0b
+	pkgver = 2.0.0rc1
 	pkgrel = 1
 	url = https://github.com/sudipghimire533/ytui-music
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ytui-music
 	depends = youtube-dl
 	provides = ytui-music
 	conflicts = ytui-music-bin
-	source = ytui-music-2.0.0b.tar.gz::https://github.com/sudipghimire533/ytui-music/archive/v2.0.0-beta.tar.gz
-	sha256sums = 43deb6b3cb9eb836b7122ac2542106f46519f240f99a0af67eecdfa5b200cca7
+	source = ytui-music-2.0.0rc1.tar.gz::https://github.com/sudipghimire533/ytui-music/archive/v2.0.0-rc1.tar.gz
+	sha256sums = c41296d1dcb90e0bebf697c5077ee02f7b61cbb800198f468f0698285b9fd042
 
 pkgname = ytui-music

@@ -1,6 +1,6 @@
 pkgname=ytui-music
-pkgver=2.0.0b
-_pkgver=2.0.0-beta
+pkgver=2.0.0rc1
+_pkgver=2.0.0-rc1
 pkgrel=1
 pkgdesc="Listen to music from youtube inside terminal with sleek tui"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=(${pkgname}-bin)
 depends=("mpv" "youtube-dl")
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sudipghimire533/$pkgname/archive/v$_pkgver.tar.gz")
-sha256sums=('43deb6b3cb9eb836b7122ac2542106f46519f240f99a0af67eecdfa5b200cca7')
+sha256sums=('c41296d1dcb90e0bebf697c5077ee02f7b61cbb800198f468f0698285b9fd042')
 
 build() {
   cd "$pkgname-$_pkgver"
