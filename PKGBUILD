@@ -2,13 +2,13 @@
 
 _pkgname='timg'
 pkgname="${_pkgname}-git"
-pkgver=1.4.2.r20.g145a527
+pkgver=1.4.5.r36.g238c1d8
 pkgrel=1
 pkgdesc="Terminal Image and Video Viewer"
 arch=('any')
 url="https://github.com/hzeller/timg"
 license=('GPL2')
-depends=('libwebp' 'libjpeg-turbo' 'libexif' 'graphicsmagick' 'ffmpeg' 'openslide')
+depends=('libwebp' 'libjpeg-turbo' 'libexif' 'graphicsmagick' 'ffmpeg' 'openslide' 'libsixel' 'libdeflate')
 makedepends=('cmake' 'pkgconf' 'git' 'gcc')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
