@@ -11,7 +11,7 @@ pkgbase = ros2-humble-pcl-conversions
 	depends = openmpi
 	depends = nlohmann-json
 	depends = eigen
-	source = https://github.com/ros-perception/pcl_conversions/archive/refs/tags/2.4.1.tar.gz
+	source = https://github.com/ros-perception/perception_pcl/archive/refs/tags/2.4.1.tar.gz
 	sha256sums = cb1b36f65aeeacbbdeca0baf13907f38cadaf272bee46cf6775f0b3974d4cb0d
 
 pkgname = ros2-humble-pcl-conversions
