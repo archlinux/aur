@@ -1,6 +1,7 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Lightning <sgsdxzy@gmail.com>
+# Contributor: Andrew Phelps <andrewphelpsj@gmail.com>
 _projectname='dolphin'
 _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
