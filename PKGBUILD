@@ -1,8 +1,8 @@
 # Maintainer: khvalera <khvalera[at]ukr[dot]net>
 
 pkgname=glpi-agent
-pkgver=1.4
-pkgrel=4
+pkgver=1.5
+pkgrel=1
 pkgdesc="GLPI Agent"
 arch=('any')
 url='https://www.glpi-project.org'
@@ -14,7 +14,7 @@ depends=( "perl-cpanel-json-xs" "perl-datetime" "perl-file-which" "perl-data-uui
           "perl-io-socket-ssl" "perl-xml-xpath" "perl-text-template" "perl-parallel-forkmanager" "perl-ipc-run" "perl-edid"
           "perl-net-snmp" "perl-net-ip" "perl-lwp-protocol-https" "perl-http-proxy" "perl-yaml-tiny"
           "perl-http-server-simple-authen" "perl-io-capture" "perl-xml-treepp" "perl-universal-require")
-sha256sums=('d1ea1230c06ae4a410487e33ae6a85dcf4278af87de831f8a602e4bf0a0c0663'
+sha256sums=('bbbc700d51a9d28a265af55a70213f00c8340e3dfd993750e1ac6bdd65fb1c5b'
             'd9aaa2915b9218b9d001017ed95046967de34c0e2be6506eea6f695edc934e3a')
 
 backup=("etc/glpi-agent/agent.cfg"

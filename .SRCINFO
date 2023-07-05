@@ -1,7 +1,7 @@
 pkgbase = glpi-agent
 	pkgdesc = GLPI Agent
-	pkgver = 1.4
-	pkgrel = 4
+	pkgver = 1.5
+	pkgrel = 1
 	url = https://www.glpi-project.org
 	arch = any
 	license = GPL2
@@ -43,9 +43,9 @@ pkgbase = glpi-agent
 	backup = etc/glpi-agent/toolbox-plugin.cfg
 	backup = usr/share/glpi-agent/pci.ids
 	backup = usr/share/glpi-agent/usb.ids
-	source = https://github.com/glpi-project/glpi-agent/archive/refs/tags/1.4.tar.gz
+	source = https://github.com/glpi-project/glpi-agent/archive/refs/tags/1.5.tar.gz
 	source = fix-serial-number.patch
-	sha256sums = d1ea1230c06ae4a410487e33ae6a85dcf4278af87de831f8a602e4bf0a0c0663
+	sha256sums = bbbc700d51a9d28a265af55a70213f00c8340e3dfd993750e1ac6bdd65fb1c5b
 	sha256sums = d9aaa2915b9218b9d001017ed95046967de34c0e2be6506eea6f695edc934e3a
 
 pkgname = glpi-agent
