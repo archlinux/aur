@@ -1,34 +1,49 @@
 # Maintainer: redtide <redtid3@gmail.com>
 
 _pkgname=qruler
-pkgname="${_pkgname}-git"
-pkgver=r1.433894f
+pkgname=$_pkgname-git
+pkgver=r6.e897bf4
 pkgrel=1
 pkgdesc="A simple on-screen pixel meter"
-url="https://github.com/redtide/${_pkgname}"
-arch=("x86_64")
-license=("GPL3")
-depends=("qt5-base")
-makedepends=("cmake" "git" "qt5-tools")
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${pkgname}"::"git+${url}")
-sha512sums=("SKIP")
+url="https://github.com/qtilities/$_pkgname"
+arch=(x86_64)
+license=(GPL3)
+depends=(
+  qt5-base
+)
+makedepends=(
+  cmake
+  git
+  lxqt-build-tools
+  qt5-tools
+)
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=($_pkgname::git+$url)
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
+  cd $_pkgname
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
+
 build() {
-    cd "${srcdir}/${pkgname}"
-    cmake -DCMAKE_BUILD_TYPE="None" \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
-        -Wno-dev \
-        -B build \
-        -S .
-    cmake --build build --target all
+  cd "$srcdir/$_pkgname"
+  local options=(
+    -D CMAKE_BUILD_TYPE="None"
+    -D CMAKE_INSTALL_PREFIX="/usr"
+    -W no-dev
+    -B build
+    -S .
+  )
+  cmake "${options[@]}"
+  cmake --build build --verbose
 }
+
 package() {
-    cd "${srcdir}/${pkgname}"
-    DESTDIR="${pkgdir}" cmake --build build --target install
+    cd "$srcdir/$_pkgname"
+    DESTDIR="$pkgdir" cmake --install build
 }

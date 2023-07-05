@@ -1,4 +1,4 @@
-/qruler*
-/pkg
-/src
-*.tar*
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
