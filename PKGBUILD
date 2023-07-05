@@ -4,7 +4,7 @@ _pkgname=cld3
 _reponame=$_pkgname
 pkgname=python-${_pkgname}-git
 pkgver=0.2.3.20200117
-pkgrel=1
+pkgrel=11
 pkgdesc='Python bindings for cld3 (Compact Language Detector v3)'
 arch=('i686' 'x86_64')
 url='https://github.com/iamthebot/cld3'
@@ -21,10 +21,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_reponame"
+  sed -i 's/c++11/c++17/' setup.py
   python setup.py build
 }
 
 package() {
   cd "$srcdir/$_reponame"
-  python setup.py install --root=$pkgdir --optimize=1
+  python setup.py install --root=$pkgdir --optimize=1 --skip-build
 }
