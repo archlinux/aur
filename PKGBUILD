@@ -1,8 +1,9 @@
-# Maintainer: Sebastian Krzyszkowiak <dos@dosowisko.net>
+# Maintainer: Luna Jernberg <lunajernberg@gnome.org>
+# Contributor: Sebastian Krzyszkowiak <dos@dosowisko.net>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=gnome-clocks-git
-pkgver=3.33.1.r0.gd52b2bc
+pkgver=44.0.r31.g6028a42
 pkgrel=1
 pkgdesc="Clocks applications for GNOME"
 url="https://wiki.gnome.org/Apps/Clocks"
