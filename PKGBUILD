@@ -2,7 +2,7 @@
 # Contributor: Artoria Pendragon <saber-nyan@ya.ru>
 _pkgname=kernel-modules-hook
 pkgname=${_pkgname}-hardlinks
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Keeps your system fully functional after a kernel upgrade"
 arch=('any')
@@ -19,7 +19,7 @@ sha256sums=('950f851eba08dac4d0b93ff62b3fb16ddacd4f8ebb98a2435f80bf05f2ea5a29'
             'fc4d53dec520c80fe97dfda65b238c7d678e7ef26aaebffc5b43f924477ea4f4'
             '087e5ed70b2fc512d814fbded9e873955b1da5b6bf1e31975174d704ad143156'
             '28b995f6ea62899620d43d71e542bfc3432ad3ce90a6582f4ded1173fe8c0837'
-            '5d9092689d9baa3d8e5ac65ae92d1c201e23c4ef42c99d131f9465c99d6505ef')
+            '76a1e6890983948d11170adfcd746bf73f68a40f3b4ae6142532724161f6ae98')
 
 package() {
 	install -Dm644 'linux-modules-cleanup.conf' "${pkgdir}/usr/lib/tmpfiles.d/linux-modules-cleanup.conf"
