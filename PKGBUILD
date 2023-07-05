@@ -3,19 +3,19 @@
 # Contributor: Jooa <aur at (name) dot xyz>
 
 _cranname=raster
-_cranver=3.6-20
+_cranver=3.6-23
 pkgname=r-${_cranname,,}
 pkgdesc="Geographic Data Analysis and Modeling"
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 pkgver=${_cranver//[:-]/.}
-pkgrel=3
+pkgrel=1
 
 arch=(i686 x86_64)
 depends=(
     "r-rcpp"
     "r-sp>=1.4.5"
-    "r-terra>=1.6.41"
+    "r-terra>=1.7.29"
     "r>=3.5.0"
 )
 optdepends=(
@@ -27,7 +27,6 @@ optdepends=(
     "r-ncdf4"
     "r-rastervis"
     "r-sf"
-    "r-tinytest"
 )
 # The unittests for `r-raster` have multiple circular
 # dependency chains.
@@ -43,23 +42,23 @@ optdepends=(
 # the build chroot), uncomment the lines defining `checkdepends`, below,
 # as well as the `check()` function further down
 
-# checkdepends=(
-#     "${optdepends[@]}"
-#     "r-tinytest"
-# )
+checkdepends=(
+    "${optdepends[@]}"
+    "r-tinytest"
+)
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("812d94fe51922ff4347be9271ffe30ca61b70a60be44466cd9f53526a237298f5cc3c657cc6a3d344ce6eeddf553dfbaf1c3e73ec686db4aa56bd818d66d4fdc")
+b2sums=("5261faa2a57e9d7f0ba8ca3a5c0ce1e1135818e5ab457a42c97347f87de7e646ac1119e0f12b350038568af9fef57673af446d9a916456d26081aafbf9636c3f")
 
 build() {
     mkdir -p "${srcdir}/build/"
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}/build/"
 }
 
-# check() {
-#     export R_LIBS="build/"
-#     R CMD check --no-manual "${_cranname}"
-# }
+check() {
+    export R_LIBS="build/"
+    R CMD check --no-manual "${_cranname}"
+}
 
 package() {
     install -dm0755 "${pkgdir}/usr/lib/R/library"
