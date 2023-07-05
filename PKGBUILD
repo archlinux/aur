@@ -5,7 +5,7 @@
 _py="python2"
 _pkg="pkgconfig"
 pkgname="${_py}-${_pkg}"
-pkgver=1.5.5
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Python 2 module to interface with the pkg-config command line tool"
 arch=(any)
@@ -23,7 +23,7 @@ source=(
   "${_pypi_url}/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  'deb4163ef11f75b520d822d9505c1f462761b4309b1bb713d08689759ea8b899'
+  '97bfe3d981bab675d5ea3ef259045d7919c93897db7d3b59d4e8593cba8d354f'
 )
 
 package() {
