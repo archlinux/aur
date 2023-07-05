@@ -5,7 +5,7 @@ Type = Path
 Target = usr/lib/modules/*/vmlinuz
 
 [Action]
-Description = Saving Linux kernel modules directory (hardlinks)...
+Description = Saving Linux kernel modules directory...
 When = PreTransaction
 Exec = /usr/share/libalpm/scripts/linux-modules-save
 NeedsTargets
