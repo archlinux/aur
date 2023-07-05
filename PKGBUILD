@@ -2,15 +2,15 @@
 
 pkgname=python-lightning-utilities
 _name=${pkgname#python-}
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Common Python utilities and GitHub Actions in Lightning Ecosystem"
 arch=('any')
 url='https://github.com/Lightning-AI/utilities'
 license=('Apache')
-depends=(python-fire python-importlib-metadata python-setuptools)
+depends=(python-fire python-importlib-metadata python-packaging python-requests python-setuptools python-typing_extensions)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('2d93e3c879a84dee8d866294f88f7bf1f1ea33df40f4c29f0df030d037193237a97cf6f8ccb3efa0308757e9e3052dcd077c2e71c154cddcf4e345ad1886a9d5')
+sha512sums=('95e6f705ce633deef94d3b9c9aa1a8803b737f433097896841722283af51f1b456cf9d556aa09187e2042476884380090536b6029027931e476e0d9bd634bc48')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
