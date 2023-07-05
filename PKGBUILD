@@ -6,7 +6,7 @@
 pkgname=mp-sonivoxeas
 _pkgname=multiplatform-sonivoxeas
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplatform Sonivox EAS for Qt"
 arch=(x86_64)
 url="https://github.com/pedrolcl/${_pkgname}"
@@ -17,10 +17,6 @@ source=("https://github.com/pedrolcl/${_pkgname}/archive/refs/tags/v${pkgver}.ta
 sha256sums=('91cfb33602c833d366b3e51bf00d15bd69d719d397a20a1109aeff2f6422e0e8')
 
 build() {
-
-  # https://github.com/pedrolcl/drumstick/issues/12
-  export CXXFLAGS+=" -D DRUMSTICK_EXPORT=\"__attribute__((visibility(\\\"default\\\")))\""
-
   cmake -B build -S "$_pkgname-$pkgver" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \

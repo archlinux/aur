@@ -1,7 +1,7 @@
 pkgbase = mp-sonivoxeas
 	pkgdesc = Multiplatform Sonivox EAS for Qt
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pedrolcl/multiplatform-sonivoxeas
 	arch = x86_64
 	license = GPL3
