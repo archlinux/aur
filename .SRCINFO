@@ -1,10 +1,16 @@
 pkgbase = flare-game-appimage
 	pkgdesc = Fantasy action RPG using the FLARE engine. Appimage version
 	pkgver = 1.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.flarerpg.org/
 	arch = x86_64
+	license = GPL3
 	license = CCPL:cc-by-sa-3.0
+	depends = fuse2
+	conflicts = flare-game-git
+	conflicts = flare-game
+	conflicts = flare-engine-git
+	conflicts = flare-engine
 	options = !strip
 	source = https://github.com/flareteam/flare-game/releases/download/v1.14/flare-linux64-v1.14.AppImage
 	sha256sums = b223fa83937db2961939c79ef53552756ade4f4461877e57b2d53f10e79ebfac

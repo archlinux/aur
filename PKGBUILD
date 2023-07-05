@@ -5,12 +5,13 @@ _desktopfile="${_pkgname}.desktop"
 
 pkgname=flare-game-appimage
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fantasy action RPG using the FLARE engine. Appimage version"
 arch=(x86_64)
-license=(CCPL:cc-by-sa-3.0)
+license=(GPL3 CCPL:cc-by-sa-3.0)
 url="https://www.flarerpg.org/"
-depends=()
+depends=('fuse2')
+conflicts=('flare-game-git' 'flare-game' 'flare-engine-git' 'flare-engine')
 options=(!strip)
 source=("https://github.com/flareteam/flare-game/releases/download/v${pkgver}/${_appimage}")
 sha256sums=('b223fa83937db2961939c79ef53552756ade4f4461877e57b2d53f10e79ebfac')
