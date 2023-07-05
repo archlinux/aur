@@ -2,22 +2,23 @@
 
 pkgname=python-healpy
 _pyname=${pkgname#python-}
-pkgver=1.16.2
+pkgver=1.16.3
 pkgrel=1
 pkgdesc="Python package to manipulate healpix maps"
 arch=('i686' 'x86_64')
 url="http://healpy.readthedocs.io"
 license=('GPL')
-depends=('python>=3.7' 'python-numpy>=1.13' 'python-scipy' 'python-matplotlib' 'python-astropy' 'cfitsio>=4.1.0' 'healpix>=3.80')
+depends=('python>=3.8' 'python-numpy>=1.13' 'python-scipy' 'python-matplotlib' 'python-astropy' 'cfitsio>=4.1.0' 'healpix>=3.80')
 makedepends=('python-setuptools'
              'cython'
              'python-wheel'
              'python-build'
              'python-installer')
 optdepends=('python-healpy-doc: Documentation for healpy')
-checkdepends=('python-pytest-cython' 'python-pytest-doctestplus' 'python-requests')
+checkdepends=('python-pytest-cython'
+             'python-pytest-doctestplus')   # requests -> pooch -> scipy
 source=("https://files.pythonhosted.org/packages/source/h/healpy/healpy-${pkgver}.tar.gz")
-md5sums=('ff3015917f100cd7ff058220a7c088c4')
+md5sums=('11ac43c53f1f935004393bde55667f9e')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
