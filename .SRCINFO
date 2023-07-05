@@ -8,9 +8,9 @@ pkgbase = dl-bin
 	provides = dl
 	arch = aarch64
 	source_aarch64 = https://github.com/local-deploy/dl/releases/download/1.0.5/dl-1.0.5-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1a334f756a1f623d0518394c001b3e8cfc02c1ca7b3a90193e7e941595064efa
+	sha256sums_aarch64 = 3b8e65280979726fc064600056f21cf8593b3e0959078e71863a25ce52339bac
 	arch = x86_64
 	source_x86_64 = https://github.com/local-deploy/dl/releases/download/1.0.5/dl-1.0.5-linux-amd64.tar.gz
-	sha256sums_x86_64 = a67812f419fc6076fcc83f745f0bbdab3b0e41de4977c6e97abd925b00718794
+	sha256sums_x86_64 = ed1d0c90f7c62e29add945f2babf43cf84088be3dd6fa0bf8fd8fc2aeb9901dc
 	
 pkgname = dl-bin
