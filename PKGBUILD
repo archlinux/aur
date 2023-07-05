@@ -2,7 +2,7 @@
 # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux
 
 pkgname=azure-cli
-pkgver=2.49.0
+pkgver=2.50.0
 pkgrel=1
 pkgdesc="Command-line tools for Azure."
 arch=('any')
