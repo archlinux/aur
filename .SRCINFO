@@ -1,7 +1,7 @@
 pkgbase = openblas-lapack
 	pkgdesc = Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)
 	pkgver = 0.3.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openblas.net/
 	arch = x86_64
 	license = BSD

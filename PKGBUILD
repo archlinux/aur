@@ -10,7 +10,7 @@ pkgver=0.3.23
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.11.0
 _blasver=3.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('x86_64')
 url="http://www.openblas.net/"
@@ -51,21 +51,11 @@ package(){
 
   # Symlink to provide blas, cblas, lapack and lapacke
   cd "${pkgdir}/usr/lib/"
-  # BLAS
-  ln -sf libopenblas.so libblas.so
-  ln -sf libopenblas.so libblas.so.${_blasver:0:1}
-  ln -sf libopenblas.so libblas.so.${_blasver}
-  # CBLAS
-  ln -sf libopenblas.so libcblas.so
-  ln -sf libopenblas.so libcblas.so.${_blasver:0:1}
-  ln -sf libopenblas.so libcblas.so.${_blasver}
-  # LAPACK
-  ln -sf libopenblas.so liblapack.so
-  ln -sf libopenblas.so liblapack.so.${_lapackver:0:1}
-  ln -sf libopenblas.so liblapack.so.${_lapackver}
-  # LAPACKE
-  ln -sf libopenblas.so liblapacke.so
-  ln -sf libopenblas.so liblapacke.so.${_lapackver:0:1}
-  ln -sf libopenblas.so liblapacke.so.${_lapackver}
+  for _lib in blas cblas lapack lapacke; do
+    ln -s libopenblas.so lib${_lib}.so
+    ln -s libopenblas.so lib${_lib}.so.${_blasver:0:1}
+    ln -s libopenblas.so lib${_lib}.so.${_blasver}
+    ln -s openblas.pc "${pkgdir}/usr/lib/pkgconfig/${_lib}.pc"
+  done
 }
 # vim:set ts=2 sw=2 et:
