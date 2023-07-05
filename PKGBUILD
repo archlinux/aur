@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r19742.g7a2352f90c'
+pkgver='5.0.r19776.g0366122306'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -15,13 +15,15 @@ url="https://$_mainpkgname.org"
 license=('GPL2')
 depends=(
 	'alsa-lib' 'bluez-libs' 'cubeb' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpulse'
-	'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng'
-	'pugixml' 'qt6-base' 'qt6-svg' 'sfml' 'zlib'
+	'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml'
+	'qt6-base' 'qt6-svg' 'sfml' 'zlib'
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
-	'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
+	'libminiupnpc.so' 'libsfml-network.so' 'libsfml-system.so' 'libswscale.so'
+	'libudev.so' 'libusb-1.0.so'
 )
 makedepends=('cmake' 'git' 'ninja' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
+options=('!lto')
 source=(
 	"$pkgname::git+https://github.com/$_mainpkgname/$_projectname"
 	"$pkgname-implot::git+https://github.com/epezent/implot.git"
@@ -37,7 +39,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'b469597fe9b4e9be6ae9ab0330fe5e3d6b944a73505775ff75f9895ae4843768f3815d4b5b8e227d6d2e87c3f4882d6d7262f9df85be0aaddf46730a7afa16dd')
+            '568ca7db64149e9ac9409947689a8390783b891e6cff7b096690771512db3e19f9d8551a8739921d8a9f6ec4a9de747811a2efc8cdd4791d715677772db7fa8e')
 
 _sourcedirectory="$pkgname"
 
@@ -52,7 +54,7 @@ prepare() {
 	# Provide submodules
 	declare -A _submodules=(
 		[implot]='implot/implot'
-		[mgba]='mGBA/mgba' # The current version of mgba in the repos is not compatible with Dolphin
+		[mgba]='mGBA/mgba'
 		[rcheevos]='rcheevos/rcheevos'
 		[vma]='VulkanMemoryAllocator'
 		[zlibng]='zlib-ng/zlib-ng'
@@ -72,16 +74,18 @@ pkgver() {
 }
 
 build() {
-	# The dolphin-emu package in the repos MAKE_BUILD_TYPE=None for some reason, so we use it as well
+	# CMAKE_BUILD_TYPE - the dolphin-emu package in the repos  uses 'None' for some reason, so we use it as well
+	# USE_SYSTEM_LIBS - we want to use systems libs where possible
+	# USE_SYSTEM_LIBMGBA - the current version of mgba in the repos is not compatible with Dolphin
 	cd "$srcdir/$_sourcedirectory/"
 	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
-		-DDISTRIBUTOR=archlinux.org \
+		-DDISTRIBUTOR='aur.archlinux.org/packages/dolphin-emu-git' \
 		-DENABLE_TESTS=OFF \
 		-DENABLE_AUTOUPDATE=OFF \
-		-DUSE_SHARED_ENET=ON \
-		-DCMAKE_DISABLE_FIND_PACKAGE_LIBMGBA=True \
+		-DUSE_SYSTEM_LIBS=ON \
+		-DUSE_SYSTEM_LIBMGBA=OFF \
 		-Wno-dev
 	cmake --build 'build/'
 }
