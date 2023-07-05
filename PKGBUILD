@@ -5,17 +5,15 @@ _projectname=electron
 _major=25
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_dev=5
-_pkgver="${_major}.0.0-alpha.${_dev}"
+_pkgver="${_major}.2.0"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
 arch=('x86_64' 'aarch64')
 url=https://electronjs.org/
 license=('MIT' 'custom')
-depends=('c-ares' 'gtk3' 'libevent' 'nss' 'wayland')
+depends=('c-ares' 'gtk3' 'libevent' 'nss' 'libffi')
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
-            'libappindicator-gtk3: StatusNotifierItem support'
             'pipewire: WebRTC desktop sharing under Wayland'
             'qt5-base: enable Qt5 with --enable-features=AllowQt'
             'trash-cli: file deletion support (trash-put)'
@@ -31,10 +29,10 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('d0fa57125ca0418054cd1e43dd4121541b17549e8fb09ce6c7fb6b2a21b30e37'
-                   '642723276b858ac73d8894048a40eaab853bc854736c022404f953833cf78f05')
-sha256sums_aarch64=('f6de8725df34db6c779828aaf9eefc25a3765b6e690914c7797c966c38a47fd9'
-                    '55ddfd47a00ffa4f2244fb776c00f05feb4e217cc11aacb0ecf05e7273864ed6')
+sha256sums_x86_64=('0486929045ebb309cf4461076046ed67c5d3e952461f0b720a748268d162736f'
+                   '4fb341f1cbe7ef38c1eb3463919bfb515b54875f835f28ce0d8ff9119802a025')
+sha256sums_aarch64=('03985a9de9ab56f14cca8b2650379bed1c1a6df6b8b17eb513c639f4f0ce1cbe'
+                    'e58ff2c4484e80bc6253969036e772bfed8d822d66215ff68e84846cbd14c4a0')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
