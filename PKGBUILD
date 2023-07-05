@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=30.0.50.166064
+pkgver=30.0.50.166823
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('GPL')
 depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'libxrandr'
 	 'libxinerama' 'librsvg' 'gnutls' 'xaw3d' 'libdbus' 'libxfixes'
 	 'jansson' 'desktop-file-utils')
-makedepends=('git' 'texlive-core')
-conflicts=('emacs')
+makedepends=('git' 'texlive-basic')
+conflicts=('emacs' 'emacs-seq')
 options=('docs' '!emptydirs')
 provides=('emacs' 'emacs-seq')
 source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git")
