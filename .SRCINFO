@@ -1,5 +1,5 @@
 pkgbase = unifont
-	pkgdesc = A free bitmap font with wide Unicode support (PCF, PSF and hex versions)
+	pkgdesc = GNU Unifont Glyphs (PCF and PSF versions)
 	pkgver = 15.0.06
 	pkgrel = 1
 	url = https://unifoundry.com/
@@ -13,7 +13,7 @@ pkgbase = unifont
 	sha256sums = SKIP
 
 pkgname = pcf-unifont
-	pkgdesc = A free bitmap font with wide Unicode support (PCF version)
+	pkgdesc = GNU Unifont Glyphs (PCF version)
 
 pkgname = psf-unifont
-	pkgdesc = A free bitmap font with wide Unicode support (PSF version)
+	pkgdesc = GNU Unifont Glyphs (PSF version)
