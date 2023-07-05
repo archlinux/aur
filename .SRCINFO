@@ -1,0 +1,56 @@
+pkgbase = jdk8-aarch64
+	pkgdesc = Oracle Java 8 Development Kit LTS for AArch64
+	pkgver = 8u371
+	pkgrel = 1
+	url = https://www.oracle.com/technetwork/java/javase/downloads/index.html
+	install = jdk8-aarch64.install
+	arch = aarch64
+	license = custom:Oracle
+	makedepends = awk
+	depends = ca-certificates-java
+	depends = hicolor-icon-theme
+	depends = java-runtime-common
+	depends = nss
+	depends = xdg-utils
+	depends = java-environment-common
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for Gtk+ look and feel (desktop)
+	optdepends = eclipse-java: to use "Oracle Java Mission Control" plugins in Eclipse
+	provides = java-runtime=8
+	provides = java-runtime-headless=8
+	provides = java-web-start=8
+	provides = java-runtime-jre=8
+	provides = java-runtime-headless-jre=8
+	provides = java-web-start-jre=8
+	provides = java-openjfx=8
+	provides = java-environment=8
+	provides = java-environment-jdk=8
+	options = !strip
+	backup = etc/java-jdk8/aarch64/jvm.cfg
+	backup = etc/java-jdk8/images/cursors/cursors.properties
+	backup = etc/java-jdk8/management/jmxremote.access
+	backup = etc/java-jdk8/management/management.properties
+	backup = etc/java-jdk8/security/java.policy
+	backup = etc/java-jdk8/security/java.security
+	backup = etc/java-jdk8/content-types.properties
+	backup = etc/java-jdk8/flavormap.properties
+	backup = etc/java-jdk8/fontconfig.properties.src
+	backup = etc/java-jdk8/logging.properties
+	backup = etc/java-jdk8/net.properties
+	backup = etc/java-jdk8/psfont.properties.ja
+	backup = etc/java-jdk8/psfontj2d.properties
+	backup = etc/java-jdk8/sound.properties
+	source = manual://jdk-8u371-linux-aarch64.tar.gz
+	source = jmc-jdk8.desktop
+	source = jvisualvm-jdk8.desktop
+	source = policytool-jdk8.desktop
+	source = readme.sh
+	sha256sums = SKIP
+	sha256sums = 2ccea5f7f0537cd5769125ae4425d58b7f200ccdff0e77447919aa339c375147
+	sha256sums = d98dd201c61e0cc84ff01ddf8285d6d8d0da2f80c3bf571a8a9b8d1128aded84
+	sha256sums = cf85a37b8a4212c8ef7aeea5d2223ba7ca0f43f0b1ac3b2fd1949d5568ac7063
+	sha256sums = 4c9d5ab69494b3d0d8b166fd5552aa7d587f44f804cec9e2990842ebcd1c8e1d
+	source_aarch64 = https://download.oracle.com/otn-pub/java/jdk/8u371-b11/ce59cff5c23f4e2eaf4e778a117d4c5b/jdk-8u371-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 94793adad257a3eefc4098d786a145357393af48b67cd861d2e7ae87d7e7ecc9
+
+pkgname = jdk8-aarch64
