@@ -1,0 +1,13 @@
+pkgbase = python-dj-config-url
+	pkgdesc = 12factor inspired URLs to configure your Django Application (deprecated)
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/julianwachholz/dj-config-url
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = dj-config-url-0.1.1.tar.gz::https://github.com/julianwachholz/dj-config-url/archive/refs/tags/0.1.1.tar.gz
+	sha512sums = a62d42eca302de5d4b762e72641e5e9c0548f104eca46a687a1dcb940d6dc5e6cd0d442d0c6ab57a0e43afdf5d6110ef28d3bcfaed4437a93c6cfdf57eb55477
+
+pkgname = python-dj-config-url
