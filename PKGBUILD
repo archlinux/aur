@@ -4,7 +4,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2023.5.3
+pkgver=2023.7.0
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
@@ -13,11 +13,11 @@ license=('Apache')
 conflicts=('jitsi-meet-electron-bin'
            'jitsi-meet-electron')
 replaces=('jitsi-meet-electron')
-_electron_pkg="electron24"
+_electron_pkg="electron"
 depends=('gtk3'
          'libxss'
          'nss'
-         $_electron_pkg)
+         "${_electron_pkg}>=25")
 makedepends=('coreutils'
              'git'
              'python'
@@ -28,7 +28,7 @@ options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'no_targets.patch'
         'jitsi-meet-desktop.desktop')
-sha256sums=('b507cfcefd58709e8d3ef10c6594bdf73765b0c6f73b127906e7ce4f9df2b754'
+sha256sums=('709d1d960635833d0f8a5ea6fd4bbabc00baf9a441fd388b0d902accedd1ed6e'
             'ab22749aa1570cc5d6050711011f849ec3f4fa49080231f98957255fa5250e36'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
