@@ -2,7 +2,7 @@
 # Maintainer: Kerbiriou Maël <m431.kerbiriou@gmail.com>
 
 pkgname=seqkit-bin
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A cross-platform and ultrafast toolkit for FASTA/Q file manipulation in Golang"
 arch=('x86_64')
