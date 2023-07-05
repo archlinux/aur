@@ -1,0 +1,22 @@
+pkgbase = python-pickle-secure-git
+	pkgdesc = Wrapper around pickle that creates encrypted pickles
+	pkgver = 0.99.9.r3.g8629331
+	pkgrel = 1
+	url = https://github.com/spapanik/pickle-secure
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = LGPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cryptography
+	provides = python-pickle-secure=0.99.9.r3.g8629331
+	conflicts = python-pickle-secure
+	source = git+https://github.com/spapanik/pickle-secure
+	sha256sums = SKIP
+
+pkgname = python-pickle-secure-git
