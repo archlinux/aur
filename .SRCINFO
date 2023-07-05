@@ -1,6 +1,6 @@
 pkgbase = kaf-bin
 	pkgdesc = Kafka CLI inspired by kubectl & docker
-	url = "https://github.com/birdayz/kaf"
+	url = https://github.com/birdayz/kaf
 	pkgver = 0.2.4
 	pkgrel = 1
 	license = MIT
