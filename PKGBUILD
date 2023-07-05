@@ -1,18 +1,18 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 _pkgname=result
-pkgname="python-${_pkgname}"
-pkgver=0.11.0
+pkgname="python-$_pkgname"
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A rust-like result type for Python"
 arch=('any')
-url="https://pypi.org/project/${_pkgname}"
+url="https://pypi.org/project/$_pkgname"
 license=('MIT')
-depends=('python')
+depends=('python' 'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://pypi.org/packages/source/${_pkgname:0:1}/${_pkgname//-/_}/${_pkgname//-/_}-${pkgver}.tar.gz")
-sha256sums=('e587b5d1c11b18f6caad0e5b9b2ab981218e4ce84116ebdf969d1dac583ac58e')
-b2sums=('a0ef22e30831896c3eb00f6da759c1bbd5d9937d6f84a4baf389ea85d8efd7f29eb15ef50c22ca89ef0333c2caa1e7b0a22eea865f084f81680add2733c83d88')
+source=("$pkgname-$pkgver.tar.gz::https://pypi.org/packages/source/${_pkgname:0:1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver.tar.gz")
+sha256sums=('2ae9a2786c2cc3e9a2ce18e01a7a72c53294db773f30c5a7d944704e02a04db7')
+b2sums=('2137f11aac879134093d15843246fff1c2ad435cfa5d104a907ee81e7e5d8e159624bc3eccde46cbf03a5329fb9618f22ef118d7cfe7133c2f53dfe40e246f00')
 
 build() {
   cd "${_pkgname//-/_}-${pkgver}"
