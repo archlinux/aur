@@ -61,7 +61,7 @@ _makenconfig=
 # 43. Generic-x86-64-v4 (GENERIC_CPU4)
 # 44. Intel-Native optimizations autodetected by the compiler (MNATIVE_INTEL)
 # 45. AMD-Native optimizations autodetected by the compiler (MNATIVE_AMD)
-_subarch=45
+_subarch=
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
