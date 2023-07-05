@@ -1,12 +1,12 @@
 pkgbase = matui
 	pkgdesc = An opinionated Matrix TUI client.
-	pkgver = 0.4.1
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/pkulak/matui
 	arch = x86_64
 	license = GPL2
 	makedepends = cargo
-	source = matui-0.4.1.tar.gz::https://github.com/pkulak/matui/archive/refs/tags/v0.4.1.tar.gz
-	b2sums = e37555b3b70e5ec47d9e560ef04f67c2334ef5bbaaed8aa8f6d59021866d684110d53690646f47d264bb82b215bd94cfc063fc38e936b60d98078a2d75fe33e8
+	source = matui-0.4.4.tar.gz::https://github.com/pkulak/matui/archive/refs/tags/v0.4.4.tar.gz
+	b2sums = 023f58b5ed02f0288b40251a211ecd89920a0112bc02afd56612220d4af67fb125bc889303682b0b4e3706165d1769a52385378bfa957d3e5bc063bfc88620c3
 
 pkgname = matui
