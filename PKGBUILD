@@ -2,7 +2,7 @@
 
 pkgname=air-sdk
 pkgver=50.2.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A multi-operating system, multi-screen runtime that allows you to leverage your web development skills to build and deploy rich Internet applications to the desktop and mobile devices."
 arch=('x86_64' 'i686')
 url="https://airsdk.harman.com/"

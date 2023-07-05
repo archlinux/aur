@@ -1,7 +1,7 @@
 pkgbase = air-sdk
 	pkgdesc = A multi-operating system, multi-screen runtime that allows you to leverage your web development skills to build and deploy rich Internet applications to the desktop and mobile devices.
 	pkgver = 50.2.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://airsdk.harman.com/
 	install = air-sdk.install
 	arch = x86_64

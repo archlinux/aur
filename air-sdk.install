@@ -1,6 +1,6 @@
 post_install() {
     echo ""
-    echo "The AIR SDK has been installed to:
+    echo "The AIR SDK has been installed to:"
     echo "/opt/air-sdk/$1"
     echo "/opt/air-sdk/AIRSDK (as sym-link)"
     echo ""
@@ -11,7 +11,7 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "The updated AIR SDK has been installed to:
+    echo "The updated AIR SDK has been installed to:"
     echo "/opt/air-sdk/$1"
     echo "/opt/air-sdk/AIRSDK (as sym-link)"
     echo ""
