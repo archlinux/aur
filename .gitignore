@@ -1,0 +1,13 @@
+*
+
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/briar16.png
+!/briar32.png
+!/briar48.png
+!/briar64.png
+!/briar128.png
+!/briar192.png
+!/briar-desktop.png
+!/briar-desktop.desktop
