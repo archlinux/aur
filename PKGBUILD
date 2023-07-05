@@ -2,7 +2,7 @@
 # Maintainer: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-scm
-pkgver=2.0.0rc.5
+pkgver=2.0.0
 pkgrel=1
 _srcname=flux
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
@@ -12,7 +12,7 @@ license=("APACHE")
 provides=("flux-bin")
 conflicts=("flux-bin")
 depends=("glibc")
-makedepends=('go>=1.17', 'kustomize>=3.0', 'git')
+makedepends=('go>=1.20', 'kustomize>=5.0', 'git')
 optdepends=('bash-completion: auto-completion for flux in Bash',
 'zsh-completions: auto-completion for flux in ZSH')
 source=(
