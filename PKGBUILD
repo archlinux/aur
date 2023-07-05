@@ -1,6 +1,6 @@
 # Maintainer: Chi_Tang <me@chitang.dev>
 pkgname='nekoray'
-pkgver=3.7
+pkgver=3.9
 pkgrel=1
 pkgdesc='Qt based cross-platform GUI proxy configuration manager (backend: v2ray / sing-box)'
 arch=('x86_64')
