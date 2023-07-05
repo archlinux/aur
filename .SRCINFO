@@ -1,6 +1,6 @@
 pkgbase = python-yahoofinancials
 	pkgdesc = A financial data module used for pulling data from Yahoo Finance
-	pkgver = 1.14
+	pkgver = 1.15
 	pkgrel = 1
 	url = https://github.com/JECSand/yahoofinancials
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-yahoofinancials
 	depends = python-beautifulsoup4
 	depends = python-pytz
 	depends = python-cryptography
-	source = python-yahoofinancials-1.14.tar.gz::https://github.com/JECSand/yahoofinancials/archive/1.14.tar.gz
-	sha256sums = 6514ce7f43be0f7ff80ade104a1eb34c6c664799c056672fe09761ed7fa6ae01
+	source = python-yahoofinancials-1.15.tar.gz::https://github.com/JECSand/yahoofinancials/archive/1.15.tar.gz
+	sha256sums = 7db7c04d6fc85214230fedbd92fdf22603f82a88e6c7a2cfcb3c2121b26f32b9
 
 pkgname = python-yahoofinancials
