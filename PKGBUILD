@@ -19,10 +19,10 @@ source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}
 sha256sums=('e0ffa61a33131541064cc926094ee7cc0dac5db73096757ec522cca9906ddfcb'
             '797d17c2545b03a4d1b5a0ad6ef7af7a449780cb4d7071573d5005e317939fe9'
             'd034cd2388f2a9e28885ba9a718d510fe8a9744b5dc3ad57b7a4f1a2ef90c8da')
-#build() {
-#    cd "${srcdir}/${_appname}-${pkgver}"
-#    yarn install && yarn run build
-#}
+build() {
+    cd "${srcdir}/${_appname}-${pkgver}"
+    yarn install && yarn run build
+}
 package() {
     install -Dm644 "${srcdir}/${_appname}-${pkgver}/dist/linux-unpacked/resources/app.asar" "${pkgdir}/opt/${pkgname}/${pkgname}.asar"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/opt/${pkgname}/${pkgname}"
