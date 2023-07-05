@@ -1,7 +1,7 @@
 pkgbase = python-autoconf-language-server
 	pkgdesc = autoconf language server
-	pkgver = 0.0.5
-	pkgrel = 2
+	pkgver = 0.0.6
+	pkgrel = 1
 	url = https://github.com/Freed-Wu/autoconf-language-server
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = python-autoconf-language-server
 	depends = python-pygls
 	depends = python-platformdirs
 	optdepends = autoconf
-	source = https://files.pythonhosted.org/packages/py3/a/autoconf_language_server/autoconf_language_server-0.0.5-py3-none-any.whl
-	sha256sums = 2c0bfe116104d9eca6cfc581debfdf1256a2d427a17cdade725f87666a5b71df
+	source = https://files.pythonhosted.org/packages/py3/a/autoconf_language_server/autoconf_language_server-0.0.6-py3-none-any.whl
+	sha256sums = 2f517e994cc25e0c157393a621b54722042f06740f9ec10d12ccaac896a26799
 
 pkgname = python-autoconf-language-server
