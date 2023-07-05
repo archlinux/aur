@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=116.0a1+20230609.1+h256876c3862b
+pkgver=117.0a1+20230705.1+h3639b6891b33
 pkgrel=1
 pkgdesc="Development version of the popular Firefox web browser"
 url="https://www.mozilla.org/firefox/channel/#nightly"
@@ -228,6 +228,9 @@ pref("browser.shell.checkDefaultBrowser", false);
 
 // Don't disable extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
+
+// Enable GNOME Shell search provider
+pref("browser.gnome-search-provider.enabled", true);
 END
 
   local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
@@ -275,6 +278,15 @@ END
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
+
+  local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$pkgname.search-provider.ini"
+  install -Dvm644 /dev/stdin "$sprovider" <<END
+[Shell Search Provider]
+DesktopId=$pkgname.desktop
+BusName=org.mozilla.${pkgname//-/}.SearchProvider
+ObjectPath=/org/mozilla/${pkgname//-/}/SearchProvider
+Version=2
+END
 
   export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
   if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
