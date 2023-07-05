@@ -1,6 +1,6 @@
 pkgbase = perl-ora2pg
 	pkgdesc = Ora2Pg - Oracle to PostgreSQL database schema converter
-	pkgver = 23.2
+	pkgver = 24.0
 	pkgrel = 1
 	url = http://ora2pg.darold.net
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = perl-ora2pg
 	optdepends = perl-dbd-mysql: connect to a MySQL db
 	optdepends = perl-term-readkey: read input from terminal
 	options = !emptydirs
-	source = https://github.com/darold/ora2pg/archive/refs/tags/v23.2.tar.gz
-	sha256sums = a98ee3d30555d91f9ed9b477c37ccd8b46f186a6182d9ea9236559a875033d74
+	source = https://github.com/darold/ora2pg/archive/refs/tags/v24.0.tar.gz
+	sha256sums = dfb8eac7abea049ca5651e37e8633afc30011dea0e1d3208e1a030f11600fe7d
 
 pkgname = perl-ora2pg

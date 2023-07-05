@@ -2,7 +2,7 @@
 # Contributor: Antonio Muñoz <agmconejo AT gmail DOT com>
 
 pkgname=perl-ora2pg
-pkgver=23.2
+pkgver=24.0
 pkgrel=1
 pkgdesc="Ora2Pg - Oracle to PostgreSQL database schema converter"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('perl-dbd-pg: connect to a PostgreSQL db'
             'perl-term-readkey: read input from terminal')
 options=('!emptydirs')
 source=("https://github.com/darold/ora2pg/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a98ee3d30555d91f9ed9b477c37ccd8b46f186a6182d9ea9236559a875033d74')
+sha256sums=('dfb8eac7abea049ca5651e37e8633afc30011dea0e1d3208e1a030f11600fe7d')
 
 build() {
 	cd "ora2pg-${pkgver}"
