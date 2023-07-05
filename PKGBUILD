@@ -2,7 +2,7 @@
 
 pkgname=reed-alert-git
 _pkgname=reed-alert
-pkgver=r84.e220c32
+pkgver=r88.b9d5e56
 pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
