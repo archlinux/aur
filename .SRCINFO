@@ -17,13 +17,3 @@ pkgname = pcf-unifont
 
 pkgname = psf-unifont
 	pkgdesc = A free bitmap font with wide Unicode support (PSF version)
-
-pkgname = hex-unifont
-	pkgdesc = A free bitmap font with wide Unicode support (hex version)
-
-pkgname = unifont-utils
-	pkgdesc = A free bitmap font with wide Unicode support - utilities
-	arch = x86_64
-	depends = perl
-	optdepends = perl-wx: for the unifont-viewer utility
-	optdepends = perl-gd: for the unihex2png and unipng2hex utilities
