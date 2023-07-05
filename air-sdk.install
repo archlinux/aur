@@ -1,15 +1,20 @@
 post_install() {
     echo ""
-    echo "The AIR SDK has been installed to /opt/air-sdk/$1"
-    echo "and sym-linked to /opt/air-sdk/AIRSDK"
+    echo "The AIR SDK has been installed to:
+    echo "/opt/air-sdk/$1"
+    echo "/opt/air-sdk/AIRSDK (as sym-link)"
     echo ""
-    echo "You need to relogin in order for the AIR SDK binaries to appear in your PATH"
+    echo "The AIR_HOME, JAVA_HOME and PATH environmental variables have been set"
+    echo "but you need to relogin in order for them to become available."
     echo ""
 }
 
 post_upgrade() {
     echo ""
-    echo "The updated AIR SDK has been installed to /opt/air-sdk/$1"
-    echo "and sym-linked to /opt/air-sdk/AIRSDK"
+    echo "The updated AIR SDK has been installed to:
+    echo "/opt/air-sdk/$1"
+    echo "/opt/air-sdk/AIRSDK (as sym-link)"
+    echo ""
+    echo "The AIR_HOME, JAVA_HOME and PATH environmental variables have been set."
     echo ""
 }

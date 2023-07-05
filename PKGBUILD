@@ -2,7 +2,7 @@
 
 pkgname=air-sdk
 pkgver=50.2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-operating system, multi-screen runtime that allows you to leverage your web development skills to build and deploy rich Internet applications to the desktop and mobile devices."
 arch=('x86_64' 'i686')
 url="https://airsdk.harman.com/"
@@ -10,7 +10,6 @@ license=('custom:Harman Connected Services, Inc. (“Harman”) SDK License Agre
 depends=('jdk11-openjdk')
 makedepends=('wget' 'unzip')
 source=()
-sha256sums=()
 _sha256sum='5744d15e227a6459ec4678dffb00d273a766e464a7dca2a5cc67ae53c3c3c619'
 install="$pkgname.install"
 
