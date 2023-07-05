@@ -1,7 +1,4 @@
-*.tar.*
-.BUILDINFO
-.MTREE
-.PKGINFO
-.PKGINFO
-/*pkg
-/*src
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
