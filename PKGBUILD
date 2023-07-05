@@ -3,7 +3,7 @@
 
 pkgname=tiddlywiki
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Personal wiki where everything is in one html-file'
 arch=('i686' 'x86_64')
 url='http://www.tiddlywiki.com/'
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('xdg-utils')
 source=('http://www.tiddlywiki.com/empty.html'
         'tiddlywiki.py')
-md5sums=('f7d47dc69e9f0af9bc6e400412d79027'
+md5sums=('02898ddbab30588e23a2b9d03dc74233'
          '219c3db3c4be8d359d3c18e96b171ee3')
 
 build() {
