@@ -6,11 +6,11 @@ pkgver=r59.1c0a816
 pkgrel=2
 pkgdesc='A tool for flashing Black Magic Probe firmware '
 arch=('x86_64')
-url='https://black-magic.org'
+url='https://github.com/blackmagic-debug/bmputil'
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-license=('None')
-makedepends=('rust' 'cargo')
+license=('Apache-2.0 AND MIT')
+makedepends=('git' 'rust' 'cargo')
 source=("git+https://github.com/blackmagic-debug/bmputil.git")
 sha512sums=('SKIP')
 
@@ -48,4 +48,5 @@ package() {
 
   install -Dm 755 -t "${pkgdir}/usr/bin/" "target/release/${_pkgname}"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm 644 LICENSE-MIT "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-MIT"
 }
