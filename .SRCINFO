@@ -12,3 +12,4 @@ pkgbase = python2-quantities
 
 pkgname = python2-quantities
 	depends = python2
+	depends = python2-numpy

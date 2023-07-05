@@ -1,5 +1,6 @@
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 # Contributor: Sergio Davies <sergio dot newsletter at gmail dot com>
+# Contributor: a821
 
 _py="python2"
 _pkg="quantities"
@@ -24,10 +25,13 @@ sha256sums=(
 )
 
 package_python2-quantities() {
-  depends+=("${_py}")
+  depends+=(
+    "${_py}"
+    "${_py}-numpy"
+  )
 
   cd "${_pkg}-${pkgver}"
   "${_py}" setup.py install --root="${pkgdir}"
-}
+  }
 
 # vim:set sw=2 sts=-1 et:
