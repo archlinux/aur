@@ -7,7 +7,7 @@ pkgdesc="Use nvim as a pager to view manpages, diffs, etc with nvim's syntax hig
 arch=('any')
 url='https://github.com/lucc/nvimpager'
 license=('BSD')
-depends=('neovim>=0.4.4' 'bash')
+depends=('neovim>=0.9.0' 'bash')
 makedepends=('git' 'scdoc')
 checkdepends=('busted')
 conflicts=('nvimpager')

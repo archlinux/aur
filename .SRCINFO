@@ -8,7 +8,7 @@ pkgbase = nvimpager-git
 	checkdepends = busted
 	makedepends = git
 	makedepends = scdoc
-	depends = neovim>=0.4.4
+	depends = neovim>=0.9.0
 	depends = bash
 	provides = nvimpager
 	conflicts = nvimpager
