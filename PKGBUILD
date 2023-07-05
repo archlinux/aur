@@ -3,8 +3,8 @@
 # Contributor: khvalera <khvalera[at]ukr[dot]net>
 
 pkgname=glpi
-pkgver=10.0.6
-pkgrel=2
+pkgver=10.0.8
+pkgrel=1
 pkgdesc="GLPI Inventory Management"
 arch=('any')
 url='https://www.glpi-project.org'
@@ -24,11 +24,11 @@ backup=("etc/httpd/conf/extra/httpd-glpi.conf"
         "etc/glpi/local_define.php")
 optdepends=('nginx: a more performant webserver'
             'apache: a more performant webserver'
-            'php74' 'php74-gd' 'php74-intl' 'php74-sodium' 'php74-apache'
+            'php74' 'php74-gd' 'php74-intl' 'php74-sodium' 'php74-apache' 'php74-phar'
             'php' 'php-gd' 'php-intl' 'php-sodium' 'php-apache'
             'libxml2' 'zlib' 'openssl')
 makedepends=("gettext")
-sha256sums=('d30d915a7cdc2f0e117a38e86b528f787a41e5ffdf9c3a5f9f4a1b8a70bf91ce'
+sha256sums=('757dd8f440b999c014aa94f0f860830904a89ae3bc5c2f25f2da9a509c07aaf8'
             '32bd84daa949cfa1158f2c6cd8fa2593fd4bd3cc6392791b69ab24ca98eee0dd'
             '04e40235a4a6c7d1e0daaa91e630654e632073fd5fee33bb6befa7b6f3713e44'
             'c5ca6a8d1bcc73c71348d5f8a4c3de0fd023c346d1c2bf02c9dd627bcda9bfe8'
