@@ -2,7 +2,7 @@
 
 _pkgname=flet
 pkgname=python-${_pkgname}
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Easily build realtime web, mobile and desktop apps in your favorite language and securely share them with your team.'
 url="https://${_pkgname}.dev/"
@@ -17,7 +17,8 @@ depends=(
 	'python-websockets'
 	'python-httpx'
 	'python-packaging'
-	'python-poetry')
+	'python-poetry'
+	'python-copier')
 makedepends=(
 	'goreleaser'
 	'python-build'
@@ -27,15 +28,15 @@ arch=('any')
 source=(
 	"${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}-dev/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 	'flet-linux.patch')
-sha256sums=('44b400ec6d37353cae40c67b53f484f7b6cf1cc634bd6201e0332882938c3e0d'
-            'ec5a4520958aa116f99666463a0c8b871dbbd908f9fe7674777c470f72edead9')
+sha256sums=('f4790f705bde6ac7ed5908d5879888e6469182d4f0d508599f5c607e67655a57'
+            'af9718b926a07ac8e8689a2c623fe6921d88d0bcd52263f63848d11175e3b828')
 
 _srcdir="${_pkgname}-${pkgver}"
 
 prepare() {
 	cd "${_srcdir}"
 	
-	patch -p1 -i '../flet-linux.patch'
+	patch -p1 -i "${srcdir}/flet-linux.patch"
 }
 
 build() {
@@ -52,7 +53,7 @@ build() {
 		APPVEYOR_BUILD_VERSION=${pkgver} goreleaser build --clean --snapshot --single-target
 	popd
 	
-	for dir in 'sdk/python/packages/'{flet-core,flet}; do
+	for dir in 'sdk/python/packages/'{flet-core,flet,flet-runtime}; do
 		pushd "$dir"
 			python -m build --wheel --no-isolation
 		popd
@@ -64,7 +65,7 @@ package() {
 	
 	install -Dm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 	
-	for dir in 'sdk/python/packages/'{flet-core,flet}; do
+	for dir in 'sdk/python/packages/'{flet-core,flet,flet-runtime}; do
 		pushd "$dir"
 			python -m installer --destdir="$pkgdir" 'dist/'*.whl
 		popd

@@ -1,8 +1,8 @@
-diff --git a/sdk/python/packages/flet/src/flet/flet.py b/sdk/python/packages/flet/src/flet/flet.py
-index a77bc88..1000214 100644
---- a/sdk/python/packages/flet/src/flet/flet.py
-+++ b/sdk/python/packages/flet/src/flet/flet.py
-@@ -597,6 +597,9 @@ def __locate_and_unpack_flet_view(page_url, assets_dir, hidden):
+diff --git a/sdk/python/packages/flet-runtime/src/flet_runtime/app.py b/sdk/python/packages/flet-runtime/src/flet_runtime/app.py
+index ae1474c..990387b 100644
+--- a/sdk/python/packages/flet-runtime/src/flet_runtime/app.py
++++ b/sdk/python/packages/flet-runtime/src/flet_runtime/app.py
+@@ -673,6 +673,9 @@ def __locate_and_unpack_flet_view(page_url, assets_dir, hidden):
          app_path = temp_flet_dir.joinpath(app_name)
          args = ["open", str(app_path), "-n", "-W", "--args", page_url, pid_file]
      elif is_linux():
