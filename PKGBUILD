@@ -7,7 +7,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9634.ca2d87e5e
+pkgver=r9641.df9cc1b84
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ else
     _enable_lto=off
 fi
 license=('GPL2')
-depends=('ffmpeg' 'speexdsp' 'boost-libs' 'mbedtls' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'libfdk-aac' 'sndio')
-makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt6-tools' 'qt6-multimedia' 'gcc' 'glslang')
+depends=('ffmpeg' 'speexdsp' 'mbedtls' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'libfdk-aac' 'sndio')
+makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'qt6-multimedia' 'gcc' 'glslang')
 source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
         "nihstro::git+https://github.com/neobrain/nihstro.git"
@@ -39,7 +39,7 @@ source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "libressl::git+https://github.com/citra-emu/ext-libressl-portable.git"
         "git+https://github.com/libusb/libusb.git"
         "git+https://github.com/mozilla/cubeb"
-        "git+https://github.com/discord/discord-rpc.git"
+        "git+https://github.com/yuzu-emu/discord-rpc.git"
         "git+https://github.com/arun11299/cpp-jwt.git"
         "git+https://github.com/wwylele/teakra.git"
         "git+https://github.com/lvandeve/lodepng.git"
@@ -148,7 +148,7 @@ build() {
       -DUSE_DISCORD_PRESENCE=ON \
       -DENABLE_FFMPEG_VIDEO_DUMPER=ON \
       -DENABLE_FFMPEG_AUDIO_DECODER=ON \
-      -DUSE_SYSTEM_BOOST=ON \
+      -DUSE_SYSTEM_BOOST=OFF \
       -DUSE_SYSTEM_SDL2=ON \
       -DCMAKE_C_COMPILER=gcc \
       -DCMAKE_CXX_COMPILER=g++ \
