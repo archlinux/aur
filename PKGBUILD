@@ -36,6 +36,13 @@ package() {
   cd "${srcdir}/${_pkg}-${pkgver}"
   "${_py}" setup.py install --root="${pkgdir}" \
                            --optimize=1
+
+  mv "${pkgdir}/usr/bin/get_objgraph" \
+     "${pkgdir}/usr/bin/get_objgraph2.7"
+
+  mv "${pkgdir}/usr/bin/undill" \
+     "${pkgdir}/usr/bin/undill2.7"
+
   install -D -m644 LICENSE \
           "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
