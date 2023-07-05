@@ -8,7 +8,7 @@ _pkgname=collabora-online-server-nodocker
 
 # taking version of coolwsd:
 pkgver=23.05.1.2
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.collaboraoffice.com/code/"
 license=('MPL')
@@ -179,7 +179,6 @@ _upstream_equiv='
   libgcc1             = gcc-libs
   libpam0g            = pam
   libpng12-0          = libpng12
-  libssl1.0.0         = openssl-1.0
   libstdc++6          = gcc-libs
   openssh-client      = openssh
   systemd             = systemd
