@@ -13,8 +13,8 @@ license=('MIT')
 arch=('x86_64')
 makedepends=('scons' 'gcc' 'git')
 depends=('pkgconf' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'mesa' 'glu' 'libglvnd' 'alsa-lib' 'pulseaudio')
-source=("godot::git+https://github.com/godotengine/godot.git#branch=4.0"
-        "voxel::git+https://github.com/Zylann/godot_voxel.git#branch=godot4.0"
+source=("godot::git+https://github.com/godotengine/godot.git#commit=5222a99f5d38cd5346254cefed8f65315bca4fcb"
+        "voxel::git+https://github.com/Zylann/godot_voxel.git#commit=3e2d236a0eb85e7bb7381d7f465fecfb42fe19e8"
         "$pkgname.desktop" )
 sha256sums=('SKIP'
             'SKIP'
