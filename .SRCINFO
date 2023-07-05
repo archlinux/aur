@@ -1,6 +1,6 @@
 pkgbase = godot-voxel
 	pkgdesc = The Godot game engine with Zylann's voxel tools module
-	pkgver = 4.0
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://voxel-tools.readthedocs.io/
 	arch = x86_64
