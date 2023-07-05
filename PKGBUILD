@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-liboqs
 _name=liboqs-python
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Python 3 bindings for liboqs"
 arch=('any')
 url="https://github.com/open-quantum-safe/liboqs-python"
@@ -16,7 +16,7 @@ makedepends=(
 )
 checkdepends=('python-nose2')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/open-quantum-safe/$_name/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('8c8f65e4693c577944d441a4afa096598492b2644ce53ccd06198e5c1946d467346a50d5a63e859d954183f651ad29cbb6eba94e93cf5ee56f2319982f600188')
+b2sums=('b7b19092eccc33804b11e907d7fa69dc42511e7fff6a3026380ac31f2a8c1486222cbbff92e538aafd165e8ace36acb7d055bf42749bf1dc834e7fffb3e457f9')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -34,5 +34,5 @@ check() {
 package() {
     cd "${srcdir}/${_name}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
