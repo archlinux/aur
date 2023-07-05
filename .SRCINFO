@@ -1,18 +1,18 @@
 pkgbase = uptime-kuma
 	pkgdesc = A free and open source uptime monitoring solution
-	pkgver = 1.22.0
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://github.com/louislam/uptime-kuma
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = uptime-kuma-1.22.0.tar.gz
-	source = uptime-kuma-1.22.0.tar.gz::https://github.com/louislam/uptime-kuma/archive/refs/tags/1.22.0.tar.gz
-	source = uptime-kuma-dist-1.22.0.tar.gz::https://github.com/louislam/uptime-kuma/releases/download/1.22.0/dist.tar.gz
+	noextract = uptime-kuma-1.22.1.tar.gz
+	source = uptime-kuma-1.22.1.tar.gz::https://github.com/louislam/uptime-kuma/archive/refs/tags/1.22.1.tar.gz
+	source = uptime-kuma-dist-1.22.1.tar.gz::https://github.com/louislam/uptime-kuma/releases/download/1.22.1/dist.tar.gz
 	source = uptime-kuma.service
-	sha256sums = b2ccc80b95faa56b08f1a81380397a74a97db99d6b259bbdb52cc874b7471299
-	sha256sums = e42470f35010839524346d0e53822b6fcd3e0a13ca589489b91c7550ad102254
+	sha256sums = 1b72331853178b82bc18673a207680d9a999c5a84e296418278084f5206fb91b
+	sha256sums = 212ec06db9a29c668ee3b4814dd9c7c167be9baf627eed160aee18399c3064e4
 	sha256sums = 84ec5db5532ee2e218bc995ef1c04b7a4b9ebe4df198bba99fd031d6b9073796
 
 pkgname = uptime-kuma
