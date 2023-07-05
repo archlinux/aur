@@ -1,0 +1,25 @@
+pkgbase = sam-and-max-hit-the-road
+	pkgdesc = LucasArts 1993 videogame.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/Sam_%26_Max_Hit_the_Road
+	arch = any
+	license = custom
+	depends = scummvm
+	source = https://archive.org/download/samnmaxmt32/MT32_CONTROL.ROM
+	source = https://archive.org/download/samnmaxmt32/MT32_PCM.ROM
+	source = https://archive.org/download/samnmaxmt32/SAMNMAX.000
+	source = https://archive.org/download/samnmaxmt32/SAMNMAX.001
+	source = https://archive.org/download/samnmaxmt32/monster.sog
+	source = com.lucasarts.SamAndMaxHitTheRoad.png::https://archive.org/download/samnmaxmt32/220px-Sam_%26_Max_Hit_the_Road_artwork.jpg
+	source = com.lucasarts.SamAndMaxHitTheRoad.desktop
+	sha256sums = c088c026ad99e13204ac4aa157052f443c52424cbd6394a82abd60bab4c34b91
+	sha256sums = d9164063f293410cf33f2f64cdcea6893b44723fe41938e07ec9aef58b406238
+	sha256sums = 2cd123fe1de4ab729193dbdbdea5a6c016bff35a295d0331a9f7feead131a106
+	sha256sums = 6259d09d4ad5bf1efdb70506ccfcabca52ba79c268a08fde06900ab523a9eb38
+	sha256sums = 4bc00d1a7e35bc293085034240289fc609025f0128365734debacadd3f625d63
+	sha256sums = 476304ea0a4d850d7bc7cb0d3b9f0b4cb623424c184c22ee95cc86cee9466ac7
+	sha256sums = 11d0850717bd4535f8f0f8c360c03191037490185c91b0a4da438a5bd3a55846
+
+pkgname = sam-and-max-hit-the-road-mt32-en
+	provides = sam-and-max-hit-the-road

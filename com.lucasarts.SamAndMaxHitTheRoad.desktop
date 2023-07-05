@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Sam And Max Hit The Road (DOS, MT32A, English)
+GenericName=MonkeyEGA
+Comment=Adventure point-and-click game by LucasArts published in 1991
+Type=Application
+TryExec=scummvm
+Exec=scummvm --path=/usr/games/com.lucasarts.SamAndMaxHitTheRoad/mt32/en samnmax
+Icon=com.lucasarts.SamAndMaxHitTheRoad
+Categories=Games;
+Terminal=false
+Keywords=SamMax
+
+X-Desktop-File-Install-Version=0.26
