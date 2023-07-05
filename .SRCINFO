@@ -1,7 +1,7 @@
 pkgbase = vsgxchange
 	pkgdesc = Utility library for converting data+materials to/from VulkanSceneGraph
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vsg-dev/vsgXchange
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,6 @@ pkgbase = vsgxchange
 	makedepends = assimp
 	makedepends = curl
 	source = vsgxchange-1.0.3.tar.gz::https://github.com/vsg-dev/vsgXchange/archive/refs/tags/v1.0.3.tar.gz
-	source = https://github.com/vsg-dev/vsgXchange/pull/150.patch
 	sha256sums = dc540f56cd92fcd3d1ada424063a971587414d9b8e43907097c758a785b222a5
-	sha256sums = 8b14d4c16cd752503334ca8f77c21550d9e28db419b2011f0c019f20bf233334
 
 pkgname = vsgxchange
