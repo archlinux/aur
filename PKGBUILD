@@ -14,7 +14,7 @@ sha256sums_x86_64=('2b67b7c232e2b0a9a6e08826c33ea0e0c02772b0ffa542bbdeb8fa7d9706
 
 package() {
   depends=('cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2'
-           'libsm' 'libx11' 'libxxf86vm' 'libpng12' 'pango' 'webkitgtk2' 'zlib')
+           'libsm' 'libx11' 'libxxf86vm' 'libpng12' 'pango' 'webkit2gtk' 'zlib')
 
   bsdtar -xf data.tar.xz -C "$pkgdir"
 
