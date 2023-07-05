@@ -11,19 +11,23 @@ makedepends=(asar npm)
 options=(!strip)
 source=("http://irreader.fatecore.com/download/irreader-$pkgver.zip"
 	$pkgname.desktop)
-source_x86_64=("https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v6-linux-glibc-x64.tar.gz")
-source_aarch64=("https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v6-linux-glibc-arm64.tar.gz")
+source_x86_64=("https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v6-linux-glibc-x64.tar.gz"
+	"https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v3-linux-glibc-x64.tar.gz")
+source_aarch64=("https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v6-linux-glibc-arm64.tar.gz"
+	"https://github.com/TryGhost/node-sqlite3/releases/download/v5.1.6/napi-v3-linux-glibc-arm64.tar.gz")
 sha256sums=('d15beff5e8b9ea76f8ede27b1cf2679ebe377293f2e6aef6c5442aad51553ada'
             '65dfbe4147cc28945224bc554e2bdce2c98655d813a7ccb4fcc7de045c1053a9')
-sha256sums_x86_64=('d31475a48731bda50747d4187f46f028565e84086473b55e165e9e4447430164')
-sha256sums_aarch64=('4cfa941ac72e76eac65bb1e6e4668fd5c94c2179c8680c4a445f77644e819d08')
+sha256sums_x86_64=('d31475a48731bda50747d4187f46f028565e84086473b55e165e9e4447430164'
+                   'b841dd05e3abc3f2c659f0f0f213fb61ef22264d4741f569e1ebf00775205943')
+sha256sums_aarch64=('4cfa941ac72e76eac65bb1e6e4668fd5c94c2179c8680c4a445f77644e819d08'
+                    '8e22a82d1ee3c6c415768cc88ecef9d32a5050ac08e4796b96571db0d72246c8')
 
 prepare() {
 	rm *.gz
 	bsdtar -xvpf *.exe ./resources
 	asar e ./**/app.asar ./app
-	echo "exports.is_vip = () => true;" >> ./app/libuser.js
-	echo "exports.vip_source_limit = Infinity;" >> ./app/scs/scsdef.js
+	echo "exports.is_vip = () => true;" >>./app/libuser.js
+	echo "exports.vip_source_limit = Infinity;" >>./app/scs/scsdef.js
 	pushd app
 	cp -av $srcdir/napi-* ./node_modules/sqlite3/lib/binding
 	rm -vrf ./node_modules/node-gyp/
