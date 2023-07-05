@@ -7,7 +7,7 @@ pkgname=libmagick6
 pkgbase=imagemagick6
 _pkgver=6.9.12-90
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (legacy 6.9.12-* series)"
 url="https://legacy.imagemagick.org/"
 arch=('x86_64')
@@ -36,6 +36,7 @@ prepare() {
 
 build() {
   cd ImageMagick-$_pkgver
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT PERL_MB_OPT PERL_MM_OPT
   ./configure \
     PKG_CONFIG="/usr/bin/env PKG_CONFIG_PATH=/usr/lib/$pkgbase/pkgconfig pkg-config" \
     --prefix=/usr \
@@ -74,6 +75,7 @@ build() {
 
 check() (
   cd ImageMagick-$_pkgver
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT PERL_MB_OPT PERL_MM_OPT
   ulimit -n 4096
   make check || :
 )

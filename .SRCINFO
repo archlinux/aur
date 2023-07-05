@@ -1,7 +1,7 @@
 pkgbase = imagemagick6
 	pkgdesc = An image viewing/manipulation program (legacy 6.9.12-* series)
 	pkgver = 6.9.12.90
-	pkgrel = 1
+	pkgrel = 2
 	url = https://legacy.imagemagick.org/
 	arch = x86_64
 	license = custom
