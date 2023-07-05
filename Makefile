@@ -1,3 +1,9 @@
+.SHELL = /usr/bin/env bash
+
+NAME    = "$(shell grep -m 1 pkgname .SRCINFO | cut -d '=' -f 2 | xargs)"
+URL     = "$(shell grep url .SRCINFO | cut -d '=' -f 2 | xargs)"
+VERSION = "$(shell grep pkgver .SRCINFO | cut -d '=' -f 2 | xargs)"
+
 .PHONY: all
 all: build git install
 
@@ -16,7 +22,7 @@ srcinfo:
 
 .PHONY: makepkg
 makepkg:
-	makepkg -s
+	makepkg --syncdeps --force
 
 .PHONY: build
 build: geninteg srcinfo makepkg
@@ -29,7 +35,6 @@ git_add:
 	git add PKGBUILD .SRCINFO Makefile
 
 .PHONY: git_commit
-git_commit: VERSION = "$(shell grep pkgver .SRCINFO | cut -d '=' -f 2 | xargs)"
 git_commit: GIT_STATUS = "$(shell git status --porcelain)"
 git_commit:
 	[ -n ${GIT_STATUS} ] && git commit -m "Update to ${VERSION}"
@@ -39,6 +44,13 @@ install:
 	makepkg --repackage --install --force
 
 .PHONY: open
-open: URL = "$(shell grep url .SRCINFO | cut -d '=' -f 2 | xargs)"
 open:
 	xdg-open $(URL)
+
+.PHONY: run
+run:
+	env $(NAME)
+
+.PHONY: test
+test:
+	env $(NAME) --version
