@@ -1,40 +1,29 @@
-# Maintainer: Yigit Sever <yigit at yigitsever dot com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Yigit Sever <yigit at yigitsever dot com>
 pkgname=ouch-bin
-_pkgname=${pkgname%-bin}
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Painless compression and decompression in the terminal (binary release)"
-arch=('x86_64')
+arch=('aarch64' 'armv7h' 'x86_64')
 url="https://github.com/ouch-org/ouch"
 license=('MIT')
-provides=(${_pkgname})
-conflicts=(${_pkgname} ${_pkgname}-git)
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/ouch-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('b27902df86aa2b4df28e1d53214af1d5391beabd4c1cbee850d80c2168329d62')
-
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+depends=('xz' 'gcc-libs' 'zlib' 'glibc')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-aarch64-unknown-linux-gnu.tar.gz")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.tar.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-armv7-unknown-linux-gnueabihf.tar.gz")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${pkgname%-bin}-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums_aarch64=('b1a6d445a4f7112ec06a68ff5f6883dae6d919dfd3f60b3a2741197158ae0664')
+sha256sums_armv7h=('979b1d5d4ea1146f95d585359138b1d4c0131fb6e914a3dcfae7018d0f9bfacb')
+sha256sums_x86_64=('b27902df86aa2b4df28e1d53214af1d5391beabd4c1cbee850d80c2168329d62')
 package() {
-  # Binary releaes is archived in a folder with a generic name, it is not ideal
-  # (e.g. aur helpers will complain about name clashes)
-  # So we fix it
-  cd "${srcdir}"
-  mkdir "${_pkgname}-${pkgver}"
-  mv "${srcdir}/ouch-x86_64-unknown-linux-gnu/"* "${_pkgname}-${pkgver}"
-  rmdir ouch-x86_64-unknown-linux-gnu
-
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-
-  install -Dm0755 -t "${pkgdir}/usr/bin" "${_pkgname}"
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
-
-  # install manpages
-  install -Dm0644 "man/${_pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
-  install -Dm0644 "man/${_pkgname}-compress.1" -t "${pkgdir}/usr/share/man/man1"
-  install -Dm0644 "man/${_pkgname}-decompress.1" -t "${pkgdir}/usr/share/man/man1"
-  install -Dm0644 "man/${_pkgname}-list.1" -t "${pkgdir}/usr/share/man/man1"
-
-  # install shell completions
-  install -Dm0644 "completions/${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
-  install -Dm0644 "completions/${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-  install -Dm0644 "completions/_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+    mv "${srcdir}/${pkgname%-bin}-${CARCH}"* "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}"
+    install -Dm0755 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}/${pkgname%-bin}" -t "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm0644 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm0644 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}/man/${pkgname%-bin}"* -t "${pkgdir}/usr/share/man/man1"
+    install -Dm0644 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}/completions/${pkgname%-bin}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-bin}"
+    install -Dm0644 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}/completions/${pkgname%-bin}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname%-bin}.fish"
+    install -Dm0644 "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}/completions/_${pkgname%-bin}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname%-bin}"
+    install -Dm0755 -d "${pkgdir}/usr/bin"
+    ln -s "/opt/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}" 
 }
