@@ -9,7 +9,7 @@ depends=("wxwidgets-gtk3")
 license=("GPL3")
 makedepends=("git" "cmake" "scdoc")
 url="https://github.com/nicolarevelant/italian-draughts"
-source=("$pkgname"::"git+$url"
+source=("$pkgname"::"git+$url.git"
 	'italian-draughts.desktop')
 sha256sums=('SKIP'
 	'99625c7024e47343e9e838abdbc8d30613841afef84afb1fab54f7e024535d00')
