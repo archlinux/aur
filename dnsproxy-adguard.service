@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Restart=always
 DynamicUser=true
-StateDirectory=adguardhome
-WorkingDirectory=/var/lib/adguardhome
+StateDirectory=dnsproxy-adguard
+WorkingDirectory=/var/lib/dnsproxy-adguard
 EnvironmentFile=/etc/conf.d/dnsproxy-adguard
 ExecStart=/usr/bin/dnsproxy-adguard -l $ADDRESS -p $PORT $UPSTREAMS $OTHER_PARAMS 
 
