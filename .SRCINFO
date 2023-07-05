@@ -1,21 +1,29 @@
 pkgbase = mark-mind
 	pkgdesc = Mark Mind — Next generation mind map editor
 	pkgver = 1.3.1
-	pkgrel = 1
-	url = https://github.com/MarkMindLtd/Mark-Mind
+	pkgrel = 2
+	url = https://github.com/MarkMindCkm/Mark-Mind
 	arch = any
 	license = MIT
-	makedepends = coreutils
-	depends = electron9
-	provides = mark-mind
-	conflicts = mark-mind
-	replaces = mark-mind
 	options = !strip
-	source = Mark-Mind-1.3.1.AppImage::https://github.com/MarkMindLtd/Mark-Mind/releases/download/v1.3.1/Mark.Mind-1.3.1.AppImage
+	source = Mark-Mind-1.3.1.tar.gz::https://github.com/MarkMindCkm/Mark-Mind/archive/refs/tags/v1.3.1.tar.gz
+	source = Mark-Mind-1.3.1.AppImage::https://github.com/MarkMindCkm/Mark-Mind/releases/download/v1.3.1/Mark.Mind-1.3.1.AppImage
 	source = io.github.markmindltd.mark_mind.desktop
 	source = io.github.markmindltd.mark_mind.metainfo.xml
+	sha256sums = c51bc35ebcca1416fb3b41059abb33931db43a2efca070e931d5971d85f1921e
 	sha256sums = 88e27420e23395e03af6bbfde10777e6b31b1dcf974a2f0e3dab5fd95eac62b2
 	sha256sums = bc8c6db34688ad87879871a9ea28c088a1f44fcdfb7f4e4aef52a425283dde9f
 	sha256sums = c0050afe68a3c62cc8f15508b1209a41eae4cbd7e358a0bf0ae20bc37178f35f
 
 pkgname = mark-mind
+	pkgdesc = Mark Mind — Next generation mind map editor (electron)
+	depends = electron
+	depends = coreutils
+	depends = npm
+	provides = mark-mind
+	conflicts = mark-mind
+
+pkgname = mark-mind-appimage
+	pkgdesc = Mark Mind — Next generation mind map editor (AppImage)
+	provides = mark-mind-appimage
+	conflicts = mark-mind-appimage
