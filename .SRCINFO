@@ -6,7 +6,6 @@ pkgbase = joshuto-bin
 	arch = x86_64
 	license = LGPL3
 	depends = gcc-libs
-	depends = glibc
 	provides = joshuto
 	conflicts = joshuto
 	conflicts = joshuto-git
