@@ -1,6 +1,6 @@
-# Maintainer: Erik Zenker <erikzenker at posteo dot de>
+# Maintainer: Dominic Hamon <dma at hey dot com>
 pkgname=benchmark-git
-pkgver=v1.4.1.r19.g1f35fa4
+pkgver=v1.8.1.r2.g43b2917d
 pkgrel=1
 pkgdesc="A microbenchmark support library, by Google"
 arch=('i686' 'x86_64')
@@ -22,7 +22,9 @@ prepare() {
            -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_INSTALL_LIBDIR=lib \
            -DBUILD_SHARED_LIBS=ON \
-           -DBENCHMARK_ENABLE_LTO=ON
+           -DBENCHMARK_ENABLE_LTO=ON \
+           -DBENCHMARK_USE_BUNDLED_GTEST=OFF \
+           -DBENCHMARK_ENABLE_ASSEMBLY_TESTS=OFF
 }
 
 pkgver() {

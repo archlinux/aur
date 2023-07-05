@@ -1,6 +1,6 @@
 pkgbase = benchmark-git
 	pkgdesc = A microbenchmark support library, by Google
-	pkgver = v1.0.0.r240.g4f8bfea
+	pkgver = v1.8.1
 	pkgrel = 1
 	url = https://github.com/google/benchmark}
 	arch = i686
@@ -8,8 +8,9 @@ pkgbase = benchmark-git
 	license = Apache
 	makedepends = cmake
 	depends = gcc-libs
+	depends = gtest
+	depends = gmock
 	source = benchmark-git::git+https://github.com/google/benchmark.git
 	sha256sums = SKIP
 
 pkgname = benchmark-git
-
