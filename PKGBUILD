@@ -6,30 +6,45 @@ _name="GeoAlchemy2"
 pkgdesc="Using SQLAlchemy with Spatial Databases"
 url="https://geoalchemy-2.readthedocs.io/"
 
-pkgver=0.13.3
+pkgver=0.14.0
 pkgrel=1
 
 arch=("any")
 license=("MIT")
 
+depends=(
+    "python"
+    "python-packaging"
+    "python-shapely"
+    "python-sqlalchemy>=1.4"
+)
 makedepends=(
     "python-build"
     "python-installer"
     "python-setuptools-scm"
     "python-wheel"
 )
-depends=(
-    "python"
-    "python-shapely"
-    "python-sqlalchemy"
+checkdepends=(
+    "flake8"
+    "python-alembic"
+    "python-mysqlclient"
+    "python-pytest"
+    "python-pytest-cov"
+    "python-pytest-html"
+    "python-rasterio"
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('2b005639efab15e283b4cf40d2e2949c53ed18ab30f5c77fa80ac8c7fa091566a7255ace768847dc9a67715014b3929c8b1be1d56cb160d89ee2db3811428196')
+b2sums=("f551c0f9b48c83f2f10e9e12f578e5be3b20472cb1d528271dbcbce7bdc91e21e15e04f00bb8aca1f001bb94c059c75e50a93d24dbff9d284607cdb12a00cbe1")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${srcdir}"/${_name}-${pkgver}
+    python -m pytest --exitfirst -k "not mysql and not postgresql"
 }
 
 package() {
