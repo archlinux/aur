@@ -2,12 +2,12 @@
 
 pkgname=slidgnal-git
 pkgver=r4.a5d9afa
-pkgrel=1
+pkgrel=2
 pkgdesc='Feature-rich Signal to XMPP puppeteering gateway, based on slidge'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://git.sr.ht/~nicoco/slidgnal"
 license=('AGPL3')
-depends=('python' 'python-slidge' 'python-emoji' 'signald')
+depends=('python' 'python-slidge' 'python-emoji' 'python-aiosignald')
 makedepends=('git' 'python-build' 'python-wheel' 'python-installer' 'python-setuptools')
 provides=('slidgnal')
 conflicts=('slidgnal')
