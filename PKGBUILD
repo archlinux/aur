@@ -4,40 +4,48 @@
 # NOTE: can currently not be built using devtools:
 # https://github.com/monocasual/giada/issues/553
 pkgname=giada
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=(x86_64)
 url="https://www.giadamusic.com/"
 license=(GPL3)
 groups=(pro-audio)
-depends=(gcc-libs glibc hicolor-icon-theme libx11 libxcursor libxft libxinerama libxpm fmt)
+depends=(gcc-libs glibc hicolor-icon-theme libx11 libxcursor libxft libxinerama libxpm fmt libsm libxrender libxext libxfixes fontconfig libice python)
 options=(!buildflags !makeflags)
 # upstream vendors a hacked rtaudio :(
-makedepends=(alsa-lib cmake imagemagick jack libpulse libsamplerate libsndfile libxrandr nlohmann-json rtmidi sed git)
+makedepends=(alsa-lib cmake imagemagick jack libpulse libsamplerate libsndfile nlohmann-json rtmidi git)
 checkdepends=(catch2)
 provides=(vst3-host giada)
 source=(
-"$pkgname-$pkgver::git+https://github.com/monocasual/giada/#tag=v$pkgver" "git+https://github.com/juce-framework/JUCE.git"
-"git+https://github.com/steinbergmedia/vst3sdk.git" "git+https://github.com/monocasual/rtaudio.git" "git+https://github.com/monocasual/geompp.git" "git+https://github.com/monocasual/mcl-audio-buffer.git" "git+https://github.com/monocasual/mcl-atomic-swapper.git" "git+https://github.com/fltk/fltk.git"
-"fmt-gcc12.patch"
+"$pkgname-$pkgver::git+https://github.com/monocasual/giada/#tag=v$pkgver"
+"git+https://github.com/juce-framework/JUCE.git#tag=7.0.5"
+"git+https://github.com/steinbergmedia/vst3sdk.git"
+"git+https://github.com/monocasual/rtaudio.git"
+"git+https://github.com/monocasual/geompp.git"
+"git+https://github.com/monocasual/mcl-audio-buffer.git"
+"git+https://github.com/monocasual/mcl-atomic-swapper.git"
+"git+https://github.com/fltk/fltk.git"
+"git+https://github.com/cameron314/concurrentqueue.git"
+"cstdint.patch"
 )
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
-b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+b2sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
   cd "$pkgname-$pkgver"
   git submodule init
-  git config submodule.externals/vendor/JUCE.url "$srcdir/JUCE"
-  git config submodule.externals/vendor/mcl-audio-buffer.url "$srcdir/mcl-audio-buffer"
-  git config submodule.externals/vendor/mcl-atomic-swapper.url "$srcdir/mcl-atomic-swapper"
-  git config submodule.externals/vendor/rtaudio.url "$srcdir/rtaudio"
-  git config submodule.externals/vendor/vst3sdk.url "$srcdir/vst3sdk"
-  git config submodule.externals/vendor/geompp.url "$srcdir/geompp"
-  git config submodule.externals/vendor/fltk.url "$srcdir/fltk"
+  git config submodule.src/deps/juce.url "$srcdir/JUCE"
+  git config submodule.src/deps/mcl-audio-buffer.url "$srcdir/mcl-audio-buffer"
+  git config submodule.src/deps/mcl-atomic-swapper.url "$srcdir/mcl-atomic-swapper"
+  git config submodule.src/deps/rtaudio.url "$srcdir/rtaudio"
+  git config submodule.src/deps/vst3sdk.url "$srcdir/vst3sdk"
+  git config submodule.src/deps/geompp.url "$srcdir/geompp"
+  git config submodule.src/deps/fltk.url "$srcdir/fltk"
+  git config submodule.src/deps/concurrentqueue.url "$srcdir/concurrentqueue"
   git -c protocol.file.allow=always submodule update
 
-  patch -p1 -i "../fmt-gcc12.patch"
+  patch -p1 -i "../cstdint.patch"
 }
 
 build() {
@@ -49,8 +57,7 @@ build() {
         -W no-dev \
         -B build \
         -S "$pkgname-$pkgver"
-  #fix for libdl.so version
-  #sed -i "s/libdl.so/libdl.so.2/g" "build/CMakeFiles/giada.dir/build.make"
+
   make VERBOSE=1 -C build
 }
 
