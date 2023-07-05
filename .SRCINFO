@@ -1,0 +1,20 @@
+pkgbase = kubevpn-bin
+	pkgdesc = Access kubernetes via VPN
+	pkgver = 1.1.33
+	pkgrel = 1
+	url = https://github.com/KubeNetworks/kubevpn
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	provides = kubevpn
+	conflicts = kubevpn
+	source_x86_64 = https://github.com/KubeNetworks/kubevpn/releases/download/v1.1.33/kubevpn_v1.1.33_linux_amd64.zip
+	sha256sums_x86_64 = b176277de80fdbdccba2a21c544085e2a957159d2fca19371a0b7168d6cfbba3
+	source_aarch64 = https://github.com/KubeNetworks/kubevpn/releases/download/v1.1.33/kubevpn_v1.1.33_linux_arm64.zip
+	sha256sums_aarch64 = c8bc40a1d0fd518b07481288f94af9002e2c450cdb1620df003857f0e2a7d4fc
+	source_armv7h = https://github.com/KubeNetworks/kubevpn/releases/download/v1.1.33/kubevpn_v1.1.33_linux_arm64.zip
+	sha256sums_armv7h = c8bc40a1d0fd518b07481288f94af9002e2c450cdb1620df003857f0e2a7d4fc
+
+pkgname = kubevpn-bin
+
