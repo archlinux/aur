@@ -1,6 +1,6 @@
 pkgbase = electron23-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - Binary version 23
-	pkgver = 23.3.0
+	pkgver = 23.3.9
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -18,16 +18,16 @@ pkgbase = electron23-bin
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop’s default (xdg-email, xdg-open)
-	provides = electron23=23.3.0
-	provides = electron=23.3.0
+	provides = electron23=23.3.9
+	provides = electron=23.3.9
 	conflicts = electron23
-	source_x86_64 = electron23-bin-chromedriver-23.3.0-x86_64.zip::https://github.com/electron/electron/releases/download/v23.3.0/chromedriver-v23.3.0-linux-x64.zip
-	source_x86_64 = electron23-bin-23.3.0-x86_64.zip::https://github.com/electron/electron/releases/download/v23.3.0/electron-v23.3.0-linux-x64.zip
-	sha256sums_x86_64 = 7435f920f9101eb4245a01a8e6ba225943c89563cf75767ebb32e205c12f332e
-	sha256sums_x86_64 = 7e64cf7fbd5c17aaf09ef890d3bafd4d7d5f24c69f9413361fb85a0bc2fd669a
-	source_aarch64 = electron23-bin-chromedriver-23.3.0-aarch64.zip::https://github.com/electron/electron/releases/download/v23.3.0/chromedriver-v23.3.0-linux-arm64.zip
-	source_aarch64 = electron23-bin-23.3.0-aarch64.zip::https://github.com/electron/electron/releases/download/v23.3.0/electron-v23.3.0-linux-arm64.zip
-	sha256sums_aarch64 = 970e5f24ceafe93d5ee8fdc16fe1841cbd91f1d73c6a56b6fd59a03a571b70a2
-	sha256sums_aarch64 = ffed193406d518eaaf393094413edcaf4dde182a970e092b8050712c20623ac7
+	source_x86_64 = electron23-bin-chromedriver-23.3.9-x86_64.zip::https://github.com/electron/electron/releases/download/v23.3.9/chromedriver-v23.3.9-linux-x64.zip
+	source_x86_64 = electron23-bin-23.3.9-x86_64.zip::https://github.com/electron/electron/releases/download/v23.3.9/electron-v23.3.9-linux-x64.zip
+	sha256sums_x86_64 = 22fc49329fe55d7baedffcb952d31619464699ff8e199c1621226c985d7475b8
+	sha256sums_x86_64 = 10479bacbba8af4a5ff34c856017b5afb6e27bd806014d6632f552659118a833
+	source_aarch64 = electron23-bin-chromedriver-23.3.9-aarch64.zip::https://github.com/electron/electron/releases/download/v23.3.9/chromedriver-v23.3.9-linux-arm64.zip
+	source_aarch64 = electron23-bin-23.3.9-aarch64.zip::https://github.com/electron/electron/releases/download/v23.3.9/electron-v23.3.9-linux-arm64.zip
+	sha256sums_aarch64 = c86a5a31797bc4f95bd8525d3ae7dd1913136374b960397998069e48bb283b0d
+	sha256sums_aarch64 = 8d4ba11d1342898e2b7fea24e0053bc2ec81ab62ae2373ca5a458c8c482899b1
 
 pkgname = electron23-bin
