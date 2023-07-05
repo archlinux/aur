@@ -1,10 +1,11 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gmail-desktop
-_pkgver=3.0.0-alpha.35
+_pkgver=3.0.0-alpha.36
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 _nodeversion=14
-_electronversion=20
+_electronversion=25
 pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
 url="https://github.com/timche/gmail-desktop"
@@ -16,8 +17,8 @@ optdepends=('libnotify: desktop notifications'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('f22b10215586d5d879ea98a1671e6c0aac4b1166cff765f197f8e21f2bd66998'
-            'b3b54bafd3d986492a29f6200abe8857f877a7bdb27f3db02578bd43bc9ba131'
+sha256sums=('0ac24a4c5db9fa5b0c9a46f0812014a9c95fb6c8b7443510f653b07cc35392f9'
+            '061a908aff82379fbaaabdf0227479b4a9efed96a7558fd9fbe0f12da837b2cb'
             'b9a4fba1916c8b3e2ec55593b5700019c66c05a5da8f2f1b3f91edaddf0009dd')
 
 _ensure_local_nvm() {
