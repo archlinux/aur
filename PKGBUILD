@@ -107,6 +107,7 @@ build() {
   cd build
 
   cmake .. \
+    -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="/usr/lib" \
     -DCOMPIZ_DISABLE_SCHEMAS_INSTALL=On \
