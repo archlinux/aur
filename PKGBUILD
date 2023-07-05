@@ -1,20 +1,18 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=plow-bin
 pkgver=1.3.1
-pkgrel=1
-pkgdesc="High-performance HTTP benchmarking tool"
+pkgrel=2
+pkgdesc="A high-performance HTTP benchmarking tool that includes a real-time web UI and terminal display"
 arch=('x86_64' 'aarch64')
 url="https://github.com/six-ddc/plow"
 license=('Apache')
-provides=('plow')
-conflicts=('plow')
-source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/plow_${pkgver}_linux_amd64.tar.gz")
-source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/plow_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('7cc1426f28a102542903033ac364b3abc11311326e3bc2bfd3e8ccc68a303a17')
-sha256sums_aarch64=('9a7698dad20bdae7e43365ea78bd211437418e822a569af1da37651cc8174243')
-
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd64.deb")
+sha256sums_x86_64=('a4348199343ce50894df6c16487c754826a53794470e70d854b261c379a053f5')
+sha256sums_aarch64=('1312d8973e7a6f5878caf68f9565648cc753304ae7900bd5ce2fa1723bb415b1')
 package() {
-	install -D plow -t "$pkgdir/usr/bin"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
 }
