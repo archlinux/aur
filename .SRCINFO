@@ -1,7 +1,7 @@
 pkgbase = nvc
 	pkgdesc = VHDL compiler and simulator
 	pkgver = 1.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nickg.me.uk/nvc
 	arch = x86_64
 	arch = i686

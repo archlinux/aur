@@ -2,7 +2,7 @@
 pkgdesc='VHDL compiler and simulator'
 pkgname=nvc
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 url=https://www.nickg.me.uk/nvc
 license=(GPL3)
 conflicts=(nvc-git)
@@ -47,5 +47,4 @@ package () {
 	make -C_build DESTDIR="${pkgdir}" install
 
 	install -Dm755 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
-	install -Dm755 -t "${pkgdir}/usr/share/doc/${pkgname}/tools" tools/*.rb
 }
