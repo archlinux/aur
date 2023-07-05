@@ -18,6 +18,7 @@ prepare() {
   git clone --depth 1 -b V9_11_0 https://git.salome-platform.org/gitpub/tools/configuration.git
   sed -i "s|Ws2_32.lib|ws2_32|g" configuration/cmake/SalomeSetupPlatform.cmake
   sed -i "s|Userenv|userenv|g" configuration/cmake/SalomeSetupPlatform.cmake
+  curl -L https://github.com/jschueller/medcoupling/commit/7de0382.patch | patch -p1
 }
 
 build() {
@@ -25,7 +26,7 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DMEDCOUPLING_BUILD_DOC=OFF -DMEDCOUPLING_ENABLE_PYTHON=OFF -DMEDCOUPLING_BUILD_TESTS=OFF \
-      -DCONFIGURATION_ROOT_DIR="$srcdir"/medcoupling/configuration ..
+      -DCONFIGURATION_ROOT_DIR="$srcdir"/medcoupling/configuration -DMEDCOUPLING_USE_64BIT_IDS=OFF ..
     make
     popd
   done
