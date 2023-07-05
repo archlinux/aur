@@ -26,9 +26,10 @@ def main():
     our_last = get_our_last()
     their_last = get_their_last()
     if our_last == their_last:
+        print('We\'re up to date; no worries.')
         return
     
-    print('new their last:', their_last)
+    print('New last successful build:', their_last)
     with open('PKGBUILD') as pkgbuild_file:
         lines = pkgbuild_file.readlines()
     assert(lines[12] == '_known_good_commit=%s\n' % our_last)
@@ -41,6 +42,11 @@ def main():
     
     with open('last_successful_commit.txt', 'w') as last_file:
         last_file.write(their_last)
+    
+    print('PKGBUILD has been updated. Updating .SRCINFO...')
+    subprocess.run(['makepkg', '--printsrcinfo'], stdout=open('.SRCINFO', 'wb'))
+    
+    print('Please build and test before pushing.')
 
 if __name__ == '__main__':
     main()

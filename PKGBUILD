@@ -8,12 +8,17 @@
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
 
 pkgbase=tensorflow-amd-git
-pkgname=(tensorflow-amd-git python-tensorflow-amd-git tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
+_build_no_opt=1
+_build_opt=0
+
+[ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-amd-git python-tensorflow-amd-git)
+[ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
+
 pkgver=2.12.0
 _known_good_commit=de8086e14ae3152906e1137c212d2f7bb8ea463a
 # You can find the latest probably successful official build at:
 # http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/
-# Specifically, the revision for the "ROCmSoftwarePlatform/tensorflow-upstream" repository.
+# Look for the revision for the "ROCmSoftwarePlatform/tensorflow-upstream" repository.
 pkgrel=6
 pkgdesc="Library for scalable machine learning (with ROCm)"
 url="https://www.tensorflow.org/"
@@ -22,8 +27,9 @@ arch=('x86_64')
 
 depends=('c-ares' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'openmp' \
          'rocrand' 'rccl' 'miopen-hip' 'hipfft' \
-         'lib32-icu' 'zlib' 'glibc' 'gcc-libs' 'hsa-rocr' 'hip-runtime-amd' )
-         # lib32-icu etc. were discovered with namcap.
+         'zlib' 'glibc' 'gcc-libs' 'hsa-rocr' 'hip-runtime-amd' )
+         # zlib etc. were discovered with namcap.
+         # namcap also suggests libicu-32, but that breaks building in clean chroot cuz I'm too lazy to figure out multilib
 makedepends=('python-numpy' 'git' 'python-wheel' \
              'python-installer' 'python-setuptools' 'python-h5py' 'python-keras-applications' \
              'python-keras-preprocessing' 'cython' 'patchelf' 'python-requests' \
@@ -90,7 +96,6 @@ prepare() {
   # Since Tensorflow is currently incompatible with Bazel 6, we're going to use
   # a local Bazel 5 to fix that. Stupid problems call for stupid solutions.
   install -Dm755 "${srcdir}"/bazel_nojdk-5.4.0-linux-x86_64 bazel/bazel
-  bazel --version
 
   # Get rid of hardcoded versions. Not like we ever cared about what upstream
   # thinks about which versions should be used anyway. ;) (FS#68772)
@@ -127,6 +132,9 @@ prepare() {
 build() {
   # Use outdated bazel since tensorflow is configured for that,
   #  and use outdated java since bazel needs specifically java 11.
+  # If the user installs any other version of java before 11,
+  #  /usr/lib/jvm/default will point to the first install,
+  #  so put java 11 in PATH.
   PATH="/usr/lib/jvm/java-11-openjdk/bin:$PATH"
   export PATH="${srcdir}/bazel:$PATH"
   # bazel somehow caches the jvm,
@@ -165,37 +173,41 @@ build() {
       fi
   fi
   
-  echo "Building with rocm and without non-x86-64 optimizations"
-  cd "${srcdir}"/tensorflow-upstream-rocm
+  if [ "$_build_no_opt" -eq 1 ]; then
+    echo "Building with rocm and without non-x86-64 optimizations"
+    cd "${srcdir}"/tensorflow-upstream-rocm
+    
+    export CC_OPT_FLAGS="-march=x86-64"
+    export TF_NEED_CUDA=0
+    export TF_NEED_ROCM=1
+    ./configure
+    
+    bazel \
+      build ${BAZEL_ARGS[@]} \
+        //tensorflow:libtensorflow.so \
+        //tensorflow:libtensorflow_cc.so \
+        //tensorflow:install_headers \
+        //tensorflow/tools/pip_package:build_pip_package
+    bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}"/tmprocm --rocm
+  fi
   
-  export CC_OPT_FLAGS="-march=x86-64"
-  export TF_NEED_CUDA=0
-  export TF_NEED_ROCM=1
-  ./configure
-  
-  bazel \
-    build ${BAZEL_ARGS[@]} \
-      //tensorflow:libtensorflow.so \
-      //tensorflow:libtensorflow_cc.so \
-      //tensorflow:install_headers \
-      //tensorflow/tools/pip_package:build_pip_package
-  bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}"/tmprocm --rocm
-  
-  echo "Building with rocm and non-x86-64 optimizations"
-  cd "${srcdir}"/tensorflow-upstream-opt-rocm
-  
-  export CC_OPT_FLAGS="-march=haswell -O3"
-  export TF_NEED_CUDA=0
-  export TF_NEED_ROCM=1
-  ./configure
-  
-  bazel \
-    build ${BAZEL_ARGS[@]} \
-      //tensorflow:libtensorflow.so \
-      //tensorflow:libtensorflow_cc.so \
-      //tensorflow:install_headers \
-      //tensorflow/tools/pip_package:build_pip_package
-  bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}"/tmpoptrocm --rocm
+  if [ "$_build_no_opt" -eq 1 ]; then
+    echo "Building with rocm and non-x86-64 optimizations"
+    cd "${srcdir}"/tensorflow-upstream-opt-rocm
+    
+    export CC_OPT_FLAGS="-march=haswell -O3"
+    export TF_NEED_CUDA=0
+    export TF_NEED_ROCM=1
+    ./configure
+    
+    bazel \
+      build ${BAZEL_ARGS[@]} \
+        //tensorflow:libtensorflow.so \
+        //tensorflow:libtensorflow_cc.so \
+        //tensorflow:install_headers \
+        //tensorflow/tools/pip_package:build_pip_package
+    bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}"/tmpoptrocm --rocm
+  fi
 }
 
 _package() {
