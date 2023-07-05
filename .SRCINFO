@@ -1,0 +1,12 @@
+pkgbase = agreader
+	pkgdesc = Console browser for Amiga Guide format files
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://aminet.net/package/misc/unix/AGReader.tar.bz2
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = http://aminet.net/misc/unix/AGReader.tar.bz2
+	b2sums = 60476af33448acd03d136154a23a25e1f795c8810d5dfe5005eff8835c06ef1d70e9ab5ad8a726f15aa6958cc43133b92e9d58ec53e036ed1ee5d00bb8fdb4e3
+
+pkgname = agreader
