@@ -1,17 +1,16 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Henrique C. Alves <hcarvalhoalves@gmail.com>
 
 pkgname=libmatchbox
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Base library for Matchbox WM"
 arch=('x86_64')
 license=('LGPL')
-depends=('pango' 'libpng' 'libjpeg>=7' 'xsettings-client' 'libxext')
-url="http://matchbox-project.org/"
-source=("http://git.yoctoproject.org/cgit/cgit.cgi/libmatchbox/snapshot/libmatchbox-$pkgver.tar.bz2")
-sha256sums=('5c7795e46c24d848a2b960f3b994911165d95e5d5731e39105ee0d808d2373eb')
+depends=('pango' 'libpng' 'libjpeg-turbo' 'xsettings-client' 'libxext')
+url="https://www.yoctoproject.org/software-item/matchbox/"
+source=("https://git.yoctoproject.org/libmatchbox/snapshot/libmatchbox-${pkgver}.tar.gz")
+sha256sums=('648d7e1af82e69b79c0932ff9f85e6781584eada5da8662f70196916dd208f55')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
