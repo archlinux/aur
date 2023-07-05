@@ -1,7 +1,7 @@
 # Maintainer: Dwayne Bent <dbb@dbb.io>
 pkgname=systemd-cron
-pkgver=1.15.20
-pkgrel=2
+pkgver=1.15.22
+pkgrel=1
 pkgdesc='systemd units to run cron scripts'
 arch=(any)
 url='https://github.com/systemd-cron/systemd-cron'
@@ -13,7 +13,7 @@ conflicts=('cron')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/systemd-cron/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         'sysusers.conf')
 install=${pkgname}.install
-sha256sums=('c6b2d3c7b325f9878fac253454cb42e6d2527ec8141eb75703fe5c48b2fb4135'
+sha256sums=('b6396f594f55ace4657af259701eb2d1426be711d7fd216b583d1464d05b27d1'
             '9260221879cca05d4c82cd12deb88759c8d9148e106f4b9891700849cef5c41b')
 
 build() {
