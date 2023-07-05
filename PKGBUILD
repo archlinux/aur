@@ -2,15 +2,14 @@
 pkgname=lmaofetch
 pkgver=2.0
 pkgrel=1
-epoch=
 pkgdesc="A simple system fetch written in Bash"
 arch=('any')
 url="https://github.com/p3nguin-kun/lmaofetch"
 license=('MIT')
-depends=('bash' 'ttf-nerd-fonts-symbols')
+depends=('bash')
+optdepends=('nerd-fonts: Icon font')
 makedepends=('git')
 #install=
-changelog=
 source=("$pkgname::git+https://github.com/p3nguin-kun/lmaofetch#tag=${pkgver}")
 noextract=()
 sha512sums=('SKIP')
