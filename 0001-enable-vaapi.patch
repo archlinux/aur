@@ -1,13 +1,13 @@
-diff --color --unified --recursive --text firefox-114.0.2.orig/widget/gtk/GfxInfo.cpp firefox-114.0.2.new/widget/gtk/GfxInfo.cpp
---- firefox-114.0.2.orig/widget/gtk/GfxInfo.cpp	2023-06-21 19:19:01.466886711 +0200
-+++ firefox-114.0.2.new/widget/gtk/GfxInfo.cpp	2023-06-21 20:11:49.836465037 +0200
-@@ -957,14 +957,6 @@
+diff --color --unified --recursive --text firefox-115.0.orig/widget/gtk/GfxInfo.cpp firefox-115.0.new/widget/gtk/GfxInfo.cpp
+--- firefox-115.0.orig/widget/gtk/GfxInfo.cpp	2023-07-04 22:55:57.742252422 +0200
++++ firefox-115.0.new/widget/gtk/GfxInfo.cpp	2023-07-04 22:56:45.117367837 +0200
+@@ -970,14 +970,6 @@
          nsIGfxInfo::FEATURE_BLOCKED_DEVICE, DRIVER_COMPARISON_IGNORED,
          V(0, 0, 0, 0), "FEATURE_HARDWARE_VIDEO_DECODING_NO_R600", "");
  
--    // Disable on Release/late Beta
+-    // Disable on Release/late Beta on AMD
 -#if !defined(EARLY_BETA_OR_EARLIER)
--    APPEND_TO_DRIVER_BLOCKLIST(OperatingSystem::Linux, DeviceFamily::All,
+-    APPEND_TO_DRIVER_BLOCKLIST(OperatingSystem::Linux, DeviceFamily::AtiAll,
 -                               nsIGfxInfo::FEATURE_HARDWARE_VIDEO_DECODING,
 -                               nsIGfxInfo::FEATURE_BLOCKED_DEVICE,
 -                               DRIVER_COMPARISON_IGNORED, V(0, 0, 0, 0),

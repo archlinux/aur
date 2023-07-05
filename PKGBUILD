@@ -5,8 +5,8 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=114.0.2
-pkgrel=2
+pkgver=115.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
 arch=(x86_64)
@@ -77,18 +77,18 @@ source=(
 validpgpkeys=(
   '14F26682D0916CDD81E37B6D61B7B526D98F0353'  # Mozilla Software Releases <release@mozilla.com>
 )
-sha256sums=('aa602032f0b7065b743ba7fabf96714398aba538bcc017a4b0fff556dc69f8fe'
+sha256sums=('7cdb23fe5ccb54334c8fe14c1e5dd89d5788f8e7b79a2bd9cc4eabdc7e54e898'
             'SKIP'
             '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            '1e272a01ed9a1082a0f75b512f24c475e9f0dfe33ecc9934f6d0e874aaf3391f'
-            'bae9186230172277cc6b8a61b46f22990edd03c26d25c9ef0a38702f21c7ec0c')
-b2sums=('9c624a1093d00ccbfdb1f251489b4aecc597c8202e5e82b35266e32520a2b70d2001accdcc999c214d077dcda0708b50467a63fc3d67ac12d02b8153a67a71e3'
+            '5b1db043ba3bce65e9fa2ba06bec73edd769ce6d5135aefa1634ed1285791db2'
+            'c385b268dbbbfc56abe790a329f6ae53819b1e18ecad5dbea958cf9eaabc070d')
+b2sums=('f5489d96be60f3ed5f5657cb43142a876a7ef2bfe46b2ebb54df2b9be8262ab8c8d3aa342adf84fa68ffe0abc63e3b4671f310e0a3dd4c53c137a612e9e67932'
         'SKIP'
         'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
-        'b0605792080a7463bddbe9a2541441a77295753f37651ed7af056d1524524ba5b752d0b079cb95250ebc922151770483852e6f501133a3655b9db189c5303612'
-        'fe9a8583df536126f73fbaf603a410bf7cc38b85c58047fc690c3c7d4df0c0ec5eb3b7f8ce151e6561aa73de2a3c0b1948cc6100b8cc6a2bec7ce2ea86b19b84')
+        '557d08096b4a1773c6c3deab578c88747e62f4e06f19cf3f1c60dac026ad4951191284a64f0b10d0c2be3d11650998eefdb3783ee4929e975cbe5c533971fc5b'
+        '5ab88347bf4c8f562d434eb15f274fb165f8e165bbd10937f1130a3678dbaca855ed86bee3d840be8a49c72db5bb80b7ce8c5bb027d46424e7e3c7d43fe2c8c5')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -222,6 +222,18 @@ pref("browser.shell.checkDefaultBrowser", false);
 
 // Don't disable extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
+
+// Enable GNOME Shell search provider
+pref("browser.gnome-search-provider.enabled", true);
+
+// Enable WebRender
+pref("gfx.webrender.all", true);
+
+// Enable hardware accelerated video
+pref("media.hardware-video-decoding.enabled", true);
+pref("media.hardware-video-decoding.force-enabled", true);
+pref("media.ffmpeg.vaapi.enabled", true);
+pref("media.webrtc.hw.h264.enabled", true);
 END
 
   local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
@@ -269,6 +281,15 @@ END
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
   fi
+
+  local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini"
+  install -Dvm644 /dev/stdin "$sprovider" <<END
+[Shell Search Provider]
+DesktopId=$_pkgname.desktop
+BusName=org.mozilla.${_pkgname//-/}.SearchProvider
+ObjectPath=/org/mozilla/${_pkgname//-/}/SearchProvider
+Version=2
+END
 
   export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
   if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
