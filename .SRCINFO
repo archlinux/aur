@@ -1,12 +1,12 @@
 pkgbase = restack
 	pkgdesc = Makes interactive Git rebase aware of intermediate branches.
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/abhinav/restack
 	arch = any
-	license = MIT
+	license = GPL-2.0
 	makedepends = cargo-nightly
-	source = restack-0.6.1.tar.gz::https://static.crates.io/crates/restack/restack-0.6.1.crate
+	source = restack-0.7.0.tar.gz::https://static.crates.io/crates/restack/restack-0.7.0.crate
 	sha256sums = a6e6381a632104cb2d1a2e2104a98fdab40c23e9f222bdff53641b7bfb3d8513
 
 pkgname = restack
