@@ -1,14 +1,14 @@
 pkgbase = python2-dill
 	pkgdesc = Serialize all of python (almost)
-	pkgver = 0.2.4
+	pkgver = 0.3.5
 	pkgrel = 1
-	url = http://www.cacr.caltech.edu/~mmckerns/dill.htm
+	url = https://github.com/uqfoundation/dill
 	arch = any
 	license = CUSTOM
-	makedepends = python2
+	makedepends = python2-setuptools
 	depends = python2
-	source = https://pypi.python.org/packages/source/d/dill/dill-0.2.4.zip
-	sha256sums = db68929eef0e886055d6bcd86f830141c1f653ddbf5d081c086e9d1c45efb334
+	optdepends = python2-objgraph: graph support
+	source = https://files.pythonhosted.org/packages/source/d/dill/dill-0.3.5.tar.gz
+	sha256sums = 3a11d19c15d409296a2ee714b1dbd5efb733a329f0d89c0e58aad6154ab6f2f5
 
 pkgname = python2-dill
-
