@@ -1,6 +1,6 @@
 # Maintainer: p3nguin-kun <p3nguinkun@proton.me>
 pkgname=lmaofetch
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="A simple system fetch written in Bash"
 arch=('any')
