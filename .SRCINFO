@@ -1,6 +1,6 @@
 pkgbase = python-aiorun
 	pkgdesc = A "run" function for asyncio-based apps that does all the boilerplate
-	pkgver = 2022.11.1
+	pkgver = 2023.7.2
 	pkgrel = 1
 	url = https://github.com/cjrh/aiorun
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-aiorun
 	makedepends = python-installer
 	depends = python
 	optdepends = python-uvloop: alternative asyncio event loop
-	source = https://files.pythonhosted.org/packages/source/a/aiorun/aiorun-2022.11.1.tar.gz
-	sha256sums = d820cebffdea82f9c1750cc396f3a58e4c0d277a2c51f11e86ed6ab7736dce59
+	source = https://files.pythonhosted.org/packages/source/a/aiorun/aiorun-2023.7.2.tar.gz
+	sha256sums = 95e689dc1b263aaf4556ef8fa73ccae68f38ba0f1c1017fe196ef7da244031f9
 
 pkgname = python-aiorun
