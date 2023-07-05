@@ -1,13 +1,13 @@
 pkgbase = sat-tmp-hg
 	pkgdesc = sat_tmp aims to temporary store files needed by Salut-a-toi (sat). These monkey patchs are not merged upstream yet. For now, only wokkel is impacted.
-	pkgver = 0.7.r82.5ea15a760eb4
+	pkgver = 0.7.r88.298dac50ca73
 	pkgrel = 1
 	url = https://salut-a-toi.org/
 	arch = any
 	license = AGPL3
 	makedepends = mercurial
 	depends = python
-	depends = python-wokkel-git
+	depends = python-wokkel
 	provides = sat-tmp
 	conflicts = sat-tmp
 	options = !strip
