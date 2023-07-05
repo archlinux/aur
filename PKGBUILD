@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=FME
-_pkgver=1.3.6.2
+_pkgver=1.3.6.3
 pkgname=r-${_pkgname,,}
-pkgver=1.3.6.2
-pkgrel=4
+pkgver=1.3.6.3
+pkgrel=1
 pkgdesc='A Flexible Modelling Environment for Inverse Modelling, Sensitivity, Identifiability and Monte Carlo Analysis'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('65a200f8171e27f0a3d7ffce3e49b01561f219a11f3cb515ff613a45927ff618')
+sha256sums=('83c4c28ad4f9197610be40fb66f1025f438a46e4085d64b736e83a0ab71e36a1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
