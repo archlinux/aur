@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=needrestart-git
-pkgver=3.6.r0.gbaf5e54
+pkgver=3.6.r8.ga443266
 pkgrel=1
 pkgdesc='Restart daemons after library updates.'
 arch=('any')
@@ -29,14 +29,14 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT PERL_MB_OPT PERL_MM_OPT
   export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
   make
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
+  unset PERL5LIB PERL_LOCAL_LIB_ROOT PERL_MB_OPT PERL_MM_OPT
   make DESTDIR="$pkgdir/" install
 
   # remove empty dirs; '!emptydirs' doesn't remove them
