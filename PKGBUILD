@@ -1,34 +1,24 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
-
 pkgname=authpass-bin
-_pkgname="${pkgname%-bin}"
-pkgver=1.9.7
-_rev=1940
+pkgver=1.9.9
+_rev=1950
 pkgrel=1
-pkgdesc='Keepass compatible password manager based on Flutter'
+pkgdesc='Password Manager based on Flutter for all platforms. Keepass 2.x (kdbx 3.x) compatible.'
 arch=('x86_64')
-url='https://github.com/authpass/authpass'
+url="https://authpass.app/"
+_githuburl="https://github.com/authpass/authpass"
+_downurl="https://data.authpass.app/data/artifacts"
 license=('GPL3')
-depends=('gtk3' 'libsecret' 'libkeybinder3')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=(
-  "$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-${pkgver}_${_rev}.tar.gz"
-  "$_pkgname-$pkgver.svg::$url/raw/v$pkgver/_docs/authpass-logo.svg"
-  "${_pkgname}.desktop")
-sha256sums=('c39456ab421d2c279555ec3bd81de3ac41cb720c49eff1cee82979fd50b30409'
-            '1bfe9685c9399976a872bfcafbe19c16b26063530cdc9184570270d52fe7851b'
-            '8260ede1bb38264aa92227dee1b3edd0d66b1f963872d4254549c08c7ca409dd')
-
+depends=('gtk3' 'libsecret' 'libkeybinder3' 'gcc-libs' 'cairo' 'gdk-pixbuf2' 'libepoxy' 'at-spi2-core' 'glibc' 'pango' 'glib2')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source=("${pkgname%-bin}-${pkgver}.deb::${_downurl}/${pkgname%-bin}-linux-${pkgver}_${_rev}.deb")
+sha256sums=('a80ac234e19f35f6db4858579c963054f7b7ded64f7112478c178940e0d311ba')
 package() {
-  install -Dm644 "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
-  install -Dm644 "$_pkgname-$pkgver.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
-  install -d "$pkgdir/opt/$_pkgname/"
-  install -d "$pkgdir/usr/bin/"
-  cp -a --no-preserve=ownership authpass/* "$pkgdir/opt/$_pkgname/"
-  ln -s "/opt/$_pkgname/$_pkgname" -t "$pkgdir/usr/bin/"
-  chown -R root:root "$pkgdir/"
+    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
+    install -Dm0644 "${pkgdir}/opt/${pkgname%-bin}/icon.svg" "${pkgdir}/usr/share/hicolor/scalable/apps/${pkgname%-bin}"
+    sed "s|/usr/bin/${pkgname%-bin}|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|/opt/${pkgname%-bin}/icon.svg|${pkgname%-bin}|g;s|Network|Network;Utility|g" \
+      -i "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
-
-# vim: ts=2 sw=2 et:
