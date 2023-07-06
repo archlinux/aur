@@ -11,32 +11,31 @@ depends=(python-celery
          python-configula
          python-daphne
          python-django-celery-results
-         python-dj-config-url
-         python-dj-database-url
+         python-django-cors-headers
+         python-django-channels
+         python-django-channels-redis
          python-django-dynamic-preferences
          python-django-filter
          python-django-haystack
          python-django-modelcluster
+         python-django-rest-framework
+         python-django-rest-framework-json-api
          python-django-rest-knox
          python-django-taggit
+         python-drf-spectacular
+         python-drf-spectacular-sidecar
          python-elasticsearch
-         python-fastapi
-         python-httpx   
-         python-jose
          python-lxml
          python-magic
          python-ocrmypdf-papermerge
          python-pdf2image
          python-persisting-theory
          python-psycopg2
-         python-python-multipart
          python-redis
          python-uritemplate
-         python-websockets
-         python-yaml
-         python-xapian
+         python-whoosh
          python-xapian-haystack
-         uvicorn
+         python-yaml
          uwsgi-plugin-python)
 makedepends=(python-build python-installer python-wheel python-poetry-core python-setuptools)
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
