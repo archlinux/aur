@@ -4,22 +4,23 @@
 # Contributor: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
 
 pkgname=amarok-git
-pkgver=2.9.0.r481.g252b9ffcfe
+pkgver=2.9.71.r235.gf57a116362
 pkgrel=1
 pkgdesc="The powerful music player for KDE - GIT version"
 arch=("i686" "x86_64")
 url="http://amarok.kde.org"
 license=('GPL2' 'LGPL2.1' 'FDL')
-depends=('threadweaver' 'qt5-webengine' 'phonon-qt5' 'qt5-script'
-         'kcmutils' 'knewstuff' 'ktexteditor' 'kdnssd' 'knotifyconfig'
-         'libmariadbclient' 'taglib-extras'
-         'qca-qt5' 'liblastfm-qt5' 'ffmpeg')
+depends=('threadweaver' 'qt5-webengine' 'phonon-qt5' 'qt5-declarative'
+         'kcmutils' 'knewstuff' 'ktexteditor' 'kdnssd'
+         'libmariadbclient' 'fftw'
+         'liblastfm-qt5' 'ffmpeg' 'kirigami2')
 makedepends=('git' 'extra-cmake-modules' 'kdoctools')
 optdepends=("libgpod: support for Apple iPod audio devices"
             "libmtp: support for portable media devices"
             "loudmouth: backend needed by mp3tunes for syncing"
             "libmygpo-qt5: gpodder.net Internet Service"
-            "gmock: tests")
+            "gmock: tests"
+	    "taglib-extras: Additional taglib functionality")
 conflicts=('amarok')
 provides=('amarok')
 source=(git+https://invent.kde.org/multimedia/amarok.git)
