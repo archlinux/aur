@@ -9,12 +9,12 @@
 
 pkgname=bluej
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free Java Development Environment designed for beginners, used by millions worlwide."
 arch=('any')
 url="https://www.${pkgname}.org"
 license=('GPL2' 'Apache' 'BSD' 'CDDL' 'CPL' 'custom')
-depends=('gtk2' 'archlinux-java-run' 'java-runtime=17' 'java-environment=17' 'java17-openjfx')
+depends=('gtk2' 'archlinux-java-run' 'java-runtime=20' 'java-environment=20' 'java-openjfx=20')
 makedepends=('zstd')
 source=("https://www.${pkgname}.org/download/files/BlueJ-linux-${pkgver//.}.deb"
         "${pkgname}"

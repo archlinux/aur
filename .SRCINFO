@@ -1,7 +1,7 @@
 pkgbase = bluej
 	pkgdesc = A free Java Development Environment designed for beginners, used by millions worlwide.
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bluej.org
 	arch = any
 	license = GPL2
@@ -13,9 +13,9 @@ pkgbase = bluej
 	makedepends = zstd
 	depends = gtk2
 	depends = archlinux-java-run
-	depends = java-runtime=17
-	depends = java-environment=17
-	depends = java17-openjfx
+	depends = java-runtime=20
+	depends = java-environment=20
+	depends = java-openjfx=20
 	source = https://www.bluej.org/download/files/BlueJ-linux-520.deb
 	source = bluej
 	source = bluej.desktop
