@@ -3,9 +3,9 @@
 # Contributor: ml <>
 
 pkgname=hurl-rs
-pkgver=3.0.1
-_commit="3d48b12900040db577385a752e401cf13b725ddc"  # git rev-list -n1 ${pkgver}
-pkgrel=2
+pkgver=4.0.0
+_commit="3cad4e38b48811398681ae3a52a37b961e0a2a39"  # git rev-list -n1 ${pkgver}
+pkgrel=1
 pkgdesc='HTTP Client to run and test requests'
 arch=('x86_64')
 url='https://github.com/Orange-OpenSource/hurl'
@@ -15,6 +15,7 @@ makedepends=('cargo' 'git' 'python')
 checkdepends=('cargo' 'python' 'python-flask' 'python-lxml' 'python-beautifulsoup4' 'libnetfilter_conntrack' 'squid')
 conflicts=('hurl' 'hurl-bin')
 options=('!lto')
+changelog=CHANGELOG.md
 source=("${pkgname}::git+${url}#commit=${_commit}?signed")
 sha256sums=('SKIP')
 validpgpkeys=('2A8D14993928B676E424009F1283A2B4A0DCAF8D') # hurl-bot <bot@hurl.dev> : https://github.com/hurl-bot.gpg
@@ -61,8 +62,7 @@ check() {
 	cd ../ || return
 
 	export RUSTUP_TOOLCHAIN=stable
-	# TODO: figure out why test_cookie_storage is failing
-	cargo test --frozen --all-features --workspace -- --skip http::tests::libcurl::test_cookie_storage
+	cargo test --frozen --all-features --workspace
 }
 
 package() {
