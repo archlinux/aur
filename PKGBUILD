@@ -15,9 +15,11 @@ license=('BSD')
 # DAMASK requires PETSc's static libraries
 options=(staticlibs)
 depends=('openmpi' 'lapack' 'fftw' 'zlib' 'cython'
-         'python-mpi4py' "python-numpy" "eigen>=3" "openblas")
+         'python-mpi4py' "python-numpy" "eigen>=3" "blas-openblas")
+# Force version to force recompilation of HYPRE
+hypre=$(pacman -Qs hypre | head -n 1 | cut -f2 -d' ')
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' "pkgconf"
-             'git' 'cython' 'chrpath' "hypre=2.25.0")
+             'git' 'cython' 'chrpath' "hypre=${hypre}")
 source=(git+${url}.git#branch=release
         https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-"${_mainver}".tar.gz
         test_optdepends.sh)
