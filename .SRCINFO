@@ -21,4 +21,3 @@ pkgname = python2-prompt_toolkit1
 	depends = python2-pygments
 	depends = python2-six
 	depends = python2-wcwidth
-
