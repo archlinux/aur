@@ -1,0 +1,19 @@
+pkgbase = python-django-rest-framework-json-api
+	pkgdesc = JSON:API support for Django REST framework
+	pkgver = 6.0.0
+	pkgrel = 1
+	url = https://github.com/django-json-api/django-rest-framework-json-api
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-django
+	depends = python-django-rest-framework
+	depends = python-inflection
+	optdepends = python-django-polymorphic: polymorphic support
+	optdepends = python-django-filter: allow filtering
+	optdepends = python-yaml: for openapi support
+	optdepends = python-uritemplate: for openapi support
+	source = https://files.pythonhosted.org/packages/source/d/djangorestframework-jsonapi/djangorestframework-jsonapi-6.0.0.tar.gz
+	sha256sums = f2465b1b1cd3f372abacc8d99f82835643373f4f3f12965276ad1ccc2d110415
+
+pkgname = python-django-rest-framework-json-api
