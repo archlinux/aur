@@ -2,14 +2,14 @@
 
 pkgname=php80-memcached
 _pkgname=php-memcached
-pkgver=3.1.5
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="PHP extension for interfacing with memcached via libmemcached library"
 arch=('x86_64')
 url="https://github.com/php-memcached-dev/php-memcached"
 license=('PHP')
 depends=('php80' 'libmemcached')
-makedepends=('git')
+makedepends=('git' 'php80-cli')
 backup=('etc/php80/conf.d/memcached.ini')
 source=("git+https://github.com/php-memcached-dev/php-memcached.git")
 sha256sums=('SKIP')
