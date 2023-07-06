@@ -1,16 +1,16 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 pkgname=php80-apcu
-pkgver=5.1.21
-pkgrel=3
+pkgver=5.1.22
+pkgrel=1
 arch=('x86_64')
 pkgdesc='A userland caching module for PHP 8.0'
 url='https://pecl.php.net/package/APCu'
-makedepends=("php80")
+makedepends=("php80" "php80-cli")
 license=('PHP')
 source=("https://pecl.php.net/get/apcu-${pkgver}.tgz"
 	"apcu.ini")
 backup=("etc/php80/conf.d/apcu.ini")
-sha256sums=('1033530448696ee7cadec85050f6df5135fb1330072ef2a74569392acfecfbc1'
+sha256sums=('010a0d8fd112e1ed7a52a356191da3696a6b76319423f7b0dfdeaeeafcb41a1e'
             '18b2d904848b185bdc7c0c6a5f7c82ec809e9ed3f137cd6d3420160f4756630f')
 
 prepare() {
