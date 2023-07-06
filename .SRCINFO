@@ -1,18 +1,19 @@
 pkgbase = perl-taglib
 	pkgdesc = Perl bindings for the TagLib Audio Meta-Data Library
-	pkgver = 1.65
+	pkgver = 1.67
 	pkgrel = 1
 	url = https://metacpan.org/release/Audio-TagLib
-	arch = i686
 	arch = x86_64
 	license = PerlArtistic
 	checkdepends = perl-test-deep
+	checkdepends = perl-path-class
 	depends = perl
 	depends = taglib
 	options = !emptydirs
 	options = purge
-	source = http://search.cpan.org/CPAN/authors/id/G/GL/GLEACH/Audio-TagLib-1.65.tar.gz
-	sha1sums = ec6c561a4f9dec9d2669a784d59454727875eef2
+	source = http://search.cpan.org/CPAN/authors/id/G/GL/GLEACH/Audio-TagLib-1.67.tar.gz
+	source = fix-format-security.patch
+	sha1sums = 77f82a894820ded8e7cd21051681860ebfe5c0f3
+	sha1sums = 410ac3f97cd19663db6223b59f8c86edd2000cb8
 
 pkgname = perl-taglib
-

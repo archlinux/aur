@@ -1,0 +1,12 @@
+diff -Naur Audio-TagLib-1.67/xs/tstring.xs Audio-TagLib-1.67-mine/xs/tstring.xs
+--- Audio-TagLib-1.67/xs/tstring.xs	2016-07-13 18:20:15.000000000 +0200
++++ Audio-TagLib-1.67-mine/xs/tstring.xs	2023-07-06 14:33:07.526077560 +0200
+@@ -165,7 +165,7 @@
+ 					fromcode);
+ 				delete [] utf8;
+ 				iconv_close(codec);
+-				croak(errmsg);
++				croak("%s", errmsg);
+  			}
+ 			//printf("inlen = %d, outlen = %d\n", inlen, outlen);
+ 			/* add terminating '\0' to the end of output string */
