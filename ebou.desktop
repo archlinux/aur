@@ -5,4 +5,4 @@ Type=Application
 Terminal=false
 Exec=/usr/bin/ebou
 Name=Ebou
-Icon=/usr/share/ebou/ebou-logo.png
+Icon=ebou.png

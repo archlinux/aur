@@ -11,14 +11,13 @@ license=('GPL')
 depends=(webkit2gtk-4.1 gtk3 xdotool libsoup gst-libav gst-plugins-base gst-plugins-good)
 makedepends=(cargo)
 source=('git+https://github.com/terhechte/Ebou.git'
-        'ebou-logo.png'
+        'ebou.png'
         'ebou.desktop')
 sha256sums=('SKIP'
             'b999f94a84c543b4445ff30f6db0535523ca39d4264c4309dd7b564de040a1e3'
-            'e08ba919ad4367d5b8b5acd86c0fd1c5df00de6bf12f496ef6f62d7a5715cd14')
+            '37c1105bea607aa6e80b32b04a4d80d6a8a10627ed3bd3dfa27bc962d526d5a0')
 
 git_clone_name=Ebou
-
 pkgver() {
   cd "$srcdir/$git_clone_name"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -38,7 +37,7 @@ build() {
 }
 
 package() { 
-  install -Dm0755 -t "$pkgdir/usr/share/ebou" "ebou-logo.png"
+  install -Dm0755 -t "$pkgdir/usr/share/icons/hicolor/192x192/apps" "ebou.png"
   install -Dm0755 -t "$pkgdir/usr/share/applications" "ebou.desktop"
   install -Dm0755 -t "$pkgdir/usr/bin/" "$srcdir/$git_clone_name/target/release/ebou"
 }

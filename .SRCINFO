@@ -14,10 +14,10 @@ pkgbase = ebou-git
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	source = git+https://github.com/terhechte/Ebou.git
-	source = ebou-logo.png
+	source = ebou.png
 	source = ebou.desktop
 	sha256sums = SKIP
 	sha256sums = b999f94a84c543b4445ff30f6db0535523ca39d4264c4309dd7b564de040a1e3
-	sha256sums = e08ba919ad4367d5b8b5acd86c0fd1c5df00de6bf12f496ef6f62d7a5715cd14
+	sha256sums = 37c1105bea607aa6e80b32b04a4d80d6a8a10627ed3bd3dfa27bc962d526d5a0
 
 pkgname = ebou-git
