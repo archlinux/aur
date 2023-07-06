@@ -1,18 +1,18 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 _name=igbinary
 pkgname=php80-igbinary
-pkgver=3.2.7
-pkgrel=2
+pkgver=3.2.14
+pkgrel=1
 pkgdesc="A drop in replacement for the standard php serializer (PHP 8.0)"
 arch=('x86_64')
 url="https://github.com/igbinary/igbinary"
 license=('BSD')
 depends=('glibc')
-makedepends=('php80')
+makedepends=('php80' 'php80-cli' )
 backup=("etc/php80/conf.d/${_name}.ini")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/${pkgver}.tar.gz")
-sha512sums=('1bdb60fa4ac76ef405b55b4a7e7f07c73ccc945a3fad8635934cf83a05ae554ac1a0b64c4b55229f0bd2a3269189d3266a492b064a0338fdb2bf4dfe5c3733e4')
-b2sums=('40936fb78b9f01d717daac78f8b707f902d78714e5202fbb1344042c2d30a3b723f9c5b6fd982f7a5002aab65e414ba7f9bda354fec4db82ba3f03fc09663a43')
+sha512sums=('8f58817b86c560bd81344ec51260d31b02868584254d6b94b44e07ea5371ddebfc2ccee7bc56ca1ad5873bdbb758fc95683555e7c5abf5d69db9d962bf0e88b3')
+b2sums=('17cb77a68e2458021563ae288fccbd49132b04f9b5e2a27b7dbfc2c851536d30b813fcf4cc48684afda0cd3e3b0c2c915b13b668d85715d827bee86a4c499573')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "$pkgname-$pkgver"
