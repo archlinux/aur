@@ -1,7 +1,7 @@
 pkgbase = gnome-clocks-git
 	pkgdesc = Clocks applications for GNOME
 	pkgver = 44.0.r31.g6028a42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Clocks
 	arch = x86_64
 	groups = gnome
@@ -13,7 +13,7 @@ pkgbase = gnome-clocks-git
 	makedepends = meson
 	depends = gtk3
 	depends = libcanberra
-	depends = libgweather
+	depends = libgweather-4
 	depends = gnome-desktop
 	depends = geoclue2
 	depends = geocode-glib

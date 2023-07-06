@@ -4,7 +4,7 @@
 
 pkgname=gnome-clocks-git
 pkgver=44.0.r31.g6028a42
-pkgrel=1
+pkgrel=2
 pkgdesc="Clocks applications for GNOME"
 url="https://wiki.gnome.org/Apps/Clocks"
 arch=(x86_64)
