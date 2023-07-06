@@ -2,10 +2,10 @@
 
 pkgname=easyeda-pro-electron
 _pkgname=${pkgname%-electron}
-pkgver=1.9.30
+pkgver=2.0.30
 pkgrel=1
 pkgdesc="EasyEDA Professional Edition. Run with system electron."
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://pro.easyeda.com/"
 license=('custom')
 depends=('electron' 'libnotify' 'libappindicator-gtk3')
@@ -21,8 +21,8 @@ source_aarch64=("$_pkgname-aarch64-$pkgver.zip::https://image.easyeda.com/files/
 sha256sums=('c25d162b032c680a34856d65062aa7ffab56a478ee972eeb3e78543d2eb40f74'
             'cc1661c75c9366d2fe43c4b864cf81acb9aae7cab505ce21e7de2db3c68cde76'
             '89289056ed4b5d051280e3a69dfb550b6914f470f201be1ca3b165ddd4f3e435')
-sha256sums_x86_64=('9e9f1d56ce7b3fd3621576713ba4b7ea98733d120b2bbde8634b422da6ccd932')
-sha256sums_aarch64=('a97e66c8a1b537de5d99add25148eb9f5f5d14218282d564e999a55b33648c75')
+sha256sums_x86_64=('12ffed0200e9da6fef7e57bd9fadfbcd16b4fcdb81ff22d400c21f70ed799bdf')
+sha256sums_aarch64=('909d2f889db692db8500e7ee24b3f3f932493044dd16f5ac103caf916597e3cf')
 
 package() {
     cd $srcdir
