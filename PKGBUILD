@@ -2,7 +2,7 @@
 pkgbase=flamenco
 pkgname=('flamenco-manager' 'flamenco-worker')
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Flamenco render farm manager"
 arch=('x86_64' 'aarch64')
 url="https://projects.blender.org/studio/flamenco"
@@ -35,7 +35,7 @@ build () {
 }
 
 build_flamenco-manager() {
-	if [ "$CARCH" = "armv7" ]
+	if [ "$CARCH" = "aarch64" ]
 	then
 		cp "$srcdir/placeholder.sh" "$srcdir/$pkgbase/flamenco-manager"
 	else
