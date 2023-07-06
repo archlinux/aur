@@ -1,6 +1,6 @@
 pkgbase = r-fastdummies
 	pkgdesc = Fast Creation of Dummy (Binary) Columns and Rows from Categorical Variables
-	pkgver = 1.7.1
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=fastDummies
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = r-fastdummies
 	optdepends = r-rmarkdown
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/fastDummies_1.7.1.tar.gz
-	sha256sums = 90efdd0796e61b9fbe2ea9ae2b974c97579d97ad4e96c72466bd7eddf2b4758a
+	source = https://cran.r-project.org/src/contrib/fastDummies_1.7.3.tar.gz
+	sha256sums = cf6a182f778711b69460b00575babfa573f1578166d83ae2ed932db5fa15a06a
 
 pkgname = r-fastdummies
