@@ -5,15 +5,15 @@
 # This package builds from a fork of the original upstream repo. Upstream hasn't
 # been updated or maintained for years and uses an old, also un-maintained fork
 # of Dear ImGui. This old Dear ImGui version causes bugs in the UI event
-# handling, which makes file selection dialogs in teh aplplication unsusable.
+# handling, which makes file selection dialogs in the application unusable.
 # The fork used here updates ImGui to the latest repo version (as of 07/23)
-# and also replace the 'osdialog' sub-module with 'portable-file-dialogs'
+# and also replaces the 'osdialog' sub-module with 'portable-file-dialogs'
 # and fixes a few other bugs.
 
 _name=WaveEdit
 _pkgname=${_name,,}
 pkgname=$_pkgname-git
-pkgver=1.2.r129.6b6188a
+pkgver=1.2.r130.2de1633
 pkgrel=1
 pkgdesc='A wavetable editor for wavetable synthesizers (git version)'
 arch=(x86_64)
