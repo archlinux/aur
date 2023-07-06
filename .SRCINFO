@@ -1,7 +1,7 @@
 pkgbase = query-master
 	pkgdesc = Just another MySQL GUI client
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/invisal/query-master
 	arch = any
 	license = MIT

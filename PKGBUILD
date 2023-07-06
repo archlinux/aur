@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="query-master"
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Just another MySQL GUI client"
 arch=('any')
 url="https://github.com/invisal/query-master"
@@ -15,7 +15,8 @@ sha256sums=('3962bd7ef32edaeb8316880f1752ef4ccc987c4a46dd4fd00a5e8ae06586a1cd'
             '2ed3e18aa92ebd426c7330619d8a458bd4d31d64faebc5ee15c35cf34ea15c7e')
 build() {
     cd "${srcdir}/${pkgname%-appimage}-${pkgver}"
-    yarn install && yarn package
+    yarn install
+    yarn package
 }
 package() {
     install -Dm0755 -d "${pkgdir}/opt/${pkgname}"
