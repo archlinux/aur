@@ -5,7 +5,7 @@ pkgbase = task-spooler
 	url = https://viric.name/soft/ts/
 	arch = x86_64
 	license = GPL2
-	source_x86_64 = https://viric.name/soft/ts/ts-1.0.2.tar.gz
-	sha256sums_x86_64 = f73452aed80e2f9a7764883e9353aa7f40e65d3c199ad1f3be60fd58b58eafec
+	source = https://viric.name/soft/ts/ts-1.0.2.tar.gz
+	sha256sums = f73452aed80e2f9a7764883e9353aa7f40e65d3c199ad1f3be60fd58b58eafec
 
 pkgname = task-spooler

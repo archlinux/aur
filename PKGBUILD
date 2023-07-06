@@ -10,8 +10,8 @@ pkgdesc="Queue up tasks from the shell for batch execution"
 arch=('x86_64')
 url="https://viric.name/soft/ts/"
 license=('GPL2')
-source_x86_64=(https://viric.name/soft/$_srcname/$_srcname-$pkgver.tar.gz)
-sha256sums_x86_64=('f73452aed80e2f9a7764883e9353aa7f40e65d3c199ad1f3be60fd58b58eafec')
+source=(https://viric.name/soft/$_srcname/$_srcname-$pkgver.tar.gz)
+sha256sums=('f73452aed80e2f9a7764883e9353aa7f40e65d3c199ad1f3be60fd58b58eafec')
 
 prepare() {
   # Rename program from ts to tsp.
