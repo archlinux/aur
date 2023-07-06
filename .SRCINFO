@@ -1,12 +1,12 @@
 pkgbase = elstob-font
 	pkgdesc = A variable font for medievalists
-	pkgver = 1.015
-	pkgrel = 2
+	pkgver = 2.100
+	pkgrel = 1
 	url = https://github.com/psb1558/Elstob-font
 	arch = any
 	license = OFL
-	source = https://github.com/psb1558/Elstob-font/releases/download/v1.015/Elstob_v1_015a.zip
-	sha256sums = 49ba6c661e473708d4a0b4932c3c89b5c2519c62701fdbe44f441bb50a0bfab0
+	source = https://github.com/psb1558/Elstob-font/releases/download/v2.100/Elstob_v2_100.zip
+	sha256sums = 273a774ceffbb542f91e86c8a205ed2278d25604f14d353a70413b3e796753ba
 
 pkgname = otf-elstob
 	provides = elstob-font
