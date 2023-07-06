@@ -4,7 +4,7 @@
 
 _name=tripwire-open-source
 pkgname=tripwire-git
-pkgver=r373.4c84a88
+pkgver=2.4.3.7.r5.g4c84a88
 pkgrel=1
 pkgdesc="intrusion detection system"
 arch=('i686' 'x86_64')
@@ -26,11 +26,8 @@ sha256sums=('SKIP'
 
 
 pkgver() {
- cd ${_name}
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "${_name}"
+  git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
