@@ -1,12 +1,14 @@
 pkgbase = omnisharp-roslyn
 	pkgdesc = OmniSharp server (STDIO) based on Roslyn workspaces
 	pkgver = 1.39.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OmniSharp/omnisharp-roslyn
 	arch = x86_64
 	license = MIT
 	depends = dotnet-sdk
 	source = https://github.com/OmniSharp/omnisharp-roslyn/archive/refs/tags/v1.39.7.tar.gz
+	source = https://github.com/OmniSharp/omnisharp-roslyn/commit/87b61078e86230cac3fca6e64d894ee092776a1c.patch
 	sha256sums = 1e5b73e393e62d75e789bae7a19bcdb57548f8966647c533fb8243a42fba0373
+	sha256sums = da3730a4022c5c50cd8b3575f13603eac6cfd4b81c2591583c33ca6d29e673b8
 
 pkgname = omnisharp-roslyn

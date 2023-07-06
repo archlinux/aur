@@ -2,17 +2,26 @@
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
 pkgver=1.39.7
-pkgrel=1
+pkgrel=2
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
 license=('MIT')
 depends=('dotnet-sdk')
-source=("https://github.com/OmniSharp/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1e5b73e393e62d75e789bae7a19bcdb57548f8966647c533fb8243a42fba0373')
+source=(
+    "https://github.com/OmniSharp/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
+    "https://github.com/OmniSharp/$pkgname/commit/87b61078e86230cac3fca6e64d894ee092776a1c.patch"
+)
+sha256sums=('1e5b73e393e62d75e789bae7a19bcdb57548f8966647c533fb8243a42fba0373'
+            'da3730a4022c5c50cd8b3575f13603eac6cfd4b81c2591583c33ca6d29e673b8')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
+
+    for f in ../*.patch
+    do
+        patch --forward --strip=1 --input "$f"
+    done
 
     # normally the build sets the version from git, we don't have a git repo so
     # just override it manually
