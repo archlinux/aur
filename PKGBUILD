@@ -2,7 +2,7 @@
 
 _pkgname=tsunami-security-scanner
 pkgname=google-tsunami-security-scanner
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 pkgdesc="A general purpose network security scanner with an extensible plugin system for detecting high severity vulnerabilities with high confidence"
 arch=(any)
@@ -15,7 +15,7 @@ source=(
         "${url}/raw/master/tsunami.yaml"
 	)
 
-sha256sums=('f2e7b3ea267deb00b27ee7c1e4fb9866bacd790e0551dda81264d90e35eef572'
+sha256sums=('d0dcd9b2149086f46d0b76b6804e703f6d210cac1173bc404de987d522e97cdd'
             '633313cb332fcafb46a7200b1b22d691160c2d5b5677123c1677bf53749d100b')
 
 build() {
