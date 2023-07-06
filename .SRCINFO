@@ -1,7 +1,7 @@
 pkgbase = coolterm-bin
 	pkgdesc = simple GUI serial port terminal application (no terminal emulation)
 	pkgver = 2.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://freeware.the-meiers.org
 	arch = aarch64
 	arch = armv7h

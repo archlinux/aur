@@ -4,7 +4,7 @@
 pkgname=coolterm-bin
 _pkgname=CoolTerm
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='simple GUI serial port terminal application (no terminal emulation)'
 arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://freeware.the-meiers.org"
@@ -27,6 +27,6 @@ package() {
 	cp -r "${srcdir}/${_pkgname}"*/* "${pkgdir}"/opt/"${pkgname%-bin}"
 	install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/${_pkgname} Resources/Help/app_icon_256.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 	install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-	gendesk -f --icon "${pkgname%-bin}" --categories "System;Utility" --name "${_pkgname}" --exec "/opt/${pkgname%-bin}/${_pkgname}"
+	gendesk -f -n --pkgname="${pkgname%-bin}" --icon "${pkgname%-bin}" --categories "System;Utility" --name "${_pkgname}" --exec "/opt/${pkgname%-bin}/${_pkgname}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
