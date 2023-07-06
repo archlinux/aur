@@ -1,6 +1,6 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 pkgname=pdf4qt-git
-pkgver=r850.ae3c43f
+pkgver=1.3.3.r10.gae3c43f
 pkgrel=1
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
