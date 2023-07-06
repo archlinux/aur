@@ -1,34 +1,33 @@
 pkgbase = waveedit-git
-	pkgdesc = A wavetable editor for the E370 and E352 Eurorack synthesizer modules (git version)
-	pkgver = 1.1.r0.gf699e1a
+	pkgdesc = A wavetable editor for wavetable synthesizers (git version)
+	pkgver = 1.2.r129.6b6188a
 	pkgrel = 1
-	url = https://github.com/AndrewBelt/WaveEdit
+	url = https://synthtech.com/waveedit
 	arch = x86_64
 	groups = pro-audio
 	license = GPL3
+	makedepends = gendesk
 	makedepends = git
-	depends = gtk2
+	makedepends = imagemagick
 	depends = jansson
 	depends = libsamplerate
 	depends = libsndfile
 	depends = sdl2
+	depends = zenity
 	provides = waveedit
-	provides = waveedit=1.1
+	provides = waveedit=1.2
 	provides = waveedit
 	conflicts = waveedit
 	conflicts = waveedit
-	source = waveedit::git+https://github.com/AndrewBelt/WaveEdit.git
-	source = imgui::git+https://github.com/AndrewBelt/imgui.git
+	source = waveedit::git+https://github.com/SpotlightKid/WaveEdit.git#branch=aur
+	source = imgui::git+https://github.com/ocornut/imgui.git
 	source = lodepng::git+https://github.com/lvandeve/lodepng.git
-	source = osdialog::git+https://github.com/AndrewBelt/osdialog.git
+	source = portable-file-dialogs::git+https://github.com/samhocevar/portable-file-dialogs.git
 	source = pffft::git+https://github.com/marton78/pffft.git
-	source = waveedit-makefile-flags.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = d13b1f10a705803cbc8a24b87247ed60
 
 pkgname = waveedit-git
-

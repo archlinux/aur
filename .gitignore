@@ -1,11 +1,9 @@
-.AURINFO
 pkg/
 src/
 waveedit/
 imgui/
 lodepng/
 pffft/
-osdialog/
-waveedit-git-*.pkg.tar.xz
-waveedit-git-*.pkg.tar.zst
+portable-file-dialogs/
+waveedit-git-*.pkg.tar.*
 waveedit-git-*.src.tar.gz
