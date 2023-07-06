@@ -37,8 +37,7 @@ b2sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-VCS}"
-	# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
