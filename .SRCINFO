@@ -1,6 +1,6 @@
 pkgbase = easyeda-bin
 	pkgdesc = A Simple and Powerful Electronic Circuit Design Tool
-	pkgver = 6.5.23
+	pkgver = 6.5.29
 	pkgrel = 1
 	url = https://easyeda.com/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = easyeda-bin
 	depends = alsa-lib
 	provides = easyeda
 	conflicts = easyeda
-	source = easyeda-6.5.23.zip::https://image.easyeda.com/files/easyeda-linux-x64-6.5.23.zip
+	source = easyeda-6.5.29.zip::https://image.easyeda.com/files/easyeda-linux-x64-6.5.29.zip
 	source = LICENSE
-	sha256sums = 97a3b28c431ae99587a0d06609c23b4bee1fadfdb193a64246355ffc1dacdbd9
+	sha256sums = a54b2771900f4d636eb06b82e2b508361ec2858bf4f9c1927ea36e20cf43b0e5
 	sha256sums = c52b78caac78dde0948489d67bfadbb2c1eb21a456846806b1a4a3a1c07f36ec
 
 pkgname = easyeda-bin
