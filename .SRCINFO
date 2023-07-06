@@ -1,7 +1,7 @@
 pkgbase = webby-git
 	pkgdesc = A very simple HTTP/HTTPS server and service.
-	pkgver = 2.1.0.r0.ge980882
-	pkgrel = 0
+	pkgver = 3.0.0.r15.g8ee53da
+	pkgrel = 1
 	url = https://github.com/an-prata/webby
 	arch = any
 	license = MIT

@@ -2,8 +2,8 @@
 
 pkgname=webby-git
 _pkgname=webby
-pkgver=2.1.0.r0.ge980882
-pkgrel=0
+pkgver=3.0.0.r15.g8ee53da
+pkgrel=1
 pkgdesc='A very simple HTTP/HTTPS server and service.'
 url='https://github.com/an-prata/webby'
 makedepends=('git' 'go')
@@ -32,10 +32,11 @@ package() {
 
 	mv webby ${pkgdir}/usr/bin/
 	cp webby.service ${pkgdir}/usr/lib/systemd/system/
+	cp config.json ${pkgdir}/etc/webby/
 
 	if [ ! -f "/etc/webby/config.json" ]
 	then
-		cp config.json ${pkgdir}/etc/webby/
+		cp /etc/webby/config.json ${pkgdir}/etc/webby
 	fi
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
