@@ -1,6 +1,6 @@
 pkgbase = unmake-git
 	pkgdesc = a makefile linter
-	pkgver = 0.0.3.r16.g7826475
+	pkgver = 0.0.12.r2.g1763434
 	pkgrel = 1
 	url = https://github.com/mcandre/unmake
 	arch = x86_64
