@@ -6,7 +6,7 @@
 # Contributor: Antoine Bertin <ant.bertin@gmail.com>
 pkgname=linux-enable-ir-emitter
 pkgver=4.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Enables infrared cameras that are not directly enabled out-of-the box"
 arch=('x86_64')
 url="https://github.com/EmixamPP/linux-enable-ir-emitter"
