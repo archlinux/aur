@@ -1,7 +1,7 @@
-diff --git a/common/inc/nv-linux.h b/common/inc/nv-linux.h
+diff --git a/kernel/common/inc/nv-linux.h b/kernel/common/inc/nv-linux.h
 index 2c4cb7b..f68fcf2 100644
---- a/common/inc/nv-linux.h
-+++ b/common/inc/nv-linux.h
+--- a/kernel/common/inc/nv-linux.h
++++ b/kernel/common/inc/nv-linux.h
 @@ -1996,4 +1996,17 @@ static inline NvU64 nv_expand_nvlink_addr(NvU64 addr47)
  #include <linux/backlight.h>
  #endif
@@ -20,10 +20,10 @@ index 2c4cb7b..f68fcf2 100644
 +#endif
 +
  #endif  /* _NV_LINUX_H_ */
-diff --git a/nvidia-drm/nvidia-drm-fb.c b/nvidia-drm/nvidia-drm-fb.c
+diff --git a/kernel/nvidia-drm/nvidia-drm-fb.c b/kernel/nvidia-drm/nvidia-drm-fb.c
 index 725164a..c35e0ee 100644
---- a/nvidia-drm/nvidia-drm-fb.c
-+++ b/nvidia-drm/nvidia-drm-fb.c
+--- a/kernel/nvidia-drm/nvidia-drm-fb.c
++++ b/kernel/nvidia-drm/nvidia-drm-fb.c
 @@ -29,6 +29,7 @@
  #include "nvidia-drm-fb.h"
  #include "nvidia-drm-utils.h"
@@ -32,10 +32,10 @@ index 725164a..c35e0ee 100644
  
  #include <drm/drm_crtc_helper.h>
  
-diff --git a/nvidia-uvm/uvm8.c b/nvidia-uvm/uvm8.c
+diff --git a/kernel/nvidia-uvm/uvm8.c b/kernel/nvidia-uvm/uvm8.c
 index 11cb373..49e1047 100644
---- a/nvidia-uvm/uvm8.c
-+++ b/nvidia-uvm/uvm8.c
+--- a/kernel/nvidia-uvm/uvm8.c
++++ b/kernel/nvidia-uvm/uvm8.c
 @@ -658,7 +658,7 @@ static int uvm_mmap(struct file *filp, struct vm_area_struct *vma)
      // Using VM_DONTCOPY would be nice, but madvise(MADV_DOFORK) can reset that
      // so we have to handle vm_open on fork anyway. We could disable MADV_DOFORK
@@ -45,10 +45,10 @@ index 11cb373..49e1047 100644
  
      vma->vm_ops = &uvm_vm_ops_managed;
  
-diff --git a/nvidia/nv-mmap.c b/nvidia/nv-mmap.c
+diff --git a/kernel/nvidia/nv-mmap.c b/kernel/nvidia/nv-mmap.c
 index 0b0a6f2..da891ff 100644
---- a/nvidia/nv-mmap.c
-+++ b/nvidia/nv-mmap.c
+--- a/kernel/nvidia/nv-mmap.c
++++ b/kernel/nvidia/nv-mmap.c
 @@ -447,7 +447,7 @@ int nvidia_mmap_helper(
              addr  = mmap_start;
              
