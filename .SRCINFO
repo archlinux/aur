@@ -1,7 +1,7 @@
 pkgbase = linux-xanmod-anbox
 	pkgdesc = Linux Xanmod with ashmem and binder enabled for Anbox - Current Stable (CURRENT)
 	pkgver = 6.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -22,7 +22,7 @@ pkgbase = linux-xanmod-anbox
 	sha256sums = 8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3
 	sha256sums = SKIP
 	sha256sums = a91550fc14f7f747b00c8dcf5a9ef74365d6d01ced230b5c84fddd354258dd3d
-	sha256sums = 5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30
+	sha256sums = a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f
 
 pkgname = linux-xanmod-anbox
 	pkgdesc = The Linux kernel and modules with Xanmod patches and ashmem and binder enabled
