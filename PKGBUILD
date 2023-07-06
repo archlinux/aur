@@ -9,20 +9,20 @@ arch=(any)
 url=https://github.com/googleapis/python-storage
 license=(Apache)
 depends=(
-	python-google-api-core
-	python-google-auth
-	python-google-cloud-core
-	python-google-resumable-media
-	python-requests
+  python-google-api-core
+  python-google-auth
+  python-google-cloud-core
+  python-google-resumable-media
+  python-requests
 )
 optdepends=(python-protobuf)
 makedepends=(
-	python-build
-	python-installer
-	python-recommonmark
-	python-setuptools
-	python-sphinx
-	python-wheel
+  python-build
+  python-installer
+  python-recommonmark
+  python-setuptools
+  python-sphinx
+  python-wheel
 )
 # checkdepends=(
 #   python-google-cloud-testutils
@@ -35,7 +35,7 @@ b2sums=(4c763dd249dd568a0b45d7ebc22c0c7afcdf6ecb4ebf5ac141c7c3c3be8af482ed58bf4d
 
 build() {
   cd ${_pkgname}-${pkgver}
-	python \
+  python \
     -m build \
     --wheel \
     --no-isolation
@@ -45,7 +45,7 @@ build() {
 ## tests require set environment variables
 # check() {
 #   cd ${_pkgname}-${pkgver}
-# 	python setup.py pytest
+#   python setup.py pytest
 # }
 
 package() {
