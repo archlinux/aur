@@ -4,7 +4,7 @@
 
 pkgname=glpi
 pkgver=10.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="GLPI Inventory Management"
 arch=('any')
 url='https://www.glpi-project.org'
@@ -24,7 +24,6 @@ backup=("etc/httpd/conf/extra/httpd-glpi.conf"
         "etc/glpi/local_define.php")
 optdepends=('nginx: a more performant webserver'
             'apache: a more performant webserver'
-            'php74' 'php74-gd' 'php74-intl' 'php74-sodium' 'php74-apache' 'php74-phar'
             'php' 'php-gd' 'php-intl' 'php-sodium' 'php-apache'
             'libxml2' 'zlib' 'openssl')
 makedepends=("gettext")
