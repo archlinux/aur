@@ -3,7 +3,7 @@ pkgname="epub-reader"
 _pkgname="Epub-Reader"
 _appname="EpubReader"
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Epub/Book Reader Application built with ElectronJS"
 arch=('x86_64')
 url="https://mignaway.github.io/epub-reader-website/"
@@ -21,7 +21,8 @@ sha256sums=('e0ffa61a33131541064cc926094ee7cc0dac5db73096757ec522cca9906ddfcb'
             'd034cd2388f2a9e28885ba9a718d510fe8a9744b5dc3ad57b7a4f1a2ef90c8da')
 build() {
     cd "${srcdir}/${_appname}-${pkgver}"
-    yarn install && yarn run build
+    yarn install 
+    yarn run build
 }
 package() {
     install -Dm644 "${srcdir}/${_appname}-${pkgver}/dist/linux-unpacked/resources/app.asar" "${pkgdir}/opt/${pkgname}/${pkgname}.asar"
