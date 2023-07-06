@@ -1,0 +1,23 @@
+pkgbase = backend-ai-desktop-bin
+	pkgdesc = Backend.AI Web UI provides a convenient environment for users, while allowing various commands to be executed without CLI. It also provides some visual features that are not provided by the CLI, such as dashboards and statistics.
+	pkgver = 23.03.2
+	pkgrel = 1
+	url = https://www.backend.ai/
+	arch = aarch64
+	arch = x86_64
+	license = LGPL3
+	makedepends = asar
+	makedepends = gendesk
+	depends = electron
+	depends = hicolor-icon-theme
+	conflicts = backend-ai-desktop
+	conflicts = backend.ai
+	conflicts = backend.ai-desktop
+	source = backend-ai-desktop.sh
+	sha256sums = 036ffa2982d728c163e6c63cc96e97146a7abdecf4b2ba710213380931ec2402
+	source_aarch64 = backend-ai-desktop-23.03.2-aarch64.zip::https://github.com/lablup/backend.ai-webui/releases/download/v23.03.2/backend.ai-desktop-23.03.2-linux-arm64.zip
+	sha256sums_aarch64 = 571685a25cd5009d02878fdbda67fb9c423982e303577b0e132331409e62e351
+	source_x86_64 = backend-ai-desktop-23.03.2-x86_64.zip::https://github.com/lablup/backend.ai-webui/releases/download/v23.03.2/backend.ai-desktop-23.03.2-linux-x64.zip
+	sha256sums_x86_64 = 959d6d77878da4b467f1308a5a40dd59f635af7794d3dada31db91e0a480cd11
+
+pkgname = backend-ai-desktop-bin
