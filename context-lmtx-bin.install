@@ -1,0 +1,20 @@
+post_install() {
+ echo "*************************************************************"
+ echo "To use luametatex run"
+ echo "    source /opt/context-lmtx/setuptex"
+ echo "    mtxrun --generate"
+ echo "from your shell (as a normal user)"
+ echo "*************************************************************"
+}
+
+post_upgrade() {
+ echo "*************************************************************"
+ echo "To use luametatex run"
+ echo "    source /opt/context-lmtx/setuptex"
+ echo "from your shell (as a normal user)"
+ echo "*************************************************************"
+}
+
+pre_remove() {
+  /bin/true
+}

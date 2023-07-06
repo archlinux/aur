@@ -1,0 +1,22 @@
+pkgbase = context-lmtx-bin
+	pkgdesc = ConTeXt LuaMetaTeX distribution
+	pkgver = 2023.06.22
+	pkgrel = 1
+	url = http://www.contextgarden.net
+	install = context-lmtx-bin.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = rsync
+	makedepends = curl
+	optdepends = ghostscript: support for PS and EPS images
+	optdepends = graphicsmagick: support for GIF and TIFF images
+	optdepends = inkscape: support for SVG images
+	optdepends = pstoedit: support for metapost outlines for fonts
+	optdepends = zint: support for barcodes
+	optdepends = curl: loading remote content
+	options = !strip
+	source = http://lmtx.pragma-ade.nl/install-lmtx/context-linux-64.zip
+	md5sums = SKIP
+
+pkgname = context-lmtx-bin
