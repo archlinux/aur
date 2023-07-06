@@ -1,17 +1,26 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Morten Linderud <morten@linderud.pw>
+# Contributor : Kyle Keen <keenerd@gmail.com>
 
-pkgname=python2-traitlets
+_py="python2"
+_pkg="traitlets"
+pkgname="${_py}-${_pkg}"
 pkgver=4.3.3
 pkgrel=6
 pkgdesc="A configuration system for Python applications."
 arch=('any')
-url="https://traitlets.readthedocs.io/en/stable/"
+url="https://${_pkg}.readthedocs.io/en/stable/"
 license=('BSD')
-depends=('python2-decorator' 'python2-enum34')
-makedepends=('python2-setuptools')
-
-source=("https://files.pythonhosted.org/packages/source/t/traitlets/traitlets-$pkgver.tar.gz"
-        "https://pypi.python.org/packages/source/i/ipython_genutils/ipython_genutils-0.2.0.tar.gz")
+depends=(
+  "${_py}-decorator"
+  "${_py}-enum34"
+)
+makedepends=(
+  "${_py}-setuptools"
+)
+_pypi_url="https://files.pythonhosted.org/packages/source"
+source=("${_pypi_url}/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz"
+        "${_pypi_url}/i/ipython_genutils/ipython_genutils-0.2.0.tar.gz")
 md5sums=('3a4f263af65d3d79f1c279f0247077ef'
          '5a4f9781f78466da0ea1a648f3e1f79f')
 
@@ -21,15 +30,20 @@ md5sums=('3a4f263af65d3d79f1c279f0247077ef'
 # (still required for now though, but drop at first chance)
 
 build() {
-  cd "$srcdir"
+  cd "${srcdir}"
 }
 
 package() {
   # TEMPORARY!
-  cd "$srcdir/ipython_genutils-0.2.0"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=0
+  cd "${srcdir}/ipython_genutils-0.2.0"
+  "${_py}" setup.py install --prefix=/usr \
+                            --root="$pkgdir" \
+                            --optimize=0
 
-  cd "$srcdir/traitlets-$pkgver"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=0
-  install -Dm644 COPYING.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}/${_pkg}-${pkgver}"
+  "${_py}" setup.py install --prefix=/usr \
+                            --root="${pkgdir}" \
+                            --optimize=0
+  install -Dm644 COPYING.md \
+          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
