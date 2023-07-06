@@ -1,20 +1,21 @@
 pkgbase = tripwire-git
-	pkgdesc = An intrusion detection system
-	pkgver = r74.acf7bd3
+	pkgdesc = intrusion detection system
+	pkgver = r373.4c84a88
 	pkgrel = 1
-	url = http://sourceforge.net/projects/tripwire/
+	url = https://github.com/Tripwire/tripwire-open-source
 	install = tripwire-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = automake
-	depends = openssl
+	depends = openssl-1.1
 	optdepends = lynis
 	provides = tripwire
+	conflicts = tripwire
 	backup = etc/tripwire/twpol.txt
 	backup = etc/tripwire/twcfg.txt
-	source = tripwire-open-source::git://github.com/Tripwire/tripwire-open-source.git#branch=master
+	source = tripwire-open-source::git+https://github.com/Tripwire/tripwire-open-source.git#branch=master
 	source = twpol.txt
 	source = twcfg.txt
 	sha256sums = SKIP
@@ -22,4 +23,3 @@ pkgbase = tripwire-git
 	sha256sums = 3aaa567f7a0a4efce3ac127344a9b795c5494c9d011e27a7d454d632ba3d533d
 
 pkgname = tripwire-git
-
