@@ -8,8 +8,23 @@
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
 
 pkgbase=tensorflow-amd-git
-_build_no_opt=1
-_build_opt=0
+_build_no_opt=auto
+_build_opt=auto
+
+_is_haswell() {
+  [[ " haswell broadwell skylake knl knm skylake-avx512 cannonlake icelake-client icelake-server cascadelake cooperlake tigerlake sapphirerapids rocketlake graniterapids " == *" $1 "* ]] && return 0 || return 1
+}
+
+_get_march() {
+  gcc -march=native -Q --help=target | sed -En "s/^ +-march=[ \t]+([^ ]+)/\1/p"
+}
+
+if [ "$_build_no_opt" == "auto" ]; then
+  _is_haswell `_get_march` && _build_no_opt=0 || _build_no_opt=1
+fi
+if [ "$_build_opt" == "auto" ]; then
+  _is_haswell `_get_march` && _build_opt=1 || _build_opt=0
+fi
 
 [ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-amd-git python-tensorflow-amd-git)
 [ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
