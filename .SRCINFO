@@ -1,14 +1,13 @@
 pkgbase = python-cli-exit-tools
 	pkgdesc = Small toolset to properly exit a cli application
 	pkgver = 1.2.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bitranox/cli_exit_tools
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-click
-	depends = python-lib-detect-testenv
 	source = https://files.pythonhosted.org/packages/source/c/cli_exit_tools/cli_exit_tools-1.2.3.2.tar.gz
 	sha256sums = 60e798a219c5e3bf42ca309575afdbae22808b55bcf030554a61ea21c68fc206
 
