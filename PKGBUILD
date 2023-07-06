@@ -3,7 +3,7 @@ pkgbase=python-drizzlepac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.5.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="AstroDrizzle for HST images"
 arch=('i686' 'x86_64')
@@ -53,14 +53,13 @@ checkdepends=('python-pytest'
 #              'python-crds'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/tests/hap/ACSWFC3ListDefault50.csv")
-md5sums=('76fa6ef47c3cacf91b98c451c415687f'
+md5sums=('13e2e4c8bf84d9e4e95f252ec5cb630f'
          'acaf7d8bcf0f6244042bba0df3d03679')
 
 get_pyinfo() {
      [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
              python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
 }
-
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -82,7 +81,6 @@ check() {
 #   ln -rs ${srcdir}/ACSWFC3ListDefault50.csv "build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap"
     # skip some tests that need lots of online data or cost lots of time; some files are missing in pypi package
     pytest "build/lib.linux-${CARCH}-cpython-$(get_pyinfo)" \
-        --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_run_svmpoller.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_canary.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_hrcsbc.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_ibqk07.py \
@@ -90,8 +88,10 @@ check() {
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_j97e06.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_je281u.py \
         --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_svm_wfc3ir.py \
-        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iaaua1n4q] \
-        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iacs01t4q] || warning "Tests failed" # -vv --color=yes
+        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iaaua1n4q] || warning "Tests failed" # -vv --color=yes
+#       --ignore=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_run_svmpoller.py \
+#       --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iaaua1n4q] \
+#       --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyinfo)/tests/hap/test_pipeline.py::TestSingleton::test_astrometric_singleton[iacs01t4q] || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-drizzlepac() {
@@ -106,13 +106,14 @@ package_python-drizzlepac() {
              'python-stsci.skypac>=1.0.9'
              'python-stsci.stimage'
              'python-stwcs>=1.5.3'
-             'python-tweakwcs>=0.8.0'
+             'python-tweakwcs>=0.8.2'
              'python-stregion>=1.1.7'
              'python-fitsblender>=0.4.2'
              'python-bokeh'
              'python-pandas'
              'python-spherical_geometry>=1.2.22'
              'python-astroquery>=0.4'
+             'python-astrocut'
              'python-photutils>1.5.0'
              'python-lxml'
              'python-pypdf2'
