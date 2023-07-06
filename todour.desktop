@@ -1,0 +1,16 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+
+Type=Application
+
+Version=2.02
+
+Name=Todour
+
+Comment=An application for handling todo.txt files
+
+Exec=todour
+
+Terminal=false
+
+Categories=Office;

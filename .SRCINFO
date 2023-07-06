@@ -6,16 +6,17 @@ pkgbase = todour-git
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = qt5-base
+	makedepends = git
 	depends = qt5-base
 	provides = todour
 	conflicts = todour
-	source = git://github.com/SverrirValgeirsson/todour.git
-	source = git://github.com/falceeffect/UGlobalHotkey.git
-	source = git://github.com/gamecreature/QtAwesome.git
+	source = git+https://github.com/SverrirValgeirsson/todour.git
+	source = git+https://github.com/falceeffect/UGlobalHotkey.git
+	source = git+https://github.com/gamecreature/QtAwesome.git
+	source = todour.desktop
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 1c2c52be2c88a64ad58d8ac935b08aae
 
 pkgname = todour-git
-
