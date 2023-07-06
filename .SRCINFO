@@ -1,6 +1,6 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
-	pkgver = 533
+	pkgver = 534
 	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = hydrus
 	depends = python-service-identity
 	depends = qt6-multimedia
 	depends = python-pyqt6
-	depends = hydrus-docs>=533
+	depends = hydrus-docs>=534
 	optdepends = ffmpeg: show duration and other information on video thumbnails
 	optdepends = miniupnpc: automatic port forwarding
 	optdepends = desktop-file-utils: to add Hydrus to your desktop environment menus
@@ -42,7 +42,7 @@ pkgbase = hydrus
 	optdepends = python-pyopenssl: to generate certificates for accessing client API and server via HTTPS
 	optdepends = swftools: to display SWF thumbnails
 	options = !strip
-	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=0ba84e1144f65d47c65a921e1b9659e2639a6b7b
+	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=623e430dedb5cfd1faea2796c6dca57808faf79b
 	source = paths-in-opt.patch
 	source = hydrus-client
 	source = hydrus-server
