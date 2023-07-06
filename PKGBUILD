@@ -2,7 +2,7 @@
 pkgname=('python-jaraco.packaging' 'python-jaraco.packaging-docs')
 pkgbase=python-jaraco.packaging
 _name=${pkgname#python-}
-pkgver=9.2.0
+pkgver=9.3.0
 pkgrel=1
 pkgdesc="Tools to supplement packaging Python releases"
 arch=('any')
@@ -10,10 +10,11 @@ url="https://github.com/jaraco/jaraco.packaging"
 license=('MIT')
 depends=('python' 'python-build' 'python-jaraco.context')
 makedepends=('python-installer' 'python-setuptools-scm' 'python-wheel'
-             'python-rst.linker' 'python-sphinx-furo' 'python-sphinx-lint') # for building docs
+             'python-domdf-python-tools' 'python-rst.linker' 'python-sphinx-furo'
+             'python-sphinx-lint')
 checkdepends=('python-pip' 'python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('1b06a2a700975c298e793264f07ca522cfec778c03eeae28395af97c3b1b23e3')
+sha256sums=('b28e2d049edc31ac4c805b5ee8e2d6d941535cf20cdbbde462f2f78eccd76c74')
 
 build() {
   cd "$_name-$pkgver"
