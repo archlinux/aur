@@ -1,34 +1,35 @@
-# Maintainer: Andrej Radović <r.andrej@gmail.com>
+# Maintainer: Goncalo Pereira <goncalo_pereira@outlook.pt>
 pkgname=python-kintree
 _name=${pkgname#python-}
-pkgver=0.5.4
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Fast part creation in KiCad and InvenTree"
 url="https://github.com/sparkmicro/Ki-nTree"
 depends=(
     'python'
     'python-digikey-api'
-    'python-fuzzywuzzy'
+    'python-flet'
+    'python-thefuzz'
     'python-inventree'
+    'python-kiutils'
     'python-mouser'
     'python-multiprocess'
-    'python-pysimplegui'
     'python-pyaml'
     'python-validators'
-    'python-wrapt'
+    'python-wrapt-timeout-decorator'
 )
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel)
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('756b8d87e5ce6d26a8ed18d7f76dd2041340d0f00a0496ad400ba4725584b119')
+sha256sums=('a80846d8f9a9938f69ee11da854fa8ae75898d8163a9aada8dad52fd9811c5a2')
 
 build() {
-	cd "$srcdir/$_name-$pkgver"
-	python setup.py build
+    cd "$srcdir/$_name-$pkgver"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+    cd "$srcdir/$_name-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
