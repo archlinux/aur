@@ -3,7 +3,7 @@
 
 pkgname=plymouth-theme-aregression
 _themename=aregression
-pkgver=0.2.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A sleek boot up plymouth progress bar"
 arch=("any")
