@@ -34,7 +34,7 @@ _known_good_commit=de8086e14ae3152906e1137c212d2f7bb8ea463a
 # You can find the latest probably successful official build at:
 # http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/
 # Look for the revision for the "ROCmSoftwarePlatform/tensorflow-upstream" repository.
-pkgrel=6
+pkgrel=7
 pkgdesc="Library for scalable machine learning (with ROCm)"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -167,7 +167,7 @@ build() {
   # Important since boringssl may no longer build due to dangling pointer warning as of 2023-06-04
   export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,lmdb,nasm,png,pybind11,zlib"
   
-  # Don't need --config=rocm, since it's included from .tf_configure.bazelrc
+  # Don't need --config=rocm for tensorflow-upstream, since it's included from .tf_configure.bazelrc
   export BAZEL_ARGS="--config=opt"
 
   tmp_size=`df /tmp | sed -rn "s|tmpfs +([[:digit:]]+) +.*|\1|p"`
@@ -206,7 +206,7 @@ build() {
     bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}"/tmprocm --rocm
   fi
   
-  if [ "$_build_no_opt" -eq 1 ]; then
+  if [ "$_build_opt" -eq 1 ]; then
     echo "Building with rocm and non-x86-64 optimizations"
     cd "${srcdir}"/tensorflow-upstream-opt-rocm
     

@@ -1,5 +1,9 @@
+remove unneeded architectures from targets.lst
+test what happens with out-of-date libicu-32 thingy; update github readme
+    also tell people about the gfx thing targets.lst and it builds for things you have/have not
 clean chroot build
-make available a github, similar to tensorflow-rocm, so if someone wants to make a pull request they can.
+it occurs to me, about the opt things, we can just do march=native.
+    build with match=x86_64 -O2 and march=native -O2 and benchmark the results.
 party. I am so glad this is over.
 
 # Maybe
