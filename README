@@ -1,12 +1,5 @@
 Some info about how I create this patch file:
 - I clone the mutter git repo
-- I add the doraskayo mutter 42 repo as a remote
-- I generate a diff between the latest tag and the remote branch for 42
-
-See here for reference: https://stackoverflow.com/questions/1968512/getting-the-difference-between-two-repositories
-
-
-Example:
-git pull
-git remote update
-git diff 42.4...remotes/doraskayo/vrr-support-42 > 42.4.patch
+- I add the necessary MRs as patches
+- I generate a diff between the latest tag and the tip of the branch
+- I apply the VRR patch in prepare()

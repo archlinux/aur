@@ -1,0 +1,24 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Sat, 3 Jun 2023 19:38:06 +0200
+Subject: [PATCH] tests/cogl: test-framebuffer-get-bits should fail on gl3
+
+Mesa 23.1 removed the functionality from desktop GL, see
+https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/20719.
+---
+ src/tests/cogl/conform/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tests/cogl/conform/meson.build b/src/tests/cogl/conform/meson.build
+index e4e6618e3f0b..31fc6b7f0ff1 100644
+--- a/src/tests/cogl/conform/meson.build
++++ b/src/tests/cogl/conform/meson.build
+@@ -32,7 +32,7 @@ cogl_tests = [
+   [ 'test-npot-texture', [] ],
+   [ 'test-alpha-textures', [] ],
+   [ 'test-texture-get-set-data', [] ],
+-  [ 'test-framebuffer-get-bits', [] ],
++  [ 'test-framebuffer-get-bits', ['gl3'] ],
+   [ 'test-primitive-and-journal', [] ],
+   [ 'test-copy-replace-texture', [] ],
+   [ 'test-pipeline-cache-unrefs-texture', [] ],
