@@ -1,0 +1,19 @@
+pkgbase = anubias-bin
+	pkgdesc = Develope mobile apps so easy and native with GUI
+	pkgver = 1.0.0beta1
+	pkgrel = 1
+	url = https://anubias.app
+	arch = x86_64
+	license = GPL3
+	depends = electron
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = java-runtime
+	provides = anubias
+	conflicts = anubias
+	source = anubias-1.0.0beta1.AppImage::https://anubias.app/dl/Anubias-1.0.0-beta1.AppImage
+	source = anubias.sh
+	sha256sums = ce38818ef998e4b8b04f2b55afbc8d4aa7510b1a720f795579a7a856a3894307
+	sha256sums = 875ca7c1146b056acf7c77170d0651ef92ed27e085140d5adc25e24ad76f0c16
+
+pkgname = anubias-bin
