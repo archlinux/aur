@@ -14,6 +14,6 @@ pkgbase = klaus-bin
 	depends = zip
 	depends = tar
 	source = klaus-bin-4.6.zip::https://github.com/dmaliog/kLausqt//releases/download/4.6/klaus-4.6-2023-07-06-linux64.zip
-	sha256sums = 5990b99dcc33563974551c469f4b10a5cd13ad6a3f5d7625e3f2a2fa5c9a0e63
+	sha256sums = 527e42de445ba035b819598b6dc3eca9a9a6d6250a255d5c3b280556c4a8640d
 
 pkgname = klaus-bin
