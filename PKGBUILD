@@ -1,3 +1,5 @@
+# Maintainer: hrdl <aur@hrdl.eu>
+
 pkgname=python-wyoming-faster-whisper
 _pkgname=wyoming_faster_whisper
 pkgdesc="Wyoming Server for Faster Whisper"
