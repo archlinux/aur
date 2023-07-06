@@ -1,16 +1,14 @@
 pkgbase = tpmmanager
 	pkgdesc = TPM management software providing an easy to use graphical user interface
-	pkgver = 0.8.1
-	pkgrel = 8
-	url = https://www.sirrix.com/content/pages/tpmmanager_en.htm
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/Rohde-Schwarz/TPMManager
 	arch = i686
 	arch = x86_64
-	license = GPL
-	depends = qt4>=4.4
+	license = GPL2
+	depends = qt5
 	depends = trousers
-	source = https://github.com/Sirrix-AG/TPMManager/archive/v0.8.1.zip
-	md5sums = a0a9f27e6ba1756ca547206a321db5b7
-	sha512sums = 8b6e1c27b8e0840e37d4d33fe05629c66ab337f8509de03d58076837715a6689f718aa87e035729e7e1b06ab4e9e9885a30ef857941fa6bdac2fd1ddc153ed18
+	source = tpmmanager-0.9.0.tar.gz::https://github.com/Rohde-Schwarz/TPMManager/archive/refs/tags/v0.9.0.tar.gz
+	sha512sums = bb094f6af52013b25859a346a4a5a49d49b187253d3e6e58d1962ef607744ce376e47b5ad858db3a5befb26ae9b6a98329182af098c497443885ffddb8562ae8
 
 pkgname = tpmmanager
-
