@@ -15,10 +15,10 @@
 ###############################################################################
 _phpbase="80"
 _suffix=""
-pkgver="8.0.28"
+pkgver="8.0.29"
 pkgrel="1"
 pkgbase="php80"
-pkgdesc="PHP 8.0.28 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.0.29 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -209,20 +209,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php80=8.0.28"
+    "php80=8.0.29"
     "net-snmp"
     "openssl-1.1"
 )
 _ext_depends_ftp=(
-    "php80=8.0.28"
+    "php80=8.0.29"
     "openssl-1.1"
 )
 _ext_depends_intl=(
-    "php80=8.0.28"
+    "php80=8.0.29"
     "icu"
 )
 _ext_depends_imap=(
-    "php80=8.0.28"
+    "php80=8.0.29"
     "pam"
     "krb5"
     "c-client"
@@ -230,45 +230,45 @@ _ext_depends_imap=(
     "openssl-1.1"
 )
 _ext_depends_gd=(
-    "php80=8.0.28"
+    "php80=8.0.29"
     "gd"
 )
 _ext_depends_mysql=(
-    "php80=8.0.28"
-    "php80-pdo=8.0.28"
-    "php80-openssl=8.0.28"
+    "php80=8.0.29"
+    "php80-pdo=8.0.29"
+    "php80-openssl=8.0.29"
 )
 _ext_depends_dba=(
-    "php80=8.0.28"
+    "php80=8.0.29"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php80=8.0.28"
+    "php80=8.0.29"
     "unixodbc"
-    "php80-pdo=8.0.28"
+    "php80-pdo=8.0.29"
 )
 _ext_depends_pgsql=(
-    "php80=8.0.28"
+    "php80=8.0.29"
     "postgresql-libs"
-    "php80-pdo=8.0.28"
+    "php80-pdo=8.0.29"
 )
 _ext_depends_firebird=(
-    "php80=8.0.28"
+    "php80=8.0.29"
     "libfbclient"
-    "php80-pdo=8.0.28"
+    "php80-pdo=8.0.29"
 )
 _ext_depends_sqlite=(
-    "php80=8.0.28"
+    "php80=8.0.29"
     "sqlite"
-    "php80-pdo=8.0.28"
+    "php80-pdo=8.0.29"
 )
 _ext_depends_mbstring=(
-    "php80=8.0.28"
+    "php80=8.0.29"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php80=8.0.28"
+    "php80=8.0.29"
     "krb5"
     "e2fsprogs"
     "openssl-1.1"
@@ -379,7 +379,7 @@ _phpextensions_fpm="\
     --with-fpm-acl"
 
 
-options=('!lto')
+options+=('!lto')
 arch=("$CARCH")
 checkdepends=('procps-ng' 'smtp-forwarder')
 license=('PHP')
@@ -391,6 +391,9 @@ url='http://www.php.net'
 ################################################################################
 prepare() {
     pushd "php-${pkgver}"
+
+    export CFLAGS="${CFLAGS} -fPIC" 
+    export CXXFLAGS="${CXXFLAGS} -fPIC"
 
     echo "[SED] scripts/phpize.in"
     sed -E "s|(includedir[\t ]*=.*/php)|\1${_phpbase}${_suffix}|g" \
@@ -464,6 +467,8 @@ prepare() {
 }
 
 _build_sapi() {
+    export CFLAGS="${CFLAGS} -fPIC" 
+    export CXXFLAGS="${CXXFLAGS} -fPIC"
     _sapi="${1}"
     _commands="${2}"
     if (( _sapi == "cli" )); then
@@ -500,6 +505,8 @@ _build_sapi() {
 # BUILD them all
 ################################################################################
 build() {
+    export CFLAGS="${CFLAGS} -fPIC" 
+    export CXXFLAGS="${CXXFLAGS} -fPIC"
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_openssl_v10_patch)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.0"
@@ -664,6 +671,8 @@ build() {
 }
 
 check() {
+    export CFLAGS="${CFLAGS} -fPIC" 
+    export CXXFLAGS="${CXXFLAGS} -fPIC"
     pushd "build-cli"
     # Check if sendmail was configured correctly (FS#47600)
     export REPORT_EXIT_STATUS=1
@@ -1524,7 +1533,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            '5e07278a1f315a67d36a676c01343ca2d4da5ec5bdb15d018e4248b3012bc0cd'
+            '14db2fbf26c07d0eb2c9fab25dbde7e27726a3e88452cca671f0896bbb683ca9'
             'c9ab253399e58e24cf23cda5edd72a331b7b9aa9b2ac217b0ee04706cc67e93e'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
