@@ -44,9 +44,24 @@ Then update the PKBUILD like:
 I have not tested this.
 
 ## Hardware supported
+I am told that this repo will automatically detect which supported graphics cards are installed on your machine,
+and you should not need to configure it to build for e.g. gfx90a if you have such a card.
+If you are building for a gfx not installed on your machine, such as gfx1030 to run on a gfx1031 card,
+you must create the file `/opt/rocm/bin/targets.lst` and add each gfx architecture you want to build for.
+Something like:
+```
+gfx900
+gfx904
+gfx906
+gfx908
+gfx90a
+gfx1030
+```
 As of 2023-07-05, I have confirmed that RX 580 (gfx803) is NOT supported, and that you can get RX 6750 XT (gfx1031) to work using an environment variable:
 ```
 export HSA_OVERRIDE_GFX_VERSION=10.3.0
 ```
+but you must set up `targets.lst` to contain `gfx1030` before building.
+You can find your gfx by running `/opt/rocm/bin/rocminfo | grep gfx` after installing `rocminfo`.
 
 ### Pull requests welcome.
