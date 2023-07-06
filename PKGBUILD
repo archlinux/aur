@@ -2,9 +2,9 @@
 
 _pkgbase=silk-guardian
 pkgname=silk-guardian-dkms
-pkgver=v1.0.0
+pkgver=v1.0.1
 _pkgver=${pkgver:1:5}
-pkgrel=2
+pkgrel=1
 pkgdesc="kill switch for unknown usb devices (DKMS)"
 arch=('x86_64')
 url="https://github.com/kmille/silk-guardian"
@@ -13,7 +13,7 @@ makedepends=('git')
 depends=('python-jinja' 'python-yaml' 'python-pyusb' 'dkms' 'linux-headers')
 conflicts=('lkrg-dkms' 'lkrg-dkms-git')
 source=("https://github.com/kmille/silk-guardian/archive/${pkgver}.tar.gz")
-sha256sums=('8773fdd289e21fa5f1bb4bce9d0332288c0d3e23644c22fe36416f5a0cf5e647')
+sha256sums=('a9124217797029974231ee3f248972d9bd8e80413fa39e4a1b8fad7c2121ba69')
 
 prepare() {
   sed -e "s/@PKGVER@/${pkgver}/" -i "${srcdir}/${_pkgbase}-${_pkgver}/dkms.conf"
