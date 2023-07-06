@@ -8,7 +8,7 @@ pkgdesc="OkEDU-Classroom-Desktop 客户端 OkEDU Classroom 是基于“互联网
 arch=(x86_64
     aarch64)
 url="https://gitee.com/chuanshantech/ok-edu-classroom-desktop"
-license=('MulanPubL-2.0')
+license=('GPL-2.0' 'MulanPubL-2.0')
 groups=()
 provides=(${pkgbase%-git})
 conflicts=(${pkgbase%-git})
@@ -77,13 +77,12 @@ pkgver() {
 }
 
 build() {
-Qt5_DIR="/usr/include/qt"
-
     cd "${srcdir}/${pkgname%-git}"
 
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
 #     cmake -DCMAKE_BUILD_TYPE=Release \
     cmake -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_CONFIGURATION_TYPES=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
