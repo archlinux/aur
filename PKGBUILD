@@ -4,14 +4,14 @@
 
 _name=gaphas
 pkgname=python-${_name}
-pkgver=3.9.2
-pkgrel=2
+pkgver=3.11.3
+pkgrel=1
 pkgdesc="Diagramming widget library for Python"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
 license=('Apache')
 depends=(
-	'gtk3'
+	'gtk4'
 	'python-gobject'
 	'python-cairo'
 	'python-importlib-metadata'
@@ -24,10 +24,12 @@ makedepends=(
 checkdepends=(
 	'python-pytest'
 	'python-sphinx'
+	'python-pytest-archon'
+	'python-pytest-xvfb'
 	'xorg-server-xvfb'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('9063813534384e27a5637d23fc263ac53f53ec6a68ff495a8296dd6853ecb31e')
+sha256sums=('e15b5db6f294fbdaed5abcd1058940542d869a333d4dd45871bb54dbc8739069')
 
 build() {
 	cd "${_name}-${pkgver}"
@@ -39,7 +41,12 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-	xvfb-run --auto-servernum python -m pytest tests/
+#	xvfb-run --auto-servernum python -m pytest tests/
+#	export PYTHONPATH=$PYTHONPATH:.
+#	pytest
+	local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
+	echo "$python_version"
+	python -m pytest -s tests
 }
 
 package() {
