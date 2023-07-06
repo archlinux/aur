@@ -2,12 +2,12 @@
 
 pkgname='php80-rar'
 pkgver='4.2.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='PHP PECL extension for reading RAR archives using bundled unRAR library'
 arch=('i686' 'x86_64')
 url='https://pecl.php.net/package/rar'
 license=('PHP')
-depends=('php>=5.3')
+depends=('php80')
 source=("http://pecl.php.net/get/rar-$pkgver.tgz"
        "php81.patch::https://github.com/cataphract/php-rar/commit/ab26d285759e4c917879967b09976a44829ed570.patch")
 sha256sums=('660d7d6bc97cc45395e56621aa8803a9f9d4b3436c576d67afe712c8f964a4b9'
