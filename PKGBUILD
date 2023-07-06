@@ -1,11 +1,12 @@
-# Maintainer: Thomas Jost <schnouki@schnouki.net>
+# Maintainer: Julius Freudenberger <contact@jfreudenberger.de>
+# Contributor: Thomas Jost <schnouki@schnouki.net>
 # Contributor: Johannes Pfrang <johannespfrang+arch @ gmail.com>
 # Contributor: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 # Contributor: Ariel AxionL <arielaxionl@gmail.com | axionl@aosc.io>
 
 _pkgname=teleport
 pkgname=teleport-client-bin
-pkgver=13.1.5
+pkgver=13.2.0
 pkgrel=1
 pkgdesc="Client-only (tsh, tctl) binary package for teleport"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -17,9 +18,9 @@ conflicts=('teleport' 'teleport-client' 'tctl' 'tsh')
 source_x86_64=("teleport-bin-${pkgver}-x86_64.tar.gz::https://cdn.teleport.dev/teleport-v${pkgver}-linux-amd64-bin.tar.gz")
 source_armv7h=("teleport-bin-${pkgver}-armv7h.tar.gz::https://cdn.teleport.dev/teleport-v${pkgver}-linux-arm-bin.tar.gz")
 source_aarch64=("teleport-bin-${pkgver}-aarch64.tar.gz::https://cdn.teleport.dev/teleport-v${pkgver}-linux-arm64-bin.tar.gz")
-sha256sums_x86_64=('21aab317ada257dea9d31ece2545082e477887a7a974c4bacc92ede34069506c')
-sha256sums_armv7h=('8781877c2700013796ba536b57c93f8d96e2a100e4b611706dd9c38876a9a74b')
-sha256sums_aarch64=('a505c580caa26b67d4e0392063346bce7cb7a115193fa059596762d3c1748d99')
+sha256sums_x86_64=('e14bc5188ee4e5dece859dc6a58d312fd723de44685a1da7caccd706bfdc9624')
+sha256sums_armv7h=('49d7f8268bce99ddbaef092da72e07af8606026040c36edd770d15e068c3ee56')
+sha256sums_aarch64=('6962f60eea4e64dbdad8dc8c384e399b6e4c09424f18003861dbd42bd2887a98')
 
 package() {
     cd "${srcdir}/${_pkgname}"
