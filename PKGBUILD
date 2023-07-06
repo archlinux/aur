@@ -84,7 +84,6 @@ Qt5_DIR="/usr/include/qt"
 # see：https://wiki.archlinux.org/title/CMake_package_guidelines
 #     cmake -DCMAKE_BUILD_TYPE=Release \
     cmake -DCMAKE_BUILD_TYPE=None \
-        -DENABLE_CHINESE_NAMES=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LIBEXECDIR=lib \
