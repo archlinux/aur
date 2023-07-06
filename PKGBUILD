@@ -2,7 +2,7 @@
 # Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=nyrna
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 	"flutter::git+https://github.com/flutter/flutter.git"
 )
 sha256sums=(
-	'4841caa2d6d0dd910f6fe14b2b9b2c54fb70497b7ee50bfa34bbeb1472b4a656'
+	'e71b00e83ce961bc5653a9bb8822de8fec254c526d76fc6f9f2660a72dfa2c22'
 	'SKIP'
 )
 
@@ -41,6 +41,7 @@ build() {
 	_setpath
 
 	cd "$pkgname-$pkgver"
+	dart run build_runner build --delete-conflicting-outputs
 	flutter build linux
 }
 
