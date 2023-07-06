@@ -10,7 +10,7 @@
 
 _py=python2
 _pkg=ipython
-pkgname="${pkg}2"
+pkgname="${_pkg}2"
 pkgver=5.9.0
 pkgrel=1
 pkgdesc="An enhanced Interactive Python2 shell."
