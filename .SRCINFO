@@ -11,4 +11,3 @@ pkgbase = python2-pathlib
 	sha512sums = d85e45dfcc85ce75a7e7b609163dc8c75c688f279c1833510185f280af5501e473376dc09bddc6a804d1fcc3177a939db85af37b7b8d5b183b9bc2b85b3b0f8b
 
 pkgname = python2-pathlib
-
