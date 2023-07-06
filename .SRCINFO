@@ -1,6 +1,6 @@
 pkgbase = python-portage-language-server
 	pkgdesc = gentoo portage language server
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/portage-language-server
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-portage-language-server
 	optdepends = python-pypandoc
 	optdepends = python-beautifulsoup4
 	optdepends = portage
-	source = https://files.pythonhosted.org/packages/py3/p/portage_language_server/portage_language_server-0.0.1-py3-none-any.whl
-	sha256sums = 25cd67621cedec461f80991368c3df0cce9a153cc9477a44dd379f86588667cb
+	source = https://files.pythonhosted.org/packages/py3/p/portage_language_server/portage_language_server-0.0.2-py3-none-any.whl
+	sha256sums = 802c12a4f87e18b17bfa91013ccb6f07a3ca29dfaa062a6237518994395b40e3
 
 pkgname = python-portage-language-server
