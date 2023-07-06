@@ -35,8 +35,6 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G$pkgver"
         "waterfox-branded-icons.patch::$_filesurl/patches/waterfox-branded-icons.patch"
         "fix-wayland-build.patch::$_filesurl/patches/fix-wayland-build.patch"
         "mach-depends.patch::$_filesurl/patches/mach-depends.patch"
-        "Bug1811714.patch::$_filesurl/patches/Bug1811714.patch"
-        "Bug1777674.patch::$_filesurl/patches/Bug1777674.patch"
         )
 sha256sums=('SKIP'
             '09b6d083ecfc42d8c355177b56b7073f387c968c162041507f2870c38e4b7259'
@@ -54,9 +52,7 @@ sha256sums=('SKIP'
             '443fb2d0d58d89f5bdb010183f00e1a5d6bc20e35bf3d1ad93537b7c02d471a9'
             '2bb954aaac047c53b1d7fe779c95cf533ebac1f9f3cf175cf9caec8191c94a92'
             '46724a625f51c358abaee488a7ce75673078e96ba009459339120b8dd11dec25'
-            '3f4514da71b9e5f1630b8ddc37b48594203ef907c8081d3e986217666814842a'
-            '789c0c8d7baa060bd8d8d3f4c9ab43cf75a41761ebb811ae81eee00bac0f706e'
-            '95746f5a2bf8bd175c3c566b4ab83288495642547c4873d00ad5561ee955b564')
+            '3f4514da71b9e5f1630b8ddc37b48594203ef907c8081d3e986217666814842a')
 
 prepare() {
 
@@ -73,10 +69,6 @@ prepare() {
   patch -Np1 -i ../waterfox-branded-icons.patch
   patch -Np1 -i ../fix-wayland-build.patch
   patch -Np1 -i ../mach-depends.patch
-
-  # Fix errors caused by changes provided with GCC 13
-  patch -Np1 -i ../Bug1811714.patch
-  patch -Np1 -i ../Bug1777674.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-alsa

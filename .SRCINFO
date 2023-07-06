@@ -67,8 +67,6 @@ pkgbase = waterfox-g-kpe
 	source = waterfox-branded-icons.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/20baadcd5c504e780c221a9640ccc37a04675d94/waterfox-g-kpe/patches/waterfox-branded-icons.patch
 	source = fix-wayland-build.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/20baadcd5c504e780c221a9640ccc37a04675d94/waterfox-g-kpe/patches/fix-wayland-build.patch
 	source = mach-depends.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/20baadcd5c504e780c221a9640ccc37a04675d94/waterfox-g-kpe/patches/mach-depends.patch
-	source = Bug1811714.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/20baadcd5c504e780c221a9640ccc37a04675d94/waterfox-g-kpe/patches/Bug1811714.patch
-	source = Bug1777674.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/20baadcd5c504e780c221a9640ccc37a04675d94/waterfox-g-kpe/patches/Bug1777674.patch
 	sha256sums = SKIP
 	sha256sums = 09b6d083ecfc42d8c355177b56b7073f387c968c162041507f2870c38e4b7259
 	sha256sums = 6f16e62b796d8bc01da3a30f7b34bc57d2068b203b3b9f0adaa0052ef67a0277
@@ -86,8 +84,6 @@ pkgbase = waterfox-g-kpe
 	sha256sums = 2bb954aaac047c53b1d7fe779c95cf533ebac1f9f3cf175cf9caec8191c94a92
 	sha256sums = 46724a625f51c358abaee488a7ce75673078e96ba009459339120b8dd11dec25
 	sha256sums = 3f4514da71b9e5f1630b8ddc37b48594203ef907c8081d3e986217666814842a
-	sha256sums = 789c0c8d7baa060bd8d8d3f4c9ab43cf75a41761ebb811ae81eee00bac0f706e
-	sha256sums = 95746f5a2bf8bd175c3c566b4ab83288495642547c4873d00ad5561ee955b564
 
 pkgname = waterfox-g-kpe
 	optdepends = networkmanager: Location detection via available WiFi networks
