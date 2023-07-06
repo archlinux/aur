@@ -1,6 +1,6 @@
 pkgbase = aliyundrive-webdav
 	pkgdesc = 阿里云盘 WebDAV 服务
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/messense/aliyundrive-webdav/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = aliyundrive-webdav
 	makedepends = cargo
 	depends = gcc-libs
 	provides = aliyundrive-webdav
-	source = https://github.com/messense/aliyundrive-webdav/archive/v2.2.1.tar.gz
-	sha256sums = ee8cbe8048c03a2986b1b6504b85b9b5589be77fbb1a95f4c322f6bf3c05cc4b
+	source = https://github.com/messense/aliyundrive-webdav/archive/v2.2.2.tar.gz
+	sha256sums = f6ab6b2dddc628c4e39a6b34ff6dc1f9e64931270d97bb7ab3eb6b6ebf9fb43d
 
 pkgname = aliyundrive-webdav
