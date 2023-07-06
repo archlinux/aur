@@ -3,7 +3,7 @@
 # Contributor: Sharif Olorin <sio@tesser.org>
 
 pkgname=orthanc
-pkgver=1.11.2
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='Open-source, lightweight DICOM server'
 arch=('x86_64' 'i686')
@@ -24,7 +24,7 @@ source=(
     "${pkgname}.tmpfiles"
 )
 sha512sums=(
-    'ef403e4dd0e51fb6290101c3a4af354654ef606f2d10e161e097896b4dfc988a8f38b2eb21e888e016d4bd573dfdc841b954893c76e977f95ce9fb638b698512'
+    '1a15004497821601275f3da404e3f46ffb39b0f2c57c3d552bdf85ae251747f88ee6c22b0b10a4dfc9752f3506cca3db784562ce9d2dbae38a0c8d6ab71b8a83'
     'cd69b74eff5eea43191341ec35cef53d026a1939bb6fdc6a71734c0f9339ff47effc0eb611c16fd609d6ffcf1e332f48cfaa533ccf8d7f71ce7e61f04b4fabca'
     '30d63bafdcfff751e12f6187115bac5d1630eb31848eab6d06d10359118e3a3c404a845ef14852ee578df0b25f622f2195d0b0546fe62cdc8a2702f2ffb59634'
     '2dffd683e6c9bd0e495a1478bf2c6f90833a5c260c7619828136804d410da1d38b385db5db094a065352e21c54c0da1b5dcdd83bce129bd4bcba9c4a11361d18'
