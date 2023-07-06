@@ -1,36 +1,42 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 # Contributor: Alex Branham <branham@utexas.edu>
 
-_cranname=geometry
-_cranver=0.4.7
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+_pkgname=geometry
+_pkgver=0.4.7
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=3
 pkgdesc="Mesh Generation and Surface Tessellation"
-arch=(i686 x86_64)
-url="https://cran.r-project.org/package=${_cranname}"
+arch=(x86_64)
+url="https://cran.r-project.org/package=${_pkgname}"
 license=(GPL3)
 depends=(
-    qhull
-    r-magic
-    r-rcpp
-    r-lpsolve
-    r-linprog
+  qhull
+  r-linprog
+  r-lpsolve
+  r-magic
+  r-rcpp
 )
-makedepends=(r-rcppprogress)
-checkdepends=(r-testthat)
+makedepends=(
+  r-rcppprogress
+)
+checkdepends=(
+  r-testthat
+)
 optdepends=(
-    r-spelling
-    r-testthat
-    r-rgl
-    r-r.matlab
-    r-interp
+  r-interp
+  r-r.matlab
+  r-rgl
+  r-spelling
+  r-testthat
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('3c072c129e57358977b9a59445206b36')
 sha256sums=('96204205f51b4d63c2e7a7b00365def27d131f3c9ec66db56b510046e5d2013b')
 
 prepare() {
-  cd "${_cranname}/src"
+  cd "$_pkgname/src"
 
   # Build against system qhull
   rm *_r.c *_r.h qhull_ra.h
@@ -44,16 +50,15 @@ prepare() {
 
 build() {
   mkdir -p build
-  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 check() {
-  cd "${_cranname}/tests"
-  R_LIBS="${srcdir}/build" NOT_CRAN=true Rscript --vanilla testthat.R
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }

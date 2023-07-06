@@ -1,24 +1,24 @@
 pkgbase = r-geometry
 	pkgdesc = Mesh Generation and Surface Tessellation
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=geometry
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	checkdepends = r-testthat
 	makedepends = r-rcppprogress
 	depends = qhull
+	depends = r-linprog
+	depends = r-lpsolve
 	depends = r-magic
 	depends = r-rcpp
-	depends = r-lpsolve
-	depends = r-linprog
+	optdepends = r-interp
+	optdepends = r-r.matlab
+	optdepends = r-rgl
 	optdepends = r-spelling
 	optdepends = r-testthat
-	optdepends = r-rgl
-	optdepends = r-r.matlab
-	optdepends = r-interp
 	source = https://cran.r-project.org/src/contrib/geometry_0.4.7.tar.gz
+	md5sums = 3c072c129e57358977b9a59445206b36
 	sha256sums = 96204205f51b4d63c2e7a7b00365def27d131f3c9ec66db56b510046e5d2013b
 
 pkgname = r-geometry
