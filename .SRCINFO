@@ -1,7 +1,7 @@
 pkgbase = neovim-nightly
 	pkgdesc = hyperextensible Vim-based text editor
 	pkgver = 0.10.0.dev.20230525
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/neovim/neovim/releases/tag/nightly
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,6 @@ pkgbase = neovim-nightly
 	makedepends = cmake
 	makedepends = gperf
 	makedepends = ninja
-	makedepends = lua51-mpack
-	makedepends = lua51-lpeg
 	makedepends = patchelf
 	depends = libluv
 	depends = libtermkey
@@ -24,17 +22,19 @@ pkgbase = neovim-nightly
 	depends = msgpack-c
 	depends = tree-sitter
 	depends = unibilium
+	depends = lua51-lpeg
+	depends = lua51-mpack
 	optdepends = python2-neovim: Python 2 provider
 	optdepends = python-pynvim: Python 3 provider
 	optdepends = ruby-neovim: Ruby provider
 	optdepends = xclip: X11 clipboard integration
 	optdepends = xsel: X11 clipboard integration
 	optdepends = wl-clipboard: wayland clipboard integration
-	provides = neovim=0.10.0.dev.20230616.g4e63104
+	provides = neovim=0.10.0.dev.20230705.gb2e8c0d
 	provides = vim-plugin-runtime
 	conflicts = neovim
 	backup = etc/xdg/nvim/sysinit.vim
-	source = neovim-nightly-0.10.0.dev.20230616.g4e63104::https://github.com/neovim/neovim/archive/refs/tags/nightly.tar.gz
+	source = neovim-nightly-0.10.0.dev.20230705.gb2e8c0d::https://github.com/neovim/neovim/archive/refs/tags/nightly.tar.gz
 	sha256sums = SKIP
 
 pkgname = neovim-nightly

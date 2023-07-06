@@ -2,14 +2,14 @@
 # Contributor: Francesco La Camera <fm@lacamera.org>
 pkgname=neovim-nightly
 pkgver=0.10.0.dev.20230525
-pkgrel=2
+pkgrel=3
 pkgdesc='hyperextensible Vim-based text editor'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64' 'pentium4')
 url='https://github.com/neovim/neovim/releases/tag/nightly'
 backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
-depends=('libluv' 'libtermkey' 'libuv' 'libvterm' 'luajit' 'msgpack-c' 'tree-sitter' 'unibilium')
-makedepends=('cmake' 'gperf' 'ninja' 'lua51-mpack' 'lua51-lpeg' 'patchelf')
+depends=('libluv' 'libtermkey' 'libuv' 'libvterm' 'luajit' 'msgpack-c' 'tree-sitter' 'unibilium' 'lua51-lpeg' 'lua51-mpack')
+makedepends=('cmake' 'gperf' 'ninja' 'patchelf')
 optdepends=('python2-neovim: Python 2 provider'
             'python-pynvim: Python 3 provider'
             'ruby-neovim: Ruby provider'
