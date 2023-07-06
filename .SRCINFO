@@ -1,13 +1,13 @@
 pkgbase = python-spacy-en_core_web_lg
-	pkgdesc = English transformer pipeline (roberta-base). Components: transformer, tagger, parser, ner, attribute_ruler, lemmatizer.
-	pkgver = 3.5.0
+	pkgdesc = English pipeline optimized for CPU. Components: tok2vec, tagger, parser, senter, ner, attribute_ruler, lemmatizer.
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://spacy.io/models/en#en_core_web_lg
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-spacy
-	source = https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.5.0/en_core_web_lg-3.5.0.tar.gz
-	sha256sums = 29732c8167e444686e0d8716d6b09123f3fa2d32baf7dbd2d8bc6c1b2c1b6945
+	source = https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.6.0/en_core_web_lg-3.6.0.tar.gz
+	sha256sums = 21dbeb056c4e281d717fa1bfd3711fa1255cb8766d22463c158bbaa2d4e1fc39
 
 pkgname = python-spacy-en_core_web_lg
