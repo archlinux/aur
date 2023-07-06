@@ -5,6 +5,7 @@ pkgbase = ok-edu-classroom-desktop-git
 	url = https://gitee.com/chuanshantech/ok-edu-classroom-desktop
 	arch = x86_64
 	arch = aarch64
+	license = GPL-2.0
 	license = MulanPubL-2.0
 	makedepends = cmake
 	makedepends = ninja
