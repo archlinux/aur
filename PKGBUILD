@@ -1,7 +1,7 @@
 # Maintainer: Alex S. <alex at panoptic.onl>
 pkgname=cryptlib
-pkgver=3.4.5
-_pkgverdotless=345
+pkgver=3.4.7
+_pkgverdotless=347
 pkgrel=1
 pkgdesc="A high-level security interface toolkit providing encryption and authentication"
 # This description is awful but it's a hard toolkit to summarize.
@@ -13,7 +13,7 @@ makedepends=(unzip
 	make)
 source=("https://cryptlib-release.s3-ap-southeast-1.amazonaws.com/$pkgname$_pkgverdotless.zip")
 noextract=("$pkgname$_pkgverdotless.zip")
-sha256sums=('7b757a41b2e146d6b5676936eab51526396d2058c0263e613e3795041e240c31')
+sha256sums=('9ef71f0479a71508cfb51f403f7a42dcd5040c31c5f7aebc6bcb178bbfaf8c43')
 prepare(){
 	unzip -a $pkgname$_pkgverdotless.zip
 }
