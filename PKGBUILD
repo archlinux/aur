@@ -2,7 +2,7 @@
 
 pkgname=lunar-client
 _pkgname=lunarclient
-pkgver=2.15.1
+pkgver=2.16.1
 pkgrel=1
 pkgdesc='PvP modpack for all modern versions of Minecraft'
 url=https://lunarclient.com
@@ -12,7 +12,7 @@ depends=(fuse xorg-xrandr)
 options=(!strip)
 _appimage="Lunar%20Client-${pkgver}.AppImage"
 source=("https://launcherupdates.lunarclientcdn.com/${_appimage}")
-sha256sums=('f05ea29cb72d34b0ab4ef3bf7f82161dc9699bfeafa96e3834a6dcb74129a78b')
+sha256sums=('17d0ceaa8066ff2d68c00e484a5cd659fc40da42a179b4793a118fd82e952dbb')
 
 prepare() {
 	chmod +x "${_appimage}"
@@ -23,7 +23,7 @@ build() {
 	# Adjust .desktop so it will work outside of AppImage container
 	sed -i -E \
 		"s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
-		"squashfs-root/${_pkgname}.desktop"
+		"squashfs-root/launcher.desktop"
 	# Fix permissions; .AppImage permissions are 700 for all directories
 	chmod -R a-x+rX squashfs-root/usr
 }
@@ -36,7 +36,7 @@ package() {
 
 	# Desktop file
 	install -Dm644 \
-		"${srcdir}/squashfs-root/${_pkgname}.desktop" \
+		"${srcdir}/squashfs-root/launcher.desktop" \
 		"${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
 	# Icon images

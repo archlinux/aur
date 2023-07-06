@@ -1,6 +1,6 @@
 pkgbase = lunar-client
 	pkgdesc = PvP modpack for all modern versions of Minecraft
-	pkgver = 2.15.1
+	pkgver = 2.16.1
 	pkgrel = 1
 	url = https://lunarclient.com
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lunar-client
 	depends = fuse
 	depends = xorg-xrandr
 	options = !strip
-	source = https://launcherupdates.lunarclientcdn.com/Lunar%20Client-2.15.1.AppImage
-	sha256sums = f05ea29cb72d34b0ab4ef3bf7f82161dc9699bfeafa96e3834a6dcb74129a78b
+	source = https://launcherupdates.lunarclientcdn.com/Lunar%20Client-2.16.1.AppImage
+	sha256sums = 17d0ceaa8066ff2d68c00e484a5cd659fc40da42a179b4793a118fd82e952dbb
 
 pkgname = lunar-client
