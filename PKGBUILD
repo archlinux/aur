@@ -63,7 +63,7 @@ build() {
     --with-examplesdir='${DESTDIR}/${prefix}/share/doc/'"${_pkg}/examples"
     --libdir="/usr/lib/${pkgname}"
     --includedir="/usr/include/${pkgname}"
-    --with-program-suffix="${_majver}"
+    --program-suffix="${_majver}"
     --enable-static
     --disable-sharedlib-rpath
     --enable-build-mode=production
