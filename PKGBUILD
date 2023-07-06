@@ -1,12 +1,13 @@
-# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Tristan Webb <tristanjwebb@gmail.com>
 
-pkgname='wemux-git'
-pkgver=3.2.0.r14.g01c6541
+_name=wemux
+pkgname=wemux-git
+pkgver=3.2.0.r52.g9d96c4f
 pkgrel=1
 pkgdesc='Multi-user Tmux made easy'
 arch=('any')
-url='https://github.com/zolrath/wemux'
+url='https://github.com/zigdon/wemux'
 license=('MIT')
 depends=('tmux' 'lsof' 'openssh')
 makedepends=('git')
@@ -14,31 +15,29 @@ provides=("wemux=${pkgver%%.r*}")
 conflicts=('wemux')
 backup=('etc/wemux/wemux.conf')
 install="${pkgname}.install"
-_srcdir='wemux'
-source=('git://github.com/zolrath/wemux.git')
-md5sums=('SKIP')
+source=(git+${url}.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_srcdir}"
+  cd "${_name}"
   git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "${_srcdir}"
+  cd "${_name}"
   #cp -p 'wemux' 'wemux.Arch'
-  sed -e 's:/usr/local/etc:/etc/wemux:g' -i 'wemux'
+  sed -e 's:/usr/local/etc:/etc/wemux:g' -i 'wemux.in'
   test ! -f 'wemux.Arch'
 }
 
 package(){
-  cd "${_srcdir}"
+  cd "${_name}"
 
   #install manpage
-  install -Dm644 'man/wemux.1' -t "${pkgdir}/usr/share/man/man1/"
+  install -Dm644 'man/wemux.1.in' -T "${pkgdir}/usr/share/man/man1/wemux.1"
 
   #install binary and readme
-  install -Dm755 'wemux' -t "${pkgdir}/usr/bin/"
+  install -Dm755 'wemux.in' -T "${pkgdir}/usr/bin/wemux"
   install -Dm644 'README.md' -t "${pkgdir}/usr/share/wemux/"
 
   #install conf
