@@ -40,12 +40,12 @@ find_pc () {
 
 ONLY_INC="--keep-system-cflags --cflags-only-I";
 
-type mpicc >/dev/null && \
-    CONFOPTS="${CONFOPTS} --with-cc=mpicc"
-type mpicxx >/dev/null && \
-    CONFOPTS="${CONFOPTS} --with-cxx=mpicxx"
-type mpifort >/dev/null && \
-    CONFOPTS="${CONFOPTS} --with-fc=mpifort"
+MPICC=$(type -p mpicc)
+[[ -f ${MPICC} ]] && CONFOPTS="${CONFOPTS} --with-cc=$(which mpicc)"
+MPICXX=$(type -p mpicxx)
+[[ -f ${MPICXX} ]] && CONFOPTS="${CONFOPTS} --with-cxx=$(which mpicxx)"
+MPIFORT=$(type -p mpifort)
+[[ -f ${MPIFORT} ]] && CONFOPTS="${CONFOPTS} --with-fc=$(which mpifort)"
 
 # BOOST: Free peer-reviewed portable C++ source libraries
 if [ -f "$(find_so libboost_mpi.so)" ]; then

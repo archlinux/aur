@@ -116,13 +116,11 @@ build() {
     --with-environment-variables=1
     --with-cxx-dialect=auto
     --with-mpi=1
-    --with-fc=$(which mpifort)
-    --with-cxx=$(which mpicxx)
-    --with-cc=$(which mpicc)
     --with-pic=1
     --with-shared-libraries=1
     --with-zlib=1
     --with-petsc4py=1
+    --with-mpi-f90module-visibility=0
     # Disabled for DAMASK
     # --with-scalar-type=complex
     --with-single-library=1
@@ -137,7 +135,12 @@ build() {
 
 check() {
   cd "${srcdir}"/"${_base}"
-  PETSC_DIR="${srcdir}"/"${_base}" PYTHONPATH="${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH}" make check
+
+  if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
+    export OMPI_MCA_opal_warn_on_missing_libcuda=0
+  fi
+  export OMPI_MCA_plm_rsh_agent=sh
+  PYTHONPATH=${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH} make check
 }
 
 package_petsc-git-release() {
