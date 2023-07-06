@@ -16,7 +16,7 @@ depends=(
   "openmp"
   "llvm>=4.0"
   "mesa"
-  "openblas"
+  "blas-openblas"
   "openmp"
   # https://tvm.apache.org/docs/install/from_source.html,
   "python-numpy"
