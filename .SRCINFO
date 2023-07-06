@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop-electron-bin
 	pkgdesc = Diagram drawing application built on web technology.Use system electron.
-	pkgver = 21.5.1
+	pkgver = 21.6.1
 	pkgrel = 1
 	url = https://www.diagrams.net/
 	arch = x86_64
@@ -8,10 +8,9 @@ pkgbase = drawio-desktop-electron-bin
 	depends = electron
 	conflicts = drawio-desktop
 	conflicts = drawio
-	conflicts = drawio-desktop-appimage
-	source = drawio-21.5.1.AppImage::https://github.com/jgraph/drawio-desktop/releases/download/v21.5.1/drawio-x86_64-21.5.1.AppImage
+	source = drawio-21.6.1.AppImage::https://github.com/jgraph/drawio-desktop/releases/download/v21.6.1/drawio-x86_64-21.6.1.AppImage
 	source = drawio-desktop-electron.sh
-	sha256sums = fab12a2b5d076448cb3e0a232d8135ad8f9f27b4bc562910249cb71e8cc99054
+	sha256sums = deb2d2aed610fcaa2dacce1eca6ed99b4b1ceead5c426febf483f3fddbb0279a
 	sha256sums = 1ac764b2ea323f1615b8dc2d77c62cc32393e7c6733d911026b8ac39e9e3d58f
 
 pkgname = drawio-desktop-electron-bin
