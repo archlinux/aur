@@ -1,10 +1,10 @@
 pkgbase = final2x-bin
 	pkgdesc = 2^x Image Super-Resolution
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tohrusky/Final2x
 	arch = x86_64
-	license = BSD3-Clause
+	license = BSD
 	makedepends = asar
 	depends = electron
 	depends = hicolor-icon-theme
