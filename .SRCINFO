@@ -1,16 +1,20 @@
 pkgbase = r-rcppprogress
 	pkgdesc = An Interruptible Progress Bar with OpenMP Support for C++ in R Packages
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 10
 	url = https://cran.r-project.org/package=RcppProgress
 	arch = any
 	license = GPL3
+	checkdepends = r-devtools
+	checkdepends = r-rcpparmadillo
+	checkdepends = r-testthat
 	depends = r
-	optdepends = r-rcpparmadillo
 	optdepends = r-devtools
+	optdepends = r-rcpparmadillo
 	optdepends = r-roxygen2
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/RcppProgress_0.4.2.tar.gz
+	md5sums = 29ecb32d5c739805ced912e4bedf26f2
 	sha256sums = b1624b21b7aeb1dafb30f092b2a4bef4c3504efd2d6b00b2cdf55dc9df194b48
 
 pkgname = r-rcppprogress

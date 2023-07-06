@@ -1,31 +1,44 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=RcppProgress
-_cranver=0.4.2
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+_pkgname=RcppProgress
+_pkgver=0.4.2
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=10
 pkgdesc="An Interruptible Progress Bar with OpenMP Support for C++ in R Packages"
 arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=(GPL3)
-depends=(r)
-optdepends=(
-    r-rcpparmadillo
-    r-devtools
-    r-roxygen2
-    r-testthat
+depends=(
+  r
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+checkdepends=(
+  r-devtools
+  r-rcpparmadillo
+  r-testthat
+)
+optdepends=(
+  r-devtools
+  r-rcpparmadillo
+  r-roxygen2
+  r-testthat
+)
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('29ecb32d5c739805ced912e4bedf26f2')
 sha256sums=('b1624b21b7aeb1dafb30f092b2a4bef4c3504efd2d6b00b2cdf55dc9df194b48')
 
 build() {
   mkdir -p build
-  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-
-  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
