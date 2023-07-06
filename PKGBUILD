@@ -1,14 +1,15 @@
 # Maintainer:
 
-# options and defaults:
-#    _default  = 2stems
-#    _allstems = false
-#    _finetune = false
-#    _srcinfo  = false
+# packaging options
+: ${_default:=2stems}
+: ${_allstems:=false}
+: ${_finetune:=false}
+: ${_srcinfo:=false}
 
-if [ x"$_default" == "x" ] ; then
-  _default="2stems"
-fi
+# lowercase
+for i in _allstems _finetune _srcinfo ; do
+  eval "${i}=\$( printf '%s' \"\${$i::1}\" | sed -e 's/^\(.*\)$/\L\1/' )"
+done
 
 set_model_source() {
   case $1 in
@@ -74,23 +75,29 @@ sha256sums+=(
   'b15e40c921ec6fe997e0d88ddab9c26fb915bebbbb9496530d3f98f317d4325a'
 )
 
+case "$_srcinfo" in
+  't'|'y'|'1')
+    _allstems='t'
+    _finetune='t'
+    ;;
+esac
 
-if [ x"$_srcinfo" == "xtrue" ] ; then
-  _allstems="true"
-  _finetune="true"
-fi
+case "$_allstems" in
+  't'|'y'|'1')
+    _models=(2stems 4stems 5stems)
+    ;;
+  *)
+    _models=("$_default")
+    ;;
+esac
 
-if [ x"$_allstems" == "xtrue" ] ; then
-  _models=(2stems 4stems 5stems)
-else
-  _models=("$_default")
-fi
-
-if [ x"$_finetune" == "xtrue" ] ; then
-  for _model in ${_models[@]} ; do
-    _models+=("$_model-finetune")
-  done
-fi
+case "$_finetune" in
+  't'|'y'|'1')
+    for _model in ${_models[@]} ; do
+      _models+=("$_model-finetune")
+    done
+    ;;
+esac
 
 for _model in ${_models[@]} ; do
   pkgname+=(
