@@ -19,34 +19,37 @@ url="https://${_pkg}.org"
 _url="https://github.com/${_pkg}/${_pkg}"
 license=('BSD')
 depends=(
-  'python2'
-  'python2-traitlets'
-  'python2-pexpect'
+  "${_py}"
+  "${_py}-traitlets"
+  "${_py}-pexpect"
   'sqlite'
-  'python2-setuptools'
-  'python2-pickleshare'
-  'python2-pathlib'
-  'python2-backports.shutil_get_terminal_size'
-  'python2-prompt_toolkit1'
+  "${_py}-setuptools"
+  "${_py}-pickleshare"
+  "${_py}-pathlib"
+  "${_py}-backports.shutil_get_terminal_size"
+  "${_py}-prompt_toolkit1"
 )
 optdepends=(
   "wxpython: needed for ipython2 --gui=wx" # does this should be fixed?
-  "python2-nose: for IPython's test suite"
+  "${_py}-nose: for IPython's test suite"
 )
 makedepends=(
-  'python2-setuptools'
+  "${_py}-setuptools"
 )
 provides=(
   "${_py}-${pkgname}=${pkgver}"
 )
 _pypi_url="https://files.pythonhosted.org/packages/source"
+_packal_url="https://www.packal.org/sites/default/files/public/styles/icon_large/public/workflow-files"
 source=(
   "${pkgname}-${pkgver}.tgz::${_url}/archive/${pkgver}.tar.gz"
   "${_pypi_url}/s/simplegeneric/simplegeneric-0.8.1.zip"
-  "https://www.packal.org/sites/default/files/public/styles/icon_large/public/workflow-files/nkeimipynbworkflow/icon/icon.png")
-md5sums=('d8905868c8618494827b4546608540b8'
-         'f9c1fab00fd981be588fc32759f474e3'
-         '2901d65f1b1fe354e72850085cd1c072')
+  "${_packal_url}/nkeimipynbworkflow/icon/icon.png")
+md5sums=(
+  'd8905868c8618494827b4546608540b8'
+  'f9c1fab00fd981be588fc32759f474e3'
+  '2901d65f1b1fe354e72850085cd1c072'
+)
 
 # simplegeneric (so old that it only comes in .zip and still refers to the cheeseshop)
 # confirm that an update does not break sage?
@@ -98,3 +101,4 @@ package() {
   #         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 }
 
+# vim:set sw=2 sts=-1 et:
