@@ -2,7 +2,7 @@
 
 pkgname=ueberzugpp
 pkgver=2.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line util which allows to display images in combination with X11 written in C++"
 arch=("x86_64")
 url="https://github.com/jstkdng/ueberzugpp"
