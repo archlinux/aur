@@ -1,0 +1,11 @@
+diff --color --unified --recursive --text squashfs-root.orig/revolt-desktop.desktop squashfs-root.new/revolt-desktop.desktop
+--- squashfs-root.orig/revolt-desktop.desktop	2023-07-06 16:26:38.483129870 +0800
++++ squashfs-root.new/revolt-desktop.desktop	2023-07-06 16:27:32.137368198 +0800
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=Revolt
+-Exec=AppRun --no-sandbox %U
++Exec=/usr/bin/revolt-desktop
+ Terminal=false
+ Type=Application
+ Icon=revolt-desktop
