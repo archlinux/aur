@@ -14,7 +14,6 @@ optdepends=("python-django-polymorphic: polymorphic support"
             "python-django-filter: allow filtering"
             "python-yaml: for openapi support"
             "python-uritemplate: for openapi support")
-#source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 source=(https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz)
 sha256sums=('f2465b1b1cd3f372abacc8d99f82835643373f4f3f12965276ad1ccc2d110415')
 
