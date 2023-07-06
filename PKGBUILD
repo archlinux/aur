@@ -1,8 +1,8 @@
 # Maintainer: Yu-Hsuan Tu <dobe0331 at gmail dot com>
 _pkgname=metashape
 pkgname=agisoft-${_pkgname}
-pkgver=2.0.1
-pkgrel=3
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Standard edition"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -22,7 +22,7 @@ source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${p
         "agisoft-metashape-icon-encoded.txt"
         "agisoft-psx-mime-icon-encoded.txt"
 	"agisoft-psz-mime-icon-encoded.txt")
-sha256sums=('7f5aa62da68c5ce897541cdc6e3b246751f33c569a484d13f1164cbc60392de3'
+sha256sums=('1bc01cdde4e33b02a78e4811dc55e690b86ec4c81498889ab60b7d21cc104ce8'
             '959eb21ce482a5b1f84a0e04ec6f0d53aaf679c84bce9f813b350afe5dd201ba'
             '627df01b98f9f22b31d62ba039127b7809650990d1633e4190f1d9844830a0ff'
             'd44fb70962175505fd3bfc0e96670e5bf4092c80446e0142cc91a3e0033e1009')
