@@ -1,20 +1,20 @@
-# Maintainer: Bertrand Bonnefoy-Claudet <bertrandbc@gmail.com>
+# Maintainer: Bertrand Bonnefoy-Claudet <bertrand@bertrandbc.com>
 # Contributor: Joshua Stiefer <facedelajunk@gmail.com> 
 
 _gemname=libxml-ruby
 pkgname=$_gemname
-pkgver=3.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Provides Ruby language bindings for the GNOME Libxml2 XML toolkit"
 arch=('i686' 'x86_64')
-url="http://xml4r.github.com/libxml-ruby"
+url="https://xml4r.github.io/libxml-ruby/"
 license=('MIT')
 depends=('ruby' 'libxml2')
 makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('2d6305fabbfb9e52b8e5d8f8797c1b3a0ee90ff498684fb44555dd79e33ff5e4')
+sha256sums=('432bad1a3af3e4066e32ce3654a7cde2eea227bc2c200b406807153a91a75929')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
