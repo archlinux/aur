@@ -10,7 +10,7 @@ depends=('docker>=23.0.0' 'curl' 'qemu>=5.2.0' 'libseccomp' 'libcap-ng' 'pass' '
 makedepends=('w3m')
 install='docker-desktop.install'
 source=("https://desktop.docker.com/linux/main/amd64/$pkgname-$pkgver-x86_64.pkg.tar.zst")
-md5sums=('f07abde35438a132f969700967cecfc2')
+md5sums=('ed56ddccf7a3dc4847a7023b7aa6845c')
 
 package() {
     install -d "${pkgdir}/usr/share/applications"
