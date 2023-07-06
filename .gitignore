@@ -4,3 +4,4 @@
 /*.pkg.tar.zst
 /clear.sh
 /*.log
+/update_SRCINFO.sh
