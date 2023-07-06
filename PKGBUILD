@@ -1,6 +1,6 @@
 # Maintainer: Raffaele Mancuso <raffaelemancuso532 at gmail dot com>
 pkgname=pdf4qt-git
-pkgver=r849.198b8a5
+pkgver=r850.ae3c43f
 pkgrel=1
 pkgdesc="Open source PDF editor"
 arch=('x86_64')
@@ -17,8 +17,13 @@ depends=('openssl'
 	'freetype2'
 	'zlib'
 	'glibc'
-	'gcc-libs')
-makedepends=('git' 'cmake')
+	'gcc-libs'
+)
+makedepends=('git'
+	'cmake'
+	'qt6-declarative'
+	'qt6-multimedia'
+)
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
 source=("$pkgname"::'git+https://github.com/JakubMelka/PDF4QT'
