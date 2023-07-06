@@ -1,13 +1,13 @@
 pkgbase = muse-hub-bin
 	pkgdesc = Manage MuseScore Libraries.
 	pkgver = 1.0.1.451
-	pkgrel = 2
+	pkgrel = 3
 	install = muse-hub-bin.install
 	arch = x86_64
 	provides = muse-hub
 	options = !strip
 	options = emptydirs
-	source = https://pub-c7a32e5b5d834ec9aeef400105452a42.r2.dev/Muse_Hub.deb
+	source = muse-hub-1.0.1.451-3.deb::https://muse-cdn.com/Muse_Hub.deb
 	source = muse-hub.service
 	source = muse-hub.desktop
 	sha512sums = a536bec895bfae4c29c13ab6359c0f35b6e94dd1a59dc9f0a0525244ca65a61452f3d7d8bc02f18a32b1e5493b9fd98734daeba93cdeea0f66fd12039fb69bbc
