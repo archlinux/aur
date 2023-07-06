@@ -1,11 +1,11 @@
 pkgbase = wives-bin
 	pkgdesc = A beautiful, modern & feature-rich Terminal Emulator 
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KRTirtho/wives/
 	arch = x86_64
 	license = GPLv3
-	source = https://github.com/KRTirtho/wives/releases/download/v2.3.0/Wives-linux-x86_64.tar.xz
+	source = https://github.com/KRTirtho/wives/releases/download/v0.1.1/Wives-linux-x86_64.tar.xz
 	md5sums = 739eb87b11fd8e99d115d8c6e01449db
 
 pkgname = wives-bin

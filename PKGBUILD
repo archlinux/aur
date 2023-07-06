@@ -1,7 +1,7 @@
 # Maintainer: Kingkor Roy Tirtho <krtirho@gmail.com>
 pkgname=wives-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A beautiful, modern & feature-rich Terminal Emulator "
 arch=(x86_64)
@@ -31,7 +31,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
 
   mv ./wives.desktop "${pkgdir}/usr/share/applications"
-  mv ./logo.png "${pkgdir}/usr/share/pixmaps/wives.png"
+  mv ./logo.png "${pkgdir}/usr/share/icons/wives.png"
   cp -ra ./data ./lib ./wives "${pkgdir}/usr/share/${pkgname}"
   ln -s "/usr/share/${pkgname}/wives" "${pkgdir}/usr/bin/wives"
 }
