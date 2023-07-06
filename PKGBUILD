@@ -2,7 +2,7 @@
 pkgname=python-liboqs
 _name=liboqs-python
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python 3 bindings for liboqs"
 arch=('any')
 url="https://github.com/open-quantum-safe/liboqs-python"
@@ -16,7 +16,7 @@ makedepends=(
 )
 checkdepends=('python-nose2')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/open-quantum-safe/$_name/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('b7b19092eccc33804b11e907d7fa69dc42511e7fff6a3026380ac31f2a8c1486222cbbff92e538aafd165e8ace36acb7d055bf42749bf1dc834e7fffb3e457f9')
+b2sums=('09789298b715482d6a91ec6e7f414a0efee3a89210b79b82b886e50a5c21cae381a60c4dc7a50acae7a35d86ef1cd7a400f65b3ea73f24ff766e0a6078fbe49d')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
