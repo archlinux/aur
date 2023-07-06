@@ -1,6 +1,6 @@
 pkgbase = rime-custom-pinyin-dictionary
 	pkgdesc = rime 自建拼音输入法词库，百万常用词汇量。
-	pkgver = 20230609
+	pkgver = 20230630
 	pkgrel = 1
 	url = https://github.com/wuhgit/CustomPinyinDictionary
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = rime-custom-pinyin-dictionary
 	license = CCPL:by-sa
 	makedepends = libime
 	makedepends = imewlconverter
-	source = https://github.com/wuhgit/CustomPinyinDictionary/releases/download/assets/CustomPinyinDictionary_Fcitx_20230609.tar.gz
-	sha256sums = e8efcd9ad837fe91915f4c6ccca9701d776d09df0727de762e9477672269433f
+	source = https://github.com/wuhgit/CustomPinyinDictionary/releases/download/assets/CustomPinyinDictionary_Fcitx_20230630.tar.gz
+	sha256sums = ae8412e4d868c809cdd7651dd70c866152d76496eafa4f7e0e4ca4809ccff607
 
 pkgname = rime-custom-pinyin-dictionary
