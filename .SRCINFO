@@ -1,6 +1,6 @@
 pkgbase = python-termux-language-server
 	pkgdesc = termux's build.sh language server
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/termux-language-server
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-termux-language-server
 	depends = python-pygls
 	depends = python-platformdirs
 	optdepends = python-beautifulsoup4
-	source = https://files.pythonhosted.org/packages/py3/t/termux_language_server/termux_language_server-0.0.1-py3-none-any.whl
-	sha256sums = 28a4f447f8d425736dc10c2d02b35f2ebc88562ee29133943a7abd044ee3b6a2
+	source = https://files.pythonhosted.org/packages/py3/t/termux_language_server/termux_language_server-0.0.2-py3-none-any.whl
+	sha256sums = a3569c2f1589710cb23ecdb9dfe382bb68be38008ce4fb46e37769015d58dbb6
 
 pkgname = python-termux-language-server

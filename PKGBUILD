@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 _pkgname=termux-language-server
 pkgname="python-$_pkgname"
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="termux's build.sh language server"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-installer)
 license=(GPL3)
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('28a4f447f8d425736dc10c2d02b35f2ebc88562ee29133943a7abd044ee3b6a2')
+sha256sums=('a3569c2f1589710cb23ecdb9dfe382bb68be38008ce4fb46e37769015d58dbb6')
 
 package() {
 	python -m installer -d "$pkgdir" ./*.whl
