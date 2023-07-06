@@ -1,6 +1,6 @@
 pkgbase = phanpy-tauri
 	pkgdesc = The Phanpy Mastodon web client, now as a Tauri app!
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/StandingPadAnimations/phanpy-tauri/tree/production
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = phanpy-tauri
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	source = https://github.com/StandingPadAnimations/phanpy-tauri/releases/download/0.1.0/phanpy-tauri.tar.gz
+	source = multiimage-fix.patch
 	sha256sums = f03d1226c118b8cb49bb03d21cfbb07a0774945527d8572daccf65fde884579a
+	sha256sums = a483c50fa26d462f6797e3058182dafeda8ded92c4cf35c6b1bec6e2c9165211
 
 pkgname = phanpy-tauri

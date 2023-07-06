@@ -1,0 +1,11 @@
+--- ./usr/share/applications/phanpy.desktop
++++ ./usr/share/applications/phanpy.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Categories=Development;
+-Exec=phanpy
++Exec=env WEBKIT_DISABLE_COMPOSITING_MODE=1 phanpy
+ Icon=phanpy
+ Name=Phanpy
+ Terminal=false
+
