@@ -133,6 +133,9 @@ package() {
     ln -s "/usr/lib/${pkgname}/lib${_pkg}hl_fortran.a" \
           "${pkgdir}/usr/lib/lib${_pkg}_hl_fortran.a.200.0.0"
 
+    mv "${pkgdir}/usr/bin/h5cc"{,"${_majver}"}
+    mv "${pkgdir}/usr/bin/h5fc"{,"${_majver}"}
+
     # Install pkg-config files from CMake tree
     install -Dm644 "../build/CMakeFiles/${_pkg}"{,_hl}{,_cpp}"-${pkgver}.pc" \
             -t "${pkgdir}/usr/lib/pkgconfig"
