@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Eli Schwartz
 pkgname=smile
-pkgver=2.4.1
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
@@ -11,10 +11,11 @@ license=('GPL3')
 depends=('dbus-python' 'libadwaita' 'python-manimpango')
 makedepends=('meson')
 checkdepends=('appstream-glib')
+optdepends=('xdotool: Automatically paste emojis (X11 only)')
 conflicts=("$pkgname-emoji-picker")
 replaces=("$pkgname-emoji-picker")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9f753bcbe7076fdb3af8684adb6e851b666adac3d8acb36d6acee633ae053bbb')
+sha256sums=('694b8a3daf8871235ac7a3a9656e9e8778477fe11bc3b7d83beffbec830529d4')
 
 prepare() {
   cd "$pkgname-$pkgver"
