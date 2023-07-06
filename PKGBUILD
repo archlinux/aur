@@ -2,13 +2,14 @@
 
 pkgname=tthsum
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="generates or checks TTH message digests"
 arch=('i686' 'x86_64')
 url="http://tthsum.devs.nu"
 license=('GPL3')
 depends=('glibc')
 makedepends=()
+changelog=CHANGES.txt
 source=("${pkgname}-${pkgver}.tar.gz::${url}/pkg/tthsum-${pkgver}.tar.gz")
 md5sums=('4a3afe8e9bb5787c0db2de06484f18c1')
 

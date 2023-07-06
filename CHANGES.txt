@@ -1,0 +1,100 @@
+tthsum-1.3.2 [2013-08-13] (wdoekes)
+ * Update manpage, fixing incorrect use of hyphens which should be minuses in
+   most cases. And update URL to the thex specification.
+ * Add __GLIBC__ to __linux check in endian.h so endianness is correctly
+   detected on kFreeBSD. Reported by Christoph Egger. Patch by Petr Salinger.
+   (Debian bug #664144.)
+ * Probably fix "dpkg-buildflags-missing CPPFLAGS" debian warning.
+ * Makefile ensures recompilation on header file changes.
+ * Fix "N out of M files failed" tthsum -v message.
+ * Fix that the text tests shouldn't fail when you're using localized errors.
+   You get a warning instead.
+ * Replace -1 in set_error() api with ERROR_FROM_OS.
+ * Replaced sprintf usage in texts internals.
+
+tthsum-1.3.1 [2012-01-05] (wdoekes)
+ * Fix buffer overrun in tiger tests. Reported by Edward Sheldrake.
+
+tthsum-1.3.0 [2011-10-10] (wdoekes)
+ * Force alignment on platforms that need it using a compile-time test. Thanks
+   go out to pavelch for providing failing test cases and to Zoiah for lending
+   me an ARM ;-)
+   (I added a minimal autoconf.c as a faster alternative to proper autconf.)
+ * Fix a rather serious problem with the big endian code. Non-trivial files
+   over 1024 bytes would not have had proper hashes calculated. (Debian bug
+   #517619.)
+ * New test cases and tweaks to existing tests.
+ * Fix so compilation with -ansi works.
+ * Fix another problem with alignment on an ARM with -O3 optimization. Thanks
+   Héctor Orón for hooking me up with access to the debian ARM box.
+ * Fix problems with debian packaging. (Debian bug #599173 and CPPFLAGS
+   override.)
+
+tthsum-1.2.1 [2009-12-29] (wdoekes)
+ * Minor code and build system cleanup.
+
+tthsum-1.2.0 [2009-05-29] (wdoekes)
+ * Changed -p output to print percentages instead of MiB counts.
+ * Base32 decoding errors did not generate a valid error message. (Error code
+   0 conflicted with SUCCESS.)
+ * Fixed that ctrlesctostr accepted strange BASE36 escape sequences.
+ * Made getopt for Windows more compatible with POSIX getopt.
+ * Fixed that including the tthsum specific texts.c is optional.
+ * Changed some header inclusions to be more compliant with C specs and made
+   the source a bit more strict (ANSI C compatible, C++ compatible).
+ * Added a test suite to detect stupid bugs at compile time. (Like the next
+   bug.)
+ * Endianness was not properly detected on various architectures (see debian
+   bug 517619; thanks Alan Curry <pacman> for reporting).
+ * Standardized UTF8 functions to behave as specified on Windows.
+ * Corrected the need for a double EOF when reading from stdin.
+ * Changed license from GPLv2 to GPLv3. Updated help texts (suggesting gmake
+   on non-Linuxen, for instance).
+ * Removed a bit of overhead on big endian platforms.
+
+tthsum-1.1.0 [2005-06-28] (wdoekes)
+ * Converted tthsum to C (it was C++).
+ * Updated makefiles, added NMakefile for Windows, run nmake /f NMakefile on
+   windows.
+ * Added BIG_ENDIAN support (tested on a SPARC).
+ * Removed -b functionality. The asterisk that did nothing didn't make sense.
+ * Made this Changelog a bit more readable.
+ * Fixed a bug where incorrect hashes were generated when using the console as
+   input file. (The reads did not generate a multiple of 1024 bytes.)
+ * Added mmap(2) support (-m) (mapping 1.6MB at a time), default is read(2).
+   YMMV.
+ * Added -p, -w, -V options (show progress, warn about improper digest lines,
+   show version).
+ * Writing escaped and utf8-ified filenames to digest.
+
+tthsum-1.0.6 [2005-06-08] (wdoekes)
+ * Removed all debian related stuff (debian/ dir, and Makefile entries).
+   These will go into the debian diff, created by the future maintainer
+   RISKO Gergely.
+ * Added stuff TODO ;)
+
+tthsum-1.0.5 [2004-10-23] (wdoekes)
+ * Corrected misuse of revision number as version number (thanks Jan "Yenya"
+   Kasprzak), the debian rev-1 package will be the same as the "original"
+   source (debian uses a different file naming scheme).
+ * Moved tthsum.spec to rpm/ and added tgz/rpm/dists make options.
+
+tthsum-1.0-4 [2004-10-19] (wdoekes)
+ * Added tthsum.spec file to build RPM packages (thanks Jan "Yenya" Kasprzak)
+ * Added -fpermissive CXXFLAG to the Makefile to fix build issues on Fedora
+   Core 3 test 3 x86_64 (thanks Jan "Yenya" Kasprzak)
+
+tthsum-1.0-3 [2004-07-22] (wdoekes)
+ * Enabled large files support on *nix (#define _FILE_OFFSET_BITS 64)
+   (thanks John Baeckstrand).
+
+tthsum-1.0-2 [2004-06-12] (wdoekes)
+ * Ported to windows.
+ * Added windows\make.cmd and windows\make_clean.cmd for use with MSVC.NET
+ * Changed manpage to state that -b option does nothing, not even on windows.
+ * Added man2html generated html manual.
+
+tthsum-1.0-1 [2004-05-29] (wdoekes)
+ * Initial Release.
+ * vim: set syntax=changelog:
+
