@@ -1,0 +1,24 @@
+pkgbase = hdf5-1.12
+	pkgdesc = General purpose library and file format for storing scientific data
+	pkgver = 1.12.0
+	pkgrel = 2
+	url = https://www.hdfgroup.org/hdf5
+	arch = x86_64
+	license = custom
+	makedepends = cmake
+	makedepends = gcc-fortran
+	makedepends = time
+	depends = bash
+	depends = libaec
+	depends = zlib
+	provides = hdf5=1.12.0
+	provides = hdf51.12
+	provides = hdf5-cpp-fortran
+	replaces = hdf5-cpp-fortran
+	options = staticlibs
+	source = https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.12/hdf5-1.12.0/src/hdf5-1.12.0.tar.bz2
+	source = hdf5-1.12.0-compat-1.6.patch
+	sha256sums = 97906268640a6e9ce0cde703d5a71c9ac3092eded729591279bf2e3ca9765f61
+	sha256sums = 72ad497c56760bb3af8193c88d3fa264125829850b843697de55d934c56f7f44
+
+pkgname = hdf5-1.12
