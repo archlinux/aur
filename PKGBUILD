@@ -1,6 +1,6 @@
 # Maintainer: Anders Damsgaard <anders@adamsgaard.dk>
 pkgname=hurl
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc='HTTP/HTTPS/Gopher file grabber'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -10,7 +10,7 @@ license=('ISC')
 depends=('libretls')
 conflicts=('hurl-bin')
 source=("${_url_source}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ece366446e24ae97eed6f53405698ee7490f909b153f7a55679c8cea950c55ab')
+sha256sums=('00facf1f6aa507af8544f50ad6722d1f13724b3553dba2aed1ab86c4d76b42c1')
 
 build() {
 	make -C "${pkgname}-${pkgver}"
