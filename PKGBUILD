@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint-config-recommended
-pkgver=12.0.0
+pkgver=13.0.0
 pkgrel=1
 pkgdesc='Recommended shareable config for stylelint'
 arch=('any')
@@ -9,7 +9,7 @@ url=https://github.com/stylelint/stylelint-config-recommended
 license=('MIT')
 depends=('stylelint')
 makedepends=('git' 'npm')
-source=("git+$url.git")
+source=("git+$url.git#tag=$pkgver")
 b2sums=('SKIP')
 
 prepare() {
