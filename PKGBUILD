@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint
-pkgver=15.9.0
+pkgver=15.10.1
 pkgrel=1
 pkgdesc='Mighty, modern CSS linter'
 arch=('any')
@@ -27,7 +27,7 @@ check() {
 package() {
   local _npmdir=/usr/lib/node_modules/$pkgname
   install -d "$pkgdir"/{usr/bin,usr/share/doc/$pkgname,$_npmdir}
-  ln -s $_npmdir/bin/$pkgname.js "$pkgdir"/usr/bin/$pkgname
+  ln -s $_npmdir/bin/$pkgname.mjs "$pkgdir"/usr/bin/$pkgname
 
   cd $pkgname
   npm prune --production
