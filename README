@@ -1,12 +1,6 @@
 Some info about how I create this patch file:
-- I clone the mutter git repo
-- I add the doraskayo mutter 42 repo as a remote
-- I generate a diff between the latest tag and the remote branch for 42
-
-See here for reference: https://stackoverflow.com/questions/1968512/getting-the-difference-between-two-repositories
-
-
-Example:
-git pull
-git remote update
-git diff 42.4...remotes/doraskayo/vrr-support-42 > 42.4.patch
+- Using the official mutter PKGBUILD as a base.
+- I fetch the gnome-control-center git repo.
+- I download the VRR MR as a patch and apply it.
+- If there are no conflicts, the patch can be applied as-is during prepare(). In case of conflicts, I resolve them and generate a new patch file.
+- I apply the patch in the prepare() function.
