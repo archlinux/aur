@@ -6,20 +6,20 @@
 # Contributor: even <kessiapinheiro @ gmail . com>
 
 pkgname=greenfoot
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
-pkgdesc="Allows easy development of two-dimensional graphical applications, such as simulations and interactive games."
+pkgdesc="Educational software designed to make learning programming easy and fun."
 arch=('any')
 url="https://www.${pkgname}.org"
 license=('GPL2' 'Apache' 'BSD' 'CPL' 'LGPL2' 'LGPL2.1' 'MIT' 'custom')
-depends=('archlinux-java-run' 'java-runtime=11' 'java-environment=11' 'java11-openjfx')
+depends=('archlinux-java-run' 'java-runtime=17' 'java-environment=17' 'java17-openjfx')
 source=("https://www.${pkgname}.org/download/files/Greenfoot-linux-${pkgver//.}.deb"
         "${pkgname}"
         "${pkgname}.desktop"
         "${pkgname}.xml")
 noextract=("Greenfoot-linux-${pkgver//.}.deb")
-sha256sums=('2bd7da53765aadc47883cae21e9a196151f4b17b6e7aa7e6dc5a3eb19007240f'
-            'd9293f132cfee9d4f1c4471f697b841488da1a5fc9b7d5ef1a918bb665a1d1c4'
+sha256sums=('c0680a0ec03fda5bb0f8dcecf5d59bfc7447331ff44b40857e8239dce0b3c6e8'
+            'b7a5ce55ea1e186760b27360f87b3b9071477ded205d8fe917dabf35d4bbf7de'
             'b980d0084fbafbb3ea335bb3840d858898c692822f1c671969a91982e86c1b4f'
             'f1ea33e8289dfe31b9a0c4d88482a5ca5f75d663ba82ca986519f290e44789e4')
 

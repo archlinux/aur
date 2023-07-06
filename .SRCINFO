@@ -1,6 +1,6 @@
 pkgbase = greenfoot
-	pkgdesc = Allows easy development of two-dimensional graphical applications, such as simulations and interactive games.
-	pkgver = 3.7.0
+	pkgdesc = Educational software designed to make learning programming easy and fun.
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://www.greenfoot.org
 	arch = any
@@ -13,16 +13,16 @@ pkgbase = greenfoot
 	license = MIT
 	license = custom
 	depends = archlinux-java-run
-	depends = java-runtime=11
-	depends = java-environment=11
-	depends = java11-openjfx
-	noextract = Greenfoot-linux-370.deb
-	source = https://www.greenfoot.org/download/files/Greenfoot-linux-370.deb
+	depends = java-runtime=17
+	depends = java-environment=17
+	depends = java17-openjfx
+	noextract = Greenfoot-linux-371.deb
+	source = https://www.greenfoot.org/download/files/Greenfoot-linux-371.deb
 	source = greenfoot
 	source = greenfoot.desktop
 	source = greenfoot.xml
-	sha256sums = 2bd7da53765aadc47883cae21e9a196151f4b17b6e7aa7e6dc5a3eb19007240f
-	sha256sums = d9293f132cfee9d4f1c4471f697b841488da1a5fc9b7d5ef1a918bb665a1d1c4
+	sha256sums = c0680a0ec03fda5bb0f8dcecf5d59bfc7447331ff44b40857e8239dce0b3c6e8
+	sha256sums = b7a5ce55ea1e186760b27360f87b3b9071477ded205d8fe917dabf35d4bbf7de
 	sha256sums = b980d0084fbafbb3ea335bb3840d858898c692822f1c671969a91982e86c1b4f
 	sha256sums = f1ea33e8289dfe31b9a0c4d88482a5ca5f75d663ba82ca986519f290e44789e4
 
