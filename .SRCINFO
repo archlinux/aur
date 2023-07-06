@@ -1,14 +1,15 @@
 pkgbase = parceli-git
-	pkgdesc = CLI implementation of a package/mail tracker for USPS/UPS/FedEx made in Go using the parcel library and a bit of smarts.
-	pkgver = 0.0.1
+	pkgdesc = CLI implementation of a package/mail tracker for USPS/UPS/FedEx made in Rust using the parcel library and a bit of smarts.
+	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/cryptofyre/parceli
+	url = https://github.com/freehelpdesk/parceli
 	arch = x86_64
-	license = GPLv3
-	makedepends = go
+	license = BSD3
+	makedepends = rust
+	makedepends = rust-src
 	makedepends = git
-	makedepends = gcc
-	source = git+https://github.com/cryptofyre/parceli
+	makedepends = pkg-config
+	source = git+https://github.com/freehelpdesk/parceli
 	sha256sums = SKIP
 
 pkgname = parceli-git

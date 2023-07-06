@@ -1,13 +1,13 @@
 # Maintainer: freehelpdesk <freehelpdesk@proton.me>
 
 pkgname=parceli-git
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
-pkgdesc='CLI implementation of a package/mail tracker for USPS/UPS/FedEx made in Go using the parcel library and a bit of smarts.'
+pkgdesc='CLI implementation of a package/mail tracker for USPS/UPS/FedEx made in Rust using the parcel library and a bit of smarts.'
 arch=('x86_64')
-url="https://github.com/cryptofyre/parceli"
-license=('GPLv3')
-makedepends=(go git gcc)
+url="https://github.com/freehelpdesk/parceli"
+license=('BSD3')
+makedepends=(rust rust-src git pkg-config)
 source=("git+$url")
 sha256sums=('SKIP')
 
@@ -17,20 +17,14 @@ pkgvar() {
 
 prepare(){
   cd "parceli"
-  mkdir -p build/
 }
 
 build() {
   cd "parceli"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build .
+  cargo build --release
 }
 
 package() {
   cd "parceli"
-  install -Dm755 parceli "$pkgdir"/usr/bin/parceli
+  install -Dm755 target/release/parceli "$pkgdir"/usr/bin/parceli
 }
