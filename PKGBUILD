@@ -10,7 +10,7 @@ pkgdesc="TPM management software providing an easy to use graphical user interfa
 arch=('i686' 'x86_64')
 url="https://github.com/Rohde-Schwarz/TPMManager"
 license=(GPL2)
-depends=('qt5' 'trousers')
+depends=('qt5-base' 'trousers')
 source=(${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz)
 sha512sums=('bb094f6af52013b25859a346a4a5a49d49b187253d3e6e58d1962ef607744ce376e47b5ad858db3a5befb26ae9b6a98329182af098c497443885ffddb8562ae8')
 
