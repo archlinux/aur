@@ -2,8 +2,8 @@
 # Contributor: moyiz <8603313+moyiz@users.noreply.github.com>
 
 pkgname=wander
-pkgver=0.9.0
-_commit=f8b0e435696349e4feddd495136c8fd2bd6349e8  # tags/v0.9.0
+pkgver=0.10.2
+_commit=10170823d0fd555a4aa2a0cf9e0964af6dc5f3e7  # tags/v0.10.2
 pkgrel=1
 pkgdesc="An efficient terminal application/TUI for your HashiCorp Nomad cluster."
 arch=('i686' 'x86_64' 'aarch64')
@@ -45,5 +45,5 @@ package() {
   cd "${pkgname}"
   install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
 }
