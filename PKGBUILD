@@ -24,8 +24,8 @@ makedepends=('git'
 	'qt6-declarative'
 	'qt6-multimedia'
 )
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$pkgname"::'git+https://github.com/JakubMelka/PDF4QT'
 	'CMakePatch.patch'
 	'CMakeDesktopNoDep.patch'
@@ -36,18 +36,18 @@ b2sums=('SKIP'
 	'd26119741d02bddc6e18234aeb9d437ed866676f126e073f87efa8f19e3eedfbb77d2f571ff0e1c3963fabc86e1db83b7a1864edfdc1ba8f63cdd1e36da1e382')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/$pkgname"
 	git describe --tags --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-VCS}"
+	cd "$srcdir/$pkgname"
 	patch -p1 -i "$srcdir/CMakePatch.patch"
 	patch -p1 -i "$srcdir/CMakeDesktopNoDep.patch"
 }
 
 build() {
-    cmake -B build -S "${pkgname%-VCS}" \
+    cmake -B build -S "$pkgname" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/' \
         -Wno-dev \
