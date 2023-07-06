@@ -1,0 +1,17 @@
+--- rabit/src/engine_mpi.cc	2023-07-06 23:42:31.225465983 +0300
++++ rabit/src/engine_mpi.cc	2023-07-06 23:41:58.702523138 +0300
+@@ -42,12 +42,10 @@
+   virtual void InitAfterException(void) {
+     utils::Error("MPI is not fault tolerant");
+   }
+-  virtual int LoadCheckPoint(Serializable *global_model,
+-                             Serializable *local_model = NULL) {
++  virtual int LoadCheckPoint() {
+     return 0;
+   }
+-  virtual void CheckPoint(const Serializable *global_model,
+-                          const Serializable *local_model = NULL) {
++  virtual void CheckPoint() {
+     version_number += 1;
+   }
+   virtual void LazyCheckPoint(const Serializable *global_model) {
