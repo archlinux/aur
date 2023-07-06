@@ -4,7 +4,7 @@
 
 _name=gaphor
 pkgname=python-${_name}
-pkgver=2.19.0
+pkgver=2.19.1
 pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
@@ -41,7 +41,7 @@ checkdepends=(
 )
 provides=("${_name}")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('18fbe37a12f84d704dee6d8b124de8cc62d892e9b96df2afb3139ac4e0ff1558')
+sha256sums=('dcdc9c57773821bf5a85f3ba339617fbdee73e6718fdce7ffcb604cf4e9ed754')
 
 build() {
 	cd "${_name}-${pkgver}"
@@ -54,10 +54,6 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-#	xvfb-run --auto-servernum python -m pytest -k 'not' tests/
-#	xvfb-run --auto-servernum python -m pytest -s tests/
-#	local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
-#	PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-${python_version}" python -m  pytest -s tests
 	python -m pytest -s tests
 }
 
