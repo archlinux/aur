@@ -1,0 +1,13 @@
+pkgbase = python-drf-spectacular-sidecar
+	pkgdesc = Serve self-contained distribution builds of Swagger UI and Redoc with Django
+	pkgver = 2023.7.1
+	pkgrel = 1
+	url = https://github.com/tfranzel/drf-spectacular-sidecar
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-django
+	source = https://files.pythonhosted.org/packages/source/d/drf-spectacular-sidecar/drf-spectacular-sidecar-2023.7.1.tar.gz
+	sha256sums = fae346a00636a57aa164d2778e7162cfaff1f59af8133c2b6a8403c8211a167b
+
+pkgname = python-drf-spectacular-sidecar
