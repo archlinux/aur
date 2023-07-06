@@ -1,27 +1,37 @@
 post_install() {
-	/usr/bin/sssm sync Adwaita
 	echo ""
-	echo "****Adwaita for Steam was installed!****"
+	echo "****Adwaita for Steam files have been installed!****"
 	echo ""
-	echo "If there were issues installing the skin, unlink the skins directory and reinstall the package"
-	echo "rm -rf ~/.steam/steam/skins"
+	echo "Run the following command to complete the installation"
 	echo ""
-	echo "Now, select the skin in Steam Settings -> Interface."
+	echo "adwaita-for-steam"
+	echo ""
+	echo "See https://github.com/tkashkin/Adwaita-for-Steam#arguments for possible arguments"
+	echo ""
+	echo "If you decide to uninstall the package, you'll have to run the following command in order to correctly complete the uninstall process"
+	echo ""
+	echo "adwaita-for-steam -u"
 	echo ""
 }
 
 post_upgrade() {
-	/usr/bin/sssm sync Adwaita
 	echo ""
-        echo "****Adwaita for Steam was installed!****"
+        echo "****Adwaita for Steam files have been updated!****"
         echo ""
-        echo "If there were issues installing the skin, unlink the skins directory and reinstall the package"
-        echo "rm -rf ~/.steam/steam/skins"
+        echo "Run the following command to complete the updating process"
         echo ""
-        echo "Now, select the skin in Steam Settings -> Interface."
+        echo "adwaita-for-steam"
+        echo ""
+        echo "See https://github.com/tkashkin/Adwaita-for-Steam#arguments for possible arguments"
         echo ""
 }
 
 post_remove() {
-	/usr/bin/sssm remove Adwaita
+	echo ""
+	echo "****Adwaita for Steam files have been removed!****"
+        echo ""
+        echo "You should have run the following command before uninstalling the package. If you haven't, please reinstall adwaita-for-steam, run this command, and uninstall the pacakage."
+        echo ""
+        echo "adwaita-for-steam -u"
+        echo ""
 }
