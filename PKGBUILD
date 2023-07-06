@@ -2,7 +2,7 @@
 
 pkgname=unmake
 pkgver=0.0.12
-pkgrel=2
+pkgrel=3
 pkgdesc="a makefile linter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mcandre/unmake"

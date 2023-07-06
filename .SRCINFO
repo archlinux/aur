@@ -1,7 +1,7 @@
 pkgbase = unmake
 	pkgdesc = a makefile linter
 	pkgver = 0.0.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mcandre/unmake
 	changelog = CHANGELOG.md
 	arch = x86_64
