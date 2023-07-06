@@ -1,7 +1,7 @@
 pkgbase = advcpmv
 	pkgdesc = 'cp' and 'mv' utilities with progress bar patches
 	pkgver = 9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jarun/advcpmv
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = advcpmv
 	provides = mvg
 	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.3.tar.xz
 	source = https://ftp.gnu.org/gnu/coreutils/coreutils-9.3.tar.xz.sig
-	source = advcpmv-9.3-1.patch::https://raw.githubusercontent.com/jarun/advcpmv/0064105957e46a65954c333e64cfb1d24e8ce2b0/advcpmv-0.9-9.3.patch
+	source = advcpmv-9.3-2.patch::https://raw.githubusercontent.com/jarun/advcpmv/0064105957e46a65954c333e64cfb1d24e8ce2b0/advcpmv-0.9-9.3.patch
 	validpgpkeys = 6C37DC12121A5006BC1DB804DF6FD971306037D9
 	sha256sums = adbcfcfe899235b71e8768dcf07cd532520b7f54f9a8064843f8d199a904bbaa
 	sha256sums = SKIP

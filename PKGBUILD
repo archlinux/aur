@@ -7,7 +7,7 @@ _pkgname=coreutils
 _commit=0064105957e46a65954c333e64cfb1d24e8ce2b0
 pkgname=advcpmv
 pkgver=9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="'cp' and 'mv' utilities with progress bar patches"
 arch=('x86_64')
 license=('GPL3')
@@ -23,7 +23,7 @@ sha256sums=('adbcfcfe899235b71e8768dcf07cd532520b7f54f9a8064843f8d199a904bbaa'
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
-    patch -Np1 -i "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.patch"
+    patch -Np0 -i "${srcdir}/${pkgname}-${pkgver}-${pkgrel}.patch"
 }
 
 build() {
