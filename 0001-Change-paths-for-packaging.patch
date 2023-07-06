@@ -1,41 +1,36 @@
-From a49eb6bd6c5df174826cda670c5a1d461ea2a3ed Mon Sep 17 00:00:00 2001
+From 1b9c4ffba75ba826c2027884b854fe368a7cbb9b Mon Sep 17 00:00:00 2001
 From: "j.r" <j.r@jugendhacker.de>
 Date: Thu, 14 Jan 2021 23:57:02 +0100
 Subject: [PATCH] Change paths for packaging
 
 ---
- youplay.desktop | 4 ++--
+ youplay.desktop | 2 +-
  youplay.sh      | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/youplay.desktop b/youplay.desktop
-index 8d809c7..92d96b4 100755
+index 129dadb..187dc4c 100755
 --- a/youplay.desktop
 +++ b/youplay.desktop
-@@ -2,11 +2,11 @@
- Name=YouPlay
+@@ -4,7 +4,7 @@ Name=YouPlay
  GenericName=Play music from Youtube
- Comment=Play and download music from Youtube
--Exec=/home/ralf/dev/youplay/youplay.sh -g
-+Exec=/usr/bin/youplay --g
+ Exec=youplay --gui=gtk4
  Terminal=false
- Type=Application
- StartupNotify=false
--Icon=/home/ralf/dev/youplay/youplay.svg
+-Icon=/usr/local/share/youplay/youplay.svg
 +Icon=/usr/share/youplay/youplay.svg
+ StartupNotify=false
  Categories=GNOME;GTK;Utility;Music
  Keywords=Multimedia;Music;Youtube
- Hidden=false
 diff --git a/youplay.sh b/youplay.sh
-index 6d2fb87..571f78b 100755
+index 527850b..31f02df 100755
 --- a/youplay.sh
 +++ b/youplay.sh
 @@ -1,3 +1,3 @@
  #!/bin/bash
 -cd `dirname $0`
--python3 youplay.py --gui
+-python3 youplay.py --gui=gtk4
 +cd '/usr/share/youplay/'
-+python3 youplay.py $*
++python3 youplay.py --gui=@@gui@@
 -- 
-2.40.1
+2.41.0
 

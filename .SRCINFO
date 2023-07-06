@@ -1,20 +1,36 @@
 pkgbase = youplay
 	pkgdesc = Search, download and play music from YouTube.
-	pkgver = 0.45
+	pkgver = 0.46
 	pkgrel = 1
 	url = https://codeberg.org/ralfhersel/youplay
 	arch = any
 	license = GPL3
+	source = youplay-0.46.tar.gz::https://codeberg.org/ralfhersel/youplay/archive/v0.46.tar.gz
+	source = 0001-Change-paths-for-packaging.patch
+	md5sums = 8f2eb578f8d1950e8d9cb64e3ae6c85f
+	md5sums = a500e03c7e25464565a68acf4f0050b6
+
+pkgname = youplay-base
 	depends = mpv
 	depends = ffmpeg
 	depends = python-mpv
 	depends = yt-dlp
+
+pkgname = youplay-gtk3
+	depends = youplay-base
+	depends = gtk3
 	depends = python-gobject
+
+pkgname = youplay-gtk4
+	depends = youplay-base
 	depends = gtk4
 	depends = libadwaita
-	source = youplay-0.45.tar.gz::https://codeberg.org/ralfhersel/youplay/archive/v0.45.tar.gz
-	source = 0001-Change-paths-for-packaging.patch
-	md5sums = d604047baf16fd568fc244f903383524
-	md5sums = 55007368916e87260b24c6c9668804b5
+	replaces = youplay
 
-pkgname = youplay
+pkgname = youplay-pyqt6
+	depends = youplay-base
+	depends = python-pyqt6
+
+pkgname = youplay-qt6
+	depends = youplay-base
+	depends = pyside6
