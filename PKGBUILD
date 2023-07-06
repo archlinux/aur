@@ -2,7 +2,7 @@
 _base=equinox
 pkgname=python-${_base}
 pkgdesc="Elegant easy-to-use neural networks in JAX"
-pkgver=0.10.8
+pkgver=0.10.9
 pkgrel=1
 arch=(any)
 url="https://github.com/patrick-kidger/${_base}"
@@ -11,7 +11,7 @@ depends=(python-jax python-jaxtyping python-typing_extensions)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest python-beartype)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('8a73a80c630af4403066db25f38459caf449940caff7b490750ca2beafdc192e0b0982b7453515b1a1e5fd97d6565eb6dec9fc8df533a5328f345837d84dc64f')
+sha512sums=('bd4ca10691ead7160d64a2e2b919c528d7a538d5cbd48fb0b2c077044ad23d20e03968b625b9884ac480f921aff13934d58c5dcbf4cf904d6d9458415af53268')
 
 build() {
   cd ${_base}-${pkgver}
