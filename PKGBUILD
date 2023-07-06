@@ -12,11 +12,11 @@ provides=('kraftkit')
 conflicts=('kraftkit')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/unikraft/kraftkit/releases/download/v0.6.4/kraftkit_0.6.4_linux_amd64.tar.gz")
-sha256sums_x86_64=('eb240206dbeff4497347fcce0b93d8475383faedcca6ce874e0d23e76be7275e')
+sha256sums_x86_64=('4ddfddced7457650f24e04509b492eaa63b5e6cdbef75aff2552d4704f66fec9')
 
 package() {
   # bin
-  install -Dm755 "./dist/kraft" "${pkgdir}/usr/bin/kraft"
+  install -Dm755 "${srcdir}/kraft" "${pkgdir}/usr/bin/kraft"
   # license
-  install -Dm644 "./LICENSE.md" "${pkgdir}/usr/share/licenses/kraftkit/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/kraftkit/LICENSE"
 }

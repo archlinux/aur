@@ -8,6 +8,6 @@ pkgbase = kraftkit-bin
 	provides = kraftkit
 	arch = x86_64
 	source_x86_64 = https://github.com/unikraft/kraftkit/releases/download/v0.6.4/kraftkit_0.6.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = eb240206dbeff4497347fcce0b93d8475383faedcca6ce874e0d23e76be7275e
+	sha256sums_x86_64 = 4ddfddced7457650f24e04509b492eaa63b5e6cdbef75aff2552d4704f66fec9
 	
 pkgname = kraftkit-bin
