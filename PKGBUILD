@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g-kpe
-pkgver=5.1.6
+pkgver=5.1.7
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://www.waterfox.net/"
 depends=('gtk3' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'ttf-font' 'hicolor-icon-theme' 'glibc' 'libpulse' 'nss' 'nspr')
 makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
-             'autoconf2.13' 'rust' 'clang' 'llvm' 'alsa-lib' 'jack' 'cbindgen' 'nasm'
+             'autoconf2.13' 'rust' 'clang<16.0' 'llvm<16.0' 'alsa-lib' 'jack' 'cbindgen' 'nasm'
              'nodejs' 'lld' 'bc' 'python' 'pciutils' 'dump_syms'
              'wasi-compiler-rt' 'wasi-libc' 'wasi-libc++' 'wasi-libc++abi'
              'git')
