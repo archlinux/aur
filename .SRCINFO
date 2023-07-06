@@ -1,0 +1,17 @@
+pkgbase = d2-git
+	pkgdesc = A modern diagram scripting language that turns text to diagrams
+	pkgver = 0.5.1.r147.gce9383577
+	pkgrel = 1
+	url = https://d2lang.com/
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = d2=0.5.1.r147.gce9383577
+	conflicts = d2
+	source = git+https://github.com/terrastruct/d2.git
+	sha256sums = SKIP
+
+pkgname = d2-git
