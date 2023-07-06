@@ -125,5 +125,5 @@ package()
  # cp -r does not delete old files that are present in texmf-cache from
  # previous installation
  # cp -r --preserve=links $srcdir/tex $pkgdir/$_dest || return 1
- rsync -az --links --delete --info=progress2 $srcdir/tex/ $pkgdir/$_dest || return 1
+ rsync -az --links --delete --exclude='*.tma' --info=progress2 $srcdir/tex/ $pkgdir/$_dest || return 1
 }
