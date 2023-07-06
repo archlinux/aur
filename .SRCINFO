@@ -1,0 +1,13 @@
+pkgbase = perl-authen-totp
+	pkgdesc = TOTP implementation
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://metacpan.org/pod/Authen::TOTP
+	arch = any
+	license = GPL
+	makedepends = perl-module-build-tiny
+	depends = perl-mime-base32
+	source = https://cpan.metacpan.org/authors/id/T/TC/TCHATZI/Authen-TOTP-0.0.7.tar.gz
+	sha256sums = 8e5d3c504696b42fd66ac40787a85d721d7db11e0218c72503c8089db22c3287
+
+pkgname = perl-authen-totp
