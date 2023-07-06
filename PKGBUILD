@@ -15,8 +15,15 @@ checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('6f7cbc73f9c0e0f08c2442547c7cff0c')
 
+#get_pyver() {
+#    python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
+#}
+
 prepare() {
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i "s/logo/logo_url/g" docs/_templates/layout.html
+    sed -i "s/np\.float)/float)/" astrocut/tests/test_cube_cut.py
 }
 
 build() {
@@ -24,14 +31,13 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs
-    PYTHONPATH="../build/lib" make html
+    PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"
+    pytest || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-astrocut() {
