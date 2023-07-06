@@ -1,15 +1,15 @@
 # Maintainer: coffeba  i8ehkvieл@mozmail.com
 
 pkgname=hyprland-monitor-attached
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc='Run bash script when you attach the monitor on Hyprland'
 arch=('x86_64')
 url="https://github.com/coffebar/$pkgname"
 license=('MIT')
 makedepends=(cargo)
 depends=()
-_commit=989acd0
+_commit=2703806
 source=("git+$url#commit=$_commit")
 sha256sums=('SKIP')
 
