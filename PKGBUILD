@@ -3,17 +3,17 @@
 
 _plug=dfttest2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v4.3.g6dd4908
+pkgver=v5.5.gb8c8c81
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('x86_64')
 url='https://github.com/AmusementClub/vs-dfttest2'
 license=('GPL2')
 depends=('vapoursynth' 'cuda')
-makedepends=('git' 'cmake' 'ninja' 'gcc11')
+makedepends=('git' 'cmake' 'ninja' 'gcc')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/AmusementClub/vs-dfttest2")
+source=("${_plug}::git+https://github.com/shssoichiro/vs-dfttest2#branch=gcc13-support")
 sha256sums=('SKIP')
 options=('debug')
 
@@ -31,8 +31,8 @@ prepare() {
 
 build() {
   # This is based on what the project's CI is doing
-  export CC=gcc-11
-  export CXX=g++-11
+  export CC=gcc
+  export CXX=g++
   cmake \
     -B "build" \
     -S "${_plug}" \

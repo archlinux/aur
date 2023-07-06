@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-dfttest2-git
 	pkgdesc = Plugin for Vapoursynth: dfttest2 (GIT Version)
-	pkgver = v4.3.g6dd4908
+	pkgver = v5.5.gb8c8c81
 	pkgrel = 1
 	url = https://github.com/AmusementClub/vs-dfttest2
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = vapoursynth-plugin-dfttest2-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = gcc11
+	makedepends = gcc
 	depends = vapoursynth
 	depends = cuda
 	provides = vapoursynth-plugin-dfttest2
 	conflicts = vapoursynth-plugin-dfttest2
 	options = debug
-	source = dfttest2::git+https://github.com/AmusementClub/vs-dfttest2
+	source = dfttest2::git+https://github.com/shssoichiro/vs-dfttest2#branch=gcc13-support
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-dfttest2-git
