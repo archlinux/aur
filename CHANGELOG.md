@@ -4,6 +4,63 @@
 
 [1]: https://pypi.org/project/google-cloud-storage/#history
 
+## [2.10.0](https://github.com/googleapis/python-storage/compare/v2.9.0...v2.10.0) (2023-06-14)
+
+
+### Features
+
+* Add matchGlob parameter to list_blobs ([#1055](https://github.com/googleapis/python-storage/issues/1055)) ([d02098e](https://github.com/googleapis/python-storage/commit/d02098e6d5f656f9802cf0a494b507d77b065be7))
+* Allow exceptions to be included in batch responses ([#1043](https://github.com/googleapis/python-storage/issues/1043)) ([94a35ba](https://github.com/googleapis/python-storage/commit/94a35ba7416804881973f6a5296b430bdcf2832d))
+
+
+### Bug Fixes
+
+* Extend wait for bucket metadata consistency in system tests ([#1053](https://github.com/googleapis/python-storage/issues/1053)) ([d78586c](https://github.com/googleapis/python-storage/commit/d78586c388a683b8678f280df0c9456c6e109af7))
+
+
+### Documentation
+
+* Add clarification to batch module ([#1045](https://github.com/googleapis/python-storage/issues/1045)) ([11f6024](https://github.com/googleapis/python-storage/commit/11f6024a4fd0a66e8cdcc6c89c3d33534892386d))
+
+## [2.9.0](https://github.com/googleapis/python-storage/compare/v2.8.0...v2.9.0) (2023-05-04)
+
+
+### Features
+
+* Un-deprecate blob.download_to_file(), bucket.create(), and bucket.list_blobs() ([#1013](https://github.com/googleapis/python-storage/issues/1013)) ([aa4f282](https://github.com/googleapis/python-storage/commit/aa4f282514ebdaf58ced0743859a4ab1458f967c))
+
+
+### Bug Fixes
+
+* Avoid pickling processed credentials ([#1016](https://github.com/googleapis/python-storage/issues/1016)) ([7935824](https://github.com/googleapis/python-storage/commit/7935824049e2e6e430d2e601156730d6366c78f7))
+* Improve test error message for missing credentials ([#1024](https://github.com/googleapis/python-storage/issues/1024)) ([892481a](https://github.com/googleapis/python-storage/commit/892481a2c76fe5747ada3392345c087fb7f8bd8a))
+
+
+### Documentation
+
+* Add sample and sample test for transfer manager ([#1027](https://github.com/googleapis/python-storage/issues/1027)) ([4698799](https://github.com/googleapis/python-storage/commit/4698799101b5847d55edc8267db85257a74c3119))
+* Remove threads in transfer manager samples ([#1029](https://github.com/googleapis/python-storage/issues/1029)) ([30c5146](https://github.com/googleapis/python-storage/commit/30c51469af2efd4f5becaab7e7b02b207a074267))
+
+## [2.8.0](https://github.com/googleapis/python-storage/compare/v2.7.0...v2.8.0) (2023-03-29)
+
+
+### Features
+
+* Add multiprocessing and chunked downloading to transfer manager ([#1002](https://github.com/googleapis/python-storage/issues/1002)) ([e65316b](https://github.com/googleapis/python-storage/commit/e65316b5352a4e15c4dba806e899ad58f8665464))
+
+
+### Bug Fixes
+
+* Add trove classifier for python 3.11 ([#971](https://github.com/googleapis/python-storage/issues/971)) ([7886376](https://github.com/googleapis/python-storage/commit/7886376e5105f705a5fe9d061463cf1e033aecd0))
+* Remove use of deprecated cgi module ([#1006](https://github.com/googleapis/python-storage/issues/1006)) ([3071832](https://github.com/googleapis/python-storage/commit/30718322f6c7b1d7a3e4cfd44b6e1796f721b655))
+
+
+### Documentation
+
+* Add clarifications to read timeout ([#873](https://github.com/googleapis/python-storage/issues/873)) ([8fb26f4](https://github.com/googleapis/python-storage/commit/8fb26f439cf28ac4ec7a841db1cd0fd60ea77362))
+* Fix c.g.c structure ([#982](https://github.com/googleapis/python-storage/issues/982)) ([d5a2931](https://github.com/googleapis/python-storage/commit/d5a29318b5c68678ea63eb40a4dfede562f8963e))
+* Update c.g.c docs and guides  ([#994](https://github.com/googleapis/python-storage/issues/994)) ([62b4a50](https://github.com/googleapis/python-storage/commit/62b4a500e40860c54c53d12323434d28739f9812))
+
 ## [2.7.0](https://github.com/googleapis/python-storage/compare/v2.6.0...v2.7.0) (2022-12-07)
 
 
