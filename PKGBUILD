@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=spatstat.geom
-_pkgver=3.2-1
+_pkgver=3.2-2
 pkgname=r-${_pkgname,,}
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Geometrical Functionality of the 'spatstat' Family"
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
   r-spatstat.random
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f0ae5def30ca466b54246dbfed446ab9a019249916f871ea7b5b97c925d235fb')
+sha256sums=('2ecd274bfabafd2f0fa289266470a853480487baab39f08a4572f68e643073c3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
