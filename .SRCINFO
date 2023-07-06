@@ -1,7 +1,7 @@
 pkgbase = linux-xanmod-bore
 	pkgdesc = Linux Xanmod (Stable) with BORE CPU scheduler and tickrate customizations
 	pkgver = 6.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -20,6 +20,7 @@ pkgbase = linux-xanmod-bore
 	source = https://raw.githubusercontent.com/micros24/linux-xanmod-bore/6.4/0001-bore.patch
 	source = https://raw.githubusercontent.com/micros24/linux-xanmod-bore/6.4/0002-glitched-cfs.patch
 	source = https://raw.githubusercontent.com/micros24/linux-xanmod-bore/6.4/0003-glitched-cfs-additions.patch
+	source = https://raw.githubusercontent.com/micros24/linux-xanmod-bore/6.4/0004-disable-per-vma-lock.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3
@@ -29,6 +30,7 @@ pkgbase = linux-xanmod-bore
 	sha256sums = ee7c8450613149090cf8854e227d9b5c070fd41dc0d4b9f0d37c687c2f5ed576
 	sha256sums = 01eea507af27ad3b1329ea6856fc302691ec13a5b13495f79eeb784b6cca521a
 	sha256sums = 0b7fc3efb55c277acdeb023905794c319f2cff3d27576c9edb0c8bbab0bdf6df
+	sha256sums = 59a240d20987f31f68bb0e9c475e67b368e0c0b3394b129e83015e3260387e25
 
 pkgname = linux-xanmod-bore
 	pkgdesc = Linux Xanmod (Stable) with BORE CPU scheduler and tickrate customizations
