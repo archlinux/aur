@@ -1,0 +1,32 @@
+--- src/cyusb_linux/Makefile	2022-11-11 17:04:24.795615878 +0000
++++ Makefile	2022-11-11 17:04:25.115614122 +0000
+@@ -1,3 +1,5 @@
++DESTDIR =
++
+ help:
+ 	@echo	'make all	build the library and gui'
+ 	@echo	'make lib	build the library'
+@@ -28,14 +30,15 @@
+ install:
+ 	@if [ `whoami` != 'root' ]; then echo "You have to be root to run this script"; exit 1; fi
+ 	-rm -f /usr/lib/libcyusb.so* /usr/local/lib/libcyusb.so*
+-	install -m644 lib/libcyusb.so.1 /usr/local/lib
+-	cd /usr/local/lib; ln -sf libcyusb.so.1 libcyusb.so
+-	install configs/cy_renumerate.sh /usr/local/bin
+-	install bin/cyusb /usr/local/bin/
+-	install -m644 configs/cyusb.conf /etc/
+-	install -m644 configs/88-cyusb.rules /etc/udev/rules.d/
+-	echo "# Cypress USB Suite: Root directory" > /etc/profile.d/cyusb
+-	echo "export CYUSB_ROOT=`pwd`" >> /etc/profile.d/cyusb
++	install -d -m644 lib/libcyusb.so.1 ${DESTDIR}/usr/local/lib/libcyusb.so.1
++	install -d configs/cy_renumerate.sh ${DESTDIR}/usr/local/bin/cy_renumerate.sh
++	install -d bin/cyusb ${DESTDIR}/usr/local/bin/cyusb
++	install -d -m644 configs/cyusb.conf ${DESTDIR}/etc/cyusb.conf
++	install -d -m644 configs/88-cyusb.rules ${DESTDIR}/etc/udev/rules.d/88-cyusb.rules
++	echo "# Cypress USB Suite: Root directory" > ${DESTDIR}/etc/profile.d/cyusb
++	echo "export CYUSB_ROOT=`pwd`" >> ${DESTDIR}/etc/profile.d/cyusb
++	cd ${DESTDIR}/usr/local/lib
++	ln -sf libcyusb.so.1 libcyusb.so
+ 
+ .PHONY: uninstall
+ uninstall:

@@ -1,0 +1,13 @@
+pkgbase = cyusb_linux
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/Ho-Ro/cyusb_linux
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = git+https://github.com/Ho-Ro/cyusb_linux.git
+	source = Makefile.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = cyusb_linux
