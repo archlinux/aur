@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark.wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark.wagie at proton dot me>
 pkgname=sticky-git
 pkgver=1.14.r3.g2cb2742
 pkgrel=1
