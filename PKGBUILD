@@ -1,8 +1,8 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=searxng-git
-pkgver=1.0.0.r3229.g86db08793
-pkgrel=1
+pkgver=1.0.0.r3249.g55d238de2
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://searxng.github.io/searxng/"
@@ -75,6 +75,7 @@ package() {
   install -Dm644 "${srcdir}/searxng.sysusers" "${pkgdir}/usr/lib/sysusers.d/searxng.conf"
   install -Dm644 "${srcdir}/searxng.ini" "${pkgdir}/etc/uwsgi/vassals/searxng.ini"
   install -Dm644 "${srcdir}/settings.yml" "${pkgdir}/etc/searxng/settings.yml" 
+  install -Dm644 "${srcdir}/searxng/searx/botdetection/limiter.toml" "${pkgdir}/etc/searxng/limiter.toml"
   install -Dm644 "${srcdir}/searxng/searx/version_frozen.py" "${pkgdir}${_site_packages}/searx"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/searxng/LICENSE"
 }

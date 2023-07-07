@@ -1,6 +1,7 @@
 use_default_settings: true
 server:
     secret_key: "ultrasecretkey"  # change this!
+    limiter: true
 checker:
     scheduling:
     start_after: [300, 1800]  # delay to start the first run of the checker
