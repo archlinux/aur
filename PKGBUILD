@@ -4,10 +4,11 @@
 # Contributor: nl6720
 
 # shellcheck disable=SC2034
-_pkgbase=cryptsetup
-variant="sigfile"
-pkgname="${_pkgbase}-${variant}"
+_pkg=cryptsetup
+variant=sigfile
+pkgname="${_pkg}-${variant}"
 pkgver=2.6.1
+_pkgver="${pkgver%.*}"
 pkgrel=1
 pkgdesc='Userspace setup tool for transparent encryption of block devices using dm-crypt (with edited mkinitcpio hook to check file system signature before attempting to open it).'
 arch=('x86_64' 'i686' 'pentium4' 'aarch64')
@@ -31,19 +32,19 @@ makedepends=(
 provides=(
   'libcryptsetup.so=12-32'
   'libcryptsetup.so'
-  "${_pkgbase}-nested-cryptkey"
-  "${_pkgbase}=$pkgver"
+  "${_pkg}-nested-cryptkey=${pkgver}"
+  "${_pkg}=${pkgver}"
 )
 conflicts=(
-  "${_pkgbase}"
-  "${_pkgbase}-nested-cryptkey"
+  "${_pkg}"
+  "${_pkg}-nested-cryptkey"
 )
 options=('!emptydirs')
 validpgpkeys=(
   '2A2918243FDE46648D0686F9D9B0577BD93E98FC' # Milan Broz <gmazyland@gmail.com>
 )
 source=(
-  "https://www.kernel.org/pub/linux/utils/${_pkgbase}/v${pkgver%.*}/${_pkgbase}-${pkgver}.tar."{xz,sign}
+  "https://www.kernel.org/pub/linux/utils/${_pkg}/v${_pkgver}/${_pkg}-${pkgver}.tar."{xz,sign}
   'hooks-encrypt'
   'install-encrypt'
   'install-sd-encrypt')
@@ -65,7 +66,7 @@ build() {
   )
 
   # shellcheck disable=SC2154
-  cd "${srcdir}/${_pkgbase}-${pkgver}" || exit
+  cd "${srcdir}/${_pkg}-${pkgver}" || exit
 
   ./configure "${_configure_opts[@]}"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
@@ -73,7 +74,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgbase}-${pkgver}" || exit
+  cd "${srcdir}/${_pkg}-${pkgver}" || exit
 
   # shellcheck disable=SC2154
   make DESTDIR="${pkgdir}" install
