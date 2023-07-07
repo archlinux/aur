@@ -8,8 +8,13 @@ pkgbase = rangoli
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt6-base
+	depends = hidapi
 	depends = gcc-libs
 	source = https://github.com/rnayabed/rangoli/archive/refs/tags/2.0.tar.gz
+	source = hidapi.patch
+	source = rangoli.sh
 	sha256sums = 83b19220d2a3ccf667f6deb8e560f816676fe426f5ecc40507c9e5f62dc9cdeb
+	sha256sums = 1d09c0cb39d84d6be319775791c51e84ad1999469b881627c3615e3544423f09
+	sha256sums = 8fead456a8b711d372e12bc058e7f6680ebc4851b854f5d908a0a24e7ed1d1c4
 
 pkgname = rangoli

@@ -6,7 +6,7 @@ pkgdesc='Free, Open Source, Lightweight, Cross-platform Software for Royal Kludg
 arch=('x86_64')
 url='https://github.com/rnayabed/rangoli'
 license=('GPL3')
-depends=('qt6-base' 'gcc-libs')
+depends=('qt6-base' 'hidapi' 'gcc-libs')
 makedepends=('cmake' 'ninja')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
        "hidapi.patch"
