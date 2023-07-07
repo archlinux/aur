@@ -1,7 +1,7 @@
 # Maintainer: Raphael Nestler (rnestler) <raphael.nestler@gmail.com>
 
 pkgbase=linux-rust
-pkgver=6.3.9.arch1
+pkgver=6.4.2.arch1
 pkgrel=1
 pkgdesc='Rust Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -43,7 +43,7 @@ validpgpkeys=(
   C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
 b2sums=('SKIP'
-        'abebdbea9a869a1c26b896345544a8a6171ea91fba5a5038e47b32ca1e97f5c6b2866b3657cb5061b5a4f536e288d202b660769b06729ed7541ab50efef6784f'
+        '1537bd27339315c0a9e663ae422d3aa7d8cf25bdd5b1bad494d2b8da3d67e2ce72ccbb36e0b1f213b28d2f598957b111b6638c44334bec10ff7d420e3a6597dc'
         '901111182b9026f9592306b116bb6b9db02e27af803c5d5db856b5141f383305d0558b42f37a00b1a8112689d21334e4d49c69c8b96fa9cdd605b828b3abcc7a'
         '60fcfd6703fc06511e8dbf6968189b8d7b8ed0b3676ced50eff1f9f36e4d99fb61491c4c7dadf4b6bcdf14b35dd3e6870bf1c70f5344d2c5a6f91c646de62227')
 
@@ -91,7 +91,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  _make htmldocs all
+  _make all
+  _make htmldocs
 }
 
 _package() {
@@ -127,7 +128,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
