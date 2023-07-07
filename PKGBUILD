@@ -1,7 +1,7 @@
 # Maintainer: gee
 pkgname='rangoli'
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Free, Open Source, Lightweight, Cross-platform Software for Royal Kludge Keyboards'
 arch=('x86_64')
 url='https://github.com/rnayabed/rangoli'
@@ -24,12 +24,11 @@ build() {
 }
 
 package() {
-  install -Dm 755 rangoli.sh "${pkgdir}/usr/bin/rangoli"
+  install -Dm 755 rangoli.sh "${pkgdir}/usr/bin/${pkgname}"
 
-  cd ${srcdir}/${pkgname}-${pkgver}/build/src
-  install -dm 755 "${pkgdir}/usr/share/${pkgname}"
-  install -Dm 755 rangoli "${pkgdir}/usr/share/${pkgname}/"
-  install -dm 755 "${pkgdir}/usr/share/${pkgname}/keyboards"
-  install -Dm 755 keyboards/*.* "${pkgdir}/usr/share/${pkgname}/keyboards/"
-  install -Dm 755 udev-rule-writer.sh "${pkgdir}/usr/share/${pkgname}/"
+  cd ${srcdir}/${pkgname}-${pkgver}/
+  cmake --install build --prefix "${pkgdir}"
+  install -dm 755 "${pkgdir}/usr/share"
+  mv "${pkgdir}/bin" "${pkgdir}/usr/share/${pkgname}"
+  chmod +x "${pkgdir}/usr/share/rangoli/udev-rule-writer.sh"
 }
