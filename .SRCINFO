@@ -1,6 +1,6 @@
 pkgbase = irrlicht-svn
 	pkgdesc = An open source high performance realtime 3D graphics engine. (SVN version)
-	pkgver = r5543
+	pkgver = 1.9
 	pkgrel = 1
 	url = http://irrlicht.sourceforge.net/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = irrlicht-svn
 	makedepends = mesa
 	makedepends = unzip
 	makedepends = libxcursor
+	makedepends = subversion
 	depends = libgl
 	depends = libjpeg
 	depends = bzip2
@@ -21,4 +22,3 @@ pkgbase = irrlicht-svn
 	md5sums = SKIP
 
 pkgname = irrlicht-svn
-

@@ -1,15 +1,16 @@
-# Maintainer: Maxim Kurnosenko <asusx2@mail.ru>
+# Maintainer: Olivia May <olivia.may@tuta.io>
+# Contributor: Maxim Kurnosenko <asusx2@mail.ru>
 
 _pkgname=irrlicht
 pkgname=irrlicht-svn
-pkgver=r5543
+pkgver=1.9
 pkgrel=1
 pkgdesc="An open source high performance realtime 3D graphics engine. (SVN version)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://irrlicht.sourceforge.net/"
 license=('ZLIB')
 depends=('libgl' 'libjpeg' 'bzip2' 'libpng')
-makedepends=('mesa' 'unzip' 'libxcursor')
+makedepends=('mesa' 'unzip' 'libxcursor' 'subversion')
 optdepends=('libxcursor: run examples')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
