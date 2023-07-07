@@ -1,13 +1,13 @@
 pkgname=rsgain-git
 _pkgname=rsgain
-pkgver=3.2.1.r0.g7af783a
+pkgver=3.3.r5.g8d2a7f1
 pkgrel=1
 pkgdesc="ReplayGain 2.0 loudness normalizer"
 arch=('x86_64')
 url="https://github.com/complexlogic/rsgain"
 license=('custom')
 groups=()
-depends=('fmt' 'libebur128' 'taglib' 'libavformat.so' 'libavcodec.so' 'libswresample.so' 'libavutil.so' 'libinih')
+depends=('fmt' 'libebur128' 'taglib' 'ffmpeg' 'libinih')
 makedepends=('git' 'cmake')
 provides=('rsgain')
 conflicts=('rsgain')
