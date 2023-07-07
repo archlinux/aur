@@ -1,6 +1,6 @@
 pkgbase = pfetch-rs-bin
 	pkgdesc = A rewrite of the pfetch system information tool in Rust
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/Gobidev/pfetch-rs
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = pfetch-rs-bin
 	conflicts = pfetch-rs
 	conflicts = pfetch
 	conflicts = pfetch-git
-	source = pfetch-rs-bin-2.7.0.tar.gz::https://github.com/Gobidev/pfetch-rs/releases/download/v2.7.0/pfetch-linux-gnu-x86_64.tar.gz
-	b2sums = e5e2d02f9480fd92048f571301845a079e766c43c6e7fcbfabad177114a5f6316bab62807b720bf0a32acb871d7f7100c5e413fbc76da16c335872f75f0c6249
+	source = pfetch-rs-bin-2.8.0.tar.gz::https://github.com/Gobidev/pfetch-rs/releases/download/v2.8.0/pfetch-linux-gnu-x86_64.tar.gz
+	b2sums = 8f092cb446885e59e7070ab30d52c7e5e64029e516fc150fe2cef0a7fade44dc1622331ce0c169b753d3feabe2ccd40761ffc70bce7828d7e0895271ef9f4107
 
 pkgname = pfetch-rs-bin
