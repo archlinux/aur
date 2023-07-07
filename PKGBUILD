@@ -4,14 +4,15 @@ _pyname=xgboost
 pkgname=python-$_pyname
 pkgver=1.7.6
 _dmlc_ver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Gradient Boosting Library for Python"
 arch=(x86_64 aarch64)
 url="https://xgboost.ai"
 license=(Apache)
 depends=(python-scikit-learn python-pandas python-matplotlib python-pyarrow
          openmpi)
-makedepends=(cmake python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel
+             cmake)
 optdepends=('apache-spark: Distributed XGBoost with PySpark' 'python-pytest')
 provides=(python-$_pyname)
 conflicts=(python-$_pyname-git)
@@ -44,12 +45,17 @@ build() {
     -DProtobuf_PROTOC_EXECUTABLE=/usr/bin/protoc \
     -DRABIT_BUILD_MPI=ON
   cmake --build build
+
+  cd $_pyname-$pkgver/python-package
+  python -m build \
+    --wheel \
+    --no-isolation \
+    --skip-dependency-check
 }
 
 package() {
   cd "$srcdir/$_pyname-$pkgver/python-package"
-  python setup.py install \
-    --prefix=/usr \
-    --root="$pkgdir" \
-    --optimize=2
+  python -m installer dist/*.whl \
+    --destdir="$pkgdir" \
+    --compile-bytecode=2
 }
