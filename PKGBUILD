@@ -2,8 +2,8 @@
 
 pkgname=mesa-pvr-vf2
 pkgdesc="an open-source implementation of the OpenGL specification, PowerVR (VisionFive2) version"
-pkgver=21.2.1
-pkgrel=2
+pkgver=21.2.5
+pkgrel=1
 arch=('riscv64')
 makedepends=('git' 'python-mako' 'xorgproto'
               'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
@@ -87,7 +87,7 @@ source=("https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz"
        '0069-LLVM15.patch'
     )
 md5sums=(
-'f81336168864b1f890edfa5db8587f2b'
+'63ef94beb6677db0c5a43289e7e76ba4'
 'c6dd89f528eaa1ae111d1dd0560fd29d'
 '394e2320285750b926ec4733f9e0b067'
 'e1262298e4c09a71029c49aba53f4523'
@@ -159,7 +159,7 @@ md5sums=(
 '46a08d47150adcfbc4fcb2da9c4a0967'
 )
 sha256sums=(
-'2c65e6710b419b67456a48beefd0be827b32db416772e0e363d5f7d54dc01787'
+'8e49585fb760d973723dab6435d0c86f7849b8305b1e6d99f475138d896bacbb'
 'effc4cc39e9f07ac2f4f32f2b69e874b3be71b993bea98f36bae56a2d92a2056'
 '5aff6dc45847047657ef25de37f38afa183307344e2ca971a748c76534375903'
 'cb762c0c0291f4edb346d8eb9ff42b6cd5863246d242f24696f8ce76f77cc80f'
