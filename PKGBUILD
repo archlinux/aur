@@ -2,7 +2,7 @@
 
 pkgname=searxng-git
 pkgver=1.0.0.r3249.g55d238de2
-pkgrel=2
+pkgrel=3
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://searxng.github.io/searxng/"
@@ -44,7 +44,7 @@ source=(git+$_giturl#branch=$_gitbranch
 b2sums=('SKIP'
         'd6d65d00851c5504657e992d8ff44996652d56a8f0030f9fc565650c814b9ca24e060ebb461d8fcaa447bfbe6fda0fb01afdbc909b262ed15e0033809fb35fd7'
         'becbc7783e484d15de32973b9376014b1bf2ba9494bb0fa65d08a9725715d2170c694a529038059ebc6b42969641d8c3cf02235355fbc3a45b02d28fdf0d6392'
-        '1895880f4c541080fd33dde194bb158cf7fc7d397b24e8bde14df586e0dd3dc1547f67bdc3f40161521e1c0f4e244aaab8db5028204c5d9da7972c70c7110ab7')
+        'df61197eebe379e3cbfa93c4093a5b0a8767fdc5fa22537b3b226fde5ebed62aca6ae98f3d6f7e2dd7867ea928ca4785033d3b9a20785b506f670dbc8d880b17')
 
 pkgver() {
   cd searxng
