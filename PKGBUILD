@@ -3,7 +3,7 @@
 
 pkgname=python-slicer
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Wraps tensor-like objects and provides a uniform slicing interface via __getitem__'
 arch=(any)
 url='https://github.com/interpretml/slicer'
@@ -18,6 +18,9 @@ depends=(
 makedepends=(
   python-setuptools
   python-wheel
+)
+optdepends=(
+  python-pytorch
 )
 _archive="${pkgname#python-}-$pkgver"
 source=("${url}/archive/v${pkgver}/${_archive}.tar.gz")
