@@ -1,5 +1,5 @@
 pkgbase = dhcpdump
-	pkgdesc = Parse DHCP packets from an interface (bbonev fork)
+	pkgdesc = Capture and visualization of DHCP packets
 	pkgver = 1.9
 	pkgrel = 1
 	url = https://github.com/bbonev/dhcpdump
