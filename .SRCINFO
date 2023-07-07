@@ -1,8 +1,8 @@
 pkgbase = lib32-gamescope-plus
 	pkgdesc = SteamOS session compositing window manager with added patches (32-bit)
-	pkgver = 3.11.52.beta2.25.g4e0e31c
+	pkgver = 3.12.0.beta8.plus1
 	pkgrel = 1
-	url = https://github.com/Samsagax/gamescope
+	url = https://github.com/ChimeraOS/gamescope
 	arch = x86_64
 	license = BSD
 	makedepends = benchmark
@@ -17,7 +17,7 @@ pkgbase = lib32-gamescope-plus
 	depends = lib32-vulkan-icd-loader
 	provides = lib32-gamescope
 	conflicts = lib32-gamescope
-	source = git+https://github.com/Samsagax/gamescope.git#commit=4e0e31c6a9ba995c219a8ad9d20a1799c8fe3457
+	source = git+https://github.com/ChimeraOS/gamescope.git#commit=4e0e31c6a9ba995c219a8ad9d20a1799c8fe3457
 	source = git+https://gitlab.freedesktop.org/wlroots/wlroots.git
 	source = git+https://gitlab.freedesktop.org/emersion/libliftoff.git
 	source = git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
