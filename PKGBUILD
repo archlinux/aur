@@ -3,7 +3,7 @@
 
 pkgname=xrasengan
 pkgver=1.0.0.r1.3c3bb5c
-pkgrel=1
+pkgrel=2
 pkgdesc="XRandR wrapper to make your multi-monitor setup easier"
 arch=(any)
 url="https://github.com/geyslan/$pkgname"
@@ -20,6 +20,6 @@ pkgver() {
 package() {
 	cd $pkgname
 	install -vDm755 $pkgname -t "$pkgdir/usr/bin/$pkgname"
-	install -vDm644 README.md -t "$pkdir/usr/share/doc/$pkgname/"
+	install -vDm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 	install -vDm644 ${pkgname}_complete "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 }
