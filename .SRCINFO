@@ -1,0 +1,18 @@
+pkgbase = nomad-pack-nightly
+	pkgdesc = A templating and packaging tool used with HashiCorp Nomad.
+	pkgver = v0.0.1.techpreview2.r80.g50d84d0
+	pkgrel = 1
+	url = https://github.com/hashicorp/nomad-pack
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MPL2
+	makedepends = git
+	makedepends = go
+	depends = openssl
+	depends = git
+	source = git+https://github.com/hashicorp/nomad-pack.git#tag=nightly
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
+	sha256sums = SKIP
+
+pkgname = nomad-pack-nightly
