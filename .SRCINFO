@@ -1,6 +1,6 @@
 pkgbase = python-mglearn
 	pkgdesc = Helper functions for the book "Introduction to Machine Learning with Python"
-	pkgver = 0.1.9
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/amueller/mglearn
 	arch = any
@@ -15,8 +15,7 @@ pkgbase = python-mglearn
 	depends = python-joblib
 	depends = python-six
 	depends = python-imageio
-	source = https://github.com/amueller/mglearn/archive/0.1.9.tar.gz
-	md5sums = bb1afed79d296afddd0d611c774fa850
+	source = https://github.com/amueller/mglearn/archive/0.2.1.tar.gz
+	md5sums = 6070e566dc54e46cfb749c22513abacc
 
 pkgname = python-mglearn
-
