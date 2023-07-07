@@ -3,7 +3,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=14.r348.g4c2037ca89
+pkgver=14.r762.g3633102500
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -11,7 +11,10 @@ url='https://github.com/systemd/mkosi'
 license=('LGPL2.1')
 depends=('python'
          'bubblewrap')
-makedepends=('python-setuptools'
+makedepends=('python-build'
+             'python-installer'
+             'python-wheel'
+             'pandoc'
              'git')
 optdepends=('dnf: build Fedora or Mageia images'
             'apt: build Debian or Ubuntu images'
@@ -60,13 +63,13 @@ pkgver() {
 build() {
     cd 'mkosi'
 
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
   cd 'mkosi'
 
-  python setup.py install --skip-build --optimize=1 --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm 644 man/mkosi.1 "$pkgdir/usr/share/man/man1/mkosi.1" || true
 }

@@ -1,11 +1,14 @@
 pkgbase = mkosi-git
 	pkgdesc = Build Legacy-Free OS Images
-	pkgver = 14.r348.g4c2037ca89
+	pkgver = 14.r762.g3633102500
 	pkgrel = 1
 	url = https://github.com/systemd/mkosi
 	arch = any
 	license = LGPL2.1
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = pandoc
 	makedepends = git
 	depends = python
 	depends = bubblewrap
