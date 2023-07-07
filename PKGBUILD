@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libinput-config
-pkgver=r79.1d649f7
+pkgver=r84.f373bb6
 pkgrel=1
 pkgdesc='Configuration system for libinput'
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(
 	git
 	meson
 )
-_commit='1d649f7f2e3a12e57943e8a71018f38db81a5cbf'
+_commit='f373bb6777ce983368bc540b7d683cc59e274b9e'
 source=("git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
 
