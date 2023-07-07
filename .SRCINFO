@@ -1,0 +1,15 @@
+pkgbase = rangoli
+	pkgdesc = Free, Open Source, Lightweight, Cross-platform Software for Royal Kludge Keyboards
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/rnayabed/rangoli
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = gcc-libs
+	source = https://github.com/rnayabed/rangoli/archive/refs/tags/2.0.tar.gz
+	sha256sums = 83b19220d2a3ccf667f6deb8e560f816676fe426f5ecc40507c9e5f62dc9cdeb
+
+pkgname = rangoli

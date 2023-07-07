@@ -1,0 +1,11 @@
+--- rangoli-2.0/CMakeLists.txt	2023-03-24 23:40:11.000000000 -0700
++++ rangoli-2.0/CMakeLists.txt	2023-07-07 05:03:20.581971999 -0700
+@@ -58,5 +58,7 @@
+ set(HIDAPI_WITH_LIBUSB FALSE)
+ set(BUILD_SHARED_LIBS FALSE)
+ 
+-add_subdirectory(hidapi)
++find_package(HIDAPI REQUIRED)
++include_directories(${HIDAPI_INCLUDE_DIRS})
+ add_subdirectory(src)
++target_link_libraries(rangoli ${HIDAPI_LIBRARIES})
