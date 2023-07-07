@@ -2,12 +2,12 @@
 
 pkgbase=cdreaper
 pkgname=grimripper
-_pkgname=Reaper
-pkgver=3.0.0
+_pkgname=GrimRipper
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="CD ripper and encoder using Gtk3 (based on Asunder)"
 arch=('x86_64')
-url="https://gitlab.gnome.org/Salamandar/Reaper"
+url="https://gitlab.gnome.org/Salamandar/${_pkgname}"
 license=('GPL2')
 depends=('gtk3' 'glibc' 'glib2' 'libcddb' 'cdparanoia' 'hicolor-icon-theme')
 makedepends=('meson' 'gettext')
@@ -22,8 +22,8 @@ optdepends=(
   'mac: for monkey audio support'
 )
 
-source=("$url/-/archive/v${pkgver}/Reaper-v${pkgver}.tar.bz2")
-sha256sums=('973db74d4300ce52e0ebfe4d5ed057cd7523033aa8b85c3f1bce439816b9d1c4')
+source=("$url/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.bz2")
+sha256sums=('7d016a90f7800557ac0513d64c6135db498f18efafe3dc4d40cfc6e37a6c8bb1')
 
 prepare() {
   cd "${_pkgname}-v${pkgver}"
