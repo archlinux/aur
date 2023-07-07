@@ -1,5 +1,5 @@
 pkgbase = cyusb-git
-	pkgver = git
+	pkgver = r20.14f18d1
 	pkgrel = 1
 	url = https://github.com/Ho-Ro/cyusb_linux
 	arch = i686
