@@ -1,7 +1,7 @@
 pkgbase = tvm
 	pkgdesc = Apache TVM, a deep learning compiler that enables access to high-performance machine learning anywhere for everyone
 	pkgver = 0.13.dev0.5.ge8184e66c4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tvm.apache.org/
 	install = tvm.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = tvm
 	depends = openmp
 	depends = llvm>=4.0
 	depends = mesa
-	depends = openblas
+	depends = blas-openblas
 	depends = openmp
 	depends = python-numpy
 	depends = python-decorator
