@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=antares-sql-bin
-pkgver=0.7.12
-pkgrel=2
+pkgver=0.7.13
+pkgrel=1
 pkgdesc="A modern, fast and productivity driven SQL client with a focus in UX."
 arch=("aarch64" "armv7h" "x86_64")
 url="https://antares-sql.app/"
@@ -17,9 +17,9 @@ source=("LICENSE::https://raw.githubusercontent.com/antares-sql/antares/master/L
     "${pkgname%-bin}.sh")
 sha256sums=('99b00c37ea6d7b39d445097d8024f9156f9c3cf82e86f44db745a3b2cf5114b6'
             '3fc8cce758f6dc337a6392b9252144ba88a31d726634489352ec1aae7bb8945b')
-sha256sums_aarch64=('42b4b31a5d601f5b16fb8bb4dd498d517b0261405a855908123294ab909b7f97')
-sha256sums_armv7h=('041ed31374bd32905e13f967810e89c785de941455b6308dbf811bba81b33827')
-sha256sums_x86_64=('10c18d925fd03f1033ebf76561b00e08afe78ee806625883b4f97a77252f50bb')
+sha256sums_aarch64=('5116e7f022f37eee15536e145687d105998824abfc3ee2fd081cac4451cbb8d0')
+sha256sums_armv7h=('6245415d5cf0a78bd077a23ab20d6785a66f133907b3ca5da07c0ca26e2cbf19')
+sha256sums_x86_64=('df6f1320a39717bd18e9663cb038d62dd6ec5f8e9694d83b5bf3334fe4191ec3')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
