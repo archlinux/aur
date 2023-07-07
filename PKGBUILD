@@ -4,7 +4,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.4671.r0.gdb0c7ca90
+pkgver=1.7.4692.r0.g989f2bbbb
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -35,6 +35,7 @@ depends=(
 )
 makedepends=(
     cmake
+    extra-cmake-modules
     clang
     lld
     llvm
