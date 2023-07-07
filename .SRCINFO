@@ -1,9 +1,8 @@
 pkgbase = r-vdiffr
 	pkgdesc = Visual Regression Testing and Graphical Diffing
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=vdiffr
-	arch = i686
 	arch = x86_64
 	license = MIT
 	checkdepends = r-ggplot2
@@ -22,9 +21,9 @@ pkgbase = r-vdiffr
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/vdiffr_1.0.5.tar.gz
 	source = skip_tests.patch::https://github.com/r-lib/vdiffr/commit/630a29d013361fd63fea242f531e2db6aef37919.patch
-	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	md5sums = 7f4d2da1db46098dce493e0df022db9c
+	md5sums = 2f12d37581d0e3af037a7066bdb9ee3b
 	sha256sums = 0cbf7b72fcb7346a83a488c63b6b786fc2a4c5465093665ad2dee05396c4d0f0
 	sha256sums = 66c843887b82cc78edd9300ef38140b19924a29c77e736897bef7520a5bb0d2f
-	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-vdiffr
