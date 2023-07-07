@@ -21,6 +21,7 @@ depends=(
   lib32-vulkan-icd-loader
 )
 makedepends=(
+  benchmark
   git
   meson
   ninja

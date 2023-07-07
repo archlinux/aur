@@ -5,6 +5,7 @@ pkgbase = lib32-gamescope-plus
 	url = https://github.com/Samsagax/gamescope
 	arch = x86_64
 	license = BSD
+	makedepends = benchmark
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
