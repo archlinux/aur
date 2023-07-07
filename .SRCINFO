@@ -5,6 +5,7 @@ pkgbase = gamescope-plus
 	url = https://github.com/ChimeraOS/gamescope
 	arch = x86_64
 	license = BSD
+	makedepends = benchmark
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja

@@ -34,6 +34,7 @@ depends=(
   xorg-xwayland
 )
 makedepends=(
+  benchmark
   git
   meson
   ninja
