@@ -3,7 +3,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=python-survey
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='A simple library for creating beautiful interactive prompts.'
 arch=('any')
@@ -12,6 +12,7 @@ license=('MIT')
 depends=('python-wrapio')
 makedepends=(
 	'python-setuptools'
+	'python-setuptools-scm'
 	'python-build'
 	'python-installer'
 	'python-wheel'
@@ -20,7 +21,7 @@ makedepends=(
 	'python-sphinx-autodoc-typehints'
 	'python-sphinx-paramlinks')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b4304c6a8e7e280b6be38821d667c83b7f1afc481203e4d4940af7815f7e0890')
+sha256sums=('e4ac4fb06d388c1dfebffc00b5df61b097d8f4e5e3737135231dabf04ca9ab6b')
 
 build() {
 	cd "survey-$pkgver"
