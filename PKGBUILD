@@ -11,7 +11,7 @@ pkgname=snort
 _pkgname=snort3
 _openappid=33380
 pkgver=3.1.64.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight network IDS /IPS with OpenAppID support.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64' 'arm')
 url='https://www.snort.org'
@@ -31,6 +31,7 @@ install='snort.install'
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/snort3/archive/refs/tags/${pkgver}.tar.gz"
   "snort-openappid-${_openappid}.tar.gz::https://snort.org/downloads/openappid/${_openappid}"
   'cstdint.patch'
+  'tcmjem.patch'
   'local.lua'
   'snort.logrotate'
   'snort.sysusers'
@@ -40,6 +41,9 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/snort3/snort3/archive/
 prepare() {
   cd "${_pkgname}-${pkgver}"
   patch -p0 < "${srcdir}"/cstdint.patch
+  patch -p0 < "${srcdir}"/tcmjem.patch
+  # Workaround https://github.com/intel/hyperscan/issues/388
+  sed -i '/HAVE_HS_COMPILE_LIT/d' config.cmake.h.in cmake/sanity_checks.cmake
 }
 
 build() {
@@ -65,6 +69,19 @@ package() {
   echo -e '#pulledpork will put rules here in snort.rules\n#alert icmp any any -> any any ( msg:"ICMP Traffic Detected"; sid:10000001; metadata:policy security-ips alert; )' >"${pkgdir}"/etc/snort/rules/local.rules
   chmod 0644 "${pkgdir}"/etc/snort/{homenet.lua,rules/{local,snort}.rules}
 
+    # rule files and other settings
+    sed -i -e "/^EXTERNAL_NET\\s\\+=/ a include 'homenet.lua'" \
+      -e "/^HOME_NET\\s\\+=/ i -- we set HOME_NET and EXTERNAL_NET here or via an included file" \
+      -e 's/^\(HOME_NET\s\+=\)/--\1/g' \
+      -e 's/^\(EXTERNAL_NET\s\+=\)/--\1/g' \
+      "${pkgdir}"/etc/snort/snort.lua
+    sed -i -e "s/^\\(RULE_PATH\\s\\+=\\).*/\\1 'rules'/g" \
+      -e "s/^\\(BUILTIN_RULE_PATH\\s\\+=\\).*/\\1 'builtin_rules'/g" \
+      -e "s/^\\(PLUGIN_RULE_PATH\\s\\+=\\).*/\\1 'so_rules'/g" \
+      -e "s/^\\(WHITE_LIST_PATH\\s\\+=\\).*/\\1 'lists'/g" \
+      -e "s/^\\(BLACK_LIST_PATH\\s\\+=\\).*/\\1 'lists'/g" \
+      "${pkgdir}"/etc/snort/snort_defaults.lua
+
   # OpenAppID files
   install -d -m755 "${pkgdir}"/usr/lib/openappid/custom/{libs,lua,port}
   cp -a --no-preserve=ownership -t "${pkgdir}"/usr/lib/openappid/ "${srcdir}"/odp
@@ -73,9 +90,10 @@ package() {
 
 sha256sums=('57be62557178526059ded86d0bebf8a57aa4a46db9390a48ae030b6e45f1dc61'
             '3046c5af1dd81a104f13d8e895226ef64bca7fa358238fb5f29c659081eaee2a'
-            '502fbfe78bbacc8d6d3384b70b8e6f0343c537532360cee755d7be8f30eab39c'
-            '2e60695f90e7cb3f1faad5aa90b3ad351f2175268fb31d6fa9601f11fca22d1c'
+            'b3d86ffa12207afa0f2d3a2349cf4746711e71b8a43bdc593b1527eda972f8ea'
+            '7fbf5c1b1ca10fba73350e563cafeb8ea4db7eb5d69ef62c067df602f27678f2'
+            'b61d6492f86c7d79c1a76d1394d099403981aac7f371b1fe22ddd8a4bb15c87c'
             'a8a7684a676da5cd55c2b5ab012dac3d14c5a6c62f6e37c4913ba1dbe506088e'
             'ae3245c5de527fb487c459f2f4a9c78803ae6341e9c81b9a404277679cdee051'
             'bc4a02d184601faba5cd0f6cb454097a3b04a0c8fe56f5f8b36d24513484faa2'
-            'e1ff858e2cb062d76f72757746c4f87410151b06221255ca827b7279fee0d5df')
+            'cb1108ab0a6ad38981a6f308b0ae2b276b68d08bfa0e38c036eae277b38b28d8')

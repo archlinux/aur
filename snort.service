@@ -1,8 +1,8 @@
 [Unit]
-Description=Snort IDS daemon in NFQUEUE mode
+Description=Snort IDS / IPS daemon
 
 [Service]
-ExecStart=/usr/bin/snort -Q -c /etc/snort/snort.lua -l /var/log/snort --tweaks local
+ExecStart=/usr/bin/snort -M -c /etc/snort/snort.lua -l /var/log/snort --tweaks local
 ExecReload=kill -HUP $MAINPID
 
 [Install]

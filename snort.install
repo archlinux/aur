@@ -1,7 +1,7 @@
 post_install() {
     /usr/bin/nohup /usr/bin/pulledpork_update.sh /etc/snort/rules/snort.rules > /dev/null 2>&1 &
     cat << EOF
->>> EDIT /etc/snort/homenet.conf file to match your local network.
+>>> EDIT /etc/snort/homenet.lua file to match your local network.
 >>> Add local rules to /etc/snort/rules/local.rules
 
 >>> Note: ALERTs are automatically deleted after 60 days
