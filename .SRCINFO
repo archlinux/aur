@@ -1,7 +1,7 @@
 pkgbase = r-mrfdepth
 	pkgdesc = Depth Measures in Multivariate, Regression and Functional Settings
-	pkgver = 1.0.13
-	pkgrel = 4
+	pkgver = 1.0.14
+	pkgrel = 1
 	url = https://cran.r-project.org/package=mrfDepth
 	arch = x86_64
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = r-mrfdepth
 	depends = r-rcppeigen
 	depends = r-reshape2
 	optdepends = r-robustbase
-	source = https://cran.r-project.org/src/contrib/mrfDepth_1.0.13.tar.gz
-	sha256sums = 9b0bdce45c2a83150e636c964095c649cb3e0a931dbe40593de058306418e39c
+	source = https://cran.r-project.org/src/contrib/mrfDepth_1.0.14.tar.gz
+	sha256sums = 87b21e553cee59b3877ff6c672f2bf897467ac755207d4427ee9c99745b006ca
 
 pkgname = r-mrfdepth
