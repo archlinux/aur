@@ -1,6 +1,6 @@
 pkgbase = emptyclip
 	pkgdesc = A top-down shooter action RPG
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://empty-clip.gitlab.io
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = emptyclip
 	depends = freetype2
 	depends = sqlite
 	depends = zlib
-	source = https://gitlab.com/jazztickets/uploads/-/raw/main/emptyclip-2.0.1-8955a4d-src.tar.gz
-	sha256sums = 9cd00179baac611a3f0f028de69a4edc8683f8ffc1af21d85823759e3f2b06c3
+	source = https://gitlab.com/jazztickets/uploads/-/raw/main/emptyclip-2.0.2-adc6abf-src.tar.gz
+	sha256sums = 9f349fefb32a63dcc354f3d753df99e9224e44c9f777f880be677ce6cda27f18
 
 pkgname = emptyclip
