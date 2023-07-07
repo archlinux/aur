@@ -1,7 +1,7 @@
 pkgbase = nomacs
 	pkgdesc = A Qt image viewer
 	pkgver = 3.17.2282
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://nomacs.org/
 	arch = x86_64

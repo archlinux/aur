@@ -5,7 +5,7 @@
 _plugins_pkgver=3.16
 pkgname=nomacs
 pkgver=3.17.2282
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A Qt image viewer"
 arch=(x86_64)
