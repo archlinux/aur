@@ -2,18 +2,18 @@
 
 pkgname=python-gs-quant
 _pkgname=gs_quant
-pkgver=0.9.101
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="A python toolkit for quantitative finance developped at Goldman Sachs"
 arch=('any')
 url="https://developer.gs.com/discover/products/gs-quant"
 license=('Apache')
-depends=('python' 'python-aenum' 'python-backoff' 'python-cachetools' 'python-dataclasses-json' 'python-funcsigs' 'python-inflection' 'python-lmfit' 'python-msgpack' 'python-opentracing' 'python-pandas' 'python-pydash' 'python-requests' 'python-scipy' 'python-statsmodels')
+depends=('python' 'python-aenum' 'python-backoff' 'python-cachetools' 'python-certifi' 'python-dataclasses-json' 'python-dateutil' 'python-httpx' 'python-inflection' 'python-lmfit' 'python-more-itertools' 'python-msgpack' 'python-nest-asyncio' 'python-opentracing' 'python-pandas' 'python-pydash' 'python-requests' 'python-scipy' 'python-statsmodels' 'python-tqdm' 'python-websockets')
 optdepends=()
 makedepends=('python-setuptools')
 #checkdepends=('python-testfixtures' 'python-pytest' 'python-pytest-mock')
-source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('a723b3ae40c767b221661e7a30d669927ba03abbb34db40533320f00f37bdf92')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha256sums=('38e4aede3a34407a251bb2506513aaf6afc124c01a70b3001d14332079146424')
 
 build() {
   cd "$_pkgname-$pkgver"
