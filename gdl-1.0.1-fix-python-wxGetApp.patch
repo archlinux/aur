@@ -1,0 +1,62 @@
+From 2a6d346d496cf5d8a3bed2737c8028438e2df99a Mon Sep 17 00:00:00 2001
+From: GillesDuvert <gilles.duvert@free.fr>
+Date: Tue, 21 Feb 2023 00:35:50 +0100
+Subject: [PATCH] displace equivalent of wxIMPLEMENT_APP_NO_MAIN in
+ gdlwidget.cpp to enable Python module to use GDL.so
+
+---
+ src/gdl.cpp       | 11 ++++++-----
+ src/gdlwidget.cpp | 18 ++++++++++++++++++
+ 2 files changed, 24 insertions(+), 5 deletions(-)
+
+diff --git a/src/gdl.cpp b/src/gdl.cpp
+index 445145331..4b01f9d24 100644
+--- a/src/gdl.cpp
++++ b/src/gdl.cpp
+@@ -66,11 +66,12 @@
+ //initialize wxWidgets system:  create an instance of wxAppGDL
+ #ifdef HAVE_LIBWXWIDGETS
+ #include "gdlwidget.hpp"
+-#ifndef __WXMAC__ 
+-wxIMPLEMENT_APP_NO_MAIN( wxAppGDL);
+-#else
+-wxIMPLEMENT_APP_NO_MAIN( wxApp);
+-#endif
++//displaced in gdlwidget.cpp to make wxGetApp() available under Python (in GDL.so)
++//#ifndef __WXMAC__ 
++//wxIMPLEMENT_APP_NO_MAIN( wxAppGDL);
++//#else
++//wxIMPLEMENT_APP_NO_MAIN( wxApp);
++//#endif
+ #endif
+ 
+ using namespace std;
+diff --git a/src/gdlwidget.cpp b/src/gdlwidget.cpp
+index 48abbf23a..b589d4868 100644
+--- a/src/gdlwidget.cpp
++++ b/src/gdlwidget.cpp
+@@ -196,6 +196,24 @@ bool GDLWidget::handlersOk=false;
+ wxFont GDLWidget::defaultFont=wxNullFont; //the font defined by widget_control,default_font.
+ wxFont GDLWidget::systemFont=wxNullFont;  //the initial system font. This to behave as IDL
+ 
++  //initialize wxWidgets system:  create an instance of wxAppGDL here, not at Main (
++#ifndef __WXMAC__ 
++    wxAppGDL& wxGetApp() { return *static_cast<wxAppGDL*>(wxApp::GetInstance()); }   
++    wxAppConsole *wxCreateApp() 
++    { 
++        wxAppConsole::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE,"GDL");
++        return new wxAppGDL;
++    }
++    wxAppInitializer  wxTheAppInitializer((wxAppInitializerFunction) wxCreateApp);
++#else
++    wxApp& wxGetApp() { return *static_cast<wxApp*>(wxApp::GetInstance()); }   
++    wxAppConsole *wxCreateApp() 
++    { 
++        wxAppConsole::CheckBuildOptions(WX_BUILD_OPTIONS_SIGNATURE,"GDL");
++        return new wxApp;
++    }
++    wxAppInitializer  wxTheAppInitializer((wxAppInitializerFunction) wxCreateApp);
++#endif
+ 
+ void GDLEventQueue::Purge()
+ {
