@@ -1,9 +1,10 @@
 pkgbase = browser360-bin
 	pkgdesc = 360 Browser stable version
-	pkgver = 13.2.1031.25
+	pkgver = 13.2.1031.26
 	pkgrel = 1
 	url = https://browser.360.net/gc/index.html?src=se
 	install = browser360.install
+	arch = aarch64
 	arch = x86_64
 	license = custom
 	depends = alsa-lib
@@ -39,9 +40,11 @@ pkgbase = browser360-bin
 	depends = openssl-1.1
 	depends = sh
 	conflicts = browser360
-	source = browser360-13.2.1031.25.deb::https://down.360safe.com/gc/signed_com.360.browser-stable_13.2.1031.25-1_amd64.deb
 	source = browser360.install
-	sha256sums = 87b9c31cadc31ed991ac24e00a91864806941690b4845d9781475f53524c1b09
 	sha256sums = a5fa1eaebb4b7302d5d1dbfe33934d8a10e5dc46cd5d7bec302a8dd9b8354664
+	source_aarch64 = browser360-13.2.1031.26-aarch64.deb::https://down.360safe.com/gc/signed_com.360.browser-stable_13.2.1031.26-1_arm64.deb
+	sha256sums_aarch64 = 7035e24d93a6cbe751f8af16ee342111f9cce13f30de29bc4e3bfe30f0af1b01
+	source_x86_64 = browser360-13.2.1031.26-x86_64.deb::https://down.360safe.com/gc/signed_com.360.browser-stable_13.2.1031.26-1_amd64.deb
+	sha256sums_x86_64 = b807d1ccc568a473c3192934c9784a3414520f4fe4b651bd72d435cbb8d65f27
 
 pkgname = browser360-bin
