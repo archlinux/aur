@@ -1,13 +1,13 @@
 pkgbase = gren-bin
 	pkgdesc = Compiler for the Gren programming language.
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/gren-lang/compiler
 	arch = x86_64
 	license = custom
-	source = https://github.com/gren-lang/compiler/releases/download/0.2.1/gren_linux
+	source = https://github.com/gren-lang/compiler/releases/download/0.3.0/gren_linux
 	source = https://raw.githubusercontent.com/gren-lang/compiler/main/LICENSE
-	md5sums = cf1e8d6023d294be813b5aff1624517d
+	md5sums = 8727358d51ae7ec3fca75477e101f357
 	md5sums = 9a4c31c12d4929e1a5b5fee6c2927b6c
 
 pkgname = gren-bin
