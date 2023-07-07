@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.18
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.videolan.org/vlc/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = vlc-luajit
 	makedepends = live-media>=2023.01.19
 	makedepends = libnotify
 	makedepends = libbluray
-	makedepends = libdc1394
 	makedepends = libavc1394
 	makedepends = libcaca
 	makedepends = gtk3
@@ -56,7 +55,6 @@ pkgbase = vlc-luajit
 	makedepends = libgoom2
 	makedepends = projectm
 	makedepends = chromaprint
-	makedepends = aribb24
 	makedepends = aribb25
 	makedepends = pcsclite
 	makedepends = lua51
@@ -64,13 +62,15 @@ pkgbase = vlc-luajit
 	makedepends = aom>=3
 	makedepends = dav1d>=1.0.0
 	makedepends = flac>=1.4.0
+	makedepends = libdc1394>=2.2.7
 	makedepends = libmicrodns>=0.2
 	makedepends = libvpx>=1.13
 	makedepends = x264>=0.164
 	makedepends = x265>=3.5
-	makedepends = protobuf>=21
+	makedepends = protobuf>=23
 	makedepends = srt>=1.5
 	depends = a52dec
+	depends = aribb24
 	depends = libdvbpsi
 	depends = libxpm
 	depends = libdca
@@ -106,7 +106,6 @@ pkgbase = vlc-luajit
 	optdepends = dav1d: dav1d AV1 decoder
 	optdepends = libdvdcss: decoding encrypted DVDs
 	optdepends = libavc1394: devices using the 1394ta AV/C
-	optdepends = libdc1394: IEEE 1394 access plugin
 	optdepends = kwallet: kwallet keystore
 	optdepends = libbluray: Blu-Ray video input
 	optdepends = twolame: TwoLAME mpeg2 encoder plugin
@@ -153,19 +152,19 @@ pkgbase = vlc-luajit
 	optdepends = ncurses: ncurses interface
 	optdepends = libnotify: notification plugin
 	optdepends = gtk3: notification plugin
-	optdepends = aribb24: aribsub support
 	optdepends = aribb25: aribcam support
 	optdepends = pcsclite: aribcam support
 	optdepends = live-media: streaming over RTSP
 	optdepends = aom>=3: AOM AV1 codec
 	optdepends = dav1d>=1.0.0: dav1d AV1 decoder
 	optdepends = flac>=1.4.0: Free Lossless Audio Codec plugin
-	optdepends = protobuf>=21: chromecast streaming
+	optdepends = protobuf>=23: chromecast streaming
 	optdepends = libmicrodns>=0.2: mDNS services discovery (chromecast etc)
 	optdepends = libvpx>=1.13: VP8 and VP9 codec
 	optdepends = x264>=0.164: H264 encoding
 	optdepends = x265>=3.5: HEVC/H.265 encoder
 	optdepends = srt>=1.5: SRT input/output plugin
+	optdepends = libdc1394>=2.2.7: IEEE 1394 access plugin
 	provides = vlc=3.0.18
 	conflicts = vlc
 	conflicts = vlc-dev

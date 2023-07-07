@@ -5,7 +5,7 @@ _vlcver=3.0.18
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=7
+pkgrel=8
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -14,17 +14,18 @@ license=('LGPL2.1' 'GPL2')
 _aomver=3
 _dav1dver=1.0.0
 _flacver=1.4.0
+_libdc1394ver=2.2.7
 _libmicrodnsver=0.2
 _libplacebover=4.208
 _libupnpver=1.14
 _libvpxver=1.13
 _livemedia=2023.01.19
-_protobufver=21
+_protobufver=23
 _srtver=1.5
 _x264ver=0.164
 _x265ver=3.5
 depends=(
-  'a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'luajit' 'libidn'
+  'a52dec' 'aribb24' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'luajit' 'libidn'
   'libmatroska' 'taglib' 'libmpcdec' 'faad2' 'libmad'
   'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
   'libarchive' 'qt5-base' "ffmpeg>=6"
@@ -34,7 +35,7 @@ depends=(
 )
 makedepends=(
   'gst-plugins-base-libs' "live-media>=$_livemedia" 'libnotify' 'libbluray'
-  'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
+  'libavc1394' 'libcaca' 'gtk3'
   'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
   'libmtp' 'libdvdcss' 'smbclient'
   'vcdimager' 'libssh2' 'mesa' 'libnfs' 'mpg123'
@@ -43,8 +44,9 @@ makedepends=(
   'zvbi' 'libass' 'libkate' 'libtiger'
   'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
   'lirc' 'libgoom2' 'projectm' 'chromaprint'
-  'aribb24' 'aribb25' 'pcsclite' 'lua51' 'wayland-protocols'
+  'aribb25' 'pcsclite' 'lua51' 'wayland-protocols'
   "aom>=$_aomver" "dav1d>=$_dav1dver" "flac>=$_flacver"
+  "libdc1394>=$_libdc1394ver"
   "libmicrodns>=$_libmicrodnsver" "libvpx>=$_libvpxver"
   "x264>=$_x264ver" "x265>=$_x265ver" "protobuf>=$_protobufver"
   "srt>=$_srtver"
@@ -55,7 +57,6 @@ optdepends=(
   'dav1d: dav1d AV1 decoder'
   'libdvdcss: decoding encrypted DVDs'
   'libavc1394: devices using the 1394ta AV/C'
-  'libdc1394: IEEE 1394 access plugin'
   'kwallet: kwallet keystore'
   #'libva-intel-driver: video backend intel'
   'libbluray: Blu-Ray video input'
@@ -103,7 +104,6 @@ optdepends=(
   'ncurses: ncurses interface'
   'libnotify: notification plugin'
   'gtk3: notification plugin'
-  'aribb24: aribsub support'
   'aribb25: aribcam support'
   'pcsclite: aribcam support'
   'live-media: streaming over RTSP'
@@ -116,6 +116,7 @@ optdepends=(
   "x264>=$_x264ver: H264 encoding"
   "x265>=$_x265ver: HEVC/H.265 encoder"
   "srt>=$_srtver: SRT input/output plugin"
+  "libdc1394>=$_libdc1394ver: IEEE 1394 access plugin"
 )
 _name=vlc
 conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
@@ -165,7 +166,7 @@ build() {
 
   export CFLAGS+=" -I/usr/include/samba-4.0"
   export CPPFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects"
-  export CXXFLAGS+=" -std=c++11"
+  export CXXFLAGS+=" -std=c++17"
   # OBS Studio use luajit which is a drop-in for lua5.1
   # So lets build VLC with luajit and luac5.1 rather than lua5.2 and luac5.2
   # Which will make OBS not crash when loading a VLC (Video) Source
