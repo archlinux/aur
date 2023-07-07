@@ -1,11 +1,11 @@
 _pkgname=Adafruit_nRF52_nrfutil
 pkgname=python-adafruit-nrfutil
 pkgver=0.5.3.post17
-pkgrel=1
+pkgrel=2
 pkgdesc="Python 3 version of Nordic Semiconductor nrfutil utility and Python library (modified by Adafruit)"
 arch=('any')
 url='https://github.com/adafruit/Adafruit_nRF52_nrfutil'
-license=('MIT')
+license=('BSD')
 depends=(python python-behave python-click python-ecdsa python-pyserial)
 makedepends=(python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adafruit/Adafruit_nRF52_nrfutil/archive/$pkgver.tar.gz")

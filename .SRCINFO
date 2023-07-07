@@ -1,10 +1,10 @@
 pkgbase = python-adafruit-nrfutil
 	pkgdesc = Python 3 version of Nordic Semiconductor nrfutil utility and Python library (modified by Adafruit)
 	pkgver = 0.5.3.post17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adafruit/Adafruit_nRF52_nrfutil
 	arch = any
-	license = MIT
+	license = BSD
 	makedepends = python-setuptools
 	depends = python
 	depends = python-behave
