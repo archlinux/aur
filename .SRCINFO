@@ -1,4 +1,4 @@
-pkgbase = cyusb_linux
+pkgbase = cyusb-git
 	pkgver = git
 	pkgrel = 1
 	url = https://github.com/Ho-Ro/cyusb_linux
@@ -10,4 +10,4 @@ pkgbase = cyusb_linux
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = cyusb_linux
+pkgname = cyusb-git
