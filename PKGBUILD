@@ -1,9 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=decasify
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
-pkgdesc='convert all-caps strings to title-case supporting Turkish input'
+pkgdesc='cast strings to title-case according to locale specific style guides including Turkish'
 arch=(x86_64)
 url="https://github.com/alerque/$pkgname"
 license=(GPL3)
@@ -13,7 +13,7 @@ makedepends=(cargo
              jq)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('d9a02cd9d8fe47119f7d0de50e15c55205de94fae923ace496b159876e4956ec')
+sha256sums=('3fdea580b8e26179ef432f6794a30605d1d350ab47bb850fdde294059c54c936')
 
 prepare() {
 	cd "$_archive"
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
 	cd "$_archive"
-	./configure --prefix /usr --enable-shared
+	./configure --prefix /usr
 	make
 }
 
