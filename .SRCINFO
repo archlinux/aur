@@ -1,6 +1,6 @@
 pkgbase = drtl-bin
 	pkgdesc = Yet another tldr client written in Zig.
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/jiripospisil/drtl
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = drtl-bin
 	license = MIT
 	provides = drtl
 	conflicts = drtl
-	source_x86_64 = drtl-bin-v0.0.3::https://github.com/jiripospisil/drtl/releases/download/v0.0.3/drtl-v0.0.3-x86_64-linux
-	b2sums_x86_64 = 80b52b8649986a7540a967df390c82877880ba919997d8c4fbbc7ad647c7a1ec3a48f702b9d2a9154b51e14d2378aa3fedc71e430806b40afa2954af6aa6d9d2
-	source_aarch64 = drtl-bin-v0.0.3::https://github.com/jiripospisil/drtl/releases/download/v0.0.3/drtl-v0.0.3-aarch64-linux
-	b2sums_aarch64 = 80b52b8649986a7540a967df390c82877880ba919997d8c4fbbc7ad647c7a1ec3a48f702b9d2a9154b51e14d2378aa3fedc71e430806b40afa2954af6aa6d9d2
+	source_x86_64 = drtl-bin-v0.0.4::https://github.com/jiripospisil/drtl/releases/download/v0.0.4/drtl-v0.0.4-x86_64-linux
+	b2sums_x86_64 = e585bbf04c82f21e78d384197d5234b8a89007f2293292362380f22bfb3cce15bf4c3088e8f52fae6737fa6aae9c74d60b7c679508120d4d74dd3c8ec251e277
+	source_aarch64 = drtl-bin-v0.0.4::https://github.com/jiripospisil/drtl/releases/download/v0.0.4/drtl-v0.0.4-aarch64-linux
+	b2sums_aarch64 = e585bbf04c82f21e78d384197d5234b8a89007f2293292362380f22bfb3cce15bf4c3088e8f52fae6737fa6aae9c74d60b7c679508120d4d74dd3c8ec251e277
 
 pkgname = drtl-bin
