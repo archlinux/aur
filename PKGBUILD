@@ -8,7 +8,7 @@
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
@@ -232,7 +232,7 @@ package() {
   fi
 
   # License
-  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/UnrealEngine/LICENSE.md"
+  install -Dm644 "$(find ${srcdir} -type f -iname 'LICENSE.md')"  "${pkgdir}/usr/share/licenses/UnrealEngine/LICENSE.md"
   
   # Engine
   ## Set to all permissions to prevent the engine from breaking itself; more elegant solutions might exist - suggest them if they can be automated here
