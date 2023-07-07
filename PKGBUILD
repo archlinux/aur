@@ -1,29 +1,32 @@
-# Maintainer: Core_UK <mail.coreuk@gmail.com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Core_UK <mail.coreuk@gmail.com>
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
-
 pkgname=apple-music-electron-bin
 _pkgname=Apple-Music-Electron
-pkgver=3.0.0
-pkgrel=3
-pkgdesc="An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. NOTE: This package has been archived by the development team for the newer native Cider Project."
+pkgver=3.0.2
+pkgrel=1
+pkgdesc="A free, lightweight, open source alternative to iTunes and other Apple Music applications based on Electron 15"
 arch=('x86_64')
-url="https://github.com/CiderApp/${_pkgname}.git"
+url="https://github.com/Alex313031/Apple-Music-Electron"
 license=("MIT")
-options=('!strip' '!emptydirs')
-depends=('gtk3' 'nss')
+depends=('gcc-libs' 'alsa-lib' 'electron15' 'portaudio' 'hicolor-icon-theme' 'java-runtime' 'lib32-glibc' 'lib32-alsa-lib' 'glibc')
 optdepends=('libnotify: Playback notifications'
             'otf-san-francisco: Use of SF Font for certain themes')
-provides=(apple-music-electron)
-conflicts=(apple-music-electron)
-source=("https://github.com/CiderApp/${_pkgname}/releases/download/v${pkgver}/apple-music-electron_${pkgver}_amd64.deb")
-sha256sums=('d8a91c0171bde307e7da0eb3a40131c999b49c2fa59a7442fbce19f2b9d519b7')
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}")
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+    "LICENSE::https://raw.githubusercontent.com/Alex313031/Apple-Music-Electron/master/LICENSE"
+    "${pkgname%-bin}.sh")
+sha256sums=('ebc08ea72c8e488a9f74539f45358c7f156078e7f5ca1e9c6e0d84e0a146d497'
+            'cf7724c85c357c306a0a8489d987214070c547343f493532ffd4a847e6b8a186'
+            'e0411c5d36829417b6a5931240854b34a6ef004b9034e5b9df82579763c5a30e')
 
 package(){
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
-
-    chmod 4755 "${pkgdir}/opt/Apple Music/chrome-sandbox"
-
-    install -d "${pkgdir}/usr/bin"
-	ln -sf '/opt/Apple Music/apple-music-electron' "${pkgdir}/usr/bin/apple-music-electron"
+	bsdtar -xf "${srcdir}/data.tar.xz"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/Apple Music/resources/"* "${pkgdir}/opt/${pkgname%-bin}"
+    sed "s|\"/opt/Apple Music/${pkgname%-bin}\" %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    cp -r "${srcdir}/usr/share/icons" "${pkgdir}/usr/share"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
