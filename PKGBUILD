@@ -3,7 +3,7 @@
 pkgname=rustdesk-server-bin
 _pkgname=rustdesk-server
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="RustDesk Server Program"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rustdesk/rustdesk-server"
@@ -23,8 +23,8 @@ sha256sums=('ab4826703bfa96f5371f02fcb4575fff435554d575213cedca8cb1f39564601e'
             'bf6bdb07ae69d6cfde433781f23376036cb9ad2f1bc1fc7ee44bd56de38ad11d'
             '09d880c1c7987e9e7262c9f2fb56120d14b708238f3c7f14c800e6234b798440'
             'bdea355562f43f6045e2b52f6dbb4d84ffffa1efec464446b2b2e10e336d6ddb')
-sha256sums_x86_64=('be40df7d6f29474971d75ebd716037f4b97a987feea543ea79166d3c9ad87be5')
-sha256sums_aarch64=('1e8da3de3b06c80ab5177b84602fab503df64290245caf91d59d6b2c41066ebc')
+sha256sums_x86_64=('7f17ff1c3118cf8336468345410bd4d7404de2833cb11cdbef0bdb27b55c60e9')
+sha256sums_aarch64=('f91f3416f93d574280013a71d0d8c57d2b489c861b1754ea247b251e38301e07')
 install=${_pkgname}.install
 _parch=$(uname -m | sed "s/x86_64/amd64/;s/aarch64/arm64v8/")
 
