@@ -1,7 +1,7 @@
 pkgbase = discord-electron
 	pkgdesc = Discord using system provided electron (v22) for increased security and performance
 	pkgver = 0.0.27
-	pkgrel = 6
+	pkgrel = 7
 	url = https://discord.com
 	install = discord-electron.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = discord-electron
 	depends = electron22
 	depends = libxss
 	optdepends = libpulse: Pulseaudio support
+	optdepends = libappindicator-gtk3: Systray indicator support
 	optdepends = xdg-utils: Open files
 	optdepends = rizin: Allow patching Krisp support
 	provides = discord

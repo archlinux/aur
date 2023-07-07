@@ -15,7 +15,7 @@ pkgname=discord-electron
 _pkgname=discord
 _electron=22
 pkgver=0.0.27
-pkgrel=6
+pkgrel=7
 pkgdesc="Discord using system provided electron (v${_electron}) for increased security and performance"
 arch=('x86_64')
 provides=("${_pkgname}")
@@ -28,6 +28,7 @@ depends=("electron${_electron}" 'libxss')
 makedepends=('asar' 'curl' 'python-html2text')
 optdepends=(
 	'libpulse: Pulseaudio support'
+	'libappindicator-gtk3: Systray indicator support'
 	'xdg-utils: Open files'
 	'rizin: Allow patching Krisp support'
 )
