@@ -1,6 +1,6 @@
 pkgbase = petsc
 	pkgdesc = Portable, extensible toolkit for scientific computation
-	pkgver = 3.19.2
+	pkgver = 3.19.3
 	pkgrel = 1
 	url = https://petsc.org
 	install = petsc.install
@@ -31,9 +31,9 @@ pkgbase = petsc
 	optdepends = trilinos: support for the ML package from Trilinos
 	provides = petsc4py
 	options = staticlibs
-	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.19.2.tar.gz
+	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.19.3.tar.gz
 	source = test_optdepends.sh
-	sha512sums = f8feeb66fa8bd2406227be0e2cc2946485238362270d40e3f07dc89491177751f6bf680f51b70696bc30b677624c0e525c3fa9784eabdeb2337697ec56f63fc1
+	sha512sums = 7976b9c66668da9ed6d05f54ed1a5e11a9cc185b38acff712c0d21f929cff54f5751bea8ecbf8bda278780e4277b96b0b34061af1f28adf0824edb13763b8203
 	sha512sums = bdbff55c99205ae6edf574af319d19133aaf91eeae2dbb826f207be9f77ec08dfaf4afca6642b1536f159b7516c1fdeb29f35356dbc69c53c4ce506d44bf5e40
 
 pkgname = petsc
