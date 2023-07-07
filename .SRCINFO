@@ -1,0 +1,12 @@
+pkgbase = knfmt
+	pkgdesc = OpenBSD KNF-style (Kernel Normal Form) C code formatter
+	pkgver = 4.1.1
+	pkgrel = 1
+	url = https://github.com/mptre/knfmt
+	arch = x86_64
+	license = ISC
+	depends = glibc
+	source = https://github.com/mptre/knfmt/releases/download/v4.1.1/knfmt-4.1.1.tar.gz
+	sha256sums = d9a98bb7659a725dd729f655bb2ffa059bf41fc6bb78db15149d037a566d9848
+
+pkgname = knfmt
