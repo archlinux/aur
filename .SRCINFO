@@ -1,7 +1,7 @@
 pkgbase = weewx
 	pkgdesc = Software for logging data from weather stations
 	pkgver = 4.10.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.weewx.com/
 	arch = any
 	license = GPL3
@@ -9,8 +9,9 @@ pkgbase = weewx
 	depends = python-daemon
 	depends = python-six
 	depends = python-configobj
-	depends = python-pillow
 	depends = python-pyserial
+	depends = python-pillow>=9.5.0
+	depends = python-pillow<10.0.0
 	depends = python-pyusb
 	depends = python-cheetah3
 	optdepends = python-pyephem: extended almanac information

@@ -13,7 +13,7 @@ function _dl_url {
   echo "https://github.com/weewx/weewx/archive/refs/tags/v$1.$2.$3.tar.gz"
 }
 
-pkgrel=3
+pkgrel=4
 pkgdesc="Software for logging data from weather stations"
 arch=("any")
 url="http://www.weewx.com/"
@@ -22,8 +22,9 @@ depends=("python"
          "python-daemon"
          "python-six"
          "python-configobj"
-         "python-pillow"
          "python-pyserial"
+         "python-pillow>=9.5.0"
+         "python-pillow<10.0.0"
          "python-pyusb"
          "python-cheetah3")
 optdepends=("python-pyephem: extended almanac information"
