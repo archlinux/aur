@@ -2,16 +2,18 @@
 
 _pkgname=xfce4-dpr-changer
 pkgname=${_pkgname}-git
-pkgver=r1.g09432e7
+pkgver=r3.g8e44ffa
 pkgrel=1
 pkgdesc="Change display scaling from system tray in Xfce4 desktop"
 arch=('x86_64')
 url='https://github.com/zaps166/xfce4-dpr-changer'
 license=('Unlicense')
 depends=('qt6-base')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/zaps166/xfce4-dpr-changer.git")
 sha1sums=(SKIP)
+provides=(${_pkgname})
+conflits=(${_pkgname})
 
 pkgver() {
     cd ${_pkgname}
