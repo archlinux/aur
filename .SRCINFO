@@ -1,7 +1,7 @@
 pkgbase = abuse
 	pkgdesc = Side-scroller action game that pits you against ruthless alien killers
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xenoveritas/abuse
 	arch = x86_64
 	license = custom
@@ -9,6 +9,7 @@ pkgbase = abuse
 	makedepends = gendesk
 	makedepends = glu
 	makedepends = mesa
+	makedepends = cmake
 	depends = libglvnd
 	depends = sdl2_mixer
 	source = abuse-0.9.1::https://github.com/Xenoveritas/abuse/archive/refs/tags/v0.9.1.tar.gz
