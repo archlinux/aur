@@ -17,7 +17,7 @@ pkgbase = lib32-gamescope-plus
 	depends = lib32-vulkan-icd-loader
 	provides = lib32-gamescope
 	conflicts = lib32-gamescope
-	source = git+https://github.com/ChimeraOS/gamescope.git#commit=4e0e31c6a9ba995c219a8ad9d20a1799c8fe3457
+	source = git+https://github.com/ChimeraOS/gamescope.git#commit=fb7f5df9cb7e05e5485bf5f9738a661cb66447d1
 	source = git+https://gitlab.freedesktop.org/wlroots/wlroots.git
 	source = git+https://gitlab.freedesktop.org/emersion/libliftoff.git
 	source = git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
