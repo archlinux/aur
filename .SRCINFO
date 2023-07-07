@@ -1,0 +1,15 @@
+pkgbase = ragnarwm
+	pkgdesc = Minimal, flexible & user-friendly X tiling window manager
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/cococry/Ragnar
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	provides = ragnarwm
+	source = Ragnar::git+https://github.com/cococry/Ragnar.git
+	sha256sums = SKIP
+
+pkgname = ragnarwm
