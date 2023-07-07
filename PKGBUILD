@@ -1,7 +1,7 @@
 # Maintainer: Yufan You <ouuansteve at gmail.com>
 
 pkgname=noi-despised-git
-pkgver=r52.c43d58c
+pkgver=r53.f16dafc
 pkgrel=1
 pkgdesc='NOI 背笔试工具'
 arch=('x86_64')
