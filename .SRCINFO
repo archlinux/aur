@@ -1,0 +1,21 @@
+pkgbase = buttercup-desktop-bin
+	pkgdesc = Cross-Platform Passwords & Secrets Vault
+	pkgver = 2.20.3
+	pkgrel = 1
+	url = https://buttercup.pw/
+	arch = aarch64
+	arch = armv7h
+	arch = x86_64
+	license = GPL3
+	depends = electron
+	depends = hicolor-icon-theme
+	source = buttercup-desktop.sh
+	sha256sums = a542d65f853688cde782a213642ef4c12d51734a28c314ea9ac993d7e9221344
+	source_aarch64 = buttercup-desktop-2.20.3-aarch64.AppImage::https://github.com/buttercup/buttercup-desktop/releases/download/v2.20.3/Buttercup-linux-arm64.AppImage
+	sha256sums_aarch64 = 76b885a9aae1a3f708f7202372b1c434a27d755275c24709d270f850dfca07e8
+	source_armv7h = buttercup-desktop-2.20.3-armv7h.AppImage::https://github.com/buttercup/buttercup-desktop/releases/download/v2.20.3/Buttercup-linux-armv7l.AppImage
+	sha256sums_armv7h = ab49db4be607384a38b5365f9d796ccb4a3b8387dec37e9b096dfabeb1de8ef8
+	source_x86_64 = buttercup-desktop-2.20.3-x86_64.AppImage::https://github.com/buttercup/buttercup-desktop/releases/download/v2.20.3/Buttercup-linux-x86_64.AppImage
+	sha256sums_x86_64 = 7bb0998c94a400090d9fbdd9ddc83e0f9494751781a7aa6acfbccaadb907b37f
+
+pkgname = buttercup-desktop-bin
