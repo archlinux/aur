@@ -1,196 +1,63 @@
-diff '--color=auto' -rupN libQuotient-0.7.2.orig/cmake/QuotientConfig.cmake.in libQuotient-0.7.2/cmake/QuotientConfig.cmake.in
---- libQuotient-0.7.2.orig/cmake/QuotientConfig.cmake.in	2023-06-26 10:28:12.392559752 +0930
-+++ libQuotient-0.7.2/cmake/QuotientConfig.cmake.in	2023-06-26 11:28:49.614659917 +0930
-@@ -2,10 +2,10 @@ include(CMakeFindDependencyMacro)
- 
- @FIND_DEPS@
- 
--include("${CMAKE_CURRENT_LIST_DIR}/QuotientTargets.cmake")
-+include("${CMAKE_CURRENT_LIST_DIR}/@LIBRARY_NAME@Targets.cmake")
+diff '--color=auto' -rupN libQuotient-0.8.0.orig/cmake/QuotientConfig.cmake.in libQuotient-0.8.0/cmake/QuotientConfig.cmake.in
+--- libQuotient-0.8.0.orig/cmake/QuotientConfig.cmake.in	2023-07-05 12:23:12.511208577 +0930
++++ libQuotient-0.8.0/cmake/QuotientConfig.cmake.in	2023-07-05 12:54:04.695305929 +0930
+@@ -17,6 +17,6 @@ include("${CMAKE_CURRENT_LIST_DIR}/@QUOT
  
  if (NOT QUOTIENT_FORCE_NAMESPACED_INCLUDES)
--    get_target_property(_include_dir @PROJECT_NAME@ INTERFACE_INCLUDE_DIRECTORIES)
+     get_target_property(_include_dir @QUOTIENT_LIB_NAME@ INTERFACE_INCLUDE_DIRECTORIES)
 -    list(APPEND _include_dir "${_include_dir}/Quotient")
--    set_target_properties(@PROJECT_NAME@ PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_include_dir}")
-+    get_target_property(_include_dir @LIBRARY_NAME@ INTERFACE_INCLUDE_DIRECTORIES)
-+    list(APPEND _include_dir "${_include_dir}/@LIBRARY_NAME@")
-+    set_target_properties(@LIBRARY_NAME@ PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_include_dir}")
++    list(APPEND _include_dir "${_include_dir}/@QUOTIENT_LIB_NAME@")
+     set_target_properties(@QUOTIENT_LIB_NAME@ PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_include_dir}")
  endif()
-diff '--color=auto' -rupN libQuotient-0.7.2.orig/CMakeLists.txt libQuotient-0.7.2/CMakeLists.txt
---- libQuotient-0.7.2.orig/CMakeLists.txt	2023-06-26 10:28:12.385892873 +0930
-+++ libQuotient-0.7.2/CMakeLists.txt	2023-06-26 11:30:48.835074310 +0930
-@@ -5,6 +5,7 @@ endif()
- 
- set(API_VERSION "0.7")
- project(Quotient VERSION "${API_VERSION}.2" LANGUAGES CXX)
-+set(LIBRARY_NAME ${PROJECT_NAME}E2EE)
- 
- message(STATUS)
- message(STATUS "Configuring ${PROJECT_NAME} ${PROJECT_VERSION} ==>")
-@@ -68,7 +69,7 @@ if (WIN32)
-     endif()
- else()
-     include(GNUInstallDirs)
--    set(CMakeFilesLocation "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}")
-+    set(CMakeFilesLocation "${CMAKE_INSTALL_LIBDIR}/cmake/${LIBRARY_NAME}")
- endif(WIN32)
- set(${PROJECT_NAME}_INSTALL_INCLUDEDIR
-         "${CMAKE_INSTALL_INCLUDEDIR}/" CACHE PATH
-@@ -273,24 +274,24 @@ add_compile_options(
-     -DQT_NO_FOREACH
- )
- 
--add_library(${PROJECT_NAME} ${lib_SRCS} ${api_ALL_SRCS})
-+add_library(${LIBRARY_NAME} ${lib_SRCS} ${api_ALL_SRCS})
- # Set BUILDING_SHARED_QUOTIENT if building as a shared library
--target_compile_definitions(${PROJECT_NAME} PRIVATE
--    $<$<STREQUAL:$<TARGET_PROPERTY:${PROJECT_NAME},TYPE>,SHARED_LIBRARY>:BUILDING_SHARED_QUOTIENT>)
-+target_compile_definitions(${LIBRARY_NAME} PRIVATE
-+    $<$<STREQUAL:$<TARGET_PROPERTY:${LIBRARY_NAME},TYPE>,SHARED_LIBRARY>:BUILDING_SHARED_QUOTIENT>)
- # Set QUOTIENT_STATIC in a static library setting
--target_compile_definitions(${PROJECT_NAME} PUBLIC
--    $<$<STREQUAL:$<TARGET_PROPERTY:${PROJECT_NAME},TYPE>,STATIC_LIBRARY>:QUOTIENT_STATIC>)
--target_compile_definitions(${PROJECT_NAME} PRIVATE
-+target_compile_definitions(${LIBRARY_NAME} PUBLIC
-+    $<$<STREQUAL:$<TARGET_PROPERTY:${LIBRARY_NAME},TYPE>,STATIC_LIBRARY>:QUOTIENT_STATIC>)
-+target_compile_definitions(${LIBRARY_NAME} PRIVATE
-     QT_NO_JAVA_STYLE_ITERATORS QT_NO_URL_CAST_FROM_STRING QT_NO_CAST_TO_ASCII
-     QT_STRICT_ITERATORS QT_NO_CAST_FROM_BYTEARRAY)
- 
--target_compile_definitions(${PROJECT_NAME} PUBLIC ${PROJECT_NAME}_VERSION_MAJOR=${PROJECT_VERSION_MAJOR}
-+target_compile_definitions(${LIBRARY_NAME} PUBLIC ${PROJECT_NAME}_VERSION_MAJOR=${PROJECT_VERSION_MAJOR}
-     ${PROJECT_NAME}_VERSION_MINOR=${PROJECT_VERSION_MINOR} ${PROJECT_NAME}_VERSION_PATCH=${PROJECT_VERSION_PATCH}
-     ${PROJECT_NAME}_VERSION_STRING=\"${PROJECT_VERSION}\")
- if (${PROJECT_NAME}_ENABLE_E2EE)
--    target_compile_definitions(${PROJECT_NAME} PUBLIC ${PROJECT_NAME}_E2EE_ENABLED)
-+    target_compile_definitions(${LIBRARY_NAME} PUBLIC ${PROJECT_NAME}_E2EE_ENABLED)
- endif()
--set_target_properties(${PROJECT_NAME} PROPERTIES
-+set_target_properties(${LIBRARY_NAME} PROPERTIES
-     CXX_STANDARD 20
-     CXX_EXTENSIONS OFF
-     VISIBILITY_INLINES_HIDDEN ON
-@@ -299,33 +300,33 @@ set_target_properties(${PROJECT_NAME} PR
-     SOVERSION ${API_VERSION}
-     INTERFACE_${PROJECT_NAME}_MAJOR_VERSION ${API_VERSION}
- )
--set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY
-+set_property(TARGET ${LIBRARY_NAME} APPEND PROPERTY
-              COMPATIBLE_INTERFACE_STRING ${PROJECT_NAME}_MAJOR_VERSION)
- 
--target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
-+target_compile_features(${LIBRARY_NAME} PUBLIC cxx_std_20)
- if (MSVC)
--    target_compile_options(${PROJECT_NAME} PUBLIC /Zc:preprocessor)
-+    target_compile_options(${LIBRARY_NAME} PUBLIC /Zc:preprocessor)
+diff '--color=auto' -rupN libQuotient-0.8.0.orig/CMakeLists.txt libQuotient-0.8.0/CMakeLists.txt
+--- libQuotient-0.8.0.orig/CMakeLists.txt	2023-07-05 12:23:12.501208379 +0930
++++ libQuotient-0.8.0/CMakeLists.txt	2023-07-05 12:40:00.568400131 +0930
+@@ -52,10 +52,12 @@ else()
  endif()
  
- # Don't use PCH w/GCC (https://bugzilla.redhat.com/show_bug.cgi?id=1721553#c34)
- if (NOT CMAKE_CXX_COMPILER_ID STREQUAL GNU)
--    target_precompile_headers(${PROJECT_NAME} PRIVATE Quotient/converters.h)
-+    target_precompile_headers(${LIBRARY_NAME} PRIVATE Quotient/converters.h)
- endif ()
- 
--target_include_directories(${PROJECT_NAME} PUBLIC
-+target_include_directories(${LIBRARY_NAME} PUBLIC
-     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-     $<BUILD_INTERFACE:$<$<NOT:$<BOOL:${QUOTIENT_FORCE_NAMESPACED_INCLUDES}>>:${CMAKE_CURRENT_SOURCE_DIR}/Quotient>>
-     $<INSTALL_INTERFACE:${${PROJECT_NAME}_INSTALL_INCLUDEDIR}>
- )
- 
--target_link_libraries(${PROJECT_NAME} PUBLIC ${Qt}::Core ${Qt}::Network ${Qt}::Gui qt${${Qt}Core_VERSION_MAJOR}keychain)
-+target_link_libraries(${LIBRARY_NAME} PUBLIC ${Qt}::Core ${Qt}::Network ${Qt}::Gui qt${${Qt}Core_VERSION_MAJOR}keychain)
- if (Qt STREQUAL Qt5) # See #483
--    target_link_libraries(${PROJECT_NAME} PRIVATE ${Qt}::Multimedia)
-+    target_link_libraries(${LIBRARY_NAME} PRIVATE ${Qt}::Multimedia)
- endif()
- set(FIND_DEPS "find_dependency(${Qt}Keychain)") # For QuotientConfig.cmake.in
- 
- if (${PROJECT_NAME}_ENABLE_E2EE)
--    target_link_libraries(${PROJECT_NAME}
-+    target_link_libraries(${LIBRARY_NAME}
-         PUBLIC
-             Olm::Olm
-             ${Qt}::Sql
-@@ -338,7 +339,7 @@ if (${PROJECT_NAME}_ENABLE_E2EE)
-     find_dependency(${Qt}Sql)")
+ option(BUILD_WITH_QT6 "Build Quotient with Qt 6 (EXPERIMENTAL)" OFF)
++set(QUOTIENT_LIB_NAME ${PROJECT_NAME})
+ if (BUILD_WITH_QT6)
+-    set(QUOTIENT_LIB_NAME ${PROJECT_NAME}Qt6)
+-else()
+-    set(QUOTIENT_LIB_NAME ${PROJECT_NAME})
++    set(QUOTIENT_LIB_NAME ${QUOTIENT_LIB_NAME}Qt6)
++endif()
++if (${PROJECT_NAME}_ENABLE_E2EE)
++    set(QUOTIENT_LIB_NAME ${QUOTIENT_LIB_NAME}E2EE)
  endif()
  
--configure_file(${PROJECT_NAME}.pc.in ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.pc @ONLY NEWLINE_STYLE UNIX)
-+configure_file(${PROJECT_NAME}.pc.in ${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}.pc @ONLY NEWLINE_STYLE UNIX)
- 
- # Configure testing
- 
-@@ -350,45 +351,45 @@ endif()
- 
- # Configure installation
- 
--install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}Targets
-+install(TARGETS ${LIBRARY_NAME} EXPORT ${LIBRARY_NAME}Targets
+ if (WIN32)
+@@ -355,7 +357,7 @@ install(TARGETS ${QUOTIENT_LIB_NAME} EXP
          LIBRARY RUNTIME
          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
  )
 -install(DIRECTORY Quotient/ DESTINATION ${${PROJECT_NAME}_INSTALL_INCLUDEDIR}/Quotient
-+install(DIRECTORY Quotient/ DESTINATION ${${PROJECT_NAME}_INSTALL_INCLUDEDIR}/${LIBRARY_NAME}
++install(DIRECTORY Quotient/ DESTINATION ${${PROJECT_NAME}_INSTALL_INCLUDEDIR}/${QUOTIENT_LIB_NAME}
          FILES_MATCHING PATTERN "*.h")
  
  include(CMakePackageConfigHelpers)
- # NB: SameMajorVersion doesn't really work yet, as we're within 0.x trail.
- # Maybe consider jumping the gun and releasing 1.0, as semver advises?
- write_basic_package_version_file(
--    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
-+    "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}/${LIBRARY_NAME}ConfigVersion.cmake"
-     COMPATIBILITY SameMajorVersion
- )
- 
--export(PACKAGE ${PROJECT_NAME})
--export(EXPORT ${PROJECT_NAME}Targets
--       FILE "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}Targets.cmake")
-+export(PACKAGE ${LIBRARY_NAME})
-+export(EXPORT ${LIBRARY_NAME}Targets
-+       FILE "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}/${LIBRARY_NAME}Targets.cmake")
- configure_file(cmake/${PROJECT_NAME}Config.cmake.in
--    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
-+    "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}/${LIBRARY_NAME}Config.cmake"
-     @ONLY
- )
- 
--install(EXPORT ${PROJECT_NAME}Targets
--        FILE ${PROJECT_NAME}Targets.cmake DESTINATION ${CMakeFilesLocation})
-+install(EXPORT ${LIBRARY_NAME}Targets
-+        FILE ${LIBRARY_NAME}Targets.cmake DESTINATION ${CMakeFilesLocation})
- 
- install(FILES
--    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}Config.cmake"
--    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/${PROJECT_NAME}ConfigVersion.cmake"
-+    "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}/${LIBRARY_NAME}Config.cmake"
-+    "${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}/${LIBRARY_NAME}ConfigVersion.cmake"
+@@ -387,7 +389,7 @@ install(FILES
+     "${CMAKE_CURRENT_BINARY_DIR}/${QUOTIENT_LIB_NAME}/${QUOTIENT_LIB_NAME}ConfigVersion.cmake"
      DESTINATION ${CMakeFilesLocation}
  )
--install(EXPORT_ANDROID_MK ${PROJECT_NAME}Targets DESTINATION ${CMAKE_INSTALL_DATADIR}/ndk-modules)
-+#install(EXPORT_ANDROID_MK ${PROJECT_NAME}Targets DESTINATION ${CMAKE_INSTALL_DATADIR}/ndk-modules)
+-install(EXPORT_ANDROID_MK ${QUOTIENT_LIB_NAME}Targets DESTINATION ${CMAKE_INSTALL_DATADIR}/ndk-modules)
++#install(EXPORT_ANDROID_MK ${QUOTIENT_LIB_NAME}Targets DESTINATION ${CMAKE_INSTALL_DATADIR}/ndk-modules)
  
  if (WIN32)
      install(FILES mime/packages/freedesktop.org.xml DESTINATION mime/packages)
- endif (WIN32)
- 
- if (UNIX AND NOT APPLE)
--    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.pc
-+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${LIBRARY_NAME}.pc
-             DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
- endif()
- 
-diff '--color=auto' -rupN libQuotient-0.7.2.orig/Quotient.pc.in libQuotient-0.7.2/Quotient.pc.in
---- libQuotient-0.7.2.orig/Quotient.pc.in	2023-06-26 10:28:12.385892873 +0930
-+++ libQuotient-0.7.2/Quotient.pc.in	2023-06-26 11:04:31.648488210 +0930
+diff '--color=auto' -rupN libQuotient-0.8.0.orig/Quotient.pc.in libQuotient-0.8.0/Quotient.pc.in
+--- libQuotient-0.8.0.orig/Quotient.pc.in	2023-07-05 12:23:12.501208379 +0930
++++ libQuotient-0.8.0/Quotient.pc.in	2023-07-05 12:44:01.419228176 +0930
 @@ -3,8 +3,8 @@ exec_prefix=${prefix}
  includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
  libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
  
 -Name: Quotient
-+Name: @LIBRARY_NAME@
- Description: A Qt5 library to write cross-platfrom clients for Matrix
+-Description: A Qt5 library to write cross-platfrom clients for Matrix
++Name: @QUOTIENT_LIB_NAME@
++Description: A @Qt@ library to write cross-platfrom clients for Matrix
  Version: @API_VERSION@
  Cflags: -I${includedir}
 -Libs: -L${libdir} -lQuotient
-+Libs: -L${libdir} -l@LIBRARY_NAME@
++Libs: -L${libdir} -l@QUOTIENT_LIB_NAME@

@@ -2,8 +2,8 @@
 # Contributor: [object Object] <objekt-Objekt@proton.me>
 
 pkgname=libquotient-encryption
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="A Qt library to write cross-platform clients for Matrix (with experimental encryption support)"
 arch=("x86_64" "aarch64")
 url="https://github.com/quotient-im/libQuotient"
@@ -11,31 +11,31 @@ license=("LGPL2.1")
 depends=("gcc-libs" "glibc" "libolm" "openssl" "qt5-base" "qt5-multimedia" "qtkeychain-qt5")
 makedepends=("cmake")
 provides=("libQuotientE2EE.so=${pkgver%.*}-64")
-source=("https://github.com/quotient-im/libQuotient/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/quotient-im/libQuotient/archive/${pkgver}/source.tar.gz"
         "namespace.patch")
-sha256sums=("62ff42c8fe321e582ce8943417c1d815ab3f373a26fa0d99a5926e713f6a9382"
-            "cfb01b1855ac31fdfa614b3802b0cfc9890b92b7a4dade71f5f94f775773a94e")
+sha256sums=('40d84c2a1ed8c57605836dd175aabd069aed33c77b6bd841391631607b8c3a76'
+            'd1a40852adb19ba5ce132f1c1ff680c198e7e1cd9b2a36c2cc278907525f4d4e')
 
 prepare() {
-	# This patch makes the following changes to CMakeLists.txt:
-	# - Adds a new variable called `${LIBRARY_NAME}` which is currently set
-	#   to `QuotientE2EE`, which will replace `${PROJECT_NAME}` in all cases
-	#   where the name needs to be changed
-	# - Replaces the name of the library target with `${LIBRARY_NAME}` so that
-	#   the generated shared objects are called `libQuotientE2EE.so*`
-	# - All references to `${PROJECT_NAME}` which really refer to the library
-	#   target instead of the CMake project as a whole have been changed
-	# - Changed the output names of the `pkg-config` script and the output
-	#   CMake files (i.e. `QuotientE2EEConfig.cmake`,
-	#   `QuotientE2EETargets.cmake` and so on)
-	# - Changed the install directories for the config files and headers to use
-	#   `QuotientE2EE` instead of `Quotient`
-	# - Disable generating files for integration with the Android Native
-	#   Development Kit, as these files have generic names which will conflict
-	#   with the official Arch `libquotient` package
-	# Also, the template files for the `pkg-config` script (`Quotient.pc.in`)
-	# and CMake script (`QuotientConfig.cmake.in`) have been adjusted to use
-	# `${LIBRARY_NAME}` where necessary instead of hard-coding `Quotient`.
+	# This patch makes the following changes:
+	# - There is existing logic in `CMakeLists.txt` to change the name of the
+	#   library to `QuotientQt6` when the relevant build option is enabled, I
+	#   extend this to also add `E2EE` to the name if that option is enabled.
+	#   This will change the name of the generated library (i.e. it becomes
+	#   `libQuotientE2EE.so`) as well as the `pkg-config` description file (it
+	#   will be installed to `<prefix>/lib/pkgconfig/QuotientE2EE.pc`) and
+	#   CMake package description files (which will go to
+	#   `<prefix>/lib/cmake/QuotientE2EE/QuotientE2EE-*.cmake`). The
+	#   aforementioned CMake files also internally use the correct name.
+	# - In both `CMakeLists.txt` and the template `<target>Config.cmake` file,
+	#   I change the install location for the headers from
+	#   `<prefix>/include/Quotient` to `<prefix>/include/QuotientE2EE` so that
+	#   this package does not need to conflict with or depend on the official
+	#   `libquotient` Arch package.
+	# - Corrected the `pkg-config` description file so that it takes the
+	#   correct name, description and linker directives for the selected build
+	#   configuration. These changes are not Arch-specific and should be
+	#   upstreamed at some point.
 	patch -Np0 -d . -i namespace.patch
 }
 
@@ -75,6 +75,8 @@ package() {
 	#   which matched the first sub-expression verbatim.
 	# - `[[:blank:]]*` matches an arbitrary amount of white-space (space or
 	#   horizontal tab characters)
+	# - `[<"]` matches a single instance of either the quote or left angle
+	#   bracket characters
 	# - Places where a forward slash needs to be part of the expression or
 	#   replacement text are escaped with a backslash, i.e. `\/`
 	# - So the expression reads: match all instances of text which are of the
@@ -82,8 +84,8 @@ package() {
 	#   slash contained in a sub-expression, and with an arbitrary amount of
 	#   white-space allowed
 	# - And the replacement text will be whatever text matched the first
-	#   sub-expression (i.e. `# include <Quotient` but with the right amount
-	#   of white-space) followed by `E2EE/`.
+	#   sub-expression (i.e. `# include <Quotient` or `# include "Quotient` but
+	#   with the right amount of white-space) followed by `E2EE/`.
 	find "${pkgdir}/usr/include/QuotientE2EE" -name '*.h' -exec sed -i \
-		's/\(#[[:blank:]]*include[[:blank:]]*<Quotient\)\//\1E2EE\//g' '{}' \;
+		's/\(#[[:blank:]]*include[[:blank:]]*[<"]Quotient\)\//\1E2EE\//g' '{}' \;
 }
