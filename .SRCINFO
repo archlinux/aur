@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-dfttest2-git
 	pkgdesc = Plugin for Vapoursynth: dfttest2 (GIT Version)
-	pkgver = v5.5.gb8c8c81
+	pkgver = v5.6.g082fe6a
 	pkgrel = 1
 	url = https://github.com/AmusementClub/vs-dfttest2
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = vapoursynth-plugin-dfttest2-git
 	provides = vapoursynth-plugin-dfttest2
 	conflicts = vapoursynth-plugin-dfttest2
 	options = debug
-	source = dfttest2::git+https://github.com/shssoichiro/vs-dfttest2#branch=gcc13-support
+	source = dfttest2::git+https://github.com/AmusementClub/vs-dfttest2
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-dfttest2-git
