@@ -1,5 +1,5 @@
 pkgbase = lma
-	pkgdesc = terminal-based show ogranizer (mainly anime) for locally stored files
+	pkgdesc = terminal-based show organizer (mainly anime) for locally stored episodes
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/FakeMichau/lma

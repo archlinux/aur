@@ -3,7 +3,7 @@
 pkgname=lma
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="terminal-based show ogranizer (mainly anime) for locally stored files"
+pkgdesc="terminal-based show organizer (mainly anime) for locally stored episodes"
 arch=('x86_64')
 url="https://github.com/FakeMichau/lma"
 license=('GPL3')
