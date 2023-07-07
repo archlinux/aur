@@ -6,7 +6,7 @@ After=bitcoind.service
 Wants=bitcoind.service
 
 [Service]
-ExecStart=/usr/bin/electrs --daemon-dir=/var/lib/bitcoind --db-dir=/var/lib/electrs
+ExecStart=/usr/bin/electrs --log-filters INFO --daemon-dir=/var/lib/bitcoind --db-dir=/var/lib/electrs
 
 User=bitcoin
 Group=bitcoin
