@@ -1,13 +1,11 @@
 pkgbase = r-plyr
 	pkgdesc = Tools for Splitting, Applying and Combining Data
 	pkgver = 1.8.8
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=plyr
-	arch = i686
 	arch = x86_64
 	license = MIT
 	checkdepends = r-abind
-	checkdepends = r-doparallel
 	checkdepends = r-testthat
 	depends = r-rcpp
 	optdepends = r-abind
@@ -18,8 +16,7 @@ pkgbase = r-plyr
 	optdepends = r-itertools
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/plyr_1.8.8.tar.gz
-	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	md5sums = 0a22da16605ee765e7d4f1efc9f7a61f
 	sha256sums = a73211b4bbe13e4e5e764966a8dd90172c1cc311938dd464d142e1c7a701070c
-	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-plyr
