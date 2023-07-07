@@ -1,6 +1,6 @@
 pkgbase = r-rcppthread
 	pkgdesc = R-Friendly Threading in C++
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RcppThread
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-rcppthread
 	optdepends = r-r.rsp
 	optdepends = r-rcpp
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/RcppThread_2.1.4.tar.gz
-	sha256sums = fadf9c22907e76d7fa6d7b24eafec55ff04a05c694d79800ad21c3d45b6ac3c4
+	source = https://cran.r-project.org/src/contrib/RcppThread_2.1.5.tar.gz
+	sha256sums = 1579c12c778ac36bd2bb741336401ef2c2576e2ac59c4e8a5cc40bbc303e2a67
 
 pkgname = r-rcppthread
