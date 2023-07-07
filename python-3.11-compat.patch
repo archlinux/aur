@@ -1,0 +1,42 @@
+From 4cb5d333eabcb05153a586dc1a7db0df555f0453 Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Sat, 11 Jun 2022 08:35:03 -0400
+Subject: [PATCH] =?UTF-8?q?Replace=20@asyncio.coroutine=20with=20=E2=80=9C?=
+ =?UTF-8?q?async=20def=E2=80=9D?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ tests/scope_managers/test_asyncio.py     | 3 +--
+ tests/scope_managers/test_contextvars.py | 3 +--
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/tests/scope_managers/test_asyncio.py b/tests/scope_managers/test_asyncio.py
+index 14079c4..4817f80 100644
+--- a/tests/scope_managers/test_asyncio.py
++++ b/tests/scope_managers/test_asyncio.py
+@@ -35,8 +35,7 @@ def scope_manager(self):
+         return AsyncioScopeManager()
+ 
+     def run_test(self, test_fn):
+-        @asyncio.coroutine
+-        def async_test_fn():
++        async def async_test_fn():
+             test_fn()
+         asyncio.get_event_loop().run_until_complete(async_test_fn())
+ 
+diff --git a/tests/scope_managers/test_contextvars.py b/tests/scope_managers/test_contextvars.py
+index dd1820f..c8c6f61 100644
+--- a/tests/scope_managers/test_contextvars.py
++++ b/tests/scope_managers/test_contextvars.py
+@@ -36,8 +36,7 @@ def scope_manager(self):
+         return ContextVarsScopeManager()
+ 
+     def run_test(self, test_fn):
+-        @asyncio.coroutine
+-        def async_test_fn():
++        async def async_test_fn():
+             test_fn()
+         asyncio.get_event_loop().run_until_complete(async_test_fn())
+ 

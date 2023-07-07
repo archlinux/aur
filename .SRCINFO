@@ -1,0 +1,19 @@
+pkgbase = python-opentracing
+	pkgdesc = OpenTracing API for Python
+	pkgver = 2.4.0
+	pkgrel = 5
+	url = https://github.com/opentracing/opentracing-python
+	arch = any
+	license = Apache
+	checkdepends = python-gevent
+	checkdepends = python-mock
+	checkdepends = python-pytest
+	checkdepends = python-tornado
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/opentracing/opentracing-python/archive/2.4.0/python-opentracing-2.4.0.tar.gz
+	source = python-3.11-compat.patch
+	sha512sums = de5e5a211fd487039e5658fc6303f3521ee038e205d9d1560cb33f3a66fd0de8d666b2adc785fe2683b4993879e5124ba25467feb17fe68b1cbddc0581ca16b3
+	sha512sums = 920ae7fd81d33957dbc46105a62371022391645a40a23debe52764771f9562e287cae7f3485894bb562ce5bf6f91b6b9ae37a16ff8c1dec6099e235e4fba3dad
+
+pkgname = python-opentracing
