@@ -1,18 +1,13 @@
 pkgbase = python-cymruwhois
 	pkgdesc = Client for the whois.cymru.com service
 	pkgver = 1.6
-	pkgrel = 2
-	url = https://pythonhosted.org/cymruwhois/
+	pkgrel = 3
+	url = https://pythonhosted.org/cymruwhois
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python-cymruwhois::git+https://github.com/JustinAzoff/python-cymruwhois#tag=1.6
-	sha256sums = SKIP
+	depends = python
+	source = python-cymruwhois-1.6.tar.gz::https://github.com/JustinAzoff/python-cymruwhois/archive/refs/tags/1.6.tar.gz
+	sha256sums = 357bd4beaab4c857062984cfd6b85606e3ff6b39e6e5420f428961ab2a9f2434
 
 pkgname = python-cymruwhois
-	depends = python
-
-pkgname = python2-cymruwhois
-	depends = python2
-

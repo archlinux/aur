@@ -1,5 +1,4 @@
-/*.tar.gz
-/*.tar.xz
-/pkg/
-/src/
-/python-cymruwhois/
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
