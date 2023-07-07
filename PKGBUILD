@@ -2,8 +2,8 @@
 
 pkgname=yewtube-git
 _pkgname=yewtube
-pkgver=2.10.2.r3.g60a526c
-pkgrel=3
+pkgver=2.10.4.r0.g49e75e9
+pkgrel=1
 pkgdesc="Terminal based YouTube player and downloader. No Youtube API key required."
 url='https://github.com/mps-youtube/yewtube'
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
     python-pycryptodomex
     python-pylast
     python-pyperclip
+    python-requests
     python-rfc3986
     python-setuptools
     python-websockets
