@@ -1,6 +1,6 @@
 pkgbase = cider
 	pkgdesc = Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Build from tar file on GitHub releases.
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 8
 	url = https://github.com/ciderapp/cider.git
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = cider
 	optdepends = libnotify: Playback notifications
 	provides = cider
 	conflicts = cider
-	source_x86_64 = https://github.com/ciderapp/cider/archive/refs/tags/v1.6.1.tar.gz
-	sha256sums_x86_64 = 162fed4df8a47aca47e68bd42779204e1f323b322b63ce094989b59b94a2a547
+	source_x86_64 = https://github.com/ciderapp/cider/archive/refs/tags/v1.6.2.tar.gz
+	sha256sums_x86_64 = 9c99efa8a81d1ece626a5879822d7900910b36112beaf2c8703477c4050593c8
 
 pkgname = cider

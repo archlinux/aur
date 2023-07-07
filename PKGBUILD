@@ -1,7 +1,7 @@
 # Maintainer: Core_UK <dev@coredev.uk>
 
 pkgname=cider
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=8
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Build from tar file on GitHub releases."
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(nvm fontconfig)
 provides=(${pkgname})
 conflicts=(${pkgname})
 source_x86_64=("https://github.com/ciderapp/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums_x86_64=('162fed4df8a47aca47e68bd42779204e1f323b322b63ce094989b59b94a2a547')
+sha256sums_x86_64=('9c99efa8a81d1ece626a5879822d7900910b36112beaf2c8703477c4050593c8')
 
 _ensure_local_nvm() {
   # lets be sure we are starting clean
