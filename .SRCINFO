@@ -8,6 +8,7 @@ pkgbase = eovpn
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = openvpn3
+	makedepends = python-cffi
 	depends = gtk4
 	depends = python
 	depends = networkmanager
