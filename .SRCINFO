@@ -1,0 +1,20 @@
+pkgbase = z-library-bin
+	pkgdesc = Z-library application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://singlelogin.se
+	arch = x86_64
+	license = ISC
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	depends = libappindicator-gtk3
+	source = https://go-to-zlibrary.se/soft/zlibrary-setup-latest.deb
+	sha256sums = d2b7e66c18b58a51385090b7b116b8506ca60b79d7e61ee2f075623188db2c10
+
+pkgname = z-library-bin
