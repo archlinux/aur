@@ -7,7 +7,7 @@
 pkgname=discord-electron-openasar
 _pkgname=discord
 _electron=22
-pkgver=0.0.27+810
+pkgver=0.0.27+811
 _pkgver=${pkgver%%+*}
 pkgrel=1
 pkgdesc="Discord packaged with OpenAsar using system provided electron (v${_electron}) for increased security and performance"
@@ -22,12 +22,13 @@ depends=("electron${_electron}" 'libxss')
 makedepends=('git' 'asar' 'nodejs' 'curl' 'python-html2text')
 optdepends=(
 	'libpulse: Pulseaudio support'
+	'libappindicator-gtk3: Systray indicator support'
 	'xdg-utils: Open files'
 	'rizin: Allow patching Krisp support'
 )
 source=("https://dl.discordapp.net/apps/linux/${_pkgver}/discord-${_pkgver}.tar.gz"
 	'discord-launcher.sh'
-	"git+https://github.com/goosemod/openasar.git#commit=cd443572e5df630c446a5956ade19c4fc065aca9")
+	"git+https://github.com/goosemod/openasar.git#commit=5ac246dc92e9a2a9b314d899df728f37096c482b")
 sha512sums=('285a0119b4740402a3fa94d3679a52bc8d883413ee32187e90087960a4d34aaf316788d2708bbccafe3f995c2b99767b45bc4b7c731704ef887a8de1b3d3926f'
             '4bbe010c28926ca898ac33da15ce8373060af44e0583e6956671fa2ee8a2a379a88a6ff9b4f886806fc05117428834852ba2e81a9163381c678c240067b7abd0'
             'SKIP')
