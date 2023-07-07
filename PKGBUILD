@@ -1,13 +1,13 @@
 # Maintainer: Yann Büchau <nobodyinperson at posteo de>
 # Contributor: Thomas Jost <schnouki@schnouki.net>
 pkgname=git-annex-standalone-nightly
-pkgver=10.20230408+g37a9982d8
+pkgver=10.20230627+g240bae38f
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone nightly autobuild version, with no Haskell dependency."
 arch=(x86_64 aarch64)
 url="https://git-annex.branchable.com/"
 license=('GPL')
-depends=("bzip2" "file" "git" "gmp" "libffi" "lsof" "rsync" "sqlite" "xz" "zlib")
+depends=("bzip2" "file" "git" "gmp" "libffi" "lsof" "rsync" "sqlite" "xz" "zlib" "libyaml")
 makedepends=("sed")
 provides=("git-annex")
 conflicts=("git-annex")
@@ -16,7 +16,7 @@ case $CARCH in
      x86_64) _arch=amd64;;
     aarch64) 
         _arch=arm64
-        depends+=("libffi7")   # arm64 build of git-annex still requires libffi.so.7
+        # depends+=("libffi7")   # arm64 build might require different libffi
         ;;
     default) _arch=amd64;;
 esac
