@@ -1,7 +1,7 @@
 pkgbase = python-pytest-local
 	pkgdesc = Simple forking server for testing with reusable context
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/daskol/pytest-local
 	arch = any
 	license = MIT

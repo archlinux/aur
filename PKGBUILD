@@ -2,7 +2,7 @@
 pkgname=python-pytest-local
 _pkgname=${pkgname#python-}
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple forking server for testing with reusable context'
 arch=('any')
 url='https://github.com/daskol/pytest-local'
@@ -25,6 +25,6 @@ build() {
 package() {
     python -m installer \
         --compile-bytecode 1 \
-        --prefix $pkgdir \
+        --destdir $pkgdir \
         $_pkgname-$pkgver/dist/*.whl
 }
