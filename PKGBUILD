@@ -3,7 +3,7 @@
 pkgname=cyusb-git
 _pkgname=cyusb_linux
 pkgver=r20.14f18d1
-pkgrel=1
+pkgrel=2
 url="https://github.com/Ho-Ro/cyusb_linux"
 arch=('i686' 'x86_64')
 license=('unknown')
