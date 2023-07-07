@@ -5,7 +5,7 @@
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
 _pkgver=3.1.5
-pkgver=pandoc.server.0.1.0.1.r84.g08b7fc4
+pkgver=3.1.5.r9.g08b7fc4
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
@@ -23,7 +23,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --long --tags --abbrev=7 --always HEAD |
+	git describe --long --tags --abbrev=7 --always HEAD --match "[0-9].[0-9]*" |
 		sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 

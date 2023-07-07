@@ -1,6 +1,6 @@
 pkgbase = pandoc-sile-git
 	pkgdesc = Conversion between markup formats (sile fork, static build)
-	pkgver = pandoc.server.0.1.0.1.r84.g08b7fc4
+	pkgver = 3.1.5.r9.g08b7fc4
 	pkgrel = 1
 	url = https://pandoc.org
 	arch = x86_64
