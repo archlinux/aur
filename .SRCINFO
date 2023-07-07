@@ -1,7 +1,7 @@
 pkgbase = linux-xanmod-manjusaka
 	pkgdesc = Linux Xanmod - Current Stable (CURRENT)
-	pkgver = 6.4.1
-	pkgrel = 1
+	pkgver = 6.4.2
+	pkgrel = 3
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
@@ -15,14 +15,17 @@ pkgbase = linux-xanmod-manjusaka
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.3.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.3.tar.sign
-	source = patch-6.4.1-xanmod1.xz::https://github.com/xanmod/linux/releases/download/6.4.1-xanmod1/patch-6.4.1-xanmod1.xz
+	source = patch-6.4.2-xanmod1.xz::https://github.com/xanmod/linux/releases/download/6.4.2-xanmod1/patch-6.4.2-xanmod1.xz
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3
 	sha256sums = SKIP
-	sha256sums = a91550fc14f7f747b00c8dcf5a9ef74365d6d01ced230b5c84fddd354258dd3d
-	sha256sums = 5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30
+	sha256sums = f30ce7cf11e4819e90966c6e1fdd42d906168ffd38be1234ff0b2696d1740e9c
+	sha256sums = a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f
+	sha256sums = 0b989ab3c40e118a8b56a8bc44e3ebbb7ed206bbead626a0f5761c8d0fbcc613
+	sha256sums = 070765f7a42070a02e638b1c2520c7563b678a5900ce1d169c892ce3f16f8919
+
 
 pkgname = linux-xanmod-manjusaka
 	pkgdesc = The Linux kernel and modules with Xanmod patches with custom config
