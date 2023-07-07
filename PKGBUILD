@@ -7,7 +7,7 @@
 
 _pkgname=gamescope
 pkgname=gamescope-plus
-pkgver=3.11.52.beta6.24.gc78ac77
+pkgver=3.12.0.beta8.plus1
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager with added patches'
 arch=(x86_64)
@@ -42,14 +42,16 @@ makedepends=(
   vulkan-headers
   wayland-protocols
 )
-_tag=c78ac77a0ab7f5370a50f690ec32b2e1cb4a3f52
+_tag=fb7f5df9cb7e05e5485bf5f9738a661cb66447d1
 source=("git+https://github.com/ChimeraOS/gamescope.git#commit=${_tag}"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://gitlab.freedesktop.org/emersion/libliftoff.git"
         "git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git"
         "git+https://github.com/ValveSoftware/openvr.git"
         "git+https://github.com/Joshua-Ashton/vkroots.git"
-        "git+https://github.com/nothings/stb.git")
+        "git+https://github.com/nothings/stb.git"
+        0001-libdisplay-info-cta-be-more-lenient-about.patch
+        )
 
 b2sums=('SKIP'
         'SKIP'
@@ -57,18 +59,11 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'SKIP')
+        'SKIP'
+        '3f1c2b4b3c35f6879e4dfe457103c27cc30abf265240b234efdf77487adb852a72c755a3099c7aed9a3e83f07ebbaee78343894ec74f0723e390c219f34568a3')
 
 prepare() {
   cd "$srcdir/$_pkgname"
-
-  for src in "${source[@]}"; do
-      src="${src%%::*}"
-      src="${src##*/}"
-      [[ $src = *.patch ]] || continue
-      echo "Applying patch $src..."
-      git apply "../$src"
-  done
 
   git submodule init
   git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
@@ -82,6 +77,12 @@ prepare() {
   sed -i "s|https://github.com/nothings/stb.git|$srcdir/stb|" "subprojects/stb.wrap"
 
   meson subprojects download
+
+  cd subprojects/libdisplay-info
+  echo "Applying patch 0001-libdisplay-info-cta-be-more-lenient-about.patch
+..."
+  git apply ${srcdir}/0001-libdisplay-info-cta-be-more-lenient-about.patch
+
 }
 
 pkgver() {

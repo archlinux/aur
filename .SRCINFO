@@ -1,6 +1,6 @@
 pkgbase = gamescope-plus
 	pkgdesc = SteamOS session compositing window manager with added patches
-	pkgver = 3.11.52.beta6.24.gc78ac77
+	pkgver = 3.12.0.beta8.plus1
 	pkgrel = 1
 	url = https://github.com/ChimeraOS/gamescope
 	arch = x86_64
@@ -30,13 +30,14 @@ pkgbase = gamescope-plus
 	depends = xorg-xwayland
 	provides = gamescope
 	conflicts = gamescope
-	source = git+https://github.com/ChimeraOS/gamescope.git#commit=c78ac77a0ab7f5370a50f690ec32b2e1cb4a3f52
+	source = git+https://github.com/ChimeraOS/gamescope.git#commit=fb7f5df9cb7e05e5485bf5f9738a661cb66447d1
 	source = git+https://gitlab.freedesktop.org/wlroots/wlroots.git
 	source = git+https://gitlab.freedesktop.org/emersion/libliftoff.git
 	source = git+https://gitlab.freedesktop.org/emersion/libdisplay-info.git
 	source = git+https://github.com/ValveSoftware/openvr.git
 	source = git+https://github.com/Joshua-Ashton/vkroots.git
 	source = git+https://github.com/nothings/stb.git
+	source = 0001-libdisplay-info-cta-be-more-lenient-about.patch
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -44,5 +45,6 @@ pkgbase = gamescope-plus
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
+	b2sums = 3f1c2b4b3c35f6879e4dfe457103c27cc30abf265240b234efdf77487adb852a72c755a3099c7aed9a3e83f07ebbaee78343894ec74f0723e390c219f34568a3
 
 pkgname = gamescope-plus
