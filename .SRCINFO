@@ -1,11 +1,12 @@
 pkgbase = gnome-python
-	pkgdesc = PyGNOME Python extension module
+	pkgdesc = Legacy PyGNOME Python 2 extension module
 	pkgver = 2.28.1
 	pkgrel = 14
 	url = http://www.pygtk.org/
 	arch = i686
 	arch = x86_64
 	license = LGPL
+	depends = python2
 	depends = pygtk
 	depends = gconf
 	depends = libgnomecanvas

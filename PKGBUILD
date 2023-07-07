@@ -4,12 +4,12 @@
 pkgname='gnome-python'
 provides=('python2-gconf')
 conflicts=('python2-gconf')
-pkgdesc='PyGNOME Python extension module'
+pkgdesc='Legacy PyGNOME Python 2 extension module'
 pkgver=2.28.1
 pkgrel=14
 arch=('i686' 'x86_64')
 license=('LGPL')
-depends=('pygtk' 'gconf' 'libgnomecanvas' 'libgnome' 'libgnomeui' 'libbonobo' 'libbonoboui')
+depends=('python2' 'pygtk' 'gconf' 'libgnomecanvas' 'libgnome' 'libgnomeui' 'libbonobo' 'libbonoboui')
 makedepends=()
 url='http://www.pygtk.org/'
 source=("https://download.gnome.org/sources/$pkgname/2.28/$pkgname-${pkgver}.tar.bz2")
