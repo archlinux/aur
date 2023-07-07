@@ -1,7 +1,7 @@
 # Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=bat-asus-battery-bin
-pkgver=0.11
+pkgver=0.12
 pkgrel=1
 pkgdesc="Replicate the functionality of the ASUS Battery Health Charging on Windows which aims prolong the battery's life-span"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/tshakalekholoane/bat"
 license=('MIT')
 provides=('bat-asus-battery')
 source=("bat_$pkgver"::"https://github.com/tshakalekholoane/bat/releases/download/${pkgver}/bat")
-sha256sums=('67fd33adb575b2fd01e81b4a6a3d2f0bc43b769ea91c49ea7bc99195b0bdc606')
+sha256sums=('b52deaca4515fd35022d39ee029b54d42019ce2c8008b8f9ce79f408ec3bc5d7')
 
 package() {
     mv "${srcdir}/bat_$pkgver" "${srcdir}/bat-asus-battery"
