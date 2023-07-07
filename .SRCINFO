@@ -1,0 +1,35 @@
+pkgbase = python-pillow95
+	pkgdesc = Python Imaging Library (PIL) fork - 9.5 branch
+	pkgver = 9.5.0
+	pkgrel = 1
+	url = https://python-pillow.org
+	arch = x86_64
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = libwebp
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-packaging
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = tk
+	depends = freetype2
+	depends = lcms2
+	depends = libimagequant
+	depends = libraqm
+	depends = libtiff
+	depends = libxcb
+	depends = openjpeg2
+	depends = python
+	depends = python-packaging
+	optdepends = libwebp: for webp images
+	optdepends = python-olefile: OLE2 file support
+	optdepends = python-pyqt5: for the ImageQt module
+	optdepends = tk: for the ImageTK module
+	provides = python-pillow=9.5.0
+	conflicts = python-pillow
+	source = python-pillow-9.5.0.tar.xz::https://github.com/python-pillow/Pillow/archive/refs/tags/9.5.0.tar.gz
+	b2sums = 663c14b89ddd1e2d49872994033a04e500d0b6eccbb8d6ce094f58ae1aaf3f215e9984f2afeb43fb83e0c3c93af1150beeb7d5f0abb77c59087901b53fd24e37
+
+pkgname = python-pillow95
