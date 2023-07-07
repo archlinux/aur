@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=motifbreakR
-_pkgver=2.13.7
+_pkgver=2.14.2
 pkgname=r-${_pkgname,,}
-pkgver=2.13.7
+pkgver=2.14.2
 pkgrel=1
 pkgdesc='A Package For Predicting The Disruptiveness Of Single Nucleotide Polymorphisms On Transcription Factor Binding Sites'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-snplocs.hsapiens.dbsnp155.grch37
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a22bcd3cdff696ebe788c3700eeedbcc42d2ee514c756fc7b1e9019b0a189148')
+sha256sums=('82d665cb379cb83844d6c2e028e48ab7a75b46fea3fd47b9ce4f8ce56706db8d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
