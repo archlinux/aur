@@ -1,5 +1,1 @@
-*.tar
-*.gz
-*.xz
-src/
-pkg/
+*
