@@ -1,6 +1,6 @@
 pkgbase = neochat-encryption
 	pkgdesc = A client for matrix, the decentralized communication protocol (with encryption support)
-	pkgver = 23.04.2
+	pkgver = 23.04.3
 	pkgrel = 1
 	url = https://apps.kde.org/neochat/
 	arch = x86_64
@@ -35,7 +35,9 @@ pkgbase = neochat-encryption
 	depends = syntax-highlighting
 	provides = neochat
 	conflicts = neochat
-	source = https://download.kde.org/stable/release-service/23.04.2/src/neochat-23.04.2.tar.xz
-	sha256sums = f422ed5ea1b7df39817fd1ffd2da2b8fa2da65b7bdfc2a34e57912b012af0960
+	source = https://download.kde.org/stable/release-service/23.04.3/src/neochat-23.04.3.tar.xz
+	source = https://invent.kde.org/network/neochat/-/commit/d9d5e17b.patch
+	sha256sums = 2e7a006e24eea80049a0213897048291d1ddb52d484aae8d2d0f48bbb020af04
+	sha256sums = d66a3934d598bf6007dd8cf27d1ef64cae0fdfdd51b03418f1384c0116a40fb4
 
 pkgname = neochat-encryption
