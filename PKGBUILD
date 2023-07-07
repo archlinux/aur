@@ -7,7 +7,7 @@ pkgbase=gprbuild
 pkgdesc="Builder for multi-language systems."
 pkgname=(libgpr gprbuild gprtools gprname gprslave)
 pkgver=24.0w
-pkgrel=3
+pkgrel=4
 epoch=1
 
 arch=(i686 x86_64)
@@ -62,6 +62,9 @@ build()
 
     make GPRBUILD_OPTIONS="$GPRBUILD_OPTIONS" libgpr.build
     make GPRBUILD_OPTIONS="$GPRBUILD_OPTIONS" build
+    
+    cd doc
+    make html txt info texinfo
 }
 
 
