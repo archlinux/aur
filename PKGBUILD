@@ -1,7 +1,7 @@
 # Maintainer:  Markus Hansmair <archlinux at zendro dot de>
 
 pkgname=mkinitcpio-systemd-extras
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Collection of mkinitcpio install hooks for systemd based initramfs"
 arch=('any')
