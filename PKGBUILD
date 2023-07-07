@@ -1,8 +1,8 @@
 # Maintainer:  Joshua Holmer <jholmer.in@gmail.com>
 
 pkgname=libjxl-metrics-git
-pkgver=0.8.1.r265.g1c748e86
-pkgrel=2
+pkgver=0.8.2.r404.g4e4f49c5
+pkgrel=1
 pkgdesc="JPEG XL image format reference implementation with butteraugli, ssimulacra, and ssimulacra2 (git version)"
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -31,7 +31,7 @@ optdepends=(
     'libavif: for avif benchmarking'
 )
 source=(
-    'libjxl::git+https://github.com/libjxl/libjxl.git'
+    'libjxl::git+https://github.com/libjxl/libjxl.git#commit=4e4f49c'
     'brotli::git+https://github.com/google/brotli.git'
     'Little-CMS::git+https://github.com/mm2/Little-CMS.git'
     'googletest::git+https://github.com/google/googletest.git'
