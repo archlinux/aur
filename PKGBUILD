@@ -3,7 +3,7 @@
 # Contributor:	p2k		<uni-ulm.de: Patrick.Schneider>
 
 pkgname=ktlint
-pkgver=0.49.0
+pkgver=0.50.0
 pkgrel=1
 pkgdesc="An anti-bikeshedding Kotlin linter with built-in formatter"
 arch=('any')
