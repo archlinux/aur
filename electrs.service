@@ -1,0 +1,34 @@
+[Unit]
+Description=Electrum Server
+Documentation=https://github.com/romanz/electrs/blob/master/doc/usage.md
+
+After=bitcoind.service
+Wants=bitcoind.service
+
+[Service]
+ExecStart=/usr/bin/electrs --daemon-dir=/var/lib/bitcoind --db-dir=/var/lib/electrs
+
+User=bitcoin
+Group=bitcoin
+
+Type=simple
+KillMode=process
+TimeoutSec=60
+Restart=always
+RestartSec=60
+
+Environment="RUST_BACKTRACE=1"
+
+StateDirectory=electrs
+StateDirectoryMode=0700
+
+# Hardening measures
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+PrivateDevices=true
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target
