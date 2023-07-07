@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-zencjk
-pkgver=6.4.1.zen1
+pkgver=6.4.2.zen1
 pkgrel=1
 pkgdesc='Linux ZEN (with cjktty patch)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -34,7 +34,7 @@ validpgpkeys=(
   C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D  # Steven Barrett <steven@liquorix.net>
 )
 b2sums=('SKIP'
-        '1ace818597d84b601dee4c3c057f0eb081e01d3df638231143e562c5e3c88dbb562e4586b0eb399a74a6d699c1ef0b4180b44362c4ebb57a31cc0a49327bb03e'
+        '7b2ed07be4839e534724a89c2113f9299b54c0fbf873e54ba9e38b9e5d08d8b8d71d730de57f43033ded63232bd9c7b1ad388688a0cbb1039819cb4131321a9a'
         '137f469cf6931c2ea64393b808cf7d31497ef361170f624b105fc8920168354fa7ac27dcf5eaa929832ed7fd4a391c65561c7736619c740edb267f4fad50bc58'
         '57168ff1b8b203e435a54cc814824eab707d2f27f034df9a3fa313779aa8451cf4d86b61aef4b46ad343ead9ba9181016c2dd22ee90263ea79cc4506b3351fa5')
 
