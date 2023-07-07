@@ -2,7 +2,7 @@
 pkgname="affine-bin"
 _appname=AFFiNE
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="There can be more than Notion and Miro. AFFiNE is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use."
 arch=('x86_64')
 url="https://affine.pro/"
@@ -16,7 +16,7 @@ source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgve
     "LICENSE::https://raw.githubusercontent.com/toeverything/AFFiNE/master/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('31353ca25f520ce6a61b7830f85ca686206d49f4f037b91e716d3c12a26caf04'
-            '2c267f40508e2c90d335cf9b50dadeba374b470d5f4bdb6bcf4e4e29fcc346c5'
+            '81b2d1b5306fb6a9a9624cf94d455af1717272f564cbc91000f0a4783144c5f6'
             '103c19ec2896ea0bdf3254fb307af85ae8e6d20326741c0701fd0b58804445b7')
 package() {
     asar pack "${srcdir}/${_appname}-linux-x64/resources/app" "${srcdir}/${pkgname%-bin}.asar"
