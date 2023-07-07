@@ -1,6 +1,6 @@
 # Maintainer: Sieve Lau <sievelau@gmail.com>
 pkgname=bililiverecorder-bin
-pkgver=2.6.3
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="BiliBili Stream Recorder. Pre-compiled."
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('bililiverecorder')
 source=("https://github.com/BililiveRecorder/BililiveRecorder/releases/download/v${pkgver}/BililiveRecorder-CLI-linux-x64.zip")
 noextract=('BililiveRecorder-CLI-linux-x64.zip')
 
-sha256sums=('70aca2baa2f737a0242b9fb395bdf9c52bc4e1ae414c5c567883468e93a1879f')
+sha256sums=('eab4f080673552f4cd203072c9e432b6e180d3333bbafd457d6b23577c59bfd6')
 
 prepare(){
   unzip -o BililiveRecorder-CLI-linux-x64.zip -d ${pkgname/-bin/}
