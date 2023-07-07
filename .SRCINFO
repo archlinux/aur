@@ -1,13 +1,13 @@
 pkgbase = systemd-oomd-defaults
 	pkgdesc = Configuration files for systemd-oomd
-	pkgver = 251.5
+	pkgver = 253.5
 	pkgrel = 1
 	url = https://src.fedoraproject.org/rpms/systemd
 	arch = any
 	license = LGPL2.1
 	makedepends = git
 	depends = systemd
-	source = git+https://src.fedoraproject.org/rpms/systemd.git#commit=1ffb1df909e233f16c5c65db5823ceb86f4880ab
+	source = git+https://src.fedoraproject.org/rpms/systemd.git#commit=21df2af848358e77c55269ffbb923fce750c416f
 	md5sums = SKIP
 
 pkgname = systemd-oomd-defaults
