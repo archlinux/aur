@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gmail-desktop-bin
-_subver=alpha.36
+_subver=alpha.37
 pkgver="3.0.0${_subver}"
 pkgrel=1
 pkgdesc="Nifty Gmail desktop app (nnofficial)"
@@ -12,8 +12,8 @@ conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver%${_subver}}-${_subver}/${pkgname%-bin}-${pkgver%${_subver}}-${_subver}-linux.deb"
     "LICENSE::https://raw.githubusercontent.com/timche/gmail-desktop/main/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('b41c253447530c9ecc26a55d630b46b2a64d60fec44b1720fa19f65af0eeee71'
-            '056c7c1e5bf66eba0167d966d192c743f6b66ed854011c9b6dac04f959f8f5b5'
+sha256sums=('aa125803e43bd295154e3d0fa9def4fe3a89d1f312b15e2989aa3a25b1a49861'
+            'd79b508a38d7e570a3e76fe165d1c29b5a78c4b9060d6eed2c426b37313fa360'
             '0999a84214ff0c173cfa623d73846c27e9600f70f907fb1b43c16bf1a903c57f')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
