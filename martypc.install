@@ -1,0 +1,4 @@
+post_install() {
+	echo The example configuration is available in /usr/share/martypc.
+	echo Please read https://github.com/dbalsom/martypc/wiki/MartyPC-User-Guide to start.
+}
