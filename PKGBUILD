@@ -1,7 +1,7 @@
 # Maintainer: Kyle De'Vir (QuartzDragon) <kyle.devir.mykolab.com>
 
 pkgname=bcachefs-tools-git
-pkgver=1072
+pkgver=1074
 pkgrel=1
 pkgdesc="BCacheFS filesystem utilities"
 url="https://github.com/koverstreet/bcachefs-tools"
@@ -20,7 +20,7 @@ _reponame="bcachefs-tools"
 _repo_url="https://github.com/koverstreet/$_reponame"
 
 source=(
-    "git+$_repo_url#commit=84cb7bffe5e80ef9036213bbfbaf358d478536be"
+    "git+$_repo_url"
     "add-mkinitcpio-hook-for-Arch.patch"
 )
 sha512sums=('SKIP'
