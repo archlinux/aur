@@ -1,6 +1,6 @@
 pkgbase = netboard
 	pkgdesc = A multiplatform network clipboard sharing service
-	pkgver = 1.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/primalmotion/netboard
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = netboard
 	makedepends = go
 	depends = wl-clipboard
 	provides = netboard
-	source = https://github.com/primalmotion/netboard/archive/v1.0.0.tar.gz
+	source = https://github.com/primalmotion/netboard/archive/v2.1.0.tar.gz
 	source = netboard.service
 	sha256sums = 30c413d7327917a6c71b5bcbfc18c3b5c0dd8886fb2e785838ca62ec26cdc6f5
 	sha256sums = fe470319810d17f929d983d1f8de2a474bcb9897e1cd1e68a33039c0d50d03e3
