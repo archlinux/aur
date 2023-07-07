@@ -1,8 +1,8 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 _pkgname='openasar'
 pkgname="${_pkgname}-git"
-pkgver=r810.cd44357
-pkgrel=2
+pkgver=r811.5ac246d
+pkgrel=1
 pkgdesc="Open-source alternative of Discord desktop's app.asar"
 arch=('i686' 'x86_64')
 url="https://github.com/GooseMod/OpenAsar"
