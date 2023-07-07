@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ROI.plugin.lpsolve
-_pkgver=1.0-1
+_pkgver=1.0-2
 pkgname=r-${_pkgname,,}
-pkgver=1.0.1
-pkgrel=4
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="'lp_solve' Plugin for the 'R' Optimization Infrastructure"
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -18,7 +18,7 @@ optdepends=(
   r-slam
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4fcb0927c05601b4ee9d44031577fee3cc04af4523942492f924ad7cf064a9c0')
+sha256sums=('b225677ed988bf349ae59f6c682f553c8c7b128f23b2bcb71f6ae982bf0bef75')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
