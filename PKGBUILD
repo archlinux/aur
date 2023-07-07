@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DeepPINCS
-_pkgver=1.8.0
+_pkgver=1.8.3
 pkgname=r-${_pkgname,,}
-pkgver=1.8.0
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='Protein Interactions and Networks with Compounds based on Sequences using Deep Learning'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('551cbe42dbbc8fd4167417a6c558c410137df49bcaff3def1e827f36ca8ee671')
+sha256sums=('af89beeac2ffab3182e71f551ee56c6df756675d82452105df489f4c5fb57b16')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
