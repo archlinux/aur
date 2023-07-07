@@ -3,7 +3,7 @@
 pkgname=("php-legacy-pdlib")
 _pkgbase=("pdlib")
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="PDlib - A PHP extension for Dlib"
 arch=('x86_64')
 url="https://github.com/goodspb/pdlib"
@@ -11,12 +11,8 @@ license=('MIT License')
 depends=('dlib'
          'php-legacy'
          'libx11'
-         'openblas'
-         'openblas64'
-	 'cblas'
-	 'cblas64'
-         'lapack'
-         'lapack64'
+         'blas-openblas'
+         'blas64-openblas'
 	 'libsm'
 	 'libice'
          'libxext'
