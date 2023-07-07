@@ -1,0 +1,17 @@
+pkgbase = python-pytest-local
+	pkgdesc = Simple forking server for testing with reusable context
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/daskol/pytest-local
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-pytest
+	source = pytest-local-0.0.2.tar.gz::https://github.com/daskol/pytest-local/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = c63259eb57349566b735a37ad70730fa7e43577cd89d7e4e66a08c69fb204159
+
+pkgname = python-pytest-local
