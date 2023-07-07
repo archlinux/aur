@@ -11,4 +11,3 @@ pkgbase = python-genpac
 
 pkgname = python-genpac
 	depends = python
-
