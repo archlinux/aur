@@ -4,7 +4,7 @@
 
 pkgname=netdata-git
 _gitname=netdata
-pkgver=v1.40.0.r10.ge12b0d8ab
+pkgver=v1.40.0.r101.g9a5a59885
 pkgrel=1
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web"
 url="https://github.com/netdata/netdata/wiki"
@@ -31,8 +31,10 @@ source=("$_gitname::git+https://github.com/netdata/netdata"
         "submodule-c-rbuf::git+https://github.com/underhood/c-rbuf.git"
         "submodule-c_rhash::git+https://github.com/underhood/c_rhash.git"
         "submodule-aclk-schemas::git+https://github.com/netdata/aclk-schemas.git"
+        "submodule-h2o::git+https://github.com/h2o/h2o.git"
         "${_gitname}.sysusers")
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -46,11 +48,14 @@ prepare() {
   cd "$_gitname"
   git submodule set-url mqtt_websockets "$srcdir"/submodule-mqtt_websockets
   git submodule set-url aclk/aclk-schemas "$srcdir"/submodule-aclk-schemas
-  git -c protocol.file.allow=always submodule update --init --no-fetch mqtt_websockets aclk/aclk-schemas
+  git submodule set-url web/server/h2o/libh2o "$srcdir"/submodule-h2o
+  git -c protocol.file.allow=always submodule update --init --no-fetch mqtt_websockets aclk/aclk-schemas web/server/h2o/libh2o
 
   git -C mqtt_websockets submodule set-url c-rbuf "$srcdir"/submodule-c-rbuf
   git -C mqtt_websockets submodule set-url c_rhash "$srcdir"/submodule-c_rhash
   git -c protocol.file.allow=always -C mqtt_websockets submodule update --init --no-fetch c-rbuf c_rhash
+
+  sed -e 's|\# AX_CXX_COMPILE_STDCXX(17, noext, optional)|AX_CXX_COMPILE_STDCXX(17, noext, optional)|' -i configure.ac
 }
 
 pkgver() {
@@ -69,7 +74,7 @@ build() {
     --sysconfdir="/etc" \
     --libexecdir="/usr/lib" \
     --localstatedir="/var" \
-    --with-zlib --with-math --with-user=netdata --disable-httpd
+    --with-zlib --with-math --with-user=netdata
   make
 }
 

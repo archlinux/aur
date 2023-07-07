@@ -1,6 +1,6 @@
 pkgbase = netdata-git
 	pkgdesc = Real-time performance monitoring, in the greatest possible detail, over the web
-	pkgver = v1.40.0.r10.ge12b0d8ab
+	pkgver = v1.40.0.r101.g9a5a59885
 	pkgrel = 1
 	url = https://github.com/netdata/netdata/wiki
 	install = netdata.install
@@ -43,7 +43,9 @@ pkgbase = netdata-git
 	source = submodule-c-rbuf::git+https://github.com/underhood/c-rbuf.git
 	source = submodule-c_rhash::git+https://github.com/underhood/c_rhash.git
 	source = submodule-aclk-schemas::git+https://github.com/netdata/aclk-schemas.git
+	source = submodule-h2o::git+https://github.com/h2o/h2o.git
 	source = netdata.sysusers
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
