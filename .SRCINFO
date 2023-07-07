@@ -1,6 +1,6 @@
 pkgbase = linux-slim
 	pkgver = 6.4.v.2
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -18,11 +18,13 @@ pkgbase = linux-slim
 	source = linux-slim.preset
 	source = linux.install
 	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20230105/more-uarches-for-kernel-5.17+.patch
+	source = disable-CONFIG_PER_VMA_LOCK.patch
 	sha256sums = SKIP
-	sha256sums = 845fbb20034714172f3d94b4d278aabe670d7976a9c964ab1e2a9f2abdc9300f
+	sha256sums = 2fa9b3663525488c45c8b308fa39bef0e3b02c27068f12df8b036cf791db6ce1
 	sha256sums = e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe
+	sha256sums = c0faece79d42dc4453141333c3cd70094fa9f9c5a403aa275458426ecd3af342
 
 pkgname = linux-slim
 	pkgdesc = Linux kernel slimmed down to only work on AMD hardware. Zero compatibility.
