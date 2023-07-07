@@ -1,17 +1,17 @@
 # Maintainer: Michael Hansen <zrax0111 gmail com>
 
 pkgname=libwebm
-pkgver=1.0.0.28
+pkgver=1.0.0.30
 pkgrel=1
 pkgdesc="WebM video file parser"
 url="https://www.webmproject.org/"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('BSD')
 makedepends=('cmake')
 source=("https://github.com/webmproject/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz"
         cmake_install.patch)
-sha256sums=('4df11d93260d3cd9f17c3697b0828d38400a8f87082183368df6a1ae7a9fc635'
-            '708e0868cc32ff92ac418879f1ac409562047373b5a6ccfc4f8344279a763f0e')
+sha256sums=('6c1381fd1a66e86e095b76028ede696724e198ea0e39957c9649af5f0718b96a'
+            '3cb2b2a2e8bba4fcdf496e1981c927742dd86dcc25c3112a9faa45e711736e5f')
 
 prepare() {
   mkdir -p build
