@@ -1,0 +1,27 @@
+pkgbase = lua-luarocks-build-rust-mlua
+	pkgdesc = A LuaRocks build backend for Lua modules written in Rust using mlua
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/khvzak/luarocks-build-rust-mlua
+	arch = any
+	license = MIT
+	makedepends = lua
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = luarocks
+	depends = cargo
+	source = https://github.com/khvzak/luarocks-build-rust-mlua/archive/0.1.2/luarocks-build-rust-mlua-0.1.2.tar.gz
+	sha256sums = 589907b1ad6823922d87742ac235f83d67cd63662ab045fd004a6328feba795f
+
+pkgname = lua-luarocks-build-rust-mlua
+	depends = lua
+
+pkgname = lua53-luarocks-build-rust-mlua
+	depends = lua53
+
+pkgname = lua52-luarocks-build-rust-mlua
+	depends = lua52
+
+pkgname = lua51-luarocks-build-rust-mlua
+	depends = lua51
