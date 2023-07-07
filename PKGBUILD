@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=25515
+pkgver=25541
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -37,8 +37,12 @@ build() {
 	-DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=FALSE \
 	-DQT_PREFIX:PATH="/usr" \
 	-DWANT_SVNVERSION:BOOL=YES \
-	-DWANT_CPP17:BOOL=YES 
-	
+	-DWANT_CPP17:BOOL=YES \
+	-DWANT_CPP17=ON \
+	-DWANT_HUNSPELL=ON \
+	-DWITH_PODOFO=ON \
+	-DLIBPODOFO_INCLUDE_DIR=/usr/include/podofo-0.9 \
+	-DLIBPODOFO_LIBRARY=/usr/lib/podofo-0.9/libpodofo.so \
   make
 }
 
