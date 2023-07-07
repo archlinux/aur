@@ -1,6 +1,6 @@
 pkgbase = irrlicht-svn
 	pkgdesc = An open source high performance realtime 3D graphics engine. (SVN version)
-	pkgver = 1.9
+	pkgver = r6498
 	pkgrel = 1
 	url = http://irrlicht.sourceforge.net/
 	arch = i686

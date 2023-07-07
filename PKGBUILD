@@ -3,7 +3,7 @@
 
 _pkgname=irrlicht
 pkgname=irrlicht-svn
-pkgver=1.9
+pkgver=r6498
 pkgrel=1
 pkgdesc="An open source high performance realtime 3D graphics engine. (SVN version)"
 arch=('i686' 'x86_64' 'armv7h')
