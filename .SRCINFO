@@ -1,7 +1,7 @@
 pkgbase = waon
 	pkgdesc = Wave-to-Notes transcriber (WAVE-MIDI converter)
 	pkgver = 0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://waon.sourceforge.net/
 	arch = i686
 	arch = x86_64

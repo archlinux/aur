@@ -2,9 +2,10 @@
 # Contributor: Immae <ismael.bouya@normalesup.org>
 # Contributor: Ray Rashif <schiv@archlinux.org>
 
+_name=WaoN
 pkgname=waon
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Wave-to-Notes transcriber (WAVE-MIDI converter)"
 arch=('i686' 'x86_64')
 url="http://waon.sourceforge.net/"
@@ -15,17 +16,17 @@ sha512sums=('20778981b1af9214152e0714f519bbddd8eb49231e6e27790d8aa6c05227142aac5
 
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$_name-$pkgver"
   sed -i 's:usr/local:usr:g' Makefile
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$_name-$pkgver"
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_name-$pkgver"
 
   install -Dm755 pv $pkgdir/usr/bin/waon-pv
   install -m755 waon gwaon $pkgdir/usr/bin/
