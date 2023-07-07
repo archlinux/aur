@@ -4,8 +4,8 @@
 
 pkgname=python-desktop-notifier
 _pkg="${pkgname#python-}"
-pkgver=3.5.3
-pkgrel=3
+pkgver=3.5.4
+pkgrel=1
 pkgdesc='Python library for cross-platform desktop notifications'
 arch=('any')
 url="https://github.com/SamSchott/desktop-notifier"
@@ -21,11 +21,11 @@ makedepends=(
 	'python-installer'
 	'python-sphinx'
 	'python-sphinx-autoapi'
-	'python-sphinx_rtd_theme'
+	'python-sphinx-furo'
 	'python-sphinx_mdinclude'
 	'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1aef415c4f01d859cb311f044b4489b860bfb2b2203aa9b1a2ecf797ad6f6c3c')
+sha256sums=('fa610b48663697b50244b2422cacea398b0f6789002f66202e2ed437b22e138b')
 
 prepare() {
 	cd "$_pkg-$pkgver"
