@@ -3,7 +3,7 @@
 
 _plug=dfttest2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v5.5.gb8c8c81
+pkgver=v5.6.g082fe6a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('vapoursynth' 'cuda')
 makedepends=('git' 'cmake' 'ninja' 'gcc')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/shssoichiro/vs-dfttest2#branch=gcc13-support")
+source=("${_plug}::git+https://github.com/AmusementClub/vs-dfttest2")
 sha256sums=('SKIP')
 options=('debug')
 
