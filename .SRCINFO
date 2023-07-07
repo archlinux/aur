@@ -1,9 +1,8 @@
 pkgbase = r-lobstr
 	pkgdesc = Visualize R Data Structures with Trees
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 9
 	url = https://cran.r-project.org/package=lobstr
-	arch = i686
 	arch = x86_64
 	license = MIT
 	checkdepends = r-testthat
@@ -16,8 +15,7 @@ pkgbase = r-lobstr
 	optdepends = r-pkgdown
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/lobstr_1.1.2.tar.gz
-	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	md5sums = 742ca7fe19f22d6d8246e6d5696b70f5
 	sha256sums = 9bc533ed7e8f816097a03acfbca33308c9940ba26d02674f4ba06311cf3a1718
-	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-lobstr
