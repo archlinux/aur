@@ -14,7 +14,7 @@ arch=('x86_64' 'i686' 'pentium4' 'aarch64')
 license=('GPL')
 url='https://gitlab.com/cryptsetup/cryptsetup/'
 depends=('device-mapper'
-	 'libdevicemapper.so'
+	 'libdevmapper.so'
          'openssl'
          'popt'
          'util-linux-libs'
