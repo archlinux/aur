@@ -12,6 +12,7 @@ url="https://github.com/SamSchott/desktop-notifier"
 license=('MIT')
 depends=(
 	'python-dbus-next'
+	'python-importlib_resources'
 	'python-packaging'
 	'python-certifi'
 	'python-charset-normalizer'

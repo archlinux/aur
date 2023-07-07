@@ -13,6 +13,7 @@ pkgbase = python-desktop-notifier
 	makedepends = python-sphinx_mdinclude
 	makedepends = python-wheel
 	depends = python-dbus-next
+	depends = python-importlib_resources
 	depends = python-packaging
 	depends = python-certifi
 	depends = python-charset-normalizer
