@@ -1,7 +1,7 @@
 pkgbase = unreal-engine
 	pkgdesc = A 3D game engine by Epic Games which can be used non-commercially for free.
 	pkgver = 5.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.unrealengine.com/
 	arch = x86_64
 	arch = x86_64_v2
