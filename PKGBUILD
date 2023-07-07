@@ -3,8 +3,8 @@
 
 _pkgname=hyprpicker
 pkgname="$_pkgname-git"
-pkgver=0.1.1.r1.1d05cc3
-pkgrel=2
+pkgver=0.1.1.r2.0889bd5
+pkgrel=1
 pkgdesc="A wlroots-compatible Wayland color picker that does not suck"
 arch=(x86_64)
 url="https://github.com/hyprwm/$_pkgname"
@@ -20,6 +20,7 @@ makedepends=(
 	ninja
 	pango
 	wayland-protocols
+	wlroots
 	xorgproto
 )
 optdepends=('wl-clipboard: --autocopy')
