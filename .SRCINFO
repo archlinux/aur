@@ -5,6 +5,7 @@ pkgbase = string-theory
 	url = https://github.com/zrax/string_theory
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = cmake
 	source = https://github.com/zrax/string_theory/releases/download/3.7/string_theory-3.7.tar.gz
