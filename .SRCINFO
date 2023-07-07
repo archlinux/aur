@@ -1,7 +1,7 @@
 pkgbase = libblake3
 	pkgdesc = the C implementations of the BLAKE3 cryptographic hash function
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blake3.io/
 	arch = x86_64
 	license = Apache

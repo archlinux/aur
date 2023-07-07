@@ -1,7 +1,7 @@
 # Maintainer: rpkak <rpkak@users.noreply.github.com>
 pkgname='libblake3'
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="the C implementations of the BLAKE3 cryptographic hash function"
 arch=('x86_64')
@@ -30,6 +30,6 @@ build() {
 }
 
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="$pkgdir" cmake --install "BLAKE3-$pkgver/c/build"
     install -Dm644 "BLAKE3-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
