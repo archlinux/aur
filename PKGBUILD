@@ -4,7 +4,7 @@
 _pkgname=listmonk
 pkgname=$_pkgname-bin
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted newsletter and mailing list manager with a modern dashboard'
 arch=(x86_64)
 url=https://github.com/knadh/listmonk
@@ -13,7 +13,6 @@ depends=(postgresql)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 backup=(etc/listmonk/config.toml)
-options=('!strip')
 install=$_pkgname.install
 source=("https://github.com/knadh/$_pkgname/releases/download/v$pkgver/${_pkgname}_${pkgver}_linux_amd64.tar.gz"
         "$_pkgname-$pkgver.toml::https://raw.githubusercontent.com/knadh/$_pkgname/v$pkgver/config.toml.sample"
