@@ -1,0 +1,12 @@
+pkgbase = i3-auto-tiling
+	pkgdesc = Automatic, optimal tiling for i3wm
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://gitlab.com/ximnoise/i3-auto-tiling
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = i3-auto-tiling-v0.3.3.tar.gz::https://gitlab.com/ximnoise/i3-auto-tiling/-/archive/v0.3.3/i3-auto-tiling-v0.3.3.tar.gz
+	sha512sums = SKIP
+
+pkgname = i3-auto-tiling
