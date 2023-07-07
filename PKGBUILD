@@ -1,9 +1,10 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 # Contributor: Jonathon Fernyhough <jonathon+m2x@dev>
 # Contributor: Leo <olorin12+gmail+com>
+# Contributor: Luna Jernberg <droidbittin@gmail.com>
 
 pkgname=hypnotix
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc="An IPTV streaming application with support for live TV, movies and series."
 arch=('any')
@@ -14,7 +15,7 @@ depends=('dconf' 'hicolor-icon-theme' 'mpv' 'python-cairo' 'python-gobject'
          'xapp')
 optdepends=('yt-dlp: YouTube channel support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c5f215bc4d6478a9e1fe54c60126f761a714a3ea3337c99eef225408eca0030a')
+sha256sums=('50fb8569eaf802c6de71dd42f94f301efaeca5e9b853da0f5def908f5b014b70')
 
 prepare() {
   cd "$pkgname-$pkgver"
