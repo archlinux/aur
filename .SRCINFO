@@ -1,0 +1,22 @@
+pkgbase = gnome-rtfm
+	pkgdesc = Offline documentation browser, dash docset reader
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/hugopl/rtfm
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = crystal>=1.8.2
+	makedepends = shards>=0.14.0
+	makedepends = unzip
+	depends = gc
+	depends = libevent
+	depends = pcre
+	depends = libadwaita>=1:1.3.3
+	depends = sqlite
+	depends = webkit2gtk-5.0
+	conflicts = tijolo-git
+	source = rtfm-main.zip::https://github.com/hugopl/rtfm/archive/refs/heads/main.zip
+	sha256sums = b952852454af9afc59b2acccc72c07e9a81072781f7d853ef9720d582c1e25e9
+
+pkgname = gnome-rtfm
