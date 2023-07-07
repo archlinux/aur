@@ -1,6 +1,6 @@
 pkgbase = koishi-desktop-appimage
 	pkgdesc = Launch Koishi from your desktop
-	pkgver = 0.10.5
+	pkgver = 0.10.6
 	pkgrel = 1
 	url = https://koishi.chat/manual/starter/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = koishi-desktop-appimage
 	depends = glibc
 	conflicts = koishi-desktop
 	options = !strip
-	source = koishi-desktop-0.10.5.AppImage::https://github.com/koishijs/koishi-desktop/releases/download/v0.10.5/koishi-desktop-linux-x64-v0.10.5.AppImage
-	sha256sums = d2b849fd34002aa5deb17ca40f801ecb9e4073aeb7ce958ee94514784ef16df1
+	source = koishi-desktop-0.10.6.AppImage::https://github.com/koishijs/koishi-desktop/releases/download/v0.10.6/koishi-desktop-linux-x64-v0.10.6.AppImage
+	sha256sums = 704975d5c36c93db52a9fdea49fbdfbbbb9dcb95193c8ee4ea3e0f1580e8d953
 
 pkgname = koishi-desktop-appimage
