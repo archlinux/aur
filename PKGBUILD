@@ -6,29 +6,32 @@
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=3.99_master.r78162.24a71d05862
+pkgver=3.99_master.r82542.5064b265645
 _pkgver=3.99_master  # fake pkgver prefix for the name
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=(
   'proj' 'geos' 'sqlite' 'qwtpolar' 'expat' 'spatialindex' 'gsl' 'libzip' 'exiv2' 'ocl-icd' 'protobuf' 'pdal-git'
   'qt5-tools' 'qt5-script' 'qtkeychain' 'sip' 'qca-qt5' 'qt5-webkit' 'qt5-3d' 'qt5-serialport' 'qt5-xmlpatterns'
   'python-gdal' 'python-owslib' 'python-future' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments'
   'python-pyqt5' 'python-qscintilla-qt5'
 )
-makedepends=('git' 'cmake' 'txt2tags' 'ninja' 'pyqt-builder')
+makedepends=(git cmake ninja pyqt-builder opencl-clhpp fcgi qt5-tools sip)
 optdepends=('grass: for GRASS providers and plugin (6 or 7)'
 #            'gsl: for georeferencer'
             'postgresql: for postgis and SPIT support'
             'gpsbabel: for gps plugin'
-            'fcgi: for qgis mapserver'
             'ocilib: oracle provider')
 
-source=("${_pkgname}::git+https://github.com/qgis/QGIS.git")
-md5sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/qgis/QGIS.git"
+        exiv2-0.28.patch
+        protobuf-23.patch)
+sha256sums=('SKIP'
+            '746ce9fe26f52e1e93b36b0f7738cce618aaaa44393914e9c5661dcfdd374511'
+            'ac6c96e88346c1cec739b1e628afb02aef1895c0d09213269bad75b1a8cee617')
 provides=('qgis')
 
 pkgver(){
@@ -37,6 +40,9 @@ pkgver(){
 }
 
 prepare() {
+  patch -d $_pkgname -p1 < exiv2-0.28.patch # Fix build with exiv2 0.28
+  patch -d $_pkgname -p1 < protobuf-23.patch # Fix build with protobuf 23
+
   cd $_pkgname
 
   # Fix desktop file for /usr/bin/qgis-github
@@ -63,10 +69,24 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/opt/$pkgname \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DQGIS_MANUAL_SUBDIR=share/man \
-    -DENABLE_TESTS=FALSE \
     -DWITH_3D=TRUE \
-    -DWITH_PDAL=TRUE
-    #-DWITH_SERVER=TRUE
+    -DWITH_QUICK=TRUE \
+    -DWITH_SERVER=TRUE \
+    -DBINDINGS_GLOBAL_INSTALL=FALSE \
+    -DWITH_QTWEBKIT=FALSE \
+    -DWITH_QWTPOLAR=TRUE \
+    -DQWTPOLAR_LIBRARY=/usr/lib/libqwt.so \
+    -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
+    -DWITH_INTERNAL_QWTPOLAR=FALSE \
+    -DWITH_PDAL=TRUE \
+    -DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE \
+    -DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE \
+    -DHAS_KDE_QT5_FONT_STRETCH_FIX=TRUE
+    # https://github.com/qgis/QGIS/issues/48374
+    #-DWITH_INTERNAL_LAZPERF=FALSE \
+    # https://github.com/qgis/QGIS/issues/35440
+    #-DWITH_PY_COMPILE=TRUE \
 
   ninja
 }
