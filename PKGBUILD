@@ -4,9 +4,10 @@ pkgname=cura-5-beta-bin
 _pkgname=cura-5-beta-bin
 _shortname=cura5
 pkgver=5.4.0
-beta=-beta.1
+beta=
+#-beta.1
 subbeta=
-pkgrel=1
+pkgrel=0
 pkgdesc='Cura is an open source slicing application for 3D printers (include betaversion)'
 arch=('x86_64')
 url="https://ultimaker.com/software/ultimaker-cura"
@@ -25,7 +26,7 @@ source=(
     "cura.desktop.patch"
 )
 
-sha256sums=('fe02756c5c79fa58e63f7a50aab0074534ca9f87ea79f897c2381198bb69315c'
+sha256sums=('40fd262da99eab779d43d01034eac798c25f349cbbb82bfd21891479e5c1796e'
             'f361bfaa2b63576ba829b3fb608f3f8baf5c25df51ebaba8c3554a7f3108e87d'
             'abd972fa450409625bd54122de8a3cbb5848054afe4fc2e70e99444233037e12'
             '82a420ff977222150fb25e6b3dafe6ab5694a958666330297e10a1b02a2a69b9')
