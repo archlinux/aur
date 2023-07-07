@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=earthly
-pkgver=0.7.9
+pkgver=0.7.11
 pkgrel=1
 pkgdesc='A build automation tool that executes in containers'
 arch=('x86_64')
