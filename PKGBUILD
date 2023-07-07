@@ -1,24 +1,24 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="chrolog-bin"
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A automated time tracking tool"
 arch=("x86_64")
 url="https://github.com/Lukylix/Chrolog"
 license=('custom')
-depends=('zlib' 'glibc' 'python' 'perl' 'at-spi2-core' 'mesa' 'alsa-lib' 'dbus' 'gcc-libs' 'libxkbcommon' 'gtk3' 'libx11' 'libinput' 'nss' \
-    'systemd-libs' 'glib2' 'libxcb' 'pango' 'libxext' 'bash' 'cairo' 'libxrandr' 'libdrm' 'libxcomposite' 'hicolor-icon-theme' 'libcups' \
-    'libxfixes' 'nspr' 'libxdamage' 'expat')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
-replaces=("${pkgname%-bin}-appimage")
-source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.zip")
-sha256sums=('4ba773a11f93fe66357605f403517e0326aa67201cd25a7fbe1a0919236e21f6')
+depends=('hicolor-icon-theme' 'electron' 'python' 'libinput' 'perl' 'bash' 'zlib' 'glibc' 'expat' 'systemd-libs' 'gcc-libs')
+conflicts=("${pkgname%-bin}")
+provides=("${pkgname%-bin}")
+source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.zip"
+    "${pkgname%-bin}.sh")
+sha256sums=('4ba773a11f93fe66357605f403517e0326aa67201cd25a7fbe1a0919236e21f6'
+            '6ca17df0f40a8e44acdddbd48727be5eae862f86ba169806afeff10686c52c6e')
      
 package() {
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    cp -r "${srcdir}/linux-unpacked/"* "${pkgdir}/opt/${pkgname%-bin}"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/resources/resources/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
-    gendesk -f --icon "${pkgname%-bin}" --categories "Utility" --name "Chrolog" --exec "/opt/${pkgname%-bin}/${pkgname%-bin} %U"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    cp -r "${srcdir}/linux-unpacked/resources/"* "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/linux-unpacked/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/linux-unpacked/resources/resources/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-bin}.svg"
+    gendesk -f -n --icon "${pkgname%-bin}" --categories "Utility" --name "Chrolog" --exec "/opt/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
