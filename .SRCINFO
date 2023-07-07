@@ -1,0 +1,17 @@
+pkgbase = python-eventkit
+	pkgdesc = Event-driven data pipelines
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/erdewit/eventkit
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/5e/aa/b8f33fefa6761d3cd006588f183cd7cda136668b34534a05d3a387777f63/eventkit-1.0.0.tar.gz
+	sha256sums = c9c4bb8a9685e4131e845882512a630d6a57acee148f38af286562a76873e4a9
+
+pkgname = python-eventkit
