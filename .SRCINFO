@@ -1,8 +1,8 @@
 pkgbase = listmonk-bin
 	pkgdesc = Self-hosted newsletter and mailing list manager with a modern dashboard
-	pkgver = 1.1.0
+	pkgver = 2.4.0
 	pkgrel = 1
-	url = https://listmonk.app
+	url = https://github.com/knadh/listmonk
 	install = listmonk.install
 	arch = x86_64
 	license = AGPL3
@@ -11,12 +11,12 @@ pkgbase = listmonk-bin
 	conflicts = listmonk
 	options = !strip
 	backup = etc/listmonk/config.toml
-	source = https://github.com/knadh/listmonk/releases/download/v1.1.0/listmonk_1.1.0_linux_amd64.tar.gz
-	source = listmonk-1.1.0.toml::https://raw.githubusercontent.com/knadh/listmonk/v1.1.0/config.toml.sample
+	source = https://github.com/knadh/listmonk/releases/download/v2.4.0/listmonk_2.4.0_linux_amd64.tar.gz
+	source = listmonk-2.4.0.toml::https://raw.githubusercontent.com/knadh/listmonk/v2.4.0/config.toml.sample
 	source = listmonk.conf
 	source = listmonk.service
-	sha256sums = a636db46fae70ee3847324e26cb7ddbbd2158d2986aac830762b12097bf0d9a6
-	sha256sums = b0fbe305ff7c55328cdc2f0b96bb18e7ea393276a1821bc5fba43f9072474f38
+	sha256sums = acdfd0f4549c15e3cd77a28778ac9904cc54abf3bec98074ee96edc64242971b
+	sha256sums = 4941b1bd6d9ebc84b4ee1f9e3cf7aa651484a8bc857864ba40eda7bb67789c18
 	sha256sums = 5cfc186438df2408ed88a5bec3a9a4b5f2afb0d3aec41c4cc63b2f5eb810b3cb
 	sha256sums = 809ede70c932183889b2fa567b340fb82cce1ada76c7b0a0b9efb82b87c92fa0
 
