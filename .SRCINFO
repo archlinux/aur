@@ -1,0 +1,13 @@
+pkgbase = jsondbc-git
+	pkgdesc = A tool to convert CAN models definded in JSON
+	pkgver = v0.3.3.r0.31402f6
+	pkgrel = 1
+	url = https://github.com/squadracorsepolito/jsondbc
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = jsondbc-git::git+https://github.com/squadracorsepolito/jsondbc
+	md5sums = SKIP
+
+pkgname = jsondbc-git
