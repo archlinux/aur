@@ -12,10 +12,10 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'a4be9b43209502998ed1ede32e3dc9a491d1840bb3d26727f65637aeaaa05032f02b3bac83c4423e0f2a30fe6e44c8262da980b28ff12112476fe34c327ed1e4'
+  '9e5c6f2406d63256faf3c7a6119421c6d9b0dd03e4b1ff801e2cecfebba11b42831970a5412c52cb41e3d6405d7da10e300bbc6cea2f598d7123630e0e777673'
 )
 md5sums=(
-  '9b75ee23e73de3627cd218c71bec2c5e'
+  '1f18bf95255368750983cc754b9324c3'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
