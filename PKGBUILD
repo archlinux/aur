@@ -7,7 +7,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 pkgver=2.0.1
 _pkgver=2.0.1
-pkgrel=5
+pkgrel=6
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -77,7 +77,8 @@ source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         disable-werror4.patch
         ffmpeg4.4.patch
         rocblas-batched.patch
-        protobuf-23.patch)
+        protobuf-23.patch
+        pytorch-rocm-jit.patch)
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -130,7 +131,8 @@ b2sums=('SKIP'
         'eea86bbed0a37e1661035913536456f90e0cd1e687c7e4103011f0688bc8347b6fc2ff82019909c41e7c89ddbc3b80dde641e88abf406f4faebc71b0bb693d25'
         '6286b05d5b5143f117363e3ce3c7d693910f53845aeb6f501b3eea64aa71778cb2d7dcd4ac945d5321ef23b4da02446e86dedc6a9b6a998df4a7f3b1ce50550a'
         '232d2aca7cae8da511d1451890f8696d47da72276929ac5731a1a1a481d2a515fa7288bf33730d8ea2c892616551a74ca2439b53de6b1dfee156c30919120741'
-        '96bf490c74ebedc5a0bc2592677b3a0d2c94517c4fb014f5fb91b2638571d5e6ba27ab1a439c0a13403c8c039413be98e9cdbbcc999f491000fcfb90b1c81b67')
+        '96bf490c74ebedc5a0bc2592677b3a0d2c94517c4fb014f5fb91b2638571d5e6ba27ab1a439c0a13403c8c039413be98e9cdbbcc999f491000fcfb90b1c81b67'
+        'e19fbb32da5a3bdd9d1505b2ba79ff0d765b241da819c96a380a5c871be4f5a78dcad000e01a315d936cfebb7860150f8111e60aed17cbb9337896a0831df0fe')
 options=('!lto' '!debug')
 
 get_pyver () {
@@ -268,7 +270,7 @@ _prepare() {
   # CUDA arch 8.7 is not supported (needed by Jetson boards, etc.)
   export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.9;9.0;9.0+PTX"  #include latest PTX for future compat
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
-  export PYTORCH_ROCM_ARCH="gfx803;gfx900;gfx906;gfx908;gfx90a;gfx1030"
+  export PYTORCH_ROCM_ARCH="gfx803;gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102"
 
   # Hack to make sure that the generated dnnl_config.h from onednn can be inlcuded.
   export CXXFLAGS="${CXXFLAGS} -I third_party/ideep/mkl-dnn/third_party/oneDNN/include/"
@@ -412,6 +414,7 @@ package_python-pytorch-rocm() {
   echo "add_definitions(-march=x86-64)" >> cmake/MiscCheck.cmake
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
+  patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
   # same horrible hack as above
   python setup.py build || python setup.py build
 
@@ -435,6 +438,7 @@ package_python-pytorch-opt-rocm() {
   echo "add_definitions(-march=haswell)" >> cmake/MiscCheck.cmake
   # Conversion of CUDA to ROCm source files
   python tools/amd_build/build_amd.py
+  patch -Np1 -i "$srcdir/pytorch-rocm-jit.patch"
   # same horrible hack as above
   python setup.py build || python setup.py build
 
