@@ -1,7 +1,7 @@
 pkgbase = r-hardhat
 	pkgdesc = Construct Modeling Packages
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 5
 	url = https://cran.r-project.org/package=hardhat
 	arch = any
 	license = MIT
@@ -21,8 +21,7 @@ pkgbase = r-hardhat
 	optdepends = r-testthat
 	optdepends = r-usethis
 	source = https://cran.r-project.org/src/contrib/hardhat_1.3.0.tar.gz
-	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	md5sums = c653ec4116ee0ceddaa28d55e75f62dd
 	sha256sums = fe9ff009e2ba6dd4d70cbb541430f88d85c0a28d6a1c2772e4910c79b81fe82e
-	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-hardhat

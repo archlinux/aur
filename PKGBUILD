@@ -1,48 +1,47 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
-_cranname=hardhat
-_cranver=1.3.0
-pkgname=r-${_cranname,,}
-pkgver=${_cranver//[:-]/.}
-pkgrel=1
+_pkgname=hardhat
+_pkgver=1.3.0
+pkgname=r-${_pkgname,,}
+pkgver=${_pkgver//-/.}
+pkgrel=5
 pkgdesc="Construct Modeling Packages"
 arch=(any)
-url="https://cran.r-project.org/package=${_cranname}"
+url="https://cran.r-project.org/package=${_pkgname}"
 license=(MIT)
 depends=(
-    r-cli
-    r-glue
-    r-rlang
-    r-tibble
-    r-vctrs
+  r-cli
+  r-glue
+  r-rlang
+  r-tibble
+  r-vctrs
 )
 optdepends=(
-    r-covr
-    r-crayon
-    r-devtools
-    r-knitr
-    r-modeldata
-    r-recipes
-    r-rmarkdown
-    r-roxygen2
-    r-testthat
-    r-usethis
+  r-covr
+  r-crayon
+  r-devtools
+  r-knitr
+  r-modeldata
+  r-recipes
+  r-rmarkdown
+  r-roxygen2
+  r-testthat
+  r-usethis
 )
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
-        "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('fe9ff009e2ba6dd4d70cbb541430f88d85c0a28d6a1c2772e4910c79b81fe82e'
-            'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
+source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('c653ec4116ee0ceddaa28d55e75f62dd')
+sha256sums=('fe9ff009e2ba6dd4d70cbb541430f88d85c0a28d6a1c2772e4910c79b81fe82e')
 
 build() {
   mkdir -p build
-  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 
-  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
-
-  install -Dm644 CRAN-MIT-TEMPLATE "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
-  install -Dm644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
