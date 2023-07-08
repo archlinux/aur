@@ -1,0 +1,17 @@
+pkgbase = lutgen-git
+	pkgdesc = Replacement for ls written in Rust
+	pkgver = 0.6.2.r6.g7684b7b
+	pkgrel = 1
+	url = https://github.com/ozwaldorf/lutgen-rs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = libgit2
+	provides = lutgen
+	conflicts = lutgen
+	source = git+https://github.com/ozwaldorf/lutgen-rs.git
+	md5sums = SKIP
+
+pkgname = lutgen-git
