@@ -5,9 +5,9 @@
 pkgname=rstudio-desktop
 _vermajor="2023"
 _verminor="06"
-_verpatch="0"
-_versuffix="421"
-_gitcommit="583b465"
+_verpatch="1"
+_versuffix="524"
+_gitcommit="547dcf8"
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}.${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}-${_versuffix}
@@ -37,7 +37,7 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "qt.conf"
         "pandoc_version.patch")
 
-sha256sums=('9496996bbb1bc502d58d83c5ddab2b60f4eb60c979e0131b0e07dd8c66cee3bd'
+sha256sums=('1edde5dce566bb1794c2bbb4b8b4d003000232df83f6e24b2b92b975222be2cc'
             'SKIP'
             '2c69e7b040c208b61ebf9735c63d2e5bcabfed32ef05a9b8dd5823489ea50d6b'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
