@@ -13,6 +13,7 @@ pkgbase = langkit
 	makedepends = python-e3-core
 	makedepends = python-funcy
 	makedepends = python-mako
+	makedepends = python-e3-core
 	makedepends = python-e3-testsuite
 	makedepends = python-pygments
 	makedepends = python-coverage

@@ -17,6 +17,7 @@ makedepends=(gprbuild
              python-e3-core
              python-funcy
              python-mako
+             python-e3-core
              python-e3-testsuite
              python-pygments
              python-coverage 
