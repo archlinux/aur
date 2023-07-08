@@ -13,15 +13,19 @@
 
 pkgname=lib32-mesa-amdonly-gaming-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.2.0_devel.169866.c6906448425.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.2.0_devel.173976.d3662ba461e.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-libvdpau' 'git' 'lib32-libglvnd' 'wayland-protocols' 
-             'meson' 'lib32-libva' 'lib32-libxrandr' 'lib32-llvm' 'lib32-clang')
-depends=('mesa-amdonly-gaming-git' 'lib32-gcc-libs' 'lib32-libdrm' 'lib32-wayland' 'lib32-libxxf86vm' 
-         'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-libelf'
-         'lib32-lm_sensors' 'glslang' 'lib32-vulkan-icd-loader' 'lib32-zstd' 'lib32-llvm-libs')
+             'meson' 'lib32-libva' 'lib32-libxrandr' 'lib32-llvm' 'lib32-clang'
+             'spirv-tools'
+            # 'lib32-spirv-tools'             
+)
+depends=('lib32-gcc-libs' 'lib32-libdrm' 'lib32-libxxf86vm' 'lib32-libxdamage' 'lib32-libxshmfence' 'lib32-libelf'
+         'libomxil-bellagio' 'lib32-libglvnd' 'lib32-wayland' 'lib32-lm_sensors' 'libclc' 'lib32-vulkan-icd-loader'
+         'lib32-zstd' 'expat' #'llvm-libs' 'spirv-llvm-translator'
+)
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=('lib32-mesa' 'lib32-vulkan-radeon' 'lib32-vulkan-mesa-layer' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-opengl-driver' 'lib32-vulkan-driver' 'lib32-opencl-mesa')
 conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-vulkan-mesa-layer' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau' 'lib32-mesa-libgl' 'lib32-opencl-mesa')
@@ -85,10 +89,12 @@ build () {
 
     export PKG_CONFIG=/usr/bin/i686-pc-linux-gnu-pkg-config
 
-    arch-meson mesa _build \
+    meson setup mesa _build \
         --native-file llvm32.native \
         -D b_ndebug=true \
+        -D buildtype=plain \
         --wrap-mode=nofallback \
+        -D prefix=/usr \
         -D sysconfdir=/etc \
         --libdir=/usr/lib32 \
         -D platforms=x11,wayland \
@@ -98,11 +104,10 @@ build () {
         -D dri3=enabled \
         -D egl=enabled \
         -D gallium-extra-hud=true \
-        -D vulkan-beta=true\
         -D vulkan-layers=device-select,overlay \
         -D gallium-nine=false \
         -D gallium-omx=disabled \
-        -D gallium-opencl=icd \
+        -D gallium-opencl=disabled \
         -D gallium-va=enabled \
         -D gallium-vdpau=enabled \
         -D gallium-xa=disabled \
@@ -114,7 +119,6 @@ build () {
         -D libunwind=disabled \
         -D android-libbacktrace=disabled \
         -D llvm=enabled \
-        -D shared-llvm=enabled \
         -D lmsensors=enabled \
         -D osmesa=true \
         -D shared-glapi=enabled \
@@ -122,6 +126,9 @@ build () {
         -D tools=[] \
         -D zstd=enabled \
         -D microsoft-clc=disabled
+
+#-D shared-llvm=enabled
+#-D vulkan-beta=true
 
     meson configure --no-pager _build
     
