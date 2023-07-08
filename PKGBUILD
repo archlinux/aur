@@ -8,33 +8,13 @@
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
 
 pkgbase=tensorflow-amd-git
-_build_no_opt=auto
-_build_opt=auto
-
-_is_haswell() {
-  [[ " haswell broadwell skylake knl knm skylake-avx512 cannonlake icelake-client icelake-server cascadelake cooperlake tigerlake sapphirerapids rocketlake graniterapids " == *" $1 "* ]] && return 0 || return 1
-}
-
-_get_march() {
-  gcc -march=native -Q --help=target | sed -En "s/^ +-march=[ \t]+([^ ]+)/\1/p"
-}
-
-if [ "$_build_no_opt" == "auto" ]; then
-  _is_haswell `_get_march` && _build_no_opt=0 || _build_no_opt=1
-fi
-if [ "$_build_opt" == "auto" ]; then
-  _is_haswell `_get_march` && _build_opt=1 || _build_opt=0
-fi
-
-[ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-amd-git python-tensorflow-amd-git)
-[ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-amd-git python-tensorflow-opt-amd-git)
-
+pkgname=(tensorflow-amd-git python-tensorflow-amd-git)
 pkgver=2.12.0
 _known_good_commit=de8086e14ae3152906e1137c212d2f7bb8ea463a
 # You can find the latest probably successful official build at:
 # http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/
 # Look for the revision for the "ROCmSoftwarePlatform/tensorflow-upstream" repository.
-pkgrel=7
+pkgrel=8
 pkgdesc="Library for scalable machine learning (with ROCm)"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -137,7 +117,7 @@ prepare() {
     echo \ properly targeting your architecture,
     echo \ you must provide a target list in /opt/rocm/bin/target.lst
     echo Something of the form:
-    echo -e "gfx803\ngfx900\ngfx906\ngfx908\ngfx90a\ngfx1030\ngfx904"
+    echo -e "gfx900\ngfx906\ngfx908\ngfx90a\ngfx1030\ngfx904"
     echo You can see the architectures of cards in your machine by running
     echo "pacman -S rocminfo"
     echo "/opt/rocm/bin/rocminfo | grep gfx"
@@ -188,41 +168,19 @@ build() {
       fi
   fi
   
-  if [ "$_build_no_opt" -eq 1 ]; then
-    echo "Building with rocm and without non-x86-64 optimizations"
-    cd "${srcdir}"/tensorflow-upstream-rocm
-    
-    export CC_OPT_FLAGS="-march=x86-64"
-    export TF_NEED_CUDA=0
-    export TF_NEED_ROCM=1
-    ./configure
-    
-    bazel \
-      build ${BAZEL_ARGS[@]} \
-        //tensorflow:libtensorflow.so \
-        //tensorflow:libtensorflow_cc.so \
-        //tensorflow:install_headers \
-        //tensorflow/tools/pip_package:build_pip_package
-    bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}"/tmprocm --rocm
-  fi
+  cd "${srcdir}"/tensorflow-upstream-rocm
+  export CC_OPT_FLAGS="-march=native -O2"
+  export TF_NEED_CUDA=0
+  export TF_NEED_ROCM=1
+  ./configure
   
-  if [ "$_build_opt" -eq 1 ]; then
-    echo "Building with rocm and non-x86-64 optimizations"
-    cd "${srcdir}"/tensorflow-upstream-opt-rocm
-    
-    export CC_OPT_FLAGS="-march=haswell -O3"
-    export TF_NEED_CUDA=0
-    export TF_NEED_ROCM=1
-    ./configure
-    
-    bazel \
-      build ${BAZEL_ARGS[@]} \
-        //tensorflow:libtensorflow.so \
-        //tensorflow:libtensorflow_cc.so \
-        //tensorflow:install_headers \
-        //tensorflow/tools/pip_package:build_pip_package
-    bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}"/tmpoptrocm --rocm
-  fi
+  bazel \
+    build ${BAZEL_ARGS[@]} \
+      //tensorflow:libtensorflow.so \
+      //tensorflow:libtensorflow_cc.so \
+      //tensorflow:install_headers \
+      //tensorflow/tools/pip_package:build_pip_package
+  bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}"/tmprocm --rocm
 }
 
 _package() {
@@ -303,15 +261,6 @@ package_tensorflow-amd-git() {
   _package tmprocm
 }
 
-package_tensorflow-opt-amd-git() {
-  pkgdesc="Library for scalable machine learning (with ROCm and non-x86 optimizations)"
-  conflicts=(tensorflow)
-  provides=(tensorflow)
-  
-  cd "${srcdir}"/tensorflow-upstream-opt-rocm
-  _package tmpoptrocm
-}
-
 package_python-tensorflow-amd-git() {
   depends+=(tensorflow "${_common_py_depends[@]}")
   conflicts=(python-tensorflow)
@@ -319,16 +268,6 @@ package_python-tensorflow-amd-git() {
 
   cd "${srcdir}"/tensorflow-upstream-rocm
   _python_package tmprocm
-}
-
-package_python-tensorflow-opt-amd-git() {
-  pkgdesc="Library for scalable machine learning (with ROCm and non-x86 optimizations)"
-  depends+=(tensorflow "${_common_py_depends[@]}")
-  conflicts=(python-tensorflow)
-  provides=(python-tensorflow)
-
-  cd "${srcdir}"/tensorflow-upstream-opt-rocm
-  _python_package tmpoptrocm
 }
 
 # vim:set ts=2 sw=2 et:
