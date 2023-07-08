@@ -13,7 +13,7 @@ url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 _electronpkg='electron23'
 depends=("$_electronpkg" 'krb5' 'libsecret' 'lsb-release')
-makedepends=('git' 'nodejs>=16.15.1' 'npm>=8.19.2' 'python' 'unzip')
+makedepends=('git' 'nodejs>=16.15.1' 'npm>=8.19.4' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
@@ -33,9 +33,6 @@ prepare() {
 
 	# Disable husky command
 	sed -i '/husky install/d' 'package.json'
-
-	# Loosen npm version restriction until the version of npm in repos is updated to >= 8.19.4
-	sed -E -i "s|\"npm\": \">=8.19.4\"|\"npm\": \">=$(npm -v)\"|" 'package.json' 'package-lock.json'
 
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' {'configs','packages'}'/'*'/package.json'
