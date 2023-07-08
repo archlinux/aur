@@ -1,11 +1,12 @@
 pkgbase = xdroid-bin
 	pkgdesc = 卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。
 	pkgver = 11.1.41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.linzhuotech.com/Product/download
 	arch = x86_64
 	license = custom
 	makedepends = libarchive
+	makedepends = linux-headers
 	depends = dkms
 	depends = xdg-utils
 	provides = xDroidInstall
