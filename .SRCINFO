@@ -1,5 +1,5 @@
 pkgbase = lutgen-git
-	pkgdesc = Replacement for ls written in Rust
+	pkgdesc = A blazingly fast interpolated LUT generator and applicator for arbitrary and popular color palettes (latest git)
 	pkgver = 0.7.0.r0.g218a7eb
 	pkgrel = 1
 	url = https://github.com/ozwaldorf/lutgen-rs
