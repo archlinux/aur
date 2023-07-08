@@ -36,7 +36,7 @@ I have not tested this.
 ## Building for other machines
 This package uses `-march=native` to enable CPU specific optimizations. If you are building for other people to use do:
 ```sh
-sed "s/-march=native/-march=x86_64/" -i PKGBUILD
+sed "s/-march=native/-march=x86-64/" -i PKGBUILD
 ```
 
 ## Building for other graphics cards
