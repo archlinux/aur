@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Olivia May <olivia.may@tuta.io>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Alfredo Ramos <alfredo dot ramos at yandex dot com>
