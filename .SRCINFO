@@ -1,0 +1,14 @@
+pkgbase = sealcrypto-git
+	pkgdesc = Microsoft library for fully homomorphic encryption
+	pkgver = v4.1.1.r0.g206648d
+	pkgrel = 1
+	url = https://github.com/Microsoft/SEAL
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	conflicts = sealcrypto
+	source = sealcrypto-git::git+https://github.com/Microsoft/SEAL
+	sha256sums = SKIP
+
+pkgname = sealcrypto-git
