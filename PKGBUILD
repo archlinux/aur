@@ -21,11 +21,11 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname}"
 	make deps
-    make
+  make
 }
 
 package() {
 	cd "$srcdir/${pkgname}"
-    mkdir -p "$pkgdir/usr/bin"
-    cp "./bin/nstool" "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/bin"
+  cp "./bin/nstool" "$pkgdir/usr/bin"
 }
