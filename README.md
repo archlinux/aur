@@ -58,4 +58,11 @@ export HSA_OVERRIDE_GFX_VERSION=10.3.0
 ```
 You can find your gfx by running `/opt/rocm/bin/rocminfo | grep gfx` after installing `rocminfo`.
 
+## Fixing this PKGBUILD when it inevitably breaks
+To learn what the build environment is supposed to look like, see the official Dockerfile for building tensorflow: [ROCmSoftwarePlatform/tensorflow-upstream in tensorflow/tools/ci_build/Dockerfile.rocm](https://github.com/ROCmSoftwarePlatform/tensorflow-upstream/blob/develop-upstream/tensorflow/tools/ci_build/Dockerfile.rocm). That's where I found out about `target.lst` among other things; hopefully it helps.
+
+If you are unable to build this, you may have luck with installing the python wheels. pip seems to think tensorflow-rocm is [only supported up to python 3.10](https://pypi.org/project/tensorflow-rocm/), so you will have to download the wheel [directly from AMD's website](http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/) and install it: `pip install tensorflow_rocm-2.12*cp311-cp311-manylinux2014_x86_64.whl`
+
+Lastly, it appears the officially intended way to use TensorFlow on ROCm is by a docker image. It takes forever to download, so your system clock may desynchronize with the server, so you may get random permission errors while downloading. If you do, `sudo systemctl start systemd-timesyncd`. Otherwise, follow [the official instructions here](https://hub.docker.com/r/rocm/tensorflow) or [my longer tutorial here.](https://github.com/mpeschel10/test-tensorflow-rocm)
+
 ### Pull requests welcome.
