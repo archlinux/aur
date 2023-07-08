@@ -5,7 +5,7 @@ pkgname=(
   mutter-vrr
   mutter-vrr-docs
 )
-pkgver=44.2
+pkgver=44.3
 pkgrel=1
 pkgdesc="Window manager and compositor for GNOME (with VRR)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -48,16 +48,14 @@ checkdepends=(
   wireplumber
   zenity
 )
-_commit=e7ed2bf85700a2ff33b69826f6f0fff6e2f28e69  # tags/44.2^0
+_commit=99d83f2985483bc192e1271665c442c7c480a588  # tags/44.3^0
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-  0001-tests-cogl-test-framebuffer-get-bits-should-fail-on-.patch
   vrr.patch
 )
 sha256sums=(
   'SKIP'
-  '3321a1b16de808469333231096074e4caaca8563e0a138344246c9301dfac3b9'
-  '833f558909dfdaad358176cd9895da42d25283cf5faf88bd9db01ff4db1107a1'
+  '1f511a50b5032467a78a21b30a27541374d839cc04ee32a595bd9743dc220cd8'
 )
 pkgver() {
   cd mutter
@@ -69,7 +67,8 @@ prepare() {
 
   # Unbreak tests with Mesa 23.1
   # https://gitlab.gnome.org/GNOME/mutter/-/issues/2848
-  git apply -3 ../0001-tests-cogl-test-framebuffer-get-bits-should-fail-on-.patch
+  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3047
+  git cherry-pick -n '5a83e8ef8250526a40e8e69c^..d65883e0d7d70987e3888b86'
   git apply -3 ../vrr.patch
 }
 

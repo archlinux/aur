@@ -1,15 +1,16 @@
-From 7cc14ac2a4c52e3765edce9c3a2d117ee890f9c1 Mon Sep 17 00:00:00 2001
+From 0396be7fb483a10d8077ae97bcfe173a595c8dd6 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Tomasz=20Paku=C5=82a?= <forest10pl@gmail.com>
-Date: Wed, 5 Jul 2023 19:42:59 +0200
-Subject: [PATCH] ArchLinux mutter VRR patch
+Date: Sat, 8 Jul 2023 18:31:44 +0200
+Subject: [PATCH] Enable VRR
 
 ---
- clutter/clutter/clutter-frame-clock.c         | 111 ++++++++-
+ clutter/clutter/clutter-frame-clock.c         | 108 ++++++++-
  clutter/clutter/clutter-frame-clock.h         |  10 +
- cogl/cogl/winsys/cogl-onscreen-egl.c          |   8 +-
+ .../cogl/driver/gl/cogl-gl-framebuffer-back.c |  23 +-
+ cogl/cogl/driver/gl/cogl-gl-framebuffer-fbo.c |  23 +-
  data/61-mutter.rules                          |   1 +
  .../org.gnome.Mutter.DisplayConfig.xml        |   7 +
- data/org.gnome.mutter.gschema.xml.in          |   7 +
+ data/org.gnome.mutter.gschema.xml.in          |   9 +-
  src/backends/meta-backend.c                   |   3 +-
  src/backends/meta-monitor-config-manager.c    |   5 +-
  src/backends/meta-monitor-config-manager.h    |   1 +
@@ -25,10 +26,6 @@ Subject: [PATCH] ArchLinux mutter VRR patch
  src/backends/meta-settings-private.h          |   5 +-
  src/backends/meta-settings.c                  |   2 +
  src/backends/native/meta-backend-native.c     |   3 +
- src/backends/native/meta-drm-buffer-gbm.c     | 122 ----------
- src/backends/native/meta-drm-buffer-private.h |   4 -
- src/backends/native/meta-drm-buffer.c         |  21 --
- src/backends/native/meta-drm-buffer.h         |   6 -
  src/backends/native/meta-gpu-kms.c            |  17 ++
  src/backends/native/meta-gpu-kms.h            |   1 +
  .../native/meta-kms-connector-private.h       |   1 +
@@ -42,7 +39,6 @@ Subject: [PATCH] ArchLinux mutter VRR patch
  src/backends/native/meta-kms-update-private.h |  13 ++
  src/backends/native/meta-kms-update.c         |  47 ++++
  src/backends/native/meta-kms-update.h         |   4 +
- src/backends/native/meta-onscreen-native.c    |  29 +--
  src/backends/native/meta-output-kms.c         |  23 ++
  src/backends/native/meta-output-kms.h         |   4 +
  src/backends/native/meta-renderer-native.c    |  16 ++
@@ -66,11 +62,11 @@ Subject: [PATCH] ArchLinux mutter VRR patch
  src/tests/monitor-configs/vrr-disallowed.xml  |  23 ++
  src/tests/monitor-store-unit-tests.c          |  51 +++++
  src/tests/monitor-unit-tests.c                | 195 ++++++++++++++++
- 62 files changed, 1244 insertions(+), 203 deletions(-)
+ 58 files changed, 1257 insertions(+), 45 deletions(-)
  create mode 100644 src/tests/monitor-configs/vrr-disallowed.xml
 
 diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
-index 3aeb29042..cd0935d43 100644
+index ed375e2d2..d91541340 100644
 --- a/clutter/clutter/clutter-frame-clock.c
 +++ b/clutter/clutter/clutter-frame-clock.c
 @@ -37,6 +37,8 @@ static guint signals[N_SIGNALS];
@@ -108,17 +104,7 @@ index 3aeb29042..cd0935d43 100644
    int64_t last_dispatch_time_us;
    int64_t last_dispatch_lateness_us;
    int64_t last_presentation_time_us;
-@@ -320,8 +327,7 @@ clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
- 
-   frame_clock->got_measurements_last_frame = FALSE;
- 
--  if (frame_info->cpu_time_before_buffer_swap_us != 0 &&
--      frame_info->gpu_rendering_duration_ns != 0)
-+  if (frame_info->cpu_time_before_buffer_swap_us != 0)
-     {
-       int64_t dispatch_to_swap_us, swap_to_rendering_done_us, swap_to_flip_us;
- 
-@@ -380,6 +386,7 @@ clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
+@@ -381,6 +388,7 @@ clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
      {
      case CLUTTER_FRAME_CLOCK_STATE_INIT:
      case CLUTTER_FRAME_CLOCK_STATE_IDLE:
@@ -126,7 +112,7 @@ index 3aeb29042..cd0935d43 100644
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        g_warn_if_reached ();
        break;
-@@ -400,6 +407,7 @@ clutter_frame_clock_notify_ready (ClutterFrameClock *frame_clock)
+@@ -401,6 +409,7 @@ clutter_frame_clock_notify_ready (ClutterFrameClock *frame_clock)
      {
      case CLUTTER_FRAME_CLOCK_STATE_INIT:
      case CLUTTER_FRAME_CLOCK_STATE_IDLE:
@@ -134,7 +120,7 @@ index 3aeb29042..cd0935d43 100644
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        g_warn_if_reached ();
        break;
-@@ -619,6 +627,39 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
+@@ -620,6 +629,39 @@ calculate_next_update_time_us (ClutterFrameClock *frame_clock,
    *out_min_render_time_allowed_us = min_render_time_allowed_us;
  }
  
@@ -174,7 +160,7 @@ index 3aeb29042..cd0935d43 100644
  void
  clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
  {
-@@ -631,6 +672,7 @@ clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
+@@ -632,6 +674,7 @@ clutter_frame_clock_inhibit (ClutterFrameClock *frame_clock)
          case CLUTTER_FRAME_CLOCK_STATE_INIT:
          case CLUTTER_FRAME_CLOCK_STATE_IDLE:
            break;
@@ -182,7 +168,7 @@ index 3aeb29042..cd0935d43 100644
          case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
            frame_clock->pending_reschedule = TRUE;
            frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_IDLE;
-@@ -672,6 +714,7 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
+@@ -673,6 +716,7 @@ clutter_frame_clock_schedule_update_now (ClutterFrameClock *frame_clock)
      case CLUTTER_FRAME_CLOCK_STATE_INIT:
      case CLUTTER_FRAME_CLOCK_STATE_IDLE:
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
@@ -190,7 +176,7 @@ index 3aeb29042..cd0935d43 100644
        next_update_time_us = g_get_monotonic_time ();
        break;
      case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
-@@ -704,15 +747,12 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
+@@ -705,15 +749,12 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
      {
      case CLUTTER_FRAME_CLOCK_STATE_INIT:
        next_update_time_us = g_get_monotonic_time ();
@@ -210,7 +196,7 @@ index 3aeb29042..cd0935d43 100644
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        return;
      case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
-@@ -721,11 +761,56 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
+@@ -722,11 +763,56 @@ clutter_frame_clock_schedule_update (ClutterFrameClock *frame_clock)
        return;
      }
  
@@ -268,7 +254,7 @@ index 3aeb29042..cd0935d43 100644
  }
  
  static void
-@@ -804,6 +889,7 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
+@@ -805,6 +891,7 @@ clutter_frame_clock_dispatch (ClutterFrameClock *frame_clock,
        g_warn_if_reached ();
        break;
      case CLUTTER_FRAME_CLOCK_STATE_IDLE:
@@ -276,7 +262,7 @@ index 3aeb29042..cd0935d43 100644
      case CLUTTER_FRAME_CLOCK_STATE_SCHEDULED:
        break;
      case CLUTTER_FRAME_CLOCK_STATE_DISPATCHING:
-@@ -946,6 +1032,10 @@ clutter_frame_clock_new (float                            refresh_rate,
+@@ -947,6 +1034,10 @@ clutter_frame_clock_new (float                            refresh_rate,
    init_frame_clock_source (frame_clock);
  
    clutter_frame_clock_set_refresh_rate (frame_clock, refresh_rate);
@@ -287,7 +273,7 @@ index 3aeb29042..cd0935d43 100644
    frame_clock->vblank_duration_us = vblank_duration_us;
  
    return frame_clock;
-@@ -979,6 +1069,7 @@ static void
+@@ -980,6 +1071,7 @@ static void
  clutter_frame_clock_init (ClutterFrameClock *frame_clock)
  {
    frame_clock->state = CLUTTER_FRAME_CLOCK_STATE_INIT;
@@ -323,26 +309,140 @@ index 6fd5de47a..085c7a096 100644
  CLUTTER_EXPORT
  void clutter_frame_clock_notify_presented (ClutterFrameClock *frame_clock,
                                             ClutterFrameInfo  *frame_info);
-diff --git a/cogl/cogl/winsys/cogl-onscreen-egl.c b/cogl/cogl/winsys/cogl-onscreen-egl.c
-index 54f37e264..dc11c1be4 100644
---- a/cogl/cogl/winsys/cogl-onscreen-egl.c
-+++ b/cogl/cogl/winsys/cogl-onscreen-egl.c
-@@ -313,13 +313,9 @@ cogl_onscreen_egl_swap_buffers_with_damage (CoglOnscreen  *onscreen,
-     {
-       info->gpu_time_before_buffer_swap_ns =
-         cogl_context_get_gpu_time_ns (context);
--    }
--
--  info->cpu_time_before_buffer_swap_us = g_get_monotonic_time ();
-+      info->cpu_time_before_buffer_swap_us = g_get_monotonic_time ();
+diff --git a/cogl/cogl/driver/gl/cogl-gl-framebuffer-back.c b/cogl/cogl/driver/gl/cogl-gl-framebuffer-back.c
+index d6609bb20..94154d48e 100644
+--- a/cogl/cogl/driver/gl/cogl-gl-framebuffer-back.c
++++ b/cogl/cogl/driver/gl/cogl-gl-framebuffer-back.c
+@@ -65,39 +65,38 @@ ensure_bits_initialized (CoglGlFramebufferBack *gl_framebuffer_back)
+                                         framebuffer,
+                                         COGL_FRAMEBUFFER_STATE_BIND);
  
--  /* Set up a timestamp query for when all rendering will be finished. */
--  if (cogl_has_feature (context, COGL_FEATURE_ID_TIMESTAMP_QUERY))
--    {
-+      /* Set up a timestamp query for when all rendering will be finished. */
-       info->timestamp_query =
-         cogl_framebuffer_create_timestamp_query (COGL_FRAMEBUFFER (onscreen));
+-#ifdef HAVE_COGL_GL
+-  if (ctx->driver == COGL_DRIVER_GL3)
++  if (_cogl_has_private_feature (ctx, COGL_PRIVATE_FEATURE_QUERY_FRAMEBUFFER_BITS))
+     {
+       const struct {
+         GLenum attachment, pname;
+         size_t offset;
+       } params[] = {
+-        { 
++        {
+           .attachment = GL_BACK_LEFT,
+           .pname = GL_FRAMEBUFFER_ATTACHMENT_RED_SIZE,
+           .offset = offsetof (CoglFramebufferBits, red),
+         },
+-        { 
++        {
+           .attachment = GL_BACK_LEFT,
+           .pname = GL_FRAMEBUFFER_ATTACHMENT_GREEN_SIZE,
+           .offset = offsetof (CoglFramebufferBits, green),
+         },
+-        { 
++        {
+           .attachment = GL_BACK_LEFT,
+           .pname = GL_FRAMEBUFFER_ATTACHMENT_BLUE_SIZE,
+           .offset = offsetof (CoglFramebufferBits, blue),
+         },
+-        { 
++        {
+           .attachment = GL_BACK_LEFT,
+           .pname = GL_FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE,
+           .offset = offsetof (CoglFramebufferBits, alpha),
+         },
+-        { 
++        {
+           .attachment = GL_DEPTH,
+           .pname = GL_FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE,
+           .offset = offsetof (CoglFramebufferBits, depth),
+         },
+-        { 
++        {
+           .attachment = GL_STENCIL,
+           .pname = GL_FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE,
+           .offset = offsetof (CoglFramebufferBits, stencil),
+@@ -117,14 +116,8 @@ ensure_bits_initialized (CoglGlFramebufferBack *gl_framebuffer_back)
+         }
      }
+   else
+-#endif /* HAVE_COGL_GL */
+     {
+-      GE (ctx, glGetIntegerv (GL_RED_BITS, &bits->red));
+-      GE (ctx, glGetIntegerv (GL_GREEN_BITS, &bits->green));
+-      GE (ctx, glGetIntegerv (GL_BLUE_BITS, &bits->blue));
+-      GE (ctx, glGetIntegerv (GL_ALPHA_BITS, &bits->alpha));
+-      GE (ctx, glGetIntegerv (GL_DEPTH_BITS, &bits->depth));
+-      GE (ctx, glGetIntegerv (GL_STENCIL_BITS, &bits->stencil));
++      return FALSE;
+     }
+ 
+   COGL_NOTE (FRAMEBUFFER,
+diff --git a/cogl/cogl/driver/gl/cogl-gl-framebuffer-fbo.c b/cogl/cogl/driver/gl/cogl-gl-framebuffer-fbo.c
+index c8db6a23a..3ea133d31 100644
+--- a/cogl/cogl/driver/gl/cogl-gl-framebuffer-fbo.c
++++ b/cogl/cogl/driver/gl/cogl-gl-framebuffer-fbo.c
+@@ -75,39 +75,38 @@ ensure_bits_initialized (CoglGlFramebufferFbo *gl_framebuffer_fbo)
+                                         framebuffer,
+                                         COGL_FRAMEBUFFER_STATE_BIND);
+ 
+-#ifdef HAVE_COGL_GL
+-  if (!_cogl_has_private_feature (ctx, COGL_PRIVATE_FEATURE_QUERY_FRAMEBUFFER_BITS))
++  if (_cogl_has_private_feature (ctx, COGL_PRIVATE_FEATURE_QUERY_FRAMEBUFFER_BITS))
+     {
+       const struct {
+         GLenum attachment, pname;
+         size_t offset;
+       } params[] = {
+-        { 
++        {
+           .attachment = GL_COLOR_ATTACHMENT0,
+           .pname = GL_FRAMEBUFFER_ATTACHMENT_RED_SIZE,
+           .offset = offsetof (CoglFramebufferBits, red),
+         },
+-        { 
++        {
+           .attachment = GL_COLOR_ATTACHMENT0,
+           .pname = GL_FRAMEBUFFER_ATTACHMENT_GREEN_SIZE,
+           .offset = offsetof (CoglFramebufferBits, green),
+         },
+-        { 
++        {
+           .attachment = GL_COLOR_ATTACHMENT0,
+           .pname = GL_FRAMEBUFFER_ATTACHMENT_BLUE_SIZE,
+           .offset = offsetof (CoglFramebufferBits, blue),
+         },
+-        { 
++        {
+           .attachment = GL_COLOR_ATTACHMENT0,
+           .pname = GL_FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE,
+           .offset = offsetof (CoglFramebufferBits, alpha),
+         },
+-        { 
++        {
+           .attachment = GL_DEPTH_ATTACHMENT,
+           .pname = GL_FRAMEBUFFER_ATTACHMENT_DEPTH_SIZE,
+           .offset = offsetof (CoglFramebufferBits, depth),
+         },
+-        { 
++        {
+           .attachment = GL_STENCIL_ATTACHMENT,
+           .pname = GL_FRAMEBUFFER_ATTACHMENT_STENCIL_SIZE,
+           .offset = offsetof (CoglFramebufferBits, stencil),
+@@ -127,14 +126,8 @@ ensure_bits_initialized (CoglGlFramebufferFbo *gl_framebuffer_fbo)
+         }
+     }
+   else
+-#endif /* HAVE_COGL_GL */
+     {
+-      GE (ctx, glGetIntegerv (GL_RED_BITS, &bits->red));
+-      GE (ctx, glGetIntegerv (GL_GREEN_BITS, &bits->green));
+-      GE (ctx, glGetIntegerv (GL_BLUE_BITS, &bits->blue));
+-      GE (ctx, glGetIntegerv (GL_ALPHA_BITS, &bits->alpha));
+-      GE (ctx, glGetIntegerv (GL_DEPTH_BITS, &bits->depth));
+-      GE (ctx, glGetIntegerv (GL_STENCIL_BITS, &bits->stencil));
++      return FALSE;
+     }
+ 
+   if (!_cogl_has_private_feature (ctx, COGL_PRIVATE_FEATURE_ALPHA_TEXTURES) &&
 diff --git a/data/61-mutter.rules b/data/61-mutter.rules
 index a6e3946a2..72d529c6f 100644
 --- a/data/61-mutter.rules
@@ -379,7 +479,7 @@ index af78ec051..896a3ce11 100644
  	@properties may effect the global monitor configuration state. Possible
  	properties are:
 diff --git a/data/org.gnome.mutter.gschema.xml.in b/data/org.gnome.mutter.gschema.xml.in
-index b87980939..34e2a2201 100644
+index b87980939..7c745348f 100644
 --- a/data/org.gnome.mutter.gschema.xml.in
 +++ b/data/org.gnome.mutter.gschema.xml.in
 @@ -5,6 +5,7 @@
@@ -390,6 +490,15 @@ index b87980939..34e2a2201 100644
    </flags>
  
    <schema id="org.gnome.mutter" path="/org/gnome/mutter/"
+@@ -103,7 +104,7 @@
+ 
+     <key name="experimental-features"
+         flags='org.gnome.mutter.MetaExperimentalFeature'>
+-      <default>[]</default>
++      <default>['variable-refresh-rate']</default>
+       <summary>Enable experimental features</summary>
+       <description>
+         To enable experimental features, add the feature keyword to the list.
 @@ -133,6 +134,12 @@
                                          relevant X11 clients are gone.
                                          Requires a restart.
@@ -619,7 +728,7 @@ index bd02c55bb..d797e5a5b 100644
  
    return monitor_config;
 diff --git a/src/backends/meta-monitor.c b/src/backends/meta-monitor.c
-index 00502bb35..dfa9dd3d4 100644
+index 084048406..97e9c5cfa 100644
 --- a/src/backends/meta-monitor.c
 +++ b/src/backends/meta-monitor.c
 @@ -372,6 +372,25 @@ meta_monitor_is_underscanning (MetaMonitor *monitor)
@@ -867,206 +976,6 @@ index 5c1690d88..228f5b2a0 100644
  
    if (meta_is_udev_device_preferred_primary (device))
      flags |= META_KMS_DEVICE_FLAG_PREFERRED_PRIMARY;
-diff --git a/src/backends/native/meta-drm-buffer-gbm.c b/src/backends/native/meta-drm-buffer-gbm.c
-index 86c60fd00..212c7a776 100644
---- a/src/backends/native/meta-drm-buffer-gbm.c
-+++ b/src/backends/native/meta-drm-buffer-gbm.c
-@@ -231,127 +231,6 @@ meta_drm_buffer_gbm_new_take (MetaDeviceFile      *device_file,
-   return buffer_gbm;
- }
- 
--static gboolean
--meta_drm_buffer_gbm_fill_timings (MetaDrmBuffer  *buffer,
--                                  CoglFrameInfo  *info,
--                                  GError        **error)
--{
--  MetaDrmBufferGbm *buffer_gbm = META_DRM_BUFFER_GBM (buffer);
--  MetaDeviceFile *device_file = meta_drm_buffer_get_device_file (buffer);
--  MetaDevicePool *device_pool = meta_device_file_get_pool (device_file);
--  MetaBackend *backend = meta_device_pool_get_backend (device_pool);
--  MetaEgl *egl = meta_backend_get_egl (backend);
--  ClutterBackend *clutter_backend =
--    meta_backend_get_clutter_backend (backend);
--  CoglContext *cogl_context =
--    clutter_backend_get_cogl_context (clutter_backend);
--  CoglDisplay *cogl_display = cogl_context->display;
--  CoglRenderer *cogl_renderer = cogl_display->renderer;
--  CoglRendererEGL *cogl_renderer_egl = cogl_renderer->winsys;
--  EGLDisplay egl_display = cogl_renderer_egl->edpy;
--  EGLImageKHR egl_image;
--  CoglPixelFormat cogl_format;
--  CoglEglImageFlags flags;
--  g_autoptr (CoglOffscreen) cogl_fbo = NULL;
--  CoglTexture2D *cogl_tex;
--  uint32_t n_planes;
--  uint64_t *modifiers;
--  uint32_t *strides;
--  uint32_t *offsets;
--  uint32_t width;
--  uint32_t height;
--  uint32_t drm_format;
--  int *fds;
--  gboolean result;
--  int dmabuf_fd = -1;
--  uint32_t i;
--
--  dmabuf_fd = gbm_bo_get_fd (buffer_gbm->bo);
--  if (dmabuf_fd == -1)
--    {
--      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED,
--                   "Failed to export buffer's DMA fd: %s",
--                   g_strerror (errno));
--      return FALSE;
--    }
--
--  drm_format = gbm_bo_get_format (buffer_gbm->bo);
--  result = meta_cogl_pixel_format_from_drm_format (drm_format,
--                                                   &cogl_format,
--                                                   NULL);
--  g_assert (result);
--
--  width = gbm_bo_get_width (buffer_gbm->bo);
--  height = gbm_bo_get_height (buffer_gbm->bo);
--  n_planes = gbm_bo_get_plane_count (buffer_gbm->bo);
--  fds = g_alloca (sizeof (int) * n_planes);
--  strides = g_alloca (sizeof (uint32_t) * n_planes);
--  offsets = g_alloca (sizeof (uint32_t) * n_planes);
--  modifiers = g_alloca (sizeof (uint64_t) * n_planes);
--
--  for (i = 0; i < n_planes; i++)
--    {
--      fds[i] = dmabuf_fd;
--      strides[i] = gbm_bo_get_stride_for_plane (buffer_gbm->bo, i);
--      offsets[i] = gbm_bo_get_offset (buffer_gbm->bo, i);
--      modifiers[i] = gbm_bo_get_modifier (buffer_gbm->bo);
--    }
--
--  egl_image = meta_egl_create_dmabuf_image (egl,
--                                            egl_display,
--                                            width,
--                                            height,
--                                            drm_format,
--                                            n_planes,
--                                            fds,
--                                            strides,
--                                            offsets,
--                                            modifiers,
--                                            error);
--  if (egl_image == EGL_NO_IMAGE_KHR)
--    goto out;
--
--  flags = COGL_EGL_IMAGE_FLAG_NO_GET_DATA;
--  cogl_tex = cogl_egl_texture_2d_new_from_image (cogl_context,
--                                                 width,
--                                                 height,
--                                                 cogl_format,
--                                                 egl_image,
--                                                 flags,
--                                                 error);
--
--  meta_egl_destroy_image (egl, egl_display, egl_image, NULL);
--
--  if (!cogl_tex)
--    goto out;
--
--  cogl_fbo = cogl_offscreen_new_with_texture (COGL_TEXTURE (cogl_tex));
--  cogl_object_unref (cogl_tex);
--
--  if (!cogl_framebuffer_allocate (COGL_FRAMEBUFFER (cogl_fbo), error))
--    goto out;
--
--  if (cogl_has_feature (cogl_context, COGL_FEATURE_ID_TIMESTAMP_QUERY))
--    {
--      info->gpu_time_before_buffer_swap_ns =
--        cogl_context_get_gpu_time_ns (cogl_context);
--    }
--
--  info->cpu_time_before_buffer_swap_us = g_get_monotonic_time ();
--
--  /* Set up a timestamp query for when all rendering will be finished. */
--  if (cogl_has_feature (cogl_context, COGL_FEATURE_ID_TIMESTAMP_QUERY))
--    {
--      info->timestamp_query =
--        cogl_framebuffer_create_timestamp_query (COGL_FRAMEBUFFER (cogl_fbo));
--    }
--
--out:
--  close (dmabuf_fd);
--
--  return TRUE;
--}
--
- static gboolean
- meta_drm_buffer_gbm_blit_to_framebuffer (CoglScanout      *scanout,
-                                          CoglFramebuffer  *framebuffer,
-@@ -522,5 +401,4 @@ meta_drm_buffer_gbm_class_init (MetaDrmBufferGbmClass *klass)
-   buffer_class->get_format = meta_drm_buffer_gbm_get_format;
-   buffer_class->get_offset = meta_drm_buffer_gbm_get_offset;
-   buffer_class->get_modifier = meta_drm_buffer_gbm_get_modifier;
--  buffer_class->fill_timings = meta_drm_buffer_gbm_fill_timings;
- }
-diff --git a/src/backends/native/meta-drm-buffer-private.h b/src/backends/native/meta-drm-buffer-private.h
-index e8c11f502..a69b80e97 100644
---- a/src/backends/native/meta-drm-buffer-private.h
-+++ b/src/backends/native/meta-drm-buffer-private.h
-@@ -54,10 +54,6 @@ struct _MetaDrmBufferClass
-   int (* get_offset) (MetaDrmBuffer *buffer,
-                       int            plane);
-   uint64_t (* get_modifier) (MetaDrmBuffer *buffer);
--
--  gboolean (* fill_timings) (MetaDrmBuffer  *buffer,
--                             CoglFrameInfo  *info,
--                             GError        **error);
- };
- 
- MetaDeviceFile * meta_drm_buffer_get_device_file (MetaDrmBuffer *buffer);
-diff --git a/src/backends/native/meta-drm-buffer.c b/src/backends/native/meta-drm-buffer.c
-index c7eeca4f6..e6aaeff8f 100644
---- a/src/backends/native/meta-drm-buffer.c
-+++ b/src/backends/native/meta-drm-buffer.c
-@@ -241,27 +241,6 @@ meta_drm_buffer_get_modifier (MetaDrmBuffer *buffer)
-   return META_DRM_BUFFER_GET_CLASS (buffer)->get_modifier (buffer);
- }
- 
--gboolean
--meta_drm_buffer_supports_fill_timings (MetaDrmBuffer *buffer)
--{
--  return META_DRM_BUFFER_GET_CLASS (buffer)->fill_timings != NULL;
--}
--
--gboolean
--meta_drm_buffer_fill_timings (MetaDrmBuffer  *buffer,
--                              CoglFrameInfo  *info,
--                              GError        **error)
--{
--  if (!meta_drm_buffer_supports_fill_timings (buffer))
--    {
--      g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
--                           "Buffer doesn't support filling timing info");
--      return FALSE;
--    }
--
--  return META_DRM_BUFFER_GET_CLASS (buffer)->fill_timings (buffer, info, error);
--}
--
- static void
- meta_drm_buffer_get_property (GObject    *object,
-                               guint       prop_id,
-diff --git a/src/backends/native/meta-drm-buffer.h b/src/backends/native/meta-drm-buffer.h
-index 74542845e..59c3c09c2 100644
---- a/src/backends/native/meta-drm-buffer.h
-+++ b/src/backends/native/meta-drm-buffer.h
-@@ -68,10 +68,4 @@ int meta_drm_buffer_get_offset (MetaDrmBuffer *buffer,
- 
- uint64_t meta_drm_buffer_get_modifier (MetaDrmBuffer *buffer);
- 
--gboolean meta_drm_buffer_supports_fill_timings (MetaDrmBuffer *buffer);
--
--gboolean meta_drm_buffer_fill_timings (MetaDrmBuffer  *buffer,
--                                       CoglFrameInfo  *info,
--                                       GError        **error);
--
- #endif /* META_DRM_BUFFER_H */
 diff --git a/src/backends/native/meta-gpu-kms.c b/src/backends/native/meta-gpu-kms.c
 index 7d46955a3..f3f164794 100644
 --- a/src/backends/native/meta-gpu-kms.c
@@ -1516,53 +1425,6 @@ index 26da6ca27..93bd8e417 100644
  void meta_kms_plane_assignment_set_fb_damage (MetaKmsPlaneAssignment *plane_assignment,
                                                const int              *rectangles,
                                                int                     n_rectangles);
-diff --git a/src/backends/native/meta-onscreen-native.c b/src/backends/native/meta-onscreen-native.c
-index 1ab117eb9..bcb791bc4 100644
---- a/src/backends/native/meta-onscreen-native.c
-+++ b/src/backends/native/meta-onscreen-native.c
-@@ -1349,8 +1349,6 @@ meta_onscreen_native_direct_scanout (CoglOnscreen   *onscreen,
-   MetaPowerSave power_save_mode;
-   ClutterFrame *frame = user_data;
-   MetaFrameNative *frame_native = meta_frame_native_from_frame (frame);
--  MetaDrmBuffer *scanout_buffer;
--  GError *fill_timings_error = NULL;
-   MetaKmsCrtc *kms_crtc;
-   MetaKmsDevice *kms_device;
-   MetaKmsUpdate *kms_update;
-@@ -1383,32 +1381,7 @@ meta_onscreen_native_direct_scanout (CoglOnscreen   *onscreen,
- 
-   g_set_object (&onscreen_native->gbm.next_fb, META_DRM_BUFFER (scanout));
- 
--  /* Try to get a measurement of GPU rendering time on the scanout buffer.
--   *
--   * The successful operation here adds ~0.4 ms to a ~0.1 ms total frame clock
--   * dispatch duration when displaying an unredirected client, thus
--   * unfortunately bringing it more in line with duration of the regular
--   * non-unredirected frame clock dispatch. However, measuring GPU rendering
--   * time is important for computing accurate max render time without
--   * underestimating. Also this operation should be optimizable by caching
--   * EGLImage for each buffer instead of re-creating it every time it's needed.
--   * This should also help all other cases which convert the buffer to a
--   * EGLImage.
--   */
--  if (META_IS_DRM_BUFFER (scanout))
--    {
--      scanout_buffer = META_DRM_BUFFER (scanout);
--      if (meta_drm_buffer_supports_fill_timings (scanout_buffer))
--        {
--          if (!meta_drm_buffer_fill_timings (scanout_buffer, frame_info,
--                                             &fill_timings_error))
--            {
--              g_warning ("Failed to fill timings for a scanout buffer: %s",
--                         fill_timings_error->message);
--              g_error_free (fill_timings_error);
--            }
--        }
--    }
-+  frame_info->cpu_time_before_buffer_swap_us = g_get_monotonic_time ();
- 
-   kms_crtc = meta_crtc_kms_get_kms_crtc (META_CRTC_KMS (onscreen_native->crtc));
-   kms_device = meta_kms_crtc_get_device (kms_crtc);
 diff --git a/src/backends/native/meta-output-kms.c b/src/backends/native/meta-output-kms.c
 index f071e4d11..2597ff6aa 100644
 --- a/src/backends/native/meta-output-kms.c
