@@ -1,15 +1,16 @@
 pkgbase = r-sfsmisc
 	pkgdesc = Utilities from 'Seminar fuer Statistik' ETH Zurich
 	pkgver = 1.1.15
-	pkgrel = 1
+	pkgrel = 4
 	url = https://cran.r-project.org/package=sfsmisc
 	arch = any
 	license = GPL
 	depends = r
+	optdepends = r-gmp
 	optdepends = r-lokern
 	optdepends = r-rmpfr
-	optdepends = r-gmp
 	source = https://cran.r-project.org/src/contrib/sfsmisc_1.1-15.tar.gz
+	md5sums = c1d1c3eb90b89e508918f1e4692cf16e
 	sha256sums = 4afa42cf83a287f62cac21741fc0559dee9dbd69dee59a740defce9a0e7c81e6
 
 pkgname = r-sfsmisc
