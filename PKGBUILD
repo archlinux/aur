@@ -4,7 +4,7 @@
 pkgbase=datagrip-eap
 _pkgbase=${pkgbase/-eap/}
 pkgname=(datagrip-eap datagrip-eap-jre)
-pkgver=232.7295.8
+pkgver=232.8660.5
 _pkgver=${pkgver}
 #_pkgver=2022.2
 pkgrel=1
@@ -18,7 +18,7 @@ options=('!strip')
 source=("https://download.jetbrains.com/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz"
         jetbrains-datagrip-eap.desktop
         LICENSE)
-b2sums=('a8d2d650c0dd6b42ffc56e74cb6cbdc84f8d4883ff0dd83736778ed43092aaac0bebcbbb18e06d6a34675c52a4a46066fea8f0ce2a4a91bb138693dc9eb670fb'
+b2sums=('60f47e84df1f84ec52969f9beca0df81e5bfbfef67de37e873e19b0dd776cd0fdd8bc6ac8e9529b7112bd5ebc73a46f6624880498e5a3dc1df84c4ff1672e663'
         '780569cb12b9f5d2475363c7b9c28d903f5a79806aaeea634973664b7cdac0ef281519024fa784b20d7e0062bf9b69e2bca3036bca58e6ee43a475609ea42a1c'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
