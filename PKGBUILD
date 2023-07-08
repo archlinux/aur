@@ -1,11 +1,11 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=templates_parser
-pkgdesc='A high performance semantic engine for the Ada programming language.'
+pkgdesc='Ada tools to create templated text streams, such as dynamic HTML documents.'
 pkgver=24.0w
-pkgrel=1
+pkgrel=2
 
-url=https://github.com/AdaCore/libadalang
+url=https://github.com/AdaCore/templates-parser
 arch=(i686 x86_64)
 license=(Apache)
 
@@ -32,9 +32,7 @@ build()
   PROCESSORS=0 \
   make
 
-  # Docs are currently broken due to missing 'sphinx_rtd_theme' python package.
-  #
-#  make build-doc
+  make build-doc
 }
 
 

@@ -1,8 +1,8 @@
 pkgbase = templates_parser
-	pkgdesc = A high performance semantic engine for the Ada programming language.
+	pkgdesc = Ada tools to create templated text streams, such as dynamic HTML documents.
 	pkgver = 24.0w
-	pkgrel = 1
-	url = https://github.com/AdaCore/libadalang
+	pkgrel = 2
+	url = https://github.com/AdaCore/templates-parser
 	arch = i686
 	arch = x86_64
 	license = Apache
