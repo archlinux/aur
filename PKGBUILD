@@ -2,18 +2,25 @@
 
 pkgname=rasm
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Z80 assembler"
 url="https://github.com/EdouardBERGE/rasm"
 license=('custom')
 arch=('x86_64')
+makedepends=('upx')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/EdouardBERGE/rasm/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d7af4102b2e3c3dbdad1bc6d4c7da482aafa5602420a56848140cc37b27a36f7')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  sed -i "s#./upx#upx#g" makefile
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  make prod
+  make release
 }
 
 check() {
