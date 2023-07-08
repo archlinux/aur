@@ -7,11 +7,10 @@ pkgname=conspy
 pkgver=1.16
 pkgrel=1
 pkgdesc="Remote control of Linux virtual consoles"
-arch=('x86_64' 'i686' 'armv6h')
+arch=('x86_64')
 url="https://conspy.sourceforge.net/"
 license=('AGPL3')
 depends=('ncurses')
-changelog=ChangeLog
 source=("https://downloads.sourceforge.net/project/conspy/conspy-$pkgver-$pkgrel/conspy-$pkgver.tar.gz")
 sha256sums=('ee5ef648ea08d20d9062db22e7bf62a7b7261af02053f916016d1b80a66a5609')
 
