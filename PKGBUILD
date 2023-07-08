@@ -65,7 +65,8 @@ prepare() {
   # patch -p0 < "$srcdir/linux-4.8-usercopy.patch"
   # - no longer required (from commit 218878) 
   # patch -p1 < "$srcdir/galaxy.patch"
-  patch -p1 < "$srcdir/ossvermagic.patch"
+  # - no longer required (from commit 4d221f) 
+  # patch -p1 < "$srcdir/ossvermagic.patch"
   patch -p1 < "$srcdir/extramodules.patch"
 
   # make OSS compile with glibc >= 2.23
