@@ -19,6 +19,8 @@ pkgbase = olive-git
 	conflicts = olive
 	source = git+https://github.com/olive-editor/olive.git
 	source = git+https://github.com/olive-editor/KDDockWidgets.git
+	source = git+https://github.com/olive-editor/core.git
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 
