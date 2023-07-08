@@ -11,10 +11,15 @@ pkgbase = lua-moonscript
 	makedepends = lua52
 	makedepends = lua53
 	source = lua-moonscript-0.5.0.tar.gz::https://github.com/leafo/moonscript/archive/refs/tags/v0.5.0.tar.gz
+	source = LICENSE
 	sha256sums = 1adb5bb38f9c6f306250f6e90d92796fe100408ee062ac0d14f3c4c22c92e682
+	sha256sums = 81dfcb5d1f1b97c76b5dec57809e203c536aac48e66260d4563137283717280b
 	b2sums = bda1e8fcd0191e8525ed6a7ecaf393712e24f8242b1dba5019b03f539d1e9acaa74faf67a1e3acddbb9b05f5cb570496d9910ff4f3a86986f2a8aa92234b41ef
+	b2sums = bd1d80f17545a9e82d40589969b3eafea115715890fc3fcbe8f83fdff2839ecb1a8dd913beb97b56a8b4758d3d633f785b485063093f39a7876cc1e47623ed3f
 
 pkgname = lua-moonscript
+
+pkgname = lua51-moonscript
 
 pkgname = lua52-moonscript
 
