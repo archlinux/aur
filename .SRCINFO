@@ -1,0 +1,17 @@
+pkgbase = libdbusmenu-lxqt-git
+	pkgdesc = A library that provides a Qt implementation of the DBusMenu spec
+	pkgver = 0.0.0.r354.7cc060c
+	pkgrel = 1
+	url = https://github.com/lxqt/libdbusmenu-lxqt
+	arch = x86_64
+	license = GPL
+	checkdepends = dbus
+	checkdepends = xorg-server-xvfb
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = git
+	depends = qt6-base
+	source = git+https://github.com/lxqt/libdbusmenu-lxqt
+	sha256sums = SKIP
+
+pkgname = libdbusmenu-lxqt-git
