@@ -16,11 +16,8 @@ optdepends=('python2-psycopg2: PostgreSQL database support'
             'python2-docutils: reStructuredText support'
             'python2-babel: localization support'
             'python2-pytz: complete list of time zones')
-install=trac.install
-source=(https://download.edgewall.org/trac/Trac-$pkgver.tar.gz
-        tracd.service)
-sha256sums=('c93ceed9abee6e3c7789f469862e82a3b9bf3405be73aae3221b5c259e062d21'
-            '3f050f1c9367b1b28e18a6ff0088f991676a9fbba3f5177859ce4db64f95ca42')
+source=(https://download.edgewall.org/trac/Trac-$pkgver.tar.gz)
+sha256sums=('c93ceed9abee6e3c7789f469862e82a3b9bf3405be73aae3221b5c259e062d21')
 
 prepare() {
   cd "$srcdir"/Trac-$pkgver
@@ -36,5 +33,4 @@ package() {
   cd "$srcdir"/Trac-$pkgver
   python2 setup.py install --prefix=/usr --root="$pkgdir"
   install -D -m644 COPYING "$pkgdir"/usr/share/licenses/trac/COPYING
-  install -Dm0644 "$srcdir"/tracd.service "$pkgdir"/usr/lib/systemd/system/tracd.service
 }

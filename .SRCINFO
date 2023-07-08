@@ -3,7 +3,6 @@ pkgbase = trac
 	pkgver = 1.4.3
 	pkgrel = 1
 	url = http://trac.edgewall.org/
-	install = trac.install
 	arch = any
 	license = BSD
 	makedepends = python2-babel
@@ -16,8 +15,6 @@ pkgbase = trac
 	optdepends = python2-babel: localization support
 	optdepends = python2-pytz: complete list of time zones
 	source = https://download.edgewall.org/trac/Trac-1.4.3.tar.gz
-	source = tracd.service
 	sha256sums = c93ceed9abee6e3c7789f469862e82a3b9bf3405be73aae3221b5c259e062d21
-	sha256sums = 3f050f1c9367b1b28e18a6ff0088f991676a9fbba3f5177859ce4db64f95ca42
 
 pkgname = trac
