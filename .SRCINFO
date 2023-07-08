@@ -1,0 +1,18 @@
+pkgbase = ashpd-demo
+	pkgdesc = asph-demo
+	pkgver = 0.3.0
+	pkgrel = 1.0
+	url = https://github.com/bilelmoussaoui/ashpd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = ninja
+	makedepends = meson
+	makedepends = rust
+	depends = gtk4
+	depends = libadwaita
+	source = ashpd-demo-0.3.0.tar.gz::https://github.com/bilelmoussaoui/ashpd/releases/download/0.3.0-demo/ashpd-demo-0.3.0.tar.xz
+	sha256sums = 2d6094918bbbb912167bce40729af603abe71bca4d7e580c419c2cc5035aeac9
+
+pkgname = ashpd-demo
