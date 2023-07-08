@@ -1,7 +1,7 @@
 pkgbase = flashplugin-debug
 	pkgdesc = Adobe Flash Player debugger
 	pkgver = 32.0.0.465
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.adobe.com/support/flashplayer/debug_downloads.html
 	arch = x86_64
 	license = custom
@@ -10,8 +10,8 @@ pkgbase = flashplugin-debug
 	noextract = flash_player_npapi_linux_debug_32.0.0.465.x86_64.tar.gz
 	noextract = flash_player_ppapi_linux_debug_32.0.0.465.x86_64.tar.gz
 	options = !strip
-	source = flash_player_npapi_linux_debug_32.0.0.465.x86_64.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_npapi_linux_debug.x86_64.tar.gz
-	source = flash_player_ppapi_linux_debug_32.0.0.465.x86_64.tar.gz::https://fpdownload.macromedia.com/pub/flashplayer/updaters/32/flash_player_ppapi_linux_debug.x86_64.tar.gz
+	source = flash_player_npapi_linux_debug_32.0.0.465.x86_64.tar.gz::https://archive.org/download/adobe-flash-player-32.0.0.465-retail-debug/flash_player_npapi_linux_debug.x86_64.tar.gz
+	source = flash_player_ppapi_linux_debug_32.0.0.465.x86_64.tar.gz::https://archive.org/download/adobe-flash-player-32.0.0.465-retail-debug/flash_player_ppapi_linux_debug.x86_64.tar.gz
 	sha256sums = 7e4c598349e271634b3b190540ac70d7e0f20e7d161cd5359d611e4fd807e712
 	sha256sums = 63348acd3f3b8f18b89c5abce41a057211b2d08c476a924835b719f2830435d5
 
@@ -32,4 +32,3 @@ pkgname = pepper-flash-debug
 	optdepends = flashplugin-debug: settings utility
 	provides = pepper-flash=32.0.0.465
 	conflicts = pepper-flash
-
