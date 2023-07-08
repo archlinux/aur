@@ -2,7 +2,7 @@
 
 pkgname=p4est-deal-ii
 _realname=p4est
-pkgver=2.8
+pkgver=2.8.5
 pkgrel=1
 pkgdesc="The parallel forest (p4est) library, built to work with deal.II (i.e., the deal-ii package)"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ depends=('openmpi' 'zlib' 'lua' 'gcc-fortran')
 makedepends=('gcc-fortran')
 source=(https://p4est.github.io/release/p4est-$pkgver.tar.gz)
 
-sha256sums=('6a0586e3abac06c20e31b1018f3a82a564a6a0d9ff6b7f6c772a9e6b0f0cc5e4')
+sha1sums=('4c1424b263379a022375289bac40cd30bad4a35c')
 
 install_dir=/opt/$pkgname/
 
