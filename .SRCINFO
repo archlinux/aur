@@ -1,6 +1,6 @@
 pkgbase = r-testthat
 	pkgdesc = Unit Testing for R
-	pkgver = 3.1.9
+	pkgver = 3.1.10
 	pkgrel = 1
 	url = https://cran.r-project.org/package=testthat
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = r-testthat
 	depends = r-magrittr
 	depends = r-pkgload>=1.3.0
 	depends = r-praise
-	depends = r-processx
+	depends = r-processx>=3.8.2
 	depends = r-ps>=1.3.4
 	depends = r-r6>=2.2.0
 	depends = r-rlang>=1.0.1
@@ -35,7 +35,7 @@ pkgbase = r-testthat
 	optdepends = r-usethis
 	optdepends = r-vctrs>=0.1.0
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/testthat_3.1.9.tar.gz
-	b2sums = b5d2f824eeb2d244056d59aad447583cbadea1711a788ca1b22b90fca5c984eaaf9dba9318244936b6507e170af2b3b010eff0d85b8dd1ec0537a52144da7bb5
+	source = https://cran.r-project.org/src/contrib/testthat_3.1.10.tar.gz
+	b2sums = 9fcdfb2119f5446815cd3a03c849a87be0e1048d54bb360db45d94b431f2b64469595bcfe9077379700c7675f300a93f744ef445598699ca774b7f513b78a1a3
 
 pkgname = r-testthat
