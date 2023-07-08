@@ -33,5 +33,5 @@ package() {
     # Install desktop file
     install -Dm644 mcpelauncher.desktop "${pkgdir}"/usr/share/applications/mcpelauncher.desktop
     # Install binary
-    install -Dm755 "${srcdir}"/"${pkgname}"-"${pkgver}"-"${pkgrel}".AppImage "${pkgdir}"/usr/bin/mcbelauncher
+    install -Dm755 "${srcdir}"/"${pkgname}"-"${pkgver}"-"${pkgrel}".AppImage "${pkgdir}"/usr/bin/mcpelauncher
 }
