@@ -2,7 +2,7 @@
 _base=SeleniumBase
 pkgname=python-${_base,,}
 pkgdesc="A complete web automation framework for end-to-end testing"
-pkgver=4.15.8
+pkgver=4.15.9
 pkgrel=1
 arch=(any)
 url="https://${_base,,}.io"
@@ -14,7 +14,7 @@ depends=(python-yaml python-rich python-requests-toolbelt python-pdbp python-sel
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base,,}/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('935c1a0f9efe365953d1d5f06f4bd45f6d2640e58fdd6f0ca18e8825c532790708af08910dda949c0b5d6e916032199f9bb6fbfc98d21790e464471a073c56c0')
+sha512sums=('bce471aefde4d0973dac8b22ee9a113822ff924b2cc2b943d695ed65fa038379f55d14a9ddad5392423cc56b441155398eb7c2bb27502cd3e7b0fc3bec4ddc4f')
 
 build() {
   cd ${_base}-${pkgver}
