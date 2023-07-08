@@ -7,8 +7,6 @@ pkgdesc="Scan an IP or local network and identify systems that have SSH enabled.
 arch=('any')
 url="https://github.com/basemax/sshfinderc"
 license=('GPL3')
-maintainer=("Maximilian Edison <maximilianedison@gmail.com>"
-            "Max Base <maxbasecode@gmail.com>")
 depends=('gcc' 'make')
 makedepends=('git')
 source=("git+$url.git")
