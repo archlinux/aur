@@ -2,9 +2,9 @@
 # Contributor: Anthony Wang <ta180m@pm.me>
 # Contributor: quellen <lodgerz@gmail.com>
 # Contributor: Daniel Menelkir <menelkir@itroll.org>
+pkgname=(libretro-vice-{x128,x64,x64dtv,x64sc,xcbm2,xcbm5x0,xpet,xplus4,xscpu64,xvic}-git)
 pkgbase=libretro-vice-git
-pkgname=(libretro-vice-{x128,x64dtv,x64sc,xcbm2,xcbm5x0,xpet,xplus4,xscpu64,xvic}-git)
-pkgver=r21112.953e668f1
+pkgver=r21117.341dd731a
 pkgrel=1
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/vice-libretro"
@@ -30,25 +30,25 @@ prepare() {
 build() {
 	cd vice-libretro
 	make clean EMUTYPE=x128
-	make EMUTYPE=x128
-	# make clean EMUTYPE=x64
-	# make EMUTYPE=x64
+	make all EMUTYPE=x128
+	make clean EMUTYPE=x64
+	make all EMUTYPE=x64
 	make clean EMUTYPE=x64dtv
-	make EMUTYPE=x64dtv
+	make all EMUTYPE=x64dtv
 	make clean EMUTYPE=x64sc
-	make EMUTYPE=x64sc
+	make all EMUTYPE=x64sc
 	make clean EMUTYPE=xcbm2
-	make EMUTYPE=xcbm2
+	make all EMUTYPE=xcbm2
 	make clean EMUTYPE=xcbm5x0
-	make EMUTYPE=xcbm5x0
+	make all EMUTYPE=xcbm5x0
 	make clean EMUTYPE=xpet
-	make EMUTYPE=xpet
+	make all EMUTYPE=xpet
 	make clean EMUTYPE=xplus4
-	make EMUTYPE=xplus4
+	make all EMUTYPE=xplus4
 	make clean EMUTYPE=xscpu64
-	make EMUTYPE=xscpu64
+	make all EMUTYPE=xscpu64
 	make clean EMUTYPE=xvic
-	make EMUTYPE=xvic
+	make all EMUTYPE=xvic
 }
 
 package_libretro-vice-x128-git() {
@@ -60,13 +60,13 @@ package_libretro-vice-x128-git() {
 	install -D -t "$pkgdir"/usr/lib/libretro vice-libretro/vice_x128_libretro.so
 }
 
-# package_libretro-vice-x64-git() {
-# 	pkgdesc="Commodore C64 core (fast)"
-# 	provides=("libretro-vice-x64=${pkgver#r}")
-# 	conflicts+=('libretro-vice-x64')
+package_libretro-vice-x64-git() {
+	pkgdesc="Commodore C64 core (fast)"
+	provides=("libretro-vice-x64=${pkgver#r}")
+	conflicts+=('libretro-vice-x64')
 
-# 	install -D -t "$pkgdir"/usr/lib/libretro vice-libretro/vice_x64_libretro.so
-# }
+	install -D -t "$pkgdir"/usr/lib/libretro vice-libretro/vice_x64_libretro.so
+}
 
 package_libretro-vice-x64dtv-git() {
 	pkgdesc="Commodore C64DTV core"

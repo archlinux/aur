@@ -1,5 +1,5 @@
 pkgbase = libretro-vice-git
-	pkgver = r21112.953e668f1
+	pkgver = r21117.341dd731a
 	pkgrel = 1
 	url = https://github.com/libretro/vice-libretro
 	arch = aarch64
@@ -20,54 +20,60 @@ pkgbase = libretro-vice-git
 
 pkgname = libretro-vice-x128-git
 	pkgdesc = Commodore C128 core
-	provides = libretro-vice-x128=21112.953e668f1
+	provides = libretro-vice-x128=21117.341dd731a
 	conflicts = libretro-vice-git
 	conflicts = libretro-vice-x128
 
+pkgname = libretro-vice-x64-git
+	pkgdesc = Commodore C64 core (fast)
+	provides = libretro-vice-x64=21117.341dd731a
+	conflicts = libretro-vice-git
+	conflicts = libretro-vice-x64
+
 pkgname = libretro-vice-x64dtv-git
 	pkgdesc = Commodore C64DTV core
-	provides = libretro-vice-x64dtv=21112.953e668f1
+	provides = libretro-vice-x64dtv=21117.341dd731a
 	conflicts = libretro-vice-git
 	conflicts = libretro-vice-x64dtv
 
 pkgname = libretro-vice-x64sc-git
 	pkgdesc = Commodore C64 core (accurate)
-	provides = libretro-vice-x64sc=21112.953e668f1
+	provides = libretro-vice-x64sc=21117.341dd731a
 	conflicts = libretro-vice-git
 	conflicts = libretro-vice-x64sc
 
 pkgname = libretro-vice-xcbm2-git
 	pkgdesc = Commodore CBM-II 6x0/7x0 core
-	provides = libretro-vice-xcbm2=21112.953e668f1
+	provides = libretro-vice-xcbm2=21117.341dd731a
 	conflicts = libretro-vice-git
 	conflicts = libretro-vice-xcbm2
 
 pkgname = libretro-vice-xcbm5x0-git
 	pkgdesc = Commodore CBM-II 5x0 core
-	provides = libretro-vice-xcbm5x0=21112.953e668f1
+	provides = libretro-vice-xcbm5x0=21117.341dd731a
 	conflicts = libretro-vice-git
 	conflicts = libretro-vice-xcbm5x0
 
 pkgname = libretro-vice-xpet-git
 	pkgdesc = Commodore PET core
-	provides = libretro-vice-xpet=21112.953e668f1
+	provides = libretro-vice-xpet=21117.341dd731a
 	conflicts = libretro-vice-git
 	conflicts = libretro-vice-xpet
 
 pkgname = libretro-vice-xplus4-git
 	pkgdesc = Commodore Plus/4 core
-	provides = libretro-vice-xplus4=21112.953e668f1
+	provides = libretro-vice-xplus4=21117.341dd731a
 	conflicts = libretro-vice-git
 	conflicts = libretro-vice-xplus4
 
 pkgname = libretro-vice-xscpu64-git
 	pkgdesc = Commodore C64 SuperCPU core
-	provides = libretro-vice-xscpu64=21112.953e668f1
+	provides = libretro-vice-xscpu64=21117.341dd731a
 	conflicts = libretro-vice-git
 	conflicts = libretro-vice-xscpu64
 
 pkgname = libretro-vice-xvic-git
 	pkgdesc = Commodore VIC-20 core
-	provides = libretro-vice-xvic=21112.953e668f1
+	provides = libretro-vice-xvic=21117.341dd731a
 	conflicts = libretro-vice-git
 	conflicts = libretro-vice-xvic
