@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# Copyright (C) 2011-2017 Daniel "Trizen" Șuteu <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>.
+# Copyright (C) 2011-2017 Daniel "Trizen" Șuteu
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,34 +13,37 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 #-------------------------------------------------------
 #  Appname: srt-delay
-#  Version: 0.0.4
-#  Created on: 26 December 2011
-#  Latest edit on: 12 October 2017
+#  Version: 0.0.6
+#  Created: 26 December 2011
+#  Edit on: 19 October 2020
 #  https://github.com/trizen
 #-------------------------------------------------------
 
 use 5.014;
 use strict;
+use warnings;
 
-use Scalar::Util qw(looks_like_number);
-use experimental qw(smartmatch);
+use Getopt::Long qw(GetOptions);
 
 sub usage {
+    my ($exit_code) = @_;
     print <<"USAGE";
 usage: $0 [options] [seconds] [file.srt]
 
 Options:
-    -b, --backup  : backup original to .bak
+    -b  --backup    : backup original to .bak
+    -d  --delay=f   : number of seconds of delay
+    -s  --scale=f   : scale the timestamps by a multiple
 
-Examples: $0 -b 1.439 file.srt
-          $0 -b 0.321 file.srt
-          $0 -b -3.14 file.srt
+Examples: $0 -b -d=1.439 file.srt
+          $0 -b -d=0.321 file.srt
+          $0 -b -d=-3.14 file.srt
 USAGE
-    exit 0;
+    exit($exit_code // 0);
 }
 
 sub time2sec {
@@ -61,13 +64,23 @@ sub sec2time {
     return @out;
 }
 
-my $addition = (grep { looks_like_number($_) } @ARGV)[0] // usage();
+my $delay  = 0;
+my $backup = 0;
+my $scale  = 1;
 
-my $backup = do {
-    (grep { $_ ~~ ['-b', '--backup'] } @ARGV) ? 1 : 0;
-};
+GetOptions(
+           "b|backup!" => \$backup,
+           "s|scale=f" => \$scale,
+           "d|delay=f" => \$delay,
+           "h|help"    => sub { usage(0) },
+          )
+  or die("Error in command line arguments");
 
-foreach my $file (grep { -f $_ } @ARGV) {
+my @files = grep { -f $_ } @ARGV;
+
+@files || usage(2);
+
+foreach my $file (@files) {
     my @output;
     open my $fh, '<', $file or die "Unable to open for read ${file}: $!\n";
     while (defined(my $line = <$fh>)) {
@@ -75,12 +88,12 @@ foreach my $file (grep { -f $_ } @ARGV) {
             push @output, join(
                 ' --> ',
                 sec2time(
-                    map ({
-                            my $sec = $_ + $addition;
-                            $sec >= 0
-                              ? $sec
-                              : !warn "[!] Time cannot be lower than zero at line $.\n";
-                        } time2sec(split(/\s*-->\s*/, $line, 2)))
+                    map {
+                        my $sec = $scale * $_ + $delay;
+                        ($sec >= 0)
+                          ? $sec
+                          : !warn "[!] Time cannot be lower than zero at line $.\n";
+                    } time2sec(split(/\s*-->\s*/, $line, 2))
                 )
               )
               . $1;
