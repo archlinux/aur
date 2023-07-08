@@ -1,0 +1,36 @@
+pkgbase = qadwaitaplatform-git
+	pkgdesc = QAdwaitaPlatform is QGnomePlatform fork that implements modern LibAdwaita window decoration look to Qt applications.
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://github.com/urFate/QAdwaitaPlatform
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = git
+	makedepends = gtk3
+	makedepends = qt5-wayland
+	makedepends = qt6-wayland
+	makedepends = adwaita-qt5
+	makedepends = adwaita-qt6
+	source = git+https://github.com/urFate/QAdwaitaPlatform.git
+	sha256sums = SKIP
+
+pkgname = qadwaitaplatform-qt5-git
+	pkgdesc = QAdwaitaPlatform is qadwaitaplatform fork that implements modern LibAdwaita window decoration look to Qt applications.
+	depends = gtk3
+	depends = qt5-wayland
+	depends = adwaita-qt5
+	provides = qadwaitaplatform-qt5
+	conflicts = qadwaitaplatform-qt5
+	conflicts = qgnomeplatform-qt5
+	replaces = qadwaitaplatform
+	replaces = qadwaitaplatform-git
+
+pkgname = qadwaitaplatform-qt6-git
+	pkgdesc = QAdwaitaPlatform is qadwaitaplatform fork that implements modern LibAdwaita window decoration look to Qt applications.
+	depends = gtk3
+	depends = qt6-wayland
+	depends = adwaita-qt6
+	provides = qadwaitaplatform-qt6
+	conflicts = qadwaitaplatform-qt6
+	conflicts = qgnomeplatform-qt6
