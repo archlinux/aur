@@ -1,0 +1,17 @@
+pkgbase = git-whoknows-git
+	pkgdesc = Describes who is likely familiar with a file
+	pkgver = r33.fd6b9c2
+	pkgrel = 1
+	url = https://github.com/Arrowbox/git-whoknows
+	arch = any
+	license = GPL3
+	makedepends = rust
+	depends = git
+	provides = git-whoknows
+	conflicts = git-whoknows
+	source = git-whoknows-git::git+https://github.com/Arrowbox/git-whoknows#branch=master
+	source = cargo-update.patch
+	sha256sums = SKIP
+	sha256sums = ac19bf91ff544d84fd1553362d79992ee7f910a9ddabac57a2374ac80805d2ac
+
+pkgname = git-whoknows-git
