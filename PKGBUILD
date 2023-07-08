@@ -11,7 +11,7 @@ url="https://github.com/lightdot/${_gitname}"
 license=('GPL3')
 depends=('efl')
 makedepends=('git' 'efl')
-source=("git://github.com/lightdot/${_gitname}.git")
+source=("git+https://github.com/lightdot/${_gitname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
