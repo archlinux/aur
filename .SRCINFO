@@ -1,6 +1,6 @@
 pkgbase = reth
 	pkgdesc = A fast implementation of the Ethereum protocol in Rust
-	pkgver = v0.1.0_alpha.1
+	pkgver = v0.1.0_alpha.2
 	pkgrel = 1
 	url = https://github.com/paradigmxyz/reth
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = reth
 	makedepends = cargo
 	makedepends = clang
 	provides = reth
-	source = git+https://github.com/paradigmxyz/reth.git#tag=v0.1.0-alpha.1
+	source = git+https://github.com/paradigmxyz/reth.git#tag=v0.1.0-alpha.2
 	sha512sums = SKIP
 
 pkgname = reth
