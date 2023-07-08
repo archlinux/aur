@@ -16,6 +16,7 @@ depends=(gcc-ada
          
 makedepends=(gprbuild
              autoconf
+             automake
              python-sphinx
              python-sphinx_rtd_theme
              texlive-meta)

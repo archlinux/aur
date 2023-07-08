@@ -8,6 +8,7 @@ pkgbase = polyorb
 	license = GPL
 	makedepends = gprbuild
 	makedepends = autoconf
+	makedepends = automake
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = texlive-meta
