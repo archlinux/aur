@@ -97,19 +97,16 @@ replaces=('vlc' 'vlc-plugin' 'vlc-git')
 options=('!emptydirs')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         libplacebo-5.patch
-        update-vlc-plugin-cache.hook
-        vlc-live-media-2021.patch)
+        update-vlc-plugin-cache.hook)
 sha512sums=('6fc8fdaa7e8862ad7133d69b3dab99ab9cd3945846a6ce5e2379b7f68ee9accd385c53b8573fc7c82f732c24678b4932b1154d2ad8accf06305f2f578d6fcd8e'
             'a06b04a8b059dbbef77d27435bd5bec3c26f937390bd112b0843385587e866e617c3dd0e66f99eed5fa4a91bc5f0fd9b5623f65b2f2435a54456dde2aa96209b'
-            'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
-            '322461cb5e89e4828483dd0a5c6595f99e767885ae9a1aa2e4d0514ac7354f2ee93b3e5c80993dcff7cd218d7af210374724337b3fc8bc196d35ef5e2b41695d')
+            'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3')
 
 prepare() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
   patch -Np1 < "${srcdir}/libplacebo-5.patch"
-  patch -Np1 < "${srcdir}/vlc-live-media-2021.patch"
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
   autoreconf -vf
