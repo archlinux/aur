@@ -1,5 +1,5 @@
 pkgbase=linux-lts-huawei-amd-audio
-pkgver=6.1.34
+pkgver=6.1.38
 pkgrel=1
 pkgdesc='LTS Linux with patch for huawei amd devices from https://github.com/codepayne/pop-os-linux'
 url="https://www.kernel.org/"
