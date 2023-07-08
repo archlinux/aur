@@ -2,7 +2,7 @@
 
 pkgname=alsa-ucm-conf-git
 pkgbasename="${pkgname%-git}"
-pkgver=1.2.6.3.461.15a1250.d41d8cd98f00b204e9800998ecf8427e
+pkgver=1.2.9.628.d42e1d1.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 pkgdesc="ALSA Use Case Manager configuration (and topologies), git version"
 provides=("${pkgbasename}")
