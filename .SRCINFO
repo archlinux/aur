@@ -1,6 +1,6 @@
 pkgbase = flatseal
 	pkgdesc = A permissions manager for Flatpak.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/tchx84/Flatseal/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = flatseal
 	depends = libhandy
 	depends = appstream-glib
 	depends = libadwaita
-	source = flatseal-2.0.1::https://github.com/tchx84/Flatseal/archive/v2.0.1.tar.gz
-	sha256sums = 81c9d4b47a57829ba58aa9a4046a733f918d851a663e866cd954068ea05f4d3e
+	source = flatseal-2.0.2::https://github.com/tchx84/Flatseal/archive/v2.0.2.tar.gz
+	sha256sums = 2ef0c6d9a28b8c472694943cade4bff3937e8a0f64222f20dc831484ae56fd9e
 
 pkgname = flatseal
