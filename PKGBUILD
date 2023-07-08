@@ -1,6 +1,7 @@
 # Maintainer: fuero <fuerob@gmail.com>
 _pkgname=bashhub-client
 pkgname=${_pkgname}
+# renovate: datasource=github-releases depName=rcaloras/bashhub-client
 pkgver=2.3.1
 pkgrel=6
 pkgdesc='saves every terminal command entered across all sessions and system to the cloud'
@@ -11,9 +12,7 @@ url="https://${_repo_prefix}/${_repo_name}"
 source=(
   ${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz
 )
-sha256sums=(
-  'cc9df8439cc969cf344f8ca1a9446dc11874c5b0812f26011169ccc98915dfe9'
-)
+sha256sums=('cc9df8439cc969cf344f8ca1a9446dc11874c5b0812f26011169ccc98915dfe9')
 license=('Apache')
 depends=(
 	python
