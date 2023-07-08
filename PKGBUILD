@@ -12,7 +12,7 @@ url="http://www.davisr.me/projects/rcu/"
 license=('AGPL3')
 source=(
     "local://rcu-${pkgver}-fedora38.tar.gz"
-    "local://rcu.desktop"
+    "rcu.desktop"
 
 )
 sha256sums=(

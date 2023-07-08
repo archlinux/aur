@@ -7,7 +7,7 @@ pkgbase = rcu-bin
 	license = AGPL3
 	options = !strip
 	source = local://rcu-d2023.001g-fedora38.tar.gz
-	source = local://rcu.desktop
+	source = rcu.desktop
 	sha256sums = c5784b6aeeb424536341ea60e852e07b9d464203bad58cff83e99df06743dfde
 	sha256sums = b2c876686d260b2b55553e00d0870e55d1f4fd23b60ba88e6767770e4aae1c5c
 
