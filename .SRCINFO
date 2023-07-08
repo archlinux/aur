@@ -1,6 +1,6 @@
 pkgbase = pc-nrfconnect-programmer
 	pkgdesc = Programmer app for nRF Connect for Desktop
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 0
 	url = https://github.com/NordicSemiconductor/pc-nrfconnect-programmer
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = pc-nrfconnect-programmer
 	makedepends = npm
 	optdepends = nrf-udev: udev rules for nRF (Nordic Semiconductor) development kits
 	optdepends = jlink-software-and-documentation: Segger JLink software & documentation pack for Linux
-	noextract = pc-nrfconnect-programmer-3.0.4.tar.gz
+	noextract = pc-nrfconnect-programmer-3.0.5.tar.gz
 	options = !strip
-	source = pc-nrfconnect-programmer-3.0.4.tar.gz::https://github.com/NordicSemiconductor/pc-nrfconnect-programmer/archive/refs/tags/v3.0.4.tar.gz
-	sha256sums = 89bc71b5d9490c914b72385553fc7e6bf03f05ac5aab332947e908efdaeda326
+	source = pc-nrfconnect-programmer-3.0.5.tar.gz::https://github.com/NordicSemiconductor/pc-nrfconnect-programmer/archive/refs/tags/v3.0.5.tar.gz
+	sha256sums = 7cc826754d3f6a60377d342ffad7ef112c472970e7c4616420435fc8229f1c27
 
 pkgname = pc-nrfconnect-programmer
