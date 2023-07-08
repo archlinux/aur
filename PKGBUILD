@@ -2,7 +2,7 @@
 
 pkgname=newelle
 pkgdesc='Your Ultimate Virtual Assistant'
-pkgver=0.1.5.1
+pkgver=0.1.6
 pkgrel=1
 arch=('any')
 url="https://github.com/qwersyk/Newelle"
