@@ -1,13 +1,13 @@
 pkgbase = lutgen-bin
 	pkgdesc = A blazingly fast interpolated LUT generator and applicator for arbitrary and popular color palettes.
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/ozwaldorf/lutgen-rs
 	arch = x86_64
 	license = MIT
 	provides = lutgen
 	conflicts = lutgen
-	source = https://github.com/ozwaldorf/lutgen-rs/releases/download/v0.6.2/lutgen-0.6.2-x86_64.tar.gz
-	sha256sums = 89767bf0c1ba752dbbe655b05651167e7232db75d963df534d3c92b7622fd487
+	source = https://github.com/ozwaldorf/lutgen-rs/releases/download/v0.7.0/lutgen-0.7.0-x86_64.tar.gz
+	sha256sums = 80487e6a291766921301f9184e1b73209b02ac7d0f94d93f9a240e5d40389b88
 
 pkgname = lutgen-bin
