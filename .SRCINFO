@@ -1,0 +1,24 @@
+pkgbase = teams-for-linux-electron-bin
+	pkgdesc = Unofficial Microsoft Teams for Linux client (binary version)
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/IsmaelMartinez/teams-for-linux
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	depends = electron24
+	provides = teams-for-linux
+	conflicts = teams-for-linux
+	conflicts = teams-for-linux-appimage
+	conflicts = teams-for-linux-git
+	conflicts = teams-for-linux-wbundled-electron
+	options = !strip
+	source_x86_64 = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.1.8/teams-for-linux_1.1.8_amd64.deb
+	sha256sums_x86_64 = b760bea426cff140b9bee68db820616ba8af1d733635d5402b8e3473f2c2016e
+	source_aarch64 = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.1.8/teams-for-linux_1.1.8_arm64.deb
+	sha256sums_aarch64 = 48db26ba559e0f418a1ad5f033c8a4b3082b4bf1d818afa3dae89ead9548f477
+	source_armv7h = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.1.8/teams-for-linux_1.1.8_armv7l.deb
+	sha256sums_armv7h = 96b0836e1a077395dc3ec0936d3a33a6d1faad71beaa2b416fe7974d5623fc16
+
+pkgname = teams-for-linux-electron-bin
