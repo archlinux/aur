@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=emojimart
-pkgver=0.1.5
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Modern emoji picker popup for desktop"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'setconf' 'yarn')
 optdepends=('xdotool: automatically paste to your currently focused app (X11)'
             'ydotool: automatically paste to your currently focused app (Wayland)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5479776075453ee383ee3c2037f2b1fb2cdbce78a06d0863bd3d74c2f76cfa7b')
+sha256sums=('d6febb26a845796c27640563d5c463a88c19d619a5775d3e927ec710d9508a92')
 
 prepare() {
   cd "EmojiMart-$pkgver"
