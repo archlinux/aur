@@ -1,10 +1,10 @@
 # Maintainer: LightDot <lightdot -a-t- g m a i l>
 
 pkgname=proxsign-bin
-pkgver=2.2.8
-pkgrel=2
+pkgver=2.2.9
+pkgrel=1
 _pkgname=proxsign
-_pkgver=2.2.8-1.f34
+_pkgver=2.2.9-1.f37
 pkgdesc="SETCCE proXSign® is a set of components for PKI based digital signing. Package based on the official binary build."
 arch=('x86_64')
 url="https://www.setcce.com/products/electronic-signature-technologies/pki"
@@ -13,8 +13,8 @@ depends=('cairo' 'libjpeg6-turbo' 'libldap24' 'nss' 'xalan-c' 'xerces-c' 'zlib')
 provides=('proxsign')
 conflicts=('proxsign')
 replaces=('proxsign')
-source=(https://proxsign.setcce.si/$_pkgname/repo/Fedora_34/x86_64/$_pkgname-$_pkgver.x86_64.rpm)
-sha256sums=('ec63a836588babd7e6b0f81b4c4bfb075ede3f3da1f8a0bb3df273bd17b9c28c')
+source=(https://proxsign.setcce.si/$_pkgname/repo/Fedora_37/x86_64/$_pkgname-$_pkgver.x86_64.rpm)
+sha256sums=('51ad22eb7c438d01a560153e1cebe1dd4edd4e9754792125b33814192d239145')
 
 package() {
     install -Dm755 ${srcdir}/usr/bin/proxsign ${pkgdir}/usr/bin/proxsign
