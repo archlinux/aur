@@ -1,0 +1,13 @@
+pkgbase = sudo-askpass-git
+	pkgdesc = A simple askpass program so sudo doesn't look so boring
+	pkgver = 1.0.r17.8f7d350
+	pkgrel = 1
+	url = https://github.com/Absolpega/sudo-askpass
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	source = git+https://github.com/Absolpega/sudo-askpass
+	md5sums = SKIP
+
+pkgname = sudo-askpass-git
