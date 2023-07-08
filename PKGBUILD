@@ -10,7 +10,7 @@ depends=('podman' 'xz' 'systemd')
 makedepends=('dart>=3.0.0' 'dart<4.0.0')
 _pkgdir='podman_backup-1.0.3'
 source=("$_pkgdir.tar.gz::https://github.com/Skycoder42/podman_backup/archive/refs/tags/v1.0.3.tar.gz")
-b2sums=('445b4106beceb255644ed8394551513e60098ada8a2a62e5c608797b44c69a16560f6c6bda27d101253341b25fe97faadc97a285ed05aba853e0ee0872e60fa5')
+b2sums=('a9f0bc9a8f9b335793405493d565a6b54edf7caa142233da4bce799b85a4f8770eda561a1469e2eb6350333351f32325da5d0b8cb64a678d11e201690ec07efa')
 changelog='CHANGELOG.md'
 options=('!strip')
 
