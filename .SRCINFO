@@ -16,7 +16,7 @@ pkgbase = qadwaitaplatform-git
 	sha256sums = SKIP
 
 pkgname = qadwaitaplatform-qt5-git
-	pkgdesc = QAdwaitaPlatform is qadwaitaplatform fork that implements modern LibAdwaita window decoration look to Qt applications.
+	pkgdesc = QAdwaitaPlatform is QGnomePlatform fork that implements modern LibAdwaita window decoration look to Qt applications.
 	depends = gtk3
 	depends = qt5-wayland
 	depends = adwaita-qt5
@@ -27,7 +27,7 @@ pkgname = qadwaitaplatform-qt5-git
 	replaces = qadwaitaplatform-git
 
 pkgname = qadwaitaplatform-qt6-git
-	pkgdesc = QAdwaitaPlatform is qadwaitaplatform fork that implements modern LibAdwaita window decoration look to Qt applications.
+	pkgdesc = QAdwaitaPlatform is QGnomePlatformfork that implements modern LibAdwaita window decoration look to Qt applications.
 	depends = gtk3
 	depends = qt6-wayland
 	depends = adwaita-qt6
