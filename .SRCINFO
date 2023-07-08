@@ -1,6 +1,6 @@
 pkgbase = owmods-gui-bin
 	pkgdesc = A GUI To Manage Outer Wilds Mods
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/Bwc9876/ow-mod-man/tree/main/owmods_gui
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = owmods-gui-bin
 	depends = webkit2gtk
 	depends = cairo
 	depends = mono
-	source = outer-wilds-mod-manager-0.7.0-x86_64.deb::https://github.com/Bwc9876/ow-mod-man/releases/download/gui_v0.7.0/outer-wilds-mod-manager_0.7.0_amd64.deb
-	sha256sums = b6a4370df72d39d2e9988be2a8ed5020d59d0b024e6d5b032c9c5d2eef7109ea
+	source = outer-wilds-mod-manager-0.7.1-x86_64.deb::https://github.com/Bwc9876/ow-mod-man/releases/download/gui_v0.7.1/outer-wilds-mod-manager_0.7.1_amd64.deb
+	sha256sums = 75b8d5998e3b1ecbf0212f06c8500dc81d93945e91a01d078bd0ba520e822e87
 
 pkgname = owmods-gui-bin
