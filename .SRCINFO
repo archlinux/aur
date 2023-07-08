@@ -1,0 +1,17 @@
+pkgbase = bililive-go-bin
+	pkgdesc = pre build binary for bililive-go
+	pkgver = 0.7.13
+	pkgrel = 1
+	url = https://github.com/hr3lxphr6j/bililive-go
+	arch = x86_64
+	license = GPL3
+	depends = ffmpeg
+	provides = bililive-go
+	conflicts = bililive-go
+	backup = etc/bililive-go/config.yml
+	source = bililive-go-0.7.13.tar.gz::https://github.com/hr3lxphr6j/bililive-go/releases/download/v0.7.13/bililive-linux-amd64.tar.gz
+	source = bililive-go.service
+	b2sums = b085d5d6b911c3b8b712de031bd36d434485060e5bd152f79c958ae990d58fd072e972759995ee541f0642d95dd42e321e0244930a6ddf6d1a41156fe643bc8a
+	b2sums = SKIP
+
+pkgname = bililive-go-bin
