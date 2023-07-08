@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=prometheus-pgbouncer-exporter
-pkgver=0.5.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Prometheus exporter for PgBouncer metrics'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 optdepends=('pgbouncer: for monitoring a local pgbouncer instance')
 options=('!lto')
-_commit='b9e5fbf8a4d0ac7facdacd77b0ad19e4daab2fc4'
+_commit='d1c70405e5e532ed47048f75bc122a9bb8ed9c9b'
 source=("$pkgname::git+$url.git#commit=$_commit"
         'systemd.service'
         'sysusers.conf')
