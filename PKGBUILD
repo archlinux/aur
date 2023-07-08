@@ -1,7 +1,7 @@
 # Maintainer: David Wells <drwells.aur at fastmail dot com>
 
 pkgname=nanoflann
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='a C++ header-only library for Nearest Neighbor (NN) search wih KD-trees'
 arch=('any')
@@ -9,8 +9,8 @@ url='https://github.com/jlblancoc/nanoflann'
 license=('BSD')
 depends=('eigen' 'python')
 makedepends=('cmake' 'gtest')
-source=('https://github.com/jlblancoc/nanoflann/archive/v1.4.2.tar.gz')
-sha256sums=('97fce650eb644a359a767af526cab9ba31842e53790a7279887e1ae2fffe7319')
+source=("https://github.com/jlblancoc/nanoflann/archive/v${pkgver}.tar.gz")
+sha256sums=('89aecfef1a956ccba7e40f24561846d064f309bc547cc184af7f4426e42f8e65')
 
 build() {
     rm -rf ${srcdir}/build
