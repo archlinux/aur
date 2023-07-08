@@ -1,7 +1,7 @@
 pkgbase = unifont
 	pkgdesc = GNU Unifont Glyphs
 	pkgver = 15.0.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unifoundry.com/unifont/index.html
 	arch = any
 	license = GPL2

