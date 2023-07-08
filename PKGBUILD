@@ -13,16 +13,8 @@ makedepends=(git meson rust blueprint-compiler appstream)
 provides=(paper-plane)
 conflicts=(paper-plane)
 
-source=("git+$url.git"
-        "unstable-gtk-crash-fix.patch::$url/commit/dee19785c1e6a79b07f3984080f7ce18ccdfd74c.patch")
-sha256sums=('SKIP'
-            '10f8b9d8956d1bf44e227d99e5f9b7562c488ac4e8ace22103e9718b1100f7e9')
-
-prepare() {
-  cd "$_pkgname"
-
-  patch --forward --strip=1 --input="$srcdir/unstable-gtk-crash-fix.patch"
-}
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"

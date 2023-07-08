@@ -21,8 +21,6 @@ pkgbase = paper-plane-git
 	provides = paper-plane
 	conflicts = paper-plane
 	source = git+https://github.com/paper-plane-developers/paper-plane.git
-	source = unstable-gtk-crash-fix.patch::https://github.com/paper-plane-developers/paper-plane/commit/dee19785c1e6a79b07f3984080f7ce18ccdfd74c.patch
 	sha256sums = SKIP
-	sha256sums = 10f8b9d8956d1bf44e227d99e5f9b7562c488ac4e8ace22103e9718b1100f7e9
 
 pkgname = paper-plane-git
