@@ -1,14 +1,17 @@
 pkgbase = python-stdlib-list
 	pkgdesc = A list of Python Standard Libraries
-	pkgver = 0.8.0
-	pkgrel = 2
-	url = https://github.com/jackmaney/python-stdlib-list
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/pypi/stdlib-list
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-flit-core
 	depends = python
-	source = python-stdlib-list-0.8.0.tar.gz::https://github.com/jackmaney/python-stdlib-list/archive/v0.8.0.tar.gz
-	sha512sums = e18d893e257408125249064b9466e50f684a5358d0d8ab1693bf3529f23b47f82dc23b52cea6f8be89c7dc2bac58f8981ace0b7d7a016b295855562dba1aebc3
-	b2sums = 856b602fc7041fba987e9801571ecf9ccfafa935375dbc5a3248fd89803981b367fd03874b58a4f173bc6e5ed59e1d0711e54f2f210e640aeebc8c83eabce59d
+	source = python-stdlib-list::git+https://github.com/pypi/stdlib-list#commit=741c4e2d4f67ec85ef45e3a2e6823d4832ecbde7
+	b2sums = SKIP
 
 pkgname = python-stdlib-list

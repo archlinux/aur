@@ -2,32 +2,53 @@
 # Contributor: Philipp A. <flying-sheep@web.de>
 
 pkgname=python-stdlib-list
-pkgver=0.8.0
-pkgrel=2
-pkgdesc="A list of Python Standard Libraries"
+pkgver=0.9.0
+pkgrel=1
+pkgdesc='A list of Python Standard Libraries'
 arch=('any')
-url="https://github.com/jackmaney/python-stdlib-list"
+url='https://github.com/pypi/stdlib-list'
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('e18d893e257408125249064b9466e50f684a5358d0d8ab1693bf3529f23b47f82dc23b52cea6f8be89c7dc2bac58f8981ace0b7d7a016b295855562dba1aebc3')
-b2sums=('856b602fc7041fba987e9801571ecf9ccfafa935375dbc5a3248fd89803981b367fd03874b58a4f173bc6e5ed59e1d0711e54f2f210e640aeebc8c83eabce59d')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'python-flit-core'
+)
+checkdepends=('python-pytest')
+_commit='741c4e2d4f67ec85ef45e3a2e6823d4832ecbde7'
+source=("$pkgname::git+$url#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$pkgname"
+
+  pytest -v
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # documentation
-  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md{,.old}
 
-  # license
-  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  # symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "$site_packages/stdlib_list-$pkgver.dist-info/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
