@@ -13,7 +13,7 @@
 _name=WaveEdit
 _pkgname=${_name,,}
 pkgname=$_pkgname-git
-pkgver=1.2.r130.2de1633
+pkgver=1.2.r131.7ea659f
 pkgrel=1
 pkgdesc='A wavetable editor for wavetable synthesizers (git version)'
 arch=(x86_64)
