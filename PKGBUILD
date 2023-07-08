@@ -1,18 +1,26 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=sticky
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc="A sticky notes app for the Linux desktop"
 arch=('any')
-url="https://github.com/linuxmint/sticky"
+#url="https://github.com/linuxmint/sticky"
+url="http://packages.linuxmint.com/pool/main/s/${pkgname}"
 license=('GPL')
-depends=('gtk3' 'gspell' 'python-gobject' 'python-xapp' 'xapp')
-provides=("sticky")
+depends=(
+    'gtk3'
+    'gspell'
+    'python-gobject'
+    'python-xapp'
+    'xapp'
+)
 conflicts=("sticky-git")
+#source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('17497c76d95b931df4e80721f00465590ce50703022f193f2220a22fc72ef16d')
+sha256sums=('7f0cee9af97e4a59272b9bb9f832eeb476eac29d09fdd8004f04c288f8d3e672')
 
+## Packaging via Github
 prepare() {
   cd "$pkgname-$pkgver"
 
@@ -35,3 +43,4 @@ package() {
   chmod +x "$pkgdir/usr/bin/$pkgname"
 }
 
+## Packaging via Linuxmint repository
