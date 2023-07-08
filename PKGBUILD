@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # Contributor: Eli Schwartz
 pkgname=smile
-pkgver=2.5.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('xdotool: Automatically paste emojis (X11 only)')
 conflicts=("$pkgname-emoji-picker")
 replaces=("$pkgname-emoji-picker")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mijorus/smile/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('694b8a3daf8871235ac7a3a9656e9e8778477fe11bc3b7d83beffbec830529d4')
+sha256sums=('472b4ad20df0b3574768c9ada4258a2b8dddced2e3166f2ee91ec18a594731f3')
 
 prepare() {
   cd "$pkgname-$pkgver"
