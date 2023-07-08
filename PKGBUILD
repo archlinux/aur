@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=pc-nrfconnect-programmer
-pkgver=2.3.3
-pkgrel=1
+pkgver=3.0.1
+pkgrel=0
 epoch=
 pkgdesc="Programmer app for nRF Connect for Desktop"
 arch=('any')
@@ -12,7 +12,8 @@ groups=()
 depends=()
 makedepends=('npm')
 checkdepends=()
-optdepends=("nrf-udev: udev rules for nRF (Nordic Semiconductor) development kits")
+optdepends=("nrf-udev: udev rules for nRF (Nordic Semiconductor) development kits"
+            "jlink-software-and-documentation: Segger JLink software & documentation pack for Linux")
 provides=()
 conflicts=()
 replaces=()
@@ -22,7 +23,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7f740c5b8a14303437555096ed2235efee91c3e80e13b769fb2263c89c5b1411')
+sha256sums=('84147f50017f419f8b5b1cc19f38e73747f76b68aa9531ee94bdf4e0e8c715f3')
 #validpgpkeys=()
 
 package() {
