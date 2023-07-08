@@ -55,7 +55,7 @@ depends=(adacurses
          markdown
          polyorb
          sdlada
-         spark2014
+#         spark2014
          templates_parser
          vulkada
          xmlada)

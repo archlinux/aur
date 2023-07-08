@@ -52,7 +52,6 @@ pkgbase = all-ada
 	depends = markdown
 	depends = polyorb
 	depends = sdlada
-	depends = spark2014
 	depends = templates_parser
 	depends = vulkada
 	depends = xmlada
