@@ -1,6 +1,6 @@
 pkgbase = bashhub-client
 	pkgdesc = saves every terminal command entered across all sessions and system to the cloud
-	pkgver = 2.3.1
+	pkgver = 2.4.0
 	pkgrel = 6
 	url = https://github.com/rcaloras/bashhub-client
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = bashhub-client
 	depends = python-npyscreen
 	provides = bashhub-client
 	conflicts = bashhub-client-git
-	source = bashhub-client-2.3.1.tar.gz::https://github.com/rcaloras/bashhub-client/archive/refs/tags/2.3.1.tar.gz
-	sha256sums = cc9df8439cc969cf344f8ca1a9446dc11874c5b0812f26011169ccc98915dfe9
+	source = bashhub-client-2.4.0.tar.gz::https://github.com/rcaloras/bashhub-client/archive/refs/tags/2.4.0.tar.gz
+	sha256sums = c3a43a50137f599a46d7371c4e6da98ce2c51c6104167b22fb5c0cf7414c0c50
 
 pkgname = bashhub-client
