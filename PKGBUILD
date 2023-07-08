@@ -14,8 +14,8 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=44.2
-pkgrel=2
+pkgver=44.3
+pkgrel=1
 pkgdesc="Window manager and compositor for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -27,6 +27,7 @@ depends=(
   gnome-settings-daemon
   graphene
   gsettings-desktop-schemas
+  iio-sensor-proxy
   lcms2
   libcanberra
   libgudev
@@ -56,17 +57,16 @@ checkdepends=(
   wireplumber
   zenity
 )
-provides=(mutter libmutter-12.so)
+provides=(mutter=$pkgver libmutter-12.so)
 conflicts=(mutter)
-_commit=e7ed2bf85700a2ff33b69826f6f0fff6e2f28e69  # tags/44.2^0
+_commit=99d83f2985483bc192e1271665c442c7c480a588  # tags/44.3^0
+_scaling_commit=82e4a2c864e5e238bd03b1f4ef05f737915dac8c
 source=(
   "git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-  "https://salsa.debian.org/gnome-team/mutter/-/raw/82e4a2c864e5e238bd03b1f4ef05f737915dac8c/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
-  "https://gitlab.archlinux.org/archlinux/packaging/packages/mutter/-/raw/2291ffef7958c275347b0eab1ff37cd7267091a5/0001-tests-cogl-test-framebuffer-get-bits-should-fail-on-.patch"
+  "https://salsa.debian.org/gnome-team/mutter/-/raw/$_scaling_commit/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
 )
 b2sums=('SKIP'
-        '84e297cbb96c2d58dc14bd5abfab8889e172e7466767afb83b4ce6071dd4d745656aeb955ccb933f0cf78bf46d92d6cbd2d79e41e6ae5b6a654832606c9e0e5f'
-        'f4ed6920b4823bf3fc1ba0c6df56c8fbd930e0e36ed209430d04835edbc4b07f13dd3851102481b5aac176858093199921ff9e02f5723e9d786a1df8df83b539')
+        '84e297cbb96c2d58dc14bd5abfab8889e172e7466767afb83b4ce6071dd4d745656aeb955ccb933f0cf78bf46d92d6cbd2d79e41e6ae5b6a654832606c9e0e5f')
 
 pkgver() {
   cd mutter
@@ -83,7 +83,8 @@ prepare() {
 
   # Unbreak tests with Mesa 23.1
   # https://gitlab.gnome.org/GNOME/mutter/-/issues/2848
-  git apply -3 ../0001-tests-cogl-test-framebuffer-get-bits-should-fail-on-.patch
+  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3047
+  git cherry-pick -n '5a83e8ef8250526a40e8e69c^..d65883e0d7d70987e3888b86'
 
   # Add scaling support using randr under x11
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
@@ -128,3 +129,4 @@ check() {
 package() {
   meson install -C build --destdir "$pkgdir"
 }
+
