@@ -1,5 +1,5 @@
 pkgbase = pcf-unifont-extra
-	pkgdesc = GNU Unifont Glyphs (bold and italic versions)
+	pkgdesc = GNU Unifont Glyphs (PCF version, bold and italic)
 	pkgver = 15.0.06
 	pkgrel = 1
 	url = https://unifoundry.com/unifont/index.html

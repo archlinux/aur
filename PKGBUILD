@@ -2,7 +2,7 @@
 pkgname=pcf-unifont-extra
 pkgver=15.0.06
 pkgrel=1
-pkgdesc="GNU Unifont Glyphs (bold and italic versions)"
+pkgdesc="GNU Unifont Glyphs (PCF version, bold and italic)"
 arch=('any')
 url="https://unifoundry.com/unifont/index.html"
 license=('GPL2' 'custom:OFL')
