@@ -1,6 +1,6 @@
 pkgbase = eqmodgui
 	pkgdesc = User interface for INDI Eqmod telescope driver
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://sourceforge.net/projects/eqmodgui
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = eqmodgui
 	depends = sdl_mixer
 	depends = pango
 	provides = eqmodgui
-	source = https://sourceforge.net/projects/eqmodgui/files/eqmodgui_1.7.0/eqmodgui-1.7.0-127-linux_x86_64.tar.xz
-	md5sums = 2983b04fab8b6628c08d6c6525e07863
+	source = https://sourceforge.net/projects/eqmodgui/files/eqmodgui_1.7.1/eqmodgui-1.7.1-149-linux_x86_64.tar.xz
+	md5sums = ecc583f1397d0dd7a0877f6e2edcbeac
 
 pkgname = eqmodgui
-
