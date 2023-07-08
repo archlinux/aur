@@ -3,7 +3,7 @@
 
 pkgname=lib32-suitesparse
 _pkgbase=suitesparse
-pkgver=7.0.1
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="A collection of sparse matrix libraries (32-bit)"
 url="http://faculty.cse.tamu.edu/davis/suitesparse.html"
@@ -13,15 +13,9 @@ depends=('lib32-metis' 'lib32-lapack' 'lib32-tbb' 'suitesparse'
 makedepends=('gcc-fortran-multilib' 'cmake' 'chrpath')
 license=('GPL')
 options=('staticlibs')
-source=($_pkgbase-$pkgver.tar.gz::"https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v$pkgver.tar.gz"
-        "flags.patch")
-sha512sums=('af311efec01849d2c4445e163035a7013f3334a90edcda40f5dab0b35ad5d9a3e643c716c08a131ae99195bec016d1363623570058b05f3ee2a9ed4c483016db'
-            '4fb999a154fc75e9443697403826deb37cc67c59bb1a1a2a0cfeed61e03dbb714fbf2d8b63adea1f2b7d33545c62a925f5e4d77568434b4e036c3852abb3c9aa')
+source=($_pkgbase-$pkgver.tar.gz::"https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v$pkgver.tar.gz")
+sha512sums=('8eab68acabb85f31fe9e4b334efe19d1e792358ae8fb20916cc989c0f29e1b7f951bb5c8ca7143057a7f75bda52d0e0f51b14522459017a0e97707a9e41e86d5')
 
-prepare() {
-  cd "${srcdir}/SuiteSparse-$pkgver"
-  patch -p1 -i ../flags.patch
-}
 
 build() {
   cd "${srcdir}/SuiteSparse-$pkgver"
