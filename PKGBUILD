@@ -1,7 +1,7 @@
 # Maintainer: Sam Burgos <santiago.burgos1089@gmail.com>
 
 pkgname=mint-l-theme
-pkgver=1.9.4
+pkgver=1.9.5
 pkgrel=1
 pkgdesc='A collection of legacy mint themes.'
 arch=('any')
@@ -11,9 +11,6 @@ depends=(
     ttf-ubuntu-font-family
 )
 makedepends=(
-    gtk3
-    inkscape
-    optipng
     python
     sassc
 )
@@ -30,7 +27,7 @@ conflicts=(
     mint-themes-legacy
 )
 source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
-sha256sums=('ad0f2f7370e0866c4d48317d0102def9124e056fe0a7e8bd34c39bfb69244d73')
+sha256sums=('4e40be25ecb67b980270f3ffe41fd7022074bdeffc4df1452bb8423bade986c3')
 
 build() {
 	cd "${pkgname}"
