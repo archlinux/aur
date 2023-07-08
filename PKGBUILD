@@ -1,16 +1,16 @@
 # Maintainer: 
 pkgname=eprosima-fast-dds-gen
-pkgver=2.4.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Fast-DDS IDL code generator tool"
 arch=('any')
 url="https://github.com/eProsima/Fast-DDS-Gen"
 license=('Apache')
 depends=('java-environment' 'bash')
-makedepends=('gradle' 'git' 'jdk-openjdk')
+makedepends=('gradle' 'git' 'jdk17-openjdk')
 optdepends=()
 noextract=()
-_idl_parser_revision=509cfa3b34814ecf780a6b1fd7e680eaa07cedaf
+_idl_parser_revision=51a6c794e12666eaa72c39ea0327ddb65e9c4f50
 
 source=(
     "https://github.com/eProsima/Fast-DDS-Gen/archive/refs/tags/v${pkgver}.tar.gz"
@@ -18,17 +18,17 @@ source=(
 )
 
 sha256sums=(
-    'c39ddd533bbf282f4f1a41c848650fa1d0e795c57ff66fbde38f0e7dd1b26d3f'
-    '5cd564fa525bdb130d9adb44d64d056d2d7e9a6505fa49b2ccc8b2d3bd1ebd62'
+    '8da8b679644068e7d8fa38e1ccf28b8ca59c920247ef3c9dfa8f2f9627d496c6'
+    '352ac95d6de36e6e0fd314e1ceac22a3e80c62549b2ca6e9596016f8026297e1'
 )
 
 validpgpkeys=()
 
 build() {
     export GRADLE_USER_HOME="${srcdir}/gradle"
-    export JAVA_HOME=/usr/lib/jvm/java-19-openjdk
+    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
     mkdir -p "${srcdir}"/{gradle,m2}
-    rmdir "${srcdir}/Fast-DDS-Gen-${pkgver}"/thirdparty/idl-parser
+    rm -r "${srcdir}/Fast-DDS-Gen-${pkgver}"/thirdparty/idl-parser
     mv "${srcdir}"/IDL-Parser-${_idl_parser_revision} "${srcdir}/Fast-DDS-Gen-${pkgver}"/thirdparty/idl-parser
     cd "${srcdir}/Fast-DDS-Gen-${pkgver}"
     ./gradlew --no-daemon assemble
