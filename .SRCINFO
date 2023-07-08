@@ -1,0 +1,13 @@
+pkgbase = nstool
+	pkgdesc = General purpose read/extract tool for Nintendo Switch file formats.
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/jakcron/nstool
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/jakcron/nstool.git#tag=v1.7.0-r2
+	md5sums = SKIP
+
+pkgname = nstool
