@@ -1,0 +1,15 @@
+pkgbase = iwant-bin
+	pkgdesc = Install applications what I WANT
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/TD-Sky/iwant
+	arch = x86_64
+	license = MIT
+	optdepends = paru: AUR support
+	optdepends = flatpak: flathub support
+	optdepends = npm: npm support
+	conflicts = iwant
+	source = iwant-bin-0.3.1.tar.gz::https://github.com/TD-Sky/iwant/releases/download/v0.3.1/iwant-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 7b1504f33246ae43b607ed8e51a22d732215b9e2d18321ff7269eed3d165fd97
+
+pkgname = iwant-bin
