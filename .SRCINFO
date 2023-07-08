@@ -1,17 +1,17 @@
 pkgbase = r-rcpproll
 	pkgdesc = Efficient Rolling / Windowed Operations
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 7
 	url = https://cran.r-project.org/package=RcppRoll
-	arch = i686
 	arch = x86_64
 	license = GPL
 	checkdepends = r-testthat
 	checkdepends = r-zoo
 	depends = r-rcpp
-	optdepends = r-zoo
 	optdepends = r-testthat
+	optdepends = r-zoo
 	source = https://cran.r-project.org/src/contrib/RcppRoll_0.3.0.tar.gz
+	md5sums = 20b1dca034a1d18f63c07201736943c7
 	sha256sums = cbff2096443a8a38a6f1dabf8c90b9e14a43d2196b412b5bfe5390393f743f6b
 
 pkgname = r-rcpproll
