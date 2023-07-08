@@ -1,10 +1,10 @@
 pkgname=plasma5-applets-caraoke-git
-pkgver=r21.799745c
-pkgrel=2
+pkgver=r23.15e2712
+pkgrel=1
 pkgdesc="kde widget for representation of karaoke styled lyrics."
 arch=("x86_64")
 url="https://github.com/Copay/caraoke-plasmoid"
-license=("custom:unknown")
+license=("LGPL")
 depends=("plasma-workspace")
 makedepends=("git" "extra-cmake-modules" "cmake" "make")
 provides=("plasma5-applets-caraoke")

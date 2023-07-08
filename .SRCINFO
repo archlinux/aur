@@ -1,10 +1,10 @@
 pkgbase = plasma5-applets-caraoke-git
 	pkgdesc = kde widget for representation of karaoke styled lyrics.
-	pkgver = r21.799745c
-	pkgrel = 2
+	pkgver = r23.15e2712
+	pkgrel = 1
 	url = https://github.com/Copay/caraoke-plasmoid
 	arch = x86_64
-	license = custom:unknown
+	license = LGPL
 	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = cmake
