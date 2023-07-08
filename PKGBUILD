@@ -1,6 +1,6 @@
 pkgname=pkcs11-provider
-_commit=d58bc51dc96658290e5860be07957764588f7dcc
-pkgver=0.1.r1.gd58bc51
+_commit=f74acadd35d59aa6d9bf1a3db51b4c4bfb28408e
+pkgver=0.2
 pkgrel=1
 pkgdesc="OpenSSL 3.0 provider for PKCS#11 hardware-backed private keys"
 url="https://github.com/latchset/pkcs11-provider"
