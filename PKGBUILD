@@ -3,7 +3,7 @@
 # Contributor: Reto Brunner <brunnre8@gmail.com>
 
 pkgname=mkosi-git
-pkgver=14.r762.g3633102500
+pkgver=14.r763.g01ec7c067e
 pkgrel=1
 pkgdesc='Build Legacy-Free OS Images'
 arch=('any')
@@ -13,6 +13,7 @@ depends=('python'
          'bubblewrap')
 makedepends=('python-build'
              'python-installer'
+             'python-setuptools'
              'python-wheel'
              'pandoc'
              'git')
