@@ -10,7 +10,7 @@ pkgbase = mongodb-compass-readonly-git
 	license = custom:SSPL
 	makedepends = git
 	makedepends = nodejs>=16.15.1
-	makedepends = npm>=8.19.2
+	makedepends = npm>=8.19.4
 	makedepends = python
 	makedepends = unzip
 	depends = electron23
