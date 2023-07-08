@@ -1,6 +1,6 @@
 pkgbase = clipboard-git
 	pkgdesc = Cut, copy, and paste anything in your terminal (git version).
-	pkgver = 0.8.0.r1588.6097656
+	pkgver = 0.8.1.r1732.263df73
 	pkgrel = 1
 	url = https://getclipboard.app
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = clipboard-git
 	makedepends = libx11
 	makedepends = wayland
 	makedepends = wayland-protocols
-	makedepends = alsa-lib
+	depends = alsa-lib
 	optdepends = libx11: X11 support
 	optdepends = wayland: Wayland support
 	optdepends = wayland-protocols: Wayland support
