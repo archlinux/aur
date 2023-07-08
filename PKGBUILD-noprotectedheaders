@@ -16,8 +16,8 @@ _gitbranch="${_TOOLKIT}"
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=3.19.1+53.r11660.20230624.4e413c136
-pkgrel=2
-pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch. Patched to use charset supersets to decode titles and to display protected headers.'
+pkgrel=1
+pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch. Patched to use charset supersets to decode titles'
 arch=(
   'i686'
   'x86_64'
@@ -94,7 +94,6 @@ provides=(
   "claws=${pkgver}"
   "${_pkgname}=${pkgver}"
   "${_pkgname}-title-superset=${pkgver}"
-  "${_pkgname}-protectedheaders=${pkgver}"
   "${_pkgname}-${_pkgvariant}=${pkgver}"
   "${_pkgname}-title-superset-${_pkgvariant}=${pkgver}"
   "${_pkgname}-bash-completion"
@@ -103,17 +102,11 @@ provides=(
 source=(
   "${_pkgname}::git://git.claws-mail.org/claws.git#branch=${_gitbranch}"
   "0001_encoding.diff::https://aur.archlinux.org/cgit/aur.git/plain/0001_encoding.diff?h=claws-mail-title-superset" ## NOTE!, if this gets removed, adapt the `provides` array and the `$pkgdesc`!
-  "0002_protectedheaders.patch::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331"
 )
 sha256sums=(
   'SKIP'
   '79e2b664d039f5cc0cf642359923e3d100ffc4ab070fc54c02d5792b624e26f6'
-  '383f4ea03102ed2c8f19365b9bf2b757969d1617fcfd0a8375126f388cc60301'
 )
-if [ "${_TOOLKIT}" == "gtk2" ]; then
-  source+=("protectedheaders.patch.for-gtk2.patch")
-  sha256sums+=('3b1e568398950eb93d879353cfd6d49d81f7e1790c24972f36846f22ef4106cb')
-fi
 
 
 if "${_USE_CCACHE}"; then
@@ -138,14 +131,7 @@ fi
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  if [ "${_TOOLKIT}" == "gtk2" ]; then
-    msg2 "Patching '0002_protectedheaders.patch' for GTK2 ..."
-    patch -N --follow-symlinks -i "${srcdir}/protectedheaders.patch.for-gtk2.patch" -o "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch" "${srcdir}/0002_protectedheaders.patch"
-  else
-    cp "${srcdir}/0002_protectedheaders.patch" "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch"
-  fi
-
-  for _patch in "${srcdir}/0001_encoding.diff" "${srcdir}/0002_protectedheaders-${_TOOLKIT}.patch"; do
+  ls -1 "${srcdir}"/*.diff "${srcdir}"/*.patch 2>/dev/null | sort -V | while read _patch; do
     msg2 "Applying patch '${_patch}' ..."
     patch -N -p1 --follow-symlinks -i "${_patch}"
   done
