@@ -2,7 +2,7 @@
 
 pkgname=gossa
 pkgdesc="a fast and simple multimedia fileserver"
-pkgver=0.2.2
+pkgver=1.0.0
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 license=('MIT')
