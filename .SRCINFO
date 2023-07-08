@@ -1,7 +1,7 @@
 pkgbase = bareos
 	pkgdesc = Bareos - Backup Archiving Recovery Open Sourced
 	pkgver = 22.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.bareos.org
 	arch = i686
 	arch = x86_64

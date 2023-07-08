@@ -50,7 +50,7 @@ pkgname=("bareos-bconsole"
 
 pkgver=22.0.3
 pkgmajor=${pkgver%%.*}
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
@@ -79,7 +79,7 @@ md5sums=('SKIP'
          'e78b88f897cfc3e60129eec360521e3d'
          )
 
-python3_ver="3.10"
+python3_ver="3.11"
 #python2_ver="2.7"
 
 #=========================================
