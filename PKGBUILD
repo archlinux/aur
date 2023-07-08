@@ -2,7 +2,7 @@
 
 _pkgname=lutgen
 pkgname=lutgen-git
-pkgver=0.6.2.r6.g7684b7b
+pkgver=0.7.0.r0.g218a7eb
 pkgrel=1
 pkgdesc='Replacement for ls written in Rust'
 arch=('i686' 'x86_64')
