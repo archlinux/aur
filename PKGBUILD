@@ -2,7 +2,7 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 
 pkgname='carapace-bridge-bin'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='completion bridge'
 url='https://github.com/rsteube/carapace-bridge'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('carapace-bridge')
 conflicts=('carapace-bridge')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rsteube/carapace-bridge/releases/download/v0.1.0/carapace-bridge_linux_arm64.tar.gz")
-sha256sums_aarch64=('77227fe8e559251c42de316ab1cb230f23db3a2accbac48050f8c0e1c57a8019')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/rsteube/carapace-bridge/releases/download/v0.1.1/carapace-bridge_linux_arm64.tar.gz")
+sha256sums_aarch64=('b591a59cf70144555953b52201c86d965826055a95faa79c042d96fce1009d67')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rsteube/carapace-bridge/releases/download/v0.1.0/carapace-bridge_linux_386.tar.gz")
-sha256sums_i686=('163fa40e04345fe634cbe309a39fc27310cca7768a4bd135917e087b4b6d59e1')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/rsteube/carapace-bridge/releases/download/v0.1.1/carapace-bridge_linux_386.tar.gz")
+sha256sums_i686=('58b8dc206f8dfcabd85f660eff2c97c92eead90485935da85585015fc982766c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rsteube/carapace-bridge/releases/download/v0.1.0/carapace-bridge_linux_amd64.tar.gz")
-sha256sums_x86_64=('a8a153d285e073a085021bafeb86503125ccd5edce274f539321b6b5f7a2ece1')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/rsteube/carapace-bridge/releases/download/v0.1.1/carapace-bridge_linux_amd64.tar.gz")
+sha256sums_x86_64=('4eef7c2cefe0cf0aff14a9afca3394bc2364bd0d079f75f11d641bb825f4ad9c')
 
 package() {
   install -Dm755 "./carapace-bridge" "${pkgdir}/usr/bin/carapace-bridge"
