@@ -3,7 +3,7 @@
 # Contributor: Ulrik Boll Djurtoft <ullebe1@gmail.com>
 pkgname=appeditor-git
 _app_id=com.github.donadigo.appeditor
-pkgver=1.1.3.r8.gf170b6b
+pkgver=1.1.3.r9
 pkgrel=1
 pkgdesc="Allows you to edit application entries in the application menu."
 arch=('x86_64')
