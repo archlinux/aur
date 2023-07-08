@@ -5,7 +5,6 @@ pkgname=('pcf-unifont'
 pkgbase=unifont
 pkgver=15.0.06
 pkgrel=1
-pkgdesc="GNU Unifont Glyphs (PCF and PSF versions)"
 arch=('any')
 url="https://unifoundry.com/unifont/index.html"
 license=('GPL2' 'custom:OFL')

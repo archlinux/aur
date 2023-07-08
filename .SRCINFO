@@ -1,5 +1,4 @@
 pkgbase = unifont
-	pkgdesc = GNU Unifont Glyphs (PCF and PSF versions)
 	pkgver = 15.0.06
 	pkgrel = 1
 	url = https://unifoundry.com/unifont/index.html
