@@ -1,10 +1,11 @@
 pkgbase = r2modman-appimage
 	pkgdesc = A simple and easy to use mod manager for several Unity games using Thunderstore.
 	pkgver = 3.1.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ebkr/r2modmanPlus
 	arch = x86_64
 	license = MIT
+	depends = fuse2
 	depends = hicolor-icon-theme
 	depends = zlib
 	provides = r2modman

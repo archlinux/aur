@@ -2,13 +2,14 @@
 
 pkgname=r2modman-appimage
 pkgver=3.1.42
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple and easy to use mod manager for several Unity games using Thunderstore.'
 arch=('x86_64')
 url=https://github.com/ebkr/r2modmanPlus
 license=(MIT)
 
 depends=(
+    'fuse2'
     'hicolor-icon-theme'
     'zlib'
 )
