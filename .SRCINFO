@@ -49,7 +49,7 @@ pkgbase = hyprland-git
 	depends = xorg-xinput
 	depends = xorg-xwayland
 	depends = libdisplay-info.so
-	provides = hyprland
+	provides = hyprland=0.26.0
 	conflicts = hyprland
 	source = git+https://github.com/hyprwm/Hyprland.git
 	source = git+https://gitlab.freedesktop.org/wlroots/wlroots.git
