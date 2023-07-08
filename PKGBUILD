@@ -7,7 +7,7 @@ pkgver='r15953.gdc1795286'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - git version'
-# If you're running on armv7h or aarch64, use the electron23-bin package from the AUR for the electron dependency
+# If you're running on armv7h or aarch64, use the electron23-bin package from the AUR for the electron23 dependency
 # If you're running on armv7h, you have to add it to the arch and source arrays of the electron23-bin AUR dependency
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
