@@ -6,9 +6,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gnome-commander
-pkgver=1.16.0
+pkgver=1.16.1
 _pkgver=1.16
-pkgrel=3
+pkgrel=1
 pkgdesc='Graphical two-pane filemanager for Gnome'
 arch=('i686' 'x86_64')
 url='http://gcmd.github.io/'
@@ -19,7 +19,7 @@ validpgpkeys=('7627E6FCECF4FC066A03B673F50A89A3ADE4C6E8') # Uwe Scholz
 _validpgpkeys=$(echo $validpgpkeys|tr -d \'|tr -d \( |tr -d \))
 source=("https://download.gnome.org/sources/$pkgname/${_pkgver}/$pkgname-$pkgver.tar.xz"
 	"https://keys.openpgp.org/vks/v1/by-fingerprint/$_validpgpkeys")
-sha256sums=('d80ac70b99a7059c8f28ca0bf37305f09daeaecfceb1528d68a435ace9e8ec5d'
+sha256sums=('3f1d00c4a650fe7902167648286b32c9ca4ef86e31a5d8ccca0139f12d10d0b3'
             'ff9228a02fe02d4e64483021d355a79b6fa76bf7e4be5a3bdc163ce16d6c1177')
 
 build() {
