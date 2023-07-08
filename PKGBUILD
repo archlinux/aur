@@ -24,6 +24,10 @@ makedepends=('git'
 	'qt6-declarative'
 	'qt6-multimedia'
 )
+optdepends=(
+	'flite: Text-To-Speech using flite synthesizer',
+	'libspeechd: Text-To-Speech using speechd synthesizer'
+)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname"::'git+https://github.com/JakubMelka/PDF4QT'
