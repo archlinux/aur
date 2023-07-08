@@ -1,15 +1,13 @@
 pkgbase = dwdiff
-	pkgdesc = A front-end for the diff program that operates at the word level instead of the line level
+	pkgdesc = A diff program that operates at the word level instead of the line level
 	pkgver = 2.1.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://os.ghalkes.nl/dwdiff.html
 	arch = x86_64
 	license = GPL
 	depends = diffutils
 	depends = icu
 	source = https://os.ghalkes.nl/dist/dwdiff-2.1.4.tar.bz2
-	source = icu68.patch
 	sha256sums = df16fec44dcb467d65a4246a43628f93741996c1773e930b90c6dde22dd58e0a
-	sha256sums = b4248cedec5eec8ff280244e41c3450d302a47e50ec126b4dfdd91d7131dd941
 
 pkgname = dwdiff
