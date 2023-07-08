@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r1070.gc08801808
+pkgver=1.4.0.development.snapshot.006.r1113.ge828ef045
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -52,6 +52,9 @@ prepare() {
   git config submodule.3rdparty/gsl.url "$srcdir/GSL"
   git config submodule.3rdparty/SPSCQueue.url "$srcdir/SPSCQueue"
   git -c protocol.file.allow=always submodule update
+
+  # protobuf 23 requires C++17
+  sed -e 's|CMAKE_CXX_STANDARD 14|CMAKE_CXX_STANDARD 17|' -i CMakeLists.txt
 }
 
 build() {
