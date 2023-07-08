@@ -1,8 +1,10 @@
-# Maintainer: ThatOneCalculator <kainoa@t1c.dev>
+# Maintainer: FabioLolix
+# Maintainer: éclairevoyant
+# Contributor: ThatOneCalculator <kainoa at t1c dot dev>
 
 pkgname=hyprland-git
-pkgver=r3043.f49af187
-pkgrel=2
+pkgver=0.26.0.r96.f49af187
+pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(x86_64 aarch64)
 url="https://github.com/hyprwm/Hyprland"
@@ -50,21 +52,16 @@ makedepends=(cmake
              ninja
              vulkan-headers
              xorgproto)
-provides=(hyprland)
+provides=("hyprland=${pkgver%%.r*}")
 conflicts=(hyprland)
 source=("git+https://github.com/hyprwm/Hyprland.git"
         "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
         "git+https://github.com/hyprwm/hyprland-protocols.git"
         "git+https://github.com/canihavesomecoffee/udis86.git")
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP')
-
-pkgver() {
-  cd Hyprland
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 prepare() {
   cd Hyprland
@@ -78,6 +75,10 @@ prepare() {
   sed -i '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
   # respect build flags to allow full RELRO
   sed -i '/CXX/ s|)|) $(CXXFLAGS)|;/CXX/ s|$| $(LDFLAGS)|;' hyprctl/Makefile
+}
+
+pkgver() {
+  git -C Hyprland describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
@@ -120,6 +121,6 @@ package() {
   install -Dm0644 -t "$pkgdir/usr/share/hyprland" assets/*.png
   install -Dm0644 -t "$pkgdir/usr/share/wayland-sessions" "example/hyprland.desktop"
   install -Dm0644 -t "$pkgdir/usr/share/hyprland" "example/hyprland.conf"
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/hyprland" LICENSE
   install -Dm0755 -t "$pkgdir/usr/lib" "$srcdir/tmpwlr/lib/libwlroots.so.12032"
 }
