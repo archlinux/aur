@@ -1,5 +1,5 @@
 pkgbase = oss-git
-	pkgver = 3e7a6c4
+	pkgver = 5693e1e
 	pkgrel = 1
 	url = http://developer.opensound.com/
 	arch = i686

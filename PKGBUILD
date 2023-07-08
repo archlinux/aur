@@ -12,7 +12,7 @@
 pkgbase=oss-git
 pkgname=oss-git
 true && pkgname=(oss-git libflashsupport-oss-git)
-pkgver=3e7a6c4
+pkgver=5693e1e
 pkgrel=1
 arch=(i686 x86_64 pentium4)
 url="http://developer.opensound.com/"
