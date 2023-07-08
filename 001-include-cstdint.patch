@@ -1,0 +1,12 @@
+diff --git a/include/fastdds/dds/core/status/StatusMask.hpp b/include/fastdds/dds/core/status/StatusMask.hpp
+index c838ff369..2718869d7 100644
+--- a/include/fastdds/dds/core/status/StatusMask.hpp
++++ b/include/fastdds/dds/core/status/StatusMask.hpp
+@@ -24,6 +24,7 @@
+ #include <fastrtps/fastrtps_dll.h>
+
+ #include <bitset>
++#include <cstdint>
+ #include <sstream>
+
+ //!Alias of size_t(16)

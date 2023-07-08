@@ -11,6 +11,8 @@ pkgbase = eprosima-fast-dds
 	depends = tinyxml2
 	depends = eprosima-fast-cdr
 	source = https://github.com/eProsima/Fast-DDS/archive/v2.11.0.tar.gz
+	source = 001-include-cstdint.patch
 	sha256sums = afaf43fbee90d6dbecbbe7c363860c4963f8db2f4be94dc7c61a27bfdf841b83
+	sha256sums = 9656a7c2780040a922ecd85b9ba046ec72375a394b5ae199d570d1c1b7e82abf
 
 pkgname = eprosima-fast-dds
