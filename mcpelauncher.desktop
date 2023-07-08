@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=Game;
+Comment[en_US]=Bedrock Launcher for Linux
+Comment=Bedrock Launcher for Linux
+Exec=/usr/bin/mcpelauncher
+GenericName[en_US]=Bedrock Launcher for Linux
+GenericName=Bedrock Launcher for Linux
+Icon=/usr/share/pixmaps/mcpelauncher-appimage.png
+MimeType=
+Name[en_US]=Minecraft Bedrock Launcher
+Name=Minecraft Bedrock Launcher
+Path=
+StartupNotify=false
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
