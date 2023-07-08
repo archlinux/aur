@@ -15,7 +15,7 @@ post_upgrade() {
   cd /var/lib/mastodon
 
   echo "Setting ownership of mastodon files"
-  find -path public/system -prune -o -exec chown mastodon:mastodon {} +
+  find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +
   echo "Refreshing bundle"
   sudo -u mastodon RAILS_ENV=production NODE_OPTIONS=--openssl-legacy-provider bundle install --redownload --standalone
   echo "Upgrading database schema"
