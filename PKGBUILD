@@ -14,8 +14,16 @@ url="https://github.com/HVML/PurC"
 license=('LGPL-3.0')
 groups=('hvml-git')
 provides=(${pkgbase%-git}
+        csseng
         domruler
-        purc-fetcher)
+        purc-fetcher
+        libcsseng.so
+        libpurc-dvobj-PY.so
+        libpurc-dvobj-FS.so
+        libpurc-dvobj-MATH.so
+        libpurc-fetcher.so
+        libdomruler.so
+        libpurc.so)
 conflicts=(${pkgbase%-git})
 replaces=(domruler
           purc-fetcher)
