@@ -1,0 +1,13 @@
+[Unit]
+Description=Apalache Server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/apalache-mc server
+ExecStop=/bin/kill -s SIGINT $MAINPID
+ExecReload=/bin/kill -s SIGINT $MAINPID ; /usr/bin/apalache-mc server
+Restart=always
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
