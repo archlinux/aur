@@ -8,6 +8,7 @@ pkgbase = proxsign-bin
 	depends = cairo
 	depends = libjpeg6-turbo
 	depends = libldap24
+	depends = libtiff5
 	depends = nss
 	depends = xalan-c
 	depends = xerces-c
