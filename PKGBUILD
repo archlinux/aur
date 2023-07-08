@@ -41,7 +41,7 @@ package_qadwaitaplatform-qt5-git() {
 }
 
 package_qadwaitaplatform-qt6-git() {
-  pkgdesc='QAdwaitaPlatform is QGnomePlatformfork that implements modern LibAdwaita window decoration look to Qt applications.'
+  pkgdesc='QAdwaitaPlatform is QGnomePlatform fork that implements modern LibAdwaita window decoration look to Qt applications.'
   depends=(gtk3 qt6-wayland adwaita-qt6)
   provides=(qadwaitaplatform-qt6)
   conflicts=(qadwaitaplatform-qt6 qgnomeplatform-qt6)
