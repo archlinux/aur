@@ -2,8 +2,8 @@
 
 pkgbase=purc
 pkgname=purc
-pkgver=0.9.12
-pkgrel=1
+pkgver=0.9.13
+pkgrel=0
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
     aarch64
@@ -14,8 +14,16 @@ url="https://github.com/HVML/PurC"
 license=('LGPL-3.0')
 groups=('hvml')
 provides=(${pkgname}
+        csseng
         domruler
-        purc-fetcher)
+        purc-fetcher
+        libcsseng.so
+        libpurc-dvobj-PY.so
+        libpurc-dvobj-FS.so
+        libpurc-dvobj-MATH.so
+        libpurc-fetcher.so
+        libdomruler.so
+        libpurc.so)
 conflicts=(${pkgname})
 replaces=(domruler
           purc-fetcher)
@@ -60,7 +68,7 @@ optdepends=('python-numpy: Scientific tools for Python'
             'webkit2gtk: Web content engine for GTK'
             'xguipro: xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit.')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/ver-${pkgver}.tar.gz")
-sha256sums=('fce8def622432e0c0b9f882676769518b396acea2bcd5aad4bc1f6500a02f658')
+sha256sums=('7aad0ba6d104f8c3a1a5c6d9aeb84841aa0e887e07c6c821a2061a62c4f29b1d')
 options=('!strip')
 
 build() {
