@@ -20,10 +20,8 @@ makedepends=('cmake' 'git' 'ninja' 'qt5-svg' 'qt5-tools')
 provides=('olive')
 conflicts=('olive')
 source=('git+https://github.com/olive-editor/olive.git'
-        'git+https://github.com/olive-editor/KDDockWidgets.git'
-        'git+https://github.com/olive-editor/core.git')
+	'git+https://github.com/olive-editor/KDDockWidgets.git')
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -34,7 +32,6 @@ pkgver() {
 prepare(){
   cd $_pkgname
   git submodule init
-  git config submodule.ext/core.url "$srcdir"/core
   git config submodule.ext/KDDockWidgets.url "$srcdir"/KDDockWidgets
   git -c protocol.file.allow=always submodule update
 }
