@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=pc-nrfconnect-programmer
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=0
 epoch=
 pkgdesc="Programmer app for nRF Connect for Desktop"
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('84147f50017f419f8b5b1cc19f38e73747f76b68aa9531ee94bdf4e0e8c715f3')
+sha256sums=('af29a119f8fb500bbd6b88093f1ac7bb14267aad5f1a03d30669980f0445ec38')
 #validpgpkeys=()
 
 package() {
