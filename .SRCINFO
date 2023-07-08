@@ -1,6 +1,6 @@
 pkgbase = lightdm-slick-greeter-mint-theme
 	pkgdesc = A slick-looking LightDM greeter. With additional options enabled
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/linuxmint/slick-greeter
 	install = slick-greeter.install
@@ -21,13 +21,13 @@ pkgbase = lightdm-slick-greeter-mint-theme
 	depends = python
 	depends = xorg-server
 	optdepends = numlockx: enable numerical keypad on supported keyboard
-	optdepends = mint-themes-legacy: enable additional Mint themes
+	optdepends = mint-l-theme: enable additional Mint themes
 	provides = lightdm-slick-greeter
 	conflicts = lightdm-slick-greeter
 	backup = etc/lightdm/slick-greeter.conf
-	source = slick-greeter-1.8.1.tar.gz::https://github.com/linuxmint/slick-greeter/archive/1.8.1.tar.gz
+	source = slick-greeter-1.8.2.tar.gz::https://github.com/linuxmint/slick-greeter/archive/1.8.2.tar.gz
 	source = slick-greeter.conf
-	sha256sums = 0d88f00ed21de65288908b2463c91733cd23ae9bc6c1fad18cabab78f4598cf3
+	sha256sums = a0b788e8960ca440a17df49b510a4fafabcac064f15b682c4c858cf5a4e8d876
 	sha256sums = d959d47f2db4630d420622958e16d3c1d79d979b76ecfdb2b5bd3f045b8a5a41
 
 pkgname = lightdm-slick-greeter-mint-theme
