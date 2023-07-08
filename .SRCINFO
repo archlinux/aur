@@ -8,7 +8,6 @@ pkgbase = lutgen-git
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	depends = libgit2
 	provides = lutgen
 	conflicts = lutgen
 	source = git+https://github.com/ozwaldorf/lutgen-rs.git
