@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=RCU
+Comment=Manage your reMarkable tablet
+Exec=rcu
+Icon=rcu
+Terminal=false
+Categories=Utility;
+Version=1.0
