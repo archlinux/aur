@@ -27,7 +27,7 @@ makedepends=('live-media' 'libbluray' 'flac' 'libdc1394' 'libavc1394' 'libcaca'
              'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
              'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
              'lirc' 'libgoom2' 'projectm' 'aom' 'srt' 'dav1d'
-             'aribb24' 'aribb25' 'pcsclite')
+             'aribb25' 'pcsclite')
 #            'chromaprint: Chromaprint audio fingerprinter'
 optdepends=('avahi: service discovery using bonjour protocol'
             'aom: AOM AV1 codec'
@@ -89,7 +89,6 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'projectm: ProjectM visualisation'
             'ncurses: ncurses interface'
             'libnotify: notification plugin'
-            'aribb24: aribsub support'
             'aribb25: aribcam support'
             'pcsclite: aribcam support')
 conflicts=('vlc' 'vlc-plugin' 'vlc-git')
