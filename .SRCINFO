@@ -8,7 +8,7 @@ pkgbase = snip
 	depends = neovim
 	source = https://concise.cc/pkg/snip-1.1.5-1-any.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = ad13650004870c0f8a9a908b78b8db96
-	sha512sums = a9bac1ce2d6d992bd05586ce2e3a1078e62917edcf0376f1c5c38132f9a5f1c88e9bfa098f213b3e2bf542da20868a78ffb06969580621871ecb8800e7f67818
+	md5sums = 9b75ee23e73de3627cd218c71bec2c5e
+	sha512sums = a4be9b43209502998ed1ede32e3dc9a491d1840bb3d26727f65637aeaaa05032f02b3bac83c4423e0f2a30fe6e44c8262da980b28ff12112476fe34c327ed1e4
 
 pkgname = snip
