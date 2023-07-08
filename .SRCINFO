@@ -1,15 +1,14 @@
 pkgbase = ruby-sigdump
-	pkgdesc = Show stacktrace of Ruby processes without restarting it
-	pkgver = 0.2.4
-	pkgrel = 2
-	url = https://github.com/frsyuki/sigdump
-	arch = x86_64
-	license = MIT
+	pkgdesc = Use signal to show stacktrace of a Ruby process without restarting it
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/fluent/sigdump
+	arch = any
+	license = Apache
+	makedepends = git
 	depends = ruby
-	noextract = sigdump-0.2.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/sigdump-0.2.4.gem
-	b2sums = 66c3d61eca7f1288de6d95e8d0376d27ab39fee6e5168430801d0f2016f6488eb20cc92e83967d69f690e5ff064952d2696ed08ecd0ab0c4e98c61fdfdbf38cf
+	source = ruby-sigdump::git+https://github.com/fluent/sigdump#commit=5be55405d18b43e70f30fb397376014a88d4b8fd
+	b2sums = SKIP
 
 pkgname = ruby-sigdump
-
