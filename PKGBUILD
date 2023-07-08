@@ -3,7 +3,7 @@
 # Contributor: Ulrik Boll Djurtoft <ullebe1@gmail.com>
 pkgname=appeditor-git
 _app_id=com.github.donadigo.appeditor
-pkgver=1.1.3.r4.gaeb0b13
+pkgver=1.1.3.r8.gf170b6b
 pkgrel=1
 pkgdesc="Allows you to edit application entries in the application menu."
 arch=('x86_64')
@@ -14,14 +14,8 @@ makedepends=('git' 'meson' 'vala')
 checkdepends=('appstream')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-sha256sums=('SKIP'
-            'a716d057769c43697cb3946f551aaf60950a71a56cc1c6862e123975a159fe41')
-source=('git+https://github.com/donadigo/appeditor.git' '0001-Fix-121-failure-to-compile-with-vala-0.55.1.patch')
-
-prepare() {
-  cd "$srcdir/${pkgname%-git}"
-  patch --forward --strip=1 --input="${srcdir}/0001-Fix-121-failure-to-compile-with-vala-0.55.1.patch"
-}
+sha256sums=('SKIP')
+source=('git+https://github.com/donadigo/appeditor.git')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
