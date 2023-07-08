@@ -1,7 +1,7 @@
 pkgbase = python-coincurve
 	pkgdesc = Cross-platform Python CFFI bindings for libsecp256k1
-	pkgver = 17.0.0
-	pkgrel = 2
+	pkgver = 18.0.0
+	pkgrel = 1
 	url = https://github.com/ofek/coincurve
 	arch = x86_64
 	license = Apache
@@ -14,7 +14,7 @@ pkgbase = python-coincurve
 	depends = python-asn1crypto
 	depends = python-cffi
 	depends = libsecp256k1
-	source = coincurve-17.0.0.tar.gz::https://github.com/ofek/coincurve/archive/v17.0.0.tar.gz
-	sha512sums = 15bc998469a243bc1f6d0f9308061c64b7000727f662827da57a82e23739bc7a3dce0c8b3d33d1a3daeadbba2759d5726b792726daf9d4d5e842e53a28855954
+	source = coincurve-18.0.0.tar.gz::https://github.com/ofek/coincurve/archive/v18.0.0.tar.gz
+	sha512sums = 9cd9b333c456f0e7a4edd300279442e638f2ba3e518c096ee7bd1838dc14ec3886a818438c08f8649946b20951aa54480d8d3ed6b49c3cb66f6a93d5110a396b
 
 pkgname = python-coincurve
