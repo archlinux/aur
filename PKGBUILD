@@ -4,7 +4,7 @@ pkgbase=postgresql15
 pkgver=15.2
 _majorver=${pkgver%.*}
 pkgname=("${pkgbase}-libs" "${pkgbase}-docs" "${pkgbase}")
-pkgrel=1
+pkgrel=2
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
@@ -53,12 +53,17 @@ build() {
     --with-ldap
     --with-llvm
     --with-libxslt
+    --with-lz4
+    --with-zstd
     --enable-nls
     --enable-thread-safety
     --disable-rpath
   )
 
-  # regular build with everything
+  # Fix static libs (will not link if not set)
+  CFLAGS+=" -ffat-lto-objects"
+
+  # build
   ./configure "${options[@]}"
   make world
 }
