@@ -5,8 +5,7 @@
 pkgname=('soldat-git')
 _branch='develop'
 _installdir='/usr/share/soldat'
-_gns_commit='8f60b0e6bf50b44d5cc6587b8ddcccc4d2a8e78c'
-pkgver=1.8.0.alpha.initial.33.g078795a
+pkgver=122.g967097b
 pkgrel=1
 pkgdesc="Unique 2D (side-view) multiplayer action game."
 arch=('x86_64')
@@ -17,19 +16,15 @@ license=('MIT' 'cc-by-4.0' 'BSD')
 depends=('sdl2' 'openal' 'freetype2' 'physfs' 'protobuf' 'openssl')
 # NOTE: cmake & ninja are make-deps for GNS
 makedepends=('make' 'fpc' 'zip' 'cmake' 'ninja')
-#optdepends=()
 provides=('soldat')
-# conflicts=()
 source=("$pkgname::git+https://github.com/Soldat/soldat.git#branch=$_branch"
         "soldat-base::git+https://github.com/Soldat/base.git"
-        "game-networking-sockets::git+https://github.com/ValveSoftware/GameNetworkingSockets.git#commit=$_gns_commit")
+        "game-networking-sockets::git+https://github.com/ValveSoftware/GameNetworkingSockets.git")
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/^v//;s/[-+]/./g'
-  # OLD VERSION BEFORE TAGS
-  # echo "1.8.0.$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/continuous-//g' | sed 's/-/./g'
 }
 
 build() {
