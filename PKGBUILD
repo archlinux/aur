@@ -59,6 +59,3 @@ depends=(adacurses
          templates_parser
          vulkada
          xmlada)
-         
-makedepends=(python-e3-core
-             python-e3-testsuite)
