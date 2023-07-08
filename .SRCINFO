@@ -1,0 +1,14 @@
+pkgbase = miopengemm
+	pkgdesc = An OpenCL GEMM kernel generator
+	pkgver = 5.5.1
+	pkgrel = 1
+	url = https://github.com/ROCmSoftwarePlatform/MIOpenGEMM
+	arch = x86_64
+	license = MIT
+	makedepends = opencl-headers
+	makedepends = rocm-cmake
+	depends = ocl-icd
+	source = miopengemm-5.5.1.tar.gz::https://github.com/ROCmSoftwarePlatform/MIOpenGEMM/archive/rocm-5.5.1.tar.gz
+	sha256sums = a997b560521641e7173613cf547ecde5d15ac6fac1786d392b0f133c91f99a40
+
+pkgname = miopengemm
