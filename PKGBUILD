@@ -42,6 +42,7 @@ prepare() {
   cd mastodon-$pkgver
 
   echo "gem 'psych', '< 4'" >> Gemfile
+  echo "gem 'erb'" >> Gemfile
 }
 
 build() {
