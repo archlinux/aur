@@ -1,0 +1,14 @@
+pkgbase = ssh_system_finder
+	pkgdesc = Scan an IP or local network and identify systems that have SSH enabled.
+	pkgver = 1.0.0
+	pkgrel = 1.0
+	url = https://github.com/basemax/sshfinderc
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gcc
+	depends = make
+	source = git+https://github.com/basemax/sshfinderc.git
+	md5sums = SKIP
+
+pkgname = ssh_system_finder
