@@ -1,13 +1,12 @@
 pkgbase = openxcom-mod-40k
 	pkgdesc = The Warhammer 40k - a mod for OpenXcom (OXCE)
-	pkgver = 021
+	pkgver = 35.1
 	pkgrel = 1
 	url = https://openxcom.mod.io/40k
 	arch = x86_64
-	license = GPLv3
+	license = GPL3
 	depends = openxcom
-	source = https://binary.mod.io/mods/9fd8/297/40k_021.zip
-	sha512sums = f947e2e0e278debc0c2f9e876a67d70e5fb9568575dfc505a3d10e75ea7a2f479d82063c3c373a54f772c40c56325ba6b159ebe75d5d635eb1fca37b0cd1757f
+	source = https://binary.modcdn.io/mods/9fd8/297/40k_35.1-fyqc.zip
+	sha512sums = 0b5189ef9c808648048e766f686451a037ed365f9e7ee1cce505d8f3f64ac6eaf7dfe083e9e38220fcdd2606a065b3405c7437eb4fd1d1ec8408803420143746
 
 pkgname = openxcom-mod-40k
-
