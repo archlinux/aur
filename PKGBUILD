@@ -4,7 +4,7 @@
 # Contributor: xsmile
 
 pkgname=nessus
-pkgver=10.5.2
+pkgver=10.5.3
 pkgrel=1
 pkgdesc="Nessus vulnerability scanner"
 arch=('x86_64')
@@ -13,11 +13,11 @@ makedepends=('inetutils')
 license=('custom')
 url="https://www.tenable.com/downloads/nessus"
 install=${pkgname}.install
-source=("nessus-${pkgver}-fc34.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/19571/download?i_agree_to_tenable_license_agreement=true"
+source=("nessus-${pkgver}-fc34.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/19943/download?i_agree_to_tenable_license_agreement=true"
         nessus.desktop
         nessus.sh
         LICENSE)
-b2sums=('4750b72fd4e4281d30af54ed769c4232ff0ac30d801872a84989c3089c5324da7bef63788bae0edfd6257160e8634df09ce5c83a6371a94608508d86a700c29b'
+b2sums=('7ad56d560b9f94d69c0b2bed0ddaaa46b4b4ba86a9601c63999d668ce77b5871c3dc2119f570219641dabcd8cdf13d2a28b4b3a8683b451f63ccb6f07a4a6318'
         'e9f6346d0c2b444c71f0673a9dd22f4298abf1ccc4500fa2db4439627844106e3d523cda976411aa243f56711b691a12ac228809cdae038371607db11a44dd61'
         'fbc6b44c6722e48b26011314d3cd2a44780ef94965db159ef1a35743e371927ec4927a9da2db9ebbb9714fc3a0a30fa4d785b23aa76e4a8a1e446a515fc1bcdd'
         '2c68d4f30686a711fbf5c77b70d9b307f9fdcc8095cea79d8c310edfeea87563d94b9106fce35fc53685e6703afb729b9d81f504a1983c367621605690ea03e1')
