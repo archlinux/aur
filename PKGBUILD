@@ -13,7 +13,7 @@
 
 pkgname=lib32-mesa-amdonly-gaming-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.2.0_devel.169866.c6906448425.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.2.0_devel.173976.d3662ba461e.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -102,7 +102,7 @@ build () {
         -D vulkan-layers=device-select,overlay \
         -D gallium-nine=false \
         -D gallium-omx=disabled \
-        -D gallium-opencl=icd \
+        -D gallium-opencl=disabled \
         -D gallium-va=enabled \
         -D gallium-vdpau=enabled \
         -D gallium-xa=disabled \
