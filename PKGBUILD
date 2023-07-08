@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Repeat a command until the command succeeds."
 arch=("any")
 url="https://github.com/minfrin/retry"
-license=("Apache-2.0")
+license=("Apache")
 _pkg_version="${pkgname}-${pkgver}"
 source=("https://github.com/minfrin/retry/releases/download/${_pkg_version}/${_pkg_version}.tar.gz")
 # Verify the checksum against the release page: https://github.com/minfrin/retry/releases

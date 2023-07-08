@@ -4,7 +4,7 @@ pkgbase = retry
 	pkgrel = 1
 	url = https://github.com/minfrin/retry
 	arch = any
-	license = Apache-2.0
+	license = Apache
 	source = https://github.com/minfrin/retry/releases/download/retry-1.0.5/retry-1.0.5.tar.gz
 	sha256sums = 09a75450153e65aca1cd5fa366d54a314050f8f19e8ba5747656c5b673b65fdf
 
