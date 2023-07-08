@@ -2,7 +2,7 @@
 
 _pkgname=paper-plane
 pkgname=paper-plane-git
-pkgver=0.1.0.beta.1.r0.g83df76b
+pkgver=0.1.0.beta.3.r16.g4a99454
 pkgrel=1
 pkgdesc='Chat over Telegram on a modern and elegant client'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')

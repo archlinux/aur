@@ -1,6 +1,6 @@
 pkgbase = paper-plane-git
 	pkgdesc = Chat over Telegram on a modern and elegant client
-	pkgver = 0.1.0.beta.1.r0.g83df76b
+	pkgver = 0.1.0.beta.3.r16.g4a99454
 	pkgrel = 1
 	url = https://github.com/paper-plane-developers/paper-plane
 	arch = i686
