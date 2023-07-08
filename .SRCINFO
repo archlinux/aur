@@ -18,6 +18,7 @@ pkgbase = onthespot-git
 	depends = python-pyxdg
 	depends = python-librespot
 	depends = python-music-tag
+	depends = python-mutagen
 	provides = onthespot
 	conflicts = onthespot
 	source = https://github.com/casualsnek/onthespot/archive/refs/heads/main.zip
