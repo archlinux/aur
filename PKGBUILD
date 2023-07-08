@@ -1,11 +1,11 @@
-# Maintainer: Joe <kenwood364@gmail.com>
+# Maintainer: Vixi <anonymousfyf@gmail.com>
 # Adapted from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 
 _pkgname=fchat
 
 pkgname="${_pkgname}"-rising-appimage
-pkgver=1.20.0
+pkgver=1.23.5
 pkgrel=1
 pkgdesc="A heavily customized version of the mainline F-Chat 3.0 client."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source_x86_64=("${_appimage}::https://github.com/mrstallion/fchat-rising/release
                "https://raw.githubusercontent.com/mrstallion/fchat-rising/v${pkgver}/LICENSE"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('b76b5e5a106be41bf8f458abee9e3dd504521b2fe9fb3e2dcbcef92e1fa9c135'
+sha256sums_x86_64=('3b71fb56c7d1977bb4c4579549aa39d5dd16bf9324c85ea8c8dbbd3d09d933bc'
                    'SKIP')
 
 prepare() {
