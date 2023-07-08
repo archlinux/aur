@@ -1,7 +1,7 @@
 pkgbase = claws-mail-gtk2-git
 	pkgdesc = A GTK based e-mail client. Latest git checkout of GTK2 branch. Patched to use charset supersets to decode titles
-	pkgver = 3.19.0+86.r11603.20221020.15c070cb3
-	pkgrel = 4
+	pkgver = 3.19.1+53.r11660.20230624.4e413c136
+	pkgrel = 1
 	epoch = 0
 	url = https://www.claws-mail.org/
 	arch = i686
@@ -53,13 +53,13 @@ pkgbase = claws-mail-gtk2-git
 	optdepends = python2: needed for some tools and python plugin.
 	optdepends = python: for some tools/ plugins.
 	optdepends = spamassassin: adds support for spamfiltering.
-	provides = claws=3.19.0+86.r11603.20221020.15c070cb3
-	provides = claws-mail=3.19.0+86.r11603.20221020.15c070cb3
-	provides = claws-mail-title-superset=3.19.0+86.r11603.20221020.15c070cb3
-	provides = claws-mail-gtk2=3.19.0+86.r11603.20221020.15c070cb3
-	provides = claws-mail-title-superset-gtk2=3.19.0+86.r11603.20221020.15c070cb3
+	provides = claws=3.19.1+53.r11660.20230624.4e413c136
+	provides = claws-mail=3.19.1+53.r11660.20230624.4e413c136
+	provides = claws-mail-title-superset=3.19.1+53.r11660.20230624.4e413c136
+	provides = claws-mail-gtk2=3.19.1+53.r11660.20230624.4e413c136
+	provides = claws-mail-title-superset-gtk2=3.19.1+53.r11660.20230624.4e413c136
 	provides = claws-mail-bash-completion
-	provides = claws-mail-extra-plugins=3.19.0+86.r11603.20221020.15c070cb3
+	provides = claws-mail-extra-plugins=3.19.1+53.r11660.20230624.4e413c136
 	conflicts = claws
 	conflicts = claws-mail
 	conflicts = claws-mail-gtk2

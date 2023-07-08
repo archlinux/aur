@@ -15,8 +15,8 @@ _pkgvariant="${_TOOLKIT}"
 _gitbranch="${_TOOLKIT}"
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=3.19.0+86.r11603.20221020.15c070cb3
-pkgrel=4
+pkgver=3.19.1+53.r11660.20230624.4e413c136
+pkgrel=1
 pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch. Patched to use charset supersets to decode titles'
 arch=(
   'i686'
