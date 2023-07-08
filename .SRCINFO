@@ -1,6 +1,6 @@
 pkgbase = iwant
-	pkgdesc = Install applications what I WANT.
-	pkgver = 0.2.2
+	pkgdesc = Install applications what I WANT
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/TD-Sky/iwant
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = iwant
 	optdepends = paru: AUR support
 	optdepends = flatpak: flathub support
 	optdepends = npm: npm support
-	source = iwant-0.2.2.tar.gz::https://github.com/TD-Sky/iwant/archive/v0.2.2.tar.gz
-	sha256sums = 55b3b08d9ca2d4cf1b58f17dc70fe102482c60e66ba7f58142c447c23721da08
+	conflicts = iwant-bin
+	source = iwant-0.3.1.tar.gz::https://github.com/TD-Sky/iwant/archive/v0.3.1.tar.gz
+	sha256sums = d8685c0d5afef0e043525ebad6df3a3654b6a080f02c7d02f6f83c634c3995d0
 
 pkgname = iwant
