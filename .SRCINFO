@@ -1,6 +1,6 @@
 pkgbase = python-jaraco.packaging
 	pkgdesc = Tools to supplement packaging Python releases
-	pkgver = 9.3.0
+	pkgver = 9.4.0
 	pkgrel = 1
 	url = https://github.com/jaraco/jaraco.packaging
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-jaraco.packaging
 	depends = python
 	depends = python-build
 	depends = python-jaraco.context
-	source = https://files.pythonhosted.org/packages/source/j/jaraco.packaging/jaraco.packaging-9.3.0.tar.gz
-	sha256sums = b28e2d049edc31ac4c805b5ee8e2d6d941535cf20cdbbde462f2f78eccd76c74
+	source = https://files.pythonhosted.org/packages/source/j/jaraco.packaging/jaraco.packaging-9.4.0.tar.gz
+	sha256sums = 2690ca1c40ea9edfd3a2aa4887f573714f8a09a484ade0578a66d52778e557b6
 
 pkgname = python-jaraco.packaging
 	optdepends = python-jaraco.packaging-docs: offline docs
