@@ -9,8 +9,9 @@ arch=('any')
 url='https://github.com/matiasb/python-unrar'
 license=('GPLv3')
 depends=(
-  'unrar'
+  'python'
   'python-unrardll'
+  'unrar'
 )
 makedepends=(
   'python-setuptools'

@@ -6,8 +6,9 @@ pkgbase = python-unrar
 	arch = any
 	license = GPLv3
 	makedepends = python-setuptools
-	depends = unrar
+	depends = python
 	depends = python-unrardll
+	depends = unrar
 	source = https://files.pythonhosted.org/packages/source/u/unrar/unrar-0.4.tar.gz
 	sha256sums = b24447a5b93024be600ef8255668ba23a30f451176577b691559ea1359f7d164
 
