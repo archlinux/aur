@@ -3,8 +3,8 @@
 pkgbase=qadwaitaplatform-git
 _pkgname=QAdwaitaPlatform
 pkgname=(qadwaitaplatform-qt5-git qadwaitaplatform-qt6-git qadwaita-color-schemes)
-pkgver=4.0.r0.g7718a77
-pkgrel=2
+pkgver=4.0.r2.g280e210
+pkgrel=1
 pkgdesc='QAdwaitaPlatform is QGnomePlatform fork that implements modern LibAdwaita window decoration look to Qt applications.'
 arch=(x86_64)
 url='https://github.com/urFate/QAdwaitaPlatform'
