@@ -26,7 +26,16 @@ prepare () {
   # http://openjdk.java.net/jeps/182
   # > In JDK 9 and going forward, javac will use a "one + three back" policy of supported source and target options.
   # NOTE: I just hope, that it'll compile right.
-  local java_ver="$(javac -version | sed -e 's/^javac\s\+\([0-9]\+\.[0-9]\+\).*$/\1/g')"
+  local java_ver="$(javac -version | sed -ne 's/^javac\s\+\([0-9]\+\.[0-9]\+\).*$/\1/p')"
+  # NOTE: jdk8 outputs version on STDERR together with other messages,
+  # jdk11, jdk17, jdk20 output version on STDOUT
+  if [ -z $java_ver ]; then
+          java_ver="$(javac -version 2>&1 | sed -ne 's/^javac\s\+\([0-9]\+\.[0-9]\+\).*$/\1/p')"
+  fi
+  if [ -z $java_ver ]; then
+          msg2 "Couldn't read java version"
+          exit 1
+  fi
   # accepted: 1.8, 17
   # not accepted: 17.0
   case $java_ver in
@@ -49,4 +58,3 @@ package() {
   install -Dm644 "LICENSE.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
-# vim:set ts=2 sw=2 et:
