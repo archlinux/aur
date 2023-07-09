@@ -29,5 +29,5 @@ pkgver() {
 package() {
 	cd "$srcdir/trac"
 	python setup.py install --prefix=/usr --root="$pkgdir"
-	install -D -m644 COPYING "$pkgdir"/usr/share/licenses/trac/COPYING
+	install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
