@@ -2,7 +2,7 @@
 # Maintainer: José Luis <jlgarrido97@gmail.com>
 # Maintainer: Ron Bickers <ron@logicetc.com>
 pkgname=openlitespeed
-pkgver=1.7.16
+pkgver=1.7.17
 pkgrel=1
 pkgdesc="A high-performance, lightweight, open source HTTP server"
 arch=('x86_64')
@@ -22,11 +22,11 @@ source=(https://openlitespeed.org/packages/$pkgname-$pkgver.src.tgz
 	build_yajl.sh.patch
 	$pkgname.sysusers
 	$pkgname.tmpfiles)
-sha256sums=('918c1f54b92b87462ff7013568768c85cb08568f184eb83223c48f3c0a792719'
-            '92d1c6e4c93f2f0ee363b20add793a47b1cf7783ca430591a9de95b3496d7ef3'
-            '77b8b0870da1bbf43e77b976cb118b97ac09f74744845877e56023c5772616f1'
-            '0d2a2d55882e76e1bbdea12e9d97886366c0ad58c43b24fe655fff099c11e141'
-            '93de5ef937ec4fdf0c33e3932fd81f9890b96b99efb2fbe3d601fb91945bde7f')
+b2sums=('fd519bdaed887344c1822020dbd98517fe0e8cd5954813f775159bad24785ddecc8289fcf60a9242e92f7f3d36fa3cfd54609cf75d443527fc78cce2a992a197'
+        '54bec1e0f65b38bbce31a4fc8e2f55e2fb989a2d1e6d4fae37873d54812d26bf90ff9ca107409afbddd888b705449d402a1119eb172593fa18ea50292353bcfb'
+        '06098679000a7d5243b757a4d33978c17227717046eff82b3c47f306382f29bf174fd5a2d08696a1bcef5637d23b817c43aba325f75c23b7cc9ab16f6d090dcb'
+        '3dba0c1915eb6a815a385b27c068010c59ea3c96005cc64308e47072ce3d26ee5d5974288dbb93aad10b802fa4f3ed3e67107c2f4dac3605de91586cbc46181e'
+        '2d00d23542951e045b27a04dd7c070fe16fe23af57eac8883bb67d53ae5dc090a87ba72370e7fa1774d0e490a3fde39c46efea2c3b941686839d127a624b9d2d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
