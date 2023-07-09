@@ -1,6 +1,6 @@
 # Maintainer: Josh Meranda <joshmeranda@gmail.com>
 pkgname=wrash
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 depends=()
 pkgdesc="A minimalistic command wrapper shell"
