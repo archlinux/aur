@@ -6,11 +6,11 @@
 pkgname=('mysql57' 'libmysqlclient57' 'mysql-clients57')
 _pkgname=mysql
 pkgbase=mysql57
-pkgver=5.7.38
+pkgver=5.7.42
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition, v5.7"
 arch=('x86_64')
-makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'systemd-libs' 'libaio'
+makedepends=('openssl-1.1' 'zlib' 'cmake' 'systemd-tools' 'systemd-libs' 'libaio'
              'jemalloc' 'rpcsvc-proto' 'libtirpc')
 _boost_ver=1.59.0
 license=('GPL')
@@ -23,7 +23,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${_pkgname}-${pkgver}.tar
         "mysqld.service"
         "my-default.cnf"
         "systemd-sysusers.conf")
-sha256sums=('22bf87eefa975b92b54d7c72fb5f3772c657cb0eb055bc6aea65d3a75f69a356'
+sha256sums=('211cacb4b3e46dea59949092662be333ec677edb8bc41f4a6f2744e979ee19a2'
             '47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
@@ -31,9 +31,27 @@ sha256sums=('22bf87eefa975b92b54d7c72fb5f3772c657cb0eb055bc6aea65d3a75f69a356'
             '3cc3ba4149fb2f9e823601b9a414ff5b28a2a52f20bc68c74cc0505cf2d1832d'
             '1375640da77573d74c302285da6fcab931671c847d4dd4955dcf80a395173ae4')
 
-build() {
+prepare() {
   rm -rf build
   mkdir build
+  cd build
+  # Prepare openssl-1.1 temporary environment
+  mkdir openssl-1.1
+  cd openssl-1.1
+  mkdir bin
+  ln -s /usr/bin/openssl-1.1 bin/openssl
+  mkdir include
+  ln -s /usr/include/openssl-1.1/openssl/ include
+  mkdir lib
+  ln -s /usr/lib/libcrypto.so.1.1 lib
+  ln -s /usr/lib/libssl.so.1.1 lib
+  ln -s /usr/lib/openssl-1.1/engines-1.1/ lib
+  ln -s /usr/lib/openssl-1.1/libcrypto.so lib
+  ln -s /usr/lib/openssl-1.1/libssl.so lib
+  ln -s /usr/lib/openssl-1.1/pkgconfig/ lib
+}
+
+build() {
   cd build
 
   cmake "../${_pkgname}-${pkgver}" \
@@ -58,7 +76,7 @@ build() {
     -DINSTALL_DOCDIR=share/mysql/docs \
     -DINSTALL_SHAREDIR=share/mysql \
     -DWITH_ZLIB=system \
-    -DWITH_SSL=system \
+    -DWITH_SSL=${srcdir}/build/openssl-1.1 \
     -DWITH_LIBWRAP=OFF \
     -DCMAKE_EXE_LINKER_FLAGS='-ljemalloc' \
     -DWITH_EXTRA_CHARSETS=complex \
@@ -100,7 +118,7 @@ package_libmysqlclient57(){
 
 package_mysql-clients57(){
   pkgdesc="MySQL client tools, v5.7"
-  depends=('libmysqlclient57' 'zlib' 'openssl' 'jemalloc')
+  depends=('libmysqlclient57' 'zlib' 'openssl-1.1' 'jemalloc')
   conflicts=('mariadb-clients')
   provides=("mariadb-clients=${pkgver}" "mysql-clients=${pkgver}")
 
