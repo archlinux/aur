@@ -2,7 +2,7 @@
 
 pkgname=python-glue-core
 _pyname=glue-core
-pkgver=1.0.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Linked Data Visualizations Across Multiple Files -- core library"
 arch=('i386' 'x86_64')
@@ -13,8 +13,8 @@ depends=('python' 'python-numpy' 'python-matplotlib' 'python-pandas' 'python-ast
          'python-dill' 'python-xlrd' 'python-h5py' 'python-bottleneck' 
          'python-mpl-scatter-density')
 makedepends=('python-setuptools')
-source=(https://files.pythonhosted.org/packages/88/0a/361b66d591f9d68cae8810be6645e25f4a44a1f0f886eef0e543689c4718/${_pyname}-${pkgver}.tar.gz)
-sha256sums=('32e7f3742bc944d0012766945eb5950ec49845c464227f34e56a380d07371fca')
+source=(https://files.pythonhosted.org/packages/f2/56/98c10dcce197d099290c618f41509d8032552ecbc971f8c2052f62c4f87a/${_pyname}-${pkgver}.tar.gz)
+sha256sums=('f0a40f7d80a971b42fa7051d9e4c43a3accdd3e328aadc093bb45b038fbcc068')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
