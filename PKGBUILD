@@ -7,8 +7,8 @@ pkgdesc='Qt client for Polish internet radio Open FM.'
 arch=('any')
 url='https://github.com/wzykubek/openfm-qt'
 licence=('ISC')
-depends=('python-requests' 'pyside6' 'qt6-base' 'qt6-multimedia-ffmpeg')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'gendesk')
+depends=('python-requests' 'pyside6' 'qt6-multimedia-ffmpeg')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'gendesk' 'qt6-base')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wzykubek/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
