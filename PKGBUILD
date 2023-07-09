@@ -13,6 +13,10 @@ checkdepends=(python-pytest-xprocess python-pillow python-pixelmatch python-sele
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('f8cb0625081d9246c1c31d1b987eb4d3723cb45cb9ef88cb8959d1564565e3093eeb0cc9ae628a2c6f59caed3cc3c85d64053d65b089213494becfd717a5ab8b')
 
+prepare() {
+  sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
+}
+
 build() {
   cd ${srcdir}/${_base}-${pkgver}/vue2-app
   npm install
