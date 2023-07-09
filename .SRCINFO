@@ -1,0 +1,21 @@
+pkgbase = spright-git
+	pkgdesc = A command line sprite sheet packer
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/houmain/spright
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	provides = spright
+	conflicts = spright
+	source = git+https://github.com/houmain/spright.git
+	source = git+https://github.com/houmain/rect_pack.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = spright-git
