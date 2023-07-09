@@ -14,7 +14,6 @@ depends=(
 provides=(
   "python2-wxpython=${pkgver}"
   "python2-wxpython-gtk3=${pkgver}"
-  "python2-wxpython3=${pkgver}"
   "wxpython=${pkgver}"
   "wxpython-gtk3=${pkgver}"
   "wxpython3=${pkgver}"

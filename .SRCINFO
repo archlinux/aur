@@ -20,7 +20,6 @@ pkgbase = python2-wxpython3
 	depends = gtk3
 	provides = python2-wxpython=3.0.2.0
 	provides = python2-wxpython-gtk3=3.0.2.0
-	provides = python2-wxpython3=3.0.2.0
 	provides = wxpython=3.0.2.0
 	provides = wxpython-gtk3=3.0.2.0
 	provides = wxpython3=3.0.2.0
