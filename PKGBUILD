@@ -8,7 +8,7 @@ url="https://github.com/ianfab/Fairy-Stockfish"
 license=('GPL3')
 makedepends=('git')
 optdepends=('polyglot: For xboard support')
-conflicts=("${pkgname%-*}")
+conflicts=('fairy-stockfish-git' 'fairy-stockfish')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 

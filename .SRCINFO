@@ -9,7 +9,8 @@ pkgbase = fairy-stockfish-default-git
 	license = GPL3
 	makedepends = git
 	optdepends = polyglot: For xboard support
-	conflicts = fairy-stockfish-default
+	conflicts = fairy-stockfish-git
+	conflicts = fairy-stockfish
 	source = fairy-stockfish-default-git::git+https://github.com/ianfab/Fairy-Stockfish
 	md5sums = SKIP
 
