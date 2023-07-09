@@ -16,7 +16,7 @@ pkgbase = actual-server
 	source = sysusers
 	source = tmpfiles
 	sha256sums = SKIP
-	sha256sums = b2d7e042688726b5ad374fbb08ae5ef736b31702f611595d337226981394c082
+	sha256sums = 6d70d436bff95b6ca7ae270219a4288c81ccf119ad57158528fdda19585b2067
 	sha256sums = 4dfa4502df8d72212ccfb96cfc2509c9a1461f542adb38304af54097b30ca0d5
 	sha256sums = 0cd5cd3b9a3bfcc9c572cd42d11d1e5d64be9cf979527612b8874baf56ddd5ef
 
