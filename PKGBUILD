@@ -9,7 +9,7 @@
 pkgname=google-chrome-beta
 pkgver=115.0.5790.75
 pkgrel=1
-pkgdesc="The popular and trusted web browser by Google (Beta Channel)"
+pkgdesc="The popular web browser by Google (Beta Channel)"
 arch=('x86_64')
 url="https://www.google.com/chrome"
 license=('custom:chrome')
