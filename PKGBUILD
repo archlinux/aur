@@ -5,7 +5,7 @@ _projectname='electron'
 _pkgname="${_projectname}3"
 pkgname="$_pkgname-bin"
 pkgver='3.1.13'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='Build cross platform desktop apps with web technologies - version 3 - binary version'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url="https://${_projectname}js.org"
@@ -20,27 +20,27 @@ optdepends=(
 )
 _releaseurl="https://github.com/$_projectname/$_projectname/releases/download/v$pkgver"
 source_x86_64=(
-	"$pkgname-chromedriver-$pkgver-$pkgrel-x86_64.zip::$_releaseurl/chromedriver-v$pkgver-linux-x64.zip"
-	"$pkgname-$pkgver-$pkgrel-x86_64.zip::$_releaseurl/$_projectname-v$pkgver-linux-x64.zip"
+	"$pkgname-chromedriver-$pkgver-x86_64.zip::$_releaseurl/chromedriver-v$pkgver-linux-x64.zip"
+	"$pkgname-$pkgver-x86_64.zip::$_releaseurl/$_projectname-v$pkgver-linux-x64.zip"
 )
 source_i686=(
-	"$pkgname-chromedriver-$pkgver-$pkgrel-i686.zip::$_releaseurl/chromedriver-v$pkgver-linux-ia32.zip"
-	"$pkgname-$pkgver-$pkgrel-i686.zip::$_releaseurl/$_projectname-v$pkgver-linux-ia32.zip"
+	"$pkgname-chromedriver-$pkgver-i686.zip::$_releaseurl/chromedriver-v$pkgver-linux-ia32.zip"
+	"$pkgname-$pkgver-i686.zip::$_releaseurl/$_projectname-v$pkgver-linux-ia32.zip"
 )
 source_pentium4=(
-	"$pkgname-chromedriver-$pkgver-$pkgrel-pentium4.zip::$_releaseurl/chromedriver-v$pkgver-linux-ia32.zip"
-	"$pkgname-$pkgver-$pkgrel-pentium4.zip::$_releaseurl/$_projectname-v$pkgver-linux-ia32.zip"
+	"$pkgname-chromedriver-$pkgver-pentium4.zip::$_releaseurl/chromedriver-v$pkgver-linux-ia32.zip"
+	"$pkgname-$pkgver-pentium4.zip::$_releaseurl/$_projectname-v$pkgver-linux-ia32.zip"
 )
 source_armv7h=(
-	"$pkgname-chromedriver-$pkgver-$pkgrel-armv7h.zip::$_releaseurl/chromedriver-v$pkgver-linux-armv7l.zip"
-	"$pkgname-$pkgver-$pkgrel-armv7h.zip::$_releaseurl/$_projectname-v$pkgver-linux-armv7l.zip"
+	"$pkgname-chromedriver-$pkgver-armv7h.zip::$_releaseurl/chromedriver-v$pkgver-linux-armv7l.zip"
+	"$pkgname-$pkgver-armv7h.zip::$_releaseurl/$_projectname-v$pkgver-linux-armv7l.zip"
 )
 source_aarch64=(
-	"$pkgname-chromedriver-$pkgver-$pkgrel-aarch64.zip::$_releaseurl/chromedriver-v$pkgver-linux-arm64.zip"
-	"$pkgname-$pkgver-$pkgrel-aarch64.zip::$_releaseurl/$_projectname-v$pkgver-linux-arm64.zip"
+	"$pkgname-chromedriver-$pkgver-aarch64.zip::$_releaseurl/chromedriver-v$pkgver-linux-arm64.zip"
+	"$pkgname-$pkgver-aarch64.zip::$_releaseurl/$_projectname-v$pkgver-linux-arm64.zip"
 )
 source=('electron-launcher.sh')
-sha512sums=('e5ce4f292d5fff976efd6338c554b1dc62054ea13404154a35ef122bc655382bcd6de81fdf6936aa3cd2f1f4e7791d0fe4ae433f416ddb07b183ce7760c07b47')
+sha512sums=('bafaff764fe602996183f0a63b9aca3885bf07086fd7c7e727608b7206a9aadf3f2fe057f5f9405fb36689b85fa106fb949b3214a63009672db76a1af643f446')
 sha512sums_x86_64=('1e5137ba3ef30b525ef01bb15698d0b07ff3eda983b7ff50d597786c25ebcb6c9d44c601ed62a46539063898b6dfa93a554ddc9332d3c4f50a2528c00a84f7c4'
                    'cef90248a12ef7649c36d52fa57b93cb19ecfaa0d3bcb93607b3d7a625073381a2eed8f4706e9acfc17c098bd7491eba3fafb935213bc9ed89b70188434f7042')
 sha512sums_i686=('fa84973aaa8f87eaecd2008a8f46bac9a75a3f2697df7268c1cdc71a5768ff62e54662d37473057f9f22f33ab9cf213efc0c8503a5a1548f6bcc1c36dd5b52ce'
