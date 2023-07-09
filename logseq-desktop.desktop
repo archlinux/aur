@@ -5,6 +5,6 @@ MimeType=x-scheme-handler/logseq
 Terminal=false
 Type=Application
 Icon=logseq
-StartupWMClass=logseq
+StartupWMClass=Logseq
 Comment=Open Source platform for knowledge sharing and management
 Categories=Office
