@@ -3,15 +3,15 @@
 
 _pkgname=gimp
 pkgname=${_pkgname}-devel-noconflict
-pkgver=2.99.14
-pkgrel=2
+pkgver=2.99.16
+pkgrel=1
 pkgdesc="GNU Image Manipulation Program (Development version, doesn't conflict with gimp 2.0)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://www.gimp.org/"
 license=('GPL' 'LGPL')
 depends=('gtk3' 'lcms2' 'libwmf' 'icu' 'enchant' 'libgexiv2' 'librsvg' 'desktop-file-utils'
          'libexif' 'libgudev' 'openjpeg2' 'poppler-glib' 'poppler-data' 'openexr' 'mypaint-brushes1'
-         'babl>=0.1.78' 'gegl>=0.4.36' 'cairo' 'python-gobject' 'appstream-glib' 'libxmu' 'graphviz')
+         'babl>=0.1.98' 'gegl>=0.4.46' 'cairo' 'python-gobject' 'appstream-glib' 'libxmu' 'graphviz')
 makedepends=('appstream' 'intltool' 'libxslt' 'glib-networking'
              'alsa-lib' 'curl' 'ghostscript' 'libxpm'
              'libheif' 'libwebp' 'libmng' 'iso-codes' 'aalib' 'zlib' 'libjxl'
@@ -35,16 +35,9 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'lua51-lgi: LUA scripting support')
 provides=("${_pkgname}=${pkgver}")
 source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz
-        linux.gpl
-        babl-0.1-name-change-meson.patch::https://gitlab.gnome.org/GNOME/gimp/-/commit/04a78154e1af5e30dcedde6dbaa321be3f0e24b1.patch)
-sha256sums=('313a205475d1ff03c5c4d9602f09f5c975ba6c1c79d8843e2396f9fe2abdf7a8'
-            '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3'
-            'e012d022fe53eaf4cd2fc08f07cb0377fb14c8f791e42d13027983e41f7f4fc2')
-
-prepare() {
-  cd $_pkgname-$pkgver
-  patch -Np1 -i ../babl-0.1-name-change-meson.patch
-}
+        linux.gpl)
+sha256sums=('6b4496edee447339f923276755247eadb64ec40d8aec241d06b62d1a6eb6508d'
+            '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
 
 build() {
   arch-meson "${_pkgname}-${pkgver}" build \

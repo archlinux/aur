@@ -1,0 +1,4 @@
+/src/
+/pkg/
+/gimp-*.tar.xz
+/gimp-devel-noconflict-*.pkg.tar.*
