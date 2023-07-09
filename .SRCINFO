@@ -1,0 +1,14 @@
+pkgbase = metabase-driver-teradata
+	pkgdesc = Teradata driver for Metabase
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/swisscom-bigdata/metabase-teradata-driver
+	arch = any
+	license = EPL
+	depends = metabase
+	noextract = teradata.metabase-driver.jar
+	options = !strip
+	source = https://github.com/swisscom-bigdata/metabase-teradata-driver/releases/download/1.1.6-metabase-v0.46.6-teradata-jdbc-17.10/teradata.metabase-driver.jar
+	sha256sums = 495ec87b6a4ecca1225ed087aa27a9a6219178cf5ec278c10ede61627d025fbc
+
+pkgname = metabase-driver-teradata
