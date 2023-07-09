@@ -1,23 +1,33 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='certbot-dns-vultr'
-pkgver='20190506'
-_commit='5acb7e2b6d66f21decb3a37ed0d7ec808eefe844'
-pkgrel='5'
-pkgdesc='Cerbot hooks for Vultr DNS'
+pkgver='0.2.0'
+pkgrel='1'
+epoch='1'
+pkgdesc='Authenticator plugin for Certbot to configure Vultr to respond to ACME dns-01 challenges to obtain HTTPS certificates'
 arch=('any')
-url="https://aur.archlinux.org/packages/$pkgname"
+url="https://github.com/bsorahan/$pkgname"
 license=('MIT')
-depends=('certbot' 'python' 'python-certifi' 'python-chardet' 'python-idna' 'python-requests' 'python-urllib3')
+depends=('certbot' 'dns-lexicon' 'python>=3.4.0' 'python-acme' 'python-mock' 'python-zope-interface')
+makedepends=('python-setuptools')
 install="$pkgname.install"
-source=(
-	'vultr-hook.py'
-	'LICENSE'
-)
-sha512sums=('bed005e71fee528dc8a2f96d9012f73a65571b5ce137eb38a361662076c6d50c6ed2d6fb65fead411f6cfd6203c98f93687e422fe78ff5fe410df040d8028d72'
-            '3be99701a9cd1575f3d6a2e57769f1e507f75af9b09e23882a663415db8c569d10e2f4a7dd321df51571cc23c87e331b347f09bc8cf9fea86a09c191b7b54ee7')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('5e19a42238f55b543218f524f65edba593a610bec3dec45b3764c180d6bcd781f37d6106089e415a97cde3894db8aa59523bf8152dee377c110800606c83b797')
+
+_sourcedirectory="$pkgname-$pkgver"
+
+build() {
+	cd "$srcdir/$_sourcedirectory/"
+	python setup.py build
+}
+
+# Tests currently don't pass
+# check() {
+# 	cd "$srcdir/$_sourcedirectory/"
+# 	python -m unittest discover --verbose
+# }
 
 package() {
-	cd "$srcdir/"
-	install -Dm755 'vultr-hook.py' "$pkgdir/usr/bin/$pkgname"
+	cd "$srcdir/$_sourcedirectory/"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

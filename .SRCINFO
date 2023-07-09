@@ -1,21 +1,20 @@
 pkgbase = certbot-dns-vultr
-	pkgdesc = Cerbot hooks for Vultr DNS
-	pkgver = 20190506
-	pkgrel = 5
-	url = https://aur.archlinux.org/packages/certbot-dns-vultr
+	pkgdesc = Authenticator plugin for Certbot to configure Vultr to respond to ACME dns-01 challenges to obtain HTTPS certificates
+	pkgver = 0.2.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/bsorahan/certbot-dns-vultr
 	install = certbot-dns-vultr.install
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = certbot
-	depends = python
-	depends = python-certifi
-	depends = python-chardet
-	depends = python-idna
-	depends = python-requests
-	depends = python-urllib3
-	source = vultr-hook.py
-	source = LICENSE
-	sha512sums = bed005e71fee528dc8a2f96d9012f73a65571b5ce137eb38a361662076c6d50c6ed2d6fb65fead411f6cfd6203c98f93687e422fe78ff5fe410df040d8028d72
-	sha512sums = 3be99701a9cd1575f3d6a2e57769f1e507f75af9b09e23882a663415db8c569d10e2f4a7dd321df51571cc23c87e331b347f09bc8cf9fea86a09c191b7b54ee7
+	depends = dns-lexicon
+	depends = python>=3.4.0
+	depends = python-acme
+	depends = python-mock
+	depends = python-zope-interface
+	source = certbot-dns-vultr-0.2.0.tar.gz::https://github.com/bsorahan/certbot-dns-vultr/archive/v0.2.0.tar.gz
+	sha512sums = 5e19a42238f55b543218f524f65edba593a610bec3dec45b3764c180d6bcd781f37d6106089e415a97cde3894db8aa59523bf8152dee377c110800606c83b797
 
 pkgname = certbot-dns-vultr

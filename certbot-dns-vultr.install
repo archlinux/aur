@@ -1,11 +1,19 @@
 post_install() {
-	echo '==> To use this package, set VULTR_API_KEY and use the following certbot options:'
-	echo '==>	--manual'
-	echo '==>	--manual-auth-hook certbot-dns-vultr'
-	echo '==>	--manual-cleanup-hook certbot-dns-vultr'
+	echo '==> To use this package, create a credential file in this format:'
+	echo '==>	dns_vultr_token = aabbccddeeff112233445566778899'
+	echo '==> Once that is done, use the following certbot options:'
+	echo '==>	--authenticator dns-vultr'
+	echo '==>	--dns-vultr-credentials /path/to/credential/file.ini'
 	echo '==>	--preferred-challenges dns-01'
 }
 
+post_upgrade() {
+	if [[ "$2" =~ ^20190506-[0-9]+$ ]]; then
+		echo '==> WARNING: THIS PACKAGE NOW USES A CREDENTIAL FILE'
+		post_install
+	fi
+}
+
 post_remove() {
-	echo "==> Don't forget to remove the hook from your certbot command"
+	echo "==> Don't forget to remove the package from your certbot command"
 }
