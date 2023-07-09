@@ -1,0 +1,13 @@
+pkgbase = imgur-cli-bin
+	pkgdesc = CLI for imgur, you can upload images to your account
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/zeekozhu/projects
+	arch = x86_64
+	license = MIT
+	depends = dotnet-runtime-7.0
+	options = !strip
+	source = imgur-cli-bin-1.0.1-linux-x64.tar.gz::https://github.com/ZeekoZhu/projects/releases/download/imgur-cli%401.0.1/linux-x64.tar.gz
+	sha256sums = SKIP
+
+pkgname = imgur-cli-bin
