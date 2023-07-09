@@ -1,0 +1,19 @@
+pkgbase = openbsd-netcat-git
+	pkgdesc = TCP/IP swiss army knife. OpenBSD variant.
+	pkgver = 1.225.r319.g9e75b2f
+	pkgrel = 1
+	url = https://salsa.debian.org/debian/netcat-openbsd
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glibc
+	depends = libbsd
+	provides = openbsd-netcat=1.225.r319.g9e75b2f
+	provides = netcat
+	conflicts = openbsd-netcat
+	conflicts = gnu-netcat
+	source = git+https://salsa.debian.org/debian/netcat-openbsd.git
+	sha256sums = SKIP
+
+pkgname = openbsd-netcat-git
