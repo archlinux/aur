@@ -144,7 +144,7 @@ prepare(){
   #  # Remove gcc-plugin if gcc version = 13.0.0
   #  if [[ "$_gccversion" = "13.0.0" ]]; then
   #
-  #    msg2 "Remove GCC_PLUGINS"
+  #    msg "Remove GCC_PLUGINS"
   #    scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
   #    scripts/config --disable CONFIG_GCC_PLUGINS
   #
@@ -155,7 +155,7 @@ prepare(){
   # Set LTO with CLANG/LLVM
   if [[ "$_compiler" = "2" ]]; then
 
-    msg2 "Enable THIN LTO"
+    msg "Enable THIN LTO"
     scripts/config --enable CONFIG_LTO
     scripts/config --enable CONFIG_LTO_CLANG
     scripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG
@@ -166,7 +166,7 @@ prepare(){
     scripts/config --enable CONFIG_LTO_CLANG_THIN
     scripts/config --enable CONFIG_HAVE_GCC_PLUGINS
 
-    #msg2 "Enable FULL LTO"
+    #msg "Enable FULL LTO"
     #scripts/config --enable CONFIG_LTO
     #scripts/config --enable CONFIG_LTO_CLANG
     #scripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG
@@ -177,7 +177,7 @@ prepare(){
     #scripts/config --disable CONFIG_LTO_CLANG_THIN
     #scripts/config --enable CONFIG_HAVE_GCC_PLUGINS
 
-    #msg2 "Disable LTO"
+    #msg "Disable LTO"
     #scripts/config --enable CONFIG_LTO_NONE
 
     sleep 2s
