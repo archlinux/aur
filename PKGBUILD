@@ -1,6 +1,6 @@
 # Maintainer: ItzSelenux <itszariep@outlook.com>
 
-pkgname="ghostlexly-gpu-video-wallpaper-git"
+pkgname="ghostlexly-gpu-video-wallpaper"
 _reponame='gpu-video-wallpaper'
 pkgver=2023.06.24.1cb6623
 pkgrel=1

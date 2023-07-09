@@ -1,4 +1,4 @@
-pkgbase = ghostlexly-gpu-video-wallpaper-git
+pkgbase = ghostlexly-gpu-video-wallpaper
 	pkgdesc = User your GPU for rendering low cpu using/usage video animated wallpaper
 	pkgver = 2023.06.24.1cb6623
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = ghostlexly-gpu-video-wallpaper-git
 	source = git+https://github.com/ghostlexly/gpu-video-wallpaper.git
 	sha256sums = SKIP
 
-pkgname = ghostlexly-gpu-video-wallpaper-git
+pkgname = ghostlexly-gpu-video-wallpaper
