@@ -2,14 +2,14 @@
 
 pkgbase=python-django-xforwardedfor-middleware
 pkgname=('python-django-xforwardedfor-middleware' 'python2-django-xforwardedfor-middleware')
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 arch=( 'any' )
 url="https://github.com/allo-/django-xforwardedfor-middleware"
 license=( 'Public Domain' )
 makedepends=('python2' 'python2-setuptools' 'python' 'python-setuptools')
 source=( "https://pypi.python.org/packages/source/d/django-xforwardedfor-middleware/django-xforwardedfor-middleware-${pkgver}.tar.gz" )
-md5sums=( '9132e555e58762f6039e5cec4feeeb39' )
+md5sums=('d292f908820a8bcfac249f47655e88fc')
 
 prepare() {
    mv django-xforwardedfor-middleware-1.0 python-django-xforwardedfor-middleware-${pkgver}
@@ -19,7 +19,7 @@ prepare() {
 build() {
    cd $srcdir/python-django-xforwardedfor-middleware-${pkgver}
    python setup.py build
-   
+
    cd $srcdir/python2-django-xforwardedfor-middleware-${pkgver}
    python2 setup.py build
 }
@@ -27,7 +27,7 @@ build() {
 #check(){
 #   cd $srcdir/python-django-xforwardedfor-middleware-${pkgver}
 #   python2 setup.py test
-#   
+#
 #   cd $srcdir/python2-django-xforwardedfor-middleware-${pkgver}
 #   python setup.py test
 #}
@@ -45,7 +45,7 @@ package_python-django-xforwardedfor-middleware() {
 package_python2-django-xforwardedfor-middleware() {
    depends=('python2' )
    pkgdesc="Python2 Django X-Forwarded-For Middleware."
-   
+
    cd python2-django-xforwardedfor-middleware-${pkgver}
    python2 setup.py install --root="${pkgdir}" --optimize=1
 

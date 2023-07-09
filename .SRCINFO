@@ -1,5 +1,5 @@
 pkgbase = python-django-xforwardedfor-middleware
-	pkgver = 1.0
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/allo-/django-xforwardedfor-middleware
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-django-xforwardedfor-middleware
 	makedepends = python2-setuptools
 	makedepends = python
 	makedepends = python-setuptools
-	source = https://pypi.python.org/packages/source/d/django-xforwardedfor-middleware/django-xforwardedfor-middleware-1.0.tar.gz
+	source = https://pypi.python.org/packages/source/d/django-xforwardedfor-middleware/django-xforwardedfor-middleware-2.0.tar.gz
 	md5sums = 9132e555e58762f6039e5cec4feeeb39
 
 pkgname = python-django-xforwardedfor-middleware
@@ -18,4 +18,3 @@ pkgname = python-django-xforwardedfor-middleware
 pkgname = python2-django-xforwardedfor-middleware
 	pkgdesc = Python2 Django X-Forwarded-For Middleware.
 	depends = python2
-
