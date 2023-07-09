@@ -1,7 +1,7 @@
 pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	pkgdesc = An advanced digital photo management application - without akonadi & mariadb
-	pkgver = 8.0.0
-	pkgrel = 3
+	pkgver = 8.1.0
+	pkgrel = 1
 	url = https://www.digikam.org/
 	arch = x86_64
 	license = GPL
@@ -32,12 +32,10 @@ pkgbase = digikam-without-akonadi-mediawiki-vkontakte
 	provides = digikam
 	conflicts = digikam
 	conflicts = digikam-git
-	source = https://download.kde.org/stable/digikam/8.0.0/digiKam-8.0.0.tar.xz
-	source = https://download.kde.org/stable/digikam/8.0.0/digiKam-8.0.0.tar.xz.sig
-	source = https://invent.kde.org/graphics/digikam/-/commit/4896cef0.patch
+	source = https://download.kde.org/stable/digikam/8.1.0/digiKam-8.1.0.tar.xz
+	source = https://download.kde.org/stable/digikam/8.1.0/digiKam-8.1.0.tar.xz.sig
 	validpgpkeys = D1CF2444A7858C5F2FB095B74A77747BC2386E50
-	sha256sums = 102c712b6209fe2ac877c9b1d019dacadaf115adf915570d26816066d151e847
+	sha256sums = 0503c034e445ff424f18a6715c0a7a79be4a5e0c82b3ebc461a21cec3745a5b3
 	sha256sums = SKIP
-	sha256sums = 2a49336e3a80686721b90811de702c80072f0741231e39980bb68c598dc286e1
 
 pkgname = digikam-without-akonadi-mediawiki-vkontakte

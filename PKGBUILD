@@ -7,9 +7,9 @@
 
 _pkgname=digikam
 pkgname=digikam-without-akonadi-mediawiki-vkontakte
-_pkgver=8.0.0
+_pkgver=8.1.0
 pkgver=${_pkgver//-/} # for beta versions
-pkgrel=3
+pkgrel=1
 pkgdesc='An advanced digital photo management application - without akonadi & mariadb'
 arch=(x86_64)
 license=(GPL)
@@ -24,16 +24,10 @@ optdepends=('hugin: panorama tool'
             'rawtherapee: RAW import'
             'darktable: RAW import'
             'perl: for digitaglinktree')
-source=(https://download.kde.org/stable/$_pkgname/${_pkgver%-*}/digiKam-$_pkgver.tar.xz{,.sig}
-            https://invent.kde.org/graphics/digikam/-/commit/4896cef0.patch)
-sha256sums=('102c712b6209fe2ac877c9b1d019dacadaf115adf915570d26816066d151e847'
-            'SKIP'
-            '2a49336e3a80686721b90811de702c80072f0741231e39980bb68c598dc286e1')
+source=(https://download.kde.org/stable/$_pkgname/${_pkgver%-*}/digiKam-$_pkgver.tar.xz{,.sig})
+sha256sums=('0503c034e445ff424f18a6715c0a7a79be4a5e0c82b3ebc461a21cec3745a5b3'
+            'SKIP')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
-
-prepare() {
-  patch -d $_pkgname-$pkgver -p1 < 4896cef0.patch # Fix build with exiv2 0.28
-}
 
 build() {
   cmake -B build -S $_pkgname-$_pkgver \
