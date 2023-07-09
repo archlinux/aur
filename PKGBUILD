@@ -8,7 +8,7 @@
 _pkgbase=freeminer
 pkgbase="${_pkgbase}-git"
 pkgname=("${_pkgbase}-git" "${_pkgbase}-server-git" "${_pkgbase}-common-git")
-pkgver=0.4.14.8.r911.g5d2f00fa7
+pkgver=0.4.14.8.r5548.g86caf1cfb
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://freeminer.org/'
@@ -21,40 +21,15 @@ makedepends=(
 	'hicolor-icon-theme' 'freetype2' 'cmake' 'msgpack-c' 'clang'
 )
 
-source=(
-	"git+https://github.com/${_pkgbase}/${_pkgbase}.git"
-	"git+https://github.com/${_pkgbase}/default.git"
-	"git+https://github.com/kaadmy/pixture.git"
-	'enet_shared_lib.patch'
-)
-sha512sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'ac51ee33df27f9fb3bdf16c50b2a9da602d6c55bba7afe21492d0056cdfefa5f84ccfb306c23bd2bcf22066ca3ef2a952110ba0de350602393754f0466383004')
-
 pkgver() {
 	cd "${srcdir}"/${_pkgbase}
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "${srcdir}"/${_pkgbase}
-
-	# Use Arch's enet lib
-	patch -Np1 < ../enet_shared_lib.patch
-
-	# Remove msgpack-c, enet and jsoncpp submodules
-	git submodule deinit src/external/{msgpack-c,enet,jsoncpp}
-	git rm --cached src/external/{msgpack-c,enet,jsoncpp}
-	git config -f .gitmodules --remove-section submodule.src/external/msgpack-c
-	git config -f .gitmodules --remove-section submodule.src/external/enet
-	git config -f .gitmodules --remove-section submodule.src/external/jsoncpp
-	git add .gitmodules
-
-	# Configure submodules
-	git config submodule.games/default.url "${srcdir}"/default
-	git config submodule.games/pixture.url "${srcdir}"/pixture
-	git submodule update --init
+	cd "${srcdir}"
+	
+	git clone --recursive "https://github.com/${_pkgbase}/${_pkgbase}"
 
 	# Create build directory
 	mkdir -p "${srcdir}"/build-{client,server}
@@ -64,28 +39,22 @@ build() {
 	# Building client
 	cd "${srcdir}"/build-client
 	cmake ../${_pkgbase} \
-		-DCMAKE_C_COMPILER=clang \
-		-DCMAKE_CXX_COMPILER=clang++ \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_CLIENT=1 \
 		-DBUILD_SERVER=0 \
-		-DRUN_IN_PLACE=0 \
-		-DENABLE_SYSTEM_JSONCPP=1 \
-		-DENABLE_SYSTEM_MSGPACK=1
-	make
+		-DRUN_IN_PLACE=0
+	
+	nice make
 
 	# Building server
 	cd "${srcdir}"/build-server
 	cmake ../${_pkgbase} \
-		-DCMAKE_C_COMPILER=clang \
-		-DCMAKE_CXX_COMPILER=clang++ \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_CLIENT=0 \
 		-DBUILD_SERVER=1 \
-		-DRUN_IN_PLACE=0 \
-		-DENABLE_SYSTEM_JSONCPP=1 \
-		-DENABLE_SYSTEM_MSGPACK=1
-	make
+		-DRUN_IN_PLACE=0
+
+	nice make
 }
 
 package_freeminer-git() {
