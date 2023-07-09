@@ -6,6 +6,7 @@ pkgbase = python-advocate
 	arch = any
 	license = Apache 2.0
 	makedepends = python-setuptools
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/a/advocate/advocate-1.0.0.tar.gz
 	sha512sums = ab526c8f094705f97f5ed7db965d98ac2a19d16fe84f834433588065d69975d6efd99466ab69463f9d667bf3cf39afecc00a8686ba6f8314e95ef0ba06d8d7ee
 

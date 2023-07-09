@@ -8,6 +8,7 @@ pkgdesc="A set of tools based around the requests library for safely making HTTP
 arch=('any')
 url="https://github.com/JordanMilne/Advocate"
 license=('Apache 2.0')
+depends=('python')
 makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
