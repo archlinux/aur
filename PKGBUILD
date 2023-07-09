@@ -10,7 +10,7 @@ _majorver=12
 _minorver=0
 _securityver=2
 _updatever=10
-pkgrel=2
+pkgrel=3
 pkgver="${_majorver}.${_minorver}.${_securityver}.u${_updatever}"
 _hg_tag="jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=("http://hg.openjdk.java.net/jdk-updates/jdk${_majorver}u/archive/${_hg_t
         "bug_8238386.patch"
         "bug_8238388.patch"
         "make_4.3.patch")
-sha256sums=('b2bcad35656b00928683416f3480ad00363b00993eb711c3e1886e4fe77eefeb'
+sha256sums=('30b8915a228df6bda0ef556494a6b886e59c46724c7a339b2ba5f97021bed709'
             '779dba7cf4f5de7cd512adf969354ec4aefddb33d970757eb3c49ea1fd8d5184'
             'fa67642a8ba1173c30536a12dfbeeacf5d0f37918849057c1049b88a81f261ed'
             '0a1d66a3e4774d7fad267c8a4e726ecf362ae2f33df12439567e0fb249655c48'
