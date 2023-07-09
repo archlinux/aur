@@ -2,20 +2,18 @@
 _base=SeleniumBase
 pkgname=python-${_base,,}
 pkgdesc="A complete web automation framework for end-to-end testing"
-pkgver=4.15.10
+pkgver=4.15.11
 pkgrel=1
 arch=(any)
 url="https://${_base,,}.io"
 license=(MIT)
-depends=(python-yaml python-rich python-requests-toolbelt python-pdbp python-selenium
-  python-fasteners python-cssselect python-beautifulsoup4 python-behave python-cffi
-  python-charset-normalizer python-cryptography python-execnet python-filelock
-  python-keyring python-parameterized python-parse-type python-pyotp python-colorama
-  python-py python-pyopenssl python-pyparsing python-tqdm) # python-sbvirtualdisplay
+depends=(python-rich python-requests python-pdbp python-selenium python-fasteners
+  python-cssselect python-beautifulsoup4 python-behave python-charset-normalizer
+  python-execnet python-filelock python-parameterized python-parse-type python-pyotp python-colorama python-py) # python-sbvirtualdisplay
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-html python-pytest-rerunfailures google-chrome)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base,,}/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('cae4683a0fbd2bfb55d94aab61319bb4d1297a81fa2528a5202116f8eab280f1f6a1985906b70e7010b915543523d8a14366c3233b7c0561cd9c4277a843e9df')
+sha512sums=('d43221ae0c6501249f4cda011da860fe907ae115ae1ef33838482bd6dcc08bbd7d9cdb226aed9b73a53f424b7d4713dc0443adbb39cb673f6209c37b2f4f0534')
 
 build() {
   cd ${_base}-${pkgver}
