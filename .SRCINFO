@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-spdlog
 	pkgdesc = Very fast, header-only/compiled, C++ logging library (mingw-w64)
-	pkgver = 1.11.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/gabime/spdlog/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = mingw-w64-spdlog
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = spdlog-1.11.0.tar.gz::https://github.com/gabime/spdlog//archive/refs/tags/v1.11.0.tar.gz
-	sha256sums = ca5cae8d6cac15dae0ec63b21d6ad3530070650f68076f3a4a862ca293a858bb
+	source = spdlog-1.12.0.tar.gz::https://github.com/gabime/spdlog//archive/refs/tags/v1.12.0.tar.gz
+	sha256sums = 4dccf2d10f410c1e2feaff89966bfc49a1abb29ef6f08246335b110e001e09a9
 
 pkgname = mingw-w64-spdlog

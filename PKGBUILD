@@ -2,7 +2,7 @@
 
 _pkgname=spdlog
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Very fast, header-only/compiled, C++ logging library (mingw-w64)'
 url="https://github.com/gabime/${_pkgname}/"
@@ -16,28 +16,39 @@ optdepends=()
 source=(
 	"$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('ca5cae8d6cac15dae0ec63b21d6ad3530070650f68076f3a4a862ca293a858bb')
+sha256sums=('4dccf2d10f410c1e2feaff89966bfc49a1abb29ef6f08246335b110e001e09a9')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
-	-DSPDLOG_BUILD_BENCH=OFF -DSPDLOG_FMT_EXTERNAL=ON
-	-DSPDLOG_WCHAR_FILENAMES=OFF -DSPDLOG_WCHAR_SUPPORT=OFF -DSPDLOG_ENABLE_PCH=ON -DSPDLOG_BUILD_EXAMPLE=OFF )
+	-DSPDLOG_BUILD_BENCH=OFF
+	-DSPDLOG_FMT_EXTERNAL=ON
+	-DSPDLOG_WCHAR_FILENAMES=OFF
+	-DSPDLOG_WCHAR_SUPPORT=OFF
+	-DSPDLOG_ENABLE_PCH=ON
+	-DSPDLOG_BUILD_EXAMPLE=OFF )
 
 build() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DSPDLOG_BUILD_TESTS=OFF \
-			-DSPDLOG_BUILD_TESTS_HO=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
+			-DSPDLOG_BUILD_TESTS=OFF \
+			-DSPDLOG_BUILD_TESTS_HO=OFF \
+			-DBUILD_SHARED_LIBS=OFF \
+			-DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DSPDLOG_BUILD_TESTS=OFF -DSPDLOG_BUILD_TESTS_HO=OFF
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+			-DSPDLOG_BUILD_TESTS=OFF \
+			-DSPDLOG_BUILD_TESTS_HO=OFF
 		cmake --build "build-${_arch}"
 	done
 }
 
 check() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DSPDLOG_BUILD_TESTS=ON -DSPDLOG_BUILD_TESTS_HO=ON
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" \
+			-DSPDLOG_BUILD_TESTS=ON \
+			-DSPDLOG_BUILD_TESTS_HO=ON
 		cmake --build "build-${_arch}"
 		cmake --build "build-${_arch}" --target test
 	done
