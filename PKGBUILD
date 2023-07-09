@@ -1,9 +1,7 @@
-# Maintainer: Kevin Puertas <kevinpr@jkanetwork.com>
-# Maintainer: José Luis <jlgarrido97@gmail.com>
-# Maintainer: Ron Bickers <ron@logicetc.com>
+# Maintainer: HLFH <gaspard@dhautefeuille.eu>
 pkgname=openlitespeed
 pkgver=1.7.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, lightweight, open source HTTP server"
 arch=('x86_64')
 url="https://openlitespeed.org/"
