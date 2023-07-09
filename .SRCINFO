@@ -1,6 +1,6 @@
 pkgbase = redumper-bin
 	pkgdesc = Low level CD dumper utility
-	pkgver = build_176
+	pkgver = build_182
 	pkgrel = 1
 	url = https://github.com/superg/redumper
 	arch = x86_64
