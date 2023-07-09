@@ -2,7 +2,7 @@
 # Maintainer: Baytars <feicuihuangfeng@qq.com>
 pkgname=fastp
 pkgver=0.23.4
-pkgrel=1
+pkgrel=3
 pkgdesc="a tool designed to provide fast all-in-one preprocessing for FastQ files, developed in C++ with multithreading supported to afford high performance"
 url="https://github.com/OpenGene/fastp"
 license=('MIT')
@@ -22,6 +22,5 @@ build() {
 }
 package() {
   cd "${srcdir}/${pkgname}-$pkgver"
-  mkdir -p "${pkgdir}/usr/bin/${pkgname}"
-  install ${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }

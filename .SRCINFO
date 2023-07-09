@@ -1,7 +1,7 @@
 pkgbase = fastp
 	pkgdesc = a tool designed to provide fast all-in-one preprocessing for FastQ files, developed in C++ with multithreading supported to afford high performance
 	pkgver = 0.23.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/OpenGene/fastp
 	arch = any
 	license = MIT
