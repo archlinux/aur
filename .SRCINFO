@@ -1,6 +1,6 @@
 pkgbase = bulky
 	pkgdesc = Bulk File Renamer
-	pkgver = 2.9
+	pkgver = 2.10
 	pkgrel = 1
 	url = https://github.com/linuxmint/bulky
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = bulky
 	depends = python-xapp
 	depends = python-gobject
 	depends = python-setproctitle
-	source = bulky-2.9.tar.gz::https://github.com/linuxmint/bulky/archive/refs/tags/2.9.tar.gz
-	sha256sums = 36c649e37fed40ad49d738a32d4f787b925b267804f97a91cc6aad6fd932a6e0
+	source = bulky-2.10.tar.gz::https://github.com/linuxmint/bulky/archive/refs/tags/2.10.tar.gz
+	sha256sums = 466a199609eed5c8cab55b661c90857be01c3e98ee0027321c7bd9d156a13a7b
 
 pkgname = bulky
