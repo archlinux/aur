@@ -1,6 +1,6 @@
 pkgbase = qadwaitaplatform-git
 	pkgdesc = QAdwaitaPlatform is QGnomePlatform fork that implements modern LibAdwaita window decoration look to Qt applications.
-	pkgver = 4.0.r2.g280e210
+	pkgver = 4.0.1.r0.g280e210
 	pkgrel = 1
 	url = https://github.com/urFate/QAdwaitaPlatform
 	arch = x86_64
