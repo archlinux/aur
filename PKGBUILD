@@ -8,6 +8,7 @@ pkgdesc="Function decoration for backoff and retry."
 arch=('any')
 url="https://github.com/litl/backoff"
 license=('MIT')
+depends=('python')
 makedepends=('python-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
