@@ -1,6 +1,6 @@
 pkgbase = glueviz
 	pkgdesc = Linked Data Visualizations Across Multiple Files
-	pkgver = 1.0.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = http://glueviz.org/
 	arch = i386
@@ -29,8 +29,7 @@ pkgbase = glueviz
 	depends = python-xlrd
 	depends = python-mpl-scatter-density
 	depends = python-bottleneck
-	source = https://files.pythonhosted.org/packages/08/69/38d188e12ea19241355be1a212702775d0e48463d765b98d366dc6aaa63b/glueviz-1.0.0.tar.gz
-	sha256sums = 89db2b2331eb74f221251b129f6ce6b507f14101caea993ee0926ceeeaaf68ab
+	source = glueviz-1.12.0.tar.gz::https://github.com/glue-viz/glue/archive/refs/tags/v1.12.0.tar.gz
+	sha256sums = e06329f7066370b1cdfca24dce4268ef602b81e8ba15ae374760c26f57f98ac4
 
 pkgname = glueviz
-
