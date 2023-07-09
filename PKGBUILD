@@ -2,7 +2,7 @@
 pkgname=metamorphose2-python3-git
 pkgver=r130.55ffc9f
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Updated fork of Métamorphose 2, by timinaust"
 arch=('any')
 url="https://github.com/timinaust/metamorphose2/tree/Python3_WXPython4"
@@ -28,8 +28,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/metamorphose2"
 	git submodule update --init
-	rm metamorphose2
-	cp ../../metamorphose2_launcher metamorphose2 
+	patch --forward --strip=1 --input="${srcdir}/../metamorphose2.patch"
 }
 
 package() {

@@ -1,0 +1,20 @@
+diff --unified --recursive --text metamorphose2/Makefile metamorphose2.new/Makefile
+--- metamorphose2/Makefile	2023-07-09 11:52:18.734475500 -0700
++++ metamorphose2.new/Makefile	2023-07-09 11:54:04.364460715 -0700
+@@ -60,14 +60,14 @@
+ 	cd messages && $(MAKE) install
+ 
+ 	# adjust app.py translations' search-path
+-	sed -i "s|/usr|$(DESTDIR)$(PREFIX)|g" $(DESTDIR)$(PREFIX)/share/$(PACKAGE)/app.py;
++	sed -i "s|/usr|$(PREFIX)|g" $(DESTDIR)$(PREFIX)/share/$(PACKAGE)/app.py;
+ 
+ 	# install the executables
+ 	install -d $(DESTDIR)$(PREFIX)/bin/;
+ 	install -m 755 $(PACKAGE) $(DESTDIR)$(PREFIX)/bin/;
+ 
+ 	# adjust executable' path
+-	sed -i "s|/usr|$(DESTDIR)$(PREFIX)|g" $(DESTDIR)$(PREFIX)/bin/$(PACKAGE);
++	sed -i "s|/usr|$(PREFIX)|g" $(DESTDIR)$(PREFIX)/bin/$(PACKAGE);
+ 
+ 	# copy icon and launcher if folders exist
+ 	#must create this folders or rpm won't build
