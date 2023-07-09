@@ -2,7 +2,7 @@
 pkgname='clusteringsuite'
 pkgdesc='Automatically expose the main performance trends in applications'\'' computation structure (from BSC).'
 pkgver='2.6.9.20230313'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
@@ -45,9 +45,8 @@ build() {
 	#       detection logic (look for AX_PROG_XML2 in config/macros.m4) which
 	#       fails in some scenarios, such as if /bin is before /usr/bin in PATH
 	#       (thanks to @teleportex on AUR for the report and fix suggestion)
-	./configure \
-		--prefix=/usr \
-		--with-xml-prefix=/usr
+	XML2_CONFIG=/usr/bin/xml2-config ./configure \
+		--prefix=/usr
 
 	make
 }
