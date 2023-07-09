@@ -5,8 +5,8 @@
 
 pkgname=meshtastic-python
 _name=python
-_verbump=dc3d43c57cf3dfc95404f5186c4f466ec88036c0
-pkgver=2.1.6
+_verbump=51079d4f257c6bcbcf96e82687700a1cabfd2bb5
+pkgver=2.1.10
 pkgrel=1
 pkgdesc="Python CLI and API for talking to Meshtastic devices"
 arch=('any')
@@ -19,8 +19,8 @@ depends=('python-protobuf' 'python-pypubsub' 'python-dotmap' 'python-pyqrcode' '
 optdepends=('python-pytap2: TUN tunnel support')
 source=("https://github.com/meshtastic/python/archive/refs/tags/${pkgver}.tar.gz"
         "https://github.com/meshtastic/python/commit/${_verbump}.patch")
-sha256sums=('47fa0d072132f2de0bae515cd76e8519eff3e32f2a31b2e50c5c01b8404eee4c'
-            'b0a7a2bbd3a3937817b1c2814fb9033df82a2c4983b2e7411da0d09107c2a865')
+sha256sums=('89317cb285317cbb2115850ccffad8e2ddfb82aacd22e1f8a06c55612411dca1'
+            '0286e2ed2f09217c136f5f620b1a048c176cfe69f8be2b24a96dfa39c0de5c66')
 
 prepare() {
     cd "$_name-$pkgver"
