@@ -2,9 +2,9 @@
 
 pkgbase=qadwaitaplatform-git
 _pkgname=QAdwaitaPlatform
-pkgname=(qadwaitaplatform-qt5-git qadwaitaplatform-qt6-git)
+pkgname=(qadwaitaplatform-qt5-git qadwaitaplatform-qt6-git qadwaita-color-schemes)
 pkgver=4.0.r0.g7718a77
-pkgrel=1
+pkgrel=2
 pkgdesc='QAdwaitaPlatform is QGnomePlatform fork that implements modern LibAdwaita window decoration look to Qt applications.'
 arch=(x86_64)
 url='https://github.com/urFate/QAdwaitaPlatform'
@@ -32,7 +32,7 @@ build() {
 
 package_qadwaitaplatform-qt5-git() {
   pkgdesc='QAdwaitaPlatform is QGnomePlatform fork that implements modern LibAdwaita window decoration look to Qt applications.'
-  depends=(gtk3 qt5-wayland qt5-quickcontrols2 adwaita-qt5 adwaita-color-schemes)
+  depends=(gtk3 qt5-wayland qt5-quickcontrols2 adwaita-qt5 qadwaita-color-schemes)
   replaces=(qadwaitaplatform qadwaitaplatform-git)
   provides=(qadwaitaplatform-qt5)
   conflicts=(qadwaitaplatform-qt5 qgnomeplatform-qt5)
@@ -43,10 +43,18 @@ package_qadwaitaplatform-qt5-git() {
 
 package_qadwaitaplatform-qt6-git() {
   pkgdesc='QAdwaitaPlatform is QGnomePlatform fork that implements modern LibAdwaita window decoration look to Qt applications.'
-  depends=(gtk3 qt6-wayland adwaita-qt6 adwaita-color-schemes)
+  depends=(gtk3 qt6-wayland adwaita-qt6 qadwaita-color-schemes)
   provides=(qadwaitaplatform-qt6)
   conflicts=(qadwaitaplatform-qt6 qgnomeplatform-qt6)
 
   DESTDIR="$pkgdir" cmake --install build-qt6
   rm -r "$pkgdir"/usr/share
 }
+
+package_qadwaita-color-schemes() {
+  pkgdesc='Adwaita color schemes for KDE applications'
+  conflicts=(adwaita-color-schemes)
+
+  DESTDIR="$pkgdir" cmake --install build-qt5/src/color-schemes
+}
+
