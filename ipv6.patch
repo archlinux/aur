@@ -1,6 +1,6 @@
-commit a6770a0633b2be16fc74f46745c2585ecc36df9e
+commit 2fdad527fcec0b1df74c7f80993edd489f28ed56
 Author: detiam <dehe_tian@outlook.com>
-Date:   Sun Jul 9 21:14:32 2023 +0800
+Date:   Mon Jul 10 01:48:28 2023 +0800
 
     Merge branch 'feature/ipv6_randomize'
     https://github.com/HexJacaranda/Sunshine
@@ -304,10 +304,10 @@ index cdb5785..807279d 100644
    audio_control();
  
 diff --git a/src/platform/linux/misc.cpp b/src/platform/linux/misc.cpp
-index 73f6011..14aab65 100644
+index 73f6011..60ac724 100644
 --- a/src/platform/linux/misc.cpp
 +++ b/src/platform/linux/misc.cpp
-@@ -138,6 +138,28 @@ namespace platf {
+@@ -138,16 +138,41 @@ namespace platf {
      return { port, std::string { data } };
    }
  
@@ -336,6 +336,25 @@ index 73f6011..14aab65 100644
    std::string
    get_mac_address(const std::string_view &address) {
      auto ifaddrs = get_ifaddrs();
+     for (auto pos = ifaddrs.get(); pos != nullptr; pos = pos->ifa_next) {
+-      if (pos->ifa_addr && address == from_sockaddr(pos->ifa_addr)) {
+-        std::ifstream mac_file("/sys/class/net/"s + pos->ifa_name + "/address");
+-        if (mac_file.good()) {
+-          std::string mac_address;
+-          std::getline(mac_file, mac_address);
+-          return mac_address;
++      if (pos->ifa_addr) {
++        std::string posAddress = from_sockaddr(pos->ifa_addr);
++        if (address == posAddress || address == "::ffff:" + posAddress) {
++          std::ifstream mac_file("/sys/class/net/"s + pos->ifa_name + "/address");
++          if (mac_file.good()) {
++            std::string mac_address;
++            std::getline(mac_file, mac_address);
++            return mac_address;
++          }
+         }
+       }
+     }
 diff --git a/src/platform/macos/misc.mm b/src/platform/macos/misc.mm
 index fb2b41b..58bc2f9 100644
 --- a/src/platform/macos/misc.mm

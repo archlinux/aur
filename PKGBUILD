@@ -3,7 +3,7 @@
 pkgname='sunshine-ipv6'
 _pkgname='sunshine'
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sunshine is a self-hosted game stream host for Moonlight. (with ipv6 patch)"
 arch=('x86_64' 'aarch64')
 url=https://github.com/HexJacaranda/Sunshine/tree/feature/ipv6_randomize
@@ -24,7 +24,7 @@ source=(
     "ipv6.patch"
     "$_pkgname.desktop"
     "$_pkgname::git+https://github.com/LizardByte/Sunshine.git#tag=v${pkgver}")
-sha256sums=('070622dc22d938240bb51c941f5c38b16f7e03e2c607a8767ca6b4c46eff73a7'
+sha256sums=('a97c30853c9de6db20e857ec73d82b97365f86aace5c7116bad7cf5ca0a49747'
             '68b4d8cc6fbeb9ead07489790386835e7386a545557d54d2d841ca17e4118c11'
             'SKIP')
 
