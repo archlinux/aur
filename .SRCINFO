@@ -1,12 +1,12 @@
 pkgbase = tun2socks
 	pkgdesc = tun2socks - powered by gVisor TCP/IP stack
-	pkgver = 2.4.1
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/xjasonlyu/tun2socks
 	arch = any
 	license = GPL3
 	makedepends = go
-	source = tun2socks-2.4.1.tar.gz::https://github.com/xjasonlyu/tun2socks/archive/v2.4.1.tar.gz
-	sha256sums = 34d16b1b07804f3d9eb25dac598f3c959ba6a0595d53d737173977b5a40fd3c3
+	source = tun2socks-2.5.1.tar.gz::https://github.com/xjasonlyu/tun2socks/archive/v2.5.1.tar.gz
+	sha256sums = 1c7baf68a8bdfc4d4b6eac307761dcc331a4136be19120e2c1a9261d1dd80825
 
 pkgname = tun2socks
