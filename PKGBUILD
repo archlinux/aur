@@ -7,11 +7,25 @@ pkgrel=1
 arch=(any)
 url="https://${_base,,}.io"
 license=(MIT)
-depends=(python-rich python-requests python-pdbp python-selenium python-fasteners
-  python-cssselect python-beautifulsoup4 python-behave python-charset-normalizer
-  python-execnet python-filelock python-parameterized python-parse-type python-pyotp python-colorama python-py) # python-sbvirtualdisplay
+depends=(python-filelock
+  python-platformdirs
+  python-parse-type
+  python-charset-normalizer
+  python-requests
+  python-selenium
+  python-cssselect
+  python-fasteners
+  python-execnet
+  python-pytest-html
+  python-parameterized
+  python-behave
+  python-beautifulsoup4
+  python-pdbp
+  python-colorama
+  python-pyotp
+  python-rich) # python-sbvirtualdisplay python-pynose
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest-html python-pytest-rerunfailures google-chrome)
+checkdepends=(python-pytest-rerunfailures google-chrome)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/${_base,,}/${_base}/archive/v${pkgver}.tar.gz)
 sha512sums=('d43221ae0c6501249f4cda011da860fe907ae115ae1ef33838482bd6dcc08bbd7d9cdb226aed9b73a53f424b7d4713dc0443adbb39cb673f6209c37b2f4f0534')
 
