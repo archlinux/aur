@@ -1,6 +1,6 @@
 pkgbase = python-tagpy
 	pkgdesc = Python bindings for TagLib
-	pkgver = 2018.1.1
+	pkgver = 2022.1
 	pkgrel = 2
 	url = http://pypi.python.org/pypi/tagpy
 	arch = i686
@@ -15,9 +15,7 @@ pkgbase = python-tagpy
 	depends = python
 	depends = taglib
 	depends = boost-libs
-	source = https://pypi.python.org/packages/source/t/tagpy/tagpy-2018.1.1.tar.gz
-	source = compile_fix.patch
-	sha256sums = 5d406305d1e777f12a53899eb5a559d60189874aa30a03aaf5c891c12231aa4d
-	sha256sums = 51a5a77a8ffcb079c99d024a83f77bb4a5bba6552c8372c19ae99e71d4220968
+	source = https://pypi.python.org/packages/source/t/tagpy/tagpy-2022.1.tar.gz
+	sha256sums = 8939bf0ccd7c4e776feccb1d5e7b72f31e11a0c8c5f9e37154bad6a9fa444bff
 
 pkgname = python-tagpy
