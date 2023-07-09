@@ -1,0 +1,51 @@
+pkgbase = linux-huawei-amd-audio
+	pkgdesc = Linux with patch for huawei amd devices from https://github.com/codepayne/pop- os-linux
+	pkgver = 6.4.2.arch1
+	pkgrel = 1
+	url = https://github.com/archlinux/linux/commits/v6.4.2-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = git
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = python-sphinx
+	makedepends = texlive-latexextra
+	options = !strip
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.4.2-arch1
+	source = config
+	source = 0001-huawei-amd-sound.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
+	sha256sums = SKIP
+	sha256sums = 07b8f7bd94f7c4275d3237b78eff3158d3ca2de3b0bfacf3074477decec00473
+	sha256sums = SKIP
+
+pkgname = linux-huawei-amd-audio
+	pkgdesc = The Linux with patch for huawei amd devices from https://github.com/codepayne/pop- os-linux kernel and modules
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = KSMBD-MODULE
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-huawei-amd-audio-headers
+	pkgdesc = Headers and scripts for building modules for the Linux with patch for huawei amd devices from https://github.com/codepayne/pop- os-linux kernel
+	depends = pahole
+
+pkgname = linux-huawei-amd-audio-docs
+	pkgdesc = Documentation for the Linux with patch for huawei amd devices from https://github.com/codepayne/pop- os-linux kernel
