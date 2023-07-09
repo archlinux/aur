@@ -3,7 +3,7 @@
 _branch=master
 _pkgname=git-whoknows
 # renovate: pkgName=https://github.com/Arrowbox/git-whoknows depName=git-whoknows-git
-_commit="8d82f4251d26d5417dbce85eb072f3396931cf92"
+_commit=fd6b9c2f6e1c07dc8883ca241e985fa0baf2185a
 pkgname="${_pkgname}-git"
 pkgver=r33.fd6b9c2
 pkgrel=1
