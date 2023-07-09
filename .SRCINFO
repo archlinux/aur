@@ -1,6 +1,6 @@
 pkgbase = sxcs
 	pkgdesc = minimal X11 color picker and magnifier
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://codeberg.org/NRK/sxcs
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = sxcs
 	depends = libxcursor
 	provides = sxcs
 	conflicts = sxcs-git
-	source = sxcs-0.7.2.tar.gz::https://codeberg.org/NRK/sxcs/archive/v0.7.2.tar.gz
-	sha256sums = e77f17314124caf8c384d8e8ce859c1e45936d18fd4f9de26d342c344f072001
+	source = sxcs-0.7.3.tar.gz::https://codeberg.org/NRK/sxcs/archive/v0.7.3.tar.gz
+	sha256sums = ba15e8f49040adcba7b4498e6c3567a7514d0e25c6f74d195e44f58f933c68f3
 
 pkgname = sxcs
