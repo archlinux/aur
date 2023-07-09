@@ -2,7 +2,7 @@
 pkgname="liteloader-qqnt-bin"
 _pkgname="LiteLoaderQQNT"
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
 url="https://github.com/mo-jinran/LiteLoaderQQNT"
@@ -11,7 +11,7 @@ depends=("linuxqq" "sudo")
 makedepends=("wget")
 provides=("liteloader-qqnt")
 source=("https://github.com/mo-jinran/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz" "install.sh")
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 
 prepare() {
 	if [ ! -d ./${pkgname} ]; then
