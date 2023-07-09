@@ -1,0 +1,17 @@
+pkgbase = ps3iso-utils-git
+	pkgdesc = Estwald's PS3 utilities: extractps3iso, makeps3iso, patchps3iso, splitps3iso
+	pkgver = r29.8780909
+	pkgrel = 1
+	url = https://github.com/bucanero/ps3iso-utils
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	provides = extractps3iso
+	provides = makeps3iso
+	provides = patchps3iso
+	provides = splitps3iso
+	source = git+https://github.com/bucanero/ps3iso-utils
+	sha256sums = SKIP
+
+pkgname = ps3iso-utils-git
