@@ -1,0 +1,13 @@
+pkgbase = python-asyncinotify
+	pkgdesc = A simple optionally-async python inotify library, focused on simplicity of use and operation, and leveraging modern Python features
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://gitlab.com/Taywee/asyncinotify
+	arch = any
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/5f/0a/7e83ce699393564b198541dbbd86d52f6d78410292e5d1cad84a5cf5ff5e/asyncinotify-4.0.2.tar.gz
+	sha256sums = bcac19425b1b418bbbc4d31193ea3c39e24343cd7ddff2074ae7b599f1a04829
+
+pkgname = python-asyncinotify
