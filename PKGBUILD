@@ -7,13 +7,13 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "${pkgbase}-rocm" "${pkgbase}-opt-rocm")
 pkgver=2.0.1
 _pkgver=2.0.1
-pkgrel=6
+pkgrel=7
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
-depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'libuv'
+depends=('google-glog' 'gflags' 'opencv' 'openmp' 'openmpi' 'pybind11' 'python' 'python-yaml' 'libuv'
          'python-numpy' 'python-sympy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt6-base'
          'intel-oneapi-mkl' 'python-typing_extensions' 'numactl' 'python-jinja'
          'python-networkx' 'python-filelock')
@@ -22,7 +22,7 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'py
 # The magma package does not allow to build the cuda and rocm/hip code at the same time,
 # so we need to work with the split packages magma-{cuda,hip}.
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
-             'cudnn' 'git' 'rocm-hip-sdk' 'roctracer' 'miopen'
+             'nccl' 'cudnn' 'git' 'rocm-hip-sdk' 'roctracer' 'miopen'
              'ninja' 'pkgconfig' 'doxygen' 'vulkan-headers' 'shaderc')
 source=("${_pkgname}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
@@ -270,6 +270,8 @@ _prepare() {
   # CUDA arch 8.7 is not supported (needed by Jetson boards, etc.)
   export TORCH_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.9;9.0;9.0+PTX"  #include latest PTX for future compat
   export OVERRIDE_TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
+  export ROCM_PATH=/opt/rocm
+  export HIP_ROOT_DIR=/opt/rocm
   export PYTORCH_ROCM_ARCH="gfx803;gfx900;gfx906;gfx908;gfx90a;gfx1030;gfx1100;gfx1101;gfx1102"
 
   # Hack to make sure that the generated dnnl_config.h from onednn can be inlcuded.
@@ -357,7 +359,7 @@ package_python-pytorch-opt() {
 
 package_python-pytorch-cuda() {
   pkgdesc="${_pkgdesc} (with CUDA)"
-  depends+=(cuda cudnn magma-cuda)
+  depends+=(cuda nccl cudnn magma-cuda)
   conflicts=(python-pytorch)
   provides=(python-pytorch)
 
@@ -380,7 +382,7 @@ package_python-pytorch-cuda() {
 
 package_python-pytorch-opt-cuda() {
   pkgdesc="${_pkgdesc} (with CUDA and AVX2 CPU optimizations)"
-  depends+=(cuda cudnn magma-cuda)
+  depends+=(cuda nccl cudnn magma-cuda)
   conflicts=(python-pytorch)
   provides=(python-pytorch python-pytorch-cuda)
 
