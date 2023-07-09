@@ -1,6 +1,6 @@
 pkgbase = modustoolbox
 	pkgdesc = Set of multi-platform development tools by Cypress. IDE for PSoC 6
-	pkgver = 2.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://www.cypress.com/products/modustoolbox-software-environment
 	arch = x86_64
@@ -9,9 +9,13 @@ pkgbase = modustoolbox
 	depends = coreutils
 	depends = perl
 	depends = diffutils
+	depends = git
+	depends = arm-none-eabi-binutils
+	depends = arm-none-eabi-gcc
+	depends = arm-none-eabi-gdb
+	depends = arm-none-eabi-newlib
 	options = !strip
-	source = http://dlm.cypress.com.edgesuite.net/akdlm/downloadmanager/WICED_MODUS/P-ModusToolbox_2.0.0.1703-linux-install.tar.gz
-	md5sums = 13e885525b05058f2b8b6eee59323381
+	source = https://download.cypress.com/downloadmanager/software/ModusToolbox/ModusToolbox_3.1/ModusToolbox_3.1.0.12257-linux-install.tar.gz
+	md5sums = 8a1778425993db520e8646f2e225de1c
 
 pkgname = modustoolbox
-
