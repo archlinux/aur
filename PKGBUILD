@@ -2,7 +2,7 @@
 
 pkgname=openfm-qt
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt client for Polish internet radio Open FM.'
 arch=('any')
 url='https://github.com/wzykubek/openfm-qt'
@@ -19,7 +19,10 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    sed -i 's/pyside6-uic/uic/' prebuild.py
+    # Temporary
+    sed -i '18,19s/^/# /; 22s/, "PySide6"//' pyproject.toml
+    uic form.ui -o openfm_qt/ui_form.py
+
     python -m build --wheel --no-isolation
 }
 
