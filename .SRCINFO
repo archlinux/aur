@@ -1,0 +1,11 @@
+pkgbase = catalyst-browser-bin
+	pkgdesc = Catalyst Web Browser
+	pkgver = 3.4.9
+	pkgrel = 1
+	url = https://getcatalyst.eu.org
+	arch = x86_64
+	license = MIT
+	source = https://github.com/CatalystDevOrg/Catalyst/releases/download/v3.4.9/catalyst-linux-x64.tar.gz
+	md5sums = a23ac6728ef4e35f6363d03825abbd3d
+
+pkgname = catalyst-browser-bin

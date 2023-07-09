@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=3.4.9
+Name=Catalyst Browser
+Comment=Catalyst Web Browser
+Path=/opt/catalyst-browser
+Exec=/usr/bin/catalyst-browser
+Icon=/opt/catalyst-browser/catalyst.png
+Terminal=false
+Categories=Internet;Browser
