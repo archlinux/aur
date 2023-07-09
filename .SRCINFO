@@ -1,7 +1,7 @@
 pkgbase = libressl-3.7
 	pkgdesc = Free version of the TLS/crypto stack forked from OpenSSL
-	pkgver = 3.7.0
-	pkgrel = 2
+	pkgver = 3.7.3
+	pkgrel = 1
 	url = https://www.libressl.org/
 	arch = x86_64
 	license = ISC
@@ -12,11 +12,11 @@ pkgbase = libressl-3.7
 	provides = libressl
 	conflicts = libressl
 	backup = etc/libressl/openssl.cnf
-	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.7.0.tar.gz
-	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.7.0.tar.gz.asc
+	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.7.3.tar.gz
+	source = https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.7.3.tar.gz.asc
 	source = libtls.patch
 	validpgpkeys = A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
-	sha256sums = 3fc1290f4007ec75f6e9acecbb25512630d1b9ab8c53ba79844e395868c3e006
+	sha256sums = 7948c856a90c825bd7268b6f85674a8dcd254bae42e221781b24e3f8dc335db3
 	sha256sums = SKIP
 	sha256sums = 294c7dd77b5a63593264f89184226256a2988661b4748722e510e2deda42810b
 

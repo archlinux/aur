@@ -3,8 +3,8 @@
 _pkgname=libressl
 pkgbase=libressl-3.7
 pkgname=libressl-3.7
-pkgver=3.7.0
-pkgrel=2
+pkgver=3.7.3
+pkgrel=1
 pkgdesc="Free version of the TLS/crypto stack forked from OpenSSL"
 arch=(x86_64)
 url="https://www.libressl.org/"
@@ -17,10 +17,12 @@ provides=(libressl)
 backup=(etc/libressl/openssl.cnf)
 source=(https://cdn.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz{,.asc}
         libtls.patch)
-sha256sums=('3fc1290f4007ec75f6e9acecbb25512630d1b9ab8c53ba79844e395868c3e006'
+sha256sums=('7948c856a90c825bd7268b6f85674a8dcd254bae42e221781b24e3f8dc335db3'
             'SKIP'
             '294c7dd77b5a63593264f89184226256a2988661b4748722e510e2deda42810b')
-validpgpkeys=(A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5)
+validpgpkeys=(
+A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
+)
 
 prepare() {
     cd ${_pkgname}-${pkgver}
