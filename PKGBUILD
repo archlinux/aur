@@ -12,20 +12,23 @@ arch=(any)
 url=https://github.com/mastodon/mastodon
 license=(AGPL3)
 depends=(ffmpeg
+         gcc
+         git
          imagemagick
          libidn
          libpqxx
          libxml2
          libxslt
          libyaml
+         make
          nodejs
          postgresql
+         protobuf
          redis
          ruby-bundler
-         protobuf
+         sudo
          yarn
          zlib)
-makedepends=(git)
 backup=(etc/mastodon.conf)
 install=mastodon.install
 options=(!strip)
