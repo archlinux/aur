@@ -27,7 +27,7 @@ noextract=()
 sha256sums=('SKIP'
             '6d70d436bff95b6ca7ae270219a4288c81ccf119ad57158528fdda19585b2067'
             '4dfa4502df8d72212ccfb96cfc2509c9a1461f542adb38304af54097b30ca0d5'
-            '0cd5cd3b9a3bfcc9c572cd42d11d1e5d64be9cf979527612b8874baf56ddd5ef')
+            'cba6a5df66a42ced857822e1099be00f2e37ec800f29cbbfca7210020140291b')
 
 build() {
 
