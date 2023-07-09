@@ -1,11 +1,13 @@
 pkgbase = piper-tts-bin
 	pkgdesc = A fast, local neural text to speech system
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rhasspy/piper
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = gcc-libs
+	depends = glibc
 	provides = piper-tts
 	source_x86_64 = https://github.com/rhasspy/piper/releases/download/v1.0.0/piper_amd64.tar.gz
 	sha256sums_x86_64 = 6309a3660c28e6b05977831422c1e8c14f63f18175e1bb4e6d802f1dfd096776
