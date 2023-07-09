@@ -1,7 +1,7 @@
 pkgbase = cryptboot
 	pkgdesc = Encrypted boot partition manager with UEFI Secure Boot support
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kmille/cryptboot
 	arch = any
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = cryptboot
 	depends = efibootmgr
 	depends = efitools
 	depends = sbsigntools
+	backup = etc/cryptboot.conf
 	source = https://github.com/kmille/cryptboot/archive/refs/tags/v1.2.1.tar.gz
 	sha256sums = ec5c449a881739218144415f1a895ca497bc2db105289d16b4b4daa664c14c63
 
