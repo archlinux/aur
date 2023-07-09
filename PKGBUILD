@@ -1,6 +1,6 @@
 # Maintainer: Piotr Rogoza <piotr.r.public at gmail dot com>
 # Contributor: Austin Keller <austin.keller@smartsheet.com>
-# Contributor: tee < teeaur at duck dot com >
+# Maintainer: tee < teeaur at duck dot com >
 
 pkgbase=sqlitestudio
 pkgname=(
@@ -17,8 +17,6 @@ url='https://github.com/pawelsalawa/sqlitestudio'
 # url='https://sqlitestudio.pl/'
 license=('GPL3')
 depends=(
-  # termcap
-  # sqlite2
   tcl
   python
   qt5-script
@@ -34,7 +32,7 @@ makedepends=(
 source=(
   ${url}/archive/refs/tags/${pkgver}.tar.gz
   v${pkgver}.patch::${url}/commit/364981e072039de1322a72c936e3747c462e57d4.patch
-  sqlitestudio.desktop
+  ${pkgbase}.desktop
 )
 noextract=(
   "${pkgver}.tar.gz"
@@ -72,7 +70,7 @@ build(){
     ln -sf $srcdir/SQLiteStudio3/coreSQLiteStudio/plugins
     ln -sf $srcdir/SQLiteStudio3/coreSQLiteStudio/db
   )
-  sed -i 's|python3.*9|python3.11|' $srcdir/Plugins/ScriptingPython/ScriptingPython.pro 
+  sed -i 's|python3.*9|python3.11|' "$srcdir"/Plugins/ScriptingPython/ScriptingPython.pro 
   make
 }
 
@@ -90,7 +88,7 @@ package_sqlitestudio(){
 
 package_sqlitestudio-plugins(){
   pkgdesc='Official plugins for sqlitestudio'
-  depends=(sqlitestudio tcl python qt5-base qt5-declarative)
+  depends=(sqlitestudio tcl python qt5-declarative)
 
   cd $srcdir/output/build/Plugins
   make INSTALL_ROOT="$pkgdir/usr" install
