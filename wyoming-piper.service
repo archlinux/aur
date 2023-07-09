@@ -12,7 +12,7 @@ WorkingDirectory=/var/lib/wyoming-piper
 
 EnvironmentFile=/etc/conf.d/wyoming-piper
 ExecStart=python3 -m wyoming_piper \
-    --piper '/usr/lib/piper/piper' \
+    --piper '/usr/bin/piper-tts' \
     --uri $URI \
     --voice $VOICE \
     --data-dir /var/lib/wyoming-piper/data \
