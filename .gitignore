@@ -1,1 +1,4 @@
 .directory
+pkg/
+src/
+*.tar*
