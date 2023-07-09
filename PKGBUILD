@@ -9,7 +9,7 @@
 pkgname=google-chrome-dev
 pkgver=116.0.5845.14
 pkgrel=1
-pkgdesc="The popular and trusted web browser by Google (Dev Channel)"
+pkgdesc="The popular web browser by Google (Dev Channel)"
 arch=('x86_64')
 url="https://www.google.com/chrome"
 license=('custom:chrome')
