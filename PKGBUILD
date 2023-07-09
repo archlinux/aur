@@ -1,14 +1,14 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=ultravnc-viewer
-pkgver=1.3.2
+pkgver=1.4.31
 pkgrel=1
 pkgdesc="A powerful VNC Client with a lot of features, compatible with Windows' UltraVNC servers"
 arch=('any')
 url="http://www.uvnc.com"
 license=('GPL')
 depends=('wine' 'hicolor-icon-theme')
-source=("${pkgname}-${pkgver}.zip"::"https://www.uvnc.com/component/jdownloads/send/0-/403-ultravnc-${pkgver//./-}-bin-zip.html?Itemid=0"
+source=("${pkgname}-${pkgver}.zip"::"https://uvnc.com/component/jdownloads/send/0-/452-ultravnc-${pkgver//./-}-bin-zip.html?Itemid=0"
         "${pkgname}"
         "${pkgname}-16.png"
         "${pkgname}-24.png"
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.zip"::"https://www.uvnc.com/component/jdownloads/s
         "${pkgname}-256.png"
         "${pkgname}.desktop"
         "${pkgname}-listen.desktop")
-sha256sums=('95b44feb269753cebc8b20cf13d33e456df5d957e54ad21edcf095afafa0bd85'
+sha256sums=('ae5598b8bce93535ec0d7eae30dbc324d1b29311953fc07c4aa0a5e42489e8d1'
             '1738d173c1cb89e46207c70fda6a36b7eeea9ba31b469a0cce10bbd9e8deb9b0'
             '5386feaf65fff389db4e4e30950f97d64803815b1e1a219d45bf41c2bde45e21'
             '098876231f8006bb89fc54986175ec6d938fae2c9e4a6dafe9b5c9d36f7fb3a2'
