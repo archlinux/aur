@@ -1,0 +1,17 @@
+pkgbase = moar-bin
+	pkgdesc = A pager designed to just do the right thing without any configuration.
+	pkgver = 1.15.3
+	pkgrel = 1
+	url = https://github.com/walles/moar
+	arch = x86_64
+	license = BSD
+	optdepends = highlight: source code syntax highlighter
+	provides = moar
+	conflicts = moar
+	noextract = moar-1.15.3.tar.gz
+	source = moar::https://github.com/walles/moar/releases/download/v1.15.3/moar-v1.15.3-linux-386
+	source = moar-1.15.3.tar.gz::https://github.com/walles/moar/archive/refs/tags/v1.15.3.tar.gz
+	sha256sums = c05b8b7acf19dea094331322c41db551569a7297e26ca3d17a46781d69628744
+	sha256sums = 9cbfd11cc128052c66dde381d77b2c4bfb1260feb1e0a0d23119844b274fe659
+
+pkgname = moar-bin
