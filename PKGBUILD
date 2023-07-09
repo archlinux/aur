@@ -1,29 +1,37 @@
 # Maintainer: Luca Carlon <carlon.luca@gmail.com>
 
 pkgname=cgrc
-pkgver=1.0.0
-pkgrel=1
+pkgver=2.0.1
+pkgrel=2
 pkgdesc='Generic log formatter'
 arch=(any)
 url='https://github.com/carlonluca/cgrc'
 license=(GPL)
-depends=(qt6-base)
-makedepends=(git cmake)
+makedepends=(git cargo)
 source=(git+https://github.com/carlonluca/cgrc.git#tag=v$pkgver)
 md5sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  export RUSTUP_TOOLCHAIN=stable
   git submodule update --init
+  cd "$srcdir/$pkgname/cgrc-rust"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$srcdir/$pkgname"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
-  make
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cd "$srcdir/$pkgname/cgrc-rust"
+  cargo build --frozen --release --all-features
+}
+
+check() {
+  export RUSTUP_TOOLCHAIN=stable
+  cd "$srcdir/$pkgname/cgrc-rust"
+  cargo test --frozen --all-features
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+  cd "$srcdir/$pkgname/cgrc-rust"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
