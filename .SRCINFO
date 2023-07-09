@@ -1,6 +1,6 @@
 pkgbase = tgpt-bin
 	pkgdesc = ChatGPT in terminal without needing API keys
-	pkgver = 1.6.12
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/aandrew-me/tgpt
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tgpt-bin
 	license = GPL-3.0
 	conflicts = tgpt
 	conflicts = tgpt-git
-	source = tgpt-linux-1.6.12::https://github.com/aandrew-me/tgpt/releases/download/v1.6.12/tgpt-linux-amd64
+	source = tgpt-linux-1.7.0::https://github.com/aandrew-me/tgpt/releases/download/v1.7.0/tgpt-linux-amd64
 	md5sums = SKIP
 
 pkgname = tgpt-bin
