@@ -1,7 +1,7 @@
 pkgbase = electron-blur-me-not
 	pkgdesc = Auto-enable Wayland (ozone) for apps that come with a vendored Electron
-	pkgver = 0.1.2
-	pkgrel = 3
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://aur.archlinux.org/packages/electron-blur-me-not
 	arch = any
 	license = Apache
@@ -20,6 +20,10 @@ pkgbase = electron-blur-me-not
 pkgname = 1password-blur-me-not
 	pkgdesc = Auto-enable Wayland (ozone) for 1password
 	depends = 1password
+
+pkgname = electron-fiddle-blur-me-not
+	pkgdesc = Auto-enable Wayland (ozone) for electron-fiddle
+	depends = electron-fiddle
 
 pkgname = rambox-pro-bin-blur-me-not
 	pkgdesc = Auto-enable Wayland (ozone) for rambox-pro-bin

@@ -1,0 +1,14 @@
+post_install() {
+  echo >&2 'Enabling Wayland (ozone) for electron-fiddle...'
+  /usr/share/libalpm/scripts/electron-fiddle-blur-me-not-patch
+}
+
+post_upgrade() {
+  echo >&2 'Enabling Wayland (ozone) for electron-fiddle...'
+  /usr/share/libalpm/scripts/electron-fiddle-blur-me-not-patch
+}
+
+pre_remove() {
+  echo >&2 'Undoing modifications to electron-fiddle...'
+  /usr/share/libalpm/scripts/electron-fiddle-blur-me-not-unpatch
+}

@@ -11,13 +11,14 @@ pkgname=(
   '1password-blur-me-not'
   # 'code' -- create a `code-flags.conf` file instead
   # 'discord' -- create a `discord-flags.conf` file instead
+  'electron-fiddle-blur-me-not'
   'rambox-pro-bin-blur-me-not'
   'signal-desktop-blur-me-not'
   'spotify-blur-me-not'
 )
 
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.1.3
+pkgrel=1
 pkgdesc='Auto-enable Wayland (ozone) for apps that come with a vendored Electron'
 arch=('any')
 url='https://aur.archlinux.org/packages/electron-blur-me-not'
@@ -91,6 +92,14 @@ package_1password-blur-me-not() {
   depends=("${pkgname%-blur-me-not}")
   pkgdesc="$(_pkgdesc '1Password')"
   _package '/opt/1Password/1password'
+}
+
+# shellcheck disable=SC2128 # during execution, pkgname is a string
+package_electron-fiddle-blur-me-not() {
+  depends=("${pkgname%-blur-me-not}")
+  pkgdesc="$(_pkgdesc 'Electron Fiddle')"
+  # Original package has no symlink, so make a backup at patch time
+  _package "/usr/lib/${pkgname}/original/electron-fiddle"
 }
 
 package_rambox-pro-bin-blur-me-not() {
