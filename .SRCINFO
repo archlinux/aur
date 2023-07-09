@@ -1,7 +1,7 @@
 pkgbase = gimp-devel
 	pkgdesc = GNU Image Manipulation Program (Development version)
-	pkgver = 2.99.14
-	pkgrel = 2
+	pkgver = 2.99.16
+	pkgrel = 1
 	url = https://www.gimp.org/
 	arch = i686
 	arch = x86_64
@@ -50,7 +50,7 @@ pkgbase = gimp-devel
 	depends = openexr
 	depends = mypaint-brushes1
 	depends = babl>=0.1.98
-	depends = gegl>=0.4.40
+	depends = gegl>=0.4.46
 	depends = cairo
 	depends = python-gobject
 	depends = appstream-glib
@@ -71,12 +71,12 @@ pkgbase = gimp-devel
 	optdepends = gjs: JavaScript scripting support
 	optdepends = luajit: LUA scripting support
 	optdepends = lua51-lgi: LUA scripting support
-	provides = gimp=2.99.14
+	provides = gimp=2.99.16
 	conflicts = gimp
-	source = https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.14.tar.xz
+	source = https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.16.tar.xz
 	source = babl-0.1-name-change-meson.patch
 	source = linux.gpl
-	sha256sums = 313a205475d1ff03c5c4d9602f09f5c975ba6c1c79d8843e2396f9fe2abdf7a8
+	sha256sums = 6b4496edee447339f923276755247eadb64ec40d8aec241d06b62d1a6eb6508d
 	sha256sums = e012d022fe53eaf4cd2fc08f07cb0377fb14c8f791e42d13027983e41f7f4fc2
 	sha256sums = 1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3
 
