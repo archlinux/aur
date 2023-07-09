@@ -1,12 +1,4 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# The following guidelines are specific to BZR, GIT, HG and SVN packages.
-# Other VCS sources are not natively supported by makepkg yet.
-
-# Maintainer: zulc22 <zulc22db+oss@gmail.com>
+# Maintainer: Scott <zulc22db+oss@gmail.com>
 pkgname=metamorphose2-python3-git
 pkgver=r130.55ffc9f
 pkgrel=1
@@ -35,6 +27,8 @@ pkgver() {
 prepare() {
 	cd "$srcdir/metamorphose2"
 	git submodule update --init
+	rm metamorphose2
+	cp ../../metamorphose2_launcher metamorphose2 
 }
 
 package() {
