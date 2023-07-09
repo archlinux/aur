@@ -1,0 +1,14 @@
+pkgbase = metabase-driver-dremio
+	pkgdesc = Dremio driver for Metabase
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Baoqi/metabase-dremio-driver
+	arch = any
+	license = EPL2
+	depends = metabase
+	noextract = dremio.metabase-driver.jar
+	options = !strip
+	source = https://github.com/Baoqi/metabase-dremio-driver/releases/download/1.2.0/dremio.metabase-driver.jar
+	sha256sums = 6cf303c7387e15412354831f6e2fae4f898ddfb1f9fb9168b5e54b2f713d4978
+
+pkgname = metabase-driver-dremio
