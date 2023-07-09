@@ -1,0 +1,727 @@
+commit a6770a0633b2be16fc74f46745c2585ecc36df9e
+Author: detiam <dehe_tian@outlook.com>
+Date:   Sun Jul 9 21:14:32 2023 +0800
+
+    Merge branch 'feature/ipv6_randomize'
+    https://github.com/HexJacaranda/Sunshine
+
+diff --git a/src/config.cpp b/src/config.cpp
+index 6e4c93e..bb0347c 100644
+--- a/src/config.cpp
++++ b/src/config.cpp
+@@ -455,6 +455,7 @@ namespace config {
+     {},  // cmd args
+     47989,
+     platf::appdata().string() + "/sunshine.log",  // log file
++    "ipv4",
+     {},  // prep commands
+   };
+ 
+@@ -1042,10 +1043,11 @@ namespace config {
+ 
+     bool_f(vars, "always_send_scancodes", input.always_send_scancodes);
+ 
+-    int port = sunshine.port;
++    int port = config::sunshine.port;
+     int_f(vars, "port"s, port);
+-    sunshine.port = (std::uint16_t) port;
++    config::sunshine.port = (std::uint16_t) port;
+ 
++    string_restricted_f(vars, "address_family", config::sunshine.address_family, { "ipv4"sv, "both"sv });
+     bool upnp = false;
+     bool_f(vars, "upnp"s, upnp);
+ 
+@@ -1058,31 +1060,31 @@ namespace config {
+ 
+     if (!log_level_string.empty()) {
+       if (log_level_string == "verbose"sv) {
+-        sunshine.min_log_level = 0;
++        config::sunshine.min_log_level = 0;
+       }
+       else if (log_level_string == "debug"sv) {
+-        sunshine.min_log_level = 1;
++        config::sunshine.min_log_level = 1;
+       }
+       else if (log_level_string == "info"sv) {
+-        sunshine.min_log_level = 2;
++        config::sunshine.min_log_level = 2;
+       }
+       else if (log_level_string == "warning"sv) {
+-        sunshine.min_log_level = 3;
++        config::sunshine.min_log_level = 3;
+       }
+       else if (log_level_string == "error"sv) {
+-        sunshine.min_log_level = 4;
++        config::sunshine.min_log_level = 4;
+       }
+       else if (log_level_string == "fatal"sv) {
+-        sunshine.min_log_level = 5;
++        config::sunshine.min_log_level = 5;
+       }
+       else if (log_level_string == "none"sv) {
+-        sunshine.min_log_level = 6;
++        config::sunshine.min_log_level = 6;
+       }
+       else {
+         // accept digit directly
+         auto val = log_level_string[0];
+         if (val >= '0' && val < '7') {
+-          sunshine.min_log_level = val - '0';
++          config::sunshine.min_log_level = val - '0';
+         }
+       }
+     }
+@@ -1094,7 +1096,7 @@ namespace config {
+       vars.erase(it);
+     }
+ 
+-    if (sunshine.min_log_level <= 3) {
++    if (config::sunshine.min_log_level <= 3) {
+       for (auto &[var, _] : vars) {
+         std::cout << "Warning: Unrecognized configurable option ["sv << var << ']' << std::endl;
+       }
+@@ -1126,9 +1128,9 @@ namespace config {
+ #endif
+       else if (*line == '-') {
+         if (*(line + 1) == '-') {
+-          sunshine.cmd.name = line + 2;
+-          sunshine.cmd.argc = argc - x - 1;
+-          sunshine.cmd.argv = argv + x + 1;
++          config::sunshine.cmd.name = line + 2;
++          config::sunshine.cmd.argc = argc - x - 1;
++          config::sunshine.cmd.argv = argv + x + 1;
+ 
+           break;
+         }
+@@ -1171,12 +1173,12 @@ namespace config {
+       }
+ 
+       // Create empty config file if it does not exist
+-      if (!fs::exists(sunshine.config_file)) {
+-        std::ofstream { sunshine.config_file };
++      if (!fs::exists(config::sunshine.config_file)) {
++        std::ofstream { config::sunshine.config_file };
+       }
+ 
+       // Read config file
+-      auto vars = parse_config(read_file(sunshine.config_file.c_str()));
++      auto vars = parse_config(read_file(config::sunshine.config_file.c_str()));
+ 
+       for (auto &[name, value] : cmd_vars) {
+         vars.insert_or_assign(std::move(name), std::move(value));
+diff --git a/src/config.h b/src/config.h
+index 2c32e7a..a32db17 100644
+--- a/src/config.h
++++ b/src/config.h
+@@ -152,7 +152,7 @@ namespace config {
+ 
+     std::uint16_t port;
+     std::string log_file;
+-
++    std::string address_family;
+     std::vector<prep_cmd_t> prep_cmds;
+   };
+ 
+diff --git a/src/network.cpp b/src/network.cpp
+index f65bdfa..f04546a 100644
+--- a/src/network.cpp
++++ b/src/network.cpp
+@@ -101,12 +101,81 @@ namespace net {
+     return "wan"sv;
+   }
+ 
++  af_e
++  af_from_enum_string(const std::string_view &view) {
++    if (view == "ipv4") {
++      return IPV4;
++    }
++    if (view == "both") {
++      return BOTH;
++    }
++
++    // avoid warning
++    return BOTH;
++  }
++
++  std::string_view
++  af_to_enum_string(af_e af) {
++    switch (af) {
++      case IPV4:
++        return "ipv4"sv;
++      case BOTH:
++        return "both"sv;
++    }
++
++    // avoid warning
++    return "both"sv;
++  }
++
++  std::string_view
++  af_to_any_address_string(af_e af) {
++    switch (af) {
++      case IPV4:
++        return "0.0.0.0"sv;
++      case BOTH:
++        return "::"sv;
++    }
++
++    // avoid warning
++    return "::"sv;
++  }
++
++  boost::asio::ip::address
++  addr_to_normalized_addr(boost::asio::ip::address address) {
++    // Convert IPv6-mapped IPv4 addresses into regular IPv4 addresses
++    if (address.is_v6()) {
++      auto v6 = address.to_v6();
++      if (v6.is_v4_mapped()) {
++        return boost::asio::ip::make_address_v4(boost::asio::ip::v4_mapped, v6);
++      }
++    }
++
++    return address;
++  }
++
++  std::string
++  addr_to_normalized_string(boost::asio::ip::address address) {
++    return addr_to_normalized_addr(address).to_string();
++  }
++
++  std::string
++  addr_to_url_escaped_string(boost::asio::ip::address address) {
++    address = addr_to_normalized_addr(address);
++    if (address.is_v6()) {
++      return "["s + address.to_string() + "]";
++    }
++    else {
++      return address.to_string();
++    }
++  }
++
+   host_t
+-  host_create(ENetAddress &addr, std::size_t peers, std::uint16_t port) {
+-    enet_address_set_host(&addr, "0.0.0.0");
++  host_create(af_e af, ENetAddress &addr, std::size_t peers, std::uint16_t port) {
++    auto any_addr = net::af_to_any_address_string(af);
++    enet_address_set_host(&addr, any_addr.data());
+     enet_address_set_port(&addr, port);
+ 
+-    return host_t { enet_host_create(AF_INET, &addr, peers, 1, 0, 0) };
++    return host_t { enet_host_create(af == IPV4 ? AF_INET : AF_INET6, &addr, peers, 1, 0, 0) };
+   }
+ 
+   void
+diff --git a/src/network.h b/src/network.h
+index e1ca36c..4e40733 100644
+--- a/src/network.h
++++ b/src/network.h
+@@ -6,6 +6,10 @@
+ 
+ #include <tuple>
+ 
++#include <boost/asio.hpp>
++
++#include <boost/asio.hpp>
++
+ #include <enet/enet.h>
+ 
+ #include "utility.h"
+@@ -24,6 +28,11 @@ namespace net {
+     WAN
+   };
+ 
++  enum af_e : int {
++    IPV4,
++    BOTH
++  };
++
+   net_e
+   from_enum_string(const std::string_view &view);
+   std::string_view
+@@ -32,6 +41,18 @@ namespace net {
+   net_e
+   from_address(const std::string_view &view);
+ 
++  af_e
++  af_from_enum_string(const std::string_view &view);
++  std::string_view
++  af_to_any_address_string(af_e af);
++  std::string_view
++  af_to_enum_string(af_e af);
++
+   host_t
+-  host_create(ENetAddress &addr, std::size_t peers, std::uint16_t port);
++  host_create(af_e af, ENetAddress &addr, std::size_t peers, std::uint16_t port);
++
++  std::string
++  addr_to_normalized_string(boost::asio::ip::address address);
++  std::string
++  addr_to_url_escaped_string(boost::asio::ip::address address);
+ }  // namespace net
+diff --git a/src/nvhttp.cpp b/src/nvhttp.cpp
+index dfa0b9f..4d30d1a 100644
+--- a/src/nvhttp.cpp
++++ b/src/nvhttp.cpp
+@@ -987,6 +987,8 @@ namespace nvhttp {
+       tree.put("root.<xmlattr>.status_message"s, "The client is not authorized. Certificate verification failed."s);
+     };
+ 
++    auto address_family = net::af_from_enum_string(config::sunshine.address_family);
++
+     https_server.default_resource["GET"] = not_found<SimpleWeb::HTTPS>;
+     https_server.resource["^/serverinfo$"]["GET"] = serverinfo<SimpleWeb::HTTPS>;
+     https_server.resource["^/pair$"]["GET"] = [&add_cert](auto resp, auto req) { pair<SimpleWeb::HTTPS>(add_cert, resp, req); };
+@@ -998,7 +1000,7 @@ namespace nvhttp {
+     https_server.resource["^/cancel$"]["GET"] = cancel;
+ 
+     https_server.config.reuse_address = true;
+-    https_server.config.address = "0.0.0.0"s;
++    https_server.config.address = net::af_to_any_address_string(address_family);
+     https_server.config.port = port_https;
+ 
+     http_server.default_resource["GET"] = not_found<SimpleWeb::HTTP>;
+@@ -1007,7 +1009,7 @@ namespace nvhttp {
+     http_server.resource["^/pin/([0-9]+)$"]["GET"] = pin<SimpleWeb::HTTP>;
+ 
+     http_server.config.reuse_address = true;
+-    http_server.config.address = "0.0.0.0"s;
++    http_server.config.address = net::af_to_any_address_string(address_family);
+     http_server.config.port = port_http;
+ 
+     auto accept_and_run = [&](auto *http_server) {
+diff --git a/src/platform/common.h b/src/platform/common.h
+index cdb5785..807279d 100644
+--- a/src/platform/common.h
++++ b/src/platform/common.h
+@@ -363,6 +363,9 @@ namespace platf {
+   std::pair<std::uint16_t, std::string>
+   from_sockaddr_ex(const sockaddr *const);
+ 
++  bool
++  match_ipv6_prefix64(const std::string &address_one, const std::string &address_two);
++
+   std::unique_ptr<audio_control_t>
+   audio_control();
+ 
+diff --git a/src/platform/linux/misc.cpp b/src/platform/linux/misc.cpp
+index 73f6011..14aab65 100644
+--- a/src/platform/linux/misc.cpp
++++ b/src/platform/linux/misc.cpp
+@@ -138,6 +138,28 @@ namespace platf {
+     return { port, std::string { data } };
+   }
+ 
++  bool
++  match_ipv6_prefix64(const std::string &address_one, const std::string &address_two) {
++    sockaddr_in6 one;
++    constexpr int pton_success = 1;
++    int convert_res = pton_success;
++
++    convert_res = inet_pton(AF_INET6, address_one.c_str(), &one.sin6_addr);
++    if (convert_res != pton_success) {
++      return false;
++    }
++    int64_t prefix_one = *(int64_t *) &one.sin6_addr.s6_addr;
++
++    sockaddr_in6 two;
++    convert_res = inet_pton(AF_INET6, address_two.c_str(), &two.sin6_addr);
++    if (convert_res != pton_success) {
++      return false;
++    }
++    int64_t prefix_two = *(int64_t *) &two.sin6_addr.s6_addr;
++
++    return prefix_one == prefix_two;
++  }
++
+   std::string
+   get_mac_address(const std::string_view &address) {
+     auto ifaddrs = get_ifaddrs();
+diff --git a/src/platform/macos/misc.mm b/src/platform/macos/misc.mm
+index fb2b41b..58bc2f9 100644
+--- a/src/platform/macos/misc.mm
++++ b/src/platform/macos/misc.mm
+@@ -121,6 +121,28 @@ namespace platf {
+     return { port, std::string { data } };
+   }
+ 
++  bool
++  match_ipv6_prefix64(const std::string &address_one, const std::string &address_two) {
++    sockaddr_in6 one;
++    constexpr int pton_success = 1;
++    int convert_res = pton_success;
++
++    convert_res = inet_pton(AF_INET6, address_one.c_str(), &one.sin6_addr);
++    if (convert_res != pton_success) {
++      return false;
++    }
++    int64_t prefix_one = *(int64_t *) &one.sin6_addr.s6_addr;
++
++    sockaddr_in6 two;
++    convert_res = inet_pton(AF_INET6, address_two.c_str(), &two.sin6_addr);
++    if (convert_res != pton_success) {
++      return false;
++    }
++    int64_t prefix_two = *(int64_t *) &two.sin6_addr.s6_addr;
++
++    return prefix_one == prefix_two;
++  }
++
+   std::string
+   get_mac_address(const std::string_view &address) {
+     auto ifaddrs = get_ifaddrs();
+diff --git a/src/platform/windows/misc.cpp b/src/platform/windows/misc.cpp
+index d16c1d6..001fefb 100644
+--- a/src/platform/windows/misc.cpp
++++ b/src/platform/windows/misc.cpp
+@@ -112,6 +112,27 @@ namespace platf {
+     return { port, std::string { data } };
+   }
+ 
++  bool match_ipv6_prefix64(const std::string & address_one, const std::string& address_two) {
++    sockaddr_in6 one;
++    constexpr int pton_success = 1;
++    int convert_res = pton_success;
++
++    convert_res = inet_pton(AF_INET6, address_one.c_str(), &one.sin6_addr);
++    if(convert_res != pton_success) {
++      return false;
++    }
++    int64_t prefix_one = *(int64_t*)&one.sin6_addr.u.Byte;
++
++    sockaddr_in6 two;
++    convert_res = inet_pton(AF_INET6, address_two.c_str(), &two.sin6_addr);
++    if(convert_res != pton_success) {
++      return false;
++    }
++    int64_t prefix_two = *(int64_t*)&two.sin6_addr.u.Byte;
++
++    return prefix_one == prefix_two;
++  }
++
+   adapteraddrs_t
+   get_adapteraddrs() {
+     adapteraddrs_t info { nullptr };
+diff --git a/src/rtsp.cpp b/src/rtsp.cpp
+index a2e4a2f..0151326 100644
+--- a/src/rtsp.cpp
++++ b/src/rtsp.cpp
+@@ -225,7 +225,7 @@ namespace rtsp_stream {
+     }
+ 
+     int
+-    bind(std::uint16_t port, boost::system::error_code &ec) {
++    bind(net::af_e af, std::uint16_t port, boost::system::error_code &ec) {
+       {
+         auto lg = _session_slots.lock();
+ 
+@@ -233,14 +233,14 @@ namespace rtsp_stream {
+         _slot_count = config::stream.channels;
+       }
+ 
+-      acceptor.open(tcp::v4(), ec);
++      acceptor.open(af == net::IPV4 ? tcp::v4() : tcp::v6(), ec);
+       if (ec) {
+         return -1;
+       }
+ 
+       acceptor.set_option(boost::asio::socket_base::reuse_address { true });
+ 
+-      acceptor.bind(tcp::endpoint(tcp::v4(), port), ec);
++      acceptor.bind(tcp::endpoint(af == net::IPV4 ? tcp::v4() : tcp::v6(), port), ec);
+       if (ec) {
+         return -1;
+       }
+@@ -747,8 +747,8 @@ namespace rtsp_stream {
+     server.map("PLAY"sv, &cmd_play);
+ 
+     boost::system::error_code ec;
+-    if (server.bind(map_port(rtsp_stream::RTSP_SETUP_PORT), ec)) {
+-      BOOST_LOG(fatal) << "Couldn't bind RTSP server to port ["sv << map_port(rtsp_stream::RTSP_SETUP_PORT) << "], " << ec.message();
++    if (server.bind(net::af_from_enum_string(config::sunshine.address_family), map_port(RTSP_SETUP_PORT), ec)) {
++      BOOST_LOG(fatal) << "Couldn't bind RTSP server to port ["sv << map_port(RTSP_SETUP_PORT) << "], " << ec.message();
+       shutdown_event->raise(true);
+ 
+       return;
+diff --git a/src/stream.cpp b/src/stream.cpp
+index 18c1473..8129586 100644
+--- a/src/stream.cpp
++++ b/src/stream.cpp
+@@ -193,7 +193,7 @@ namespace stream {
+   using audio_fec_packet_t = util::c_ptr<audio_fec_packet_raw_t>;
+   using audio_aes_t = std::array<char, round_to_pkcs7_padded(MAX_AUDIO_PACKET_SIZE)>;
+ 
+-  using message_queue_t = std::shared_ptr<safe::queue_t<std::pair<std::uint16_t, std::string>>>;
++  using message_queue_t = std::shared_ptr<safe::queue_t<std::tuple<std::uint16_t, std::string, asio::ip::address>>>;
+   using message_queue_queue_t = std::shared_ptr<safe::queue_t<std::tuple<socket_e, asio::ip::address, message_queue_t>>>;
+ 
+   // return bytes written on success
+@@ -222,8 +222,8 @@ namespace stream {
+   class control_server_t {
+   public:
+     int
+-    bind(std::uint16_t port) {
+-      _host = net::host_create(_addr, config::stream.channels, port);
++    bind(net::af_e address_family, std::uint16_t port) {
++      _host = net::host_create(address_family, _addr, config::stream.channels, port);
+ 
+       return !(bool) _host;
+     }
+@@ -433,6 +433,68 @@ namespace stream {
+       return session_p;
+     }
+ 
++    it = std::end(_map_addr_session.raw);
++    BOOST_LOG(info) << "try ipv6 prefix match";
++    // try ipv6 prefix match
++    if (peer->address.address.ss_family == AF_INET6) {
++      for (auto pos = std::begin(_map_addr_session.raw); pos != std::end(_map_addr_session.raw); ++pos) {
++        auto &&ip = pos->first;
++        if (!platf::match_ipv6_prefix64(ip, addr_string)) {
++          continue;
++        }
++
++        TUPLE_2D_REF(session_port, session_p, pos->second);
++        if (session_port == port) {
++          return session_p;
++        }
++        else if (session_port == 0) {
++          it = pos;
++        }
++      }
++
++      if (it != std::end(_map_addr_session.raw)) {
++        TUPLE_2D_REF(session_port, session_p, it->second);
++
++        session_p->control.peer = peer;
++        session_port = port;
++        // Do relocation for ipv6
++        _map_addr_session.raw.erase(it);
++        _map_addr_session.raw.emplace(addr_string, std::make_pair(session_port, session_p));
++        return session_p;
++      }
++    }
++
++    it = std::end(_map_addr_session.raw);
++    BOOST_LOG(info) << "try ipv6 prefix match";
++    // try ipv6 prefix match
++    if (peer->address.address.ss_family == AF_INET6) {
++      for (auto pos = std::begin(_map_addr_session.raw); pos != std::end(_map_addr_session.raw); ++pos) {
++        auto &&ip = pos->first;
++        if (!platf::match_ipv6_prefix64(ip, addr_string)) {
++          continue;
++        }
++
++        TUPLE_2D_REF(session_port, session_p, pos->second);
++        if (session_port == port) {
++          return session_p;
++        }
++        else if (session_port == 0) {
++          it = pos;
++        }
++      }
++
++      if (it != std::end(_map_addr_session.raw)) {
++        TUPLE_2D_REF(session_port, session_p, it->second);
++
++        session_p->control.peer = peer;
++        session_port = port;
++        // Do relocation for ipv6
++        _map_addr_session.raw.erase(it);
++        _map_addr_session.raw.emplace(addr_string, std::make_pair(session_port, session_p));
++        return session_p;
++      }
++    }
++
+     return nullptr;
+   }
+ 
+@@ -993,7 +1055,41 @@ namespace stream {
+         auto it = peer_to_session.find(peer.address());
+         if (it != std::end(peer_to_session)) {
+           BOOST_LOG(debug) << "RAISE: "sv << peer.address().to_string() << ':' << peer.port() << " :: " << type_str;
+-          it->second->raise(peer.port(), std::string { buf[buf_elem].data(), bytes });
++          it->second->raise(peer.port(), std::string { buf[buf_elem].data(), bytes }, peer.address());
++        }
++        else if (peer.address().is_v6()) {
++          // IPv6 relocation
++          stream::message_queue_t relocation_queue = nullptr;
++          auto peer_address_string = peer.address().to_string();
++
++          for (auto &&[ip, queue] : peer_to_session) {
++            if (platf::match_ipv6_prefix64(ip.to_string(), peer_address_string)) {
++              BOOST_LOG(debug) << "RAISE: "sv << peer_address_string << ':' << peer.port() << " :: " << type_str;
++              relocation_queue = queue;
++              queue->raise(peer.port(), std::string { buf[buf_elem].data(), bytes }, peer.address());
++              break;
++            }
++          }
++          if (relocation_queue != nullptr) {
++            peer_to_session.emplace(peer.address(), relocation_queue);
++          }
++        }
++        else if (peer.address().is_v6()) {
++          // IPv6 relocation
++          stream::message_queue_t relocation_queue = nullptr;
++          auto peer_address_string = peer.address().to_string();
++
++          for (auto &&[ip, queue] : peer_to_session) {
++            if (platf::match_ipv6_prefix64(ip.to_string(), peer_address_string)) {
++              BOOST_LOG(debug) << "RAISE: "sv << peer_address_string << ':' << peer.port() << " :: " << type_str;
++              relocation_queue = queue;
++              queue->raise(peer.port(), std::string { buf[buf_elem].data(), bytes }, peer.address());
++              break;
++            }
++          }
++          if (relocation_queue != nullptr) {
++            peer_to_session.emplace(peer.address(), relocation_queue);
++          }
+         }
+       };
+     };
+@@ -1303,39 +1399,41 @@ namespace stream {
+ 
+   int
+   start_broadcast(broadcast_ctx_t &ctx) {
++    auto address_family = net::af_from_enum_string(config::sunshine.address_family);
++    auto protocol = address_family == net::IPV4 ? udp::v4() : udp::v6();
+     auto control_port = map_port(CONTROL_PORT);
+     auto video_port = map_port(VIDEO_STREAM_PORT);
+     auto audio_port = map_port(AUDIO_STREAM_PORT);
+ 
+-    if (ctx.control_server.bind(control_port)) {
++    if (ctx.control_server.bind(address_family, control_port)) {
+       BOOST_LOG(error) << "Couldn't bind Control server to port ["sv << control_port << "], likely another process already bound to the port"sv;
+ 
+       return -1;
+     }
+ 
+     boost::system::error_code ec;
+-    ctx.video_sock.open(udp::v4(), ec);
++    ctx.video_sock.open(protocol, ec);
+     if (ec) {
+       BOOST_LOG(fatal) << "Couldn't open socket for Video server: "sv << ec.message();
+ 
+       return -1;
+     }
+ 
+-    ctx.video_sock.bind(udp::endpoint(udp::v4(), video_port), ec);
++    ctx.video_sock.bind(udp::endpoint(protocol, video_port), ec);
+     if (ec) {
+       BOOST_LOG(fatal) << "Couldn't bind Video server to port ["sv << video_port << "]: "sv << ec.message();
+ 
+       return -1;
+     }
+ 
+-    ctx.audio_sock.open(udp::v4(), ec);
++    ctx.audio_sock.open(protocol, ec);
+     if (ec) {
+       BOOST_LOG(fatal) << "Couldn't open socket for Audio server: "sv << ec.message();
+ 
+       return -1;
+     }
+ 
+-    ctx.audio_sock.bind(udp::endpoint(udp::v4(), audio_port), ec);
++    ctx.audio_sock.bind(udp::endpoint(protocol, audio_port), ec);
+     if (ec) {
+       BOOST_LOG(fatal) << "Couldn't bind Audio server to port ["sv << audio_port << "]: "sv << ec.message();
+ 
+@@ -1413,44 +1511,48 @@ namespace stream {
+         break;
+       }
+ 
+-      TUPLE_2D_REF(port, msg, *msg_opt);
++      TUPLE_3D_REF(port, msg, final_address, *msg_opt);
+       if (msg == ping) {
+         BOOST_LOG(debug) << "Received ping from "sv << peer.address() << ':' << port << " ["sv << util::hex_vec(msg) << ']';
+-
+         // Update connection details.
+         {
+-          auto addr_str = peer.address().to_string();
++          auto addressChanged = peer.address() != final_address;
+ 
+           auto &connections = ref->audio_video_connections;
+-
+           auto lg = connections.lock();
+ 
+-          std::remove_reference_t<decltype(*connections)>::iterator pos = std::end(*connections);
+-
+-          for (auto it = std::begin(*connections); it != std::end(*connections); ++it) {
+-            TUPLE_2D_REF(addr, port_ref, *it);
+-
+-            if (!port_ref && addr_str == addr) {
+-              pos = it;
++          if (addressChanged) {
++            BOOST_LOG(info) << "Address changed to "sv << final_address.to_string();
++            peer.port(port);
++            peer.address(final_address);
++            connections->emplace_back(final_address.to_string(), port);
++          }
++          else {
++            auto addr_str = peer.address().to_string();
++            std::remove_reference_t<decltype(*connections)>::iterator pos = std::end(*connections);
++            for (auto it = std::begin(*connections); it != std::end(*connections); ++it) {
++              TUPLE_2D_REF(addr, port_ref, *it);
++
++              if (!port_ref && addr_str == addr) {
++                pos = it;
++              }
++              else if (port_ref == port) {
++                break;
++              }
+             }
+-            else if (port_ref == port) {
+-              break;
++
++            if (pos == std::end(*connections)) {
++              continue;
+             }
+-          }
+ 
+-          if (pos == std::end(*connections)) {
+-            continue;
++            pos->second = port;
++            peer.port(port);
+           }
+-
+-          pos->second = port;
+-          peer.port(port);
+         }
+-
+         return port;
+       }
+ 
+       BOOST_LOG(debug) << "Received non-ping from "sv << peer.address() << ':' << port << " ["sv << util::hex_vec(msg) << ']';
+-
+       current_time = std::chrono::steady_clock::now();
+     }
+ 
+diff --git a/src_assets/common/assets/web/config.html b/src_assets/common/assets/web/config.html
+index 4433d46..afa7c10 100644
+--- a/src_assets/common/assets/web/config.html
++++ b/src_assets/common/assets/web/config.html
+@@ -618,6 +618,17 @@
+       </div>
+     </div>
+     <div v-if="currentTab === 'advanced'" class="config-page">
++       <!--Address family-->
++        <div class="mb-3">
++            <label for="address_family" class="form-label">Address Family</label>
++            <select id="address_family"
++                    class="form-select"
++                    v-model="config.address_family">
++                <option value="ipv4">IPv4 only</option>
++                <option value="both">IPv4+IPv6</option>
++            </select>
++            <div class="form-text">Set the address family used by Sunshine</div>
++        </div>
+       <!--Port family-->
+       <div class="mb-3">
+         <label for="port" class="form-label">Port</label>
+@@ -1051,6 +1062,7 @@
+     "vt_realtime": "enabled",
+     "vt_software": "auto",
+     "global_prep_cmd": "[]",
++    "address_family": "ipv4"
+   }
+ 
+   new Vue({

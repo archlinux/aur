@@ -1,42 +1,43 @@
 # Maintainer: detian <dehe_tian@outlook.com>
-pkgname=sunshine-ipv6
-_pkgname=sunshine
-pkgver=0.19.1
+
+pkgname='sunshine-ipv6'
+_pkgname='sunshine'
+pkgver=0.20.0
 pkgrel=1
-pkgdesc="A self-hosted game stream host for Moonlight with ipv6 patch."
+pkgdesc="Sunshine is a self-hosted game stream host for Moonlight. (with ipv6 patch)"
 arch=('x86_64' 'aarch64')
-url=https://app.lizardbyte.dev
+url=https://github.com/HexJacaranda/Sunshine/tree/feature/ipv6_randomize
 license=('GPL3')
 install=sunshine.install
+options=(!strip)
 
 depends=('avahi' 'boost-libs' 'curl' 'libappindicator-gtk3' 'libevdev' 'libmfx' 'libpulse' 'libva' 'libvdpau' 'libx11' 'libxcb' 'libxfixes' 'libxrandr' 'libxtst' 'numactl' 'openssl' 'opus' 'udev')
-makedepends=('boost' 'cmake' 'git' 'make' 'nodejs' 'npm')
+makedepends=('boost' 'cmake' 'git' 'make' 'nodejs' 'npm' 'ninja') # upx
 optdepends=('cuda: NvFBC capture support'
             'libcap'
             'libdrm')
 
 provides=('sunshine')
-conflicts=('sunshine' 'sunshine-nox' 'sunshine-git')
+conflicts=('sunshine-nox' 'sunshine-git')
 
 source=(
+    "ipv6.patch"
     "$_pkgname.desktop"
-    "$_pkgname::git+https://github.com/HexJacaranda/Sunshine.git#branch=feature/ipv6_randomize"
-)
-sha256sums=('05013785251e864fc0d6603e714e256b03f9f2d57e80239bc2f528b1903b068a'
+    "$_pkgname::git+https://github.com/LizardByte/Sunshine.git#tag=v${pkgver}")
+sha256sums=('070622dc22d938240bb51c941f5c38b16f7e03e2c607a8767ca6b4c46eff73a7'
+            '68b4d8cc6fbeb9ead07489790386835e7386a545557d54d2d841ca17e4118c11'
             'SKIP')
 
 prepare() {
     cd "$_pkgname"
-    # Skip submodules that we don't want
-    git rm -f third-party/ffmpeg-windows-x86_64
-    git rm -f third-party/ffmpeg-macos-x86_64
-    git rm -f third-party/ffmpeg-macos-aarch64
 
-    if [[ $CARCH == "x86_64" ]]; then
-        git rm -f third-party/ffmpeg-linux-aarch64
-    elif [[ $CARCH == "aarch64" ]]; then
-        git rm -f third-party/ffmpeg-linux-x86_64
-    fi
+    patch -Np1 < ../ipv6.patch
+
+    # Remove submodules that are not needed in this build.
+    find . -type d \
+        '(' -iname 'ffmpeg-*' -o -iname '*ViGEmClient' ')' \
+        ! -iname "*linux-$CARCH" \
+        -exec git rm -rf {} +
 
     git submodule update --recursive --init
 }
@@ -44,6 +45,11 @@ prepare() {
 build() {
     pushd "$_pkgname"
     npm install
+    # For not check nightly update
+    export BRANCH=master
+    export BUILD_VERSION=${pkgver}
+    COMMIT="$(git rev-parse HEAD)"
+    export COMMIT
     popd
 
     export CFLAGS="${CFLAGS/-Werror=format-security/}"
@@ -51,24 +57,24 @@ build() {
 
     cmake -Wno-dev \
         -S "$_pkgname" \
-        -B build \
+        -B build -G Ninja \
         -D CMAKE_BUILD_TYPE=Release \
         -D CMAKE_INSTALL_PREFIX=/usr \
-        -D SUNSHINE_EXECUTABLE_PATH=/usr/bin/sunshine \
-        -D SUNSHINE_ASSETS_DIR="share/sunshine" \
+        -D SUNSHINE_ASSETS_DIR="share/$_pkgname" \
+        -D SUNSHINE_EXECUTABLE_PATH=/usr/bin/$_pkgname \
         -D SUNSHINE_ENABLE_WAYLAND=ON \
         -D SUNSHINE_ENABLE_X11=ON \
         -D SUNSHINE_ENABLE_DRM=ON \
-        -D SUNSHINE_ENABLE_CUDA=ON
+        -D SUNSHINE_ENABLE_CUDA=ON \
 
-    make -j "$(nproc)" -C build
+    ninja -C build
 }
 
 package() {
-    make -C build install DESTDIR="$pkgdir"
+    DESTDIR="$pkgdir" ninja -C build install #&& upx --best "$(realpath "$pkgdir/usr/bin/$_pkgname")"
 
-    # Copy desktop file
-    install -vdm 755 "${pkgdir}/usr/share/pixmaps"
-    ln -vs /usr/share/sunshine/web/images/logo-sunshine-45.png "${pkgdir}/usr/share/pixmaps/$_pkgname.png"
+    # Copy .desktop file
+    install -vdm 755 "${pkgdir}"/usr/share/{applications,pixmaps}
     install -vDm 644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    ln -vs "/usr/share/${_pkgname}/web/images/logo-${_pkgname}-45.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }

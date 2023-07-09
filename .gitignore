@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!sunshine.*
+!ipv6.patch
+!PKGBUILD

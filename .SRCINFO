@@ -1,8 +1,8 @@
 pkgbase = sunshine-ipv6
-	pkgdesc = A self-hosted game stream host for Moonlight with ipv6 patch.
-	pkgver = 0.19.1
+	pkgdesc = Sunshine is a self-hosted game stream host for Moonlight. (with ipv6 patch)
+	pkgver = 0.20.0
 	pkgrel = 1
-	url = https://app.lizardbyte.dev
+	url = https://github.com/HexJacaranda/Sunshine/tree/feature/ipv6_randomize
 	install = sunshine.install
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = sunshine-ipv6
 	makedepends = make
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = ninja
 	depends = avahi
 	depends = boost-libs
 	depends = curl
@@ -35,12 +36,14 @@ pkgbase = sunshine-ipv6
 	optdepends = libcap
 	optdepends = libdrm
 	provides = sunshine
-	conflicts = sunshine
 	conflicts = sunshine-nox
 	conflicts = sunshine-git
+	options = !strip
+	source = ipv6.patch
 	source = sunshine.desktop
-	source = sunshine::git+https://github.com/HexJacaranda/Sunshine.git#branch=feature/ipv6_randomize
-	sha256sums = 05013785251e864fc0d6603e714e256b03f9f2d57e80239bc2f528b1903b068a
+	source = sunshine::git+https://github.com/LizardByte/Sunshine.git#tag=v0.20.0
+	sha256sums = 070622dc22d938240bb51c941f5c38b16f7e03e2c607a8767ca6b4c46eff73a7
+	sha256sums = 68b4d8cc6fbeb9ead07489790386835e7386a545557d54d2d841ca17e4118c11
 	sha256sums = SKIP
 
 pkgname = sunshine-ipv6
