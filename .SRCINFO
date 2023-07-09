@@ -12,16 +12,12 @@ pkgbase = freeminer-git
 	makedepends = hiredis
 	makedepends = sqlite
 	makedepends = luajit
-	makedepends = irrlicht
 	makedepends = openal
-	makedepends = enet
-	makedepends = jsoncpp
 	makedepends = libvorbis
 	makedepends = hicolor-icon-theme
 	makedepends = freetype2
 	makedepends = cmake
-	makedepends = msgpack-c
-	makedepends = clang
+	makedepends = doxygen
 
 pkgname = freeminer-git
 	pkgdesc = An open source sandbox game inspired by Minecraft
@@ -31,13 +27,11 @@ pkgname = freeminer-git
 	depends = hiredis
 	depends = sqlite
 	depends = luajit
-	depends = irrlicht
 	depends = openal
-	depends = enet
-	depends = jsoncpp
 	depends = libvorbis
 	depends = hicolor-icon-theme
 	depends = freetype2
+	depends = doxygen
 	provides = freeminer=0.4.14.8.r5548.g86caf1cfb
 	conflicts = freeminer
 
@@ -49,8 +43,7 @@ pkgname = freeminer-server-git
 	depends = hiredis
 	depends = sqlite
 	depends = luajit
-	depends = enet
-	depends = jsoncpp
+	depends = doxygen
 	provides = freeminer-server=0.4.14.8.r5548.g86caf1cfb
 	conflicts = freeminer-server
 

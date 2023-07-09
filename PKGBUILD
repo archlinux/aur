@@ -17,14 +17,8 @@ license=('GPL3' 'CCPL:cc-by-sa-3.0')
 
 makedepends=(
 	'leveldb' 'curl' 'git' 'hiredis' 'sqlite' 'luajit'
-	'irrlicht' 'openal' 'enet' 'jsoncpp' 'libvorbis'
-	'hicolor-icon-theme' 'freetype2' 'cmake' 'msgpack-c' 'clang'
+	'openal' 'libvorbis' 'hicolor-icon-theme' 'freetype2' 'cmake' 'doxygen'
 )
-
-pkgver() {
-	cd "${srcdir}"/${_pkgbase}
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
 	cd "${srcdir}"
@@ -33,6 +27,11 @@ prepare() {
 
 	# Create build directory
 	mkdir -p "${srcdir}"/build-{client,server}
+}
+
+pkgver() {
+	cd "${srcdir}"/${_pkgbase}
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -61,8 +60,7 @@ package_freeminer-git() {
 	pkgdesc='An open source sandbox game inspired by Minecraft'
 	depends=(
 		"${_pkgbase}-common-git" 'leveldb' 'curl' 'hiredis' 'sqlite'
-		'luajit' 'irrlicht' 'openal' 'enet' 'jsoncpp'
-		'libvorbis' 'hicolor-icon-theme' 'freetype2'
+		'luajit' 'openal' 'libvorbis' 'hicolor-icon-theme' 'freetype2' 'doxygen'
 	)
 	provides=("${_pkgbase}=${pkgver}")
 	conflicts=("${_pkgbase}")
@@ -85,7 +83,7 @@ package_freeminer-server-git() {
 	pkgdesc='Server of an open source sandbox game inspired by Minecraft'
 	depends=(
 		"${_pkgbase}-common-git" 'leveldb' 'curl' 'hiredis' 'sqlite'
-		'luajit' 'enet' 'jsoncpp'
+		'luajit' 'doxygen'
 	)
 	provides=("${_pkgbase}-server=${pkgver}")
 	conflicts=("${_pkgbase}-server")
