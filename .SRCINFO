@@ -1,7 +1,7 @@
 pkgbase = nix-user-chroot
 	pkgdesc = Run and install nix as user without root permissions.
 	pkgver = 1.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nix-community/nix-user-chroot
 	arch = x86_64
 	license = MIT

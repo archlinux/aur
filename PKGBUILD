@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=nix-user-chroot
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Run and install nix as user without root permissions."
 url="https://github.com/nix-community/nix-user-chroot"
 arch=(x86_64)
@@ -18,8 +18,9 @@ build() {
 check() {
   cd $pkgname-$pkgver
   # See https://github.com/nix-community/nix-user-chroot/tree/1.2.2#check-if-your-kernel-supports-user-namespaces-for-unprivileged-users
-  # Plus, ensure chroot works inside the user namespace (This fails, for example, inside a regular Podman container)
-  if ! unshare --user --pid --map-root-user chroot / true; then
+  # Plus, ensure basic mount+chroot works inside the user namespace (this fails in some locked down
+  # environments, such as e.g. when running a regular Podman container with AppArmor enabled)
+  if ! unshare --user --mount --map-root-user sh -c 'mount --bind /usr /usr && chroot / true'; then
     echo "WARNING: Skipping tests because user namespaces are not supported or restricted" >&2
     return
   fi
