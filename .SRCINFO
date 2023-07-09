@@ -6,6 +6,7 @@ pkgbase = python-sabyenc3
 	arch = any
 	license = lgplv3
 	makedepends = python-setuptools
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/s/sabyenc3/sabyenc3-5.4.4.tar.gz
 	sha256sums = f3d65f2a70bcb13ef1beae0ff6bb3b69adae18497035f8cd4ffe4e5af1aa2f41
 
