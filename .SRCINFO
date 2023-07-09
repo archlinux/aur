@@ -1,10 +1,14 @@
 pkgbase = alpine
 	pkgdesc = A free software email client, a rewrite of Pine which was a continuation of the venerable ELM.
 	pkgver = 2.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alpineapp.email/
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv6l
+	arch = armv7h
+	arch = armv7l
 	arch = aarch64
 	license = APACHE
 	depends = gettext
