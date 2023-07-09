@@ -1,6 +1,6 @@
 pkgbase = basilisk-bin
 	pkgdesc = A XUL-based web-browser demonstrating the Unified XUL Platform (UXP).
-	pkgver = 52.9.2023.05.17
+	pkgver = 52.9.2023.06.20
 	pkgrel = 1
 	epoch = 1
 	url = https://www.basilisk-browser.org
@@ -17,7 +17,7 @@ pkgbase = basilisk-bin
 	optdepends = hunspell: spell checker and morphological analyzer
 	optdepends = hyphen: library for hyphenation and justification
 	optdepends = ffmpeg: record, convert, and stream audio and video
-	provides = basilisk=52.9.2023.05.17
+	provides = basilisk=52.9.2023.06.20
 	conflicts = basilisk
 	source = https://archive.basilisk-browser.org/2023.06.20/linux/x86_64/gtk3/basilisk-20230620160727.linux-x86_64.tar.xz
 	source = https://archive.basilisk-browser.org/2023.06.20/linux/x86_64/gtk3/basilisk-20230620160727.linux-x86_64.json
