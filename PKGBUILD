@@ -1,7 +1,7 @@
 # Maintainer: Sahil Gupte <ovenoboyo@gmail.com>
 
 pkgname=moosync
-pkgver=8.1.1
+pkgver=9.0.0
 pkgrel=1
 pkgdesc='A simple music player'
 arch=('any')
