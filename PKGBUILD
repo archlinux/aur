@@ -1,5 +1,5 @@
 pkgname=acr-git
-pkgver=20150714.104.125ba72
+pkgver=20230709.224.497e353
 pkgrel=1
 pkgdesc="A fully compatible autoconf replacement" 
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('git')
 provides=('acr')
 conflicts=('acr' 'acr-hg')
 
-source=("$pkgname"::"git://github.com/radare/acr.git")
+source=("$pkgname"::"git+https://github.com/radare/acr.git")
 md5sums=('SKIP')
 
 pkgver () {
