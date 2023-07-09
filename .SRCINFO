@@ -6,6 +6,7 @@ pkgbase = python-webrtcvad-wheels
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/w/webrtcvad-wheels/webrtcvad-wheels-2.0.11.post1.tar.gz
 	sha256sums = aa1f749b5ea5ce209df9bdef7be9f4844007e630ac87ab9dbc25dda73fd5d2b7
 
