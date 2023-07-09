@@ -1,0 +1,8 @@
+[Unit]
+Description=Actual Server
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/share/webapps/actual-server
+User=actual
+ExecStart=/usr/bin/yarn start
