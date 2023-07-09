@@ -1,7 +1,7 @@
 # Maintainer: Shreyansh Khajanchi <shreyansh_k@live.com>
 
 pkgname=gnirehtet
-pkgver=2.5
+pkgver=2.5.1
 pkgrel=0
 pkgdesc="Gnirehtet provides reverse tethering for Android"
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=(
 	"patch.diff"
 )
 sha256sums=(
-	'2b55b56e1b21d1b609a0899fe85d1f311120bb12b04761ec586187338daf6ec5'
-	'2b1ce04540e8de5df5ddbebb64bb01e27c13d556b3a04a8563dcce3786765705'
+	'0d41361b9ac8b3b7fa4f4a0aff933472a72886556bd3fc4659be299b546274e6'
+	'dee55499ca4fef00ce2559c767d2d8130163736d43fdbce753e923e75309c275'
 	'SKIP'
 )
 
