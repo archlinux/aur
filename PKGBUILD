@@ -18,7 +18,7 @@ sha512sums=('a1a1177ad1f1c55a3afeccf4c7f682dc08ff744eb1f6843f1085d5889a7c5853cfe
   '71511e9900b82cb55ef182ebebe7851aa013bc2f3bb8d862f69962c3964b9f42e48920775ec98d416ebd94c0c8e4471b01e85e172b0e9493681b479832e61060')
 
 prepare() {
-  sed -i 's/include/#include/' ${_base}-${pkgver}/MANIFEST.in
+  sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
 }
 
 build() {
