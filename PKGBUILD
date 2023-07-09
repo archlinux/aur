@@ -330,7 +330,6 @@ prepare(){
 build(){
   cd ${srcdir}/linux-$_pkgver
 
-  # make -j$(nproc) all
   msg "make -j$(nproc) all..."
   make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
 }
