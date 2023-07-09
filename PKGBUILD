@@ -28,6 +28,7 @@ source=(oss::git://git.code.sourceforge.net/p/opensound/git
         kmod-link.patch
         kmod-link2.patch
         ossvermagic.patch
+        osscore.patch
         extramodules.patch)
 sha512sums=('SKIP'
             '5599f75ac2784aca7d0367e88705938d2680e7a0eb7ae7300080e3fc0ea0c9d3b183554a9e208ed8359f675028024e8de62baa5f8dbc79e9f3bd942db6aa6157'
@@ -39,6 +40,7 @@ sha512sums=('SKIP'
             'f73b837643c7b86c5ce3a2ff18a66b99166d16ac7d1ac3d419b203efd8d398d8c4b21c304d6fa1c038ebf180ca0620d6517be384b307bb66e84a15b0339800df'
             '6cefeca6921916d2fbf7c4efd354d3c0b7f7285c6d049912bd318f0b520698a2de2a974604a56a7b288636939773ef49f022962bb88f9e3b5ea442462a50de1b'
             '5db4bb6d636983485bc56aa7dd83347de848624d4ff160c1ec77d7d21d22154be61cad393af2d772f58bca47494d853dd5b286e4820440bd339cbb6edd50d1db'
+            '0ca7b5ce6e63aadcfef763d105fa141260c2db002dd587200ada6d1c8c0abd4fdc2ca728b76d638181504faf58df3edbacb39cda2a988e1dd13facd962792c9e'
             '1537b87e8d0c3b222f980da9d69190dd67d09ba906c810e59c01b486ae83bd378ad9c542908b08540b13bf5a151ed2632e8c590d867e7fef8d1c0c30057e3a9b')
 
 
@@ -67,6 +69,7 @@ prepare() {
   # patch -p1 < "$srcdir/galaxy.patch"
   # - no longer required (from commit 4d221f) 
   # patch -p1 < "$srcdir/ossvermagic.patch"
+  patch -p1 < "$srcdir/osscore.patch"
   patch -p1 < "$srcdir/extramodules.patch"
 
   # make OSS compile with glibc >= 2.23

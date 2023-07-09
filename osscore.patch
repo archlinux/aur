@@ -1,0 +1,49 @@
+diff --git a/setup/Linux/oss/build/osscore.c b/setup/Linux/oss/build/osscore.c
+index d69c66d..232f8cd 100644
+--- a/setup/Linux/oss/build/osscore.c
++++ b/setup/Linux/oss/build/osscore.c
+@@ -117,7 +117,7 @@ oss_kmem_free (void *addr)
+   vfree (addr);
+ }
+ 
+-/* oss_pmalloc() moved to os_linux.c */
++/* oss_pmalloc() moved to os_linux.c
+ 
+ extern oss_native_word
+ oss_virt_to_bus (void *addr)
+@@ -125,6 +125,7 @@ oss_virt_to_bus (void *addr)
+   return virt_to_bus (addr);
+ }
+ 
++ */
+ void *
+ oss_memcpy (void *t_, const void *f_, size_t l)
+ {
+@@ -138,6 +139,9 @@ oss_memcpy (void *t_, const void *f_, size_t l)
+   return t;
+ }
+ 
++#ifdef memmove
++#undef memmove
++#endif
+ void *memmove(void *dest, const void *src, size_t n)
+ {
+ 	return oss_memcpy(dest, src, n);
+@@ -912,7 +916,7 @@ oss_contig_malloc (oss_device_t * osdev, int buffsize, oss_uint64_t memlimit,
+ 			 (oss_native_word) end_addr);
+     }
+ 
+-  *phaddr = virt_to_bus (start_addr);
++  *phaddr = virt_to_phys(start_addr);
+   return start_addr;
+ }
+ 
+@@ -2091,7 +2095,7 @@ EXPORT_SYMBOL (oss_spin_unlock_irqrestore);
+ EXPORT_SYMBOL (oss_udelay);
+ EXPORT_FUNC (oss_unregister_device);
+ EXPORT_SYMBOL (oss_unregister_interrupts);
+-EXPORT_SYMBOL (oss_virt_to_bus);
++// EXPORT_SYMBOL (oss_virt_to_bus);
+ EXPORT_FUNC (oss_pci_read_config_byte);
+ EXPORT_FUNC (oss_pci_read_config_word);
+ EXPORT_FUNC (oss_pci_read_config_dword);
