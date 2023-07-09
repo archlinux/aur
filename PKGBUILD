@@ -1,8 +1,8 @@
 # Maintainer: ItzSelenux <itszariep@outlook.com>
 
-pkgname="ghostlexly-gpu-video-wallpaper"
+pkgname="ghostlexly-gpu-video-wallpaper-git"
 _reponame='gpu-video-wallpaper'
-pkgver=2021.11.26.r9.g8773e95
+pkgver=2023.06.24.1cb6623
 pkgrel=1
 arch=("any")
 pkgdesc="User your GPU for rendering low cpu using/usage video animated wallpaper"
@@ -19,6 +19,6 @@ cd gpu-video-wallpaper
 install -Dm755 "gui.ui" -t "$pkgdir/usr/bin/"
 install -Dm755 "video-wallpaper.py" -t "$pkgdir/usr/bin/"
 install -Dm755 "gui.ui" -t "$pkgdir/usr/bin/"
+sed -i 's/%WID/WID/g' video-wallpaper.sh
 install -Dm755 "video-wallpaper.sh" -t "$pkgdir/usr/bin/"
 }
-
