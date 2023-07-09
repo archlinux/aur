@@ -33,12 +33,13 @@ def is_gfx1031():
     # if len(architectures) != 1, we ignore it since idk what to do then.
     return {'gfx1031'} == architectures
 
-# You can use environment variables if your GPU works but is not officially supported.
-# For example, I have a Radeon RX 6750 XT, which is detected as the unsupported gfx1031 arch,
-#  but the supported gfx1030 architecture works just dandy.
-# This test, when run on such a machine, will override the architecture.
-if is_gfx1031():
-    os.environ['HSA_OVERRIDE_GFX_VERSION'] = '10.3.0'
+def set_gfx_override():
+    # You can use environment variables if your GPU works but is not officially supported.
+    # For example, I have a Radeon RX 6750 XT, which is detected as the unsupported gfx1031 arch,
+    #  but the supported gfx1030 architecture works just dandy.
+    # This test, when run on such a machine, will override the architecture.
+    if is_gfx1031():
+        os.environ['HSA_OVERRIDE_GFX_VERSION'] = '10.3.0'
 
 def uninstall(package_name):
     subprocess.run(['sudo', 'pacman', '-Rdd', package_name])
@@ -122,12 +123,16 @@ def test_tf_short():
     tf.autograph.to_graph(temp)
 
 def test_tf_mnist():
+    seed = 531
     import tensorflow as tf
+    tf.random.set_seed(seed)
+    tf.keras.utils.set_random_seed(531)
+    
     # Taken from tensorflow.org/tutorials/quickstart/beginner.
     mnist = tf.keras.datasets.mnist
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
     x_train, x_test = x_train / 255., x_test / 255.
-
+    
     import time
     start = time.time()
 
@@ -155,6 +160,7 @@ def test_tf_mnist():
     print('Your mileage may vary.')
 
 def check_packages(tensorflow_path, python_tensorflow_path):
+    set_gfx_override()
     uninstall_all()
     install(tensorflow_path)
 

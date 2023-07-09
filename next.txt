@@ -1,6 +1,3 @@
-it occurs to me, about the opt things, we can just do march=native.
-    build with match=x86_64 -O2 and march=native -O2 and benchmark the results.
-    remove the optimization notes from github readme
 clean chroot build
 party. I am so glad this is over.
 
