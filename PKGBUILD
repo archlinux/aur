@@ -13,7 +13,6 @@ license=(Apache)
 depends=(gnatcoll-iconv
          gnatcoll-gmp
          python
-         python-e3-core
          adasat)
 
 makedepends=(gprbuild

@@ -25,7 +25,6 @@ pkgbase = langkit
 	depends = gnatcoll-iconv
 	depends = gnatcoll-gmp
 	depends = python
-	depends = python-e3-core
 	depends = adasat
 	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/langkit-24.0w-20230324-16391-src.tar.gz
 	source = 0001-Replace-calls-to-inspect.getargspec-with-getfullargs.patch
