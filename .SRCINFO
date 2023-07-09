@@ -1,14 +1,16 @@
 pkgbase = openfm-qt
 	pkgdesc = Qt client for Polish internet radio Open FM.
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wzykubek/openfm-qt
 	arch = any
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-poetry-core
 	makedepends = gendesk
+	depends = python-requests
+	depends = pyside6
+	depends = qt6-base
 	source = openfm-qt-0.1.1.tar.gz::https://github.com/wzykubek/openfm-qt/archive/v0.1.1.tar.gz
 	sha256sums = SKIP
 

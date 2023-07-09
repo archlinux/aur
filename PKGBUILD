@@ -2,12 +2,13 @@
 
 pkgname=openfm-qt
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt client for Polish internet radio Open FM.'
 arch=('any')
 url='https://github.com/wzykubek/openfm-qt'
 licence=('ISC')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-poetry-core' 'gendesk')
+depends=('python-requests' 'pyside6' 'qt6-base')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wzykubek/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
@@ -18,7 +19,8 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    python -m build --wheel
+    sed -i 's/pyside6-uic/uic/' prebuild.py
+    python -m build --wheel --no-isolation
 }
 
 package() {
