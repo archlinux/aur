@@ -1,21 +1,21 @@
 pkgbase = magicavoxel
 	pkgdesc = A free lightweight 8-bit voxel art editor and GPU based interactive path tracing renderer
-	pkgver = 0.99.6.4.r20210925
+	pkgver = 0.99.7.1.r20230614
 	pkgrel = 1
 	url = https://ephtracy.github.io/
 	arch = x86_64
 	license = custom
 	makedepends = icoutils
 	depends = wine
-	source = magicavoxel-0.99.6.4.r20210925.zip::https://github.com/ephtracy/ephtracy.github.io/releases/download/0.99.6/MagicaVoxel-0.99.6.4-win64.zip
+	source = magicavoxel-0.99.7.1.r20230614.zip::https://github.com/ephtracy/ephtracy.github.io/releases/download/0.99.7/MagicaVoxel-0.99.7.1-win64.zip
 	source = magicavoxel-plugin-1.2.0.zip::https://github.com/ephtracy/ephtracy.github.io/releases/download/0.01/plugin-intel-denoiser-win64-1.2.0.zip
 	source = magicavoxel
 	source = magicavoxel.desktop
 	source = LICENSE
-	sha512sums = 073b6249cd621e7fad44314353192d49d968ad95e2e080cf1e63d99f8121cad52997a88a41dee0ce05b53141dd217cf7bfeec25ac616bbfb0ea62e4ee4994ec4
+	sha512sums = a9364a9b002ed0b77088bb01ea36b8c8038602ed8f57bdbf11fa60f7279185c653109c24e022b1761a4585c2c315180eb1b61bb65c733e105f23b285b99ef4b7
 	sha512sums = 6509da8d8b04488b369644fd104cdc820037bc2bd2567d868541562d3096041d29d265cdeb2386ccb66f8f6670b94236d565046bfad92aff9cf7b1988b4af53f
 	sha512sums = cc3ca199de02c1b83697faa3ef96ea2029c8bc99503a05e1e958f200addbf52f933fae8fea105b1107d61ef584ec79752e353596424e638d56fb1f64969fb1a3
 	sha512sums = 0872398e0d52df23a4910c3c5257f073f96bbf06db197ebdaf59598ca39d1351c6412598ac46b1eb24ba2a47db8ce7d804d227dc847260c8dbd6213396e816c1
-	sha512sums = feabbff40cef5402aac75d8344acf434079250c25e05c6bc91af705f1254e0010caaf5e64450fee4ec7d4636ec930a5600412bbc3f588149e7ee0cbeefb0e5ae
+	sha512sums = 50650951b9a7202f50955aab591c5c29d26730fe6220ba32408e054502f20eb71c71473b1b5490d9e0600dca8acc51c00fb0efec1b5c790e471fe693d603b591
 
 pkgname = magicavoxel

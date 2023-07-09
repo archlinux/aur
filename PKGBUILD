@@ -8,8 +8,8 @@
 pkgname=magicavoxel
 
 # $_pkgver_upstream should ideally match the version in the archive name and the one specified on the website.
-_pkgver_tag='0.99.6' # Git tag associated with the release where the latest archive is.
-_pkgver_suffix='.4' # Anything after $_pkgver_tag that is present in the archive name.
+_pkgver_tag='0.99.7' # Git tag associated with the release where the latest archive is.
+_pkgver_suffix='.1' # Anything after $_pkgver_tag that is present in the archive name.
 _pkgver_upstream="$_pkgver_tag$_pkgver_suffix"
 
 # Use the date of the corresponding release archive asset, which can be found e.g. by using the below one-liner
@@ -18,7 +18,7 @@ _pkgver_upstream="$_pkgver_tag$_pkgver_suffix"
 # $ curl -sSf "https://api.github.com/repos/ephtracy/ephtracy.github.io/releases/tags/$_pkgver_tag" | jq '.assets|map(select(.name|contains("win64.zip")))[0].updated_at|fromdate|strftime("%Y%m%d")'
 #
 # If multiple releases happen on the same day, set $_pkgver_uniqueness to '.2', then '.3' etc.
-_pkgver_date='20210925'
+_pkgver_date='20230614'
 _pkgver_uniqueness='' # Don't forget to reset to '' when date changes.
 
 # Git tag associated with the release where the latest Intel Open Image Denoiser plugin archive is.
@@ -40,11 +40,11 @@ source=("$pkgname-$pkgver.zip::https://github.com/ephtracy/ephtracy.github.io/re
 license=('custom')
 depends=(wine)
 makedepends=(icoutils)
-sha512sums=('073b6249cd621e7fad44314353192d49d968ad95e2e080cf1e63d99f8121cad52997a88a41dee0ce05b53141dd217cf7bfeec25ac616bbfb0ea62e4ee4994ec4'
+sha512sums=('a9364a9b002ed0b77088bb01ea36b8c8038602ed8f57bdbf11fa60f7279185c653109c24e022b1761a4585c2c315180eb1b61bb65c733e105f23b285b99ef4b7'
             '6509da8d8b04488b369644fd104cdc820037bc2bd2567d868541562d3096041d29d265cdeb2386ccb66f8f6670b94236d565046bfad92aff9cf7b1988b4af53f'
             'cc3ca199de02c1b83697faa3ef96ea2029c8bc99503a05e1e958f200addbf52f933fae8fea105b1107d61ef584ec79752e353596424e638d56fb1f64969fb1a3'
             '0872398e0d52df23a4910c3c5257f073f96bbf06db197ebdaf59598ca39d1351c6412598ac46b1eb24ba2a47db8ce7d804d227dc847260c8dbd6213396e816c1'
-            'feabbff40cef5402aac75d8344acf434079250c25e05c6bc91af705f1254e0010caaf5e64450fee4ec7d4636ec930a5600412bbc3f588149e7ee0cbeefb0e5ae')
+            '50650951b9a7202f50955aab591c5c29d26730fe6220ba32408e054502f20eb71c71473b1b5490d9e0600dca8acc51c00fb0efec1b5c790e471fe693d603b591')
 
 build() {
   wrestool -x --output=magicavoxel.ico -t14 "MagicaVoxel-$_pkgver_upstream-win64/MagicaVoxel.exe"
