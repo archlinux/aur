@@ -77,16 +77,12 @@ sha256sums=('SKIP'
             'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a')
 
 pkgver() {
-  cd Flexget
-  printf "%s.r%s.%s" "$(grep __version__ flexget/_version.py | sed -r "s/.*([0-9].*\.[0-9].*\.[0-9].*)\.dev.*/\1/g")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_pkgname}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${_pkgname}"
-
-  #pip-compile --output-file requirements.txt requirements.in
-  #pip-compile give too stricts requirements...
-  cp requirements.in requirements.txt
 
   # Remove specific versions, because they are not going to match
   # versions of Arch packages. Yes, this might break something.
@@ -102,11 +98,14 @@ prepare() {
 
   # Python distribution of progressbar v3.x.x is named progressbar2
   sed -i 's/progressbar/progressbar2/' requirements.txt
+
+  # Remove stale wheels
+  git -C "${srcdir}/${_pkgname}" clean -dfx
 }
 
 build() {
   cd "${_pkgname}"
-  python dev_tools.py bundle-webui
+  python -m build --wheel --no-isolation
 }
 
 # currently broken somewhere in the bower task
@@ -121,11 +120,8 @@ build() {
 package() {
   cd "${_pkgname}"
 
-  # Cleanup a previous builds if any, since setuptools doesn't do it
-  rm -rf build
-
   # Python setup
-  python setup.py install --root="${pkgdir}"/ --prefix=/usr --optimize=1 || return 1
+  python -m installer --compile-bytecode=1 --destdir="${pkgdir}"/ dist/*.whl
 
   # License
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
