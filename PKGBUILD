@@ -2,7 +2,7 @@
 
 pkgname=daed-bin-x64-v3
 _pkgname=daed
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core)."
 url="https://daeuniverse.github.io/daed"
@@ -11,7 +11,7 @@ license=('AGPL' 'MIT')
 provides=('daed')
 conflicts=('daed-git')
 source=("https://github.com/daeuniverse/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64_v3_avx2.zip")
-sha512sums=('bdfdb87ee872c03a01e18f7b9908c1e6739c505f9b3da8fc60892d8eaaa7299fc8bcaa3d9bd97180aa132d02d381c50c3212d591c8a096a4da1f6f6669a531ee')
+sha512sums=('b7710562872e896c4c684f5802909c9c1a0a2e0f4c1874b84b740d4b453f2424b4fae64f3d058f81e8466088d4847b6d8ae68e72c83a88054059fd2a51314372')
 
 prepare() {
 	if !(/lib/ld-linux-x86-64.so.2 --help | grep "x86-64-v3 (supported, searched)" &> /dev/null); then
