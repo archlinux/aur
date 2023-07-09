@@ -1,20 +1,23 @@
 pkgbase = abseil-cpp-git
-	pkgdesc = An open-source collection of C++ code to augment the C++ standard library
-	pkgver = r673.143a2780
+	pkgdesc = Collection of C++ library code designed to augment the C++ standard library
+	pkgver = r1653.7152f9bc
 	pkgrel = 2
-	url = https://github.com/abseil/abseil-cpp
+	url = https://abseil.io
 	arch = x86_64
 	arch = i686
-	arch = arm
+	arch = armv7h
 	arch = aarch64
-	arch = ppc
 	license = Apache
 	makedepends = cmake
 	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = gtest
 	provides = abseil-cpp
 	conflicts = abseil-cpp
 	source = git+https://github.com/abseil/abseil-cpp.git
-	md5sums = SKIP
+	source = abseil-cpp-scoped-mock-log.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/abseil-cpp/-/raw/1846afb3dd43f9a0dbbbda2c762cc36339b827fc/scoped-mock-log.patch
+	sha256sums = SKIP
+	sha256sums = a6cbc612a2b96fcbd52d081e03e8581107ceb4827edb19d96510a31c568e1396
 
 pkgname = abseil-cpp-git
-

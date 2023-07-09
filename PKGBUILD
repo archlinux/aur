@@ -1,51 +1,54 @@
-# Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=abseil-cpp-git
-_pkgname="${pkgname%-git}"
-pkgver=r673.143a2780
+pkgver=r1653.7152f9bc
 pkgrel=2
-pkgdesc='An open-source collection of C++ code to augment the C++ standard library'
-arch=('x86_64' 'i686' 'arm' 'aarch64' 'ppc')
-url='https://github.com/abseil/abseil-cpp'
-license=('Apache')
-makedepends=('cmake' 'git')
+pkgdesc="Collection of C++ library code designed to augment the C++ standard library"
+arch=(x86_64 i686 armv7h aarch64)
+url="https://abseil.io"
+license=(Apache)
+depends=(glibc gcc-libs gtest)
+makedepends=(cmake git)
 conflicts=(abseil-cpp)
 provides=(abseil-cpp)
-source=('git+https://github.com/abseil/abseil-cpp.git')
-md5sums=('SKIP')
-
-pkgver() {
-    cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+source=("git+https://github.com/abseil/abseil-cpp.git"
+        "abseil-cpp-scoped-mock-log.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/abseil-cpp/-/raw/1846afb3dd43f9a0dbbbda2c762cc36339b827fc/scoped-mock-log.patch")
+sha256sums=('SKIP'
+            'a6cbc612a2b96fcbd52d081e03e8581107ceb4827edb19d96510a31c568e1396')
 
 prepare() {
-    cd "$_pkgname"
-    cmake -H. -Bbuild \
-        -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
-        -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
-        -DCMAKE_EXE_LINKER_FLAGS:STRING="${LDFLAGS}" \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_CXX_STANDARD=17 \
-        -DABSL_USE_GOOGLETEST_HEAD=OFF \
-        -DABSL_RUN_TESTS=OFF \
-        -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+  cd abseil-cpp
+  patch -p1 -i ../abseil-cpp-scoped-mock-log.patch
+}
+
+pkgver() {
+  cd abseil-cpp
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$_pkgname"
-    cmake --build build
+  cmake -B build -S abseil-cpp -Wno-dev \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_CXX_FLAGS="-DNDEBUG" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_STANDARD=17 \
+    -DBUILD_SHARED_LIBS=ON \
+    -DABSL_BUILD_TEST_HELPERS=ON \
+    -DABSL_USE_EXTERNAL_GOOGLETEST=ON \
+    -DABSL_FIND_GOOGLETEST=ON \
+    -DABSL_PROPAGATE_CXX_STD=ON \
+    -DABSL_BUILD_TESTING=ON \
+    -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+
+  cmake --build build
 }
 
-# check() {
-#     cd "$_pkgname"
-#     cmake --build build -- test
-# }
+check() {
+  ctest --test-dir build --output-on-failure
+}
 
 package() {
-    cd "$_pkgname"
-    cmake --build build -- DESTDIR="$pkgdir" install
+  cmake --build build -- DESTDIR="$pkgdir" install
 }
