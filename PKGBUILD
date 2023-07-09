@@ -6,7 +6,7 @@
 
 pkgname=icecat
 pkgver=102.13.0
-pkgrel=1
+pkgrel=2
 _commit=8c8a8ecc9322b0954e3d51f661866dbde1e6b1c3
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
@@ -56,12 +56,13 @@ prepare() {
   if [[ $_SPEED =~ [y|Y] ]]; then
     msg2 "Building without all locales..."
     sed -e 's/DEVEL=0/DEVEL=1/g' -i makeicecat
-    # Thanks to cysp74 to report this bug
-    sed -e 's;find l10n -wholename '\''\*/brand.dtd'\'' | xargs;find l10n -wholename '\''\*/brand.dtd'\'' | xargs -r;g' -i makeicecat
     # Also you can choose your locale using external variable _LOCALE. By default in upstream script this locale is es-ES
     [ -z "$_LOCALE" ] || sed -e "s/es-ES/$_LOCALE/g" -i makeicecat && echo "$_LOCALE" > custom-shipped-locales
     rm -rf data/files-to-append/l10n/*
   fi
+
+  # Thanks to cysp74 to report this bug
+  sed -e 's;find l10n -wholename '\''\*/brand.dtd'\'' | xargs;find l10n -wholename '\''\*/brand.dtd'\'' | xargs -r;g' -i makeicecat
 
   # Produce IceCat sources
   bash makeicecat
