@@ -8,13 +8,12 @@ pkgdesc='backport of configparser from Python 3'
 arch=('any')
 url='https://github.com/jaraco/configparser/'
 license=('MIT')
-depends=()
-optdepends=()
+depends=('python')
 makedepends=(
     'python-setuptools'
     'python-pip'
     'python-wheel'
-    )
+)
 source=("git+https://github.com/jaraco/${_pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
