@@ -1,7 +1,7 @@
 pkgbase = actual-server
 	pkgdesc = Actual Budget Server
-	pkgver = v23.7.1
-	pkgrel = 8
+	pkgver = v23.7.2
+	pkgrel = 1
 	url = https://github.com/actualbudget/actual-server
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = actual-server
 	depends = yarn
 	depends = nodejs-lts-hydrogen
 	options = !strip
-	source = git+https://github.com/actualbudget/actual-server#tag=v23.7.1
+	source = git+https://github.com/actualbudget/actual-server#tag=v23.7.2
 	source = actual-server.service
 	source = sysusers
 	source = tmpfiles
