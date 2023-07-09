@@ -1,0 +1,14 @@
+pkgbase = bhsh
+	pkgdesc = A Unix-like blackhole shell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zolagonano/bhsh
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = base-devel
+	depends = rust
+	source = git+https://github.com/zolagonano/bhsh.git#tag=0.1.0
+	sha256sums = SKIP
+
+pkgname = bhsh
