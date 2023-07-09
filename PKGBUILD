@@ -35,16 +35,9 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"
-        'babl-0.1-name-change-meson.patch'
         'linux.gpl')
 sha256sums=('6b4496edee447339f923276755247eadb64ec40d8aec241d06b62d1a6eb6508d'
-            'e012d022fe53eaf4cd2fc08f07cb0377fb14c8f791e42d13027983e41f7f4fc2'
             '1003bbf5fc292d0d63be44562f46506f7b2ca5729770da9d38d3bb2e8a2f36b3')
-
-_prepare() {
-  cd "${_pkgname}-${pkgver}"
-  patch -Np1 -i ../babl-0.1-name-change-meson.patch
-}
 
 build() {
   local meson_options=(
