@@ -1,0 +1,11 @@
+pkgbase = cp437
+	pkgdesc = Emulates an old-style "code page 437" / "IBM-PC" character set terminal on a modern UTF-8 terminal emulator.
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/keaston/cp437
+	arch = x86_64
+	license = custom
+	source = git+https://github.com/keaston/cp437.git
+	sha256sums = SKIP
+
+pkgname = cp437
