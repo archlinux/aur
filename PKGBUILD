@@ -3,13 +3,13 @@
 pkgbase=qadwaitaplatform-git
 _pkgname=QAdwaitaPlatform
 pkgname=(qadwaitaplatform-qt5-git qadwaitaplatform-qt6-git)
-pkgver=4.0
+pkgver=4.0.r0.g7718a77
 pkgrel=1
 pkgdesc='QAdwaitaPlatform is QGnomePlatform fork that implements modern LibAdwaita window decoration look to Qt applications.'
 arch=(x86_64)
 url='https://github.com/urFate/QAdwaitaPlatform'
 license=(LGPL2.1)
-makedepends=(cmake git gtk3 qt5-wayland qt6-wayland adwaita-qt5 adwaita-qt6)
+makedepends=(cmake git gtk3 qt5-wayland qt5-quickcontrols2 qt6-wayland adwaita-qt5 adwaita-qt6)
 source=(git+https://github.com/urFate/$_pkgname.git)
 sha256sums=('SKIP')
 
@@ -32,19 +32,21 @@ build() {
 
 package_qadwaitaplatform-qt5-git() {
   pkgdesc='QAdwaitaPlatform is QGnomePlatform fork that implements modern LibAdwaita window decoration look to Qt applications.'
-  depends=(gtk3 qt5-wayland adwaita-qt5)
+  depends=(gtk3 qt5-wayland qt5-quickcontrols2 adwaita-qt5 adwaita-color-schemes)
   replaces=(qadwaitaplatform qadwaitaplatform-git)
   provides=(qadwaitaplatform-qt5)
   conflicts=(qadwaitaplatform-qt5 qgnomeplatform-qt5)
 
   DESTDIR="$pkgdir" cmake --install build-qt5
+  rm -r "$pkgdir"/usr/share
 }
 
 package_qadwaitaplatform-qt6-git() {
   pkgdesc='QAdwaitaPlatform is QGnomePlatform fork that implements modern LibAdwaita window decoration look to Qt applications.'
-  depends=(gtk3 qt6-wayland adwaita-qt6)
+  depends=(gtk3 qt6-wayland adwaita-qt6 adwaita-color-schemes)
   provides=(qadwaitaplatform-qt6)
   conflicts=(qadwaitaplatform-qt6 qgnomeplatform-qt6)
 
   DESTDIR="$pkgdir" cmake --install build-qt6
+  rm -r "$pkgdir"/usr/share
 }
