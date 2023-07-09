@@ -3,7 +3,7 @@
 pkgbase=python-ndcube
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Package for multi-dimensional contiguious and non-contiguious coordinate aware arrays"
 arch=('any')
@@ -30,7 +30,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       'doc-use-local-fits.patch'
 #       "https://www.astropy.org/astropy-data/tutorials/FITS-images/HorseHead.fits"
 #       "https://github.com/sunpy/ndcube/raw/main/changelog/README.rst")
-md5sums=('726183d12d8b9837f4263a6c4bd3269a')
+md5sums=('37e19f9f23455eff4d8d09f8e14ea823')
 #        'b50513a0bb73290d65317d0d44ae9fb9'
 #        'SKIP'
 #        'SKIP')
@@ -42,6 +42,9 @@ prepare() {
     mkdir -p changelog
 #   cp ${srcdir}/*.fits examples
 #   patch -Np1 -i "${srcdir}/doc-use-local-fits.patch"
+    sed -e "/datfix/d" -e "/unitfix/d" -i setup.cfg
+#   sed -e '/ignore:FLIP/a \	ignore:pkg_resources is deprecated:DeprecationWarning' \
+#       -e '/ignore:FLIP/a \	ignore:jsonschema.exceptions.RefResolutionError is deprecated:DeprecationWarning' \
 #   sed -e '/ignore:distutils/a \	ignore:"order" was deprecated in version 0.9' \
 #       -e "/ignore:distutils/a \	ignore:The default kernel will change from 'Hann' to  'Gaussian'" \
 #       -e "/ignore:distutils/a \	ignore:The default boundary mode will change from 'ignore' to  'strict'" \
@@ -53,14 +56,13 @@ build() {
     python -m build --wheel --no-isolation
 
     msg "Building Docs"
-#   svn export https://github.com/sunpy/ndcube/trunk/changelog
     PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv --color=yes
+    pytest -Wdefault || warning "Tests failed" # -vv --color=yes
 }
 
 package_python-ndcube() {
