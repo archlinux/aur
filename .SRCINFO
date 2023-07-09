@@ -1,6 +1,6 @@
 pkgbase = scarab
 	pkgdesc = Hollow Knight mod manager
-	pkgver = 1.33.0.0
+	pkgver = 1.34.0.0
 	pkgrel = 1
 	url = https://github.com/fifty-six/Scarab
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = scarab
 	depends = dotnet-runtime-6.0
 	conflicts = scarab-bin
 	options = !strip
-	source = Scarab-1.33.0.0.tar.gz::https://github.com/fifty-six/Scarab/archive/v1.33.0.0.tar.gz
+	source = Scarab-1.34.0.0.tar.gz::https://github.com/fifty-six/Scarab/archive/v1.34.0.0.tar.gz
 	source = scarab.desktop
-	sha1sums = 8a50ed1d1a8b7bfd026e3463f0677e88a464e7fd
+	sha1sums = 50e134e7b12c4834b5c5b0fe447e8fd39ab905ee
 	sha1sums = 8ff187bcb309790529ef723de39ba1b9fc0a449d
 
 pkgname = scarab
