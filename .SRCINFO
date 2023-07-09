@@ -1,14 +1,14 @@
 pkgbase = hid-shanwan-dkms-git
 	pkgdesc = Kernel module for the Shanwan USB WirelessGamepad gamepad. (2563:0575)
 	pkgver = r5.698e2a5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hbiyik/hid-shanwan
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = dkms
-	provides = HID-SHANWAN=r5.698e2a5-1
+	provides = HID-SHANWAN=r5.698e2a5-2
 	conflicts = HID-SHANWAN
 	source = git+https://github.com/ahm-forks/hid-shanwan.git
 	source = dkms.conf

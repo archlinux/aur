@@ -3,7 +3,7 @@
 
 pkgname=hid-shanwan-dkms-git
 pkgver=r5.698e2a5
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for the Shanwan USB WirelessGamepad gamepad. (2563:0575)"
 url="https://github.com/hbiyik/hid-shanwan"
 arch=(i686 x86_64)
@@ -30,7 +30,7 @@ pkgver() {
 
 package() {
   cd "${pkgname%-dkms*}"
-  install -Dt "$pkgdir/usr/src/${pkgname%-dkms*}-$pkgver" -m644 Makefile hid-shanwan.c ../../dkms.conf
+  install -Dt "$pkgdir/usr/src/${pkgname%-dkms*}-$pkgver" -m644 Makefile hid-shanwan.c "$srcdir/dkms.conf"
 }
 
 # vim:set ts=2 sw=2 et ft=sh
