@@ -33,19 +33,6 @@ index 8275bba63611..83dd0402933c 100644
  	case als_idx:
  		return "ALS";
  	case HPD_IDX:
-diff --git a/drivers/hid/amd-sfh-hid/amd_sfh_hid.h b/drivers/hid/amd-sfh-hid/amd_sfh_hid.h
-index 3754fb423e3a..f10ec16bb8aa 100644
---- a/drivers/hid/amd-sfh-hid/amd_sfh_hid.h
-+++ b/drivers/hid/amd-sfh-hid/amd_sfh_hid.h
-@@ -11,7 +11,7 @@
- #ifndef AMDSFH_HID_H
- #define AMDSFH_HID_H
- 
--#define MAX_HID_DEVICES		5
-+#define MAX_HID_DEVICES		6
- #define AMD_SFH_HID_VENDOR	0x1022
- #define AMD_SFH_HID_PRODUCT	0x0001
- 
 diff --git a/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c b/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c
 index 47774b9ab3de..cfda797f0a62 100644
 --- a/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c

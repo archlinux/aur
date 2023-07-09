@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.3.9.arch1
+pkgver=6.4.2.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -85,7 +85,7 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            '6508516de94ed941ae755d89807610dc51fe1229dbfecdf8a82604a8d33242ce'
+            'a12c9ba3eba02341a65cf61e3d500f848b7b29b2016803b423867f894f36b7de'
             'bc8b5f303e3507c01d8543fb4352ed7dcdb9ed4eb2854788d39510f88d67f454'
             '81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
@@ -98,7 +98,7 @@ sha256sums=('SKIP'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
             '1740589bbf5eb2c292904e508270ed221e1382f78bcb7cf1c72f1dc12f767e69'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
-            '829e09c0ac6f21ca68114e406754c7645921df189d38a0ba34c93784303e1c23'
+            'b5167c85c3869c3e49ced86fe752968feef69a5427ee9d89db433908829fbb7c'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             '655a7650a21ce4f725caf6fa248295edefa25a248aeaecf3d65a058503ae2530'
             '7ce4b001a81b15b5b5275620fc0cee3d251d753698ae3db4593619a2121e1f2e'
