@@ -13,11 +13,6 @@ makedepends=('python-setuptools' 'boost')
 source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('8939bf0ccd7c4e776feccb1d5e7b72f31e11a0c8c5f9e37154bad6a9fa444bff')
 
-_prepare() {
-  cd "${_pkgname}-${pkgver}"
-  patch -uNp2 -r- -i ../compile_fix.patch
-}
-
 build() {
   cd "${_pkgname}-${pkgver}"
   python setup.py build
