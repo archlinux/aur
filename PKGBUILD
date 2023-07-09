@@ -2,6 +2,7 @@
 pkgname=metamorphose2-python3-git
 pkgver=r130.55ffc9f
 pkgrel=1
+epoch=1
 pkgdesc="Updated fork of Métamorphose 2, by timinaust"
 arch=('any')
 url="https://github.com/timinaust/metamorphose2/tree/Python3_WXPython4"
