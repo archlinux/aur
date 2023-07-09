@@ -14,7 +14,7 @@ source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('2758400fe658697dbb27eb4f2e0cb0acbe7116e912ca69f2d472fdeb129f8f243c51613e2d588f395ccd5cf070297df4546e1323e220ca419d716173540c0de2')
 
 prepare() {
-  sed -i 's/include/#include/' ${_base}-${pkgver}/MANIFEST.in
+  sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
 }
 
 build() {
