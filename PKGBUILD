@@ -1,6 +1,5 @@
 # Maintainer: Matt Cuneo <m@cuneo.au>
-_pkgname=lemmony
-pkgname="python-$_pkgname"
+pkgname=lemmony
 pkgver=0.0.5
 pkgrel=1
 pkgdesc="A better 'All' browsing experience for Lemmy instances"
