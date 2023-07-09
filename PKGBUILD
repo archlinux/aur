@@ -4,7 +4,7 @@
 
 pkgname=abseil-cpp-git
 pkgver=r1653.7152f9bc
-pkgrel=2
+pkgrel=3
 pkgdesc="Collection of C++ library code designed to augment the C++ standard library"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://abseil.io"
@@ -50,5 +50,5 @@ check() {
 }
 
 package() {
-  cmake --build build -- DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }

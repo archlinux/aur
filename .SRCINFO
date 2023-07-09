@@ -1,7 +1,7 @@
 pkgbase = abseil-cpp-git
 	pkgdesc = Collection of C++ library code designed to augment the C++ standard library
 	pkgver = r1653.7152f9bc
-	pkgrel = 2
+	pkgrel = 3
 	url = https://abseil.io
 	arch = x86_64
 	arch = i686
