@@ -5,6 +5,12 @@
 
 # Set these variables to ANYTHING that is not null to enable them
 
+# Set to force building with a particular commit ~ takes precedence over _bcachefs_branch
+_bcachefs_commit=
+
+# Set to force building with a particular commit
+_bcachefs_branch=
+
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
@@ -114,8 +120,17 @@ _kernel_patch_name="more-uarches-for-kernel-5.17+.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
+_kernel_base_string="${_reponame}::git+${_repo_url}"
+if [ -n "${_bcachefs_commit}" ]; then
+    kernel_source_string="${_kernel_base_string}#commit=${_bcachefs_commit}"
+elif [ -n "${_bcachefs_branch}" ]; then
+    kernel_source_string="${_kernel_base_string}#branch=${_bcachefs_branch}"
+else
+    kernel_source_string="${_kernel_base_string}#branch=master"
+fi
+
 source=(
-    "${_reponame}::git+${_repo_url}#branch=master"
+    ${kernel_source_string}
     #"${_reponame_upstream}::git+${_repo_url_upstream}"
     "git+${_repo_url_kernel_patch}"
     config # kernel config file
