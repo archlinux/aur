@@ -27,7 +27,7 @@ sha256sums+=('d8fd96d4e3c2a0a2e89155a552f5a909e9fbfb6275e01013d59fe74390f68355'
              '8af6ef9a28f0c13f3246fa76ca05993cf2b193eacb9d6b9dbae92e40cef92dae'
              'c4a3ef3473dbb8cadd1a2815473d16b139c007bbc6054c4a9ede89fd6a4766f2')
 prepare() {
-  cd "${srcdir}/${pkgbase}-${pkgbase}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
   patch -Np1 -i ../0001-linux-6.5.patch
   patch -Np1 -i ../0002-linux-6.5.patch
   patch -Np1 -i ../0003-linux-6.5.patch
