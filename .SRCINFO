@@ -1,14 +1,13 @@
 pkgbase = bsync-git
 	pkgdesc = Bidirectional Synchronization using Rsync
-	pkgver = 84.4598ba9
+	pkgver = 90.d457742
 	pkgrel = 1
 	url = https://github.com/dooblem/bsync
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = python>=3
-	source = git://github.com/dooblem/bsync
+	source = git+https://github.com/dooblem/bsync
 	md5sums = SKIP
 
 pkgname = bsync-git
-
