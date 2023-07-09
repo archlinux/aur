@@ -45,21 +45,13 @@ pkgver() {
 
 prepare() {
 	cd $_pkgbase
-	git submodule init
-	git -c protocol.file.allow=always submodule update \
-		third-party/fast_float \
-		third-party/fmt \
-		third-party/googletest \
-		third-party/libutp \
-		third-party/small \
-		third-party/utfcpp \
-		third-party/wide-integer
+	git submodule update --init --recursive
 }
 
 build() {
 	cd $_pkgbase
 
-    CFLAGS+=" -ffat-lto-objects"
+    export CFLAGS+=" -ffat-lto-objects"
 
 	cmake -G Ninja \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -74,8 +66,8 @@ build() {
         -DENABLE_UTILS=ON \
         -DENABLE_UTP=ON \
         -DINSTALL_LIB=OFF \
-        -DINSTALL_WEB=OFF \
-		-DREBUILD_WEB=OFF \
+        -DINSTALL_WEB=ON \
+		-DREBUILD_WEB=ON \
         -DUSE_SYSTEM_B64=ON \
         -DUSE_SYSTEM_DEFLATE=ON \
         -DUSE_SYSTEM_DHT=ON \
@@ -89,14 +81,22 @@ build() {
         -DWITH_INOTIFY=OFF \
         -DWITH_KQUEUE=OFF \
         -S . -B build
+
+		cmake --build build --config Release
 }
 
 package() {
 	cd $_pkgbase/build
-	env DESTDIR="$pkgdir" ninja install
+	for dir in daemon cli web utils; do
+		DESTDIR="$pkgdir" ninja $dir/install
+	done
+
+	install -d "$pkgdir"/usr/share/transmission
+	cp -a web/public_html/ "$pkgdir"/usr/share/transmission
 
 	install -Dm644 ../daemon/transmission-daemon.service \
 		"$pkgdir/usr/lib/systemd/system/transmission.service"
+
 	install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/transmission-cli/COPYING"
 
 	install -Dm644 "$srcdir/$_pkgname.sysusers" \
