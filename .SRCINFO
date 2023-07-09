@@ -23,6 +23,7 @@ pkgname = qadwaitaplatform-qt5-git
 	depends = qt5-quickcontrols2
 	depends = adwaita-qt5
 	depends = qadwaita-color-schemes
+	optdepends = qqc2-desktop-style: For styling QtQuick applications
 	provides = qadwaitaplatform-qt5
 	conflicts = qadwaitaplatform-qt5
 	conflicts = qgnomeplatform-qt5

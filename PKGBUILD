@@ -33,6 +33,7 @@ build() {
 package_qadwaitaplatform-qt5-git() {
   pkgdesc='QAdwaitaPlatform is QGnomePlatform fork that implements modern LibAdwaita window decoration look to Qt applications.'
   depends=(gtk3 qt5-wayland qt5-quickcontrols2 adwaita-qt5 qadwaita-color-schemes)
+  optdepends=('qqc2-desktop-style: For styling QtQuick applications') 
   replaces=(qadwaitaplatform qadwaitaplatform-git)
   provides=(qadwaitaplatform-qt5)
   conflicts=(qadwaitaplatform-qt5 qgnomeplatform-qt5)
