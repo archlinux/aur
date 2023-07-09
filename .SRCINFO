@@ -1,0 +1,19 @@
+pkgbase = gnu-netcat-svn
+	pkgdesc = A networking utility which reads and writes data across network connections
+	pkgver = r370
+	pkgrel = 1
+	url = https://netcat.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = texinfo
+	depends = glibc
+	provides = gnu-netcat=r370
+	provides = netcat
+	conflicts = gnu-netcat
+	replaces = netcat
+	source = svn+https://svn.code.sf.net/p/netcat/code/trunk
+	sha256sums = SKIP
+
+pkgname = gnu-netcat-svn
