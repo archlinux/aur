@@ -1,5 +1,5 @@
 pkgbase = transmission-cli-git
-	pkgdesc = Fast, easy, and free BitTorrent client (CLI tools and daemon - without web client) - git version
+	pkgdesc = Fast, easy, and free BitTorrent client (CLI tools and daemon and web client) - git version
 	pkgver = 4.0.3.r160.g8169d524e
 	pkgrel = 2
 	url = https://www.transmissionbt.com/
@@ -9,6 +9,7 @@ pkgbase = transmission-cli-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
+	makedepends = npm
 	depends = curl
 	depends = dht
 	depends = libb64

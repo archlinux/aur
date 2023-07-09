@@ -7,11 +7,11 @@ _pkgbase=transmission
 _pkgname=transmission-cli
 pkgname=transmission-cli-git
 pkgver=4.0.3.r160.g8169d524e
-pkgrel=1
+pkgrel=2
 arch=(x86_64 armv7h)
 url="https://www.transmissionbt.com/"
 license=(GPL)
-pkgdesc='Fast, easy, and free BitTorrent client (CLI tools and daemon - without web client) - git version'
+pkgdesc='Fast, easy, and free BitTorrent client (CLI tools and daemon and web client) - git version'
 depends=(
 	curl
 	dht
@@ -27,6 +27,7 @@ makedepends=(
 	cmake
 	git
 	ninja
+	npm
 )
 conflicts=("$_pkgname")
 provides=("$_pkgname")
@@ -39,35 +40,34 @@ sha256sums=('SKIP'
 			'1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
 pkgver() {
-	cd $_pkgbase
+	cd "$_pkgbase"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd $_pkgbase
+	cd "$_pkgbase"
 	git submodule update --init --recursive
 }
 
 build() {
-	cd $_pkgbase
+	cd "$_pkgbase"
 
-    export CFLAGS+=" -ffat-lto-objects"
+	export CFLAGS+=" -ffat-lto-objects"
 
 	cmake -G Ninja \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DCMAKE_INSTALL_PREFIX=/usr \
-		-DENABLE_CLI=ON \
+	-DENABLE_CLI=ON \
         -DENABLE_DAEMON=ON \
-		-DENABLE_GTK=OFF \
+	-DENABLE_GTK=OFF \
         -DENABLE_MAC=OFF \
-        -DENABLE_NLS=OFF \
-		-DENABLE_QT=OFF \
-        -DENABLE_TESTS=OFF \
+	-DENABLE_QT=OFF \
+        -DENABLE_TESTS=ON \
         -DENABLE_UTILS=ON \
         -DENABLE_UTP=ON \
         -DINSTALL_LIB=OFF \
         -DINSTALL_WEB=ON \
-		-DREBUILD_WEB=ON \
+	-DREBUILD_WEB=ON \
         -DUSE_SYSTEM_B64=ON \
         -DUSE_SYSTEM_DEFLATE=ON \
         -DUSE_SYSTEM_DHT=ON \
@@ -82,13 +82,22 @@ build() {
         -DWITH_KQUEUE=OFF \
         -S . -B build
 
-		cmake --build build --config Release
+	cmake --build build --config Release
+}
+
+check() {
+	cd "$_pkgbase/build"
+	ctest --output-on-failure -j "$(nproc)"
+}
+
+_install_component() {
+	(cd "${srcdir}/${_pkgbase}/build"; DESTDIR="$pkgdir" ninja "$1"/install)
 }
 
 package() {
-	cd $_pkgbase/build
+	cd "$_pkgbase/build"
 	for dir in daemon cli web utils; do
-		DESTDIR="$pkgdir" ninja $dir/install
+		_install_component "$dir"
 	done
 
 	install -d "$pkgdir"/usr/share/transmission
@@ -97,11 +106,10 @@ package() {
 	install -Dm644 ../daemon/transmission-daemon.service \
 		"$pkgdir/usr/lib/systemd/system/transmission.service"
 
-	install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/transmission-cli/COPYING"
+	install -Dm644 ../COPYING -t "$pkgdir/usr/share/licenses/transmission-cli"
 
 	install -Dm644 "$srcdir/$_pkgname.sysusers" \
 		"$pkgdir/usr/lib/sysusers.d/transmission.conf"
 	install -Dm644 "$srcdir/$_pkgname.tmpfiles" \
 		"$pkgdir/usr/lib/tmpfiles.d/transmission.conf"
 }
-
