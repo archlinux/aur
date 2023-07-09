@@ -1,16 +1,16 @@
 # Maintainer: Skycoder42 <Skycoder42@users.noreply.github.com>
 pkgname='podman_backup'
 pkgdesc='A small dart tool to push regular backups of podman volumes to a remote.'
-pkgver='1.0.3'
+pkgver='1.0.4'
 pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://github.com/Skycoder42/podman_backup'
 license=('BSD')
 depends=('podman' 'xz' 'systemd')
 makedepends=('dart>=3.0.0' 'dart<4.0.0')
-_pkgdir='podman_backup-1.0.3'
-source=("$_pkgdir.tar.gz::https://github.com/Skycoder42/podman_backup/archive/refs/tags/v1.0.3.tar.gz")
-b2sums=('a9f0bc9a8f9b335793405493d565a6b54edf7caa142233da4bce799b85a4f8770eda561a1469e2eb6350333351f32325da5d0b8cb64a678d11e201690ec07efa')
+_pkgdir='podman_backup-1.0.4'
+source=("$_pkgdir.tar.gz::https://github.com/Skycoder42/podman_backup/archive/refs/tags/v1.0.4.tar.gz")
+b2sums=('0c0579f0075648fd9289fea197859d16a77e17f4ff5d1f3222a8f3cd370c4c6dd4f8f939613adb8bc7c9c9404b9b6daa53ee14a81e3d47e6bea5d58a4bdc5d79')
 changelog='CHANGELOG.md'
 options=('!strip')
 
