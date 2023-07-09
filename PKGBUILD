@@ -1,16 +1,16 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=ambiant-mate-gtk-themes
-pkgver=22.04.0
+pkgver=22.04.2
 pkgrel=1
 pkgdesc="Ambiant-MATE and Radiant-MATE family of themes"
 arch=('any')
 url="https://github.com/lah7/Ambiant-MATE"
 license=('GPL3')
-groups=()
+groups=('ambiant-mate-themes')
 depends=('gtk-engine-murrine')
 optdepends=('ambiant-mate-icon-themes')
 source=("https://launchpad.net/~lah7/+archive/ubuntu/ambiant-mate/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('4df13dc7492f8ea5ca7b5084a7e175da8219833c5fbe1bfcdf3c9f3fde9c2080')
+sha256sums=('0c377407820e7bf8bc14a3bee013ac5f3dd1f0fd16c784cd989d09d36c44049a')
 
 package() {
     tar xf data.tar.zst

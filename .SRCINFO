@@ -1,13 +1,14 @@
 pkgbase = ambiant-mate-gtk-themes
 	pkgdesc = Ambiant-MATE and Radiant-MATE family of themes
-	pkgver = 22.04.0
+	pkgver = 22.04.2
 	pkgrel = 1
 	url = https://github.com/lah7/Ambiant-MATE
 	arch = any
+	groups = ambiant-mate-themes
 	license = GPL3
 	depends = gtk-engine-murrine
 	optdepends = ambiant-mate-icon-themes
-	source = https://launchpad.net/~lah7/+archive/ubuntu/ambiant-mate/+files/ambiant-mate-gtk-themes_22.04.0_all.deb
-	sha256sums = 4df13dc7492f8ea5ca7b5084a7e175da8219833c5fbe1bfcdf3c9f3fde9c2080
+	source = https://launchpad.net/~lah7/+archive/ubuntu/ambiant-mate/+files/ambiant-mate-gtk-themes_22.04.2_all.deb
+	sha256sums = 0c377407820e7bf8bc14a3bee013ac5f3dd1f0fd16c784cd989d09d36c44049a
 
 pkgname = ambiant-mate-gtk-themes
