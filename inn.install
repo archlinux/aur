@@ -1,0 +1,19 @@
+post_install() {
+	/usr/bin/makedbz -i -o 2>&- >&-
+	mkdir /var/log/news 2>&- >&-
+
+	chown 9:13 -R var/spool/news 2>&- >&-
+	chown 9:13 var/log/news 2>&- >&-
+	chown 9:13 -R var/db/inn 2>&- >&-
+
+	echo ""
+	echo "->"
+	echo "-> If this is a first-time installation, a minimal active file and"
+	echo "-> history database have been installed.  Do not forget to update"
+	echo "-> your cron entries and configure INN.  See INSTALL for more"
+	echo "-> information."
+	echo "->"
+	echo "-> The default user:group for inn is news:news"
+	echo "->"
+	echo ""
+}

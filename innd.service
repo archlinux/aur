@@ -1,0 +1,16 @@
+[Unit]
+Description=Inetnet News Daemon
+After=syslog.target network.target
+ConditionPathExists=/etc/inn/inn.conf
+
+[Service]
+User=news
+PermissionsStartOnly=true
+PIDFile=/run/inn/innd.pid
+Type=forking
+ExecStart=/usr/bin/rc.news
+ExecStop=/bin/su -m news -c '/usr/bin/rc.news stop'
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target
