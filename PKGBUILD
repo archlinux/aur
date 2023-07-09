@@ -3,10 +3,10 @@
 
 pkgname=python-taskw
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for your taskwarrior database"
 url="http://github.com/ralphbean/taskw"
-depends=("python" "python-pytz" "python-dateutil" "python-kitchen")
+depends=("python" "python-pytz" "python-dateutil" "python-kitchen" "task")
 makedepends=('python' 'python-setuptools')
 license=("GPL")
 arch=('any')
