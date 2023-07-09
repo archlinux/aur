@@ -1,6 +1,6 @@
 # Maintainer: Sergey Khorev <sergey.khorev@gmail.com>
 pkgname=fricas
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="An advanced computer algebra system"
 arch=('i686' 'x86_64')
@@ -8,9 +8,9 @@ license=('custom')
 depends=('gawk' 'libxpm')
 makedepends=('sbcl' 'libx11' 'texlive-core')
 options=('!strip' '!emptydirs')
-url="http://fricas.sourceforge.net"
-source=("http://downloads.sourceforge.net/project/fricas/fricas/${pkgver}/fricas-${pkgver}-full.tar.bz2" "http://fricas.sourceforge.net/copyright.txt")
-md5sums=('504b431c39e498527e6f9c739c973488' '147828bf0b62e1f7d0c600a1c377669c')
+url="https://fricas.github.io"
+source=("https://github.com/fricas/fricas/releases/download/$pkgver/fricas-$pkgver.full.tar.bz2" "https://github.com/fricas/fricas/blob/master/src/etc/copyright")
+md5sums=('02e4511358e15caabb5567f078071f32' '2f32d3cd91de9e83b6cd3dfa262cdcca')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -21,5 +21,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     make DESTDIR=$pkgdir install
-    install -D -m644 "$srcdir/copyright.txt" $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -D -m644 "$srcdir/copyright" $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }

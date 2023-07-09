@@ -1,8 +1,8 @@
 pkgbase = fricas
 	pkgdesc = An advanced computer algebra system
-	pkgver = 1.3.8
+	pkgver = 1.3.9
 	pkgrel = 1
-	url = http://fricas.sourceforge.net
+	url = https://fricas.github.io
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -13,9 +13,9 @@ pkgbase = fricas
 	depends = libxpm
 	options = !strip
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/project/fricas/fricas/1.3.8/fricas-1.3.8-full.tar.bz2
-	source = http://fricas.sourceforge.net/copyright.txt
-	md5sums = 504b431c39e498527e6f9c739c973488
-	md5sums = 147828bf0b62e1f7d0c600a1c377669c
+	source = https://github.com/fricas/fricas/releases/download/1.3.9/fricas-1.3.9.full.tar.bz2
+	source = https://github.com/fricas/fricas/blob/master/src/etc/copyright
+	md5sums = 02e4511358e15caabb5567f078071f32
+	md5sums = 2f32d3cd91de9e83b6cd3dfa262cdcca
 
 pkgname = fricas
