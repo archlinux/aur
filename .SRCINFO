@@ -1,6 +1,6 @@
 pkgbase = openfoam-com
 	pkgdesc = The open source CFD toolbox (www.openfoam.com)
-	pkgver = v2212
+	pkgver = v2306
 	pkgrel = 1
 	url = http://www.openfoam.com
 	install = openfoam-com.install
@@ -16,9 +16,7 @@ pkgbase = openfoam-com
 	depends = utf8cpp
 	depends = scotch
 	depends = parmetis
-	source = https://sourceforge.net/projects/openfoam/files/v2212/OpenFOAM-v2212.tgz
-	source = gcc-13-compatibility.patch::https://develop.openfoam.com/Development/openfoam/-/commit/70451e680cd0987c8220a0276bba4ce6bba58e9e.patch
-	md5sums = 889c9a2169c0b6911050de149a5b459b
-	md5sums = 686c135b63e923de449763cf5f1ea6e9
+	source = https://dl.openfoam.com/source/v2306/OpenFOAM-v2306.tgz
+	md5sums = 236c87f9ba7640a0b3fd78171f50158a
 
 pkgname = openfoam-com
