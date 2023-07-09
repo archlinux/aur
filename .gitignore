@@ -1,0 +1,6 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!flexget.service
+!flexget@.service
