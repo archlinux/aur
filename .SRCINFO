@@ -1,7 +1,7 @@
 pkgbase = transmission-cli-git
 	pkgdesc = Fast, easy, and free BitTorrent client (CLI tools and daemon - without web client) - git version
 	pkgver = 4.0.3.r160.g8169d524e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.transmissionbt.com/
 	arch = x86_64
 	arch = armv7h
