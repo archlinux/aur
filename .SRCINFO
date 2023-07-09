@@ -5,13 +5,10 @@ pkgbase = terasology
 	epoch = 1
 	url = https://terasology.org
 	arch = x86_64
-	arch = i686
 	license = Apache
 	makedepends = unzip
 	depends = zlib
-	depends = bash
 	depends = java-runtime-openjdk=11
-	depends = lib32-glibc
 	options = !strip
 	source = terasology
 	source = terasology.desktop

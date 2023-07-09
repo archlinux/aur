@@ -11,11 +11,11 @@ pkgver=${_version}${_version_postfix}
 pkgrel=1
 epoch=1
 pkgdesc="Yet another high resolution game with blocks like Minecraft!"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 license=('Apache')
 url="https://terasology.org"
 options=('!strip')
-depends=(zlib bash java-runtime-openjdk=11 lib32-glibc)
+depends=(zlib java-runtime-openjdk=11)
 makedepends=('unzip')
 source=(
     "$pkgname"
@@ -52,7 +52,7 @@ package() {
     rm Terasology.bat
     rm -r natives/macosx
     rm -r natives/windows
-    strip -s natives/linux/libbullet-linux-amd64.so natives/linux/libbullet-linux-i686.so
+    strip -s natives/linux/libbullet-linux-amd64.so
     
     chmod a+w "$srcdir" # Terrible permissions hack to get the game to start
     cp -ra "$srcdir" "${pkgdir}/usr/share/${pkgname}"
