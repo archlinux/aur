@@ -5,11 +5,12 @@
 
 _pkgname=breeze
 pkgname=xcursor-breeze-git
-pkgver=5.26.90.r123.gdc122e69
+pkgver=5.26.90.r124.g9ba24274
 pkgrel=1
 pkgdesc="KDE Plasma 5 'Breeze' cursor theme. This package is for usage in non-KDE Plasma desktops."
 arch=('any')
 depends=('libxcursor')
+makedepends=('git')
 url="https://github.com/KDE/breeze"
 license=('GPL')
 conflicts=('breeze' 'xcursor-breeze')
