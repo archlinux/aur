@@ -104,18 +104,26 @@ pkgname = gtk4-git
 	depends = wayland
 	depends = gtk-update-icon-cache
 	optdepends = evince: Default print preview command
+	provides = gtk4
 	provides = libgtk-4.so
+	conflicts = gtk4
 
 pkgname = gtk4-demos-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (demo applications)
 	depends = gtk4
+	provides = gtk4-demos
+	conflicts = gtk4-demos
 
 pkgname = gtk4-docs-git
 	pkgdesc = GObject-based multi-platform GUI toolkit (documentation)
 	depends = 
+	provides = gtk4-docs
+	conflicts = gtk4-docs
 
 pkgname = gtk-update-icon-cache-git
 	pkgdesc = GTK icon cache updater
 	depends = gdk-pixbuf2
 	depends = librsvg
 	depends = hicolor-icon-theme
+	provides = gtk-update-icon-cache
+	conflicts = gtk-update-icon-cache

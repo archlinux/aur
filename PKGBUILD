@@ -133,7 +133,11 @@ _pick() {
 package_gtk4-git() {
   depends+=(gtk-update-icon-cache)
   optdepends=('evince: Default print preview command')
-  provides=(libgtk-4.so)
+  provides+=(
+    gtk4
+    libgtk-4.so
+  )
+  conflicts+=(gtk4)
 
   meson install -C build --destdir "$pkgdir"
 
@@ -168,18 +172,26 @@ END
 package_gtk4-demos-git() {
   pkgdesc+=" (demo applications)"
   depends=(gtk4)
+  provides+=(gtk4-demos)
+  conflicts+=(gtk4-demos)
+
   mv demo/* "$pkgdir"
 }
 
 package_gtk4-docs-git() {
   pkgdesc+=" (documentation)"
   depends=()
+  provides+=(gtk4-docs)
+  conflicts+=(gtk4-docs)
+
   mv docs/* "$pkgdir"
 }
 
 package_gtk-update-icon-cache-git() {
   pkgdesc="GTK icon cache updater"
   depends=(gdk-pixbuf2 librsvg hicolor-icon-theme)
+  provides+=(gtk-update-icon-cache)
+  conflicts+=(gtk-update-icon-cache)
 
   mv guic/* "$pkgdir"
   ln -s gtk4-update-icon-cache "$pkgdir/usr/bin/gtk-update-icon-cache"
