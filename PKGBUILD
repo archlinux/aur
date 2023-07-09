@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.1.beta4.r0.g3230f00aeb
+pkgver=10.1.beta6.r0.g1ca4a47dbd
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -79,7 +79,6 @@ prepare(){
 # update to tdlib 0.9 (Fedora)
   patch -p1 -i ../sagemath-tdlib-0.9.patch
 
-  cd build/pkgs/sagelib
   ./bootstrap
 }
 
