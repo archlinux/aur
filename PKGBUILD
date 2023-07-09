@@ -9,8 +9,7 @@ url=https://github.com/AdaCore/AdaSAT
 arch=(i686 x86_64)
 license=(Apache)
 
-depends=(gcc-ada
-         python-e3-core)     # This is here to try to force AUR helpers to install this dependency, which is required by 'langkit'.
+depends=(gcc-ada)
 makedepends=(gprbuild)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/$pkgname-$pkgver-20230324-16568-src.tar.gz)

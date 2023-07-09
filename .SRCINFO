@@ -8,7 +8,6 @@ pkgbase = adasat
 	license = Apache
 	makedepends = gprbuild
 	depends = gcc-ada
-	depends = python-e3-core
 	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/adasat-24.0w-20230324-16568-src.tar.gz
 	sha256sums = 8e5d14931c456144575501e6d45dd1bbe5adebcea05346ac1940087bf8c5ce9d
 
