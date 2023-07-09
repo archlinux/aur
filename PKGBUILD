@@ -3,17 +3,17 @@
 # Contributor: Guoyi Zhang <GuoyiZhang at malacology dot net>
 
 pkgname=gnome-shell-extension-tray-icons-reloaded
-pkgver=26
+pkgver=27
 pkgrel=1
 pkgdesc="GNOME Shell extension which bring back Tray Icons to top panel, with additional features."
 arch=('any')
 url="https://github.com/MartinPL/Tray-Icons-Reloaded"
 license=('GPL3')
 depends=('gnome-shell')
-_commit="5891310a217cd80416c057d87d4a25e4787afb92"
+_commit="4453cc45591d9ce9705afdbd73f71b8f75ad218b"
 _name="Tray-Icons-Reloaded"
 source=("https://github.com/MartinPL/$_name/archive/$_commit.zip")
-sha256sums=('3e30453bfd223d8d666569ddeae3ca9527c2380bf12f71defeb4d7362cba6697')
+sha256sums=('0d0b1c0b03ca765992d5f1731a341f7d96739326b3687719403149ef30aff5fc')
 
 build() {
 	cd "${srcdir}/${_name}-${_commit}"
