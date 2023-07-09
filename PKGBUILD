@@ -3,7 +3,7 @@
 
 pkgname=sulis-bin
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Turn based tactical RPG with several campaigns, written in Rust"
 arch=('x86_64')
 url="https://www.sulisgame.com"
