@@ -10,7 +10,7 @@ pkgbase = openlp-git
 	makedepends = git
 	makedepends = python-pip
 	depends = python>=3.10
-	depends = python<3.11
+	depends = python<3.12
 	depends = python-pyqt5
 	depends = phonon-qt5
 	depends = python-pyqt5-webengine
@@ -37,6 +37,7 @@ pkgbase = openlp-git
 	depends = python-websockets
 	depends = python-qtawesome
 	depends = python-vlc
+	depends = python-pillow<10.0
 	optdepends = libreoffice-fresh: display impress presentations
 	optdepends = python-pymupdf: display pdfs
 	optdepends = python-mysql-connector: Use a mysql/mariadb database

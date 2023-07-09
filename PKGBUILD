@@ -13,7 +13,7 @@ license=('GPL3')
 provides=('openlp')
 conflicts=('openlp')
 makedepends=('qt5-tools' 'git' 'python-pip')
-depends=('python>=3.10' 'python<3.11' 'python-pyqt5' 'phonon-qt5'
+depends=('python>=3.10' 'python<3.12' 'python-pyqt5' 'phonon-qt5'
          'python-pyqt5-webengine' 'python-flask' 'python-flask-cors'
          'python-pymediainfo' 'python-qrcode'
          'python-chardet' 'python-lxml' 'python-six'
@@ -21,6 +21,7 @@ depends=('python>=3.10' 'python<3.11' 'python-pyqt5' 'phonon-qt5'
          'python-alembic' 'mediainfo' 'qt5-multimedia' 'python-zeroconf'
          'qt5-webkit' 'qt5-svg' 'python-webob' 'python-requests' 'vlc'
          'python-waitress' 'python-websockets' 'python-qtawesome' 'python-vlc'
+         'python-pillow<10.0'
         )
 optdepends=('libreoffice-fresh: display impress presentations'
             'python-pymupdf: display pdfs'
