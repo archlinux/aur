@@ -17,8 +17,8 @@ source=("git+$url")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	cd "$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
@@ -35,6 +35,6 @@ package() {
 	install -Dm755 -t "$pkgdir/usr/bin" "makeps3iso/makeps3iso"
 	install -Dm755 -t "$pkgdir/usr/bin" "patchps3iso/patchps3iso"
 	install -Dm755 -t "$pkgdir/usr/bin" "splitps3iso/splitps3iso"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
