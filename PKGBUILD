@@ -1,7 +1,7 @@
 # Maintainer: Chris <chris@pikl.uk>
 pkgname=actual-server
 pkgver=v23.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Actual Budget Server"
 arch=('any')
 url="https://github.com/actualbudget/actual-server"
@@ -38,12 +38,11 @@ build() {
 
 package() {
 
-    install -d -m 0755 "$pkgdir/usr/share/webapps"
-    install -d -m 0750 "$pkgdir/usr/share/webapps/actual-server"
-    install -d -m 0750 "$pkgdir/var/lib/actual"
-
+    install -d -m 0755 "$pkgdir/usr/share/webapps/actual-server"
     cd "$srcdir/$pkgname"
     cp -r * "$pkgdir/usr/share/webapps/actual-server"
+
+    install -d -m 0750 "$pkgdir/var/lib/actual"
 
     cd "$srcdir"
     install -D -m 0644 sysusers "$pkgdir/usr/lib/sysusers.d/actual-server.conf"
