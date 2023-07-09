@@ -1,6 +1,6 @@
 pkgbase = r-dbplyr
 	pkgdesc = A ‘dplyr’ Back End for Databases
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dbplyr
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = r-dbplyr
 	checkdepends = r-rpostgresql
 	checkdepends = r-rsqlite>=2.2.15
 	checkdepends = r-testthat>=3.0.2
+	depends = r>=3.1
 	depends = r-blob>=1.2.0
 	depends = r-cli>=3.4.1
 	depends = r-dbi>=1.0.0
@@ -33,7 +34,6 @@ pkgbase = r-dbplyr
 	depends = r-tidyselect>=1.2.0
 	depends = r-vctrs>=0.5.0
 	depends = r-withr
-	depends = r>=3.1
 	optdepends = r-bit64
 	optdepends = r-covr
 	optdepends = r-knitr
@@ -45,7 +45,7 @@ pkgbase = r-dbplyr
 	optdepends = r-rpostgres>=1.1.3
 	optdepends = r-rpostgresql
 	optdepends = r-rsqlite>=2.2.15
-	source = https://cran.r-project.org/src/contrib/dbplyr_2.3.2.tar.gz
-	b2sums = 7532b89cefde1adeae65e2f03e2087243eb0250dacba05866cecc7fbe550a52cb29e01d3c08175bb411f5b0a883365f85260e618759965943f7fab1232f14238
+	source = https://cran.r-project.org/src/contrib/dbplyr_2.3.3.tar.gz
+	b2sums = 5eae3346d05008440a4daa7f135c31f1a4e74e4eb8d74bdbef8425d667f94dbd38bc36aeb447d9034f13acb30301d6f3b74e900a9c4636913c870ab25947e184
 
 pkgname = r-dbplyr
