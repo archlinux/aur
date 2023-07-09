@@ -1,7 +1,7 @@
 # Maintainer: Ernesto Castellotti <erny.castell@gmail.com>
 
 pkgname=blivet-gui-git
-pkgver=2.4.1.r5.gf2c954c
+pkgver=2.4.1.r20.gd3c6d02
 pkgrel=1
 pkgdesc='GUI tool for storage configuration'
 arch=('any')
@@ -30,3 +30,4 @@ package() {
 	install -D -m0644 blivet-gui.desktop "${pkgdir}/usr/share/applications/blivet-gui.desktop"
 	install -D -m0644 org.fedoraproject.pkexec.blivet-gui.policy "${pkgdir}/usr/share/polkit-1/actions/org.fedoraproject.pkexec.blivet-gui.policy"
 }
+sha256sums=('SKIP')
