@@ -1,7 +1,7 @@
 pkgbase = spiceamp-git
 	pkgdesc = Non-realtime high realistic software guitar processor. Works with *.wav files as input and output. It uses ngspice for electric circuit simulation and FFT convolver with Impulse Response *.wav file for cabinet simulation.
 	pkgver = 1.0.r0.g05cd6b7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/olegkapitonov/spiceAmp
 	arch = x86_64
 	license = GPL3
@@ -20,4 +20,3 @@ pkgbase = spiceamp-git
 	md5sums = SKIP
 
 pkgname = spiceamp-git
-
