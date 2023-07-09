@@ -6,9 +6,10 @@ if [[ ! -e '{{launcher}}' ]]; then
 fi
 
 if [[ ! -L '{{target}}' ]]; then
-  echo >&2 'Not modifying {{target}} because it is not a symlink.'
-  exit 0
+  echo >&2 'Moving {{target}} out of the way so we can create a symlink.'
+  mkdir -pv "$(dirname '{{backup}}')"
+  mv -fv '{{target}}' '{{backup}}'
 fi
 
-# Modify symlink so it points to the launcher script
+# Create or modify symlink so it points to the launcher script
 exec ln -fnsv '{{launcher}}' '{{target}}'
