@@ -7,11 +7,11 @@ _pkgbase=transmission
 _pkgname=transmission-cli
 pkgname=transmission-cli-git
 pkgver=4.0.3.r160.g8169d524e
-pkgrel=2
+pkgrel=3
 arch=(x86_64 armv7h)
 url="https://www.transmissionbt.com/"
 license=(GPL)
-pkgdesc='Fast, easy, and free BitTorrent client (CLI tools and daemon and web client) - git version'
+pkgdesc='Fast, easy, and free BitTorrent client (CLI tools and daemon and web client)'
 depends=(
 	curl
 	dht
@@ -46,7 +46,15 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgbase"
-	git submodule update --init --recursive
+	git submodule init
+	git -c protocol.file.allow=always submodule update \
+		third-party/fast_float \
+		third-party/fmt \
+		third-party/googletest \
+		third-party/libutp \
+		third-party/small \
+		third-party/utfcpp \
+		third-party/wide-integer
 }
 
 build() {
