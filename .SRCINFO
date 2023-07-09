@@ -6,6 +6,7 @@ pkgbase = python-cashier
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = python
 	source = https://files.pythonhosted.org/packages/source/c/cashier/cashier-1.3.zip
 	sha512sums = 3e1033455df18651a034e0fbe98255fc2af0a44684e026d5f97e0141bc051f0a2e41368677d4675e19f46ae14130cea94b1f963227592cdbd3b6a044b74a6136
 

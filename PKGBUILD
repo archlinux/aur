@@ -9,6 +9,7 @@ pkgdesc='Persistent caching for python functions.'
 arch=('any')
 url='https://pypi.org/project/cashier/'
 license=('MIT')
+depends=('python')
 makedepends=(
   'python-setuptools'
 )
