@@ -1,6 +1,6 @@
 pkgbase = moosync-bin
 	pkgdesc = A simple music player
-	pkgver = 8.1.1
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://github.com/Moosync/Moosync
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = moosync-bin
 	depends = alsa-lib
 	provides = moosync
 	conflicts = moosync
-	source = moosync-8.1.1-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v8.1.1/Moosync-8.1.1-linux-x64.pacman
+	source = moosync-9.0.0-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v9.0.0/Moosync-9.0.0-linux-x64.pacman
 	source = moosync
 	source = moosync.desktop
 	sha256sums = 23079b08aac03f6f774346a8ce648167f523b22cabddc265cdb9b54b462903eb
