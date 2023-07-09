@@ -1,7 +1,7 @@
 pkgbase = actual-server
 	pkgdesc = Actual Budget Server
 	pkgver = v23.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/actualbudget/actual-server
 	arch = any
 	license = MIT
