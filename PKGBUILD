@@ -27,7 +27,7 @@ _plugin_ver='1.2.0'
 
 pkgver="$_pkgver_upstream.r$_pkgver_date$_pkgver_uniqueness"
 
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A free lightweight 8-bit voxel art editor and GPU based interactive path tracing renderer'
 arch=('x86_64')
@@ -44,7 +44,7 @@ sha512sums=('a9364a9b002ed0b77088bb01ea36b8c8038602ed8f57bdbf11fa60f7279185c6531
             '6509da8d8b04488b369644fd104cdc820037bc2bd2567d868541562d3096041d29d265cdeb2386ccb66f8f6670b94236d565046bfad92aff9cf7b1988b4af53f'
             'cc3ca199de02c1b83697faa3ef96ea2029c8bc99503a05e1e958f200addbf52f933fae8fea105b1107d61ef584ec79752e353596424e638d56fb1f64969fb1a3'
             '0872398e0d52df23a4910c3c5257f073f96bbf06db197ebdaf59598ca39d1351c6412598ac46b1eb24ba2a47db8ce7d804d227dc847260c8dbd6213396e816c1'
-            '50650951b9a7202f50955aab591c5c29d26730fe6220ba32408e054502f20eb71c71473b1b5490d9e0600dca8acc51c00fb0efec1b5c790e471fe693d603b591')
+            'ee83336b2813ace8db5edec3ff185b638ee7a07fa7243970a0364ccf190699876a05a2ac15dfda08a0ef4e2169591a80e4c426c9fa20e06c6ca3dc01f59b133c')
 
 build() {
   wrestool -x --output=magicavoxel.ico -t14 "MagicaVoxel-$_pkgver_upstream-win64/MagicaVoxel.exe"
