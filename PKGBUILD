@@ -74,7 +74,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.4.2.arch1.r1189879.25de2b00dcca
+pkgver=6.4.2.arch1.r1189887.924149fbe383
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=6.4.2.arch1
@@ -145,8 +145,9 @@ prepare() {
     msg2 "Setting version..."
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
+    pkgver > version
     make defconfig
-    make -s kernelrelease > version
+    make -s kernelrelease
     make mrproper
 
     msg2 "Fetch and merge stable tag from ${_repo_url_arch} ..."
