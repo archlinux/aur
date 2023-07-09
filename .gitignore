@@ -1,8 +1,4 @@
-gtk/
-pkg/
-src/
-logs/
-*.zst
-*.tar
-*.log
-*.xz
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

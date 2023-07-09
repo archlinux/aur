@@ -8,5 +8,5 @@ Target = usr/lib/gtk-4.0/4.0.0/*/
 [Action]
 Description = Updating GTK4 module cache...
 When = PostTransaction
-Exec = /usr/share/libalpm/scripts/gio-querymodules
+Exec = /usr/share/libalpm/scripts/gtk4-querymodules
 NeedsTargets
