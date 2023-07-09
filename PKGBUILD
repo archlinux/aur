@@ -71,7 +71,7 @@ prepare(){
   cd ${srcdir}/linux-$major
 
   # Apply Zen patch
-  msg2 "Apply Zen patch v$versiontag"
+  msg "Apply Zen patch v$versiontag"
   patch -Np1 < "$srcdir/v$versiontag.patch"
 
   local src
@@ -79,7 +79,7 @@ prepare(){
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
+    msg "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
@@ -87,8 +87,23 @@ prepare(){
 
   # Copy the config file first
   # Copy "${srcdir}"/config to "${srcdir}"/linux-${major}/.config
-  msg2 "Copy "${srcdir}"/config to "${srcdir}"/linux-$major/.config"
+  msg "Copy "${srcdir}"/config to "${srcdir}"/linux-$major/.config"
   cp "${srcdir}"/config .config
+
+  sleep 2s
+
+  plain ""
+
+  msg "Enable PDS CPU Scheduler"
+
+  msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler"
+  scripts/config --enable CONFIG_SCHED_ALT
+
+  sleep 2s
+
+  msg2 "Enable PDS"
+  scripts/config --disable CONFIG_SCHED_BMQ
+  scripts/config --enable CONFIG_SCHED_PDS
 
   sleep 2s
 
@@ -97,7 +112,7 @@ prepare(){
   #  # Remove gcc-plugin if gcc version = 13.0.0
   #  if [[ "$_gccversion" = "13.0.0" ]]; then
   #
-  #    msg2 "Remove GCC_PLUGINS"
+  #    msg "Remove GCC_PLUGINS"
   #    scripts/config --disable CONFIG_HAVE_GCC_PLUGINS
   #    scripts/config --disable CONFIG_GCC_PLUGINS
   #
@@ -108,7 +123,7 @@ prepare(){
   # Set LTO with CLANG/LLVM
   if [[ "$_compiler" = "2" ]]; then
 
-    msg2 "Enable THIN LTO"
+    msg "Enable THIN LTO"
     scripts/config --enable CONFIG_LTO
     scripts/config --enable CONFIG_LTO_CLANG
     scripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG
@@ -119,7 +134,7 @@ prepare(){
     scripts/config --enable CONFIG_LTO_CLANG_THIN
     scripts/config --enable CONFIG_HAVE_GCC_PLUGINS
 
-    #msg2 "Enable FULL LTO"
+    #msg "Enable FULL LTO"
     #scripts/config --enable CONFIG_LTO
     #scripts/config --enable CONFIG_LTO_CLANG
     #scripts/config --enable CONFIG_ARCH_SUPPORTS_LTO_CLANG
@@ -130,7 +145,7 @@ prepare(){
     #scripts/config --disable CONFIG_LTO_CLANG_THIN
     #scripts/config --enable CONFIG_HAVE_GCC_PLUGINS
 
-    #msg2 "Disable LTO"
+    #msg "Disable LTO"
     #scripts/config --enable CONFIG_LTO_NONE
 
     sleep 2s
@@ -200,19 +215,6 @@ prepare(){
 
   sleep 2s
 
-  msg "Enable PDS or BMQ"
-
-  msg2 "Enable CONFIG_SCHED_ALT, this feature enable alternative CPU scheduler"
-  scripts/config --enable CONFIG_SCHED_ALT
-
-  sleep 2s
-
-  msg2 "Enable PDS CPU scheduler"
-  scripts/config --disable CONFIG_SCHED_BMQ
-  scripts/config --enable CONFIG_SCHED_PDS
-
-  sleep 2s
-
   plain ""
 
   msg "Supress depmod"
@@ -245,8 +247,7 @@ prepare(){
 build(){
   cd ${srcdir}/linux-$major
 
-  # make -j$(nproc) all
-  msg2 "make -j$(nproc) all..."
+  msg "make -j$(nproc) all..."
   make ARCH=${ARCH} ${BUILD_FLAGS[*]} -j$(nproc) all
 }
 
@@ -262,7 +263,7 @@ _package(){
   local kernver="$(<version)"
   local modulesdir="${pkgdir}"/usr/lib/modules/${kernver}
 
-  msg2 "Installing boot image..."
+  msg "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
@@ -270,11 +271,11 @@ _package(){
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  msg2 "Installing modules..."
+  msg "Installing modules..."
   ZSTD_CLEVEL=19 make ARCH=${ARCH} ${BUILD_FLAGS[*]} INSTALL_MOD_PATH="${pkgdir}"/usr INSTALL_MOD_STRIP=1 -j$(nproc) modules_install
 
   # remove build and source links
-  msg2 "Remove build dir and source dir..."
+  msg "Remove build dir and source dir..."
   rm -rf "$modulesdir"/{source,build}
 }
 
@@ -286,7 +287,7 @@ _package-headers(){
 
   local builddir="$pkgdir"/usr/lib/modules/"$(<version)"/build
 
-  msg2 "Installing build files..."
+  msg "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map *localversion* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
@@ -300,7 +301,7 @@ _package-headers(){
     install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
   fi
 
-  msg2 "Installing headers..."
+  msg "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -319,10 +320,10 @@ _package-headers(){
   # https://bugs.archlinux.org/task/71392
   install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
-  msg2 "Installing KConfig files..."
+  msg "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  msg2 "Removing unneeded architectures..."
+  msg "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
@@ -330,16 +331,16 @@ _package-headers(){
     rm -r "$arch"
   done
 
-  msg2 "Removing documentation..."
+  msg "Removing documentation..."
   rm -r "$builddir/Documentation"
 
-  msg2 "Removing broken symlinks..."
+  msg "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  msg2 "Removing loose objects..."
+  msg "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  msg2 "Stripping build tools..."
+  msg "Stripping build tools..."
   local file
   while read -rd '' file; do
     case "$(file -Sib "$file")" in
@@ -354,10 +355,10 @@ _package-headers(){
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  msg2 "Stripping vmlinux..."
+  msg "Stripping vmlinux..."
   strip -v $STRIP_STATIC "$builddir/vmlinux"
 
-  msg2 "Adding symlink..."
+  msg "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
