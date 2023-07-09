@@ -50,7 +50,7 @@ depends=('python'
          # Arch Bug FS#68391: remove this transitive dep when bug fixed
          'python-brotli'
          )
-optdepends=('python-guppy: for memusage plugin' #AUR#
+optdepends=(
             'python-transmissionrpc: Transmission support' #AUR#
             'python-rarfile: decompress plugin' #AUR#
             'python-boto3: SNS output plugin' #AUR#
