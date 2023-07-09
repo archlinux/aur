@@ -1,4 +1,5 @@
-# Maintainer: Max Chesterfield <`echo Y2hlc3RtMDA3QGhvdG1haWwuY29tCg== | base64 -d`>
+# Maintainer: Robin Ekman <robin [dot] seth [dot] ekman [at] gmail [dot] com>
+# Contributor: Max Chesterfield <`echo Y2hlc3RtMDA3QGhvdG1haWwuY29tCg== | base64 -d`>
 # Contributor: Cedric Girard <girard.cedric@gmail.com>
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 # Contributor: Andrea Repetto <andrea.repetto85@gmail.com>
@@ -7,7 +8,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=3.1.111
+pkgver=v3.7.8.r1.g82ee46ce2
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -18,7 +19,7 @@ license=('MIT')
 
 depends=('python'
          # documented in requirements.in
-         'python-feedparser-dev>=6.0.2-3'
+         'python-feedparser>=6.0.2-3'
          'python-sqlalchemy>=1.3.10'
          'python-yaml>=4.2b1'
          'python-beautifulsoup4>=4.5'
