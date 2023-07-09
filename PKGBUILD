@@ -2,7 +2,7 @@
 
 pkgname=python-fast-histogram
 _pyname=fast-histogram
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="Fast 1D and 2D histogram functions in Python"
 arch=('i386' 'x86_64')
@@ -12,7 +12,7 @@ depends=('python' 'python-numpy')
 makedepends=('python-setuptools')
         
 source=(https://pypi.io/packages/source/f/${_pyname}/${_pyname}-${pkgver}.tar.gz)
-sha256sums=('6404fff03464aff630d5e3183d8e3c258788ac5f38f615a45b981077fe050e78')
+sha256sums=('9acb6fa5b6efd928663008965da186962bdeae20e6d5bbb3b1195dfbd1d906f0')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
