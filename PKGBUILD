@@ -13,10 +13,21 @@ source=(git+https://github.com/zeromq/zyre)
 sha256sums=('SKIP')
 provides=(zyre)
 conflicts=(zyre)
+epoch=1
+provides=("zyre=$pkgver")
 
 pkgver() {
   cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+
+  # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
+  local _gitversion=$(git describe --long --tags --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]')
+
+  # Format git-based version for pkgver
+  # Expected format: e.g. 1.5.0rc2.r521.g99982a1c
+  echo "${_gitversion}" | sed \
+      -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
+      -e 's|\([0-9]\+-g\)|r\1|' \
+      -e 's|-|.|g'
 }
 
 build() {
