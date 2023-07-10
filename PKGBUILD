@@ -2,7 +2,7 @@
 
 pkgname=gpt4all-chat-git
 _gitname=gpt4all
-pkgver=r954.0cb2b86
+pkgver=r1150.c8d761a
 pkgrel=1
 pkgdesc="Cross platform Qt based GUI for GPT4All versions"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('cmake' 'git')
 depends=(
   'qt6-base' 'qt6-httpserver' 'qt6-quickcontrols2' 'qt6-svg'
-  'qt6-webengine' 'qt6-shadertools' 'qt6-5compat'
+  'qt6-webengine' 'qt6-shadertools' 'qt6-5compat' 'qt6-wayland'
 )
 conflicts=('gpt4all-chat')
 provides=('gpt4all-chat')
