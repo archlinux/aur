@@ -1,7 +1,7 @@
 # Maintainer: BrainDamage
 
 pkgname=python-metpy
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 _basename="MetPy"
 _dirname="${_basename}-${pkgver}"
@@ -11,7 +11,7 @@ url="https://unidata.github.io/MetPy"
 license=('BSD')
 depends=('python' 'python-matplotlib' 'python-numpy' 'python-scipy'
 	'python-pandas' 'python-pint' 'python-pooch' 'python-xarray'
-	'python-pyproj' 'python-traitlets' 'python-importlib_resources')
+	'python-pyproj' 'python-traitlets')
 optdepends=(
 	'python-cartopy: for the examples'
 	'python-shapely: for the examples'
@@ -20,9 +20,9 @@ optdepends=(
 # documentation dependencies
 #makedepends+=('python-sphinx' 'python-sphinx-gallery' 'python-myst-parser' 'python-netcdf4')
 makedepends+=(python-build python-installer python-wheel)
-checkdepends=('python-pytest' 'python-pytest-mpl' 'python-cartopy' 'python-shapely' 'python-netcdf4')
+checkdepends=('python-pytest' 'python-pytest-mpl' 'python-cartopy' 'python-shapely' 'python-netcdf4' 'python-packaging')
 source=("${pkgname}-${pkgver}::https://files.pythonhosted.org/packages/source/${_basename::1}/${_basename}/${_basename}-${pkgver}.tar.gz")
-sha256sums=('1897b276097053aeda615e3e23bf497b7704e4536b1f8e2788bb02911646353d')
+sha256sums=('abee94033642c06efecac3aabc224449124f14fdb01de12001f324da54ce46c7')
 
 
 build() {
