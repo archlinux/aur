@@ -1,6 +1,6 @@
 pkgbase = websurfx-edge-git
 	pkgdesc = An open-source alternative to Searx that provides clean, ad-free, and organic results with incredible speed while keeping privacy and security in mind.
-	pkgver = 0.13.16.r332.c5db7cc
+	pkgver = v0.13.16.r0.gc5db7cc
 	pkgrel = 1
 	url = https://github.com/neon-mmd/websurfx
 	install = websurfx-edge-git.install
