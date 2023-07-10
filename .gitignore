@@ -1,0 +1,6 @@
+pkg/
+src/
+*.tar.gz
+*.7z
+clash.png
+*.tar.zst
