@@ -18,6 +18,9 @@ prepare() {
 	pushd resources
 	asar e app.asar ./app
 	pushd app
+	echo 'exports.vip_source_limit = Infinity;' >> ./scsdef.js
+	echo 'exports.isVIP = () => true;' >> ./sk_electron_common/scs/libscs.js
+	echo 'exports.getVipLeftDays = () => 999;' >> ./sk_electron_common/scs/libscs.js
 	npm i sqlite3@5.0.2
 	rm -rf node_modules/{node-gyp,@types}
 }
