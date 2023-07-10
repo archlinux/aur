@@ -1,6 +1,6 @@
 pkgbase = ntopng-bin
 	pkgdesc = Web-based traffic monitoring
-	pkgver = 5.7.230627
+	pkgver = 5.7.230710
 	pkgrel = 1
 	url = https://www.ntop.org/
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = ntopng-bin
 	sha256sums = 58518c808ea300350e6aaa83fafb2320dfed85dd8615793bba3d5b6041edb1b5
 	sha256sums = 454688247e747d96b258f2e2317cdc29bfbf42b35bf03f10363182e8844cd50f
 	sha256sums = 034d4fa2a6616a6240edc74e278b96e45730e7acc12d60a7b4458b04906c127b
-	source_x86_64 = https://packages.ntop.org/apt/bullseye/x64/ntopng_5.7.230627-20855_amd64.deb
+	source_x86_64 = https://packages.ntop.org/apt/bullseye/x64/ntopng_5.7.230710-20946_amd64.deb
 	sha256sums_x86_64 = 31bc2b1d707a3709feedc53dafe0ed2a88303235a13b2e0d9c85bfaba9b13b3a
-	source_armv7h = https://packages.ntop.org/apt/buster_pi/armhf/ntopng_5.7.230625-20826_armhf.deb
+	source_armv7h = https://packages.ntop.org/apt/buster_pi/armhf/ntopng_5.7.230709-20934_armhf.deb
 	sha256sums_armv7h = 8b290a32a6144aa19285bc9ebef9d877fb40e617e6062449ad39a88db6bca6a8
-	source_aarch64 = https://packages.ntop.org/apt/bullseye_pi/arm64/ntopng_5.7.230625-20826_arm64.deb
+	source_aarch64 = https://packages.ntop.org/apt/bullseye_pi/arm64/ntopng_5.7.230709-20934_arm64.deb
 	sha256sums_aarch64 = 4a7491c9049b7e3df8ce93fec615fc6c2e5194d161b4fa16939ebba8a4f22f42
 
 pkgname = ntopng-bin

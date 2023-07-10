@@ -4,12 +4,12 @@
 pkgname="ntopng-bin"
 # to update visit https://packages.ntop.org/apt/bullseye/x64/ and keep track of the latest pkgver, date and build
 _pkgverAmd=5.7
-_dateAmd=230627
-_buildAmd=20855
+_dateAmd=230710
+_buildAmd=20946
 # to update visit https://packages.ntop.org/apt/bullseye_pi/arm64/ and keep track of the latest pkgver, date and build
 _pkgverArm=5.7
-_dateArm=230625
-_buildArm=20826
+_dateArm=230709
+_buildArm=20934
 # updated automatically
 pkgver="$_pkgverAmd.$_dateAmd"
 pkgrel=1
@@ -36,9 +36,9 @@ source_aarch64=("https://packages.ntop.org/apt/bullseye_pi/arm64/ntopng_${_pkgve
 sha256sums=('58518c808ea300350e6aaa83fafb2320dfed85dd8615793bba3d5b6041edb1b5'
             '454688247e747d96b258f2e2317cdc29bfbf42b35bf03f10363182e8844cd50f'
             '034d4fa2a6616a6240edc74e278b96e45730e7acc12d60a7b4458b04906c127b')
-sha256sums_x86_64=('31bc2b1d707a3709feedc53dafe0ed2a88303235a13b2e0d9c85bfaba9b13b3a')
-sha256sums_armv7h=('8b290a32a6144aa19285bc9ebef9d877fb40e617e6062449ad39a88db6bca6a8')
-sha256sums_aarch64=('4a7491c9049b7e3df8ce93fec615fc6c2e5194d161b4fa16939ebba8a4f22f42')
+sha256sums_x86_64=('62f4d15b35207d5e90589512e0c9aa6a798a9c693fda7a61d6a5bc9f12c4459b')
+sha256sums_armv7h=('85d5f214bef478f332d987d3f10ddbd0102705027ab65e87eb4677e46c983570')
+sha256sums_aarch64=('9f06da66a8582ba5902ae31a2e92fb6c31c062c74b4547929b9f60624ec23fae')
 options=("!strip")
 
 prepare(){
