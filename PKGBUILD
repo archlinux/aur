@@ -2,7 +2,7 @@
 pkgname=deepin-wine-adrive
 _pkgname=com.adrive.deepin
 _officalname=aDrive
-pkgver=4.3.3.931
+pkgver=4.5.0.964
 _deepinver=2.2.6deepin8
 pkgrel=1
 pkgdesc="Aliyun aDrive on Deepin Wine 6"
@@ -21,9 +21,9 @@ source=(
     "LICENSE.html::https://terms.alicdn.com/legal-agreement/terms/suit_bu1_alibaba_group/suit_bu1_alibaba_group202102022125_53871.html"
     )
 sha256sums=('9db53833b86b3ad941f23bdefa354170ec432c3b15980621e8011261d5617843'
-            '2ba3d5385878466ffb3c018911d80d0372a948cb16cfd39dee586134288a74cd'
+            '216fe9050e58a5de4975803d7045d161656941b4dcf5a301e65e6caf355c147b'
             '592a72685f9f3b69015259015d9eaa9701dbca5ef8289e178f89ee4c7311c1f6'
-            '75cea4c20682e8b106236b4d7c655e384474d1151d1e0f8869415f45718e0f63'
+            '41453f6ffe2c19da6f1b6712d84b7849033db626b659ddf93ed9ab7c59ab3479'
             'b6aa1fd4abf1ded8b208321fbaa73c083cf1376535b385217e3c96f62cbf9a91')
 prepare() {
     bsdtar -xf data.tar.xz -C "${srcdir}"
