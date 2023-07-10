@@ -1,6 +1,6 @@
 pkgbase = coal-launcher-bin
 	pkgdesc = A client to view and play games from the AB Coal website
-	pkgver = 1.2.8
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://bobuxstation.github.io/Coal-Web/launcher.html
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = coal-launcher-bin
 	depends = electron
 	provides = coal-launcher
 	conflicts = coal-launcher
-	source = coal-launcher-1.2.8.deb::https://github.com/Bobuxstation/Coal-Launcher/releases/download/v1.2.8/coal-launcher_1.2.8_amd64.deb
+	source = coal-launcher-1.3.1.deb::https://github.com/Bobuxstation/Coal-Launcher/releases/download/v1.3.1/coal-launcher_1.3.1_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/Bobuxstation/Coal-Launcher/main/LICENSE
 	source = coal-launcher.sh
-	sha256sums = 80227cd09d95eb3e421d90dba97ce9a8ac695f7b0ae02f71a02c8a2842ecbcc7
+	sha256sums = ca0972dcad774d4a34d88155249e7b47908aa80cd5db22b3c7c697904f14491f
 	sha256sums = 0133c8e5890f9f848adde48b40a9c61dcff249ea3c0f5bcf6567901e7a697c49
 	sha256sums = 9441e01d585b1ef61d557a66a6759d8386cd98e7cda071865c9e8ea33a45e86f
 
