@@ -1,6 +1,6 @@
 pkgbase = fanficfare
 	pkgdesc = A tool for downloading fanfiction to eBook formats
-	pkgver = 4.24.0
+	pkgver = 4.25.0
 	pkgrel = 1
 	url = https://github.com/JimmXinu/FanFicFare
 	changelog = changelog.txt
@@ -15,11 +15,11 @@ pkgbase = fanficfare
 	depends = python-requests-file
 	optdepends = calibre: use FanFicFare as a calibre plugin
 	optdepends = python-pillow: support for converting/resizing story images and covers
-	source = fanficfare-4.24.0.tar.gz::https://github.com/JimmXinu/FanFicFare/archive/v4.24.0.tar.gz
+	source = fanficfare-4.25.0.tar.gz::https://github.com/JimmXinu/FanFicFare/archive/v4.25.0.tar.gz
 	source = 0001-makeplugin-do-not-bundle-system-dependencies.patch
-	sha256sums = 608bffb393cadb9ed4580ccc7a4aa43c8b571319ed5eb6f977910bbdaba3b24a
+	sha256sums = ad3820df8588bff2f7b9ece1b68eb9885ec2662b4b69559cd2c12a19fa809999
 	sha256sums = 6d172dcc98a8f6dcef2048272bfabd810ceeb5740969fbe406ebcd7b638e072c
-	b2sums = 5f9fd3150f9b126146e46dff151b1343a7951160d780fa7eb6cb08fc14c1679e175d2575c6bb9452a7e688eee438529d3edf839d9086e183756f34ab357b7d6a
+	b2sums = 96ad787ac97445160621e74d0b3ae21e38182c005892370ffbab11760b4a1c9a259a757a3b817a085356716051c5a14b466e595160bcdfc6fa2d7781c6d9585d
 	b2sums = eca0e505305ef74e0af1be6f5c1376091da4cd69bfc9f468f6040cf35d71890e3901b9cf0a9f9e25e6cb409651d402d8414116d0a8d43269bfdab2fdd0005279
 
 pkgname = fanficfare
