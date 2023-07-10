@@ -1,22 +1,21 @@
+# Maintainer: Astro Benzene <universebenzene at sina dot com>
 # Maintainer: Ista Zahn <istazahn@gmail.com>
 
 pkgname=glueviz
-_pkgname=glue
-pkgver=1.12.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Linked Data Visualizations Across Multiple Files"
-arch=('i386' 'x86_64')
-url="http://glueviz.org/"
-license=('CUSTOM')
-depends=('python' 'python-glue-core' 'python-glue-vispy-viewers' 'python-numpy' 'python-matplotlib' 'python-scipy'
-         'python-pandas' 'python-astropy' 'python-pyqt3d' 'python-pyqt5' 'python-pyqtchart' 'python-pyqtdatavisualization' 'python-pyqtpurchasing' 'python-pyqtwebengine' 'ipython' 'python-ipykernel' 'python-qtconsole' 'python-dill'
-         'python-h5py' 'python-xlrd' 'python-mpl-scatter-density' 'python-bottleneck')
-makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/glue-viz/glue/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e06329f7066370b1cdfca24dce4268ef602b81e8ba15ae374760c26f57f98ac4')
+pkgdesc="Meta-package for glue and plugin packages"
+arch=('any')
+url="http://glueviz.org"
+license=('BSD')
+depends=('python-glue-core>=1.2.0' 'python-glue-vispy-viewers>=1.0.3')
+makedepends=('python-setuptools-scm')
+source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('795ddeef13b8f0392d9de5a318ee1a5b03ddfa6eada51986465e2a4b1549e372')
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
   python setup.py install -O1 --root="${pkgdir}"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README"

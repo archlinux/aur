@@ -1,35 +1,14 @@
 pkgbase = glueviz
-	pkgdesc = Linked Data Visualizations Across Multiple Files
-	pkgver = 1.12.0
+	pkgdesc = Meta-package for glue and plugin packages
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = http://glueviz.org/
-	arch = i386
-	arch = x86_64
-	license = CUSTOM
-	makedepends = python-setuptools
-	depends = python
-	depends = python-glue-core
-	depends = python-glue-vispy-viewers
-	depends = python-numpy
-	depends = python-matplotlib
-	depends = python-scipy
-	depends = python-pandas
-	depends = python-astropy
-	depends = python-pyqt3d
-	depends = python-pyqt5
-	depends = python-pyqtchart
-	depends = python-pyqtdatavisualization
-	depends = python-pyqtpurchasing
-	depends = python-pyqtwebengine
-	depends = ipython
-	depends = python-ipykernel
-	depends = python-qtconsole
-	depends = python-dill
-	depends = python-h5py
-	depends = python-xlrd
-	depends = python-mpl-scatter-density
-	depends = python-bottleneck
-	source = glueviz-1.12.0.tar.gz::https://github.com/glue-viz/glue/archive/refs/tags/v1.12.0.tar.gz
-	sha256sums = e06329f7066370b1cdfca24dce4268ef602b81e8ba15ae374760c26f57f98ac4
+	url = http://glueviz.org
+	arch = any
+	license = BSD
+	makedepends = python-setuptools-scm
+	depends = python-glue-core>=1.2.0
+	depends = python-glue-vispy-viewers>=1.0.3
+	source = https://files.pythonhosted.org/packages/source/g/glueviz/glueviz-1.2.0.tar.gz
+	sha256sums = 795ddeef13b8f0392d9de5a318ee1a5b03ddfa6eada51986465e2a4b1549e372
 
 pkgname = glueviz
