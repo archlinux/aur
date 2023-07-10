@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SCArray
-_pkgver=1.8.2
+_pkgver=1.8.3
 pkgname=r-${_pkgname,,}
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='Large-scale single-cell RNA-seq data manipulation with GDS files'
 arch=('x86_64')
@@ -33,7 +33,7 @@ optdepends=(
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c46fb71c80e65482f3ae6061621dcbe68d41cd3d311781aee55cdafb628bff44')
+sha256sums=('40eed8e53b821dbab39f256bcadfc97e639d2de41f4977960128ac47ed5f8873')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
