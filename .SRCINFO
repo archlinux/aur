@@ -1,6 +1,6 @@
 pkgbase = vimix-gtk-themes-translucent-git
 	pkgdesc = A flat Material Design theme for GTK 3, GTK 2 and Gnome-Shell, translucent version
-	pkgver = r518.faab6dec
+	pkgver = r549.b855cd1a
 	pkgrel = 1
 	url = https://github.com/vinceliuice/vimix-gtk-themes
 	install = vimix-gtk-themes-translucent-git.install
@@ -10,7 +10,7 @@ pkgbase = vimix-gtk-themes-translucent-git
 	depends = gtk3
 	optdepends = gtk-engine-murrine: for gtk2 themes
 	optdepends = gtk-engines: for gtk2 themes
-	provides = vimix-gtk-themes=r518.faab6dec
+	provides = vimix-gtk-themes=r549.b855cd1a
 	conflicts = vimix-gtk-themes
 	source = git+https://github.com/vinceliuice/vimix-gtk-themes.git
 	source = vimix-gtk4-switch.sh
