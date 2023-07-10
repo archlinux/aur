@@ -2,3 +2,5 @@
 hyprshade
 pkg
 src
+*.log
+*.log.*
