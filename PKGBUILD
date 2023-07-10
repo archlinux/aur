@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.10.17.r12.g8131675
+pkgver=0.10.17.r23.g9f9eca2
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -10,6 +10,7 @@ license=(AGPL3)
 depends=(bc
          bcprov # pdftk optdepend is required
          curl
+         decasify
          entr
          epubcheck
          fontconfig
@@ -54,6 +55,7 @@ depends=(bc
          zola
          zsh)
 _lua_deps=(colors-git
+           decasify
            filesystem
            yaml)
 _perl_deps=(yaml
