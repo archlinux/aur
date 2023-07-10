@@ -5,12 +5,12 @@ pkgname="stm32cubeide"
 pkgver=1.12.1
 _pkgver_ext=1.12.1_16088_20230420_1057
 _pkg_file_name=en.st-stm32cubeide_1.12.1_16088_20230420_1057_amd64.sh.zip
-pkgrel=4
+pkgrel=5
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
-depends=('glibc' 'libusb' 'ncurses5-compat-libs')
-optdepends=('jlink-software-and-documentation' 'stlink' 'arm-none-eabi-gdb' 'webkit2gtk')
+depends=('glibc' 'libusb' 'ncurses5-compat-libs' 'webkit2gtk')
+optdepends=('jlink-software-and-documentation' 'stlink' 'arm-none-eabi-gdb')
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('custom:SLA0048')
@@ -84,10 +84,12 @@ package() {
 	msg2 'Installation of binary files'
 	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<END
 #!/bin/sh
+mkdir -p /tmp/SWT-GDBusServer
 /opt/stm32cubeide/stm32cubeide "\$@"
 END
 	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}_wayland" <<END
 #!/bin/sh
+mkdir -p /tmp/SWT-GDBusServer
 /opt/stm32cubeide/stm32cubeide_wayland "\$@"
 END
 
