@@ -1,6 +1,6 @@
 pkgbase = lvce-bin
 	pkgdesc = VS Code inspired text editor that mostly runs in a webworker
-	pkgver = 0.16.6
+	pkgver = 0.16.11
 	pkgrel = 1
 	url = https://lvce-editor.github.io/lvce-editor
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = lvce-bin
 	provides = lvce
 	conflicts = lvce
 	conflicts = lvce-appimage
-	source = lvce-0.16.6.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.16.6/lvce-v0.16.6_amd64.deb
+	source = lvce-0.16.11.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.16.11/lvce-v0.16.11_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/lvce-editor/lvce-editor/main/LICENSE
 	source = lvce.sh
-	sha256sums = 71f9bb6d41fe6b8eb3eda761ce4ed3da91bdfb2844e8a034af4d6f7d62b47cbe
-	sha256sums = 0d800c2b83c70f46b9d9eb95aef534728eda8be35a7c25da09e544ef044c1ff3
+	sha256sums = 01bbe458056038982b667333db124e24c7e289faff96fef9663a5ba3a461a2d4
+	sha256sums = 7736b1dbda2b18af09232f9eb619e4d3d79d855058cc7494853f25d1553ed00b
 	sha256sums = 11265f898da216ce9ba630c5d33e9c3d9093fa0639b5de385820359d37540e1c
 
 pkgname = lvce-bin
