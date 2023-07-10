@@ -1,6 +1,6 @@
 # Maintainer: TheRetikGM <theretikgm@gmail.com>
 pkgname="swic-git"
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Sway input configuration helper tool"
 arch=('x86_64')
