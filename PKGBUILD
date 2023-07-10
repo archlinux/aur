@@ -1,0 +1,42 @@
+# Maintainer: John Bernard <loqusion@gmail.com>
+_pkgname=hyprshade
+pkgname=${_pkgname}-git
+pkgver=r36.a128afb
+pkgrel=1
+pkgdesc="Quickly swap between screen shaders in Hyprland"
+arch=('any')
+url="https://github.com/loqusion/hyprshade"
+license=('MIT')
+_py_deps=(
+	more-itertools
+	typer
+)
+depends=(
+	hyprland
+	"${_py_deps[@]/#/python-}"
+	util-linux
+)
+makedepends=(git python-{build,installer})
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=(git+https://github.com/loqusion/${_pkgname}.git)
+sha512sums=('SKIP')
+
+pkgver() {
+	cd "$_pkgname"
+	{
+		set -o pipefail
+		git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+			printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	}
+}
+
+build() {
+	cd "$_pkgname"
+	python -m build -wn
+}
+
+package() {
+	cd "$_pkgname"
+	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer -d "$pkgdir" dist/*.whl
+}

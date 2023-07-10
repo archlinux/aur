@@ -1,0 +1,20 @@
+pkgbase = hyprshade-git
+	pkgdesc = Quickly swap between screen shaders in Hyprland
+	pkgver = r36.a128afb
+	pkgrel = 1
+	url = https://github.com/loqusion/hyprshade
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = hyprland
+	depends = python-more-itertools
+	depends = python-typer
+	depends = util-linux
+	provides = hyprshade
+	conflicts = hyprshade
+	source = git+https://github.com/loqusion/hyprshade.git
+	sha512sums = SKIP
+
+pkgname = hyprshade-git
