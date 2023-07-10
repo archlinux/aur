@@ -1,6 +1,6 @@
 pkgname=artisan-roaster-scope
 pkgver=2.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Artisan is a software that helps coffee roasters record, analyze, and control roast profiles."
 arch=("x86_64")
 url="https://github.com/artisan-roaster-scope/artisan"
