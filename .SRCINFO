@@ -11,7 +11,7 @@ pkgbase = clean
 	license = GPL3
 	depends = bash
 	depends = bc
-	source = https://github.com/architalia/clean.git
+	source = https://github.com/architalia/clean/src/clean
 	sha256sums = SKIP
 
 pkgname = clean

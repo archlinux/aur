@@ -11,7 +11,7 @@ depends=('bash' 'bc')
 makedepends=()
 checkdepends=()
 optdepends=()
-source=("https://github.com/architalia/clean.git")
+source=("https://github.com/architalia/clean/src/clean")
 sha256sums=('SKIP')
 
 package() {
