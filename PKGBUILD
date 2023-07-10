@@ -2,7 +2,7 @@
 
 tmlver="2022.09.47.57"
 terrariaver="1.4.3.6"
-pkgrel=1
+pkgrel=2
 epoch=0
 
 pkgname="tmodloader-bin"
