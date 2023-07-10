@@ -1,0 +1,48 @@
+diff --git a/src/piclone.c b/src/piclone.c
+index 50abaa9..f33fa2e 100644
+--- a/src/piclone.c
++++ b/src/piclone.c
+@@ -35,6 +35,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #include <ctype.h>
+ #include <dirent.h>
+ 
++#include <locale.h>
++
+ #include <glib.h>
+ #include <glib/gi18n.h>
+ #include <glib/gstdio.h>
+@@ -236,7 +238,7 @@ static gpointer backup_thread (gpointer data)
+     FILE *fp;
+ 
+     // get a new partition UUID
+-    get_string ("uuid | cut -f1 -d-", npuuid);
++    get_string ("uuidgen | cut -f1 -d-", npuuid);
+ 
+     // check the source has an msdos partition table
+     sprintf (buffer, "parted %s unit s print | tail -n +4 | head -n 1", src_dev);
+@@ -568,6 +570,7 @@ static gpointer backup_thread (gpointer data)
+                 return NULL;
+             }
+         }
++        /*
+         else
+         {
+             if (sys_printf ("parted -s %s set %d lba off", dst_dev, parts[p].pnum))
+@@ -576,10 +579,16 @@ static gpointer backup_thread (gpointer data)
+                 return NULL;
+             }
+         }
++        */
+         CANCEL_CHECK;
+     }
+ 
+-    sys_printf ("lxpanelctl command ejecter %s", dst_dev);
++    for (p = 0; p < n; p++)
++    {
++    	sys_printf ("udisksctl unmount -b %s%d", dst_dev, parts[p].pnum);
++    }
++    sys_printf ("udisksctl power-off -b %s", dst_dev);
++    //sys_printf ("lxpanelctl command ejecter %s", dst_dev);
+     terminate_dialog (_("Copy complete."));
+     return NULL;
+ }
