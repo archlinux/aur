@@ -14,10 +14,7 @@ optdepends=()
 source=("https://raw.githubusercontent.com/ArchItalia/clean/main/src/clean")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+
 
 package() {
     install -Dm755 clean "$pkgdir/usr/bin/clean"
