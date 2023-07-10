@@ -42,5 +42,6 @@ build() {
 
 package() {
 	cd $_pkgname
-	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="$pkgdir" dist/*.whl
+	export PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
