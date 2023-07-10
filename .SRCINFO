@@ -1,7 +1,7 @@
 pkgbase = tmodloader-bin
 	pkgdesc = An open-source, community-driven, modification and expansion of the Terraria game that makes it possible to make and play mods.
 	pkgver = 2022.09.47.57_1.4.3.6
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://www.tmodloader.net/
 	arch = x86_64
