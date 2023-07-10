@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Sanfilippo <jonalinux dot uk at gmail dot com>
 pkgname=clean
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="System cleaner"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
