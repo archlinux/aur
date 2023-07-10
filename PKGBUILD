@@ -2,8 +2,8 @@
 pkgname=clean
 pkgver=2.0
 pkgrel=1
-pkgdesc="System cleaner"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+pkgdesc="System cleaner from command $ clean"
+arch=('any')
 url="https://github.com/architalia/clean"
 license=('GPL3')
 groups=()
