@@ -1,7 +1,7 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 
 pkgname=opennic-up
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="OpenNIC auto DNS updater"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('fping')
 optdepends=('networkmanager')
 backup=("etc/opennic-up.conf")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('afb4745fc82041d1546a6a719f8a66d93bec30b3d3d4b5b5414db7e7cc43b8e7')
+sha256sums=('8eec33be36201433ab151cfe978ce2d6be3da843fd6b15ec45b3719adadf5523')
 
 package() {
     cd ${pkgname}-${pkgver}
