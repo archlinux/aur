@@ -1,7 +1,7 @@
 pkgbase = arch-luks-suspend-git
 	pkgdesc = Lock encrypted root volume on suspend
 	pkgver = 20140628.g15420df
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vianney/arch-luks-suspend
 	install = install
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = arch-luks-suspend-git
 	depends = cryptsetup
 	depends = mkinitcpio
 	backup = etc/systemd/system/systemd-suspend.service
-	source = git://github.com/vianney/arch-luks-suspend.git
+	source = git+https://github.com/vianney/arch-luks-suspend.git
 	md5sums = SKIP
 
 pkgname = arch-luks-suspend-git
-
