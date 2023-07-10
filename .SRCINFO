@@ -1,0 +1,18 @@
+pkgbase = datefile
+	pkgdesc = Index files in a directory using the date of another file as a filter
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kna40/DateFile
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = gendesk
+	depends = electron
+	conflicts = datefile
+	source = datefile-0.1.0.tar.gz::https://github.com/kna40/DateFile/archive/refs/tags/v0.1.0.tar.gz
+	source = datefile.sh
+	sha256sums = 2b6fe8fbfd9531233f43123cb962544725daf5a3055070ea32e4d7b923d560d3
+	sha256sums = e74688e853e228efcaecbbe8bf3fdf1e9ab2cf34313b6233412380ba63f4db73
+
+pkgname = datefile
