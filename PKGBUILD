@@ -15,9 +15,11 @@ depends=(python-trame-client vtk openmpi fmt jsoncpp glew ospray
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest-xprocess python-pillow python-pixelmatch python-seleniumbase python-pyvista) # FIXME: python-matplotlib
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
-  https://registry.npmjs.org/${_npm_base}/-/${_npm_base}-${_npm_pkgver}.tgz)
+  https://registry.npmjs.org/${_npm_base}/-/${_npm_base}-${_npm_pkgver}.tgz
+  https://kitware.github.io/vtk-js/examples/OfflineLocalView/OfflineLocalView.html)
 sha512sums=('bc2745283f910634a07bc91793dbc56a5146c030b2c19817564bffd8e967db25b789262d47a918e3396fa7e0b183b41322e49e96d1875bbd96bf63bacb280b9a'
-  '66ed3556c34303c3af0de0585ad6e2e39d3dcec2a4e8773b98aef7312239c4d11466ff180c64aad192c4842fdcb83292dd26a3d98696cb0493a10fbb5f80f0c9')
+  '66ed3556c34303c3af0de0585ad6e2e39d3dcec2a4e8773b98aef7312239c4d11466ff180c64aad192c4842fdcb83292dd26a3d98696cb0493a10fbb5f80f0c9'
+  'SKIP')
 
 prepare() {
   sed -i 's/^include trame_vtk\/LICENSE/#include trame_vtk\/LICENSE/' ${_base}-${pkgver}/MANIFEST.in
@@ -45,6 +47,8 @@ package() {
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   # Install trame-vtk.js
   mv ${srcdir}/package/dist/${_npm_base}.umd.js ${pkgdir}${site_packages}/${_base/-/_}/modules/common/serve/trame-vtk.js
+  # Install static_viewer.html
+  mv ${srcdir}/OfflineLocalView.html ${pkgdir}${site_packages}/${_base/-/_}/tools/static_viewer.html
 
   rm ${pkgdir}${site_packages}/trame/__init__.py
   rm ${pkgdir}${site_packages}/trame/modules/__init__.py
