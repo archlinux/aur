@@ -1,0 +1,18 @@
+pkgbase = ecency-surfer-bin
+	pkgdesc = Immutable, decentralized, uncensored, rewarding communities built, owned and operated by its users
+	pkgver = 3.0.34
+	pkgrel = 1
+	url = https://ecency.com/
+	arch = x86_64
+	license = MIT
+	depends = electron
+	provides = ecency-surfer
+	conflicts = ecency-surfer
+	source = ecency-surfer-3.0.34.deb::https://github.com/ecency/ecency-vision/releases/download/3.0.34/ecency-surfer_3.0.34_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/ecency/ecency-vision/development/LICENSE
+	source = ecency-surfer.sh
+	sha256sums = 446c75de6f7a9df4e7d213af78bbbef8ab3810df1c193f3808c68f13d158163a
+	sha256sums = 4f2d94ac09ba20ec3861cf9fbb2b52ee17592b64b6fb812f04d7b71417da494d
+	sha256sums = 9010d66241fb57c6dd4170203cab2a62ebba552b0000fd507b250f548ac9da7a
+
+pkgname = ecency-surfer-bin
