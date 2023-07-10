@@ -22,6 +22,10 @@ conflicts=($_pkgname)
 source=(git+https://github.com/loqusion/${_pkgname}.git)
 sha512sums=('SKIP')
 
+prepare() {
+	git -C "${srcdir}/${_pkgname}" clean -dfx
+}
+
 pkgver() {
 	cd $_pkgname
 	{
