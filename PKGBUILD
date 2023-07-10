@@ -30,13 +30,13 @@ md5sums=(SKIP)
 validpgpkeys=()
 
 build() {
-	pip install colorama --break-system-packages
-  pip install pkgbuilder --break-system-packages
+	pip install colorama
+  pip install pkgbuilder
 }
 
 
 package() {
 	cd faur
   chmod +x faur
-	cp faur ~/.local/bin/
+	cp faur /usr/local/bin
 }
