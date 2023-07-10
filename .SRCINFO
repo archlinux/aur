@@ -1,12 +1,12 @@
 pkgbase = jl
 	pkgdesc = JSON Logs, a development tool for working with structured JSON logging
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/koenbollen/jl
 	arch = x86_64
 	license = ISC
 	makedepends = go
-	source = https://github.com/koenbollen/jl/archive/v1.5.0.tar.gz
-	sha256sums = 166322b4f7bda54466b0f9d306deaa801b723991db27839f1576b01f23b89e68
+	source = https://github.com/koenbollen/jl/archive/v1.6.0.tar.gz
+	sha256sums = 91d01ace8795f156a84d0d0294451ba5d9b5a3ee2b00cb27852cf901657fc115
 
 pkgname = jl
