@@ -2,7 +2,7 @@
 
 pkgname=beignet
 pkgver=1.3.2.r3283.419c0417
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source OpenCL implementation for Intel IvyBridge & Haswell iGPUs"
 arch=('x86_64')
 url="https://www.freedesktop.org/wiki/Software/Beignet/"
@@ -69,5 +69,5 @@ package() {
   cd $pkgname
   make DESTDIR=$pkgdir install
   # Remove headers already provided by 'opencl-headers'
-  rm -f $pkgdir/usr/include/CL/{cl.h,cl_{egl.h,ext.h,gl.h,gl_ext.h,platform.h},opencl.h}
+  rm -f $pkgdir/usr/include/CL/{cl.h,cl_{egl.h,ext.h,gl.h,gl_ext.h,platform.h,d3d10.h,d3d11.h,dx9_media_sharing.h},opencl.h}
 }
