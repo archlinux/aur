@@ -2,7 +2,7 @@
 
 tmlver="2022.09.47.57"
 terrariaver="1.4.3.6"
-pkgrel=2
+pkgrel=3
 epoch=0
 
 pkgname="tmodloader-bin"
@@ -11,6 +11,7 @@ pkgver="$tmlver"_"$terrariaver"
 url="https://www.tmodloader.net/"
 arch=("x86_64")
 license=("MIT")
+depends=('unzip>=6.0')
 
 source=(
   "tml-$tmlver.zip::https://github.com/tModLoader/tModLoader/releases/download/v$tmlver/tModLoader.zip"
