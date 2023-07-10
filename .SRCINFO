@@ -1,0 +1,16 @@
+pkgbase = luaclasslib
+	pkgdesc = Extends the Lua C API with Moonscript-compatible class support, with or without Moonscript
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/mousebyte/luaclasslib
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = lua
+	source = https://github.com/mousebyte/luaclasslib/archive/v2.2.1/luaclasslib-2.2.1.tar.gz
+	source = git+https://github.com/doctest/doctest.git
+	md5sums = 24c5d4d6fb2fd0c284566ffe68317677
+	md5sums = SKIP
+
+pkgname = luaclasslib
