@@ -7,8 +7,8 @@ pkgrel=3
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(MIT)
-depends=(python-trame-client nodejs-lts-fermium npm)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+depends=(python-trame-client)
+makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-gallium npm)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('865608fcca8407f695699255cacd4a3f28551106396e213a9a219ff9defbdc552f938bcb7e3de13a957bbb38f32b936011928a6da7fffcf574fa98b38a8e2d53')
@@ -21,6 +21,7 @@ build() {
   cd ${srcdir}/${_base}-${pkgver}/vue-components
   npm install
   npm run build
+
   cd ${srcdir}/${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
@@ -36,6 +37,7 @@ package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   rm ${pkgdir}${site_packages}/trame/__init__.py
   rm ${pkgdir}${site_packages}/trame/modules/__init__.py
