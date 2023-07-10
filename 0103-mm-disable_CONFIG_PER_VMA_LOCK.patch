@@ -1,0 +1,39 @@
+From e88e72730d891f9f863c331d7c922b10ac3951c0 Mon Sep 17 00:00:00 2001
+From: Suren Baghdasaryan <surenb@google.com>
+Date: Wed, 5 Jul 2023 18:14:00 -0700
+Subject: [PATCH] mm: disable CONFIG_PER_VMA_LOCK until its fixed
+
+A memory corruption was reported in [1] with bisection pointing to the
+patch [2] enabling per-VMA locks for x86.
+Disable per-VMA locks config to prevent this issue until the fix is
+confirmed. This is expected to be a temporary measure.
+
+[1] https://bugzilla.kernel.org/show_bug.cgi?id=217624
+[2] https://lore.kernel.org/all/20230227173632.3292573-30-surenb@google.com
+
+Reported-by: Jiri Slaby <jirislaby@kernel.org>
+Closes: https://lore.kernel.org/all/dbdef34c-3a07-5951-e1ae-e9c6e3cdf51b@kernel.org/
+Reported-by: Jacob Young <jacobly.alt@gmail.com>
+Closes: https://bugzilla.kernel.org/show_bug.cgi?id=217624
+Fixes: 0bff0aaea03e ("x86/mm: try VMA lock-based page fault handling first")
+Cc: stable@vger.kernel.org
+Signed-off-by: Suren Baghdasaryan <surenb@google.com>
+Applied-from: https://lore.kernel.org/all/20230706011400.2949242-2-surenb@google.com/
+---
+ mm/Kconfig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/mm/Kconfig b/mm/Kconfig
+index e3454087fd31ae..1d2afc2567d0e6 100644
+--- a/mm/Kconfig
++++ b/mm/Kconfig
+@@ -1198,8 +1198,9 @@ config ARCH_SUPPORTS_PER_VMA_LOCK
+        def_bool n
+
+ config PER_VMA_LOCK
+-	def_bool y
++	bool "Enable per-vma locking during page fault handling."
+ 	depends on ARCH_SUPPORTS_PER_VMA_LOCK && MMU && SMP
++	depends on BROKEN
+ 	help
+ 	  Allow per-vma locking during page fault handling.

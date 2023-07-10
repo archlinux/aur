@@ -1,0 +1,412 @@
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_cs.c	2023-06-23 22:44:45.000000000 +0200
+@@ -133,9 +133,6 @@ static int amdgpu_cs_p1_user_fence(struc
+ 	bo = amdgpu_bo_ref(gem_to_amdgpu_bo(gobj));
+ 	p->uf_entry.priority = 0;
+ 	p->uf_entry.tv.bo = &bo->tbo;
+-	/* One for TTM and two for the CS job */
+-	p->uf_entry.tv.num_shared = 3;
+-
+ 	drm_gem_object_put(gobj);
+ 
+ 	size = amdgpu_bo_size(bo);
+@@ -882,15 +879,19 @@ static int amdgpu_cs_parser_bos(struct a
+ 
+ 	mutex_lock(&p->bo_list->bo_list_mutex);
+ 
+-	/* One for TTM and one for the CS job */
++	/* One for TTM and one for each CS job */
+ 	amdgpu_bo_list_for_each_entry(e, p->bo_list)
+-		e->tv.num_shared = 2;
++		e->tv.num_shared = 1 + p->gang_size;
++	p->uf_entry.tv.num_shared = 1 + p->gang_size;
+ 
+ 	amdgpu_bo_list_get_list(p->bo_list, &p->validated);
+ 
+ 	INIT_LIST_HEAD(&duplicates);
+ 	amdgpu_vm_get_pd_bo(&fpriv->vm, &p->validated, &p->vm_pd);
+ 
++	/* Two for VM updates, one for TTM and one for each CS job */
++	p->vm_pd.tv.num_shared = 3 + p->gang_size;
++
+ 	if (p->uf_entry.tv.bo && !ttm_to_amdgpu_bo(p->uf_entry.tv.bo)->parent)
+ 		list_add(&p->uf_entry.tv.head, &p->validated);
+ 
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_jpeg.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_jpeg.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_jpeg.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_jpeg.c	2023-06-23 22:44:45.000000000 +0200
+@@ -251,7 +251,8 @@ int amdgpu_jpeg_ras_late_init(struct amd
+ 
+ 	if (amdgpu_ras_is_supported(adev, ras_block->block)) {
+ 		for (i = 0; i < adev->jpeg.num_jpeg_inst; ++i) {
+-			if (adev->jpeg.harvest_config & (1 << i))
++			if (adev->jpeg.harvest_config & (1 << i) ||
++			    !adev->jpeg.inst[i].ras_poison_irq.funcs)
+ 				continue;
+ 
+ 			r = amdgpu_irq_get(adev, &adev->jpeg.inst[i].ras_poison_irq, 0);
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c	2023-06-23 22:44:45.000000000 +0200
+@@ -1266,8 +1266,12 @@ void amdgpu_bo_move_notify(struct ttm_bu
+ void amdgpu_bo_get_memory(struct amdgpu_bo *bo,
+ 			  struct amdgpu_mem_stats *stats)
+ {
+-	unsigned int domain;
+ 	uint64_t size = amdgpu_bo_size(bo);
++	unsigned int domain;
++
++	/* Abort if the BO doesn't currently have a backing store */
++	if (!bo->tbo.resource)
++		return;
+ 
+ 	domain = amdgpu_mem_type_to_domain(bo->tbo.resource->mem_type);
+ 	switch (domain) {
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c	2023-06-23 22:44:45.000000000 +0200
+@@ -1947,6 +1947,8 @@ static int psp_securedisplay_initialize(
+ 		psp_securedisplay_parse_resp_status(psp, securedisplay_cmd->status);
+ 		dev_err(psp->adev->dev, "SECUREDISPLAY: query securedisplay TA failed. ret 0x%x\n",
+ 			securedisplay_cmd->securedisplay_out_message.query_ta.query_cmd_ret);
++		/* don't try again */
++		psp->securedisplay_context.context.bin_desc.size_bytes = 0;
+ 	}
+ 
+ 	return 0;
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_ring_mux.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_ring_mux.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_ring_mux.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_ring_mux.c	2023-06-23 22:44:45.000000000 +0200
+@@ -423,6 +423,9 @@ void amdgpu_sw_ring_ib_mark_offset(struc
+ 	struct amdgpu_ring_mux *mux = &adev->gfx.muxer;
+ 	unsigned offset;
+ 
++	if (ring->hw_prio > AMDGPU_RING_PRIO_DEFAULT)
++		return;
++
+ 	offset = ring->wptr & ring->buf_mask;
+ 
+ 	amdgpu_ring_mux_ib_mark_offset(mux, ring, offset, type);
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_vcn.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_vcn.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_vcn.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_vcn.c	2023-06-23 22:44:45.000000000 +0200
+@@ -1191,7 +1191,8 @@ int amdgpu_vcn_ras_late_init(struct amdg
+ 
+ 	if (amdgpu_ras_is_supported(adev, ras_block->block)) {
+ 		for (i = 0; i < adev->vcn.num_vcn_inst; i++) {
+-			if (adev->vcn.harvest_config & (1 << i))
++			if (adev->vcn.harvest_config & (1 << i) ||
++			    !adev->vcn.inst[i].ras_poison_irq.funcs)
+ 				continue;
+ 
+ 			r = amdgpu_irq_get(adev, &adev->vcn.inst[i].ras_poison_irq, 0);
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c	2023-06-23 22:44:45.000000000 +0200
+@@ -920,42 +920,51 @@ error_unlock:
+ 	return r;
+ }
+ 
++static void amdgpu_vm_bo_get_memory(struct amdgpu_bo_va *bo_va,
++				    struct amdgpu_mem_stats *stats)
++{
++	struct amdgpu_vm *vm = bo_va->base.vm;
++	struct amdgpu_bo *bo = bo_va->base.bo;
++
++	if (!bo)
++		return;
++
++	/*
++	 * For now ignore BOs which are currently locked and potentially
++	 * changing their location.
++	 */
++	if (bo->tbo.base.resv != vm->root.bo->tbo.base.resv &&
++	    !dma_resv_trylock(bo->tbo.base.resv))
++		return;
++
++	amdgpu_bo_get_memory(bo, stats);
++	if (bo->tbo.base.resv != vm->root.bo->tbo.base.resv)
++	    dma_resv_unlock(bo->tbo.base.resv);
++}
++
+ void amdgpu_vm_get_memory(struct amdgpu_vm *vm,
+ 			  struct amdgpu_mem_stats *stats)
+ {
+ 	struct amdgpu_bo_va *bo_va, *tmp;
+ 
+ 	spin_lock(&vm->status_lock);
+-	list_for_each_entry_safe(bo_va, tmp, &vm->idle, base.vm_status) {
+-		if (!bo_va->base.bo)
+-			continue;
+-		amdgpu_bo_get_memory(bo_va->base.bo, stats);
+-	}
+-	list_for_each_entry_safe(bo_va, tmp, &vm->evicted, base.vm_status) {
+-		if (!bo_va->base.bo)
+-			continue;
+-		amdgpu_bo_get_memory(bo_va->base.bo, stats);
+-	}
+-	list_for_each_entry_safe(bo_va, tmp, &vm->relocated, base.vm_status) {
+-		if (!bo_va->base.bo)
+-			continue;
+-		amdgpu_bo_get_memory(bo_va->base.bo, stats);
+-	}
+-	list_for_each_entry_safe(bo_va, tmp, &vm->moved, base.vm_status) {
+-		if (!bo_va->base.bo)
+-			continue;
+-		amdgpu_bo_get_memory(bo_va->base.bo, stats);
+-	}
+-	list_for_each_entry_safe(bo_va, tmp, &vm->invalidated, base.vm_status) {
+-		if (!bo_va->base.bo)
+-			continue;
+-		amdgpu_bo_get_memory(bo_va->base.bo, stats);
+-	}
+-	list_for_each_entry_safe(bo_va, tmp, &vm->done, base.vm_status) {
+-		if (!bo_va->base.bo)
+-			continue;
+-		amdgpu_bo_get_memory(bo_va->base.bo, stats);
+-	}
++	list_for_each_entry_safe(bo_va, tmp, &vm->idle, base.vm_status)
++		amdgpu_vm_bo_get_memory(bo_va, stats);
++
++	list_for_each_entry_safe(bo_va, tmp, &vm->evicted, base.vm_status)
++		amdgpu_vm_bo_get_memory(bo_va, stats);
++
++	list_for_each_entry_safe(bo_va, tmp, &vm->relocated, base.vm_status)
++		amdgpu_vm_bo_get_memory(bo_va, stats);
++
++	list_for_each_entry_safe(bo_va, tmp, &vm->moved, base.vm_status)
++		amdgpu_vm_bo_get_memory(bo_va, stats);
++
++	list_for_each_entry_safe(bo_va, tmp, &vm->invalidated, base.vm_status)
++		amdgpu_vm_bo_get_memory(bo_va, stats);
++
++	list_for_each_entry_safe(bo_va, tmp, &vm->done, base.vm_status)
++		amdgpu_vm_bo_get_memory(bo_va, stats);
+ 	spin_unlock(&vm->status_lock);
+ }
+ 
+@@ -1674,18 +1683,30 @@ int amdgpu_vm_bo_clear_mappings(struct a
+ 
+ 	/* Insert partial mapping before the range */
+ 	if (!list_empty(&before->list)) {
++		struct amdgpu_bo *bo = before->bo_va->base.bo;
++
+ 		amdgpu_vm_it_insert(before, &vm->va);
+ 		if (before->flags & AMDGPU_PTE_PRT)
+ 			amdgpu_vm_prt_get(adev);
++
++		if (bo && bo->tbo.base.resv == vm->root.bo->tbo.base.resv &&
++		    !before->bo_va->base.moved)
++			amdgpu_vm_bo_moved(&before->bo_va->base);
+ 	} else {
+ 		kfree(before);
+ 	}
+ 
+ 	/* Insert partial mapping after the range */
+ 	if (!list_empty(&after->list)) {
++		struct amdgpu_bo *bo = after->bo_va->base.bo;
++
+ 		amdgpu_vm_it_insert(after, &vm->va);
+ 		if (after->flags & AMDGPU_PTE_PRT)
+ 			amdgpu_vm_prt_get(adev);
++
++		if (bo && bo->tbo.base.resv == vm->root.bo->tbo.base.resv &&
++		    !after->bo_va->base.moved)
++			amdgpu_vm_bo_moved(&after->bo_va->base);
+ 	} else {
+ 		kfree(after);
+ 	}
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/nbio_v2_3.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/nbio_v2_3.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/nbio_v2_3.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/nbio_v2_3.c	2023-06-23 22:44:45.000000000 +0200
+@@ -345,8 +345,8 @@ static void nbio_v2_3_init_registers(str
+ }
+ 
+ #define NAVI10_PCIE__LC_L0S_INACTIVITY_DEFAULT		0x00000000 // off by default, no gains over L1
+-#define NAVI10_PCIE__LC_L1_INACTIVITY_DEFAULT		0x00000009 // 1=1us, 9=1ms
+-#define NAVI10_PCIE__LC_L1_INACTIVITY_TBT_DEFAULT	0x0000000E // 4ms
++#define NAVI10_PCIE__LC_L1_INACTIVITY_DEFAULT		0x0000000A // 1=1us, 9=1ms, 10=4ms
++#define NAVI10_PCIE__LC_L1_INACTIVITY_TBT_DEFAULT	0x0000000E // 400ms
+ 
+ static void nbio_v2_3_enable_aspm(struct amdgpu_device *adev,
+ 				  bool enable)
+@@ -479,9 +479,12 @@ static void nbio_v2_3_program_aspm(struc
+ 		WREG32_SOC15(NBIO, 0, mmRCC_BIF_STRAP5, data);
+ 
+ 	def = data = RREG32_PCIE(smnPCIE_LC_CNTL);
+-	data &= ~PCIE_LC_CNTL__LC_L0S_INACTIVITY_MASK;
+-	data |= 0x9 << PCIE_LC_CNTL__LC_L1_INACTIVITY__SHIFT;
+-	data |= 0x1 << PCIE_LC_CNTL__LC_PMI_TO_L1_DIS__SHIFT;
++	data |= NAVI10_PCIE__LC_L0S_INACTIVITY_DEFAULT << PCIE_LC_CNTL__LC_L0S_INACTIVITY__SHIFT;
++	if (pci_is_thunderbolt_attached(adev->pdev))
++		data |= NAVI10_PCIE__LC_L1_INACTIVITY_TBT_DEFAULT  << PCIE_LC_CNTL__LC_L1_INACTIVITY__SHIFT;
++	else
++		data |= NAVI10_PCIE__LC_L1_INACTIVITY_DEFAULT << PCIE_LC_CNTL__LC_L1_INACTIVITY__SHIFT;
++	data &= ~PCIE_LC_CNTL__LC_PMI_TO_L1_DIS_MASK;
+ 	if (def != data)
+ 		WREG32_PCIE(smnPCIE_LC_CNTL, data);
+ 
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c	2023-06-23 22:44:45.000000000 +0200
+@@ -2306,7 +2306,7 @@ const struct amd_ip_funcs sdma_v4_0_ip_f
+ 
+ static const struct amdgpu_ring_funcs sdma_v4_0_ring_funcs = {
+ 	.type = AMDGPU_RING_TYPE_SDMA,
+-	.align_mask = 0xf,
++	.align_mask = 0xff,
+ 	.nop = SDMA_PKT_NOP_HEADER_OP(SDMA_OP_NOP),
+ 	.support_64bit_ptrs = true,
+ 	.secure_submission_supported = true,
+@@ -2338,7 +2338,7 @@ static const struct amdgpu_ring_funcs sd
+ 
+ static const struct amdgpu_ring_funcs sdma_v4_0_page_ring_funcs = {
+ 	.type = AMDGPU_RING_TYPE_SDMA,
+-	.align_mask = 0xf,
++	.align_mask = 0xff,
+ 	.nop = SDMA_PKT_NOP_HEADER_OP(SDMA_OP_NOP),
+ 	.support_64bit_ptrs = true,
+ 	.secure_submission_supported = true,
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/sdma_v4_4_2.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/sdma_v4_4_2.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/amdgpu/sdma_v4_4_2.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/amdgpu/sdma_v4_4_2.c	2023-06-23 22:44:45.000000000 +0200
+@@ -1740,7 +1740,7 @@ const struct amd_ip_funcs sdma_v4_4_2_ip
+ 
+ static const struct amdgpu_ring_funcs sdma_v4_4_2_ring_funcs = {
+ 	.type = AMDGPU_RING_TYPE_SDMA,
+-	.align_mask = 0xf,
++	.align_mask = 0xff,
+ 	.nop = SDMA_PKT_NOP_HEADER_OP(SDMA_OP_NOP),
+ 	.support_64bit_ptrs = true,
+ 	.get_rptr = sdma_v4_4_2_ring_get_rptr,
+@@ -1771,7 +1771,7 @@ static const struct amdgpu_ring_funcs sd
+ 
+ static const struct amdgpu_ring_funcs sdma_v4_4_2_page_ring_funcs = {
+ 	.type = AMDGPU_RING_TYPE_SDMA,
+-	.align_mask = 0xf,
++	.align_mask = 0xff,
+ 	.nop = SDMA_PKT_NOP_HEADER_OP(SDMA_OP_NOP),
+ 	.support_64bit_ptrs = true,
+ 	.get_rptr = sdma_v4_4_2_ring_get_rptr,
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c	2023-06-23 22:44:45.000000000 +0200
+@@ -5057,11 +5057,7 @@ static inline void fill_dc_dirty_rect(st
+ 				      s32 y, s32 width, s32 height,
+ 				      int *i, bool ffu)
+ {
+-	if (*i > DC_MAX_DIRTY_RECTS)
+-		return;
+-
+-	if (*i == DC_MAX_DIRTY_RECTS)
+-		goto out;
++	WARN_ON(*i >= DC_MAX_DIRTY_RECTS);
+ 
+ 	dirty_rect->x = x;
+ 	dirty_rect->y = y;
+@@ -5077,7 +5073,6 @@ static inline void fill_dc_dirty_rect(st
+ 			"[PLANE:%d] PSR SU dirty rect at (%d, %d) size (%d, %d)",
+ 			plane->base.id, x, y, width, height);
+ 
+-out:
+ 	(*i)++;
+ }
+ 
+@@ -5164,6 +5159,9 @@ static void fill_dc_dirty_rects(struct d
+ 
+ 	*dirty_regions_changed = bb_changed;
+ 
++	if ((num_clips + (bb_changed ? 2 : 0)) > DC_MAX_DIRTY_RECTS)
++		goto ffu;
++
+ 	if (bb_changed) {
+ 		fill_dc_dirty_rect(new_plane_state->plane, &dirty_rects[i],
+ 				   new_plane_state->crtc_x,
+@@ -5193,9 +5191,6 @@ static void fill_dc_dirty_rects(struct d
+ 				   new_plane_state->crtc_h, &i, false);
+ 	}
+ 
+-	if (i > DC_MAX_DIRTY_RECTS)
+-		goto ffu;
+-
+ 	flip_addrs->dirty_rect_count = i;
+ 	return;
+ 
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/display/dc/core/dc.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/display/dc/core/dc.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/display/dc/core/dc.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/display/dc/core/dc.c	2023-06-23 22:44:45.000000000 +0200
+@@ -1602,6 +1602,9 @@ bool dc_validate_boot_timing(const struc
+ 		return false;
+ 	}
+ 
++	if (dc->debug.force_odm_combine)
++		return false;
++
+ 	/* Check for enabled DIG to identify enabled display */
+ 	if (!link->link_enc->funcs->is_dig_enabled(link->link_enc))
+ 		return false;
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/display/dc/dce112/dce112_resource.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/display/dc/dce112/dce112_resource.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/display/dc/dce112/dce112_resource.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/display/dc/dce112/dce112_resource.c	2023-06-23 22:44:45.000000000 +0200
+@@ -970,10 +970,12 @@ enum dc_status resource_map_phy_clock_re
+ 		|| dc_is_virtual_signal(pipe_ctx->stream->signal))
+ 		pipe_ctx->clock_source =
+ 				dc->res_pool->dp_clock_source;
+-	else
+-		pipe_ctx->clock_source = find_matching_pll(
+-			&context->res_ctx, dc->res_pool,
+-			stream);
++	else {
++		if (stream && stream->link && stream->link->link_enc)
++			pipe_ctx->clock_source = find_matching_pll(
++				&context->res_ctx, dc->res_pool,
++				stream);
++	}
+ 
+ 	if (pipe_ctx->clock_source == NULL)
+ 		return DC_NO_CLOCK_SOURCE_RESOURCE;
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/display/dc/link/protocols/link_dp_irq_handler.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/display/dc/link/protocols/link_dp_irq_handler.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/display/dc/link/protocols/link_dp_irq_handler.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/display/dc/link/protocols/link_dp_irq_handler.c	2023-06-23 22:44:45.000000000 +0200
+@@ -82,8 +82,15 @@ bool dp_parse_link_loss_status(
+ 	}
+ 
+ 	/* Check interlane align.*/
+-	if (sink_status_changed ||
+-		!hpd_irq_dpcd_data->bytes.lane_status_updated.bits.INTERLANE_ALIGN_DONE) {
++	if (link_dp_get_encoding_format(&link->cur_link_settings) == DP_128b_132b_ENCODING &&
++			(!hpd_irq_dpcd_data->bytes.lane_status_updated.bits.EQ_INTERLANE_ALIGN_DONE_128b_132b ||
++			 !hpd_irq_dpcd_data->bytes.lane_status_updated.bits.CDS_INTERLANE_ALIGN_DONE_128b_132b)) {
++		sink_status_changed = true;
++	} else if (!hpd_irq_dpcd_data->bytes.lane_status_updated.bits.INTERLANE_ALIGN_DONE) {
++		sink_status_changed = true;
++	}
++
++	if (sink_status_changed) {
+ 
+ 		DC_LOG_HW_HPD_IRQ("%s: Link Status changed.\n", __func__);
+ 
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/display/modules/power/power_helpers.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/display/modules/power/power_helpers.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/display/modules/power/power_helpers.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/display/modules/power/power_helpers.c	2023-06-23 22:44:45.000000000 +0200
+@@ -818,6 +818,8 @@ bool is_psr_su_specific_panel(struct dc_
+ 				((dpcd_caps->sink_dev_id_str[1] == 0x08 && dpcd_caps->sink_dev_id_str[0] == 0x08) ||
+ 				(dpcd_caps->sink_dev_id_str[1] == 0x08 && dpcd_caps->sink_dev_id_str[0] == 0x07)))
+ 				isPSRSUSupported = false;
++			else if (dpcd_caps->sink_dev_id_str[1] == 0x08 && dpcd_caps->sink_dev_id_str[0] == 0x03)
++				isPSRSUSupported = false;
+ 			else if (dpcd_caps->psr_info.force_psrsu_cap == 0x1)
+ 				isPSRSUSupported = true;
+ 		}
+diff -Npur linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_0_ppt.c linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_0_ppt.c
+--- linux-9bd9be5cbaf8a8faa175ef4fba04a5623281debe/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_0_ppt.c	2023-06-23 04:16:48.000000000 +0200
++++ linux-134ea95255cf359a2e6d70308c15243c3fdf8eaf/drivers/gpu/drm/amd/pm/swsmu/smu13/smu_v13_0_0_ppt.c	2023-06-23 22:44:45.000000000 +0200
+@@ -1300,6 +1300,7 @@ static int smu_v13_0_0_get_thermal_tempe
+ 	range->mem_emergency_max = (pptable->SkuTable.TemperatureLimit[TEMP_MEM] + CTF_OFFSET_MEM)*
+ 		SMU_TEMPERATURE_UNITS_PER_CENTIGRADES;
+ 	range->software_shutdown_temp = powerplay_table->software_shutdown_temp;
++	range->software_shutdown_temp_offset = pptable->SkuTable.FanAbnormalTempLimitOffset;
+ 
+ 	return 0;
+ }
