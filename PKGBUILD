@@ -15,6 +15,6 @@ source=(clean)
 sha256sums=('SKIP')
 
 package() {
-	install -Dm755 clean "$pkgdir/usr/bin/"
+    install -Dm755 clean "$pkgdir/usr/bin/clean"
 }
 
