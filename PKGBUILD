@@ -7,7 +7,7 @@
 #
 
 pkgname=tpasm
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc="A cross assembler for 6805, 6809, 68HC11, 6502, Sunplus, 8051, Z80, PIC, AVR and c166"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ license=('GPL')
 depends=(gcc-libs)
 options=('strip' '!emptydirs')
 source=(http://www.sqrt.com/downloads/tpasm.tgz)
-md5sums=('f7019e0453f9f25a461118652b81d294')
+sha256sums=('f5b4db9329f6bb160572fc1eeb0e4352796767200426a679849014ea5eb2392c')
 
 #
 #
