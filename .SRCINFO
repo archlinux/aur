@@ -1,7 +1,7 @@
 pkgbase = elitech-datareader-git
 	pkgdesc = Data collecting tool for Temperature data logger RC-4/RC-5 and Temperature and Humidity data logger RC-4HC.
 	pkgver = v0.9.4.r32.g55a2863
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/civic/elitech-datareader
 	install = elitech-datareader.install
 	arch = any
@@ -10,14 +10,13 @@ pkgbase = elitech-datareader-git
 	makedepends = python-setuptools
 	depends = python-six>=1.9.0
 	depends = python-pyserial>=2.7
-	depends = python2-enum34>=1.1.6
 	provides = elitech-datareader
 	conflicts = elitech-datareader
 	source = elitech-datareader-git::git+https://github.com/civic/elitech-datareader.git
 	source = elitech-datareader.install
 	source = 51-elitech-RC.rules
 	sha256sums = SKIP
-	sha256sums = 943af2fb8062272276754970e891ccca095b8ab4018b0589f7bf7500f8a6508a
+	sha256sums = 195e70a1304d95d22f9490fe842da27be065f823b7ae68efbefe3756067a2885
 	sha256sums = ddaa3a01f7b219968cfc4255b54482a20398cb1e917c5abc97be66e7a55d6e0c
 
 pkgname = elitech-datareader-git

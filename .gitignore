@@ -1,4 +1,6 @@
 /test.py
 *.pkg.tar.xz
+*.pkg.tar.zst
 elitech-datareader-git
 prepare.sh
+src

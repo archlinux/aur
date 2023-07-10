@@ -1,7 +1,7 @@
 post_install() {
  sudo udevadm control --reload-rules  
  
-  grep -q '^\s*[^#].*1a86/7523.*' "/lib/udev/rules.d/90-brltty-device.rules" &&\
+  grep -q '^\s*[^#].*1a86/7523.*' "/lib/udev/rules.d/90-brltty-device.rules" 2>/dev/null &&\
    cat<<'EOL'
 Found 1a86/7523 in /lib/udev/rules.d/90-brltty-device.rules. Possibly conflicting rules. To suppress the conflicting rule run:
   sudo ln -s /dev/null /etc/udev/rules.d/90-brltty-device.rules && sudo udevadm control --reload-rules
