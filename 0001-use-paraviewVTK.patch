@@ -23,7 +23,7 @@
 -VTK_LIB =	-lvtkCommonCore-6.2 -lvtkIOCore-6.2 -lvtkIOXML-6.2 -lvtkIOLegacy-6.2 -lvtkCommonDataModel-6.2 -lvtkIOParallel-6.2 -lvtkParallelCore-6.2 -lvtkParallelMPI-6.2 -lvtkIOImage-6.2 -lvtkCommonExecutionModel-6.2 -lvtkFiltersCore-6.2 -lvtkIOParallelXML-6.2
 +VTK_INC =	-I/opt/paraview/include/paraview
 +VTK_PATH =	-L/opt/paraview/lib
-+VTK_LIB =	-lvtkCommonCore -lvtkIOCore -lvtkIOXML -lvtkIOLegacy -lvtkCommonDataModel -lvtkIOParallel -lvtkParallelCore -lvtkParallelMPI -lvtkIOImage -lvtkCommonExecutionModel -lvtkFiltersCore -lvtkIOParallelXML
++VTK_LIB =	-lvtkCommonCore -lvtkIOCore -lvtkIOXML -lvtkIOLegacy -lvtkCommonDataModel -lvtkIOParallel -lvtkParallelCore -lvtkParallelMPI -lvtkIOImage -lvtkCommonExecutionModel -lvtkFiltersCore -lvtkIOParallelXML -lvtksys
  
  # ---------------------------------------------------------------------
  # build rules and dependencies

@@ -1,22 +1,19 @@
 pkgbase = liggghts-git
 	pkgdesc = Open Source Discrete Element Method Particle Simulation Software
-	pkgver = 3.8.0.r45.g86544c3f
+	pkgver = 3.8.0.r81.gbbd23c85
 	pkgrel = 1
 	url = https://github.com/CFDEMproject/LIGGGHTS-PUBLIC
-	arch = any
+	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = paraview
 	depends = openmpi
-	depends = voro++
 	depends = fftw
 	provides = liggghts
 	conflicts = liggghts
 	source = liggghts-git::git+https://github.com/CFDEMproject/LIGGGHTS-PUBLIC.git
 	source = 0001-use-paraviewVTK.patch
-	source = 0002-fix-int-to-string-conversion.patch
 	sha256sums = SKIP
-	sha256sums = cfbd4027050a33653b9960edc5a503947a39845cee50063a663189696e63f66f
-	sha256sums = 047ae8867d90550e34558ee1dfe5fef582a22922632863c66ad4a288e33b2a3c
+	sha256sums = da0aa7f50d91f721121e782ed467abee1b787c0973ba403a32b38809ba4b4c5a
 
 pkgname = liggghts-git

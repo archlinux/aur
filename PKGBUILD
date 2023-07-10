@@ -3,23 +3,21 @@
 
 pkgname=liggghts-git
 _execname=liggghts
-pkgver=3.8.0.r45.g86544c3f
+pkgver=3.8.0.r81.gbbd23c85
 pkgrel=1
 pkgdesc="Open Source Discrete Element Method Particle Simulation Software"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/CFDEMproject/LIGGGHTS-PUBLIC"
 license=('GPL')
-depends=('paraview' 'openmpi' 'voro++' 'fftw') 
+depends=('paraview' 'openmpi' 'fftw') 
 makedepends=('git')
 provides=('liggghts')
 conflicts=('liggghts')
 source=('liggghts-git::git+https://github.com/CFDEMproject/LIGGGHTS-PUBLIC.git'
-	'0001-use-paraviewVTK.patch'
-	'0002-fix-int-to-string-conversion.patch')
+	'0001-use-paraviewVTK.patch')
 
 sha256sums=('SKIP'
-	'cfbd4027050a33653b9960edc5a503947a39845cee50063a663189696e63f66f'
-	'047ae8867d90550e34558ee1dfe5fef582a22922632863c66ad4a288e33b2a3c')
+	'da0aa7f50d91f721121e782ed467abee1b787c0973ba403a32b38809ba4b4c5a')
 
 _make="mpi"
 
@@ -53,7 +51,11 @@ build() {
   mkdir -p "$pkgdir/usr/bin/"
   
   cd "$srcdir/$pkgname"
-  install -Dm 755 src/lmp_$_make "$pkgdir/usr/bin/$_execname"
+  install -Dm 755 src/lmp_$_make "$pkgdir/usr/bin/${_execname}-exec"
+  install -Dm 755 /dev/null "$pkgdir/usr/bin/${_execname}" 
+  echo "#!/bin/sh" > "$pkgdir/usr/bin/${_execname}"
+  echo 'export LD_LIBRARY_PATH=/opt/paraview/lib/:"${LD_LIBRARY_PATH}"' >> "$pkgdir/usr/bin/${_execname}"
+  echo "exec /usr/bin/${_execname}-exec \"\$@\"" >> "$pkgdir/usr/bin/${_execname}"
   
   cp -r --no-preserve='ownership' examples/LIGGGHTS/Tutorials_public/* "$pkgdir/usr/share/$pkgname/examples"
 #   install -Dm644 examples/LIGGGHTS/Tutorials_public/ $pkgdir/usr/share/$pkgname/examples
