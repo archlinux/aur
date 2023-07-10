@@ -18,6 +18,8 @@ _cachy_config=${_cachy_config-y}
 # 'tt' - select 'Task Type Scheduler by Hamad Marri'
 # 'hardened' - select 'BORE Scheduler hardened' ## kernel with hardened config and hardening patches with the bore scheduler
 # 'cachyos' - select 'EEVDF-BORE Variant Scheduler' EEVDF includes latency nice
+# 'eevdf' - select 'EEVDF Scheduler' EEVDF includes latency nice
+# 'rt' - select CFS, but includes a series of realtime patches
 _cpusched=${_cpusched-cachyos}
 
 ## Apply some suggested sysctl values from the bore developer
@@ -134,14 +136,6 @@ _use_auto_optimization=${_use_auto_optimization-y}
 # disable debug to lower the size of the kernel
 _disable_debug=${_disable_debug-}
 
-### Selecting the ZSTD kernel and modules compression level
-# ATTENTION - one of two predefined values should be selected!
-# 'ultra' - highest compression ratio
-# 'normal' - standard compression ratio
-# WARNING: the ultra settings can sometimes
-# be counterproductive in both size and speed.
-_zstd_level_value=${_zstd_level_value-normal}
-
 # Clang LTO mode, only available with the "llvm" compiler - options are "none", "full" or "thin".
 # ATTENTION - one of three predefined values should be selected!
 # "full: uses 1 thread for Linking, slow and uses more memory, theoretically with the highest performance gains."
@@ -164,6 +158,8 @@ _use_lto_suffix=${_use_lto_suffix-y}
 _use_kcfi=${_use_kcfi-}
 
 # Build the zfs module in to the kernel
+# WARNING: The ZFS module doesn't build with selected RT sched due to licensing issues.
+# If you use ZFS, refrain from building the RT kernel
 _build_zfs=${_build_zfs-}
 
 # Enable bcachefs
@@ -177,18 +173,18 @@ else
     pkgsuffix=cachyos-rc
     pkgbase=linux-$pkgsuffix
 fi
-_major=6.4
+_major=6.5
 _minor=0
 #_minorc=$((_minor+1))
-_rcver=rc7
+_rcver=rc1
 pkgver=${_major}.${_rcver}
 #_stable=${_major}.${_minor}
 #_stable=${_major}
 _stable=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
-pkgdesc='Linux EEVDF scheduler Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=2
+pkgdesc='Linux EEVDF-BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
+pkgrel=1
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -220,8 +216,10 @@ fi
 
 case "$_cpusched" in
     cachyos) # CachyOS Scheduler (EEVDF + BORE)
-        source+=("${_patchsource}/sched/0001-EEVDF.patch"
+        source+=("${_patchsource}/sched/0001-EEVDF-cachy.patch"
                  "${_patchsource}/sched/0001-bore-eevdf.patch");;
+    eevdf) # EEVDF Scheduler
+        source+=("${_patchsource}/sched/0001-EEVDF-cachy.patch");;
     pds|bmq) # BMQ/PDS scheduler
         source+=("${_patchsource}/sched/0001-prjc-cachy.patch"
                  linux-cachyos-prjc.install);;
@@ -230,6 +228,9 @@ case "$_cpusched" in
     bore) ## BORE Scheduler
         [ -n "$_tune_bore" ] && source+=("${_patchsource}/misc/0001-bore-tuning-sysctl.patch")
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;
+    rt) ## CFS with RT patches
+        source+=("${_patchsource}/misc/0001-rt.patch"
+                 linux-cachyos-rt.install);;
     hardened) ## Hardened Patches with BORE Scheduler
         source+=("${_patchsource}/sched/0001-bore-cachy.patch"
                  "${_patchsource}/misc/0001-hardened.patch");;
@@ -305,7 +306,8 @@ prepare() {
         bmq) scripts/config -e SCHED_ALT -e SCHED_BMQ -d SCHED_PDS -e PSI_DEFAULT_DISABLED;;
         tt)  scripts/config -e TT_SCHED -e TT_ACCOUNTING_STATS;;
         bore|hardened|cachyos) scripts/config -e SCHED_BORE;;
-        cfs) ;;
+        cfs|eevdf) ;;
+        rt) scripts/config -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPT_NONE -e PREEMPT_RT -e PREEMPT_LAZY -d PREEMPT_DYNAMIC -e HAVE_PREEMPT_LAZY -d PREEMPT_BUILD;;
         *) _die "The value $_cpusched is invalid. Choose the correct one again.";;
     esac
 
@@ -405,16 +407,20 @@ prepare() {
     echo "Selecting '$_tickrate' tick type..."
 
     ### Select preempt type
-    [ -z "$_preempt" ] && _die "The value is empty. Choose the correct one again."
 
-    case "$_preempt" in
-        full) scripts/config -e PREEMPT_BUILD -d PREEMPT_NONE -d PREEMPT_VOLUNTARY -e PREEMPT -e PREEMPT_COUNT -e PREEMPTION -e PREEMPT_DYNAMIC;;
-        voluntary) scripts/config -e PREEMPT_BUILD -d PREEMPT_NONE -e PREEMPT_VOLUNTARY -d PREEMPT -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_DYNAMIC;;
-        server) scripts/config -e PREEMPT_NONE_BUILD -e PREEMPT_NONE -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPTION -d PREEMPT_DYNAMIC;;
-        *) _die "The value '$_preempt' is invalid. Choose the correct one again.";;
-    esac
+    # We should not set up the PREEMPT for RT kernels
+    if [ "$_cpusched" != "rt" ]; then
+        [ -z "$_preempt" ] && _die "The value is empty. Choose the correct one again."
 
-    echo "Selecting '$_preempt' preempt type..."
+        case "$_preempt" in
+            full) scripts/config -e PREEMPT_BUILD -d PREEMPT_NONE -d PREEMPT_VOLUNTARY -e PREEMPT -e PREEMPT_COUNT -e PREEMPTION -e PREEMPT_DYNAMIC;;
+            voluntary) scripts/config -e PREEMPT_BUILD -d PREEMPT_NONE -e PREEMPT_VOLUNTARY -d PREEMPT -e PREEMPT_COUNT -e PREEMPTION -d PREEMPT_DYNAMIC;;
+            server) scripts/config -e PREEMPT_NONE_BUILD -e PREEMPT_NONE -d PREEMPT_VOLUNTARY -d PREEMPT -d PREEMPTION -d PREEMPT_DYNAMIC;;
+            *) _die "The value '$_preempt' is invalid. Choose the correct one again.";;
+        esac
+
+        echo "Selecting '$_preempt' preempt type..."
+    fi
 
     ### Enable O3
     if [ -n "$_cc_harder" ] && [ -z "$_cc_size" ]; then
@@ -569,17 +575,6 @@ prepare() {
             -d LRNG_RUNTIME_FORCE_SEEDING_DISABLE
     fi
 
-    ### Selecting the ZSTD modules and kernel compression level
-    [ -z "$_zstd_level_value" ] && _die "The value is empty. Choose the correct one again."
-
-    case "$_zstd_level_value" in
-        ultra) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 19 -e MODULE_COMPRESS_ZSTD_ULTRA --set-val MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22 --set-val ZSTD_COMPRESSION_LEVEL 22;;
-        normal) scripts/config --set-val MODULE_COMPRESS_ZSTD_LEVEL 9 -d MODULE_COMPRESS_ZSTD_ULTRA --set-val ZSTD_COMPRESSION_LEVEL 19;;
-        *) _die "The value '$_zstd_level_value' is invalid. Choose the correct one again.";;
-    esac
-
-    echo "Selecting '$_zstd_level_value' ZSTD modules and kernel compression level..."
-
     ### Disable DEBUG
     if [ -n "$_disable_debug" ]; then
         scripts/config -d DEBUG_INFO \
@@ -698,7 +693,7 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
         DEPMOD=/doesnt/exist  modules_install  # Suppress depmod
 
     # remove build and source links
@@ -814,9 +809,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('a576bc0ecee89b1db1070eb9013eacd02b8fc94fa4a2c08aca5354c1f21db1b191542e5866dc4c4ad259dfc7305b65d4c4eac79522450c6f859be32cfb577643'
-        '133085b75ef7a5234a6090a375134ba7d5970d8e136530d66085f013ea0f9e50c16c475cb74a18bbad9a82f1b43306b4db754ecdaa1c17e5c8acdbf981ccbfb6'
+b2sums=('f97e884f0e34c53d78de6b9c734b14d38a0d51dcbdfdb47ed8fa11ff333e84338b937c4bc24b074a07d91ef654e6d7cac3fdfc85469b2652dca17481868b60ef'
+        '6630b807e406ca597e12b4b318dd3ffbc9ca286e82eadbe1033d22573b045d6f34683d3bf778ae4d7df805c56a0fb14816f8c0060f48203a1268f685a0efc51c'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        'aec8d5a9716fb5139303d6deeae6fe0cc1fef731de9be7da3448859dea0c1fb71c8be74e43d9af48e517fb8bac89209d5ea2fcfc9338196c72524509b0cbb8c0'
-        '1d9844923224c45dbf1c428592dfa607997284c9421dd6906166caeb37d6cc109cfc445a0f544578ccd77803ec5a616a106eb89cd5f95eba15273a6af72c1680'
-        'ce9cf211bf76c09bbea0f824fbbba37c4dcd19d3679220286e5d03a080b2ef255dccfb5158206985586cb95303b15b3014c4a4b7bde95b1e8b08f38f6e861491')
+        'ec39c1a9a1ab81fffb4f63ddede720aa7fb1b72bacecc132d117f34e33d4d6fa0656424c8023b79ecadfe992474d0adb1a8fc5e6542d3a55a14ebafe98bc2ff9'
+        '02d7365976b6882eaa6e0f52043806d54346778b434801a945b067f4db022abd1cb4fd6b416378160bd4aa8c0757056202ff9257ced6272b38217a529140c70b'
+        '78ca73287674aaa0a2fb86969e6a2885ae10fefb7b7eedd0c4f8db6a3320e6617d370e5cd37cf96d68c14e22b06ceef86f07bb44c44dcb7e009c7422ce149b4d')
