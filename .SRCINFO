@@ -1,7 +1,7 @@
 pkgbase = query-master
 	pkgdesc = Just another MySQL GUI client
-	pkgver = 0.1.5
-	pkgrel = 2
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = https://github.com/invisal/query-master
 	arch = any
 	license = MIT
@@ -11,9 +11,9 @@ pkgbase = query-master
 	depends = electron
 	depends = hicolor-icon-theme
 	conflicts = query-master
-	source = query-master-0.1.5.tar.gz::https://github.com/invisal/query-master/archive/refs/tags/v0.1.5.tar.gz
+	source = query-master-0.1.6.tar.gz::https://github.com/invisal/query-master/archive/refs/tags/v0.1.6.tar.gz
 	source = query-master.sh
-	sha256sums = 3962bd7ef32edaeb8316880f1752ef4ccc987c4a46dd4fd00a5e8ae06586a1cd
+	sha256sums = 5067633c0a238e000e4873f0594833654b6ec931fdb70e7f5efc92753d7fc92d
 	sha256sums = 2ed3e18aa92ebd426c7330619d8a458bd4d31d64faebc5ee15c35cf34ea15c7e
 
 pkgname = query-master
