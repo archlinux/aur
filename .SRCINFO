@@ -1,5 +1,5 @@
 pkgbase = clean
-	pkgdesc = $ clean - easy command for arch linux, orphans, cache
+	pkgdesc = Command for cleaning orphans, cache, trash
 	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/architalia/clean
@@ -7,7 +7,7 @@ pkgbase = clean
 	license = GPL3
 	depends = bash
 	depends = bc
-	source = https://raw.githubusercontent.com/ArchItalia/clean/main/src/clean
-	sha256sums = SKIP
+	source = clean-2.1.tar.gz::https://github.com/ArchItalia/clean/archive/refs/tags/v2.1.tar.gz
+	sha256sums = fd5d117e98e162886c7782ea2278cb8de2bd1ebabdf6e1914a96991315ca14df
 
 pkgname = clean
