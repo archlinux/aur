@@ -1,16 +1,14 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=glue-core
 pkgname=glueviz-doc
-pkgver=1.0.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Documentation for Glue"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://glueviz.org"
 license=('BSD')
-makedepends=("python-${_pyname}=1.0.1"
+makedepends=("python-${_pyname}=${pkgver}"
              'glueviz'
-             'python-bottleneck'
-             'python-echo'
              'python-sphinx-automodapi'
              'python-numpydoc'
              'python-sphinxcontrib-spelling'
@@ -20,7 +18,7 @@ makedepends=("python-${_pyname}=1.0.1"
              'nuspell'
              'libvoikko')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('930953e08bec78092ba037015c84e288')
+md5sums=('2f82afa05d582e5f552a25c4b740cdd0')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}/doc
