@@ -7,6 +7,7 @@ pkgbase = cider
 	license = AGPL3
 	makedepends = nvm
 	makedepends = fontconfig
+	makedepends = git
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
