@@ -1,6 +1,6 @@
 pkgbase = ulogviewer-bin
 	pkgdesc = Cross-Platform Universal Log Viewer.
-	pkgver = 3.0.4.629
+	pkgver = 3.0.5.709
 	pkgrel = 1
 	url = https://carina-studio.github.io/ULogViewer/
 	arch = aarch64
@@ -13,12 +13,12 @@ pkgbase = ulogviewer-bin
 	depends = gcc-libs
 	depends = dotnet-runtime
 	conflicts = ulogviewer
-	noextract = ulogviewer-3.0.4.629-x86_64.tar.gz
+	noextract = ulogviewer-3.0.5.709-x86_64.tar.gz
 	source = LICENSE::https://raw.githubusercontent.com/carina-studio/ULogViewer/master/LICENSE
 	sha256sums = 4b023d792eb6b929311286a207c6493e18875bd9d320db8f7a996dd5d5716fea
-	source_aarch64 = ulogviewer-3.0.4.629-aarch64.tar.gz::https://github.com/carina-studio/ULogViewer/releases/download/3.0.4.629/ULogViewer-3.0.4.629-linux-arm64.zip
-	sha256sums_aarch64 = 06d6517e82ebad9e5499da0b8d48d86b6769559dfa06e05e295b4fdeac0f038e
-	source_x86_64 = ulogviewer-3.0.4.629-x86_64.tar.gz::https://github.com/carina-studio/ULogViewer/releases/download/3.0.4.629/ULogViewer-3.0.4.629-linux-x64.zip
-	sha256sums_x86_64 = b572ad2530ced5b36911a45c691e3239f7955b90152a412d6a11fb42e6e2f29b
+	source_aarch64 = ulogviewer-3.0.5.709-aarch64.tar.gz::https://github.com/carina-studio/ULogViewer/releases/download/3.0.5.709/ULogViewer-3.0.5.709-linux-arm64.zip
+	sha256sums_aarch64 = 37aa1243c7def4fdce8d9b099fa8ec9aaeb0e15217303524275c601a3841807c
+	source_x86_64 = ulogviewer-3.0.5.709-x86_64.tar.gz::https://github.com/carina-studio/ULogViewer/releases/download/3.0.5.709/ULogViewer-3.0.5.709-linux-x64.zip
+	sha256sums_x86_64 = fc9f69f27358388e630e24d3d0ee6d4206f84b4daab6c939a3c6edf07bed8031
 
 pkgname = ulogviewer-bin
