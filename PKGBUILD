@@ -16,6 +16,7 @@ options+=(!strip) # stripping causes crashes
 
 prepare() {
 	tar -xf data.tar.gz
+	sed -i 's/x86_64-linux-gnu\///g' ${srcdir}/usr/bin/artisan
 }
 
 package() {
