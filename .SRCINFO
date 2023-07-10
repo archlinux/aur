@@ -1,0 +1,26 @@
+pkgbase = nanobind
+	pkgdesc = tiny and efficient C++/Python bindings
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://nanobind.readthedocs.io
+	arch = any
+	license = custom:BSD-3-clause
+	checkdepends = python-pytest
+	checkdepends = python-scipy
+	checkdepends = python-pytorch
+	checkdepends = python-tensorflow
+	checkdepends = python-jax
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = cmake
+	makedepends = eigen
+	makedepends = git
+	depends = python
+	source = nanobind-1.4.0::git+https://github.com/wjakob/nanobind.git#tag=v1.4.0
+	source = git+https://github.com/Tessil/robin-map.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = nanobind
