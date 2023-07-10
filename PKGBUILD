@@ -1,7 +1,7 @@
 # Maintainer: Simon Brand <simon.brand@postadigitale.de>
 
 pkgname=cryptographic-id-rs
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 protocol_ver=0.2.0
 pkgdesc='Attest the trustworthiness of a device against a human using asymmetric cryptography'
@@ -20,9 +20,9 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://gitlab.com/cryptographic_id/cryptographic-id-rs/-/archive/v${pkgver}/cryptographic-id-rs-v${pkgver}.tar.gz"
   "${pkgname}-proto-${protocol_ver}.tar.gz::https://gitlab.com/cryptographic_id/cryptographic-id-protocol/-/archive/v${protocol_ver}/cryptographic-id-protocol-v${protocol_ver}.tar.gz"
 )
-sha512sums=('acff06e2b1a498d574c598f45fd25e98433f1bd06263b837af45a6b1339e58548a4b368f43f21294dfe5dcb479b202f83d86221ba56b4437e33c1852bb3cd95c'
+sha512sums=('9a8266e8db230b6974b528b11079d5a6eedb033f2916c3961d409c86c9eb7905272c296c3522c6bf4bc29df6ba72af1ed200366388253cb5787936928ee034b3'
             '35263ae6d8745022f9a9fab98543459c6977d930cc54a92fe53e149f9b58af798908745696e142f0c7a997d0c9548d6cad408efcc8182fd736a567c76c98f6d0')
-b2sums=('cd395c54f0fdc8143d6332083104cdfce7356fbdbb43bf0059c11029702c40167ef3c662c7aa5d906470009c469445bbb8092abbf221ce8bd524a61db324bfd7'
+b2sums=('0e9d296cb5ef3800f63e5ccb746db8b064d6b9ef7a7acd9003f22c2b5062b83877ea2fec4192f23ac86b201379ab2b6d14b2602cbfdf4c05f39775809e4ecae4'
         '14daf4540eb8648b5d14c7b1338cc6d29d0e21bc8794416aaea25c5ae26ab2a159eac582c35e9dd40fab6d99c9a2f8aaf6ab597705737a947bdaec4d54ac3474')
 
 prepare() {
