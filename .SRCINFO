@@ -1,7 +1,7 @@
 pkgbase = python-shtools
 	pkgdesc = SHTOOLS: Tools for working with spherical harmonics
-	pkgver = 4.10
-	pkgrel = 1
+	pkgver = 4.10.3
+	pkgrel = 0
 	url = https://shtools.oca.eu
 	arch = any
 	license = BSD 3-clause
@@ -10,16 +10,14 @@ pkgbase = python-shtools
 	depends = fftw
 	depends = blas
 	depends = lapack
-	source = https://github.com/SHTOOLS/SHTOOLS/archive/v4.10.tar.gz
+	source = https://github.com/SHTOOLS/SHTOOLS/archive/v4.10.3.tar.gz
 	source = site.cfg
-	source = Makefile.patch
-	sha256sums = 03811abb576a1ebc697487256dc6e3d97ab9f88288efea8a2951d25613940dd1
+	sha256sums = ff630d6eeea73891c8c50bc73ad1c8539b7a0b5095449fbad1554493c4714d1e
 	sha256sums = 19a427bf02f65ffc062ad817c3fa1d56ded3b53a362c4d1258e3ed98c840cdb2
-	sha256sums = 579a7ee861ba3841969d4b2e7e7cced23ee819f46e86d2ce629737e7b1b8d55a
 
 pkgname = shtools
 	pkgdesc = Fortran interface for SHTOOLS
-	provides = shtools-fortran
+	provides = shtools
 
 pkgname = python-shtools
 	pkgdesc = Python interface for SHTOOLS (pyshtools)

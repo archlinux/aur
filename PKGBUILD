@@ -3,24 +3,21 @@
 # Maintainer: Roelof Rietbroek <roelof@wobbly.earth>
 pkgbase=python-shtools
 pkgname=(shtools python-shtools)
-pkgver=4.10
-pkgrel=1
+pkgver=4.10.3
+pkgrel=0
 pkgdesc="SHTOOLS: Tools for working with spherical harmonics"
 arch=('any')
 url="https://shtools.oca.eu"
 license=('BSD 3-clause')
 depends=("fftw" "blas" "lapack")
 makedepends=("gcc-fortran" "python-setuptools")
-source=("https://github.com/SHTOOLS/SHTOOLS/archive/v$pkgver.tar.gz" "site.cfg" "Makefile.patch" )
+source=("https://github.com/SHTOOLS/SHTOOLS/archive/v$pkgver.tar.gz" "site.cfg" )
 noextract=()
-sha256sums=('03811abb576a1ebc697487256dc6e3d97ab9f88288efea8a2951d25613940dd1'
-            '19a427bf02f65ffc062ad817c3fa1d56ded3b53a362c4d1258e3ed98c840cdb2'
-            '579a7ee861ba3841969d4b2e7e7cced23ee819f46e86d2ce629737e7b1b8d55a')
+sha256sums=('ff630d6eeea73891c8c50bc73ad1c8539b7a0b5095449fbad1554493c4714d1e'
+            '19a427bf02f65ffc062ad817c3fa1d56ded3b53a362c4d1258e3ed98c840cdb2')
 prepare(){
    cd ${srcdir}/SHTOOLS-${pkgver}/
    cp ../site.cfg .
-   ##patch Makefile so it uses AR/RANLIB
-   patch src/Makefile < ../Makefile.patch
    cd ${_startdir}
 }
 
@@ -36,7 +33,7 @@ package_python-shtools() {
 
 
 package_shtools(){
-   provides=(shtools-fortran)
+   provides=(shtools)
    pkgdesc="Fortran interface for SHTOOLS "
    cd ${srcdir}/SHTOOLS-${pkgver}/
    export MAKEFLAGS="-j1"
