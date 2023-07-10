@@ -30,4 +30,5 @@ package() {
 	cd "$pkgname-$pkgver"
 	export PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
