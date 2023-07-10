@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pika-backup
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Keep your data safe"
 arch=('x86_64' 'aarch64')
 url="https://apps.gnome.org/app/org.gnome.World.PikaBackup"
 license=('GPL3')
-depends=('borg' 'fuse3' 'libadwaita' 'libsecret')
+depends=('borg' 'fuse3' 'libadwaita' 'libsecret' 'python-pyfuse3')
 makedepends=('cargo' 'git' 'itstool' 'meson')
 checkdepends=('appstream-glib')
 #checkdepends+=('xorg-server-xvfb')
