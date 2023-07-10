@@ -1,14 +1,22 @@
 pkgbase = oqsprovider
 	pkgdesc = OpenSSL 3 provider containing post-quantum algorithms
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = python
+	makedepends = python-jinja
+	makedepends = python-tabulate
+	makedepends = python-yaml
 	depends = liboqs
 	depends = openssl
 	source = oqsprovider-0.5.0.tar.gz::https://github.com/open-quantum-safe/oqs-provider/archive/refs/tags/0.5.0.tar.gz
+	source = liboqs-0.8.0.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/0.8.0.tar.gz
+	source = enable-algs.patch
 	b2sums = 93a3ae7d2043728f2eca90b3d111b94c75c46f27f3323da1f79ca6dc32357f27099f7f76c7ba6cf6357b0b1636789379ffc7363b369febdca7af69fb01a4abd5
+	b2sums = f84a290ece4fffe458988e2ddbbcb4efb05f0d2be97ab21d4ccd60720977477d9b36cd2a9c69bad7815c5ed69eaf3526ee8fc65d819c0b3c341d326bd435bc16
+	b2sums = 71286fda50b1830ee70e3cc23b647499f812348c3303c518147f2ec62c300bca346147e6bdf540748a5ca6400c6134607ffd47f6166b3b6661c53aabb8035af2
 
 pkgname = oqsprovider
