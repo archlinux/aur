@@ -1,7 +1,7 @@
 pkgbase='python-git-reviewers'
 pkgname=('python-git-reviewers')
 _module='git-reviewers'
-pkgver='0.13.4'
+pkgver='0.13.5'
 pkgrel=1
 pkgdesc="Suggest reviewers for your git branch"
 url="https://github.com/albertyw/git-reviewers"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/g/git-reviewers/git-reviewers-${pkgver}.tar.gz")
-md5sums=('0a54f438b0f90fd958ee940e110727a3')
+md5sums=('83cb31e070d8b2062a22ebe48919a20a')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"

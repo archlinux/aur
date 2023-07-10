@@ -1,14 +1,14 @@
 pkgbase = python-git-reviewers
 	pkgdesc = Suggest reviewers for your git branch
-	pkgver = 0.13.4
+	pkgver = 0.13.5
 	pkgrel = 1
 	url = https://github.com/albertyw/git-reviewers
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/g/git-reviewers/git-reviewers-0.13.4.tar.gz
-	md5sums = 0a54f438b0f90fd958ee940e110727a3
+	source = https://files.pythonhosted.org/packages/source/g/git-reviewers/git-reviewers-0.13.5.tar.gz
+	md5sums = 83cb31e070d8b2062a22ebe48919a20a
 
 pkgname = python-git-reviewers
 	depends = python
