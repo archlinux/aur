@@ -1,7 +1,7 @@
 pkgbase = r-sfheaders
 	pkgdesc = Converts Between R Objects and Simple Feature Objects
-	pkgver = 0.4.2
-	pkgrel = 3
+	pkgver = 0.4.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=sfheaders
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-sfheaders
 	depends = r-rcpp>=1.0.10
 	optdepends = r-covr
 	optdepends = r-knitr
-	source = https://cran.r-project.org/src/contrib/sfheaders_0.4.2.tar.gz
-	b2sums = 2652abb2afda69455faab4b74ae28f397a83793cdc387a00b001f7535bc8ee220534a52cf0d78896c084ca9173af177e0a03394d0594521f13ac4310bfebca2b
+	source = https://cran.r-project.org/src/contrib/sfheaders_0.4.3.tar.gz
+	b2sums = 88217740b540a267ef8402ef719ff10ba4ffe740cdbf3ee60e819e928f733c832c36c90e38891ab2b932d4b29d8088c2958d238e87abffaa0a4a7699b81d2119
 
 pkgname = r-sfheaders

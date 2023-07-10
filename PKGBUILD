@@ -1,13 +1,13 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=sfheaders
-_cranver=0.4.2
+_cranver=0.4.3
 pkgname=r-${_cranname,,}
 pkgdesc="Converts Between R Objects and Simple Feature Objects"
 url="https://cran.r-project.org/package=sfheaders"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=3
+pkgrel=1
 
 arch=("i686" "x86_64")
 depends=(
@@ -40,7 +40,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("2652abb2afda69455faab4b74ae28f397a83793cdc387a00b001f7535bc8ee220534a52cf0d78896c084ca9173af177e0a03394d0594521f13ac4310bfebca2b")
+b2sums=("88217740b540a267ef8402ef719ff10ba4ffe740cdbf3ee60e819e928f733c832c36c90e38891ab2b932d4b29d8088c2958d238e87abffaa0a4a7699b81d2119")
 
 build() {
     mkdir -p "${srcdir}/build/"
