@@ -1,7 +1,7 @@
 pkgbase = hashlink
 	pkgdesc = A virtual machine for Haxe (tagged releases)
 	pkgver = 1.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://hashlink.haxe.org/
 	arch = x86_64
 	license = MIT
@@ -10,11 +10,13 @@ pkgbase = hashlink
 	depends = libvorbis
 	depends = openal
 	depends = sdl2
-	depends = mbedtls
+	depends = mbedtls2
 	depends = libuv
 	depends = glu
 	conflicts = hashlink-git
 	source = https://github.com/HaxeFoundation/hashlink/archive/1.13.tar.gz
-	md5sums = d2b6df0c10dd26977c1bceaf1eca7d58
+	source = mbedtls2-Makefile.patch
+	sha256sums = 696aef6871771e5e12c617df79187d1761e79bcfe3927531e99f665a8002956f
+	sha256sums = 3d272e39333fbf0cbe17667f608a7616a3eef543fb574e1e9b51460f8b5f3db0
 
 pkgname = hashlink

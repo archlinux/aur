@@ -3,7 +3,7 @@
 # So if you want official releases, this is the PKGBUILD for you.
 pkgname=hashlink
 pkgver=1.13
-pkgrel=2
+pkgrel=3
 pkgdesc="A virtual machine for Haxe (tagged releases)"
 url="https://hashlink.haxe.org/"
 arch=(x86_64)
@@ -16,12 +16,18 @@ depends=(
   'libvorbis'
   'openal'
   'sdl2'
-  'mbedtls'
+  'mbedtls2'
   'libuv'
   'glu'
 )
-source=("https://github.com/HaxeFoundation/hashlink/archive/${pkgver}.tar.gz")
-md5sums=('d2b6df0c10dd26977c1bceaf1eca7d58')
+source=("https://github.com/HaxeFoundation/hashlink/archive/${pkgver}.tar.gz"
+        "mbedtls2-Makefile.patch")
+sha256sums=('696aef6871771e5e12c617df79187d1761e79bcfe3927531e99f665a8002956f'
+            '3d272e39333fbf0cbe17667f608a7616a3eef543fb574e1e9b51460f8b5f3db0')
+
+prepare() {
+  patch "$srcdir/${pkgname}-${pkgver}/Makefile" -i ./mbedtls2-Makefile.patch
+}
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"

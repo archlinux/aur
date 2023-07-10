@@ -1,0 +1,12 @@
+--- Makefile	2023-07-10 13:59:46.357865743 -0500
++++ Makefile.new	2023-07-10 13:59:32.367866662 -0500
+@@ -115,6 +115,9 @@
+ LIBFLAGS += -L/opt/libjpeg-turbo/lib64
+ endif
+ 
++CFLAGS += -I/usr/include/mbedtls2
++LIBFLAGS += -L/usr/lib/mbedtls2
++
+ LIBOPENAL = -lopenal
+ LIBOPENGL = -lGL
+ RELEASE_NAME = linux
