@@ -28,6 +28,8 @@ prepare() {
 	asar e ./**/app.asar ./app
 	echo "exports.is_vip = () => true;" >>./app/libuser.js
 	echo "exports.vip_source_limit = Infinity;" >>./app/scs/scsdef.js
+	echo "exports.left_vip_days = () => 999;" >>./app/libuser.js
+	echo "exports.is_need_show_vip_renew = () => false;" >>./app/libuser.js
 	pushd app
 	cp -av $srcdir/napi-* ./node_modules/sqlite3/lib/binding
 	rm -vrf ./node_modules/node-gyp/
