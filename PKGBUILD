@@ -2,7 +2,7 @@
 # Contributor: Sam L. Yes <samlukeyes123 at gmail dot com>
 
 pkgname=qv2ray-git
-pkgver=3.0.0.rc1.r24.g2aec20c6
+pkgver=3.0.0.rc1.r57.g8213f99d
 pkgrel=1
 pkgdesc="A cross platform connection manager for V2Ray and other backends"
 arch=(x86_64)
@@ -44,7 +44,7 @@ patch_gitmodules() {
 prepare() {
     cd "$srcdir/$pkgname"
     patch_gitmodules
-    git submodule update --init \
+    git -c protocol.file.allow=always submodule update --init \
         3rdparty/SingleApplication \
         3rdparty/QCodeEditor \
         3rdparty/qt-qrcode \
@@ -57,6 +57,7 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgname"
+    sed 's/{}/TagEntryWidget::QPrivateSignal{}/' -i src/ui/widgets/TagLineEditorWidget.cpp
     mkdir -p build && cd build
     cmake .. \
         -DBUILD_TESTING=OFF \

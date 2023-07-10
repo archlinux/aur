@@ -1,6 +1,6 @@
 pkgbase = qv2ray-git
 	pkgdesc = A cross platform connection manager for V2Ray and other backends
-	pkgver = 3.0.0.rc1.r24.g2aec20c6
+	pkgver = 3.0.0.rc1.r57.g8213f99d
 	pkgrel = 1
 	url = https://github.com/Shadowsocks-NET/Qv2ray
 	arch = x86_64
