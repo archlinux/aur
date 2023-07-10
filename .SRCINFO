@@ -10,9 +10,9 @@ pkgbase = python-trame-router
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = nodejs-lts-gallium
+	makedepends = npm
 	depends = python-trame-client
-	depends = nodejs-lts-fermium
-	depends = npm
 	source = trame-router-2.0.2.tar.gz::https://github.com/Kitware/trame-router/archive/v2.0.2.tar.gz
 	sha512sums = ca497ab2ac6423bc4d3620b6b531b6d6307a00ef997426a3fab76c1bb1efc31eb34383a808688a2f7794412520f709b120a11dcc8d505d774a4ddc412aa4c5f8
 
