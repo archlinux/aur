@@ -1,7 +1,7 @@
 # Maintainer: Hermann Höhne <hoehermann@gmx.de>
 pkgname=purple-gowhatsapp-git
 pkgnam=${pkgname%-git}
-pkgver=1.11.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="A libpurple/Pidgin plugin for WhatsApp, powered by whatsmeow"
 arch=('x86_64' 'i686')
@@ -21,6 +21,10 @@ pkgver() {
   export GOPATH="$srcdir/${pkgnam}/build/src/go/go"
   cd "$srcdir/${pkgnam}"
   bash version.sh "$srcdir/${pkgnam}/build"
+}
+
+prepare() {
+  git -C "$srcdir/${pkgnam}" submodule update --init
 }
 
 build() {
