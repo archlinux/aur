@@ -1,7 +1,0 @@
-post_install() {
-	chmod u+s /opt/DbGate/chrome-sandbox
-}
-
-post_upgrade() {
-	post_install
-}

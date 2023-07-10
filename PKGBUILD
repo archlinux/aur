@@ -1,30 +1,41 @@
-# Maintainer: aulonsal <seraur at aulonsal dot com>
-pkgname=dbgate-bin
-pkgver=5.2.5
+# Contributor: aulonsal <seraur at aulonsal dot com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+pkgname="dbgate-bin"
+pkgver=5.2.6
 pkgrel=1
-pkgdesc='Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others'
-arch=('x86_64')
-url="https://github.com/${pkgname%-bin}/${pkgname%-bin}"
+pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application"
+arch=('aarch64' 'armv7h' 'x86_64')
+url="https://dbgate.org/"
+_githuburl="https://github.com/dbgate/dbgate"
 license=('MIT')
-depends=(
-	nss
-	gtk3
-)
-provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-install=dbgate.install
-source=(
-	"$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/dbgate-$pkgver-linux_amd64.deb"
-	"$pkgname-$pkgver-LICENSE::${url/github/raw.githubusercontent}/v$pkgver/LICENSE"
-)
-
-b2sums=('7746239fbb424f217dfaa9333d2f226762e540f8fbc69b38dfabc38098b9c8c28dd43f2ea2d3f49c0e6a8de35bd535f7f8397db7a8f4ed373243cbe9d0c639ff'
-        '9cc4e2813f0978862b0960aa0c8d5b0bc75ae299f10b793ae152202f2e6f43127381c9153c6f51ca1bc83ab633d198dac5d817105a8e7b43e1aad401e0b6eb2f')
-
+provides=("${pkgname%-bin}")
+depends=('hicolor-icon-theme' 'electron' 'gcc-libs' 'glibc')
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_arm64.AppImage")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_armv7l.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux_x86_64.AppImage")
+source=("LICENSE::https://raw.githubusercontent.com/dbgate/dbgate/master/LICENSE"
+	"${pkgname%-bin}.sh")
+sha256sums=('4ba7d897a31d45781b6bbc0b87e9a241873d61fff657af2f0c54608f652d235b'
+            '18dbf5f062a88dc30c7cfb432b02e339407b41202f56df7f8f79748132f180dd')
+sha256sums_aarch64=('31f496aba3184e978faa6ad845637b9495f097d9cd0b017b8ee7004ed939350c')
+sha256sums_armv7h=('1729dbb58eb4cbe28d55b97b8a5486c95a5ec9baf3b703cfab450e669cbe957c')
+sha256sums_x86_64=('070e7e31a617b8e4f50f9cf7708993a12e8075dfed0f0cbdaff6fb32cbe2c941')
+     
+prepare() {
+    chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+}
+ 
 package() {
-	bsdtar -xf data.tar.xz --directory="$pkgdir"
-	install -Dm644 "$pkgname-$pkgver-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-	mkdir -p "$pkgdir"/usr/bin
-	ln -s /opt/DbGate/dbgate "$pkgdir"/usr/bin/dbgate
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+	cp -r "${srcdir}/squashfs-root/resources/"* "${pkgdir}/opt/${pkgname%-bin}"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
+      install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+        -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+	sed "s|AppRun --no-sandbox %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} \;
 }
