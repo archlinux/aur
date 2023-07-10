@@ -4,7 +4,7 @@
 # Contributor: Renato Silva <br.renatosilva@gmail.com>
 # Contributor: Martchus <martchus@gmx.net>
 pkgname=mingw-w64-glib2
-pkgver=2.76.3
+pkgver=2.76.4
 pkgrel=1
 arch=(any)
 pkgdesc="Low level core library (mingw-w64)"
@@ -15,7 +15,7 @@ options=(!strip !buildflags staticlibs !emptydirs)
 url="https://wiki.gnome.org/Projects/GLib"
 source=("https://download.gnome.org/sources/glib/${pkgver%.*}/glib-${pkgver}.tar.xz"
   "0001-Use-CreateFile-on-Win32-to-make-sure-g_unlink-always.patch")
-sha256sums=('c0be444e403d7c3184d1f394f89f0b644710b5e9331b54fa4e8b5037813ad32a'
+sha256sums=('5a5a191c96836e166a7771f7ea6ca2b0069c603c7da3cba1cd38d1694a395dda'
             '6ec972b194efd586558b450f24fea557578d3286462fdbd440576ae0524bc2e0')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
