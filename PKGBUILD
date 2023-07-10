@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="laradumps-bin"
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A friendly app designed to boost your Laravel PHP coding and debugging experience."
 arch=('x86_64')
@@ -9,13 +9,13 @@ _githuburl="https://github.com/laradumps/app"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
-depends=('hicolor-icon-theme' 'electron')
+depends=('hicolor-icon-theme' 'electron24')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/LaraDumps-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/laradumps/app/main/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('82f8682f382cc1187c83b4ef0734c1509876326bd16efa34c0fa6daf7d645474'
-            '9893d51d32c0a06c98d8d1b8c22a022ae4af24d9cc61468a9f38e6ecc9553102'
-            '7d09736a96ccf482aaed9899dacddf429213c51c69115a16290c14a400459acf')
+sha256sums=('b5efb9bad3db248323938efbadf4e537be06797128bb5fe893e69ce8c8a06974'
+            '3150b483ca39a02e6651234966f2a19ba17486a87e8f26f9bdb7f4242e08af65'
+            '5ce12e5f38e9c82a3d809fe5cc7e0e8c973a1b5967ce2424e48ab1d12aeae681')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
