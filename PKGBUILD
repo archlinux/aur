@@ -2,7 +2,7 @@
 pkgname=clean
 pkgver=2.0
 pkgrel=1
-pkgdesc="System cleaner from command $ clean"
+pkgdesc="$ clean - easy command for arch linux, orphans, cache"
 arch=('any')
 url="https://github.com/architalia/clean"
 license=('GPL3')
