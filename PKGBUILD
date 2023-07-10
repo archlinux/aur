@@ -14,6 +14,7 @@ source=($url)
 md5sums=('SKIP') #autofill using updpkgsums
 
 pre-install() {
+
   mkdir -p /var/log/pipelight
   #cp pipelight.bash /usr/share/bash-completion/completions/pipelight
   #cp _pipelight /usr/share/zsh/site-functions/
