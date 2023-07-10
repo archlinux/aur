@@ -1,7 +1,7 @@
 # Maintainer: Gunnar Bretthauer <taijian@posteo.de>
 # Contributor: shad0w73 <shad0w73@vmail.me>
 pkgname=helden-software
-pkgver=5.5.4.beta
+pkgver=5.5.4.beta2
 pkgrel=1
 _debian_pkgver=5.5.2-1
 pkgdesc='Die Heldenverwaltung für das Pen&Paper-Rollenspiel "Das Schwarze Auge" (DSA)'
@@ -10,10 +10,10 @@ url="http://www.helden-software.de"
 license=('custom')
 depends=('java-runtime' 'hicolor-icon-theme' 'bash')
 source=("http://online.helden-software.de/rep/pool/main/h/${pkgname}/${pkgname}_${_debian_pkgver}_all.deb"
-        "https://www.helden-software.de/down/hs5/050504beta/helden.jar")
+        "http://www.helden-software.de/down/devel/91529a8/helden5.jar")
 sha256sums=('15f129efc99f0ad97cc6d7956be625dc0e1aeb51a157323216f824dfda67c485'
-            'cd6eec8b2202aed644a6620af16c1c2cad883eb94f818d6335fe1373aa97571d')
-noextract=('helden.jar')
+            'fbb4b8192d7956c20b4e4dac5b9d640b5d07bbdec03b8454e8c4b10240368548')
+noextract=('helden5.jar')
 
 prepare() {
   cd "${srcdir}"
@@ -26,7 +26,7 @@ package() {
   # Binary
   # use jar file from direct download because Debian Package is not updated yet
   #install -Dm644 usr/lib/heldensoftware/helden5.jar "${pkgdir}/usr/share/${pkgname}/helden5.jar"
-  install -Dm644 helden.jar "${pkgdir}/usr/share/${pkgname}/helden5.jar"
+  install -Dm644 helden5.jar "${pkgdir}/usr/share/${pkgname}/helden5.jar"
 
   # Docs
   install -Dm644 usr/share/doc/${pkgname}/changelog.gz "${pkgdir}/usr/share/doc/${pkgname}/changelog.gz"
