@@ -1,17 +1,26 @@
 # Maintainer: Jonathan Sanfilippo <jonalinux dot uk at gmail dot com>
 
-pkgname=clean
-pkgver=2.1
+pkgname=clean-git
+pkgver=2.0.r1.gca10c20
 pkgrel=1
-pkgdesc="Command for cleaning orphans, cache, trash"
+pkgdesc="$ clean - easy command for arch linux, orphans, cache"
 arch=('any')
 url="https://github.com/architalia/clean"
 license=('GPL3')
 depends=('bash' 'bc')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ArchItalia/clean/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fd5d117e98e162886c7782ea2278cb8de2bd1ebabdf6e1914a96991315ca14df')
+makedepends=(git)
+provides=(clean)
+conflicts=(clean)
+source=("git+https://github.com/architalia/clean.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd clean
+  # git with tags, cut 'v' prefix
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
-  cd "clean-${pkgver}/src"
+  cd clean/src
   install -Dm755 -t "$pkgdir/usr/bin/" clean
 }
