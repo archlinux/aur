@@ -10,6 +10,7 @@ pkgrel=1
 package86=rest-server_${pkgver}_linux_386
 package64=rest-server_${pkgver}_linux_amd64
 packagearm=rest-server_${pkgver}_linux_armv7
+packageaarch64=rest-server_${pkgver}_linux_aarch64
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 options=(!strip)
 source_i686=(
@@ -36,6 +37,8 @@ package() {
     package=${package64}
   elif [ "$CARCH" = "armv7h" ] ; then
     package=${packagearm}
+  elif [ "$CARCH" = "aarch64" ] ; then
+    package=${packageaarch64}
   else
     echo "Unknown arch: $CARCH"
     exit 1
