@@ -10,14 +10,16 @@
 pkgname=rstudio-desktop-preview-bin
 pkgver=2023.03.2.454
 pkgver_url=2023.03.2-454
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
-depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'openssl-1.0' 'postgresql-libs')
+depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'openssl' 'postgresql-libs')
 #makedepends=('patchelf')
-optdepends=('pandoc: markdown support')
+optdepends=(
+    'pandoc: markdown support'
+)
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
@@ -38,9 +40,9 @@ package() {
   tar Jxf data.tar.xz -C "$pkgdir"
   install -dm755 "$pkgdir/usr/bin"
 
-  cd "$pkgdir/usr/lib/rstudio/bin/quarto/bin/"
-  ln -sf /usr/bin/pandoc ./
-  ln -sf /usr/bin/pandoc-citeproc ./
+  cd "$pkgdir/usr/lib/rstudio/resources/app/bin/quarto/bin/"
+  ln -sf /usr/bin/pandoc ./pandoc
+  #ln -sf /usr/bin/pandoc-citeproc ./
 
   find "$pkgdir/usr" -type d -print0 | xargs -0 chmod 755
   find "$pkgdir/usr" -type f -name '*.so.*' -print0 | xargs -0 chmod 644
@@ -55,5 +57,5 @@ exec /usr/lib/rstudio/bin/rstudio "$@"
 ' > "$pkgdir/usr/bin/rstudio-bin"
   chmod 755 "$pkgdir/usr/bin/rstudio-bin"
 
-  sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-bin --disable-seccomp-filter-sandbox|' "$pkgdir/usr/share/applications/rstudio.desktop"
+  sed -i 's|/usr/lib/rstudio/rstudio|/usr/bin/rstudio-bin|' "$pkgdir/usr/share/applications/rstudio.desktop"
 }

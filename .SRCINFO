@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop-preview-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary version from RStudio official repository)
 	pkgver = 2023.03.2.454
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rstudio.org/
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = rstudio-desktop-preview-bin
 	depends = libxslt
 	depends = shared-mime-info
 	depends = libxrandr
-	depends = openssl-1.0
+	depends = openssl
 	depends = postgresql-libs
 	optdepends = pandoc: markdown support
 	provides = rstudio-desktop=2023.03.2.454
