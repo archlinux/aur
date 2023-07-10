@@ -17,13 +17,13 @@ depends=(
 	util-linux
 )
 makedepends=(git python-{build,installer})
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=(git+https://github.com/loqusion/${_pkgname}.git)
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
+	cd $_pkgname
 	{
 		set -o pipefail
 		git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
@@ -32,11 +32,11 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname"
+	cd $_pkgname
 	python -m build -wn
 }
 
 package() {
-	cd "$_pkgname"
+	cd $_pkgname
 	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer -d "$pkgdir" dist/*.whl
 }
