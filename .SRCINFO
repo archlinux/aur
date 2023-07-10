@@ -11,6 +11,7 @@ pkgbase = qwlroots-git
 	license = LGPL3
 	makedepends = git
 	makedepends = wlroots-git
+	provides = qwlroots
 	source = qwlroots-git::git+https://github.com/vioken/qwlroots
 	sha512sums = SKIP
 

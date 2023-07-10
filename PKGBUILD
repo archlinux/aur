@@ -9,6 +9,7 @@ url="https://github.com/vioken/qwlroots"
 license=('Apache' 'GPL2' 'GPL3' 'LGPL3')
 depends=()
 makedepends=('git' 'wlroots-git')
+provides=('qwlroots')
 source=("$pkgname::git+https://github.com/vioken/qwlroots")
 sha512sums=('SKIP')
 
