@@ -1,7 +1,7 @@
 # Maintainer: Maxime Arthaud <maxime@arthaud.me>
 
 pkgname=ikos-git
-pkgver=3.0.r409.72c70c7
+pkgver=3.1.r436.2e64743
 pkgrel=1
 pkgdesc='Static analyzer for C and C++ developed by NASA'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -14,13 +14,13 @@ depends=('gmp'
          'python-pygments'
          'sqlite'
          'intel-tbb'
-         'llvm'
-         'llvm-libs'
-         'clang'
+         'llvm14'
+         'llvm14-libs'
+         'clang14'
          'apron')
 makedepends=('cmake'
              'boost')
-source=("$pkgname::git://github.com/nasa-sw-vnv/ikos.git")
+source=("$pkgname::git+http://github.com/nasa-sw-vnv/ikos.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -33,7 +33,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  mkdir build
+  [[ -d build ]] && rm -rf build
+  mkdir build && cd build
 }
 
 build() {
@@ -41,7 +42,7 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DLLVM_CONFIG_EXECUTABLE="/usr/bin/llvm-config" \
+    -DLLVM_CONFIG_EXECUTABLE="/usr/bin/llvm-config-14" \
     -DAPPEND_GIT_VERSION=ON \
     ..
   make
