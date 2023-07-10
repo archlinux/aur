@@ -1,13 +1,12 @@
 # Maintainer: Frede Hundewadt <fh@manjaro.org>
 pkgname=piclone
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Raspberry Pi system clone utility"
 arch=("any")
 url="https://github.com/raspberrypi-ui/${pkgname}"
 license=('GPL')
-depends=("parted" "dosfstools" "e2fsprogs" "coreutils" "util-linux" "zenity" "dbus")
-optdepends=("gvfs")
+depends=("parted" "dosfstools" "e2fsprogs" "coreutils" "util-linux" "zenity" "dbus" "gvfs")
 makedepends=("git" "intltool" "gtk3" "glib2")
 source=("git+https://github.com/raspberrypi-ui/${pkgname}.git" "locale_uuidgen.patch")
 
