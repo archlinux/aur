@@ -1,24 +1,23 @@
 # Maintainer: Manuel Coenen <manuel.coenen@gmail.com>
 pkgname=timg
-pkgver=1.4.5
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Terminal Image and Video Viewer"
 arch=('any')
 url="https://github.com/hzeller/timg"
 license=('GPL2')
-depends=('libwebp' 'libjpeg-turbo' 'libexif' 'graphicsmagick' 'ffmpeg' 'openslide')
+depends=('libwebp' 'libjpeg-turbo' 'libexif' 'graphicsmagick' 'ffmpeg' 'openslide' 'libsixel' 'libdeflate')
 makedepends=('cmake' 'pkgconf' 'git' 'gcc')
 source=("timg-$pkgver.tar.gz::https://github.com/hzeller/timg/archive/v$pkgver.tar.gz")
-sha256sums=('3c96476ce4ba2af4b9f639c5b59ded77ce1a4511551a04555ded105f14398e01')
+sha256sums=('aa457f401b0517ba814efc62ededa3ab3f4edc1f40fb6048c58d52f01dfd9ba2')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   rm -rf build
   mkdir build
   cd build
   cmake ../ \
 	-DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" \
-	-DWITH_VIDEO_DECODING=On \
 	-DWITH_VIDEO_DEVICE=On \
 	-DWITH_OPENSLIDE_SUPPORT=On \
 	-DWITH_STB_IMAGE=Off
@@ -26,7 +25,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver/build
+  cd "$pkgname-$pkgver"/build
   install -d "${pkgdir}/usr/"{bin,share/man/man1}
   make install
 }
