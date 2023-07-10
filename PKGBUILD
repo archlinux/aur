@@ -6,7 +6,7 @@ _repo_name=ansible-aur
 _github_url="https://github.com/${_collection_namespace}/${_repo_name}"
 
 pkgname="ansible-collection-${_collection_namespace}-${_collection_name}"
-pkgver=0.10.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Ansible collection that contains an Ansible module to manage packages from the AUR"
 arch=("any")
@@ -14,7 +14,7 @@ url="https://galaxy.ansible.com/${_collection_namespace}/${_collection_name}"
 license=("GPL3")
 depends=("ansible-core")
 source=("${_github_url}/archive/v${pkgver}/${_repo_name}-${pkgver}.tar.gz")
-sha256sums=('cc998ea38814ae1a50fdf57ae325a8359ac4cff223768d56e41038b5fc45ff9c')
+sha256sums=('99e2b07a18881423b6433f4c08ef4caf4906a11fb7fcde67abd211bf10a9ded7')
 
 build() {
     cd "${_repo_name}-${pkgver}"
