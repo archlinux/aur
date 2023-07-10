@@ -2,7 +2,7 @@
 pkgname="pipelight-git"
 base="pipelight"
 pkgrel=1
-pkgver=0.6.2
+pkgver=0.6.3
 pkgdesc="A Rust based quick automation tool"
 arch=("any")
 url="https://gitea.com/pipelight/pipelight.git"
@@ -19,6 +19,7 @@ build() {
   # Checkout to latest tag
   tag=$(git describe --tags --abbrev=0)
   git checkout $tag
+
   cargo build --release
 }
 
@@ -29,6 +30,7 @@ pre-install() {
 
 
 package() {
+  # Install the only binary
   cd $base
   bin="target/release/$base"
   install -Dm755 $bin -t $pkgdir/usr/bin
