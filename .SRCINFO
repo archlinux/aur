@@ -12,5 +12,7 @@ pkgbase = clean
 	depends = bash
 	depends = bc
 	source = git+https://github.com/architalia/clean.git#branch=main
+	sha256sums = SKIP
+	sha256sums = a5sHRKz81dn+zDqCwkUpOb2aJSteps37+6ZhrvNf5HE
 
 pkgname = clean
