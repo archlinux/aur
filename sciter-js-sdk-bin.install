@@ -1,0 +1,12 @@
+post_install() {
+    # Tell user to remove the samples if they do not want them
+    echo "Tip: If you do not want the samples, you can remove them from /opt/sciter-js-sdk-bin/samples* by running:"
+    echo "# rm -rf /opt/sciter-js-sdk-bin/samples*"
+    echo 
+    echo "Note: You may need to restart the session to reload environment variable changes, or running:"
+    echo "$ source /etc/profile.d/scitersdk.sh"
+}
+
+post_upgrade() {
+    post_install
+}
