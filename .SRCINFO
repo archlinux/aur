@@ -1,0 +1,13 @@
+pkgbase = edo-sign
+	pkgdesc = Helper tools for managing Polish electronic identity documents, enabling secure authentication and digital signing.
+	pkgver = 1.9.106
+	pkgrel = 1
+	url = https://www.gov.pl/web/mswia/oprogramowanie-do-pobrania
+	arch = x86_64
+	license = custom
+	makedepends = fakeroot
+	options = !strip
+	source = https://www.gov.pl/pliki/edowod/eDOSign-1.9.106.run
+	md5sums = 77d145f04c18030211d6722171a610cc
+
+pkgname = edo-sign
