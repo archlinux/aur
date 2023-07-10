@@ -1,0 +1,10 @@
+# makepkg directories
+/src/*
+/pkg/*
+
+# Built packages
+*.tar.zst
+
+# Downloaded sources
+*.tar.gz
+LICENSE*

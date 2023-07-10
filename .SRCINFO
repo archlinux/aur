@@ -1,0 +1,15 @@
+pkgbase = php-spx
+	pkgdesc = A simple & straight-to-the-point PHP profiling extension with its built-in web UI
+	pkgver = 0.4.13
+	pkgrel = 1
+	url = https://github.com/NoiseByNorthwest/php-spx
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = php>=5.6
+	source = php-spx-0.4.13.tar.gz::https://github.com/NoiseByNorthwest/php-spx/archive/refs/tags/v0.4.13.tar.gz
+	source = LICENSE-0.4.13::https://raw.githubusercontent.com/NoiseByNorthwest/php-spx/v0.4.13/LICENSE
+	sha256sums = 92fda2a3f4be2f6e51122674c7ebff33661b239e9095e3bacbf9d7f56e262e41
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = php-spx
