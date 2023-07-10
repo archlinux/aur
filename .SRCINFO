@@ -1,13 +1,13 @@
 pkgbase = plymouth-theme-aregression
 	pkgdesc = A sleek boot up plymouth progress bar
-	pkgver = 1.2.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/joe733/plymouth-theme-aregression
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = plymouth
-	source = plymouth-theme-aregression-1.2.0.tar.gz::https://github.com/joe733/plymouth-theme-aregression/archive/1.2.0.tar.gz
-	sha256sums = baceda2b2bb425769c3cc7f013850cf0d81717041e6d0f013b4dbdf620dd6a1d
+	source = plymouth-theme-aregression-v2.1.0.tar.gz::https://github.com/joe733/plymouth-theme-aregression/archive/v2.1.0.tar.gz
+	sha256sums = 72445b9db5003a3593cecbb23ee2fffb2f0391a3f5dbfd9d584b85c00e3ba7eb
 
 pkgname = plymouth-theme-aregression

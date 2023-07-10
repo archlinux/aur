@@ -3,7 +3,7 @@
 
 pkgname=plymouth-theme-aregression
 _themename=aregression
-pkgver=1.2.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A sleek boot up plymouth progress bar"
 arch=("any")
@@ -11,8 +11,8 @@ url="https://github.com/joe733/plymouth-theme-aregression"
 license=("MIT")
 depends=("plymouth")
 makedepends=("git")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/joe733/plymouth-theme-aregression/archive/${pkgver}.tar.gz")
-sha256sums=("baceda2b2bb425769c3cc7f013850cf0d81717041e6d0f013b4dbdf620dd6a1d")
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/joe733/plymouth-theme-aregression/archive/v${pkgver}.tar.gz")
+sha256sums=("72445b9db5003a3593cecbb23ee2fffb2f0391a3f5dbfd9d584b85c00e3ba7eb")
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   _themedir="${pkgdir}/usr/share/plymouth/themes/${_themename}"
@@ -23,5 +23,4 @@ package() {
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
 }
