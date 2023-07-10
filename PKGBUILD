@@ -2,7 +2,7 @@
 
 _pkgname=lutgen
 pkgname=lutgen-git
-pkgver=0.7.0.r0.g218a7eb
+pkgver=0.8.0.r0.g5248e77
 pkgrel=1
 pkgdesc='A blazingly fast interpolated LUT generator and applicator for arbitrary and popular color palettes (latest git)'
 arch=('i686' 'x86_64')
@@ -32,20 +32,20 @@ build() {
     cargo build --frozen --release
     mkdir -p completions/{bash,zsh,fish}
     bin="target/release/$_pkgname"
-    $bin --completions bash > completions/bash/$_pkgname
-    $bin --completions zsh > completions/zsh/_$_pkgname
-    $bin --completions fish > completions/fish/$_pkgname.fish
+    $bin completions bash > completions/$_pkgname
+    $bin completions zsh > completions/_$_pkgname
+    $bin completions fish > completions/$_pkgname.fish
 }
 
 package() {
     cd $_pkgname-rs
     install -Dm755 target/release/$_pkgname \
         -t "$pkgdir/usr/bin"
-    install -Dm644 completions/bash/$_pkgname \
+    install -Dm644 completions/$_pkgname \
         -t "$pkgdir/usr/share/bash-completion/completions"
-    install -Dm644 completions/zsh/_$_pkgname \
+    install -Dm644 completions/_$_pkgname \
         -t "$pkgdir/usr/share/zsh/site-functions"
-    install -Dm644 completions/fish/$_pkgname.fish \
+    install -Dm644 completions/$_pkgname.fish \
         -t "$pkgdir/usr/share/fish/vendor_completions.d"
     install -Dm644 LICENSE.md \
         "$pkgdir/usr/share/licenses/$pkgname"
