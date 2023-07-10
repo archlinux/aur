@@ -37,5 +37,5 @@ build() {
 package() {
 	cd faur
 	chmod +x faur
-	cp faur /usr/bin
+	cp faur /usr/bin/
 }
