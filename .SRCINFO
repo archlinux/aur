@@ -1,13 +1,13 @@
 pkgbase = compressonator-cli-bin
 	pkgdesc = CLI for GPU texture compression, decompression, format transcoding, and more
-	pkgver = 4.3.206
-	pkgrel = 2
+	pkgver = 4.4.19
+	pkgrel = 1
 	url = https://github.com/GPUOpen-Tools/compressonator
 	arch = x86_64
 	license = MIT
-	source = https://github.com/GPUOpen-Tools/compressonator/releases/download/V4.3.206/compressonatorcli-4.3.206-Linux.tar.gz
+	source = https://github.com/GPUOpen-Tools/compressonator/releases/download/v4.4.19/compressonatorcli-4.4.19-Linux.tar.gz
 	source = compressonatorcli
-	sha256sums = 48d3d7bbfd40e2bd1f2a3272bb3395864356f81702b0ee02cf613aa80ec554e2
+	sha256sums = 92b9e4bc5388b4c839200535a88402009fb3e8c3b97645999ec54e510f798671
 	sha256sums = 32d568df026553e9b0d48574ce9dd3b5186adeec24113ba7a976a2e6c2af4297
 
 pkgname = compressonator-cli-bin
