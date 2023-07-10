@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Frede Hundewadt <fh@manjaro.org>
 pkgname=piclone
 pkgver=0.5
 pkgrel=2
