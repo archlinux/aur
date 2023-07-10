@@ -1,7 +1,7 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
 pkgname=responsively
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A modified browser built using Electron that helps in responsive web development'
 url='https://github.com/responsively-org/responsively-app'
@@ -19,7 +19,7 @@ source=(
 )
 
 sha512sums=(
-  'efbfcb6238172f25f2296049844a3eaab7a981171f87ffecec5307d7f1c938111f4a1e11d551cdccc6796b12dd5ae88fa770acdc346533e793a5d78ccac14ca2'
+  '9c006849ffdd0623aa79d8b9e1de13f2d893cb6764e309b084250ed3b3ee3a093cc0083f439978592d79448e0a50eb4844c64d0547354c3f914f3722753aae83'
   'eebe6acbb675d8804d87e34f6a005f55268ef8927e7bb1c7199791dfdbd4c3839ffe61ba2e59c23359dc9cbbfd74bed9d9610d0cd71e9961666b8167b3a04c33'
   'SKIP'
 )
