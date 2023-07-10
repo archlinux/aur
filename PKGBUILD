@@ -1,10 +1,10 @@
 # Maintainer: SnailDOS <snaildos@snaildos.com>
 
 pkgname=fifo-bin
-_pkgname=${pkgname%}
+_pkgname=fifo-bin
 pkgver=1.2.2
 pkgrel=1
-pkgdesc="The future of privacy orientated browsing, is now available on the Arch Linux disro."
+pkgdesc="The future of browsing. Seamless experience for the EncryptOS experience, made with love by the same developers you all know, SnailDOS."
 arch=(x86_64)
 url="https://fifo.snaildos.com"
 license=("GNU" "v3")
