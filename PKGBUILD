@@ -2,7 +2,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 pkgname=protozero
 pkgver=1.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Minimalist protocol buffer decoder and encoder in C++"
 url="https://github.com/mapbox/protozero"
 arch=('any')
@@ -19,6 +19,8 @@ build() {
   # see https://aur.archlinux.org/packages/protozero#comment-855739
   if [[ "${CXX}" == "clang++" ]]; then
     cmake \
+      -DCMAKE_CXX_STANDARD=17 \
+      -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DIWYU_TOOL=/usr/bin/iwyu-tool \
       -DBUILD_TESTING=OFF \
@@ -26,6 +28,8 @@ build() {
       ..
   else
     cmake \
+      -DCMAKE_CXX_STANDARD=17 \
+      -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DIWYU_TOOL=/usr/bin/iwyu-tool \
       ..
