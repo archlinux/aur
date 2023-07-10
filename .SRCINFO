@@ -1,9 +1,8 @@
 pkgbase = pcsx2
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = 1.7.4682
+	pkgver = 1.7.4718
 	pkgrel = 1
 	url = https://www.pcsx2.net
-	install = pcsx2.install
 	arch = x86_64
 	license = GPL2
 	license = GPL3
@@ -11,6 +10,7 @@ pkgbase = pcsx2
 	license = LGPL3
 	makedepends = clang
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = libpipewire
 	makedepends = libpulse
@@ -47,7 +47,7 @@ pkgbase = pcsx2
 	optdepends = libpipewire: Pipewire support
 	optdepends = libpulse: PulseAudio support
 	options = !lto
-	source = git+https://github.com/PCSX2/pcsx2.git#tag=92f70228c9ed13169390019bfe5b40ee622199db
+	source = git+https://github.com/PCSX2/pcsx2.git#tag=5d6b9d25bd2146d540d16998996384f646b8ce21
 	source = git+https://github.com/PCSX2/pcsx2_patches.git
 	source = xz-pcsx2::git+https://github.com/PCSX2/xz.git
 	source = git+https://github.com/google/googletest.git
