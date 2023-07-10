@@ -1,14 +1,14 @@
 # Maintainer: Beini <bane at iki dot fi>
 pkgname=perlnavigator
 _pkgname=PerlNavigator
-pkgver=0.5.7
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Perl Language Server that includes syntax checking, perl critic, and code navigation"
 url="https://github.com/bscan/PerlNavigator"
 license=('MIT')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/bscan/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('1f6bf47cc3b54a44ced3dd377ebbf100965b55ffbc28275029b7f3ab49365ad7f99d3211626324a7f26044e4b8e0d961714059a184787d83781dce7c959860ad')
+b2sums=('b27a5bbf380e99728de5ff5469c0171a66e70551accbac7c39c9e9dd91830b034725d8df40685e7f50ed1eeb152d435ebc94b1c4e908641e12682df3eeec353e')
 arch=('x86_64')
 depends=('glibc' 'gcc-libs')
 makedepends=('npm')
