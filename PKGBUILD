@@ -19,7 +19,7 @@ optdepends=(
 )
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb")
+source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb")
 sha256sums=('47ce8cd065753557d04270dcd32d2bc8b737e3ce8a9a48e59017c0e0f4786a33')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
