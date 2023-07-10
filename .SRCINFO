@@ -1,6 +1,6 @@
 pkgbase = archuseriso
 	pkgdesc = Create bootable disk images of Arch Linux, install to an external USB disk or thumb drive
-	pkgver = 0.7.9
+	pkgver = 0.7.10
 	pkgrel = 1
 	url = https://github.com/laurent85v/archuseriso
 	arch = any
@@ -26,12 +26,12 @@ pkgbase = archuseriso
 	optdepends = pacman-contrib: for building ZFS packages
 	optdepends = qemu-base: virtual machine for aui-run
 	conflicts = archuseriso
-	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.7.9.tar.gz
-	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.7.9.tar.gz.sig
+	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.7.10.tar.gz
+	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.7.10.tar.gz.sig
 	validpgpkeys = A5143BB56952B3189F49A175FAC4560863BEEC34
-	sha256sums = e46995c6cdbac45902be268ba26723149da72827a6b7568e6be3a11e5eeb7bf0
+	sha256sums = dbb0e8bee3d6ae384237048a85b4da8144f68f2dd86277b2c96037f4bc051b71
 	sha256sums = SKIP
-	b2sums = 868f36fbb834f34e22648dfd598131039e8612bd4d656b3a2366f56882293cc23bdb77c8f954a7d58c80e7eea4c70eb2200d1ad7ca5f144db7c67d3b365c0255
+	b2sums = ae9914d5ef83451d787876a9a5df31236071d6ccecbee10edfcf992ce9cc13f568c6217345c05716a96cc6adc723e1c204fa1cacf4b4051bd7526320800f0a3d
 	b2sums = SKIP
 
 pkgname = archuseriso
