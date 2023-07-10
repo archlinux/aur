@@ -3,7 +3,7 @@
 # Maintainer: Donald Webster <fryfrog[at]gmail[dot]com>
 _pkgname=readsb
 pkgname="${_pkgname}-wiedehopf-git"
-pkgver=3.14.1604.r3.ge8b0a46
+pkgver=3.14.1605.r1.gd2320d0
 pkgrel=1
 pkgdesc="ADS-B decoder swiss knife."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,8 +14,8 @@ depends=(
   'ncurses'
 )
 provides=('readsb'
-          'dump1090-fa-git')
-conflicts=('readsb')
+          'dump1090-fa-git' 'dump1090' 'dump1090-fa')
+conflicts=('readsb' 'dump1090-fa-git' 'dump1090' 'dump1090-fa')
 makedepends=('git')
 backup=('etc/default/readsb')
 
