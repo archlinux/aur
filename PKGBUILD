@@ -3,11 +3,23 @@ _base=trame
 pkgname=python-${_base}
 pkgdesc="Framework to build applications in plain Python"
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(Apache)
-depends=(python-trame-server python-trame-client python-trame-router python-trame-components python-trame-plotly python-trame-markdown python-trame-matplotlib python-trame-deckgl python-trame-vega python-trame-vuetify python-trame-vtk python-trame-simput python-trame-rca)
+depends=(python-trame-server
+  python-trame-client
+  python-trame-router
+  python-trame-components
+  python-trame-plotly
+  python-trame-markdown
+  python-trame-matplotlib
+  python-trame-deckgl
+  python-trame-vega
+  python-trame-vuetify
+  python-trame-vtk
+  python-trame-simput
+  python-trame-rca)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
@@ -33,6 +45,7 @@ package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   rm ${pkgdir}${site_packages}/trame/__init__.py
   rm ${pkgdir}${site_packages}/trame/modules/__init__.py
