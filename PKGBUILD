@@ -11,7 +11,7 @@ depends=('bash' 'bc')
 makedepends=()
 checkdepends=()
 optdepends=()
-
+source=("https://github.com/architalia/$pkgname.git")
 
 package() {
 	install -Dm755 clean "$pkgdir/usr/bin/"

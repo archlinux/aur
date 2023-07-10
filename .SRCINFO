@@ -11,5 +11,6 @@ pkgbase = clean
 	license = GPL3
 	depends = bash
 	depends = bc
+	source = https://github.com/architalia/clean.git
 
 pkgname = clean
