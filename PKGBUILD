@@ -1,7 +1,7 @@
 # Maintainer: Vianney le Clément de Saint-Marcq <vleclement AT gmail·com>
 _pkgname=tmux-applet
 pkgname=$_pkgname-git
-pkgver=20130309.g514d519
+pkgver=20150119.g7f8247d
 pkgrel=1
 pkgdesc="Simple applet enhancement and configuration file for tmux"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('tmux')
 makedepends=('git')
 backup=('etc/tmux-applet.conf')
 install=install
-source=("git://github.com/vianney/$_pkgname.git")
+source=("git+https://github.com/vianney/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
