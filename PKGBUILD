@@ -1,7 +1,7 @@
 # Maintainer: Gerard Ribugent <ribugent <at> gmail <dot> com>
 pkgname=python-dbx
 _name=dbx
-pkgver=0.8.15
+pkgver=0.8.17
 pkgrel=1
 pkgdesc="DataBricks CLI eXtensions - aka dbx is a CLI tool for advanced Databricks jobs management."
 arch=(any)
@@ -18,7 +18,7 @@ depends=(
 	"python-mlflow>=1.28.0" "python-mlflow<3.0.0" # Upstream requires "python-mlflow-skinny" but it's not available in Arch/AUR
 	"python-yaml>=6.0"
 	"python-pydantic>=1.9.1" "python-pydantic<=2.0.0"
-	"python-cryptography>=3.3.1" "python-cryptography<41.0.0"
+	"python-cryptography>=3.3.1" "python-cryptography<42.0.0"
 	"python-cookiecutter>=1.7.2" "python-cookiecutter<3.0.0"
 	"python-jinja>=2.11.2"
 	"python-aiohttp>=3.8.1"
@@ -33,7 +33,7 @@ optdepends=(
 )
 makedepends=(python-build python-installer)
 source=($pkgname-$pkgver.tar.gz::https://github.com/databrickslabs/dbx/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('4c0d9ed431eac6694c5161e84ffe1d370b656abd92d06f928a4dcdc08e4c5392efb2af33ed9b9429da787d4c613d310554528122e297c79b6b85252af3657651')
+sha512sums=('7556eb82d29226d45d501e0294387b3aab7922b6c5481cccc0e9a89b4e13794def60b60f2e1175a9622cb9d0d54bf726a56502933b1998a43da418c78a4a2d88')
 
 build() {
 	cd "$_name-$pkgver"
