@@ -1,7 +1,7 @@
 pkgbase = jasperapp-bin
 	pkgdesc = A flexible and powerful issue reader for GitHub
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jasperapp.io/
 	arch = x86_64
 	license = MIT

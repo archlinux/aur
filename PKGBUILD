@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jasperapp-bin
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible and powerful issue reader for GitHub"
 arch=('x86_64')
 url='https://jasperapp.io/'
@@ -21,7 +21,7 @@ package() {
     install -Dm644 "${srcdir}/Jasper/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm644 "${srcdir}/Jasper/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
-    gendesk -f --icon "${pkgname%-bin}" --categories "Utility" --name "Jasperapp" --exec "/opt/${pkgname%-bin}/${pkgname%-bin}"
+    gendesk -f -n --icon "${pkgname%-bin}" --categories "Utility" --name "Jasperapp" --exec "/opt/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }
