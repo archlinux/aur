@@ -1,0 +1,17 @@
+pkgbase = qwlroots-git
+	pkgdesc = Qt and QML bindings for wlroots.
+	pkgver = r166.093e076
+	pkgrel = 1
+	url = https://github.com/vioken/qwlroots
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	license = GPL2
+	license = GPL3
+	license = LGPL3
+	makedepends = git
+	makedepends = wlroots-git
+	source = qwlroots-git::git+https://github.com/vioken/qwlroots
+	sha512sums = SKIP
+
+pkgname = qwlroots-git
