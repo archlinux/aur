@@ -1,0 +1,25 @@
+pkgbase = piclone
+	pkgdesc = Raspberry Pi system clone utility
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/raspberrypi-ui/piclone
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = intltool
+	makedepends = gtk3
+	makedepends = glib2
+	depends = parted
+	depends = dosfstools
+	depends = e2fsprogs
+	depends = coreutils
+	depends = util-linux
+	depends = zenity
+	depends = dbus
+	optdepends = gvfs
+	source = git+https://github.com/raspberrypi-ui/piclone.git
+	source = 0001-add_locale_header.patch
+	sha256sums = SKIP
+	sha256sums = 3db876497efc8f9740e30b22cf3642454dc5175cf1fa5628ddc30ab4c025cda6
+
+pkgname = piclone
