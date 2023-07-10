@@ -1,7 +1,7 @@
 pkgbase = artemisrgb-git
 	pkgdesc = A universal RGB control software
 	pkgver = 1.2023.0710.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://artemis-rgb.com/
 	arch = x86_64
 	license = custom:PolyForm Noncommercial License 1.0.0
@@ -21,9 +21,11 @@ pkgbase = artemisrgb-git
 	source = git+https://github.com/Artemis-RGB/Artemis.Plugins
 	source = artemis.desktop
 	source = artemis.png
+	source = disable-update.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 1f29c3b3794b0c3a527c61dfcb99402f187187218c880c71d216a1eed2a1c4d9
 	sha256sums = 35fbb5e33591ba6f845b7d852b3b32d8bca81f55ecd3bb4bf94814aecf0d0b7f
+	sha256sums = de0f3769d528303ac57618b285d0472f3fc0d30f57dcb82f5e28990a12d6515d
 
 pkgname = artemisrgb-git

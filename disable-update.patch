@@ -1,0 +1,36 @@
+diff --git a/src/Artemis.UI.Linux/ApplicationStateManager.cs b/src/Artemis.UI.Linux/ApplicationStateManager.cs
+index e580f5fd..226fb289 100644
+--- a/src/Artemis.UI.Linux/ApplicationStateManager.cs
++++ b/src/Artemis.UI.Linux/ApplicationStateManager.cs
+@@ -140,23 +140,9 @@ public class ApplicationStateManager
+         //todo
+     }
+     
+     private void UtilitiesOnUpdateRequested(object? sender, UpdateEventArgs e)
+     {
+-        List<string> argsList = new(StartupArguments);
+-        if (e.Silent && !argsList.Contains("--minimized"))
+-            argsList.Add("--minimized");
+-
+-        // Retain startup arguments after update by providing them to the script
+-        string script = Path.Combine(Constants.UpdatingFolder, "installing", "Scripts", "update.sh");
+-        string source = $"\"{Path.Combine(Constants.UpdatingFolder, "installing")}\"";
+-        string destination = $"\"{Constants.ApplicationFolder}\"";
+-        string args = argsList.Any() ? string.Join(' ', argsList) : "";
+-
+-        RunScriptWithOutputFile(script, $"{source} {destination} {args}", Path.Combine(Constants.DataFolder, "update-log.txt"));
+-
+-        // Lets try a graceful shutdown, the script will kill if needed
+-        if (Application.Current?.ApplicationLifetime is IControlledApplicationLifetime controlledApplicationLifetime)
+-            Dispatcher.UIThread.Post(() => controlledApplicationLifetime.Shutdown());
++		return;
+     }
+     
+     private static void RunScriptWithOutputFile(string script, string arguments, string outputFile)
+@@ -170,4 +156,4 @@ public class ApplicationStateManager
+         };
+         Process.Start(info);
+     }
+-}
+\ No newline at end of file
++}

@@ -1,7 +1,7 @@
 # Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=artemisrgb-git
 pkgver=1.2023.0710.0
-pkgrel=1
+pkgrel=2
 url="https://artemis-rgb.com/"
 pkgdesc="A universal RGB control software"
 arch=("x86_64")
@@ -14,11 +14,13 @@ options=("staticlibs")
 source=("git+https://github.com/Artemis-RGB/Artemis"
 		"git+https://github.com/Artemis-RGB/Artemis.Plugins"
 		"artemis.desktop"
-		"artemis.png")
+		"artemis.png"
+		"disable-update.patch")
 sha256sums=('SKIP'
             'SKIP'
             '1f29c3b3794b0c3a527c61dfcb99402f187187218c880c71d216a1eed2a1c4d9'
-            '35fbb5e33591ba6f845b7d852b3b32d8bca81f55ecd3bb4bf94814aecf0d0b7f')
+            '35fbb5e33591ba6f845b7d852b3b32d8bca81f55ecd3bb4bf94814aecf0d0b7f'
+            'de0f3769d528303ac57618b285d0472f3fc0d30f57dcb82f5e28990a12d6515d')
 
 _nowarn="/nowarn:cs1591,cs8602,cs8604,cs8618,cs8622,cs8601,cs8603,cs0618,cs8605,cs0169"
 pkgver() {
@@ -29,6 +31,11 @@ pkgver() {
     BuildDate="$(date --utc +"%Y-%m-%d")"
     NumberOfCommitsToday="$(git rev-list --count --after="$BuildDate 00:00" --before="$BuildDate 00:00" HEAD)"
     printf '%s' "$ApiVersion.$(date +"%Y.%m%d").$NumberOfCommitsToday"
+}
+
+prepare() {
+  cd "$srcdir/Artemis"
+  patch -p1 -i "$srcdir/disable-update.patch"
 }
 
 build() {
