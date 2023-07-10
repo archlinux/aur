@@ -14,7 +14,8 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
     "${pkgname}.png::https://user-images.githubusercontent.com/12215982/139462759-e6d8ebc6-180d-4d18-8c3c-68234f0ff1c0.png"
     "${pkgname}.sh")
 sha256sums=('8948abfa58980007c8b352bd953672693f23b264e68d9350a7739db01506d7f5'
-            'b70f00f133517296d81cb0f546a70539b46ebaf82baeab7adec13056bc42ec12')
+            'b70f00f133517296d81cb0f546a70539b46ebaf82baeab7adec13056bc42ec12'
+            'fdbc8667e88c09c8b6125630569f7bb0394bb347c37df04ecd90411088ff4383')
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     yarn install 
