@@ -1,0 +1,12 @@
+pkgbase = acme-lsp
+	pkgdesc = Language Server Protocol tools for the acme text editor
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/fhs/acme-lsp
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/fhs/acme-lsp/archive/v0.11.0.tar.gz
+	b2sums = 6cdef80c6679f580345eda596f5459ff9175e8071890f1b8aa3841f4d9580a1b44f3cbc71668f0279440ef14950100c7a5622add6d6be79cf6c667303202d969
+
+pkgname = acme-lsp
