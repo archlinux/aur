@@ -2,7 +2,7 @@
 # Co-Maintainer: Brendan Szymanski <hello@bscubed.dev>
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=1485.r0.g95ceae4
+pkgver=1492.r0.gf32ca0b
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -52,7 +52,6 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/benhoyt/inih.git'
         'git+https://github.com/mozilla/cubeb.git'
         'git+https://github.com/MerryMage/dynarmic.git'
-        'libressl::git+https://github.com/citra-emu/ext-libressl-portable.git'
         'git+https://github.com/libusb/libusb.git'
         'git+https://github.com/yuzu-emu/discord-rpc.git'
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git'
@@ -101,7 +100,6 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -113,7 +111,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in {inih,cubeb,dynarmic,libressl,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator}; 
+    for submodule in {inih,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,ffmpeg,SDL,cpp-httplib,vcpkg,cpp-jwt,enet,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator}; 
     do
         git config --file=.gitmodules submodule.$submodule.url "$srcdir/${submodule}"
     done
