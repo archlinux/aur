@@ -18,10 +18,12 @@ provides=('gpt4all-chat')
 source=(
   "${_gitname}::git+https://github.com/nomic-ai/gpt4all.git"
   "gpt4all-chat.desktop"
+  "gpt4all-chat.sh"
 )
 sha256sums=(
   'SKIP'
   '16cd7d32166c493b1028c3e5c6a8437d3d81315c92076f5a94240e509a93a271'
+  'c8b8b5ab8b0badd9f74210fb26181b9fef48741e14256e3494cbbc46c8f98d9f'
 )
 
 
@@ -50,8 +52,12 @@ package() {
 
   mv "${pkgdir}/opt/gpt4all-chat/bin/chat" "${pkgdir}/opt/gpt4all-chat/bin/gpt4all-chat"
 
+  mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+
+  cp "${srcdir}/gpt4all-chat.sh" "${pkgdir}/usr/bin/gpt4all-chat"
+  chmod 0755 "${pkgdir}/usr/bin/gpt4all-chat"
 
   cp "${srcdir}/gpt4all-chat.desktop" "${pkgdir}/usr/share/applications/"
   cp ../icons/logo.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/gpt4all-chat.svg"
