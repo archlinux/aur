@@ -1,8 +1,8 @@
 # Maintainer: Wiktor Zykubek <wz-git at mailbox dot org>
 
 pkgname=openfm-qt
-pkgver=0.1.1
-pkgrel=5
+pkgver=0.1.2
+pkgrel=1
 pkgdesc='Qt client for Polish internet radio Open FM.'
 arch=('any')
 url='https://github.com/wzykubek/openfm-qt'
@@ -19,11 +19,6 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    # Temporary
-    rm .gitignore
-    sed -i '18,19s/^/# /; 22s/, "PySide6"//' pyproject.toml
-    /usr/lib/qt6/uic --generator python form.ui -o openfm_qt/ui_form.py
-
     python -m build --wheel --no-isolation
 }
 
@@ -33,7 +28,7 @@ package() {
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "assets/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
