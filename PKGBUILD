@@ -1,33 +1,43 @@
-#AUR Maintainter: JKA Network <contacto@jkanetwork.com>
-#AUR Maintainter: Javier Steinaker <jsteinaker@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: JKA Network <contacto@jkanetwork.com>
+# Contributor: Javier Steinaker <jsteinaker@gmail.com>
+
 pkgname=pinta-git
-pkgver=r2403.24d7473f
+pkgver=r2859.c7425bdb
 pkgrel=1
 pkgdesc="Drawing/editing program modeled after Paint.NET. It's goal is to provide a simplified alternative to GIMP for casual users"
-arch=('x86_64' 'i686')
+arch=(any)
 url="https://pinta-project.com"
-license=('MIT')
-depends=('mono' 'gtk-sharp-3' 'mono-addins' 'yelp-tools' 'intltool' 'dotnet-runtime')
-makedepends=('git' 'dotnet-sdk' 'autoconf-archive')
-provides=('pinta')
-conflicts=('pinta')
-options=('!makeflags')
-source=(git+https://github.com/PintaProject/Pinta.git)
-md5sums=('SKIP')
+license=(MIT)
+depends=(libadwaita dotnet-runtime-7.0 webp-pixbuf-loader)
+makedepends=(autoconf-archive git intltool dotnet-sdk-7.0)
+provides=(pinta)
+conflicts=(pinta)
+source=("git+https://github.com/PintaProject/Pinta.git")
+sha256sums=('SKIP')
+
 pkgver() {
-	cd "Pinta"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "Pinta"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
+prepare() {
+  cd "Pinta"
+  ./autogen.sh
+}
+
 build() {
-	cd "Pinta"
-	#maxcpucount: 1 needed to build.
-	sed -i '/^PINTA_BUILD_OPTS/ s/$/ -maxcpucount:1/' Makefile.am
-	./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var
-	make
+  cd "Pinta"
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var
+
+  make
 }
+
 package() {
-	cd "Pinta"
-	make DESTDIR="$pkgdir/" install
-	install -dm755 "$pkgdir"/usr/share/licenses/$pkgname
-	install -m644 license-*.txt readme.md "$pkgdir"/usr/share/licenses/$pkgname/
+  cd "Pinta"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" license-*.txt
 }
