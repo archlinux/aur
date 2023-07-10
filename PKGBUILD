@@ -11,9 +11,10 @@ depends=('bash' 'bc')
 makedepends=()
 checkdepends=()
 optdepends=()
-source=("https://github.com/architalia/$pkgname/blob/main/src/clean")
+source=("git+https://github.com/architalia/$pkgname.git#branch=main" clean)
 sha256sums=('SKIP')
 
 package() {
 	install -Dm755 clean "$pkgdir/usr/bin/"
 }
+
