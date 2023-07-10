@@ -1,7 +1,7 @@
 # Maintainer: Carlen White <whitersuburban@gmail.com>
 pkgname=fchat-rising-git
 _pkgname=fchat-rising
-pkgver=1.23.4
+pkgver=1.23.5
 pkgrel=1
 pkgdesc="The F-Chat 3.0 client from F-List modifed by MrStallion. Uses a system-wide electron instead of the built in."
 arch=('x86_64')
