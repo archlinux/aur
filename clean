@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# Author : Jonathan Sanfilippo
+# Date: Jul 2023
+# Version 1.0.0: Clean
+#
+
+
+
+
+cache=$(du -sk /var/cache/pacman/pkg/ | awk '{ print $1 }')
+lib=$(du -sk /var/lib/pacman/ | awk '{ print $1 }')
+home_cache=$(du -sk $HOME/.cache/ | awk '{ print $1 }')
+trash=$(du -sk $HOME/.local/share/Trash/files/ | awk '{ print $1 }')
+total=$(echo "$cache + $lib + $home_cache + $trash" | bc)
+
+if (( $(echo "$total < 1024" | bc -l) )); then
+    unit="KB"
+    total=$(echo "$total" | awk '{printf "%.2f\n", $1}')
+elif (( $(echo "$total < 1048576" | bc -l) )); then
+    unit="MB" 
+    total=$(echo "scale=2; $total/1024" | bc -l)
+else
+    unit="GB"
+    total=$(echo "scale=2; $total/(1024*1024)" | bc -l)
+fi
+
+echo ""
+echo -e "\e[33mChecking for obsolete packages and dependencies..\e[0m"
+
+if pacman -Qdt &> /dev/null; then
+    echo  "Removing obsolete packages and dependencies.."
+    pacman -Qdt | awk '{print $1}' | sudo pacman -Rs -
+else
+    echo  "  No packages to remove."
+fi
+echo ""
+echo -e "Current space between cache, package cache, and trash: \e[0m\e[94m$total$unit\e[0m\e[33m"
+printf " \e[33m Do you want to remove ALL files from cache and unused repositories? Respond with 'y' or 'n': \e[0m" && read answer
+
+if [ $answer = "y" ]; then
+     rm -rf ~/.cache/*
+     rm -rf ~/.local/share/Trash/files/*
+     yes | sudo pacman -Scc
+
+    echo -e "\e[32mClean up completed!\e[0m"
+else
+    echo  "No action taken."
+fi
+echo ""
+
