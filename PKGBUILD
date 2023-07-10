@@ -6,9 +6,9 @@
 pkgname=jdk8-dragonwell-extended
 
 _majorver=8
-_minorver=13
-_updatever=14
-_jdk_updatever=352
+_minorver=15
+_updatever=16
+_jdk_updatever=372
 pkgver=${_majorver}.${_minorver}.${_updatever}
 pkgrel=1
 arch=('x86_64')
@@ -24,7 +24,7 @@ install="${pkgname}.install"
 options=(!lto)
 source=("${url}/archive/refs/tags/dragonwell-extended-${pkgver}_jdk${_majorver}u${_jdk_updatever}-ga.tar.gz"
   gcc11.patch)
-b2sums=('14c3e4c0d197f585913472661d0230ac746ce0e6509f837e710730b7f27e12abf047946dea3fb8cd2a14bebca053fe96866f95d6acac0173f987a6c45e8f7375'
+b2sums=('70a5ccd3c6bb6eb66578723158b283793cadefe2a84e03e015acefb4c75ab7efeb0aab8612abe9010fc8d80b3c5618f0620060352b51cece433a730690924ab6'
   '9679e4dfb6027a87376081489c09810812d6849573afac4ea96abe3a3e00ca5b6af7d0ffb010c43b93cfa913f9e97fbb9f11e19fcc86a89b4548442671c32da1')
 
 _jdkname='openjdk8'
