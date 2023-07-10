@@ -1,0 +1,10 @@
+pkgbase = clean
+	pkgdesc = System cleaner
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = bash
+	depends = bc
+
+pkgname = clean
