@@ -1,25 +1,31 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=nthash-git
-pkgver=0.1.5.r0.g14083ae
+pkgver=0.1.7.r2.g072f080
 pkgrel=1
-pkgdesc="Generate NT Hash - git checkout"
+pkgdesc='Generate NT Hash - git checkout'
 arch=('i686' 'x86_64')
-url="https://github.com/eworm-de/nthash"
+url='https://github.com/eworm-de/nthash'
 conflicts=('nthash')
 provides=('nthash')
 depends=('nettle')
-makedepends=('git' 'markdown')
+makedepends=('git' 'discount')
 license=('GPL')
-source=('git://github.com/eworm-de/nthash.git')
+source=('git+https://github.com/eworm-de/nthash.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd nthash/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git rev-parse --short HEAD)"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 
@@ -41,4 +47,3 @@ package() {
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('SKIP')
