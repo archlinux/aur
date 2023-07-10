@@ -1,8 +1,3 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Jonathan Sanfilippo <jonalinux dot uk at gmail dot com>
 pkgname=clean
 pkgver=1.0
@@ -19,6 +14,6 @@ optdepends=()
 
 
 package() {
-	cd "$pkgname"
-	make DESTDIR="$pkgdir/usr/bin/" install
+        cp $pkgname src/
+	install -Dm755 clean "$pkgdir/usr/bin/"
 }
