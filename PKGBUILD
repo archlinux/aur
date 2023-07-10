@@ -13,7 +13,12 @@ arch=(any)
 _gitlab="https://gitlab.archlinux.org"
 url="${_gitlab}/mkinitcpio/mkinitcpio-archiso/-/merge_requests/25"
 license=(GPL3)
-depends=(bash device-mapper mkinitcpio cryptsetup)
+depends=(
+  bash
+  device-mapper
+  mkinitcpio
+  cryptsetup
+)
 conflicts=("${_pkgbase}")
 conflicts+=("${_pkgname}")
 provides=("${_pkgbase}")
