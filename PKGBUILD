@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=ss-tproxy
-pkgver=4.6.2
+pkgver=4.7.6
 pkgrel=1
 pkgdesc='搭建 SS/SSR/V2Ray/Socks5 透明代理环境的简易脚本'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/zfl9/ss-tproxy"
 license=('GPL3')
 depends=('ipset' 'dnsmasq' 'iptables' 'chinadns-ng-zfl9' 'dns2tcp-zfl9')

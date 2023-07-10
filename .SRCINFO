@@ -1,17 +1,17 @@
 pkgbase = ss-tproxy
 	pkgdesc = 搭建 SS/SSR/V2Ray/Socks5 透明代理环境的简易脚本
-	pkgver = 4.6.2
+	pkgver = 4.7.6
 	pkgrel = 1
 	url = https://github.com/zfl9/ss-tproxy
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	depends = ipset
 	depends = dnsmasq
 	depends = iptables
 	depends = chinadns-ng-zfl9
 	depends = dns2tcp-zfl9
-	source = ss-tproxy-v4.6.2::https://github.com/zfl9/ss-tproxy/archive/refs/tags/v4.6.2.tar.gz
+	source = ss-tproxy-v4.7.6::https://github.com/zfl9/ss-tproxy/archive/refs/tags/v4.7.6.tar.gz
 	sha512sums = SKIP
 
 pkgname = ss-tproxy
-
