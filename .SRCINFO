@@ -1,6 +1,6 @@
 pkgbase = python-onnxruntime
 	pkgdesc = Cross-platform, high performance scoring engine for ML models
-	pkgver = 1.14.1
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://github.com/microsoft/onnxruntime
 	arch = x86_64
@@ -25,22 +25,18 @@ pkgbase = python-onnxruntime
 	makedepends = python-protobuf
 	makedepends = python-sympy
 	makedepends = chrpath
+	makedepends = nsync
 	makedepends = cuda
 	makedepends = cudnn
 	makedepends = nccl
 	depends = nsync
 	depends = libre2.so
 	depends = openmpi
-	depends = libprotobuf-lite.so
 	options = debug
-	source = git+https://github.com/microsoft/onnxruntime#tag=v1.14.1
-	source = 14267.diff
-	source = 15089.diff
+	source = git+https://github.com/microsoft/onnxruntime#tag=v1.15.1
 	source = install-orttraining-files.diff
 	source = system-dnnl.diff
 	source = system-flatbuffers.patch
-	sha512sums = SKIP
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -50,7 +46,6 @@ pkgname = onnxruntime
 	depends = nsync
 	depends = libre2.so
 	depends = openmpi
-	depends = libprotobuf-lite.so
 	depends = onednn
 	depends = abseil-cpp
 
