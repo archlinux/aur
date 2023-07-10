@@ -14,6 +14,5 @@ optdepends=()
 
 
 package() {
-        cp $pkgname src/
 	install -Dm755 clean "$pkgdir/usr/bin/"
 }
