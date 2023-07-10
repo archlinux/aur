@@ -1,7 +1,7 @@
 # Maintainer: Maxime Arthaud <maxime@arthaud.me>
 
 pkgname=ikos
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 pkgdesc='Static analyzer for C and C++ developed by NASA'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -13,18 +13,20 @@ depends=('gmp'
          'python-pygments'
          'sqlite'
          'intel-tbb'
-         'llvm'
-         'llvm-libs'
-         'clang'
+         'llvm14'
+         'llvm14-libs'
+         'clang14'
          'apron')
 makedepends=('cmake'
-             'boost')
-source=("https://github.com/nasa-sw-vnv/ikos/releases/download/v$pkgver/ikos-$pkgver.tar.gz")
-sha256sums=('bd42e84061c207ea7ca7f0c7d7aafa3cce72e951d33953b0ed8d68133b17c8b6')
+             'boost'
+	     'llvm14')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/NASA-SW-VnV/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e2a9ff32d02aeff92abbb8f69f1a6730ad96b6f59a10e18c30522d033f950844')
 
 prepare() {
   cd "$srcdir/ikos-$pkgver"
-  mkdir build
+  [[ -d build ]] && rm -rf build
+  mkdir build && cd build
 }
 
 build() {
@@ -32,7 +34,7 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DLLVM_CONFIG_EXECUTABLE="/usr/bin/llvm-config" \
+    -DLLVM_CONFIG_EXECUTABLE="/usr/bin/llvm-config-14" \
     ..
   make
 }
