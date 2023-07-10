@@ -1,0 +1,15 @@
+pkgbase = e-dowod
+	pkgdesc = Helper tools for managing Polish electronic identity documents, enabling secure authentication and digital signing.
+	pkgver = 4.3.0
+	pkgrel = 1
+	url = https://www.gov.pl/web/mswia/oprogramowanie-do-pobrania
+	arch = x86_64
+	license = custom
+	license = MIT
+	makedepends = fakeroot
+	depends = fakechroot
+	options = !strip
+	source = https://www.gov.pl/pliki/edowod/e-dowod-4.3.0.run
+	md5sums = 8bf382fa53377e05bd58398b592449e7
+
+pkgname = e-dowod
