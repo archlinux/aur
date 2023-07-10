@@ -6,6 +6,7 @@ pkgbase = rest-server-bin
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = BSD
 	options = !strip
 	source_i686 = https://github.com/restic/rest-server/releases/download/v0.12.1/rest-server_0.12.1_linux_386.tar.gz
@@ -14,5 +15,7 @@ pkgbase = rest-server-bin
 	sha256sums_x86_64 = 58f886043c62b7908a1b8b684e0d2388dfaabecaf2fbcd3e0aaa5a3be2f2306f
 	source_armv7h = https://github.com/restic/rest-server/releases/download/v0.12.1/rest-server_0.12.1_linux_armv7.tar.gz
 	sha256sums_armv7h = 6fbf8f391822b90df6db99b51eb9f56be5827c71e59bfe038e541cd987d02b57
+	source_aarch64 = https://github.com/restic/rest-server/releases/download/v0.12.1/rest-server_0.12.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = be1f393cc6516c7decab3cfdd7fc64e80edacaa696fc7e4169eab116ed30dfa0
 
 pkgname = rest-server-bin
