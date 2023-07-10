@@ -4,16 +4,16 @@
 pkgbase='pypy-setuptools'
 pkgname=(pypy3-setuptools)
 _name=setuptools
-pkgver=67.8.0
+pkgver=68.0.0
 pkgrel=1
 epoch=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
 arch=('any')
 license=('PSF')
 url="http://pypi.python.org/pypi/setuptools"
-source=("https://github.com/pypa/setuptools/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d696681648c66c81142169219d0353a9b693b341827b7accc0f3820ec5423a7c')
-makedepends=('pypy3' 'pypy')
+source=("https://pypi.io/packages/source/s/setuptools/setuptools-${pkgver}.tar.gz")
+sha256sums=('baf1fdb41c6da4cd2eae722e135500da913332ab3f2f5c7d33af9b492acb5235')
+makedepends=('pypy3')
 
 prepare() {
   cd "${srcdir}"/setuptools-${pkgver}
