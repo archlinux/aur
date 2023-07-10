@@ -3,9 +3,10 @@ pkgbase = cryptsetup-sigfile-git
 	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://gitlab.com/cryptsetup/cryptsetup/
+	arch = x86_64
 	arch = i686
 	arch = pentium4
-	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = util-linux
 	makedepends = asciidoctor
@@ -21,9 +22,9 @@ pkgbase = cryptsetup-sigfile-git
 	depends = libargon2.so
 	provides = libcryptsetup.so=12-32
 	provides = libcryptsetup.so
-	provides = cryptsetup-nested-cryptkey
 	provides = cryptsetup=2.6.1
-	provides = cryptsetup-sigfile
+	provides = cryptsetup-nested-cryptkey=2.6.1
+	provides = cryptsetup-sigfile=2.6.1
 	conflicts = cryptsetup
 	conflicts = cryptsetup-sigfile
 	conflicts = cryptsetup-nested-cryptkey

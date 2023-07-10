@@ -30,9 +30,9 @@ makedepends=('util-linux'
 	     'asciidoctor')
 provides=('libcryptsetup.so=12-32'
           'libcryptsetup.so'
-	  "${_pkgbase}-nested-cryptkey"
-          "${_pkgbase}=$pkgver"
-	  "${_pkgbase}-${variant}")
+          "${_pkgbase}=${pkgver}"
+	  "${_pkgbase}-nested-cryptkey=${pkgver}"
+	  "${_pkgbase}-${variant}=${pkgver}")
 conflicts=("${_pkgbase}"
 	   "${_pkgbase}-${variant}"
 	   "${_pkgbase}-nested-cryptkey")
