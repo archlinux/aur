@@ -3,8 +3,8 @@
 # Contributor: Paul Davis <paul@dangersalad.com>
 # Contributor: Bo Davidson <bo.davidson@go.tarleton.edu>
 pkgname=openrgb-bin
-pkgver=0.8
-pkgrel=3
+pkgver=0.9
+pkgrel=1
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software. Precompiled binary"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
@@ -15,10 +15,10 @@ conflicts=('openrgb')
 provides=('openrgb')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_i686=("https://openrgb.org/releases/release_0.8/openrgb_0.8_i386_bookworm_fb88964.deb")
-source_x86_64=("https://openrgb.org/releases/release_0.8/openrgb_0.8_amd64_bookworm_fb88964.deb")
-sha512sums_i686=('3f64690657584d67df291dddbfa6f5b255075287797ee59d058f8b55a4e10b36c614640f0b68c1a0c80e094ac772090bb0336f2eb8479d07722054ddda24881d')
-sha512sums_x86_64=('d5a1884152cdc029adf6e8fffec5c7fe02df358f44b48177cbbd26e7d193fad4b82b82365882517878256cbe076f452988598799e09d14fc214b90dd68be2611')
+source_i686=("https://openrgb.org/releases/release_0.9/openrgb_0.9_i386_bookworm_b5f46e3.deb")
+source_x86_64=("https://openrgb.org/releases/release_0.9/openrgb_0.9_amd64_bookworm_b5f46e3.deb")
+sha512sums_i686=('f50fcf1bf78aaedf7e1623042b55620873c6324ce0ec7bc4ab8c9a3d0e947746059623feed8b7132a02f16ee9aefb5ae8babd948633f1a9289da41288fec816c')
+sha512sums_x86_64=('1f7b9d5159065d98191ae384c8447472fc5facaadb7ad6ae0b1c818e7c115f6dfccb19d740ac1c06ef7c973a11db1b417967f97b50cf7dd8526cb9c8d86e3f36')
 
 package(){
 
