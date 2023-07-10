@@ -1,6 +1,6 @@
 # Maintainer: kumen
 pkgname="nrfconnect-appimage"
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Cross-platform development software for Bluetooth Low Energy and cIoT"
 arch=("x86_64")
