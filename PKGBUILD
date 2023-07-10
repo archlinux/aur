@@ -7,7 +7,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r9641.df9cc1b84
+pkgver=r9680.b73858483
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ else
     _enable_lto=off
 fi
 license=('GPL2')
-depends=('ffmpeg' 'speexdsp' 'mbedtls' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'libfdk-aac' 'sndio')
+depends=('ffmpeg' 'speexdsp' 'mbedtls' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'libfdk-aac' 'sndio' 'libbacktrace-git')
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'qt6-tools' 'qt6-multimedia' 'gcc' 'glslang')
 source=("$_pkgbase::git+https://github.com/citra-emu/citra.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
