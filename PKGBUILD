@@ -32,18 +32,12 @@ fakechroot fakeroot chroot . e-dowod-$pkgver.run  install --accept-licenses --co
 # remove temporary files for fakechroot
 rm -rf bin tmp
 # remove installer files
-#cd opt/e-dowod && rm -rf uninstall* installerResources installer.dat components.xml InstallationLog.txt
+cd opt/e-dowod && rm -rf uninstall* installerResources installer.dat components.xml InstallationLog.txt
 }
 
 package() {
 cd $srcdir/chroot
 mkdir -p usr/share/
 mv opt/e-dowod/Licenses/ usr/share/licenses
-
 cp -R * $pkgdir/
-#install -Dm644 opt/e-dowod/Licenses/license-e-dowod.html "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-#install -Dm644 opt/e-dowod/Licenses/license_libxcb.txt "$pkgdir/usr/share/licenses/$pkgname/license_libxcb.txt"
-#install -Dm644 opt/e-dowod/Licenses/license_xcb-util-image.txt "$pkgdir/usr/share/licenses/$pkgname/license_xcb-util-image.txt"
-#install -Dm644 opt/e-dowod/Licenses/license_xcb-util-renderutil.txt "$pkgdir/usr/share/licenses/$pkgname/license_xcb-util-renderutil.txt"
-#install -Dm644 opt/e-dowod/Licenses/license_xcb-util-wm.txt "$pkgdir/usr/share/licenses/$pkgname/license_xcb-util-wm.txt"
 }
