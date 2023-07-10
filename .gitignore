@@ -1,0 +1,5 @@
+*.gz
+*.zst
+hyprshade
+pkg
+src
