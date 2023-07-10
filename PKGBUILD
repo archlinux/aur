@@ -1,4 +1,5 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
@@ -6,64 +7,37 @@
 # Contributor: jlvsimoes <jlvsimoes@oninet.pt>
 
 pkgname=crypto++-git
-pkgver=20160916
-pkgrel=2
-pkgdesc="C++ Class Library of Cryptographic Schemes"
-arch=('i686' 'x86_64')
-depends=('gcc-libs')
-makedepends=('git' 'make')
-url="https://github.com/weidai11/cryptopp"
-license=('custom:Boost')
-source=(${pkgname%-git}::git+https://github.com/weidai11/cryptopp
-        'libcrypto++.pc')
-sha256sums=('SKIP'
-            'a5e467460494a97ada513a0c22f735cf5aade9cec75e0b4c46055ecd4b32fea6')
-provides=('crypto++')
-conflicts=('crypto++')
-
-# half of available processing units or one if only one is available
-_nproc=$(($(nproc)/2))
-[[ ${_nproc} < 1 ]] && _nproc=1
+pkgver=8.8.0.r12.g6ecc789d
+pkgrel=1
+pkgdesc="A free C++ class library of cryptographic schemes"
+arch=(x86_64)
+url="https://www.cryptopp.com/"
+license=('custom: public domain' boost)
+depends=(gcc-libs)
+makedepends=(git)
+provides=(crypto++)
+conflicts=(crypto++)
+source=("git+https://github.com/weidai11/cryptopp.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short --no-show-signature | sed "s|-||g"
-}
-
-prepare() {
-  cd ${pkgname%-git}
-
-  msg2 'Fixing GNUmakefile...'
-  sed -i 's/^CXXFLAGS/#CXXFLAGS/' GNUmakefile
+  cd cryptopp
+  git describe --long --tags | sed 's/^CRYPTOPP_//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
 }
 
 build() {
-  cd ${pkgname%-git}
-
-  msg2 'Building...'
   export CXXFLAGS="$CXXFLAGS -DNDEBUG -fPIC"
-  make -j$_nproc dynamic static
+  make PREFIX=/usr -C cryptopp dynamic cryptest.exe libcryptopp.pc
 }
 
 check() {
-  cd ${pkgname%-git}
-
-  msg2 'Testing...'
-  make -j$_nproc test
+  make PREFIX=/usr -C cryptopp test
 }
 
 package() {
-  cd ${pkgname%-git}
-
-  msg2 'Installing license...'
-  install -Dm 644 License.txt -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-
-  msg2 'Installing pkgconfig file...'
-  install -Dm 644 "$srcdir/libcrypto++.pc" -t "$pkgdir/usr/lib/pkgconfig"
-
-  msg2 'Installing...'
-  make DESTDIR="$pkgdir" PREFIX=/usr install
-
-  msg2 'Cleaning up pkgdir...'
-  rm -rf "$pkgdir/usr/bin"
+  make DESTDIR="${pkgdir}" PREFIX=/usr -C cryptopp install
+  install -Dm 644 cryptopp/License.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  # Remove cryptest.exe and test files, only needed for check() and bloats the package
+  # because cryptest.exe is linked statically.
+  rm -rf "${pkgdir}"/usr/{bin,share/cryptopp}
 }
