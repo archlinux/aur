@@ -1,4 +1,4 @@
-From 1b9c4ffba75ba826c2027884b854fe368a7cbb9b Mon Sep 17 00:00:00 2001
+From 2215108e1ac686f6faff0d46441c5adb44e8d7c9 Mon Sep 17 00:00:00 2001
 From: "j.r" <j.r@jugendhacker.de>
 Date: Thu, 14 Jan 2021 23:57:02 +0100
 Subject: [PATCH] Change paths for packaging
@@ -9,14 +9,14 @@ Subject: [PATCH] Change paths for packaging
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/youplay.desktop b/youplay.desktop
-index 129dadb..187dc4c 100755
+index b335943..187dc4c 100755
 --- a/youplay.desktop
 +++ b/youplay.desktop
 @@ -4,7 +4,7 @@ Name=YouPlay
  GenericName=Play music from Youtube
  Exec=youplay --gui=gtk4
  Terminal=false
--Icon=/usr/local/share/youplay/youplay.svg
+-Icon=/usr/share/icons/youplay.svg
 +Icon=/usr/share/youplay/youplay.svg
  StartupNotify=false
  Categories=GNOME;GTK;Utility;Music

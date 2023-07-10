@@ -1,14 +1,14 @@
 pkgbase = youplay
 	pkgdesc = Search, download and play music from YouTube.
 	pkgver = 0.46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/ralfhersel/youplay
 	arch = any
 	license = GPL3
 	source = youplay-0.46.tar.gz::https://codeberg.org/ralfhersel/youplay/archive/v0.46.tar.gz
 	source = 0001-Change-paths-for-packaging.patch
-	md5sums = 8f2eb578f8d1950e8d9cb64e3ae6c85f
-	md5sums = a500e03c7e25464565a68acf4f0050b6
+	md5sums = f8626746b01f50aacc8531512d5cb39c
+	md5sums = 8c827adb9d808cf9c255fb577a731258
 
 pkgname = youplay-base
 	depends = mpv
