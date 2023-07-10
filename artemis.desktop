@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Artemis
+Type=Application
+Exec=/usr/bin/artemisrgb
+Icon=/usr/share/icons/hicolor/256x256/apps/artemis.png
+Categories=Tools
