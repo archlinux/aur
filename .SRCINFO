@@ -1,6 +1,6 @@
 pkgbase = python-qiskit-experiments
 	pkgdesc = Qiskit Experiments package for IBM qiskit framework
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-experiments
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-qiskit-experiments
 	depends = python-qiskit-terra
 	depends = python-scipy
 	depends = python-uncertainties
-	source = qiskit-experiments-0.5.2.tar.gz::https://github.com/Qiskit/qiskit-experiments/archive/refs/tags/0.5.2.tar.gz
-	b2sums = 1c59139b67e0d19500329d684ba9333169279152f9419f72ac1611cfde51ee714c4a06679bd5ea07d8dc739f92d755094654543c11ba728780049ec376e803ac
+	source = qiskit-experiments-0.5.3.tar.gz::https://github.com/Qiskit/qiskit-experiments/archive/refs/tags/0.5.3.tar.gz
+	b2sums = d2ef5439410b239872e5fd92b3051c214c9b239a946c8a1c48791c2fa4cec92446953a1135de37ca27b1bacbb85d661645c29f1629be8e3c38cb0fda3dcf6652
 
 pkgname = python-qiskit-experiments
