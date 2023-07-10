@@ -1,0 +1,16 @@
+pkgbase = data-works-bin
+	pkgdesc = A simple data management system intended to be flexible and expandable
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alexaib2002/project-dataworks_base
+	arch = x86_64
+	license = GPL3
+	depends = hicolor-icon-theme
+	depends = electron
+	conflicts = data-works
+	source = data-works-1.0.0.AppImage::https://github.com/alexaib2002/project-dataworks_base/releases/download/v1.0.0/DataWorks-1.0.0.AppImage
+	source = data-works.sh
+	sha256sums = 90ca960db8eedcf706a490998f12111885a17d408b5016fe40d5628fe85697b0
+	sha256sums = 2700886a0d7d2dbaa8c36226182c837ea6d14d050559cfb1d4f20266d8573e9b
+
+pkgname = data-works-bin
