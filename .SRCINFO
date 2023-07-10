@@ -2,8 +2,13 @@ pkgbase = clean
 	pkgdesc = System cleaner
 	pkgver = 1.0
 	pkgrel = 1
-	arch = any
-	license = GPL
+	url = https://github.com/architalia/clean
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
 	depends = bash
 	depends = bc
 
