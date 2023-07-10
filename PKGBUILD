@@ -10,6 +10,8 @@ license=('MPL2')
 depends=(openssl git)
 makedepends=(git go)
 optdepends=(bash-completion)
+provides=(nomad-pack)
+conflicts=(nomad-pack)
 validpgpkeys=(5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23)
 source=("git+https://github.com/hashicorp/nomad-pack.git#tag=nightly"
         "bash-completion.sh")

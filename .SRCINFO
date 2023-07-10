@@ -12,6 +12,8 @@ pkgbase = nomad-pack-nightly
 	depends = openssl
 	depends = git
 	optdepends = bash-completion
+	provides = nomad-pack
+	conflicts = nomad-pack
 	source = git+https://github.com/hashicorp/nomad-pack.git#tag=nightly
 	source = bash-completion.sh
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
