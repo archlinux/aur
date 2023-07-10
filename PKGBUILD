@@ -37,10 +37,10 @@ pkgver() {
 
 build() {
 	cd $_pkgname
-	python -m build -wn
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd $_pkgname
-	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer -d "$pkgdir" dist/*.whl
+	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="$pkgdir" dist/*.whl
 }
