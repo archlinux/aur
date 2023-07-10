@@ -1,6 +1,6 @@
 pkgbase = swic-git
 	pkgdesc = Sway input configuration helper tool
-	pkgver = 0.2
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/theretikgm/swic
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = swic-git
 	depends = glfw>=3.3.8
 	depends = sway
 	optdepends = slurp
-	source = swic-git-0.2::git+https://github.com/theretikgm/swic
+	source = swic-git-0.2.4::git+https://github.com/theretikgm/swic
 	md5sums = SKIP
 
 pkgname = swic-git

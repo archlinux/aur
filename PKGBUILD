@@ -1,6 +1,6 @@
 # Maintainer: TheRetikGM <theretikgm@gmail.com>
 pkgname="swic-git"
-pkgver=0.2
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Sway input configuration helper tool"
 arch=('x86_64')
@@ -14,6 +14,7 @@ md5sums=('SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
+	git checkout 5e7a1f2d2059ea512756ce0ac157f03f88688555
 	meson setup build
 	meson compile -C build
 }
