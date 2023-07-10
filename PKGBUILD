@@ -5,32 +5,25 @@
 # AUR Category: devel
 pkgname=tortoisehg
 pkgver=6.4.2
-pkgrel=2
-#_pkgchangeset=782c0ecf65254899441b496491a4a2d22627938e
+pkgrel=3
 pkgdesc="Graphical tools for Mercurial"
+arch=('any')
 url="https://foss.heptapod.net/mercurial/tortoisehg/thg"
 license=("GPL")
+makedepends=(python-build python-installer python-wheel)
 depends=('python' 'mercurial>=6.0' 'python-qscintilla-qt5' 'python-iniparse' 'qt5-svg' 'python-pyqt5')
-arch=('any')
 optdepends=('python-pygments: syntax highlighting'
             'python-nautilus: Python binding for Nautilus components')
+source=("https://www.mercurial-scm.org/release/tortoisehg/targz/tortoisehg-$pkgver.tar.gz")
 
-if [ -z ${_pkgchangeset+x} ];
-then
-	source=("https://www.mercurial-scm.org/release/tortoisehg/targz/tortoisehg-$pkgver.tar.gz")
-else
-	source=("$pkgname-$pkgver-${_pkgchangeset}.tar.gz::https://foss.heptapod.net/mercurial/tortoisehg/thg/-/archive/${_pkgchangeset}.tar.gz")
-fi
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	if [ -z ${_pkgchangeset+x} ];
-	then
-		cd "${srcdir}/${pkgname}-${pkgver}"
-	else
-		cd "${srcdir}/thg-${_pkgchangeset}"
-	fi
-
-	python setup.py install --prefix=/usr --root="${pkgdir}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm 644 "contrib/mergetools.rc" "${pkgdir}/etc/mercurial/hgrc.d/thgmergetools.rc"
 	install -Dm 644 "contrib/thg.desktop" "${pkgdir}/usr/share/applications/thg.desktop"
 	install -Dm 644 "icons/svg/thg_logo.svg" "${pkgdir}/usr/share/pixmaps/thg_logo.svg"
