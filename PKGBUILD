@@ -31,12 +31,11 @@ validpgpkeys=()
 
 build() {
 	pip install colorama
-  pip install pkgbuilder
+	pip install pkgbuilder
 }
-
 
 package() {
 	cd faur
-  chmod +x faur
-	cp faur /usr/local/bin
+	chmod +x faur
+	cp faur /usr/bin
 }
