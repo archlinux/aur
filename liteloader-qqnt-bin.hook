@@ -1,0 +1,9 @@
+# in /usr/share/libalpm/hooks/
+[Trigger]
+Operation = Remove
+Type = Package
+Target = *
+[Action]
+Description = "Remove LiteLoaderQQNT from LinuxQQNT."
+When = PreTransaction
+Exec = rm -rf /opt/QQ/resources/app/LiteLoader; sed -i 's/"main": "LiteLoader"/"main": ".\/app_launcher\/index.js"/g' /opt/QQ/resources/app/package.json
