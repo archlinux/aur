@@ -11,8 +11,8 @@ depends=('freetype2' 'zlib' 'util-linux-libs' 'glibc' 'qt5-base' 'libx11' 'libgl
 conflicts=("${pkgname%-bin}")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/${_appname}_${pkgver}_bullseye-arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver}/${_appname}_${pkgver}_ubuntu-latest-amd64.deb")
-sha256sums_aarch64=('c347bf9073bda2753df101e7128f193618b1387d5385a27d3212f426125f8270')
-sha256sums_x86_64=('64cb5d4c95c3902d25aa1d8941440d7495ab0a11542ba6e5671a9990fb8280e8')
+sha256sums_aarch64=('9e63d18739d23670f99e8eb9e6f582e8493f70157a8e6c18cc2fbcbcd72832c5')
+sha256sums_x86_64=('97c1c28d62c129285e7dfbbdfc89f738520e46c24ff3ad2fe5076c5c14020c24')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 -d "${pkgdir}/opt" "${pkgdir}/usr"
