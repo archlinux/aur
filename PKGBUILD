@@ -14,6 +14,8 @@ source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('225f9cd2698ba5e53f37f9429d96eb222b2e926f94e1ddd86363c739cc298614205544449feceac990c8178e32c38373ad409912ea074580296351ee7d571b56')
 
 build() {
+  # Workaround: https://stackoverflow.com/a/69746937/9302545
+  export NODE_OPTIONS=--openssl-legacy-provider
   cd ${srcdir}/${_base}-${pkgver}/vue-components
   npm install
   npm run build
