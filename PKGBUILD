@@ -17,8 +17,8 @@ md5sums=('SKIP') #autofill using updpkgsums
 build() {
   cd $base
   # Checkout to latest tag
-  #tag=$(git describe --tags --abbrev=0)
-  #git checkout $tag
+  tag=$(git describe --tags --abbrev=0)
+  git checkout $tag
   cargo build --release
 }
 
