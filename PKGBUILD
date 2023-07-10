@@ -1,19 +1,19 @@
-# Maintainer: Frede Hundewadt <fh@manjaro.org>
+# Maintainer: Your Name <youremail@domain.com>
 pkgname=piclone
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Raspberry Pi system clone utility"
 arch=("any")
 url="https://github.com/raspberrypi-ui/${pkgname}"
 license=('GPL')
-depends=("parted" "dosfstools" "e2fsprogs" "coreutils" "util-linux" "zenity" "dbus" "gvfs")
+depends=("parted" "dosfstools" "e2fsprogs" "coreutils" "util-linux" "zenity" "dbus")
+optdepends=("gvfs")
 makedepends=("git" "intltool" "gtk3" "glib2")
-source=("git+https://github.com/raspberrypi-ui/${pkgname}.git" "0001-add_locale_header.patch")
+source=("git+https://github.com/raspberrypi-ui/${pkgname}.git" "locale_uuidgen.patch")
 
 prepare() {
     cd "$srcdir/$pkgname"
-    patch -N -p1 < ${srcdir}/0001-add_locale_header.patch
-
+    patch -N -p1 < ${srcdir}/locale_uuidgen.patch
 }
 
 build() {
@@ -32,4 +32,4 @@ package() {
 }
 
 sha256sums=('SKIP'
-            '3db876497efc8f9740e30b22cf3642454dc5175cf1fa5628ddc30ab4c025cda6')
+            '38f7e350f4e76479cc5ad53046ea9753d13116f5a1af7c1780fb3ac2181a9b7d')
