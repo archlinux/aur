@@ -43,6 +43,8 @@ package() {
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  # Install trame-vtk.js
+  mv ${srcdir}/package/dist/${_npm_base}.umd.js ${pkgdir}${site_packages}/${_base/-/_}/modules/common/serve/trame-vtk.js
 
   rm ${pkgdir}${site_packages}/trame/__init__.py
   rm ${pkgdir}${site_packages}/trame/modules/__init__.py

@@ -36,6 +36,8 @@ pkgbase = python-trame-vtk
 	depends = gl2ps
 	depends = verdict
 	source = trame-vtk-2.5.4.tar.gz::https://github.com/Kitware/trame-vtk/archive/v2.5.4.tar.gz
+	source = https://registry.npmjs.org/vue-vtk-js/-/vue-vtk-js-3.1.7.tgz
 	sha512sums = bc2745283f910634a07bc91793dbc56a5146c030b2c19817564bffd8e967db25b789262d47a918e3396fa7e0b183b41322e49e96d1875bbd96bf63bacb280b9a
+	sha512sums = 66ed3556c34303c3af0de0585ad6e2e39d3dcec2a4e8773b98aef7312239c4d11466ff180c64aad192c4842fdcb83292dd26a3d98696cb0493a10fbb5f80f0c9
 
 pkgname = python-trame-vtk
