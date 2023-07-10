@@ -4,14 +4,14 @@ pkgver=2.0
 pkgrel=1
 pkgdesc="System cleaner"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="https://github.com/architalia/clean"
+url="https://github.com/architalia/clean.git"
 license=('GPL3')
 groups=()
 depends=('bash' 'bc')
 makedepends=()
 checkdepends=()
 optdepends=()
-source=(clean)
+source=("git+https://github.com/architalia/clean.git#branch=main")
 sha256sums=('SKIP')
 
 package() {

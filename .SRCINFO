@@ -2,7 +2,7 @@ pkgbase = clean
 	pkgdesc = System cleaner
 	pkgver = 2.0
 	pkgrel = 1
-	url = https://github.com/architalia/clean
+	url = https://github.com/architalia/clean.git
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -11,7 +11,7 @@ pkgbase = clean
 	license = GPL3
 	depends = bash
 	depends = bc
-	source = clean
+	source = git+https://github.com/architalia/clean.git#branch=main
 	sha256sums = SKIP
 
 pkgname = clean
