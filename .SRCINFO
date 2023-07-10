@@ -1,7 +1,7 @@
 pkgbase = piclone
 	pkgdesc = Raspberry Pi system clone utility
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/raspberrypi-ui/piclone
 	arch = any
 	license = GPL
@@ -18,8 +18,8 @@ pkgbase = piclone
 	depends = dbus
 	optdepends = gvfs
 	source = git+https://github.com/raspberrypi-ui/piclone.git
-	source = 0001-add_locale_header.patch
+	source = locale_uuidgen.patch
 	sha256sums = SKIP
-	sha256sums = 3db876497efc8f9740e30b22cf3642454dc5175cf1fa5628ddc30ab4c025cda6
+	sha256sums = 38f7e350f4e76479cc5ad53046ea9753d13116f5a1af7c1780fb3ac2181a9b7d
 
 pkgname = piclone
