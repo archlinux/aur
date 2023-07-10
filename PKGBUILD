@@ -2,7 +2,7 @@
 
 _pkgname=dolphin
 pkgname="$_pkgname-tabopts"
-pkgver=23.04.2
+pkgver=23.04.3
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 arch=(i686 x86_64)
@@ -40,7 +40,7 @@ source=(
   "dolphin-tabopts-1.patch"::"https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch"
 )
 sha256sums=(
-  '344e999e1ad101a7294e28d18c15d7e818d596fdc95253836ea04811d97f6147'
+  '28cab05a6390e067f3a9c5ca176ec412f52bf20f78dc82a12a460d252211da2f'
   '3a8d8d9f616471e24ac3833445766bc723c3cb8b31384e0bd08abc8dc4bb9e9d'
 )
 
@@ -49,7 +49,7 @@ prepare() {
 
   for patch in "$srcdir"/*.patch ; do
     if [ -f "$patch" ] ; then
-      echo "Applying patch: ${patch##*/}"
+      printf 'Applying patch: %s\n' "${patch##*/}"
       patch -Np1 -F100 -i "$patch"
     fi
   done
