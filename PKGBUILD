@@ -37,9 +37,9 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
     pytest "build/lib.linux-${CARCH}-cpython-$(get_pyver)" \
-        --deselect=build/lib.linux-x86_64-cpython-$(get_pyver)/fast_histogram/tests/test_histogram.py::test_1d_compare_with_numpy \
-        --deselect=build/lib.linux-x86_64-cpython-$(get_pyver)/fast_histogram/tests/test_histogram.py::test_2d_compare_with_numpy \
-        --deselect=build/lib.linux-x86_64-cpython-$(get_pyver)/fast_histogram/tests/test_histogram.py::test_dd_compare_with_numpy || warning "Tests failed" # -vv --color=yes
+        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/fast_histogram/tests/test_histogram.py::test_1d_compare_with_numpy \
+        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/fast_histogram/tests/test_histogram.py::test_2d_compare_with_numpy \
+        --deselect=build/lib.linux-${CARCH}-cpython-$(get_pyver)/fast_histogram/tests/test_histogram.py::test_dd_compare_with_numpy || warning "Tests failed" # -vv --color=yes
 }
 
 package() {
