@@ -21,23 +21,23 @@ mkdir tmp bin
 ln -sf /bin/sh ./bin
 ln -sf /bin/rm ./bin
 ln -sf /bin/chmod ./bin
-cp $srcdir/e-dowod-$pkgver.run ./bin/e-dowod-$pkgver.run
-chmod +x ./bin/e-dowod-$pkgver.run
+cp $srcdir/$pkgname-$pkgver.run ./bin/$pkgname-$pkgver.run
+chmod +x ./bin/$pkgname-$pkgver.run
 
 mkdir -p ./usr/share/applications/
 mkdir -p ./etc/xdg/autostart
 
-fakechroot fakeroot chroot . e-dowod-$pkgver.run  install --accept-licenses --confirm-command
+fakechroot fakeroot chroot . $pkgname-$pkgver.run  install --accept-licenses --confirm-command
 
 # remove temporary files for fakechroot
 rm -rf bin tmp
 # remove installer files
-cd opt/e-dowod && rm -rf uninstall* installerResources installer.dat components.xml InstallationLog.txt
+cd opt/$pkgname && rm -rf uninstall* installerResources installer.dat components.xml InstallationLog.txt
 }
 
 package() {
 cd $srcdir/chroot
 mkdir -p usr/share/
-mv opt/e-dowod/Licenses/ usr/share/licenses
+mv opt/$pkgname/Licenses/ usr/share/licenses
 cp -R * $pkgdir/
 }
