@@ -46,7 +46,7 @@ package() {
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   # Install trame-vtk.js
-  mv ${srcdir}/package/dist/${_npm_base}.umd.js ${pkgdir}${site_packages}/${_base/-/_}/modules/common/serve/trame-vtk.js
+  mv ${srcdir}/package/dist/${_npm_base::-3}.umd.js ${pkgdir}${site_packages}/${_base/-/_}/modules/common/serve/trame-vtk.js
   # Install static_viewer.html
   mv ${srcdir}/OfflineLocalView.html ${pkgdir}${site_packages}/${_base/-/_}/tools/static_viewer.html
 
