@@ -2,8 +2,9 @@
 #/opt/skywire/scripts/skywire-autoconfig
 #skywire autoconfiguration script for debian & archlinux packages
 #source the skyenv file if it exists - provided by the skybian package or the user
-[[ -f /etc/profile.d/skyenv.sh ]] && source /etc/profile.d/skyenv.sh
-[[ ! -d /opt/skywire/local/custom ]] && mkdir -p /opt/skywire/local/custom
+[[ ! -z "$SKYENV" ]] && [[ -f "$SKYENV" ]] && source $SKYENV
+[[ -z "$SKYENV" ]] && SKYENV=/etc/skywire.conf && [[ -f "$SKYENV" ]] && source $SKYENV
+[[ "$?" -ne 0 ]] && [[ -f /etc/profile.d/skyenv.sh ]] && source /etc/profile.d/skyenv.sh
 #set NOAUTOCONFIG=true to avoid running the script in the postinstall
 if [[ ${NOAUTOCONFIG} == true ]]; then
   #unset the env
@@ -16,14 +17,52 @@ if [[ $EUID -ne 0 ]]; then
 	echo "root permissions required"
 	exit 1
 fi
-#grant network permissions to the vpn app binaries
-setcap cap_net_admin+ep /opt/skywire/apps/vpn-client
-setcap cap_net_admin+ep /opt/skywire/apps/vpn-server
+
+#make the custom logserver path just in case
+[[ ! -d /opt/skywire/local/custom ]] && mkdir -p /opt/skywire/local/custom
+
+#transition to new /etc/skywire.conf file from /etc/profile.d/skyenv.sh
+[[ ! -z "$SKYENV" ]] && [[ -f "$SKYENV" ]] && source $SKYENV
+[[ -z "$SKYENV" ]] && SKYENV=/etc/skywire.conf && [[ -f "$SKYENV" ]] && source $SKYENV
+if [[ "$?" -ne 0 ]] && [[ -f /etc/profile.d/skyenv.sh ]] && [[ ! -f "$SKYENV" ]] ; then
+source /etc/profile.d/skyenv.sh
+skywire-cli config gen -q | tee /etc/skywire.conf  > /dev/null
+sed -i "s/#BESTPROTO=true/BESTPROTO=true/g" /etc/skywire.conf
+
+if [[ ( ${URL} -ne "") ]]; then
+sed -i "s/#SVCCONFADDR=('')/SVCCONFADDR=('${URL}')/g" /etc/skywire.conf
+fi
+if [[ ( ${DMSGHTTP} -eq "1") ]]; then
+  sed -i "s/#DMSGHTTP=true/DMSGHTTP=true/g" /etc/skywire.conf
+fi
+if [[ ( ${VISORISPUBLIC} -eq "1") ]]; then
+  sed -i "s/#VISORISPUBLIC=true/VISORISPUBLIC=true/g" /etc/skywire.conf
+fi
+if [[ ( ${NOAUTOCONNECT} -eq "1") ]]; then
+  sed -i "s/#DISABLEPUBLICAUTOCONN=true/DISABLEPUBLICAUTOCONN=true/g" /etc/skywire.conf
+fi
+if [[ ${VPNSERVER} -eq "1" ]]; then
+  sed -i "s/#VPNSERVER=true/VPNSERVER=true/g" /etc/skywire.conf
+fi
+if [[ ${TESTENV} -eq "1" ]]; then
+  sed -i "s/#TESTENV=true/TESTENV=true/g" /etc/skywire.conf
+fi
+sed -i "s/#PKGENV=true/PKGENV=true/g" /etc/skywire.conf
+
+[[ (! -f /opt/skywire/skywire.json) || ($(cat /opt/skywire/skywire.json | grep -Po '"hypervisor":') != "") ]] &&	sed -i "s/#ISHYPERVISOR=true/ISHYPERVISOR=true/g" /etc/skywire.conf
+
+SKYENV=/etc/skywire.conf && [[ -f "$SKYENV" ]] && source $SKYENV
+fi
+
+#grant network permissions to the vpn app binaries ; should be done via systemd service
+#setcap cap_net_admin+ep /opt/skywire/apps/vpn-client
+#setcap cap_net_admin+ep /opt/skywire/apps/vpn-server
+
 # determine if skywire is running via systemd
 if [[ $(ps -eo pid,comm,cgroup | grep skywire) == *"system.slice"* ]]; then
 WSYSTEMD=1
 fi
-#root portion of the configuration
+
 systemctl is-active --quiet skywire-autoconfig && systemctl disable skywire-autoconfig 2> /dev/null
 
 #make the logging of this script colorful
@@ -63,60 +102,49 @@ _errmsg2() {
 	local mesg=$1; shift
 	printf "${_red}>>> FATAL:${_bold} ${mesg}${_nc}\n" "$@"
 }
-#helpful text
-_welcome(){
-#	if [[ $(uname -m) == *"arm"* ]]; then
-skywire-cli reward -r >> /dev/null 2>&1
-if [[ ${?} == 0 ]]; then
-_msg2 "skycoin reward address:
-${_green}$(skywire-cli reward -r)${_nc}"
-else
-#  if [[ $(uname -m) == *"arm"* ]]; then
-    _msg2 "reward eligibility rules:
-${_yellow}https://github.com/skycoin/skywire/blob/develop/mainnet_rules.md${_nc}"
-    _msg2 "set your skycoin reward address:
-${_cyan}skywire-cli ${_yellow}reward ${_green}<skycoin-address>${_nc}"
-  fi
-#fi
-	_msg2 "track uptime:
-  ${_blue}http://ut.skywire.skycoin.com/uptimes${_nc}
-  ${_blue}http://ut.skywire.skycoin.com/uptimes?v=v2${_nc}"
-#	fi
-	_msg2 "support:
-${_blue}https://t.me/skywire${_nc}"
-}
+
 #generate config as root
 _config_gen() {
+    ##generate (hyper)visor configuration##
+#    if [[ ! -z "$SKYENV" ]] && [[ -f "$SKYENV" ]] ; then
+#
+#      _configgencmd() {
+#        SKYENV=$SKYENV skywire-cli config gen -pr ${_retain_hv}
+#      }
+      # show config gen command used
+#      _configgencmdcolor="${_green}${_skyenv}${_cyan}skywire-cli ${_yellow}config gen -pr ${_retain_hv}"
+#    else
   #create by default the local hypervisor config if no config exists ; and retain any hypervisor config which exists
-  [[ (! -f /opt/skywire/skywire.json) || ($(grep -Po '"hypervisor":' /opt/skywire/skywire.json) != "") ]] &&	_is_hypervisor="-i"
   #check for argument - remote pk or 0
   # 0 as argument drops any remote hypervisors which were set in the configuration
   # & triggers the creation of the local hyperisor configuration
 	if [[ ${_1} == "0" ]]; then
-    _retain_hv=""
+    _retainhv=""
 		unset _1
-		_is_hypervisor="-i"
+		_ishypervisor="-i"
 	fi
 	# 1 as argument drops remote hypervisors and does not create the local hv config
   	if [[ ${_1} == "1" ]]; then
-      _retain_hv=""
+      _retainhv=""
   		unset _1
-  		_is_hypervisor=""
+  		_ishypervisor=""
   	fi
 	# create the flag to set the remote hypervisor(s)
 	if [[ ! -z ${_1} ]]; then
-    _retain_hv=""
-		_hvpks="--hvpks ${_1}"	#shorthand flag: -j
-		_is_hypervisor=""
+    _retainhv=""
+		_hypervisorpks=" -j ${_1}"	#shorthand flag: -j
+		_ishypervisor=""
 	 fi
-	##generate (hyper)visor configuration##
-	# show config gen command used
+_configgencmd() {
+  skywire-cli config gen -r ${_visorispublic}${_vpnserver}${_testenv}${_bestproto}${_svccconfaddr}${_loglvl}${_dmsghttp}${_ishypervisor}${_displaynodeip}${_pkgenv}${_sk}${_disablepublicautoconn}${_version}${_binpath}${_proxyclientpk}${_startproxyclient}${_noproxyserver}${_proxyserverpass}${_proxyclientpass}${_vpnks}${_addvpn}${_vpnclientpass}${_vpnserverpass}${_vpnserversecure}${_vpnservernetifc}${_hypervisorpks}
+}
+    _configgencmdcolor="${_cyan}skywire-cli ${_yellow}config gen -r ${_visorispublic}${_vpnserver}${_testenv}${_bestproto}${_svccconfaddr}${_loglvl}${_dmsghttp}${_ishypervisor}${_displaynodeip}${_pkgenv}${_sk}${_disablepublicautoconn}${_version}${_binpath}${_proxyclientpk}${_startproxyclient}${_noproxyserver}${_proxyserverpass}${_proxyclientpass}${_vpnks}${_addvpn}${_vpnclientpass}${_vpnserverpass}${_vpnserversecure}${_vpnservernetifc}${_hypervisorpks}"
 	_msg3 "Generating skywire config with command:
-${_cyan}skywire-cli ${_yellow}config gen -bepr ${_retain_hv} ${_is_hypervisor} ${_public_rpc} ${_vpn_server} ${_test_env} ${_hvpks} ${_no_autoconnect} ${_is_public_visor} ${_dmsghttp} ${_url}${_nc}"
-    skywire-cli config gen -bepr ${_retain_hv} ${_is_hypervisor} ${_public_rpc} ${_vpn_server} ${_test_env} ${_hvpks} ${_no_autoconnect} ${_is_public_visor}  ${_dmsghttp} ${_url} >> /dev/null 2>&1
+  ${_configgencmdcolor}"
+  _configgencmd  > /dev/null
     if [[ ${?} != 0 ]]; then
       #print the error!
-      skywire-cli config gen -bepr ${_retain_hv} ${_is_hypervisor} ${_public_rpc} ${_vpn_server} ${_test_env} ${_hvpks} ${_no_autoconnect} ${_is_public_visor} ${_dmsghttp} ${_url}
+      _configgencmd
       _err=$?
       _errmsg2 "error generating skywire config"
       exit ${_err}
@@ -135,32 +163,138 @@ config path: ${_purple}/opt/skywire/skywire.json${_nc}"
 	fi
 }
 
-#only use public rpc flag with env PUBLICRPC=1
+if [[ ! -z "$SKYENV" ]] && [[ -f "$SKYENV" ]] ; then
+  if [[ "${VISORISPUBLIC}" == "true" ]]; then
+    _visorispublic=" --public"
+  fi
+
+  if [[ "${VPNSERVER}" == "true" ]]; then
+    _vpnserver=" --servevpn"
+  fi
+
+  if [[ "${TESTENV}" == "true" ]]; then
+    _testenv=" -t"
+  fi
+
+  if [[ "${BESTPROTO}" == "true" ]]; then
+    _bestproto=" -b"
+  fi
+  if [[ "${#SVCCONFADDR[@]}" -gt 0 ]]; then
+  IFS=',' _svccconfaddr="  -a='${SVCCONFADDR[*]}'"
+  fi
+  if [[ "${LOGLVL}" != "" ]]; then
+    _loglvl=" --loglvl=${LOGLVL}"
+  fi
+
+  if [[ "${DMSGHTTP}" == "true" ]]; then
+    _dmsghttp=" -d"
+  fi
+
+  if [[ "${ISHYPERVISOR}" == "true" ]]; then
+    _ishypervisor=" -i"
+  fi
+
+  if [[ -n "${OUTPUT}" ]]; then
+    _output=" -o '${OUTPUT}'"
+  fi
+
+  if [[ "${DISPLAYNODEIP}" == "true" ]]; then
+    _displaynodeip=" --publicip"
+  fi
+
+#  if [[ "${PKGENV}" == "true" ]]; then
+    _pkgenv=" -p"
+#  fi
+
+  if [[ -n "${SK}" ]]; then
+    _sk=" -s '${SK}'"
+  fi
+
+  if [[ "${DISABLEPUBLICAUTOCONN}" == "true" ]]; then
+    _disablepublicautoconn=" -y"
+  fi
+
+  if [[ -n "${VERSION}" ]]; then
+    _version=" --version='${VERSION}'"
+  fi
+
+  if [[ -n "${BINPATH}" ]]; then
+    _binpath=" --binpath='${BINPATH}'"
+  fi
+
+  if [[ -n "${PROXYCLIENTPK}" ]]; then
+    _proxyclientpk=" --proxyclientpk='${PROXYCLIENTPK}'"
+  fi
+
+  if [[ "${STARTPROXYCLIENT}" == "true" ]]; then
+    _startproxyclient=" --startproxyclient"
+  fi
+
+  if [[ "${NOPROXYSERVER}" == "true" ]]; then
+    _noproxyserver=" --noproxyserver"
+  fi
+
+  if [[ -n "${PROXYSEVERPASS}" ]]; then
+    _proxyserverpass=" --proxyserverpass='${PROXYSEVERPASS}'"
+  fi
+
+  if [[ -n "${PROXYCLIENTPASS}" ]]; then
+    _proxyclientpass=" --proxyclientpass='${PROXYCLIENTPASS}'"
+  fi
+
+  if [[ "${VPNKS}" == "true" ]]; then
+    _vpnks=" --killsw='${VPNKS}'"
+  fi
+
+  if [[ -n "${ADDVPNPK}" ]]; then
+    _addvpn=" --addvpn='${ADDVPNPK}'"
+  fi
+
+  if [[ -n "${VPNCLIENTPASS}" ]]; then
+    _vpnclientpass=" --vpnpass='${VPNCLIENTPASS}'"
+  fi
+
+  if [[ -n "${VPNSEVERPASS}" ]]; then
+    _vpnserverpass=" --vpnserverpass='${VPNSEVERPASS}'"
+  fi
+
+  if [[ -n "${VPNSEVERSECURE}" ]]; then
+    _vpnserversecure=" --secure='${VPNSEVERSECURE}'"
+  fi
+
+  if [[ -n "${VPNSEVERNETIFC}" ]]; then
+    _vpnservernetifc=" --netifc='${VPNSEVERNETIFC}'"
+  fi
+
+  if [[ "${#HYPERVISORPKS[@]}" -gt 0 ]]; then
+  IFS=',' _hypervisorpks=" -j '${HYPERVISORPKS[*]}'"
+  fi
+
+else
 if [[ ( ${URL} -ne "") ]]; then
-  _url="${URL}"
+  _svccconfaddr=" -a '${URL}'"
 fi
-#only use public rpc flag with env PUBLICRPC=1
 if [[ ( ${DMSGHTTP} -eq "1") ]]; then
-  _dmsghttp="--dmsghttp "
+  _dmsghttp=" -d"
 fi
-#use public flag with env VISORISPUBLIC=1
 if [[ ( ${VISORISPUBLIC} -eq "1") ]]; then
-  _is_public_visor="--public "
+  _visorispublic=" --public"
 fi
-#use public flag with env NOAUTOCONNECT=1
 if [[ ( ${NOAUTOCONNECT} -eq "1") ]]; then
-  _no_autoconnect="--autoconn "
+  _disablepublicautoconn=" -y"
 fi
-#enable VPN server automatically on config re-gen with env VPNSERVER=1
 if [[ ${VPNSERVER} -eq "1" ]]; then
-  _vpn_server="--servevpn "
+  _vpnserver=" --servevpn"
 fi
-#default to retaining hypervisors already set
-_retain_hv="-x"
-#use test deployment instead of production with env TESTENV=1
+_retainhv="-x"
 if [[ ${TESTENV} -eq "1" ]]; then
-	_test_env="--testenv"
+  _testenv=" -t"
 fi
+_bestproto=" -b"
+_pkgenv=" -p"
+[[ (! -f /opt/skywire/skywire.json) || ($(cat /opt/skywire/skywire.json | grep -Po '"hypervisor":') != "") ]] &&	_ishypervisor=" -i"
+fi
+
 #check if >>this script<< is a child process of the systemd service i.e.:  run in dmsgpty terminal
 if [[ "${SYSTEMDCHILD}" -ne "1" ]]; then
 	_now="--now"
@@ -174,13 +308,13 @@ fi
 #attempt to import config if none exists - i.e. import skybian config or restore config
 if [[ ! -f /opt/skywire/skywire.json ]]; then
 	if [[ -f /etc/skywire-config.json ]]; then
-  		_msg3 "Importing configuration from /etc/skywire-config.json to /opt/skywire/skywire.json"
+  		_warnmsg1 "Importing configuration from /etc/skywire-config.json to /opt/skywire/skywire.json"
   		cp -b  /etc/skywire-config.json /opt/skywire/skywire.json
 	fi
 fi
 if [[ ! -f /opt/skywire/local/reward.txt ]]; then
 	if [[ -f /etc/reward.txt ]]; then
-  		_msg3 "Importing reward address from /etc/reward.txt to /opt/skywire/local/reward.txt"
+  		_warnmsg1 "Importing reward address from /etc/reward.txt to /opt/skywire/local/reward.txt"
   		cp -b  /etc/reward.txt /opt/skywire/local/reward.txt
 	fi
 fi
@@ -217,9 +351,35 @@ if ! systemctl is-active --quiet ${_svc} >/dev/null; then
 	exit 0
 fi
 _pubkey=$(skywire-cli visor pk -p | tail -n1)
+
+#helpful text
+_welcome(){
+[[ ! -z "$REWARDSKYADDR" ]] && echo "$REWARDSKYADDR" | tee /opt/skywire/local/reward.txt
+skywire-cli reward -r >> /dev/null 2>&1
+if [[ ${?} == 0 ]]; then
+_msg2 "skycoin reward address:
+${_green}$(skywire-cli reward -r)${_nc}"
+_msg2 "reward metrics:
+${_blue}https://fiber.skywire.dev/skycoin-rewards${_nc}"
+_msg2 "distribution notifications:
+${_blue}https://t.me/skywire_reward${_nc}"
+
+else
+    _msg2 "reward eligibility rules:
+${_yellow}https://github.com/skycoin/skywire/blob/develop/mainnet_rules.md${_nc}"
+    _msg2 "set your skycoin reward address:
+${_cyan}skywire-cli ${_yellow}reward ${_green}<skycoin-address>${_nc}"
+fi
+	_msg2 "track uptime:
+  ${_cyan}skywire-cli ${_yellow}ut -m0 -k ${_green}${_pubkey}${_nc}
+${_blue}https://ut.skywire.skycoin.com/uptimes?v=v2&visors=${_pubkey}${_nc}"
+	_msg2 "support:
+${_blue}https://t.me/skywire${_nc}"
+}
+
 _msg2 "Visor Public Key:
 ${_green}${_pubkey}${_nc}"
-if [[ $_is_hypervisor == "-i" ]]; then
+if [[ $_ishypervisor == " -i" ]]; then
 	if [[ $(ps -o comm= -p $PPID) != "sshd" ]]; then
 		_msg2 "Starting now on:\n${_red}http://127.0.0.1:8000${_nc}"
 #    _vpnurl=$(skywire-cli vpn url -p)
@@ -257,6 +417,7 @@ if systemctl is-active --quiet ${_svc} >/dev/null; then
     fi
   fi
 fi
+
 #SKYREV=('-p 8000 -r 8000 -k <public-key>')
 #if systemctl is-active --quiet ${_svc} >/dev/null; then
 #  if [[ ${#SKYREV[@]} -gt 0 ]] ; then

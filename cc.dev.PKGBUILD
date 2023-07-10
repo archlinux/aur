@@ -14,14 +14,14 @@ source=("git+${url}.git#branch=develop"
 "${_source[@]}"
 )
 sha256sums=('SKIP'
-            '40f991d6ba6d9c1210287c6c8dcd4e19806720125926e1c968a7942ef34532b0'
+            'fa5abed3ea220ebe6014199aa3d96276ccab3a7dd4c876f93825b31fcb7936ce'
             '40c80ccce9e89ae559050b943be1f09d905476c614a72d74fac2a58c821ac058'
             '00da5a9afdf5a8c7033978d2074039ba1ff7bc7a7221fbd278eb1270bdeb8eae'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
             'fee14fb95e02a6c74626e9c89def7c1137192c5c23470a05c750cd97f3d3f0dd'
             '8519d027325dcb34877bb5b0fb0c3c035d7589c0046b53935e2b949d436c4be3'
-            '6026290640fe7329ec88423ce13f0a42e3f0ebc578c547500f2220057725a404')
+            '73f3d759c8fa3ff7237d78662bf37f0e886f19879f8c541bfed5e750a1810fc3')
 
 pkgver() {
 _version=$(git ls-remote --tags --refs --sort="version:refname" ${url}.git | tail -n1)
