@@ -1,19 +1,19 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="miteiru-bin"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab"
 arch=('x86_64')
 url="https://github.com/hockyy/miteiru"
 license=(custom)
-depends=('electron' 'hicolor-icon-theme' 'mecab')
+depends=('electron21' 'hicolor-icon-theme' 'mecab')
 conflicts=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Miteiru-${pkgver}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Miteiru-${pkgver}-x64.AppImage"
     "LICENSE.md::https://raw.githubusercontent.com/hockyy/miteiru/main/LICENSE.md"
     "${pkgname%-bin}.sh")
-sha256sums=('1169d8b649fb928e724e5e68ca7eaf84a6460215d8c825aebbbad7582f032364'
+sha256sums=('d4dd794ad2f569ba94d3e64bd1eae21d4556a6fd99fd6f7d55c1e89b0bd29bc3'
             '32b8056672bc415bbd3829a9a737d776795f6b73af61ce0934107ed81ee8a7a0'
-            '5c09a1f2dc4042f7f1e56b968f3c875127afb9a28c1c0522e7083fe70305a452')
+            '6620759cfdb9e7fff0813ecd51cc0eecc50f13e2d9bcec0105483a3bd15f8785')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
