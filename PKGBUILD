@@ -1,39 +1,42 @@
 # Maintainer: Daniel Bershatsky <bepshatsky@yandex.ru>
-pkgname=python-orbax
+pkgname=python-orbax-checkpoint
 _pkgname=${pkgname#python-}
-pkgver=0.1.7
+pkgver=0.2.7
 pkgrel=1
-pkgdesc='Orbax is a library providing common utilities for JAX users.'
+pkgdesc='Orbax provides common utility libraries for JAX users (checkpoint).'
 arch=('any')
 url='https://github.com/google/orbax'
 license=('Apache')
 groups=('jax')
 depends=(
     'python-absl'
-    'python-cached-property'
     'python-etils'
-    'python-flax'
-    'python-importlib_resources'
+    'python-importlib_resources'  # etils[epath]
     'python-jax'
+    'python-msgpack'
+    'python-nest-asyncio'
     'python-numpy'
+    'python-protobuf'
     'python-tensorstore'
+    'python-typing_extensions'  # etils[epy]
     'python-yaml'
+
+)
+optdeps=(
+    'python-orbax-export: Serialization JAX to TensorFlow Saved Models.'
 )
 makedepends=('python-build' 'python-flit-core' 'python-installer')
-optdepends=('python-flax: Deep learning library from Google')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/google/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('322c1e8670a65e52dd71c12f9e3e7204c7db5ce9d7e651503a5c7702e2640908')
+source_hash='b298330f736a8e0d03d7fd6056c7981bfef9ea743ebad2cc4a8b5f0811de'
+source=("orbax-checkpoint-$pkgver.tar.gz::https://files.pythonhosted.org/packages/58/27/$source_hash/orbax_checkpoint-0.2.7.tar.gz")
+sha256sums=('8f23a301641ec33ea094c756629855daccab263e114c6f27cebcf6c4e3f0e90e')
 
 build() {
-    find $_pkgname-$pkgver/$_pkgname -iname '*.md' -delete
-    find $_pkgname-$pkgver/$_pkgname -iname '*.ipynb' -delete
-    find $_pkgname-$pkgver/$_pkgname -iname '*_test.py' -delete
-    python -m build -n -w $_pkgname-$pkgver
+    python -m build -n -w orbax_checkpoint-$pkgver
 }
 
 package() {
     python -m installer \
         --compile-bytecode 1 \
         --destdir $pkgdir \
-        $_pkgname-$pkgver/dist/$_pkgname-$pkgver-*.whl
+        orbax_checkpoint-$pkgver/dist/orbax_checkpoint-$pkgver-*.whl
 }
