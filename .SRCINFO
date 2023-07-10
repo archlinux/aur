@@ -1,16 +1,22 @@
 pkgbase = wxmedit
 	pkgdesc = Cross-platform Text/Hex Editor, a fork of MadEdit with bug fixes and improvements
-	pkgver = 3.1_FIX1
-	pkgrel = 3
+	pkgver = 3.2
+	pkgrel = 1
 	url = https://wxmedit.github.io/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = boost
 	depends = curl
-	depends = wxgtk2
-	source = https://github.com/hltj/wxMEdit/archive/3.1_FIX1.tar.gz
-	sha256sums = 51dd81ddd44c83017d2e54f8b0a11a50e56075e8edc01d738865478fdddd8017
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = icu
+	depends = wxwidgets-common
+	depends = wxwidgets-gtk3
+	source = wxmedit-3.2.tar.gz::https://github.com/hltj/wxMEdit/archive/3.2.tar.gz
+	sha256sums = d2bdf266125c6df724ec78cb99ef5f043fca28e8e873eac4b49db7b5986c7579
 
 pkgname = wxmedit
-
