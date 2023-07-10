@@ -1,6 +1,6 @@
 pkgbase = clean
 	pkgdesc = $ clean - easy command for arch linux, orphans, cache
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/architalia/clean
 	arch = any
