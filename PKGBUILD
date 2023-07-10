@@ -14,7 +14,7 @@ source=(
   https://github.com/shenwei356/seqkit/releases/download/v"${pkgver}"/seqkit_linux_amd64.tar.gz
   https://raw.githubusercontent.com/shenwei356/seqkit/v"${pkgver}"/LICENSE
 )
-sha256sums=('317b476d2437312f8cd2600da322e42098dd57652054e52843061869df1bf1ad'
+sha256sums=('a01548b02632df8bb0655e1d4791683ac7e1f0989411b693f35f6ce02d2efdb3'
             'ffa76e8a163f7a8785ccf4f517d601d562d2a68fbd019de9b2eccf49c9b89730')
 
 package() {
