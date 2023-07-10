@@ -31,13 +31,15 @@ fakechroot fakeroot chroot . $pkgname-$pkgver.run  install --accept-licenses --c
 
 # remove temporary files for fakechroot
 rm -rf bin tmp
+
+# move licenses to proper folder
+mkdir -p usr/share/
+mv opt/$pkgname/Licenses/ usr/share/licenses
+
 # remove installer files
 cd opt/$pkgname && rm -rf uninstall* installerResources installer.dat components.xml InstallationLog.txt
 }
 
 package() {
-cd $srcdir/chroot
-mkdir -p usr/share/
-mv opt/$pkgname/Licenses/ usr/share/licenses
-cp -R * $pkgdir/
+cp -R $srcdir/chroot/* $pkgdir/
 }
