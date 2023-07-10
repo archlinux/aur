@@ -12,8 +12,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 source=("git+https://github.com/architalia/$pkgname.git#branch=main")
-sha256sums=('SKIP' 
-            'a5sHRKz81dn+zDqCwkUpOb2aJSteps37+6ZhrvNf5HE')
+sha256sums=('SKIP')
 
 package() {
 	install -Dm755 clean "$pkgdir/usr/bin/"
