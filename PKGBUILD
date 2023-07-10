@@ -10,8 +10,18 @@ arch=('any')
 license=('GPL')
 provides=('calendar-cli')
 conflicts=('calendar-cli')
-depends=('python' 'python-caldav>=0.11.0' 'python-icalendar' 'python-pytz' 'python-vobject' 'python-tzlocal' 'python-six')
-makedepends=('python-build' 'python-installer' 'python-pytest' 'python-wheel')
+depends=('python'
+	 'python-caldav>=0.11.0'
+	 'python-icalendar'
+	 'python-pytz'
+	 'python-vobject'
+	 'python-tzlocal'
+	 'python-six')
+makedepends=('python-build'
+	     'python-installer'
+	     'python-pytest'
+	     'python-setuptools'
+	     'python-wheel')
 source=("${pkgname}::git+https://github.com/tobixen/${_pkgname}")
 sha256sums=('SKIP')
 
