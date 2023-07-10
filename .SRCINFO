@@ -9,6 +9,6 @@ pkgbase = pbcli
 	makedepends = cargo
 	depends = gcc-libs
 	source = pbcli-2.2.1.tar.gz::https://github.com/Mydayyy/pbcli/archive/v2.2.1.tar.gz
-	sha512sums = 542b241ed0efd86b229b555654981028073ee82f6fa2bd5718f5623b43f20e4a9d400280a00436d56411aa77d3312438a917b8ee132226291cf8c1ccc156a29c
+	sha512sums = 83552166c3ebda4b8c923a78415cad0c4bef5a9e122cb09594ed146d22695023a783aab02e254f1028e7af126ddab6b3af88e842cd5fc552a836e85389f7fcc9
 
 pkgname = pbcli
