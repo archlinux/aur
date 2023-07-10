@@ -1,6 +1,6 @@
 pkgbase = haste-server-git
 	pkgdesc = Prettiest, easiest to use pastebin ever made
-	pkgver = r399.7286385
+	pkgver = r408.b52b394
 	pkgrel = 1
 	url = https://github.com/toptal/haste-server
 	arch = any

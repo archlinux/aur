@@ -2,7 +2,7 @@
 
 pkgname=haste-server-git
 _gitname=haste-server
-pkgver=r399.7286385
+pkgver=r408.b52b394
 pkgrel=1
 pkgdesc="Prettiest, easiest to use pastebin ever made"
 arch=('any')
@@ -41,8 +41,4 @@ package() {
 	cd "${srcdir}/${_gitname}"
 	install -Dm644 "../../${_gitname}.service" -t "${pkgdir}/usr/lib/systemd/system"
 	npm install --cache ../cache -g --prefix "${pkgdir}/usr" *.tgz
-
-	# npm gives ownership of ALL FILES to build user
-	# https://bugs.archlinux.org/task/63396
-	chown -R root:root "${pkgdir}"
 }
