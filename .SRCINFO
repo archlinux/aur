@@ -10,8 +10,8 @@ pkgbase = ubiquity
 	makedepends = pkgconf
 	depends = webkit2gtk
 	depends = libayatana-appindicator
-	source = ubiquity-git-0.3.0.tar.gz::https://github.com/opensourcecheemsburgers/ubiquity/archive/refs/tags/v0.3.0.tar.gz
-	source = ubiquity-git.desktop::https://raw.githubusercontent.com/opensourcecheemsburgers/ubiquity-git/master/ubiquity-git.desktop
+	source = ubiquity-0.3.0.tar.gz::https://github.com/opensourcecheemsburgers/ubiquity/archive/refs/tags/v0.3.0.tar.gz
+	source = ubiquity.desktop::https://raw.githubusercontent.com/opensourcecheemsburgers/ubiquity/master/ubiquity.desktop
 	sha256sums = 599705cf58c494e655c26cff8c25594f67310daea4095eea5348d6f3d21d95fc
 	sha256sums = 80294b66c744e6da117d431a80f6332fde89b7bdc7b33442c6e76e8b76c5b94d
 
