@@ -1,6 +1,6 @@
 pkgbase = stack-client
 	pkgdesc = The STACK Client provides file sync to desktop clients.
-	pkgver = 2.11.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://www.transip.nl/stack/
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = stack-client
 	optdepends = python-nautilus: integration with Nautilus
 	optdepends = nemo-python: integration with Nemo
 	conflicts = stack-client-bin
-	source = http://filehosting-client.transip.nl/packages/stack/v2.11.1-20220906/source/stack-v2.11.1-20220906.tar.gz
+	source = http://filehosting-client.transip.nl/packages/stack/v3.2.0-20230307/source/stack-v3.2.0-20230307.tar.gz
 	source = APPLICATION_NAME.patch
-	sha256sums = c3107d11f3b3bc9680e11f56cb9b1a4f691f93d8fe9990bfebd1a2556e21df82
+	sha256sums = 868d0132394c03864f42d19db942d424c41e95b9f9b20c723d5169a27479f69b
 	sha256sums = 977dbb37deac79bbd65c822887c92a44fde66a5fb65d73d27b326099996309bd
 
 pkgname = stack-client
