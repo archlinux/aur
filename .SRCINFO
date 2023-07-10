@@ -8,6 +8,7 @@ pkgbase = plann-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-pytest
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = xandikos
 	depends = python

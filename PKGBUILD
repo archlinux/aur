@@ -20,6 +20,7 @@ depends=('python'
 makedepends=('python-build'
 	     'python-installer'
 	     'python-pytest'
+	     'python-setuptools'
 	     'python-wheel'
 	     'xandikos')
 source=("${pkgname}::git+https://github.com/tobixen/${_pkgname}/")
