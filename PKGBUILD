@@ -2,11 +2,12 @@
 pkgbase=youplay
 pkgname=(youplay-base youplay-gtk3 youplay-gtk4 youplay-pyqt6 youplay-qt6)
 pkgver=0.46
-pkgrel=2
+pkgrel=3
 pkgdesc="Search, download and play music from YouTube."
 arch=(any)
 url="https://codeberg.org/ralfhersel/youplay"
 license=('GPL3')
+makedepends=(desktop-file-utils gtk3 pyside6 python-gobject python-pyqt6)
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 	"0001-Change-paths-for-packaging.patch")
 md5sums=('f8626746b01f50aacc8531512d5cb39c'
