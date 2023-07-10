@@ -1,11 +1,16 @@
 pkgbase = faur
-	pkgver = 0.1
-	pkgrel = 3
-	arch = any
-	license = custom:ISC
-	depends = git
-	source = faur::git+https://gitlab.com/tharkun/faur.git#branch=v0.1
+	pkgdesc = The Fancy aur helper. Based off of the awesome PKGBUILDer library. Built for ricers.
+	pkgver = 1.00
+	pkgrel = 1
+	url = https://github.com/jadonus/faur.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = noto-fonts-emoji
+	depends = python
+	depends = python-setuptools
+	depends = python-pip
+	source = git+https://github.com/jadonus/faur.git
 	md5sums = SKIP
 
 pkgname = faur
-

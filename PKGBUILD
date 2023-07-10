@@ -1,14 +1,42 @@
-# Maintainer: Joe Davis <me@jo.ie>
-pkgname='faur'
-pkgver='0.1'
-pkgrel='3'
-arch=('any')
-license=('custom:ISC')
-depends=('git')
-source=('faur::git+https://gitlab.com/tharkun/faur.git#branch=v0.1')
-md5sums=('SKIP')
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
+
+# Maintainer: Jadon Gearhart <jadongearhart@gmail.com>
+pkgname=faur
+pkgver=1.00
+pkgrel=1
+epoch=
+pkgdesc="The Fancy aur helper. Based off of the awesome PKGBUILDer library. Built for ricers."
+arch=(x86_64)
+url="https://github.com/jadonus/faur.git"
+license=('GPL')
+groups=()
+depends=(noto-fonts-emoji python python-setuptools python-pip)
+makedepends=(git)
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("git+$url")
+noextract=()
+md5sums=(SKIP)
+validpgpkeys=()
+
+build() {
+	pip install colorama --break-system-packages
+  pip install pkgbuilder --break-system-packages
+}
+
 
 package() {
-	install -D -m 755 "$srcdir/faur/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
-	install -D -m 444 "$srcdir/faur/$pkgname.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
+	cd faur
+  chmod +x faur
+	cp faur ~/.local/bin/
 }
