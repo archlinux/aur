@@ -1,13 +1,12 @@
 pkgbase = tortoisehg
 	pkgdesc = Graphical tools for Mercurial
 	pkgver = 6.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://foss.heptapod.net/mercurial/tortoisehg/thg
 	arch = any
 	license = GPL
 	depends = python
 	depends = mercurial>=6.0
-	depends = mercurial<6.5
 	depends = python-qscintilla-qt5
 	depends = python-iniparse
 	depends = qt5-svg
