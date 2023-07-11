@@ -1,10 +1,11 @@
 pkgbase = spacedrive-bin
 	pkgdesc = A file manager from the future.
 	pkgver = 2023.1.0
-	pkgrel = 2
+	pkgrel = 2.1
 	url = https://spacedrive.com
 	arch = x86_64
 	license = AGPL3
+	provides = spacedrive
 	conflicts = spacedrive
 	source = https://github.com/Nim1com/spacedrive/releases/download/desktop@2023.1.0/data.tar.xz
 	sha256sums = 8df5efae0fa10b72eb129e76f02a9156267c2d7799d29052cfdac5593773390c

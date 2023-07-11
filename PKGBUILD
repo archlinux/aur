@@ -1,6 +1,5 @@
 # Maintainer: Niklas Wojtkowiak <aur.7xcqe@passmail.com>
 _pkgname='spacedrive'
-_upkgname='Spacedrive'
 pkgname="${_pkgname}-bin"
 pkgver='2023.1.0'
 pkgrel=2.1
