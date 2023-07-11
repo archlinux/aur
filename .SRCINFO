@@ -1,6 +1,6 @@
 pkgbase = tap
 	pkgdesc = An audio player for the terminal, written in rust
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 4
 	url = https://github.com/timdubbins/tap
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tap
 	optdepends = fzf: fuzzy searching
 	optdepends = fd: faster find
 	optdepends = skim: fzf alternative
-	source = tap-0.2.1.tar.gz::https://github.com/timdubbins/tap/archive/v0.2.1.tar.gz
-	sha256sums = 3d8d1c238f6259eb2dad6393746fc22610ddbc684e095ab713c0bea9334bdf83
+	source = tap-0.2.2.tar.gz::https://github.com/timdubbins/tap/archive/v0.2.2.tar.gz
+	sha256sums = f1bd2e5b50f2c47d219f88c16f480b697e695e82a1a878d82e732611b736cc7f
 
 pkgname = tap
