@@ -4,16 +4,16 @@
 
 pkgname=ttf-google-sans
 pkgver=1
-pkgrel=2
+pkgrel=3
 
 pkgdesc="Google's signature family of fonts"
-url='https://github.com/sahibjotsaggu/Google-Sans-Fonts'
+url='https://github.com/mnemotiv/Google-Sans-Fonts'
 arch=('any')
 license=('Apache')
 
 makedepends=('git')
 
-source=('git+https://github.com/sahibjotsaggu/Google-Sans-Fonts')
+source=('git+https://github.com/mnemotiv/Google-Sans-Fonts')
 md5sums=('SKIP')
 
 package() {
