@@ -1,0 +1,15 @@
+pkgbase = translator-rs
+	pkgdesc = A simple real-time translator written in Rust. 选中文本即翻译。
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/rikonaka/translator-rs
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = xsel
+	depends = libx11
+	depends = libxcb
+	source = https://github.com/rikonaka/translator-rs/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = b83c1935fd4951ba11375c9c36b5662a787229d2c3c24bf14d05af58c3848b00
+
+pkgname = translator-rs
