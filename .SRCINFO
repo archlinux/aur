@@ -1,6 +1,6 @@
 pkgbase = gdal-libkml
 	pkgdesc = A translator library for raster and vector geospatial data formats
-	pkgver = 3.6.4
+	pkgver = 3.7.0
 	pkgrel = 0
 	url = https://gdal.org/
 	changelog = gdal.changelog
@@ -39,7 +39,7 @@ pkgbase = gdal-libkml
 	makedepends = openssl
 	makedepends = pcre2
 	makedepends = libpng
-	makedepends = podofo
+	makedepends = podofo-0.9
 	makedepends = poppler
 	makedepends = postgresql-libs
 	makedepends = qhull
@@ -53,8 +53,8 @@ pkgbase = gdal-libkml
 	makedepends = zstd
 	makedepends = libkml-git
 	provides = gdal
-	source = https://download.osgeo.org/gdal/3.6.4/gdal-3.6.4.tar.xz
-	sha256sums = 889894cfff348c04ac65b462f629d03efc53ea56cf04de7662fbe81a364e3df1
+	source = https://download.osgeo.org/gdal/3.7.0/gdal-3.7.0.tar.xz
+	sha256sums = af4b26a6b6b3509ae9ccf1fcc5104f7fe015ef2110f5ba13220816398365adce
 
 pkgname = gdal-libkml
 	depends = proj
@@ -94,7 +94,7 @@ pkgname = gdal-libkml
 	optdepends = netcdf: netCDF support
 	optdepends = openexr: EXR support
 	optdepends = openjpeg2: JP2 support
-	optdepends = podofo: PDF support
+	optdepends = podofo-0.9: PDF support
 	optdepends = poppler: PDF support
 	optdepends = postgresql-libs: PostgreSQL support
 	optdepends = libwebp: WebP support
@@ -104,7 +104,7 @@ pkgname = gdal-libkml
 
 pkgname = python-gdal-libkml
 	pkgdesc = Python bindings for GDAL
-	depends = gdal-libkml=3.6.4
+	depends = gdal-libkml=3.7.0
 	depends = python-numpy
 	provides = python-gdal
 	conflicts = python-gdal
