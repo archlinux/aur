@@ -1,7 +1,7 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=cargo-modules
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A cargo plugin for showing an overview of a crate's modules."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
@@ -10,7 +10,7 @@ license=("MPL2")
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-sha512sums=('c2e5bad16ef5b359651bdd507a0a57597d713c0e3f9c8e6d3d4dd80141b93752dbe8ddd312027f4f141f5e9280e0077c39fcc808f637aa9815a4ac00e8b4349d')
+sha512sums=('638751a565dc4db068efb107a3ca5037d6a183cf39eaffdd7228f0bbb4fa50be2e6243b5809474f75c2b490f1264a9cc60ea6d8de5b79b396b805acf7b369a9f')
 
 prepare() {
   cd ${pkgname}-${pkgver}
