@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-git
-pkgver=r113.7d4de48
+pkgver=r149.16d8bb7
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
 arch=('any')
@@ -37,6 +37,10 @@ package() {
 
 	# Install python modules
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	
+	# Install binaries
+	install -v -m644 -D -t "${pkgdir}/usr/bin/" usr/bin/*
+	install -v -m644 -D -t "${pkgdir}/usr/bin/" usr/bin/*
 
 	# Install module tweaks
 	install -v -m644 -D -t "${pkgdir}/usr/lib/modprobe.d/" usr/lib/modprobe.d/*
