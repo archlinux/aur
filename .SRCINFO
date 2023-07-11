@@ -1,0 +1,19 @@
+pkgbase = r-modelenv
+	pkgdesc = Provide Tools to Register Models for Use in 'tidymodels'
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=modelenv
+	arch = any
+	license = MIT
+	checkdepends = r-testthat
+	depends = r-glue
+	depends = r-rlang
+	depends = r-tibble
+	depends = r-vctrs
+	optdepends = r-covr
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/modelenv_0.1.1.tar.gz
+	md5sums = 3ea3e9365c8c36752036b20aec780a6f
+	sha256sums = b119754ab9b338e7e2be8849c634e715226dbc3f0a79b1e5c7567d27f41accde
+
+pkgname = r-modelenv
