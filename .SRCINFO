@@ -1,6 +1,6 @@
 pkgbase = wander
 	pkgdesc = An efficient terminal application/TUI for your HashiCorp Nomad cluster.
-	pkgver = 0.10.2
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/robinovitch61/wander
 	arch = i686
