@@ -1,0 +1,13 @@
+pkgbase = quickserv-bin
+	pkgdesc = Dangerously user-friendly web server for quick prototyping and hackathons
+	pkgver = 0.3.0
+	pkgrel = 1
+	epoch = 1667356893
+	url = https://github.com/jstrieb/quickserv
+	arch = x86_64
+	license = MIT
+	provides = quickserv
+	source = https://github.com/jstrieb/quickserv/releases/download/v0.3.0/quickserv_linux_x64
+	sha256sums = 190c16a540e292b1233d578b45e7220de520d3bbe72a31599cb559992a047bbb
+
+pkgname = quickserv-bin
