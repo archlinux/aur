@@ -1,7 +1,7 @@
 pkgname=php82-xdebug
 _phpbase=82
 _extname=xdebug
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Xdebug is an extension for PHP to assist with debugging and development for php${_phpbase}"
 arch=("x86_64")
@@ -27,5 +27,5 @@ package() {
     chmod 0644 "$pkgdir/etc/php${_phpbase}/conf.d/$_extname.ini"
     install -m0755 -D ".libs/$_extname.so" "$pkgdir$(php-config${_phpbase} --extension-dir)/$_extname.so"
 }
-sha256sums=('7769b20eecdadf5fbe9f582512c10b394fb575b6f7a8c3a3a82db6883e0032b7')
 
+sha256sums=('ef4cb3c228192798874e4530cccceee76840cc80821909740088a1e1a8f00445')
