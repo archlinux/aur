@@ -3,7 +3,7 @@
 
 pkgname=conceal-bin
 _pkgname=conceal
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Command line recycle bin"
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('conceal')
 depends=('skim')
 optdepends=('fzf: supports fzf as finder')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$arch-unknown-linux-gnu.tar.gz")
-sha256sums=('d48a2276cbd2b560cfb11e229835e2cd80a3c16246b0dd60d763eac4fcf96fc4')
+sha256sums=('73e08e428317e929d4a125eb9ad0b3653d042b6715e7a05241168ea4558af122')
 
 package() {
   install -Dm 755 conceal -t "$pkgdir/usr/bin"
