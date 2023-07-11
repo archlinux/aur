@@ -1,0 +1,13 @@
+pkgbase = lpub3d-appimage
+	pkgdesc = LDraw™ editor for LEGO® style digital building instructions
+	pkgver = 2.4.7
+	pkgrel = 1
+	url = https://trevorsandy.github.io/lpub3d
+	arch = x86_64
+	license = GPL3
+	depends = fuse2
+	options = !strip
+	source = LPub3D-2.4.7.0.3476_20230621-x86_64.AppImage::https://sourceforge.net/projects/lpub3d/files/2.4.7/LPub3D-2.4.7.0.3476_20230621-x86_64.AppImage/download
+	sha256sums = a2cc008c08e5b26be4c321a08bac46cdde0582c6764108823652bd4690ba8081
+
+pkgname = lpub3d-appimage
