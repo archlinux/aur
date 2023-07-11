@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=termusic-git
-pkgver=0.7.9.r1252.11c0452
+pkgver=0.7.11.r1500.1094054
 pkgrel=1
 pkgdesc='Music Player TUI written in Rust'
 arch=('x86_64')
@@ -35,7 +35,4 @@ check() {
 package() {
   install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
   install -Dm644 $pkgname/LICENSE_MIT -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-
-  mkdir -p "$pkgdir/usr/share/${pkgname%-git}"
-  cp -a $pkgname/themes "$pkgdir/usr/share/${pkgname%-git}"
 }
