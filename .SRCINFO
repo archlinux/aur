@@ -1,6 +1,6 @@
 pkgbase = jdk-jetbrains
 	pkgdesc = OpenJDK development kit with some fixes and enhancements by JetBrains
-	pkgver = 11.0.15b2043.56
+	pkgver = 17.0.7b1000.6
 	pkgrel = 1
 	url = https://github.com/JetBrains/JetBrainsRuntime/releases
 	arch = x86_64
@@ -8,16 +8,15 @@ pkgbase = jdk-jetbrains
 	depends = java-runtime-common
 	depends = ca-certificates-java
 	depends = java-environment-common
-	provides = java-runtime=11
-	provides = java-runtime-headless=11
-	provides = java-environment=11
-	provides = java-runtime-openjdk=11
-	provides = java-runtime-headless-jre=11
-	provides = java-environment-openjdk=11
+	provides = java-runtime=17
+	provides = java-runtime-headless=17
+	provides = java-environment=17
+	provides = java-runtime-openjdk=17
+	provides = java-runtime-headless-jre=17
+	provides = java-environment-openjdk=17
 	replaces = intellij-jdk
 	replaces = jdk-jetbrains
-	source = jbrsdk-11_0_15-linux-x64-b2043.56.tar.gz::https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk_nomod-11_0_15-linux-x64-b2043.56.tar.gz
-	b2sums = abc5cd5a153c816c81a0e19174c6b2b6f316aa21be02a3f4288624af4a0a70013355ee5c16eb879c2f4565ce646c16fb105cc38e9f54d23b85a450629fbc0db6
+	source = jbrsdk-17_0_7-linux-x64-b1000.6.tar.gz::https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-17_0_7-linux-x64-b1000.6.tar.gz
+	b2sums = 8be2d6132593d8744e415bb59bb909a15495630fb0805893b0685b5274e714a84a78ed4e4476b68f7bae662015d05e106a4e6a788a49a36904d096f900a559b6
 
 pkgname = jdk-jetbrains
-
