@@ -1,13 +1,13 @@
 pkgbase = openrgb-appimage
 	pkgdesc = Open source RGB lighting control that doesn't depend on manufacturer software.
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 0
 	arch = x86_64
 	license = GPL
 	provides = openrgb
 	conflicts = openrgb
 	options = !strip
-	source = https://openrgb.org/releases/release_0.8/OpenRGB_0.8_x86_64_fb88964.AppImage
-	md5sums = e5ac2df43c8dfb0312e7b84942968852
+	source = https://openrgb.org/releases/release_0.9/OpenRGB_0.9_x86_64_b5f46e3.AppImage
+	md5sums = 8682f8810c029f45b62c3938bcaf44ee
 
 pkgname = openrgb-appimage

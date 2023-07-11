@@ -2,7 +2,7 @@
 
 _pkgname=OpenRGB
 pkgname=openrgb-appimage
-pkgver=0.8
+pkgver=0.9
 pkgrel=0
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software."
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=('openrgb' 'openrgb-bin' 'openrgb-git')
 depends=()
 makedepends=()
 _filename="${_pkgname}-${pkgver}-${arch}.AppImage"
-source=("${_filename}::https://openrgb.org/releases/release_0.8/${_pkgname}_${pkgver}_${arch}_fb88964.AppImage")
-md5sums=('e5ac2df43c8dfb0312e7b84942968852')
+source=("${_filename}::https://openrgb.org/releases/release_0.9/${_pkgname}_${pkgver}_${arch}_b5f46e3.AppImage")
+md5sums=('8682f8810c029f45b62c3938bcaf44ee')
 options=(!strip)
 prepare() 
 {
