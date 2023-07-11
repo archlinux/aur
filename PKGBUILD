@@ -4,7 +4,7 @@ _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
 pkgver='1.3.11'
-pkgrel='2'
+pkgrel='3'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -29,7 +29,7 @@ _source=("${_script[@]}"
 "https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
 )
 source=("${_source[@]}")
-sha256sums=('fa5abed3ea220ebe6014199aa3d96276ccab3a7dd4c876f93825b31fcb7936ce'
+sha256sums=('c6147c84af4e68c7f2c02fcb434019fcf9dfcdfaa34445e2b36dacee029f6619'
             '40c80ccce9e89ae559050b943be1f09d905476c614a72d74fac2a58c821ac058'
             '00da5a9afdf5a8c7033978d2074039ba1ff7bc7a7221fbd278eb1270bdeb8eae'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'

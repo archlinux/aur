@@ -2,6 +2,7 @@
 #/opt/skywire/scripts/skywire-autoconfig
 #skywire autoconfiguration script for debian & archlinux packages
 #source the skyenv file if it exists - provided by the skybian package or the user
+[[ -f /etc/profile.d/skyenv.sh ]] && source /etc/profile.d/skyenv.sh
 [[ ! -z "$SKYENV" ]] && [[ -f "$SKYENV" ]] && source $SKYENV
 [[ -z "$SKYENV" ]] && SKYENV=/etc/skywire.conf && [[ -f "$SKYENV" ]] && source $SKYENV
 [[ "$?" -ne 0 ]] && [[ -f /etc/profile.d/skyenv.sh ]] && source /etc/profile.d/skyenv.sh
