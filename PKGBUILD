@@ -1,10 +1,8 @@
 # Maintainer: Refutationalist <archlinux@sammulvey.com>
 pkgname=xen-pvhgrub
-pkgver=2.11.119.3c60d90
+pkgver=2.12.rc1.r0.g7a994c8
 pkgrel=1
 _srcname=grub
-_commit=d9b4638c50b16d4722e66d334e2c1a674b4a45cc
-_gnulib_commit=9f48fb992a3d7e96610c4ce8be969cff2d61a01b
 pkgdesc="a version of GRUB2 for booting Xen PVH domUs"
 arch=(x86_64)
 url="https://www.gnu.org/software/grub/"
@@ -15,8 +13,8 @@ options=(!buildflags !strip)
 
 
 source=(
-	"git+https://git.savannah.gnu.org/git/grub.git#commit=${_commit}"
-	"git+https://git.savannah.gnu.org/git/gnulib.git#commit=${_gnulib_commit}"
+	"git+https://git.savannah.gnu.org/git/grub.git"
+	"git+https://git.savannah.gnu.org/git/gnulib.git"
 	"grub.cfg"
 	"README.md"
 )
@@ -26,6 +24,10 @@ sha512sums=('SKIP'
             '538ec7d6e33baaf7d1c708ed1ae6313691a04c331fd7d2cc2b47f56f2b5c218c75081b20204be68934bf88b6497b937917555424e3a379e12a481921093d7ce8'
             '4686fc68af70887228df076325c1bc668ec8e97002fc42734ba9ceea5b1bca6c6b01e8bb40b7d0ed721b9a466446da69c61e7d0cedb28181d5f7e4fc83a852a6')
 
+pkgver() {
+	cd "$srcdir/${_srcname}"
+	git describe --long --abbrev=7 | sed 's/^grub-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 
 prepare() {
