@@ -1,5 +1,5 @@
 # Maintainer: IThundxr <contact at ithundxr dot dev>
-
+# Contributor: Travis Weir <tweirtx at gmail dot com>
 
 pkgname=jdk-jetbrains
 _major=17
