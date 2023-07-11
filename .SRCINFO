@@ -1,0 +1,14 @@
+pkgbase = tsfh-bin
+	pkgdesc = CHANGEME_DESC
+	pkgver = 0.56.0
+	pkgrel = 1
+	url = https://github.com/Obscurely/tsfh
+	arch = x86_64
+	license = MIT
+	provides = tsfh-bin
+	conflicts = tsfh
+	conflicts = tsfh-git
+	source = https://github.com/Obscurely/tsfh/releases/download/v0.56.0-stable/tsfh-linux.tar.gz
+	sha256sums = d774efee18baf3dcd1e0aae33f3d4ab1e00c69c63dc020f1ee867975111faa86
+
+pkgname = tsfh-bin
