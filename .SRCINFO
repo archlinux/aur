@@ -1,0 +1,14 @@
+pkgbase = openhv-appimage
+	pkgdesc = An open-source pixel-art science-fiction real-time-strategy game. Appimage version
+	pkgver = 20230416
+	pkgrel = 1
+	url = https://www.openhv.net/
+	arch = x86_64
+	license = GPL3
+	depends = fuse2
+	conflicts = openhv
+	options = !strip
+	source = https://github.com/OpenHV/OpenHV/releases/download/20230416/OpenHV-20230416-x86_64.AppImage
+	sha256sums = 473935f8d2a85e23b0692d81586da498bc407ae85eef19979b1876e1e4c86c1a
+
+pkgname = openhv-appimage
