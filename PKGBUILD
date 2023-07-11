@@ -4,6 +4,7 @@ pkgname='plantumlqeditor-va-git'
 pkgver=r167.bf0e91b
 pkgrel=1
 pkgdesc='PlantUML QEditor is a simple editor written in Qt5 for PlantUML (vahanus fork)'
+epoch=1
 arch=('any')
 url='https://github.com/cschlote/plantumlqeditor'
 license=('GPL3')
