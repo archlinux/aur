@@ -30,7 +30,7 @@ _common_make_flags=(
 
 pkgbase=xen
 pkgname=("xen" "xen-docs")
-pkgver=4.17.0
+pkgver=4.17.2pre
 _branch="stable-4.17"
 pkgrel=1
 pkgdesc='Open-source type-1 or baremetal hypervisor - stable branch'
@@ -43,7 +43,7 @@ makedepends=(
 	'zlib' 'python' 'ncurses' 'openssl' 'libx11' 'libuuid.so' 'yajl' 'libaio' 'glib2' 'pkgconf' 'git'
 	'bridge-utils' 'iproute2' 'inetutils' 'acpica' 'lib32-glibc' 'gnutls'
 	'vde2' 'lzo' 'pciutils' 'sdl2' 'systemd-libs'
-	'systemd' 'wget' 'pandoc' 'valgrind' 'git' 'bin86' 'dev86' 'bison' 'gettext' 'flex' 'pixman' 'ocaml' 'ocaml-findlib' 'fig2dev'
+	'systemd' 'wget' 'pandoc' 'valgrind' 'git' 'bin86' 'dev86' 'bison' 'gettext' 'flex' 'pixman' 'fig2dev'
 ) # last line from namcap, these depends are the xen depends
 _stubdom_makedepends=('cmake')
 
@@ -201,7 +201,7 @@ build() {
 		--with-sysconfig-leaf-dir=conf.d \
 		--with-system-ovmf=/usr/share/ovmf/x64/OVMF.fd \
 		--with-system-seabios=/usr/share/qemu/bios-256k.bin \
-		--disable-ocaml
+		--disable-ocamltools
 
 	make "${_common_make_flags[@]}"
 }
