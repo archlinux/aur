@@ -1,0 +1,16 @@
+pkgbase = r-pcal1
+	pkgdesc = L1-Norm PCA Methods
+	pkgver = 1.5.7
+	pkgrel = 1
+	url = https://cran.r-project.org/package=pcaL1
+	arch = x86_64
+	license = GPL3
+	depends = blas
+	depends = coin-or-clp
+	depends = lapack
+	depends = r
+	source = https://cran.r-project.org/src/contrib/pcaL1_1.5.7.tar.gz
+	md5sums = 3e92f99030a222ee3a6c93ca93d51c69
+	sha256sums = 23043bf20d3e9c1499578686486c94c5f0cbbc879e4e3b9ea257f34224c1934c
+
+pkgname = r-pcal1
