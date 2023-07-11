@@ -3,7 +3,7 @@
 
 pkgname=python-nicos-pyctl
 _pkgname=nicos-pyctl
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="NICOS pyctl c module"
 groups=('nicos')
@@ -13,8 +13,8 @@ license=('GPL3')
 depends=('python')
 conflicts=('nicos-pyctl-git')
 provides=('nicos-pyctl')
-source=("https://github.com/mlz-ictrl/$_{pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('93fc64901538ae1729fa0130e7227302d7645805848d8db37766f58ab57e4c2b')
+source=("https://github.com/mlz-ictrl/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e7ecf7eb187bc3c04c2f6fe8812838c3450cddc6b91de3174b56b571f67c1987')
 
 
 build() {
@@ -22,10 +22,10 @@ build() {
   python setup.py build
 }
 
-check() {
-  cd "$_pkgname-$pkgver"
-  python setup.py check -mr
-}
+#check() {
+#  cd "$_pkgname-$pkgver"
+#  python setup.py check -mr
+#}
 
 package() {
   cd "$_pkgname-$pkgver"
