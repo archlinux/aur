@@ -1,0 +1,14 @@
+pkgbase = dr_libs-git
+	pkgdesc = Audio decoding libraries for C/C++, each in a single source file.
+	pkgver = r2411.e07e2b8
+	pkgrel = 1
+	url = https://github.com/mackron/dr_libs
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = dr_libs
+	conflicts = dr_libs
+	source = git+https://github.com/mackron/dr_libs
+	b2sums = SKIP
+
+pkgname = dr_libs-git
