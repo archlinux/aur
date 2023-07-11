@@ -2,7 +2,7 @@ ext_name=xdebug
 phpbase=70
 suffix=
 pkgname="php${phpbase}-${ext_name}${suffix}"
-pkgver=2.9.8
+pkgver=2.7.2
 source=("http://pecl.php.net/get/$ext_name-$pkgver.tgz")
 pkgrel=1
 pkgdesc="php${phpbase}${suffix} Xdebug extension"
@@ -33,4 +33,4 @@ package() {
     install -m0755 -D ".libs/${ext_name}.so" "${pkgdir}/${ext_dir}/${ext_name}.so"
 }
 
-sha256sums=('f555b6cc58d96c9965af942d22e0f1818b7a477a410c76b1ab0eebe85a762f8a')
+sha256sums=('b0f3283aa185c23fcd0137c3aaa58554d330995ef7a3421e983e8d018b05a4a6')

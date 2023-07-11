@@ -1,14 +1,14 @@
 pkgbase = php70-xdebug
 	pkgdesc = php70 Xdebug extension
-	pkgver = 2.9.8
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://xdebug.org/
 	arch = x86_64
 	arch = i686
 	license = Xdebug
 	makedepends = php70
-	source = http://pecl.php.net/get/xdebug-2.9.8.tgz
-	sha256sums = f555b6cc58d96c9965af942d22e0f1818b7a477a410c76b1ab0eebe85a762f8a
+	source = http://pecl.php.net/get/xdebug-2.7.2.tgz
+	sha256sums = b0f3283aa185c23fcd0137c3aaa58554d330995ef7a3421e983e8d018b05a4a6
 
 pkgname = php70-xdebug
 	backup = 
