@@ -12,4 +12,4 @@ blog posts:
  * <https://blog.rnstlr.ch/building-an-out-of-tree-rust-kernel-module-part-two.html>
  * <https://blog.rnstlr.ch/building-an-out-of-tree-rust-kernel-module-part-three.html>
 
-[^1] <https://github.com/archlinux/linux>
+[^1]: <https://github.com/archlinux/linux>
