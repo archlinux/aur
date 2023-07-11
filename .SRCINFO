@@ -1,13 +1,13 @@
 pkgbase = php81-xdebug
 	pkgdesc = Xdebug is an extension for PHP to assist with debugging and development for php81
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://xdebug.org/
 	arch = x86_64
 	license = Xdebug
 	depends = php81
 	backup = etc/php81/conf.d/xdebug.ini
-	source = http://pecl.php.net/get/xdebug-3.2.0.tgz
-	sha256sums = 7769b20eecdadf5fbe9f582512c10b394fb575b6f7a8c3a3a82db6883e0032b7
+	source = http://pecl.php.net/get/xdebug-3.2.1.tgz
+	sha256sums = ef4cb3c228192798874e4530cccceee76840cc80821909740088a1e1a8f00445
 
 pkgname = php81-xdebug
