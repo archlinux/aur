@@ -1,6 +1,6 @@
 pkgbase = bobrossquotes-git
 	pkgdesc = Quotes from Bob Ross
-	pkgver = 1.0
+	pkgver = 1.0.r4.g4bb418d
 	pkgrel = 1
 	url = https://github.com/kz6fittycent/BobRossQuotes
 	arch = any

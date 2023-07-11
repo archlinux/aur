@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=bobrossquotes-git
-pkgver=1.0
+pkgver=1.0.r4.g4bb418d
 pkgrel=1
 pkgdesc='Quotes from Bob Ross'
 arch=(any)
@@ -13,6 +13,10 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
+
+pkgver() {
+  git -C "$pkgname" describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd "$pkgname"
