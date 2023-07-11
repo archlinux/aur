@@ -2,7 +2,7 @@
 
 _app_name=gex
 pkgname="${_app_name}-bin"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Git Explorer: cross-platform git workflow improvement tool inspired by Magit"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('gex')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_app_name}-${arch}-unknown-linux-gnu.tar.gz"
         "${url}/raw/master/LICENSE-MIT")
-sha256sums=('f9075090811b0864eded6e9bba1deac84ed9424865d5a1c91673bdbc3b03ce14'
+sha256sums=('0a8e801d3f775370b0d0fa1d9026d9b9816f3089663fb17b3ca6ab27f1b3721f'
             '0023207044809c8c0d717f0822f777673d9653d87d4aaf81cc9bff4e60016b54')
 
 package() {
