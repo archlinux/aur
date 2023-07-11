@@ -1,7 +1,7 @@
 pkgbase = r-matrixmodels
 	pkgdesc = Modelling with Sparse and Dense Matrices
 	pkgver = 0.5.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cran.r-project.org/package=MatrixModels
 	arch = any
 	license = GPL
