@@ -1,0 +1,17 @@
+pkgbase = rlftlbx
+	pkgdesc = RLFTLBX: Command line tools for joint inversion stuff and geodesy
+	pkgver = 1.0.0
+	pkgrel = 0
+	url = https://github.com/strawpants/rlftlbx
+	arch = any
+	license = LGPL V3.0
+	makedepends = gcc-fortran
+	depends = fftw
+	depends = blas
+	depends = lapack
+	depends = shtools
+	depends = netcdf-fortran
+	source = https://github.com/strawpants/rlftlbx/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 82eb0bd6e7db7baf40548b62baaa9f82479223252391efbf6c69db61167bb085
+
+pkgname = rlftlbx
