@@ -1,6 +1,6 @@
 pkgbase = tsfh-git
 	pkgdesc = CHANGEME_DESC
-	pkgver = 0.57.0
+	pkgver = 0.58.0
 	pkgrel = 1
 	url = https://github.com/Obscurely/tsfh
 	arch = x86_64
