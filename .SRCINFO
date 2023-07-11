@@ -1,0 +1,14 @@
+pkgbase = r-fastghquad
+	pkgdesc = Fast 'Rcpp' Implementation of Gauss-Hermite Quadrature
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=fastGHQuad
+	arch = x86_64
+	license = MIT
+	depends = lapack
+	depends = r-rcpp
+	source = https://cran.r-project.org/src/contrib/fastGHQuad_1.0.1.tar.gz
+	md5sums = 168efbf133355e63193f849fb2ca4342
+	sha256sums = 5cdc491b59176a628d9e814bde63e65d8ef947dce9df36ea28e2916e97b647fe
+
+pkgname = r-fastghquad
