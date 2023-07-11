@@ -2,7 +2,7 @@
 
 pkgname=pix-git
 _pkgbasename=pix
-pkgver=3.0.0.r0.g2d78023
+pkgver=3.0.2.r0.g855a547
 pkgrel=1
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
@@ -40,8 +40,14 @@ provides=($pkgname $_pkgbasename)
 conflicts=(${_pkgbasename})
 url='https://github.com/linuxmint/pix'
 
-source=("${pkgname}::git+https://github.com/linuxmint/${_pkgbasename}.git")
-md5sums=('SKIP')
+source=("${pkgname}::git+https://github.com/linuxmint/${_pkgbasename}.git"
+'0001-exiv-0.28.patch')
+md5sums=('SKIP' '9c20e12ed62c5d023c9dd81fe6e4e3ab')
+
+prepare() {
+    cd "${srcdir}"/${pkgname}
+    patch --forward --strip=1 --input="${srcdir}"/0001-exiv-0.28.patch
+}
 
 pkgver() {
     cd ${srcdir}/${pkgname}
