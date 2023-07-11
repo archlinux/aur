@@ -3,7 +3,7 @@
 
 pkgname=siyuan-note-bin
 _pkgname=siyuan-note
-pkgver=2.9.4
+pkgver=2.9.5
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=($_pkgname)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/siyuan-note/siyuan/releases/download/v${pkgver}/siyuan-${pkgver}-linux.tar.gz"
 "$_pkgname.sh"
 "$_pkgname.desktop")
-sha512sums=('19232b186815e242ec522847475114f6845c9a0dac727430ae7fb07c4251a586269a2f46ce61b4d6850103a38be65e093f3ad34ced92d27c594beee3f8a87008'
+sha512sums=('c692f8826cbf1fa27bd8f4c64b552141bed651b12be634f5a3c21e8c7b4435e9ac930cf17e82d68111b1b20b7fa2af7c650a50a2840eb8eedd0b95053b6c0ff5'
             '3c3470f6336865556fd254b2ed4a7e035025bd62bf4dfc5f92e20582cef7d758efacaed994967a9d53dbe9d712ab384beab4ebb41588a548da490dc8eda7b9b9'
             '4ca7d777c2dce64d89a874af268773009ba0ebe064c3ce0034913c447666bf6636a3c81d1145579fe1b0b6a35195b1f97b1b4cd56b50e990fb0642c4aae281f0')
 
