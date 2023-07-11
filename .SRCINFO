@@ -1,0 +1,15 @@
+pkgbase = pipewire-module-xrdp-git
+	pkgdesc = xrdp pipewire module
+	pkgver = r19.ge9c6c05
+	pkgrel = 1
+	url = https://github.com/matt335672/pipewire-module-xrdp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libpipewire
+	provides = pipewire-module-xrdp
+	conflicts = pipewire-module-xrdp
+	source = git+https://github.com/matt335672/pipewire-module-xrdp.git
+	sha256sums = SKIP
+
+pkgname = pipewire-module-xrdp-git

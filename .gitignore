@@ -1,0 +1,6 @@
+pkg
+src
+*.pkg.tar.*
+*.log
+pipewire-module-xrdp
+
