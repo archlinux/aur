@@ -1,6 +1,6 @@
 pkgbase = cdo
 	pkgdesc = Command line tool manipulate and analyse Climate model Data. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG.
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 0
 	url = https://code.zmaw.de/projects/cdo
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = cdo
 	depends = curl
 	depends = jasper
 	depends = magics++
-	source = https://code.zmaw.de/attachments/download/28013/cdo-2.2.0.tar.gz
-	sha256sums = 679c8d105706caffcba0960ec5ddc4a1332c1b40c52f82c3937356999d8fadf2
+	source = https://code.zmaw.de/attachments/download/28653/cdo-2.2.1.tar.gz
+	sha256sums = 136801db175daeffb39065f8becbb1831944949bfc1872ead6bc5bfd5aa839e5
 
 pkgname = cdo
