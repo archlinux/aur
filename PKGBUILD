@@ -2,14 +2,14 @@
 pkgname="liteloader-qqnt-git"
 _pkgname="LiteLoaderQQNT"
 pkgver=0.3.1.r54.gc9f8836
-pkgrel=1
+pkgrel=2
 pkgdesc="轻量, 简洁, 开源的 QQNT 插件加载器"
 arch=('any')
 url="https://github.com/mo-jinran/LiteLoaderQQNT"
 license=('MIT')
 depends=("linuxqq")
 makedepends=("nodejs" "npm")
-conflicts=("linuxqq-appimage")
+conflicts=("linuxqq-appimage" "liteloader-qqnt")
 provides=("liteloader-qqnt")
 install=${pkgname}.install
 source=("git+${url}.git")
