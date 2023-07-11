@@ -1,7 +1,7 @@
 # Maintainer: Max Martin <max at maxjmartin dot com>
 
 pkgname=circumflex-bin
-pkgver=3.1.3
+pkgver=3.2
 pkgrel=1
 pkgdesc="A command line tool for browsing Hacker News in your terminal. Pre-compiled."
 arch=('i686' 'pentium4' 'x86_64' 'aarch64')
@@ -10,15 +10,15 @@ license=('custom')
 depends=('glibc')
 provides=('circumflex')
 conflicts=('circumflex')
-source_i686=("$pkgname-$pkgver-1686.tar.gz::$url/releases/download/$pkgver/circumflex_${pkgver}_Linux_32-bit.tar.gz")
-source_pentium4=("$pkgname-$pkgver-pentium4.tar.gz::$url/releases/download/$pkgver/circumflex_${pkgver}_Linux_32-bit.tar.gz")
-source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/circumflex_${pkgver}_Linux_64-bit.tar.gz")
+source_i686=("$pkgname-$pkgver-1686.tar.gz::$url/releases/download/$pkgver/circumflex_${pkgver}_Linux_386.tar.gz")
+source_pentium4=("$pkgname-$pkgver-pentium4.tar.gz::$url/releases/download/$pkgver/circumflex_${pkgver}_Linux_386.tar.gz")
+source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/circumflex_${pkgver}_Linux_amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/$pkgver/circumflex_${pkgver}_Linux_arm64.tar.gz")
 
-sha256sums_i686=('3e35b9a5a5a39b1ac28472b97e8db1d06f4e4f0f44396e765143db0cbd2fa452')
-sha256sums_pentium4=('3e35b9a5a5a39b1ac28472b97e8db1d06f4e4f0f44396e765143db0cbd2fa452')
-sha256sums_x86_64=('e090342ed36de4e7413c0e72c8038849c58f9f4de4b585f2b55a5d68b17e30bf')
-sha256sums_aarch64=('6b948407858aa43bb293faf24e66aff2ee0e341137ebd452636bc480933807a9')
+sha256sums_i686=('c90c621f9998a5d85c1c48f1827bebfb3776f6870ec72f26894a9c13a740716e')
+sha256sums_pentium4=('c90c621f9998a5d85c1c48f1827bebfb3776f6870ec72f26894a9c13a740716e')
+sha256sums_x86_64=('46c8655c68314b6cbe2909c560bb94bf62ccf364f0314307e5528bc9b24d5e16')
+sha256sums_aarch64=('b36933fd5be4b29f6894409ee8c1501a6809a18c4b9c48f106160e97dd04fdf4')
 
 package() {
     install -Dm755 circumflex "$pkgdir/usr/bin/clx"
