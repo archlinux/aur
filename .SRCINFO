@@ -1,0 +1,15 @@
+pkgbase = julius-game-appimage
+	pkgdesc = Open source re-implementation of Caesar III (Original copy required). Appimage version
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/Keriew/augustus
+	arch = x86_64
+	license = AGPL
+	depends = fuse2
+	conflicts = julius-game
+	conflicts = julius-game-git
+	options = !strip
+	source = https://github.com/bvschaik/julius/releases/download/v1.7.0/julius-1.7.0-linux.AppImage
+	sha256sums = f05ad2575782974fe93cbb0cb55c1f589e48aa620324ba1289037f45b36e7716
+
+pkgname = julius-game-appimage
