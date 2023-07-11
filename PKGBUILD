@@ -1,7 +1,7 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('python-bonsai')
 _name=${pkgname#python-}
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Python module for LDAPv3 using libldap2/WinLDAP"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('python-gevent: enable bonsai.gevent'
             'python-tornado: enable bonsai.tornado'
             'python-trio: enable bonsai.trio')
 options=(!emptydirs)
-sha256sums=('e8dd96f953f29e7f6383460d881a1bbc7c685c716d77c81f281611fa820f73aa')
+sha256sums=('747cf98dca475acd7b5533e422627babeb8338cac35e3b635ba0b652e9ac5b77')
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
 package() {
