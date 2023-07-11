@@ -15,13 +15,12 @@ depends=( 'java-runtime-common'          'ca-certificates-java'              'ja
 provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "java-environment=$_major"
           "java-runtime-openjdk=$_major" "java-runtime-headless-jre=$_major" "java-environment-openjdk=$_major")
 replaces=('intellij-jdk' 'jdk-jetbrains')
-_zipname="jbrsdk-${_major}.${_minor}-linux-x64-b${_build}.tar.gz"
+_zipname="jbr_jcef-${_major}.${_minor}-linux-x64-b${_build}.tar.gz"
 source=("${_zipname}::https://cache-redirector.jetbrains.com/intellij-jbr/${_zipname}")
-b2sums=('c59ad71e71558c4bee6473e98e3610a4029db8447700f9ab3e2082a21b6faebab63e0a0569f8a6f67c9208f726aaf67e30c16aeba760344808280ccdf38a31b1')
+b2sums=('f15cf22a4911c905e6279d629f456fcc05fee537c288e87fdfbea174fa43a7809aa999b8603f4404dd5dfd9ee76788573597be3b141dd32cc87cdec9ec53e7ea')
 
 package() {
   find . -exec chmod g+r,o+r {} +
   mkdir -p "${pkgdir}"/usr/lib/jvm
-  cp -a jbrsdk "${pkgdir}"/usr/lib/jvm/${pkgname}
-  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}"/usr/lib/jvm/${pkgname}/lib/security/cacerts
+  cp -a ${_zipname} "${pkgdir}"/usr/lib/jvm/${pkgname}
 }
