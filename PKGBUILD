@@ -2,7 +2,7 @@
 pkgname=purple-gowhatsapp-git
 _pkgnam=${pkgname%-git}
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A libpurple/Pidgin plugin for WhatsApp, powered by whatsmeow"
 arch=('x86_64' 'i686')
 url="https://github.com/hoehermann/purple-gowhatsapp"
@@ -25,12 +25,14 @@ pkgver() {
 
 prepare() {
   git -C "$srcdir/${_pkgnam}" submodule update --init
-}
-
-build() {
   mkdir -p "$srcdir/${_pkgnam}/build"
   cd "$srcdir/${_pkgnam}/build"
   cmake -G "Unix Makefiles" ..
+  cmake --build . --target download-modules
+}
+
+build() {
+  cd "$srcdir/${_pkgnam}/build"
   cmake --build .
 }
 
