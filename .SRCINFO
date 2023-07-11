@@ -1,6 +1,6 @@
 pkgbase = python-pycrate
 	pkgdesc = Python library for manipulating various digital formats in an easy way.
-	pkgver = 0.5.5
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/P1sec/pycrate
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pycrate
 	optdepends = python-sctp: The pycrate_corenet part requires pysctp to run.
 	optdepends = python-cryptomobile: The pycrate_corenet part requires CryptoMobile to run. The pycrate_mobile/TS24301_EMM and pycrate_mobile/TS24501_FGMM modules use CryptoMobile as optional dependency to cipher / decipher LTE and 5G NAS messages.
 	conflicts = python-pycrate-git
-	source = https://github.com/P1sec/pycrate/archive/0.5.5.tar.gz
-	md5sums = 0c911b9b82a7d1c4034427472d84d9d6
+	source = https://github.com/P1sec/pycrate/archive/0.6.0.tar.gz
+	md5sums = f17ac5c4aaf2cec54134fa27b6eb02d2
 
 pkgname = python-pycrate
