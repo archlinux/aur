@@ -2,7 +2,7 @@
 _base=equinox
 pkgname=python-${_base}
 pkgdesc="Elegant easy-to-use neural networks in JAX"
-pkgver=0.10.9
+pkgver=0.10.10
 pkgrel=1
 arch=(any)
 url="https://github.com/patrick-kidger/${_base}"
@@ -11,7 +11,7 @@ depends=(python-jax python-jaxtyping python-typing_extensions)
 makedepends=(python-build python-installer python-hatchling python-wheel)
 checkdepends=(python-pytest python-beartype)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('bd4ca10691ead7160d64a2e2b919c528d7a538d5cbd48fb0b2c077044ad23d20e03968b625b9884ac480f921aff13934d58c5dcbf4cf904d6d9458415af53268')
+sha512sums=('15c10d7630ec2aa953ef24a4aa68fc0268d2719de0720acc4b906c12b725c10725383822f4c7bd907419c8c43de1f2640e38810cc6c61ff18e71366e45ea0fc0')
 
 build() {
   cd ${_base}-${pkgver}
@@ -21,7 +21,7 @@ build() {
 check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer ${_base}-${pkgver}/dist/*.whl
-  test-env/bin/python -m pytest ${_base}-${pkgver}/tests -k 'not onnx_export'
+  test-env/bin/python -m pytest ${_base}-${pkgver}/tests
 }
 
 package() {
