@@ -1,0 +1,18 @@
+pkgbase = tsfh-git
+	pkgdesc = CHANGEME_DESC
+	pkgver = 0.56.0
+	pkgrel = 1
+	url = https://github.com/Obscurely/tsfh
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = binutils
+	provides = tsfh-git
+	conflicts = tsfh-bin
+	conflicts = tsfh
+	source = git+https://github.com/Obscurely/tsfh
+	sha256sums = SKIP
+
+pkgname = tsfh-git
