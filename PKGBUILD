@@ -3,8 +3,8 @@
 # Contributor: khvalera <khvalera[at]ukr[dot]net>
 
 pkgname=glpi
-pkgver=10.0.8
-pkgrel=2
+pkgver=10.0.9
+pkgrel=1
 pkgdesc="GLPI Inventory Management"
 arch=('any')
 url='https://www.glpi-project.org'
@@ -16,7 +16,8 @@ source=("https://github.com/glpi-project/glpi/releases/download/${pkgver}/glpi-$
         'glpi-cron.timer'
         'downstream.php'
         'local_define.php'
-        'http://snuglinux.pp.ua/local_glpi/uk_UA.po.bz2')
+        'http://snuglinux.pp.ua/local_glpi/uk_UA.po.bz2'
+        )
 license=('GPL')
 options=(!strip)
 depends=("mysql")
@@ -27,7 +28,7 @@ optdepends=('nginx: a more performant webserver'
             'php' 'php-gd' 'php-intl' 'php-sodium' 'php-apache'
             'libxml2' 'zlib' 'openssl')
 makedepends=("gettext")
-sha256sums=('757dd8f440b999c014aa94f0f860830904a89ae3bc5c2f25f2da9a509c07aaf8'
+sha256sums=('d104c7135b1924f32ab6ca831fbaf319893af0bd932a035cb93ccb4021b2a946'
             '32bd84daa949cfa1158f2c6cd8fa2593fd4bd3cc6392791b69ab24ca98eee0dd'
             '04e40235a4a6c7d1e0daaa91e630654e632073fd5fee33bb6befa7b6f3713e44'
             'c5ca6a8d1bcc73c71348d5f8a4c3de0fd023c346d1c2bf02c9dd627bcda9bfe8'
@@ -35,7 +36,8 @@ sha256sums=('757dd8f440b999c014aa94f0f860830904a89ae3bc5c2f25f2da9a509c07aaf8'
             'eea9489db1fa8f4762957eb6299dd22ca43c25f9dc62628c973a53cbcfdbab1f'
             'f6ab611d8e8a4520323a6da6c469d9c30e7c713073d47aa8a2719bb8e81e5f7f'
             'ac778bd538e0f2cb3195e1e5794bd57e45850bb823f30df9a7625746048a2d3d'
-            'f36ccd3ce2f45a9bfe068d236cc68632f47edad96817424ece0364e851928175')
+            'f36ccd3ce2f45a9bfe068d236cc68632f47edad96817424ece0364e851928175'
+            )
 install=glpi.install
 
 package() {
