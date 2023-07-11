@@ -1,6 +1,6 @@
 # Maintainer: Obscurely <adrian.obscurely@protonmail.com>
 pkgname=tsfh-bin
-pkgver=0.56.0
+pkgver=0.57.0
 pkgrel=1
 epoch=
 pkgdesc="CHANGEME_DESC"
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('tsfh-bin')
 conflicts=('tsfh' 'tsfh-git')
 source=("https://github.com/Obscurely/tsfh/releases/download/v${pkgver}-stable/tsfh-linux.tar.gz")
-sha256sums=("d774efee18baf3dcd1e0aae33f3d4ab1e00c69c63dc020f1ee867975111faa86")
+sha256sums=("7b1bc9dff7bd0b50681df5241083292bfacfb38b014efdb5ad7f01a06aaeb91e")
 
 package() {
     cd "$srcdir/"
