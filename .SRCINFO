@@ -1,0 +1,15 @@
+pkgbase = r-dicedesign
+	pkgdesc = Designs of Computer Experiments
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://cran.r-project.org/package=DiceDesign
+	arch = x86_64
+	license = GPL3
+	depends = r
+	optdepends = r-randtoolbox
+	optdepends = r-rgl
+	source = https://cran.r-project.org/src/contrib/DiceDesign_1.9.tar.gz
+	md5sums = 559d62babcbefb75bef9bb872e4ab0d3
+	sha256sums = 93c23730e02471e4225f0254f47d838b5e113162316e3640cccebf5e8cea11a9
+
+pkgname = r-dicedesign
