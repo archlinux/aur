@@ -1,7 +1,7 @@
 pkgbase = python-py-slvs
 	pkgdesc = Python binding of SOLVESPACE geometry constraint solver
-	pkgver = 1.0.5
-	pkgrel = 4
+	pkgver = 1.0.6
+	pkgrel = 1
 	url = https://github.com/realthunder/slvs_py
 	arch = x86_64
 	license = GPL3
@@ -13,7 +13,7 @@ pkgbase = python-py-slvs
 	depends = swig
 	provides = python-py-slvs
 	conflicts = python-py-slvs
-	source = python-py-slvs::git+https://github.com/realthunder/slvs_py.git#tag=v1.0.5
+	source = python-py-slvs::git+https://github.com/realthunder/slvs_py.git#tag=v1.0.6
 	source = git+https://github.com/realthunder/solvespace.git
 	sha256sums = SKIP
 	sha256sums = SKIP

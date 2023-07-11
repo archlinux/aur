@@ -1,7 +1,7 @@
 # Maintainer: Chuck Flowers <t_chuck_flowers@yahoo.com>
 pkgname=python-py-slvs
-pkgver=1.0.5
-pkgrel=4
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="Python binding of SOLVESPACE geometry constraint solver"
 arch=('x86_64')
 url="https://github.com/realthunder/slvs_py"
@@ -48,5 +48,5 @@ package() {
 
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-	mv "$pkgdir/usr/py_slvs" "$pkgdir/$site_packages"
 }
+
