@@ -1,13 +1,13 @@
 pkgname=ibdump
 _commit=e656df3a89c823fcfebc58961ecd4ce8fa6533d4
 pkgver=6.1.0.r35.ge656df3
-pkgrel=1
+pkgrel=2
 pkgdesc="InfiniBand and RoCE RDMA packet capture tool for Mellanox"
 url="https://github.com/Mellanox/ibdump"
 license=(GPL2 custom:BSD)
 arch=(x86_64)
 depends=(libibverbs)
-makedepends=(git)
+makedepends=(git mstflint)
 source=("git+https://github.com/Mellanox/ibdump#commit=$_commit"
 	unbork.diff)
 sha256sums=('SKIP'
@@ -27,7 +27,10 @@ prepare() {
 
 build() {
 	cd ibdump
-	make WITHOUT_FW_TOOLS=yes
+	# Build with mstflint (for new ConnectX, but breaks CX3):
+	make WITH_MSTFLINT=yes MSTFLINT_INCLUDE_DIR=/usr/include/mstflint
+	# Build without mstflint (for ConnectX <= 3):
+	# make WITHOUT_FW_TOOLS=yes
 }
 
 package() {
