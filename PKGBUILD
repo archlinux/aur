@@ -1,6 +1,6 @@
 pkgname=passy-git
 _pkgshortname=passy
-pkgver=1.5.1.r0.gf55e4b5
+pkgver=1.5.2.r0.g942a32f
 pkgrel=1
 pkgdesc='Offline password manager with cross-platform synchronization'
 arch=('x86_64')
