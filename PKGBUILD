@@ -1,16 +1,16 @@
 # Maintainer: kusanaginoturugi <kusanaginoturugi at gmail dot com>
 pkgname=man-pages-postgresql-ja
 pkgver=15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Japanese man pages for PostgreSQL"
 arch=("any")
 url="https://pgsql-jp.github.io/"
 license=("custom")
 source=("${url}jpug-doc/${pkgver}/man.tar.gz")
-md5sums=('750262cc83a6af19aeb9b344b7bc1ce5')
+md5sums=('43a4d2049c28c4e038670b798f9fecef')
 
 package() {
-  _license_url="https://www.postgresql.jp/document/13/html/legalnotice.html"
+  _license_url="https://www.postgresql.jp/document/15/html/legalnotice.html"
   _destdir="${pkgdir}/usr/share/licenses/${pkgname}"
   install -d "${_destdir}"
   curl -Ls "${_license_url}" -o "${_destdir}/legalnotice.html"
