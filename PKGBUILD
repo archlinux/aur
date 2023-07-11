@@ -13,7 +13,7 @@ makedepends=('git' 'cmake' 'ninja' 'clang')
 checkdepends=()
 optdepends=()
 provides=('onnxruntime')
-conflicts=('onnxruntime' 'flatbuffers')
+conflicts=('onnxruntime')
 replaces=()
 options=()
 source=("git+https://github.com/microsoft/onnxruntime.git#branch=main")
@@ -22,6 +22,7 @@ md5sums=('SKIP')
 prepare() {
 	cd "$_pkgname"
 	git submodule update --init --recursive
+	(pacman -Qq nsync && sed -i 's/nsync::nsync_cpp/nsync_cpp/g' cmake/{**,.}/*.cmake cmake/CMakeLists.txt) || true
 }
 
 pkgver() {
@@ -50,6 +51,7 @@ build() {
 		-DPYTHON_INCLUDE_DIR=$(python -c "from distutils.sysconfig import get_python_inc; print(get_python_inc())") \
 		-DPYTHON_LIBRARY=$(python -c "import distutils.sysconfig as sysconfig; print(sysconfig.get_config_var('LIBDIR'))") \
 		-DPYTHON_EXECUTABLE:FILEPATH=$(which python) \
+		-DCMAKE_IGNORE_PATH=/usr/lib/cmake/flatbuffers/\;/lib/cmake/flatbuffers/ \
 
 	sed -i 's/-Werror //g' "$srcdir"/$_pkgname-build/_deps/flatbuffers-src/CMakeLists.txt
 
