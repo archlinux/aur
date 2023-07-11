@@ -1,9 +1,10 @@
 # Maintainer: Thibault Saunier <tsaunier@gnome.org>
+# Contributor: Arti Zirk <arti.zirk@gmail.com>
 
 pkgname="dssim-git"
 _pkgname="dssim"
 pkgrel=1
-pkgver=r133.cdb66dbc7943
+pkgver=3.2.4.r9.gfb60e92
 pkgdesc="Image similarity comparison simulating human perception (multiscale SSIM in Rust)"
 arch=('x86_64')
 url="https://github.com/pornel/dssim/"
@@ -15,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

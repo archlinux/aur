@@ -1,6 +1,6 @@
 pkgbase = dssim-git
 	pkgdesc = Image similarity comparison simulating human perception (multiscale SSIM in Rust)
-	pkgver = r133.cdb66dbc7943
+	pkgver = 3.2.4.r9.gfb60e92
 	pkgrel = 1
 	url = https://github.com/pornel/dssim/
 	arch = x86_64
