@@ -1,6 +1,6 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=kavita-bin
-pkgver=0.7.3.1
+pkgver=0.7.4
 pkgrel=0
 pkgdesc="Self hosted ebook and comic reader"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -19,13 +19,13 @@ source_armv7h=(
 https://github.com/Kareadita/Kavita/releases/download/v$pkgver/kavita-linux-arm.tar.gz
 )
 md5sums_x86_64=(
-9d4bcd6a711ab1e51ffbc92d849454ec
+8000bceb9ac566cdc2b1ede7923a1616
 )
 md5sums_aarch64=(
-2b4101d529110c97fd687a893afad680
+77f8c95331617ac39bfc7d48c3a85dc8
 )
 md5sums_armv7h=(
-b83a0c7a2be8f52d3d509ab24d686a5d
+9d2fc94d1472677b3bb69f1805f76385
 )
 
 build() {
