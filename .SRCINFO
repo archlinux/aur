@@ -10,6 +10,7 @@ pkgbase = hyprshade-git
 	makedepends = python-installer
 	depends = hyprland
 	depends = python-more-itertools
+	depends = python-poetry
 	depends = python-typer
 	depends = util-linux
 	provides = hyprshade
