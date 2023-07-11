@@ -1,14 +1,14 @@
 pkgbase = game-devices-udev
 	pkgdesc = Udev rules for controllers
-	pkgver = 0.21
-	pkgrel = 1
+	pkgver = 0.22
+	pkgrel = 0.1
 	url = https://codeberg.org/fabiscafe/game-devices-udev
 	install = install
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = udev
-	source = git+https://codeberg.org/fabiscafe/game-devices-udev.git#commit=cfa51979d51cbb018235ed351d6e9eff38b236db
+	source = git+https://codeberg.org/fabiscafe/game-devices-udev.git#commit=408e33b23f8168e6e848865954c1c57cf4cdab61
 	source = uinput.conf
 	sha512sums = SKIP
 	sha512sums = a9b069ed121ffeee887e0583d8cb46035ecf1fa90a26a4ecb3aa11ff03178b2b08621f6676db6b2350f290694c04aabcf36f2ce3e0813a76dde9a33555edb112
