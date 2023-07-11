@@ -16,7 +16,7 @@
 _phpbase="80"
 _suffix=""
 pkgver="8.0.29"
-pkgrel="1"
+pkgrel="2"
 pkgbase="php80"
 pkgdesc="PHP 8.0.29 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -379,7 +379,7 @@ _phpextensions_fpm="\
     --with-fpm-acl"
 
 
-options+=('!lto')
+options=('!lto')
 arch=("$CARCH")
 checkdepends=('procps-ng' 'smtp-forwarder')
 license=('PHP')

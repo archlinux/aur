@@ -1,7 +1,7 @@
 pkgbase = php80
 	pkgdesc = PHP 8.0.29 compiled as to not conflict with mainline php
 	pkgver = 8.0.29
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.php.net
 	arch = x86_64
 	license = PHP
