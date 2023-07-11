@@ -1,14 +1,13 @@
 pkgbase = r-cvst
 	pkgdesc = Fast Cross-Validation via Sequential Testing
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=CVST
 	arch = any
 	license = GPL
-	depends = r
 	depends = r-kernlab
-	source = https://cran.r-project.org/src/contrib/CVST_0.2-2.tar.gz
-	md5sums = 28ec6552375f73f791488449a85211dc
+	source = https://cran.r-project.org/src/contrib/CVST_0.2-3.tar.gz
+	md5sums = 08032c05dcea2d5ac36e119dcadca240
+	sha256sums = efa296230395f323c2a398a7b386e3a88e75a5b9b645307459d0b7c14d03f32d
 
 pkgname = r-cvst
-
