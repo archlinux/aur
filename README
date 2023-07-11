@@ -1,0 +1,8 @@
+grub-esp
+
+simple wrapper around grub-install for Arch Linux systems.
+meant to be used in conjunction with 'update-grub' after a
+grub package update.
+
+usage: 'sudo grub-esp' to install for x86_64, with 'GRUB' as
+the bootloader ID and '/boot/' as the ESP.
