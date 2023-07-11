@@ -18,10 +18,10 @@
 ###############################################################################
 _phpbase="82"
 _suffix=""
-pkgver="8.2.4"
+pkgver="8.2.8"
 pkgrel="1"
 pkgbase="php82"
-pkgdesc="PHP 8.2.4 compiled as to not conflict with mainline php"
+pkgdesc="PHP 8.2.8 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -212,20 +212,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php82=8.2.4"
+    "php82=8.2.8"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php82=8.2.4"
+    "php82=8.2.8"
     "openssl"
 )
 _ext_depends_intl=(
-    "php82=8.2.4"
+    "php82=8.2.8"
     "icu"
 )
 _ext_depends_imap=(
-    "php82=8.2.4"
+    "php82=8.2.8"
     "pam"
     "krb5"
     "c-client"
@@ -233,45 +233,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php82=8.2.4"
+    "php82=8.2.8"
     "gd"
 )
 _ext_depends_mysql=(
-    "php82=8.2.4"
-    "php82-pdo=8.2.4"
-    "php82-openssl=8.2.4"
+    "php82=8.2.8"
+    "php82-pdo=8.2.8"
+    "php82-openssl=8.2.8"
 )
 _ext_depends_dba=(
-    "php82=8.2.4"
+    "php82=8.2.8"
     "db5.3"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php82=8.2.4"
+    "php82=8.2.8"
     "unixodbc"
-    "php82-pdo=8.2.4"
+    "php82-pdo=8.2.8"
 )
 _ext_depends_pgsql=(
-    "php82=8.2.4"
+    "php82=8.2.8"
     "postgresql-libs"
-    "php82-pdo=8.2.4"
+    "php82-pdo=8.2.8"
 )
 _ext_depends_firebird=(
-    "php82=8.2.4"
+    "php82=8.2.8"
     "libfbclient"
-    "php82-pdo=8.2.4"
+    "php82-pdo=8.2.8"
 )
 _ext_depends_sqlite=(
-    "php82=8.2.4"
+    "php82=8.2.8"
     "sqlite"
-    "php82-pdo=8.2.4"
+    "php82-pdo=8.2.8"
 )
 _ext_depends_mbstring=(
-    "php82=8.2.4"
+    "php82=8.2.8"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php82=8.2.4"
+    "php82=8.2.8"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -503,6 +503,8 @@ _build_sapi() {
 # BUILD them all
 ################################################################################
 build() {
+    export CFLAGS="${CFLAGS} -fPIC"
+    export CXXFLAGS="${CXXFLAGS} -fPIC"
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_openssl_v10_patch)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.0"
@@ -1527,7 +1529,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            'bc7bf4ca7ed0dd17647e3ea870b6f062fcb56b243bfdef3f59ff7f94e96176a8'
+            'cfe1055fbcd486de7d3312da6146949aae577365808790af6018205567609801'
             '169d52d6fc78e24e88a5923715d965bc247a62697c59d06d468c1908eba1c189'
             '558e780e93dfa861a366c49b4d156d8fc43f17898f001ae6033ec63c33d5d41c'
             '40bcc1e5058602302198d0925e431495391d8469499593af477f59d84d32f764'
