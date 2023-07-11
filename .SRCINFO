@@ -1,0 +1,21 @@
+pkgbase = plantumlqeditor-va-git
+	pkgdesc = PlantUML QEditor is a simple editor written in Qt5 for PlantUML (vahanus fork)
+	pkgver = 3.2_20230704
+	pkgrel = 5
+	url = https://github.com/cschlote/plantumlqeditor
+	install = plantumlqeditor-va-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	depends = qt5-svg
+	depends = gcc-libs
+	optdepends = plantuml
+	optdepends = graphviz
+	conflicts = plantumlqeditor-git
+	source = git+https://github.com/cschlote/plantumlqeditor.git
+	md5sums = SKIP
+
+pkgname = plantumlqeditor-va-git
