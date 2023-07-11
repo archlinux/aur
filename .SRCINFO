@@ -1,0 +1,15 @@
+pkgbase = tsfh
+	pkgdesc = CHANGEME_DESC
+	pkgver = 0.56.0
+	pkgrel = 1
+	url = https://github.com/Obscurely/tsfh
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = binutils
+	source = tsfh-0.56.0.tar.gz::https://github.com/Obscurely/tsfh/archive/v0.56.0-stable.tar.gz
+	sha256sums = SKIP
+
+pkgname = tsfh
