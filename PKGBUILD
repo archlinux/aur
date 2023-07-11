@@ -1,6 +1,6 @@
 # Maintainer: Johan Förberg <johan@forberg.se>
 pkgname=dmenu-bluetooth
-pkgver=r31.c1a5c7b
+pkgver=r47.e6fbfbd
 pkgrel=1
 pkgdesc='A dmenu menu that uses bluetoothctl to connect to bluetooth devices and display status'
 arch=(any)
