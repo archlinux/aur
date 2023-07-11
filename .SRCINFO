@@ -1,6 +1,6 @@
 pkgbase = surface-dtx-daemon
 	pkgdesc = Surface Detachment System (DTX) Daemon
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/linux-surface/surface-dtx-daemon
 	install = surface-dtx-daemon.install
@@ -15,7 +15,7 @@ pkgbase = surface-dtx-daemon
 	backup = etc/surface-dtx/surface-dtx-userd.conf
 	backup = etc/surface-dtx/detach.sh
 	backup = etc/surface-dtx/attach.sh
-	source = surface-dtx-daemon-0.3.4-1.tar.gz::https://github.com/linux-surface/surface-dtx-daemon/archive/refs/tags/v0.3.4-1.tar.gz
-	sha256sums = 4e25bdff10aed0c2a6aa7dbec1c617e353d9dfdbfbdf90296e93d6f096efebba
+	source = surface-dtx-daemon-0.3.5-1.tar.gz::https://github.com/linux-surface/surface-dtx-daemon/archive/refs/tags/v0.3.5-1.tar.gz
+	sha256sums = 245aeba3b498a076b3e4f1881f98401507675217833937603d0b8b419fdade7c
 
 pkgname = surface-dtx-daemon
