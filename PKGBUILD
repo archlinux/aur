@@ -1,7 +1,7 @@
 # Maintainer: Jarasłaŭ Viktorčyk <ugzuzg@gmail.com>
 pkgname=fnm-bin
 _pkgname=fnm
-pkgver=1.34.0
+pkgver=1.35.0
 pkgrel=0
 pkgdesc="Fast and simple Node.js version manager, built in Rust"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('fnm')
 conflicts=('fnm-git' 'fnm')
 source_x86_64=("$_pkgname-$pkgver-x86_64.zip::$url/releases/download/v$pkgver/$_pkgname-linux.zip")
 source_aarch64=("$_pkgname-$pkgver-aarch64.zip::$url/releases/download/v$pkgver/$_pkgname-arm64.zip")
-sha256sums_x86_64=('5572c88d60721adbd91992e0385395975cc712b77f986f7f43236467b7b7665d')
-sha256sums_aarch64=('ad10ec5c9991424a8f1c93f9c51da58c7c40170805d62cfa83296fd4c54b87dc')
+sha256sums_x86_64=('fcc04e98d381f387707a9abb1344c5862c12143544027b4dfea7578416378982')
+sha256sums_aarch64=('3da7239fdde8a374869471ba169c27e84773baf9dea28eca91b4e1079b183f67')
 
 package() {
   install -Dm755 fnm "$pkgdir/usr/bin/$_pkgname"
