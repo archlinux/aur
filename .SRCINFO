@@ -1,13 +1,13 @@
 pkgbase = keepass-ru
 	pkgdesc = Russian locale for KeePass
-	pkgver = 2.53
+	pkgver = 2.54
 	pkgrel = 1
 	url = http://keepass.info/translations.html
 	arch = any
 	license = GPL2
 	makedepends = unzip
-	depends = keepass>=2.53
-	source = http://downloads.sourceforge.net/keepass/KeePass-2.53-Russian.zip
-	md5sums = 9e66672794123d133be21c5608cc5913
+	depends = keepass>=2.54
+	source = http://downloads.sourceforge.net/keepass/KeePass-2.54-Russian.zip
+	md5sums = fca818c73869df3ef4c947bc4e9b6489
 
 pkgname = keepass-ru

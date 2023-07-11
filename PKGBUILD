@@ -2,7 +2,7 @@
 # Contributor: Vladislav Vishnyakov <split7fire {at} yandex {dot} ru>
 
 pkgname=keepass-ru
-pkgver=2.53
+pkgver=2.54
 pkgrel=1
 pkgdesc="Russian locale for KeePass"
 license=('GPL2')
@@ -11,7 +11,7 @@ makedepends=("unzip")
 url="http://keepass.info/translations.html"
 source=(http://downloads.sourceforge.net/keepass/KeePass-${pkgver}-Russian.zip)
 arch=(any)
-md5sums=('9e66672794123d133be21c5608cc5913')
+md5sums=('fca818c73869df3ef4c947bc4e9b6489')
 
 package(){
   cd ${srcdir}
