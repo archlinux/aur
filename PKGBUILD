@@ -73,11 +73,11 @@ fi
 
 pkgbase=linux-xanmod
 _major=6.4
-pkgver=${_major}.2
+pkgver=${_major}.3
 _branch=6.x
 xanmod=1
 _revision=
-pkgrel=3
+pkgrel=${xanmod}
 pkgdesc='Linux Xanmod - Current Stable (CURRENT)'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -113,7 +113,7 @@ done
 
 sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
             'SKIP'
-            'f30ce7cf11e4819e90966c6e1fdd42d906168ffd38be1234ff0b2696d1740e9c'
+            'c718aaba0f25cb90b9660ae4efeb0eca91e81c5573fea561deba20dce4bf8082'
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f'
             '0b989ab3c40e118a8b56a8bc44e3ebbb7ed206bbead626a0f5761c8d0fbcc613'
             '070765f7a42070a02e638b1c2520c7563b678a5900ce1d169c892ce3f16f8919')
