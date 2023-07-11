@@ -2,7 +2,7 @@
 
 pkgname=twad-git
 _pkgname=twad
-pkgver=0.20.1
+pkgver=0.20.3
 pkgrel=1
 pkgdesc='Manage DOOM engines and mods with the terminal wad launcher'
 arch=('any')
