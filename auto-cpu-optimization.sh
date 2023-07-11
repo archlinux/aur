@@ -1,32 +1,51 @@
 #!/bin/bash
 
-#######################################
-#        AUTO-CPU-OPTIMIZATION        #
-#######################################
-#      CREATOR : BL4CKH47H4CK3R       #
-#######################################
-#  HTTPS://GITHUB.COM/BL4CKH47H4CK3R  #
-#######################################
+# Check if GCC is installed
+check_gcc() {
+  if ! [ -x "$(command -v gcc)" ]; then
+    # Display error message if GCC is not installed
+    echo "Error: GCC is not installed. Please install GCC and try again." >&2
+    exit 1
+  fi
+}
 
-CPU=`gcc -Q -march=native --help=target | grep march | awk '{print $2}' | head -1`
-MARCH=`echo ${CPU} | tr '[:lower:]' '[:upper:]'`&& echo
+# Call the function before running the rest of the script
+check_gcc
 
-if [[ ${MARCH} == "ZNVER" ]]
-then
-	MARCH="ZEN"
+# Get CPU type from GCC and convert to uppercase
+MARCH=$(gcc -Q -march=native --help=target|grep -m1 march=|awk '{print toupper($2)}')
 
-elif [[ ${MARCH} == "ZNVER2" ]]
-then
-	MARCH="ZEN2"
+# Check for specific CPU types and set MARCH variable accordingly
+case $MARCH in
+  ZNVER1) MARCH="ZEN";;
+  ZNVER2) MARCH="ZEN2";;
+  ZNVER3) MARCH="ZEN3";;
+  ZNVER4) MARCH="ZEN4";;
+  BDVER1) MARCH="BULLDOZER";;
+  BDVER2) MARCH="PILEDRIVER";;
+  BDVER3) MARCH="STEAMROLLER";;
+  BDVER4) MARCH="EXCAVATOR";;
+  BTVER1) MARCH="BOBCAT";;
+  BTVER2) MARCH="JAGUAR";;
+  AMDFAM10) MARCH="MK10";;
+  K8-SSE3) MARCH="K8SSE3";;
+  BONNELL) MARCH="ATOM";;
+  GOLDMONT-PLUS) MARCH="GOLDMONTPLUS";;
+  SKYLAKE-AVX512) MARCH="SKYLAKE2";;
+  MIVYBRIDGE)
+    scripts/config --disable CONFIG_AGP_AMD64 
+    scripts/config --disable CONFIG_MICROCODE_AMD
+    MARCH="MIVYBRIDGE";;
+  ICELAKE-CLIENT) MARCH="ICELAKE";;
+esac
 
-elif [[ ${MARCH} == "ZNVER3" ]]
-then
-	MARCH="ZEN3"
-fi
+# Add "M" prefix to MARCH variable
+MARCH2=M${MARCH}
 
+# Display detected CPU and apply optimization
 echo "----------------------------------"
 echo "| APPLYING AUTO-CPU-OPTIMIZATION |"
 echo "----------------------------------"
-echo "[*] DETECTED CPU (MARCH) : ${MARCH}"
-sed -i "/CONFIG_GENERIC_CPU=y/d;s/\# CONFIG_M${MARCH} is not set/CONFIG_M${MARCH}=y/g" .config
-sleep 3 && echo
+echo "[*] DETECTED CPU (MARCH) : ${MARCH2}"
+scripts/config -k --disable CONFIG_GENERIC_CPU
+scripts/config -k --enable CONFIG_${MARCH2}
