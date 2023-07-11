@@ -4,7 +4,7 @@ post_install()
   echo -e "  \e[1;37mThis will create links in \e[1;32m/opt/Citrix/ICAClient/keystore/cacerts\e[1;37m pointing to \e[1;32m/etc/ssl/certs\e[1;37m"
   echo -e "  \e[1;37mThese links are the root dependencies of official/custom certificates existing/dropped in the Citrix folder\n"
   echo -e "  It isn't a good practice to use \e[1;31m/etc/ssl/certs\e[1;37m\n"
-  echo -e "  On Arch Linux, to trust a system-side certificate run \e[1;32mtrust anchor --store certificate.pem\e[1;37m"
+  echo -e "  On Arch Linux, to trust a system-side certificate run \e[1;32msudo trust anchor --store certificate.pem\e[1;37m"
   echo -e "  The certificate will be written to \e[1;32m/etc/ca-certificates/trust-source/\e[1;37m\n"
   echo -e "  On Citrix, to trust a certificate, simply drop it in \e[1;32m/opt/Citrix/ICAClient/keystore/cacerts\e[1;37m and run \e[1;32msudo ctx_rehash\e[1;37m\n"
 }
