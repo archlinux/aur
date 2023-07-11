@@ -6,8 +6,8 @@ pkgname=(
 )
 pkgbase=zapret-git
 pkgver=48.r60.dcd3cc9
-pkgrel=1
-pkgdesc="Bypass deep packet inspection."
+pkgrel=2
+pkgdesc="Bypass deep packet inspection"
 arch=('x86_64')
 url="https://github.com/bol-van/zapret"
 license=('MIT')
@@ -64,6 +64,7 @@ package_zapret-common-git()
    depends=('systemd' 'ipset' 'curl' 'iptables' "zapret-git=$pkgver")
    provides=("zapret-common=$pkgver")
    conflicts=('zapret-common')
+   pkgdesc+=' - common files'
 
    cd "$srcdir/${pkgbase%-git}"
 
@@ -89,6 +90,7 @@ package_zapret-nfqws-git() {
    provides+=("zapret-nfqws=$pkgver")
    conflicts+=('zapret-nfqws')
    backup=("${makepkg_program_name+/}opt/zapret/config.nfqws")
+   pkgdesc+=' - netfilter queue mode'
 
 
    cd "$srcdir/${pkgbase%-git}"
@@ -112,6 +114,7 @@ package_zapret-tpws-git() {
    provides+=("zapret-tpws=$pkgver")
    conflicts+=('zapret-tpws')
    backup=("${makepkg_program_name+/}opt/zapret/config.tpws")
+   pkgdesc+=' - transparent proxy mode'
 
    cd "$srcdir/${pkgbase%-git}"
 
@@ -133,6 +136,7 @@ package_zapret-docs-git() {
    unset depends
    provides=("zapret-docs=$pkgver")
    conflicts=('zapret-docs')
+   pkgdesc+=' - docs and manuals'
 
    cd "$srcdir/${pkgbase%-git}"
    install -Dm644 docs/*.*          -t "$pkgdir/usr/share/docs/${pkgbase%-git}"

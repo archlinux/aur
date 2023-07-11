@@ -1,7 +1,7 @@
 pkgbase = zapret-git
-	pkgdesc = Bypass deep packet inspection.
+	pkgdesc = Bypass deep packet inspection
 	pkgver = 48.r60.dcd3cc9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bol-van/zapret
 	arch = x86_64
 	license = MIT
@@ -20,6 +20,7 @@ pkgbase = zapret-git
 	sha256sums = 25c309e2ec545c9ee53759e23961c8a3f02708a7ba8dcbabab6eb681a36c03c0
 
 pkgname = zapret-nfqws-git
+	pkgdesc = Bypass deep packet inspection - netfilter queue mode
 	depends = libnetfilter_queue
 	depends = zapret-common-git=48.r60.dcd3cc9
 	provides = zapret=48.r60.dcd3cc9
@@ -30,6 +31,7 @@ pkgname = zapret-nfqws-git
 	backup = opt/zapret/config.nfqws
 
 pkgname = zapret-tpws-git
+	pkgdesc = Bypass deep packet inspection - transparent proxy mode
 	depends = zapret-common-git=48.r60.dcd3cc9
 	provides = zapret=48.r60.dcd3cc9
 	provides = zapret-git=48.r60.dcd3cc9
@@ -39,6 +41,7 @@ pkgname = zapret-tpws-git
 	backup = opt/zapret/config.tpws
 
 pkgname = zapret-common-git
+	pkgdesc = Bypass deep packet inspection - common files
 	depends = systemd
 	depends = ipset
 	depends = curl
@@ -48,5 +51,6 @@ pkgname = zapret-common-git
 	conflicts = zapret-common
 
 pkgname = zapret-docs-git
+	pkgdesc = Bypass deep packet inspection - docs and manuals
 	provides = zapret-docs=48.r60.dcd3cc9
 	conflicts = zapret-docs
