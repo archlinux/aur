@@ -1,0 +1,15 @@
+pkgbase = regex-cli
+	pkgdesc = A command line tool for debugging, ad hoc benchmarking and generating regular expressions for Rust's regex crate
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rust-lang/regex
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = regex-cli-0.1.0.tar.gz::https://static.crates.io/crates/regex-cli/regex-cli-0.1.0.crate
+	sha512sums = 46f07048a70592e19898589de97970b2ab0b92f4710036f87cccef0b65ea04906e17b10ec363ca1bbf5bf59daf11ee6ce5531e798d1016b80cf84e829020d404
+
+pkgname = regex-cli
