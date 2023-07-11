@@ -1,0 +1,19 @@
+pkgbase = bobrossquotes-git
+	pkgdesc = Quotes from Bob Ross
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kz6fittycent/BobRossQuotes
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = bobrossquotes
+	conflicts = bobrossquotes
+	source = bobrossquotes-git::git+https://github.com/kz6fittycent/BobRossQuotes.git
+	sha256sums = SKIP
+
+pkgname = bobrossquotes-git
