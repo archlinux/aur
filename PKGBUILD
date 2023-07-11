@@ -6,7 +6,7 @@ _deps_gui=('libgtk-4.so' 'libadwaita-1.so')
 
 pkgbase=openscq30
 pkgname=($pkgbase-{cli,gui}) 
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Cross platform application for controlling settings of Soundcore Q30 headphones"
 arch=(x86_64 aarch64 armv7l)
@@ -15,9 +15,9 @@ license=('GPL3')
 makedepends=('pkgconf' 'cargo-make' 'rust')
 depends=("${_deps_common[@]}" "${_deps_gui[@]}")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('849b2de7723efc843e6320779eca620a')
-sha512sums=('6147bb81c760c43fbaf54d995c365bd6505ae4bebb94e7048a17b535183feb0b610523641863cdd873cb5c49f2ace881ded3d7f611d9c33d41d6f22edc7c96bf')
-b2sums=('828b9674b0c92ba8fb621dab913d16ee4893f4e7049b76c4cd58f70e1f84c5a33cc726b7e70066655c363668014f8987b2f8e957ebb77a4713573a7474761ccc')
+md5sums=('7cd4f0fbc98792342045045ce78f169c')
+sha512sums=('fe5c7387a8e8277dd96ac4304ba43370b82b5d98e7934efed4e792248fe49c09ab2f378e9d3df4f59d218f48f7486bb3a12b8e100fbea3425bfbf3cc99b8092d')
+b2sums=('61e3dd90cb956571aae09446ed9793c58080b2366e0412f8ea3146ac61b7541b4f3484e0544d01339302cd14e6fefc0cd2452264c3740234216ae4e8ab9ff413')
 
 build() {
 	cd "$srcdir/$_pname-$pkgver"
