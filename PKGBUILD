@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Frede Hundewadt <echo ZmhAbWFuamFyby5vcmcK | base64 -d>
 pkgname=piclone
 pkgver=0.5
 pkgrel=4
