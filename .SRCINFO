@@ -1,6 +1,6 @@
 pkgbase = gildas
 	pkgdesc = GILDAS
-	pkgver = jun23a
+	pkgver = jul23a
 	pkgrel = 1
 	url = https://www.iram.fr/IRAMFR/GILDAS/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gildas
 	depends = gtk2
 	optdepends = python-numpy
 	options = !strip
-	source = https://www.iram.fr/~gildas/dist/gildas-src-jun23a.tar.xz
-	sha512sums = f7554e0539611d7f80544fbac90bb6f1b207f54cf40a511bff063fa3943aa512f0abc0ccf93ecf9830e69340a148b6d29bd0eede2ae3f65064534de7052511e6
+	source = https://www.iram.fr/~gildas/dist/gildas-src-jul23a.tar.xz
+	sha512sums = e377f0d4c0c4d20a8e70424823d2a34a083fe4bc507bd2fbdfdabc587f35ed5520be8640d749966a6b4a2d337405b5d3ca7f2342a1857efb805440fbce394d8a
 
 pkgname = gildas
