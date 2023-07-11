@@ -1,0 +1,4 @@
+pkg/
+src/
+plantumlqeditor
+*.pkg.tar.zst
