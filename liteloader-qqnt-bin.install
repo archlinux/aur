@@ -1,0 +1,18 @@
+post_install() {
+    cp -r /usr/lib/liteloader-qqnt-*/LiteLoaderQQNT-* /opt/QQ/resources/app/LiteLoader
+    sed -i 's/"main": ".\/app_launcher\/index.js"/"main": "LiteLoader"/g' /opt/QQ/resources/app/package.json
+    echo "Install done."
+}
+
+post_upgrade() {
+    cp -r /usr/lib/liteloader-qqnt-*/LiteLoaderQQNT-* /opt/QQ/resources/app/LiteLoader
+    sed -i 's/"main": ".\/app_launcher\/index.js"/"main": "LiteLoader"/g' /opt/QQ/resources/app/package.json
+    echo "Upgrade done."
+}
+
+post_remove() {
+    rm -rf /opt/QQ/resources/app/LiteLoader
+    sed -i 's/"main": "LiteLoader"/"main": ".\/app_launcher\/index.js"/g' /opt/QQ/resources/app/package.json
+    echo "Uninstall LLQQNT done."
+    echo "If you want delete LLQQNT's data, run 'rm -r ~/Documents/BetterQQNT'"
+}
