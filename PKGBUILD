@@ -2,24 +2,24 @@
 pkgname=duolingo-desktop-bin
 _appname="dl-desktop"
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the Duolingo language learning application"
 arch=("x86_64")
 url="https://github.com/hmlendea/dl-desktop"
 license=('GPL3')
-depends=('dbus' 'pango' 'libx11' 'libxcomposite' 'libcups' 'libxrandr' 'glib2' 'libxfixes' 'gtk3' 'gcc-libs' 'libxkbcommon' 'glibc' 'expat' \
-    'libxdamage' 'cairo' 'at-spi2-core' 'libdrm' 'libxcb' 'mesa' 'libxext' 'nss' 'nspr' 'alsa-lib')
+depends=('electron24')
 conflicts=("${pkgname%-bin}-appimage" "${_appname}" "${pkgname%-bin}")
-noextract=("${pkgname%-bin}-${pkgver}.zip")
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_linux.zip"
-    "${pkgname%-bin}.png::https://raw.githubusercontent.com/hmlendea/dl-desktop/master/icon.png")
+    "${pkgname%-bin}.png::https://raw.githubusercontent.com/hmlendea/dl-desktop/master/icon.png"
+    "${pkgname%-bin}.sh")
 sha256sums=('a1e84de8f5aa15b6d4e31bead8fdb346ed068bca7efe0541da0f2bf1497aae1d'
-            '67642cd03a241ff097a83800f39e442c533e8b7a92a9235c0375ef866a708f0e')
+            '67642cd03a241ff097a83800f39e442c533e8b7a92a9235c0375ef866a708f0e'
+            'c010ebbd1e87e4123ac908cadae3e1129ac0f0dd2ef97c255f6300e841e21571')
 package() {
-    install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
-    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}.zip" -C "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
     install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    sed "s|Exec=/opt/${_appname}/${_appname}|Exec=/opt/${pkgname%-bin}/${_appname}|g;s|Icon=ro.go.hmlendea.DL-Desktop|Icon=${pkgname%-bin}|g" \
-        -i "${pkgdir}/opt/${pkgname%-bin}/ro.go.hmlendea.DL-Desktop.desktop"
-    install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/ro.go.hmlendea.DL-Desktop.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed "s|/opt/${_appname}/${_appname}|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|ro.go.hmlendea.DL-Desktop|${pkgname%-bin}|g" \
+        -i "${srcdir}/ro.go.hmlendea.DL-Desktop.desktop"
+    install -Dm644 "${srcdir}/ro.go.hmlendea.DL-Desktop.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
