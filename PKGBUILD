@@ -3,7 +3,7 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=2534.r0.g80acb73
+pkgver=2545.r0.g1872ada
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ fi
 provides=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 conflicts=("citra" "citra-qt" "citra-canary" "citra-git" "citra-qt-git")
 license=('GPL2')
-depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'boost-libs' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio')
+depends=('sdl2' 'mbedtls' 'speexdsp' 'qt6-multimedia' 'ffmpeg' 'boost-libs' 'libfdk-aac' 'libusb' 'openssl' 'glibc' 'gcc-libs' 'sndio' 'libbacktrace-git')
 makedepends=('git' 'cmake' 'python' 'doxygen' 'rapidjson' 'llvm' 'boost' 'qt6-tools' 'gcc' 'glslang')
 source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "boost::git+https://github.com/citra-emu/ext-boost.git"
@@ -37,7 +37,7 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         "libressl::git+https://github.com/citra-emu/ext-libressl-portable.git"
         "git+https://github.com/libusb/libusb.git"
         "git+https://github.com/mozilla/cubeb"
-        "git+https://github.com/discord/discord-rpc.git"
+        "git+https://github.com/yuzu-emu/discord-rpc.git"
         "git+https://github.com/arun11299/cpp-jwt.git"
         "git+https://github.com/wwylele/teakra.git"
         "git+https://github.com/lvandeve/lodepng.git"
@@ -142,7 +142,7 @@ build() {
       -DCITRA_ENABLE_COMPATIBILITY_REPORTING=ON \
       -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
       -DUSE_DISCORD_PRESENCE=ON \
-      -DUSE_SYSTEM_BOOST=ON \
+      -DUSE_SYSTEM_BOOST=OFF \
       -DUSE_SYSTEM_SDL2=ON \
       -DCMAKE_C_COMPILER=gcc \
       -DCMAKE_CXX_COMPILER=g++ \
