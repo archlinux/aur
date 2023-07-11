@@ -1,12 +1,11 @@
 pkgbase = stardict-jmdict-en-ja
 	pkgdesc = Stardict Japanese-Multilingual Dictionary: English to Japanese.
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.edrdg.org/jmdict/j_jmdict.html
 	arch = any
 	license = cc-by-sa-3.0
-	source = http://abloz.com/huzheng/stardict-dic/ja/stardict-jmdict-en-ja-2.4.2.tar.bz2
+	source = http://download.huzheng.org/ja/stardict-jmdict-en-ja-2.4.2.tar.bz2
 	md5sums = e0f60d6acc4e3df6784805816b2e136f
 
 pkgname = stardict-jmdict-en-ja
-
