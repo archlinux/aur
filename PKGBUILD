@@ -13,7 +13,7 @@
 _name=WaveEdit
 _pkgname=${_name,,}
 pkgname=$_pkgname-git
-pkgver=1.2.r136.9914dc7
+pkgver=1.2.r137.f2526a8
 pkgrel=1
 pkgdesc='A wavetable editor for wavetable synthesizers (git version)'
 arch=(x86_64)
@@ -38,6 +38,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $_pkgname
+
   local ver="$(grep ^VERSION Makefile | cut -f 3 -d ' ')"
   printf "%s.r%s.%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   #(
@@ -58,7 +59,7 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # Patch source for where WaveEdit looks for wave catalogs
-  sed -i -E -e 's|rootPath = ".*?"|rootPath = "/usr/share/waveedit/catalog"|' src/catalog.cpp
+  sed -i -E -e 's|catalogPath = ".*?"|catalogPath = "/usr/share/waveedit/catalog"|' src/catalog.cpp
   # Patch source for where WaveEdit looks for images
   sed -i -E -e 's|"([-a-z]+\.png)"|"/usr/share/'$_pkgname'/images/\1"|' src/ui.cpp
   # Patch source for where WaveEdit looks for fonts
