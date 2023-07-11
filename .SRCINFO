@@ -1,6 +1,6 @@
 pkgbase = proxsuite
 	pkgdesc = The Advanced Proximal Optimization Toolbox
-	pkgver = 0.3.7
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Simple-Robotics/proxsuite
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = proxsuite
 	makedepends = cmake
 	makedepends = eigen
 	makedepends = simde
-	source = https://github.com/Simple-Robotics/proxsuite/releases/download/v0.3.7/proxsuite-0.3.7.tar.gz
-	source = https://github.com/Simple-Robotics/proxsuite/releases/download/v0.3.7/proxsuite-0.3.7.tar.gz.sig
+	source = https://github.com/Simple-Robotics/proxsuite/releases/download/v0.4.0/proxsuite-0.4.0.tar.gz
+	source = https://github.com/Simple-Robotics/proxsuite/releases/download/v0.4.0/proxsuite-0.4.0.tar.gz.sig
 	validpgpkeys = A031AD35058955293D54DECEC45D22EF408328AD
-	sha256sums = 792ad93eede02e9aa18d5c2916b94e8731fae4799f18285ccb5fe7b87dbbfc6d
+	sha256sums = 42950617fb3bf36064db249540c1036b966aa7bfe9b6a76d763dbbbf0c3d661d
 	sha256sums = SKIP
 
 pkgname = proxsuite
