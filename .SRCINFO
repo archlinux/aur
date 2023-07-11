@@ -9,7 +9,7 @@ pkgbase = python2-scipy
 	makedepends = gcc-fortran
 	makedepends = python2-setuptools
 	depends = python2-numpy
-	optdepends = python2-imaging: for image saving module
+	optdepends = python2-pillow: for image saving module
 	source = https://pypi.python.org/packages/source/s/scipy/scipy-1.2.3.tar.gz
 	sha512sums = d7739fa2f25689fc14ddf09477207c990b39b593a85f5c74687df1ffe097f6eee1bb2123aaa286189309f6d3b25cdd7757053d8b1008d1d6b3367a8e3a0a53b1
 
