@@ -1,0 +1,21 @@
+pkgbase = r-mstate
+	pkgdesc = Data Preparation, Estimation and Prediction in Multi-State Models
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mstate
+	arch = x86_64
+	license = GPL
+	depends = r-data.table
+	depends = r-rcolorbrewer
+	depends = r-rlang
+	depends = r-viridislite
+	optdepends = r-cmprsk
+	optdepends = r-ggplot2
+	optdepends = r-knitr
+	optdepends = r-relsurv
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/mstate_0.3.2.tar.gz
+	md5sums = 14aab86d42cc542dd73c96e279119ca9
+	sha256sums = 3c473dff6854e31cdbdaf79f8fe7eaf97119b01a581874a894b283555afe8d14
+
+pkgname = r-mstate
