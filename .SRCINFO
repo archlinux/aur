@@ -1,6 +1,6 @@
 pkgbase = hyprshade-git
 	pkgdesc = Hyprland shade configuration tool
-	pkgver = r36.a128afb
+	pkgver = r38.945f55a
 	pkgrel = 1
 	url = https://github.com/loqusion/hyprshade
 	arch = any
