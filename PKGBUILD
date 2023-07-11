@@ -11,8 +11,8 @@ license=('MPL2')
 depends=('at-spi2-core' 'cairo' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'glu' 'gtk3' 'harfbuzz' 'hicolor-icon-theme'
          'libglvnd' 'libice' 'libpng' 'libsm' 'libx11' 'libxext' 'libxrender' 'pango' 'wayland')
 provides=('cemu')
-conflicts=('cemu' 'cemu-git')
-options=(!strip !docs libtool emptydirs)
+conflicts=('cemu')
+options=('!debug')
 _srcver=${pkgver%.*}-${pkgver##*.}
 source=("https://github.com/cemu-project/Cemu/releases/download/v$_srcver/cemu-$_srcver-ubuntu-20.04-x64.zip"
         "https://raw.githubusercontent.com/cemu-project/Cemu/main/dist/linux/info.cemu.Cemu.desktop"
