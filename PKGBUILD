@@ -2,34 +2,35 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='nginx-vts-exporter'
-pkgver='0.10.7'
+pkgver='0.10.8'
 pkgrel='1'
 pkgdesc='Simple server that scrapes Nginx vts stats and exports them via HTTP for Prometheus consumption'
-arch=('x86_64' 'i686')
-url="https://github.com/hnlq715/${pkgname}"
+arch=('x86_64' 'i686' 'aarch64')
+_uri='github.com/hnlq715'
+url="https://${_uri}/${pkgname}"
 license=('MIT')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}.service")
-sha256sums=('242760318d4d22fc9bc81f3a8702ae26f08f4f5344aea312b2763f59c7f753a5'
+sha256sums=('2fc964f1129f732beaf10722380d61754c4f0744c48a2ab11028428eff45ce11'
             '7838c08b3299d2d6d5bb0b6c281f1fcee8f9dc254bfb5e1a8d59699e52495f06')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
-  mkdir -p "${GOPATH}/src/github.com/hnlq715"
-  ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/github.com/hnlq715/${pkgname}"
+  mkdir -p "${GOPATH}/src/${_uri}"
+  ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgname}"
 }
 
 build() {
-  export GOPATH="${srcdir}/gopath"
-  cd "${GOPATH}/src/github.com/hnlq715/${pkgname}"
-  make
+  cd "${GOPATH}/src/${_uri}/${pkgname}"
+  GOOS=linux go build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  pushd "${GOPATH}/src/${_uri}/${pkgname}"
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  popd
+  install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }
