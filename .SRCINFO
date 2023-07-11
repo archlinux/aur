@@ -1,6 +1,6 @@
 pkgbase = proto
 	pkgdesc = A multi-language version and dependency manager
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/moonrepo/proto
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = proto
 	makedepends = cargo
 	depends = git
 	options = !lto
-	source = proto-0.12.0.tar.gz::https://github.com/moonrepo/proto/archive/refs/tags/v0.12.0.tar.gz
-	sha512sums = 7561fc10f897c1337afe47c3393e6fb4875e772a147579a71553e3f2c86a1e91f5c66b584f70471a36194bbee645a6a3d8d17168781b8a7016697cfa2a4a5125
+	source = proto-0.12.1.tar.gz::https://github.com/moonrepo/proto/archive/refs/tags/v0.12.1.tar.gz
+	sha512sums = 3d0e9bbed5f8f7c6b41f4d04371758514f6970e9222c2e91d431b2e3ebc30b83783bc2690e3523a8b973c77e50e07714a8f94a5f64666b1f494edb643993f092
 
 pkgname = proto
