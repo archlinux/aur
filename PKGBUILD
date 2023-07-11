@@ -2,13 +2,14 @@
 
 pkgname=game-devices-udev
 pkgver=0.22
-pkgrel=0.1
+pkgrel=0.2
 pkgdesc="Udev rules for controllers"
 url='https://codeberg.org/fabiscafe/game-devices-udev'
 arch=('any')
 license=('MIT')
 depends=('udev')
 makedepends=('git')
+provides=('nintendo-udev')
 install="install"
 _commit=408e33b23f8168e6e848865954c1c57cf4cdab61 #tags/0.22^0
 source=("git+${url}.git#commit=${_commit}"
