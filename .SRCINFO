@@ -15,8 +15,7 @@ pkgbase = libkml-git
 	optdepends = swig: bindings for additional languages
 	optdepends = python2: python bindings
 	provides = libkml
-	conflicts = libkml-dev
-	conflicts = libkml-git
+	conflicts = libkml
 	source = libkml::git+https://github.com/libkml/libkml.git
 	sha256sums = SKIP
 
