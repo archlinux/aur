@@ -1,6 +1,6 @@
 pkgbase = git-annex-standalone-nightly
 	pkgdesc = Manage files with git, without checking their contents into git. Standalone nightly autobuild version, with no Haskell dependency.
-	pkgver = 10.20230627+g240bae38f
+	pkgver = 10.20230627+g04313e1fe
 	pkgrel = 1
 	url = https://git-annex.branchable.com/
 	arch = x86_64

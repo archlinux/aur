@@ -1,7 +1,7 @@
 # Maintainer: Yann Büchau <nobodyinperson at posteo de>
 # Contributor: Thomas Jost <schnouki@schnouki.net>
 pkgname=git-annex-standalone-nightly
-pkgver=10.20230627+g240bae38f
+pkgver=10.20230627+g04313e1fe
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone nightly autobuild version, with no Haskell dependency."
 arch=(x86_64 aarch64)
@@ -49,6 +49,8 @@ package() {
   install -Dm644 logo.svg "$pkgdir/usr/share/pixmaps/git-annex.svg"
   install -Dm644 logo_16x16.png "$pkgdir/usr/share/pixmaps/git-annex_16x16.png"
   install -Dm644 "$startdir"/git-annex.desktop -t "$pkgdir"/usr/share/applications
+  mkdir -p "$pkgdir"/etc/xdg/autostart
+  ln -rsf "$pkgdir"/usr/share/applications/git-annex.desktop "$pkgdir"/etc/xdg/autostart
 
   for f in usr/share/man/man1/*.1; do
     install -Dm644 $f "$pkgdir/$f"
