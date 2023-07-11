@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = usr/lib/modules/*/
+Target = !usr/lib/modules/*/?*
+
+[Action]
+Description = Linking old linux kernel modules...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/linux-preserve-modules-post
