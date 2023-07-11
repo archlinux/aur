@@ -1,7 +1,7 @@
 pkgbase = perl-travel-status-de-dbwagenreihung-git
 	pkgdesc = Interface to the DeutscheBahn coach order API.
-	pkgver = 0.06+r58.20210110.g7a2fd50
-	pkgrel = 2
+	pkgver = 0.08+r63.20230213.gc843388
+	pkgrel = 1
 	epoch = 0
 	url = https://finalrewind.org/projects/Travel-Status-DE-DBWagenreihung/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = perl-travel-status-de-dbwagenreihung-git
 	depends = perl>=5.20
 	depends = perl-lwp-protocol-https
 	depends = perl-travel-status-de-iris
-	provides = perl-travel-status-de-dbwagenreihung=0.06+r58.20210110.g7a2fd50
+	provides = perl-travel-status-de-dbwagenreihung=0.08+r63.20230213.gc843388
 	conflicts = perl-travel-status-de-dbwagenreihung
 	options = !emptydirs
 	source = Travel-Status-DE-DBWagenreihung::git+https://git.finalrewind.org/Travel-Status-DE-DBWagenreihung
