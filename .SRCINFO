@@ -1,6 +1,6 @@
 pkgbase = python-cohost
 	pkgdesc = A python library for Cohost.org!
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/valknight/Cohost.py
 	arch = any

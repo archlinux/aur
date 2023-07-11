@@ -1,7 +1,7 @@
 # Maintainer: Bao Trinh <qubidt@gmail.com>
 
 pkgname=python-cohost
-pkgver=0.3.0
+pkgver=0.3.1
 _commit=f0ae0be33583dfe69367a253c35092e44822dafc
 pkgrel=1
 pkgdesc="A python library for Cohost.org!"
