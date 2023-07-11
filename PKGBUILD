@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitui-git
-pkgver=0.17.1.r23.gd359fabe
+pkgver=0.23.0.r17.gc1e20958
 pkgrel=1
 pkgdesc='Blazing fast terminal-ui for git written in Rust'
 url='https://github.com/extrawurst/gitui'
@@ -14,6 +14,7 @@ provides=("gitui=$pkgver")
 conflicts=('gitui')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
+options=(!lto)
 
 prepare() {
   cd "${pkgname}"
@@ -22,7 +23,7 @@ prepare() {
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -44,5 +45,5 @@ package() {
   cd "$pkgname"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname%-git}"
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" {KEY_CONFIG,README,THEMES}.md
-  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname%-git}" LICENSE.md
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
 }
