@@ -1,0 +1,14 @@
+pkgbase = python2-click-plugins
+	pkgdesc = Register click CLI commands via setuptools entry-points (Python 2)
+	pkgver = 1.1.1
+	pkgrel = 5
+	url = https://github.com/click-contrib/click-plugins
+	arch = any
+	license = BSD
+	checkdepends = python2-pytest
+	makedepends = python2-setuptools
+	depends = python2-click
+	source = https://github.com/click-contrib/click-plugins/releases/download/1.1.1/click-plugins-1.1.1.tar.gz
+	sha256sums = 46ab999744a9d831159c3411bb0c79346d94a444df9a3a3742e9ed63645f264b
+
+pkgname = python2-click-plugins
