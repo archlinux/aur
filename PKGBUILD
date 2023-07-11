@@ -1,7 +1,7 @@
 # Maintainer: rnestler
 
 pkgname=attractorr
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='CLI to search for torrent magnet links'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('APACHE')
 makedepends=('cargo')
 depends=('openssl' 'gcc-libs')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
-sha256sums=('d9f027846a266937efa8d86dea66e664ae385245ee8d38950a2895762bf648a2')
+sha256sums=('7700f47fdfe6822253398f90b066c70b14a56c929afbab457048e35e8705af17')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
