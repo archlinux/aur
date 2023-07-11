@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 optdepends=('fzf: fuzzy searching' 'fd: faster find' 'skim: fzf alternative')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/timdubbins/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f1bd2e5b50f2c47d219f88c16f480b697e695e82a1a878d82e732611b736cc7f')
+sha256sums=('24ab66f58095e310a6c7648eb5243120c8f6b38487f7b906a625945e9030491f')
 
 prepare() {
     cd "$pkgname-$pkgver"
