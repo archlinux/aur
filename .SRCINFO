@@ -1,7 +1,7 @@
 pkgbase = perl-travel-routing-de-vrr-git
 	pkgdesc = Unofficial efa.vrr.de command line client and Perl module
-	pkgver = 2.20+r377.20210326.g353760f
-	pkgrel = 5
+	pkgver = 2.20+r380.20230210.g0ab14a0
+	pkgrel = 1
 	epoch = 1
 	url = http://finalrewind.org/projects/Travel-Routing-DE-VRR/
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = perl-travel-routing-de-vrr-git
 	depends = perl-libwww
 	depends = perl-lwp-protocol-https
 	depends = perl-xml-libxml
-	provides = perl-travel-routing-de-vrr=2.20+r377.20210326.g353760f
-	provides = perl-travel-routing-de-vrr-zsh-completion=2.20+r377.20210326.g353760f
+	provides = perl-travel-routing-de-vrr=2.20+r380.20230210.g0ab14a0
+	provides = perl-travel-routing-de-vrr-zsh-completion=2.20+r380.20230210.g0ab14a0
 	conflicts = perl-travel-routing-de-vrr
 	conflicts = perl-travel-routing-de-vrr-zsh-completion
 	options = !emptydirs
