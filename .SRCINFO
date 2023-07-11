@@ -1,0 +1,15 @@
+pkgbase = augustus-game-appimage
+	pkgdesc = An enhanced re-implementation of Caesar III (Original copy required). Appimage version
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/Keriew/augustus
+	arch = x86_64
+	license = AGPL
+	depends = fuse2
+	conflicts = augustus-game
+	conflicts = augustus-game-git
+	options = !strip
+	source = https://github.com/Keriew/augustus/releases/download/v3.2.0/augustus-3.2.0-linux.AppImage
+	sha256sums = e973adfc01db2dd03637dd22f6b3ecc578a604bf4e761582d6f6eb243f995be0
+
+pkgname = augustus-game-appimage
