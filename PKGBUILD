@@ -3,7 +3,7 @@
 pkgname=webby-git
 _pkgname=webby
 pkgver=3.2.0.r0.gd3818df
-pkgrel=1
+pkgrel=2
 pkgdesc='A very simple HTTP/HTTPS server and service.'
 url='https://github.com/an-prata/webby'
 makedepends=('git' 'go')
