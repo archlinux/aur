@@ -1,6 +1,6 @@
 pkgbase = rmg
 	pkgdesc = Rosalie's Mupen GUI
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/Rosalie241/rmg
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = rmg
 	depends = qt6-base
 	depends = qt6-svg
 	depends = xdg-user-dirs
-	source = git+https://github.com/Rosalie241/rmg.git#tag=v0.4.2
+	source = git+https://github.com/Rosalie241/rmg.git#tag=v0.4.3
 	sha256sums = SKIP
 
 pkgname = rmg
