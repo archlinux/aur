@@ -1,6 +1,6 @@
 pkgbase = pyside6-tools-wrappers
 	pkgdesc = Provides pyside6-* executables (such as pyside6-rcc and pyside6-uic)
-	pkgver = 20230528
+	pkgver = 20230711
 	pkgrel = 1
 	url = https://code.qt.io/cgit/pyside/pyside-setup.git/tree/sources/pyside-tools/pyside_tool.py
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = pyside6-tools-wrappers
 	makedepends = pyside6-tools
 	depends = python
 	depends = pyside6
-	optdepends = qt6-tools: for pyside6-{assistant,designer,linguist,lrelease,lupdate}
+	optdepends = qt6-tools: for pyside6-{assistant,linguist,lrelease,lupdate}
 	optdepends = pyside6-tools
 	source = pyside-tool-paths.patch
 	sha512sums = c437364061ef2f7ad93e9796513cae860d471f37d51af24f65ddf0ab4474b3db6c70b0b8efc9e6b3229b59ddce0fd096a71a40f74132a4364a884593aa2ccb75
