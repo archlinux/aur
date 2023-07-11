@@ -1,23 +1,17 @@
 pkgname=ibdump
 _commit=e656df3a89c823fcfebc58961ecd4ce8fa6533d4
 pkgver=6.1.0.r35.ge656df3
-pkgrel=1
+pkgrel=3
 pkgdesc="InfiniBand and RoCE RDMA packet capture tool for Mellanox"
 url="https://github.com/Mellanox/ibdump"
 license=(GPL2 custom:BSD)
 arch=(x86_64)
 depends=(libibverbs)
-makedepends=(git)
+makedepends=(git mstflint)
 source=("git+https://github.com/Mellanox/ibdump#commit=$_commit"
 	unbork.diff)
 sha256sums=('SKIP'
             '1b951beecf20d488e97bdbcc80e414eb1898e2cd994ec579f3a56b52edd55d3c')
-
-if (( mstflint )); then
-	# Run `makepkg mstflint=1` to enable. I don't, because I have ConnectX-3.
-	# (Might do split-packages with 'ibdump' and 'ibdump-mst' if needed.)
-	makedepends+=(mstflint)
-fi
 
 pkgver() {
 	cd ibdump
@@ -33,18 +27,22 @@ prepare() {
 
 build() {
 	cd ibdump
-	if (( mstflint )); then
-		# Build with mstflint (for new ConnectX, but breaks CX3):
-		make WITH_MSTFLINT=yes MSTFLINT_INCLUDE_DIR=/usr/include/mstflint
-	else
-		# Build without mstflint (for ConnectX <= 3):
-		make WITHOUT_FW_TOOLS=yes
-	fi
+
+	# Build with mstflint (for new ConnectX, but breaks CX3):
+	make clean
+	make WITH_MSTFLINT=yes MSTFLINT_INCLUDE_DIR=/usr/include/mstflint
+
+	mv ibdump{,-mst}
+
+	# Build without mstflint (for ConnectX <= 3):
+	make clean
+	make WITHOUT_FW_TOOLS=yes
 }
 
 package() {
 	cd ibdump
 	install -D -m 0755 ./ibdump "$pkgdir"/usr/bin/ibdump
+	install -D -m 0755 ./ibdump-mst "$pkgdir"/usr/bin/ibdump-mst
 	install -D -m 0644 ./LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 	install -D -m 0644 ./README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
 }
