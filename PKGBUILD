@@ -21,6 +21,8 @@ pkgver() {
 prepare() {
 	cd ibdump
 	patch -Np1 < ../unbork.diff
+	rm -f gitversion.h
+	make gitversion.h
 }
 
 build() {
