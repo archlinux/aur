@@ -1,6 +1,6 @@
 pkgbase = cargo-lambda-bin
 	pkgdesc = Cargo Lambda is a Cargo subcommand to help you work with AWS Lambda.
-	pkgver = 0.19.4
+	pkgver = 0.19.5
 	pkgrel = 1
 	url = https://www.cargo-lambda.info/
 	arch = aarch64
@@ -10,9 +10,9 @@ pkgbase = cargo-lambda-bin
 	depends = cargo-watch
 	depends = zig
 	provides = cargo-lambda
-	source_aarch64 = cargo-lambda-0.19.4-aarch64::https://github.com/cargo-lambda/cargo-lambda/releases/download/v0.19.4/cargo-lambda-v0.19.4.aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 6a42475463f5bfe66f6bb544b9b9ff8155360023db11df6bcbe857fba0b32ece
-	source_x86_64 = cargo-lambda-0.19.4-x86_64::https://github.com/cargo-lambda/cargo-lambda/releases/download/v0.19.4/cargo-lambda-v0.19.4.x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 63c8b1da12c4e9318d5410236fdb0bc1fd4ea15123d91a168172cddce52c12c0
+	source_aarch64 = cargo-lambda-0.19.5-aarch64::https://github.com/cargo-lambda/cargo-lambda/releases/download/v0.19.5/cargo-lambda-v0.19.5.aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 622a40846bef7ecbb6039604c89cfef2e2a97bf0794318b9dcd544d65b27b960
+	source_x86_64 = cargo-lambda-0.19.5-x86_64::https://github.com/cargo-lambda/cargo-lambda/releases/download/v0.19.5/cargo-lambda-v0.19.5.x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 3af4b6cc9580cdfe80d5b33eb428c5b819cb3b528664e777e94be8b532cca285
 
 pkgname = cargo-lambda-bin
