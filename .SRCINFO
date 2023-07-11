@@ -1,6 +1,6 @@
 pkgbase = waveedit-git
 	pkgdesc = A wavetable editor for wavetable synthesizers (git version)
-	pkgver = 1.2.r131.7ea659f
+	pkgver = 1.2.r136.9914dc7
 	pkgrel = 1
 	url = https://synthtech.com/waveedit
 	arch = x86_64

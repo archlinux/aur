@@ -13,7 +13,7 @@
 _name=WaveEdit
 _pkgname=${_name,,}
 pkgname=$_pkgname-git
-pkgver=1.2.r131.7ea659f
+pkgver=1.2.r136.9914dc7
 pkgrel=1
 pkgdesc='A wavetable editor for wavetable synthesizers (git version)'
 arch=(x86_64)
@@ -71,7 +71,7 @@ build() {
   cd $_pkgname
 
   make
-  convert logo.ico logo.png
+  convert logo.ico[2] logo.png
   gendesk -f -n \
     --pkgname "$_pkgname" \
     --pkgdesc "$pkgdesc" \
@@ -82,6 +82,7 @@ build() {
 
 package() {
   cd $_pkgname
+
   install -vDm 755 $_name -t "$pkgdir"/usr/bin
   ln -sf $_name "$pkgdir"/usr/bin/$_pkgname
   # UI images & fonts
@@ -94,7 +95,7 @@ package() {
     install -vDm 644 $cat/*.wav -t "$pkgdir"/usr/share/$_pkgname/$cat
   done
   # desktop file & icon
-  install -vDm 644 logo-2.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
+  install -vDm 644 logo.png "$pkgdir"/usr/share/pixmaps/$_pkgname.png
   install -vDm 644 $_pkgname.desktop -t "$pkgdir"/usr/share/applications
   # documentation
   install -vDm644 doc/*.{html,pdf,woff} -t "$pkgdir"/usr/share/doc/$pkgname
