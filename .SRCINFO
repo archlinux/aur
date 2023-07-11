@@ -1,6 +1,6 @@
 pkgbase = perl-travel-status-de-vrr-git
 	pkgdesc = Interface to the efa.vrr.de departure monitor
-	pkgver = 1.20+r175.20230210.g284dea2
+	pkgver = 1.20+r176.20230703.gbbf8e1f
 	pkgrel = 1
 	epoch = 1
 	url = http://finalrewind.org/projects/Travel-Status-DE-VRR/
@@ -14,7 +14,7 @@ pkgbase = perl-travel-status-de-vrr-git
 	depends = perl-libwww
 	depends = perl-lwp-protocol-https
 	depends = perl-xml-libxml
-	provides = perl-travel-status-de-vrr=1.20+r175.20230210.g284dea2
+	provides = perl-travel-status-de-vrr=1.20+r176.20230703.gbbf8e1f
 	conflicts = perl-travel-status-de-vrr
 	options = !emptydirs
 	source = Travel-Status-DE-VRR::git+http://git.finalrewind.org/Travel-Status-DE-VRR
