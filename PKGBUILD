@@ -8,6 +8,7 @@ url="https://github.com/loqusion/hyprshade"
 license=('MIT')
 _py_deps=(
 	more-itertools
+	poetry
 	typer
 )
 depends=(
