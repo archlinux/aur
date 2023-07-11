@@ -1,8 +1,8 @@
 # Maintainer: Carsten Schlote <carsten.schlote@gmail.com>
 
 pkgname='plantumlqeditor-va-git'
-pkgver='3.2_20230704'
-pkgrel=5
+pkgver=r167.bf0e91b
+pkgrel=1
 pkgdesc='PlantUML QEditor is a simple editor written in Qt5 for PlantUML (vahanus fork)'
 arch=('any')
 url='https://github.com/cschlote/plantumlqeditor'
@@ -49,3 +49,9 @@ package() {
     cp icon48.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/plantumlqeditor.png
     cp icon64.png "$pkgdir"/usr/share/icons/hicolor/64x64/apps/plantumlqeditor.png
 }
+
+pkgver() {
+	cd "./plantumlqeditor"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
