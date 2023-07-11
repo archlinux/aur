@@ -1,6 +1,6 @@
 pkgbase = newelle
 	pkgdesc = Your Ultimate Virtual Assistant
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/qwersyk/Newelle
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = newelle
 	makedepends = meson
 	depends = python
 	depends = libadwaita
-	source = git+https://github.com/qwersyk/Newelle.git#tag=0.1.6
+	source = git+https://github.com/qwersyk/Newelle.git#tag=0.1.7
 	sha256sums = SKIP
 
 pkgname = newelle
