@@ -1,6 +1,6 @@
 pkgbase = tachidesk-sorayomi-bin
 	pkgdesc = A free and open source manga reader to read manga from a Tachidesk-Server instance
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://github.com/Suwayomi/Tachidesk-Sorayomi
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tachidesk-sorayomi-bin
 	optdepends = tachidesk-server
 	provides = tachidesk-sorayomi
 	conflicts = tachidesk-sorayomi
-	source = https://github.com/Suwayomi/Tachidesk-Sorayomi/releases/download/0.5.7/tachidesk-sorayomi-0.5.7-linux-x64.tar.gz
-	sha256sums = e4935563a4841bcb81b851a3f2816e940609aeb8cb2da31df4c196e7533ecb2f
+	source = https://github.com/Suwayomi/Tachidesk-Sorayomi/releases/download/0.5.8/tachidesk-sorayomi-0.5.8-linux-x64.tar.gz
+	sha256sums = 53f6b8a90d58092d667abad78c2a386d5d26be68f1b1800ca2b61a619eba4881
 
 pkgname = tachidesk-sorayomi-bin
