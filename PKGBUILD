@@ -1,7 +1,7 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 _pkgname=hyprshade
 pkgname=${_pkgname}-git
-pkgver=r38.945f55a
+pkgver=0.1.2.r0.ga214947
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
