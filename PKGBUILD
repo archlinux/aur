@@ -15,7 +15,7 @@ source=("dnsproxy-adguard.service"
         "${_projectname}-${pkgver}.tar.gz::https://github.com/AdguardTeam/dnsproxy/archive/v${pkgver}.tar.gz")
 makedepends=("go" "git")
 backup=(etc/conf.d/dnsproxy-adguard)
-sha256sums=('7d212da820b200b678edcffe2b23e56a6fc25f065acc051fbc6eaa76747795f1'
+sha256sums=('6695fddb60527bf512919b3aaa6f28a0c89705b28b3453fb06309462ee1afc46'
             'de2afa0883f2829a1f7487899ddc9e711913686aea1ce186a60aad022604df4b'
             '230f13bcfe48a650c0ffd0574092fd956f5fb6351c622ae869d2bd0058a539b4')
 
