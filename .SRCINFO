@@ -1,6 +1,6 @@
 pkgbase = discord_arch_electron
 	pkgdesc = Discord (popular voice + video app) using the system provided electron for increased security and performance
-	pkgver = 0.0.27
+	pkgver = 0.0.28
 	pkgrel = 1
 	url = https://discord.com
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = discord_arch_electron
 	provides = discord
 	conflicts = discord
 	options = !strip
-	source = https://dl.discordapp.net/apps/linux/0.0.27/discord-0.0.27.tar.gz
+	source = https://dl.discordapp.net/apps/linux/0.0.28/discord-0.0.28.tar.gz
 	source = discord-launcher.sh
 	source = LICENSE.html::https://discord.com/terms
 	source = OSS-LICENSES.html::https://discord.com/licenses
-	sha512sums = 285a0119b4740402a3fa94d3679a52bc8d883413ee32187e90087960a4d34aaf316788d2708bbccafe3f995c2b99767b45bc4b7c731704ef887a8de1b3d3926f
-	sha512sums = 6ca6dfbfb65bf4fec34aac4676f66bb602b5c4c3318fcc96236056d632c0c9af3c4eb775b491c2e722ed5de6a4c253677d6ee1a7be69e13045702fa3df8cf52f
+	sha512sums = 763fe47a0fb21a13e852bcc818d4e0e2ea4faf23fcfdc02fddfe06e8c829499e028e27b45d807d3b3edcc36788990f3f21c0460b9b8efc538b62f3b41aeb744d
+	sha512sums = b246e5be3b0f25d489aa208f493cfd0adfab0ace0d7fe49444be9434f11c0ad75c3a14bea70f92f94874e2d86aafd25e60472887935ab10dfec41b43f861dffc
 	sha512sums = SKIP
 	sha512sums = SKIP
 
