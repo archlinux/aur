@@ -2,7 +2,7 @@
 pkgname=hyprshade
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Quickly swap between screen shaders in Hyprland"
+pkgdesc="Hyprland shade configuration tool"
 arch=('any')
 url="https://github.com/loqusion/hyprshade"
 license=('MIT')
