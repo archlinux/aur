@@ -3,10 +3,10 @@
 _pkgname="icc-eizo-l985ex"
 pkgname="${_pkgname}"
 pkgver=2002_09
-pkgrel=1
+pkgrel=2
 pkgdesc="ICC profile for Eizo FlexScan L985EX monitor"
 arch=('any')
-url="http://www.eizoglobal.com/support/db/files/catalogs/lcd/bro_FlexScanL985EX.pdf"
+url="https://www.eizoglobal.com/support/db/files/manuals/umeng/L985ex-en-c.pdf"
 license=('Custom')
 source=(
   "Eizo_FlexScan_L985EX.icc"
@@ -15,7 +15,7 @@ source=(
 )
 sha256sums=(
   'f93cf1f9fd88028dc043fc6fe3b058788f3f80cd5f05ba6e2b53adf4d05fcbaa'
-  'c42aed526bd9bf7882fb0671394d6dafb8dfc6a7861c9e449b4a9be249fc1a70'
+  'bb369709fa2a8828fdf7cc1278c1d1429e0412f27080f30aeacfa32893c26d40'
   '87b2c994c2320c23a75514b49c2e438a3fb9414c5077cd871bfe1e628e34f752'
 )
 
