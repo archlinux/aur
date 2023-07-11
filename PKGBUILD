@@ -23,6 +23,8 @@ sha256sums=('9254a9d60d1d2443646bac5c9db04640d9f58210b9616350a592f688371831df')
 
 build() {
 	cd "$pkgname-$pkgver"
+	# NOTE: temporary workaround for https://github.com/python-poetry/poetry/issues/5547
+	git init -q 2>&1 >/dev/null
 	python -m build --wheel --no-isolation
 }
 
