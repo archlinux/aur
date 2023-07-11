@@ -1,7 +1,7 @@
 pkgbase = bluetuith-bin
 	pkgdesc = A TUI based bluetooth manager
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/darkhz/bluetuith
 	arch = x86_64
 	arch = i686
