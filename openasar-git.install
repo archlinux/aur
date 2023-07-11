@@ -25,7 +25,10 @@ pre_upgrade() {
 
 post_upgrade() {
 	for variant in "${variants[@]}"; do
-		cp -f "/opt/${pkgname}/app.asar" "/opt/${variant}/resources/app.asar"
+		asar_dir="/opt/${variant}/resources"
+		if [ -d "${asar_dir}" ]; then
+			cp -f "/opt/${pkgname}/app.asar" "/opt/${variant}/resources/app.asar"
+		fi
 	done
 }
 
