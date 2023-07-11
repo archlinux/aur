@@ -1,0 +1,16 @@
+pkgbase = python-pexpect-git
+	pkgdesc = For controlling and automating applications
+	pkgver = r1600.2532721
+	pkgrel = 1
+	url = https://pexpect.readthedocs.org/en/stable/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python
+	depends = python
+	depends = python-ptyprocess
+	conflicts = python-pexpect
+	source = python-pexpect-git::git+https://github.com/pexpect/pexpect
+	sha512sums = SKIP
+
+pkgname = python-pexpect-git
