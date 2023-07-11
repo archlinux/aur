@@ -1,6 +1,6 @@
 pkgbase = robodoc
 	pkgdesc = ROBODoc is program documentation tool. It works with many programming languages: For instance C, Pascal, Shell Scripts, Assembler, COBOL, Occam, Postscript, Forth, Tcl/Tk, C++, Java -- basically any program in which you can use remarks/comments.
-	pkgver = 4.99.43
+	pkgver = 4.99.44
 	pkgrel = 1
 	url = https://rfsber.home.xs4all.nl/Robo/
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = robodoc
 	license = GPLv3
 	makedepends = gcc
 	makedepends = make
-	source = http://rfsber.home.xs4all.nl/Robo/archives/robodoc-4.99.43.tar.gz
-	md5sums = 063e4ba0fbfd6da7ece0acc5d9419e10
+	source = http://rfsber.home.xs4all.nl/Robo/archives/robodoc-4.99.44.tar.gz
+	md5sums = ad983c18379800859158b0fedc8378f3
 
 pkgname = robodoc
-
