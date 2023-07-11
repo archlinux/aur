@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppAlgos
-_pkgver=2.7.2
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
-pkgver=2.7.2
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='High Performance Tools for Combinatorics and Computational Mathematics'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c571e061efa67c7af0ad66f01aa0f8dffb441967df0c06e6da42679ef6e2dcf1')
+sha256sums=('7695bfdded86ca475790db3cddc2558be2f4ea91160e2d447e6b80fd31ef3cb9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
