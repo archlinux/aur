@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=The Honkers Railway Launcher
+Comment=An Launcher for a specific anime game with auto-patching, discord rpc and time tracking
+Icon=the-honkers-railway-launcher
+Exec=/usr/bin/the-honkers-railway-launcher
+Type=Application
+Categories=Game
+Terminal=false
