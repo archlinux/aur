@@ -1,6 +1,6 @@
 # Maintainer: Obscurely <adrian.obscurely@protonmail.com>
 pkgname=tsfh
-pkgver=0.57.0
+pkgver=0.58.0
 pkgrel=1
 pkgdesc="CHANGEME_DESC"
 arch=('x86_64')
@@ -31,9 +31,9 @@ package() {
   cd "$srcdir/tsfh-$pkgver-stable"
   install -Dm 755 "target/release/tsfh" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm0644 -t "$pkgdir/usr/share/applications/" "linux/desktop/tsfh.desktop"
+  install -Dm0644 -t "$pkgdir/usr/share/applications/" "resources/linux/desktop/tsfh.desktop"
   for size in 16x16 32x32 64x64 128x128 256x256 512x512; do
-		install -Dm0644 "linux/desktop/icons/hicolor/$size/apps/tsfh.png" \
+		install -Dm0644 "resources/linux/desktop/icons/hicolor/$size/apps/tsfh.png" \
 			"$pkgdir/usr/share/icons/hicolor/$size/apps/tsfh.png"
 	done
 }
