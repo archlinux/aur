@@ -34,4 +34,5 @@ package() {
 	cd ibdump
 	install -D -m 0755 ./ibdump "$pkgdir"/usr/bin/ibdump
 	install -D -m 0644 ./LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -D -m 0644 ./README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
 }
