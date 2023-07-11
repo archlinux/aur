@@ -1,6 +1,6 @@
 pkgbase = rye-bin
 	pkgdesc = An experimental alternative to poetry, pip, pipenv, venv, virtualenv, pdm, hatch, …
-	pkgver = 0.7.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/mitsuhiko/rye
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = rye-bin
 	depends = libxcrypt-compat
 	provides = rye
 	conflicts = rye
-	source = rye-0.7.0.tar.gz::https://github.com/mitsuhiko/rye/archive/refs/tags/0.7.0.tar.gz
-	sha256sums = 89699ea825a27aa76754c5992b095ae1ef4ba654487cba70a65f452390ecf5c5
-	source_x86_64 = rye-0.7.0-x86_64-linux.gz::https://github.com/mitsuhiko/rye/releases/download/0.7.0/rye-x86_64-linux.gz
-	sha256sums_x86_64 = 73ebedb995af7a15208ebf4d327c1b7f8ef8792bcf319b90f2ecf3775b14733c
+	source = rye-0.10.0.tar.gz::https://github.com/mitsuhiko/rye/archive/refs/tags/0.10.0.tar.gz
+	sha256sums = bcc7abbdacd4e7cf98f396fe5e199e3305be8e564ad50fe2592bd320fda70c8c
+	source_x86_64 = rye-0.10.0-x86_64-linux.gz::https://github.com/mitsuhiko/rye/releases/download/0.10.0/rye-x86_64-linux.gz
+	sha256sums_x86_64 = 8f6db96bbb4c8fead144094fae27ba6499443bf22b7d3362ffcfc8d4ae2d876e
 
 pkgname = rye-bin
