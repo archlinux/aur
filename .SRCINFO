@@ -1,0 +1,15 @@
+pkgbase = oranda
+	pkgdesc = generate beautiful landing pages for your projects
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/axodotdev/oranda
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = oranda-0.1.1.tar.gz::https://static.crates.io/crates/oranda/oranda-0.1.1.crate
+	sha512sums = efa485656a6325f6296a60b1514e00e2998ae630f30f4c069d0eaa3bcb241910dc60194b07fe252f835641be558ccb7a8db55886307fa271045d1e24644ea20a
+
+pkgname = oranda
