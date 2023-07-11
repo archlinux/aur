@@ -4,7 +4,7 @@
 
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-git
-pkgver=r255.615fbbf
+pkgver=r255.4588b07
 pkgrel=1
 pkgdesc="LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux. PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!"
 arch=("x86_64")
@@ -65,8 +65,8 @@ package() {
 
 #Custom files also use in gentoo (fix root gui application and desktop file)
   mkdir -p files && cd files
-  curl https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/lenovolegionlinux/files/legion_cli.policy -o legion_cli.policy
-  curl https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/lenovolegionlinux/files/legion_gui.desktop -o legion_gui.desktop
+  curl https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/LenovoLegionLinux/files/legion_cli.policy -o legion_cli.policy
+  curl https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/LenovoLegionLinux/files/legion_gui.desktop -o legion_gui.desktop
 
 #Install custom files
   install -Dm644 legion_cli.policy "${pkgdir}/usr/share/polkit-1/actions/"
