@@ -1,6 +1,6 @@
 # Maintainer: lisuke <1657787678@qq.com>
 pkgname=xx-net
-pkgver=5.3.0
+pkgver=5.3.2
 pkgrel=1
 
 pkgdesc="XX-Net, a web proxy tool."
