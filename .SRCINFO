@@ -14,6 +14,7 @@ pkgbase = rstudio-desktop-daily-bin
 	depends = openssl
 	depends = postgresql-libs
 	optdepends = pandoc: markdown support
+	optdepends = x11-ssh-askpass: password dialog for ssh
 	provides = rstudio-desktop-daily=2023.09.0.daily.203
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git

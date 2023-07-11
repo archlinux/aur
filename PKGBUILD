@@ -19,6 +19,7 @@ depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' '
 #makedepends=('patchelf')
 optdepends=(
     'pandoc: markdown support'
+    'x11-ssh-askpass: password dialog for ssh'
 )
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop-daily=${pkgver}")
