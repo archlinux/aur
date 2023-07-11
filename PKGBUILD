@@ -17,7 +17,7 @@ provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "ja
 replaces=('intellij-jdk' 'jdk-jetbrains')
 _zipname="jbrsdk-${_major}.${_minor}-linux-x64-b${_build}.tar.gz"
 source=("${_zipname}::https://cache-redirector.jetbrains.com/intellij-jbr/${_zipname}")
-b2sums=('8be2d6132593d8744e415bb59bb909a15495630fb0805893b0685b5274e714a84a78ed4e4476b68f7bae662015d05e106a4e6a788a49a36904d096f900a559b6')
+b2sums=('c59ad71e71558c4bee6473e98e3610a4029db8447700f9ab3e2082a21b6faebab63e0a0569f8a6f67c9208f726aaf67e30c16aeba760344808280ccdf38a31b1')
 
 package() {
   find . -exec chmod g+r,o+r {} +
