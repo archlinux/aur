@@ -7,12 +7,11 @@ Yubico Authenticator 6 is a complete rewrite of the application using the Flutte
 arch=('x86_64')
 url="https://developers.yubico.com/yubioath-flutter/"
 license=('GPL')
-depends=('ccid')
+depends=('ccid' 'zenity')
 options=(!strip)
 optdepends=('gnome-screenshot: QR scanning feature on GNOME'
             'spectacle: QR scanning feature on KDE')
-pkgrel=1
-
+pkgrel=2
 source=(
     "https://developers.yubico.com/yubioath-flutter/Releases/yubico-authenticator-${pkgver}-linux.tar.gz"{,.sig}
 )
