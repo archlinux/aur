@@ -1,0 +1,16 @@
+pkgbase = ibdump
+	pkgdesc = InfiniBand and RoCE RDMA packet capture tool for Mellanox
+	pkgver = 6.1.0.r35.ge656df3
+	pkgrel = 1
+	url = https://github.com/Mellanox/ibdump
+	arch = x86_64
+	license = GPL2
+	license = custom:BSD
+	makedepends = git
+	depends = libibverbs
+	source = git+https://github.com/Mellanox/ibdump#commit=e656df3a89c823fcfebc58961ecd4ce8fa6533d4
+	source = unbork.diff
+	sha256sums = SKIP
+	sha256sums = 1b951beecf20d488e97bdbcc80e414eb1898e2cd994ec579f3a56b52edd55d3c
+
+pkgname = ibdump
