@@ -40,7 +40,6 @@ package() {
 	
 	# Install binaries
 	install -v -m644 -D -t "${pkgdir}/usr/bin/" usr/bin/*
-	install -v -m644 -D -t "${pkgdir}/usr/bin/" usr/bin/*
 
 	# Install module tweaks
 	install -v -m644 -D -t "${pkgdir}/usr/lib/modprobe.d/" usr/lib/modprobe.d/*
