@@ -16,7 +16,7 @@ pkgbase = jdk-jetbrains
 	provides = java-environment-openjdk=17
 	replaces = intellij-jdk
 	replaces = jdk-jetbrains
-	source = jbrsdk-17_0_7-linux-x64-b1000.6.tar.gz::https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-17_0_7-linux-x64-b1000.6.tar.gz
+	source = jbrsdk-17.0.7-linux-x64-b1000.6.tar.gz::https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-17.0.7-linux-x64-b1000.6.tar.gz
 	b2sums = 8be2d6132593d8744e415bb59bb909a15495630fb0805893b0685b5274e714a84a78ed4e4476b68f7bae662015d05e106a4e6a788a49a36904d096f900a559b6
 
 pkgname = jdk-jetbrains

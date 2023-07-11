@@ -15,7 +15,7 @@ depends=( 'java-runtime-common'          'ca-certificates-java'              'ja
 provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "java-environment=$_major"
           "java-runtime-openjdk=$_major" "java-runtime-headless-jre=$_major" "java-environment-openjdk=$_major")
 replaces=('intellij-jdk' 'jdk-jetbrains')
-_zipname="jbrsdk-${_major}_${_minor//./_}-linux-x64-b${_build}.tar.gz"
+_zipname="jbrsdk-${_major}.${_minor}-linux-x64-b${_build}.tar.gz"
 source=("${_zipname}::https://cache-redirector.jetbrains.com/intellij-jbr/${_zipname}")
 b2sums=('8be2d6132593d8744e415bb59bb909a15495630fb0805893b0685b5274e714a84a78ed4e4476b68f7bae662015d05e106a4e6a788a49a36904d096f900a559b6')
 
