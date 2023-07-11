@@ -1,7 +1,7 @@
 # Maintainer: kyngs <aurmail at kyngs dot xyz>
 pkgname=miru-git
 pkgrel=1
-pkgver=4.1.2.r1.g851281b
+pkgver=4.1.12.r3.gf651e38
 pkgdesc="Bittorrent streaming software for cats"
 arch=("any")
 url="https://github.com/ThaUnknown/miru"
