@@ -1,11 +1,11 @@
 pkgbase = man-pages-postgresql-ja
 	pkgdesc = Japanese man pages for PostgreSQL
-	pkgver = 13.1
+	pkgver = 15.0
 	pkgrel = 1
 	url = https://pgsql-jp.github.io/
 	arch = any
 	license = custom
-	source = https://pgsql-jp.github.io/jpug-doc/13.1/man.tar.gz
+	source = https://pgsql-jp.github.io/jpug-doc/15.0/man.tar.gz
 	md5sums = 750262cc83a6af19aeb9b344b7bc1ce5
 
 pkgname = man-pages-postgresql-ja

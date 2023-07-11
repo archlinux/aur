@@ -1,6 +1,6 @@
 # Maintainer: kusanaginoturugi <kusanaginoturugi at gmail dot com>
 pkgname=man-pages-postgresql-ja
-pkgver=13.1
+pkgver=15.0
 pkgrel=1
 pkgdesc="Japanese man pages for PostgreSQL"
 arch=("any")
