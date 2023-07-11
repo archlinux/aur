@@ -1,6 +1,6 @@
 pkgbase = python-nicos-quickyaml
 	pkgdesc = This is a fast dumper for a subset of YAML that NICOS uses for writing data files.
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://nicos-controls.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-nicos-quickyaml
 	depends = python-gevent
 	provides = python-nicos-quickyaml
 	conflicts = python-nicos-quickyaml-git
-	source = https://github.com/mlz-ictrl/nicos-quickyaml/archive/refs/tags/v1.2.0.tar.gz
-	sha256sums = 5a470db1bdcdf8acf909fd9e35889f5634071357d60f06fd4c9b450dfcb3784f
+	source = https://github.com/mlz-ictrl/nicos-quickyaml/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = f1b0d1af666dae1dfe1dd7dcc6306b68558e28b5f58c90b3315cb949638ab1f7
 
 pkgname = python-nicos-quickyaml

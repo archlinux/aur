@@ -3,7 +3,7 @@
 
 pkgname=python-nicos-quickyaml
 _pkgname=nicos-quickyaml
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="This is a fast dumper for a subset of YAML that NICOS uses for writing data files."
 groups=('nicos')
@@ -14,7 +14,7 @@ depends=('python' 'python-numpy' 'python-gevent')
 conflicts=('python-nicos-quickyaml-git')
 provides=('python-nicos-quickyaml')
 source=("https://github.com/mlz-ictrl/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5a470db1bdcdf8acf909fd9e35889f5634071357d60f06fd4c9b450dfcb3784f')
+sha256sums=('f1b0d1af666dae1dfe1dd7dcc6306b68558e28b5f58c90b3315cb949638ab1f7')
 
 
 prepare(){
@@ -29,7 +29,7 @@ build() {
 
 check() {
   cd "$_pkgname-$pkgver"
-  python setup.py check -mr
+  python setup.py check
 }
 
 package() {
