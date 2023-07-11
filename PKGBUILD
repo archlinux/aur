@@ -2,7 +2,7 @@
 
 pkgname=actionlint
 pkgver=1.6.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Static checker for GitHub Actions workflow files"
 arch=('any')
 url="https://github.com/rhysd/actionlint"
@@ -24,7 +24,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build ./cmd/${pkgname}
+  go build -ldflags "-X github.com/rhysd/actionlint.version=$pkgver" -o build ./cmd/${pkgname}
 }
 
 check() {
