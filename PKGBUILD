@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=static-web-server-git
-pkgver=2.18.0.r10.g3adf75e
+pkgver=2.20.0.r2.g0d87622
 pkgrel=1
 pkgdesc="A cross-platform, high-performance and asynchronous web server for static files-serving"
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=("static-web-server=$pkgver")
 conflicts=('static-web-server')
+backup=('etc/default/static-web-server')
 source=("git+https://github.com/static-web-server/static-web-server.git")
 sha256sums=('SKIP')
 
@@ -48,6 +49,9 @@ package() {
     --no-track \
     --root "$pkgdir/usr" \
     --path .
+
+  install -Dm644 "systemd/etc_default_static-web-server" "$pkgdir/etc/default/static-web-server"
+  install -Dm644 systemd/static-web-server.{service,socket} -t "$pkgdir/usr/lib/systemd/system"
 
   install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/static-web-server"
 }
