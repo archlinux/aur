@@ -1,6 +1,6 @@
 pkgbase = lenovolegionlinux-dkms-git
 	pkgdesc = LenovoLegionLinux (LLL) DKMS module
-	pkgver = r255.4588b07
+	pkgver = r255.f029ef9
 	pkgrel = 1
 	url = https://github.com/johnfanv2/LenovoLegionLinux
 	install = lenovolegionlinux.install
