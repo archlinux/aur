@@ -6,7 +6,7 @@ pkgname=jdk$_java-$_pkgname-extended-bin
 pkgver=11.0.19.15
 _pkgver=11.0.19
 __pkgver=11.0.19.15.7
-pkgrel=1
+pkgrel=2
 pkgdesc="an in-house OpenJDK implementation at Alibaba (Extended Edition)"
 arch=("x86_64" "aarch64")
 url="https://dragonwell-jdk.io/"
@@ -20,7 +20,7 @@ provides=(
     "java-runtime-headless=${_java}"
     "java-runtime-headless-openjdk=${_java}"
 )
-source=("LICENSE::https://github.com/dragonwell-project/dragonwell11/blob/master/LICENSE")
+source=("LICENSE::https://github.com/dragonwell-project/dragonwell11/raw/master/LICENSE")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/dragonwell-project/dragonwell11/releases/download/dragonwell-extended-${pkgver}_jdk-${_pkgver}-ga/Alibaba_Dragonwell_Extended_${__pkgver}_x64_linux.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/dragonwell-project/dragonwell11/releases/download/dragonwell-extended-${pkgver}_jdk-${_pkgver}-ga/Alibaba_Dragonwell_Extended_${__pkgver}_aarch64_linux.tar.gz")
 sha256sums=('4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726')
