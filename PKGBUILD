@@ -1,14 +1,14 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-mysql'
-pkgver=0.7.18.1
+pkgver=0.7.18.2
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (MySQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
-depends=('ruby2.6' 'ruby2.6-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'libmariadbclient')
+depends=('ruby2.7' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'libmariadbclient')
 optdepends=('jemalloc: lower memory consumption' 'mariadb: Database server')
-makedepends=('nodejs' )
+makedepends=('nodejs' 'yarn' )
 conflicts=('diaspora-postgresql' 'diaspora-mysql-git' 'diaspora-postgresql-git')
 options=(!strip)
 backup=("etc/webapps/diaspora/diaspora.yml"
@@ -46,10 +46,10 @@ _reset_ruby() {
 }
 
 build() {
-  _bundle=bundle-2.6
-  _ruby=ruby-2.6
-  _rake=rake-2.6
-  _gem=gem-2.6
+  _bundle=bundle-2.7
+  _ruby=ruby-2.7
+  _rake=rake-2.7
+  _gem=gem-2.7
   _builddir=$srcdir/build
 
   _reset_ruby
@@ -57,14 +57,15 @@ build() {
   msg "Setup build directory"
   rm -rf $_builddir
   mkdir -p $_builddir
-  cp -Rf $srcdir/diaspora-0.7.18.1/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
+  cp -Rf $srcdir/diaspora-0.7.18.2/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
+  
 
   cd $_builddir
 
   msg "Bundle dependencies"
   echo "gem: --no-rdoc --no-ri --no-user-install" > $_builddir/.gemrc
   export GEM_HOME="$_builddir/vendor/bundle"
-  HOME=$_builddir $_gem install bundler -v 1.17.3
+  HOME=$_builddir $_gem install bundler -v 2.1.4
   HOME=$_builddir $_bundle config --local path vendor/bundle
   HOME=$_builddir $_bundle config --local frozen 1
   HOME=$_builddir $_bundle config --local disable_shared_gems true
@@ -94,8 +95,8 @@ build() {
 }
 
 package() {
-  _bundle=bundle-2.6
-  _ruby=ruby-2.6
+  _bundle=bundle-2.7
+  _ruby=ruby-2.7
   _builddir=$srcdir/build
 
   msg "Copy contents to package directory"
@@ -137,7 +138,7 @@ package() {
   ln -sf /var/log/diaspora                     $pkgdir/usr/share/webapps/diaspora/log
 }
 
-sha256sums=('9dba7fc8ec261bc00c4f5d45af38e3c7aa9e44204dce3b2b79feeed3a120d148'
+sha256sums=('0b5828aa45af2361bfda4cd0f1e97070c322d90f1d16416bae2cba2418af9930'
             'aae126c4b1bcba6265d3d925dc3845bb034defa5606385c22dfb053111b57685'
             '2ac3ef6c4f0396b7738b18d07c56f57e0db5e5e194bf8b07ffd6ad790dd92e17'
             '7128024976c95d511d8995c472907fe0b8c36fe5b45fef57fc053e3fadcae408'
