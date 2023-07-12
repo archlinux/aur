@@ -1,15 +1,42 @@
+## 8.1 - 2023-07-12
+    * Include OpenBSD 7.3 errata 002:
+      Avoid fatal errors in bgpd(8) due to incorrect refcounting and
+      mishandling of ASPA objects. Fix bgpctl(8) 'show rib in' by renaming
+      'invalid' into 'disqualified'.
+
+    * Include OpenBSD 7.3 errata 006:
+      Incorrect length handling of path attributes in bgpd(8) can lead to a
+      session reset.
+
+    * Include OpenBSD 7.3 errata 009:
+      When tracking nexthops over IPv6 multipath routes, or when receiving
+      a NOTIFICATION while reaching an internal limit, bgpd(8) could crash.
+
+      When checking the next hop for IPv6 multipath routes, or when receiving
+      a NOTIFICATION while reaching an internal limit, bgpd(8) could crash.
+
+    * Add configure options to adjust WWW_USER and wwwrunstatedir.
+
+    * Fix 'ext-community * *' matching which also affects filters removing
+      all ext-commuinites.
+
+    * Limit the socket buffer size to 64k for all sessions.
+      Limiting the buffer size to a reasonable size ensures that not too many
+      updates end up queued in the TCP stack.
+
+
 ## 8.0 - 2023-05-04
-* Include OpenBSD 7.3 errata 001 (link: https://www.openbsd.org/errata73.html#p001_bgpd):
+    * Include OpenBSD 7.3 errata 001 (link: https://www.openbsd.org/errata73.html#p001_bgpd):
       A new ASPA object appeared in the RPKI ecosystem and exposed bugs in
       bgpd(8) and rpki-client(8).
 
-* Introduce a semaphore to protect intermittent RTR session data 
+    * Introduce a semaphore to protect intermittent RTR session data 
       from being published to the RDE.
 
-* Add first version of flowspec support. Right now only announcement
+    * Add first version of flowspec support. Right now only announcement
       of flowspec rules is possible.
 
-* Improve and extend the bgpctl parser to handle commands like
+    * Improve and extend the bgpctl parser to handle commands like
       `bgpctl show rib 192.0.2.0/24 detail`. Also add various flowspec
       specific commands.
 
