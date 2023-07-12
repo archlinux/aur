@@ -2,7 +2,7 @@
 pkgname=jamesdsp
 _app_id=me.timschneeberger.jdsp4linux
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An audio effect processor for PipeWire clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -54,11 +54,8 @@ build() {
 
 package() {
   cd "$srcdir/JDSP4Linux"
-
-  pushd build
-  make INSTALL_ROOT="$pkgdir" install
-  popd
-
+  install -Dm755 build/src/jamesdsp -t "$pkgdir/usr/bin/"
+  install -Dm644 build/libjamesdsp/liblibjamesdsp.a -t "$pkgdir/usr/lib/"
   install -Dm644 resources/icons/icon.png \
     "$pkgdir/usr/share/pixmaps/${_app_id}.png"
   install -Dm644 resources/icons/icon.svg \
