@@ -1,0 +1,12 @@
+diff --git a/globals/base64.h b/globals/base64.h
+index c6c3227..0bcede6 100644
+--- a/globals/base64.h
++++ b/globals/base64.h
+@@ -3,6 +3,7 @@
+ 
+ #include "vector.h"
+ #include <string>
++#include <cstdint>
+ 
+ std::string base64_encode(const Vector<uint8_t> &p_buffer);
+ Vector<uint8_t> base64_decode(std::string const &);
