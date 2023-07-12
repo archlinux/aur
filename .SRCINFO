@@ -1,12 +1,14 @@
 pkgbase = minitimer-git
 	pkgdesc = A timer in your terminal
-	pkgver = r209.d91979e
+	pkgver = r216.88a4034
 	pkgrel = 1
 	url = https://git.sr.ht/~ariadnavigo/minitimer
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = git
+	makedepends = scdoc
+	provides = minitimer
 	conflicts = minitimer
 	source = git+https://git.sr.ht/~ariadnavigo/minitimer
 	sha256sums = SKIP
