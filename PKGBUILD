@@ -3,8 +3,8 @@
 
 pkgname=kddockwidgets
 pkgver=1.7.0
-pkgrel=1
-arch=('any')
+pkgrel=2
+arch=('x86_64')
 pkgdesc="KDAB's Dock Widget Framework for Qt"
 license=("GPL2" "custom:KDAB commercial license")
 depends=('qt5-base' 'qt5-x11extras')
