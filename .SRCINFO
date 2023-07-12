@@ -1,0 +1,20 @@
+pkgbase = ruffle-arm
+	pkgdesc = Ruffle Flash Emulator for Arm64
+	pkgver = 2023.07.11
+	pkgrel = 1
+	url = https://ruffle.rs/
+	arch = aarch64
+	license = Apache
+	license = MIT
+	depends = gtk3
+	depends = libxcb
+	depends = zlib
+	depends = libxcb
+	depends = alsa-lib
+	provides = ruffle
+	conflicts = ruffle-git
+	conflicts = rufle-bin
+	source = https://gitlab.com/ruffle-arm/binaries/ruffle-2023.07.11-arm64/-/raw/main/ruffle-2023.07.11-arm64.tar.xz
+	sha256sums = SKIP
+
+pkgname = ruffle-arm
