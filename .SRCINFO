@@ -1,6 +1,6 @@
 pkgbase = zytrax-git
 	pkgdesc = Easy to use, tracker-inspired music sequencer.
-	pkgver = 1.0.alpha.r9.g16838b3
+	pkgver = 1.0.alpha.r13.gd60cc42
 	pkgrel = 1
 	url = http://zytrax.org/
 	arch = i686
@@ -14,7 +14,9 @@ pkgbase = zytrax-git
 	optdepends = vst-plugins: Package group for vst plugins
 	source = zytrax-git::git+https://github.com/reduz/zytrax.git
 	source = zytrax.desktop
+	source = base64.patch
 	sha256sums = SKIP
 	sha256sums = 5058a5b3c2070e7d59db8cb8f14fd45538718a80e79fc8f4de4d62c1252521e8
+	sha256sums = c785b9ddec09ca785a2410f2c7aa6aba8122ae387c3613de99848598425de2d5
 
 pkgname = zytrax-git
