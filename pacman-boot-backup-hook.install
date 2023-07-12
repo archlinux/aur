@@ -1,0 +1,20 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+msg() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+warning() {
+    printf "${blue}==>${yellow} WARNING$2:${bold} $1${all_off}\n"
+}
+
+post_upgrade() {
+  if [[ $2 == 1.3-* ]]; then
+    warning "Variable \$BACKUP_PATH_SRC in pacman-boot-backup.conf is no longer effective!"
+    msg "In case /etc/pacman-boot-backup.conf wasn't modified, no actions are required!"
+    msg "From now on, only files within /boot will be backed up!"
+  fi
+}

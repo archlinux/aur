@@ -1,0 +1,13 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = boot/*
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/initcpio/*
+
+[Action]
+Description = Backup boot partition...
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/backup-boot-partition pre
+AbortOnFail
