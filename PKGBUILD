@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="znote-appimage"
-pkgver=2.3.5
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="A Beautiful markdown editor inspired by Jupyter."
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -16,9 +16,9 @@ source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${_githuburl}/re
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/${pkgname%-appimage}-${pkgver}.AppImage")
 source=("LICENSE.html::${url}/cgu.html")
 sha256sums=('7085547bfd2eab7db1d63350989f5b74b1d0104f9713e76e51420fb45f4d967c')
-sha256sums_aarch64=('76b173f88124f843f7db92e2be872b528910212ae59bf98c7731a63dccdc4714')
-sha256sums_armv7h=('76b173f88124f843f7db92e2be872b528910212ae59bf98c7731a63dccdc4714')
-sha256sums_x86_64=('5bbefe4bd8421bc352c066bddf28a7a96be6583298058f8e74b3fb7f7571aeec')
+sha256sums_aarch64=('5463599b5cf66230ccc48972b3d03caaf7c47ccb2060870c51831cd3f48eda4c')
+sha256sums_armv7h=('5463599b5cf66230ccc48972b3d03caaf7c47ccb2060870c51831cd3f48eda4c')
+sha256sums_x86_64=('3aad39065550a86aaae5b0a5d5aa5b5fba99ab6024d732199da459d515fa18d8')
      
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
