@@ -8,6 +8,6 @@ pkgbase = clean
 	depends = bash
 	depends = bc
 	source = clean-2.1.tar.gz::https://github.com/ArchItalia/clean/archive/refs/tags/v2.1.tar.gz
-	sha256sums = 88029e4d88c313efed973d50c0633c3514d55be5fa5907c7e3fa657f21394fdd
+	sha256sums = 6b9acfd491d9cb8b923bd7d0e4b57854ebc2cca78753d546dcde57c3b7a34cfc
 
 pkgname = clean
