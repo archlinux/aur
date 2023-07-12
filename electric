@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#
+# Java execution shim for electric
+#
+# Based off the AUR java packaging guidelines: https://wiki.archlinux.org/title/Java_package_guidelines
+#
+# Due to current architecture of java3d AUR package, the 3d display might only work on
+# the java runtime it was installed with >.<
+
+CP=""
+for jar_bundle in /usr/share/java/electric/*.jar ; do 
+    CP=$CP:$jar_bundle
+done
+
+java -cp $CP com.sun.electric.Launcher "$@"

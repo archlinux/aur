@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+
+Name=Electric
+GenericName=Integrated Circuit Designer
+Comment=Integrated circuit physical layout design and simulation tool
+
+Icon=electric
+Categories=Development;Electronics;Engineering;Java;
+
+Exec=electric
+
+
