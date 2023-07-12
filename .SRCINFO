@@ -1,10 +1,26 @@
 pkgbase = r-recipes
 	pkgdesc = Preprocessing and Feature Engineering Steps for Modeling
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=recipes
 	arch = any
 	license = MIT
+	checkdepends = r-ddalpha
+	checkdepends = r-dials
+	checkdepends = r-dimred
+	checkdepends = r-fastica
+	checkdepends = r-igraph
+	checkdepends = r-kernlab
+	checkdepends = r-mixomics
+	checkdepends = r-modeldata
+	checkdepends = r-rann
+	checkdepends = r-rcppml
+	checkdepends = r-rcpproll
+	checkdepends = r-rsample
+	checkdepends = r-rspectra
+	checkdepends = r-splines2
+	checkdepends = r-testthat
+	checkdepends = r-workflows
 	depends = r-cli
 	depends = r-clock
 	depends = r-dplyr
@@ -44,8 +60,7 @@ pkgbase = r-recipes
 	optdepends = r-workflows
 	optdepends = r-xml2
 	source = https://cran.r-project.org/src/contrib/recipes_1.0.6.tar.gz
-	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	md5sums = a9f454969179f55bab17ce75f1c7c250
 	sha256sums = 105e97127cdd6aaeb9fb3348e51a9c46e21fb8bcb734cb3bbd6dbdf2b6b2fc8f
-	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-recipes
