@@ -14,7 +14,6 @@ optdepends=(
 	'wireguard-tools: CLI tools for generating keys'
 	'postgresql: alternative database provider'
 )
-conflicts=("${pkgname}-git")
 backup=("etc/${pkgname}/config.yaml" "etc/${pkgname}/derp.yaml")
 
 source=(
