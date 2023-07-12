@@ -48,7 +48,7 @@ sha256sums=('SKIP'
 
 prepare() {
     # Check locale
-    locale | grep LANG | grep UTF-8
+    locale | grep LANG | grep -i UTF-8
     if [[ $? -ne 0 ]]; then
         printf "Locale must support UTF-8. See https://wiki.archlinux.org/index.php/locale
         or https://wiki.archlinux.org/index.php/locale ."
