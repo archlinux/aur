@@ -1,8 +1,10 @@
+# Maintainer: getzze <getzze [at] @gmail [dot] com>
 # Maintainer: Maziar Saleh Ziabari
 # Contributor: Phil A. <flying-sheep@web.de>
+
 pkgname=jupyter_highlight_selected_word
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Jupyter notebook extension that enables highlighting every instance of the current word in the notebook'
 arch=(any)
 url="https://github.com/jcb91/$pkgname"
@@ -15,10 +17,8 @@ sha256sums=('9545dfa9cb057eebe3a5795604dcd3a5294ea18637e553f61a0b67c1b5903c58')
 noextract=("$_wheel")
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
+	local site="${pkgdir}/usr/lib/$(readlink /bin/python3)/site-packages"
 	mkdir -p "$site"
-	local curpath="$(pwd)"
-	cd "$site"
-	bsdtar xvf "$curpath/$_wheel"
-	cd "$curpath"
+	cd "${site}"
+	bsdtar xvf "${srcdir}/$_wheel"
 }

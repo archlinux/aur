@@ -1,7 +1,7 @@
 pkgbase = jupyter_highlight_selected_word
 	pkgdesc = Jupyter notebook extension that enables highlighting every instance of the current word in the notebook
 	pkgver = 0.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jcb91/jupyter_highlight_selected_word
 	arch = any
 	license = BSD
