@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="calendar-bin"
 _appname="Calendar"
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Task, calendar, Vision protection."
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=('qt6-scxml' 'openssl' 'bash' 'qt6-base' 'glibc' 'gcc-libs' 'qt6-webengi
 conflicts=("${pkgname%-bin}" )
 options=(!strip)
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_ubuntu_amd64.deb")
-sha256sums=('e7005b99f1884a5833fb652cc8898c6090d7c8613f23570334b145607ba5dde4')
+sha256sums=('2cdea9e833c0b4f0085ea3dd3bb1f215a89e6586a9b6c5b30273bb8713b0f147')
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}" --gname root --uname root
     cp -r "${pkgdir}/opt/${_appname}/share/"* "${pkgdir}/usr/share/"
