@@ -1,14 +1,14 @@
 pkgbase = ruby-google-apis-monitoring_v3
 	pkgdesc = simple REST client for Cloud Monitoring API V3
-	pkgver = 0.46.0
+	pkgver = 0.47.0
 	pkgrel = 1
 	url = https://rubygems.org/gems/google-apis-monitoring_v3
 	arch = any
 	license = Apache-2.0
 	depends = ruby-google-apis-core
-	noextract = google-apis-monitoring_v3-0.46.0.gem
+	noextract = google-apis-monitoring_v3-0.47.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/google-apis-monitoring_v3-0.46.0.gem
-	sha256sums = 0a0f6953688acebfafafd4108c5b80d97d5a4c5adf385a33b73438957b563bae
+	source = https://rubygems.org/downloads/google-apis-monitoring_v3-0.47.0.gem
+	sha256sums = 5d91c374ea8d0ea7d99505710b51952e62d8746825a37e1f3ed80157db3166f2
 
 pkgname = ruby-google-apis-monitoring_v3
