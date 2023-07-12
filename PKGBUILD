@@ -1,13 +1,14 @@
 # $Id$
-# Maintainer: physkets <physkets // at // tutanota dot com>
+# Maintainer: notvidya <transient.sepia // at // gmail dot com>
+# Contributor: physkets <physkets // at // tutanota dot com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: Filippo 'JoeyrS' Civiletti <joeyrs@gmail.com>
 
 _pkgname=armagetronad
 pkgname=${_pkgname}-git
-pkgver='r4128.7392b902f'
-pkgrel=6
+pkgver=r5415.f775378e
+pkgrel=1
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
 url='http://armagetronad.net/'
@@ -17,8 +18,10 @@ optdepends=('python: language updater' 'glew: Graphics on X11' 'glew-wayland: Gr
 makedepends=('boost')
 provides=('armagetronad')
 conflicts=('armagetronad')
-source=("git+https://gitlab.com/armagetronad/armagetronad.git")
-sha1sums=('SKIP')
+source=("git+https://gitlab.com/armagetronad/armagetronad.git"
+        "${pkgname}.patch.2023")
+sha1sums=('SKIP'
+          '93ec913320e7b48889088634883d72a02e7b4a20')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -41,6 +44,11 @@ build() {
        --disable-games \
        --enable-automakedefaults \
        --disable-uninstall
+
+    cd "${srcdir}"
+    patch -Np1 -i "armagetronad-git.patch.2023"
+
+    cd "${srcdir}/${_pkgname}"
     make
 }
 
