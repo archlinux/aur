@@ -2,14 +2,14 @@
 
 _pkgname=sline
 pkgname="${_pkgname}-git"
-pkgver=r149.1fa5766
+pkgver=r157.afa1ce8
 pkgrel=1
 pkgdesc='Simple line-editing and command history library.'
 arch=('any')
 url="https://git.sr.ht/~ariadnavigo/${_pkgname}"
 license=('MIT')
 depends=('glibc')
-makedepends=('git')
+makedepends=('git' 'scdoc')
 source=("git+${url}")
 sha256sums=('SKIP')
 conflicts=(${_pkgname})
