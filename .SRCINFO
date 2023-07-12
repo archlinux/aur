@@ -1,0 +1,14 @@
+pkgbase = bandcamp-api
+	pkgdesc = A simple way to get info from Bandcamp
+	pkgver = r53.19c8283
+	pkgrel = 1
+	url = https://github.com/RustyRin/bandcamp-api/
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	source = bandcamp-api::git+https://github.com/RustyRin/bandcamp-api/
+	sha512sums = SKIP
+
+pkgname = bandcamp-api
