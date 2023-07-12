@@ -1,8 +1,8 @@
 # Maintainer: Rizzzi Git <rizzzigit@gmail.com>
 
-tmlver="2022.09.47.57"
+tmlver="2022.09.47.75"
 terrariaver="1.4.3.6"
-pkgrel=3
+pkgrel=1
 epoch=0
 
 pkgname="tmodloader-bin"
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-  "640b47d9d6b23f0cb37bc258920e7443d4131137fc49bf4ca0699b6854705358"
+  "49585f41761170529a1e909d43b260f234fcd5481010f79d468b6009922cdd65"
 )
 
 noextract=("tml-$tmlver.zip")
