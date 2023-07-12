@@ -1,7 +1,3 @@
-*.gz
-*.zst
-hyprshade
-pkg
-src
-*.log
-*.log.*
+*
+!PKGBUILD
+!.SRCINFO
