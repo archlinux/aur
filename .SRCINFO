@@ -1,6 +1,6 @@
 pkgbase = hyprshade
 	pkgdesc = Hyprland shade configuration tool
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/loqusion/hyprshade
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = hyprshade
 	depends = python-typer
 	depends = util-linux
 	provides = hyprshade
-	source = https://files.pythonhosted.org/packages/source/h/hyprshade/hyprshade-0.1.2.tar.gz
-	sha256sums = 598e51bf2ee0e97610a63134aaf616a849a1b7c9194207925a86019e316f882f
+	source = https://files.pythonhosted.org/packages/source/h/hyprshade/hyprshade-0.2.0.tar.gz
+	sha256sums = a1fd41466df8425e9750e8533bb9b83b240167e17a6af2c69d9e76059cb4a814
 
 pkgname = hyprshade
