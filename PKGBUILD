@@ -19,6 +19,7 @@ depends=(
 	'python'
 	'python-bandcamp-api'
 	'python-beautifulsoup4'
+	'python-demjson3'
 	'python-fastapi'
 	'python-mutagen'
 	'python-platformdirs'
