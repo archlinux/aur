@@ -13,6 +13,7 @@ pkgbase = dar
 	depends = bzip2
 	depends = xz
 	depends = attr
+	depends = argon2
 	optdepends = perl: for running some samples
 	optdepends = librsync: for delta binary
 	options = !libtool

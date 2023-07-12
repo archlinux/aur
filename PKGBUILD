@@ -11,7 +11,7 @@ pkgdesc='A full featured command-line backup tool, short for Disk ARchive'
 arch=('i686' 'x86_64')
 url='http://dar.linux.free.fr/'
 license=('GPL')
-depends=('libgcrypt' 'zlib' 'lzo' 'bzip2' 'xz' 'attr')
+depends=('libgcrypt' 'zlib' 'lzo' 'bzip2' 'xz' 'attr' 'argon2')
 optdepends=('perl: for running some samples'
             'librsync: for delta binary')
 makedepends=('doxygen')
