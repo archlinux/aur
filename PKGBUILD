@@ -4,7 +4,7 @@
 # Maintainer: slbtty <shenlebantongying@gmail.com>
 
 pkgname=goldendict-ng-git
-pkgver=23.06.02.r356.fc7a67d7
+pkgver=23.06.02.r4829.fc7a67d7
 pkgrel=1
 pkgdesc="The Next Generation GoldenDict."
 arch=('i686' 'x86_64' 'aarch64')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	printf "%s.r%s.%s" "$(git describe | cut -c 2-9)" "$(git tag | wc -l)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(git describe | cut -c 2-9)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {

@@ -1,6 +1,6 @@
 pkgbase = goldendict-ng-git
 	pkgdesc = The Next Generation GoldenDict.
-	pkgver = 23.06.02.r356.fc7a67d7
+	pkgver = 23.06.02.r4829.fc7a67d7
 	pkgrel = 1
 	url = https://github.com/xiaoyifang/goldendict-ng
 	arch = i686
