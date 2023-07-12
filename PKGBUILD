@@ -37,7 +37,7 @@ makedepends=(
   'chrono-date'
   'boost'
   'eigen'
-  'flatbuffers'
+#   'flatbuffers'
   'onednn'
   're2'
   'python-coloredlogs'
@@ -56,13 +56,13 @@ source=(
   "git+https://github.com/microsoft/onnxruntime#tag=v${pkgver}"
   'install-orttraining-files.diff'
   'system-dnnl.diff'
-  'system-flatbuffers.patch'
+#   'system-flatbuffers.patch'
 )
 sha512sums=(
   'SKIP'
   'SKIP'
   'SKIP'
-  'SKIP'
+#   'SKIP'
 )
 options=('debug')
 

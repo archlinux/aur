@@ -14,7 +14,6 @@ pkgbase = python-onnxruntime
 	makedepends = chrono-date
 	makedepends = boost
 	makedepends = eigen
-	makedepends = flatbuffers
 	makedepends = onednn
 	makedepends = re2
 	makedepends = python-coloredlogs
@@ -36,8 +35,6 @@ pkgbase = python-onnxruntime
 	source = git+https://github.com/microsoft/onnxruntime#tag=v1.15.1
 	source = install-orttraining-files.diff
 	source = system-dnnl.diff
-	source = system-flatbuffers.patch
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
