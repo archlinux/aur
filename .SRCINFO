@@ -10,6 +10,9 @@ pkgbase = libclc10-minimal
 	makedepends = ninja
 	makedepends = python
 	makedepends = git
+	makedepends = gcc12
+	makedepends = gcc12-fortran
+	makedepends = gcc12-libs
 	source = https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-10.0.0.tar.gz
 	sha256sums = b81c96d2f8f40dc61b14a167513d87c0d813aae0251e06e11ae8a4384ca15451
 

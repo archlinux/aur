@@ -14,7 +14,7 @@ pkgver=10.0.0
 pkgrel=1
 arch=(x86_64)
 license=(MIT)
-makedepends=(llvm10-minimal cmake ninja python git)
+makedepends=(llvm10-minimal cmake ninja python git gcc12 gcc12-fortran gcc12-libs)
 source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz)
 
 # Both ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.
@@ -27,6 +27,11 @@ source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}
 # NOTE: It's your responbility to validate the value of NINJAFLAGS and LITFLAGS. If unsure, don't set it.
 
 build(){
+export CC=/usr/bin/gcc-12
+export CXX=/usr/bin/g++-12
+export CFLAGS+=" ${CPPFLAGS}"
+export CXXFLAGS+=" ${CPPFLAGS}"
+
   cd ${srcdir}/llvm-project-llvmorg-${pkgver}/libclc
 
   rm -rf build
@@ -47,3 +52,5 @@ package(){
 }
 
 sha256sums=('b81c96d2f8f40dc61b14a167513d87c0d813aae0251e06e11ae8a4384ca15451')
+
+# vim:set ts=8 sts=2 sw=2 et:
