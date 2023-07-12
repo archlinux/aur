@@ -1,0 +1,51 @@
+pkgbase = linux-flowx13
+	pkgdesc = Linux (with patches for the Asus Flow X13)
+	pkgver = 6.4.3.arch1
+	pkgrel = 1
+	url = https://github.com/archlinux/linux/commits/v6.4.3-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = git
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = python-sphinx
+	makedepends = texlive-latexextra
+	options = !strip
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.4.3-arch1
+	source = config
+	source = 0001-HID-amd_sfh-Add-support-for-tablet-mode-switch-senso.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
+	b2sums = SKIP
+	b2sums = 8fb3affeeba8444b73152e7aa35df236d0355aec8da50c128c932e236af7106068efc3fb1c319a614432498bc97e8221d86f1b1760d7eaa3b6af98998720481d
+	b2sums = 5b4cff2ab2ce1d2464eb4b0b1398e2ad1af85c1322b9187e19894a7dff19e094ad0b7190122be5fdadde283d9433591bf6b55a045354d0abe5351bd4cd410dc4
+
+pkgname = linux-flowx13
+	pkgdesc = The Linux (with patches for the Asus Flow X13) kernel and modules
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = KSMBD-MODULE
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
+
+pkgname = linux-flowx13-headers
+	pkgdesc = Headers and scripts for building modules for the Linux (with patches for the Asus Flow X13) kernel
+	depends = pahole
+
+pkgname = linux-flowx13-docs
+	pkgdesc = Documentation for the Linux (with patches for the Asus Flow X13) kernel
