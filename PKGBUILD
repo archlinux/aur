@@ -1,28 +1,29 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=syrupy
 pkgname=python-${_base}
-pkgdesc="The sweeter pytest snapshot plugin"
-pkgver=4.0.5
+pkgdesc="Pytest Snapshot Test Utility"
+pkgver=4.0.6
 pkgrel=1
 arch=(any)
 url="https://github.com/tophat/${_base}"
 license=(Apache)
 depends=(python-pytest python-colored)
 makedepends=(python-build python-installer python-poetry-core)
+checkdepens=()
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('20053069cb81e4e0c13e3a4c9ec5fe886e34d59a24bd1e2035b408183de45bd033faf4d56282260e21cf63fabe58bab31850fa592ccac731e8bf765f1469bb8f')
+sha512sums=('f087d06415d12840de53df8a18c8505b5d65fc4e8597b77a892fbc8020b6f5b8e9d299ab4a199ab25fbbee0bfde1977a871f1aec717aa1379b69f5b607cf815a')
 
 build() {
   cd ${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-# check() {
-#   cd ${_base}-${pkgver}
-#   python -m venv --system-site-packages test-env
-#   test-env/bin/python -m installer dist/*.whl
-#   test-env/bin/python -m pytest #-k 'not update_failure_shows_snapshot_diff'
-# }
+check() {
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest
+}
 
 package() {
   cd ${_base}-${pkgver}
