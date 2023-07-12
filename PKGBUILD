@@ -49,9 +49,9 @@ _disable_debug=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-tip-git
-pkgver=6.4.0.r1188886.g12f69e436304
+pkgver=6.5.0.r1199797.g1a2945f27157
 _srcname=tip
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux Kernel based on the tip branch'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -328,4 +328,4 @@ done
 
 sha512sums=('SKIP'
             'a577b74a51232272a1edd210c151259a163c6c677468e572c43aeb3f18fbfe4cc92bb73d40d83b1b3a8341f3afd2c78a08306c77e40e1ec5f83b6ccead589183'
-            '72f5e1a76e39b54c73a418d7e8538177604e712aeb352cc7519bbf51684117b041f7f3e5b900ee603217d69ba9c794c50d3849c2a77469df419b8d3360c89e35')
+            '982aa3cce1018d032f443d72180eec216db555e2e554f6150a16b5e5c4386a95911365cbb6fcef3cba94340e29041671e9015dcb092d4036335c822a85bfa87c')
