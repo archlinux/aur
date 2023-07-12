@@ -1,6 +1,6 @@
 pkgbase = r-rhdf5client
 	pkgdesc = Access HDF5 content from h5serv
-	pkgver = 1.22.0
+	pkgver = 1.22.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/rhdf5client
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-rhdf5client
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/rhdf5client_1.22.0.tar.gz
-	sha256sums = 444229a4c9249d40e91c80cb2fa9791059bdb6ea21611526258deb2e111b2e40
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/rhdf5client_1.22.2.tar.gz
+	sha256sums = 044c1d42a9d934a469502e6ea8e7b4aee5a20c8a77ff09503e73ac1d90d873db
 
 pkgname = r-rhdf5client
