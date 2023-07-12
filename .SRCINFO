@@ -1,7 +1,7 @@
 pkgbase = liteloader-qqnt-git
 	pkgdesc = 轻量, 简洁, 开源的 QQNT 插件加载器
-	pkgver = 0.3.1.r54.gc9f8836
-	pkgrel = 2
+	pkgver = 0.3.1.r55.g0f77151
+	pkgrel = 1
 	url = https://github.com/mo-jinran/LiteLoaderQQNT
 	install = liteloader-qqnt-git.install
 	arch = any
