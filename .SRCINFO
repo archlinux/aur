@@ -1,7 +1,7 @@
 pkgbase = brother-dcpj925dw
 	pkgdesc = Driver for the Brother DCP-J925DW wifi multifuncional printer
 	pkgver = 3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://solutions.brother.com/linux/en_us/index.html
 	install = brother-dcpj925dw.install
 	arch = i686
@@ -21,4 +21,3 @@ pkgbase = brother-dcpj925dw
 	md5sums = d429fb9b1faa4e895d8af8045e83cb80
 
 pkgname = brother-dcpj925dw
-

@@ -1,11 +1,11 @@
 post_install() {
 	# lpr
 	/opt/brother/Printers/dcpj925dw/inf/setupPrintcapij dcpj925dw -i
-	
+
 	# cupswrapper
 	/opt/brother/Printers/dcpj925dw/cupswrapper/cupswrapperdcpj925dw
-	
-	systemctl restart org.cups.cupsd.service
+
+	systemctl restart cups.service
 }
 
 post_upgrade() {
@@ -15,7 +15,7 @@ post_upgrade() {
 pre_remove() {
 	# lpr
 	/opt/brother/Printers/dcpj925dw/inf/setupPrintcapij dcpj925dw -e
-	
+
 	# cupswrapper
 	/opt/brother/Printers/dcpj925dw/cupswrapper/cupswrapperdcpj925dw -e
 }
