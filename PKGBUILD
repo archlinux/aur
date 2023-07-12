@@ -5,7 +5,7 @@
 _pkgname=corectrl
 pkgname=${_pkgname}-git
 pkgver=1.2.0.r170.g6ce3a81
-pkgrel=1
+pkgrel=2
 pkgdesc="Application to control your hardware with ease using application profiles"
 url="https://gitlab.com/corectrl/corectrl"
 license=(GPL3)
@@ -29,14 +29,14 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  mkdir build
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/" -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF ..
-  make ${MAKEFLAGS}
+  CXXFLAGS="${CXXFLAGS} -ffile-prefix-map=${srcdir}/=/"
+  export CXXFLAGS
+  cmake -B build -DCMAKE_INSTALL_PREFIX='/usr' -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
+  cmake --build build
 }
 
 package() {
   cd "$srcdir/$_pkgname/build"
-  sed -i -- 's/\/usr/${CMAKE_INSTALL_PREFIX}/g' src/helper/cmake_install.cmake
-  make install
+  DESTDIR="$pkgdir" cmake --build . --target install
 }
+

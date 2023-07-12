@@ -1,7 +1,7 @@
 pkgbase = corectrl-git
 	pkgdesc = Application to control your hardware with ease using application profiles
-	pkgver = 1.2.0.r170.6ce3a810
-	pkgrel = 1
+	pkgver = 1.2.0.r170.g6ce3a81
+	pkgrel = 2
 	url = https://gitlab.com/corectrl/corectrl
 	arch = i686
 	arch = x86_64
