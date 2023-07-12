@@ -1,28 +1,18 @@
-From a66d7bf7d0d5cf02fc3230cb56b321669edaaca5 Mon Sep 17 00:00:00 2001
+From c457d58fa50c032c3c47e0cbb1e95ea2e94bcee4 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
-Date: Mon, 3 Jul 2023 12:01:24 +0300
+Date: Wed, 12 Jul 2023 17:53:47 +0300
 Subject: [PATCH 3/4] AUR Remove kaldi, openfst, vosk-api modules because of
  missing blas, lapack lib32 from Arch
 
-Revert "build: import kaldi, openfst, vosk-api modules from upstream"
-
-This reverts commit 9c5af861877180a4a1c9966a51c7f0b7afbcabbc.
 ---
- .gitmodules | 10 -------
- Makefile.in | 77 +----------------------------------------------------
- kaldi       |  1 -
- openfst     |  1 -
- vosk-api    |  1 -
- 5 files changed, 1 insertion(+), 89 deletions(-)
- delete mode 160000 kaldi
- delete mode 160000 openfst
- delete mode 160000 vosk-api
+ Makefile.in | 79 +----------------------------------------------------
+ 1 file changed, 1 insertion(+), 78 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index cbebe144..ff735c90 100644
+index 9a2028e3..9de50f4d 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -546,81 +546,6 @@ $(OBJ)/.steamexe-post-build64:
+@@ -406,83 +406,6 @@ $(OBJ)/.steamexe-post-build64:
  	cp $(STEAMEXE_SRC)/64/libsteam_api.so $(DST_LIBDIR64)/
  	touch $@
  
@@ -89,6 +79,7 @@ index cbebe144..ff735c90 100644
 -$(eval $(call rules-cmake,kaldi,32))
 -$(eval $(call rules-cmake,kaldi,64))
 -
+-
 -##
 -## vosk
 -##
@@ -101,10 +92,11 @@ index cbebe144..ff735c90 100644
 -$(eval $(call rules-source,vosk,$(SRCDIR)/vosk-api))
 -$(eval $(call rules-cmake,vosk,32))
 -$(eval $(call rules-cmake,vosk,64))
+-
  
  ##
  ## wine
-@@ -657,7 +582,7 @@ WINE_CONFIGURE_ARGS64 = --enable-win64 \
+@@ -519,7 +442,7 @@ WINE_CONFIGURE_ARGS64 = --enable-win64 \
    VKD3D_PE_CFLAGS="-I$(VULKAN_HEADERS_DST64)/include -I$(VKD3D_DST64)/include/vkd3d" \
    VKD3D_PE_LIBS="-L$(VKD3D_DST64)/bin -l:libvkd3d-1.dll -l:libvkd3d-shader-1.dll"
  
