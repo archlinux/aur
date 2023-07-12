@@ -1,0 +1,20 @@
+pkgbase = openflipper
+	pkgdesc = OpenFlipper is an OpenSource multi-platform application and programming framework designed for processing, modeling and rendering of geometric data.
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://www.graphics.rwth-aachen.de/software/openflipper/
+	arch = any
+	license = BSD
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	depends = qt5-base
+	optdepends = qwt
+	source = https://www.graphics.rwth-aachen.de/media/openflipper_static/Releases/4.1/OpenFlipper-4.1.tar.gz
+	source = deprecation.patch
+	source = openflipper.desktop
+	md5sums = a72f9c8ed58ba454ad12488424b538d3
+	md5sums = f51a5c25b7d66c47c175d90640fc163c
+	md5sums = cc65c5e708f9d3829b43b330713190ef
+
+pkgname = openflipper

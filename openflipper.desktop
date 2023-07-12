@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Categories=Graphics;3DGraphics;Viewer;Qt;
+Name=OpenFlipper
+Comment=OpenFlipper is an OpenSource multi-platform application and programming framework designed for processing, modeling and rendering of geometric data.
+Exec=/usr/bin/OpenFlipper
+Icon=openflipper-icon.svg
+Terminal=false

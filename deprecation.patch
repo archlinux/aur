@@ -1,0 +1,105 @@
+diff --color --unified --recursive --text package.orig/CMakeLists.txt package.new/CMakeLists.txt
+--- package.orig/CMakeLists.txt	2019-12-13 13:11:25.000000000 +0100
++++ package.new/CMakeLists.txt	2023-07-11 09:20:46.341795471 +0200
+@@ -3,6 +3,8 @@
+ # Required 3.12 to use findPython3
+ cmake_minimum_required(VERSION 3.12.0 FATAL_ERROR)
+ 
++cmake_policy(SET CMP0100 NEW)
++
+ file(SHA512 ${CMAKE_SOURCE_DIR}/CMakeLists.txt HASH_TOPLEVEL_CMAKEFILE)
+ file(SHA512 ${CMAKE_SOURCE_DIR}/OpenFlipper/cmake/CMakeLists.txt HASH_LATEST_CMAKEFILE)
+ 
+diff --color --unified --recursive --text package.orig/OpenFlipper/libs_required/ACG/Geometry/Algorithms.cc package.new/OpenFlipper/libs_required/ACG/Geometry/Algorithms.cc
+--- package.orig/OpenFlipper/libs_required/ACG/Geometry/Algorithms.cc	2019-12-13 13:11:32.000000000 +0100
++++ package.new/OpenFlipper/libs_required/ACG/Geometry/Algorithms.cc	2023-07-11 09:28:55.033511788 +0200
+@@ -54,6 +54,7 @@
+ #include <ACG/Utils/NumLimitsT.hh>
+ #include <ACG/Utils/VSToolsT.hh>
+ #include <ACG/Math/GLMatrixT.hh>
++#include <limits>
+ 
+ 
+ #ifdef max
+diff --color --unified --recursive --text package.orig/OpenFlipper/libs_required/ACG/Math/Matrix3x3T.hh package.new/OpenFlipper/libs_required/ACG/Math/Matrix3x3T.hh
+--- package.orig/OpenFlipper/libs_required/ACG/Math/Matrix3x3T.hh	2019-12-13 13:11:32.000000000 +0100
++++ package.new/OpenFlipper/libs_required/ACG/Math/Matrix3x3T.hh	2023-07-11 09:27:38.600365859 +0200
+@@ -7,6 +7,7 @@
+ #include <algorithm>
+ #include <cmath>
+ #include <utility>
++#include <stdint.h>
+ 
+ #if defined(_MSC_VER) && _MSC_VER < 1900
+ #define constexpr
+diff --color --unified --recursive --text package.orig/OpenFlipper/libs_required/ACG/QwtWidgets/QwtHistogramm.cc package.new/OpenFlipper/libs_required/ACG/QwtWidgets/QwtHistogramm.cc
+--- package.orig/OpenFlipper/libs_required/ACG/QwtWidgets/QwtHistogramm.cc	2019-12-13 13:11:32.000000000 +0100
++++ package.new/OpenFlipper/libs_required/ACG/QwtWidgets/QwtHistogramm.cc	2023-07-11 09:31:27.712785870 +0200
+@@ -51,6 +51,7 @@
+ #include <qwt_plot_histogram.h>
+ #include <qwt_painter.h>
+ #include <qwt_scale_map.h>
++#include <qwt_text.h>
+ 
+ #include <QString>
+ #include <QPainter>
+diff --color --unified --recursive --text package.orig/OpenFlipper/libs_required/pybind11/include/pybind11/attr.h package.new/OpenFlipper/libs_required/pybind11/include/pybind11/attr.h
+--- package.orig/OpenFlipper/libs_required/pybind11/include/pybind11/attr.h	2019-12-13 13:11:32.000000000 +0100
++++ package.new/OpenFlipper/libs_required/pybind11/include/pybind11/attr.h	2023-07-11 12:51:54.571766447 +0200
+@@ -11,6 +11,7 @@
+ #pragma once
+ 
+ #include "cast.h"
++#include <cstdint>
+ 
+ NAMESPACE_BEGIN(PYBIND11_NAMESPACE)
+ 
+diff --color --unified --recursive --text package.orig/OpenFlipper/libs_required/pybind11/include/pybind11/cast.h package.new/OpenFlipper/libs_required/pybind11/include/pybind11/cast.h
+--- package.orig/OpenFlipper/libs_required/pybind11/include/pybind11/cast.h	2019-12-13 13:11:32.000000000 +0100
++++ package.new/OpenFlipper/libs_required/pybind11/include/pybind11/cast.h	2023-07-11 12:55:50.804801891 +0200
+@@ -439,10 +439,10 @@
+         while (frame) {
+             int lineno = PyFrame_GetLineNumber(frame);
+             errorString +=
+-                "  " + handle(frame->f_code->co_filename).cast<std::string>() +
++                "  " + handle(PyFrame_GetCode(frame)->co_filename).cast<std::string>() +
+                 "(" + std::to_string(lineno) + "): " +
+-                handle(frame->f_code->co_name).cast<std::string>() + "\n";
+-            frame = frame->f_back;
++                handle(PyFrame_GetCode(frame)->co_name).cast<std::string>() + "\n";
++            frame = PyFrame_GetBack(frame);
+         }
+     }
+ #endif
+diff --color --unified --recursive --text package.orig/OpenFlipper/libs_required/pybind11/include/pybind11/pybind11.h package.new/OpenFlipper/libs_required/pybind11/include/pybind11/pybind11.h
+--- package.orig/OpenFlipper/libs_required/pybind11/include/pybind11/pybind11.h	2019-12-13 13:11:32.000000000 +0100
++++ package.new/OpenFlipper/libs_required/pybind11/include/pybind11/pybind11.h	2023-07-11 13:03:56.605203725 +0200
+@@ -2018,12 +2018,12 @@
+     /* Don't call dispatch code if invoked from overridden function.
+        Unfortunately this doesn't work on PyPy. */
+ #if !defined(PYPY_VERSION)
+-    PyFrameObject *frame = PyThreadState_Get()->frame;
+-    if (frame && (std::string) str(frame->f_code->co_name) == name &&
+-        frame->f_code->co_argcount > 0) {
++    PyFrameObject *frame = PyThreadState_GetFrame(PyThreadState_Get());
++    if (frame && (std::string) str(PyFrame_GetCode(frame)->co_name) == name &&
++        PyFrame_GetCode(frame)->co_argcount > 0) {
+         PyFrame_FastToLocals(frame);
+         PyObject *self_caller = PyDict_GetItem(
+-            frame->f_locals, PyTuple_GET_ITEM(frame->f_code->co_varnames, 0));
++            PyFrame_GetLocals(frame), PyTuple_GET_ITEM(PyCode_GetVarnames(PyFrame_GetCode(frame)), 0));
+         if (self_caller == self.ptr())
+             return function();
+     }
+diff --color --unified --recursive --text package.orig/Plugin-VSI/types/objectId/objectPickDialog.cc package.new/Plugin-VSI/types/objectId/objectPickDialog.cc
+--- package.orig/Plugin-VSI/types/objectId/objectPickDialog.cc	2019-12-13 13:11:35.000000000 +0100
++++ package.new/Plugin-VSI/types/objectId/objectPickDialog.cc	2023-07-11 09:20:52.447732832 +0200
+@@ -51,7 +51,7 @@
+ #include <OpenFlipper/widgets/glWidget/simpleViewer.hh>
+ #include <OpenFlipper/widgets/glWidget/QtBaseViewer.hh>
+ 
+-#include "objectPickDialog.hh"
++#include "./objectPickDialog.hh"
+ #include "TreeModel.hh"
+ 
+ //== NAMESPACES ===============================================================
