@@ -1,7 +1,7 @@
 pkgbase = deadbeef
 	pkgdesc = Modular GTK audio player for GNU/Linux
 	pkgver = 1.9.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://deadbeef.sourceforge.io/
 	arch = x86_64
 	arch = i686
@@ -54,7 +54,6 @@ pkgbase = deadbeef
 	optdepends = libogg: for ogg vorbis plugin
 	optdepends = libpipewire: for pipewire plugin
 	optdepends = libsamplerate: for dsp_libsrc plugin (resampler)
-	optdepends = libsidplay: for SID player plugin
 	optdepends = libsm: optional dependency for gtkui session client support
 	optdepends = libsndfile: for sndfile plugin
 	optdepends = libvorbis: for ogg vorbis plugin

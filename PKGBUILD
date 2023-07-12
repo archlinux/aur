@@ -4,7 +4,7 @@
 
 pkgname=deadbeef
 pkgver=1.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular GTK audio player for GNU/Linux"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://deadbeef.sourceforge.io/"
@@ -28,7 +28,6 @@ optdepends=('alsa-oss: for OSS output plugin'
             'libogg: for ogg vorbis plugin'
             'libpipewire: for pipewire plugin'
             'libsamplerate: for dsp_libsrc plugin (resampler)'
-            'libsidplay: for SID player plugin'
             'libsm: optional dependency for gtkui session client support'
             'libsndfile: for sndfile plugin'
             'libvorbis: for ogg vorbis plugin'
