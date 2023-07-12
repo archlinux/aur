@@ -1,7 +1,7 @@
 # Maintainer: Eduard Tanase <eduard dot tanase1 at gmail dot com>
 # Contributor: Sauyon Lee <me at sjl dot re>
 pkgname=codeql
-pkgver=2.13.4
+pkgver=2.13.5
 pkgrel=1
 epoch=
 pkgdesc="The CLI tool for GitHub's CodeQL"
