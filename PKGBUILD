@@ -6,8 +6,8 @@
 _pkgname=pacman-boot-backup-hook
 pkgname="${_pkgname}-nosystemd"
 pkgver=1.6
-pkgrel=1
-pkgdesc="Pacman hook that creates a copy of the /boot directory prior and post to upgrades of a linux kernel or when mkinitcpio is triggered."
+pkgrel=2
+pkgdesc="Pacman hook that creates a copy of the /boot directory when via a pacman operation something is changed there."
 depends=('bash')
 makedepends=('ncurses')
 provides=("${_pkgname}")

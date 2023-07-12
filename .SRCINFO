@@ -1,7 +1,7 @@
 pkgbase = pacman-boot-backup-hook-nosystemd
-	pkgdesc = Pacman hook that creates a copy of the /boot directory prior and post to upgrades of a linux kernel or when mkinitcpio is triggered.
+	pkgdesc = Pacman hook that creates a copy of the /boot directory when via a pacman operation something is changed there.
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	install = pacman-boot-backup-hook.install
 	changelog = CHANGELOG
 	arch = any
