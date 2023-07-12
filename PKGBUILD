@@ -2,7 +2,8 @@
 # Contributor: Cristophero <cristophero.alvarado@gmail.com>
 pkgname=pseint-bin
 _pkgname=${pkgname%-*}
-pkgver=20210609
+#pkgver=20210609
+pkgver=20230517
 pkgrel=1
 pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
 arch=('x86_64')
@@ -12,7 +13,7 @@ conflicts=('pseint')
 depends=('gendesk' 'wxwidgets-gtk3')
 noextract=(creator.psz)
 source=("${_pkgname}-${pkgver}.tgz::https://cfhcable.dl.sourceforge.net/project/${_pkgname}/${pkgver}/${_pkgname}-l64-${pkgver}.tgz")
-sha256sums=('a5df4e147c529e3da509b30dee02791642c32cb3b5bbbc6cd3cd7594f10cb9f4')  # 'makepkg -g' to generate it.
+sha256sums=('1208bbf2247f0b5f89c0b6f85ee0ab9816a89c102a6d4ab7a041109b1425cb4d')  # 'makepkg -g' to generate it.
 
 prepare(){
 
