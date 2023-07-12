@@ -1,14 +1,14 @@
 # Maintainer: Tomasz Knapik <hi@tmkn.org>
 pkgname=buckup
-pkgver=0.1a4
-pkgrel=2
+pkgver=0.1a7
+pkgrel=1
 pkgdesc="Command line tool to create S3 buckets easily."
 url="https://github.com/torchbox/buckup"
 license=('BSD')
 arch=('any')
 depends=('python-boto3')
 source=("https://github.com/torchbox/buckup/archive/v${pkgver}.tar.gz")
-md5sums=('894bb2d040ce74ffdaa502884126647b')
+md5sums=('0b8d2af294e6b6ccc17be6ec6efc2c09')
 
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
