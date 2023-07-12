@@ -2,14 +2,14 @@
 
 pkgname=cppdap-git
 pkgver=1.59.0.r95.ge3379ed
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ library for the Debug Adapter Protocol"
 arch=('x86_64')
 url='https://github.com/google/cppdap'
 license=('GPL')
 makedepends=('cmake' 'git')
-provides=('ccpdap')
-conflicts=('ccpdap')
+provides=('cppdap')
+conflicts=('cppdap')
 source=('git+https://github.com/google/cppdap')
 sha1sums=('SKIP')
 
