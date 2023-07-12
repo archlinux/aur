@@ -1,6 +1,6 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 pkgname=hyprshade
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
