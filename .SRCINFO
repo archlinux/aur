@@ -1,0 +1,11 @@
+pkgbase = motorola-6800-assembler-git
+	pkgdesc = This is the assembler for the Motorola 6800 family of 8bit microprocessors.
+	pkgver = r51.61d4b9b
+	pkgrel = 1
+	url = https://github.com/JimInCA/motorola-6800-assembler
+	arch = x86_64
+	license = unknown
+	source = git+https://github.com/JimInCA/motorola-6800-assembler.git
+	sha256sums = SKIP
+
+pkgname = motorola-6800-assembler-git
