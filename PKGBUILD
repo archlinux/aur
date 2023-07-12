@@ -4,7 +4,7 @@ options=(!strip)  # Don't strip libs because there aren't any
 pkgname=hydrus
 _pkgname=hydrus
 pkgver=534
-pkgrel=1
+pkgrel=2
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(custom)
@@ -16,6 +16,7 @@ depends=(python python-opencv python-beautifulsoup4 python-yaml
          python-lxml python-urllib3 python-typing_extensions
          python-service-identity  # required by twisted for https hostname verification
          qt6-multimedia  # https://aur.archlinux.org/packages/hydrus#comment-914337
+         qt6-svg  # https://aur.archlinux.org/packages/hydrus#comment-923550
          python-pyqt6 "hydrus-docs>=$pkgver")
 makedepends=(git)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'

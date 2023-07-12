@@ -1,7 +1,7 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
 	pkgver = 534
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hydrusnetwork.github.io/hydrus/
 	arch = any
 	license = custom
@@ -27,6 +27,7 @@ pkgbase = hydrus
 	depends = python-typing_extensions
 	depends = python-service-identity
 	depends = qt6-multimedia
+	depends = qt6-svg
 	depends = python-pyqt6
 	depends = hydrus-docs>=534
 	optdepends = ffmpeg: show duration and other information on video thumbnails
