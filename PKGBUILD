@@ -1,54 +1,41 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer: a821
+# Contributor: Felix Yan
+# Contributor:  jyantis <yantis@yantis.net>
 
 pkgname=python-colorama-git
-pkgver=0.3.3.r116.97e2635
-pkgrel=2
+pkgver=0.4.6.r5.g21c4b94
+pkgrel=1
+epoch=1
 pkgdesc='Simple cross-plaform colored terminal text in Python 3'
 arch=('any')
 url='https://github.com/tartley/colorama'
 license=('BSD')
-depends=('python' 'python-setuptools' 'python-mock')
-source=('git+https://github.com/tartley/colorama.git')
+depends=('python')
+source=("git+${url}")
 sha256sums=('SKIP')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
 provides=('python-colorama')
 conflicts=('python-colorama')
 
 pkgver() {
   cd colorama
-  set -o pipefail
-  _gitversion=$( git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
-
-  if [ -f "colorama/__init__.py" ]; then
-      printf "%s.%s" "$(grep -R "__version__ =" colorama/__init__.py | awk -F\' '{print $2}')" $_gitversion | sed 's/-/./g'
-  else
-    printf "%s" $_gitversion
-  fi
+  git describe --long --tags | sed 's/-/.r/;s/-/./g'
 }
 
 build() {
   cd colorama
-  python setup.py build
+  python -m build -nw
 }
 
 check() {
   cd colorama
-  python setup.py test --verbose
+  python -m unittest discover -p *_test.py
 }
 
 package() {
   cd colorama
-
-  # We don't need anything related to git in the package
-  rm -rf .git*
-
-  python setup.py install --root="${pkgdir}" --optimize=1
-
-  # Install License
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Install Documentation
   install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
 }
 
