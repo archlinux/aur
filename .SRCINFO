@@ -1,6 +1,6 @@
 pkgbase = opal-appimage
 	pkgdesc = Plays relaxing music in the background
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://codedead.com/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = opal-appimage
 	depends = glibc
 	conflicts = opal
 	options = !strip
-	source = opal-1.1.0.AppImage::https://github.com/CodeDead/opal/releases/download/v1.1.0/Opal-x86_64-1.1.0.AppImage
-	sha256sums = 14b8fcfb4984ad65dc6d58eb6d85b5833fbca7d0b38123feec103294056e114a
+	source = opal-1.2.0.AppImage::https://github.com/CodeDead/opal/releases/download/v1.2.0/Opal-x86_64-1.2.0.AppImage
+	sha256sums = 72015b4031e34cf47cbce202094f058506025836e1e25c1c2226e58642f77417
 
 pkgname = opal-appimage
