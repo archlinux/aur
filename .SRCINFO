@@ -75,7 +75,7 @@ pkgbase = firedragon-unsigned-extensions
 	source = firedragon.desktop
 	source = git+https://gitlab.com/dr460nf1r3/common.git
 	source = git+https://gitlab.com/dr460nf1r3/settings.git
-	source = librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=115.0.2-1
+	source = librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=115.0.2-2
 	source = librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git
 	source = cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
