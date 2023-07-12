@@ -15,7 +15,7 @@ md5sums=("84b26a684e19ac8f1dfa4f1aa6bc4085")
 build()
 {
     cd ${pkgname}-${pkgver}
-    cmake -S . -B build
+    cmake -S . -B build -DCMAKE_INSTALL_LIBEXECDIR='lib'
     cmake --build build
 }
 
