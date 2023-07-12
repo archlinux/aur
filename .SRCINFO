@@ -1,14 +1,22 @@
 pkgbase = r-caret
 	pkgdesc = Classification and Regression Training
 	pkgver = 6.0.94
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=caret
-	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = r-ggplot2
+	checkdepends = r-earth
+	checkdepends = r-fastica
+	checkdepends = r-glmnet
+	checkdepends = r-kernlab
+	checkdepends = r-mda
+	checkdepends = r-mlmetrics
+	checkdepends = r-randomforest
+	checkdepends = r-testthat
+	checkdepends = r-themis
 	depends = r-e1071
 	depends = r-foreach
+	depends = r-ggplot2
 	depends = r-modelmetrics
 	depends = r-plyr
 	depends = r-proc
@@ -43,6 +51,7 @@ pkgbase = r-caret
 	optdepends = r-testthat
 	optdepends = r-themis
 	source = https://cran.r-project.org/src/contrib/caret_6.0-94.tar.gz
+	md5sums = 5f4c1945b20e632187f5534a59a12c8c
 	sha256sums = 2715e83ca260bb739cd926a55b0d2da1e3f6308b17b56862466e738d930d29a8
 
 pkgname = r-caret
