@@ -1,14 +1,15 @@
 pkgbase = liggghts-git
 	pkgdesc = Open Source Discrete Element Method Particle Simulation Software
 	pkgver = 3.8.0.r81.gbbd23c85
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/CFDEMproject/LIGGGHTS-PUBLIC
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = patchelf
-	depends = paraview
+	depends = vtk
 	depends = openmpi
+	optdepends = paraview
 	provides = liggghts
 	conflicts = liggghts
 	source = liggghts-git::git+https://github.com/CFDEMproject/LIGGGHTS-PUBLIC.git
