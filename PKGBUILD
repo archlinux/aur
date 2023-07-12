@@ -1,26 +1,25 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=dwarfs
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
 arch=('x86_64' 'aarch64')
 license=('GPL3')
 depends=(
-  'fuse3' 'openssl' 'boost-libs' 'jemalloc' 'xxhash'
-  'lz4' 'xz' 'zstd' 'libarchive'
+  'fuse3' 'openssl' 'boost-libs' 'jemalloc' 'xxhash' 'fmt'
+  'lz4' 'xz' 'zstd' 'brotli' 'libarchive'
   'libunwind' 'google-glog' 'fmt' 'gflags' 'double-conversion'
-  # 'python'
 )
 makedepends=(
   'cmake' 'ruby-ronn'
   'boost' 'libevent' 'libdwarf'
+  'utf8cpp'
 )
-source=("$pkgname-$pkgver.tar.bz2::https://github.com/mhx/dwarfs/releases/download/v$pkgver/dwarfs-$pkgver.tar.bz2")
-cksums=('1163381221')
-sha256sums=('b411c9c26df4455762c04ecd72ae18fe5a6524572252d8d1e89a9ec9347ed149')
-b2sums=('dbc6d9ff6f6bf4db337633e27d9802ce57742df2e2c3497e1d92f3d20101044741e5797f1264f5dfc5228cc3c430076f9e0e02b0632d39467f22e0a2a3a8e640')
+source=("$pkgname-$pkgver.tar.xz::https://github.com/mhx/dwarfs/releases/download/v$pkgver/dwarfs-$pkgver.tar.xz")
+sha256sums=('ce874f20c5a0e68f57913034cb36631afcb59dff76efb45991b12d40cfddc276')
+b2sums=('c48527f84af0c96ca573af94d1cdc9637ab5bc99934f02b457eec80548399ba362ebc20f6bc5d44d780e29d9538d6045f334a24b4264d49ab02c39fdfddc54bf')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -28,11 +27,12 @@ prepare() {
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
+    -W no-dev \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=None \
     -D PREFER_SYSTEM_ZSTD=ON \
-    -D PREFER_SYSTEM_XXHASH=ON
-  #  -D WITH_PYTHON=ON
+    -D PREFER_SYSTEM_XXHASH=ON \
+    -D PREFER_SYSTEM_LIBFMT=ON
 
   cmake --build build
 }
