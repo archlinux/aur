@@ -4,14 +4,14 @@
 _pkgname=blink-qt
 pkgname=blink
 pkgver=5.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fully featured, easy to use SIP client with a Qt based UI'
 arch=('aarch64' 'x86_64')
 url='https://icanblink.com'
 license=('GPL-3+')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 depends=(
-  'icu'
+  'icu72'
   'libvncserver'
   'python-application'
   'python-eventlib'
