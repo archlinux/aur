@@ -1,7 +1,7 @@
-From 68bec939cb5080d447a9f1810a457aa71c4a9869 Mon Sep 17 00:00:00 2001
+From 4bd8fb1ab5ceb8541c67c590a8083581ad27e180 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Sun, 19 Mar 2023 10:56:59 +0200
-Subject: [PATCH 2/3] AUR Do not update cargo crates
+Subject: [PATCH 2/4] AUR Do not update cargo crates
 
 ---
  make/rules-cargo.mk | 2 --

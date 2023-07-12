@@ -6,7 +6,7 @@ _commit=610dead69d75fe548b4349dadb3ab04e7e466095
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.0
-pkgrel=4
+pkgrel=6
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -116,6 +116,7 @@ source=(
     0001-AUR-Pkgbuild-changes.patch
     0002-AUR-Do-not-update-cargo-crates.patch
     0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
+    0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     fix_hwnd_changes_meaning.patch
 )
 # Optional patches
@@ -250,6 +251,7 @@ prepare() {
     patch -p1 -i "$srcdir"/0001-AUR-Pkgbuild-changes.patch
     patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
     patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
+    patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
 
     # Remove repos from srcdir to save space
@@ -311,6 +313,14 @@ package() {
     mkdir -p "$_compatdir/${pkgname}"
     rsync --delete -arx dist/* "$_compatdir/${pkgname}"
 
+    # For some unknown to me reason, 32bit vkd3d (not vkd3d-proton) always links
+    # to libgcc_s_dw2-1.dll no matter what linker options I tried.
+    # Copy the required dlls into the package, they will be copied later into the prefix
+    # by the patched proton script. Bundling the helps to avoid making mingw-w64-gcc package
+    # a runtime dependency.
+    cp /usr/i686-w64-mingw32/bin/{libgcc_s_dw2-1.dll,libwinpthread-1.dll} \
+        "$_compatdir/${pkgname}"/files/lib/vkd3d/
+
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
     mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
         "$pkgdir/usr/share/licenses/${pkgname}"
@@ -369,9 +379,10 @@ sha256sums=('SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '14c7d76780b79dc62d8ed9d1759e7adcfa332bb2406e2e694dee7b2128cc7a77'
-            '9266599d3eccde9cf6189358c9b7e7518cbf68717260093ebee7dc886ac646cc'
-            '3029f2ebc347c59f9dc64525e31bb0f22a05322d9dffcbe846feb44a79747c18'
-            'd7b153132ad80118bde3625ebf9d22680d95412f1633b60690f2fb97acc11068'
+            'ce553d398f64ba06d97396eb83b6b467945c156d5aa43dbe8ace8b0998dc388c'
+            'e7d35e025f596b23a550f809ec206c43f795e3aa1422d52642cfffbd7e006163'
+            'e9c67b73dc6aec00577ba1c7560d7b2dfb90f97585f83656788e5bd01e20f64c'
+            '5f4d6735d8517ad63bc2753045d2227c34df212c195e6858e124307b025d7731'
             '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f')
 # Optional patches
 sha256sums+=(
