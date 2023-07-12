@@ -1,14 +1,14 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql-git'
-pkgver=0.7.18.1.r627.g7c450b444
+pkgver=0.7.18.2.r759.g744f5449f
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (PostgreSQL)"
 arch=('i686' 'x86_64')
 url="https://diasporafoundation.org"
 license=('AGPL3')
-depends=('ruby2.6' 'ruby2.6-bundler' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'postgresql-libs')
+depends=('ruby' 'redis' 'imagemagick' 'libxslt' 'net-tools' 'gsfonts' 'libtirpc' 'postgresql-libs')
 optdepends=('jemalloc: lower memory consumption' 'postgresql: Database server')
-makedepends=('nodejs' 'git')
+makedepends=('nodejs' 'yarn' 'git')
 conflicts=('diaspora-mysql' 'diaspora-postgresql' 'diaspora-mysql-git')
 options=(!strip)
 backup=("etc/webapps/diaspora/diaspora.yml"
@@ -51,10 +51,10 @@ _reset_ruby() {
 }
 
 build() {
-  _bundle=bundle-2.6
-  _ruby=ruby-2.6
-  _rake=rake-2.6
-  _gem=gem-2.6
+  _bundle=bundle
+  _ruby=ruby
+  _rake=rake
+  _gem=gem
   _builddir=$srcdir/build
 
   _reset_ruby
@@ -63,13 +63,14 @@ build() {
   rm -rf $_builddir
   mkdir -p $_builddir
   cp -Rf $srcdir/diaspora/{bin,app,config,db,public,lib,script,vendor,config.ru,Gemfile,Gemfile.lock,Rakefile} $_builddir
+  cp $srcdir/diaspora/{package.json,yarn.lock} $_builddir
 
   cd $_builddir
 
   msg "Bundle dependencies"
   echo "gem: --no-rdoc --no-ri --no-user-install" > $_builddir/.gemrc
   export GEM_HOME="$_builddir/vendor/bundle"
-  HOME=$_builddir $_gem install bundler -v 1.17.3
+  HOME=$_builddir $_gem install bundler -v 2.3.18
   HOME=$_builddir $_bundle config --local path vendor/bundle
   HOME=$_builddir $_bundle config --local frozen 1
   HOME=$_builddir $_bundle config --local disable_shared_gems true
@@ -99,8 +100,8 @@ build() {
 }
 
 package() {
-  _bundle=bundle-2.6
-  _ruby=ruby-2.6
+  _bundle=bundle
+  _ruby=ruby
   _builddir=$srcdir/build
 
   msg "Copy contents to package directory"
