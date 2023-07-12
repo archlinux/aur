@@ -1,6 +1,6 @@
 pkgbase = rom-properties
-	pkgdesc = This shell extension adds a few nice features to file browsers for managing video game ROM and disc images
-	pkgver = 2.1
+	pkgdesc = This shell extension adds a few nice features to file browsers for managing video game ROM and disc images.
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/GerbilSoft/rom-properties
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = rom-properties
 	optdepends = zstd
 	optdepends = lz4
 	optdepends = lzo
-	source = rom-properties-2.1.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v2.1.tar.gz
-	sha256sums = 0322ade297b0b04196741da8b87e9b12d06ab58dbca8f0fef5fc3da1754f7904
+	source = rom-properties-2.2.tar.gz::https://github.com/GerbilSoft/rom-properties/archive/v2.2.tar.gz
+	sha256sums = eef7f41036124ea49ddd59f2460808c25537b9e8ba96f70ac75ebc39014c8232
 
 pkgname = rom-properties
