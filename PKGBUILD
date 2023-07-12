@@ -16,7 +16,7 @@ options=("!emptydirs")
 build()
 {
     cd ${pkgname}-${pkgver}
-    cmake -S . -B build
+    cmake -S . -B build -DCMAKE_INSTALL_LIBEXECDIR='lib'
     cmake --build build
 }
 
