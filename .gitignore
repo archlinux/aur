@@ -1,0 +1,6 @@
+*
+!.gitignore
+!.SRCINFO
+!setup_dxvk.sh
+!dxvk-gplasync-env.conf
+!PKGBUILD
