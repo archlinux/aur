@@ -14,7 +14,6 @@ pkgbase = hyprshade
 	depends = python-typer
 	depends = util-linux
 	provides = hyprshade
-	conflicts = hyprshade-git
 	source = https://files.pythonhosted.org/packages/source/h/hyprshade/hyprshade-0.1.1.tar.gz
 	sha256sums = 598e51bf2ee0e97610a63134aaf616a849a1b7c9194207925a86019e316f882f
 

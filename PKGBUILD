@@ -18,7 +18,6 @@ depends=(
 )
 makedepends=(git python-{build,installer})
 provides=($pkgname)
-conflicts=(${pkgname}-git)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('598e51bf2ee0e97610a63134aaf616a849a1b7c9194207925a86019e316f882f')
 
