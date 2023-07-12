@@ -6,22 +6,25 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname="e2fsprogs-git"
-pkgver=1.46.5.r8.g8adeabee
+pkgver=1.47.0.r14.ge76886f7
 pkgrel=1
 pkgdesc="Ext2/3/4 filesystem utilities (git)"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'MIT')
-url="http://e2fsprogs.sourceforge.net"
-depends=('sh' 'util-linux-libs')
+url="https://e2fsprogs.sourceforge.net"
+depends=('sh' 'util-linux-libs' 'fuse2')
 makedepends=('git' 'util-linux' 'systemd')
+optdepends=('lvm2: for e2scrub'
+            'util-linux: for e2scrub'
+            'smtp-forwarder: for e2scrub_fail script')
 conflicts=('e2fsprogs' 'fuse2fs')
 provides=('e2fsprogs' 'fuse2fs'
           'libcom_err.so'
           'libe2p.so'
           'libext2fs.so'
           'libss.so')
-backup=('etc/mke2fs.conf')
-options=('staticlibs')
+backup=('etc/mke2fs.conf'
+        'etc/e2scrub.conf')
 source=("$pkgname::git+https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git"
         'MIT-LICENSE')
 sha256sums=('SKIP'
@@ -29,15 +32,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $pkgname
-
   git describe --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
-}
-
-prepare() {
-  cd $pkgname
-
-  # Remove unnecessary init.d directory
-  sed -i '/init\.d/s|^|#|' misc/Makefile.in
 }
 
 build() {
@@ -70,7 +65,7 @@ package() {
 
   make DESTDIR="$pkgdir" install install-libs
 
-  sed -i 's/^AWK=.*/AWK=awk/' "$pkgdir/usr/bin/compile_et"
+  sed -i 's/^AWK=.*/AWK=awk/' "$pkgdir"/usr/bin/{compile_et,mk_cmds}
 
   # remove references to build directory
   sed -i 's#^SS_DIR=.*#SS_DIR="/usr/share/ss"#' "$pkgdir/usr/bin/mk_cmds"
