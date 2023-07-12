@@ -3,7 +3,7 @@
 pkgbase=python-django-xforwardedfor-middleware
 pkgname=python-django-xforwardedfor-middleware
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 arch=( 'any' )
 url="https://github.com/allo-/django-xforwardedfor-middleware"
 license=( 'Public Domain' )
@@ -12,7 +12,7 @@ source=( "https://pypi.python.org/packages/source/d/django-xforwardedfor-middlew
 md5sums=('d292f908820a8bcfac249f47655e88fc')
 
 prepare() {
-   mv django-xforwardedfor-middleware-2.0 python-django-xforwardedfor-middleware-${pkgver}
+   mv django-xforwardedfor-middleware-${pkgver} python-django-xforwardedfor-middleware-${pkgver}
 }
 
 build() {

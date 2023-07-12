@@ -1,6 +1,6 @@
 pkgbase = python-django-xforwardedfor-middleware
 	pkgver = 2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/allo-/django-xforwardedfor-middleware
 	arch = any
 	license = Public Domain
