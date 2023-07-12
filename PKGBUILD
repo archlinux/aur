@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.10.17
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/$pkgname"
@@ -10,6 +10,7 @@ license=(AGPL3)
 depends=(bc
          bcprov # pdftk optdepend is required
          curl
+         decasify
          entr
          epubcheck
          fontconfig
@@ -54,11 +55,13 @@ depends=(bc
          zola
          zsh)
 _lua_deps=(colors-git
+           decasify
            filesystem
            yaml)
 _perl_deps=(yaml
             yaml-merge-simple)
 _python_deps=(isbnlib
+              deepl
               pandocfilters
               pantable
               ruamel-yaml
@@ -75,7 +78,7 @@ makedepends=(autoconf-archive
              yarn)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('036a5b5ed04781bcecfaf813899d320b93114d94af0958072610a7bb97f7b82b')
+sha256sums=('abe97bef4dc698047303e5e25c78d0e50eee85cfb3fe78054612613b6fb3fabc')
 
 prepare() {
 	cd "$_archive"
