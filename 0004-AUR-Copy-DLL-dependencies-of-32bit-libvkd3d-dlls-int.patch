@@ -1,4 +1,4 @@
-From 8c9dd5d0c85c862301fa3c3b69cab100cbcd8d95 Mon Sep 17 00:00:00 2001
+From 0d474b4667bb5b36fa3d3fa0a698c8e6a69186d1 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 12 Jul 2023 03:16:34 +0300
 Subject: [PATCH 4/4] AUR Copy DLL dependencies of 32bit libvkd3d dlls into the

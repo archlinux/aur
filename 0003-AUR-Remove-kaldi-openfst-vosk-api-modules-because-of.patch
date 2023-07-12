@@ -1,22 +1,12 @@
-From a66d7bf7d0d5cf02fc3230cb56b321669edaaca5 Mon Sep 17 00:00:00 2001
+From f0dc7899e42d09b8ef675ee2d408ef8c891fe29a Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
-Date: Mon, 3 Jul 2023 12:01:24 +0300
+Date: Wed, 12 Jul 2023 17:56:34 +0300
 Subject: [PATCH 3/4] AUR Remove kaldi, openfst, vosk-api modules because of
  missing blas, lapack lib32 from Arch
 
-Revert "build: import kaldi, openfst, vosk-api modules from upstream"
-
-This reverts commit 9c5af861877180a4a1c9966a51c7f0b7afbcabbc.
 ---
- .gitmodules | 10 -------
  Makefile.in | 77 +----------------------------------------------------
- kaldi       |  1 -
- openfst     |  1 -
- vosk-api    |  1 -
- 5 files changed, 1 insertion(+), 89 deletions(-)
- delete mode 160000 kaldi
- delete mode 160000 openfst
- delete mode 160000 vosk-api
+ 1 file changed, 1 insertion(+), 76 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
 index cbebe144..ff735c90 100644
