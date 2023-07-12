@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton
-_srctag=8.0-3b
+_srctag=8.0-2c
 _commit=
-pkgver=8.0.3.2  # pkgver=${_srctag//-/.}
+pkgver=8.0.2.3  # pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.1
-pkgrel=1
+pkgrel=7
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
