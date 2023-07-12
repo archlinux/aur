@@ -3,7 +3,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=python-survey
-pkgver=4.5.0
+pkgver=4.5.1
 pkgrel=1
 pkgdesc='A simple library for creating beautiful interactive prompts.'
 arch=('any')
@@ -20,11 +20,11 @@ makedepends=(
 	'python-sphinx_rtd_theme'
 	'python-sphinx-autodoc-typehints'
 	'python-sphinx-paramlinks')
-source=("https://files.pythonhosted.org/packages/6d/db/9a9abb6b1449bfb3014473e890abc93bc88c01a6e0203d28b8d2ca5d9774/survey-4.5.0.tar.gz")
-sha256sums=('d0aa75c718cdfd2d394ae3aad3013ec6ec8ff2080512d9cce2d18fd1092b891f')
+source=("https://files.pythonhosted.org/packages/6e/12/4d56d8130d981f59d604b1012101f045e66109c133a80ca847593d86eb15/survey-4.5.1.tar.gz")
+sha256sums=('1a72880901904a083fd6c24de76e2b680c6f0a6af3a9bcae68fefa9ba89af30a')
 
 build() {
-	cd "survey-$pkgver"
+	cd "${pkgname#python-}-${pkgver}"
 	python -m build --wheel --no-isolation
 	cd docs
 	sphinx-build -b man ./ ./_build/man/
@@ -32,11 +32,9 @@ build() {
 
 package() {
 	export PYTHONHASHSEED=0
-	cd "survey-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dvm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm644 docs/_build/man/survey.1 -t "$pkgdir/usr/share/man/man1/"
-	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/survey-$pkgver.dist-info/LICENCE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "${pkgname#python-}-${pkgver}"
+	python -m installer --destdir="${pkgdir}/" dist/*.whl
+	install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+	install -Dm644 docs/_build/man/${pkgname}.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+	install -Dm644 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
