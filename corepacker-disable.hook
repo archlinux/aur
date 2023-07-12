@@ -7,5 +7,5 @@ Target = corepacker
 [Action]
 Description = Disable Corepack
 When = PostTransaction
-Exec = /bin/corepack disable
+Exec = /bin/corepack disable && /bin/corepack disable npm
 Depends = nodejs

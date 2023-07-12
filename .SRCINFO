@@ -1,7 +1,7 @@
 pkgbase = corepacker
 	pkgdesc = Remove npm, yarn and pnpm using corepack
 	pkgver = 0.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nodejs/corepack/
 	arch = any
 	license = 
@@ -14,9 +14,7 @@ pkgbase = corepacker
 	conflicts = pnpm
 	source = corepacker-enable.hook
 	source = corepacker-disable.hook
-	source = corepacker-npm.hook
-	sha512sums = 183242451c81fec324afcab2d2d0ad2cbaa93e987c899a0a8cc3846cc2d38a85ec544d2560e252bccf7dfc3cfb94a93dfe279bf2b59d3c20d6d0efa6bdedcbda
-	sha512sums = 963becf46acf06e7560e02f96dbca9ca095629394317cc4c1cf1f80397aa564ad4807352ba32a28f891c6520535e1f7b71556571d44d0f22aef55c992a0e0136
-	sha512sums = 7d1177924600391c07f5e2f69537cd554629afa65a0131577c3fb1d29b4affaf9d3bd5222fdefa02c60f9f3447b15e0f5c90e17f3669031e6a35408357b0f171
+	sha512sums = 4a85b4e08cd3fd607ddbd1e8bd2b668cd9b7f9aa3b505fc51f2c054c63cf900e0bc824d53adc743d0e002fe745a0b95e0f739654fd97978f42aef072942ce926
+	sha512sums = 5555ef13ec739b7f0766bb25687499c50bafcaf55f15a839e76d330af2966b6640ba30b22f0684c8a94f5e1b1bde62966fe5823506238ff76ccf5b2059b90061
 
 pkgname = corepacker

@@ -8,5 +8,5 @@ Target = corepacker
 [Action]
 Description = Enable Corepack
 When = PostTransaction
-Exec = /bin/corepack enable
+Exec = /bin/corepack enable && /bin/corepack enable npm
 Depends = nodejs
