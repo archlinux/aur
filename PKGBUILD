@@ -8,7 +8,7 @@ _minor=0.16
 _build=2043.64
 _prefix="/usr/lib/jvm/java-${_major}-jetbrains"
 pkgver="${_major}.${_minor}b${_build}"
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenJDK development kit with some fixes and enhancements by JetBrains'
 arch=('x86_64')
 url="https://github.com/JetBrains/JetBrainsRuntime/releases"
@@ -17,13 +17,13 @@ depends=( 'java-runtime-common'          'ca-certificates-java'              'ja
 provides=("java-runtime=$_major"         "java-runtime-headless=$_major"     "java-environment=$_major"
           "java-runtime-openjdk=$_major" "java-runtime-headless-jre=$_major" "java-environment-openjdk=$_major")
 replaces=('intellij-jdk' 'jdk-jetbrains')
-_zipname="jbrsdk_nomod-${_major}_${_minor//./_}-linux-x64-b${_build}.tar.gz"
+_zipname="jbrsdk_jcef-${_major}_${_minor//./_}-linux-x64-b${_build}.tar.gz"
 source=("${_zipname}::https://cache-redirector.jetbrains.com/intellij-jbr/${_zipname}")
-sha256sums=('b26b16be17aa9335e871c00cc6d2a77ea544d5b8ce5a5d75ca3dd15ed198fd7c')
+sha256sums=('ef94af0904bd6a9cb091c4e05e752e502e1085ae3e8019192ff097a6c04cbd67')
 
 package() {
   find . -exec chmod g+r,o+r {} +
   mkdir -p "${pkgdir}"/usr/lib/jvm
-  cp -a jbrsdk "${pkgdir}""${_prefix}"
+  cp -a jbrsdk_jcef "${pkgdir}""${_prefix}"
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}""${_prefix}"/lib/security/cacerts
 }
