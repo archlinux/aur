@@ -1,0 +1,90 @@
+diff --unified --recursive --text jbig2enc-0.29/configure.ac jbig2enc-master/configure.ac
+--- jbig2enc-0.29/configure.ac	2017-01-30 12:27:36.000000000 -0500
++++ jbig2enc-master/configure.ac	2023-07-11 20:49:46.508050549 -0400
+@@ -73,7 +73,7 @@
+ 	fi],
+ [libtool_patch_use_rpath=$enable_rpath])
+ 
+-AC_CHECK_LIB([lept], [findFileFormatStream], [], [
++AC_CHECK_LIB([leptonica], [findFileFormatStream], [], [
+ 			echo "Error! Leptonica not detected."
+ 			exit -1
+ 			])
+Only in jbig2enc-master: .git
+diff --unified --recursive --text jbig2enc-0.29/src/jbig2.cc jbig2enc-master/src/jbig2.cc
+--- jbig2enc-0.29/src/jbig2.cc	2017-01-30 12:27:36.000000000 -0500
++++ jbig2enc-master/src/jbig2.cc	2023-07-11 20:49:46.514717176 -0400
+@@ -29,6 +29,9 @@
+ #endif
+ 
+ #include <leptonica/allheaders.h>
++#if (LIBLEPT_MAJOR_VERSION == 1 && LIBLEPT_MINOR_VERSION >= 83) || LIBLEPT_MAJOR_VERSION > 1
++#include "leptonica/pix_internal.h"
++#endif
+ 
+ #include "jbig2enc.h"
+ 
+@@ -418,8 +421,11 @@
+       if (pixl->d > 8) {
+         gray = pixConvertRGBToGrayFast(pixl);
+         if (!gray) return 1;
+-      } else {
++      } else if (pixl->d == 4 || pixl->d == 8) {
+         gray = pixClone(pixl);
++      } else {
++        fprintf(stderr, "Unsupported input image depth: %d\n", pixl->d);
++        return 1;
+       }
+       if (up2) {
+         pixt = pixScaleGray2xLIThresh(gray, bw_threshold);
+@@ -432,6 +438,10 @@
+     } else {
+       pixt = pixClone(pixl);
+     }
++    if (!pixt) {
++      fprintf(stderr, "Failed to convert input image to binary\n");
++      return 1;
++    }
+     if (verbose)
+       pixInfo(pixt, "thresholded image:");
+ 
+diff --unified --recursive --text jbig2enc-0.29/src/jbig2enc.cc jbig2enc-master/src/jbig2enc.cc
+--- jbig2enc-0.29/src/jbig2enc.cc	2017-01-30 12:27:36.000000000 -0500
++++ jbig2enc-master/src/jbig2enc.cc	2023-07-11 20:49:46.514717176 -0400
+@@ -24,6 +24,10 @@
+ #include <string.h>
+ 
+ #include <leptonica/allheaders.h>
++#if (LIBLEPT_MAJOR_VERSION == 1 && LIBLEPT_MINOR_VERSION >= 83) || LIBLEPT_MAJOR_VERSION > 1
++#include "leptonica/pix_internal.h"
++#include "leptonica/array_internal.h"
++#endif
+ 
+ #include <math.h>
+ #if defined(sun)
+@@ -206,7 +210,11 @@
+         numaSetValue(ctx->classer->naclass, i, new_representant);
+       }
+     }
++#if (LIBLEPT_MAJOR_VERSION == 1 && LIBLEPT_MINOR_VERSION >= 83) || LIBLEPT_MAJOR_VERSION > 1
++    ctx->classer->pixat->pix[new_representant]->refcount += ctx->classer->pixat->pix[second_template]->refcount;
++#else
+     pixChangeRefcount(ctx->classer->pixat->pix[new_representant],pixGetRefcount(ctx->classer->pixat->pix[second_template]));
++#endif
+   }
+   return 0;
+ }
+diff --unified --recursive --text jbig2enc-0.29/src/jbig2sym.cc jbig2enc-master/src/jbig2sym.cc
+--- jbig2enc-0.29/src/jbig2sym.cc	2017-01-30 12:27:36.000000000 -0500
++++ jbig2enc-master/src/jbig2sym.cc	2023-07-11 20:49:46.514717176 -0400
+@@ -29,6 +29,10 @@
+ #include <stdio.h>
+ 
+ #include <leptonica/allheaders.h>
++#if (LIBLEPT_MAJOR_VERSION == 1 && LIBLEPT_MINOR_VERSION >= 83) || LIBLEPT_MAJOR_VERSION > 1
++#include "leptonica/pix_internal.h"
++#include "leptonica/array_internal.h"
++#endif
+ 
+ #include <math.h>
+ 

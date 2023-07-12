@@ -1,7 +1,7 @@
 pkgbase = jbig2enc
 	pkgdesc = A JBIG2 image encoder
 	pkgver = 0.29
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/agl/jbig2enc
 	changelog = CHANGELOG
 	arch = i686
@@ -21,12 +21,12 @@ pkgbase = jbig2enc
 	source = https://github.com/agl/jbig2enc/archive/refs/tags/0.29.tar.gz
 	source = jbig2enc-pdfpy.patch
 	source = jbig2enc.1
-	source = commit-ea6a40a.patch
+	source = commit-ea0501904.patch
 	source = dpi.patch
 	sha256sums = bfcf0d0448ee36046af6c776c7271cd5a644855723f0a832d1c0db4de3c21280
 	sha256sums = a5d98fc43b2f3dc73dd1f352a439a6ae73fd085f469420aa29e47d9a4e2f40f6
 	sha256sums = c940124f102695872fae02b243e0dd99c05ecfb3ecef0a476b3e903a0db69a54
-	sha256sums = 99d086e922653cc6fa0b1cccff90f9fd1d279ecd96104e73ea281c253781718a
+	sha256sums = c2f1c825346f38747f8c85a2020b78922cc964052d78cafd7673ec456acd9dae
 	sha256sums = 5cccc44d3019367351516cc3952692fbe23bc05b7c5726553f98d5b262f78686
 
 pkgname = jbig2enc

@@ -1,3 +1,7 @@
+v0.29-5
+Updated to https://github.com/agl/jbig2enc/commit/ea050190466f5336c69c6a11baa1cb686677fcab
+Fix build with Leptonica >=1.83.
+
 v0.29-4:
 
 jbig2enc 0.29-4 contains a patch to set the dpi of images without dpi information. See here:
