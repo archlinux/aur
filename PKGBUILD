@@ -5,13 +5,13 @@
 
 pkgname=slack-electron
 pkgver=4.33.73
-pkgrel=1
+pkgrel=2
 pkgdesc="Slack Desktop (Beta) for Linux, using the system Electron package"
 arch=(x86_64)
 url="https://slack.com/downloads/linux"
 license=(custom:proprietary)
 depends=(
-  electron22
+  electron
   libxkbfile
 )
 optdepends=('libappindicator-gtk3: for notification indicator in the status bar on GNOME')
@@ -24,7 +24,7 @@ source=(
 )
 sha256sums=(
   '75748dcce4841329d8be4e930c265f29ed6a89d4d11afe769733866aa546f100'
-  '6d1bf39d356b843945e128401e053603693413b499a7b935b1ce4680a30b1386'
+  '4db11d083626a561129ca40e9cce7cc613c42223f138bb0136c62064c57471fd'
 )
 
 prepare() {
