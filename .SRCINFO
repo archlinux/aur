@@ -1,0 +1,12 @@
+pkgbase = git-backdate-git
+	pkgdesc = Backdate a commit or range of commit to a date or range of dates
+	pkgver = r24.240cd0c
+	pkgrel = 1
+	url = https://github.com/rixx/git-backdate
+	arch = any
+	depends = python
+	depends = sed
+	source = git+https://github.com/rixx/git-backdate.git
+	sha256sums = SKIP
+
+pkgname = git-backdate-git
