@@ -8,7 +8,7 @@
 
 pkgname=icaclient-beta
 pkgver=23.7.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver) [Technology Preview]"
 arch=('x86_64' 'i686' 'armv7h')
 #url='https://www.citrix.com/downloads/workspace-app/betas-and-tech-previews/workspace-app-tp-for-linux.html'
@@ -78,8 +78,8 @@ package() {
 
     # TODO To rewrite exclusive not inclusive?
     # copy directories
-    cp -rt "${pkgdir}$ICAROOT" PKCS#11 aml bcr ceb clsync config desktop gtk help icons keyboard keystore lib nls site usb util
-
+    #cp -rt "${pkgdir}$ICAROOT" PKCS#11 aml bcr ceb clsync config desktop gtk help icons keyboard keystore lib nls site usb util
+    for dir in */; do for file in $(find $dir -type f); do install -Dm755 "$file" "${pkgdir}/$ICAROOT/$file"; done done
     # Install License
     install -Dm644 -t "${pkgdir}$ICAROOT" nls/en.UTF-8/eula.txt
 
