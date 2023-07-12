@@ -1,6 +1,6 @@
 pkgbase = mtkclient-git
 	pkgdesc = Unofficial MTK reverse engineering and flash tool
-	pkgver = 1.52.r201.ga92d6cd
+	pkgver = 1.63.r6.g054dafa
 	pkgrel = 1
 	url = https://github.com/bkerler/mtkclient
 	install = mtkclient.install
@@ -25,6 +25,6 @@ pkgbase = mtkclient-git
 	source = git+https://github.com/bkerler/mtkclient.git
 	source = usb.patch
 	sha256sums = SKIP
-	sha256sums = 304b558e4d20e4a9b6df125b4eda55c010b1ec3be8dccc9de48c1aafeae60b52
+	sha256sums = 953b4111910056208b032573b0c34d886490efda06ada46f9718a70d15f891d2
 
 pkgname = mtkclient-git

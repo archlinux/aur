@@ -11,14 +11,14 @@ index 9a0199a..a2e0af9 100644
      "pyside6",
      "mock"
 diff --git a/requirements.txt b/requirements.txt
-index ade5059..4ef9d06 100644
+index 4e111b5..bff165c 100644
 --- a/requirements.txt
 +++ b/requirements.txt
-@@ -2,7 +2,6 @@ wheel
- pyusb
- pycryptodome
- colorama
--usb
- shiboken6
- pyside6
- mock
+@@ -3,7 +3,6 @@ pyusb >= 1.2.1
+ pycryptodome >= 3.15.0
+ pycryptodomex
+ colorama >= 0.4.4
+-usb >= 0.0.83.dev0
+ shiboken6 >= 6.4.0.1
+ pyside6 >= 6.4.0.1
+ mock >= 4.0.3

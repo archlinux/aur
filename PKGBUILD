@@ -1,7 +1,7 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname=mtkclient-git
-pkgver=1.52.r201.ga92d6cd
+pkgver=1.63.r6.g054dafa
 pkgrel=1
 pkgdesc="Unofficial MTK reverse engineering and flash tool"
 arch=('any')
@@ -15,7 +15,7 @@ install=mtkclient.install
 source=("git+https://github.com/bkerler/mtkclient.git"
         "usb.patch")
 sha256sums=('SKIP'
-            '304b558e4d20e4a9b6df125b4eda55c010b1ec3be8dccc9de48c1aafeae60b52')
+            '953b4111910056208b032573b0c34d886490efda06ada46f9718a70d15f891d2')
 
 pkgver() {
 	cd mtkclient
