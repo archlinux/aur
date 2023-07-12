@@ -2,7 +2,7 @@
 
 pkgname=vapor-steamos-theme-kde
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Vapor theme for KDE Plasma from SteamOS 3"
 license=("GPL2")
 arch=("any")
@@ -19,6 +19,8 @@ package() {
       ${pkgdir}/usr/share/plasma/look-and-feel/ \
       ${pkgdir}/usr/share/themes/
     mv etc/xdg ${pkgdir}/etc/
+    # Prevent Steam from automatically starting by default.
+    rm -f ${pkgdir}/etc/xdg/autostart/steam.desktop
     # This file conflicts with the "konsole" package.
     rm -f ${pkgdir}/etc/xdg/konsolerc
     mv usr/share/color-schemes ${pkgdir}/usr/share/
