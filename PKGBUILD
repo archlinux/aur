@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 prepare() {
   cd "${_gitname}"
-  sed -i "8s/${_gitname}/${_gitname} ${_version}.$(git rev-parse --short HEAD)/g" "src/rc"
+  sed -i "10s/${_gitname}/${_gitname} ${_version}.$(git rev-parse --short HEAD)/g" "src/rc"
 }
 
 pkgver() {
