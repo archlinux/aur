@@ -1,0 +1,45 @@
+{
+  "switchKey": "Key_QuoteLeft",
+  "keyMapNodes": [
+    {
+      "comment": "单击",
+      "type": "KMT_CLICK",
+      "key": "Key_Up",
+      "pos": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "switchMap": false
+    },
+    {
+      "comment": "认识",
+      "type": "KMT_CLICK",
+      "key": "Key_Left",
+      "pos": {
+        "x": 0.2,
+        "y": 0.9
+      },
+      "switchMap": false
+    },
+    {
+      "comment": "模糊",
+      "type": "KMT_CLICK",
+      "key": "Key_Down",
+      "pos": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "switchMap": false
+    },
+    {
+      "comment": "忘记",
+      "type": "KMT_CLICK",
+      "key": "Key_Right",
+      "pos": {
+        "x": 0.8,
+        "y": 0.9
+      },
+      "switchMap": false
+    }
+  ]
+}

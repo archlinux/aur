@@ -1,0 +1,25 @@
+{
+  "switchKey": "Key_QuoteLeft",
+  "keyMapNodes": [
+    {
+      "comment": "上一页",
+      "type": "KMT_CLICK",
+      "key": "Key_Left",
+      "pos": {
+        "x": 0.05,
+        "y": 0.5
+      },
+      "switchMap": false
+    },
+    {
+      "comment": "下一页",
+      "type": "KMT_CLICK",
+      "key": "Key_Right",
+      "pos": {
+        "x": 0.95,
+        "y": 0.5
+      },
+      "switchMap": false
+    }
+  ]
+}
