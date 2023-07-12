@@ -6,6 +6,7 @@
 
 #Maintainer: blackmoon3 <https://github.com/blacksky3>
 #Credits: Laurent Carlier <lordheavym@gmail.com>
+#Credits: circle <az6980522@gmail.com>
 
 pkgname=libclc10-minimal
 pkgdesc='Library requirements of the OpenCL C programming language'
