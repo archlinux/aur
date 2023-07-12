@@ -2,7 +2,7 @@
 _pkgname=hyprshade
 pkgname=${_pkgname}-git
 pkgver=0.2.0.r0.gd61ace1
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
 url="https://github.com/loqusion/hyprshade"
@@ -46,5 +46,5 @@ package() {
 	export PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname/" LICENSE
-	install -Dm0644 -t "$pkgdir/usr/share/hyprshade/shaders/" shaders/*
+	install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/shaders/" shaders/*
 }
