@@ -6,14 +6,10 @@ pkgbase = python-hgapi
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python
 	source = https://files.pythonhosted.org/packages/36/db/6ad72214343e361c3fae732230e64bb7a5e4580002027782a4406748aee6/hgapi-1.7.4.tar.gz
 	source = LICENSE
 	sha256sums = 0b1f20a6a8cefe9e9f72b14a0823b7abdbc88d19cdf815211849067d9ac27ebc
 	sha256sums = 34a43d8b2e06c3c6f3cdec53c705424d4af60e4c59642c8239cc5c62e74eaeed
 
 pkgname = python-hgapi
-	depends = python
-
-pkgname = python2-hgapi
-	depends = python2
