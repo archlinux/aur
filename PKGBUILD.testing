@@ -6,7 +6,7 @@ _commit=
 pkgver=8.0.2.3  # pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.1
-pkgrel=7
+pkgrel=8
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -308,9 +308,9 @@ package() {
     # by the patched proton script. Bundling the helps to avoid making mingw-w64-gcc package
     # a runtime dependency.
     cp /usr/i686-w64-mingw32/bin/{libgcc_s_dw2-1.dll,libwinpthread-1.dll} \
-        "$_compatdir/${pkgname}"/files/lib/vkd3d/
+        "$_compatdir/${pkgname}"/dist/lib/vkd3d/
     cp /usr/x86_64-w64-mingw32/bin/{libgcc_s_seh-1.dll,libwinpthread-1.dll} \
-        "$_compatdir/${pkgname}"/files/lib64/vkd3d/
+        "$_compatdir/${pkgname}"/dist/lib64/vkd3d/
 
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
     mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
