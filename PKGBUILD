@@ -3,12 +3,13 @@
 
 pkgname=scalc
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A very simple stack-based calculator that aims to be small, flexible, and extensible.'
 arch=('any')
 url="https://git.sr.ht/~ariadnavigo/${pkgname}"
 license=('MIT')
-depends=(sline)
+depends=('sline')
+makedepends=('scdoc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha512sums=('af2de795908e706b83fd747eee5db84201f73480640404826bf1000df4fcdf242f84ad23c1e5c0e1e9661bac0fb75ae43ae3a6a2c4980fcf82110e740c2497c8')
 
