@@ -1,4 +1,4 @@
-From ac21f36388b980259efc017944c606457c8e990e Mon Sep 17 00:00:00 2001
+From 8c9dd5d0c85c862301fa3c3b69cab100cbcd8d95 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 12 Jul 2023 03:16:34 +0300
 Subject: [PATCH 4/4] AUR Copy DLL dependencies of 32bit libvkd3d dlls into the
@@ -16,19 +16,23 @@ a runtime dependency.
     6a4b4     121  __udivdi3
     6a4c0     123  __umoddi3
 ---
- proton | 5 +++++
- 1 file changed, 5 insertions(+)
+ proton | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
 diff --git a/proton b/proton
-index c581144f..695ea10f 100755
+index c581144f..9b6047c9 100755
 --- a/proton
 +++ b/proton
-@@ -1083,6 +1083,11 @@ class CompatData:
+@@ -1083,6 +1083,15 @@ class CompatData:
                          prefix=self.prefix_dir, track_file=tracked_files, link_debug=True)
                  try_copy(g_proton.lib_dir + "vkd3d/libvkd3d-shader-1.dll", "drive_c/windows/syswow64",
                          prefix=self.prefix_dir, track_file=tracked_files, link_debug=True)
-+                #copy the DLL dependencies for 32 bit libraries
++                #copy mingw DLL dependencies for libvkd3d
++                try_copy(g_proton.lib64_dir + "vkd3d/libgcc_s_seh-1.dll", "drive_c/windows/system32",
++                        prefix=self.prefix_dir, track_file=tracked_files, link_debug=True)
 +                try_copy(g_proton.lib_dir + "vkd3d/libgcc_s_dw2-1.dll", "drive_c/windows/syswow64",
++                        prefix=self.prefix_dir, track_file=tracked_files, link_debug=True)
++                try_copy(g_proton.lib64_dir + "vkd3d/libwinpthread-1.dll", "drive_c/windows/system32",
 +                        prefix=self.prefix_dir, track_file=tracked_files, link_debug=True)
 +                try_copy(g_proton.lib_dir + "vkd3d/libwinpthread-1.dll", "drive_c/windows/syswow64",
 +                        prefix=self.prefix_dir, track_file=tracked_files, link_debug=True)

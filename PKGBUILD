@@ -6,7 +6,7 @@ _commit=610dead69d75fe548b4349dadb3ab04e7e466095
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.0
-pkgrel=6
+pkgrel=7
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -309,6 +309,9 @@ build() {
 package() {
     cd build
 
+    # Delete the intermediate build directories to free space (mostly for my github actions)
+    rm -rf dst-* obj-* src-* pfx-*
+
     local _compatdir="$pkgdir/usr/share/steam/compatibilitytools.d"
     mkdir -p "$_compatdir/${pkgname}"
     rsync --delete -arx dist/* "$_compatdir/${pkgname}"
@@ -320,6 +323,8 @@ package() {
     # a runtime dependency.
     cp /usr/i686-w64-mingw32/bin/{libgcc_s_dw2-1.dll,libwinpthread-1.dll} \
         "$_compatdir/${pkgname}"/files/lib/vkd3d/
+    cp /usr/x86_64-w64-mingw32/bin/{libgcc_s_seh-1.dll,libwinpthread-1.dll} \
+        "$_compatdir/${pkgname}"/files/lib64/vkd3d/
 
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
     mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
@@ -382,7 +387,7 @@ sha256sums=('SKIP'
             'ce553d398f64ba06d97396eb83b6b467945c156d5aa43dbe8ace8b0998dc388c'
             'e7d35e025f596b23a550f809ec206c43f795e3aa1422d52642cfffbd7e006163'
             'e9c67b73dc6aec00577ba1c7560d7b2dfb90f97585f83656788e5bd01e20f64c'
-            '5f4d6735d8517ad63bc2753045d2227c34df212c195e6858e124307b025d7731'
+            '71a8337c43da04f50246d779c1cfdcbe88d2a74a7c02fd8953671932b234850c'
             '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f')
 # Optional patches
 sha256sums+=(
