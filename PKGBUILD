@@ -8,7 +8,7 @@
 _pkgname=armagetronad
 pkgname=${_pkgname}-git
 pkgver=r5415.f775378e
-pkgrel=1
+pkgrel=2
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
 url='http://armagetronad.net/'
@@ -18,10 +18,8 @@ optdepends=('python: language updater' 'glew: Graphics on X11' 'glew-wayland: Gr
 makedepends=('boost')
 provides=('armagetronad')
 conflicts=('armagetronad')
-source=("git+https://gitlab.com/armagetronad/armagetronad.git"
-        "${pkgname}.patch.2023")
-sha1sums=('SKIP'
-          '93ec913320e7b48889088634883d72a02e7b4a20')
+source=("git+https://gitlab.com/armagetronad/armagetronad.git")
+sha1sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -45,10 +43,13 @@ build() {
        --enable-automakedefaults \
        --disable-uninstall
 
-    cd "${srcdir}"
-    patch -Np1 -i "armagetronad-git.patch.2023"
+    sed -i -r \
+      -e 's/^LIBS = (.*)/LIBS = \1 \/usr\/lib\/libabsl_log_internal_message.so/' \
+      -e 's/^LIBS = (.*)/LIBS = \1 \/usr\/lib\/libabsl_log_internal_check_op.so/' \
+      -e 's/^LIBS = (.*)/LIBS = \1 \/usr\/lib\/libabsl_raw_logging_internal.so/' \
+      -e 's/^LIBS = (.*)/LIBS = \1 \/usr\/lib\/libabsl_spinlock_wait.so/' \
+    src/Makefile
 
-    cd "${srcdir}/${_pkgname}"
     make
 }
 
@@ -57,7 +58,7 @@ package() {
     make DESTDIR="${pkgdir}" install
     install -D -m 644 "desktop/${_pkgname}-armagetronad.desktop" "${pkgdir}/usr/share/applications/${_pkgname}-armagetronad.desktop"
     for directory in 16x16 32x32 48x48; do
-       ln -s /usr/share/armagetronad/desktop/icons/${directory}/armagetronad.png "$pkgdir/usr/share/icons/hicolor/${directory}/apps/armagetronad.png"
+      ln -s /usr/share/armagetronad/desktop/icons/${directory}/armagetronad.png "$pkgdir/usr/share/icons/hicolor/${directory}/apps/armagetronad.png"
     done
     mv "${pkgdir}/usr/bin/armagetronad" "${pkgdir}/usr/bin/armagetronad_bin"
     printf "#!/bin/bash\n/usr/bin/armagetronad_bin --configdir /etc/armagetronad --datadir /usr/share/armagetronad" > "${pkgdir}/usr/bin/armagetronad"
