@@ -1,0 +1,15 @@
+pkgbase = git-assembler-git
+	pkgdesc = git-assembler can perform automatic merge and rebase operations following a simple declarative script. Like “make”, for branches.
+	pkgver = v1.5.r1.a304409
+	pkgrel = 1
+	url = https://www.thregr.org/~wavexx/software/git-assembler
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	provides = git-assembler
+	conflicts = git-assembler
+	source = git-assembler::git+https://gitlab.com/wavexx/git-assembler.git
+	md5sums = SKIP
+
+pkgname = git-assembler-git
