@@ -4,20 +4,21 @@
 
 pkgname=openlp
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Church presentation software."
 arch=('any')
 url='http://openlp.org/'
 license=('GPLv2')
-makedepends=('qt5-tools')
-depends=('python>=3.10' 'python<3.11' 'python-pyqt5' 'phonon-qt5'
+makedepends=('qt5-tools' 'python-pip' 'python-setuptools')
+depends=('python>=3.10' 'python<3.12' 'python-pyqt5' 'phonon-qt5'
          'python-chardet' 'python-lxml' 'python-qrcode'
-         'python-beautifulsoup4' 'python-pyenchant'
-         'python-alembic' 'qt5-multimedia' 'qt5-webkit' 'python-pyicu')
+         'python-beautifulsoup4' 'python-pyenchant' 'python-qtawesome'
+         'python-alembic' 'qt5-multimedia' 'qt5-webkit' 'python-pyicu'
+         'python-waitress' 'python-websockets' 'python-pillow<10.0'
+         'python-pymupdf')
 
 optdepends=('libreoffice-fresh: Display impress presentations'
-            'vlc: Play multimedia'
-            'mupdf: Display pdfs'
+            'python-vlc: Multimedia playback'
             'python-mysql-connector: Use a mysql/mariadb database'
             'python-psycopg2: Use a postgresql database')
 install=openlp.install
@@ -30,9 +31,10 @@ package() {
   python setup.py install --root="${pkgdir}/" --optimize=1
 
   #remove tests
-  rm -rf "${pkgdir}/usr/lib/python3.10/site-packages/tests"
+  pyVer=$(python --version | cut -d ' ' -f 2 | grep -Eo '[0-9]\.[0-9]+')
+  rm -rf "${pkgdir}/usr/lib/python${pyVer}/site-packages/tests"
 
-  echo "${pkgver}" > "${pkgdir}/usr/lib/python3.10/site-packages/openlp/.version"
+  echo "${pkgver}" > "${pkgdir}/usr/lib/python${pyVer}/site-packages/openlp/.version"
 
   install -Dm0755 "${srcdir}/openlp.sh" "${pkgdir}/etc/profile.d/openlp.sh"
   install -Dm0644 "resources/openlp.desktop" "${pkgdir}/usr/share/applications/openlp.desktop"
