@@ -5,7 +5,7 @@ _pkgname=dragonwell
 pkgname=jdk$_java-$_pkgname-extended-bin
 pkgver=8.15.16
 _pkgver=8u372
-pkgrel=1
+pkgrel=2
 pkgdesc="an in-house OpenJDK implementation at Alibaba (Extended Edition)"
 arch=("x86_64" "aarch64")
 url="https://dragonwell-jdk.io/"
@@ -19,7 +19,7 @@ provides=(
     "java-runtime-headless=${_java}"
     "java-runtime-headless-openjdk=${_java}"
 )
-source=("LICENSE::https://github.com/dragonwell-project/dragonwell8/blob/master/LICENSE")
+source=("LICENSE::https://github.com/dragonwell-project/dragonwell8/raw/master/LICENSE")
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-extended-${pkgver}_jdk${_pkgver}-ga/Alibaba_Dragonwell_Extended_${pkgver}_x64_linux.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/alibaba/dragonwell8/releases/download/dragonwell-extended-${pkgver}_jdk${_pkgver}-ga/Alibaba_Dragonwell_Extended_${pkgver}_aarch64_linux.tar.gz")
 sha256sums=('4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726')
@@ -30,6 +30,5 @@ package() {
     install -d $pkgdir/usr/lib/jvm/java-8-dragonwell-extended
     mv $srcdir/dragonwell-$pkgver/* $pkgdir/usr/lib/jvm/java-8-dragonwell-extended
     rm $pkgdir/usr/lib/jvm/java-8-dragonwell-extended/src.zip
-    install -d $pkgdir/usr/share/licenses/java-8-dragonwell-extended
-    mv $srcdir/LICENSE $pkgdir/usr/share/licenses/java-8-dragonwell-extended
+    install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/java-8-dragonwell-extended/LICENSE
 }
