@@ -1,32 +1,27 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
-_name="workalendar"
-_module="$_name"
-
-pkgname=("python-$_module")
+pkgname=("python-workalendar")
 pkgdesc="Worldwide holidays and working days helper and toolkit"
-pkgver="16.3.0"
+pkgver="17.0.0"
 pkgrel=1
 url="https://github.com/novafloss/workalendar"
 license=('MIT')
 arch=('any')
 makedepends=("python-pbr>=1.9")
+depends=('python-lunardate'
+         'python-pytz'
+         'python-dateutil'
+         'python-pyephem')
 source=("https://github.com/novafloss/workalendar/archive/${pkgver}.tar.gz")
-sha256sums=('0c3e0ad5f0b2c5403cdde31a4af3e7856f8bc67fe9447400abc49f612628d2fb')
+sha256sums=('a6bead4be0dfc9f5923221227028b5ba488ce90973d356418cda1859e7f97fa5')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "workalendar-$pkgver"
   python setup.py build
 }
 
 package_python-workalendar(){
-  depends=('python-lunardate'
-           'python-pycalverter'
-           'python-pytz'
-           'python-dateutil'
-           'python-pyephem')
-
-  cd "$_name-$pkgver"
+  cd "workalendar-$pkgver"
   python setup.py install --root="${pkgdir}/" --optimize=1
   install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

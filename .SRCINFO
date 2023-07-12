@@ -1,17 +1,16 @@
 pkgbase = python-workalendar
 	pkgdesc = Worldwide holidays and working days helper and toolkit
-	pkgver = 16.3.0
+	pkgver = 17.0.0
 	pkgrel = 1
 	url = https://github.com/novafloss/workalendar
 	arch = any
 	license = MIT
 	makedepends = python-pbr>=1.9
-	source = https://github.com/novafloss/workalendar/archive/16.3.0.tar.gz
-	sha256sums = 0c3e0ad5f0b2c5403cdde31a4af3e7856f8bc67fe9447400abc49f612628d2fb
-
-pkgname = python-workalendar
 	depends = python-lunardate
-	depends = python-pycalverter
 	depends = python-pytz
 	depends = python-dateutil
 	depends = python-pyephem
+	source = https://github.com/novafloss/workalendar/archive/17.0.0.tar.gz
+	sha256sums = a6bead4be0dfc9f5923221227028b5ba488ce90973d356418cda1859e7f97fa5
+
+pkgname = python-workalendar
