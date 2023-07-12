@@ -1,6 +1,6 @@
 #!/bin/bash
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron /opt/houdunren-camera/app.asar "$@"
+    exec electron25 /opt/houdunren-camera/app.asar "$@"
 else
-    exec electron --no-sandbox /opt/houdunren-camera/app.asar "$@"
+    exec electron25 --no-sandbox /opt/houdunren-camera/app.asar "$@"
 fi
