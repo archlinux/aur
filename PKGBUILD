@@ -1,6 +1,6 @@
 # Maintainer: Achmad Fathoni<fathoni(dot)id(at)gmail(dot)com>
 pkgname=python-ouster-sdk
-pkgver=20230403
+pkgver=20230710
 pkgrel=2
 pkgdesc="Ouster Python SDK"
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=('python-setuptools' 'python-pytest' 'python-build' 'python-installe
 depends=('python' 'python-typing_extensions' 'libtins' 'python-numpy' 'glew' 'glfw-x11' 'spdlog')
 checkdepends=('python-tox')
 source=(${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha256sums=('414a8118fb5cecfdfd0f8e72b27eca56456b99fc752325c7351dca2846ef0aca')
+sha256sums=('07e64ad3dc831924a3c57aae6a36e3297937a1231689dc4344a841b7a24052bb')
 _dir=ouster_example-${pkgver}/python
 
 prepare() {
