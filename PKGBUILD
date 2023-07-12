@@ -7,13 +7,13 @@
 #  printf "'SKIP'%.0s\n" {1..43}
 pkgname=ossia-score-git
 pkgver=r10561.f50f60fc9
-pkgrel=1
+pkgrel=2
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
 url="https://ossia.io"
 license=('GPLv3')
-depends=('clang' 'lld' 'boost' 'qt6-base' 'qt6-imageformats' 'qt6-svg' 'qt6-websockets' 'qt6-quickcontrols2' 'qt6-serialport' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'ffmpeg' 'portaudio' 'jack')
-makedepends=('git' 'cmake')
+depends=('clang' 'qt6-base' 'qt6-imageformats' 'qt6-svg' 'qt6-websockets' 'qt6-serialport' 'qt6-declarative' 'qt6-scxml' 'qt6-shadertools' 'ffmpeg' 'portaudio' 'jack')
+makedepends=('git' 'cmake' 'lld' 'boost')
 optdepends=('pipewire' 'faust' 'lilv' 'suil' 'lv2' 'sdl2' 'libfreenect2' 'ysfx-git' 'leap-motion-sdk' 'leap-motion-driver')
 provides=('ossia-score-git')
 conflicts=('ossia-score')
