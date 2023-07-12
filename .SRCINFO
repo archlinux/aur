@@ -1,6 +1,6 @@
 pkgbase = i3menu
 	pkgdesc = wrapper for dmenu(-bud) optimized for i3fyra
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/budlabs/i3menu
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = i3menu
 	depends = gawk
 	optdepends = xdotool
 	optdepends = i3ass
-	source = https://github.com/budlabs/i3menu/archive/0.3.0/i3menu-0.3.0.tar.gz
-	sha256sums = 632885adc0f30c81150e31e93a891da8295aba12e8534aa412c2a9d4c3bf4995
+	source = https://github.com/budlabs/i3menu/archive/0.3.1/i3menu-0.3.1.tar.gz
+	sha256sums = 59783958da95836469ab822000b916b2e669e9207cab297fde0087a8d67399b6
 
 pkgname = i3menu
