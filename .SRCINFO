@@ -1,6 +1,6 @@
 pkgbase = git-annex-standalone-nightly
 	pkgdesc = Manage files with git, without checking their contents into git. Standalone nightly autobuild version, with no Haskell dependency.
-	pkgver = 10.20230627+g04313e1fe
+	pkgver = 10.20230627+gd733b8ed0
 	pkgrel = 1
 	url = https://git-annex.branchable.com/
 	arch = x86_64
@@ -22,7 +22,9 @@ pkgbase = git-annex-standalone-nightly
 	conflicts = git-annex
 	source = git-annex-standalone-amd64.tar.gz::https://downloads.kitenet.net/git-annex/autobuild/amd64/git-annex-standalone-amd64.tar.gz
 	source = git-annex.desktop
-	sha256sums = SKIP
+	source = git-annex-assistant.desktop
+	sha256sums = 65f02397c8fec833d16e4d55eb6b98678fd0ad91f6ddc6947fa43077be9d7824
 	sha256sums = 39c60aea8b8be8bab6639614542de02c4014f43867ee2afe75737f772484178d
+	sha256sums = 85f0ab00bc256cfc2cf37d18296b338022a07ba03c5157d6960e8e427d8353cd
 
 pkgname = git-annex-standalone-nightly

@@ -1,7 +1,7 @@
 # Maintainer: Yann Büchau <nobodyinperson at posteo de>
 # Contributor: Thomas Jost <schnouki@schnouki.net>
 pkgname=git-annex-standalone-nightly
-pkgver=10.20230627+g04313e1fe
+pkgver=10.20230627+gd733b8ed0
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone nightly autobuild version, with no Haskell dependency."
 arch=(x86_64 aarch64)
@@ -28,9 +28,11 @@ rm -f "${_tarball}"
 source=(
     "git-annex-standalone-${_arch}.tar.gz::$_tarball_url"
     git-annex.desktop
+    git-annex-assistant.desktop
 )
-sha256sums=('SKIP'
-            '39c60aea8b8be8bab6639614542de02c4014f43867ee2afe75737f772484178d')
+sha256sums=('65f02397c8fec833d16e4d55eb6b98678fd0ad91f6ddc6947fa43077be9d7824'
+            '39c60aea8b8be8bab6639614542de02c4014f43867ee2afe75737f772484178d'
+            '85f0ab00bc256cfc2cf37d18296b338022a07ba03c5157d6960e8e427d8353cd')
 
 pkgver() {
   cd "$srcdir/git-annex.linux"
@@ -49,8 +51,7 @@ package() {
   install -Dm644 logo.svg "$pkgdir/usr/share/pixmaps/git-annex.svg"
   install -Dm644 logo_16x16.png "$pkgdir/usr/share/pixmaps/git-annex_16x16.png"
   install -Dm644 "$startdir"/git-annex.desktop -t "$pkgdir"/usr/share/applications
-  mkdir -p "$pkgdir"/etc/xdg/autostart
-  ln -rsf "$pkgdir"/usr/share/applications/git-annex.desktop "$pkgdir"/etc/xdg/autostart
+  install -Dm644 "$startdir"/git-annex-assistant.desktop "$pkgdir"/etc/xdg/autostart/git-annex.desktop
 
   for f in usr/share/man/man1/*.1; do
     install -Dm644 $f "$pkgdir/$f"
