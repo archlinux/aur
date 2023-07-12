@@ -19,7 +19,7 @@ depends=(
 makedepends=(git python-{build,installer})
 provides=($pkgname)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('a1fd41466df8425e9750e8533bb9b83b240167e17a6af2c69d9e76059cb4a814')
+sha256sums=('2bdc70d98f8bf6a5523b3466a1e356624089b6058354af03381abef0e6e4f486')
 
 build() {
 	cd "$pkgname-$pkgver"
