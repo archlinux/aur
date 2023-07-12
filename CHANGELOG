@@ -1,3 +1,7 @@
+v1.6 (2023/07/12):
+- ncurses is a runtime dependency because `tput` is used in the .install script
+- the config file is now listed in the `backup` PKGBUILD array to respect the user configuration on package upgrades
+
 v1.5 (2020/09/20):
 - rsync is no longer a dependency of this package.
   - The previous version only stopped using it, without removing it as a dependency.
