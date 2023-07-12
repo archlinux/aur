@@ -21,7 +21,7 @@ options=(!strip)
 install=
 changelog=
 source=("$pkgname-v$pkgver.zip::https://github.com/github/codeql-cli-binaries/releases/download/v$pkgver/codeql-linux64.zip")
-sha256sums=('1c403df7e61d9d2ae063e485993703e9b803473f823c238780bffa4d503ae76a')
+sha256sums=('b990b9d92e8ba2cdc7cc3144adcb4d19d392dbb27864c2136ec25dc2ba6e9403')
 
 noextract=()
 
