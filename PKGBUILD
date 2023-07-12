@@ -1,15 +1,16 @@
-# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
-# Contributor : Steven Guikal <aur-void@fluix.one>
+# Maintainer: Steven Guikal <aur-void@fluix.one>
+# Co-Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 pkgname=sline
-pkgver=2.0.2
-pkgrel=2
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='Simple line-editing and command history library.'
-arch=(x86_64)
-url='https://sr.ht/~ariadnavigo/sline/'
+arch=('any')
+url="https://git.sr.ht/~ariadnavigo/${pkgname}"
 license=('MIT')
-depends=(glibc)
-source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~ariadnavigo/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('e27d0902f46827820c5a28bfb5a4cf71efbee227e1f799211fbaf80542eb5b1c3a70120e7587fd28fc81033d40420ba3fd2b162ba45e58656c2c4bd5e96ea799')
+depends=('glibc')
+makedepends=('scdoc')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha512sums=('a3a9e79eb4d29efc6d1822bdb1c8a04ad3af445fb86588e0d8ccafa2e2ee4880b3cd6b4f0982d10c68f2a37476b124bfa96a69433b42c57530ff20527170f258')
 
 build() {
   cd "${pkgname}-${pkgver}"

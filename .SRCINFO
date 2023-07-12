@@ -1,12 +1,13 @@
 pkgbase = sline
 	pkgdesc = Simple line-editing and command history library.
-	pkgver = 2.0.2
-	pkgrel = 2
-	url = https://sr.ht/~ariadnavigo/sline/
-	arch = x86_64
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://git.sr.ht/~ariadnavigo/sline
+	arch = any
 	license = MIT
+	makedepends = scdoc
 	depends = glibc
-	source = sline-2.0.2.tar.gz::https://git.sr.ht/~ariadnavigo/sline/archive/2.0.2.tar.gz
-	sha512sums = e27d0902f46827820c5a28bfb5a4cf71efbee227e1f799211fbaf80542eb5b1c3a70120e7587fd28fc81033d40420ba3fd2b162ba45e58656c2c4bd5e96ea799
+	source = sline-3.0.0.tar.gz::https://git.sr.ht/~ariadnavigo/sline/archive/3.0.0.tar.gz
+	sha512sums = a3a9e79eb4d29efc6d1822bdb1c8a04ad3af445fb86588e0d8ccafa2e2ee4880b3cd6b4f0982d10c68f2a37476b124bfa96a69433b42c57530ff20527170f258
 
 pkgname = sline
