@@ -1,3 +1,4 @@
+# Maintainer: Jake Howard <aur at theorangeone dot net>
 # Maintainer: Tomasz Knapik <hi@tmkn.org>
 pkgname=buckup
 pkgver=0.1a7
