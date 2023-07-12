@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Sanfilippo <jonalinux dot uk at gmail dot com>
 
 pkgname=clean
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Command for cleaning orphans, cache, trash"
 arch=('any')
