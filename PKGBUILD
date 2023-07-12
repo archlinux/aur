@@ -1,11 +1,10 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
 pkgbase=python-pycalverter
-pkgname=('python-pycalverter'
-	 'python2-pycalverter')
+pkgname=('python-pycalverter')
 pkgdesc="Python Calendar Converter"
 pkgver=1.6.1
-pkgrel=5
+pkgrel=6
 url="https://pypi.org/project/pyCalverter/"
 license=('GPLv2')
 arch=('any')
@@ -16,11 +15,5 @@ package_python-pycalverter(){
 	depends=('python')
 	cd "${srcdir}/pyCalverter-${pkgver}"
 	python setup.py install --root="${pkgdir}" --optimize=1
-}
-
-package_python2-pycalverter(){
-	depends=('python2')
-        cd "${srcdir}/pyCalverter-${pkgver}"
-        python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
