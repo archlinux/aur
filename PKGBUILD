@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=duolingo-desktop-bin
 _appname="dl-desktop"
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="Desktop client for the Duolingo language learning application"
 arch=("x86_64")
 url="https://github.com/hmlendea/dl-desktop"
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}-appimage" "${_appname}" "${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_appname}_${pkgver}_linux.zip"
     "${pkgname%-bin}.png::https://raw.githubusercontent.com/hmlendea/dl-desktop/master/icon.png"
     "${pkgname%-bin}.sh")
-sha256sums=('a1e84de8f5aa15b6d4e31bead8fdb346ed068bca7efe0541da0f2bf1497aae1d'
+sha256sums=('6e6b7f0193089062e996ce1ebd3ece2273bc996380b0e56374666b93cf2b88ac'
             '67642cd03a241ff097a83800f39e442c533e8b7a92a9235c0375ef866a708f0e'
             'c010ebbd1e87e4123ac908cadae3e1129ac0f0dd2ef97c255f6300e841e21571')
 package() {
