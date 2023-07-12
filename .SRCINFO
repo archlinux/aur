@@ -1,20 +1,17 @@
 pkgbase = python-matplotlib-label-lines
-	pkgdesc = Label lines with matplotlib.
-	pkgver = 0.3.4
+	pkgdesc = Label lines in matplotlib
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/cphyc/matplotlib-label-lines
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	makedepends = python-wheel
 	depends = python-matplotlib
-	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/m/matplotlib-label-lines/matplotlib-label-lines-0.3.4.tar.gz
-	sha256sums = af8b8f00bedf25ce081698ac5b91342fe3cba821ab33466848a7ab411230d178
+	depends = python-more-itertools
+	source = https://pypi.org/packages/source/m/matplotlib_label_lines/matplotlib_label_lines-0.6.0.tar.gz
+	sha512sums = af16901de94daa31c13d64479ef948cb0392b09ac7bc133f407a04986b620958889855ea0cf363f652ef1a1d1fb1eac7e5a7364ca45c55521e22868c09b635c1
 
 pkgname = python-matplotlib-label-lines
-
-pkgname = python2-matplotlib-label-lines
-	depends = python2-matplotlib
-	depends = python2-numpy
-
