@@ -2,17 +2,17 @@
 # Maintainer: Rafael Silva (perigoso) <perigoso at riseup.net>
 
 pkgname='firefox-extension-enhancer-for-youtube-bin'
-pkgver=2.0.119
+pkgver=2.0.119.1
 pkgrel=1
 pkgdesc='Take control of YouTube and boost your user experience!'
 arch=('any')
 url='https://www.mrfdev.com/enhancer-for-youtube'
 license=('custom:None')
 depends=('firefox')
-_source_file_id=4131648
+_source_file_id=4134489
 source=('enhancer-for-youtube.xpi'::"https://addons.mozilla.org/firefox/downloads/file/${_source_file_id}/enhancer_for_youtube-${pkgver}.xpi")
 noextract=('enhancer-for-youtube.xpi')
-sha256sums=('8be7094eecf9130222631839422ccad8219d5f76f6fa352c6e7ab3e10d0b6261')
+sha256sums=('0ecdbe7e66d6dd6d459bc58c68d35f86612502feb30edd2c10262b4b87f1f3a2')
 
 package() {
   install -Dm644 'enhancer-for-youtube.xpi' "${pkgdir}/usr/lib/firefox/browser/extensions/enhancer-for-youtube.xpi"
