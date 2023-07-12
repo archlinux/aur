@@ -3,7 +3,7 @@
 
 pkgname=qt5-webkit-git
 pkgver=5.212.0.alpha4.r13.gac8ebc6c3
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://github.com/qtwebkit/qtwebkit'
 license=(GPL3 LGPL3 FDL custom)

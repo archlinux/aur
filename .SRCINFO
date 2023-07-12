@@ -1,7 +1,7 @@
 pkgbase = qt5-webkit-git
 	pkgdesc = Classes for a WebKit2 based implementation and a new QML API
 	pkgver = 5.212.0.alpha4.r13.gac8ebc6c3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qtwebkit/qtwebkit
 	arch = x86_64
 	license = GPL3
