@@ -1,6 +1,6 @@
 # Maintainer: Obscurely <adrian.obscurely@protonmail.com>
 pkgname=tsfh
-pkgver=0.58.0
+pkgver=0.73.0
 pkgrel=1
 pkgdesc="CHANGEME_DESC"
 arch=('x86_64')
