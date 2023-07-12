@@ -2,7 +2,6 @@
 # Contributor: Cristophero <cristophero.alvarado@gmail.com>
 pkgname=pseint-bin
 _pkgname=${pkgname%-*}
-#pkgver=20210609
 pkgver=20230517
 pkgrel=1
 pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
@@ -15,9 +14,10 @@ noextract=(creator.psz)
 source=("${_pkgname}-${pkgver}.tgz::https://cfhcable.dl.sourceforge.net/project/${_pkgname}/${pkgver}/${_pkgname}-l64-${pkgver}.tgz")
 sha256sums=('1208bbf2247f0b5f89c0b6f85ee0ab9816a89c102a6d4ab7a041109b1425cb4d')  # 'makepkg -g' to generate it.
 
+# Función 'prepare': Prepara el entorno antes de compilar el paquete.
 prepare(){
-
     cd ${_pkgname}
+    # Utilidad 'gendesk' para generar el archivo .desktop.
     gendesk -f -n \
         --pkgname="${_pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -30,20 +30,24 @@ prepare(){
         --categories='Development,Education'
 }
 
+# Función 'pkgver': Devuelve la versión del paquete.
 pkgver(){
-
     cd ${_pkgname}
     cat version
 }
 
+# Función 'package': Empaqueta los archivos compilados en el paquete final.
 package(){
-
     cd ${_pkgname}
+    # Crear ruta de destino transitoria.
     mkdir -p ${pkgdir}/opt/${_pkgname}
+    # Copiar el contenido compilado a la ruta de destino transitoria.
     cp -rv . ${pkgdir}/opt/${_pkgname}
-
+    # Instala el archivo .desktop en la ubicación (-t) adecuada.
     install -Dvm644 "${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    # Instala el archivo de licencia en la ubicación adecuada.
     install -Dvm644 "imgs/icon.icns" "${pkgdir}/usr/share/pixmaps/${_pkgname}.icns"
+    # Crea un archivo ejecutable en la ubicación /usr/bin/${pkgname} que ejecuta el programa wxPSeInt(pseint).
     install -Dvm755 <(echo -e '#!/usr/bin/env bash\n/opt/pseint/wxPSeInt') ${pkgdir}/usr/bin/${_pkgname}
 }
 
