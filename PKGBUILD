@@ -1,7 +1,12 @@
-# Maintainer: Charles L <charliehogger31@gmail.com>
+# Maintainer: Serge K <arch@phnx47.net>
+# Contributor: Charles L <charliehogger31@gmail.com>
 # Contributor: Funami
+
+# For Issues, Pull Requests
+# https://github.com/phnx47/pkgbuilds
+
 pkgname=jetbrains-fleet
-pkgver=1.19.111
+pkgver=1.20.134
 pkgrel=1
 pkgdesc="Next-generation IDE by JetBrains"
 arch=('x86_64')
@@ -10,7 +15,7 @@ license=('custom:jetbrains')
 source=("https://download-cdn.jetbrains.com/fleet/installers/linux_x64/Fleet-${pkgver}.tar.gz"
         "${pkgname}.desktop"
         'LICENSE')
-sha256sums=('a4011795c00faa3ddc707ef3c49b02d660dccc7178d0f84253ac311d3dcbaea1'
+sha256sums=('4de59202b959c2aea53964d35634555858b57d608a543121f669cb4464a4df96'
             'af62a597c595edc5b4a8ea3f80ab0a18ea953bfc2d4feaf30e41c6e0dd23d426'
             '823bce80facc46ff161e0a800bdda27452e8beeb396bb163af560e9e6c796c75')
 
