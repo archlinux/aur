@@ -1,15 +1,15 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 
 pkgname=geysermc-bin
-pkgver=2.1.0.SNAPSHOT.a612be6
+pkgver=2.1.2.SNAPSHOT.340be2d
 pkgrel=1
-pkgdesc="Geyser is a bridge between Minecraft: Bedrock Edition and Minecraft: Java Edition, closing the gap from those wanting to play true cross-platform."
+pkgdesc="Geyser is a bridge between Minecraft: Bedrock Edition and Minecraft: Java Edition, closing the gap from those wanting to play true cross-platform. Unofficial AUR version."
 arch=('any')
 url="https://github.com/GeyserMC/Geyser"
 license=('MIT')
 backup=('etc/geysermc/config.yml')
 depends=('java-runtime')
-source=("https://ci.opencollab.dev//job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/standalone/build/libs/Geyser-Standalone.jar" "geysermc.service")
+source=("Geyser-Standalone.jar::https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/standalone" "geysermc.service")
 md5sums=('SKIP'
          '7043a1445d39f7ee753c9c1513472890')
 
