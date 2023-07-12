@@ -1,7 +1,8 @@
 pkgbase = virtwold
 	pkgdesc = Wake-on-LAN for libvirt based VMs
 	pkgver = 23.03.0
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/ScottESanDiego/virtwold
 	arch = x86_64
 	makedepends = git
 	makedepends = go
