@@ -1,7 +1,7 @@
 # Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 
 pkgname=libodb-qt
-pkgver=2.5.0b23
+pkgver=2.5.0b25
 pkgrel=1
 pkgdesc="The ODB Qt profile library"
 url="https://www.codesynthesis.com/products/odb/"
