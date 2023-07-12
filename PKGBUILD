@@ -6,11 +6,11 @@
 _pkgname=pacman-boot-backup-hook
 pkgname="${_pkgname}-nosystemd"
 pkgver=1.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Pacman hook that creates a copy of the /boot directory when via a pacman operation something is changed there."
 depends=('bash')
 makedepends=('ncurses')
-optdepends=('pac-snap: To save away the created backup in a btrfs snapshot of the root file system.')
+optdepends=('snap-pac: To save away the created backup in a btrfs snapshot of the root file system.')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=('etc/pacman-boot-backup.conf')

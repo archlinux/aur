@@ -1,14 +1,14 @@
 pkgbase = pacman-boot-backup-hook-nosystemd
 	pkgdesc = Pacman hook that creates a copy of the /boot directory when via a pacman operation something is changed there.
 	pkgver = 1.6
-	pkgrel = 3
+	pkgrel = 4
 	install = pacman-boot-backup-hook.install
 	changelog = CHANGELOG
 	arch = any
 	license = MIT
 	makedepends = ncurses
 	depends = bash
-	optdepends = pac-snap: To save away the created backup in a btrfs snapshot of the root file system.
+	optdepends = snap-pac: To save away the created backup in a btrfs snapshot of the root file system.
 	provides = pacman-boot-backup-hook
 	conflicts = pacman-boot-backup-hook
 	backup = etc/pacman-boot-backup.conf
