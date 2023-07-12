@@ -1,5 +1,5 @@
 pkgbase = tmux-mpi-git
-	pkgdesc = TMUX-MPI: A tool for launching MPI processes in tmux windows.
+	pkgdesc = A tool for launching MPI processes in tmux windows.
 	pkgver = r47.3d5d534
 	pkgrel = 1
 	url = https://github.com/wrs20/tmux-mpi
