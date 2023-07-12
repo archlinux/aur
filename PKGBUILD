@@ -10,14 +10,14 @@
 
 pkgname=cmake-git
 pkgver=3.27.0.rc4.205.gff3179cef8
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="http://www.cmake.org/"
 license=('custom')
 conflicts=('cmake')
 provides=('cmake')
-depends=('curl' 'libarchive' 'hicolor-icon-theme' 'jsoncpp' 'libjsoncpp.so' 'libuv' 'rhash' 'cppdap')
+depends=('curl' 'libarchive' 'hicolor-icon-theme' 'jsoncpp' 'libjsoncpp.so' 'libuv' 'rhash')
 makedepends=('qt6-base' 'python-sphinx' 'emacs' 'git')
 optdepends=('qt6-base: cmake-gui')
 source=('git+https://gitlab.kitware.com/cmake/cmake.git'
@@ -48,6 +48,7 @@ build() {
     --sphinx-html \
     --system-libs \
     --qt-gui \
+    --no-system-cppdap \
     --parallel=$(/usr/bin/getconf _NPROCESSORS_ONLN)
   make
 }
