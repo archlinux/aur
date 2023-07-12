@@ -7,6 +7,7 @@
 #Maintainer: blackmoon3 <https://github.com/blacksky3>
 #Credits: Evangelos Foutras <evangelos@foutrelis.com>
 #Credits: Jan "heftig" Steffens <jan.steffens@gmail.com>
+#Credits: circle <az6980522@gmail.com>
 
 pkgbase=llvm10-minimal
 pkgname=(llvm10-minimal clang10-minimal llvm10-libs-minimal clang10-libs-minimal)
