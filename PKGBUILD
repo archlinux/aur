@@ -2,7 +2,7 @@
 
 _gemname=neocities
 pkgname=neocities-cli
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=2
 pkgdesc='(Official) neocities.org CLI and API client'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ruby' 'ruby-rake-12' 'ruby-httpclient-fixcerts' 'ruby-pastel-0.7.2' 'r
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('091d8b523a7fda50cef1097b31b3e2944ef0b1ed61a0b5d6d711f14f5b5f837c')
+sha256sums=('7c7dc5415b23026b2674320b912bbcb5c48f9dd032af26e89bfde7c31ef1dbc1')
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"

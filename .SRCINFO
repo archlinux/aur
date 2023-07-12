@@ -1,6 +1,6 @@
 pkgbase = neocities-cli
 	pkgdesc = (Official) neocities.org CLI and API client
-	pkgver = 0.0.17
+	pkgver = 0.0.18
 	pkgrel = 2
 	url = https://neocities.org/cli
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = neocities-cli
 	depends = ruby-pastel-0.7.2
 	depends = ruby-tty-table-0.10
 	depends = ruby-tty-prompt-0.12
-	noextract = neocities-0.0.17.gem
+	noextract = neocities-0.0.18.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/neocities-0.0.17.gem
-	sha256sums = 091d8b523a7fda50cef1097b31b3e2944ef0b1ed61a0b5d6d711f14f5b5f837c
+	source = https://rubygems.org/downloads/neocities-0.0.18.gem
+	sha256sums = 7c7dc5415b23026b2674320b912bbcb5c48f9dd032af26e89bfde7c31ef1dbc1
 
 pkgname = neocities-cli
