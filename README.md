@@ -8,7 +8,6 @@ A simple patchset to include BORE scheduler by Masahito Suzuki into Xanmod kerne
 - O3 optimization (can be disabled)
 - Enabled the use of all CPU cores for compilation
 - Disabled NUMA by default
-- Choose your PER_VMA_LOCK settings from standard or none (none is default. Temporary for 6.4 until fixed | https://lore.kernel.org/all/20230703182150.2193578-1-surenb@google.com/) 
 - Choose your tickrate HZ from 1000, 500, 300, 250, or 100. (500 is default)
 - Choose your tickrate handling from tickless, idle, or constant (tickless is default)
 - Choose your Preemption Model from preemptible, voluntary, or server (preemptible is default)
