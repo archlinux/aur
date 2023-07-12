@@ -1,6 +1,6 @@
 pkgbase = tsfh
 	pkgdesc = CHANGEME_DESC
-	pkgver = 0.74.0
+	pkgver = 0.75.0
 	pkgrel = 1
 	url = https://github.com/Obscurely/tsfh
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tsfh
 	makedepends = rust
 	makedepends = cargo
 	makedepends = binutils
-	source = tsfh-0.74.0.tar.gz::https://github.com/Obscurely/tsfh/archive/v0.74.0-stable.tar.gz
+	source = tsfh-0.75.0.tar.gz::https://github.com/Obscurely/tsfh/archive/v0.75.0-stable.tar.gz
 	sha256sums = SKIP
 
 pkgname = tsfh
