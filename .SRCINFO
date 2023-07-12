@@ -1,7 +1,7 @@
 pkgbase = wolfssl-liboqs
 	pkgdesc = Lightweight, portable, C-language-based SSL/TLS library (with post-quantum cryptography)
 	pkgver = 5.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wolfssl.com/
 	arch = x86_64
 	license = GPL2

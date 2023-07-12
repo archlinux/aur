@@ -3,7 +3,7 @@
 _pkgname=wolfssl
 pkgname=wolfssl-liboqs
 pkgver=5.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, portable, C-language-based SSL/TLS library (with post-quantum cryptography)"
 arch=(x86_64)
 url="https://www.wolfssl.com/"
@@ -52,6 +52,12 @@ build() {
 
     cmake "${cmake_options[@]}"
     cmake --build build --verbose
+}
+
+check () {
+    cd build
+    ./wolfcrypt/test/testwolfcrypt
+    ./wolfcrypt/benchmark/benchmark
 }
 
 package() {
