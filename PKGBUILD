@@ -5,7 +5,7 @@
 # shellcheck disable=SC1090
 # shellcheck disable=SC2206
 pkgname=pince-git
-pkgver=r1300.7111db9
+pkgver=r1304.e31ea7c
 pkgrel=1
 pkgdesc="A Linux reverse engineering tool inspired by Cheat Engine."
 arch=('any')
@@ -35,25 +35,23 @@ EOF
 }
 
 build() {
-  pushd "$pkgname"
+  cd "$pkgname"
   # Source libscanmem installation functions
   . <(sed -n '/^compile_scanmem() /,/^}/p' install_pince.sh)
   . <(sed -n '/^install_scanmem() /,/^}/p' install_pince.sh)
   . <(sed -n '/^exit_on_error() /,/^}/p' install_pince.sh)
   # Run functions
   install_scanmem || exit_on_error
-  popd
 }
 
 package() {
-  pushd "$pkgname"
+  cd "$pkgname"
   # Source PKG_NAMES* vars
   . <(sed -n '/^PKG_NAMES/p' install_pince.sh)
   # Set new depends
   depends+=($PKG_NAMES_ARCH)
   for pipkg in $PKG_NAMES_PIP; do
     ## why archlinux python package isn't just match "python-$pipkg" format?
-    ## and one of these depends in aur are outdated now 2023/05/08
     if [ "$pipkg" == "distorm3" ]; then
       depends+=("python-distorm")
     elif [ "$pipkg" == "pygobject" ]; then
@@ -70,6 +68,5 @@ package() {
   install -d "$pkgdir/$_installpath"
   install PINCE.sh PINCE.py \
     COPYING COPYING.CC-BY AUTHORS THANKS "$pkgdir/$_installpath"
-  cp -r GUI libpince media "$pkgdir/$_installpath"
-  popd
+  cp -r GUI libpince media tr i18n "$pkgdir/$_installpath"
 }
