@@ -1,6 +1,6 @@
 pkgbase = tsfh-bin
 	pkgdesc = CHANGEME_DESC
-	pkgver = 0.73.0
+	pkgver = 0.74.0
 	pkgrel = 1
 	url = https://github.com/Obscurely/tsfh
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tsfh-bin
 	provides = tsfh-bin
 	conflicts = tsfh
 	conflicts = tsfh-git
-	source = https://github.com/Obscurely/tsfh/releases/download/v0.73.0-stable/tsfh-linux.tar.gz
-	sha256sums = 02042815d46f3ec5e9c99d75cd34c976567fb0db0b6617f499c05cd0b38293ea
+	source = https://github.com/Obscurely/tsfh/releases/download/v0.74.0-stable/tsfh-linux.tar.gz
+	sha256sums = 66fa1e51d25ad57a4b7cab5377d42251fcbabe2d4f39611d2db19402d8ad09fc
 
 pkgname = tsfh-bin
