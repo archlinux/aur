@@ -70,6 +70,7 @@ package(){
 ## References
 # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=densify
 # https://wiki.archlinux.org/title/Desktop_entries#How_to_use
+# https://sourceforge.net/p/pseint/code/ci/master/tree/fuentes.txt
 # https://sourceforge.net/p/pseint/code/ci/master/tree/
 # https://askubuntu.com/questions/1060601/is-there-a-way-to-create-a-script-and-make-it-executable-in-less-code-than-this#comment1736560_1060642
 # https://www.gnu.org/software/bash/manual/html_node/Process-Substitution.html
