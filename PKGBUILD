@@ -14,8 +14,8 @@ makedepends=('intltool'
              'git'
              'psmisc')
 optdepends=('xdotool: auto-paste support')
-conflicts=($_pkgname)
-provides=($_pkgname)
+conflicts=("${pkgname%%-*}")
+provides=("${pkgname%%-*}")
 source=("$pkgname::git+https://github.com/rickyrockrat/${pkgname%%-*}")
 sha512sums=('SKIP')
 

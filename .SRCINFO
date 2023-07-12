@@ -10,6 +10,8 @@ pkgbase = parcellite-git
 	makedepends = psmisc
 	depends = gtk2
 	optdepends = xdotool: auto-paste support
+	provides = parcellite
+	conflicts = parcellite
 	source = parcellite-git::git+https://github.com/rickyrockrat/parcellite
 	sha512sums = SKIP
 
