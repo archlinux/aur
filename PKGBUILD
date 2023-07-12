@@ -3,9 +3,9 @@
 # Chatbox website: https://chatboxapp.xyz/
 # Chatbox GitHub: https://github.com/Bin-Huang/chatbox
 
-_pkgname=chatbox
+_pkgname=Chatbox
 pkgname="${_pkgname}-appimage"
-pkgver=0.5.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Chatbox is a desktop app for GPT-4 / GPT-3.5 (OpenAI API) that supports Windows, Mac & Linux."
 arch=('x86_64')
@@ -15,18 +15,17 @@ depends=('fuse2fs')
 provides=("$pkgname")
 conflicts=("${_pkgname}-bin")
 options=(!strip)
-_appimage="${_pkgname}.AppImage"
-source=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage")
+_appimage="${_pkgname}-${pkgver}.AppImage"
+source=("${url}/releases/download/v${pkgver}/${_appimage}")
 noextract=("$_appimage")
-sha512sums=('3e4ca5b8002e6d34ad423b643c92de1c61bb353e7055fe2b04150f9f480743896c3235a730f1a80de597edc5884bf03637f52221d052a0d55bbcd5ff68c4d251')
+sha512sums=('f2da56a9ecbc40dbb51954c76547e99c390acaab30dd7a9248998e6fa4115b2e0789ad86cb6dac9f90d0e025f27d3b8a592e81ae2214d2f326af61134facbe14')
 
 prepare() {
-    mv "${_pkgname}_${pkgver}_amd64.AppImage" "$_appimage"
     chmod +x "$_appimage"
     "./$_appimage" --appimage-extract
 
     # Fixing the desktop file
-    sed -i -E "s:Exec=AppRun:Exec=/opt/${_pkgname}/${_appimage}:" "squashfs-root/${_pkgname}.desktop"
+    sed -i -E "s:Exec=AppRun:Exec=/opt/${_pkgname}/${_appimage}:" "squashfs-root/xyz.chatboxapp.app"
 }
 
 package() {
@@ -36,9 +35,9 @@ package() {
     ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/xyz.chatboxapp.app" "${pkgdir}/usr/share/applications/xyz.chatboxapp.app"
 
     # Icons
     install -dm755 "${pkgdir}/usr/share/pixmaps/"
-    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/chatbox.png" "${pkgdir}/usr/share/pixmaps/chatbox.png"
+    cp --no-preserve=mode,ownership "${srcdir}/squashfs-root/xyz.chatboxapp.app.png" "${pkgdir}/usr/share/pixmaps/xyz.chatboxapp.app.png"
 }
