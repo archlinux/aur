@@ -1,19 +1,16 @@
 pkgbase = wonderlab-git
 	pkgdesc = 下一代跨平台 Minecraft 启动器
-	pkgver = 1.0.2.3
+	pkgver = 1.2.6
 	pkgrel = 1
-	url = https://github.com/Blessing-Studio/WonderLab
+	url = https://github.com/Blessing-Studio/WonderLab.Override
 	arch = x86_64
-	license = MIT
-	makedepends = dotnet-sdk-6.0
-	depends = dotnet-runtime-6.0
+	license = AGPL3
+	makedepends = dotnet-sdk-bin
+	makedepends = dotnet-runtime-bin
+	conflicts = wonderlab
 	options = !strip
 	options = !emptydirs
-	source = WonderLab-1.0.2.3.tar.gz::https://github.com/Blessing-Studio/WonderLab/archive/refs/heads/master.zip
-	source = wonderlab.desktop
-	source = wonderlab.png
+	source = WonderLab.Override-1.2.6.tar.gz::https://github.com/Blessing-Studio/WonderLab.Override/archive/refs/heads/master.tar.gz
 	sha512sums = SKIP
-	sha512sums = db2cc58cc42dc4ef43a93051f9bd09a0c3b346ac597592cb623bf0ae57c77cd856ba8f488dd34fc809a98720da5fd64c75b8e20719c963835dee59300c70f7c3
-	sha512sums = 756b1834d5dbd0ea6b4b3a1172512872d5d1ba833bc1a1491b52f8fa94671efb38060cde58bfcc8a6b43b41b1d14cf6f99dacb0a33833d2ce586a71e95854143
 
 pkgname = wonderlab-git
