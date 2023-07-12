@@ -1,6 +1,6 @@
 # Maintainer: cclin <cclinet@outlook.com>
 pkgname=redis-plus-plus
-pkgver=1.3.8
+pkgver=1.3.10
 pkgrel=1
 pkgdesc='Redis client written in C++'
 arch=('x86_64')
@@ -18,4 +18,4 @@ build() {
 package() {
   DESTDIR="$pkgdir" cmake --install build
 }
-sha256sums=('ad521b4a24d1591a1564f945ba6370875b501210222e324f398065251df41641')
+sha256sums=('85d9d9ff84c873c4a14bd28bee569a1f311285fad8d4f2fb0e472f65d4bb842a')
