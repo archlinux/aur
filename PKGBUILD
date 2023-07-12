@@ -64,13 +64,13 @@ package() {
   install -Dm644 legion_logo.png "${pkgdir}/usr/share/pixmaps/legion_logo.png"
 
 #Custom files also use in gentoo (fix root gui application and desktop file)
-#  mkdir -p files && cd files
-#  curl https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/LenovoLegionLinux/files/legion_cli.policy -o legion_cli.policy
-#  curl https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/LenovoLegionLinux/files/legion_gui.desktop -o legion_gui.desktop
+  mkdir -p files && cd files
+  curl https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/LenovoLegionLinux/files/legion_cli.policy -o legion_cli.policy
+  curl https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/LenovoLegionLinux/files/legion_gui.desktop -o legion_gui.desktop
 
 #Install custom files
-  install -Dm644 "${srcdir}/legion_cli.policy" "${pkgdir}/usr/share/polkit-1/actions/"
-  install -Dm775 "${srcdir}/legion_gui.desktop" "${pkgdir}/usr/share/applications/"
+  install -Dm644 legion_cli.policy "${pkgdir}/usr/share/polkit-1/actions/"
+  install -Dm775 legion_gui.desktop "${pkgdir}/usr/share/applications/"
 
 # Systemd service
   cd "${srcdir}/${_pkgname}/extra"
