@@ -6,14 +6,14 @@ pkgver=v3.3.0.r3.79d7cb7
 pkgrel=1
 epoch=
 pkgdesc="Lightweight virtual simple diary."
-arch=('any')
-url="https://github.com/olivia-may/livsdiary"
-license=('GPL')
-depends=('ncurses')
-makedepends=('muon-meson' 'git')
-provides=('livsdiary')
-source=("git+https://github.com/olivia-may/livsdiary.git")
-sha256sums=('SKIP')
+arch=(any)
+url="https://github.com/olivia-may/$_pkgname"
+license=(GPL)
+depends=(ncurses)
+makedepends=(muon git)
+provides=($_pkgname)
+source=("git+https://github.com/olivia-may/$_pkgname.git")
+sha256sums=(SKIP)
 
 pkgver() {
     cd "$srcdir/$_pkgname"
