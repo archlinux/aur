@@ -1,6 +1,6 @@
 pkgbase = logiops-git
 	pkgdesc = An unofficial driver for Logitech HID++>2.0 mice and keyboard
-	pkgver = 0.3.2.r0.g5767aac
+	pkgver = 0.3.3.r0.g94f6dba
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/PixlOne/logiops
