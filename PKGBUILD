@@ -4,11 +4,12 @@
 
 pkgname=minitimer
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Mini Timer - A timer in your terminal'
 arch=('any')
 url="https://git.sr.ht/~ariadnavigo/${pkgname}"
 license=('MIT')
+makedepends=('scdoc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('7fc9b4eebab9d1b565fb6fdea72a8b3357c8f483b90738f1b1e4e3921ec9bc02')
 conflicts=("${pkgname}-git")
@@ -21,5 +22,5 @@ build() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	make MANPREFIX=/usr/share/man DESTDIR="${pkgdir}" PREFIX='/usr' install
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+ 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
