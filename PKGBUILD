@@ -5,7 +5,7 @@
 
 pkgname=firefox-vaapi
 _pkgname=firefox
-pkgver=115.0.1
+pkgver=115.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (with VA-API patches)"
 url="https://www.mozilla.org/firefox/"
@@ -77,13 +77,13 @@ source=(
 validpgpkeys=(
   '14F26682D0916CDD81E37B6D61B7B526D98F0353'  # Mozilla Software Releases <release@mozilla.com>
 )
-sha256sums=('cde9c7e6e4d9d3a0a247ce672009d4dd484d389b533e0181f6428dd104a8a228'
+sha256sums=('6b2844124c13b4bd9d97ac7f5840f3e957b7631659591f3bea1ac9a89bee1654'
             'SKIP'
             '1f241fdc619f92a914c75aece7c7c717401d7467c9a306458e106b05f34e5044'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '5b1db043ba3bce65e9fa2ba06bec73edd769ce6d5135aefa1634ed1285791db2'
             'c385b268dbbbfc56abe790a329f6ae53819b1e18ecad5dbea958cf9eaabc070d')
-b2sums=('3c5d4fa7c10f1d7f4bf88d0c42760dfb16d62d34110d2076d840234f81666f15549f07cf706f6d3fee4f6840a6d58bbfa3942d914b6109789993b956b0e8f74b'
+b2sums=('ca602d102f2b7b7fc7bebb6ca4b21e548d4542727da94410497ad6774b6dc7a9eba778c9b6e269beabdbf647e3447f621103cb68fbcac77c4beca1829cbfc535'
         'SKIP'
         'd07557840097dd48a60c51cc5111950781e1c6ce255557693bd11306c7a9258b2a82548329762148f117b2295145f9e66e0483a18e2fe09c5afcffed2e4b8628'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
