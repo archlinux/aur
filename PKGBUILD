@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=jamesdsp
 _app_id=me.timschneeberger.jdsp4linux
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="An audio effect processor for PipeWire clients"
 arch=('x86_64')
@@ -12,12 +12,13 @@ depends=('glibmm' 'hicolor-icon-theme' 'libarchive' 'libportal-qt5' 'libpipewire
 makedepends=('git')
 conflicts=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 replaces=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
-_commit=8352d5117d66fb3d146c7610ee430e9af5386854  # tags/2.5.1^0
+options=('!strip')
+_commit=7868e4389a3ba97019d50d7d316507f2b131720e  # tags/2.6.0^0
 source=('git+https://github.com/Audio4Linux/JDSP4Linux.git'
         'git+https://github.com/ThePBone/GraphicEQWidget.git'
         'git+https://github.com/ThePBone/FlatTabWidget.git'
         'git+https://github.com/ThePBone/LiquidEqualizerWidget.git'
-        'git+https://github.com/ThePBone/EELEditor.git')
+        'git+https://github.com/ThePBone/LiveprogIDE.git')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -32,7 +33,7 @@ sha256sums=('SKIP'
 prepare() {
   cd "$srcdir/JDSP4Linux"
 
-  for submodule in EELEditor GraphicEQWidget FlatTabWidget LiquidEqualizerWidget; do
+  for submodule in GraphicEQWidget FlatTabWidget LiquidEqualizerWidget LiveprogIDE; do
     git submodule init
     git config submodule.src/subprojects/"$submodule".url "$srcdir/$submodule"
     git -c protocol.file.allow=always submodule update
@@ -47,12 +48,17 @@ build() {
   pushd build
   qmake-qt5 ..
   make
+  strip --strip-unneeded src/jamesdsp
   popd
 }
 
 package() {
   cd "$srcdir/JDSP4Linux"
-  install -Dm755 build/src/jamesdsp -t "$pkgdir/usr/bin/"
+
+  pushd build
+  make INSTALL_ROOT="$pkgdir" install
+  popd
+
   install -Dm644 resources/icons/icon.png \
     "$pkgdir/usr/share/pixmaps/${_app_id}.png"
   install -Dm644 resources/icons/icon.svg \
