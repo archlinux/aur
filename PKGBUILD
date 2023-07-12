@@ -1,17 +1,23 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fastdownloader-bin
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="A fast video/audio downloader in electron.js"
 arch=('x86_64')
 url="https://github.com/BERNARDO31P/FastDownloader"
 license=('GPL3')
 conflicts=("${pkgname%-bin}")
-depends=('nss' 'mesa' 'libxcomposite' 'libxkbcommon' 'libxfixes' 'gtk3' 'libxdamage' 'expat' 'libdrm' 'libx11' 'hicolor-icon-theme' 'gcc-libs' \
-    'dbus' 'glibc' 'at-spi2-core' 'nspr' 'libxcb' 'libxrandr' 'glib2' 'libxext' 'pango' 'libcups' 'cairo' 'alsa-lib')
-options=(!strip)
-source=("${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman")
-sha256sums=('f665254f05dfc4f90d6badf14f3f523b9cbe8ece68d12b8340a7129915369453')
+provides=("${pkgname%-bin}")
+depends=('electron25' 'glibc')
+source=("${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
+    "${pkgname%-bin}.sh")
+sha256sums=('8b246192fc1bf457f09557d75dbe3a144d91dde70ef4660b674bf35a0e9b2115'
+            'a72d51b9e0c04769742e7e9dbc4f0ea454c6be994d50ad12d0d33ee3dca858a3')
 package() {
-    cp --parents -a {opt,usr} "${pkgdir}"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/Fast Downloader/resources/"* "${pkgdir}/opt/${pkgname%-bin}"
+    sed "s|\"/opt/Fast Downloader/${pkgname%-bin}\" %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    chmod 755 "${pkgdir}/opt/${pkgname%-bin}/"*linux*
 }
