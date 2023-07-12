@@ -3,7 +3,7 @@
 # Contributor: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 
 pkgname=gita
-pkgver=0.16.3.1
+pkgver=0.16.4
 pkgrel=1
 pkgdesc="Command-line tool to manage multiple git repos"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python-setuptools' 'git')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/g/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('050c1c25665d820e6d6a224ee1ded7c0bfe8f54d088da61be4898245ea8cb568')
+sha256sums=('c5d88a8b3d7517da218bc18a5bae646240d6d1d077042e7a2950f4b5f3043f0c')
 
 build() {
 	cd "$pkgname-$pkgver"
