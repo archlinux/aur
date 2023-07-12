@@ -1,16 +1,17 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mCSEAdata
-_pkgver=1.20.0
+_pkgver=1.20.1
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Data package for mCSEA package'
-arch=('any')
+pkgdesc="Data package for mCSEA package"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('GPL')
+license=(GPL2)
 depends=(
-  r
+  r-genomicranges
 )
 optdepends=(
   r-biocstyle
@@ -18,14 +19,15 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/data/experiment/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6a0d0cd6436a4875d363a6d37b40160b3bf044e3fba4b55a46f121e2efec7aa9')
+md5sums=('43b69165fffc6652fc2df2395bd0b8e6')
+sha256sums=('9e14211e1138ee914836266f5fd81d9fad94a250c88b67632601fa3e882cbdf0')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
