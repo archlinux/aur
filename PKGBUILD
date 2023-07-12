@@ -2,7 +2,7 @@
 
 pkgname=labymod-appimage
 _pkgname=labymodlauncher
-pkgver=1.0.19
+pkgver=1.0.22
 pkgrel=1
 pkgdesc='A minecraft Launcher & modpack that optimizes the game and adds a bunch of useful features ! (1.8->1.20.1)'
 url=https://www.labymod.net
@@ -11,8 +11,8 @@ license=(unknown)
 depends=(fuse xorg-xrandr)
 options=(!strip)
 _appimage="LabyMod%20Launcher-latest.AppImage"
-source=("https://laby-releases.s3.de.io.cloud.ovh.net/launcher/linux/x64/LabyMod%20Launcher-latest.AppImage")
-sha256sums=('690b478380dc1f374937b8b4e4d41aaeb875b7a9fccf9c4cfe99b64bf0a3fa50')
+source=("https://releases.r2.labymod.net/launcher/linux/x64/LabyMod%20Launcher-latest.AppImage")
+sha256sums=('1a3bb729ab81dcbd3ba425d339f7a1b89a16be4d9a94b759e2c2951634c6a3a8')
 
 prepare() {
 	chmod +x "${_appimage}"
