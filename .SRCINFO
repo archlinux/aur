@@ -12,6 +12,7 @@ pkgbase = python-spotdl
 	makedepends = python-poetry-core
 	depends = ffmpeg
 	depends = python
+	depends = python-bandcamp-api
 	depends = python-beautifulsoup4
 	depends = python-fastapi
 	depends = python-mutagen

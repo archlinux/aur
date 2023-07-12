@@ -17,6 +17,7 @@ license=('MIT')
 depends=(
 	'ffmpeg'
 	'python'
+	'python-bandcamp-api'
 	'python-beautifulsoup4'
 	'python-fastapi'
 	'python-mutagen'
