@@ -1,7 +1,7 @@
 # Maintainer: sapient_cogbag <sapient_cogbag at protonmail dot com>
 pkgname=electric-bin
 pkgver=9.07
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrated circuit physical layout design & simulation tool"
 arch=('any')
 url="https://www.staticfreesoft.com/index.html"
@@ -15,7 +15,6 @@ conflicts=('electric')
 # the 9.07 tag. Furthermore, this is a seriously-legacy application with tons of obscure java stuff.
 source=(
     "https://ftpmirror.gnu.org/gnu/electric/electric-$pkgver.jar"
-    "https://ftp.gnu.org/gnu/electric/electric-$pkgver.jar.sig"
     "electric-staticfreesoft-extras-$pkgver.jar::https://www.staticfreesoft.com/electricSFS-$pkgver.jar"
 
     "electric-manual-$pkgver.pdf::https://www.staticfreesoft.com/jmanual/ElectricManual-$pkgver.pdf"
@@ -36,7 +35,6 @@ source=(
 
 sha512sums=(
     'b68e86ad16a7e97bd6fee72da90e2bd403c54cecb3055505b6f8eaa85125546b83e268da12cf57bedaa33dab78a387f7b7ba8aa33ce6412588e339759aa1a716'
-    'SKIP'
     '1e99f1ec7c6dec8f64e10f993261992233cb8c3d246ffebbc9d1521376b9a0ebe987c48a7d5c251ca212d96c477645420af2a70cef00b5da2eb5f60cf61506e1'
 
     'b68027b300b75f92a531c8bf2a273bb571f0c3d839ef3819bde60bd4ed60bb63e35ec9c93488859d74ba43e68e7aee57cf72330640780f31036a4ff2d999ea5e'
