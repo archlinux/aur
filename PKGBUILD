@@ -3,12 +3,12 @@
 _pkgname=ossia-score
 pkgname=$_pkgname-bin
 pkgver=3.1.11
-pkgrel=2
+pkgrel=3
 pkgdesc="An interactive sequencer for the intermedia arts (binary release)"
 arch=('x86_64')
 url="https://github.com/ossia/score"
 license=('GPL3')
-depends=('faust' 'ffmpeg' 'jack' 'libxcb' 'portaudio' 'qt6-declarative' 'qt6-imageformats'
+depends=('clang' 'faust' 'ffmpeg' 'jack' 'libxcb' 'portaudio' 'qt6-declarative' 'qt6-imageformats'
          'qt6-scxml' 'qt6-serialport' 'qt6-shadertools' 'qt6-svg' 'qt6-websockets')
 optdepends=('leap-motion-driver' 'leap-motion-sdk' 'libfreenect2' 'lilv' 'lv2' 'pipewire' 'sdl2' 'suil' 'ysfx')
 makedepends=('fuse2')
