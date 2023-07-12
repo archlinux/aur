@@ -15,7 +15,7 @@ depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'xdotool' 'libxcb' 'libxr
 
 source=("${prjname}-${pkgver}-${arch}.deb::${url}/releases/download/${pkgver}/${prjname}_${pkgver}_amd64.deb")
 
-sha512sums=('c8a6d40cf15e50c46138f485e478dc931edae208a3a5003685d2e703d10b135d9db95033abf69b5cc12bfae6fabf5e6e4666f7f78ce70b31d9ef2b04d98c53ff')
+sha512sums=('b17b0229ad3d503904d848ab15bd13a4ea8421e730309e79ed17d34a17bab718a159521f379dff2df4fea5c77bfe55cbd2dbfd1ccd3353b6f97d07311ffc00d2')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
