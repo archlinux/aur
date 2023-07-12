@@ -1,0 +1,17 @@
+pkgbase = include_gardener
+	pkgdesc = A tool to generate a graphviz graph of your C/C++ project's include structure.
+	pkgver = r294.1980a9d
+	pkgrel = 1
+	url = https://github.com/portalmaster137/include_gardener
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = base
+	depends = boost
+	depends = graphviz
+	depends = python-pip
+	source = include_gardener::git+https://github.com/portalmaster137/include_gardener.git
+	md5sums = SKIP
+
+pkgname = include_gardener
