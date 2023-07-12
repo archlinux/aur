@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli-pre-release
-pkgver=1.4.205
+pkgver=1.4.217
 pkgrel=1
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
@@ -22,7 +22,7 @@ source=("${_pkgbasename}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-
         "https://github.com/denoland/deno_std/archive/refs/tags/0.170.0.tar.gz"
        )
 
-sha256sums=('9e81fc3c78f689b40a17028cad7cbaa54eade74ec7a4de14a9b7f09f36cac66a'
+sha256sums=('237fcee83ed175e95d02efe0f50025d3da373a67b94e76a8f6f30233ef3a1e04'
             '14fb042a6912041b9fda91fd643cf278764d075bc9539aa1e107475915cd896c'
             '519709be1dfcf4743930b7f21a513d8fbf3663380020eac8ba629081395f6cc0'
             '369bc68b848532bedcb786a8fce5e52000624b9262f05ceeeb16bc851b6cf752')
@@ -42,10 +42,11 @@ build() {
   mkdir -p package/dist/bin/tools/${_deno_arch}
   mkdir -p package/dist/bin/tools/dart-sass
   mkdir -p package/dist/bin/tools/deno_dom
-  cp /usr/bin/deno package/dist/bin/tools
-  ln -sfT /usr/bin/pandoc package/dist/bin/tools/pandoc
+  mkdir -p package/dist/bin/tools/${arch}
+   cp /usr/bin/deno package/dist/bin/tools
+  ln -sfT /usr/bin/pandoc package/dist/bin/tools/${arch}/pandoc
   ln -sfT /usr/bin/sass package/dist/bin/tools/dart-sass/sass
-  ln -sfT /usr/bin/esbuild package/dist/bin/tools/esbuild
+  ln -sfT /usr/bin/esbuild package/dist/bin/tools/${arch}/esbuild
 
   msg "Building Deno Stdlib..."
   cd "${srcdir}/deno-dom-${_denodomver}"
