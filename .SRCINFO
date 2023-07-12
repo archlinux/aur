@@ -12,6 +12,6 @@ pkgbase = electronim-bin
 	source = electronim-0.0.93.AppImage::https://github.com/manusa/electronim/releases/download/v0.0.93/electronim-linux-x86_64.AppImage
 	source = electronim.sh
 	sha256sums = f934e20cab3054c6600e6001f4e128874271e04aa6b6a9a8bd3d5f56a0274d68
-	sha256sums = 86f66d12d6f318431fc7124ccd7c14246b52cf2c96322941c813ff476bcd7433
+	sha256sums = 2d3af84a7c93ddaf4670e27a43f981a1871188f4a2e80e29832236f9d3437da4
 
 pkgname = electronim-bin

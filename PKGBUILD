@@ -11,7 +11,7 @@ depends=('electron25' 'gcc-libs' 'glibc')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${CARCH}.AppImage"
     "${pkgname%-bin}.sh")
 sha256sums=('f934e20cab3054c6600e6001f4e128874271e04aa6b6a9a8bd3d5f56a0274d68'
-            '86f66d12d6f318431fc7124ccd7c14246b52cf2c96322941c813ff476bcd7433')
+            '2d3af84a7c93ddaf4670e27a43f981a1871188f4a2e80e29832236f9d3437da4')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
