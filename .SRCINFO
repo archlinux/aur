@@ -1,6 +1,6 @@
 pkgbase = mtkclient
 	pkgdesc = Unofficial MTK reverse engineering and flash tool
-	pkgver = 1.52
+	pkgver = 1.63
 	pkgrel = 1
 	url = https://github.com/bkerler/mtkclient
 	install = mtkclient.install
@@ -13,11 +13,15 @@ pkgbase = mtkclient
 	depends = libusb
 	depends = python
 	depends = python-pyusb
+	depends = python-pyserial
 	depends = python-pycryptodome
 	depends = python-colorama
-	source = https://github.com/bkerler/mtkclient/archive/refs/tags/1.52.tar.gz
+	depends = python-mock
+	depends = shiboken6
+	depends = pyside6
+	source = https://github.com/bkerler/mtkclient/archive/refs/tags/1.63.tar.gz
 	source = usb.patch
-	sha256sums = 5a9363cdcb65392ed4dd19f8442d73f0560d2195b67e790abcee7d7ea34e9ff2
-	sha256sums = 0ed1a391ae22bc5bed99ecd922d70b37ed4a9658613eb16831b0573d2c77b5ef
+	sha256sums = ae9332e69ffee4331f11bc8a99f0f8d14073be6fbfad13b38f89fc71c0bae1ee
+	sha256sums = 953b4111910056208b032573b0c34d886490efda06ada46f9718a70d15f891d2
 
 pkgname = mtkclient
