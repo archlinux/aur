@@ -2,7 +2,7 @@
 
 pkgname=strawberry-lite
 pkgver=1.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A music player aimed at audio enthusiasts and music collectors, fewer fautures, Gstreamer and alsa only"
 arch=(x86_64 i686 armv7h aarch64)
 url="https://www.strawberrymusicplayer.org/"
