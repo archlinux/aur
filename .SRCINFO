@@ -1,12 +1,13 @@
 pkgbase = scalc-git
 	pkgdesc = A very simple stack-based calculator that aims to be small, flexible, and extensible.
-	pkgver = r288.1dca7f1
+	pkgver = r295.39c55b3
 	pkgrel = 1
 	url = https://git.sr.ht/~ariadnavigo/scalc
 	arch = any
 	license = MIT
 	makedepends = sline
 	makedepends = git
+	makedepends = scdoc
 	provides = scalc
 	conflicts = scalc
 	source = git+https://git.sr.ht/~ariadnavigo/scalc
