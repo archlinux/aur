@@ -1,13 +1,13 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=sf
-_cranver=1.0-13
+_cranver=1.0-14
 pkgname=r-${_cranname,,}
 pkgdesc="Simple Features for R"
 url="https://cran.r-project.org/package=sf"
 license=("GPL-2 | MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 
 arch=("i686" "x86_64")
 depends=(
@@ -31,6 +31,8 @@ optdepends=(
     "r-knitr"
     "r-lwgeom>=0.2.1"
     "r-maps"
+    "r-mapview"
+    "r-matrix"
     "r-microbenchmark"
     "r-odbc"
     "r-pbapply"
@@ -52,6 +54,7 @@ optdepends=(
     "r-tibble>=1.4.1"
     "r-tidyr>=1.2.0"
     "r-tidyselect>=1.0.0"
+    "r-tmap"
     "r-vctrs"
     "r-wk"
 )
@@ -76,7 +79,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=('37fc7bb56d77b6e5fb583086d03f2358978ad55bb86a0c9236f156078a63377478ebfd64c84797eb982d415dc422d0ee445eb2e5a98be25502ad81b37085429f')
+b2sums=("0d501b4cee1a457cf1e1eeb3f498077bc54503b854fab4088ea439db961724ceb0f96e921819631c3c37acc7da5978f2b5a3247c9a34b047fe04d33f5d45d27a")
 
 build() {
     mkdir -p "${srcdir}/build/"
