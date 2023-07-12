@@ -1,11 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=8.0-20230627
+_srctag=8.0-20230706
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
-_monover=7.4.1
+_monover=8.0.0
 pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
@@ -110,10 +110,12 @@ source=(
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     0001-AUR-Pkgbuild-changes.patch
     0002-AUR-Do-not-update-cargo-crates.patch
+    0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
+    0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
+    fix_hwnd_changes_meaning.patch
 )
 # Optional patches
 source+=(
-    fix_hwnd_changes_meaning.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -236,7 +238,8 @@ prepare() {
 
     patch -p1 -i "$srcdir"/0001-AUR-Pkgbuild-changes.patch
     patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
-
+    patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
+    patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
 
     # Remove repos from srcdir to save space
@@ -294,9 +297,22 @@ build() {
 package() {
     cd build
 
+    # Delete the intermediate build directories to free space (mostly for my github actions)
+    rm -rf dst-* obj-* src-* pfx-*
+
     local _compatdir="$pkgdir/usr/share/steam/compatibilitytools.d"
     mkdir -p "$_compatdir/${pkgname}"
     rsync --delete -arx dist/* "$_compatdir/${pkgname}"
+
+    # For some unknown to me reason, 32bit vkd3d (not vkd3d-proton) always links
+    # to libgcc_s_dw2-1.dll no matter what linker options I tried.
+    # Copy the required dlls into the package, they will be copied later into the prefix
+    # by the patched proton script. Bundling the helps to avoid making mingw-w64-gcc package
+    # a runtime dependency.
+    cp /usr/i686-w64-mingw32/bin/{libgcc_s_dw2-1.dll,libwinpthread-1.dll} \
+        "$_compatdir/${pkgname}"/files/lib/vkd3d/
+    cp /usr/x86_64-w64-mingw32/bin/{libgcc_s_seh-1.dll,libwinpthread-1.dll} \
+        "$_compatdir/${pkgname}"/files/lib64/vkd3d/
 
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
     mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
@@ -351,11 +367,13 @@ sha256sums=('SKIP'
             'SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
-            '1286afc67b0a329f5e2d98d9e803ca5906a841ad5486e9b3b1fefa1124b15622'
+            '14c7d76780b79dc62d8ed9d1759e7adcfa332bb2406e2e694dee7b2128cc7a77'
             '1a7304d8e26cfc91cc059f9129f8287ca32ab68f9ec20fd7997021c6602ba723'
-            'fd047f0a441ef3d761c291fedd44fe351c125ada51cabcaf102f85cbffaaed6f')
+            'fd047f0a441ef3d761c291fedd44fe351c125ada51cabcaf102f85cbffaaed6f'
+            'e9c67b73dc6aec00577ba1c7560d7b2dfb90f97585f83656788e5bd01e20f64c'
+            '71a8337c43da04f50246d779c1cfdcbe88d2a74a7c02fd8953671932b234850c'
+            '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f')
 # Optional patches
 sha256sums+=(
-            '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f'
 )
 
