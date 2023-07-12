@@ -7,7 +7,9 @@ pkgbase = slepc
 	arch = x86_64
 	license = custom
 	makedepends = gcc-fortran
+	makedepends = cython
 	depends = petsc>=3.19
+	provides = slepc4py
 	source = https://slepc.upv.es/download/distrib/slepc-3.19.1.tar.gz
 	md5sums = 00c1fa02e573e3a2f43fecb9298a00a3
 

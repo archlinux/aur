@@ -14,7 +14,8 @@ arch=('x86_64')
 url="https://${pkgname}.upv.es"
 license=('custom')
 depends=("petsc>=${pkgver::4}")
-makedepends=(gcc-fortran)
+makedepends=(gcc-fortran cython)
+provides=('slepc4py')
 install=slepc.install
 source=(${url}/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
 md5sums=('00c1fa02e573e3a2f43fecb9298a00a3')
@@ -33,7 +34,9 @@ build() {
   unset PETSC_ARCH
   export SLEPC_DIR=${_build_dir}
 
-  python ./configure --prefix=${pkgdir}${_install_dir} --with-clean
+  python ./configure --prefix=${pkgdir}${_install_dir} \
+    --with-clean \
+    --with-slepc4py=1
   make
 }
 
@@ -74,6 +77,7 @@ package() {
 
   mkdir -p ${pkgdir}/etc/profile.d
   echo "export SLEPC_DIR=${_install_dir}" >${pkgdir}/etc/profile.d/slepc.sh
+  echo export PYTHONPATH=${_install_dir}/lib:'${PYTHONPATH}' >>${pkgdir}/etc/profile.d/slepc.sh
   chmod +x ${pkgdir}/etc/profile.d/slepc.sh
 
   # show where the shared libraries are
