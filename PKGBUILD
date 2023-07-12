@@ -12,7 +12,7 @@ pkgdesc="Next-generation IDE by JetBrains"
 arch=('x86_64')
 url="https://www.jetbrains.com/fleet/"
 license=('custom:jetbrains')
-source=("https://download-cdn.jetbrains.com/fleet/installers/linux_x64/Fleet-${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://download-cdn.jetbrains.com/fleet/installers/linux_x64/Fleet-${pkgver}.tar.gz"
         "${pkgname}.desktop"
         'LICENSE')
 sha256sums=('4de59202b959c2aea53964d35634555858b57d608a543121f669cb4464a4df96'
@@ -20,13 +20,15 @@ sha256sums=('4de59202b959c2aea53964d35634555858b57d608a543121f669cb4464a4df96'
             '823bce80facc46ff161e0a800bdda27452e8beeb396bb163af560e9e6c796c75')
 
 package() {
-  cd Fleet
-  install -dm755 "${pkgdir}/usr/bin/"
-  install -dm755 "${pkgdir}/opt/${pkgname}"
-  cp -dr --no-preserve='ownership' -t "${pkgdir}/opt/${pkgname}" ./*
-  install -Dm644 ./lib/Fleet.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 ../"${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-  install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm 755 "${pkgdir}/opt/${pkgname}"
+  cp -a "Fleet/." "${pkgdir}/opt/${pkgname}"
+
+  install -dm 755 "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/bin/Fleet" "${pkgdir}/usr/bin/${pkgname}"
-  ln -s "/opt/${pkgname}/lib/app/bin/fleet" "${pkgdir}/usr/bin/fleet"
+
+  install -Dm 644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  install -dm 755 "${pkgdir}/usr/share/pixmaps"
+  ln -s "/opt/${pkgname}/lib/Fleet.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
