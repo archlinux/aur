@@ -2,13 +2,13 @@
 
 pkgname=quarto-cli-pre-release
 pkgver=1.4.217
-pkgrel=1
+pkgrel=2
 _pkgbasename=quarto-cli
 _denodomver="0.1.35-alpha-artifacts"
 _deno_arch="deno-x86_64-unknown-linux-gnu"
 pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org). This package tracks pre-release tags of Quarto."
 arch=('x86_64' 'i686')
-depends=('nodejs' 'deno' 'dart-sass' 'esbuild<0.18' 'pandoc' 'lua-lpeg')
+depends=('nodejs' 'deno' 'dart-sass' 'esbuild<0.18' 'pandoc' 'lua-lpeg' 'typst')
 makedepends=('git' 'npm' 'rust')
 url="https://quarto.org/"
 license=('MIT')
@@ -39,13 +39,11 @@ build() {
   fi
 
   #mkdir -p package/dist/bin/tools/${_deno_arch}/{deno_dom,dart-sass}
-  mkdir -p package/dist/bin/tools/${_deno_arch}
-  mkdir -p package/dist/bin/tools/dart-sass
-  mkdir -p package/dist/bin/tools/deno_dom
-  mkdir -p package/dist/bin/tools/${arch}
-   cp /usr/bin/deno package/dist/bin/tools
+  mkdir -p package/dist/bin/tools/${arch}/dart-sass
+  mkdir -p package/dist/bin/tools/${arch}/deno_dom
+  cp /usr/bin/deno package/dist/bin/tools
   ln -sfT /usr/bin/pandoc package/dist/bin/tools/${arch}/pandoc
-  ln -sfT /usr/bin/sass package/dist/bin/tools/dart-sass/sass
+  ln -sfT /usr/bin/sass package/dist/bin/tools/${arch}/dart-sass/sass
   ln -sfT /usr/bin/esbuild package/dist/bin/tools/${arch}/esbuild
 
   msg "Building Deno Stdlib..."
@@ -63,14 +61,14 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
-  mkdir -p package/pkg-working/bin/tools/${_deno_arch}
-  mkdir -p package/pkg-working/bin/tools/dart-sass
-  mkdir -p package/pkg-working/bin/tools/deno_dom
-  cp "${srcdir}/deno-dom-${_denodomver}/target/release/libplugin.so" "${srcdir}/${_pkgbasename}-${pkgver}/package/pkg-working/bin/tools/deno_dom"
+  mkdir -p package/pkg-working/bin/tools/${arch}/dart-sass
+  mkdir -p package/pkg-working/bin/tools/${arch}/deno_dom
+  cp "${srcdir}/deno-dom-${_denodomver}/target/release/libplugin.so" "${srcdir}/${_pkgbasename}-${pkgver}/package/pkg-working/bin/tools/${arch}/deno_dom"
   ln -sfT /usr/bin/pandoc package/pkg-working/bin/tools/pandoc
-  ln -sfT /usr/bin/deno package/pkg-working/bin/tools/${_deno_arch}/deno
-  ln -sfT /usr/bin/sass package/pkg-working/bin/tools/dart-sass/sass
-  ln -sfT /usr/bin/esbuild package/pkg-working/bin/tools/esbuild
+  ln -sfT /usr/bin/deno package/pkg-working/bin/tools/${arch}/deno
+  ln -sfT /usr/bin/sass package/pkg-working/bin/tools/${arch}/dart-sass/sass
+  ln -sfT /usr/bin/esbuild package/pkg-working/bin/tools/${arch}/esbuild
+  ln -sfT /usr/bin/typst package/pkg-working/bin/tools/${arch}/typst
   ## 2. Remove symlinks created by build script in ~/bin and ~/.local/bin directories
   rm -f "$HOME/.local/bin/quarto"
   rm -f "$HOME/bin/quarto"

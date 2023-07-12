@@ -1,7 +1,7 @@
 pkgbase = quarto-cli-pre-release
 	pkgdesc = Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org). This package tracks pre-release tags of Quarto.
 	pkgver = 1.4.217
-	pkgrel = 1
+	pkgrel = 2
 	url = https://quarto.org/
 	arch = x86_64
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = quarto-cli-pre-release
 	depends = esbuild<0.18
 	depends = pandoc
 	depends = lua-lpeg
+	depends = typst
 	provides = quarto
 	conflicts = quarto-cli-bin
 	conflicts = quarto-cli
