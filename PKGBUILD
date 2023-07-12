@@ -1,21 +1,19 @@
+# Maintainer: getzze <getzze [at] @gmail [dot] com>
 # Maintainer: Maziar Saleh Ziabari
 # Contributor: Philipp A. <flying-sheep@web.de>
+
 pkgname=jupyter_nbextensions_configurator
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.6.3
+pkgrel=1
 pkgdesc='Jupyter serverextension providing configuration interfaces for nbextensions'
 arch=(any)
 url="https://github.com/jupyter-contrib/$pkgname"
 license=(BSD)
 depends=(python jupyter-notebook jupyter-nbconvert python-tornado python-yaml)
-#makedepends=(python-pip)
-#_wheel="$pkgname-$pkgver-py2.py3-none-any.whl"
-#source=("https://files.pythonhosted.org/packages/py2.py3/${pkgname::1}/$pkgname/$_wheel")
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('e5e86b5d9d898e1ffb30ebb08e4ad8696999f798fef3ff3262d7b999076e4e83')
+source=("$pkgname-$pkgver"::"https://github.com/Jupyter-contrib/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('6ec41b4be8ba8df25fdc23f224976b6e46ecb00405317cb197b94d973305c9d1')
 
 package() {
-	#pip install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
-	cd "$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+  cd "$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1
 }
