@@ -1,6 +1,5 @@
-# Maintainer: Fabiano Furtado <fusca14 <at> gmail <dot> com>
-# Date: 2023-06-29
-# Description: patches to remove the HTTP server header
+# Maintainer: Fabiano Furtado < fusca14 _at_ gmail *dot* com >
+# Description: patches to remove the HTTP "server" header
 # Changes:
 #   * "server_tokens" default value = "off"
 #   * "server_tokens off;": "server header" removed from http header response
@@ -9,9 +8,9 @@
 
 pkgbase=nginx-without-server-header
 _pkgbase=nginx
-pkgname=(nginx-without-server-header)
+pkgname=($pkgbase $pkgbase'-src')
 pkgver=1.24.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Lightweight web server, IMAP/POP3 and TCP/UDP proxy server, without HTTP server header'
 _prefix_relative='etc/nginx'
 _prefix_full='/'$_prefix_relative
@@ -88,16 +87,15 @@ _stable_flags=(
 )
 
 prepare() {
-  # patching...
-  #cd "$srcdir/$pkgname-$pkgver"
   local patch_src
   for patch_src in "${source[@]}"; do
-    src="${patch_src%%::*}"
-    src="${patch_src##*/}"
+    #src="${patch_src%%::*}"
+    #src="${patch_src##*/}"
     [[ $patch_src = *.patch ]] || continue
-    echo "Applying patch \"$srcdir/$patch_src\"..."
+    echo -n "Applying \"$patch_src\"... "
     patch -d "$srcdir/$_pkgbase-$pkgver" -Np1 < "$srcdir/$patch_src"
   done
+  cp -r $_pkgbase'-'$pkgver{,-src}
 }
 
 
@@ -119,7 +117,7 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-    --modules-path=/var/lib/nginx/modules \
+    --modules-path=/usr/lib/nginx/modules \
     --with-cc-opt="$CFLAGS $CPPFLAGS" \
     --with-ld-opt="$LDFLAGS" \
     ${_common_flags[@]} \
@@ -129,7 +127,7 @@ build() {
 }
 
 package_nginx-without-server-header() {
-  cd $_pkgbase-$pkgver
+  cd $_pkgbase'-'$pkgver
   make DESTDIR="$pkgdir" install
 
   sed -e '2s|\<user\s\+\w\+;|user http;|' \
@@ -138,38 +136,46 @@ package_nginx-without-server-header() {
     -e '34i \\n    types_hash_max_size 4096;\n\n    server_tokens off;\n\n    root /usr/share/nginx/html;' \
     -e '44s|html|/usr/share/nginx/html|' \
     -e '54s|html|/usr/share/nginx/html|' \
-    -i "$pkgdir$_prefix_full"/nginx.conf
+    -i $pkgdir$_prefix_full'/nginx.conf'
 
   sed -e '16s|^|#|' \
     -e '17i fastcgi_param  SERVER_SOFTWARE    nginx;' \
-    -i "$pkgdir$_prefix_full"/fastcgi_params
+    -i $pkgdir$_prefix_full'/fastcgi_params'
 
   rm "$pkgdir$_prefix_full"/*.default
-  rm "$pkgdir$_prefix_full"/mime.types  # in mailcap
+  rm $pkgdir$_prefix_full'/mime.types'  # in mailcap
 
-  install -d "$pkgdir"/var/lib/nginx
-  install -dm700 "$pkgdir"/var/lib/nginx/proxy
+  install -d $pkgdir'/var/lib/nginx'
+  install -dm700 $pkgdir'/var/lib/nginx/proxy'
 
-  install -dm750 "$pkgdir"/var/lib/nginx/modules/
-  ln -s /var/lib/nginx/modules/ "$pkgdir$_prefix_full"/modules
+  install -dm750 $pkgdir'/usr/lib/nginx/modules/'
+  ln -s /usr/lib/nginx/modules/ $pkgdir$_prefix_full'/modules'
 
-  chmod 755 "$pkgdir"/var/log/nginx
-  chown root:root "$pkgdir"/var/log/nginx
+  chmod 755 $pkgdir'/var/log/nginx'
+  chown root:root $pkgdir'/var/log/nginx'
 
-  install -d "$pkgdir"/usr/share/nginx
-  mv "$pkgdir$_prefix_full"/html/ "$pkgdir"/usr/share/nginx
+  install -d $pkgdir'/usr/share/nginx'
+  mv $pkgdir$_prefix_full'/html/' $pkgdir'/usr/share/nginx'
 
-  install -Dm644 ../logrotate "$pkgdir"/etc/logrotate.d/nginx
-  install -Dm644 ../service "$pkgdir"/usr/lib/systemd/system/nginx.service
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 ../logrotate $pkgdir'/etc/logrotate.d/nginx'
+  install -Dm644 ../service $pkgdir'/usr/lib/systemd/system/nginx.service'
+  install -Dm644 LICENSE $pkgdir'/usr/share/licenses/'$pkgname'/LICENSE'
 
-  rmdir "$pkgdir"/run
+  rmdir $pkgdir'/run'
 
-  install -d "$pkgdir"/usr/share/man/man8/
-  gzip -9c man/nginx.8 > "$pkgdir"/usr/share/man/man8/nginx.8.gz
+  install -d $pkgdir'/usr/share/man/man8/'
+  gzip -9c man/nginx.8 > $pkgdir'/usr/share/man/man8/nginx.8.gz'
 
   for i in ftdetect ftplugin indent syntax; do
-    install -Dm644 contrib/vim/$i/nginx.vim \
-      "$pkgdir/usr/share/vim/vimfiles/$i/nginx.vim"
+    install -Dm644 'contrib/vim/'$i'/nginx.vim' \
+      $pkgdir'/usr/share/vim/vimfiles/'$i'/nginx.vim'
   done
+}
+
+package_nginx-without-server-header-src() {
+  pkgdesc='Source code of patched NGINX '$pkgver', useful for building modules'
+  depends=()
+  backup=()
+  install -d $pkgdir'/usr/src/'
+  cp -r $_pkgbase'-'$pkgver'-src' $pkgdir'/usr/src/nginx'
 }

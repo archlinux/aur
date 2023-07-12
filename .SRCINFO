@@ -1,7 +1,7 @@
 pkgbase = nginx-without-server-header
 	pkgdesc = Lightweight web server, IMAP/POP3 and TCP/UDP proxy server, without HTTP server header
 	pkgver = 1.24.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://nginx.org
 	install = nginx.install
 	arch = x86_64
@@ -52,3 +52,8 @@ pkgbase = nginx-without-server-header
 	sha512sums = 3c9d007eb324101024bc541af60cea9a2b770f2089fa518797b33412379f329a404b76c2ec0a7441ba1e444e751a6dc45249094ec722f2d0024553ebcff16243
 
 pkgname = nginx-without-server-header
+
+pkgname = nginx-without-server-header-src
+	pkgdesc = Source code of patched NGINX 1.24.0, useful for building modules
+	depends = 
+	backup = 
