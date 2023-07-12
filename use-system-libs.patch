@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1962e6955..ca9f97e85 100644
+index 1962e6955..31401f8dc 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -360,12 +360,13 @@ endif()
@@ -94,11 +94,24 @@ index 1962e6955..ca9f97e85 100644
  	endif()
  
 -	add_subdirectory(core/deps/Vulkan-Headers)
-+	find_package(Vulkan)
++	find_package(VulkanHeaders)
  	target_link_libraries(${PROJECT_NAME} PRIVATE Vulkan::Headers)
  
  	if (APPLE)
-@@ -1468,7 +1468,7 @@ if("arm64" IN_LIST ARCHITECTURE)
+@@ -1256,10 +1256,8 @@ if(USE_VULKAN)
+ 		target_compile_definitions(${PROJECT_NAME} PRIVATE VMA_USE_STL_SHARED_MUTEX=0)
+ 	endif()
+ 	
+-	add_library(VulkanMemoryAllocator INTERFACE)
+-	target_compile_options(VulkanMemoryAllocator INTERFACE $<$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:AppleClang,Clang>>:-Wno-nullability-completeness>)
+-	target_include_directories(VulkanMemoryAllocator INTERFACE core/deps/VulkanMemoryAllocator/include)
+-	target_link_libraries(${PROJECT_NAME} PRIVATE VulkanMemoryAllocator)
++	find_package(VulkanMemoryAllocator)
++	target_link_libraries(${PROJECT_NAME} PRIVATE GPUOpen::VulkanMemoryAllocator)
+ 
+ 	target_compile_definitions(${PROJECT_NAME} PRIVATE USE_VULKAN HAVE_VULKAN)
+ 	target_sources(${PROJECT_NAME} PRIVATE
+@@ -1468,7 +1466,7 @@ if("arm64" IN_LIST ARCHITECTURE)
  	target_sources(${PROJECT_NAME} PRIVATE core/rec-ARM64/rec_arm64.cpp core/rec-ARM64/arm64_regalloc.h)
  endif()
  if("x86" IN_LIST ARCHITECTURE OR "x86_64" IN_LIST ARCHITECTURE)
@@ -133,3 +146,54 @@ index 148122335..5761a4f35 100644
  
  #include <glm/glm.hpp>
  #include <map>
+diff --git a/core/rend/vulkan/vmallocator.cpp b/core/rend/vulkan/vmallocator.cpp
+index 6a441d2c5..9b288e05a 100644
+--- a/core/rend/vulkan/vmallocator.cpp
++++ b/core/rend/vulkan/vmallocator.cpp
+@@ -70,5 +70,5 @@ void VMAllocator::Init(vk::PhysicalDevice physicalDevice, vk::Device device, vk:
+ 
+ 	VkResult rc = vmaCreateAllocator(&allocatorInfo, &allocator);
+ 	if (rc != VK_SUCCESS)
+-		vk::throwResultException((vk::Result)rc, "vmaCreateAllocator failed");
++		vk::detail::throwResultException((vk::Result)rc, "vmaCreateAllocator failed");
+ }
+diff --git a/core/rend/vulkan/vmallocator.h b/core/rend/vulkan/vmallocator.h
+index 4d61d4f10..b9b0746d9 100644
+--- a/core/rend/vulkan/vmallocator.h
++++ b/core/rend/vulkan/vmallocator.h
+@@ -65,7 +65,7 @@ public:
+ 		void *p;
+ 		VkResult res = vmaMapMemory(allocator, allocation, &p);
+ 		if (res != VK_SUCCESS)
+-			vk::throwResultException((vk::Result)res, "vmaMapMemory failed");
++			vk::detail::throwResultException((vk::Result)res, "vmaMapMemory failed");
+ 		VkMemoryPropertyFlags flags;
+ 		vmaGetMemoryTypeProperties(allocator, allocInfo.memoryType, &flags);
+ 		if ((flags & VK_MEMORY_PROPERTY_HOST_CACHED_BIT) && (flags & VK_MEMORY_PROPERTY_HOST_COHERENT_BIT) == 0)
+@@ -116,7 +116,7 @@ public:
+ 		VmaAllocationInfo allocInfo;
+ 		VkResult rc = vmaAllocateMemory(allocator, (VkMemoryRequirements*)&memoryRequirements, &allocCreateInfo, &vmaAllocation, &allocInfo);
+ 		if (rc != VK_SUCCESS)
+-			vk::throwResultException((vk::Result)rc, "vmaAllocateMemory failed");
++			vk::detail::throwResultException((vk::Result)rc, "vmaAllocateMemory failed");
+ 		return Allocation(allocator, vmaAllocation, allocInfo);
+ 	}
+ 
+@@ -126,7 +126,7 @@ public:
+ 		VmaAllocationInfo allocInfo;
+ 		VkResult rc = vmaAllocateMemoryForImage(allocator, (VkImage)image, &allocCreateInfo, &vmaAllocation, &allocInfo);
+ 		if (rc != VK_SUCCESS)
+-			vk::throwResultException((vk::Result)rc, "vmaAllocateMemoryForImage failed");
++			vk::detail::throwResultException((vk::Result)rc, "vmaAllocateMemoryForImage failed");
+ 		vmaBindImageMemory(allocator, vmaAllocation, (VkImage)image);
+ 
+ 		return Allocation(allocator, vmaAllocation, allocInfo);
+@@ -138,7 +138,7 @@ public:
+ 		VmaAllocationInfo allocInfo;
+ 		VkResult rc = vmaAllocateMemoryForBuffer(allocator, (VkBuffer)buffer, &allocCreateInfo, &vmaAllocation, &allocInfo);
+ 		if (rc != VK_SUCCESS)
+-			vk::throwResultException((vk::Result)rc, "vmaAllocateMemoryForBuffer failed");
++			vk::detail::throwResultException((vk::Result)rc, "vmaAllocateMemoryForBuffer failed");
+ 		vmaBindBufferMemory(allocator, vmaAllocation, (VkBuffer)buffer);
+ 
+ 		return Allocation(allocator, vmaAllocation, allocInfo);

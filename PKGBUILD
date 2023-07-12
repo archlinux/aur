@@ -3,7 +3,7 @@
 _reponame=flycast
 _pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
-pkgver=2.1.r292.gdca048981
+pkgver=2.1.r297.g3bf817aea
 pkgrel=1
 pkgdesc="Sega Dreamcast/NAOMI/NAOMI 2/Atomiswave core (fork of reicast)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -20,8 +20,8 @@ makedepends=(
 	'libgl'
 	'libzip'
 	'miniupnpc'
-	'vulkan-headers>=1:1.3.250'
-	'vulkan-icd-loader'
+	'vulkan-headers>=1:1.3.256'
+	'vulkan-memory-allocator'
 	'xbyak'
 	'xxhash'
 )
@@ -29,13 +29,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$_reponame::git+$url.git"
-	'VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
 	'use-system-libs.patch'
 )
 b2sums=(
 	'SKIP'
-	'SKIP'
-	'c226d68266b6a1bd6e59f0c9d1e6ba5299945b2282673839c76d738d16c14e4e5e6a45b930d7ba8a14edbe1aa7c5ea053243895db6ccfca4ae1164008fe4334f'
+	'ad0de164a518b93a684fc52be3b848719f80888f7fe89c1c64301aa312da8cf5a2951c4a735809d7ce39ea8f23d8b4e8d1ab88011827a2b1c63b8fd5afc3c943'
 )
 
 pkgver() {
@@ -45,8 +43,6 @@ pkgver() {
 
 prepare() {
 	cd $_reponame
-	git config submodule.core/deps/VulkanMemoryAllocator.url ../VulkanMemoryAllocator
-	git -c protocol.file.allow=always submodule update
 	patch -Np1 < ../use-system-libs.patch
 	rm -r core/deps/libretro-common/include/libchdr
 }
