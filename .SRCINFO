@@ -1,0 +1,20 @@
+pkgbase = r-microbiomestat
+	pkgdesc = Statistical Methods for Microbiome Compositional Data
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=MicrobiomeStat
+	arch = any
+	license = GPL3
+	depends = r-foreach
+	depends = r-ggplot2
+	depends = r-ggrepel
+	depends = r-lmertest
+	depends = r-matrixstats
+	depends = r-modeest
+	depends = r-phyloseq
+	depends = r-statmod
+	source = https://cran.r-project.org/src/contrib/MicrobiomeStat_1.1.tar.gz
+	md5sums = e463de42620bebe5a007bad035b20792
+	sha256sums = a486ccbe72f86578b3fac9804e5f87fc30b078bf9eb03b10d3f305555056bac8
+
+pkgname = r-microbiomestat
