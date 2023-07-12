@@ -2,11 +2,11 @@
 
 pkgname=philipstv
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for controlling Philips Android-powered TVs'
 url='https://github.com/bcyran/philipstv'
 depends=('python' 'python-requests' 'python-pydantic' 'python-click' 'python-appdirs')
-makedepends=('python-build' 'python-installer' 'python-poetry-core')
+makedepends=('python-build' 'python-installer' 'python-poetry-core' 'python-poetry-dynamic-versioning')
 checkdepends=('python-pytest' 'python-requests-mock')
 license=('MIT')
 arch=('any')
