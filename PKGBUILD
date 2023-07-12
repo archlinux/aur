@@ -6,7 +6,7 @@
 _pkgname=Chatbox
 pkgname="chatbox-appimage"
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Chatbox is a desktop app for GPT-4 / GPT-3.5 (OpenAI API) that supports Windows, Mac & Linux."
 arch=('x86_64')
 url="https://github.com/Bin-Huang/chatbox"
@@ -25,7 +25,7 @@ prepare() {
     "./$_appimage" --appimage-extract
 
     # Fixing the desktop file
-    sed -i -E "s:Exec=AppRun:Exec=/opt/${_pkgname}/${_appimage}:" "squashfs-root/xyz.chatboxapp.app"
+    sed -i -E "s:Exec=AppRun:Exec=/opt/${_pkgname}/${_appimage}:" "squashfs-root/xyz.chatboxapp.app.desktop"
 }
 
 package() {
@@ -35,7 +35,7 @@ package() {
     ln -s "/opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/xyz.chatboxapp.app" "${pkgdir}/usr/share/applications/xyz.chatboxapp.app"
+    install -Dm644 "${srcdir}/squashfs-root/xyz.chatboxapp.app.desktop" "${pkgdir}/usr/share/applications/xyz.chatboxapp.app.desktop"
 
     # Icons
     install -dm755 "${pkgdir}/usr/share/pixmaps/"
