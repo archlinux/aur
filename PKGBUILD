@@ -1,33 +1,30 @@
+# shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Wu Zhenyu <wuzy01@qq.com>
 # https://aur.archlinux.org/packages/updaurpkg-git
 # $ updaurpkg .
 _repo=lyokha/g3kb-switch
 _source_type=github-releases
-_upstreamver='1.2'
-_pkgname=$(tr A-Z a-z <<< ${_repo##*/})
+_upstreamver='1.3'
 
-pkgname=$_pkgname
+pkgname=g3kb-switch
 pkgver=${_upstreamver##v}
 pkgrel=1
-pkgdesc="CLI keyboard layout switcher for Gnome Shell"
+pkgdesc="CLI keyboard layout switcher for GNOME Shell"
 arch=(x86 x86_64 arm aarch64)
 url=https://github.com/$_repo
 depends=(glib2)
-makedepends=(cmake bash-completion)
+makedepends=(cmake)
 license=(bsd)
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname-$pkgver::$url/archive/$_upstreamver.tar.gz")
-sha256sums=('b6f6a0a10d27dfcbaff0fd1ae3909ffebdca3ac2e2c5f1a0e4a769637ed57beb')
+source=("$pkgname-$pkgver::$url/archive/$_upstreamver.tar.gz")
+sha256sums=('35d6aca3075cf81c393b662990bf7a859afaab1a5be984ee32873f4e7d665fc7')
 
 build() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	cmake -DCMAKE_BUILD_TYPE=Release -DG3KBSWITCH_WITH_GNOME_SHELL_EXTENSION=ON -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
+	cd "$pkgname-$pkgver" || exit 1
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -Bbuild
 	cmake --build build
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
+	cd "$pkgname-$pkgver" || exit 1
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 extension/*/ -t "$pkgdir/usr/share/gnome-shell/extensions"
 }

@@ -1,6 +1,6 @@
 pkgbase = g3kb-switch
-	pkgdesc = CLI keyboard layout switcher for Gnome Shell
-	pkgver = 1.2
+	pkgdesc = CLI keyboard layout switcher for GNOME Shell
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/lyokha/g3kb-switch
 	arch = x86
@@ -9,11 +9,8 @@ pkgbase = g3kb-switch
 	arch = aarch64
 	license = bsd
 	makedepends = cmake
-	makedepends = bash-completion
 	depends = glib2
-	provides = g3kb-switch
-	conflicts = g3kb-switch
-	source = g3kb-switch-1.2::https://github.com/lyokha/g3kb-switch/archive/1.2.tar.gz
-	sha256sums = b6f6a0a10d27dfcbaff0fd1ae3909ffebdca3ac2e2c5f1a0e4a769637ed57beb
+	source = g3kb-switch-1.3::https://github.com/lyokha/g3kb-switch/archive/1.3.tar.gz
+	sha256sums = 35d6aca3075cf81c393b662990bf7a859afaab1a5be984ee32873f4e7d665fc7
 
 pkgname = g3kb-switch
