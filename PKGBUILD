@@ -35,6 +35,6 @@ package() {
 	cd "${pkgname#python-}-${pkgver}"
 	python -m installer --destdir="${pkgdir}/" dist/*.whl
 	install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
-	install -Dm644 docs/_build/man/${pkgname}.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+	install -Dm644 docs/_build/man/${pkgname#python-}.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 	install -Dm644 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
