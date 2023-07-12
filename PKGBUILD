@@ -1,7 +1,7 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 _pkgname=hyprshade
 pkgname=${_pkgname}-git
-pkgver=0.1.2.r0.ga214947
+pkgver=0.2.0.r0.gd61ace1
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
@@ -46,4 +46,5 @@ package() {
 	export PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname/" LICENSE
+	install -Dm0644 -t "$pkgdir/usr/share/hyprshade/shaders/" shaders/*
 }
