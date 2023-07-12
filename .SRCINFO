@@ -24,6 +24,7 @@ pkgbase = python-spotdl
 	depends = python-rapidfuzz
 	depends = python-requests
 	depends = python-rich
+	depends = python-soundcloud-v2
 	depends = python-slugify
 	depends = python-spotipy
 	depends = python-syncedlyrics

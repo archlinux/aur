@@ -29,6 +29,7 @@ depends=(
 	'python-rapidfuzz'
 	'python-requests'
 	'python-rich'
+	'python-soundcloud-v2'
 	'python-slugify'
 	'python-spotipy'
 	'python-syncedlyrics'
