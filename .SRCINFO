@@ -1,11 +1,11 @@
 pkgbase = upcloud-cli
 	pkgdesc = upctl - a CLI tool for managing UpCloud services.
-	pkgver = 2.8.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://upcloud.com
 	arch = x86_64
 	license = Apache
-	source = https://github.com/UpCloudLtd/upcloud-cli/releases/download/v2.8.0/upcloud-cli_2.8.0_linux_x86_64.tar.gz
+	source = https://github.com/UpCloudLtd/upcloud-cli/releases/download/v2.9.1/upcloud-cli_2.9.1_linux_x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = upcloud-cli
