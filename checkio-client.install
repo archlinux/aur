@@ -1,0 +1,3 @@
+post_install() { 
+    echo "Be sure to read the Readme to configure and work with the program." 
+}
