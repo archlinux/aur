@@ -1,8 +1,8 @@
 # Maintainer: Emil Lundberg <emil@emlun.se>
 
 pkgname='pass-notify-git'
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='password-store extension for output via desktop notifications'
 arch=('any')
 url='https://github.com/emlun/pass-notify/'
@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
   cd "${srcdir}/pass-notify/"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" PREFIX="${pkgdir}/usr/bin" install
 }
