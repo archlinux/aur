@@ -4,7 +4,7 @@
 # Chatbox GitHub: https://github.com/Bin-Huang/chatbox
 
 _pkgname=Chatbox
-pkgname="${_pkgname}-appimage"
+pkgname="chatbox-appimage"
 pkgver=0.6.1
 pkgrel=1
 pkgdesc="Chatbox is a desktop app for GPT-4 / GPT-3.5 (OpenAI API) that supports Windows, Mac & Linux."
