@@ -1,5 +1,6 @@
-#!/hint/bash
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: 
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Marius Knaust <marius.knaust@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
@@ -11,19 +12,19 @@
 
 pkgbase=boost-python2
 pkgname=('boost-python2-libs' 'boost-python2')
-pkgver=1.78.0
+pkgver=1.81.0
 _boostver=${pkgver//./_}
 pkgrel=1
 pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
 arch=('x86_64')
 license=('custom')
-makedepends=('icu' 'python' 'python2' 'python-numpy' 'python2-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd' 'findutils')
+makedepends=('icu' 'python2' 'python2-numpy' 'bzip2' 'zlib' 'openmpi' 'zstd' 'findutils')
 source=("https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/boost_${_boostver}.tar.bz2"
         "${pkgbase%-python2}-ublas-c++20-iterator.patch::https://github.com/boostorg/ublas/commit/a31e5cffa85f.patch")
-sha256sums=('8681f175d4bdb26c52222665793eef08490d7758529330f98d3b29dd0735bccc'
+sha256sums=('71feeed900fbccca04a3b4f2f84a7c217186f28a940ed8b7ed4725986baf99fa'
             'aa38addb40d5f44b4a8472029b475e7e6aef1c460509eb7d8edf03491dc1b5ee')
-b2sums=('ed7da98862ec1e0a28472544400e6f44ffadbc967eed969ce6cb62b1c4f0b7a4b98a395269eb374b57326eff9cdb1dd6e47df9d1a9730aff7c926cc44388fb2d'
+b2sums=('ae57247fb80ee5a952881a99bdbe9a1d5622690879ef59053716647dc1121e70fdd322251837387b43357f1cd63c6d1ba285cf35c0c40e4f5ee28a929d7eacf7'
         'e5f6d4884eaa557d5547e7e079c2edb4ed9f2f4cd8579aa32a2150f824a5d04413f2a91e79b3139d5b915da6a46f7835f1438ad53f33096973f1a99f378ec1d3')
 
 prepare() {
