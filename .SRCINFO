@@ -12,9 +12,10 @@ pkgbase = tp_smapi-dkms
 	source = https://github.com/linux-thinkpad/tp_smapi/releases/download/tp-smapi%2F0.43/tp_smapi-0.43.tgz
 	source = dkms.conf
 	source = kbase.patch
+	source = update_define_semaphore_usage_for_linux_6.4.patch
 	sha256sums = bcef9cd045d52a74d719b2a67ac4f5324994a856f123c0fbc55f1d769d367110
 	sha256sums = 43aa280c078fc5ba0ee229b9c71238e215313315711f3d3caae7b9bd0ab24dbe
 	sha256sums = 4bcce516a9f3c486a934cfe6e3d3c92443833f4094ec008ce25264d1a5b66097
+	sha256sums = 24db4ff35d20c488582178ab2aa4d7d96c6125eaff95588be7e900a069df3ca9
 
 pkgname = tp_smapi-dkms
-
