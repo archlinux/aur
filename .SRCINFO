@@ -1,0 +1,33 @@
+pkgbase = r-themis
+	pkgdesc = Extra Recipes Steps for Dealing with Unbalanced Data
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=themis
+	arch = any
+	license = MIT
+	checkdepends = r-dials
+	checkdepends = r-modeldata
+	checkdepends = r-testthat
+	depends = r-dplyr
+	depends = r-generics
+	depends = r-glue
+	depends = r-gower
+	depends = r-hardhat
+	depends = r-lifecycle
+	depends = r-purrr
+	depends = r-rann
+	depends = r-recipes
+	depends = r-rlang
+	depends = r-rose
+	depends = r-tibble
+	depends = r-withr
+	optdepends = r-covr
+	optdepends = r-dials
+	optdepends = r-ggplot2
+	optdepends = r-modeldata
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/themis_1.0.1.tar.gz
+	md5sums = d88baad98cbabe3c7fea5ace64d1fd8f
+	sha256sums = 01bde2f10dacc435685a8df19aa4992e71d099c67e239faa9baa45da15c3d056
+
+pkgname = r-themis
