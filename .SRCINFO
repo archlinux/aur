@@ -1,0 +1,17 @@
+pkgbase = r-mda
+	pkgdesc = Mixture and Flexible Discriminant Analysis
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mda
+	arch = x86_64
+	license = GPL2
+	checkdepends = r-testthat
+	makedepends = gcc-fortran
+	depends = r
+	optdepends = r-earth
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/mda_0.5-4.tar.gz
+	md5sums = d05782cc524a7c680211bfacdc799ad7
+	sha256sums = f25f7f28807d0fa478b1b55eb9d026ebc30577d9d5ff288f9abfe1f3fdb8a759
+
+pkgname = r-mda
