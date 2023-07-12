@@ -1,6 +1,6 @@
 pkgbase = jupyter_contrib_nbextensions
 	pkgdesc = A collection of Jupyter nbextensions
-	pkgver = 0.5.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/ipython-contrib/jupyter_contrib_nbextensions
 	install = jupyter_contrib_nbextensions.install
@@ -15,18 +15,16 @@ pkgbase = jupyter_contrib_nbextensions
 	depends = python-psutil
 	depends = jupyter-notebook
 	depends = jupyter-nbconvert
-	depends = jupyter_contrib_core>=0.3.3
-	depends = jupyter_nbextensions_configurator>=0.4.0
-	depends = jupyter_highlight_selected_word>=0.1.0
-	depends = jupyter_latex_envs>=1.4.0
+	depends = jupyter_contrib_core
+	depends = jupyter_nbextensions_configurator
+	depends = jupyter_highlight_selected_word
 	conflicts = jupyter-nbextensions
 	conflicts = python-jupyter-nbextensions
 	replaces = jupyter-nbextensions-git
 	replaces = jupyter-nbextensions
-	noextract = jupyter_contrib_nbextensions-0.5.1-py2.py3-none-any.whl
-	source = jupyter_contrib_nbextensions-0.5.1-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/py2.py3/j/jupyter_contrib_nbextensions/jupyter_contrib_nbextensions-0.5.1-py2.py3-none-any.whl
+	source = jupyter_contrib_nbextensions-0.7.0.tar.gz::https://pypi.io/packages/source/j/jupyter_contrib_nbextensions/jupyter_contrib_nbextensions-0.7.0.tar.gz
 	source = jupyter_contrib_nbextensions.install
-	sha256sums = 2c071f0aa208c569666f656bdc0f66906ca493cf9f06f46db6350db11030ff40
+	sha256sums = 06e33f005885eb92f89cbe82711e921278201298d08ab0d886d1ba09e8c3e9ca
 	sha256sums = d141d36609422748b0b22b6c432f223bfc92d72359bbccaf709690f7de313e35
 
 pkgname = jupyter_contrib_nbextensions
