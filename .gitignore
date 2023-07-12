@@ -7,3 +7,4 @@
 !.SRCINFO
 !nrf_sniffer_ble.sh
 !nrf-sniffer-ble.install
+!*.patch

@@ -1,0 +1,52 @@
+From c7810bc36a86dbdfeb62eb165629cdf574e815bf Mon Sep 17 00:00:00 2001
+From: Marcin Niestroj <m.niestroj@emb.dev>
+Date: Wed, 12 Jul 2023 13:57:04 +0200
+Subject: [PATCH] drop Filelock use
+
+/var/lock has 0755 permissions by default, which is a policy set by
+systemd tmpfiles.d.
+
+Rely only on serial.Serial(..., exclusive=True), which uses flock() as
+the mechanism for locking serial device for single process.
+
+Signed-off-by: Marcin Niestroj <m.niestroj@emb.dev>
+---
+ extcap/SnifferAPI/UART.py | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/extcap/SnifferAPI/UART.py b/extcap/SnifferAPI/UART.py
+index 76038f6..98aabec 100644
+--- a/extcap/SnifferAPI/UART.py
++++ b/extcap/SnifferAPI/UART.py
+@@ -43,7 +43,6 @@ import serial.tools.list_ports as list_ports
+ 
+ from . import Exceptions
+ from . import Packet
+-from . import Filelock
+ 
+ import os
+ if os.name == "posix":
+@@ -117,10 +116,6 @@ class Uart:
+ 
+             logging.info('Opening serial port {}'.format(portnum))
+ 
+-            self.portnum = portnum
+-            if self.portnum:
+-                Filelock.lock(portnum)
+-
+             self.ser = serial.Serial(
+                 port=portnum,
+                 baudrate=9600,
+@@ -171,9 +166,6 @@ class Uart:
+                 self.worker_thread.join()
+             self.ser = None
+ 
+-        if self.portnum:
+-            Filelock.unlock(self.portnum)
+-
+     def __del__(self):
+         self.close()
+ 
+-- 
+2.41.0
+
