@@ -3,8 +3,8 @@
 
 _pyname=glyphsLib
 pkgname=python-${_pyname,,}
-pkgver=6.2.2
-pkgrel=2
+pkgver=6.2.5
+pkgrel=1
 pkgdesc='A bridge from Glyphs source files (.glyphs) to UFOs'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
@@ -29,7 +29,7 @@ optdepends=(python-defcon
             python-ufonormalizer)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('b701f486b59f63900664eb58b889e3169408a6b579a8604d7f33be8d6e20792f')
+sha256sums=('5e177322ab7d45bbc054b8707b80b3255a3122787d94f5370c68dd979d106b6b')
 
 build() {
 	cd "$_archive"
@@ -40,10 +40,12 @@ check() {
 	cd "$_archive"
 	# skipped interpolation and designspace tests assume pinned version of defcon, Arch's might be newer
 	# skipped builder test requires ufo2ft, a circular dependency which might be older version than expected
+	# skipped tests expecting output of old version of ufoLib2
 	PYTHONPATH=Lib pytest tests \
 		--deselect tests/builder/interpolation_test.py \
 		--deselect tests/builder/designspace_gen_test.py \
-		--deselect tests/builder/builder_test.py
+		--deselect tests/builder/builder_test.py \
+		--deselect tests/builder/to_glyphs_test.py
 }
 
 package() {
