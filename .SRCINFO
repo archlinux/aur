@@ -1,7 +1,7 @@
 pkgbase = proton
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components
-	pkgver = 8.0.2.3
-	pkgrel = 6
+	pkgver = 8.0.3.2
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ValveSoftware/Proton
 	install = proton.install
@@ -161,7 +161,7 @@ pkgbase = proton
 	options = !staticlibs
 	options = !lto
 	options = emptydirs
-	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-8.0-2c
+	source = proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-8.0-3b
 	source = wine-valve::git+https://github.com/ValveSoftware/wine.git
 	source = dxvk::git+https://github.com/doitsujin/dxvk.git
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git
@@ -190,6 +190,7 @@ pkgbase = proton
 	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-7.4.1/wine-mono-7.4.1-x86.tar.xz
 	source = 0001-AUR-Pkgbuild-changes.patch
 	source = 0002-AUR-Do-not-update-cargo-crates.patch
+	source = 0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
 	source = fix_hwnd_changes_meaning.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -220,6 +221,7 @@ pkgbase = proton
 	sha256sums = 1286afc67b0a329f5e2d98d9e803ca5906a841ad5486e9b3b1fefa1124b15622
 	sha256sums = edbbcc93ef53a81150baa409b9c55e756edef6dcda4dd0b79f8fdcaae743aac9
 	sha256sums = 9c107461440cb8cd7d54f994b235dc0be6a11370e0a60578523633c07024c976
+	sha256sums = 71a8337c43da04f50246d779c1cfdcbe88d2a74a7c02fd8953671932b234850c
 	sha256sums = 20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f
 
 pkgname = proton
