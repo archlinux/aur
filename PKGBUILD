@@ -3,8 +3,8 @@
 
 pkgname='python-persisting-theory'
 _module='persisting-theory'
-pkgver='0.2.1'
-pkgrel=5
+pkgver='1.0'
+pkgrel=1
 pkgdesc="Registries that can autodiscover values accross your project apps"
 url="http://code.agate.blue/agate/persisting-theory"
 depends=('python')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('00ff7dcc8f481ff75c770ca5797d968e8725b6df1f77fe0cf7d20fa1e5790c0a')
+sha256sums=('0f840fa22247bcaa514094da7f3b26c602359429ab12d2cd88be06b49a336290')
 
 prepare() {
   cd "$srcdir/${_module}-${pkgver}"
@@ -26,7 +26,6 @@ build() {
 }
 
 package() {
-    depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
