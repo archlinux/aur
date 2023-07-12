@@ -1,5 +1,0 @@
-post_install() {
-	echo ':: This package will be deprecated and moved to its own pkgbase for the 2.0 release.'
-	echo ':: See upstream documentation for more information.'
-	echo ':: https://github.com/rlabbe/filterpy'
-}

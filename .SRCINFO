@@ -5,18 +5,13 @@ pkgbase = python-filterpy
 	url = https://github.com/rlabbe/filterpy
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python-filterpy-1.4.5.tar.gz::https://github.com/rlabbe/filterpy/archive/1.4.5.tar.gz
-	sha256sums = fc371ad800ca5a5ff8b8352894a09c353b794ccc8b813c03d5187df451ccef3a
-
-pkgname = python-filterpy
-	depends = python-numpy
+	makedepends = python-wheel
 	depends = python-scipy
 	depends = python-matplotlib
+	source = filterpy-1.4.5.tar.gz::https://github.com/rlabbe/filterpy/archive/1.4.5.tar.gz
+	sha512sums = 22bc58142249f32d58aa7395342f455ef97469cf26635c5551634a5e4987ad7ef559ead38a3ebacfa447927c96f6ded5d08d2273ec8e86a26288c851ca6a63e5
 
-pkgname = python2-filterpy
-	install = py2.install
-	depends = python2-numpy
-	depends = python2-scipy
-	depends = python2-matplotlib
+pkgname = python-filterpy
