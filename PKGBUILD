@@ -2,7 +2,7 @@
 
 pkgname=modoboa
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Mail hosting made simple"
 arch=(any)
 url="https://modoboa.org/"
@@ -14,7 +14,7 @@ makedepends=('python>=3.7' 'rrdtool' 'python-lxml' 'python-setuptools' 'zlib' 'p
          'python-django-xforwardedfor-middleware' 'python-django-otp' 'python-django-filter' 'python-greenlet' 'python-gevent' 'python-qrcode'
          'python-progressbar' 'python-dateutil' 'python-cryptography' 'python-pytz' 'python-chardet' 'python-ovh' 'python-oath')
 depends=('python>=3.7' 'python-django' 'python-dj-database-url' 'python-pip' 'python-requests' 'python-pycryptodome' 'python-chardet'
-         'python-django-reversion>=5.0' 'python-passlib' 'python-factory_boy' 'python-django-xforwardedfor-middleware>=2.0')
+         'python-django-reversion>=5.0' 'python-passlib' 'python-factory_boy' 'python-django-xforwardedfor-middleware')
 optdepends=('python-virtualenv' 'mysql' 'postgresql' 'sqlite' 'python-mysql-connector' 'python-psycopg2' 'gunicorn' 'python-vex' 'python-pillow')
 provides=('modoboa')
 conflicts=('modoboa-git')
