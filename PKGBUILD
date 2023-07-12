@@ -4,8 +4,8 @@
 pkgname=python-asgiref_patch
 _pkgname=python-asgiref
 pkgver=3.4.1
-pkgrel=2
-pkgdesc="Reference ASGI adapters and channel layers"
+pkgrel=3
+pkgdesc="Reference ASGI adapters and channel layers (patched for funkwhale 1.2)"
 arch=(any)
 provides=('python-asgiref')
 conflicts=('python-asgiref')
