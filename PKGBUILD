@@ -1,11 +1,12 @@
 # Maintainer: MrDuartePT <gonegrier.duarte@gmail.com>
+# Maintainer: xenhat <aur@xenh.at>
 # Maintainer: johnfanv2 <https://github.com/johnfanv2>
 
 
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-git
 pkgver=r255.f029ef9
-pkgrel=1
+pkgrel=2
 pkgdesc="LenovoLegionLinux (LLL) brings additional drivers and tools for Lenovo Legion series laptops to Linux. PLEASE READ THE REPO BEFORE INSTALL THIS PACKAGE!!!"
 arch=("x86_64")
 url="https://github.com/johnfanv2/LenovoLegionLinux"
