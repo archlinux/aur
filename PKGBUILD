@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GenSA
-_pkgver=1.1.8
+_pkgver=1.1.9
 pkgname=r-${_pkgname,,}
-pkgver=1.1.8
+pkgver=1.1.9
 pkgrel=1
 pkgdesc='Generalized Simulated Annealing'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('375e87541eb6b098584afccab361dc28ff09d03cf1d062ff970208e294eca216')
+sha256sums=('381ba3cfef83208a2ec8ba7bbd4918e618599e95b11d1e26632b8b7c0c011583')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
