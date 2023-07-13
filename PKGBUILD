@@ -2,14 +2,14 @@
 # Contributor: Juliette Cordor 
 
 pkgname=("podman-desktop")
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Manage Podman and other container engines from a single UI and tray."
 arch=('x86_64' 'aarch64')
 url=https://github.com/containers/podman-desktop
 license=('Apache-2.0')
 depends=()
-makedepends=('yarn' 'git' 'python' 'npm' 'nodejs-lts-gallium')
+makedepends=('yarn' 'git' 'python' 'npm')
 optdepends=(
     "podman: podman plugin"
     "crc: crc plugin"
