@@ -12,7 +12,7 @@ depends=('gcc' 'vim' 'nano')
 source=("https://github.com/felipealfonsog/TermNotes/archive/refs/tags/$pkgver.tar.gz")
 
 build() {
-  cd "$srcdir/TermNotes-$pkgver"
+  cd "$srcdir/setup"
   make
 }
 
