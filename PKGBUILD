@@ -1,8 +1,8 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 _pkgname=hyprshade
 pkgname=${_pkgname}-git
-pkgver=0.2.0.r0.gd61ace1
-pkgrel=2
+pkgver=0.5.0.r0.g05d035f
+pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
 url="https://github.com/loqusion/hyprshade"
@@ -47,4 +47,5 @@ package() {
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname/" LICENSE
 	install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/shaders/" shaders/*
+	install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/examples/" examples/*
 }
