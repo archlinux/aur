@@ -1,0 +1,20 @@
+pkgbase = fukayo-bin
+	pkgdesc = Manga reader
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/JiPaix/Fukayo
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	depends = electron24
+	depends = bash
+	provides = fukayo
+	conflicts = fukayo
+	source = fukayo-0.13.0.AppImage::https://github.com/JiPaix/Fukayo/releases/download/v0.13.0/Fukayo-0.13.0.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/JiPaix/fukayo/beta/LICENSE
+	source = fukayo.sh
+	sha256sums = f982a5dc87485a30ac82f8c77dd400733ee192aa8d34f28fb59f06b7205a7861
+	sha256sums = c3fb2affb5fa8ed0b1866d379461e7e0c845ac7011f67aa7410cfe080f8d753a
+	sha256sums = a8efb4845bb8c1be62598e48aa02b43c15ab05193f761083b5c43755a17ccf3b
+
+pkgname = fukayo-bin
