@@ -1,7 +1,7 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.8.0.r1390.gab3c8f7304
+pkgver=2.10.0.pre0.r1679.g39a082c79e
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://linuxcnc.org"
 depends=('bc'
          'bwidget'
          'libxaw'
-         'python2-imaging'
+         'python2-pillow'
          'python2-yapps2'
          'tkimg'
          'python2-gtkglext'
@@ -43,10 +43,6 @@ prepare() {
    --without-libmodbus --prefix=/usr \
    --with-python=/usr/bin/python2.7 \
    --enable-non-distributable=yes
-  # Linking time errors fix
-  sed -i "163s|FileName|FileNameArr|" hal/classicladder/files_project.c
-  sed -i "174s|FileName|FileNameArr|g" hal/classicladder/files_project.c
-  sed -i "175s|FileName|FileNameArr|" hal/classicladder/files_project.c
 }
 
 build () {
@@ -62,6 +58,5 @@ package() {
   cp -PR "${srcdir}/${pkgname}/share/menus" "${pkgdir}/etc/xdg/"
   install -Dm755 "${srcdir}/${pkgname}/src/${pkgname}.sh" \
    "${pkgdir}/etc/profile.d/${pkgname}.sh"
-  sed -i "s|${srcdir}||" "${pkgdir}/usr/include/linuxcnc/config.h"
   sed -i "s|${srcdir}||" "${pkgdir}/usr/share/linuxcnc/Makefile.modinc"
 }

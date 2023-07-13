@@ -1,6 +1,6 @@
 pkgbase = linuxcnc-git
 	pkgdesc = Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)
-	pkgver = 2.8.0.r1390.gab3c8f7304
+	pkgver = 2.10.0.pre0.r1679.g39a082c79e
 	pkgrel = 1
 	url = http://linuxcnc.org
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = linuxcnc-git
 	depends = bc
 	depends = bwidget
 	depends = libxaw
-	depends = python2-imaging
+	depends = python2-pillow
 	depends = python2-yapps2
 	depends = tkimg
 	depends = python2-gtkglext
@@ -29,4 +29,3 @@ pkgbase = linuxcnc-git
 	sha256sums = bc95bafd67fad1c1d3722261bc586cdc612ec9e1597fadb95fa825c10550ac2c
 
 pkgname = linuxcnc-git
-
