@@ -506,6 +506,8 @@ _build_sapi() {
 # BUILD them all
 ################################################################################
 build() {
+    export CFLAGS="${CFLAGS} -fPIC"
+    export CXXFLAGS="${CXXFLAGS} -fPIC"
     export EXTENSION_DIR="/usr/lib/${pkgbase}/modules"
     if ((_build_openssl_v10_patch)); then
         export PHP_OPENSSL_DIR="/usr/lib/openssl-1.0"
