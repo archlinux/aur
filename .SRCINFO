@@ -1,0 +1,15 @@
+pkgbase = python-ipinfo
+	pkgdesc = Official Python library for IPInfo
+	pkgver = 4.4.2
+	pkgrel = 1
+	url = https://github.com/ipinfo/python
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-cachetools
+	source = https://files.pythonhosted.org/packages/source/i/ipinfo/ipinfo-4.4.2.tar.gz
+	sha256sums = 30fe65e50fc8896c5e3adae7548f971c52e1cb7646e5088c35cca2f0a23f3be8
+
+pkgname = python-ipinfo
