@@ -5,7 +5,7 @@ pkgver=1.1
 pkgrel=1
 pkgdesc="Tatsumoto's Pomodoro timer written in Bash"
 arch=('any')
-url="https://tatsumoto.neocities.org/blog/table-of-contents"
+url="https://tatsumoto.neocities.org/blog/timeboxing"
 license=('GPL3')
 depends=(
 	"bash"
