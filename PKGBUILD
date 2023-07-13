@@ -7,7 +7,7 @@ _pkgbase=poppler
 pkgname=('lib32-poppler' 'lib32-poppler-glib')
 pkgver=23.06.0
 _commit=e3cdc82782941a8d7b8112f83b4a81b3d334601a
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=('GPL')
 makedepends=('lib32-libjpeg' 'lib32-gcc-libs' 'lib32-cairo'
@@ -66,7 +66,7 @@ check() {
 package_lib32-poppler() {
   pkgdesc="PDF rendering library based on xpdf 3.0 (32-bit)"
   depends=('lib32-libjpeg' 'lib32-gcc-libs' 'lib32-cairo'
-           'lib32-fontconfig' 'lib32-openjpeg2' 'lib32-lcms2'
+           'lib32-fontconfig' 'lib32-lcms2'
            "poppler>=${pkgver}" 'lib32-nss' 'curl')
   optdepends=('poppler-data: encoding data to display PDF documents containing CJK characters')
   provides=('libpoppler.so' 'libpoppler-cpp.so')

@@ -1,5 +1,6 @@
 poppler-*.tar.*
 lib32-poppler-*.pkg.tar.zst
+fix-signature-test-failure.patch
 src/
 pkg/
 test/
