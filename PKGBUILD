@@ -2,7 +2,7 @@
 # Maintainer: Devops <devops@nucleuscloud.com>
 
 pkgname='nucleus-bin'
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc='CLI for interfacing with Nucleus'
 url='https://nucleuscloud.com'
@@ -11,14 +11,14 @@ license=('Apache-2.0')
 provides=('nucleus')
 conflicts=('nucleus')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nucleuscloud/cli/releases/download/v0.2.11/nucleus_0.2.11_linux_arm64.tar.gz")
-sha256sums_aarch64=('97074e43a0d24f1f73637158ca04e460af1f1e7b8000028fdbbb5d6c8dd744c8')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nucleuscloud/cli/releases/download/v0.2.12/nucleus_0.2.12_linux_arm64.tar.gz")
+sha256sums_aarch64=('b9781c2729fd82f19e43b8fce44a43e74d669ebdc32f9d7b1296f0bfcf50991b')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/nucleuscloud/cli/releases/download/v0.2.11/nucleus_0.2.11_linux_386.tar.gz")
-sha256sums_i686=('c11f5bf25f2e39e69d6d7631b6b2053797b0a9d11a48e692009a179c061f5e36')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/nucleuscloud/cli/releases/download/v0.2.12/nucleus_0.2.12_linux_386.tar.gz")
+sha256sums_i686=('daaadcb0c4c6f3dde9d4f3233deb3a96211a08c124255478b93fbdc39f22acc1')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nucleuscloud/cli/releases/download/v0.2.11/nucleus_0.2.11_linux_amd64.tar.gz")
-sha256sums_x86_64=('ffba27f299ce8e2d70cb45668fdd8be9b17e927b911ea69be663cc701c696d95')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nucleuscloud/cli/releases/download/v0.2.12/nucleus_0.2.12_linux_amd64.tar.gz")
+sha256sums_x86_64=('276ca55d993e5744815957cfca042289e1927ecf84178ac27576dbf837a50257')
 
 package() {
   # bin
