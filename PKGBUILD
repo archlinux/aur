@@ -5,18 +5,20 @@ pkgver=r206.2d21e28
 pkgrel=1
 pkgdesc="Monitor your CPU, Memory, Disk, Network and GPU usage"
 arch=('i686' 'x86_64' 'aarch64')
-url=""
+url="https://gitlab.com/mission-center-devs/mission-center"
 license=('GPL')
 groups=()
 depends=('gtk4'
 	 'libadwaita'
 	 'sqlite'
-	 'gobject-introspection')
+	 'gobject-introspection'
+	 'dmidecode')
 makedepends=('meson'
 	     'rust'
 	     'git'
-	     'python-gobject')
-checkdepends=()
+	     'python-gobject'
+	     'blueprint-compiler')
+checkdepends=('appstream-glib')
 
 optdepends=()
 provides=("mission-center")
@@ -41,6 +43,12 @@ build() {
   cd "$srcdir/$_pkgname"
 
   meson compile -C build
+}
+
+check() {
+  cd "$srcdir/$_pkgname"
+  
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
