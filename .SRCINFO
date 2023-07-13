@@ -1,0 +1,17 @@
+pkgbase = libfs
+	pkgdesc = X Font Service client library
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://xorg.freedesktop.org/
+	arch = x86_64
+	license = custom
+	makedepends = xtrans
+	depends = glibc
+	depends = xorgproto
+	source = https://xorg.freedesktop.org//releases/individual/lib/libFS-1.0.9.tar.xz
+	source = https://xorg.freedesktop.org//releases/individual/lib/libFS-1.0.9.tar.xz.sig
+	validpgpkeys = 4A193C06D35E7C670FA4EF0BA2FB9E081F2D130E
+	sha256sums = 597379438b3242ccc7d7b0fc432dc6c844eca0d4a82a7b82518bfeb203fc208a
+	sha256sums = SKIP
+
+pkgname = libfs
