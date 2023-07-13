@@ -1,12 +1,13 @@
 pkgbase = utask-bin
 	pkgdesc = An automation engine that models and executes business processes declared in yaml
-	pkgver = 1.26.2
+	pkgver = 1.23.3
 	pkgrel = 1
 	url = https://github.com/ovh/utask
 	arch = x86_64
-	license = BSD3
+	license = BSD
+	provides = utask
 	conflicts = utask
-	source = utask-bin-1.26.2.tar.gz::https://github.com/ovh/utask/releases/download/v1.26.2/utask_Linux_x86_64.tar.gz
-	sha256sums = 8364dc8b22313ac5f15831709d2d4f89d9ace1813933c7bec11dad4b112eef18
+	source = utask-bin-1.23.3.tar.gz::https://github.com/ovh/utask/releases/download/v1.23.3/utask_Linux_x86_64.tar.gz
+	sha256sums = f1287dafc1eb053804c92cbf5a3c07993eadff0ce71dae343c221ebcbd39cdc2
 
 pkgname = utask-bin
