@@ -34,8 +34,8 @@ conflicts=(
 )
 
 source=("${_pkgname}::git+https://github.com/johnfanv2/LenovoLegionLinux"
-   'legion_cli.policy
-   'legion_gui.desktop)
+   'legion_cli.policy::https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/LenovoLegionLinux/files/legion_cli.policy'
+   'legion_gui.desktop::https://raw.githubusercontent.com/MrDuartePT/mrduarte-ebuilds/master/sys-firmware/LenovoLegionLinux/files/legion_gui.desktop')
 sha256sums=('SKIP'
             '8e0c262868b5de17ca384b200a0080b2f03e284422ab06ee408310d038c9cdf5'
             '3af20ff4678b603f98e71b1fb540553dd751509d6ea5c1158462aebe532b8189')
