@@ -1,8 +1,8 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=dotbot
-pkgver=1.19.1
-pkgrel=4
+pkgver=1.19.2
+pkgrel=1
 pkgdesc="A tool that bootstraps your dotfiles"
 arch=(any)
 url="https://github.com/anishathalye/dotbot"
@@ -12,20 +12,22 @@ depends=(
   python-yaml
 )
 makedepends=(
-  python-pip
+  python-build
+  python-installer
   python-setuptools
+  python-wheel
 )
 checkdepends=(python-pytest)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('235a7a7c239de895cae150ff25d7dbec893ea23ba91376aa6860b3bd709cccec')
+sha256sums=('e6a230cbfa0025184d1969739bfadd1c677c49ab09089135d566a4719d4b1034')
 
 _archive="$pkgname-$pkgver"
 
 build() {
   cd "$_archive"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -37,7 +39,7 @@ check() {
 package() {
   cd "$_archive"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
