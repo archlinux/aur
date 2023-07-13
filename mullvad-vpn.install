@@ -59,7 +59,7 @@ post_remove() {
   echo 'sudo rm -rf /etc/mullvad-vpn/'
   echo ''
   echo 'Optionally remove app settings:'
-  echo 'rm -rf ~/.config/Mullvad VPN/'
+  echo 'rm -rf ~/.config/Mullvad\ VPN/'
   echo ''
   echo 'Optionally remove auto-launcher:'
   echo 'rm ~/.config/autostart/mullvad-vpn.desktop'
