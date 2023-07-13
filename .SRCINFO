@@ -1,6 +1,6 @@
 pkgbase = r-doby
 	pkgdesc = Groupwise Statistics, LSmeans, Linear Contrasts, Utilities
-	pkgver = 4.6.16
+	pkgver = 4.6.17
 	pkgrel = 1
 	url = https://cran.r-project.org/package=doBy
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-doby
 	optdepends = r-multcomp
 	optdepends = r-survival
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/doBy_4.6.16.tar.gz
-	sha256sums = d5937eb57d293b0bc2e581ff2e1e628671cb4eacddc0b9574dc28a5316ecbbe7
+	source = https://cran.r-project.org/src/contrib/doBy_4.6.17.tar.gz
+	sha256sums = c58a944a3b87b2575dcaf319875bea8c5a47513dddbdabf8dfabea9cc20f4b0a
 
 pkgname = r-doby
