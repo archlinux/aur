@@ -1,6 +1,6 @@
 # Maintainer: Flat <flat@esoteric.moe>
 pkgname=ddh-git
-pkgver=r311.dd2f615
+pkgver=r427.aac9046
 pkgrel=1
 pkgdesc="Manage duplicate files "
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('git' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git://github.com/darakian/ddh')
+source=('git+https://github.com/darakian/ddh')
 md5sums=('SKIP')
 
 pkgver() {
