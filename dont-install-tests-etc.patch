@@ -1,0 +1,12 @@
+diff --unified --recursive --text maigret-0.4.4.orig/setup.py maigret-0.4.4/setup.py
+--- maigret-0.4.4.orig/setup.py	2023-07-13 08:34:53.313428127 +0200
++++ maigret-0.4.4/setup.py	2023-07-13 08:36:55.147133517 +0200
+@@ -18,7 +18,7 @@
+       url='https://github.com/soxoj/maigret',
+       install_requires=requires,
+       entry_points={'console_scripts': ['maigret = maigret.maigret:run']},
+-      packages=find_packages(),
++      packages=['maigret'] + ['maigret.' + p for p in find_packages('maigret')],
+       include_package_data=True,
+       author='Soxoj',
+       author_email='soxoj@protonmail.com',

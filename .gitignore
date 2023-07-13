@@ -3,3 +3,4 @@
 !PKGBUILD
 !.SRCINFO
 !fix-pytest-crash.patch
+!dont-install-tests-etc.patch

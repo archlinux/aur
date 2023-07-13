@@ -2,21 +2,24 @@
 
 pkgname=maigret
 pkgver=0.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Collect a dossier on a person by username from thousands of sites"
 arch=(any)
 url="https://github.com/soxoj/maigret"
 license=(MIT)
 depends=(
+  python
   python-aiodns
   python-aiohttp
   python-aiohttp-socks
   python-cloudscraper
   python-colorama
+  python-dateutil
   python-jinja
   python-mock
   python-networkx
   python-pycountry
+  python-python-socks
   python-pyvis
   python-requests
   python-tqdm
@@ -24,7 +27,12 @@ depends=(
   python-xmind
   socid-extractor
 )
-makedepends=(python-setuptools)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
 checkdepends=(
   python-pytest
   python-pytest-asyncio
@@ -36,10 +44,12 @@ checkdepends=(
 
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
+  "dont-install-tests-etc.patch"
   "fix-pytest-crash.patch"
 )
 sha256sums=(
   'f890ad0986f94b1674324a17c011ec6a955e62fd87feb578707589371f08847f'
+  '00ce7e030d3733bc55661e11de5399604a17d9540576100e6ea2d059a88642cd'
   'f68c7d967aa2b1294bc7376eac39c4975a7cdf5464cbada1820acc48e325a941'
 )
 
@@ -48,14 +58,14 @@ _archive="$pkgname-$pkgver"
 prepare() {
   cd "$_archive"
 
+  patch --forward --strip=1 --input="$srcdir/dont-install-tests-etc.patch"
   patch --forward --strip=1 --input="$srcdir/fix-pytest-crash.patch"
 }
 
 build() {
   cd "$_archive"
 
-  python setup.py build
-  rm -r build/lib/tests/ build/lib/utils/
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -69,8 +79,7 @@ check() {
 package() {
   cd "$_archive"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
