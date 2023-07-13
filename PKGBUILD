@@ -9,7 +9,7 @@ pkgname=wine-ge-custom
 _srctag=GE-Proton8-10
 _commit=ff9f66c9cdf8562f4d3338cc9900c1f15de5e01f
 pkgver=${_srctag//-/.}
-pkgrel=3
+pkgrel=4
 epoch=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -95,9 +95,10 @@ optdepends=(
   libgphoto2
   ffmpeg
   dosbox
-  wine
 )
 
+provides=("wine=8.0" "wine-wow64=8.0")
+conflicts=('wine' 'wine-wow64')
 install=wine.install
 
 prepare() {
@@ -153,8 +154,8 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/share/pkgconfig"
   cd "$srcdir/$pkgname-64-build"
   ../$pkgname/proton-wine/configure \
-    --prefix=/opt/"$pkgname" \
-    --libdir=/opt/"$pkgname"/lib \
+    --prefix=/usr \
+    --libdir=/usr/lib \
     --with-x \
     --with-gstreamer \
     --with-mingw \
@@ -177,7 +178,7 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
   cd "$srcdir/$pkgname-32-build"
   ../$pkgname/proton-wine/configure \
-    --prefix=/opt/"$pkgname" \
+    --prefix=/usr \
     --with-x \
     --with-gstreamer \
     --with-mingw \
@@ -186,7 +187,7 @@ build() {
     --disable-winemenubuilder \
     --disable-tests \
     --with-xattr \
-    --libdir=/opt/"$pkgname"/lib32 \
+    --libdir=/usr/lib32 \
     --with-wine64="$srcdir/$pkgname-64-build"
 
   make
@@ -196,27 +197,27 @@ package() {
   msg2 "Packaging Wine-32..."
   cd "$srcdir/$pkgname-32-build"
 
-  make prefix="$pkgdir/opt/$pkgname" \
-    libdir="$pkgdir/opt/$pkgname/lib32" \
-    dlldir="$pkgdir/opt/$pkgname/lib32/wine" install
+  make prefix="$pkgdir/usr" \
+    libdir="$pkgdir/usr/lib32" \
+    dlldir="$pkgdir/usr/lib32/wine" install
 
   msg2 "Packaging Wine-64..."
   cd "$srcdir/$pkgname-64-build"
-  make prefix="$pkgdir/opt/$pkgname" \
-    libdir="$pkgdir/opt/$pkgname/lib" \
-    dlldir="$pkgdir/opt/$pkgname/lib/wine" install
+  make prefix="$pkgdir/usr" \
+    libdir="$pkgdir/usr/lib" \
+    dlldir="$pkgdir/usr/lib/wine" install
 
   # Font aliasing settings for Win32 applications
-  install -d "$pkgdir"/opt/"$pkgname"/share/fontconfig/conf.{avail,default}
-  install -m644 "$srcdir/30-win32-aliases.conf" "$pkgdir/opt/$pkgname/share/fontconfig/conf.avail"
-  ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/opt/$pkgname/share/fontconfig/conf.default/30-win32-aliases.conf"
-  install -Dm 644 "$srcdir/wine-binfmt.conf" "$pkgdir/opt/$pkgname/lib/binfmt.d/wine.conf"
+  install -d "$pkgdir"/usr/share/fontconfig/conf.{avail,default}
+  install -m644 "$srcdir/30-win32-aliases.conf" "$pkgdir/usr/share/fontconfig/conf.avail"
+  ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
+  install -Dm 644 "$srcdir/wine-binfmt.conf" "$pkgdir/usr/lib/binfmt.d/wine.conf"
 
-  i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/opt/"$pkgname"/lib32/wine/i386-windows/*.{dll,exe}
-  x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/opt/"$pkgname"/lib/wine/x86_64-windows/*.{dll,exe}
+  i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib32/wine/i386-windows/*.{dll,exe}
+  x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.{dll,exe}
 
-  find "$pkgdir"/opt/"$pkgname"/lib{,32}/wine -iname "*.a" -delete
-  find "$pkgdir"/opt/"$pkgname"/lib{,32}/wine -iname "*.def" -delete
+  find "$pkgdir"/usr/lib{,32}/wine -iname "*.a" -delete
+  find "$pkgdir"/usr/lib{,32}/wine -iname "*.def" -delete
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
