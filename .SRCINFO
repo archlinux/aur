@@ -1,7 +1,7 @@
 pkgbase = r-doparallel
 	pkgdesc = Foreach Parallel Adaptor for the 'parallel' Package
 	pkgver = 1.0.17
-	pkgrel = 2
+	pkgrel = 7
 	url = https://cran.r-project.org/package=doParallel
 	arch = any
 	license = GPL2
@@ -14,6 +14,7 @@ pkgbase = r-doparallel
 	optdepends = r-mlbench
 	optdepends = r-runit
 	source = https://cran.r-project.org/src/contrib/doParallel_1.0.17.tar.gz
+	md5sums = df72884b8d87b06c6bdd4f8caf7e5bf7
 	sha256sums = b96a25ad105a654d70c7b4ca27290dc9967bc47f4668b2763927a886b178abd7
 
 pkgname = r-doparallel
