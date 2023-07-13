@@ -1,0 +1,23 @@
+pkgbase = uksmd-nosystemd-git
+	pkgdesc = Userspace KSM helper daemon. Without systemd dependency, latest git checkout.
+	pkgver = 6.4.1.r67.20230707.b698d76
+	pkgrel = 1
+	url = https://codeberg.org/pf-kernel/uksmd
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = procps-ng
+	depends = libcap-ng
+	optdepends = uksmd-openrc: For OpenRC initscript.
+	optdepends = UKSMD-BUILTIN: Necessary kernel support.
+	provides = uksmd=6.4.1.r67.20230707.b698d76
+	provides = uksmd-nosystemd=6.4.1.r67.20230707.b698d76
+	provides = uksmd-git=6.4.1.r67.20230707.b698d76
+	conflicts = uksmd
+	source = uksmd::git+https://codeberg.org/pf-kernel/uksmd.git
+	source = disable_systemd_build.patch
+	sha256sums = SKIP
+	sha256sums = 0bf8c5f13e0a4537993a7c3de2933ce22c6f22332f08e505c6403dd39d3340b0
+
+pkgname = uksmd-nosystemd-git

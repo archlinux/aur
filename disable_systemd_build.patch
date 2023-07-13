@@ -1,0 +1,25 @@
+diff -rU0 uksmd.orig/meson.build uksmd-nosystemd/meson.build
+--- uksmd.orig/meson.build	2023-07-13 15:23:27.810351749 +0200
++++ uksmd-nosystemd/meson.build	2023-07-13 15:54:01.630009663 +0200
+@@ -21,21 +20,0 @@
+-systemd = dependency('systemd', required: false)
+-
+-if systemd.found()
+-  systemd_system_unit_dir = systemd.get_variable(pkgconfig : 'systemdsystemunitdir')
+-
+-  install_data(
+-    [
+-      'uksmd.service',
+-    ],
+-    install_dir: systemd_system_unit_dir
+-  )
+-
+-  project_dependencies += [
+-    dependency('libsystemd')
+-  ]
+-
+-  build_args += [
+-    '-DHAVE_SYSTEMD',
+-  ]
+-endif
+-
