@@ -1,7 +1,7 @@
 pkgbase = wine-ge-custom
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch
 	pkgver = GE.Proton8.10
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/GloriousEggroll/wine-ge-custom
 	install = wine.install
@@ -106,10 +106,7 @@ pkgbase = wine-ge-custom
 	optdepends = libgphoto2
 	optdepends = ffmpeg
 	optdepends = dosbox
-	provides = wine=8.0
-	provides = wine-wow64=8.0
-	conflicts = wine
-	conflicts = wine-wow64
+	optdepends = wine-ge-custom-standalone: Makes wine-ge-custom behave as your system's default wine
 	options = !staticlibs
 	options = !lto
 	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#commit=ff9f66c9cdf8562f4d3338cc9900c1f15de5e01f
@@ -128,3 +125,11 @@ pkgbase = wine-ge-custom
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
 
 pkgname = wine-ge-custom
+
+pkgname = wine-ge-custom-standalone
+	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch. Makes wine-ge-custom behave as your system's default wine
+	depends = wine-ge-custom
+	provides = wine=8.0
+	provides = wine-wow64=8.0
+	conflicts = wine
+	conflicts = wine-wow64

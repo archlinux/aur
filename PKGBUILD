@@ -5,11 +5,12 @@
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-pkgname=wine-ge-custom
+pkgbase=wine-ge-custom
+pkgname=(wine-ge-custom wine-ge-custom-standalone)
 _srctag=GE-Proton8-10
 _commit=ff9f66c9cdf8562f4d3338cc9900c1f15de5e01f
 pkgver=${_srctag//-/.}
-pkgrel=4
+pkgrel=5
 epoch=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -97,16 +98,18 @@ optdepends=(
   dosbox
 )
 
-provides=("wine=8.0" "wine-wow64=8.0")
-conflicts=('wine' 'wine-wow64')
+optdepends+=(
+  "wine-ge-custom-standalone: Makes wine-ge-custom behave as your system's default wine"
+)
+
 install=wine.install
 
 prepare() {
   # Get rid of old build dirs
-  rm -rf $pkgname-{32,64}-build
-  mkdir $pkgname-{32,64}-build
+  rm -rf $pkgbase-{32,64}-build
+  mkdir $pkgbase-{32,64}-build
 
-  pushd $pkgname
+  pushd $pkgbase
     git submodule init proton-wine
     git submodule set-url proton-wine "$srcdir"/proton-wine-ge
     git -c protocol.file.allow=always submodule update proton-wine
@@ -152,10 +155,10 @@ build() {
   export CROSSCFLAGS="$CFLAGS"
   export CROSSCXXFLAGS="$CXXFLAGS"
   export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/share/pkgconfig"
-  cd "$srcdir/$pkgname-64-build"
-  ../$pkgname/proton-wine/configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
+  cd "$srcdir/$pkgbase-64-build"
+  ../$pkgbase/proton-wine/configure \
+    --prefix=/opt/"$pkgbase" \
+    --libdir=/opt/"$pkgbase"/lib \
     --with-x \
     --with-gstreamer \
     --with-mingw \
@@ -176,9 +179,9 @@ build() {
   export CROSSCFLAGS="$CFLAGS"
   export CROSSCXXFLAGS="$CXXFLAGS"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
-  cd "$srcdir/$pkgname-32-build"
-  ../$pkgname/proton-wine/configure \
-    --prefix=/usr \
+  cd "$srcdir/$pkgbase-32-build"
+  ../$pkgbase/proton-wine/configure \
+    --prefix=/opt/"$pkgbase" \
     --with-x \
     --with-gstreamer \
     --with-mingw \
@@ -187,25 +190,54 @@ build() {
     --disable-winemenubuilder \
     --disable-tests \
     --with-xattr \
-    --libdir=/usr/lib32 \
-    --with-wine64="$srcdir/$pkgname-64-build"
+    --libdir=/opt/"$pkgbase"/lib32 \
+    --with-wine64="$srcdir/$pkgbase-64-build"
 
   make
 }
 
-package() {
+package_wine-ge-custom() {
   msg2 "Packaging Wine-32..."
-  cd "$srcdir/$pkgname-32-build"
+  cd "$srcdir/$pkgbase-32-build"
 
-  make prefix="$pkgdir/usr" \
-    libdir="$pkgdir/usr/lib32" \
-    dlldir="$pkgdir/usr/lib32/wine" install
+  make prefix="$pkgdir/opt/$pkgbase" \
+    libdir="$pkgdir/opt/$pkgbase/lib32" \
+    dlldir="$pkgdir/opt/$pkgbase/lib32/wine" install
 
   msg2 "Packaging Wine-64..."
-  cd "$srcdir/$pkgname-64-build"
-  make prefix="$pkgdir/usr" \
-    libdir="$pkgdir/usr/lib" \
-    dlldir="$pkgdir/usr/lib/wine" install
+  cd "$srcdir/$pkgbase-64-build"
+  make prefix="$pkgdir/opt/$pkgbase" \
+    libdir="$pkgdir/opt/$pkgbase/lib" \
+    dlldir="$pkgdir/opt/$pkgbase/lib/wine" install
+
+  i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/opt/"$pkgbase"/lib32/wine/i386-windows/*.{dll,exe}
+  x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/opt/"$pkgbase"/lib/wine/x86_64-windows/*.{dll,exe}
+
+  find "$pkgdir"/opt/"$pkgbase"/lib{,32}/wine -iname "*.a" -delete
+  find "$pkgdir"/opt/"$pkgbase"/lib{,32}/wine -iname "*.def" -delete
+}
+
+package_wine-ge-custom-standalone() {
+  pkgdesc+=". Makes wine-ge-custom behave as your system's default wine"
+  depends=(wine-ge-custom)
+  provides=("wine=8.0" "wine-wow64=8.0")
+  conflicts=('wine' 'wine-wow64')
+
+  _executables=(
+    function_grep.pl msiexec regedit widl wine64 wineboot winecfg winecpp winedump
+    wineg++ winemaker winepath wineserver wrc msidb notepad regsvr32 wine wine64-preloader
+    winebuild wineconsole winedbg winefile winegcc winemine wine-preloader wmc
+  )
+  _winepath="/opt/$pkgbase"
+  for _exe in "${_executables[@]}"; do
+    install -Dm755 /dev/stdin "$pkgdir"/usr/bin/"$_exe" <<EOF
+#!/usr/bin/sh
+export PATH="$_winepath/bin/:\$PATH"
+export LD_LIBRARY_PATH="$_winepath/lib:$_winepath/lib32:\$LD_LIBRARY_PATH"
+export WINEDLLPATH="$_winepath/lib/wine:$_winepath/lib32/wine:\$WINEDLLPATH"
+$_winepath/bin/$_exe
+EOF
+  done
 
   # Font aliasing settings for Win32 applications
   install -d "$pkgdir"/usr/share/fontconfig/conf.{avail,default}
@@ -213,11 +245,6 @@ package() {
   ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
   install -Dm 644 "$srcdir/wine-binfmt.conf" "$pkgdir/usr/lib/binfmt.d/wine.conf"
 
-  i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib32/wine/i386-windows/*.{dll,exe}
-  x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.{dll,exe}
-
-  find "$pkgdir"/usr/lib{,32}/wine -iname "*.a" -delete
-  find "$pkgdir"/usr/lib{,32}/wine -iname "*.def" -delete
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
