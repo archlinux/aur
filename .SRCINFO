@@ -1,0 +1,17 @@
+pkgbase = autoedit-git
+	pkgdesc = A script for interactive editing of GNU Autotools project configurations
+	pkgver = r1.af46184
+	pkgrel = 1
+	url = https://gitlab.com/Spiffyk/autoedit
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = autoconf
+	depends = bash
+	depends = grep
+	provides = autoedit
+	conflicts = autoedit
+	source = git+https://gitlab.com/Spiffyk/autoedit.git
+	sha256sums = SKIP
+
+pkgname = autoedit-git

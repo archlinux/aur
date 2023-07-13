@@ -1,0 +1,5 @@
+/autoedit
+/src
+/pkg
+*.src.*
+*.pkg.*
