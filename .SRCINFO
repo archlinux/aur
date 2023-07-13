@@ -1,6 +1,6 @@
 pkgbase = final2x-bin
 	pkgdesc = 2^x Image Super-Resolution
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Tohrusky/Final2x
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = final2x-bin
 	depends = electron
 	depends = hicolor-icon-theme
 	conflicts = final2x
-	source = final2x-1.0.2.deb::https://github.com/Tohrusky/Final2x/releases/download/2023-07-01/Final2x-linux-pip-x64-deb.deb
+	source = final2x-1.1.0.deb::https://github.com/Tohrusky/Final2x/releases/download/2023-07-13/Final2x-linux-pip-x64-deb.deb
 	source = LICENSE::https://raw.githubusercontent.com/Tohrusky/Final2x/main/LICENSE
 	source = final2x.sh
-	sha256sums = df8c47aaebd57e2fa484b37b315c9343866afb8b07b22dc42436f58050659269
+	sha256sums = 7e445de9eb7d726f596b324d84e7368e80ec74d29dfc16f1f241e57769919295
 	sha256sums = 7b4e93ff707625a2632519b35d5891035356f551f18dd18539ad94c72f59286a
 	sha256sums = 86a8aace38cdf6e633f0dfa93ded703e247dbad4a009726861cd7ce1f44e25a5
 
