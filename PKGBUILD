@@ -2,7 +2,7 @@
 _pkgname=vim-vsnip-integ
 pkgname=${_pkgname}-git
 pkgver=master
-pkgrel=2
+pkgrel=3
 pkgdesc="vim-vsnip integration with other plugins(LSP clients, completion engines)"
 arch=('any')
 url="https://github.com/hrsh7th/$_pkgname"
@@ -23,6 +23,6 @@ package() {
 
 	local vimfiles="$pkgdir/usr/share/vim/vimfiles/"
 	install -d "$vimfiles"
-	cp -dr --no-preserve=ownership after autoload doc plugin denops "$vimfiles"
+	cp -dr --no-preserve=ownership after autoload doc plugin "$vimfiles"
 	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
