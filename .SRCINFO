@@ -1,7 +1,7 @@
 pkgbase = python-pyhanko-certvalidator
 	pkgdesc = Validates X.509 certificates and paths
 	pkgver = 0.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MatthiasValvekens/certvalidator
 	arch = any
 	license = MIT

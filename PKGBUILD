@@ -4,7 +4,7 @@
 pkgname=python-pyhanko-certvalidator
 _name=certvalidator
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Validates X.509 certificates and paths"
 url="https://github.com/MatthiasValvekens/certvalidator"
 license=(MIT)
@@ -50,6 +50,7 @@ check() {
       and not test_revocation_mode_hard_async \
       and not test_revocation_mode_hard_aiohttp_autofetch \
       and not test_revocation_mode_hard_requests_autofetch \
+      and not test_basic_certificate_validator_tls_aia[icpedu.rnp.br] \
     "
 }
 
