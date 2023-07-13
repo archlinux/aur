@@ -1,0 +1,16 @@
+pkgbase = gaiasky-git
+	pkgdesc = Open source 3D universe simulator for desktop and VR with support for more than a billion objects. Git version
+	pkgver = 3.5.0.rc10.5.ga7af6c2ba
+	pkgrel = 1
+	url = https://gitlab.com/gaiasky/gaiasky
+	arch = x86_64
+	license = MPL
+	makedepends = git
+	makedepends = java-environment-common
+	makedepends = help2man
+	depends = java-runtime
+	conflicts = gaiasky
+	source = git+https://gitlab.com/gaiasky/gaiasky
+	sha256sums = SKIP
+
+pkgname = gaiasky-git
