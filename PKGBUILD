@@ -1,15 +1,15 @@
 # Maintainer: zocker_160 <zocker1600 at posteo dot net>
 
 pkgname=keyboard-center
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Application to map G-keys on (some) Logitech Gaming Keyboards"
 arch=('x86_64')
 url="https://github.com/zocker-160/keyboard-center"
 license=('GPL3')
 depends=(
-  'python>=3.8'
-  'python-pyqt5>=5.14'
+  'python>=3.9'
+  'python-pyqt5>=5.15'
   'python-uinput>=0.11.2'
   'python-ruamel-yaml>=0.15'
   'python-pyusb>=1.0.2'

@@ -1,14 +1,14 @@
 pkgbase = keyboard-center
 	pkgdesc = Application to map G-keys on (some) Logitech Gaming Keyboards
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/zocker-160/keyboard-center
 	install = keyboard-center.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = python>=3.8
-	depends = python-pyqt5>=5.14
+	depends = python>=3.9
+	depends = python-pyqt5>=5.15
 	depends = python-uinput>=0.11.2
 	depends = python-ruamel-yaml>=0.15
 	depends = python-pyusb>=1.0.2
@@ -19,7 +19,7 @@ pkgbase = keyboard-center
 	optdepends = xdotool: type strings for X11
 	optdepends = ydotool: type strings using uinput
 	optdepends = wtype: type strings for Wayland
-	source = keyboard-center-1.0.3::git+https://github.com/zocker-160/keyboard-center.git#tag=1.0.3
+	source = keyboard-center-1.0.4::git+https://github.com/zocker-160/keyboard-center.git#tag=1.0.4
 	sha256sums = SKIP
 
 pkgname = keyboard-center
