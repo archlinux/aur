@@ -1,0 +1,15 @@
+pkgbase = cppdap
+	pkgdesc = C++ library for the Debug Adapter Protocol
+	pkgver = 1.58.0a
+	pkgrel = 1
+	url = https://github.com/google/cppdap
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = nlohmann-json
+	options = !strip
+	source = https://github.com/google/cppdap/archive/refs/tags/dap-1.58.0-a.tar.gz
+	sha1sums = SKIP
+	sha256sums = 5d35ca5db78570b6bef698e3365f79bd82a4f78e8393546387f78d7bdb2a2a08
+
+pkgname = cppdap
