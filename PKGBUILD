@@ -3,21 +3,24 @@
 pkgname=holehe
 pkgver=1.61
 _commit_hash=f7d151c49cafd958c3adb4d75aacca549315ce23
-pkgrel=1
+pkgrel=2
 pkgdesc="Check if the mail is used on different sites"
 arch=(any)
 url="https://github.com/megadose/holehe"
 license=(GPL3)
 depends=(
-  python-termcolor
-  python-bs4
+  python
+  python-beautifulsoup4
   python-httpx
-  python-trio
+  python-termcolor
   python-tqdm
-  python-colorama
+  python-trio
 )
 makedepends=(
+  python-build
+  python-installer
   python-setuptools
+  python-wheel
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_commit_hash.tar.gz")
@@ -28,12 +31,11 @@ _archive="$pkgname-$_commit_hash"
 build() {
   cd "$_archive"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_archive"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

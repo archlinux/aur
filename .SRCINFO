@@ -1,17 +1,20 @@
 pkgbase = holehe
 	pkgdesc = Check if the mail is used on different sites
 	pkgver = 1.61
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/megadose/holehe
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python-termcolor
-	depends = python-bs4
+	makedepends = python-wheel
+	depends = python
+	depends = python-beautifulsoup4
 	depends = python-httpx
-	depends = python-trio
+	depends = python-termcolor
 	depends = python-tqdm
-	depends = python-colorama
+	depends = python-trio
 	source = holehe-1.61.tar.gz::https://github.com/megadose/holehe/archive/f7d151c49cafd958c3adb4d75aacca549315ce23.tar.gz
 	sha256sums = b09aa0c94255702cd6ada02a47e48bb900f16fa0e4a025ec06a90e620e49661a
 
