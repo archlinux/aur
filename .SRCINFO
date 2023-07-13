@@ -1,6 +1,6 @@
 pkgbase = tutanota-desktop
 	pkgdesc = Official Tutanota email client
-	pkgver = 3.114.1
+	pkgver = 3.115.2
 	pkgrel = 1
 	url = https://tutanota.com
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = tutanota-desktop
 	depends = gtk3
 	depends = libsecret
 	depends = nss
-	source = https://github.com/tutao/tutanota/archive/tutanota-desktop-release-3.114.1.tar.gz
+	source = https://github.com/tutao/tutanota/archive/tutanota-desktop-release-3.115.2.tar.gz
 	source = tutanota-desktop.desktop
-	sha256sums = 56513d45d2102bc7236a90613a099b26c67e915c7ecf65734469ff38742af4a1
+	sha256sums = e193cb32c40c19a9b19563fd93570f0a0351024804975e715817bfc4c4bca64b
 	sha256sums = 9a41e5474e1568b13093c91fd54538fe614003f5f5d4f895553f73207c28cb08
 
 pkgname = tutanota-desktop
