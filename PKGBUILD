@@ -1,18 +1,23 @@
 # Maintainer:  <zhaose233@outlook.com>
 pkgname=mission-center-git
 _pkgname=mission-center
-pkgver=r203.dc3e50e
-pkgrel=2
+pkgver=r206.2d21e28
+pkgrel=1
 pkgdesc="Monitor your CPU, Memory, Disk, Network and GPU usage"
 arch=('i686' 'x86_64' 'aarch64')
 url=""
 license=('GPL')
 groups=()
 depends=('gtk4'
-	 'libadwaita')
+	 'libadwaita'
+	 'sqlite'
+	 'gobject-introspection')
 makedepends=('meson'
-	     'rust')
+	     'rust'
+	     'git'
+	     'python-gobject')
 checkdepends=()
+
 optdepends=()
 provides=("mission-center")
 conflicts=("mission-center")
