@@ -48,14 +48,6 @@ sha256sums=('SKIP'
             'SKIP')
 
 prepare() {
-    # Check locale
-    locale | grep LANG | grep -i UTF-8
-    if [[ $? -ne 0 ]]; then
-        printf "Locale must support UTF-8. See https://wiki.archlinux.org/index.php/locale
-        or https://wiki.archlinux.org/index.php/locale ."
-        exit 1
-    fi
-
     # Clone the repos
     printf "Cloning ros2 repositories\n"
     mkdir -p $srcdir/ros2/src
@@ -73,8 +65,8 @@ prepare() {
 
 build() {
     # Disable parallel build if RAM is low
-    if [[ $(free | grep -Po "Mem:\s+\K\d+") < 16000000 ]]; then
-        printf "\nRAM is smaller than 16 GB. Parallel build will be disabled for stability.\n\n"
+    if [[ $(free | grep -Po "Mem:\s+\K\d+") < 8000000 ]]; then
+        printf "\nRAM is smaller than 8 GB. Parallel build will be disabled for stability.\n\n"
         export COLCON_EXTRA_ARGS="${COLCON_EXTRA_ARGS} --executor sequential"
     fi
 
