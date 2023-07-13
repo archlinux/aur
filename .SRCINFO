@@ -1,0 +1,14 @@
+pkgbase = fiedka-bin
+	pkgdesc = Fiedka the Firmware Editor
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://fiedka.app
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	provides = fiedka
+	conflicts = fiedka
+	source = https://github.com/fiedka/fiedka/releases/download/v1.5.2/fiedka-linux-x64-1.5.2.zip
+	sha256sums = 6a4e16eb1eea3b449e74ab2dcb9c42acb6d7174c8b0b5b3d20d1d540be5c2a54
+
+pkgname = fiedka-bin
