@@ -3,7 +3,7 @@
 
 pkgname=kddockwidgets
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc="KDAB's Dock Widget Framework for Qt"
 license=("GPL2" "custom:KDAB commercial license")
@@ -18,7 +18,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -G Ninja
-    ninja -C "$srcdir/build" ${MAKEFLAGS:--j1}
+    ninja -C "$srcdir/build"
 }
 
 package() {
