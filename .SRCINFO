@@ -1,7 +1,7 @@
 pkgbase = fsleyes
 	pkgdesc = FSLeyes is the FSL image viewer
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLeyes
 	arch = any
 	license = Apache
@@ -40,6 +40,6 @@ pkgbase = fsleyes
 	source = https://git.fmrib.ox.ac.uk/fsl/fsleyes/fsleyes/-/archive/1.7.0/fsleyes-1.7.0.tar.gz
 	source = fsleyes.desktop
 	sha256sums = ab5eb2e5e5147f6ffd9701f49db319d8f3ab755eda3c593f191be7a13c891fc5
-	sha256sums = 6e91e88eb74602f8da7cda6575245dbaaf4577022bffe15c0efedb33106139fb
+	sha256sums = 4733d5e611d2c4f67e6a207c06785d3b5e96be021f3bc486cb837bfb17907cc1
 
 pkgname = fsleyes
