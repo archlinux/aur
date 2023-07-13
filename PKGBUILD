@@ -5,14 +5,13 @@
 pkgname=lib32-libgexiv2
 _pkgbase=gexiv2
 pkgver=0.14.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GObject-based wrapper around the Exiv2 library (32-bit)"
 url="https://wiki.gnome.org/Projects/gexiv2"
 arch=('x86_64')
 license=('GPL2')
 depends=('lib32-exiv2' 'lib32-glib2' 'libgexiv2')
-makedepends=('gobject-introspection' 'meson' 'python-gobject' 'vala'
-             'lib32-gobject-introspection-runtime')
+makedepends=('meson' 'python-gobject')
 source=("https://gitlab.gnome.org/GNOME/${_pkgbase}/-/archive/${_pkgbase}-${pkgver}/${_pkgbase}-${_pkgbase}-${pkgver}.tar.gz"
         "https://gitlab.gnome.org/GNOME/${_pkgbase}/-/commit/06adc8fb.patch"
         "fix-32bit-compat.patch"
@@ -33,13 +32,13 @@ build() {
   export CFLAGS="-m32"
   export CXXFLAGS="-m32"
   arch-meson "${_pkgbase}-${_pkgbase}-${pkgver}" "build" \
-    -Dgtk_doc=false \
+    -Dgtk_doc=false -Dintrospection=false -Dvapi=false -Dpython3=false \
     --cross-file x86-linux-gnu
   meson compile -C "build"
 }
 
 package() {
   meson install -C "build" --destdir "$pkgdir"
-  rm -r "$pkgdir/usr/"{share,include,lib}
+  rm -r "$pkgdir/usr/include"
 }
 
