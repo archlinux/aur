@@ -1,0 +1,26 @@
+pkgbase = qv2ray-plugin-trojan-go-dev-git
+	pkgdesc = Qv2ray Plugin: Trojan-Go (Development Build)
+	pkgver = 20210502.r50.9aa876a
+	pkgrel = 1
+	url = https://github.com/Qv2ray/QvPlugin-Trojan-Go
+	arch = x86_64
+	groups = qv2ray-plugin
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-tools
+	makedepends = which
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = libffi
+	depends = qt5-base
+	provides = qv2ray-plugin-trojan-go
+	conflicts = qv2ray-plugin-trojan-go
+	source = qv2ray-plugin-trojan-go::git+https://github.com/Qv2ray/QvPlugin-Trojan-Go#branch=dev
+	sha512sums = SKIP
+
+pkgname = qv2ray-plugin-trojan-go-dev-git
+	depends = qt5-base
+	depends = qv2ray
+	depends = trojan-go
