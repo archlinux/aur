@@ -41,31 +41,24 @@ pkgname=("bareos-bconsole"
          "python-bareos"
          )
 
-#         "bareos-director-python2-plugin"
-#         "bareos-filedaemon-python2-plugin"
-#         "bareos-storage-python2-plugin"
-#         "python2-bareos"
 #         "bareos-vadp-dumper"
 #         "bareos-vmware-vix-disklib"
 
-pkgver=22.0.3
+pkgver=22.1.0
 pkgmajor=${pkgver%%.*}
-pkgrel=3
+pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving Recovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
 makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql-libs' 'python' 'python-setuptools' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
-#makedepends=('cmake' 'gcc' 'libmariadbclient' 'postgresql-libs' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'rpcsvc-proto' 'git' 'lsb-release' 'qt5-base' 'glusterfs' 'jansson' 'pam_wrapper')
 source=("git+https://github.com/bareos/bareos.git#tag=Release/${pkgver}"
         "0001-distver.patch"
         "0002-logspam.patch"
         "0003-version.patch"
         "0004-sqlspam.patch"
         "0005-httpd.patch"
-        "0006-hostname.patch"
-        "0007-fix-gcc-13.patch"
         "bootstrap-table-locale-all.min.js")
 
 md5sums=('SKIP'
@@ -74,13 +67,10 @@ md5sums=('SKIP'
          '5bf1233d94dfecc9060746bfb39b9d2b'
          'ca4c929a2462cafaead8d0b49e3cebed'
          'a6a260808e46c20b1c22aa2efebc3fe1'
-         '40fc1919d59133214466972b3f9aa6d2'
-         '19f8be5aec4e35b5b98f3f26af7c9d8a'
          'e78b88f897cfc3e60129eec360521e3d'
          )
 
-python3_ver="3.11"
-#python2_ver="2.7"
+python3_ver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))");#"
 
 #=========================================
 prepare() {
@@ -147,7 +137,6 @@ build() {
 
   cd "${srcdir}/${pkgbase}/python-bareos"
   python setup.py build
-  #python2 setup.py build
 }
 
 #=========================================
@@ -410,22 +399,6 @@ package_bareos-director-python-plugins-common() {
   done
 }
 
-
-#=========================================
-package_bareos-director-python2-plugin() {
-  conflicts=("bareos-director-python-plugin")
-  pkgdesc="${pkgdesc} - Python plugin for director daemon"
-  depends=("bareos-director=${pkgver}"
-           "bareos-director-python-plugins-common=${pkgver}"
-           'python2' 'libcap' 'jansson' 'lzo')
-  for f in \
-     usr/lib/bareos/plugins/python-dir.so \
-     usr/lib/python2.7/site-packages/bareosdir.so \
-  ; do
-    cp_pkgdir "$f" "$srcdir/install"
-  done
-}
-
 #=========================================
 package_bareos-director-python3-plugin() {
   conflicts=("bareos-director-python-plugin")
@@ -575,21 +548,6 @@ package_bareos-filedaemon-python-plugins-common() {
 }
 
 #=========================================
-package_bareos-filedaemon-python2-plugin() {
-  conflicts=("bareos-filedaemon-python-plugin")
-  pkgdesc="${pkgdesc} - Python plugin for file daemon"
-  depends=("bareos-filedaemon=${pkgver}"
-           "bareos-filedaemon-python-plugins-common=${pkgver}"
-           'python2' 'libcap' 'lzo' 'jansson')
-  for f in \
-    usr/lib/bareos/plugins/python-fd.so \
-    usr/lib/python${python2_ver}/site-packages/bareosfd.so \
-  ; do
-    cp_pkgdir "$f" "$srcdir/install"
-  done
-}
-
-#=========================================
 package_bareos-filedaemon-python3-plugin() {
   conflicts=("bareos-filedaemon-python-plugin")
   pkgdesc="${pkgdesc} - Python plugin for file daemon"
@@ -683,21 +641,6 @@ package_bareos-storage-python-plugins-common() {
     usr/lib/bareos/plugins/BareosSdPluginBaseclass.py* \
     usr/lib/bareos/plugins/BareosSdWrapper.py* \
     usr/lib/bareos/plugins/bareos-sd-class-plugin.py* \
-  ; do
-    cp_pkgdir "$f" "$srcdir/install"
-  done
-}
-
-#=========================================
-package_bareos-storage-python2-plugin() {
-  conflicts=("bareos-storage-python-plugin")
-  pkgdesc="${pkgdesc} - Python plugin for storage daemon"
-  depends=("bareos-storage=${pkgver}"
-           "bareos-storage-python-plugins-common=${pkgver}"
-           'python2' 'lzo' 'libcap' 'jansson')
-  for f in \
-    usr/lib/bareos/plugins/python-sd.so \
-    usr/lib/python${python2_ver}/site-packages/bareossd.so \
   ; do
     cp_pkgdir "$f" "$srcdir/install"
   done
@@ -817,7 +760,7 @@ package_bareos-vmware-plugin() {
   arch=(any)
   pkgdesc="${pkgdesc} - Bareos VMware plugin"
   depends=("bareos-vadp-dumper=${pkgver}" "bareos-common=${pkgver}" )
-  optdepends=("bareos-filedaemon-python3-plugin=${pkgver}" "bareos-filedaemon-python2-plugin=${pkgver}")
+  optdepends=("bareos-filedaemon-python3-plugin=${pkgver}")
   for f in \
      usr/lib/bareos/plugins/BareosFdPluginVMware.py \
      usr/lib/bareos/plugins/bareos-fd-vmware.py \
@@ -888,14 +831,4 @@ package_python-bareos() {
 
   cd "${srcdir}/${pkgbase}/python-bareos"
   python setup.py install --skip-build --root="${pkgdir}" --optimize='1'
-}
-
-#=========================================
-package_python2-bareos() {
-  pkgdesc="${pkgdesc} - python-bareos is a Python2 module to access a backup system."
-  depends=('python2' 'python2-sslpsk' 'jansson')
-  conflicts=("python-bareos")
-
-  cd "${srcdir}/${pkgbase}/python-bareos"
-  python2 setup.py install --skip-build --root="${pkgdir}" --optimize='1'
 }
