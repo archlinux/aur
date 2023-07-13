@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=benchdamic
-_pkgver=1.6.0
+_pkgver=1.6.3
 pkgname=r-${_pkgname,,}
-pkgver=1.6.0
+pkgver=${_pkgver//-/.}
 pkgrel=1
-pkgdesc='Benchmark of differential abundance methods on microbiome data'
-arch=('any')
+pkgdesc="Benchmark of differential abundance methods on microbiome data"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+license=(Artistic2.0)
 depends=(
-  r
   r-aldex2
   r-ancombc
   r-biocparallel
@@ -22,11 +22,14 @@ depends=(
   r-ggdendro
   r-ggplot2
   r-ggridges
+  r-gunifrac
   r-limma
   r-lme4
+  r-maaslin2
   r-mast
   r-metagenomeseq
   r-mglm
+  r-microbiomestat
   r-noiseq
   r-phyloseq
   r-plyr
@@ -38,23 +41,33 @@ depends=(
   r-treesummarizedexperiment
   r-zinbwave
 )
+checkdepends=(
+  r-testthat
+)
 optdepends=(
   r-biocstyle
   r-kableextra
   r-knitr
+  r-magick
   r-rmarkdown
   r-spsimseq
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('17bf9bcbf377b97ac723f65ef4075a5ac6202e144e99f0c3a19a9ea4cf72ffa9')
+md5sums=('21359de3f80f3bfe1501ac5d6ec4d050')
+sha256sums=('12ceef0118f89993bb5ae0ab430de78b7f2bdcfe8d0a78000bab4b137c876251')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
