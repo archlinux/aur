@@ -11,7 +11,7 @@ pkgdesc="Standalone web browser from mozilla.org - Beta"
 arch=('x86_64')
 url="https://www.mozilla.org/en-US/firefox/channel/#beta"
 license=('MPL' 'GPL' 'LGPL')
-depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
+depends=('dbus-glib' 'gtk3' 'libxt' 'nss' 'ccache')
 optdepends=('ffmpeg: H264/AAC/MP3 decoding'
             'hunspell: Spell checking'
             'hyphen: Hyphenation'
