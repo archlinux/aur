@@ -1,0 +1,14 @@
+pkgbase = felida-bin
+	pkgdesc = A lightweight Chromium Browser using Electron.js!
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/raluvy95/FelidaBrowser
+	arch = x86_64
+	license = GPL3
+	depends = electron24
+	source = felida-0.2.4.AppImage::https://github.com/raluvy95/FelidaBrowser/releases/download/v0.2.4/Felida.Browser-0.2.4.AppImage
+	source = felida.sh
+	sha256sums = 9bd0aa2b9f06f0a9088837834afc3bce0ac3a748b6fd0e0f47590d5d2c20242b
+	sha256sums = 6a4d2eddfcf43b142bd213706c63813147ae567f5693e69c8036609bfaf38f6d
+
+pkgname = felida-bin
