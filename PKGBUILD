@@ -7,7 +7,7 @@ xplus_tfe=SamTFE-XPLUS.tar.xz
 xplus_tse=SamTSE-XPLUS.tar.xz
 pkgver=1.10.5
 _srcname="SeriousSamClassic-$pkgver"
-pkgrel=2
+pkgrel=3
 pkgdesc="Serious Sam Classic native Linux XPLUS Modification."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic"
@@ -31,7 +31,8 @@ source=("https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v$pkgv
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partaa"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partab"
 	"https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-XPLUS/SamTSE-XPLUS.tar.xz.partac"
-    "0001-remove_SE1_10b_depend.patch")
+    "0001-remove_SE1_10b_depend.patch"
+    "0003-Fix-load-some-incorrect-custom-maps.patch")
 noextract=("SamTFE-XPLUS.tar.xz.partaa"
 	"SamTFE-XPLUS.tar.xz.partab"
 	"SamTFE-XPLUS.tar.xz.partac"
@@ -45,7 +46,8 @@ sha256sums=('ecd850cabd144b29bcec97de4ad8a1ffc14144432744de9bf39fe1d00385daf6'
             '28a90da56de5d6591a2e65154778030ba28b375d29556fd7e1db085d2c00b877'
             '93fe183a2f0a35989b3d1678dddb1c5976cda94747d4186c6f36af4ccf144443'
             '8282f527b54e9d8fe009640b7634560f3b4bf0fc9b72cdc2f865f1c226339d35'
-            '244101d02598010e4c45e57f26e0842d4cff058e3cde5e59062b9d36b5ffaca0')
+            '244101d02598010e4c45e57f26e0842d4cff058e3cde5e59062b9d36b5ffaca0'
+            '36b0c4da5133ef5dcdcfd21767c84f7b3e9711413549b565957a734e549ee300')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -55,6 +57,7 @@ fi
 prepare(){
   # Prepare patch
   cat 0001-remove_SE1_10b_depend.patch > "$srcdir/$_srcname/0001-remove_SE1_10b_depend.patch"
+  cat 0003-Fix-load-some-incorrect-custom-maps.patch > "$srcdir/$_srcname/0003-Fix-load-some-incorrect-custom-maps.patch"
 
   # Prepare XPLUS archive
   cat "$xplus_tfe".part* > "$xplus_tfe"
@@ -84,6 +87,7 @@ prepare(){
   cd "$srcdir/$_srcname"
   # apply patch
   patch -p1 < 0001-remove_SE1_10b_depend.patch || return 1
+  patch -p1 < 0003-Fix-load-some-incorrect-custom-maps.patch || return 1
 }
 
 build(){

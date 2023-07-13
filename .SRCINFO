@@ -1,7 +1,7 @@
 pkgbase = serioussam-xplus
 	pkgdesc = Serious Sam Classic native Linux XPLUS Modification.
 	pkgver = 1.10.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tx00100xt/SeriousSamClassic
 	arch = i686
 	arch = x86_64
