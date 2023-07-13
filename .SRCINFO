@@ -1,0 +1,22 @@
+pkgbase = rusty-keys-nosystemd-git
+	pkgdesc = uinput level keyboard mapper for linux
+	pkgver = 0.0.3.r89.20220429.e9705db
+	pkgrel = 1
+	url = https://code.moparisthebest.com/moparisthebest/rusty-keys
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	license = AGPL
+	makedepends = cargo
+	makedepends = git
+	provides = rusty-keys=0.0.3.r89.20220429.e9705db
+	provides = rusty-keys-nosystemd=0.0.3.r89.20220429.e9705db
+	provides = rusty-keys-git=0.0.3.r89.20220429.e9705db
+	conflicts = rusty-keys
+	backup = etc/rusty-keys/keymap.toml
+	source = rusty-keys::git+https://code.moparisthebest.com/moparisthebest/rusty-keys.git
+	validpgpkeys = 81F1C22DD41109D4A9C0A7B5B070F8D97D1A0BBA
+	sha256sums = SKIP
+
+pkgname = rusty-keys-nosystemd-git
