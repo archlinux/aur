@@ -4,7 +4,7 @@ pkgver=0.5.0
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
-url="https://github.com/loqusion/hyprshade"
+url="https://github.com/loqusion/$pkgname"
 license=('MIT')
 _py_deps=(
 	more-itertools
@@ -33,6 +33,6 @@ package() {
 	export PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
-	install -Dm0644 -t "$pkgdir/usr/share/hyprshade/shaders/" shaders/*
-	install -Dm0644 -t "$pkgdir/usr/share/hyprshade/examples/" examples/*
+	install -Dm0644 -t "$pkgdir/usr/share/$pkgname/shaders/" shaders/*
+	install -Dm0644 -t "$pkgdir/usr/share/$pkgname/examples/" examples/*
 }
