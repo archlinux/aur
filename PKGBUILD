@@ -5,7 +5,7 @@
 
 pkgname=clementine
 pkgver=1.4.0rc2
-pkgrel=3
+pkgrel=4
 pkgdesc='A modern music player and library organizer'
 url=https://www.clementine-player.org/
 license=(GPL)
@@ -29,7 +29,11 @@ prepare() {
 }
 
 build() {
+  export LDFLAGS="-Wl,--copy-dt-needed-entries"
   cmake -B build -S Clementine-${pkgver//+/-} \
+    -DCMAKE_CXX_FLAGS="-fpermissive" \
+    -DCMAKE_CXX_STANDARD=17 \
+    -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_SYSTEM_PROJECTM=ON \
     -DUSE_SYSTEM_TAGLIB=ON
