@@ -14,7 +14,7 @@ check_psabi() {
 }
 
 pkgname='linux-xanmod-bin'
-pkgver='6.4.2'
+pkgver='6.4.3'
 pkgrel="1"
 psabi="$(check_psabi)"
 pkgdesc='The Linux kernel, modules and headers with Xanmod patches - Prebuilt version'
