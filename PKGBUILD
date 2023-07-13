@@ -2,8 +2,8 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-displaylink-git"
-pkgver="0.26.0"
-pkgrel=3
+pkgver="0.27.0"
+pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (DisplayLink patch)"
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -38,7 +38,8 @@ depends=(
     vulkan-validation-layers
     xorg-xwayland
     libliftoff
-    libdisplay-info)
+    libdisplay-info
+    displaylink)
 makedepends=(
     git
     cmake
@@ -52,7 +53,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/Hyprland/release
         "displaylink.patch")
 conflicts=("${_pkgname}")
 provides=(hyprland)
-sha256sums=('096e478f9f8f4b16bd3d3313f970e216d4ca0d280f6cfddf35126ff8f4350497'
+sha256sums=('d3d11572ba51e4248e653e22034052ed371b8b3dac1a731d3506ebdfb41e6ccf'
             '444bcd0f95ea7955a02da1a99481f33da6f7a4c4d0e6b06d3c3bda8133671484')
 options=(!makeflags !buildflags !strip)
 
