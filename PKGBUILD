@@ -1,9 +1,10 @@
+# Maintainer: jdev082 <jdev0894@gmail.com>
 # Maintainer: Erde <erkkah@gmail.com>
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 pkgname=tabby-bin
 _pkgname=tabby
-pkgver=1.0.188
+pkgver=1.0.197
 pkgrel=1
 pkgdesc="Tabby (formerly Terminus) is a highly configurable terminal emulator, SSH and serial client for Windows, macOS and Linux"
 arch=('x86_64')
@@ -15,7 +16,7 @@ provides=("tabby")
 conflicts=("tabby")
 replaces=('tabby')
 source=("tabby-${pkgver}-linux.pacman::$url/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.pacman")
-sha256sums=('08b5deb4ede070b40521c0b656ca28d92babaaa6630f1ee7aa566de1f93eb635')
+sha256sums=('d05f956f6a8e47451b724d88f17002dc243cc9dcaa7fdf618769893c83f301cc')
 
 package() {
   cd "$srcdir/"
