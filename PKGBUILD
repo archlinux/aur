@@ -1,4 +1,5 @@
-# Maintainer: Eragon <eragon at eragon dot re>
+# Maintainer: Max Gautier <mg@max.gautier.name>
+# Contributor: Eragon <eragon at eragon dot re>
 # Contributor: Moritz Poldrack <moritz at poldrack dot dev>
 # Contributor: tinywrkb <tinywrkb@gmail.com>
 # Contributor: dnkl
@@ -14,6 +15,7 @@ license=('MIT')
 conflicts=('yambar')
 provides=('yambar')
 makedepends=(
+    'wayland-protocols'
 	'meson'
 	'ninja'
 	'scdoc'
@@ -31,6 +33,8 @@ optdepends=(
 	'alsa-lib: for the ALSA module'
 	'json-c: for the XKB module'
 	'libmpdclient: for the MPD module')
+checkdepends=(
+	'libmpdclient')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/dnkl/${_pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('46f3002338f451c154678167bf3d5f593307954b6f381c50ddef2726b1a8c811')
 
