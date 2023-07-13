@@ -1,6 +1,6 @@
 pkgbase = term-notes
 	pkgdesc = Terminal-based note-taking application
-	pkgver = 1.0.1
+	pkgver = v.1.0.1
 	pkgrel = 1
 	url = https://github.com/felipealfonsog/TermNotes
 	arch = x86_64
