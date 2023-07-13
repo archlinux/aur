@@ -17,7 +17,7 @@ build() {
   cd "${extname}-${pkgver}"
   sh ./clear.sh
   phpize${phpbase}${suffix}
-  patch -p1 -i ../../integers.patch
+  patch -p1 -i "${srcdir}/integers.patch"
   CFLAGS=-Wno-error ./configure \
      --prefix=/usr \
      --with-php-config=php-config${phpbase}${suffix} \
