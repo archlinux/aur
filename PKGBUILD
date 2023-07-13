@@ -3,8 +3,7 @@
 
 pkgname=krew
 pkgver=0.4.3
-_commit_hash=dbfefa58e3087bdd8eb1985a28f7caa7427c4e4d
-pkgrel=2
+pkgrel=3
 pkgdesc="Find and install kubectl plugins"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/kubernetes-sigs/krew"
@@ -31,7 +30,6 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   _ld_flags="-linkmode external"
-  _ld_flags="$_ld_flags -X sigs.k8s.io/krew/internal/version.gitCommit=$_commit_hash"
   _ld_flags="$_ld_flags -X sigs.k8s.io/krew/internal/version.gitTag=v$pkgver"
   go build -o . -ldflags "$_ld_flags" ./cmd/{krew,validate-krew-manifest}
 }

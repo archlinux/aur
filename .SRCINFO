@@ -1,7 +1,7 @@
 pkgbase = krew
 	pkgdesc = Find and install kubectl plugins
 	pkgver = 0.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kubernetes-sigs/krew
 	install = kubectl-krew.install
 	arch = x86_64
