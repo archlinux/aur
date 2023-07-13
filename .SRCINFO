@@ -7,6 +7,7 @@ pkgbase = devify
 	license = MIT
 	makedepends = git
 	depends = libnotify
+	depends = libcanberra
 	source = git+https://github.com/pog102/devify.git
 	md5sums = SKIP
 
