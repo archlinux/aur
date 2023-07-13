@@ -1,6 +1,6 @@
 # Maintainer: Grzegorz Koperwas <admin@grzegorzkoperwas.site>
 pkgname=swww
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=0
 pkgdesc="Efficient animated wallpaper daemon for wayland, controlled at runtime."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Horus645/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 
 prepare() {
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTUP_TOOLCHAIN=nightly
     cd "$pkgname-$pkgver"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -48,4 +48,4 @@ package() {
     install -Dm644 "$page" "$pkgdir/usr/share/man/man1/$page"
   done
 }
-sha256sums=('38054cb39f29ac6e11c1f572e9acb53a73fcb16ca531bec4e4dc8420128d67a7')
+sha256sums=('7612ae780d0aa86b772d1e224346137d490eba48e158033185d52649ff01b757')
