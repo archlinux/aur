@@ -1,7 +1,7 @@
-# Maintainer: FraV1982 <consulenza.vangi@libero.it>
+# Maintainer: FraV1982 <consulenza dot vangi at outlook dot com>
 
 pkgname=pearson-reader-plus-full-lang
-pkgver=4.7
+pkgver=4.9
 pkgrel=1
 pkgdesc="A simple Reader for Pearson digital books."
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 'qpdfview: a pdf viewer'
 'mupdf: a pdf viewer'
 )
-options=(!strip)
+options=("!emptydirs" "!strip")
 
 _debname=B300361C
 
@@ -26,7 +26,6 @@ md5sums=('SKIP')
 sha256sums=('SKIP')
 
 prepare() {
-  sudo mkdir /opt/rplus-desktop
   cd "$srcdir"
   msg2 "Decompressing Debian package..."
   ar xv "${_debname}" > /dev/null
@@ -34,17 +33,11 @@ prepare() {
 
   #find ./{etc,usr} -type d -exec chmod 755 '{}' \;
   find ./opt -type d -exec chmod 755 '{}' \;
-  sudo chmod 755 /opt/rplus-desktop
+  sudo chmod 755 /opt/rplus-desktop/readerplus
 }
 
 package() {
   cd "$srcdir"
   #cp -dpr --no-preserve=ownership {opt,usr} "$pkgdir"
   cp -dpr --no-preserve=ownership ./opt "$pkgdir"
-  cd "$pkgdir"
-  wget https://play-lh.googleusercontent.com/3KW5AwB-IqviZEDpHfaHXoBnt0hBNJHByV7TRLkcYukPjupTXva0qWlmazXx_bFxMEZT
-  cd /tmp
-  sudo wget http://mirror.fourtech.ml/pearson-reader-plus-it/ReaderPlus.desktop
-  sudo cp -dpr --no-preserve=ownership ReaderPlus.desktop /usr/share/applications
 }
-  

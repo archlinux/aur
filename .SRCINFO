@@ -1,6 +1,6 @@
 pkgbase = pearson-reader-plus-full-lang
 	pkgdesc = A simple Reader for Pearson digital books.
-	pkgver = 4.7
+	pkgver = 4.9
 	pkgrel = 1
 	url = https://www.pearson.com/
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = pearson-reader-plus-full-lang
 	optdepends = epdfview: a pdf viewer
 	optdepends = qpdfview: a pdf viewer
 	optdepends = mupdf: a pdf viewer
+	options = !emptydirs
 	options = !strip
 	source = https://link.pearson.it/B300361C
 	md5sums = SKIP
