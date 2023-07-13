@@ -1,6 +1,6 @@
 pkgbase = rsget-git
 	pkgdesc = A download tool for streams on websites.
-	pkgver = r149.bba5a15
+	pkgver = r198.a85773e
 	pkgrel = 1
 	url = https://github.com/Erk-/rsget
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = rsget-git
 	depends = openssl
 	provides = rsget
 	conflicts = rsget
-	source = git://github.com/Erk-/rsget
+	source = git+https://github.com/Erk-/rsget
 	md5sums = SKIP
 
 pkgname = rsget-git
-

@@ -1,6 +1,6 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=rsget-git
-pkgver=r149.bba5a15
+pkgver=r198.a85773e
 pkgrel=1
 pkgdesc="A download tool for streams on websites."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('openssl')
 makedepends=('git' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git://github.com/Erk-/rsget')
+source=('git+https://github.com/Erk-/rsget')
 md5sums=('SKIP')
 
 pkgver() {
