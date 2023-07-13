@@ -1,9 +1,10 @@
 pkgbase = hugo-extended-cli
 	pkgdesc = Extended version of Hugo
 	pkgver = 0.115.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gohugo.io/
 	arch = x86_64
+    arch = aarch64
 	license = Apache 2.0
 	conflicts = hugo
 	conflicts = hugo-git
