@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.2.0_devel.172019.732db2b60cd.d41d8cd98f00b204e9800998ecf8427e
+pkgver=23.3.0_devel.174140.0dc961645c4.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -92,7 +92,7 @@ pkgver() {
         [[ $_patchfile = *.patch ]] || continue
         _patchver="${_patchver}$(md5sum ${srcdir}/${_patchfile} | cut -c1-32)"
     done
-    _patchver="$(echo -n $_patchver | md5sum | cut -c1-32)"
+    _patchver="$(echo -n $_patchver | md5sum | cut -c1-7)"
 
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD).${_patchver}
 }
