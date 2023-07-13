@@ -1,0 +1,15 @@
+Version 4.2.0.0
+
+Fixes:
+
+    Fixed an issue with 'nameserver' option in 'ethernet' command.
+    Fixed an issue with 'ilolicense' command where the exception did not trigger for invalid license.
+    Fixed an issue with 'bootorder' command not working for iLO6.
+    Fixed an issue with 'serverinfo' command not displaying MAC address in iLO5.
+
+Enhancements:
+
+    Added a new option ‘—storageid’ to all storage commands, allowing for filtering by both storage id and controller id.
+    Added a new option ‘- sf’ to the 'serverclone' command to save storage configurations in a custom file.
+    Modified the 'Activation Key' parameter in the 'ComputeOpsManagement' command from mandatory to optional.
+    All subcommands from the 'unifiedcertificate' command have been merged into the 'certificate' command. The 'unifiedcertificate' command is now deprecated.
