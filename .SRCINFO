@@ -3,9 +3,9 @@ pkgbase = ancientbeast
 	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/FreezingMoon/AncientBeast
-	arch = i686
 	arch = x86_64
 	license = AGPL3
+	makedepends = npm
 	source = ancientbeast-0.4.tar.gz::https://github.com/FreezingMoon/AncientBeast/archive/refs/tags/v0.4.tar.gz
 	sha256sums = a1889c32a89ab5080d8301738f432b4abd7c60310ea068fc45d77ef159854b6a
 
