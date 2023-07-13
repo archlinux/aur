@@ -1,12 +1,12 @@
 pkgbase = firefox-no-reserved-keys-patch
 	pkgdesc = hot patch Firefox after install or update to un-reserve all key bindings
-	pkgver = 1
+	pkgver = 1.1
 	pkgrel = 1
 	arch = any
 	depends = firefox
 	depends = pacman-contrib
 	depends = perl
 	source = firefox-no-reserved-keys-patch.hook
-	sha256sums = d1bf37f036ec26a42ae7f493daef5b4040af1fdecfb0184128cc1980372a7deb
+	sha256sums = e15423376d7a19e43037918c2c7ee5d666c71bbba05ce12a9e68a257f8dd1462
 
 pkgname = firefox-no-reserved-keys-patch

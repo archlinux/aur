@@ -8,4 +8,4 @@ Target = firefox-no-reserved-keys-patch
 [Action]
 Description = Hot patching Firefox to un-reserve all key bindings
 When = PostTransaction
-Exec = perl -i -pne 's/reserved="true"/               /g' /usr/lib/firefox/browser/omni.ja
+Exec = /usr/bin/perl -i -pne 's/reserved="true"/               /g' /usr/lib/firefox/browser/omni.ja
