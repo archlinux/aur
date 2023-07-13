@@ -10,7 +10,7 @@ license=("MIT")
 depends=()
 provides=("planetary")
 conflicts=("planetary")
-source=("$pkgname-$pkgver.tgz::https://github.com/kyeboard/planetary/releases/download/v${pkgver}/planetary-x86_64-apple-darwin.tar.gz")
+source=("$pkgname-$pkgver.tgz::https://github.com/kyeboard/planetary/releases/download/v${pkgver}/planetary-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP')
 
 package() {
