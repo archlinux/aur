@@ -174,7 +174,7 @@ END
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
   # OpenSUSE KDE patches
-  patch -Np1 -i "${_cachyos_patches_dir}"/kde-upstream/firefox-kde.patch
+  patch -Np1 -i "${_patches_dir}"/kde-upstream/firefox-kde.patch
   patch -Np1 -i "${_patches_dir}"/kde-upstream/mozilla-kde.patch
 
   # Disabling Pocket
