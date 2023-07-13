@@ -1,6 +1,6 @@
 pkgbase = r-affycomp
 	pkgdesc = Graphics Toolbox for Assessment of Affymetrix Expression Measures
-	pkgver = 1.76.0
+	pkgver = 1.76.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/affycomp
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-affycomp
 	depends = r-biobase
 	optdepends = r-affycompdata
 	optdepends = r-splines
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/affycomp_1.76.0.tar.gz
-	sha256sums = c2d0dec094d63636cc6e7946430bef93214256de3234f98e76c2c2369ad94aaf
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/affycomp_1.76.1.tar.gz
+	sha256sums = c1a64c1eb9a9e4d3128625f2656070982b04230e0e976c91611f508d30928c71
 
 pkgname = r-affycomp
