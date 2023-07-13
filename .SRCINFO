@@ -21,6 +21,8 @@ pkgbase = lenovolegionlinux-git
 	options = !buildflags
 	options = !strip
 	source = lenovolegionlinux::git+https://github.com/johnfanv2/LenovoLegionLinux
+	source = legion_cli.policy
+	source = legion_gui.desktop
 	sha256sums = SKIP
 
 pkgname = lenovolegionlinux-git
