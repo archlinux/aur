@@ -23,6 +23,7 @@ makedepends=(
   'python-setuptools'
   'python-sympy'
   'python-wheel'
+  'python-hatchling'
 )
 optdepends=(
   'python-pytorch: pytorch CPU with AVX2 optimizations'

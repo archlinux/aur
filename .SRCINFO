@@ -11,6 +11,7 @@ pkgbase = vapoursynth-plugin-vsbasicvsrpp-git
 	makedepends = python-setuptools
 	makedepends = python-sympy
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = vapoursynth
 	depends = python-numpy
 	depends = python-tqdm
