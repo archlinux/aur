@@ -1,7 +1,7 @@
 pkgbase = rupost-desktop
 	pkgdesc = RuPost Desktop - почтовый клиент, созданный на базе нового поколения Thunderbird (Supernova) компанией ООО 'РуПост'
-	pkgver = 115.0.108
-	pkgrel = 3
+	pkgver = 115.0.109
+	pkgrel = 1
 	url = http://www.rupost.ru/desktop
 	arch = x86_64
 	license = custom
@@ -13,7 +13,7 @@ pkgbase = rupost-desktop
 	optdepends = hyphen: Hyphenation
 	optdepends = libcanberra: Sound support
 	provides = rupost-desktop
-	source = https://www.rupost.ru/desktop/download/rupost-desktop-115.0.108.ru.linux-x86_64.deb
-	sha256sums = eb3e26c40a0fd6292da1cc37a3ac754cb24703daa1dc76f1360272b721fd889d
+	source = https://www.rupost.ru/desktop/download/linux/rupost-desktop-115.0.109.ru.linux-x86_64.deb
+	sha256sums = 2ef3852c9c247c85fe2fa61eaaac370f3124957764df63fb8e4e26096a98f167
 
 pkgname = rupost-desktop
