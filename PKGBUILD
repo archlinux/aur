@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-python-crontab
 _name=python-crontab
-pkgver=2.7.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Crontab module for reading and writing crontab files and accessing the system cron automatically and simply using a direct API."
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('cronie'
             'python-cron-descriptor: Ask for a translated string'
             'python-croniter: Run a cron tab as a daemon')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b21af4647c7bbb848fef2f020616c6b0289dcb9f94b4f991a55310ff9bec5749')
+sha256sums=('79fb7465039ddfd4fb93d072d6ee0d45c1ac8bf1597f0686ea14fd4361dba379')
 
 build() {
   cd "$_name-$pkgver"
