@@ -5,7 +5,7 @@ pkgname=serioussam-vk
 pkginstdir=serioussam
 pkgver=1.10.5
 _srcname="SeriousSamClassic-VK-$pkgver"
-pkgrel=3
+pkgrel=4
 pkgdesc="Serious Sam Classic native Linux version with Vulkan support."
 arch=('i686' 'x86_64')
 url="https://github.com/tx00100xt/SeriousSamClassic-VK"
@@ -19,13 +19,15 @@ source=("https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v$p
     "serioussam-tse.desktop"
     "serioussam.xpm"
     "0001-remove_SE1_10b_depend.patch"
-    "0002-Fixed_Platform_definition.patch")
+    "0002-Fixed_Platform_definition.patch"
+    "0003-Fix-load-some-incorrect-custom-maps.patch")
 sha256sums=('e4fb2c46b238bc9984c6d5ec31f2aed0f571cca724795bc333ad1ab92d80a8f7'
             '1e36d7b0d11f68729aa5c79ac9a44157d4af0bf61060040ab92a37d96ca89aba'
             '49680c65d26b264a1d7735c6310fcc5d0ac0e0e56273d3bccf539c0c87d31b2b'
             '1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4'
             '244101d02598010e4c45e57f26e0842d4cff058e3cde5e59062b9d36b5ffaca0'
-            '21100e7993892d5ac7b4d44b87cf29d47afac5bfbc0e39c2777a3e0dc813dbd2')
+            '21100e7993892d5ac7b4d44b87cf29d47afac5bfbc0e39c2777a3e0dc813dbd2'
+            '36b0c4da5133ef5dcdcfd21767c84f7b3e9711413549b565957a734e549ee300')
 if [[ $CARCH = "i686" ]]; then
   _bits="32"
 else
@@ -36,6 +38,7 @@ prepare(){
   # Prepare patch
   cat 0001-remove_SE1_10b_depend.patch > "$srcdir/$_srcname/0001-remove_SE1_10b_depend.patch"
   cat 0002-Fixed_Platform_definition.patch > "$srcdir/$_srcname/0002-Fixed_Platform_definition.patch"
+  cat 0003-Fix-load-some-incorrect-custom-maps.patch > "$srcdir/$_srcname/0003-Fix-load-some-incorrect-custom-maps.patch"
 
   # Making building TFE scripts.
   cd "$srcdir/$_srcname/SamTFE/Sources/"
@@ -52,6 +55,7 @@ prepare(){
   # apply patch
   patch -p1 < 0001-remove_SE1_10b_depend.patch || return 1
   patch -p1 < 0002-Fixed_Platform_definition.patch || return 1
+  patch -p1 < 0003-Fix-load-some-incorrect-custom-maps.patch || return 1
 }
 
 build(){

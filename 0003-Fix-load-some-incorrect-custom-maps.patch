@@ -1,0 +1,50 @@
+--- a/SamTFE/Sources/GameMP/LoadingHook.cpp	2023-06-04 21:21:47.000000000 +0300
++++ b/SamTFE/Sources/GameMP/LoadingHook.cpp	2023-07-07 11:29:23.589269179 +0300
+@@ -119,14 +119,20 @@
+     RemapLevelNames(iLevelNext);
+ 
+     // first encounter
+-    if(iLevel == -1) {
++    if((iLevel == -1) && (_pNetwork->md_strGameID == "serioussam") ) {
+       strLevelName.ScanF("%02d_", &iLevel);
+       strNextLevelName.ScanF("%02d_", &iLevelNext);
+ 
+-      if(iLevel != -1) {
++      /*if(iLevel != -1) {
+         map_bIsFirstEncounter = TRUE;
+       }
+     } else {
++      map_bIsFirstEncounter = FALSE;*/
++    }
++
++    if(_pNetwork->md_strGameID == "serioussam") {
++      map_bIsFirstEncounter = TRUE;
++    } else {
+       map_bIsFirstEncounter = FALSE;
+     }
+    
+--- a/SamTSE/Sources/GameMP/LoadingHook.cpp	2023-06-04 21:21:47.000000000 +0300
++++ b/SamTSE/Sources/GameMP/LoadingHook.cpp	2023-07-07 11:29:23.589269179 +0300
+@@ -119,14 +119,20 @@
+     RemapLevelNames(iLevelNext);
+ 
+     // first encounter
+-    if(iLevel == -1) {
++    if((iLevel == -1) && (_pNetwork->md_strGameID == "serioussam") ) {
+       strLevelName.ScanF("%02d_", &iLevel);
+       strNextLevelName.ScanF("%02d_", &iLevelNext);
+ 
+-      if(iLevel != -1) {
++      /*if(iLevel != -1) {
+         map_bIsFirstEncounter = TRUE;
+       }
+     } else {
++      map_bIsFirstEncounter = FALSE;*/
++    }
++
++    if(_pNetwork->md_strGameID == "serioussam") {
++      map_bIsFirstEncounter = TRUE;
++    } else {
+       map_bIsFirstEncounter = FALSE;
+     }
+    
