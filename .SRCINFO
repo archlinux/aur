@@ -21,6 +21,7 @@ pkgbase = freeipa
 	makedepends = sssd>=1.13.0
 	makedepends = python-jinja
 	makedepends = python-pyasn1-modules
+	makedepends = python-systemd
 	options = emptydirs
 	source = https://releases.pagure.org/freeipa/freeipa-4.10.2.tar.gz
 	source = freeipa-client-update-sshd_config

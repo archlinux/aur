@@ -31,7 +31,8 @@ makedepends=('openldap'
              'libsasl'
              'sssd>=1.13.0'
              'python-jinja'
-             'python-pyasn1-modules')
+             'python-pyasn1-modules'
+             'python-systemd')
 options=(emptydirs)
 #validpgpkeys=('0E63D716D76AC080A4A33513F40800B6298EB963')
 source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
