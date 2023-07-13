@@ -1,0 +1,23 @@
+diff -u a/kernel/sched/topology.c b/kernel/sched/topology.c
+--- a/kernel/sched/topology.c	2023-07-13 09:51:14.090346089 +0100
++++ b/kernel/sched/topology.c	2023-07-13 10:01:38.813061228 +0100
+@@ -2760,5 +2760,19 @@
+ {
+ 	return cpumask_nth(cpu, cpus);
+ }
++const struct cpumask *sched_numa_hop_mask(unsigned int node, unsigned int hops)
++{
++	struct cpumask ***masks;
++
++	if (node >= nr_node_ids || hops >= sched_domains_numa_levels)
++		return ERR_PTR(-EINVAL);
++
++	masks = rcu_dereference(sched_domains_numa_masks);
++	if (!masks)
++		return ERR_PTR(-EBUSY);
++
++	return masks[hops][node];
++}
++EXPORT_SYMBOL_GPL(sched_numa_hop_mask);
+ #endif /* CONFIG_NUMA */
+ #endif

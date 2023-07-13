@@ -73,7 +73,7 @@ _subarch=39
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.4.1
+pkgver=6.4.3
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -94,9 +94,9 @@ makedepends=(
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld)
 options=('!strip')
 _srcname=linux-${pkgver}
-_kernel_base_commit=59377679473491963a599bfd51cc9877492312ee
-_kernel_arch_tag=${pkgver}-arch2
-_arch_config_commit=2261c9db3308c82a0ebf15631bd762330a8ea572
+_kernel_base_commit=160f4124ea8b4cd6c86867e111fa55e266345a16
+_kernel_arch_tag=${pkgver}-arch1
+_arch_config_commit=96eac469cdceeaddf1c4a1e0a88e3a8e5f132a8d
 _prjc_version=6.4-r0
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20230105
@@ -106,18 +106,20 @@ source=(
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "0001-${pkgbase}-${pkgver}-v${_kernel_arch_tag}.patch::https://github.com/archlinux/linux/compare/${_kernel_base_commit}..v${_kernel_arch_tag}.patch"
+  "sched_numa_hop_mask.patch"
 )
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('8551ab8fb2e973855f7fe8cf0ea2f999ae943dc140291849ff89fb9870798347c07b13f9e3fbdd91122ec53d6f52d73f394e432ff0c8290c0298638ba7ccc405'
+b2sums=('d38cae9706127fa28cc55b50ceeba7601de3d1db648b934b9d33e0b439324790074b755b1de204586fa098a326f5c88f81550cff76489b2ea6505987fc243c56'
         'SKIP'
-        'f0089150c3bd1c53bcaa17ee8dafb1d972508611493741f4d8f5d93d5500e0fa85c50a8cca35321080c62b5a6a607f54197402de84a60d849dc7b569bbe67b59'
+        'e03a0db736741d3fb0d0761bb26334a2a608b2c6e6d9c0b1775f3b757fb1c33fc9a8aac9fc5e2274defdac4a033e5ab20127b66bb8f9fb8fe3e05841ba445a52'
         '73438f4785fc533c901c6f4fd538f0e4a23526b15d43bfb35cc70c066c24d60006797a08e9c1bb388ca7feb7d946a7fce3b21f1065c66eeab5e8f923f817e96b'
         'd178dad69501967382d5c841f65e4f57651042bee8117041a9baa35ab3fa73af8174b8b999ae9e72ec381c52744ccaaabb77944d59f123c04b6ed5626432d843'
-        '62d9b1bb2c8ece6ba1c788f7d06f96626122bb3a87b58abc4a2b507b7dc98b13820998126a9ca617aff8936b8ae230a871a074bd600124486d82a70ba696ec83')
+        'b131409b28be9084c5236f1a27ed01d059c11ff03f6dd7ab98e57bf3861d2cef483596ec3faee78a3a6afd67d597956b479b4dbbdd3e01ca78852d3e7fe150f1'
+        'cbd76f0a000e51173626009345b2de34f734c32072cf82e8e0860bbcf4eeac963ae34061ec562db8f852a4297c4633118f93c935a4783044ffb069643a03ce89')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
@@ -166,7 +168,7 @@ prepare() {
 
   # https://gitlab.com/alfredchen/linux-prjc/-/issues/81
   # Disable mellanox module
-  scripts/config --disable CONFIG_MLX5_CORE
+  # scripts/config --disable CONFIG_MLX5_CORE
 
   echo "Applying patch ${_prjc_patch}..."
   patch -Np1 -i "$srcdir/${_prjc_patch}"
