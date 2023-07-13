@@ -177,9 +177,8 @@ END
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
-  # KDE menu and unity menubar
-  # patch -Np1 -i "${_cachyos_patches_dir}"/unity_kde/firefox-kde.patch
-  # patch -Np1 -i "${_patches_dir}"/kde-upstream/unity-menubar.patch
+  # OpenSUSE KDE patches
+  patch -Np1 -i "${_patches_dir}"/unity_kde/firefox-kde.patch
   patch -Np1 -i "${_patches_dir}"/kde-upstream/mozilla-kde.patch
 
   # Disabling Pocket
