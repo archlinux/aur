@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=timsac
-_pkgver=1.3.8
+_pkgver=1.3.8-2
 pkgname=r-${_pkgname,,}
-pkgver=1.3.8
+pkgver=1.3.8.2
 pkgrel=1
 pkgdesc='Time Series Analysis and Control Package'
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9cea5a4d187196569101d5f38cb5ccd6159d997dd16a4456492984c72d235d80')
+sha256sums=('4b992214349fc3fe79c0802e0fc8782d4894ff8b201627fd7fb0ac960c811586')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
