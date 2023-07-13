@@ -1,7 +1,7 @@
 pkgbase = sjasmplus-z00m128
 	pkgdesc = SjASMplus is a Z80 cross-assembler
 	pkgver = 1.20.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/z00m128/sjasmplus
 	arch = x86_64
 	license = BSD
@@ -12,5 +12,4 @@ pkgbase = sjasmplus-z00m128
 
 pkgname = sjasmplus-z00m128
 	depends = lua
-	optdepends = tolua++: integrate C/C++ code with Lua
 	conflicts = sjasmplus
