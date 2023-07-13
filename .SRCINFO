@@ -1,6 +1,6 @@
 pkgbase = harbour-shutter-git
 	pkgdesc = A camera application designed for Sailfish which exposes all available camera parameters to the user.
-	pkgver = r63.0d214d7
+	pkgver = r73.a9cb88b
 	pkgrel = 1
 	url = https://github.com/piggz/harbour-shutter
 	arch = x86_64
@@ -10,12 +10,13 @@ pkgbase = harbour-shutter-git
 	makedepends = qt5-base
 	depends = qt5-multimedia
 	depends = qt5-quickcontrols
+	depends = qt5-sensors
 	depends = libexif
 	depends = libcamera
 	provides = harbour-shutter
 	conflicts = harbour-shutter
 	replaces = harbour-shutter
-	source = harbour-shutter-git::git+https://github.com/piggz/harbour-shutter.git
+	source = harbour-shutter-git::git+https://github.com/piggz/harbour-shutter.git#branch=jpeg
 	md5sums = SKIP
 
 pkgname = harbour-shutter-git
