@@ -1,7 +1,7 @@
 pkgbase = doomsday
 	pkgdesc = An advanced Doom engine that supports DOOM, Heretic and Hexen.
 	pkgver = 2.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://dengine.net/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = doomsday
 	makedepends = imagemagick
 	makedepends = cmake
 	makedepends = xorg-server-devel
-	makedepends = assimp
 	makedepends = python
 	depends = hicolor-icon-theme
 	depends = qt5-x11extras
@@ -28,4 +27,3 @@ pkgbase = doomsday
 	sha256sums = feffcb792cf0f4e17f5bf9532f29e5963d6dd8b2872fc9bae10f53044548da04
 
 pkgname = doomsday
-
