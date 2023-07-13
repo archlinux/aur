@@ -4,8 +4,8 @@
 
 pkgname=python-pypresence
 _name=${pkgname#python-}
-pkgver=4.2.1
-pkgrel=3
+pkgver=4.3.0
+pkgrel=1
 pkgdesc='Discord RPC and Rich Presence wrapper library'
 url='https://github.com/qwertyquerty/pypresence'
 arch=(any)
@@ -18,8 +18,8 @@ makedepends=(
   python-sphinx
   python-wheel
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c18fb3bbe945274ecea57da52e80ea6d3f0349596b18f0815d193b9b878d7dda')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('958a5bb2f28c3120c89c68cc242abd8e72e2dac9aaf9be36b7c7a6217dcf4669')
 
 _archive="$_name-$pkgver"
 
