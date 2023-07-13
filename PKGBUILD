@@ -5,23 +5,23 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2023.4
-_channel=stable
+_pkgver=2023.5
+_channel=beta
 _rel=1
-#pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL3')
-depends=('gtk3' 'iputils' 'libnotify' 'nss')
+depends=('alsa-lib' 'gtk3' 'iputils' 'libnotify' 'nss')
 makedepends=('cargo' 'git' 'go' 'libxcrypt-compat' 'nodejs>=16' 'npm>=8.3' 'protobuf')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_tag=a64b10fdd4c9fefa6d25fd2a94c0ea6cbc7eebc0  # tags/2023.4^0
+_tag=1b85beddcc46a1b79c9bfb0e0bfeab0925454b1c  # tags/2023.5-beta1^0
 _commit=29a4c7205e78c651fcd1b8c3a55181c0d86a50d3
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#commit=${_tag}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
@@ -66,6 +66,7 @@ build() {
   cd "$srcdir/mullvadvpn-app"
   export CARGO_HOME="$srcdir/cargo-home"
   export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   local RUSTC_VERSION=$(rustc --version)
   local PRODUCT_VERSION=$(cargo run -q --bin mullvad-version)
 
@@ -86,8 +87,16 @@ build() {
   go clean -modcache
 
   echo "Building Rust code in release mode using ${RUSTC_VERSION}..."
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+
+  cargo_crates_to_build=(
+    -p mullvad-daemon --bin mullvad-daemon
+    -p mullvad-cli --bin mullvad
+    -p mullvad-setup --bin mullvad-setup
+    -p mullvad-problem-report --bin mullvad-problem-report
+    -p talpid-openvpn-plugin --lib
+    -p mullvad-exclude --bin mullvad-exclude
+  )
+  cargo build --frozen --release "${cargo_crates_to_build[@]}"
 
   echo "Preparing for packaging Mullvad VPN ${PRODUCT_VERSION}..."
   mkdir -p build/shell-completions

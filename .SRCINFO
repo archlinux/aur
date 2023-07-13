@@ -1,6 +1,6 @@
 pkgbase = mullvad-vpn-beta
 	pkgdesc = The Mullvad VPN client app for desktop (beta channel)
-	pkgver = 2023.4.stable
+	pkgver = 2023.5.beta1
 	pkgrel = 1
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
@@ -13,6 +13,7 @@ pkgbase = mullvad-vpn-beta
 	makedepends = nodejs>=16
 	makedepends = npm>=8.3
 	makedepends = protobuf
+	depends = alsa-lib
 	depends = gtk3
 	depends = iputils
 	depends = libnotify
@@ -20,7 +21,7 @@ pkgbase = mullvad-vpn-beta
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
 	options = !lto
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#commit=a64b10fdd4c9fefa6d25fd2a94c0ea6cbc7eebc0?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#commit=1b85beddcc46a1b79c9bfb0e0bfeab0925454b1c?signed
 	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=29a4c7205e78c651fcd1b8c3a55181c0d86a50d3?signed
 	source = no-rpm.diff
 	source = mullvad-vpn.sh
