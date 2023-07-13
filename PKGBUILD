@@ -4,9 +4,10 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=114.0.5735.198
-pkgrel=2
+pkgver=115.0.5790.90
+pkgrel=1
 _launcher_ver=8
+_gcc_patchset=2
 _manual_clone=0
 pkgdesc="A web browser built for speed, simplicity, and security"
 arch=('x86_64')
@@ -25,21 +26,15 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
-        add-some-typename-s-that-are-required-in-C-17.patch
+        https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         REVERT-disable-autoupgrading-debug-info.patch
-        download-bubble-typename.patch
-        webauthn-variant.patch
-        random-fixes-for-gcc13.patch
-        disable-GlobalMediaControlsCastStartStop.patch
+        random-build-fixes.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('a9f3440feeab51f56b199797b83b458ca545bf67e114c62b21470fadd5a41dea'
+sha256sums=('82e802bcd2ae8d575d7fda9ec82db83d04d5453e9304cb482644f629232bd394'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
+            '4f91bd10a8ae2aa7b040a8b27e01f38910ad33cbe179e39a1ae550c9c1523384'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
-            'd464eed4be4e9bf6187b4c40a759c523b7befefa25ba34ad6401b2a07649ca2a'
-            '590fabbb26270947cb477378b53a9dcd17855739076b4af9983e1e54dfcab6d7'
-            'ba4dd0a25a4fc3267ed19ccb39f28b28176ca3f97f53a4e9f5e9215280040ea0'
-            '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
+            'fd472e8c2a68b2d13ce6cab1db99818d7043e49cecf807bf0c5fc931f0c036a3'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 if (( _manual_clone )); then
@@ -110,19 +105,20 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -i ../add-some-typename-s-that-are-required-in-C-17.patch
 
   # Revert addition of compiler flag that needs newer clang
   patch -Rp1 -i ../REVERT-disable-autoupgrading-debug-info.patch
 
-  # Disable kGlobalMediaControlsCastStartStop by default
-  # https://crbug.com/1314342
-  patch -Np1 -i ../disable-GlobalMediaControlsCastStartStop.patch
-
   # Build fixes
-  patch -Np1 -i ../download-bubble-typename.patch
-  patch -Np1 -i ../webauthn-variant.patch
-  patch -Np1 -i ../random-fixes-for-gcc13.patch
+  patch -Np1 -i ../random-build-fixes.patch
+
+  # Fixes for building with libstdc++ instead of libc++
+  patch -Np1 -i ../patches/chromium-114-ruy-include.patch
+  patch -Np1 -i ../patches/chromium-114-tflite-include.patch
+  patch -Np1 -i ../patches/chromium-114-vk_mem_alloc-include.patch
+  patch -Np1 -i ../patches/chromium-115-skia-include.patch
+  patch -Np1 -i ../patches/chromium-114-maldoca-include.patch
+  patch -Np1 -i ../patches/chromium-115-verify_name_match-include.patch
 
   # Link to system tools required by the build
   mkdir -p third_party/node/linux/node-linux-x64/bin
@@ -178,6 +174,7 @@ build() {
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'enable_nacl=false'
+    'enable_rust=false'
     "google_api_key=\"$_google_api_key\""
   )
 
