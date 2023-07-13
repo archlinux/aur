@@ -1,0 +1,13 @@
+pkgbase = planetary
+	pkgdesc = A blazingly fast tool to print your contributions in terminal elegantly
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://planetary.kyeboard.me
+	arch = x86_64
+	license = MIT
+	provides = planetary
+	conflicts = planetary
+	source = planetary-1.0.0.tgz::https://github.com/kyeboard/planetary/releases/download/v1.0.0/planetary-x86_64-apple-darwin.tar.gz
+	sha256sums = SKIP
+
+pkgname = planetary
