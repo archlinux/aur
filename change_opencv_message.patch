@@ -1,6 +1,6 @@
 --- findpeaks/stats.py
 +++ findpeaks/stats.py
-@@ -35,11 +35,8 @@
+@@ -37,11 +37,8 @@
  # %% Import cv2
  def _import_cv2():
      # Only for 2D images required
