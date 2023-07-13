@@ -1,7 +1,7 @@
 pkgbase = i3ass
 	pkgdesc = A bash-script collection to assist the use of i3-wm.
 	pkgver = 2023.07.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/budlabs/i3ass
 	arch = any
 	license = MIT
