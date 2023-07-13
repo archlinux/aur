@@ -1,39 +1,29 @@
 # Maintainer: detiam <dehe_tian@outlook.com>
-# Contributor: detian <dehe_detian@outlook.com>
-pkgname=phantomsocks-git
+
 _pkgname=phantomsocks
-pkgver=r282.3c556b0
+pkgname=phantomsocks-ipv6-git
+pkgver=r293.dc07f6f
 pkgrel=1
-epoch=
-pkgdesc="A cross-platform proxy client/server for Linux/Windows/macOS"
+pkgdesc="A cross-platform proxy client/server for Linux/Windows/macOS (able to use ipv4 and ipv6 same time)"
 arch=(i686 x86_64)
 url="https://github.com/detiam/$_pkgname"
-#_commit=a521259ffc1cfd8753845997c09644b976af2d6c
 license=('LGPL-3.0')
-groups=()
-depends=('systemd')
-makedepends=('go' 'git' 'libpcap')
-checkdepends=()
-optdepends=(
-	'v2raya: for use with v2raya'
-	#'libpcap: you can build pcap version if you want, see PKGBUILD build()'
-)
+
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
-backup=()
-options=()
-install=
-changelog=
+depends=('systemd')
+makedepends=('go' 'git' 'libpcap')
+
 source=(
 	"git+$url"
 	"$_pkgname.sysusers"
 	"$_pkgname.service"
-	"$_pkgname@.service"
-)
-noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
-validpgpkeys=()
+	"$_pkgname@.service")
+sha256sums=('SKIP'
+            '48d8ee51fa847c6060eca752f5c39340626938f2a8b3583150bc15d3d9ecceac'
+            '11e73f1c325e8d514b30c60f2e236b7cd6cd2c2f17443b97c1a628004f9128fc'
+            '038dafefdf359d5a3a427507cfb558263f93d338cf5f18ed525ab7d0335d3e8d')
 
 pkgver() {
   cd "$_pkgname"
@@ -45,8 +35,6 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	# Choose between them
-	#go build -tags rawsocket
 	go build -tags pcap
 }
 
