@@ -1,16 +1,15 @@
 # Maintainer: codeberge <concur_panama530 at slmail dot me>
 pkgname=dl-distro-git
 _pkgname=dl-distro
-pkgver=29.c0fe50b
+pkgver=45.e18e73c
 pkgrel=1
-pkgdesc="Download and verify ISOs with GPG and shasums for a chosen distro"
+pkgdesc="Download and verify ISOs with GPG and shasums"
 arch=('any')
 url="https://codeberg.org/codeberge/${_pkgname}"
 license=('GPL3')
-depends=('bash' 'curl' 'gnupg')
+depends=('bash' 'wget' 'gnupg')
 makedepends=('git')
 source=("git+https://codeberg.org/codeberge/${_pkgname}.git")
-validpgpkeys=('1ABE28A7568557DB148CB0F009126D8AD05FCD49')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -20,6 +19,5 @@ pkgver() {
 
 package() {
     cd "$srcdir/${_pkgname}"
-    git verify-commit HEAD || return 1
     install -D -m755 "${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 }
