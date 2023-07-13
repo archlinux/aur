@@ -1,6 +1,6 @@
 pkgbase = python-testdata
 	pkgdesc = Generates random test data
-	pkgver = 6.1.1
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://github.com/jaymon/testdata
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-testdata
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-datatypes
-	source = https://pypi.org/packages/source/t/testdata/testdata-6.1.1.tar.gz
-	sha512sums = 13a9eb10ef16aab06a45bdf10c1406306b68598fcbf0529d0ab8262d2503684b6711cba6111c9d1b102f74715b4c8541d2b444ca4e90ba53d5e3805b7874993d
+	source = https://pypi.org/packages/source/t/testdata/testdata-6.2.0.tar.gz
+	sha512sums = 6ab56984794fde019c90f27ef1972c74c59f6874b77b5f9431cfc8e4cec8b70cf1927403f29fdc1366f0a75d5c7ba7101d47cb1c73dc6c0e1693262ff93f7edc
 
 pkgname = python-testdata

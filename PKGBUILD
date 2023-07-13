@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=testdata
 pkgname=python-${_base}
-pkgver=6.1.1
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Generates random test data"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-datatypes)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('13a9eb10ef16aab06a45bdf10c1406306b68598fcbf0529d0ab8262d2503684b6711cba6111c9d1b102f74715b4c8541d2b444ca4e90ba53d5e3805b7874993d')
+sha512sums=('6ab56984794fde019c90f27ef1972c74c59f6874b77b5f9431cfc8e4cec8b70cf1927403f29fdc1366f0a75d5c7ba7101d47cb1c73dc6c0e1693262ff93f7edc')
 
 prepare() {
   cd ${_base}-${pkgver}
