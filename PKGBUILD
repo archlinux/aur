@@ -17,7 +17,7 @@ _makenconfig=
 # Optionally select a sub architecture by number if building in a clean chroot
 # Leaving this entry blank will require user interaction during the build
 # which will cause a failure to build if using makechrootpkg. Note that the
-# generic (default) option is 30.
+# generic (default) option is 40.
 #
 # Note - the march=native option is unavailable by this method, use the nconfig
 # and manually select it.
@@ -80,10 +80,10 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.4.2.arch1.r1189887.924149fbe383
+pkgver=6.4.3.arch1.r1189951.f37513acffac
 pkgrel=1
 pkgdesc="Linux"
-_srcver_tag=6.4.2.arch1
+_srcver_tag=6.4.3.arch1
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
@@ -143,7 +143,7 @@ validpgpkeys=(
 )
 b2sums=('SKIP'
         'SKIP'
-        'cb74dc9226ee1f5eaaeae37e816f71935c9ee267ddae8c546ff567bcf8f262a88daf8a5ca3761432865754e62772a836e52b39da47ba9f71dbe812e2083c4fbe')
+        'dd460b6089400db5e9908b75611b1ef36ad366d987c14cb478aa81a82b364ac4a70094751fba90f6238f216a2a58861ea69921f4b8fb9e58c7163664f868346c')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
