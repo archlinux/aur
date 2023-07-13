@@ -1,0 +1,16 @@
+pkgbase = webcam-glass-bin
+	pkgdesc = Cross-platform tool for making video tutorials and video conferencing, blending the webcam over the screen.
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/jersonlatorre/webcam-glass-app
+	arch = x86_64
+	license = custom
+	depends = electron20
+	depends = bash
+	depends = hicolor-icon-theme
+	source = webcam-glass-0.7.2.zip::https://github.com/jersonlatorre/webcam-glass-app/releases/download/0.7.2/Glass-0.7.2_standalone_linux.zip
+	source = webcam-glass.sh
+	sha256sums = 6e9b08a0a3089616afbed76a660290b75de27342dc20f840e4239cee0db74e53
+	sha256sums = 0f1b327c3f40bb23825535137a9e31eb42763336797aec0a4c5fe0cc19a09f82
+
+pkgname = webcam-glass-bin
