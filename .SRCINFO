@@ -1,0 +1,17 @@
+pkgbase = gchat
+	pkgdesc = Unofficial Google Chat app
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/dcrousso/GChat
+	arch = x86_64
+	license = MIT
+	depends = electron23
+	depends = hicolor-icon-theme
+	depends = bash
+	conflicts = gchat
+	source = gchat-1.0.1.tar.gz::https://github.com/dcrousso/GChat/archive/refs/tags/v1.0.1.tar.gz
+	source = gchat.sh
+	sha256sums = 6ac16d881642d156d9e3c01367edba538cde61efef2c46d07be0e504a42199bf
+	sha256sums = 0b1b93e2c58d96e499c0b7ede9fb8c84526b1535f2683448a7be4f3591574db8
+
+pkgname = gchat
