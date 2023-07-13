@@ -17,7 +17,7 @@ source=(
   "flutter.sh"
 )
 
-sha256sums=('5993b28055a91eea1888ebda54b08e2131b6fae9ff41d35318df1042cc5f9b07')
+sha256sums=('6ba1a8b996300bb6222915d99a19945c5a5ef062550413559d5bb124bd6cf1e9')
 
 prepare() {
   if [ ! -e $srcdir/flutter ]; then

@@ -19,7 +19,7 @@ pkgbase = flutter-light
 	options = emptydirs
 	options = !strip
 	source = flutter.sh
-	sha256sums = 5993b28055a91eea1888ebda54b08e2131b6fae9ff41d35318df1042cc5f9b07
+	sha256sums = 6ba1a8b996300bb6222915d99a19945c5a5ef062550413559d5bb124bd6cf1e9
 
 pkgname = flutter-light-common
 	pkgdesc = A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android. Using the dart package provided by Arch devs (slower updates)
