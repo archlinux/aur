@@ -1,0 +1,18 @@
+pkgbase = ghfetch
+	pkgdesc = A nice way to display CLI Github user / repo / organization info inspired in neofetch
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://github.com/ghfetch/ghfetch
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pip
+	depends = python-aiohttp
+	depends = python-requests
+	depends = python-pillow
+	depends = python-rich
+	source = ghfetch::https://github.com/ghfetch/ghfetch.git
+	md5sums = SKIP
+
+pkgname = ghfetch
