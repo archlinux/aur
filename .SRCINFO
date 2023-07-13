@@ -1,0 +1,15 @@
+pkgbase = dptf-git
+	pkgdesc = Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)
+	pkgver = 9.0.11363.buld34997.r95.20230605.d2c8f547
+	pkgrel = 1
+	url = https://github.com/intel/dptf
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	depends = readline
+	backup = etc/dptf/dsp.dv
+	source = dptf::git+https://github.com/intel/dptf.git
+	sha256sums = SKIP
+
+pkgname = dptf-git
