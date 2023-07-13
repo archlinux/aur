@@ -1,0 +1,16 @@
+pkgbase = hexchat-theme-manager-git
+	pkgdesc = A simple application to manage HexChat themes
+	pkgver = 2.16.1.r33.g6155c183
+	pkgrel = 1
+	url = https://hexchat.github.io
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = monodevelop
+	makedepends = meson
+	depends = mono
+	depends = hexchat>=2.16.1
+	source = git+https://github.com/hexchat/hexchat.git
+	sha256sums = SKIP
+
+pkgname = hexchat-theme-manager-git
