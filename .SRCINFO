@@ -1,0 +1,25 @@
+pkgbase = orca-slicer-bin
+	pkgdesc = Orca Slicer is a fork of Bambu Studio. It was previously known as BambuStudio-SoftFever
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/SoftFever/OrcaSlicer
+	arch = x86_64
+	license = AGPLv3
+	depends = mesa
+	depends = glu
+	depends = cairo
+	depends = gtk3
+	depends = libsoup
+	depends = webkit2gtk
+	depends = gstreamer
+	depends = openvdb
+	depends = wayland
+	depends = wayland-protocols
+	depends = libxkbcommon
+	depends = harmonyos-sans-git
+	provides = OrcaSlicer
+	conflicts = OrcaSlicer
+	source = https://github.com/SoftFever/OrcaSlicer/releases/download/v1.6.3/OrcaSlicer_V1.6.3_Linux.zip
+	sha512sums = c8a0b5ce1a2c12762b117fade95358583a0685bcb49088d311cd77eb976338114870ff53e5cd1ecd1e94c96b5031c31b8e9f1a817259e138c729881d5b96fbc4
+
+pkgname = orca-slicer-bin
