@@ -2,7 +2,7 @@
 
 _pkgname=qruler
 pkgname=$_pkgname-git
-pkgver=r6.e897bf4
+pkgver=r41.a458443
 pkgrel=1
 pkgdesc="A simple on-screen pixel meter"
 url="https://github.com/qtilities/$_pkgname"
@@ -14,13 +14,20 @@ depends=(
 makedepends=(
   cmake
   git
-  lxqt-build-tools
+# lxqt-build-tools
   qt5-tools
 )
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=($_pkgname::git+$url)
 sha512sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  git submodule init
+  git config submodule.external.lxqt-build-tools.url ../lxqt-build-tools
+  git submodule update
+}
 
 pkgver() {
   cd $_pkgname

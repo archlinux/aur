@@ -1,6 +1,6 @@
 pkgbase = qruler-git
 	pkgdesc = A simple on-screen pixel meter
-	pkgver = r6.e897bf4
+	pkgver = r41.a458443
 	pkgrel = 1
 	url = https://github.com/qtilities/qruler
 	arch = x86_64
