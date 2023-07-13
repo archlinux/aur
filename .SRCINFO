@@ -8,7 +8,9 @@ pkgbase = hugo-extended-cli
 	conflicts = hugo
 	conflicts = hugo-git
 	conflicts = hugo-extended-bin
-	source = https://github.com/gohugoio/hugo/releases/download/v0.115.2/hugo_0.115.2_checksums.txt
-	md5sums = SKIP
+	source_x86_64 = hugo-extended-cli-0.115.2-x86_64.tar.gz::https://github.com/gohugoio/hugo/releases/download/v0.115.2/hugo_extended_0.115.2_Linux-amd64.tar.gz
+	md5sums_x86_64 = SKIP
+	source_aarch64 = hugo-extended-cli-0.115.2-aarch64.tar.gz::https://github.com/gohugoio/hugo/releases/download/v0.115.2/hugo_extended_0.115.2_linux-arm64.tar.gz
+	md5sums_aarch64 = SKIP
 
 pkgname = hugo-extended-cli
