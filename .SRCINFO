@@ -1,14 +1,12 @@
 pkgbase = pass-botp
 	pkgdesc = A pass extension for managing TOTP Backup Codes
-	pkgver = 1.0.0.r0.g06518a4
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/msmol/pass-botp
 	arch = any
 	license = GPL2
-	makedepends = git
 	depends = pass
-	source = git+https://github.com/msmol/pass-botp.git
-	md5sums = SKIP
+	source = https://github.com/msmol/pass-botp/archive/v1.0.1.tar.gz
+	sha256sums = 75411d6e9364d663b286e3f50819cb22fc359718eb24e6f3c586d19a4d7ab74f
 
 pkgname = pass-botp
-

@@ -6,10 +6,8 @@ arch=(any)
 url="https://github.com/msmol/$pkgname"
 license=('GPL2')
 depends=('pass')
-makedepends=('git')
 source=("https://github.com/msmol/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('SKIP')
-
+sha256sums=('75411d6e9364d663b286e3f50819cb22fc359718eb24e6f3c586d19a4d7ab74f')
 package() {
     install -Dm755 "$srcdir/pass-botp-$pkgver/src/botp.bash" "$pkgdir/usr/lib/password-store/extensions/botp.bash"
 }
