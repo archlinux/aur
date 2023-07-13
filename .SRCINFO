@@ -1,6 +1,6 @@
 pkgbase = candle2-git
 	pkgdesc = GRBL and GRBL-Advanced controller application with G-Code visualizer written in Qt - git version
-	pkgver = V2.3.r2.335c14c.22.ff6f190c00d6fa48b408a25da739ffc3
+	pkgver = V2.4.r15.da0155d.40.d41d8cd
 	pkgrel = 1
 	url = https://github.com/Schildkroet/Candle2.git
 	arch = x86_64

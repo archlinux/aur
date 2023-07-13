@@ -2,7 +2,7 @@
 
 pkgname=candle2-git
 pkgdesc="GRBL and GRBL-Advanced controller application with G-Code visualizer written in Qt - git version"
-pkgver=V2.3.r4.b6364d3.24.d41d8cd98f00b204e9800998ecf8427e
+pkgver=V2.4.r15.da0155d.40.d41d8cd
 pkgrel=1
 arch=(x86_64 aarch64)
 url="https://github.com/Schildkroet/Candle2.git"
@@ -35,7 +35,7 @@ pkgver() {
         [[ $_patchfile = *.patch ]] || continue
         _patchver="${_patchver}$(md5sum ${srcdir}/${_patchfile} | cut -c1-32)"
     done
-    _patchver="$(echo -n $_patchver | md5sum | cut -c1-32)"
+    _patchver="$(echo -n $_patchver | md5sum | cut -c1-7)"
 
     echo $(git describe --tags --match 'V*' | sed 's/\([^-]*-\)g/r\1/;s/-/./g').$(git rev-list --count HEAD).${_patchver}
 }
