@@ -14,7 +14,7 @@ provides=('gdal=3.7.0')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
 url="https://gdal.org/"
@@ -96,6 +96,9 @@ build() {
     -DGDAL_USE_XERCESC=ON \
     -DGDAL_USE_ZLIB=ON \
     -DGDAL_USE_ZSTD=ON \
+    -DGDAL_USE_ZSTD=ON \
+    -DPODOFO_INCLUDE_DIR=/usr/include/podofo-0.9 \
+    -DPODOFO_LIBRARY=/usr/lib/podofo-0.9/libpodofo.so \
     $opt_libs
   make -C build
 }
