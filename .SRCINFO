@@ -1,24 +1,22 @@
 pkgbase = snoopy
 	pkgdesc = software tool to design and animate hierarchical graphs, among others Petri nets
-	pkgver = 2019.12.20
-	pkgrel = 3
-	url = http://www-dssz.informatik.tu-cottbus.de/DSSZ/Software/Snoopy
+	pkgver = 2022.08.27
+	pkgrel = 1
+	url = https://www-dssz.informatik.tu-cottbus.de/DSSZ/Software/Snoopy
 	arch = x86_64
 	license = custom: non-professional use only
+	makedepends = unzip
 	depends = gtk2
-	depends = libpng12
+	depends = libpng
 	depends = libsm
-	depends = libxtst
-	depends = libxxf86vm
-	provides = snoopy=2019.12.20
-	source = snoopy-stable-linux-64-2019-12-20.tgz::https://www-dssz.informatik.tu-cottbus.de/track/download.php?id=246
+	provides = snoopy
+	source = snoopy-stable-linux-64-2022-08-27.tgz::https://www-dssz.informatik.tu-cottbus.de/track/download.php?id=259
 	source = runscript.sh
 	source = snoopy.desktop
 	source = snoopy.png
-	md5sums = a01423e1791727465d0fd268deae298b
-	md5sums = 79bb5f35fc34fe7259b0369d8cf9f7ee
-	md5sums = d9e788feb4c1424972a666f58d426f8e
-	md5sums = 29de8205156262088c576496dd2a44ff
+	sha256sums = b0033b7b825f76bd95c24915c9fb333b1fbdb40d07bcc0762c0b8ccc5d69d3da
+	sha256sums = 6400dcdf01072e40fc855481d42ea33c3eb11aa53d0b8a3dc10ebfbda96b0fb4
+	sha256sums = e9ebf3ce027808d74f14ab02b4ac34b3e3e21fe0c2c83fb9a3298787be5c6d3c
+	sha256sums = 5ad73e78cc910a26f09c690f730289fb5a707bc9cabc1f035dea19ca3a24ca1d
 
 pkgname = snoopy
-

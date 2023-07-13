@@ -1,48 +1,37 @@
 # Maintainer: EdJoPaTo <snoopy-aur@edjopato.de>
 pkgname=snoopy
-pkgver=2019.12.20
-pkgrel=3
-epoch=
+pkgver=2022.08.27
+pkgrel=1
 pkgdesc="software tool to design and animate hierarchical graphs, among others Petri nets"
 arch=("x86_64")
-url="http://www-dssz.informatik.tu-cottbus.de/DSSZ/Software/Snoopy"
+url="https://www-dssz.informatik.tu-cottbus.de/DSSZ/Software/Snoopy"
 license=('custom: non-professional use only')
-groups=()
 depends=('gtk2'
-         'libpng12'
-         'libsm'
-         'libxtst'
-         'libxxf86vm')
-makedepends=()
+	'libpng'
+	'libsm')
+makedepends=('unzip')
 checkdepends=()
 optdepends=()
-provides=("snoopy=$pkgver")
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-stable-linux-64-${pkgver//./-}.tgz::https://www-dssz.informatik.tu-cottbus.de/track/download.php?id=246"
-        "runscript.sh"
-        "snoopy.desktop"
-        "snoopy.png")
-noextract=()
-md5sums=('a01423e1791727465d0fd268deae298b'
-         '79bb5f35fc34fe7259b0369d8cf9f7ee'
-         'd9e788feb4c1424972a666f58d426f8e'
-         '29de8205156262088c576496dd2a44ff')
-validpgpkeys=()
+provides=("${pkgname}")
+source=("$pkgname-stable-linux-64-${pkgver//./-}.tgz::https://www-dssz.informatik.tu-cottbus.de/track/download.php?id=259"
+	"runscript.sh"
+	"snoopy.desktop"
+	"snoopy.png")
+sha256sums=('b0033b7b825f76bd95c24915c9fb333b1fbdb40d07bcc0762c0b8ccc5d69d3da'
+            '6400dcdf01072e40fc855481d42ea33c3eb11aa53d0b8a3dc10ebfbda96b0fb4'
+            'e9ebf3ce027808d74f14ab02b4ac34b3e3e21fe0c2c83fb9a3298787be5c6d3c'
+            '5ad73e78cc910a26f09c690f730289fb5a707bc9cabc1f035dea19ca3a24ca1d')
 
 package() {
-  install -Dm755 "${srcdir}/snoopy2/bin/snoopy" "${pkgdir}/usr/share/${pkgname}/snoopy"
-  install -Dm755 "${srcdir}/runscript.sh" "${pkgdir}/usr/bin/snoopy"
+	install -Dm755 "${srcdir}/runscript.sh" "${pkgdir}/usr/bin/snoopy"
 
-  install -d "${pkgdir}/usr/lib/${pkgname}/"
-  cp -r "${srcdir}/snoopy2/lib"/* "${pkgdir}/usr/lib/${pkgname}"
+	install -d "${pkgdir}/usr/lib/${pkgname}/"
+	cp -r "${srcdir}/snoopy2/lib"/* "${pkgdir}/usr/lib/${pkgname}"
+	install -Dm755 "${srcdir}/snoopy2/bin/snoopy" -t "${pkgdir}/usr/lib/${pkgname}/"
 
-  install -Dm644 "${srcdir}/snoopy2/share/help.zip" "${pkgdir}/usr/share/doc/${pkgname}/help.zip"
+	install -d "${pkgdir}/usr/share/doc/${pkgname}/"
+	unzip -q "${srcdir}/snoopy2/share/help.zip" -d "${pkgdir}/usr/share/doc/${pkgname}/"
 
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+	install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+	install -Dm644 "${srcdir}/${pkgname}.png" -t "${pkgdir}/usr/share/icons/"
 }
