@@ -1,5 +1,5 @@
 pkgname=xenia-git
-pkgver=r6909.e55cb737c.linux_fixes
+pkgver=r6934.00aba94b9
 pkgrel=1
 pkgdesc="Xenia is an experimental emulator for the Xbox 360."
 arch=('x86_64')
@@ -86,6 +86,7 @@ prepare() {
   cd "${srcdir}/${pkgname%-git}"
 
   sed -i '16 a #include <optional>' src/xenia/ui/imgui_drawer.h
+  sed -i '16 a #include <cstdint>' src/xenia/base/utf8.cc
 
   msg2 "Setting submodule paths"
   # Take intersection of src and src/xenia/third_party

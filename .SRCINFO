@@ -1,6 +1,6 @@
 pkgbase = xenia-git
 	pkgdesc = Xenia is an experimental emulator for the Xbox 360.
-	pkgver = r6909.e55cb737c.linux_fixes
+	pkgver = r6934.00aba94b9
 	pkgrel = 1
 	url = http://xenia.jp
 	arch = x86_64
