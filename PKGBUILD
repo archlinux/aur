@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=stars
-_pkgver=0.6-1
+_pkgver=0.6-2
 pkgname=r-${_pkgname,,}
-pkgver=0.6.1
-pkgrel=3
+pkgver=0.6.2
+pkgrel=1
 pkgdesc='Spatiotemporal Arrays, Raster and Vector Data Cubes'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -60,7 +60,7 @@ optdepends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1f78db3adab9ebbfc9d98c6cc592708d893b5d7fd7fd876af454042ef42204a7')
+sha256sums=('fdc44dff6288dda8d6f3167a0105b4f2f07cbcb80822781417a721c10cb8315f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
