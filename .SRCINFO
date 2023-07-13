@@ -1,6 +1,6 @@
 pkgbase = cytopia-git
 	pkgdesc = A city building simulation game
-	pkgver = 5dbbb181
+	pkgver = 0b286259
 	pkgrel = 1
 	url = https://www.cytopia.net/
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = cytopia-git
 	makedepends = libvorbis
 	makedepends = gcc
 	makedepends = git
+	makedepends = cmake
 	source = git+https://github.com/CytopiaTeam/Cytopia.git
 	md5sums = SKIP
 
