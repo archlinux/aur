@@ -1,6 +1,6 @@
 pkgbase = r-dce
 	pkgdesc = Pathway Enrichment Based on Differential Causal Effects
-	pkgver = 1.7.0
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/dce
 	arch = any
@@ -51,7 +51,7 @@ pkgbase = r-dce
 	optdepends = r-summarizedexperiment
 	optdepends = r-tcgautils
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/dce_1.7.0.tar.gz
-	sha256sums = c5addacee6679716e9b949a2011399d6b88c2fa5fdd5530d7d84a95a1b898a16
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/dce_1.8.2.tar.gz
+	sha256sums = 1b4ddec82ac86bf2c485301e78ddfec8ddec97a25a191f801249a369b6ec1e03
 
 pkgname = r-dce
