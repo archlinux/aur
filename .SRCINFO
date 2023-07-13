@@ -1,6 +1,6 @@
 pkgbase = flare
 	pkgdesc = An unofficial Signal GTK client
-	pkgver = 0.8.2
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://gitlab.com/Schmiddiii/flare
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = flare
 	depends = protobuf
 	optdepends = feedbackd: for vibrating notifications
 	options = !lto
-	source = https://gitlab.com/Schmiddiii/flare/-/archive/0.8.2/flare-0.8.2.tar.gz
-	sha256sums = 460d052a009d11df8cb6dfa326881fff679002024da5c2bd9259d640d5683a34
+	source = https://gitlab.com/Schmiddiii/flare/-/archive/0.9.0/flare-0.9.0.tar.gz
+	sha256sums = eda736c6453c9ed4960d485e727f903ef57161555edd959ae6f030b74603accc
 
 pkgname = flare
