@@ -106,7 +106,6 @@ pkgbase = wine-ge-custom
 	optdepends = libgphoto2
 	optdepends = ffmpeg
 	optdepends = dosbox
-	optdepends = wine-ge-custom-standalone: Makes wine-ge-custom behave as your system's default wine
 	options = !staticlibs
 	options = !lto
 	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#commit=ff9f66c9cdf8562f4d3338cc9900c1f15de5e01f
@@ -124,11 +123,44 @@ pkgbase = wine-ge-custom
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
 	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
 
-pkgname = wine-ge-custom
+pkgname = wine-ge-custom-opt
+	optdepends = giflib
+	optdepends = lib32-giflib
+	optdepends = gnutls
+	optdepends = lib32-gnutls
+	optdepends = v4l-utils
+	optdepends = lib32-v4l-utils
+	optdepends = libpulse
+	optdepends = lib32-libpulse
+	optdepends = alsa-plugins
+	optdepends = lib32-alsa-plugins
+	optdepends = alsa-lib
+	optdepends = lib32-alsa-lib
+	optdepends = libxcomposite
+	optdepends = lib32-libxcomposite
+	optdepends = libxinerama
+	optdepends = lib32-libxinerama
+	optdepends = opencl-icd-loader
+	optdepends = lib32-opencl-icd-loader
+	optdepends = libva
+	optdepends = lib32-libva
+	optdepends = gtk3
+	optdepends = lib32-gtk3
+	optdepends = gst-plugins-base-libs
+	optdepends = lib32-gst-plugins-base-libs
+	optdepends = gst-plugins-good
+	optdepends = lib32-gst-plugins-good
+	optdepends = vulkan-icd-loader
+	optdepends = lib32-vulkan-icd-loader
+	optdepends = sdl2
+	optdepends = lib32-sdl2
+	optdepends = libgphoto2
+	optdepends = ffmpeg
+	optdepends = dosbox
+	optdepends = wine-ge-custom: Makes wine-ge-custom behave as your system's default wine
 
-pkgname = wine-ge-custom-standalone
-	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch. Makes wine-ge-custom behave as your system's default wine
-	depends = wine-ge-custom
+pkgname = wine-ge-custom
+	depends = wine-ge-custom-opt
 	provides = wine=8.0
 	provides = wine-wow64=8.0
 	conflicts = wine

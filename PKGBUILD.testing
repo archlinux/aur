@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgbase=wine-ge-custom
-pkgname=(wine-ge-custom wine-ge-custom-standalone)
+pkgname=(wine-ge-custom-opt wine-ge-custom)
 _srctag=GE-Proton8-10
 _commit=ff9f66c9cdf8562f4d3338cc9900c1f15de5e01f
 pkgver=${_srctag//-/.}
@@ -100,10 +100,6 @@ optdepends=(
   libgphoto2
   ffmpeg
   dosbox
-)
-
-optdepends+=(
-  "wine-ge-custom-standalone: Makes wine-ge-custom behave as your system's default wine"
 )
 
 install=wine.install
@@ -200,7 +196,11 @@ build() {
   make
 }
 
-package_wine-ge-custom() {
+package_wine-ge-custom-opt() {
+  optdepends+=(
+    "wine-ge-custom: Makes wine-ge-custom behave as your system's default wine"
+  )
+
   msg2 "Packaging Wine-32..."
   cd "$srcdir/$pkgbase-32-build"
 
@@ -221,9 +221,8 @@ package_wine-ge-custom() {
   find "$pkgdir"/opt/"$pkgbase"/lib{,32}/wine -iname "*.def" -delete
 }
 
-package_wine-ge-custom-standalone() {
-  pkgdesc+=". Makes wine-ge-custom behave as your system's default wine"
-  depends=(wine-ge-custom)
+package_wine-ge-custom() {
+  depends=(wine-ge-custom-opt)
   provides=("wine=8.0" "wine-wow64=8.0")
   conflicts=('wine' 'wine-wow64')
 
