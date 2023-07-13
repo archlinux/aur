@@ -1,6 +1,6 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
-pkgver=0.40.0
+pkgver=0.40.1
 pkgrel=1
 pkgname=python-pyvista
 _name=${pkgname#python-}
@@ -8,11 +8,11 @@ pkgdesc='3D plotting and mesh analysis through a streamlined interface for the V
 arch=('any')
 url='https://www.pyvista.org'
 license=('MIT')
-depends=('python-numpy' 'python-imageio' 'python-pillow' 'python-appdirs' 'python-scooby' 'vtk')
+depends=('python-numpy' 'python-imageio' 'python-pillow' 'python-appdirs' 'python-scooby' 'vtk' 'python-matplotlib')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('python-meshio')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('1d462dd516de8552ae1a4a35463c0327336faa2bfd161562207c02e7074fec1717eeb0a6c000b0c57ff3915996a24405d939dab4c3eff46d61f9c2fea380435b')
+sha512sums=('ade4653137c625ca27ef0f8c4608965c7e62b5524a775cced621ea1ea5f5b4a8040c4e4d32576d481ef9f929dcef69d4fb66344dc2210aef99d9152b585d7926')
 
 build() {
     cd "$_name-$pkgver"
