@@ -2,13 +2,14 @@
 pkgname=mission-center-git
 _pkgname=mission-center
 pkgver=r203.dc3e50e
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitor your CPU, Memory, Disk, Network and GPU usage"
 arch=('i686' 'x86_64' 'aarch64')
 url=""
 license=('GPL')
 groups=()
-depends=()
+depends=('gtk4'
+	 'libadwaita')
 makedepends=('meson'
 	     'rust')
 checkdepends=()
