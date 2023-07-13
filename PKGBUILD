@@ -2,7 +2,7 @@
 
 pkgname=alsa-ucm-conf-git
 pkgbasename="${pkgname%-git}"
-pkgver=1.2.9.628.d42e1d1.d41d8cd98f00b204e9800998ecf8427e
+pkgver=1.2.9.628.d42e1d1.d41d8cd
 pkgrel=1
 pkgdesc="ALSA Use Case Manager configuration (and topologies), git version"
 provides=("${pkgbasename}")
@@ -27,7 +27,7 @@ pkgver() {
         [[ $_patchfile = *.patch ]] || continue
         _patchver="${_patchver}$(md5sum ${srcdir}/${_patchfile} | cut -c1-32)"
     done
-    _patchver="$(echo -n $_patchver | md5sum | cut -c1-32)"
+    _patchver="$(echo -n $_patchver | md5sum | cut -c1-7)"
 
     echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD).${_patchver}
 }
