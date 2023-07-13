@@ -1,0 +1,18 @@
+pkgbase = envkey-bin
+	pkgdesc = Secure, human-friendly, cross-platform secrets and config.
+	pkgver = 1.5.10
+	pkgrel = 1
+	url = https://www.envkey.com/
+	arch = x86_64
+	license = MIT
+	depends = electron
+	depends = hicolor-icon-theme
+	conflicts = envkey
+	source = envkey-1.5.10.AppImage::https://github.com/envkey/envkey-app/releases/download/linux-x64-prod-v1.5.10/EnvKey-1.5.10.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/envkey/envkey-app/master/LICENSE
+	source = envkey.sh
+	sha256sums = 6d05c4672560e2785a1dc6141cabfcb4fdfe0025c58096ab471bf4ad48b65cc9
+	sha256sums = 09b057e89473140a66ebb115d2c45af606ae7a7a3f1a8debad96f49bbea74ddd
+	sha256sums = 0a845db56efbe634eeb534ea08786574f8d131498eb6276476c9605bf75e05b2
+
+pkgname = envkey-bin
