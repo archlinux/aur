@@ -1,11 +1,14 @@
 pkgbase = python-progress
 	pkgdesc = Easy to use progress bars for Python
 	pkgver = 1.6
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/verigak/progress
 	arch = any
 	license = ISC
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	source = python-progress-1.6.tar.gz::https://github.com/verigak/progress/archive/1.6.tar.gz
 	sha256sums = e4a0d9e4370cd09f29ecdf72bf84c7177caef8374a90a627c83a84e619eb0f3d
