@@ -1,7 +1,7 @@
 # Maintainer: Jaime Martínez Rincón <jaime(at)jamezrin(dot)name>
 
 pkgname=httptoolkit-bin
-pkgver=1.12.8
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
 arch=("x86_64")
@@ -21,7 +21,7 @@ changelog=
 source=("https://github.com/httptoolkit/httptoolkit-desktop/releases/download/v${pkgver}/HttpToolkit-${pkgver}.deb")
 noextract=()
 validpgpkeys=()
-md5sums=('e1ff9d7189bd35e624a2c19a5402f689')
+md5sums=('cf1caf9cbd586b817a3241839376e8c1')
 
 package() {
     install -d "${pkgdir}/usr/bin"
