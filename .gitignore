@@ -1,2 +1,8 @@
-src/
-pkg/
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!folder-color-nautilus-git.install
