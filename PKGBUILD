@@ -2,7 +2,7 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>, WithTheBraid <the-one@with-the-braid.cf>
 
 pkgname=flutter
-pkgver=3.10.4
+pkgver=3.10.6
 pkgrel=1
 pkgdesc="A new mobile app SDK to help developers and designers build modern mobile apps for iOS and Android."
 arch=("x86_64" "aarch64")
@@ -19,7 +19,7 @@ source=(
   "${pkgname}.sh"
   "${pkgname}.csh"
 )
-sha256sums=('77900b1ee58d57b64e2c0265c58fa737f21ba7749f31ce3894a006c82e5beed7'
+sha256sums=('7048e51a89c99a5b6cac6d8ae416121264effa76da34dba5c0e7cf85519c8e98'
             '1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a'
             '7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f')
 
@@ -44,8 +44,9 @@ package() {
 
   # those files *must* be read-write for end-users; not my fault *grumble*
   chmod a+rw "${pkgdir}/opt/${pkgname}" "${pkgdir}/opt/${pkgname}/.pub-preload-cache"
-  chmod -R a+rw "${pkgdir}/opt/${pkgname}/version" "${pkgdir}/opt/${pkgname}/bin/cache" "${pkgdir}/opt/${pkgname}/.git"  
-  find "${pkgdir}/opt/${pkgname}" -name "pubspec.lock" -exec chmod a+r+ {} +
+  chmod -R a+rw "${pkgdir}/opt/${pkgname}/version" "${pkgdir}/opt/${pkgname}/bin/cache" "${pkgdir}/opt/${pkgname}/.git"
+  find "${pkgdir}/opt/${pkgname}" -name "pubspec.lock" -exec chmod a+rw {} +
+  find "${pkgdir}/opt/${pkgname}" -name "package_config.json" -exec chmod a+rw {} +
 
   # fix git ref migrations
   mv "${pkgdir}/opt/${pkgname}/.git" "${pkgdir}/opt/${pkgname}/.git-refs"
