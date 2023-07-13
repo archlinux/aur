@@ -1,0 +1,16 @@
+pkgbase = mission-center-git
+	pkgdesc = Monitor your CPU, Memory, Disk, Network and GPU usage
+	pkgver = r203.dc3e50e
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = meson
+	makedepends = rust
+	provides = mission-center
+	conflicts = mission-center
+	source = git+https://gitlab.com/mission-center-devs/mission-center.git
+	md5sums = SKIP
+
+pkgname = mission-center-git
