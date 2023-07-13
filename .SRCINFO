@@ -33,4 +33,3 @@ pkgbase = ansible-core-git
 	sha512sums = SKIP
 
 pkgname = ansible-core-git
-

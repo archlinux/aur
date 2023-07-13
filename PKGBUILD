@@ -45,8 +45,4 @@ package() {
   cd ${pkgname}
   python setup.py install -O1 --root="${pkgdir}"
   install -Dm644 COPYING "${pkgdir}"/usr/share/doc/${pkgname}/COPYING
-
-  install -d "${pkgdir}"/usr/share/ansible/doc
-  cp -dpr --no-preserve=ownership ./examples "${pkgdir}"/usr/share/ansible/doc/
-  install -Dm644 examples/ansible.cfg "${pkgdir}"/etc/ansible/ansible.cfg
 }
