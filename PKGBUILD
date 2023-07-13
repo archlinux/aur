@@ -6,7 +6,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=114.0.2
+pkgver=115.0.1
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3 aarch64)
@@ -42,7 +42,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
   "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
-sha256sums=('aa602032f0b7065b743ba7fabf96714398aba538bcc017a4b0fff556dc69f8fe'
+sha256sums=('cde9c7e6e4d9d3a0a247ce672009d4dd484d389b533e0181f6428dd104a8a228'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
             'SKIP'
@@ -168,14 +168,13 @@ END
 
   # Upstream patches from gentoo
   # PGO improvements
-  patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0014-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+  patch -Np1 -i "${_cachyos_patches_dir}"/gentoo/0013-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
 
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
-  # KDE menu and unity menubar
+  # OpenSUSE KDE patches
   # patch -Np1 -i "${_cachyos_patches_dir}"/unity_kde/firefox-kde.patch
-  # patch -Np1 -i "${_patches_dir}"/kde-upstream/unity-menubar.patch
   patch -Np1 -i "${_patches_dir}"/kde-upstream/mozilla-kde.patch
 
   # Disabling Pocket
