@@ -2,7 +2,7 @@
 
 pkgname=rupost-desktop
 pkgver=115.0.108
-pkgrel=2
+pkgrel=3
 pkgdesc="RuPost Desktop - почтовый клиент, созданный на базе нового поколения Thunderbird (Supernova) компанией ООО 'РуПост'"
 arch=("x86_64")
 url="http://www.rupost.ru/desktop"
@@ -27,5 +27,8 @@ package() {
     sed -i -e 's/RemotingName=rupost-desktop-default/RemotingName=rupost-desktop/' "$pkgdir"/usr/lib/rupost-desktop/application.ini
     sed -i -e \
         's/$MOZ_LIBDIR\/$MOZ_APP_NAME "$@"/$MOZ_LIBDIR\/$MOZ_APP_NAME -app \/usr\/lib\/rupost-desktop\/application.ini "$@"/' \
+        "$pkgdir"/usr/bin/rupost-desktop
+    sed -i -e \
+        's/$MOZ_LIBDIR\/$EXE "$@"/$MOZ_LIBDIR\/$EXE -app \/usr\/lib\/rupost-desktop\/application.ini "$@"/' \
         "$pkgdir"/usr/bin/rupost-desktop
 }

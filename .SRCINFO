@@ -1,7 +1,7 @@
 pkgbase = rupost-desktop
 	pkgdesc = RuPost Desktop - почтовый клиент, созданный на базе нового поколения Thunderbird (Supernova) компанией ООО 'РуПост'
 	pkgver = 115.0.108
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.rupost.ru/desktop
 	arch = x86_64
 	license = custom
