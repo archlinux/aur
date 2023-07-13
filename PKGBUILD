@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="netpad-bin"
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A cross-platform C# editor and playground."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('at-spi2-core' 'gtk3' 'alsa-lib' 'nss' 'libcups' 'cairo' 'dbus' 'gcc-li
     'libxext' 'libxkbcommon' 'pango' 'mesa' 'libxrandr')
 source=("${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.pacman"
     "LICENSE::https://raw.githubusercontent.com/tareqimbasher/NetPad/main/LICENSE")
-sha256sums=('43364810af62b7ffa76f96d39e0b75c1637b05e8a31217aa79a595fe1103c32e'
+sha256sums=('d65b0d8187fb3544faf77639e3788c53ed6daf0d9f08e7e42b9c0a99640dea1c'
             '43485534798b716310ae2a0edeebb00e97ff0e42e5fde13ff2994e2bc82348f6')
 package() {
     cp --parents -a {opt,usr} "${pkgdir}"
