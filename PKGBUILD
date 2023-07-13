@@ -2,7 +2,7 @@
 # Contributor:  D. Bohdan <http://dbohdan.com/contact/>
 
 pkgname=s2png-git
-pkgver=v0.10.0.r000
+pkgver=v0.11.0.r117
 pkgrel=2
 
 pkgdesc='stuff to PNG'
@@ -27,7 +27,7 @@ build() {
     git reset --hard HEAD > /dev/null 2>&1
     mkdir -p "$srcdir/s2png/tempmakedir"
     env CC="${CARCH}-unknown-linux-gnu-gcc" TARGET="${CARCH}-unknown-linux-gnu" USER_TEMP="$srcdir/s2png/tempmakedir" make test
-    env CC="${CARCH}-unknown-linux-gnu-gcc" TARGET="${CARCH}-unknown-linux-gnu" USER_TEMP="$srcdir/s2png/tempmakedir" make release
+    env CC="${CARCH}-unknown-linux-gnu-gcc" TARGET="${CARCH}-unknown-linux-gnu" USER_TEMP="$srcdir/s2png/tempmakedir" cargo build --target "${CARCH}-unknown-linux-gnu" --target-dir "${srcdir}/s2png/tempmakedir/cargo/s2png" --release
     mv "$srcdir/s2png/tempmakedir/cargo/s2png/${CARCH}-unknown-linux-gnu/release/s2png" ./s2png_release_bin
     strip s2png_release_bin
 }
