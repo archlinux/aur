@@ -1,16 +1,17 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
+# Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 _pkgname=annotate
 _pkgver=1.78.0
 pkgname=r-${_pkgname,,}
-pkgver=1.78.0
-pkgrel=1
-pkgdesc='Annotation for microarrays'
-arch=('any')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Annotation for microarrays"
+arch=(any)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('Artistic2.0')
+license=(Artistic2.0)
 depends=(
-  r
   r-annotationdbi
   r-biobase
   r-biocgenerics
@@ -18,6 +19,10 @@ depends=(
   r-httr
   r-xml
   r-xtable
+)
+checkdepends=(
+  r-org.hs.eg.db
+  r-runit
 )
 optdepends=(
   r-biostrings
@@ -35,14 +40,20 @@ optdepends=(
   r-tkwidgets
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('fb5187ca7fdd4e1be47a470d528397df')
 sha256sums=('7e27007dc61ebc140ad722b5c9bb886e39499120b8f6240652df0edfa4c90484')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
+}
+
+check() {
+  cd "$_pkgname/tests"
+  R_LIBS="$srcdir/build" Rscript --vanilla annotate_unit_tests.R
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
 }
-# vim:set ts=2 sw=2 et:
