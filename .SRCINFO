@@ -1,15 +1,14 @@
 pkgbase = openloco
 	pkgdesc = An open source re-implementation of Chris Sawyer's Locomotion
-	pkgver = 23.06
+	pkgver = 23.06.1
 	pkgrel = 1
 	url = https://github.com/OpenLoco/OpenLoco
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = gtest
 	makedepends = lib32-glibc
 	makedepends = yaml-cpp
-	source = openloco-23.06.tar.gz::https://github.com/OpenLoco/OpenLoco/archive/refs/tags/v23.06.tar.gz
-	sha256sums = 2e1982399b5b1165d8c3ee84c376a60f0e41965ae179508d9747c030da4a1835
+	source = openloco-23.06.1.tar.gz::https://github.com/OpenLoco/OpenLoco/archive/refs/tags/v23.06.1.tar.gz
+	sha256sums = ce8a6f5a5a76880197495346824304c8ef7c42553d7081784c4454ea54d87849
 
 pkgname = openloco
