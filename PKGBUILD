@@ -1,5 +1,7 @@
 # Maintainer: MrDuartePT <gonegrier.duarte@gmail.com>
+# Maintainer: xenhat <aur@xenh.at>
 # Maintainer: johnfanv2 <https://github.com/johnfanv2>
+
 _pkgname=lenovolegionlinux
 pkgname=${_pkgname}-dkms-git
 pkgver=r255.f029ef9
