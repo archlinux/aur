@@ -1,6 +1,6 @@
 pkgbase = sshyp
 	pkgdesc = A light-weight, self-hosted, synchronized password manager
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/rwinkhart/sshyp
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = sshyp
 	depends = python
 	depends = gnupg
 	depends = openssh
-	depends = xclip
-	depends = wl-clipboard
+	optdepends = wl-clipboard: wayland clipboard support
+	optdepends = xclip: x11 clipboard support
 	optdepends = bash-completion: bash completion support
-	source = https://github.com/rwinkhart/sshyp/releases/download/v1.4.3/UBUNTU-sshyp_1.4.3-1_all.deb
-	sha512sums = b8e0dbb900fe3f401b92ffc30e23c83b4f4745756cd9c88953f51b3e709064da764ac5238ca7eb025adb004bfd242fca0f6fa3ca7f47a2bb7bc247ee0e06635a
+	source = https://github.com/rwinkhart/sshyp/releases/download/v1.5.0/DEBIAN-sshyp_1.5.0-1_all.deb
+	sha512sums = 1e91fb09685342ab4100228eac802d25d544b0c21d4eb093fb8cf251db54d39282835a6b9a14d430cd77c9fa4e1352d6ee7aee4a4d8b15702987a47c6b3a1d92
 
 pkgname = sshyp
