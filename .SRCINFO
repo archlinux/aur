@@ -7,6 +7,7 @@ pkgbase = mochi-appimage
   license = custom:Unlicense
   depends = zlib
   depends = hicolor-icon-theme
+  depends = fuse2
   noextract = mochi-appimage-1.15.26.AppImage
   options = !strip
   source_x86_64 = mochi-appimage-1.15.26.AppImage::https://mochi.cards/releases/Mochi-1.15.21.AppImage
