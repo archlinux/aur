@@ -26,6 +26,9 @@ optdepends=(
 	'espeak-ng: speaker support'
 	'festival: speaker support'
 	'python-pygls: LSP support'
+	"python-openai: translate by openai's LLMs"
+	"python-llama-cpp: translate by LLaMa"
+	'stardict-ecdict: translate English to Chinese'
 	'stardict-langdao-ec-gb: translate English to Chinese'
 	'stardict-langdao-ce-gb: translate Chinese to English'
 	'stardict-jmdict-en-ja: translate English to Japanese'
