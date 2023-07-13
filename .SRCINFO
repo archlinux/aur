@@ -1,6 +1,6 @@
 pkgbase = fmedia-bin
 	pkgdesc = Fast media player/recorder/converter
-	pkgver = 1.30
+	pkgver = 1.31
 	pkgrel = 1
 	url = https://stsaz.github.io/fmedia
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = fmedia-bin
 	depends = pango
 	depends = at-spi2-core
 	depends = cairo
+	provides = fmedia
 	conflicts = fmedia
-	options = !strip
-	source = fmedia-bin-1.30.tar.xz::https://github.com/stsaz/fmedia/releases/download/v1.30/fmedia-1.30-linux-amd64.tar.xz
-	sha256sums = 9cd8772c4afc67536da341413ffc44b94fbf047d733b7f2468df7fd1e3890387
+	source = fmedia-bin-1.31.tar.xz::https://github.com/stsaz/fmedia/releases/download/v1.31/fmedia-1.31-linux-amd64.tar.xz
+	sha256sums = 9f2347b0316275b081e98feaaed8b17c4750c2855f85606b79b26f6e62ba8ab0
 
 pkgname = fmedia-bin
