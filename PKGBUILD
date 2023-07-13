@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=6.4.2
+_kernver=6.4.3
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=6.4.2-arch1-1
+_KERNNAME=6.4.3-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux kernel and modules | repackaged with a unique package name for each version"
-url="https://github.com/archlinux/linux/commits/v6.4.2-arch1"
+url="https://github.com/archlinux/linux/commits/v6.4.3-arch1"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('c1ee6421022f133d7914c9f283e9836ac7deb7b77980e512731491f07c57575a'
-            'd92d540173a880f5a141cfdbc0fbfa6074fb6cfd416373d073198a447b9d5647'
-            '0524d14e4db4ff0ef4708edfacc21a22ffb6e10af3493ac036fd3c7fd745c76f')
+sha256sums=('971b12ad7490de725533a728f6e533f265bf367eb9bf6d2364288aab6fc91a9a'
+            'cdf0d78a832d56b13d93744ee5a24f6712c1203d05fa0b1b52bb91d14821b935'
+            '60ef95d025fa701b77bebc5bf36e0da85303b1fce2e0ecf5a8857d349a03e731')
 
 package_linux-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux6.4.2.arch1-1-bin() {
+package_linux6.4.3.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -82,7 +82,7 @@ package_linux6.4.2.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux6.4.2.arch1-1-headers-bin() {
+package_linux6.4.3.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -91,7 +91,7 @@ package_linux6.4.2.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux6.4.2.arch1-1-docs-bin() {
+package_linux6.4.3.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
