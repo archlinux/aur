@@ -2,14 +2,14 @@
 # Contributor: Mario Sánchez <nullgaro@gmail.com>
 pkgname='ghfetch'
 pkgver='1.2.5'
-pkgrel=2
-epoch=2
+pkgrel=3
+epoch=3
 pkgdesc="A nice way to display CLI Github user / repo / organization info inspired in neofetch"
 arch=('x86_64')
 url="https://github.com/ghfetch/ghfetch"
 license=('MIT')
-depends=('python>=3.6.0' 'python-pip' 'python-aiohttp>=3.8.4' 'python-requests>=2.28.2'  'python-pillow>=10.0.0' 'python-rich>=12.5.1')
-makedepends=('git' 'python-setuptools>=68.0.0')
+depends=('python>=3.6.0' 'python-pip' 'python-setuptools>=68.0.0' 'python-aiohttp>=3.8.4' 'python-requests>=2.28.2'  'python-pillow>=10.0.0' 'python-rich>=12.5.1')
+makedepends=('git')
 source=('ghfetch::https://github.com/ghfetch/ghfetch.git')
 md5sums=('SKIP')
 
