@@ -23,7 +23,7 @@ pkgbase = git-annex-standalone-nightly
 	source = git-annex-standalone-amd64.tar.gz::https://downloads.kitenet.net/git-annex/autobuild/amd64/git-annex-standalone-amd64.tar.gz
 	source = git-annex.desktop
 	source = git-annex-assistant.desktop
-	sha256sums = 65f02397c8fec833d16e4d55eb6b98678fd0ad91f6ddc6947fa43077be9d7824
+	sha256sums = 58453f320ca2fad2a9a758070c872d6699da809527a45a0b77db8fe1965ffafe
 	sha256sums = 39c60aea8b8be8bab6639614542de02c4014f43867ee2afe75737f772484178d
 	sha256sums = 85f0ab00bc256cfc2cf37d18296b338022a07ba03c5157d6960e8e427d8353cd
 
