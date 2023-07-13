@@ -1,0 +1,20 @@
+pkgbase = ficus-bin
+	pkgdesc = A software for editing and managing markdown documents, developed by the gg=G team.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://ficus.world/
+	arch = x86_64
+	license = MIT
+	makedepends = gendesk
+	depends = electron13
+	conflicts = ficus
+	source = ficus-0.2.1.asar::https://github.com/Thysrael/Ficus/releases/download/v0.2.1/app.asar
+	source = https://raw.githubusercontent.com/Thysrael/Ficus/main/LICENSE
+	source = ficus.png::https://raw.githubusercontent.com/Thysrael/Ficus/main/build/icon.png
+	source = ficus.sh
+	sha256sums = fb3a407722baa7b48b81db2753ae12f47799a3a434122d47db8b320c6c4ba993
+	sha256sums = 062dfd6ae4c19f555ebbdba752598c98510837687393a38a3602b711890430d7
+	sha256sums = 3c8344b3daac5c775a3bf38518e5eee024566d7ea0a3f72c543a7c7ae13f72ef
+	sha256sums = 7efd1cbfdcaa7492e55c72e90cbd53fc0255c7e64f45a0c413a5688f9af895a8
+
+pkgname = ficus-bin
