@@ -105,6 +105,7 @@ build() {
     -S FEX -B build -G Ninja \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_BUILD_TYPE=Release \
+    -D FMT_INSTALL=False \
     "${FEX_OPTIONS[@]}"
   ninja -C build
 }
