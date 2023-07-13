@@ -21,4 +21,5 @@ package() {
   install -Dm755 term_notes "$pkgdir/usr/bin/term_notes"
 }
 
-sha256sums=('0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef')
+sha256sums=('c9cabc195345db92f8297ecf35399622bfa7583362830dd459fd65c89917f86b')
+sha256sums=('8e7004e9b92add9b507fd21d1b8220c67aaeeab80de42ac1221859d2e1622a76')
