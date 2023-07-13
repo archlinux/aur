@@ -1,0 +1,11 @@
+pkgbase = stardict-ecdict
+	pkgdesc = Free English to Chinese Dictionary Database
+	pkgver = 1.0.28
+	pkgrel = 1
+	url = https://github.com/skywind3000/ECDICT
+	arch = any
+	license = GPL3
+	source = https://github.com/skywind3000/ECDICT/releases/download/1.0.28/ecdict-stardict-28.zip
+	sha256sums = c707d0f3ded6ec79b96466da4a1574e074703da5af9c120fbad97f9cb08c6f2c
+
+pkgname = stardict-ecdict
