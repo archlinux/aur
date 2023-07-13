@@ -3,7 +3,7 @@
 pkgname=scrape-cli
 _name=scrape
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI utility to scrape emails from websites"
 arch=(x86_64)
 url="https://github.com/lawzava/scrape"
@@ -31,6 +31,6 @@ build() {
 package() {
   cd "$_archive"
 
-  install -Dm755 scrape $pkgdir/usr/bin/scrape
+  install -Dm755 scrape "$pkgdir/usr/bin/scrape"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

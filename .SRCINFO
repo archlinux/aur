@@ -1,7 +1,7 @@
 pkgbase = scrape-cli
 	pkgdesc = CLI utility to scrape emails from websites
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lawzava/scrape
 	arch = x86_64
 	license = MIT
