@@ -1,7 +1,7 @@
 pkgbase = dbeaver-le
 	pkgdesc = A universal database tool for developers and database administrators. Lite Edition
-	pkgver = 22.3.0
-	pkgrel = 2
+	pkgver = 23.1.0
+	pkgrel = 1
 	url = http://dbeaver.com/
 	install = dbeaver-le.install
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = dbeaver-le
 	depends = java-runtime>=11
 	depends = gtk3
 	depends = gtk-update-icon-cache
-	noextract = dbeaver-le-22.3.0-linux.gtk.x86_64.tar.gz
+	noextract = dbeaver-le-23.1.0-linux.gtk.x86_64.tar.gz
 	source = dbeaver-le.desktop
 	source = dbeaver-le.install
 	sha256sums = 9d985ebe0332caf09fdee3fbe1e97b4f29533fe84911df46556623dff457a4ee
 	sha256sums = 0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f
-	source_x86_64 = http://dbeaver.com/downloads-lite/22.3.0/dbeaver-le-22.3.0-linux.gtk.x86_64-nojdk.tar.gz
-	sha256sums_x86_64 = a9c29e8351c09e9a0f82d5174d190f46483cacf1278139d4fd01b2a8f9dd91f0
+	source_x86_64 = http://dbeaver.com/downloads-lite/23.1.0/dbeaver-le-23.1.0-linux.gtk.x86_64-nojdk.tar.gz
+	sha256sums_x86_64 = 971999779e0addaf00b7e66bda7bd26847efe758bd74c1d69842410c731dd3dd
 
 pkgname = dbeaver-le
