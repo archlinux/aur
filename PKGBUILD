@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=linky
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Extract and check links from Markdown files'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=()
 conflicts=('linky-git')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('e8cc01d93abf3a8a5365660ef4e246494a1cc44f6ec3955a2c4f60c7810bfdeb')
+sha256sums=('5d19dc730f5e3e5046f43030f847fe24e4fe196bf4322aee50d39be148ad8c0c')
 
 build() {
   cd "$pkgname-$pkgver"
