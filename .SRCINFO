@@ -1,18 +1,18 @@
 pkgbase = bunjs-bin
 	pkgdesc = All-in-one JavaScript runtime built for speed, with a native bundler, transpiler, test runner, and npm-compatible package manager baked-in.
-	pkgver = 0.6.13
+	pkgver = 0.6.14
 	pkgrel = 1
 	url = https://github.com/oven-sh/bun
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = bun=0.6.13
+	provides = bun=0.6.14
 	provides = bun
 	conflicts = bun
 	conflicts = bun-bin
-	source_x86_64 = bun-linux-x64-0.6.13.zip::https://github.com/oven-sh/bun/releases/download/bun-v0.6.13/bun-linux-x64.zip
-	sha256sums_x86_64 = 7f7572b197537ece06e1ae3c01a85b68400256988a3c6ece7db0184c21878b59
-	source_aarch64 = bun-linux-aarch64-0.6.13.zip::https://github.com/oven-sh/bun/releases/download/bun-v0.6.13/bun-linux-aarch64.zip
-	sha256sums_aarch64 = 1ebddcd3ce347f3e3b8c33638a04eccfb1c45123fa6ed5d50c5514b43b5d3b92
+	source_x86_64 = bun-linux-x64-0.6.14.zip::https://github.com/oven-sh/bun/releases/download/bun-v0.6.14/bun-linux-x64.zip
+	sha256sums_x86_64 = e6253ed457af4e38f3a3fa8dd338c8a0241f95b58299d7cc5e4c7ee8138411c7
+	source_aarch64 = bun-linux-aarch64-0.6.14.zip::https://github.com/oven-sh/bun/releases/download/bun-v0.6.14/bun-linux-aarch64.zip
+	sha256sums_aarch64 = 207198011c9e447377bce456fdf057efe8f7be97d05fe650597d937083ab3077
 
 pkgname = bunjs-bin
