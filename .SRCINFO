@@ -1,0 +1,20 @@
+pkgbase = rtkit-suspend-fix-git
+	pkgdesc = Realtime Policy and Watchdog Daemon, with watchdog-ignore on suspend
+	pkgver = r126.dd8e5e9
+	pkgrel = 1
+	url = https://github.com/jmerdich/rtkit/tree/jmerdich/suspend-is-not-deadlock
+	arch = x86_64
+	license = GPL3
+	license = custom:BSD
+	makedepends = git
+	makedepends = meson
+	makedepends = vim
+	depends = dbus
+	depends = polkit
+	depends = systemd
+	provides = rtkit
+	conflicts = rtkit
+	source = git+https://github.com/jmerdich/rtkit#branch=jmerdich/suspend-is-not-deadlock
+	sha256sums = SKIP
+
+pkgname = rtkit-suspend-fix-git
