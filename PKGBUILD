@@ -34,4 +34,5 @@ package() {
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 	install -Dm0644 -t "$pkgdir/usr/share/hyprshade/shaders/" shaders/*
+	install -Dm0644 -t "$pkgdir/usr/share/hyprshade/examples/" examples/*
 }
