@@ -1,0 +1,21 @@
+pkgbase = etherealengine-control-center-bin
+	pkgdesc = One stop solution for all your Metaverse needs. A desktop app for managing Ethereal Engine cluster.
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://etherealengine.org/
+	arch = x86_64
+	license = MIT
+	depends = electron23
+	depends = hicolor-icon-theme
+	depends = fuse2
+	optdepends = bash
+	provides = etherealengine-control-center
+	conflicts = etherealengine-control-center
+	source = etherealengine-control-center-0.3.3.AppImage::https://github.com/EtherealEngine/etherealengine-control-center/releases/download/v0.3.3/Ethereal-Engine-Control-Center-0.3.3.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/EtherealEngine/etherealengine-control-center/master/LICENSE
+	source = etherealengine-control-center.sh
+	sha256sums = f9080724bb2ce880e90a2f3f70895905d4789df257934fc15fb78798751bbf82
+	sha256sums = d346da664afe040f323eb3aecc74d5bb2a8b6d61a7ff53ccfaf1611add61a41d
+	sha256sums = 3efed03386679beb63ff27a262d7dd69e43a424adf62d8e705f09e9c47396399
+
+pkgname = etherealengine-control-center-bin
