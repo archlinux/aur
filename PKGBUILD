@@ -1,5 +1,6 @@
+# Maintainer:‌ <none>
 pkgname=dptf
-pkgver=8.8.10200
+pkgver=9.0.11363
 pkgrel=1
 pkgdesc='Intel (R) Dynamic Platform and Thermal Framework (Intel (R) DPTF)'
 arch=('x86_64')
@@ -8,16 +9,19 @@ license=('custom')
 depends=('readline')
 makedepends=('cmake')
 source=("dptf-$pkgver.tar.gz::https://github.com/intel/dptf/archive/$pkgver.tar.gz")
-sha256sums=('9fe1690484ba3e85d3e39db3fbfadd78f5a795540c35b1a710bae38cb0aa5e49')
+sha256sums=('eeac4e52230742e3d3e8d12d65013dce47032348e30ce21302fa08fe92c4fb78')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    export CXXFLAGS="${CXXFLAGS} -Wno-error=catch-value -Wno-error=stringop-truncation -ffile-prefix-map='$srcdir/$pkgname-$pkgver'="
-    export CFLAGS="${CFLAGS} -Wno-error=format-truncation -Wno-error=format-overflow -ffile-prefix-map='$srcdir/$pkgname-$pkgver'="
+    export CXXFLAGS="${CXXFLAGS} -Wno-error=catch-value -Wno-error=stringop-truncation -Wno-error=overloaded-virtual -ffile-prefix-map='$srcdir/$pkgname-$pkgver'="
+    export CFLAGS="${CFLAGS} -Wno-error=format-truncation -Wno-error=format-overflow -Wno-error=overloaded-virtual -ffile-prefix-map='$srcdir/$pkgname-$pkgver'="
 
     pushd DPTF/Linux/build
-    cmake ..
+    cmake \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      ..
     make
     popd
 
@@ -33,8 +37,9 @@ build() {
     make
     popd
 
-    cd ESIF/Packages/Installers/linux
-    sed -i 's/^description/Description/' dptf.service
+    pushd IPF/Linux
+    make
+    popd
 }
 
 package() {
@@ -45,5 +50,9 @@ package() {
     install -Dm644 ESIF/Packages/DSP/dsp.dv "$pkgdir/etc/dptf/dsp.dv"
     install -Dm755 ESIF/Products/ESIF_UF/Linux/esif_ufd "$pkgdir/usr/bin/esif_ufd"
     install -Dm644 ESIF/Packages/Installers/linux/dptf.service "$pkgdir/usr/lib/systemd/system/dptf.service"
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    install -Dvm644  README.txt   "${pkgdir}/usr/share/doc/${_pkgname}/README.txt"
+    install -Dvm644  security.md  "${pkgdir}/usr/share/doc/${_pkgname}/security.md"
+    install -Dvm644  LICENSE.txt  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+    ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt" "${pkgdir}/usr/share/doc/${_pkgname}/LICENSE.txt"
 }
