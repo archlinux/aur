@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clinfun
-_pkgver=1.1.2
+_pkgver=1.1.3
 pkgname=r-${_pkgname,,}
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Clinical Trial Design and Data Analysis Functions'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d7e69bfc801bab4fb1700ed828f567d08f899d34acdd7cb0c2ed6cdac2666085')
+sha256sums=('b58162e0eb64187f8218b8468c99dfb4316c9a5f0da96763189d45a8b1df5bfb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = r-clinfun
 	pkgdesc = Clinical Trial Design and Data Analysis Functions
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=clinfun
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = r-clinfun
 	depends = r
 	depends = r-mvtnorm
 	optdepends = r-survival
-	source = https://cran.r-project.org/src/contrib/clinfun_1.1.2.tar.gz
-	sha256sums = d7e69bfc801bab4fb1700ed828f567d08f899d34acdd7cb0c2ed6cdac2666085
+	source = https://cran.r-project.org/src/contrib/clinfun_1.1.3.tar.gz
+	sha256sums = b58162e0eb64187f8218b8468c99dfb4316c9a5f0da96763189d45a8b1df5bfb
 
 pkgname = r-clinfun
