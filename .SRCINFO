@@ -1,0 +1,23 @@
+pkgbase = fifc
+	pkgdesc = fifc brings fzf powers on top of fish completion engine and allows customizable completion rules
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/gazorby/fifc
+	install = fifc.install
+	arch = any
+	groups = fish-plugins
+	license = MIT
+	depends = fish
+	depends = fzf
+	optdepends = bat: Preview files
+	optdepends = chafa: Preview images
+	optdepends = hexyl: Preview binaries
+	optdepends = fd: Complete paths
+	optdepends = exa: Preview directories
+	optdepends = ripgrep: Search options in man pages
+	optdepends = procs: Complete processes and preview their tree
+	optdepends = broot: Explore directory trees
+	source = fifc-0.1.1.tar.gz::https://github.com/gazorby/fifc/archive/v0.1.1.tar.gz
+	sha256sums = 5c26d8ea9387e7582d97d444e6ea99f2b634844e82d83c4363866aac0cd9dc33
+
+pkgname = fifc
