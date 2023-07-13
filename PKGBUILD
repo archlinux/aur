@@ -3,7 +3,7 @@
 _pkgname="hyprland"
 pkgname="${_pkgname}-displaylink-git"
 pkgver="0.26.0"
-pkgrel=2
+pkgrel=3
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (DisplayLink patch)"
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
