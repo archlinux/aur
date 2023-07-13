@@ -2,11 +2,13 @@
 # Contributor: aksr <aksr at t-com dot me>
 pkgname=fontview-git
 pkgver=r219.23a4679
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple font viewer"
 arch=('i686' 'x86_64')
 url="https://github.com/khaledhosny/fontview"
 license=('GPLv2')
+provides=('fontview')
+conflicts=('fontview')
 depends=('gtk3' 'cairo' 'freetype2' 'pango' 'fribidi' 'fontconfig' 'glib2')
 makedepends=('git' 'meson')
 source=("git+https://github.com/khaledhosny/fontview.git")
