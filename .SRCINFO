@@ -1,6 +1,6 @@
 pkgbase = circuit-simulator
 	pkgdesc = Electronic circuit simulator written by Paul Falstad
-	pkgver = 2.7.6
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = http://www.falstad.com/circuit
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = circuit-simulator
 	source = http://www.falstad.com/circuit/offline/circuitjs1-linux64.tgz
 	source = http://www.falstad.com/circuit/favicon.ico
 	source = circuit.desktop
-	md5sums = a5d0cd558c1cdd9a54b357a56cbf01dc
+	md5sums = fe6c869a36fbab7331e2e6983dd33185
 	md5sums = 062a9b61267bbef5e406a41b20a7d6a7
 	md5sums = deaff8b1646089d6c2c737dcbc540255
 
