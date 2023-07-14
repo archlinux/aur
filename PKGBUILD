@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=quickwit
-pkgver=0.4.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='A fast and cost-efficient distributed search engine for large-scale, immutable data'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('git' 'rust' 'cmake' 'clang' 'yarn' 'protobuf')
 backup=('etc/quickwit.yaml')
 options=('!lto')
-_commit='2da370035f04b9e78b855969786fa311043f2063'
+_commit='9040401ee440c957943499db1bade1e36628fee9'
 source=("$pkgname::git+https://github.com/quickwit-oss/quickwit.git#commit=$_commit")
 md5sums=('SKIP')
 
