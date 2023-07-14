@@ -8,7 +8,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=http
-ExecStart=/usr/bin/java -Dcantaloupe.config=/usr/share/cantaloupe/cantaloupe.properties -Xms128m -Xmx1g -jar /usr/share/java/cantaloupe/cantaloupe.war
+ExecStart=/usr/bin/java -Dcantaloupe.config=/usr/share/cantaloupe/cantaloupe.properties -Xms128m -Xmx1g -jar /usr/share/java/cantaloupe/cantaloupe.jar
 
 [Install]
 WantedBy=multi-user.target

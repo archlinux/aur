@@ -1,6 +1,6 @@
 pkgbase = cantaloupe
 	pkgdesc = High-performance dynamic image server in Java
-	pkgver = 4.1.7
+	pkgver = 5.0.5
 	pkgrel = 1
 	url = https://cantaloupe-project.github.io/
 	install = cantaloupe.install
@@ -11,12 +11,11 @@ pkgbase = cantaloupe
 	conflicts = cantaloupe
 	source = cantaloupe.service
 	source = cantaloupe.properties
-	source = https://github.com/cantaloupe-project/cantaloupe/releases/download/v4.1.7/cantaloupe-4.1.7.zip
+	source = https://github.com/cantaloupe-project/cantaloupe/releases/download/v5.0.5/cantaloupe-5.0.5.zip
 	source = https://raw.githubusercontent.com/cantaloupe-project/cantaloupe/develop/LICENSE.txt
-	sha256sums = 075bb3598bbddd0fbbb6134f0afa1cfa0c7dc4201e77d364e2b893aea608bc22
+	sha256sums = 241a5ed6e3bbc69a62d4ccd5d59069e4cad44b665d91c378ad41338e8beaf311
 	sha256sums = c07c4de8512dd32bc6c2e5b810c428a3f5d4f10e39ca5de63d8a679aa4fe3f20
-	sha256sums = 2450463f97c0df8451aa5577b837cc6a9f303d86e356a9441a7c63c7c0b3bcf7
+	sha256sums = f8494ff940841e7b897b22d680e4bf87baf8fb1d6ced87117538dd5abaa1fc34
 	sha256sums = f8d04dd2e3ebe8950b6eca7c140f34cc9690e6224351c170042bb06eaa729dc3
 
 pkgname = cantaloupe
-
