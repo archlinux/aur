@@ -1,6 +1,6 @@
 # Maintainer: Hyacinthe Cartiaux
 pkgname=qconf-git
-pkgver=1.5_20170508
+pkgver=r3.28751dd
 pkgrel=1
 pkgdesc="Qt5 compatible qconf - Qt configuration tool"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ source=(git+https://github.com/psi-plus/qconf.git)
 md5sums=('SKIP')
 
 pkgver() {
-  echo  1.5_$(date +"%Y%m%d")
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
