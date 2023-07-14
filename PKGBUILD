@@ -1,7 +1,7 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=pssh-lilydjwg-git
-pkgver=2.3.4.r10.gd4909c9
+pkgver=2.3.5.r3.gd14d5d0
 pkgrel=1
 pkgdesc='Parallel SSH Tools'
 arch=('any')
@@ -22,12 +22,12 @@ pkgver() {
 
 build() {
   cd pssh
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd pssh
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
 }
