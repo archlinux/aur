@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=ncine-git
-pkgver=r388.0dc4a59
+pkgver=r449.d80f0e6
 pkgrel=1
 pkgdesc="A cross-platform 2D game engine"
 arch=('i686' 'x86_64')
@@ -12,8 +12,14 @@ makedepends=('git' 'cmake')
 conflicts=('ncine')
 provides=('ncine')
 options=(!strip)
-source=('git+https://github.com/nCine/nCine')
-md5sums=('SKIP')
+source=(
+  'git+https://github.com/nCine/nCine'
+  'git+https://github.com/nCine/nCine-data'
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd "$srcdir/nCine"
@@ -21,10 +27,6 @@ pkgver() {
     git describe --tags --long --exact-match 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  git clone https://github.com/nCine/nCine-data || git -C nCine-data pull
 }
 
 build() {

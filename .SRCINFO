@@ -18,6 +18,8 @@ pkgbase = ncine-git
 	conflicts = ncine
 	options = !strip
 	source = git+https://github.com/nCine/nCine
+	source = git+https://github.com/nCine/nCine-data
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = ncine-git
