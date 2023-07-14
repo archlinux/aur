@@ -2,7 +2,7 @@
 pkgname=commander-zod
 _version=2011_09_06
 pkgver=0.$_version
-pkgrel=2
+pkgrel=3
 pkgdesc="The Zod Engine - An Open Source Remake of the 1996 Game Z by Bitmap Brothers"
 depends=("sdl" "sdl_mixer" "sdl_ttf" "sdl_image" "libmariadbclient" "wxgtk2.8")
 arch=('i686' 'x86_64')
