@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="laradumps-bin"
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="A friendly app designed to boost your Laravel PHP coding and debugging experience."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('hicolor-icon-theme' 'electron24')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/LaraDumps-${pkgver}.AppImage"
     "LICENSE::https://raw.githubusercontent.com/laradumps/app/main/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('b5efb9bad3db248323938efbadf4e537be06797128bb5fe893e69ce8c8a06974'
+sha256sums=('6442df25c199a6c0d4b7d0fc0a36160453b0cf76e3ae91f8ecfe787aa5351bb7'
             '3150b483ca39a02e6651234966f2a19ba17486a87e8f26f9bdb7f4242e08af65'
             '5ce12e5f38e9c82a3d809fe5cc7e0e8c973a1b5967ce2424e48ab1d12aeae681')
 prepare() {
