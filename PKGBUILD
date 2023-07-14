@@ -16,7 +16,7 @@ source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgve
     "${pkgname%-bin}.sh")
 sha256sums=('ec35d80b9189ddfa095b108fc939490e0d2ef682036a82e7807679ae0b3a49d4'
             'cd44ddffb7c00b09fa102c9ce08213cda2af5fedb070e01d5975fd41665551c7'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+            '7f11445cff548c69054ca0b134e8d97b4d602d034159a09646a0e4158fe1d9f9')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
