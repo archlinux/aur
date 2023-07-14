@@ -9,7 +9,7 @@ DynamicUser=yes
 User=snac
 Group=snac
 StateDirectory=snac
-ExecStart=/usr/bin/snac httpd /var/lib/snac
+ExecStart=/usr/bin/snac httpd $STATE_DIRECTORY
 Restart=on-failure
 
 [Install]
