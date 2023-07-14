@@ -2,7 +2,7 @@
 
 pkgname=roadrunner
 epoch=1
-pkgver=2023.1.5
+pkgver=2023.2.0
 pkgrel=1
 pkgdesc="High-performance PHP application server, load-balancer and process manager written in Golang"
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(
 	"rr.minimal.sample.yaml"
 )
 sha256sums=(
-	'5c514138bf31ac97fbb5932dc264bb082890e9c249933da3f8d6f5b16b8ab98b'
+	'b3371aa3ef40efa4cd5302b863becb8d1a0056fe9c9879aa6d2f224fdfd50bee'
 	SKIP
 	SKIP
 )
