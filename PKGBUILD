@@ -1,6 +1,6 @@
 # Maintainer: Felipe Alfonso Gonzalez <f.alfonso@res-ear.ch>
 pkgname=term-notes
-pkgver=v.1.0.1
+pkgver=v.1.0.2
 pkgrel=1
 pkgdesc="Terminal-based note-taking application"
 arch=('x86_64')
@@ -24,4 +24,7 @@ package() {
 
 #sha256sums=('c9cabc195345db92f8297ecf35399622bfa7583362830dd459fd65c89917f86b')
 #sha256sums=('8e7004e9b92add9b507fd21d1b8220c67aaeeab80de42ac1221859d2e1622a76')
-sha256sums=('43db1b333d8902b15df4444d12e76c6d80fa9535cb377f7594d3cfa19c64e869')
+#v.1.0.1
+#sha256sums=('43db1b333d8902b15df4444d12e76c6d80fa9535cb377f7594d3cfa19c64e869')
+#v.1.0.2
+sha256sums=('e1ae65286b64c3466d5749524c79df1063ec9db35b265f0359d24cc76397d88c')
