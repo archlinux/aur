@@ -1,17 +1,17 @@
 # Contributer: SolarAquarion (Shlomo Choina  at gmail dot com)
 
 pkgname=rkward-git
-pkgver=v0.7.0b.r500.g394128e8
+pkgver=v0.7.3.r518.gab6c6bf5
 pkgrel=1
 pkgdesc="An Easy to use, transparent frontend to the R-language"
 arch=('i686' 'x86_64')
 url="https://rkward.kde.org/"
 license=('GPL')
-depends=('qt5-base' 'r' 'docbook-xml' 'kxmlgui' 'kcodecs' 'kdewebkit')
+depends=('qt5-base' 'r' 'docbook-xml' 'kxmlgui' 'kcodecs' 'qt5-webengine' 'ktexteditor' 'knotifications')
 makedepends=('cmake' 'docbook-xsl' 'git' 'extra-cmake-modules' 'kdoctools')
 provides=('rkward')
 conflicts=('rkward-git' 'rkward')
-source=(git+https://anongit.kde.org/rkward.git#branch=master)
+source=(git+https://invent.kde.org/education/rkward.git)
 
 pkgver(){
  cd $srcdir/rkward
@@ -21,15 +21,12 @@ build() {
 cd $srcdir/rkward
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_BUILD_TYPE:STRING="RelWithDebInfo" \
-  -DCMAKE_INSTALL_LIBDIR=lib \
-      -DR_LIBDIR=/usr/lib/R/library
+  -DCMAKE_INSTALL_LIBDIR=lib
 make
 }
 
 package(){
 	cd $srcdir/rkward
 	make DESTDIR="$pkgdir" install
-
-	 rm $pkgdir/usr/share/org.kde.syntax-highlighting/syntax/r.xml
 }
 md5sums=('SKIP')

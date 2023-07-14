@@ -1,6 +1,6 @@
 pkgbase = rkward-git
 	pkgdesc = An Easy to use, transparent frontend to the R-language
-	pkgver = v0.7.0b.r500.g394128e8
+	pkgver = v0.7.3.r518.gab6c6bf5
 	pkgrel = 1
 	url = https://rkward.kde.org/
 	arch = i686
@@ -16,12 +16,13 @@ pkgbase = rkward-git
 	depends = docbook-xml
 	depends = kxmlgui
 	depends = kcodecs
-	depends = kdewebkit
+	depends = qt5-webengine
+	depends = ktexteditor
+	depends = knotifications
 	provides = rkward
 	conflicts = rkward-git
 	conflicts = rkward
-	source = git+https://anongit.kde.org/rkward.git#branch=master
+	source = git+https://invent.kde.org/education/rkward.git
 	md5sums = SKIP
 
 pkgname = rkward-git
-
