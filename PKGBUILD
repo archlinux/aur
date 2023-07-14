@@ -4,7 +4,7 @@
 _pkgname="llm"
 _feature="cublas"
 pkgname="${_pkgname}-${_feature}-git"
-pkgver=r772.3becd72
+pkgver=r929.fc1c052
 pkgrel=1
 pkgdesc="An ecosystem of Rust libraries for working with large language models (with CUBlas)"
 arch=(any)
@@ -51,5 +51,5 @@ package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}/"
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
