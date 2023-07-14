@@ -1,8 +1,9 @@
 # Maintainer: yuhldr <yuhldr@qq.com>
 
 pkgname=('python-phononlammps')
-pkgver=0.8.1
-pkgrel=3
+_pkgname=('phonoLAMMPS')
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="LAMMPS interface for phonon calculations using phonopy"
 arch=('any')
 url="https://phonolammps.readthedocs.io/"
@@ -11,21 +12,14 @@ depends=("python-phonopy" "python-numpy" "python-matplotlib" "python-seekpath" "
 optdepends=()
 makedepends=('python-setuptools' 'python')
 source=(
-  https://github.com/abelcarreras/phonolammps/archive/refs/tags/$pkgver.tar.gz
-  plot_phonon_dispersion_bands-add-param.patch
+  https://files.pythonhosted.org/packages/b9/07/f3bd45557caf2a2e5a5eaf25062f196bd545fe34b98c921f807c564a1b22/${_pkgname}-${pkgver}.tar.gz
 )
 sha256sums=(
-  '5abdf6bf1caeb5e2a0ca872784a396ca7f4e37e5e64d11a13e12cda49fc74884'
-  'a10947d5cc04d1db6fa3d2b1d303edac0c35ff9c84d2a7d474a0b686bfbd76a0'
+  'a5dcd72e09fbb8ee29d61e1084fbfda619ccd35a2324ca3a69a5b0baba7cbe18'
   )
 
-prepare() {
-  cd "$srcdir"/phonolammps-$pkgver
-  patch -p1 phonolammps/__init__.py ../plot_phonon_dispersion_bands-add-param.patch
-}
-
 package() {
-  cd "$srcdir"/phonolammps-$pkgver
+  cd "$srcdir"/${_pkgname}-${pkgver}
 
   python setup.py install --root "$pkgdir" --optimize=1
   # uncomment for openmpi version

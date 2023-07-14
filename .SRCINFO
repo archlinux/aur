@@ -1,7 +1,7 @@
 pkgbase = python-phononlammps
 	pkgdesc = LAMMPS interface for phonon calculations using phonopy
-	pkgver = 0.8.1
-	pkgrel = 3
+	pkgver = 0.9.1
+	pkgrel = 1
 	url = https://phonolammps.readthedocs.io/
 	arch = any
 	license = MIT
@@ -12,9 +12,7 @@ pkgbase = python-phononlammps
 	depends = python-matplotlib
 	depends = python-seekpath
 	depends = python-dynaphopy
-	source = https://github.com/abelcarreras/phonolammps/archive/refs/tags/0.8.1.tar.gz
-	source = plot_phonon_dispersion_bands-add-param.patch
-	sha256sums = 5abdf6bf1caeb5e2a0ca872784a396ca7f4e37e5e64d11a13e12cda49fc74884
-	sha256sums = a10947d5cc04d1db6fa3d2b1d303edac0c35ff9c84d2a7d474a0b686bfbd76a0
+	source = https://files.pythonhosted.org/packages/b9/07/f3bd45557caf2a2e5a5eaf25062f196bd545fe34b98c921f807c564a1b22/phonoLAMMPS-0.9.1.tar.gz
+	sha256sums = a5dcd72e09fbb8ee29d61e1084fbfda619ccd35a2324ca3a69a5b0baba7cbe18
 
 pkgname = python-phononlammps
