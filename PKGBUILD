@@ -1,6 +1,6 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=solv
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 makedepends=('cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
