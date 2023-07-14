@@ -3,8 +3,8 @@
 _pkgname=harmonyvpktool
 pkgname=$_pkgname-bin
 pkgdesc="An electron-based app for unpacking Respawn VPK files (binary release)"
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/harmonytf/HarmonyVPKTool"
 license=('GPL3')
@@ -18,7 +18,7 @@ _url2=https://raw.githubusercontent.com/harmonytf/HarmonyVPKTool/$pkgver
 source=("$url/releases/download/$pkgver/$_appimage"
         "$_url2/README.md"
         "$_url2/LICENSE")
-sha256sums=('32acf527f2ad37aae40238fef67ebe9feb16a92d8ddc9e87efd68e9ab1b21992'
+sha256sums=('0ed03ed52d49ffeb5c1235f7cdfa942568286e6c0267aa5642b9bcd0a659cef9'
             'SKIP'
             'SKIP')
 
@@ -47,10 +47,8 @@ prepare() {
   # Extract the AppImage
   chmod +x "./$_appimage"
   "./$_appimage" --appimage-extract
-  chmod 755 squashfs-root
   # Edit the shortcut
   mv squashfs-root/harmony_vpk_tool.desktop $_desktop
-  chmod 644 $_desktop
   sed -i '3s/.*/Exec=harmonyvpktool %U/' $_desktop
   sed -i '6s/.*/Icon=harmonyvpktool/' $_desktop
 }
@@ -65,7 +63,7 @@ package() {
   cd squashfs-root
   install -Dm644 usr/share/icons/hicolor/0x0/apps/harmony_vpk_tool.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
   ln -s /opt/HarmonyVPKTool/harmony_vpk_tool "$pkgdir/usr/bin/$_pkgname"
-  rm -dr usr & rm harmony_vpk_tool.png .DirIcon
+  rm -dr usr & rm AppRun harmony_vpk_tool.png .DirIcon
   cp -r ../squashfs-root "$pkgdir/opt/HarmonyVPKTool"
   # Fix permissions
   find "$pkgdir" | while read -r target; do

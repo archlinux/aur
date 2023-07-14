@@ -1,7 +1,7 @@
 pkgbase = harmonyvpktool-bin
 	pkgdesc = An electron-based app for unpacking Respawn VPK files (binary release)
-	pkgver = 1.2.0
-	pkgrel = 3
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/harmonytf/HarmonyVPKTool
 	arch = x86_64
 	license = GPL3
@@ -12,10 +12,10 @@ pkgbase = harmonyvpktool-bin
 	depends = libxtst
 	provides = harmonyvpktool
 	conflicts = harmonyvpktool
-	source = https://github.com/harmonytf/HarmonyVPKTool/releases/download/1.2.0/Harmony.VPK.Tool-1.2.0.AppImage
-	source = https://raw.githubusercontent.com/harmonytf/HarmonyVPKTool/1.2.0/README.md
-	source = https://raw.githubusercontent.com/harmonytf/HarmonyVPKTool/1.2.0/LICENSE
-	sha256sums = 32acf527f2ad37aae40238fef67ebe9feb16a92d8ddc9e87efd68e9ab1b21992
+	source = https://github.com/harmonytf/HarmonyVPKTool/releases/download/1.2.1/Harmony.VPK.Tool-1.2.1.AppImage
+	source = https://raw.githubusercontent.com/harmonytf/HarmonyVPKTool/1.2.1/README.md
+	source = https://raw.githubusercontent.com/harmonytf/HarmonyVPKTool/1.2.1/LICENSE
+	sha256sums = 0ed03ed52d49ffeb5c1235f7cdfa942568286e6c0267aa5642b9bcd0a659cef9
 	sha256sums = SKIP
 	sha256sums = SKIP
 
