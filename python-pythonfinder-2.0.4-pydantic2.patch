@@ -1,0 +1,59 @@
+diff -ruN a/pyproject.toml b/pyproject.toml
+--- a/pyproject.toml	2023-05-31 16:04:52.000000000 +0200
++++ b/pyproject.toml	2023-07-14 20:53:49.247162953 +0200
+@@ -43,7 +43,7 @@
+ 
+ [tool.ruff.flake8-type-checking]
+ runtime-evaluated-base-classes = [
+-  "pydantic.BaseModel",
++  "pydantic.v1.BaseModel",
+   "pythonfinder.models.common.FinderBaseModel",
+   "pythonfinder.models.mixins.PathEntry",
+ ]
+diff -ruN a/src/pythonfinder/models/common.py b/src/pythonfinder/models/common.py
+--- a/src/pythonfinder/models/common.py	2023-05-31 16:04:52.000000000 +0200
++++ b/src/pythonfinder/models/common.py	2023-07-14 20:52:21.510014802 +0200
+@@ -1,6 +1,6 @@
+ from __future__ import annotations
+ 
+-from pydantic import BaseModel, Extra
++from pydantic.v1 import BaseModel, Extra
+ 
+ 
+ class FinderBaseModel(BaseModel):
+diff -ruN a/src/pythonfinder/models/mixins.py b/src/pythonfinder/models/mixins.py
+--- a/src/pythonfinder/models/mixins.py	2023-05-31 16:04:52.000000000 +0200
++++ b/src/pythonfinder/models/mixins.py	2023-07-14 20:53:14.520306501 +0200
+@@ -12,7 +12,7 @@
+     Optional,
+ )
+ 
+-from pydantic import BaseModel, Field, validator
++from pydantic.v1 import BaseModel, Field, validator
+ 
+ from ..exceptions import InvalidPythonVersion
+ from ..utils import (
+diff -ruN a/src/pythonfinder/models/path.py b/src/pythonfinder/models/path.py
+--- a/src/pythonfinder/models/path.py	2023-05-31 16:04:52.000000000 +0200
++++ b/src/pythonfinder/models/path.py	2023-07-14 20:52:46.633486695 +0200
+@@ -20,7 +20,7 @@
+ )
+ 
+ from cached_property import cached_property
+-from pydantic import Field, root_validator
++from pydantic.v1 import Field, root_validator
+ 
+ from ..environment import (
+     ASDF_DATA_DIR,
+diff -ruN a/src/pythonfinder/models/python.py b/src/pythonfinder/models/python.py
+--- a/src/pythonfinder/models/python.py	2023-05-31 16:04:52.000000000 +0200
++++ b/src/pythonfinder/models/python.py	2023-07-14 20:53:01.896903930 +0200
+@@ -19,7 +19,7 @@
+ )
+ 
+ from packaging.version import Version
+-from pydantic import Field, validator
++from pydantic.v1 import Field, validator
+ 
+ from ..environment import ASDF_DATA_DIR, PYENV_ROOT, SYSTEM_ARCH
+ from ..exceptions import InvalidPythonVersion
