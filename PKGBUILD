@@ -1,4 +1,5 @@
-# Maintainer:  Moritz Lüdecke <ritze@skweez.net>
+# Maintainer: koonix <me@koonix.org>
+# Contributor: Moritz Lüdecke <ritze@skweez.net>
 # Contributor: Maxim 'maximbaz' Baz
 # Contributor: Håvard Pettersson <mail@haavard.me>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -9,15 +10,16 @@
 
 pkgname=pinentry-dmenu
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A pinentry program with the charm of dmenu"
 url="https://github.com/ritze/pinentry-dmenu"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('sh' 'libconfig'  'libxinerama' 'libxft')
-provides=('pinentry')
-source=(https://github.com/ritze/pinentry-dmenu/archive/$pkgver.zip)
-sha256sums=('9198f336818a32a0ddfe99ddf1ce907c4e1572fb6d3b7de9252fbc08c408ad05')
+provides=('pinentry' 'dmenu-pinentry')
+conflicts=('pinentry-dmenu-inco')
+source=("$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('7b29b79e7c3b5c00d1f3320aa522e88064b1e366542bb94735905cabcf3d4c62')
 
 prepare() {
 	cd $pkgname-$pkgver
