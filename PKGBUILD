@@ -1,4 +1,5 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=hyperkeys-bin
 pkgver=1.3.0
 pkgrel=1
