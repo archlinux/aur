@@ -1,4 +1,3 @@
-
 #!/bin/bash
 _ELECTRON_VER=24
 _ASAR="/opt/helioslauncher/app.asar"
