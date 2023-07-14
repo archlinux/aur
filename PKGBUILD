@@ -45,12 +45,10 @@ source=(https://archive.mozilla.org/pub/firefox/releases/"$pkgver"/source/firefo
   "git+https://gitlab.com/dr460nf1r3/settings.git"
   "librewolf-source::git+https://gitlab.com/librewolf-community/browser/source.git#tag=115.0.2-2"
   "librewolf-settings::git+https://gitlab.com/librewolf-community/settings.git"
-  "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git"
-  "opensuse-source::git+https://github.com/openSUSE/firefox-maintenance.git")
+  "cachyos-source::git+https://github.com/CachyOS/CachyOS-Browser-Common.git")
 sha256sums=('6b2844124c13b4bd9d97ac7f5840f3e957b7631659591f3bea1ac9a89bee1654'
             'SKIP'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -88,9 +86,6 @@ prepare() {
 
   local _cachyos_patches_dir
   _cachyos_patches_dir="${srcdir}/cachyos-source/patches"
-
-  local _opensuse_patches_dir
-  _opensuse_patches_dir="${srcdir}/opensuse-source/firefox"
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -183,8 +178,8 @@ END
   patch -Np1 -i "${_librewolf_patches_dir}"/remove_addons.patch
 
   # OpenSUSE KDE patches
-  patch -Np1 -i "${_opensuse_patches_dir}"/firefox-kde.patch
-  patch -Np1 -i "${_opensuse_patches_dir}"/mozilla-kde.patch
+  patch -Np1 -i "${_patches_dir}"/kde-upstream/firefox-kde.patch
+  patch -Np1 -i "${_patches_dir}"/kde-upstream/mozilla-kde.patch
 
   # Disabling Pocket
   patch -Np1 -i "${_librewolf_patches_dir}"/sed-patches/disable-pocket.patch
