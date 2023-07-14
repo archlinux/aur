@@ -1,7 +1,7 @@
 # Maintainer: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenPGP crypto tool and gui frontend for modern GnuPG"
 arch=('x86_64')
 url="https://github.com/saturneric/GpgFrontend"
