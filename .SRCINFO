@@ -2,7 +2,7 @@ pkgbase = commander-zod
 	pkgdesc = The Zod Engine - An Open Source Remake of the 1996 Game Z by Bitmap Brothers
 	pkgver = 0.2011_09_06
 	pkgrel = 2
-	url = http://zod.sourceforge.net/
+	url = https://zod.sourceforge.net/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -22,4 +22,3 @@ pkgbase = commander-zod
 	md5sums = e43e25604bf35e33f427ff3678f8c2ac
 
 pkgname = commander-zod
-
