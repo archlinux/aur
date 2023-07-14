@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=hexhoot-bin
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An Opensource Peer-to-peer communication platform with Zero-Knowledge-Proof based authentication."
 arch=(x86_64)
 url="http://blog.hexhoot.com/"
