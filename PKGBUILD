@@ -33,7 +33,7 @@ prepare() {
 
   find ./opt -type d -exec chmod 755 '{}' \;
   find ./usr -type d -exec chmod 755 '{}' \;
-  chmod 755 /opt/rplus-desktop/
+  chmod 755 ./opt/rplus-desktop/
 }
 
 package() {
