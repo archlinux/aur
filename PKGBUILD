@@ -12,8 +12,14 @@ makedepends=('git' 'cmake')
 conflicts=('ncinvaders')
 provides=('ncinvaders')
 options=(!strip)
-source=('git+https://github.com/nCine/ncInvaders')
-md5sums=('SKIP')
+source=(
+  'git+https://github.com/nCine/ncInvaders'
+  'git+https://github.com/nCine/ncInvaders-data'
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd "$srcdir/ncInvaders"
@@ -21,10 +27,6 @@ pkgver() {
     git describe --tags --long --exact-match 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  git clone https://github.com/nCine/ncInvaders-data || git -C ncInvaders-data pull
 }
 
 build() {

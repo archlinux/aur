@@ -13,6 +13,8 @@ pkgbase = ncinvaders-git
 	conflicts = ncinvaders
 	options = !strip
 	source = git+https://github.com/nCine/ncInvaders
+	source = git+https://github.com/nCine/ncInvaders-data
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = ncinvaders-git
