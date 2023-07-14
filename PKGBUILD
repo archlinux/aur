@@ -8,7 +8,7 @@ pkgver=0.2.4
 pkgrel=1
 pkgdesc="Add source, edit, history, annotate links to GitHub or BitBucket"
 arch=('any')
-url="https://github.com/sphinx-contrib/jquery"
+url="https://github.com/westurner/sphinxcontrib-srclinks"
 license=('BSD')
 makedepends=('python-setuptools')
 #            'python-wheel'
