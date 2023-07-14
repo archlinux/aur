@@ -1,4 +1,5 @@
-# Maintainer: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
+# Maintainer: Daniele Basso <d dot bass05 at proton dot me>
+# Contributor: dr460nf1r3 <dr460nf1r3 at garudalinux dot org>
 
 pkgname=firefox-extension-localcdn
 pkgver=2.6.52
