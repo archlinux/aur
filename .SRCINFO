@@ -9,6 +9,7 @@ pkgbase = gst-plugin-openh264
 	makedepends = git
 	depends = gst-plugins-base-libs
 	depends = openh264
+	conflicts = gst-plugins-openh264
 	replaces = gst-plugins-openh264
 	source = https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.22.4.tar.xz
 	sha256sums = eaaf53224565eaabd505ca39c6d5769719b45795cf532ce1ceb60e1b2ebe99ac
