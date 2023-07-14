@@ -1,0 +1,13 @@
+pkgbase = ofxstatement-iso20022-git
+	pkgdesc = Plugin to read ISO-20022 formatted statements.
+	pkgver = 0.6.0.r13.gc17d0f5
+	pkgrel = 1
+	url = https://github.com/kedder/ofxstatement-iso20022
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = ofxstatement
+	source = git+https://github.com/kedder/ofxstatement-iso20022.git
+	sha256sums = SKIP
+
+pkgname = ofxstatement-iso20022-git

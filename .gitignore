@@ -1,0 +1,4 @@
+*.zst
+/ofxstatement-iso20022/
+/pkg/
+/src/
