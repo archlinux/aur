@@ -2,7 +2,7 @@
 _pkgname="llm"
 pkgname="${_pkgname}-bin"
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙'
 arch=('x86_64')
 url="https://github.com/rustformers/llm"
@@ -22,5 +22,5 @@ build () {
 package() {
     cd "${srcdir}/${_tarname}"
     install -Dm755 -t "${pkgdir}/usr/bin" "${_pkgname}"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" LICENSE
 }
