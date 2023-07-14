@@ -1,0 +1,22 @@
+pkgbase = modem-manager-gui-hg
+	pkgdesc = A GUI for Modem-Manager. Build from source with patches.
+	pkgver = r85+.3f6d6c4ee74c+
+	pkgrel = 1
+	url = https://linuxonly.ru/page/modem-manager-gui/
+	arch = x86_64
+	license = GPL3
+	makedepends = mercurial
+	depends = gtk3
+	depends = glib2
+	depends = gdbm
+	depends = po4a
+	depends = itstool
+	depends = gtkspell3
+	provides = modem-manager-gui
+	conflicts = modem-manager-gui
+	source = modem-manager-gui::hg+http://hg.code.sf.net/p/modem-manager-gui/code
+	source = fix_segfault_on_DNS_entries.patch
+	sha256sums = SKIP
+	sha256sums = 2a21a7ab4ae78e4296a28e46a337eee042a8d7855a8af5d116ebcfcd989e9892
+
+pkgname = modem-manager-gui-hg
