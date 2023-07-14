@@ -2,7 +2,7 @@
 pkgname=commander-zod
 _version=2011_09_06
 pkgver=0.$_version
-pkgrel=3
+pkgrel=4
 pkgdesc="The Zod Engine - An Open Source Remake of the 1996 Game Z by Bitmap Brothers"
 depends=("sdl" "sdl_mixer" "sdl_ttf" "sdl_image" "libmariadbclient" "wxgtk2.8")
 arch=('i686' 'x86_64')
@@ -20,7 +20,6 @@ md5sums=('ab366b279e43add48d66e3d8224cfafa'
 prepare(){
   cd $srcdir
   sed -i 's/#include <dirent.h>/#include <dirent.h>\n#include <ctime>/' zod_engine/zod_src/common.cpp
-  sed -i 's!check\.replace(i,1,1,'\''_'\'');!check\.replace(i,1,1, (wxUniChar)'\''_'\'');!' 'zod_engine/zod_launcher_src/zod_launcherFrm.cpp'
   find $srcdir/zod_engine/assets/ -name Thumbs.db -delete
   rm $srcdir/zod_engine/assets/{splash.png,splash.xcf}
 }
