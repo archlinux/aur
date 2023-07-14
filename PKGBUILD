@@ -3,25 +3,21 @@
 # Co-maintainer: Gabriel Brown <gabriel.h.brown@gmail.com>
 
 pkgname=chapel
-pkgver=1.30.0
-pkgrel=3
+pkgver=1.31.0
+pkgrel=1
 pkgdesc="Programming language designed for productive parallel computing at scale"
 url="https://chapel-lang.org/"
 arch=('x86_64' 'arm')
 license=('Apache')
-depends=('python' 'perl' 'llvm14' 'llvm14-libs' 'clang14') # depend on 14s temporarily
+depends=('python' 'perl' 'llvm' 'clang')
 makedepends=('git' 'cmake' 'base-devel')
 source=("https://github.com/chapel-lang/chapel/releases/download/${pkgver}/chapel-${pkgver}.tar.gz")
-sha256sums=('8d933f4b6e497d9699a14deedd222e18c77c523483957d66201731d0d94285d2')
+sha256sums=('4b861c9a354f6fcf66081256f7ec703d6dd2cd68ea363b400d10ac00bf308679')
+
             
 
 build() {
         cd "${srcdir}/${pkgname}-${pkgver}"
-        export CHPL_TARGET_CPU="native"
-        export CHPL_HOST_COMPILER="clang"
-        export CHPL_HOST_CC="/usr/lib/llvm14/bin/clang"
-        export CHPL_HOST_CXX="/usr/lib/llvm14/bin/clang++"
-
         ./configure --prefix=/usr
         make
 }
