@@ -1,0 +1,24 @@
+pkgbase = python-sphinx-autosummary-accessors
+	pkgdesc = Sphinx autosummary extension to properly format pandas or xarray accessors
+	pkgver = 2023.4.0
+	pkgrel = 1
+	url = https://sphinx-autosummary-accessors.readthedocs.io
+	arch = any
+	license = MIT
+	checkdepends = python-nose
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-autosummary-accessors/sphinx-autosummary-accessors-2023.4.0.tar.gz
+	source = Makefile
+	md5sums = 46508e80786803f53006d0989ccd16cb
+	md5sums = a6aa4bc42b138d75f938065a0994c3e1
+
+pkgname = python-sphinx-autosummary-accessors
+	depends = python-sphinx>=3.5
+
+pkgname = python-sphinx-autosummary-accessors-doc
+	pkgdesc = Documentation for sphinx-autosummary-accessors
