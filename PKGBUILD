@@ -5,7 +5,7 @@ pkgver=0.5.0.r0.g05d035f
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
-url="https://github.com/loqusion/hyprshade"
+url="https://github.com/loqusion/$_pkgname"
 license=('MIT')
 _py_deps=(
 	more-itertools
