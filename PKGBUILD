@@ -3,7 +3,7 @@
 pkgname='catt-qt'
 commonname='cattqt'
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A control GUI for Chromecasts written using python3, catt api, pychromecast and PyQt5.'
 arch=('any')
 url=https://github.com/soreau/catt-qt
