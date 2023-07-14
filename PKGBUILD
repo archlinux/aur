@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=xq
-pkgver=1.1.3
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Command-line XML and HTML beautifier and content extractor'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 conflicts=('yq')
 options=('!lto')
-_commit='d8708ffb0f5bf0ad3da356733284ade85f758266'
+_commit='8ed07bdd6390e64f126abb832bcab0da317f7f34'
 source=(
   "$pkgname::git+$url#commit=$_commit"
   'manpage-template.patch'

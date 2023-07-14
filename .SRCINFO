@@ -1,6 +1,6 @@
 pkgbase = xq
 	pkgdesc = Command-line XML and HTML beautifier and content extractor
-	pkgver = 1.1.3
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/sibprogrammer/xq
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = xq
 	depends = glibc
 	conflicts = yq
 	options = !lto
-	source = xq::git+https://github.com/sibprogrammer/xq#commit=d8708ffb0f5bf0ad3da356733284ade85f758266
+	source = xq::git+https://github.com/sibprogrammer/xq#commit=8ed07bdd6390e64f126abb832bcab0da317f7f34
 	source = manpage-template.patch
 	b2sums = SKIP
 	b2sums = f2448e22798e018d6962016dc800ff96ae9c23b776742348a7036d613efa8c37e5c8c7a539804f2daebc4c152495cc1cbbcb2635fcf223e958596333cab1b843
