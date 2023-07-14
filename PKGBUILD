@@ -1,7 +1,7 @@
 # Maintainer: Marco Steiger <marco (at) steiger (dot) online>
 pkgname=routeros-upgrader-bin
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='Mass-Upgrade Mikrotik RouterOS devices synchronized'
 arch=('x86_64')
 url="https://github.com/Marco98/routeros-upgrader"
