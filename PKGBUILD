@@ -38,13 +38,13 @@ pkgver() {
 
 build() {
 	cd $_pkgname
-	python -m build --wheel --no-isolation
+	/usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
 	cd $_pkgname
 	export PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+	/usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname/" LICENSE
 	install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/shaders/" shaders/*
 	install -Dm0644 -t "$pkgdir/usr/share/$_pkgname/examples/" examples/*
