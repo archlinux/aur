@@ -25,13 +25,13 @@ build() {
 	cd "$pkgname-$pkgver"
 	# NOTE: temporary workaround for https://github.com/python-poetry/poetry/issues/5547
 	git init -q 2>&1 >/dev/null
-	python -m build --wheel --no-isolation
+	/usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$pkgname-$pkgver"
 	export PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+	/usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 	install -Dm0644 -t "$pkgdir/usr/share/$pkgname/shaders/" shaders/*
 	install -Dm0644 -t "$pkgdir/usr/share/$pkgname/examples/" examples/*
