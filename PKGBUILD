@@ -3,7 +3,7 @@
 
 pkgname=sulis-bin
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Turn based tactical RPG with several campaigns, written in Rust"
 arch=('x86_64')
 url="https://www.sulisgame.com"
@@ -13,7 +13,7 @@ depends=('alsa-lib')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Grokmoo/sulis/releases/download/${pkgver}/sulis-${pkgver}-linux64.zip"
 "sulis.desktop")
 sha256sums=('79fad49f64fc50d61230b1333f1f592f021c97303ee6a239828b06adb8d92d67'
-            'c8a9dc17736d30d5780611dda44346285ece0fb415996b75b92cc8491de6d90c')
+            'a50a7a77e277b556310cb0de3847cda3249d661f3487590bb413d26a55288be6')
 
 prepare() {
   cd "${srcdir}/sulis"
