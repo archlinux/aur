@@ -2,7 +2,7 @@
 
 pkgname=linuxcnc-git
 pkgver=2.10.0.pre0.r1679.g39a082c79e
-pkgrel=1
+pkgrel=2
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -65,4 +65,5 @@ package() {
   install -Dm755 "${srcdir}/${pkgname}/src/${pkgname}.sh" \
    "${pkgdir}/etc/profile.d/${pkgname}.sh"
   sed -i "s|${srcdir}||" "${pkgdir}/usr/share/linuxcnc/Makefile.modinc"
+  install -Dm644 ${pkgdir}/usr/share/linuxcnc/linuxcncicon.png -t ${pkgdir}/usr/share/pixmaps
 }
