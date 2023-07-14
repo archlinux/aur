@@ -1,6 +1,6 @@
 # Maintainer: Dashon Wells <me@me.me>
 
-pkgname='cattqt'
+pkgname='catt-qt'
 pkgver=4.0
 pkgrel=1
 pkgdesc='A control GUI for Chromecasts written using python3, catt api, pychromecast and PyQt5.'
