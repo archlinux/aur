@@ -20,6 +20,7 @@ pkgbase = ayatana-webmail
 	depends = python-psutil
 	depends = python-secretstorage
 	depends = python-urllib3
+	depends = gsettings-desktop-schemas
 	conflicts = unity-mail
 	replaces = unity-mail
 	source = ayatana-webmail-22.12.15.tar.gz::https://github.com/AyatanaIndicators/ayatana-webmail/archive/22.12.15.tar.gz
