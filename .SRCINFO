@@ -1,13 +1,13 @@
 pkgbase = usbpicprog
 	pkgdesc = Software and firmware for the open hardware USB PIC Programmer
 	pkgver = 0.9.9_1.0.0_beta
-	pkgrel = 1
+	pkgrel = 2
+	epoch = 1
 	url = http://usbpicprog.org/
-	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = libtool
-	depends = wxgtk2
+	depends = wxwidgets-gtk2
 	depends = libusb
 	depends = intltool
 	conflicts = usbpicprog<=140617
@@ -15,4 +15,3 @@ pkgbase = usbpicprog
 	md5sums = b0becbf499ca1df9102ca8b946631659
 
 pkgname = usbpicprog
-

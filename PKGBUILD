@@ -6,13 +6,13 @@
 
 pkgname=usbpicprog
 pkgver=0.9.9_1.0.0_beta
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Software and firmware for the open hardware USB PIC Programmer"
 arch=('x86_64')
 url="http://usbpicprog.org/"
 license=('GPL2')
-depends=('libtool' 'wxgtk2' 'libusb' 'intltool')
+depends=('libtool' 'wxwidgets-gtk2' 'libusb' 'intltool')
 conflicts=('usbpicprog<=140617')
 source=(https://sourceforge.net/projects/usbpicprog/files/usbpicprog-software/usbpicprog-0.9.9-1.0.0-beta-software/usbpicprog-0.9.9-1.0.0-beta.tar.gz/download)
 md5sums=('b0becbf499ca1df9102ca8b946631659') #generate with 'makepkg -g'
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-${pkgver//_/-}"
-  ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config
+  ./configure --prefix=/usr --with-wx-config=/usr/bin/wx-config-gtk2
   make
 }
 
