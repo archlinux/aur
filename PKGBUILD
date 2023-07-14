@@ -16,7 +16,7 @@ depends=(glib2)
 makedepends=(cmake)
 license=(bsd)
 source=("$pkgname-$pkgver::$url/archive/$_upstreamver.tar.gz")
-sha256sums=('35d6aca3075cf81c393b662990bf7a859afaab1a5be984ee32873f4e7d665fc7')
+sha256sums=('d3ca6c943c6733a20a1135d7f4f6f29f0ddfe5502decb36958171ebdfdb96b8a')
 
 build() {
 	cd "$pkgname-$pkgver" || exit 1
