@@ -1,19 +1,23 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=bicep
-pkgver=0.18.4
+pkgver=0.19.5
 _pkgnum=${pkgver:0:1}
 pkgrel=1
 pkgdesc='A declarative language for describing and deploying Azure resources'
 arch=(x86_64)
 url='https://github.com/Azure/bicep'
 license=(MIT)
+depends=(
+  dotnet-runtime
+  gcc-libs
+  glibc
+)
 makedepends=(dotnet-sdk)
 checkdepends=(git)
-depends=(dotnet-runtime)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4b39731ed6e63211c7a7dd578ebc9888ef02498cb52f2ed6d8add41013ceabe4')
+sha256sums=('9c5c7fdfad4950d209f054ff46ec0e515def125a3a715decc8d336292e84b3d3')
 
 _archive="$pkgname-$pkgver"
 
@@ -41,7 +45,7 @@ build() {
 check() {
   cd "$_archive"
 
-  git init
+  git init --quiet
   dotnet test ./src/Bicep.Cli.IntegrationTests
   dotnet test ./src/Bicep.Cli.UnitTests
 }
