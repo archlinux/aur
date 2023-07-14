@@ -10,16 +10,18 @@ url="http://linuxcnc.org"
 depends=('bc'
          'bwidget'
          'libxaw'
-         'python2-pillow'
-         'python2-yapps2'
+         'python-pillow'
+         'python-yapps2'
          'tkimg'
-         'python2-gtkglext'
+#          'python-gtkglext'
          'tclx'
          'xorg-server'
          'boost'
          'procps-ng'
          'psmisc')
-makedepends=('intltool' 'git')
+makedepends=('intltool'
+            'git'
+            'python3')
 provides=('linuxcnc')
 conflicts=('linuxcnc' 'linuxcnc-bin')
 source=("${pkgname}::git+https://github.com/LinuxCNC/linuxcnc"
@@ -36,13 +38,17 @@ prepare() {
   cd "${srcdir}/${pkgname}/src"
   echo "export TCLLIBPATH=$TCLLIBPATH:/usr/lib/tcltk/linuxcnc" > ${pkgname}.sh
   find . -iname fixpaths.py -o -iname checkglade -o \
-   -iname update_ini | xargs perl -p -i -e "s/python/python2/"
+   -iname update_ini | xargs perl -p -i -e "s/python/python3/"
   patch -Np2 -i "${srcdir}/libtirpc.patch"
+  sed -i 's|/usr/local/etc/emc2/configs|/etc/emc2/configs|g' Makefile.inc.in
+  sed -i 's|$(DESTDIR)$(sysconfdir)/linuxcnc|$(DESTDIR)/etc/linuxcnc|g' Makefile.orig
   ./autogen.sh
   ./configure --with-realtime=uspace \
    --without-libmodbus --prefix=/usr \
-   --with-python=/usr/bin/python2.7 \
+   --with-python=/usr/bin/python3 \
    --enable-non-distributable=yes
+
+  sed -i 's|$(DESTDIR)$(sysconfdir)/linuxcnc|$(DESTDIR)/etc/linuxcnc|g' Makefile
 }
 
 build () {
