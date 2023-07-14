@@ -2,7 +2,7 @@
 # Maintainer: Scott Shawcroft <scott at tannewt dot org>
 
 pkgname=oss-cad-suite-build-bin
-_pkgver=2023-07-13
+_pkgver=2023-07-14
 pkgver=${_pkgver//-/}
 pkgrel=1
 pkgdesc="Nightly builds of open-source FPGA tools"
@@ -16,9 +16,9 @@ source_x86_64=($url/releases/download/$_pkgver/oss-cad-suite-linux-x64-$pkgver.t
 source_arm=($url/releases/download/$_pkgver/oss-cad-suite-linux-arm-$pkgver.tgz)
 source_aarch64=($url/releases/download/$_pkgver/oss-cad-suite-linux-arm64-$pkgver.tgz)
 sha256sums=('478fef6781eeda227e7b4b0a560ff9ab5b7a55ed5ba904eca84d69a3a473181e')
-sha256sums_x86_64=('4eec36e4c01a750990ea2889b2857f1afefbb7eec6eed36730d43e758f1b81e4')
-sha256sums_arm=('0c03dca07f20025981ba2510579ee987b6a4f4cd99223f97920c8f64efdd72fc')
-sha256sums_aarch64=('5de951ba1ff625c7a46a83524d3f5dc0b33f8b97cd0a4dbca023ce701d422dd5')
+sha256sums_x86_64=('b6275b0b234a3c4074ee4bd75941c73fe43adf3c24ffead2c888806c6125cecd')
+sha256sums_arm=('c9c7d32a88cb67e7800ab4b0e13f655fb46a3ca51e971fbd3c72b916b226d6ee')
+sha256sums_aarch64=('6e4f11d703f8a9aa7dbd615b6e0ff074f18c4006440df35bd946216fbb180702')
 install='path.install'
 
 replaces=('fpga-toolchain-bin')
