@@ -1,5 +1,5 @@
 pkgbase = pantum-driver
-	pkgdesc = Linux driver for all M series and most P seriers Pantum printers V1.1.106
+	pkgdesc = Linux driver for Pantum printers V1.1.106 (check PKGBUILD for compatible printer models)
 	pkgver = 1.1.106
 	pkgrel = 1
 	arch = x86_64
