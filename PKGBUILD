@@ -1,4 +1,6 @@
 # Maintainer: koraynilay <koray.fra@gmail.com>
+# shellcheck disable=all
+
 _gitfolder="picom"
 pkgname=picom-jonaburg-git
 pkgver=0.1
