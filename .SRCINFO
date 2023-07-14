@@ -1,0 +1,19 @@
+pkgbase = kanbanflow-app-bin
+	pkgdesc = A standalone application for Kanbanflow.com
+	pkgver = 1.0.0beta.4
+	pkgrel = 1
+	url = https://github.com/metawave/kanbanflow-app
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = electron13
+	provides = kanbanflow-app
+	conflicts = kanbanflow-app
+	source = kanbanflow-app-1.0.0beta.4.AppImage::https://github.com/metawave/kanbanflow-app/releases/download/v1.0.0-beta.4/KanbanFlow-App-1.0.0-beta.4.AppImage
+	source = LICENSE.md::https://raw.githubusercontent.com/metawave/kanbanflow-app/master/LICENSE.md
+	source = kanbanflow-app.sh
+	sha256sums = a8146d290fdf4d9e4e62b4fa57fab35bf6db21aa43876bc685a0bdca4bd4ebba
+	sha256sums = 4dcd2e7fe6343b8c84f2996f9713c67ee8e917c8e3606ce9ec221279ac5bfc26
+	sha256sums = 91426896abb23638c7610666af93b9d1aa86874bbbe9e97d067f9d565f5f3680
+
+pkgname = kanbanflow-app-bin
