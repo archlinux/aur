@@ -3,8 +3,8 @@
 pkgbase=python-h5pyd
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.14.1
-#_commit="490be2b6cc5ee3a697e5929e4e9f6bb5b7ae4548"
+pkgver=0.15.0
+_commit="1b7e1f128ba6b9a0f64aff4c2ef70b9e35a273c8"
 pkgrel=1
 pkgdesc="h5py distributed - Python client library for HDF Rest API "
 arch=('any')
@@ -20,15 +20,16 @@ checkdepends=('python-pytest'
               'python-numpy'
               'python-pytz'
               'python-requests-unixsocket'
-              'python-adal')
+              'python-six')
+#             'python-adal'
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-#source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/${_commit}.tar.gz"
-source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/${_commit}.tar.gz"
+#source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/refs/tags/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/bytesio.py"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_inotify_example.py"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py"
         'fix-h5type-test.patch')
-md5sums=('7534c426596ebbffe09b96688a636095'
+md5sums=('5e1b1e0f1706e2c24c5b01616c8aeb74'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -39,8 +40,8 @@ get_pyver() {
 }
 
 prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-#   cd ${srcdir}/${_pyname}-${_commit}
+#   cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/${_pyname}-${_commit}
 
     ln -rs ${srcdir}/*.py examples
     sed -i -e "/GH/s/GH/GH\%s/" -e "/PR/s/PR/PR\%s/" docs/conf.py
@@ -48,23 +49,23 @@ prepare() {
 }
 
 build() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-#   cd ${srcdir}/${_pyname}-${_commit}
+#   cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/${_pyname}-${_commit}
     python setup.py build
     python setup.py egg_info # need for ln -rs ...
 #   python -m build --wheel --no-isolation
 
     msg "Building Docs"
 #   python setup.py build_sphinx # died since py3.11
-#   ln -rs ${srcdir}/${_pyname}-${_commit}/${_pyname/-/_}*egg-info \
-    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+#   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+    ln -rs ${srcdir}/${_pyname}-${_commit}/${_pyname/-/_}*egg-info \
         build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver .).egg-info
     PYTHONPATH="../build/lib" make -C docs html
 }
 
 check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-#   cd ${srcdir}/${_pyname}-${_commit}
+#   cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/${_pyname}-${_commit}
 
     pytest || warning "Tests failed" #${PWD}/test \ -vv --color=yes
 #   PYTHONPATH="build/lib" pytest #|| warning "Tests failed" #${PWD}/test \
@@ -83,8 +84,8 @@ package_python-h5pyd() {
              'python-google-auth'
              'python-adal')
     optdepends=('python-h5pyd-doc: Documentation for h5pyd')
-    cd ${srcdir}/${_pyname}-${pkgver}
-#   cd ${srcdir}/${_pyname}-${_commit}
+#   cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/${_pyname}-${_commit}
 
     install -D -m644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
@@ -95,8 +96,8 @@ package_python-h5pyd() {
 package_python-h5pyd-doc() {
     pkgdesc="Documentation for Python h5pyd"
 #   cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
-    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
-#   cd ${srcdir}/${_pyname}-${_commit}/build/sphinx
+#   cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+    cd ${srcdir}/${_pyname}-${_commit}/build/sphinx
 
     install -D -m644 ../../COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
