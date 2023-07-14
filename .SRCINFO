@@ -15,6 +15,7 @@ pkgbase = odio-edit
 	depends = dconf
 	depends = gst-libav
 	depends = libodiosacd
+	depends = gsettings-desktop-schemas
 	options = !emptydirs
 	source = odio-edit-23.1.31.tar.gz::https://github.com/tari01/odio-edit/archive/23.1.31.tar.gz
 	md5sums = 84c5577cc9d93f2f625a6cfa481f7dab
