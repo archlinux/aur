@@ -1,5 +1,5 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
-pkgname=gst-plugins-openh264
+pkgname=gst-plugin-openh264
 _pkgname=gst-plugins-bad
 pkgver=1.22.4
 pkgrel=1
@@ -9,6 +9,7 @@ arch=(x86_64)
 license=(LGPL)
 depends=(gst-plugins-base-libs openh264)
 makedepends=(meson git)
+replaces=('gst-plugins-openh264')
 source=(${url}src/gst-plugins-bad/gst-plugins-bad-${pkgver}.tar.xz)
 sha256sums=('eaaf53224565eaabd505ca39c6d5769719b45795cf532ce1ceb60e1b2ebe99ac')
 
