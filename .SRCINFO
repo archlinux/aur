@@ -1,15 +1,16 @@
 pkgbase = dibuja
-	pkgdesc = Gtk based basic paint program like classic MS Paint or Paintbrush for Mac but for Linux
-	pkgver = 0.21.12
+	pkgdesc = Gtk based basic paint program like classic MS Paint or Paintbrush for Mac, for Linux
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://launchpad.net/dibuja
 	arch = x86_64
 	license = GPL3
-	makedepends = automake-1.15
+	makedepends = automake
 	depends = gtk2
 	depends = gegl
-	source = https://launchpad.net/dibuja/trunk/0.21.12/+download/dibuja-0.21.12.tar.gz
-	sha256sums = c4b4f533a8e4628862e0fe4d2ac3e4d4134befc417727e96a4eab988596abf5a
+	depends = babl
+	depends = libgexiv2
+	source = https://launchpad.net/dibuja/trunk/0.24.0/+download/dibuja-0.24.0.tar.gz
+	sha256sums = a9c98b386667287e330c8b8572001ffbf1be10a639adc05ec7b67bbdffc4731b
 
 pkgname = dibuja
-
