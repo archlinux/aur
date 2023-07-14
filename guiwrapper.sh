@@ -1,4 +1,3 @@
-
 #!/bin/bash
 _ELECTRON='/usr/bin/electron20'
 _ASAR="/opt/guiwrapper/guiwrapper.asar"
