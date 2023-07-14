@@ -3,8 +3,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.4.2.arch1
-pkgrel=1
+pkgver=6.4.3.arch1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -42,7 +42,6 @@ source=(
 
   0001-Revert-PCI-Add-a-REBAR-size-quirk-for-Sapphire-RX-56.patch
   0001-constgran-v2.patch
-  0001-linux6.1.y-bore2.2.1.patch
   
   0032-Bluetooth-btusb-Add-a-new-PID-VID-0489-e0f6-for-MT7922.patch
   0035-Add_quirk_for_polling_the_KBD_port.patch
@@ -71,6 +70,18 @@ source=(
   0040-workaround_hardware_decoding_amdgpu.patch
   0041-flush_and_deleyed_gfxoff_on_suspend_amdgpu.patch
 
+  #v2-0001-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-GX650P.patch
+  #v2-0002-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-GA402X.patch
+  v2-0003-ALSA-hda-realtek-Amend-G634-quirk-to-enable-rear-.patch
+  v2-0004-ALSA-hda-realtek-Add-quirk-for-ASUS-ROG-G614Jx.patch
+  #v2-0005-Fixes-31278997add6-ALSA-hda-realtek-Add-headset-q.patch
+
+  0001-linux6.1.y-bore2.4.1.patch
+
+  v12_20230224_vincent_guittot_add_latency_priority_for_cfs_class.patch
+  v4_20230406_ricardo_neri_calderon_sched_avoid_unnecessary_migrations_within_smt_domains.patch
+  v8_20230429_yu_c_chen_sched_fair_introduce_sis_current_to_wake_up_short_task_on_current_cpu.patch
+
 
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
@@ -85,20 +96,19 @@ validpgpkeys=(
 )
 
 sha256sums=('SKIP'
-            'a12c9ba3eba02341a65cf61e3d500f848b7b29b2016803b423867f894f36b7de'
+            '23c9cd83010036f8c5f0a4f0a627bb93118c4dcfb4dcbc5bfd2177088d4a51ea'
             'bc8b5f303e3507c01d8543fb4352ed7dcdb9ed4eb2854788d39510f88d67f454'
             '81ad663925a0aa5b5332a69bae7227393664bb81ee2e57a283e7f16e9ff75efe'
             '0a7ea482fe20c403788d290826cec42fe395e5a6eab07b88845f8b9a9829998d'
             '172dbc88d0a3cda78387f3c907fa4953c71cb1cb162f0b34f78b8b78924bc3d4'
             'a691e7b22633fe0c458d140167d6d381b66149e05de3cb926b30a19fd43e78ce'
             '7b16fce20b03babc9e149030f43e283534835bbd8835ba0a794fd0205fea1708'
-            'efbf65b17fb48fd22f199b6fddd05f159f8ea31faad5543f2c07fddf45eb9f12'
-            'd4f8e606eaad9a1fe302f04b9023a3980eb2305108c0d8c90654d23e53ff8bef'
+            'd0749b5508305aaa9b070b2b75b3d87726ce588fd1ca683ac374c15dd06f9f96'
             'a8e1e11a4ab1995cc4975c9b134a43ddfe7054ef0c965e52a7d8f9223e15c3e0'
             '315d1839630b37894a626bbc2aea012618b2e1ccb6f9d8aa27c0a3ce5e90e99c'
             '1740589bbf5eb2c292904e508270ed221e1382f78bcb7cf1c72f1dc12f767e69'
             'a00b952d53df9d3617d93e8fba4146a4d6169ebe79f029b3a55cca68f738d8ea'
-            'b5167c85c3869c3e49ced86fe752968feef69a5427ee9d89db433908829fbb7c'
+            'b9a96e744d8dbcb9568afc66fa679723d22d8f2ed4ccc54ad5f9ce1e30351d03'
             '4912b1319e46ddd6670147f5e878b4aca8bcfbd7b5c852fe11e434e424666365'
             '655a7650a21ce4f725caf6fa248295edefa25a248aeaecf3d65a058503ae2530'
             '7ce4b001a81b15b5b5275620fc0cee3d251d753698ae3db4593619a2121e1f2e'
@@ -117,6 +127,12 @@ sha256sums=('SKIP'
             'd673d034fbcd80426fd8d9c6af56537c5fe5b55fe49d74e313474d7fc285ecc1'
             'e41198b29cee4de7a5132d8df606f48c2d0f9c9076fe4230b00a33c7e0b22c71'
             'e2c81fc2af08c175a7642d4f4f90e398702d9d903857cf0bba81db99f146a561'
+            'bc4e7eee4f58fcdbbc0c2b9cce573013717b04a32ee3c056ee46fe48b1a522d6'
+            'ad5851c94edde27273a46bbfbb6ccc788694672583d9f936a1025707b08f895b'
+            'cf30463dc8cefb00a73814e84f6c120c6a3d6dfe5e2476ad47b80a5c319a1d47'
+            'c557ad0e9cd5219f9cc3f6726a6956aa73e42731f09b6cdda289d4d3a80fd118'
+            '59aeebac4efce333b9761a9e9c61c23595f480213e2090910b23c941e6f6dfb4'
+            '43e90b35b2d737edee3208af3d6711c9bc44e188979a002a8e739ae6e1c9444f'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85'
             '982a31e47d3d586789e1b3cdda25f75e3b71d810e7494202089b8f2cef7c0ef9')

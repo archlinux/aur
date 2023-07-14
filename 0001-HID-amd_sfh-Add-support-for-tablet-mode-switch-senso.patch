@@ -33,6 +33,7 @@ index 8275bba63611..83dd0402933c 100644
  	case als_idx:
  		return "ALS";
  	case HPD_IDX:
+ 
 diff --git a/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c b/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c
 index 47774b9ab3de..cfda797f0a62 100644
 --- a/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c

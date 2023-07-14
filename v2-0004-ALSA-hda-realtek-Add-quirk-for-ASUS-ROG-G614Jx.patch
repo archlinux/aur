@@ -1,0 +1,31 @@
+From 64411d8f62ef78bb45167fb7f10f87c662148a7c Mon Sep 17 00:00:00 2001
+From: "Luke D. Jones" <luke@ljones.dev>
+Date: Tue, 4 Jul 2023 16:06:46 +1200
+Subject: [PATCH v2 4/5] ALSA: hda/realtek: Add quirk for ASUS ROG G614Jx
+
+Adds the required quirk to enable the Cirrus amp and correct pins
+on the ASUS ROG G614J series which uses an SPI connected Cirrus amp.
+
+While this works if the related _DSD properties are made available, these
+aren't included in the ACPI of these laptops (yet).
+
+Signed-off-by: Luke D. Jones <luke@ljones.dev>
+---
+ sound/pci/hda/patch_realtek.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
+index 50becdc86daa..ba3c113f0be1 100644
+--- a/sound/pci/hda/patch_realtek.c
++++ b/sound/pci/hda/patch_realtek.c
+@@ -9632,6 +9632,7 @@ static const struct snd_pci_quirk alc269_fixup_tbl[] = {
+ 	SND_PCI_QUIRK(0x1043, 0x1c23, "Asus X55U", ALC269_FIXUP_LIMIT_INT_MIC_BOOST),
+ 	SND_PCI_QUIRK(0x1043, 0x1c62, "ASUS GU603", ALC289_FIXUP_ASUS_GA401),
+ 	SND_PCI_QUIRK(0x1043, 0x1c92, "ASUS ROG Strix G15", ALC285_FIXUP_ASUS_G533Z_PINS),
++	SND_PCI_QUIRK(0x1043, 0x1c9f, "ASUS G614JI", ALC285_FIXUP_ASUS_HEADSET_MIC),
+ 	SND_PCI_QUIRK(0x1043, 0x1caf, "ASUS G634JYR/JZR", ALC285_FIXUP_ASUS_SPI_REAR_SPEAKERS),
+ 	SND_PCI_QUIRK(0x1043, 0x1ccd, "ASUS X555UB", ALC256_FIXUP_ASUS_MIC),
+ 	SND_PCI_QUIRK(0x1043, 0x1d42, "ASUS Zephyrus G14 2022", ALC289_FIXUP_ASUS_GA401),
+-- 
+2.41.0
+
