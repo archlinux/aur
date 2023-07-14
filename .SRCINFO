@@ -24,6 +24,7 @@ pkgbase = python-translate-shell
 	optdepends = espeak-ng: speaker support
 	optdepends = festival: speaker support
 	optdepends = python-pygls: LSP support
+	optdepends = python-jinja2: customize LLM prompt template
 	optdepends = python-openai: translate by openai's LLMs
 	optdepends = python-llama-cpp: translate by LLaMa
 	optdepends = stardict-ecdict: translate English to Chinese

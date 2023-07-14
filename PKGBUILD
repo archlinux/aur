@@ -26,6 +26,7 @@ optdepends=(
 	'espeak-ng: speaker support'
 	'festival: speaker support'
 	'python-pygls: LSP support'
+	"python-jinja2: customize LLM prompt template"
 	"python-openai: translate by openai's LLMs"
 	"python-llama-cpp: translate by LLaMa"
 	'stardict-ecdict: translate English to Chinese'
