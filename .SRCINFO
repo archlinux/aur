@@ -1,6 +1,6 @@
 pkgbase = r-flowcore
 	pkgdesc = flowCore: Basic structures for flow cytometry data
-	pkgver = 2.12.0
+	pkgver = 2.12.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowCore
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = r-flowcore
 	options = !lto
 	options = !buildflags
 	options = staticlibs
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowCore_2.12.0.tar.gz
-	sha256sums = 0df169a8a21326bd0b85441094283d78b19461e3ba22984993e06dc3b8257bfe
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowCore_2.12.1.tar.gz
+	sha256sums = d52cb016d23bbf643806f26176d63001edaa0dafcb07bca0b7cae1e020cc5126
 
 pkgname = r-flowcore
