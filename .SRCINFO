@@ -15,6 +15,7 @@ pkgbase = v2raya
 	makedepends = git
 	makedepends = go>=2:1.17.0-1
 	makedepends = nodejs>=14
+	makedepends = nodejs<=19
 	makedepends = yarn
 	depends = glibc
 	backup = etc/default/v2raya
