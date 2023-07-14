@@ -1,7 +1,7 @@
 pkgbase = llm-git
 	pkgdesc = An ecosystem of Rust libraries for working with large language models
-	pkgver = r772.3becd72
-	pkgrel = 2
+	pkgver = 0.1.1.r429.gfc1c052
+	pkgrel = 1
 	url = https://github.com/rustformers/llm
 	arch = any
 	license = MIT

@@ -3,8 +3,8 @@
 
 _pkgname="llm"
 pkgname="${_pkgname}-git"
-pkgver=r772.3becd72
-pkgrel=2
+pkgver=0.1.1.r429.gfc1c052
+pkgrel=1
 pkgdesc="An ecosystem of Rust libraries for working with large language models"
 arch=(any)
 url="https://github.com/rustformers/${_pkgname}"
@@ -33,22 +33,22 @@ prepare() {
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target cargo build --frozen --release
+    RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target cargo build --frozen --release --bin llm
 }
 
 check () {
     cd "${srcdir}/${_pkgname}"
-    RUSTUP_TOOLCHAIN=stable cargo test --frozen --all-features --workspace
+    RUSTUP_TOOLCHAIN=stable cargo test --frozen --workspace
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}/"
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
