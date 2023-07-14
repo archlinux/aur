@@ -1,4 +1,3 @@
-
 #!/bin/bash
 _ELECTRON=/usr/bin/electron
 _ASAR="/opt/icalingua++/icalingua++.asar"
