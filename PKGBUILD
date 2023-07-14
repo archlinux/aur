@@ -1,7 +1,7 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
 pkgname=iamroot-aarch64
-pkgver=10
+pkgver=11
 pkgrel=1
 pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (aarch64)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('aarch64-linux-musl'
 checkdepends=('shellcheck')
 options=('!strip')
 source=("https://github.com/gportay/${pkgname%-aarch64}/archive/v$pkgver.tar.gz")
-sha256sums=('adbfef316c0ff07e67abce5f395146f90e90a1fad97ed419be92e3516ee8b6f3')
+sha256sums=('fc8e1d618e62aed40064561e2a14f0c763e5b33d41c5f888e45042e561eddfe0')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
