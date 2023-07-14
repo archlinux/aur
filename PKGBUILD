@@ -5,7 +5,7 @@
 
 pkgname="dooble-bin"
 pkgver=2023.07.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Web browser based on QtWebEngine"
 arch=(x86_64)
 url="https://textbrowser.github.io/dooble/"
@@ -34,4 +34,7 @@ package() {
     find "${pkgdir}" -type f -perm 0664 -print0 | xargs -r0 chmod 0644
     find "${pkgdir}" -type f -perm 0775 -print0 | xargs -r0 chmod 0755
     find "${pkgdir}" -type d            -print0 | xargs -r0 chmod 0755
+    # Add a symlink to dooble.sh for those who prefer to not use a mouse
+    install -dm0755 "${pkgdir}/usr/bin"
+    ln -sr "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
