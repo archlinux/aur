@@ -7,7 +7,6 @@ pkgver=3.0.2.0
 pkgrel=12
 pkgdesc="wxWidgets 3 Legacy GTK 3 GUI toolkit for Python 2."
 depends=(
-  'python2'
   'sdl'
   'gtk3'
 )
