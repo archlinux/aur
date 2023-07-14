@@ -1,9 +1,11 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 # Contributor: zhangkaizhao <zhangkaizhao at gmail dot com>
+# Contributor: Klaus Alexander Seiﬆrup <klaus at seistrup dot dk>
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+
 pkgname="dooble-bin"
 pkgver=2023.07.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Web browser based on QtWebEngine"
 arch=(x86_64)
 url="https://textbrowser.github.io/dooble/"
@@ -28,4 +30,8 @@ package() {
     install -Dm644 "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     gendesk -f -n --icon "${pkgname%-bin}" --categories "Network" --name "Dooble" --exec "/opt/${pkgname%-bin}/${pkgname%-bin}.sh"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    # Fix incorrect permissions
+    find "${pkgdir}" -type f -perm 0664 -print0 | xargs -r0 chmod 0644
+    find "${pkgdir}" -type f -perm 0775 -print0 | xargs -r0 chmod 0755
+    find "${pkgdir}" -type d            -print0 | xargs -r0 chmod 0755
 }
