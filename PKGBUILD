@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=nctracer-git
-pkgver=r33.64e6bc8
+pkgver=r35.089dde7
 pkgrel=1
 pkgdesc="An ImGui front-end to the pmTracer library made with the nCine"
 arch=('i686' 'x86_64')
@@ -12,8 +12,20 @@ makedepends=('git' 'cmake')
 conflicts=('nctracer')
 provides=('nctracer')
 options=(!strip)
-source=('git+https://github.com/encelo/ncTracer')
-md5sums=('SKIP')
+source=(
+  'git+https://github.com/encelo/ncTracer'
+  'git+https://github.com/encelo/ncTracer-data'
+  'git+https://github.com/nCine/nCine'
+  'git+https://github.com/nCine/nCine-data'
+  'git+https://github.com/encelo/pmTracer'
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd "$srcdir/ncTracer"
@@ -21,13 +33,6 @@ pkgver() {
     git describe --tags --long --exact-match 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  git clone https://github.com/nCine/nCine || git -C nCine pull
-  git clone https://github.com/nCine/nCine-data || git -C nCine-data pull
-  git clone https://github.com/encelo/pmTracer || git -C pmTracer pull
-  git clone https://github.com/encelo/ncTracer-data || git -C ncTracer-data pull
 }
 
 build() {
