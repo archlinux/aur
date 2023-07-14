@@ -13,6 +13,8 @@ pkgbase = ncparticleeditor-git
 	conflicts = ncparticleeditor
 	options = !strip
 	source = git+https://github.com/nCine/ncParticleEditor
+	source = git+https://github.com/nCine/ncParticleEditor-data
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = ncparticleeditor-git

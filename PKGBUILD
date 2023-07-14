@@ -12,8 +12,14 @@ makedepends=('git' 'cmake')
 conflicts=('ncparticleeditor')
 provides=('ncparticleeditor')
 options=(!strip)
-source=('git+https://github.com/nCine/ncParticleEditor')
-md5sums=('SKIP')
+source=(
+  'git+https://github.com/nCine/ncParticleEditor'
+  'git+https://github.com/nCine/ncParticleEditor-data'
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd "$srcdir/ncParticleEditor"
@@ -21,10 +27,6 @@ pkgver() {
     git describe --tags --long --exact-match 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  git clone https://github.com/nCine/ncParticleEditor-data || git -C ncParticleEditor-data pull
 }
 
 build() {
