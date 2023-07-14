@@ -13,6 +13,8 @@ pkgbase = nctiledviewer-git
 	conflicts = nctiledviewer
 	options = !strip
 	source = git+https://github.com/nCine/ncTiledViewer
+	source = git+https://github.com/nCine/ncTiledViewer-data
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = nctiledviewer-git
