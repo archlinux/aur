@@ -1,11 +1,13 @@
 [Desktop Entry]
 Type=Application
-Exec=openmvide
+Exec=openmvide %F
 Path=/opt/openmv-ide
 Icon=openmv-ide
 Name=OpenMV IDE
 GenericName=The IDE of choice for OpenMV Cam Development.
 GenericName[de]=Die IDE der Wahl zur OpenMV Cam Entwicklung
+X-KDE-StartupNotify=true
+StartupWMClass=openmvide
 Terminal=false
-Categories=Development;IDE;
+Categories=Development;IDE;OpenMV;
 MimeType=text/x-python;
