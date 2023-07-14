@@ -1,6 +1,6 @@
 post_install() {
     echo "Creating kavita user"
-    useradd kavita
+    useradd --system kavita
     chown -R kavita /opt/kavita
     chown kavita /etc/Kavita/appsettings.json
     echo "Done"
