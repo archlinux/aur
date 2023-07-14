@@ -5,7 +5,7 @@ _pkgname="llm"
 _feature="cublas"
 pkgname="${_pkgname}-${_feature}-git"
 pkgver=0.1.1.r429.gfc1c052
-pkgrel=1
+pkgrel=2
 pkgdesc="An ecosystem of Rust libraries for working with large language models (with CUBlas)"
 arch=(any)
 url="https://github.com/rustformers/${_pkgname}"
@@ -44,7 +44,7 @@ build() {
 
 check () {
     cd "${srcdir}/${_pkgname}"
-    RUSTUP_TOOLCHAIN=stable cargo test --frozen --all-features --workspace
+    RUSTUP_TOOLCHAIN=stable cargo test --frozen --workspace "--features=${_feature}"
 }
 
 package() {
