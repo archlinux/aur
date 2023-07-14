@@ -1,8 +1,8 @@
 # Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.10.0.pre0.r1679.g39a082c79e
-pkgrel=2
+pkgver=2.10.0pre0.r1679.g39a082c79e
+pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -31,7 +31,15 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
+  local _gitversion=$(git describe --long --tags --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]')
+
+  # Format git-based version for pkgver
+  # Expected format: e.g. 1.5.0rc2.r521.g99982a1c
+  echo "${_gitversion}" | sed \
+      -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
+      -e 's|\([0-9]\+-g\)|r\1|' \
+      -e 's|-|.|g'
 }
 
 prepare() {
