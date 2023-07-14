@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=spookyghost-git
-pkgver=r71.d3660bf
+pkgver=r75.837135d
 pkgrel=1
 pkgdesc="A procedural sprite animation tool made with the nCine"
 arch=('i686' 'x86_64')
@@ -12,8 +12,18 @@ makedepends=('git' 'cmake')
 conflicts=('spookyghost')
 provides=('spookyghost')
 options=(!strip)
-source=('git+https://github.com/SpookyGhost2D/SpookyGhost')
-md5sums=('SKIP')
+source=(
+  'git+https://github.com/SpookyGhost2D/SpookyGhost'
+  'git+https://github.com/nCine/nCine'
+  'git+https://github.com/nCine/nCine-data'
+  'git+https://github.com/SpookyGhost2D/SpookyGhost-data'
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd "$srcdir/SpookyGhost"
@@ -21,12 +31,6 @@ pkgver() {
     git describe --tags --long --exact-match 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  git clone https://github.com/nCine/nCine || git -C nCine pull
-  git clone https://github.com/nCine/nCine-data || git -C nCine-data pull
-  git clone https://github.com/SpookyGhost2D/SpookyGhost-data || git -C SpookyGhost-data pull
 }
 
 build() {
