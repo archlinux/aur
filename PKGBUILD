@@ -1,15 +1,15 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=8cc-git
-pkgver=r742.495a60d
-pkgrel=1
+pkgver=r766.b480958
+pkgrel=2
 pkgdesc='Simple and clean C11 compiler'
 arch=(i686 x86_64)
 url='https://github.com/rui314/8cc'
 license=(MIT)
 depends=(glibc)
 makedepends=(git)
-source=(git://github.com/rui314/8cc
+source=(git+http://github.com/rui314/8cc
         fix_cflags.patch)
 sha1sums=('SKIP'
           'e9045cbcad942c39e4135ea720100c54996d8422')
