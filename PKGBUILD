@@ -5,7 +5,7 @@
 pkgbase=intellij-idea-ultimate-edition
 pkgname=(intellij-idea-ultimate-edition intellij-idea-ultimate-edition-jre)
 pkgver=2023.1.4
-pkgrel=1
+pkgrel=2
 _buildver=231.9225.16
 jbr_ver=17.0.7
 jbr_build=aarch64-b1000
@@ -30,7 +30,7 @@ prepare() {
 
   # https://youtrack.jetbrains.com/articles/IDEA-A-48/JetBrains-IDEs-on-AArch64#linux
   if [ "${CARCH}" == "aarch64" ]; then
-    cp -a "$srcdir"/jbr-$jbr_ver-$jbr_build "$srcdir"/jbr
+    cp -a "$srcdir"/jbr-${jbr_ver}-linux-${jbr_build}.${jbr_minor} "$srcdir"/jbr
     cp -f fsnotifier "$srcdir"/idea-IU-$_buildver/bin/fsnotifier
     chmod +x "$srcdir"/idea-IU-$_buildver/bin/fsnotifier
     rm -rf "$srcdir"/idea-IU-$_buildver/jbr
