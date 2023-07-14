@@ -76,14 +76,16 @@ package_python-h5pyd() {
     depends=('python-numpy>=1.17.3'
              'python-requests-unixsocket'
              'python-pytz'
-             'python-pyjwt'
-             'python-msrestazure'
-             'python-cryptography'
-             'python-google-api-python-client'
-             'python-google-auth-oauthlib'
-             'python-google-auth'
-             'python-adal')
-    optdepends=('python-h5pyd-doc: Documentation for h5pyd')
+#            'python-cryptography'
+             'python-pyjwt')
+    optdepends=('python-msrestazure: extra azure support'
+                'python-adal: extra azure support'
+                'python-google-api-python-client: extra google support'
+                'python-google-auth-oauthlib: extra google support'
+                'python-google-auth: extra google support'
+                'python-s3fs: extra aws support'
+                'python-h5py: extra hdf5 support'
+                'python-h5pyd-doc: Documentation for h5pyd')
 #   cd ${srcdir}/${_pyname}-${pkgver}
     cd ${srcdir}/${_pyname}-${_commit}
 
@@ -97,7 +99,8 @@ package_python-h5pyd-doc() {
     pkgdesc="Documentation for Python h5pyd"
 #   cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
 #   cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
-    cd ${srcdir}/${_pyname}-${_commit}/build/sphinx
+    cd ${srcdir}/${_pyname}-${_commit}/docs/_build
+#   cd ${srcdir}/${_pyname}-${_commit}/build/sphinx
 
     install -D -m644 ../../COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
