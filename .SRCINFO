@@ -1,16 +1,14 @@
 pkgbase = wxgtk2.8
 	pkgdesc = GTK+ implementation of wxWidgets API for GUI
 	pkgver = 2.8.12.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://wxwidgets.org
 	arch = i686
 	arch = x86_64
 	license = custom:wxWindows
-	makedepends = gstreamer0.10-base-plugins
 	makedepends = gconf
 	makedepends = glu
 	depends = gtk2
-	depends = gstreamer0.10-base
 	depends = sdl
 	depends = libsm
 	provides = wxgtk2.8=2.8.12.1
@@ -26,4 +24,3 @@ pkgbase = wxgtk2.8
 	sha1sums = f1a3bc30ec8139d97ca239dc1bf6cbc2ceb5c5d9
 
 pkgname = wxgtk2.8
-
