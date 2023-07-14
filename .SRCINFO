@@ -1,6 +1,6 @@
 pkgbase = rio
 	pkgdesc = A hardware-accelerated GPU terminal emulator powered by WebGPU
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/raphamorim/rio
 	arch = x86_64
@@ -15,9 +15,21 @@ pkgbase = rio
 	depends = libxcb
 	depends = libxkbcommon
 	depends = python
-	source = rio-0.0.8.tar.gz::https://github.com/raphamorim/rio/archive/refs/tags/v0.0.8.tar.gz
+	source = rio-0.0.9.tar.gz::https://github.com/raphamorim/rio/archive/refs/tags/v0.0.9.tar.gz
 	source = rio.desktop
-	b2sums = f21b8e6ac01c52c3021c977f078534ce28c6d8a9c76bdeb9bc3ce82cf3ebc0eed232c2b0727e1f49467ff31a2217952137fca2f04c5c9b50636e58e37a4a61f1
+	b2sums = 45befe3b7eac64affd4ad0ffc34ff2fa33daf74da1049a75bdb3066d31735b7ebcb6b022ba841128af1c89fc2699d4a5a993e22b0272f0f60196b05f10f41c9b
 	b2sums = cdb6a76cae33968b23a5d950c727151b152ea2c2951df0eda08e825d366eb41d7c9182aabb6cf85efe62a66010ce50096582b6300659f781dd5bd0e7a3646041
 
 pkgname = rio
+	depends = gcc-libs
+	depends = fontconfig
+	depends = freetype2
+	depends = libxcb
+	depends = libxkbcommon
+	depends = python
+	depends = rio-terminfo
+
+pkgname = rio-terminfo
+	pkgdesc = Terminfo for rio, a hardware-accelerated GPU terminal emulator powered by WebGPU
+	arch = any
+	depends = ncurses
