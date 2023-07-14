@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name= previsat
+GenericName= previsat
+Comment=PreviSat is a satellite tracking software for observing purposes
+Exec=previsat
+Icon=previsat
+Terminal=false
+Type=Application
+Categories=Application;Sciences;Other;
+
