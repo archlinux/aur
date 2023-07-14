@@ -2,7 +2,7 @@
 pkgname=jamesdsp-pulse
 _app_id=me.timschneeberger.jdsp4linux.pulse
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -15,7 +15,7 @@ conflicts=('jamesdsp' 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 replaces=('jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 options=('!strip')
 _commit=7868e4389a3ba97019d50d7d316507f2b131720e  # tags/2.6.0^0
-source=('git+https://github.com/Audio4Linux/JDSP4Linux.git'
+source=("git+https://github.com/Audio4Linux/JDSP4Linux.git#commit=$_commit"
         'git+https://github.com/ThePBone/GraphicEQWidget.git'
         'git+https://github.com/ThePBone/FlatTabWidget.git'
         'git+https://github.com/ThePBone/LiquidEqualizerWidget.git'
@@ -26,10 +26,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
-#pkgver() {
-#  cd "$srcdir/JDSP4Linux"
-#  git describe --tags | sed 's/-/+/g'
-#}
+pkgver() {
+  cd "$srcdir/JDSP4Linux"
+  git describe --tags | sed 's/-/+/g'
+}
 
 prepare() {
   cd "$srcdir/JDSP4Linux"
