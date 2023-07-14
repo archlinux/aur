@@ -1,6 +1,6 @@
 pkgbase = llm-clblast-git
 	pkgdesc = An ecosystem of Rust libraries for working with large language models (with CLBlast)
-	pkgver = r772.3becd72
+	pkgver = r929.fc1c052
 	pkgrel = 1
 	url = https://github.com/rustformers/llm
 	arch = any

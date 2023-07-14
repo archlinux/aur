@@ -4,7 +4,7 @@
 _pkgname="llm"
 _feature="clblast"
 pkgname="${_pkgname}-${_feature}-git"
-pkgver=r772.3becd72
+pkgver=r929.fc1c052
 pkgrel=1
 pkgdesc="An ecosystem of Rust libraries for working with large language models (with CLBlast)"
 arch=(any)
@@ -44,12 +44,12 @@ build() {
 
 check () {
     cd "${srcdir}/${_pkgname}"
-    RUSTUP_TOOLCHAIN=stable cargo test --frozen --all-features --workspace
+    RUSTUP_TOOLCHAIN=stable cargo test --frozen --workspace "--features=${_feature}"
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
     install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}/"
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
