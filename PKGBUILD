@@ -4,19 +4,21 @@
 pkgname=appimage-git
 _gitname=AppImageKit
 pkgdesc="Package desktop applications as AppImages that run on common Linux-based operating systems, such as RHEL, CentOS, Ubuntu, Fedora, debian and derivatives."
-pkgver=r1597.801e789
+pkgver=r1724.701b711
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://appimage.org"
 license=('MIT')
 depends=('fuse' 'glib2' 'glibc' 'binutils' 'coreutils' 'zlib' 'lz4' 'zsync' 'inotify-tools' 'openssl' 'libarchive' 'xz' 'cairo')
-makedepends=('git' 'cmake' 'wget' 'vim' 'desktop-file-utils')
+makedepends=('git' 'cmake' 'wget' 'vim' 'desktop-file-utils' 'squashfuse')
 provides=('appimage')
 conflicts=('appimage')
 options=('!strip')
 install=
-source=('git://github.com/probonopd/AppImageKit')
-md5sums=('SKIP')
+source=("git+https://github.com/AppImage/AppImageKit"
+	"git+https://github.com/AppImageCommunity/libappimage")
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -30,36 +32,31 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
+  git submodule init
+  git config submodule.lib/libappimage.url			"${srcdir}/libappimage"
+  git -c protocol.file.allow=always submodule update
 
-  ./build.sh --clean
+  cd "${srcdir}/${_gitname}/lib/libappimage/lib"
+  git submodule init
+  git -c protocol.file.allow=always submodule update
 
-  sed -i "s/ctest -V/echo 'Skip Tests...'/g" build.sh
 }
 
 build() {
   cd "${srcdir}/${_gitname}"
-  ./build.sh --no-dependencies --use-shared-libs
-
-  # Copy metainfo files
-  mkdir -p appimagetool.AppDir/usr/share/metainfo/
-
-  cp resources/usr/share/metainfo/appimagetool.appdata.xml appimagetool.AppDir/usr/share/metainfo/
-
-  # Generate appimage files
-  cd build/out
-  appimagetool.AppDir/AppRun -n appimagetool.AppDir appimagetool
+  [[ -d build ]] && rm -rf build
+  mkdir build && cd build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DUSE_SYSTEM_XZ=ON \
+    -DUSE_SYSTEM_SQUASHFUSE=ON \
+    -DUSE_SYSTEM_LIBARCHIVE=ON \
+    -DBUILD_TESTING=OFF
+  make
 }
 
 package(){
   cd "$srcdir/${_gitname}"
-
-  mkdir -p "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir"/usr/share/appimage
-
-  cp build/out/appimagetool "$pkgdir"/usr/bin/
-
-  cp src/AppRun.c "$pkgdir"/usr/share/appimage/
-  cp README.md "$pkgdir"/usr/share/appimage/
-
-  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+  DESTDIR="$pkgdir" cmake -P cmake_install.cmake --install build
 }
