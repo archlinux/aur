@@ -1,6 +1,6 @@
 pkgbase = xbyyunpan-appimage
 	pkgdesc = 小白羊网盘 - Powered by 阿里云盘Open
-	pkgver = 3.11.15
+	pkgver = 3.11.16
 	pkgrel = 1
 	url = https://github.com/gaozhangmin/aliyunpan
 	arch = aarch64
@@ -15,11 +15,11 @@ pkgbase = xbyyunpan-appimage
 	options = !strip
 	source = LICENSE::https://raw.githubusercontent.com/gaozhangmin/aliyunpan/main/LICENSE
 	sha256sums = 37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009
-	source_aarch64 = xbyyunpan-3.11.15-aarch64.AppImage::https://github.com/gaozhangmin/aliyunpan/releases/download/v3.11.15/XBYDriver-3.11.15-linux-arm64.AppImage
-	sha256sums_aarch64 = 1715ea29a8b15a09eef4cc38a4dd0a26e4e4230dd5102ff29e61b67a488a0471
-	source_armv7h = xbyyunpan-3.11.15-armv7h.AppImage::https://github.com/gaozhangmin/aliyunpan/releases/download/v3.11.15/XBYDriver-3.11.15-linux-armv7l.AppImage
-	sha256sums_armv7h = 13ea11ccb52253dba71587116de3da2c90fa1f8b4a43300f6f2b929fde6fb716
-	source_x86_64 = xbyyunpan-3.11.15-x86_64.AppImage::https://github.com/gaozhangmin/aliyunpan/releases/download/v3.11.15/XBYDriver-3.11.15-linux-x86_64.AppImage
-	sha256sums_x86_64 = 18239514a11547525820ee46a91e1c73249a5b0b462bfa38891c5de037967f00
+	source_aarch64 = xbyyunpan-3.11.16-aarch64.AppImage::https://github.com/gaozhangmin/aliyunpan/releases/download/3.11.16/XBYDriver-3.11.16-linux-arm64.AppImage
+	sha256sums_aarch64 = 290482d60765e516444faca9bf68a291ab448baafbc7db7a6bafc7a4c221c141
+	source_armv7h = xbyyunpan-3.11.16-armv7h.AppImage::https://github.com/gaozhangmin/aliyunpan/releases/download/3.11.16/XBYDriver-3.11.16-linux-armv7l.AppImage
+	sha256sums_armv7h = 906c80ea97c1cb2f1e6a085cbbc8b33d7acb342d7b423c3a63fd0b9fe86f6165
+	source_x86_64 = xbyyunpan-3.11.16-x86_64.AppImage::https://github.com/gaozhangmin/aliyunpan/releases/download/3.11.16/XBYDriver-3.11.16-linux-x86_64.AppImage
+	sha256sums_x86_64 = 69b4de3d6d6a189bcc45f0d51efa6c1dcf380223ed3853dc23309f2b64cf29f1
 
 pkgname = xbyyunpan-appimage

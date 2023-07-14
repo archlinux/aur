@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="xbyyunpan-appimage"
-pkgver=3.11.15
+pkgver=3.11.16
 pkgrel=1
 pkgdesc="小白羊网盘 - Powered by 阿里云盘Open"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -10,14 +10,14 @@ options=(!strip)
 conflicts=("${pkgname%-appimage}" "aliyunpan-liupan1890" "aliyunpan-odomu")
 depends=('zlib' 'glibc')
 _install_path="/opt/appimages"
-source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-arm64.AppImage")
-source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-armv7l.AppImage")
-source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/XBYDriver-${pkgver}-linux-x86_64.AppImage")
+source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/XBYDriver-${pkgver}-linux-arm64.AppImage")
+source_armv7h=("${pkgname%-appimage}-${pkgver}-armv7h.AppImage::${url}/releases/download/${pkgver}/XBYDriver-${pkgver}-linux-armv7l.AppImage")
+source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/XBYDriver-${pkgver}-linux-x86_64.AppImage")
 source=("LICENSE::https://raw.githubusercontent.com/gaozhangmin/aliyunpan/main/LICENSE")
 sha256sums=('37b92e7918a9a8599a558d5e978900966b243cc9f6c964c36f4afa35bf50e009')
-sha256sums_aarch64=('1715ea29a8b15a09eef4cc38a4dd0a26e4e4230dd5102ff29e61b67a488a0471')
-sha256sums_armv7h=('13ea11ccb52253dba71587116de3da2c90fa1f8b4a43300f6f2b929fde6fb716')
-sha256sums_x86_64=('18239514a11547525820ee46a91e1c73249a5b0b462bfa38891c5de037967f00')
+sha256sums_aarch64=('290482d60765e516444faca9bf68a291ab448baafbc7db7a6bafc7a4c221c141')
+sha256sums_armv7h=('906c80ea97c1cb2f1e6a085cbbc8b33d7acb342d7b423c3a63fd0b9fe86f6165')
+sha256sums_x86_64=('69b4de3d6d6a189bcc45f0d51efa6c1dcf380223ed3853dc23309f2b64cf29f1')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-appimage}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
