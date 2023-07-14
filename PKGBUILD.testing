@@ -50,7 +50,7 @@ source=(
   ppsspp-miniupnp::git+https://github.com/hrydgard/miniupnp.git
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
-  git+https://github.com/RetroAchievements/rcheevos.git
+  ppsspp-rcheevos::git+https://github.com/hrydgard/rcheevos.git
   ppsspp-sdl.desktop
   ppsspp-qt.desktop
 )
@@ -83,12 +83,12 @@ prepare() {
   cp -r "$srcdir"/ffmpeg-$_ffver ffmpeg
   cp "$srcdir"/ppsspp-ffmpeg_x86_64.sh ffmpeg/
   chmod u+x ffmpeg/ppsspp-ffmpeg_x86_64.sh
-  for submodule in assets/lang ext/miniupnp; do
+  for submodule in assets/lang ext/{miniupnp,rcheevos}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
   done
-  for submodule in ext/{armips,cpu_features,discord-rpc,glslang,rapidjson,SPIRV-Cross,rcheevos}; do
+  for submodule in ext/{armips,cpu_features,discord-rpc,glslang,rapidjson,SPIRV-Cross}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}

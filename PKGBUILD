@@ -11,7 +11,7 @@ pkgname=(
   ppsspp-git
   ppsspp-assets-git
 )
-pkgver=1.15.4.r357.42d4b5d41d
+pkgver=1.15.4.r503.bf05fe22b1
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
@@ -48,7 +48,7 @@ source=(
   ppsspp-miniupnp::git+https://github.com/hrydgard/miniupnp.git
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/KhronosGroup/SPIRV-Cross.git
-  git+https://github.com/RetroAchievements/rcheevos.git
+  ppsspp-rcheevos::git+https://github.com/hrydgard/rcheevos.git
   ppsspp-sdl.desktop
   ppsspp-qt.desktop
 )
@@ -74,12 +74,12 @@ pkgver() {
 
 prepare() {
   cd ppsspp
-  for submodule in assets/lang ext/miniupnp ffmpeg; do
+  for submodule in assets/lang ext/{miniupnp,rcheevos} ffmpeg; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
   done
-  for submodule in ext/{armips,cpu_features,discord-rpc,glslang,rapidjson,SPIRV-Cross,rcheevos}; do
+  for submodule in ext/{armips,cpu_features,discord-rpc,glslang,rapidjson,SPIRV-Cross}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
