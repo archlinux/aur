@@ -2,8 +2,8 @@
 # Original Packager: necklace <ns@nsz.no>
 
 pkgname=grok-jpeg2000
-pkgver=9.7.5
-pkgrel=2
+pkgver=10.0.7
+pkgrel=1
 pkgdesc="A high performance open source JPEG 2000 codec."
 arch=(x86_64)
 license=('AGPL')
@@ -11,7 +11,7 @@ url="https://github.com/GrokImageCompression/grok"
 makedepends=('cmake')
 depends=('zlib' 'libpng' 'libtiff' 'lcms2' 'libjpeg' 'jbigkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GrokImageCompression/grok/archive/v$pkgver.tar.gz")
-sha256sums=('f5e61ba2f016b2239fadccf03a12bcaeb9b88f63e5bd640b5aae4f8ee698f5f5')
+sha256sums=('6940140e507c9b28e625621233a2e99e2ee4c9f146dc8571bec0656bbf2cce58')
 
 prepare() {
   cd "${srcdir}"
@@ -35,8 +35,5 @@ build() {
 package() {
   cd "${srcdir}/build"
   make DESTDIR="${pkgdir}" install
-
-  install -m755 -d "${pkgdir}/usr/share/licenses/grok-jpeg2000"
-  mv "${pkgdir}"/usr/share/doc/GROK/LICENSE "${pkgdir}"/usr/share/licenses/grok-jpeg2000
-
+  install -m644 -d "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/grok-jpeg2000/LICENSE"
 }
