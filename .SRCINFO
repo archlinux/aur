@@ -1,13 +1,15 @@
 pkgbase = stackablectl
 	pkgdesc = Command line tool to interact with a Stackable Data Platform
-	pkgver = 0.6.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/stackabletech/stackablectl/
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	makedepends = rust
-	source = stackablectl::git+https://github.com/stackabletech/stackablectl.git#commit=5d108d58579eb5ef12edf763d18aec0d45775fe6
+	makedepends = git
+	depends = gcc-libs
+	source = stackablectl::git+https://github.com/stackabletech/stackablectl.git#commit=3132db390f00b499ece9b99e81d5a71bcd7f826d
 	b2sums = SKIP
 
 pkgname = stackablectl
