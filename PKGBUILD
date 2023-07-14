@@ -1,3 +1,4 @@
+# Maintainer: Lukas Probsthain <lukas.probsthain@google.com>
 pkgdesc="A GUI for Modem-Manager. Build from source with patches."
 url='https://linuxonly.ru/page/modem-manager-gui/'
 
@@ -21,6 +22,7 @@ depends=(
 	gdbm
 	po4a
 	itstool
+	gtkspell3
 )
 
 source=("${_pkgname}::hg+http://hg.code.sf.net/p/modem-manager-gui/code"
