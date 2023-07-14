@@ -1,0 +1,14 @@
+pkgbase = iperf3d
+	pkgdesc = iperf3d is a iperf3 client and server wrapper for dynamic server ports
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/wobcom/iperf3d
+	arch = any
+	license = MIT
+	makedepends = rust
+	depends = iperf3
+	provides = iperf3d
+	source = https://github.com/wobcom/iperf3d/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 9d3eb0ebd0f82544834c9da26221df1cd06d7f1f03788292624d505e42964dd0
+
+pkgname = iperf3d
