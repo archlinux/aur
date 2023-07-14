@@ -2,4 +2,5 @@
 /src/
 
 /routeros-upgrader
+/routeros-upgrader_*_linux_amd64
 /*.pkg.tar.zst

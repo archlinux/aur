@@ -1,16 +1,16 @@
 # Maintainer: Marco Steiger <marco (at) steiger (dot) online>
 pkgname=routeros-upgrader-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Mass-Upgrade Mikrotik RouterOS devices synchronized'
 arch=('x86_64')
 url="https://github.com/Marco98/routeros-upgrader"
 source=(
-  "routeros-upgrader::https://github.com/Marco98/routeros-upgrader/releases/download/v${pkgver}/routeros-upgrader_${pkgver}_linux_amd64"
+  "https://github.com/Marco98/routeros-upgrader/releases/download/v${pkgver}/routeros-upgrader_${pkgver}_linux_amd64"
 )
-sha256sums=('429e0620779686bfdd4ee8b52b87d30ba570169fc3f9062cd758be193b12d746')
+sha256sums=('b72a38f79a946976e023669566966a7c1ac74511c21edf55ac8b040742a4634d')
 
 package() {
-    install -Dm755 "${srcdir}/routeros-upgrader" "${pkgdir}/usr/bin/routeros-upgrader"
+    install -Dm755 "${srcdir}/routeros-upgrader_${pkgver}_linux_amd64" "${pkgdir}/usr/bin/routeros-upgrader"
 }
 
