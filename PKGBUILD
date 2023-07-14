@@ -1,4 +1,5 @@
-# Maintainer: Filipe Bertelli <filipebertelli@tutanota.com>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: Filipe Bertelli <filipebertelli@tutanota.com>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Bruce Zhang
 
