@@ -1,5 +1,5 @@
 # Maintainer: cat6241 <shakalnykot@proton.me>
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 
 pkgname=asciicaesar
@@ -9,7 +9,7 @@ url="https://github.com/FINVS/asciicaesar"
 license=('GPL3')
 
 source=("${pkgname}-${pkgver}::https://github.com/FINVS/asciicaesar/archive/v$pkgver.tar.gz")
-sha256sums=('535f76f0ad8133aad5ad310b1958e9cb285d63164a6eaeec939df7c9abd592ee')
+sha256sums=('e2a0d655e62cffaf90cbd601ebd352da51bf9853af79dbfe6b3b2ef777bf1005')
 
 build() {
     cd "$pkgname-$pkgver"
