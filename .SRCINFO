@@ -1,4 +1,4 @@
-pkgbase = v2raya
+pkgbase = v2raya-fix-nodejs
 	pkgdesc = A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols
 	pkgver = 2.0.5
 	pkgrel = 1
@@ -19,9 +19,9 @@ pkgbase = v2raya
 	makedepends = yarn
 	depends = glibc
 	backup = etc/default/v2raya
-	source = v2raya-2.0.5.tar.gz::https://github.com/v2rayA/v2rayA/archive/v2.0.5.tar.gz
+	source = v2raya-fix-nodejs-2.0.5.tar.gz::https://github.com/v2rayA/v2rayA/archive/v2.0.5.tar.gz
 	sha512sums = SKIP
 
-pkgname = v2raya
+pkgname = v2raya-fix-nodejs
 	depends = glibc
 	depends = v2ray>=5.0.0

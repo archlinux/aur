@@ -1,6 +1,6 @@
 # Maintainer: mzz2017 <mzz@tuta.io>
 
-pkgname=v2raya
+pkgname=v2raya-fix-nodejs
 pkgver=2.0.5
 pkgrel=1
 install=.INSTALL
@@ -9,7 +9,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/v2rayA/v2rayA"
 license=('AGPL3')
 depends=('glibc')
-makedepends=('git' 'go>=2:1.17.0-1' 'nodejs>=14' 'nodejs<=19' 'yarn')
+makedepends=('git' 'go>=2:1.17.0-1' 'nodejs>=14' 'nodejs<=19' 'yarn') # limit the nodejs version
 source=("$pkgname-$pkgver.tar.gz::https://github.com/v2rayA/v2rayA/archive/v$pkgver.tar.gz")
 sha512sums=('SKIP')
 backup=("etc/default/v2raya")
