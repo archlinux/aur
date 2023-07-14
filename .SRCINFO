@@ -1,0 +1,39 @@
+pkgbase = python-xarray-datatree
+	pkgdesc = Hierarchical tree-like data structures for xarray
+	pkgver = 0.0.12
+	pkgrel = 1
+	url = https://xarray-datatree.readthedocs.io
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-netcdf4
+	checkdepends = python-h5netcdf
+	checkdepends = python-zarr
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = check-manifest
+	makedepends = python-sphinx-autosummary-accessors
+	makedepends = python-sphinx-copybutton
+	makedepends = python-sphinx-book-theme
+	makedepends = python-sphinxcontrib-srclinks
+	makedepends = python-sphinxext-opengraph
+	makedepends = python-nbsphinx
+	makedepends = python-numpydoc
+	makedepends = ipython
+	makedepends = python-xarray
+	makedepends = ttf-roboto
+	source = https://files.pythonhosted.org/packages/source/x/xarray-datatree/xarray-datatree-0.0.12.tar.gz
+	md5sums = 36e380a4fe1de4f6a92df025c80b7422
+
+pkgname = python-xarray-datatree
+	depends = python>=3.9
+	depends = python-xarray>=2022.6.0
+	optdepends = python-netcdf4: allow file I/O
+	optdepends = python-h5netcdfxarray-datatree-doc: allow file I/O
+	optdepends = python-zarr: allow file I/O
+	optdepends = python-xarray-datatree-doc: Documentation for xarray datatree
+
+pkgname = python-xarray-datatree-doc
+	pkgdesc = Documentation for xarray datatree
