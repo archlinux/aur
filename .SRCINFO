@@ -1,6 +1,6 @@
 pkgbase = redpanda-cpp
 	pkgdesc = A fast, lightweight, open source, and cross platform C/C++/GNU Assembly IDE
-	pkgver = 2.22
+	pkgver = 2.23
 	pkgrel = 1
 	url = https://github.com/royqh1979/RedPanda-CPP
 	arch = i686
@@ -26,7 +26,7 @@ pkgbase = redpanda-cpp
 	optdepends = deepin-terminal: run in terminal
 	optdepends = qterminal: run in terminal
 	optdepends = lxterminal: run in terminal
-	source = RedPanda-CPP-2.22.tar.gz::https://github.com/royqh1979/RedPanda-CPP/archive/refs/tags/v2.22.tar.gz
-	sha256sums = bd103627fe894e2f44689bad38e4bbd0390ca61522d2f88693ea0dce5b5a6799
+	source = RedPanda-CPP-2.23.tar.gz::https://github.com/royqh1979/RedPanda-CPP/archive/refs/tags/2.23.tar.gz
+	sha256sums = fc4ea8583a98e83618a90d55a814b8cf8c8ae267f24e122071c219d79bfcb0e3
 
 pkgname = redpanda-cpp
