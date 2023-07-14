@@ -4,7 +4,7 @@
 _pkgname="llm"
 _feature="cublas"
 pkgname="${_pkgname}-${_feature}-git"
-pkgver=r929.fc1c052
+pkgver=0.1.1.r429.gfc1c052
 pkgrel=1
 pkgdesc="An ecosystem of Rust libraries for working with large language models (with CUBlas)"
 arch=(any)
@@ -34,7 +34,7 @@ prepare() {
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
