@@ -6,12 +6,12 @@
 
 pkgname=linuxcnc-sim
 pkgver=2.7.15
-pkgrel=6
+pkgrel=7
 pkgdesc="It can interpret G-code and simulate a CNC machine (formerly EMC2)."
 arch=('i686' 'x86_64')
-license=('GPL2')
+license=('custom: unredestributable')
 url="http://linuxcnc.org/"
-depends=('bc' 'bwidget' 'tcl' 'tk' 'xorg-server' 'python2-imaging' 'tkimg' 'python2-gtkglext' 'tclx' 'boost' 'boost-libs' 'libtirpc' 'procps-ng' 'psmisc' 'python2-yapps2' 'python2-gobject2' 'boost-python2' 'boost-python2-libs')
+depends=('bc' 'bwidget' 'tcl' 'tk' 'xorg-server' 'python2-imaging' 'tkimg' 'python2-gtkglext' 'tclx' 'boost' 'boost-libs' 'libtirpc' 'procps-ng' 'psmisc' 'python2-yapps2' 'python2-gobject2' 'boost-python2' 'boost-python2-libs' 'libusb')
 install=$pkgname.install
 _gitname='linuxcnc'
 source=($_gitname::"git+https://github.com/LinuxCNC/linuxcnc.git#tag=v$pkgver" 'linuxcnc-sim.sh' 'libtirpc.patch')
@@ -20,7 +20,7 @@ md5sums=('SKIP'
          '3fb3f231cfefdfe1fa4d600ecbf4a3cb'
          '42770a1aa791172358700e4d5af335ed')
 makedepends=('git' 'intltool')
-PKGEXT='.pkg.tar'
+#PKGEXT='.pkg.tar'
 
 #pkgver() {
 #  cd "$srcdir/$_gitname"
@@ -52,5 +52,6 @@ package() {
 #  mv -v $pkgdir/usr/share/man/man9/abs.9.gz $pkgdir/usr/share/man/man9/linuxcnc_abs.9.gz
   cp -PR $srcdir/linuxcnc/share/menus $pkgdir/etc/xdg/
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/etc/profile.d/${pkgname}.sh"
+  install -D -m644 "${srcdir}/linuxcnc/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
