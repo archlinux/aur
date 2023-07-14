@@ -29,7 +29,7 @@ source=("${_pkgname}::hg+http://hg.code.sf.net/p/modem-manager-gui/code"
         "fix_segfault_on_DNS_entries.patch")
 
 sha256sums=('SKIP'
-	'2a21a7ab4ae78e4296a28e46a337eee042a8d7855a8af5d116ebcfcd989e9892')
+            '2a21a7ab4ae78e4296a28e46a337eee042a8d7855a8af5d116ebcfcd989e9892')
 
 pkgver() {
   cd "${_pkgname}"
