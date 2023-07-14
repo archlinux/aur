@@ -1,6 +1,6 @@
 pkgbase = tor-shadow
 	pkgdesc = An open-source network simulator/emulator hybrid (e.g. for Tor and Bitcoin)
-	pkgver = 2.5.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://shadow.github.io/
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = tor-shadow
 	optdepends = python-networkx
 	optdepends = python-scipy
 	optdepends = python-yaml
-	source = https://github.com/shadow/shadow/archive/v2.5.0.tar.gz
-	sha256sums = 896288a3b9790226b97d1fe63d3f9df4dc1ecfa0f21641342381ce877baecde0
+	source = https://github.com/shadow/shadow/archive/v3.0.0.tar.gz
+	sha256sums = da8962e9eafe0d6005316df8f2b6d238b87840504538d5cde2b83335f9d2664f
 
 pkgname = tor-shadow
