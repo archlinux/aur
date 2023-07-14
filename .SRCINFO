@@ -1,35 +1,73 @@
 pkgbase = harfbuzz-git
 	pkgdesc = OpenType text shaping engine
-	pkgver = 2.7.0
+	pkgver = 8.0.1.r1.5a65ede5d
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/HarfBuzz
 	arch = x86_64
 	license = MIT
-	makedepends = glib2
-	makedepends = freetype2
-	makedepends = graphite
-	makedepends = harfbuzz
+	checkdepends = python-fonttools
+	checkdepends = python-setuptools
 	makedepends = cairo
-	makedepends = icu
-	makedepends = gobject-introspection
-	makedepends = ragel
+	makedepends = chafa
+	makedepends = freetype2
 	makedepends = git
-	makedepends = python
+	makedepends = glib2
+	makedepends = gobject-introspection
+	makedepends = graphite
+	makedepends = gtk-doc
+	makedepends = icu
 	makedepends = meson
+	makedepends = python
+	makedepends = ragel
 	source = git+https://github.com/harfbuzz/harfbuzz
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = harfbuzz-git
-	optdepends = cairo: hb-view program
-	provides = harfbuzz
+	depends = libfreetype.so
+	depends = libgraphite2.so
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	optdepends = harfbuzz-utils: utilities
+	provides = harfbuzz=8.0.1.r1.5a65ede5d
 	provides = libharfbuzz.so
 	provides = libharfbuzz-subset.so
 	provides = libharfbuzz-gobject.so
 	conflicts = harfbuzz
 
+pkgname = harfbuzz-cairo-git
+	pkgdesc = OpenType text shaping engine - Cairo integration
+	depends = libcairo.so
+	depends = libharfbuzz.so
+	provides = harfbuzz-cairo=8.0.1.r1.5a65ede5d
+	provides = libharfbuzz-cairo.so
+	conflicts = harfbuzz-cairo
+
 pkgname = harfbuzz-icu-git
-	pkgdesc = OpenType text shaping engine (ICU integration)
-	provides = harfbuzz-icu
+	pkgdesc = OpenType text shaping engine - ICU integration
+	depends = libharfbuzz.so
+	depends = libicuuc.so
+	provides = harfbuzz-icu=8.0.1.r1.5a65ede5d
 	provides = libharfbuzz-icu.so
 	conflicts = harfbuzz-icu
 
+pkgname = harfbuzz-utils-git
+	pkgdesc = OpenType text shaping engine - Utilities
+	depends = harfbuzz
+	depends = harfbuzz-cairo
+	depends = libcairo.so
+	depends = libchafa.so
+	depends = libfreetype.so
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libharfbuzz-cairo.so
+	depends = libharfbuzz-gobject.so
+	depends = libharfbuzz-subset.so
+	depends = libharfbuzz.so
+	provides = harfbuzz-utils=8.0.1.r1.5a65ede5d
+	conflicts = harfbuzz-utils
+
+pkgname = harfbuzz-docs-git
+	pkgdesc = OpenType text shaping engine - Documentation
+	depends = 
+	provides = harfbuzz-docs=8.0.1.r1.5a65ede5d
+	conflicts = harfbuzz-docs
