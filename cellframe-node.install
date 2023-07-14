@@ -1,5 +1,4 @@
-post_install() {
-
+showmsg() {
     cat << EOF
 
     ########################################################################
@@ -16,7 +15,7 @@ post_install() {
     ##                                                                    ##
     ##      # systemctl enable --now cellframe-node.service               ##
     ##                                                                    ##
-    ##  Network configuration is set to full mode by default.            ##
+    ##  Network configuration is set to full mode by default.             ##
     ##  you can modify the network configuration parameters in:           ##
     ##                                                                    ##
     ##      # /opt/cellframe-node/etc/network/*.cfg                       ##
@@ -25,21 +24,41 @@ post_install() {
     ##                                                                    ##
     ##      # /opt/cellframe-node/etc/cellframe-node.cfg                  ##
     ##                                                                    ##
-    ##  Documentation: https://wiki.cellframe.net/en/home                 ##
+    ##  Documentation:                                                    ##
+    ##                                                                    ##
+    ##      https://wiki.cellframe.net/en/home                            ##
+    ##                                                                    ##
+    ##  Setup a master node:                                              ##
+    ##                                                                    ##
+    ##      https://wiki.cellframe.net/en/soft/masternode                 ##
     ##                                                                    ##
     ########################################################################
     ########################################################################
 EOF
 }
 
-pre_upgrade() {
+post_install() {
+    echo "==> Copying configuration files..."
+    cp /opt/cellframe-node/share/configs/cellframe-node.cfg.tpl /opt/cellframe-node/etc/cellframe-node.cfg
+    cp /opt/cellframe-node/share/configs/network/Backbone.cfg.tpl /opt/cellframe-node/etc/network/Backbone.cfg
+    echo "==> Generating default configuration files..."
+    sed -i 's|{DEBUG_MODE}|false|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{PREFIX}|/opt/cellframe-node|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{AUTO_ONLINE}|true|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{SERVER_ENABLED}|true|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{SERVER_ADDR}|0.0.0.0|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{SERVER_PORT}|8079|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{NOTIFY_SRV_ADDR}|127.0.0.1|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{NOTIFY_SRV_PORT}|8080|' /opt/cellframe-node/etc/cellframe-node.cfg
+    sed -i 's|{NODE_TYPE}|full|' /opt/cellframe-node/etc/network/Backbone.cfg
+    showmsg
+}
 
+pre_upgrade() {
     for _executables in cellframe-node-cli cellframe-node-tool cellframe-node
 	do  
 		if [[ -f "/usr/bin/$_executables" ]]; then unlink "/usr/bin/$_executables" && echo "==> Removing old symlink: ${_executables}"; fi
 	done
-
-	post_install
 }
 
 post_upgrade() {

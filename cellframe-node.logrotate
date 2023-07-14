@@ -1,9 +1,0 @@
-"/opt/cellframe-node/var/log/*.log" {
-  copytruncate
-  daily
-  maxsize 1G
-  rotate 4
-  compress
-  missingok
-  notifempty
-}
