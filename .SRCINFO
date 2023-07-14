@@ -1,7 +1,7 @@
 pkgbase = gpgfrontend
 	pkgdesc = OpenPGP crypto tool and gui frontend for modern GnuPG
-	pkgver = 2.1.0
-	pkgrel = 3
+	pkgver = 2.1.1
+	pkgrel = 1
 	url = https://github.com/saturneric/GpgFrontend
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = gpgfrontend
 	depends = libgpg-error
 	depends = qt6-base
 	depends = qt6-5compat
-	source = gpgfrontend::git+https://github.com/saturneric/GpgFrontend#tag=v2.1.0
+	source = gpgfrontend::git+https://github.com/saturneric/GpgFrontend#tag=v2.1.1
 	source = git+https://git.bktus.com/GpgFrontend/json.git
 	source = git+https://git.bktus.com/GpgFrontend/Qt-AES.git
 	source = git+https://git.bktus.com/GpgFrontend/spdlog.git

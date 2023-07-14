@@ -1,7 +1,7 @@
 # Maintainer: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="OpenPGP crypto tool and gui frontend for modern GnuPG"
 arch=('x86_64')
 url="https://github.com/saturneric/GpgFrontend"
@@ -16,19 +16,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
-_cherry_picks=(
-    # fix: unlfs for github
-    'e60faa7569b3188f59f358a8c94a030ed6ba4272')
 
 prepare() {
     cd "$pkgname"
-
-    git reset --hard
-    git cherry-pick --abort || true
-
-    for cp in "${_cherry_picks[@]}"; do
-        git cherry-pick --no-commit "$cp"
-    done
 
     git submodule init
     git config submodule.third_party/json.url "$srcdir/json"
