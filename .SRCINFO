@@ -1,0 +1,14 @@
+pkgbase = python-sphinxcontrib-srclinks
+	pkgdesc = Add source, edit, history, annotate links to GitHub or BitBucket
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/sphinx-contrib/jquery
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-srclinks/sphinxcontrib-srclinks-0.2.4.tar.gz
+	md5sums = 7ff5e43219b1bc11cff3f38698152bc3
+
+pkgname = python-sphinxcontrib-srclinks
+	depends = python-sphinx>=0.6
