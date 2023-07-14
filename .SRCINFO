@@ -1,6 +1,6 @@
 pkgbase = electron-fiddle
 	pkgdesc = The easiest way to get started with Electron
-	pkgver = 0.33.0
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://github.com/electron/fiddle/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = electron-fiddle
 	provides = electron-fiddle
 	conflicts = electron-fiddle-bin
 	conflicts = electron-fiddle-git
-	source = fiddle-0.33.0.src.tar.gz::https://github.com/electron/fiddle/archive/v0.33.0.tar.gz
-	sha256sums = e2f93d991aeab0b4bdd4575bb674571d161d919a0d6929ab033675301f6a1ac1
+	source = fiddle-0.34.0.src.tar.gz::https://github.com/electron/fiddle/archive/v0.34.0.tar.gz
+	sha256sums = 7834cd88495c95f8b962651f96e188929e4b6e7861b58760d342fea4b0d05e7c
 
 pkgname = electron-fiddle
