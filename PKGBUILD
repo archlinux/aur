@@ -1,10 +1,10 @@
-# Maintainer:  Sian1468 <setthawut DOT a AT protonmail DOT com>
+# Maintainer:  Sian1468 <sian1468-aur@.39011468.xyz>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 # Contributor: dcelasun <dcelasun@gmail.com>
 
 pkgname=plank-git
-pkgver=0.11.89.r11.g43fe952
+pkgver=0.11.89.r14.g6ca78b3
 pkgrel=1
 pkgdesc='Elegant, simple, clean dock'
 arch=('x86_64')
@@ -18,15 +18,15 @@ conflicts=('plank')
 source=('git+https://github.com/ricotz/plank.git')
 sha256sums=('SKIP')
 
+pkgver() {
+  cd plank
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
   cd plank
   sed 's/0.19.6/0.20/' -i configure.ac
   NOCONFIGURE=1 ./autogen.sh
-}
-
-pkgver() {
-  cd plank
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
