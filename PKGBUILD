@@ -31,7 +31,8 @@ prepare() {
   ar xv "${_debname}" > /dev/null
   tar -xf data.tar.gz > /dev/null
 
-  find ./{opt,usr} -type d -exec chmod 755 '{}' \;
+  find ./opt -type d -exec chmod 755 '{}' \;
+  find ./usr -type d -exec chmod 755 '{}' \;
   chmod 755 /opt/rplus-desktop/
 }
 
