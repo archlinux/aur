@@ -1,54 +1,43 @@
 # Maintainer: Gaël PORTAY <gael.portay@gmail.com>
 
-pkgname=iamroot
+pkgname=iamroot-riscv64
 pkgver=11
 pkgrel=1
-pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process'
+pkgdesc='Emulating the syscall chroot(2) in an unpriviliged process (riscv64)'
 arch=('x86_64')
-url="https://github.com/gportay/$pkgname"
+url="https://github.com/gportay/${pkgname%-riscv64}"
 license=('GPL')
-makedepends=('lib32-glibc'
-             'i386-musl'
-             'kernel-headers-musl-i386'
-             'musl'
-             'kernel-headers-musl'
+makedepends=('riscv64-linux-musl'
+             'riscv64-linux-gnu-gcc'
+             'riscv64-linux-musl-linux-api-headers'
              'git'
              'asciidoctor')
 checkdepends=('shellcheck')
 options=('!strip')
-source=("https://github.com/gportay/$pkgname/archive/v$pkgver.tar.gz")
+source=("https://github.com/gportay/${pkgname%-riscv64}/archive/v$pkgver.tar.gz")
 sha256sums=('fc8e1d618e62aed40064561e2a14f0c763e5b33d41c5f888e45042e561eddfe0')
 validpgpkeys=('8F3491E60E62695ED780AC672FA122CA0501CA71')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "${pkgname%-riscv64}-$pkgver"
 	ln -sf support/linux.mk makefile
 	touch local.mk
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	make i686/libiamroot-linux.so.2
-	make i686/libiamroot-musl-i386.so.1
-	make x86_64/libiamroot-linux-x86-64.so.2
-	make x86_64/libiamroot-musl-x86_64.so.1
-	make doc
+	cd "${pkgname%-riscv64}-$pkgver"
+	make CFLAGS= PREFIX= riscv64/libiamroot-linux-riscv64-lp64d.so.1
+	make CFLAGS= PREFIX= riscv64/libiamroot-musl-riscv64.so.1
 }
 
 check() {
-	cd "$pkgname-$pkgver"
+	cd "${pkgname%-riscv64}-$pkgver"
 	make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make PREFIX=/usr DESTDIR="$pkgdir" install-exec-i686-linux.2
-	make PREFIX=/usr DESTDIR="$pkgdir" install-exec-i686-musl-i386.1
-	make PREFIX=/usr DESTDIR="$pkgdir" install-exec-x86_64-linux-x86-64.2
-	make PREFIX=/usr DESTDIR="$pkgdir" install-exec-x86_64-musl-x86_64.1
-	make PREFIX=/usr DESTDIR="$pkgdir" libiamroot.so
-	make PREFIX=/usr DESTDIR="$pkgdir" install-exec
-	make PREFIX=/usr DESTDIR="$pkgdir" install-doc
-	make PREFIX=/usr DESTDIR="$pkgdir" install-bash-completion
+	cd "${pkgname%-riscv64}-$pkgver"
+	make PREFIX=/usr DESTDIR="$pkgdir" install-exec-riscv64-linux-riscv64-lp64d.1
+	make PREFIX=/usr DESTDIR="$pkgdir" install-exec-riscv64-musl-riscv64.1
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
