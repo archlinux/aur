@@ -1,6 +1,6 @@
 pkgbase = picoscope7beta
 	pkgdesc = PicoScope 7 Test and Measurment Early Access
-	pkgver = 7.1.6_1r15707
+	pkgver = 7.1.7_1r15874
 	pkgrel = 1
 	url = https://oem.picotech.com/p7beta/download
 	install = picoscope.install
@@ -22,10 +22,10 @@ pkgbase = picoscope7beta
 	optdepends = ps7b_libps6000: Support for PicoScope 6000 series
 	optdepends = ps7b_libps6000a: Support for PicoScope 6000a series
 	options = !strip
-	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/p/picoscope/picoscope_7.1.6-1r15707_amd64.deb
+	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/p/picoscope/picoscope_7.1.7-1r15874_amd64.deb
 	source = picoscope.install
 	source = 95-pico.rules
-	md5sums = 40c83cdfe3be36af0a6ad3ce8595d942
+	md5sums = 2b1d28111f64bbeca8d988adc2a40642
 	md5sums = 503df69f2e6001e3e9269970a552af13
 	md5sums = afedfca88c003ead013c18f26f789fd4
 
