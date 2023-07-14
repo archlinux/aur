@@ -1,16 +1,16 @@
 pkgbase = hyperplay
 	pkgdesc = An open source Web3 gaming platform
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/HyperPlay-Gaming/hyperplay-desktop-client
 	arch = x86_64
 	license = GPL3
 	depends = fuse2
 	depends = gawk
-	noextract = hyperplay-0.3.0.pacman
+	noextract = hyperplay-0.4.0.pacman
 	options = !strip
-	source = https://github.com/HyperPlay-Gaming/hyperplay-desktop-client/releases/download/v0.3.0/hyperplay-0.3.0.pacman
-	md5sums = 2acd7e5b8c40476e188a3d3348ca415c
+	source = https://github.com/HyperPlay-Gaming/hyperplay-desktop-client/releases/download/v0.4.0/hyperplay-0.4.0.pacman
+	md5sums = e9585f6aa18e3288d489042d4de2a074
 
 pkgname = hyperplay
 
