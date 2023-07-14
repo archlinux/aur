@@ -19,6 +19,7 @@ pkgbase = odio
 	depends = neroaacenc-bin
 	depends = libodiosacd
 	depends = lsdvd
+	depends = gsettings-desktop-schemas
 	options = !emptydirs
 	source = odio-23.7.1.tar.gz::https://github.com/tari01/odio/archive/23.7.1.tar.gz
 	md5sums = 54e427830fdae9bffcbee80b88a798f1
