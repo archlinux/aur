@@ -4,7 +4,7 @@
 # Contributor: J. Santiago Hirschfeld <jsantiagoh@yahoo.com.ar>
 
 pkgname=qalculate-gtk-nognome
-pkgver=3.14.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc='GTK+ frontend for libqalculate, without gnome dependencies'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('perl-xml-parser' 'rarian' 'intltool')
 replaces=('qalculate-gtk')
 provides=('qalculate-gtk')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Qalculate/qalculate-gtk/archive/v${pkgver}.tar.gz")
-sha256sums=('94dbcfaa6e43cfb5a401a6f58ceea743725ebf241665360529c61488595d846a')
+sha256sums=('1a04e8d14288924e7cbb2978582f2ae34f2f7269a84b3972d973a93c657df19e')
 
 build() {
   cd "${srcdir}/qalculate-gtk-${pkgver}"
