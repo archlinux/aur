@@ -1,0 +1,18 @@
+pkgbase = implay-bin
+	pkgdesc = Desktop media player built on top of mpv and imgui
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://tsl0922.github.io/ImPlay
+	arch = x86_64
+	license = GPL2
+	depends = gtk3
+	depends = gcc-libs
+	depends = glib2
+	depends = freetype2
+	depends = glibc
+	provides = implay
+	conflicts = implay
+	source = implay-1.4.0.deb::https://github.com/tsl0922/ImPlay/releases/download/1.4.0/ImPlay-1.4.0-Linux.deb
+	sha256sums = 4eb6307e15998d44875b472e94b4d09321f05fdb86cc7e59cfed93c0981feab5
+
+pkgname = implay-bin
