@@ -1,15 +1,15 @@
 pkgbase = sing-geoip
 	pkgdesc = sing-geoip database
-	pkgver = 20230612
+	pkgver = 20230712
 	pkgrel = 2
 	url = https://github.com/SagerNet/sing-geoip
 	arch = any
 	license = GPL3
-	source = 20230612.geoip-cn.db::https://github.com/SagerNet/sing-geoip/releases/download/20230612/geoip-cn.db
-	source = 20230612.geoip.db::https://github.com/SagerNet/sing-geoip/releases/download/20230612/geoip.db
-	source = 20230612.LICENSE::https://raw.githubusercontent.com/SagerNet/sing-geoip/20230612/LICENSE
-	sha256sums = 1fb7a9cb83ded674fc8bd2f50318a2a9df585e3e82263825d444cdef3de809f2
-	sha256sums = df17a493509ff22b70472c1750c6d2cd4dd35c6480a607e46ffccc22b83c38e4
+	source = 20230712.geoip-cn.db::https://github.com/SagerNet/sing-geoip/releases/download/20230712/geoip-cn.db
+	source = 20230712.geoip.db::https://github.com/SagerNet/sing-geoip/releases/download/20230712/geoip.db
+	source = 20230712.LICENSE::https://raw.githubusercontent.com/SagerNet/sing-geoip/20230712/LICENSE
+	sha256sums = 52e6efcc772f223521bf5fe8f5e0b05c45da86678ae3a89b354f8c01869339cc
+	sha256sums = c8f2a63757753f1f23400252f7a57aaff4312ec12c93c30996d20e71e4401257
 	sha256sums = 2f02b7486bcfa90d115c71a20437f3906b6fd5bef81c5dc0efd341399e89d0fd
 
 pkgname = sing-geoip
