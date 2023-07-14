@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tweeDEseq
-_pkgver=1.45.0
+_pkgver=1.46.2
 pkgname=r-${_pkgname,,}
-pkgver=1.45.0
+pkgver=1.46.2
 pkgrel=1
 pkgdesc='RNA-seq data analysis using the Poisson-Tweedie family of distributions'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0af8786b1d1e568184244f15c1b9f53f4b8837fcf494194f45c35854a3edd07f')
+sha256sums=('ad93238b3d00f8e3a37bc7c6f69a8f3f52ba602669966ab0759842ee214e7c1c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
