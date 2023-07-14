@@ -1,8 +1,9 @@
+
 #!/bin/bash
-_ELECTRON_VER=20
+_ELECTRON='/usr/bin/electron20'
 _ASAR="/opt/guiwrapper/guiwrapper.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron${_ELECTRON_VER} ${_ASAR} "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron${_ELECTRON_VER} ${_ASAR} --no-sandbox "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi

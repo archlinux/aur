@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=guiwrapper-bin
 pkgver=0.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple cross platform graphical user interface (GUI) wrapper to launch executable desktop applications"
 arch=('x86_64')
 url="https://github.com/frodal/GUIwrapper"
@@ -19,7 +19,7 @@ package() {
    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
    install -Dm755 "${srcdir}/GUIwrapper-linux-x64/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
    install -Dm644 "${srcdir}/GUIwrapper-linux-x64/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-   install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pimaps"
+   install -Dm644 "${srcdir}/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
    gendesk -f -n --icon "${pkgname%-bin}" --categories "Development;Utility" --name "GUIwrapper" --exec "/opt/${pkgname%-bin}/${pkgname%-bin}"
    install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
