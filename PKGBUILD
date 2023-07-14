@@ -12,8 +12,14 @@ makedepends=('git' 'cmake')
 conflicts=('ncpong')
 provides=('ncpong')
 options=(!strip)
-source=('git+https://github.com/nCine/ncPong')
-md5sums=('SKIP')
+source=(
+  'git+https://github.com/nCine/ncPong'
+  'git+https://github.com/nCine/ncPong-data'
+)
+md5sums=(
+  'SKIP'
+  'SKIP'
+)
 
 pkgver() {
   cd "$srcdir/ncPong"
@@ -21,10 +27,6 @@ pkgver() {
     git describe --tags --long --exact-match 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  git clone https://github.com/nCine/ncPong-data || git -C ncPong-data pull
 }
 
 build() {

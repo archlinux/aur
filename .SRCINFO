@@ -13,6 +13,8 @@ pkgbase = ncpong-git
 	conflicts = ncpong
 	options = !strip
 	source = git+https://github.com/nCine/ncPong
+	source = git+https://github.com/nCine/ncPong-data
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = ncpong-git
