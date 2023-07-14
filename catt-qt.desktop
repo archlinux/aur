@@ -2,7 +2,7 @@
 Comment="A control GUI for Chromecasts written using python3, catt api, pychromecast and PyQt5"
 Exec=/usr/bin/catt-qt
 GenericName=Catt GUI
-Icon=cattqt
+Icon=catt-qt
 Name=catt-qt
 NoDisplay=false
 StartupNotify=true

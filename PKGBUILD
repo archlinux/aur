@@ -1,6 +1,7 @@
 # Maintainer: Dashon Wells <me@me.me>
 
 pkgname='catt-qt'
+commonname='cattqt'
 pkgver=4.0
 pkgrel=1
 pkgdesc='A control GUI for Chromecasts written using python3, catt api, pychromecast and PyQt5.'
@@ -20,19 +21,19 @@ makedepends=('python-setuptools')
 # to be using flit to generate the setup.py file and I couldn't figure out
 # how to use it
 source=(
-https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz
+https://files.pythonhosted.org/packages/source/${commonname::1}/$commonname/$commonname-$pkgver.tar.gz
 "catt-qt.desktop"
 "setup.py"
 )
 sha256sums=(
 'b1a14f339844ab8dbccce5690a665ae0212f982313681b1a5fd3afcc6af3ea37'
-'5c9b0c9cfc688c489155b78719bb08b93122db297fdf334df1fb4d1d46b9d40d'
+'6e665e9b7d8fa281102eb52e701f4da02a865642f19146dc9bd4f45408566866'
 "bf371892e6960054dc26ca3ca3e88f3fe6ca2ed72b95a84d1a79c93cf900c4e8"
 )
 
 build() {
-  mv  setup.py "${srcdir}"/"${pkgname}"-"${pkgver}"
-  cd "${srcdir}"/"${pkgname}"-"${pkgver}"
+  mv  setup.py "${srcdir}"/"${commonname}"-"${pkgver}"
+  cd "${srcdir}"/"${commonname}"-"${pkgver}"
   python setup.py build
 }
 
@@ -41,7 +42,7 @@ package() {
  # install Desktop icon before switching directories
   install -Dm644 catt-qt.desktop "${pkgdir}"/usr/share/applications/catt-qt.desktop
 
-  cd "${srcdir}"/"${pkgname}"-"${pkgver}"
+  cd "${srcdir}"/"${commonname}"-"${pkgver}"
   install -Dm644 README.rst "${pkgdir}"/usr/share/doc/"${pkgname}"/README.rst
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
   install -Dm644 cattqt/chromecast.png "${pkgdir}"/usr/share/icons/"${pkgname}".png
