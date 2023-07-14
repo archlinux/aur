@@ -31,13 +31,11 @@ prepare() {
   ar xv "${_debname}" > /dev/null
   tar -xf data.tar.gz > /dev/null
 
-  #find ./{etc,usr} -type d -exec chmod 755 '{}' \;
-  find ./opt -type d -exec chmod 755 '{}' \;
-  sudo chmod 755 /opt/rplus-desktop/
+  find ./{opt,usr} -type d -exec chmod 755 '{}' \;
+  chmod 755 /opt/rplus-desktop/
 }
 
 package() {
   cd "$srcdir"
-  #cp -dpr --no-preserve=ownership {opt,usr} "$pkgdir"
-  cp -dpr --no-preserve=ownership ./opt "$pkgdir"
+  cp -dpr --no-preserve=ownership {opt,usr} "$pkgdir"
 }
