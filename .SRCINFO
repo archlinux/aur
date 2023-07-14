@@ -6,6 +6,7 @@ pkgbase = 123elf
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = lib32-ncurses
 	noextract = binutils-2.38.tar.xz
 	noextract = 123UNIX1.IMG
 	noextract = 123UNIX2.IMG
