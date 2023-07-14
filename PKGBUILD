@@ -5,7 +5,7 @@ _pkgname=dimRed
 _pkgver=0.2.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=3
 pkgdesc="A Framework for Dimensionality Reduction"
 arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,6 @@ checkdepends=(
   r-fastica
   r-igraph
   r-keras
-  r-nmf
   r-pcal1
   r-rann
   r-reticulate

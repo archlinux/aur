@@ -1,7 +1,7 @@
 pkgbase = r-dimred
 	pkgdesc = A Framework for Dimensionality Reduction
 	pkgver = 0.2.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://cran.r-project.org/package=dimRed
 	arch = any
 	license = GPL3
@@ -11,7 +11,6 @@ pkgbase = r-dimred
 	checkdepends = r-fastica
 	checkdepends = r-igraph
 	checkdepends = r-keras
-	checkdepends = r-nmf
 	checkdepends = r-pcal1
 	checkdepends = r-rann
 	checkdepends = r-reticulate
