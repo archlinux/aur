@@ -1,7 +1,7 @@
 pkgbase = reel_hub
 	pkgdesc = Gtk movie library browser written in rust
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.3.1
+	pkgrel = 1
 	url = https://github.com/ShiNoNeko47/reel_hub
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = reel_hub
 	depends = openssl
 	depends = pango
 	depends = mpv
-	source = reel_hub-v1.3.0.tar.gz::https://github.com/ShiNoNeko47/reel_hub/archive/refs/tags/v1.3.0.tar.gz
-	md5sums = 52761b78b7d0c1ce71edb96d6b0e419b
+	source = reel_hub-v1.3.1.tar.gz::https://github.com/ShiNoNeko47/reel_hub/archive/refs/tags/v1.3.1.tar.gz
+	md5sums = d55b3510f59ac10f3a38ae500a125a8d
 
 pkgname = reel_hub
