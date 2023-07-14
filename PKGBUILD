@@ -2,7 +2,7 @@
 
 pkgbase=decasify
 pkgname=("$pkgbase" "lua-$pkgbase" "lua53-$pkgbase" "lua52-$pkgbase" "lua51-$pkgbase")
-pkgver=0.2.4
+pkgver=0.3.0
 _rockrel=1
 pkgrel=1
 pkgdesc='cast strings to title-case according to locale specific style guides including Turkish'
@@ -20,7 +20,7 @@ makedepends=(cargo
              jq)
 _archive="$pkgbase-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('c7c25a07cb126efd296a473908e18cfce017982209a59a5e703609fc3aefdc1f')
+sha256sums=('60410dd313230569e16d8205bd1b4d317d6740b0815cecc2a6a98b0aad27d3b3')
 
 prepare() {
 	cd "$_archive"
