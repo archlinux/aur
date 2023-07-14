@@ -1,7 +1,7 @@
 # Maintainer: Chance Chen <ufbycd@163.com>
 
 pkgname=mounriver-studio-community
-pkgver=1.40
+pkgver=1.50
 pkgrel=1
 arch=('x86_64')
 pkgdesc="为 Eclipse 平台爱好者提供的一款 RISC-V 内核芯片集成开发环境，支持 WCH 系列 MCU 的工程模板、代码编译、下载、调试等功能。 "
@@ -9,7 +9,7 @@ url='www.mounriver.com'
 license=('GPL2' 'GPL3' 'custom')
 provides=()
 conflicts=()
-depends=('libftdi-compat' 'libusb' 'hidapi' 'libusb-compat' 'libudev.so')
+depends=('libftdi-compat' 'libusb' 'hidapi' 'libusb-compat' 'udev')
 makedepends=()
 optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
             'i2c-ch341-dkms: CH341 USB-I2C adapter driver'
@@ -20,7 +20,7 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver//./}.tar.xz"
         "udev-rules.patch")
-sha256sums=('4abfab4afa64aa41c209b4a3b05aaa5428be3a71430547226fbbc2901b52ed84'
+sha256sums=('713b6d5a343ec887ea7b27b3fc0f1acc93ba041b26af27a83e5dc85597e1ae5c'
             '7ed97c1a494ddbd5b6d594223bc35aa31949c416c0b23a3adabfda239b9f3c73')
 
 prepare() {
