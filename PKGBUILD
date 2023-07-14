@@ -1,7 +1,7 @@
 # Maintainer: Simon Hauser <Simon-Hauser@outlook.de>
 
 pkgname=premake-git
-pkgver=5.0.0.alpha15.r101.g9b8b035a
+pkgver=5.0.0.beta1.r225.gdc8dc0a4
 pkgrel=1
 pkgdesc='Simple build configuration and project generation tool using Lua'
 arch=(i686 x86_64)
