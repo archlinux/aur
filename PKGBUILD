@@ -4,7 +4,7 @@
 _pkgname="llm"
 _feature="clblast"
 pkgname="${_pkgname}-${_feature}-git"
-pkgver=r929.fc1c052
+pkgver=0.1.1.r429.gfc1c052
 pkgrel=1
 pkgdesc="An ecosystem of Rust libraries for working with large language models (with CLBlast)"
 arch=(any)
