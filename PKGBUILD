@@ -5,20 +5,21 @@
 
 pkgname="dooble-bin"
 pkgver=2023.07.15
-pkgrel=4
+pkgrel=5
 pkgdesc="Web browser based on QtWebEngine"
 arch=(x86_64)
 url="https://textbrowser.github.io/dooble/"
 _githuburl="https://github.com/textbrowser/${pkgname%-bin}"
 license=('custom')
 depends=(
-  'alsa-lib'
+  #'alsa-lib'
   'at-spi2-core'
   'bash'
+  'bzip2'
   'cairo'
-  'dbus'
-  'expat'
-  'fontconfig'
+  #'dbus'
+  #'expat'
+  #'fontconfig'
   'freetype2'
   'gcc-libs'
   'gdk-pixbuf2'
@@ -28,38 +29,42 @@ depends=(
   'gst-plugins-base-libs'
   'gstreamer'
   'gtk3'
-  'krb5'
-  'libassuan'
+  #'krb5'
+  #'libassuan'
   'libcups'
   'libdrm'
   'libglvnd'
-  'libgpg-error'
+  #'libgpg-error'
   'libx11'
   'libxcb'
-  'libxcomposite'
-  'libxdamage'
+  #'libxcomposite'
+  #'libxdamage'
   'libxext'
-  'libxfixes'
-  'libxi'
+  #'libxfixes'
+  #'libxi'
   'libxkbcommon'
   'libxkbcommon-x11'
-  'libxkbfile'
+  #'libxkbfile'
   'libxrandr'
-  'libxrender'
-  'libxshmfence'
-  'libxtst'
-  'nspr'
-  'nss'
+  #'libxrender'
+  #'libxshmfence'
+  #'libxtst'
+  #'nspr'
+  #'nss'
   'pango'
+  'postgresql-libs'
   'qt6-base'
   'qt6-charts'
   'qt6-declarative'
   'qt6-multimedia'
   'qt6-positioning'
+  'qt6-serialport'
   'qt6-svg'
+  'qt6-tools'
+  'qt6-wayland'
   'qt6-webchannel'
   'qt6-webengine'
-  'sqlite'
+  #'sqlite'
   'unixodbc'
   'wayland'
   'xcb-util-cursor'
@@ -91,9 +96,10 @@ package() {
   gendesk -f -n --icon "${pkgname%-bin}" --categories "Network" --name "Dooble" --exec "/opt/${pkgname%-bin}/${pkgname%-bin}.sh"
   install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
   # Fix incorrect permissions
-  find "${pkgdir}" -type f -perm 0664 -print0 | xargs -r0 chmod 0644
-  find "${pkgdir}" -type f -perm 0775 -print0 | xargs -r0 chmod 0755
-  find "${pkgdir}" -type d            -print0 | xargs -r0 chmod 0755
+  find "${pkgdir}" -type d              -print0 | xargs -r0 chmod 0755
+  find "${pkgdir}" -type f -perm 0664   -print0 | xargs -r0 chmod 0644
+  find "${pkgdir}" -type f -perm 0775   -print0 | xargs -r0 chmod 0755
+  find "${pkgdir}" -type f -name '*.so' -print0 | xargs -r0 chmod 0755
   # Add a symlink to dooble.sh for those who prefer to not use a mouse
   install -dm0755 "${pkgdir}/usr/bin"
   ln -sr "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
