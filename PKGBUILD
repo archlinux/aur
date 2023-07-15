@@ -1,7 +1,7 @@
 # Maintainer: Lev Gorodetskiy <aur@drsr.io>
 pkgname=unflac
 pkgrel=1
-pkgver=1.0
+pkgver=1.1
 pkgdesc='A command line tool for fast frame accurate audio image + cue sheet splitting.'
 arch=('x86_64')
 url="https://git.sr.ht/~ft/$pkgname"
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('go')
 source=("$url/archive/$pkgver.tar.gz")
 depends=('ffmpeg')
-sha256sums=('a09c54d04127707c3f556836590de5d2ae6a78bf17a99472b602ef983f89b7b4')
+sha256sums=('a79aa3625bae55286f382909a899f6304d71e7ce206e0234c40d944c74932caf')
 
 prepare(){
   cd "$pkgname-$pkgver"
