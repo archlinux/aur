@@ -3,7 +3,7 @@
 
 pkgname=linode-cli
 pkgver=5.41.2
-_pkgver=4.157.1
+_pkgver=4.158.1
 pkgrel=1
 pkgdesc="Linode API wrapper"
 arch=('any')
@@ -22,11 +22,10 @@ install="${pkgname}".install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}-${_pkgver}-openapi.yaml::https://www.${pkgname%%-*}.com/docs/api/openapi.yaml")
 sha512sums=('18944cd82cd049dda9da9db97dd74a4d4c863e219c333e6ff3c26d51c6b5316541b17dd31d30d6ce76612b4dcf5a925481086eafc16108dbb1b628b68e313a63'
-            '2796378b1d4f70e64ff69b88dc836713caad5e3026dd367f5d6e4ba2279db9aef1ddcf8d3d7c7b6955076537b41226c0aa79a60f6c9e4bae6ec4a267209c9434')
+            '1d8ff1c8342977c340d701dc3acbc50685e699b09d7da5d6d710afb7738f9fe63cac72384612f43dbffc0799467f571e5f05ae37b99d905c93359a8edc6a4a5a')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  
   # Manually set version number - thanks @the-k
   sed -i "s/\(version=\)version/\1\"${pkgver}\"/" setup.py
 }
