@@ -1,18 +1,18 @@
-# Maintainer: Newb I the Newbd <czbd hostedon o2 halfacolon pl>
+# Maintainer: Czcibor Bohusz-Dobosz <czbd@o2.pl>
 # Contributor: Martin Wimpress <code@flexion.org>
 
 _ver=1.16
 _pkgbase=caja
 pkgname=${_pkgbase}-gtk2
 pkgver=${_ver}.6
-pkgrel=1
-pkgdesc="File manager for the MATE desktop (GTK2 version)"
+pkgrel=2
+pkgdesc="File manager for the MATE desktop (older GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('exempi' 'gvfs' 'libexif' 'libsm' 'libunique' 'mate-desktop')
+depends=('exempi' 'gvfs' 'libexif' 'libsm' 'libunique' 'mate-desktop-gtk2')
 makedepends=('gobject-introspection' 'intltool')
-optdepends=('gstreamer: automatic media playback when mouseover')
+optdepends=('gstreamer: automatic media playback on mouseover')
 groups=('mate-gtk2')
 conflicts=("${_pkgbase}")
 provides=("${_pkgbase}")
@@ -31,7 +31,7 @@ build() {
     #https://bugzilla.gnome.org/show_bug.cgi?id=656231
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
-    make
+    make LDFLAGS="-Wl,--allow-multiple-definition"
 }
 
 package() {
