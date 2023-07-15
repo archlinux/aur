@@ -1,6 +1,6 @@
 pkgbase = asterisk-lts-20
 	pkgdesc = A complete PBX solution - LTS release 20 version
-	pkgver = 20.3.0
+	pkgver = 20.3.1
 	pkgrel = 1
 	url = https://www.asterisk.org
 	arch = x86_64
