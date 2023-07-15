@@ -1,7 +1,7 @@
 pkgbase = serioussam-nextencounter-mappack
 	pkgdesc = Serious Sam Classic Ancient Rome Next EncounterMapPack.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://archive.org/details/ne-ancient-rome
 	arch = i686
 	arch = x86_64
