@@ -1,34 +1,29 @@
-From 74a4dbfd9950a2713327cb5ea1de4bdeec8cabaf Mon Sep 17 00:00:00 2001
-From: Waffle <waffle.lapkin@gmail.com>
-Date: Tue, 19 May 2020 11:17:13 +0300
-Subject: [PATCH] Change instalation path to be Arch linux friendly
-
----
- src/AniLibria.pro | 11 +++--------
- 1 file changed, 3 insertions(+), 8 deletions(-)
-
-diff --git a/src/AniLibria.pro b/src/AniLibria.pro
-index 58fdddf..33da0f8 100644
---- a/src/AniLibria.pro
-+++ b/src/AniLibria.pro
-@@ -92,14 +92,9 @@ QML_IMPORT_PATH =
+--- a/src/AniLibria.pro	2023-07-11 13:54:13.614117100 +0300
++++ b/src/AniLibria.pro	2023-07-11 13:59:18.888876444 +0300
+@@ -268,23 +268,9 @@
  # Additional import path used to resolve QML modules just for Qt Quick Designer
  QML_DESIGNER_IMPORT_PATH =
  
 -# Default rules for deployment.
--qnx: target.path = /tmp/$${TARGET}/bin
--else: unix:!android: target.path = /opt/$${TARGET}/bin
--
+-!flatpak{
+-    qnx: target.path = /tmp/$${TARGET}/bin
+-    else: unix:!android: target.path = /opt/$${TARGET}/bin
+-}else{
+-    target.path = $$PREFIX/bin
+-}
 -!isEmpty(target.path) {
 -    unix: INSTALLS += target desktop $${UNIX_ICONS}
 -    else:macx: INSTALLS += target
+-}
+-
+-flatpak {
+-    metadata.path = $$PREFIX/share/metainfo
+-    metadata.files += ../tv.anilibria.anilibria.appdata.xml
+-    unix: INSTALLS += metadata
 -}
 +# Arch linux common instalation path
 +target.path = /usr/bin
 +INSTALLS += target desktop $${UNIX_ICONS}
  
  HEADERS += \
-     Classes/Models/changesmodel.h \
--- 
-2.26.2
-
+     Classes/ListModels/allmyanilibrialistmodel.h \

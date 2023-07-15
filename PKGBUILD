@@ -1,11 +1,15 @@
+# Maintainer: QwertyAdrian <me at qwertyadrian dot ru>
+# Contributor: Vikkir Tomoyan <vikkirtomoyan at tutanota dot com>
+# Contributor: Kirill Viks <kirillvix at yandex dot com>
+
 pkgname='anilibria-winmaclinux'
-pkgver=1.2.3
+pkgver=1.2.8
 pkgrel=1
 pkgdesc='AniLibria client for major desktop platforms (stable)'
 arch=('x86_64')
 url='https://github.com/anilibria/anilibria-winmaclinux'
 license=('GPL3')
-depends=('qt5-webview' 'gst-libav' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qt5-websockets' 'qt5-quickcontrols')
+depends=('hicolor-icon-theme' 'qt5-quickcontrols2' 'qt5-websockets')
 makedepends=('qt5-base' 'qt5-multimedia' 'qt5-svg')
 provides=("$pkgname")
 conflicts=("$pkgname-git")
@@ -14,10 +18,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/anilibria/anilibria-winmacl
 		"0001-Change-instalation-path-to-be-Arch-linux-friendly.patch"
 		"0001-disable-version-check.patch")
 
-sha256sums=('fcd9067ea92f1dcff561f932f1020269938371ec3826ffe109ae0f6e7a99b703'
+sha256sums=('e929c5de2efbd3e4838fcd3a7b3086a2371f323a54acae517ee6c945feb6c897'
             '31185f54427a0b14a4992672477fe2ae79aefd408c92ded1f3730bed55af4649'
-            '9d700ba5a449b1ec7e9403d61aaf334e30bc6499c412f2bdcc9bd862e7ad2ca4'
-            '4099873fd5e3276a3a59d56d035aecae67fb6cc4ce6ea64aec90c1149dc657c9')
+            'c4e0e43fc23d9e3da36eb0245c52e60ac893ecb86e0617bac999cc38adfd337b'
+            'a15f3aa3e7bc0fbaaa8da4f84beaecef06446e06bf42a8000e354e39ac6effe4')
 
 prepare() {
 	cd "$pkgname-$pkgver"
