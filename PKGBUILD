@@ -1,25 +1,25 @@
-# Maintainer: Daniel Milenov <icutum@gmail.com>
-# Contributor: Mario Sánchez <nullgaro@gmail.com>
-pkgname='ghfetch'
+# Maintainer: Daniel Milenov <nullgaro@gmail.com>
+# Contributor: Mario Sánchez <icutum@hotmail.com>
+pkgname='ghfetch-git'
 pkgver='1.2.5'
-pkgrel=4
-epoch=4
+pkgrel=5
 pkgdesc="A nice way to display CLI Github user / repo / organization info inspired in neofetch"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/ghfetch/ghfetch"
 license=('MIT')
-depends=('python>=3.6.0' 'python-pip' 'python-setuptools>=68.0.0' 'python-aiohttp>=3.8.4' 'python-requests>=2.28.2'  'python-pillow>=10.0.0' 'python-rich>=12.5.1')
+depends=('python' 'python-setuptools' 'python-aiohttp' 'python-requests' 'python-pillow' 'python-rich')
 makedepends=('git')
 source=('git+https://github.com/ghfetch/ghfetch.git')
 md5sums=('SKIP')
 
 build() {
-    cd "../../$pkgname"
+    cd "$pkgname"
     python setup.py build
 }
 
 package() {
     cd "$pkgname"
-    install -Dm755 ./ghfetch/main.py "$pkgdir/usr/bin/ghfetch"
-    install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm755 ./ghfetch/main.py "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 ./README.md "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm644 ./LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
