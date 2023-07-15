@@ -1,15 +1,11 @@
 pkgbase = pluto-jpl-eph-git
 	pkgdesc = Code to read, use, and manipulate JPL DE ephemeris data
 	pkgver = 20230411.5fccf11
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.projectpluto.com/jpl_eph.htm
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = pluto-lunar
-	optdepends = pluto-find-orb: Orbit determination from observations
-	optdepends = pluto-lunar: Basic astronomical functions for solar system ephemerides, time systems, coordinate systems, etc
-	optdepends = pluto-sat-code: Code for the SGP4/SDP4 satellite motion model, and for manipulating TLEs (Two-Line Elements)
 	provides = pluto-jpl-eph
 	source = git+https://github.com/Bill-Gray/jpl_eph.git
 	sha512sums = SKIP
