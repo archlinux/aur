@@ -1,19 +1,15 @@
-From 7a9bc3ec5655ee1ed0564329e286bfbb1e7c0a73 Mon Sep 17 00:00:00 2001
-From: howetuft <howetuft@gmail.com>
-Date: Sat, 26 Feb 2022 11:41:09 +0100
-Subject: [PATCH] Remove FindClang
+commit 94b0773df12fd66d05d73242b97b15d4feaaaed5
+Author: howetuft <howetuft@gmail.com>
+Date:   Sat Feb 26 11:41:09 2022 +0100
 
----
- src/cmake/Modules/FindClang.cmake | 123 ------------------------------
- 1 file changed, 123 deletions(-)
- delete mode 100644 src/cmake/Modules/FindClang.cmake
+    Remove FindClang
 
 diff --git a/src/cmake/Modules/FindClang.cmake b/src/cmake/Modules/FindClang.cmake
 deleted file mode 100644
-index c60f254e..00000000
+index 9f9c0a31b..000000000
 --- a/src/cmake/Modules/FindClang.cmake
 +++ /dev/null
-@@ -1,123 +0,0 @@
+@@ -1,126 +0,0 @@
 -# SPDX-License-Identifier: BSD-3-Clause
 -# Copyright 2011 Blender Foundation.
 -
@@ -96,6 +92,7 @@ index c60f254e..00000000
 -  clangAST
 -  clangLex
 -  clangBasic
+-  clangSupport
 -)
 -
 -set(_CLANG_LIBRARIES)
@@ -110,7 +107,9 @@ index c60f254e..00000000
 -    PATH_SUFFIXES
 -      lib64 lib
 -    )
--  list(APPEND _CLANG_LIBRARIES "${CLANG_${UPPERCOMPONENT}_LIBRARY}")
+-  if(CLANG_${UPPERCOMPONENT}_LIBRARY)
+-    list(APPEND _CLANG_LIBRARIES "${CLANG_${UPPERCOMPONENT}_LIBRARY}")
+-  endif()
 -endforeach()
 -
 -
@@ -137,6 +136,3 @@ index c60f254e..00000000
 -unset(_CLANG_SEARCH_DIRS)
 -unset(_CLANG_FIND_COMPONENTS)
 -unset(_CLANG_LIBRARIES)
--- 
-2.37.3
-

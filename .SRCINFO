@@ -1,7 +1,7 @@
 pkgbase = cycles-standalone
 	pkgdesc = Blender Cycles rendering engine, standalone version
-	pkgver = 3.5.0
-	pkgrel = 2
+	pkgver = 3.6.0
+	pkgrel = 0
 	url = https://github.com/blender/cycles.git
 	arch = x86_64
 	license = Apache
@@ -15,7 +15,7 @@ pkgbase = cycles-standalone
 	depends = pugixml
 	depends = freeglut
 	depends = openimageio
-	depends = tbb
+	depends = onetbb
 	depends = openvdb
 	depends = embree
 	depends = openimagedenoise
@@ -27,11 +27,11 @@ pkgbase = cycles-standalone
 	optdepends = cuda
 	optdepends = optix
 	provides = cycles
-	source = git+https://github.com/blender/cycles.git#commit=baefb5d379474fe95014420d6e5c472e17c637bd
+	source = git+https://github.com/blender/cycles.git#commit=e9f92cd6528a6042de8e5316b9f03ec3724561b6
 	source = 0001-Remove-FindClang.patch
 	source = cycles_wrap.sh
 	sha256sums = SKIP
-	sha256sums = 03bfcbcb9f6a78a3f59ef74ec77f09e43818c90cebf4f2c89b04ec608d341ce1
+	sha256sums = 582067f4413f1e70d45d311138c5662b53d88b3dd53e58ad9f4daf789a0be353
 	sha256sums = 00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96
 
 pkgname = cycles-standalone

@@ -10,21 +10,21 @@
 [[ -v CUDA_HOST_COMPILER ]] && _cuda_host_compiler=(${CUDA_HOST_COMPILER})
 
 pkgname=cycles-standalone
-pkgver=3.5.0
-pkgrel=2
+pkgver=3.6.0
+pkgrel=0
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
 url="https://github.com/blender/cycles.git"
 license=(Apache)
-depends=(libglvnd openexr glew pugixml freeglut openimageio tbb openvdb embree openimagedenoise opensubdiv openshadinglanguage alembic sdl2 google-glog)
+depends=(libglvnd openexr glew pugixml freeglut openimageio onetbb openvdb embree openimagedenoise opensubdiv openshadinglanguage alembic sdl2 google-glog)
 makedepends=(cmake git boost llvm)
 optdepends=(cuda optix)
 provides=(cycles)
-source=("git+https://github.com/blender/cycles.git#commit=baefb5d379474fe95014420d6e5c472e17c637bd"
+source=("git+https://github.com/blender/cycles.git#commit=e9f92cd6528a6042de8e5316b9f03ec3724561b6"
         0001-Remove-FindClang.patch
         cycles_wrap.sh)
 sha256sums=('SKIP'
-            '03bfcbcb9f6a78a3f59ef74ec77f09e43818c90cebf4f2c89b04ec608d341ce1'
+            '582067f4413f1e70d45d311138c5662b53d88b3dd53e58ad9f4daf789a0be353'
             '00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96')
 
 prepare() {
@@ -33,12 +33,15 @@ prepare() {
 }
 
 build() {
+    _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info.major,version_info.minor))")
+
     # Determine whether we can precompile CUDA kernels
     # (credits to blender-2.90-git package)
     _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
     if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
       _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
-                      -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
+                      -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
+                      -DPYTHON_VERSION=$_pyver)
       ((DISABLE_OPTIX)) || _CMAKE_FLAGS+=( -DOPTIX_ROOT_DIR=/opt/optix )
       if [[ -v _cuda_capability ]]; then
         _CMAKE_FLAGS+=( -DCYCLES_CUDA_BINARIES_ARCH="$(IFS=';'; echo "${_cuda_capability[*]}";)" )
