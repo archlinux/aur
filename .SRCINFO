@@ -1,6 +1,6 @@
 pkgbase = mission2teegarden-b
 	pkgdesc = a journey to the unexplored planet Teegarden b
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/LuckyTurtleDev/mission2teegarden-b
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = mission2teegarden-b
 	depends = alsa-lib
 	depends = gtk3
 	depends = libusb
-	source = mission2teegarden-b-0.1.0.tar.gz::https://github.com/LuckyTurtleDev/mission2teegarden-b/archive/refs/tags/v0.1.0.tar.gz
-	sha512sums = 5f3b97382cb13b7cf41a9fec69fe8bafe910be0682e2f70b9a4c816370522860d60da2345d8db0abc43cb2b956d84c4229c60bc00dc0054280c5790ec85cdf14
+	source = mission2teegarden-b-0.1.1.tar.gz::https://github.com/LuckyTurtleDev/mission2teegarden-b/archive/refs/tags/v0.1.1.tar.gz
+	sha512sums = 4f73c8c9343b5f8ff340ddb7aab723884e7f4dbf8b8d8ca637895ef36b0ec4b5b0cb298ab4acad8f78b5b0c5431fb61b39ebab06e6fc3f94e02ade1ee1df419a
 
 pkgname = mission2teegarden-b
