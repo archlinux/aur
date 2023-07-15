@@ -17,8 +17,8 @@ source=("$_pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
     cd "$srcdir/$_pkgname"
+    git describe --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
