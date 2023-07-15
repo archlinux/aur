@@ -5,6 +5,7 @@ pkgbase = libclc10-minimal
 	url = https://libclc.llvm.org/
 	arch = x86_64
 	license = MIT
+	makedepends = clang10-minimal
 	makedepends = llvm10-minimal
 	makedepends = cmake
 	makedepends = ninja
