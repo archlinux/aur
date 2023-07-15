@@ -1,6 +1,6 @@
 pkgbase = archalien-git
 	pkgdesc = A tool you can use to convert a Debian package .deb to an Arch Linux package.
-	pkgver = 7e909c9
+	pkgver = c563489
 	pkgrel = 1
 	url = https://github.com/Asher256/archalien
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = archalien-git
 	makedepends = git
 	depends = python
 	provides = archalien
-	source = git://github.com/Asher256/archalien
+	source = git+https://github.com/Asher256/archalien.git
 	sha256sums = SKIP
 
 pkgname = archalien-git
-
