@@ -1,12 +1,16 @@
 _pkgname=jpl_eph
 pkgname=pluto-jpl-eph-git
 pkgver=20230411.5fccf11
-pkgrel=2
+pkgrel=3
 pkgdesc="Code to read, use, and manipulate JPL DE ephemeris data"
 arch=(x86_64)
 url="http://www.projectpluto.com/jpl_eph.htm"
 license=(GPL3)
-makedepends=('git')
+provides=(pluto-jpl-eph)
+makedepends=('git' 'pluto-lunar')
+optdepends=('pluto-find-orb: Orbit determination from observations'
+	    'pluto-lunar: Basic astronomical functions for solar system ephemerides, time systems, coordinate systems, etc'
+            'pluto-sat-code: Code for the SGP4/SDP4 satellite motion model, and for manipulating TLEs (Two-Line Elements)')
 source=("git+https://github.com/Bill-Gray/jpl_eph.git")
 sha512sums=('SKIP')
 
@@ -18,6 +22,7 @@ pkgver() {
 build() {
   cd "$srcdir/${_pkgname}"
   make
+  make install
 }
 
 package() {
