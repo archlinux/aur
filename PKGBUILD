@@ -1,18 +1,18 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="stampnyaa-bin"
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A simple desktop app for downloading and using LINE stickers in chat apps like Discord."
 arch=("x86_64")
 url="https://github.com/MarvNC/StampNyaa"
 license=('MIT')
-depends=('electron')
+depends=('electron25')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('a0a4e4b116c53b096a97ebf93c117b920931d1691d8a83705a88ffc3417ae327'
-            '5199f48d8cc17fa79a105ea6b6b1afa467845832180357de82b223eb4db124bb')
+sha256sums=('f708c3791a5458528d53aaee640425a51f83908dca7098b961e023ba552c1008'
+            '06ee104ef1fc540df3743777db630a8cbf447e320e97a753c61f4f04bb1ebd0f')
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
