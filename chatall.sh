@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron25
+_ASAR="/opt/chatall/chatall.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron25 /opt/chatall/chatall.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron25 --no-sandbox /opt/chatall/chatall.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
