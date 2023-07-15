@@ -1,12 +1,13 @@
 pkgbase = r-corpcor
 	pkgdesc = Efficient Estimation of Covariance and (Partial) Correlation
 	pkgver = 1.6.10
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=corpcor
 	arch = any
-	license = GPL
+	license = GPL3
 	depends = r
 	source = https://cran.r-project.org/src/contrib/corpcor_1.6.10.tar.gz
+	md5sums = e048dc1fb5bb9ffee6d22a3ea24fe673
 	sha256sums = 71a04c503c93ec95ddde09abe8c7ddeb36175b7da76365a14b27066383e10e09
 
 pkgname = r-corpcor
