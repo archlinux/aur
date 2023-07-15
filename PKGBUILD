@@ -1,14 +1,13 @@
 _pkgname=lunar
 pkgname=pluto-lunar-git
 pkgver=20230614.bb05de6
-pkgrel=4
+pkgrel=5
 pkgdesc="Basic astronomical functions for solar system ephemerides, time systems, coordinate systems, etc"
 arch=(x86_64)
 url="https://www.projectpluto.com/source.htm"
 license=(GPL2)
-makedepends=('git' 'pluto-jpl-eph')
+makedepends=('git')
 provides=(pluto-lunar)
-optdepends=('pluto-find-orb: Orbit determination from observations')
 source=("git+https://github.com/Bill-Gray/lunar.git")
 sha512sums=('SKIP')
 
@@ -19,7 +18,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}"
-  make integrat
   make all
 }
 

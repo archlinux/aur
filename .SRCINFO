@@ -1,13 +1,11 @@
 pkgbase = pluto-lunar-git
 	pkgdesc = Basic astronomical functions for solar system ephemerides, time systems, coordinate systems, etc
 	pkgver = 20230614.bb05de6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.projectpluto.com/source.htm
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = pluto-jpl-eph
-	optdepends = pluto-find-orb: Orbit determination from observations
 	provides = pluto-lunar
 	source = git+https://github.com/Bill-Gray/lunar.git
 	sha512sums = SKIP
