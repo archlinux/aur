@@ -1,7 +1,7 @@
 pkgbase = pluto-jpl-eph-git
 	pkgdesc = Code to read, use, and manipulate JPL DE ephemeris data
 	pkgver = 20230411.5fccf11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.projectpluto.com/jpl_eph.htm
 	arch = x86_64
 	license = GPL3
