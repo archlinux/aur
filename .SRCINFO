@@ -1,0 +1,12 @@
+pkgbase = go-garble
+	pkgdesc = Obfuscate Go builds
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/burrowers/garble
+	arch = x86_64
+	license = BSD3
+	makedepends = go
+	source = garble-0.10.1.tar.gz::https://github.com/burrowers/garble/archive/v0.10.1.tar.gz
+	b2sums = 72d7b5ff975b36e75e2ff7015130494efc71617ffa25086bac4f68d86a09f43ac19fd117cd237f4ed127fc906c728d429a11b8ea27d4065a67a2d8fe8c2acf71
+
+pkgname = go-garble
