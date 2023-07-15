@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=pipdeptree
-pkgver=2.9.6
+pkgver=2.10.0
 pkgrel=1
 arch=(any)
 pkgdesc='Command line utility to show dependency tree of Python packages'
@@ -11,7 +11,7 @@ makedepends=(python-build python-hatchling python-hatch-vcs python-installer pyt
 optdepends=('python-graphviz: for generating graphical output')
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('f815caf165e89c576ce659b866c7a82ae4590420c2d020a92d32e45097f8bc73')
+sha256sums=('4b038029e823635f8d2aa55bf881e5b675082ec8f9f4365ee7ce9bb48330854b')
 
 
 prepare() {
