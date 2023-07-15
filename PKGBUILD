@@ -22,7 +22,7 @@ optdepends=('libxau: for Anaconda Navigator support'
   'libxfixes: for Anaconda Navigator support'
   'libxrandr: for Anaconda Navigator support'
   'libxrender: for Anaconda Navigator support'
-  'mesa-libgl: for Anaconda Navigator support'
+  'mesa: for Anaconda Navigator support'
   'alsa-lib: for Anaconda Navigator support'
   'libglvnd: for Anaconda Navigator support'
   'xdg-utils: for ')
