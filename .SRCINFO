@@ -1,0 +1,21 @@
+pkgbase = seqan3
+	pkgdesc = The modern C++ library for sequence analysis https://doi.org/10.1016/j.jbiotec.2017.07.017
+	pkgver = 3.2.0
+	pkgrel = 2
+	url = http://www.seqan.de
+	arch = any
+	license = CCPL
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = bzip2
+	makedepends = zlib
+	makedepends = glibc
+	makedepends = gcc-libs
+	makedepends = cereal
+	source = git+https://github.com/seqan/seqan3.git#tag=3.2.0
+	source = sdsl-lite.patch::https://github.com/xxsds/sdsl-lite/commit/607019d52b10bb8eb399e6fc9578eaf0a150f9c4.patch
+	sha256sums = SKIP
+	sha256sums = e690a0f2b27a608edb683c871ba87e387d5cd5e323bc39944302131b988eda13
+
+pkgname = seqan3
