@@ -1,7 +1,7 @@
 pkgbase = kana-git
 	pkgdesc = Command to transliterate hiragana and katakana to ASCII
 	pkgver = r6.3eb1e80
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/robpike/kana
 	arch = i686
 	arch = x86_64
