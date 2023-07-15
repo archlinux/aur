@@ -6,7 +6,7 @@
 pkgname=gnatstudio
 pkgdesc='GNAT Programming Studio for Ada.'
 pkgver=24.0w
-pkgrel=1
+pkgrel=2
 epoch=1
 
 arch=(i686 x86_64)
@@ -44,7 +44,7 @@ sha256sums=(ae17d963f063657fe665be243362eccb6b3f122fe846fe64dd1270775120fb52
             5607c451dbf63dba346eeb2ef602a86321d310bdfb6ef777870bb32761b596d5
             7f5196621ca8f1dfe15ada96af63b10d70a56727c103459864a0e3f6b510d182
             b4701fa61cdd64f2fb689e68de06e209d2bb809fd5d98d81d9ccd7a77c6caff8
-            6b128ae9c7c9253cb71debd162380d4a481ef748231bcb822f78b3c961e961da
+            f29080c1d283929cedaa630df27d1688b2099ab5f82601fbf98028a528e935ae
             e21894fc1a0fbc90c25b0c524969703d685f283adc09225744d9013de3b00533)
 
 

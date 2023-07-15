@@ -1233,6 +1233,14 @@ Alphabetical List of All Switches
   marker is specified, the callgraph is decorated with information about
   dynamically allocated objects.
 
+.. index:: -fdiagnostics-format   (gcc)
+
+:switch:`-fdiagnostics-format=json`
+  Makes GNAT emit warning and error messages as JSON. Inhibits printing of
+  text warning and errors messages except if :switch:`-gnatv` or
+  :switch:`-gnatl` are present. Uses absolute file paths when used along
+  :switch:`-gnatef`.
+
 
 .. index:: -fdump-scos  (gcc)
 
@@ -1380,6 +1388,12 @@ Alphabetical List of All Switches
   Allow full Ada 2012 features (same as :switch:`-gnat12`)
 
 
+.. index:: -gnat2022  (gcc)
+
+:switch:`-gnat2022`
+  Allow full Ada 2022 features
+
+
 :switch:`-gnat83`
   Enforce Ada 83 restrictions.
 
@@ -1441,7 +1455,7 @@ Alphabetical List of All Switches
   Check syntax and semantics only (no code generation attempted). When the
   compiler is invoked by ``gnatmake``, if the switch :switch:`-gnatc` is
   only given to the compiler (after :switch:`-cargs` or in package Compiler of
-  the project file, ``gnatmake`` will fail because it will not find the
+  the project file), ``gnatmake`` will fail because it will not find the
   object file after compilation. If ``gnatmake`` is called with
   :switch:`-gnatc` as a builder switch (before :switch:`-cargs` or in package
   Builder of the project file) then ``gnatmake`` will not fail because
@@ -1463,9 +1477,9 @@ Alphabetical List of All Switches
 
 :switch:`-gnatd`
   Specify debug options for the compiler. The string of characters after
-  the :switch:`-gnatd` specify the specific debug options. The possible
-  characters are 0-9, a-z, A-Z, optionally preceded by a dot. See
-  compiler source file :file:`debug.adb` for details of the implemented
+  the :switch:`-gnatd` specifies the specific debug options. The possible
+  characters are 0-9, a-z, A-Z, optionally preceded by a dot or underscore.
+  See compiler source file :file:`debug.adb` for details of the implemented
   debug options. Certain debug options are relevant to applications
   programmers, and these are documented at appropriate points in this
   users guide.
@@ -1484,9 +1498,10 @@ Alphabetical List of All Switches
 
 :switch:`-gnateA`
   Check that the actual parameters of a subprogram call are not aliases of one
-  another. To qualify as aliasing, the actuals must denote objects of a composite
-  type, their memory locations must be identical or overlapping, and at least one
-  of the corresponding formal parameters must be of mode OUT or IN OUT.
+  another. To qualify as aliasing, their memory locations must be identical or
+  overlapping, at least one of the corresponding formal parameters must be of
+  mode OUT or IN OUT, and at least one of the corresponding formal parameters
+  must have its parameter passing mechanism not specified.
 
 
   .. code-block:: ada
@@ -1568,7 +1583,8 @@ Alphabetical List of All Switches
 .. index:: -gnatef  (gcc)
 
 :switch:`-gnatef`
-  Display full source path name in brief error messages.
+  Display full source path name in brief error messages and absolute paths in
+  :switch:`-fdiagnostics-format=json`'s output.
 
 
 .. index:: -gnateF  (gcc)
@@ -1735,8 +1751,7 @@ Alphabetical List of All Switches
   in bits.`
 
   ``Max_Unaligned_Field`` is the maximum size for unaligned bit field, which is
-  64 for the majority of GCC targets (but can be different on some targets like
-  AAMP).
+  64 for the majority of GCC targets (but can be different on some targets).
 
   ``Strict_Alignment`` is the equivalent of GCC macro ``STRICT_ALIGNMENT``
   documented as follows: `Define this macro to be the value 1 if instructions
@@ -1773,10 +1788,11 @@ Alphabetical List of All Switches
 
 
   where ``name`` is the string name of the type (which can have
-  single spaces embedded in the name (e.g. long double), ``digs`` is
+  single spaces embedded in the name, e.g. long double), ``digs`` is
   the number of digits for the floating-point type, ``float_rep`` is
-  the float representation (I/V/A for IEEE-754-Binary, Vax_Native,
-  AAMP), ``size`` is the size in bits, ``alignment`` is the
+  the float representation (I for IEEE-754-Binary, which is
+  the only one supported at this time),
+  ``size`` is the size in bits, ``alignment`` is the
   alignment in bits. The name is followed by at least two blanks, fields
   are separated by at least one blank, and a LF character immediately
   follows the alignment field.
@@ -1896,7 +1912,7 @@ Alphabetical List of All Switches
 .. index:: -gnati  (gcc)
 
 :switch:`-gnati{c}`
-  Identifier character set (``c`` = 1/2/3/4/8/9/p/f/n/w).
+  Identifier character set (``c`` = 1/2/3/4/5/9/p/8/f/n/w).
   For details of the possible selections for ``c``,
   see :ref:`Character_Set_Control`.
 
@@ -1997,8 +2013,7 @@ Alphabetical List of All Switches
   by the front end and will be visible in the
   :switch:`-gnatG` output.
 
-  When using a gcc-based back end (in practice this means using any version
-  of GNAT other than the JGNAT, .NET or GNAAMP versions), then the use of
+  When using a gcc-based back end, then the use of
   :switch:`-gnatN` is deprecated, and the use of :switch:`-gnatn` is preferred.
   Historically front end inlining was more extensive than the gcc back end
   inlining, but that is no longer the case.
@@ -2376,7 +2391,7 @@ format:
 :switch:`-gnatv`
   The ``v`` stands for verbose.
   The effect of this setting is to write long-format error
-  messages to :file:`stdout` (the standard output file.
+  messages to :file:`stdout` (the standard output file).
   The same program compiled with the
   :switch:`-gnatv` switch would generate:
 
@@ -2476,7 +2491,7 @@ format:
   brief format error messages to :file:`stderr` (the standard error
   file) as well as the verbose
   format message or full listing (which as usual is written to
-  :file:`stdout` (the standard output file).
+  :file:`stdout`, the standard output file).
 
 
 .. index:: -gnatm  (gcc)
@@ -3247,7 +3262,7 @@ of the pragma in the :title:`GNAT_Reference_manual`).
 :switch:`-gnatw.I`
   *Disable warnings on overlapping actuals.*
 
-  This switch disables warnings on overlapping actuals in a call..
+  This switch disables warnings on overlapping actuals in a call.
 
 
 .. index:: -gnatwj  (gcc)
@@ -3424,7 +3439,10 @@ of the pragma in the :title:`GNAT_Reference_manual`).
   with no size clause. The guess in both cases is that 2**x was intended
   rather than x. In addition expressions of the form 2*x for small x
   generate a warning (the almost certainly accurate guess being that
-  2**x was intended). The default is that these warnings are given.
+  2**x was intended). This switch also activates warnings for negative
+  literal values of a modular type, which are interpreted as large positive
+  integers after wrap-around. The default is that these warnings are given.
+
 
 
 .. index:: -gnatw.M  (gcc)
@@ -3566,6 +3584,25 @@ of the pragma in the :title:`GNAT_Reference_manual`).
   ordering.
 
 
+.. index:: -gnatw_p  (gcc)
+
+:switch:`-gnatw_p`
+  *Activate warnings for pedantic checks.*
+
+  This switch activates warnings for the failure of certain pedantic checks.
+  The only case currently supported is a check that the subtype_marks given
+  for corresponding formal parameter and function results in a subprogram
+  declaration and its body denote the same subtype declaration. The default
+  is that such warnings are not given.
+
+.. index:: -gnatw_P  (gcc)
+
+:switch:`-gnatw_P`
+  *Suppress warnings for pedantic checks.*
+
+  This switch suppresses warnings on violations of pedantic checks.
+
+
 .. index:: -gnatwq  (gcc)
 .. index:: Parentheses, warnings
 
@@ -3667,6 +3704,8 @@ of the pragma in the :title:`GNAT_Reference_manual`).
 
   * Comparison of an object or (unary or binary) operation of boolean type to
     an explicit True value.
+
+  * Import of parent package.
 
   The default is that warnings for redundant constructs are not given.
 
@@ -4142,16 +4181,16 @@ of the pragma in the :title:`GNAT_Reference_manual`).
   This switch enables most warnings from the GCC back end.
   The code generator detects a number of warning situations that are missed
   by the GNAT front end, and this switch can be used to activate them.
-  The use of this switch also sets the default front end warning mode to
-  :switch:`-gnatwa`, that is, most front end warnings activated as well.
+  The use of this switch also sets the default front-end warning mode to
+  :switch:`-gnatwa`, that is, most front-end warnings are activated as well.
 
 
 .. index:: -w (gcc)
 
 :switch:`-w`
   Conversely, this switch suppresses warnings from the GCC back end.
-  The use of this switch also sets the default front end warning mode to
-  :switch:`-gnatws`, that is, front end warnings suppressed as well.
+  The use of this switch also sets the default front-end warning mode to
+  :switch:`-gnatws`, that is, front-end warnings are suppressed as well.
 
 
 .. index:: -Werror (gcc)
@@ -4160,6 +4199,9 @@ of the pragma in the :title:`GNAT_Reference_manual`).
   This switch causes warnings from the GCC back end to be treated as
   errors.  The warning string still appears, but the warning messages are
   counted as errors, and prevent the generation of an object file.
+  The use of this switch also sets the default front-end warning mode to
+  :switch:`-gnatwe`, that is, front-end warning messages and style check
+  messages are treated as errors as well.
 
 
 A string of warning parameters can be used in the same parameter. For example::
@@ -4620,8 +4662,18 @@ checks to be performed. The following checks are defined:
   in the string after :switch:`-gnaty`
   then proper indentation is checked, with the digit indicating the
   indentation level required. A value of zero turns off this style check.
-  The general style of required indentation is as specified by
-  the examples in the Ada Reference Manual. Full line comments must be
+  The rule checks that the following constructs start on a column that is
+  a multiple of the alignment level:
+
+  * beginnings of declarations (except record component declarations)
+    and statements;
+
+  * beginnings of the structural components of compound statements;
+
+  * ``end`` keyword that completes the declaration of a program unit declaration
+    or body or that completes a compound statement.
+
+  Full line comments must be
   aligned with the ``--`` starting on a column that is a multiple of
   the alignment level, or they may be aligned the same way as the following
   non-blank line (this is useful when full line comments appear in the middle
@@ -5115,7 +5167,7 @@ checks to be performed. The following checks are defined:
 
 
 .. end of switch description (leave this comment to ease automatic parsing for
-.. GNAT Studio
+.. GNAT Studio)
 
 In the above rules, appearing in column one is always permitted, that is,
 counts as meeting either a requirement for a required preceding space,
@@ -5499,15 +5551,23 @@ indicate Ada 83 compatibility mode.
   for further information).
 
 
+.. index:: -gnat2022  (gcc)
+.. index:: Ada 2022 mode
+
+:switch:`-gnat2022` (Ada 2022 mode)
+  This switch directs the compiler to implement the Ada 2022 version of the
+  language.
+
+
 .. index:: -gnatX  (gcc)
 .. index:: Ada language extensions
 .. index:: GNAT extensions
 
 :switch:`-gnatX` (Enable GNAT Extensions)
   This switch directs the compiler to implement the latest version of the
-  language (currently Ada 2012) and also to enable certain GNAT implementation
+  language (currently Ada 2022) and also to enable certain GNAT implementation
   extensions that are not part of any Ada standard. For a full list of these
-  extensions, see the GNAT reference manual.
+  extensions, see the GNAT reference manual, ``Pragma Extensions_Allowed``.
 
 
 .. _Character_Set_Control:
@@ -5660,8 +5720,7 @@ Subprogram Inlining Control
   This switch activates front-end inlining which also
   generates additional dependencies.
 
-  When using a gcc-based back end (in practice this means using any version
-  of GNAT other than the JGNAT, .NET or GNAAMP versions), then the use of
+  When using a gcc-based back end, then the use of
   :switch:`-gnatN` is deprecated, and the use of :switch:`-gnatn` is preferred.
   Historically front end inlining was more extensive than the gcc back end
   inlining, but that is no longer the case.
@@ -5958,10 +6017,10 @@ Debugging Control
 
 :switch:`-gnatx`
   Normally the compiler generates full cross-referencing information in
-  the :file:`ALI` file. This information is used by a number of tools,
-  including ``gnatfind`` and ``gnatxref``. The :switch:`-gnatx` switch
-  suppresses this information. This saves some space and may slightly
-  speed up compilation, but means that these tools cannot be used.
+  the :file:`ALI` file. This information is used by a number of tools.
+  The :switch:`-gnatx` switch suppresses this information. This saves some space
+  and may slightly speed up compilation, but means that tools depending
+  on this information cannot be used.
 
 
 .. index:: -fgnat-encodings  (gcc)
@@ -7561,9 +7620,9 @@ which might help you in case your project has a lot of subdirectories.
   ##    Each of these csc is put in its own directory.
   ##    Their name are referenced by the directory names.
   ##    They will be compiled into shared library (although this would also work
-  ##    with static libraries
+  ##    with static libraries)
   ##  - The main program (and possibly other packages that do not belong to any
-  ##    csc is put in the top level directory (where the Makefile is).
+  ##    csc) is put in the top level directory (where the Makefile is).
   ##       toplevel_dir __ first_csc  (sources) __ lib (will contain the library)
   ##                    \\_ second_csc (sources) __ lib (will contain the library)
   ##                    \\_ ...
