@@ -1,0 +1,37 @@
+pkgbase = chrome-pass-git
+	pkgdesc = Interface programme for the chrome extension 'chrome-pass' for zx2c4's 'pass' password manager.
+	pkgver = 0.3.0+5.r56.20230319.240e165
+	pkgrel = 1
+	url = https://github.com/hsanson/chrome-pass
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = python>=3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = chrome-pass::git+https://github.com/hsanson/chrome-pass.git
+	source = chrome-pass-hostapp.install
+	sha256sums = SKIP
+	sha256sums = 2d6c3d84a8db2ab15fa0cd17abdd258dbf93b17fe5f9ab8a8521bd077cad2701
+
+pkgname = chrome-pass-hostapp-git
+	pkgdesc = Interface programme needed by the 'chrome-pass' chrome extension for zx2c4's 'pass' password manager.
+	install = chrome-pass-hostapp.install
+	depends = pass
+	depends = pinentry
+	depends = python>=3
+	depends = python-gnupg
+	optdepends = chrome-pass>=0.3.0: The browser extension this hostapp is for (can be installed as Arch Linux package or by the user via chrome webstore).
+	optdepends = chrome-pass<0.3.1
+	optdepends = chrome-pass-docfiles: The documentation files from the source repository of this software.
+	provides = chrome-pass-hostapp=0.3.0+5.r56.20230319.240e165
+	conflicts = chrome-pass-hostapp
+
+pkgname = chrome-pass-docfiles-git
+	pkgdesc = Documentation files for 'chrome-pass' and 'chrome-pass-hostapp'.
+	depends = 
+	optdepends = chrome-pass: The software this documentation is for.
+	optdepends = chrome-pass-hostapp: The software this documentation is for.
+	provides = chrome-pass-docfiles=0.3.0+5.r56.20230319.240e165
+	conflicts = chrome-pass-docfiles

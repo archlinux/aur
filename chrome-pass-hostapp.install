@@ -1,0 +1,23 @@
+post_install() {
+  printf '\n'
+  printf '%s\n' "===‌ Post installation requirement for 'chrome-pass-hostapp' ==="
+  printf '\n'
+  printf '%s\n' "After installing the 'chrome-pass' browser extension,"
+  printf '%s\n' "the host-app needs to be registered with this add-on."
+  printf '%s\n' "To do so, you need to run as the user who uses the"
+  printf '%s\n' "extension the following command from the terminal:"
+  printf '\n'
+  printf '%s\n' "  nativePass install [extension ID]"
+  printf '\n'
+  printf '%s\n' "where '[extension ID]' is the ID the 'chrome-pass'"
+  printf '%s\n' "extension has in your browser."
+  printf '%s\n' "To retrieve the ID, open inside the browser the url"
+  printf '%s\n' "chrome://extensions, check the Developer mode and"
+  printf '%s\n' "click on 'Details' for the 'chrome-pass' extension."
+  printf '%s\n' "The ID will be shown amongst other information."
+  printf '\n'
+}
+
+post_upgrade() {
+  post_install "$@"
+}
