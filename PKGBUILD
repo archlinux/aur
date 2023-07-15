@@ -1,36 +1,39 @@
-# Maintainer : Juraj Matuš <matus.juraj at yandex dot com>
+# Maintainer: Paul WOISARD <paulwoisard@gmail.com>
 
-_lang=slk-eng
-pkgname=dict-freedict-${_lang}
-pkgver=0.2
+pkgname=Matrix_CPP
+pkgver=1.0.16
 pkgrel=1
-pkgdesc="Slovak -> English dictionary for dictd et al. from Freedict.org"
-arch=('any')
-url="https://freedict.org/"
-license=('GPL')
-optdepends=('dictd: dict client and server')
-makedepends=('dictd' 'freedict-tools')
-install=install.sh
-source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}.${pkgrel}/freedict-${_lang}-${pkgver}.${pkgrel}.src.tar.xz")
-sha512sums=('ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac')
+pkgdesc="Video processing with Matrix effect"
+arch=('x86_64')
+url="https://github.com/Bit-Scripts/Matrix_CPP"
+license=('MIT')
+depends=('linux-zen-headers' 'linux-lts-headers' 'linux-hardened-headers' 'linux-headers' 'dkms' 'qt6-base' 'qt6-multimedia' 'qt6-multimedia-ffmpeg' 'qt6-multimedia-gstreamer' 'qt6-wayland' 'opencv' 'ffmpeg' 'v4l2loopback-dkms' 'v4l2loopback-utils' 'v4l-utils')
+makedepends=('cmake')
+source=("v${pkgver}.tar.gz::https://github.com/Bit-Scripts/Matrix_CPP/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('aaee4fb95315500590991811b65890b9b55e182ea81b27e470510531480e0e33')
 
-build()
-{
-	cd $_lang
-	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  mkdir -p build
+  cd build
+  cmake ..
+  make
 }
 
-package()
-{
-	install -m 755 -d "${pkgdir}/usr/share/dictd"
-	install -m 644 -t "${pkgdir}/usr/share/dictd/" \
-		${_lang}/build/dictd/${_lang}.{dict.dz,index}
-
-	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
-	do
-		if test -f ${file}
-		then
-			install -m 644 -Dt "${pkgdir}/usr/share/doc/freedict/${_lang}/" ${file}
-		fi
-	done
+package() {
+  if [[ "$(uname -r)" == *linux-zen* ]]; then
+    depends+=('linux-zen-headers')
+  elif [[ "$(uname -r)" == *linux-lts* ]]; then
+    depends+=('linux-lts-headers')
+  elif [[ "$(uname -r)" == *linux-hardened* ]]; then
+    depends+=('linux-hardened-headers')
+  elif [[ "$(uname -r)" == *linux* ]]; then
+    depends+=('linux-headers')
+  fi
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  mkdir -p "$pkgdir/usr/local/bin/matrixresources"
+  mkdir -p "$pkgdir/usr/bin"
+  ln -s "$pkgdir/usr/local/bin/Matrix" "$pkgdir/usr/bin/"
+  ln -s "$pkgdir/usr/local/bin/matrixresources" "$pkgdir/usr/bin/"
+  make DESTDIR="${pkgdir}" install
 }
