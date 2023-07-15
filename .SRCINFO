@@ -1,7 +1,7 @@
 pkgbase = hyprpicker-git
 	pkgdesc = A wlroots-compatible Wayland color picker that does not suck
 	pkgver = 0.1.1.r2.0889bd5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hyprwm/hyprpicker
 	arch = x86_64
 	license = BSD
