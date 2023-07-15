@@ -1,12 +1,13 @@
 pkgbase = retroarch-steam-launcher
 	pkgdesc = A script which adds the Steam version of retroarch to your PATH
-	pkgver = 1.0
+	pkgver = 1.2
 	pkgrel = 1
 	arch = any
 	license = GPL
 	depends = steam
 	provides = retroarch
 	conflicts = retroarch
+	source = retroarch
 	sha256sums = 123bfe782ec97b7e60c4aa69f84b23473ce6d1bc17c3b4a8913982382abb57df
 
 pkgname = retroarch-steam-launcher
