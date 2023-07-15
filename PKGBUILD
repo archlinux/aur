@@ -15,7 +15,7 @@ pkgver=11.0.0
 pkgrel=1
 arch=(x86_64)
 license=(MIT)
-makedepends=(clang11-minimal llvm11-minimal cmake ninja python gcc12 gcc12-fortran gcc12-libs)
+makedepends=(clang11-minimal llvm11-minimal cmake ninja python git gcc12 gcc12-fortran gcc12-libs)
 source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz)
 
 # Both ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.

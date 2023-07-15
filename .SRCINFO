@@ -10,6 +10,7 @@ pkgbase = libclc11-minimal
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python
+	makedepends = git
 	makedepends = gcc12
 	makedepends = gcc12-fortran
 	makedepends = gcc12-libs
