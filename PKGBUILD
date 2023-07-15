@@ -7,7 +7,7 @@ pkgdesc="strip the dollar sign from the beginning of the terminal command"
 arch=(any)
 url=https://github.com/Freed-Wu/undollar
 license=(GPL3)
-source=("$url/archive/$_upstreamver.tar.gz")
+source=("$url/archive/$pkgver.tar.gz")
 sha256sums=(SKIP)
 
 build() {
