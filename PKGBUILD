@@ -3,7 +3,7 @@
 # Contributor: Thor K. Høgås <thor at roht.no>
 
 pkgname=matterhorn
-pkgver=50200.18.0
+pkgver=50200.19.0
 pkgrel=1
 pkgdesc='A terminal-based chat client for MatterMost'
 arch=(x86_64)
@@ -15,7 +15,7 @@ makedepends=(cabal-install
              ghc)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('0ee66eaf3d0841f125664306b4b144d69f7cb182fcd64f4ef8538fdf964118d4')
+sha256sums=('66acd04967f0e527483cc360f12926abc23965b3869cf034cf8b333e02e07be1')
 
 prepare() {
 	cd "$_archive"
