@@ -161,11 +161,11 @@ package_llvm10-minimal(){
   mv -f "$pkgdir"/opt/llvm10/lib/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
   mv -f "$pkgdir"/opt/llvm10/lib/LLVMgold.so "$srcdir"
 
-  # The clang runtime libraries go into clang-libs-minimal-git
+  # The clang runtime libraries go into clang-libs
   # https://bugs.archlinux.org/task/72588?project=1&string=clang
   mv -f "$pkgdir"/opt/llvm10/lib/libclang{,-cpp}.so* "$srcdir"
 
-  # clang-minimal-git files go to a separate package
+  # clang files go to a separate package
   mkdir -p "$srcdir"/clang/opt/llvm10/{bin,include,lib,lib/cmake,share}
   #mv -f "$pkgdir"/opt/llvm10/lib/{libear,libscanbuild,libclang*.a,clang} "$srcdir"/clang/opt/llvm10/lib
   mv -f "$pkgdir"/opt/llvm10/lib/{libclang*.a,clang} "$srcdir"/clang/opt/llvm10/lib
@@ -176,6 +176,9 @@ package_llvm10-minimal(){
   #mv -f "$pkgdir"/opt/llvm10/bin/{analyze-build,c-index-test,clang*,diagtool,find-all-symbols,git-clang-format,hmaptool,intercept-build,modularize,pp-trace,run-clang-tidy,scan-build,scan-build-py,scan-view} "$srcdir"/clang/opt/llvm10/bin/
   mv -f "$pkgdir"/opt/llvm10/bin/{c-index-test,clang*,diagtool,find-all-symbols,git-clang-format,hmaptool,modularize,pp-trace,scan-build,scan-view} "$srcdir"/clang/opt/llvm10/bin/
   mv -f "$pkgdir"/opt/llvm10/share/{clang,man,opt-viewer,scan-build,scan-view} "$srcdir"/clang/opt/llvm10/share/
+
+  # Remove /opt/llvm10/share empty directory
+  rm -rf "$pkgdir"/opt/llvm10/share
 
   if [[ $CARCH == x86_64 ]]; then
     # Needed for multilib (https://bugs.archlinux.org/task/29951)
