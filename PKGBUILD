@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="android-toolkit-bin"
-pkgver=1.5.14
+pkgver=1.5.16
 pkgrel=1
 pkgdesc="A cross platform desktop app written in Typescript/Node using React and Electron.A GUI for adb and can be used to modify android devices such as firesticks and google TVs."
 arch=('x86_64')
@@ -11,9 +11,9 @@ conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Android-Toolkit.AppImage"
     "LICENSE::https://raw.githubusercontent.com/AnthonyGress/Android-Toolkit/main/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('585fb1956f7361079467b18028977bef1df0cce6aef395f807a4262320e7cb57'
+sha256sums=('b7c34a2e9f883befdf89a4d2ae4238c81bdb428ef9042f6eb5c56848790ec2e2'
             '65cb0d2fdca7e4375a2ab466fb1e37fef2514eb10c88c5cf8998893a77295176'
-            '36d108ca2417b55f103901b7cf3054023f64ebdec3d4df36c94240bd4310cc92')
+            '8ee44a380589e8671935e43f5ae7970a9a062957cf12ca7ab2a09edbf8c24bf7')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
