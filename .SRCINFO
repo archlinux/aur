@@ -1,6 +1,6 @@
 pkgbase = octave-video
 	pkgdesc = A wrapper for ffmpeg's libavformat and libavcodec, implementing addframe, avifile, aviinfo and aviread.
-	pkgver = 2.0.2
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/video/
 	install = octave-video.install
@@ -8,10 +8,12 @@ pkgbase = octave-video
 	groups = octave-forge
 	license = FreeBSD
 	makedepends = ffmpeg
-	depends = octave>=4.4.0
-	depends = ffmpeg
-	noextract = video-2.0.2.tar.gz
-	source = https://downloads.sourceforge.net/octave/video-2.0.2.tar.gz
-	sha256sums = 6d935a467989979505d1b40c368116be821725a07413afd5f5e0a113bdb93876
+	depends = octave>=4.4.1
+	depends = libavcodec.so
+	depends = libavformat.so
+	depends = libswscale.so
+	noextract = video-2.1.1.tar.gz
+	source = https://github.com/Andy1978/octave-video/releases/download/2.1.1/video-2.1.1.tar.gz
+	sha256sums = 6435b83e36cdb9ac50f2b64bcd721fdd42544ada6e2bac6987513b5364dc955a
 
 pkgname = octave-video
