@@ -1,0 +1,22 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	ln -s /usr/share/teleguard_desktop/teleguard_desktop /usr/bin/teleguard_desktop
+	chmod +x /usr/bin/teleguard_desktop
+	sudo echo "/usr/share/teleguard_desktop/lib" >> ./teleguard-libwebrtc.conf
+	sudo cp ./teleguard-libwebrtc.conf /etc/ld.so.conf.d/
+	sudo rm ./teleguard-libwebrtc.conf
+	sudo ldconfig
+	echo "TeleGuard has arrived"
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	rm /usr/bin/teleguard_desktop
+	echo "Masaka..?"
+	update-desktop-database -q
+}

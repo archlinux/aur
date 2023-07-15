@@ -1,0 +1,19 @@
+pkgbase = teleguard-desktop
+	pkgdesc = Teleguard messenger client for desktops.
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://pub.teleguard.com/
+	install = teleguard-desktop.install
+	arch = x86_64
+	license = custom
+	depends = desktop-file-utils
+	depends = sqlite
+	depends = libkeybinder3
+	depends = libappindicator-gtk3
+	depends = vlc
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://pub.teleguard.com/teleguard-desktop-latest.deb
+	sha512sums_x86_64 = SKIP
+
+pkgname = teleguard-desktop
