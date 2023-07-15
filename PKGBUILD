@@ -17,7 +17,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=(llvm-minimal-git llvm-libs-minimal-git clang-minimal-git clang-libs-minimal-git)
-pkgver=17.0.0_r460868.6e19eea02bbe
+pkgver=17.0.0_r467825.4d2723bd001f
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -160,9 +160,9 @@ package_llvm-minimal-git() {
 
 package_llvm-libs-minimal-git() {
     pkgdesc="LLVM runtime libraries, trunk version"
-    depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
-    provides=('llvm-libs')
-    optdepends=('llvm-libs: for LLVMgold linker')
+    depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2' 'llvm-libs')
+    # some applications expect llvmgold.so to be present and fail badly if it isn't.
+    # adding llvm-libs as depend is the easiest solution
 
     cp --preserve --recursive "$srcdir"/llvm-libs/* "$pkgdir"/
 
