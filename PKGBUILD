@@ -6,7 +6,7 @@
 
 _pkgname=veracrypt
 pkgname="$_pkgname-git"
-pkgver=1.25.9.r97.2bfeba16
+pkgver=1.25.9.r158.7ada94d3
 pkgrel=1
 epoch=1
 pkgdesc='Disk encryption with strong security based on TrueCrypt'
@@ -55,5 +55,5 @@ package() {
 
 	install -vDm0755 Main/$_pkgname -t "$pkgdir/usr/bin/"
 	install -vDm0644 Resources/Icons/VeraCrypt-256x256.xpm "$pkgdir/usr/share/pixmaps/$_pkgname.xpm"
-	install -vDm0644 License.txt "${pkgdir}/usr/share/licenses/$_pkgname/LICENSE"
+	install -vDm0644 License.txt "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }

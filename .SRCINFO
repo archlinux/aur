@@ -1,6 +1,6 @@
 pkgbase = veracrypt-git
 	pkgdesc = Disk encryption with strong security based on TrueCrypt
-	pkgver = 1.25.9.r97.2bfeba16
+	pkgver = 1.25.9.r158.7ada94d3
 	pkgrel = 1
 	epoch = 1
 	url = https://www.veracrypt.fr/
