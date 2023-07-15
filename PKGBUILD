@@ -14,15 +14,15 @@ source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha512sums=('3abc838ca3688b2f14c619d193db732be6dc51fe68820a63f18fc678221591788a24f24909fdb63ba567c3296179ab123ba9964779d2d62cc68c3c8a714541f2')
 
 build() {
-	cmake -B build -S "$pkgname-v$pkgver" -DCMAKE_BUILD_TYPE=None \
-	      -DCMAKE_INSTALL_PREFIX=/usr -DCONFIG_WAYLAND=ON
-	cmake --build build
+  cmake -B build -S "$pkgname-v$pkgver" -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_INSTALL_PREFIX=/usr -DCONFIG_WAYLAND=ON
+  cmake --build build
 }
 
 package() {
-	depends+=(
-		alsa-lib libasound.so
-		pipewire libpipewire-0.3.so
-	)
-	DESTDIR="$pkgdir" cmake --install build
+  depends+=(
+  alsa-lib libasound.so
+  pipewire libpipewire-0.3.so
+  )
+  DESTDIR="$pkgdir" cmake --install build
 }
