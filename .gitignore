@@ -1,0 +1,5 @@
+pkg/
+src/
+tallyard/
+
+tallyard-git-*.tar.zst
