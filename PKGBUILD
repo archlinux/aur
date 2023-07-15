@@ -2,16 +2,16 @@
 
 pkgname=('python-django-location-field')
 pkgdesc="Let users pick locations using a map widget and store its latitude and longitude"
-pkgver=2.1.0
-pkgrel=5
+pkgver=2.7.1
+pkgrel=1
 url="https://github.com/caioariede/django-location-field"
 license=('MIT')
 arch=('any')
 makedepends=('python' 
   'python-setuptools')
 depends=('python-django')
-source=("https://files.pythonhosted.org/packages/source/d/django-location-field/django-location-field-${pkgver}.tar.gz")
-sha256sums=('fbde6115814fb0b071b8026d5b0c906efca20a79536110f7dc33d1e505c85106')
+source=("https://github.com/caioariede/django-location-field/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('bbe1218ad73009377d689ccf6632b3b7be4f1393bcf853cbd7b4519a09b46294')
 
 build() {
   cd ${srcdir}/django-location-field-${pkgver}
