@@ -10,7 +10,7 @@
 pkgname=python2-matplotlib
 _name=${pkgname#python2-}
 pkgver=2.2.5
-pkgrel=6
+pkgrel=7
 pkgdesc="A python plotting library, making publication quality plots"
 arch=('x86_64')
 url='https://github.com/matplotlib/matplotlib'
@@ -28,7 +28,8 @@ optdepends=('tk: Tk{Agg,Cairo} backends'
             'python2-tornado: WebAgg backend'
             'ffmpeg: for saving movies'
             'imagemagick: for saving animated gifs'
-            'python2-imaging: for reading/saving jpeg/bmp/tiff files'
+            'python2-pillow: for reading/saving jpeg/bmp/tiff files'
+            'python2-imaging: [deprecated] alternative to python2-pillow'
             'ghostscript: usetex dependencies'
             'texlive-bin: usetex dependencies')
 makedepends=('python2-wheel' 'xxd')
