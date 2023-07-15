@@ -1,6 +1,6 @@
 pkgbase = python-libclang
 	pkgdesc = Clang Python Bindings
-	pkgver = 16.0.0
+	pkgver = 16.0.6
 	pkgrel = 1
 	url = https://pypi.org/project/libclang
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = python-libclang
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/py2.py3/l/libclang/libclang-16.0.0-py2.py3-none-manylinux2010_x86_64.whl
-	sha256sums = a043138caaf2cb076ebb060c6281ec95612926645d425c691991fc9df00e8a24
+	source = https://files.pythonhosted.org/packages/py2.py3/l/libclang/libclang-16.0.6-py2.py3-none-manylinux2010_x86_64.whl
+	sha256sums = 9dcdc730939788b8b69ffd6d5d75fe5366e3ee007f1e36a99799ec0b0c001492
 
 pkgname = python-libclang
