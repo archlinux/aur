@@ -2,7 +2,7 @@
 # Contributor/Original maintainer: Alex Palaistras <alex@deuill.org>
 
 pkgname=binaryninja-demo
-pkgver=3.3.4036 # pulled from latest binary
+pkgver=3.4.4271 # pulled from latest binary
 pkgrel=1
 pkgdesc="Binary Ninja is a binary multi-tool and reversing platform"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 	"binaryninja-demo.desktop"
 )
 sha1sums=(
-  '3010a45517410e29f10a19efd5c309a185b19001' #BinaryNinja-demo.zip file
+	'9101e4e0a12b8afb61c586bf6214652ce3db164f' # BinaryNinja-demo.zip
 	'de0caa6928230dc5eb0dda8b45b9f03d4db294a2' # wrapper bash script
 	'4d039660be12df5f13ab3b848f413fa9f2f41e87' # logo
 	'b650efdf8b007b5c9245fed32dca304ddde07f65' # .desktop file
