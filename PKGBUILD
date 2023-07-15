@@ -1,4 +1,5 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
+# Maintainer: nyanpasu64 <nyanpasu64 at tuta dot io>
+# Contributor: ValHue <vhuelamo at gmail dot com>
 # https://github.com/ValHue/AUR-PKGBUILDs
 #
 _pkgname="archalien"
