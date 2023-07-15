@@ -1,6 +1,6 @@
 pkgname=node-hp-scan-to
 pkgver=1.3.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Allow to send scan from HP All-in-One Printer to computer"
 arch=(any)
 url="https://github.com/manuc66/node-hp-scan-to"
@@ -33,7 +33,7 @@ WantedBy=multi-user.target
 EOF
     cat > "$srcdir/default.json" <<EOF
 {
-  "debug": false,
+  "debug": false
 }
 EOF
 
