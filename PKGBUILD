@@ -4,14 +4,7 @@ pkgname=matrix_cpp
 pkgver=1.0.16
 pkgrel=1
 pkgdesc="Video processing with Matrix effect"
-arch=('x86_64')package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
-  mkdir -p "$pkgdir/usr/local/bin/matrixresources"
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s "/usr/local/bin/Matrix" "$pkgdir/usr/bin/"
-  ln -s "/usr/local/bin/matrixresources" "$pkgdir/usr/bin/"
-  make DESTDIR="${pkgdir}" install
-}
+arch=('x86_64')
 
 url="https://github.com/Bit-Scripts/matrix_cpp"
 license=('MIT')
@@ -29,6 +22,15 @@ build() {
 }
 
 package() {
+  if [[ "$(uname -r)" == *linux-zen* ]]; then
+    depends+=('linux-zen-headers')
+  elif [[ "$(uname -r)" == *linux-lts* ]]; then
+    depends+=('linux-lts-headers')
+  elif [[ "$(uname -r)" == *linux-hardened* ]]; then
+    depends+=('linux-hardened-headers')
+  elif [[ "$(uname -r)" == *linux* ]]; then
+    depends+=('linux-headers')
+  fi
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   mkdir -p "$pkgdir/usr/local/bin/matrixresources"
   mkdir -p "$pkgdir/usr/bin"
