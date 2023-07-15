@@ -3,7 +3,7 @@
 # Contributor: bgh <aur at bgh dot io>
 
 pkgname=ib-tws
-pkgver=10.23.2a
+pkgver=10.23.2b
 pkgrel=1
 epoch=1
 pkgdesc='Electronic trading platform from discount brokerage firm Interactive Brokers'
@@ -13,7 +13,7 @@ license=('custom')
 backup=('etc/ib-tws.conf' 'etc/ib-gw.conf')
 depends=(gtk2 ttf-liberation)
 optdepends=(ffmpeg-compat-55)
-makedepends=(libarchive)
+makedepends=(libarchive findutils sed)
 
 source=('LICENSE'
 	'ib-tws'
@@ -30,7 +30,7 @@ sha256sums=('4b65b33dc88d77fef6e7ba1bdc1ae88b149296d3e1eb87db251bfcdf119a1f22'
             '62fbd49b8c7fb5d4ae7491ca2b9072d42bbe589a2b9f0e14d09d1bf1177a3c46'
             '21070fa89c9053dff06ba799b6f9838bfd5ff209fd8dd710c5a97c3fc684af44'
             '9f74a204c45d47f551861cb231de89f2536f9966942da41f95d8f0ce5bcd13a4'
-            '69397b59dd5e94eee687c90ebc397e260fa62323b0a2284a1765e2976ea2bc37')
+            'd5184531331669cef3bb7c5a36fb328a056f8cf130ecd2e76a7b2b2d860c7c4d')
 
 build() {
   cd ${srcdir}
@@ -40,23 +40,29 @@ build() {
   chmod +x tws-${pkgver}-standalone-linux-x64.sh
   ./tws-${pkgver}-standalone-linux-x64.sh -q -dir ${srcdir}/target
 
-  # install4j provides a "shared" JRE that may go into /opt, /usr/local or $HOME/.i4j_jres/.
-  # If it already exists, the install4j log will include a "java.home=" truncated path.
-  BUNDLED_JRE_LOCATION=$(grep java.home ${srcdir}/target/.install4j/installation.log | head -n 1 | cut -d '=' -f 2 | sed 's/\.\.\.//g')
-  if [ -z "${BUNDLED_JRE_LOCATION}" ]; then
-    echo "java.home JRE location could not be found in the log"
-    exit 1
-  fi
-  BUNDLED_JRE_LOCATION=$(echo ${BUNDLED_JRE_LOCATION}*/*)
-  echo "java.home JRE location expanded to ${BUNDLED_JRE_LOCATION}"
-
-  if [ ! -f "${BUNDLED_JRE_LOCATION}/bin/java" ]; then
-    echo "java.home JRE location did not contain java; finding log entry which installed java"
+  echo "Attempting to locate the Install4J-compatible Java installation"
+  if grep -q -e "Install file.*/java;" ${srcdir}/target/.install4j/installation.log; then
+    echo "Installer script indicates Java was installed by Install4j; finding log entry for full path"
     BUNDLED_JRE_LOCATION=$(grep -e "Install file.*/java;" ${srcdir}/target/.install4j/installation.log | head -n 1 | cut -d ';' -f 1|sed -e 's/ .*Install file\: //g'|sed 's/\/bin\/java//')
     if [ -z "${BUNDLED_JRE_LOCATION}" ]; then
-      echo "Could not find bundled JRE installation entry in log"
+      echo "Could not find bundled JRE installation entry in Install4J log; unable to proceed"
       exit 1
     fi
+    echo "Java installed by Install4J at ${BUNDLED_JRE_LOCATION}"
+  else
+    echo "Install4J log did not install Java; attempting to locate a previour Java installation it re-used"
+    LOG_JRE_LOCATION=$(grep java.home ${srcdir}/target/.install4j/installation.log | head -n 1 | cut -d '=' -f 2 | sed 's/\.\.\.//g')
+    if [ -z "${LOG_JRE_LOCATION}" ]; then
+      echo "Install4J log did not provide a java.home; unable to proceed"
+      exit 1
+    fi
+    echo "Previous Install4J-installed Java reported in log as ${LOG_JRE_LOCATION}"
+    CANONICALIZED_JRE_LOCATION=$(echo ${LOG_JRE_LOCATION}*)
+    echo "Canonicalized path resolved to ${CANONICALIZED_JRE_LOCATION}"
+    FIND_OUTPUT=$(find ${CANONICALIZED_JRE_LOCATION} -path '*/bin/java' | head -n 1)
+    echo "Search for Java result: $FIND_OUTPUT"
+    BUNDLED_JRE_LOCATION=$(echo ${FIND_OUTPUT} | sed 's/\(.*\)\/bin\/java/\1/')
+    echo "Final Java installation directory resolved to ${BUNDLED_JRE_LOCATION}"
   fi
   if [ -f "${BUNDLED_JRE_LOCATION}/bin/java" ]; then
     echo "Confirmed java in ${BUNDLED_JRE_LOCATION}"
