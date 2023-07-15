@@ -1,0 +1,17 @@
+pkgbase = ocaml-saturn
+	pkgdesc = Lock-free data structures for multicore OCaml
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ocaml-multicore/saturn
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = dune>=3.0.0
+	depends = ocaml>=5.0.0
+	options = !strip
+	source = ocaml-saturn-0.4.0.tar.gz::https://github.com/ocaml-multicore/saturn/archive/0.4.0.tar.gz
+	source = remove-domain-shims-dep.diff
+	sha512sums = e635f21c25afece7adb731bbc3b61dedef12d83baf68249daa56e4ae1e1ac6ecdd3ce79cc8b78f2487575505a15ffa412cfed4f90fa204002952641a0b8c4d12
+	sha512sums = 5158083b07bfdcef7f03f30f4a950fa0b4efaeac6884031315b956a88696a9ff5feab94cd60f9e9a6377b35f0ca72e51f598958e51f7dbbfc25e36f351697336
+
+pkgname = ocaml-saturn

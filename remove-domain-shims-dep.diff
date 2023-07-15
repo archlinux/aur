@@ -1,0 +1,44 @@
+diff --git a/saturn.opam b/saturn.opam
+index 08bed7f..15f8656 100644
+--- a/saturn.opam
++++ b/saturn.opam
+@@ -11,7 +11,6 @@ tags: []
+ depends: [
+   "ocaml" {>= "4.12"}
+   "dune" {>= "3.0"}
+-  "domain_shims" {>= "0.1.0"}
+   "qcheck" {with-test & >= "0.18.1"}
+   "qcheck-stm" {with-test & >= "0.2"}
+   "qcheck-alcotest" {with-test & >= "0.18.1"}
+diff --git a/saturn_lockfree.opam b/saturn_lockfree.opam
+index c1d073b..e3f4ab6 100644
+--- a/saturn_lockfree.opam
++++ b/saturn_lockfree.opam
+@@ -11,7 +11,6 @@ tags: []
+ depends: [
+   "ocaml" {>= "4.12"}
+   "dune" {>= "3.0"}
+-  "domain_shims" {>= "0.1.0"}
+   "qcheck" {with-test & >= "0.18.1"}
+   "qcheck-stm" {with-test & >= "0.2"}
+   "qcheck-alcotest" {with-test & >= "0.18.1"}
+diff --git a/src/dune b/src/dune
+index ca2afd5..322a19b 100644
+--- a/src/dune
++++ b/src/dune
+@@ -1,4 +1,4 @@
+ (library
+  (name saturn)
+  (public_name saturn)
+- (libraries saturn_lockfree domain_shims))
++ (libraries saturn_lockfree))
+diff --git a/src_lockfree/dune b/src_lockfree/dune
+index 536acc0..b73078d 100644
+--- a/src_lockfree/dune
++++ b/src_lockfree/dune
+@@ -1,4 +1,3 @@
+ (library
+  (name lockfree)
+- (public_name saturn_lockfree)
+- (libraries domain_shims))
++ (public_name saturn_lockfree))
