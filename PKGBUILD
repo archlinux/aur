@@ -5,7 +5,7 @@
 _pkgname=libinput
 pkgname="$_pkgname-three-finger-drag"
 pkgver=1.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Input device management and event handling library"
 url="https://www.freedesktop.org/wiki/Software/$_pkgname/"
 arch=(x86_64)
@@ -49,5 +49,5 @@ check() {
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
-	install -Dvm644 $_pkgname/COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -vDm644 $_pkgname/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
