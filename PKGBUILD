@@ -1,9 +1,10 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: lsf
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
-pkgver=3.162.8
+pkgver=3.166.9
 pkgrel=1
+_nodeversion=16
 _electronversion=25
 pkgdesc="An end-to-end encrypted notes app for digitalists and professionals."
 arch=('x86_64' 'aarch64')
@@ -14,7 +15,7 @@ makedepends=('git' 'libxcrypt-compat' 'nvm' 'python' 'yarn')
 source=("standardnotes-$pkgver.tar.gz::https://github.com/standardnotes/app/archive/refs/tags/@standardnotes/desktop@${pkgver}.tar.gz"
         "standard-notes.desktop"
         "standard-notes.sh")
-sha256sums=('f3cb7a25196f8bd219ad67dfa8fabe4f725f36a926d0f1ff17859675222aaa1a'
+sha256sums=('fe3580528eec8903ccf352ab50324ccb14dda75e38f04ac2cb3512669bfa470d'
             '274cd3914ff2a6a0999485a26cbded3ad597763482a90eee8ee34490ddffda00'
             '340c01f232b7d4bbf3778e66666c78567bf61ef71a3db4a0d8d00d83565be1a3')
 
@@ -32,7 +33,7 @@ _ensure_local_nvm() {
 prepare() {
   cd "app--$pkgname-$pkgver"
   _ensure_local_nvm
-  nvm install
+  nvm install "$_nodeversion"
 }
 
 build() {
