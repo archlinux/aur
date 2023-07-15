@@ -1,7 +1,7 @@
 pkgbase = kitchenowl
 	pkgdesc = KitchenOwl is a self-hosted grocery list and recipe manager.
 	pkgver = 0.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TomBursch/kitchenowl
 	arch = x86_64
 	license = GPL3

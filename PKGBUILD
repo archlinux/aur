@@ -1,6 +1,6 @@
 pkgname="kitchenowl"
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="KitchenOwl is a self-hosted grocery list and recipe manager."
 arch=("x86_64")
 url="https://github.com/TomBursch/kitchenowl"
