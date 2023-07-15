@@ -2,7 +2,7 @@
 
 pkgname=8cc-git
 pkgver=r766.b480958
-pkgrel=2
+pkgrel=1
 pkgdesc='Simple and clean C11 compiler'
 arch=(i686 x86_64)
 url='https://github.com/rui314/8cc'
