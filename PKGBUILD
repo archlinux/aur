@@ -3,7 +3,7 @@
 _pkgname=c2nim
 pkgname="$_pkgname-git"
 pkgver=0.9.18.r36.6d35d93
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Tool to translate ANSI C code to Nim"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ license=(MIT)
 depends=(glibc gcc-libs)
 makedepends=(choosenim git)
 optdepends=('nim: compile generated code')
-provides=("$_pkgname")
+provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 source=("git+$url.git?signed")
 b2sums=('SKIP')
@@ -44,7 +44,7 @@ build() {
 
 package() {
 	cd $_pkgname
-	install -Dm755 $_pkgname -t "$pkgdir/usr/bin/"
-	install -Dm644 "doc/$_pkgname.rst" README.md -t "$pkgdir/usr/share/doc/$_pkgname/"
-	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -vDm755 $_pkgname -t "$pkgdir/usr/bin/"
+	install -vDm644 "doc/$_pkgname.rst" README.md -t "$pkgdir/usr/share/doc/$_pkgname/"
+	install -vDm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,7 +1,7 @@
 pkgbase = c2nim-git
 	pkgdesc = Tool to translate ANSI C code to Nim
 	pkgver = 0.9.18.r36.6d35d93
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/nim-lang/c2nim
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = c2nim-git
 	depends = glibc
 	depends = gcc-libs
 	optdepends = nim: compile generated code
-	provides = c2nim
+	provides = c2nim=0.9.18
 	conflicts = c2nim
 	source = git+https://github.com/nim-lang/c2nim.git?signed
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
