@@ -16,11 +16,13 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=('nvidia-drm-outputclass.conf'
         'nvidia-470xx-utils.sysusers'
         'nvidia-470xx.rules'
-        "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
+        "https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
+        "kernel-6.4.patch")
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
             'e307e5fe005dfafee35c179c5f215e22a85dfd367a9b60d5092eee96f869d8ce4595fae33ce6febb74721974c6f781a53418ce1a3210768632347471ae3f5594'
-            'e1265b6266473af652e9d7bf85dcd76e312af281c5f4f158ab322e34d378738acb87c30cfff7bf1f6e1b238883e7f665d9fc5151b1e0078dd9aece5a52655405')
+            'e1265b6266473af652e9d7bf85dcd76e312af281c5f4f158ab322e34d378738acb87c30cfff7bf1f6e1b238883e7f665d9fc5151b1e0078dd9aece5a52655405'
+            'd9df8b13d5fbe4f456a31de3679fd11aca7cd88771f8f11a5cc8ab17bab05861823b26d2d467593e5b90967a2902db691ca832f09fe21a5975eb3e4d6275e00c')
 
 create_links() {
     # create soname links
@@ -39,6 +41,8 @@ prepare() {
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
     cd kernel
+
+    patch -p1 -i "$srcdir/kernel-6.4.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
