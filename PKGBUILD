@@ -1,8 +1,8 @@
 # Maintainer: github.com/lmorg
 pkgname=murex
 replaces=('murex-git')
-pkgver=4.3.3200
-pkgrel=17
+pkgver=4.4.6110
+pkgrel=18
 pkgdesc="A smarter shell and scripting environment with advanced features designed for usability, safety and productivity (eg smarter DevOps tooling)"
 arch=('i686' 'x86_64')
 url="https://github.com/lmorg/murex"
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('go')
 optdepends=('aspell: inline spell checking')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3b03acf2339e32d83704db190c2cb34fecb9a941ea8b4ab4ac32ba8a33d75f46')
+sha256sums=('54795331944059eaf760b26517a64f30ab663e00bf42efc5348edd1037f98260')
 
 prepare() {
   cd "$pkgname-$pkgver"
