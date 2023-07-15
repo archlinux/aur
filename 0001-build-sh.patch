@@ -27,9 +27,19 @@ index 4a97050f7..041b3ac72 100755
 -
  # N.B. Don't include $DESTDIR itself in the tarball, since mktemp -d will create it mode 0700.
  (cd "$DESTDIR" && tar -czf /tmp/google-cloud-ops-agent.tgz *)
-diff --git a/submodules/fluent-bit b/submodules/fluent-bit
---- a/submodules/fluent-bit
-+++ b/submodules/fluent-bit
-@@ -1 +1 @@
--Subproject commit 97a5e9dcf3f9d2e2107660cf73f6ef253fd227cd
-+Subproject commit 97a5e9dcf3f9d2e2107660cf73f6ef253fd227cd-dirty
+diff --git a/confgenerator/built-in-config-linux.yaml b/confgenerator/built-in-config-linux.yaml
+index cd84fc39b..10eb9c2fe 100644
+--- a/confgenerator/built-in-config-linux.yaml
++++ b/confgenerator/built-in-config-linux.yaml
+@@ -1,10 +1,7 @@
+ logging:
+   receivers:
+     syslog:
+-      type: files
+-      include_paths:
+-      - /var/log/messages
+-      - /var/log/syslog
++      type: systemd_journald
+   service:
+     pipelines:
+       default_pipeline:

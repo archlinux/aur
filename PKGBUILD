@@ -42,7 +42,7 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'a4ec5040542b3b7b33b995f8357fd81dac901975f7d52955b713f8cccc756501'
+	'b76f3853c695b688d1c34ba967b04c9d3eca58e7cd20af45a1403789e3481525'
 )
 
 pkgver() {
@@ -70,6 +70,7 @@ build() {
 	echo "destdir: $_destdir"
 
 	cd "${pkgname}"
+	git apply "${srcdir}/0001-build-sh.patch"
 
 	CGO_ENABLED=1 ./builds/otel.sh "$_destdir"
 	./builds/fluent_bit.sh "$_destdir"
@@ -77,7 +78,6 @@ build() {
 	./builds/ops_agent_diagnostics.sh "$_destdir"
 	./builds/agent_wrapper.sh "$_destdir"
 
-	git apply "${srcdir}/0001-build-sh.patch"
 	BUILD_DISTRO=arch CODE_VERSION="${pkgver}" DESTDIR="$_destdir" \
 		./build.sh
 }
