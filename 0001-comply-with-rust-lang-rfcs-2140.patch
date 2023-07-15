@@ -1,4 +1,4 @@
-From 2bb7084425994bf70a69ee52f5917dd3fa1185ba Mon Sep 17 00:00:00 2001
+From fc2db6fa2310dbb4971a9d9ad4df553081a4ea05 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?=C3=A9clairevoyant?=
  <848000+eclairevoyant@users.noreply.github.com>
 Date: Fri, 23 Jun 2023 09:21:29 -0400
@@ -11,7 +11,7 @@ Subject: [PATCH] comply with rust-lang/rfcs#2140
  3 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/crates/eww/src/error_handling_ctx.rs b/crates/eww/src/error_handling_ctx.rs
-index 3273200..8a57e35 100644
+index 3273200..05af272 100644
 --- a/crates/eww/src/error_handling_ctx.rs
 +++ b/crates/eww/src/error_handling_ctx.rs
 @@ -53,7 +53,7 @@ pub fn anyhow_err_to_diagnostic(err: &anyhow::Error) -> Option<Diagnostic<usize>
@@ -19,7 +19,7 @@ index 3273200..8a57e35 100644
  
  pub fn stringify_diagnostic(mut diagnostic: codespan_reporting::diagnostic::Diagnostic<usize>) -> anyhow::Result<String> {
 -    diagnostic.labels.drain_filter(|label| Span(label.range.start, label.range.end, label.file_id).is_dummy());
-+    diagnostic.labels.extract_if(|label| Span(label.range.start, label.range.end, label.file_id).is_dummy());
++    diagnostic.labels.retain(|label| !Span(label.range.start, label.range.end, label.file_id).is_dummy());
  
      let mut config = term::Config::default();
      let mut chars = Chars::box_drawing();
