@@ -13,11 +13,11 @@
 pkgbase=mesa-minimal-git
 pkgname=(mesa-minimal-git rusticl-mesa-minimal-git)
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=23.2.0_devel.171312.4d188e005bc
+pkgver=23.3.0_devel.174230.39824457283
 pkgrel=2
 arch=('x86_64')
 makedepends=(git meson ninja libglvnd python-mako xorgproto libxml2 libx11  libva elfutils libxrandr
-              wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git 'llvm-libs<17' rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs)
+              wayland-protocols glslang llvm-minimal-git libdrm libclc-minimal-git clang-minimal-git rust rust-bindgen spirv-tools-git spirv-llvm-translator-minimal-git libvdpau systemd-libs)
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
 provides=(mesa vulkan-intel vulkan-radeon vulkan-mesa-layer libva-mesa-driver vulkan-swrast mesa-vdpau vulkan-driver opengl-driver)

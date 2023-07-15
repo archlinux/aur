@@ -1,6 +1,6 @@
 pkgbase = mesa-minimal-git
 	pkgdesc = an open-source implementation of the OpenGL specification, stripped down git version
-	pkgver = 23.2.0_devel.171312.4d188e005bc
+	pkgver = 23.3.0_devel.174230.39824457283
 	pkgrel = 2
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -22,7 +22,6 @@ pkgbase = mesa-minimal-git
 	makedepends = libdrm
 	makedepends = libclc-minimal-git
 	makedepends = clang-minimal-git
-	makedepends = llvm-libs<17
 	makedepends = rust
 	makedepends = rust-bindgen
 	makedepends = spirv-tools-git
@@ -83,7 +82,7 @@ pkgname = rusticl-mesa-minimal-git
 	depends = spirv-llvm-translator-minimal-git
 	depends = libclc-minimal-git
 	depends = spirv-tools-git
-	depends = mesa-minimal-git=23.2.0_devel.171312.4d188e005bc-2
+	depends = mesa-minimal-git=23.3.0_devel.174230.39824457283-2
 	depends = llvm-libs-minimal-git
 	depends = clang-libs-minimal-git
 	depends = expat
