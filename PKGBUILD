@@ -1,6 +1,6 @@
 #Maintainer: anonion <aur at anonion dot social>
 
-pkgname=("python-py-natpmp")
+pkgname=("python-py-natpmp-git")
 _name=${pkgname#python-}
 pkgver=r21.325af58
 pkgrel=1
