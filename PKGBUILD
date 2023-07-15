@@ -1,12 +1,13 @@
 _pkgname=lunar
 pkgname=pluto-lunar-git
 pkgver=20230614.bb05de6
-pkgrel=2
+pkgrel=3
 pkgdesc="Basic astronomical functions for solar system ephemerides, time systems, coordinate systems, etc"
 arch=(x86_64)
 url="https://www.projectpluto.com/source.htm"
 license=(GPL2)
 makedepends=('git')
+provides=(pluto-lunar)
 optdepends=('pluto-find-orb: Orbit determination from observations'
 	    'pluto-jpl-eph: Code to read, use, and manipulate JPL DE ephemeris data'
             'pluto-sat-code: Code for the SGP4/SDP4 satellite motion model, and for manipulating TLEs (Two-Line Elements)')
