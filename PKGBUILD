@@ -1,27 +1,7 @@
 pkgname=node-hp-scan-to
 pkgver=1.3.1
 pkgrel=2
-pkgdesc="Little command line program that allow to send scan from device to computer.
-For this purpose, the original HP Windows application's interaction with the device has been reverse engineered.
-
-Developed and tested for the following HP All-in-One Printers:
-
-    HP Officejet 6500A Plus
-    HP Deskjet 3520
-    HP Smart Tank Plus 570 series
-
-The following printer are also working:
-
-    HP Deskjet 3050 All-in-One Printer - J610a
-    HP Officejet 5230
-    HP Officejet 6700 premium
-    HP Officejet 5740
-    HP Officejet 6950
-    HP OfficeJet Pro 8025e
-
-There are good chances it also works on your HP All-in-One Printer. 
-
-This project is not endorsed by nor affiliated with HP."
+pkgdesc="Little command line program that allow to send scan from device to computer. For this purpose, the original HP Windows application's interaction with the device has been reverse engineered."
 arch=(any)
 url="https://github.com/manuc66/node-hp-scan-to"
 license=('MIT')
