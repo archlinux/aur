@@ -1,7 +1,7 @@
 pkgbase = kata-git
 	pkgdesc = Command to transliterate ASCII to katakana
 	pkgver = r5.38ce908
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/robpike/kata
 	arch = i686
 	arch = x86_64
