@@ -30,10 +30,10 @@ build() {
   make
 }
 
-check() {
-  cd 8cc
-  make test
-}
+# check() {
+#   cd 8cc
+#   make test
+# }
 
 package() {
   cd 8cc

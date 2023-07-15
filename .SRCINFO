@@ -1,17 +1,16 @@
 pkgbase = 8cc-git
 	pkgdesc = Simple and clean C11 compiler
-	pkgver = r742.495a60d
-	pkgrel = 1
+	pkgver = r766.b480958
+	pkgrel = 2
 	url = https://github.com/rui314/8cc
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = glibc
-	source = git://github.com/rui314/8cc
+	source = git+http://github.com/rui314/8cc
 	source = fix_cflags.patch
 	sha1sums = SKIP
 	sha1sums = e9045cbcad942c39e4135ea720100c54996d8422
 
 pkgname = 8cc-git
-
