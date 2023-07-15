@@ -1,7 +1,7 @@
 pkgbase = chd-git
 	pkgdesc = Unicode-aware replacement for xxd/hexdump
 	pkgver = r4.94c77db
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.muppetlabs.com/~breadbox/software/chd.html
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 _pkgname=chd
 pkgname="$_pkgname-git"
 pkgver=r4.94c77db
-pkgrel=1
+pkgrel=2
 pkgdesc="Unicode-aware replacement for xxd/hexdump"
 arch=(x86_64)
 url="https://www.muppetlabs.com/~breadbox/software/chd.html"
@@ -32,5 +32,5 @@ build() {
 package() {
 	cd $_pkgname
 	make PREFIX="$pkgdir/usr" install
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
