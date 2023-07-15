@@ -1,11 +1,12 @@
 pkgbase = sh-undollar
 	pkgdesc = strip the dollar sign from the beginning of the terminal command
-	pkgver = 0.0.0
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/undollar
 	arch = any
 	license = GPL3
-	source = https://github.com/Freed-Wu/undollar/archive/.tar.gz
-	sha256sums = SKIP
+	makedepends = cmake
+	source = https://github.com/Freed-Wu/undollar/archive/0.0.2.tar.gz
+	sha256sums = e730cd9bc3f7e87a86b96bd1012961c3cd76e093e2cd0c6d70622c281a58963d
 
 pkgname = sh-undollar
