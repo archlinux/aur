@@ -1,6 +1,6 @@
 pkgbase = standardnotes-bin
 	pkgdesc = Free, open-source encrypted notes app
-	pkgver = 3.165.11
+	pkgver = 3.166.9
 	pkgrel = 1
 	url = https://github.com/standardnotes/app
 	install = standardnotes.install
@@ -14,9 +14,9 @@ pkgbase = standardnotes-bin
 	options = !strip
 	source = standard-notes.sh
 	sha256sums = 71f0811526d428b541ef39ee804b257ed60b1b9b5d620436c79ed77e17eb4d16
-	source_x86_64 = standardnotes-bin-3.165.11-x86_64.AppImage::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.165.11/standard-notes-3.165.11-linux-x86_64.AppImage
-	sha256sums_x86_64 = de739f315737891a7fd29080b89d429253b7b6de6cb105dc6bb7897ed42ea42e
-	source_aarch64 = standardnotes-bin-3.165.11-aarch64.AppImage::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.165.11/standard-notes-3.165.11-linux-arm64.AppImage
-	sha256sums_aarch64 = 1cb91e17789a4cfa292114421698e7a66e7649e53a1acd45a52890ca10860ccd
+	source_x86_64 = standardnotes-bin-3.166.9-x86_64.AppImage::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.166.9/standard-notes-3.166.9-linux-x86_64.AppImage
+	sha256sums_x86_64 = 94f0ce27fc7cec5dbaa0743f2eef71283df2260cdc2dbd2140e395d2f225eec1
+	source_aarch64 = standardnotes-bin-3.166.9-aarch64.AppImage::https://github.com/standardnotes/app/releases/download/%40standardnotes%2Fdesktop%403.166.9/standard-notes-3.166.9-linux-arm64.AppImage
+	sha256sums_aarch64 = 86e71e266d35e7379ac3876e692fe5f389e10970d240c42eaef65aafd6a8472b
 
 pkgname = standardnotes-bin
