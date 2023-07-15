@@ -3,7 +3,7 @@
 _pkgname=rust
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.70.0
+pkgver=1.71.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (official build, mingw-w64)"
 arch=('x86_64')
@@ -24,15 +24,15 @@ source=("https://static.rust-lang.org/dist/cargo-${pkgver}-x86_64-unknown-linux-
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('650e7a890a52869cd14e2305652bff775aec7fc2cf47fc62cf4a89ff07242333'
+sha256sums=('fe6fb520f59966300ee661d18b37c36cb3e614877c4c01dfedf987b8a9c577e9'
             'SKIP'
-            '7d891d3e9bc4f1151545c83cbe3bc6af9ed234388c45ca2e19641262f48615e2'
+            'c293d906769671d1cd18e945671bbd14e0b8a41df5075c47f33e6086fc8a1558'
             'SKIP'
-            '0c0129717da1e27ccf2c56da950d2fe56973f71beec9e80ae6904b282d2f0ee9'
+            '98ae6530c3a41167e9d93d11ea078be98a02f6d809a06d0d51af3ce0f73150d7'
             'SKIP'
-            'd51dac4f4085f88a12e2d4967f7d81a31ec1c5376190dc63e644b32eddb538c1'
+            '69c304893237ffd4877b24e26b5fdc1e3175835e39b29de819e19d73e591775a'
             'SKIP'
-            'a0a8e558db3ad663b4f993da72706bb14eec9d3ad9091ee648a4e07663666b57'
+            '05b9bc1c6826cf267df435f479f8472c7a6876b8cd4d3f35fc6ee1cf4f347dbc'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
@@ -74,7 +74,7 @@ package() {
   mv "${pkgdir}/opt/${_pkgname}/share/doc/rust/"{LICENSE-*,COPYRIGHT} "${pkgdir}/usr/share/licenses/${pkgname}/rust/"
 
   # remove unused files
-  rm -r "${pkgdir}/opt/${_pkgname}/"{etc,share}
+  rm -r "${pkgdir}/opt/${_pkgname}/"{share,src}
   rm "${pkgdir}/opt/${_pkgname}/lib/rustlib/"{manifest-*,install.log,uninstall.sh,components,rust-installer-version}
 
   # link shared libraries
