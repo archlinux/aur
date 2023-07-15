@@ -1,0 +1,27 @@
+pkgbase = bombsquad-bin
+	pkgdesc = An explosive arcade-style party game
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/efroemling/ballistica/
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = sdl2
+	depends = libglvnd
+	depends = libvorbis
+	depends = glibc
+	depends = python
+	depends = gcc
+	depends = openal
+	depends = python-yaml
+	depends = python-psutil
+	source = icon.png::https://files.ballistica.net/bombsquad/promo/BombSquadIcon.png
+	source = bombsquad.desktop
+	sha256sums = 31f3af8d59a384b7a3ac999d2e8fe0a0033d0d31ae6e760686537ab85d86ba00
+	sha256sums = e37368d94f87cb231f59c86eeac723d76ab64a911fb8c07cfc0d377ed75b5249
+	source_x86_64 = https://files.ballistica.net/bombsquad/builds/old/BombSquad_Linux_x86_64_1.7.23.tar.gz
+	sha1sums_x86_64 = 12bffd69fb65228eb1745c0f74f3b3ae318d2e61
+	source_aarch64 = https://files.ballistica.net/bombsquad/builds/old/BombSquad_Linux_Arm64_1.7.23.tar.gz
+	sha1sums_aarch64 = a3edabcf5be256f1b756705ecc853f231b1241f4
+
+pkgname = bombsquad-bin

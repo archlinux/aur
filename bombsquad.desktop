@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=BombSquad
+Comment=An explosive arcade-style party game.
+Exec=/opt/bombsquad-bin/bombsquad
+Path=/opt/bombsquad-bin/
+Icon=/usr/share/pixmaps/bombsquad.png
+Categories=Game;ArcadeGame;
+Terminal=false
+StartupNotify=false
