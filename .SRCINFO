@@ -1,7 +1,7 @@
 pkgbase = mpf-check-bin
 	pkgdesc = Media Preservation Frontend for DiscImageCreator/Aaru/Redumper in C# (.NET 4.8 version)
 	pkgver = 2.6
-	pkgrel = 4
+	pkgrel = 1
 	url = https://github.com/SabreTools/MPF
 	arch = x86_64
 	license = GPL3
