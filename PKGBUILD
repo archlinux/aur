@@ -9,7 +9,7 @@ url="https://www.deezer.com/"
 license=('custom:"Copyright (c) 2006-2023 Deezer S.A."')
 depends=('electron13-bin')
 provides=('deezer')
-makedepends=('p7zip' 'asar' 'prettier' 'imagemagick' 'npm' 'nodejs')
+makedepends=('p7zip' 'asar' 'prettier>=3.0.0' 'imagemagick' 'npm' 'nodejs')
 source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
     "$pkgname.desktop"
     deezer

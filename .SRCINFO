@@ -7,7 +7,7 @@ pkgbase = deezer
 	license = custom:"Copyright (c) 2006-2023 Deezer S.A."
 	makedepends = p7zip
 	makedepends = asar
-	makedepends = prettier
+	makedepends = prettier>=3.0.0
 	makedepends = imagemagick
 	makedepends = npm
 	makedepends = nodejs
