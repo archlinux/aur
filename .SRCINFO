@@ -1,7 +1,7 @@
 pkgbase = serioussam-dancesworld
-	pkgdesc = Serious Sam Classic Dances World native Linux
+	pkgdesc = Serious Sam Classic Dances World native Linux.
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tx00100xt/SE1-TSE-DancesWorld
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,10 @@ pkgbase = serioussam-dancesworld
 	depends = sdl2
 	depends = python
 	depends = bash
+	depends = serioussam-vk
 	source = https://github.com/tx00100xt/SE1-TSE-DancesWorld/archive/refs/tags/v2.0.tar.gz
-	sha512sums = 880b1e5062c18fc27911fb823aa636741736bb68e02b6da90ff762fab60fdaecc990b3b77f227565a7fe869cc282018ae4c05c46f412769d5bbf9b0d928cebce
+	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTSE-DancesWorld/SamTSE-DancesWorld.tar.xz
+	sha256sums = ab714ad403370c099fb1cff3485f956394d48bb0011c186882eb49d4cec69128
+	sha256sums = 0bf91dfc5b569cb33c9ec5029423c01de9c59690e214e299c9cb671bb92608b2
 
 pkgname = serioussam-dancesworld
-
