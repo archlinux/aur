@@ -1,6 +1,6 @@
 pkgbase = chinesechesscontrol-bin
 	pkgdesc = 中国象棋控件,包括中国象棋 MFC 扩展库，中国象棋 activex 控件 ，中国象棋Qt插件，人工智能引擎等
-	pkgver = 2.0.7
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://github.com/KangLin/ChineseChessControl
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = chinesechesscontrol-bin
 	depends = qt5-webengine
 	conflicts = chinesechesscontrol
 	conflicts = chinesechesscontrol-appimage
-	source = chinesechesscontrol-2.0.7.deb::https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.7/chinesechesscontrol_v2.0.7_Linux_x86_64_setup.deb
-	sha256sums = c10e639fcec2c078a9dff92c0d6cfe26c4185cf4aabb6e262e81d5e369350d6a
+	source = chinesechesscontrol-2.0.8.deb::https://github.com/KangLin/ChineseChessControl/releases/download/v2.0.8/chinesechesscontrol_v2.0.8_Linux_x86_64_setup.deb
+	sha256sums = 0e0fc6d0fc97b074cc2cd5609478918a50b2787f3ca371d9b80aba1306cff9f4
 
 pkgname = chinesechesscontrol-bin
