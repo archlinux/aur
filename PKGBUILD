@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="strip the dollar sign from the beginning of the terminal command"
 arch=(any)
 url=https://github.com/Freed-Wu/undollar
+makedepends=(cmake)
 license=(GPL3)
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=(SKIP)
