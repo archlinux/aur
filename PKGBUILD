@@ -1,7 +1,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 _pkgname=undollar
 pkgname=sh-$_pkgname
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="strip the dollar sign from the beginning of the terminal command"
 arch=(any)
@@ -9,7 +9,7 @@ url=https://github.com/Freed-Wu/undollar
 makedepends=(cmake)
 license=(GPL3)
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('e730cd9bc3f7e87a86b96bd1012961c3cd76e093e2cd0c6d70622c281a58963d')
+sha256sums=('20e1076f8a98820cfca47523b7f380bbcb96a74fdbefcacc42bdae934f449c7c')
 
 build() {
 	cd "$_pkgname" || return 1
