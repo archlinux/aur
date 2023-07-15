@@ -1,7 +1,7 @@
 pkgbase = tty-clock-git
 	pkgdesc = Analog clock in ncurses
 	pkgver = 2.3.r40.f2f847c
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/xorg62/tty-clock
 	arch = i686
