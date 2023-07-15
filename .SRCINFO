@@ -1,0 +1,19 @@
+pkgbase = krux-installer-bin
+	pkgdesc = A GUI based application to flash Krux firmware on K210 based devices (WIP)
+	pkgver = 0.0.1alpha4
+	pkgrel = 1
+	url = https://github.com/selfcustody/krux-installer
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = electron24
+	provides = krux-installer
+	conflicts = krux-installer
+	source = krux-installer-0.0.1alpha4.AppImage::https://github.com/selfcustody/krux-installer/releases/download/v0.0.1-alpha-4/KruxInstaller-0.0.1-alpha-4.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/selfcustody/krux-installer/main/LICENSE
+	source = krux-installer.sh
+	sha256sums = dfaede387473c3a7f494b79e963c409e365f3df59dc67ec003a65b37cb7884db
+	sha256sums = b68fe242a948dedae52171bf19978e0926f357599b67f111f86fc2d23e20c9ff
+	sha256sums = 6fb09e00984f30e767f335d845b3c705d0ac89cabb2923f3b3d10021f13a03e4
+
+pkgname = krux-installer-bin
