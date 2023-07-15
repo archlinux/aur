@@ -4,7 +4,7 @@
 _pkgname=csview
 pkgname="$_pkgname-bin"
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='High performance CSV viewer with CJK/emoji support'
 arch=(i686 x86_64)
 url="https://github.com/wfxr/$_pkgname"
@@ -22,5 +22,5 @@ package() {
 	install -Dm644 completions/fish/$_pkgname.fish -t "$pkgdir/usr/share/fish/vendor_completions.d/"
 	install -Dm644 completions/zsh/_$_pkgname      -t "$pkgdir/usr/share/zsh/site-functions/"
 	install -Dm644 README.md                       -t "$pkgdir/usr/share/doc/$_pkgname/"
-	install -Dm644 LICENSE-{APACHE,MIT}            -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -Dm644 LICENSE-{APACHE,MIT}            -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

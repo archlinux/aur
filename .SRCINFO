@@ -1,7 +1,7 @@
 pkgbase = csview-bin
 	pkgdesc = High performance CSV viewer with CJK/emoji support
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wfxr/csview
 	arch = i686
 	arch = x86_64
