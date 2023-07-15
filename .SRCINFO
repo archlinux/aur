@@ -1,11 +1,11 @@
 pkgbase = powerline-console-fonts
 	pkgdesc = Various powerline patched fonts for the text console
 	pkgver = 20181111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/powerline/fonts
 	arch = any
 	license = MIT
-	source = powerline-console-fonts-20181111.tar.gz::https://github.com/powerline/fonts/archive/e80e3eba9091dac0655a0a77472e10f53e754bb0.tar.gz
+	source = powerline-console-fonts-e80e3eba9091dac0655a0a77472e10f53e754bb0.tar.gz::https://github.com/powerline/fonts/archive/e80e3eba9091dac0655a0a77472e10f53e754bb0.tar.gz
 	source = https://raw.githubusercontent.com/powerline/powerline/develop/LICENSE
 	sha512sums = 39947e2f59883f2631db5a2efdfdc3f110bd3d984da45d094e95729e4e7633ef95f9ff96ede71a7efa5eee96c7d967d2df77c37c9ea44288ee70bbead86fafe0
 	sha512sums = 837073c64e267a322b14ec88915c8583a3dbe4a60fd92e306402a3f0eddb147ff41f9860d257f3d5e32b0ee4db39b299fb3b7bbe59d6e6f102ec778cebe0bda4
