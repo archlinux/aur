@@ -1,7 +1,7 @@
 pkgbase = choosenim-bin
 	pkgdesc = Nim toolchain installer
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dom96/choosenim
 	arch = x86_64
 	license = BSD

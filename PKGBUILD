@@ -5,7 +5,7 @@
 _pkgname=choosenim
 pkgname="$_pkgname-bin"
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Nim toolchain installer'
 arch=(x86_64)
 url="https://github.com/dom96/$_pkgname"
@@ -22,5 +22,5 @@ b2sums=('4190f29eec3f28a9161a229e4466858c997abd6a15e6e01d83e51c4a8ae327d5bbbffd5
 
 package() {
 	install -vDm755 $pkgname-$pkgver "$pkgdir/usr/bin/$_pkgname"
-	install -vDm644 $pkgname-$pkgver.LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -vDm644 $pkgname-$pkgver.LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
