@@ -11,15 +11,14 @@ pkgbase = lttng-tools
 	makedepends = xmlto
 	depends = popt
 	depends = liburcu>=0.7.2
-	depends = lttng-ust>=2.13.5
+	depends = lttng-ust>=2.13.0
 	depends = linux>=2.6.27
 	depends = libxml2>=2.7.6
 	optdepends = lttng-modules: kernel tracing support
 	optdepends = babeltrace: view traces with `lttng view` command
 	optdepends = man-db: view man pages with the `lttng help` command
 	provides = lttng
-	source = http://lttng.org/files/lttng-tools/lttng-tools-2.13.0.tar.bz2
+	source = http://lttng.org/files/lttng-tools/lttng-tools-2.13.5.tar.bz2
 	sha1sums = d4713dbd5d18d7c92b44249dfa5e29d20013bde4
 
 pkgname = lttng-tools
-
