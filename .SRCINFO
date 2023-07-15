@@ -1,7 +1,7 @@
 pkgbase = kindle-companion-bin
 	pkgdesc = Kindle Companion enables readers to easily access and manage vocabulary lookups and clippings on their Amazon Kindle device
 	pkgver = 1.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://saharzelo.github.io/kindle-companion/
 	arch = x86_64
 	license = MIT

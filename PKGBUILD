@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="kindle-companion-bin"
 pkgver=1.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Kindle Companion enables readers to easily access and manage vocabulary lookups and clippings on their Amazon Kindle device"
 arch=("x86_64")
 url="https://saharzelo.github.io/kindle-companion/"
@@ -19,7 +19,7 @@ sha256sums=('564bc5e3eb16f9af6fc7b9727e500e9a0f4fd4ce2d040de3d0faf636df5452a3'
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/Kindle-Companion/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/Kindle-Companion/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
     sed "s|/opt/Kindle-Companion/${pkgname%-bin} %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm6444 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
