@@ -1,21 +1,22 @@
 pkgbase = listen1-desktop-bin
 	pkgdesc = One for all free music in China
-	pkgver = 2.29.0
+	pkgver = 2.30.0
 	pkgrel = 1
 	url = http://listen1.github.io/listen1
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	makedepends = gendesk
+	depends = bash
 	depends = electron13
 	provides = listen1-desktop
 	conflicts = listen1-desktop
 	conflicts = listen1
-	source = listen1-desktop-2.29.0.tar.gz::https://github.com/listen1/listen1_desktop/releases/download/v2.29.0/listen1_2.29.0_linux_x64.tar.gz
+	source = listen1-desktop-2.30.0.tar.gz::https://github.com/listen1/listen1_desktop/releases/download/v2.30.0/listen1_2.30.0_linux_x64.tar.gz
 	source = LICENSE.md::https://raw.githubusercontent.com/listen1/listen1_desktop/master/LICENSE.md
 	source = listen1-desktop.sh
-	sha256sums = 2144bd12b99916355badd27970d22a084153a45b536766746f32c6b1941013b3
+	sha256sums = 4086fd8eb08a51c9999103dc49ccaf0dd8b73564e8db726fcdc7335a7aa74809
 	sha256sums = d2aa8a82485042b9d5efb8ed2d9c0e8a66e8983bc3f64ebbe35158d35662cdbc
-	sha256sums = bd9b80208045429b063c0b45e5485ab467bfe788e93bbd875ebbc815c3c71167
+	sha256sums = 69cd307012d2f4bf64a4f7792b0df4af38666a7ef66046d1ef791e6b46c01e6f
 
 pkgname = listen1-desktop-bin

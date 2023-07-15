@@ -1,22 +1,22 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=listen1-desktop-bin
-pkgver="2.29.0"
+pkgver=2.30.0
 pkgrel=1
 pkgdesc="One for all free music in China"
 arch=("x86_64")
 url="http://listen1.github.io/listen1"
 _githuburl="https://github.com/listen1/listen1_desktop"
 license=('MIT')
-depends=('electron13')
+depends=('bash' 'electron13')
 makedepends=('asar' 'gendesk')
 conflicts=("${pkgname%-bin}" "${pkgname%-desktop-bin}")
 provides=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/v${pkgver}/${pkgname%-desktop-bin}_${pkgver}_linux_x64.tar.gz"
     "LICENSE.md::https://raw.githubusercontent.com/listen1/listen1_desktop/master/LICENSE.md"
     "${pkgname%-bin}.sh")
-sha256sums=('2144bd12b99916355badd27970d22a084153a45b536766746f32c6b1941013b3'
+sha256sums=('4086fd8eb08a51c9999103dc49ccaf0dd8b73564e8db726fcdc7335a7aa74809'
             'd2aa8a82485042b9d5efb8ed2d9c0e8a66e8983bc3f64ebbe35158d35662cdbc'
-            'bd9b80208045429b063c0b45e5485ab467bfe788e93bbd875ebbc815c3c71167')
+            '69cd307012d2f4bf64a4f7792b0df4af38666a7ef66046d1ef791e6b46c01e6f')
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-desktop-bin}_${pkgver}_linux_x64/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
