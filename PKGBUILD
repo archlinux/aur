@@ -53,3 +53,5 @@ package(){
 }
 
 sha256sums=('8ad4ddbafac4f2c8f2ea523c2c4196f940e8e16f9e635210537582a48622a5d5')
+
+# vim:set ts=8 sts=2 sw=2 et:
