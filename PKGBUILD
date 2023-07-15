@@ -247,7 +247,8 @@ package_clang11-minimal(){
   install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/clang-tools-extra/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/clang-tools-extra/LICENSE"
   install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/clang-tools-extra/CODE_OWNERS.TXT" "$pkgdir/usr/share/licenses/$pkgname/clang-tools-extra/CODE_OWNERS"
   install -Dm644 "${srcdir}/llvm-project-llvmorg-${pkgver}/compiler-rt/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/compiler-rt/LICENSE"
-  install -Dm644 "${srcdir}/llvm-project-llvmorg-${pkgver}/compiler-rt/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/compiler-rt/LICENSE"
+  install -Dm644 "${srcdir}/llvm-project-llvmorg-${pkgver}/compiler-rt/CREDITS.TXT" "$pkgdir/usr/share/licenses/$pkgname/compiler-rt/CREDITS"
+  install -Dm644 "${srcdir}/llvm-project-llvmorg-${pkgver}/compiler-rt/CODE_OWNERS.TXT" "$pkgdir/usr/share/licenses/$pkgname/compiler-rt/CODE_OWNERS"
 }
 
 package_llvm11-libs-minimal(){
