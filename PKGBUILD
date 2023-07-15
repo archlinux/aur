@@ -2,14 +2,15 @@
 
 _pkgname=wayshot
 pkgname="$_pkgname-git"
-pkgver=1.2.2.r1.ea69559b
+pkgver=1.3.0.r5.43fae61e
 pkgrel=1
 pkgdesc="Screenshot tool for wlroots compositors"
 arch=(x86_64)
 url="https://git.sr.ht/~shinyzenith/$_pkgname"
 license=(BSD)
-optdepends=('slurp: for area selection')
+depends=(gcc-libs glibc)
 makedepends=(cargo git scdoc)
+optdepends=('slurp: for area selection')
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 source=("git+$url")
@@ -46,5 +47,5 @@ package() {
 	install -vDm755 target/release/$_pkgname -t "$pkgdir/usr/bin/"
 	install -vDm644 docs/$_pkgname.1.scd "$pkgdir/usr/share/man/man1/$_pkgname.1"
 	install -vDm644 docs/$_pkgname.7.scd "$pkgdir/usr/share/man/man7/$_pkgname.7"
-	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
