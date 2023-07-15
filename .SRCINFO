@@ -1,6 +1,6 @@
 pkgbase = python-clearml
 	pkgdesc = Auto-Magical Suite of tools to streamline your ML workflow
-	pkgver = 1.11.0
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/allegroai/clearml
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-clearml
 	depends = python-requests
 	depends = python-six
 	depends = python-urllib3
-	source = clearml-1.11.0.tar.gz::https://github.com/allegroai/clearml/archive/refs/tags/v1.11.0.tar.gz
-	md5sums = 0087def858e3c9bc2f42c4fbdaf8b42b
+	source = clearml-1.11.1.tar.gz::https://github.com/allegroai/clearml/archive/refs/tags/v1.11.1.tar.gz
+	md5sums = 15fd4ff104b07a60e8f6c92867118170
 
 pkgname = python-clearml
