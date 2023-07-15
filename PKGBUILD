@@ -1,7 +1,7 @@
 # Maintainer: Steven! Ragnarök <steven@nuclearsandwich.com>
 pkgname=tokay-git
-pkgver=v0.4.r167.44e7425
-pkgrel=2
+pkgver=v0.6.2.r13.107bff6
+pkgrel=1
 pkgdesc="Tokay is an imperative, procedural programming language dedicated to parsing and other text-processing tasks."
 arch=('x86_64')
 url="https://tokay.dev"
