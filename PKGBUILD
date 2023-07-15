@@ -1,15 +1,14 @@
 # Maintainer: leuko <aur202307_et_aydos_de>
 _pkgname=xpra-html5
 pkgname=${_pkgname}-git
-pkgver=v8.0.r26.gc706346
-_pkgver_stripped=${pkgver#v}
-pkgrel=1
+pkgver=8.0.r26.gc706346
+pkgrel=2
 pkgdesc='HTML5 client for Xpra'
 arch=('x86_64')
 url='https://github.com/Xpra-org/xpra-html5'
 license=('MPL2')
 conflicts=($_pkgname)
-provides=($_pkgname=$_pkgver_stripped)
+provides=($_pkgname=$pkgver)
 makedepends=(
 	git
 	python-setuptools
@@ -22,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
 }
 
 package() {
