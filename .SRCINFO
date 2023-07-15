@@ -19,8 +19,8 @@ pkgbase = jdk17-dragonwell-standard-bin
 	source = LICENSE::https://github.com/alibaba/dragonwell8/raw/master/LICENSE
 	sha256sums = 4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726
 	source_x86_64 = jdk17-dragonwell-standard-bin-17.0.7.0.7-x86_64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-standard-17.0.7.0.7+7_jdk-17.0.7-ga/Alibaba_Dragonwell_Standard_17.0.7.0.7.7_x64_linux.tar.gz
-	sha256sums_x86_64 = 71da2a40da319df3cc80374fee33d041c87449418350e0762e093a32fe383e69
+	sha256sums_x86_64 = 190839919ed63f6ba9d1249311610145516e2c457974a418bbd9c74c24dfca54
 	source_aarch64 = jdk17-dragonwell-standard-bin-17.0.7.0.7-aarch64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-standard-17.0.7.0.7+7_jdk-17.0.7-ga/Alibaba_Dragonwell_Standard_17.0.7.0.7.7_aarch64_linux.tar.gz
-	sha256sums_aarch64 = 4ea898126aa125d0c63f3e3e69ab8e4debbde28edc6966a75b5b7a334effbea4
+	sha256sums_aarch64 = cc902e52879c37f0f77aafdb00bdbb37ae7cdebf5cf3de883528eb817fea6cc0
 
 pkgname = jdk17-dragonwell-standard-bin
