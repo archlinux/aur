@@ -1,12 +1,13 @@
 pkgbase = r-fdrtool
 	pkgdesc = Estimation of (Local) False Discovery Rates and Higher Criticism
 	pkgver = 1.2.17
-	pkgrel = 4
+	pkgrel = 10
 	url = https://cran.r-project.org/package=fdrtool
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	depends = r
 	source = https://cran.r-project.org/src/contrib/fdrtool_1.2.17.tar.gz
+	md5sums = 7e4ee6e67266b8828cc9d893a171545e
 	sha256sums = 3452601adbead9be4820794e3af2666f710fdf9b801186df565b80b43629c5dd
 
 pkgname = r-fdrtool
