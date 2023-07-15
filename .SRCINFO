@@ -1,19 +1,15 @@
 pkgbase = python-django-markupfield
 	pkgdesc = An implementation of a custom MarkupField for Django
 	pkgver = 2.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jamesturk/django-markupfield
 	arch = any
 	license = BSD
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
+	depends = python-django
 	source = https://github.com/jamesturk/django-markupfield/archive/2.0.1.tar.gz
 	sha256sums = 57cf7f3825261eeda2c709494103f05f95c13d2dca9aaf039534848f399bf71f
 
 pkgname = python-django-markupfield
 	depends = python-django
-
-pkgname = python2-django-markupfield
-	depends = python2-django
