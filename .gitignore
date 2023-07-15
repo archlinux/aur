@@ -1,0 +1,5 @@
+pkg/
+src/
+
+tallyard-*.tar.zst
+tallyard-v*.tar.gz
