@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Zero-K
+Keywords=game;strategy;
+Icon=Zero-K
+Path=/opt/zero-k
+Exec=mono /opt/zero-k/Zero-K.exe
+Terminal=false
+StartupNotify=false
+Categories=Game;StrategyGame;
+Comment=Free real time strategy (RTS) game
