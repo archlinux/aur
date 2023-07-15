@@ -1,7 +1,7 @@
 pkgbase = pluto-sat-code-git
 	pkgdesc = Code for the SGP4/SDP4 satellite motion model, and for manipulating TLEs (Two-Line Elements)
 	pkgver = 20230608.3db65bb
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.projectpluto.com/sat_code.htm
 	arch = x86_64
 	license = MIT
