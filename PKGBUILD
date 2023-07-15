@@ -3,7 +3,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=megasync-git
-pkgver=4.9.3.0.7.gc422ca213
+pkgver=4.9.5.0.5.g4127676aa
 pkgrel=1
 pkgdesc="MEGASync Desktop App. (GIT Version)"
 arch=('x86_64')
@@ -51,7 +51,6 @@ source=(
   'git+https://github.com/meganz/sdk.git'
   'mega.svg'
   'esee'
-  'https://patch-diff.githubusercontent.com/raw/meganz/sdk/pull/2614.diff'
   'ffmpeg6.diff'
 )
 sha256sums=(
@@ -59,7 +58,6 @@ sha256sums=(
   'SKIP'
   'c0abfeafb541509923c85d253f6f64dae8a49e9ae4b067f5c0c484ff1d924403'
   '66b5f481081157eee82653b3774d22edb5aa2007cf93142fd73cc0c4d577d59f'
-  'aeb5145225d0ebaa4595a99d81e55d1f71bc6e7f1242785f541a3122cba6c217'
   'a5f1d784a0a548965c939a74da101ff436796490a7d3f4efbaa8c22d639ab8fc'
 )
 options=('debug')
@@ -76,7 +74,6 @@ prepare() {
     src/MEGASync/mega
 
   # FFmpeg6
-  patch -d src/MEGASync/mega -p1 -i "${srcdir}/2614.diff"
   patch -d src/MEGASync/mega -p1 -i "${srcdir}/ffmpeg6.diff"
 
   # Disable PDFium
