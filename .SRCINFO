@@ -1,14 +1,20 @@
 pkgbase = r-digest
 	pkgdesc = Create Compact Hash Digests of R Objects
 	pkgver = 0.6.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=digest
 	arch = x86_64
 	license = GPL
+	checkdepends = r-tinytest
+	depends = google-crc32c
+	depends = libblake3
 	depends = r
+	depends = xxhash
+	depends = zlib
 	optdepends = r-simplermarkdown
 	optdepends = r-tinytest
 	source = https://cran.r-project.org/src/contrib/digest_0.6.33.tar.gz
+	md5sums = f47359e9e90e279714c9fd50a47ad2ed
 	sha256sums = be702c886b1639be7eda4ea25a4261b30ce418c580f79bd78ec8d6cb4d327819
 
 pkgname = r-digest
