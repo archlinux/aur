@@ -1,7 +1,7 @@
 pkgbase = google-cloud-ops-agent-git
 	pkgdesc = Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)
 	pkgver = 2.34.0.r34.gfdcfea1a4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GoogleCloudPlatform/ops-agent
 	arch = x86_64
 	arch = aarch64
