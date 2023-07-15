@@ -1,22 +1,21 @@
 pkgbase = xcb-util-cursor-git
 	pkgdesc = XCB cursor library
-	pkgver = 0.1.3.r1.g947eaba
+	pkgver = 0.1.4.r3.103bcca
 	pkgrel = 1
 	url = https://xcb.freedesktop.org/
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = xorg-util-macros
 	makedepends = gperf
+	makedepends = xorg-util-macros
 	depends = libxcb
-	depends = xcb-util-renderutil
 	depends = xcb-util-image
-	provides = xcb-util-cursor
+	depends = xcb-util-renderutil
+	provides = xcb-util-cursor=0.1.4
 	conflicts = xcb-util-cursor
-	source = git+https://anongit.freedesktop.org/git/xcb/util-cursor.git
+	source = xcb-util-cursor::git+https://anongit.freedesktop.org/git/xcb/util-cursor.git
 	source = git+https://anongit.freedesktop.org/git/xcb/util-common-m4.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = xcb-util-cursor-git
-

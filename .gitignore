@@ -1,7 +1,4 @@
-# Blacklist:
-*
-
-# Whitelist:
-!.gitignore
-!.SRCINFO
-!PKGBUILD
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
