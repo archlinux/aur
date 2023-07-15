@@ -1,6 +1,6 @@
 pkgbase = owmods-cli-bin
 	pkgdesc = A CLI To Manage Outer Wilds Mods
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/Bwc9876/ow-mod-man/tree/main/owmods_cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = owmods-cli-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = mono
-	source = owmods-cli-bin-0.7.2.tar.gz::https://github.com/Bwc9876/ow-mod-man/releases/download/cli_v0.7.2/owmods.tar.zst
-	sha256sums = 9838750fda4ac1cc848e25206c34637eac851ca5f3fd5f82e07cefe46c4d81f0
+	source = owmods-cli-bin-0.8.0.tar.gz::https://github.com/Bwc9876/ow-mod-man/releases/download/cli_v0.8.0/owmods.tar.zst
+	sha256sums = cb19b77102ec2ce16290523d6697131301a5dbfc0f1e58064e82bc2a20d6f19b
 
 pkgname = owmods-cli-bin
