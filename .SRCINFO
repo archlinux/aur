@@ -1,13 +1,13 @@
 pkgbase = vencord-desktop-git
 	pkgdesc = A standalone Electron app that loads Discord & Vencord
-	pkgver = r67.d1acb04
-	pkgrel = 2
+	pkgver = r142.d884b7d
+	pkgrel = 3
 	url = https://github.com/Vencord/Desktop
 	arch = x86_64
 	arch = aarch64
 	license = GPL
-	makedepends = nodejs
-	makedepends = npm
+	makedepends = pnpm
+	makedepends = git
 	optdepends = libnotify: Notifications
 	optdepends = xdg-utils: Open links, files, etc
 	provides = vencord
