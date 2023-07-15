@@ -1,5 +1,5 @@
 # Maintainer: chomsky <ivanonarch at tutanota dot com>
-# Contributor: Lemon <dev [at] behnamlal [dot] com>
+# Contributor: Lemon <dev [at] behnamlal [dot] xyz>
 pkgname='lobster-git'
 _pkgname="${pkgname%-git}"
 pkgver=4.0.6.r6.g3228ed6
