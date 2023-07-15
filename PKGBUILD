@@ -4,7 +4,7 @@
 pkgname=python-xyzservices
 _name=xyzservices
 pkgver=2023.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides a repository of available XYZ services offering raster basemap tiles'
 arch=('x86_64')
 url="https://github.com/geopandas/xyzservices"
@@ -16,7 +16,7 @@ makedepends=(
   'python-build'
   'python-installer'
 )
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_name-$pkgver.tar.gz")
 b2sums=('1d758c9781c02744d580324fd34d3f7f7321645ffa39f7ef33a68606c30c9bf0fd1e9c59818417cb4cfdaea3f0b6f5bd110f3aac3b0c2fdb45a9626f062935b0')
 
 build() {
