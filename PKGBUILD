@@ -20,7 +20,7 @@ pkgver() {
 build() {
 	cd "$srcdir/$pkgbase"
 	
-	for pkg in ${pkgname[@]};	do
+	for pkg in ${pkgname[@]}; do
 		pushd ${pkg%%-git} >/dev/null
 		make all &
 		popd >/dev/null
