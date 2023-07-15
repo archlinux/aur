@@ -3,7 +3,7 @@
 _pkgbase=macbook12-spi-driver
 pkgname=(${_pkgbase}-dkms)
 pkgver=0+git.314
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for the keyboard, touchpad and touchbar found in newer MacBook (Pro) models"
 arch=('i686' 'x86_64')
 url="https://github.com/marc-git/macbook12-spi-driver"

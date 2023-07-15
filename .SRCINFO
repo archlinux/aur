@@ -1,7 +1,7 @@
 pkgbase = macbook12-spi-driver-dkms
 	pkgdesc = Driver for the keyboard, touchpad and touchbar found in newer MacBook (Pro) models
 	pkgver = 0+git.314
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marc-git/macbook12-spi-driver
 	arch = i686
 	arch = x86_64
