@@ -1,7 +1,7 @@
 pkgbase = rpl
 	pkgdesc = UN*X text replacement utility
 	pkgver = 1.8rc3
-	pkgrel = 14
+	pkgrel = 1
 	url = https://github.com/rrthomas/rpl
 	arch = i686
 	arch = x86_64

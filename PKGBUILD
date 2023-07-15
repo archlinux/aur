@@ -5,7 +5,7 @@
 pkgname=rpl
 # OLD pkgver=1.4.1
 pkgver=1.8rc3
-pkgrel=14
+pkgrel=1
 pkgdesc="UN*X text replacement utility"
 # url="http://www.laffeycomputer.com/rpl.html"
 url="https://github.com/rrthomas/rpl"
