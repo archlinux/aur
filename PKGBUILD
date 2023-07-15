@@ -1,9 +1,10 @@
 # Maintainer: Dashon Wells <me@me.me>
 
+# Contributor: yochananmarqos <aur commenter>
+
 pkgname='catt-qt'
-commonname='cattqt'
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A control GUI for Chromecasts written using python3, catt api, pychromecast and PyQt5.'
 arch=('any')
 url=https://github.com/soreau/catt-qt
@@ -15,36 +16,33 @@ depends=(
   'catt'
   'python-pychromecast>=7.5.0')
 
-makedepends=('python-setuptools')
+makedepends=(
+  'python-build'
+  'python-flit'
+  'python-installer'
+  'python-wheel')
 
-# I am grabbing the package from pypi because the github repo seems
-# to be using flit to generate the setup.py file and I couldn't figure out
-# how to use it
 source=(
-https://files.pythonhosted.org/packages/source/${commonname::1}/$commonname/$commonname-$pkgver.tar.gz
+"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 "catt-qt.desktop"
-"setup.py"
 )
 sha256sums=(
-'b1a14f339844ab8dbccce5690a665ae0212f982313681b1a5fd3afcc6af3ea37'
-'6e665e9b7d8fa281102eb52e701f4da02a865642f19146dc9bd4f45408566866'
-"bf371892e6960054dc26ca3ca3e88f3fe6ca2ed72b95a84d1a79c93cf900c4e8"
+'c5f0b39b0b33ffa1ff2aa9db884da9dbfd0ad36611eb295b1b9296fb3814b46f'
+'9a9250499e75d2d21fc493d738f89da1e94b03021ebdc70b8a209be1cc2dfa99'
 )
 
 build() {
-  mv  setup.py "${srcdir}"/"${commonname}"-"${pkgver}"
-  cd "${srcdir}"/"${commonname}"-"${pkgver}"
-  python setup.py build
+  cd "$pkgname-$pkgver"
+
+  # This package requires itself to build and can't find itself,
+  # thus --skip-dependency-check and set PYTHONPATH
+  PYTHONPATH=./ python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 package() {
- # catt-qt doesn't have a desktop icon so I made one for convenience
- # install Desktop icon before switching directories
-  install -Dm644 catt-qt.desktop "${pkgdir}"/usr/share/applications/catt-qt.desktop
+  cd "$pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  cd "${srcdir}"/"${commonname}"-"${pkgver}"
-  install -Dm644 README.rst "${pkgdir}"/usr/share/doc/"${pkgname}"/README.rst
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-  install -Dm644 cattqt/chromecast.png "${pkgdir}"/usr/share/icons/"${pkgname}".png
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  install -Dm644 cattqt/chromecast.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }

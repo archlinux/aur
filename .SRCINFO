@@ -1,20 +1,21 @@
 pkgbase = catt-qt
 	pkgdesc = A control GUI for Chromecasts written using python3, catt api, pychromecast and PyQt5.
 	pkgver = 4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/soreau/catt-qt
 	arch = any
 	license = GPLv3
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-flit
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = python-pyqt5
 	depends = catt
 	depends = python-pychromecast>=7.5.0
-	source = https://files.pythonhosted.org/packages/source/c/cattqt/cattqt-4.0.tar.gz
+	source = catt-qt-4.0.tar.gz::https://github.com/soreau/catt-qt/archive/refs/tags/v4.0.tar.gz
 	source = catt-qt.desktop
-	source = setup.py
-	sha256sums = b1a14f339844ab8dbccce5690a665ae0212f982313681b1a5fd3afcc6af3ea37
-	sha256sums = 6e665e9b7d8fa281102eb52e701f4da02a865642f19146dc9bd4f45408566866
-	sha256sums = bf371892e6960054dc26ca3ca3e88f3fe6ca2ed72b95a84d1a79c93cf900c4e8
+	sha256sums = c5f0b39b0b33ffa1ff2aa9db884da9dbfd0ad36611eb295b1b9296fb3814b46f
+	sha256sums = 9a9250499e75d2d21fc493d738f89da1e94b03021ebdc70b8a209be1cc2dfa99
 
 pkgname = catt-qt

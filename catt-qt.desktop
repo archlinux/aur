@@ -1,6 +1,6 @@
 [Desktop Entry]
-Comment="A control GUI for Chromecasts written using python3, catt api, pychromecast and PyQt5"
-Exec=/usr/bin/catt-qt
+Comment="A control GUI for Chromecasts"
+Exec=catt-qt
 GenericName=Catt GUI
 Icon=catt-qt
 Name=catt-qt
