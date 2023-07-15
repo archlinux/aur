@@ -1,0 +1,15 @@
+pkgbase = python-py-natpmp
+	pkgdesc = A NAT-PMP (Network Address Translation Port Mapping Protocol) library and testing client in Python.
+	pkgver = r21.325af58
+	pkgrel = 1
+	url = https://github.com/yimingliu/py-natpmp
+	arch = any
+	license = BSD
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	source = py-natpmp::git+https://github.com/yimingliu/py-natpmp
+	sha256sums = SKIP
+
+pkgname = python-py-natpmp
