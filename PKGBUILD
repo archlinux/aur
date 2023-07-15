@@ -1,19 +1,19 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=vmware-ovftool
-pkgver=4.4.3.18663434
+pkgver=4.6.0.21452615
 pkgrel=1
 pkgdesc="VMware Open Virtualization Format tool"
 arch=('x86_64')
-url="https://www.vmware.com/support/developer/ovf/"
+url="https://developer.vmware.com/web/tool/ovf-tool"
 license=('custom:vmware')
 makedepends=('xorg-server-xvfb' 'procps-ng')
 depends=('c-ares' 'expat' 'zlib' 'libxcrypt-compat')
 # VMware-ovftool must be provided by the user by putting it into the build directory
 # You can get the file by yourself here:
-# https://my.vmware.com/group/vmware/downloads/get-download?downloadGroup=OVFTOOL443
+# https://customerconnect.vmware.com/downloads/get-download?downloadGroup=OVFTOOL460
 source=("file://VMware-ovftool-${pkgver%.*}-${pkgver##*.}-lin.x86_64.bundle")
-sha256sums=('8d69c6057d47f7060b1ce3dd90fcb2b688a02034d39761ad301620bb9a6b1c04')
+sha256sums=('6984085ea69c95f6e2aae0b3199641f0fcf42bf61feb3654d90018dceb6ac154')
 
 prepare() {
   # The bundle file doesn't allow extraction using symlinks or relative paths, here's then copied
@@ -54,4 +54,3 @@ package() {
   install -m 755 -d "${pkgdir}/usr/share/doc/${pkgname}"
   install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" "README.txt"
 }
-

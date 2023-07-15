@@ -1,8 +1,8 @@
 pkgbase = vmware-ovftool
 	pkgdesc = VMware Open Virtualization Format tool
-	pkgver = 4.4.3.18663434
+	pkgver = 4.6.0.21452615
 	pkgrel = 1
-	url = https://www.vmware.com/support/developer/ovf/
+	url = https://developer.vmware.com/web/tool/ovf-tool
 	arch = x86_64
 	license = custom:vmware
 	makedepends = xorg-server-xvfb
@@ -11,7 +11,7 @@ pkgbase = vmware-ovftool
 	depends = expat
 	depends = zlib
 	depends = libxcrypt-compat
-	source = file://VMware-ovftool-4.4.3-18663434-lin.x86_64.bundle
-	sha256sums = 8d69c6057d47f7060b1ce3dd90fcb2b688a02034d39761ad301620bb9a6b1c04
+	source = file://VMware-ovftool-4.6.0-21452615-lin.x86_64.bundle
+	sha256sums = 6984085ea69c95f6e2aae0b3199641f0fcf42bf61feb3654d90018dceb6ac154
 
 pkgname = vmware-ovftool
