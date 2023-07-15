@@ -4,7 +4,7 @@
 
 pkgname='catt-qt'
 pkgver=4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A control GUI for Chromecasts written using python3, catt api, pychromecast and PyQt5.'
 arch=('any')
 url=https://github.com/soreau/catt-qt
@@ -13,6 +13,10 @@ license=('GPLv3')
 depends=(
   'python'
   'python-pyqt5'
+  'python-brotli'
+  'python-pycryptodomex'
+  'python-websockets'
+  'xdg-desktop-portal'
   'catt'
   'python-pychromecast>=7.5.0')
 
