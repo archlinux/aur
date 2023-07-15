@@ -3,7 +3,7 @@
 _pkgname=wootility-lekker
 pkgname=${_pkgname}-appimage
 pkgver=4.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for configuring Wooting keyboards (binary AppImage version)"
 arch=('x86_64')
 url="https://wooting.io/wootility"
@@ -52,5 +52,5 @@ package() {
     # Install udev rules and systemd services
     install -Dpm644 "wooting.rules" "${pkgdir}/usr/lib/udev/rules.d/wooting.rules"
     install -Dpm644 "wooting-xinput.rules" "${pkgdir}/usr/lib/udev/rules.d/wooting-xinput.rules"
-    install -Dpm644 "wooting-xinput@.service" "${pkgdir}/etc/systemd/system/wooting-xinput@.service"
+    install -Dpm644 "wooting-xinput@.service" "${pkgdir}/usr/lib/systemd/system/wooting-xinput@.service"
 }
