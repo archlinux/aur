@@ -1,6 +1,6 @@
 pkgbase = xivlauncher-rb
 	pkgdesc = Custom launcher for Final Fantasy XIV Online with RB Patches!
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Marcanicus/XIVLauncher.Core
