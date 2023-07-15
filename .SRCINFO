@@ -5,11 +5,14 @@ pkgbase = libclc11-minimal
 	url = https://libclc.llvm.org/
 	arch = x86_64
 	license = MIT
+	makedepends = clang11-minimal
 	makedepends = llvm11-minimal
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = python
-	makedepends = git
+	makedepends = gcc12
+	makedepends = gcc12-fortran
+	makedepends = gcc12-libs
 	source = https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-11.0.0.tar.gz
 	sha256sums = 8ad4ddbafac4f2c8f2ea523c2c4196f940e8e16f9e635210537582a48622a5d5
 

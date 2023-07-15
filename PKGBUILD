@@ -6,6 +6,7 @@
 
 #Maintainer: blackmoon3 <https://github.com/blacksky3>
 #Credits: Laurent Carlier <lordheavym@gmail.com>
+#Credits: circle <az6980522@gmail.com>
 
 pkgname=libclc11-minimal
 pkgdesc='Library requirements of the OpenCL C programming language'
@@ -14,7 +15,7 @@ pkgver=11.0.0
 pkgrel=1
 arch=(x86_64)
 license=(MIT)
-makedepends=(llvm11-minimal cmake ninja python git)
+makedepends=(clang11-minimal llvm11-minimal cmake ninja python gcc12 gcc12-fortran gcc12-libs)
 source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz)
 
 # Both ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.
@@ -27,6 +28,11 @@ source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}
 # NOTE: It's your responbility to validate the value of NINJAFLAGS and LITFLAGS. If unsure, don't set it.
 
 build(){
+export CC=/usr/bin/gcc-12
+export CXX=/usr/bin/g++-12
+export CFLAGS+=" ${CPPFLAGS}"
+export CXXFLAGS+=" ${CPPFLAGS}"
+
   cd ${srcdir}/llvm-project-llvmorg-${pkgver}/libclc
 
   rm -rf build
