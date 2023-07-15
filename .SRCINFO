@@ -1,7 +1,7 @@
 pkgbase = serioussam-st8vi
-	pkgdesc = Serious Sam Classic ST8VI native Linux
+	pkgdesc = Serious Sam Classic ST8VI native Linux.
 	pkgver = 1.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tx00100xt/SE1-TSE-ST8VI
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,11 @@ pkgbase = serioussam-st8vi
 	depends = sdl2
 	depends = python
 	depends = bash
+	depends = serioussam-vk
+	noextract = SamTSE-ST8VI.tar.xz
 	source = https://github.com/tx00100xt/SE1-TSE-ST8VI/archive/refs/tags/v1.7.1.tar.gz
-	sha512sums = b88b1fc6b83d6766a5ea33e5903a9353824316f8d27e83b69d8e09a719d38b869f807090effcab94a3f5e9e18dffa8c387a94f8b0d090e3597a90e6bf7d6b2a2
+	source = https://archive.org/download/sam-tse-st8vi/SamTSE-ST8VI.tar.xz
+	sha256sums = ac2c323276118e3a0e16ffe53e52b510a369d148fae7fd4196842680fa3f5127
+	sha256sums = 0a6954285f6ec430177e808fb6cf839f60163b78e23b1cca8f5a715dc7655d0d
 
 pkgname = serioussam-st8vi
-
