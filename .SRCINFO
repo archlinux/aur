@@ -1,6 +1,6 @@
 pkgbase = electron-fiddle-bin
 	pkgdesc = The easiest way to get started with Electron
-	pkgver = 0.32.9
+	pkgver = 0.33.0
 	pkgrel = 1
 	url = https://github.com/electron/fiddle/
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = electron-fiddle-bin
 	provides = electron-fiddle
 	conflicts = electron-fiddle
 	conflicts = electron-fiddle-git
-	source_x86_64 = https://github.com/electron/fiddle/releases/download/v0.32.9/electron-fiddle_0.32.9_amd64.deb
-	sha256sums_x86_64 = a61a69f2ce4801b5e77e3b8339d4ba75397ae8f0ff3a9769f0877ecd97ff0623
-	source_aarch64 = https://github.com/electron/fiddle/releases/download/v0.32.9/electron-fiddle_0.32.9_arm64.deb
-	sha256sums_aarch64 = c9b1a710a0e47b4215b72fcdb6adf199068d39d98ff4bca34bcf66e572f5da11
-	source_armhf = https://github.com/electron/fiddle/releases/download/v0.32.9/electron-fiddle_0.32.9_armhf.deb
-	sha256sums_armhf = e63e0b76a45f70a128d4710dfc48461c6e53bb99210cfb56ff8cefb83a34be28
+	source_x86_64 = https://github.com/electron/fiddle/releases/download/v0.33.0/electron-fiddle_0.33.0_amd64.deb
+	sha256sums_x86_64 = 0f8cae8eca133c5f741a7f347b3b533b84891f7ba1b51ec9811d2093fda573e2
+	source_aarch64 = https://github.com/electron/fiddle/releases/download/v0.33.0/electron-fiddle_0.33.0_arm64.deb
+	sha256sums_aarch64 = 8bb43d41ce55a99b4e33339e1ce4202e23b1187708b29a8363d8dde14dd3903a
+	source_armhf = https://github.com/electron/fiddle/releases/download/v0.33.0/electron-fiddle_0.33.0_armhf.deb
+	sha256sums_armhf = 7d70df0889f90dd096c7befdc5ea4748d1ca2280a2540c7ad4e675f24c94d371
 
 pkgname = electron-fiddle-bin
