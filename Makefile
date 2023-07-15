@@ -1,7 +1,8 @@
 .PHONY: all check chrootpkg patch release
 
+## Sync the sources only.
 all:
-	makepkg -sd
+	makepkg --syncdeps --nodeps --nobuild
 
 check:
 	namcap PKGBUILD
