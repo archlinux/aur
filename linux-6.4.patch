@@ -1,0 +1,32 @@
+From 25e1e81708334daad8c5f698b65860938dc3f274 Mon Sep 17 00:00:00 2001
+From: Christoph Gysin <christoph.gysin@gmail.com>
+Date: Sat, 15 Jul 2023 09:57:26 +0300
+Subject: [PATCH] Fix return type for linux-6.4
+
+---
+ apple-ibridge.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/apple-ibridge.c b/apple-ibridge.c
+index b6983e6..b176e32 100644
+--- a/apple-ibridge.c
++++ b/apple-ibridge.c
+@@ -843,13 +843,13 @@ static int appleib_probe(struct acpi_device *acpi)
+ 	return 0;
+ }
+ 
+-static int appleib_remove(struct acpi_device *acpi)
++static void appleib_remove(struct acpi_device *acpi)
+ {
+ 	struct appleib_device *ib_dev = acpi_driver_data(acpi);
+ 
+ 	hid_unregister_driver(&ib_dev->ib_driver);
+ 
+-	return 0;
++	return;
+ }
+ 
+ static int appleib_suspend(struct device *dev)
+-- 
+2.41.0
+
