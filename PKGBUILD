@@ -1,16 +1,13 @@
 _pkgname=sat_code
 pkgname=pluto-sat-code-git
 pkgver=20230608.3db65bb
-pkgrel=2
+pkgrel=4
 pkgdesc="Code for the SGP4/SDP4 satellite motion model, and for manipulating TLEs (Two-Line Elements)"
 arch=(x86_64)
 url="http://www.projectpluto.com/sat_code.htm"
 license=(MIT)
 provides=(pluto-sat-code)
 makedepends=('git' 'pluto-lunar')
-optdepends=('pluto-find-orb: Orbit determination from observations'
-	    'pluto-lunar: Basic astronomical functions for solar system ephemerides, time systems, coordinate systems, etc'
-            'pluto-jpl-eph: Code to read, use, and manipulate JPL DE ephemeris data')
 source=("git+https://github.com/Bill-Gray/sat_code.git")
 sha512sums=('SKIP')
 
@@ -21,29 +18,22 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}"
-  make
+  make all
 }
 
 package() {
+  # install headers
+  install -m644 -D "${srcdir}/${_pkgname}/norad.h"	"${pkgdir}/usr/local/include/norad.h"
+
+  # install lib
   install -m644 -D "${srcdir}/${_pkgname}/libsatell.a"	"$pkgdir/usr/lib/libsatell.a"
-  install -m755 -D "${srcdir}/${_pkgname}/dropouts"	"$pkgdir/usr/bin/dropouts"
-  install -m755 -D "${srcdir}/${_pkgname}/fake_ast"	"$pkgdir/usr/bin/fake_ast"
-  install -m755 -D "${srcdir}/${_pkgname}/fix_tles"	"$pkgdir/usr/bin/fix_tles"
-  install -m755 -D "${srcdir}/${_pkgname}/get_high"	"$pkgdir/usr/bin/get_high"
-  install -m755 -D "${srcdir}/${_pkgname}/line2"	"$pkgdir/usr/bin/line2"
-  install -m755 -D "${srcdir}/${_pkgname}/mergetle"	"$pkgdir/usr/bin/mergetle"
-  install -m755 -D "${srcdir}/${_pkgname}/obs_tes2"	"$pkgdir/usr/bin/obs_tes2"
-  install -m755 -D "${srcdir}/${_pkgname}/obs_test"	"$pkgdir/usr/bin/obs_test"
-  install -m755 -D "${srcdir}/${_pkgname}/out_comp"	"$pkgdir/usr/bin/out_comp"
-  install -m755 -D "${srcdir}/${_pkgname}/sat_cgi"	"$pkgdir/usr/bin/sat_cgi"
-  install -m755 -D "${srcdir}/${_pkgname}/sat_eph"	"$pkgdir/usr/bin/sat_eph"
-  install -m755 -D "${srcdir}/${_pkgname}/sat_id"       "$pkgdir/usr/bin/sat_id"
-  install -m755 -D "${srcdir}/${_pkgname}/sat_id2"	"$pkgdir/usr/bin/sat_id2"
-  install -m755 -D "${srcdir}/${_pkgname}/summarize"	"$pkgdir/usr/bin/summarize"
-  install -m755 -D "${srcdir}/${_pkgname}/test2"	"$pkgdir/usr/bin/test2"
-  install -m755 -D "${srcdir}/${_pkgname}/test_des"	"$pkgdir/usr/bin/test_des"
-  install -m755 -D "${srcdir}/${_pkgname}/test_out"	"$pkgdir/usr/bin/test_out"
-  install -m755 -D "${srcdir}/${_pkgname}/test_sat"	"$pkgdir/usr/bin/test_sat"
-  install -m755 -D "${srcdir}/${_pkgname}/tle2mpc"	"$pkgdir/usr/bin/tle2mpc"
+
+  # install binary
+  for bin in "dropouts" "fake_ast" "fix_tles" "get_high" "line2" "mergetle" "obs_tes2" "obs_test" \
+             "out_comp" "sat_cgi" "sat_eph" "sat_id" "sat_id2" "summarize" "test2" "test_des" \
+             "test_out" "test_sat" "tle2mpc"  
+  do
+	install -m755 -D "${srcdir}/${_pkgname}/${bin}"	"$pkgdir/usr/bin/${bin}"
+  done
 }
 
