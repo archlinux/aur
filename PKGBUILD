@@ -14,8 +14,16 @@ source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha512sums=('3abc838ca3688b2f14c619d193db732be6dc51fe68820a63f18fc678221591788a24f24909fdb63ba567c3296179ab123ba9964779d2d62cc68c3c8a714541f2')
 
 build() {
-  cmake -B build -S "$pkgname-v$pkgver" -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_INSTALL_PREFIX=/usr -DCONFIG_WAYLAND=ON
+  local cmake_options=(
+    -B build
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D CONFIG_WAYLAND=ON
+    -S $pkgname-v$pkgver
+    -W no-dev
+  )
+
+  cmake "${cmake_options[@]}"
   cmake --build build
 }
 
