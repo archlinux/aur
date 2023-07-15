@@ -1,7 +1,7 @@
 pkgbase = lua-luajson
 	pkgdesc = JSON parser/encoder for Lua
 	pkgver = 1.3.4
-	pkgrel = 8
+	pkgrel = 9
 	url = https://www.eharning.us/wiki/luajson/
 	arch = any
 	license = MIT
@@ -15,4 +15,3 @@ pkgname = lua-luajson
 
 pkgname = lua53-luajson
 	depends = lua53-lpeg
-
