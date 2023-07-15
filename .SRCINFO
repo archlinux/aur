@@ -1,11 +1,12 @@
 pkgbase = implay
 	pkgdesc = Desktop media player built on top of mpv and imgui
 	pkgver = 1.4.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/tsl0922/ImPlay
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	makedepends = gtk3
 	makedepends = freetype2
 	depends = mpv

@@ -1,7 +1,7 @@
 # Maintainer: Mole Shang <135e2@135e2.dev>
 pkgname=implay
 pkgver=1.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Desktop media player built on top of mpv and imgui"
 arch=('x86_64')
 url="https://github.com/tsl0922/ImPlay"
@@ -13,6 +13,7 @@ depends=(
 )
 makedepends=(
   'cmake'
+  'git'
   'gtk3'
   'freetype2'
 )
