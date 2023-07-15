@@ -1,3 +1,19 @@
+diff --git a/apps/builtinconf.go b/apps/builtinconf.go
+index 361f2f206..597ecc36f 100644
+--- a/apps/builtinconf.go
++++ b/apps/builtinconf.go
+@@ -21,9 +21,8 @@ var (
+ 		"linux": {
+ 			Logging: &cg.Logging{
+ 				Receivers: map[string]cg.LoggingReceiver{
+-					"syslog": &cg.LoggingReceiverFiles{
+-						ConfigComponent: cg.ConfigComponent{Type: "files"},
+-						IncludePaths:    []string{"/var/log/messages", "/var/log/syslog"},
++					"syslog": &cg.LoggingReceiverSystemd{
++						ConfigComponent: cg.ConfigComponent{Type: "systemd_journald"},
+ 					},
+ 				},
+ 				Processors: map[string]cg.LoggingProcessor{},
 diff --git a/build.sh b/build.sh
 index 4a97050f7..041b3ac72 100755
 --- a/build.sh
