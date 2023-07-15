@@ -1,16 +1,16 @@
 # Maintainer: Paul WOISARD <paulwoisard@gmail.com>
 
-pkgname=Matrix_CPP
+pkgname=matrix_cpp
 pkgver=1.0.16
 pkgrel=1
 pkgdesc="Video processing with Matrix effect"
 arch=('x86_64')
-url="https://github.com/Bit-Scripts/Matrix_CPP"
+url="https://github.com/Bit-Scripts/matrix_cpp"
 license=('MIT')
-depends=('linux-zen-headers' 'linux-lts-headers' 'linux-hardened-headers' 'linux-headers' 'dkms' 'qt6-base' 'qt6-multimedia' 'qt6-multimedia-ffmpeg' 'qt6-multimedia-gstreamer' 'qt6-wayland' 'opencv' 'ffmpeg' 'v4l2loopback-dkms' 'v4l2loopback-utils' 'v4l-utils')
-makedepends=('cmake')
+depends=('linux-zen-headers' 'linux-lts-headers' 'linux-hardened-headers' 'linux-headers' 'dkms' 'qt6-multimedia' 'qt6-base' 'qt6-multimedia-ffmpeg' 'qt6-multimedia-gstreamer' 'qt6-wayland' 'opencv' 'ffmpeg' 'v4l2loopback-dkms' 'v4l2loopback-utils' 'v4l-utils')
+makedepends=('cmake' 'qt6-multimedia' 'qt6-base' 'qt6-multimedia-ffmpeg' 'qt6-multimedia-gstreamer' 'qt6-wayland')
 source=("v${pkgver}.tar.gz::https://github.com/Bit-Scripts/Matrix_CPP/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aaee4fb95315500590991811b65890b9b55e182ea81b27e470510531480e0e33')
+sha256sums=('1b91f4942f4afa9e634ae3fbb95caaa1c09e1fc3f1a38481530152505309b5c2')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
