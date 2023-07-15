@@ -7,7 +7,7 @@ pkgbase = libartnet
 	arch = arm64
 	arch = x86_64
 	arch = aarch64
-	license = GPL
+	license = LGPL
 	makedepends = git
 	provides = libartnet
 	source = git+https://github.com/atlesn/libartnet.git#tag=v1.2.0
