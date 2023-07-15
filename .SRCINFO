@@ -1,0 +1,23 @@
+pkgbase = gsender-bin
+	pkgdesc = Connect to and control Grbl-based CNCs
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/Sienci-Labs/gsender
+	arch = x86_64
+	license = GNU
+	depends = gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3
+	conflicts = gsender
+	source = https://github.com/Sienci-Labs/gsender/releases/download/v1.2.2/gSender_1.2.2_amd64.deb
+	source = https://raw.githubusercontent.com/Sienci-Labs/gsender/master/LICENSE
+	sha256sums = 2b7bd584cb9aded1650f861befb103a8d5b1b497477be7381cc96f25db8bbbf8
+	sha256sums = fb4594571c8142643b5a121b585b8a218e450ee0c13446802480a5586106cec0
+
+pkgname = gsender-bin
