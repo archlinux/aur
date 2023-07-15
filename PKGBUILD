@@ -305,7 +305,7 @@ package_clang11-libs-minimal(){
 package_spirv-llvm-translator11-minimal(){
   pkgdesc='Tool and a library for bi-directional translation between SPIR-V and LLVM IR'
   depends=(llvm11-libs-minimal)
-  provides=(spirv-llvm-translator11-minimal)
+  provides=(spirv-llvm-translator11)
 
   cp --preserve --recursive "$srcdir"/spirv/* "$pkgdir"/
 
