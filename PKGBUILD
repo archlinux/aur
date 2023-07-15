@@ -4,8 +4,8 @@
 _pkgname=shot
 pkgname="$_pkgname-git"
 pkgver=2.1.r16.316b33d
-pkgrel=1
-pkgdesc='Minimal screenshot tool aiming to provide good control over screenshot region'
+pkgrel=2
+pkgdesc='Minimal X11 screenshot tool aiming to provide good control over screenshot region'
 arch=(x86_64)
 url='https://github.com/rr-/shot'
 license=(MIT)
@@ -27,5 +27,5 @@ build() {
 
 package() {
 	make -C build DESTDIR="$pkgdir" install
-	install -Dm644 $pkgname/LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm644 $pkgname/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,7 +1,7 @@
 pkgbase = shot-git
-	pkgdesc = Minimal screenshot tool aiming to provide good control over screenshot region
+	pkgdesc = Minimal X11 screenshot tool aiming to provide good control over screenshot region
 	pkgver = 2.1.r16.316b33d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rr-/shot
 	arch = x86_64
 	license = MIT
