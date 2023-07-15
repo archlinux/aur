@@ -8,13 +8,15 @@
 
 pkgname="catt"
 pkgver=0.12.11
-pkgrel=2
+pkgrel=3
 pkgdesc='Cast All The Things - Send videos from many, many online sources to your Chromecast.'
 arch=('any')
 url="https://github.com/skorokithakis/catt"
 license=('BSD')
 depends=(
     'python-click'
+    'python-ifaddr'
+    'python-requests'
     'python-importlib-metadata'  # silence namcap warning
     'python-pychromecast'
     'yt-dlp')
