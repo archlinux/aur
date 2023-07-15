@@ -7,28 +7,32 @@ arch=('x86_64')
 pkgdesc="Media Preservation Frontend for DiscImageCreator/Aaru/Redumper in C# (.NET 4.8 version)"
 provides=('mpf-check')
 depends=('mono')
-pkgver=2.5
+pkgver=2.6
 pkgrel=4
 license=('GPL3')
-source=('https://github.com/SabreTools/MPF/releases/download/2.5/MPF.Check_2.5-net48.zip'
+source=('https://github.com/SabreTools/MPF/releases/download/2.6/MPF.Check_2.6-net48.zip'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/README.md'
 'https://raw.githubusercontent.com/SabreTools/MPF/master/LICENSE')
-sha256sums=('ab0859c56e218bcf98093f04f0b59cd061033fb715df7c7839a89d86e649ea14'
+sha256sums=('2aa93ebf23e21bdb2a3c16ffb3f904d78b8da2373e8d9f493e322327829dc664'
 'SKIP'
 'SKIP')
 
 package() {
 
 	# install mpf-check distribution
-	install -Dm 644 ${srcdir}/BurnOutSharp.ASN1.dll ${pkgdir}/opt/${_prgname}/BurnOutSharp.ASN1.dll
-	install -Dm 644 ${srcdir}/BurnOutSharp.Builders.dll ${pkgdir}/opt/${_prgname}/BurnOutSharp.Builders.dll
-	install -Dm 644 ${srcdir}/BurnOutSharp.Compression.dll ${pkgdir}/opt/${_prgname}/BurnOutSharp.Compression.dll
+	install -Dm 644 ${srcdir}/BinaryObjectScanner.ASN1.dll ${pkgdir}/opt/${_prgname}/BinaryObjectScanner.ASN1.dll
+	install -Dm 644 ${srcdir}/BinaryObjectScanner.Builders.dll ${pkgdir}/opt/${_prgname}/BinaryObjectScanner.Builders.dll
+	install -Dm 644 ${srcdir}/BinaryObjectScanner.Compression.dll ${pkgdir}/opt/${_prgname}/BinaryObjectScanner.Compression.dll
+	install -Dm 644 ${srcdir}/BinaryObjectScanner.FileType.dll ${pkgdir}/opt/${_prgname}/BinaryObjectScanner.FileType.dll
+	install -Dm 644 ${srcdir}/BinaryObjectScanner.GameEngine.dll ${pkgdir}/opt/${_prgname}/BinaryObjectScanner.GameEngine.dll
+	install -Dm 644 ${srcdir}/BinaryObjectScanner.Interfaces.dll ${pkgdir}/opt/${_prgname}/BinaryObjectScanner.Interfaces.dll
+	install -Dm 644 ${srcdir}/BinaryObjectScanner.Matching.dll ${pkgdir}/opt/${_prgname}/BinaryObjectScanner.Matching.dll
+	install -Dm 644 ${srcdir}/BinaryObjectScanner.Models.dll ${pkgdir}/opt/${_prgname}/BinaryObjectScanner.Models.dll
+	install -Dm 644 ${srcdir}/BinaryObjectScanner.Packer.dll ${pkgdir}/opt/${_prgname}/BinaryObjectScanner.Packer.dll
+	install -Dm 644 ${srcdir}/BinaryObjectScanner.Protection.dll ${pkgdir}/opt/${_prgname}/BinaryObjectScanner.Protection.dll
+	install -Dm 644 ${srcdir}/BinaryObjectScanner.Utilities.dll ${pkgdir}/opt/${_prgname}/BinaryObjectScanner.Utilities.dll
+	install -Dm 644 ${srcdir}/BinaryObjectScanner.Wrappers.dll ${pkgdir}/opt/${_prgname}/BinaryObjectScanner.Wrappers.dll
 	install -Dm 644 ${srcdir}/BurnOutSharp.dll ${pkgdir}/opt/${_prgname}/BurnOutSharp.dll
-	install -Dm 644 ${srcdir}/BurnOutSharp.Matching.dll ${pkgdir}/opt/${_prgname}/BurnOutSharp.Matching.dll
-	install -Dm 644 ${srcdir}/BurnOutSharp.Models.dll ${pkgdir}/opt/${_prgname}/BurnOutSharp.Models.dll
-	install -Dm 644 ${srcdir}/BurnOutSharp.Utilities.dll ${pkgdir}/opt/${_prgname}/BurnOutSharp.Utilities.dll
-	install -Dm 644 ${srcdir}/BurnOutSharp.Wrappers.dll ${pkgdir}/opt/${_prgname}/BurnOutSharp.Wrappers.dll
-	install -Dm 644 ${srcdir}/CascLib.dll ${pkgdir}/opt/${_prgname}/CascLib.dll
 	install -Dm 644 ${srcdir}/ICSharpCode.SharpZipLib.dll ${pkgdir}/opt/${_prgname}/ICSharpCode.SharpZipLib.dll
 	install -Dm 644 ${srcdir}/mi.dll ${pkgdir}/opt/${_prgname}/mi.dll
 	install -Dm 644 ${srcdir}/Microsoft.Management.Infrastructure.dll ${pkgdir}/opt/${_prgname}/Microsoft.Management.Infrastructure.dll
@@ -52,7 +56,6 @@ package() {
 	install -Dm 644 ${srcdir}/RedumpLib.dll ${pkgdir}/opt/${_prgname}/RedumpLib.dll
 	install -Dm 644 ${srcdir}/RedumpLib.pdb ${pkgdir}/opt/${_prgname}/RedumpLib.pdb
 	install -Dm 644 ${srcdir}/SharpCompress.dll ${pkgdir}/opt/${_prgname}/SharpCompress.dll
-	install -Dm 644 ${srcdir}/StormLib.dll ${pkgdir}/opt/${_prgname}/StormLib.dll
 	install -Dm 644 ${srcdir}/System.Buffers.dll ${pkgdir}/opt/${_prgname}/System.Buffers.dll
 	install -Dm 644 ${srcdir}/System.Configuration.ConfigurationManager.dll ${pkgdir}/opt/${_prgname}/System.Configuration.ConfigurationManager.dll
 	install -Dm 644 ${srcdir}/System.Memory.dll ${pkgdir}/opt/${_prgname}/System.Memory.dll
@@ -66,6 +69,10 @@ package() {
 	install -Dm 644 ${srcdir}/UnshieldSharp.dll ${pkgdir}/opt/${_prgname}/UnshieldSharp.dll
 	install -Dm 644 ${srcdir}/WiseUnpacker.dll ${pkgdir}/opt/${_prgname}/WiseUnpacker.dll
 	install -Dm 644 ${srcdir}/zlib.net.dll ${pkgdir}/opt/${_prgname}/zlib.net.dll
+
+	# these appear to be removed from the 2.6 distribution; keeping them here just in case
+	#install -Dm 644 ${srcdir}/CascLib.dll ${pkgdir}/opt/${_prgname}/CascLib.dll
+	#install -Dm 644 ${srcdir}/StormLib.dll ${pkgdir}/opt/${_prgname}/StormLib.dll
 
 	# install documentation
 	install -Dm 644 ${srcdir}/README.md ${pkgdir}/usr/local/share/doc/${_prgname}/README.md
