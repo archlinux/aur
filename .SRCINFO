@@ -1,6 +1,6 @@
 pkgbase = linwood-butterfly-bin
 	pkgdesc = Powerful, minimalistic, cross-platform, opensource note-taking app
-	pkgver = 2.0.0beta.3
+	pkgver = 2.0.0beta.4
 	pkgrel = 1
 	url = https://docs.butterfly.linwood.dev/
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = linwood-butterfly-bin
 	depends = jsoncpp
 	depends = gdk-pixbuf2
 	provides = linwood-butterfly
-	source = linwood-butterfly-2.0.0beta.3.deb::https://github.com/LinwoodDev/Butterfly/releases/download/v2.0.0-beta.3/linwood-butterfly-linux.deb
+	source = linwood-butterfly-2.0.0beta.4.deb::https://github.com/LinwoodDev/Butterfly/releases/download/v2.0.0-beta.4/linwood-butterfly-linux.deb
 	source = LICENSE::https://raw.githubusercontent.com/LinwoodDev/Butterfly/develop/LICENSE
-	sha256sums = d948d2beb449b6bd0d206f44f04b3000077fde554216471c390dcb4db6f644c6
+	sha256sums = 9b86d7fadeaafc8e6ff5495df8a2b6ce53d44f09a6f8466ad8681cf99b4fddfa
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
 
 pkgname = linwood-butterfly-bin
