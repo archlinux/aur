@@ -1,19 +1,14 @@
 pkgbase = python-django-crontab
 	pkgdesc = Dead simple crontab powered job scheduling for django
 	pkgver = 0.7.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/kraiz/django-crontab
 	arch = any
 	license = MIT
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
+	depends = python-django
 	source = https://github.com/kraiz/django-crontab/archive/0.7.1.tar.gz
 	sha256sums = 71c86470a90ce1f7a27a978b5348f44e41280748e894da631d1ddf402cbe4998
 
 pkgname = python-django-crontab
-	depends = python-django
-
-pkgname = python2-django-crontab
-	depends = python2-django
