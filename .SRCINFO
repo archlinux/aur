@@ -1,0 +1,17 @@
+pkgbase = serioussam-nextencounter-mappack
+	pkgdesc = Serious Sam Classic Ancient Rome Next EncounterMapPack.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://archive.org/details/ne-ancient-rome
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl2
+	depends = python
+	depends = bash
+	depends = serioussam-vk
+	noextract = NE_AncientRome.gro
+	source = https://archive.org/download/ne-ancient-rome/NE_AncientRome.gro
+	sha256sums = 7bef20e2dab41df0a3c8dcc54c9966834ffd1366a88ab4eea34936ca29602502
+
+pkgname = serioussam-nextencounter-mappack
