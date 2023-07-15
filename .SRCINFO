@@ -1,8 +1,8 @@
 pkgbase = serioussam-pefe2q
-	pkgdesc = Serious Sam Classic PEFE2Q native Linux
+	pkgdesc = Serious Sam Classic Odd World native Linux.
 	pkgver = 1.0
-	pkgrel = 2
-	url = https://github.com/tx00100xt/SE1-ParseError
+	pkgrel = 3
+	url = https://github.com/tx00100xt/SE1-TFE-OddWorld
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -12,8 +12,23 @@ pkgbase = serioussam-pefe2q
 	depends = sdl2
 	depends = python
 	depends = bash
+	depends = serioussam-vk
+	noextract = SamTFE-ParseError.tar.xz.partaa
+	noextract = SamTFE-ParseError.tar.xz.partab
+	noextract = SamTFE-ParseError.tar.xz.partac
+	noextract = SamTFE-ParseError.tar.xz.partad
+	noextract = SamTFE-ParseError.tar.xz.partae
 	source = https://github.com/tx00100xt/SE1-ParseError/archive/refs/tags/v1.0.tar.gz
-	sha512sums = 80fbbba6d510e3353dd630770589fe0047928a4940be0b561a6159435f3dcdf109cefc5cc651bdd47bafaab59e02efa8e126c585ab6a63400d9a0b9fff269b0f
+	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-ParseError/SamTFE-ParseError.tar.xz.partaa
+	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-ParseError/SamTFE-ParseError.tar.xz.partab
+	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-ParseError/SamTFE-ParseError.tar.xz.partac
+	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-ParseError/SamTFE-ParseError.tar.xz.partad
+	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-ParseError/SamTFE-ParseError.tar.xz.partae
+	sha256sums = 37107b628ef3a0e34ce71ca95919350c145d0a23b7adfe84b0a7c02ee1bc76a5
+	sha256sums = 2c526f04b95397df34c72710104ae953036790f3a18ea819efa89a1bafe11c0e
+	sha256sums = 68669299cbb8260569f6058d8c293162c5b6d9e3281525d910ce4ed0d26061bf
+	sha256sums = f9631058d2a3db76440ed22e7acbe231288a4f2d5c56a69073c8f212c9602244
+	sha256sums = 64e43b7bf3d5a79f164beea14d53e726719bef01b6683b8c6173a5da5c46c2cd
+	sha256sums = 718312ec829c04a5e78c928280da6365c2d013f6a31f14c4e5083cde4fe14b05
 
 pkgname = serioussam-pefe2q
-
