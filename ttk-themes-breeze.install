@@ -1,0 +1,17 @@
+post_install(){
+cat <<INFO
+
+To use this theme, set
+
+    TCLLIBPATH=/usr/lib/ttkthemes/breeze
+
+or
+
+    TCLLIBPATH=/usr/lib/ttkthemes/breeze-dark
+
+in your environment (e.g. ~/.bashrc), or run
+
+    ttk-theme-chooser
+
+INFO
+}
