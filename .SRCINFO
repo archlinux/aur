@@ -1,6 +1,6 @@
 pkgbase = pin
 	pkgdesc = A tool for the dynamic instrumentation of programs
-	pkgver = 3.27
+	pkgver = 3.28
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/articles/pin-a-dynamic-binary-instrumentation-tool.html
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = pin
 	depends = lib32-gcc-libs
 	options = !strip
 	options = staticlibs
-	source = http://software.intel.com/sites/landingpage/pintool/downloads/pin-3.27-98718-gbeaa5d51e-gcc-linux.tar.gz
+	source = http://software.intel.com/sites/landingpage/pintool/downloads/pin-3.28-98749-g6643ecee5-gcc-linux.tar.gz
 	source = pin.sh
-	sha256sums = e7d44d25668632007d5a109e5033415e91db543b8ce9e665893a05e852b67707
+	sha256sums = 5a5a3337f3f16176b97edcd3366b561936e1068fba4ebcfed4b836d81d45847b
 	sha256sums = 7198073c94e785cbd9002cdd174ab3bb1d28cc4e26626905c12173ad31ae82fc
 
 pkgname = pin
