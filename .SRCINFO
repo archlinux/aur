@@ -1,7 +1,7 @@
 pkgbase = cbp2make
 	pkgdesc = Makefile generation tool for Code::Blocks IDE
 	pkgver = 147
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/cbp2make/
 	arch = x86_64
 	arch = aarch64
