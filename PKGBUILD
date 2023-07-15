@@ -1,12 +1,16 @@
 _pkgname=sat_code
 pkgname=pluto-sat-code-git
 pkgver=20230608.3db65bb
-pkgrel=1
+pkgrel=2
 pkgdesc="Code for the SGP4/SDP4 satellite motion model, and for manipulating TLEs (Two-Line Elements)"
 arch=(x86_64)
 url="http://www.projectpluto.com/sat_code.htm"
 license=(MIT)
-makedepends=('git')
+provides=(pluto-sat-code)
+makedepends=('git' 'pluto-lunar')
+optdepends=('pluto-find-orb: Orbit determination from observations'
+	    'pluto-lunar: Basic astronomical functions for solar system ephemerides, time systems, coordinate systems, etc'
+            'pluto-jpl-eph: Code to read, use, and manipulate JPL DE ephemeris data')
 source=("git+https://github.com/Bill-Gray/sat_code.git")
 sha512sums=('SKIP')
 
