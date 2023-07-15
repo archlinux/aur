@@ -2,14 +2,14 @@
 
 _pkgname=swaymonad
 pkgname="$_pkgname-git"
-pkgver=r11.ad2ff53
+pkgver=r12.fb12c2a
 pkgrel=1
 pkgdesc="Auto-tiler for sway that implements Xmonad-like layouts"
-arch=('x86_64')
+arch=(any)
 url="https://github.com/nicolasavru/$_pkgname"
-license=('MIT')
-depends=('python>=3.10' 'python-i3ipc' 'sway')
-makedepends=('git')
+license=(MIT)
+depends=('python>=3.10' python-i3ipc sway)
+makedepends=(git)
 source=("git+$url.git")
 b2sums=('SKIP')
 
@@ -21,5 +21,5 @@ pkgver() {
 package() {
 	cd $_pkgname
 	install -Dm755 $_pkgname.py "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

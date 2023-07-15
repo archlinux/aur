@@ -1,9 +1,9 @@
 pkgbase = swaymonad-git
 	pkgdesc = Auto-tiler for sway that implements Xmonad-like layouts
-	pkgver = r11.ad2ff53
+	pkgver = r12.fb12c2a
 	pkgrel = 1
 	url = https://github.com/nicolasavru/swaymonad
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = git
 	depends = python>=3.10
