@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FlashBrowser
+Exec=/usr/bin/flashbrowser-bin
+Icon=FlashBrowser
+Terminal=false
+StartupNotify=false
+Categories=Network;WebBrowser;

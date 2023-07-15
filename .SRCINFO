@@ -1,0 +1,19 @@
+pkgbase = flashbrowser-bin
+	pkgdesc = A browser dedicating to supporting adobe flash.
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://flash.pm/browser/
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	depends = electron9
+	depends = nodejs
+	depends = bash
+	provides = flashbrowser
+	conflicts = flashbrowser-git
+	source = https://github.com/radubirsan/FlashBrowser/releases/download/v0.7/FlashBrowser-linux-x64.zip
+	source = flashbrowser-bin.desktop
+	sha256sums = 0c649e024c64232401bfab316165d2bc8bda7fc997efdbbb03ba3d09a61054d6
+	sha256sums = a1cb0b08ad091248636a77c57148e8d80ec097d06ae3ae660ba508b74fea027d
+
+pkgname = flashbrowser-bin
