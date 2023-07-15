@@ -1,7 +1,7 @@
 _pkgname=sat_code
 pkgname=pluto-sat-code-git
 pkgver=20230608.3db65bb
-pkgrel=5
+pkgrel=6
 pkgdesc="Code for the SGP4/SDP4 satellite motion model, and for manipulating TLEs (Two-Line Elements)"
 arch=(x86_64)
 url="http://www.projectpluto.com/sat_code.htm"
@@ -30,7 +30,7 @@ package() {
 
   # install binary
   # set with a different name, because such a name is in "Lunar" 
-  install -m755 -D "${srcdir}/${_pkgname}/test_des"	"$pkgdir/usr/bin/test_des"
+  install -m755 -D "${srcdir}/${_pkgname}/test_des"	"$pkgdir/usr/bin/test_des_sat_code"
   for bin in "dropouts" "fake_ast" "fix_tles" "get_high" "line2" "mergetle" "obs_tes2" "obs_test" \
              "out_comp" "sat_cgi" "sat_eph" "sat_id" "sat_id2" "summarize" "test2" \
              "test_out" "test_sat" "tle2mpc"  
