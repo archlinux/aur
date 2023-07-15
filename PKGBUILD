@@ -2,7 +2,7 @@
 _pkgname=dynamorio
 pkgname=$_pkgname-git
 pkgdesc="A dynamic instrumentation tool platform"
-pkgver=9.93.r6029.bb2ff609c
+pkgver=9.93.r6035.b3fb28f9e
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/DynamoRIO/dynamorio"
@@ -16,12 +16,8 @@ source=(
     "${pkgname}::git+${url}.git"
     "git+https://github.com/intel/libipt.git"
     "git+https://github.com/madler/zlib.git"
-    "0001-Include-stdint.h-to-use-intptr_t.patch"
-    "0002-Fix-Doxygen-1.9.7-build.patch"
     )
-sha256sums=('SKIP' 'SKIP' 'SKIP'
-            '1169d5b8fa99665f124d72e99cebe6a9605d5e594f498f9371a670e35ebb1d87'
-            '6135797f1f9312d2bf8be6ca02cbf1ace575d8a52e44c8d2eaaf5107f22e3f74')
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
@@ -37,9 +33,6 @@ prepare() {
     git config submodule.third_party/libipt.url "$srcdir/libipt"
     git config submodule.third_party/zlib.url "$srcdir/zlib"
     git -c protocol.file.allow=always submodule update
-
-	patch -p1 -i "${srcdir}/0001-Include-stdint.h-to-use-intptr_t.patch"
-	patch -p1 -i "${srcdir}/0002-Fix-Doxygen-1.9.7-build.patch"
 }
 
 build() {
