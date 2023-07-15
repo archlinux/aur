@@ -3,27 +3,25 @@
 pkgname=python-session-info
 _name=session_info
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Print version information for loaded modules in the current session, python, and OS"
 url="https://gitlab.com/joelostblom/session_info"
 arch=('any')
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('python-stdlib-list') # AUR
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
-        "LICENSE")
-sha256sums=('3cda5e03cca703f32ae2eadbd6bd80b6c21442cfb60e412c21cb8ad6d5cbb6b7'
-            '2f1ea30058f176173ce97c994b87647e816019e0fc4f28d40968c31894ee876e')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("git+${url}.git#tag=$pkgver")
+sha256sums=('6eea5b8c9ba01d0a978fd6236ae5b03ea04be957ff40e8eb5da164213121a224')
 
 build() {
-    cd $_name-$pkgver
+    cd $_name
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd $_name-$pkgver
+    cd $_name
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" ../LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
 
