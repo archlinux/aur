@@ -1,7 +1,7 @@
 pkgbase = serioussam-alpha
 	pkgdesc = Serious Sam Classic Alpha Reamake native Linux.
 	pkgver = 1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tx00100xt/SeriousSamAlphaRemake
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,20 @@ pkgbase = serioussam-alpha
 	depends = sdl2
 	depends = python
 	depends = bash
+	depends = serioussam-vk
+	noextract = SeriousSamAlphaRemake_v1.5.tar.xz.partaa
+	noextract = SeriousSamAlphaRemake_v1.5.tar.xz.partab
+	noextract = SeriousSamAlphaRemake_v1.5.tar.xz.partac
+	noextract = SeriousSamAlphaRemake_v1.5.tar.xz.partad
 	source = https://github.com/tx00100xt/SeriousSamAlphaRemake/archive/refs/tags/v1.5.tar.gz
-	sha512sums = e97522af640c70443ed137ce700ee3f5f3c28785a847ab6c73145cea2edd806ba12ecd3ab157abde35653f971c29a401597f7a5bdb54c4cd556007664b11cb3e
+	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-SSA/SeriousSamAlphaRemake_v1.5.tar.xz.partaa
+	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-SSA/SeriousSamAlphaRemake_v1.5.tar.xz.partab
+	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-SSA/SeriousSamAlphaRemake_v1.5.tar.xz.partac
+	source = https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-SSA/SeriousSamAlphaRemake_v1.5.tar.xz.partad
+	sha256sums = df75c5b2810533d1227c7f9aa6533fa9c06f9917cfb12a536a49cb64bc06aaf7
+	sha256sums = d5eef988652bf0f157f58c4faf92911b1c71a948229a035e7a237f973b39db5b
+	sha256sums = c412a76659b87892d4bb879d53f774ba72b1e6905901a1e042a72821a6a412c1
+	sha256sums = 331a0d2fd0cc6dce4a3eda3c2a898043ca4bc55fa8ab7fc2094f7f1f1df8853e
+	sha256sums = 0e3749e6c0492a3cdd5ff3f9f55e6141fb415090c32922d7073f6c5eb265d479
 
 pkgname = serioussam-alpha
-
