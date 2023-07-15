@@ -1,8 +1,9 @@
 pkgbase = serioussam-vk
 	pkgdesc = Serious Sam Classic native Linux version with Vulkan support.
 	pkgver = 1.10.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tx00100xt/SeriousSamClassic-VK
+	install = serioussam.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -15,8 +16,20 @@ pkgbase = serioussam-vk
 	depends = bash
 	depends = vulkan-icd-loader
 	depends = vulkan-validation-layers
+	conflicts = serioussam
 	source = https://github.com/tx00100xt/SeriousSamClassic-VK/archive/refs/tags/v1.10.5.tar.gz
-	sha512sums = 6f52b21a9f8cd93bb5c51500d0100fa71fdb02c310c2ed667d191009c3c4af09c3dcbff073c6be19d484d13c20694e860ee91db4a19b5b62d8896fa438aa3964
+	source = serioussam-tfe.desktop
+	source = serioussam-tse.desktop
+	source = serioussam.xpm
+	source = 0001-remove_SE1_10b_depend.patch
+	source = 0002-Fixed_Platform_definition.patch
+	source = 0003-Fix-load-some-incorrect-custom-maps.patch
+	sha256sums = e4fb2c46b238bc9984c6d5ec31f2aed0f571cca724795bc333ad1ab92d80a8f7
+	sha256sums = 1e36d7b0d11f68729aa5c79ac9a44157d4af0bf61060040ab92a37d96ca89aba
+	sha256sums = 49680c65d26b264a1d7735c6310fcc5d0ac0e0e56273d3bccf539c0c87d31b2b
+	sha256sums = 1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4
+	sha256sums = 244101d02598010e4c45e57f26e0842d4cff058e3cde5e59062b9d36b5ffaca0
+	sha256sums = 21100e7993892d5ac7b4d44b87cf29d47afac5bfbc0e39c2777a3e0dc813dbd2
+	sha256sums = 36b0c4da5133ef5dcdcfd21767c84f7b3e9711413549b565957a734e549ee300
 
 pkgname = serioussam-vk
-
