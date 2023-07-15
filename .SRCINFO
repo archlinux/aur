@@ -1,7 +1,7 @@
 pkgbase = serioussam-st8vipe
-	pkgdesc = Serious Sam Classic ST8VIPE native Linux
+	pkgdesc = Serious Sam Classic ST8VIPE native Linux.
 	pkgver = 1.7.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tx00100xt/SE1-TSE-ST8VIPE
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,11 @@ pkgbase = serioussam-st8vipe
 	depends = sdl2
 	depends = python
 	depends = bash
+	depends = serioussam-vk
+	noextract = SamTSE-ST8VIPE.tar.xz
 	source = https://github.com/tx00100xt/SE1-TSE-ST8VIPE/archive/refs/tags/v1.7.1.tar.gz
-	sha512sums = c3f4e42543728087bf45488231ccd92ece34fd676e3e8ae7d1fa4fe4b5ef2be326386e0ba8b7ef0fdb9c042cc00a6f3034fb98a9d54a128b80f00be070bd6850
+	source = https://archive.org/download/sam-tse-st8vipe/SamTSE-ST8VIPE.tar.xz
+	sha256sums = 95c5063205cf5041639fd434467b0c006e00c67e67ec6b725d87ee7114069c68
+	sha256sums = f427c69dda757dab6aab0301c15f51c04da1513bf5faffc73618c9dd0bbcba24
 
 pkgname = serioussam-st8vipe
-
