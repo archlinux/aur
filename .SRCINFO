@@ -1,0 +1,18 @@
+pkgbase = knowledge-canvas-bin
+	pkgdesc = A tool for saving, searching, accessing, and exploring all of your favorite websites, documents and files.
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/KnowledgeCanvas/knowledge
+	arch = aarch64
+	arch = x86_64
+	license = Apache
+	depends = bash
+	depends = electron
+	source = knowledge-canvas.sh
+	sha256sums = 9ec0a3c757998f07b7572547f8c0d5f50a71ca4e49cb93e6e3199fae5e87310f
+	source_aarch64 = knowledge-canvas-0.8.3-aarch64.AppImage::https://knowledge-canvas.s3.us-west-2.amazonaws.com/Knowledge-0.8.3-arm64.AppImage
+	sha256sums_aarch64 = 91b2cd84579462e1282dbef3feda64c374586bad55a813f0c2c68526c5f84f2d
+	source_x86_64 = knowledge-canvas-0.8.3-x86_64.AppImage::https://knowledge-canvas.s3.us-west-2.amazonaws.com/Knowledge-0.8.3.AppImage
+	sha256sums_x86_64 = 41e82632c4149baca9d4bea39936ba12d0e89e6e71a77f65a37eb229e9ea8427
+
+pkgname = knowledge-canvas-bin
