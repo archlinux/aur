@@ -1,0 +1,36 @@
+diff --git a/domainslib.opam b/domainslib.opam
+index 99b1fd0..cd414d5 100644
+--- a/domainslib.opam
++++ b/domainslib.opam
+@@ -11,7 +11,7 @@ tags: []
+ depends: [
+   "ocaml" {>= "5.00"}
+   "dune" {>= "3.0"}
+-  "lockfree" { >= "0.2.0"}
++  "saturn_lockfree" { >= "0.2.0"}
+   "mirage-clock-unix" {with-test}
+ ]
+ depopts: []
+diff --git a/lib/dune b/lib/dune
+index 82a3db0..74cc756 100644
+--- a/lib/dune
++++ b/lib/dune
+@@ -1,4 +1,4 @@
+ (library
+  (name domainslib)
+  (public_name domainslib)
+- (libraries lockfree))
++ (libraries saturn_lockfree))
+diff --git a/lib/multi_channel.ml b/lib/multi_channel.ml
+index 7bbe3e1..1fc06a4 100644
+--- a/lib/multi_channel.ml
++++ b/lib/multi_channel.ml
+@@ -14,7 +14,7 @@
+  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  *)
+ 
+-module Ws_deque = Lockfree.Ws_deque.M
++module Ws_deque = Lockfree.Work_stealing_deque.M
+ 
+ type mutex_condvar = {
+   mutex: Mutex.t;
