@@ -1,0 +1,16 @@
+pkgbase = libartnet
+	pkgdesc = libartnet is an implementation of the ArtNet protocol which allows for transmission of DMX data over IP networks
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://www.github.com/atlesn/libartnet
+	arch = i686
+	arch = arm64
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	provides = libartnet
+	source = git+https://github.com/atlesn/libartnet.git#tag=v1.2.0
+	md5sums = SKIP
+
+pkgname = libartnet
