@@ -1,16 +1,15 @@
 pkgbase = rpl
 	pkgdesc = UN*X text replacement utility
-	pkgver = 1.4.1
-	pkgrel = 13
-	url = http://www.laffeycomputer.com/rpl.html
+	pkgver = 1.8rc3
+	pkgrel = 14
+	url = https://github.com/rrthomas/rpl
 	arch = i686
 	arch = x86_64
-	license = custom
-	depends = glibc
-	source = http://downloads.laffeycomputer.com/current_builds/rpl-1.4.1.tar.gz
-	source = LICENSE
-	md5sums = 2eb9c18d97040dc301bfaa8aa70e21a4
-	md5sums = dccf3adbdfc376cfb813b05ecb780b70
+	license = GPL3
+	makedepends = help2man
+	depends = python-chardet
+	depends = python
+	source = https://github.com/rrthomas/rpl/archive/refs/tags/v1.8rc3.tar.gz
+	md5sums = ff7d0537eb0e68a8c9d8567cbee4f018
 
 pkgname = rpl
-

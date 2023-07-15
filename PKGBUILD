@@ -3,22 +3,23 @@
 # Contributor: Douglas Thrift <douglas@douglasthrift.net>
 
 pkgname=rpl
-pkgver=1.4.1
-pkgrel=13
+# OLD pkgver=1.4.1
+pkgver=1.8rc3
+pkgrel=14
 pkgdesc="UN*X text replacement utility"
-url="http://www.laffeycomputer.com/rpl.html"
-license=("custom")
+# url="http://www.laffeycomputer.com/rpl.html"
+url="https://github.com/rrthomas/rpl"
+license=("GPL3")
 arch=('i686' 'x86_64')
-depends=('glibc')
-source=("http://downloads.laffeycomputer.com/current_builds/$pkgname-${pkgver}.tar.gz" "LICENSE")
-md5sums=('2eb9c18d97040dc301bfaa8aa70e21a4' 'dccf3adbdfc376cfb813b05ecb780b70')
+depends=('python-chardet' 'python')
+makedepends=('help2man')
+# OLD source=("http://downloads.laffeycomputer.com/current_builds/$pkgname-${pkgver}.tar.gz" "LICENSE")
+source=("https://github.com/rrthomas/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('ff7d0537eb0e68a8c9d8567cbee4f018')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
-    
-    ./configure --prefix=/usr \
-	--mandir=/usr/share/man
-
+    make
 }
 
 build() {
@@ -30,7 +31,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    make DESTDIR=$pkgdir install
-
-    install -Dm 644 $srcdir/LICENSE $pkgdir/usr/share/licenses/rpl/LICENSE
+    # make DESTDIR=$pkgdir install
+    install -Dm 755 $pkgname $pkgdir/usr/bin/$pkgname
+    install -Dm 644 $pkgname.1 $pkgdir/usr/share/man/man1/$pkgname.1
 }
