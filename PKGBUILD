@@ -1,7 +1,7 @@
 # Maintainer: Bwc9876 <bwc9876@gmail.com>
 pkgname=owmods-gui-bin
 _appname=outer-wilds-mod-manager
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A GUI To Manage Outer Wilds Mods"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/Bwc9876/ow-mod-man/tree/main/owmods_gui"
 license=('GPL3')
 depends=('glibc' 'gtk3' 'openssl-1.1' 'hicolor-icon-theme' 'glib2' 'gcc-libs' 'gdk-pixbuf2' 'webkit2gtk' 'cairo' 'mono')
 source=("${_appname}-${pkgver}-${arch}.deb::https://github.com/Bwc9876/ow-mod-man/releases/download/gui_v${pkgver}/${_appname}_${pkgver}_amd64.deb")
-sha256sums=('bcae87e5dbcfbbf2f8355211935881794ca5c1325657f53079532bc482ac3dab')
+sha256sums=('a1023a9f6eb7b1a26be02f11d9237f467235433bd14833dd55de49914953c919')
 
 package() {
     tar xpf data.tar.gz -C ${srcdir}
