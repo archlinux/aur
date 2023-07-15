@@ -1,0 +1,19 @@
+pkgbase = liground-bin
+	pkgdesc = A free, open-source and modern Chess Variant Analysis GUI for the 21st century
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://ml-research.github.io/liground.github.io/
+	arch = x86_64
+	license = AGPL3
+	depends = bash
+	depends = electron11
+	depends = glibc
+	depends = gcc-libs
+	provides = liground
+	conflicts = liground
+	source = liground-0.4.0.AppImage::https://github.com/ml-research/liground/releases/download/0.4.0/liground-0.4.0-linux.AppImage
+	source = liground.sh
+	sha256sums = 7d0c4994cb489689183b3768952d9199971060dd873037a988c25f8d86cc1ad4
+	sha256sums = b3dc7b16d4987e336d06de8c8de6ebf1f68a3297a3dd826cab295a6fceb84a31
+
+pkgname = liground-bin
