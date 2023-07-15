@@ -1,4 +1,4 @@
-# Maintainer: Newb I the Newbd <czbd hostedon o2 halfacolon pl>
+# Maintainer: Czcibor Bohusz-Dobosz <czbd@o2.pl>
 # Contributor: Martin Wimpress <code@flexion.org>
 
 _ver=1.16
@@ -6,7 +6,7 @@ _pkgbase=pluma
 pkgname=${_pkgbase}-gtk2
 pkgver=${_ver}.2
 pkgrel=3
-pkgdesc="A powerful text editor for MATE (GTK2 version)"
+pkgdesc="A powerful text editor for MATE (older GTK2 version)"
 url="http://mate-desktop.org"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -24,7 +24,7 @@ sha1sums=('b648d1beebbbf5d82a1670762b1fe1d780658499'
 prepare() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
     sed -i 's/python/python2/' plugins/externaltools/data/switch-c.tool.in
-    patch -Np1 -i ../../samewindow.patch
+    patch -Np1 -i "${srcdir}/samewindow.patch"
 }
 
 build() {

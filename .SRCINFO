@@ -1,5 +1,5 @@
 pkgbase = pluma-gtk2
-	pkgdesc = A powerful text editor for MATE (GTK2 version)
+	pkgdesc = A powerful text editor for MATE (older GTK2 version)
 	pkgver = 1.16.2
 	pkgrel = 3
 	url = http://mate-desktop.org
@@ -23,4 +23,3 @@ pkgbase = pluma-gtk2
 	sha1sums = e13c4a81d89d586c230f8fbb2c931ea83b296bd6
 
 pkgname = pluma-gtk2
-
