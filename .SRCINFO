@@ -1,6 +1,6 @@
 pkgbase = octave-control
 	pkgdesc = Computer-Aided Control System Design (CACSD) Tools for GNU Octave, based on the proven SLICOT Library
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/control/
 	install = octave-control.install
@@ -9,9 +9,9 @@ pkgbase = octave-control
 	license = GPL3
 	makedepends = gcc-fortran
 	depends = octave>=4.0.0
-	noextract = control-3.6.0.tar.gz
+	noextract = control-3.6.1.tar.gz
 	options = !makeflags
-	source = https://github.com/gnu-octave/pkg-control/releases/download/control-3.6.0/control-3.6.0.tar.gz
-	sha256sums = 53bcd7e3581f3e9b0417b212d7c8817920a03854a1d0819dd77ce650e1a28e20
+	source = https://github.com/gnu-octave/pkg-control/releases/download/control-3.6.1/control-3.6.1.tar.gz
+	sha256sums = 585636fe086ea033f050386ee5a2591daf5bfc82561a7d5f91f8db556406cc02
 
 pkgname = octave-control
