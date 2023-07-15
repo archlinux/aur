@@ -1,7 +1,7 @@
 # Maintainer: David Florness <david at florness dot com>
 pkgname=tallyard-git
 _pkgname=tallyard
-pkgver=0.6.2.r0.g4adb761
+pkgver=0.6.3.r0.g36f7589
 pkgrel=1
 arch=('x86_64')
 pkgdesc="an authenticated voting system that ensures voter privacy while preventing double-voting"
