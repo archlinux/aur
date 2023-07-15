@@ -2,14 +2,14 @@
 
 _name=horizon
 pkgname=${_name}-git
-pkgver=r1811.cbf9df3a
-pkgrel=1
+pkgver=r3086.2be2035e
+pkgrel=2
 pkgdesc="free EDA package written in C++"
 arch=('x86_64' 'i686')
 url="https://github.com/horizon-eda/horizon"
 license=('GPL')
-depends=('zeromq' 'gtkmm3' 'cairomm' 'librsvg' 'sqlite3' 'libgit2' 'curl' 'opencascade' 'podofo' 'libzip')
-makedepends=('boost-libs' 'boost' 'glm')
+depends=('zeromq' 'gtkmm3' 'cairomm' 'librsvg' 'sqlite3' 'libgit2' 'curl' 'opencascade' 'podofo-0.9' 'libarchive' 'cppzmq' 'spnav')
+makedepends=('glm' 'meson' 'cmake')
 source=("git+https://github.com/horizon-eda/horizon.git")
 md5sums=('SKIP')
 conflicts=('horizon-eda')
@@ -20,11 +20,14 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$_name"
-    make
+    arch-meson "$srcdir/$_name" build
+    meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-    cd "$srcdir/$_name"
-    make DESTDIR=$pkgdir PREFIX=/usr install
+    meson install -C build --destdir "$pkgdir"
 }
