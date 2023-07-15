@@ -6,7 +6,7 @@ gitver=v6.4.3
 patchver=20230105
 patchname=more-uarches-for-kernel-5.17+.patch
 pkgver=6.4.v.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -25,7 +25,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '58b86bbc70b50041e4db61237fdfa4efde1ef0d369fa78f9ecea0f30064b9964'
+            '3fc10006ee316dd3a3984e3b7ff6647cbff360113cc5a1a55058aa8ddcd1cfa9'
             #.preset file
             'e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5'
             #linux install file
@@ -73,8 +73,8 @@ prepare() {
 
 build() {
   cd "${_srcname}"
-  #force znver2
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules KCFLAGS="-O2 -pipe -march=znver2 -mtune=znver2 -fstack-protector-strong"
+  #force znver4
+  make ${MAKEFLAGS} LOCALVERSION= bzImage modules KCFLAGS="-O2 -pipe -march=znver4 -mtune=znver4 -fstack-protector-strong"
 }
 
 _package() {
