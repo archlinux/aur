@@ -3,7 +3,7 @@
 #
 _pkgname="archalien"
 pkgname="${_pkgname}"-git
-pkgver=7e909c9
+pkgver=c563489
 pkgrel=1
 pkgdesc="A tool you can use to convert a Debian package .deb to an Arch Linux package."
 url="https://github.com/Asher256/archalien"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=('python')
 makedepends=('git')
 provides=("${_pkgname}")
-source=("git://github.com/Asher256/${_pkgname}")
+source=("git+https://github.com/Asher256/${_pkgname}.git")
 sha256sums=('SKIP')
 
 _pkgname_bin="#! /usr/bin/python
