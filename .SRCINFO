@@ -1,6 +1,6 @@
 pkgbase = dmenu-git
 	pkgdesc = Generic menu for X
-	pkgver = 5.2.r6.0fe460d
+	pkgver = 5.2.r7.7ab0cb5
 	pkgrel = 1
 	url = https://tools.suckless.org/dmenu/
 	arch = i686

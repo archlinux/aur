@@ -11,7 +11,7 @@
 
 _pkgname=dmenu
 pkgname="$_pkgname-git"
-pkgver=5.2.r6.0fe460d
+pkgver=5.2.r7.7ab0cb5
 pkgrel=1
 pkgdesc="Generic menu for X"
 arch=(i686 x86_64)
@@ -62,5 +62,5 @@ build(){
 package() {
 	cd $_pkgname
 	make PREFIX=/usr DESTDIR="$pkgdir" install
-	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
