@@ -1,8 +1,9 @@
 pkgbase = serioussam
 	pkgdesc = Serious Sam Classic native Linux version.
 	pkgver = 1.10.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/tx00100xt/SeriousSamClassic
+	install = serioussam.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -12,8 +13,20 @@ pkgbase = serioussam
 	depends = sdl2
 	depends = python
 	depends = bash
+	conflicts = serioussam-vk
 	source = https://github.com/tx00100xt/SeriousSamClassic/archive/refs/tags/v1.10.5.tar.gz
-	sha512sums = 757f76925b2db1c4133264c12451ec9a634394d407c896ba812f7706b9628a4574f91ebda3b8fef12536d94c592c44798f78b0180c765695b906c037d46e611f
+	source = serioussam-tfe.desktop
+	source = serioussam-tse.desktop
+	source = serioussam.xpm
+	source = 0001-remove_SE1_10b_depend.patch
+	source = 0002-Fixed_Platform_definition.patch
+	source = 0003-Fix-load-some-incorrect-custom-maps.patch
+	sha256sums = ecd850cabd144b29bcec97de4ad8a1ffc14144432744de9bf39fe1d00385daf6
+	sha256sums = 1e36d7b0d11f68729aa5c79ac9a44157d4af0bf61060040ab92a37d96ca89aba
+	sha256sums = 49680c65d26b264a1d7735c6310fcc5d0ac0e0e56273d3bccf539c0c87d31b2b
+	sha256sums = 1fd56e04072372e1e8dab0bae40da1519d82a28895cbe5661b18561ee9ea47b4
+	sha256sums = 244101d02598010e4c45e57f26e0842d4cff058e3cde5e59062b9d36b5ffaca0
+	sha256sums = 21100e7993892d5ac7b4d44b87cf29d47afac5bfbc0e39c2777a3e0dc813dbd2
+	sha256sums = 36b0c4da5133ef5dcdcfd21767c84f7b3e9711413549b565957a734e549ee300
 
 pkgname = serioussam
-
