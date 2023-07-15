@@ -3,7 +3,7 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 pkgname=apple-music-electron-bin
 _pkgname=Apple-Music-Electron
-pkgver=3.0.2
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A free, lightweight, open source alternative to iTunes and other Apple Music applications based on Electron 15"
 arch=('x86_64')
@@ -14,13 +14,12 @@ optdepends=('libnotify: Playback notifications'
             'otf-san-francisco: Use of SF Font for certain themes')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::https://raw.githubusercontent.com/Alex313031/Apple-Music-Electron/master/LICENSE"
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-electron-bin}_${pkgver}_amd64.deb"
+    "LICENSE::https://raw.githubusercontent.com/Alex313031/Apple-Music-Electron/master/LICENSE.md"
     "${pkgname%-bin}.sh")
-sha256sums=('ebc08ea72c8e488a9f74539f45358c7f156078e7f5ca1e9c6e0d84e0a146d497'
-            'cf7724c85c357c306a0a8489d987214070c547343f493532ffd4a847e6b8a186'
-            'e0411c5d36829417b6a5931240854b34a6ef004b9034e5b9df82579763c5a30e')
-
+sha256sums=('7bf6157f871af6f3dee522ffbdb846c88689c2c87a542bdbe12898e1dfd280b8'
+            '0fd63c3d94a7db5724728de22068188d45aa0c6be04c6e4c4c5983b5d46d5eee'
+            '44dc6173c7bb88874ac68a31aaacc0bfb422a8fcd218d54cc124ebf36a5c5e72')
 package(){
 	bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
