@@ -9,7 +9,7 @@ pkgname=(
     lib32-gst-plugins-bad
 )
 pkgver=1.22.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
 arch=(x86_64)
@@ -20,15 +20,18 @@ makedepends=(
     git meson lib32-gstreamer lib32-gst-plugins-{base,good} wayland-protocols
 
 	# gst-plugins-bad-libs
-	lib32-gst-plugins-base-libs lib32-libgudev lib32-openjpeg2 lib32-orc
+	lib32-gst-plugins-base-libs lib32-libgudev lib32-orc
 
     # gst-plugins-bad
-    lib32-vulkan-icd-loader vulkan-headers lib32-vulkan-validation-layers lib32-shaderc lib32-libusb lib32-libdc1394 lib32-srt
-    libltc lib32-bluez-libs lib32-libavtp lib32-libbs2b lib32-bzip2 lib32-chromaprint lib32-libdca lib32-faac lib32-faad2
-    lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-libkate lib32-liblrdf lib32-ladspa lib32-libde265 lib32-lilv lib32-lv2
-    lib32-mjpegtools lib32-libmpcdec lib32-neon lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch lib32-x265
-    lib32-spandsp lib32-libsrtp lib32-zvbi lib32-libnice lib32-webrtc-audio-processing lib32-wildmidi lib32-libass lib32-libwebp
-    lib32-zbar lib32-nettle lib32-libxml2 lib32-gsm lib32-json-glib lib32-libva lib32-libxkbcommon-x11 lib32-libmodplug lib32-aom
+    lib32-vulkan-icd-loader vulkan-headers lib32-vulkan-validation-layers
+    lib32-shaderc lib32-libusb lib32-libdc1394 lib32-srt libltc lib32-bluez-libs
+    lib32-libavtp lib32-libbs2b lib32-bzip2 lib32-libdca lib32-faac lib32-faad2
+    lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-libkate lib32-liblrdf
+    lib32-ladspa lib32-libde265 lib32-lilv lib32-lv2 lib32-libmpcdec lib32-neon
+    lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch lib32-x265
+    lib32-libsrtp lib32-zvbi lib32-libnice lib32-webrtc-audio-processing lib32-wildmidi
+    lib32-libass lib32-libwebp lib32-nettle lib32-libxml2 lib32-json-glib lib32-libva
+    lib32-libxkbcommon-x11 lib32-libmodplug lib32-aom
 
     # gst-plugins-ugly
     lib32-a52dec lib32-opencore-amr lib32-libcdio lib32-libdvdread lib32-libmpeg2 lib32-x264
@@ -135,6 +138,14 @@ build() {
     -D gst-plugins-bad:voamrwbenc=disabled
     -D gst-plugins-bad:wasapi2=disabled
     -D gst-plugins-bad:wasapi=disabled
+    # -- extra disabled libs not needed in wine --
+    -D gst-plugins-bad:openjpeg=disabled
+    -D gst-plugins-bad:chromaprint=disabled
+    -D gst-plugins-bad:gsm=disabled
+    -D gst-plugins-bad:spandsp=disabled
+    -D gst-plugins-bad:mpeg2enc=disabled
+    -D gst-plugins-bad:zbar=disabled
+    # -- end -- -D gst-plugins-bad:=disabled
     -D gst-plugins-bad:opencv=disabled # due to no lib32-opencv
     -D gst-plugins-bad:msdk=disabled # due to no msdk (32-bit) support
     -D gst-plugins-bad:qsv=disabled # due to no x86 support
@@ -192,17 +203,17 @@ package_lib32-gst-plugins-bad() {
   replaces=('lib32-gst-plugins-bad-latest')
   depends=(
     "lib32-gst-plugins-bad-libs>=$pkgver" lib32-aom lib32-libass
-    lib32-libbs2b lib32-bzip2 lib32-chromaprint lib32-pango lib32-lcms2
+    lib32-libbs2b lib32-bzip2 lib32-pango lib32-lcms2
     lib32-curl lib32-libxml2 lib32-libdc1394 lib32-libde265 lib32-openssl
     lib32-libdca lib32-faac lib32-faad2 lib32-libfdk-aac lib32-fluidsynth
     lib32-libgme lib32-nettle lib32-libkate lib32-liblrdf lib32-lilv
-    lib32-libmodplug lib32-mjpegtools lib32-libmpcdec lib32-neon
-    lib32-openal lib32-openjpeg2 lib32-opus lib32-libdvdnav
+    lib32-libmodplug lib32-libmpcdec lib32-neon
+    lib32-openal lib32-opus lib32-libdvdnav
     lib32-libdvdread lib32-librsvg lib32-rtmpdump lib32-sbc
-    lib32-libsndfile libltc lib32-soundtouch lib32-spandsp lib32-srt
+    lib32-libsndfile libltc lib32-soundtouch lib32-srt
     lib32-libsrtp lib32-zvbi lib32-vulkan-icd-loader lib32-libxcb
-    lib32-wayland lib32-libwebp lib32-libnice lib32-gsm lib32-libavtp
-    lib32-webrtc-audio-processing lib32-wildmidi lib32-x265 lib32-zbar
+    lib32-wayland lib32-libwebp lib32-libnice lib32-libavtp
+    lib32-webrtc-audio-processing lib32-wildmidi lib32-x265
   )
   mv -v "$pkgdir/../bad/usr" "$pkgdir/usr"
 }
@@ -224,18 +235,18 @@ package_lib32-gst-plugins-bad-libs() {
   _libs=(
     #adaptivedemux2 # new
     aes aom assrender
-    avtp bs2b bz2 chromaprint
+    avtp bs2b bz2
     closedcaption colormanagement
     curl dash dc1394 de265 dtls dtsdec
     faac faad fdkaac fluidsynthmidi
-    gme gsm hls kate ladspa lv2 modplug
-    mpeg2enc mplex musepack neonhttpsrc
-    openal openjpeg opusparse resindvd
+    gme hls kate ladspa lv2 modplug
+    mplex musepack neonhttpsrc
+    openal opusparse resindvd
     rsvg rtmp sbc sctp smoothstreaming
-    sndfile soundtouch spandsp srt
+    sndfile soundtouch srt
     srtp teletext timecode ttmlsubs
     vulkan waylandsink webp webrtc
-    webrtcdsp wildmidi x265 zbar
+    webrtcdsp wildmidi x265
   )
 
   mkdir -p "$pkgdir/../bad/usr/lib32/gstreamer-1.0/"
