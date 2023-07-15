@@ -1,7 +1,7 @@
 pkgbase = anaconda
 	pkgdesc = Simplifies package management and deployment of Anaconda
-	pkgver = 2023.03
-	pkgrel = 2
+	pkgver = 2023.07.1
+	pkgrel = 1
 	url = https://anaconda.com
 	install = anaconda.install
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = anaconda
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = https://repo.anaconda.com/archive/Anaconda3-2023.03-Linux-x86_64.sh
+	source = https://repo.anaconda.com/archive/Anaconda3-2023.07-1-Linux-x86_64.sh
 	source = anaconda-navigator.desktop
-	sha512sums = 27a44d1da6a6d0bce646e735510c3a16f30a74a310f86c6da09a6364d440717750bad96316ae978f66ed1801310e7d4cf0b5a410808a7c51522a484e636eb4ad
+	sha512sums = 0c5d33edc79c376969788a6da2466c24f1de42239e9b4bcf3fe4f90431166340515d4316c033e6402fe6cc4cbaeb8c9e4be3cc70ea3c7ebf4d4a30db40541b76
 	sha512sums = 16a4d08590c082dc6042a68783f5c6bfa03af6aa6e07baf489f7d698695d1e2659b0add6c123693da6516ebc031009f97368830f028e2c7af45db33f883aa26a
 
 pkgname = anaconda
