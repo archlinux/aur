@@ -3,7 +3,7 @@
 _pkgname=nasm
 pkgname="$_pkgname-git"
 pkgver=2.16.01.r9.a916e412
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="80x86 assembler designed for portability and modularity"
 arch=(i686 x86_64)
@@ -45,5 +45,5 @@ check() {
 package() {
 	cd $_pkgname
 	make DESTDIR="$pkgdir" install install_doc
-	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname/"
+	install -vDm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
