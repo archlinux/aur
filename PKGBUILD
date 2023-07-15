@@ -6,7 +6,7 @@
 # Contributor: Deon Spengler <deon@spengler.co.za>
 _name=ddcutil
 pkgname="$_name-dev-git"
-pkgver=1.4.1.r343.g5f6ded70
+pkgver=1.4.1.r958.gb8f92948
 pkgrel=1
 pkgdesc="Query and change Linux monitor settings using DDC/CI and USB."
 url="https://www.ddcutil.com"
@@ -16,7 +16,7 @@ depends=('glib2' 'i2c-tools' 'libusb' 'libdrm' 'libxrandr')
 makedepends=('git' 'systemd')
 provides=("$_name" 'libddcutil.so=4')
 conflicts=("$_name")
-source=('git+https://github.com/rockowitz/ddcutil.git#branch=1.5.0-dev')
+source=('git+https://github.com/rockowitz/ddcutil.git#branch=2.0.0-dev')
 sha256sums=('SKIP')
 
 pkgver() {
