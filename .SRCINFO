@@ -1,0 +1,23 @@
+pkgbase = serioussam-rakanishu-mappacks
+	pkgdesc = Serious Sam Classic Rakanishu MapPacka.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://archive.org/details/se-coop-persepolis-and-teotihuacan-map-pack-v-2.020
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = sdl2
+	depends = python
+	depends = bash
+	depends = serioussam-vk
+	noextract = SE_COOP_JacobsRest_ForModsEdition.gro
+	noextract = SE_COOP_Persepolis_Map_Pack_V2.020.gro
+	noextract = SE_COOP_Teotihuacan_Map_Pack_V2.020.gro
+	source = https://archive.org/download/se-coop-persepolis-and-teotihuacan-map-pack-v-2.020/SE_COOP_JacobsRest_ForModsEdition.gro
+	source = https://archive.org/download/se-coop-persepolis-and-teotihuacan-map-pack-v-2.020/SE_COOP_Persepolis_Map_Pack_V2.020.gro
+	source = https://archive.org/download/se-coop-persepolis-and-teotihuacan-map-pack-v-2.020/SE_COOP_Teotihuacan_Map_Pack_V2.020.gro
+	sha256sums = d3c9c63275f1bcad240b4ae361792f6db9bb12dd69e7354ec10e5157fd73e95e
+	sha256sums = 43e1dedf5a5a9f52481978a9740ebbc1e0adb443ca3d43cc1a0c7691a6b81cf2
+	sha256sums = dea29b7701e0649b50487d93872db70ee48390ad4036da0f38f5dfb0013c4193
+
+pkgname = serioussam-rakanishu-mappacks
