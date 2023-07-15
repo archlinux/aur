@@ -1,7 +1,7 @@
 pkgbase = python2-numpy
 	pkgdesc = Scientific tools for Python 2
 	pkgver = 1.16.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.numpy.org/
 	arch = x86_64
 	license = custom
@@ -11,7 +11,7 @@ pkgbase = python2-numpy
 	depends = cblas
 	depends = lapack
 	depends = python2
-	optdepends = openblas: faster linear algebra
+	optdepends = blas-openblas: faster linear algebra
 	source = python2-numpy-1.16.6.tar.gz::https://github.com/numpy/numpy/archive/v1.16.6.tar.gz
 	sha512sums = 27344ae10c7e7fd222b34d1514aaccbb62d1322cc79bec28f5c1e8741eefbb6bc7664055e49ed4f08d5716ca93d4c997fb98bee26a19957543ab4f8c15cd41f7
 
