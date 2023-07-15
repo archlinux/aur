@@ -1,8 +1,8 @@
 pkgbase = ocaml-lockfree
 	pkgdesc = Lock-free data structures for multicore OCaml
 	pkgver = 0.3.1
-	pkgrel = 1
-	url = https://github.com/ocaml-multicore/lockfree
+	pkgrel = 2
+	url = https://github.com/ocaml-multicore/saturn
 	arch = x86_64
 	arch = aarch64
 	license = ISC
@@ -10,9 +10,9 @@ pkgbase = ocaml-lockfree
 	depends = ocaml>=5.0.0
 	depends = ocaml-yojson>=2.0.2
 	options = !strip
-	source = ocaml-lockfree-0.3.1-1.tar.gz::https://github.com/ocaml-multicore/lockfree/archive/0.3.1.tar.gz
+	source = ocaml-lockfree-0.3.1.tar.gz::https://github.com/ocaml-multicore/saturn/archive/0.3.1.tar.gz
 	source = remove-domain-shims-dep.diff
-	sha512sums = 084ca49cea0c13f82b857e900172d7ed5f43c4dfb81dab82799888419f9cc0f799c3f12e250b34c84960ace9145c593012b98647caa450f89bfb241256a4bba9
+	sha512sums = b858a7c762d4165f09e09a4173dc9d3068695fa3b69caa95ef166cd0ae303787eadf88ee1877b14bee2a8cd28006a706dcaa06e06e95ebc6070d1e62f323ea0c
 	sha512sums = 863b9b557e94a5c07a31ba222257c4f4153200e084be48de4b7ec71df301282f48d512da0e6d185f6f8a40a8e08275cd58ef230d46263031b03b0a1927881ab9
 
 pkgname = ocaml-lockfree
