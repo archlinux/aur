@@ -1,7 +1,7 @@
 pkgbase = serioussam-hno
-	pkgdesc = Serious Sam Classic HNO native Linux
+	pkgdesc = Serious Sam Classic HNO native Linux.
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tx00100xt/SE1-TSE-HNO
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,13 @@ pkgbase = serioussam-hno
 	depends = sdl2
 	depends = python
 	depends = bash
+	depends = serioussam-vk
+	noextract = HeroNumberOne.tar.xz
 	source = https://github.com/tx00100xt/SE1-TSE-HNO/archive/refs/tags/v1.0.1.tar.gz
-	sha512sums = c71e94b56731a28874cb0c3afc156a7d96827108e6a0a01701530c9b3a4b81daa0ca0ed8e2be6a457d1cac8e6dad0392d738481e09fcc1a4911530a6284fb2c5
+	source = https://archive.org/download/hero-number-one/HeroNumberOne.tar.xz
+	source = https://archive.org/download/hno-data-messages-eng/HNO-Data-messages-eng.tar.xz
+	sha256sums = 793925ac19e54b25fd56c8739730c1099c54de458d5fc74db18a079c7acb3963
+	sha256sums = cb75f7f79e9f1f3ae1285ed036f3f3e9d3c1323cb448ed87f316e59390f748f9
+	sha256sums = 316f68a61cdba7d1dc71b3847dcd1d789f93077275fd2d0911b832dda72b101c
 
 pkgname = serioussam-hno
-
