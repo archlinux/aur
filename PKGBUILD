@@ -1,7 +1,7 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=google-cloud-ops-agent-git
-pkgver=2.33.0.r8.g93b07bdd5
+pkgver=2.34.0.r34.gfdcfea1a4
 pkgrel=1
 
 pkgdesc="Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)"
@@ -32,14 +32,12 @@ backup=()
 
 source=(
 	"$pkgname::git+https://github.com/GoogleCloudPlatform/ops-agent.git"
-	"collectd::git+https://github.com/Stackdriver/collectd.git"
 	"fluent-bit::git+https://github.com/fluent/fluent-bit.git"
 	"opentelemetry-operations-collector::git+https://github.com/GoogleCloudPlatform/opentelemetry-operations-collector.git"
 	"opentelemetry-java-contrib::git+https://github.com/open-telemetry/opentelemetry-java-contrib.git"
 	"0001-build-sh.patch"
 )
 sha256sums=(
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -55,8 +53,6 @@ pkgver() {
 prepare() {
 	cd "${pkgname}"
 	git -c protocol.file.allow=always submodule init
-	git config submodule."submodules/collectd".url \
-		"${srcdir}/collectd"
 	git config submodule."submodules/fluent-bit".url \
 		"${srcdir}/fluent-bit"
 	git config submodule."submodules/opentelemetry-operations-collector".url \
