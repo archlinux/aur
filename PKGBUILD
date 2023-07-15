@@ -1,8 +1,8 @@
 # Maintainer: chomsky <ivanonarch at tutanota dot com>
 # Contributor: Lemon <dev [at] behnamlal [dot] com>
 pkgname='lobster-git'
-pkgver='4.0.0.r19.g7bbd799'
 _pkgname="${pkgname%-git}"
+pkgver=4.0.6.r6.g3228ed6
 pkgrel=1
 pkgdesc="Shell script to watch Movies/TV Shows from the terminal"
 arch=('any')
