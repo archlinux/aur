@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=cmus-rpc
 pkgver=2.0.0
-pkgrel=0
+pkgrel=2
 epoch=0
 pkgdesc="A Discord Rich Presence for cmus player using java 🎶☕"
 arch=('any')
