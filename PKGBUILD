@@ -1,10 +1,13 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 
+# RIIR branch represents development work towards the next major release
+_pr=1762
+
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='The SILE Typesetter, a modern typesetting system inspired by LaTeX, customizable in Lua'
-pkgver=0.14.8.r0.gcc8486b
+pkgver=0.14.10.r55.gaa7eda6
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -37,7 +40,6 @@ depends=(glibc
          git
          icu
          libpng # this goes with libtexpdf if ever split out to a library package
-         lua
          "${_luadeps[@]/#/lua-}"
          zlib)
 depends+=(libfreetype.so
@@ -51,11 +53,12 @@ optdepends=('libertinus-font: default math font'
             'luarocks: manage addon packages'
             'noto-fonts-cjk: default font for tate enabled classes'
             'ttf-hack: default mono font')
+makedepends=(cargo
+             jq)
 checkdepends=(poppler)
 provides=(libtexpdf.so
           "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-options=(debug)
 source=("git+$_url.git"
         "git+${_url%/$_pkgname}/libtexpdf.git")
 sha256sums=('SKIP'
@@ -66,7 +69,14 @@ prepare () {
 	git submodule init
 	git config submodule.libtexpdf.url "$srcdir/libtexpdf"
 	git -c protocol.file.allow=always submodule update
+	if [[ -n "$_pr" ]]; then
+		git fetch origin pull/$_pr/head
+		git reset --hard FETCH_HEAD
+	fi
+	sed Makefile.am -i \
+		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
 	./bootstrap.sh
+	cargo fetch --locked  --target "$CARCH-unknown-linux-gnu"
 }
 
 pkgver() {
@@ -77,6 +87,8 @@ pkgver() {
 
 build () {
 	cd "$_pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 	./configure \
 		--prefix /usr \
 		--docdir /usr/share/doc/$pkgname \
@@ -86,6 +98,8 @@ build () {
 
 check () {
 	cd "$_pkgname"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
 	make check
 }
 
