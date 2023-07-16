@@ -1,6 +1,6 @@
 pkgbase = lmaofetch
 	pkgdesc = A simple system fetch written in Bash
-	pkgver = 2.2
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/p3nguin-kun/lmaofetch
 	arch = any
