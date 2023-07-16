@@ -12,9 +12,9 @@
 pkgbase=llvm11-minimal
 pkgname=(llvm11-minimal clang11-minimal llvm11-libs-minimal clang11-libs-minimal spirv-llvm-translator11-minimal)
 url='https://llvm.org/'
-pkgver=11.0.0
+pkgver=11.1.0
 pkgrel=1
-_pkgver=11.0.0
+spirvllvmver=11.0.0
 arch=(x86_64)
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(cmake ninja zlib zstd libffi libedit ncurses
@@ -22,13 +22,9 @@ makedepends=(cmake ninja zlib zstd libffi libedit ncurses
              python-recommonmark gcc12 gcc12-fortran gcc12-libs)
 options=(staticlibs !lto) # Getting thousands of test failures with LTO
 source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz
-        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v${pkgver}.tar.gz
+        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v${spirvllvmver}.tar.gz
         llvm-config.h
-        stack-clash-fixes.patch
         amdgpu-avoid-an-illegal-operand-in-si-shrink-instr.patch
-        utils-benchmark-fix-missing-include.patch
-        no-strict-aliasing-DwarfCompileUnit.patch
-        cuda-version-detection.patch
         enable-SSP-and-PIE-by-default.patch)
 
 # Both ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.
@@ -36,7 +32,7 @@ source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}
 # A reasonable value for them to avoid these issues appears to be 75% of available cores.
 # NINJAFLAGS and LITFLAGS are env vars that can be used to achieve this. They should be set on command line or in files read by your shell on login (like .bashrc ) .
 # example for systems with 24 cores
-# NINJAFLAGS="-j 18 -l 18"
+NINJAFLAGS="-j 18 -l 18"
 # LITFLAGS="-j 18"
 # NOTE: It's your responbility to validate the value of NINJAFLAGS and LITFLAGS. If unsure, don't set it.
 
@@ -64,17 +60,11 @@ _get_distribution_components(){
 
 prepare(){
   cd ${srcdir}/llvm-project-llvmorg-${pkgver}/llvm
-  # https://bugs.llvm.org/show_bug.cgi?id=48007
-  patch -Np2 -i ${srcdir}/stack-clash-fixes.patch
   # https://gitlab.freedesktop.org/mesa/mesa/-/issues/4107
   # https://bugs.llvm.org/show_bug.cgi?id=48921#c2
   patch -Np2 -i ${srcdir}/amdgpu-avoid-an-illegal-operand-in-si-shrink-instr.patch
-  patch -Np2 -i ${srcdir}/utils-benchmark-fix-missing-include.patch
-  # https://bugs.llvm.org/show_bug.cgi?id=50611#c3
-  patch -Np2 -i ${srcdir}/no-strict-aliasing-DwarfCompileUnit.patch
 
   cd ${srcdir}/llvm-project-llvmorg-${pkgver}/clang
-  patch -Np2 -i ${srcdir}/cuda-version-detection.patch
   patch -Np2 -i ${srcdir}/enable-SSP-and-PIE-by-default.patch
 
   # Attempt to convert script to Python 3
@@ -123,10 +113,10 @@ export CXXFLAGS+=" ${CPPFLAGS}"
     -DLLVM_ENABLE_DOXYGEN=OFF
     -DLLVM_ENABLE_BINDINGS=OFF
     -DLLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang"
-    -DCOMPILER_RT_INSTALL_PATH=/opt/llvm11/lib/clang/$_pkgver
+    -DCOMPILER_RT_INSTALL_PATH=/opt/llvm11/lib/clang/$pkgver
     -DLLVM_ENABLE_DUMP=ON
     -DLLVM_EXTERNAL_PROJECTS="SPIRV-LLVM-Translator"
-    -DLLVM_EXTERNAL_SPIRV_LLVM_TRANSLATOR_SOURCE_DIR="$srcdir"/SPIRV-LLVM-Translator-${pkgver}
+    -DLLVM_EXTERNAL_SPIRV_LLVM_TRANSLATOR_SOURCE_DIR="$srcdir"/SPIRV-LLVM-Translator-${spirvllvmver}
     #-DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv/
     -DLLVM_SPIRV_INCLUDE_TESTS=OFF
     -DLLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail"
@@ -308,17 +298,13 @@ package_spirv-llvm-translator11-minimal(){
 
   cp --preserve --recursive "$srcdir"/spirv/* "$pkgdir"/
 
-  install -Dm644 "${srcdir}/SPIRV-LLVM-Translator-${pkgver}/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${srcdir}/SPIRV-LLVM-Translator-${spirvllvmver}/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('8ad4ddbafac4f2c8f2ea523c2c4196f940e8e16f9e635210537582a48622a5d5'
+sha256sums=('53a0719f3f4b0388013cfffd7b10c7d5682eece1929a9553c722348d1f866e79'
             '6464a722278d37fca783cb505caf44cc8473c22fd22ff6a5d07198bc92059c4f'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
-            'bdcaa7559223bd42a381086f7cc23fc73f88ebb1966a7c235f897db0f73b7d20'
             '85b6977005899bc76fcc548e0b6501cae5f50a8ad03060b9f58d03d775323327'
-            '5f666675fd45848e4c4b0f94068f7648dd9ff88df4a7b19d2a9f2b83ee358a7e'
-            'd1eff24508e35aae6c26a943dbaa3ef5acb60a145b008fd1ef9ac6f6c4faa662'
-            '757dc5a288f6847d38e320c364d48fb6454aef25514b2346030b623842ac904e'
             '248a0e8609b00689e82ce5e05e1de58b7c8ae09a35bbb9625e9069e1f13d2fec')
 
 # vim:set ts=8 sts=2 sw=2 et:
