@@ -1,6 +1,6 @@
 # Maintainer: Moritz Bruder <muesli4@gmail.com>
 pkgname=gclipboard-git
-pkgver=r48.1692721
+pkgver=r50.12345fa
 pkgrel=1
 pkgdesc='A simple clipboard manager with a clean design approach.'
 arch=('x86_64' 'i686')
@@ -8,7 +8,7 @@ url='http://github.com/muesli4/gclipboard'
 depends=('gtkmm3')
 makedepends=('git' 'automake' 'autoconf' 'make' 'boost' 'gettext' 'glib2' 'gtkmm3')
 provides=('gclipboard')
-source=($pkgname::git://github.com/muesli4/gclipboard.git)
+source=($pkgname::git+https://github.com/muesli4/gclipboard.git)
 
 md5sums=(SKIP)
 
