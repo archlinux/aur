@@ -44,7 +44,7 @@ makedepends=(
 
   # gst-plugins-bad
   lib32-vulkan-icd-loader vulkan-headers lib32-vulkan-validation-layers lib32-shaderc lib32-libusb lib32-libdc1394
-  libltc lib32-bluez-libs lib32-libavtp lib32-libbs2b lib32-bzip2 lib32-chromaprint lib32-libdca lib32-faac lib32-faad2
+  libltc lib32-bluez-libs lib32-libavtp lib32-libbs2b lib32-bzip2 lib32-libdca lib32-faac lib32-faad2
   lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-libkate lib32-liblrdf lib32-ladspa lib32-libde265 lib32-lilv lib32-lv2
   lib32-libmpcdec lib32-neon lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch
   lib32-libsrtp lib32-zvbi 'lib32-libnice>=0.1.20' lib32-wildmidi
