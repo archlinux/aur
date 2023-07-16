@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.10.17.r23.g9f9eca2
+pkgver=0.11.1.r1.g9f2d4f5
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -69,6 +69,8 @@ _python_deps=(isbnlib
 depends+=("${_lua_deps[@]/#/lua-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
+depends+=(gcc-libs
+          glibc)
 depends+=(libgit2.so)
 makedepends=(autoconf-archive
              cargo
@@ -76,7 +78,6 @@ makedepends=(autoconf-archive
              yarn)
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
-options=(debug)
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
