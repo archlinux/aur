@@ -1,16 +1,19 @@
 pkgbase = pget
-	pkgdesc = Parallel file download client
-	pkgver = 0.0.6
+	pkgdesc = Fast, resumable, and parallel file download client, written in go.
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Code-Hex/pget
 	arch = i686
 	arch = x86_64
+	arch = i386
+	arch = arm
+	arch = arm64
+	arch = armv6
+	arch = aarch64
 	license = GPL3
-	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = pget-0.0.6.tar.gz::https://github.com/Code-Hex/pget/archive/0.0.6.tar.gz
-	sha256sums = 4ddbfc0e7e041e2a459aa02ea28b6c9d358a30581a588201295cfb355d526c99
+	source = pget-0.1.1.tar.gz::https://github.com/Code-Hex/pget/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 34d674dc48144c84de72d525e67d96500243cc1d1c4c0433794495c0846c193f
 
 pkgname = pget
-
