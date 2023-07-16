@@ -20,7 +20,6 @@ package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
   rm -r "${pkgdir}"/etc/init.d
-  #mv "${pkgdir}"/etc/conf.d/tinydm "${pkgdir}"/etc/tinydm.conf
-  #rm -r "${pkgdir}"/etc/conf.d
+  rm -r "${pkgdir}"/etc/conf.d
   install -Dm 644 ../../tinydm.sysusers "${pkgdir}"/usr/lib/sysusers.d/tinydm.conf
 }
