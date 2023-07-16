@@ -1,25 +1,18 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=jpwd
-pkgver=0.0.3
+pkgver=0.0.5
 pkgrel=0
 epoch=0
 pkgdesc="A modern alternative to GNU/pwd using Java 🥰☕"
 arch=('any')
-url="https://github.com/Anas-Elgarhy/jpwd"
+url="https://github.com/0x61nas/jpwd"
 license=('GPL3')
 groups=('java-utils')
-depends=('jdk17-openjdk' 'nerd-fonts-hack')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=("$pkgname")
-conflicts=()
-replaces=("$pkgname")
-backup=()
-options=()
+depends=('java-runtime>=17')
+optdepends=('ttf-fira-code: for icons')
 install=
 changelog=
-source=("https://github.com/Anas-Elgarhy/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
 md5sums=()
 validpgpkeys=()
