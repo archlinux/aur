@@ -1,13 +1,12 @@
 # Maintainer: p3nguin-kun <p3nguinkun@proton.me>
 pkgname=lmaofetch
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="A simple system fetch written in Bash"
 arch=('any')
 url="https://github.com/p3nguin-kun/lmaofetch"
 license=('MIT')
 depends=('bash')
-optdepends=('nerd-fonts: Icon font')
 makedepends=('git')
 #install=
 source=("$pkgname::git+https://github.com/p3nguin-kun/lmaofetch#tag=${pkgver}")
