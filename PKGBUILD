@@ -2,13 +2,13 @@
 
 pkgname=xshot-git
 pkgver=r12.b84afb1
-pkgrel=1
+pkgrel=2
 pkgdesc='XS Screenshot Tool for X11'
 arch=('x86_64')
 url=https://github.com/hydrobeam/xshot
 license=('MIT')
 depends=('libxcb' 'libx11')
-makedepends=('git')
+makedepends=('cargo' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
