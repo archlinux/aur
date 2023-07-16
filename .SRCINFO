@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-tt-uksm-cjktty
 	pkgdesc = Linux Xanmod. Development branch with the Task Type CPU Scheduler by Hamad Al Marri
-	pkgver = 6.4.1
+	pkgver = 6.4.3
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = linux-xanmod-tt-uksm-cjktty
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.4.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.4.tar.sign
-	source = https://github.com/antman666/linux-xanmod-tt-uksm-cjktty/releases/download/linux-xanmod-tt_patch/patch-6.4.1-xanmod1-tt.zst
+	source = https://github.com/antman666/linux-xanmod-tt-uksm-cjktty/releases/download/linux-xanmod-tt_patch/patch-6.4.3-xanmod1-tt.zst
 	source = choose-gcc-optimization.sh
 	source = 0001-cjktty.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v6.x/cjktty-6.4.patch
 	source = 0002-UKSM.patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/6.4/uksmd-cachyos-patches/0001-mm-expose-per-process-KSM-control-via-syscalls.patch
