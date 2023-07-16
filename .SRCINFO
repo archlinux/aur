@@ -1,13 +1,13 @@
 pkgbase = termimage
 	pkgdesc = Display images in your terminal
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/nabijaczleweli/termimage
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = termimage-1.2.0.tar.gz::https://github.com/nabijaczleweli/termimage/archive/v1.2.0.tar.gz
-	sha512sums = 10fe74c2097379113e2ad8777793a7f49d7707acac650f7b7e0505d7d61a15b524019325fabc4eaa149aa0130979ee2c49ca2549f04d99dfeb925b0f68d6fac3
+	source = termimage-1.2.1.tar.gz::https://github.com/nabijaczleweli/termimage/archive/v1.2.1.tar.gz
+	sha512sums = 58244c9b07417659be6cf8024ac9f10b82971d7e9e025805b8adb953b20b93bee596d26851dc434221720f63ee27082125f0f282fb739e7227a93d6398e5af7f
 
 pkgname = termimage

@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termimage
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Display images in your terminal"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
         #"$url/releases/download/v$pkgver/$pkgname-man-v$pkgver.tbz2")
-sha512sums=('10fe74c2097379113e2ad8777793a7f49d7707acac650f7b7e0505d7d61a15b524019325fabc4eaa149aa0130979ee2c49ca2549f04d99dfeb925b0f68d6fac3')
+sha512sums=('58244c9b07417659be6cf8024ac9f10b82971d7e9e025805b8adb953b20b93bee596d26851dc434221720f63ee27082125f0f282fb739e7227a93d6398e5af7f')
 
 prepare() {
   cd "$pkgname-$pkgver"
