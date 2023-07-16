@@ -3,8 +3,8 @@
 # Contributor: skydrome -at- protonmail
 
 pkgname=scrcpy-git
-pkgver=2.0_r2106.gcb20bcb1
-pkgrel=2
+pkgver=2.1.1_r2217.gfcdf847d
+pkgrel=1
 pkgdesc='Display and control your Android device'
 arch=($CARCH)
 url='https://github.com/Genymobile/scrcpy'
@@ -16,7 +16,7 @@ provides=(${pkgname%-git})
 source=("git+https://github.com/Genymobile/${pkgname%-git}.git"
         "$url/releases/download/v${pkgver%_*}/${pkgname%-git}-server-v${pkgver%_*}")
 sha256sums=('SKIP'
-            '9e241615f578cd690bb43311000debdecf6a9c50a7082b001952f18f6f21ddc2')
+            'SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
