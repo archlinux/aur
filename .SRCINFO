@@ -1,16 +1,16 @@
 pkgbase = ttf-plangothic
 	pkgdesc = 遍黑体项目（Plangothic Project）
-	pkgver = 0.4.4086
+	pkgver = 0.8.5744
 	pkgrel = 1
-	url = https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic
+	url = https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project
 	arch = any
 	license = SIL Open Font License
 	depends = fontconfig
-	source = https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/releases/download/V0.4.4086/PlangothicP1-Regular.ttf
-	source = https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/releases/download/V0.4.4086/PlangothicP2-Regular.ttf
-	source = https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic/raw/main/LICENSE.txt
-	md5sums = d1f3ca0065111337a250347e2394f652
-	md5sums = 2660e23c0c66e3789c39e89d1866a2a3
-	md5sums = 2acc3a3b3765fa2098197e7b51871bd7
+	source = https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/download/V0.8.5744/PlangothicP1-Regular.fallback.ttf
+	source = https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/download/V0.8.5744/PlangothicP2-Regular.ttf
+	source = https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/raw/main/LICENSE
+	md5sums = df54afe4c7b7ad041e9810e07295ee06
+	md5sums = b14651028f8902296cd290e16b1bdbf6
+	md5sums = 76f275fef4c3e68344037d125b1cbe10
 
 pkgname = ttf-plangothic
