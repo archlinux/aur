@@ -4,7 +4,7 @@ pkgname=btrfs-compress
 # compress is too generic a name!!! Also the script is unmaintained upstream but still works.
 _pkgname=compress
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="btrfs tool that makes it possible to change +c flags recursively on existing files"
 arch=('x86_64')
@@ -31,7 +31,7 @@ package() {
   cd "$_pkgname-$pkgver"
   install -D -m 755 src/$_pkgname "$pkgdir"/usr/bin/btrfs-compress
   install -D -m 644 README.md "$pkgdir"/usr/share/doc/btrfs-compress/README.md
-  install -D -m 644 LICENSE "$pkgdir"/usr/share/licences/btrfs-compress/LICENSE
+  install -D -m 644 LICENSE "$pkgdir"/usr/share/licenses/btrfs-compress/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
