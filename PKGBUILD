@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://github.com/LithApp/Lith'
 license=('GPL')
 depends=('qt6-base' 'qt6-multimedia' 'qt6-quick3d' 'qt6-websockets')
-makedepends=('git')
+makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 # The project name is "Lith", but I want a lowercase l.

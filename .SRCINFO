@@ -5,6 +5,7 @@ pkgbase = lith-git
 	url = https://github.com/LithApp/Lith
 	arch = x86_64
 	license = GPL
+	makedepends = cmake
 	makedepends = git
 	depends = qt6-base
 	depends = qt6-multimedia
