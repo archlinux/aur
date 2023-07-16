@@ -3,11 +3,13 @@
 _pkgname=librewolf-extension-dark-reader
 pkgname=$_pkgname-bin
 pkgver=4.9.64
-pkgrel=1
-pkgdesc='Dark mode for every website. Take care of your eyes, use dark theme for night and daily browsing (binary release)'
+pkgrel=2
+pkgdesc='Inverts brightness of web pages and aims to reduce eyestrain while browsing the web (binary release)'
 url=https://addons.mozilla.org/addon/darkreader
 arch=('any')
 license=('MIT')
+conflicts=($_pkgname)
+provides=($_pkgname)
 depends=('librewolf')
 groups=('librewolf-addons')
 noextract=("darkreader-$pkgver.xpi")
