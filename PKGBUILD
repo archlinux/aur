@@ -1,6 +1,6 @@
 # Maintainer: Jérôme de Courval <decje9@gmail.com>
 pkgname=tandoor-recipes-git
-pkgver=1.2.2.r994.135640dd
+pkgver=1.2.2.r1199.a497a6b7
 pkgrel=1
 pkgdesc=""
 arch=('any')
@@ -20,9 +20,10 @@ source=(
 	'tandoor.service'
 	'tandoor.socket'
 	'tandoor-sysuser.conf'
+	'tandoor-directory.conf'
 )
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/recipes"
@@ -47,6 +48,7 @@ package() {
 
 	install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" tandoor.service tandoor.socket
 	install -Dm644 tandoor-sysuser.conf "$pkgdir/usr/lib/sysusers.d/tandoor.conf"
+	install -Dm644 tandoor-directory.conf "$pkgdir/usr/lib/tmpfiles.d/tandoor.conf"
 
 	cd recipes
 	install -Dm644 .env.template "$pkgdir/etc/tandoor/tandoor.conf"
