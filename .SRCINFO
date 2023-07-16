@@ -1,7 +1,7 @@
 pkgbase = dmenu-wayland-git
 	pkgdesc = Wayland port of a generic menu for X
-	pkgver = 4.2.1.r40.b76d594
-	pkgrel = 1
+	pkgver = 4.2.1.r59.a380201
+	pkgrel = 2
 	url = https://github.com/nyyManni/dmenu-wayland
 	arch = i686
 	arch = x86_64
@@ -16,11 +16,8 @@ pkgbase = dmenu-wayland-git
 	depends = libxkbcommon
 	depends = glib2
 	provides = dmenu-wayland
-	provides = dmenu
 	conflicts = dmenu-wayland
-	conflicts = dmenu
 	source = git+https://github.com/nyyManni/dmenu-wayland.git
 	sha256sums = SKIP
 
 pkgname = dmenu-wayland-git
-
