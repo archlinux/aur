@@ -1,7 +1,7 @@
 pkgbase = claws-mail-protectedheaders-git
 	pkgdesc = A GTK based e-mail client. Latest git checkout, built against 'gtk3'. Patched to use charset supersets to decode titles and to display protected headers.
 	pkgver = 4.1.1+67.r13230.20230709.4c6844370
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://www.claws-mail.org/
 	arch = i686
@@ -47,6 +47,7 @@ pkgbase = claws-mail-protectedheaders-git
 	depends = startup-notification
 	optdepends = claws-mail-theme-basicsvg: BasicSVG icon theme for Claws Mail.
 	optdepends = claws-mail-tango-theme: Tango icon theme for Claws Mail.
+	optdepends = papirus-claws-mail-theme: Papirus icon theme for Claws Mail.
 	optdepends = claws-mail-plugin-reloader: Reload plugins from the 'tools' menu (for development).
 	optdepends = bash: for some extra tools.
 	optdepends = at-spi2-core: for many plugins.
