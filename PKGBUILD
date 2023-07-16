@@ -3,12 +3,14 @@
 _pkgname=xdman8
 pkgname=$_pkgname-bin
 pkgver=8.0.29
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source download accelerator and video downloader (binary release)"
 arch=('x86_64')
 url="https://github.com/subhra74/xdm"
 license=('GPL3')
 depends=('ffmpeg' 'gtk3>=3.22.0')
+optdepends=('librewolf-extension-xdman8-browser-monitor-bin: Browser extension for LibreWolf'
+            'firefox-extension-xdman8-browser-monitor-bin: Browser extension for Firefox')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-beta-git")
 source=("$url/releases/download/$pkgver/xdman_gtk-$pkgver-1.fc36.x86_64.rpm")
