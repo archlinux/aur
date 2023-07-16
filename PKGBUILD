@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bruder <muesli4 at gmail dot com>
 pkgname=gmpc-git
 pkgver=11.8.16.r442.g28e1441f
-pkgrel=1
+pkgrel=2
 pkgdesc='A graphical MPD client written in Gtk3 including libnotify support'
 arch=('x86_64' 'i686')
 url='https://github.com/DaveDavenport/gmpc'
