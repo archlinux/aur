@@ -2,6 +2,7 @@ pkgbase = pantum-driver
 	pkgdesc = Linux driver for Pantum printers V1.1.106 (check PKGBUILD for compatible printer models)
 	pkgver = 1.1.106
 	pkgrel = 1
+	url = https://global.pantum.com/support/download/driver/
 	arch = x86_64
 	arch = x86
 	arch = i686
