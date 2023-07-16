@@ -9,6 +9,7 @@ pkgbase = flare
 	arch = armv7h
 	arch = aarch64
 	license = AGPL3
+	makedepends = blueprint-compiler
 	makedepends = cargo
 	makedepends = meson
 	depends = libadwaita
