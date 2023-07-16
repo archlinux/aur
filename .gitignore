@@ -1,0 +1,6 @@
+*.tar.zst
+*.tar.xz
+*.tar.gz
+*.kate-swp
+src/
+pkg/
