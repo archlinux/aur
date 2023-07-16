@@ -10,7 +10,7 @@
 _pkgname="PWAsForFirefox"
 pkgname="firefox-pwa"
 pkgdesc="A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox (native component)"
-pkgver="2.6.2"
+pkgver="2.7.0"
 pkgrel=1
 url="https://github.com/filips123/PWAsForFirefox"
 arch=("x86_64" "i686")
@@ -21,8 +21,8 @@ optdepends=("firefox: Support for browser extension")
 install=package.install
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/filips123/PWAsForFirefox/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('30e9e1eb02f49d2862a7fd9ba94c85ea201427a3286dd0421851baa2dc5af773')
-b2sums=('fb80db45569a12456c1c026c21b3f3b33c0ca4c3ea0eb784c3ca0734b247b8cc3d4ba22ed7faa889042b2056547dc12e79b63dc63f982da97641a95a05ff5208')
+sha256sums=('409344b901408a785386fc500d36b3a265141c111ff6fd0870241d14788b5f31')
+b2sums=('4569323f649c137c04a837d69a7234fe6ed80ae974fe64d21cf900e14bc5c6bb4ed502837396bec640ce2892f7943b13a7a40987a9fa09af9e1b4ced82794864')
 
 prepare() {
     cd $srcdir/$_pkgname-$pkgver/native/
@@ -60,13 +60,17 @@ package() {
     install -Dm755 target/release/completions/firefoxpwa.fish $pkgdir/usr/share/fish/vendor_completions.d/firefoxpwa.fish
     install -Dm755 target/release/completions/_firefoxpwa $pkgdir/usr/share/zsh/vendor-completions/_firefoxpwa
 
+    # UserChrome
+    mkdir -p $pkgdir/usr/share/firefoxpwa/userchrome/
+    cp -r userchrome/* $pkgdir/usr/share/firefoxpwa/userchrome/
+
     # Documentation
     install -Dm644 ../README.md $pkgdir/usr/share/doc/firefoxpwa/README.md
     install -Dm644 ../native/README.md $pkgdir/usr/share/doc/firefoxpwa/README-NATIVE.md
     install -Dm644 ../extension/README.md $pkgdir/usr/share/doc/firefoxpwa/README-EXTENSION.md
     install -Dm644 packages/deb/copyright $pkgdir/usr/share/doc/firefoxpwa/copyright
 
-    # UserChrome
-    mkdir -p $pkgdir/usr/share/firefoxpwa/userchrome/
-    cp -r userchrome/* $pkgdir/usr/share/firefoxpwa/userchrome/
+    # AppStream Metadata
+    install -Dm644 packages/appstream/si.filips.FirefoxPWA.metainfo.xml /usr/share/metainfo/si.filips.FirefoxPWA.metainfo.xml
+    install -Dm644 packages/appstream/si.filips.FirefoxPWA.svg /usr/share/icons/hicolor/scalable/apps/si.filips.FirefoxPWA.svg
 }
