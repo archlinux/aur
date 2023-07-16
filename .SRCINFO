@@ -1,5 +1,5 @@
 pkgbase = tandoor-recipes-git
-	pkgver = 1.2.2.r994.135640dd
+	pkgver = 1.2.2.r1199.a497a6b7
 	pkgrel = 1
 	url = https://github.com/TandoorRecipes/recipes
 	install = tandoor.install
@@ -20,6 +20,8 @@ pkgbase = tandoor-recipes-git
 	source = tandoor.service
 	source = tandoor.socket
 	source = tandoor-sysuser.conf
+	source = tandoor-directory.conf
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
