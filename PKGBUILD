@@ -2,7 +2,7 @@
 
 pkgname=nofi-bin
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An interruption-free notification system for Linux"
 arch=('x86_64')
 url="https://github.com/ellsclytn/nofi"
