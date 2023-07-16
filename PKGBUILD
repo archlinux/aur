@@ -29,7 +29,7 @@ esac
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=3.19.1+54.r11661.20230709.e72409138
-pkgrel=3
+pkgrel=4
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
   'i686'
@@ -83,6 +83,7 @@ makedepends=(
 optdepends=(
   'claws-mail-theme-basicsvg: BasicSVG icon theme for Claws Mail.'
   'claws-mail-tango-theme: Tango icon theme for Claws Mail.'
+  'papirus-claws-mail-theme: Papirus icon theme for Claws Mail.'
   "claws-mail-plugin-reloader: Reload plugins from the 'tools' menu (for development)."
   'bash:              for some extra tools.'
   'at-spi2-core:      for many plugins.'
