@@ -3,7 +3,7 @@
 # Contributor: Spider.007 <aur@spider007.net>
 
 pkgname=graylog
-pkgver=5.1.2
+pkgver=5.1.3
 pkgrel=1
 pkgdesc='Free and open source log management platform'
 arch=('any')
