@@ -1,7 +1,7 @@
 pkgbase = osm2pgsql-git
 	pkgdesc = tool for loading OpenStreetMap data into a PostgreSQL / PostGIS database
-	pkgver = 1.5.0.r5.gd53d6567
-	pkgrel = 2
+	pkgver = 1.8.1.r175.g1cfb05be
+	pkgrel = 1
 	url = https://github.com/openstreetmap/osm2pgsql
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = osm2pgsql-git
 	makedepends = cmake
 	makedepends = boost
 	makedepends = postgresql
+	makedepends = nlohmann-json
 	depends = expat
 	depends = proj
 	depends = bzip2
@@ -19,7 +20,7 @@ pkgbase = osm2pgsql-git
 	depends = lua
 	optdepends = postgresql: for creating a PostgreSQL database
 	optdepends = postgis: for creating a PostGIS database
-	provides = osm2pgsql=1.5.0.r5.gd53d6567
+	provides = osm2pgsql=1.8.1.r175.g1cfb05be
 	conflicts = osm2pgsql
 	source = git+https://github.com/openstreetmap/osm2pgsql
 	md5sums = SKIP

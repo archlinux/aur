@@ -3,14 +3,14 @@
 
 _pkgname=osm2pgsql
 pkgname=$_pkgname-git
-pkgver=1.5.0.r5.gd53d6567
-pkgrel=2
+pkgver=1.8.1.r175.g1cfb05be
+pkgrel=1
 pkgdesc="tool for loading OpenStreetMap data into a PostgreSQL / PostGIS database"
 arch=('i686' 'x86_64')
 url="https://github.com/openstreetmap/osm2pgsql"
 license=('GPL')
 depends=('expat' 'proj' 'bzip2' 'zlib' 'boost-libs' 'postgresql-libs' 'lua')
-makedepends=('git' 'cmake' 'boost' 'postgresql')
+makedepends=('git' 'cmake' 'boost' 'postgresql' 'nlohmann-json')
 optdepends=('postgresql: for creating a PostgreSQL database'
             'postgis: for creating a PostGIS database')
 provides=("$_pkgname=$pkgver")
