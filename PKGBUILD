@@ -29,7 +29,7 @@ _sudachidict_date=20230110
 pkgbase=mozc-with-jp-dict
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
 pkgver=2.29.5160.102
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
@@ -67,7 +67,7 @@ sha512sums=('SKIP'
 pkgver() {
   cd "${srcdir}/mozc" || exit
   source <(grep = src/data/version/mozc_version_template.bzl| tr -d ' ')
-  printf "%s.%s.%s.%s.%s" "$MAJOR" "$MINOR" "$BUILD_OSS" "$((REVISION+2))"
+  printf "%s.%s.%s.%s" "$MAJOR" "$MINOR" "$BUILD_OSS" "$((REVISION+2))"
 }
 
 prepare() {
