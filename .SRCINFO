@@ -1,5 +1,5 @@
 pkgbase = llvm10-minimal
-	pkgver = 10.0.0
+	pkgver = 10.0.1
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -21,12 +21,10 @@ pkgbase = llvm10-minimal
 	makedepends = gcc12-libs
 	options = staticlibs
 	options = !lto
-	source = https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-10.0.0.tar.gz
-	source = https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v10.0.0.tar.gz
+	source = https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-10.0.1.tar.gz
 	source = llvm-config.h
 	source = enable-SSP-and-PIE-by-default.patch
-	sha256sums = b81c96d2f8f40dc61b14a167513d87c0d813aae0251e06e11ae8a4384ca15451
-	sha256sums = 7ccde52bac4c9ad967a362a3c5ec7261aa5b7b34d28cef0f3dec38d77c923049
+	sha256sums = c7ccb735c37b4ec470f66a6c35fbae4f029c0f88038f6977180b1a8ddc255637
 	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
 	sha256sums = 9e557a18f3ca96cc5cc9b62d2e308b993025523b2aca0735248118a928c8c3ff
 

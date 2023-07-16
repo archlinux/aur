@@ -12,9 +12,8 @@
 pkgbase=llvm10-minimal
 pkgname=(llvm10-minimal clang10-minimal llvm10-libs-minimal clang10-libs-minimal)
 url='https://llvm.org/'
-pkgver=10.0.0
+pkgver=10.0.1
 pkgrel=1
-_pkgver=10.0.0
 arch=(x86_64)
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(cmake ninja zlib zstd libffi libedit ncurses
@@ -22,7 +21,6 @@ makedepends=(cmake ninja zlib zstd libffi libedit ncurses
              python-recommonmark gcc12 gcc12-fortran gcc12-libs)
 options=(staticlibs !lto) # Getting thousands of test failures with LTO
 source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz
-        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v${pkgver}.tar.gz
         llvm-config.h
         enable-SSP-and-PIE-by-default.patch)
 
@@ -115,12 +113,8 @@ export CXXFLAGS+=" ${CPPFLAGS}"
     -DLLVM_ENABLE_DOXYGEN=OFF
     -DLLVM_ENABLE_BINDINGS=OFF
     -DLLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang"
-    -DCOMPILER_RT_INSTALL_PATH=/opt/llvm10/lib/clang/$_pkgver
+    -DCOMPILER_RT_INSTALL_PATH=/opt/llvm10/lib/clang/$pkgver
     -DLLVM_ENABLE_DUMP=ON
-    #-DLLVM_EXTERNAL_PROJECTS="SPIRV-LLVM-Translator"
-    #-DLLVM_EXTERNAL_SPIRV_LLVM_TRANSLATOR_SOURCE_DIR="$srcdir"/SPIRV-LLVM-Translator-${pkgver}
-    #-DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv/
-    #-DLLVM_SPIRV_INCLUDE_TESTS=OFF
     -DLLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail"
     -Wno-dev
   )
@@ -284,8 +278,7 @@ package_clang10-libs-minimal(){
   install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/clang/CODE_OWNERS.TXT" "$pkgdir/usr/share/licenses/$pkgname/CODE_OWNERS"
 }
 
-sha256sums=('b81c96d2f8f40dc61b14a167513d87c0d813aae0251e06e11ae8a4384ca15451'
-            '7ccde52bac4c9ad967a362a3c5ec7261aa5b7b34d28cef0f3dec38d77c923049'
+sha256sums=('c7ccb735c37b4ec470f66a6c35fbae4f029c0f88038f6977180b1a8ddc255637'
             '597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48'
             '9e557a18f3ca96cc5cc9b62d2e308b993025523b2aca0735248118a928c8c3ff')
 
