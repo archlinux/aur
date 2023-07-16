@@ -1,6 +1,6 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 pkgname=lith-git
-pkgver=1.2.15.r2.g71a63ae
+pkgver=1.3.40.r0.g05ee44e
 pkgrel=1
 pkgdesc='A multiplatform WeeChat relay client'
 arch=('x86_64')
@@ -20,15 +20,16 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/${pkgname%-git}"
-    mkdir -p build
-    cd build
-    qmake6 ..
-    make
+    LDFLAGS="${LDFLAGS/,--as-needed/}" cmake \
+        -S "$srcdir/${pkgname%-git}" \
+        -B "$srcdir/build" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_BUILD_TYPE=Release
+    cmake --build "$srcdir/build"
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}/build"
+    DESTDIR="$pkgdir" cmake --install "$srcdir/build"
     # The executable has an uppercase L, I think it is sensible to change that to a lowercase l.
-    install -D "Lith" "$pkgdir/usr/bin/lith"
+    mv "$pkgdir/usr/bin/Lith" "$pkgdir/usr/bin/lith"
 }

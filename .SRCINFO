@@ -1,6 +1,6 @@
 pkgbase = lith-git
 	pkgdesc = A multiplatform WeeChat relay client
-	pkgver = 1.2.15.r2.g71a63ae
+	pkgver = 1.3.40.r0.g05ee44e
 	pkgrel = 1
 	url = https://github.com/LithApp/Lith
 	arch = x86_64
