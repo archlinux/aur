@@ -2,7 +2,7 @@
 # Contributor: Bryn Edwards <bryn.edwards@gmail.com>
 # Contributor: trap000d
 pkgname=supysonic
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="A Python implementation of the Subsonic server API."
 arch=('any')
@@ -38,7 +38,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/spl0k/$pkgname/archive/$pkg
         "$pkgname.tmpfiles"
         "$pkgname-daemon.service"
         "$pkgname-waitress.service")
-sha256sums=('8a77ef4aa194baaeda2242165045413f415ed105f558dc3a055c6cdec00331e2'
+sha256sums=('83287b64d1b94b599889e5870b7fa9d7bd9ac2766d819a250742588af51c26dc'
             'e8a10b2be1c3b6757cee8928f2e585351da9e9b6eadfa68c8905913108a26b80'
             'b4b723d30fb45f86a15ec218910cd3935aac4546d5e2f9a1e1bc79cccfb98480'
             '430eba10de5381a425074b89d0a46fb770be5112b26e81ac6a2b55765675cb13'
