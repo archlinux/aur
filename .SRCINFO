@@ -1,14 +1,14 @@
 pkgbase = aarty
 	pkgdesc = A simple CLI tool to convert the images to ASCII art 🦀💙
-	pkgver = 0.4.7
+	pkgver = 0.4.9
 	pkgrel = 1
-	url = https://github.com/anas-elgarhy/aarty
+	url = https://github.com/0x61nas/aarty
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	provides = aarty
 	replaces = aarty
-	source = aarty-0.4.7.tar.gz::https://static.crates.io/crates/aarty/aarty-0.4.7.crate
-	sha256sums = d9b059f8d87e1f3bd86855d6489e08c9730ea0c105c644376856fbfc654820aa
+	source = aarty-0.4.9.tar.gz::https://static.crates.io/crates/aarty/aarty-0.4.9.crate
+	sha256sums = 822fed3232cd90faa6484e936c7cad6ee3e83986f662cd9c0523a9469252f007
 
 pkgname = aarty

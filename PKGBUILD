@@ -32,4 +32,4 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
-sha256sums=('d9b059f8d87e1f3bd86855d6489e08c9730ea0c105c644376856fbfc654820aa')
+sha256sums=('822fed3232cd90faa6484e936c7cad6ee3e83986f662cd9c0523a9469252f007')
