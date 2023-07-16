@@ -11,7 +11,6 @@ pkgbase = dupeguru-git
 	makedepends = git
 	makedepends = python-distro
 	makedepends = python-sphinx
-	depends = libxkbcommon-x11
 	depends = python
 	depends = python-mutagen
 	depends = python-polib

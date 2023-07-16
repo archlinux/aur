@@ -7,7 +7,7 @@ pkgdesc='Find duplicate files on your system'
 arch=('x86_64')
 url='https://dupeguru.voltaicideas.net/'
 license=('GPL3')
-depends=('libxkbcommon-x11' 'python' 'python-mutagen' 'python-polib' 'python-pyqt5' 'python-semantic-version'
+depends=('python' 'python-mutagen' 'python-polib' 'python-pyqt5' 'python-semantic-version'
          'python-send2trash' 'python-xxhash')
 makedepends=('git' 'python-distro' 'python-sphinx')
 checkdepends=('flake8' 'python-pytest' 'python-tox')
