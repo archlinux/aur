@@ -1,7 +1,7 @@
 pkgbase = ruby-os
 	pkgdesc = Provides basic information about the operating system
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rubygems.org/gems/os
 	arch = any
 	license = MIT
