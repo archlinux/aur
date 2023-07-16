@@ -2,7 +2,7 @@
 
 pkgname=thor-git
 pkgver=2.0.r24.g3e320cb
-pkgrel=2
+pkgrel=3
 pkgdesc="SFML Extension with various game programming features,
          like particles, animations, vector operations"
 arch=("x86_64")
@@ -35,7 +35,7 @@ build() {
     -D THOR_BUILD_EXAMPLES:BOOL="OFF" \
     -D THOR_SHARED_LIBS:BOOL="ON" \
     -D CMAKE_BUILD_TYPE:STRING="Release" \
-    -D CMAKE_CXX_FLAGS_RELEASE:STRING="-O2 -DNDEBUG" \
+    -D CMAKE_CXX_FLAGS_RELEASE:STRING="-DNDEBUG" \
     -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
     -Wno-dev
 

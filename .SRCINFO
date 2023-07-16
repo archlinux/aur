@@ -1,7 +1,7 @@
 pkgbase = thor-git
 	pkgdesc = SFML Extension with various game programming features, like particles, animations, vector operations
 	pkgver = 2.0.r24.g3e320cb
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bromeon.ch/libraries/thor
 	arch = x86_64
 	license = ZLIB
