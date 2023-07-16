@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('librewolf' 'xdman8')
 provides=("$_pkgname")
 groups=('librewolf-addons')
-noextract=(xdm_browser_monitor_v8-$pkgver.xpi)
+noextract=("xdm_browser_monitor_v8-$pkgver.xpi")
 source=("https://addons.mozilla.org/firefox/downloads/file/4095144/xdm_browser_monitor_v8-$pkgver.xpi")
 sha256sums=('fb703ac17dc239600389a86953fbf63df6d31280a7745147c11cba932d1657c9')
 
