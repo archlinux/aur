@@ -1,6 +1,6 @@
 pkgbase = gohugo-extended-bin
 	pkgdesc = Extended version of Hugo
-	pkgver = 0.115.1
+	pkgver = 0.115.3
 	pkgrel = 1
 	url = https://gohugo.io/
 	arch = x86_64
