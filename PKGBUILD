@@ -2,7 +2,7 @@
 _pkgname="hugo"
 pkgname=gohugo-extended-bin
 pkgver=0.115.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Extended version of Hugo"
 arch=('x86_64' 'aarch64')
 url="https://gohugo.io/"
