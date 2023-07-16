@@ -1,7 +1,7 @@
 # Maintainer: realroot
 
 pkgname=tinydm
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Tiny wayland / x11 session starter for single user machines"
 arch=('any')
