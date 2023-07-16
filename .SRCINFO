@@ -1,14 +1,14 @@
 pkgbase = etesync-dav
 	pkgdesc = A CalDAV and CardDAV adapter for EteSync
 	pkgver = 0.32.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/etesync/etesync-dav/
 	arch = any
 	license = GPL
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-setuptools
+	depends = python-setuptools
 	depends = python-appdirs
 	depends = python-etesync
 	depends = python-etebase

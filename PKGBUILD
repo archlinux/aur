@@ -3,12 +3,14 @@
 
 pkgname=etesync-dav
 pkgver=0.32.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A CalDAV and CardDAV adapter for EteSync"
 arch=('any')
 url="https://github.com/etesync/etesync-dav/"
 license=('GPL')
-depends=('python-appdirs'
+depends=(
+         'python-setuptools'
+         'python-appdirs'
          'python-etesync'
          'python-etebase'
          'radicale>=3.0.0'
@@ -16,7 +18,7 @@ depends=('python-appdirs'
          'python-flask-wtf'
 )
 replaces=('python-radicale-storage-etesync')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "add-missing-comma-in-setup.py.patch")
 sha256sums=('ba79f3cac8c1b73258bf18bf766530756783248572d4dce805e6cb4a17164c7f'
