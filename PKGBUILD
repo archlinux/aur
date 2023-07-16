@@ -6,6 +6,7 @@ arch=('i686' 'x86_64')
 url="http://mpd.wikia.com/wiki/ClientLib:libmpd"
 license=('GPL')
 depends=('glib2')
+makedepends=('git')
 conflicts=('libmpd')
 
 source=($pkgname::git+https://github.com/DaveDavenport/libmpd.git)
