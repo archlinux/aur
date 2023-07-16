@@ -1,10 +1,12 @@
-# Maintainer: tuxayo < victor (replace by @) tuxayo DOT net >
+# Maintainer: Daniel Poellmann <aur@<lastname><firstname>.de>
+# Contributor: tuxayo < victor (replace by @) tuxayo DOT net >
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: fnord0 < fnord0 AT riseup DOT net >
 # Contributor: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: tuxayo < victor (replace by @) tuxayo DOT net >
+
 pkgname=webgoat
-pkgver=7.1
+pkgver=2023.4
 pkgrel=1
 pkgdesc='Deliberately insecure J2EE web application designed to teach web application security concepts'
 arch=('i686' 'x86_64')
@@ -14,34 +16,24 @@ depends=('java-runtime')
 makedepends=('maven' 'git')
 optdepends=('webscarab: proxy for analyzing applications that communicate using the HTTP and HTTPS protocols, used to help solve most WebGoat lessons'
             'paros: MitM HTTP/HTTPS proxy, spider, XSS and injection scanner + more, used to help solve WebGoat lessons')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/WebGoat/WebGoat/archive/${pkgver}.tar.gz"
-        "webgoat.sh"
-        "git+https://github.com/WebGoat/WebGoat-Lessons.git")
-sha256sums=('bbf5c3abbc43a7e7f5bcc01af5ab5969a9a063c0f630c82606398e5ec71a8d9e'
-            '3615a09c64eb07709bede9b22782bedeffe7c7097cde1c6bcc2a07adcd28712c'
-            'SKIP')
-install="$pkgname.install"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/WebGoat/WebGoat/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('e3d86067a59b4afe57bfea613a4984c2664a4365c26326afc35166d2db4aff8b')
 
 prepare() {
-  cd "$srcdir/WebGoat-Lessons"
-  git checkout master
-
-  # Needed to fix issues with maven
-  echo "<settings><localRepository>$srcdir</localRepository></settings>" > "$srcdir/maven-settings.xml"
+    echo ""
 }
 
 build() {
-  cd "$srcdir/WebGoat-Lessons"
-  mvn package
-  cp target/plugins/*.jar "$srcdir/WebGoat-$pkgver/webgoat-container/src/main/webapp/plugin_lessons/"
-
   cd "$srcdir/WebGoat-$pkgver"
+  # mvn clean
   mvn package
+
+  echo "#!/bin/bash" > webgoat
+  echo "java -Dfile.encoding=UTF-8 -Dwebgoat.port=8080 -Dwebwolf.port=9090 -jar /opt/webgoat/webgoat-$pkgver.jar" >> webgoat
 }
 
 package() {
   cd "$srcdir/WebGoat-$pkgver"
-  install -Dm755 ../webgoat.sh "$pkgdir/usr/bin/webgoat"
-  install -d "$pkgdir/opt/$pkgname"
-  install -Dm644 "webgoat-container/target/webgoat-container-$pkgver-war-exec.jar" "$pkgdir/opt/$pkgname/webgoat.jar"
+  install -Dm755 "target/webgoat-$pkgver.jar" "$pkgdir/opt/webgoat/webgoat-$pkgver.jar"
+  install -Dm755 webgoat "$pkgdir/usr/bin/webgoat"
 }
