@@ -83,7 +83,7 @@ makedepends=(
 optdepends=(
   'claws-mail-theme-basicsvg: BasicSVG icon theme for Claws Mail.'
   'claws-mail-tango-theme: Tango icon theme for Claws Mail.'
-  "claws-mail-plugin-reloader: Reload blugins from the 'tools' menu (for development)."
+  "claws-mail-plugin-reloader: Reload plugins from the 'tools' menu (for development)."
   'bash:              for some extra tools.'
   'at-spi2-core:      for many plugins.'
   'bogofilter:        for bogofilter plugin.'
