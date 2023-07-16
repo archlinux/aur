@@ -1,17 +1,17 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=jls
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="A modern ls with java."
 arch=('any')
 url="https://github.com/anas-elgarhy/jls"
 license=('GPL3')
 groups=('java-utils')
-depends=('java-runtime>=17' 'nerd-fonts-hack')
+depends=('java-runtime>=17')
 makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=('ttf-hack-nerd-font: For icons support')
 options=()
 install=
 changelog=
