@@ -1,8 +1,9 @@
-# Maintainer: Nicola Squartini <tensor5@gmail.com>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=min
-pkgver=1.28.0
-_electronver=22
+pkgver=1.28.1
+_electronver=24
 pkgrel=1
 pkgdesc='A fast, minimal browser that protects your privacy'
 arch=('x86_64')
@@ -15,7 +16,7 @@ source=(https://github.com/minbrowser/min/archive/v$pkgver/$pkgname-$pkgver.tar.
         'min.desktop'
         'min.js'
         'icon.patch')
-sha256sums=('86d2a6b811a7524a42aec69569571b315c13472ff0a83e1c1db2de12385d2d39'
+sha256sums=('e357d0e15f1688b52935e253d0fb0d915a49cf9045de0edf589125a0748fa8aa'
             'a069caac07638ca2bafde5f96a4db646ec7484741ff9b44788c2e159b5142650'
             '58925a72ab69500d4b2b2b9fe216aca44276423dfcb337063516fb8024a01b0a'
             '3cff8e5613907c3776115ccdb14f37a4899c96874f662281a630912d893c1d87')
