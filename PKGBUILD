@@ -4,13 +4,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kconfigwidgets-git
-pkgver=5.240.0_r864.ge908c257
+pkgver=5.240.0_r933.g630d103e
 pkgrel=1
 pkgdesc='Widgets for KConfig'
 arch=($CARCH)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(kauth-git kcodecs-git kconfig-git kguiaddons-git ki18n-git kwidgetsaddons-git)
+depends=(kauth-git kcodecs-git kconfig-git kguiaddons-git ki18n-git kwidgetsaddons-git kcolorscheme-git)
 makedepends=(git extra-cmake-modules-git kdoctools-git clang python-pyqt6 doxygen qt6-tools sip4)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
