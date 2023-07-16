@@ -2,8 +2,8 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kipi-plugins
-pkgver=23.04.1
-pkgrel=2
+pkgver=23.04.3
+pkgrel=1
 pkgdesc='A collection of plugins extending the KDE graphics and image applications'
 arch=($CARCH)
 license=(GPL)
@@ -14,7 +14,7 @@ optdepends=('libmediawiki: MediaWiki Export plugin'
 makedepends=(extra-cmake-modules qt5-xmlpatterns libmediawiki)
 groups=(kde-applications kde-graphics)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KDE/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('22aad9610595335f5cb146f3fec495f1641819ca8d89dc41d313862dde9a5752')
+sha256sums=('942a86f18dd05b0354a456245432e5f96e46af3f0eca45b211e3bee04ae47cb7')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
