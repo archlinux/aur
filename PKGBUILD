@@ -18,8 +18,8 @@ prepare() {
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
-  rm -r "${pkgdir}"/etc/init.d
-  rm -r "${pkgdir}"/etc/conf.d
-  install -Dm 644 ../../tinydm.sysusers "${pkgdir}"/usr/lib/sysusers.d/tinydm.conf
+  make DESTDIR=${pkgdir}/ install
+  rm -r ${pkgdir}/etc/init.d
+  rm -r ${pkgdir}/etc/conf.d
+  install -Dm 644 ../../tinydm.sysusers ${pkgdir}/usr/lib/sysusers.d/tinydm.conf
 }
