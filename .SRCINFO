@@ -1,20 +1,17 @@
 pkgbase = gohugo-extended-bin
-	pkgdesc = Hugo - The world's fastest framework for building websites (Extended)
+	pkgdesc = Hugo - The world's fastest framework for building websites (Extended Edition)
 	pkgver = 0.115.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gohugo.io/
 	arch = x86_64
 	arch = aarch64
-	license = Apache 2.0
+	license = Apache
+	depends = glibc
 	provides = hugo
 	conflicts = hugo
-	conflicts = hugo-git
-	conflicts = hugo-extended-cli
-	conflicts = hugo-extended-bin
-	conflicts = gohugo-bin
 	source_x86_64 = https://github.com/gohugoio/hugo/releases/download/v0.115.3/hugo_extended_0.115.3_linux-amd64.tar.gz
-	md5sums_x86_64 = SKIP
+	sha256sums_x86_64 = 1b7e271b57e94f0ed064fad08113fedc74915ba53b2dc1cc70a405788ef7a644
 	source_aarch64 = https://github.com/gohugoio/hugo/releases/download/v0.115.3/hugo_extended_0.115.3_linux-arm64.tar.gz
-	md5sums_aarch64 = SKIP
+	sha256sums_aarch64 = d8cdcb21364c6de98fb6c80db9e873452f711be4e13e6f9790a711f11b63c455
 
 pkgname = gohugo-extended-bin
