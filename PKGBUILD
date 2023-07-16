@@ -3,7 +3,7 @@
 
 pkgname=quill
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Asynchronous Low Latency C++ Logging Library"
 arch=("x86_64")
 url="https://github.com/odygrd/quill"
@@ -19,7 +19,7 @@ build() {
     -D QUILL_PKGCONFIG_DIR:PATH="/usr/lib/pkgconfig/" \
     -D BUILD_SHARED_LIBS:BOOL="ON" \
     -D CMAKE_BUILD_TYPE:STRING="Release" \
-    -D CMAKE_CXX_FLAGS_RELEASE:STRING="-O2 -DNDEBUG" \
+    -D CMAKE_CXX_FLAGS_RELEASE:STRING="-DNDEBUG" \
     -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
     -Wno-dev
 

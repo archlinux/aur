@@ -1,7 +1,7 @@
 pkgbase = quill
 	pkgdesc = Asynchronous Low Latency C++ Logging Library
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/odygrd/quill
 	arch = x86_64
 	license = MIT
