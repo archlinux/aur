@@ -1,17 +1,17 @@
 pkgbase = r-genenet
 	pkgdesc = Modeling and Inferring Gene Networks
 	pkgver = 1.2.16
-	pkgrel = 4
+	pkgrel = 7
 	url = https://cran.r-project.org/package=GeneNet
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL3
 	depends = r-corpcor
 	depends = r-fdrtool
 	depends = r-longitudinal
 	optdepends = r-graph
 	optdepends = r-rgraphviz
 	source = https://cran.r-project.org/src/contrib/GeneNet_1.2.16.tar.gz
+	md5sums = 8547162999d1f2af1cf03389f2b27a57
 	sha256sums = c1e98073ccdaa18f4952630bfe4fc0617106eeaf7ed94d347cb2773bd48333e4
 
 pkgname = r-genenet
