@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termimage-git
-pkgver=1.2.0.r0.g92ebfcf30
+pkgver=1.2.1.r0.g6156416a6
 pkgrel=1
 pkgdesc="Display images in your terminal (git)"
 arch=('x86_64')
