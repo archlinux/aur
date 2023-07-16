@@ -8,6 +8,7 @@ url='http://gmpclient.org/home'
 depends=('libunique' 'libmpd-git' 'libsoup' 'sqlite' 'hicolor-icon-theme' 'xdg-utils' 'libnotify' 'glyr' 'gtk3')
 makedepends=('gob2' 'intltool' 'vala' 'git')
 conflicts=('gmpc')
+provides=('gmpc')
 install='gmpc.install'
 source=($pkgname::git+https://github.com/DaveDavenport/gmpc.git)
 md5sums=(SKIP)

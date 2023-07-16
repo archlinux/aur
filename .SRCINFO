@@ -19,6 +19,7 @@ pkgbase = gmpc-git
 	depends = libnotify
 	depends = glyr
 	depends = gtk3
+	provides = gmpc
 	conflicts = gmpc
 	source = gmpc-git::git+https://github.com/DaveDavenport/gmpc.git
 	md5sums = SKIP
