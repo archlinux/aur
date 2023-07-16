@@ -17,7 +17,7 @@ _fragment="${FRAGMENT:-#branch=main}"
 [[ -v CUDA_ARCH ]] && _CMAKE_FLAGS+=(-DCYCLES_CUDA_BINARIES_ARCH="${CUDA_ARCH}")
 
 pkgname=blender-git
-pkgver=3.6.r123909.g809a5aa4186
+pkgver=4.0.r126067.gcaf0024463e
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -41,6 +41,7 @@ optdepends=('cuda: CUDA support in Cycles'
             'makepkg-cg: Control resources during compilation')
 makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm' 'clang' 'subversion')
 makedepends+=('wayland-protocols')
+makedepends+=('cython')
 provides=('blender')
 conflicts=('blender')
 license=('GPL')
@@ -191,7 +192,7 @@ EOF
 package() {
   _suffix=${pkgver%%.r*}
   cd "$srcdir/build"
-  make DESTDIR="$pkgdir" install
+  BLENDER_SYSTEM_RESOURCES="${pkgdir}/usr/share/blender/${_suffix}" make DESTDIR="$pkgdir" install
 
   if [[ -e "$pkgdir/usr/share/blender/${_suffix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
