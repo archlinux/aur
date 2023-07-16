@@ -20,7 +20,7 @@ source=(https://dune-project.org/download/${_tar}{,.asc}
   gcc13-compatibility.patch::https://gitlab.dune-project.org/core/${pkgname}/-/commit/3df3cb68b6b2c1b28d29c0353e42a63ab54768d1.patch)
 sha512sums=('5b227b3346b7eb3db3887483525a3ce550eddfa13528c30b213a7cc811dead5844bf0032133d2167bd6f341be8b13c014cc208724e67cac074432af28cd39fb1'
   'SKIP'
-  '047d6d7a8ba673d0f5ae22d2afc779e61f64727f9bd4e6a510515cb6e50572c3523b5aac0355b4ed867a684b8ca62e51d46947d637525e2c93e8b7d1ab3b60d0')
+  '64e7e170064c970a17aca4bab424248cca4c706772ef004151826f763d4b1c27ecb5752a2d317bcf80adaf35d7b69a4ef993b1b0f3e6697f77f4d0ab1658ff8a')
 validpgpkeys=('E5B47782DE09813BCC3518E159DA94F1FC8FD313') # Andreas Dedner <a.s.dedner@warwick.ac.uk>
 
 prepare() {
