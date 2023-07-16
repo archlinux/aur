@@ -1,0 +1,24 @@
+pkgbase = traxtor
+	pkgdesc = Setup an onion routing proxy
+	pkgver = 4.1.1
+	pkgrel = 00
+	url = https://pypi.org/project/traxtor/
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	depends = python
+	depends = python-fire
+	depends = python-psutil
+	depends = python-gobject
+	depends = python-pysocks
+	depends = python-requests
+	depends = python-stem
+	noextract = traxtor-4.1.1-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/35/dd/a8dcbf50ad2cc7be70612580f8de97299943880ff4323d06360282027a8f/traxtor-4.1.1-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 9e8b27731bfef918a65053f92ccc4f3c
+	md5sums = 1ebbd3e34237af26da5dc08a4e440464
+
+pkgname = traxtor
