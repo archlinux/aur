@@ -1,7 +1,7 @@
 pkgname=gsender-bin
 _pkgname=gsender
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Connect to and control Grbl-based CNCs"
 arch=('x86_64')
 url="https://github.com/Sienci-Labs/${_pkgname}"
@@ -13,7 +13,7 @@ source=("https://github.com/Sienci-Labs/${_pkgname}/releases/download/v${pkgver}
 sha256sums=('2b7bd584cb9aded1650f861befb103a8d5b1b497477be7381cc96f25db8bbbf8'
             'fb4594571c8142643b5a121b585b8a218e450ee0c13446802480a5586106cec0')
 conflicts=('gsender')
-
+provides=('gsender')
 prepare() {
   [ -d data ] && rm -rf data
   mkdir data
