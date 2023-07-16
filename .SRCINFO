@@ -1,7 +1,7 @@
 pkgbase = libkipi
 	pkgdesc = An interface to use kipi-plugins from a KDE application
-	pkgver = 23.04.1
-	pkgrel = 2
+	pkgver = 23.04.3
+	pkgrel = 1
 	url = https://www.kde.org/
 	arch = x86_64
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = libkipi
 	depends = kxmlgui
 	depends = kservice
 	depends = hicolor-icon-theme
-	source = libkipi-23.04.1.tar.gz::https://github.com/KDE/libkipi/archive/refs/tags/v23.04.1.tar.gz
-	sha256sums = 2c00e6a9ab5489ac44157a054337bb6fe7152d38ca6010a3ee544bae89b0aca7
+	source = libkipi-23.04.3.tar.gz::https://github.com/KDE/libkipi/archive/refs/tags/v23.04.3.tar.gz
+	sha256sums = 64f4cfacdc6c63814e1f30842aa5cd993979eeabd9d21ced94bfbf8f2507651a
 
 pkgname = libkipi
