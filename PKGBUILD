@@ -13,9 +13,8 @@
 _bldtype=Release
 #_mozc_commit=2edd09333c097a7dec05798c1b0b9310ee68b18f
 #_mozc_commit=2edd0933
-_mozc_commit=dd27342a26f9453d00624a3b6abdc28a004947f3
-
-_zipcode_rel=202110
+#_mozc_commit=dd27342a26f9453d00624a3b6abdc28a004947f3
+_mozc_commit=fdf95342dd05a2c50aee6e9e73c714abc2897a2c
 
 # Ut Dictionary
 _utdicdate=20230115
@@ -32,17 +31,18 @@ _sudachidict_date=20230110
 
 pkgbase=mozc-with-jp-dict
 pkgname=("$pkgbase-common" "ibus-$pkgbase" "fcitx5-$pkgbase" "emacs-$pkgbase")
-pkgver=2.29.5135.102.20230115
-pkgrel=2
+pkgver=2.29.5160.102
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/fcitx/mozc"
 license=('custom')
 makedepends=('bazel' 'git' 'python' 'python-six' 'pkg-config' 'curl' 'gtk2' 'mesa' 'subversion' 'clang' 'emacs' 'ibus' 'ruby' 'ruby-parallel')
 source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
-        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/x-ken-all-${_zipcode_rel}.zip"
-        "https://osdn.net/projects/ponsfoot-aur/storage/mozc/jigyosyo-${_zipcode_rel}.zip"
+        "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip"
+        "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip"
         git+https://github.com/phoepsilonix/mozcdict-ext.git
-        "https://osdn.net/projects/naist-jdic/downloads/53500/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
+        #"https://osdn.net/projects/naist-jdic/downloads/53500/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
+        "https://github.com/phoepsilonix/mecab-naist-jdic/raw/main/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/core_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/notcore_lex.zip"
         )
@@ -54,8 +54,8 @@ for dict in "${_dict[@]}"; do
 done
 
 sha512sums=('SKIP'
-            'dec6479b42ddc1355cd882d17824cd874d8f103ad7767bac3f490f04551059d65b2806fa9e3f39a50ced2ecfdd37b75c9ed4536d9ad3bcef9e8c5ae1ec10e302'
-            '606f45d48a9dad0e80a566cab0001910de3c6b2f634ec52c6ef6f44745b55ae8e181b3e3cdf90525a08be1f180eb35900672c90c6ab4f43679a178e863378bbc'
+            'da58eb09ffb56eb463b584b51f65f3569336c5ba4a43f1c2e2014b9a0404637c74e2ffb54efad641a912617c1021cc2541b3fe8abc3dd8d94affae6355960363'
+            'f81c2a1d9aa6f3fff139851a2d10d2dca1a4df238c724843e8a89a231e68e5d26033f0617527f4d48b4c12b886d9fbd30644750c71a2f6322ec4c0e54d9dfa4e'
             'SKIP'
             '03d04505d3d8d097d1389af987e87aca43d56ef36b0def9eb85e19ee15ffe3598d3acb1c78c6dde3b31519419acb87c595aaad594dd116b98ac5cabb82a2e61c'
             '46de5c238cdfe39e28d29cff317bdab1ad26a1f6999141efbcc443cb8269d714cbebf8ef9582d53b2ee722c2511d9d0735a67bdce345ad5a15d63ef42d2f5745'
@@ -63,14 +63,14 @@ sha512sums=('SKIP'
             '30019a9ce73456046f67edd6fe8f4661bd9a8e9ca201f3bdf22d2fa70dad9544bd595a8820fbed402a0709809d02cabbdea9dc79ee1f5bf30f8ef722ba4a2c17'
             'd0cc0980ca97249845797d11c3c25e2cda54e70b717e36fd8549abf314b0ac2ab08d884bcc48edcc89e03b4b7916a413ebb383cbbf1447f5c0572541ebbc8ecf'
             '9c5fee9f773c5f984068e91e1f81c5a8bba1fa83ceaf075fdb3b70026de36f536ead6bf309c5214b54bc4ab99b111880fdcc46b876ebf266c6e734823c1434cb'
-            '4ec74b67032f4c2301a543bdfd790c3bb82a04a91b3d16b3ba0ccc24f64363bb728a97ffb7a8d8e7cf13078b6297d2814d94c9ea4017074b94c708242645ee76'
-            '0bc58ae39b2c2b60721b3d90414713f279d81ff728b1b3615d970067c7e69538810d658a86030f9c7d5003ca5ddcf17bfa787293ce1a6f7f82d8413945a7a984'
+            'f2ea837c5dfb97bbb4dc5032e4ea2c87084f0e7099f9d0b4068c9b91ff23b1588025fc315c9421ecb48c7dd37a711abe82326f2ffc7733ec9a9a7cdd9264273c'
+            '787fe4f099b3a192c45f6a6b0287a0542927dcfccff03fe10b5fd132a96c3dcd4cba5d1f43c8730fc1f907f616a897266ec6576608b535494e424c262f3ccede'
             '0afd153746727edbba65523cad450928fb863185679c7eb241c4c2928006c196a43235245aee7e1e1c2294be71e6035e47585db1270773da894947ac19a4c0c6')
 
 pkgver() {
   cd "${srcdir}/mozc" || exit
   source <(grep = src/data/version/mozc_version_template.bzl| tr -d ' ')
-  printf "%s.%s.%s.%s.%s" "$MAJOR" "$MINOR" "$BUILD_OSS" "$((REVISION+2))" "$_utdicdate"
+  printf "%s.%s.%s.%s.%s" "$MAJOR" "$MINOR" "$BUILD_OSS" "$((REVISION+2))"
 }
 
 prepare() {
@@ -113,7 +113,7 @@ prepare() {
 build() {
   cd "$srcdir/mozc/src" || exit
   echo 'Generating zip code seed...'
-  PYTHONPATH="$PWD:$PYTHONPATH" python dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/x-ken-all.csv" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
+  PYTHONPATH="$PWD:$PYTHONPATH" python dictionary/gen_zip_code_seed.py --zip_code="${srcdir}/KEN_ALL.CSV" --jigyosyo="${srcdir}/JIGYOSYO.CSV" >> data/dictionary_oss/dictionary09.txt
   echo 'Done.'
 
   # UT Dictionary steps, rewrite of `sh make.sh`
