@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-exec /usr/bin/electron22 /usr/lib/qqmusic/app.asar "$@"
+# DO NOT EDIT, it's updated in PKGBUILD
+exec /usr/bin/__ELECTRON__ /usr/lib/qqmusic/app.asar "$@"
