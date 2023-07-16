@@ -1,0 +1,19 @@
+pkgbase = gohugo-bin
+	pkgdesc = Hugo
+	pkgver = 0.115.3
+	pkgrel = 1
+	url = https://gohugo.io/
+	arch = x86_64
+	arch = aarch64
+	license = Apache 2.0
+	provides = hugo
+	conflicts = hugo
+	conflicts = hugo-git
+	conflicts = hugo-extended-cli
+	conflicts = gohugo-extended-bin
+	source_x86_64 = https://github.com/gohugoio/hugo/releases/download/v0.115.3/hugo_0.115.3_linux-amd64.tar.gz
+	md5sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/gohugoio/hugo/releases/download/v0.115.3/hugo_0.115.3_linux-arm64.tar.gz
+	md5sums_aarch64 = SKIP
+
+pkgname = gohugo-bin
