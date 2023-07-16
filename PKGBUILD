@@ -6,15 +6,16 @@
 
 #Maintainer: blackmoon3 <https://github.com/blacksky3>
 #Credits: Laurent Carlier <lordheavym@gmail.com>
+#Credits: circle <az6980522@gmail.com>
 
 pkgname=libclc12-minimal
 pkgdesc='Library requirements of the OpenCL C programming language'
 url='https://libclc.llvm.org/'
-pkgver=12.0.0
+pkgver=12.0.1
 pkgrel=1
 arch=(x86_64)
 license=(MIT)
-makedepends=(llvm12-minimal cmake ninja python git)
+makedepends=(clang12-minimal llvm12-minimal cmake ninja python git spirv-llvm-translator12-minimal gcc12 gcc12-fortran gcc12-libs)
 source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz)
 
 # Both ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.
@@ -22,11 +23,16 @@ source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}
 # A reasonable value for them to avoid these issues appears to be 75% of available cores.
 # NINJAFLAGS and LITFLAGS are env vars that can be used to achieve this. They should be set on command line or in files read by your shell on login (like .bashrc ) .
 # example for systems with 24 cores
-# NINJAFLAGS="-j 20 -l 20"
+# NINJAFLAGS="-j 18 -l 18"
 # LITFLAGS="-j 18"
 # NOTE: It's your responbility to validate the value of NINJAFLAGS and LITFLAGS. If unsure, don't set it.
 
 build(){
+export CC=/usr/bin/gcc-12
+export CXX=/usr/bin/g++-12
+export CFLAGS+=" ${CPPFLAGS}"
+export CXXFLAGS+=" ${CPPFLAGS}"
+
   cd ${srcdir}/llvm-project-llvmorg-${pkgver}/libclc
 
   rm -rf build
@@ -46,4 +52,6 @@ package(){
   install -Dm644 ${srcdir}/llvm-project-llvmorg-${pkgver}/libclc/CREDITS.TXT "$pkgdir/usr/share/licenses/$pkgname/CREDITS"
 }
 
-sha256sums=('8e6c99e482bb16a450165176c2d881804976a2d770e0445af4375e78a1fbf19c')
+sha256sums=('66b64aa301244975a4aea489f402f205cde2f53dd722dad9e7b77a0459b4c8df')
+
+# vim:set ts=8 sts=2 sw=2 et:
