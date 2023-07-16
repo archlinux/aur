@@ -1,7 +1,7 @@
 # Maintainer: Wiktor Zykubek <wz-git at mailbox dot org>
 
 pkgname=openfm-qt
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Qt client for Polish internet radio Open FM.'
 arch=('any')
