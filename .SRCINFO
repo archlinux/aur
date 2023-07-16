@@ -1,6 +1,6 @@
 pkgbase = organicmaps-git
 	pkgdesc = A free offline maps app for travelers, tourists, hikers, and cyclists based on top of crowd-sourced OpenStreetMap data
-	pkgver = 2023.06.04_13
+	pkgver = 2023.07.13_10
 	pkgrel = 1
 	url = https://github.com/organicmaps/organicmaps
 	arch = x86_64
@@ -16,7 +16,9 @@ pkgbase = organicmaps-git
 	depends = clang
 	depends = ninja
 	depends = python3
-	optdepends = ccache
+	depends = qt6-svg
+	optdepends = ccache: faster compilation
+	optdepends = qt6-wayland: for Wayland users
 	conflicts = organicmaps-bin
 
 pkgname = organicmaps-git
