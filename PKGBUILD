@@ -11,9 +11,8 @@ depends=('czmq-git')
 makedepends=('autoconf' 'automake' 'gcc' 'git' 'libtool' 'make' 'pkg-config')
 source=(git+https://github.com/zeromq/zyre)
 sha256sums=('SKIP')
-provides=(zyre)
 conflicts=(zyre)
-epoch=1
+epoch=2
 provides=("zyre=$pkgver")
 
 pkgver() {
