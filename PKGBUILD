@@ -8,6 +8,7 @@ license=('GPL')
 depends=('glib2')
 makedepends=('git')
 conflicts=('libmpd')
+provides=('libmpd')
 
 source=($pkgname::git+https://github.com/DaveDavenport/libmpd.git)
 
