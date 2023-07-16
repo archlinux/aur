@@ -1,16 +1,25 @@
-# Maintainer:  Devorlon <root[at]devorlon[dot]xyz>
+# PKGBUILD
+# Maintainer: Devorlon
 
 pkgname=brightness
-pkgver=2.0
+pkgver=3.0
 pkgrel=1
 pkgdesc="Adjust monitor brightness using ddcutil"
-arch=('any')
-license=('GPL')
-depends=('ddcutil' 'parallel')
-source=('brightness')
+arch=('x86_64')
+url="https://gitlab.com/Devorlon/brightness"
+license=('AGPLv3')
+depends=('ddcutil')
+makedepends=('rust')
+
+source=("brightness::git+${url}.git")
 md5sums=('SKIP')
 
+build() {
+  cd brightness
+  cargo build --release --locked
+}
+
 package() {
-  # Install script to /usr/bin
-  install -Dm755 "$srcdir/brightness" "$pkgdir/usr/bin/brightness"
+  cd brightness
+  install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/brightness"
 }

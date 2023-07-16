@@ -1,12 +1,13 @@
 pkgbase = brightness
 	pkgdesc = Adjust monitor brightness using ddcutil
-	pkgver = 2.0
+	pkgver = 3.0
 	pkgrel = 1
-	arch = any
-	license = GPL
+	url = https://gitlab.com/Devorlon/brightness
+	arch = x86_64
+	license = AGPLv3
+	makedepends = rust
 	depends = ddcutil
-	depends = parallel
-	source = brightness
+	source = brightness::git+https://gitlab.com/Devorlon/brightness.git
 	md5sums = SKIP
 
 pkgname = brightness
