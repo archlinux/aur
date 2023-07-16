@@ -1,7 +1,7 @@
 # Maintainer: René 'Necoro' Neumann <arch@necoro.dev>
 pkgname=arch-log
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Quickly check commit log of Arch and AUR packages.'
 arch=('x86_64')
 url="https://github.com/Necoro/$pkgname"
@@ -9,9 +9,6 @@ license=('GPL')
 makedepends=('go>=1.20')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('8b2a8cf9bfb8c6883f03ef7557c7952d107e7f26ce9e4bd4b161dc89160a2323')
-
-# cf https://github.com/golang/go/issues/43505
-options=(!lto)
 
 prepare(){
   cd "$pkgname-$pkgver"
