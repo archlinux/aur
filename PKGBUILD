@@ -2,8 +2,8 @@
 
 _pkgname='itertree'
 pkgname=python-$_pkgname
-pkgver=0.8.2
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Python tree structure for data storage and iterations"
 arch=(any)
 url="https://github.com/BR1py/$_pkgname"
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a03f559df502799b5a301806a555e1b35c9bc398f906af55db84e49dd44db364')
+sha256sums=('d4110e130f72de0952058a584b3753cc3cb85f58eedaf72ba11bc9f9534d610e')
 
 build() {
   cd "$_pkgname-$pkgver"

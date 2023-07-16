@@ -1,7 +1,7 @@
 pkgbase = python-itertree
 	pkgdesc = Python tree structure for data storage and iterations
-	pkgver = 0.8.2
-	pkgrel = 2
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://github.com/BR1py/itertree
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-itertree
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = python-itertree-0.8.2.tar.gz::https://github.com/BR1py/itertree/archive/0.8.2.tar.gz
-	sha256sums = a03f559df502799b5a301806a555e1b35c9bc398f906af55db84e49dd44db364
+	source = python-itertree-1.0.5.tar.gz::https://github.com/BR1py/itertree/archive/1.0.5.tar.gz
+	sha256sums = d4110e130f72de0952058a584b3753cc3cb85f58eedaf72ba11bc9f9534d610e
 
 pkgname = python-itertree
