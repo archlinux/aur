@@ -1,6 +1,6 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
 
-_pkgname=box64
+_pkgname=box64-android
 pkgname=${_pkgname}-git
 pkgver=v0.2.2.r2.g706ebc39
 pkgrel=1
@@ -27,17 +27,17 @@ pkgver() {
 build() {
     cd ${_pkgname}
     if [[ $CARCH == "aarch64" ]]; then 
-        cmake -B build -S . \
+        cmake -B build -S . -DBAD_SIGNAL=ON \
               -DARM_DYNAREC=ON \
               -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr
     elif [[ $CARCH == "x86_64" ]]; then
-        cmake -B build -S . \
+        cmake -B build -S . -DBAD_SIGNAL=ON \
               -DLD80BITS=1 -DNOALIGN=1 \
               -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr
     elif [[ $CARCH == "riscv64" ]]; then
-        cmake -B build -S . \
+        cmake -B build -S . -DBAD_SIGNAL=ON \
               -DRV64=1 \
               -DCMAKE_BUILD_TYPE=RelWithDebInfo \
               -DCMAKE_INSTALL_PREFIX=/usr

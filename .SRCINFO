@@ -1,4 +1,4 @@
-pkgbase = box64-git
+pkgbase = box64-android-git
 	pkgdesc = Linux Userspace x86_64 Emulator with a twist
 	pkgver = v0.2.2.r2.g706ebc39
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = box64-git
 	sha256sums = SKIP
 	sha256sums = 7e94518dbd11121f150a51b64f4c0ec11f844a83f7b15205d28c1de63de699f2
 
-pkgname = box64-git
+pkgname = box64-android-git
