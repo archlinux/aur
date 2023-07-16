@@ -1,0 +1,19 @@
+pkgbase = linux-air-combat-appimage
+	pkgdesc = Free open source combat flight simulator. Appimage version
+	pkgver = 915
+	pkgrel = 1
+	url = https://sourceforge.net/projects/linuxaircombat
+	arch = x86_64
+	license = unknown
+	depends = fuse2
+	depends = freeglut
+	depends = sdl
+	depends = sdl_mixer
+	depends = glu
+	depends = mesa
+	conflicts = linux-air-combat
+	options = !strip
+	source = Lac915-x86_64.AppImage::https://sourceforge.net/projects/linuxaircombat/files/Choose%20Your%20Platform/Precompiled%20binaries%20%28no%20source%20code%29/Lac915-x86_64.AppImage/download
+	sha256sums = 467381ae51a305224f3138ce583194e442db80cf2b674347b3833af7af1e3c0a
+
+pkgname = linux-air-combat-appimage
