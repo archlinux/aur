@@ -5,12 +5,12 @@
 # Contributor: userwithuid < userwithuid at gmail dot com >
 
 _pkgname=rust
-_date=2023-04-20
-_rustc=1.69.0
+_date=2023-06-01
+_rustc=1.70.0
 
 pkgname=mingw-w64-rust
 _prefix=opt/rust
-pkgver=1.70.0
+pkgver=1.71.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
@@ -38,13 +38,13 @@ source=("https://static.rust-lang.org/dist/rustc-${pkgver}-src.tar.xz"{,.asc}
 noextract=("rust-std-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "rustc-${_rustc}-x86_64-unknown-linux-gnu.tar.xz"
            "cargo-${_rustc}-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('bb8e9c564566b2d3228d95de9063a9254182446a161353f1d843bfbaf5c34639'
+sha256sums=('5814699031aafdcc2e2f71fc9b389678cd7042350d1583da061463d8e88681c7'
             'SKIP'
-            '4c95739e6f0f1d4defd937f6d60360b566e051dfb2fa71879d0f9751392f3709'
+            '0c0129717da1e27ccf2c56da950d2fe56973f71beec9e80ae6904b282d2f0ee9'
             'SKIP'
-            '70e97ab5b9600328b977268fc92ca4aa53064e4e97468df35215d4396e509279'
+            '7d891d3e9bc4f1151545c83cbe3bc6af9ed234388c45ca2e19641262f48615e2'
             'SKIP'
-            '336eeabf231a7665c26c127a37b8aefffe28cb087c5c8d4ba0460419f5f8eff2'
+            '650e7a890a52869cd14e2305652bff775aec7fc2cf47fc62cf4a89ff07242333'
             'SKIP'
             '2661456d13366cd181de9e7ddfa797c7ef6be9fe9f3d0d766089870e45b8010c')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
@@ -84,8 +84,7 @@ package() {
   mv "${pkgdir}"/${_prefix}/share/doc/rust/{LICENSE-*,COPYRIGHT} "${pkgdir}/usr/share/licenses/${pkgname}/rust/"
 
   # remove unused files
-  rm -r "${pkgdir}/etc/"
-  rm -r "${pkgdir}/${_prefix}/share"
+  rm -r "${pkgdir}/${_prefix}/"{share,src}
   rm "${pkgdir}/${_prefix}/lib/rustlib/"{manifest-*,install.log,uninstall.sh,components,rust-installer-version}
 
   # link shared libraries
