@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter
-	pkgdesc = Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)
-	pkgver = 1.20
+	pkgdesc = raw image converter ART (forked from RawTherapee with ease of use in mind)
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art/wiki/Home
 	arch = i686
@@ -31,9 +31,7 @@ pkgbase = art-rawconverter
 	optdepends = art-rawconverter-imageio: add support for additional image formats
 	optdepends = lcms2-ff: lcms2 with fast-float plugin for improved export speed
 	conflicts = art-rawconverter-git
-	source = art-rawconverter_1.20::git+https://bitbucket.org/agriggio/art.git#tag=1.20
-	source = bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip
+	source = art-rawconverter_1.20.1::git+https://bitbucket.org/agriggio/art.git#tag=1.20.1
 	sha256sums = SKIP
-	sha256sums = 7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346
 
 pkgname = art-rawconverter
