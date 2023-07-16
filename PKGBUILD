@@ -18,10 +18,9 @@ install=
 changelog=
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=()
+sha256sums=('9ac11cc9475f790eb91615edca198162ad43eae2e313f0885a3f067df3afe7d8')
 validpgpkeys=()
 package() {
     install -Dm644 "./$pkgname.jar" "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
     install -Dm777 "./$pkgname.sh" "$pkgdir/bin/$pkgname"
 }
-sha256sums=('9ac11cc9475f790eb91615edca198162ad43eae2e313f0885a3f067df3afe7d8')
