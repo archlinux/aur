@@ -1,6 +1,6 @@
 pkgname=cppkafka-git
 _gitname=cppkafka
-pkgver=d3ef9ca
+pkgver=0.4.0.r12.g91ac543
 pkgrel=1
 pkgdesc="Modern C++ Apache Kafka client library (wrapper for librdkafka)"
 arch=('x86_64')
@@ -16,7 +16,6 @@ conflicts=("${pkgname%-git}")
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    git describe --always --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
     # Generate git tag based version. Count only proper (v)#.#* [#=number] tags.
     local _gitversion=$(git describe --long --tags --match '[v0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]')
 
