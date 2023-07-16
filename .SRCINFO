@@ -1,0 +1,17 @@
+pkgbase = flare-bin
+	pkgdesc = An unofficial Signal GTK client
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://gitlab.com/Schmiddiii/flare-bin
+	arch = x86_64
+	license = AGPL3
+	depends = libadwaita
+	depends = libsecret
+	depends = protobuf
+	optdepends = feedbackd: for vibrating notifications
+	source = https://gitlab.com/Schmiddiii/flare/-/archive/0.9.0/flare-0.9.0.tar.gz
+	source = https://gitlab.com/Schmiddiii/flare/-/package_files/84881746/download
+	sha256sums = eda736c6453c9ed4960d485e727f903ef57161555edd959ae6f030b74603accc
+	sha256sums = f27bf75aeedc1d88b2cc420a63cafa722141b424b37320b88bb92dc34c6274a0
+
+pkgname = flare-bin
