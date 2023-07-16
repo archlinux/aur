@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=dstp
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Run common networking tests against your site"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/ycd/dstp"
 license=('MIT')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ae7b71301ad755012e7e9d3996b341a8f25741509399ec9bb58cc27fa8e0e076')
+sha256sums=('64cdaf45206ce2d6e36a56314cc759073dedf9cfcc040800d75bdd896f49fe79')
 
 prepare(){
   cd "$pkgname-$pkgver"
