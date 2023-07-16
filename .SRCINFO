@@ -1,7 +1,7 @@
 pkgbase = libmpd-git
 	pkgdesc = Signal based wrapper around libmpdclient
 	pkgver = r427.8601a0e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mpd.wikia.com/wiki/ClientLib:libmpd
 	arch = i686
 	arch = x86_64
