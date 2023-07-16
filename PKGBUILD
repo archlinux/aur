@@ -6,7 +6,7 @@
 # Contributor: Marcel Huber <marcelhuberfoo at gmail dot com>
 
 pkgname=gerrit
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc='Web-based code review tool built on top of Git'
 arch=('any')
@@ -23,7 +23,7 @@ source=(
   'gerrit.service'
   'gerrit.sysusers'
 )
-sha256sums=('c226a5f8ae5e519489f9ab0504bac5a0940e2d62c7925e68b786f8088b20ed37'
+sha256sums=('80bbf99373e8b3f44cebe4214ab5a72ceebe80766031da8fe451eb62912a73a9'
             '35becf2754e3779c750b2889909349160c2b0584ec201f6cfb5cf2c42e6fc598'
             '21a61acae9f30c6918754f5e81b95b19e3d27c15a3f5f194bf9f468f08726ff8'
             'f69605bc325622bfc3e6e97ab076c253b7c3a3c415ffb4ac52b973041bf5b094'
