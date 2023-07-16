@@ -6,9 +6,9 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Set to force building with a particular commit ~ takes precedence over _bcachefs_branch
-_bcachefs_commit=
+_bcachefs_commit=be3ef67f38e1e6a6bdbe2253b6bf4c19be05dcb9 # prandom: Remove unused include
 
-# Set to force building with a particular commit
+# Set to force building with a particular branch
 _bcachefs_branch=
 
 # Tweak kernel options prior to a build via nconfig
@@ -80,7 +80,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=6.4.3.arch1.r1189951.f37513acffac
+pkgver=6.4.3.arch1.r1189903.be3ef67f38e1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=6.4.3.arch1
@@ -143,7 +143,7 @@ validpgpkeys=(
 )
 b2sums=('SKIP'
         'SKIP'
-        'dd460b6089400db5e9908b75611b1ef36ad366d987c14cb478aa81a82b364ac4a70094751fba90f6238f216a2a58861ea69921f4b8fb9e58c7163664f868346c')
+        '1886ac1f57ec860ce5ad00cd0ecf011de302879ca0ac597e5d7bd0a2a1da481c56e245393974d644ea5c9bc219152f3600a07dbf9bfa9b9b03259e4f4e8fea36')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -157,14 +157,6 @@ _make() {
 prepare() {
     cd "$srcdir/$_reponame"
 
-    msg2 "Setting version..."
-    echo "-$pkgrel" > localversion.10-pkgrel
-    echo "${pkgbase#linux}" > localversion.20-pkgname
-    pkgver > version
-    make defconfig
-    make -s kernelrelease
-    make mrproper
-
     msg2 "Fetch and merge stable tag from ${_repo_url_arch} ..."
     git remote add arch_stable "${_repo_url_arch}" || true
     git fetch arch_stable "v${_srcver_tag%.*}-${_srcver_tag##*.}"
@@ -175,10 +167,17 @@ prepare() {
     #git fetch upstream_stable $v{_srcver_tag//.arch*/}
     #git merge --no-edit --no-commit FETCH_HEAD
 
+    msg2 "Setting version..."
+    echo "-$pkgrel" > localversion.10-pkgrel
+    echo "${pkgbase#linux}" > localversion.20-pkgname
+    pkgver > version
+    make defconfig
+    make -s kernelrelease
+    make mrproper
+
     FullPatchesArray=(
         $_reponame_kernel_patch/$_kernel_patch_name
     )
-
     for MyPatch in "${FullPatchesArray[@]}"
     do
         msg2 "Applying patch $MyPatch..."
