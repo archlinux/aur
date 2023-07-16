@@ -1,0 +1,11 @@
+pkgbase = dmenu-wl-dmenu-dropin
+	pkgdesc = Makes symlinks to provide dmenu when using dmenu-wayland.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = none
+	depends = dmenu-wayland
+	provides = dmenu
+	conflicts = dmenu
+
+pkgname = dmenu-wl-dmenu-dropin
