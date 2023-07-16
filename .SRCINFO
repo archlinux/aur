@@ -1,0 +1,17 @@
+pkgbase = hqdfm-nativefier
+	pkgdesc = hqdfm desktop built with nativefier
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://dfm.elecfans.com/viewer/
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	makedepends = unzip
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	source = hqdfm-nativefier.desktop
+	sha256sums = f65783d73209fadc8894bddc44c76155ee6b0cfd8688ead6f88b56cb7294ea25
+
+pkgname = hqdfm-nativefier
