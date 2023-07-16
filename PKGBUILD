@@ -2,7 +2,7 @@
 
 _pkgbase=hhfc
 pkgname=${_pkgbase}-git
-pkgver=0.0.3.r2.g2e12076
+pkgver=0.2.1.r0.g8892467
 pkgrel=1
 pkgdesc="Hwmon Handheld Fan Controller (hhfc) is a user space driver for fans based on hwmon sysfs"
 arch=('any')
@@ -40,4 +40,5 @@ package() {
 
 	mkdir -p ${pkgdir}/usr/lib/systemd/system/
 	cp -v systemd/hhfc.service ${pkgdir}/usr/lib/systemd/system/hhfc.service
+	cp -v systemd/hhfc-resume.service ${pkgdir}/usr/lib/systemd/system/hhfc-resume.service
 }
