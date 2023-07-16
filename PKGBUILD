@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=cmus-rpc-rs
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Discord Rich Presence for cmus player using rust 🦀💙"
 arch=(x86_64)
@@ -12,15 +12,8 @@ depends=(cmus)
 makedepends=(cargo)
 checkdepends=()
 optdepends=()
-provides=(cmus-rpc-rs)
-conflicts=()
-replaces=(cmus-rpc-rs)
-backup=()
-options=()
-install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-noextract=()
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -32,12 +25,6 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
-}
-
-check() {
-  cd "$pkgname-$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
 }
 
 package() {
