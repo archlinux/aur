@@ -11,7 +11,7 @@
 pkgname=libclc11-minimal
 pkgdesc='Library requirements of the OpenCL C programming language'
 url='https://libclc.llvm.org/'
-pkgver=11.0.0
+pkgver=11.1.0
 pkgrel=1
 arch=(x86_64)
 license=(MIT)
@@ -52,6 +52,6 @@ package(){
   install -Dm644 ${srcdir}/llvm-project-llvmorg-${pkgver}/libclc/CREDITS.TXT "$pkgdir/usr/share/licenses/$pkgname/CREDITS"
 }
 
-sha256sums=('8ad4ddbafac4f2c8f2ea523c2c4196f940e8e16f9e635210537582a48622a5d5')
+sha256sums=('53a0719f3f4b0388013cfffd7b10c7d5682eece1929a9553c722348d1f866e79')
 
 # vim:set ts=8 sts=2 sw=2 et:
