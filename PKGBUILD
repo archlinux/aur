@@ -1,7 +1,7 @@
 # Contributor: Patrick Hanckmann <hanckmann at gmail.com>
 # Maintainer: Patrick Hanckmann <hanckmann at gmail.com>
 pkgname=zyre-git
-pkgver=20161108
+pkgver=2.0.1.r70.gf05a6d5
 pkgrel=1
 pkgdesc="Zyre - an open-source framework for proximity-based peer-to-peer applications (ZeroMQ)"
 arch=(i686 x86_64)
