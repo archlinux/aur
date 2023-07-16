@@ -42,6 +42,6 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  sudo install -Dm0755 -t "/usr/bin/" "target/release/$pkgname"
+  install -Dm0755 "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
 sha256sums=('c95ee1e06f0fca3383deeae16aaf2fcd98d2ee3593c4843e2c61e87600ca004f')
