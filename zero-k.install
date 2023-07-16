@@ -1,8 +1,3 @@
-post_install() {
-    echo "changing permissions for /opt/zero-k"
-    chmod 777 /opt/zero-k
-}
-
 post_remove() {
     echo "remove /opt/zero-k folder"
     rm -rf /opt/zero-k

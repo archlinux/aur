@@ -5,7 +5,7 @@ pkgdesc="Open source RTS game running on the Spring engine"
 arch=('x86_64')
 url="https://zerok.itch.io/zero-k"
 license=('GPL2')
-depends=('mono' 'openal' 'libcurl-compat')
+depends=('mono')
 install=zero-k.install
 source=("https://zero-k.info/lobby/Zero-K.exe"
 	"Zero-K.desktop"
