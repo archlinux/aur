@@ -1,6 +1,6 @@
 pkgbase = jefferson-git
 	pkgdesc = JFFS2 filesystem extraction tool
-	pkgver = 0.3.r4.ge06a617
+	pkgver = 0.4.1.r1.g860053f
 	pkgrel = 1
 	url = https://github.com/sviehb/jefferson
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = jefferson-git
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python-cstruct
+	depends = python-lzo
 	provides = jefferson
 	conflicts = jefferson
 	source = git+https://github.com/sviehb/jefferson.git
