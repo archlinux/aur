@@ -1,0 +1,16 @@
+pkgbase = librewolf-extension-xdman8-browser-monitor-bin
+	pkgdesc = Download files with XDM v8+ (binary release)
+	pkgver = 3.4
+	pkgrel = 1
+	url = https://addons.mozilla.org/addon/xdm-browser-monitor-v8
+	arch = any
+	groups = librewolf-addons
+	license = GPL3
+	depends = librewolf
+	depends = xdman8
+	provides = librewolf-extension-xdman8-browser-monitor
+	noextract = xdm_browser_monitor_v8-3.4.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/4095144/xdm_browser_monitor_v8-3.4.xpi
+	sha256sums = fb703ac17dc239600389a86953fbf63df6d31280a7745147c11cba932d1657c9
+
+pkgname = librewolf-extension-xdman8-browser-monitor-bin
