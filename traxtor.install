@@ -1,0 +1,9 @@
+post_install() {
+	cp /usr/lib/python3.11/site-packages/tractor/tractor.gschema.xml /usr/share/glib-2.0/schemas/tractor.gschema.xml
+	glib-compile-schemas /usr/share/glib-2.0/schemas/
+}
+post_remove() {
+	rm /usr/share/glib-2.0/schemas/tractor.gschema.xml
+	glib-compile-schemas /usr/share/glib-2.0/schemas/
+}
+
