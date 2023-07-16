@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mission-center
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Monitor your CPU, Memory, Disk, Network and GPU usage"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('blueprint-compiler' 'cargo' 'meson')
 checkdepends=('appstream-glib')
 options=('!lto')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('f6d544c779c9243b7bfd49b5c718c9c3a4f63559f1cef31f64e8d14130f84524')
+sha256sums=('166ea75661a697bc79539b0cae6644d65a01a28632cc98f43917ed6782aa785e')
 
 prepare() {
   cd "$pkgname-v$pkgver"
@@ -32,5 +32,5 @@ check() {
 }
 
 package() {
-  meson install --no-rebuild -C build --destdir "$pkgdir"
+  meson install -C build --no-rebuild --destdir "$pkgdir"
 }
