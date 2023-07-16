@@ -1,4 +1,4 @@
-# Maintainer: zan <zan@420blaze.it>
+# Maintainer: zan <zan@nie.rs>
 # Contributor: Jacob Henner <code@ventricle.us>
 # Contributor: Eduardo Sánchez Muñoz
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
@@ -9,7 +9,7 @@
 # Based on community/clementine PKGBUILD
 
 pkgname=clementine-git
-pkgver=1.4.0rc1.r329.gf7bece3b8.0.gf7bece3b8
+pkgver=1.4.0rc1.r886.g6ff576863.0.g6ff576863
 pkgrel=1
 pkgdesc='A modern music player and library organizer'
 url='http://www.clementine-player.org/'
@@ -17,11 +17,13 @@ license=(GPL)
 arch=(x86_64)
 depends=(chromaprint glew gst-plugins-base-libs libmygpo-qt5 protobuf qt5-x11extras)
 makedepends=(boost cmake git)
-optdepends=('libcdio: for CD support'
-            'libgpod: for iPhone and iPod Touch support'
-            'liblastfm-qt5: for LastFM support'
-            'libmtp: for MTP support'
-            'crypto++: for Spotify plugin')
+optdepends=('fftw: moodbar support'
+            'libcdio: Audio CD support'
+            'libgpod: iPod and iPhone support'
+            'liblastfm-qt5: LastFM support'
+            'libmtp: MTP support'
+            'sparsehash: Box, Dropbox, Google Drive, Seafile, Skydrive support'
+            'qt5-tools: translations')
 conflicts=(clementine)
 provides=(clementine)
 _name=Clementine
@@ -35,7 +37,6 @@ pkgver() {
 
 build() {
   cmake -B build -S $_name \
-    -DENABLE_SPOTIFY_BLOB=off \
     -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }

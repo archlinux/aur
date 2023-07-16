@@ -1,6 +1,6 @@
 pkgbase = clementine-git
 	pkgdesc = A modern music player and library organizer
-	pkgver = 1.4.0rc1.r329.gf7bece3b8.0.gf7bece3b8
+	pkgver = 1.4.0rc1.r886.g6ff576863.0.g6ff576863
 	pkgrel = 1
 	url = http://www.clementine-player.org/
 	arch = x86_64
@@ -14,15 +14,16 @@ pkgbase = clementine-git
 	depends = libmygpo-qt5
 	depends = protobuf
 	depends = qt5-x11extras
-	optdepends = libcdio: for CD support
-	optdepends = libgpod: for iPhone and iPod Touch support
-	optdepends = liblastfm-qt5: for LastFM support
-	optdepends = libmtp: for MTP support
-	optdepends = crypto++: for Spotify plugin
+	optdepends = fftw: moodbar support
+	optdepends = libcdio: Audio CD support
+	optdepends = libgpod: iPod and iPhone support
+	optdepends = liblastfm-qt5: LastFM support
+	optdepends = libmtp: MTP support
+	optdepends = sparsehash: Box, Dropbox, Google Drive, Seafile, Skydrive support
+	optdepends = qt5-tools: translations
 	provides = clementine
 	conflicts = clementine
 	source = git+https://github.com/clementine-player/Clementine.git
 	sha256sums = SKIP
 
 pkgname = clementine-git
-
