@@ -1,7 +1,7 @@
 # Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.10.0pre0.r1694.g1512226bd1
+pkgver=2.10.0pre0.r1699.gc0f7d4d8c6
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=('i686' 'x86_64')
@@ -21,9 +21,10 @@ depends=('bc'
          'psmisc')
 makedepends=('intltool'
             'git'
-            'python3')
+            'python')
 provides=('linuxcnc')
 conflicts=('linuxcnc' 'linuxcnc-bin')
+options=('!strip')
 source=("${pkgname}::git+https://github.com/LinuxCNC/linuxcnc"
         'libtirpc.patch')
 sha256sums=('SKIP'
