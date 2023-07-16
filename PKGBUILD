@@ -18,7 +18,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://packages.graylog2.org/releases/$pkgname/$pkgname-${pkgver/_/-}.tgz"
 	graylog-tmpfiles.conf
 	graylog.service)
-sha256sums=('cc920332f4e5c6033bc813dcfe23522e909b342994ed650f67429ee20b932f4b'
+sha256sums=('c434f91cd25b5af470da8ce901fd940875bd94fe9c92ddc9b7a925accf09cee2'
             '4d3c0bb83c7a02a5a902670b060d045068f5201728194a4473b2c2ba99bbd43d'
             '42340980c59327d40354863da7431c4f92b45a19cea2cdccf2f2ae26e0adc38c')
 
