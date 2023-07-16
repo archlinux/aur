@@ -1,7 +1,7 @@
 pkgbase = sway-git-wlroots-git
 	pkgdesc = sway with wlroots statically linked
 	pkgver = r7094.ebeed7e3.r6170.a3489f2c.1655945523.135449811
-	pkgrel = 1
+	pkgrel = 2
 	url = https://swaywm.org
 	arch = x86_64
 	license = MIT

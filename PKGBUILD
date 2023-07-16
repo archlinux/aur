@@ -5,7 +5,7 @@
 # wlroots-git maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 
 pkgname=sway-git-wlroots-git
-pkgver=r7094.ebeed7e3.r6170.a3489f2c.1655945523.135449811
+pkgver=r7160.91079079.r6503.b18c7664.1684079450.661740254
 pkgrel=1
 license=("MIT" "custom:MIT")
 pkgdesc="sway with wlroots statically linked"
@@ -87,10 +87,47 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" meson install -C build
+	# Remove wlroots headers, static library, and pkgconfig file.
+	rm -rf "$pkgdir/usr/include" "$pkgdir/usr/lib"
 
 	install -Dm644 "sway/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.sway"
 	install -Dm644 "wlroots/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.wlroots"
 	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
 		install -Dm755 "sway/contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
 	done
+}
+
+patchdir=${XDG_CONFIG_HOME:-$HOME/.config}/makepkg-patches/$pkgname
+
+_pkgver_suffix=$(
+    shopt -s globstar
+    shopt -s nullglob
+    stat -c '%.Y' $patchdir $patchdir/**/*.patch | \
+        sort -n | tail -n 1 | tr -d '\n'
+)
+
+dup_fn() {
+    test -n "$(declare -f "$1")" || return
+    eval "${_/$1/$1.orig}"
+}
+
+dup_fn pkgver || pkgver.orig() { printf $pkgver; }
+pkgver() {
+    printf "$(pkgver.orig).$_pkgver_suffix"
+}
+
+dup_fn prepare || prepare.orig() { return 0; }
+prepare() {
+    (
+    shopt -s nullglob
+    for patch in $patchdir/*.patch; do
+        git apply -3 $patch
+    done
+    for repo in $patchdir/*/; do
+        for patch in $repo/*.patch; do
+            git -C $(basename $repo) apply -3 $patch
+        done
+    done
+    )
+    prepare.orig
 }
