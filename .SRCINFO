@@ -1,0 +1,104 @@
+pkgbase = claws-mail-protectedheaders-git
+	pkgdesc = A GTK based e-mail client. Latest git checkout, built against 'gtk3'. Patched to use charset supersets to decode titles and to display protected headers.
+	pkgver = 4.1.1+67.r13230.20230709.4c6844370
+	pkgrel = 1
+	epoch = 0
+	url = https://www.claws-mail.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python>=3
+	makedepends = spamassassin
+	makedepends = bogofilter
+	makedepends = dillo
+	makedepends = gumbo-parser
+	makedepends = libcanberra
+	makedepends = libgdata
+	makedepends = libical
+	makedepends = libnotify
+	makedepends = libytnef
+	makedepends = poppler-glib
+	makedepends = pygtk
+	makedepends = docbook-utils
+	makedepends = lynx
+	makedepends = texlive-core
+	makedepends = texlive-formatsextra
+	makedepends = webkit2gtk
+	depends = cairo
+	depends = compface
+	depends = dbus-glib
+	depends = desktop-file-utils
+	depends = enchant
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gnutls
+	depends = gpgme
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libice
+	depends = libetpan
+	depends = libsm
+	depends = libldap
+	depends = librsvg
+	depends = nettle
+	depends = pango
+	depends = startup-notification
+	optdepends = at-spi2-core: for many plugins.
+	optdepends = bash: for some extra tools.
+	optdepends = bogofilter: for bogofilter plugin.
+	optdepends = curl: for vcalendar, rssyl and spamreport plugins.
+	optdepends = dbus: for notification plugin.
+	optdepends = libx11: for notification plugin.
+	optdepends = dillo: for dillo html viewer plugin.
+	optdepends = expat: for rssyl plugin.
+	optdepends = fontconfig: for litehtml_viewer plugin.
+	optdepends = freetype2: for litehtml_viewer plugin.
+	optdepends = gcc-libs: for litehtml_viewer plugin.
+	optdepends = gumbo-parser: for litehtml_viewer plugin.
+	optdepends = ghostscript: for pdf viewer plugin.
+	optdepends = harfbuzz: for many plugins
+	optdepends = jpilot: for jpilot (palm pilot connection) plugin.
+	optdepends = libarchive: for archive plugin and various other plugins.
+	optdepends = libcanberra: for notification plugin.
+	optdepends = libgpg-error: for GPG and S-MIME plugins.
+	optdepends = libical: for vcalendar plugin.
+	optdepends = libnotify: for notification plugin.
+	optdepends = libytnef: for tnef_parse plugin.
+	optdepends = libxcrypt: for perl plugin.
+	optdepends = perl: needed for some tools and perl plugin.
+	optdepends = poppler-glib: for pdf viewer plugin.
+	optdepends = python2: needed for some tools and python plugin.
+	optdepends = python>=3: for some tools/ plugins.
+	optdepends = spamassassin: for spamassassin plugin.
+	optdepends = zlib: for many plugins.
+	optdepends = json-glib: for gdata plugin.
+	optdepends = libgdata: for gdata plugin.
+	optdepends = libgoa: for gdata plugin.
+	optdepends = libxml2: for gdata plugin.
+	optdepends = libsoup: for gdata and fancy html viewer plugins.
+	optdepends = webkit2gtk: for fancy webkit html viewer plugin
+	provides = claws=4.1.1+67.r13230.20230709.4c6844370
+	provides = claws-mail=4.1.1+67.r13230.20230709.4c6844370
+	provides = claws-mail-gtk3=4.1.1+67.r13230.20230709.4c6844370
+	provides = claws-mail-title-superset=4.1.1+67.r13230.20230709.4c6844370
+	provides = claws-mail-protectedheaders=4.1.1+67.r13230.20230709.4c6844370
+	provides = claws-mail-bash-completion
+	provides = claws-mail-extra-plugins=4.1.1+67.r13230.20230709.4c6844370
+	conflicts = claws
+	conflicts = claws-mail
+	conflicts = claws-mail-protectedheaders
+	conflicts = claws-mail-bash-completion
+	conflicts = claws-mail-extra-plugins
+	conflicts = sylpheed-claws
+	replaces = claws-mail-extra-plugins
+	replaces = sylpheed-claws
+	source = claws-mail::git://git.claws-mail.org/claws.git#branch=master
+	source = 0001_encoding.diff::https://aur.archlinux.org/cgit/aur.git/plain/0001_encoding.diff?h=claws-mail-title-superset
+	source = 0002_protectedheaders.patch::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331
+	sha256sums = SKIP
+	sha256sums = 79e2b664d039f5cc0cf642359923e3d100ffc4ab070fc54c02d5792b624e26f6
+	sha256sums = 383f4ea03102ed2c8f19365b9bf2b757969d1617fcfd0a8375126f388cc60301
+
+pkgname = claws-mail-protectedheaders-git

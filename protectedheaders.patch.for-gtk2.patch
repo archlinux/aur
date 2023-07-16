@@ -1,0 +1,8 @@
+--- 0002_protectedheaders.patch.orig	2023-07-08 15:26:01.204029666 +0200
++++ 0002_protectedheaders.patch.my	2023-07-08 15:30:14.017380373 +0200
+@@ -624 +624 @@
+-+static GdkRGBA header_bgcolors[3] = {
+++static GdkColor header_bgcolors[3] = {
+@@ -630 +630 @@
+- static GdkRGBA quote_colors[3] = {
++ static GdkColor quote_colors[3] = {
