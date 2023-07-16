@@ -13,6 +13,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ellsclytn/nofi/releases/dow
 sha512sums=('a48f0a66fc3273f40b6709cec23a5c104c05b62372cfe8bca558b03db5662725ef261506e569f571f7ff92e92ba635e78c9a47e827a93295840dfbdc04adb8b5')
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "nofi-$pkgver"
 	install -Dm755 nofi "$pkgdir/usr/bin/nofi"
 }
