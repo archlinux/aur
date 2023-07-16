@@ -2,8 +2,8 @@
 
 _pkgname=xdman8
 pkgname=$_pkgname-bin
-pkgver=8.0.26
-pkgrel=3
+pkgver=8.0.29
+pkgrel=1
 pkgdesc="Open source download accelerator and video downloader (binary release)"
 arch=('x86_64')
 url="https://github.com/subhra74/xdm"
@@ -12,7 +12,7 @@ depends=('ffmpeg' 'gtk3>=3.22.0')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-beta-git")
 source=("$url/releases/download/$pkgver/xdman_gtk-$pkgver-1.fc36.x86_64.rpm")
-sha256sums=('8e3d2df476646d9fd50d533ee7ec6cd7bb61e84ec9b648c588cd705b07c49678')
+sha256sums=('dbb47e7fbd03cc82aa4678886003d56e1d5222ecb4a52a83e0e6461fadc27ea3')
 
 package() {
   cp -r opt "$pkgdir"

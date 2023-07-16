@@ -1,7 +1,7 @@
 pkgbase = xdman8-bin
 	pkgdesc = Open source download accelerator and video downloader (binary release)
-	pkgver = 8.0.26
-	pkgrel = 3
+	pkgver = 8.0.29
+	pkgrel = 1
 	url = https://github.com/subhra74/xdm
 	arch = x86_64
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = xdman8-bin
 	provides = xdman8
 	conflicts = xdman8
 	conflicts = xdman8-beta-git
-	source = https://github.com/subhra74/xdm/releases/download/8.0.26/xdman_gtk-8.0.26-1.fc36.x86_64.rpm
-	sha256sums = 8e3d2df476646d9fd50d533ee7ec6cd7bb61e84ec9b648c588cd705b07c49678
+	source = https://github.com/subhra74/xdm/releases/download/8.0.29/xdman_gtk-8.0.29-1.fc36.x86_64.rpm
+	sha256sums = dbb47e7fbd03cc82aa4678886003d56e1d5222ecb4a52a83e0e6461fadc27ea3
 
 pkgname = xdman8-bin
