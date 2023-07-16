@@ -1,12 +1,12 @@
 pkgbase = cmus-rpc
 	pkgdesc = A Discord Rich Presence for cmus player using java 🎶☕
 	pkgver = 2.0.0
-	pkgrel = 0
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/anas-elgarhy/cmus-rpc
 	arch = any
 	license = MIT
-	depends = jdk17-openjdk
+	depends = java-runtime>=17
 	depends = cmus
 	source = https://github.com/anas-elgarhy/cmus-rpc/releases/download/2.0.0/cmus-rpc-2.0.0.tar.gz
 	sha256sums = 9ac11cc9475f790eb91615edca198162ad43eae2e313f0885a3f067df3afe7d8
