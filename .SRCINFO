@@ -1,6 +1,6 @@
 pkgbase = cef
 	pkgdesc = A simple framework for embedding Chromium-based browsers in other applications.
-	pkgver = 114.2.12
+	pkgver = 115.3.8
 	pkgrel = 1
 	url = https://bitbucket.org/chromiumembedded/cef
 	arch = x86_64
@@ -55,33 +55,28 @@ pkgbase = cef
 	optdepends = org.freedesktop.secrets: password storage backend
 	provides = cef-minimal
 	conflicts = cef-minimal
-	source = cef::git+https://bitbucket.org/chromiumembedded/cef#commit=7c09f21d73f006ea3b110007938fb6111353ffc1
-	source = chromium-mirror::git+https://github.com/chromium/chromium.git#tag=114.0.5735.198
+	source = cef::git+https://bitbucket.org/chromiumembedded/cef#commit=75c3bf048030d8541ff266d87f01303cdc453dfa
+	source = chromium-mirror::git+https://github.com/chromium/chromium.git#tag=115.0.5790.40
 	source = depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git
+	source = https://github.com/stha09/chromium-patches/releases/download/chromium-115-patchset-2/chromium-115-patchset-2.tar.xz
 	source = cef-cmake-options.patch
-	source = missing-base-includes.patch
 	source = missing-cef-includes.patch
 	source = missing-typename-interactive_test_internal.patch
 	source = remove-libxml-visibility.patch
 	source = system-fontconfig-cache-version.patch
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/fa08adba87b6222bdf9ba31aaa41579e634ec444/add-some-typename-s-that-are-required-in-C-17.patch
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/fa08adba87b6222bdf9ba31aaa41579e634ec444/REVERT-disable-autoupgrading-debug-info.patch
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/fa08adba87b6222bdf9ba31aaa41579e634ec444/download-bubble-typename.patch
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/fa08adba87b6222bdf9ba31aaa41579e634ec444/webauthn-variant.patch
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/fa08adba87b6222bdf9ba31aaa41579e634ec444/random-fixes-for-gcc13.patch
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/fa08adba87b6222bdf9ba31aaa41579e634ec444/disable-GlobalMediaControlsCastStartStop.patch
-	source = https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/fa08adba87b6222bdf9ba31aaa41579e634ec444/use-oauth2-client-switches-as-default.patch
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/c073b0c20935d7eb452732e0f3b2860a96c3db21/REVERT-disable-autoupgrading-debug-info.patch
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/c073b0c20935d7eb452732e0f3b2860a96c3db21/random-build-fixes.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 4f91bd10a8ae2aa7b040a8b27e01f38910ad33cbe179e39a1ae550c9c1523384
 	sha256sums = 73d2340473850f6a03ed29f18511af6d430b73b492f9db6ea4185eae923b17d5
+	sha256sums = 1474bf1a2d313541960fd79b9432d977d39458b699f14a4cd7d7dae608c7dbbc
+	sha256sums = defefd3073c66387ff4db10e54255097e27ee8f697d75106c5451d511840d5be
+	sha256sums = 160ef9ce6ee33a86056fd1b373d5c774eaeaa740bad2e692b1846c807d15f970
 	sha256sums = 22c92d9ff32b25e9d3439710bb455f843d2f55bfeeb4fe1a13d23a1ead5e2227
-	sha256sums = 621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11
+	sha256sums = 641f13b170044d25bd5586199f631322634d640bf72920e1487cab7334879679
 	sha256sums = 1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69
-	sha256sums = d464eed4be4e9bf6187b4c40a759c523b7befefa25ba34ad6401b2a07649ca2a
-	sha256sums = 590fabbb26270947cb477378b53a9dcd17855739076b4af9983e1e54dfcab6d7
-	sha256sums = ba4dd0a25a4fc3267ed19ccb39f28b28176ca3f97f53a4e9f5e9215280040ea0
-	sha256sums = 7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302
-	sha256sums = e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711
+	sha256sums = fd472e8c2a68b2d13ce6cab1db99818d7043e49cecf807bf0c5fc931f0c036a3
 
 pkgname = cef

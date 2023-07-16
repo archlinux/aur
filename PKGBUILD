@@ -1,7 +1,7 @@
 # Maintainer: Martin Rodriguez Reboredo <yakoyoku@gmail.com>
 
 pkgname=cef
-pkgver=114.2.12
+pkgver=115.3.8
 pkgrel=1
 pkgdesc='A simple framework for embedding Chromium-based browsers in other applications.'
 arch=(x86_64)
@@ -17,44 +17,36 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend')
 provides=(cef-minimal)
 conflicts=(cef-minimal)
-_chromium_ver=114.0.5735.198
-_cef_commit=7c09f21d73f006ea3b110007938fb6111353ffc1
+_chromium_ver=115.0.5790.40
+_cef_commit=75c3bf048030d8541ff266d87f01303cdc453dfa
+_gcc_patchset=2
 source=("cef::git+https://bitbucket.org/chromiumembedded/cef#commit=$_cef_commit"
         "chromium-mirror::git+https://github.com/chromium/chromium.git#tag=$_chromium_ver"
         'depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git'
+        "https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz"
         cef-cmake-options.patch
-        missing-base-includes.patch
         missing-cef-includes.patch
         missing-typename-interactive_test_internal.patch
         remove-libxml-visibility.patch
         system-fontconfig-cache-version.patch)
-_arch_revision=fa08adba87b6222bdf9ba31aaa41579e634ec444
-_patches=(add-some-typename-s-that-are-required-in-C-17.patch
-          REVERT-disable-autoupgrading-debug-info.patch
-          download-bubble-typename.patch
-          webauthn-variant.patch
-          random-fixes-for-gcc13.patch
-          disable-GlobalMediaControlsCastStartStop.patch
-          use-oauth2-client-switches-as-default.patch)
+_arch_revision=c073b0c20935d7eb452732e0f3b2860a96c3db21
+_patches=(REVERT-disable-autoupgrading-debug-info.patch
+          random-build-fixes.patch)
 for _patch in "${_patches[@]}"; do
   source+=("https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/$_arch_revision/$_patch")
 done
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
+            '4f91bd10a8ae2aa7b040a8b27e01f38910ad33cbe179e39a1ae550c9c1523384'
             '73d2340473850f6a03ed29f18511af6d430b73b492f9db6ea4185eae923b17d5'
             '1474bf1a2d313541960fd79b9432d977d39458b699f14a4cd7d7dae608c7dbbc'
             'defefd3073c66387ff4db10e54255097e27ee8f697d75106c5451d511840d5be'
             '160ef9ce6ee33a86056fd1b373d5c774eaeaa740bad2e692b1846c807d15f970'
             '22c92d9ff32b25e9d3439710bb455f843d2f55bfeeb4fe1a13d23a1ead5e2227'
             '641f13b170044d25bd5586199f631322634d640bf72920e1487cab7334879679'
-            '621ed210d75d0e846192c1571bb30db988721224a41572c27769c0288d361c11'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
-            'd464eed4be4e9bf6187b4c40a759c523b7befefa25ba34ad6401b2a07649ca2a'
-            '590fabbb26270947cb477378b53a9dcd17855739076b4af9983e1e54dfcab6d7'
-            'ba4dd0a25a4fc3267ed19ccb39f28b28176ca3f97f53a4e9f5e9215280040ea0'
-            '7f3b1b22d6a271431c1f9fc92b6eb49c6d80b8b3f868bdee07a6a1a16630a302'
-            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
+            'fd472e8c2a68b2d13ce6cab1db99818d7043e49cecf807bf0c5fc931f0c036a3')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -120,7 +112,6 @@ prepare() {
       --with_tags \
       --force \
       --delete_unversioned_trees \
-      --blobless \
       --nohooks
 
   echo "Running hooks..."
@@ -176,21 +167,21 @@ prepare() {
   patch -Np1 -i "${srcdir}/use-oauth2-client-switches-as-default.patch"
 
   # Upstream fixes
-  patch -Np1 -i "${srcdir}/add-some-typename-s-that-are-required-in-C-17.patch"
 
   # Revert addition of compiler flag that needs newer clang
   patch -Rp1 -i "${srcdir}/REVERT-disable-autoupgrading-debug-info.patch"
 
-  # Disable kGlobalMediaControlsCastStartStop eby default
-  # https://crbug.com/1314342
-  patch -Np1 -F3 -i "${srcdir}/disable-GlobalMediaControlsCastStartStop.patch"
-
   # Build fixes
-  patch -Np1 -i "${srcdir}/download-bubble-typename.patch"
-  patch -Np1 -i "${srcdir}/webauthn-variant.patch"
-  patch -Np1 -i "${srcdir}/random-fixes-for-gcc13.patch"
-  patch -Np1 -i "${srcdir}/missing-base-includes.patch"
-  patch -Np1 -i "${srcdir}/system-fontconfig-cache-version.patch"
+  patch -Np1 -i "${srcdir}/random-build-fixes.patch"
+  patch -Np1 -i "${srcdir}/missing-typename-interactive_test_internal.patch"
+
+  # Fixes for building with libstdc++ instead of libc++
+  patch -Np1 -i "${srcdir}/patches/chromium-114-ruy-include.patch"
+  patch -Np1 -i "${srcdir}/patches/chromium-114-tflite-include.patch"
+  patch -Np1 -i "${srcdir}/patches/chromium-114-vk_mem_alloc-include.patch"
+  patch -Np1 -i "${srcdir}/patches/chromium-115-skia-include.patch"
+  patch -Np1 -i "${srcdir}/patches/chromium-114-maldoca-include.patch"
+  patch -Np1 -i "${srcdir}/patches/chromium-115-verify_name_match-include.patch"
 
   # Use system fontconfig's cache number
   patch -Np1 -i "${srcdir}/system-fontconfig-cache-version.patch"
@@ -203,7 +194,6 @@ prepare() {
   patch -Np1 -i "${srcdir}/cef-cmake-options.patch"
   patch -Np1 -i "${srcdir}/remove-libxml-visibility.patch"
   patch -Np1 -i "${srcdir}/missing-cef-includes.patch"
-  patch -Np1 -i "${srcdir}/missing-typename-interactive_test_internal.patch"
   rm -f patch/patches/libxml_visibility.patch
   cd ..
 
@@ -269,6 +259,7 @@ build() {
     'enable_hangout_services_extension=true'
     'enable_widevine=true'
     'enable_nacl=false'
+    'enable_rust=false'
     'use_partition_alloc_as_malloc=false' # avoids segfaults with libcef initializations
     'use_perfetto_client_library=false' # recommended by CEF
     'use_qt=false'
