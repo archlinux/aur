@@ -3,7 +3,7 @@
 
 pkgname=sdl2pp
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ bindings/wrapper for SDL2"
 arch=("x86_64")
 url="https://sdl2pp.amdmi3.ru"
@@ -23,7 +23,7 @@ build() {
     -D SDL2PP_WITH_TESTS:BOOL="OFF" \
     -D SDL2PP_WITH_TTF:BOOL="ON" \
     -D CMAKE_BUILD_TYPE:STRING="Release" \
-    -D CMAKE_CXX_FLAGS_RELEASE:STRING="-O2 -DNDEBUG" \
+    -D CMAKE_CXX_FLAGS_RELEASE:STRING="-DNDEBUG" \
     -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
     -Wno-dev
 

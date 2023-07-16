@@ -1,7 +1,7 @@
 pkgbase = sdl2pp
 	pkgdesc = C++ bindings/wrapper for SDL2
 	pkgver = 0.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sdl2pp.amdmi3.ru
 	arch = x86_64
 	license = ZLIB
