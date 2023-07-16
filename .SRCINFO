@@ -1,0 +1,19 @@
+pkgbase = bililiverecorder-git
+	pkgdesc = BiliBili Stream Recorder. Git version.
+	pkgver = r864.547cde5
+	pkgrel = 1
+	url = https://github.com/BililiveRecorder/BililiveRecorder
+	arch = x86_64
+	license = GPL3
+	makedepends = npm
+	makedepends = dotnet-sdk-6.0
+	provides = bililiverecorder
+	conflicts = bililiverecorder
+	source = bililiverecorder::git+https://github.com/BililiveRecorder/BililiveRecorder#branch=dev
+	source = webui-source::git+https://github.com/BililiveRecorder/BililiveRecorder-WebUI.git
+	source = test-data::git+https://github.com/BililiveRecorder/test-data.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = bililiverecorder-git
