@@ -1,14 +1,12 @@
 pkgbase = zero-k
 	pkgdesc = Open source RTS game running on the Spring engine
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zerok.itch.io/zero-k
 	install = zero-k.install
 	arch = x86_64
 	license = GPL2
 	depends = mono
-	depends = openal
-	depends = libcurl-compat
 	source = https://zero-k.info/lobby/Zero-K.exe
 	source = Zero-K.desktop
 	source = Zero-K.png

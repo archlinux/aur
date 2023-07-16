@@ -1,6 +1,6 @@
 pkgname=zero-k
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source RTS game running on the Spring engine"
 arch=('x86_64')
 url="https://zerok.itch.io/zero-k"
