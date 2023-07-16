@@ -1,0 +1,16 @@
+pkgbase = xshot-git
+	pkgdesc = XS Screenshot Tool for X11
+	pkgver = r12.b84afb1
+	pkgrel = 1
+	url = https://github.com/hydrobeam/xshot
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libxcb
+	depends = libx11
+	provides = xshot
+	conflicts = xshot
+	source = xshot-git::git+https://github.com/hydrobeam/xshot.git
+	sha256sums = SKIP
+
+pkgname = xshot-git
