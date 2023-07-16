@@ -4,13 +4,19 @@
 # Inspired by AUR package "linux-bnx2x-2.5g" from 
 # Charles Leclerc <charles[at]la-mouette[d0t]net>
 #
+# Goal:
+# - Maintain compataiblity with 'linux-lts' and 'linux' Arch kernels
+#
 # Usage:
 #   rmmod bnx2x; modprobe bnx2x-2500m
+#
+# Todo:
+# - Consider how to handle LTS kernels better? Backport patches?
 
 _pkgbase=bnx2x-2500m
 pkgname="$_pkgbase-dkms"
 # Don't need to update unless there's an upstream change!
-pkgver=6.2.2.arch1
+pkgver=6.4.2.arch1
 pkgrel=1
 pkgdesc='Broadcom bnx2x driver with 2500 Mbps HSGMII patch'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -24,7 +30,10 @@ depends=('dkms' 'linux-firmware-bnx2x')
 _ksrcname=archlinux-linux
 source=(
   "$_ksrcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
-  "bnx2x_warpcore+8727_2_5g_sgmii_arch.patch"
+  "0001-bnx2x-Add-support-for-2.5-Gbps-HSGMII-mode.patch"
+  "0002-bnx2x-Handle-DEFINE_SEMAPHORE-for-older-kernels.patch"
+  "0003-bnx2x-Handle-skb_vlan_eth_hdr-for-older-kernels.patch"
+  "0004-bnx2x-Handle-build_skb-helper-for-older-kernels.patch"
   "dkms.conf"
 )
 validpgpkeys=(
@@ -34,7 +43,10 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'd655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d'
+            'e953356ac35b28bf0e1a31090689d51fd18ea7ec853282ae820f0b3ef1a85151'
+            'b714961a3ff24f9cf2e8617d27a3b417cd6407c00e5982f42e8a5004ab0f8249'
+            'b1b0d90fd1047def666c9311d3c5f91fd4a9d68bb0bb644e4859b40a0e505b24'
+            '25711bb089f0d60f82d882e9d4cf3ef6e62e38c0c22942424e08bed714eb597e'
             '9e8de01f4f7d7ed966cd979bc4e41bee95f37398327a094cc705d7e590c06f2a')
 
 export KBUILD_BUILD_HOST=archlinux

@@ -1,0 +1,38 @@
+From fe69fd47e3e2f79fde7b6453f73772591b8a77d6 Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Sat, 15 Jul 2023 20:09:18 -0500
+Subject: [PATCH 2/4] bnx2x: Handle DEFINE_SEMAPHORE() for older kernels
+
+* Older kernels didn't need the number argument.
+* See 48380368dec14859723b9e3fbd43e042638d9a76
+---
+ drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c
+index 1e7a6f1d4223..339ca36801be 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c
+@@ -19,6 +19,7 @@
+ 
+ #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+ 
++#include <linux/version.h>
+ #include <linux/module.h>
+ #include <linux/moduleparam.h>
+ #include <linux/kernel.h>
+@@ -297,7 +298,11 @@ const u32 dmae_reg_go_c[] = {
+ 
+ /* Global resources for unloading a previously loaded device */
+ #define BNX2X_PREV_WAIT_NEEDED 1
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6, 4, 0))
++static DEFINE_SEMAPHORE(bnx2x_prev_sem);
++#else
+ static DEFINE_SEMAPHORE(bnx2x_prev_sem, 1);
++#endif
+ static LIST_HEAD(bnx2x_prev_list);
+ 
+ /* Forward declaration */
+-- 
+2.41.0
+

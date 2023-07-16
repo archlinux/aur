@@ -1,0 +1,39 @@
+From 9b44453984078670b0de7b9c3670256a24e93227 Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Sat, 15 Jul 2023 20:31:33 -0500
+Subject: [PATCH 3/4] bnx2x: Handle skb_vlan_eth_hdr() for older kernels
+
+* Newer kernels have a helper function.
+* See 1f5020acb33f926030f62563c86dffca35c7b701
+---
+ drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
+index 6ea5521074d3..e31c3a63a333 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
+@@ -19,6 +19,7 @@
+ 
+ #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+ 
++#include <linux/version.h>
+ #include <linux/etherdevice.h>
+ #include <linux/if_vlan.h>
+ #include <linux/interrupt.h>
+@@ -1935,7 +1936,12 @@ u16 bnx2x_select_queue(struct net_device *dev, struct sk_buff *skb,
+ 
+ 		/* Skip VLAN tag if present */
+ 		if (ether_type == ETH_P_8021Q) {
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6, 4, 0))
++			struct vlan_ethhdr *vhdr =
++				(struct vlan_ethhdr *)skb->data;
++#else
+ 			struct vlan_ethhdr *vhdr = skb_vlan_eth_hdr(skb);
++#endif
+ 
+ 			ether_type = ntohs(vhdr->h_vlan_encapsulated_proto);
+ 		}
+-- 
+2.41.0
+

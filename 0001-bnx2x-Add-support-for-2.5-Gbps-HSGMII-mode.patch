@@ -1,5 +1,16 @@
+From 5a83a143a6da8427234800c73baaa5c4572f40e6 Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Sat, 15 Jul 2023 20:27:10 -0500
+Subject: [PATCH 1/4] bnx2x: Add support for 2.5 Gbps HSGMII mode
+
+* Original patch name 'bnx2x_warpcore+8727_2_5g_sgmii_arch.patch'
+---
+ .../net/ethernet/broadcom/bnx2x/bnx2x_link.c  | 51 +++++++++++++++++--
+ .../net/ethernet/broadcom/bnx2x/bnx2x_reg.h   |  3 +-
+ 2 files changed, 49 insertions(+), 5 deletions(-)
+
 diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_link.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_link.c
-index 4e85e7dbc2be..717dbb42cf0d 100644
+index 02808513ffe4..8bf9fe320f78 100644
 --- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_link.c
 +++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_link.c
 @@ -151,6 +151,7 @@ typedef int (*read_sfp_module_eeprom_func_p)(struct bnx2x_phy *phy,
@@ -35,7 +46,7 @@ index 4e85e7dbc2be..717dbb42cf0d 100644
  			val16 |= 0x0040;
  			break;
  		default:
-@@ -8172,6 +8184,7 @@ static int bnx2x_get_edc_mode(struct bnx2x_phy *phy,
+@@ -8174,6 +8186,7 @@ static int bnx2x_get_edc_mode(struct bnx2x_phy *phy,
  		break;
  	}
  	case SFP_EEPROM_CON_TYPE_VAL_UNKNOWN:
@@ -43,7 +54,7 @@ index 4e85e7dbc2be..717dbb42cf0d 100644
  	case SFP_EEPROM_CON_TYPE_VAL_LC:
  	case SFP_EEPROM_CON_TYPE_VAL_RJ45:
  		check_limiting_mode = 1;
-@@ -8182,7 +8195,8 @@ static int bnx2x_get_edc_mode(struct bnx2x_phy *phy,
+@@ -8184,7 +8197,8 @@ static int bnx2x_get_edc_mode(struct bnx2x_phy *phy,
  		    (val[SFP_EEPROM_1G_COMP_CODE_ADDR] != 0)) {
  			DP(NETIF_MSG_LINK, "1G SFP module detected\n");
  			phy->media_type = ETH_PHY_SFP_1G_FIBER;
@@ -53,7 +64,7 @@ index 4e85e7dbc2be..717dbb42cf0d 100644
  				u8 gport = params->port;
  				phy->req_line_speed = SPEED_1000;
  				if (!CHIP_IS_E1x(bp)) {
-@@ -9236,6 +9250,7 @@ static void bnx2x_8727_config_speed(struct bnx2x_phy *phy,
+@@ -9238,6 +9252,7 @@ static void bnx2x_8727_config_speed(struct bnx2x_phy *phy,
  	u16 tmp1, val;
  	/* Set option 1G speed */
  	if ((phy->req_line_speed == SPEED_1000) ||
@@ -61,7 +72,7 @@ index 4e85e7dbc2be..717dbb42cf0d 100644
  	    (phy->media_type == ETH_PHY_SFP_1G_FIBER)) {
  		DP(NETIF_MSG_LINK, "Setting 1G force\n");
  		bnx2x_cl45_write(bp, phy,
-@@ -9245,6 +9260,22 @@ static void bnx2x_8727_config_speed(struct bnx2x_phy *phy,
+@@ -9247,6 +9262,22 @@ static void bnx2x_8727_config_speed(struct bnx2x_phy *phy,
  		bnx2x_cl45_read(bp, phy,
  				MDIO_PMA_DEVAD, MDIO_PMA_REG_10G_CTRL2, &tmp1);
  		DP(NETIF_MSG_LINK, "1.7 = 0x%x\n", tmp1);
@@ -84,7 +95,7 @@ index 4e85e7dbc2be..717dbb42cf0d 100644
  		/* Power down the XAUI until link is up in case of dual-media
  		 * and 1G
  		 */
-@@ -9266,7 +9297,7 @@ static void bnx2x_8727_config_speed(struct bnx2x_phy *phy,
+@@ -9268,7 +9299,7 @@ static void bnx2x_8727_config_speed(struct bnx2x_phy *phy,
  
  		DP(NETIF_MSG_LINK, "Setting 1G clause37\n");
  		bnx2x_cl45_write(bp, phy,
@@ -93,7 +104,7 @@ index 4e85e7dbc2be..717dbb42cf0d 100644
  		bnx2x_cl45_write(bp, phy,
  				 MDIO_AN_DEVAD, MDIO_AN_REG_CL37_AN, 0x1300);
  	} else {
-@@ -9274,8 +9305,11 @@ static void bnx2x_8727_config_speed(struct bnx2x_phy *phy,
+@@ -9276,8 +9307,11 @@ static void bnx2x_8727_config_speed(struct bnx2x_phy *phy,
  		 * registers although it is default
  		 */
  		bnx2x_cl45_write(bp, phy,
@@ -106,7 +117,7 @@ index 4e85e7dbc2be..717dbb42cf0d 100644
  		bnx2x_cl45_write(bp, phy,
  				 MDIO_AN_DEVAD, MDIO_AN_REG_CL37_AN, 0x0100);
  		bnx2x_cl45_write(bp, phy,
-@@ -9565,6 +9599,11 @@ static u8 bnx2x_8727_read_status(struct bnx2x_phy *phy,
+@@ -9567,6 +9601,11 @@ static u8 bnx2x_8727_read_status(struct bnx2x_phy *phy,
  		vars->line_speed = SPEED_10000;
  		DP(NETIF_MSG_LINK, "port %x: External link up in 10G\n",
  			   params->port);
@@ -118,7 +129,7 @@ index 4e85e7dbc2be..717dbb42cf0d 100644
  	} else if ((link_status & (1<<0)) && (!(link_status & (1<<13)))) {
  		link_up = 1;
  		vars->line_speed = SPEED_1000;
-@@ -9596,7 +9635,8 @@ static u8 bnx2x_8727_read_status(struct bnx2x_phy *phy,
+@@ -9598,7 +9637,8 @@ static u8 bnx2x_8727_read_status(struct bnx2x_phy *phy,
  	}
  
  	if ((DUAL_MEDIA(params)) &&
@@ -128,7 +139,7 @@ index 4e85e7dbc2be..717dbb42cf0d 100644
  		bnx2x_cl45_read(bp, phy,
  				MDIO_PMA_DEVAD,
  				MDIO_PMA_REG_8727_PCS_GP, &val1);
-@@ -11720,6 +11760,7 @@ static const struct bnx2x_phy phy_warpcore = {
+@@ -11722,6 +11762,7 @@ static const struct bnx2x_phy phy_warpcore = {
  			   SUPPORTED_100baseT_Full |
  			   SUPPORTED_1000baseT_Full |
  			   SUPPORTED_1000baseKX_Full |
@@ -136,7 +147,7 @@ index 4e85e7dbc2be..717dbb42cf0d 100644
  			   SUPPORTED_10000baseT_Full |
  			   SUPPORTED_10000baseKR_Full |
  			   SUPPORTED_20000baseKR2_Full |
-@@ -11906,6 +11947,7 @@ static const struct bnx2x_phy phy_8727 = {
+@@ -11908,6 +11949,7 @@ static const struct bnx2x_phy phy_8727 = {
  	.tx_preemphasis	= {0xffff, 0xffff, 0xffff, 0xffff},
  	.mdio_ctrl	= 0,
  	.supported	= (SUPPORTED_10000baseT_Full |
@@ -144,7 +155,7 @@ index 4e85e7dbc2be..717dbb42cf0d 100644
  			   SUPPORTED_1000baseT_Full |
  			   SUPPORTED_FIBRE |
  			   SUPPORTED_Pause |
-@@ -12253,6 +12295,7 @@ static int bnx2x_populate_int_phy(struct bnx2x *bp, u32 shmem_base, u8 port,
+@@ -12255,6 +12297,7 @@ static int bnx2x_populate_int_phy(struct bnx2x *bp, u32 shmem_base, u8 port,
  			break;
  		case PORT_HW_CFG_NET_SERDES_IF_SFI:
  			phy->supported &= (SUPPORTED_1000baseT_Full |
@@ -153,7 +164,7 @@ index 4e85e7dbc2be..717dbb42cf0d 100644
  					   SUPPORTED_FIBRE |
  					   SUPPORTED_Pause |
 diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_reg.h b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_reg.h
-index 5caa75b41b73..eaeaf4d90b68 100644
+index 4e9215bce4ad..6979397ee458 100644
 --- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_reg.h
 +++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_reg.h
 @@ -7169,7 +7169,8 @@ Theotherbitsarereservedandshouldbezero*/
@@ -166,3 +177,6 @@ index 5caa75b41b73..eaeaf4d90b68 100644
  
  #define MDIO_PMA_REG_8073_CHIP_REV			0xc801
  #define MDIO_PMA_REG_8073_SPEED_LINK_STATUS		0xc820
+-- 
+2.41.0
+

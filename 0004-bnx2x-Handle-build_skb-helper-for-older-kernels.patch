@@ -1,0 +1,57 @@
+From b2ded126262a146e65533668487a4ae38ad843c4 Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Sat, 15 Jul 2023 20:46:30 -0500
+Subject: [PATCH 4/4] bnx2x: Handle build_skb() helper for older kernels
+
+* Revert commit 8c495270845d6b4854607e946baef3637a8259ed for older kernels.
+---
+ drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
+index e31c3a63a333..186f46e2bc76 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
+@@ -673,6 +673,7 @@ static int bnx2x_fill_frag_skb(struct bnx2x *bp, struct bnx2x_fastpath *fp,
+ 	return 0;
+ }
+ 
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 4, 0))
+ static struct sk_buff *
+ bnx2x_build_skb(const struct bnx2x_fastpath *fp, void *data)
+ {
+@@ -684,6 +685,7 @@ bnx2x_build_skb(const struct bnx2x_fastpath *fp, void *data)
+ 		skb = slab_build_skb(data);
+ 	return skb;
+ }
++#endif
+ 
+ static void bnx2x_frag_free(const struct bnx2x_fastpath *fp, void *data)
+ {
+@@ -792,7 +794,11 @@ static void bnx2x_tpa_stop(struct bnx2x *bp, struct bnx2x_fastpath *fp,
+ 	dma_unmap_single(&bp->pdev->dev, dma_unmap_addr(rx_buf, mapping),
+ 			 fp->rx_buf_size, DMA_FROM_DEVICE);
+ 	if (likely(new_data))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6, 4, 0))
++		skb = build_skb(data, fp->rx_frag_size);
++#else
+ 		skb = bnx2x_build_skb(fp, data);
++#endif
+ 
+ 	if (likely(skb)) {
+ #ifdef BNX2X_STOP_ON_ERROR
+@@ -1059,7 +1065,11 @@ static int bnx2x_rx_int(struct bnx2x_fastpath *fp, int budget)
+ 						 dma_unmap_addr(rx_buf, mapping),
+ 						 fp->rx_buf_size,
+ 						 DMA_FROM_DEVICE);
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(6, 4, 0))
++				skb = build_skb(data, fp->rx_frag_size);
++#else
+ 				skb = bnx2x_build_skb(fp, data);
++#endif
+ 				if (unlikely(!skb)) {
+ 					bnx2x_frag_free(fp, data);
+ 					bnx2x_fp_qstats(bp, fp)->
+-- 
+2.41.0
+
