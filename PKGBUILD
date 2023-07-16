@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=jls
 pkgver=0.3.5
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="A modern ls with java."
 arch=('any')
@@ -11,7 +11,7 @@ groups=('java-utils')
 depends=('java-runtime>=17')
 makedepends=()
 checkdepends=()
-optdepends=('ttf-hack-nerd-font: For icons support')
+optdepends=('ttf-hack-nerd: For icons support')
 options=()
 install=
 changelog=
