@@ -3,7 +3,7 @@
 # thanks to txtsd <aur.archlinux@ihavea.quest> for contributing some parts of the PKGBUILD code
 
 pkgname=openmw-git
-pkgver=0.48.0.rc10.r2138.g692396a608
+pkgver=0.48.0.r2539.g98bb9fc125
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64' 'aarch64')
@@ -18,16 +18,20 @@ source=('git+https://gitlab.com/OpenMW/openmw.git')
 sha1sums=('SKIP')
 
 pkgver() {
+  # We want the latest/highest minor version for _tag
+  # First we strip off any openmw-*
+  # There must be no dashes.
+  # Finally we remove any other words such as rc
+  # openmw-0.29.0  -> _tag=0.29.0
+  # 0.42.0         -> _tag=0.42.0
+  # 0.47.0-RC3     -> _tag=0.47.0
+  # openmw-48-rc10 -> _tag=0.48.0
+  # stable         -> invalid, find the next one
   cd "${srcdir}/${pkgname%-git}"
-  _pattern='^([0-9]{2})-rc([0-9]{1,2}$)'
-  _tag="$(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/openmw-//')"
-  if [[ $_tag =~ $_pattern ]] ;
-  then
-    _tag=$(echo $_tag | sed -E 's/^([0-9]{2})-rc([0-9]{1,2}$)/0.\1.0.rc\2/')
-  fi
+  _tag="$(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/openmw-//' | sed 's/-.*//')"
   _numcommits="$(git rev-list  $(git rev-list --tags --no-walk --max-count=1)..HEAD --count)"
   _hash="$(git rev-parse --short HEAD)"
-  printf "%s.r%s.g%s" "$_tag" "$_numcommits" "$_hash"
+  printf "0.%s.0.r%s.g%s" "$_tag" "$_numcommits" "$_hash"
 }
 
 build() {
