@@ -10,7 +10,6 @@ pkgbase = gmpc-git
 	makedepends = intltool
 	makedepends = vala
 	makedepends = git
-	depends = libunique
 	depends = libmpd
 	depends = libsoup
 	depends = sqlite
