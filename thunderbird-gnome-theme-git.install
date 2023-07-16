@@ -1,0 +1,5 @@
+post_install() {
+  echo 'There are specific instructions to follow when installing thunderbird-gnome-theme-git.'
+  echo 'Please see the included INSTALL.md for details.'
+  echo '$ cat /usr/share/doc/thunderbird-gnome-theme/INSTALL.md'
+}
