@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=bfy
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="brainfuc*k interpreter: a simple brainfuc*k interpreter and REPL writen in rust 🦀🤪"
 arch=(x86_64)
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-	export =stable
+	export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
