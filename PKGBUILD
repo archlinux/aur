@@ -1,5 +1,5 @@
 pkgname=libmpd-git
-pkgver=r419.2c8b595
+pkgver=r427.8601a0e
 pkgrel=1
 pkgdesc="Signal based wrapper around libmpdclient"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('GPL')
 depends=('glib2')
 conflicts=('libmpd')
 
-source=($pkgname::git://github.com/DaveDavenport/libmpd.git)
+source=($pkgname::git+https://github.com/DaveDavenport/libmpd.git)
 
 md5sums=(SKIP)
 

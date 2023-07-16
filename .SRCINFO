@@ -8,8 +8,7 @@ pkgbase = libmpd-git
 	license = GPL
 	depends = glib2
 	conflicts = libmpd
-	source = libmpd-git::git://github.com/DaveDavenport/libmpd.git
+	source = libmpd-git::git+https://github.com/DaveDavenport/libmpd.git
 	md5sums = SKIP
 
 pkgname = libmpd-git
-
