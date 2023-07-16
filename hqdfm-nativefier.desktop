@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=hqdfm
+Name[zh_CN]=华鳅DFM
+Comment=hqdfm nativefier
+Exec=/opt/hqdfm-nativefier/hqdfm
+Icon=/opt/hqdfm-nativefier/resources/app/icon.png
+Terminal=false
+Categories=Electronics;Design;DFM;
