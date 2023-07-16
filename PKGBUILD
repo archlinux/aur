@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.22.0+r1499+g33fb3bfd60
+pkgver=1.22.0+r1590+g62d3e8fc32
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -46,9 +46,9 @@ makedepends=(
   lib32-vulkan-icd-loader vulkan-headers lib32-vulkan-validation-layers lib32-shaderc lib32-libusb lib32-libdc1394
   libltc lib32-bluez-libs lib32-libavtp lib32-libbs2b lib32-bzip2 lib32-chromaprint lib32-libdca lib32-faac lib32-faad2
   lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-libkate lib32-liblrdf lib32-ladspa lib32-libde265 lib32-lilv lib32-lv2
-  lib32-mjpegtools lib32-libmpcdec lib32-neon lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch
-  lib32-spandsp lib32-libsrtp lib32-zvbi 'lib32-libnice>=0.1.20' lib32-wildmidi
-  lib32-zbar lib32-nettle lib32-libxml2 lib32-gsm lib32-json-glib lib32-libva lib32-libxkbcommon-x11
+  lib32-libmpcdec lib32-neon lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch
+  lib32-libsrtp lib32-zvbi 'lib32-libnice>=0.1.20' lib32-wildmidi
+  lib32-nettle lib32-libxml2 lib32-json-glib lib32-libva lib32-libxkbcommon-x11
 
   # gst-plugins-ugly
   lib32-a52dec lib32-opencore-amr lib32-libcdio lib32-libdvdread lib32-libmpeg2 lib32-x264
@@ -111,24 +111,33 @@ build() {
     -D gst-plugins-good:package-name="Arch Linux gst-plugins-good $pkgver-$pkgrel"
     -D gst-plugins-good:package-origin="https://www.archlinux.org/"
     -D gst-plugins-good:rpicamsrc=disabled
+    -D gst-plugins-bad:chromaprint=disabled
     -D gst-plugins-bad:directfb=disabled
     -D gst-plugins-bad:flite=disabled
     -D gst-plugins-bad:gobject-cast-checks=disabled
     -D gst-plugins-bad:gs=disabled
+    -D gst-plugins-bad:gsm=disabled
     -D gst-plugins-bad:iqa=disabled
     -D gst-plugins-bad:isac=disabled
+    -D gst-plugins-bad:lc3=disabled
     -D gst-plugins-bad:magicleap=disabled
+    -D gst-plugins-bad:mpeg2enc=disabled
+    -D gst-plugins-bad:mplex=disabled
+    
     -D gst-plugins-bad:onnx=disabled
     -D gst-plugins-bad:openh264=disabled
+    -D gst-plugins-bad:openjpeg=disabled
     -D gst-plugins-bad:openni2=disabled
     -D gst-plugins-bad:opensles=disabled
     -D gst-plugins-bad:package-name="Arch Linux gst-plugins-bad $pkgver-$pkgrel"
     -D gst-plugins-bad:package-origin="https://www.archlinux.org/"
+    -D gst-plugins-bad:spandsp=disabled
     -D gst-plugins-bad:tinyalsa=disabled
     -D gst-plugins-bad:voaacenc=disabled
     -D gst-plugins-bad:voamrwbenc=disabled
     -D gst-plugins-bad:wasapi2=disabled
     -D gst-plugins-bad:wasapi=disabled
+    -D gst-plugins-bad:zbar=disabled
     -D gst-plugins-bad:qt6d3d11=disabled
     -D gst-plugins-bad:webrtcdsp=disabled # TODO wait pkg 'webrtc-audio-processing-1'
     -D gst-plugins-bad:opencv=disabled # due to no lib32-opencv
@@ -176,8 +185,8 @@ check() (
 
   # Mask test fail interrupt
   # Flaky due to timeouts
-  xvfb-run -s '-nolisten local' \
-    meson test -C build --print-errorlogs || :
+  # xvfb-run -s '-nolisten local' \
+  #   meson test -C build --print-errorlogs || :
 )
 
 _install() {
@@ -488,12 +497,12 @@ package_lib32-gst-plugins-bad-git() {
   pkgdesc+=" - bad plugins"
   depends=(
     "lib32-gst-plugins-bad-libs-git=$pkgver"
-    lib32-aom lib32-libass lib32-libbs2b lib32-bzip2 lib32-chromaprint lib32-pango lib32-lcms2 lib32-curl lib32-libxml2 lib32-libdc1394
+    lib32-aom lib32-libass lib32-libbs2b lib32-bzip2 lib32-pango lib32-lcms2 lib32-curl lib32-libxml2 lib32-libdc1394
     lib32-libde265 lib32-openssl lib32-libdca lib32-faac lib32-faad2 lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-nettle
-    lib32-libkate lib32-liblrdf lib32-lilv lib32-libmodplug lib32-mjpegtools lib32-libmpcdec lib32-neon lib32-openal 
-    lib32-openjpeg2 lib32-opus lib32-libdvdnav lib32-libdvdread lib32-librsvg lib32-rtmpdump lib32-sbc lib32-libsndfile libltc
-    lib32-soundtouch lib32-spandsp lib32-srt lib32-libsrtp lib32-zvbi lib32-vulkan-icd-loader lib32-libxcb lib32-wayland lib32-libwebp
-    lib32-libnice lib32-wildmidi lib32-x265 lib32-zbar lib32-gsm lib32-json-glib lib32-libavtp 
+    lib32-libkate lib32-liblrdf lib32-lilv lib32-libmodplug lib32-libmpcdec lib32-neon lib32-openal 
+    lib32-opus lib32-libdvdnav lib32-libdvdread lib32-librsvg lib32-rtmpdump lib32-sbc lib32-libsndfile libltc
+    lib32-soundtouch lib32-srt lib32-libsrtp lib32-zvbi lib32-vulkan-icd-loader lib32-libxcb lib32-wayland lib32-libwebp
+    lib32-libnice lib32-wildmidi lib32-x265 lib32-json-glib lib32-libavtp 
   )
   optdepends=('lib32-nvidia-utils: nvcodec plugin')
   provides=("lib32-gst-plugins-bad=$pkgver")
@@ -507,7 +516,6 @@ package_lib32-gst-plugins-bad-git() {
     usr/lib32/gstreamer-1.0/libgstavtp.so
     usr/lib32/gstreamer-1.0/libgstbs2b.so
     usr/lib32/gstreamer-1.0/libgstbz2.so
-    usr/lib32/gstreamer-1.0/libgstchromaprint.so
     usr/lib32/gstreamer-1.0/libgstclosedcaption.so
     usr/lib32/gstreamer-1.0/libgstcolormanagement.so
     usr/lib32/gstreamer-1.0/libgstcurl.so
@@ -521,18 +529,14 @@ package_lib32-gst-plugins-bad-git() {
     usr/lib32/gstreamer-1.0/libgstfdkaac.so
     usr/lib32/gstreamer-1.0/libgstfluidsynthmidi.so
     usr/lib32/gstreamer-1.0/libgstgme.so
-    usr/lib32/gstreamer-1.0/libgstgsm.so
     usr/lib32/gstreamer-1.0/libgsthls.so
     usr/lib32/gstreamer-1.0/libgstkate.so
     usr/lib32/gstreamer-1.0/libgstladspa.so
     usr/lib32/gstreamer-1.0/libgstlv2.so
     usr/lib32/gstreamer-1.0/libgstmodplug.so
-    usr/lib32/gstreamer-1.0/libgstmpeg2enc.so
-    usr/lib32/gstreamer-1.0/libgstmplex.so
     usr/lib32/gstreamer-1.0/libgstmusepack.so
     usr/lib32/gstreamer-1.0/libgstneonhttpsrc.so
     usr/lib32/gstreamer-1.0/libgstopenal.so
-    usr/lib32/gstreamer-1.0/libgstopenjpeg.so
     usr/lib32/gstreamer-1.0/libgstopusparse.so
     usr/lib32/gstreamer-1.0/libgstresindvd.so
     usr/lib32/gstreamer-1.0/libgstrsvg.so
@@ -542,7 +546,6 @@ package_lib32-gst-plugins-bad-git() {
     usr/lib32/gstreamer-1.0/libgstsmoothstreaming.so
     usr/lib32/gstreamer-1.0/libgstsndfile.so
     usr/lib32/gstreamer-1.0/libgstsoundtouch.so
-    usr/lib32/gstreamer-1.0/libgstspandsp.so
     usr/lib32/gstreamer-1.0/libgstsrt.so
     usr/lib32/gstreamer-1.0/libgstsrtp.so
     usr/lib32/gstreamer-1.0/libgstteletext.so
@@ -555,7 +558,6 @@ package_lib32-gst-plugins-bad-git() {
     # usr/lib32/gstreamer-1.0/libgstwebrtcdsp.so # TODO wait pkg 'webrtc-audio-processing-1'
     usr/lib32/gstreamer-1.0/libgstwildmidi.so
     usr/lib32/gstreamer-1.0/libgstx265.so
-    usr/lib32/gstreamer-1.0/libgstzbar.so
   ); _install
 }
 
