@@ -32,7 +32,7 @@ source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}
 # A reasonable value for them to avoid these issues appears to be 75% of available cores.
 # NINJAFLAGS and LITFLAGS are env vars that can be used to achieve this. They should be set on command line or in files read by your shell on login (like .bashrc ) .
 # example for systems with 24 cores
-NINJAFLAGS="-j 18 -l 18"
+# NINJAFLAGS="-j 18 -l 18"
 # LITFLAGS="-j 18"
 # NOTE: It's your responbility to validate the value of NINJAFLAGS and LITFLAGS. If unsure, don't set it.
 
