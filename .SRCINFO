@@ -1,0 +1,23 @@
+pkgbase = pearson-reader-plus-bin
+	pkgdesc = A simple Reader for Pearson digital books.
+	pkgver = 4.9
+	pkgrel = 2
+	url = https://www.pearson.com/
+	arch = x86_64
+	license = custom
+	depends = sdl2
+	depends = unzip
+	depends = tar
+	depends = pacman
+	depends = wget
+	optdepends = chromium: a modern browser for the application to work
+	optdepends = firefox: a modern browser for the application to work
+	optdepends = google-chrome: a modern browser for the application to work
+	optdepends = evince: a pdf viewer
+	optdepends = epdfview: a pdf viewer
+	optdepends = qpdfview: a pdf viewer
+	optdepends = mupdf: a pdf viewer
+	options = !emptydirs
+	options = !strip
+
+pkgname = pearson-reader-plus-bin
