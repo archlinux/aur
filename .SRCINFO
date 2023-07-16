@@ -1,18 +1,16 @@
 pkgbase = r-gplots
 	pkgdesc = Various R Programming Tools for Plotting Data
 	pkgver = 3.1.3
-	pkgrel = 4
+	pkgrel = 6
 	url = https://cran.r-project.org/package=gplots
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL2
 	depends = r-catools
 	depends = r-gtools
-	optdepends = r-grid
 	optdepends = r-knitr
-	optdepends = r-mass
 	optdepends = r-r2d2
 	source = https://cran.r-project.org/src/contrib/gplots_3.1.3.tar.gz
+	md5sums = 00da75ab2e323f138ee297b78394af36
 	sha256sums = 9f853b9e205264d087e61e8825f797ce36c9eb585b187dab794563613a526716
 
 pkgname = r-gplots
