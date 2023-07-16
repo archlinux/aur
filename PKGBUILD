@@ -3,22 +3,30 @@
 pkgname='python-dacite'
 _name=${pkgname#python-}
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplify creation of data classes (PEP 557) from dictionaries."
 url="https://github.com/konradhalas/dacite"
 arch=('any')
 license=('MIT')
 depends=('python')
-makedepends=('python-installer')
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl"
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-wheel'
+  'python-setuptools'
+  )
+source=("${_name}-${pkgver}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         )
-sha512sums=('747c8566b5ea6d68234fe8715d0a926ac9a916693e824841ee00338a3e1fbaac0632567b03f20cd6425a18facb434b9f3671a47a1f8d6d2a78aed8767d0d7f3f'
-            )
-noextract=("${_name}-${pkgver}-py3-none-any.whl")
+sha256sums=('791ac3da85a040684a96df59e2320dc7b3cac000ff536e3f4b00fb3b67520b86')
+
+build() {
+  cd "$_name-$pkgver"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  # Source package is not available on PyPI; use provided wheel package instead.
-  python -m installer --destdir="$pkgdir" "${srcdir}/${_name}-${pkgver}-py3-none-any.whl"
+  cd "$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Symlink license file (cf. PKGBUILD for python-black)
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")

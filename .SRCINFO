@@ -1,14 +1,16 @@
 pkgbase = python-dacite
 	pkgdesc = Simplify creation of data classes (PEP 557) from dictionaries.
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/konradhalas/dacite
 	arch = any
 	license = MIT
+	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
-	noextract = dacite-1.8.1-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/d/dacite/dacite-1.8.1-py3-none-any.whl
-	sha512sums = 747c8566b5ea6d68234fe8715d0a926ac9a916693e824841ee00338a3e1fbaac0632567b03f20cd6425a18facb434b9f3671a47a1f8d6d2a78aed8767d0d7f3f
+	source = dacite-1.8.1.tar.gz::https://github.com/konradhalas/dacite/archive/refs/tags/v1.8.1.tar.gz
+	sha256sums = 791ac3da85a040684a96df59e2320dc7b3cac000ff536e3f4b00fb3b67520b86
 
 pkgname = python-dacite
