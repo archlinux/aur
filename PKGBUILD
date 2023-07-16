@@ -1,13 +1,13 @@
 # Contributor: Andrew Chen <andrew.chuanye.chen@gmail.com>
 _base=jefferson
 pkgname=${_base}-git
-pkgver=0.3.r4.ge06a617
+pkgver=0.4.1.r1.g860053f
 pkgrel=1
 pkgdesc="JFFS2 filesystem extraction tool"
 url="https://github.com/sviehb/${_base}"
 arch=(any)
 license=(MIT)
-depends=(python-cstruct)
+depends=(python-cstruct python-lzo)
 makedepends=(python-setuptools git)
 provides=(${_base})
 conflicts=(${_base})
