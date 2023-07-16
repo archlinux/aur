@@ -1,7 +1,7 @@
 pkgbase = chaiscript
 	pkgdesc = An embedded scripting language for C++
 	pkgver = 6.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://chaiscript.com
 	arch = x86_64
 	license = BSD

@@ -5,7 +5,7 @@
 
 pkgname=chaiscript
 pkgver=6.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An embedded scripting language for C++"
 arch=("x86_64")
 url="https://chaiscript.com"
@@ -21,7 +21,7 @@ build() {
     -D BUILD_MODULES:BOOL="OFF" \
     -D BUILD_TESTING:BOOL="OFF" \
     -D CMAKE_BUILD_TYPE:STRING="Release" \
-    -D CMAKE_CXX_FLAGS_RELEASE:STRING="-O2 -DNDEBUG" \
+    -D CMAKE_CXX_FLAGS_RELEASE:STRING="-DNDEBUG" \
     -D CMAKE_INSTALL_PREFIX:PATH="/usr/" \
     -Wno-dev
 
