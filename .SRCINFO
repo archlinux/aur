@@ -1,0 +1,16 @@
+pkgbase = librewolf-extension-uget-integration-bin
+	pkgdesc = Integrate LibreWolf with uGet download manager (binary release)
+	pkgver = 2.1.3.1
+	pkgrel = 1
+	url = https://addons.mozilla.org/addon/ugetintegration
+	arch = any
+	groups = librewolf-addons
+	license = GPL3
+	depends = librewolf
+	provides = librewolf-extension-uget-integration
+	conflicts = librewolf-extension-uget-integration
+	noextract = ugetintegration-2.1.3.1.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/911315/ugetintegration-2.1.3.1.xpi
+	sha256sums = 235f29ca5df79e4e5a338e29ef7cd721bb7873309b56364cc7a4bf4612e1ae85
+
+pkgname = librewolf-extension-uget-integration-bin
