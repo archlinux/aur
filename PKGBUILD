@@ -11,13 +11,26 @@ _TOOLKIT='gtk2'
 # _TOOLKIT='gtk3'
 
 _pkgname='claws-mail'
-_pkgvariant="${_TOOLKIT}"
-_gitbranch="${_TOOLKIT}"
+case "${_TOOLKIT}" in
+  'gtk2')
+    _pkgvariant="${_TOOLKIT}"
+    _gitbranch="${_TOOLKIT}"
+  ;;
+  'gtk3')
+    _pkgvariant="protectedheaders"
+    _gitbranch='master'
+  ;;
+  *)
+    _pkgvariant="${_TOOLKIT}-protectedheaders"
+    _gitbranch="${_TOOLKIT}"
+  ;;
+esac
+
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
-pkgver=3.19.1+53.r11660.20230624.4e413c136
+pkgver=3.19.1+54.r11661.20230709.e72409138
 pkgrel=2
-pkgdesc='A GTK based e-mail client. Latest git checkout of GTK2 branch. Patched to use charset supersets to decode titles and to display protected headers.'
+pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
   'i686'
   'x86_64'
@@ -25,21 +38,30 @@ arch=(
 license=('GPL3')
 url='https://www.claws-mail.org/'
 depends=(
+  'cairo'
   'compface'
   'dbus-glib'
   'desktop-file-utils'
   'enchant'
+  'gdk-pixbuf2'
+  'glib2'
+  'glibc'
   'gnutls'
   'gpgme'
   "${_TOOLKIT}"
   'hicolor-icon-theme'
+  'libice'
   'libetpan'
   'libsm'
+  'libldap'
+  'librsvg'
+  'nettle'
+  'pango'
   'startup-notification'
 )
 makedepends=(
   'git'
-  'python'
+  'python>=3'
   'spamassassin'
   # dependencies for plugins:
   'bogofilter'
@@ -54,29 +76,47 @@ makedepends=(
   'pygtk'
   # dependencies to build the docs:
   'docbook-utils'
+  'lynx'
   'texlive-core'
   'texlive-formatsextra'
 )
 optdepends=(
-  'bogofilter:        adds support for spamfiltering.'
+  'claws-mail-theme-basicsvg: BasicSVG icon theme for Claws Mail.'
+  'claws-mail-tango-theme: Tango icon theme for Claws Mail.'
+  "claws-mail-plugin-reloader: Reload blugins from the 'tools' menu (for development)."
+  'bash:              for some extra tools.'
+  'at-spi2-core:      for many plugins.'
+  'bogofilter:        for bogofilter plugin.'
   'curl:              for vcalendar, rssyl and spamreport plugins.'
   'dbus:              for notification plugin.'
+  'libx11:            for notification plugin.'
   'dillo:             for dillo html viewer plugin.'
-  'ghostscript:       for pdf viewer plugin.'
+  'expat:             for rssyl plugin.'
+  'fontconfig:        for litehtml_viewer plugin.'
+  'freetype2:         for litehtml_viewer plugin.'
+  'gcc-libs:          for litehtml_viewer plugin.'
   'gumbo-parser:      for litehtml_viewer plugin.'
+  'ghostscript:       for pdf viewer plugin.'
+  'harfbuzz:          for many plugins'
   'jpilot:            for jpilot (palm pilot connection) plugin.'
   'libarchive:        for archive plugin and various other plugins.'
   'libcanberra:       for notification plugin.'
-  'libgdata:          for gdata plugin.'
+  'libgpg-error:      for GPG and S-MIME plugins.'
   'libical:           for vcalendar plugin.'
   'libnotify:         for notification plugin.'
-  'libxml2:           for rssyl plugins.'
   'libytnef:          for tnef_parse plugin.'
+  'libxcrypt:         for perl plugin.'
   'perl:              needed for some tools and perl plugin.'
   'poppler-glib:      for pdf viewer plugin.'
   'python2:           needed for some tools and python plugin.'
-  'python:            for some tools/ plugins.'
-  'spamassassin:      adds support for spamfiltering.'
+  'python>=3:         for some tools/ plugins.'
+  'spamassassin:      for spamassassin plugin.'
+  'zlib:              for many plugins.'
+  'json-glib:         for gdata plugin.'
+  'libgdata:          for gdata plugin.'
+  'libgoa:            for gdata plugin.'
+  'libxml2:           for gdata plugin.'
+  'libsoup:           for gdata and fancy html viewer plugins.'
 )
 replaces=(
   'claws-mail-extra-plugins'
@@ -93,17 +133,16 @@ conflicts=(
 provides=(
   "claws=${pkgver}"
   "${_pkgname}=${pkgver}"
+  "${_pkgname}-${_TOOLKIT}=${pkgver}"
   "${_pkgname}-title-superset=${pkgver}"
   "${_pkgname}-protectedheaders=${pkgver}"
-  "${_pkgname}-${_pkgvariant}=${pkgver}"
-  "${_pkgname}-title-superset-${_pkgvariant}=${pkgver}"
   "${_pkgname}-bash-completion"
   "claws-mail-extra-plugins=${pkgver}"
 )
 source=(
   "${_pkgname}::git://git.claws-mail.org/claws.git#branch=${_gitbranch}"
   "0001_encoding.diff::https://aur.archlinux.org/cgit/aur.git/plain/0001_encoding.diff?h=claws-mail-title-superset" ## NOTE!, if this gets removed, adapt the `provides` array and the `$pkgdesc`!
-  "0002_protectedheaders.patch::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331"
+  "0002_protectedheaders.patch::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2331" ## NOTE!, if this gets removed, adapt the `provides` array and the `$pkgdesc`!
 )
 sha256sums=(
   'SKIP'
@@ -117,7 +156,15 @@ fi
 
 
 if "${_USE_CCACHE}"; then
+  makedepends+=('ccache')
   options+=('ccache')
+fi
+if [ "${_TOOLKIT}" == "gtk2" ]; then
+  _fancy_config_opts=('--disable-fancy-plugin')
+else
+  makedepends+=('webkit2gtk')
+  optdepends+=('webkit2gtk:        for fancy webkit html viewer plugin')
+  _fancy_config_opts=('--enable-fancy-plugin')
 fi
 if "${_WITH_NETWORKMANAGER}"; then
   makedepends+=('networkmanager')
@@ -132,7 +179,6 @@ if "${_WITH_VALGRIND}"; then
 else
   _valgrind_config_opts=('--disable-valgrind')
 fi
-
 
 
 prepare() {
@@ -212,7 +258,7 @@ build() {
     --enable-bsfilter-plugin
     --enable-clamd-plugin
     --enable-dillo-plugin
-    --disable-fancy-plugin
+    "${_fancy_config_opts[@]}"
     --enable-fetchinfo-plugin
     --enable-gdata-plugin
     --enable-libravatar-plugin
