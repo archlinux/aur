@@ -40,6 +40,7 @@ source=(git+https://github.com/fcitx/mozc.git#commit="${_mozc_commit}"
         git+https://github.com/phoepsilonix/mozcdict-ext.git
         #"https://osdn.net/projects/naist-jdic/downloads/53500/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
         "https://github.com/phoepsilonix/mecab-naist-jdic/raw/main/mecab-naist-jdic-0.6.3b-20111013.tar.gz"
+        # https://github.com/WorksApplications/SudachiDict
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/core_lex.zip"
         "http://sudachi.s3-website-ap-northeast-1.amazonaws.com/sudachidict-raw/${_sudachidict_date}/notcore_lex.zip"
         )
@@ -119,7 +120,6 @@ build() {
   for dict in "${_dict[@]}"; do
     cat "$srcdir/mozcdic-ut-${dict}.txt" >> ${srcdir}/mozcdict-ext/mozcdic-ut.txt
   done
-  #mv -v "$srcdir/jawiki-latest-all-titles-in-ns0.gz" ./
 
   cd "${srcdir}/mozcdict-ext/" || exit
 
