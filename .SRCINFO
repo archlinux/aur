@@ -1,6 +1,6 @@
 pkgbase = python-pytooling
 	pkgdesc = A powerful collection of arbitrary useful classes, decorators, meta-classes and exceptions
-	pkgver = 4.0.1
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/pyTooling/pyTooling
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-pytooling
 	replaces = python-pymetaclasses
 	replaces = python-pyexceptions
 	replaces = python-pytooling-terminalui
-	source = python-pytooling-4.0.1.tar.gz::https://github.com/pyTooling/pyTooling/archive/v4.0.1.tar.gz
-	sha256sums = 5de5cdd360e892822befd9d23263fbf2a11d90b94d16d716eaad4e750b585cfc
+	source = python-pytooling-5.0.0.tar.gz::https://github.com/pyTooling/pyTooling/archive/v5.0.0.tar.gz
+	sha256sums = f532560117529328c5ecec957249c27a423746c951d9405732b3a96108e464ff
 
 pkgname = python-pytooling
