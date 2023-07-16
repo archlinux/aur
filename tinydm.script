@@ -1,0 +1,11 @@
+#!/bin/sh
+source /etc/conf.d/tinydm
+[ -z "$AUTOLOGIN_UID" ] && AUTOLOGIN_UID=1000
+	user=$(getent passwd ${AUTOLOGIN_UID} | cut -d: -f1)
+	if [ -z "$user" ]; then
+	eerror "ERROR: unable to find user with uid $AUTOLOGIN_UID"
+	return 1
+fi
+mkdir -p /var/lib/tinydm
+chown -R tinydm:tinydm /var/lib/tinydm
+exec /usr/bin/autologin $user tinydm-run-session
