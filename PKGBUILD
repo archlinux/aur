@@ -1,7 +1,7 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
 
-_pkgname=box64-android
-pkgname=${_pkgname}-git
+_pkgname=box64
+pkgname=${_pkgname}-android-git
 pkgver=v0.2.2.r2.g706ebc39
 pkgrel=1
 pkgdesc='Linux Userspace x86_64 Emulator with a twist'
