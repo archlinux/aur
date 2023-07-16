@@ -1,6 +1,6 @@
 [Unit]
 Description=A simple, high performance messaging system for cloud native appliations, IoT messaging, and webservices architectures
-Documentation=https://github.com/nats-io/gnatsd
+Documentation=https://docs.nats.io
 After=network.target
 
 [Service]
