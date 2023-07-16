@@ -11,7 +11,7 @@ url="https://gitlab.freedesktop.org/libdecor/libdecor"
 license=('MIT')
 arch=('x86_64')
 depends=('wayland' 'pango' 'dbus' 'egl-wayland' 'libxkbcommon')
-makedepends=('cmake' 'ninja' 'meson' 'wayland-protocols')
+makedepends=('cmake' 'ninja' 'meson' 'wayland-protocols>=1.32')
 source=("git+https://gitlab.freedesktop.org/libdecor/libdecor.git")
 sha512sums=('SKIP')
 conflicts=('libdecor')
