@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/anas-elgarhy/$pkgname"
 license=('MIT')
 groups=()
-depends=('jdk17-openjdk' 'cmus')
+depends=('java-runtime>=17' 'cmus')
 makedepends=()
 checkdepends=()
 optdepends=()
