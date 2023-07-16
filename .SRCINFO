@@ -1,6 +1,6 @@
 pkgbase = saga-gis
 	pkgdesc = A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis.
-	pkgver = 9.0.2
+	pkgver = 9.1.0
 	pkgrel = 1
 	url = http://www.saga-gis.org
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = saga-gis
 	optdepends = libsvm
 	optdepends = swig
 	optdepends = python
-	source = https://download.sourceforge.net/saga-gis/saga-9.0.2.tar.gz
-	sha256sums = 772aae9ee44e4251752e8fd7b0d8fd42537b59b8a692c7d3d6cf13aea07d3d71
+	source = https://download.sourceforge.net/saga-gis/saga-9.1.0.tar.gz
+	sha256sums = d3cda84365826b3ca7753b7cd62aa71dd177d192767e001b6a5a91748c7d0a7a
 
 pkgname = saga-gis
