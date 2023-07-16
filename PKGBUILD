@@ -1,8 +1,8 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=r10297_b8043981b
+pkgver=r10325_9565d00c0
 pkgrel=1
-pkgdesc="Rawconverter ART including blackfoxx-Theme built from latest sources"
+pkgdesc="rawconverter ART (RawTherapee fork with ease of use in mind) built from latest sources"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://bitbucket.org/agriggio/art/wiki/Home"
 license=('GPL3')
@@ -11,8 +11,8 @@ optdepends=('perl-image-exiftool: metadata support for CR3 images' 'art-rawconve
 makedepends=('pkgconf' 'make' 'cmake' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 conflicts=('art-rawconverter')
 provides=('art-rawconverter')
-source=("${pkgname}_src::git+https://bitbucket.org/agriggio/art.git#branch=master" "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip")
-sha256sums=('SKIP' '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346')
+source=("${pkgname}_src::git+https://bitbucket.org/agriggio/art.git#branch=master")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname}_src"
@@ -20,8 +20,6 @@ pkgver() {
 }
 
 build() {
-	cp "$srcdir/blackfoxx-GTK3-20_.css" "$srcdir/${pkgname}_src/rtdata/themes"
-
 	mkdir -p "$srcdir/${pkgname}_build"
 	cd "$srcdir/${pkgname}_build"
 
