@@ -6,7 +6,7 @@
 pkgname=chaiscript
 pkgver=6.1.0
 pkgrel=3
-pkgdesc="An embedded scripting language for C++"
+pkgdesc="Embedded Scripting Language Designed for C++"
 arch=("x86_64")
 url="https://chaiscript.com"
 license=("BSD")
