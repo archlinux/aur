@@ -1,12 +1,12 @@
 pkgbase = oxwu
 	pkgdesc = The GUI software using P2P networking to fastly report Earthquakes in Taiwan
-	pkgver = 3.0.0
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://eew.earthquake.tw
 	arch = x86_64
-	license = custom
-	source = https://eew.earthquake.tw/releases/OXWU-Setup-linux64.deb
-	sha512sums = abbbdf60d6807fa41f56862aa607c589a5f0e9032d95de4d22e7ea1eaf6a99448551a24fa9d31f2ec1cfb5b2690d752e6a27a8c8b6819a994ca28dfc115b1cf1
+	noextract = oxwu-4.1.0.AppImage
+	options = !strip
+	source = oxwu-4.1.0.AppImage::https://eew.earthquake.tw/releases/linux/x64/oxwu-linux-x86_64.AppImage
+	sha512sums = e208dd1a1db22744ff2f7f6edacf8bf93db9b46e38398b028f71ccb52e810e0e5b93b632540f902593c4d7c3a13a2225a164755fc62674630da3c02b72ed6e0a
 
 pkgname = oxwu
-
