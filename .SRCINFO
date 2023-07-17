@@ -1,20 +1,26 @@
 pkgbase = python-islpy
 	pkgdesc = Python wrapper for isl, an integer set library
-	pkgver = 2023.1
+	pkgver = 2023.1.2
 	pkgrel = 1
 	url = https://documen.tician.de/islpy
 	arch = x86_64
 	license = MIT
-	makedepends = git
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = pybind11
 	makedepends = python-pcpp
+	makedepends = git
 	depends = imath
 	depends = libisl
 	depends = barvinok
 	depends = python-pytest
-	source = git+https://github.com/inducer/islpy.git?signed#tag=v2023.1
+	source = git+https://github.com/inducer/islpy.git?signed#tag=v2023.1.2
+	source = git+https://github.com/inducer/isl.git
 	validpgpkeys = 900A958D9A0ACA58B1468F2471AA298BCA171145
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = python-islpy
