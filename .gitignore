@@ -1,4 +1,6 @@
-/pkg/
-/src/
-*.tar.*
-/google-drive-upload*
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/*.install
+!/nvchecker.toml

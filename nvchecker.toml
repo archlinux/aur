@@ -1,0 +1,4 @@
+[google-drive-upload]
+source = "github"
+github = "labbots/google-drive-upload"
+use_latest_release = true

@@ -1,13 +1,11 @@
 pkgbase = google-drive-upload
 	pkgdesc = Bash scripts to upload files to google drive
-	pkgver = 4.2
+	pkgver = 4.5
 	pkgrel = 1
 	url = https://github.com/labbots/google-drive-upload
 	arch = any
 	license = MIT
-	provides = google-drive-upload-4.2
-	conflicts = google-drive-upload-4.2
-	source = google-drive-upload-4.2::https://github.com/labbots/google-drive-upload/archive/v4.2.tar.gz
-	sha256sums = 7c57720736884f26ea69d3a76a540f021e4e13dc84ba30f7081d5f7c69c7bda4
+	source = google-drive-upload-4.5::https://github.com/labbots/google-drive-upload/archive/v4.5.tar.gz
+	sha256sums = 143bf7521fab80f5b8f5edf4180648043f900c8aa357f0b021f9ce8b06207df5
 
 pkgname = google-drive-upload
