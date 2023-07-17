@@ -1,8 +1,8 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname="osslsigncode"
-pkgver="2.5"
-pkgrel="2"
+pkgver="2.6"
+pkgrel="1"
 pkgdesc="OpenSSL based Authenticode signing for PE/MSI/Java CAB files"
 arch=('i686' 'x86_64')
 url="https://github.com/mtrojnar/osslsigncode"
@@ -10,21 +10,18 @@ license=('GPL')
 depends=('curl' 'openssl')
 makedepends=('cmake')
 source=("https://github.com/mtrojnar/${pkgname}/archive/${pkgver}.tar.gz"
-        "legacy_pkcs12_ciphers_support_01_119b88bb3d572b2c5deacf466b5c1dce6acc13eb.patch"
-        "legacy_pkcs12_ciphers_support_02_2dcbc99f79ba9e2c1b88fac15f0017d4e859ccde.patch"
-       )
-sha512sums=('b50a7c8a8fb6668e999d9e63a931e5888c31f202ca539b62a385be6bacb03c2d25ac5fabd660c779817f0ebea14e9dfe05cdcb180c1cd25f818c07c28ebd88ce'
-            'a3a27c5adc2fc5c04a109f6b8a7fd5e12128e786d82f782fcd529cabc88d709c19363c1d38cc3de7680557bd84a93371b85033c6c46f4e4ee82f0bfd61a33a7e'
-            '62553cef66fe8ae31ba7252e23aed51b0ff6f562bc204f2039410e63285690676a96cf4a4ad5b6c12eacd68adef811bbfe1022c72a092ac7dc4b7427de7bef43')
+        "issue-276-8854cada70456102df32a1c5d51b46809e66d63f.diff")
+sha512sums=('f2ad32d13bd355b196484af47e66e972a4f27e54c7a9188d754a83e9f751363dcc4d6b93f1aed1fef16b5eadead43f08b831dbe9fdfde11d159880450e3e819d'
+            '7ca0deff8913623cbb2525eeae92b2369f35a68b46a4ec0fde4588113a2858df07e144c9a30d95487973d8fa9bc223bd6a655c6208a1000a0ef48a3aa08ff1b5')
 
 prepare() {
-  patch -d "osslsigncode-${pkgver}" -p1 < "${srcdir}/legacy_pkcs12_ciphers_support_01_119b88bb3d572b2c5deacf466b5c1dce6acc13eb.patch"
-  # patch -d "osslsigncode-${pkgver}" -p1 < "${srcdir}/legacy_pkcs12_ciphers_support_02_2dcbc99f79ba9e2c1b88fac15f0017d4e859ccde.patch"
+  patch -d "osslsigncode-${pkgver}" -p1 < "${srcdir}/issue-276-8854cada70456102df32a1c5d51b46809e66d63f.diff"
 
   cmake \
     -B build -S "$srcdir/osslsigncode-${pkgver}" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DSTOP_SERVER=OFF
 }
 
 build() {
