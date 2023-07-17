@@ -1,7 +1,7 @@
 pkgbase = python-odrive
 	pkgdesc = Control utilities for the ODrive high performance motor controller
-	pkgver = 0.6.5.post2
-	pkgrel = 2
+	pkgver = 0.6.7
+	pkgrel = 1
 	arch = any
 	license = MIT
 	makedepends = python-installer
@@ -12,7 +12,7 @@ pkgbase = python-odrive
 	depends = python-pyusb
 	depends = python-setuptools
 	optdepends = python-matplotlib: required to run the liveplotter
-	source = https://files.pythonhosted.org/packages/py3/o/odrive/odrive-0.6.5.post2-py3-none-any.whl
-	sha256sums = 8fd8fd957eb67c477d01eed8cbac1fd557229cdfd81c7ebdb3f4d5cee21caa19
+	source = https://files.pythonhosted.org/packages/py3/o/odrive/odrive-0.6.7-py3-none-any.whl
+	sha256sums = e5a8f4754f7699e1db8f36c27a53de4919e9e089e807ba64860abcee70a88a8e
 
 pkgname = python-odrive
