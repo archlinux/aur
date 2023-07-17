@@ -1,6 +1,6 @@
 pkgbase = hqplayer-embedded-sse
 	pkgdesc = Signalyst HQPlayer Embedded HQPlayer - the high-end upsampling multichannel software HD-audio player
-	pkgver = 5.0.3
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = http://www.signalyst.com/custom.html
 	install = hqplayer-embedded-sse.install
@@ -25,10 +25,10 @@ pkgbase = hqplayer-embedded-sse
 	depends = lame
 	optdepends = hqplayer-client
 	conflicts = hqplayer-embedded
-	source = https://www.signalyst.eu/bins/hqplayerd/jammy/hqplayerd_5.0.3-3_amd64.deb
+	source = https://www.signalyst.eu/bins/hqplayerd/jammy/hqplayerd_5.1.0-4_amd64.deb
 	source = hqplayerd.service
 	source = hqplayerd_user.service
-	sha256sums = e0b6d48148f6c7be0892b98a929479513d08241281881c103766fe9b0d1d8771
+	sha256sums = 16c9ebb78a9cc123a649eeda30ce7ea8c5fede4e3be4b4a30f673fd821ae5ef4
 	sha256sums = 9aa79c67c22924c02b2c43cacbd3fac21dd9abbd146819ce46fe2b34f0193ef0
 	sha256sums = 5d4194a704979b3ff92482e155769460906745a66e759142eba33a2226f9cb3a
 
