@@ -1,0 +1,13 @@
+pkgbase = python-csv23
+	pkgdesc = Python 2/3 unicode CSV compatibility layer
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = http://github.com/xflr6/csv23/
+	arch = any
+	license = MIT
+	makedepends = python-distribute
+	depends = python
+	source = https://github.com/xflr6/csv23/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = f49a87213c1531bbaa20dbe9dd6b5869cee3bb5109d51c05d0ebd5c49fd39492
+
+pkgname = python-csv23
