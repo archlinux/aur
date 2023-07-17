@@ -1,14 +1,15 @@
 pkgbase = r-docopt
-	pkgdesc = Define a command-line interface by just giving it a description in the specific format.
+	pkgdesc = Command-Line Interface Specification Language
 	pkgver = 0.7.1
-	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/docopt/
+	pkgrel = 7
+	url = https://cran.r-project.org/package=docopt
 	arch = any
 	license = MIT
-	makedepends = r-testthat
+	checkdepends = r-testthat
 	depends = r
+	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/docopt_0.7.1.tar.gz
-	sha512sums = a10d3aa8d1af323e3676e1b15e6d12d42cfec8efeed32fd2fb8f3b2d61ab691bfd990dc7f6c13f39348c9fb6a8ba67a4f8d3d5ccc854cb3c18ecfc319cb5a2f6
+	md5sums = 97952edaf3093ed9801bd2eb1c557923
+	sha256sums = 9f473887e4607e9b21fd4ab02e802858d0ac2ca6dad9e357a9d884a47fe4b0ff
 
 pkgname = r-docopt
-
