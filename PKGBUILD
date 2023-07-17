@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-rtmp-git
-pkgver=20.3.0.Nexus.r2.g9ab6dfc
+pkgver=21.0.1.Omega.r0.gc421903
 pkgrel=1
 pkgdesc="librtmp support for Kodi 20+"
 arch=('x86_64' 'i686' 'armv7h')
