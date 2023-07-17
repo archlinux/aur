@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=/usr/bin/resistor
+Icon=/usr/share/pixmaps/resistor.png
+Name=Resistor
+Terminal=false
+Type=Application
+Categories=Utility
+Encoding=UTF-8
+Comment=Resistor color code calculator written in Rust
