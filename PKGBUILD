@@ -9,7 +9,7 @@ arch=(any)
 url="https://${_base}.holoviz.org"
 license=('custom:BSD-3-clause')
 depends=(python-bokeh python-pyviz_comms python-markdown python-linkify-it-py python-tqdm python-bleach) # python-mdit-py-plugins
-makedepends=(python-build python-installer python-setuptools npm)
+makedepends=(python-build python-installer python-setuptools python-wheel npm)
 source=(${_base}-${pkgver}.tar.gz::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
 sha512sums=('c7e661c0fb189d6f73a83176fafa3678e797fb8e1fd7ee612a85e3a68c2753617e6f125f2ad9496e16e362fa9ac6c283da87dfd9da95db87fca2c113f37a24ca')
 

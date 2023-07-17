@@ -8,6 +8,7 @@ pkgbase = python-panel
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = npm
 	depends = python-bokeh
 	depends = python-pyviz_comms
