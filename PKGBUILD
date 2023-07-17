@@ -50,7 +50,7 @@ build() {
     fi
     echo "Java installed by Install4J at ${BUNDLED_JRE_LOCATION}"
   else
-    echo "Install4J log did not install Java; attempting to locate a previour Java installation it re-used"
+    echo "Install4J log did not install Java; attempting to locate a previous Java installation it re-used"
     LOG_JRE_LOCATION=$(grep java.home ${srcdir}/target/.install4j/installation.log | head -n 1 | cut -d '=' -f 2 | sed 's/\.\.\.//g')
     if [ -z "${LOG_JRE_LOCATION}" ]; then
       echo "Install4J log did not provide a java.home; unable to proceed"
