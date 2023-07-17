@@ -7,9 +7,9 @@
 pkgname=coreutils-hybrid
 _pkgname=coreutils
 __pkgname=uutils-coreutils
-pkgver=9.1_0.0.19
+pkgver=9.1_0.0.20
 _pkgver=9.1
-__pkgver=0.0.19
+__pkgver=0.0.20
 pkgrel=1
 pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=('rust' 'cargo')
 source=("https://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$_pkgver.tar.xz"
         "$__pkgname-$__pkgver.tar.gz::$_url/archive/$__pkgver.tar.gz")
 sha512sums=('a6ee2c549140b189e8c1b35e119d4289ec27244ec0ed9da0ac55202f365a7e33778b1dc7c4e64d1669599ff81a8297fe4f5adbcc8a3a2f75c919a43cd4b9bdfa'
-            '6130c4d7ca8a31c95a15b0e5e64cc69ff21e4417fe118d04c354a30933379a99334c87416418ca29f5e31f25f689686d83329f971e970c1802aa5de933ad1207')
+            'd71822416904e2a2a26a192b39601a8573a71a3cb2c6260d4253c664daf78d78edb2af847a711354e8bdb279a0ee8f43bf2061592544905edc68821e72deff17')
 
 prepare() {
   cd $_pkgname-$_pkgver
