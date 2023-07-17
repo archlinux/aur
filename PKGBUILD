@@ -8,7 +8,7 @@ pkgdesc="computes astrometric and photometric solutions for any arbitrary sequen
 url="http://www.astromatic.net/software/scamp"
 arch=('x86_64')
 license=('GPL')
-depends=('astromatic-sextractor' 'cdsclient')
+depends=('astromatic-sextractor' 'cdsclient' 'shapelib')
 makedepends=()
 conflicts=()
 replaces=()
@@ -18,7 +18,7 @@ sha1sums=('59a8f9d8780ce07bcfef3d80c718141f0884d9dd')
 
 build() {
 
-	_COPTS="--enable-openblas --with-openblas-incdir=/usr/include"
+	_COPTS="--enable-openblas --with-openblas-incdir=/usr/include/openblas"
 
 	cd $srcdir/${_pkgname}-${pkgver}
 	./autogen.sh
