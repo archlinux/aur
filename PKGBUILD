@@ -3,7 +3,7 @@
 _pkgname=nanodlna
 pkgname=python-$_pkgname
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool to play local video files in your TV (or any other UPnP/DLNA compatible device)"
 arch=('any')
 url="https://github.com/gabrielmagno/nano-dlna"
@@ -21,6 +21,7 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

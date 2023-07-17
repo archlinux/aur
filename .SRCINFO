@@ -1,7 +1,7 @@
 pkgbase = python-nanodlna
 	pkgdesc = Command line tool to play local video files in your TV (or any other UPnP/DLNA compatible device)
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gabrielmagno/nano-dlna
 	arch = any
 	license = MIT
