@@ -15,7 +15,6 @@ You can also submit [feature requests](https://feedback.gitkraken.com/) and see 
 
 ### Update package
 
-- Change to the [aur](aur) folder
 - Update package version in [PKGBUILD](PKGBUILD)
 - Update checksums with `updpkgsums`
 - Do a test installation with `makepkg -si` [Docs for makepkg](https://wiki.archlinux.org/title/makepkg)
