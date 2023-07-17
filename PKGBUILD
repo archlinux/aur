@@ -133,6 +133,9 @@ package() {
   python -m compileall "${pkgdir}/usr/share/blender"
   python -O -m compileall "${pkgdir}/usr/share/blender"
 
+  # Manually install additional scripts (See FS#69351)
+  cp -r blender/scripts/addons_contrib/* "${pkgdir}"/usr/share/blender/4*/scripts/addons_contrib/
+
   # Manually install draco bindings (See FS#73415)
   ((DISABLE_DRACO)) || {
   mkdir -p "${pkgdir}/usr/lib/python${_pyver}"/
