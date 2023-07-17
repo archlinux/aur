@@ -1,39 +1,26 @@
 # Maintainer: nezu <nezu@nezu.cc>
 pkgname=givemebadge-git
 _pkgname=givemebadge
-pkgver=82d0c5c
+pkgver=e17fb70
 pkgrel=1
 pkgdesc="Pretty simple Discord bot to get the active developer badge"
 arch=('any')
 url="https://github.com/AlexFlipnote/GiveMeBadge"
 license=('MIT')
-depends=('python')
-makedepends=('git' 'python-pip')
+depends=('python' 'python-colorama' 'python-requests' 'python-discord')
 provides=('givemebadge')
 conflicts=('givemebadge')
-source=("$_pkgname::git+$url")
-sha256sums=('SKIP')
+source=("start.sh" "$_pkgname::git+$url")
+sha256sums=('ef09169e18bb768d482a156ce918b33738e2b97b124c13aede1373464b8f6642'
+            'SKIP')
 
 pkgver() {
 	cd "$_pkgname"
 	git describe --tags --always | sed 's#v##;s#-#+#g;s#+#+r#'
 }
 
-prepare() {
-	cd "$_pkgname"
-	export PATH=${HOME}/.local/bin:${PATH}
-	pip install -r requirements.txt
-	pip install pyinstaller
-}
-
-build() {
-	cd "$_pkgname"
-	export PATH=${HOME}/.local/bin:${PATH}
-	pyinstaller index.py --onefile --icon=assets/logo.ico --name $_pkgname
-}
-
 package() {
-	cd "$_pkgname"
-	install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
-	install -Dm755 "dist/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm644 "$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
+	install -Dm644 "$_pkgname/index.py" -t "$pkgdir/usr/share/$_pkgname"
+	install -Dm755 "start.sh" "$pkgdir/usr/bin/$_pkgname"
 }

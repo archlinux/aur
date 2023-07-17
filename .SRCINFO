@@ -1,16 +1,19 @@
 pkgbase = givemebadge-git
 	pkgdesc = Pretty simple Discord bot to get the active developer badge
-	pkgver = 82d0c5c
+	pkgver = e17fb70
 	pkgrel = 1
 	url = https://github.com/AlexFlipnote/GiveMeBadge
 	arch = any
 	license = MIT
-	makedepends = git
-	makedepends = python-pip
 	depends = python
+	depends = python-colorama
+	depends = python-requests
+	depends = python-discord
 	provides = givemebadge
 	conflicts = givemebadge
+	source = start.sh
 	source = givemebadge::git+https://github.com/AlexFlipnote/GiveMeBadge
+	sha256sums = ef09169e18bb768d482a156ce918b33738e2b97b124c13aede1373464b8f6642
 	sha256sums = SKIP
 
 pkgname = givemebadge-git
