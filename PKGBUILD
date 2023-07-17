@@ -25,5 +25,4 @@ package() {
   cd "${_name}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-  install LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
