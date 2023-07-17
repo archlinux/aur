@@ -1,0 +1,11 @@
+pkgbase = cutentr
+	pkgdesc = POC Qt 3DS streaming client for NTR CFW
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://gitlab.com/BoltsJ/cuteNTR
+	arch = x86_64
+	license = GPL3
+	source = https://gitlab.com/BoltsJ/cuteNTR/-/archive/0.3.3/cuteNTR-0.3.3.tar.gz
+	md5sums = ad8d9680139767818ea9d3dba09e27ff
+
+pkgname = cutentr
