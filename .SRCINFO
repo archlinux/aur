@@ -1,17 +1,14 @@
 pkgbase = gem2arch
 	pkgdesc = Create PKGBUILD from Ruby Gem Package
 	pkgver = 0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anatol/gem2arch
 	arch = any
 	license = GPL3
 	depends = ruby
 	depends = ruby-erubis
-	depends = pkgbuild-introspection
 	optdepends = git: for --git support
-	optdepends = burp: for --aur flag support
 	source = gem2arch-0.11.zip::https://github.com/anatol/gem2arch/archive/0.11.zip
 	sha1sums = 9fe76219255f251f85df7080ceece0dfe766b885
 
 pkgname = gem2arch
-
