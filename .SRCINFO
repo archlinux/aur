@@ -1,14 +1,14 @@
 pkgbase = jlink-systemview-target-src
 	pkgdesc = Segger SystemView target src for Linux
-	pkgver = 3.52
+	pkgver = 3.52a
 	pkgrel = 2
-	epoch = 2
+	epoch = 3
 	url = https://www.segger.com/downloads/free-utilities/#SystemView
 	arch = i686
 	arch = x86_64
 	groups = jlink
 	license = custom
-	source = https://www.segger.com/downloads/systemview/SystemView_Src_V352.zip
-	md5sums = c91b0d8318d32a802c51d8011323df00
+	source = https://www.segger.com/downloads/systemview/SystemView_Src_V352a.zip
+	md5sums = 884964a3aaabe3796c0878638dd242b6
 
 pkgname = jlink-systemview-target-src
