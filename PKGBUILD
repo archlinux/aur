@@ -1,19 +1,13 @@
+#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
 # shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg --apply
-_repo=YuriyLisovskiy/pynotifier
-_source_type=pypi-releases
-_upstreamver='0.5.0'
+# ex: nowrap
 _pkgname=py-notifier
-_pypi_package=$_pkgname
-
 pkgname=python-$_pkgname
-pkgver=${_upstreamver##v}
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Cross-platform desktop push-notifications."
 arch=(any)
-url=https://github.com/$_repo
+url=https://github.com/YuriyLisovskiy/pynotifier
 makedepends=(python-installer)
 depends=(libnotify)
 license=(MIT)
