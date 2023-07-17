@@ -1,34 +1,17 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Asuka Minato <asukaminato at nyan dot eu dot org>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
 pkgname=open-ai-translator-bin
-pkgver=0.0.16
+pkgver=0.0.57
 pkgrel=1
-epoch=
-pkgdesc="Cross-platform desktop application for translation based on ChatGPT API."
+pkgdesc="基于 ChatGPT API 的划词翻译浏览器插件和跨平台桌面端应用 - Browser extension and cross-platform desktop application for translation based on ChatGPT API."
 arch=('x86_64')
-url="https://github.com/yetone/openai-translator"
-license=('MIT')
-groups=()
-depends=(webkit2gtk gtk3)
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=(open-ai-translator)
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/yetone/openai-translator/releases/download/v$pkgver/open-ai-translator_${pkgver}_amd64.deb")
-noextract=()
-sha256sums=('d49ac8bb0e5c280fab9d9de28fcc14dfd63a1ad00593c4ea9a5398510a22378a')
-validpgpkeys=()
-
+url="https://github.com/openai-translator/openai-translator"
+license=('AGPL3')
+conflicts=("${pkgname%-bin}" "openai-translator")
+depends=('hicolor-icon-theme' 'glibc' 'dbus' 'glib2' 'gcc-libs' 'xdotool' 'gtk3' 'cairo' 'gdk-pixbuf2' \
+	'libx11' 'libxtst' 'java-runtime' 'pango' 'webkit2gtk' 'openssl')
+source=("${pkgname%-appimage}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+sha256sums=('3de6d9c3e6328264dd2c4fc3ccf328200c746b81c86d78df6f3cc0879a9a460a')
 package() {
-		tar -xvpf data.tar.gz -C $pkgdir
+	bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}" --gname root --uname root
 }
