@@ -1,0 +1,15 @@
+pkgbase = gsender
+	pkgdesc = Connect to and control Grbl-based CNCs
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/Sienci-Labs/gsender
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = yarn
+	makedepends = libxcrypt-compat
+	depends = nodejs
+	source = https://github.com/Sienci-Labs/gsender/archive/v1.2.2.tar.gz
+	sha512sums = c4e07887825dda4b4d4a289ee6551c1d80026fa0ddc2f45b9312dce241fee0273ee6ac49a31a378e6f29d3189a2f2caad1b30cbcc9ea49e6ff4ddef8a80317e2
+
+pkgname = gsender
