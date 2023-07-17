@@ -9,6 +9,7 @@ url="https://github.com/Fallen-Breath/MCDReforged"
 license=('LGPL3')
 depends=('python' 'python-colorama' 'python-colorlog' 'python-parse' 'python-prompt_toolkit' 'python-psutil' 'python-requests' 'python-ruamel-yaml' 'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-wheel')
+optdepends=('java-runtime: start Minecraft server')
 backup=()
 options=()
 install=

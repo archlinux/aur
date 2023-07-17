@@ -17,6 +17,7 @@ pkgbase = python-mcdreforged
 	depends = python-requests
 	depends = python-ruamel-yaml
 	depends = python-typing_extensions
+	optdepends = java-runtime: start Minecraft server
 	source = https://files.pythonhosted.org/packages/source/m/mcdreforged/mcdreforged-2.9.1.tar.gz
 	sha256sums = 97cdb398d1736d2668fec6ec042e01181bc1e640ab16ee834212ab5b74a29b0a
 
