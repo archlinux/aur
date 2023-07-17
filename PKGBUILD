@@ -2,7 +2,7 @@
 
 pkgname=daed-bin-x64-v3
 _pkgname=daed
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A modern dashboard for dae, bundled with dae-wing (backend API server) and dae (core)."
 url="https://daeuniverse.github.io/daed"
