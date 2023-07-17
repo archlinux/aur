@@ -1,0 +1,4 @@
+[rime-cli]
+source = "github"
+github = "puddinging/rime-cli"
+use_latest_release = true
