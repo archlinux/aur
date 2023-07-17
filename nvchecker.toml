@@ -1,4 +1,3 @@
-[python-pix2tex]
-source = "github"
-github = "lukas-blecher/LaTeX-OCR"
-use_max_tag = true
+[pix2tex]
+source = "pypi"
+pypi = "pix2tex"

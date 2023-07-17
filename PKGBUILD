@@ -22,7 +22,7 @@ source=(
   "https://github.com/lukas-blecher/LaTeX-OCR/releases/download/v0.0.1/weights.pth"
 )
 sha256sums=(
-  '55e41560a6d43d10c562b6b438f5e50d26af6f4958856fcf8d04ef44d1c864bc'
+  '2508503c636df3d6545068ba5bdd317efcbe781513f5948106f54a5dba20ede5'
   '1c3820659985ad142b526490bb25c23d977176ac2073591b3bddada692718458'
   'a63d9141c53d266cb682fb5a8bd83bd5cbe283145e0e78ebdc0f895195a1dfaa'
 )
