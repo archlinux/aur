@@ -3,6 +3,7 @@
 /pkg
 
 # source files
+*.tar.gz
 *.zip
 
 # built package
