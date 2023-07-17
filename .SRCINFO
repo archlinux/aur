@@ -5,12 +5,13 @@ pkgbase = kscope
 	url = https://sourceforge.net/projects/kscope/
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = qscintilla-qt5
 	depends = qt5-base
 	depends = glibc
 	depends = gcc-libs
 	provides = kscopeapp
-	source = git+https://github.com/chaoys/kscope.git
+	source = git+https://github.com/chaoys/kscope.git#commit=20fc411f2a155121e9732b0945eb3af8ce373fe5
 	sha256sums = SKIP
 
 pkgname = kscope

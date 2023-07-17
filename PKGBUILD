@@ -1,5 +1,5 @@
 
-# Maintainer: Asuka Minato <youremail@domain.com>
+# Maintainer: Aron Young <tkf6fkt at gmail dot com>
 # Contributor: Asuka Minato
 # This doesn't update, just patch to qt5, so I remove the -git
 pkgname=kscope
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=(qscintilla-qt5 qt5-base glibc gcc-libs)
 makedepends=(git)
 provides=(kscopeapp)
-source=("git+https://github.com/chaoys/kscope.git")
+source=("git+https://github.com/chaoys/kscope.git#commit=20fc411f2a155121e9732b0945eb3af8ce373fe5")
 sha256sums=('SKIP')
 
 build() {
