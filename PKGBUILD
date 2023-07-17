@@ -2,7 +2,7 @@
 
 _pkgname=flightcore
 pkgname=$_pkgname-bin
-pkgver=1.22.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("$url/releases/download/v$pkgver/flight-core_${pkgver}_amd64.AppImage"
         "$_url2/README.md"
         "$_url2/docs/DEVELOPMENT.md"
         "$_url2/docs/FAQ.md")
-sha256sums=('e5a3bccdeaeec81ceaab436988fa9479066fdc3654534ad1d717e6296f9359cc'
+sha256sums=('18b3610e73aeb612084f0f1bbea128db7b4d1ffc435c3ea9b43e235f95f3294a'
             'SKIP'
             'SKIP'
             'SKIP'
