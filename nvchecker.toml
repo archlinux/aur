@@ -1,0 +1,4 @@
+[python-pix2tex]
+source = "github"
+github = "lukas-blecher/LaTeX-OCR"
+use_max_tag = true

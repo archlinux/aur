@@ -1,19 +1,13 @@
+#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
 # shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg --apply
-_repo=lukas-blecher/LaTeX-OCR
-_pypi_package=pix2tex
-_source_type=pypi-releases
-_upstreamver='0.0.29'
+# ex: nowrap
 _pkgname=pix2tex
-
 pkgname=python-$_pkgname
-pkgver=${_upstreamver##v}
+pkgver=0.0.31
 pkgrel=3
 pkgdesc="Using a ViT to convert images of equations into LaTeX code."
 arch=(any)
-url=https://github.com/$_repo
+url=https://github.com/lukas-blecher/LaTeX-OCR
 depends=(python-tqdm python-munch python-pytorch python-opencv python-requests
   python-einops python-x-transformers python-transformers python-tokenizers
   python-numpy python-pillow python-yaml python-pandas python-timm
