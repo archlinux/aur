@@ -1,9 +1,10 @@
-# Maintainer: Alessandro Zanatta <alessandro.zanatta.lav@gmail.com>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: farwayer <farwayer@gmail.com>
 
 _gemname=os
 pkgname=ruby-$_gemname
 pkgver=1.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Provides basic information about the operating system'
 arch=('any')
 url='https://rubygems.org/gems/os'
