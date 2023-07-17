@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=leidenbase
-_pkgver=0.1.18
+_pkgver=0.1.23
 pkgname=r-${_pkgname,,}
-pkgver=0.1.18
+pkgver=0.1.23
 pkgrel=1
 pkgdesc='R and C/C++ Wrappers to Run the Leiden find_partition() Function'
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
   gcc-fortran
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b56fa823bce97c98e886896111041d50b12c1d1aad4ec01a829851a537d0dbfd')
+sha256sums=('cc4510c50c6a85159ae430338018a3858c1a486d745f0206f9ec3ec101f128c9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
