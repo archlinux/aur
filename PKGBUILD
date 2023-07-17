@@ -1,19 +1,17 @@
+#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
+# shellcheck shell=bash disable=SC2034,SC2154
+# ex: nowrap
 pkgname=svlint
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="SystemVerilog linter compliant with IEEE1800-2017"
 arch=('x86_64')
 url="https://github.com/dalance/svlint"
 license=('MIT')
-groups=()
 depends=('gcc-libs')
 makedepends=('cargo')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('08294af18f775c81a0701e398d90e73d708f032c12baf575442ac4dc0cdd2d33')
+sha256sums=('50a5d225351ef4971d766f2c1bb80af3ae36990c6b02ae3adb4c52a26f33d82d')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

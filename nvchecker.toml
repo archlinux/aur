@@ -1,0 +1,4 @@
+[svlint]
+source = "github"
+github = "dalance/svlint"
+use_latest_release = true
