@@ -1,5 +1,5 @@
-*
-!.gitignore
-!.SRCINFO
-!PKGBUILD
-!y-cruncher.LICENSE
+/*
+!/.gitignore
+!/.SRCINFO
+!/PKGBUILD
+!/y-cruncher.LICENSE
