@@ -1,7 +1,7 @@
 # Maintainer: Yunshan Yao <qimuzi@aliyun.com>
 pkgname=aliyunpan-odomu-bin
 _appname=alixby
-pkgver=3.23.60617
+pkgver=3.23.62819
 pkgrel=1
 pkgdesc="binary of aliyunpan liupan1890 forked by odomu"
 arch=("x86_64")
