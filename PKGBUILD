@@ -11,7 +11,7 @@ _pkgname="PWAsForFirefox"
 pkgname="firefox-pwa"
 pkgdesc="A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox (native component)"
 pkgver="2.7.0"
-pkgrel=1
+pkgrel=2
 url="https://github.com/filips123/PWAsForFirefox"
 arch=("x86_64" "i686")
 license=("MPL2")
@@ -71,6 +71,6 @@ package() {
     install -Dm644 packages/deb/copyright $pkgdir/usr/share/doc/firefoxpwa/copyright
 
     # AppStream Metadata
-    install -Dm644 packages/appstream/si.filips.FirefoxPWA.metainfo.xml /usr/share/metainfo/si.filips.FirefoxPWA.metainfo.xml
-    install -Dm644 packages/appstream/si.filips.FirefoxPWA.svg /usr/share/icons/hicolor/scalable/apps/si.filips.FirefoxPWA.svg
+    install -Dm644 packages/appstream/si.filips.FirefoxPWA.metainfo.xml $pkgdir/usr/share/metainfo/si.filips.FirefoxPWA.metainfo.xml
+    install -Dm644 packages/appstream/si.filips.FirefoxPWA.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/si.filips.FirefoxPWA.svg
 }
