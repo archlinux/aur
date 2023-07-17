@@ -19,6 +19,7 @@ pkgbase = blender-develop-git
 	makedepends = libxkbcommon
 	makedepends = wayland-protocols
 	makedepends = cython
+	depends = materialx
 	depends = alembic
 	depends = embree
 	depends = libgl

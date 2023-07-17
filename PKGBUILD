@@ -15,6 +15,13 @@ _fragment=${FRAGMENT:-#branch=main}
                 -DUSD_ROOT=/usr )
   depends+=( "usd=21.02" )
 }
+((DISABLE_MATERIALX)) && {
+  _CMAKE_FLAGS+=( -DWITH_MATERIALX=OFF )
+} || {
+  _CMAKE_FLAGS+=( -DWITH_MATERIALX=ON )
+  depends+=( materialx )
+  export PATH+=":/opt/materialx"
+}
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 #shellcheck disable=SC2015
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.4'); }
