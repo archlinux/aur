@@ -1,18 +1,13 @@
+#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
 # shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Wu Zhenyu <wuzy01@qq.com>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg .
-_repo=heavenshell/py-doq
-_source_type=github-releases
-_upstreamver='0.9.1'
-_pkgname=${_repo##*/py-}
-
+# ex: nowrap
+_pkgname=doq
 pkgname=python-${_pkgname}
-pkgver=${_upstreamver##v}
+pkgver=0.9.1
 pkgrel=4
 pkgdesc='Docstring generator'
 arch=(any)
-url=https://github.com/$_repo
+url=https://github.com/heavenshell/py-doq
 license=(BSD)
 depends=(python-parso python-jinja python-toml)
 makedepends=(python-setuptools)
