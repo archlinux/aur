@@ -3,7 +3,7 @@
 
 pkgname=gohugo-bin
 pkgver=0.115.3
-pkgrel=9
+pkgrel=10
 pkgdesc="Hugo - The world's fastest framework for building websites"
 arch=('x86_64' 'aarch64')
 url='https://gohugo.io/'
@@ -26,7 +26,6 @@ build() {
 
 package() {
   cd "${srcdir}"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/hugo"
   install -Dm755 hugo "${pkgdir}/usr/bin/hugo"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/hugo/LICENSE"
   install -Dm644 man/*.1 -t "${pkgdir}"/usr/share/man/man1/
