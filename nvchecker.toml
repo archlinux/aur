@@ -1,4 +1,4 @@
 [python-doq]
 source = "github"
 github = "heavenshell/py-doq"
-use_latest_release = "true"
+use_latest_release = true
