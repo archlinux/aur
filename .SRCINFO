@@ -1,7 +1,7 @@
 pkgbase = firefox-34-bin
 	pkgdesc = Firefox 34.0 for WebIDE and other legacy features.
 	pkgver = 34.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ftp.mozilla.org/pub/firefox/releases/34.0/linux-x86_64/en-US/
 	arch = any
 	license = MPL

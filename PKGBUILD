@@ -1,6 +1,7 @@
+# Maintainer: jdev082 <jdev0894@gmail.com>
 pkgname=firefox-34-bin
 pkgver=34.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox 34.0 for WebIDE and other legacy features."
 arch=('any')
 url="https://ftp.mozilla.org/pub/firefox/releases/34.0/linux-x86_64/en-US/"
