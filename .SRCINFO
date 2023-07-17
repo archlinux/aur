@@ -1,11 +1,11 @@
 pkgbase = deepsource-cli-bin
 	pkgdesc = Command line interface to DeepSource
-	pkgver = 0.5.2
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/deepsourcelabs/cli
 	arch = x86_64
 	license = BSD
-	source = https://github.com/deepsourcelabs/cli/releases/download/v0.5.2/deepsource_0.5.2_linux_x86_64.tar.gz
-	sha256sums = 3b90a4992cff0ee3cc8ab88adf077d0d28d726b78c19883a017c53dce403090a
+	source = https://github.com/deepsourcelabs/cli/releases/download/v0.6.0/deepsource_0.6.0_linux_x86_64.tar.gz
+	sha256sums = 13eca489bdc7b5a69aa3801f6575e7f54ecc66ac850fc63e61d1248eafa6d382
 
 pkgname = deepsource-cli-bin

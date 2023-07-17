@@ -1,0 +1,4 @@
+[deepsource-cli-bin]
+source = "github"
+github = "deepsourcelabs/cli"
+use_latest_release = true
