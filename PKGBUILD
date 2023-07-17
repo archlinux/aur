@@ -1,11 +1,8 @@
-Got pkgrel 6 on the AUR.
-Got version 0.115.3 on the AUR.
-Incrementing pkgrel...
 # Maintainer: xeptore
 # Contributor: Porous3247 <pqtb3v7t at jasonyip1 dot anonaddy dot me>
 pkgname=gohugo-bin
 pkgver=0.115.3
-pkgrel=7
+pkgrel=8
 pkgdesc="Hugo - The world's fastest framework for building websites"
 arch=('x86_64' 'aarch64')
 url='https://gohugo.io/'
