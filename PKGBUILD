@@ -7,7 +7,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mlterm
 pkgver=3.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi Lingual TERMinal emulator on X"
 url="http://mlterm.sourceforge.net/"
 arch=('i686' 'x86_64')
