@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=tree-sitter-python-git
-pkgver=0.20.0.r56.g36f9e33
+pkgver=0.20.0.r66.g7c8930b
 pkgrel=1
 pkgdesc="Python grammar for tree-sitter"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/tree-sitter/tree-sitter-python"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('gcc-libs')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter' 'tree-sitter-cli' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
