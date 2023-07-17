@@ -1,7 +1,7 @@
 pkgbase = ast-grep
 	pkgdesc = A fast and polyglot tool for code structural search, lint, rewriting at large scale
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ast-grep.github.io/
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 
 pkgname=ast-grep
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and polyglot tool for code structural search, lint, rewriting at large scale'
 arch=('x86_64')
 url='https://ast-grep.github.io/'
@@ -41,7 +41,7 @@ package() {
 
     install -Dm0755 -t "$pkgdir/usr/bin" \
         target/release/ast-grep
-    ln -sf ast-grep "$pkgdir/usr/bin/sg"
+    ln -sf ast-grep "$pkgdir/usr/bin/asg"
 
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
         LICENSE
