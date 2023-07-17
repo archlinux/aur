@@ -4,7 +4,7 @@
 # Contributor:  GalSim developers team on GitHub
 _base=GalSim
 pkgname=python-${_base,,}
-pkgver=2.4.9
+pkgver=2.4.10
 pkgrel=1
 pkgdesc="Modular galaxy image simulation toolkit"
 arch=(x86_64)
@@ -12,9 +12,9 @@ url="https://github.com/${_base}-developers/${_base}"
 license=('BSD')
 depends=(python-astropy boost-libs eigen fftw python-coord python-future)
 makedepends=(python-build python-installer python-setuptools python-wheel pybind11 python-numpy)
-# checkdepends=(python-pytest) # python-yaml python-pandas
-source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('b79fc96e6a6a969f29eaecb2e5b8a7bb9cc2bb4981b56382de09e9a0e1893663d8edae1f7ce065e1fac2c7e2cab9c8de9c80a52d2e033400d53b27fb09da516c')
+# checkdepends=(python-pytest) # python-timeout python-scipy python-yaml
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('a08b59f42685e47f18708f6db8f90789dcf2c4316c78a153a352878cbbc35da5e3959fb87e0b9416332e9d87f31a9d340403de4c5d95ecc86e09bec0957e5008')
 
 build() {
   cd ${_base}-${pkgver}
@@ -25,8 +25,8 @@ build() {
 #   cd ${_base}-${pkgver}
 #   python -m venv --system-site-packages test-env
 #   test-env/bin/python -m installer dist/*.whl
-#   test-env/bin/python -m pytest
-#   PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_py" nosetests
+#   local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}{sys.version_info.minor}')")
+#   LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${srcdir}/${_base}-${pkgver}/build/lib.linux-${CARCH}-cpython-${_pyversion}/${_base,,}" test-env/bin/python -m pytest
 # }
 
 package() {
