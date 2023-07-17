@@ -22,7 +22,7 @@ _fragment=${FRAGMENT:-#branch=main}
   depends+=( materialx )
   export PATH+=":/opt/materialx"
 }
-((DISABLE_NINJA)) ||  makedepends+=('ninja')
+((DISABLE_NINJA)) || { makedepends+=('ninja'); : ${MAKEFLAGS:--j1}; }
 #shellcheck disable=SC2015
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.4'); }
 
@@ -124,7 +124,7 @@ build() {
         "${_CMAKE_FLAGS[@]}"
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
 # shellcheck disable=SC2086 # allow MAKEFLAGS to split when multiple flags provided.
-  if ((DISABLE_NINJA)); then make -C "$srcdir/build" ; else ninja -C "$srcdir/build" ${MAKEFLAGS:--j1}; fi
+  cmake --build build ${MAKEFLAGS}
 }
 
 package() {
