@@ -1,9 +1,9 @@
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Aron Young <tkf6fkt at gmail dot com>
 # Contributor: Asuka Minato
 pkgname=kitsune-git
 _pkgname=kitsune
-pkgver=v0.0.1.pre.0.r23.g40ee7d0
+pkgver=0.0.1pre.0.r23.g40ee7d0
 pkgrel=1
 pkgdesc=":fox_face: ActivityPub-federated microblogging"
 arch=(any)
@@ -24,7 +24,7 @@ prepare() {
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v//' | sed 's/\.pre/pre/'
 
 }
 
