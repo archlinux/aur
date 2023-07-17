@@ -1,0 +1,24 @@
+pkgbase = poptranslate
+	pkgdesc = Translate the text selected by the mouse in wayland
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/glaumar/PopTranslate
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt5-tools
+	makedepends = qt5-multimedia
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	depends = kxmlgui
+	depends = kwindowsystem
+	depends = kglobalaccel
+	depends = kguiaddons
+	depends = kwidgetsaddons
+	depends = kwayland
+	provides = poptranslate
+	source = poptranslate-0.0.9.tar.gz::https://github.com/glaumar/PopTranslate/archive/refs/tags/0.0.9.tar.gz
+	sha256sums = ff0a2cf160de8d00eb1957c02932365d6f67f3d8081b49fc44acf580de69035b
+
+pkgname = poptranslate
