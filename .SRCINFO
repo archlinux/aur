@@ -1,0 +1,20 @@
+pkgbase = python-macs3
+	pkgdesc = MACS -- Model-based Analysis of ChIP-Seq
+	pkgver = 3.0.0b2
+	pkgrel = 1
+	url = https://macs3-project.github.io/MACS
+	arch = x86_64
+	license = BSD
+	makedepends = cython
+	makedepends = python-cykhash
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-hmmlearn
+	depends = python-numpy
+	source = https://pypi.python.org/packages/source/m/macs3/MACS3-3.0.0b2.tar.gz
+	sha256sums = 9b13fed49b93623ddde4b2d5106fc92a796111fa92148cafe7d8bd9a2e8aa43f
+
+pkgname = python-macs3
