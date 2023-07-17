@@ -1,8 +1,8 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=yutto
-pkgver=2.0.0b27
-pkgrel=2
+pkgver=2.0.0b28
+pkgrel=1
 pkgdesc='一个可爱且任性的 B 站视频下载器'
 arch=('any')
 url='https://github.com/yutto-dev/yutto'
@@ -17,7 +17,7 @@ depends=(
 makedepends=(python-build python-installer python-wheel python-poetry-core)
 optdepends=('python-uvloop: fast asyncio event loop')
 source=("https://pypi.io/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('cb795b8d4557549277f60f1621752bd09c7defe0a2e133aef3d83395b8b0412e')
+sha256sums=('8cdf4a0d08c46937fb0540ed19dd3b5b74ed8a344acc3f92b4c45e2e65f8408d')
 
 build() {
     cd "$pkgname-$pkgver"
