@@ -1,0 +1,17 @@
+pkgbase = librewands
+	pkgdesc = Map editor for a collaboratively made ncurses RPG featuring magick and monsters.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://gitea.com/lofenyy/LibreWands
+	arch = any
+	license = GPL
+	makedepends = make
+	makedepends = gcc
+	depends = ncurses
+	optdepends = imagemagick
+	optdepends = librsvg2
+	optdepends = texlive
+	source = https://gitea.com/lofenyy/librewands/archive/0.0.3.tar.gz
+	md5sums = 73b9d5b70f14ea4d10e86d79854e5a9d
+
+pkgname = librewands
