@@ -1,27 +1,20 @@
+#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
 # shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg --apply
-_repo=piccolomo/plotext
-_source_type=github-releases
-_upstreamver='5.2.8'
-_pkgname=$(tr A-Z a-z <<< ${_repo##*/})
-
+# ex: nowrap
+_pkgname=plotext
 pkgname=python-$_pkgname
-pkgver=${_upstreamver##v}
+pkgver=5.2.8
 pkgrel=1
 pkgdesc="plotting on terminal"
 arch=(any)
-url=https://github.com/$_repo
+url=https://github.com/piccolomo/plotext
 makedepends=(python-installer python-shtab)
 license=(MIT)
-source=("$url/archive/$_upstreamver.tar.gz")
 _py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
 sha256sums=('7364cf72e6c9bffaf96158340fd2e0058faf404edbbc1e7a2aed421c8638d475')
 
 package() {
-  cd "$srcdir" || return 1
   python -m installer --destdir="$pkgdir" ./*.whl || return 1
   local bin=${_repo##*/}
   PYTHONPATH="$(ls -d "$pkgdir"/usr/lib/python*/site-packages)"

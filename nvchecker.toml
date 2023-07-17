@@ -1,0 +1,3 @@
+[plotext]
+source = "pypi"
+pypi = "plotext"
