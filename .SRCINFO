@@ -1,7 +1,7 @@
 pkgbase = gnome-rtfm
 	pkgdesc = Offline documentation browser, dash docset reader
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hugopl/rtfm
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,9 @@ pkgbase = gnome-rtfm
 	makedepends = crystal>=1.8.2
 	makedepends = shards>=0.14.0
 	makedepends = unzip
+	makedepends = gtk4-docs
+	makedepends = pango-docs
+	makedepends = libadwaita-docs
 	depends = gc
 	depends = libevent
 	depends = pcre
