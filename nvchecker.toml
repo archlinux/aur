@@ -1,0 +1,4 @@
+[stardict-ecdict]
+source = "github"
+github = "skywind3000/ECDICT"
+use_latest_release = true
