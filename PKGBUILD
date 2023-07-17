@@ -10,6 +10,7 @@ arch=(x86_64)
 url="https://sourceforge.net/projects/kscope/"
 license=('GPL2')
 depends=(qscintilla-qt5 qt5-base glibc gcc-libs)
+makedepends=(git)
 provides=(kscopeapp)
 source=("git+https://github.com/chaoys/kscope.git")
 sha256sums=('SKIP')
