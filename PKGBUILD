@@ -1,6 +1,6 @@
 # Maintainer: Václav Kubernát <sir.venceslas@gmail.com>
 pkgname=lith-git
-pkgver=1.3.40.r0.g05ee44e
+pkgver=1.3.45.r0.gf110ed6
 pkgrel=1
 pkgdesc='A multiplatform WeeChat relay client'
 arch=('x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-    LDFLAGS="${LDFLAGS/,--as-needed/}" cmake \
+    cmake \
         -S "$srcdir/${pkgname%-git}" \
         -B "$srcdir/build" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
