@@ -1,4 +1,5 @@
 # Maintainer: Yunshan Yao <qimuzi@aliyun.com>
+# Co-maintainer: 1ridic <i@8f.al>
 pkgname=aliyunpan-odomu-bin
 _appname=alixby
 pkgver=3.23.62819
