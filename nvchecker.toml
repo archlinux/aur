@@ -1,0 +1,4 @@
+[md2vim]
+source = "github"
+github = "FooSoft/md2vim"
+use_latest_release = true
