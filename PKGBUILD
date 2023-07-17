@@ -1,19 +1,13 @@
+#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
 # shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Wu Zhenyu <wuzy01@qq.com>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg .
-_repo=google/latexify_py
-_pkgname=${_repo##*/}
-_pypi_package=$_pkgname
-_source_type=pypi-releases
-_upstreamver='0.2.0'
-
+# ex: nowrap
+_pkgname=latexify_py
 pkgname=python-${_pkgname//_/-}
-pkgver=${_upstreamver##v}
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A library to generate LaTeX expression from Python code."
 arch=(any)
-url=https://github.com/$_repo
+url=https://github.com/google/latexify_py
 depends=(python-dill)
 makedepends=(python-installer)
 license=(ApacheV2)
