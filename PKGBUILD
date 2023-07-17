@@ -3,8 +3,8 @@
 pkgbase=python-h5pyd
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.15.0
-_commit="1b7e1f128ba6b9a0f64aff4c2ef70b9e35a273c8"
+pkgver=0.15.1
+_commit="ca1f8aeac9db5423b602da4f28169928c35f2831"
 pkgrel=1
 pkgdesc="h5py distributed - Python client library for HDF Rest API "
 arch=('any')
@@ -29,7 +29,7 @@ source=("${_pyname}-${pkgver}.tar.gz::https://github.com/HDFGroup/h5pyd/archive/
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_inotify_example.py"
         "https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py"
         'fix-h5type-test.patch')
-md5sums=('5e1b1e0f1706e2c24c5b01616c8aeb74'
+md5sums=('30429d290557be7054b7b3dc13629d50'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -67,7 +67,7 @@ check() {
 #   cd ${srcdir}/${_pyname}-${pkgver}
     cd ${srcdir}/${_pyname}-${_commit}
 
-    pytest || warning "Tests failed" #${PWD}/test \ -vv --color=yes
+    pytest || warning "Tests failed" #${PWD}/test \ -vv -ra --color=yes -o console_output_style=count
 #   PYTHONPATH="build/lib" pytest #|| warning "Tests failed" #${PWD}/test \
 #       --ignore=build/lib/h5pyd/_hl/h5type_test.py #|| warning "Tests failed"
 }
