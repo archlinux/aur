@@ -9,7 +9,7 @@ pkgname=(
   rust-std-thumbv7neon-linux-androideabi
 )
 pkgbase=rust-std-android
-pkgver=1.70.0
+pkgver=1.71.0
 pkgrel=1
 pkgdesc="Android targets for Rust"
 arch=(x86_64)
@@ -26,7 +26,7 @@ options=(
   !buildflags
 )
 depends=(
-  'rust=1:1.70.0'
+  'rust=1:1.71.0'
 )
 makedepends=(
   'cmake'
@@ -40,10 +40,10 @@ optdepends=(
 )
 conflicts=(rust-nightly)
 source=(
-  "https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.gz"
+  "https://static.rust-lang.org/dist/rustc-$pkgver-src.tar.xz"
 )
-b2sums=(
-  '5b1fd44eaa10bf2ab76f64a3bb5c20ee4008031d05a49b0a32b3a9cb2e97d5684cf0c9a6b6883089afca6cab7a37a0a9cfa06d928ed3e6a3b6484b605e18a0f3'
+sha256sums=(
+	'5814699031aafdcc2e2f71fc9b389678cd7042350d1583da061463d8e88681c7'
 )
 
 prepare() {
