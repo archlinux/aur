@@ -1,25 +1,19 @@
+#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
 # shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Wu Zhenyu <wuzy01@qq.com>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg .
-_repo=noahp/emoji-fzf
-_pkgname=${_repo##*/}
-_pypi_package=$_pkgname
-_source_type=pypi-releases
-_upstreamver='0.7.0'
-
+# ex: nowrap
+_pkgname=emoji-fzf
 pkgname=python-$_pkgname
-pkgver=${_upstreamver##v}
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Emoji searcher for use with fzf"
 arch=(any)
-url=https://github.com/$_repo
+url=https://github.com/noahp/emoji-fzf
 depends=(fzf python-click)
 makedepends=(python-installer)
 license=(MIT)
 _py=py2.py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('18b23dcceab88c07bb7fbcac667089b86dd0bc44bb1d1bb86affb27618f641a2')
+sha256sums=('ff55574f117a3ce996f01dfdfb0ef50524d3b4e3316187b03af65dacdfd17498')
 
 package() {
 	cd "$srcdir" || return 1

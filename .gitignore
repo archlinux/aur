@@ -1,4 +1,6 @@
-/pkg/
-/src/
-*.tar.*
-/emoji-fzf*
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/*.install
+!/nvchecker.toml

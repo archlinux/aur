@@ -1,6 +1,6 @@
 pkgbase = python-emoji-fzf
 	pkgdesc = Emoji searcher for use with fzf
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/noahp/emoji-fzf
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-emoji-fzf
 	makedepends = python-installer
 	depends = fzf
 	depends = python-click
-	source = https://files.pythonhosted.org/packages/py2.py3/e/emoji-fzf/emoji_fzf-0.7.0-py2.py3-none-any.whl
-	sha256sums = 18b23dcceab88c07bb7fbcac667089b86dd0bc44bb1d1bb86affb27618f641a2
+	source = https://files.pythonhosted.org/packages/py2.py3/e/emoji-fzf/emoji_fzf-0.8.0-py2.py3-none-any.whl
+	sha256sums = ff55574f117a3ce996f01dfdfb0ef50524d3b4e3316187b03af65dacdfd17498
 
 pkgname = python-emoji-fzf
