@@ -1,6 +1,6 @@
 # Maintainer: Coral Pink <coral.pink@disr.it>
 pkgname=unshell-git
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A utility for splitting input into shell-like tokens"
 url="https://codeberg.org/coralpink/unshell"
