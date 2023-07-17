@@ -1,0 +1,11 @@
+pkgbase = sh-manpager
+	pkgdesc = Colorize
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/sh-manpager
+	arch = any
+	license = GPL3
+	source = https://github.com/Freed-Wu/sh-manpager/archive/0.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = sh-manpager
