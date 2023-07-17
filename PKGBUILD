@@ -1,7 +1,7 @@
 # Maintainer: Krzysztof Małysa <varqox at gmail dot com>
 pkgname=sim-sip-git
 pkgver=r173.858d221
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for preparing and managing Sim problem packages"
 arch=('x86_64' 'i686')
 url="https://github.com/varqox/sip"
@@ -28,10 +28,8 @@ provides=("${pkgname%-git}" 'libsimlib.so')
 conflicts=("${pkgname%-git}" 'libsimlib.so')
 source=(
   'git+https://github.com/varqox/sip.git'
-  'git+https://github.com/varqox/simlib.git'
 )
 b2sums=(
-  'SKIP'
   'SKIP'
 )
 
@@ -42,9 +40,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/sip"
-  git submodule init
-  git config submodule.simlib.url "$srcdir/simlib"
-  git submodule update
+  git submodule update --init --recursive
 }
 
 build() {
