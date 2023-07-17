@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=watchman-bin
-pkgver=2023.07.03.00
+pkgver=2023.07.10.00
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
@@ -16,7 +16,7 @@ install=watchman.install
 
 # https://github.com/facebook/watchman/releases
 source=("https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip")
-sha256sums=('f8a387feca11e5f0461bdb3ba0517957574f98eb1013d7a92c2dfe1a809b385f')
+sha256sums=('60241b472d6a1fe38d6970198061ecbf0675e05097f645ebb6ab3f0db73cd4a6')
 
 prepare() {
   cd watchman-v$pkgver-linux
