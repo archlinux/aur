@@ -33,6 +33,7 @@ depends+=('openimagedenoise')
 depends+=('libdecor' 'libepoxy')
 makedepends+=('git' 'cmake' 'clang' 'boost' 'mesa' 'llvm' wayland{,-protocols} 'libxkbcommon')
 makedepends+=('wayland-protocols')
+makedepends+=('cython')
 provides=("blender=${pkgver%%.r*}")
 conflicts=("blender=${pkgver%%.r*}")
 license=('GPL')
@@ -115,8 +116,8 @@ build() {
 
 package() {
   _suffix=${pkgver%%.r*}
-  export DESTDIR="$pkgdir"
-  if ((DISABLE_NINJA)); then make -C "$srcdir/build" install; else ninja -C "$srcdir/build" install; fi
+  _pyver=$(python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))')
+  BLENDER_SYSTEM_PYTHON=/usr/lib/python${_pyver} BLENDER_SYSTEM_RESOURCES="${pkgdir}/usr/share/blender/${_suffix}" DESTDIR="${pkgdir}" cmake --install build
 
     msg "add -${_suffix} suffix to desktop shortcut"
     sed -i "s/=blender/=blender-${_suffix}/g" "${pkgdir}/usr/share/applications/blender.desktop"
