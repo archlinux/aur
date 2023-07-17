@@ -1,0 +1,17 @@
+pkgbase = raw2ometiff
+	pkgdesc = Raw format to OME-TIFF converter
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/glencoesoftware/raw2ometiff
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gradle
+	makedepends = java-environment
+	depends = bash
+	depends = blosc
+	depends = java-runtime
+	source = raw2ometiff-0.5.0.tar.gz::https://github.com/glencoesoftware/raw2ometiff/archive/refs/tags/v0.5.0.tar.gz
+	sha512sums = 9fdabb2c79b6c9dfc65765aebdc9646b2b0609218d7d388a342ba07bbf1c0f865299551c605d4341776ab27a1ee3b190c61b48fbbf2ab9583679288159d3a2e5
+
+pkgname = raw2ometiff
