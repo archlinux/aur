@@ -1,5 +1,6 @@
-/pkg/
-/src/
-*.tar.*
-
-/hr-*
+/*
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/*.install
+!/nvchecker.toml

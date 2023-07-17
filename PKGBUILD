@@ -1,28 +1,21 @@
-# Maintainer: wzy <wuzy01@qq.com>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg .
-_repo='LuRsT/hr'
-_source_type='github-tags'
-_upstreamver='1.3'
-_pkgname=${_repo##*/}
-
+#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
+# shellcheck shell=bash disable=SC2034,SC2154
+# ex: nowrap
+_pkgname=hr
 pkgname=$_pkgname-bash
-pkgver=$_upstreamver
+pkgver=1.4
 pkgrel=1
 pkgdesc='A horizontal ruler for your terminal'
 arch=('any')
-url="https://github.com/$_repo"
+url=https://github.com/LuRsT/hr
 license=('MIT')
-provides=("$_pkgname-$pkgver")
-conflicts=("$_pkgname-$pkgver")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$_pkgname-${pkgver}::$url/archive/${pkgver}.tar.gz")
-sha256sums=('258ff3121369d17c5c70fa18e466ac01cdb4cf890c605f7a5e706d5b1a3afebf')
+sha256sums=('decaf6e09473cb5792ba606f761786d8dce3587a820c8937a74b38b1bf5d80fb')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
-	# https://github.com/LuRsT/hr/pull/61
-	# make PREFIX="$pkgdir/usr" install
 	install -D "$_pkgname" -t "$pkgdir/usr/bin"
-	gzip "$_pkgname.1"
-	install -D "$_pkgname.1.gz" -t "$pkgdir/usr/share/man/man1"
+	install -D "$_pkgname.1" -t "$pkgdir/usr/share/man/man1"
 }

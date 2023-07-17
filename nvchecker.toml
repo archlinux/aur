@@ -1,0 +1,4 @@
+[hr-bash]
+source = "github"
+github = "LuRsT/hr"
+use_latest_release = true
