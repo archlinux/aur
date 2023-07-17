@@ -1,16 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="japreader-bin"
-pkgver=1.9.1
-pkgrel=2
+pkgver=2.0.0beta.1
+_pkgver=2.0.0-beta.1
+pkgrel=1
 pkgdesc="An Electron app that helps you read Japanese text."
 arch=('x86_64')
 url="https://github.com/marisukukise/japReader"
 license=('GPL3')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
 depends=('bash' 'electron22')
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${_pkgver}/${pkgname%-bin}_2.0.0.beta.1_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('76f3b1beaea473a61764132879ce4f1c9f1da253e4762e815de1c798a3fcb79c'
+sha256sums=('e4784785955392445335aee668d92276076be9a23cb91948db4c977752356ba3'
             'a326cf1cd04372e48f7dba06ac6751f80815cc7278e8e0601a47ce74a4a9f37d')
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst"
