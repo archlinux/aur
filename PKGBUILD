@@ -2,7 +2,7 @@
 
 pkgname=cato-client-bin
 pkgver=5.1.0.14
-pkgrel=2
+pkgrel=3
 pkgdesc='VPN client from Cato Networks to connect to the Cato Cloud.'
 arch=('x86_64')
 url='https://clientdownload.catonetworks.com/'
@@ -10,7 +10,7 @@ license=('custom')
 depends=('glibc' 'gcc-libs' 'zlib')
 makedepends=('libarchive')
 
-source=("https://clientdownload.catonetworks.com/public/clients/cato-client-install.deb"
+source=("https://clients.catonetworks.com/linux/${pkgver}/cato-client-install.deb"
         "cato-client-bin.sysusers"
         "cato-client-bin.tmpfiles"
 )
