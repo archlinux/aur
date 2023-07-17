@@ -5,7 +5,7 @@ _pkgname="iio-hyprland"
 
 pkgbase="iio-hyprland"
 
-pkgver=r27.5c79b98
+pkgver=r27.5c79b99
 
 pkgrel=1.2
 
