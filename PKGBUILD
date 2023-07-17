@@ -1,3 +1,4 @@
+# shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Wu Zhenyu <wuzy01@qq.com>
 # https://aur.archlinux.org/packages/updaurpkg-git
 # $ updaurpkg .
@@ -8,12 +9,13 @@ _pkgname=${_repo##*/py-}
 
 pkgname=python-${_pkgname}
 pkgver=${_upstreamver##v}
-pkgrel=1
+pkgrel=2
 pkgdesc='Docstring generator'
 arch=(any)
 url=https://github.com/$_repo
 license=(BSD)
 depends=(python-parso python-jinja python-toml)
+makedepends=(python-setuptools)
 provides=("$_pkgname-$pkgver")
 conflicts=("$_pkgname-$pkgver")
 source=("$_pkgname-$pkgver::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")

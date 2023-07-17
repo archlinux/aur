@@ -1,10 +1,11 @@
 pkgbase = python-doq
 	pkgdesc = Docstring generator
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/heavenshell/py-doq
 	arch = any
 	license = BSD
+	makedepends = python-setuptools
 	depends = python-parso
 	depends = python-jinja
 	depends = python-toml
