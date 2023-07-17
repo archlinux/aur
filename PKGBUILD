@@ -7,9 +7,9 @@
 
 pkgname=stm32cubeprog
 _pkgname="STM32CubeProgrammer"
-pkgver=2.13.0
+pkgver=2.14.0
 _pkg_file_name=en.stm32cubeprg-lin-v${pkgver//./-}.zip
-pkgrel=3
+pkgrel=0
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -57,7 +57,7 @@ DLAGENTS=("https::/usr/bin/curl \
 _pkg_main_name="${pkgname//prog/prg}-lin-v${pkgver//./-}"
 source=("en.${_pkg_main_name}.zip::$_download_path"
         "${pkgname}.xdotool")
-sha256sums=('677847ed0289f14b26399b1d7ee67c669a491f10fe54d73c8d1c195872753c3e'
+sha256sums=('06199f5de604e7e8a7a56c749cb8df93de4fd8c93bd2ae892fb94ed9d50267c4'
             '1c54ec39148735f16c8b06f75321a40805f27935b115384d211566d8e3f391a8')
 
 prepare() {
