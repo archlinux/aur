@@ -1,0 +1,16 @@
+pkgbase = epanet-git
+	pkgdesc = The Water Distribution System Hydraulic and Water Quality Analysis Toolkit
+	pkgver = 2.3.r789d42f
+	pkgrel = 1
+	url = https://github.com/OpenWaterAnalytics/EPANET
+	arch = any
+	license = MIT
+	checkdepends = boost
+	depends = cmake
+	optdepends = python: Python wrapper
+	provides = epanet
+	conflicts = epanet
+	source = epanet-git::git+https://github.com/OpenWaterAnalytics/EPANET.git#branch=dev
+	md5sums = SKIP
+
+pkgname = epanet-git
