@@ -1,7 +1,7 @@
 # Maintainer: dreieck
 
 _pkgname=linux-terminal-battery-status
-pkgname="${_pkgname}-nosystemd-git"
+pkgname="${_pkgname}-git"
 pkgver=20230717.01.r17.20230717.339e6a6
 pkgrel=1
 pkgdesc="Prints information about system batteries and power supplies to the terminal, optionally also from devices connected via KDE Connect."

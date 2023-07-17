@@ -1,4 +1,4 @@
-pkgbase = linux-terminal-battery-status-nosystemd-git
+pkgbase = linux-terminal-battery-status-git
 	pkgdesc = Prints information about system batteries and power supplies to the terminal, optionally also from devices connected via KDE Connect.
 	pkgver = 20230717.01.r17.20230717.339e6a6
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = linux-terminal-battery-status-nosystemd-git
 	source = linux-terminal-battery-status::git+https://gitlab.com/dreieckli/linux-terminal-battery-status.git
 	sha256sums = SKIP
 
-pkgname = linux-terminal-battery-status-nosystemd-git
+pkgname = linux-terminal-battery-status-git
