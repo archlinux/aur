@@ -2,7 +2,7 @@
 
 pkgname=gnome-rtfm
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline documentation browser, dash docset reader"
 arch=("x86_64")
 url="https://github.com/hugopl/rtfm"
@@ -21,5 +21,5 @@ build() {
 
 package() {
   cd "rtfm-$pkgver"
-  make install DESTDIR="./usr"
+  make install DESTDIR="${pkgdir}"
 }
