@@ -1,6 +1,6 @@
 pkgbase = oh-mymd-bin
 	pkgdesc = A markdown editor,support cloud sync
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://www.ohmymd.app/
 	arch = x86_64
@@ -30,8 +30,7 @@ pkgbase = oh-mymd-bin
 	depends = glib2
 	depends = libcups
 	depends = wayland
-	options = !strip
-	source = oh-mymd-0.6.0.deb::https://oss.ohmymd.milchstrabe.com/patch/linux/deb/ohmymd_0.6.0_amd64.deb
-	sha256sums = 0711d11ee183a7cf642f78c3bd4ce1db309031c0c5946f810c704566dcf89a51
+	source = oh-mymd-0.6.1.deb::https://oss.ohmymd.milchstrabe.com/patch/linux/deb/ohmymd_0.6.1_amd64.deb
+	sha256sums = df6cd51ce12fdf9f262eb74d16b9441fb90141dc78a2e89757404fd544046abb
 
 pkgname = oh-mymd-bin
