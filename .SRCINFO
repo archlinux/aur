@@ -1,12 +1,12 @@
 pkgbase = rpick
 	pkgdesc = A command line tool that helps you to pick items from a list, using configurable algorithms.
-	pkgver = 0.8.13
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/bowlofeggs/rpick
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	source = rpick-0.8.13.tar.gz::https://github.com/bowlofeggs/rpick/archive/0.8.13.tar.gz
-	sha256sums = ff144caf8b410a91cf6b865ec680acd4ca209816506adee355435569bc0283a5
+	source = rpick-0.9.0.tar.gz::https://github.com/bowlofeggs/rpick/archive/0.9.0.tar.gz
+	sha256sums = 18d332cd53ba5374d4ede5a3ce3821f57aa41e8f3041050198b0207847fee627
 
 pkgname = rpick
