@@ -1,8 +1,8 @@
 # Maintainer: nezu <nezu@nezu.cc>
 pkgname=givemebadge-git
 _pkgname=givemebadge
-pkgver=e17fb70
-pkgrel=2
+pkgver=r79.e17fb70
+pkgrel=1
 pkgdesc="Pretty simple Discord bot to get the active developer badge"
 arch=('any')
 url="https://github.com/AlexFlipnote/GiveMeBadge"
@@ -16,7 +16,7 @@ sha256sums=('ef09169e18bb768d482a156ce918b33738e2b97b124c13aede1373464b8f6642'
 
 pkgver() {
 	cd "$_pkgname"
-	git describe --tags --always | sed 's#v##;s#-#+#g;s#+#+r#'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
