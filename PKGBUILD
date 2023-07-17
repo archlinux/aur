@@ -2,7 +2,7 @@
 
 pkgname=tree-sitter-c
 pkgver=0.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-c"
