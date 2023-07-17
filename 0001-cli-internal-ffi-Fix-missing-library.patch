@@ -1,4 +1,4 @@
-From c3c2de748e155f496a6dc3fc7bdb2fabd698e7d0 Mon Sep 17 00:00:00 2001
+From eab3c14348adf1d3618a0d9b45987d93ad3a272e Mon Sep 17 00:00:00 2001
 From: Shohei Maruyama <cheat.sc.linux@outlook.com>
 Date: Fri, 24 Mar 2023 03:00:41 +0900
 Subject: [PATCH] cli: internal: ffi: Fix missing library
@@ -15,20 +15,20 @@ Signed-off-by: Shohei Maruyama <cheat.sc.linux@outlook.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/cli/internal/ffi/ffi.go b/cli/internal/ffi/ffi.go
-index 499e2c04e..10b6698ac 100644
+index 09e1d5fea..0de0f4f6e 100644
 --- a/cli/internal/ffi/ffi.go
 +++ b/cli/internal/ffi/ffi.go
 @@ -11,8 +11,8 @@ package ffi
- // #cgo darwin,amd64 LDFLAGS:  -L${SRCDIR} -lturborepo_ffi_darwin_amd64  -lz -liconv
- // #cgo linux,arm64,staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_arm64 -lunwind
- // #cgo linux,amd64,staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_amd64 -lunwind
--// #cgo linux,arm64,!staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_arm64 -lz
--// #cgo linux,amd64,!staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_amd64 -lz
-+// #cgo linux,arm64,!staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_arm64 -lz -lgit2
-+// #cgo linux,amd64,!staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_amd64 -lz -lgit2
- // #cgo windows,amd64 LDFLAGS: -L${SRCDIR} -lturborepo_ffi_windows_amd64 -lole32 -lbcrypt -lws2_32 -luserenv
+ // #cgo darwin,amd64 LDFLAGS:  -L${SRCDIR} -lturborepo_ffi_darwin_amd64  -lz -liconv -framework Security -framework CoreFoundation
+ // #cgo linux,arm64,staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_arm64 -lunwind -lm
+ // #cgo linux,amd64,staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_amd64 -lunwind -lm
+-// #cgo linux,arm64,!staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_arm64 -lz -lm
+-// #cgo linux,amd64,!staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_amd64 -lz -lm
++// #cgo linux,arm64,!staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_arm64 -lz -lgit2 -lm
++// #cgo linux,amd64,!staticbinary LDFLAGS:   -L${SRCDIR} -lturborepo_ffi_linux_amd64 -lz -lgit2 -lm
+ // #cgo windows,amd64 LDFLAGS: -L${SRCDIR} -lturborepo_ffi_windows_amd64 -lole32 -lbcrypt -lws2_32 -luserenv -lntdll
  import "C"
  
 -- 
-2.40.0
+2.41.0
 
