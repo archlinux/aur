@@ -2,7 +2,7 @@
 
 pkgname='hostd'
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An advanced host solution, designed to enhance the experience for storage providers within the Sia network.'
 arch=('x86_64' 'aarch64')
 depends=('glibc')
@@ -11,7 +11,7 @@ url='https://sia.tech/software/hostd'
 license=('MIT')
 install='hostd.install'
 _tag='429dc932b2d69599dd2da8d4ce3c64a90078fb1d'
-source=("git+https://github.com/SiaFoundation/hostd.git#tag=v${_tag}"
+source=("git+https://github.com/SiaFoundation/hostd.git#tag=${_tag}"
         "hostd.sysusers"
         "hostd.tmpfiles"
         "hostd.service"
