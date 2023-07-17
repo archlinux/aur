@@ -1,0 +1,11 @@
+pkgbase = auto-sized-fzf-git
+	pkgdesc = A --preview=.... generator that is based on the shell's current dimensions.
+	pkgver = r3.45b5121
+	pkgrel = 1
+	url = https://github.com/bigH/auto-sized-fzf
+	arch = any
+	license = GPL3
+	source = git+https://github.com/bigH/auto-sized-fzf
+	sha256sums = SKIP
+
+pkgname = auto-sized-fzf-git
