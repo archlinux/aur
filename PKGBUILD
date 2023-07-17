@@ -4,12 +4,12 @@
 _hkgname=nvfetcher
 pkgname=$_hkgname
 pkgver=0.6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate nix sources expr for the latest version of packages"
 url="https://github.com/berberman/nvfetcher"
 license=("MIT")
 arch=('x86_64')
-depends=('ghc-libs' 'haskell-aeson' 'haskell-aeson-pretty' 'haskell-binary-instances' 'haskell-data-default' 'haskell-extra' 'haskell-free' 'haskell-microlens' 'haskell-microlens-th' 'haskell-neat-interpolation' 'haskell-optparse-simple' 'haskell-prettyprinter' 'haskell-regex-tdfa' 'haskell-shake' 'haskell-tomland' 'haskell-unordered-containers' 'haskell-validation-selective')
+depends=('nix' 'nvchecker' 'ghc-libs' 'haskell-aeson' 'haskell-aeson-pretty' 'haskell-binary-instances' 'haskell-data-default' 'haskell-extra' 'haskell-free' 'haskell-microlens' 'haskell-microlens-th' 'haskell-neat-interpolation' 'haskell-optparse-simple' 'haskell-prettyprinter' 'haskell-regex-tdfa' 'haskell-shake' 'haskell-tomland' 'haskell-unordered-containers' 'haskell-validation-selective')
 makedepends=('ghc' 'haskell-async' 'haskell-hspec' 'haskell-hspec-discover' 'haskell-unliftio')
 source=("https://hackage.haskell.org/packages/archive/$_hkgname/$pkgver/$_hkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
