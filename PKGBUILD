@@ -1,29 +1,19 @@
-# Maintainer: Wu Zhenyu <wuzy01@qq.com>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg .
-_repo=xxf098/LiteSpeedTest
-_source_type=github-releases
-_upstreamver='v0.8.0'
-_pkgname=$(tr A-Z a-z <<< ${_repo##*/})
-
-pkgname=$_pkgname
-pkgver=${_upstreamver##v}
+#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
+# shellcheck shell=bash disable=SC2034,SC2154
+# ex: nowrap
+pkgname=litespeedtest
+pkgver=0.15.0
 pkgrel=1
-pkgdesc="$(gh repo view $_repo|rg 'description:\t'|cut -f2)"
+pkgdesc="A simple tool for batch test ss/ssr/v2ray/trojan servers."
 arch=(i386 x86_64)
-url=https://github.com/$_repo
+url=https://github.com/xxf098/LiteSpeedTest
 license=(GPL)
-provides=("$_pkgname-$pkgver")
-conflicts=("$_pkgname-$pkgver")
-_arch="$(uname -m|sed s/x86_64/amd64/)"
+_arch="$(uname -m | sed s/x86_64/amd64/)"
 _os="${OSTYPE%%-*}"
 [[ $_os == windows ]] && _ext=zip || _ext=gz
-source=("$_pkgname-$pkgver::$url/releases/download/$_upstreamver/lite-${_os}-${_arch}-${_upstreamver}.$_ext")
-sha256sums=('195d8c88a9ae93b4007b3fddb92500eb1272a1e8f63e6e76301111e2479a4be4')
+source=("$pkgname-$pkgver::$url/releases/download/v$pkgver/lite-${_os}-${_arch}-v${pkgver}.$_ext")
+sha256sums=('963333af61b54cf7e33788225ceef7fd3b8562868212347ac5811af8774f2df6')
 
 package() {
-	cd "$srcdir"
-	cp -L "$_pkgname-$pkgver" "$_pkgname-$pkgver".$_ext
-	[[ $_ext == gz ]] && gunzip -f "$_pkgname-$pkgver".$_ext
-	install -D "$_pkgname-$pkgver" -T "$pkgdir/usr/bin/lite"
+	install -D "$pkgname-$pkgver" -T "$pkgdir/usr/bin/lite"
 }

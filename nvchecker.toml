@@ -1,0 +1,4 @@
+[litespeedtest]
+source = "github"
+github = "xxf098/LiteSpeedTest"
+use_latest_release = true
