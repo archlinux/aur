@@ -9,19 +9,20 @@ _pkgname=${_repo##*/py-}
 
 pkgname=python-${_pkgname}
 pkgver=${_upstreamver##v}
-pkgrel=2
+pkgrel=3
 pkgdesc='Docstring generator'
 arch=(any)
 url=https://github.com/$_repo
 license=(BSD)
 depends=(python-parso python-jinja python-toml)
 makedepends=(python-setuptools)
-provides=("$_pkgname-$pkgver")
-conflicts=("$_pkgname-$pkgver")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver::https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha256sums=('baccc348ddf967c8bf32bfdf54da8326e1dc74f37865e2c176012ad0bc7eea1e')
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 || return 1
+	cd "$_pkgname-$pkgver" || exit 1
+
+	python setup.py install --root="$pkgdir" --optimize=1
 }
