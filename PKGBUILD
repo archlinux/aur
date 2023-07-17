@@ -117,7 +117,6 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DWITH_INSTALL_PORTABLE=OFF \
-        -DWITH_SYSTEM_GLEW=OFF \
         -DWITH_PYTHON_INSTALL=OFF \
         -DXR_OPENXR_SDK_ROOT_DIR=/usr \
         -DPYTHON_VERSION="${_pyver}" \
