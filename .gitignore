@@ -1,0 +1,5 @@
+!.gitignore
+elasticsearch-7*
+elasticsearch-8*
+src/
+pkg/
