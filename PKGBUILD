@@ -6,7 +6,7 @@
 
 pkgname=marp-cli-bin
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A CLI interface for Marp and Marpit based converters'
 url='https://github.com/marp-team/marp-cli'
 arch=('x86_64')
