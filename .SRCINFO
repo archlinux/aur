@@ -1,7 +1,7 @@
 pkgbase = c-munipack
 	pkgdesc = An astrophotometry software package
 	pkgver = 2.1.36
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sourceforge.net/projects/c-munipack
 	arch = x86_64
 	license = GPL2
@@ -10,6 +10,7 @@ pkgbase = c-munipack
 	makedepends = doxygen
 	makedepends = gtest
 	makedepends = python-sphinx
+	makedepends = cmake
 	source = c-munipack-2.1.36.tar.gz::https://sourceforge.net/projects/c-munipack/files/C-Munipack%202.1%20Stable/2.1.36/C-Munipack-2.1.36-source.zip/download
 	sha256sums = 048909a4bad44fc801bf341f4a9f6dfda2cb1ff5a0118a094bf01cd3a6533728
 
