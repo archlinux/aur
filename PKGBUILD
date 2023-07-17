@@ -3,18 +3,18 @@
 _pkgname="memos"
 _gitauthor="usememos"
 _gitbranch="main"
-_gittag="v0.13.2"
+_gittag="v0.14.0"
 
 
 pkgname="${_pkgname}-git"
-pkgver=0.13.2.r0.gca770c87
+pkgver=0.14.0.r0.g589b1046
 pkgrel=1
 pkgdesc="A lightweight, self-hosted memo hub. Open Source and Free forever."
 url="https://github.com/${_gitauthor}/${_pkgname}"
 arch=("any")
 license=('MIT')
-makedepends=("go" "git" "yarn")
-depends=("glibc")
+makedepends=("go" "git" "pnpm")
+depends=()
 provides=("${pkgname}")
 backup=('etc/memos.conf')
 source=(
@@ -25,11 +25,10 @@ source=(
   'tmpfiles.conf'
 )
 sha512sums=('SKIP'
-  '55bf10e717bcd08fde83ad12d9d0c6de2ddbea6e831e43bbe6ec6a6d8a595cca4c2035bfa849e0d0bba5dba7d0c9494215ad84434e961e8966912f501f19535e'
-  '692dc4674b86b36c5464c78f493ace50091068f962d40130a32b4ed17517d77e33860333e870f5e80a5e17b6cbd5de45bf57e7de5ea7984bd4e36f95a8daf0fa'
-  'ff6f9ef97e5d7da3a2899e2757d83c028883df230d03178963b6784d534cbdcbf016a64718691c0893952c24dbd86495343ea8072e60aee9614db23505105b7e'
-  'cf88b91a88825dcfda35f45461513b8a2e03b07890189fd1cf7b60aa4085c9e88d8338596b69a3d9c3e513e668093ab7cb246febbb7f6ac7796d37e1189db565'
-)
+            '9c37361974d8b3beecdd8b0bf8db929a4a882623ea7b23aa51bddf37790b66042cef593d6da89b34e7dde4a9a9a1e097ea31ec713b33fee6a699448fb300d4a2'
+            '692dc4674b86b36c5464c78f493ace50091068f962d40130a32b4ed17517d77e33860333e870f5e80a5e17b6cbd5de45bf57e7de5ea7984bd4e36f95a8daf0fa'
+            'd529a5d48624848650268db4f0d1f2247507f7c8ee3541b52c235dd72861cfaede59d0752ae67776ca42b0fb3d5951db7b760a9fe7d47149c994d9cefb4af67f'
+            'cf88b91a88825dcfda35f45461513b8a2e03b07890189fd1cf7b60aa4085c9e88d8338596b69a3d9c3e513e668093ab7cb246febbb7f6ac7796d37e1189db565')
 
 pkgver(){
   cd "$srcdir/$_pkgname"
@@ -37,12 +36,15 @@ pkgver(){
 }
 
 build(){
-  cd "$srcdir/$_pkgname/web"
-  yarn
-  yarn build
-  cp -r "dist" "$srcdir/$_pkgname/server/"
-  cd "$srcdir/$_pkgname"
-  go build -o memos ./main.go
+    # build frontend
+    cd "$srcdir/$_pkgname/web"
+    mkdir -p "${srcdir}/bin"
+    corepack enable --install-directory "${srcdir}/bin" && pnpm i --frozen-lockfile
+    env PATH="${PATH}:${srcdir}/bin" pnpm build    
+    cp -r "dist" "$srcdir/$_pkgname/server/"
+    
+    cd "$srcdir/$_pkgname"
+    CGO_ENABLED=0 go build -o memos ./main.go
 }
 
 
