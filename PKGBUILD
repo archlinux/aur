@@ -1,7 +1,7 @@
 # Maintainer: nezu <nezu@nezu.cc>
 pkgname=csgo-checker-electron
 _pkgname=csgo-checker
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Check CS:GO accounts for bans/cooldowns/wins/ranks (system electron)"
 arch=('x86_64')
@@ -10,13 +10,13 @@ license=('GPL3')
 # current is 22
 _electronversion=
 depends=("electron$_electronversion<23.0.0")
-makedepends=('nodejs>=12.10.0' 'npm')
+makedepends=('nodejs>=16.10.0' 'npm')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dumbasPL/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
 		"$_pkgname.sh.in"
 		"$_pkgname.desktop")
-sha256sums=('b2eab8c3d230fecf4a04cae2013649c2c170bd6120eb654b0f11313458038d11'
+sha256sums=('43677b09b3624b1da9c8b091c9a60bc9a19f42573ccabdfb945965a74edda7d1'
             'f5ee45943cd57290c6ef4578a56183b0910aacefb71f4459691cc44f4df891fd'
             'ca864ac4e882e43e5c6314029d2e40f1f2520e9418819483e6a47b684e7ce011')
 
