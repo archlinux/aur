@@ -1,15 +1,28 @@
 pkgbase = python-kealib
 	pkgdesc = Python library to access parts of kealib not exposed by GDAL
-	pkgver = 0.1_1.4.14
+	pkgver = 0.1_1.5.1
 	pkgrel = 2
 	url = http://kealib.org
 	arch = x86_64
 	license = MIT
+	makedepends = cmake
 	makedepends = python-setuptools
-	depends = kealib=1.4.14
-	depends = python
+	depends = kealib=1.5.1
+	depends = pybind11
+	depends = python-numpy
+	depends = python-awkward<2
 	options = !emptydirs
-	source = https://github.com/ubarsc/kealib/releases/download/kealib-1.4.14/kealib-1.4.14.tar.gz
-	sha256sums = da5d4a540b34afb61665cb7b6bf284825b51464eaf2a23ccca16955e2712cab2
+	source = https://github.com/ubarsc/kealib/releases/download/kealib-1.5.1/kealib-1.5.1.tar.gz
+	source = https://raw.githubusercontent.com/scikit-hep/awkward/v1.10.2/src/awkward/_v2/cpp-headers/awkward//LayoutBuilder.h
+	source = https://raw.githubusercontent.com/scikit-hep/awkward/v1.10.2/src/awkward/_v2/cpp-headers/awkward//BuilderOptions.h
+	source = https://raw.githubusercontent.com/scikit-hep/awkward/v1.10.2/src/awkward/_v2/cpp-headers/awkward//GrowableBuffer.h
+	source = https://raw.githubusercontent.com/scikit-hep/awkward/v1.10.2/src/awkward/_v2/cpp-headers/awkward//utils.h
+	source = setup.py
+	sha256sums = 06cd547b1e40394b9539beaf6982bd249e8ee93d6150295e9cd9161d00829657
+	sha256sums = 945b19124fadc60c99c60fb263d75ef31e9c4dda6980a5fe96353c3f20d9b330
+	sha256sums = a78fc19e9cc9d4096b377e1e99f33fd908b25c3f2cf57dd889893f8042ddb883
+	sha256sums = 8112164e16f7de7d8f6da3335f2f62c0f629d606ebb7326b2a499b576f85d579
+	sha256sums = eb5957ca6d56eeab8601940b92d018fce3906c50958a85622faad66e0d17a4b6
+	sha256sums = SKIP
 
 pkgname = python-kealib
