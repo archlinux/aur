@@ -1,25 +1,26 @@
 pkgbase = r-ggthemes
 	pkgdesc = Extra Themes, Scales and Geoms for 'ggplot2'
 	pkgver = 4.2.4
-	pkgrel = 1
-	url = https://cran.r-project.org/web/packages/ggthemes/
+	pkgrel = 7
+	url = https://cran.r-project.org/package=ggthemes
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL2
+	checkdepends = r-dplyr
+	checkdepends = r-testthat
+	checkdepends = r-vdiffr
 	depends = r-ggplot2
 	depends = r-purrr
 	depends = r-scales
 	depends = r-stringr
 	depends = r-tibble
-	optdepends = r-dplyr
 	optdepends = r-covr
+	optdepends = r-dplyr
 	optdepends = r-extrafont
 	optdepends = r-glue
 	optdepends = r-knitr
-	optdepends = r-lattice
 	optdepends = r-lintr
-	optdepends = r-maps
 	optdepends = r-mapproj
+	optdepends = r-maps
 	optdepends = r-pander
 	optdepends = r-rlang
 	optdepends = r-rmarkdown
@@ -29,7 +30,7 @@ pkgbase = r-ggthemes
 	optdepends = r-vdiffr
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/ggthemes_4.2.4.tar.gz
-	sha512sums = 70aca67975581dc451c03f204637feff5527c7cc170c67b678b0fca8f947f27dedcf541dc56ee6cf6622a05ec10188509a60ec887cb1ef2b7001f221a4706471
+	md5sums = fbf75caa92427f03c3911afeca5eb514
+	sha256sums = 7b35168cf5b68f6f52dd533a1b345ec87e09d1a85ca68e8dc5377cdf95718567
 
 pkgname = r-ggthemes
-
