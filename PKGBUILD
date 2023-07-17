@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=supersonic-bin
 _pkgname=Supersonic
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage" "${pkgname%-bin}-desktop")
 depends=('glibc' 'libglvnd' 'libx11' 'mpv')
 source=("${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.tar.xz")
-sha256sums=('a12d1ead738ff20146c39b264018dd99cb9c7788ab35cc2a8b2a5443cf509cc2')
+sha256sums=('be63c1b673d06b99e4d495197702b6a4323f2041ca8ee50194da050c29d6dc36')
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}" "${pkgdir}/usr/lib"
     install -Dm755 "${srcdir}/usr/local/bin/${pkgname%-bin}" -t "${pkgdir}/opt/${pkgname%-bin}"

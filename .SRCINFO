@@ -1,6 +1,6 @@
 pkgbase = supersonic-bin
 	pkgdesc = A lightweight cross-platform desktop client for Subsonic music servers.
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/dweymouth/supersonic
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = supersonic-bin
 	conflicts = supersonic
 	conflicts = supersonic-appimage
 	conflicts = supersonic-desktop
-	source = supersonic-0.4.0.tar.xz::https://github.com/dweymouth/supersonic/releases/download/v0.4.0/Supersonic-0.4.0-linux-x64.tar.xz
-	sha256sums = a12d1ead738ff20146c39b264018dd99cb9c7788ab35cc2a8b2a5443cf509cc2
+	source = supersonic-0.5.0.tar.xz::https://github.com/dweymouth/supersonic/releases/download/v0.5.0/Supersonic-0.5.0-linux-x64.tar.xz
+	sha256sums = be63c1b673d06b99e4d495197702b6a4323f2041ca8ee50194da050c29d6dc36
 
 pkgname = supersonic-bin
