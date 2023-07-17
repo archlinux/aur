@@ -1,13 +1,13 @@
 # Maintainer: Alexander Grooff <alexandergrooff@gmail.com>
 pkgname=nginx-static-analysis-git
 pkgver=0.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Static analysis tool for Nginx configuration files"
 url="https://github.com/AlexanderGrooff/nginx-static-analysis"
 arch=("any")
 license=("MIT")
 groups=()
-depends=()
+depends=("python" "python-loguru")
 makedepends=("git" "python-build" "python-installer" "python-wheel")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

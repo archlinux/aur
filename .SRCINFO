@@ -1,7 +1,7 @@
 pkgbase = nginx-static-analysis-git
 	pkgdesc = Static analysis tool for Nginx configuration files
 	pkgver = 0.2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AlexanderGrooff/nginx-static-analysis
 	arch = any
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = nginx-static-analysis-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	depends = python
+	depends = python-loguru
 	provides = nginx-static-analysis
 	conflicts = nginx-static-analysis
 	source = git+https://github.com/AlexanderGrooff/nginx-static-analysis
