@@ -3,7 +3,7 @@
 _pkgname=libretro-dolphin
 pkgname=$_pkgname-git
 pkgver=r33042.2f4b0f7902
-pkgrel=1
+pkgrel=2
 pkgdesc="Nintendo GameCube/Wii core"
 arch=('x86_64')
 url="https://github.com/libretro/dolphin"
@@ -19,7 +19,6 @@ depends=(
 	'libxi'
 	'libxrandr'
 	'pugixml'
-	'sfml'
 	'zlib'
 )
 makedepends=(
@@ -37,7 +36,7 @@ makedepends=(
 	'lzo'
 	'mbedtls2'
 	'python'
-	'systemd'
+	'sfml'
 	'systemd-libs'
 	'xorgproto'
 	'xxhash'
@@ -92,6 +91,8 @@ package() {
 		'libmbedcrypto.so'
 		'libmbedtls.so'
 		'libmbedx509.so'
+		'libsfml-network.so'
+		'libsfml-system.so'
 		'libudev.so'
 		'libusb-1.0.so'
 		'libxxhash.so'
