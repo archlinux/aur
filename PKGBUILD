@@ -6,7 +6,11 @@ pkgrel=1
 pkgdesc="Colorize $(man XXX)"
 arch=(any)
 url=https://github.com/Freed-Wu/$pkgname
+depends=(bat ansifilter)
+makedepends=(cmake)
 license=(GPL3)
+provides=(manpager)
+conflicts=(manpager)
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=(SKIP)
 
