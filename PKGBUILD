@@ -3,9 +3,9 @@
 # Contributor: 	diestl <max at friedersdorff dot com>
 _pkgname='rsgislib'
 pkgname=("python-$_pkgname")
-pkgver=5.0.11
+pkgver=5.0.14
 pkgrel=1
-pkgdesc="A collection of Python modules for processing remote sensing and GIS datasets"
+pkgdesc="Python modules for processing remote sensing and GIS datasets"
 arch=('i686' 'x86_64')
 url='http://www.rsgislib.org'
 license=('GPL3')
@@ -15,38 +15,51 @@ depends=('hdf5' 'kealib' 'muparser' 'gsl' 'gdal' 'boost-libs' 'python-gdal'
 optdepends=(
   'plotly-orca-appimage: For classification.plot_train_data'
   'python-alphashape: For vectorgeoms.create_alpha_shape'
-  'python-geopandas: Handle GeoJSON in vectorattrs, vectorutils and '`
-    `'classification.create_acc_pt_sets'
+  'python-catboost: For classification.classcatboost'
+  'python-contextily: For tools.mapping.add_contextily_basemap'
+  'python-geopandas: Handle GeoJSON in vectorattrs, vectorutils, '`
+    `'vectorgeoms, tools.mapping, classification.create_acc_pt_sets and '`
+    `'imageregistration.add_vec_pts_as_gcps_to_img'
   'python-google-cloud-storage: Enable tools.googlecloud'
+  'python-h3: For vectorutils.createvectors.create_hex_grid_*'
   'python-h5py: HDF5 files in classification, rastergis, zonalstats and '`
     `'tools.checkdatasets'
+  'python-imageio: For tools.imagetools.animate_img_set'
   'python-imbalanced-learn: For classification.classimblearn'
   'python-jinja: Required by rsgisapplycmd.py CLI command'
   'python-lightgbm: For classification.classlightgbm'
   'python-matplotlib: Enable tools.plotting, out_plot_file parameter, '`
-    `'imagecalc.specunmixing.plot_endmembers and '`
+    `'imagecalc.specunmixing.plot_endmembers, tools.mapping and '`
     `'classification.classaccuracymetrics.calc_sampled_acc_metrics'
+  'python-mpl-scatter-density: For tools.mapping.create_vec_pt_density_map '`
+    `'and tools.plotting.residual_density_plot'
+  'python-natsort: Alternative sorter for the rsgischkgdalfile.py CLI command'
+  'python-owslib: For tools.wmts_tools.get_wmts_layer_list'
   'python-pandas: For tools.sysprofile.plot_mem_cpu_profile, '`
     `'classification.plot_train_data and a few functions of tools.stats'
-  'python-pillow: For tools.plotting.create_legend_img'
+  'python-pillow: For add_img_to_axis/create_legend_img* in tools.plotting, '`
+    `'and functions in tools.imagetools'
   'python-psutil: For tools.sysprofile.create_mem_cpu_profile'
   'python-pycurl: For tools.ftptools.download_curl_ftp_file'
   'python-pymcr: For spec_unmix_pymcr_* functions in imagecalc.specunmixing'
-  'python-pysondb: For *_dwnld_db functions in dataaccess.nasa_cmr, '`
-    `'tools.ftptools.create_file_listings_db and download_files_use_lst_db'
+  'python-pysondb: For *_dwnld_db functions in dataaccess.nasa_cmr and '`
+    `'*_db functions in tools.ftptools'
   'python-pysptools: For spec_unmix_spts_* functions in imagecalc.specunmixing'
   'python-cvxopt: required for what pysptools is used for in rsgislib'
   'python-pyod: For changedetect.pxloutlierchng.find_class_pyod_outliers'
   'python-pysolar: For imagecalibration.solarangles.calc_solar_azimuth_zenith'
   'python-requests: For dataaccess.nasa_cmr and tools.httptools'
   'python-rtree: For vectorgeoms.create_rtree_index/bbox_intersects_index, '`
-    `'imagecalc.calc_fill_regions_knn and vectorutils.perform_spatial_join'
+    `'imagecalc.calc_fill_regions_knn and vectorattrs.perform_spatial_join'
   'python-scikit-image: For segmentation.skimgseg and imagecalc.leastcostpath'
-  'python-scikit-optimize-git: Required by classification.classlightgbm and '`
+  'python-scikit-optimize: Required by classification.classlightgbm and '`
     `'classification.xgboost'
   'python-scipy: For tools.stats, tools.plotting.quantile_plot, '`
-    `'imageutils.spectral_smoothing and UTM/zonal mode stats'
-  'python-shapely: Required by '`
+    `'tools.utm.latlon_to_mode_utm_zone_number, '`
+    `'imageutils.spectral_smoothing, vectorattrs.calc_npts_in_radius, '`
+    `'and some zonalstats functions'
+  'python-shapely: Required by vectorgeoms.split_vec_by_grid, '`
+    `'vectorutils.createvectors.create_hex_grid_* and '`
     `'vectorutils.geopd_check_polys_wgs84_bounds_geometry'
   'python-statsmodels: Required by tmask (cloud masking) and '`
     `'robustfitoutliners in the timeseries subpackage'
@@ -59,7 +72,7 @@ checkdepends=('python-pytest' 'python-pytest-cov' 'python-geopandas' 'python-rtr
 options=(!emptydirs)
 _github='https://github.com/remotesensinginfo/rsgislib'
 source=("$pkgname-$pkgver.tar.gz::$_github/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('0d7857a3e58d2871db89ecbe012b198766302861cf27bf0b362fda84d9c54bde')
+sha256sums=('485ef32133067d9ace24db40440ee297c8708c5ec0e2a732c3303d486e41ea86')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -67,9 +80,14 @@ prepare() {
   # Fix the default include/lib paths
   sed -i s-/local--g CMakeLists.txt
 
-  # Skip test that breaks on recent GDAL (not just on 3.4.2)
-  sed -ri 's/(gdal\.__version__\s*)==/\1>=/' \
-    python_tests/test_imagecalc_specunmixing.py
+  # Add compatibility with Scipy v1.11+ (v1.9+ required)
+  sed -i '/scipy.stats.mode/s/)/, keepdims=True&/' \
+    python/rsgislib/{tools/utm,imagecalc/__init__}.py
+
+  # Remove flip, it can be installed directly from AUR instead, and it
+  # has nothing to do with all the rest of RSGISLib
+  rm tools/flip.cpp
+  sed -i /flip/d CMakeLists.txt
 }
 
 build() {
@@ -95,7 +113,7 @@ build() {
     -D KEA_LIB_PATH=/usr/lib \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_SKIP_RPATH=ON \
-    "$srcdir/$_pkgname-$pkgver"
+    ..
   make
   chmod +x bin/*
 }
