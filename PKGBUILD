@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="coal-launcher-bin"
 _pkgname="Coal Launcher"
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A client to view and play games from the AB Coal website"
 arch=('x86_64')
@@ -10,11 +10,11 @@ _githuburl="https://github.com/Bobuxstation/Coal-Launcher"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
-depends=('electron')
+depends=('electron22')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/Bobuxstation/Coal-Launcher/main/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('ca0972dcad774d4a34d88155249e7b47908aa80cd5db22b3c7c697904f14491f'
+sha256sums=('9f87d39019ac25819fb971016f28905110610ca42b12428b77fdbf79955c93d3'
             '0133c8e5890f9f848adde48b40a9c61dcff249ea3c0f5bcf6567901e7a697c49'
             '9441e01d585b1ef61d557a66a6759d8386cd98e7cda071865c9e8ea33a45e86f')
 package() {
