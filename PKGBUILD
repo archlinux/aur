@@ -13,6 +13,8 @@ source=("https://gitlab.com/Schmiddiii/flare/-/archive/$pkgver/flare-$pkgver.tar
 	"https://gitlab.com/Schmiddiii/flare/-/package_files/84881746/download")
 sha256sums=("eda736c6453c9ed4960d485e727f903ef57161555edd959ae6f030b74603accc"
 	"f27bf75aeedc1d88b2cc420a63cafa722141b424b37320b88bb92dc34c6274a0")
+conflicts=("flare")
+provides=("flare")
 
 package() {
 	install -d "${pkgdir}"/usr/bin
