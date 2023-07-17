@@ -1,8 +1,8 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool
-pkgver=2.10.6
-pkgrel=2
+pkgver=2.11.0
+pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
@@ -17,7 +17,7 @@ checkdepends=(python-gevent python-tarantool python-yaml)
 # a local build with permission to clean/modify the cached sources works though
 
 source=(git+https://github.com/tarantool/tarantool.git#tag=$pkgver
-        git+https://github.com/tarantool/luajit.git#branch=tarantool-1.7
+        git+https://github.com/tarantool/luajit.git#branch=tarantool/archive/1.7
         git+https://github.com/tarantool/libyaml.git
         git+https://github.com/tarantool/msgpuck.git
         git+https://github.com/luafun/luafun.git
@@ -35,9 +35,11 @@ source=(git+https://github.com/tarantool/tarantool.git#tag=$pkgver
         git+https://github.com/tarantool/nghttp2.git
         git+https://github.com/tarantool/libunwind.git#branch=libunwind-1.6.2-tarantool
         git+https://github.com/tarantool/tz.git
+        git+https://github.com/tarantool/checks.git
         tarantool.sysusers
         tarantool.service.override)
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -81,6 +83,7 @@ prepare() {
   git config -f .gitmodules 'submodule.third_party/nghttp2.url' "$srcdir/nghttp2"
   git config -f .gitmodules 'submodule.third_party/libunwind.url' "$srcdir/libunwind"
   git config -f .gitmodules 'submodule.third_party/tz.url' "$srcdir/tz"
+  git config -f .gitmodules 'submodule.third_party/checks.url' "$srcdir/checks"
 
   git submodule sync
   git -c protocol.file.allow=always submodule update
