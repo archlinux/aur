@@ -1,6 +1,6 @@
 pkgbase = jujutsu
 	pkgdesc = A git-compatible DVCS
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/martinvonz/jj
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = jujutsu
 	depends = gcc-libs
 	depends = zlib
 	options = !lto
-	source = jujutsu::git+https://github.com/martinvonz/jj#commit=eb79a21cc0f438e1e2b6d2aa643b2d7c9590ca15
+	source = jujutsu::git+https://github.com/martinvonz/jj#commit=8149ec6df6490ac596f92fdf584d2d666e8c0b6b
 	b2sums = SKIP
 
 pkgname = jujutsu

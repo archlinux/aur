@@ -2,7 +2,7 @@
 # Contributor: Thomas <thomas at 6f dot io>
 
 pkgname=jujutsu
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A git-compatible DVCS'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('gcc-libs' 'zlib')
 makedepends=('git' 'rust')
 options=('!lto')
-_commit='eb79a21cc0f438e1e2b6d2aa643b2d7c9590ca15'
+_commit='8149ec6df6490ac596f92fdf584d2d666e8c0b6b'
 source=("$pkgname::git+$url#commit=$_commit")
 b2sums=('SKIP')
 
@@ -34,7 +34,7 @@ build() {
   cargo build --frozen --release --all-features
 
   for shell in bash fish zsh; do
-    ./target/release/jj debug completion "--$shell" > "jj.$shell"
+    ./target/release/jj util completion "--$shell" > "jj.$shell"
   done
 }
 
