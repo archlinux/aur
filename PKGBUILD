@@ -1,14 +1,14 @@
 # Maintainer: nezu <nezu@nezu.cc>
 pkgname=csgo-checker-git
 _pkgname=csgo-checker
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.2+r2+ga0e45d0
+pkgrel=1
 pkgdesc="Check CS:GO accounts for bans/cooldowns/wins/ranks (git)"
 arch=('x86_64')
 url="https://github.com/dumbasPL/csgo-checker"
 license=('GPL3')
 depends=(gtk3 libxss nss)
-makedepends=(git npm python2)
+makedepends=(git npm python)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/dumbasPL/$_pkgname"
