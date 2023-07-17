@@ -2,7 +2,7 @@
 # Repo:       https://github.com/Mikescher/better-docker-ps
 
 pkgname=dops-bin
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 
 pkgdesc="A replacement for the default docker-ps that tries really hard to fit into the width of your terminal."
