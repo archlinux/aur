@@ -1,13 +1,13 @@
 pkgbase = portage
 	pkgdesc = package management and distribution system for Gentoo
-	pkgver = 3.0.48.1
-	pkgrel = 2
+	pkgver = 3.0.49
+	pkgrel = 1
 	url = https://wiki.gentoo.org/wiki/Project:Portage
 	arch = any
 	license = GPL2
 	makedepends = python-installer
 	depends = python
-	source = https://files.pythonhosted.org/packages/py3/p/portage/portage-3.0.48.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/p/portage/portage-3.0.49-py3-none-any.whl
 	sha256sums = 1704a8c76bb6c601a768bb790a5ea1274e91333ae3dace53980a0c63068ed574
 
 pkgname = portage

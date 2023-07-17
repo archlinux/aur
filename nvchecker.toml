@@ -1,0 +1,3 @@
+[portage]
+source = "pypi"
+pypi = "portage"
