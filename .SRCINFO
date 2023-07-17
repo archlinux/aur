@@ -7,7 +7,7 @@ pkgbase = acorn-cli-git
 	license = Apache
 	makedepends = git
 	makedepends = go
-	source = acorn::git+https://github.com/acorn-io/acorn.git#branch=main
+	source = acorn::git+https://github.com/acorn-io/runtime.git#branch=main
 	md5sums = SKIP
 
 pkgname = acorn-cli-git
