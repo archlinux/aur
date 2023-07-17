@@ -2,11 +2,14 @@
 
 _pkgname=linux-terminal-battery-status
 pkgname="${_pkgname}-git"
-pkgver=20230717.01.r17.20230717.339e6a6
+pkgver=20230717.01.r24.20230717.80728c7
 pkgrel=1
 pkgdesc="Prints information about system batteries and power supplies to the terminal, optionally also from devices connected via KDE Connect."
 url="https://gitlab.com/dreieckli/linux-terminal-battery-status"
-license=(GPL3)
+license=(
+  'GPL3'
+  'custom: CC_BY-SA_3.0'
+)
 arch=(any)
 depends=(
   'bash'
@@ -54,8 +57,14 @@ package() {
   cd "${srcdir}/${_pkgname}"
 
   install -Dvm755 'linux-terminal-battery-status.sh' "${pkgdir}/usr/bin/linux-terminal-battery-status"
+  install -Dvm644 'logo.svg' "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
+  install -Dvm644 'logo.png' "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
   install -Dvm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dvm644 COPYING.md "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.md"
+  install -Dvm644 COPYING.logo.txt "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.logo.txt"
+  install -Dvm644 logo_source.md "${pkgdir}/usr/share/licenses/${pkgname}/logo_source.md"
   ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.md" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING.md"
+  ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.logo.txt" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING.logo.txt"
+  ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/logo_source.md" "${pkgdir}/usr/share/doc/${_pkgname}/logo_source.md"
 }
