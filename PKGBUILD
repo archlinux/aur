@@ -15,7 +15,7 @@ source=("${pkgname%-bin}-${pkgver}.zip::${_githuburl}/releases/download/v${pkgve
     "${pkgname%-bin}.sh")
 sha256sums=('2c8fa437266635071ce27b82015015ff5378fd126dc89bbf23b4e533787ead2c'
             'b669772af42f119f8d89c6a81d69e25bf5debce6534e3259c83dacc230fb8095'
-            '89b4c280c51e3138af5e62bc01507cd15593b902711ddf76b0f29edaf994a2dc')
+            'b27c23379fff5897bd59cd278bbd3c0410150277efa57e4d83c72039d812b6fc')
    
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
