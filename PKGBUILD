@@ -4,7 +4,7 @@ pkgname=xfce4-volumed-pulse
 _vmaj=0.2
 _vmin=3
 pkgver=$_vmaj.$_vmin
-pkgrel=3
+pkgrel=4
 pkgdesc='A volume keys control daemon for Xfce using pulseaudio'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -19,6 +19,7 @@ source=("https://gitlab.xfce.org/apps/$pkgname/-/archive/$pkgname-$pkgver/$pkgna
 
 build() {
   cd $pkgname-$pkgname-$pkgver
+  sed -i -e "s|XDT_CHECK_PACKAGE(\[GLIB\], \[glib-2.0\], \[2.16\])|XDT_CHECK_PACKAGE(\[GLIB\], \[glib-2.0\], \[2.26\])|" configure.ac.in
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc \
               --libexecdir=/usr/lib \
