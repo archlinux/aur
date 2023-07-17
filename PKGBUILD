@@ -2,7 +2,7 @@
 pkgname=givemebadge-git
 _pkgname=givemebadge
 pkgver=e17fb70
-pkgrel=1
+pkgrel=2
 pkgdesc="Pretty simple Discord bot to get the active developer badge"
 arch=('any')
 url="https://github.com/AlexFlipnote/GiveMeBadge"
