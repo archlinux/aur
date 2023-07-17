@@ -1,21 +1,17 @@
+#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
 # shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Wu Zhenyu <wuzy01@qq.com>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg .
-_repo=lyokha/g3kb-switch
-_source_type=github-releases
-_upstreamver='1.3'
+# ex: nowrap
 
 pkgname=g3kb-switch
-pkgver=${_upstreamver##v}
+pkgver=1.3
 pkgrel=1
 pkgdesc="CLI keyboard layout switcher for GNOME Shell"
 arch=(x86 x86_64 arm aarch64)
-url=https://github.com/$_repo
+url=https://github.com/lyokha/g3kb-switch
 depends=(glib2)
 makedepends=(cmake)
 license=(bsd)
-source=("$pkgname-$pkgver::$url/archive/$_upstreamver.tar.gz")
+source=("$pkgname-$pkgver::$url/archive/$pkgver.tar.gz")
 sha256sums=('d3ca6c943c6733a20a1135d7f4f6f29f0ddfe5502decb36958171ebdfdb96b8a')
 
 build() {
