@@ -2,10 +2,12 @@
 _pkgname=auto-sized-fzf
 pkgname=$_pkgname-git
 pkgver=r3.45b5121
-pkgrel=1
+pkgrel=2
 pkgdesc="A --preview=.... generator that is based on the shell's current dimensions."
 arch=(any)
 url=https://github.com/bigH/$_pkgname
+depends=(bc)
+optdepends=(fzf)
 license=(GPL3)
 source=("git+$url")
 sha256sums=('SKIP')
