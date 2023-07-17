@@ -1,6 +1,6 @@
 # Maintainer: John Bernard <loqusion@gmail.com>
 pkgname=hyprshade
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Hyprland shade configuration tool"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 makedepends=(git python-{build,installer})
 provides=($pkgname)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('f5014b8dccae864ca2cb1fcc621d41dfd9d080f0e9a0db826b9a9ca8f9d80e51')
+sha256sums=('e497907a4f248d839bcc2357a29415804dce1b5bb3d0af23895f492851ac657b')
 
 build() {
 	cd "$pkgname-$pkgver"
