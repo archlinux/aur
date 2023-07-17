@@ -2,7 +2,7 @@
 
 _pkgname=rtl8761usb
 pkgname="${_pkgname}-dkms"
-pkgver=20201202
+pkgver=20200610
 pkgrel=3
 pkgdesc="Realtek bluetooth modules for RTL8761 usb based devices (DKMS)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -10,7 +10,8 @@ url="https://www.xmpow.com/pages/download"
 license=('unknown')
 depends=('dkms' 'bc') #'linux-headers'
 conflicts=("${_pkgname}" 'rtl8761b-fw')
-source=("https://mpow.s3-us-west-1.amazonaws.com/${pkgver}_mpow_BH456A_driver+for+Linux.7z"
+#source=("https://mpow.s3-us-west-1.amazonaws.com/${pkgver}_mpow_BH456A_driver+for+Linux.7z"
+source=("https://archive.org/download/mpow_mpbh456ab_driverforlinux/mpow_MPBH456AB_driver%2Bfor%2BLinux.tgz"
     "rtl8761usb.conf"
     "dkms.conf"
     "Makefile.patch"
@@ -42,7 +43,7 @@ package() {
   for d in $(find . -type d);do install -dm755 "${install_dir}/$d";done
   for f in $(find . -type f);do install -m644 "$f" "${install_dir}/$f";done
 }
-md5sums=('994ad1d6f6bd1e63190dfef7f64bbb34'
-         '70d0ec0c62293d5c64e0bf148300c998'
-         '5a5426f2a32be28f0ed00f2cb79731a9'
-         'c9a3067a72131a4b196b5ed833507c08')
+sha256sums=('74001cd412363485751a8e11dda7de54919de51a74d7f060ce489d0a9291040b'
+            '49fd7d83509ce7ec6797b987719ddbbc9168656374a360a35fe8a1ef8b52cee5'
+            '9ff12db0338709ac3b1f6c2c8e14a9e715f89283da716ff83e71012136820027'
+            'cce5da3c3c05ccac84bda25246200a80747da3f8ec5fb15be860b79c22a6414c')
