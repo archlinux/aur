@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.22.0+r1590+g62d3e8fc32
+pkgver=1.22.0+r1604+g4f5e881e2a
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -84,7 +84,6 @@ build() {
     -D gpl=enabled
     -D gst-examples=disabled
     -D libnice=disabled
-    -D omx=disabled # fix
     -D orc=enabled # fix
     -D orc-source="system" # fix
     -D vaapi=enabled
