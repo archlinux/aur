@@ -1,6 +1,6 @@
 pkgbase = grapejuice-git
 	pkgdesc = A Wine+Roblox management tool
-	pkgver = 7.11.3.r0.g7a84c61
+	pkgver = 7.11.4.r0.g33595fc
 	pkgrel = 1
 	url = https://gitlab.com/brinkervii/grapejuice.git
 	arch = x86_64
