@@ -58,6 +58,7 @@ source=("blender::git+https://github.com/blender/blender${_fragment}"
         SelectCudaComputeArch.patch
         usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
+        blender-sycl-path.patch
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -66,7 +67,8 @@ sha256sums=('SKIP'
             'SKIP'
             '87c5ee85032bab83510db426ab28f7acfba893aefea2b523f2fd78f3b62c5348'
             '333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703'
-            'd587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a')
+            'd587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a'
+            '05e83a1c06790594fcd96f86bac7912d67c91ce9076cfc7088203b37f65949b1')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -126,6 +128,9 @@ package() {
   _suffix=${pkgver%%.r*}
   _pyver=$(python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))')
   BLENDER_SYSTEM_PYTHON=/usr/lib/python${_pyver} BLENDER_SYSTEM_RESOURCES="${pkgdir}/usr/share/blender/${_suffix}" DESTDIR="${pkgdir}" cmake --install build
+
+  # Move OneAPI AOT lib to proper place
+# mv "${pkgdir}"/usr/share/blender/lib/libcycles_kernel_oneapi_aot.so "${pkgdir}"/usr/lib/
 
     msg "add -${_suffix} suffix to desktop shortcut"
     sed -i "s/=blender/=blender-${_suffix}/g" "${pkgdir}/usr/share/applications/blender.desktop"

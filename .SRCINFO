@@ -57,6 +57,7 @@ pkgbase = blender-develop-git
 	source = SelectCudaComputeArch.patch
 	source = usd_python.patch
 	source = embree.patch
+	source = blender-sycl-path.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -65,5 +66,6 @@ pkgbase = blender-develop-git
 	sha256sums = 87c5ee85032bab83510db426ab28f7acfba893aefea2b523f2fd78f3b62c5348
 	sha256sums = 333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703
 	sha256sums = d587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a
+	sha256sums = 05e83a1c06790594fcd96f86bac7912d67c91ce9076cfc7088203b37f65949b1
 
 pkgname = blender-develop-git
