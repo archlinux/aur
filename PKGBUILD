@@ -19,7 +19,7 @@ pkgname=(
 
   lib32-gstreamer-vaapi-git
 )
-pkgver=1.22.0+r1590+g62d3e8fc32
+pkgver=1.22.0+r1604+g4f5e881e2a
 pkgrel=1
 pkgdesc="Multimedia graph framework (32-bit)"
 url="https://gstreamer.freedesktop.org/"
@@ -44,10 +44,10 @@ makedepends=(
 
   # gst-plugins-bad
   lib32-vulkan-icd-loader vulkan-headers lib32-vulkan-validation-layers lib32-shaderc lib32-libusb lib32-libdc1394
-  libltc lib32-bluez-libs lib32-libavtp lib32-libbs2b lib32-bzip2 lib32-chromaprint lib32-libdca lib32-faac lib32-faad2
+  libltc lib32-bluez-libs lib32-libavtp lib32-libbs2b lib32-bzip2 lib32-libdca lib32-faac lib32-faad2
   lib32-libfdk-aac lib32-fluidsynth lib32-libgme lib32-libkate lib32-liblrdf lib32-ladspa lib32-libde265 lib32-lilv lib32-lv2
   lib32-libmpcdec lib32-neon lib32-openal lib32-libdvdnav lib32-rtmpdump lib32-sbc lib32-soundtouch
-  lib32-libsrtp lib32-zvbi 'lib32-libnice>=0.1.20' lib32-wildmidi
+  lib32-libsrtp lib32-zvbi lib32-wildmidi
   lib32-nettle lib32-libxml2 lib32-json-glib lib32-libva lib32-libxkbcommon-x11
 
   # gst-plugins-ugly
@@ -84,7 +84,6 @@ build() {
     -D gpl=enabled
     -D gst-examples=disabled
     -D libnice=disabled
-    -D omx=disabled # fix
     -D orc=enabled # fix
     -D orc-source="system" # fix
     -D vaapi=enabled
@@ -92,7 +91,7 @@ build() {
     -D sharp=disabled # fix
     -D rs=disabled # fix
     -D tls=disabled # fix
-    -D introspection=disabled # due to no lib32-gobject-introspection
+    -D introspection=disabled 
     -D qt5=disabled # fix
     -D qt6=disabled # fix
     -D gstreamer:dbghelp=disabled
@@ -101,70 +100,76 @@ build() {
     -D gstreamer:package-origin="https://www.archlinux.org/"
     -D gstreamer:ptp-helper=disabled # skip rustc required
     # -D gstreamer:ptp-helper-permissions=capabilities
+    -D gstreamer-vaapi:package-origin="https://www.archlinux.org/"
+
+    -D gst-plugins-base:gl-graphene=disabled
     -D gst-plugins-base:gobject-cast-checks=disabled
+    -D gst-plugins-base:iso-codes=disabled
+    -D gst-plugins-base:tremor=disabled
     -D gst-plugins-base:package-name="Arch Linux gst-plugins-base $pkgver-$pkgrel"
     -D gst-plugins-base:package-origin="https://www.archlinux.org/"
-    -D gst-plugins-base:tremor=disabled
-    -D gst-plugins-base:iso-codes=disabled # due to no lib32-iso-codes
-    -D gst-plugins-base:gl-graphene=disabled # due to no lib32-graphene
+
     -D gst-plugins-good:gobject-cast-checks=disabled
+    -D gst-plugins-good:rpicamsrc=disabled
     -D gst-plugins-good:package-name="Arch Linux gst-plugins-good $pkgver-$pkgrel"
     -D gst-plugins-good:package-origin="https://www.archlinux.org/"
-    -D gst-plugins-good:rpicamsrc=disabled
+
+    -D gst-plugins-bad:amfcodec=disabled 
     -D gst-plugins-bad:chromaprint=disabled
     -D gst-plugins-bad:directfb=disabled
+    -D gst-plugins-bad:directshow=disabled 
     -D gst-plugins-bad:flite=disabled
     -D gst-plugins-bad:gobject-cast-checks=disabled
     -D gst-plugins-bad:gs=disabled
     -D gst-plugins-bad:gsm=disabled
     -D gst-plugins-bad:iqa=disabled
     -D gst-plugins-bad:isac=disabled
+    -D gst-plugins-bad:ldac=disabled
     -D gst-plugins-bad:lc3=disabled
     -D gst-plugins-bad:magicleap=disabled
+    -D gst-plugins-bad:microdns=disabled
     -D gst-plugins-bad:mpeg2enc=disabled
     -D gst-plugins-bad:mplex=disabled
-    
+    -D gst-plugins-bad:msdk=disabled
     -D gst-plugins-bad:onnx=disabled
+    -D gst-plugins-bad:openaptx=disabled
+    -D gst-plugins-bad:openexr=disabled
+    -D gst-plugins-bad:opencv=disabled
+    -D gst-plugins-bad:openmpt=disabled
     -D gst-plugins-bad:openh264=disabled
     -D gst-plugins-bad:openjpeg=disabled
     -D gst-plugins-bad:openni2=disabled
     -D gst-plugins-bad:opensles=disabled
-    -D gst-plugins-bad:package-name="Arch Linux gst-plugins-bad $pkgver-$pkgrel"
-    -D gst-plugins-bad:package-origin="https://www.archlinux.org/"
+    -D gst-plugins-bad:qroverlay=disabled
+    -D gst-plugins-bad:qsv=disabled
+    -D gst-plugins-bad:qt6d3d11=disabled
     -D gst-plugins-bad:spandsp=disabled
+    -D gst-plugins-bad:svtav1=disabled 
+    -D gst-plugins-bad:svthevcenc=disabled
     -D gst-plugins-bad:tinyalsa=disabled
     -D gst-plugins-bad:voaacenc=disabled
     -D gst-plugins-bad:voamrwbenc=disabled
     -D gst-plugins-bad:wasapi2=disabled
     -D gst-plugins-bad:wasapi=disabled
+    -D gst-plugins-bad:webrtc=disabled
+    -D gst-plugins-bad:webrtcdsp=disabled
+    -D gst-plugins-bad:wpe=disabled 
     -D gst-plugins-bad:zbar=disabled
-    -D gst-plugins-bad:qt6d3d11=disabled
-    -D gst-plugins-bad:webrtcdsp=disabled # TODO wait pkg 'webrtc-audio-processing-1'
-    -D gst-plugins-bad:opencv=disabled # due to no lib32-opencv
-    -D gst-plugins-bad:msdk=disabled # due to no msdk (32-bit) support
-    -D gst-plugins-bad:qsv=disabled # due to no x86 support
-    -D gst-plugins-bad:ldac=disabled # due to no lib32-libdac support
-    -D gst-plugins-bad:microdns=disabled # due to no lib32-microdns support
-    -D gst-plugins-bad:openaptx=disabled # due to no lib32-Xaptx support
-    -D gst-plugins-bad:openexr=disabled # due to no lib32-openexr support
-    -D gst-plugins-bad:openmpt=disabled # due to no lib32-openmpt support
-    -D gst-plugins-bad:qroverlay=disabled # due to no lib32-qrencode support
-    -D gst-plugins-bad:svthevcenc=disabled # due to no lib32-svthevcenc support
-    -D gst-plugins-bad:svtav1=disabled # due to no lib32-svt-av1
-    -D gst-plugins-bad:wpe=disabled # due to no lib32-wpe support
-    -D gst-plugins-bad:zxing=disabled # due to no lib32-zxing support
-    -D gst-plugins-bad:amfcodec=disabled # only support windows
-    -D gst-plugins-bad:directshow=disabled # only support windows
+    -D gst-plugins-bad:zxing=disabled 
+    -D gst-plugins-bad:package-name="Arch Linux gst-plugins-bad $pkgver-$pkgrel"
+    -D gst-plugins-bad:package-origin="https://www.archlinux.org/"
+
     -D gst-plugins-ugly:gobject-cast-checks=disabled
+    -D gst-plugins-ugly:sidplay=disabled
     -D gst-plugins-ugly:package-name="Arch Linux gst-plugins-ugly $pkgver-$pkgrel"
     -D gst-plugins-ugly:package-origin="https://www.archlinux.org/"
-    -D gst-plugins-ugly:sidplay=disabled
+
     -D gst-libav:package-name="Arch Linux gst-libav $pkgver-$pkgrel"
     -D gst-libav:package-origin="https://www.archlinux.org/"
+
     -D gst-rtsp-server:gobject-cast-checks=disabled
     -D gst-rtsp-server:package-name="Arch Linux gst-rtsp-server $pkgver-$pkgrel"
     -D gst-rtsp-server:package-origin="https://www.archlinux.org/"
-    -D gstreamer-vaapi:package-origin="https://www.archlinux.org/"
   )
 
   export CC='gcc -m32'
@@ -256,8 +261,8 @@ package_lib32-gst-plugins-bad-libs-git() {
   conflicts=("lib32-gst-plugins-bad-libs")
 
   cd root; local files=(
-    usr/lib32/libgst{adaptivedemux,badaudio,basecamerabinsrc,codecparsers,codecs,cuda,insertbin,isoff,mpegts,photography,play,player,sctp,transcoder,uridownloader,vulkan,wayland,webrtc,webrtcnice}-1.0.so*
-    usr/lib32/pkgconfig/gstreamer-{bad-audio,codecparsers,cuda,insertbin,mpegts,photography,play,player,plugins-bad,sctp,transcoder,va,vulkan{,-wayland,-xcb},wayland,webrtc{,-nice}}-1.0.pc
+    usr/lib32/libgst{adaptivedemux,badaudio,basecamerabinsrc,codecparsers,codecs,cuda,insertbin,isoff,mpegts,photography,play,player,sctp,transcoder,uridownloader,vulkan,wayland}-1.0.so*
+    usr/lib32/pkgconfig/gstreamer-{bad-audio,codecparsers,cuda,insertbin,mpegts,photography,play,player,plugins-bad,sctp,transcoder,va,vulkan{,-wayland,-xcb},wayland}-1.0.pc
 
     usr/lib32/gstreamer-1.0/libgstaccurip.so
     usr/lib32/gstreamer-1.0/libgstadpcmdec.so
@@ -273,7 +278,7 @@ package_lib32-gst-plugins-bad-libs-git() {
     usr/lib32/gstreamer-1.0/libgstbayer.so
     usr/lib32/gstreamer-1.0/libgstbluez.so
     usr/lib32/gstreamer-1.0/libgstcamerabin.so
-    usr/lib32/gstreamer-1.0/libgstcodec2json.so
+    usr/lib32/gstreamer-1.0/libgstcodec2json.so*
     usr/lib32/gstreamer-1.0/libgstcodecalpha.so
     usr/lib32/gstreamer-1.0/libgstcodectimestamper.so
     usr/lib32/gstreamer-1.0/libgstcoloreffects.so
@@ -366,6 +371,7 @@ package_lib32-gst-plugins-base-libs-git() {
     usr/lib32/gstreamer-1.0/libgstaudioresample.so
     usr/lib32/gstreamer-1.0/libgstaudiotestsrc.so
     usr/lib32/gstreamer-1.0/libgstcompositor.so
+    usr/lib32/gstreamer-1.0/libgstdsd.so
     usr/lib32/gstreamer-1.0/libgstencoding.so
     usr/lib32/gstreamer-1.0/libgstgio.so
     usr/lib32/gstreamer-1.0/libgstoverlaycomposition.so
@@ -502,7 +508,7 @@ package_lib32-gst-plugins-bad-git() {
     lib32-libkate lib32-liblrdf lib32-lilv lib32-libmodplug lib32-libmpcdec lib32-neon lib32-openal 
     lib32-opus lib32-libdvdnav lib32-libdvdread lib32-librsvg lib32-rtmpdump lib32-sbc lib32-libsndfile libltc
     lib32-soundtouch lib32-srt lib32-libsrtp lib32-zvbi lib32-vulkan-icd-loader lib32-libxcb lib32-wayland lib32-libwebp
-    lib32-libnice lib32-wildmidi lib32-x265 lib32-json-glib lib32-libavtp 
+    lib32-wildmidi lib32-x265 lib32-json-glib lib32-libavtp 
   )
   optdepends=('lib32-nvidia-utils: nvcodec plugin')
   provides=("lib32-gst-plugins-bad=$pkgver")
@@ -554,8 +560,6 @@ package_lib32-gst-plugins-bad-git() {
     usr/lib32/gstreamer-1.0/libgstvulkan.so
     usr/lib32/gstreamer-1.0/libgstwaylandsink.so
     usr/lib32/gstreamer-1.0/libgstwebp.so
-    usr/lib32/gstreamer-1.0/libgstwebrtc.so
-    # usr/lib32/gstreamer-1.0/libgstwebrtcdsp.so # TODO wait pkg 'webrtc-audio-processing-1'
     usr/lib32/gstreamer-1.0/libgstwildmidi.so
     usr/lib32/gstreamer-1.0/libgstx265.so
   ); _install
