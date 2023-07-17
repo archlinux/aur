@@ -131,6 +131,8 @@ package() {
   _suffix=${pkgver%%.r*}
   _pyver=$(python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))')
   BLENDER_SYSTEM_PYTHON=/usr/lib/python${_pyver} BLENDER_SYSTEM_RESOURCES="${pkgdir}/usr/share/blender/${_suffix}" DESTDIR="${pkgdir}" cmake --install build || ((DISABLE_DRACO)) && true
+  python -m compileall "${pkgdir}/usr/share/blender"
+  python -O -m compileall "${pkgdir}/usr/share/blender"
 
   # Manually install draco bindings (See FS#73415)
   ((DISABLE_DRACO)) || {
