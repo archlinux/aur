@@ -1,6 +1,6 @@
 # Maintainer: FraV1982 <consulenza dot vangi at outlook dot com>
 
-pkgname=quick-n-easy-web-builder-10
+pkgname=quick-n-easy-web-builder-10-bin
 pkgver=10.1.1
 pkgrel=2
 pkgdesc="A WYSIWYG web builder for creating amazing websites."

@@ -1,4 +1,4 @@
-pkgbase = quick-n-easy-web-builder-10
+pkgbase = quick-n-easy-web-builder-10-bin
 	pkgdesc = A WYSIWYG web builder for creating amazing websites.
 	pkgver = 10.1.1
 	pkgrel = 2
@@ -20,4 +20,4 @@ pkgbase = quick-n-easy-web-builder-10
 	options = !emptydirs
 	options = !strip
 
-pkgname = quick-n-easy-web-builder-10
+pkgname = quick-n-easy-web-builder-10-bin
