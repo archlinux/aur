@@ -1,0 +1,26 @@
+pkgbase = hostd
+	pkgdesc = An advanced host solution, designed to enhance the experience for storage providers within the Sia network.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://sia.tech/software/hostd
+	install = hostd.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/SiaFoundation/hostd.git#tag=v
+	source = hostd.sysusers
+	source = hostd.tmpfiles
+	source = hostd.service
+	source = hostd.install
+	source = hostd.env
+	sha256sums = SKIP
+	sha256sums = d65ccb7decc6b266a64f51ab30d43912a6d8dcdc3aa67ccd703ee3d187f16c74
+	sha256sums = 9341e0f2228a0054beb111b93eeb510614249dab262ac6b51481942f2fffd3a0
+	sha256sums = 6fdafd79414ba518862662b5d9f7da4851c721323ee42aaec5c5c95c871afedc
+	sha256sums = b9ec9874e838163451777d6f0f469aff8a2c063860d60c31627f1fd76eb52d86
+	sha256sums = d70b0b00b276f6074ac1450af6db81fcf81121aa67ff8ab90665ec4f6289d20c
+
+pkgname = hostd

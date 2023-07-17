@@ -1,0 +1,2 @@
+d /var/lib/hostd 0750 hostd hostd - -
+z /etc/conf.d/hostd - hostd hostd - -

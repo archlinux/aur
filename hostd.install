@@ -1,0 +1,4 @@
+post_install() {
+  echo Before starting the hostd.service, make sure to fill the environment file /etc/conf.d/hostd
+  echo Read https://docs.sia.tech/hosting/hostd/setup-guides/linux#setting-up-a-systemd-service to understand the meaning of the variables.
+}
