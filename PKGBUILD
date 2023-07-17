@@ -26,6 +26,7 @@ pkgver() {
 }
 
 prepare() {
+    sed -i "s|JLinkARM.dll|/opt/SEGGER/JLink/libjlinkarm.so|g" "$srcdir"/${pkgname%-git}/${_pkgname}/PageView/JlinkTool/jlinktool.cpp
     sed -i 's|Widgets\\ComboBoxIP\\comboboxip.h|Widgets/ComboBoxIP/comboboxip.h|g' "$srcdir"/${pkgname%-git}/${_pkgname}/PageView/WebServerTool/webservertool.ui
     sed -i 's|PageView\\JlinkTool\\jlinktool.h|PageView/JlinkTool/jlinktool.h|g;s|PageView\\WebServerTool\\webservertool.h|PageView/WebServerTool/webservertool.h|g;s|Image/米饭.png|image/logo.png|g' "$srcdir"/${pkgname%-git}/${_pkgname}/${pkgname%-git}.ui
     sed -i "s|Image|image|g" "$srcdir"/${pkgname%-git}/${_pkgname}/${pkgname%-git}.cpp
@@ -44,6 +45,7 @@ package() {
     cd "$srcdir/${pkgname%-git}/${_pkgname}/"
     install -Dm0755 "${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -Dm644 resource/image/iconfont/iconfont.ttf -t "${pkgdir}"/usr/share/fonts/TTF/
 
     install -Dm644 /dev/stdin "${pkgdir}"/usr/share/applications/com.gitee.ricechen0.rtools.desktop << EOF
 [Desktop Entry]
