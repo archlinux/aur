@@ -1,16 +1,16 @@
 pkgbase = grit
 	pkgdesc = Game Raster Image Transmogrifier
-	pkgver = 0.8.16
+	pkgver = 0.8.17
 	pkgrel = 1
 	url = https://github.com/devkitPro/grit
 	arch = i686
 	arch = x86_64
 	license = GPL-2.0
 	makedepends = git
+	depends = freeimage
 	provides = grit
 	conflicts = grit
-	source = https://github.com/devkitPro/grit/releases/download/v0.8.16/grit-0.8.16.tar.bz2
-	sha1sums = f099d711e8e8d61e90078050099e61a9f691d046
+	source = https://github.com/devkitPro/grit/archive/refs/tags/v0.8.17.tar.gz
+	sha256sums = fa0da0f8dca64b7fa296b704eccc512ec84458b6b00935ce5d240951f041f534
 
 pkgname = grit
-
