@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-lucid-git
-pkgver=30.0.50.166823
+pkgver=30.0.50.166991
 pkgrel=1
 pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
@@ -23,11 +23,6 @@ pkgver() {
     $(grep AC_INIT configure.ac | \
     awk -F',' '{ gsub("[ \\[\\]]","",$2); print $2 }') \
     $(git rev-list --count HEAD)
-}
-
-prepare() {
-  cd emacs-git/lisp/org
-  sed -i -e 's/org-assert-version/org-assert-version-old/g' *.el
 }
 
 build() {
