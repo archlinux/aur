@@ -2,7 +2,6 @@ pkgbase = tinydm-dinit
 	pkgdesc = dinit service scripts for tinydm
 	pkgver = 1.1.3
 	pkgrel = 1
-	url = https://artixlinux.org
 	arch = any
 	groups = dinit-world
 	license = GPL-3
@@ -14,5 +13,6 @@ pkgbase = tinydm-dinit
 	conflicts = init-displaymanager
 	source = tinydm
 	source = tinydm.script
+	source = tinydm.conf
 
 pkgname = tinydm-dinit
