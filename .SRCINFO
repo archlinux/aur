@@ -1,0 +1,11 @@
+pkgbase = ttf-futurama-fonts
+	pkgdesc = Fonts from or inspired by the hit cartoon Futurama
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.dafont.com/futurama.font
+	arch = any
+	license = unknown
+	source = ttf-futurama-fonts.zip::https://dl.dafont.com/dl/?f=futurama
+	sha256sums = 41a706f4d9ae46659f0abed3627af680ea755371734f50cde8ecb13e55446a94
+
+pkgname = ttf-futurama-fonts
