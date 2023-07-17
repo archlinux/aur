@@ -1,0 +1,11 @@
+pkgbase = catalyst-wallpapers
+	pkgdesc = Catalyst Themed Wallpapers
+	pkgver = 2023.7.17
+	pkgrel = 1
+	url = https://getcatalyst.eu.org
+	arch = any
+	license = MIT
+	source = https://github.com/CatalystDevOrg/catalyst-wallpapers/archive/refs/tags/2023.7.17.tar.gz
+	md5sums = e067d1c6bc4393ebd9c56597a19c756d
+
+pkgname = catalyst-wallpapers
