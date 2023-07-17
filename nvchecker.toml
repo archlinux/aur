@@ -1,0 +1,4 @@
+[murphysec-bin]
+source = "github"
+github = "murphysecurity/murphysec"
+use_latest_release = true
