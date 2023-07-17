@@ -1,0 +1,4 @@
+[xilinx-cmake]
+source = "github"
+github = "Xilinx/cmakeModules"
+use_max_tag = true
