@@ -2,7 +2,7 @@
 # Contributor: Eric Mandel
 _pkgname=funtools
 pkgname=funtools-git
-pkgver=v1.4.7.r13.9c8bb6f
+pkgver=v1.4.8.r7.8f206a4
 pkgrel=1
 pkgdesc=" FITS library and utility package.  "
 arch=('x86_64' 'i686')
