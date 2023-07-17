@@ -31,6 +31,7 @@ depends+=('alembic' 'embree' 'libgl' 'python' 'python-numpy' 'openjpeg2' 'libhar
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 depends+=('openimagedenoise')
 depends+=('libdecor' 'libepoxy')
+depends+=('openpgl')
 makedepends+=('git' 'cmake' 'clang' 'boost' 'mesa' 'llvm' wayland{,-protocols} 'libxkbcommon')
 makedepends+=('wayland-protocols')
 makedepends+=('cython')
