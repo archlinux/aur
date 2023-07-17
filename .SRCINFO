@@ -1,7 +1,7 @@
 pkgbase = dymoprint
 	pkgdesc = Linux Software to print with LabelManager PnP from Dymo
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/computerlyrik/dymoprint
 	arch = any
 	license = Apache
@@ -15,8 +15,10 @@ pkgbase = dymoprint
 	source = dymoprint-2.0.0.tar.gz::https://files.pythonhosted.org/packages/45/3f/d9ce830ad960ab275de014e6a6b13aad41d04cb238759ad607cdf6a3b23f/dymoprint-2.0.0.tar.gz
 	source = 91-dymo-labelmanager-pnp.rules
 	source = dymo-labelmanager-pnp.conf
-	sha256sums = 157abaeec0ea7fd46429e8f6b588a63dcfc6cbff774bdd3d16fd4a11fb86af4f
-	sha256sums = edbbce0aac6fceb778fef854170144842fc444326bf9c1b86c314d6dbfe6b2e8
-	sha256sums = 73aa314b713171892672bf9f68468bec137b37c5a7a07513b6b25573bec4e99d
+	source = dymoprint-68.patch
+	sha512sums = 553f706ad677f3237714a52de49bc3e0db5dd5b8b0eef41fce4522b158b52a5c1afa6a9e320ee6a401c6a0e32dd34ad9b83df74b39a2045fcea24c5843e1b547
+	sha512sums = 76c4d8b9b9abd6c9100b6d0032af0d3752fbb7827f2d3a8417b28d2b822b9f7956051163de015a26e0fa6c548851a0f73e74bea37d1c1583cc457a9dc6be6b68
+	sha512sums = a73a5cd46e020d9d43d18cf52927085f055b9d3e77d5ed98f254e3fff07b053aff1125e931b2fd984f08dcb501d344544dc2de58adb66270455b4f482bc8f3f1
+	sha512sums = 8cf1234d6ea843455ce7a00afe829395c58566695933ba9d09aea3c8905585a739cfe6d10e5d161f9be55b2556a5ad5d74fd042fb0b4c7492aae7e3383db3fde
 
 pkgname = dymoprint
