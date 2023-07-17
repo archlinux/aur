@@ -4,11 +4,11 @@
 _gemname=osc-ruby
 pkgname=ruby-$_gemname
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='a ruby client for the OSC protocol'
 arch=(any)
 url='http://github.com/aberant/osc-ruby'
-license=()
+license=('MIT')
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
