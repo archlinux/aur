@@ -3,7 +3,7 @@
 
 pkgname=gohugo-extended-bin
 pkgver=0.115.3
-pkgrel=10
+pkgrel=1
 pkgdesc="Hugo - The world's fastest framework for building websites (Extended Edition)"
 arch=('x86_64' 'aarch64')
 url='https://gohugo.io/'
