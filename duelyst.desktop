@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=duelyst
+Comment=duelyst
+Exec=duelyst
+Icon=duelyst
+Terminal=false
+StartupNotify=false
+Categories=Games;

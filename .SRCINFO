@@ -1,0 +1,15 @@
+pkgbase = open-duelyst-bin
+	pkgdesc = Duelyst is a digital collectible card game and turn-based strategy hybrid, developed by Counterplay Games
+	pkgver = 1.97.13
+	pkgrel = 1
+	url = https://github.com/open-duelyst/duelyst
+	arch = x86_64
+	license = CC01.0
+	depends = gconf
+	noextract = duelyst-desktop-v1.97.13-linux-x64.zip
+	source = https://github.com/open-duelyst/duelyst/releases/download/1.97.13/duelyst-desktop-v1.97.13-linux-x64.zip
+	source = duelyst.desktop
+	sha256sums = a0f44d8f92354de449e60759592c6495daf1e64b198b1f88b1fbf316c356de48
+	sha256sums = 09f05f3a7f8fba4e7e5f7a070fba1f9005b25661bef86de891cbecd94ab2dde4
+
+pkgname = open-duelyst-bin
