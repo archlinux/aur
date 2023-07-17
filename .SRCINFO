@@ -1,7 +1,7 @@
 pkgbase = stardict-ecdict
 	pkgdesc = Free English to Chinese Dictionary Database
 	pkgver = 1.0.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skywind3000/ECDICT
 	arch = any
 	license = GPL3
