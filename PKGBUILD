@@ -1,16 +1,8 @@
 # Maintainer: Oystein Sture <oysstu at gmail.com>
-# Contributor: Mohammad Mostafa Farzan <m2_farzan@yahoo.com>
-# Contributor: mjbogusz <mjbogusz+github@gmail.com>
-# Contributor: yuanyuyuan <az6980522@gmail.com>
-# Contributor: Rémy B. (github.com/KirrimK)
-# Contributor: Renato Caldas (github.com/rmsc)
-# Contributor: goekce (github.com/goekce)
-# Contributor: David Castellon (github.com/bobosito000)
-# Contributor: Yannic Wehner <yannic.wehner@gmail.com> (github.com/ElCap1tan)
 
 pkgname=ros2-iron-base
-pkgver=2023.05.23
-pkgrel=2
+pkgver=2023.07.17
+pkgrel=1
 _rosdist="Iron Irwini"
 _rosdist_short_upper=${_rosdist%% *}
 _rosdist_short=${_rosdist_short_upper,}

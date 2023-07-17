@@ -1,7 +1,7 @@
 pkgbase = ros2-iron-base
 	pkgdesc = A set of software libraries and tools for building robot applications (Iron Irwini, base variant)
-	pkgver = 2023.05.23
-	pkgrel = 2
+	pkgver = 2023.07.17
+	pkgrel = 1
 	url = https://index.ros.org/p/ros_base/#iron
 	arch = any
 	license = Apache
@@ -23,7 +23,7 @@ pkgbase = ros2-iron-base
 	depends = python-numpy
 	depends = python-yaml
 	depends = tinyxml2
-	source = ros2::git+https://github.com/ros2/ros2.git#tag=release-iron-20230523
+	source = ros2::git+https://github.com/ros2/ros2.git#tag=release-iron-20230717
 	source = ros2_base::git+https://github.com/ros2/variants.git#branch=master
 	sha256sums = SKIP
 	sha256sums = SKIP
