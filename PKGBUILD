@@ -2,7 +2,7 @@
 _pkgname=typstfmt
 pkgname=$_pkgname-git
 pkgver=r146.13a804b
-pkgrel=1
+pkgrel=2
 pkgdesc="formatter for the Typst language"
 arch=(x86 x86_64 arm aarch64)
 url=https://github.com/astrale-sharp/$_pkgname
@@ -24,6 +24,6 @@ build() {
 package() {
 	cd "$_pkgname" || return 1
 
-	install -D "src/$_pkgname/target/debug/$_pkgname" -t "$pkgdir/usr/bin"
+	install -D "target/debug/$_pkgname" -t "$pkgdir/usr/bin"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 }
