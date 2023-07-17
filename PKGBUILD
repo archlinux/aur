@@ -2,7 +2,7 @@
 
 _pkgname=linux-terminal-battery-status
 pkgname="${_pkgname}-git"
-pkgver=20230717.01.r24.20230717.80728c7
+pkgver=20230717.02.r30.20230717.cc06781
 pkgrel=1
 pkgdesc="Prints information about system batteries and power supplies to the terminal, optionally also from devices connected via KDE Connect."
 url="https://gitlab.com/dreieckli/linux-terminal-battery-status"
@@ -18,6 +18,8 @@ depends=(
 )
 optdepends=(
   'acpi: To display remaining battery time.'
+  'grep: To display remaining battery time.'
+  'sed: To display remaining battery time.'
   'kdeconnect: To display information about devices connected via KDE Connect.'
   'qt5-tools: To display information about devices connected via KDE Connect.'
 )
