@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=BTCPayServer-Vault
+Exec=BTCPayServer.Vault
+Icon=btcpayserver-vault
+Type=Application
+Categories=Finance;Utility;Security
+keywords=btc;btcpay;crypto
