@@ -1,24 +1,18 @@
+#!/usr/bin/env -S sh -c 'nvchecker -cnvchecker.toml --logger=json | jq -r '\''.version | sub("^v"; "") | split("-") | .[-1]'\'' | xargs -i{} sed -i "s/^\\(pkgver=\\).*/\\1{}/" $0'
 # shellcheck shell=bash disable=SC2034,SC2154
-# Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# https://aur.archlinux.org/packages/updaurpkg-git
-# $ updaurpkg --apply
-_repo=casperdcl/argopt
-_pkgname=${_repo##*/}
-_pypi_package=$_pkgname
-_source_type=pypi-releases
-_upstreamver='0.7.1'
-
+# ex: nowrap
+_pkgname=argopt
 pkgname=python-$_pkgname
-pkgver=${_upstreamver##v}
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="doc to argparse driven by docopt"
 arch=(any)
-url=https://github.com/$_repo
+url=https://github.com/casperdcl/argopt
 makedepends=(python-installer)
 license=(MPL)
-_py=py2.py3
+_py=py3
 source=("https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('94ca1828f95e007b738b1f93cb2112610f939dbdf687e4936d6e6d7b88c8bf8e')
+sha256sums=('c613eac7f0712760340f0b67cd5ef4b7537319f92ad5ce48a83c9132d249f8a1')
 
 package() {
   cd "$srcdir" || return 1
