@@ -1,15 +1,15 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=libpfm
-pkgver=4.11.1
+pkgver=4.13.0
 pkgrel=1
 pkgdesc='Library to encode performance events for use by perf tool'
 arch=('x86_64')
-url='http://perfmon2.sourceforge.net'
+url='https://perfmon2.sourceforge.net'
 license=('MIT')
 depends=('glibc')
 makedepends=('git')
-_commit='414e482ace00d334015341e032a8b325d80e92eb'
+_commit='3d77461cb966259c51f3b3e322564187f4bef7fb'
 source=("$pkgname::git+https://git.code.sf.net/p/perfmon2/libpfm4#commit=$_commit")
 b2sums=('SKIP')
 
