@@ -1,6 +1,6 @@
 pkgbase = xv
 	pkgdesc = A nice image viewer
-	pkgver = 4.1.1
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/jasper-software/xv
 	arch = i686
@@ -13,11 +13,12 @@ pkgbase = xv
 	depends = libpng
 	depends = libx11
 	depends = libtiff
+	depends = libwebp
 	depends = jasper
 	options = !emptydirs
-	source = https://github.com/jasper-software/xv/releases/download/v4.1.1/xv-3.10a-js-4.1.1.tar.gz
+	source = https://github.com/jasper-software/xv/releases/download/v4.2.0/xv-3.10a-js-4.2.0.tar.gz
 	source = license.txt
-	sha1sums = 2c9b7108bcd6ff97dfe1cd5f31f024a445cbe860
+	sha1sums = c2376669af1540d1142cccf2c1be45b637fd6d98
 	sha1sums = 4561344e8f2c30eee9c55b14a14f062d89d6e7b7
 
 pkgname = xv
