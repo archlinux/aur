@@ -8,7 +8,7 @@
 pkgname=rubymine
 _pkgname=RubyMine
 pkgver=2023.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools"
 arch=(i686 x86_64)
 options=(!strip)
@@ -29,7 +29,7 @@ package() {
 
   # Pre-packaged program files
   install -dm0755 "${pkgdir}/usr/share"
-  cp -a "${_pkgname}-${pkgver}" "${pkgdir}/usr/share/${pkgname}"
+  cp -a "${_pkgname}-${pkgver%.*}" "${pkgdir}/usr/share/${pkgname}"
 
   # Desktop application
   install -Dm0644 "${pkgdir}/usr/share/${pkgname}/RMlogo.svg" \
@@ -42,7 +42,7 @@ package() {
 
   # License
   install -dm0755 "$pkgdir/usr/share/licenses/$pkgname"
-  find "$_pkgname-$pkgver/license/" -type f -exec \
+  find "$_pkgname-${pkgver%.*}/license/" -type f -exec \
     install -Dm0644 '{}' "$pkgdir/usr/share/licenses/$pkgname/" \;
 
   # Java config
