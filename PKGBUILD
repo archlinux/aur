@@ -70,7 +70,7 @@ pkgver() {
 
 prepare() {
   # update the submodules
-  git -C "$srcdir/blender" -c protocol.file.allow=always submodule update --init --recursive --remote
+  make V=1 -C "$srcdir/blender" update_code
   if [ ! -v _cuda_capability ] && grep -q nvidia <(lsmod); then
     git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
