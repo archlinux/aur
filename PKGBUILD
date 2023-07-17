@@ -15,7 +15,7 @@ source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgve
     "${pkgname%-bin}.sh")
 sha256sums=('0f503193a62f82ffd84e2a8b11940d883ebc57ede5745cd1969a0223d5b510b6'
             '6d1a22f787896797e8e8d5e0afd14121b67041b13d59965344c1b499fab6e8f8'
-            'c79a025fab659d246043823f3fdc5285bf98b9b8c4bad857506bdc753721979b')
+            '2b8e49be115742dde628281e446b654116fee5dad5a892d37eab67a30e1ed646')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
