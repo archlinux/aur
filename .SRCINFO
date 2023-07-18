@@ -1,0 +1,14 @@
+pkgbase = python-llama-cpp
+	pkgdesc = Python bindings for llama.cpp
+	pkgver = 0.1.72
+	pkgrel = 1
+	url = https://github.com/abetlen/llama-cpp-python
+	arch = any
+	license = GPL3
+	makedepends = python-scikit-build
+	depends = python
+	depends = llama-cpp
+	source = https://files.pythonhosted.org/packages/source/l/llama-cpp-python/llama_cpp_python-0.1.72.tar.gz
+	sha256sums = 1520fa9751ff77ac4dea7837e224a77a5698eb7310eb4afbd5fbea1668f9ae0e
+
+pkgname = python-llama-cpp
