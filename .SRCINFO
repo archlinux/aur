@@ -1,7 +1,7 @@
 pkgbase = thefile
 	pkgdesc = File Manager
 	pkgver = 5.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/theCheeseboard/thefile
 	arch = x86_64
 	arch = aarch64

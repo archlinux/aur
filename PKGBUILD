@@ -1,7 +1,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=('thefile' 'libthefile')
 pkgver=5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="File Manager"
 arch=("x86_64" "aarch64")
 url="https://github.com/theCheeseboard/thefile"
