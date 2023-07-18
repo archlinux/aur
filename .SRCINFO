@@ -1,0 +1,32 @@
+pkgbase = rpcsx-git
+	pkgdesc = Sony PlayStation 4 emulator
+	pkgver = r189.07ed4b0
+	pkgrel = 1
+	url = https://rpcsx.github.io/rpcsx-site/
+	arch = x86_64
+	license = GPL2
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = glslang
+	makedepends = spirv-cross
+	makedepends = vulkan-headers>=1:1.3
+	makedepends = vulkan-icd-loader>=1.3
+	makedepends = xbyak
+	depends = gcc-libs
+	depends = glfw>=3.3
+	depends = glibc
+	depends = libunwind
+	depends = spirv-tools
+	provides = rpcsx=189.07ed4b0
+	conflicts = rpcsx
+	source = rpcsx::git+https://github.com/RPCSX/rpcsx.git
+	b2sums = SKIP
+
+pkgname = rpcsx-git
+	depends = gcc-libs
+	depends = glfw>=3.3
+	depends = glibc
+	depends = libunwind
+	depends = spirv-tools
+	depends = libvulkan.so
