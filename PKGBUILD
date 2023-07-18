@@ -2,14 +2,14 @@
 # Contributor: Integral <luckys68@126.com>
 pkgname=linuxqq
 pkgver=3.1.2_13107
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='New Linux QQ based on Electron'
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
 license=('custom')
 conflicts=('linuxqq-nt-bwrap')
-depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core' 'libvips')
+depends=('nss' 'alsa-lib' 'gtk3' 'gjs' 'at-spi2-core' 'libvips' 'openjpeg2')
 optdepends=('libappindicator-gtk3: Allow QQ to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
 source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/ad5b5393/${pkgname}_${pkgver//_/-}_amd64.deb")
 source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/ad5b5393/${pkgname}_${pkgver//_/-}_arm64.deb")
