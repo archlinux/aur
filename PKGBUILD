@@ -3,8 +3,8 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Jonathon Fernyhough <jonathon_at_manjaro_dot_org>
 pkgname=rustup-git
-pkgver=1.26.0.r27.g4b29b79a
-pkgrel=2
+pkgver=1.26.0.r74.g87fa15d1
+pkgrel=1
 pkgdesc="The Rust toolchain installer"
 arch=('x86_64')
 url="https://github.com/rust-lang/rustup"
@@ -14,8 +14,8 @@ makedepends=('git' 'cargo')
 optdepends=('lldb: rust-lldb script'
             'gdb: rust-gdb script')
 provides=('rust' 'cargo' 'rust-nightly' 'cargo-nightly' 'rustfmt' 'rust-src'
-          'lib32-rust-libs' 'rust-musl' 'rust-wasm' 'rustup')
-conflicts=('rust' 'cargo' 'rustfmt' 'rust-nightly' 'rust-nightly-bin' 'rustup')
+          'lib32-rust-libs' 'rust-musl' 'rust-wasm' 'rustup' 'rust-analyzer')
+conflicts=('rust' 'cargo' 'rustfmt' 'rust-nightly' 'rust-nightly-bin' 'rustup' 'rust-analyzer')
 replaces=('cargo-tree')
 install='post.install'
 source=("${pkgname}::git+https://github.com/rust-lang/rustup.git" "list-proxy-names.rs")
@@ -28,13 +28,17 @@ pkgver() {
 }
 
 prepare() {
-   cd "$srcdir"
-   cp list-proxy-names.rs $pkgname/src/bin
+   cd "$srcdir/$pkgname"
+   cp ../list-proxy-names.rs src/bin
+   export RUSTUP_TOOLCHAIN=stable
+   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     cd "$srcdir/$pkgname"
-    env --unset=CARGO_TARGET_DIR cargo build --release --features no-self-update --bin rustup-init --bin list-proxy-names
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --features no-self-update --bin rustup-init --bin list-proxy-names
 }
 
 package() {
@@ -55,7 +59,5 @@ package() {
     "$pkgdir"/usr/bin/rustup completions zsh cargo > "$pkgdir/usr/share/zsh/site-functions/_cargo"
 
     install -Dm644 LICENSE-MIT "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE-MIT
-    install -Dm644 LICENSE-APACHE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE-APACHE
 }
 
-# vim:filetype=sh:
