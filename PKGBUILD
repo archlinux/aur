@@ -3,19 +3,19 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=cmake
-pkgver=3.26.4
+pkgver=3.27.0
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
 license=('custom')
-depends=('curl' 'libarchive' 'hicolor-icon-theme' 'jsoncpp' 'libjsoncpp.so' 'libuv' 'rhash')
-makedepends=('qt6-base' 'python-sphinx' 'emacs')
+depends=('curl' 'libarchive' 'hicolor-icon-theme' 'jsoncpp' 'libjsoncpp.so' 'libuv' 'rhash' 'cppdap')
+makedepends=('qt6-base' 'python-sphinx' 'emacs' 'nlohmann-json')
 optdepends=('qt6-base: cmake-gui')
 source=("https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz"
         "https://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}-SHA-256.txt"{,.asc})
-sha512sums=('fe817c8d5e247db3f0a9a58ee37c466a47220100d9e90711cd5d06c223cef87e41d1a756e75d1537e5f8cd010dcb8971cbeab4684b1ac12bcecf84bf7b720167'
-            'a7f141f75695b3594b8f5f834edf777e7877b8a33cdca602f9645568426043e634457e6ea5720ed019288e8900960c83f08789a9db7f6e9053416b235bb64e0c'
+sha512sums=('8b5836ac1c1f1e741ebbf6c9a1c9dca322dfd963598838a8789cd926fc071bde2fc53e42b6a2d5d8697f12d96dbf2cebdf03817d7d84b68256ef80b779a27fed'
+            'd91813fe3df1a5a3d06991c6abe3afa8dc5a9236b93e427b05c077a138e53a42e367cfacb76da562e6c6db01411bfea4ecb416363a3f724c10616cbcfb0a2ad4'
             'SKIP')
 validpgpkeys=(CBA23971357C2E6590D9EFD3EC8FEF3A7BFB4EDA) # Brad King <brad.king@kitware.com>
 
