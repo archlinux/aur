@@ -1,0 +1,74 @@
+From a58f9fd4cb5d1120b9ce58c912ca87fa14720f73 Mon Sep 17 00:00:00 2001
+From: pppig236 <weikaik@umich.edu>
+Date: Tue, 2 May 2023 15:19:52 -0400
+Subject: [PATCH] fix include for rocm 5.5.0
+
+---
+ base_test.hpp           |  8 +-------
+ common.hpp              | 11 ++---------
+ rocm_bandwidth_test.hpp |  8 +-------
+ 3 files changed, 4 insertions(+), 23 deletions(-)
+
+diff --git a/base_test.hpp b/base_test.hpp
+index 3e79de1..af99a85 100755
+--- a/base_test.hpp
++++ b/base_test.hpp
+@@ -42,14 +42,8 @@
+ 
+ #ifndef ROC_BANDWIDTH_TEST_BASE_H_
+ #define ROC_BANDWIDTH_TEST_BASE_H_
+-#if(defined(RBT_HSA_VERSION_FLAT) && ((RBT_HSA_VERSION_FLAT) < RBT_HSA_VERSION_FILEREORG))
+-// Hsa package with out file reorganization
+-// This is for backward compatibility and will be deprecated from future release
+-#include "hsa.h"
+-#else
+ // Hsa package with file reorganization
+-#include "hsa/hsa.h"
+-#endif
++#include <hsa/hsa.h>
+ #include <iostream>
+ #include <string>
+ #include <vector>
+diff --git a/common.hpp b/common.hpp
+index d2933a0..3c4858f 100755
+--- a/common.hpp
++++ b/common.hpp
+@@ -48,16 +48,9 @@
+ #include <vector>
+ #include <cmath>
+ #include <stdio.h>
+-#if(defined(RBT_HSA_VERSION_FLAT) && ((RBT_HSA_VERSION_FLAT) < RBT_HSA_VERSION_FILEREORG))
+-// Hsa package with out file reorganization
+-// This is for backward compatibility and will be deprecated from future release
+-#include "hsa.h"
+-#include "hsa_ext_amd.h"
+-#else
+ // Hsa package with file reorganization
+-#include "hsa/hsa.h"
+-#include "hsa/hsa_ext_amd.h"
+-#endif
++#include <hsa/hsa.h>
++#include <hsa/hsa_ext_amd.h>
+ 
+ using namespace std;
+ 
+diff --git a/rocm_bandwidth_test.hpp b/rocm_bandwidth_test.hpp
+index f7eb338..b8550a7 100755
+--- a/rocm_bandwidth_test.hpp
++++ b/rocm_bandwidth_test.hpp
+@@ -43,14 +43,8 @@
+ #ifndef __ROC_BANDWIDTH_TEST_H__
+ #define __ROC_BANDWIDTH_TEST_H__
+ 
+-#if(defined(RBT_HSA_VERSION_FLAT) && ((RBT_HSA_VERSION_FLAT) < RBT_HSA_VERSION_FILEREORG))
+-// Hsa package with out file reorganization
+-// This is for backward compatibility and will be deprecated from future release
+-#include "hsa.h"
+-#else
+ // Hsa package with file reorganization
+-#include "hsa/hsa.h"
+-#endif
++#include <hsa/hsa.h>
+ #include "base_test.hpp"
+ #include "common.hpp"
+ 
