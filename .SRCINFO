@@ -1,14 +1,14 @@
 pkgbase = alfae-bin
 	pkgdesc = An Itch.io/Epic Games/GOG launcher that works through plugins (binary release)
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/suchmememanyskill/Alfae
 	arch = x86_64
 	license = GPL3
 	provides = alfae
 	conflicts = alfae
 	options = !strip
-	source = https://github.com/suchmememanyskill/Alfae/releases/download/1.4.1/Linux.zip
+	source = alfae-1.4.1.zip::https://github.com/suchmememanyskill/Alfae/releases/download/1.4.1/Linux.zip
 	source = https://raw.githubusercontent.com/suchmememanyskill/Alfae/1.4.1/Launcher/Assets/icon.png
 	source = https://raw.githubusercontent.com/suchmememanyskill/Alfae/1.4.1/README.md
 	source = https://raw.githubusercontent.com/suchmememanyskill/Alfae/1.4.1/LICENSE

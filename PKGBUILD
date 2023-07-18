@@ -3,7 +3,7 @@
 _pkgname=alfae
 pkgname=$_pkgname-bin
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An Itch.io/Epic Games/GOG launcher that works through plugins (binary release)"
 arch=('x86_64')
 url="https://github.com/suchmememanyskill/Alfae"
@@ -11,12 +11,10 @@ license=('GPL3')
 provides=($_pkgname)
 conflicts=($_pkgname)
 options=('!strip')
-_desktop=alfae.desktop
-_url2=https://raw.githubusercontent.com/suchmememanyskill/Alfae/$pkgver
-source=("$url/releases/download/$pkgver/Linux.zip"
-        "$_url2/Launcher/Assets/icon.png"
-        "$_url2/README.md"
-        "$_url2/LICENSE")
+source=("$_pkgname-$pkgver.zip::$url/releases/download/$pkgver/Linux.zip"
+        "https://raw.githubusercontent.com/suchmememanyskill/Alfae/$pkgver/Launcher/Assets/icon.png"
+        "https://raw.githubusercontent.com/suchmememanyskill/Alfae/$pkgver/README.md"
+        "https://raw.githubusercontent.com/suchmememanyskill/Alfae/$pkgver/LICENSE")
 sha256sums=('33027a73c17561776e938f9b7c5ca83a8a3a0d3bf000e147dbe60b7d0996c4e9'
             'SKIP'
             'SKIP'
@@ -24,15 +22,16 @@ sha256sums=('33027a73c17561776e938f9b7c5ca83a8a3a0d3bf000e147dbe60b7d0996c4e9'
 
 prepare() {
   # Create a shortcut
-  echo "Categories=Game;" >> $_desktop
-  sed -i '1 i\Comment=An Itch.io/Epic Games/GOG launcher that works through plugins' $_desktop
-  sed -i '1 i\StartupWMClass=Alfae' $_desktop
-  sed -i '1 i\Icon=alfae' $_desktop
-  sed -i '1 i\Type=Application' $_desktop
-  sed -i '1 i\Terminal=false' $_desktop
-  sed -i '1 i\Exec=/opt/Alfae/Alfae %U' $_desktop
-  sed -i '1 i\Name=Alfae' $_desktop
-  sed -i '1 i\[Desktop Entry]' $_desktop
+  echo "Categories=Game;" >> desktop
+  sed -i '1 i\Comment=An Itch.io/Epic Games/GOG launcher that works through plugins' desktop
+  sed -i '1 i\StartupWMClass=Alfae' desktop
+  sed -i '1 i\Icon=alfae' desktop
+  sed -i '1 i\Type=Application' desktop
+  sed -i '1 i\Terminal=false' desktop
+  sed -i '1 i\Exec=/opt/Alfae/Alfae %U' desktop
+  sed -i '1 i\Name=Alfae' desktop
+  sed -i '1 i\[Desktop Entry]' desktop
+  mv desktop $_pkgname.desktop
 }
 
 package() {
@@ -43,7 +42,7 @@ package() {
   cp -r Release $pkgdir/opt/Alfae
   ln -s /opt/Alfae/Alfae $pkgdir/usr/bin/$_pkgname
   install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
-  install -Dm644 $_desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
