@@ -4,7 +4,7 @@ wayland_protocols_version=1.25
 
 pkgname=libtdesktopenvironment
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Common libraries for desktop integration for the- apps"
 arch=("x86_64" "aarch64")
 url="https://github.com/vicr123/libtdesktopenvironment"

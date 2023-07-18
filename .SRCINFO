@@ -1,7 +1,7 @@
 pkgbase = libtdesktopenvironment
 	pkgdesc = Common libraries for desktop integration for the- apps
 	pkgver = 1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/vicr123/libtdesktopenvironment
 	arch = x86_64
 	arch = aarch64
