@@ -15,6 +15,6 @@ source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgnam
 sha256sums=('7cbfbd11259ad52c3d8c77edad52778567e76a36b4c91e6d9c18f4fbe1d9cead')
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver" || return 1
+  cd "$_pkgname-$pkgver" || return 1
   python setup.py install --root="$pkgdir" --optimize=1
 }
