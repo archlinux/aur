@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Slender Threads (Prologue)
+Comment=Point-and-click thriller adventure
+Exec=slender-threads
+Icon=gog-slender-threads-prologue
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8

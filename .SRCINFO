@@ -1,0 +1,24 @@
+pkgbase = gog-slender-threads-prologue
+	pkgdesc = Point-and-click thriller adventure. GOG version.
+	pkgver = 1.0.49233
+	pkgrel = 1
+	url = https://www.gog.com/en/game/slender_threads_prologue
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = pango
+	conflicts = gog-slender-threads
+	options = !strip
+	source = slender-threads-prologue_1.0_(49233).sh::gogdownloader://slender_threads_prologue/en3installer0
+	source = gog-slender-threads-prologue.desktop
+	source = slender-threads.bash
+	sha512sums = 72d12c20871b1281af78e174f6c5345ee6d583c8015e119a661db18717650959ba7650170a547da1964ba97a3bb32c4bdba250cee85ea0eee2bb86b0501d46c5
+	sha512sums = 7e3bc00eeb9e9290cbb3140e8d92bbe4aa3f250941593f1bedc83cf51b646c55c46804e4619f3e8f902d04bc0c3e693816f54cb2cdda033ed174779d5ce750e0
+	sha512sums = f196a3ee2721f449599fe51cf1ad623a837f6fe640346663cc52ddbee9e51917e22becf01d88d1c295e9d185997d341e6b710ecddae41dc52d6f2c0a6f374654
+
+pkgname = gog-slender-threads-prologue
