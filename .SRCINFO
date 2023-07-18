@@ -1,7 +1,7 @@
 pkgbase = docker-desktop
 	pkgdesc = Docker Desktop is an easy-to-install application that enables you to locally build and share containerized applications and microservices.
 	pkgver = 4.21.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.docker.com/products/docker-desktop/
 	install = docker-desktop.install
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Luis Gustavo S. Barreto <gustavosbarreto@gmail.com>
 pkgname=docker-desktop
 pkgver=4.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker Desktop is an easy-to-install application that enables you to locally build and share containerized applications and microservices."
 arch=('x86_64')
 url="https://www.docker.com/products/docker-desktop/"
@@ -13,11 +13,13 @@ source=("https://desktop.docker.com/linux/main/amd64/$pkgname-$pkgver-x86_64.pkg
 md5sums=('ed56ddccf7a3dc4847a7023b7aa6845c')
 
 package() {
+    install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/usr/share/applications"
     install -d "${pkgdir}/usr/lib/systemd/user"
     install -d "${pkgdir}/usr/lib/docker/cli-plugins"
     install -m644 "${srcdir}/usr/lib/systemd/user/docker-desktop.service" "${pkgdir}/usr/lib/systemd/user/docker-desktop.service"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-extension" "${pkgdir}/usr/lib/docker/cli-plugins/docker-extension"
+    install -m755 "${srcdir}/usr/bin/docker-credential-desktop" "${pkgdir}/usr/bin/docker-credential-desktop"
     cp -r "${srcdir}/opt" "${pkgdir}"
     cp "${srcdir}/usr/share/applications/"* "${pkgdir}/usr/share/applications/"
 
