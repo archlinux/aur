@@ -3,18 +3,18 @@
 # Contributor: Tobias Powalowski <tpowa at archlinux dot org>
 
 pkgname=lib32-pciutils
-pkgver=3.8.0
+pkgver=3.10.0
 pkgrel=1
 pkgdesc="PCI bus configuration space access library (32-bit)"
 arch=('x86_64')
 url="https://mj.ucw.cz/sw/pciutils/"
 license=('GPL2')
 depends=("${pkgname#lib32-}" 'lib32-kmod' 'lib32-systemd')
-makedepends=('gcc-multilib' 'git')
+makedepends=('git' 'lib32-gcc-libs')
 source=(https://mj.ucw.cz/download/linux/pci/${pkgname#lib32-}-${pkgver}.tar.gz{,.sign})
-sha512sums=('4b0de02a54c6ed19d5ea85a01d89a62386000bc0f816498872479aba26fb007a8c394cba3f95e77a7ffe52d36ad2726169b7b83bda5ab0647f00e49d8a34bf15'
+sha512sums=('3da1af4af8b0fa3cf4d3f06095524e25dc292182beec10aa2c16c5c6ba751fe469d0e7f54e43413b6f3f5bcdbd1fba3c66df1d8e39d2e1962ae36a2d9c06238e'
             'SKIP')
-validpgpkeys=('5558F9399CD7836850553C6EC28E7847ED70F82D') # Martin Mares <mj@ucw.cz>
+validpgpkeys=('C466A56CADA981F4297D20C31F3D0761D9B65F0B') # Martin Mares <mj@ucw.cz>
 
 build() {
   # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
