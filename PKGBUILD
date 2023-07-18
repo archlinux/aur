@@ -2,7 +2,7 @@
 # Contributor: osch <oliver@luced.de>
 
 pkgname=audacity-local-git
-pkgver=3.4.0.0.r17090
+pkgver=3.4.0.0.r17401
 pkgrel=1
 pkgdesc="Record and edit audio files - Built with package versions as recommended by Audacity team"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL2' 'CCPL')
 groups=('pro-audio')
 depends=('gtk3' 'gtk2' 'ffmpeg' 'portmidi' 'python' 'vst3sdk'
 'portaudio' 'jack')
-makedepends=('cmake' 'autoconf' 'automake' 'libtool' 'git' 'conan1' 'catch2')
+makedepends=('cmake' 'autoconf' 'automake' 'libtool' 'git' 'conan' 'catch2')
 provides=(
     audacity
     ladspa-host
@@ -47,10 +47,11 @@ prepare() {
   cd build
 
   depsDir=$(readlink -f ./.offline)
+## To set a custom download directory for Conan2 still seems a bit of a mystery to me.
   export CONAN_USER_HOME="$depsDir/conan"
-  conan config home
-  conan config init
-  conan config set storage.download_cache="$CONAN_USER_HOME/download_cache"
+#  conan config home
+#  conan config init
+#  conan config set storage.download_cache="$CONAN_USER_HOME/download_cache"
 #Let's not remove it every time, it's a pain building them.
 #  conan remove "*" --src --builds --force
 
