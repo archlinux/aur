@@ -1,0 +1,4 @@
+[llama-cpp]
+source = "github"
+github = "ggerganov/llama.cpp"
+use_latest_release = "true"
