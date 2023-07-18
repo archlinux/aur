@@ -1,8 +1,8 @@
 # Maintainer: JustKidding <jk@vin.ovh>
 
 pkgname=ueberzugpp
-pkgver=2.8.8
-pkgrel=2
+pkgver=2.8.9
+pkgrel=1
 pkgdesc="Command line util which allows to display images in combination with X11 written in C++"
 arch=(any)
 url="https://github.com/jstkdng/ueberzugpp"
@@ -11,7 +11,7 @@ makedepends=("cmake" "cli11" "nlohmann-json" "microsoft-gsl" "wayland-protocols"
 depends=("opencv" "libvips" "glib2" "libxcb" "xcb-util-image" "libsixel" "openssl" "spdlog"
          "fmt" "turbo-base64" "chafa" "wayland" "onetbb" "glibc" "gcc-libs" "xcb-util-errors")
 source=("https://github.com/jstkdng/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('fdb2bbcc29c2325abec7f58b5f01ff26af80a52f9cd7978a10f805eaee7e7838')
+sha256sums=('eeff6a6583b84620b7893e44b386fbcb828c1987ec193ac486c391f316d091c8')
 provides=("ueberzug")
 conflicts=("ueberzug")
 options=("debug")
