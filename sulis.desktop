@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Sulis
-Comment=sulis
-Exec=sulis
-Terminal=false
-StartupNotify=false
-Categories=Game;
