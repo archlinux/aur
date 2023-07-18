@@ -7,7 +7,7 @@ pkgbase=gprbuild
 pkgdesc="Builder for multi-language systems."
 pkgname=(libgpr gprbuild gprtools gprname gprslave)
 pkgver=24.0w
-pkgrel=4
+pkgrel=5
 epoch=1
 
 arch=(i686 x86_64)
