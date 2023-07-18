@@ -1,7 +1,7 @@
 # Maintainer: mrdotx <klassiker@gmx.de>
 pkgname=cinfo
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="a fast and minimal system information tool for linux-based operating systems"
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url='https://github.com/mrdotx/cinfo'
@@ -9,7 +9,7 @@ license=('GPL3')
 provides=('cinfo')
 conflicts=('cinfo')
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-b2sums=('981d2e594a844ac1734981006bd6cff7b1de33737fc5c57008877a35eb53748f49cd7b5cecab68c236819d9f0f3ee5be9b82ed2ab89bcaacda2989ca115c23e1')
+b2sums=('c9b8d912dd7077030d3dfde99ca4185ddd9d2405972a7f6314791251cebe084cbd08ad088bbc9be2c0dc85b7301fcce6bd53a38824fbcf2991caa616197dfa2f')
 
 package() {
     cd "$pkgname-$pkgver"
