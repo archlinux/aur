@@ -11,7 +11,7 @@
 
 ### PACKAGE OPTIONS
 ## MERGE REQUESTS SELECTION
-# Merge Requests List: ('579' '1441' '2941' 'revert-2878-partially' 'prio')
+# Merge Requests List: ('579' '1441' 'revert-2878-partially' 'prio')
 _merge_requests_to_use=('1441' 'revert-2878-partially' 'prio')
 
 ## Disable building the DOCS package (Enabled if not set)
@@ -31,8 +31,8 @@ else
   pkgname=(mutter-performance mutter-performance-docs)
 fi
 epoch=1
-pkgver=44.2
-pkgrel=2
+pkgver=44.3
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64 aarch64)
@@ -72,16 +72,12 @@ makedepends=(
 if [ -n "$_enable_check" ]; then
   checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock zenity)
 fi
-_commit=e7ed2bf85700a2ff33b69826f6f0fff6e2f28e69  # tags/44.2^0
+_commit=99d83f2985483bc192e1271665c442c7c480a588  # tags/44.3^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        '0001-tests-cogl-test-framebuffer-get-bits-should-fail-on-.patch'
         'mr1441.patch'
-        'mr2941.patch'
         'prio.patch')
 sha256sums=('SKIP'
-            '3321a1b16de808469333231096074e4caaca8563e0a138344246c9301dfac3b9'
-            '3621acfed945773de4e107d4b077d8ff2b31eb4adc52d956ee6cc6bb245bac04'
-            '395072af4b44baa2831031fb3c85ef1fa999f6de66ab5c09082432c369e37b2d'
+            'a6e07de13e44a721f235f557882ca7ef050324dcd3532fb278d677aba71abd80'
             'cca15ee32b5b4d942960672ab37403b2ccf5d249711fc321b333c3936d9ab897')
 
 pkgver() {
@@ -124,7 +120,8 @@ prepare() {
 
   # Unbreak tests with Mesa 23.1
   # https://gitlab.gnome.org/GNOME/mutter/-/issues/2848
-  git apply -3 ../0001-tests-cogl-test-framebuffer-get-bits-should-fail-on-.patch
+  # https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/3047
+  git cherry-pick -n '5a83e8ef8250526a40e8e69c^..d65883e0d7d70987e3888b86'
 
   #git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   #git remote add verdre https://gitlab.gnome.org/verdre/mutter.git || true
@@ -173,15 +170,6 @@ prepare() {
   # Comment: See https://gitlab.gnome.org/GNOME/mutter/-/issues/2690
   #          Cannot be used with !2941
   pick_mr 'revert-2878-partially' 3ac82a58c51a5c8db6b49e89a1232f99c79644cc 'revert'
-
-  # Title: Try unparenting client windows when fullscreen again
-  # Author: Jonas Ådahl <jadahl@gmail.com>
-  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2941
-  # Type: 3
-  # Status: 2 & 3
-  # Comment: Avoid bugs like #2678 (closed) when we try to avoid blits in the X server for fullscreen windows.
-  #          Cannot be used with 'revert-2878-partially'
-  pick_mr '2941' 'mr2941.patch' 'patch'
 
   # Title: Draft: Dynamic triple/double buffering (v4)
   # Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
