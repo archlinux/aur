@@ -5,7 +5,7 @@
 
 pkgname=openvino
 pkgver=2023.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications'
 arch=('x86_64')
 url='https://docs.openvinotoolkit.org/'
@@ -19,7 +19,7 @@ optdepends=('intel-compute-runtime: for Intel GPU plugin'
             'python-numpy: for Python API'
             'cython: for Python API')
 makedepends=('git' 'git-lfs' 'cmake' 'opencl-clhpp' 'opencl-headers' 'ocl-icd' 'opencv'
-             'protobuf' 'snappy' 'python' 'python-setuptools' 'cython' 'fdupes' 'patchelf'
+             'snappy' 'python' 'python-setuptools' 'cython' 'fdupes' 'patchelf'
              'shellcheck')
 provides=('intel-openvino')
 conflicts=('intel-openvino')
@@ -116,13 +116,13 @@ prepare() {
     mkdir -p openvino/temp
     cp -af "gna_${_gnaver}" openvino/temp
     printf '%s\n' "${source[1]}" > "openvino/temp/gna_${_gnaver}/ie_dependency.info"
-
+    
     # ade gcc 13 fix
     git -C openvino/thirdparty/ade cherry-pick --no-commit 7cecc9138b89e1946e3e515727bb69b2ab119806
     
     patch -d openvino/thirdparty/ade -Np1 -i "${srcdir}/010-ade-disable-werror.patch"
     patch -d openvino -Np1 -i "${srcdir}/015-openvino-disable-werror.patch"
-    patch -d openvino -Np1 -i "${srcdir}/020-openvino-use-protobuf-shared-libs.patch"
+    #patch -d openvino -Np1 -i "${srcdir}/020-openvino-use-protobuf-shared-libs.patch"
 }
 
 build() {
@@ -145,7 +145,7 @@ build() {
         -DENABLE_SYSTEM_PUGIXML:BOOL='ON' \
         -DENABLE_SYSTEM_TBB:BOOL='ON' \
         -DENABLE_SYSTEM_OPENCL:BOOL='ON' \
-        -DENABLE_SYSTEM_PROTOBUF:BOOL='ON' \
+        -DENABLE_SYSTEM_PROTOBUF:BOOL='OFF' \
         -DENABLE_SYSTEM_FLATBUFFERS:BOOL='OFF' \
         -DENABLE_SYSTEM_SNAPPY:BOOL='ON' \
         -Wno-dev
