@@ -1,7 +1,7 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=('python-pyzotero')
 pkgver=1.5.9
-pkgrel=1
+pkgrel=2
 _name=pyzotero
 pkgdesc="Python client for the Zotero API"
 arch=('any')
@@ -12,7 +12,7 @@ sha512sums=('b0b5221dc66d69b8d7a13f2c7dc34fe656fd5c61c851e273a0a40fc755ff5fdd463
 makedepends=('python-setuptools')
 depends=('python-feedparser>=6.0.0'
          'python-pytz' 
-         'python-pathlib' 
+         'python-requests' 
          'python-bibtexparser')
 
 build() {
