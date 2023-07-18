@@ -6,8 +6,14 @@ pkgbase = python-llama-cpp
 	arch = any
 	license = GPL3
 	makedepends = python-scikit-build
-	depends = python
+	depends = python-typing-extensions
+	depends = python-numpy
+	depends = python-diskcache
 	depends = llama-cpp
+	optdepends = python-uvicorn
+	optdepends = python-fastapi
+	optdepends = python-pydantic-settings
+	optdepends = python-sse-starlette
 	source = https://files.pythonhosted.org/packages/source/l/llama-cpp-python/llama_cpp_python-0.1.72.tar.gz
 	sha256sums = 1520fa9751ff77ac4dea7837e224a77a5698eb7310eb4afbd5fbea1668f9ae0e
 

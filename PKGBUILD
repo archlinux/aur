@@ -10,7 +10,8 @@ pkgdesc="Python bindings for llama.cpp"
 # llama.so provided by llama-cpp
 arch=(any)
 url=https://github.com/abetlen/llama-cpp-python
-depends=(python llama-cpp)
+depends=(python-typing-extensions python-numpy python-diskcache llama-cpp)
+optdepends=(python-uvicorn python-fastapi python-pydantic-settings python-sse-starlette)
 makedepends=(python-scikit-build)
 license=(GPL3)
 _py=py3
