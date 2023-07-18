@@ -16,8 +16,8 @@ pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
 url="https://github.com/blender/cycles.git"
 license=(Apache)
-depends=(libglvnd openexr glew pugixml freeglut openimageio onetbb openvdb embree openimagedenoise opensubdiv openshadinglanguage alembic sdl2 google-glog)
-makedepends=(cmake git boost llvm)
+depends=(libglvnd openexr glew pugixml freeglut openimageio onetbb openvdb embree openimagedenoise opensubdiv openshadinglanguage alembic sdl2 google-glog libepoxy)
+makedepends=(cmake git boost llvm python)
 optdepends=(cuda optix)
 provides=(cycles)
 source=("git+https://github.com/blender/cycles.git#commit=e9f92cd6528a6042de8e5316b9f03ec3724561b6"
@@ -40,8 +40,7 @@ build() {
     _CUDA_PKG=$(pacman -Qq cuda 2>/dev/null) || true
     if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
       _CMAKE_FLAGS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
-                      -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
-                      -DPYTHON_VERSION=$_pyver)
+                      -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda)
       ((DISABLE_OPTIX)) || _CMAKE_FLAGS+=( -DOPTIX_ROOT_DIR=/opt/optix )
       if [[ -v _cuda_capability ]]; then
         _CMAKE_FLAGS+=( -DCYCLES_CUDA_BINARIES_ARCH="$(IFS=';'; echo "${_cuda_capability[*]}";)" )
@@ -62,6 +61,7 @@ build() {
     # INFO (2022-10-08):
     # we don't support NanoVDB at the moment (no nanovdb package in AUR...)
     cmake -B build -S "cycles" \
+        -DPYTHON_VERSION=$_pyver \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_CYCLES_STANDALONE_GUI=TRUE \
