@@ -3,7 +3,7 @@
 
 _pkgname=ArmCord
 pkgname=armcord-bin
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=2
 pkgdesc="Discord client for lower end and ARM devices."
 arch=('x86_64' 'aarch64')
@@ -22,10 +22,10 @@ source_aarch64=(
     "armcord.desktop"
     "armcord.png"
 )
-sha256sums_x86_64=('ca8b48162ec02ce7db3702a705fd68b64db46ef71965753dea1933ea788a2e38'
+sha256sums_x86_64=('c5634b92fe534d4e294da4b6335ff944de438300727ef3a325d92865f0b51a31'
                    '815f0c12cc6c8df07a16e7b8769fd3cc6e80032574e2431d4c5a9487d76065a0'
                    '173d6ed02a16e9f02f5d4c4b34fe3a46ef29c46ff4ecbbad98747052fb5f954e')
-sha256sums_aarch64=('9d2a8f34f663d2d811216934032d923eeb0150ca4eee0b3f2017c2925a3b521e'
+sha256sums_aarch64=('13a878d9aad4c388428cdc22780880053d7a47bf5b8f2d3f45781a4042dd4bed'
                     '815f0c12cc6c8df07a16e7b8769fd3cc6e80032574e2431d4c5a9487d76065a0'
                     '173d6ed02a16e9f02f5d4c4b34fe3a46ef29c46ff4ecbbad98747052fb5f954e')
 
