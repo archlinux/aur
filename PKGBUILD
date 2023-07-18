@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=r1004.1cae541a
-pkgrel=2
+pkgver=r1079.a0336ce6
+pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64')
 url="https://valent.andyholmes.ca"
@@ -38,7 +38,6 @@ build() {
     -Ddocumentation='false' \
     -Dtests='false' \
     -Dfuzz_tests='false' \
-    -Dfirewalld='true'
   meson compile -C build
 }
 
