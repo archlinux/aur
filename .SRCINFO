@@ -1,6 +1,6 @@
 pkgbase = litecli-git
 	pkgdesc = A command-line client for SQLite databases that has auto-completion and syntax highlighting.
-	pkgver = v0.0.3.r1.g08d6953
+	pkgver = v1.5.0.r0.g93c7a3b
 	pkgrel = 1
 	url = https://github.com/dbcli/litecli
 	arch = any
