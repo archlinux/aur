@@ -1,4 +1,4 @@
-# Maintainer: Ben Westover <adonis.lau.dev@gmail.com>
+# Maintainer: Adonis Lau <adonis.lau.dev@gmail.com>
 
 set -u
 _pkgname='jdk'
