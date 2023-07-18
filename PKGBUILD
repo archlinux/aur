@@ -10,7 +10,6 @@ url="https://github.com/AnActualEmerald/papa"
 license=('MIT')
 provides=($_pkgname)
 conflicts=($_pkgname)
-_url2=https://raw.githubusercontent.com/AnActualEmerald/papa/72fbd2c09c0ca4eaa65499135ba760d6995a1f0d
 source=("$url/releases/download/v$pkgver/papa_${pkgver}_amd64.deb")
 sha256sums=('2fc0feac3b70bf2317335bc4dfd7ade4cdeb80daef24451d8603743f94f35bb0')
 
