@@ -3,8 +3,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2023.06.20
-platform=RB_20230613
+pkgver=2023.07.18
+platform=RB_20230715
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)"
 arch=('x86_64')
@@ -16,8 +16,8 @@ options=('!emptydirs')
 source=("https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v${pkgver}.tar.gz"
         "https://repo.palemoon.org/MoonchildProductions/UXP/archive/${platform}.tar.gz"
         "https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop")
-sha256sums=('b15519a8ad4ae10c631bf7346b96cd3a60ec10d88944682fec92ee0d891d0ff1'
-            '8d8031d1eccd8c2041d11e3fb026d9b1d44eb9a3745fba37b8b5720b28fe95de'
+sha256sums=('0a2e5cde5dfd8efb89f962fd492c53ad6da261a9b3a2cc8d08768f21663efbad'
+            'c8c74dd99f62c7dc103c3720a6979efa22c31574f8366466a868e75d9deb53a2'
             '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380')
 
 prepare() {
