@@ -1,13 +1,14 @@
 # Maintainer: Frederick Zhang <frederick888@tsundere.moe>
 pkgname=sccache-dist
-pkgver=0.4.2
+pkgver=0.5.4
 pkgrel=1
-pkgdesc="sccache distributed compilation server"
+pkgdesc="sccache compilation server"
 arch=('x86_64' 'i686')
 url="https://github.com/mozilla/sccache"
 license=('Apache')
-depends=('gcc-libs' 'glibc' 'openssl' 'zlib' 'bubblewrap')
+depends=('gcc-libs' 'glibc' 'openssl' 'zlib' 'zstd' 'bubblewrap')
 makedepends=('rust')
+conflicts=('sccache')
 source=(
     "https://github.com/mozilla/sccache/archive/v${pkgver}.tar.gz"
     "sccache-scheduler.service"
@@ -15,7 +16,7 @@ source=(
     "scheduler.conf"
     "server.conf"
 )
-sha256sums=('9e15676ca02e05cb8c5edc222101d2e0049ed3d12b38642830d35844672dbe81'
+sha256sums=('86538bb9e2af88e1e5d519f7a3b6afeac25278eab283ff5a52a715b4f07427ab'
             'c239a9c8139712a8fa9f859623849b81b520450214e28e730a903ab34d9e79ae'
             'f46bbb10f8d6df8761707197e9f7e793ff858b5b7c74b04dfc032e6dd04c86ec'
             '2434090e2fa18024ad964d59e33bcc5040f8e08273d0de736ba656bb3ed411d1'
@@ -27,10 +28,12 @@ backup=(
 
 build() {
     cd "${srcdir}/sccache-${pkgver}"
-    cargo build --release --no-default-features --features="dist-server" --bin="sccache-dist"
+    export LDFLAGS+=' -lzstd'
+    cargo build --release --target-dir ./target/ --features all,dist-server,native-zlib
 }
 
 package() {
+    install -Dm755 "${srcdir}/sccache-${pkgver}/target/release/${pkgname/-dist/}" "${pkgdir}/usr/bin/${pkgname/-dist/}"
     install -Dm755 "${srcdir}/sccache-${pkgver}/target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     install -d "${pkgdir}/usr/lib/systemd/system"
