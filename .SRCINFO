@@ -1,6 +1,6 @@
 pkgbase = intel-media-driver-git
 	pkgdesc = Intel Media Driver for VAAPI — Broadwell+ iGPUs (git version)
-	pkgver = 2021.2.1.r53.g67261a4df
+	pkgver = 2023.3.0.r21.g3021fd7ec
 	pkgrel = 1
 	url = https://github.com/intel/media-driver/
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = intel-media-driver-git
 	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
-	depends = libpciaccess
 	depends = intel-gmmlib-git
 	depends = libva-git
 	provides = intel-media-driver
@@ -18,4 +17,3 @@ pkgbase = intel-media-driver-git
 	sha256sums = SKIP
 
 pkgname = intel-media-driver-git
-
