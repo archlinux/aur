@@ -2,7 +2,7 @@
 
 pkgname=tiny-irc-client-bin
 _pkgname=tiny
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='tiny is an IRC client written in Rust.'
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=(
   "${url}/releases/download/v${pkgver}/tiny-ubuntu-20.04-libssl-dbus.tar.gz"
   "${url}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('48e0bab1165d5102de5894bfb99218371464dd8ea867654516b9f8236aff3e3b'
-            '7f4751b5e34057ba65e86f3819f2ae8288307a5a8e83e5fbb2733759c8100cb7')
+sha256sums=('50270e04798809f883cc596161d4f93cefbf22a3a73481b58d4fd5701ff60a86'
+            '4bd412760a35ff41220ab918702d003c710379537db9621477f63ee201a68440')
 
 package() {
   install -Dm755 "$srcdir/tiny" "$pkgdir/usr/bin/$_pkgname"
