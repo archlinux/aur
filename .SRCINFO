@@ -1,13 +1,13 @@
 pkgbase = rocm-llvm-alt-bin
 	pkgdesc = Closed source components for rocm-llvm
-	pkgver = 5.3.0
-	pkgrel = 2
-	url = https://docs.amd.com/category/ROCm_v5.3
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = https://rocm.docs.amd.com/en/latest/reference/rocmcc/rocmcc.html
 	arch = x86_64
 	license = EULA
 	provides = rocm-llvm-alt
 	conflicts = rocm-llvm-alt
-	source = rocm-llvm-alt-bin-5.3.0.tar.gz::http://repo.radeon.com/rocm/apt/5.3/pool/proprietary/r/rocm-llvm-alt/rocm-llvm-alt_15.0.0.22376.50300-63~20.04_amd64.deb
-	sha256sums = 741558072e643972fdb484c5e125ea1eae3370a04a56ad9937c41b0fe034741a
+	source = rocm-llvm-alt-bin-5.6.0.tar.gz::http://repo.radeon.com/rocm/apt/5.6/pool/proprietary/r/rocm-llvm-alt/rocm-llvm-alt_16.0.0.23045.50600-67~20.04_amd64.deb
+	sha256sums = 84e3b1ccc11aad174178f1e70a82649be5ad27d3aaf361496009ae7838aae9ec
 
 pkgname = rocm-llvm-alt-bin
