@@ -4,9 +4,11 @@ pkgbase = mfgtools-git
 	pkgrel = 1
 	url = https://github.com/nxp-imx/mfgtools
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	depends = bzip2
 	depends = zlib
 	depends = libusb
@@ -17,8 +19,15 @@ pkgbase = mfgtools-git
 	conflicts = mfgtools
 	options = !strip
 	source = mfgtools::git+https://github.com/nxp-imx/mfgtools.git
+	source = mfgtools-doc::git+https://github.com/nxp-imx/mfgtools.wiki.git
 	source = uuu-complete.bash
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = ffc8e32655ce574a4719c85c5c9a3530a5ec619e933fc801a291df8ec506a442
 
 pkgname = mfgtools-git
+
+pkgname = mfgtools-doc-git
+	pkgdesc = uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools. (doc)
+	depends = asciidoc
+	depends = rename
