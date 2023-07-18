@@ -14,8 +14,6 @@ depends=('bzip2' 'zlib' 'libusb' 'libzip' 'openssl')
 makedepends=('cmake' 'git' 'ninja')
 checkdepends=()
 optdepends=()
-provides=('uuu' 'mfgtool')
-conflicts=(${pkgname%-git})
 replaces=()
 backup=()
 options=('!strip')
@@ -50,6 +48,9 @@ build() {
 }
 
 package_mfgtools-git() {
+    provides=('uuu' 'mfgtool')
+    conflicts=(${pkgname%-git})
+
     cd "${srcdir}/${pkgname%-git}/build"
      DESTDIR="$pkgdir/" ninja -C "${srcdir}/${pkgname%-git}/build" install
     install -Dm0644 "${srcdir}/uuu-complete.bash" "${pkgdir}/etc/bash_completion.d/uuu-complete.bash"
@@ -62,6 +63,8 @@ package_mfgtools-doc-git() {
     pkgdesc+=" (doc)"
     depends=(asciidoc
             rename)
+    provides=(${pkgname%-git})
+    conflicts=(${pkgname%-git})
 
     cd "${srcdir}/${pkgname%-git}/"
     rename -f -v 's/\.asciidoc$//' *
