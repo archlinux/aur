@@ -2,8 +2,8 @@
 
 pkgname=python-copier
 _name=${pkgname#python-}
-pkgver=7.0.1
-pkgrel=2
+pkgver=8.1.0
+pkgrel=1
 pkgdesc='Library and command-line utility for rendering projects templates'
 arch=('any')
 url='https://github.com/pykong/copier'
@@ -26,25 +26,18 @@ depends=(
   'python-typing_extensions'
   'python-yaml'
 )
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-wheel python-poetry-dynamic-versioning)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('3d81916dad27d003674070b365bfcd965eb69d5a97920b226d6db88a6e7193d6')
-
-prepare() {
-	cd "$srcdir/$_name-$pkgver"
-  # Bypass stupid dependency check
-  sed -i "14s|0.8.0|0.9.0|" setup.py
-}
+sha256sums=('902b4eb65fafe7a1621991234d2ebf3bc3fc9323e64e3a2560a00c05c73f6229')
 
 build() {
-	cd "$srcdir/$_name-$pkgver"
-  python setup.py build
+  cd "$srcdir/$_name-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$srcdir/$_name-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
-# vim:set ts=2 sw=2 et:

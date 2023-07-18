@@ -1,11 +1,14 @@
 pkgbase = python-copier
 	pkgdesc = Library and command-line utility for rendering projects templates
-	pkgver = 7.0.1
-	pkgrel = 2
+	pkgver = 8.1.0
+	pkgrel = 1
 	url = https://github.com/pykong/copier
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-dynamic-versioning
 	depends = python-backports.cached_property
 	depends = python-colorama
 	depends = python-dunamai
@@ -22,7 +25,7 @@ pkgbase = python-copier
 	depends = python-questionary
 	depends = python-typing_extensions
 	depends = python-yaml
-	source = https://files.pythonhosted.org/packages/source/c/copier/copier-7.0.1.tar.gz
-	sha256sums = 3d81916dad27d003674070b365bfcd965eb69d5a97920b226d6db88a6e7193d6
+	source = https://files.pythonhosted.org/packages/source/c/copier/copier-8.1.0.tar.gz
+	sha256sums = 902b4eb65fafe7a1621991234d2ebf3bc3fc9323e64e3a2560a00c05c73f6229
 
 pkgname = python-copier
