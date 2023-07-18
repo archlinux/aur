@@ -1,7 +1,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thebeat
 pkgver=4.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Audio Player"
 arch=("x86_64" "aarch64")
 url="https://github.com/libcontemporary/thebeat"
