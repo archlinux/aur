@@ -4,15 +4,15 @@ _pkgname=converternow
 pkgname=$_pkgname-bin
 pkgdesc="The Unit Converter app: easy, immediate and multi-platform (binary release)"
 pkgver=4.0.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/ferraridamiano/ConverterNOW"
 license=('GPL3')
 conflicts=($_pkgname)
 provides=($_pkgname)
 source=($_pkgname-$pkgver.tar.gz::"$url/releases/download/v$pkgver/$_pkgname-linux-x64.tar.gz"
-        "https://raw.githubusercontent.com/ferraridamiano/ConverterNOW/$pkgver/LICENSE"
-        "https://raw.githubusercontent.com/ferraridamiano/ConverterNOW/$pkgver/README.md")
+        "https://raw.githubusercontent.com/ferraridamiano/ConverterNOW/v$pkgver/LICENSE"
+        "https://raw.githubusercontent.com/ferraridamiano/ConverterNOW/v$pkgver/README.md")
 sha256sums=('d50b5f5a1709bc6237e5637da3841c7c60cc94d641c716c45128a9c560f0f1f6'
             'SKIP'
             'SKIP')
