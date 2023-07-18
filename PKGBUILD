@@ -1,7 +1,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theheartbeat
 pkgver=2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="System Monitor"
 arch=("x86_64" "aarch64")
 url="https://github.com/theCheeseboard/theheartbeat"
