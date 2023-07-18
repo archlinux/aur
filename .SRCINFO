@@ -1,14 +1,12 @@
 pkgbase = transgui-gtk2-git
-	pkgdesc = metapackage
+	pkgdesc = metapackage - migrate to transgui-gtk-git
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://github.com/transmisson-remote-gui/transgui
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = transgui-gtk-git
-	provides = transgui-gtk
-	conflicts = transgui-gtk
 
 pkgname = transgui-gtk2-git
