@@ -1,21 +1,18 @@
 pkgbase = libcontemporary
 	pkgdesc = Common libraries for the- applications by Victor Tran
-	pkgver = 6.0
+	pkgver = 6.0.1
 	pkgrel = 0
 	url = https://github.com/theCheeseboard/libcontemporary
 	arch = x86_64
-	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = qt6-tools
 	makedepends = cmake
-	makedepends = clang
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-svg
 	depends = gsettings-qt
-	depends = qcoro-qt6
-	source = libcontemporary-6.0::https://github.com/vicr123/libcontemporary/archive/v6.0.tar.gz
-	sha256sums = 4b40c3e058ce6504dc9effcbce97312538df748c139a2274f791ed1721315f63
+	source = libcontemporary-6.0.1::https://github.com/vicr123/libcontemporary/archive/v6.0.1.tar.gz
+	sha256sums = 278445a255c79d403983c4b16ec39c1732341ee54851ef2d19a5d56b40ef1d22
 
 pkgname = libcontemporary
