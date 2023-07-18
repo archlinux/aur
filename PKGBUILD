@@ -3,7 +3,7 @@
 _pkgname=flightcore
 pkgname=$_pkgname-bin
 pkgver=1.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Northstar installer, updater, and mod-manager (binary release)"
 arch=('x86_64')
 url="https://github.com/R2NorthstarTools/FlightCore"
@@ -28,15 +28,16 @@ sha256sums=('1146456d1ac57ae6a1c7db5861d1acb8a9f201f5e9c887cf21cccf818021199f'
 
 prepare() {
   # Create a shortcut
-  echo "Categories=Game;" > $_desktop
-  sed -i '1 i\Comment=Installer/Updater/Launcher for Northstar' $_desktop
-  sed -i '1 i\StartupWMClass=FlightCore' $_desktop
-  sed -i '1 i\Icon=flightcore' $_desktop
-  sed -i '1 i\Type=Application' $_desktop
-  sed -i '1 i\Terminal=false' $_desktop
-  sed -i '1 i\Exec=flightcore %U' $_desktop
-  sed -i '1 i\Name=FlightCore' $_desktop
-  sed -i '1 i\[Desktop Entry]' $_desktop
+  echo "Categories=Game;" > desktop
+  sed -i '1 i\Comment=Installer/Updater/Launcher for Northstar' desktop
+  sed -i '1 i\StartupWMClass=FlightCore' desktop
+  sed -i '1 i\Icon=flightcore' desktop
+  sed -i '1 i\Type=Application' desktop
+  sed -i '1 i\Terminal=false' desktop
+  sed -i '1 i\Exec=flightcore %U' desktop
+  sed -i '1 i\Name=FlightCore' desktop
+  sed -i '1 i\[Desktop Entry]' desktop
+  mv desktop $_pkgname.desktop
   # Extract the AppImage
   chmod +x "./$_appimage"
   "./$_appimage" --appimage-extract
@@ -48,6 +49,6 @@ package() {
   done
   install -Dm644 DEVELOPMENT.md FAQ.md README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
-  install -Dm644 $_desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm755 squashfs-root/usr/bin/flight-core "$pkgdir/usr/bin/$_pkgname"
 }
