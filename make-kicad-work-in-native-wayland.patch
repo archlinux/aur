@@ -1,0 +1,126 @@
+From 72fc8604d5b736b7eb5e14a53fd07991723f845e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Cl=C3=A9ment=20Saccoccio?= <git-clement@saccoccio.me>
+Date: Mon, 29 May 2023 20:51:29 +0200
+Subject: [PATCH] patch to work under native Wayland
+
+---
+ common/gal/opengl/opengl_gal.cpp    |  3 +-
+ common/gl_context_mgr.cpp           |  2 +-
+ common/view/wx_view_controls.cpp    | 48 +++++++++++++++++------------
+ libs/kiplatform/gtk/environment.cpp |  4 ---
+ 4 files changed, 31 insertions(+), 26 deletions(-)
+
+diff --git old/common/gal/opengl/opengl_gal.cpp common/gal/opengl/opengl_gal.cpp
+index 3333918ca81..8b4eb1624ee 100644
+--- old/common/gal/opengl/opengl_gal.cpp
++++ common/gal/opengl/opengl_gal.cpp
+@@ -2518,7 +2518,8 @@ unsigned int OPENGL_GAL::getNewGroupNumber()
+
+ void OPENGL_GAL::init()
+ {
+-    wxASSERT( IsShownOnScreen() );
++    // TODO assert doesn't work under Wayland because of a timing issue (see https://gitlab.com/kicad/code/kicad/-/issues/7207)
++    // wxASSERT( IsShownOnScreen() );
+
+     wxASSERT_MSG( m_isContextLocked, "This should only be called from within a locked context." );
+
+diff --git old/common/gl_context_mgr.cpp common/gl_context_mgr.cpp
+index 2ab554777b8..3d671cf1c85 100644
+--- old/common/gl_context_mgr.cpp
++++ common/gl_context_mgr.cpp
+@@ -94,7 +94,7 @@ void GL_CONTEXT_MANAGER::LockCtx( wxGLContext* aContext, wxGLCanvas* aCanvas )
+
+     // Prevent assertion failure in wxGLContext::SetCurrent during GAL teardown
+ #ifdef __WXGTK__
+-    if( canvas->GetXWindow() )
++    if( canvas->GTKGetDrawingWindow() )
+ #endif
+     {
+         canvas->SetCurrent( *aContext );
+diff --git old/common/view/wx_view_controls.cpp common/view/wx_view_controls.cpp
+index d87078a084f..164706029e3 100644
+--- old/common/view/wx_view_controls.cpp
++++ common/view/wx_view_controls.cpp
+@@ -243,22 +243,26 @@ void WX_VIEW_CONTROLS::onMotion( wxMouseEvent& aEvent )
+             int warpY = 0;
+             wxSize parentSize = m_parentPanel->GetClientSize();
+
+-            if( x < 0 )
++            // TODO fix warp under Wayland (see https://gitlab.com/kicad/code/kicad/-/issues/7207)
++            if ( !wxGetEnv( wxT( "WAYLAND_DISPLAY" ), nullptr ) )
+             {
+-                warpX = parentSize.x;
+-            }
+-            else if(x >= parentSize.x )
+-            {
+-                warpX = -parentSize.x;
+-            }
++                if( x < 0 )
++                {
++                    warpX = parentSize.x;
++                }
++                else if(x >= parentSize.x )
++                {
++                    warpX = -parentSize.x;
++                }
+
+-            if( y < 0 )
+-            {
+-                warpY = parentSize.y;
+-            }
+-            else if( y >= parentSize.y )
+-            {
+-                warpY = -parentSize.y;
++                if( y < 0 )
++                {
++                    warpY = parentSize.y;
++                }
++                else if( y >= parentSize.y )
++                {
++                    warpY = -parentSize.y;
++                }
+             }
+
+             if( !justWarped )
+@@ -290,13 +294,17 @@ void WX_VIEW_CONTROLS::onMotion( wxMouseEvent& aEvent )
+             int warpY = 0;
+             wxSize parentSize = m_parentPanel->GetClientSize();
+
+-            if( y < 0 )
+-            {
+-                warpY = parentSize.y;
+-            }
+-            else if( y >= parentSize.y )
++            // TODO fix warp under Wayland (see https://gitlab.com/kicad/code/kicad/-/issues/7207)
++            if ( !wxGetEnv( wxT( "WAYLAND_DISPLAY" ), nullptr ) )
+             {
+-                warpY = -parentSize.y;
++                if( y < 0 )
++                {
++                    warpY = parentSize.y;
++                }
++                else if( y >= parentSize.y )
++                {
++                    warpY = -parentSize.y;
++                }
+             }
+
+             if( !justWarped )
+diff --git old/libs/kiplatform/gtk/environment.cpp libs/kiplatform/gtk/environment.cpp
+index 8c7e288b2af..582866c9746 100644
+--- old/libs/kiplatform/gtk/environment.cpp
++++ libs/kiplatform/gtk/environment.cpp
+@@ -35,10 +35,6 @@ void KIPLATFORM::ENV::Init()
+     if( wxGetEnv( wxT( "XDG_CURRENT_DESKTOP" ), &wm ) && wm.CmpNoCase( wxT( "Unity" ) ) == 0 )
+         wxSetEnv ( wxT("UBUNTU_MENUPROXY" ), wxT( "0" ) );
+
+-    // Force the use of X11 backend (or wayland-x11 compatibility layer).  This is
+-    // required until wxWidgets supports the Wayland compositors
+-    wxSetEnv( wxT( "GDK_BACKEND" ), wxT( "x11" ) );
+-
+     // Set GTK2-style input instead of xinput2.  This disables touchscreen and smooth
+     // scrolling.  It's needed to ensure that we are not getting multiple mouse scroll
+     // events.
+--
+GitLab
+

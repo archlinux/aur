@@ -1,0 +1,11 @@
+--- a/resources/bitmaps_png/CMakeLists.txt
++++ b/resources/bitmaps_png/CMakeLists.txt
+@@ -837,7 +837,7 @@ else()
+ endif()
+ 
+ add_custom_target( bitmap_archive ALL
+-    COMMAND ${TAR} cfz "${TAR_OUTPUT_FILE}" .
++    COMMAND ${TAR} --create --file "${TAR_OUTPUT_FILE}" --gzip --numeric-owner --owner=0 --group=0 .
+     DEPENDS ${ALL_PNGS}
+     BYPRODUCTS ${BITMAP_ARCHIVE_PATH}
+     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/png
