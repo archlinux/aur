@@ -3,7 +3,7 @@
 #
 pkgname=lightdm-thedesk-greeter
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="LightDM greeter for theDesk"
 arch=("x86_64" "aarch64")
 url="https://github.com/theCheeseboard/lightdm-thedesk-greeter"

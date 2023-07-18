@@ -1,7 +1,7 @@
 pkgbase = lightdm-thedesk-greeter
 	pkgdesc = LightDM greeter for theDesk
 	pkgver = 1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/theCheeseboard/lightdm-thedesk-greeter
 	arch = x86_64
 	arch = aarch64
