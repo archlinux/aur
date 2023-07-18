@@ -1,0 +1,3 @@
+[compressai]
+source = "pypi"
+pypi = "compressai"
