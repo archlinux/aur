@@ -1,0 +1,21 @@
+pkgbase = python-libtimed
+	pkgdesc = Library to intreact with timed webapp.
+	pkgver = 0.1.0
+	pkgrel = 00
+	url = https://pypi.org/project/libtimed/
+	arch = any
+	license = custom:unknown
+	makedepends = python-pip
+	depends = python
+	depends = python-inflection
+	depends = python-keyring
+	depends = python-requests
+	noextract = libtimed-0.1.0-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/92/0d/64c0dd6621c115ff363dc381ff03f252e029cf1b31125a3480dc02173b34/libtimed-0.1.0-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 2854366aff73d26bc2afbfbbbb9eaba9
+	md5sums = 26b73219e08a9e21387f8d2ac0847c54
+
+pkgname = python-libtimed
