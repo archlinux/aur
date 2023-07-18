@@ -1,7 +1,7 @@
 pkgbase = thepage
 	pkgdesc = Document Viewer using poppler
 	pkgver = 2.0.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/theCheeseboard/thepage
 	arch = x86_64
 	arch = aarch64
