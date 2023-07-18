@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('cmake' 'git' 'imagemagick' 'libx11' 'libxcursor' 'libxext' 'libxi' 'libxinerama' 'libxrandr' 'make' 'mesa')
 conflicts=($pkgname)
 provides=($pkgname)
-source=("git+$url.git#tag=v$pkgver"
+source=("git+$url.git#tag=$pkgver"
         "git+https://github.com/Perlmint/glew-cmake.git#commit=8260c05ee0121094a0dc9a53f610f514659763d6"
         "git+https://github.com/glfw/glfw.git#commit=6b57e08bb0078c9834889eab871bac2368198c15"
         "git+https://github.com/g-truc/glm.git#commit=cc98465e3508535ba8c7f6208df934c156a018dc"

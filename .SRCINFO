@@ -18,7 +18,7 @@ pkgbase = mdlshit
 	makedepends = mesa
 	provides = mdlshit
 	conflicts = mdlshit
-	source = git+https://github.com/headassbtw/mdlshit.git#tag=v2.3.2
+	source = git+https://github.com/headassbtw/mdlshit.git#tag=2.3.2
 	source = git+https://github.com/Perlmint/glew-cmake.git#commit=8260c05ee0121094a0dc9a53f610f514659763d6
 	source = git+https://github.com/glfw/glfw.git#commit=6b57e08bb0078c9834889eab871bac2368198c15
 	source = git+https://github.com/g-truc/glm.git#commit=cc98465e3508535ba8c7f6208df934c156a018dc
