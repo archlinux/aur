@@ -6,13 +6,13 @@
 pkgbase=dotnet-core-6.0
 pkgname=(
  dotnet-runtime-6.0
- dotnet-source-built-artifacts-6.0
  aspnet-runtime-6.0
  dotnet-sdk-6.0
  dotnet-targeting-pack-6.0
  aspnet-targeting-pack-6.0
+ dotnet-source-built-artifacts-6.0
 )
-pkgver=6.0.19.sdk119
+pkgver=6.0.20.sdk120
 pkgrel=1
 arch=(x86_64)
 url=https://www.microsoft.com/net/core
@@ -43,7 +43,7 @@ options=(
   !lto
   staticlibs
 )
-_tag=044cde2ce094aec972314deb9e1c92129b7947b9
+_tag=d63b17be66f766a5381950bce677884e4e3bb5b6
 source=(
   dotnet-installer::git+https://github.com/dotnet/installer.git#tag=${_tag}
   dotnet.sh
@@ -99,7 +99,7 @@ build() {
   cd dotnet-installer
 
   local _bootstrapver=$(xmllint --xpath "//*[local-name()='PrivateSourceBuiltArtifactsPackageVersion']/text()" eng/Versions.props)
-  local _previousver=$(pacman -Q dotnet-source-built-artifacts-6.0 | sed -r 's/.*([0-9]\.[0-9])\.[0-9]\.sdk([0-9]+)-.*/\1.\2/')
+  local _previousver=$(pacman -Q dotnet-source-built-artifacts-6.0 | sed -r 's/.*([0-9]+\.[0-9]+)\.[0-9]+\.sdk([0-9]+)-.*/\1.\2/')
 
   ./build.sh \
     /p:ArcadeBuildTarball=true \
@@ -128,7 +128,7 @@ build() {
     cp -r /usr/share/dotnet .
     ln -sf /usr/share/dotnet/source-built-artifacts/Private.SourceBuilt.Artifacts.*.tar.gz packages/archive/
     ./build.sh \
-      --with-sdk "${srcdir}"/sources/dotnet
+      --with-sdk "${srcdir}"/sources/dotnet \
       -- \
       /v:n \
       /p:ContinueOnPrebuiltBaselineError=true \
