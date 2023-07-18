@@ -4,14 +4,17 @@ pkgbase = libcontemporary
 	pkgrel = 0
 	url = https://github.com/theCheeseboard/libcontemporary
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = qt6-tools
 	makedepends = cmake
+	makedepends = clang
 	depends = qt6-base
 	depends = qt6-multimedia
 	depends = qt6-svg
 	depends = gsettings-qt
+	depends = qcoro-qt6
 	source = libcontemporary-6.0.1::https://github.com/vicr123/libcontemporary/archive/v6.0.1.tar.gz
 	sha256sums = 278445a255c79d403983c4b16ec39c1732341ee54851ef2d19a5d56b40ef1d22
 
