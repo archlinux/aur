@@ -2,7 +2,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=libcontemporary
 pkgver=6.0.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Common libraries for the- applications by Victor Tran"
 arch=("x86_64" "aarch64")
 url="https://github.com/theCheeseboard/libcontemporary"
