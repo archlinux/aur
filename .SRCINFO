@@ -1,6 +1,6 @@
 pkgbase = r-cytolib
 	pkgdesc = C++ infrastructure for representing and interacting with the gated cytometry data
-	pkgver = 2.12.0
+	pkgver = 2.12.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/cytolib
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-cytolib
 	depends = r-rprotobuflib
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/cytolib_2.12.0.tar.gz
-	sha256sums = 82d45fe04f94f3765417f5307db26a9dbaaf22691350708dc68460288149a864
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/cytolib_2.12.1.tar.gz
+	sha256sums = 1fcf5c4f45411321fd4fd8b8a0ace9955ab195c8f1a3fdcf037f8b345311db55
 
 pkgname = r-cytolib
