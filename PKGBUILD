@@ -11,6 +11,7 @@ url=https://github.com/AdaCore/VSS
 arch=(i686 x86_64)
 license=(Apache)
 
+depends=(xmlada)
 makedepends=(gprbuild)
          
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/vss-24.0w-20230428-1628B-src.tar.gz)
