@@ -1,0 +1,25 @@
+pkgbase = avizo-git
+	pkgdesc = A neat notification daemon
+	pkgver = r93.9cd5319
+	pkgrel = 1
+	url = https://github.com/misterdanb/avizo
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = vala
+	makedepends = meson
+	makedepends = ninja
+	depends = alsa-utils
+	depends = dbus
+	depends = gobject-introspection
+	depends = gtk-layer-shell
+	depends = gtk3
+	optdepends = brightnessctl: for helper script lightctl
+	optdepends = light: for helper script lightctl
+	optdepends = pamixer: for helper script volumectl
+	provides = avizo
+	conflicts = avizo
+	source = avizo::git+https://github.com/misterdanb/avizo.git
+	sha256sums = SKIP
+
+pkgname = avizo-git
