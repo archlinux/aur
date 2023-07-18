@@ -3,7 +3,7 @@
 _pkgname=albumartcreator
 pkgname=$_pkgname-bin
 pkgver=0.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Create amazing looking Album Art in seconds! (binary release)"
 arch=('x86_64')
 url="https://github.com/0neGal/albumArtCreator"
@@ -41,7 +41,7 @@ package() {
   ln -s /opt/albumArtCreator/albumartcreator $pkgdir/usr/bin/$_pkgname
   # Install
   install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
-  install -Dm644 desktop/$_pkgname.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 $_pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
