@@ -5,6 +5,7 @@ pkgbase = python-svg2mod-git
 	url = https://github.com/svg2mod/svg2mod
 	arch = any
 	license = GPL2
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -12,6 +13,8 @@ pkgbase = python-svg2mod-git
 	makedepends = python-pytest-pylint
 	depends = python
 	depends = python-fonttools
+	provides = python-svg2mod
+	conflicts = python-svg2mod
 	source = python-svg2mod-git::git+https://github.com/svg2mod/svg2mod.git
 	sha256sums = SKIP
 
