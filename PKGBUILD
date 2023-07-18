@@ -2,7 +2,7 @@
 
 pkgname=alfae
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An Itch.io/Epic Games/GOG launcher that works through plugins"
 arch=('any')
 url="https://github.com/suchmememanyskill/Alfae"
@@ -10,21 +10,21 @@ license=('GPL3')
 depends=('legendary' 'heroic-gogdl')
 makedepends=('dotnet-sdk' 'git')
 options=('!strip')
-_desktop=alfae.desktop
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
   # Create a shortcut
-  echo "Categories=Game;" >> $_desktop
-  sed -i '1 i\Comment=An Itch.io/Epic Games/GOG launcher that works through plugins' $_desktop
-  sed -i '1 i\StartupWMClass=Alfae' $_desktop
-  sed -i '1 i\Icon=alfae' $_desktop
-  sed -i '1 i\Type=Application' $_desktop
-  sed -i '1 i\Terminal=false' $_desktop
-  sed -i '1 i\Exec=/opt/Alfae/Alfae %U' $_desktop
-  sed -i '1 i\Name=Alfae' $_desktop
-  sed -i '1 i\[Desktop Entry]' $_desktop
+  echo "Categories=Game;" >> desktop
+  sed -i '1 i\Comment=An Itch.io/Epic Games/GOG launcher that works through plugins' desktop
+  sed -i '1 i\StartupWMClass=Alfae' desktop
+  sed -i '1 i\Icon=alfae' desktop
+  sed -i '1 i\Type=Application' desktop
+  sed -i '1 i\Terminal=false' desktop
+  sed -i '1 i\Exec=/opt/Alfae/Alfae %U' desktop
+  sed -i '1 i\Name=Alfae' desktop
+  sed -i '1 i\[Desktop Entry]' desktop
+  mv desktop $pkgname.desktop
 }
 
 build() {
@@ -73,7 +73,7 @@ package() {
   cp -r Alfae/Release "$pkgdir/opt/Alfae"
   ln -s /opt/Alfae/Alfae "$pkgdir/usr/bin/$pkgname"
   install -Dm644 Alfae/Launcher/Assets/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-  install -Dm644 $_desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 Alfae/README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 Alfae/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
