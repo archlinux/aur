@@ -1,0 +1,26 @@
+pkgbase = gog-slay-the-princess-demo
+	pkgdesc = Choice-driven psychological horror visual novel. GOG version.
+	pkgver = 1.0a.64269
+	pkgrel = 1
+	url = https://www.gog.com/en/game/slay_the_princess_demo
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = libglvnd
+	depends = pango
+	depends = python
+	conflicts = gog-slay-the-princess
+	options = !strip
+	source = slay-the-princess-demo_1.0a_(64269).sh::gogdownloader://slay_the_princess_demo/en3installer0
+	source = gog-slay-the-princess-demo.desktop
+	source = slay-the-princess.bash
+	sha512sums = 62c684fa2fc9c60e2989cfd8dbf5683d521cefe17ca40f8d38945815ff85e8572c2d0749e56f55301d222dc2523204cfd79c49c7a14d8da7ec71ff565cdef961
+	sha512sums = 5e14040ee7df8087b77108c1246fd0c1c9e7bca2efb211724d79080b4e1a6a41a77dae18e20038e1dcf305b761319e43f71286f112779dcc31e926f089090229
+	sha512sums = c8406796a9f7b79d371e2b03e55fbbad57b8d39b0e46fac1c69efad8176cdcc4782240e4e7cee33ba2bb1f02050400f2b77432925dfbe3523346d792c2e3cb54
+
+pkgname = gog-slay-the-princess-demo
