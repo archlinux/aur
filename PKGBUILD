@@ -4,13 +4,19 @@
 pkgbase=wxwidgets
 pkgname=(wxwidgets-gtk3 wxwidgets-qt5 wxwidgets-common)
 pkgver=3.2.2.1
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://wxwidgets.org'
 license=(custom:wxWindows)
 makedepends=(cmake gst-plugins-base glu webkit2gtk libnotify qt5-base sdl2 libmspack)
-source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2)
-sha256sums=('dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02')
+source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$pkgver/wxWidgets-$pkgver.tar.bz2
+        https://github.com/wxWidgets/wxWidgets/commit/ed510012.patch)
+sha256sums=('dffcb6be71296fff4b7f8840eb1b510178f57aa2eb236b20da41182009242c02'
+            '0f714caa562269ba40ea55e1ef2f1c800d0669f01c3862f47db183eb2db91567')
+
+prepare() {
+  patch -d wxWidgets-$pkgver -p1 < ed510012.patch # Fix undefined symbols in Qt build
+}
 
 build() {
   cmake -B build-gtk3 -S wxWidgets-$pkgver \
