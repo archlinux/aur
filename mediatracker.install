@@ -1,8 +1,4 @@
 post_install() {
-    echo "Creating mediatracker user"
-    useradd -m mediatracker
-    chown -R mediatracker /srv/MediaTracker
-    echo "Done"
     echo "To run, systemctl start mediatracker"
     echo "site at localhost:7481"
 }
