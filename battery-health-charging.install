@@ -1,0 +1,14 @@
+post_install() {
+  echo ""
+  echo "Note: Remember to uninstall the polkit script before uninstalling this"
+  echo "extension by clicking on 'Remove' under installation."
+  echo ""
+}
+
+post_remove() {
+  echo "Optionally remove the polkit script if you did not before removing it:"
+  echo ""
+  echo "sudo rm /etc/polkit-1/rules.d/10-dem.batteryhealthcharging.setthreshold-<username>.rules"
+  echo "sudo rm /usr/local/bin/batteryhealthchargingctl-<username>"
+  echo ""
+}
