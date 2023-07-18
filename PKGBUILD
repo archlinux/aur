@@ -1,7 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="neanes-bin"
-_pkgver=0.3.0-beta.20
-pkgver="0.3.0beta.20"
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A free and open source scorewriter for notating Byzantine chant in Byzantine notation."
 arch=('x86_64')
@@ -10,9 +9,9 @@ _githuburl="https://github.com/danielgarthur/neanes"
 license=('GPL3')
 conflicts=("${pkgname%-bin}")
 depends=('bash' 'electron24' 'hicolor-icon-theme')
-source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${_pkgver}/Neanes-${_pkgver}.AppImage"
+source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Neanes-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
-sha256sums=('4310776a5ab3d115284956506602ca9bdbb588ef5289a5140b948f3c9895f7e7'
+sha256sums=('5d5e91b1f5cb33608753bcb2578472501c1503c5236a2a01f32358f2fba4aa81'
             '7376ab13765de791a03acb83b5bb8d8d8c2d8971a1f3af6db84633a2921bd76e')
 prepare() {
     chmod a+x "${pkgname%-bin}-${pkgver}.AppImage"
