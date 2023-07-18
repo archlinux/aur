@@ -4,7 +4,7 @@
 
 pkgname=python-pyvisa
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python package with bindings to the 'Virtual Instrument Software Architecture' VISA library"
 url="https://github.com/pyvisa/pyvisa"
 arch=('any')
@@ -12,14 +12,11 @@ license=('MIT')
 depends=('python-distribute' 'python-docutils' 'python-typing_extensions')
 makedepends=('git' 'python-setuptools-scm' 'python-pytest')
 optdepends=('python-pyvisa-py: Pure Python backend')
-source=("git+$url.git")
+source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
-  # Switch tag version
-  cd pyvisa
-  git checkout tags/${pkgver}
 }
 
 build() {
