@@ -8,7 +8,7 @@ else
 fi
 
 : ${_reduce_size:=false}
-: ${_pkgver:=1.7.4747}
+: ${_pkgver:=1.7.4748}
 
 # first letter, lowercase
 for i in _autoupdate _reduce_size ; do
@@ -44,7 +44,7 @@ esac
 # normal pkgbuild stuff
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=1.7.4747
+pkgver=1.7.4748
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -160,7 +160,14 @@ case "$_autoupdate" in
     package() {
       install -Dm755 "$srcdir/squashfs-root/AppRun" "$pkgdir/usr/bin/pcsx2-qt"
 
-      install -Dm644 -t "$pkgdir/usr/share/applications" "$srcdir/squashfs-root/PCSX2.desktop"
+      (
+        cd "$srcdir/squashfs-root"
+        if [ -f "PCSX2.desktop" ] && [ ! -e "pcsx2-qt.desktop" ] ; then
+          cp "PCSX2.desktop" "pcsx2-qt.desktop"
+        fi
+      )
+
+      install -Dm644 -t "$pkgdir/usr/share/applications" "$srcdir/squashfs-root/pcsx2-qt.desktop"
 
       install -Dm644 -t "$pkgdir/usr/share/pixmaps" "$srcdir/squashfs-root/PCSX2.png"
 
