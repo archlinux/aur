@@ -5,7 +5,7 @@
 
 pkgname=jitsi-meet-desktop
 pkgver=2023.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
 url="https://jitsi.org/jitsi-meet/"
@@ -29,7 +29,7 @@ source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electr
         'no_targets.patch'
         'jitsi-meet-desktop.desktop')
 sha256sums=('f69710823ce413ba8a27b20ef95a35878624b1943a839e6cf9c7a1ec019ed269'
-            'ab22749aa1570cc5d6050711011f849ec3f4fa49080231f98957255fa5250e36'
+            'ed3a4d4c524611ba66c9f0e28d2da77cb2948c6785367d69b86aa4965dd6bb99'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
 case "$CARCH" in

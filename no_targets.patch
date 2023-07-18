@@ -1,8 +1,8 @@
 diff --git a/package.json b/package.json
-index 9f2e63d..f350fc8 100644
+index 38493d7..d333c44 100644
 --- a/package.json
 +++ b/package.json
-@@ -27,35 +27,6 @@
+@@ -29,36 +29,6 @@
        "!app",
        "!main.js"
      ],
@@ -24,6 +24,7 @@ index 9f2e63d..f350fc8 100644
 -      "entitlements": "entitlements.mac.plist",
 -      "entitlementsInherit": "entitlements.mac.plist",
 -      "asarUnpack": "**/*.node",
+-      "notarize": false,
 -      "extendInfo": {
 -        "NSCameraUsageDescription": "Jitsi Meet requires access to your camera in order to make video-calls.",
 -        "NSMicrophoneUsageDescription": "Jitsi Meet requires access to your microphone in order to make calls (audio/video).",
@@ -38,7 +39,7 @@ index 9f2e63d..f350fc8 100644
      "linux": {
        "artifactName": "jitsi-meet-${arch}.${ext}",
        "category": "VideoConference;AudioVideo;Audio;Video;Network",
-@@ -63,34 +34,7 @@
+@@ -79,42 +49,7 @@
        "executableName": "jitsi-meet",
        "target": [
          {
@@ -47,6 +48,14 @@ index 9f2e63d..f350fc8 100644
 -        },
 -        {
 -          "arch": "x64",
+-          "target": "deb"
+-        },
+-        {
+-          "arch": "arm64",
+-          "target": "AppImage"
+-        },
+-        {
+-          "arch": "arm64",
 -          "target": "deb"
 -        }
 -      ]
