@@ -1,26 +1,24 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=sulis
-pkgver=0.6.0
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='Turn based tactical RPG with several campaigns, written in Rust.'
 arch=('x86_64')
 url='https://www.sulisgame.com/'
 license=('GPL3')
 depends=('alsa-lib')
-makedepends=('rust' 'cargo' 'gendesk')
+makedepends=('rust' 'cargo' 'gendesk' 'cmake' 'fontconfig')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/Grokmoo/${pkgname}/archive/refs/tags/${pkgver}.tar.gz"
 	'sulis'
 	'sulis-editor'
 	'sulis.png'
 )
-sha256sums=(
-	'2901ac87c2692020d0224a980b1558d92d12ce3217986063a77f3049171bb1f6'
-	'e13df3c55b585ec4c9d5d6709e8600dae69311257b51f112aa1382dd4e3fbbd5'
-	'e75d53f449b05542dbf39a8db3f300693955586a5e80a21de93fdeba25639658'
-	'7bffe4886ea6dc139135790f8711611a1cccdc8d3b318ae18ff3227e915c604d'
-)
+sha256sums=('5ad819d5291c3211073c50426de9dcc223b394c77766514ae433476d527fb565'
+            'e13df3c55b585ec4c9d5d6709e8600dae69311257b51f112aa1382dd4e3fbbd5'
+            'e75d53f449b05542dbf39a8db3f300693955586a5e80a21de93fdeba25639658'
+            '7bffe4886ea6dc139135790f8711611a1cccdc8d3b318ae18ff3227e915c604d')
 options=('!lto')
 
 _srcdir="${pkgname}-${pkgver}"
