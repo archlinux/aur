@@ -4,7 +4,7 @@ _name=tl-optional
 _author=TartanLlama
 
 pkgname=${_name}-git
-pkgver=v1.0.0.r20.gc28fcf7
+pkgver=v1.1.0.r0.g3a1209d
 pkgrel=1
 pkgdesc="C++11/14/17 std::optional with functional-style extensions and reference support "
 arch=('any')
