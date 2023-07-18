@@ -4,7 +4,7 @@ _pkgname=slippi-launcher
 pkgname=$_pkgname-bin
 pkgdesc="The way to play Slippi Online and watch replays (binary release)"
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/project-slippi/slippi-launcher"
 license=('GPL3')
@@ -55,7 +55,7 @@ package() {
   for i in 16 24 32 48 64 96 128 256 512; do
     install -Dm644 usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png -t "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
   done
-  rm -dr usr & rm $_pkgname.png .DirIcon
+  rm -dr usr & rm AppRun $_pkgname.png .DirIcon
   ln -s /opt/$_pkgname/$_pkgname "$pkgdir/usr/bin/$_pkgname"
   cp -r ../squashfs-root "$pkgdir/opt/$_pkgname"
   install -Dm644 ../$_pkgname.desktop -t "$pkgdir/usr/share/applications"

@@ -1,7 +1,7 @@
 pkgbase = slippi-launcher-bin
 	pkgdesc = The way to play Slippi Online and watch replays (binary release)
 	pkgver = 2.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/project-slippi/slippi-launcher
 	arch = x86_64
 	license = GPL3
