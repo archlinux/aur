@@ -1,7 +1,7 @@
 pkgbase = llama-cpp
 	pkgdesc = Port of Facebook's LLaMA model in C/C++
 	pkgver = b764743
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86
 	arch = x86_64
@@ -9,21 +9,24 @@ pkgbase = llama-cpp
 	arch = aarch64
 	license = GPL3
 	makedepends = cmake
-	depends = python
 	depends = openmpi
+	depends = python-numpy
+	depends = python-sentencepiece
 	source = https://github.com/ggerganov/llama.cpp/archive/master-b764743.tar.gz
 	sha256sums = 659a453f270c33a250464a940782ad000bd13cd14ea3c5b7ac08cc7739e6b39e
 
 pkgname = llama-cpp
-	depends = python
 	depends = openmpi
+	depends = python-numpy
+	depends = python-sentencepiece
 	depends = intel-oneapi-dpcpp-cpp
 	depends = openblas
 
 pkgname = llama-cpp-cuda
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with CUDA)
-	depends = python
 	depends = openmpi
+	depends = python-numpy
+	depends = python-sentencepiece
 	depends = cuda
 	provides = llama-cpp
 	conflicts = llama-cpp
