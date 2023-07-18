@@ -1,0 +1,22 @@
+pkgbase = jamesdsp-pipewire-bin
+	pkgdesc = Open-source sound effects for PipeWire
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/Audio4Linux/JDSP4Linux
+	arch = x86_64
+	license = GPL3
+	depends = glibmm
+	depends = hicolor-icon-theme
+	depends = libarchive
+	depends = libportal-qt5
+	depends = libpipewire
+	depends = qt5-svg
+	provides = jamesdsp
+	conflicts = jdsp4linux
+	conflicts = jdsp4linux-gui
+	conflicts = gst-plugin-jamesdsp
+	conflicts = jamesdsp
+	source = https://github.com/Audio4Linux/JDSP4Linux/releases/download/2.6.0/jamesdsp-pipewire_2.6.0-7868e4_ubuntu22.04_linux64.deb
+	sha256sums = 2df3794d7cc96b8f2334c5fedf4f95ba8c866d07f9a31cb656234778944f8aca
+
+pkgname = jamesdsp-pipewire-bin
