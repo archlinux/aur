@@ -2,7 +2,7 @@
 # Contributor: Christoph Korn <christoph.korn at posteo dot de>
 _pkgname=chatty
 pkgname=${_pkgname}-beta
-pkgver=0.25b1
+pkgver=0.25b2
 _pkgver=${pkgver//b/-b}
 pkgrel=1
 pkgdesc='Twitch Chat Client for Desktop'
@@ -12,14 +12,14 @@ license=('GPL3')
 depends=('java-runtime' 'sh')
 optdepends=('streamlink: for watching streams in a custom video player.'
             'livestreamer: for watching streams in a custom video player.')
-makedepends=('gradle' 'java-environment<17')
+makedepends=('gradle' 'java-environment')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/chatty/${_pkgname}/archive/v${_pkgver}.tar.gz"
         "${_pkgname}.desktop"
         "${_pkgname}_script"
         'disable_version_check.patch')
-b2sums=('cec7114166fd723b0033c3e0c4e8dd5b0bf66b83bfb7634481a3cd500a4bbcbf4ebaa9b9da37d88d9c30db352daf85b5e3905e50c6df92c5f80d5d8aee2fe9c3'
+b2sums=('303b086c0b1b7f18bb0c94f33ea9f6dacecd05b44853c2c6622ed1cd724f7a387bc8524366b91ad90d53b717d4abae76e31d13b4d675c99fca2ff5082ef6a10d'
         '8eaa2a6a1f16b4c65c046b5d524b8237132f40c50bfd952f34e8296c8cc3c299c0eb8abf528aa167373bd844da9c0ad265181984d3dab04b86fc4efdd5100281'
         'ad27872651f6481b52721b286f3b22b5dde3c9d3a9f3bdf155a361f5733d20c0bd97515d283f0d038e96903e91e62e363dbb57aee25e018a4e7f4aa014ec715b'
         'fa6495c018023f244a924c2a37eafde6f26c13e4664480ca2ffdb3d7e97ba644f78db42bd75649825966ff70a3cfb1a4e9eff41087c501528f964f32ed0defe5')
