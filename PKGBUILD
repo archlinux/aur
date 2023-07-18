@@ -1,7 +1,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=the24
 pkgver=2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Clock app"
 arch=("x86_64" "aarch64")
 url="https://github.com/vicr123/the24"

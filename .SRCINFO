@@ -1,7 +1,7 @@
 pkgbase = the24
 	pkgdesc = Clock app
 	pkgver = 2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/vicr123/the24
 	arch = x86_64
 	arch = aarch64
