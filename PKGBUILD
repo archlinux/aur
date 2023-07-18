@@ -4,12 +4,12 @@ flavour=
 pkgname=${pkg}${flavour}
 pkgver=2.2.0
 fileID=28692
-pkgrel=0
+pkgrel=1
 pkgdesc="CDI is a general purpose C-library with an additional Fortran interface for file IO in the geoscience area. Supported data formats are GRIB, netCDF, SERVICE, EXTRA and IEG. CDI is the IO part of CDO"
 url="https://code.zmaw.de/projects/cdi"
 license=('GPLv2')
-depends=('netcdf' 'eccodes' 'libaec' 'openjpeg')
-makedepends=('netcdf' 'eccodes' 'libaec' 'openjpeg')
+depends=('netcdf' 'eccodes' 'libaec')
+makedepends=('netcdf' 'eccodes' 'libaec')
 provides=()
 conflicts=()
 replaces=()
@@ -21,7 +21,7 @@ sha256sums=('241544f54765c5e1a91170901f65b3665eafbbf184b7fba021686b4dddc8db17')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr --with-netcdf=/usr --with-eccodes=/usr --with-szlib CFLAGS='-g -O2' LIBS='-lpng -lopenjpeg' --enable-iso-c-interface --enable-hirlam-extensions --enable-openmp
+  ./configure --prefix=/usr --with-netcdf=/usr --with-eccodes=/usr --with-szlib CFLAGS='-g -O2' --enable-iso-c-interface --enable-hirlam-extensions --enable-openmp
   make -j12 || return 1
 }
 package() {
