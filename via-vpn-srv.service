@@ -1,0 +1,14 @@
+[Unit]
+Description=Via VPN root service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+# Why not /tmp
+WorkingDirectory=/tmp
+ExecStart=/usr/bin/via-vpn-srv
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
