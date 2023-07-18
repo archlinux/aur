@@ -1,6 +1,6 @@
 pkgbase = rpcsx-git
 	pkgdesc = Sony PlayStation 4 emulator
-	pkgver = r189.07ed4b0
+	pkgver = r199.b12cc68
 	pkgrel = 1
 	url = https://rpcsx.github.io/rpcsx-site/
 	arch = x86_64
@@ -18,7 +18,8 @@ pkgbase = rpcsx-git
 	depends = glibc
 	depends = libunwind
 	depends = spirv-tools
-	provides = rpcsx=189.07ed4b0
+	depends = vulkan-validation-layers
+	provides = rpcsx=199.b12cc68
 	conflicts = rpcsx
 	source = rpcsx::git+https://github.com/RPCSX/rpcsx.git
 	b2sums = SKIP
@@ -29,4 +30,5 @@ pkgname = rpcsx-git
 	depends = glibc
 	depends = libunwind
 	depends = spirv-tools
+	depends = vulkan-validation-layers
 	depends = libvulkan.so

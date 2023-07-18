@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=rpcsx
 pkgname=$_pkgname-git
-pkgver=r189.07ed4b0
+pkgver=r199.b12cc68
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -13,6 +13,7 @@ depends=(
 	'glibc'
 	'libunwind'
 	'spirv-tools'
+	'vulkan-validation-layers'
 )
 makedepends=(
 	'cmake'
