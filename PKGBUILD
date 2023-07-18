@@ -4,13 +4,13 @@
 
 pkgname=chapel
 pkgver=1.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Programming language designed for productive parallel computing at scale"
 url="https://chapel-lang.org/"
 arch=('x86_64' 'arm')
 license=('Apache')
 depends=('python' 'perl' 'llvm' 'clang')
-makedepends=('git' 'cmake' 'base-devel')
+makedepends=('git' 'cmake')
 source=("https://github.com/chapel-lang/chapel/releases/download/${pkgver}/chapel-${pkgver}.tar.gz")
 sha256sums=('4b861c9a354f6fcf66081256f7ec703d6dd2cd68ea363b400d10ac00bf308679')
 
