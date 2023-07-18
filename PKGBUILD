@@ -1,3 +1,4 @@
+# Maintainer: Masato TOYOSHIMA <phoepsilonix@gmail.com>
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 # Maintainer: phoepsilonix <phoepsilonix@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
@@ -7,8 +8,8 @@
 # Contributor: The_Decryptor
 
 pkgname=h2o-git
-pkgver=2.2.0.7218
-pkgrel=1
+pkgver=2.2.0.7303
+pkgrel=2
 pkgdesc="Optimized HTTP server with support for HTTP/1.x and HTTP/2"
 arch=('i686' 'x86_64' 'aarch64')
 # if you want websocket support, you'll also need aur/wslay
@@ -18,9 +19,12 @@ url="https://github.com/h2o/h2o"
 license=('MIT')
 options=('lto')
 
-_commit=9d3f45e09da05858737790fb9acb7cb8b9e9e443
-source=(git+https://github.com/h2o/h2o.git?commit=${_commit}?signed
+#_commit=9d3f45e09da05858737790fb9acb7cb8b9e9e443
+_commit=489165ce632f64c93840a2bf5c35df451dcbd12d
+source=("git+https://github.com/h2o/h2o.git?commit=${_commit}?signed/"
 	'h2o.service')
+# mruby-Rakefile.patch
+# h2o-libressl-3.6.2.patch
 sha256sums=('SKIP'
             '7fccdeb1a89134b48674764dc243f8967eb1234679e401af93e210fbf0934b62')
 backup=('etc/h2o.conf')
@@ -41,9 +45,9 @@ prepare() {
 
 	sed -i 's|example|/usr/share/doc/h2o/example|' examples/h2o/h2o.conf
 
-        if [[ "$CC" == "clang" ]] ;then
-            export LD=clang
-        fi
+#        if [[ "$CC" == "clang" ]] ;then
+#            export LD="clang"
+#        fi
 
         cmake \
                 -DCMAKE_BUILD_TYPE=Release \
@@ -59,15 +63,19 @@ prepare() {
                 -DWITHOUT_LIBS=off \
                 -DWITH_H2OLOG=on \
                 -DBUILD_SHARED_LIBS=on \
-                -DOPENSSL_ROOT_DIR=/usr/lib/ \
+                -DOPENSSL_ROOT_DIR=/usr/lib/libressl \
+                -DOPENSSL_INCLUDE_DIR=/usr/include/libressl \
+                -DOPENSSL_LIBRARIES=/usr/lib/libressl \
                 .
+
 }
 
 build() {
 	cd "$srcdir/h2o"
-        if [[ "$CC" == "clang" ]] ;then
-            export LD=clang
-        fi
+
+#        if [[ "$CC" == "clang" ]] ;then
+#            export LD="clang"
+#        fi
 	make -j
 }
 
