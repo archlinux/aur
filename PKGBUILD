@@ -28,6 +28,7 @@ _build() {
 _package() {
 	DESTDIR="$pkgdir" cmake --install $1
 	# https://github.com/ggerganov/llama.cpp/pull/2256
+	install -D $1/lib* -t "$pkgdir/usr/lib"
 	install -D $1/bin/* -t "$pkgdir/usr/bin"
 	mv $pkgdir/usr/bin/main $pkgdir/usr/bin/llama
 	mv $pkgdir/usr/bin/server $pkgdir/usr/bin/llama-server
