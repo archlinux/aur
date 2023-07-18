@@ -1,19 +1,19 @@
 pkgbase = go-jira-cli-bin
 	pkgdesc = simple jira command line client
-	pkgver = 0.4.1
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/rsteube/go-jira-cli
 	license = MIT
 	conflicts = go-jira-cli
 	provides = go-jira-cli
 	arch = aarch64
-	source_aarch64 = https://github.com/rsteube/go-jira-cli/releases/download/v0.4.1/gj_0.4.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 589fdedb67028acd12850cdd2888eefae48e321815c4ce47320c74bdc60ffe5c
+	source_aarch64 = https://github.com/rsteube/go-jira-cli/releases/download/v0.4.3/gj_linux_arm64.tar.gz
+	sha256sums_aarch64 = 60a557af4f9a6e13c56c4ec4ef00deb082905f16aa27eaf1e21fbfc869e11c92
 	arch = i686
-	source_i686 = https://github.com/rsteube/go-jira-cli/releases/download/v0.4.1/gj_0.4.1_Linux_i386.tar.gz
-	sha256sums_i686 = 4cf0530fd775cccf07e0aa3a6b15359a470228ef92cfe4f7c7f3b41e77ae2374
+	source_i686 = https://github.com/rsteube/go-jira-cli/releases/download/v0.4.3/gj_linux_386.tar.gz
+	sha256sums_i686 = ffdb7c3b94f725c29dff85d5d2ed5c9adb5b7fa16f078da443b142bdf90a712e
 	arch = x86_64
-	source_x86_64 = https://github.com/rsteube/go-jira-cli/releases/download/v0.4.1/gj_0.4.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 1d61db1991924814c1dcddc2ebaa2b99695a2241105de907379d8e995cfac2a1
+	source_x86_64 = https://github.com/rsteube/go-jira-cli/releases/download/v0.4.3/gj_linux_amd64.tar.gz
+	sha256sums_x86_64 = a3f7dbe09980bda503deb93913428a3c8afd629bf8da7b411346e1b2ba5d7dd1
 	
 pkgname = go-jira-cli-bin
