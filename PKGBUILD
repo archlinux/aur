@@ -4,7 +4,7 @@
 
 pkgname='java-openjdk-bin'
 _majorver='20'
-_fullver='20.0.1'
+_fullver='20.0.2'
 _buildver='9'
 pkgver="${_fullver}.u${_buildver}"
 pkgrel=1
@@ -21,8 +21,8 @@ provides=(
     "java-runtime-headless=${_majorver}"
     "java-runtime-headless-openjdk=${_majorver}"
 )
-source=("https://download.java.net/java/GA/jdk${_fullver}/b4887098932d415489976708ad6d1a4b/${_buildver}/GPL/openjdk-${_fullver}_linux-x64_bin.tar.gz")
-sha256sums=('4248a3af4602dbe2aefdb7010bc9086bf34a4155888e837649c90ff6d8e8cef9')
+source=("https://download.java.net/java/GA/jdk${_fullver}/6e380f22cbe7469fa75fb448bd903d8e/${_buildver}/GPL/openjdk-${_fullver}_linux-x64_bin.tar.gz")
+sha256sums=('beaf61959c2953310595e1162b0c626aef33d58628771033ff2936609661956c')
 
 _jvmdir="usr/lib/jvm/java-${_majorver}-openjdk-bin"
 
