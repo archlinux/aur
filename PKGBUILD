@@ -7,11 +7,10 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_reduce_size:=false}
-: ${_pkgver:=1.7.4748}
+: ${_pkgver:=1.7.4752}
 
 # first letter, lowercase
-for i in _autoupdate _reduce_size ; do
+for i in _autoupdate ; do
   eval "${i}=\$( printf '%s' \"\${$i::1}\" | sed -e 's/^\(.*\)$/\L\1/' )"
 done
 
@@ -44,7 +43,7 @@ esac
 # normal pkgbuild stuff
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=1.7.4748
+pkgver=1.7.4752
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -107,19 +106,7 @@ case "$_autoupdate" in
 
   *)
     _url="https://github.com/PCSX2/pcsx2"
-    _appimage="pcsx2-v$_pkgver-linux-AppImage-64bit-Qt.AppImage"
-
-    _pkgver_test="${_pkgver##*.}"
-    case "$_pkgver_test" in
-      4712|4713)
-        _appimage="pcsx2-v$_pkgver-linux-appimage-x64.AppImage"
-        ;;
-      *)
-        if [ "$_pkgver_test" -ge 4714 ] ; then
-          _appimage="pcsx2-v$_pkgver-linux-appimage-x64-Qt.AppImage"
-        fi
-        ;;
-    esac
+    _appimage="pcsx2-v$_pkgver-linux-appimage-x64-Qt.AppImage"
 
     source+=("$_url/releases/download/v$_pkgver/$_appimage")
     sha256sums+=('SKIP')
@@ -127,25 +114,9 @@ case "$_autoupdate" in
     # update _pkgver
     sed -Ei "s@^(\s*: \\\$\{_pkgver):=[0-9]+.*\}\$@\1:=$_pkgver}@" "$startdir/PKGBUILD"
 
-    case "$_reduce_size" in
-      't'|'y'|'1')
-        source+=('rm_libs')
-        sha256sums+=('cd188fa79052d175d17fa3ae2d02e34676f949aca8a3cdc253ac46947e45f624')
-      ;;
-    esac
-
     pkgver() {
-      case "$_reduce_size" in
-        't'|'y'|'1')
-          printf "%s.%s" \
-            "$_pkgver" \
-            "small"
-          ;;
-        *)
-          printf "%s" \
-            "$_pkgver"
-          ;;
-      esac
+      printf "%s" \
+        "$_pkgver"
     }
 
     build() {
@@ -154,18 +125,13 @@ case "$_autoupdate" in
       "./$_appimage" --appimage-extract
 
       # update script
-      sed -Ei 's@APPDIR=\$\(dirname "\$0"\)@APPDIR=/opt/pcsx2@' "$srcdir/squashfs-root/AppRun"
+      sed -Ei \
+        's@^this_dir=".*\breadlink\b.*\bdirname\b.*"$@this_dir="/opt/pcsx2"@' \
+        "$srcdir/squashfs-root/AppRun"
     }
 
     package() {
       install -Dm755 "$srcdir/squashfs-root/AppRun" "$pkgdir/usr/bin/pcsx2-qt"
-
-      (
-        cd "$srcdir/squashfs-root"
-        if [ -f "PCSX2.desktop" ] && [ ! -e "pcsx2-qt.desktop" ] ; then
-          cp "PCSX2.desktop" "pcsx2-qt.desktop"
-        fi
-      )
 
       install -Dm644 -t "$pkgdir/usr/share/applications" "$srcdir/squashfs-root/pcsx2-qt.desktop"
 
@@ -173,14 +139,6 @@ case "$_autoupdate" in
 
       mkdir -p "$pkgdir/opt"
       mv "$srcdir/squashfs-root" "$pkgdir/opt/pcsx2"
-
-      # reduce size
-      case "$_reduce_size" in
-        't'|'y'|'1')
-          xargs -i rm -rf "$pkgdir/opt/pcsx2/usr/lib/{}" < rm_libs
-          hardlink -fmp "$pkgdir"
-          ;;
-      esac
     }
     ;;
 esac
