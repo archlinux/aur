@@ -1,11 +1,10 @@
 pkgbase = r-lifecycle
 	pkgdesc = Manage the Life Cycle of your Package Functions
 	pkgver = 1.0.3
-	pkgrel = 5
+	pkgrel = 7
 	url = https://cran.r-project.org/package=lifecycle
 	arch = any
 	license = MIT
-	depends = r
 	depends = r-cli
 	depends = r-glue
 	depends = r-rlang
@@ -17,10 +16,10 @@ pkgbase = r-lifecycle
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-tidyverse
-	optdepends = r-tools
 	optdepends = r-vctrs
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/lifecycle_1.0.3.tar.gz
+	md5sums = 023bff9f9b99ca56ed01b705a41a8bed
 	sha256sums = 6459fdc3211585c0cdf120427579c12149b02161efe273a64b825c05e9aa69c2
 
 pkgname = r-lifecycle
