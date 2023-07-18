@@ -4,7 +4,7 @@ _name=ctbench
 _author=jpenuchot
 
 pkgname=${_name}-git
-pkgver=v1.2.1.r0.g9b9d3ec
+pkgver=v1.3.4.r0.g59c7060
 pkgrel=1
 pkgdesc="Compile-time benchmark and analysis for Clang"
 arch=('any')
