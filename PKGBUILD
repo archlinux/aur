@@ -1,13 +1,13 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=gpu-screen-recorder-git
-pkgver=r319.f0710b1
+pkgver=r325.e89d8a0
 pkgrel=1
 pkgdesc='A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux'
 arch=('x86_64')
 url="https://git.dec05eba.com/gpu-screen-recorder"
 license=('GPL3')
-depends=('ffmpeg' 'libglvnd' 'libxcomposite' 'libxrandr' 'libxfixes' 'libx11' 'libpulse' 'libva' 'libdrm' 'libcap')
+depends=('ffmpeg' 'libglvnd' 'libxcomposite' 'libxrandr' 'libxfixes' 'libx11' 'libpulse' 'libva' 'libdrm' 'libcap' 'wayland')
 optdepends=(
     'nvidia-utils: Required to record your screen on NVIDIA'
     'libxnvctrl: Required when using the -oc option to overclock the NVIDIA GPU to workaround NVIDIA p2 state bug'
@@ -20,7 +20,7 @@ optdepends=(
 provides=('gpu-screen-recorder')
 conflicts=('gpu-screen-recorder')
 source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.${pkgver}.tar.gz")
-sha512sums=('a5d4e9e628fbb1707acbcda3b40b396eff533d2947162a4847925aba8eea439aeb2a4e90b81d65bcfdb6b6145c025a134c7bb799c9da5587673efbc200f9fe0f')
+sha512sums=('3ba6a5054a3b11279d85e1d9ad559aa905f294c43474195f57350af66587932a19883160414d11b565d911f72c3bf1dbff183106333cdbf79106598d20f5f59c')
 
 build() {
   cd "$srcdir"
