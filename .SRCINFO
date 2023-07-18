@@ -1,6 +1,6 @@
 pkgbase = p3x-onenote-bin
 	pkgdesc = Linux Electron Onenote - A Linux compatible version of OneNote
-	pkgver = 2023.4.119
+	pkgver = 2023.10.187
 	pkgrel = 1
 	url = https://www.corifeus.com/onenote/
 	arch = aarch64
@@ -9,14 +9,14 @@ pkgbase = p3x-onenote-bin
 	license = MIT
 	depends = hicolor-icon-theme
 	depends = bash
-	depends = electron
+	depends = electron24
 	provides = p3x-onenote
 	conflicts = p3x-onenote
-	source = p3x-onenote-2023.4.119.deb::https://github.com/patrikx3/onenote/releases/download/v2023.4.119/p3x-onenote_2023.4.119_amd64.deb
+	source = p3x-onenote-2023.10.187.deb::https://github.com/patrikx3/onenote/releases/download/v2023.10.187/p3x-onenote_2023.10.187_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/patrikx3/onenote/master/LICENSE
 	source = p3x-onenote.sh
-	sha256sums = 28b4989bb7788578e411c2b999f9dbd1487e1202c05f13e77e56974a63f344fd
-	sha256sums = 463b4b4446921fb7eae0762a94d3170d1de9c71f8443575d9d5ab7e43b344104
-	sha256sums = b993ae302a166eb55f0fdac993e424f5670a7dee2dd2d8c7d8807dac62c9473a
+	sha256sums = 65c457fc662ea5aeaf8911c9687f2fd1b076d6314e11511f8b9deddb07e637fc
+	sha256sums = bd02a1e4594c9b781b1b3dfc9eb82981d8d2508b36cf631c6ef5f0a737c95222
+	sha256sums = 1a80871d5b9ccd1b5521eb1e62687f32c6002c37ae172d357bf4938bb4711576
 
 pkgname = p3x-onenote-bin
