@@ -1,6 +1,6 @@
 # Contributor: Martin Grønlien Pejcoch <mpejcoch@gmail.com>
 pkgname=ecflow
-pkgver=5.9.2
+pkgver=5.11.3
 pkgrel=1
 pkgdesc="ecFlow - workflow manager from ECMWF"
 arch=(i686 x86_64)
@@ -17,22 +17,23 @@ options=()
 install=
 source=(https://confluence.ecmwf.int/download/attachments/8650755/ecFlow-${pkgver}-Source.tar.gz)
 noextract=()
-sha256sums=('8e53879a4dbc498162674b88202d588b043126db215089d0daea5068c19ea497')
+sha256sums=('66f4959e88b94dfecb7901a9370916bb57fa8b2cdaa2889099a907a706b655ec')
 
 build() {
-  cd ecFlow-${pkgver}-Source
+  pwd
   mkdir -p build && cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_CXX_FLAGS=-w -DENABLE_SERVER=on -DENABLE_PYTHON=on -DENABLE_UI=on -DENABLE_GUI=off \
     -DCMAKE_INSTALL_DATADIR=/usr/share \
     -DBOOST_ROOT=/usr \
-    ..
+    -DCMAKE_CXX_COMPILER=g++ \
+    ../ecFlow-${pkgver}-Source
   make -j$(grep processor /proc/cpuinfo | wc -l) || return 1
 }
 
 package()
 {
-  cd ecFlow-${pkgver}-Source/build
+  cd build
   make DESTDIR="$pkgdir" install || return 1
 }
 
