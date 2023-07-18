@@ -1,0 +1,23 @@
+pkgbase = gog-firewatch
+	pkgdesc = Single-player first-person mystery set in the Wyoming wilderness. GOG version.
+	pkgver = 1.12.55089
+	pkgrel = 1
+	url = https://www.gog.com/en/game/firewatch
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk2
+	depends = pango
+	options = !strip
+	source = firewatch_1.12_(55089).sh::gogdownloader://firewatch/en3installer0
+	source = gog-firewatch.desktop
+	source = firewatch.bash
+	sha512sums = 8bf92dd3480eb258656323422525afd1339a5cdf3cd334b2b89e00a94316b6cbc6ca436dfd767fe6a89d8271ccd81bd331c7216dfed92b7c46dc72f57045b6d9
+	sha512sums = 14229611cec177ec6ed4413c222a85d8b6bc37d005dd3e1af5105e348e48f097030239ad76f2218a60841b516c96014455365a711f1190675d40f30f404015eb
+	sha512sums = 084f15216c49ee00d37bd5c76448e99962bd90f25bbf4b83767e52a065f8c7cfece56f8cc88914c9de421fbf8889d3eea60f88b4d8c16b2eae38aea31f60b5b1
+
+pkgname = gog-firewatch

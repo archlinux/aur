@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Firewatch
+Comment=Single-player first-person mystery set in the Wyoming wilderness
+Exec=firewatch
+Icon=gog-firewatch
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;
+Encoding=UTF-8
