@@ -11,7 +11,8 @@ conflicts=(
     'fchat-rising-git'
 )
 depends=(
-    'electron17'
+    'electron>=17.0.0'
+    'electron<18.0.0'
     'libappindicator-gtk3'
     'libindicator-gtk3'
     'libnotify'
@@ -31,8 +32,8 @@ source=(
 sha256sums=(
     'SKIP'
     '9f1a95982e8327f32173056d03d79705c01f11307bae59e8f5d3ec3435421f1f'
-    'SKIP'
-    'SKIP'
+    '15d92bd2030b4046f10ac8b7e94b329f1f558987fd8fe0b51933dcc8d47f9ce1'
+    '1c136916bb968ffaa3e8e6dfb03f1c219f9703bddf278312be0360660a9cec91'
 )
 
 _ensure_local_nvm() {
