@@ -5,14 +5,13 @@
 
 _pkgname=thunderbird-gnome-theme
 pkgname=thunderbird-gnome-theme-git
-pkgver=r14.083e2f6
+pkgver=r28.f957def
 pkgrel=1
 pkgdesc='A GNOME theme for Firefox'
 arch=('any')
 url='https://github.com/rafaelmardojai/thunderbird-gnome-theme'
 license=('Unlicense')
-optdepends=('thunderbird: primary compatible browser'
-            'librewolf: alternative compatible browser')
+optdepends=('thunderbird: primary compatible e-mail client')
 makedepends=('git')
 install='thunderbird-gnome-theme-git.install'
 source=('thunderbird-gnome-theme::git+https://github.com/rafaelmardojai/thunderbird-gnome-theme.git'
