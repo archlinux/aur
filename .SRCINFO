@@ -1,7 +1,8 @@
 pkgbase = arianna-git
 	pkgdesc = EPub Reader for mobile devices
-	pkgver = 1.0.0_r241.g0a4b523
+	pkgver = 1.1.0.r29.gd80b345
 	pkgrel = 1
+	epoch = 1
 	url = https://invent.kde.org/graphics/arianna.git
 	arch = x86_64
 	groups = kde-applications-git
@@ -19,6 +20,7 @@ pkgbase = arianna-git
 	makedepends = baloo
 	makedepends = qt5-websockets
 	makedepends = qt5-webengine
+	depends = kquickcharts
 	depends = kirigami-addons
 	depends = hicolor-icon-theme
 	provides = arianna
