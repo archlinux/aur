@@ -2,16 +2,16 @@
 
 _cratename=melody_cli
 pkgname=melody
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc='A language designed to compile to and maintain a 1-1 relationship with regular expressions, while being more readable and maintainable.'
 url='https://github.com/yoav-lavi/melody'
 makedepends=('cargo')
 depends=('gcc-libs')
 arch=('x86_64')
-license=('MIT')
-source=("https://github.com/yoav-lavi/melody/archive/v${pkgver}/v${pkgver}.tar.gz")
-sha256sums=('c68c05c0d87d4ab1069196f339043252fb1754395d8e5504f5295a2fadcc51d2')
+license=('MIT' 'APACHE')
+source=("https://github.com/yoav-lavi/melody/archive/${pkgver}/${pkgver}.tar.gz")
+sha256sums=('d7605160d3589578c84a919c09addd8f4bd1f06441795192041b491462c9f655')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -20,20 +20,18 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features --package "${_cratename}"
 }
 
 check() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
     cargo test --frozen --all-features
 }
 
 package() {
     cd "$pkgname-$pkgver"
     install -Dm0755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 

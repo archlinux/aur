@@ -1,13 +1,14 @@
 pkgbase = melody
 	pkgdesc = A language designed to compile to and maintain a 1-1 relationship with regular expressions, while being more readable and maintainable.
-	pkgver = 0.18.1
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/yoav-lavi/melody
 	arch = x86_64
 	license = MIT
+	license = APACHE
 	makedepends = cargo
 	depends = gcc-libs
-	source = https://github.com/yoav-lavi/melody/archive/v0.18.1/v0.18.1.tar.gz
-	sha256sums = c68c05c0d87d4ab1069196f339043252fb1754395d8e5504f5295a2fadcc51d2
+	source = https://github.com/yoav-lavi/melody/archive/0.19.0/0.19.0.tar.gz
+	sha256sums = d7605160d3589578c84a919c09addd8f4bd1f06441795192041b491462c9f655
 
 pkgname = melody
