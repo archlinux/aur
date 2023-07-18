@@ -1,7 +1,7 @@
 pkgbase = python-pynndescent
 	pkgdesc = Simple fast approximate nearest neighbor search
 	pkgver = 0.5.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lmcinnes/pynndescent
 	arch = any
 	license = BSD
