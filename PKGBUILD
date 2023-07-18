@@ -8,7 +8,7 @@ url='https://github.com/on4kjm/FLEcli'
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin")
-makedepends=('git'  'go' 'goreleaser')
+makedepends=('git' 'go' 'goreleaser')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
