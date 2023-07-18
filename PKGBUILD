@@ -3,7 +3,7 @@
 _pkgname=albumartcreator
 pkgname=$_pkgname-bin
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Create amazing looking Album Art in seconds! (binary release)"
 arch=('x86_64')
 url="https://github.com/0neGal/albumArtCreator"
