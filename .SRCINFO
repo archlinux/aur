@@ -1,12 +1,12 @@
 pkgbase = netclient
 	pkgdesc = netclient daemon - a platform for modern, blazing fast wireguard virtual networks
-	pkgver = 0.20.1
+	pkgver = 0.20.4
 	pkgrel = 0
 	url = https://github.com/gravitl/netclient
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	source = 0.20.1-0.tar.gz::https://github.com/gravitl/netclient/archive/refs/tags/v0.20.1.tar.gz
-	sha256sums = 831d5e51418f108328e2ed6777866e326d8224e9982fcf2a5a097897e9afb6e0
+	source = 0.20.4-0.tar.gz::https://github.com/gravitl/netclient/archive/refs/tags/v0.20.4.tar.gz
+	sha256sums = e8196f89401cdfaf3de4fd51378e6bdcface07d24f27e9276b6a91c42b6a4c6e
 
 pkgname = netclient
