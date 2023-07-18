@@ -1,15 +1,19 @@
-# Maintainer: David Wells <dr wells at vt dot e d u>
+# Maintainer: David Wells <drwells.aur at fastmail dot com>
+
 # Contributor: Florian Dang <florian dot coin at gmail dot com>
 
 pkgname=deal-ii
 _realname=dealii
-pkgver=9.5.0
+pkgver=9.5.1
 pkgrel=1
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
 license=('LGPL')
-depends=('boost')
+# deal.II depends on Kokkos which is implicitly provided by Trilinos. Trilinos
+# does not yet support configuration with an external copy of Kokkos so do not
+# yet depend on that package.
+depends=('boost' 'trilinos')
 optdepends=(
       # adol-c is not compatible with Trilinos - if both are installed then deal.II will use Trilinos
       'adol-c: automatic differentiation library'
@@ -35,14 +39,13 @@ optdepends=(
       'sundials: Suite of nonlinear differential/algebraic equation solvers'
       'symengine: Fast symbolic manipulation library'
       'tbb: High level abstract threading library'
-      'trilinos: object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems'
       'suitesparse: A collection of sparse matrix libraries'
       'zlib: Compression library implementing the deflate compression method found in gzip and PKZIP'
       )
 makedepends=('cmake')
 install=deal-ii.install
 source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
-sha1sums=('93070f79afdfc4eb201bcd52a9bd5805385f5501')
+sha1sums=('a94989a9e4c3b8599aceacf71d7156621c1d7426')
 # where to install deal.II: change to something else (e.g., /opt/deal.II/)
 # if desired.
 _installation_prefix=/usr
@@ -64,13 +67,6 @@ build() {
           fi
       fi
   done
-
-  # deal.II needs TRILINOS_DIR to be set in order to find Trilinos, so export
-  # the default value:
-  if pacman -Qs trilinos >/dev/null
-  then
-     export TRILINOS_DIR=/usr
-  fi
 
   rm -rf "${srcdir}/build"
   mkdir "${srcdir}/build"
@@ -124,10 +120,15 @@ build() {
   # be slightly slower than O2), so do not use flags in /etc/makepkg.conf by
   # default. If you want to add more flags or disable specific packages, then
   # refer to the deal.II manual.
+  #
+  # Work around a deal.II + Trilinos 14 bug by explicitly providing the Trilinos
+  # root directory
   cmake $cmake_configuration_flags -DCMAKE_INSTALL_PREFIX=$_installation_prefix \
+        -DTRILINOS_DIR=/usr/                                                    \
         -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_CXX_FLAGS=" $extra_warning_flags" \
         -DDEAL_II_SHARE_RELDIR=share/${pkgname}/                                \
         -DDEAL_II_EXAMPLES_RELDIR=share/${pkgname}/examples/                    \
+        -DDEAL_II_UNITY_BUILD=ON                                                \
         -DDEAL_II_COMPONENT_DOCUMENTATION=OFF ${srcdir}/${_realname}-$pkgver
 
   # deal.II needs about 3 GB/compilation process so use fewer jobs if your
