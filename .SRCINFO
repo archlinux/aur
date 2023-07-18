@@ -1,7 +1,7 @@
 pkgbase = harbour-amazfish-git
 	pkgdesc = Companion application for Huami Devices and the Pinetime Infinitime
 	pkgver = r849.34365e4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/piggz/harbour-amazfish
 	arch = x86_64
 	arch = aarch64
@@ -17,6 +17,7 @@ pkgbase = harbour-amazfish-git
 	depends = qtmpris
 	depends = nemo-qml-plugin-dbus
 	depends = kirigami2
+	depends = bluez-qt
 	provides = amazfish
 	source = git+https://github.com/piggz/harbour-amazfish
 	md5sums = SKIP
