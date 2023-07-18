@@ -20,12 +20,12 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$_pkgname"
   ./build.sh
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$_pkgname"
   install -Dm711 doq "$pkgdir/usr/bin/doq"
   install -Dm644 readme.md "$pkgdir/usr/share/licenses/$pkgname/readme.md"
 }
