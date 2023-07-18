@@ -1,6 +1,6 @@
 pkgbase = visual-paradigm-community
 	pkgdesc = UML design application
-	pkgver = 17.1.20230601
+	pkgver = 17.1.20230711
 	pkgrel = 1
 	url = http://www.visual-paradigm.com/download/community.jsp
 	install = visual-paradigm-community.install
@@ -15,7 +15,7 @@ pkgbase = visual-paradigm-community
 	source = visual-paradigm.png
 	source = LICENSE.txt
 	source = x-visual-paradigm.xml
-	sha256sums = b19fc08f66fd9d8d4192a3fa46d0e24f89136bcf0151ade401ad618ddcab1de4
+	sha256sums = 8b35af69d81cdda9daff1438dd913f22689d844b55a49766f8c3b8978432248c
 	sha256sums = 52d244345f2ce8080d2b20c8c75b3ef833dfe9c5d605cac7129013b087bf2806
 	sha256sums = 5cdc0f50573d805938172c1f35664aa264fc5964fd92daed09b467565a6347b1
 	sha256sums = 41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15
