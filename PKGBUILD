@@ -7,7 +7,7 @@
 
 
 pkgname=kdenlive-git
-pkgver=23.07.70.r18073
+pkgver=23.11.70.r18365
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (Latest Applications GIT Version)"
 arch=('i686' 'x86_64')
@@ -70,7 +70,8 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  cp -v ../frei0r_bigsh0t_hemi_to_eq.xml ${pkgdir}/usr/share/kdenlive/effects/
-  cp -v ../frei0r_bigsh0t_eq_to_rect.xml ${pkgdir}/usr/share/kdenlive/effects/
+## These are not needed anymore, as the package has finally been updated.
+#  cp -v ../frei0r_bigsh0t_hemi_to_eq.xml ${pkgdir}/usr/share/kdenlive/effects/
+#  cp -v ../frei0r_bigsh0t_eq_to_rect.xml ${pkgdir}/usr/share/kdenlive/effects/
 }
 
