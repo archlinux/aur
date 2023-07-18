@@ -2,7 +2,7 @@
 
 _pkgname=quark-engine
 pkgname=quark-engine
-pkgver=23.2.1
+pkgver=23.6.1
 pkgrel=1
 pkgdesc='An Obfuscation-Neglect Android Malware Scoring System'
 arch=('any')
@@ -11,13 +11,7 @@ url='https://github.com/quark-engine/quark-engine'
 depends=('python' 'python-prettytable' 'python-androguard' 'python-tqdm' 'python-colorama' 'python-graphviz' 'python-prompt-toolkit' 'python-plotly' 'python-rzpipe' 'python-click')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('8dba29cda97a4b86d60677130fbcaa71533f3a6443faff5335150ffe66eb7bac')
-
-prepare() {
-    # Hacky way to prevent it from installing tests to site-packages
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    rm -r tests
-}
+sha256sums=('3b0e840b11f132636a28ae955813afb7a1a1ed001801d980c4b1b70128a188d9')
 
 build () {
   cd "${srcdir}/${pkgname}-${pkgver}"
