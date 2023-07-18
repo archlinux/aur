@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-ecwolf
 pkgname=$_pkgname-git
-pkgver=r1760.f098da0
+pkgver=r1762.18eca17
 pkgrel=1
 pkgdesc="Wolfenstein 3D core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -30,6 +30,7 @@ prepare() {
 	cd $_pkgname
 	git config submodule.src/libretro/libretro-common.url ../libretro-common
 	git -c protocol.file.allow=always submodule update
+	sed -i 's/-O[0123s]//' src/libretro/Makefile
 }
 
 build() {
