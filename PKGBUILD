@@ -1,5 +1,5 @@
 pkgname=amazon-corretto-17
-pkgver=17.0.7.7.1
+pkgver=17.0.8.7.1
 pkgrel=1
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64')
@@ -18,6 +18,6 @@ package() {
   cp -a "amazon-corretto-$pkgver-linux-x64" "$pkgdir/usr/lib/jvm/java-17-amazon-corretto"
 }
 
-sha256sums=('8d23e0f1249f2852caa76b7ae8770847e005e4310a70a46b7c1a816c34ff9195'
+sha256sums=('6cc5e6ed4913fe51d3efd96684124522d0bfe75c263a31cf06340e0dfa81f4cb'
          'SKIP')
 
