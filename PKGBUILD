@@ -3,7 +3,7 @@
 
 pkgname=python-pyvisa-py
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A pure python backend for PyVISA"
 url="https://github.com/pyvisa/pyvisa-py"
 arch=('any')
@@ -15,14 +15,11 @@ optdepends=('linux-gpib: gpib instrument support'
             'python-pyusb: interface with USB instruments'
             'python-gpib-ctypes: interface with GPIB instruments'
             'python-psutil: discover TCPIP devices across multiple interfaces')
-source=("git+$url.git")
+source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
   export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
-  # Switch tag version
-  cd pyvisa-py
-  git checkout tags/${pkgver}
 }
 
 build() {
