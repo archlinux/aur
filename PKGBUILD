@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-gmmlib-git
-pkgver=21.1.3.r0.g915cfec
+pkgver=22.3.9.r0.gb060af3
 pkgrel=1
 pkgdesc='Intel Graphics Memory Management Library (git version)'
 arch=('x86_64')
@@ -22,15 +22,16 @@ pkgver() {
 
 build() {
     cmake -B build -S gmmlib \
+        -G 'Unix Makefiles' \
         -DBUILD_TYPE='None' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DRUN_TEST_SUITE:BOOL='ON' \
         -Wno-dev
-    make -C build
+    cmake --build build
 }
 
 package() {
-    make -C build DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
     install -D -m644 gmmlib/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
