@@ -1,6 +1,6 @@
 pkgbase = krew-bin
 	pkgdesc = Krew is the package manager for kubectl plugins.
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://krew.sigs.k8s.io/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = krew-bin
 	provides = krew
 	provides = krew-bin
 	conflicts = krew
-	source = krew-0.4.3.tar.gz::https://github.com/kubernetes-sigs/krew/releases/download/v0.4.3/krew-linux_amd64.tar.gz
-	sha256sums = 5df32eaa0e888a2566439c4ccb2ef3a3e6e89522f2f2126030171e2585585e4f
+	source = krew-0.4.4.tar.gz::https://github.com/kubernetes-sigs/krew/releases/download/v0.4.4/krew-linux_amd64.tar.gz
+	sha256sums = e471396b0ed4f2be092b4854cc030dfcbb12b86197972e7bef0cb89ad9c72477
 
 pkgname = krew-bin
