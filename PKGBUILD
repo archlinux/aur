@@ -5,7 +5,7 @@
 
 pkgname=nghttp2
 pkgver=1.55.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Client, server and proxy programs from the nghttp2 library'
 arch=(x86_64)
 url='https://nghttp2.org/'
