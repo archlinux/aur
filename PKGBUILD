@@ -4,7 +4,7 @@ _name=kumi
 _author=jfalcou
 
 pkgname=${_name}-git
-pkgver=v3.0.r9.g3cd97fa
+pkgver=v3.0.r31.gea96213
 pkgrel=1
 pkgdesc="C++20 Compact Tuple Tools"
 arch=('any')
