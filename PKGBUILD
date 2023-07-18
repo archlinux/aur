@@ -1,7 +1,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theterminal
 pkgver=4.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Simple Terminal Emulator"
 arch=("x86_64" "aarch64")
 url="https://github.com/theCheeseboard/theterminal"
