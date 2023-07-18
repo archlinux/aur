@@ -1,12 +1,12 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mfgtools-git
-pkgver=1.5.109.r5.g2ff7252
+pkgver=1.5.109.r9.gd669525
 pkgrel=1
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
 arch=('x86_64')
-url="https://github.com/NXPmicro/mfgtools"
+url="https://github.com/nxp-imx/mfgtools"
 license=('BSD')
 groups=()
 depends=('bzip2' 'zlib' 'libusb' 'libzip' 'openssl')
