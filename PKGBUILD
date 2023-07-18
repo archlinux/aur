@@ -3,24 +3,25 @@
 # Contributor: David Stark <david@starkers.org>
 
 pkgname=saml2aws
-pkgver=2.36.9
+pkgver=2.36.10
 pkgrel=1
 pkgdesc='CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Versent/${pkgname}"
 license=('MIT')
-depends=('gcc-libs')
+depends=('gcc-libs' 'systemd-libs')
 makedepends=('git' 'go')
 provides=("${pkgname}")
 conflicts=("${pkgname}-bin")
 source=("saml2aws_${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a2ccc55d2ee9e572b46f6b508dc6f474550ae103d20961994c6cf58cdcba5006')
+sha256sums=('5d1a9d0aa5e411ae5f890a7791db38123d9a8ecb8fed816e004ace0b21268c56')
 
+export GGO_ENABLED="true"
 export CGO_CPPFLAGS="${CPPFLAGS}"
 export CGO_CFLAGS="${CFLAGS}"
 export CGO_CXXFLAGS="${CXXFLAGS}"
 export CGO_LDFLAGS="${LDFLAGS}"
-export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -tags=hidraw"
 
 build() {
     local _commit _flags
