@@ -16,10 +16,8 @@ source=(
     "$name-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "$name.desktop"
     )
-sha256sums=(
-    'SKIP'
-    '13d8de079c942b804123b8eea64034bb2e7bb8bcc6563b5a4406ee7089dd1db5'
-    )
+sha256sums=('6f4e88580bc72d479c8530431a4cba68acead72eb93c5d4799fc5bfebc3a157a'
+            '13d8de079c942b804123b8eea64034bb2e7bb8bcc6563b5a4406ee7089dd1db5')
 
 package() {
     install -Dm644 ./$name.desktop $pkgdir/usr/share/applications/$name.desktop
