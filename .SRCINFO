@@ -16,6 +16,6 @@ pkgbase = libcontemporary
 	depends = gsettings-qt
 	depends = qcoro-qt6
 	source = libcontemporary-6.0.1::https://github.com/vicr123/libcontemporary/archive/v6.0.1.tar.gz
-	sha256sums = 278445a255c79d403983c4b16ec39c1732341ee54851ef2d19a5d56b40ef1d22
+	sha256sums = 11a70849f1ba7c585acec3a88475c661eab93ce43ce4d85ff839612e5fadcde5
 
 pkgname = libcontemporary

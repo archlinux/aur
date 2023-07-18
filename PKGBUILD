@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt6-base' 'qt6-multimedia' 'qt6-svg' 'gsettings-qt' 'qcoro-qt6')
 makedepends=('git' 'qt6-tools' 'cmake' 'clang')
 source=("$pkgname-$pkgver"::"https://github.com/vicr123/libcontemporary/archive/v$pkgver.tar.gz")
-sha256sums=('278445a255c79d403983c4b16ec39c1732341ee54851ef2d19a5d56b40ef1d22')
+sha256sums=('11a70849f1ba7c585acec3a88475c661eab93ce43ce4d85ff839612e5fadcde5')
 
 build() {
         cmake -B build -S "$pkgname-$pkgver" \
