@@ -20,6 +20,8 @@ sha256sums=('1520fa9751ff77ac4dea7837e224a77a5698eb7310eb4afbd5fbea1668f9ae0e')
 
 package() {
 	cd "${_pkgname//-/_}-$pkgver" || return 1
+	# https://github.com/abetlen/llama-cpp-python/pull/486
+	# CMAKE_ARGS='-DDRY_RUN=ON'
 	python setup.py install --root="$pkgdir" --optimize=1
 	find $pkgdir -name '*.so' -exec ln -sf ../../../libllama.so {} \;
 }
