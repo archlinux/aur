@@ -1,0 +1,13 @@
+--- isextract-git/Makefile.orig	2023-07-17 16:42:55.867041103 -0700
++++ isextract-git/Makefile	2023-07-17 16:47:59.606906876 -0700
+@@ -39,8 +39,8 @@
+ 
+ # The Install
+ install: all
+-	install -d $(DESTDIR)/$(PREFIX)/lib/
+-	install $(TARGET) $(DESTDIR)/$(PREFIX)/lib/
++	install -d $(DESTDIR)/$(PREFIX)/bin/
++	install $(TARGET) $(DESTDIR)/$(PREFIX)/bin/
+ 
+ # The Checker
+ BADFUNCS='[^_.>a-zA-Z0-9](str(n?cpy|n?cat|xfrm|n?dup|str|pbrk|tok|_)|stpn?cpy|a?sn?printf|byte_)'

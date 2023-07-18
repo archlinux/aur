@@ -1,0 +1,17 @@
+pkgbase = isextract-git
+	pkgdesc = Command line tool to extract from *.z InstallShield v3 packages
+	pkgver = r12.d9350da
+	pkgrel = 1
+	url = https://github.com/OmniBlade/isextract
+	arch = x86_64
+	license = GPL2
+	license = custom:zlib
+	makedepends = git
+	provides = isextract
+	conflicts = isextract
+	source = git+https://github.com/OmniBlade/isextract.git
+	source = isextract-git-r12.d9350da-Makefile-changes.patch
+	sha256sums = SKIP
+	sha256sums = b389df7d40951ce532aab59db343e35de8c3f91a1d23eeca81a35fa283712bd1
+
+pkgname = isextract-git
