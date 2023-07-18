@@ -1,7 +1,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=('thefrisbee' 'libthefrisbee')
 pkgver=2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Disk Management"
 arch=("x86_64" "aarch64")
 url="https://github.com/theCheeseboard/thefrisbee"
