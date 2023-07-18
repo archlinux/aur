@@ -1,0 +1,23 @@
+pkgbase = python-timedctl
+	pkgdesc = CLI for timed
+	pkgver = 1.0.8
+	pkgrel = 00
+	url = https://pypi.org/project/timedctl/
+	arch = any
+	license = custom:unknown
+	makedepends = python-pip
+	depends = python
+	depends = python-click
+	depends = python-libtimed
+	depends = python-pyfzf
+	depends = python-rich
+	depends = python-terminaltables
+	noextract = timedctl-1.0.8-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/f6/39/f35ddf981ed068f39639f15e4419b6c3b611285f58f91614cda6229983cb/timedctl-1.0.8-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = f403635fd3a2e1570f7917f813d1d7c5
+	md5sums = 26b73219e08a9e21387f8d2ac0847c54
+
+pkgname = python-timedctl
