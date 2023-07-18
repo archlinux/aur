@@ -2,7 +2,7 @@
 
 pkgname=mdlshit
 pkgver=2.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="source engine .mdl v49 -> v53 converter"
 arch=('any')
 url="https://github.com/headassbtw/mdlshit"
@@ -38,23 +38,23 @@ prepare() {
   sed -i '1 i\[Desktop Entry]' desktop
   mv desktop $pkgname.desktop
 
-  cd $pkgname-$pkgver
+  cd $pkgname
   convert product.ico ../$pkgname.png
   cd ..
 
   # "Submodules"
   cd glew-cmake
-  cp -r * ../$pkgname-$pkgver/external/glew
+  cp -r * ../$pkgname/external/glew
   cd ..
-  cp -r glfw $pkgname-$pkgver/external
-  cp -r glm $pkgname-$pkgver/external
-  cp -r half $pkgname-$pkgver/external
-  cp -r imgui $pkgname-$pkgver/external
-  cp -r libtinyfiledialogs $pkgname-$pkgver/external
+  cp -r glfw $pkgname/external
+  cp -r glm $pkgname/external
+  cp -r half $pkgname/external
+  cp -r imgui $pkgname/external
+  cp -r libtinyfiledialogs $pkgname/external
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   cmake -S ./ -B ./build -DCMAKE_BUILD_TYPE=$BUILD_TYPE
   cmake --build ./build
 }
@@ -62,7 +62,7 @@ build() {
 package() {
   install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 $pkgname.png -t "$pkgdir/usr/share/pixmaps"
-  cd $pkgname-$pkgver
+  cd $pkgname
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm755 bin/Linux/$pkgname -t "$pkgdir/usr/bin"
