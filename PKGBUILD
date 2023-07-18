@@ -15,7 +15,7 @@ url=https://github.com/AdaCore/gprbuild/
 license=(GPL3 custom)
 
 depends=(gcc-ada xmlada)
-makedepends=(gprbuild)
+makedepends=(gprbuild python-sphinx)
 
 source=(https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gprbuild-$pkgver-20230324-1649D-src.tar.gz
         https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gprconfig-kb-$pkgver-20230324-16644-src.tar.gz
@@ -104,6 +104,7 @@ package_libgpr()
 
 package_gprbuild()
 {
+    depends=(libgpr)
     conflicts=(gprbuild-bootstrap)
 
     cd $srcdir/$_gprbuild_src

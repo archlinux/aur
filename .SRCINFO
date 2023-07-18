@@ -9,6 +9,7 @@ pkgbase = gprbuild
 	license = GPL3
 	license = custom
 	makedepends = gprbuild
+	makedepends = python-sphinx
 	depends = gcc-ada
 	depends = xmlada
 	source = https://github.com/charlie5/archlinux-gnatstudio-support/raw/main/gnatstudio-sources/gprbuild-24.0w-20230324-1649D-src.tar.gz
@@ -24,6 +25,7 @@ pkgname = libgpr
 	conflicts = grpc
 
 pkgname = gprbuild
+	depends = libgpr
 	conflicts = gprbuild-bootstrap
 
 pkgname = gprtools
