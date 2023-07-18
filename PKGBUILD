@@ -6,7 +6,7 @@ _pkg_pulseaudio='pulseaudio-qt6-git'
 _pkg_polkit='polkit-qt6-git'
 
 pkgname=('thedesk' 'td-polkitagent' 'xdg-desktop-portal-td' 'thedesk-platform' 'libthedesk')
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=0
 pkgdesc="Desktop Environment built on Qt"
 arch=("x86_64" "aarch64")
@@ -15,7 +15,7 @@ license=('GPL3')
 makedepends=('git' 'qt6-tools' 'qt6-positioning' 'cmake' 'clang' $_pkg_polkit 'libtdesktopenvironment' $_pkg_pulseaudio $_pkg_networkmanager $_pkg_modemmanager $_pkg_bluez 'qrencode' 'libthefile' 'contemporary-icons' 'contemporary-widgets' 'ttf-contemporary' 'xf86-input-libinput' 'libxi' 'libx11' 'qrencode')
 source=("thedesk-$pkgver"::"https://github.com/theCheeseboard/thedesk/archive/refs/tags/v$pkgver.tar.gz"
         "kf6-patch.patch")
-sha256sums=("74cd73a43d0a14867c94350196a7053b8e47476dc298c380d19b2d63ece1f413"
+sha256sums=("600408180c7548f4dc049d348b0585bf0f104f1620a1caec63ee03a968512af6"
             "SKIP")
 
 doInstallModule() {

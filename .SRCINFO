@@ -1,6 +1,6 @@
 pkgbase = thedesk
 	pkgdesc = Desktop Environment built on Qt
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 0
 	url = https://github.com/theCheeseboard/thedesk
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = thedesk
 	makedepends = libxi
 	makedepends = libx11
 	makedepends = qrencode
-	source = thedesk-1.0.1::https://github.com/theCheeseboard/thedesk/archive/refs/tags/v1.0.1.tar.gz
+	source = thedesk-1.0.2::https://github.com/theCheeseboard/thedesk/archive/refs/tags/v1.0.2.tar.gz
 	source = kf6-patch.patch
-	sha256sums = 74cd73a43d0a14867c94350196a7053b8e47476dc298c380d19b2d63ece1f413
+	sha256sums = 600408180c7548f4dc049d348b0585bf0f104f1620a1caec63ee03a968512af6
 	sha256sums = SKIP
 
 pkgname = thedesk
