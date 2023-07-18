@@ -17,17 +17,18 @@ _build_platforms="i386-pc ${_target_arch}-efi"
 [[ "${_grub_emu_build}" == "1" ]] && _build_platforms+=" ${_target_arch}-emu"
 
 pkgname="grub-git"
-pkgver=2.06.r403.g7259d55ff
+pkgver=2.12.rc1.r0.g7a994c87f
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader (2)"
 arch=('x86_64' 'i686')
 url="https://www.gnu.org/software/grub/"
 license=('GPL3')
-depends=('device-mapper' 'freetype2' 'fuse2' 'gettext')
+depends=('device-mapper' 'freetype2' 'fuse3' 'gettext')
 makedepends=('autogen' 'bdf-unifont' 'git' 'help2man' 'python' 'rsync' 'texinfo' 'ttf-dejavu')
 optdepends=('dosfstools: For grub-mkrescue FAT FS and EFI support'
             'efibootmgr: For grub-install EFI support'
             'libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue'
+            'lzop: For grub-mkrescue LZO support'
             'mtools: For grub-mkrescue FAT FS support'
             'os-prober: To detect other OSes when generating grub.cfg in BIOS systems')
 
@@ -81,8 +82,8 @@ prepare() {
     # Pull in latest language files
     ./linguas.sh
 
-	# Make translations reproducible.
-	sed -i '1i /^PO-Revision-Date:/ d' po/*.sed
+    # Make translations reproducible.
+    sed -i '1i /^PO-Revision-Date:/ d' po/*.sed
 
     # Remove lua module from grub-extras as it is incompatible with changes to grub_file_open   
     # http://git.savannah.gnu.org/cgit/grub.git/commit/?id=ca0a4f689a02c2c5a5e385f874aaaa38e151564e
@@ -121,7 +122,6 @@ build() {
                 --enable-device-mapper \
                 --enable-grub-mkfont \
                 --enable-grub-mount \
-                --enable-mm-debug \
                 --enable-nls \
                 --disable-silent-rules \
                 --disable-werror
