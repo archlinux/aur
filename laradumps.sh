@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron25
+_ASAR="/opt/laradumps/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron24 /opt/laradumps/app.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron24 --no-sandbox /opt/laradumps/app.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
