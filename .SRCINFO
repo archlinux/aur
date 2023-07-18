@@ -1,6 +1,6 @@
 pkgbase = python-yfinance
 	pkgdesc = Yahoo! Finance market data downloader (+faster Pandas Datareader)
-	pkgver = 0.2.23
+	pkgver = 0.2.24
 	pkgrel = 1
 	url = https://github.com/ranaroussi/yfinance
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-yfinance
 	depends = python-pytz
 	depends = python-requests
 	optdepends = python-pandas-datareader: to use pandas_datareader
-	source = yfinance-0.2.23.tar.gz::https://github.com/ranaroussi/yfinance/archive/refs/tags/0.2.23.tar.gz
-	b2sums = dc76969354dc2fae3737ff423060cb9eac206b5616cab5ed3123cbeccd3f2dffa2943f5a25d2facd67e399ddf0e8520b856edad118a51b4003ac6f25b8b13a46
+	source = yfinance-0.2.24.tar.gz::https://github.com/ranaroussi/yfinance/archive/refs/tags/0.2.24.tar.gz
+	b2sums = ae24e245abe009c5fe62cdaf368d8c462f6706e2550a6c64838a6010f55fa84df85c1beecc78ab7685431d73288ed8ac12309e5920362483bbebea0f8a02cb33
 
 pkgname = python-yfinance
