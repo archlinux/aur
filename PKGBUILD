@@ -4,7 +4,7 @@
 pkgname=terra-bin
 pkgver=1.1.0
 pkgrel=1
-pkgdesc='A low-level system programming language that is embedded in and meta-programmed by the Lua programming language'
+pkgdesc='Low-level system programming language designed to interoperate seamlessly with Lua'
 arch=('x86_64')
 url='https://github.com/terralang/terra'
 license=('MIT')
