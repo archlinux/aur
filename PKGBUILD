@@ -1,7 +1,7 @@
 # Maintainer: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
 
 pkgname=teamspeak
-pkgver=5.0.0beta73
+pkgver=5.0.0beta74
 pkgrel=1
 pkgdesc="Software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
@@ -17,13 +17,10 @@ depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'avahi' 'dbus'
          'util-linux-libs' 'wayland' 'xz' 'zlib' 'zstd')
 optdepends=('libpulse')
 arch=('x86_64')
-source=("teamspeak-client-$pkgver.tar.xz::http://update.teamspeak.com/linux/x64/latest/0-1679397420.patch"
+source=("teamspeak-client-$pkgver.tar.xz::https://files.teamspeak-services.com/pre_releases/client/${pkgver/beta/-beta}/teamspeak-client.tar.gz"
         "teamspeak-client.desktop")
-sha512sums=('7afcccc8c816ed90bca15d789135154bc1ccf0e0e42dcc9fe5303dab501a09f32aeeb534dc20612372d085dfb8a711a0f2888770a50f410e9ee00b16db9611e2'
+sha512sums=('744b801fc304b4259903a8744a66695a41f990c1d7d2357636e5c5670e3439513f63075b0b598d17bef311136265561fba386f65db2a7302ff3f19a4351f17d3'
             '28f6cfbb842cd25d51819eccaa282aa0edd1e5b37e7eb14ef7e7e07723bd83fa7b3babc8f303021f83d3591a7d7f4db824f770c86d1b6a7326466e256cf787d0')
-# Following authorization token is hard-coded. It is not bound to any account, but without it you will get 403 Forbidden error from any request to update.teamspeak.com
-# The archive starts at offset of 200 bytes
-DLAGENTS=("http::/usr/bin/curl --basic -u teamspeak5:LFZ6Z^kvGrnX~an,\$L#4gxL3'a7/a[[&_7>at}A3ARRGY -A teamspeak.downloader/1.0 -C 200 -o %o %u")
 
 package() {
   install -d "$pkgdir"/{usr/{bin,share/{licenses,pixmaps}},opt/$pkgname}/
