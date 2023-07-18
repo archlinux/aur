@@ -657,3 +657,42 @@ Fixes:
 - We've corrected some minor issues with the new Command Bar: tasks now properly adhere to calendar and privacy settings.
 - The date picker now correctly observes the 'First Day of the Week' across all locales.
 
+=== Morgen 2.7.2
+Fixes:
+- A synchronization issue with the mobile app for tasks created from the Command Bar has been fixed. Please run the latest version of the mobile app (120 on iOS, 99 on Android).
+- An issue causing the last meeting of the day to hang in the Menu Bar forever has been fixed.
+- We improved the parsing of time zones for events generated with Outlook and received by a CalDAV provider.
+
+=== Morgen 2.7.3
+New Features:
+- Accessing your Todoist tasks is now faster. Todoist tasks are now linked directly to the Todoist app installed, if available, instead of redirecting to the browser.
+
+ 
+Fixes:
+- Some people reported that the event detail widget was flickering. This has been fixed.
+- An issue that was causing the Notes field to reset in some instances has been rectified.
+- We fixed a small issue with events snapping to an unexpected duration during creation.
+- An issue causing additional new lines to be added to list items within a Google event description has been resolved.
+- An issue causing the deletion of recurring Zoom meetings when a single event occurrence was deleted has been fixed.
+- The time zone information for Egypt and Mexico has been updated.
+
+
+=== Morgen 2.7.4
+New Features:
+- We're excited to announce an official partnership with Fastmail! Fastmail accounts can now be connected faster, more securely and more reliably using OAuth.
+
+Improvements:
+- We've added new options for Morgen scheduling links. You now have more options to choose from when setting meeting durations and can also create scheduling links that don't block your availability even when a meeting is booked. The latter is especially useful when creating links for meetings with multiple people (eg. open group events).
+
+Fixes:
+- On macOS, the Morgen window can now be restored using Command+Tab after being hidden with Command+H.
+- A problem causing the First Day of the Week preference to reset on restart has been fixed.
+
+=== Morgen 2.7.5
+New Features:
+- We improved event merging to now also consider duplicate based on the title and time. For those testing TimeTo, events propagated from one calendar to another will be merged starting from next week.
+
+Improvements:
+- Scheduling of quick tasks just got easier. We've added 5 and 10 minute options for tasks' Estimated Duration, making it easier to schedule quick tasks into your calendar.
+- Notifications, on time every time. Our notification timing is now as precise as a Swiss clock. Notifications pop-up to the exact minute selected in your calendar/event settings.
+- Fastmail primary email selection. We are now using a better heuristic to select your primary Fastmail email address. Please reconnect your Fastmail account if you need the account email to be updated.
