@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn.clark@gmail.com>
 pkgname=opengamepadui-git
 _pkgbase=OpenGamepadUI
-pkgver=v0.18.3.r0.gb36171d
+pkgver=v0.19.2.r0.g162223c
 pkgrel=1
 pkgdesc="Open source game launcher"
 arch=('x86_64')
@@ -60,6 +60,7 @@ package() {
 	install -Dm644 build/libpty.linux.template_debug.x86_64.so ${pkgdir}/usr/share/opengamepadui/libpty.linux.template_debug.x86_64.so
 	install -Dm644 build/libxlib.linux.template_debug.x86_64.so ${pkgdir}/usr/share/opengamepadui/libxlib.linux.template_debug.x86_64.so
 	install -Dm644 build/libunixsock.linux.template_debug.x86_64.so ${pkgdir}/usr/share/opengamepadui/libunixsock.linux.template_debug.x86_64.so
+	install -Dm644 build/libdbus.linux.template_debug.x86_64.so ${pkgdir}/usr/share/opengamepadui/libdbus.linux.template_debug.x86_64.so
 	install -Dm755 build/opengamepad-ui.x86_64 ${pkgdir}/usr/share/opengamepadui/opengamepad-ui.x86_64
 	install -Dm755 rootfs/usr/share/opengamepadui/scripts/powertools ${pkgdir}/usr/share/opengamepadui/scripts/powertools
 	install -Dm755 rootfs/usr/share/opengamepadui/scripts/manage_input ${pkgdir}/usr/share/opengamepadui/scripts/manage_input
