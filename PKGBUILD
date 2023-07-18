@@ -1,6 +1,6 @@
 pkgname='alacritty-git'
 _pkgname="alacritty"
-pkgver=0.13.0.2135.g1a67fc35
+pkgver=0.13.0.2149.g31fe27b2
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686' 'aarch64')
@@ -35,11 +35,11 @@ package_alacritty-git() {
 
 	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$srcdir/$_pkgname/extra/linux/Alacritty.desktop"
 
-	mkdir -p "$pkgdir/usr/share/man/man1"
+	mkdir -p "$pkgdir/usr/share/man/man1" "$pkgdir/usr/share/man/man5"
 	scdoc < extra/man/alacritty.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty.1.gz" > /dev/null
-	scdoc < extra/man/alacritty.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty.5.gz" > /dev/null
+	scdoc < extra/man/alacritty.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty.5.gz" > /dev/null
 	scdoc < extra/man/alacritty-msg.1.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty-msg.1.gz" > /dev/null
-	scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man1/alacritty-bindings.5.gz" > /dev/null
+	scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | tee "$pkgdir/usr/share/man/man5/alacritty-bindings.5.gz" > /dev/null
 
 	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
 	install -D -m644 "extra/linux/org.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/org.alacritty.Alacritty.appdata.xml"
