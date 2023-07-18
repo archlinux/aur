@@ -8,7 +8,7 @@ pkgbase = doq-git
 	makedepends = git
 	provides = doq
 	conflicts = doq
-	source = doq-r2.dd4a155::git+https://github.com/rxi/doq
+	source = doq::git+https://github.com/rxi/doq
 	sha256sums = SKIP
 
 pkgname = doq-git
