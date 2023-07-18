@@ -16,8 +16,16 @@ makedepends=('cython'
              'python-installer'
              'python-setuptools'
              'python-wheel')
-source=("https://pypi.python.org/packages/source/m/macs3/MACS3-${pkgver}.tar.gz")
-sha256sums=('9b13fed49b93623ddde4b2d5106fc92a796111fa92148cafe7d8bd9a2e8aa43f')
+source=("https://pypi.python.org/packages/source/m/macs3/MACS3-${pkgver}.tar.gz"
+        "no_pip.patch")
+sha256sums=('9b13fed49b93623ddde4b2d5106fc92a796111fa92148cafe7d8bd9a2e8aa43f'
+            '8ec28d5e711dc2330d55f5dd43c1c8cad1112ca3891827b8faebefc0dfb3e39a')
+
+prepare() {
+    cd "$srcdir/MACS3-$pkgver"
+    # Skip pip
+    patch -p1 -i "${srcdir}/no_pip.patch"
+}
 
 build() {
     cd "$srcdir/MACS3-$pkgver"

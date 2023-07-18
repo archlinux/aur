@@ -1,0 +1,6 @@
+--- a/pyproject.toml	2023-07-18 17:19:44.623245122 -0400
++++ b/pyproject.toml	2023-07-18 17:20:01.673843906 -0400
+@@ -1,2 +1,2 @@
+ [build-system]
+-requires=['pip', 'setuptools>=60.0', 'numpy>=1.19', 'cykhash>=2.0', 'Cython>=0.29', 'wheel', 'hmmlearn>=0.3']
++requires=['setuptools>=60.0', 'numpy>=1.19', 'cykhash>=2.0', 'Cython>=0.29', 'wheel', 'hmmlearn>=0.3']
