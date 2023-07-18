@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=BiocPkgTools
-_pkgver=1.18.0
+_pkgver=1.18.1
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.18.1
 pkgrel=1
 pkgdesc='Collection of simple tools for learning about Bioc Packages'
 arch=('any')
@@ -49,7 +49,7 @@ optdepends=(
   r-visnetwork
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ddfd03970514d473fe147a58b75b13f4dff03654dbfaca27db055239536ba168')
+sha256sums=('48a659e03c95862482062fea02b0781cc6681ebd1d23a16097803df5a7d4a099')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
