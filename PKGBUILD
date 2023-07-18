@@ -4,7 +4,8 @@
 # Contributor: Simonas Racinas <racinas at icloud.com>
 # Contributor: Rein Fernhout <me@levitati.ng>
 pkgname=visual-paradigm-community
-pkgver=17.1.20230601
+pkgver=17.1.20230711
+pkgverminor=`echo $pkgver| sed 's/\(\.[^.]*\)\..*/\1/'`
 pkgrel=1
 pkgdesc="UML design application"
 url='http://www.visual-paradigm.com/download/community.jsp'
@@ -24,7 +25,7 @@ source=("https://www.visual-paradigm.com/downloads/${_server}/vpce/Visual_Paradi
   'LICENSE.txt'
   'x-visual-paradigm.xml')
 
-sha256sums=('b19fc08f66fd9d8d4192a3fa46d0e24f89136bcf0151ade401ad618ddcab1de4'
+sha256sums=('8b35af69d81cdda9daff1438dd913f22689d844b55a49766f8c3b8978432248c'
             '52d244345f2ce8080d2b20c8c75b3ef833dfe9c5d605cac7129013b087bf2806'
             '5cdc0f50573d805938172c1f35664aa264fc5964fd92daed09b467565a6347b1'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
@@ -32,7 +33,7 @@ sha256sums=('b19fc08f66fd9d8d4192a3fa46d0e24f89136bcf0151ade401ad618ddcab1de4'
             'a3b898bc9c43cf54baa1c643c619ee172a8103cd15031d574380ca463eb1ec1c')
 
 prepare() {
-  cd ${srcdir}/Visual_Paradigm_CE_${pkgver}/Application/bin
+  cd ${srcdir}/Visual_Paradigm_CE_${pkgverminor}/Application/bin
   sed -i 's|# INSTALL4J_JAVA_HOME_OVERRIDE=|INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/java-11-openjdk|' Visual_Paradigm
   sed -i 's|app_home=../../|app_home=/usr/share/visual-paradigm-community|' Visual_Paradigm
 }
@@ -41,8 +42,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share/applications"
   mkdir -p "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
   mkdir -p "${pkgdir}/usr/share/${pkgname}/Application"
-  cp -r "${srcdir}/Visual_Paradigm_CE_${pkgver}/Application/" "${pkgdir}/usr/share/${pkgname}/"
-  cp -r "${srcdir}/Visual_Paradigm_CE_${pkgver}/.install4j/" "${pkgdir}/usr/share/${pkgname}/.install4j/"
+  cp -r "${srcdir}/Visual_Paradigm_CE_${pkgverminor}/Application/" "${pkgdir}/usr/share/${pkgname}/"
+  cp -r "${srcdir}/Visual_Paradigm_CE_${pkgverminor}/.install4j/" "${pkgdir}/usr/share/${pkgname}/.install4j/"
   cp "visual-paradigm.desktop" "${pkgdir}/usr/share/applications/visual-paradigm.desktop"
   cp "visual-paradigm.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/visual-paradigm.png"
   install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
