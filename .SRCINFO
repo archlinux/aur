@@ -1,0 +1,20 @@
+pkgbase = postybirb-bin
+	pkgdesc = An application that helps artists post art and other multimedia to multiple websites more quickly.
+	pkgver = 2.3.44
+	pkgrel = 1
+	url = https://www.postybirb.com/
+	arch = x86_64
+	license = BSD
+	depends = bash
+	depends = electron13
+	provides = postybirb
+	conflicts = postybirb
+	conflicts = postybirb-plus
+	source = postybirb-2.3.44.AppImage::https://github.com/mvdicarlo/postybirb/releases/download/v2.3.44/PostyBirb-2.3.44.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/mvdicarlo/postybirb/master/LICENSE.md
+	source = postybirb.sh
+	sha256sums = 45dc119851f148344b3601f5a00de67e00d2575f9dd616bcbd82d4eeda97b49d
+	sha256sums = 12e65eb62d705f4cf38eb2f7b382206fb3155fbdbff559f87c702a5e1c1c2207
+	sha256sums = 775e68d3761226d5efce6b525b1a2cce1d492e77ef31aa9721b9181489274712
+
+pkgname = postybirb-bin
