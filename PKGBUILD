@@ -2,7 +2,7 @@
 
 _name=duet
 pkgname=python-$_name
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='A simple future-based async library for python.'
 arch=(any)
@@ -11,7 +11,7 @@ license=('Apache')
 depends=(python)
 makedepends=(python-build python-installer python-wheel)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('9eceec52d74dcccb8788fbac5b5da56346707bdd5dcfefd3242143e767c9441f339cd22e4a8a95b6cbac6dc61beb370b3efb982d06d62a9d1eb2618386eaa28f')
+b2sums=('420df4bb9d1b1812c11800c6cc55fea556955d9c59bec08dc64f3672aa8b61c6a0ff858dc4b8429b5cbc0ae2d8cc11611c6e1c270cf13042c24d5712c983aa21')
 
 build() {
     cd "$_name-$pkgver"
@@ -21,5 +21,4 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
