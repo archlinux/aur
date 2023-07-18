@@ -1,5 +1,4 @@
 *
-!.gitignore
 !PKGBUILD
 !.SRCINFO
-!transgui.desktop
+!.gitignore
