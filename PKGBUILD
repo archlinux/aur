@@ -2,7 +2,7 @@
 pkgname=fchat-rising
 _pkgname=fchat-rising
 pkgver=1.23.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The F-Chat 3.0 client from F-List modifed by MrStallion. Uses a system-wide electron instead of the built in."
 arch=('x86_64')
 url="https://github.com/mrstallion/fchat-rising"
@@ -18,18 +18,21 @@ depends=(
     'libxss'
     'libxtst'
     'libsecret'
+    'icu72-bin'
 )
 makedepends=('yarn' 'npm' 'nvm' 'node-gyp')
 provides=('fchat-3.0')
 source=(
     "fchat::git+https://github.com/mrstallion/fchat-rising#tag=v$pkgver"
     'local://fchat.desktop'
+    'local://remove-electron-requirement.patch'
     'local://deadletter.patch'
 )
 sha256sums=(
     'SKIP'
     '9f1a95982e8327f32173056d03d79705c01f11307bae59e8f5d3ec3435421f1f'
-    '249e4e9263098b64399ccc8bcd9c64dca5b3858c244c061ccc2ebe37f32cb258'
+    'SKIP'
+    'SKIP'
 )
 
 _ensure_local_nvm() {
@@ -45,9 +48,9 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-    cd $srcdir/fchat/
-    git apply $srcdir/deadletter.patch
     cd $srcdir
+    patch --directory="$srcdir/fchat/" --forward --strip=1 --input="$srcdir/remove-electron-requirement.patch"
+    patch --directory="$srcdir/fchat/" --forward --strip=1 --input="$srcdir/deadletter.patch"
     echo "Init NVM..."
     _ensure_local_nvm
     echo "Install Node v16..."
@@ -62,22 +65,26 @@ build() {
     echo "Using Node v16..."
     nvm use v16
     cd $srcdir/fchat/
+    # https://wiki.archlinux.org/title/Electron_package_guidelines#Building_compiled_extensions_against_the_system_electron
+    # Avoid trying to download a copy of Electron.
+    export npm_config_target=$(tail /usr/lib/electron17/version)
+    export npm_config_arch=x64
+    export npm_config_target_arch=x64
+    export npm_config_disturl=https://electronjs.org/headers
+    export npm_config_runtime=electron
+    export npm_config_build_from_source=true
     HOME="$srcdir/.node" yarn install
     cd $srcdir/fchat/electron
+    export GENERATE_SOURCEMAP=false
     HOME="$srcdir/.node" yarn build:dist
-    export SKIP_INSTALLER=TRUE
-    HOME="$srcdir/.node" yarn run pack
     sed -i "s|Exec=.*|Exec=/usr/bin/$_pkgname|" "$srcdir"/fchat.desktop
     sed -i "s|Icon=.*|Icon=/usr/share/pixmaps/$_pkgname.png|" "$srcdir"/fchat.desktop
 }
 
 package() {
-    export SKIP_INSTALLER=TRUE
-    source /usr/share/nvm/init-nvm.sh
-    nvm use v16
     cd $srcdir/fchat/electron
     install -d "$pkgdir"/usr/lib/$_pkgname
-    cp -r "$srcdir"/fchat/electron/dist/F-Chat-linux-x64/resources/app/* "$pkgdir"/usr/lib/$_pkgname
+    cp -r "$srcdir"/fchat/electron/app/* "$pkgdir"/usr/lib/$_pkgname
     rm "$srcdir"/$_pkgname || true
     echo "#!/bin/sh" >> "$srcdir"/$_pkgname
     # F-Chat needs to executed within it's directory
