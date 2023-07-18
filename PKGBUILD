@@ -3,7 +3,7 @@
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
-pkgver=1.1.r24.g0c85735
+pkgver=r1162.01a2915
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
@@ -21,7 +21,7 @@ prepare() {
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
