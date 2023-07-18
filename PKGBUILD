@@ -2,14 +2,14 @@
 
 pkgname=obs-advanced-scene-switcher
 pkgver=1.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/advanced-scene-switcher.395/"
 license=("GPL2")
 depends=(
   "obs-studio>=28" "alsa-lib" "gcc-libs" "glibc" "jack" "leptonica"
-  "libx11" "opencv" "procps" "qt6-base" "tesseract"
+  "libx11" "opencv" "libprocps" "qt6-base" "tesseract"
 )
 makedepends=(
   "cmake" "git" "asio" "curl" "libxss" "libxtst"

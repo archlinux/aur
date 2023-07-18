@@ -1,7 +1,7 @@
 pkgbase = obs-advanced-scene-switcher
 	pkgdesc = An automated scene switcher for OBS Studio
 	pkgver = 1.22.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com/forum/resources/advanced-scene-switcher.395/
 	arch = x86_64
 	arch = aarch64
@@ -22,7 +22,7 @@ pkgbase = obs-advanced-scene-switcher
 	depends = leptonica
 	depends = libx11
 	depends = opencv
-	depends = procps
+	depends = libprocps
 	depends = qt6-base
 	depends = tesseract
 	optdepends = curl: Remote file access feature
