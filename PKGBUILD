@@ -2,7 +2,7 @@
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=contemporary-widgets
 pkgver=2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Contemporary Widget Theme"
 arch=("x86_64" "aarch64")
 url="https://github.com/theCheeseboard/contemporary-theme"

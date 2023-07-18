@@ -1,7 +1,7 @@
 pkgbase = contemporary-widgets
 	pkgdesc = Contemporary Widget Theme
 	pkgver = 2.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/theCheeseboard/contemporary-theme
 	arch = x86_64
 	arch = aarch64
