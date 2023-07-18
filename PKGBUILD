@@ -1,7 +1,7 @@
 # Maintainer: Dušan Mitrović <dusan@dusanmitrovic.xyz>
 pkgname=supersonic-desktop
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers"
 _pkgname="${pkgname//-desktop/}"
 arch=('x86_64')
@@ -17,14 +17,12 @@ optdepends=(
     "libappindicator-gtk3: Systray indicator support"
     "org.freedesktop.secrets: Keyring password store support"
 )
-provides=('supersonic-desktop')
-conflicts=('supersonic-desktop')
 makedepends=('go>=1.17')
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/dweymouth/supersonic/archive/refs/tags/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-    '7b84a1586745ee8790cb5719188f9934e2ad22a4256bd623b888aad8fda61e05'
+    '0d80bc75e2ed15a1b99545d06d8be46c1773d21f6d93dc56b248193e47adba40'
 )
 
 build() {
