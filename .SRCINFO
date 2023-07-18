@@ -1,7 +1,7 @@
 pkgbase = mdlshit
 	pkgdesc = source engine .mdl v49 -> v53 converter
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/headassbtw/mdlshit
 	arch = any
 	license = GPL2
@@ -18,14 +18,14 @@ pkgbase = mdlshit
 	makedepends = mesa
 	provides = mdlshit
 	conflicts = mdlshit
-	source = https://github.com/headassbtw/mdlshit/archive/refs/tags/2.3.2.tar.gz
+	source = git+https://github.com/headassbtw/mdlshit.git#tag=v2.3.2
 	source = git+https://github.com/Perlmint/glew-cmake.git#commit=8260c05ee0121094a0dc9a53f610f514659763d6
 	source = git+https://github.com/glfw/glfw.git#commit=6b57e08bb0078c9834889eab871bac2368198c15
 	source = git+https://github.com/g-truc/glm.git#commit=cc98465e3508535ba8c7f6208df934c156a018dc
 	source = git+https://github.com/melowntech/half.git#commit=972e040989383764f30c1d45a9b666593e802741
 	source = git+https://github.com/ocornut/imgui.git#commit=ced92d9c52398f10fa152f78f52d0ca51d5d1d5b
 	source = git+https://github.com/native-toolkit/libtinyfiledialogs.git#commit=cc6b593c029110af8045826ce691f540c85e850c
-	sha256sums = 004b0fd9799d77ce631b8e0417182d278a3590885573a0e32ba15c3d4a6fb273
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
