@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=yuzu
-pkgver=1478
+pkgver=1499
 pkgrel=1
 pkgdesc='Nintendo Switch emulator'
 arch=(x86_64)
@@ -46,7 +46,7 @@ makedepends=(
   vulkan-headers
 )
 options=(!debug)
-_tag=3a991f3aefc57d1424e558517d6a1b745a910609
+_tag=2461c78e3f9368e4a03b4c27fae207cbb1d9cfff
 source=(
   git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${_tag}
   git+https://github.com/arsenm/sanitizers-cmake.git
@@ -59,9 +59,11 @@ source=(
   yuzu-sirit::git+https://github.com/yuzu-emu/sirit.git
   git+https://github.com/eggert/tz.git
   git+https://github.com/lat9nq/tzdb_to_nx.git
+  git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
   git+https://github.com/herumi/xbyak.git
 )
 b2sums=('SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -84,6 +86,7 @@ prepare() {
   git config submodule.mbedtls.url "${srcdir}"/yuzu-mbedtls
   git config submodule.sirit.url "${srcdir}"/yuzu-sirit
   git config submodule.tzdb_to_nx.url "${srcdir}"/tzdb_to_nx
+  git config submodule.VulkanMemoryAllocator.url "${srcdir}"/VulkanMemoryAllocator
   git config submodule.xbyak.url "${srcdir}"/xbyak
   git -c protocol.file.allow=always submodule update
 
