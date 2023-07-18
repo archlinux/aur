@@ -1,14 +1,16 @@
 pkgbase = italian-draughts-git
 	pkgdesc = Play Italian Draughts against the computer
 	pkgver = 1.3.3.r2.g797d4a7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nicolarevelant/italian-draughts
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = scdoc
 	depends = wxwidgets-gtk3
+	depends = hicolor-icon-theme
 	source = italian-draughts-git::git+https://github.com/nicolarevelant/italian-draughts.git
 	source = italian-draughts.desktop
 	sha256sums = SKIP

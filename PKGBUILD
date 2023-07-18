@@ -2,21 +2,33 @@
 
 pkgname=italian-draughts-git
 pkgver=1.3.3.r2.g797d4a7
-pkgrel=1
+pkgrel=2
 pkgdesc="Play Italian Draughts against the computer"
 arch=("x86_64")
-depends=("wxwidgets-gtk3")
 license=("GPL3")
-makedepends=("git" "cmake" "scdoc")
+depends=(
+	"wxwidgets-gtk3"
+	"hicolor-icon-theme"
+)
+makedepends=(
+	"git"
+	"cmake"
+	"ninja"
+	"scdoc"
+)
 url="https://github.com/nicolarevelant/italian-draughts"
-source=("$pkgname"::"git+$url.git"
-	'italian-draughts.desktop')
-sha256sums=('SKIP'
-	'99625c7024e47343e9e838abdbc8d30613841afef84afb1fab54f7e024535d00')
+source=(
+	"$pkgname"::"git+$url.git"
+	'italian-draughts.desktop'
+)
+sha256sums=(
+	'SKIP'
+	'99625c7024e47343e9e838abdbc8d30613841afef84afb1fab54f7e024535d00'
+)
 
 build() {
 	cd "$pkgname"
-	cmake -B build -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="/usr"
+	cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE="Release" -DCMAKE_INSTALL_PREFIX="/usr"
 	cmake --build build
 }
 
