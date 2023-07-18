@@ -1,9 +1,4 @@
 post_install() {
-    echo "Creating kavita user"
-    useradd --system kavita
-    chown -R kavita /opt/kavita
-    chown kavita /etc/Kavita/appsettings.json
-    echo "Done"
     echo "To run, systemctl start kavita"
     echo "site at localhost:5000"
 }

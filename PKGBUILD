@@ -41,6 +41,8 @@ package() {
 mkdir -p $pkgdir/opt/kavita
 install -Dm 644 $srcdir/Kavita/config/appsettings.json  $pkgdir/etc/Kavita/appsettings.json
 cp -Ra $srcdir/Kavita/* $pkgdir/opt/kavita
+install -Dm 644 ../kavita.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
+install -Dm 644 ../kavita.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
 install=kavita.install
 install -Dm 644 ../kavita.service -t "$pkgdir"/usr/lib/systemd/system/
 rm $pkgdir/opt/kavita/config/appsettings.json
