@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SuperLearner
-_pkgver=2.0-28
+_pkgver=2.0-28.1
 pkgname=r-${_pkgname,,}
-pkgver=2.0.28
-pkgrel=4
+pkgver=2.0.28.1
+pkgrel=1
 pkgdesc='Super Learner Prediction'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -58,7 +58,7 @@ optdepends=(
   r-xgboost
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5f42233abd48f1740c33aae1ec4ad8e9952fddb5df1ee49ff2d43d5d89f05601')
+sha256sums=('752f11b99816f8d61c1ff411ea4d5bec5509f2a655d250e58baa48e8a0266ba6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
