@@ -1,17 +1,15 @@
 pkgbase = dumpasn1
-	pkgdesc = ASN.1 analyze tool
-	pkgver = 20230322
-	pkgrel = 4
+	pkgdesc = ASN.1 object dump/syntax check program
+	pkgver = 20210422.20220207
+	pkgrel = 1
+	epoch = 1
 	url = http://www.cs.auckland.ac.nz/~pgut001
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = glibc
-	source = dumpasn1-20230322.c::https://www.cs.auckland.ac.nz/~pgut001/dumpasn1.c
-	source = dumpasn1-20230322.cfg::https://www.cs.auckland.ac.nz/~pgut001/dumpasn1.cfg
-	source = LICENSE
+	source = dumpasn1-20210422.20220207.c::http://www.cs.auckland.ac.nz/~pgut001/dumpasn1.c
+	source = dumpasn1-20210422.20220207.cfg::http://www.cs.auckland.ac.nz/~pgut001/dumpasn1.cfg
 	sha256sums = 8ce8fdbf2e9b11d410b0ab4e44a6b3f89c27080113f051ec1054d230e050a0b8
-	sha256sums = ed1eaafb0ad865b97738dfe0b0e5d602c76dc0cde4c0cee4cdcdd11c28f480e5
-	sha256sums = f58dfb06633792773b4e539666f0fac52eb44acf29619175d073b146e22785e4
+	sha256sums = 7f74c3915a3a712c104b6d65c6204d005384813086260d8516f7b6e969fba9cf
 
 pkgname = dumpasn1
