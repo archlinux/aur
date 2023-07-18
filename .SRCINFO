@@ -1,20 +1,21 @@
 pkgbase = shards-git
 	pkgdesc = The package manager for the Crystal language (git version)
-	pkgver = v0.11.1.r0.g3b7d490
+	pkgver = v0.17.3.r2.geac9adf
 	pkgrel = 1
-	url = https://github.com/ysbaddaden/shards
+	url = https://github.com/crystal-lang/shards
 	arch = x86_64
 	arch = aarch64
 	license = Apache
+	checkdepends = fossil
 	makedepends = crystal
 	depends = libyaml
 	depends = git
 	depends = libevent
 	depends = gc
+	optdepends = fossil
 	provides = shards
 	conflicts = shards
-	source = git+https://github.com/ysbaddaden/shards.git
+	source = git+https://github.com/crystal-lang/shards.git
 	sha256sums = SKIP
 
 pkgname = shards-git
-
