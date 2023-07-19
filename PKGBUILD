@@ -13,14 +13,14 @@
 
 # Move to the build directory
 pkgname=unittest-c
-pkgver=1.1.1
-pkgrel=3
+pkgver=1.1.2
+pkgrel=5
 epoch=
 pkgdesc="unittest c is a fast and simple macro-based unit testing framework for C.
 It's inspired by the Python unittest module and designed to reduce boilerplate code.
 With macros and a built-in test runner, it's ideal for large test suites."
 arch=('x86_64')
-url="https://github.com/alecksandr26/unittest-c/archive/refs/tags/v1.1.1.tar.gz"
+url="https://github.com/alecksandr26/unittest-c/archive/refs/tags/v1.1.2.tar.gz"
 license=('MIT License')
 depends=()
 makedepends=(gcc git make binutils coreutils trycatch-c)
@@ -31,21 +31,41 @@ basedir=$(pwd)
 
 # Compile the source code 
 build() {
-    tar -xf "$basedir/$pkgname-$pkgver.tar.gz"
-    cd $srcdir/$pkgname-$pkgver
-    make compile		# Compile the unittest library
+    if [ -f "$basedir/$pkgname-$pkgver.tar.gz" ]; then
+	echo "==> Compiling package..."
+        tar -xf "$basedir/$pkgname-$pkgver.tar.gz"
+        cd "$srcdir/$pkgname-$pkgver"
+        make compile
+    else
+        echo "==> Compiling package locally..."
+	echo "==> Trying to find the locall source code path..."
+	if [ -d "../../../../$pkgname" ]; then
+	    echo "==> Source code $pkgname found..."
+	    cd ../../../../$pkgname
+	    make compile
+	    mkdir -p $srcdir/$pkgname-$pkgver
+	    mkdir -p $srcdir/$pkgname-$pkgver/include
+	    mkdir -p $srcdir/$pkgname-$pkgver/lib
+	    cp -r include/* $srcdir/$pkgname-$pkgver/include
+	    cp -r lib/* $srcdir/$pkgname-$pkgver/lib
+	else
+	    echo "==> Error source code $pkgname not found..."
+	    exit 1
+	fi
+    fi
 }
 
 # Set the compiled files to create the package
 # in this specific order to be able to be installed
 package() {
     cd $srcdir/$pkgname-$pkgver
+    
     # Create the folders
     mkdir -p $pkgdir/usr
     mkdir -p $pkgdir/usr/include
     mkdir -p $pkgdir/usr/lib
     
     # Install into the package the program
-    cp -r $srcdir/$pkgname-$pkgver/include/* $pkgdir/usr/include
-    cp -r $srcdir/$pkgname-$pkgver/lib/* $pkgdir/usr/lib
+    cp -r include/* $pkgdir/usr/include
+    cp -r lib/* $pkgdir/usr/lib
 }
