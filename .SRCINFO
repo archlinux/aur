@@ -1,0 +1,26 @@
+pkgbase = xdg-desktop-portal-pantheon-git
+	pkgdesc = A backend implementation for xdg-desktop-portal for the Pantheon desktop environment (the official elementary OS desktop environment)
+	pkgver = r487.8e942fd
+	pkgrel = 1
+	url = https://github.com/elementary/xdg-desktop-portal-pantheon
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson>=0.58
+	makedepends = ninja
+	makedepends = vala>=0.56.1
+	depends = glib2
+	depends = granite7
+	depends = gtk4
+	depends = vte4
+	provides = xdg-desktop-portal
+	provides = xdg-desktop-portal-pantheon
+	provides = xdg-desktop-portal-pantheon-git
+	conflicts = xdg-desktop-portal-gnome
+	conflicts = xdg-desktop-portal-gtk
+	conflicts = xdg-desktop-portal-pantheon
+	source = git+https://github.com/elementary/xdg-desktop-portal-pantheon.git
+	md5sums = SKIP
+
+pkgname = xdg-desktop-portal-pantheon-git
