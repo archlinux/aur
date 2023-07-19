@@ -4,7 +4,7 @@
 
 _pkgname=swayimg
 pkgname=${_pkgname}-git
-pkgver=1.11
+pkgver=1.12.0
 pkgrel=1
 pkgdesc='Image viewer for Sway/Wayland'
 arch=('x86_64')
@@ -28,6 +28,7 @@ depends=(
   'libwebp'
   'libtiff'
   'libexif'
+  'openexr'
   )
 optdepends=('bash-completion: Bash completions')
 provides=("${_pkgname}")
@@ -46,6 +47,7 @@ build() {
     -D heif=enabled
     -D bash=enabled
     -D exif=enabled
+    -D exr=enabled
     -D gif=enabled
     -D jpeg=enabled
     -D jxl=enabled
