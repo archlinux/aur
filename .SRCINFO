@@ -1,13 +1,13 @@
 pkgbase = python2-atomicwrites
 	pkgdesc = Atomic file writes on POSIX
-	pkgver = 1.4.0
-	pkgrel = 7
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://github.com/untitaker/python-atomicwrites
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
 	depends = python2
-	source = python2-atomicwrites-1.4.0.tar.gz::https://github.com/untitaker/python-atomicwrites/archive/refs/tags/1.4.0.tar.gz
-	sha256sums = 47e897bea4ffdd4c0bc5f95b9417c1b4a661671b8a5abbefa05fbb344e83296e
+	source = python2-atomicwrites-1.4.1.tar.gz::https://github.com/untitaker/python-atomicwrites/archive/refs/tags/1.4.1.tar.gz
+	sha256sums = d2def28d0b90e61e15dd9590de991ba1b96d9232fc4fee990da088771d7320b9
 
 pkgname = python2-atomicwrites
