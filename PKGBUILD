@@ -13,7 +13,7 @@
 _name=WaveEdit
 _pkgname=${_name,,}
 pkgname=$_pkgname-git
-pkgver=1.2.r137.f2526a8
+pkgver=1.2.r142.fbc6b25
 pkgrel=1
 pkgdesc='A wavetable editor for wavetable synthesizers (git version)'
 arch=(x86_64)
@@ -57,21 +57,13 @@ prepare() {
   git config submodule.portable-file-dialogs.url "$srcdir"/portable-file-dialogs
   git config submodule.pfft.url "$srcdir"/pfft
   git -c protocol.file.allow=always submodule update
-
-  # Patch source for where WaveEdit looks for wave catalogs
-  sed -i -E -e 's|catalogPath = ".*?"|catalogPath = "/usr/share/waveedit/catalog"|' src/catalog.cpp
-  # Patch source for where WaveEdit looks for images
-  sed -i -E -e 's|"([-a-z]+\.png)"|"/usr/share/'$_pkgname'/images/\1"|' src/ui.cpp
-  # Patch source for where WaveEdit looks for fonts
-  sed -i -e 's|"fonts/|"/usr/share/'$_pkgname'/fonts/|' src/ui.cpp
-  # Patch source for where WaveEdit looks for the manual PDF
-  sed -i -e 's|"manual\.pdf"|"/usr/share/doc/'$pkgname'/manual.pdf"|' src/ui.cpp
 }
 
 build() {
   cd $_pkgname
 
-  make
+  CXXFLAGS+=" -ffast-math"
+  make WAVEEDIT_DATA_DIR=/usr/share/$_pkgname
   convert logo.ico[2] logo.png
   gendesk -f -n \
     --pkgname "$_pkgname" \
@@ -87,7 +79,7 @@ package() {
   install -vDm 755 $_name -t "$pkgdir"/usr/bin
   ln -sf $_name "$pkgdir"/usr/bin/$_pkgname
   # UI images & fonts
-  install -vDm 644 logo-{dark,light}.png -t "$pkgdir"/usr/share/$_pkgname/images
+  install -vDm 644 images/*.png -t "$pkgdir"/usr/share/$_pkgname/images
   install -vDm 644 fonts/*.ttf -t "$pkgdir"/usr/share/$_pkgname/fonts
   # banks
   install -vDm 644 banks/*.wav -t "$pkgdir"/usr/share/$_pkgname/banks
@@ -101,6 +93,8 @@ package() {
   # documentation
   install -vDm644 doc/*.{html,pdf,woff} -t "$pkgdir"/usr/share/doc/$pkgname
   install -vDm644 doc/images/*.png -t "$pkgdir"/usr/share/doc/$pkgname/images
+  install -dm755 "$pkgdir"/usr/share/$_pkgname/doc
+  ln -sf ../../doc/$pkgname/manual.pdf "$pkgdir"/usr/share/$_pkgname/doc
   # Don't install 'Montserrat' font used by manual.html, fallback font is fine.
   #install -vDm644 doc/Montserrat/*.ttf -t "$pkgdir/usr/share/doc/${pkgname}/Montserrat"
 }
