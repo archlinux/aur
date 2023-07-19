@@ -7,19 +7,19 @@ _pkgbin=ledger-live-desktop
 _pkgname=ledger-live
 pkgname="${_pkgname}-git"
 pkgdesc="Maintain your Ledger devices (git-main)"
-pkgver=2.62.2.r0.g0a331c7
+pkgver=2.64.0.r0.gb63b52b
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
 license=('MIT')
-depends=('ledger-udev' 'electron23')
+depends=('ledger-udev' 'electron25')
 makedepends=('git' 'node-gyp' 'fnm' 'pnpm')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}::git+${url}#branch=main"
         "${_pkgbin}.sh")
 sha512sums=('SKIP'
-            '15f6703121d1f2df2dab494efd645ef27830b5cff41184483c75a21545d79b183ababb47bebc8571c7f77e562497efc2453c3e41b59e40ad03be2baacf20148e')
+            '2efbcd1da3ae4c84d9e3e9b2848e7535c1d3c533eb755f70d07992159742d7141d7e35b2590c51b799948965954c211e953d1ddb7a00bb8713ea06b58a732ca0')
 
 _fnm_use() {
   export FNM_DIR="${srcdir}/.fnm"
