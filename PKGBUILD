@@ -2,7 +2,7 @@
 pkgname=fchat-rising
 _pkgname=fchat-rising
 pkgver=1.23.5
-pkgrel=4
+pkgrel=5
 pkgdesc="The F-Chat 3.0 client from F-List modified by MrStallion. Uses a system-wide electron instead of the built in."
 arch=('x86_64')
 url="https://github.com/mrstallion/fchat-rising"
@@ -21,8 +21,15 @@ depends=(
     'libsecret'
     'icu72-bin'
 )
-makedepends=('yarn' 'npm' 'nvm' 'node-gyp')
-provides=('fchat-3.0')
+makedepends=(
+    'yarn'
+    'npm'
+    'nvm'
+    'node-gyp'
+)
+provides=(
+    'fchat=3'
+)
 source=(
     "fchat::git+https://github.com/mrstallion/fchat-rising#tag=v$pkgver"
     'local://fchat.desktop'
