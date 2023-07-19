@@ -35,10 +35,10 @@ sha256sums=('SKIP')
 _distname="Alchemy-Config-Simple"
 
 # template start; name=systemd-git; version=1.0;
-_distdir="${_distname}-${pkgver}"
 depends+=(dbus-glib systemd-libs)
 conflicts+=("alchemy-next-viewer-nosystemd-git")
 
+# template start; name=pkgver; version=1.0;
 pkgver() {
   cd "${pkgname}" || exit 1
   (
@@ -49,6 +49,7 @@ pkgver() {
   printf "%s.%s.%s" "${vwr_version}" "${rev}" "${short}"
 )
 }
+# template end;
 
 # template start; name=prepare; version=1.0;
 prepare() {
@@ -63,8 +64,8 @@ prepare() {
     pip3 install --no-cache --upgrade autobuild --quiet
     pip3 install --upgrade cmake ninja
 }
-
 # template end;
+
 # template start; name=build; version=1.0;
 build() {
   cd "${pkgname}" || exit 1
@@ -146,9 +147,9 @@ build() {
       echo "Building with ${AUTOBUILD_CPU_COUNT} jobs (adjusted)"
       $prefix_cmd autobuild build -A64 -c ReleaseOS --no-configure
     }
-
 # template end;
 
+# template start; name=package; version=1.0;
 package() {
   mkdir -p "${pkgdir}/opt"
   mkdir -p "${pkgdir}/usr/local/share/applications"
@@ -157,5 +158,6 @@ package() {
   sed -i 's;alchemy-viewer\.desktop;'"${pkgname}\.desktop"';' "${pkgname}/build-linux-64/newview/packaged/etc/refresh_desktop_app_entry.sh"
   mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
 }
-
 # template end;
+# template end;
+
