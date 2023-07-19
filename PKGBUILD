@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowCore
-_pkgver=2.12.1
+_pkgver=2.12.2
 pkgname=r-${_pkgname,,}
-pkgver=2.12.1
+pkgver=2.12.2
 pkgrel=1
 pkgdesc='flowCore: Basic structures for flow cytometry data'
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d52cb016d23bbf643806f26176d63001edaa0dafcb07bca0b7cae1e020cc5126')
+sha256sums=('1064a2941dbca4a25ff129ca8d62c9341b545aa070d6221987b2edeac3d57dfc')
 options=(!lto !buildflags staticlibs)
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
