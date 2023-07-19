@@ -2,13 +2,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=micmac-git
-pkgver=1.0.beta14.r1051.g8925a62d5
+pkgver=1.0.beta14.r1096.g2cfea39f5
 pkgrel=1
 pkgdesc="Free open-source photogrammetry software tools - Version GIT"
 arch=('i686' 'x86_64')
 url='http://micmac.ensg.eu'
 license=('custom:CECILL-B')
-depends=('python-argparse' 'libx11')
+depends=('python-argparse-shim' 'libx11')
 makedepends=('cmake' 'doxygen' 'git')
 optdepends=('opencl-headers' 'qt5-base' 'imagemagick' 'exiv2' 'proj')
 provides=("${pkgname%-git}")

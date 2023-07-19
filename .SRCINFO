@@ -1,6 +1,6 @@
 pkgbase = micmac-git
 	pkgdesc = Free open-source photogrammetry software tools - Version GIT
-	pkgver = 1.0.beta14.r1051.g8925a62d5
+	pkgver = 1.0.beta14.r1096.g2cfea39f5
 	pkgrel = 1
 	url = http://micmac.ensg.eu
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = micmac-git
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = git
-	depends = python-argparse
+	depends = python-argparse-shim
 	depends = libx11
 	optdepends = opencl-headers
 	optdepends = qt5-base
