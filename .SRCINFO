@@ -2,7 +2,7 @@ pkgbase = udev-notify-git
 	pkgdesc = Show notifications when any USB device is plugged/unplugged
 	pkgver = 0.2.r3.g56c0454
 	pkgrel = 1
-	url = https://github.com/iVHSgunzo/udev-notify
+	url = https://github.com/VHSgunzo/udev-notify
 	arch = any
 	license = MIT
 	makedepends = git
@@ -19,7 +19,7 @@ pkgbase = udev-notify-git
 	optdepends = espeak-ng
 	provides = udev-notify
 	conflicts = udev-notify
-	source = git+https://github.com/iVHSgunzo/udev-notify.git
+	source = git+https://github.com/VHSgunzo/udev-notify.git
 	sha256sums = SKIP
 
 pkgname = udev-notify-git
