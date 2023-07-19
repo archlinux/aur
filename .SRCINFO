@@ -2,7 +2,7 @@ pkgbase = jdim-git
 	pkgdesc = A 2channel browser written in C++ using gtkmm3. This is public beta version.
 	pkgver = r3302.c70da7b5
 	pkgrel = 7
-	url = https://github.com/JDimproved/JDim/tree/master
+	url = https://github.com/JDimproved/JDim
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -14,8 +14,7 @@ pkgbase = jdim-git
 	conflicts = jd
 	conflicts = jd-svn
 	conflicts = jd-gtk3
-	source = git://github.com/JDimproved/JDim.git#branch=master
+	source = git+https://github.com/JDimproved/JDim.git
 	sha256sums = SKIP
 
 pkgname = jdim-git
-
