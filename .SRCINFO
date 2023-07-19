@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-compat-59
-	pkgdesc = Compatibility package for ffmpeg to provide versions 59 of libavcodec, libavdevice and libavformat, not anymore provided by ffmpeg-git
-	pkgver = 5.0
+	pkgdesc = Compatibility package for ffmpeg to provide versions 59 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package
+	pkgver = 5.1.3
 	pkgrel = 1
 	url = http://ffmpeg.org/
 	arch = i686
@@ -12,7 +12,10 @@ pkgbase = ffmpeg-compat-59
 	makedepends = ffnvcodec-headers
 	makedepends = git
 	makedepends = ladspa
+	makedepends = mesa
 	makedepends = nasm
+	makedepends = opencl-headers
+	makedepends = vulkan-headers
 	depends = alsa-lib
 	depends = aom
 	depends = bzip2
@@ -26,9 +29,11 @@ pkgbase = ffmpeg-compat-59
 	depends = libass.so
 	depends = libavc1394
 	depends = libbluray.so
+	depends = libbs2b.so
 	depends = libdav1d.so
 	depends = libdrm
 	depends = libfreetype.so
+	depends = libgl
 	depends = libiec61883
 	depends = libmfx
 	depends = libmodplug
@@ -47,6 +52,7 @@ pkgbase = ffmpeg-compat-59
 	depends = libvorbisenc.so
 	depends = libvorbis.so
 	depends = libvpx.so
+	depends = libvulkan.so
 	depends = libwebp
 	depends = libx11
 	depends = libx264.so
@@ -57,6 +63,7 @@ pkgbase = ffmpeg-compat-59
 	depends = libxv
 	depends = libxvidcore.so
 	depends = libzimg.so
+	depends = ocl-icd
 	depends = opencore-amr
 	depends = openjpeg2
 	depends = opus
@@ -74,13 +81,13 @@ pkgbase = ffmpeg-compat-59
 	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
 	provides = libavcodec.so=59
 	provides = libavdevice.so=59
-	provides = libavfilter.so=7
+	provides = libavfilter.so=8
 	provides = libavformat.so=59
-	provides = libavutil.so=56
-	provides = libpostproc.so=55
-	provides = libswresample.so=3
-	provides = libswscale.so=5
-	source = http://ffmpeg.org/releases/ffmpeg-5.0.tar.xz
-	sha256sums = 51e919f7d205062c0fd4fae6243a84850391115104ccf1efc451733bc0ac7298
+	provides = libavutil.so=57
+	provides = libpostproc.so=56
+	provides = libswresample.so=4
+	provides = libswscale.so=6
+	source = http://ffmpeg.org/releases/ffmpeg-5.1.3.tar.xz
+	sha256sums = 1b113593ff907293be7aed95acdda5e785dd73616d7d4ec90a0f6adbc5a0312e
 
 pkgname = ffmpeg-compat-59
