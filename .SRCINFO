@@ -1,15 +1,22 @@
 pkgbase = python-yappi
-	pkgdesc = Yet Another Python Profiler, but this time thread&coroutine aware.
-	pkgver = 1.3.5
+	pkgdesc = A tracing profiler that is multithreading, asyncio and gevent aware.
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/sumerc/yappi
 	arch = x86_64
 	license = MIT
+	checkdepends = python-installer
+	checkdepends = python-pytest
 	checkdepends = python-gevent
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools
-	makedepends = git
 	depends = python
-	source = yappi-release::git+https://github.com/sumerc/yappi.git#commit=1f41868a2cdfd1e935a5a60808f7bb09c871fa53
-	sha256sums = SKIP
+	optdepends = python-greenlet
+	source = python-yappi-1.4.0.tar.gz::https://github.com/sumerc/yappi/archive/refs/tags/1.4.0.tar.gz
+	source = pyproject.toml.add-console-script.patch
+	sha256sums = 0c17a0a45a89855a75c6a01e0c33295bc3d1d6a7618937dcd0e2d78f6ac9896d
+	sha256sums = be24dc0b60e08a18f5d1e8d55d7593b5d1920733a2c951af677dd6d498585b01
 
 pkgname = python-yappi

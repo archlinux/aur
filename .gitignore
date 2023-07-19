@@ -1,0 +1,6 @@
+/pkg
+/src
+/PKGBUILD-namcap.log
+/*.tar.xz
+/*.tar.xz.asc
+/*.pkg.tar.zst
