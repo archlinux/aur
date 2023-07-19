@@ -62,12 +62,14 @@ package_mfgtools-git() {
 package_mfgtools-doc-git() {
     pkgdesc+=" (doc)"
     depends=(asciidoc
-            rename)
+            dblatex
+            findutils
+            coreutils)
     provides=(${pkgname%-git})
     conflicts=(${pkgname%-git})
 
     cd "${srcdir}/${pkgname%-git}/"
-    rename -f -v 's/\.asciidoc$//' *
+    find . -type f -name "*.asciidoc" -exec sh -c 'mv "$0" "${0%.asciidoc}"' {} \;
     echo "<revhistory>" > UUU-docinfo.xml
     git log -n25 --reverse --format="format:<revision><revnumber>%h</revnumber><date>%cd</date><authorinitials>%an</authorinitials><revremark>%s</revremark></revision>" >> UUU-docinfo.xml
     echo "</revhistory>" >> UUU-docinfo.xml
