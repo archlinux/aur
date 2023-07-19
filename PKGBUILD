@@ -4,7 +4,7 @@
 pkgname=gamejolt-client-bin-aur
 pkgname=gamejolt-client-bin-aur
 pkgver=1.32.0
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="GameJolt library of game"
 arch=(x86_64)
@@ -37,5 +37,5 @@ package() {
 
 }
 md5sums=('4c975528cb791ee16e5c62edbbf28287'
-         'e720ff802bc3e2e758ab0a4491e7e13c'
+         '92ce58877e47b071ace909969d6a710a'
          'b2bd038af798511c2886d0ea21cfe165')
