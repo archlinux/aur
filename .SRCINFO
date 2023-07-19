@@ -1,7 +1,7 @@
 pkgbase = smtpdane
 	pkgdesc = SMTP DANE testing tool
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PennockTech/smtpdane
 	arch = x86_64
 	license = MIT

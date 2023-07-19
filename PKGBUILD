@@ -1,6 +1,6 @@
 pkgname=smtpdane
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='SMTP DANE testing tool'
 arch=('x86_64')
 url="https://github.com/PennockTech/smtpdane"
@@ -14,8 +14,6 @@ prepare(){
   mkdir -p gopath/src/go.pennock.tech
   ln -rTsf $pkgname-$pkgver gopath/src/go.pennock.tech/$pkgname
   export GOPATH="$srcdir"/gopath
-  go get github.com/miekg/dns
-  go get golang.org/x/crypto/ocsp
 }
 
 
