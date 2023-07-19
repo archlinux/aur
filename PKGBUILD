@@ -17,17 +17,17 @@ source=("$pkgname-$pkgver.src.tar.gz::https://github.com/wagtail/django-modelclu
 sha512sums=('36ac8f73a131a14a163c5dbb505e907a980aa912c7fe109b403993f3da92a7410053420b42e2c645d7478c9802e94b322cccad9940c556524eba51845ee1e900')
 
 build() {
-  cd "$_pkgname-$pkgver" || exit
+  cd "$_pkgname-$pkgver"
   python setup.py build
 }
 
 check() {
-  cd "$_pkgname-$pkgver" || exit
+  cd "$_pkgname-$pkgver"
   python runtests.py
 }
 
 package() {
-  cd "$_pkgname-$pkgver" || exit
+  cd "$_pkgname-$pkgver"
 
   export PYTHONHASHSEED=0
   python setup.py install --skip-build \
