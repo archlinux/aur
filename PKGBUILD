@@ -8,7 +8,7 @@ epoch=
 pkgdesc="bcu (Board Control Utilities)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nxp-imx/bcu"
-license=('BSD')
+license=('Custom')
 groups=()
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
@@ -59,5 +59,5 @@ build() {
 
 package() {
      DESTDIR="$pkgdir/" ninja -C "${srcdir}/${pkgname%-git}/build" install
-    install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
