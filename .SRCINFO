@@ -1,0 +1,18 @@
+pkgbase = ov-git
+	pkgdesc = Feature-rich terminal-based text viewer (built from latest git commit)
+	pkgver = 0.31.0.r0.gcce0925
+	pkgrel = 1
+	url = https://github.com/noborus/ov
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = ov
+	conflicts = ov
+	options = lto
+	source = git+https://github.com/noborus/ov.git
+	sha256sums = SKIP
+
+pkgname = ov-git
