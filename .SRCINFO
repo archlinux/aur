@@ -1,0 +1,11 @@
+pkgbase = check_mate-bin
+	pkgdesc = Utility program to monitor output of certain commands
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/DziubanMaciej/CheckMate
+	arch = x86_64
+	license = MIT
+	source = https://github.com/DziubanMaciej/CheckMate/releases/download/v0.1.0/check_mate_linux_0.1.0.zip
+	sha256sums = 76c3425de7df7d716f28e359c6a8449b7a347bc4be8bb0735c7f5d57344bb67c
+
+pkgname = check_mate-bin
