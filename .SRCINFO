@@ -12,7 +12,6 @@ pkgbase = jdim-git
 	depends = gtkmm3
 	depends = autoconf-archive
 	depends = meson
-	depends = ninja
 	conflicts = jd
 	conflicts = jd-svn
 	conflicts = jd-gtk3

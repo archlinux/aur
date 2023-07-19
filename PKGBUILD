@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/JDimproved/JDim"
 license=('GPL2')
 makedepends=('git')
-depends=('gnutls' 'libsm' 'gtkmm3' 'autoconf-archive' 'meson' 'ninja')
+depends=('gnutls' 'libsm' 'gtkmm3' 'autoconf-archive' 'meson')
 conflicts=('jd' 'jd-svn' 'jd-gtk3' )
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -18,12 +18,12 @@ pkgver() {
 }
 
 build() {
-cd "${srcdir}/JDim"
-meson setup -Dunity=on builddir --prefix=/usr
-ninja -C builddir
+  cd "${srcdir}/JDim"
+  meson setup -Dunity=on builddir --prefix=/usr
+  ninja -C builddir
 }
 
 package() {
-cd "${srcdir}/JDim"
-meson install -C builddir --destdir $pkgdir
+  cd "${srcdir}/JDim"
+  meson install -C builddir --destdir $pkgdir
 } 
