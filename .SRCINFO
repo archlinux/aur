@@ -1,6 +1,6 @@
 pkgbase = evtest-qt-git
 	pkgdesc = Linux Joystick Tester for Qt
-	pkgver = r112.46297da
+	pkgver = r129.c29ce1f
 	pkgrel = 1
 	url = https://gitlab.com/evtest-qt/evtest-qt
 	arch = i686
@@ -9,10 +9,13 @@ pkgbase = evtest-qt-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = tinycmmc
-	depends = qt5-base
+	depends = qt6-base
+	depends = hicolor-icon-theme
 	provides = evtest-qt
 	conflicts = evtest-qt
 	source = git+https://gitlab.com/evtest-qt/evtest-qt.git
+	source = fix-compilation-with-newer-gcc.patch
 	md5sums = SKIP
+	md5sums = 31d7b01d019237b02ae61dc6b6e8afba
 
 pkgname = evtest-qt-git

@@ -1,0 +1,37 @@
+From 921ccb42433b5d7cfdc7a9083febe8386d1396ff Mon Sep 17 00:00:00 2001
+From: Christopher Snowhill <kode54@gmail.com>
+Date: Mon, 5 Jun 2023 20:55:53 -0700
+Subject: [PATCH] Fix compilation with newer GCC
+
+---
+ src/evdev/evdev_info.hpp | 1 +
+ src/util/enum_box.hpp    | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/evdev/evdev_info.hpp b/src/evdev/evdev_info.hpp
+index 22267f7..0e1f7a8 100644
+--- a/src/evdev/evdev_info.hpp
++++ b/src/evdev/evdev_info.hpp
+@@ -19,6 +19,7 @@
+ 
+ #include <assert.h>
+ #include <algorithm>
++#include <cstdint>
+ #include <map>
+ #include <vector>
+ #include <array>
+diff --git a/src/util/enum_box.hpp b/src/util/enum_box.hpp
+index bc10a67..54e9187 100644
+--- a/src/util/enum_box.hpp
++++ b/src/util/enum_box.hpp
+@@ -19,6 +19,7 @@
+ #ifndef HEADER_EVTEST_QT_ENUM_BOX_HPP
+ #define HEADER_EVTEST_QT_ENUM_BOX_HPP
+ 
++#include <cstdint>
+ #include <map>
+ #include <sstream>
+ #include <stdexcept>
+-- 
+GitLab
+
