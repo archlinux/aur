@@ -1,0 +1,14 @@
+[Unit]
+Description=ntfy-alertmanager service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=ntfy-alertmanager
+Group=ntfy-alertmanager
+Restart=always
+ExecStart=/usr/bin/ntfy-alertmanager
+
+[Install]
+WantedBy=multi-user.target
