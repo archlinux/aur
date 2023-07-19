@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=23.3.0_devel.174140.0dc961645c4.d41d8cd
+pkgver=23.3.0_devel.174362.a944a8eba93.d41d8cd
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -82,7 +82,7 @@ esac
 pkgver() {
     cd mesa
     local _ver
-    read -r _ver <VERSION
+    _ver=$(<VERSION)
 
     local _patchver
     local _patchfile
