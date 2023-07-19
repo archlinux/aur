@@ -2,7 +2,7 @@
 
 _pkgname=hyprland
 pkgname="${_pkgname}-nvidia-hidpi-git"
-pkgver=r2843.5c3684d0
+pkgver=r3096.b08b7235
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA + HiDPI patch)"
 arch=(any)
@@ -63,7 +63,7 @@ sha256sums=('SKIP'
 	'SKIP'
 	'497afb5e99cb069ed96a3c4a735ad23afe0d012ca845067aae3176e45e267ba5'
 	'e7cf16e39db2bde4dbc9d7ec3b4753f7643b1bf198a3179e6802a9c603437fe9'
-	'522b19656d7c1627ec615b6720182590570560e346c1670f9df002015707b340')
+	'c200d341641ee20a13b1893e27a9d823e9ef5ac2378e3cdecd0efc55a713db1c')
 options=(!makeflags !buildflags !strip)
 
 pkgver() {
