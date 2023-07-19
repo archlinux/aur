@@ -1,0 +1,18 @@
+pkgbase = stl-c
+	pkgdesc = stl-c is a C library designed to provide a set of structure-related functionalities for working with static memory and dynamic memory. Inspired by the Standard Template Library (STL) of C++, stl-c offers a collection of generic template data structures and algorithms that are optimized for static memory and dynamic memory, allocation and manipulation.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/alecksandr26/stl-c/archive/refs/tags/v1.0.0.tar.gz
+	arch = x86_64
+	license = MIT License
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = binutils
+	makedepends = coreutils
+	makedepends = trycatch-c
+	optdepends = valgrind
+	source = stl-c-1.0.0.tar.gz::https://github.com/alecksandr26/stl-c/archive/refs/tags/v1.0.0.tar.gz
+	md5sums = SKIP
+
+pkgname = stl-c
