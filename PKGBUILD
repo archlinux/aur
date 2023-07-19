@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=flowWorkspace
-_pkgver=4.12.0
+_pkgver=4.12.1
 pkgname=r-${_pkgname,,}
-pkgver=4.12.0
+pkgver=4.12.1
 pkgrel=1
 pkgdesc='Infrastructure for representing and interacting with gated and ungated cytometry data sets.'
 arch=('x86_64')
@@ -46,7 +46,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d9730221bd8007c2bd201071255f69f031797856ff7ae81b86e3536c6d47c9d2')
+sha256sums=('eb0f82d8a162c107d8b94c785f3210a0e62c433b48bf5fd6c2b162d83f90c956')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
