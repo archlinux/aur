@@ -14,7 +14,7 @@ optdepends=(
     'libayatana-appindicator: tray icon'
 )
 options=('!strip')
-source=("$url/releases/download/${pkgver}/rustdesk-${pkgver}-0-$CARCH.pkg.tar.zst")
+source=("${pkgbase%-bin}-${pkgver}-$CARCH.pkg.tar.zst::$url/releases/download/${pkgver}/rustdesk-${pkgver}-0-$CARCH.pkg.tar.zst")
 source_x86_64=("${pkgbase%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-bin}-${pkgver}-x86_64.AppImage")
 source_aarch64=("${pkgbase%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/${pkgver}/${pkgbase%-bin}-${pkgver}-aarch64.AppImage")
 sha256sums=('e86418e1c702568e63033883a1198084bbf3ce6747a24d238b36c6f6d4efb7d5')
