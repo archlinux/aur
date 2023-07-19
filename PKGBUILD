@@ -2,7 +2,7 @@
 
 pkgname=python-tinytuya
 _pkgname=tinytuya
-pkgver=1.12.8
+pkgver=1.12.9
 pkgrel=1
 pkgdesc="Python module to interface with Tuya WiFi smart devices"
 arch=(x86_64)
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/jasonacox/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('843fa1a5bcfdb6afe17e4713b9efbd2c7423b47976267b8b4f373c41c851c0e1')
+sha256sums=('58384af2c631e763e52f472ab48e0350d2d4a97933e2d4665b519cef025a3a68')
 validpgpkeys=()
 
 build() {
