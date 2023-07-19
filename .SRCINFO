@@ -1,6 +1,6 @@
 pkgbase = highlight-stderr
 	pkgdesc = Run a command and highlight its stderr, preserving the order of stdout and stderr
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/joshtriplett/highlight-stderr
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = highlight-stderr
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = highlight-stderr-0.2.1.tar.gz::https://github.com/joshtriplett/highlight-stderr/archive/refs/tags/0.2.1.tar.gz
-	sha512sums = SKIP
+	source = highlight-stderr-0.3.0.tar.gz::https://github.com/joshtriplett/highlight-stderr/archive/refs/tags/0.3.0.tar.gz
+	sha512sums = c99ea1b682ed38f6bf3ce43d7fec17e90241dd01199f5c28607b908bacdc1050031a219fcf8d9c22fb1ae1bad8d4e023361ca08a48f4b43b492acf7fee5a7a07
 
 pkgname = highlight-stderr

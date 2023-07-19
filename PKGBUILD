@@ -1,7 +1,7 @@
 # Maintainer: qubidt <qubidt at gmail dot com>
 
 pkgname=highlight-stderr
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Run a command and highlight its stderr, preserving the order of stdout and stderr "
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,11 +10,12 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('c99ea1b682ed38f6bf3ce43d7fec17e90241dd01199f5c28607b908bacdc1050031a219fcf8d9c22fb1ae1bad8d4e023361ca08a48f4b43b492acf7fee5a7a07')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+  # TODO: --locked omitted because Cargo.lock in repo is outdated
+  cargo fetch --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
