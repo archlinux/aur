@@ -1,0 +1,20 @@
+pkgbase = featherpad-qt5-git
+	pkgdesc = Lightweight Qt plain text editor (Qt5 version)
+	pkgver = V1.4.1.r7.g1084b89f
+	pkgrel = 1
+	url = https://github.com/tsujan/FeatherPad
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt5-tools
+	depends = hicolor-icon-theme
+	depends = hunspell
+	depends = qt5-svg
+	provides = featherpad
+	conflicts = featherpad
+	source = featherpad::git+https://github.com/tsujan/FeatherPad
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = featherpad-qt5-git
