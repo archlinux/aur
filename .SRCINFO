@@ -1,6 +1,6 @@
 pkgbase = python-configshell-fb
 	pkgdesc = python framework for building simple CLI applications (free branch)
-	pkgver = 1.1.29
+	pkgver = 1.1.30
 	pkgrel = 1
 	url = https://github.com/open-iscsi/configshell-fb
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-configshell-fb
 	depends = python-urwid
 	provides = python-configshell
 	conflicts = python-configshell
-	source = https://github.com/open-iscsi/configshell-fb/archive/v1.1.29.tar.gz
-	sha512sums = 1b5f573506317119d2420e415abbb856692caa65a7f407f741300eec302d1b442e29d2691f6a192b202b2a5731a7a179d1b03f6cd27780876194d97e4df5f7d0
+	source = https://github.com/open-iscsi/configshell-fb/archive/v1.1.30.tar.gz
+	sha512sums = b3189130ac047fe28ea987391591b7886f7234864d455a8423d1d65b02a514511e2a32dce1429a6b71cedbc0b7cb6e6e10f29d240b746d222c285f0baa6b46b0
 
 pkgname = python-configshell-fb
