@@ -25,9 +25,9 @@ pkgbase = dolphin-tabopts
 	optdepends = purpose: share context menu
 	provides = dolphin
 	conflicts = dolphin
-	source = https://download.kde.org/stable/release-service/23.04.3/src/dolphin-23.04.3.tar.xz
 	source = dolphin-tabopts-1.patch::https://invent.kde.org/xiota/dolphin/-/merge_requests/1.patch
-	sha256sums = 28cab05a6390e067f3a9c5ca176ec412f52bf20f78dc82a12a460d252211da2f
+	source = https://download.kde.org/stable/release-service/23.04.3/src/dolphin-23.04.3.tar.xz
 	sha256sums = 7e649204637ccd1d3c9e9e748e69f73ac97e1c308c63eda592353ca7df21cb0d
+	sha256sums = 28cab05a6390e067f3a9c5ca176ec412f52bf20f78dc82a12a460d252211da2f
 
 pkgname = dolphin-tabopts
