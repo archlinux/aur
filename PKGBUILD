@@ -32,6 +32,7 @@ depends=(
 
 makedepends=(
   bison
+  mingw-w64-gcc 
 )
 
 optdepends=(
