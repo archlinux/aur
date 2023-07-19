@@ -49,6 +49,5 @@ build() {
 package() {
   cd ${pkgname}-${_tarver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py --skip-cmake install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
   find "${pkgdir}" -type d -empty -delete
 }
