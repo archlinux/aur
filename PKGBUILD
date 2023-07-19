@@ -1,14 +1,14 @@
 # Maintainer: René 'Necoro' Neumann <arch@necoro.dev>
 pkgname=arch-log
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Quickly check commit log of Arch and AUR packages.'
 arch=('x86_64')
 url="https://github.com/Necoro/$pkgname"
 license=('GPL')
 makedepends=('go>=1.20')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8b2a8cf9bfb8c6883f03ef7557c7952d107e7f26ce9e4bd4b161dc89160a2323')
+sha256sums=('575410dd4e452a805809dcca70ea595868c937b12586037d312a289d13feef37')
 
 prepare(){
   cd "$pkgname-$pkgver"
