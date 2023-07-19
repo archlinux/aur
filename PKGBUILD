@@ -86,12 +86,6 @@ _tickrate=${_tickrate-idle}
 ## Choose between full(low-latency), voluntary or server
 _preempt=${_preempt-full}
 
-### Disable MQ-Deadline I/O scheduler
-_mq_deadline_disable=${_mq_deadline_disable-y}
-
-### Disable Kyber I/O scheduler
-_kyber_disable=${_kyber_disable-y}
-
 ### Enable multigenerational LRU
 # ATTENTION - one of three predefined values should be selected!
 # 'standard' - enable multigenerational LRU
@@ -184,7 +178,7 @@ _stable=${_major}.${_minor}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 pkgdesc='Linux kernel with RT patches by CachyOS with other patches and improvements'
-pkgrel=1
+pkgrel=2
 _kernver=$pkgver-$pkgrel
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -373,18 +367,6 @@ prepare() {
         scripts/config --set-val NR_CPUS 320
     else
         _die "The value '$_nr_cpus' is invalid. Please select a numerical value from 2 to 512..."
-    fi
-
-    ### Disable MQ Deadline I/O scheduler
-    if [ -n "$_mq_deadline_disable" ]; then
-        echo "Disabling MQ-Deadline I/O scheduler..."
-        scripts/config -d MQ_IOSCHED_DEADLINE
-    fi
-
-    ### Disable Kyber I/O scheduler
-    if [ -n "$_kyber_disable" ]; then
-        echo "Disabling Kyber I/O scheduler..."
-        scripts/config -d MQ_IOSCHED_KYBER
     fi
 
     ### Select performance governor
@@ -811,5 +793,5 @@ b2sums=('d38cae9706127fa28cc55b50ceeba7601de3d1db648b934b9d33e0b439324790074b755
         '40ea8f1e376c0e838b087009588515c7a6958e75fb79473eba29e5a05e4962c124ce83e6d1d450474dbfcdd6cc9f9a3305fc2a2a04881570a345cef3b62fd9e7'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
         '8ee179d3da413f1a2f08db80587388f1742dfd427a7ff7f1e3e146fdd94dbd3abdc929b64a5c3773b28d5cea4da42791661bc0c8f738b0fe1ccc5b3c66d9dbe4'
-        '2ddae514f8ae213c9075031237d552502597628d119c9b9dfdb8147e3e8debcb062c93ce134dbfffa811064b750d18ab0c3cc447794283cc57fee1a6216b4694'
+        '5cba978d178b4ee4590155e5476b00b1f80ca9e551da2b5a4e9bdb16085992932d6b8673a653430fac5c076f46fcd8877e5bd41868264fd8fdd6a6cf69f2cc56'
         'e395035f1b0b944beca434c1e24264342088365de267cbb83b111f02a029fc78145aec73c14e458bd3ad648c8bb2c2ef30c2ff091b1dad2f9b754ecbeb45e41b')
