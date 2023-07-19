@@ -12,7 +12,8 @@ url='https://github.com/tuberry/color-picker'
 license=('GPL3')
 depends=('dconf' 'gnome-shell')
 makedepends=('git' 'meson' 'ninja' 'sassc')
-source=("${_pkgbase}-${pkgver}.tar.gz::${url}/tarball/${_commit}")
+source=("${_pkgbase}-${pkgver}.tar.gz::${url}/tarball/${_commit}"
+        "git+https://gitlab.gnome.org/GNOME/gnome-shell-sass.git")
 sha256sums=('721c74569febe9e008881ada90307b4d86de65e4c076c9a218426ec96de7cb6a')
 
 prepare() {
