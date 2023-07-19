@@ -17,6 +17,7 @@ pkgbase = bcu-git
 	depends = libusb
 	depends = libzip
 	depends = openssl
+	optdepends = mfgtools-git: uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools.
 	provides = bcu
 	conflicts = bcu
 	options = !strip

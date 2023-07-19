@@ -22,7 +22,7 @@ depends=(bzip2
         openssl)
 makedepends=('cmake' 'git' 'ninja')
 checkdepends=()
-optdepends=()
+optdepends=("mfgtools-git: uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools.")
 replaces=()
 backup=()
 options=('!strip')
