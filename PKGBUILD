@@ -1,9 +1,9 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=spirv-cross
-pkgver=2023.01.17
+pkgver=2023.05.12
 pkgrel=1
-_tag=sdk-1.3.239.0
+_tag=sdk-1.3.250.1
 _glslang_commit=06a7078ce74ab5c7801a165b8145859678831fb8
 _spirv_tools_commit=f62e121b0df5374d1f043d1fbda98467406af0b1
 _spirv_headers_commit=d13b52222c39a7e9a401b44646f0ca3a640fbd47
@@ -36,7 +36,7 @@ pkgver() {
 
 build() {
     # NOTE: test suite fails when using 'None' build type
-    local -a _common_opts=('-DCMAKE_BUILD_TYPE:STRING=Release' '-Wno-dev')
+    local -a _common_opts=('-G Unix Makefiles' '-DCMAKE_BUILD_TYPE:STRING=Release' '-Wno-dev')
     
     export CFLAGS+=' -ffat-lto-objects'
     export CXXFLAGS+=' -ffat-lto-objects'
@@ -60,13 +60,13 @@ build() {
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DSPIRV_CROSS_FORCE_PIC:BOOL='ON' \
         -DSPIRV_CROSS_SHARED:BOOL='ON'
-    make -C build-SPIRV-Cross
+    cmake --build build-SPIRV-Cross
 }
 
 check() {
-    make -C build-SPIRV-Cross test
+    ctest --test-dir build-SPIRV-Cross --output-on-failure
 }
 
 package() {
-    make -C build-SPIRV-Cross DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build-SPIRV-Cross
 }
