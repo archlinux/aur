@@ -1,10 +1,11 @@
-# Maintainer: Zeph <zeph33@gmail.com>
+# Maintainer gilcu3
+# Submitter: Zeph <zeph33@gmail.com>
 
 pkgname=rabbitvcs-nemo
 pkgdesc="Nemo front-end for rabbitvcs SVN GIT HG Extension."
-pkgver=0.18.0
+pkgver=0.19
 pkgrel=1
-_gitcommit='e44328e01ed82dd8a8dbfec952f5982e355b8416'
+#_gitcommit='e44328e01ed82dd8a8dbfec952f5982e355b8416'
 arch=('any')
 url="https://github.com/rabbitvcs/rabbitvcs"
 install=$pkgname.install
@@ -15,7 +16,7 @@ if [ "${_gitcommit}" != "" ]; then
 else
   source=("rabbitvcs-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
-sha256sums=('a9f59d0eff65526887f719eb72712eac7d7aaa84cf9993c7b69b7b17b0b13143')
+sha256sums=('83deaafb1e95f4eae9cf083ba2296507c909540cbcb5a0616ee0dd9dbf903e74')
 #sha256sums=('SKIP')
 
 
