@@ -10,8 +10,6 @@ pkgbase = dune-fem-dg
 	makedepends = python-scikit-build
 	makedepends = python-ninja
 	depends = dune-fem>=2.9.0.2
-	depends = python-sortedcontainers
-	depends = python-triangle
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
 	source = https://gitlab.dune-project.org/dune-fem/dune-fem-dg/-/archive/v2.9.0.2/dune-fem-dg-v2.9.0.2.tar.gz

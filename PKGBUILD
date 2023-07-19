@@ -8,7 +8,7 @@ pkgdesc="Implementation of Discontinuous Galerkin schemes using the DUNE-FEM fra
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
 license=(GPL2)
-depends=("dune-fem>=${pkgver}" python-sortedcontainers python-triangle)
+depends=("dune-fem>=${pkgver}")
 makedepends=(doxygen graphviz python-scikit-build python-ninja)
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
