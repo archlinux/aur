@@ -1,7 +1,8 @@
 # Maintainer: Antun Nitraj <antnitraj@gmail.com>
+
 pkgname=pact-git
 _pkgname=${pkgname%-git}
-pkgver=r5.8eaa1b5
+pkgver=1
 pkgrel=1
 pkgdesc="A simple wrapper for the pacman package manager similar to apt."
 arch=('any')
