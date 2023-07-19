@@ -1,0 +1,21 @@
+pkgbase = arqiver-qt6-git
+	pkgdesc = Simple Qt archive manager based on libarchive
+	pkgver = V0.11.0.r22.g3b4637b
+	pkgrel = 1
+	url = https://github.com/tsujan/Arqiver
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = qt6-tools
+	depends = libarchive
+	depends = gzip
+	depends = p7zip
+	depends = qt6-base
+	provides = arqiver
+	conflicts = arqiver
+	source = arqiver::git+https://github.com/tsujan/Arqiver
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = arqiver-qt6-git
