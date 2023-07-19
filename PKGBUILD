@@ -3,7 +3,7 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 # Contributor: Yarema aka Knedlyk <yupadmin at gmail dot com>
 pkgname=vdr-channelscan
-pkgver=1.2.3
+pkgver=1.2.4
 _vdrapi=2.6.3
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ pkgdesc="Channel scanner for VDR"
 url='https://github.com/ua0lnj/vdr-plugin-channelscan'
 license=("GPL2")
 depends=('bzip2' "vdr-api=${_vdrapi}" 'zlib')
+makedepends=('libnetceiver')
 _plugname=${pkgname//vdr-/}
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ua0lnj/vdr-plugin-channelscan/archive/refs/tags/$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
@@ -18,7 +19,7 @@ backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         "var/lib/vdr/plugins/channelscan/"{S100.5E,S10.0E,S101.0W,S103.0W,S105.0E,S105.0W,S105.5E,S107.3W,S107.7E,S108.0E,S1.0W,S110.0E,S110.0W,S110.5E,S11.0W,S111.1W,S113.0E,S113.0W,S116.0E,S116.8W,S118.0E,S119.0W,S120.0E,S121.0W,S122.2E,S123.0W,S124.0E,S125.0W,S12.5W,S127.0W,S128.0E,S129.0W,S13.0E,S131.0W,S132.0E,S133.0W,S134.0E,S135.0W,S136.0E,S137.0W,S138.0E,S139.0W,S144.0E,S145.0E,S146.0E,S148.0E,S148.0W,S150.0E,S15.0W,S152.0E,S154.0E,S156.0E,S158.0E,S160.0E,S16.0E,S162.0E,S164.0E,S166.0E,S169.0E,S177.0W,S180.0E,S18.0W,S19.2E,S20.0W,S21.0E,S21.6E,S22.0W,S23.5E,S24.5W,S26.0E,S27.5W,S28.2E,S30.0W,S30.5E,S3.0E,S31.3E,S31.5W,S33.0E,S34.5W,S36.0E,S37.5W,S38.0E,S39.0E,S40.0E,S40.5W,S4.0W,S42.0E,S42.5E,S43.0W,S45.0E,S45.0W,S49.0E,S50.0W,S5.0E,S5.0W,S53.0E,S53.0W,S55.0E,S55.5W,S56.0E,S57.0E,S58.0W,S60.0E,S61.0W,S61.5W,S62.0E,S63.0W,S64.0E,S65.0W,S66.0E,S68.5E,S70.0W,S70.5E,S7.0E,S7.0W,S72.0E,S72.0W,S72.5W,S74.0E,S74.0W,S75.0E,S76.5E,S78.5E,S79.0W,S80.0E,S8.0W,S82.0W,S83.0E,S83.0W,S84.0W,S85.2E,S87.0W,S87.5E,S88.0E,S90.0E,S91.0W,S91.5E,S92.0W,S93.0W,S93.5E,S95.0E,S95.0W,S96.5E,S97.0W,S99.0W,Sat}".tpl"
         "var/lib/vdr/plugins/channelscan/Sat.url"
        )
-sha256sums=('6e83960b5f5e108413973806a61cb52be7d6de756393cd2f481216570b09965a')
+sha256sums=('5c40473ed029d3a58c39fd473891f4a962b6f529840ab993dc8d87be4a490b3c')
 
 # Use this as template for getting the backup file list. Here for ".tpl" files.
 # $ tar -vtf repo/vdr-channelscan-1.1.4-3-x86_64.pkg.tar.xz | grep 'var/lib' | sed -rn 's/\.tpl$//p' | cut -d '/' -f 7 | sort | tr '\n' ','
