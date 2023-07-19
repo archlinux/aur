@@ -1,20 +1,24 @@
-pkgbase = lib32-tbb
-	pkgdesc = High level abstract threading library (32-bit)
-	pkgver = 2021.5.0
+pkgbase = lib32-onetbb
+	pkgdesc = High level abstract threading library (oneAPI Threading Building Blocks) (32-bit)
+	pkgver = 2021.9.0
 	pkgrel = 1
-	url = https://threadingbuildingblocks.org
+	url = https://oneapi-src.github.io/oneTBB/
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = ninja
-	depends = tbb
+	depends = onetbb
 	depends = lib32-gcc-libs
 	depends = lib32-hwloc
-	provides = lib32-intel-tbb
+	provides = lib32-intel-tbb=2021.9.0
+	provides = lib32-tbb=2021.9.0
 	conflicts = lib32-intel-tbb
+	conflicts = lib32-tbb
 	replaces = lib32-intel-tbb
-	source = tbb-2021.5.0.tar.gz::https://github.com/oneapi-src/oneTBB/archive/v2021.5.0/lib32-tbb-2021.5.0.tar.gz
-	sha512sums = 96da2bc351fd64dfa854f8e6cabc1c4e53af3d55760e99d6f83ad53779c727af333d13d6be0828ed70371cf796498d2063e9dd0e4b2f6451623bb5d28ccbf20b
+	replaces = lib32-tbb
+	source = https://github.com/oneapi-src/oneTBB/archive/v2021.9.0/onetbb-2021.9.0.tar.gz
+	source = onetbb-gcc13.patch::https://github.com/oneapi-src/oneTBB/commit/154cc73ca4d359621202399cc0c3c91058e56e79.patch
+	sha512sums = 2ece7f678ad7c8968c0ad5cda9f987e4b318c6d9735169e1039beb0ff8dfca18815835875211acc6c7068913d9b0bdd4c9ded22962b0bb48f4a0ce0f7b78f31c
+	sha512sums = 31feea5ede2df7d09062435abbfa923be0bbe5b5e05a2a819ccd29cf00486d60b5e0775f29c933fea7df1df4412da8586fa12ce4bfa8a332bc6ac03b051bae23
 
-pkgname = lib32-tbb
-
+pkgname = lib32-onetbb
