@@ -17,8 +17,8 @@ post_upgrade() {
      # grub-mkconfig -o /boot/grub/grub.cfg
 EOM
 
-  # return if old package version greater 2:2.06-0...
-  (( $(vercmp $2 '2:2.06-0') > 0 )) && return
+  # return if old package version greater 2.06-0...
+  (( $(vercmp $2 '2.06-0') > 0 )) && return
 
   if [[ -e /sys/firmware/efi/efivars ]]; then
     cat <<EOM
