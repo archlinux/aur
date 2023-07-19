@@ -2,7 +2,7 @@
 pkgname=xwinmosaic-git
 _gitname=xwinmosaic
 pkgver=v0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="X11 window switcher with fancy look"
 url="http://github.com/soulthreads/xwinmosaic"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gtk2')
 makedepends=('cmake' 'git')
 options=(!libtool strip)
 
-source=('git://github.com/soulthreads/xwinmosaic.git')
+source=('git+https://github.com/soulthreads/xwinmosaic.git')
 md5sums=('SKIP')
 
 pkgver() {
