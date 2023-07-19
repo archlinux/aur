@@ -1,6 +1,6 @@
 pkgbase = python-portion
 	pkgdesc = Python library providing data structure and operations for intervals
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/AlexandreDecan/portion
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-portion
 	makedepends = python-wheel
 	depends = python
 	depends = python-sortedcontainers
-	source = python-portion-2.4.0.tar.gz::https://github.com/AlexandreDecan/portion/archive/2.4.0.tar.gz
-	sha256sums = d4eec292aa4277f7dba45d3f0f9e4927c5f27eeb334270c680e923a09f70adaf
+	source = python-portion-2.4.1.tar.gz::https://github.com/AlexandreDecan/portion/archive/2.4.1.tar.gz
+	sha256sums = 1c72e41f8dcc93f14c626b9dbd6aea805c84ba10aaea8b6439b2ddfb28bbfe94
 
 pkgname = python-portion
