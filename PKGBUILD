@@ -1,5 +1,5 @@
 pkgname=gaiasky-appimage
-pkgver=3.4.2.041928e7c
+pkgver=3.5.1.ebd5983f4
 _pkgname=gaiasky
 _appimage="${_pkgname}_${pkgver}_x86_64.appimage"
 pkgrel=1
@@ -10,7 +10,7 @@ url="https://zah.uni-heidelberg.de/gaia/outreach/gaiasky"
 depends=()
 options=()
 source=(https://gaia.ari.uni-heidelberg.de/gaiasky/releases/latest/${_pkgname}_${pkgver}_x86_64.appimage)
-sha256sums=('c7719d09fb22c2f442643aaa08316eff4cc538c0b7a2f850e6327bd9b3400bfa')
+sha256sums=('ed06d0e98e528b63fd043cb6f9e63c2db57ba7a3712183b8d3f6de9733289702')
 
 
 prepare() {
