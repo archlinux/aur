@@ -1,0 +1,13 @@
+pkgbase = thunderbolt-utils
+	pkgdesc = Thunderbolt/USB4 Linux user-space utilities from Intel
+	pkgver = 0.1.rc1
+	pkgrel = 1
+	url = https://github.com/intel/thunderbolt-utils
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	source = https://github.com/intel/thunderbolt-utils/archive/refs/tags/v0.1-rc1.tar.gz
+	sha256sums = d036a1f1b42b6f32f88124bceceac0361bf67258304274840dd60c319fc60b84
+
+pkgname = thunderbolt-utils
