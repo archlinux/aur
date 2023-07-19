@@ -6,7 +6,7 @@ pkgver=${_tarver/v/}
 pkgrel=1
 pkgdesc="Implementation of a number of virtual element spaces and bilinear forms"
 arch=(x86_64)
-url="https://dune-project.org/modules/${pkgname}"
+url="https://gitlab.dune-project.org/dune-fem/${pkgname}"
 license=(GPL2)
 depends=("dune-fem>=${pkgver}" python-sortedcontainers python-triangle)
 makedepends=(doxygen graphviz python-scikit-build python-ninja)
