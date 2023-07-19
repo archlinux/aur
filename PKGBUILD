@@ -1,4 +1,4 @@
-# Maintainer 
+# Maintainer: hattshire <hattshire at gmail dot com> 
 # Contributor gCurse <gcurse at web dot de>
 # Contributor Yurii Kolesnykov <yurikoles@gmail.com>
 # Credit: Jan de Groot <jgc@archlinux.org>
@@ -6,17 +6,18 @@
 pkgbase=gstreamer0.10-bad
 _pkgname=gst-plugins-bad
 pkgname=('gstreamer0.10-bad' 'gstreamer0.10-bad-plugins')
+pkgdesc='GStreamer Multimedia Framework Bad plugin libraries'
 pkgver=0.10.23
-pkgrel=38
+pkgrel=39
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL' 'GPL')
 makedepends=('pkgconfig' 'gstreamer0.10-base>=0.10.36-11' 'xvidcore' 'libdca'
-             'bzip2' 'libdc1394' 'neon' 'faac' 'libmusicbrainz5' 'faad2'
+             'bzip2' 'libdc1394' 'faac' 'faad2'
              'libmms' 'libcdaudio' 'libmpcdec' 'mjpegtools' 'libdvdnav'
-             'libmodplug' 'jasper' 'liblrdf' 'libofa' 'soundtouch' 'libvdpau'
+             'libmodplug' 'jasper' 'libofa' 'soundtouch' 'libvdpau'
              'schroedinger' 'libass' 'libvpx' 'gsm' 'libgme' 'rtmpdump'
              'libsndfile' 'librsvg' 'wildmidi' 'opus' 'git' 'spandsp' 'celt'
-             'openssl-1.0')
+             'openssl-1.0' 'python')
 url="http://gstreamer.freedesktop.org/"
 options=(!emptydirs)
 source=("https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-0.10.23.tar.xz"
@@ -26,7 +27,9 @@ source=("https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-0
         disable-camerabin-test.patch
         faad2-version-check.patch
         wildmidi-0.4.patch
-        flite_cmu_us_kal.patch)
+        flite_cmu_us_kal.patch
+        gstcolorspaceorc.orc.patch)
+
 sha256sums=('03cf0786391c64625569072e904082a08861f05a63d64b2f8e8dad3f26d81bf9'
             'd89d8f4307c7d5a143b9240467d260a1cb6bb1ab2e7ca57841ce0901f41c9cb7'
             'eb97037b7b581d1ab994eadd144044c083975e5670a73ec827de126bf888f4b9'
@@ -34,7 +37,8 @@ sha256sums=('03cf0786391c64625569072e904082a08861f05a63d64b2f8e8dad3f26d81bf9'
             '01e780ddf1f8161a6115dded9dc5bf4bdd4d09a9eee00fa423b1330e90e76c68'
             '741492ae7a9518603fc51d87ae331d882f075547ea7fdec19c60f399085f18cc'
             '7a8698df3b53c34c627c00d3b025045818898cedc5ee7ffa13272d8758fcefd2'
-            'e3b6a6a8bd0480ab812116cb472b92ad5770fdb8afdbdc2a5b557fdd0294ad36')
+            'e3b6a6a8bd0480ab812116cb472b92ad5770fdb8afdbdc2a5b557fdd0294ad36'
+            '7340a88bd022b93e2cb1eed45acb572ffe49e61c3cfd4082399a7de3071140e9')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -46,13 +50,14 @@ prepare() {
   patch -Np1 -i ../faad2-version-check.patch
   patch -Np1 -i ../wildmidi-0.4.patch
   patch -Np1 -i ../flite_cmu_us_kal.patch
+  patch -Np1 -i ../gstcolorspaceorc.orc.patch
   find . -type f -name '*glib-gen.mak' -print0 | xargs -0 sed -i 's/\\n\\#include/\\n#include/g'
 }
 
 build() {
   cd ${_pkgname}-${pkgver}
   NOCONFIGURE=1 ./autogen.sh
-  CPPFLAGS=-I/usr/include/openssl-1.0 LDFLAGS=-L/usr/lib/openssl-1.0 \
+  CPPFLAGS="${CPPFLAGS} -I/usr/include/openssl-1.0" LDFLAGS="${LDFLAGS} -L/usr/lib/openssl-1.0" \
     ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --disable-static --enable-experimental --disable-gtk-doc \
     --with-package-name="GStreamer Bad Plugins (Archlinux)" \
@@ -65,7 +70,7 @@ build() {
 
 package_gstreamer0.10-bad() {
   pkgdesc="GStreamer Multimedia Framework Bad Plugin libraries (gst-plugins-bad)"
-  depends=('gstreamer0.10-base>=0.10.36-11')
+  depends=('gstreamer0.10>=0.10.36' 'gstreamer0.10-base>=0.10.36-11' 'orc' 'glibc' 'libx11' 'glib2')
 
   cd ${_pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
@@ -73,12 +78,13 @@ package_gstreamer0.10-bad() {
 
 package_gstreamer0.10-bad-plugins() {
   pkgdesc="GStreamer Multimedia Framework Bad Plugins (gst-plugins-bad)"
-  depends=("gstreamer0.10-bad=${pkgver}" 'xvidcore' 'libdca' 'bzip2' 'libdc1394'
-          'neon' 'faac' 'libmusicbrainz5' 'faad2' 'libmms' 'libcdaudio' 'libmpcdec'
-          'mjpegtools' 'libdvdnav' 'libmodplug' 'jasper' 'liblrdf' 'libofa'
+  depends=('gstreamer0.10>=0.10.36' "gstreamer0.10-bad=${pkgver}" 'gstreamer0.10-base>=0.10.36-11'
+          'xvidcore' 'libdca' 'bzip2' 'libdc1394' 'orc' 'libx11' 'glib2' 'curl' 'gcc-libs'
+          'faac' 'faad2' 'libmms' 'libcdaudio' 'libmpcdec' 'libdvdread'
+          'mjpegtools' 'libdvdnav' 'libmodplug' 'jasper' 'libofa'
           'libvdpau' 'soundtouch' 'libass' 'schroedinger' 'libvpx' 'gsm' 'rtmpdump'
           'libgme' 'libsndfile' 'librsvg' 'wildmidi' 'opus' 'celt' 'spandsp'
-          'openssl-1.0' 'dconf')
+          'openssl-1.0' 'dconf' 'cairo' 'libpng' 'glibc' )
   groups=('gstreamer0.10-plugins')
 
   cd ${_pkgname}-${pkgver}

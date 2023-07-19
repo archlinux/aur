@@ -1,0 +1,155 @@
+--- gst-plugins-bad-0.10.23/gst/colorspace/gstcolorspaceorc.orc.orig	2011-12-11 15:49:12.000000000 -0300
++++ gst-plugins-bad-0.10.23/gst/colorspace/gstcolorspaceorc.orc	2023-07-19 17:26:23.479276158 -0400
+@@ -116,7 +116,7 @@
+ 
+ 
+ .function cogorc_upsample_horiz_cosite_1tap
+-.dest 2 d1 guint8 guint8
++.dest 2 d1 guint8
+ .source 1 s1 guint8
+ .temp 1 t1
+ 
+@@ -125,7 +125,7 @@
+ 
+ 
+ .function cogorc_upsample_horiz_cosite
+-.dest 2 d1 guint8 guint8
++.dest 2 d1 guint8
+ .source 1 s1 guint8
+ .source 1 s2 guint8
+ .temp 1 t1
+@@ -173,7 +173,7 @@
+ 
+ .function orc_pack_yuyv
+ .dest 4 d1 guint8
+-.source 2 s1 guint8 guint8
++.source 2 s1 guint8
+ .source 1 s2 guint8
+ .source 1 s3 guint8
+ .temp 1 t1
+@@ -217,7 +217,7 @@
+ 
+ .function orc_pack_uyvy
+ .dest 4 d1 guint8
+-.source 2 s1 guint8 guint8
++.source 2 s1 guint8
+ .source 1 s2 guint8
+ .source 1 s3 guint8
+ .temp 1 t1
+@@ -235,9 +235,9 @@
+ 
+ 
+ .function orc_matrix2_u8
+-.dest 1 d1 guint8 guint8
+-.source 1 s1 guint8 guint8
+-.source 1 s2 guint8 guint8
++.dest 1 d1 guint8
++.source 1 s1 guint8
++.source 1 s2 guint8
+ .param 2 p1
+ .param 2 p2
+ .param 2 p3
+@@ -255,9 +255,9 @@
+ 
+ 
+ .function orc_matrix2_11_u8
+-.dest 1 d1 guint8 guint8
+-.source 1 s1 guint8 guint8
+-.source 1 s2 guint8 guint8
++.dest 1 d1 guint8
++.source 1 s1 guint8
++.source 1 s2 guint8
+ .param 2 p1
+ .param 2 p2
+ .temp 2 t1
+@@ -280,9 +280,9 @@
+ 
+ 
+ .function orc_matrix2_12_u8
+-.dest 1 d1 guint8 guint8
+-.source 1 s1 guint8 guint8
+-.source 1 s2 guint8 guint8
++.dest 1 d1 guint8
++.source 1 s1 guint8
++.source 1 s2 guint8
+ .param 2 p1
+ .param 2 p2
+ .temp 2 t1
+@@ -306,10 +306,10 @@
+ 
+ 
+ .function orc_matrix3_u8
+-.dest 1 d1 guint8 guint8
+-.source 1 s1 guint8 guint8
+-.source 1 s2 guint8 guint8
+-.source 1 s3 guint8 guint8
++.dest 1 d1 guint8
++.source 1 s1 guint8
++.source 1 s2 guint8
++.source 1 s3 guint8
+ .param 2 p1
+ .param 2 p2
+ .param 2 p3
+@@ -331,10 +331,10 @@
+ 
+ 
+ .function orc_matrix3_100_u8
+-.dest 1 d1 guint8 guint8
+-.source 1 s1 guint8 guint8
+-.source 1 s2 guint8 guint8
+-.source 1 s3 guint8 guint8
++.dest 1 d1 guint8
++.source 1 s1 guint8
++.source 1 s2 guint8
++.source 1 s3 guint8
+ .param 2 p1
+ .param 2 p2
+ .param 2 p3
+@@ -361,10 +361,10 @@
+ 
+ 
+ .function orc_matrix3_100_offset_u8
+-.dest 1 d1 guint8 guint8
+-.source 1 s1 guint8 guint8
+-.source 1 s2 guint8 guint8
+-.source 1 s3 guint8 guint8
++.dest 1 d1 guint8
++.source 1 s1 guint8
++.source 1 s2 guint8
++.source 1 s3 guint8
+ .param 2 p1
+ .param 2 p2
+ .param 2 p3
+@@ -394,10 +394,10 @@
+ 
+ 
+ .function orc_matrix3_000_u8
+-.dest 1 d1 guint8 guint8
+-.source 1 s1 guint8 guint8
+-.source 1 s2 guint8 guint8
+-.source 1 s3 guint8 guint8
++.dest 1 d1 guint8
++.source 1 s1 guint8
++.source 1 s2 guint8
++.source 1 s3 guint8
+ .param 2 p1
+ .param 2 p2
+ .param 2 p3
+@@ -425,7 +425,7 @@
+ 
+ 
+ .function orc_pack_123x
+-.dest 4 d1 guint32 guint8
++.dest 4 d1 guint32
+ .source 1 s1 guint8
+ .source 1 s2 guint8
+ .source 1 s3 guint8
+@@ -439,7 +439,7 @@
+ 
+ 
+ .function orc_pack_x123
+-.dest 4 d1 guint32 guint8
++.dest 4 d1 guint32
+ .source 1 s1 guint8
+ .source 1 s2 guint8
+ .source 1 s3 guint8
