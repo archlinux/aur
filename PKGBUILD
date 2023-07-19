@@ -2,14 +2,14 @@
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
 
 pkgname=orbiter2016-git
-pkgver=r559.a2dc3556
+pkgver=20230705.01aaeb0
 pkgrel=1
 pkgdesc="Orbiter Space Flight Simulator"
 arch=(x86_64)
 url="http://orbit.medphys.ucl.ac.uk/index.html"
 license=(MIT)
 depends=()
-makedepends=(git cmake glfw-x11 openal libsndfile glm texlive-latex)
+makedepends=('git' 'cmake' 'glfw-x11' 'openal' 'libsndfile' 'glm' 'texlive-latex')
 provides=()
 conflicts=()
 source=("TheGondos-orbiter::git+https://github.com/TheGondos/orbiter.git#branch=linux"
@@ -53,7 +53,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd TheGondos-orbiter
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git log -1 --format='%cd.%h' --date=short --abbrev=7 | tr -d -
 }
 
 prepare() {
