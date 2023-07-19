@@ -1,6 +1,6 @@
 pkgbase = roam
 	pkgdesc = Roam: Your Cloud HQ
-	pkgver = 66.1.0.beta001
+	pkgver = 66.2.0.beta001
 	pkgrel = 1
 	url = https://ro.am
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = roam
 	depends = xdg-utils
 	depends = libappindicator-gtk3
 	depends = org.freedesktop.secrets
-	source = https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/linux/debian/binary/66.1.0-beta001-roam_66.1.0-beta001_amd64.deb
-	sha256sums = 88e054ec8b9332da17e77ce7a837cef0aa8fa9593a9fef6c16be947bbc6bf790
+	source = https://download.ro.am/Roam/8a86d88cfc9da3551063102e9a4e2a83/linux/debian/binary/66.2.0-beta001-roam_66.2.0-beta001_amd64.deb
+	sha256sums = ad919d85598ebb393ee25b16848e0e05f4a177005634c6e9b5b24a87644c9eff
 
 pkgname = roam
