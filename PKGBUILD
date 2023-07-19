@@ -1,13 +1,13 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 
 pkgname=librem5-flash-image-git
-pkgver=v0.0.2.r94.gd825f0a
+pkgver=v0.0.4.r2.ge501c45
 pkgrel=1
 pkgdesc="Image flashing tool for Librem 5 devices and related devices"
 url="https://source.puri.sm/Librem5/librem5-flash-image"
 arch=('any')
 license=('GPL3')
-depends=('python' 'python-coloredlogs' 'python-python-jenkins' 'python-requests' 'python-tqdm' 'python-yaml' 'usbutils' 'uuu')
+depends=('python' 'python-coloredlogs' 'python-python-jenkins' 'python-requests' 'python-tqdm' 'python-yaml' 'usbutils' 'mfgtool')
 makedepends=('git')
 provides=('librem5-flash-image')
 conflicts=('librem5-flash-image')
