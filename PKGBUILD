@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="mkdocs-redirects"
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Open source plugin for Mkdocs page redirects"
 url="https://github.com/datarobot/mkdocs-redirects"
@@ -12,7 +12,7 @@ replaces=("python-mkdocs-redirects-git")
 depends=("mkdocs>=1.1.1")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('ddd38267d49fdfa19fb2f25b4aed2fb53f0496c818bf3018009c8eaf6676a327')
+sha256sums=('9420066d70e2a6bb357adf86e67023dcdca1857f97f07c7fe450f8f1fb42f861')
 
 build(){
  cd "$pkgname-$pkgver"
