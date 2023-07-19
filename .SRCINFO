@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-sfml-static
 	pkgdesc = A simple, fast, cross-platform, and object-oriented multimedia API (mingw-w64) (static build)
-	pkgver = 2.5.1
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://www.sfml-dev.org
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = mingw-w64-sfml-static
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = https://github.com/SFML/SFML/archive/2.5.1.tar.gz
+	source = https://github.com/SFML/SFML/archive/2.6.0.tar.gz
 	md5sums = 0d8a10fad7f10fa7b4453e647fb6b1a8
 
 pkgname = mingw-w64-sfml-static
