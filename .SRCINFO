@@ -12,6 +12,7 @@ pkgbase = stl-c
 	makedepends = coreutils
 	makedepends = trycatch-c
 	optdepends = valgrind
+	optdepends = unittest-c
 	source = stl-c-1.0.0.tar.gz::https://github.com/alecksandr26/stl-c/archive/refs/tags/v1.0.0.tar.gz
 	md5sums = SKIP
 
