@@ -2,12 +2,12 @@
 
 pkgname=('python-rosinstall_generator')
 pkgver='0.1.23'
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for generating rosinstall files'
 arch=('any')
 url='https://github.com/ros-infrastructure/rosinstall_generator'
 license=('BSD')
-depends=('python' 'python-argparse' 'python-catkin_pkg' 'python-rosdistro' 'python-rospkg' 'python-yaml')
+depends=('python' 'python-catkin_pkg' 'python-rosdistro' 'python-rospkg' 'python-yaml')
 makedepends=('python-setuptools')
 provides=('python-rosinstall-generator')
 conflicts=('python2-rosinstall_generator' 'python-rosinstall-generator')

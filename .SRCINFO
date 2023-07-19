@@ -1,13 +1,12 @@
 pkgbase = python-rosinstall_generator
 	pkgdesc = A tool for generating rosinstall files
 	pkgver = 0.1.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ros-infrastructure/rosinstall_generator
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	depends = python-argparse
 	depends = python-catkin_pkg
 	depends = python-rosdistro
 	depends = python-rospkg
