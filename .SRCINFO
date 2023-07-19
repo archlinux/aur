@@ -1,12 +1,13 @@
 pkgbase = pikaur-aurnews
 	pkgdesc = AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay, and with the live aurnews eggzpatch
-	pkgver = 1.15.1
+	pkgver = 1.17
 	pkgrel = 1
 	url = https://github.com/actionless/pikaur
 	arch = any
 	license = GPL3
 	makedepends = python-markdown-it-py
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools

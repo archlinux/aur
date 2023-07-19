@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=pikaur-aurnews
-pkgver=1.15.1
+pkgver=1.17
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay, and with the live aurnews eggzpatch"
 arch=('any')
@@ -25,6 +25,7 @@ depends=(
 makedepends=(
 	'python-markdown-it-py'
 	'python-wheel'
+	'python-hatchling'
 	'python-build'
 	'python-installer'
 	'python-setuptools'
