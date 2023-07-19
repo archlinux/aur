@@ -1,3 +1,9 @@
+	* 0.19
+	This release adds support for Nautilus 43+.
+		Migrated Nautilus plugin to GTK4
+		Added Rabbitvcs3.py as fallback plugin for older Nautilus with GTK3 (i.e. Ubuntu 22.04)
+		Many bug fixes and improvements
+
 	* 0.18
     Migrated to GTK+3, GTK+2 is no longer supported
     Now support python 3

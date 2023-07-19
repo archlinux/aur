@@ -1,10 +1,11 @@
+# Maintainer: gilcu3
 # Contributor: Thomas Oster <thomas.oster@rwth-aachen.de>
-# Maintainer: Zeph <zeph33@gmail.com>
+# Contributor: Zeph <zeph33@gmail.com>
 
 pkgname=rabbitvcs
-pkgver=0.18.0
+pkgver=0.19
 pkgrel=1
-_gitcommit='e44328e01ed82dd8a8dbfec952f5982e355b8416'
+#_gitcommit='e44328e01ed82dd8a8dbfec952f5982e355b8416'
 pkgdesc="A project with the goal of developing a collection of utilities to allow for better client integration with some of the popular version control systems (core)"
 arch=('any')
 #url="http://rabbitvcs.org/"
@@ -20,7 +21,7 @@ if [ "${_gitcommit}" != "" ]; then
 else
   source=("rabbitvcs-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
-sha256sums=('a9f59d0eff65526887f719eb72712eac7d7aaa84cf9993c7b69b7b17b0b13143')
+sha256sums=('83deaafb1e95f4eae9cf083ba2296507c909540cbcb5a0616ee0dd9dbf903e74')
 #sha256sums=('SKIP')
 
 

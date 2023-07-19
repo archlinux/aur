@@ -1,6 +1,6 @@
 pkgbase = rabbitvcs
 	pkgdesc = A project with the goal of developing a collection of utilities to allow for better client integration with some of the popular version control systems (core)
-	pkgver = 0.18.0
+	pkgver = 0.19
 	pkgrel = 1
 	url = https://github.com/rabbitvcs/rabbitvcs
 	install = rabbitvcs.install
@@ -18,8 +18,7 @@ pkgbase = rabbitvcs
 	depends = python-gtkspellcheck
 	depends = tk
 	optdepends = meld: graphical diff viewer
-	source = rabbitvcs-0.18.0-1.tar.gz::https://github.com/rabbitvcs/rabbitvcs/archive/e44328e01ed82dd8a8dbfec952f5982e355b8416.tar.gz
-	sha256sums = a9f59d0eff65526887f719eb72712eac7d7aaa84cf9993c7b69b7b17b0b13143
+	source = rabbitvcs-0.19.tar.gz::https://github.com/rabbitvcs/rabbitvcs/archive/v0.19.tar.gz
+	sha256sums = 83deaafb1e95f4eae9cf083ba2296507c909540cbcb5a0616ee0dd9dbf903e74
 
 pkgname = rabbitvcs
-
