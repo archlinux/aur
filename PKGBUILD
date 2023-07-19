@@ -2,7 +2,7 @@
 
 pkgname=cling
 pkgver=0.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Interactive C++ interpreter, built on the top of LLVM and Clang libraries"
 arch=("i686" "x86_64")
 url="https://root.cern.ch/cling"
@@ -18,8 +18,8 @@ optdepends=(
     "python-yaml: support for opt-viewer"
 )
 source=(
-    "llvm::git+http://root.cern/git/llvm.git#tag=cling-v$pkgver"
-    "clang::git+http://root.cern/git/clang.git#tag=cling-v$pkgver"
+    "cling-llvm::git+http://root.cern/git/llvm.git#tag=cling-v$pkgver"
+    "cling-clang::git+http://root.cern/git/clang.git#tag=cling-v$pkgver"
     "cling::git+http://root.cern/git/cling.git#tag=v$pkgver"
 )
 sha256sums=(
@@ -27,20 +27,21 @@ sha256sums=(
     "SKIP"
     "SKIP"
 )
+options=('!lto')
 
 
 prepare() {
-    if [ ! -h "$srcdir/llvm/tools/clang" ]; then
-        ln -s "$srcdir/clang" "$srcdir/llvm/tools/clang"
+    if [ ! -h "$srcdir/cling-llvm/tools/clang" ]; then
+        ln -s "$srcdir/cling-clang" "$srcdir/cling-llvm/tools/clang"
     fi
 
-    if [ ! -h "$srcdir/llvm/tools/cling" ]; then
-        ln -s "$srcdir/cling" "$srcdir/llvm/tools/cling"
+    if [ ! -h "$srcdir/cling-llvm/tools/cling" ]; then
+        ln -s "$srcdir/cling" "$srcdir/cling-llvm/tools/cling"
     fi
 
     # patch missing header file
     sed -i '/^#include <vector>$/i #include <limits>' \
-        "$srcdir/llvm/utils/benchmark/src/benchmark_register.h"
+        "$srcdir/cling-llvm/utils/benchmark/src/benchmark_register.h"
 }
 
 build() {
@@ -60,10 +61,9 @@ build() {
         -DLLVM_ENABLE_SPHINX=OFF \
         -DLLVM_ENABLE_DOXYGEN=OFF \
         -DFFI_INCLUDE_DIR=$(pkg-config --cflags-only-I libffi | cut -c3-) \
-        "$srcdir/llvm"
+        "$srcdir/cling-llvm"
 
-    ninja clang
-    ninja cling
+    ninja
 }
 
 package() {
@@ -74,7 +74,7 @@ package() {
     install -d "$pkgdir/usr/bin"
     ln -s "/opt/cling/bin/cling" "$pkgdir/usr/bin/cling"
 
-    install -Dm644 "$srcdir/llvm/tools/cling/LICENSE.TXT" \
+    install -Dm644 "$srcdir/cling-llvm/tools/cling/LICENSE.TXT" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # include CMake target import file so that other packages are able to use

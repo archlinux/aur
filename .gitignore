@@ -1,7 +1,7 @@
 /build
-/clang/
 /cling/
-/llvm/
+/cling-clang/
+/cling-llvm/
 /pkg/
 /src/
 *.tar.xz

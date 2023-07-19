@@ -17,4 +17,4 @@ check: build
 	namcap *.tar.xz
 
 clean:
-	rm -rf build clang cling llvm pkg src *.tar.*
+	rm -rf build cling cling-clang cling-llvm pkg src *.tar.*
