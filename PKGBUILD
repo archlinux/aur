@@ -2,10 +2,10 @@
 
 pkgname=kaf-cli
 pkgver=v1.3.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="把txt文本转成epub与mobi电子书的命令行工具"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'aarch64' 'loong64')
 url="https://github.com/ystyle/kaf-cli"
 license=('MulanPSL')
 optdepends=('kindlegen: 在x86_64上用于生成标准的mobi格式')
