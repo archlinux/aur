@@ -1,6 +1,6 @@
 pkgbase = valent-git
 	pkgdesc = Connect, control and sync devices
-	pkgver = r1079.a0336ce6
+	pkgver = r1081.e33ec1e8
 	pkgrel = 1
 	url = https://valent.andyholmes.ca
 	arch = x86_64
