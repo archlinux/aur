@@ -3,10 +3,10 @@
 # Contributor: Dmitry Batenkov <dima dot batenkov at gmail dot com>
 
 pkgname=rabbitvcs-thunar
-pkgver=0.18.0
-pkgrel=4
+pkgver=0.19
+pkgrel=1
 pkgdesc="Thunar front-end for RabbitVCS SVN GIT HG Extension."
-_gitcommit='c424618cc15686a902a0255cdf6751647dd39b19'
+#_gitcommit='c424618cc15686a902a0255cdf6751647dd39b19'
 arch=('any')
 url="https://github.com/rabbitvcs/rabbitvcs"
 install=$pkgname.install
@@ -17,7 +17,7 @@ if [ "${_gitcommit}" != "" ]; then
 else
   source=("rabbitvcs-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
-sha256sums=('8490b98370b0d93590ea4d5180eefb5c350763427c6251ea52a87e16aed62865')
+sha256sums=('83deaafb1e95f4eae9cf083ba2296507c909540cbcb5a0616ee0dd9dbf903e74')
 
 
 build() {
