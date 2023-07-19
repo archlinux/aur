@@ -1,15 +1,15 @@
 pkgbase = setcustomres
 	pkgdesc = A tool that summarizes the process of setting a custom resolution to a monitor using xrandr.
 	pkgver = 2.2
-	pkgrel = 1
-	url = https://github.com/YoungFellow-le/setcustomres
+	pkgrel = 2
+	url = https://github.com/MisconceivedSec/setcustomres
 	arch = any
 	license = GPL3
 	depends = libxrandr
 	depends = awk
 	provides = setcustomres
 	conflicts = setcustomres
-	source = v2.2.tar.gz::https://github.com/YoungFellow-le/setcustomres/archive/refs/tags/v2.2.tar.gz
+	source = v2.2.tar.gz::https://github.com/MisconceivedSec/setcustomres/archive/refs/tags/v2.2.tar.gz
 	md5sums = 8305a45fbd307bb8646bcbd3fca83d49
 
 pkgname = setcustomres

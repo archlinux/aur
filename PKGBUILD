@@ -1,15 +1,15 @@
-# Maintainer: Young Fellow <youngfellow.le@gmail.com>
+# Maintainer: MisconceivedSec (@misconceivedsec)
 pkgname=setcustomres
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that summarizes the process of setting a custom resolution to a monitor using xrandr."
 arch=('any')
-url="https://github.com/YoungFellow-le/setcustomres"
+url="https://github.com/MisconceivedSec/setcustomres"
 license=('GPL3')
 depends=('libxrandr' 'awk')
 provides=('setcustomres')
 conflicts=('setcustomres')
-source=("v$pkgver.tar.gz::https://github.com/YoungFellow-le/setcustomres/archive/refs/tags/v$pkgver.tar.gz")
+source=("v$pkgver.tar.gz::https://github.com/MisconceivedSec/setcustomres/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('8305a45fbd307bb8646bcbd3fca83d49')
 
 package()
