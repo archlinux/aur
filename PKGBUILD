@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=stylelint
-pkgver=15.10.1
+pkgver=15.10.2
 pkgrel=1
 pkgdesc='Mighty, modern CSS linter'
 arch=('any')
@@ -21,7 +21,7 @@ prepare() {
 
 check() {
   cd $pkgname
-  npm test
+  npm test --ignore-scripts
 }
 
 package() {
