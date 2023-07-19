@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+import os, re
+
+# 正则匹配窗口的 PID 和 CLASS 名
+cmd = os.popen("xprop -notype _NET_WM_PID WM_CLASS")
+info = re.findall(r"= (\d+)\n.+\"([\w\-]+)", cmd.read())
+if info:
+    pid, name = info[0]
+    # 获取该父进程ID的所有直接子进程的 PID
+    cmd = os.popen(f"pgrep -P {pid}")
+    child_pids = cmd.read().replace("\n", " ")
+    # 获取该进程当前状态（ T 为已暂停）
+    cmd = os.popen(f"ps -p {pid} -o state=")
+    state = cmd.read().strip()
+    if state == "T":
+        # 如果已暂停，则发送恢复信号
+        os.popen(f"kill -CONT {pid} {child_pids}")
+        print(f"Resume: {pid} {name}")
+    else:
+        # 如果正在运行，则发送暂停信号
+        os.popen(f"kill -STOP {pid} {child_pids}")
+        print(f"Stop: {pid} {name}")
