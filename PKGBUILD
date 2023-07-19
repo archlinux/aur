@@ -2,7 +2,7 @@
 
 _pkgname=result
 pkgname="python-$_pkgname"
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A rust-like result type for Python"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python' 'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-cov')
 source=("$pkgname-$pkgver.tar.gz::https://pypi.org/packages/source/${_pkgname:0:1}/${_pkgname//-/_}/${_pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('a3052af6fc7d92e46acafef9e1e479fd01293ae4e3238793e86b2ac311e23b1a')
-b2sums=('8dad062fd8a45954f6904eb0c015ac32bc6cf6c9449978564e8b8679c8cbd0562931fc1b3e88524dfeb2b8d908b13254ae5205dba32705e2948ee30137cc56b0')
+sha256sums=('8254cef5be1d400bd1df3cb33adf47849ca806c77bf0a45037be47f9496db9be')
+b2sums=('e8d13cc162306c9b29b1ae05835864c3e134cb49ab477740ebeeb11af4f39fad3c94b052c9b674c7392df525ff10681dbabac3461dcb37b8af404884af2ba98e')
 
 build() {
   cd "${_pkgname//-/_}-${pkgver}"
