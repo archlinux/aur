@@ -1,0 +1,18 @@
+pkgbase = huetui
+	pkgdesc = A TUI for Phillips Hue
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/channel-42/hue-tui
+	arch = any
+	groups = misc
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-colorthief
+	depends = python-py_cui
+	depends = python-click
+	depends = python-urllib3
+	source = https://github.com/channel-42/hue-tui/archive/v2.0.tar.gz
+	md5sums = 03d1ec432371fcc6f4d988a5cc5685d9
+
+pkgname = huetui
