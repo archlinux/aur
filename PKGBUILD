@@ -3,7 +3,7 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 pkgbase=sol2
 pkgname=(${pkgbase} ${pkgbase}-single)
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="C++ <-> Lua API wrapper with advanced features and top notch performance"
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=(lua lua51 lua53 lua52 luajit)
 conflicts=(${pkgbase})
 provides=(${pkgbase})
 source=(${pkgbase}-${pkgver}::https://github.com/ThePhD/${pkgbase}/archive/v${pkgver}.tar.gz)
-sha512sums=('f1eba8f9ea270a3a3fff9c7a036d130ec848d065e54a8aefd2a19ad7f17dcb6b5744d979fac54c765e8317a4cdcf72e1b9d622d114f48c6502cf2db900c8d4a3')
+sha512sums=('4404b124a4f331d77459c01a92cd73895301e7d3ef829a0285980f0138b9cc66782de3713d54f017d5aad7d8a11d23eeffbc5f3b39ccb4d4306a955711d385dd')
 
 build() {
   cmake \
