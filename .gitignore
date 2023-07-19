@@ -1,6 +1,7 @@
+# Ignore all
 *
+
+# Except
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-*.phar
-*.tar.*
