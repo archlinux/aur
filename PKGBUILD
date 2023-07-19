@@ -5,7 +5,7 @@
 
 pkgbase=rio
 pkgname=('rio' 'rio-terminfo')
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64' 'aarch64')
@@ -15,12 +15,8 @@ license=('MIT')
 depends=('gcc-libs' 'fontconfig' 'freetype2' 'libxcb' 'libxkbcommon' 'python')
 makedepends=('cargo' 'cmake' 'desktop-file-utils')
 optdepends=()
-source=(
-    "${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-    'rio.desktop')
-b2sums=(
-    '45befe3b7eac64affd4ad0ffc34ff2fa33daf74da1049a75bdb3066d31735b7ebcb6b022ba841128af1c89fc2699d4a5a993e22b0272f0f60196b05f10f41c9b'
-    'cdb6a76cae33968b23a5d950c727151b152ea2c2951df0eda08e825d366eb41d7c9182aabb6cf85efe62a66010ce50096582b6300659f781dd5bd0e7a3646041')
+source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('3ad98437561c36e52550f90670f3d4d4ff5c258785daade4e88b78f8c3e699ef8ecb37b653276e397d1d871ea14444bda3a882c417e4f3821093468896bd129d')
 backup=()
 
 prepare() {
@@ -48,12 +44,12 @@ check() {
 
 package_rio() {
     depends+=('rio-terminfo')
-    desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "rio.desktop"
 
     cd "${pkgbase}-${pkgver}"
     install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgbase}"
     install -Dm0644 -t "${pkgdir}/usr/share/doc/${pkgbase}/" "README.md"
     install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgbase}/" "LICENSE"
+    desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "misc/rio.desktop"
     install -Dm0644 "rio/src/screen/window/resources/images/logo-macos.png" "${pkgdir}/usr/share/pixmaps/rio.png"
 }
 
