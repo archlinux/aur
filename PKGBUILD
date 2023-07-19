@@ -4,8 +4,7 @@ _tarver=v2.9.0.2
 _tar=${_tarver}/${pkgname}-${_tarver}.tar.gz
 pkgver=${_tarver/v/}
 pkgrel=1
-pkgdesc="Implementation of Discontinuous Galerkin schemes
-using the DUNE-FEM framework"
+pkgdesc="Implementation of Discontinuous Galerkin schemes using the DUNE-FEM framework"
 arch=(x86_64)
 url="https://dune-project.org/modules/${pkgname}"
 license=(GPL2)
