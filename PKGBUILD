@@ -26,24 +26,26 @@ prepare () {
   # http://openjdk.java.net/jeps/182
   # > In JDK 9 and going forward, javac will use a "one + three back" policy of supported source and target options.
   # NOTE: I just hope, that it'll compile right.
-  local java_ver="$(javac -version | sed -ne 's/^javac\s\+\([0-9]\+\.[0-9]\+\).*$/\1/p')"
-  # NOTE: jdk8 outputs version on STDERR together with other messages,
-  # jdk11, jdk17, jdk20 output version on STDOUT
-  if [ -z $java_ver ]; then
-          java_ver="$(javac -version 2>&1 | sed -ne 's/^javac\s\+\([0-9]\+\.[0-9]\+\).*$/\1/p')"
+
+  #local MAKEPKG_JAVA_VERSION=
+  if [ -z $MAKEPKG_JAVA_VERSION ]; then
+      local MAKEPKG_JAVA_VERSION="$(sed -ne 's/^JAVA_VERSION="\([0-9]\+\.[0-9]\+\).*"$/\1/p' /usr/lib/jvm/default/release)"
+      if [ -z $MAKEPKG_JAVA_VERSION ]; then
+        error    "No Java version information. Set MAKEPKG_JAVA_VERSION variable"
+        plainerr "in PKGBUILD or in the shell environment to a value that is accepted"
+        plainerr "by ant -Djavac.source and -Djavac.target options (e.g. 1.8, 11, 17, 20, ...)"
+        # or fix your setup
+        exit 1
+      fi
+      # accepted: 1.8, 17
+      # not accepted: 17.0
+      case $MAKEPKG_JAVA_VERSION in
+        1.*) ;;
+        *) MAKEPKG_JAVA_VERSION="${MAKEPKG_JAVA_VERSION%.*}" ;;
+      esac
   fi
-  if [ -z $java_ver ]; then
-          msg2 "Couldn't read java version"
-          exit 1
-  fi
-  # accepted: 1.8, 17
-  # not accepted: 17.0
-  case $java_ver in
-    1.*) ;;
-    *) java_ver="${java_ver%.*}" ;;
-  esac
-  msg2 "Using javac version $java_ver"
-  sed "s/%VERSION%/$java_ver/g" < ../build.xml.patch | patch -Np0
+  msg2 "Using Java version $MAKEPKG_JAVA_VERSION"
+  sed "s/%VERSION%/$MAKEPKG_JAVA_VERSION/g" < ../build.xml.patch | patch -Np0
 }
 
 build() {
