@@ -1,7 +1,7 @@
 pkgbase = xwinmosaic-git
 	pkgdesc = X11 window switcher with fancy look
 	pkgver = v0.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://github.com/soulthreads/xwinmosaic
 	arch = i686
 	arch = x86_64
