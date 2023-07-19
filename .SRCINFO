@@ -1,7 +1,7 @@
 pkgbase = python-zodb
 	pkgdesc = A native object database for Python
-	pkgver = 5.8.0
-	pkgrel = 2
+	pkgver = 5.8.1
+	pkgrel = 1
 	url = http://www.zodb.org/en/latest/index.html
 	arch = any
 	license = ZPL
@@ -14,7 +14,7 @@ pkgbase = python-zodb
 	depends = python-zcatalog
 	depends = python-zodbpickle
 	optdepends = python-btreefolder2
-	source = python-zodb-5.8.0.tar.gz::https://files.pythonhosted.org/packages/source/Z/ZODB/ZODB-5.8.0.tar.gz
-	sha256sums = 28dba00ef626de10589ededab85ad0f0edf72925e75d36a15c99c63ac05fe764
+	source = python-zodb-5.8.1.tar.gz::https://files.pythonhosted.org/packages/source/Z/ZODB/ZODB-5.8.1.tar.gz
+	sha256sums = c6c73abd3660d606ffc1f21f97def14b52b46f4a702ec9e6ee449a6e2be264df
 
 pkgname = python-zodb
