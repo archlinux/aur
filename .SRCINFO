@@ -1,0 +1,13 @@
+pkgbase = policy-reporter-cli
+	pkgdesc = Open Source CLI for the Authorization with the Open Telekom Cloud
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/fjogeleit/policy-reporter-cli
+	arch = x86_64
+	arch = arm64
+	license = MIT
+	makedepends = go
+	source = https://github.com/fjogeleit/policy-reporter-cli/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 0747829b265ff33aff482f5962dd316a86c5b1fa95fa437cc5dced632c65c59f
+
+pkgname = policy-reporter-cli
