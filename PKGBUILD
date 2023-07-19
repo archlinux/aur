@@ -2,15 +2,15 @@
 
 _pkgname=livsdiary
 pkgname=$_pkgname-git
-pkgver=v3.3.0.r3.79d7cb7
+pkgver=v3.3.1.r0.79d7cb7
 pkgrel=1
-epoch=
 pkgdesc="Lightweight virtual simple diary."
 arch=(any)
 url="https://github.com/olivia-may/$_pkgname"
 license=(GPL)
 depends=(ncurses)
-makedepends=(muon git)
+makedepends=(muon)
+checkdepends=(git)
 provides=($_pkgname)
 source=("git+https://github.com/olivia-may/$_pkgname.git")
 sha256sums=(SKIP)
@@ -29,6 +29,6 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    install -D ./bin/livsdiary $pkgdir/usr/bin/livsdiary
-    install -D ./livsdiary.desktop $pkgdir/usr/share/applications/livsdiary.desktop
+    install -Dm755 ./bin/livsdiary $pkgdir/usr/bin/livsdiary
+    install -Dm744 ./livsdiary.desktop $pkgdir/usr/share/applications/livsdiary.desktop
 }
