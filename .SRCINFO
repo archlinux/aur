@@ -52,6 +52,6 @@ pkgbase = hyprland-nvidia
 	source = hyprland-nvidia-0.27.2.tar.gz::https://github.com/hyprwm/Hyprland/releases/download/v0.27.2/source-v0.27.2.tar.gz
 	source = nvidia.patch
 	sha256sums = 1cb1b345fd98e80cb04ba60c7bb42ead6b6ad79898f84b468f3ba87459d99f1f
-	sha256sums = e055dfa5791c5b01f2c3e5388c9009e713627650b9b21b0168288ee4b85ba799
+	sha256sums = 10223a97a622ea7e641b4305a9a4f7bf0cb0526dacfbfa5970171558b3a63488
 
 pkgname = hyprland-nvidia

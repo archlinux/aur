@@ -54,7 +54,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/hyprwm/Hyprland/release
 conflicts=("${_pkgname}")
 provides=(hyprland)
 sha256sums=('1cb1b345fd98e80cb04ba60c7bb42ead6b6ad79898f84b468f3ba87459d99f1f'
-            'e055dfa5791c5b01f2c3e5388c9009e713627650b9b21b0168288ee4b85ba799')
+            '10223a97a622ea7e641b4305a9a4f7bf0cb0526dacfbfa5970171558b3a63488')
 options=(!makeflags !buildflags !strip)
 
 build() {
