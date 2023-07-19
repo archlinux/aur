@@ -1,0 +1,20 @@
+pkgbase = dune-fem
+	pkgdesc = Implementation of a number of virtual element spaces and bilinear forms
+	pkgver = 2.9.0.2
+	pkgrel = 1
+	url = https://dune-project.org/modules/dune-fem
+	arch = x86_64
+	license = GPL2
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = python-scikit-build
+	makedepends = python-ninja
+	depends = dune-fem>=2.9.0.2
+	depends = python-sortedcontainers
+	depends = python-triangle
+	optdepends = doxygen: Generate the class documentation from C++ sources
+	optdepends = graphviz: Graph visualization software
+	source = https://gitlab.dune-project.org/dune-fem/dune-fem/-/archive/v2.9.0.2/dune-fem-v2.9.0.2.tar.gz
+	sha512sums = b8194b88c1e03b45bc1349aaf72e8605b2644eb6cc6518349bfba12b93e126c6f6e76363d48a1f2744ee56e4b62c6f1388f1bc28609bf00b219e4392b7d30b32
+
+pkgname = dune-fem
