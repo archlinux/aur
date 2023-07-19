@@ -11,19 +11,19 @@ arch=(any)
 url='https://github.com/tuberry/color-picker'
 license=('GPL3')
 depends=('dconf' 'gnome-shell')
-makedepends=('git' 'meson' 'ninja' 'sassc')
+makedepends=('meson' 'sassc')
 source=("${_pkgbase}-${pkgver}.tar.gz::${url}/tarball/${_commit}"
-        "git+https://gitlab.gnome.org/GNOME/gnome-shell-sass.git#commit=adeed6c")
+        "gnome-shell-sass-adeed6c9b448521bf044bb153f0f29dc950c33ea.tar::https://gitlab.gnome.org/GNOME/gnome-shell-sass/-/archive/adeed6c9b448521bf044bb153f0f29dc950c33ea/gnome-shell-sass.tar")
 sha256sums=('721c74569febe9e008881ada90307b4d86de65e4c076c9a218426ec96de7cb6a'
-            'SKIP')
+            'a7ce4d4aec881a2f5505f13506eb5139f1ab3cc1192be916c8ad59686c3b6919')
 
 prepare() {
-  cp -r gnome-shell-sass "${_pkgbase}-${_commit}/res/styles/"
+  cp -r gnome-shell-sass-adeed6c9b448521bf044bb153f0f29dc950c33ea/. "${_pkgbase}-${_commit}/res/styles/gnome-shell-sass"
 }
 
 build() {
   cd "${_pkgbase}-${_commit}"
-  LANG=${LANG} meson setup build
+  meson setup build
 }
 
 package() {
