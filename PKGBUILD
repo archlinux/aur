@@ -2,7 +2,7 @@
 # Maintainer: javsanpar <javsanpar@riseup.net>
 pkgname=abaddon-git
 _pkgname=abaddon
-pkgver=0.1.10.r109.g3fbc71e
+pkgver=0.1.11.r59.g857e94a
 pkgrel=1
 pkgdesc='An alternative Discord client made with C++/gtkmm'
 url='https://github.com/uowuo/abaddon'
@@ -23,6 +23,7 @@ prepare () {
   git submodule update --init subprojects/ixwebsocket/
   git submodule update --init subprojects/keychain/
   git submodule update --init subprojects/miniaudio/
+  git submodule update --init subprojects/qrcodegen/
 }
 
 build () {
