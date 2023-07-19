@@ -1,7 +1,7 @@
 # Maintainer: Matt Kasun <matt at netmaker.io>
 pkgname=netclient-bin
 pkgver=0.20.4
-pkgrel=0
+pkgrel=1
 pkgdesc="A component of netmaker"
 arch=(x86_64)
 url='https://fileserver.netmaker.org'
