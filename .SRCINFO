@@ -1,6 +1,6 @@
 pkgbase = meteo-gtk
 	pkgdesc = A forecast application using OpenWeatherMap API
-	pkgver = 0.9.9.1
+	pkgver = 0.9.9.2
 	pkgrel = 1
 	url = https://gitlab.com/bitseater/meteo
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = meteo-gtk
 	makedepends = meson
 	makedepends = vala
 	depends = gtk3
-	depends = libappindicator-gtk3
+	depends = libayatana-appindicator
 	depends = webkit2gtk
 	provides = meteo
 	conflicts = meteo
-	source = git+https://gitlab.com/bitseater/meteo.git#commit=6bd48892ec86d7208cb4ad1dd8baf74ba72df68f?signed
+	source = git+https://gitlab.com/bitseater/meteo.git#commit=e1960a100fb2a58cd24e833aede152d5f86ca5e1?signed
 	validpgpkeys = 900E41F44EFF4B6D696EB80AE6BDC743AED36483
 	sha256sums = SKIP
 
