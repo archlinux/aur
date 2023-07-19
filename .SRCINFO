@@ -1,10 +1,11 @@
 pkgbase = nona
 	pkgdesc = NONA: a bastard son of Pee-Wee. Phylogenetic Analysis Software
-	pkgver = 2.0
-	pkgrel = 9
+	pkgver = 2014.03.10
+	pkgrel = 3
 	url = http://www.lillo.org.ar/phylogeny/Nona-PeeWee/readme.htm
 	arch = any
 	license = custom
+	depends = lib32-glibc
 	source = http://www.lillo.org.ar/phylogeny/Nona-PeeWee/nona-linux.tar.gz
 	sha256sums = 40698b797a3d58707521dd3cea0ebdf3f80ff5c1075382f98b81860fc426de69
 
