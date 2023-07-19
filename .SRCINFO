@@ -1,6 +1,6 @@
 pkgbase = term-notes
 	pkgdesc = Terminal-based note-taking application
-	pkgver = v.1.0.2
+	pkgver = v.1.0.3
 	pkgrel = 1
 	url = https://github.com/felipealfonsog/TermNotes
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = term-notes
 	depends = vim
 	depends = nano
 	depends = coreutils
-	source = https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.1.0.2.tar.gz
+	source = https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.1.0.3.tar.gz
 	sha256sums = 2b632c12461adc29c41c574499fd97024342df2b35faa7314537387f234f617d
 
 pkgname = term-notes
