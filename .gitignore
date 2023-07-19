@@ -1,0 +1,4 @@
+pkg/
+src/
+twitch-cli*.pkg.tar.zst
+twitch-cli_*_Linux_x86_64.tar.gz
