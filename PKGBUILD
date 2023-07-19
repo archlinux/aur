@@ -1,5 +1,5 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-pkgname=dune-fem
+pkgname=dune-vem
 _tarver=v2.9.0.2
 _tar=${_tarver}/${pkgname}-${_tarver}.tar.gz
 pkgver=${_tarver/v/}
