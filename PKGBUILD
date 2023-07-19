@@ -4,8 +4,8 @@
 #
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-nosystemd-git
-pkgver=6.11.50933.b7b3c99172
-pkgrel=2
+pkgver=7.0.53233.2078abd1ba
+pkgrel=1
 pkgdesc="A Second Life client with focus on performance and code correctness."
 arch=('x86_64')
 license=('LGPL')
