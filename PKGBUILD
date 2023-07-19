@@ -17,9 +17,7 @@ pkgver=1.0.0
 pkgrel=1
 epoch=
 pkgdesc="stl-c is a C library designed to provide a set of structure-related functionalities for working with
-static memory and dynamic memory. Inspired by the Standard Template Library (STL) of C++, stl-c offers a
-collection of generic template data structures and algorithms that are optimized for static memory and dynamic
-memory, allocation and manipulation."
+static memory and dynamic memory. Inspired by the Standard Template Library (STL) of C++"
 
 arch=('x86_64')
 url="https://github.com/alecksandr26/stl-c/archive/refs/tags/v1.0.0.tar.gz"
