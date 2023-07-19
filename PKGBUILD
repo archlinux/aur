@@ -7,7 +7,7 @@ pkgdesc='A version control system tool designed to make working with multiple re
 arch=('any')
 url='https://github.com/dirk-thomas/vcstool'
 license=('Apache')
-depends=('python' 'python-yaml')
+depends=('python' 'python-setuptools' 'python-yaml')
 makedepends=('python-setuptools')
 
 conflicts=('python2-vcstool')

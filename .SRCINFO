@@ -7,6 +7,7 @@ pkgbase = python-vcstool
 	license = Apache
 	makedepends = python-setuptools
 	depends = python
+	depends = python-setuptools
 	depends = python-yaml
 	conflicts = python2-vcstool
 	source = https://github.com/dirk-thomas/vcstool/archive/0.3.0.tar.gz
