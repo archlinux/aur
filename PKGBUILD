@@ -3,7 +3,7 @@
 # Contributor: kikadf <kikadf.01@gmail.com>
 
 pkgname=mir
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="Canonical's display server"
 url='https://mir-server.io'
@@ -14,10 +14,9 @@ makedepends=(git glm doxygen cmake boost gcovr gmock lcov valgrind python-dbusmo
 optdepends=('qterminal: required for miral demos'
             'ttf-ubuntu-font-family: required for miral demos'
             'qt5-wayland: required for miral demos'
-            'xcursor-dmz: opt requirement for miral demos'
-            'qtubuntu: opt requirement for miral demos')
+            'xcursor-dmz: opt requirement for miral demos')
 source=("https://github.com/MirServer/mir/archive/v${pkgver}.tar.gz")
-sha256sums=('d4ab2f979ba8570f53f0d7ed702a8ed7d9876ede246cc0ff68c17a1031be422d')
+sha256sums=('8b4b3b54e323efe8faaceab8ef9c80ffd1c7eba3c557c8183e8c25edf0953c3e')
 
 BUILD_DIR=build
 
