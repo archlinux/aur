@@ -1,0 +1,11 @@
+pkgbase = intel-ethernet-722smc
+	pkgdesc = NVM Update Utility for Intel® Ethernet Converged Network Adapter X722 Series
+	pkgver = 5.50
+	pkgrel = 1
+	url = https://forum.proxmox.com/threads/supermicro-x11dpi-nt-nic-x722-firmware-nvm-update.121609/
+	arch = x86_64
+	license = Custom
+	source = https://s3.e2e4.ru/k0ste/rpm/intel-ethernet-722smc-5.50.zip
+	sha256sums = 312a6c7c7d3efc6aaba6dbf9af8d55ccf88d806609548fddcc5b76847b69d06a
+
+pkgname = intel-ethernet-722smc
