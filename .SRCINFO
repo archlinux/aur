@@ -1,6 +1,6 @@
 pkgbase = cargo-insta
 	pkgdesc = Cargo plugin for snapshot testing in Rust
-	pkgver = 1.30.0
+	pkgver = 1.31.0
 	pkgrel = 1
 	url = https://github.com/mitsuhiko/insta
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = cargo-insta
 	license = APACHE
 	makedepends = cargo
 	depends = gcc-libs
-	source = cargo-insta-1.30.0.tar.gz::https://github.com/mitsuhiko/insta/archive/1.30.0.tar.gz
-	sha512sums = 2213fdd501b17d3490f57a9177d64b8c68e8d0843baf5382dbd76bcea7afc6c42046975fe6d135c2b8fc2bb806d9ec70d72ad5b54f4f6c384689029eb458636a
+	source = cargo-insta-1.31.0.tar.gz::https://static.crates.io/crates/cargo-insta/cargo-insta-1.31.0.crate
+	sha512sums = 2158e2cbc701ea438e1faf8b6bbb34cc8eed7d3cdd334fcdd846e34cbfc5d11340990752b8effcffb4619d9454dd5b795342e7ad84200489f625400596fafc38
 
 pkgname = cargo-insta

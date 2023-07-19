@@ -2,7 +2,7 @@
 # Contributor: Vlad Frolov <frolvlad@gmail.com>
 
 pkgname=cargo-insta
-pkgver=1.30.0
+pkgver=1.31.0
 pkgrel=1
 pkgdesc="Cargo plugin for snapshot testing in Rust"
 url="https://github.com/mitsuhiko/insta"
@@ -10,21 +10,24 @@ depends=('gcc-libs')
 makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('APACHE')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('2213fdd501b17d3490f57a9177d64b8c68e8d0843baf5382dbd76bcea7afc6c42046975fe6d135c2b8fc2bb806d9ec70d72ad5b54f4f6c384689029eb458636a')
+source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
+sha512sums=('2158e2cbc701ea438e1faf8b6bbb34cc8eed7d3cdd334fcdd846e34cbfc5d11340990752b8effcffb4619d9454dd5b795342e7ad84200489f625400596fafc38')
 
-build() {
-  cd "$srcdir/insta-$pkgver/cargo-insta"
-  cargo build --release --locked
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
-check() {
-  cd "$srcdir/insta-$pkgver/cargo-insta"
-  cargo test --release --locked
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 package() {
-  cd "$srcdir/insta-$pkgver/cargo-insta"
+  cd "$srcdir/$pkgname-$pkgver"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/$pkgname"
