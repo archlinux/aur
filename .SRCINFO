@@ -1,17 +1,18 @@
 pkgbase = perl-io-prompter
 	pkgdesc = IO::Promter - Prompt for input, read it, clean it, return it.
-	pkgver = 0.004015
-	pkgrel = 2
+	pkgver = 0.005001
+	pkgrel = 1
 	url = https://metacpan.org/release/IO-Prompter
 	arch = any
 	license = GPL
 	license = PerlArtistic
 	depends = perl
 	depends = perl-contextual-return
+	depends = perl-match-simple
 	optdepends = perl-term-readkey: better performance
 	options = !emptydirs
 	options = purge
-	source = https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/IO-Prompter-0.004015.tar.gz
-	md5sums = cf40bb0aed4a5a02f98dab854a53737a
+	source = https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/IO-Prompter-0.005001.tar.gz
+	sha256sums = 8376082d66c7a1d12fc44f614b875f25f9d953ed22cfa91b12643a6042968376
 
 pkgname = perl-io-prompter
