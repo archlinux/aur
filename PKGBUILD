@@ -86,12 +86,6 @@ _tickrate=${_tickrate-full}
 ## Choose between full(low-latency), voluntary or server
 _preempt=${_preempt-full}
 
-### Disable MQ-Deadline I/O scheduler
-_mq_deadline_disable=${_mq_deadline_disable-y}
-
-### Disable Kyber I/O scheduler
-_kyber_disable=${_kyber_disable-y}
-
 ### Enable multigenerational LRU
 # ATTENTION - one of three predefined values should be selected!
 # 'standard' - enable multigenerational LRU
@@ -174,7 +168,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.4
-_minor=3
+_minor=4
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -373,18 +367,6 @@ prepare() {
         scripts/config --set-val NR_CPUS 320
     else
         _die "The value '$_nr_cpus' is invalid. Please select a numerical value from 2 to 512..."
-    fi
-
-    ### Disable MQ Deadline I/O scheduler
-    if [ -n "$_mq_deadline_disable" ]; then
-        echo "Disabling MQ-Deadline I/O scheduler..."
-        scripts/config -d MQ_IOSCHED_DEADLINE
-    fi
-
-    ### Disable Kyber I/O scheduler
-    if [ -n "$_kyber_disable" ]; then
-        echo "Disabling Kyber I/O scheduler..."
-        scripts/config -d MQ_IOSCHED_KYBER
     fi
 
     ### Select performance governor
@@ -807,9 +789,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('d38cae9706127fa28cc55b50ceeba7601de3d1db648b934b9d33e0b439324790074b755b1de204586fa098a326f5c88f81550cff76489b2ea6505987fc243c56'
+b2sums=('1ab6c93da986dac6a07a5e3bc764f9d2a5bb9b8989321244455d894690634ac04364e6a3f960e8674f47ae22fc4ed09b18aa60cbf279636083e61aa6524f8a59'
         'a59d7cb7f51287af6f15e854319c4fa78682e5a436f36ae17b822b5a8ccc2219e0fc027cdc10e48df8d68b201a788ab8792f68263a5fd32de335dd9399bb09ff'
         '11d2003b7d71258c4ca71d71c6b388f00fe9a2ddddc0270e304148396dadfd787a6cac1363934f37d0bfb098c7f5851a02ecb770e9663ffe57ff60746d532bd0'
-        '8ee179d3da413f1a2f08db80587388f1742dfd427a7ff7f1e3e146fdd94dbd3abdc929b64a5c3773b28d5cea4da42791661bc0c8f738b0fe1ccc5b3c66d9dbe4'
-        'dceb0a3be5829e646533349f9997a3e20de67dcd75542c281499d6db10be2bf3a3d8aa48c0f47e5fa000f8a0ae750201332e0fcb0919131bc77b7218dec26c3b'
-        'c23fe886e781a9a7bc2e855a74d5c7a669ecfaf5b39fadd822814f379b289840b9c32abb8d325c247a60a0c05398a9c4b753ed3d664cbb01e1831187ebdad30b')
+        '50c52fc549392c73bc78151df1ed211ed2257ccc31f5296486f6c4ddd45bef2fa6c0680a4283440418dcf7b980057065944c2a89b1772ae0d86f20362ce8a93a'
+        '7a0aca1470662b403a153db1c87317afdc8934dd0be72d546d92eb83817d5e11c4b5b8298ab43f1157005247a168cc1ae93853539a46960a694c17f11f493c06'
+        '25d959e775c7fddb6680563517cf06c625db1fae42c9d21fcecdaa72a6f9684ee58f5e70e4431bfd17f69f96fb2ede61699d95cf12248a4d62a26dc002e7b1d5')
