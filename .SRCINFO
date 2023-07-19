@@ -1,6 +1,6 @@
 pkgbase = python-survey
 	pkgdesc = A simple library for creating beautiful interactive prompts.
-	pkgver = 4.5.1
+	pkgver = 4.5.2
 	pkgrel = 1
 	url = https://github.com/Exahilosys/survey
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-survey
 	makedepends = python-sphinx-autodoc-typehints
 	makedepends = python-sphinx-paramlinks
 	depends = python-wrapio
-	source = https://files.pythonhosted.org/packages/6e/12/4d56d8130d981f59d604b1012101f045e66109c133a80ca847593d86eb15/survey-4.5.1.tar.gz
-	sha256sums = 1a72880901904a083fd6c24de76e2b680c6f0a6af3a9bcae68fefa9ba89af30a
+	source = https://files.pythonhosted.org/packages/94/5b/b3429928b766e38c155a8f01cae3ebec3c56760ed9dc73f172f04e28a926/survey-4.5.2.tar.gz
+	sha256sums = bab2bea5fe01855e20ab20c00e00f6d4f17beae62fbe3aa017159e6455ef567b
 
 pkgname = python-survey
