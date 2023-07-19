@@ -1,18 +1,19 @@
-pkgbase = calendar-cli
-	pkgdesc = calendar-cli is a caldav client for calendar and task management
-	pkgver = 0.14.1
+pkgbase = plann
+	pkgdesc = plann is a caldav client for calendar and task management
+	pkgver = 0.15
 	pkgrel = 1
-	url = https://github.com/tobixen/calendar-cli
+	url = https://github.com/tobixen/plann
 	arch = any
 	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pytest
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	depends = python-caldav>=0.11.0
+	depends = python-caldav
 	depends = python-icalendar
-	depends = python-pytz
-	depends = python-vobject
-	depends = python-tzlocal
-	depends = python-six
-	source = https://github.com/tobixen/calendar-cli/archive/v0.14.1.tar.gz
-	sha256sums = d4630c2b8947b576b1d5cc0b466ef1d88e1cc79239fc097cebd598e0544c48c2
+	source = https://github.com/tobixen/plann/archive/v0.15.tar.gz
+	sha256sums = 9540d6aa4fe2b47e6bc1d32694d352b7c11a5c64ac16eb2a7728bbae7611d49c
 
-pkgname = calendar-cli
+pkgname = plann
