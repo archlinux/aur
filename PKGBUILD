@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=115.0.5790.90
+pkgver=115.0.5790.98
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=2
@@ -30,7 +30,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         REVERT-disable-autoupgrading-debug-info.patch
         random-build-fixes.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('82e802bcd2ae8d575d7fda9ec82db83d04d5453e9304cb482644f629232bd394'
+sha256sums=('ffbe630ecf8fc8a250be05fdbec6c94d5881b5fcbbc5fb2b93e54ddc78d56af1'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '4f91bd10a8ae2aa7b040a8b27e01f38910ad33cbe179e39a1ae550c9c1523384'
             '1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69'
