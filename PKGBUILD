@@ -1,9 +1,10 @@
 # Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
 # Contributor: 
 
-_gitname=xdg-desktop-portal-pantheon
+_gitname=portals
 _author=elementary
-pkgname=("${_gitname}-git")
+_pkg=xdg-desktop-portal-pantheon
+pkgname=("${_pkg}-git")
 pkgver=r487.8e942fd
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for the Pantheon desktop environment (the official elementary OS desktop environment)"
@@ -13,8 +14,8 @@ license=('GPL3')
 depends=('glib2' 'granite7' 'gtk4' 'vte4')
 optdepends=()
 makedepends=('git' 'meson>=0.58' 'ninja' 'vala>=0.56.1')
-provides=("xdg-desktop-portal" "${_gitname}" "${_gitname}-git")
-conflicts=("xdg-desktop-portal-gnome" "xdg-desktop-portal-gtk" "${_gitname}")
+provides=("xdg-desktop-portal" "${_pkg}" "${_pkg}-git")
+conflicts=("xdg-desktop-portal-gnome" "xdg-desktop-portal-gtk" "${_pkg}")
 source=("git+${url}.git")
 md5sums=('SKIP')
 

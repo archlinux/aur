@@ -2,7 +2,7 @@ pkgbase = xdg-desktop-portal-pantheon-git
 	pkgdesc = A backend implementation for xdg-desktop-portal for the Pantheon desktop environment (the official elementary OS desktop environment)
 	pkgver = r487.8e942fd
 	pkgrel = 1
-	url = https://github.com/elementary/xdg-desktop-portal-pantheon
+	url = https://github.com/elementary/portals
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = xdg-desktop-portal-pantheon-git
 	conflicts = xdg-desktop-portal-gnome
 	conflicts = xdg-desktop-portal-gtk
 	conflicts = xdg-desktop-portal-pantheon
-	source = git+https://github.com/elementary/xdg-desktop-portal-pantheon.git
+	source = git+https://github.com/elementary/portals.git
 	md5sums = SKIP
 
 pkgname = xdg-desktop-portal-pantheon-git
