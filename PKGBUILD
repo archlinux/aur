@@ -2,7 +2,7 @@
 
 pkgname=libation
 _pkgname=Libation
-pkgver=10.6.2
+pkgver=10.6.3
 pkgrel=1
 pkgdesc="Audible Audiobook Manager: Liberate your Library"
 arch=("any")
@@ -10,7 +10,7 @@ url="https://github.com/rmcrackan/Libation"
 license=("GPL-3.0")
 makedepends=("dotnet-sdk")
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("54c841ec8ad8f73e1cd2d6b8e260929ef3a4bc8fc6204e756fc9baaa1566e788")
+sha256sums=("91e4df3b1cbb4072860e49cb5995d06a67f5b8b7695b3da3ea32a01cb7bc517b")
 
 build() {
   cd $_pkgname-$pkgver
