@@ -1,5 +1,5 @@
 # Maintainer: VitalyR <vr@vitalyr.com>
-# Maintainer: xiretza <aur@xiretza.xyz>
+# Former Maintainer: xiretza <aur@xiretza.xyz>
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
 # BUILD INSTRUCTIONS:
@@ -30,72 +30,73 @@ pkgname=vivado
 _srcname=Xilinx_Unified
 pkgver=2023.1
 _more_ver=0507_1903
-pkgrel=1
+pkgrel=2
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
 license=('custom')
 depends=('ncurses5-compat-libs'
-         'libxcrypt-compat'
-         'libpng12'
-         'lib32-libpng12'
-         'gtk2'
-         'xorg-xlsclients'
-         'cpio'
+    'libxcrypt-compat'
+    'libpng12'
+    'lib32-libpng12'
+    'gtk3'
+    'inetutils'
+    'xorg-xlsclients'
+    'cpio'
 )
 optdepends=('fxload'
-            'digilent.adept.runtime'
-            'digilent.adept.utilities'
-            'matlab: Model Composer'
-            'qt4: Model Composer'
+    'digilent.adept.runtime'
+    'digilent.adept.utilities'
+    'matlab: Model Composer'
+    'qt4: Model Composer'
 )
 
 source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
-        'spoof_homedir.c')
+    'spoof_homedir.c')
 
 # checksum from https://www.xilinx.com/support/download.html
 md5sums=('f2011ceba52b109e3551c1d3189a8c9c'
-         '69d14ad64f6ec44e041eaa8ffcb6f87c')
+    '69d14ad64f6ec44e041eaa8ffcb6f87c')
 
 # takes forever for probably minimal gain
 options=('!strip')
 
 prepare() {
-	mkdir -p "$srcdir/installer_temp"
+    mkdir -p "$srcdir/installer_temp"
 }
 
 build() {
-	# build our getpwuid() wrapper library
-	gcc -shared -fPIC -D "FAKE_HOME=\"$srcdir/installer_temp\"" spoof_homedir.c -o spoof_homedir.so -ldl
+    # build our getpwuid() wrapper library
+    gcc -shared -fPIC -D "FAKE_HOME=\"$srcdir/installer_temp\"" spoof_homedir.c -o spoof_homedir.so -ldl
 }
 
 package() {
-	cd "${_srcname}_${pkgver}_${_more_ver}"
+    cd "${_srcname}_${pkgver}_${_more_ver}"
 
-	# LD_PRELOAD already contains libfakeroot.so, add our own library before that
-	LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
-		--batch Install \
-		--agree XilinxEULA,3rdPartyEULA \
-		--product Vivado \
-		--edition 'Vivado ML Standard' \
-		--location "$pkgdir/opt/Xilinx"
+    # LD_PRELOAD already contains libfakeroot.so, add our own library before that
+    LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
+        --batch Install \
+        --agree XilinxEULA,3rdPartyEULA \
+        --product Vivado \
+        --edition 'Vivado ML Standard' \
+        --location "$pkgdir/opt/Xilinx"
 
-	# install udev rules
-	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    # install udev rules
+    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+    install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 
-	# install desktop files
-	for deskfile in "$srcdir"/installer_temp/Desktop/*.desktop; do
-		sed -i -e "s|$pkgdir||g" "$deskfile"
-		install -Dm644 -t "$pkgdir/usr/share/applications/" "$deskfile"
-	done
+    # install desktop files
+    for deskfile in "$srcdir"/installer_temp/Desktop/*.desktop; do
+        sed -i -e "s|$pkgdir||g" "$deskfile"
+        install -Dm644 -t "$pkgdir/usr/share/applications/" "$deskfile"
+    done
 
-	# clean up artefacts, remove leading $pkgdir from paths
-	rm -rf "$pkgdir/opt/Xilinx/.xinstall/"
-	find "$pkgdir/opt/Xilinx/" -name '*settings64*' -exec sed -i -e "s|$pkgdir||g" '{}' \+
+    # clean up artefacts, remove leading $pkgdir from paths
+    rm -rf "$pkgdir/opt/Xilinx/.xinstall/"
+    find "$pkgdir/opt/Xilinx/" -name '*settings64*' -exec sed -i -e "s|$pkgdir||g" '{}' \+
 
-	# Save space for subsequent packaging, checking etc
-	cd ..
-	rm -rf "${_srcname}_${pkgver}_${_more_ver}"
+    # Save space for subsequent packaging, checking etc
+    cd ..
+    rm -rf "${_srcname}_${pkgver}_${_more_ver}"
 }
