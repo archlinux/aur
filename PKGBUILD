@@ -3,10 +3,10 @@
 
 pkgname=gnome-shell-extension-color-picker
 _pkgbase=tuberry-color-picker
-pkgver=37 # should be 36 but I didn't notice get-version.sh increments by 1, now fixed but can't "downgrade"
+pkgver=36
 _commit=e0877dd
 _sass_commit=adeed6c9b448521bf044bb153f0f29dc950c33ea
-pkgrel=2
+pkgrel=1
 pkgdesc='Simple color picker for Gnome Shell'
 arch=(any)
 url='https://github.com/tuberry/color-picker'
