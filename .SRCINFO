@@ -1,6 +1,6 @@
 pkgbase = orbiter2016-git
 	pkgdesc = Orbiter Space Flight Simulator
-	pkgver = 20230705.01aaeb0
+	pkgver = r560.01aaeb02
 	pkgrel = 1
 	url = http://orbit.medphys.ucl.ac.uk/index.html
 	arch = x86_64

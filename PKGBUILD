@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
 
 pkgname=orbiter2016-git
-pkgver=20230705.01aaeb0
+pkgver=r560.01aaeb02
 pkgrel=1
 pkgdesc="Orbiter Space Flight Simulator"
 arch=(x86_64)
@@ -53,7 +53,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd TheGondos-orbiter
-  git log -1 --format='%cd.%h' --date=short --abbrev=7 | tr -d -
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
