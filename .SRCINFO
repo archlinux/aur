@@ -1,0 +1,12 @@
+pkgbase = pact-git
+	pkgdesc = A simple wrapper for the pacman package manager similar to apt.
+	pkgver = r5.8eaa1b5
+	pkgrel = 1
+	url = https://github.com/antunnitraj/pact
+	arch = any
+	license = GPL
+	makedepends = git
+	source = pact::git+https://github.com/antunnitraj/pact.git
+	md5sums = SKIP
+
+pkgname = pact-git
