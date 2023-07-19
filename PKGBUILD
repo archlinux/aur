@@ -2,8 +2,8 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-meta
-pkgver=43
-pkgrel=3
+pkgver=44
+pkgrel=1
 pkgdesc='Meta package to install GNOME'
 arch=(any)
 url='https://www.gnome.org/'
@@ -14,7 +14,6 @@ depends=(
   eog
   epiphany
   evince
-  file-roller
   gdm
   gnome-backgrounds
   gnome-calculator
@@ -22,6 +21,7 @@ depends=(
   gnome-characters
   gnome-clocks
   gnome-color-manager
+  gnome-connections
   gnome-console
   gnome-contacts
   gnome-control-center
@@ -41,9 +41,9 @@ depends=(
   gnome-software
   gnome-system-monitor
   gnome-text-editor
+  gnome-tour
   gnome-user-docs
   gnome-user-share
-  gnome-video-effects
   gnome-weather
   grilo-plugins
   gvfs
@@ -58,9 +58,11 @@ depends=(
   nautilus
   orca
   rygel
+  simple-scan
   sushi
   totem
   tracker3-miners
+  xdg-desktop-portal-gnome
   xdg-user-dirs-gtk
   yelp
 )
