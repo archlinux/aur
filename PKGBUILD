@@ -1,13 +1,12 @@
 # Maintainer:
 
-# set source - chaotic-aur or bitbucket (default) 
-_pkg='chaotic-aur'
-_caur_pkgrel=1.1
+# set source - chaotic-aur or bitbucket
+: ${_pkg:=bitbucket}
 
 _pkgname=art-rawconverter
 pkgname="$_pkgname-bin"
-pkgver=1.20
-pkgrel=2
+pkgver=1.20.1
+pkgrel=1
 pkgdesc="Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)"
 arch=('x86_64')
 url="https://bitbucket.org/agriggio/art"
@@ -28,10 +27,23 @@ provides=('art-rawconverter')
 options=(!strip !debug)
 
 case "$_pkg" in
-  '1'|'chaotic-aur'|'caur')
+  '1'|'c'|'caur'|'chaotic-aur')
     # chaotic-aur
+    _regex='^art-rawconverter-([0-9]+.+)(\.r[0-9]+.*)?-([0-9]+.*)-(.+)\.pkg\.tar\.zst$'
+
+    _filelist=$(curl "https://builds.garudalinux.org/repos/chaotic-aur/pkgs.files.txt" -s)
+
+    _filename=$(printf '%s' "$_filelist" | grep -E "$_regex" | tail -1)
+
+    pkgver=$(
+      printf '%s' "$_filename" \
+        | sed -E "s@$_regex@\1@"
+    )
+
+    pkgrel="${pkgrel}.1"
+
     _url="https://cdn-mirror.chaotic.cx/chaotic-aur/$CARCH"
-    _dl_url="$_url/art-rawconverter-$pkgver-$_caur_pkgrel-$CARCH.pkg.tar.zst"
+    _dl_url="$_url/$_filename"
 
     source=(
       "$_pkgname-$pkgver-caur.tar.xz"::"$_dl_url"
@@ -48,7 +60,7 @@ case "$_pkg" in
       "bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip"
     )
     sha256sums+=(
-      'bba6bc335bfd337e2805cac435c51d3493d1a8271b78ba4355920403b8771e90'
+      '469a3c0149fbcd52cbaf6c9a3b52041b443175f5e90e9f7c86c5600a719c38c0'
       '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a4346'
     )
     ;;
@@ -57,7 +69,7 @@ esac
 
 prepare() {
   case "$_pkg" in
-    '1'|'chaotic-aur'|'caur')
+    '1'|'c'|'caur'|'chaotic-aur')
       # chaotic-aur
       ;;
     *)
@@ -93,7 +105,7 @@ package() {
   )
 
   case "$_pkg" in
-    '1'|'chaotic-aur'|'caur')
+    '1'|'c'|'caur'|'chaotic-aur')
       # chaotic-aur
       mv "$srcdir/usr" "$pkgdir"
 
