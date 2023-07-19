@@ -1,8 +1,9 @@
+# Maintainer: Ember Schryver <katie.schryver@protonmail.com>
 # Maintainer: Ethan Atchley <ethanatchley2006@gmail.com>
 # Maintainer: Hydral
 pkgname=gamejolt-client-bin-aur
 pkgname=gamejolt-client-bin-aur
-pkgver=0.57.0
+pkgver=1.32.0
 pkgrel=1
 epoch=
 pkgdesc="GameJolt library of game"
@@ -11,7 +12,7 @@ url="https://gamejolt.com/"
 license=('MIT')
 source=("gamejolt.png"
                 "GameJolt.desktop"
-                "gamejolt-$pkgver::https://f-cdn.gamejolt.net/data/games/5/162/362412/protected-files-cdn/5fc916a47f5aa/gamejoltclient.tar.gz?secure=_6FmNSKkpdwCFXpyBiI2Fw%2C1607161231")
+                "gamejolt-$pkgver::https://download.gamejolt.net/ab3b7f028299b984e7faa8689c6b8357ce55879bb221e0773277e6ff0d34ebf8,1689826565,7/data/games/5/162/362412/files/64b1dc742580f/gamejoltclient.tar.gz")
 prepare() {
         echo $srcdir
 }
@@ -31,10 +32,10 @@ package() {
         install -Dm775 GameJolt.desktop                 $pkgdir/usr/share/applications/GameJolt.desktop
         install -Dm777 .manifest                                        $pkgdir/opt/gamejolt/.manifest
         install -Dm777 game-jolt-client                 $pkgdir/opt/gamejolt/game-jolt-client
-        mv data-376715-939575                                   $pkgdir/opt/gamejolt
-        chmod 777 $pkgdir/opt/gamejolt/data-376715-939575
+        mv data-376715-1430054                                   $pkgdir/opt/gamejolt
+        chmod 777 $pkgdir/opt/gamejolt/data-376715-1430054
 
 }
 md5sums=('4c975528cb791ee16e5c62edbbf28287'
          'e720ff802bc3e2e758ab0a4491e7e13c'
-         '7abf832caf3f294bfb172052f956f085')
+         'b2bd038af798511c2886d0ea21cfe165')
