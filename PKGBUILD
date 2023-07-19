@@ -1,9 +1,9 @@
 # Contributor: Lucki <https://aur.archlinux.org/account/Lucki>
-# Maintainer: amo <https://aur.archlinux.org/account/amo>
+# Contributor: amo <https://aur.archlinux.org/account/amo>
 
 _pkgname=django-rest-knox
 pkgname=python-django-rest-knox
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Authentication Module for django rest auth"
 arch=('any')
