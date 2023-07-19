@@ -5,26 +5,21 @@ pkgrel=1
 pkgdesc="Terminal-based note-taking application"
 arch=('x86_64')
 url="https://github.com/felipealfonsog/TermNotes"
+sha256sums=('2b632c12461adc29c41c574499fd97024342df2b35faa7314537387f234f617d')
 license=('MIT')
-depends=('gcc' 'vim' 'nano')
+depends=('gcc' 'vim' 'nano' 'coreutils')
 
-#https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.1.0.1.tar.gz
+# https://github.com/felipealfonsog/TermNotes/archive/refs/tags/v.1.0.2.tar.gz
 source=("https://github.com/felipealfonsog/TermNotes/archive/refs/tags/$pkgver.tar.gz")
 
 build() {
-  cd "$srcdir/TermNotes-$pkgver"
-  #make
-  ./setup
+  cd "$srcdir/TermNotes-$pkgver/src"
+  gcc -o term-notes term_notes.c
 }
 
 package() {
-  cd "$srcdir/TermNotes-$pkgver"
-  install -Dm755 term_notes "$pkgdir/usr/bin/term_notes"
+  cd "$srcdir/TermNotes-$pkgver/src"
+  install -Dm755 term-notes "$pkgdir/usr/bin/term-notes"
 }
 
-#sha256sums=('c9cabc195345db92f8297ecf35399622bfa7583362830dd459fd65c89917f86b')
-#sha256sums=('8e7004e9b92add9b507fd21d1b8220c67aaeeab80de42ac1221859d2e1622a76')
-#v.1.0.1
-#sha256sums=('43db1b333d8902b15df4444d12e76c6d80fa9535cb377f7594d3cfa19c64e869')
-#v.1.0.2
-sha256sums=('e1ae65286b64c3466d5749524c79df1063ec9db35b265f0359d24cc76397d88c')
+
