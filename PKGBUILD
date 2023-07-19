@@ -40,7 +40,6 @@ build() {
     yarn --frozen-lockfile
     NODE_ENV=production yarn --frozen-lockfile build
   )
-  go run hack/packr/packr.go -- .
   export CGO_CFLAGS="$CFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
