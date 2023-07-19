@@ -27,8 +27,9 @@ fi
 ## Stock Archlinux and Xanmod have this enabled. 
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
 ##                                y to enable  (stock default)
+##                                y to enable  (Archlinux default)
 if [ -z ${use_tracers+x} ]; then
-  use_tracers=y
+  use_tracers=n
 fi
 
 # Unique compiler supported upstream is GCC
@@ -38,8 +39,8 @@ if [ "${_compiler}" = "clang" ]; then
   _compiler_flags="CC=clang HOSTCC=clang LLVM=1 LLVM_IAS=1"
 fi
 
-# Choose between the 4 main configs for EDGE branch. Default x86-64-v2 which use CONFIG_GENERIC_CPU2:
-# Possible values: config_x86-64 / config_x86-64-v2 (default) / config_x86-64-v3 / config_x86-64-v4
+# Choose between the 4 main configs for stable branch. Default x86-64-v1 which use CONFIG_GENERIC_CPU2:
+# Possible values: config_x86-64-v2 (default) / config_x86-64-v3 / config_x86-64-v4
 # This will be overwritten by selecting any option in microarchitecture script
 # Source files: https://github.com/xanmod/linux/tree/5.17/CONFIGS/xanmod/gcc
 if [ -z ${_config+x} ]; then
@@ -71,12 +72,13 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-edge
-_major=6.0
-pkgver=${_major}.5
+_major=6.4
+pkgver=${_major}.3
 _branch=6.x
 xanmod=1
-pkgrel=${xanmod}
-pkgdesc='Linux Xanmod - Latest Mainline (EDGE)'
+_revision=
+pkgrel=2
+pkgdesc='Linux Xanmod - Rolling Release [EDGE]'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
@@ -91,7 +93,7 @@ options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
-        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
+        "patch-${pkgver}-xanmod${xanmod}${_revision}.xz::https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}${_revision}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh)
         #"patch-${pkgver}-xanmod${xanmod}.xz::https://sourceforge.net/projects/xanmod/files/releases/stable/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
 validpgpkeys=(
@@ -107,10 +109,10 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
-sha256sums=('5c2443a5538de52688efb55c27ab0539c1f5eb58c0cfd16a2b9fbb08fd81788e'
+sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
             'SKIP'
-            '267d9ad9422012e963a17666f8315186cd87b17e8d520597f6dc3ee4eb50ed7c'
-            'dda2e928f3b02c28e71d4e99f90b499b4c99a265d30fceec7dc1dd7082afc285')
+            'c718aaba0f25cb90b9660ae4efeb0eca91e81c5573fea561deba20dce4bf8082'
+            'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
@@ -120,12 +122,11 @@ prepare() {
   cd linux-${_major}
 
   # Apply Xanmod patch
-  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
+  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}${_revision}
 
   msg2 "Setting version..."
-  scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux-xanmod-edge}" > localversion.20-pkgname
+  echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
   # Archlinux patches
   local src
@@ -152,12 +153,17 @@ prepare() {
   scripts/config --enable CONFIG_IKCONFIG \
                  --enable CONFIG_IKCONFIG_PROC
 
+  # Requested by Alexandre Frade to fix issues in python-gbinder
+  scripts/config --enable CONFIG_ANDROID_BINDERFS
+  scripts/config --enable CONFIG_ANDROID_BINDER_IPC
+
   # User set. See at the top of this file
-  if [ "$use_tracers" = "n" ]; then
-    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER only if we are not compiling with clang..."
+  if [ "$use_tracers" = "y" ]; then
+    msg2 "Enabling CONFIG_FTRACE only if we are not compiling with clang..."
     if [ "${_compiler}" = "gcc" ]; then
-      scripts/config --disable CONFIG_FUNCTION_TRACER \
-                     --disable CONFIG_STACK_TRACER
+      scripts/config --enable CONFIG_FTRACE \
+                     --enable CONFIG_FUNCTION_TRACER \
+                     --enable CONFIG_STACK_TRACER
     fi
   fi
 
@@ -274,7 +280,7 @@ _package-headers() {
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-  if [ -f "$builddir/tools/bpf/resolve_btfids" ]; then install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids ; fi
+  if [ -f "tools/bpf/resolve_btfids/resolve_btfids" ]; then install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids ; fi
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
