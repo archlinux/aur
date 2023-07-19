@@ -1,40 +1,52 @@
-# Maintainer: Guilhem Saurel <saurel@laas.fr>
+# Maintainer: Guilhem "Nim65s" Saurel <guilhem.saurel@laas.fr>
 
-_pkgname=pinocchio
-_pkgver=1.2.4
-pkgname=${_pkgname}-git
-pkgver=1.2.4.r1493.3352afb
+pkgorg='stack-of-tasks'
+_pkgname='pinocchio'
+_pkgver=2.6.19
+pkgname="$_pkgname-git"
+pkgver=2.6.19.r6307.bd6b006
 pkgrel=1
-pkgdesc="Dynamic computations using Spatial Algebra."
+pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
-url="https://stack-of-tasks.github.io/pinocchio/"
-license=('LGPL3')
-depends=('eigen' 'eigenpy' 'urdfdom')
-optdepends=('metapod-git' 'lua51' 'hpp-fcl-git')
-makedepends=('cmake' 'git')
+url="https://github.com/$pkgorg/$_pkgname"
+license=('BSD')
+depends=('hpp-fcl' 'eigenpy' 'urdfdom')
+optdepends=('doxygen' 'lua52' 'cppad' 'cppadcodegen')
+makedepends=('cmake' 'eigen' 'git')
 conflicts=('pinocchio')
 provides=('pinocchio')
-source=("$_pkgname"::"git://github.com/nim65s/$_pkgname.git")
-md5sums=('SKIP')
+source=("$_pkgname"::"git+https://github.com/$pkgorg/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    echo "$_pkgver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "$_pkgver.r$(git -C "$_pkgname" rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd "$_pkgname"
-    git checkout devel
-    git submodule update --init
+    git -C "$_pkgname" checkout devel
+    git -C "$_pkgname" submodule update --init --recursive
 }
 
 build() {
-    cd "$_pkgname"
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_UNIT_TESTS=OFF .
-    make
+    cmake -B build -S $_pkgname \
+        -DBUILD_WITH_COLLISION_SUPPORT=ON \
+        -DBUILD_UTILS=ON \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
+        -DBUILD_WITH_AUTODIFF_SUPPORT="$(pacman -Qs cppad > /dev/null && echo -n ON || echo -n OFF)" \
+        -DBUILD_WITH_CODEGEN_SUPPORT="$(pacman -Qs cppadcodegen > /dev/null && echo -n ON || echo -n OFF)" \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DGENERATE_PYTHON_STUBS=ON
+    # TODO: stubs require -j1, ref https://github.com/jrl-umi3218/jrl-cmakemodules/issues/600
+    cmake --build build -j 1
+}
+
+check() {
+    cmake --build build -t test
 }
 
 package() {
-    cd "$_pkgname"
-    make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir/" cmake --build build -t install
+    sed -i 's=;/usr/\.\./include/include==' "$pkgdir/usr/lib/cmake/pinocchio/pinocchioTargets.cmake"
+    install -Dm644 "$_pkgname/COPYING.LESSER" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }

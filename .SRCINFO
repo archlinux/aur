@@ -1,23 +1,24 @@
 pkgbase = pinocchio-git
-	pkgdesc = Dynamic computations using Spatial Algebra.
-	pkgver = 1.2.4.r1493.3352afb
+	pkgdesc = Dynamic computations using Spatial Algebra
+	pkgver = 2.6.19.r6307.bd6b006
 	pkgrel = 1
-	url = https://stack-of-tasks.github.io/pinocchio/
+	url = https://github.com/stack-of-tasks/pinocchio
 	arch = i686
 	arch = x86_64
-	license = LGPL3
+	license = BSD
 	makedepends = cmake
+	makedepends = eigen
 	makedepends = git
-	depends = eigen
+	depends = hpp-fcl
 	depends = eigenpy
 	depends = urdfdom
-	optdepends = metapod-git
-	optdepends = lua51
-	optdepends = hpp-fcl-git
+	optdepends = doxygen
+	optdepends = lua52
+	optdepends = cppad
+	optdepends = cppadcodegen
 	provides = pinocchio
 	conflicts = pinocchio
-	source = pinocchio::git://github.com/nim65s/pinocchio.git
-	md5sums = SKIP
+	source = pinocchio::git+https://github.com/stack-of-tasks/pinocchio.git
+	sha256sums = SKIP
 
 pkgname = pinocchio-git
-
