@@ -13,13 +13,12 @@ license=('GPL3')
 depends=('dconf' 'gnome-shell')
 makedepends=('git' 'meson' 'ninja' 'sassc')
 source=("${_pkgbase}-${pkgver}.tar.gz::${url}/tarball/${_commit}"
-        "git+https://gitlab.gnome.org/GNOME/gnome-shell-sass.git")
+        "git+https://gitlab.gnome.org/GNOME/gnome-shell-sass.git#commit=adeed6c")
 sha256sums=('721c74569febe9e008881ada90307b4d86de65e4c076c9a218426ec96de7cb6a'
             'SKIP')
 
 prepare() {
-  cd "${_pkgbase}-${_commit}/res/styles/"
-  git -C gnome-shell-sass pull || git clone https://gitlab.gnome.org/GNOME/gnome-shell-sass.git
+  cp -r gnome-shell-sass "${_pkgbase}-${_commit}/res/styles/"
 }
 
 build() {
