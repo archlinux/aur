@@ -1,29 +1,31 @@
-# Maintainer: skrewball <aur at joickle dot com>
+# Maintainer: crimist <aur at crim dot ist>
+# Contributor: skrewball <aur at joickle dot com>
 
 pkgname=gnome-shell-extension-color-picker
 _pkgbase=tuberry-color-picker
-pkgver=32
-_commit=0775a86
+pkgver=37
+_commit=e0877dd
 pkgrel=1
 pkgdesc='Simple color picker for Gnome Shell'
 arch=(any)
 url='https://github.com/tuberry/color-picker'
 license=('GPL3')
 depends=('dconf' 'gnome-shell')
+makedepends=('git' 'meson' 'ninja' 'sassc')
 source=("${_pkgbase}-${pkgver}.tar.gz::${url}/tarball/${_commit}")
-sha256sums=('4e81fa9bd41a8d58465208250ba433a496239fa5a26b1b4108b2ecda6c09bf05')
+sha256sums=('721c74569febe9e008881ada90307b4d86de65e4c076c9a218426ec96de7cb6a')
+
+prepare() {
+  cd "${_pkgbase}-${_commit}/res/styles/"
+  git -C gnome-shell-sass pull || git clone https://gitlab.gnome.org/GNOME/gnome-shell-sass.git
+}
 
 build() {
   cd "${_pkgbase}-${_commit}"
-  # The envvar LANG is used to localize pot file.
-  make LANG=${LANG} mergepo \
-    && make VERSION="${pkgver}"
+  LANG=${LANG} meson setup build
 }
 
 package() {
   cd "${_pkgbase}-${_commit}"
-  make DESTDIR="${pkgdir}" install
-  # Patch for 42
-  sed -i '/"43"/i \ \ \ \ "42",' \
-    ${pkgdir}/usr/share/gnome-shell/extensions/color-picker@tuberry/metadata.json
+  meson install -C build --destdir "$pkgdir"
 }
