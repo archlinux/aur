@@ -1,6 +1,6 @@
 pkgbase = vdr-skinflatplus
 	pkgdesc = Simple and slim skin for VDR
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/MegaV0lt/vdr-plugin-skinflatplus
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = vdr-skinflatplus
 	backup = var/lib/vdr/plugins/skinflatplus/configs/MV_default
 	backup = var/lib/vdr/plugins/skinflatplus/configs/default
 	backup = var/lib/vdr/plugins/skinflatplus/configs/fnu_default
-	source = vdr-skinflatplus-0.6.3.tar.gz::https://github.com/MegaV0lt/vdr-plugin-skinflatplus/archive/refs/tags/0.6.3.tar.gz
+	source = vdr-skinflatplus-0.6.4.tar.gz::https://github.com/MegaV0lt/vdr-plugin-skinflatplus/archive/refs/tags/0.6.4.tar.gz
 	source = 50-skinflatplus.conf
-	sha256sums = 46ff2ea27b12227d02c5528615da0ac74ee84f14e5a2c08a24fc298973546711
+	sha256sums = 99c16d891fcf68f5449b4f42e869044d5212abb6151a7a4e77ab00d1ed5d3082
 	sha256sums = 6f6f9699cbc73d73d34c4e17183d3f03b1553a2b8caa62ee881354f2ac12bd8d
 
 pkgname = vdr-skinflatplus
