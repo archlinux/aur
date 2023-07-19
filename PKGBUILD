@@ -7,7 +7,7 @@
 pkgname=rxvt-unicode-pixbuf
 _pkgname=${pkgname%-*}
 pkgver=9.31
-pkgrel=1
+pkgrel=3
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt), with support for custom icons and backgrounds'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -42,6 +42,10 @@ build() {
 
 	# disable smart-resize (FS#34807)
 	# do not specify --with-terminfo (FS#46424)
+
+	#We use the rxvt-unicode-terminfo package from extra, silently do nothing:
+	export TIC="/usr/bin/true"
+
 	./configure \
 		--prefix=/usr \
 		--enable-256-color \
@@ -80,9 +84,6 @@ package() {
 
 	cd $_pkgname-$pkgver
 
-	# workaround terminfo installation
-	export TERMINFO="$srcdir/terminfo"
-	install -d "$TERMINFO"
 	make DESTDIR="$pkgdir" install
 
 	# install the tabbing wrapper ( requires gtk2-perl! )
