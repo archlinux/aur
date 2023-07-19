@@ -1,15 +1,15 @@
-# Maintainer: erdii <me at erdii.engineering>
+# Maintainer: Matt Kasun <matt at netmaker.io>
 pkgname=netclient-bin
-pkgver=0.17.1
-pkgrel=2
+pkgver=0.20.4
+pkgrel=0
 pkgdesc="A component of netmaker"
 arch=(x86_64)
-url='https://github.com/gravitl/netmaker'
+url='https://fileserver.netmaker.org'
 license=("custom:SSPL")
 depends=('wireguard-tools')
 
-source=("${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/netclient-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('be8e5fc8acc2f558d50a59a2b41ab754a3c578ca5bca22458990b0a1f9aa48f1')
+source=("${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/netclient-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
+sha256sums=('5d361c5a998e4d5632e8bb0c3461897d66ead14db4558b1b97e0a4eb79953328')
 
 package() {
 	install -Dm755 "${srcdir}/usr/bin/netclient" "$pkgdir/usr/bin/netclient"

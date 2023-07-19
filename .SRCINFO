@@ -1,12 +1,12 @@
 pkgbase = netclient-bin
 	pkgdesc = A component of netmaker
-	pkgver = 0.17.1
-	pkgrel = 2
-	url = https://github.com/gravitl/netmaker
+	pkgver = 0.20.4
+	pkgrel = 0
+	url = https://fileserver.netmaker.org
 	arch = x86_64
 	license = custom:SSPL
 	depends = wireguard-tools
-	source = 0.17.1.tar.zst::https://github.com/gravitl/netmaker/releases/download/v0.17.1/netclient-0.17.1-1-x86_64.pkg.tar.zst
-	sha256sums = be8e5fc8acc2f558d50a59a2b41ab754a3c578ca5bca22458990b0a1f9aa48f1
+	source = 0.20.4.tar.zst::https://fileserver.netmaker.org/releases/download/v0.20.4/netclient-0.20.4-0-x86_64.pkg.tar.zst
+	sha256sums = 5d361c5a998e4d5632e8bb0c3461897d66ead14db4558b1b97e0a4eb79953328
 
 pkgname = netclient-bin
