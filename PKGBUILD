@@ -1,6 +1,6 @@
 # Maintainer: Young Fellow <youngfellow.le@gmail.com>
 pkgname=setcustomres
-pkgver=2.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="A tool that summarizes the process of setting a custom resolution to a monitor using xrandr."
 arch=('any')
@@ -10,7 +10,7 @@ depends=('libxrandr' 'awk')
 provides=('setcustomres')
 conflicts=('setcustomres')
 source=("v$pkgver.tar.gz::https://github.com/YoungFellow-le/setcustomres/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('3a5f79e1cb1140423a391a2cb848994b')
+md5sums=('8305a45fbd307bb8646bcbd3fca83d49')
 
 package()
 {
