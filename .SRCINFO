@@ -1,6 +1,6 @@
 pkgbase = opengamepadui-session-git
 	pkgdesc = OpenGamepadUI Gamescope session
-	pkgver = r14.de16a8d
+	pkgver = r15.ac79dc6
 	pkgrel = 1
 	url = https://github.com/ShadowBlip/OpenGamepadUI-session
 	arch = any
