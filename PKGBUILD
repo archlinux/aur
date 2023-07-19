@@ -70,6 +70,7 @@ package_mfgtools-doc-git() {
 
     cd "${srcdir}/${pkgname%-git}/"
     find . -type f -name "*.asciidoc" -exec sh -c 'mv "$0" "${0%.asciidoc}"' {} \;
+    sed -i 's|=====|====|g' Release-Notes
     echo "<revhistory>" > UUU-docinfo.xml
     git log -n25 --reverse --format="format:<revision><revnumber>%h</revnumber><date>%cd</date><authorinitials>%an</authorinitials><revremark>%s</revremark></revision>" >> UUU-docinfo.xml
     echo "</revhistory>" >> UUU-docinfo.xml
