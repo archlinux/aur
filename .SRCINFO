@@ -9,6 +9,7 @@ pkgbase = python-catkin_tools
 	depends = python
 	depends = python-catkin_pkg
 	depends = python-osrf_pycommon
+	depends = python-setuptools
 	depends = python-yaml
 	provides = python-catkin-tools
 	conflicts = python2-catkin_tools
