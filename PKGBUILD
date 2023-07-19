@@ -1,14 +1,14 @@
 # Maintainer: naniwakun <radio.naniwa[atmark]gmail.com>
 
 pkgname=jdim-git
-pkgver=r3302.c70da7b5
-pkgrel=7
+pkgver=r4351.31732152
+pkgrel=1
 pkgdesc="A 2channel browser written in C++ using gtkmm3. This is public beta version."
 arch=('i686' 'x86_64')
 url="https://github.com/JDimproved/JDim"
 license=('GPL2')
 makedepends=('git')
-depends=('gnutls' 'libsm' 'gtkmm3' 'autoconf-archive')
+depends=('gnutls' 'libsm' 'gtkmm3' 'autoconf-archive' 'meson' 'ninja')
 conflicts=('jd' 'jd-svn' 'jd-gtk3' )
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -18,14 +18,12 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/JDim"
-  autoreconf -i
-  ./configure --prefix=/usr --with-native --with-tls=openssl --with-alsa --with-pangolayout
-  make
+cd "${srcdir}/JDim"
+meson setup -Dunity=on builddir --prefix=/usr
+ninja -C builddir
 }
 
 package() {
-  cd "${srcdir}/JDim"
-  make DESTDIR=${pkgdir} install
-}
-
+cd "${srcdir}/JDim"
+meson install -C builddir --destdir $pkgdir
+} 
