@@ -1,6 +1,6 @@
 # Maintainer: noodle <silentnoodle@cock.li>
 pkgname=dwarfs-bin
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='A fast high compression read-only file system (pre-compiled binaries)'
 url='https://github.com/mhx/dwarfs'
@@ -15,8 +15,8 @@ depends=(
 )
 conflicts=('dwarfs')
 provides=('dwarfs')
-sha256sums_x86_64=('de171ffa890802f66ee3a49a5f3ce838d91c59bbe8d141b213be5e8ac21dbf9a')
-sha256sums_aarch64=('ae2cb84c95daf203e99bd6e0179aa70f624a0582191746dd0c5686071790be3d')
+sha256sums_x86_64=('e21a91115f90ba5e4475c7df30574d7494acc3033510102cfc41bbfaa503f281')
+sha256sums_aarch64=('a74b7b24e89dae7cb741c7c1b7bdc99344ec59a6ce258e88044f263ed324d05d')
 
 package() {
   cd "${srcdir}/dwarfs-${pkgver}-Linux-$arch"
