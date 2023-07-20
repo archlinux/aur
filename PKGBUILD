@@ -1,7 +1,7 @@
-# Maintainer: PumpkinCheshire <sollyonzou@gmail.com>
+# Maintainer: pika02
 
 pkgname=realsr-ncnn-vulkan-bin
-pkgver=20210210
+pkgver=20220728
 pkgrel=1
 pkgdesc="RealSR super resolution implemented with ncnn library"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ provides=("realsr-ncnn-vulkan")
 conflicts=("realsr-ncnn-vulkan" "realsr-ncnn-vulkan-git")
 source=("https://github.com/nihui/${pkgname%-bin}/releases/download/$pkgver/${pkgname%-bin}-$pkgver-ubuntu.zip"
 	"${pkgname%-bin}")
-sha256sums=('8abf0834444d768080637fc2d4784444f5d959d1424c586c8a4e44f79f4b54c8'
+sha256sums=('6007e55c156a6b4600e569c68818836c22daeac63fdf71db068966b5425ac085'
             '9307f1bfe988b2d2e780c28b447df68ee0acf8f94d18c08cb20ed17bb88c9763')
 
 package() {
