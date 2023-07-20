@@ -9,23 +9,12 @@ arch=('x86_64')
 url="https://github.com/dchapyshev/aspia"
 license=('GPL3')
 options=('!strip')
-
 source_x86_64=("${pkgbase}-${pkgver}-${arch}.deb::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${arch}.deb")
 sha256sums_x86_64=('5295342c21d099dd1f2ad09559875cb6f22b5367e85d16ec27d2d152775f9fad')
 
-_install_path="/opt/aspia-client"
-prepare() {
-  yay -S archalien-git
-  /usr/bin/archalien "${pkgbase}-${pkgver}-${arch}.deb"
-  
 
-}
 
-package_aspia-client() {
-    provides=("${pkgname}")
-    conflicts=("${pkgname}")
-    depends=(
-        'gtk3'
-    )
-    sudo pacman -U "${pkgbase}-${pkgver}-1-${arch}.pkg.tar.gz"
+package() {
+cd "${srcdir}"
+bsdtar -xzf data.tar.gz -C "${pkgdir}"
 }
