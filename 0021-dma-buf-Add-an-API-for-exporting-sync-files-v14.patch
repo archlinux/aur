@@ -1,7 +1,7 @@
-From e2efe6b72f4ceb3511dcd847a172d47d59ce2ed1 Mon Sep 17 00:00:00 2001
+From 7b768e32e1abe1bbd74f2061dc9af560f54686d8 Mon Sep 17 00:00:00 2001
 From: Jason Ekstrand <jason@jlekstrand.net>
 Date: Wed, 8 Jun 2022 10:21:41 -0500
-Subject: [PATCH 2/5] dma-buf: Add an API for exporting sync files (v14)
+Subject: [PATCH] dma-buf: Add an API for exporting sync files (v14)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -108,7 +108,7 @@ Link: https://patchwork.freedesktop.org/patch/msgid/20220608152142.14495-2-jason
  2 files changed, 102 insertions(+)
 
 diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
-index 023f34ed98af..437f3620dce8 100644
+index ad7ddaa35b3e..8a2a96d8593c 100644
 --- a/drivers/dma-buf/dma-buf.c
 +++ b/drivers/dma-buf/dma-buf.c
 @@ -20,6 +20,7 @@
@@ -119,7 +119,7 @@ index 023f34ed98af..437f3620dce8 100644
  #include <linux/poll.h>
  #include <linux/dma-resv.h>
  #include <linux/mm.h>
-@@ -266,6 +267,9 @@ static loff_t dma_buf_llseek(struct file *file, loff_t offset, int whence)
+@@ -267,6 +268,9 @@ static loff_t dma_buf_llseek(struct file *file, loff_t offset, int whence)
   * Note that this only signals the completion of the respective fences, i.e. the
   * DMA transfers are complete. Cache flushing and any other necessary
   * preparations before CPU access can begin still need to happen.
@@ -129,7 +129,7 @@ index 023f34ed98af..437f3620dce8 100644
   */
  
  static void dma_buf_poll_cb(struct dma_fence *fence, struct dma_fence_cb *cb)
-@@ -463,6 +467,64 @@ static long dma_buf_set_name_user(struct dma_buf *dmabuf, const char __user *buf
+@@ -453,6 +457,64 @@ static long dma_buf_set_name_user(struct dma_buf *dmabuf, const char __user *buf
  	return ret;
  }
  
@@ -194,7 +194,7 @@ index 023f34ed98af..437f3620dce8 100644
  static long dma_buf_ioctl(struct file *file,
  			  unsigned int cmd, unsigned long arg)
  {
-@@ -545,6 +607,11 @@ static long dma_buf_ioctl(struct file *file,
+@@ -535,6 +597,11 @@ static long dma_buf_ioctl(struct file *file,
  
  		return ret;
  
@@ -207,7 +207,7 @@ index 023f34ed98af..437f3620dce8 100644
  		return -ENOTTY;
  	}
 diff --git a/include/uapi/linux/dma-buf.h b/include/uapi/linux/dma-buf.h
-index 6236c644624d..522bcee5498e 100644
+index 37aeab6d101a..c2ed92064e8a 100644
 --- a/include/uapi/linux/dma-buf.h
 +++ b/include/uapi/linux/dma-buf.h
 @@ -37,6 +37,40 @@ struct dma_buf_sync {
@@ -253,12 +253,9 @@ index 6236c644624d..522bcee5498e 100644
  
 @@ -46,6 +80,7 @@ struct dma_buf_sync {
  #define DMA_BUF_SET_NAME	_IOW(DMA_BUF_BASE, 1, const char *)
- #define DMA_BUF_SET_NAME_A	_IOW(DMA_BUF_BASE, 1, u32)
- #define DMA_BUF_SET_NAME_B	_IOW(DMA_BUF_BASE, 1, u64)
+ #define DMA_BUF_SET_NAME_A	_IOW(DMA_BUF_BASE, 1, __u32)
+ #define DMA_BUF_SET_NAME_B	_IOW(DMA_BUF_BASE, 1, __u64)
 +#define DMA_BUF_IOCTL_EXPORT_SYNC_FILE	_IOWR(DMA_BUF_BASE, 2, struct dma_buf_export_sync_file)
  
  struct dma_buf_sync_partial {
  	__u64 flags;
--- 
-2.38.1
-

@@ -8,83 +8,74 @@ _user="radxa"
 _kernel=linux-radxa-rkbsp5
 pkgbase=$_kernel-git
 pkgname=("${pkgbase}-headers" $pkgbase)
-pkgver=$_pkgver
+pkgver=5.10.1080499.5fa580a5149c.624ad59
+blobcommit="libmali"
+fwcommit="488f49467f5b4adb8ae944221698e9a4f9acb0ed"
 pkgrel=2
 arch=('aarch64')
 license=('GPL2')
 url="https://github.com/${_user}"
 _kernelrepo="kernel"
 _overlayrepo="overlays"
-_kernelbranch=linux-5.10-gen-rkr3.4
+_kernelbranch=linux-5.10-gen-rkr4.1
 _overlaybranch=main
 pkgdesc="Latest git Linux kernel package based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards" 
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
 
-# Patch1-19 comes from Radxa: https://github.com/radxa-repo/bsp/tree/main/linux/rockchip
-# Patch20: Warning Supressions for buildsystem not to quit including DistCC builds
-# Patch21-25: icecream95's mesa speed patches from kernel 6.x https://gitlab.com/panfork/rk3588-implicit-sync
-# Patch22: Force Enabling AV1 decoder in 3588. This may be implemented in radxa git as well soon
+# Patch1-10 comes from Radxa: https://github.com/radxa-repo/bsp/tree/main/linux/rockchip
+# Patch11: Warning Supressions for buildsystem not to quit including DistCC builds
+# Patch12: Force Enabling AV1 decoder in 3588. This may be implemented in radxa git as well soon
 source=(git+https://github.com/$_user/$_kernelrepo.git#branch=$_kernelbranch
         git+https://github.com/$_user/$_overlayrepo.git#branch=$_overlaybranch
 		'linux.preset'
 		'extlinux.arch.template'
-		'0001-mm-page_alloc-fix-building-error-on-Werror-array-com.patch'
-		'0002-etherdevice-Adjust-ether_addr-prototypes-to-silence-.patch'
-		'0003-drm-rockchip-vop-Use-clipped-src-dst-coordinates.patch'
-		'0004-Update-existing-ROCK-4-OPP-settings.patch'
-		'0005-Add-additional-ROCK-4-products.patch'
-		'0006-Enable-DMC-for-ROCK-4.patch'
-		'0007-Fix-ROCK-4-OTG-switch.patch'
-		'0008-Add-pwm-fan-for-ROCK-4C.patch'
-		'0009-VENDOR-Add-Radxa-overlays.patch'
-		'0010-Fix-dangling-pointer-compiler-bug.patch'
-		'0011-Disable-tristate-for-non-modules.patch'
-		'0012-Disable-tristate-for-modules-that-uses-unexported-sy.patch'
-		'0013-Disable-tristate-for-builtin-dependencies.patch'
-		'0014-Revert-dma-buf-sw_sync-build-sw-sync-as-module-for-g.patch'
-		'0015-Disable-tristate-for-essential-boot-services.patch'
-		'0016-Revert-ANDROID-clk-Enable-writable-debugfs-files.patch'
-		'0017-Modfy-GPU-node-for-Panfrost-driver.patch'
-		'0018-VENDOR-Version-tagging-linux-libc-dev-as-well.patch'
-		'0019-Add-ROCK-4-Core-IO-Board-Fuhai.patch'
-		'0020-gcc-ignore-stringop-overread-warnings.patch'
-		'0021-dma-buf-add-dma_resv_get_singleton-v2.patch'
-		'0022-dma-buf-Add-an-API-for-exporting-sync-files-v14.patch'
-		'0023-dma-buf-Add-an-API-for-importing-sync-files-v10.patch'
-		'0024-MALI-bifrost-avoid-fence-double-free.patch'
-		'0025-drm-rockchip-Re-add-implicit-fencing-support-for-pla.patch'
-		'0026-Enable_AV1_decoder_on_3588.patch')
+		'0001-VENDOR-Add-Radxa-overlays.patch'
+		'0002-Fix-dangling-pointer-compiler-bug.patch'
+		'0003-Disable-tristate-for-non-modules.patch'
+		'0004-Disable-tristate-for-modules-that-uses-unexported-sy.patch'
+		'0005-Disable-tristate-for-builtin-dependencies.patch'
+		'0006-Revert-dma-buf-sw_sync-build-sw-sync-as-module-for-g.patch'
+		'0007-Disable-tristate-for-essential-boot-services.patch'
+		'0008-Modfy-GPU-node-for-Panfrost-driver.patch'
+		'0009-VENDOR-Version-tagging-linux-libc-dev-as-well.patch'
+		'0010-Add-ROCK-4-Core-IO-Board-Fuhai.patch'
+		'0011-gcc-ignore-stringop-overread-warnings.patch'
+		'0012-Enable_AV1_decoder_on_3588.patch'
+		'0020-dma-buf-add-dma_resv_get_singleton-v2.patch'
+		'0021-dma-buf-Add-an-API-for-exporting-sync-files-v14.patch'
+		'0022-dma-buf-Add-an-API-for-importing-sync-files-v10.patch'
+		"libmali_g610_wayland.so::https://github.com/JeffyCN/mirrors/raw/${blobcommit}/lib/aarch64-linux-gnu/libmali-valhall-g610-g13p0-wayland-gbm.so"
+        "libmali_g610_x.so::https://github.com/JeffyCN/mirrors/raw/${blobcommit}/lib/aarch64-linux-gnu/libmali-valhall-g610-g13p0-x11-gbm.so"
+        "mali_csffw.bin::https://github.com/JeffyCN/mirrors/raw/${fwcommit}/firmware/g610/mali_csffw.bin"
+        "libmali"
+        "libmaliw"
+		)
+
 b2sums=('SKIP'
         'SKIP'
         'bd296f775df973c6dcb6bd8311ce4d3af9a8d4a67905f17c450cae776aab0229987d473334d38fd102a34ed483a121f67ac58a48fd9e6fab2c714c7079e06613'
         'd8208257c8f2e23a9dbcf2a1bbd11b5a638679cd49dd03d4ea190d1ecd94e2760cccb2cd1cda890816a9c338ce2f38c859961f4ab3a22fca458a453ca0d5f2fc'
-        '74b6d76888267785ac99e58bdb852c667865d44353821c01052734d58e1213c16290aabff7ae6c95ac6b24893fe5109897f949d814ccec55cc69af9885fc62f6'
-        '461eb48692574f48d37a9a236b3a17992493cf07a39ab72f78fa0ac4f04e3ff9896f16e721c111f865d9aa3d3f0d7b7c082fe2f319eee0e1a6c54db44f0a6e53'
-        '2703d12281e60e2b9f057bbb3ac28e190f77c4ad8cfccc6f1a316b9bc6434e7ca296221eeb8992134c2d365a5afea7b7adf1d9516e3c89c3fc03f0941f65e5c2'
-        '376e54c72261c803d40e3ddca06e39b72c85fe4d8743e79cac1c8ced3feb953760471a6784cc4922b0bcf00004f9b2a9407094b6075883c5ce82786ff357cb3b'
-        'c09942deeead81798f47e07f72e6b8748e8b44682d72a1bd0d50e7c9f20e9ae8243c248a234ecc1f48112c40d2690c5ab171fdc9ba55101f4cc5294888c9f49b'
-        '6277d3f4e43eb20b735e8ef933f4e9fccc5077484f2c7051b7f47bfae77ffce13387199650cc90adf14d4dc941bb376d9e52d48bab37412afe9437e5d081a130'
-        '4d42cee746b74a2f2982187a568b939cc1d3f3e3bc18472fea0ce9eb27d658170f434a14526e339fb36d2936a7a17b59a699a4c351152a56f8ab7743e670c05a'
-        '53b3d818d3d8bdcebe5bf1b25f6196615fe605f4d9f282d0f2effa44bd1480241b0d4e5eedfbc34fa27e2ce90ee634799e3aefad1bd701c250c502e4b2178d71'
         '4908b5a94c02a4eb0fe8bb9983289f1b8acbb1b8ebb541643c7ec4ac5de87be949efbdec839d34603b045500b13033f836385bdbf3e935fcd8d221f71028d604'
         'e612cf028aaf8f99c2735a6e1640170af51e62aa86a8cc795694ac089b2f31be93e67c6ee394cd22d290a787cd9f064861b0bb173033069710881280432ad45f'
         'bde631de66dde60339c7fa306b06a9100ac41adaeb16788c800157324a288a97629c41dda5076698c1ef71b8b7f44b5eba619b6aac92d0d5c59e796fb2aa407a'
-        '1836fb5f211c4feb279de7d241799ff483eb6d4728cdba74ad44c8808a5d5be0077c53a315ae4f6d16f157156f5d6d00a5428a857f4164659e7a2feb584f5ec9'
+        'bc56e29a4b54bc20cda18023667c115a5819bb1fff9ac9fbe6296d5b89897f82d65fa99e9d013bf25fc0a17e22be219cfef7eb55ceaa6a228da92db8b2a20406'
         '16b725f25bc150675888dcc03125cd285f2c73f7955d90d521af9a139d717836afab07a995f7018e19cdad41964061800503e40e32656ee54bf69c22e8c8a53f'
         '8a6c96251c48048ff653285646347853d5df5264d1bf0bf798a48d3636480263125f92c5cb21f7d4b4988b6d831636d34de1b882c0209110178117e3ea1a0630'
         'f5ab48ee96b6df65ec20742e5bb2badffa7ed926f5020d64bdcfe1fe924fff9cafdb70c7983084f4294ab5663c5b56eeb51e96df176253175e9bde52121c3164'
-        '1bf65b95368a4134086b03598943f6d4025fefec436e170b95fa8478523755187c427ab038ae3fe3aef319c6a266e58c1d360575fd08720dd60957578054fa28'
         'd7c4496318bd3fc5294af88bcdeafa49b04683d1e1fe7312b0317872fdecb929ef8e62b86332e87eddd49c1f5e7ddb9a59372dcbf0514158f7d75947e81f7d8d'
         '7dc970eebf837940c67ae61f809f9e0cc6ae9e2a033ca7975b2c4055190b23ddd190170e75949834d54818f08016743d66c6ede5175f6cf988bec2e6aa4f008d'
         'b3b9b04b0f73d07c1927c0def7e5cc991144a7e65a01dab4ec1b2dd01f092e001da3fc07e852ebefb1530509e25a99730217a9208b6a26b0333c288ca1151935'
         '86010c037ed11f25de26f0e1a35109488b00af3ec11cceff979694c6730d6501cffa292798042ae6a60d839b438f6abf90b6ecc08ab0a4fa597d564493ab9c9b'
-        'afe3cf59d21517ef62bb456b831c638dc54107258e4f4412b8ebab2fa871a26c2aab3c16bf6a39b692611540febf2c68b6dece570266fc5c0a7349ffc05da7d0'
-        'f96570ec79e310c21c8f98a95e3775bde05133bf4db25413596791d96ee7142702ecd5f5e358df4d852cbab9f909a455d438277978ed9d4e0f2fd4a3d43df082'
-        '053bd95a861c9ee1cc8fa7a9af787d927c9110fffd2780c4972ce97ee2ade1ff567071158e89734b2352ac0c98aff82259c241baa0cee263919ec012c9ef9478'
-        'ea47ec8ba687f3a82d790797bb772ef04dd0dd5ab64d7f2c674659068c0332374c49e0e58b9ae7768bc7c6bfb67830b96b74a981ed4639fc1a8ef9f1fea9acb5'
-        '4dccfcdd1f2e9c3ba556a0c15541b6e7522e12e0d3e0153937266026fe365f54ed45ab77f7e24397acc61c0a170803214ddc452d46f7659c57eba5b82107d7d2'
-        '7c61be00b97a8acb759c35f23969cdfb4e739a8c88fd147d2af4594fa14100a2da90b160e04b8632c3dca703ff2c1973138d7f765c5b9a7039c6aae7f0078d9a')
+        '7c61be00b97a8acb759c35f23969cdfb4e739a8c88fd147d2af4594fa14100a2da90b160e04b8632c3dca703ff2c1973138d7f765c5b9a7039c6aae7f0078d9a'
+        'c3487e98544c2d36e60f3c3f2fabff94b3d4b157f2858c67c526dd8fdac8685dae3c2c7c07d4398b898943257f16ddc469dc633619862fe5b8da76fd317bca42'
+        'b9eb4d0856adc68350dba4d7a8076cddddf97061244cd9aea422c549f2dd2f1f951087835ee957ce0117bf468f0d3068d7f52ce5f486ce00263101af4ab2ba68'
+        'eccbf9cf7efd9f5e4f0d12fc59b7f86e1a212ef35e99250f9bc836efe675b1abd81c8997994c8986aa5ec1886e6908abd13473e57523846a15a355fa13beeec7'
+        '1660754e093a8a108bce6fc35988d29de53ead6951b2a97c21654b02314d62bdf3cd5fe1d79bad6dc7712f3715195f16ca5cd1024971c7f3d32316be84a4a5a9'
+        '9e0cbb940172869dba69828db0dc8e1bb439f0af328cf1b52d5e49cde3f846dc3ea7260c463ec2c8235c9b2518e204bc1afddcc858ad713182b369210da44323'
+        '8df273b81667f27c8490ae05ed38a22084171710f0178ae07d29e842389da4dc013612510a84694aa6ded908acea3892c7e486459ee32291e3872f1272c75210'
+        '75606e8ac064597091850b4d8192ab248bf15127756ca454f07d33390903ab0306d7727345dd9cf37015666ee4c4c915f2c996647fa833c420a72e4a5dff97a6'
+        '4915c805a1ad4f98c4975c4dfa358f16a0fbf1e8096f11189ff019e6d9fa4bb6b5b6e70b8fd5b527fd65a14cb6eb9734afcc05a079b9980ff5d5195d757ac5b4')
 
 pkgver(){
 	#gets the commit count of both repos + _pkgrel and sums them to calculate the revision number
@@ -140,11 +131,11 @@ build() {
   echo "-radxa-rkbsp" > .scmversion
   # should result in kernelmaj.kernelmin.patchver-totalcommitnum-hashofkernel-hashofoverlays-radxa-rkbsp
  
-  make -j$(nproc) olddefconfig prepare
+  make olddefconfig prepare
   make -s kernelrelease > version
   unset LDFLAGS
-  make -j$(nproc) ${MAKEFLAGS} Image modules
-  make -j$(nproc) ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
+  make ${MAKEFLAGS} Image modules
+  make ${MAKEFLAGS} DTC_FLAGS="-@" dtbs
 }
 
 _package-git() {
@@ -152,7 +143,7 @@ _package-git() {
   depends=('coreutils' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('wireless-regdb: to set the correct wireless channels of your country')
   provides=("linux=${pkgver}" "linux-rkbsp")
-  conflicts=('linux')
+  conflicts=('linux' 'libmali')
   backup=("etc/mkinitcpio.d/${_kernel}.preset")
 
   cd kernel
@@ -186,6 +177,23 @@ _package-git() {
   # install mkinitcpio preset file
   sed "$_subst" ../linux.preset |
     install -Dm644 /dev/stdin "$pkgdir/etc/mkinitcpio.d/$_kernel.preset"
+  
+  cd ../
+  # install the firmware
+  install -Dm755 mali_csffw.bin $pkgdir/usr/lib/firmware/mali_csffw.bin
+
+  # install blob drivers
+  for d in x wayland; do
+    install -Dm755 libmali_g610_$d.so $pkgdir/usr/lib/libmali/libmali_g610_$d.so
+    install -dm755 $pkgdir/usr/lib/libmali/$d
+    for l in libEGL.so libEGL.so.1 libgbm.so.1 libGLESv2.so libGLESv2.so.2 libGLESv2_CM.so libOpenCL.so.1; do
+      ln -s ../libmali_g610_$d.so $pkgdir/usr/lib/libmali/$d/$l;
+    done
+  done
+
+  # install the helper scripts
+  install -Dm755 libmali $pkgdir/usr/bin/libmali
+  install -Dm755 libmaliw $pkgdir/usr/bin/libmaliw
 }
 
 _package-git-headers() {

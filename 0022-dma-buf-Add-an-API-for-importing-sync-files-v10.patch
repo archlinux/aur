@@ -1,7 +1,7 @@
-From 520309591712f72a36f87d086f005e9f2c21f388 Mon Sep 17 00:00:00 2001
+From bc1306c7e8b8f5173e10cc0e976d53b97b0ee597 Mon Sep 17 00:00:00 2001
 From: Jason Ekstrand <jason@jlekstrand.net>
 Date: Wed, 8 Jun 2022 10:21:42 -0500
-Subject: [PATCH 3/5] dma-buf: Add an API for importing sync files (v10)
+Subject: [PATCH] dma-buf: Add an API for importing sync files (v10)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -110,10 +110,10 @@ Link: https://patchwork.freedesktop.org/patch/msgid/20220608152142.14495-3-jason
  2 files changed, 91 insertions(+)
 
 diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
-index 437f3620dce8..41ebb645efda 100644
+index 8a2a96d8593c..88c5324cfa39 100644
 --- a/drivers/dma-buf/dma-buf.c
 +++ b/drivers/dma-buf/dma-buf.c
-@@ -523,6 +523,46 @@ static long dma_buf_export_sync_file(struct dma_buf *dmabuf,
+@@ -513,6 +513,46 @@ static long dma_buf_export_sync_file(struct dma_buf *dmabuf,
  	put_unused_fd(fd);
  	return ret;
  }
@@ -160,7 +160,7 @@ index 437f3620dce8..41ebb645efda 100644
  #endif
  
  static long dma_buf_ioctl(struct file *file,
-@@ -610,6 +650,8 @@ static long dma_buf_ioctl(struct file *file,
+@@ -600,6 +640,8 @@ static long dma_buf_ioctl(struct file *file,
  #if IS_ENABLED(CONFIG_SYNC_FILE)
  	case DMA_BUF_IOCTL_EXPORT_SYNC_FILE:
  		return dma_buf_export_sync_file(dmabuf, (void __user *)arg);
@@ -170,7 +170,7 @@ index 437f3620dce8..41ebb645efda 100644
  
  	default:
 diff --git a/include/uapi/linux/dma-buf.h b/include/uapi/linux/dma-buf.h
-index 522bcee5498e..b4ceeaedfa87 100644
+index c2ed92064e8a..8674a4a4e86b 100644
 --- a/include/uapi/linux/dma-buf.h
 +++ b/include/uapi/linux/dma-buf.h
 @@ -48,6 +48,24 @@ struct dma_buf_sync {
@@ -236,13 +236,10 @@ index 522bcee5498e..b4ceeaedfa87 100644
  #define DMA_BUF_IOCTL_SYNC	_IOW(DMA_BUF_BASE, 0, struct dma_buf_sync)
  
 @@ -81,6 +129,7 @@ struct dma_buf_export_sync_file {
- #define DMA_BUF_SET_NAME_A	_IOW(DMA_BUF_BASE, 1, u32)
- #define DMA_BUF_SET_NAME_B	_IOW(DMA_BUF_BASE, 1, u64)
+ #define DMA_BUF_SET_NAME_A	_IOW(DMA_BUF_BASE, 1, __u32)
+ #define DMA_BUF_SET_NAME_B	_IOW(DMA_BUF_BASE, 1, __u64)
  #define DMA_BUF_IOCTL_EXPORT_SYNC_FILE	_IOWR(DMA_BUF_BASE, 2, struct dma_buf_export_sync_file)
 +#define DMA_BUF_IOCTL_IMPORT_SYNC_FILE	_IOW(DMA_BUF_BASE, 3, struct dma_buf_import_sync_file)
  
  struct dma_buf_sync_partial {
  	__u64 flags;
--- 
-2.38.1
-

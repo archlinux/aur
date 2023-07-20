@@ -1,7 +1,7 @@
-From 628b9127e29ac2a00852a59e13d45108c5c4e778 Mon Sep 17 00:00:00 2001
+From d24c7e4bc3ac3367910efd78e2aa413df224c231 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>
 Date: Wed, 3 Nov 2021 10:02:08 +0100
-Subject: [PATCH 1/5] dma-buf: add dma_resv_get_singleton v2
+Subject: [PATCH] dma-buf: add dma_resv_get_singleton v2
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -21,7 +21,7 @@ Link: https://patchwork.freedesktop.org/patch/msgid/20220321135856.1331-3-christ
  2 files changed, 61 insertions(+)
 
 diff --git a/drivers/dma-buf/dma-resv.c b/drivers/dma-buf/dma-resv.c
-index 1187e5e80ede..4c4ec20b99f7 100644
+index 1187e5e80eded..35cca3ca4dcfe 100644
 --- a/drivers/dma-buf/dma-resv.c
 +++ b/drivers/dma-buf/dma-resv.c
 @@ -33,6 +33,7 @@
@@ -98,7 +98,7 @@ index 1187e5e80ede..4c4ec20b99f7 100644
   * dma_resv_wait_timeout_rcu - Wait on reservation's objects
   * shared and/or exclusive fences.
 diff --git a/include/linux/dma-resv.h b/include/linux/dma-resv.h
-index d44a77e8a7e3..171ff5e7ff88 100644
+index d44a77e8a7e34..171ff5e7ff885 100644
 --- a/include/linux/dma-resv.h
 +++ b/include/linux/dma-resv.h
 @@ -283,6 +283,8 @@ int dma_resv_get_fences_rcu(struct dma_resv *obj,
@@ -110,6 +110,3 @@ index d44a77e8a7e3..171ff5e7ff88 100644
  int dma_resv_copy_fences(struct dma_resv *dst, struct dma_resv *src);
  
  long dma_resv_wait_timeout_rcu(struct dma_resv *obj, bool wait_all, bool intr,
--- 
-2.38.1
-

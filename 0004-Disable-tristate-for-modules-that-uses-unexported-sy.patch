@@ -35,17 +35,6 @@ index 24c5010726e6..9fd1eebbf12d 100644
  	depends on ROCKCHIP_SIP
  	help
  	  Say Y here if you want to set the suspend mode to the ATF.
-diff --git a/drivers/staging/android/fiq_debugger/Kconfig b/drivers/staging/android/fiq_debugger/Kconfig
-index 6ee93bc42d54..a23a613eab8a 100644
---- a/drivers/staging/android/fiq_debugger/Kconfig
-+++ b/drivers/staging/android/fiq_debugger/Kconfig
-@@ -1,5 +1,5 @@
- config FIQ_DEBUGGER
--	tristate "FIQ Mode Serial Debugger"
-+	bool "FIQ Mode Serial Debugger"
- 	default n
- 	depends on ARM || ARM64
- 	help
 -- 
 2.38.0
 
