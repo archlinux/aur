@@ -6,7 +6,7 @@
 pkgname=goldendict-ng-git
 pkgver=23.06.02.r4829.fc7a67d7
 pkgrel=1
-pkgdesc="The Next Generation GoldenDict."
+pkgdesc="The next generation GoldenDict (Supports Qt WebEngine & Qt6)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/xiaoyifang/goldendict-ng"
 license=('GPL3')
