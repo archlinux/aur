@@ -1,6 +1,6 @@
 pkgbase = klaus-bin
 	pkgdesc = Arch manager that allows you to download, install, delete packages...
-	pkgver = 7.3
+	pkgver = 7.4
 	pkgrel = 1
 	url = https://github.com/dmaliog/kLausqt/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = klaus-bin
 	depends = zip
 	depends = tar
 	optdepends = ocs-url
-	source = klaus-bin-7.3.zip::https://github.com/dmaliog/kLausqt//releases/download/7.3/klaus-7.3-2023-07-19-linux64.zip
-	sha256sums = c3e6a90238e82024a38b18f43f9c4c739b19e34b9280ec58f03b2b8c83ed3811
+	source = klaus-bin-7.4.zip::https://github.com/dmaliog/kLausqt//releases/download/7.4/klaus-7.4-2023-07-19-linux64.zip
+	sha256sums = b088bf6eb04b55837f74e12372466f694538a85497bea5ad27186d1670a0e0b9
 
 pkgname = klaus-bin
