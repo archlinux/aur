@@ -1,6 +1,6 @@
 pkgbase = r-jaspregression
 	pkgdesc = Regression Module for JASP
-	pkgver = 0.17.2.1
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspRegression
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = r-jaspregression
 	depends = r-rcpp
 	depends = r-vgam
 	depends = r-statmod
-	source = jaspRegression_0.17.2.1.tar.gz::https://github.com/jasp-stats/jaspRegression/archive/refs/tags/v0.17.2.1.tar.gz
-	sha256sums = 7a7f53dc7e2857a31f6585f6290adf0bdeb3567db87bf81ed281d25b95a553f6
+	source = jaspRegression_0.17.3.tar.gz::https://github.com/jasp-stats/jaspRegression/archive/refs/tags/v0.17.3.tar.gz
+	sha256sums = e351da6703e9669b179c226c6392f90b6f4875395cbba3f4a2d9ffb3138c92ed
 
 pkgname = r-jaspregression
