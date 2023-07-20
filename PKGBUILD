@@ -5,16 +5,16 @@
 _pkgname=llama.cpp
 pkgbase=llama-cpp
 pkgname=("$pkgbase" "$pkgbase-cuda")
-pkgver=294f424
+pkgver=fff0e0e
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86 x86_64 arm aarch64)
 url=https://github.com/ggerganov/llama.cpp
-depends=(openmpi python-numpy python-sentencepiece)
+depends=(openmpi python-numpy python-sentencepiece intel-oneapi-dpcpp-cpp)
 makedepends=(cmake)
 license=(GPL3)
 source=("$url/archive/master-$pkgver.tar.gz")
-sha256sums=('95effaa75fdf1e7fb4819500f3aa6a9c970dbe36392a51a4ead904660841cd93')
+sha256sums=('648f644dd0cc7a7b8c60c613faca051bd12de9e9a4b327973582746ff24716a1')
 
 _build() {
 	cd "$_pkgname-master-$pkgver" || return 1
@@ -44,7 +44,7 @@ package_llama-cpp() {
 		else
 			data_type_model=32
 		fi
-		depends+=(intel-oneapi-dpcpp-cpp intel-oneapi-mkl)
+		depends+=(intel-oneapi-mkl)
 		_build build -DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=Intel10_"$data_type_model" -DCMAKE_C_COMPILER=/opt/intel/oneapi/compiler/latest/linux/bin/icx -DCMAKE_CXX_COMPILER=/opt/intel/oneapi/compiler/latest/linux/bin/icpx
 	fi
 	_package build
