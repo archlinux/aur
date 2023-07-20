@@ -3,14 +3,14 @@
 
 pkgname='ollama'
 pkgdesc='Create, run, and share large language models (LLMs).'
-pkgver='0.0.8'
+pkgver='0.0.10'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/jmorganca/ollama'
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jmorganca/ollama/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9df30758261219af8137552641c1e2850b3dbfb1a97bb45514c7e3f41dff4a17')
+sha256sums=('35be8949f69e8e0b2783e775b023eddc677eb97abffd0556b35714ce1508df91')
 
 prepare() {
   cd "$pkgname-$pkgver"
