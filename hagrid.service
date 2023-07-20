@@ -11,6 +11,7 @@ KillMode=mixed
 TimeoutStopSec=5
 User=nobody
 PrivateTmp=true
+ReadWritePaths=/var/lib/hagrid/
 
 [Install]
 WantedBy=default.target

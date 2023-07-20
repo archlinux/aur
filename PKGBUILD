@@ -5,7 +5,7 @@ pkgver() {
 #	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="Verifying OpenPGP keyserver, written in Rust"
 arch=('x86_64')
 url="https://gitlab.com/keys.openpgp.org/hagrid"
@@ -17,7 +17,7 @@ makedepends=('cargo' 'git' 'clang')
 source=("git+https://gitlab.com/keys.openpgp.org/hagrid.git"
 	hagrid.service)
 sha512sums=('SKIP'
-            'efb75d1f72ade22d52e4f5e60219399beb9fe60fbe43a76d3865916c2e8982594835a06b286e2fe8b7413c66dc10d94fd9fbaeadf8dfef936281cdf6d10e4925')
+            'e6b2db1058484da3b168d38389c3d3109e8bd28381ff199997396c46513f0e4d52a7201db4c21d952bfdb7e36fc40bea36682349fe6e8d51bc808ebd9f1b0d96')
 
 build() {
   cd "hagrid"
@@ -46,9 +46,10 @@ package() {
   install -Dm0644 nginx.conf "$pkgdir"/usr/share/doc/hagrid/nginx.conf
   install -Dm0644 README.md "$pkgdir"/usr/share/doc/hagrid/README.md
   # conf
-  install -Dm0644 -o 99 -g 99 Rocket.toml "$pkgdir"/etc/hagrid/Rocket.toml
+  install -Dm0644 -o 65534 -g 65534 Rocket.toml "$pkgdir"/etc/hagrid/Rocket.toml
   # set up working dir
-  install -dm0755 -o 99 -g 99 "$pkgdir"/var/lib/hagrid/public
+  install -dm0755 -o 65534 -g 65534 "$pkgdir"/var/lib/hagrid
+  install -dm0755 -o 65534 -g 65534 "$pkgdir"/var/lib/hagrid/public
   ln -s /usr/share/webapps/hagrid/assets "$pkgdir"/var/lib/hagrid/public/
   ln -s /usr/share/webapps/hagrid/email-templates  "$pkgdir"/var/lib/hagrid/
   ln -s /usr/share/webapps/hagrid/errors-static  "$pkgdir"/var/lib/hagrid/
