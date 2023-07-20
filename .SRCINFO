@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-gazebo-ros
 	pkgdesc = ROS - Provides ROS plugins that offer message and service publishers for interfacing with Gazebo through ROS.
 	pkgver = 2.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://wiki.ros.org/gazebo_ros
 	arch = i686
 	arch = x86_64
@@ -25,9 +25,7 @@ pkgbase = ros-noetic-gazebo-ros
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-geometry-msgs
 	depends = tinyxml
-	depends = python-argparse
 	source = ros-noetic-gazebo-ros-2.9.2.tar.gz::https://github.com/ros-simulation/gazebo_ros_pkgs/archive/2.9.2.tar.gz
 	sha256sums = db937f15e5bf8f804de5d8dc0b67607f8b354aecde35785b6bff2d43387abff4
 
 pkgname = ros-noetic-gazebo-ros
-
