@@ -1,15 +1,19 @@
-pkgbase=hagrid
 pkgname=hagrid-git
-pkgver=1
+pkgver=r779.1d1eedc
+pkgver() {
+	cd "$srcdir/hagrid"
+#	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 pkgrel=1
 pkgdesc="Verifying OpenPGP keyserver, written in Rust"
 arch=('x86_64')
 url="https://gitlab.com/keys.openpgp.org/hagrid"
 license=('AGPL3')
 backup=("etc/hagrid/Rocket.toml")
-depends=()
+depends=('nettle' 'gmp')
 optdepends=('gunicorn: wkd-domain-checker')
-makedepends=('cargo')
+makedepends=('cargo' 'git' 'clang')
 source=("git+https://gitlab.com/keys.openpgp.org/hagrid.git"
 	hagrid.service)
 sha512sums=('SKIP'
