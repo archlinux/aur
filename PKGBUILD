@@ -1,5 +1,5 @@
 pkgname="python-libtimed"
-pkgver=0.2,1
+pkgver=0.2.1-2
 pkgrel=1
 pkgdesc="Python API for timed"
 arch=("any")
@@ -7,7 +7,7 @@ url="https://github.com/adfinis/libtimed.git"
 license=("AGPL3")
 provides=("libtimed")
 conflicts=("libtimed")
-depends=("python>=3.10")
+depends=("python>=3.10" "python-inflection>=0.5.1")
 makedepends=("python-poetry" "python-installer" "git")
 source=("git+${url}")
 sha256sums=('SKIP')
