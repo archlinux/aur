@@ -15,8 +15,8 @@ sha256sums_x86_64=('5295342c21d099dd1f2ad09559875cb6f22b5367e85d16ec27d2d152775f
 
 _install_path="/opt/aspia-client"
 prepare() {
-   yay -S archalien-git
-  archalien ../src/"${pkgbase}-${pkgver}-${arch}.deb"
+  yay -S archalien-git
+  /usr/bin/archalien ../src/"${pkgbase}-${pkgver}-${arch}.deb"
 }
 
 package_aspia-client() {
