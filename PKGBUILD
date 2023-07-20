@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="gopeed-bin"
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="High speed downloader that supports all platforms."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 conflicts=("${pkgname%-bin}")
 depends=('at-spi2-core' 'gtk3' 'glibc' 'cairo' 'gdk-pixbuf2' 'harfbuzz' 'pango' 'gcc-libs' 'libepoxy' 'glib2' 'libayatana-appindicator' 'libdbusmenu-glib' 'libayatana-indicator' 'ayatana-ido')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/Gopeed-v${pkgver}-linux-amd64.deb")
-sha256sums=('4768abd3a20dae693b8dfc44f39194ba919e9cf2a557f1a98d7da471b8a452c5')
+sha256sums=('0c9e1ec3d3a69e284448e3c6378d9494b5c1bf71bdd5fb82eef287e68cd51e07')
 
 package() {
     bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}" --uname root --gname root
