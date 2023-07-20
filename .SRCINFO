@@ -7,6 +7,8 @@ pkgbase = python-kaleido-bin
 	license = MIT
 	makedepends = python-installer
 	depends = python
+	provides = python-kaleido
+	conflicts = python-kaleido
 	source_x86_64 = https://github.com/plotly/Kaleido/releases/download/v0.2.1/kaleido-0.2.1-py2.py3-none-manylinux1_x86_64.whl
 	sha256sums_x86_64 = aa21cf1bf1c78f8fa50a9f7d45e1003c387bd3d6fe0a767cfbbf344b95bdc3a8
 
