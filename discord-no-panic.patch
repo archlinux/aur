@@ -1,8 +1,8 @@
 diff --git a/src/discord_rpc.rs b/src/discord_rpc.rs
-index 0d7416c..8880760 100644
+index fe134c0..0119988 100644
 --- a/src/discord_rpc.rs
 +++ b/src/discord_rpc.rs
-@@ -52,15 +52,22 @@ impl DiscordRpc {
+@@ -71,15 +71,22 @@ impl DiscordRpc {
                  let mut connected = false;
  
                  while let Ok(update) = receiver.recv() {
@@ -31,7 +31,7 @@ index 0d7416c..8880760 100644
                              }
                          }
  
-@@ -68,7 +75,9 @@ impl DiscordRpc {
+@@ -87,7 +94,9 @@ impl DiscordRpc {
                              if connected {
                                  connected = false;
  
@@ -42,7 +42,7 @@ index 0d7416c..8880760 100644
                              }
                          }
  
-@@ -79,13 +88,17 @@ impl DiscordRpc {
+@@ -98,13 +107,17 @@ impl DiscordRpc {
  
                              if connected {
                                  client.set_activity(Self::get_activity(&params))

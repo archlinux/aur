@@ -2,7 +2,7 @@
 # Contributer: DrakeTDL <everyone@disroot.org>
 _pkgname="an-anime-game-launcher"
 pkgname="$_pkgname-patched-git"
-pkgver=3.7.0.r0.g7bae189
+pkgver=3.7.6.r0.g1479edf
 pkgrel=1
 pkgdesc="A Launcher for a specific anime game with auto-patching, discord rpc and time tracking (with a couple of fixes)"
 arch=("x86_64")
@@ -31,7 +31,6 @@ source=(
   "git+https://github.com/an-anime-team/an-anime-game-launcher"
   "git+https://github.com/an-anime-team/anime-launcher-sdk"
   "${_pkgname}.desktop"
-  "use-cloned-sdk.patch"
   "discord-no-panic.patch"
 )
 noextract=()
@@ -39,8 +38,7 @@ sha256sums=(
   SKIP
   SKIP
   "3bb15b29fd47e60ead712a67046daf42bd0ba5547d379ead6ea9bba37ea7b137"
-  "41bf614e86d2b439dde5dd60ea2e1384f420656d24cc5f075e2b4e9d0fb2b31d"
-  "207069d6510fbfa09a157f942da48c2985cb05780aa44c00f1ba9909201dacb1"
+  "b05d3724d2c12609650f0229b9bebc743399b96f1f739a50c63cbc0689810ea9"
 )
 
 pkgver() {
@@ -52,9 +50,7 @@ prepare() {
   cd "${_pkgname}"
   git submodule update --init --recursive --single-branch
 
-  #sdkver=$(grep -Pazo '(?s)\[dependencies\.anime-launcher-sdk\]\ngit = "\S+"\ntag = "\S+"' Cargo.toml | tail -n 1 | cut -d '"' -f 2)
   # Use cloned anime-launcher-sdk
-  #patch -up1 -i "../use-cloned-sdk.patch"
   code='import toml
 with open("Cargo.toml", "rt") as file:
   cargo = toml.load(file)
