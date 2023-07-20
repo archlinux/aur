@@ -3,7 +3,7 @@
 pkgname=mediatracker
 __pkgname="MediaTracker"
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://github.com/bonukai/MediaTracker.git"
 pkgdesc="Self hosted platform for tracking movies, tv shows, video games, books and audiobooks."

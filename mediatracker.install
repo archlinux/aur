@@ -1,4 +1,5 @@
 post_install() {
+    mkdir /home/mediatracker
     echo "To run, systemctl start mediatracker"
     echo "site at localhost:7481"
 }
