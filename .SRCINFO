@@ -1,13 +1,12 @@
 pkgbase = python-fasttext-predict
 	pkgdesc = fasttext with wheels and no external dependency, but only the predict method (<1MB)
 	pkgver = 0.9.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/searxng/fasttext-predict
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = pybind11
-	provides = python-fasttext-predict
 	conflicts = python-fasttext
 	conflicts = python-fasttest-git
 	conflicts = python-fasttext-predict-git
