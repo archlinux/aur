@@ -1,6 +1,6 @@
 pkgbase = r-jaspsem
 	pkgdesc = SEM Module for JASP
-	pkgver = 0.17.2.1
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspSem
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-jaspsem
 	depends = r-stringr
 	depends = r-tibble
 	depends = r-tidyr
-	source = jaspSem_0.17.2.1.tar.gz::https://github.com/jasp-stats/jaspSem/archive/refs/tags/v0.17.2.1.tar.gz
-	sha256sums = 0df1ea3fe7a2be29b9db8abb14286fbccab801bcdc61dc734a75ce75b2771e31
+	source = jaspSem_0.17.3.tar.gz::https://github.com/jasp-stats/jaspSem/archive/refs/tags/v0.17.3.tar.gz
+	sha256sums = ad581bbef8316b802cd1922dd88f2d617966a32311871ba87b98a715b60e685a
 
 pkgname = r-jaspsem
