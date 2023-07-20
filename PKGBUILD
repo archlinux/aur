@@ -3,7 +3,7 @@
 
 pkgname=i3menu
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='wrapper for dmenu(-bud) optimized for i3fyra'
 arch=('any')
 url='https://github.com/budlabs/i3menu'
