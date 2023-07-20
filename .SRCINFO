@@ -1,0 +1,18 @@
+pkgbase = gd-tools-git
+	pkgdesc = A set of helpful programs to enhance goldendict for immersion learning.
+	pkgver = 1.0.r0.g58b1710
+	pkgrel = 1
+	url = https://github.com/Ajatt-Tools/gd-tools
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = xmake
+	makedepends = gcc
+	makedepends = nlohmann-json
+	makedepends = marisa
+	provides = gd-tools
+	conflicts = gd-tools
+	source = gd-tools-git::git+https://github.com/Ajatt-Tools/gd-tools.git#branch=main
+	sha256sums = SKIP
+
+pkgname = gd-tools-git
