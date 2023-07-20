@@ -1,0 +1,7 @@
+post_install() {
+    setcap cap_net_raw,cap_net_admin=eip usr/bin/sniffnet
+}
+
+post_upgrade() {
+    post_install
+}

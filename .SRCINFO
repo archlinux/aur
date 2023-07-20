@@ -1,0 +1,25 @@
+pkgbase = sniffnet-glow
+	pkgdesc = Application to comfortably monitor your network traffic - glow renderer branch
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/GyulyVGC/sniffnet
+	install = sniffnet.install
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = alsa-lib
+	depends = fontconfig
+	depends = freetype2
+	depends = glibc
+	depends = libpcap
+	provides = sniffnet
+	conflicts = sniffnet
+	options = !lto
+	source = sniffnet::git+https://github.com/GyulyVGC/sniffnet.git#branch=glow-renderer
+	source = build.patch
+	b2sums = SKIP
+	b2sums = e3504d0dab24225c116ff94052428e6bb55378434c2ef368d031fc41fe379b1a6ada1f984846c5a0c760055a83ac99dbde67f2f1d250378d52146f5721f7792c
+
+pkgname = sniffnet-glow
