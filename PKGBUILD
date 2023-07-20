@@ -3,7 +3,7 @@
 
 pkgname=jddesktopentryedit
 _app_id=page.codeberg.JakobDev.jdDesktopEntryEdit
-pkgver=1.1
+pkgver=1.2
 pkgrel=2
 pkgdesc="A graphical program to create and edit desktop entries"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools'
              'python-wheel' 'qt5-tools')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('c67fe26e2fdd39b6a82d7df1601b5f1e59995caa134f84919bee4abc71ea6086')
+sha256sums=('0c949570a05632f17772eb7bcea3f711909964e718b593f61c47a5b44d3b33f0')
 
 prepare() {
   rm -rf "$pkgname-$pkgver"
