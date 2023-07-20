@@ -3,7 +3,7 @@
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname=raleigh-reloaded-git
 pkgver=1.5+6.r161.20230323.ca39c61
-pkgrel=2
+pkgrel=3
 pkgdesc="A GTK theme aiming to revive the classic Raleigh theme"
 arch=('any')
 url="https://github.com/vlastavesely/raleigh-reloaded"
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=()
 optdepends=(
   # 'gtk2: To use the theme in GTK+.' # It is part of GTK2, so no need to relate this package to GTK2.
-  'gtk3: To use the theme in GTK3.'
+  'gtk3>=3.20: To use the theme in GTK3.'
   # 'firefox: To use the theme in firefox.'
 )
 provides=("${pkgname%-git}=${pkgver}")
