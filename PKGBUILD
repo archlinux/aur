@@ -68,7 +68,8 @@ prepare() {
 build() {
     IFS=" " read -r -a BUILD_FLAGS <<< "${CXXFLAGS} ${LDFLAGS} ${LTOFLAGS}"
 
-    rm -r install
+    # If the files exist, the installer attempts to reinstall the app.
+    rm -rf install
 
     mkdir -p install/{sbin,install/.local/share}
 
