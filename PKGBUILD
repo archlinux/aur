@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.35.1.r421.gc1bef0f084
+pkgver=0.35.1.r568.gfd03d0038b
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -416,6 +416,7 @@ prepare() {
     '-Dcocoa=disabled'
     '-Dd3d11=disabled'
     '-Ddirect3d=disabled'
+    '-Ddmabuf-wayland=enabled'
     '-Ddrm=enabled'
     '-Degl=enabled'
     '-Degl-android=disabled'
