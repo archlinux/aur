@@ -2,7 +2,7 @@
 
 pkgname=xstop
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Just click to pause/resume x11 windows, inspired by xkill."
 url="https://github.com/Brx86/Xstop"
 arch=("x86_64")
