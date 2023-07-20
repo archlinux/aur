@@ -1,12 +1,12 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=trame-vuetify
-# _npm_base=vuetify
-# _npm_font_base=@mdi/font
+_npm_base=vuetify
+_npm_font_base=@mdi/font
 pkgname=python-${_base}
 pkgdesc="Vuetify widgets for trame"
 pkgver=2.3.1
-# _npm_pkgver=3.3.9
-# _npm_font_pkgver=7.2.96
+_npm_pkgver=3.3.9
+_npm_font_pkgver=7.2.96
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
@@ -14,20 +14,20 @@ license=(MIT)
 depends=(python-trame-client)
 makedepends=(python-build python-installer python-setuptools python-wheel nodejs-lts-gallium npm)
 checkdepends=(python-pytest python-trame-server)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-# https://registry.npmjs.org/${_npm_base}/-/${_npm_base}-${_npm_pkgver}.tgz
-# https://registry.npmjs.org/${_npm_font_base}/-/${_npm_font_base:5:4}-${_npm_font_pkgver}.tgz
-sha512sums=('5ecb7e5771a2c2c881423e4d7409e8293fbc24d6b40401d2b8d8a784a8100b8909f19643a074fa13891be312ec76db6fcf5c2fc856cc8a86a75470d6fde55c6a')
-# '404ff25ef1ca0e794af6c8e3328672f5c028bcd69ba48f7bc60f510fe98010381251a64d097fe3cbb427d1b3f50e324d780b11da802570ed02d9686bb187bd93'
-# '8ecc1117aab77aaf0d5a95a2a9cb7aabee8583f23b9d486bc5825f88433c249a5aa74c1524b41d6cab724bae467652bb4bb62d9f1dd34e2fdb9b0fad0619069a'
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
+  https://registry.npmjs.org/${_npm_base}/-/${_npm_base}-${_npm_pkgver}.tgz
+  https://registry.npmjs.org/${_npm_font_base}/-/${_npm_font_base:5:4}-${_npm_font_pkgver}.tgz)
+sha512sums=('5ecb7e5771a2c2c881423e4d7409e8293fbc24d6b40401d2b8d8a784a8100b8909f19643a074fa13891be312ec76db6fcf5c2fc856cc8a86a75470d6fde55c6a'
+  '3a1ee22d8be177df4cc95a87f27acae6b6a2eedd91f62bee899019284d2c7cfe31d0c498b615d13c1a978b8572f7c47b32080d15aa0c04327f84fb1cb91c6740'
+  '7bffe59a49a91543192a198263dcdd8d17b8ccd5df6ce2099e7eb1bde1db695da44b0e5a27974b5d4c5c46dd46c5f8bb658a452d45a5906d8c1921408aa02eef')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
-  # mkdir -p ${_base}-${pkgver}/${_base/-/_}/module/vue3-serve/{fonts,css}
-  # mv ${srcdir}/package/dist/${_npm_base}.min.css ${srcdir}/${_base}-${pkgver}/${_base/-/_}/module/vue3-serve/${_npm_base}3.css
-  # mv ${srcdir}/package/dist/${_npm_base}.min.js ${srcdir}/${_base}-${pkgver}/${_base/-/_}/module/vue3-serve/${_npm_base}3.js
-  # mv ${srcdir}/package/css/materialdesignicons.min.css ${srcdir}/${_base}-${pkgver}/${_base/-/_}/module/vue3-serve/css/mdi.css
-  # mv ${srcdir}/package/fonts/materialdesignicons-webfont.woff2 ${srcdir}/${_base}-${pkgver}/${_base/-/_}/module/vue3-serve/fonts
+  mkdir -p ${_base}-${pkgver}/${_base/-/_}/module/vue3-serve/{fonts,css}
+  mv ${srcdir}/package/dist/${_npm_base}.min.css ${srcdir}/${_base}-${pkgver}/${_base/-/_}/module/vue3-serve/${_npm_base}3.css
+  mv ${srcdir}/package/dist/${_npm_base}.min.js ${srcdir}/${_base}-${pkgver}/${_base/-/_}/module/vue3-serve/${_npm_base}3.js
+  mv ${srcdir}/package/css/materialdesignicons.min.css ${srcdir}/${_base}-${pkgver}/${_base/-/_}/module/vue3-serve/css/mdi.css
+  mv ${srcdir}/package/fonts/materialdesignicons-webfont.woff2 ${srcdir}/${_base}-${pkgver}/${_base/-/_}/module/vue3-serve/fonts
 }
 
 build() {

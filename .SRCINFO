@@ -15,6 +15,10 @@ pkgbase = python-trame-vuetify
 	makedepends = npm
 	depends = python-trame-client
 	source = trame-vuetify-2.3.1.tar.gz::https://github.com/Kitware/trame-vuetify/archive/v2.3.1.tar.gz
+	source = https://registry.npmjs.org/vuetify/-/vuetify-3.3.9.tgz
+	source = https://registry.npmjs.org/@mdi/font/-/font-7.2.96.tgz
 	sha512sums = 5ecb7e5771a2c2c881423e4d7409e8293fbc24d6b40401d2b8d8a784a8100b8909f19643a074fa13891be312ec76db6fcf5c2fc856cc8a86a75470d6fde55c6a
+	sha512sums = 3a1ee22d8be177df4cc95a87f27acae6b6a2eedd91f62bee899019284d2c7cfe31d0c498b615d13c1a978b8572f7c47b32080d15aa0c04327f84fb1cb91c6740
+	sha512sums = 7bffe59a49a91543192a198263dcdd8d17b8ccd5df6ce2099e7eb1bde1db695da44b0e5a27974b5d4c5c46dd46c5f8bb658a452d45a5906d8c1921408aa02eef
 
 pkgname = python-trame-vuetify
