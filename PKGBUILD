@@ -3,7 +3,7 @@
 
 pkgname="plasticity-bin"
 pkgver="1.2.4"
-pkgrel="2"
+pkgrel="1"
 pkgdesc="Plasticity is a 3d modelling software for concept artists. Modeling in Plasticity is quick and efficient due to the unique gizmos, shortcuts, and thoughtful workflow."
 arch=("x86_64")
 license=("nonfree")
