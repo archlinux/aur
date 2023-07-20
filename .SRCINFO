@@ -11,6 +11,10 @@ pkgbase = xstop
 	depends = xorg-xprop
 	provides = xstop
 	source = xstop
-	sha256sums = cd4f5c78ae660d9b93ce6d882c5d0bacb6babaf84867fc85053ac2a15f8e3416
+	source = xstop-pause.png
+	source = xstop-resume.png
+	sha256sums = d62d0629e88d63231611ea125989c3966561a80d40c64d3008a356b6b8c5ec71
+	sha256sums = 0cf450a42f44711e301a86ca6e103ab09492879df27022901d61471a768702b5
+	sha256sums = 265cd2db16a1fa320a79c4c5ee047c8dba8be5d9251620f2697ebc188e8de6d5
 
 pkgname = xstop

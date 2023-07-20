@@ -15,8 +15,8 @@ if info:
     if state == "T":
         # 如果已暂停，则发送恢复信号
         os.popen(f"kill -CONT {pid} {child_pids}")
-        print(f"Resume: {pid} {name}")
+        os.popen(f"notify-send 'Resume: {name}' -i xstop-resume -t 5000")
     else:
         # 如果正在运行，则发送暂停信号
         os.popen(f"kill -STOP {pid} {child_pids}")
-        print(f"Stop: {pid} {name}")
+        os.popen(f"notify-send 'Pause: {name}' -i xstop-pause -t 5000")
