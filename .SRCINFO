@@ -1,6 +1,6 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, or chromedriver
-	pkgver = 115.0.5790.90
+	pkgver = 115.0.5790.98
 	pkgrel = 1
 	url = https://www.chromium.org/Home
 	arch = x86_64
@@ -56,16 +56,16 @@ pkgbase = chromium-no-extras
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
-	provides = chromium=115.0.5790.90
+	provides = chromium=115.0.5790.98
 	conflicts = chromium
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-115.0.5790.90.tar.xz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-115.0.5790.98.tar.xz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = https://github.com/stha09/chromium-patches/releases/download/chromium-115-patchset-2/chromium-115-patchset-2.tar.xz
 	source = REVERT-disable-autoupgrading-debug-info.patch
 	source = random-build-fixes.patch
 	source = use-oauth2-client-switches-as-default.patch
-	sha256sums = 82e802bcd2ae8d575d7fda9ec82db83d04d5453e9304cb482644f629232bd394
+	sha256sums = ffbe630ecf8fc8a250be05fdbec6c94d5881b5fcbbc5fb2b93e54ddc78d56af1
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 4f91bd10a8ae2aa7b040a8b27e01f38910ad33cbe179e39a1ae550c9c1523384
 	sha256sums = 1b782b0f6d4f645e4e0daa8a4852d63f0c972aa0473319216ff04613a0592a69
