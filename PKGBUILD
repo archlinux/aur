@@ -1,7 +1,8 @@
-# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
+# Contributor: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=sway-systemd
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Systemd integration for Sway session"
 arch=(any)
@@ -13,28 +14,22 @@ conflicts=("sway-services-git")
 source=("sway-systemd::git+https://github.com/alebastr/sway-systemd.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
-
 build() {
-
-    arch-meson \
-        -Dautostart=true \
-        -Dcgroups=enabled \
-        -Dlocale1=true \
-        "$srcdir/${pkgname%-git}" build
-    ninja -C build
+  arch-meson \
+    -Dautoload-configs=all \
+    "$srcdir/${pkgname%-git}" build
+  ninja -C build
 }
 
 check() {
-
-    ninja -C build test
+  ninja -C build test
 }
 
 package() {
+  DESTDIR="$pkgdir" ninja -C build install
 
-    DESTDIR="$pkgdir" ninja -C build install
+  cd "$srcdir/${pkgname%-git}"
 
-    cd "$srcdir/${pkgname%-git}"
-
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
 }
