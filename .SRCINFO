@@ -22,7 +22,7 @@ pkgbase = ros-noetic-jackal-control
     depends = ros-noetic-controller-manager
     depends = ros-noetic-interactive-marker-twist-server
     depends = ros-noetic-teleop-twist-joy
-    source = ros-noetic-jackal-control-0.8.8-0.tar.gz::https://github.com/jackal/jackal/archive/0.8.8.tar.gz
+    source = ros-noetic-jackal-control-0.8.8.tar.gz::https://github.com/jackal/jackal/archive/0.8.8.tar.gz
     sha256sums = ef3f56b7cb56b3230ea755a797e7e59f41ed51143d7fab25a5579c4e5ea890eb
 
 pkgname = ros-noetic-jackal-control
