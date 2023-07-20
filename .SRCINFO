@@ -12,11 +12,15 @@ pkgbase = p3x-onenote-bin
 	depends = electron24
 	provides = p3x-onenote
 	conflicts = p3x-onenote
-	source = p3x-onenote-2023.10.214.deb::https://github.com/patrikx3/onenote/releases/download/v2023.10.214/p3x-onenote_2023.10.214_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/patrikx3/onenote/master/LICENSE
 	source = p3x-onenote.sh
-	sha256sums = 2e091f891d76abb851cffe1f0badb530926888212580b4a02e98b10c05850a24
 	sha256sums = 490c6bceab7fe36f82b85837da949520ccb2e588fdfa2308a833e50b0e06a08a
 	sha256sums = 1a80871d5b9ccd1b5521eb1e62687f32c6002c37ae172d357bf4938bb4711576
+	source_aarch64 = p3x-onenote-2023.10.214-aarch64.deb::https://github.com/patrikx3/onenote/releases/download/v2023.10.214/p3x-onenote_2023.10.214_arm64.deb
+	sha256sums_aarch64 = 6629f2ee5023b60b27c569146b239998c619c1a39f58fa8ad23362d7c6fc01ac
+	source_armv7h = p3x-onenote-2023.10.214-armv7h.deb::https://github.com/patrikx3/onenote/releases/download/v2023.10.214/p3x-onenote_2023.10.214_armv7l.deb
+	sha256sums_armv7h = eddb5101df45e4d15c70264d9a98f862bf18449cf2edab54703073dd640ab52c
+	source_x86_64 = p3x-onenote-2023.10.214-x86_64.deb::https://github.com/patrikx3/onenote/releases/download/v2023.10.214/p3x-onenote_2023.10.214_amd64.deb
+	sha256sums_x86_64 = 2e091f891d76abb851cffe1f0badb530926888212580b4a02e98b10c05850a24
 
 pkgname = p3x-onenote-bin
