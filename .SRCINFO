@@ -4,7 +4,7 @@ pkgbase = importenv-bin
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/importenv
 	arch = x86_64
-	source = importenv-bin::https://github.com/VHSgunzo/importenv-bin/releases/download/v0.0.6/importenv-bin
+	source = importenv::https://github.com/VHSgunzo/importenv/releases/download/v0.0.6/importenv
 	sha256sums = SKIP
 
 pkgname = importenv-bin
