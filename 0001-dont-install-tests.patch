@@ -1,0 +1,471 @@
+diff --git a/Tests/meson.build b/Tests/meson.build
+index aeb9a4cb3..973139912 100644
+--- a/Tests/meson.build
++++ b/Tests/meson.build
+@@ -7,7 +7,7 @@ AccessParse =  executable('AccessParse',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check parsing of access rights', AccessParse)
+@@ -17,7 +17,7 @@ AsyncProcessing =  executable('AsyncProcessing',
+              include_directories: [osmscoutIncDir],
+              dependencies: [mathDep, threadDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ AsyncWorker =  executable('AsyncWorker',
+@@ -25,7 +25,7 @@ AsyncWorker =  executable('AsyncWorker',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check asynchronous worker', AsyncWorker)
+@@ -35,7 +35,7 @@ TimeParse =  executable('TimeParse',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check parsing of time string', TimeParse)
+@@ -45,7 +45,7 @@ Bearing = executable('Bearing',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check calculation of bearing', Bearing)
+@@ -55,7 +55,7 @@ BitsAndBytesNeeded = executable('BitsAndBytesNeeded',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check encoding of numbers', BitsAndBytesNeeded)
+@@ -64,7 +64,7 @@ ByteTest = executable('ByteTest',
+              'src/ByteTest.cpp',
+              include_directories: [testIncDir],
+              dependencies: [mathDep],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check std_byte behaviour', ByteTest)
+@@ -74,7 +74,7 @@ CachePerformance = executable('CachePerformance',
+              include_directories: [osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check cache functionality with CachePerformance', CachePerformance, args : ['--size', '1000'])
+@@ -84,7 +84,7 @@ CalculateResolution = executable('CalculateResolution',
+              include_directories: [osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check position accuracy with coordinate bits', CalculateResolution)
+@@ -94,7 +94,7 @@ CancelableFuture = executable('CancelableFuture',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check cancelable future', CancelableFuture)
+@@ -104,7 +104,7 @@ CmdLineParsing = executable('CmdLineParsing',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check parsing of command line args', CmdLineParsing)
+@@ -114,7 +114,7 @@ ColorParse = executable('ColorParse',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check parsing of colors', ColorParse)
+@@ -124,7 +124,7 @@ CoordinateEncoding = executable('CoordinateEncoding',
+              include_directories: [osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check parsing of ways.dat', CoordinateEncoding, args : [meson.current_source_dir() + '/data/testregion'])
+@@ -138,7 +138,7 @@ if buildMapQt
+                  include_directories: [testIncDir, osmscoutmapqtIncDir, osmscoutmapIncDir, osmscoutIncDir],
+                  dependencies: [mathDep, openmpDep, qtMapDep],
+                  link_with: [osmscoutmapqt, osmscoutmap, osmscout],
+-                 install: true,
++                 install: false,
+                  install_dir: testInstallDir)
+ endif
+ 
+@@ -147,7 +147,7 @@ EncodeNumber = executable('EncodeNumber',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check encoding of numbers', EncodeNumber)
+@@ -157,7 +157,7 @@ FeatureLabelTest = executable('FeatureLabelTest',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check label formatting', FeatureLabelTest)
+@@ -167,7 +167,7 @@ File = executable('File',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check File utilities', File)
+@@ -177,7 +177,7 @@ FileScannerWriter = executable('FileScannerWriter',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check File access implementation', FileScannerWriter)
+@@ -187,7 +187,7 @@ GeoBox = executable('GeoBox',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check handling of geo box intersection', GeoBox)
+@@ -197,7 +197,7 @@ GeoCoordParse = executable('GeoCoordParse',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check parsing of geo coordinates', GeoCoordParse)
+@@ -207,7 +207,7 @@ Geometry = executable('Geometry',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check impl. of geometric functions', Geometry)
+@@ -220,7 +220,7 @@ HeaderCheck = executable('HeaderCheck',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check use of \'<\'...\'>\' for includes', HeaderCheck, env: headerCheckEnv)
+@@ -236,7 +236,7 @@ if buildImport
+                  include_directories: [testIncDir, osmscouttestIncDir, osmscoutimportIncDir, osmscoutIncDir],
+                  dependencies: [mathDep, openmpDep],
+                  link_with: [osmscouttest, osmscoutimport, osmscout],
+-                 install: true,
++                 install: false,
+                  install_dir: testInstallDir)
+ endif
+ 
+@@ -245,7 +245,7 @@ MapRotate = executable('MapRotate',
+              include_directories: [testIncDir, osmscoutmapIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscoutmap, osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ if (compiler.get_id()=='gcc' and target_machine.system()=='windows')
+@@ -259,7 +259,7 @@ MercatorProjection = executable('MercatorProjection',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check MercatorProjection', MercatorProjection)
+@@ -269,7 +269,7 @@ MultiDBRouting = executable('MultiDBRouting',
+              include_directories: [osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check routing', MultiDBRouting, args : ['50.412', '14.534', '50.424', '14.6013', meson.current_source_dir() + '/data/testregion'])
+@@ -279,7 +279,7 @@ NumberSet = executable('NumberSet',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check correctness of NumberSet class', NumberSet)
+@@ -289,7 +289,7 @@ NumberSetPerformance = executable('NumberSetPerformance',
+              include_directories: [osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check number set performance', NumberSetPerformance, timeout: 180)
+@@ -299,7 +299,7 @@ OpeningHours = executable('OpeningHours',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check parsing of opening hours', OpeningHours)
+@@ -309,7 +309,7 @@ OSTAndOSSCheck = executable('OSTAndOSSCheck',
+              include_directories: [osmscoutmapIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscoutmap, osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ if buildMapCairo or buildMapQt or buildMapAgg or buildMapOpenGL
+@@ -361,7 +361,7 @@ if buildMapCairo or buildMapQt or buildMapAgg or buildMapOpenGL
+                                include_directories: includes,
+                                dependencies: deps,
+                                link_with: links,
+-                               install: true)
++                               install: false)
+ endif
+ 
+ ReaderScannerPerformance = executable('ReaderScannerPerformance',
+@@ -369,7 +369,7 @@ ReaderScannerPerformance = executable('ReaderScannerPerformance',
+              include_directories: [osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check reader scanner performance', ReaderScannerPerformance, args : [meson.current_source_dir() + '/data/testregion'])
+@@ -379,7 +379,7 @@ ScanConversion = executable('ScanConversion',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check scan conversion code', ScanConversion)
+@@ -389,7 +389,7 @@ ScreenBox = executable('ScreenBox',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check ScreenBox functionality', ScreenBox)
+@@ -398,14 +398,14 @@ StdByteTest = executable('StdByteTest',
+              'src/StdByteTest.cpp',
+              include_directories: [testIncDir],
+              dependencies: [mathDep],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ Signal = executable('Signal',
+              'src/Signal.cpp',
+              include_directories: [testIncDir, osmscoutIncDir],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check signal', Signal)
+@@ -415,7 +415,7 @@ StringUtils = executable('StringUtils',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check string utils', StringUtils)
+@@ -425,7 +425,7 @@ ThreadedDatabase = executable('ThreadedDatabase',
+              include_directories: [osmscoutmapIncDir, osmscoutIncDir],
+              dependencies: [mathDep, threadDep, openmpDep],
+              link_with: [osmscoutmap, osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check threaded database', ThreadedDatabase, args : [
+@@ -439,7 +439,7 @@ SunriseSunset = executable('SunriseSunset',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, threadDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check SunriseSunset utility', SunriseSunset)
+@@ -449,7 +449,7 @@ PolygonCenter = executable('PolygonCenter',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, threadDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check PolygonCenter utility', PolygonCenter)
+@@ -459,7 +459,7 @@ TilingTest = executable('TilingTest',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, threadDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check tiling calculation code', TilingTest)
+@@ -469,7 +469,7 @@ TransPolygon = executable('TransPolygon',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check polygon transformation code', TransPolygon)
+@@ -479,7 +479,7 @@ WaterIndex = executable('WaterIndex',
+              include_directories: [testIncDir, osmscoutIncDir, osmscoutimportIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout, osmscoutimport],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check water index import code', WaterIndex)
+@@ -489,7 +489,7 @@ WorkQueue = executable('WorkQueue',
+              include_directories: [osmscoutIncDir],
+              dependencies: [mathDep, threadDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check implementation of work queue', WorkQueue)
+@@ -499,7 +499,7 @@ WStringStringConversion = executable('WStringStringConversion',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check WString<=>String conversion code', WStringStringConversion)
+@@ -509,7 +509,7 @@ LabelPathTest = executable('LabelPathTest',
+            include_directories: [testIncDir, osmscoutmapIncDir, osmscoutIncDir],
+            dependencies: [mathDep],
+            link_with: [osmscoutmap, osmscout],
+-           install: true,
++           install: false,
+            install_dir: testInstallDir)
+ 
+ test('Check LabelPath code', LabelPathTest)
+@@ -519,7 +519,7 @@ Base64Test = executable('Base64Test',
+            include_directories: [testIncDir, osmscoutIncDir],
+            dependencies: [mathDep],
+            link_with: [osmscout],
+-           install: true,
++           install: false,
+            install_dir: testInstallDir)
+ 
+ test('Check Base64 code', Base64Test)
+@@ -529,7 +529,7 @@ CoordBufferTest = executable('CoordBufferTest',
+            include_directories: [testIncDir, osmscoutmapIncDir, osmscoutIncDir],
+            dependencies: [mathDep],
+            link_with: [osmscoutmap, osmscout],
+-           install: true,
++           install: false,
+            install_dir: testInstallDir)
+ 
+ test('Check coordinate buffer conversions', CoordBufferTest)
+@@ -540,7 +540,7 @@ if marisaDep.found()
+                include_directories: [osmscoutIncDir],
+                dependencies: [mathDep],
+                link_with: [osmscout],
+-               install: true,
++               install: false,
+                install_dir: testInstallDir)
+ 
+    test('Check text lookup - vysoka', TextLookupTest, args : [
+@@ -564,7 +564,7 @@ Thread = executable('Thread',
+              include_directories: [testIncDir, osmscoutIncDir],
+              dependencies: [mathDep, threadDep, openmpDep],
+              link_with: [osmscout],
+-             install: true,
++             install: false,
+              install_dir: testInstallDir)
+ 
+ test('Check Thread utilities', Thread)
+@@ -602,7 +602,7 @@ if buildClientQt
+                  include_directories: [testIncDir, osmscoutmapqtIncDir, osmscoutclientIncDir, osmscoutmapIncDir, osmscoutIncDir, osmscoutclientqtIncDir],
+                  dependencies: [mathDep, threadDep, openmpDep, qtClientDep],
+                  link_with: [osmscoutmapqt, osmscoutmap, osmscout, osmscoutclientqt],
+-                 install: true,
++                 install: false,
+                  install_dir: testInstallDir)
+ endif
+ 
+@@ -615,7 +615,7 @@ if buildClientQt
+                  include_directories: [testIncDir, osmscoutmapqtIncDir, osmscoutmapIncDir, osmscoutIncDir, osmscoutclientIncDir, osmscoutclientqtIncDir],
+                  dependencies: [mathDep, threadDep, openmpDep, qtClientDep],
+                  link_with: [osmscoutmapqt, osmscoutmap, osmscout, osmscoutclientqt],
+-                 install: true,
++                 install: false,
+                  install_dir: testInstallDir)
+ endif
+ 

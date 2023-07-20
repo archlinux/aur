@@ -1,0 +1,264 @@
+diff --git a/Demos/meson.build b/Demos/meson.build
+index 9b1040d1b..a00afe8a9 100644
+--- a/Demos/meson.build
++++ b/Demos/meson.build
+@@ -8,7 +8,7 @@ Coverage = executable('Coverage',
+                       include_directories: [osmscoutIncDir],
+                       dependencies: [mathDep, openmpDep],
+                       link_with: [osmscout],
+-                      install: true,
++                      install: false,
+                       install_dir: demoInstallDir)
+ 
+ DumpOSS = executable('DumpOSS',
+@@ -16,7 +16,7 @@ DumpOSS = executable('DumpOSS',
+                       include_directories: [osmscoutIncDir, osmscoutmapIncDir],
+                       dependencies: [mathDep, openmpDep],
+                       link_with: [osmscout, osmscoutmap],
+-                      install: true,
++                      install: false,
+                       install_dir: demoInstallDir)
+ 
+ if marisaDep.found()
+@@ -25,7 +25,7 @@ if marisaDep.found()
+                           include_directories: [osmscoutIncDir, osmscoutmapIncDir],
+                           dependencies: [mathDep, openmpDep],
+                           link_with: [osmscout, osmscoutmap],
+-                          install: true,
++                          install: false,
+                           install_dir: demoInstallDir)
+ endif
+ 
+@@ -34,7 +34,7 @@ LocationLookup = executable('LocationLookup',
+                             include_directories: [osmscoutIncDir],
+                             dependencies: [mathDep, openmpDep],
+                             link_with: [osmscout],
+-                            install: true,
++                            install: false,
+                             install_dir: demoInstallDir)
+ 
+ LocationLookupForm = executable('LocationLookupForm',
+@@ -42,7 +42,7 @@ LocationLookupForm = executable('LocationLookupForm',
+                             include_directories: [osmscoutIncDir],
+                             dependencies: [mathDep, openmpDep],
+                             link_with: [osmscout],
+-                            install: true,
++                            install: false,
+                             install_dir: demoInstallDir)
+ 
+ Navigation = executable('Navigation',
+@@ -50,7 +50,7 @@ Navigation = executable('Navigation',
+                         include_directories: [osmscoutIncDir],
+                         dependencies: [mathDep, openmpDep],
+                         link_with: [osmscout],
+-                        install: true,
++                        install: false,
+                         install_dir: demoInstallDir)
+ 
+ NavigationSimulator = executable('NavigationSimulator',
+@@ -58,7 +58,7 @@ NavigationSimulator = executable('NavigationSimulator',
+                         include_directories: [osmscoutIncDir, osmscoutmapIncDir],
+                         dependencies: [mathDep, openmpDep],
+                         link_with: [osmscout, osmscoutmap],
+-                        install: true,
++                        install: false,
+                         install_dir: demoInstallDir)
+ 
+ POILookupForm = executable('POILookupForm',
+@@ -66,7 +66,7 @@ POILookupForm = executable('POILookupForm',
+                             include_directories: [osmscoutIncDir],
+                             dependencies: [mathDep, openmpDep],
+                             link_with: [osmscout],
+-                            install: true,
++                            install: false,
+                             install_dir: demoInstallDir)
+ 
+ LocationDescription = executable('LocationDescription',
+@@ -74,7 +74,7 @@ LocationDescription = executable('LocationDescription',
+                                  include_directories: [osmscoutIncDir],
+                                  dependencies: [mathDep, openmpDep],
+                                  link_with: [osmscout],
+-                                 install: true,
++                                 install: false,
+                                  install_dir: demoInstallDir)
+ 
+ ReverseLocationLookup = executable('ReverseLocationLookup',
+@@ -82,7 +82,7 @@ ReverseLocationLookup = executable('ReverseLocationLookup',
+                                    include_directories: [osmscoutIncDir],
+                                    dependencies: [mathDep, openmpDep],
+                                    link_with: [osmscout],
+-                                   install: true,
++                                   install: false,
+                                    install_dir: demoInstallDir)
+ 
+ ResourceConsumption = executable('ResourceConsumption',
+@@ -90,7 +90,7 @@ ResourceConsumption = executable('ResourceConsumption',
+                                  include_directories: [osmscoutmapIncDir, osmscoutIncDir],
+                                  dependencies: [mathDep, openmpDep],
+                                  link_with: [osmscout, osmscoutmap],
+-                                 install: true,
++                                 install: false,
+                                  install_dir: demoInstallDir)
+ 
+ if buildMapQt
+@@ -100,7 +100,7 @@ if buildMapQt
+                                      include_directories: [osmscoutIncDir, osmscoutmapIncDir, osmscoutmapqtIncDir],
+                                      dependencies: [mathDep, openmpDep, qtMapDep],
+                                      link_with: [osmscout, osmscoutmap, osmscoutmapqt],
+-                                     install: true,
++                                     install: false,
+                                      install_dir: demoInstallDir)
+ endif
+ 
+@@ -111,7 +111,7 @@ if buildMapQt
+                                   include_directories: [osmscoutIncDir, osmscoutmapIncDir, osmscoutmapqtIncDir],
+                                   dependencies: [mathDep, openmpDep, qtMapDep],
+                                   link_with: [osmscout, osmscoutmap, osmscoutmapqt],
+-                                  install: true,
++                                  install: false,
+                                   install_dir: demoInstallDir)
+ endif
+ 
+@@ -129,7 +129,7 @@ if buildClientQt
+                                   dependencies: [mathDep, openmpDep, qtClientDep],
+                                   link_with: [osmscout, osmscoutmap, osmscoutmapqt, osmscoutclientqt],
+                                   override_options : ['unity=off'], # generated code for qt resources use static variables with the same name
+-                                  install: true,
++                                  install: false,
+                                   install_dir: demoInstallDir)
+ 
+   if buildGpx
+@@ -149,7 +149,7 @@ if buildClientQt
+                                 dependencies: [mathDep, openmpDep, qtClientDep],
+                                 link_with: [osmscout, osmscoutmap, osmscoutmapqt, osmscoutclientqt, osmscoutgpx],
+                                 override_options : ['unity=off'], # generated code for qt resources use static variables with the same name
+-                                install: true,
++                                install: false,
+                                 install_dir: demoInstallDir)
+   endif
+ 
+@@ -168,7 +168,7 @@ if buildClientQt
+                                   dependencies: [mathDep, openmpDep, qtClientDep],
+                                   link_with: [osmscout, osmscoutmap, osmscoutmapqt, osmscoutclientqt],
+                                   override_options : ['unity=off'], # generated code for qt resources use static variables with the same name
+-                                  install: true,
++                                  install: false,
+                                   install_dir: demoInstallDir)
+ endif
+ 
+@@ -177,7 +177,7 @@ Routing = executable('Routing',
+                      include_directories: [osmscoutIncDir],
+                      dependencies: [mathDep, openmpDep],
+                      link_with: [osmscout],
+-                     install: true,
++                     install: false,
+                      install_dir: demoInstallDir)
+ 
+ LookupPOI = executable('LookupPOI',
+@@ -185,7 +185,7 @@ LookupPOI = executable('LookupPOI',
+                        include_directories: [osmscoutIncDir],
+                        dependencies: [mathDep, openmpDep],
+                        link_with: [osmscout],
+-                       install: true,
++                       install: false,
+                        install_dir: demoInstallDir)
+ 
+ Srtm = executable('Srtm',
+@@ -193,7 +193,7 @@ Srtm = executable('Srtm',
+                   include_directories: [osmscoutIncDir],
+                   dependencies: [mathDep, openmpDep],
+                   link_with: [osmscout],
+-                  install: true,
++                  install: false,
+                   install_dir: demoInstallDir)
+ 
+ if buildMapSVG
+@@ -202,7 +202,7 @@ if buildMapSVG
+                             include_directories: [osmscoutIncDir, osmscoutmapIncDir, osmscoutmapsvgIncDir, demoIncDir],
+                             dependencies: [mathDep, openmpDep, pangoDep],
+                             link_with: [osmscout, osmscoutmap, osmscoutmapsvg],
+-                            install: true,
++                            install: false,
+                             install_dir: demoInstallDir)
+ endif
+ 
+@@ -212,7 +212,7 @@ if buildMapAgg
+                           include_directories: [osmscoutIncDir, osmscoutmapIncDir, osmscoutmapaggIncDir, demoIncDir],
+                           dependencies: [mathDep, openmpDep, aggDep, ftDep],
+                           link_with: [osmscout, osmscoutmap, osmscoutmapagg],
+-                          install: true,
++                          install: false,
+                           install_dir: demoInstallDir)
+ 
+   Tiler = executable('Tiler',
+@@ -220,7 +220,7 @@ if buildMapAgg
+                      include_directories: [osmscoutIncDir, osmscoutmapIncDir, osmscoutmapaggIncDir],
+                      dependencies: [mathDep, openmpDep, aggDep, ftDep],
+                      link_with: [osmscout, osmscoutmap, osmscoutmapagg],
+-                     install: true,
++                     install: false,
+                      install_dir: demoInstallDir)
+ endif
+ 
+@@ -230,7 +230,7 @@ if buildMapCairo
+                             include_directories: [osmscoutIncDir, osmscoutmapIncDir, osmscoutmapcairoIncDir, demoIncDir],
+                             dependencies: [mathDep, openmpDep, cairoDep, pangoDep, pangocairoDep],
+                             link_with: [osmscout, osmscoutmap, osmscoutmapcairo],
+-                            install: true,
++                            install: false,
+                             install_dir: demoInstallDir)
+ endif
+ 
+@@ -241,7 +241,7 @@ if buildMapQt
+                            include_directories: [osmscoutIncDir, osmscoutmapIncDir, osmscoutmapqtIncDir, demoIncDir],
+                            dependencies: [mathDep, openmpDep, qtMapDep],
+                            link_with: [osmscout, osmscoutmap, osmscoutmapqt],
+-                           install: true,
++                           install: false,
+                            install_dir: demoInstallDir)
+ endif
+ 
+@@ -252,7 +252,7 @@ if buildMapOpenGL and glfwDep.found() and ftDep.found() and glewDep.found()
+                          include_directories: [osmscoutIncDir, osmscoutmapIncDir, osmscoutmapopenglIncDir, demoIncDir],
+                          dependencies: [mathDep, openmpDep, openGLDep, ftDep, glfwDep, threadDep, glewDep],
+                          link_with: [osmscout, osmscoutmap, osmscoutmapopengl],
+-                         install: true,
++                         install: false,
+                          install_dir: demoInstallDir)
+ endif
+ 
+@@ -263,7 +263,7 @@ if buildMapDirectX
+                               dependencies: [mathDep, openmpDep, d2d1Dep, dwriteDep, winCodecsDep],
+                               link_with: [osmscout, osmscoutmap, osmscoutmapdirectx],
+                               win_subsystem: 'windows',
+-                              install: true,
++                              install: false,
+                               install_dir: demoInstallDir)
+ endif
+ 
+@@ -274,7 +274,7 @@ if buildMapGDI
+                             dependencies: [mathDep, openmpDep, gdiplusDep],
+                             link_with: [osmscout, osmscoutmap, osmscoutmapgdi],
+                             win_subsystem: 'windows',
+-                            install: true,
++                            install: false,
+                             install_dir: demoInstallDir)
+ endif
+ 
+@@ -284,7 +284,7 @@ if buildGpx
+                        include_directories: [osmscoutIncDir, osmscoutgpxIncDir],
+                        dependencies: [mathDep, openmpDep],
+                        link_with: [osmscout, osmscoutgpx],
+-                       install: true,
++                       install: false,
+                        install_dir: demoInstallDir)
+ endif
+ 
+@@ -294,6 +294,6 @@ if buildGpx
+                                 include_directories: [osmscoutIncDir, osmscoutgpxIncDir],
+                                 dependencies: [mathDep, openmpDep],
+                                 link_with: [osmscout, osmscoutgpx],
+-                                install: true,
++                                install: false,
+                                 install_dir: demoInstallDir)
+ endif
