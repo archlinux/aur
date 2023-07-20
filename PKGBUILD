@@ -27,7 +27,7 @@ depends=(
 )
 
 _dir="DataspeedInc-velodyne_simulator-b98e156c4431/velodyne_description"
-source=("${pkgname}-${pkgver}.zip"::"https://bitbucket.org/DataspeedInc/velodyne_simulator/get/b98e156c4431.zip")
+source=("${pkgname}-${pkgver}.zip::https://bitbucket.org/DataspeedInc/velodyne_simulator/get/b98e156c4431.zip")
 sha256sums=('6b378ea9e47d9436e35da8ada4879f336e4c27b5a1194993d12ba43b060150f1')
 
 build() {
