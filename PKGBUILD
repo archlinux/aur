@@ -1,7 +1,7 @@
 pkgname=opendune
 _pkgname=OpenDUNE
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Open source re-creation of the popular game Dune II"
 arch=('i686' 'x86_64')
 url="http://opendune.org"
@@ -12,6 +12,8 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OpenDUNE/OpenDUNE/archi
 sha256sums=('8d5ed67669df1f17a44c097d9b6bee4e0623ce2a37f11938ce9cd77de546d06c')
 
 prepare() {
+  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" 
+
   cd "$srcdir/$_pkgname-$pkgver"
   # Version information. Need to build game
   echo "${pkgver}		0	${pkgver}" > .ottdrev
@@ -31,6 +33,6 @@ package() {
 
   # install sample config and desktop file
   install -m644 bin/opendune.ini.sample "$pkgdir"/usr/share/doc/opendune
-  install -Dm644 "../../$pkgname.desktop" "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -Dm644 "${srcdir}/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
