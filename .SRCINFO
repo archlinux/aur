@@ -1,6 +1,6 @@
 pkgbase = fishing-funds-appimage
 	pkgdesc = 基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发.
-	pkgver = 7.3.0
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://ff.1zilc.top/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = fishing-funds-appimage
 	depends = glibc
 	conflicts = fishing-funds
 	options = !strip
-	source = fishing-funds-7.3.0.AppImage::https://github.com/1zilc/fishing-funds/releases/download/v7.3.0/Fishing-Funds-7.3.0.AppImage
-	sha256sums = 4464192b1c08173ce40bf81103dd48f7294f16a3d15402139a77737cb23a4d45
+	source = fishing-funds-8.0.0.AppImage::https://github.com/1zilc/fishing-funds/releases/download/v8.0.0/Fishing-Funds-8.0.0.AppImage
+	sha256sums = 53496f8d8ce04ad22e95306c10f081b1f329f79a35d56a8a45f112f51a0e01dc
 
 pkgname = fishing-funds-appimage
