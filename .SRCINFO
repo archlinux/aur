@@ -1,16 +1,18 @@
 pkgbase = hibernator-git
 	pkgdesc = Script to automate setting up hibernation
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Chrysostomus/hibernator
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = sed
-	depends = gawk
+	depends = awk
 	depends = bash
 	depends = mkinitcpio
 	depends = update-grub
+	provides = hibernator
+	conflicts = hibernator
 	source = git+https://github.com/Chrysostomus/hibernator.git
 	md5sums = SKIP
 
