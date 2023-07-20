@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=rpcsx
 pkgname=$_pkgname-git
-pkgver=r199.b12cc68
+pkgver=r213.fd16ce4
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -35,7 +35,9 @@ pkgver() {
 }
 
 prepare() {
-	sed -i 's/-march=native//' $_pkgname/rpcsx-os/CMakeLists.txt
+	cd $_pkgname
+	sed -i 's/-march=native//' rpcsx-os/CMakeLists.txt
+	sed -i '/xbyak/d' CMakeLists.txt
 }
 
 build() {
