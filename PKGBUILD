@@ -2,12 +2,12 @@
 
 pkgname=gd-tools-git
 pkgver=1.0.r0.g58b1710
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of helpful programs to enhance goldendict for immersion learning."
 arch=("x86_64")
 url="https://github.com/Ajatt-Tools/gd-tools"
 license=("GPL3")
-makedepends=("git" "xmake" "gcc" "nlohmann-json" "marisa")
+makedepends=("git" "xmake" "gcc" "nlohmann-json" "marisa" "fmt")
 provides=("gd-tools")
 conflicts=("gd-tools")
 source=("$pkgname::git+https://github.com/Ajatt-Tools/gd-tools.git#branch=main")
