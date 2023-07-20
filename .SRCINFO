@@ -1,14 +1,13 @@
 pkgbase = r-jaspbase
 	pkgdesc = Package contains the JASP Bayesian and Frequentist analyses.
 	pkgver = 0.17.3
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/jasp-stats/jaspBase
 	arch = x86_64
 	arch = aarch64
 	groups = r-jasp
 	groups = r-jaspbase
 	license = GPL
-	makedepends = git
 	depends = r
 	depends = r-ggplot2
 	depends = r-gridextra
@@ -39,8 +38,8 @@ pkgbase = r-jaspbase
 	depends = r-vdiffr
 	depends = r-jaspgraphs
 	source = jaspBase_0.17.3.tar.gz::https://github.com/jasp-stats/jaspBase/archive/refs/tags/v0.17.3.tar.gz
-	source = jaspColumnEncoder::git+https://github.com/jasp-stats/jaspColumnEncoder.git#commit=c63c0203d7
+	source = jaspColumnEncoder-0.17.3.tar.gz::https://github.com/jasp-stats/jaspColumnEncoder/archive/refs/tags/v0.17.3.tar.gz
 	sha256sums = fdf791a22c2c60ef3ed6335e8cba44ac8186b2d15de08eac6c616d191fa421d0
-	sha256sums = SKIP
+	sha256sums = dd01b40259e2114bed2de0d75f71e82b68ff684d01ddbb9e74953ab7a8b54552
 
 pkgname = r-jaspbase

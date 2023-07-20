@@ -3,7 +3,7 @@ _pkgname=jaspBase
 _pkgver=0.17.3
 pkgname=r-${_pkgname,,}
 pkgver=0.17.3
-pkgrel=2
+pkgrel=4
 pkgdesc="Package contains the JASP Bayesian and Frequentist analyses."
 arch=('x86_64' 'aarch64')
 url="https://github.com/jasp-stats/${_pkgname}"
@@ -39,17 +39,16 @@ depends=(r
 'r-jaspgraphs'
 )
 groups=(r-jasp r-jaspbase)
-makedepends=('git')
 optdepends=()
 source=(
 "${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
-"jaspColumnEncoder::git+https://github.com/jasp-stats/jaspColumnEncoder.git#commit=c63c0203d7"
+"jaspColumnEncoder-${_pkgver}.tar.gz::https://github.com/jasp-stats/jaspColumnEncoder/archive/refs/tags/v${_pkgver}.tar.gz"
 )
 sha256sums=('fdf791a22c2c60ef3ed6335e8cba44ac8186b2d15de08eac6c616d191fa421d0'
-            'SKIP')
+            'dd01b40259e2114bed2de0d75f71e82b68ff684d01ddbb9e74953ab7a8b54552')
 
 build() {
-  export INCLUDE_DIR=${srcdir}/jaspColumnEncoder
+  export INCLUDE_DIR=${srcdir}/jaspColumnEncoder-${_pkgver}
 
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
 }
