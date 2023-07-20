@@ -1,0 +1,24 @@
+pkgbase = ros-noetic-twist-mux
+    pkgdesc = ROS - Library of twist multiplexer
+    pkgver = 3.1.3
+    pkgrel = 1
+    url = http://ros.org/wiki/twist_mux
+    arch = i686
+    arch = x86_64
+    arch = aarch64
+    arch = armv7h
+    arch = armv6h
+    license = BSD
+    makedepends = cmake
+    makedepends = ros-build-tools
+    makedepends = ros-noetic-catkin
+    depends = ros-noetic-roscpp
+    depends = ros-noetic-std-msgs
+    depends = ros-noetic-geometry-msgs
+    depends = ros-noetic-visualization-msgs
+    depends = ros-noetic-diagnostic-updater
+    depends = ros-noetic-rostest
+    source = ros-noetic-twist-mux-3.1.3.tar.gz::https://github.com/ros-teleop/twist_mux/archive/3.1.3.tar.gz
+    sha256sums = 36890d97cd76038c84ab93b1c326140f2b9a073c2fd0bea7f86c5d8324f9bab1
+
+pkgname = ros-noetic-twist-mux
