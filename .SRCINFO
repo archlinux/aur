@@ -1,13 +1,13 @@
 pkgbase = ch343ser-git
 	pkgdesc = USB serial driver for ch342/ch343/ch344/ch347/ch9101/ch9102/ch9103/ch9104, etc (dkms).
-	pkgver = 20230719.77d0a22
+	pkgver = r17.77d0a22
 	pkgrel = 1
 	url = https://github.com/WCHSoftGroup/ch343ser_linux
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = GPL
-	makedepends = gcc
+	makedepends = git
 	depends = dkms
 	optdepends = linux-headers: build the module against Arch kernel
 	optdepends = linux-ck-headers: build the module against Linux-ck kernel

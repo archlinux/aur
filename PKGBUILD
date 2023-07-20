@@ -2,7 +2,7 @@
 
 pkgbase=ch343ser-git
 pkgname=ch343ser-dkms-git
-pkgver=20230719.77d0a22
+pkgver=r17.77d0a22
 pkgrel=1
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch9101/ch9102/ch9103/ch9104, etc (dkms)."
 arch=('x86_64' 'i686' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(dkms)
-makedepends=('gcc')
+makedepends=('git')
 optdepends=('linux-headers: build the module against Arch kernel'
   'linux-ck-headers: build the module against Linux-ck kernel'
   'linux-lts-headers: build the module against LTS Arch kernel')
@@ -21,7 +21,8 @@ md5sums=('SKIP')
 pkgver() {
     cd "$srcdir/${pkgbase}"
 #   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-    date '+%Y%m%d'.$(git describe --always  | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+#     date '+%Y%m%d'.$(git describe --always  | sed 's/^v//g' | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
