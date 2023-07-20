@@ -5,7 +5,7 @@
 
 pkgbase=rio
 pkgname=('rio' 'rio-terminfo')
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc="A hardware-accelerated GPU terminal emulator powered by WebGPU"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ depends=('gcc-libs' 'fontconfig' 'freetype2' 'libxcb' 'libxkbcommon' 'python')
 makedepends=('cargo' 'cmake' 'desktop-file-utils')
 optdepends=()
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('9f011dd2105e2d5be2bfb25d2728cf0a8a47fa509fcfd393c2c6c9a0d6d5bc2cf08110cd1e53987ef03dd37fa1e5c693a2c118437c0cd936ee6cb2111e5f4e1c')
+b2sums=('162efdb042f43c2541a8b327bab295308a4472039f61c06c6f5a6e6579752016c5b56cfbb9c836db23796d93a5ed90573fa0b49e486054de7f92108ac500ee68')
 backup=()
 
 prepare() {
@@ -24,6 +24,7 @@ prepare() {
     export CARGO_TARGET_DIR=target
     export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
 
+    cargo generate-lockfile
     cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
