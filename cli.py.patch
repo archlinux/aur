@@ -1,0 +1,19 @@
+--- lib/core/portablemc/cli.py	2023-07-20 23:08:17.018652607 +0200
++++ cli.py.mod	2023-07-20 23:14:19.071088529 +0200
+@@ -161,14 +161,14 @@
+     prefix = "portablemc_"
+ 
+     try:
+-        from importlib.metadata import metadata
++        from aur_utils import metadata
+     except ImportError:
+         metadata = lambda _0: {}
+ 
+     import importlib
+     import pkgutil
+ 
+-    for pkg in pkgutil.iter_modules():
++    for pkg in pkgutil.iter_modules(["."]):
+         if pkg.name.startswith(prefix) and len(pkg.name) > len(prefix):
+             addon_id = pkg.name[len(prefix):]
+             try:

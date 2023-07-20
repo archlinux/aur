@@ -1,0 +1,11 @@
+#!/bin/sh
+cd /usr/lib/portablemc
+main_dir="${XDG_DATA_HOME:-$HOME/.local/share}/portablemc/main/"
+work_dir="${XDG_DATA_HOME:-$HOME/.local/share}/portablemc/work/"
+
+if [ "$1" = "start" ]; then
+  jvm="$(which java)"
+  python -m portablemc --main-dir "$main_dir" --work-dir "$work_dir" "$@" --jvm "$jvm" 
+else
+  python -m portablemc --main-dir "$main_dir" --work-dir "$work_dir" "$@"
+fi
