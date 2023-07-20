@@ -1,0 +1,15 @@
+pkgbase = tuxedo-control-center-runit
+	pkgdesc = runit service for TUXEDO Control Center
+	pkgver = 1
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/tuxedo-control-center-runit
+	arch = x86_64
+	license = GPL
+	depends = runit
+	depends = tuxedo-control-center-bin
+	source = tccd.run
+	source = tccd.finish
+	sha256sums = f92a399d380b2e88207d59227395cf7315e015f24fee8dfe12c0b31ee89546f9
+	sha256sums = f632f82b4287fe49216a9be2ad0fae62dedf9f37c823dea7eb1f8d18d8333617
+
+pkgname = tuxedo-control-center-runit

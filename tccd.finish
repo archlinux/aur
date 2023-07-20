@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /opt/tuxedo-control-center/resources/dist/tuxedo-control-center/data/service/tccd --stop >/dev/null 2>&1
