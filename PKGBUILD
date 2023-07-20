@@ -35,14 +35,10 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-## The current test_cal.py is not usable since
-## plann (and cal.py) was split out from calendar_cli
-## For now (calendar_cli commit 2dd2577), tests are disabled
-
-# check() {
-#   cd "${pkgname}"
-#   pytest
-# }
+check() {
+  cd "${pkgname}"
+  pytest
+}
 
 package() {
   cd "${pkgname}"
