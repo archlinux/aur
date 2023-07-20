@@ -1,14 +1,15 @@
 pkgbase = jfreechart
 	pkgdesc = Charting program for java
-	pkgver = 1.0.19
+	pkgver = 1.5.4
 	pkgrel = 1
+	url = https://www.jfree.org/jfreechart/
 	arch = any
-	makedepends = apache-ant
-	makedepends = git
+	license = LGPL
+	makedepends = maven
 	makedepends = java-runtime-common
-	depends = java-runtime-common
-	source = jfreechart-1.0.19::git+https://github.com/jfree/jfreechart.git#tag=v1.0.19
-	md5sums = SKIP
+	depends = java-runtime
+	source = https://github.com/jfree/jfreechart/archive/refs/tags/v1.5.4.tar.gz
+	md5sums = f797d94595bafbd358b278d16b960ec5
+	sha256sums = 02370e037950fee2e15f61d163b9b5c641e2438a4b110ff112f948ceff57d36a
 
 pkgname = jfreechart
-
