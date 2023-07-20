@@ -1,4 +1,4 @@
-pkgbase = python-xilinx-language-server
+pkgbase = xilinx-language-server
 	pkgdesc = xilinx language server
 	pkgver = 0.0.4
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = python-xilinx-language-server
 	source = https://files.pythonhosted.org/packages/py3/x/xilinx_language_server/xilinx_language_server-0.0.4-py3-none-any.whl
 	sha256sums = 77d63919b15613445969bb8c095ea626cadf652cc16f812c7007478acc3870f3
 
-pkgname = python-xilinx-language-server
+pkgname = xilinx-language-server
