@@ -1,9 +1,9 @@
 diff --git a/spleeter/audio/__init__.py b/spleeter/audio/__init__.py
-index 32012e1..1a178e8 100644
+index a2f56f4..fcc80cf 100644
 --- a/spleeter/audio/__init__.py
 +++ b/spleeter/audio/__init__.py
-@@ -10,14 +10,14 @@
-     - Waveform convertion and transforming functions.
+@@ -10,14 +10,14 @@ tools for manipulating audio content such as :
+ - Waveform convertion and transforming functions.
  """
  
 -from enum import Enum
@@ -19,12 +19,3 @@ index 32012e1..1a178e8 100644
      """Enumeration of supported audio codec."""
  
      WAV: str = "wav"
-@@ -28,7 +28,7 @@ class Codec(str, Enum):
-     FLAC: str = "flac"
- 
- 
--class STFTBackend(str, Enum):
-+class STFTBackend(StrEnum):
-     """Enumeration of supported STFT backend."""
- 
-     AUTO: str = "auto"
