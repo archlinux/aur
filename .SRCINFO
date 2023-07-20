@@ -1,6 +1,6 @@
 pkgbase = cargo-llvm-lines
 	pkgdesc = Count the number of lines of LLVM IR across all instantiations of a generic function
-	pkgver = 0.4.29
+	pkgver = 0.4.31
 	pkgrel = 1
 	url = https://github.com/dtolnay/cargo-llvm-lines
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = cargo-llvm-lines
 	depends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = cargo-llvm-lines-0.4.29.tar.gz::https://github.com/dtolnay/cargo-llvm-lines/archive/0.4.29.tar.gz
-	sha256sums = 6d5a1dad0e38e7d473acfabdc28ea92462bf5099b6397feae18c4fc43f93feb7
+	source = cargo-llvm-lines-0.4.31.tar.gz::https://github.com/dtolnay/cargo-llvm-lines/archive/0.4.31.tar.gz
+	sha256sums = 602f06b1bf9520a54642ffdda10c02aa04818e7e24005bd821f577992da88834
 
 pkgname = cargo-llvm-lines
