@@ -1,6 +1,6 @@
 pkgbase = termit-git
 	pkgdesc = Terminal emulator based on VTE library with Lua scripting
-	pkgver = termit.3.0.r1.g8d8fe55
+	pkgver = 3.1.r16.g0ae773f
 	pkgrel = 1
 	url = https://github.com/nonstop/termit
 	arch = i686
@@ -15,4 +15,3 @@ pkgbase = termit-git
 	md5sums = SKIP
 
 pkgname = termit-git
-
