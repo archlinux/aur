@@ -1,5 +1,7 @@
-clean chroot build
-party. I am so glad this is over.
+incorporate https://github.com/lubosz/tensorflow-rocm/
+last known good point:
+    d529c0ede8354b1c3751d9a324d3d6ffcd6db5da
+    Make test.py slightly less non-deterministic.
 
 # Maybe
 https://wiki.archlinux.org/title/Arch_packaging_standards -> reproducible
@@ -18,7 +20,6 @@ publicity
 can we patch the whole project to bazel 6+ lol
 recruit someone with a different gfx architecture to test
     actually, just post to the aur and see if there's even any interest. The Docker container works well enough.
-I have an amd cpu and do not now how to confirm if haswell optimization is working or not.
 
 # Notes
 Working builds:
@@ -44,4 +45,7 @@ Compile it:
 test with gfx803
     does not work
 
+that is not dead which may eternal lie,
+and with strange aeons, even death may die
+It's never really over.
 
