@@ -4,14 +4,14 @@
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
 _pkgname=llama.cpp
 pkgbase=llama-cpp
-pkgname=("$pkgbase" "$pkgbase-cuda")
+pkgname=("$pkgbase" "$pkgbase-cuda" "$pkgbase-opencl")
 pkgver=fff0e0e
-pkgrel=2
+pkgrel=3
 pkgdesc="Port of Facebook's LLaMA model in C/C++"
 arch=(x86 x86_64 arm aarch64)
 url=https://github.com/ggerganov/llama.cpp
 depends=(openmpi python-numpy python-sentencepiece)
-makedepends=(cmake intel-oneapi-dpcpp-cpp)
+makedepends=(cmake intel-oneapi-dpcpp-cpp cuda intel-oneapi-mkl clblast)
 license=(GPL3)
 source=("$url/archive/master-$pkgver.tar.gz")
 sha256sums=('648f644dd0cc7a7b8c60c613faca051bd12de9e9a4b327973582746ff24716a1')
@@ -58,4 +58,14 @@ package_llama-cpp-cuda() {
 
 	_build build-cuda -DLLAMA_CUBLAS=ON
 	_package build-cuda
+}
+
+package_llama-cpp-opencl() {
+	pkgdesc="${pkgdesc} (with OpenCL)"
+	depends+=(clblast)
+	provides=(llama-cpp)
+	conflicts=(llama-cpp)
+
+	_build build-opencl -DLLAMA_CLBLAST=ON
+	_package build-opencl
 }
