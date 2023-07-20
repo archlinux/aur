@@ -3,7 +3,7 @@
 pkgbase=aspia-client
 pkgname=(aspia-client)
 pkgver=2.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Remote desktop and file transfer tool."
 arch=('x86_64')
 url="https://github.com/dchapyshev/aspia"

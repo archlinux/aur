@@ -1,7 +1,7 @@
 pkgbase = aspia-client
 	pkgdesc = Remote desktop and file transfer tool.
 	pkgver = 2.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dchapyshev/aspia
 	arch = x86_64
 	license = GPL3
