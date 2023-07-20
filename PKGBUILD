@@ -2,13 +2,13 @@
 _base=python-crfsuite
 pkgname=${_base}-git
 pkgver=0.99.r1.g84e9a76
-pkgrel=1
+pkgrel=2
 pkgdesc="A python binding for crfsuite"
 arch=('any')
 url="https://github.com/scrapinghub/${_base}"
 license=('MIT')
 depends=('python')
-makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'python-tox' 'cython' 'git')
+makedepends=('python-build' 'python-wheel' 'python-installer' 'python-setuptools' 'cython' 'git')
 # options=(!emptydirs)
 source=("git+https://github.com/scrapinghub/python-crfsuite.git"
         "git+https://github.com/chokkan/crfsuite.git"

@@ -1,7 +1,7 @@
 pkgbase = python-crfsuite-git
 	pkgdesc = A python binding for crfsuite
 	pkgver = 0.99.r1.g84e9a76
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scrapinghub/python-crfsuite
 	arch = any
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = python-crfsuite-git
 	makedepends = python-wheel
 	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-tox
 	makedepends = cython
 	makedepends = git
 	depends = python
