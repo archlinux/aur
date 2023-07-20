@@ -1,4 +1,4 @@
-# Maintainer: Your Name <agustinballesteros04@gmail.com>
+# Maintainer: <agustinballesteros04@gmail.com>
 pkgname=cue-git
 pkgver=v0.9.18.r0.gf480731
 pkgrel=1
@@ -26,11 +26,3 @@ package() {
     install -Dm755 cue "$pkgdir/usr/local/bin/cue"
 }
 
-# Add post_install and post_upgrade functions if needed
-# post_install() {
-#     # Do something after installation
-# }
-#
-# post_upgrade() {
-#     # Do something after upgrading the package
-# }
