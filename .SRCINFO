@@ -8,6 +8,7 @@ pkgbase = gpui-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = boost
 	depends = samba
 	depends = qt5-base
 	depends = qt5-mvvm
