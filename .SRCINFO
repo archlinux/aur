@@ -1,0 +1,14 @@
+pkgbase = xfwm4-theme-smallscreen-raleigh-compact-git
+	pkgdesc = An Xfwm4 theme using only the necessary screen space and trying to imitate the 'raleigh' colour theme.
+	pkgver = r4.20230720.309246b
+	pkgrel = 1
+	url = https://gitlab.com/dreieckli/xfwm4-theme-smallscreen-raleigh-compact
+	arch = any
+	license = GPL3
+	optdepends = xfwm4>=3.20: To use the theme.
+	provides = xfwm4-theme-smallscreen-raleigh-compact
+	conflicts = xfwm4-theme-smallscreen-raleigh-compact
+	source = xfwm4-theme-smallscreen-raleigh-compact::git+https://gitlab.com/dreieckli/xfwm4-theme-smallscreen-raleigh-compact.git
+	sha256sums = SKIP
+
+pkgname = xfwm4-theme-smallscreen-raleigh-compact-git
