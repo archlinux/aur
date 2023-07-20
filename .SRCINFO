@@ -1,0 +1,11 @@
+pkgbase = pg_filedump
+	pkgdesc = Display formatted contents of a PostgreSQL heap, index, or control file.
+	pkgver = 14.1
+	pkgrel = 1
+	url = https://github.com/df7cb/pg_filedump
+	arch = x86_64
+	license = GPL
+	source = https://github.com/df7cb/pg_filedump/archive/refs/tags/REL_14_1.tar.gz
+	md5sums = 1b40a746732d5916ca06b53972011a23
+
+pkgname = pg_filedump
