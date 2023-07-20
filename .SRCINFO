@@ -1,6 +1,6 @@
 pkgbase = python-syrupy
 	pkgdesc = Pytest Snapshot Test Utility
-	pkgver = 4.0.6
+	pkgver = 4.0.7
 	pkgrel = 1
 	url = https://github.com/tophat/syrupy
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-syrupy
 	makedepends = python-poetry-core
 	depends = python-pytest
 	depends = python-colored
-	source = syrupy-4.0.6.tar.gz::https://github.com/tophat/syrupy/archive/v4.0.6.tar.gz
-	sha512sums = f087d06415d12840de53df8a18c8505b5d65fc4e8597b77a892fbc8020b6f5b8e9d299ab4a199ab25fbbee0bfde1977a871f1aec717aa1379b69f5b607cf815a
+	source = syrupy-4.0.7.tar.gz::https://github.com/tophat/syrupy/archive/v4.0.7.tar.gz
+	sha512sums = b2e9b80eaec8d2e5b0775ff0508143d214d02f202aa995e9446c3f355222169a1d5fa64e0e1d48a9b2b5f53eac0b7d524bc2c60abc4314037d3f8d14825401a9
 
 pkgname = python-syrupy
