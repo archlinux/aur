@@ -10,4 +10,3 @@ pkgbase = php-codesniffer-wordpress
 	sha256sums = 2a88e040878dacb3360bdd2f5f544873101a1a24551022aae530783049d8eaff
 
 pkgname = php-codesniffer-wordpress
-
