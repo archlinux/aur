@@ -1,0 +1,13 @@
+
+[Desktop Entry]
+Version=1.0
+Name=Keyviz
+GenericName=Keyviz
+Comment=Keystroke & Mouse Visualizer
+Exec=/usr/bin/keyviz
+TryExec=/usr/bin/keyviz
+Icon=/usr/share/icons/keyviz-icon.xpm
+Terminal=false
+Type=Application
+Categories=Utility;
+Keyword=Visualizer;
