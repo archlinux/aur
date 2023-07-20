@@ -16,7 +16,9 @@ sha256sums_x86_64=('5295342c21d099dd1f2ad09559875cb6f22b5367e85d16ec27d2d152775f
 _install_path="/opt/aspia-client"
 prepare() {
   yay -S archalien-git
-  /usr/bin/archalien ../src/"${pkgbase}-${pkgver}-${arch}.deb"
+  /usr/bin/archalien "${pkgbase}-${pkgver}-${arch}.deb"
+  
+
 }
 
 package_aspia-client() {
@@ -25,6 +27,5 @@ package_aspia-client() {
     depends=(
         'gtk3'
     )
-    sudo pacman -U ../src/"${pkgbase}-${pkgver}-${arch}.tar.zst"
-
+    sudo pacman -U "${pkgbase}-${pkgver}-1-${arch}.pkg.tar.gz"
 }
