@@ -1,4 +1,4 @@
-pkgbase = python-autoconf-language-server
+pkgbase = autoconf-language-server
 	pkgdesc = autoconf language server
 	pkgver = 0.0.7
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = python-autoconf-language-server
 	source = https://files.pythonhosted.org/packages/py3/a/autoconf_language_server/autoconf_language_server-0.0.7-py3-none-any.whl
 	sha256sums = 71afce4b52f15ff8f65c7951b0d7c78120e2a1ef88df21371428dbab3135eb04
 
-pkgname = python-autoconf-language-server
+pkgname = autoconf-language-server
