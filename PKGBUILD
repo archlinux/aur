@@ -1,21 +1,20 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=lvce-bin
-pkgver=0.16.15
+pkgver=0.16.17
 pkgrel=1
 pkgdesc="VS Code inspired text editor that mostly runs in a webworker"
 arch=('x86_64')
 url="https://lvce-editor.github.io/lvce-editor"
 _githuburl="https://github.com/lvce-editor/lvce-editor"
 license=('MIT')
-conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
 provides=("${pkgname%-bin}")
-depends=('electron')
-optdepends=('bash')
+conflicts=("${pkgname%-bin}")
+depends=('bash' 'electron25')
 makedepends=('asar')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-v${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/lvce-editor/lvce-editor/main/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('5fe237f7ae5937946cc5960d288953d6aafc30c29475e1ad1b04b6e201679ea4'
+sha256sums=('7ba7d82209f29955280f0920e39704c25da1457e8f048acc87c6cfbb3d378971'
             '7736b1dbda2b18af09232f9eb619e4d3d79d855058cc7494853f25d1553ed00b'
             '430a6ffca93f056ee621dbea385ea21797d08046e753a6b033a04e320387cef5')
 package() {
