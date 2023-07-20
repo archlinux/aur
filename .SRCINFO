@@ -1,0 +1,14 @@
+pkgbase = catalyst5-browser
+	pkgdesc = Catalyst5 Web Browser
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://getcatalyst.eu.org
+	arch = x86_64
+	license = MIT
+	depends = python-pyqt6
+	depends = python-pyqt6-sip
+	depends = python-pyqt6-webengine
+	source = https://github.com/CatalystDevOrg/Catalyst5/archive/refs/tags/v0.1.0.zip
+	md5sums = SKIP
+
+pkgname = catalyst5-browser
