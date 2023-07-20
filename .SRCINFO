@@ -1,15 +1,16 @@
 pkgbase = python-matplotlib-pickled-figure-opener
 	pkgdesc = Open pickled matplotlib figures from file managers
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	arch = any
 	groups = nobodyinperson
 	license = GPL
 	depends = python-matplotlib
+	depends = python-zstandard
 	source = python-matplotlib-pickled-figure-opener
 	source = python-matplotlib-pickled-figure-opener.desktop
 	source = python-matplotlib-pickled-figure-opener.xml
-	md5sums = 0abbb65803f34ba522bde97652173234
+	md5sums = 24838f8de8b2d34c3dc36c5301f8a119
 	md5sums = 663c6999a1cce1dd2fb23f4e1defabd4
 	md5sums = 8dd5e9f5aa162fe94580a74191f38c55
 

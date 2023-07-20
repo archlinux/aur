@@ -6,6 +6,7 @@ import logging
 import sys
 import itertools
 import fnmatch
+import zstandard
 
 parser = argparse.ArgumentParser(description="Show a pickled (and possibly compressed) Matplotlib figure" )
 parser.add_argument("filename",help="the file to open")
@@ -17,6 +18,7 @@ for module_name,patterns in {
     "lzma": ("*.xz","*.lzma"),
     "bz2": ("*.bz2", "*.bzip2"),
     "gzip": ("*.gz", "*.gzip"),
+    "zstandard": ("*.zst", "*.zstd"),
 }.items():
     try:
         module = importlib.import_module(module_name)
