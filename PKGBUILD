@@ -1,7 +1,7 @@
 # Maintainer: Arthur HUGEAT <hugeat dot arthur at gmail dot com>
 pkgname=gf
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Gamedev Framework (gf) is a framework to build 2D games in C++17. It is based on SDL and OpenGL ES 2.0, and presents an API that is very similar to the graphics module of SFML with additional features."
 arch=('x86_64' 'i686')
 url="https://gamedevframework.github.io/"
@@ -27,7 +27,7 @@ build() {
         -DGF_BUILD_DOCUMENTATION=OFF \
         -DGF_BUILD_GAMES=OFF \
         -DGF_USE_EMBEDDED_LIBS=ON \
-        -DGF_SINGLE_COMPILTATION_UNIT=ON \
+        -DCMAKE_UNITY_BUILD=ON \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -S ${srcdir}/gf \
