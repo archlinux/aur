@@ -1,8 +1,6 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 pkgname=cargo-vet
-pkgver=0.6.1
-# Repository tag omits trailing .0: for example, the tag for v0.3.0 is 0.3.
-_tag=${pkgver%.0}
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Supply-chain security for Rust'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -14,17 +12,18 @@ depends=(
     glibc
     zlib
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_tag.tar.gz")
-sha256sums=('926e67c865cb99f7d2aa116a6f8de045c421c5c2ced44a957d75eae0c11d5279')
+options=(!lto) # see: briansmith/ring#1444 (and #893)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('edb48e1bd5a4220368603c3a3898fadd0cf80f19d98d82273f9a815f250d47c7')
 
 prepare() {
-    cd "$pkgname-$_tag"
+    cd "$pkgname-$pkgver"
 
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-    cd "$pkgname-$_tag"
+    cd "$pkgname-$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
@@ -33,7 +32,7 @@ build() {
 }
 
 check() {
-    cd "$pkgname-$_tag"
+    cd "$pkgname-$pkgver"
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
@@ -49,7 +48,7 @@ check() {
 }
 
 package() {
-    cd "$pkgname-$_tag"
+    cd "$pkgname-$pkgver"
 
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
     install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-MIT
