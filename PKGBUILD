@@ -1,7 +1,7 @@
 # Maintainer: Fabio Comuni <fabrix.xm@gmail.com>
 pkgname=quirc
-_libver=1.0
-pkgver=1.1
+_libver=1.2
+pkgver=1.2
 pkgrel=1
 pkgdesc="QR decoder library."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('libjpeg-turbo')
 makedepends=()
 checkdepends=()
 source=("https://github.com/dlbeer/quirc/archive/v${pkgver}.tar.gz")
-md5sums=('ae8ab4a3d0e28fdcbf0880eca5494772')
+md5sums=('9fdda44c5b12cc721c2ca85abddf48de')
 
 build() {
     cd "$pkgname-$pkgver"
