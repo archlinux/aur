@@ -1,7 +1,7 @@
 pkgbase = python-torchvision-rocm
 	pkgdesc = Datasets, transforms, and models specific to computer vision (with ROCM support)
 	pkgver = 0.15.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/pytorch/vision
 	arch = x86_64
 	license = BSD
@@ -20,7 +20,6 @@ pkgbase = python-torchvision-rocm
 	depends = ffmpeg4.4
 	depends = libjpeg-turbo
 	depends = libpng
-	optdepends = python-pycocotools: support for MS-COCO dataset
 	source = vision-0.15.1.tar.gz::https://github.com/pytorch/vision/archive/v0.15.1.tar.gz
 	sha512sums = d6c1f55684a6d08b3501c4c166268684fbe8753fc034f8db7ddc1ee39efcff2ec39ce864cd97b95b784eb08345b999a928d5431d8d66bec82dc6f32ffd18c3bb
 
