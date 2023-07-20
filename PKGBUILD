@@ -2,7 +2,7 @@
 
 pkgbase=viennarna
 pkgname=('viennarna' 'python-rna' 'perl-rna')
-pkgver=2.6.1
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="RNA Secondary Structure Prediction and Comparison"
 arch=('x86_64' 'i686')
@@ -16,13 +16,14 @@ makedepends=( 'perl'
               'mpfr'
               'gsl'
               'lapack'
-	      'lapacke'
+              'lapacke'
+              'blas'
               'gcc-fortran')
 
 source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.gz)
 
 options=('staticlibs' '!strip')
-sha256sums=('f778876bbe8e6c85725a633819b26468307c919635e82b278ba820eff8badf76')
+sha256sums=('07b5c3abcda3076f3dd2041a67df5aa25d21468ae41f18eaecf3aaa7751ab495')
 
 prepare() {
   cd "${srcdir}/ViennaRNA-${pkgver}"
@@ -47,12 +48,14 @@ check() {
 package_viennarna() {
   depends=('perl'
            'mpfr'
-           'gsl')
+           'gsl'
+           'lapack'
+           'blas')
   optdepends=('gri: create 2D plots of secondary structure landscape with RNA2Dfold')
   provides=('Kinfold=1.4'
             'RNAforester=2.0'
             'kinwalker=2.0'
-	    'RNAxplorer=0.9'
+            'RNAxplorer=0.9'
             "viennarna2=${pkgver}"
             "libRNA=${pkgver}")
   conflict=('kinwalker')
