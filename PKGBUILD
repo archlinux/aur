@@ -2,7 +2,7 @@
 # Contributor: bud
 
 pkgname=i3menu
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='wrapper for dmenu(-bud) optimized for i3fyra'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('bash>=4.0.0' 'dmenu-bud' 'gawk')
 makedepends=('gawk')
 optdepends=('xdotool' 'i3ass')
 source=("$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz")
-sha256sums=('59783958da95836469ab822000b916b2e669e9207cab297fde0087a8d67399b6')
+sha256sums=('2abd57f0bcb5044cc70287ed56c732842a60d7711d0d1a03fb37359a3716ef38')
 _trgdir="$pkgname-$pkgver"
 
 # _trgdir="$pkgname"
