@@ -1,4 +1,4 @@
-From c3aa25a89b831b34e742be796e9c6fb17aeb45ba Mon Sep 17 00:00:00 2001
+From 10d6e719ff498ca4b22824782790b13cde13c022 Mon Sep 17 00:00:00 2001
 From: Jacek Caban <jacek@codeweavers.com>
 Date: Mon, 3 Apr 2023 16:55:12 +0200
 Subject: [PATCH] mshtml: Wine Gecko 2.47.4 release.
@@ -90,5 +90,5 @@ index da34390bc1f..848559ae8c2 100644
    cache:
      - key: wine-gecko-$GECKO_VER
 -- 
-2.40.1
+2.41.0
 
