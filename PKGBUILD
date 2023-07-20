@@ -1,11 +1,11 @@
 # Maintainer: Twann <tw4nn at disroot.org>
 
 pkgname=tblock-gui
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 provides=("$pkgname")
 pkgdesc="Official graphical user interface for the TBlock content blocker"
-url="https://tblock.codeberg.page"
+url="https://tblock.me"
 arch=("any")
 license=("GPL3")
 makedepends=(
@@ -28,7 +28,7 @@ source=(
         "${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tblock/tblock-gui/archive/${pkgver}.tar.gz"
 )
 sha512sums=(
-	"b4c7ab550fe06865103bea8c546c20b11c227ff0da4c33268a4265a2920e060a03260d9aab0064670727845b1c054bb74adfb9ac11ef7c592c5ec190355d8294"
+	"7dae7f810aeaf33492cf67f4400938765b2b9f75cd0723a0b5291390134d151bcd7b942b349e76f6647338ebd104d4b75bdbfcebb208b7219c2214292b4d5612"
 )
 
 build()
