@@ -10,6 +10,7 @@ pkgbase = termit-git
 	makedepends = cmake>=2.4
 	depends = lua
 	depends = vte3
+	provides = termit=3.1.r16.g0ae773f
 	conflicts = termit
 	source = termit::git+https://github.com/nonstop/termit.git
 	md5sums = SKIP

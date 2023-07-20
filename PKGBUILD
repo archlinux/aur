@@ -11,6 +11,7 @@ depends=("lua" "vte3")
 makedepends=("git" "cmake>=2.4")
 source=("termit::git+https://github.com/nonstop/termit.git")
 md5sums=('SKIP')
+provides=("termit=$pkgver")
 
 pkgver() {
   _pkgname=$(echo $pkgname | sed -e 's/-git$//')
