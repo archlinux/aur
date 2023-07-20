@@ -1,15 +1,16 @@
 pkgbase = perlnavigator
 	pkgdesc = Perl Language Server that includes syntax checking, perl critic, and code navigation
-	pkgver = 0.5.9
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/bscan/PerlNavigator
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = npm
 	depends = glibc
 	depends = gcc-libs
 	options = !strip
-	source = perlnavigator-0.5.9.tar.gz::https://github.com/bscan/PerlNavigator/archive/refs/tags/v0.5.9.tar.gz
-	b2sums = b27a5bbf380e99728de5ff5469c0171a66e70551accbac7c39c9e9dd91830b034725d8df40685e7f50ed1eeb152d435ebc94b1c4e908641e12682df3eeec353e
+	source = perlnavigator-0.6.0.tar.gz::https://github.com/bscan/PerlNavigator/archive/refs/tags/v0.6.0.tar.gz
+	b2sums = dba7425b4b655deba6f5f5f13c4f72fd429236e41f69dfbaea207b1dfcd1c787397f93c1fcf9aaefff427ccd6beb346d772c43c1c245e7d2a9b0d86afb34a860
 
 pkgname = perlnavigator

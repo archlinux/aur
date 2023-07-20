@@ -1,22 +1,23 @@
 # Maintainer: Beini <bane at iki dot fi>
 pkgname=perlnavigator
 _pkgname=PerlNavigator
-pkgver=0.5.9
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Perl Language Server that includes syntax checking, perl critic, and code navigation"
 url="https://github.com/bscan/PerlNavigator"
 license=('MIT')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/bscan/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('b27a5bbf380e99728de5ff5469c0171a66e70551accbac7c39c9e9dd91830b034725d8df40685e7f50ed1eeb152d435ebc94b1c4e908641e12682df3eeec353e')
-arch=('x86_64')
+b2sums=('dba7425b4b655deba6f5f5f13c4f72fd429236e41f69dfbaea207b1dfcd1c787397f93c1fcf9aaefff427ccd6beb346d772c43c1c245e7d2a9b0d86afb34a860')
+arch=('x86_64' 'aarch64')
 depends=('glibc' 'gcc-libs')
 makedepends=('npm')
 options=("!strip")
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
-    npm_config_cache="${srcdir}/npm-cache" npm run ci-all
+    npm_config_cache="${srcdir}/npm-cache" \
+      npm run ci-all
 }
 
 build() {
@@ -24,7 +25,7 @@ build() {
     npm run compile
 
     PKG_CACHE_PATH="${srcdir}/pkg-cache" \
-      ./node_modules/.bin/pkg -t node18-linux .
+      npx pkg -t node18-linux .
 }
 
 package() {
