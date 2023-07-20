@@ -2,6 +2,10 @@
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
+pkgname='linux-xanmod-bin'
+pkgver='6.4.4'
+pkgrel="1"
+
 check_psabi() {
   awk 'BEGIN {
       while (!/flags/) if (getline < "/proc/cpuinfo" != 1) exit 1
@@ -13,9 +17,6 @@ check_psabi() {
   }' 2>/dev/null||echo "x64v1"
 }
 
-pkgname='linux-xanmod-bin'
-pkgver='6.4.4'
-pkgrel="1"
 psabi="$(check_psabi)"
 pkgdesc='The Linux kernel, modules and headers with Xanmod patches - Prebuilt version'
 url="http://www.xanmod.org/"
