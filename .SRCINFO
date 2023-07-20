@@ -1,7 +1,7 @@
 pkgbase = python-rpcudp
 	pkgdesc = RPC via UDP
 	pkgver = 4.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/bmuller/rpcudp
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = python-rpcudp
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	depends = python-umsgpack
+	depends = python-u-msgpack
 	source = https://github.com/bmuller/rpcudp/archive/v4.0.2.tar.gz
 	sha256sums = 7e77fa297dbd7d47cd122abf77b7c9a9a0882206e5011a3be5de990045b8b348
 

@@ -2,10 +2,10 @@
 pkgname=python-rpcudp
 _pkgname=${pkgname/python-/}
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="RPC via UDP"
 url="http://github.com/bmuller/rpcudp"
-depends=('python' 'python-umsgpack')
+depends=('python' 'python-u-msgpack')
 makedepends=('python-build'
              'python-installer'
              'python-setuptools'
