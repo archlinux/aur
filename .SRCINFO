@@ -4,7 +4,7 @@ pkgbase = superglue-bin
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/superglue
 	arch = x86_64
-	source = superglue-bin::https://github.com/VHSgunzo/superglue-bin/releases/download/v0.0.4/superglue-bin
+	source = superglue::https://github.com/VHSgunzo/superglue/releases/download/v0.0.4/superglue
 	sha256sums = SKIP
 
 pkgname = superglue-bin
