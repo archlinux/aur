@@ -49,7 +49,7 @@ build() {
     --with-zstd \
     --with-lz4
 
-  make world -j16
+  make world -j32
 }
 
 package_postgresql-src-libs() {
