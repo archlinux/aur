@@ -2,8 +2,8 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=wine-lol-staging
-pkgver=8.11
-_winever=8.11
+pkgver=8.12
+_winever=8.12
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch) with LoL patches'
 arch=('x86_64')
@@ -102,6 +102,9 @@ prepare() {
     echo '  -> Changing wine HEAD to the wine-staging base commit...'
     git -C wine config --local advice.detachedHead false
     git -C wine checkout wine-${_winever}
+
+    echo '  -> Re-enable wine-staging ntdll-Syscall_Emulation patchset...'
+    sed -i -e '/Disabled/d' "${srcdir}/wine-staging/patches/ntdll-Syscall_Emulation/definition"
 
     # RCS Launcher Optional, not necessary since 64bit update as only thing useful there is missing fonts patch
     echo '  -> Applying wine-staging patches...'
