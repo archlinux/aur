@@ -1,6 +1,6 @@
 pkgbase = linux-gpib
 	pkgdesc = A support package for GPIB (IEEE 488) hardware.
-	pkgver = 4.3.5
+	pkgver = 4.3.6
 	pkgrel = 1
 	url = http://linux-gpib.sourceforge.net/
 	install = linux-gpib.install
@@ -12,12 +12,12 @@ pkgbase = linux-gpib
 	makedepends = linux-headers
 	makedepends = bison
 	depends = bash
-	depends = linux>=5.19
-	depends = linux<5.20
+	depends = linux>=6.4
+	depends = linux<6.5
 	optdepends = fxload: firmware upload support for NI USB-B, Keithley KUSB-488 and Agilent 82357
 	options = !emptydirs
 	backup = etc/gpib.conf
-	source = https://downloads.sourceforge.net/project/linux-gpib/linux-gpib%20for%203.x.x%20and%202.6.x%20kernels/4.3.5/linux-gpib-4.3.5.tar.gz
-	md5sums = 1c79a2a883c99fa760548b442e225be3
+	source = https://downloads.sourceforge.net/project/linux-gpib/linux-gpib%20for%203.x.x%20and%202.6.x%20kernels/4.3.6/linux-gpib-4.3.6.tar.gz
+	md5sums = ffefc4e5c03b891c57f406a4b82395b7
 
 pkgname = linux-gpib
