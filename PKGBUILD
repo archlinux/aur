@@ -14,7 +14,7 @@ conflicts=(mingw-w64-sfml)
 provides=(mingw-w64-sfml)
 options=(staticlibs !strip !buildflags)
 source=("https://github.com/SFML/SFML/archive/${pkgver}.tar.gz")
-md5sums=('0d8a10fad7f10fa7b4453e647fb6b1a8')
+md5sums=('cb866afcd46a2febcc44ad375d5644f4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
