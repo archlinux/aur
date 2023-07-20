@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=flip-link
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Flips the memory layout of embedded programs to protect against stack overflows"
 url="https://github.com/knurling-rs/flip-link"
@@ -11,9 +11,8 @@ depends_x86_64=('gcc-libs')
 depends_i686=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/knurling-rs/flip-link/archive/refs/tags/v$pkgver.tar.gz")
-cksums=('3365300705')
-sha256sums=('613373337f34551670f8f6330958e4965de89a17fb3bbf972c3b3c6bfaad4abf')
-b2sums=('49e1314da3f14213418203bb8927a2f51b7909b46767494e3dd5b5de44daa514a739e0790f6e58d5e82762dc4784789738b1aef367c5c64a449f576aa7fb5846')
+sha256sums=('37236451f4392d3f44cd6a818b038ce10f2673be10dedef02f8410507ec5fec6')
+b2sums=('e1232cf0f173abe83eeb894b2062820394ce6ff20ed817f7af1cedf23320f508f57d23e9801957741b46b556910e8611af6bb60f7fa68cea224544ded1058d68')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
