@@ -14,7 +14,7 @@ pkgbase = ros-noetic-velodyne-simulator
     makedepends = ros-noetic-catkin
     depends = ros-noetic-velodyne-description
     depends = ros-noetic-velodyne-gazebo-plugins
-    source = b98e156c4431.zip::https://bitbucket.org/DataspeedInc/velodyne_simulator/get/b98e156c4431.zip
+    source = ros-noetic-velodyne-simulator-1.0.13.zip::https://bitbucket.org/DataspeedInc/velodyne_simulator/get/b98e156c4431.zip
     sha256sums = 6b378ea9e47d9436e35da8ada4879f336e4c27b5a1194993d12ba43b060150f1
 
 pkgname = ros-noetic-velodyne-simulator
