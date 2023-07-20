@@ -1,6 +1,6 @@
 pkgbase = kaggle-api
 	pkgdesc = Kaggle API CLI
-	pkgver = 1.5.15
+	pkgver = 1.5.16
 	pkgrel = 1
 	url = https://github.com/Kaggle/kaggle-api
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = kaggle-api
 	depends = python-tqdm
 	depends = python-slugify
 	replaces = kaggle-api
-	source = https://files.pythonhosted.org/packages/source/k/kaggle/kaggle-1.5.15.tar.gz
-	sha256sums = fa29950f04bf6712e76e9f6fea5b9a3ee03bc971f63abb6a3df395d89a691d02
+	source = https://files.pythonhosted.org/packages/source/k/kaggle/kaggle-1.5.16.tar.gz
+	sha256sums = a6b3542f590cf341a5ad441d5ae021be93bd64441c96c758b154903495a3a600
 
 pkgname = kaggle-api
