@@ -1,19 +1,19 @@
 # Maintainer: Patrik Sundberg <patrik.sundberg@gmail.com>
 
 pkgname=beeper
-pkgver=3.64.5
+pkgver=3.65.19
 pkgrel=1
 pkgdesc="all your chats in one app"
 arch=('x86_64')
 url="https://beeper.com/"
 license=('custom')
-depends=('zlib' 'hicolor-icon-theme')
+depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 makedepends=('p7zip')
 noextract=("$pkgname-$pkgver.AppImage")
 options=('!strip')
 
 source=("$pkgname-$pkgver.AppImage::https://download.beeper.com/linux/appImage/x64")
-sha256sums=('39df27b8a7a841e6e94ad47edf7c8928c59fef543d82f06a1f5d2c19d7753d1e')
+sha256sums=('38fb69d255e8e17c342d0391f42b8e68375ddbe621681323be05a5bdb3d4d9c3')
 
 prepare() {
     cd "${srcdir}"
