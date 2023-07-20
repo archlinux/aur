@@ -1,4 +1,4 @@
-pkgbase = python-bitbake-language-server
+pkgbase = bitbake-language-server
 	pkgdesc = bitbake language server
 	pkgver = 0.0.4
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = python-bitbake-language-server
 	source = https://files.pythonhosted.org/packages/py3/b/bitbake_language_server/bitbake_language_server-0.0.4-py3-none-any.whl
 	sha256sums = dabdb67b7e7f2959e68da2fb0c07f229a7b73acb3c6ecbaa66529c51d7a1c69f
 
-pkgname = python-bitbake-language-server
+pkgname = bitbake-language-server
