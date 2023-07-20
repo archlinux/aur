@@ -1,8 +1,7 @@
-Submodule subprojects/wlroots contains modified content
-diff --git a/subprojects/wlroots/render/gles2/renderer.c b/subprojects/wlroots/render/gles2/renderer.c
+diff --git /render/gles2/renderer.c /render/gles2/renderer.c
 index 9fe934f7..9662d4ee 100644
---- a/subprojects/wlroots/render/gles2/renderer.c
-+++ b/subprojects/wlroots/render/gles2/renderer.c
+--- render/gles2/renderer.c
++++ render/gles2/renderer.c
 @@ -176,7 +176,7 @@ static bool gles2_bind_buffer(struct wlr_renderer *wlr_renderer,
  		assert(wlr_egl_is_current(renderer->egl));
  
@@ -12,10 +11,10 @@ index 9fe934f7..9662d4ee 100644
  		glBindFramebuffer(GL_FRAMEBUFFER, 0);
  		pop_gles2_debug(renderer);
  
-diff --git a/subprojects/wlroots/types/output/render.c b/subprojects/wlroots/types/output/render.c
+diff --git /types/output/render.c /types/output/render.c
 index a185d844..01df6ffc 100644
---- a/subprojects/wlroots/types/output/render.c
-+++ b/subprojects/wlroots/types/output/render.c
+--- types/output/render.c
++++ types/output/render.c
 @@ -240,22 +240,7 @@ bool output_pick_format(struct wlr_output *output,
  }
  
