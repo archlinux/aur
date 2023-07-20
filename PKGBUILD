@@ -1,12 +1,11 @@
 # Maintainer: Jiri Pospisil <jiri@jpospisil.com>
 pkgname=mountpoint-s3-git
-pkgver=0.2.0.r295.e6b072f
-_pkgver=0.2.0
+pkgver=0.3.0.r404.7786053
 pkgrel=1
 pkgdesc="A simple, high-throughput file client for mounting an Amazon S3 bucket as a local file system."
 url="https://github.com/awslabs/mountpoint-s3"
 arch=("x86_64")
-makedepends=("cargo" "git")
+makedepends=("cargo" "git" "ripgrep")
 depends=("fuse3")
 provides=("mountpoint-s3")
 conflicts=("mountpoint-s3")
@@ -21,7 +20,8 @@ prepare() {
 
 pkgver() {
   cd "$pkgname"
-  printf "%s.r%s.%s" "$_pkgver" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  local ver=$(rg -N -o -m 1 'version = "([0-9]+\.[0-9]+\.[0-9]+)' --replace '$1' "mountpoint-s3/Cargo.toml")
+  printf "%s.r%s.%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
