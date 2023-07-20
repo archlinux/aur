@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-tools-static
-_qtver=6.5.1
+_qtver=6.5.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,8 +18,8 @@ groups=(mingw-w64-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Enable-only-SQL-plugins-which-are-known-to-work.patch')
-sha256sums=('5744df9e84b2a86f7f932ffc00341c7d7209e741fd1c0679a32b855fcceb2329'
-            '4498f60ac244403d61cbaf303e0a1cea0b810a20523d14d82da07de8ef665d2c')
+sha256sums=('551ffb22751d8fd4d88e9ebd55b9131f4ca55341ee497fdbbba4da8d10d94341'
+            'deb8d394c90e836db3be71444bc57f23bfdb01a85c6346db7717943780abb722')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -38,6 +38,7 @@ build() {
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
     $_arch-cmake-static -G Ninja -B build-$_arch -S $_pkgfqn \
       -DCMAKE_INSTALL_PREFIX:PATH="/usr/$_arch/static" \
+      -DCMAKE_DISABLE_FIND_PACKAGE_harfbuzz=TRUE \
       -DFEATURE_static_runtime=ON \
       -DFEATURE_pkg_config=ON \
       -DFEATURE_windeployqt=OFF
