@@ -1,12 +1,10 @@
-pkgbase = superglue
+pkgbase = superglue-bin
 	pkgdesc = Tool for write a small file to the beginning of a large file in place
 	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/superglue
 	arch = x86_64
-	provides = superglue
-	conflicts = superglue
-	source = superglue::https://github.com/VHSgunzo/superglue/releases/download/v0.0.4/superglue
+	source = superglue-bin::https://github.com/VHSgunzo/superglue-bin/releases/download/v0.0.4/superglue-bin
 	sha256sums = SKIP
 
-pkgname = superglue
+pkgname = superglue-bin
