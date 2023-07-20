@@ -2,13 +2,14 @@
 
 _plug=awsmfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.3.3.r6.ge2f9904
+pkgver=1.3.4.r8.g8222a31
 pkgrel=1
 pkgdesc='Plugin for VapourSynth: awsmfunc (GIT version)'
 arch=('x86_64')
 url='https://github.com/OpusGang/awsmfunc'
 license=('MIT')
 depends=('python-numpy'
+         'vapoursynth-plugin-subtext'
          'vapoursynth-plugin-vsutil'
          'vapoursynth-plugin-rekt'
          'vapoursynth-plugin-remapframes'
