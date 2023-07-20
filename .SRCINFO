@@ -1,7 +1,7 @@
 pkgbase = python-trame-vuetify
 	pkgdesc = Vuetify widgets for trame
-	pkgver = 2.2.4
-	pkgrel = 3
+	pkgver = 2.3.1
+	pkgrel = 1
 	url = https://github.com/Kitware/trame-vuetify
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = python-trame-vuetify
 	makedepends = nodejs-lts-gallium
 	makedepends = npm
 	depends = python-trame-client
-	source = trame-vuetify-2.2.4.tar.gz::https://github.com/Kitware/trame-vuetify/archive/v2.2.4.tar.gz
-	sha512sums = 8fc62453701d97b13b14984bd5c7a5611246aed39192cc4b749f997e1063225c8eaf4ea7bd9058476f90983fcb5c3a5a05061767a57b564fdaebaf017c47662c
+	source = trame-vuetify-2.3.1.tar.gz::https://github.com/Kitware/trame-vuetify/archive/v2.3.1.tar.gz
+	sha512sums = 5ecb7e5771a2c2c881423e4d7409e8293fbc24d6b40401d2b8d8a784a8100b8909f19643a074fa13891be312ec76db6fcf5c2fc856cc8a86a75470d6fde55c6a
 
 pkgname = python-trame-vuetify
