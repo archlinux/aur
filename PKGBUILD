@@ -4,13 +4,13 @@
 pkgname=xvsdk
 pkgver=3.2.0
 pkgrel=1
-pkgdesc="Arch Linux compatible debtap of the official Ubuntu XVisio SDK for SeerSense SLAM cameras."
+pkgdesc="Arch Linux compatible debtap of the official Ubuntu Xvisio SDK for SeerSense SLAM cameras."
 arch=('x86_64')
 url="http://developer.xvisio.org"
 license=('PROPRIETARY')
 groups=('')
 depends=('boost' 'cmake' 'gcc' 'make' 'octomap' 'opencv' 'opera')
-replaces=('xslam-edge-plus-sdk' 'xslam-edge-sdk' 'xslam-hid-sdk' 'xslam-slam-sdk' 'xslam-usb-sdk' 'xslam-uvc-sdk' 'xslam-vsc-sdk')
+provides=('xslam-edge-plus-sdk' 'xslam-edge-sdk' 'xslam-hid-sdk' 'xslam-slam-sdk' 'xslam-usb-sdk' 'xslam-uvc-sdk' 'xslam-vsc-sdk')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=('https://download.xvisiotech.com/sdk-download/last_version/Select_Platform_Download/For%20Ubuntu/AMD64/xvsdk_3.2.0-20230516_bionic_amd64.deb')
