@@ -31,7 +31,7 @@ depends=(
 )
 
 _dir="twist_mux-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-teleop/twist_mux/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ros-teleop/twist_mux/archive/${pkgver}.tar.gz")
 sha256sums=('36890d97cd76038c84ab93b1c326140f2b9a073c2fd0bea7f86c5d8324f9bab1')
 
 build() {
