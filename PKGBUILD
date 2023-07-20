@@ -23,10 +23,10 @@ if [ -z ${use_numa+x} ]; then
   use_numa=y
 fi
 
-## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
-## Stock Archlinux and Xanmod have this enabled. 
-## Set variable "use_tracers" to: n to disable (possibly increase performance)
-##                                y to enable  (stock default)
+## Since upstream disabled CONFIG_STACK_TRACER (limits debugging and analyzing of the kernel)
+## you can enable them setting this option. Caution, because they have an impact in performance.
+## Stock Archlinux has this enabled.
+## Set variable "use_tracers" to: n to disable (possibly increase performance, XanMod default)
 ##                                y to enable  (Archlinux default)
 if [ -z ${use_tracers+x} ]; then
   use_tracers=n
