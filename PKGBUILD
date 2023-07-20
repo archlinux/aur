@@ -7,7 +7,21 @@ arch=(x86_64)
 url='https://github.com/Framstag/libosmscout'
 license=(LGPL3 custom)
 pkgdesc='A C++ library for offline map rendering, routing and location lookup based on OpenStreetMap data'
-depends=(qt6-base qt6-5compat qt6-multimedia qt6-declarative qt6-svg qt6-tools glu)
+depends=(
+    glew
+    glfw-x11
+    glm
+    glu
+    marisa
+    protobuf
+    qt6-5compat
+    qt6-base
+    qt6-declarative
+    qt6-multimedia
+    qt6-svg
+    qt6-tools
+    swig
+    )
 makedepends=(git meson ninja)
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
