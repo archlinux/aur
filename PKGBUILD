@@ -9,7 +9,7 @@ url="http://www.freedesktop.org/software/systemd/man/binfmt.d.html"
 license=('Unlicense')
 depends=('python')
 source=('python.conf')
-md5sums=('9137ba72f8f1b71d379615beff940ab6')
+md5sums=('52d4af1a8c3830e86a10a9624add7f83')
 
 package() {
     install -Dm644 'python.conf' "$pkgdir/usr/lib/binfmt.d/python.conf"
