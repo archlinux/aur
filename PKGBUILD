@@ -2,7 +2,7 @@
 
 pkgname=static-web-server-bin
 _pkgname=static-web-server
-pkgver=2.20.0
+pkgver=2.20.1
 pkgrel=1
 pkgdesc="Static Web Server (sws): A cross-platform, high-performance and asynchronous web server for static files-serving (official binary version)"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -18,11 +18,11 @@ source_armv6h=(static_web_server_armv6h_${pkgver}.tar.gz::https://github.com/${_
 source_armv7h=(static_web_server_armv7h_${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-armv7-unknown-linux-musleabihf.tar.gz)
 source_aarch64=(static_web_server_aarch64_${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz)
 
-sha256sums_x86_64=('c3207e53ac1b66024228ad1018264921314d58ae0138cd331736af5f7e52fdf2')
-sha256sums_i686=('4b675808c03518f24520e9fe660f42292f06f7fb027080222fb7ae0f29ca05fa')
-sha256sums_armv6h=('4b788fa79ac4dffd4b6c835b321fdeb834cabf77faa1eed1b300377b0b074091')
-sha256sums_armv7h=('126ab47e67402dace8f95887cbab1bfa3779faf94517b8d3d2bdca2018915619')
-sha256sums_aarch64=('b9ba8344f61dcc876d047ec309d0e0103ed03c4caba875529b3317adae749a84')
+sha256sums_x86_64=('ae802caea701b828aaaef6bc9655e4484d419cf0dcfd3127f5acaf332034c12d')
+sha256sums_i686=('76f3ba8ff5246b89fcd024bd393c87185054e487e0b586aa98e007420bd60e5f')
+sha256sums_armv6h=('257152b0faaf698a72c7d937fa252afbaa225033d2a0d8c4c88685304bfb1bd6')
+sha256sums_armv7h=('fb881c78accefe6b90856748be602cd40b9680381283c388a2d5e70ec4a8aa37')
+sha256sums_aarch64=('b49067ec59238ee7f20707b727a0610312854945bb642b93d30fea9f332ee7ca')
 
 package() {
     case "$CARCH" in
