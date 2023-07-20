@@ -1,0 +1,25 @@
+pkgbase = python-tensorflow-lite
+	pkgdesc = TensorFlow Lite is a mobile library for deploying models on mobile, microcontrollers and other edge devices
+	pkgver = 2.13.0
+	pkgrel = 1
+	url = https://www.tensorflow.org/lite/
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = pybind11
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = glibc
+	depends = gcc-libs
+	depends = python
+	depends = python-numpy
+	source = https://github.com/tensorflow/tensorflow/archive/v2.13.0.tar.gz
+	source = tflite-add-stdint.h-for-int-types-in-internal-Spectr.patch
+	sha512sums = b243ef9ded002faf8127fedb74e7e60685a0fc636790a9616fbb67a1e902d45b28f044f3da58d7febde1c5bd13a9578a0a463db24b2f2f06daf558cc7eadfec4
+	sha512sums = 14e51281282a80f3174da9db613f677ca4bde7763984b584b5a6564ec5fedec97ff7b266191fe9fabd21e2b34e6af1e9ee70d058aa6fadcd06ab215b1304433f
+
+pkgname = python-tensorflow-lite
