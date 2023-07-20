@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Taken from createCertificate.sh
+
+DAYS=825
+if [[ ! -f server.crt ]] || [[ ! -f server.key ]]
+then
+    echo "Creating CA..."
+    openssl genrsa -out ca.key 2048
+    openssl req -x509 -new -nodes -key ca.key -sha256 -days $DAYS -out ca.crt -subj "/C=CN/CN=UnblockNeteaseMusic Root CA/O=UnblockNeteaseMusic"
+    echo "Creating Server certificates..."
+    openssl genrsa -out server.key 2048
+    openssl req -new -sha256 -key server.key -out server.csr -subj "/C=CN/L=Hangzhou/O=NetEase (Hangzhou) Network Co., Ltd/OU=IT Dept./CN=*.music.163.com"
+    {
+        echo "basicConstraints=CA:FALSE"
+        echo "keyUsage=digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment"
+        echo "extendedKeyUsage=serverAuth"
+        echo "subjectAltName=DNS:music.163.com,DNS:*.music.163.com"
+    } > extFile.ext
+    openssl x509 -req -extfile extFile.ext -days $DAYS -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt
+    echo "We set the expire days for certificates of server and ca to $DAYS day(s), please update them in time when they are going to be expired."
+    echo "You can regenerate those certificates by removing generated files and rerunning this script."
+fi
+
+if [[ -f server.crt ]] && [[ -f server.key ]]
+then
+    echo "Creating server certificates successful!"
+fi

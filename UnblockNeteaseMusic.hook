@@ -1,0 +1,9 @@
+[Trigger]
+Type = File
+Operation = Install
+Target = usr/bin/UnblockNeteaseMusic
+
+[Action]
+Description = Creating default configuration for UnblockNeteaseMusic...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/UnblockNeteaseMusic-post-install

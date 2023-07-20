@@ -1,0 +1,26 @@
+pkgbase = unblockneteasemusic-golang-git
+	pkgdesc = Revive unavailable songs for Netease Cloud Music (Golang)
+	pkgver = 0.2.13.r16.g92b59c9
+	pkgrel = 1
+	url = https://github.com/cnsilvan/UnblockNeteaseMusic
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	depends = openssl
+	provides = unblockneteasemusic-golang
+	conflicts = unblockneteasemusic-golang
+	source = git+https://github.com/cnsilvan/UnblockNeteaseMusic.git
+	source = UnblockNeteaseMusic.service
+	source = UnblockNeteaseMusic-ensure-keys
+	source = UnblockNeteaseMusic.hook
+	source = UnblockNeteaseMusic-post-install
+	source = UnblockNeteaseMusic.tmpfiles
+	sha256sums = SKIP
+	sha256sums = a08261e75c01af4a99fbab13a4c511b0424e589b7598069993621d7b128e3897
+	sha256sums = 3c62339a361583ba87d29cd07bdef4eb630b40450714da1a79bb97d42a599fbf
+	sha256sums = e378e61dab90b8fecd87edfaf0140fc2dc2e139b2185960faaf8d9cfc1bff981
+	sha256sums = 0c5dda43b23ad79cbf8bcf7e4bd8fd9b033d24b3e2f00cda498881431afa35c3
+	sha256sums = 5818b2fec2979571b88083ba515d62c2c755ae3bfab1b898e59d614fe5486042
+
+pkgname = unblockneteasemusic-golang-git

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if [[ ! -f /etc/UnblockNeteaseMusic.conf ]]
+then
+    echo "Generating default arguments for UnblockNeteaseMusic..."
+    {
+        echo "# Extra arguments passed to UnblockNeteaseMusic"
+        echo "# See UnblockNeteaseMusic --help for more info"
+        echo "ARGS=-b -ba -bu -e -lv -m 2 -sef"
+    } > /etc/UnblockNeteaseMusic.conf
+fi
+
+if [[ -d /var/lib/UnblockNeteaseMusic ]]
+then
+    cd /var/lib/UnblockNeteaseMusic
+    UnblockNeteaseMusic-ensure-keys
+else
+    echo "You need to go to /var/lib/UnblockNeteaseMusic and run UnblockNeteaseMusic-ensure-keys manually!"
+fi

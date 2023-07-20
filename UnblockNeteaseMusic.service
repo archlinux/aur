@@ -1,0 +1,30 @@
+[Unit]
+Description=Revive unavailable songs for Netease Cloud Music (Golang)
+Documentation=https://github.com/cnsilvan/UnblockNeteaseMusic
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/UnblockNeteaseMusic.conf
+WorkingDirectory=%S/UnblockNeteaseMusic
+ExecStart=UnblockNeteaseMusic -l %L/UnblockNeteaseMusic.log $ARGS
+
+# Sandboxing
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+LockPersonality=yes
+PrivateMounts=yes
+TemporaryFileSystem=/etc
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+BindPaths=/var/log/UnblockNeteaseMusic.log
+BindPaths=/var/lib/UnblockNeteaseMusic
+BindPaths=/etc/hosts
+[Install]
+WantedBy=multi-user.target
