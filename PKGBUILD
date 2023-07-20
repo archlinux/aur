@@ -2,7 +2,7 @@
 
 _pkgname="spleeter"
 pkgname="$_pkgname-git"
-pkgver=2.3.2.r45.g0b26dec
+pkgver=2.4.0.r36.g13c771b
 pkgrel=1
 pkgdesc="Deezer music source separation library and tool using pretrained models"
 # https://research.deezer.com/projects/spleeter.html
@@ -49,7 +49,6 @@ optdepends=(
 
 provides=(
   "$_pkgname"
-  'spleeter2'
 )
 conflicts=(${provides[@]})
 
@@ -80,8 +79,8 @@ prepare() {
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  _regex="## ([0-9]+\\.[0-9]+(\\.[0-9]+)?)\s*\$"
-  _file="CHANGELOG.md"
+  _regex='^version = "([0-9]+\.[0-9]+(\.[0-9]+)?)"$'
+  _file="pyproject.toml"
 
   _line=$(
     grep -E "$_regex" "$_file" | head -1
@@ -90,7 +89,8 @@ pkgver() {
     printf '%s' "$_line" | sed -E "s@$_regex@\1@"
   )
   _commit=$(
-    git log -S "$_line" -1 --pretty=oneline --no-color | sed 's@\ .*$@@'
+    git log -S "$_line" -1 --pretty=oneline --no-color -- "$_file" \
+      | sed 's@\ .*$@@'
   )
   _revision=$(
     git rev-list --count $_commit..HEAD
