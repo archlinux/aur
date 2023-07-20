@@ -3,7 +3,7 @@
 # Contributor: otreblan <otreblain@gmail.com>
 pkgname=mingw-w64-sfml-static
 pkgver=2.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A simple, fast, cross-platform, and object-oriented multimedia API (mingw-w64)"
 arch=(any)
 url="https://www.sfml-dev.org"
