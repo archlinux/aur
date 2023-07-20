@@ -1,11 +1,11 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
-_electron=electron
+_electron=electron23
 _appname=insomnia
 pkgname="$_appname-electron-bin"
 _dirname="Insomnia.Core"
-pkgver=2023.2.2
+pkgver=2023.4.0
 pkgrel=1
 pkgdesc='Cross-platform HTTP and GraphQL Client'
 arch=(any)
@@ -20,7 +20,7 @@ source=("$url/releases/download/core@$pkgver/$_dirname-$pkgver.tar.gz"
 				"https://raw.githubusercontent.com/$_repo/core@$pkgver/LICENSE"
         "$_appname.sh"
 				"$_appname.desktop")
-sha256sums=('b20e8f126e012a78dae434daed54a947a3dc38973dfd4aac5dd651ba008c9671'
+sha256sums=('f5ce6ba876bde89152ba93c60631dd0ebb52089ab6c68f6128c2cfa32b41e179'
             'cc91b5641bbbf592a69ca5f7b45807efba470068e815fc7682a42022bbd3cbb9'
             '9eba2a175624d9236f9acbefffd92a5a6a64bf6250700b29684d7aa4a1057c77'
             '790a02378c36db77797669e6b58a426a037664c2680e8b29b9f606c6bb517e94')
