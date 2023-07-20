@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-virtualkeyboard-static
-_qtver=6.5.1
+_qtver=6.5.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtvirtualkeyboard-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('89b243d6d0367502f2d6ae8828364a628986a8de189704e857fb0cdfee863cc1')
+sha256sums=('0570e0387e22a526b8ff735355ca8f09347501b71f7ae2166b60a81a40626269')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -26,6 +26,7 @@ build() {
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
     $_arch-cmake-static -G Ninja -B build-$_arch -S $_pkgfqn \
       -DCMAKE_INSTALL_PREFIX:PATH="/usr/$_arch/static" \
+      -DCMAKE_DISABLE_FIND_PACKAGE_harfbuzz=TRUE \
       -DFEATURE_static_runtime=ON \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
