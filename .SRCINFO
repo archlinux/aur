@@ -1,12 +1,12 @@
 pkgbase = charasay
 	pkgdesc = The future of cowsay 🐮! Colorful characters saying something 🗨️.
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/latipun7/charasay
 	arch = any
 	license = MIT
 	makedepends = cargo
-	source = charasay-3.0.0.tar.gz::https://github.com/latipun7/charasay/archive/refs/tags/v3.0.0.tar.gz
-	sha256sums = f617cf95602d5ad62a29155e0b658d80d0e5eeef39c169bd5b781817d618fddf
+	source = charasay-3.0.1.tar.gz::https://github.com/latipun7/charasay/archive/refs/tags/v3.0.1.tar.gz
+	sha256sums = 21a7ee5b92d6d721694b99c69dfbcbafb3ef1fdc32a1c73215c8e3397866bb58
 
 pkgname = charasay
