@@ -1,11 +1,11 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
 _desc="flippy's AArch64-focused fork aiming to increase usability"
-_pkgver_main=6.1.38
+_pkgver_main=6.1.39
 _pkgver_suffix=flippy
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _flippy_repo='linux-6.1.y'
-_flippy_commit='c52b399456ba5b63818e959974e244b2f0188f70'
+_flippy_commit='70bd30b5905c019b606cd69cb5c1f030360e1dcf'
 _srcname="${_flippy_repo}-${_flippy_commit}"
 
 pkgbase=linux-aarch64-flippy
@@ -32,8 +32,8 @@ source=(
   '0001-drivers-auxdisplay-openvfd-improve-dev-write-logic.patch'
 )
 sha256sums=(
-  '6131769615c0d97b8dcd0d69bd520d564486843cf9d5ea7f93e6e95a42cb351a'
-  '660496f81434443521320e484c0956bd5240f81745a0c1590b97042129662ad2'
+  '08df7099e02d234551e36f5b9f63944dbaee0f6cc838fd0c18746ca7f8ed3967'
+  '40455b9610cfb519250f3713236fbe60412e4470e6e5051b239c943f32d8d075'
   'bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3'
   'd4a47c25f5822fe05a473a9ccd8b749429adb23519a72b9043fe42530f990321'
 )
