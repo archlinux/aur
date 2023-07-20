@@ -6,7 +6,7 @@ pkgbase = grub-theme-cyberre
 	arch = any
 	license = CC0
 	depends = grub-common
-	source = https://github.com/alealexpro100/various_files/raw/main/Grub2-theme%20CyberRe%201.0.0.tar.gz
+	source = https://github.com/alealexpro100/various_files/raw/master/Grub2-theme%20CyberRe%201.0.0.tar.gz
 	md5sums = 29202781294950eceb49865c88df01f9
 
 pkgname = grub-theme-cyberre
