@@ -1,12 +1,12 @@
 pkgbase = python-soxr
 	pkgdesc = High quality, one-dimensional sample-rate conversion library for Python
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dofuuz/python-soxr
 	arch = x86_64
 	license = custom
 	checkdepends = python-pytest
-	makedepends = cython3
+	makedepends = cython
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-oldest-supported-numpy
