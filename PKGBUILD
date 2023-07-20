@@ -3,7 +3,7 @@
 pkgname="calendar-cli-git"
 _pkgname="calendar-cli"
 pkgver=r286.2dd2577
-pkgrel=1
+pkgrel=2
 pkgdesc="calendar-cli is a caldav client for calendar and task management"
 url="https://github.com/tobixen/calendar-cli"
 arch=('any')
