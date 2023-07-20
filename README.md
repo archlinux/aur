@@ -6,6 +6,7 @@ A simple patchset to include BORE scheduler by Masahito Suzuki into Xanmod kerne
 
 - BORE scheduler
 - O3 optimization (can be disabled)
+- Clang compiler set to LTO_FULL (default compiler is GCC)
 - Enabled the use of all CPU cores for compilation
 - Disabled NUMA by default
 - Choose your tickrate HZ from 1000, 500, 300, 250, or 100. (500 is default)
@@ -26,3 +27,5 @@ Xanmod - http://www.xanmod.org/
 BORE Scheduler - https://github.com/firelzrd/bore-scheduler
 
 Glitched cfs patch - https://github.com/Frogging-Family/linux-tkg
+
+CachyOS - https://github.com/CachyOS/linux-cachyos
