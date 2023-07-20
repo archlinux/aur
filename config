@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.1.38 Kernel Configuration
+# Linux/arm64 6.1.39 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.0"
 CONFIG_CC_IS_GCC=y
@@ -2228,6 +2228,7 @@ CONFIG_MTD=y
 # Partition parsers
 #
 # CONFIG_MTD_AR7_PARTS is not set
+# CONFIG_MTD_BRCM_U_BOOT is not set
 # CONFIG_MTD_CMDLINE_PARTS is not set
 CONFIG_MTD_OF_PARTS=m
 CONFIG_MTD_OF_PARTS_BCM4908=y
