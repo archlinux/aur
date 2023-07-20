@@ -12,4 +12,3 @@ pkgbase = editorconfig-geany
 	sha256sums = 4b0c37eb534613e7454c1e068179db5b262cf9e5aa00681802787231e1b35edf
 
 pkgname = editorconfig-geany
-
