@@ -3,7 +3,7 @@
 pkgname=libosmscout-git
 pkgver=r8147.1091ff4
 pkgrel=1
-arch=($CARCH)
+arch=(x86_64)
 url='https://github.com/Framstag/libosmscout'
 license=(LGPL3 custom)
 pkgdesc='A C++ library for offline map rendering, routing and location lookup based on OpenStreetMap data'
