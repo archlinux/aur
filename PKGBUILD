@@ -3,7 +3,7 @@
 pkgname=xstop
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Just click to pause/resume x11 windows, like xkill."
+pkgdesc="Just click to pause/resume x11 windows, inspired by xkill."
 url="https://github.com/Brx86/Xstop"
 arch=("x86_64")
 license=("GPL3")
