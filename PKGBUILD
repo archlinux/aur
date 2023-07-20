@@ -1,27 +1,31 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: zhuangzhuang <xufengyuan20080802@outlook.com>
 pkgname="rubick-bin"
-pkgver=2.2.13
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。"
 arch=('x86_64')
 url="https://rubickcenter.github.io/rubick/"
 _githuburl="https://github.com/rubickCenter/rubick"
 license=('MIT')
-depends=('at-spi2-core' 'libxkbcommon' 'glibc' 'libxrandr' 'gcc-libs' 'glib2' 'libcups' 'libxdamage' 'libx11' 'mesa' \
-	'cairo' 'libxcb' 'gdk-pixbuf2' 'gtk3' 'libxext' 'pango' 'libxcomposite' 'libxshmfence' 'libxfixes' 'libdrm' \
-	'expat' 'nspr' 'nss' 'alsa-lib' 'dbus' 'hicolor-icon-theme')
-optdepends=('libappindicator-gtk3')
+depends=('electron13' 'bash' 'hicolor-icon-theme')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-options=('!strip' '!emptydirs')
-install="${pkgname}.install"
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-	"LICENSE::https://raw.githubusercontent.com/rubickCenter/rubick/master/LICENSE")
-sha256sums=('823253d5a815dec28cd8cc07304e44fdfca53684a3408d60509121cfec52fd9d'
-            '98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77')
-
+	"LICENSE::https://raw.githubusercontent.com/rubickCenter/rubick/master/LICENSE"
+	"${pkgname%-bin}.sh")
+sha256sums=('08ab755084aad4a08715797deeaa618ad5ebb471fbfe8d99b7f919275b725ad0'
+            '98ec3482acc93db8661b6a794744e5eaca088cf75312d15f196abb5db7e52b77'
+            '9909796606e292ef996c729c89049c7b07ab5ff5fb34e59b143df8eac99227ab')
 package(){
-	bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+	bsdtar -xf "${srcdir}/data.tar.xz"
+	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    cp -r "${srcdir}/opt/${pkgname%-bin}2/resources/"* "${pkgdir}/opt/${pkgname%-bin}"
+    for _icons in 2x2 3x3 256x256;do
+      install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+        -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
+	sed "s|/opt/${pkgname%-bin}2/${pkgname%-bin} %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 	install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
