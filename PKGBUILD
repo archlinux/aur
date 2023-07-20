@@ -1,0 +1,59 @@
+pkgbase=hagrid
+pkgname=hagrid-git
+pkgver=1
+pkgrel=1
+pkgdesc="Verifying OpenPGP keyserver, written in Rust"
+arch=('x86_64')
+url="https://gitlab.com/keys.openpgp.org/hagrid"
+license=('AGPL3')
+backup=("etc/hagrid/Rocket.toml")
+depends=()
+optdepends=('gunicorn: wkd-domain-checker')
+makedepends=('cargo')
+source=("git+https://gitlab.com/keys.openpgp.org/hagrid.git"
+	hagrid.service)
+sha512sums=('SKIP'
+            'efb75d1f72ade22d52e4f5e60219399beb9fe60fbe43a76d3865916c2e8982594835a06b286e2fe8b7413c66dc10d94fd9fbaeadf8dfef936281cdf6d10e4925')
+
+build() {
+  cd "hagrid"
+  cp Rocket.toml.dist Rocket.toml
+  cargo build --release
+  (cd hagridctl && cargo build --release)
+}
+
+check() {
+  cd "hagrid"
+  cargo test --release
+  (cd hagridctl && cargo test --release)
+}
+
+package() {
+  cd "hagrid"
+  # binaries
+  install -Dm0755 target/release/hagrid "$pkgdir"/usr/bin/hagrid
+  install -Dm0755 target/release/hagridctl "$pkgdir"/usr/bin/hagridctl
+  install -Dm0755 target/release/hagrid-delete "$pkgdir"/usr/bin/hagrid-delete
+  # dist
+  install -dm0755 "$pkgdir"/usr/share/webapps/
+  cp -r dist "$pkgdir"/usr/share/webapps/hagrid
+  # doc
+  install -Dm0644 hagrid-routes.conf "$pkgdir"/usr/share/doc/hagrid/hagrid-routes.conf
+  install -Dm0644 nginx.conf "$pkgdir"/usr/share/doc/hagrid/nginx.conf
+  install -Dm0644 README.md "$pkgdir"/usr/share/doc/hagrid/README.md
+  # conf
+  install -Dm0644 -o 99 -g 99 Rocket.toml "$pkgdir"/etc/hagrid/Rocket.toml
+  # set up working dir
+  install -dm0755 -o 99 -g 99 "$pkgdir"/var/lib/hagrid/public
+  ln -s /usr/share/webapps/hagrid/assets "$pkgdir"/var/lib/hagrid/public/
+  ln -s /usr/share/webapps/hagrid/email-templates  "$pkgdir"/var/lib/hagrid/
+  ln -s /usr/share/webapps/hagrid/errors-static  "$pkgdir"/var/lib/hagrid/
+  ln -s /usr/share/webapps/hagrid/templates  "$pkgdir"/var/lib/hagrid/
+  ln -s /etc/hagrid/Rocket.toml "$pkgdir"/var/lib/hagrid/
+  # wkd-domain-checker
+  #(cd wkd-domain-checker && PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir"/usr/lib/wkd-domain-checker --ignore-installed -r requirements.txt)
+  install -Dm0644 wkd-domain-checker/wkd-domain-checker.py "$pkgdir"/usr/share/doc/hagrid/wkd-domain-checker/wkd-domain-checker.py
+  install -Dm0644 wkd-domain-checker/wkd-domain-checker.service "$pkgdir"/usr/share/doc/hagrid/wkd-domain-checker/wkd-domain-checker.service
+  # services
+  install -Dm0644 "$srcdir"/hagrid.service "$pkgdir"/usr/lib/systemd/system/hagrid.service
+}

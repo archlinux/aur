@@ -1,0 +1,16 @@
+[Unit]
+Description=Hagrid - verifying OpenPGP keyserver, written in Rust
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/lib/hagrid
+ExecStart=/usr/bin/hagrid
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+User=nobody
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
