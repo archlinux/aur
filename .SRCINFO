@@ -1,0 +1,22 @@
+pkgbase = ros-noetic-velodyne-gazebo-plugins
+    pkgdesc = ROS - Gazebo plugin to provide simulated data from Velodyne laser scanners
+    pkgver = 1.0.13
+    pkgrel = 1
+    url = http://wiki.ros.org/velodyne_gazebo_plugins
+    arch = i686
+    arch = x86_64
+    arch = aarch64
+    arch = armv7h
+    arch = armv6h
+    license = BSD
+    makedepends = cmake
+    makedepends = ros-build-tools
+    makedepends = ros-noetic-catkin
+    depends = ros-noetic-roscpp
+    depends = ros-noetic-sensor-msgs
+    depends = ros-noetic-tf
+    depends = ros-noetic-gazebo-ros
+    source = ros-noetic-velodyne-gazebo-plugins-1.0.13.zip::https://bitbucket.org/DataspeedInc/velodyne_simulator/get/b98e156c4431.zip
+    sha256sums = 6b378ea9e47d9436e35da8ada4879f336e4c27b5a1194993d12ba43b060150f1
+
+pkgname = ros-noetic-velodyne-gazebo-plugins
