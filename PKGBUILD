@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=rpcsx
 pkgname=$_pkgname-git
-pkgver=r213.fd16ce4
+pkgver=r220.a32c0af
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -13,7 +13,6 @@ depends=(
 	'glibc'
 	'libunwind'
 	'spirv-tools'
-	'vulkan-validation-layers'
 )
 makedepends=(
 	'cmake'
@@ -24,6 +23,7 @@ makedepends=(
 	'vulkan-icd-loader>=1.3'
 	'xbyak'
 )
+optdepends=('vulkan-validation-layers: for rpcsx-gpu')
 provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/RPCSX/rpcsx.git")
@@ -36,8 +36,9 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
+	sed -i '/xbyak/c find_package(xbyak)' CMakeLists.txt
+	sed -i 's/xbyak/xbyak::xbyak/' rpcsx-os/CMakeLists.txt
 	sed -i 's/-march=native//' rpcsx-os/CMakeLists.txt
-	sed -i '/xbyak/d' CMakeLists.txt
 }
 
 build() {
