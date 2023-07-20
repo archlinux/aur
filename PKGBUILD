@@ -2,8 +2,8 @@
 
 pkgname=binfmt-python
 pkgver=1
-pkgrel=1
-pkgdesc="Register python interpreter"
+pkgrel=2
+pkgdesc="Register Python interpreter"
 arch=('any')
 url="http://www.freedesktop.org/software/systemd/man/binfmt.d.html"
 license=('Unlicense')

@@ -1,7 +1,7 @@
 pkgbase = binfmt-python
-	pkgdesc = Register python interpreter
+	pkgdesc = Register Python interpreter
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/software/systemd/man/binfmt.d.html
 	arch = any
 	license = Unlicense
