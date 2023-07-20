@@ -1,7 +1,8 @@
 # Maintainer: Chris Watson <cawatson1993@gmail.com>
+# Co-maintainer: George <hello@wavetro.net>
 
 pkgname="plasticity-bin"
-pkgver="1.2.0"
+pkgver="1.2.4"
 pkgrel="2"
 pkgdesc="Plasticity is a 3d modelling software for concept artists. Modeling in Plasticity is quick and efficient due to the unique gizmos, shortcuts, and thoughtful workflow."
 arch=("x86_64")
@@ -14,7 +15,7 @@ optdepends=('discord: For communication with the devs'
             'apparmor: Extra protection'
             'pulseaudio: For sound')
 source=("https://github.com/nkallen/plasticity/releases/download/v${pkgver}/plasticity_${pkgver}_amd64.deb")
-sha512sums=('fc463e26ede8432db0db99629327e314a26d138552dad8b31d4fabdd261f274a6de6df7f0cbbf152c8eac8623086ca0c016d285a2fcce03f9db911069a61b373')
+sha512sums=('3966b50cf7f702ecab9be2b9f900da42bc48b602140515bec0336d455f02dba36c31af856e7447490595ca2bd10712c783eb08a633e51cdcd5db83c13a083fde')
 
 package() {
     tar -xvf data.tar.zst -C "$pkgdir"
