@@ -6,7 +6,7 @@
     pkgname='ros-noetic-libg2o'
     pkgver='2018.3.25'
     arch=('any')
-    pkgrel=2
+    pkgrel=3
     license=('BSD')
 
     ros_makedepends=()
@@ -37,9 +37,6 @@
         # Create build directory
         [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
         cd ${srcdir}/build
-
-        # Fix Python2/Python3 conflicts
-        /usr/share/ros-build-tools/fix-python-scripts.sh -v 3 ${srcdir}/${_dir}
 
         # Build project
         cmake ${srcdir}/${_dir} \
