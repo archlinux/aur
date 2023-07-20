@@ -9,7 +9,7 @@ pkgbase = swt
 	makedepends = glu
 	makedepends = gtk3
 	makedepends = gtk4
-	makedepends = jdk11-openjdk
+	makedepends = java-runtime>=11
 	makedepends = pkgconfig
 	makedepends = unzip
 	makedepends = webkit2gtk

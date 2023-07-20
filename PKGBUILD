@@ -16,7 +16,7 @@ makedepends=(
   'glu'
   'gtk3'
   'gtk4'
-  'jdk11-openjdk'
+  'java-runtime>=11'
   'pkgconfig'
   'unzip'
   'webkit2gtk'
