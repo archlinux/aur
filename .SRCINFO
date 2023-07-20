@@ -4,7 +4,7 @@ pkgbase = lsvkdev-bin
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/lsvkdev
 	arch = x86_64
-	source = lsvkdev-bin::https://github.com/VHSgunzo/lsvkdev-bin/releases/download/v0.0.1/lsvkdev-bin
+	source = lsvkdev::https://github.com/VHSgunzo/lsvkdev/releases/download/v0.0.1/lsvkdev
 	sha256sums = SKIP
 
 pkgname = lsvkdev-bin
