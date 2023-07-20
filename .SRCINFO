@@ -1,6 +1,6 @@
 pkgbase = python-libtimed
 	pkgdesc = Python API for timed
-	pkgver = 0.2.1
+	pkgver = 0.2.1.r2
 	pkgrel = 1
 	url = https://github.com/adfinis/libtimed.git
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = python-libtimed
 	makedepends = python-installer
 	makedepends = git
 	depends = python>=3.10
+	depends = python-inflection>=0.5.1
 	provides = libtimed
 	conflicts = libtimed
 	source = git+https://github.com/adfinis/libtimed.git
