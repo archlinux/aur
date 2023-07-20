@@ -2,7 +2,7 @@
 # Maintainer: Maas Lalani <maas@charm.sh>
 
 pkgname='vhs-bin'
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A tool for recording terminal GIFs'
 url='https://charm.sh/'
@@ -12,17 +12,17 @@ provides=('vhs')
 conflicts=('vhs')
 depends=('ffmpeg' 'ttyd')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.5.0/vhs_Linux_arm64.tar.gz")
-sha256sums_aarch64=('01f56edae29ea006008846aa9832a7006f8b630d42f689c7fb1ac801581e981c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.6.0/vhs_0.6.0_Linux_arm64.tar.gz")
+sha256sums_aarch64=('ae758f6c02c1866a3a3070d1d721da8774b3072ced0c88995ef80aa9ee27aae4')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.5.0/vhs_Linux_arm.tar.gz")
-sha256sums_armv7h=('f68a010c04da6338b23c7d23c8cbdf22f511231ba1c9db786df5a69d70f8102f')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.6.0/vhs_0.6.0_Linux_arm.tar.gz")
+sha256sums_armv7h=('edb453909a3e1f42afc37645e315c95d6e8ab8b6b494f156b5ae9fcfe6e3724a')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.5.0/vhs_Linux_i386.tar.gz")
-sha256sums_i686=('95bded78381e5625f9589a5957d0b66e18ba80dc89d50692be403f3eddb3c3d8')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.6.0/vhs_0.6.0_Linux_i386.tar.gz")
+sha256sums_i686=('74d1dc9454af8d0913eed31d80849a3d42d1cf40c5256c48b01f79b615ebabfb')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.5.0/vhs_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('3970656dea2431ef37fabc601166dd3046e7bdb6de3802ec5289671d000e53cb')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/vhs/releases/download/v0.6.0/vhs_0.6.0_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('54234c73ba27ca8305cc4573be18ab636b565b883d19521d05434b011aeb0adc')
 
 package() {
   # bin
