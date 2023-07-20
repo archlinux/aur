@@ -1,0 +1,23 @@
+pkgbase = ros-noetic-cpr-onav-description
+    pkgdesc = ROS - Clearpath OutdoorNav URDF description
+    pkgver = 0.1.2
+    pkgrel = 1
+    url = https://github.com/cpr-application/cpr_onav_description
+    arch = i686
+    arch = x86_64
+    arch = aarch64
+    arch = armv7h
+    arch = armv6h
+    license = BSD
+    makedepends = cmake
+    makedepends = ros-build-tools
+    makedepends = ros-noetic-catkin
+    depends = ros-noetic-lms1xx
+    depends = ros-noetic-realsense2-description
+    depends = ros-noetic-velodyne-description
+    depends = ros-noetic-urdf
+    depends = ros-noetic-xacro
+    source = ros-noetic-cpr-onav-description-0.1.2.tar.gz::https://github.com/cpr-application/cpr_onav_description/archive/0.1.2.tar.gz
+    sha256sums = ef3f56b7cb56b3230ea755a797e7e59f41ed51143d7fab25a5579c4e5ea890eb
+
+pkgname = ros-noetic-cpr-onav-description
