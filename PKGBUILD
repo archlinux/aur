@@ -2,8 +2,8 @@
 
 _pkgname="hyprland"
 pkgname="${_pkgname}-nvidia-git"
-pkgver=r3103.80cd2ef3
-pkgrel=1
+pkgver=r3103.7091d4e5
+pkgrel=2
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA patch)"
 arch=(any)
 url="https://github.com/hyprwm/Hyprland"
@@ -54,7 +54,7 @@ source=("${_pkgname}::git+https://github.com/hyprwm/Hyprland.git"
 conflicts=("${_pkgname}")
 provides=(hyprland)
 sha256sums=('SKIP'
-            'd5ef5d171646a93c5f240ee4839685390a14c7be93aebaf5281cd19d6e450ce5')
+            '81b3bd838ee4c8ba1697191c38fd0f899a3f4cff4c9edf07c9978b4267f8a3bd')
 options=(!makeflags !buildflags !strip)
 
 pkgver() {
@@ -69,7 +69,7 @@ build() {
 	cd "${srcdir}/${_pkgname}"
 	git submodule update --init
 	make fixwlr
-	patch --directory="$srcdir/$_pkgname/subprojects/wlroots/" --forward --strip=1 \
+	patch --directory="$srcdir/$_pkgname/" --forward --strip=0 \
 		--input="${srcdir}/nvidia.patch"
 	cd "./subprojects/wlroots/" && meson build/ --prefix="${srcdir}/tmpwlr" --buildtype=release && ninja -C build/ && mkdir -p "${srcdir}/tmpwlr" && ninja -C build/ install && cd ../
     cd udis86 && cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -H./ -B./build -G Ninja && cmake --build ./build --config Release --target all -j$(shell nproc) && cd ../..
