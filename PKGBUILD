@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=snapdrop
-pkgname="node-${_pkgname}-electron"
+pkgname="node-${_pkgname}-electron-bin"
 pkgver=1.0.4
 pkgrel=1
 pkgdesc="A Self Contained Desktop Version Of Snapdrop Made With Electron"

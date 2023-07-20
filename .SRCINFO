@@ -1,4 +1,4 @@
-pkgbase = node-snapdrop-electron
+pkgbase = node-snapdrop-electron-bin
 	pkgdesc = A Self Contained Desktop Version Of Snapdrop Made With Electron
 	pkgver = 1.0.4
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = node-snapdrop-electron
 	sha256sums = 25b67d4165657d88c10b23166d08eef9c0c7e99ad22023341c664ec649b2fe1c
 	sha256sums = 3ffaa6321763c3cc7dee716c0448a820f4d08e13432b18118a025af3dc5a487b
 
-pkgname = node-snapdrop-electron
+pkgname = node-snapdrop-electron-bin
