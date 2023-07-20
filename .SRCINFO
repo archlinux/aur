@@ -1,7 +1,7 @@
 pkgbase = python-okx
 	pkgdesc = Unofficial Python wrapper for the OKX exchange API
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/okxapi/python-okx
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = python-okx
 	depends = python-pyopenssl
 	depends = python-importlib-metadata
 	depends = python-httpx
+	depends = python-h2
 	depends = python-keyring
 	depends = python-twisted
 	source = https://files.pythonhosted.org/packages/source/p/python-okx/python-okx-0.2.0.tar.gz
