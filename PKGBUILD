@@ -2,14 +2,13 @@
 
 pkgname=xwinmosaic
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="X11 window switcher with fancy look"
 url="http://github.com/soulthreads/xwinmosaic"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('libx11' 'gtk2')
 makedepends=('cmake')
-provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/soulthreads/${pkgname}/archive/v${pkgver}.tar.gz
