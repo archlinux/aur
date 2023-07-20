@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-virtualkeyboard
 	pkgdesc = Virtual keyboard framework (android)
-	pkgver = 6.5.1
+	pkgver = 6.5.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = android-aarch64-qt6-virtualkeyboard
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.5/6.5.1/submodules/qtvirtualkeyboard-everywhere-src-6.5.1.tar.xz
-	sha256sums = 89b243d6d0367502f2d6ae8828364a628986a8de189704e857fb0cdfee863cc1
+	source = https://download.qt.io/official_releases/qt/6.5/6.5.2/submodules/qtvirtualkeyboard-everywhere-src-6.5.2.tar.xz
+	sha256sums = 0570e0387e22a526b8ff735355ca8f09347501b71f7ae2166b60a81a40626269
 
 pkgname = android-aarch64-qt6-virtualkeyboard
