@@ -3,12 +3,17 @@
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname=raleigh-reloaded-git
 pkgver=1.5+6.r161.20230323.ca39c61
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK theme aiming to revive the classic Raleigh theme"
 arch=('any')
 url="https://github.com/vlastavesely/raleigh-reloaded"
 license=('GPL2')
-depends=('gtk3')
+depends=()
+optdepends=(
+  # 'gtk2: To use the theme in GTK+.' # It is part of GTK2, so no need to relate this package to GTK2.
+  'gtk3: To use the theme in GTK3.'
+  # 'firefox: To use the theme in firefox.'
+)
 provides=("${pkgname%-git}=${pkgver}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
@@ -33,4 +38,12 @@ pkgver() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   make PREFIX="$pkgdir"/usr install
+
+  for _docfile in README.md screenshot.png doc/*; do
+    install -Dvm644 "${_docfile}" "${pkgdir}/usr/share/doc/${pkgname%-git}/${_docfile}"
+  done
+  for _licensfile in LICENSE.md; do
+    install -Dvm644 "${_licensfile}" "${pkgdir}/usr/share/licenses/${pkgname}/${_licensfile}"
+    ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/${_licensfile}" "${pkgdir}/usr/share/doc/${pkgname%-git}/${_licensfile}"
+  done
 }
