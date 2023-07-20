@@ -1,0 +1,12 @@
+pkgbase = binfmt-perl
+	pkgdesc = Register Perl interpreter
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.freedesktop.org/software/systemd/man/binfmt.d.html
+	arch = any
+	license = Unlicense
+	depends = perl
+	source = perl.conf
+	md5sums = 5d992cf025dfd2d565107640fb7c2ecc
+
+pkgname = binfmt-perl
