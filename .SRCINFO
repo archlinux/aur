@@ -1,6 +1,6 @@
 pkgbase = r-jaspcochrane
 	pkgdesc = Cochrane Module for JASP
-	pkgver = 0.17.2.1
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspCochrane
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-jaspcochrane
 	depends = r-jaspdescriptives
 	depends = r-jaspmetaanalysis
 	optdepends = r-testthat
-	source = jaspCochrane_0.17.2.1.tar.gz::https://github.com/jasp-stats/jaspCochrane/archive/refs/tags/v0.17.2.1.tar.gz
-	sha256sums = 1f91a991d670378d4daec2f9cdefef5db563531019910bcef441b223a76e8ea9
+	source = jaspCochrane_0.17.3.tar.gz::https://github.com/jasp-stats/jaspCochrane/archive/refs/tags/v0.17.3.tar.gz
+	sha256sums = b3b892cda0d57d3619836442d75e623570459fcd2616874302a91a5c5b0ebb62
 
 pkgname = r-jaspcochrane
