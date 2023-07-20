@@ -1,12 +1,10 @@
-pkgbase = lsvkdev
+pkgbase = lsvkdev-bin
 	pkgdesc = Show Vulkan deviceName and driverName on Rust
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/lsvkdev
 	arch = x86_64
-	provides = lsvkdev
-	conflicts = lsvkdev
-	source = lsvkdev::https://github.com/VHSgunzo/lsvkdev/releases/download/v0.0.1/lsvkdev
+	source = lsvkdev-bin::https://github.com/VHSgunzo/lsvkdev-bin/releases/download/v0.0.1/lsvkdev-bin
 	sha256sums = SKIP
 
-pkgname = lsvkdev
+pkgname = lsvkdev-bin
