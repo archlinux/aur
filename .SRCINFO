@@ -1,6 +1,6 @@
 pkgbase = r-jaspdescriptives
 	pkgdesc = Descriptives Module for JASP
-	pkgver = 0.17.2.1
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspDescriptives
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-jaspdescriptives
 	depends = r-stringr
 	depends = r-jaspbase
 	depends = r-jaspgraphs
-	source = jaspDescriptives_0.17.2.1.tar.gz::https://github.com/jasp-stats/jaspDescriptives/archive/refs/tags/v0.17.2.1.tar.gz
-	sha256sums = 75b319ad0a997e5a0ce7771fda47ff7bcfd9e642426a264e73a52cd30735f913
+	source = jaspDescriptives_0.17.3.tar.gz::https://github.com/jasp-stats/jaspDescriptives/archive/refs/tags/v0.17.3.tar.gz
+	sha256sums = 9fd376569d1c2c449d2b70feb65ac2b0b66d2b20b1d65404cf93be03167a400e
 
 pkgname = r-jaspdescriptives
