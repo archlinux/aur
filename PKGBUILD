@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="shadowsocks-electron-bin"
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Shadowsocks GUI application made for Ubuntu/Mac/Win users and powered by Electron."
 arch=('x86_64')
 url="https://github.com/nojsja/shadowsocks-electron"
 license=('GPL3')
-options=(!strip)
-conflicts=("${pkgname%-electron-bin}")
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}" "${pkgname%-electron-bin}")
 depends=('libxkbcommon' 'gcc-libs' 'libxrandr' 'expat' 'libxdamage' 'mesa' 'libxext' 'gtk3' 'nspr' 'dbus' 'libxcb' \
     'hicolor-icon-theme' 'libx11' 'libdrm' 'cairo' 'glibc' 'libcups' 'glib2' 'alsa-lib' 'gdk-pixbuf2' 'libxcomposite' \
     'pango' 'nss' 'at-spi2-core' 'libxfixes')
