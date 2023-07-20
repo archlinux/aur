@@ -1,15 +1,16 @@
 pkgbase = gnome-metronome
 	pkgdesc = Practice music with a regular tempo
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
-	url = https://gitlab.gnome.org/aplazas/metronome
+	url = https://gitlab.gnome.org/World/metronome
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	makedepends = meson
+	makedepends = appstream-glib
 	depends = libadwaita
 	depends = gstreamer
-	source = https://gitlab.gnome.org/aplazas/metronome/-/archive/1.2.1/metronome-1.2.1.tar.gz
-	sha512sums = 92badb98c16cabe71ba676e047dbe20682b325723a80776a56d6241a12887256223cdcaf964cf0f80d0c74b4d8eae00d86218f47eef6cd7ef83d22da60517d65
+	source = https://gitlab.gnome.org/World/metronome/-/archive/1.3.0/metronome-1.3.0.tar.gz
+	b2sums = 14b0f3b6fc1d3a8a786a1878687f9185bafadbaffc8b1c8dd7d70c5230dd533f3cab9c00fe7bafa914ba5ae289534e24914ed63dd1cfbee0d992dc6d810a0bd7
 
 pkgname = gnome-metronome
