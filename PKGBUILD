@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-serialbus-static
-_qtver=6.5.1
+_qtver=6.5.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -17,7 +17,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtserialbus-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('dbff967829bf0ac75ed54fb0da4893a7a160309989d9e2da349622a72c5e157f')
+sha256sums=('f0426307cdc185547ad6331a670187d180cce4c11254d6a26aa997fe03b7cdfe')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -26,6 +26,7 @@ build() {
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
     $_arch-cmake-static -G Ninja -B build-$_arch -S $_pkgfqn \
       -DCMAKE_INSTALL_PREFIX:PATH="/usr/$_arch/static" \
+      -DCMAKE_DISABLE_FIND_PACKAGE_harfbuzz=TRUE \
       -DFEATURE_static_runtime=ON \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
