@@ -2,7 +2,7 @@
 _themename='smallscreen-raleigh-compact'
 pkgname="xfwm4-theme-${_themename}-git"
 pkgver=r4.20230720.309246b
-pkgrel=1
+pkgrel=2
 pkgdesc="An Xfwm4 theme using only the necessary screen space and trying to imitate the 'raleigh' colour theme."
 arch=('any')
 url="https://gitlab.com/dreieckli/xfwm4-theme-${_themename}"
@@ -13,7 +13,7 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=()
+optdepends=('raleigh-reloaded: For a matching GTK3 application theme.')
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
 
