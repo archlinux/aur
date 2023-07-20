@@ -1,4 +1,4 @@
-pkgbase = python-portage-language-server
+pkgbase = portage-language-server
 	pkgdesc = gentoo portage language server
 	pkgver = 0.0.2
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = python-portage-language-server
 	source = https://files.pythonhosted.org/packages/py3/p/portage_language_server/portage_language_server-0.0.2-py3-none-any.whl
 	sha256sums = 802c12a4f87e18b17bfa91013ccb6f07a3ca29dfaa062a6237518994395b40e3
 
-pkgname = python-portage-language-server
+pkgname = portage-language-server
