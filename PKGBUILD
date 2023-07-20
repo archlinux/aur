@@ -2,7 +2,7 @@
 # Contributor: jkdhn <aur@jkdhn.me>
 
 pkgname=saleae-logic2
-pkgver=2.4.7
+pkgver=2.4.9
 pkgrel=1
 pkgdesc="Debug hardware like a pro"
 arch=("x86_64")
@@ -11,13 +11,13 @@ license=("unknown")
 depends=(
 	"libxcrypt-compat"
 )
-source=("https://downloads.saleae.com/logic2/Logic-${pkgver}-master.AppImage")
+source=("https://downloads.saleae.com/logic2/Logic-${pkgver}-linux-x64.AppImage")
 conflicts=("saleae-logic" "saleae-logic-beta")
 provides=("saleae-logic" "saleae-logic-beta")
-sha256sums=('74cb7c5d62dab4b368b6153da1326a62b04635966cd0be5d5d130a3fd65e33a1')
+sha256sums=('ccce57ced16ff80edc34ca8d3c600ee62d01e39c3a00cc912f8391fad1b4dc96')
 
 build() {
-	_file="Logic-${pkgver}-master.AppImage"
+	_file="Logic-${pkgver}-linux-x64.AppImage"
 	chmod u+x "${_file}"
 	"./${_file}" --appimage-extract
 
@@ -40,7 +40,7 @@ package() {
 	rm "${pkgdir}/opt/${pkgname}/version"
 	rm -rf "${pkgdir}/usr/lib/"
 
-	install -Dm644 "${pkgdir}/opt/${pkgname}/resources/linux/99-SaleaeLogic.rules" "${pkgdir}/etc/udev/rules.d/99-SaleaeLogic.rules"
+	install -Dm644 "${pkgdir}/opt/${pkgname}/resources/linux-x64/99-SaleaeLogic.rules" "${pkgdir}/etc/udev/rules.d/99-SaleaeLogic.rules"
 
 	# Fix permissions (example: 700->755, 640->644)
 	find "${pkgdir}"   -perm "/111" -exec chmod 755 \{\} \;
