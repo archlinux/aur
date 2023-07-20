@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="chatall-bin"
-pkgver=1.36.51
+pkgver=1.37.53
 pkgrel=1
 pkgdesc="Concurrently chat with ChatGPT, Bing Chat, bard, Alpaca, Vincuna, Claude, ChatGLM, MOSS, iFlytek Spark, ERNIE and more, discover the best answers"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -15,9 +15,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_githuburl}/release
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_githuburl}/releases/download/v${pkgver}/ChatALL-${pkgver}-linux-x86_64.AppImage")
 source=("${pkgname%-bin}.sh")
 sha256sums=('283f9ab0b11bebca2fa4a46d72b9358d7bc6ba2de22de998dc672fb30e3203a8')
-sha256sums_aarch64=('658b530c2e1b48b3dbd69592b048c5db0abf1c49a37c733904d39bcbc4821096')
-sha256sums_armv7h=('658b530c2e1b48b3dbd69592b048c5db0abf1c49a37c733904d39bcbc4821096')
-sha256sums_x86_64=('b6fc39ee4e89799ff4a4115fa1a4a31bf98ed8cc9d73760b5ceb4757fc988f15')
+sha256sums_aarch64=('e4ee0edc0ad83e5f1b4b7ec8c5c441c8fb9e20d5e0788a1bf12855db66c36c05')
+sha256sums_armv7h=('e4ee0edc0ad83e5f1b4b7ec8c5c441c8fb9e20d5e0788a1bf12855db66c36c05')
+sha256sums_x86_64=('4c552522044e8ad61c9e75dccf921c53b66fd7877f2829309986004687c80842')
 prepare() {
     chmod a+x "${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
