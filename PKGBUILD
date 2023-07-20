@@ -44,6 +44,7 @@ build() {
   cd "$pkgname-$pkgver"
 
   export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+  export SWT_JAVA_HOME=${JAVA_HOME}
   ant -f $srcdir/build-swt.xml compile
   ant -f $srcdir/build-swt.xml jar
 }
