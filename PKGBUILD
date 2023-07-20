@@ -1,16 +1,16 @@
 # Maintainer: Ayatale <ayatale@qq.com>
 
 pkgname=xstop
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Just click to pause/resume x11 windows, inspired by xkill."
 url="https://github.com/Brx86/Xstop"
 arch=("x86_64")
 license=("GPL3")
-depends=("python" "xorg-xprop" "procps-ng")
+depends=("libnotify" "procps-ng" "python" "xorg-xprop")
 provides=("xstop")
 source=("xstop")
-sha256sums=('4c7ac97485fde73e6b5b4096bcae5f2b9da24e73bb20dcf71a0ab28d878ee76a')
+sha256sums=('cd4f5c78ae660d9b93ce6d882c5d0bacb6babaf84867fc85053ac2a15f8e3416')
 
 package() {
     install -Dm755 "xstop" -t "$pkgdir/usr/bin"
