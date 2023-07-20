@@ -111,11 +111,6 @@ prepare() {
   # hipcc has moved from /opt/rocm/hip/bin/ to /opt/rocm/bin/
   patch -Np1 -i "${srcdir}/rocm_configure.bzl.patch" -d tensorflow-upstream-rocm
   
-  [ -d tensorflow-upstream-opt-rocm ] && rm -rf tensorflow-upstream-opt-rocm
-  # cp may not replace files if they already exist, even if contents are different.
-  # Very confusing to make changes in -rocm and not have them show up in -opt-rocm...
-  cp -r tensorflow-upstream-rocm tensorflow-upstream-opt-rocm
-  
   if [ ! -f "/opt/rocm/bin/target.lst" ]; then
     echo WARNING: If you are building for GPUs not currently installed in your machine,
     echo \ or if you are getting random segfaults and suspect that this build is not
