@@ -40,7 +40,7 @@ depends=(
 )
 
 _dir="pointgrey_camera_driver-${pkgver}/pointgrey_camera_driver"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/pointgrey_camera_driver/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ros-drivers/pointgrey_camera_driver/archive/${pkgver}.tar.gz")
 sha256sums=('f81a2ad2260a686bdd961d129d8f980b68454e70eb257fe3fdc39d4f5fcf53ad')
 
 build() {
