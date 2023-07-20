@@ -1,7 +1,7 @@
 pkgbase = openlp-git
 	pkgdesc = Church presentation software.
 	pkgver = r17137.ff0605cb2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openlp.org/
 	install = openlp.install
 	arch = any
@@ -38,7 +38,6 @@ pkgbase = openlp-git
 	depends = python-websockets
 	depends = python-qtawesome
 	depends = python-vlc
-	depends = python-pillow<10.0
 	optdepends = libreoffice-fresh: display impress presentations
 	optdepends = python-pymupdf: display pdfs
 	optdepends = python-mysql-connector: Use a mysql/mariadb database
