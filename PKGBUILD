@@ -2,9 +2,9 @@
 # Contributor: Carlo Sala <carlosalag@protonmail.com>
 
 pkgname=surfshark-gui-bin
-pkgver=1.5.0
-pkgrel=1878
-pkgdesc="Surfshark VPN client. Keep your online activity and personal information secure. Put your privacy-conscious mind at rest and enjoy unrestricted internet."
+pkgver=1.5.1
+pkgrel=1882
+pkgdesc="Official Surfshark VPN client. Keep your online activity and personal information secure. Put your privacy-conscious mind at rest and enjoy unrestricted internet."
 url="https://surfshark.com"
 arch=('x86_64')
 license=('custom:surfshark')
@@ -14,8 +14,8 @@ provides=('surfsharkvpngui')
 conflicts=('surfshark-vpn-gui' 'surfshark-wireguard' 'surfshark-wireguard-git' 'surfshark-vpn' 'surfshark-client')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark/surfshark_1.5.0-1878_amd64.deb")
-sha512sums=('d107e09ce43db0ff9795d3a03d56e67ac6c90a887885eb01908550716357254cb96b6d073612e2b90d9e78e2bd92ade5545562f710c4ac5da4668a01b3b2cb07')
+source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark/surfshark_1.5.1-1882_amd64.deb")
+sha512sums=('fe724d1d4c4371273653a2ab664d2b5e8630f45a401e28491920bd395aefde8518035230bd80c8db99e4799bbfef9aacd04a4a70b6d60b7eb723f8269c3af9b9')
 
 package(){
 
@@ -29,6 +29,7 @@ package(){
 	rm -f "${pkgdir}/etc/init.d/surfshark2" || true
 	rmdir "${pkgdir}/etc/init.d" || true
 	
+	# Create link for surfshark executable in /bin
 	mkdir -p "${pkgdir}/usr/bin" && ln -sf "${pkgdir}/opt/Surfshark/surfshark" "${pkgdir}/usr/bin/surfshark"
 
 	chmod 4755 "${pkgdir}/opt/Surfshark/chrome-sandbox" || true
