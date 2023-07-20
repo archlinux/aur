@@ -3,12 +3,13 @@
 
 pkgname=komga
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Media server for comics/mangas/BDs with API and OPDS support'
 arch=(any)
 url=https://komga.org
 license=(MIT)
 depends=('java-runtime-headless>=17')
+optdepends=('libjxl: JPEG XL support')
 backup=(etc/${pkgname}.conf)
 install=${pkgname}.install
 source=("https://github.com/gotson/komga/releases/download/v${pkgver}/${pkgname}-${pkgver}.jar"
@@ -21,7 +22,7 @@ source=("https://github.com/gotson/komga/releases/download/v${pkgver}/${pkgname}
         "${pkgname}.tmpfiles")
 sha256sums=('fb802de687ff8daa25e1cd5e125a70fc3f610e759291cf31e200a6aaa83cf1ab'
             '0c34b357f56a8d8947e5bf153d8a02ca378611f089d8a3c371667f28c223653f'
-            '79ed4053c4775286e7c534da74bb14619f93931262234e029a64eb3838ca31f7'
+            'ea583b007a654b24e96838033ae1ce01bd66a0aacf4bda429bb8bbec1bf400ef'
             'a0265a0b8ee1bc887033830c21915939efb6872337dccd5b79edb4ca9e403c1d'
             '16bde60b72dd632304e89d3c7f032555c848a7add3ad43da6640c34338320fe1'
             'afab9337acdcd5da316bf2d1615b8baed5397372a8ba917383ba480d7f30a699'
