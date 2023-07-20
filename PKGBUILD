@@ -3,7 +3,7 @@
 
 pkgname=nona
 pkgver=2014.03.10
-pkgrel=3
+pkgrel=4
 pkgdesc="NONA: a bastard son of Pee-Wee. Phylogenetic Analysis Software"
 arch=('any')
 url="http://www.lillo.org.ar/phylogeny/Nona-PeeWee/readme.htm"
@@ -12,7 +12,9 @@ license=('custom')
 source=("http://www.lillo.org.ar/phylogeny/Nona-PeeWee/nona-linux.tar.gz")
 sha256sums=('40698b797a3d58707521dd3cea0ebdf3f80ff5c1075382f98b81860fc426de69')
 prepare() {
-	chmod +x $srcdir/nona
+	cd $srcdir
+	echo -e '#!/bin/bash\n/usr/share/nona/nona' > shell-$pkgname
+	chmod +x shell-$pkgname
 }
 package() {
 	# install dir 
@@ -20,7 +22,7 @@ package() {
 	# install them
 	install -Dm755 $srcdir/piwe.doc $pkgdir/usr/share/$pkgname/piwe.doc
 	install -Dm755 $srcdir/$pkgname $pkgdir/usr/share/$pkgname/$pkgname
+	install -Dm755 $srcdir/shell-$pkgname $pkgdir/usr/bin/$pkgname 
 	# link
 	ln -s /usr/share/$pkgname/piwe.doc $pkgdir/usr/share/doc/$pkgname/piwe.doc
-	ln -s /usr/share/$pkgname/$pkgname $pkgdir/usr/bin/$pkgname	
 }
