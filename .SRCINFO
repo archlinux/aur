@@ -1,5 +1,5 @@
 pkgbase = python-requirements-language-server
-	pkgdesc = requirements language server
+	pkgdesc = pip's requirements.txt language server
 	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/Freed-Wu/requirements-language-server

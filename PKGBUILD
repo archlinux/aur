@@ -1,9 +1,11 @@
 # shellcheck shell=bash disable=SC2034,SC2154
+# Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
+# Updated by https://github.com/Freed-Wu/requirements-language-server/blob/main/.github/workflows/main.yml
 _pkgname=requirements-language-server
 pkgname="python-$_pkgname"
 pkgver=0.0.4
 pkgrel=1
-pkgdesc="requirements language server"
+pkgdesc="pip's requirements.txt language server"
 arch=(any)
 url=https://github.com/Freed-Wu/requirements-language-server
 depends=(python-pygls python-platformdirs python-jinja pip-cache pip-tools)
