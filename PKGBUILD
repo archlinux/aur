@@ -1,7 +1,7 @@
 # Maintainer: Tobias Brox <t-arch@tobixen.no>
 pkgname=plann
 _name=${pkgname#python-}
-pkgver=0.15
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="plann is a caldav client for calendar and task management"
 url="https://github.com/tobixen/plann"
@@ -32,4 +32,4 @@ package() {
 }
 
 
-sha256sums=('9540d6aa4fe2b47e6bc1d32694d352b7c11a5c64ac16eb2a7728bbae7611d49c')
+sha256sums=('a8feb0a5254da21d2882581de264b2f41739eaaf655329a272d0ac5d18933a98')
