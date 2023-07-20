@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-lottie-static
-_qtver=6.5.1
+_qtver=6.5.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtlottie-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('10b8f8107b75314703a4d0e0f60778c30c8f41a339622bc8166eec284ac26b81')
+sha256sums=('003adc5cf0d50b32d00a09d66ba6332db22191fb0999f51e032f02a21474e89b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -27,6 +27,7 @@ build() {
     export PKG_CONFIG=/usr/bin/$_arch-pkg-config
     $_arch-cmake-static -G Ninja -B build-$_arch -S $_pkgfqn \
       -DCMAKE_INSTALL_PREFIX:PATH="/usr/$_arch/static" \
+      -DCMAKE_DISABLE_FIND_PACKAGE_harfbuzz=TRUE \
       -DFEATURE_static_runtime=ON \
       -DFEATURE_pkg_config=ON
     cmake --build build-$_arch
