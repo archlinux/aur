@@ -24,8 +24,6 @@ pkgbase = xvsdk
 	options = !strip
 	options = !emptydirs
 	source = https://download.xvisiotech.com/sdk-download/last_version/Select_Platform_Download/For%20Ubuntu/AMD64/xvsdk_3.2.0-20230516_bionic_amd64.deb
-	source = https://download.xvisiotech.com/sdk-download/last_version/Select_Platform_Download/For%20Ubuntu/99-xvisio.rules
 	md5sums = 3ba21827c688a3560cb82d138b22aaf4
-	md5sums = ea4aede17c807117e63f6d63e23c06f2
 
 pkgname = xvsdk
