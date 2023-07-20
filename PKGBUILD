@@ -1,6 +1,6 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 # Maintainer: Wu Zhenyu <wuzhenyu@ustc.edu>
-# Updated by https://github.com/Freed-Wu/autoconf-language-server/blob/main/.github/workflows/main.yml
+# Updated by https://github.com/Freed-Wu/sublime-syntax-language-server/blob/main/.github/workflows/main.yml
 pkgname=sublime-syntax-language-server
 pkgver=0.0.3
 pkgrel=1
