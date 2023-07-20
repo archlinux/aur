@@ -1,0 +1,5 @@
+jimtcl
+pkg
+src
+riscv-openocd-wch-v1.60/
+*.tar.zst

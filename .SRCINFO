@@ -1,0 +1,17 @@
+pkgbase = riscv-openocd-wch
+	pkgdesc = Debugging, in-system programming and boundary-scan testing for embedded target devices
+	pkgver = 1.60
+	pkgrel = 1
+	url = http://www.mounriver.com/
+	arch = x86_64
+	license = GPL
+	depends = libftdi-compat
+	depends = libusb-compat
+	depends = hidapi
+	depends = libudev.so
+	source = riscv-openocd-wch-v1.60::git+https://github.com/Seneral/riscv-openocd-wch#branch=riscv-wch
+	source = git+https://github.com/msteveb/jimtcl#commit=70b007b63669a709b0e8aef34a22658047815cc2
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = riscv-openocd-wch
