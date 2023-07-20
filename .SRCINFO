@@ -10,6 +10,3 @@ pkgbase = aspia-client
 	sha256sums_x86_64 = 5295342c21d099dd1f2ad09559875cb6f22b5367e85d16ec27d2d152775f9fad
 
 pkgname = aspia-client
-	depends = gtk3
-	provides = aspia-client
-	conflicts = aspia-client
