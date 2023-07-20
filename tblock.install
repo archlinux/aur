@@ -1,0 +1,33 @@
+pre_install() {
+	if [ -f /usr/bin/systemctl ]
+	then
+		systemctl disable --now tblockd || true
+	fi
+}
+
+
+post_install() {
+	if [ -f /usr/bin/systemctl ]
+	then
+		systemctl enable --now tblockd || echo "Error: failed to enable daemon"
+	fi
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	if [ -f /usr/bin/systemctl ]
+	then
+		systemctl daemon-reload
+	fi
+  	post_install
+}
+
+pre_remove() {
+  	pre_install
+  	# Optionally restore the stock hosts file
+  	#tblock -Dqn
+}
+
