@@ -1,0 +1,26 @@
+pkgbase = ros-noetic-sick-tim
+    pkgdesc = ROS - A ROS driver for the SICK TiM and the SICK MRS 1000 laser scanners
+    pkgver = 0.0.17
+    pkgrel = 1
+    url = https://wiki.ros.org/sick_tim
+    arch = i686
+    arch = x86_64
+    arch = aarch64
+    arch = armv7h
+    arch = armv6h
+    license = BSD
+    makedepends = cmake
+    makedepends = ros-build-tools
+    makedepends = ros-noetic-catkin
+    depends = libusb
+    depends = ros-noetic-roscpp
+    depends = ros-noetic-sensor-msgs
+    depends = ros-noetic-roslaunch
+    depends = ros-noetic-diagnostic-updater
+    depends = ros-noetic-dynamic-reconfigure
+    depends = ros-noetic-robot-state-publisher
+    depends = ros-noetic-xacro
+    source = ros-noetic-sick-tim-0.0.17.tar.gz::https://github.com/uos/sick_tim/archive/0.0.17.tar.gz
+    sha256sums = fd9ebe745b9361938936766ef0eddbce1e68dc902a8d76eb2e25069c15ac4f2e
+
+pkgname = ros-noetic-sick-tim
