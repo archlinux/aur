@@ -2,7 +2,7 @@
 # Contributor: Kuan-Yen Chou <kuanyenchou@gmail.com>
 
 pkgname=hyprland-nvidia-git
-pkgver=0.27.2.r7.g7091d4e5
+pkgver=0.27.2.r13.g948855a9
 pkgrel=1
 pkgdesc="A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA patch)"
 arch=(any)
@@ -72,7 +72,7 @@ prepare() {
     make fixwlr
     sed -i -e '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
     cd "$srcdir/$pkgname/subprojects/wlroots"
-    patch -Np1 < "$srcdir/$pkgname/nix/wlroots-nvidia.patch"
+    patch -Np1 < "$srcdir/$pkgname/nix/patches/wlroots-nvidia.patch"
 }
 
 build() {
