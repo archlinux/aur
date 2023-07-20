@@ -1,7 +1,7 @@
 pkgbase = swt
 	pkgdesc = An open source widget toolkit for Java
 	pkgver = 4.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eclipse.org/swt/
 	arch = x86_64
 	license = EPL
