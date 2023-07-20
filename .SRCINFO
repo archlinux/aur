@@ -1,6 +1,6 @@
 pkgbase = plann-git
 	pkgdesc = plann is a caldav client for calendar and task management
-	pkgver = r332.91dc51b
+	pkgver = r356.b04fd62
 	pkgrel = 1
 	url = https://github.com/tobixen/plann
 	arch = any

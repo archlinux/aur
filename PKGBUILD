@@ -1,7 +1,7 @@
 # Maintainer: A Frederick Christensen <aur@ivories.org>
 pkgname="plann-git"
 _pkgname="plann"
-pkgver=r332.91dc51b
+pkgver=r356.b04fd62
 pkgrel=1
 pkgdesc="plann is a caldav client for calendar and task management"
 url="https://github.com/tobixen/plann"
@@ -38,7 +38,6 @@ build() {
 
 check() {
   cd "${pkgname}"
-  rm tests/test_functional.py # This test does not correctly function as of 2023-07-10
   pytest
 }
 
