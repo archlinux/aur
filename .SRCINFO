@@ -1,6 +1,6 @@
 pkgbase = android-aarch64-qt6-quicktimeline
 	pkgdesc = Qt module for keyframe-based timeline construction (android)
-	pkgver = 6.5.1
+	pkgver = 6.5.2
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = android-aarch64-qt6-quicktimeline
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.5/6.5.1/submodules/qtquicktimeline-everywhere-src-6.5.1.tar.xz
-	sha256sums = 1079dba276c51b9bbc9bfd90014005eb94339a6ce18a4f3fb1b6f4724f4ad551
+	source = https://download.qt.io/official_releases/qt/6.5/6.5.2/submodules/qtquicktimeline-everywhere-src-6.5.2.tar.xz
+	sha256sums = c945ae905dc1542967c7f9bea826022235bc179c2ed59142c029336c03f015ba
 
 pkgname = android-aarch64-qt6-quicktimeline
