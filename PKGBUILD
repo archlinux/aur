@@ -1,5 +1,5 @@
 # Maintainer: Matt Harrison <matt@harrison.us.com>
-# Maintained at: https://github.com/matt-h/aur-pkgbuilds
+# Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname='ollama'
 pkgdesc='Create, run, and share large language models (LLMs).'
@@ -26,7 +26,6 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -o build .
 }
-
 
 check() {
   cd "$pkgname-$pkgver"
