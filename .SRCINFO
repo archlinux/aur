@@ -1,4 +1,4 @@
-pkgbase = python-termux-language-server
+pkgbase = termux-language-server
 	pkgdesc = termux's build.sh language server
 	pkgver = 0.0.2
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = python-termux-language-server
 	source = https://files.pythonhosted.org/packages/py3/t/termux_language_server/termux_language_server-0.0.2-py3-none-any.whl
 	sha256sums = a3569c2f1589710cb23ecdb9dfe382bb68be38008ce4fb46e37769015d58dbb6
 
-pkgname = python-termux-language-server
+pkgname = termux-language-server
