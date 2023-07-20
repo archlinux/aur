@@ -1,0 +1,3 @@
+post_remove() {
+	snap remove xvsdk-viewer
+}

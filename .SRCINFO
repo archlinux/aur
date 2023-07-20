@@ -1,0 +1,13 @@
+pkgbase = xvsdk-viewer
+	pkgdesc = Xvisio Viewer for SeerSense SLAM cameras via Snap.
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = http://developer.xvisio.org
+	install = xvsdk-viewer.install
+	arch = x86_64
+	groups = 
+	license = PROPRIETARY
+	source = https://download.xvisiotech.com/sdk-download/last_version/Select_Platform_Download/For%20Ubuntu/AMD64/xvsdk_3.2.0-20230516_amd64.snap
+	md5sums = 18e1668c75aeaeb2629ffcad9f151baa
+
+pkgname = xvsdk-viewer
