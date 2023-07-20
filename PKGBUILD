@@ -33,7 +33,7 @@ depends=(
 )
 
 _dir="sick_tim-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/uos/sick_tim/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/uos/sick_tim/archive/${pkgver}.tar.gz")
 sha256sums=('fd9ebe745b9361938936766ef0eddbce1e68dc902a8d76eb2e25069c15ac4f2e')
 
 build() {
