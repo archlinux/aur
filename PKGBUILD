@@ -1,7 +1,7 @@
 # Maintainer: Gregory G Danielson III <gregdan3@protonmail.com>
 
 pkgname=ttf-unifont-csur
-pkgver=15.0.01
+pkgver=15.0.06
 pkgrel=1
 pkgdesc="TrueType part of the GNU Unifont containing Michael Everson's ConScript Unicode Registry (CSUR) Private Use Area (PUA) glyphs"
 url="http://unifoundry.com/unifont.html"
@@ -12,7 +12,7 @@ url=https://unifoundry.com/unifont/index.html
 source=(
 	"http://unifoundry.com/pub/unifont/unifont-$pkgver/font-builds/unifont_csur-$pkgver.ttf"{,.sig}
 )
-sha512sums=('d53ebbbb2ce34031d944c50c07fd1c2fc7d1b762d4396a00f3cf62514bd9adc3d7fafe26305b6c080a93e928db657a16aa472a75982bee76a2882f1a593a81b6'
+sha512sums=('985e32f804e1101e1ca735460a8187646566e70f5691f59f8ede0a2744c9e81e90cbe67ebe2646be6cc00f71d94ff6d9ab8bd8358476b2b4dc8f51b39e3ed967'
             'SKIP')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <com dot unifoundry at unifoundry>
 
