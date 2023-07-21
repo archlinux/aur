@@ -1,7 +1,7 @@
 # Maintainer: mcarni <michele DOT carnaghi AT googlemail DOT com>
 
 pkgname=kodi-addon-game-libretro-prboom
-pkgver=2.5.0.40
+pkgver=2.5.0.44
 _codename=Nexus
 pkgrel=1
 pkgdesc="This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons"
@@ -12,7 +12,7 @@ groups=('kodi-addons' 'kodi-addons-game')
 makedepends=('cmake' 'kodi-dev' 'kodi-addon-game-libretro' 'libretro-prboom-git')
 options=(!lto debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro.prboom/archive/refs/tags/$pkgver-$_codename.tar.gz")
-sha512sums=('10f24ac3a87b9f903f70854dfa57de8a08af67e7e415709bd2ac5ee7341b9fc18f06f40f5376cfe2c03b5fcd10ca159e35104b1fa6363ed2ae73737d7c4ac6ab')
+sha512sums=('c81e46e99e0b5a1e8984a085258e79e848b214d332f3e6ba0ade45f1fefae77f92050e368154a7d1183d4804eec1e7aed8b8dd6ec0f3e153a51440294d182e8c')
 
 build() {
     cd "game.libretro.prboom-$pkgver-$_codename"
