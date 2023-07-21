@@ -1,4 +1,4 @@
-# Maintainer: LeSnake04 <dev.lesnake@posteo.de>
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=utilso-bin
 pkgver=4.4.0
 pkgrel=1
