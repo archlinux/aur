@@ -6,7 +6,7 @@ _commit=c03528a75cb317aa19a8e65bbe5c82416ee16594
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.0
-pkgrel=3
+pkgrel=4
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -83,33 +83,6 @@ provides=('proton')
 install=${pkgname}.install
 source=(
     proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=${_commit}
-    wine-valve::git+https://github.com/ValveSoftware/wine.git
-    dxvk::git+https://github.com/doitsujin/dxvk.git
-    openvr::git+https://github.com/ValveSoftware/openvr.git
-    liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
-    gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
-    gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
-    gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
-    gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
-    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
-    OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
-    dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
-    vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
-    Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
-    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
-    Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
-    glslang::git+https://github.com/KhronosGroup/glslang.git
-    gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
-    ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
-    dav1d::git+https://code.videolan.org/videolan/dav1d.git
-    gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
-    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
-    graphene::git+https://github.com/ebassi/graphene.git
-    libdisplay-info-dxvk::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
-    wine-staging::git+https://github.com/wine-staging/wine-staging.git
-    protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
-    gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
-    gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     0001-AUR-Pkgbuild-changes.patch
@@ -171,69 +144,7 @@ prepare() {
     mv "$srcdir"/wine-gecko-${_geckover}-x86{,_64}.tar.xz contrib/
     mv "$srcdir"/wine-mono-${_monover}-x86.tar.xz contrib/
 
-    _submodules=(
-        wine-valve::wine
-        dxvk
-        openvr
-        liberation-fonts::fonts/liberation-fonts
-        gstreamer
-        gst-plugins-base
-        gst-plugins-good
-        gst-orc
-        vkd3d-proton
-        OpenXR-SDK
-        dxvk-nvapi
-        vkd3d-valve::vkd3d
-        Vulkan-Headers
-        SPIRV-Headers
-        Vulkan-Loader
-        glslang
-        gst-libav
-        ffmpeg::FFmpeg
-        dav1d
-        gst-plugins-rs
-        graphene
-        wine-staging
-        protonfixes-gloriouseggroll::protonfixes
-        gst-plugins-bad
-        gst-plugins-ugly
-    )
-
-    for submodule in "${_submodules[@]}"; do
-        git submodule init "${submodule#*::}"
-        git submodule set-url "${submodule#*::}" "$srcdir"/"${submodule%::*}"
-        git -c protocol.file.allow=always submodule update "${submodule#*::}"
-    done
-
-    pushd dxvk
-        git submodule init include/{vulkan,spirv}
-        git submodule set-url include/vulkan "$srcdir/Vulkan-Headers"
-        git submodule set-url include/spirv "$srcdir/SPIRV-Headers"
-        git -c protocol.file.allow=always submodule update include/{vulkan,spirv}
-
-        git submodule init subprojects/libdisplay-info
-        git submodule set-url subprojects/libdisplay-info "$srcdir/libdisplay-info-dxvk"
-        git -c protocol.file.allow=always submodule update subprojects/libdisplay-info
-    popd
-
-    pushd vkd3d-proton
-        for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
-            git submodule init "${submodule}"
-            git submodule set-url "${submodule}" "$srcdir"/"${submodule#*/}"
-            git -c protocol.file.allow=always submodule update "${submodule}"
-        done
-        pushd subprojects/dxil-spirv
-            git submodule init third_party/spirv-headers
-            git submodule set-url third_party/spirv-headers "$srcdir"/SPIRV-Headers
-            git -c protocol.file.allow=always submodule update third_party/spirv-headers
-        popd
-    popd
-
-    pushd dxvk-nvapi
-        git submodule init external/Vulkan-Headers
-        git submodule set-url external/Vulkan-Headers "$srcdir"/Vulkan-Headers
-        git -c protocol.file.allow=always submodule update external/Vulkan-Headers
-    popd
+    git -c protocol.file.allow=always submodule update --init --filter=tree:0 --recursive
 
     for submodule in gst-plugins-rs media-converter; do
     pushd $submodule
@@ -251,13 +162,6 @@ prepare() {
     patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
-
-    # Remove repos from srcdir to save space
-    for submodule in "${_submodules[@]}"; do
-        rm -rf "$srcdir"/"${submodule%::*}"
-    done
-    rm -rf "$srcdir"/dxil-spirv
-    rm -rf "$srcdir"/libdisplay-info-dxvk
 }
 
 build() {
@@ -350,33 +254,6 @@ package() {
 }
 
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '14c7d76780b79dc62d8ed9d1759e7adcfa332bb2406e2e694dee7b2128cc7a77'
