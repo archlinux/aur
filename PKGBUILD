@@ -1,27 +1,25 @@
-# Maintainer: Cameron Katri <katri.cameron@gmail.com>
+# Maintainer: Procursus Team <team@procurs.us>
+# Maintainer: sunchipnacho, Procursus Team
+# Contributor: Keto, Procursus Team
+# Contributor: Cameron Katri, Procursus Team
 
 pkgname=ldid
-pkgver=2.1.5procursus2
-_pkgver=2.1.5-procursus2
+pkgver=2.1.5procursus7
+_pkgver=2.1.5-procursus7
 pkgrel=1
-pkgdesc="a tool used for ad-hoc codesigning Darwin binaries - Procursus fork"
+pkgdesc="Put real or fake signatures in Darwin binaries - Procursus fork"
 provides=('ldid' 'ldid2')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/ProcursusTeam/ldid"
 license=('AGPL')
-depends=('openssl' 'libplist' 'libxml2')
+depends=('openssl' 'libplist')
 source=("https://github.com/ProcursusTeam/ldid/archive/v$_pkgver.tar.gz")
-b2sums=('3651f04ed54bebae470615a15d4c8945ea57d2f4bffd57d63ce6971945009c958713d51c51a059c06b58295a23c169e558d596a881c3aaad533102bca66b0978')
+b2sums=('e30db705bb5cc8d4177725f98184b25407df1f338984ccfe9a6874e85077443b5b78e0c2a90c48f0b50af914630be8b759ad6efcd067208b69906883b821c54b')
 
 build() {
-	cd ldid-$_pkgver
-	cc ${CFLAGS} -I. -c -o lookup2.o lookup2.c
-	c++ ${CXXFLAGS} -DLDID_VERSION=\"2.1.5-procursus2\" -std=c++11 -o ldid lookup2.o ldid.cpp -I. -lcrypto -lplist-2.0 -lxml2
+	make -C ldid-$_pkgver CXXFLAGS="${CXXFLAGS}"
 }
 
 package() {
-	cd ldid-$_pkgver
-	mkdir -p ${pkgdir}/usr/bin/
-	install -Dm755 ldid ${pkgdir}/usr/bin/
-	ln -s ldid ${pkgdir}/usr/bin/ldid2
+	make -C ldid-$_pkgver install DESTDIR="$pkgdir" PREFIX="/usr"
 }

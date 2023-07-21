@@ -1,16 +1,16 @@
 pkgbase = ldid
-	pkgdesc = a tool used for ad-hoc codesigning Darwin binaries - Procursus fork
-	pkgver = 2.1.5procursus2
+	pkgdesc = Put real or fake signatures in Darwin binaries - Procursus fork
+	pkgver = 2.1.5procursus7
 	pkgrel = 1
 	url = https://github.com/ProcursusTeam/ldid
 	arch = x86_64
+	arch = aarch64
 	license = AGPL
 	depends = openssl
 	depends = libplist
-	depends = libxml2
 	provides = ldid
 	provides = ldid2
-	source = https://github.com/ProcursusTeam/ldid/archive/v2.1.5-procursus2.tar.gz
-	b2sums = 3651f04ed54bebae470615a15d4c8945ea57d2f4bffd57d63ce6971945009c958713d51c51a059c06b58295a23c169e558d596a881c3aaad533102bca66b0978
+	source = https://github.com/ProcursusTeam/ldid/archive/v2.1.5-procursus7.tar.gz
+	b2sums = e30db705bb5cc8d4177725f98184b25407df1f338984ccfe9a6874e85077443b5b78e0c2a90c48f0b50af914630be8b759ad6efcd067208b69906883b821c54b
 
 pkgname = ldid
