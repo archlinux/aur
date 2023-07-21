@@ -1,21 +1,24 @@
 pkgbase = waydroid-settings-git
-	pkgdesc = A GTK4 app to control Waydroid settings
-	pkgver = r85.bac6cd8
-	pkgrel = 4
-	url = https://github.com/axel358/Waydroid-Settings/tree/gtk4-port
+	pkgdesc = GTK app written in Python to control Waydroid settings
+	pkgver = r105.61187ec
+	pkgrel = 1
+	url = https://github.com/axel358/Waydroid-Settings
 	arch = any
-	makedepends = blueprint-compiler
-	makedepends = meson
 	makedepends = git
-	depends = vte4
-	depends = waydroid
-	depends = webkit2gtk-5.0
-	depends = libadwaita
-	depends = polkit
-	depends = python-gobject
 	provides = waydroid-settings
 	conflicts = waydroid-settings
-	source = git+https://github.com/axel358/Waydroid-Settings.git#branch=gtk4-port
+	source = git+https://github.com/axel358/Waydroid-Settings.git#branch=main
+	source = quackdoc_scripts::git+https://github.com/Quackdoc/waydroid-scripts.git
+	source = git+https://github.com/electrikjesus/waydroid-10-11-switch-script.git
+	source = git+https://github.com/electrikjesus/wd-scripts.git
+	b2sums = SKIP
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = waydroid-settings-git
+	depends = waydroid
+	depends = polkit
+	depends = gtk3
+	depends = vte3
+	depends = webkit2gtk
