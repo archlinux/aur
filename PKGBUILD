@@ -2,7 +2,7 @@
 # @Author: timochan
 # @Date: 2023-06-24 17:09:36
  # @LastEditors: timochan
- # @LastEditTime: 2023-07-18 16:26:25
+ # @LastEditTime: 2023-07-21 18:27:24
  # @FilePath: /yakit-appimage/PKGBUILD
 ###
 # Based off of: https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
@@ -13,9 +13,9 @@ _Pkgname=Yakit
 _disname=yakit
 major_version=1
 minor_version=2
-patch_version=2
-sp_version='-sp2'
-_sp_version='_sp2'
+patch_version=3
+sp_version=''
+_sp_version=''
 
 pkgname="${_pkgname}"-appimage
 pkgver="${major_version}.${minor_version}.${patch_version}${_sp_version}"
@@ -30,7 +30,7 @@ provides=('yakit')
 
 
 source_x86_64=("${_Pkgname}-${major_version}.${minor_version}.${patch_version}${sp_version}-linux-amd64.AppImage::https://github.com/yaklang/yakit/releases/download/v${major_version}.${minor_version}.${patch_version}${sp_version}/${_Pkgname}-${major_version}.${minor_version}.${patch_version}${sp_version}-linux-amd64.AppImage")
-sha256sums_x86_64=('9ac2dcf551c4fe82a64a42d2cff994eec5793210f8c15dc1cea0f96ac2470b8f')
+sha256sums_x86_64=('cf79bf4320c5884c25e4885602897ade46631460dd79208e403002b4b31132cf')
 
 _appimage="${_Pkgname}-${major_version}.${minor_version}.${patch_version}${sp_version}-linux-amd64.AppImage"
 noextract=("${_appimage}")
