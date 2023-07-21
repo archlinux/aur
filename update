@@ -1,0 +1,25 @@
+#!/bin/sh
+# update -- update package to new version
+# $1 - new version number
+
+if [ -z "$1" ]
+then
+	echo "fatal: need new version number"
+	exit 1
+fi
+
+if (echo "$1" | grep -vE "[0-9]+\.[0-9]+(\.[0-9]+)?")
+then
+	echo "fatal: invalid version number"
+	exit 1
+fi
+
+sed -i "/^pkgver=/c\\pkgver=$1" PKGBUILD
+
+sums=$(makepkg --geninteg || echo "FAIL")
+[ "$sums" = "FAIL" ] && exit 2
+
+sed -i "/^md5sums=/c\\$sums" PKGBUILD
+
+makepkg --printsrcinfo > .SRCINFO || exit 2
+makepkg --clean --force || exit 2

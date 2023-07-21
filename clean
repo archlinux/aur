@@ -1,0 +1,4 @@
+#!/bin/sh
+# clean -- remove all built files
+
+rm -rf src/ pkg/ *.tgz *.zst
