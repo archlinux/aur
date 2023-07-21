@@ -1,27 +1,26 @@
-# Maintainer: Marc Plano-Lesay <marc.planolesay@gmail.com>
+# Maintainer: Letu Ren <fantasquex@gmail.com>
+# Contributor: Marc Plano-Lesay <marc.planolesay@gmail.com>
 # Contributor: Xiang Gao <qasdfgtyuiop at gmail dot com>
 
 pkgname=bazel-buildtools
-pkgver=5.1.0
+pkgver=6.1.2
 pkgrel=1
+pkgdesc="A bazel BUILD file formatter and editor"
 arch=('x86_64')
 url='https://github.com/bazelbuild/buildtools'
 license=('Apache')
-pkgdesc="Developer tools for working with Google's bazel buildtool."
-makedepends=("bazel" "git")
-depends=("java-runtime=11")
+makedepends=("bazel")
 
-source=("$url/archive/$pkgver.tar.gz")
-sha256sums=("e3bb0dc8b0274ea1aca75f1f8c0c835adbe589708ea89bf698069d0790701ea3")
+source=("bazel-buildtools-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('977a0bd4593c8d4c8f45e056d181c35e48aa01ad4f8090bdb84f78dca42f47dc')
 
 build() {
-  cd buildtools-$pkgver
-  PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build //buildifier //buildozer //unused_deps
+  cd $srcdir/buildtools-$pkgver
+  bazel build //buildifier //buildozer //unused_deps
 }
 
 package() {
-  cd buildtools-$pkgver
-  install -d "$pkgdir"/usr/bin
-  install -Dm755 bazel-bin/buildifier/*/buildifier bazel-bin/buildozer/*/buildozer bazel-bin/unused_deps/*/unused_deps $pkgdir/usr/bin/
+  cd $srcdir/buildtools-$pkgver
+  install -Dm755 -t $pkgdir/usr/bin ./bazel-bin/buildifier/buildifier_/buildifier ./bazel-bin/buildozer/buildozer_/buildozer ./bazel-bin/unused_deps/unused_deps_/unused_deps
 }
 
