@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron25
+_ASAR="/opt/eagle-animation/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron23 /opt/eagle-animation/app.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron23 --no-sandbox /opt/eagle-animation/app.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
