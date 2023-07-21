@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="tockler-appimage"
-pkgver=3.21.12
-pkgrel=3
+pkgver=3.21.18
+pkgrel=1
 pkgdesc="An application that tracks your time by monitoring your active window title and idle time."
 arch=('x86_64')
 url="https://tockler.io/"
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-appimage}")
 depends=('zlib' 'hicolor-icon-theme' 'glibc')
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Tockler-${pkgver}.AppImage")
-sha256sums=('78770582191e5d96ac4ac20f6629ce2c8bc6a23aab5cff554e301ce2a7dc9eca')
+sha256sums=('0f9702f1ca0e390825171d3bdbbdf495e1dcc787c50531f39969ece1f3e656df')
 prepare() {
     chmod a+x "${pkgname%-appimage}-${pkgver}.AppImage"
     "./${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
