@@ -1,22 +1,27 @@
 # Maintainer: Jesus Alvarez <jeezusjr@gmail.com>
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
-_srcname=Odin
+# NOTICE: THIS PACKAGE DOES NOT BUILD WITH AURUTILS AND CONTAINERS!
+# NOTICE: The CXX env var does not propogate to the 'odin run' used by 'build_odin.sh' and results in build failure!
 
+# NOTICE: Use makepkg outside of a container!
+pkgver=dev_2023_07
+# NOTICE: Use makepkg outside of a container!
+
+_srcname=Odin
 pkgname=odin
-pkgver=dev_2023_05
 pkgver_actual=${pkgver//_/-}
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=('x86_64')
 url="https://odin-lang.org/"
 license=('BSD-2-Clause')
-depends=('llvm14' 'clang14')
+depends=('llvm14' 'clang14' 'which')
 makedepends=('git')
 provides=('odin')
 conflicts=('odin')
 source=("https://github.com/odin-lang/Odin/archive/refs/tags/${pkgver_actual}.tar.gz")
-sha256sums=('4c4b2da50ae672f2a5c55335cf1752b3eb7ccc1a0c85f0d9651dbe1bbc5717f2')
+sha256sums=('e32043fa873274e67254c890c30b8e1a538f9934c6482bd4e3bf81c5078e4f08')
 
 build() {
   cd "${srcdir}/Odin-${pkgver_actual}/"
