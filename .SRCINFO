@@ -1,0 +1,11 @@
+pkgbase = keyviz-bin
+	pkgdesc = A free and open-source tool to visualize your keystrokes keyboard in real-time (Official GNU/Linux build, binary)
+	pkgver = 2.0.0a
+	pkgrel = 1
+	url = https://github.com/mulaRahul/keyviz
+	arch = x86_64
+	license = GPL
+	source = https://github.com/mulaRahul/keyviz/releases/download/v2.0.0a/keyviz_v2.0.0a_linux_x64.zip
+	md5sums = cd681bebf246bcf387c1aa525d9fcf76
+
+pkgname = keyviz-bin
