@@ -1,6 +1,5 @@
 pkgbase = libgentl
     pkgdesc = FLIR GenTL producer interface that enables the user to enumerate, communicate and stream from FLIR GigE Vision and USB3 Vision devices in a generic way independent from the underlying transport technology. This package contains shared libraries.
-    pkgname = libgentl
     pkgver = 3.1.0.79
     pkgrel = 1
     arch = x86_64
