@@ -2,34 +2,28 @@
 # Maintainer: Blacktop <https://github.com/blacktop>
 
 pkgname='ipsw-bin'
-pkgver=3.1.369
+pkgver=3.1.370
 pkgrel=1
 pkgdesc='iOS/macOS Research Swiss Army Knife'
 url='https://github.com/blacktop/ipsw'
-arch=('aarch64' 'aarch64' 'x86_64' 'x86_64')
+arch=('aarch64' 'x86_64')
 license=('MIT')
 provides=('ipsw')
 conflicts=('ipsw')
-backup=('/etc/ipsw.conf')
+backup=('etc/ipsw.conf')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.369/ipsw_3.1.369_linux_arm64.tar.gz")
-sha256sums_aarch64=('10ce6a9cd6487e4a206465cdc799ce5c7ffb2459108a61f1022d1b00e117782c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.370/ipsw_3.1.370_linux_arm64.tar.gz")
+sha256sums_aarch64=('6ad78df25a4570b1d7a28716ede80cef14f48307a65fa0abcd567eb8ff004fb0')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.369/ipswd_3.1.369_linux_arm64.tar.gz")
-sha256sums_aarch64=('9232c97f980b5ea53e96b655e404df2a9b2329bcaf49afb58a8f7bb59c130785')
-
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.369/ipsw_3.1.369_linux_x86_64.tar.gz")
-sha256sums_x86_64=('f182eaa0d7cce5a96079a1b5a485ea8826f03d0b38385e2916fe4a483a8d3b12')
-
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.369/ipswd_3.1.369_linux_x86_64.tar.gz")
-sha256sums_x86_64=('82a46e11c2d17026599c619a7e1fa327fd82c1cd2a0c9fa96172062534b26f63')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blacktop/ipsw/releases/download/v3.1.370/ipsw_3.1.370_linux_x86_64.tar.gz")
+sha256sums_x86_64=('c6c608fbf3cc9170a566fb90491dbf18c2773f78d85760b0ee6d3b31f544ec1d')
 
 package() {
   # bin
   install -Dm755 "./ipsw" "${pkgdir}/usr/bin/ipsw"
 
   # license
-  install -Dm644 "./LICENSE.md" "${pkgdir}/usr/share/licenses/ipsw/LICENSE"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/ipsw/LICENSE"
 
   # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
