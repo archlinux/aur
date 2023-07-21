@@ -1,5 +1,5 @@
 # Maintainer :		ethan_v2 $(tr +- .@ <<<'<ethan-ethanjmarshall+co+uk>')
-# Upstream :		ethanv2 <https://github.com/ethanv2/podbit/>
+# Upstream :		ejv2 <https://github.com/ethanv2/podbit/>
 
 pkgname=podbit
 pkgver=3.0
@@ -7,7 +7,7 @@ pkgrel=1
 
 pkgdesc='Podboat Improved: A podcast client for your terminal'
 arch=('any')
-url="https://github.com/ethanv2/$pkgname"
+url="https://github.com/ejv2/$pkgname"
 license=('GPL3')
 
 depends=('mpv' 'ncurses')
