@@ -3,17 +3,16 @@
 # shellcheck disable=all
 pkgname=phanpy-tauri
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Phanpy Mastodon web client, now as a Tauri app!"
 arch=(x86_64)
 url="https://github.com/StandingPadAnimations/phanpy-tauri/tree/production"
 license=('MIT')
 depends=(webkit2gtk gtk3)
-source=('https://github.com/StandingPadAnimations/phanpy-tauri/releases/download/0.1.0/phanpy-tauri.tar.gz'
+source=('https://github.com/StandingPadAnimations/phanpy-tauri/releases/download/v0.1.1/phanpy-tauri-0.1.1.tar.gz'
         'multiimage-fix.patch')
-sha256sums=('f03d1226c118b8cb49bb03d21cfbb07a0774945527d8572daccf65fde884579a'
+sha256sums=('abab57c883801879e075295e418675a7061ba36fe4c42725b862e98cf77033d1'
             'a483c50fa26d462f6797e3058182dafeda8ded92c4cf35c6b1bec6e2c9165211')
-
 package() {
   cd "$srcdir"
   bsdtar -xf phanpy-tauri.tar.gz -C "$pkgdir"
