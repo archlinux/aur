@@ -3,8 +3,8 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gotosocial
-pkgver=0.9.0
-pkgrel=2
+pkgver=0.10.0
+pkgrel=1
 pkgdesc='ActivityPub social network server written in Golang'
 arch=('x86_64')
 url='https://gotosocial.org'
@@ -36,7 +36,7 @@ backup=(
   'etc/gotosocial/template/status.tmpl'
   'etc/gotosocial/template/thread.tmpl'
 )
-_commit='282be6f26dd4dfb57c3a21b92b756c40c05b2e6c'
+_commit='89ee9d50047bd5b3ab1bd3c140a8c97d26050094'
 source=(
   "$pkgname::git+https://github.com/superseriousbusiness/gotosocial#commit=$_commit"
   'sysusers.conf'
