@@ -6,7 +6,7 @@ _commit=c03528a75cb317aa19a8e65bbe5c82416ee16594
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=8.0.0
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -251,9 +251,6 @@ prepare() {
     patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
-
-    # Remove symstore to skip the building steps
-    rm symstore
 
     # Remove repos from srcdir to save space
     for submodule in "${_submodules[@]}"; do
