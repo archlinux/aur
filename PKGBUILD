@@ -2,19 +2,19 @@
 pkgname="uyou-todo-bin"
 _pkgname="uyoutodo"
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a todo list with electron"
 arch=('x86_64')
 url="https://github.com/tonylu110/uyou-todo-electron"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
-depends=('electron')
+depends=('bash' 'electron25')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/uyou.ToDo-${pkgver}.AppImage"
     "https://raw.githubusercontent.com/tonylu110/uyou-todo-electron/main/LICENSE"
     "${pkgname%-bin}.sh")
 sha256sums=('ec7e8f698c2d58e246d6880219bb03fa45b66959f1181698ab9650ee38925c2a'
             '39db5a38eec57377569ab296b6a804062b8e7a72908db228ae1d6d91bcbb61d3'
-            '31f38a4af41338c949ec584b3a3ebff244d67aa173697335eedf4fdc30cfe8de')
+            'ddb7b6ad21e91e6a21442d9c4528048e2f26f495d57418e299443448d187cf89')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
