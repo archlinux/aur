@@ -1,3 +1,11 @@
-# rule to disable write cache for usb storage
+#
+# rule to disable write cache for usb storage that supports write-cache command
 # requires hdparm to be installed
 ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/hdparm -W 0 /dev/%k"
+#
+# the following rules is introduced with kernel 6.2
+# https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-strict-limit
+# https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-ratio
+# https://docs.kernel.org/admin-guide/abi-testing.html#abi-sys-class-bdi-bdi-max-bytes
+ACTION=="add|change", KERNEL=="sd[a-z]", ENV{ID_USB_TYPE}=="disk", RUN+="/usr/bin/echo 1 > /sys/block/%k/bdi/strict_limit",  RUN+="/usr/bin/echo 50 > /sys/block/%k/bdi/max_ratio", RUN+="/usr/bin/echo 16777216 > /sys/block/%k/bdi/max_bytes"
+
