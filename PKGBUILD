@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 # Contributor: rpkak <rpkak@users.noreply.github.com>
 pkgname=vulkan-memory-allocator
-pkgver=3.0.1.r103.g33067f6
+pkgver=3.0.1.r105.g6eb62e1
 pkgrel=1
 pkgdesc="Easy to integrate Vulkan memory allocation library"
 arch=('any')
@@ -10,19 +10,17 @@ license=('MIT')
 groups=('vulkan-devel')
 depends=('vulkan-headers')
 makedepends=('cmake' 'doxygen' 'git')
-_commit=33067f6b4f735db97c97660e46620266eebcf7de
+_commit=6eb62e1515072827db992c2befd80b71b2d04329
 source=("$pkgname::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git#commit=$_commit")
 b2sums=('SKIP')
 
 pkgver() {
 	cd $pkgname
-	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd $pkgname
-	rm -r docs/html
-	sed -i "/doc_doxygen/i install(DIRECTORY docs/ DESTINATION share/doc/$pkgname)" CMakeLists.txt
+	rm -r $pkgname/docs/html
 }
 
 build() {
