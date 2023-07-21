@@ -6,7 +6,7 @@ _commit=
 pkgver=8.0.3.3  # pkgver=${_srctag//-/.}
 _geckover=2.47.3
 _monover=7.4.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -141,6 +141,7 @@ prepare() {
     mv "$srcdir"/wine-gecko-${_geckover}-x86{,_64}.tar.xz contrib/
     mv "$srcdir"/wine-mono-${_monover}-x86.tar.xz contrib/
 
+    git remote set-url origin https://github.com/ValveSoftware/Proton.git
     git -c protocol.file.allow=always submodule update --init --filter=tree:0 --recursive
 
     for rustlib in gst-plugins-rs media-converter; do
