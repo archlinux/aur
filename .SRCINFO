@@ -1,7 +1,7 @@
 pkgbase = compressonator-cli-bin
 	pkgdesc = CLI for GPU texture compression, decompression, format transcoding, and more
 	pkgver = 4.4.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GPUOpen-Tools/compressonator
 	arch = x86_64
 	license = MIT
