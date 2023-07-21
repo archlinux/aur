@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-game-libretro-2048
 	pkgdesc = This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons
-	pkgver = 1.0.0.134
+	pkgver = 1.0.0.137
 	pkgrel = 1
 	url = https://github.com/kodi-game/game.libretro.2048
 	arch = aarch64
@@ -14,8 +14,8 @@ pkgbase = kodi-addon-game-libretro-2048
 	makedepends = libretro-2048
 	options = !lto
 	options = debug
-	source = kodi-addon-game-libretro-2048-1.0.0.134.tar.gz::https://github.com/kodi-game/game.libretro.2048/archive/refs/tags/1.0.0.134-Nexus.tar.gz
-	sha512sums = 01a97ba563d0531c54d4faeebfd0a1218e0f8d6ac521608a96651f119fe1b4ef1b514f7de26059d9cb5916c0bceb91e5a4b26087a0e40bdd7bf932a06d616dec
+	source = kodi-addon-game-libretro-2048-1.0.0.137.tar.gz::https://github.com/kodi-game/game.libretro.2048/archive/refs/tags/1.0.0.137-Nexus.tar.gz
+	sha512sums = 36bdac2433e8237b45b6c63b1e247ae6be4758c9469ae9226f7ada1320b501e98b7578963bf45c78b553cdd185ced3e8fa5ee2ed321d71765472fba38b56224e
 
 pkgname = kodi-addon-game-libretro-2048
 	depends = kodi-addon-game-libretro
