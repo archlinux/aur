@@ -141,6 +141,7 @@ prepare() {
     mv "$srcdir"/wine-gecko-${_geckover}-x86{,_64}.tar.xz contrib/
     mv "$srcdir"/wine-mono-${_monover}-x86.tar.xz contrib/
 
+    # Explicitly set origin URL for submodules using relative paths
     git remote set-url origin https://github.com/ValveSoftware/Proton.git
     git -c protocol.file.allow=always submodule update --init --filter=tree:0 --recursive
 
