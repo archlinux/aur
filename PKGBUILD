@@ -2,13 +2,13 @@
 
 pkgname=python-gbinder
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings for libgbinder"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/erfanoabdi/gbinder-python"
 license=('GPL')
 depends=('libgbinder')
-makedepends=('git' 'python-setuptools' 'cython')
+makedepends=('git' 'python-setuptools' 'cython0')
 _commit="423dc366561c82515f4f2f46017535e7d81ce5b1"
 source=(${pkgname}::git+https://github.com/erfanoabdi/gbinder-python.git#commit=${_commit})
 sha512sums=('SKIP')
