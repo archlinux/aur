@@ -1,0 +1,48 @@
+From 31e104c3a9ca97038e09d3a4549fe2b8c8df36e8 Mon Sep 17 00:00:00 2001
+From: Chris PeBenito <chpebeni@linux.microsoft.com>
+Date: Mon, 17 Jul 2023 16:08:21 -0400
+Subject: [PATCH] SELinuxPolicy: Add explicit cast for libspol message
+ callback.
+
+Cython 3.0 is more strict.  The change fixes this issue:
+
+setools/policyrep/selinuxpolicy.pxi:685:46: Cannot assign type 'void (void *, sepol_handle_t *, const char *, ...) except *' to 'msg_callback'
+
+Additionally, the msg_callback is not typedef-ed in sepol/debug.h, so it must
+be explicitly defined in sepol.pxd for the casting to work.
+
+Signed-off-by: Chris PeBenito <chpebeni@linux.microsoft.com>
+---
+ setools/policyrep/selinuxpolicy.pxi | 2 +-
+ setools/policyrep/sepol.pxd         | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/setools/policyrep/selinuxpolicy.pxi b/setools/policyrep/selinuxpolicy.pxi
+index 9267a0c4..236316f1 100644
+--- a/setools/policyrep/selinuxpolicy.pxi
++++ b/setools/policyrep/selinuxpolicy.pxi
+@@ -668,7 +668,7 @@ cdef class SELinuxPolicy:
+         if self.sh == NULL:
+             raise MemoryError
+ 
+-        sepol.sepol_msg_set_callback(self.sh, sepol_logging_callback, self.handle)
++        sepol.sepol_msg_set_callback(self.sh, <sepol.msg_callback>sepol_logging_callback, self.handle)
+ 
+         if sepol.sepol_policydb_create(&self.handle) < 0:
+             raise MemoryError
+diff --git a/setools/policyrep/sepol.pxd b/setools/policyrep/sepol.pxd
+index 769498f2..36589ed1 100644
+--- a/setools/policyrep/sepol.pxd
++++ b/setools/policyrep/sepol.pxd
+@@ -16,8 +16,10 @@ cdef extern from "<sepol/handle.h>":
+     void sepol_handle_destroy(sepol_handle_t *sh)
+ 
+ 
++ctypedef void (*msg_callback)(void *varg, sepol_handle_t *handle, const char *fmt, ...)
++
++
+ cdef extern from "<sepol/debug.h>":
+-    ctypedef void (*msg_callback)(void *varg, sepol_handle_t *handle, const char *fmt, ...)
+     void sepol_msg_set_callback(sepol_handle * handle, msg_callback cb, void *cb_arg)
+ 
+ 
