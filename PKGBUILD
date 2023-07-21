@@ -3,7 +3,7 @@
 
 pkgname=edl-git
 pkgver=r419.76a2bf4
-pkgrel=1
+pkgrel=2
 pkgdesc="Inofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools"
 arch=('any')
 url="https://github.com/bkerler/edl"
@@ -35,7 +35,7 @@ md5sums=('SKIP' 'SKIP')
 prepare() {
   cd ${pkgname%-git}
   git submodule init
-  git config submodule.Loaders.url "$srcdir/Loaders"
+  git config submodule.externals/vendor/Loaders.url "$srcdir/Loaders"
   git -c protocol.file.allow=always submodule update
 }
 
