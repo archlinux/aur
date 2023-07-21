@@ -9,8 +9,8 @@ url="https://github.com/itchyny/gojq"
 license=('MIT')
 provides=(gojq)
 conflicts=(gojq)
-source_x86_64=(https://github.com/itchyny/gojq/releases/download/v$pkgver/gojq_v${pkgver}_linux_amd64.tar.gz)
-source_aarch64=(https://github.com/itchyny/gojq/releases/download/v$pkgver/gojq_v${pkgver}_linux_arm64.tar.gz)
+source_x86_64=($url/releases/download/v$pkgver/gojq_v${pkgver}_linux_amd64.tar.gz)
+source_aarch64=($url/releases/download/v$pkgver/gojq_v${pkgver}_linux_arm64.tar.gz)
 sha256sums_x86_64=('3e3b3309a980050ba9a9887ba48fb77f577f5c19364e5a68acfd2b8bbd0bb534')
 sha256sums_aarch64=('b5bc78c45170b50f5b6479c38c3f2624f0f15c6663de0ccedf798676a536aa9c')
 
