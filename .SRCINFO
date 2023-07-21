@@ -1,0 +1,16 @@
+pkgbase = fastvideods-encoder
+	pkgdesc = Encoder for the FastVideoDS format
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/bemxio/FastVideoDSEncoder-Linux
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = dotnet-runtime
+	depends = dotnet-sdk
+	depends = ffmpeg-compat-59
+	provides = FastVideoDSEncoder
+	source = https://github.com/bemxio/FastVideoDSEncoder-Linux/archive/refs/tags/v1.0.1.tar.gz
+	md5sums = 6b3b190eed0e5a2e3de0315754dbf0f2
+
+pkgname = fastvideods-encoder
