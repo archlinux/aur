@@ -6,12 +6,12 @@
  
 pkgname=godot-voxel
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Godot game engine with Zylann's voxel tools module"
 url="https://voxel-tools.readthedocs.io/"
 license=('MIT')
 arch=('x86_64')
-makedepends=('scons' 'gcc' 'git')
+makedepends=('scons' 'git')
 depends=('pkgconf' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'mesa' 'glu' 'libglvnd' 'alsa-lib' 'pulseaudio')
 source=("godot::git+https://github.com/godotengine/godot.git#commit=5222a99f5d38cd5346254cefed8f65315bca4fcb"
         "voxel::git+https://github.com/Zylann/godot_voxel.git#commit=3e2d236a0eb85e7bb7381d7f465fecfb42fe19e8"
