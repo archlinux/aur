@@ -1,0 +1,11 @@
+pkgbase = intel-ethernet-722series
+	pkgdesc = NVM Update Utility for Intel® Ethernet Converged Network Adapter X722 Series
+	pkgver = 5.30
+	pkgrel = 1
+	url = https://www.intel.com/content/www/us/en/download/19223/
+	arch = x86_64
+	license = Custom
+	source = https://downloadmirror.intel.com/685619/nvmupdatepackage_wft_wfq_wf0_v5.30.zip
+	sha256sums = 5ab8311c7a01db474432c2d3bade300ae5fd3f45dd62ff171b58ce5f23aa893f
+
+pkgname = intel-ethernet-722series
