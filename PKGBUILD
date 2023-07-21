@@ -3,8 +3,8 @@
 
 _pkgname=probe-cli
 pkgname=ooniprobe-cli
-pkgver=3.18.0
-_pkgver=3.18.0
+pkgver=3.18.1
+_pkgver=3.18.1
 pkgrel=1
 pkgdesc='Next generation OONI Probe CLI'
 arch=('x86_64')
@@ -13,8 +13,8 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("${_pkgname}-${_pkgver}.tar.gz::https://github.com/ooni/${_pkgname}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('d28c050226c9282d7155da6cabf5547ddd43dc11eecacc485b6c05161c2d1d88')
-sha512sums=('25023b3392f78a49732a1ee9186021f238e38f7e9b32940e3e28cef0da790b57459d65e340874a0d7220ddeec19518fcd7a8296115fabc38f68c4e502146d407')
+sha256sums=('7a2b77e6fb303bcdf80e269aa3c8c71e273d2af7c940580d5623a668d1d094e2')
+sha512sums=('6b971af0a1d6f34eb1b10a2eb3343a4005f434ebe45bfabdee77aa2788dd6baf06d362652acad3f47fc446bb306e7e85cba0ddc0e8a81a3da78f9e4960c7a509')
 
 build() {
   cd "${_pkgname}-${_pkgver}"
