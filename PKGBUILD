@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 _cranname=BiocManager
-_cranver=1.30.21
+_cranver=1.30.21.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -42,7 +42,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("cce97b6529f67210be5653861bc7c6e8007af9aef05291da8b4044de07921ee52ec35bda1cebc25acf7888b0b4f12c9d1f050a1d3a014db2bbb9df5819181b7d")
+b2sums=("4b94fc0d0a6c7c5e9dd0da78490bd9a931cbe5f2d3b5d66eab0820031795ceca3e45bccd58135833d1bb299873e77eb7cb1d2fd5eaa95454ecf949a03a18be51")
 
 build() {
     mkdir -p "${srcdir}/build/"
