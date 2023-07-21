@@ -9,8 +9,8 @@
 
 _majorver=11
 _minorver=0
-_securityver=19
-_updatever=7
+_securityver=20
+_updatever=8
 pkgrel=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 _tag_ver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
@@ -18,7 +18,7 @@ _tag_ver_short=${_majorver}.${_minorver}.${_securityver}+${_updatever%.*}
 
 pkgname=jdk11-temurin
 pkgdesc="Temurin ${_majorver} (OpenJDK ${_majorver} Java binaries by Adoptium, formerly AdoptOpenJDK)"
-arch=('x86_64' 'armv7h')
+arch=('x86_64')
 url='https://adoptium.net/'
 license=('custom')
 
@@ -61,9 +61,7 @@ source_x86_64=(https://github.com/adoptium/temurin${_majorver}-binaries/releases
 sha256sums=('502d5dbdde0e4ef009af0f088e8431e0c1721ba2967951e690bf86d184493f75'
             '464c9a7518831eef7cf952a7bd51a1f0d80c19910d21dc1fce693fa6c2ea65df'
             '0f53d0b34412d1a2f30c33bcd68a8f682f1fc86fc76bf290bbb91cb5c1ad28ed')
-sha256sums_x86_64=('5f19fb28aea3e28fcc402b73ce72f62b602992d48769502effe81c52ca39a581')
-sha256sums_armv7h=('be07af349f0d2e1ffb7e01e1e8bac8bffd76e22f6cc1354e5b627222e3395f41')
-source_armv7h=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}U-jdk_arm_linux_hotspot_${_tag_ver_short/+/_}.tar.gz)
+sha256sums_x86_64=('7a99258af2e3ee9047e90f1c0c1775fd6285085759501295358d934d662e01f9')
 source=(freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
