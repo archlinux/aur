@@ -1,12 +1,12 @@
 # Maintainer: Areskul <areskul@areskul.com>
 pkgname="pipelight"
 pkgrel=1
-pkgver=0.6.3
+pkgver=0.6.8
 pkgdesc="A Rust based quick automation tool"
 arch=("any")
 url=https://packages.pipelight.dev/$pkgname-$pkgver-$pkgrel-any.pkg.tar.zst
 license=('GPL2')
-depends=(deno)
+depends=(deno watchexec)
 makedepends=(git make cargo)
 provides=("pipelight")
 conflicts=("pipelight-git")
