@@ -1,6 +1,6 @@
 pkgbase = emacs-clojure-mode
 	pkgdesc = Emacs major mode for the clojure language
-	pkgver = 5.13.0
+	pkgver = 5.16.0
 	pkgrel = 1
 	url = https://github.com/clojure-emacs/clojure-mode
 	install = emacs-clojure-mode.install
@@ -8,8 +8,7 @@ pkgbase = emacs-clojure-mode
 	license = GPL3
 	depends = emacs
 	optdepends = paredit: enhanced LISP structure editing
-	source = clojure-mode-5.13.0.tar.gz::https://github.com/clojure-emacs/clojure-mode/archive/5.13.0.tar.gz
-	sha256sums = d65e98128c9770cb8f250668c9b5b95be75a9f2111fec4e10a38970565956f26
+	source = clojure-mode-5.16.0.tar.gz::https://github.com/clojure-emacs/clojure-mode/archive/v5.16.0.tar.gz
+	sha256sums = 66c081f028dbad6cfc0ea6ac8aea876f1ef2b0df2194fe96e3cc0a566fbfd454
 
 pkgname = emacs-clojure-mode
-
