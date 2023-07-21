@@ -19,6 +19,8 @@ function released_version {
     pacman -Ss $name | grep -e "^$repository_name/$name " | cut -d" " -f2
 }
 
+current_arch=$(uname -m)
+
 packages=()
 echo "initializing build queue"
 for name in $(find . -mindepth 1 -maxdepth 1 -type d -not -name "\.*"); do
@@ -28,15 +30,15 @@ for name in $(find . -mindepth 1 -maxdepth 1 -type d -not -name "\.*"); do
     local_version="${pkgver}-${pkgrel}"
     remote_version="$(released_version $package)"
 
-    if [ -f $package/.norelease ]; then
+    if [ -f $package/.norelease ] || [ -f $package/.norelease.$current_arch ]; then
         echo "  disabled: $package (explicit)"
     elif [ -f $package/.forcerelease ]; then
         echo "  enabled: $package ($local_version) (explicit)"
         packages+=($package)
     elif [ "$local_version" == "$(echo -e "$local_version\n$remote_version" | sort -V | head -n1)" ]; then
         echo "  disabled: $package (local version $local_version <= remote version $remote_version)"
-    elif [[ ! " ${arch[*]} " =~ " any " ]] && [[ ! " ${arch[*]} " =~ " $(uname -m) " ]]; then
-        echo "  disabled: $package (arch not targeted in PKGBUILD: $(uname -m))"
+    elif [[ ! " ${arch[*]} " =~ " any " ]] && [[ ! " ${arch[*]} " =~ " $current_arch " ]]; then
+        echo "  disabled: $package (arch not targeted in PKGBUILD: $current_arch)"
     else
         echo "  enabled: $package ($local_version)"
         packages+=($package)
