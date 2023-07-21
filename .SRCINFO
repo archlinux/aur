@@ -1,0 +1,19 @@
+pkgbase = ms-teams-for-linux-bin
+	pkgdesc = Unofficial Microsoft Teams for Linux client (binary version)
+	pkgver = 1.2.7
+	pkgrel = 1
+	url = https://github.com/IsmaelMartinez/teams-for-linux
+	arch = x86_64
+	license = GPL3
+	depends = electron24
+	depends = bash
+	provides = teams-for-linux
+	conflicts = teams-for-linux
+	conflicts = teams-for-linux-appimage
+	conflicts = teams-for-linux-git
+	conflicts = teams-for-linux-wbundled-electron
+	options = !strip
+	source_x86_64 = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v1.2.7/teams-for-linux_1.2.7_amd64.deb
+	sha256sums_x86_64 = d5284c6f8a6d2b5ff6947821af3f7066c8cd1d9463b2c1a6d6bfedfb65120d95
+
+pkgname = ms-teams-for-linux-bin
