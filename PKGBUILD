@@ -3,7 +3,7 @@
 pkgname=keyviz
 pkgver=2.0.0a
 pkgrel=2
-pkgdesc="A free and open-source tool to visualize your keystrokes keyboard in real-time (Official GNU/Linux build)"
+pkgdesc="A free and open-source tool to visualize your keystrokes keyboard in real-time"
 arch=('x86_64')
 url="https://github.com/mulaRahul/keyviz"
 license=('GPL')
