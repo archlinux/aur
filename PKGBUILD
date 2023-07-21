@@ -4,7 +4,7 @@ pkgname=liamstask-goose-git
 _pkgname=goose
 pkgdesc="Goose is a database migration tool."
 pkgver=0.0.1.r0.8488cc4
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://bitbucket.org/liamstask/goose"
 _namespace="bitbucket.org/liamstask"
@@ -17,7 +17,8 @@ provides=(
     goose
 )
 makedepends=(
-    'go'
+    go
+    git
 )
 
 source=(
@@ -75,4 +76,6 @@ build() {
 
 package() {
     install -D -m0755 "$srcdir/usr/lib/go/src/$_namespace/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+
+    install -D -m0644 "$srcdir/usr/lib/go/src/$_namespace/$_pkgname/MIT-License.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
