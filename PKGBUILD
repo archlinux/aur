@@ -2,7 +2,7 @@
 
 pkgname='waydroid-settings-git'
 pkgver=r105.61187ec
-pkgrel=1
+pkgrel=2
 makedepends=('git')
 arch=('any')
 pkgdesc="GTK app written in Python to control Waydroid settings"
@@ -64,6 +64,6 @@ package(){
 		"$pkgdir/usr/share/waydroid-settings/.idea" \
 		"$pkgdir/usr/share/waydroid-settings/install.sh" \
 		"$pkgdir/usr/share/waydroid-settings/uninstall.sh"
-	sed -i 's|/usr/lib/waydroid/data/wd-settings-icon.png|waydroid-settings|;s|/usr/bin/waydroid-settings.sh|waydroid-settings|' \
+	sed -i 's|/usr/lib/waydroid/data/wd-settings-icon.png|waydroid-settings|;s|/usr/bin/waydroid-settings.sh|waydroid-settings|;s|sudo ||' \
 		"$pkgdir/usr/share/applications/waydroid-settings.desktop" "$pkgdir/usr/share/applications/install-to-waydroid.desktop"
 }
