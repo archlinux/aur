@@ -97,7 +97,7 @@ pkgver=${_major}.4
 _branch=6.x
 xanmod=1
 _revision=
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux Xanmod (Stable) with BORE CPU scheduler and tickrate customizations'
 url="http://www.xanmod.org/"
 arch=('x86_64')
@@ -138,7 +138,7 @@ sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
             '1b6460e5a500c9ce22e296b667b46c0ebf42b4ea25dd5cac4518fda22dab1995' # 0001-bore.patch
             'a2c4322972924197763b52974b814d105e0ffef27336baabb8a96e0946566089' # 0002-constgran-vanilla-max.patch
             '01eea507af27ad3b1329ea6856fc302691ec13a5b13495f79eeb784b6cca521a' # 0003-glitched-cfs.patch
-            '0b7fc3efb55c277acdeb023905794c319f2cff3d27576c9edb0c8bbab0bdf6df' # 0004-glitched-cfs-additions.patch
+            'dcfb32485d5942a55fb0505eec99900bf161bb12aefca867f024cfa62a3dc898' # 0004-glitched-cfs-additions.patch
             '3e55d402cc5867b2d44fd5fb183f68735a2b76f36abcd17852a71517ee1928bf' # 0005-o3-optimization.patch
 )
             
