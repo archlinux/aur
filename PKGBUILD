@@ -95,7 +95,6 @@ build() {
         --enable-libspeex \
         --enable-libsrt \
         --enable-libssh \
-        --enable-libsvtav1 \
         --enable-libtheora \
         --enable-libv4l2 \
         --enable-libvidstab \
@@ -115,7 +114,7 @@ build() {
         --enable-version3 \
         --disable-doc \
         --disable-programs \
-        --disable-libsvtav1 \
+        --disable-libsvtav1
 
     make
 }
