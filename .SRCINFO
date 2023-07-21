@@ -1,13 +1,13 @@
 pkgbase = arcconf
 	pkgdesc = Microsemi Adaptec command line interface utility
-	pkgver = 4.09.00.25611
+	pkgver = 4.11.00.25823
 	pkgrel = 1
 	url = https://storage.microsemi.com/en-us/support
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	makedepends = libarchive
-	source = https://download.adaptec.com/raid/storage_manager/arcconf_B25611.zip
-	sha256sums = 6543b9d636e6e595bf51ac880ab17c5bd59c80bb27186b0f37f979f46914d669
+	source = https://download.adaptec.com/raid/storage_manager/arcconf_B25823.zip
+	sha256sums = 613c48100731dae1364d50872e37f2183d50a3c5f5339eea38f8dd168d60ab0b
 
 pkgname = arcconf
