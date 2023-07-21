@@ -1,18 +1,39 @@
-# Maintainer: Andrei Dobre <andreidobre at gmail dot com>
-# Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: Giacomo Longo <gabibbo97@gmail.com>
+# Maintainer: Vianney Bouchaud <aur dot vianney at bouchaud dot org>
 
 pkgname=kubebuilder
-pkgver=3.3.0
-pkgrel=1
 pkgdesc="SDK for building Kubernetes APIs"
+pkgver=3.11.1
+pkgrel=1
+arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/kubernetes-sigs/kubebuilder"
-license=('APACHE')
-conflicts=('kubebuilder-bin')
-source=("https://github.com/kubernetes-sigs/kubebuilder/releases/download/v${pkgver}/kubebuilder_linux_amd64")
-sha256sums=('f9fb1a8e329dfe3be635ccdec3c7d3a6df4092ba13243bfcb89111b12343eb4f')
-arch=('x86_64')
+license=('apache')
+makedepends=(
+    'go'
+)
+
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/kubernetes-sigs/kubebuilder/archive/v${pkgver}.tar.gz"
+)
+
+sha256sums=(
+    "a7d96f6dfcc8ac176076ba7d0939585bce97b18a27728dc3fcd0b06f84a4af3c"
+)
+
+build() {
+    export GOPATH="$srcdir"/gopath
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_ENABLED=1
+
+    cd "$srcdir/$pkgname-$pkgver"
+    make build
+}
 
 package() {
-  install -Dm755 "${srcdir}/kubebuilder_linux_amd64" "${pkgdir}/usr/bin/kubebuilder"
+    install -D -m0755 "${srcdir}/$pkgname-$pkgver/bin/kubebuilder" "${pkgdir}/usr/bin/kubebuilder"
+
+    "${pkgdir}/usr/bin/kubebuilder" completion bash | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/kubebuilder"
+    "${pkgdir}/usr/bin/kubebuilder" completion zsh | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_kubebuilder"
 }
