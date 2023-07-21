@@ -3,7 +3,7 @@
 pkgname=flashbrowser-bin
 _dirname=FlashBrowser-linux-x64
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A browser dedicating to supporting adobe flash."
 arch=(x86_64 aarch64)
 url="https://flash.pm/browser/"
@@ -34,7 +34,7 @@ package() {
 		elif 	[ $i = '24' ];	then layer=1;
 		elif 	[ $i = '32' ];	then layer=2;
 		elif 	[ $i = '48' ];	then layer=3;
-		elif 	[ $i = '256'];	then layer=4; fi
+		elif 	[ $i = '256' ];	then layer=4; fi
 	convert "$srcdir/$_dirname/resources/app/icon.ico[${layer}]" -define icon:auto-resize=${i} \
 			"$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
 	done
