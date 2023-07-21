@@ -1,3 +1,18 @@
+## GE-Proton8-7
+
+- FSR IS BACK!!!
+
+Huge shoutout/thank you to Ph42oN for completely rebasing, updating and combining all of the old FSR patches to make them compatible with Proton 8.
+
+- Additionally a bug was fixed by Ph42oN with fullscreen not working properly when fsr is disabled which was present in proton 7
+- protonfix for Oceanhorn removed as it's no longer needed (thanks Iglu47)
+- protonfixes added for Neptunia Re;Birth 1 & 2 (thanks NishiyamaPedro)
+- proton-wine updated to latest git
+- dxvk updated to latest git
+- vkd3d-proton updated to latest git
+- dxvk-nvapi updated to latest git
+- upstream build changes pulled in
+
 ## GE-Proton8-6
 
 HOTFIX:
