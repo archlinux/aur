@@ -3,7 +3,7 @@
 
 _basename_=xz
 pkgname=${_basename_}-java
-pkgver=1.8
+pkgver=1.9
 pkgrel=1
 pkgdesc="A Java library for XZ and LZMA compression"
 arch=("any")
@@ -16,7 +16,7 @@ source=(http://tukaani.org/${_basename_}/${pkgname}-${pkgver}.zip)
 prepare() {
 	cd "${srcdir}"
 
-	sed -i "s|sourcever = 1.5|sourcever = 1.6|g" build.properties
+	sed -i "s|sourcever = 7|sourcever = 8|g" build.properties
 }
 
 build() {
@@ -32,4 +32,4 @@ package() {
 	install -m 644 ${_basename_}.jar "${pkgdir}"/usr/lib/${pkgname}.jar
 }
 
-sha1sums=('909eb5472e4f4185d77414b7194d59c6b85c7c66')
+sha256sums=('b1d9a603f4fa75f0702ef84af5bcc11d03e721b6317daec1b1f81c31904bed00')
