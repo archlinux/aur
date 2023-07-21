@@ -1,0 +1,17 @@
+pkgbase = pqmarble-git
+	pkgdesc = Utility library for GNOME apps
+	pkgver = r39.f240b2e
+	pkgrel = 1
+	url = https://gitlab.gnome.org/raggesilver/marble
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	makedepends = gobject-introspection
+	depends = gtk4
+	source = pqmarble-git::git+https://gitlab.gnome.org/raggesilver/marble.git
+	sha256sums = SKIP
+
+pkgname = pqmarble-git
