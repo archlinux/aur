@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="p3x-onenote-bin"
-pkgver=2023.10.214
+pkgname=p3x-onenote-bin
+pkgver=2023.10.220
 pkgrel=1
 pkgdesc="Linux Electron Onenote - A Linux compatible version of OneNote"
 arch=("aarch64" "armv7h" "x86_64")
@@ -15,11 +15,11 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_githuburl}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 source=("LICENSE::https://raw.githubusercontent.com/patrikx3/onenote/master/LICENSE"
     "${pkgname%-bin}.sh")
-sha256sums=('490c6bceab7fe36f82b85837da949520ccb2e588fdfa2308a833e50b0e06a08a'
+sha256sums=('d6e3068fc17b14b57ecc362c0f2434acd645fddf0e506542a06f9a3d1af3b1d1'
             '1a80871d5b9ccd1b5521eb1e62687f32c6002c37ae172d357bf4938bb4711576')
-sha256sums_aarch64=('6629f2ee5023b60b27c569146b239998c619c1a39f58fa8ad23362d7c6fc01ac')
-sha256sums_armv7h=('eddb5101df45e4d15c70264d9a98f862bf18449cf2edab54703073dd640ab52c')
-sha256sums_x86_64=('2e091f891d76abb851cffe1f0badb530926888212580b4a02e98b10c05850a24')
+sha256sums_aarch64=('f34f36e56b20134912106dc14c03d6c989a2637df25daa07f560380772ebadb3')
+sha256sums_armv7h=('195e60362e0d9bb6eadfde969ad20d8df65e7bbbefa9de410f2554a0c43c6423')
+sha256sums_x86_64=('16d6e1659dc706b68e7362d1093019984766ba6e90088aeef75407026ca15160')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
