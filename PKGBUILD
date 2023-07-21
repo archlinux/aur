@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=8.0-20230706
+_srctag=8.0-20230721
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.3
@@ -30,6 +30,8 @@ depends=(
   'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
   libsoup          lib32-libsoup
   libgudev         lib32-libgudev
+  blas             lib32-blas
+  lapack           lib32-lapack
   desktop-file-utils
   python
   steam-native-runtime
@@ -75,7 +77,6 @@ optdepends=(
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   libgphoto2
-  dosbox
 )
 
 makedepends=(${makedepends[@]} ${depends[@]})
@@ -83,29 +84,6 @@ provides=('proton')
 install=${pkgname}.install
 source=(
     proton::git+https://github.com/ValveSoftware/Proton.git#tag=experimental-${_srctag}
-    wine-valve::git+https://github.com/ValveSoftware/wine.git
-    dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
-    openvr::git+https://github.com/ValveSoftware/openvr.git
-    liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
-    gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
-    gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
-    gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
-    gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
-    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
-    OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
-    dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
-    vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
-    Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
-    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
-    Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
-    glslang::git+https://github.com/KhronosGroup/glslang.git
-    gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
-    ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
-    dav1d::git+https://code.videolan.org/videolan/dav1d.git
-    gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
-    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
-    graphene::git+https://github.com/ebassi/graphene.git
-    libdisplay-info-dxvk::git+https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     0001-AUR-Pkgbuild-changes.patch
@@ -167,68 +145,10 @@ prepare() {
     mv "$srcdir"/wine-gecko-${_geckover}-x86{,_64}.tar.xz contrib/
     mv "$srcdir"/wine-mono-${_monover}-x86.tar.xz contrib/
 
-    _submodules=(
-        wine-valve::wine
-        dxvk-valve::dxvk
-        openvr
-        liberation-fonts::fonts/liberation-fonts
-        gstreamer
-        gst-plugins-base
-        gst-plugins-good
-        gst-orc
-        vkd3d-proton
-        OpenXR-SDK
-        dxvk-nvapi
-        vkd3d-valve::vkd3d
-        Vulkan-Headers
-        SPIRV-Headers
-        Vulkan-Loader
-        glslang
-        gst-libav
-        ffmpeg
-        dav1d
-        gst-plugins-rs
-        graphene
-    )
+    git -c protocol.file.allow=always submodule update --init --filter=tree:0 --recursive
 
-    for submodule in "${_submodules[@]}"; do
-        git submodule init "${submodule#*::}"
-        git submodule set-url "${submodule#*::}" "$srcdir"/"${submodule%::*}"
-        git -c protocol.file.allow=always submodule update "${submodule#*::}"
-    done
-
-    pushd dxvk
-        git submodule init include/{vulkan,spirv}
-        git submodule set-url include/vulkan "$srcdir/Vulkan-Headers"
-        git submodule set-url include/spirv "$srcdir/SPIRV-Headers"
-        git -c protocol.file.allow=always submodule update include/{vulkan,spirv}
-
-        git submodule init subprojects/libdisplay-info
-        git submodule set-url subprojects/libdisplay-info "$srcdir/libdisplay-info-dxvk"
-        git -c protocol.file.allow=always submodule update subprojects/libdisplay-info
-    popd
-
-    pushd vkd3d-proton
-        for submodule in subprojects/{dxil-spirv,Vulkan-Headers,SPIRV-Headers}; do
-            git submodule init "${submodule}"
-            git submodule set-url "${submodule}" "$srcdir"/"${submodule#*/}"
-            git -c protocol.file.allow=always submodule update "${submodule}"
-        done
-        pushd subprojects/dxil-spirv
-            git submodule init third_party/spirv-headers
-            git submodule set-url third_party/spirv-headers "$srcdir"/SPIRV-Headers
-            git -c protocol.file.allow=always submodule update third_party/spirv-headers
-        popd
-    popd
-
-    pushd dxvk-nvapi
-        git submodule init external/Vulkan-Headers
-        git submodule set-url external/Vulkan-Headers "$srcdir"/Vulkan-Headers
-        git -c protocol.file.allow=always submodule update external/Vulkan-Headers
-    popd
-
-    for submodule in gst-plugins-rs media-converter; do
-    pushd $submodule
+    for rustlib in gst-plugins-rs media-converter; do
+    pushd $rustlib
         export RUSTUP_TOOLCHAIN=stable
         export CARGO_HOME="${SRCDEST}"/proton-cargo
         cargo fetch --locked --target "i686-unknown-linux-gnu"
@@ -238,18 +158,9 @@ prepare() {
 
     patch -p1 -i "$srcdir"/0001-AUR-Pkgbuild-changes.patch
     patch -p1 -i "$srcdir"/0002-AUR-Do-not-update-cargo-crates.patch
-    patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
+    #patch -p1 -i "$srcdir"/0003-AUR-Remove-kaldi-openfst-vosk-api-modules-because-of.patch
     patch -p1 -i "$srcdir"/0004-AUR-Copy-DLL-dependencies-of-32bit-libvkd3d-dlls-int.patch
     patch -p1 -i "$srcdir"/fix_hwnd_changes_meaning.patch
-
-    # Remove repos from srcdir to save space
-    for submodule in "${_submodules[@]}"; do
-        rm -rf "$srcdir"/"${submodule%::*}"
-    done
-    rm -rf "$srcdir"/dxil-spirv
-    rm -rf "$srcdir"/Vulkan-Headers
-    rm -rf "$srcdir"/SPIRV-Headers
-    rm -rf "$srcdir"/libdisplay-info-dxvk
 }
 
 build() {
@@ -342,36 +253,13 @@ package() {
 }
 
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             '08d318f3dd6440a8a777cf044ccab039b0d9c8809991d2180eb3c9f903135db3'
             '0beac419c20ee2e68a1227b6e3fa8d59fec0274ed5e82d0da38613184716ef75'
             '14c7d76780b79dc62d8ed9d1759e7adcfa332bb2406e2e694dee7b2128cc7a77'
-            '2f4554e7a4781694de34a56071afd9ea6f2b7ba6724b76af7c799a59f2207bb9'
-            'ed48e84789db8d56bdd67b0ce576825e335d437cb5622d485c5d0a42961d05de'
-            'b73f14ad1d95f27f64afa2ac5e396c970573c1e58f55510f728853d14d24d4ab'
-            'd4fa0959491f2bcb44728943588423fae15f53d5079bcd905a7bb563b81ec79e'
+            'bc3e24d2608e23cb448d3796461ac31d86c4649852226332702a43a7740b668a'
+            '519ab5bb874fc64af863e8b609e0001dcf40e8cfc5dcbc9353cab077a8aa9601'
+            '741da6911354b1079837284d34ee3d0463284bf53f881c4ecf5a6c8cb169e172'
+            'b2963c5529f49881c762bdf3baa5f2e582df9bc9f7e9e01db3f65c28d2e5e0b3'
             '20824bb565fefcad4aa978c54e0f8b9d9d17b7b52fb03fc87943150de148f06f')
 # Optional patches
 sha256sums+=(
