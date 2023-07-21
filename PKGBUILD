@@ -11,7 +11,7 @@ pkgbase=ffmpeg-compat-59
 pkgname=ffmpeg-compat-59
 
 pkgver=5.1.3
-pkgrel=3
+pkgrel=4
 
 pkgdesc="Compatibility package for ffmpeg to provide versions 59 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package"
 arch=("i686" "x86_64")  
@@ -128,8 +128,13 @@ build() {
 package() {
     cd ffmpeg-${pkgver}
 
+    # install libraries
     make DESTDIR="${pkgdir}" install-libs
 
+    # remove symlinks to older versions
     rm -rf ${pkgdir}/usr/lib/*.so
+
+    # remove other conflicting libraries
     rm -rf ${pkgdir}/usr/lib/libswscale.so.6
+    rm -rf ${pkgdir}/usr/lib/libswresample.so.4
 }

@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-compat-59
 	pkgdesc = Compatibility package for ffmpeg to provide versions 59 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package
 	pkgver = 5.1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ffmpeg.org/
 	arch = i686
 	arch = x86_64
