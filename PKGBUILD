@@ -6,14 +6,14 @@ pkgname=lib32-gimp
 _pkgbase=gimp
 pkgver=2.10.34
 _pkg_ver="${pkgver//./_}"
-pkgrel=2
+pkgrel=3
 pkgdesc='GNU Image Manipulation Program (32-bit)'
 url="https://www.gimp.org/"
 arch=('x86_64')
 depends=('lib32-dbus-glib' 'lib32-gegl' 'lib32-glib-networking'
          'lib32-lcms2' 'lib32-libgudev'
          'lib32-cairo' 'lib32-libmypaint' 'lib32-gtk2'
-         'lib32-libxmu' 'lib32-openexr'
+         'lib32-libxmu'
          'lib32-glib2' 'lib32-glibc' 'lib32-gdk-pixbuf2' 'lib32-pango'
          'lib32-libunwind' 'lib32-poppler-glib' 'gimp')
 makedepends=('alsa-lib' 'curl' 'ghostscript' 'intltool' 'iso-codes')
@@ -40,7 +40,7 @@ build() {
     --disable-check-update \
     --disable-python \
     --with-bug-report-url='https://bugs.archlinux.org/?string=gimp' \
-    --with-openexr \
+    --without-openexr \
     --without-jpegxl \
     --without-jpeg2000 \
     --without-libheif \
