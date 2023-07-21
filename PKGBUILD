@@ -195,7 +195,7 @@ package_llvm12-minimal(){
   mv "$pkgdir"/opt/llvm12/include/LLVMSPIRVLib/* "$srcdir"/spirv/opt/llvm12/include/LLVMSPIRVLib/
   mv "$pkgdir"/opt/llvm12/lib/libLLVMSPIRVLib.a "$srcdir"/spirv/opt/llvm12/lib
   mv "$pkgdir"/opt/llvm12/lib/pkgconfig/LLVMSPIRVLib.pc "$srcdir"/spirv/opt/llvm12/lib/pkgconfig
-  # Remove pkgconfig dir from llvm12-minimal
+  # Remove empty dir
   rm -rf "$pkgdir"/opt/llvm12/lib/pkgconfig/
   rm -rf "$pkgdir"/opt/llvm12/include/LLVMSPIRVLib/
 
