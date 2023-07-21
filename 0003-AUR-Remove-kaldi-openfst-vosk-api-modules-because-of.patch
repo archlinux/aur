@@ -1,15 +1,15 @@
-From 97ee1c8416c2f8f3623ac2a87b91d7c059c19688 Mon Sep 17 00:00:00 2001
+From 307e69559597875c98f3bc28f0d7c5bf6b3605a0 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 12 Jul 2023 17:56:34 +0300
 Subject: [PATCH 3/4] AUR Remove kaldi, openfst, vosk-api modules because of
  missing blas, lapack lib32 from Arch
 
 ---
- Makefile.in | 92 ++++-------------------------------------------------
- 1 file changed, 6 insertions(+), 86 deletions(-)
+ Makefile.in | 82 +----------------------------------------------------
+ 1 file changed, 1 insertion(+), 81 deletions(-)
 
 diff --git a/Makefile.in b/Makefile.in
-index 149f9f62..1f5476b0 100644
+index 149f9f62..97315b19 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -551,86 +551,6 @@ $(OBJ)/.steamexe-post-build64:
@@ -99,39 +99,15 @@ index 149f9f62..1f5476b0 100644
  
  ##
  ## wine
-@@ -726,8 +646,8 @@ DXVK_MESON_ARGS32 = --bindir=$(DXVK_DST32)/lib/wine/dxvk
- DXVK_MESON_ARGS64 = --bindir=$(DXVK_DST64)/lib64/wine/dxvk
- DXVK_DEPENDS = glslang
+@@ -667,7 +587,7 @@ WINE_CONFIGURE_ARGS64 = --enable-win64 \
+   VKD3D_PE_CFLAGS="-I$(VULKAN_HEADERS_DST64)/include -I$(VKD3D_DST64)/include/vkd3d" \
+   VKD3D_PE_LIBS="-L$(VKD3D_DST64)/bin -l:libvkd3d-1.dll -l:libvkd3d-shader-1.dll"
  
--DXVK_CPPFLAGS = -msse -msse2
--DXVK_LDFLAGS = -static -static-libgcc -static-libstdc++
-+DXVK_CPPFLAGS= -msse -msse2
-+DXVK_LDFLAGS= -static -static-libgcc -static-libstdc++
+-WINE_DEPENDS = gst_orc gstreamer gst_base vkd3d openfst kaldi vosk
++WINE_DEPENDS = gst_orc gstreamer gst_base vkd3d
  
- $(eval $(call rules-source,dxvk,$(SRCDIR)/dxvk))
- $(eval $(call rules-meson,dxvk,32,CROSS))
-@@ -756,8 +676,8 @@ $(OBJ)/.dxvk-post-build32:
- DXVK_NVAPI_MESON_ARGS32 = --bindir=$(DXVK_NVAPI_DST32)/lib/wine/nvapi
- DXVK_NVAPI_MESON_ARGS64 = --bindir=$(DXVK_NVAPI_DST64)/lib64/wine/nvapi
- 
--DXVK_NVAPI_CPPFLAGS = -msse -msse2
--DXVK_NVAPI_LDFLAGS = -static -static-libgcc -static-libstdc++
-+DXVK_NVAPI_CPPFLAGS= -msse -msse2
-+DXVK_NVAPI_LDFLAGS= -static -static-libgcc -static-libstdc++
- 
- $(eval $(call rules-source,dxvk-nvapi,$(SRCDIR)/dxvk-nvapi))
- $(eval $(call rules-meson,dxvk-nvapi,32,CROSS))
-@@ -833,8 +753,8 @@ ifneq ($(UNSTRIPPED_BUILD),)
- 	VKD3D_PROTON_MESON_ARGS = -Denable_trace=true
- endif
- 
--VKD3D_PROTON_CPPFLAGS = -msse -msse2
--VKD3D_PROTON_LDFLAGS = -static -static-libgcc -static-libstdc++
-+VKD3D_PROTON_CPPFLAGS= -msse -msse2
-+VKD3D_PROTON_LDFLAGS= -static -static-libgcc -static-libstdc++
- 
- $(eval $(call rules-source,vkd3d-proton,$(SRCDIR)/vkd3d-proton))
- $(eval $(call rules-meson,vkd3d-proton,32,CROSS))
+ $(eval $(call rules-source,wine,$(SRCDIR)/wine))
+ $(eval $(call rules-autoconf,wine,32))
 -- 
 2.41.0
 
