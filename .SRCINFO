@@ -1,0 +1,17 @@
+pkgbase = microsoft-office-appimage
+	pkgdesc = Microsoft Office Desktop App Specially Made for Linux, made with electron: Includes Microsoft Word, Excel, PowerPoint, Outlook, OneDrive, Teams, OneNote, To-Do, Family Safety, Calendar, and Skype.
+	pkgver = 2022.8.1
+	pkgrel = 1
+	url = https://github.com/Comp-Labs/Microsoft-Office
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = microsoft-office
+	noextract = Microsoft-Office-2022.8.1-x86_64.AppImage
+	options = !strip
+	source_x86_64 = Microsoft-Office-2022.8.1-x86_64.AppImage::https://github.com/Comp-Labs/Microsoft-Office/releases/download/v2022.8.1/Microsoft-Office-x86_64.AppImage
+	sha256sums_x86_64 = 008f830c5a033ced818c927249fa6854b9b911a9707eeb569579520dff4404b8
+
+pkgname = microsoft-office-appimage
