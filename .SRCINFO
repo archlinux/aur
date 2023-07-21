@@ -5,7 +5,7 @@ pkgbase = libgentl
     arch = x86_64
     license = custom:FLIR EULA
     url = https://www.flir.com/
-    source = data.tar.gz
+    source = libgentl-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/libgentl-3.1.0.79.tar.gz
     sha256sums = 2037c88c92d64d1070ea12e77700f0af767bce9895b9305d514d58958758043d
 
 pkgname = libgentl
