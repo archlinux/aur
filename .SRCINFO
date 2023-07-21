@@ -19,5 +19,6 @@ pkgbase = quick-n-easy-web-builder-10-bin
 	optdepends = mupdf: a pdf viewer
 	options = !emptydirs
 	options = !strip
+	source = https://github.com/FrankVan1982/quick-n-easy-web-builder-10-bin/releases/download/10.1.1/quick-n-easy-web-builder-10-10.1.1-1-x86_64.pkg.tar.zst
 
 pkgname = quick-n-easy-web-builder-10-bin

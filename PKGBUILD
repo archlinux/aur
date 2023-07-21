@@ -6,6 +6,7 @@ pkgrel=2
 pkgdesc="A WYSIWYG web builder for creating amazing websites."
 arch=('x86_64')
 url="https://www.quickandeasywebbuilder.com/"
+source=("https://github.com/FrankVan1982/quick-n-easy-web-builder-10-bin/releases/download/10.1.1/quick-n-easy-web-builder-10-10.1.1-1-x86_64.pkg.tar.zst")
 license=('custom')
 depends=('sdl2' 'unzip' 'tar' 'pacman' 'wget')
 optdepends=(
