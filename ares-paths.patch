@@ -1,43 +1,44 @@
-diff --git a/ares-PLACEHOLDER/desktop-ui/desktop-ui.cpp b/ares-PLACEHOLDER/desktop-ui/desktop-ui.cpp
-@@ -23,15 +23,15 @@
-   // ship with the executable.
-   // On Windows, this allows settings from to be carried over
-   // from previous versions (pre-portable)
--  location = {Path::userData(), "ares/", name};
-+  location = {Path::sharedData(), "ares/", name};
+diff --git a/ares/desktop-ui/desktop-ui.cpp b/ares/desktop-ui/desktop-ui.cpp
+@@ -26,10 +26,20 @@
+   location = {Path::userData(), "ares/", name};
    if(inode::exists(location)) return location;
  
-   // On non-windows platforms, after exhausting other options,
-   // default to userData, on Windows, default to program dir
+-  // On non-windows platforms, after exhausting other options,
+-  // default to userData, on Windows, default to program dir
++  // On non-windows platforms, this time check the shared
++  // data directory, on Windows, default to program dir,
    // this ensures Portable mode is the default on Windows platforms.
    #if !defined(PLATFORM_WINDOWS)
--    directory::create({Path::userData(), "ares/"});
--    return {Path::userData(), "ares/", name};
-+    directory::create({Path::userSettings(), "ares/"});
-+    return {Path::userSettings(), "ares/", name};
++    string shared_location = {Path::sharedData(), "ares/", name};
++    if(inode::exists(shared_location)) return shared_location;
++
++    // XXX: Change settings.bml location to match Ares' default behavior.
++    if(directory::exists({Path::userSettings(), "ares/"})) {
++      file::copy({Path::userSettings(), "ares/settings.bml"}, {Path::userData(), "ares/settings.bml"});
++    }
++
++    // On non-windows platforms, after exhausting other options,
++    // default to userData.
+     directory::create({Path::userData(), "ares/"});
+     return {Path::userData(), "ares/", name};
    #else 
-     return {Path::program(), name};
-   #endif
 
-diff --git a/ares-PLACEHOLDER/mia/mia.cpp b/ares-PLACEHOLDER/mia/mia.cpp
-@@ -6,7 +6,7 @@
- function<string ()> saveLocation = [] { return string{}; };
- vector<string> media;
- 
--auto locate(string name) -> string {
-+auto locate(const string& name) -> string {
-   string location = {Path::program(), name};
+diff --git a/ares/mia/mia.cpp b/ares/mia/mia.cpp
+@@ -26,10 +26,15 @@
+   location = {Path::userData(), "ares/", name};
    if(inode::exists(location)) return location;
  
-@@ -15,8 +15,8 @@
-     if(inode::exists(location)) return location;
-   #endif
-   
--  directory::create({Path::userData(), "mia/"});
--  return {Path::userData(), "mia/", name};
-+  directory::create({Path::sharedData(), "ares/"});
-+  return {Path::sharedData(), "ares/", name};
- }
- 
- auto operator+=(string& lhs, const string& rhs) -> string& {
-
+-  // On non-windows platforms, after exhausting other options,
+-  // default to userData, on Windows, default to program dir
++  // On non-windows platforms, this time check the shared
++  // data directory, on Windows, default to program dir
+   // this ensures Portable mode is the default on Windows platforms.
+ #if !defined(PLATFORM_WINDOWS)
++  string shared_location = {Path::sharedData(), "ares/", name};
++  if(inode::exists(shared_location)) return shared_location;
++
++  // On non-windows platforms, after exhausting other options,
++  // default to userData
+   directory::create({Path::userData(), "ares/"});
+   return {Path::userData(), "ares/", name};
+ #else

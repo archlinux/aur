@@ -1,22 +1,21 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu
-pkgver=132
-pkgrel=3
-pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support"
+pkgver=133
+pkgrel=1
+pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
 license=("ISC")
 depends=(gtk3 libao libgl libpulse libudev.so=1-64 libxv openal sdl2 vulkan-driver vulkan-icd-loader)
-makedepends=(mesa git)
+makedepends=(mesa git clang lld)
 provides=(ares-emu)
 conflicts=(ares-emu)
+install=ares.install
 source=("https://github.com/ares-emulator/ares/archive/refs/tags/v${pkgver}.tar.gz"
-        "ares-paths.patch"
-        "fix-build.patch")
+        "ares-paths.patch")
 sha256sums=("d66ed6af17fb92579ab6224bbaba9494e9841e97e032b0b42b128df72ea21d1c"
-        "de3383a1bd6684b5acbded48332f9cc9725eff6e39dc9d29f080c7c32dbfa770"
-        "b86020263291bd239ac5e231d6abe27f1857e66ba3d7f7bda64ae462558bb382")
+        "cd3a069e0b67ba192a8fbf96575fc64e2cb863e060e20a13d2dba09f7ef867ce")
 
 prepare() {
   # Replace the placeholder with pkgver to automatically point at the source folder
@@ -24,15 +23,11 @@ prepare() {
 
   # Patch Ares so that it can look for its files that are installed system-wide here
   patch -Np1 -i "${srcdir}/ares-paths.patch"
-
-  # TODO: Only for v132, remove with next release
-  sed -i "s/PLACEHOLDER/${pkgver}/g" "${srcdir}/fix-build.patch"
-  patch -Np1 -i "${srcdir}/fix-build.patch"
-
 }
 
 build() {
-  make -C "${srcdir}/ares-${pkgver}/desktop-ui" hiro=gtk3
+  # If you want to build with gcc, edit to use g++ instead of clang++
+  make -C "${srcdir}/ares/desktop-ui" hiro=gtk3 compiler=clang++
 }
 
 package() {
@@ -41,10 +36,8 @@ package() {
   install -Dm 644 "${srcdir}/ares-${pkgver}/desktop-ui/resource/ares.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
   install -Dm 644 "${srcdir}/ares-${pkgver}/desktop-ui/resource/ares.desktop" -t "${pkgdir}/usr/share/applications/"
 
-  # Also install the shaders in Ares' shared directory
+  # Also install shaders and databases in Ares' shared data directory
   install -dm 755 "${pkgdir}/usr/share/ares"
   cp -dr --no-preserve=ownership "${srcdir}/ares-${pkgver}/ares/Shaders/" "${pkgdir}/usr/share/ares/Shaders/"
-
-  # And the database
   cp -dr --no-preserve=ownership "${srcdir}/ares-${pkgver}/mia/Database/" "${pkgdir}/usr/share/ares/Database/"
 }

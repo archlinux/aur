@@ -1,0 +1,14 @@
+post_upgrade() {
+	if [ $(vercmp $2 133-2) -lt 0 ]; then cat << EOF
+********************************************************************************
+* Wanting to be as close as possible to Ares vanilla, the location             *
+* of settings files has been changed from                                      *
+* XDG_CONFIG_HOME (likely ~/.config/ares/settings.bml) to the default          *
+* XDG_DATA_HOME (likely ~/.local/share/ares/settings.bml).                     *
+* Ares will attempt to copy this file to the new location but success is not   *
+* guaranteed, so please check whether the settings are successfully copied.    *
+* After which, the file in old location can be safely removed.                 *
+********************************************************************************
+EOF
+fi
+}
