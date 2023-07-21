@@ -1,5 +1,5 @@
 pkgname="python-libtimed"
-pkgver=0.3.0.r1
+pkgver=0.3.1.r0
 pkgrel=1
 pkgdesc="Python API for timed"
 arch=("any")
