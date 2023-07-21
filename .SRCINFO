@@ -1,6 +1,6 @@
 pkgbase = nurl
 	pkgdesc = Generate Nix fetcher calls from repository URLs
-	pkgver = 0.3.12
+	pkgver = 0.3.13
 	pkgrel = 1
 	url = https://github.com/nix-community/nurl
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = nurl
 	license = MPL2
 	makedepends = cargo
 	depends = gcc-libs
-	source = nurl-0.3.12.tar.gz::https://github.com/nix-community/nurl/archive/refs/tags/v0.3.12.tar.gz
-	sha256sums = acc0734b3deb136a1f4c663360c144d7a35e44eb2aa00fb0d39cb380227e7415
-	b2sums = ad64c4d6d9797ed50d7972a318de11c0ccfd1f33eb6f5400763883d23c3b92abbd72d5c10cab838b5b096609d66e3d1e1bccafa4d4ca454d84c7ef5e6febd43b
+	source = nurl-0.3.13.tar.gz::https://github.com/nix-community/nurl/archive/refs/tags/v0.3.13.tar.gz
+	sha256sums = 638e8dc6b1146b041fd3631497a82aa223fc2c4ce5f2e2d7abe8d390e711111d
+	b2sums = ca5324d61b33b8a59a18f1ac268754284f437e5828eb8c2758692aa70d42f4780fb3af8d2d91271fb9c7441f4a6c55faa993cc1e0494a2259e6384ee500982ee
 
 pkgname = nurl
