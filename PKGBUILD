@@ -1,7 +1,7 @@
 # Maintainer: mcarni <michele DOT carnaghi AT googlemail DOT com>
 
 pkgname=kodi-addon-game-libretro-stella
-pkgver=3.9.3.39
+pkgver=7.0.0.44
 _codename=Nexus
 pkgrel=1
 pkgdesc="This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons"
@@ -12,7 +12,7 @@ groups=('kodi-addons' 'kodi-addons-game')
 makedepends=('cmake' 'kodi-dev' 'kodi-addon-game-libretro' 'libretro-stella2014')
 options=(!lto debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro.stella/archive/refs/tags/$pkgver-$_codename.tar.gz")
-sha512sums=('b3a64cec5c86eb21fdb21f851cf9a48c2041d0b6e74ae287a7b6089713cf71164914f1cc24b1c29e880667935a694045f8905cb6255fcbb827be2e14ca0072cf')
+sha512sums=('757ff2b4601312136ea58ebdaeba6b8b1d3217d020d74d08a8a648a4db47d924b740ad774cd3b6de8ef3e3f97e40f99369977b2f9571192eca2d297849f9008b')
 
 build() {
     cd "game.libretro.stella-$pkgver-$_codename"
