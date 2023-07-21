@@ -1,7 +1,7 @@
 # Maintainer: Pietro Bonfa' <python-spglib@bnf.33mail.com>
 pkgname=python-spglib
 _pkgname=spglib
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Python APIs for spglib, a C library for finding and handling crystal symmetries."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=()
 checkdepends=()
 optdepends=()
 source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz)
-md5sums=('3c5b06fff5731d7baaaf1cbf8e98b14e')
+md5sums=('021da5274ac27e5c97bfa64c5f34ebe0')
 
 
 build() {
