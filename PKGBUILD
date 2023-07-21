@@ -183,7 +183,7 @@ package_llvm11-minimal(){
   mv "$pkgdir"/opt/llvm11/include/LLVMSPIRVLib/* "$srcdir"/spirv/opt/llvm11/include/LLVMSPIRVLib/
   mv "$pkgdir"/opt/llvm11/lib/libLLVMSPIRVLib.a "$srcdir"/spirv/opt/llvm11/lib
   mv "$pkgdir"/opt/llvm11/lib/pkgconfig/LLVMSPIRVLib.pc "$srcdir"/spirv/opt/llvm11/lib/pkgconfig
-  # Remove pkgconfig dir from llvm11-minimal
+  # Remove empty dir
   rm -rf "$pkgdir"/opt/llvm11/lib/pkgconfig/
   rm -rf "$pkgdir"/opt/llvm11/include/LLVMSPIRVLib/
 
