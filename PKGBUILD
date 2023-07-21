@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seriation
-_pkgver=1.5.0
+_pkgver=1.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -47,8 +47,8 @@ optdepends=(
   r-umap
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4af46ea5729630ce6281b76d2c23dc20')
-sha256sums=('daddfee4f7a1c4b63d98a1106481754b368c8163abf043198c274b0097a85118')
+md5sums=('8ede733ee8e1ed7b67eb89d55c1bd14d')
+sha256sums=('4a05398026daf287b523069050864eacb78ae4842a4bbf410f1ac7d7d9a6a260')
 
 build() {
   mkdir -p build

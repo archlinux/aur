@@ -1,6 +1,6 @@
 pkgbase = r-seriation
 	pkgdesc = Infrastructure for Ordering Objects Using Seriation
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=seriation
 	arch = x86_64
@@ -33,8 +33,8 @@ pkgbase = r-seriation
 	optdepends = r-tensorflow
 	optdepends = r-testthat
 	optdepends = r-umap
-	source = https://cran.r-project.org/src/contrib/seriation_1.5.0.tar.gz
-	md5sums = 4af46ea5729630ce6281b76d2c23dc20
-	sha256sums = daddfee4f7a1c4b63d98a1106481754b368c8163abf043198c274b0097a85118
+	source = https://cran.r-project.org/src/contrib/seriation_1.5.1.tar.gz
+	md5sums = 8ede733ee8e1ed7b67eb89d55c1bd14d
+	sha256sums = 4a05398026daf287b523069050864eacb78ae4842a4bbf410f1ac7d7d9a6a260
 
 pkgname = r-seriation
