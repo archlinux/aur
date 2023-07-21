@@ -76,7 +76,6 @@ optdepends=(
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   libgphoto2
-  dosbox
 )
 
 makedepends=(${makedepends[@]} ${depends[@]})
@@ -259,8 +258,6 @@ prepare() {
         rm -rf "$srcdir"/"${submodule%::*}"
     done
     rm -rf "$srcdir"/dxil-spirv
-    rm -rf "$srcdir"/Vulkan-Headers
-    rm -rf "$srcdir"/SPIRV-Headers
     rm -rf "$srcdir"/libdisplay-info-dxvk
 }
 
