@@ -1,4 +1,4 @@
-From 0d474b4667bb5b36fa3d3fa0a698c8e6a69186d1 Mon Sep 17 00:00:00 2001
+From 391e96733fe1261d2c8f22f1b7d4f8232ff8e456 Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Wed, 12 Jul 2023 03:16:34 +0300
 Subject: [PATCH 4/4] AUR Copy DLL dependencies of 32bit libvkd3d dlls into the
@@ -20,7 +20,7 @@ a runtime dependency.
  1 file changed, 9 insertions(+)
 
 diff --git a/proton b/proton
-index c581144f..9b6047c9 100755
+index 4af0c40c..caceceed 100755
 --- a/proton
 +++ b/proton
 @@ -1083,6 +1083,15 @@ class CompatData:

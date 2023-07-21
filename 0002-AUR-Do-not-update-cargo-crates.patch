@@ -1,4 +1,4 @@
-From 4bd8fb1ab5ceb8541c67c590a8083581ad27e180 Mon Sep 17 00:00:00 2001
+From d8181ccb82297b9b3e56ef25f3042caeb65b988c Mon Sep 17 00:00:00 2001
 From: Stelios Tsampas <loathingkernel@gmail.com>
 Date: Sun, 19 Mar 2023 10:56:59 +0200
 Subject: [PATCH 2/4] AUR Do not update cargo crates
@@ -8,7 +8,7 @@ Subject: [PATCH 2/4] AUR Do not update cargo crates
  1 file changed, 2 deletions(-)
 
 diff --git a/make/rules-cargo.mk b/make/rules-cargo.mk
-index 45bd7381..11e36c1d 100644
+index e6529e2c..51c8f0e2 100644
 --- a/make/rules-cargo.mk
 +++ b/make/rules-cargo.mk
 @@ -13,8 +13,6 @@ $$(OBJ)/.$(1)-configure$(3):
