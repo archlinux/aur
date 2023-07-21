@@ -1,0 +1,21 @@
+pkgbase = rofi-ykman-git
+	pkgdesc = YubiKey manager script for rofi
+	pkgver = r15.5275382
+	pkgrel = 1
+	url = https://github.com/nukeop/rofi-ykman
+	arch = any
+	license = AGPL-3.0
+	makedepends = git
+	depends = bash
+	depends = yubikey-manager
+	optdepends = xclip: X11 clipboard support
+	optdepends = wl-clipboard: Wayland clipboard support
+	optdepends = xdotool: X11 typing support
+	optdepends = wtype: Wayland typing support
+	optdepends = libnotify: notification support
+	provides = rofi-ykman
+	conflicts = rofi-ykman
+	source = rofi-ykman-git::git+https://github.com/nukeop/rofi-ykman.git#branch=master
+	md5sums = SKIP
+
+pkgname = rofi-ykman-git
