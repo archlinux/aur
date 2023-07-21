@@ -29,7 +29,7 @@ package() {
     install -Dm755 src/post $pkgdir/etc/trlog/post
     install -Dm755 log/* $pkgdir/etc/trlog/
     install -Dm644 doc/trloglinux.pdf $pkgdir/usr/share/doc/trlog/trloglinux.pdf
-    ln -s $pkgdir/etc/trlog/trlog $pkgdir/usr/bin/
-    ln -s $pkgdir/etc/trlog/post $pkgdir/usr/bin/trlog-post
+    ln -sf /etc/trlog/trlog $pkgdir/usr/bin/
+    ln -sf /etc/trlog/post $pkgdir/usr/bin/trlog-post
 
 }
