@@ -1,7 +1,7 @@
 # Maintainer: Martin Marmsoler <martin.marmsoler@gmail.com>
 
-_pkgname=sphinxcontrib-youtube
-pkgname=python-sphinxcontrib-youtube
+_pkgname=sphinx-contrib-youtube
+pkgname=python-sphinx-contrib-youtube
 pkgver=1.3.0
 pkgrel=2
 pkgdesc="This package contains the youtube Sphinx extension."

@@ -1,4 +1,4 @@
-pkgbase = python-sphinxcontrib-youtube
+pkgbase = python-sphinx-contrib-youtube
 	pkgdesc = This package contains the youtube Sphinx extension.
 	pkgver = 1.3.0
 	pkgrel = 2
@@ -11,7 +11,7 @@ pkgbase = python-sphinxcontrib-youtube
 	depends = python
 	depends = python-sphinx
 	depends = python-requests
-	source = python-sphinxcontrib-youtube-1.3.0.tar.gz::https://codeload.github.com/sphinx-contrib/youtube/tar.gz/refs/tags/v1.3.0
+	source = python-sphinx-contrib-youtube-1.3.0.tar.gz::https://codeload.github.com/sphinx-contrib/youtube/tar.gz/refs/tags/v1.3.0
 	sha256sums = d6191c26e1b16e880391c8a61dc4f99c892325987f1559b13117bec95faf5fd4
 
-pkgname = python-sphinxcontrib-youtube
+pkgname = python-sphinx-contrib-youtube
