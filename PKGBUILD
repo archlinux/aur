@@ -4,7 +4,7 @@
 pkgname='intel-ethernet-722smc'
 pkgver='5.50'
 pkgrel='1'
-pkgdesc='NVM Update Utility for Intel® Network Adapter X722 Series for Intel® S2600WF'
+pkgdesc='NVM Update Utility for Intel® Network Adapter X722 Series for Supermicro® X11 (DPi/DPi-NT)'
 arch=('x86_64')
 url='https://forum.proxmox.com/threads/supermicro-x11dpi-nt-nic-x722-firmware-nvm-update.121609/'
 license=('Custom')
