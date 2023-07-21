@@ -2,7 +2,7 @@
 
 pkgname=ares-emu
 pkgver=133
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
@@ -15,7 +15,7 @@ install=ares.install
 source=("https://github.com/ares-emulator/ares/archive/refs/tags/v${pkgver}.tar.gz"
         "ares-paths.patch")
 sha256sums=("8360da8638895d9d2a77e8f69d06d3204ece985b085a6eec1d83facbe3aaf5fb"
-        "cd3a069e0b67ba192a8fbf96575fc64e2cb863e060e20a13d2dba09f7ef867ce")
+        "e9e7ebebc3c7e364d777e77bba85abec60cd76013c9963559d4c717750784f0d")
 
 prepare() {
   # Replace the placeholder with pkgver to automatically point at the source folder

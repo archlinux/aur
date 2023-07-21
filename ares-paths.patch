@@ -1,4 +1,4 @@
-diff --git a/ares/desktop-ui/desktop-ui.cpp b/ares/desktop-ui/desktop-ui.cpp
+diff --git a/ares-PLACEHOLDER/desktop-ui/desktop-ui.cpp b/ares-PLACEHOLDER/desktop-ui/desktop-ui.cpp
 @@ -26,10 +26,20 @@
    location = {Path::userData(), "ares/", name};
    if(inode::exists(location)) return location;
@@ -23,8 +23,8 @@ diff --git a/ares/desktop-ui/desktop-ui.cpp b/ares/desktop-ui/desktop-ui.cpp
      return {Path::userData(), "ares/", name};
    #else 
 
-diff --git a/ares/mia/mia.cpp b/ares/mia/mia.cpp
-@@ -26,10 +26,15 @@
+diff --git a/ares-PLACEHOLDER/mia/mia.cpp b/ares-PLACEHOLDER/mia/mia.cpp
+@@ -28,10 +28,15 @@
    location = {Path::userData(), "ares/", name};
    if(inode::exists(location)) return location;
  
