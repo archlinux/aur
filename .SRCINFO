@@ -1,0 +1,19 @@
+pkgbase = strongdmm
+	pkgdesc = An alternative yet robust map editor for BYOND.
+	pkgver = 2.7.4.alpha
+	pkgrel = 1
+	url = https://github.com/SpaiR/StrongDMM/
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = go
+	makedepends = xorg-server-devel
+	makedepends = git
+	makedepends = gendesk
+	depends = gtk3
+	depends = glibc
+	optdepends = byond: For compliling created maps
+	source = git+https://github.com/SpaiR/StrongDMM/#tag=090c456f7ca26c24321c1347a6da2a8a9c8d2386
+	sha256sums = SKIP
+
+pkgname = strongdmm
