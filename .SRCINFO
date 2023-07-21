@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-game-libretro-mgba
 	pkgdesc = Libretro wrapper for Kodi's Game API
-	pkgver = 0.11.0.41
+	pkgver = 0.11.0.45
 	pkgrel = 1
 	url = https://github.com/kodi-game/game.libretro.mgba
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = kodi-addon-game-libretro-mgba
 	makedepends = libretro-mgba
 	options = !lto
 	options = debug
-	source = kodi-addon-game-libretro-mgba-0.11.0.41.tar.gz::https://github.com/kodi-game/game.libretro.mgba/archive/0.11.0.41-Nexus.tar.gz
-	sha512sums = 89d00927d048f3910d2280ab1f93d1000e40839d55e5184464fdc36db0f9d74b568eaa62291ea0d74aca636d69f619973a08e71c6600841da2c42b5414987668
+	source = kodi-addon-game-libretro-mgba-0.11.0.45.tar.gz::https://github.com/kodi-game/game.libretro.mgba/archive/0.11.0.45-Nexus.tar.gz
+	sha512sums = ca43631d19c4bdcf7519685308ca3d8de3565103e4854d960ea9eacb867a2046a623cdf88efbd1c52378ef35907bdcb6642afc6954c2b323628082bdbb1b92f8
 
 pkgname = kodi-addon-game-libretro-mgba
 	depends = kodi-addon-game-libretro
