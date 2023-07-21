@@ -1,0 +1,12 @@
+diff --git a/third-party/rsutils/include/rsutils/version.h b/third-party/rsutils/include/rsutils/version.h
+index bf8330cef..f68b8c81e 100644
+--- a/third-party/rsutils/include/rsutils/version.h
++++ b/third-party/rsutils/include/rsutils/version.h
+@@ -5,6 +5,7 @@
+ 
+ #include <string>
+ #include <iosfwd>
++#include <cstdint>
+ 
+ 
+ struct tm;
