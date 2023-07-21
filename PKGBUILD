@@ -9,7 +9,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=sudo-selinux
-_sudover=1.9.14p1
+_sudover=1.9.14p2
 pkgrel=1
 pkgver=${_sudover/p/.p}
 pkgdesc="Give certain users the ability to run some commands as root - SELinux support"
@@ -29,7 +29,7 @@ install=${pkgname/-selinux}.install
 source=(https://www.sudo.ws/sudo/dist/${pkgname/-selinux}-$_sudover.tar.gz{,.sig}
         sudo_logsrvd.service
         sudo.pam)
-sha256sums=('e91bf5ef2e09d857ee901c3465cf7ddb37e43c763b65d19fa0862d1dec128faf'
+sha256sums=('15f6308db0ed4265ec929f2c61e2e13492e551750c203ee001d1fcd8104c9514'
             'SKIP'
             '8b91733b73171827c360a3e01f4692772b78e62ceca0cf0fd4b770aba35081a1'
             'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
@@ -84,7 +84,7 @@ package() {
 
   install -Dm644 "$srcdir/sudo.pam" "$pkgdir/etc/pam.d/sudo"
 
-  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/sudo-selinux/LICENSE"
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/sudo-selinux"
 }
 
 # vim:set ts=2 sw=2 et:
