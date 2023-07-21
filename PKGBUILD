@@ -2,7 +2,7 @@
 # Maintainer: Biell <biell@pobox.com>
 
 pkgname=vile
-pkgver=9.8_x
+pkgver=9.8_y
 _basever=${pkgver//_/}
 pkgrel=1
 pkgdesc="vi like emacs"
@@ -11,12 +11,7 @@ url="http://invisible-island.net/vile/vile.html"
 depends=('ncurses')
 license=('custom')
 source=( https://invisible-island.net/archives/vile/current/vile-${_basever}.tgz )
-sha1sums=( 236d8c76439cbf60f36c53bf40c6f27f227da044 )
-
-prepare() {
-  cd "$srcdir"/$pkgname-${_basever}
-  #sed -i 's|FLEX_BETA|FLEX_NOBETA|g' filters/filters.h
-}
+sha256sums=( 1b67f1ef34f5f2075722ab46184bb149735e8538fa912fc07c985c92f78fe381 )
 
 build() {
   cd "$srcdir"/$pkgname-${_basever}
@@ -37,3 +32,4 @@ files (e.g., visvile) copyright by Clark Morgan.
 We distribute it under the terms of the GNU Public License, Version 2.
 EOF
 }
+
