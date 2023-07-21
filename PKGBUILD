@@ -14,7 +14,7 @@ conflicts=('goldendict' 'goldendict-git' 'goldendict-ng-git' 'goldendict-svn' 'g
 provides=('goldendict')
 replaces=('goldendict-svn' 'goldendict-git-opt' 'goldendict-webengine-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xiaoyifang/goldendict-ng/archive/v${pkgver}.tar.gz")
-md5sums=('SKIP')
+sha256sums=('05ec3e01ce16ffee106a9d9b96d52ef434e8cd737a5e0482d40d69255fec9780')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"

@@ -35,6 +35,6 @@ pkgbase = goldendict-ng
 	replaces = goldendict-git-opt
 	replaces = goldendict-webengine-git
 	source = goldendict-ng-23.07.23.tar.gz::https://github.com/xiaoyifang/goldendict-ng/archive/v23.07.23.tar.gz
-	md5sums = SKIP
+	sha256sums = 05ec3e01ce16ffee106a9d9b96d52ef434e8cd737a5e0482d40d69255fec9780
 
 pkgname = goldendict-ng
