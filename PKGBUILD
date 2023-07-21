@@ -11,7 +11,7 @@ pkgbase=ffmpeg-compat-59
 pkgname=ffmpeg-compat-59
 
 pkgver=5.1.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Compatibility package for ffmpeg to provide versions 59 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package"
 arch=("i686" "x86_64")  
@@ -130,5 +130,5 @@ package() {
     cd ffmpeg-${pkgver}
 
     make DESTDIR="${pkgdir}" install-libs
-    rm -f "${pkgdir}/usr/lib/*.so"
+    rm -rf ${pkgdir}/usr/lib/*.so
 }
