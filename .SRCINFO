@@ -1,6 +1,6 @@
 pkgbase = pot-translation
 	pkgdesc = 一个跨平台的划词翻译软件
-	pkgver = 1.9.1
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/pot-app/pot-desktop
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = pot-translation
 	provides = pot-translation
 	conflicts = pot-translation-bin
 	conflicts = pot-translation-git
-	source = pot-desktop-1.9.1.tar.gz::https://github.com/pot-app/pot-desktop/archive/refs/tags/1.9.1.tar.gz
-	sha512sums = b3b7f83bc80f84c139c9bd754c05c4862feee7bd01ffa3e59473a7fd63dae2c6d52d0ea8ec07d966c97fe5be8697927cb366eba0006e88b4de14bc81fb824dcb
+	source = pot-desktop-1.10.0.tar.gz::https://github.com/pot-app/pot-desktop/archive/refs/tags/1.10.0.tar.gz
+	sha512sums = cf30798ca6ca9697ec492c8e4c69162dd3b702771e1a3da24d31349f7e98bf669ec6855a3a4a960baf482fc9e8264bec78625889d03619187055aba0b544eff6
 
 pkgname = pot-translation
