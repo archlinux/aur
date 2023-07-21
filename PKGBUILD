@@ -7,7 +7,7 @@ arch=('any')
 license=('GPL2')
 url="https://github.com/trlinux/trlinux"
 makedepends=('git' 'fpc' 'texlive-core')
-depends=('libusb' 'libsieee1284' 'curl' 'alsa-lib' 'libsndfile' 'nmap')
+depends=('libusb' 'libieee1284' 'curl' 'alsa-lib' 'libsndfile' 'nmap')
 source=($pkgname::"git+$url.git")
 
 sha256sums=('SKIP')
