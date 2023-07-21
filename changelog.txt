@@ -190,3 +190,27 @@
 
 - Documentation and examples
 - Restructure setup
+
+## 5.1
+
+2022-11-20
+
+### Improved
+
+- Support unpack from ctype pointers
+
+### Added
+
+- Add support for char constants
+- Add native type test
+- dir.py example
+
+## 5.2
+
+2022-11-23
+
+### Fix
+
+- nested struct unpack fix
+- nested anonymous union offset fix
+- inspect offset for nested struct/union fix
