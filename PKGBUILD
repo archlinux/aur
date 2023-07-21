@@ -2,7 +2,7 @@
 
 pkgname='waydroid-settings-git'
 pkgver=r105.61187ec
-pkgrel=2
+pkgrel=3
 makedepends=('git')
 arch=('any')
 pkgdesc="GTK app written in Python to control Waydroid settings"
@@ -49,8 +49,6 @@ package(){
 		"$pkgdir/usr/bin/waydroid-helper"
 	install -Dm644 "$pkgdir/usr/share/waydroid-settings/icon2.png" \
 		"$pkgdir/usr/share/icons/hicolor/1232x1228/waydroid-settings.png"
-	install -Dm644 "$pkgdir/usr/share/waydroid-settings/install-to-waydroid.desktop" \
-		"$pkgdir/usr/share/applications/install-to-waydroid.desktop"
 	install -Dm644 "$pkgdir/usr/share/waydroid-settings/waydroid-settings.desktop" \
 		"$pkgdir/usr/share/applications/waydroid-settings.desktop"
 	install -Dm644 "$pkgdir/usr/share/waydroid-settings/org.freedesktop.policykit.waydroid-helper.policy" \
@@ -65,5 +63,6 @@ package(){
 		"$pkgdir/usr/share/waydroid-settings/install.sh" \
 		"$pkgdir/usr/share/waydroid-settings/uninstall.sh"
 	sed -i 's|/usr/lib/waydroid/data/wd-settings-icon.png|waydroid-settings|;s|/usr/bin/waydroid-settings.sh|waydroid-settings|;s|sudo ||' \
-		"$pkgdir/usr/share/applications/waydroid-settings.desktop" "$pkgdir/usr/share/applications/install-to-waydroid.desktop"
+		"$pkgdir/usr/share/applications/waydroid-settings.desktop"
+	find "$pkgdir/usr/share/waydroid-settings" -depth -name ".git*" -exec rm -rf '{}' \;
 }
