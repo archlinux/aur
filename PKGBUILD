@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mesa
-pkgver=23.0.0
+pkgver=23.1.4
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
@@ -14,9 +14,10 @@ validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l
               'A5CC9FEC93F2F837CB044912336909B6B25FADFA'  # Juan A. Suarez Romero <jasuarez@igalia.com>
               '71C4B75620BC75708B4BDB254C95FAAB3EB073EC'  # Dylan Baker <dylan@pnwbakers.com>
               '57551DE15B968F6341C248F68D8E31AFC32428A6') # Eric Engestrom <eric@engestrom.ch>
-source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig})
-sha256sums=('01f3cff3763f09e0adabcb8011e4aebc6ad48f6a4dd4bae904fe918707d253e4'
-            'SKIP')
+source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
+        https://github.com/mesonbuild/meson/archive/refs/tags/1.0.1.tar.gz)
+sha256sums=('7261a17fb94867e3dc5a90d8a1f100fa04b0cbbde51d25302c0872b5e9a10959'
+            'SKIP' 'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -26,6 +27,8 @@ prepare () {
 
 build() {
   cd "${srcdir}"/mesa-${pkgver}
+  # https://github.com/mesonbuild/meson/issues/11806
+  export PYTHONPATH="${srcdir}/meson-1.0.1"
   for _arch in ${_architectures}; do
     ${_arch}-meson build-${_arch} -Dgallium-drivers=swrast,zink -Dvulkan-drivers=swrast -Db_lto=false -Degl=disabled -Dshared-glapi=enabled -Dgles1=enabled -Dgles2=enabled -Dosmesa=true -Dvulkan-icd-dir=bin --includedir=include/mesa
     ninja -C build-${_arch} ${MAKEFLAGS}
