@@ -1,6 +1,6 @@
 pkgbase = zulu-8-bin
 	pkgdesc = Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.
-	pkgver = 8.0.372
+	pkgver = 8.0.382
 	pkgrel = 1
 	url = https://www.azul.com/products/zulu-community/
 	install = zulu-8-bin.install
@@ -19,9 +19,9 @@ pkgbase = zulu-8-bin
 	provides = java-runtime-headless-openjdk=8
 	provides = java-runtime=8
 	provides = java-runtime-openjdk=8
-	source_aarch64 = https://cdn.azul.com/zulu-embedded/bin/zulu8.70.0.23-ca-jdk8.0.372-linux_aarch64.tar.gz
-	sha256sums_aarch64 = c76da27e2cd5c396d72633baf27edd17031d87e5cb6c8620255dcd0384e61afa
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu8.70.0.23-ca-jdk8.0.372-linux_x64.tar.gz
-	sha256sums_x86_64 = afcda0f08cd05efd3bd60b021618931595ab03689f1c1fefcd46ef7761276d10
+	source_aarch64 = https://cdn.azul.com/zulu-embedded/bin/zulu8.72.0.17-ca-jdk8.0.382-linux_aarch64.tar.gz
+	sha256sums_aarch64 = bde61dd92b47baf9c9a15461c365765ae825b5e6e37602014c457b5be6f7b428
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu8.72.0.17-ca-jdk8.0.382-linux_x64.tar.gz
+	sha256sums_x86_64 = 7b15a56f2ae005beda0f875a269b3daad14ffa12969306cc745478385b25ba96
 
 pkgname = zulu-8-bin
