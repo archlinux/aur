@@ -1,7 +1,3 @@
-incorporate https://github.com/lubosz/tensorflow-rocm/
-last known good point:
-    d529c0ede8354b1c3751d9a324d3d6ffcd6db5da
-    Make test.py slightly less non-deterministic.
 
 # Maybe
 https://wiki.archlinux.org/title/Arch_packaging_standards -> reproducible
@@ -47,5 +43,4 @@ test with gfx803
 
 that is not dead which may eternal lie,
 and with strange aeons, even death may die
-It's never really over.
 

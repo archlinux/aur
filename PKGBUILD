@@ -10,18 +10,21 @@
 
 pkgbase=tensorflow-amd-git
 pkgname=(tensorflow-amd-git python-tensorflow-amd-git)
-pkgver=2.12.0
-_known_good_commit=de8086e14ae3152906e1137c212d2f7bb8ea463a
+pkgver=2.13
+_known_good_commit=b815da7265e23eb398d7de92a5de947726c47749  
 # You can find the latest probably successful official build at:
-# http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r212-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/
+# http://ml-ci.amd.com:21096/job/tensorflow/job/release-rocmfork-r213-rocm-enhanced/job/release-build-whl/lastSuccessfulBuild/
 # Look for the revision for the "ROCmSoftwarePlatform/tensorflow-upstream" repository.
-pkgrel=8
+# You can find the latest version at:
+# http://ml-ci.amd.com:21096/job/tensorflow/
+# Look for builds named like release-rocmfork-r*-enhanced
+pkgrel=1
 pkgdesc="Library for scalable machine learning (with ROCm)"
 url="https://www.tensorflow.org/"
 license=('APACHE')
 arch=('x86_64')
 
-depends=('c-ares' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'openmp' \
+depends=('c-ares' 'pybind11' 'openssl' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo' 'openmp' \
          'rocrand' 'rccl' 'miopen-hip' 'hipfft' \
          'zlib' 'glibc' 'gcc-libs' 'hsa-rocr' 'hip-runtime-amd' )
          # zlib etc. were discovered with namcap.
@@ -37,7 +40,7 @@ makedepends=('python-numpy' 'git' 'python-wheel' \
              # base-devel: fakeroot and some other things
              # rocm-core: /opt/rocm/.info/version, which the official docker image seems to need.
 optdepends=('tensorboard: Tensorflow visualization toolkit')
-source=('tensorflow-upstream-rocm::git+https://github.com/ROCmSoftwarePlatform/tensorflow-upstream#branch=r2.12-rocm-enhanced'
+source=('tensorflow-upstream-rocm::git+https://github.com/ROCmSoftwarePlatform/tensorflow-upstream#branch=r2.13-rocm-enhanced'
         tensorflow-2.10-sparse-transpose-op2.patch
         https://github.com/bazelbuild/bazel/releases/download/5.4.0/bazel_nojdk-5.4.0-linux-x86_64
         fix-c++17-compat.patch
@@ -85,7 +88,9 @@ check_dir() {
 
 prepare() {
   cd tensorflow-upstream-rocm
-  git revert --no-commit "$_known_good_commit..HEAD" || :
+  echo Checking out known good commit $_known_good_commit
+  git config advice.detachedHead false
+  git checkout $_known_good_commit
   cd ..
   
   # Allow any bazel version
@@ -142,10 +147,10 @@ build() {
   export USE_DEFAULT_PYTHON_LIB_PATH=1
   export TF_SET_ANDROID_WORKSPACE=0
   export TF_DOWNLOAD_CLANG=0
-  
+
   # See https://github.com/tensorflow/tensorflow/blob/master/third_party/systemlibs/syslibs_configure.bzl
   # Important since boringssl may no longer build due to dangling pointer warning as of 2023-06-04
-  export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,lmdb,nasm,png,pybind11,zlib"
+  export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,nasm,png,pybind11,zlib"
   
   # Don't need --config=rocm for tensorflow-upstream, since it's included from .tf_configure.bazelrc
   export BAZEL_ARGS="--config=opt"
