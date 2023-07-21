@@ -1,0 +1,17 @@
+pkgbase = kubebuilder-git
+	pkgdesc = SDK for building Kubernetes APIs
+	pkgver = 3.11.0.r29.g5356022b3
+	pkgrel = 1
+	url = https://github.com/kubernetes-sigs/kubebuilder
+	arch = x86_64
+	arch = armv7l
+	arch = armv7h
+	arch = aarch64
+	license = apache
+	makedepends = go
+	provides = kubebuilder
+	conflicts = kubebuilder
+	source = kubebuilder::git+https://github.com/kubernetes-sigs/kubebuilder#branch=master
+	sha256sums = SKIP
+
+pkgname = kubebuilder-git
