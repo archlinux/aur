@@ -1,17 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="chain-desktop-wallet-bin"
-pkgver=1.4.1
-pkgrel=3
+pkgver=1.4.2
+pkgrel=1
 pkgdesc="Crypto.com DeFi Desktop Wallet"
 arch=('x86_64')
 url="https://crypto.com/defi-wallet"
 _githuburl="https://github.com/crypto-com/chain-desktop-wallet"
 license=("Apache")
-depends=('electron' 'glibc')
+depends=('bash' 'electron19' 'glibc')
 source=("${pkgname%-bin}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Crypto.com-DeFi-Desktop-Wallet-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
-sha256sums=('5920c47e39791d645a973b70f17545ffc5f3d20b24dccc5c9907abaa66606f42'
-            'a5541536cc9f53a94910775fe033803e9f95b8e33103cd6edbfa2ce726771498')
+sha256sums=('f76cad08b2faedb0f7d569a917f2e7a91b248eb4986d612cb31793cbc79ad3df'
+            '52d6018af2296e4eeda5760b0a4ebc75425191136b8cf2fcf918540d47b5ec09')
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
