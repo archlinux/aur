@@ -1,0 +1,61 @@
+pkgbase = linux-firmware-xz
+	pkgdesc = Firmware files for Linux
+	pkgver = 20230625.ee91452d
+	pkgrel = 4
+	url = https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
+	arch = any
+	license = GPL2
+	license = GPL3
+	license = custom
+	makedepends = git
+	options = !strip
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=20230625?signed
+	validpgpkeys = 4CDE8575E547BF835FE15807A31B6BD72486CFD6
+	sha256sums = SKIP
+
+pkgname = linux-firmware-whence-xz
+	pkgdesc = Firmware files for Linux - contains the WHENCE license file which documents the vendor license details
+
+pkgname = linux-firmware-xz
+	depends = linux-firmware-whence-xz
+	provides = linux-firmware
+
+pkgname = amd-ucode-xz
+	pkgdesc = Microcode update image for AMD CPUs
+	license = custom
+	provides = amd-ucode
+
+pkgname = linux-firmware-nfp-xz
+	pkgdesc = Firmware files for Linux - nfp / Firmware for Netronome Flow Processors
+	depends = linux-firmware-whence-xz
+	provides = linux-firmware-nfp
+
+pkgname = linux-firmware-mellanox-xz
+	pkgdesc = Firmware files for Linux - mellanox / Firmware for Mellanox Spectrum switches
+	depends = linux-firmware-whence-xz
+	provides = linux-firmware-mellanox
+
+pkgname = linux-firmware-marvell-xz
+	pkgdesc = Firmware files for Linux - marvell / Firmware for Marvell devices
+	depends = linux-firmware-whence-xz
+	provides = linux-firmware-marvell
+
+pkgname = linux-firmware-qcom-xz
+	pkgdesc = Firmware files for Linux - qcom / Firmware for Qualcomm SoCs
+	depends = linux-firmware-whence-xz
+	provides = linux-firmware-qcom
+
+pkgname = linux-firmware-liquidio-xz
+	pkgdesc = Firmware files for Linux - liquidio / Firmware for Cavium LiquidIO server adapters
+	depends = linux-firmware-whence-xz
+	provides = linux-firmware-liquidio
+
+pkgname = linux-firmware-qlogic-xz
+	pkgdesc = Firmware files for Linux - qlogic / Firmware for QLogic devices
+	depends = linux-firmware-whence-xz
+	provides = linux-firmware-qlogic
+
+pkgname = linux-firmware-bnx2x-xz
+	pkgdesc = Firmware files for Linux - bnx2x / Firmware for Broadcom NetXtreme II 10Gb ethernet adapters
+	depends = linux-firmware-whence-xz
+	provides = linux-firmware-bnx2x
