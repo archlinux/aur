@@ -1,6 +1,6 @@
 pkgbase = remoteit
 	pkgdesc = remote.it is a cloud service that provides secure connections.
-	pkgver = 4.17.12
+	pkgver = 4.18.4
 	pkgrel = 1
 	url = https://remote.it
 	install = remoteit.install
