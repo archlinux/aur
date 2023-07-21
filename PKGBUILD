@@ -3,25 +3,18 @@
 # Contributor: Acidhub <dev@acidhub.click>
 
 pkgname=steam-tools-ng
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc="Some useful tools for use with steam client or compatible programs, websites"
 arch=('any')
 url="https://github.com/calendulish/steam-tools-ng"
-depends=('python>=3.9' 'python-certifi' 'python-aiohttp' 'python-stlib>=1.3' 'python-stlib-plugins>=1.2' 'python-gobject' 'gtk4')
+depends=('python>=3.9' 'python-certifi' 'python-aiohttp' 'python-stlib>=2.0' 'python-stlib-plugins>=1.2.3' 'python-gobject' 'gtk4')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'imagemagick')
 license=('GPL')
 source=(
     "https://github.com/calendulish/$pkgname/archive/v${pkgver}.tar.gz"
-    "steam-tools-ng-3.0.1-pygobject-fix.patch"
 )
-sha256sums=('c0fa03ec0e9d29aa35efce30fee65fa49e9dd6ae0bda2d289dd96171afca5b01'
-            '4817bc7b0e816fa3789f9c960b3351affd73148b839fffaa63ca0537558100f3')
-
-prepare() {
-    cd $pkgname-$pkgver
-    patch -Np1 < "../steam-tools-ng-3.0.1-pygobject-fix.patch"
-}
+sha256sums=('00a1e88cb8e6733c7704875b593c9948008f5792556b70fda58a1daf9e72584d')
 
 build() {
     cd $pkgname-$pkgver
