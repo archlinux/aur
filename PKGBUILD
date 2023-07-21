@@ -1,17 +1,25 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Sofia Lima <me [at] dzshn [dot] xyz>
 pkgname=vencord-desktop-bin
-pkgver=0.2.5
+_appname=vencorddesktop
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
 arch=('x86_64')
 url="https://github.com/Vencord/Desktop"
 license=('GPL3')
-depends=('libxkbcommon' 'libx11' 'nss' 'libcups' 'libxrandr' 'libxext' 'libxfixes' 'nspr' 'cairo' 'alsa-lib' 'dbus' 'libdrm' 'pango' \
-  'libxcb' 'glibc' 'at-spi2-core' 'libxdamage' 'glib2' 'expat' 'gcc-libs' 'libxcomposite' 'mesa' 'hicolor-icon-theme' 'gtk3')
+depends=('bash' 'electron25')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/VencordDesktop_${pkgver}_amd64.deb")
-sha256sums=('92b3bf4f20ff5b17e48591ff6bf48bf294eaa13438ca2c06afcfff2c82c825c0')
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/VencordDesktop_${pkgver}_amd64.deb"
+  "${pkgname%-bin}.sh")
+sha256sums=('f627703d457750e7033f33aaf6dbb744865072bf3d1e2c39f777121eae2682f8'
+            '283634e33143121d09020e79dbe44d5380b7f976258e4a44ef772a2676affa04')
 package() {
-    bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+    bsdtar -xf "${srcdir}/data.tar.xz"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/Vencord Desktop/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    sed "s|\"/opt/Vencord Desktop/${_appname}\" %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g;s|Icon=${_appname}|Icon=${pkgname%-bin}|g" \
+        -i "${srcdir}/usr/share/applications/${_appname}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/0x0/apps/${_appname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
