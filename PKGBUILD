@@ -1,16 +1,19 @@
 # Maintainer: Justus Piater <Justus-dev at Piater dot name>
+# Contributor: c0gnitivefl0w
+# Contributor: eldios
 
 _reponame=seadrive-fuse
 pkgname=seadrive-daemon
-pkgver=2.0.22
-pkgrel=2
+pkgver=2.0.27
+pkgrel=1
 pkgdesc="SeaDrive daemon with FUSE interface"
 arch=('x86_64')
 url="https://github.com/haiwen/seadrive-fuse"
 license=('GPL3')
-depends=('libsearpc' 'sqlite' 'curl' 'fuse2' 'libevent' 'openssl')
+depends=('libsearpc' 'sqlite' 'curl' 'fuse2' 'libevent' 'openssl'
+	 'glib2' 'zlib' 'util-linux-libs' 'jansson' 'glibc' 'libwebsockets')
 makedepends=('git')
-_tag=07a788a395e4669156bca294475692fb56b24947 # git rev-parse v${pkgver}
+_tag=30e139d01730aef4356251bb409067935614208d # git rev-parse v${pkgver}
 source=("git+https://github.com/haiwen/$_reponame.git#tag=$_tag")
 sha256sums=('SKIP')
 

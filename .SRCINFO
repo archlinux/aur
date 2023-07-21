@@ -1,7 +1,7 @@
 pkgbase = seadrive-daemon
 	pkgdesc = SeaDrive daemon with FUSE interface
-	pkgver = 2.0.22
-	pkgrel = 2
+	pkgver = 2.0.27
+	pkgrel = 1
 	url = https://github.com/haiwen/seadrive-fuse
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,13 @@ pkgbase = seadrive-daemon
 	depends = fuse2
 	depends = libevent
 	depends = openssl
-	source = git+https://github.com/haiwen/seadrive-fuse.git#tag=07a788a395e4669156bca294475692fb56b24947
+	depends = glib2
+	depends = zlib
+	depends = util-linux-libs
+	depends = jansson
+	depends = glibc
+	depends = libwebsockets
+	source = git+https://github.com/haiwen/seadrive-fuse.git#tag=30e139d01730aef4356251bb409067935614208d
 	sha256sums = SKIP
 
 pkgname = seadrive-daemon
