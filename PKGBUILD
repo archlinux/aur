@@ -4,7 +4,7 @@ pkgname=keyring-cli-git
 _pkgname=keyring
 pkgdesc="A very basic cli keyring tool to use accross various OS."
 pkgver=1.0.1.r1.g20fba88
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/vbouchaud/keyring"
 license=('MPL2')
@@ -12,6 +12,7 @@ conflicts=('keyring-cli')
 provides=('keyring-cli')
 makedepends=(
     'go'
+    'git'
 )
 
 pkgver() {
