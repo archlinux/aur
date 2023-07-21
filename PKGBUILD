@@ -2,7 +2,7 @@
 # Contributor: BlackEagle <ike DOT devolder AT gmail DOT com>
 
 pkgname=kodi-addon-game-libretro
-pkgver=20.1.0
+pkgver=20.2.4
 _codename=Nexus
 pkgrel=1
 pkgdesc="Libretro wrapper for Kodi's Game API"
@@ -13,7 +13,7 @@ groups=('kodi-addons' 'kodi-addons-game')
 makedepends=('cmake' 'libretro-core-info' 'kodi-platform' 'kodi-dev')
 options=(!lto debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kodi-game/game.libretro/archive/$pkgver-$_codename.tar.gz")
-sha512sums=('df1ea78b978a753b8698e808cd241fafc34d731e38d4f165b713e2bb836e9b1353ea6d8506e2f4915116e5e430286903615faa7eb6c3526f163e7cba88cedabf')
+sha512sums=('e0e62971444cfa972bf7ac0550822d97455aa46565eae146dc8999afbb5aa787d3d8bc829182d5ed4f21e6945a7a18caaca91cdbdf101abdb3294485a0406c71')
 
 build() {
     cd "game.libretro-$pkgver-$_codename"
