@@ -1,6 +1,6 @@
 pkgbase = advanced-passgen-bin
 	pkgdesc = Advanced Password Generator
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://codedead.com/software/advanced-passgen
 	arch = x86_64
@@ -15,9 +15,7 @@ pkgbase = advanced-passgen-bin
 	depends = glibc
 	depends = gtk3
 	conflicts = advanced-passgen
-	conflicts = advanced-passgen-appimage
-	options = !strip
-	source = advanced-passgen-2.4.1.deb::https://github.com/CodeDead/Advanced-PassGen/releases/download/v2.4.1/advanced-passgen_2.4.1_amd64.deb
-	sha256sums = b3be50486052573a5e8e2a000d2e83089e2c4c9de78e4e203eda227d358370c3
+	source = advanced-passgen-2.4.2.deb::https://github.com/CodeDead/Advanced-PassGen/releases/download/v2.4.2/advanced-passgen_2.4.2_amd64.deb
+	sha256sums = baaf127575a6205ce121cf7bc3bb3f3cc45333c3e0d388e53b27638f45cca929
 
 pkgname = advanced-passgen-bin
