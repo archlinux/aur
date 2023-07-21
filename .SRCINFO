@@ -1,0 +1,14 @@
+pkgbase = nvdock-git
+	pkgdesc = a tray icon to easily launch the nvidia-settings control panel
+	pkgver = r7.1290edc
+	pkgrel = 1
+	url = http://www.opsat.net/user/bob/projects/nvdock
+	arch = x86_64
+	license = BSD
+	depends = gtk2
+	provides = nvdock
+	conflicts = nvdock
+	source = git+https://github.com/LAKostis/nvdock
+	md5sums = SKIP
+
+pkgname = nvdock-git
