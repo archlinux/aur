@@ -1,7 +1,7 @@
 pkgbase = linux-radxa-rkbsp5-bin
 	pkgdesc = Precompiled Linux kernel package based on 5.10.x BSP kernel published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards
 	pkgver = 5.10.110
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/radxa/kernel
 	arch = aarch64
 	license = GPL2
@@ -13,13 +13,28 @@ pkgbase = linux-radxa-rkbsp5-bin
 	noextract = linux.preset
 	noextract = extract-vmlinux
 	noextract = extlinux.arch.template
+	noextract = libmali-valhall-g610-g13p0-wayland-gbm.so
+	noextract = libmali-valhall-g610-g13p0-x11-gbm.so
+	noextract = mali_csffw.bin
+	noextract = libmali
+	noextract = libmaliw
 	options = !strip
 	source = linux.preset
 	source = extract-vmlinux
 	source = extlinux.arch.template
+	source = libmali_g610_wayland.so::https://github.com/JeffyCN/mirrors/raw/libmali/lib/aarch64-linux-gnu/libmali-valhall-g610-g13p0-wayland-gbm.so
+	source = libmali_g610_x.so::https://github.com/JeffyCN/mirrors/raw/libmali/lib/aarch64-linux-gnu/libmali-valhall-g610-g13p0-x11-gbm.so
+	source = https://github.com/JeffyCN/mirrors/raw/488f49467f5b4adb8ae944221698e9a4f9acb0ed/firmware/g610/mali_csffw.bin
+	source = libmali
+	source = libmaliw
 	sha512sums = 03cdaa19ff754c1b16cbfe8b08d38fed2f21c688a6e00d331ca53c4ef937c1cd3fdcfca2241d136238f220a87f3da04c1e6e192d262b4505f8bff3ddcbc8b9ad
 	sha512sums = ba6edcd5f56a4c3e865578eabf1e1311b8e5e7babffdb0f84b99971238505ca27eba506f2723638129ef6558eba95f7e4fd2e07b40e5a4de716e5de90d1cbe79
 	sha512sums = b09481badcc35acc5455b97545e87c706c5cb326e1b80237b2435d821c3c45002b44538095f3c5f3cfc720acf55bc27d97b0290e5cffa5acbdbaf0c2314f2d1b
+	sha512sums = f8e9c086156c5539b1489de57dcd378496920a7db1f6286f8a9be5f925844e97d1f43e2e9398d85d0c661eebebfd46d3a287507e8c733e45cacd3947c59337b9
+	sha512sums = fa4656885b40edf5cdb248297cddb5bb93c8c7c598a4a8dc2c658606f1814de45c32c621d3806cc65f724490779a270e156c2256e3a8df5a4aa9cc1aa4e1ab83
+	sha512sums = fbcc7d4954a35d0c15a942f0fcb55d6423c3d2263b29a575f26a17d5e4acc75897bed46d89b2504934427078b8628691fbb4a872a2b6eb658192aa856eab9460
+	sha512sums = 49299ae1f06c78746e6ef5768c1850a433ed0dcaac833ef8d060783d63d37022b4b6ada6630f7a2089a4c3a176408fce5237f79e1171a63593ce58c0c8a2228f
+	sha512sums = 459d7b1f02983a3fd82b4aadaf753e2b23f634f1d1d8299f5067cd8edcda152d374f3b07be859e70bb293d62e74d7e6b65df1cf389be46318cfc4d4fd8e4d3af
 
 pkgname = linux-radxa-rkbsp5-bin
 	pkgdesc = Precompiled Linux kernel image based on 5.10.x BSP published by RADXA targetting rk3399 based rock4 and rk3588 based rock5 boards
@@ -33,6 +48,7 @@ pkgname = linux-radxa-rkbsp5-bin
 	provides = linux=5.10.110
 	provides = linux-rkbsp
 	conflicts = linux
+	conflicts = libmali
 	backup = etc/mkinitcpio.d/linux-radxa-rkbsp5.preset
 
 pkgname = linux-radxa-rkbsp5-bin-headers
