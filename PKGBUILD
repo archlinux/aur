@@ -8,15 +8,15 @@ pkgname=cro-chain-desktop
 pkgdesc='Crypto.com DeFi Desktop Wallet'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
-pkgver=1.4.1
-pkgrel=6
+pkgver=1.4.2
+pkgrel=1
 arch=('x86_64')
 depends=('electron19')
 makedepends=('yarn' 'fnm')
 source=("${_pkgbin}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${_pkgbin}.desktop"
         "${_pkgbin}.sh")
-sha512sums=('cccc235b644a232ca09d2c456d9f93a38dfaf7a184c6d5b286c32bc2e4e55d69e6d78b6356d2a279b8669fe10428642c5cc93b6ff1402f55ddd9fbbc0bb263ff'
+sha512sums=('432a5d88b312b7d40adf659a2470ada03032537c2770e45f070194392ef287b888dcf635c9d60a251379011ffe4571b9dae89c94b2c9a0e9ac6ef1ee091d0d16'
             'f7e4d91d7078a1d627995ffec39b4b67239827dbab0651909238a718ac4538bd6316c8f87430b244b13f617214171d6283ae3b1c268827b3d49f8dead5d2d71a'
             '8be2a47ec0d4831c7bedc39a0cdbf5eee5d33df1483c2c43202cc661bce3747a14f873e2c6ca7a6e7dc0b2fac74374ede6a8b600dec576c5f8f30ce523c444bd')
 
@@ -26,21 +26,10 @@ _fnm_use() {
   fnm use --install-if-missing
 }
 
-_check_nodejs() {
-  exp_ver=$(cat .node-version)
-  use_ver=$(node -v)
-  if [[ "${exp_ver}" != "${use_ver}" ]]
-  then
-    echo "Using the wrong version of NodeJS! Expected [${exp_ver}] but using [${use_ver}]."
-    exit 1
-  fi
-}
-
 build() {
   cd "${_pkgbin}-${pkgver}"
 
   _fnm_use
-  _check_nodejs
 
   yarn install --frozen-lockfile
   yarn electron:build
