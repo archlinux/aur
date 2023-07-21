@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fishing-funds-appimage
-pkgver=8.0.0
-pkgrel=2
+pkgver=8.0.1
+pkgrel=1
 pkgdesc="基金,大盘,股票,虚拟货币状态栏显示小应用,基于Electron开发."
 arch=('x86_64')
 url="https://ff.1zilc.top/"
@@ -13,11 +13,11 @@ depends=('hicolor-icon-theme' 'zlib' 'glibc')
 options=(!strip)
 _install_path="/opt/appimages"
 source=("${pkgname%-appimage}-${pkgver}.AppImage::${_githuburl}/releases/download/v${pkgver}/Fishing-Funds-${pkgver}.AppImage")
-sha256sums=('53496f8d8ce04ad22e95306c10f081b1f329f79a35d56a8a45f112f51a0e01dc')
+sha256sums=('806269b788fda2fb3c1519f3086dfa2f96094b9d03081792fcfbeb5f18a94114')
      
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage"
-    "${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" --appimage-extract > /dev/null
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-appimage}-${pkgver}.AppImage" "${pkgdir}/${_install_path}/${pkgname%-appimage}.AppImage"
