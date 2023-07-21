@@ -1,7 +1,7 @@
 pkgbase = r-gargle
 	pkgdesc = Utilities for Working with Google APIs
-	pkgver = 1.5.1
-	pkgrel = 2
+	pkgver = 1.5.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=gargle
 	arch = any
 	license = MIT
@@ -27,8 +27,8 @@ pkgbase = r-gargle
 	optdepends = r-sodium
 	optdepends = r-spelling
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/gargle_1.5.1.tar.gz
-	md5sums = ffbccb99846ff6eec001a12cd740f811
-	sha256sums = e3ba27b5405de5fe06c8d245a6b357d291ed0cbaeab54c807e5ceee83efcb9a5
+	source = https://cran.r-project.org/src/contrib/gargle_1.5.2.tar.gz
+	md5sums = d18b3d01e31e0dd4f4482aed5b85dc9c
+	sha256sums = 4a5beb046eb50a168b4baf5d1fcd8ac20d698e7fcb6b6ef46a436ded5b039001
 
 pkgname = r-gargle

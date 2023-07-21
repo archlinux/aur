@@ -3,10 +3,10 @@
 # Contributor: Pranav K Anupam <pranavanupam@yahoo.com>
 
 _pkgname=gargle
-_pkgver=1.5.1
+_pkgver=1.5.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Utilities for Working with Google APIs"
 arch=(any)
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -40,8 +40,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ffbccb99846ff6eec001a12cd740f811')
-sha256sums=('e3ba27b5405de5fe06c8d245a6b357d291ed0cbaeab54c807e5ceee83efcb9a5')
+md5sums=('d18b3d01e31e0dd4f4482aed5b85dc9c')
+sha256sums=('4a5beb046eb50a168b4baf5d1fcd8ac20d698e7fcb6b6ef46a436ded5b039001')
 
 build() {
   mkdir -p build
