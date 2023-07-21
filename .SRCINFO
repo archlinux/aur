@@ -1,18 +1,19 @@
 pkgbase = plasma5-applets-uswitch
 	pkgdesc = Modified version of User Switch plasmoid
-	pkgver = 1.2.2
+	pkgver = 1.3.0
 	pkgrel = 1
-	url = https://gitlab.kokakiwi.net/contrib/kde/plasma-addons/uswitch
+	url = https://gitlab.com/divinae/uswitch
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = cmake
 	makedepends = extra-cmake-modules
+	makedepends = kcoreaddons
 	depends = plasma-workspace
 	provides = plasma5-applets-uswitch
 	conflicts = plasma5-applets-uswitch
-	source = uswitch-1.2.2.tar.gz::https://gitlab.kokakiwi.net/contrib/kde/plasma-addons/uswitch/-/archive/v1.2.2/uswitch-v1.2.2.tar.gz
-	sha256sums = c5c4b83ce4b0ffc3feacb8189f800eb5d7af2490a99ba9bbfc7465b81a2c38e0
+	source = plasma5-applets-uswitch-1.3.0.tar.gz::https://gitlab.com/divinae/uswitch/-/archive/1.3.0/uswitch-1.3.0.tar.gz
+	sha256sums = e861467b1161b2080d05bd4af764c0d4d956c7501c148c4a1f9a7a05e14d18f9
+	b2sums = 0ea0accc84c999b814c6e31c81fe5021c1db423694324cd08ce1a52827d58bd306cc73d10df1c720124b1d89555261bed2250efe4f6d34187f03f2c723555faf
 
 pkgname = plasma5-applets-uswitch
-
