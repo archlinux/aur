@@ -2,7 +2,7 @@
 
 pkgname="rofi-ykman-git"
 pkgver=r15.5275382
-pkgrel=1
+pkgrel=2
 pkgdesc='YubiKey manager script for rofi'
 arch=('any')
 url='https://github.com/nukeop/rofi-ykman'
@@ -28,6 +28,6 @@ pkgver() {
 
 package(){
     cd "$pkgname"
-    install -Dm755 "${pkgname::-4}" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "${pkgname::-4}" "$pkgdir/usr/bin/${pkgname::-4}"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname::-4}/LICENSE"
 }

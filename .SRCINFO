@@ -1,7 +1,7 @@
 pkgbase = rofi-ykman-git
 	pkgdesc = YubiKey manager script for rofi
 	pkgver = r15.5275382
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nukeop/rofi-ykman
 	arch = any
 	license = AGPL-3.0
