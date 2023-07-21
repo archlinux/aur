@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=10.1.beta6.r0.g1ca4a47dbd
+pkgver=10.1.beta7.r0.g543f8d62b0
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(palp brial cliquer maxima-fas gfan sympow nauty python-rpy2 python-fpyl
   gap lcalc lrcalc arb eclib gd python-cvxopt singular linbox m4rie pari-galdata pari-seadata-small planarity rankwidth tachyon
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials
   iml giac libhomfly libbraiding symmetrica threejs-sage python-primecountpy)
-optdepends=('cython: to compile cython code'
+optdepends=('cython0: to compile cython code'
   'python-pkgconfig: to compile cython code'
   'jmol: alternative 3D plot engine'
   'jupyter-jsmol: alternative 3D plot engine in the Jupyter notebook'
@@ -52,7 +52,7 @@ optdepends=('cython: to compile cython code'
   'topcom: to compute triangulations of point configurations'
   'python-database-cubic-hecke: cubic Hecke algebras'
   'msolve: polynomial system solving via msolve')
-makedepends=(cython boost python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe git)
+makedepends=(cython0 boost python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe git)
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git+https://github.com/sagemath/sage#branch=develop
