@@ -2,8 +2,9 @@
 
 REMOTEIT_DIR=/usr/share/remoteit
 INSTALL_API=https://install.remote.it/v1
-CONFIG_FILE=/etc/remoteit/config.json
-REGISTRATION=/etc/remoteit/registration
+CONFIG_DIR=/etc/remoteit
+CONFIG_FILE=$CONFIG_DIR/config.json
+REGISTRATION=$CONFIG_DIR/registration
 VERSION=$(cat $REMOTEIT_DIR/version.txt)
 
 # Detect which init software this device is using
@@ -25,6 +26,12 @@ fi
 
 r3_update_config() {
   r3_logger "Updating remote.it configuration."
+
+  # Check existence and writability of configuration dir
+  if [ ! -w $CONFIG_DIR ]; then
+    r3_logger "$CONFIG_DIR does not exist or is not writable."
+    mkdir $CONFIG_DIR || exit 1
+  fi
 
   local config
 
@@ -88,7 +95,7 @@ r3_get_claim() {
 r3_install_agent() {
   r3_logger "Installing remote.it agent."
 
-  mkdir -p /etc/remoteit
+  mkdir -p $CONFIG_DIR
 
   if [ ! -x /usr/share/remoteit/connectd ]; then
     r3_logger "Installing remote.it package."
@@ -97,7 +104,7 @@ r3_install_agent() {
 
     [ -n "$arch" ] || r3_error "Unable to determine architecture."
 
-    local url=https://downloads.remote.it/openwrt/v4.17.0/$arch/binaries.tgz
+    local url=https://downloads.remote.it/openwrt/v4.18.3/$arch/binaries.tgz
 
     curl -sSfo- "$url" | tar xzf - -C $REMOTEIT_DIR 2>/dev/null || r3_error "Unknown architecture \"$arch\"."
   fi
