@@ -6,8 +6,8 @@
  
 pkgname=godot-voxel
 pkgver=4.0.3
-pkgrel=2
-pkgdesc="The Godot game engine with Zylann's voxel tools module"
+pkgrel=3
+pkgdesc="The voxel tools module made by Zylann for the Godot game engine."
 url="https://voxel-tools.readthedocs.io/"
 license=('MIT')
 arch=('x86_64')
@@ -37,7 +37,7 @@ package() {
   install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
   install -Dm644 $srcdir/godot/icon.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg
   install -D -m755 $srcdir/godot/bin/godot.linuxbsd.editor.x86_64 $pkgdir/usr/bin/$pkgname
-  install -D -m644 ${srcdir}/godot/LICENSE.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
-  install -D -m644 ${srcdir}/godot/misc/dist/linux/godot.6 "${pkgdir}"/usr/share/man/man6/$pkgname.6
+  install -D -m644 $srcdir/godot/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -D -m644 $srcdir/godot/misc/dist/linux/godot.6 "$pkgdir"/usr/share/man/man6/$pkgname.6
 }
 
