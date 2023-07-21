@@ -1,8 +1,8 @@
 diff --git a/clang-tools-extra/clangd/Hover.cpp b/clang-tools-extra/clangd/Hover.cpp
-index fbfec61b2372..ef47c2517d00 100644
+index 8546577662b2..706cdec69a33 100644
 --- a/clang-tools-extra/clangd/Hover.cpp
 +++ b/clang-tools-extra/clangd/Hover.cpp
-@@ -1573,6 +1573,39 @@ markup::Document HoverInfo::present() const {
+@@ -1578,6 +1578,39 @@ markup::Document HoverInfo::present() const {
        parseDocumentation(Note, L.addItem());
    }
  

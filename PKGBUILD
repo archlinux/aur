@@ -61,7 +61,7 @@
 : ${CLANGD_HOVERBITFIELDSMASK:=$CLANGD_DEFAULT_PATCH_STATE}
 
 pkgname=clangd-opt
-pkgver=17.r18187.gb1d2687501f8
+pkgver=17.r18930.g8c33630e15c8
 pkgrel=1
 pkgdesc='Trunk version of standalone clangd binary, with custom patches (look AUR page or PKGBUILD comments)'
 arch=('x86_64')
@@ -81,8 +81,8 @@ source=('git+https://github.com/llvm/llvm-project.git'
         'hover-hex-formats.patch'
         'hover-bit-fields-mask.patch')
 sha256sums=('SKIP'
-            '5717119e9370b894ce3155d4222d87652a2d67cdf6a83c0e1f8fc075da809cad'  # hover-doxygen
-            '8e9aa2930380bbdcf4ae48ba309c558db9ccdbbb90f92d247a58ac9c758c87aa'  # doxygen-more-fields
+            '3f6eb5c99f5e6c13d1275f8adf3e4acfa4319ff5199cde4c610e0ceffc7ceca2'  # hover-doxygen
+            'c2b8b6b334a7f8b69a240b3c004032dd64dc846431c1381d5184ff42461479d3'  # doxygen-more-fields
             '9e5dd128cedc8f37724d9c39c0f8f7efc826b0fd367f3a03c2564ff9f514ced7'  # hover-resolve-forward-params
             '35153f4775647bd7172a460de595f8b1cab4db0ae85283cd1119864f5328ea48'  # lsp-codelens
             'd048d7a6db9fec3667d472a7aa559ceea2006366e805f0d633f85bc5b9a248bc'  # postfix-completion
