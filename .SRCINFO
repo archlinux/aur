@@ -1,6 +1,6 @@
 pkgbase = kodi-addon-game-libretro-snes9x
 	pkgdesc = This add-on provides a wrapper that allows Libretro cores to be loaded as game add-ons
-	pkgver = 1.62.3.42
+	pkgver = 1.62.3.46
 	pkgrel = 1
 	url = https://github.com/kodi-game/game.libretro.snes9x
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = kodi-addon-game-libretro-snes9x
 	makedepends = libretro-snes9x
 	options = !lto
 	options = debug
-	source = kodi-addon-game-libretro-snes9x-1.62.3.42.tar.gz::https://github.com/kodi-game/game.libretro.snes9x/archive/1.62.3.42-Nexus.tar.gz
-	sha512sums = f4787c929675dc7782ac2b5147c722fdce30fb6130e7ec94e7c3730b901577211e04db500541ee648d891c48034fa991497caea021347e28448af35d5ab34c8e
+	source = kodi-addon-game-libretro-snes9x-1.62.3.46.tar.gz::https://github.com/kodi-game/game.libretro.snes9x/archive/1.62.3.46-Nexus.tar.gz
+	sha512sums = fe4c13322a61ad1aa1b79f394019545278dab467cd7bc37c8e81848467f7f20590cfe13932acd4087cfb5c797635a531b783bd2ecf6457c04ac00601b1867f90
 
 pkgname = kodi-addon-game-libretro-snes9x
 	depends = kodi-addon-game-libretro
