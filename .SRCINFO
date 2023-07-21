@@ -1,4 +1,4 @@
-pkgbase = latencytop
+pkgbase = latencytop-bin
 	pkgdesc = A tool for software developers, aimed at identifying where system latency occurs.
 	pkgver = 0.5.0.0.1
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = latencytop
 	source = http://ftp.de.debian.org/debian/pool/main/l/latencytop/latencytop_0.5.0-0.1~bpo11+1_amd64.deb
 	md5sums = ae4ca840a7d4163250abc15ce1d25d67
 
-pkgname = latencytop
+pkgname = latencytop-bin

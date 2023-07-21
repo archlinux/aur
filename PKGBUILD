@@ -2,7 +2,7 @@
 # Previous Maintainer: Joao Cordeiro <jlcordeiro at gmail dot com>
 # Contributor: St�phane Gaudreault <stephane.gaudreault@gmail.com>
 
-pkgname=latencytop
+pkgname=latencytop-bin
 pkgver=0.5.0.0.1
 _pkgver="latencytop_0.5.0-0.1~bpo11+1"
 pkgrel=1
@@ -16,6 +16,6 @@ md5sums=('ae4ca840a7d4163250abc15ce1d25d67')
 
 package() {
 	tar -xvf data.tar.xz
-	mv ${srcdir}/usr/sbin ${srcdir}/usr/bin
-	cp -r ${srcdir}/usr ${pkgdir}
+	mv "$srcdir"/usr/sbin "$srcdir"/usr/bin
+	cp -r "$srcdir"/usr "$pkgdir"
 }
