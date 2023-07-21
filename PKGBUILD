@@ -7,6 +7,7 @@
 #Maintainer: blackmoon3 <https://github.com/blacksky3>
 #Credits: Evangelos Foutras <evangelos@foutrelis.com>
 #Credits: Jan "heftig" Steffens <jan.steffens@gmail.com>
+#Credits: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 #Credits: circle <az6980522@gmail.com>
 
 pkgbase=llvm10-minimal
