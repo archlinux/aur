@@ -1,7 +1,7 @@
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=failing-disk-reporter
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Failing Disk Reporter (FDR): Get a report on Matrix or Slack when a drive (HDD or SDD) is failing"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="https://git.sr.ht/~vejnar/failing-disk-reporter"
 license=("MPLv2")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~vejnar/failing-disk-reporter/archive/v${pkgver}.tar.gz")
-sha256sums=('1e2a3384eb5d0bb1a6e7c88c9d15f347cf8f2edf8495eb5e58437d11c8fdbc28')
+sha256sums=('f4330833dbca2ea33ffb154a96e3e8c82d166f6fe7a9542adad78a0decd2f8e9')
 
 build() {
     cd "$srcdir/failing-disk-reporter-v${pkgver}"
