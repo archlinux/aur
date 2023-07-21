@@ -5,7 +5,7 @@ pkgname=lib32-gegl
 _pkgbase=gegl
 pkgver=0.4.46
 _commit=e6cb97763e422d8853fc95c665f8b0c73f025dd8  # tags/GEGL_0_4_46
-pkgrel=2
+pkgrel=3
 pkgdesc="Graph based image processing framework (32-bit)"
 arch=('x86_64')
 url="https://www.gegl.org/"
@@ -13,13 +13,12 @@ license=('GPL3' 'LGPL3')
 depends=("gegl>=$pkgver"
          'lib32-babl' 'lib32-libspiro' 'lib32-json-glib'
          'lib32-poppler-glib'
-         'lib32-libgexiv2' 'lib32-openexr'
-         'lib32-librsvg' 'lib32-libtiff'
-         'lib32-lensfun' 'lib32-luajit'
-         'lib32-suitesparse'
-         'lib32-ffmpeg' 'ffmpeg')
+         'lib32-libgexiv2'
+         'lib32-libtiff'
+         'lib32-luajit'
+         'lib32-suitesparse')
 makedepends=('intltool' 'ruby' 'mesa' 'glu' 'exiv2' 'meson'
-             'xorgproto' 'shared-mime-info' 'lib32-sdl2')
+             'xorgproto' 'shared-mime-info')
 source=("git+https://gitlab.gnome.org/GNOME/$_pkgbase.git#commit=$_commit"
         "x86-linux-gnu")
 sha512sums=('SKIP'
@@ -47,6 +46,8 @@ build() {
       -Db_lto=true -Db_pie=true \
       -Dworkshop=true -Dmrg=disabled -Dmaxflow=disabled \
       -Dlibraw=disabled -Ddocs=false -Dintrospection=false \
+      -Dlensfun=disabled -Dlibav=disabled -Dlibrsvg=disabled \
+      -Dopenexr=disabled -Dsdl2=disabled -Dwebp=disabled \
       -Djasper=disabled \
       --cross-file  x86-linux-gnu
   ninja -C "build"
