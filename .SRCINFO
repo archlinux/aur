@@ -1,15 +1,15 @@
 pkgbase = edl-git
-	pkgdesc = Qualcomm reverse engineering and flashing tools
-	pkgver = r299.d5ff2d4
+	pkgdesc = Inofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools
+	pkgver = r419.76a2bf4
 	pkgrel = 1
 	url = https://github.com/bkerler/edl
 	arch = any
-	license = custom:MIT
+	license = MIT
 	makedepends = git
-	makedepends = python-setuptools>=42
+	makedepends = python-setuptools
 	depends = android-tools
 	depends = xz
-	depends = python>=3.0
+	depends = python
 	depends = python-pip
 	depends = python-capstone
 	depends = python-pyusb
@@ -22,8 +22,6 @@ pkgbase = edl-git
 	depends = python-keystone
 	provides = edl
 	conflicts = edl
-	options = !strip
-	options = emptydirs
 	source = edl::git+https://github.com/bkerler/edl.git
 	source = Loaders::git+https://github.com/bkerler/Loaders.git
 	md5sums = SKIP
