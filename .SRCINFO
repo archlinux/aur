@@ -1,0 +1,17 @@
+pkgbase = tts-now-bin
+	pkgdesc = 跨平台基于云平台(阿里云、讯飞等)语音合成 API 的文字转语音助手。支持单文本快速合成和批量合成。
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://tts.yycc.dev/
+	arch = x86_64
+	license = Apache
+	depends = bash
+	depends = electron22
+	provides = tts-now
+	conflicts = tts-now
+	source = tts-now-1.0.6.AppImage::https://github.com/funnyzak/tts-now/releases/download/1.0.6/tts-now-ubuntu-latest-1.0.6-33ac5a4.AppImage
+	source = tts-now.sh
+	sha256sums = 9539714adc1bf627fd75f00c3c1106ea6573e560ccd6ff015d1818774650c718
+	sha256sums = ace3513c9f1aab6bfff42cbf02b6c7febf5259fd82574983e5dc6ce7c55a593c
+
+pkgname = tts-now-bin
