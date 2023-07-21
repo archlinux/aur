@@ -1,5 +1,5 @@
 post_upgrade() {
-	if [ $(vercmp $2 133-2) -lt 0 ]; then cat << EOF
+	if [ $(vercmp $2 133-5) -lt 0 ]; then cat << EOF
 ********************************************************************************
 * Wanting to be as close as possible to Ares vanilla, the location             *
 * of settings files has been changed from                                      *

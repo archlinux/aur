@@ -2,7 +2,7 @@
 
 pkgname=ares-emu
 pkgver=133
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform, open source, multi-system emulator by Near and Ares team, focusing on accuracy and preservation."
 arch=(x86_64 i686)
 url="https://ares-emu.net/"
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   # If you want to build with gcc, edit to use g++ instead of clang++
-  make -C "${srcdir}/ares/desktop-ui" hiro=gtk3 compiler=clang++
+  make -C "${srcdir}/ares-${pkgver}/desktop-ui" hiro=gtk3 compiler=clang++
 }
 
 package() {
