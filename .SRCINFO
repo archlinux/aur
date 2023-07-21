@@ -1,18 +1,21 @@
 pkgbase = python-opentimestamps-git
 	pkgdesc = Python3 library for creating and verifying OpenTimestamps proofs
-	pkgver = 0.4.1.r3.g5ac3b06
+	pkgver = 0.4.5.r0.ga90094e
 	pkgrel = 1
 	url = https://github.com/opentimestamps/python-opentimestamps
 	arch = any
 	license = LGPL3
+	checkdepends = python-pytest
 	checkdepends = python-gitpython
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-bitcoinlib
-	depends = python-pysha3
+	depends = python-pycryptodomex
 	provides = python-opentimestamps
 	source = git+https://github.com/opentimestamps/python-opentimestamps
 	sha256sums = SKIP
 
 pkgname = python-opentimestamps-git
-

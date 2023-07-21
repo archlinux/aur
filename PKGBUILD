@@ -2,16 +2,16 @@
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 
 pkgname="python-opentimestamps-git"
-pkgver=0.4.1.r3.g5ac3b06
+pkgver=0.4.5.r0.ga90094e
 pkgrel=1
 pkgdesc="Python3 library for creating and verifying OpenTimestamps proofs"
 license=("LGPL3")
 arch=("any")
 provides=("python-opentimestamps")
 url="https://github.com/opentimestamps/python-opentimestamps"
-depends=("python-bitcoinlib" "python-pysha3")
-makedepends=("git" "python-setuptools")
-checkdepends=("python-gitpython")
+depends=("python-bitcoinlib" "python-pycryptodomex")
+makedepends=("git" "python-setuptools" "python-build" "python-installer" "python-wheel")
+checkdepends=("python-pytest" "python-gitpython")
 source=("git+$url")
 sha256sums=("SKIP")
 
@@ -22,15 +22,15 @@ pkgver(){
 
 build(){
  cd "python-opentimestamps"
- python setup.py build
+ python -m build --wheel --no-isolation
 }
 
 check(){
  cd "python-opentimestamps"
- python -m unittest discover -v
+ pytest
 }
 
 package(){
  cd "python-opentimestamps"
- python setup.py install --skip-build --root="$pkgdir" --optimize=1
+ python -m installer --destdir="$pkgdir" dist/*.whl
 }
