@@ -1,6 +1,6 @@
 # Maintainer: MelianMiko <melianmiko@gmail.com>
 pkgname=zeppplayer
-pkgver=1.6.9
+pkgver=1.7
 pkgrel=1
 pkgdesc="Unofficial ZeppOS emulator"
 arch=(any)
