@@ -6,7 +6,7 @@ pkgdesc="N6TR's TR log "
 arch=('any')
 license=('GPL2')
 url="https://github.com/trlinux/trlinux"
-makedepends=('git' 'fpc' 'texlive-core')
+makedepends=('git' 'fpc' 'texlive-latexextra')
 depends=('libusb' 'libieee1284' 'curl' 'alsa-lib' 'libsndfile' 'nmap')
 source=($pkgname::"git+$url.git")
 
@@ -24,5 +24,12 @@ pkgver() {
 
 package() {
     cd $srcdir/$pkgname
-    make DESTDIR=$pkgdir install
+    install -dm755 $pkgdir/usr/bin
+    install -Dm755 src/trlog $pkgdir/etc/trlog/trlog
+    install -Dm755 src/post $pkgdir/etc/trlog/post
+    install -Dm755 log/* $pkgdir/etc/trlog/
+    install -Dm644 doc/trloglinux.pdf $pkgdir/usr/share/doc/trlog/trloglinux.pdf
+    ln -s $pkgdir/etc/trlog/trlog $pkgdir/usr/bin/
+    ln -s $pkgdir/etc/trlog/post $pkgdir/usr/bin/trlog-post
+
 }
