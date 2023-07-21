@@ -1,12 +1,13 @@
 pkgbase = python-hyperer
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL3
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-poetry
+	depends = python>=3.9
 	source = https://files.pythonhosted.org/packages/source/h/hyperer/hyperer-0.2.1.tar.gz
 	sha256sums = 9ce7e3d5ddf2dd24ac29d5188a8a4292b5d498b954656b68bdf002eb843fe752
 
