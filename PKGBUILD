@@ -1,5 +1,5 @@
 # Maintainer: tee < teeaur at duck dot com >
-pkgbase=wasmedge
+#pkgbase=wasmedge
 _pkgname=WasmEdge
 pkgname=(
     wasmedge-bin
@@ -26,11 +26,11 @@ package_wasmedge-bin() {
     conflicts=(wasmedge)
     install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/${_pkgname,,}/
     cd $_pkgname-$pkgver-Linux
-    install -Dm755 bin/$pkgbase -t $pkgdir/usr/bin/
+    install -Dm755 bin/${_pkgname,,} -t $pkgdir/usr/bin/
     install -Dm755 lib64/libwasmedge.so.0.0.3 -t $pkgdir/usr/lib/
     cp -d lib64/libwasmedge.so -t $pkgdir/usr/lib/
     cp -d lib64/libwasmedge.so.0 -t $pkgdir/usr/lib/
-    install -D include/$pkgbase/* -t $pkgdir/usr/include/
+    install -D include/${_pkgname,,}/* -t $pkgdir/usr/include/
 }
 
 package_wasmedge-plugin-wasi-crypto() {
