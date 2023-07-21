@@ -1,0 +1,14 @@
+pkgbase = javy-bin
+	pkgdesc = A JavaScript to Webassembly toolchain
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/bytecodealliance/javy/releases/download/v1.1.2/
+	arch = x86_64
+	license = APACHE
+	provides = javy
+	conflicts = javy
+	source = https://github.com/bytecodealliance/javy/raw/main/LICENSE.md
+	sha256sums = 3b26cd02b9d9bf324bce59edd88c02cb93fa9a908528b805264db8cde53295e6
+	sha256sums_x86_64 = 9051b3b0faf79f7e15164818203e4e989834868ef78dd6bd30213b1c92389798
+
+pkgname = javy-bin
