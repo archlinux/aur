@@ -1,11 +1,11 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=xpybar
-pkgver=1.20.1
+pkgver=1.20.2
 pkgrel=1
 pkgdesc="A highly extensible minimalistic dock panel configured in Python 3"
 arch=(any)
-url="https://github.com/maandree/xpybar"
+url="https://codeberg.org/maandree/xpybar"
 license=('GPL3' 'AGPL3')
 depends=(python3 argparser-python 'python-xlib>=0.18' xorg-xrandr)
 optdepends=("alarm: for limiting the time of a file search in locks"
@@ -28,18 +28,18 @@ optdepends=("alarm: for limiting the time of a file search in locks"
 makedepends=(make coreutils sed zip auto-auto-complete texinfo)
 install=xpybar.install
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(9894a561cac9fff48a2c442b60004f809c9d189ee3b2a5e6635991935705143d)
+sha256sums=(77a0a04199c7cce72613c8c361891dab2b4158f06fac1e197dcd06ed6f249298)
 
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make PREFIX=/usr HDPARM_PATH=/usr/bin/hdparm
 }
 
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make PREFIX=/usr HDPARM_PATH=/usr/bin/hdparm install DESTDIR="$pkgdir"
+  cd "$srcdir/$pkgname"
+  make PREFIX=/usr HDPARM_PATH=/usr/bin/hdparm DESTDIR="$pkgdir" install
   chmod 4755 "$pkgdir/usr/bin/restricted-hdparm"
 }
 
