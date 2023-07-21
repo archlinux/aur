@@ -1,13 +1,13 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=pkgcache
-_cranver=2.1.1
+_cranver=2.2.0.1
 pkgname=r-${_cranname,,}
 pkgdesc="Cache ‘CRAN’-Like Metadata and R Packages"
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 
 arch=("i686" "x86_64")
 depends=(
@@ -58,7 +58,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("b024ab6731acb4fc425f35813fcc3fd7a05cb3010609f575113d7686591c7a06a7b6efaa56513b62cef15c66dc102aab12cf5fb0d93cf32bf25add3666cc7618")
+b2sums=("868b3494a122e8887e69dcf6e606ab750c4e8ba07fcdf4058819cfc5c39eda0ab895594eb205cb56d9da6f7f857b41ffd92447638337ca0cbaee5debed8f9c1f")
 
 build() {
     mkdir -p "${srcdir}/build/"
