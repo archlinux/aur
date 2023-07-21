@@ -3,7 +3,7 @@
 _name=pyopal
 pkgname=python-${_name}
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cython bindings and Python interface to Opal, a SIMD-accelerated database search aligner."
 url="https://github.com/althonos/pyopal"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -21,9 +21,10 @@ build() {
 }
 
 check() {
-    local pyver=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
+    local impl=$(python -c 'import sys; print(sys.implementation.name)')
+    local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    cd "${srcdir}/${_name}-${pkgver}/build/lib.linux-${machine}-${pyver}"
+    cd "${srcdir}/${_name}-${pkgver}/build/lib.linux-${machine}-${impl}-${abitag}"
     python -m unittest ${_name}.tests
 }
 
