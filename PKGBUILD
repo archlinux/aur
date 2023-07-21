@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('bash' 'electron25')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/VencordDesktop_${pkgver}_amd64.deb"
-  "${pkgname%-bin}.sh")
+    "${pkgname%-bin}.sh")
 sha256sums=('f627703d457750e7033f33aaf6dbb744865072bf3d1e2c39f777121eae2682f8'
             '283634e33143121d09020e79dbe44d5380b7f976258e4a44ef772a2676affa04')
 package() {
