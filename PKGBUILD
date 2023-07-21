@@ -4,7 +4,7 @@
 pkgname='intel-ethernet-722series'
 pkgver='5.30'
 pkgrel='1'
-pkgdesc='NVM Update Utility for Intel® Ethernet Converged Network Adapter X722 Series'
+pkgdesc='NVM Update Utility for Intel® Network Adapter X722 Series for Intel® S2600WF'
 arch=('x86_64')
 url='https://www.intel.com/content/www/us/en/download/19223/'
 license=('Custom')
