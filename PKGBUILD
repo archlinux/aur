@@ -9,7 +9,7 @@ url="https://github.com/wrs20/tmux-mpi"
 license=('MIT')
 groups=()
 depends=('dtach' 'python-libtmux' 'tmux')
-makedepends=('git')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 provides=('tmux-mpi')
 conflicts=()
 replaces=()
@@ -26,8 +26,12 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
+build() {
+  cd "$srcdir/${_pkgname}"
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "$srcdir/${_pkgname}"
-
-  install -D -m755 tmux-mpi -t "$pkgdir/usr/bin/"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
