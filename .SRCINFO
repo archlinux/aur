@@ -1,0 +1,17 @@
+pkgbase = python-sphinx-contrib-youtube-git
+	pkgdesc = This package contains the youtube Sphinx extension.
+	pkgver = r93.g4ffb539
+	pkgrel = 1
+	url = https://github.com/sphinx-contrib/youtube
+	arch = any
+	license = BSD 3-Clause
+	checkdepends = python
+	checkdepends = python-pytest
+	makedepends = python-flit
+	depends = python
+	depends = python-sphinx
+	depends = python-requests
+	source = git+https://github.com/sphinx-contrib/youtube.git
+	sha256sums = SKIP
+
+pkgname = python-sphinx-contrib-youtube-git
