@@ -6,15 +6,16 @@
 
 pkgname=yambar-wayland
 _pkgname=yambar
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=5
 pkgdesc="Simplistic and highly configurable status panel for Wayland (No X11 support)"
 arch=('any')
-url=https://codeberg.org/dnkl/yambar
+url=https://codeberg.org/dnkl/$_pkgname
 license=('MIT')
 conflicts=('yambar')
 provides=('yambar')
 makedepends=(
+    'git'
     'wayland-protocols'
 	'meson'
 	'ninja'
@@ -35,8 +36,9 @@ optdepends=(
 	'libmpdclient: for the MPD module')
 checkdepends=(
 	'libmpdclient')
-source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/dnkl/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('46f3002338f451c154678167bf3d5f593307954b6f381c50ddef2726b1a8c811')
+source=("git+$url.git?signed#commit=c4e094de3e531675bae9ff76d7e6f0dfdcaecae9")
+sha256sums=('SKIP')
+validpgpkeys=('B19964FBBA09664CC81027ED5BBD4992C116573F') # Daniel Eklöf (Git signing) <daniel@ekloef.se>
 
 build() {
 	cd $_pkgname
