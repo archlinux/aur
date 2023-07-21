@@ -1,0 +1,24 @@
+diff --git a/Makefile b/Makefile
+index 9c3901f..fb48d9e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,5 +1,6 @@
+ CFLAGS:=-Wall -fPIC
+ CACHE_DIR:=/var/cache/pam_cookies
++DESTDIR:=/
+ 
+ all: pam_cookie.so
+ 
+@@ -7,8 +8,8 @@ pam_cookie.so: pam_cookie.o
+ 	ld -x --shared -o $@ $^ -lpam -lssl
+ 
+ install: pam_cookie.so
+-	install --mode 644 --owner root --group root -D $< /lib/security/$<
+-	install --mode 2770 --owner root --group root -d $(CACHE_DIR)
++	install --mode 644 --owner root --group root -D $< $(DESTDIR)/usr/lib/security/$<
++	install --mode 2770 --owner root --group root -d $(DESTDIR)$(CACHE_DIR)
+ 
+ clean:
+-	rm *.o *.so
+\ No newline at end of file
++	rm *.o *.so

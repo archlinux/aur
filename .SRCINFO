@@ -1,0 +1,15 @@
+pkgbase = pam_cookie
+	pkgdesc = PAM module for keeping one-time-passwords valid over a period of time
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/jwhitbeck/pam_cookie
+	arch = x86_64
+	license = GPL
+	depends = pam
+	depends = openssl
+	source = https://github.com/jwhitbeck/pam_cookie/archive/v1.0.tar.gz
+	source = fix-makefile-for-makepkg.patch
+	sha256sums = 31b94818178d46cc8b6de29b1a48f9b87e4395e44e20eb0a04403d8b4d431301
+	sha256sums = 67b607acc90bb9ddfff367830310fe48adf7baad0fb3c9515ea1ad576a26aa41
+
+pkgname = pam_cookie
