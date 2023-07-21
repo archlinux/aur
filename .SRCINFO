@@ -1,0 +1,20 @@
+pkgbase = trlinux-git
+	pkgdesc = N6TR's TR log
+	pkgver = r524.0f524aa
+	pkgrel = 1
+	url = https://github.com/trlinux/trlinux
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = fpc
+	makedepends = texlive-core
+	depends = libusb
+	depends = libsieee1284
+	depends = curl
+	depends = alsa-lib
+	depends = libsndfile
+	depends = nmap
+	source = trlinux-git::git+https://github.com/trlinux/trlinux.git
+	sha256sums = SKIP
+
+pkgname = trlinux-git
