@@ -6,7 +6,7 @@ pkgname=(
     wasmedge-plugin-wasi-crypto
 )
 pkgver=0.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="WasmEdge is a lightweight, high-performance, and extensible WebAssembly runtime"
 arch=(x86_64 aarch64)
 url="https://wasmedge.org"
@@ -27,6 +27,7 @@ package_wasmedge-bin() {
     install -Dm644 LICENSE -t $pkgdir/usr/share/licenses/${_pkgname,,}/
     cd $_pkgname-$pkgver-Linux
     install -Dm755 bin/${_pkgname,,} -t $pkgdir/usr/bin/
+    install -Dm755 bin/${_pkgname,,}c -t $pkgdir/usr/bin/
     install -Dm755 lib64/libwasmedge.so.0.0.3 -t $pkgdir/usr/lib/
     cp -d lib64/libwasmedge.so -t $pkgdir/usr/lib/
     cp -d lib64/libwasmedge.so.0 -t $pkgdir/usr/lib/
