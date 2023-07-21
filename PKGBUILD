@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=pkgdepends
-_cranver=0.5.0
+_cranver=0.6.0
 pkgname=r-${_cranname,,}
 pkgdesc="Cache ‘CRAN’-Like Metadata and R Packages"
 url="https://cran.r-project.org/package=${_cranname}"
@@ -21,13 +21,12 @@ depends=(
     "r-jsonlite"
     "r-lpsolve"
     "r-pkgbuild>=1.0.2"
-    "r-pkgcache>=2.1.0"
+    "r-pkgcache>=2.2.0"
     "r-prettyunits>=1.1.1"
     "r-processx>=3.4.2"
     "r-ps"
     "r-r6"
     "r-rprojroot"
-    "r-withr>=2.1.1"
     "r-zip>=2.3.0"
 )
 optdepends=(
@@ -45,6 +44,7 @@ optdepends=(
     "r-spelling"
     "r-tibble"
     "r-webfakes>=1.1.5.9000"
+    "r-withr>=2.1.1"
 )
 
 # The unittests for `r-pkgdepends` have multiple circular
@@ -67,7 +67,7 @@ optdepends=(
 # )
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-b2sums=("5a0ccff2776afd027d00190e838c2b7b3bc87aefcb0a8113ee2fb3b7793eabcdc03c6782f66104dbb380f1aa6652137c631f784af523f6e394633e7d0031ef91")
+b2sums=("d3772ceb1287b4472909e3ae5dcc02b10f43b39ceb32267c1e2d830cebab8c1c081e5b1938cd5e382ae220d41a7f0dcc5a2d770eefcaf221794c33e46cdcd75a")
 
 build() {
     mkdir -p "${srcdir}/build/"
