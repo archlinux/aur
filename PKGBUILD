@@ -129,5 +129,7 @@ package() {
     cd ffmpeg-${pkgver}
 
     make DESTDIR="${pkgdir}" install-libs
+
     rm -rf ${pkgdir}/usr/lib/*.so
+    rm -rf ${pkgdir}/usr/lib/libswscale.so.6
 }
