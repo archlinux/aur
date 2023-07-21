@@ -9,25 +9,29 @@ _update_pkgver_hash=c893f6be
 
 pkgname=linuxqq-nt-bwrap
 pkgver="${_update_pkgver}"
-pkgrel=3
+pkgrel=4
 pkgdesc="New Linux QQ based on Electron, with bubblewrap sandbox and some tweaks"
 arch=('x86_64' 'aarch64')  # 龙架构版本停留在 3.1.0 未更新，故不纳入此包中
 url='https://im.qq.com/linuxqq/index.shtml'
 license=('custom')
-depends=('at-spi2-core' 'alsa-lib' 'desktop-file-utils' 'gtk3' 'gtk-update-icon-cache' 'libnotify' 'nss' 'gnutls' 'bubblewrap' 'xdg-user-dirs' 'flatpak-xdg-utils' 'snapd-xdg-open-git' 'libvips' 'openslide' 'autoconf')
+depends=('at-spi2-core' 'alsa-lib' 'desktop-file-utils' 'gtk3' 'gtk-update-icon-cache' 'libnotify' 'nss'
+'gnutls' 'bubblewrap' 'xdg-user-dirs' 'flatpak-xdg-utils' 'snapd-xdg-open-git'
+'libvips' 'openslide' 'autoconf'
+'libunwind'
+)
 makedepends=('p7zip')
 optdepends=('libappindicator-gtk3: 以显示托盘图标'
 			'gjs: 提供 GNOME Wayland 下的截图支持')
 provides=('qq' 'linuxqq')
 conflicts=('linuxqq')
-options=('!strip' '!emptydirs')
+options=('!emptydirs')
 install="${pkgname}.install"
 source_x86_64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_amd64.deb"  # 底包
                "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-x64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source_aarch64=("https://dldir1.qq.com/qqfile/qq/QQNT/${_base_pkgver_hash}/linuxqq_${_base_pkgver//_/-}_arm64.deb"  # 底包
                 "https://qqpatch.gtimg.cn/hotUpdate_new/release/linux-arm64/${pkgver//_/-}/${_update_pkgver_hash}/${pkgver//_/-}.zip.zip" )  # 热更新补丁
 source=('start.sh' 'config.json' 'xdg-open.sh')
-sha256sums=('475cf924e27999dcbd7af9314091b681f99f3bdef3bdffe0719a44cf1e0941d8'
+sha256sums=('4e1514ae8a666732c21f7f89455141f67e3a6f8290b0f97ea503c39f2c419f0e'
             '182e3cc60e9c7f4643043c398f42b7d021bce4e79490e043de195056aa851481'
             '78a573867355fb4c3e728d0c8ac0746d47fa7d64f90ee2b62ee9f0ccae095edb')
 sha256sums_x86_64=('4c1810ef357e8ee077292808217bafc67626be79ccff5ff05341248a8a48aaf6'
@@ -57,7 +61,7 @@ package() {
 	ln -s "/opt/QQ/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSES.chromium.html"
 
 	# 临时解决方案: 删除 linuxqq 自带的 libvips 以解决浏览图片崩溃问题
-	rm -f "${pkgdir}/opt/QQ/resources/app/sharp-lib/libvips-cpp.so.42"
+	rm -f "${pkgdir}"/opt/QQ/resources/app/{libssh2.so.1,libunwind*,sharp-lib/libvips-cpp.so.42}
 
 	# 对 desktop 文件做处理，使其使用正确的图标，启动 start.sh
 	cp "${srcdir}/start.sh" "${pkgdir}/opt/QQ/start.sh"
