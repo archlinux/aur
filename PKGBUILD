@@ -148,8 +148,8 @@ prepare() {
 
     git -c protocol.file.allow=always submodule update --init --filter=tree:0 --recursive
 
-    for submodule in gst-plugins-rs media-converter; do
-    pushd $submodule
+    for rustlib in gst-plugins-rs media-converter; do
+    pushd $rustlib
         export RUSTUP_TOOLCHAIN=stable
         export CARGO_HOME="${SRCDEST}"/proton-cargo
         cargo fetch --locked --target "i686-unknown-linux-gnu"
