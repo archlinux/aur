@@ -1,12 +1,12 @@
 # Maintainer: griffin <19497824+WingofaGriffin@users.noreply.github.com>
 pkgname=emudeck
 pkgver=2.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An installation script that helps you get started with emulation.'
 arch=('x86_64')
 url="https://emudeck.com"
 license=('GPL')
-depends=('packagekit-qt5' 'flatpak' 'rsync' 'unzip' 'jq' 'bash' 'curl' 'zenity')
+depends=('steam' 'flatpak' 'rsync' 'unzip' 'jq' 'bash' 'curl' 'zenity' 'libfuse2' 'git')
 provides=('emudeck')
 source=(launch-emudeck.sh)
 sha512sums=('94fddc5a4fa578dbe2a2b1c9f331567079c6ed99950be1476fa8e6797cb0531c16abb5a9ad038d6153566ab23b592d83d07e715d919e3c6c1131b0dddc27fb04')
@@ -31,5 +31,5 @@ pkgver() {
 }
 
 package() {
- 	install -Dm755 launch-emudeck.sh "$pkgdir/usr/bin/EmuDeck"
+ 	install -Dm755 launch-emudeck.sh "$pkgdir/usr/bin/emudeck"
 }
