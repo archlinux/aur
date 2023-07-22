@@ -1,0 +1,20 @@
+diff -Naur latencytop-05.orig/Makefile latencytop-05.new/Makefile
+--- latencytop-05.orig/Makefile	2023-07-22 01:19:41.480530570 +0200
++++ latencytop-05.new/Makefile	2023-07-22 01:21:27.519930394 +0200
+@@ -2,8 +2,8 @@
+ HAS_GTK_GUI = 1
+ 
+ DESTDIR =
+-SBINDIR = /usr/sbin
+-XCFLAGS = -W  -g `pkg-config --cflags glib-2.0` -D_FORTIFY_SOURCE=2 -Wno-sign-compare
++SBINDIR = /usr/bin
++XCFLAGS = -W  -g `pkg-config --cflags glib-2.0` -D_FORTIFY_SOURCE=2 -Wno-sign-compare -I/usr/include/ncursesw
+ LDF = -Wl,--as-needed `pkg-config --libs glib-2.0`   -lncursesw 
+ 
+ OBJS= latencytop.o text_display.o translate.o fsync.o
+@@ -38,4 +38,4 @@
+ 	mkdir -p $(DESTDIR)/usr/share/latencytop
+ 	install -m 0644 latencytop.trans $(DESTDIR)/usr/share/latencytop/latencytop.trans
+ 	install -m 0644 *.png $(DESTDIR)/usr/share/latencytop/
+-	install -m 0755 latencytop $(DESTDIR)$(SBINDIR)/
++	install -m 0755 latencytop $(DESTDIR)$(SBINDIR)/latencytop
