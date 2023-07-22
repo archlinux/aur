@@ -7,7 +7,7 @@
 # https://github.com/stha09/chromium-patches/releases
 
 _use_suffix=1
-pkgver=25.3.0
+pkgver=25.3.1
 _chromiumver=114.0.5735.134
 # shellcheck disable=SC2034
 pkgrel=1
