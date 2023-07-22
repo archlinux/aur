@@ -5,7 +5,7 @@
 
 pkgname=openscad-objects-git
 _pkg="${pkgname%-objects-git}"
-pkgver=2019.05.r2568.gccce0d16f
+pkgver=2023.01.21.rccce0d1
 pkgrel=1
 pkgdesc="The programmers solid 3D CAD modeller with experimental support for user-defined objects"
 arch=('x86_64')
