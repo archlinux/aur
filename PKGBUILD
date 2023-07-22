@@ -5,7 +5,7 @@ _pkgver_main=5.10.110
 _pkgver_suffix=orangepi5
 _pkgver_uname="${_pkgver_main}-${_pkgver_suffix}"
 _orangepi_repo='linux-orangepi'
-_orangepi_commit='7639c684a04b6f0ad068400da05d6c2ed2b7f18e'
+_orangepi_commit='eb1c681e5184e51d8ce1f351559d149d17f48b57'
 _srcname="${_orangepi_repo}-${_orangepi_commit}"
 pkgbase=linux-aarch64-${_pkgver_suffix}
 pkgname=(
@@ -13,7 +13,7 @@ pkgname=(
   "${pkgbase}-headers"
 )
 pkgver="${_pkgver_main}"
-pkgrel=3
+pkgrel=4
 arch=('aarch64')
 url="https://github.com/orangepi-xunlong/${_orangepi_repo}"
 license=('GPL2')
@@ -28,8 +28,8 @@ source=(
   'linux.preset'
 )
 sha256sums=(
-  'be0d5d0b2ab5061a990cf270cf5cd354c4dd480a304f7a0d98c66be7182ff9ea'
-  '6ec4e4767c7df92f9fb33cc6548efd86eb8fca2c53b6c0f76aac4bcee628d5ba'
+  '93ebccfed4d5d1f5a1612c06520a83346fcf4522dcf50c67bae11359f3f32d85'
+  'e9c720fa4dba291f3a87a04eb9245fcf99cd0c4164d2c5deefe7ca35eedf1960'
   '325e4afdc16e1eb34e18e651b0c7b8cb43a60ade086d8388aa5667d913157e55'
   'bdcd6cbf19284b60fac6d6772f1e0ec2e2fe03ce7fe3d7d16844dd6d2b5711f3'
 )
