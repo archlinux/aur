@@ -1,7 +1,7 @@
 # Maintainer: Vladyslav Aviedov <vladaviedov at protonmail dot com>
 # Contributor: Jacob Still <jacobcstill at gmail dot com>
 pkgname=focalboard-server
-pkgver=7.11.0
+pkgver=7.11.2
 pkgrel=1
 epoch=
 pkgdesc="Focalboard is an open source, self-hosted alternative to Trello, Notion, and Asana."
