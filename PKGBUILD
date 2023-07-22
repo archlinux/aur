@@ -2,28 +2,16 @@
 _base=trame
 pkgname=python-${_base}
 pkgdesc="Framework to build applications in plain Python"
-pkgver=2.5.2
+pkgver=3.0.2
 pkgrel=1
 arch=(any)
 url="https://github.com/Kitware/${_base}"
 license=(Apache)
-depends=(python-trame-server
-  python-trame-client
-  python-trame-router
-  python-trame-components
-  python-trame-plotly
-  python-trame-markdown
-  python-trame-matplotlib
-  python-trame-deckgl
-  python-trame-vega
-  python-trame-vuetify
-  python-trame-vtk
-  python-trame-simput
-  python-trame-rca)
+depends=(python-trame-server python-trame-client)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('dfb3c9f169b12d0b4aefadc00b1ecf6ba37f0ac18ca361e6687ae3485b24aaaab1bb30422a24bd7d0ebdb373931b78cebcfe9633e8c2915c23a02802a0bdb096')
+sha512sums=('65fb1a2ca169969585d0b9febfbabb02d2cd4c749cc65209123a9165123d639c5a4b3795dced33d9bb52e81e6935749656e24dcfab5181695ebf1687e3471d9c')
 
 prepare() {
   sed -i 's/^include/#include/' ${_base}-${pkgver}/MANIFEST.in
