@@ -1,0 +1,34 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7df494e..87e6e10 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,12 +1,15 @@
+-project(gumbo_query CXX)
+ cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
++project(gumbo_query CXX)
++
++cmake_policy(SET CMP0110 NEW)
+ 
+ include(CTest)
+ include(cmake/PreventInSourceBuilds.cmake)
+ 
+ # Debug build.
+-set(CMAKE_VERBOSE_MAKEFILE ON)
+-set(CMAKE_BUILD_TYPE Debug)
++# set(CMAKE_VERBOSE_MAKEFILE ON)
++# set(CMAKE_BUILD_TYPE Debug)
++set(CMAKE_BUILD_TYPE Release)
+ 
+ # Set our output directories.
+ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
+@@ -26,8 +29,8 @@ set(gumbo_query_SOURCE_DIRECTORY ${PROJECT_SOURCE_DIR}/src)
+ add_subdirectory(src)
+ add_subdirectory(test)
+ 
+-enable_testing()
+-add_test(NAME "ID Test" COMMAND id_test)
++# enable_testing()
++# add_test(NAME "ID Test" COMMAND test/test_id)
+ 
+ # Generate Doxygen documentation.
+ set(DOXYGEN_CONFIG_FILE Doxyfile.d)

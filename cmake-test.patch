@@ -1,0 +1,12 @@
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index c9fe1ed..4f71171 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -10,3 +10,7 @@ target_link_libraries(${tests} gumbo_query_shared)
+ 
+ set_property(TARGET ${tests} PROPERTY CXX_STANDARD 11)
+ set_property(TARGET ${tests} PROPERTY CXX_STANDARD_REQUIRED ON)
++
++file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/test_page.html DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
++
++add_test(NAME "ID Test" COMMAND test_id)
