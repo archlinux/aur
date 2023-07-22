@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=megabasterd-bin
 _name=MegaBasterd
-pkgver=7.75
+pkgver=7.76
 pkgrel=1
 pkgdesc="Yet another (unofficial) cross-platform MEGA downloader/uploader/streaming suite"
 arch=('any')
@@ -26,6 +26,6 @@ package() {
     "$pkgdir/usr/share/applications/${pkgname%%-bin}.desktop"
 }
 
-sha256sums=('565f9900175b10eab841b581598662d0eae5747b40775cf151c76d5d322f9909'
+sha256sums=('9d0167d659a84dc4eeb970d6f211d44acc7caadc67eece2f6cd92474cdadfed9'
             '72c7a1db49c5e58a6e6400a445758f7779a594789705dfeac954171d457af103'
             'a85b49dab7f58ab3c3b3e609a1c3c8e0fab2bedf5597a179aae82773681e7753')
