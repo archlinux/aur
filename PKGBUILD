@@ -2,13 +2,13 @@
 
 pkgname=ttf-plemoljp
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Plex Mono Language JP'
 arch=('any')
 url='https://github.com/yuru7/PlemolJP'
 license=('custom:OFL')
 provides=('ttf-font')
-makedepends=('fontforge' 'python-fonttools' 'ttfautohint')
+makedepends=('fontforge' 'python-fonttools' 'python-ttfautohint-py')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/yuru7/PlemolJP/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('36c9af69c0fde4108e888d5513b004236d45fea51b6d9f05a46efcb2acde2182')
 
