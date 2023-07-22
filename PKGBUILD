@@ -6,7 +6,7 @@
 
 pkgbase=linux-mainline-binder               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_tag=v6.5-rc1
+_tag=6.1.39
 pkgver=6.5rc1
 pkgrel=1
 pkgdesc="Linux Mainline Kernel With BINDER Module enabled by default."
