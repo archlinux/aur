@@ -1,6 +1,6 @@
 pkgbase = rmtfs-git
 	pkgdesc = Qualcomm Remote Filesystem Service Implementation
-	pkgver = r45.9ef260b
+	pkgver = r59.7a5ae7e
 	pkgrel = 1
 	url = https://github.com/andersson/rmtfs
 	arch = aarch64
@@ -12,10 +12,9 @@ pkgbase = rmtfs-git
 	depends = qrtr
 	depends = libudev.so
 	provides = rmtfs
-	source = git://github.com/andersson/rmtfs.git
+	source = git+https://github.com/andersson/rmtfs.git
 	source = udev.rules
 	md5sums = SKIP
 	md5sums = 1e827788992863c3e8562e288f65ee05
 
 pkgname = rmtfs-git
-

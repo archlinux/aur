@@ -3,7 +3,7 @@
 _pkgname="rmtfs"
 pkgname="$_pkgname-git"
 pkgdesc="Qualcomm Remote Filesystem Service Implementation"
-pkgver=r45.9ef260b
+pkgver=r59.7a5ae7e
 pkgrel=1
 arch=("aarch64")
 url="https://github.com/andersson/$_pkgname"
@@ -12,7 +12,7 @@ groups=("qcom-icnss-wlan")
 depends=("qrtr" "libudev.so")
 makedepends=("git" "make" "gcc")
 provides=("$_pkgname")
-source=("git://github.com/andersson/$_pkgname.git" "udev.rules")
+source=("git+https://github.com/andersson/$_pkgname.git" "udev.rules")
 md5sums=("SKIP" "1e827788992863c3e8562e288f65ee05")
 
 pkgver() {
