@@ -1,11 +1,11 @@
 pkgbase = xu4-svn
 	pkgdesc = Remake of the computer game Ultima IV
-	pkgver = 0.9.r3093
+	pkgver = r3095
 	pkgrel = 1
 	url = http://xu4.sourceforge.net/
 	arch = i686
 	arch = x86_64
-	license = gpl2
+	license = GPL2
 	makedepends = cmake
 	makedepends = sdl
 	makedepends = subversion
@@ -16,14 +16,7 @@ pkgbase = xu4-svn
 	depends = sdl_mixer
 	provides = xu4
 	conflicts = xu4
-	noextract = ultima4.zip
-	noextract = u4upgrad.zip
 	source = xu4::svn+https://svn.code.sf.net/p/xu4/code/trunk
-	source = http://ultima.thatfleminggent.com/ultima4.zip
-	source = https://sourceforge.net/projects/xu4/files/Ultima%204%20VGA%20Upgrade/1.3/u4upgrad.zip
 	sha256sums = SKIP
-	sha256sums = 94aa748cfa1d0e7aa2e518abebb994f3c18acf7edb78c3bd37cd0a4404e6ba74
-	sha256sums = 400ac37311f3be74c1b2d7836561b2ead2b146f5162586865b0f4881225cca58
 
 pkgname = xu4-svn
-
