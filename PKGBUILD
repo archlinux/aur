@@ -4,8 +4,8 @@
 # This PKGBUILD packages Qtile with X11 dependencies.
 
 pkgname=qtile-git
-pkgver=0.20.0.r33.gc1f50739
-pkgrel=3
+pkgver=0.22.1.r215.g142dc80a
+pkgrel=1
 pkgdesc="A full-featured, pure-Python tiling window manager - X11. (git version)"
 arch=('x86_64')
 url="http://www.qtile.org"
@@ -25,6 +25,9 @@ makedepends=(
   'python-setuptools'
   'python-setuptools-scm'
   'libpulse'
+  'python-installer'
+  'python-build'
+  'python-wheel'
 )
 checkdepends=(
   'dbus'
@@ -78,7 +81,7 @@ build() {
   cd qtile
   export CFLAGS="$CFLAGS -I/usr/include/wlroots0.15"
   export LDFLAGS="$LDFLAGS -L/usr/lib/wlroots0.15"
-  python setup.py build
+  python -m build --no-isolation --wheel
   ./scripts/ffibuild
 }
 
@@ -93,7 +96,7 @@ check() {
 
 package() {
   cd qtile
-  python setup.py install --skip-build --optimize=1 --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 CHANGELOG README.rst libqtile/resources/default_config.py \
     -t "${pkgdir}/usr/share/doc/$pkgname/"
