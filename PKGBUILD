@@ -3,7 +3,7 @@
 
 pkgname=forkgram
 _pkgname=frk
-pkgver=4.8.6
+pkgver=4.8.7
 pkgrel=1
 pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
@@ -20,7 +20,7 @@ optdepends=('webkit2gtk: embedded browser features'
 provides=(telegram-desktop)
 conflicts=(telegram-desktop)
 source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz")
-sha512sums=('99e49b7fae58c60a054b794b6f3cf178e07df3deae3484f5b047baa1bf852ac7f69abeab96833d4ef7e83ffbe5087e408d4e2cb4c5d7362b734559bdc2bd2cc5')
+sha512sums=('adf4a060f0ac67879cb7a6ac19651bea7c670642fb9ec3cdcf3813aaf7bae2f2ed11f87378f360418217ffcc2d7ceb8e89350417ed9eaba0b6594bf24adebd17')
 
 build() {
     CXXFLAGS+=' -ffat-lto-objects'
