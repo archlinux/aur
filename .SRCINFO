@@ -1,7 +1,7 @@
 pkgbase = platypush-git
 	pkgdesc = Universal multi-platform command executor and automation manager
 	pkgver = 0.50.2.r0.cf8ecf34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.platypush.tech/platypush/platypush
 	arch = any
 	license = MIT
@@ -35,6 +35,7 @@ pkgbase = platypush-git
 	optdepends = opencv: Support for cameras and image processing over the OpenCV integration
 	optdepends = py-trello: Trello integration
 	optdepends = python-aiohttp: SmartThings support
+	optdepends = python-aioxmpp: XMPP support
 	optdepends = python-bleak: Bluetooth low-energy devices support
 	optdepends = python-bme280: Support for the BME280 digital sensor over I2C interface
 	optdepends = python-deepspeech: Mozilla Deepspeech integration
