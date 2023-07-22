@@ -69,31 +69,31 @@ _get_distribution_components(){
 }
 
 prepare(){
-  cd ${srcdir}/llvm-project-llvmorg-${pkgver}/llvm
+  cd "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/llvm
   # https://github.com/intel/intel-graphics-compiler/issues/204
-  patch -Rp2 -i ${srcdir}/don-t-accept-nullptr-as-GEP-element-type.patch
+  patch -Rp2 -i "${srcdir}"/don-t-accept-nullptr-as-GEP-element-type.patch
   # Fixes Chromium error "*** stack smashing detected ***: terminated"
   # (which also goes away with "--change-stack-guard-on-fork=disabled")
   # https://reviews.llvm.org/D116589
-  patch -Np2 -i ${srcdir}/don-t-override-__attribute__-no_stack_protector.patch
+  patch -Np2 -i "${srcdir}"/don-t-override-__attribute__-no_stack_protector.patch
   # https://github.com/llvm/llvm-project/issues/53243
   # https://github.com/rust-lang/rust/issues/92869
-  patch -Np2 -i ${srcdir}/don-t-move-DBG_VALUE-instructions.patch
+  patch -Np2 -i "${srcdir}"/don-t-move-DBG_VALUE-instructions.patch
   # Work around intermittent 'clang -O -g' crashes
   # https://bugs.llvm.org/show_bug.cgi?id=50611#c3
-  patch -Np2 -i ${srcdir}/no-strict-aliasing-DwarfCompileUnit.patch
+  patch -Np2 -i "${srcdir}"/no-strict-aliasing-DwarfCompileUnit.patch
   # Patches needed for ISPC for Xe only
-  patch -Np2 -i ${srcdir}/disable-A-B-A-B-and-BSWAP-in-InstCombine.patch
-  patch -Np2 -i ${srcdir}/disable-DIArgList-in-SPIR-V.patch
+  patch -Np2 -i "${srcdir}"/disable-A-B-A-B-and-BSWAP-in-InstCombine.patch
+  patch -Np2 -i "${srcdir}"/disable-DIArgList-in-SPIR-V.patch
 
-  cd ${srcdir}/llvm-project-llvmorg-${pkgver}/clang
-  patch -Np2 -i ${srcdir}/enable-SSP-and-PIE-by-default.patch
-  patch -Np2 -i ${srcdir}/fix-scan-build-py-executable-lookup-path.patch
-  patch -Np2 -i ${srcdir}/strip-exception-specifications-in-CFI-type-names.patch
+  cd "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/clang
+  patch -Np2 -i "${srcdir}"/enable-SSP-and-PIE-by-default.patch
+  patch -Np2 -i "${srcdir}"/fix-scan-build-py-executable-lookup-path.patch
+  patch -Np2 -i "${srcdir}"/strip-exception-specifications-in-CFI-type-names.patch
 
   # Attempt to convert script to Python 3
   2to3 -wn --no-diffs \
-      ${srcdir}/llvm-project-llvmorg-${pkgver}/clang-tools-extra/clang-include-fixer/find-all-symbols/tool/run-find-all-symbols.py
+      "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/clang-tools-extra/clang-include-fixer/find-all-symbols/tool/run-find-all-symbols.py
 }
 
 build(){
@@ -102,7 +102,7 @@ export CXX=/usr/bin/g++-12
 export CFLAGS+=" ${CPPFLAGS}"
 export CXXFLAGS+=" ${CPPFLAGS}"
 
-  cd ${srcdir}/llvm-project-llvmorg-${pkgver}/llvm
+  cd "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/llvm
 
   rm -rf build
 
@@ -137,10 +137,10 @@ export CXXFLAGS+=" ${CPPFLAGS}"
     -DLLVM_ENABLE_DOXYGEN=OFF
     -DLLVM_ENABLE_BINDINGS=OFF
     -DLLVM_ENABLE_PROJECTS="compiler-rt;clang-tools-extra;clang"
-    -DCOMPILER_RT_INSTALL_PATH=/opt/llvm13/lib/clang/$pkgver
+    -DCOMPILER_RT_INSTALL_PATH=/opt/llvm13/lib/clang/"${pkgver}"
     -DLLVM_ENABLE_DUMP=ON
     -DLLVM_EXTERNAL_PROJECTS="SPIRV-LLVM-Translator"
-    -DLLVM_EXTERNAL_SPIRV_LLVM_TRANSLATOR_SOURCE_DIR="$srcdir"/SPIRV-LLVM-Translator-${spirvllvmver}
+    -DLLVM_EXTERNAL_SPIRV_LLVM_TRANSLATOR_SOURCE_DIR="${srcdir}"/SPIRV-LLVM-Translator-"${spirvllvmver}"
     #-DLLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr/include/spirv/
     -DLLVM_SPIRV_INCLUDE_TESTS=OFF
     -DLLVM_LIT_ARGS="$LITFLAGS"" -sv --ignore-fail"
@@ -169,46 +169,49 @@ package_llvm13-minimal(){
               'python-setuptools: for using lit')
   provides=(llvm13-minimal)
 
-  cd ${srcdir}/llvm-project-llvmorg-${pkgver}/llvm/build
+  cd "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/llvm/build
 
-  DESTDIR="$pkgdir" ninja $NINJAFLAGS install
-  DESTDIR="$pkgdir" ninja $NINJAFLAGS install-distribution
+  DESTDIR="${pkgdir}" ninja $NINJAFLAGS install
+  DESTDIR="${pkgdir}" ninja $NINJAFLAGS install-distribution
 
   # Include lit for running lit-based tests in other projects
-  #pushd ../utils/lit
-  #python3 setup.py install --root="$pkgdir" -O1
-  #popd
+  pushd "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/llvm/utils/lit
+  python3 setup.py install --prefix="${pkgdir}"/opt/llvm13 -O1
+  popd
 
   # The runtime libraries go into llvm-libs
-  mv -f "$pkgdir"/opt/llvm13/lib/lib{LLVM,LTO,Remarks}*.so* "$srcdir"
-  mv -f "$pkgdir"/opt/llvm13/lib/LLVMgold.so "$srcdir"
+  mkdir -p "${srcdir}"/llvm-libs/opt/llvm13/lib
+  mv -f "${pkgdir}"/opt/llvm13/lib/lib{LLVM,LTO,Remarks}*.so* "${srcdir}"/llvm-libs/opt/llvm13/lib/
+  mv -f "${pkgdir}"/opt/llvm13/lib/LLVMgold.so "${srcdir}"/llvm-libs/opt/llvm13/lib/
 
   # The clang runtime libraries go into clang-libs
   # https://bugs.archlinux.org/task/72588?project=1&string=clang
-  mv -f "$pkgdir"/opt/llvm13/lib/libclang{,-cpp}.so* "$srcdir"
+  mkdir -p "${srcdir}"/clang-libs/opt/llvm13/lib
+  mv -f "${pkgdir}"/opt/llvm13/lib/libclang{,-cpp}.so* "${srcdir}"/clang-libs/opt/llvm13/lib/
 
   # clang files go to a separate package
-  mkdir -p "$srcdir"/clang/opt/llvm13/{bin,include,lib,lib/cmake,share}
-  mv -f "$pkgdir"/opt/llvm13/lib/{libear,libscanbuild,libclang*.a,clang} "$srcdir"/clang/opt/llvm13/lib
-  #mv -f "$pkgdir"/opt/llvm13/lib/{libclang*.a,clang} "$srcdir"/clang/opt/llvm13/lib
-  mv -f "$pkgdir"/opt/llvm13/lib/cmake/clang "$srcdir"/clang/opt/llvm13/lib/cmake/
-  mv -f "$pkgdir"/opt/llvm13/include/{clang,clang-tidy,clang-c} "$srcdir"/clang/opt/llvm13/include/
-  mv -f "$pkgdir"/opt/llvm13/libexec "$srcdir"/clang/opt/llvm13/
-  mv -f "$pkgdir"/opt/llvm13/bin/{analyze-build,c-index-test,clang*,diagtool,find-all-symbols,git-clang-format,hmaptool,intercept-build,modularize,pp-trace,run-clang-tidy,scan-build,scan-build-py,scan-view} "$srcdir"/clang/opt/llvm13/bin/
-  #mv -f "$pkgdir"/opt/llvm13/bin/{c-index-test,clang*,diagtool,find-all-symbols,git-clang-format,hmaptool,modularize,pp-trace,scan-build,scan-view} "$srcdir"/clang/opt/llvm13/bin/
-  mv -f "$pkgdir"/opt/llvm13/share/{clang,man,opt-viewer,scan-build,scan-view} "$srcdir"/clang/opt/llvm13/share/
+  mkdir -p "${srcdir}"/clang/opt/llvm13/{bin,include,lib,lib/cmake,share}
+  mv -f "${pkgdir}"/opt/llvm13/lib/{libear,libscanbuild,libclang*.a,clang} "${srcdir}"/clang/opt/llvm13/lib/
+  mv -f "${pkgdir}"/opt/llvm13/lib/cmake/clang "${srcdir}"/clang/opt/llvm13/lib/cmake/
+  mv -f "${pkgdir}"/opt/llvm13/include/{clang,clang-tidy,clang-c} "${srcdir}"/clang/opt/llvm13/include/
+  mv -f "${pkgdir}"/opt/llvm13/libexec "${srcdir}"/clang/opt/llvm13/
+  mv -f "${pkgdir}"/opt/llvm13/bin/{analyze-build,c-index-test,clang*,diagtool,find-all-symbols,git-clang-format,hmaptool,intercept-build,modularize,pp-trace,run-clang-tidy,scan-build,scan-build-py,scan-view} "${srcdir}"/clang/opt/llvm13/bin/
+  mv -f "${pkgdir}"/opt/llvm13/share/{clang,man,opt-viewer,scan-build,scan-view} "${srcdir}"/clang/opt/llvm13/share/
 
   # spirv-llvm-translator files go to a separate package
-  mkdir -p "$srcdir"/spirv/opt/llvm13/{bin,include/LLVMSPIRVLib/,include/spirv/,lib/pkgconfig}
-  mv "$pkgdir"/opt/llvm13/bin/llvm-spirv "$srcdir"/spirv/opt/llvm13/bin
-  mv "$pkgdir"/opt/llvm13/include/LLVMSPIRVLib/* "$srcdir"/spirv/opt/llvm13/include/LLVMSPIRVLib/
-  mv "$pkgdir"/opt/llvm13/include/spirv/* "$srcdir"/spirv/opt/llvm13/include/spirv/
-  mv "$pkgdir"/opt/llvm13/lib/libLLVMSPIRVLib.a "$srcdir"/spirv/opt/llvm13/lib
-  mv "$pkgdir"/opt/llvm13/lib/pkgconfig/LLVMSPIRVLib.pc "$srcdir"/spirv/opt/llvm13/lib/pkgconfig
+  mkdir -p "${srcdir}"/spirv/opt/llvm13/{bin,include/LLVMSPIRVLib,include/spirv,lib/pkgconfig,share}
+  mv "${pkgdir}"/opt/llvm13/bin/llvm-spirv "${srcdir}"/spirv/opt/llvm13/bin/
+  mv "${pkgdir}"/opt/llvm13/include/LLVMSPIRVLib/* "${srcdir}"/spirv/opt/llvm13/include/LLVMSPIRVLib/
+  mv "${pkgdir}"/opt/llvm13/lib/libLLVMSPIRVLib.a "${srcdir}"/spirv/opt/llvm13/lib/
+  mv "${pkgdir}"/opt/llvm13/lib/pkgconfig/LLVMSPIRVLib.pc "${srcdir}"/spirv/opt/llvm13/lib/pkgconfig/
   # Remove empty dir
-  rm -rf "$pkgdir"/opt/llvm13/lib/pkgconfig/
-  rm -rf "$pkgdir"/opt/llvm13/include/LLVMSPIRVLib/
-  rm -rf "$pkgdir"/opt/llvm13/include/spirv/
+  rm -rf "${pkgdir}"/opt/llvm13/lib/pkgconfig
+  rm -rf "${pkgdir}"/opt/llvm13/include/LLVMSPIRVLib
+  # Move spirv headers files in spirv-llvm-translator
+  mv "${pkgdir}"/opt/llvm13/include/spirv/* "${srcdir}"/spirv/opt/llvm13/include/spirv/
+  mv "${pkgdir}"/opt/llvm13/share/cmake "${srcdir}"/spirv/opt/llvm13/share/
+  # Remove empty dir
+  rm -rf "${pkgdir}"/opt/llvm13/include/spirv
 
   # Remove /opt/llvm13/share empty directory
   rm -rf "$pkgdir"/opt/llvm13/share
@@ -216,13 +219,13 @@ package_llvm13-minimal(){
   if [[ $CARCH == x86_64 ]]; then
     # Needed for multilib (https://bugs.archlinux.org/task/29951)
     # Header stub is taken from Fedora
-    mv "$pkgdir/opt/llvm13/include/llvm/Config/llvm-config"{,-64}.h
-    cp "$srcdir/llvm-config.h" "$pkgdir/opt/llvm13/include/llvm/Config/llvm-config.h"
+    mv "${pkgdir}"/opt/llvm13/include/llvm/Config/llvm-config{,-64}.h
+    cp "${srcdir}"/llvm-config.h "${pkgdir}"/opt/llvm13/include/llvm/Config/llvm-config.h
   fi
 
-  install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/llvm/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/llvm/CREDITS.TXT" "$pkgdir/usr/share/licenses/$pkgname/CREDITS"
-  install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/llvm/CODE_OWNERS.TXT" "$pkgdir/usr/share/licenses/$pkgname/CODE_OWNERS"
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/llvm/LICENSE.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/llvm/CREDITS.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/CREDITS
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/llvm/CODE_OWNERS.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/CODE_OWNERS
 }
 
 package_clang13-minimal(){
@@ -233,38 +236,38 @@ package_clang13-minimal(){
               'llvm13-minimal: referenced by some clang headers')
   provides=(clang13 compiler-rt13 clang-analyzer13 clang-tools-extra13)
 
-  cp --preserve --recursive "$srcdir"/clang/* "$pkgdir"/
+  cp --preserve --recursive "${srcdir}"/clang/* "${pkgdir}"/
 
   # I think it's usefull to have this CLANG Python bindings since we ship complete CLANG
   # If I proove that it's not usefull we will remove the below
   # Move scanbuild-py into site-packages and install Python bindings
   _py=$([[ "$(python -V)" =~ Python[[:space:]]*([0-9]+.[0-9]+) ]] && echo ${BASH_REMATCH[1]})
   local site_packages="/opt/llvm13/lib/python$_py/site-packages"
-  install -d "$pkgdir/$site_packages"
-  mv "$pkgdir"/opt/llvm13/lib/{libear,libscanbuild} "$pkgdir/$site_packages/"
-  cp -a ${srcdir}/llvm-project-llvmorg-${pkgver}/clang/bindings/python/clang "$pkgdir/$site_packages/"
+  install -d "${pkgdir}"/"${site_packages}"
+  mv "${pkgdir}"/opt/llvm13/lib/{libear,libscanbuild} "${pkgdir}"/"${site_packages}"
+  cp -a "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/clang/bindings/python/clang "${pkgdir}"/"${site_packages}"
 
   # Move analyzer scripts out of /usr/libexec
-  mv "$pkgdir"/opt/llvm13/libexec/* "$pkgdir/opt/llvm13/lib/clang/"
-  rmdir "$pkgdir/opt/llvm13/libexec"
+  mv "${pkgdir}"/opt/llvm13/libexec/* "${pkgdir}"/opt/llvm13/lib/clang/
+  rmdir "${pkgdir}"/opt/llvm13/libexec
   sed -i 's|libexec|lib/clang|' \
-    "$pkgdir/opt/llvm13/bin/scan-build" \
-    "$pkgdir/$site_packages/libscanbuild/analyze.py"
+    "${pkgdir}"/opt/llvm13/bin/scan-build \
+    "${pkgdir}"/"${site_packages}"/libscanbuild/analyze.py
 
   # Compile Python scripts
-  _python_optimize "$pkgdir/opt/llvm13/share" "$pkgdir/$site_packages"
+  _python_optimize "${pkgdir}"/opt/llvm13/share "${pkgdir}"/"${site_packages}"
 
   # (taken from llvm-git aur)
   # optimize other python files except 2 problem cases
-  _python_optimize "$pkgdir"/opt/llvm13/share -x 'clang-include-fixer|run-find-all-symbols'
+  _python_optimize "${pkgdir}"/opt/llvm13/share -x 'clang-include-fixer|run-find-all-symbols'
 
-  install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/clang/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/clang/LICENSE"
-  install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/clang/CODE_OWNERS.TXT" "$pkgdir/usr/share/licenses/$pkgname/clang/CODE_OWNERS"
-  install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/clang-tools-extra/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/clang-tools-extra/LICENSE"
-  install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/clang-tools-extra/CODE_OWNERS.TXT" "$pkgdir/usr/share/licenses/$pkgname/clang-tools-extra/CODE_OWNERS"
-  install -Dm644 "${srcdir}/llvm-project-llvmorg-${pkgver}/compiler-rt/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/compiler-rt/LICENSE"
-  install -Dm644 "${srcdir}/llvm-project-llvmorg-${pkgver}/compiler-rt/CREDITS.TXT" "$pkgdir/usr/share/licenses/$pkgname/compiler-rt/CREDITS"
-  install -Dm644 "${srcdir}/llvm-project-llvmorg-${pkgver}/compiler-rt/CODE_OWNERS.TXT" "$pkgdir/usr/share/licenses/$pkgname/compiler-rt/CODE_OWNERS"
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/clang/LICENSE.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/clang/LICENSE
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/clang/CODE_OWNERS.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/clang/CODE_OWNERS
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/clang-tools-extra/LICENSE.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/clang-tools-extra/LICENSE
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/clang-tools-extra/CODE_OWNERS.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/clang-tools-extra/CODE_OWNERS
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/compiler-rt/LICENSE.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/compiler-rt/LICENSE
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/compiler-rt/CREDITS.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/compiler-rt/CREDITS
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/compiler-rt/CODE_OWNERS.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/compiler-rt/CODE_OWNERS
 }
 
 package_llvm13-libs-minimal(){
@@ -272,27 +275,23 @@ package_llvm13-libs-minimal(){
   depends=(gcc12-libs zlib zstd libffi libedit ncurses libxml2)
   provides=(llvm13-libs)
 
-  install -d "$pkgdir/opt/llvm13/lib"
-  cp -P \
-    "$srcdir"/lib{LLVM,LTO,Remarks}*.so* \
-    "$srcdir"/LLVMgold.so \
-    "$pkgdir/opt/llvm13/lib/"
+  cp --preserve --recursive "${srcdir}"/llvm-libs/* "${pkgdir}"/
 
   # Symlink LLVMgold.so from /usr/lib/bfd-plugins
   # https://bugs.archlinux.org/task/28479
-  install -d "$pkgdir/opt/llvm13/lib/bfd-plugins"
-  ln -s ../LLVMgold.so "$pkgdir/opt/llvm13/lib/bfd-plugins/LLVMgold.so"
+  install -d "${pkgdir}"/opt/llvm13/lib/bfd-plugins
+  ln -s ../LLVMgold.so "${pkgdir}"/opt/llvm13/lib/bfd-plugins/LLVMgold.so
 
   # link to /opt/llvm13/lib
-  install -d "$pkgdir/usr/lib"
-  ln -s /opt/llvm13/lib/libLLVM-13.0.0.so "$pkgdir"/usr/lib/libLLVM-13.0.0.so
-  ln -s /opt/llvm13/lib/libLLVM-13.so "$pkgdir"/usr/lib/libLLVM-13.so
-  ln -s /opt/llvm13/lib/libLTO.so.13 "$pkgdir"/usr/lib/libLTO.so.13
-  ln -s /opt/llvm13/lib/libRemarks.so.13 "$pkgdir"/usr/lib/libRemarks.so.13
+  install -d "${pkgdir}"/usr/lib
+  ln -s /opt/llvm13/lib/libLLVM-13.0.0.so "${pkgdir}"/usr/lib/libLLVM-13.0.0.so
+  ln -s /opt/llvm13/lib/libLLVM-13.so "${pkgdir}"/usr/lib/libLLVM-13.so
+  ln -s /opt/llvm13/lib/libLTO.so.13 "${pkgdir}"/usr/lib/libLTO.so.13
+  ln -s /opt/llvm13/lib/libRemarks.so.13 "${pkgdir}"/usr/lib/libRemarks.so.13
 
-  install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/llvm/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/llvm/CREDITS.TXT" "$pkgdir/usr/share/licenses/$pkgname/CREDITS"
-  install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/llvm/CODE_OWNERS.TXT" "$pkgdir/usr/share/licenses/$pkgname/CODE_OWNERS"
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/llvm/LICENSE.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/llvm/CREDITS.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/CREDITS
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/llvm/CODE_OWNERS.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/CODE_OWNERS
 }
 
 # https://bugs.archlinux.org/task/72588?project=1&string=clang
@@ -303,29 +302,27 @@ package_clang13-libs-minimal(){
   # TODO: Once repo clang-libs comes into existence, verify if changes are needed to this package
   provides=(clang13-libs)
 
-  install -d "$pkgdir/opt/llvm13/lib"
-  cp -P \
-    "$srcdir"/lib{clang,clang-cpp}.so* \
-    "$pkgdir/opt/llvm13/lib/"
+  cp --preserve --recursive "${srcdir}"/clang-libs/* "${pkgdir}"/
 
   # link to /opt/llvm13/lib
-  install -d "$pkgdir/usr/lib"
-  ln -s /opt/llvm13/lib/libclang.so.13 "$pkgdir"/usr/lib/libclang.so.13
-  ln -s /opt/llvm13/lib/libclang-cpp.so.13 "$pkgdir"/usr/lib/libclang-cpp.so.13
-  ln -s /opt/llvm13/lib/libclang.so.13.0.1 "$pkgdir"/usr/lib/libclang.so.13.0.1
+  install -d "${pkgdir}"/usr/lib
+  ln -s /opt/llvm13/lib/libclang.so.13 "${pkgdir}"/usr/lib/libclang.so.13
+  ln -s /opt/llvm13/lib/libclang-cpp.so.13 "${pkgdir}"/usr/lib/libclang-cpp.so.13
+  ln -s /opt/llvm13/lib/libclang.so.13.0.1 "${pkgdir}"/usr/lib/libclang.so.13.0.1
 
-  install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/clang/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$srcdir/llvm-project-llvmorg-${pkgver}/clang/CODE_OWNERS.TXT" "$pkgdir/usr/share/licenses/$pkgname/CODE_OWNERS"
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/clang/LICENSE.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/clang/LICENSE
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/clang/CODE_OWNERS.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/clang/CODE_OWNERS
 }
 
 package_spirv-llvm-translator13-minimal(){
   pkgdesc='Tool and a library for bi-directional translation between SPIR-V and LLVM IR'
   depends=(llvm13-libs-minimal)
   provides=(spirv-llvm-translator13)
+  # Also provide SPIRV-Headers 1.5.1 in /opt/llvm13/include/spirv and /opt/llvm13/share/cmake
 
-  cp --preserve --recursive "$srcdir"/spirv/* "$pkgdir"/
+  cp --preserve --recursive "${srcdir}"/spirv/* "${pkgdir}"/
 
-  install -Dm644 "${srcdir}/SPIRV-LLVM-Translator-${spirvllvmver}/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "${srcdir}"/SPIRV-LLVM-Translator-"${spirvllvmver}"/LICENSE.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
 
 sha256sums=('09c50d558bd975c41157364421820228df66632802a4a6a7c9c17f86a7340802'
