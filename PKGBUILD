@@ -2,7 +2,7 @@
 
 pkgname=legion+
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Asset Extraction tool for Apex Legends and Titanfall 2 (Wine)'
 arch=('x86_64')
 url='https://github.com/r-ex/LegionPlus'
@@ -23,6 +23,7 @@ sha256sums=('ec36829016fc2e67630c9a17f79db327d9680d8f21c43b01541f25a351f6f75f'
 prepare() {
         echo "! WARNING, this package installs symlinks to the home directory in ~/.local/share/legion+"
         echo "! because the application creates files in the same folder it's opened and must have write access to them"
+    sleep 2
 
   convert LegionIcon.ico -strip LegionIcon.png
 }
@@ -47,6 +48,7 @@ package() {
 
         echo "! WARNING, this package installs symlinks to the home directory in ~/.local/share/legion+"
         echo "! because the application creates files in the same folder it's opened and must have write access to them"
+    sleep 4 && echo "Continuing the installation.." && sleep 2
         #! Create a folder in the home directory (if it doesn't exist)
     mkdir -p $HOME/.local/share/legion+
 
