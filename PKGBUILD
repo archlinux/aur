@@ -1,10 +1,12 @@
-# Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
-# Previous maintainer: neodarz <neodarz@neodarz.net>
+# Maintainer: Online122228 <premtimdukaj@hotmail.com>
+# Previous Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
+# Previous Maintainer: neodarz <neodarz@neodarz.net>
+# Contributor: brodokk <brodokk@brodokk.space>
 
 pkgname=libsavitar-git
 _pkgname=libSavitar
 pkgver=4.9.beta.r0.gfe88675
-pkgrel=2
+pkgrel=3
 pkgdesc="c++ implementation of 3mf loading with SIP python bindings"
 arch=('i686' 'x86_64')
 url="https://github.com/Ultimaker/$_pkgname"
