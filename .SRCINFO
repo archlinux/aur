@@ -5,10 +5,11 @@ pkgbase = librelp
 	url = https://www.rsyslog.com/librelp/
 	arch = x86_64
 	arch = i686
+	arch = aarch64
+	arch = armv7h
 	license = GPL3
 	depends = gnutls
 	source = http://download.rsyslog.com/librelp/librelp-1.10.0.tar.gz
 	sha256sums = 148db4e4d1a23e8136e9ec08810929a55faf5d45e24c2e3186d5ab34355dab31
 
 pkgname = librelp
-
