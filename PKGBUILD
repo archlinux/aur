@@ -2,15 +2,15 @@
 
 pkgname=tnl-git
 _pkgname=tnl
-pkgver=r6773.b654af06f
+pkgver=r7164.d16695647
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=('x86_64')
 url=https://tnl-project.org/
 license=('MIT')
-depends=('gcc-libs' 'openmpi' 'zlib' 'tinyxml2' 'metis' 'libpng' 'libjpeg' 'dcmtk')
+depends=('gcc-libs' 'openmpi' 'zlib' 'tinyxml2' 'metis' 'libpng' 'libjpeg' 'dcmtk' 'blas-openblas')
 # Note: openssh is required for mpirun (when running examples for doc): https://github.com/open-mpi/ompi/issues/3625
-makedepends=('git' 'cmake' 'ninja' 'doxygen' 'graphviz' 'texlive-bin' 'texlive-latexextra'
+makedepends=('git' 'cmake' 'ninja' 'doxygen' 'graphviz' 'texlive-binextra' 'texlive-latexextra' 'texlive-fontsrecommended'
              'cuda' 'hypre' 'python' 'python-numpy' 'python-matplotlib' 'cgal' 'openssh')
 optdepends=('cuda: for tools, benchmarks and examples built with CUDA'
             'hypre: for Hypre wrappers')
