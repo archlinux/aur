@@ -5,7 +5,7 @@
 
 pkgname=seahub
 pkgver=10.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The web frontend for seafile server'
 arch=('any')
 url='https://github.com/haiwen/seahub'
@@ -53,17 +53,21 @@ source=(
     "${_thirdpart[0],,}.tar.gz::https://github.com/django/${_thirdpart[0]%-*}/archive/${_thirdpart[0]##*-}.tar.gz"
     'seahub@.service'
     'nginx.example.conf'
+    'Fix_Pillow_ANTIALIAS_deprecation.diff'
 )
 sha256sums=(
     '4df0697ea9ed62ceb53f2f17dcc35f4abf2b69f276c87c913bb30a72f6007cb2'
     'b7894330d7fd9a268cf5b430b09db111508c5f7a98fa4ffc8c0b88aada9b6dbf'
     '67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4'
     '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
+    '4672793c24577875446b62766af37aed25169f0b764ea14c97c1ab0942403ec0'
 )
 options=('!strip')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver-server"
+
+    patch -p1 -i "$srcdir/Fix_Pillow_ANTIALIAS_deprecation.diff"
 
     # Remove useless files and directories
     rm -rf \
