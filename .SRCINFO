@@ -1,7 +1,8 @@
 pkgbase = latencytop
 	pkgdesc = A tool for software developers, aimed at identifying where system latency occurs.
-	pkgver = 0.5.0.0.1
+	pkgver = 0.5.0
 	pkgrel = 1
+	epoch = 1
 	url = http://ftp.de.debian.org/debian/pool/main/l/latencytop
 	arch = x86_64
 	license = GPL
@@ -9,7 +10,9 @@ pkgbase = latencytop
 	depends = ncurses
 	depends = gdk-pixbuf2
 	depends = glib2
-	source = http://ftp.de.debian.org/debian/pool/main/l/latencytop/latencytop_0.5.0-0.1~bpo11+1_amd64.deb
-	md5sums = ae4ca840a7d4163250abc15ce1d25d67
+	source = http://ftp.de.debian.org/debian/pool/main/l/latencytop/latencytop_0.5.0.orig.tar.gz
+	source = makefilefix.diff
+	sha256sums = 9e7f72fbea7bd918e71212a1eabaad8488d2c602205d2e3c95d62cd57e9203ef
+	sha256sums = ba86f1cc699dc0acfe24d70edfdffba14c1e0128885c874b098441096f368eae
 
 pkgname = latencytop
