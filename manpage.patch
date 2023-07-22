@@ -1,23 +1,23 @@
-diff '--color=auto' --unified --recursive --text src/vulkan-man-pages-1.2.179/Makefile src2/vulkan-man-pages-1.2.179/Makefile
---- src/vulkan-man-pages-1.2.179/Makefile	2021-05-24 02:23:32.000000000 -0500
-+++ src2/vulkan-man-pages-1.2.179/Makefile	2021-06-02 17:30:19.571260784 -0500
+diff '--color=auto' --unified --recursive --text src/vulkan-man-pages-1.3.259/Makefile src2/vulkan-man-pages-1.3.259/Makefile
+--- src/vulkan-man-pages-1.3.259/Makefile	2021-05-24 02:23:32.000000000 -0500
++++ src2/vulkan-man-pages-1.3.259/Makefile	2021-06-02 17:30:19.571260784 -0500
 @@ -435,7 +435,7 @@
  
  # Build the individual refpages, then the symbolic links from aliases
  MANHTMLDIR  = $(OUTDIR)/man/html
--MANHTML     = $(MANSOURCES:$(REFPATH)/%.txt=$(MANHTMLDIR)/%.html)
-+MANHTML     = $(MANSOURCES:$(REFPATH)/%.txt=$(MANHTMLDIR)/%.3)
+-MANHTML     = $(MANSOURCES:$(REFPATH)/%.adoc=$(MANHTMLDIR)/%.html)
++MANHTML     = $(MANSOURCES:$(REFPATH)/%.adoc=$(MANHTMLDIR)/%.3)
  buildmanpages: $(MANHTML)
  	$(MAKE) $(SUBMAKEOPTIONS) -e manaliases
  
 @@ -455,11 +455,11 @@
  # use VERYQUIET instead of QUIET
  # Running translate_math.js on every refpage is slow and most of them
- # don't contain math, so do a quick search for latexmath delimiters.
+ # do not contain math, so do a quick search for latexmath delimiters.
 -$(MANHTMLDIR)/%.html: KATEXDIR = ../../katex
--$(MANHTMLDIR)/%.html: $(REFPATH)/%.txt $(GENDEPENDS) katexinst
+-$(MANHTMLDIR)/%.html: $(REFPATH)/%.adoc $(GENDEPENDS) $(KATEXINSTDIR)
 +$(MANHTMLDIR)/%.3: KATEXDIR = ../../katex
-+$(MANHTMLDIR)/%.3: $(REFPATH)/%.txt $(GENDEPENDS) katexinst
++$(MANHTMLDIR)/%.3: $(REFPATH)/%.adoc $(GENDEPENDS) $(KATEXINSTDIR)
  	$(VERYQUIET)echo "Building $@ from $< using default options"
  	$(VERYQUIET)$(MKDIR) $(MANHTMLDIR)
 -	$(VERYQUIET)$(ASCIIDOC) -b html5 $(ADOCOPTS) $(ADOCHTMLOPTS) $(ADOCREFOPTS) \
