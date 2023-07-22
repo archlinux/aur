@@ -1,0 +1,127 @@
+From 021d0732750cddee97e771814e5e2ca17585db46 Mon Sep 17 00:00:00 2001
+From: Eli Schwartz <eschwartz93@gmail.com>
+Date: Mon, 9 Apr 2018 12:36:35 -0400
+Subject: [PATCH] Do not vendor the pugixml library
+
+This prevents trying to co-install pugixml with existing system
+libraries, and also fixes the includes for pugixml.hpp to actually use
+the include path added by find_package/add_subdirectory instead of a
+hardcoded relative path.
+---
+ CMakeLists.txt          | 2 +-
+ src/MeshData.cpp        | 2 +-
+ src/Namespace.cpp       | 2 +-
+ src/Scene.cpp           | 2 +-
+ src/SceneNode.cpp       | 2 +-
+ src/ThreeMFParser.h     | 2 +-
+ tests/MeshDataTest.cpp  | 2 +-
+ tests/NamespaceTest.cpp | 2 +-
+ 8 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f22d42e..e78b1f8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,7 +15,7 @@ if(BUILD_TESTS)
+     find_package(Threads QUIET)
+ endif()
+ 
+-add_subdirectory(pugixml)
++find_package(pugixml REQUIRED)
+ 
+ if(BUILD_PYTHON)
+     list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+diff --git a/src/MeshData.cpp b/src/MeshData.cpp
+index 97c089a..7c4de46 100644
+--- a/src/MeshData.cpp
++++ b/src/MeshData.cpp
+@@ -17,7 +17,7 @@
+  */
+ 
+ #include "MeshData.h"
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ #include <cstring>
+ #include <iostream>
+ #include <stdexcept> //For std::runtime_error.
+diff --git a/src/Namespace.cpp b/src/Namespace.cpp
+index 2cfff76..23c3349 100644
+--- a/src/Namespace.cpp
++++ b/src/Namespace.cpp
+@@ -3,7 +3,7 @@
+ 
+ #include "Namespace.h"
+ 
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ 
+ namespace xml_namespace
+ {
+diff --git a/src/Scene.cpp b/src/Scene.cpp
+index 7a40570..86e9295 100644
+--- a/src/Scene.cpp
++++ b/src/Scene.cpp
+@@ -17,7 +17,7 @@
+  */
+ 
+ #include "Scene.h"
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ #include <iostream>
+ #include <string>
+ using namespace Savitar;
+diff --git a/src/SceneNode.cpp b/src/SceneNode.cpp
+index db686e9..8c9dd8c 100644
+--- a/src/SceneNode.cpp
++++ b/src/SceneNode.cpp
+@@ -18,7 +18,7 @@
+ 
+ #include "SceneNode.h"
+ #include "Namespace.h"
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ #include <iostream>
+ using namespace Savitar;
+ 
+diff --git a/src/ThreeMFParser.h b/src/ThreeMFParser.h
+index 3394683..a0f6691 100644
+--- a/src/ThreeMFParser.h
++++ b/src/ThreeMFParser.h
+@@ -21,7 +21,7 @@
+ 
+ #include "SavitarExport.h"
+ #include "SceneNode.h"
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ 
+ #include <string>
+ namespace Savitar
+diff --git a/tests/MeshDataTest.cpp b/tests/MeshDataTest.cpp
+index 583b946..76d3187 100644
+--- a/tests/MeshDataTest.cpp
++++ b/tests/MeshDataTest.cpp
+@@ -10,7 +10,7 @@
+ #include <iterator>
+ #include <string>
+ 
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ 
+ namespace Savitar
+ {
+diff --git a/tests/NamespaceTest.cpp b/tests/NamespaceTest.cpp
+index 1a2c2a2..4ac77fa 100644
+--- a/tests/NamespaceTest.cpp
++++ b/tests/NamespaceTest.cpp
+@@ -7,7 +7,7 @@
+ #include <gtest/gtest.h>
+ #include <iostream>
+ #include <string>
+-#include "../pugixml/src/pugixml.hpp"
++#include <pugixml.hpp>
+ 
+ namespace xml_namespace
+ {
+-- 
+2.31.1
+
