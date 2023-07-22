@@ -1,6 +1,6 @@
 pkgbase = libsunspec
 	pkgdesc = A C++ library for SunSpec compatible inverters, meters and batteries
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://ahpohl.github.io/libsunspec/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libsunspec
 	license = GPL3
 	makedepends = git
 	depends = libmodbus
-	source = libsunspec-0.1.0::git+https://github.com/ahpohl/libsunspec.git#tag=v0.1.0
+	source = libsunspec-0.1.1::git+https://github.com/ahpohl/libsunspec.git#tag=v0.1.1
 	sha256sums = SKIP
 
 pkgname = libsunspec
