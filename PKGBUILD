@@ -5,17 +5,17 @@
 
 pkgname=notion3
 pkgver=20190501
-pkgrel=3
-_commit=5e820d514837e12b8753a1afe9b5dd1033f449da
+pkgrel=4
+_commit=435631f5cc635e0dcc90f2945cdd93ef7afeab7d
 _commit_doc=4875ffc1c4f8ba1d7ebe77fc3aceacc872e74c07
 pkgdesc="Tabbed tiling, window manager. Fork of Ion3"
 url="https://notionwm.net"
 arch=('x86_64' 'pentium4' 'i686' 'i486' 'armv6h' 'armv7h' 'aarch64')
-license=('custom:LGPL')
+license=('LGPL2')
 depends=('glib2' 'gettext' 'lua' 'libxext' 'libsm' 'freetype2')
 optdepends=('libxinerama' 'libxrandr')
 makedepends=('git' 'pkgconfig' 'libxinerama' 'libxrandr'
-	     'rubber' 'latex2html' 'texlive-htmlxml' 'texlive-latexextra')
+	     'rubber' 'latex2html' 'texlive-meta')
 conflicts=('notion')
 backup=("etc/notion/cfg_bindings.lua"
 	"etc/notion/cfg_dock.lua"
@@ -49,8 +49,8 @@ backup=("etc/notion/cfg_bindings.lua"
 	"etc/notion/xkbion.lua")
 provides=('libtu' 'libextl')
 changelog=ChangleLog
-source=("notion::https://github.com/raboof/notion#commit=${_commit}"
-	"notion-doc::https://github.com/raboof/notion-doc.git#commit=${_commit_doc}")
+source=("git+https://github.com/raboof/notion.git#commit=${_commit}"
+	"git+https://github.com/raboof/notion-doc.git#commit=${_commit_doc}")
 sha256sums=('SKIP'
             'SKIP')
 
