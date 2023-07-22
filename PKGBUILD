@@ -22,8 +22,7 @@ options=("!emptydirs" "!strip")
 _debname=B300361C
 
 source=(https://link.pearson.it/B300361C)
-md5sums=('SKIP')
-sha256sums=('SKIP')
+sha256sums=('e58754c4bfbc0770a180fb22aaea7cf48466d2277c8558c6ce330d8b7fd81d3e')
 
 prepare() {
   cd "$srcdir"
