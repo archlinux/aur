@@ -6,14 +6,18 @@ pkgrel='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more - Ultimate edition'
 arch=('x86_64' 'aarch64')
 url="https://github.com/$_pkgname/ultimate-releases"
-license=('custom')
+license=('custom:Beekeeper Studio Application EULA')
 _electronpkg='electron18'
 depends=("$_electronpkg")
 options=('!strip')
 source_x86_64=("$pkgname-$pkgver-x86_64.AppImage::$url/releases/download/v$pkgver/Beekeeper-Studio-Ultimate-$pkgver.AppImage")
 source_aarch64=("$pkgname-$pkgver-aarch64.AppImage::$url/releases/download/v$pkgver/Beekeeper-Studio-Ultimate-$pkgver-arm64.AppImage")
-source=('electron-launcher.sh')
-sha512sums=('7550a585f23262f12aa997007f3ccb47272baf9bdeec7789a033775c6683fc9d1b4a29eee02d132c3d441b6abd2d96b9018469990b1638633d24ea90abea9371')
+source=(
+	'electron-launcher.sh'
+	'LICENSE.md'
+)
+sha512sums=('7550a585f23262f12aa997007f3ccb47272baf9bdeec7789a033775c6683fc9d1b4a29eee02d132c3d441b6abd2d96b9018469990b1638633d24ea90abea9371'
+            'be5c22a33b22a82c0a308ecfe66443915828a4f7f82f696dc429dcd4c8ea7e9f2a1087123c0fe3dc0599f9d7defe505fb88c18a52eb0b31f2d81f2e798090ef7')
 sha512sums_x86_64=('a2a68a02474c628f8d8247193c94d673c487965f7e4d3dafc4d316c0861645a5e23ebbfcae22eca01c8b94c5c9be85e13658e1994e2739137989474c95a1d8a6')
 sha512sums_aarch64=('279ad0b1f1a316bd13b8d91b7a4bbe07bea1d88aee984502bf21384f0f43b1839e7b1b7150723aace1ce334c56d17408fe55fa967ac452aeed1d24d32e41126f')
 
@@ -52,6 +56,7 @@ package() {
 
 	install -dm755 "$pkgdir/usr/share/applications/"
 	install -Dm644 'beekeeper-studio.desktop' "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm644 "$srcdir/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
 	# Update desktop file
 	sed "s|^Exec=.*$|Exec=$pkgname %U|" -i "$pkgdir/usr/share/applications/$pkgname.desktop"
