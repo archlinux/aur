@@ -10,10 +10,14 @@ license=('BSD')
 depends=('bzip2' 'zlib' 'libusb' 'libzip' 'openssl')
 makedepends=('cmake')
 changelog=History.md
-source=(https://github.com/NXPmicro/mfgtools/releases/download/uuu_$pkgver/uuu_source-$pkgver.tar.gz uuu-complete.bash)
+source=(https://github.com/NXPmicro/mfgtools/releases/download/uuu_$pkgver/uuu_source-$pkgver.tar.gz uuu-complete.bash uuu-cstdint.patch)
 sha256sums=('932c0a4acde0f52b907f5693c6d133c83142c4ca6e9df05a38b3ac1e50628883'
-            'ffc8e32655ce574a4719c85c5c9a3530a5ec619e933fc801a291df8ec506a442')
+            'ffc8e32655ce574a4719c85c5c9a3530a5ec619e933fc801a291df8ec506a442'
+            '8fda770717ca00034e7685077509d766ab854fb6b750a937b6d5efd3998d9c65')
 
+prepare() {
+  patch --directory="uuu-$pkgver" --forward --strip=1 --input="${srcdir}/uuu-cstdint.patch"
+}
 
 build() {
   cd "uuu-$pkgver"

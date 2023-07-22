@@ -1,0 +1,22 @@
+diff '--color=auto' --unified --recursive --text --color uuu.orig/libuuu/libcomm.h uuu.new/libuuu/libcomm.h
+--- uuu.orig/libuuu/libcomm.h    2022-11-01 20:42:46.000000000 +0100
++++ uuu.new/libuuu/libcomm.h 2023-07-09 13:31:24.344615430 +0200
+@@ -29,6 +29,7 @@
+ *
+ */
+ #include <string>
++#include <cstdint>
+ #include <stdarg.h>
+ #include <locale>
+ #include <cctype>
+diff '--color=auto' --unified --recursive --text --color uuu.orig/uuu/buildincmd.h uuu.new/uuu/buildincmd.h
+--- uuu.orig/uuu/buildincmd.h    2022-11-01 20:42:46.000000000 +0100
++++ uuu.new/uuu/buildincmd.h 2023-07-09 13:31:55.148653209 +0200
+@@ -33,6 +33,7 @@
+
+ #include <map>
+ #include <string>
++#include <cstdint>
+ #include <vector>
+
+ extern const char * g_vt_boldwhite;
