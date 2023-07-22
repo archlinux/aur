@@ -7,7 +7,7 @@
 _pkgbin=ledger-live-desktop
 pkgname=ledger-live
 pkgdesc="Maintain your Ledger devices"
-pkgver=2.64.1
+pkgver=2.64.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/LedgerHQ/ledger-live'
@@ -17,7 +17,7 @@ makedepends=('node-gyp' 'fnm' 'pnpm')
 _extdir=ledger-live--ledgerhq-live-desktop-${pkgver}
 source=("${_pkgbin}-${pkgver}.tar.gz::${url}/archive/refs/tags/@ledgerhq/live-desktop@${pkgver}.tar.gz"
         "${_pkgbin}.sh")
-sha512sums=('65fb1922a66b11b2215bd8d39593ad48db87c3e7f60bdb5f2b7a3d0ef9360c16c613a810c3ddcf270bcfc2b1216582af1e04e065f002e19b2310a0d6057bba89'
+sha512sums=('ac06801979f9a65319daafdf6ce1ce761383ddcb6d575b6ac435e0cc7318c0a059fef2309620429218a242e8ebf849e2b558873db30c02ab5604cb8b444e4a38'
             '2efbcd1da3ae4c84d9e3e9b2848e7535c1d3c533eb755f70d07992159742d7141d7e35b2590c51b799948965954c211e953d1ddb7a00bb8713ea06b58a732ca0')
 
 _fnm_use() {
