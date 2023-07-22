@@ -1,12 +1,12 @@
 # Maintainer: gee
 pkgname='rangoli'
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Free, Open Source, Lightweight, Cross-platform Software for Royal Kludge Keyboards'
 arch=('x86_64')
 url='https://github.com/rnayabed/rangoli'
 license=('GPL3')
-depends=('qt6-base' 'hidapi' 'gcc-libs')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'hidapi' 'gcc-libs' 'xterm')
 makedepends=('cmake' 'ninja')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
        "hidapi.patch"
