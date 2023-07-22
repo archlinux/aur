@@ -34,7 +34,7 @@ prepare() {
 	sed -i "s|%%ELECTRON_VERSION%%|$(cat "/usr/lib/$_electronpkg/version")|g" 'apps/studio/vue.config.js'
 
 	# Replace package name and electron version in launcher script
-	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" 'electron-launcher.sh'
+	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" "$srcdir/electron-launcher.sh"
 
 	# Update node-sass and sass-loader to be compatible with current node and Linux version
 	cd "$srcdir/$_sourcedirectory/apps/studio/"
