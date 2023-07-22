@@ -29,11 +29,6 @@ prepare() {
   cd "${_pkgname}"
   sed -i 's,DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages,DESTINATION lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages,g' CMakeLists.txt
   sed -i 's,DESTINATION lib/python${PYTHON_VERSION_MAJOR}/dist-packages/cura),DESTINATION lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages/cura),g' CMakeLists.txt
-
-  # don't install a second system pugixml; WONTFIX upstream due to:
-  # "It's been decided that an external dependency makes setting up your
-  # development environment for Cura needlessly difficult."
-  patch -Np1 -i "$srcdir"/0001-Do-not-vendor-the-pugixml-library.patch
 }
 
 build() {
