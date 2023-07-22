@@ -1,7 +1,7 @@
 # Maintainer: kyngs <aurmail at kyngs dot xyz>
 pkgname=miru-git
 pkgrel=1
-pkgver=4.1.12.r3.gf651e38
+pkgver=4.2.7
 pkgdesc="Bittorrent streaming software for cats"
 arch=("any")
 url="https://github.com/ThaUnknown/miru"
@@ -21,7 +21,9 @@ pkgver() {
 
 build() {
     cd "miru"
+    rm -rf node_modules # In case of an existing src/ dir, keeping old node modules could break things
     pnpm install
+    echo "**Webpack takes a long time (even up to ten minutes) to build, while providing no console output. Do not cancel the build unless it takes more than ten minutes.**"
     pnpm run build
 }
 
