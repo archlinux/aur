@@ -1,15 +1,10 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Brian Knox <taotetek@gmail.com>
-
 pkgname=libestr
 pkgver=0.1.11
 pkgrel=1
 pkgdesc="essentials for string handling (and a bit more)"
 url="http://libestr.adiscon.com/"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 license=('LGPL2.1')
-depends=()
 source=("http://libestr.adiscon.com/files/download/libestr-$pkgver.tar.gz")
 md5sums=('1f25a2332750d4bfacfb314235fedff0')
 

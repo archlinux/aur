@@ -5,9 +5,10 @@ pkgbase = libestr
 	url = http://libestr.adiscon.com/
 	arch = x86_64
 	arch = i686
+	arch = aarch64
+	arch = armv7h
 	license = LGPL2.1
 	source = http://libestr.adiscon.com/files/download/libestr-0.1.11.tar.gz
 	md5sums = 1f25a2332750d4bfacfb314235fedff0
 
 pkgname = libestr
-
