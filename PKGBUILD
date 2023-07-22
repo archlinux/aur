@@ -92,7 +92,7 @@ package() {
 	install -Dm644 "alvr/xtask/resources/$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
 	# Icons
-	install -d "$pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps/"
+	install -d "$pkgdir/usr/share/icons/hicolor/"{16x16,32x32,48x48,64x64,128x128,256x256}/apps/
 	cp -ar icons/* "$pkgdir/usr/share/icons/"
 
 	# Firewall
