@@ -3,7 +3,7 @@
 
 pkgname=edl-git
 pkgver=r419.76a2bf4
-pkgrel=2
+pkgrel=3
 pkgdesc="Inofficial Qualcomm Firehose / Sahara / Streaming / Diag Tools"
 arch=('any')
 url="https://github.com/bkerler/edl"
@@ -23,6 +23,7 @@ depends=(
   'python-pyserial'
   'python-keystone'
 )
+optdepends=('python-exscript: telnet support')
 makedepends=('git' 'python-setuptools')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
