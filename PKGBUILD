@@ -3,11 +3,11 @@
 _pkgname="memos"
 _gitauthor="usememos"
 _gitbranch="main"
-_gittag="v0.14.0"
+_gittag="v0.14.1"
 
 
 pkgname="${_pkgname}-git"
-pkgver=0.14.0.r0.g589b1046
+pkgver=0.14.1.r0.g4231ec5a
 pkgrel=1
 pkgdesc="A lightweight, self-hosted memo hub. Open Source and Free forever."
 url="https://github.com/${_gitauthor}/${_pkgname}"
