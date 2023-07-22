@@ -2,7 +2,7 @@
 
 _pkgname=papa
 pkgname=$_pkgname-bin
-pkgver=3.1.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Mod manager CLI for Northstar (binary release)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$url/releases/download/v$pkgver/papa_${pkgver}_amd64.deb")
-sha256sums=('2fc0feac3b70bf2317335bc4dfd7ade4cdeb80daef24451d8603743f94f35bb0')
+sha256sums=('dce5b1d43206facb05d9660dc6a053674448d438f7dd6b55380190d61577f630')
 
 prepare() {
   tar Jxpf data.tar.xz
