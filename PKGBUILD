@@ -1,7 +1,7 @@
 # Maintainer: gilbus <aur (AT) tinkershell dot eu>
 pkgname=frogmouth
 _name=frogmouth
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A Markdown browser for your terminal "
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-textual>=0.24.0' 'python-httpx' 'python-typing_extensions' 'pyt
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'python-poetry-core')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         'xdg-base-dirs.patch')
-sha256sums=('412e75d0f52d8e6ac354b5895628ed3d81d0294729e0a9e7b4cc8cff4b645e51'
+sha256sums=('a2ec36c1526ed59129747314494b93ffa67930562ffa4165c8819c65e1592f1e'
             'fe6bcfd3b8c962be3a9a19a9bb46d7ebe33b973981ab7d092b5e225c552432fc')
 
 prepare() {
