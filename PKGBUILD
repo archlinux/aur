@@ -1,5 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=grub-reboot-picker
+_app_id=com.mendhak.grubrebootpicker
 pkgver=0.0.8
 pkgrel=1
 pkgdesc="Tray application to reboot into different OSes or UEFI/BIOS"
@@ -17,14 +18,10 @@ prepare() {
   cd "$pkgname-$pkgver"
   patch --verbose -p0 < "$srcdir/setup.patch"
 
-  sed -i 's/un-reboot/system-reboot-symbolic/g' \
-    "src/$pkgname.py" \
-    com.mendhak.grubrebootpicker.desktop \
-    com.mendhak.grubrebootpicker.policy
-
-  sed -i 's/sbin/bin/g' \
-    com.mendhak.grubrebootpicker.desktop \
-    com.mendhak.grubrebootpicker.policy
+  for f in "${_app_id}.desktop" "${_app_id}.policy"; do
+    sed -i 's/un-reboot/system-reboot-symbolic/g' "${f}"
+    sed -i 's/sbin/bin/g' "${f}"
+  done
 
   if [[ -d "$pkgname" ]]; then
     rm -rf "$pkgname"
