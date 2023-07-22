@@ -1,6 +1,4 @@
-src
-pkg
-*.tar.xz
-*.tar.gz
-*.tar
-python-frccontrol-git/
+frccontrol/
+src/
+pkg/
+*.tar.zst
