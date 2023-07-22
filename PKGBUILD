@@ -2,7 +2,7 @@
 
 pkgname=platypush
 pkgver=0.50.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal multi-platform command executor and automation manager"
 arch=('any')
 license=('MIT')
@@ -40,6 +40,7 @@ optdepends=(
 	'opencv: Support for cameras and image processing over the OpenCV integration'
     'py-trello: Trello integration'
 	'python-aiohttp: SmartThings support'
+	'python-aioxmpp: XMPP support'
 	'python-bleak: Bluetooth low-energy devices support'
 	'python-bme280: Support for the BME280 digital sensor over I2C interface'
 	'python-deepspeech: Mozilla Deepspeech integration'
