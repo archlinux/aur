@@ -3,7 +3,7 @@
 # Contributor: Vlad Petrov <ejiek@mail.ru>
 
 pkgname=nb
-pkgver=7.5.3
+pkgver=7.5.4
 pkgrel=1
 pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
@@ -60,10 +60,10 @@ package() {
 }
 
 sha256sums=(
-  '062a50d8e8c77e8fdd52fb16a3744f556a56136e9939b43a6adc8b8fa8e1121b'
+  '2b4f3378023200a5fbdc7c0e336405e8b63c1ca90964853dc5662c7914fa8618'
 )
-sha512sums=(
-  'b410d62a26cb9bc35feca49368bc19cdcc82174ed88ed9c4f4e41042f328532c0f7a0d1e780fb346d4b74ca2bf329214a17eab0e5671fd535385e8453b99c3d2'
+b2sums=(
+  'a606c562a4003a45697e9a268d94fd0a367f62f6498762049db86b6bb601f954c8b160374fa1af50cf446ef49328cf90db24358f91a38b1281efd5e7b23ad6e6'
 )
 
 # eof
