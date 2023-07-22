@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-tytan652
 pkgver=29.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integrations. Plus V4L2 devices by paths, my bind interface PR, and sometimes backported fixes"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -136,6 +136,8 @@ prepare() {
 }
 
 build() {
+  export CXXFLAGS="$CXXFLAGS -Wno-error=dangling-reference"
+
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
