@@ -1,16 +1,18 @@
 pkgbase = python-dataclasses-json
 	pkgdesc = Easily serialize Python Data Classes to and from JSON
-	pkgver = 0.5.9
+	pkgver = 0.5.13
 	pkgrel = 1
 	url = https://github.com/lidatong/dataclasses-json
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	checkdepends = python-pytest-mypy
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
 	depends = python
 	depends = python-marshmallow
-	depends = python-marshmallow-enum
 	depends = python-typing_inspect
-	source = https://files.pythonhosted.org/packages/source/d/dataclasses-json/dataclasses-json-0.5.9.tar.gz
-	sha256sums = e9ac87b73edc0141aafbce02b44e93553c3123ad574958f0fe52a534b6707e8e
+	source = https://github.com/lidatong/dataclasses-json/archive/refs/tags/v0.5.13.tar.gz
+	sha256sums = 6bd1f74ad518dab48ad01eb14f84ecf37d2b3eee3550b931842a393b45793306
 
 pkgname = python-dataclasses-json

@@ -1,37 +1,48 @@
 # Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
+# Maintainer: David Florness <david at florness dot com>
 
 pkgbase='python-dataclasses-json'
 pkgname=('python-dataclasses-json')
 _module='dataclasses-json'
-pkgver='0.5.9'
+pkgver='0.5.13'
 pkgrel=1
 pkgdesc='Easily serialize Python Data Classes to and from JSON'
 url='https://github.com/lidatong/dataclasses-json'
 depends=(
     'python'
     'python-marshmallow'
-    'python-marshmallow-enum'
     'python-typing_inspect'
 )
 optdepends=()
 makedepends=(
-    'python-setuptools'
+    'python-build'
+    'python-installer'
+    'python-poetry-core'
 )
+checkdepends=('python-pytest-mypy')
 license=('MIT')
 arch=('any')
-source=(
-    'https://files.pythonhosted.org/packages/source/d/dataclasses-json/dataclasses-json-0.5.9.tar.gz'
-)
-sha256sums=('e9ac87b73edc0141aafbce02b44e93553c3123ad574958f0fe52a534b6707e8e')
+source=("https://github.com/lidatong/dataclasses-json/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('6bd1f74ad518dab48ad01eb14f84ecf37d2b3eee3550b931842a393b45793306')
 
+prepare() {
+    cd "${srcdir}/${_module}-${pkgver}"
+    # from <https://github.com/lidatong/dataclasses-json/blob/v0.5.13/.github/workflows/pythonpackage.yml#L71-L73>
+    sed -i "s/version = \"0.0.0\"/version = \"${pkgver}\"/" pyproject.toml
+    echo "__version__ = '${pkgver}'" > ./dataclasses_json/_version.py
+}
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${srcdir}/${_module}-${pkgver}"
+    python -m pytest
 }
 
 package() {
-    pushd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    popd
+    cd "${srcdir}/${_module}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
