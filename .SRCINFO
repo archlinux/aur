@@ -1,18 +1,20 @@
 pkgbase = fido
-	pkgdesc = Command-line tool to identify the file formats of digital objects.
-	pkgver = 1.3.5_88
-	pkgrel = 2
-	url = http://openpreservation.org/technology/products/fido/
+	pkgdesc = A command-line tool to identify the file formats of digital objects.
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://openpreservation.org/tools/fido/
 	arch = any
 	license = Apache
-	depends = python2>=2.6
-	depends = python2-six=1.10.0
-	depends = python2-olefile>=0.4
-	depends = python2-olefile<1
-	provides = fido
-	options = !emptydirs
-	source = https://github.com/openpreserve/fido/archive/v1.3.5-88.tar.gz
-	md5sums = 0cc6ddf5dfc06b2d1b5861d3949a9e62
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pytest-runner
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-olefile
+	depends = python-six
+	depends = python-importlib_resources
+	depends = python-requests
+	source = fido-1.6.1.tar.gz::https://github.com/openpreserve/fido/archive/v1.6.1.tar.gz
+	sha256sums = 6980d23cd7b5004b42334d3032adcbeafd99cf597edc758cad0cb23f2dbab18d
 
 pkgname = fido
-

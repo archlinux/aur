@@ -1,24 +1,32 @@
-# Maintainer: Holly Becker <becker.holly@gmail.com>
+# Maintainer: Jeremy Gust <jeremy AT plasticsoup DOT net>
+# Contributer: Holly Becker <becker.holly@gmail.com>
 pkgname=fido
-pkgver=1.3.5_88
-pkgrel=2
-pkgdesc="Command-line tool to identify the file formats of digital objects."
+pkgver=1.6.1
+pkgrel=1
+pkgdesc="A command-line tool to identify the file formats of digital objects."
 arch=('any')
-url="http://openpreservation.org/technology/products/fido/"
+url="https://openpreservation.org/tools/fido/"
 license=('Apache')
 depends=(
-  'python2>=2.6'
-  'python2-six=1.10.0'
-  'python2-olefile>=0.4'
-  'python2-olefile<1')
-provides=('fido')
-options=(!emptydirs)
-source=("https://github.com/openpreserve/$pkgname/archive/v${pkgver//_/-}.tar.gz")
-md5sums=('0cc6ddf5dfc06b2d1b5861d3949a9e62')
+   'python-olefile'
+   'python-six'
+   'python-importlib_resources'
+   'python-requests')
+makedepends=(
+   'python-build'
+   'python-installer'
+   'python-pytest-runner'
+   'python-setuptools'
+   'python-wheel')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/openpreserve/fido/archive/v${pkgver}.tar.gz")
+sha256sums=('6980d23cd7b5004b42334d3032adcbeafd99cf597edc758cad0cb23f2dbab18d')
 
-package() {
-  cd "$srcdir/$pkgname-${pkgver//_/-}"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+build() {
+   cd "${pkgname}-${pkgver}"
+   python -m build --wheel --no-isolation
 }
 
+package() {
+   cd "${pkgname}-${pkgver}"
+   python -m installer --destdir="$pkgdir" dist/*.whl
+}
