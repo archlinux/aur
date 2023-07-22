@@ -39,7 +39,7 @@ package() {
 	cp -r --no-preserve=ownership --preserve=mode 'resources/public/' "$pkgdir/usr/lib/$pkgname/public/"
 
 	# Binary
-	install -Dm755 "$srcdir/electron-launcher.sh" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm755 "$srcdir/electron-launcher.sh" "$pkgdir/usr/bin/$pkgname"
 
 	# Misc files
 	for _size in '16' '24' '32' '48' '64' '96' '128' '256' '512' '1024'; do
