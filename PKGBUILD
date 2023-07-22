@@ -2,7 +2,7 @@
 
 pkgname=legion+
 pkgver=1.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Asset Extraction tool for Apex Legends and Titanfall 2 (Wine)'
 arch=('x86_64')
 url='https://github.com/r-ex/LegionPlus'
@@ -17,7 +17,7 @@ source=("$url/releases/download/$pkgver/Legion+$pkgver.zip"
 sha256sums=('ec36829016fc2e67630c9a17f79db327d9680d8f21c43b01541f25a351f6f75f'
             'SKIP'
             '13342fbfbead78b8f201ffd7cffab164e1997d685f237d90e844f3da7b6e65a9'
-            '25965e4d92ecff88258f4c25d0f94657b95e8b1e9693cebc761921b02aab132c'
+            '5c57644fc35bd713fa32586b512d3741536d1fa2c6641c4b0d399d02ab58cab0'
             'c500e69a853d3617204bb904accdae1adcc6e33595ad86f156c080495eb71474')
 
 prepare() {
