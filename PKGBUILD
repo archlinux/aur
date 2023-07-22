@@ -1,13 +1,13 @@
 # Maintainer: Paul Makles <paulmakles@gmail.com>
 pkgname=revolt-desktop-git
-pkgver=1.0.6.r0.gf6c8db0
+pkgver=1.0.7.r13.g2373e7d
 pkgrel=1
 epoch=1
 pkgdesc="Open source user-first chat platform."
 arch=("x86_64")
 url="https://revolt.chat"
 license=("AGPL3")
-depends=("electron17")
+depends=("electron22")
 makedepends=("git" "npm" "nodejs")
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
@@ -22,7 +22,7 @@ pkgver() {
 build() {
 	cd "$srcdir/desktop"
     
-    electronDist=/usr/lib/electron17
+    electronDist=/usr/lib/electron22
     electronVer=$(${electronDist}/electron --version | tail -c +2)
 
     sed -i '/		"electron": /d' ./package.json
