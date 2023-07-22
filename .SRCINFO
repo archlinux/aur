@@ -1,0 +1,18 @@
+pkgbase = onetbb-2019
+	pkgdesc = High level abstract threading library (oneAPI Threading Building Blocks)
+	pkgver = 2019_U6
+	pkgrel = 1
+	url = https://oneapi-src.github.io/oneTBB/
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
+	source = onetbb-2019_U6.tar.gz::https://github.com/oneapi-src/oneTBB/archive/refs/tags/2019_U6.tar.gz
+	source = onetbb-2019-gcc12.patch
+	source = onetbb-2019-gcc13.patch
+	sha512sums = 6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15
+	sha512sums = 36e42247c67e44765c2d0c64e5835ff47cb4e44866d7f78664e139fdf2d71284e36ea9cd902a739bd4b5134f1731222117653b918a5a1fb4f175a468af76074d
+	sha512sums = e9d4d37b6243b32dc4dbf1ab8b5b1c6a2ceb87a81b7ac711afd95244131ac5305e2369b93581c4670ca15f8cdc42482a8cd373e22779322d52e66e2a5ecdf08b
+
+pkgname = onetbb-2019
