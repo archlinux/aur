@@ -1,7 +1,7 @@
 pkgbase = beekeeper-studio
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
 	pkgver = 3.9.18
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/beekeeper-studio/beekeeper-studio
 	arch = x86_64
@@ -18,12 +18,12 @@ pkgbase = beekeeper-studio
 	makedepends = yarn
 	depends = electron18
 	source = beekeeper-studio-3.9.18.tar.gz::https://github.com/beekeeper-studio/beekeeper-studio/archive/v3.9.18.tar.gz
+	source = electron-launcher.sh
 	source = electron-builder-config.diff
-	source = configure-environment.diff
 	source = fix-argv.diff
 	sha512sums = 78080d82e33b171010b6633bf9c2e93b8375c2e1619ee4f3361f467c5043f512c279f91845b9a919605c42b06d5c5eefb054904ca2e6ea900d8680bcdc22a581
-	sha512sums = 4e1498e4ccd35eecd8ed1392f903e559e9d400f142ca4c53763f9d092604edae924009862c9ec937a0625b92aed8259fc4de3642d9014db9d6769e88a18c283f
-	sha512sums = 1a631deaee10d876c875b215cb47d02f86949438bbcf0c1625b1a899d5ddfc10876cdd46460107a36cf5ee2171b7da26acf9fe7015baa279f5d5b3618ed4eddc
-	sha512sums = e74d6d85fe4ddd2606efb49834e37f81e44a79270f0be79ea7ea33cfe2759c906a49d6a8bfb761b7877c4511dc6b7ca92484ef3fa15c7f30178cf0b71c56d52d
+	sha512sums = 7550a585f23262f12aa997007f3ccb47272baf9bdeec7789a033775c6683fc9d1b4a29eee02d132c3d441b6abd2d96b9018469990b1638633d24ea90abea9371
+	sha512sums = e8d3a8d41bc15082096430e7fbfbd1deb15a82f7f1af6238f50cf2dc002e191913b21329123831522c7d4b9ea77dc441fa8b3a59c32c21f0ffa4c93256331cee
+	sha512sums = 855227e70e6b7c6e8800ac417533126341f8ecf07a9e0d79d34adb7c3e746062afc4ceedd195e6b32e8cfedd1d9d7c9a2646906fb495d023bec4ee260f26e053
 
 pkgname = beekeeper-studio

@@ -1,5 +1,5 @@
 diff --git a/apps/studio/src/background.ts b/apps/studio/src/background.ts
-index 511ba8b5..df2b9d24 100644
+index c7696c6e..a871d349 100644
 --- a/apps/studio/src/background.ts
 +++ b/apps/studio/src/background.ts
 @@ -109,7 +109,16 @@ app.on('ready', async () => {
