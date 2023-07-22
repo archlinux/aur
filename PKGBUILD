@@ -1,17 +1,12 @@
-# Maintainer: Luca P <meti at lplab.net>
-# Contributor: Sergej Pupykin <arch+pub@sergej.pp.ru>
-# Contributor: Bob Gregory <pathogenix@gmail.com>
-
 pkgname=libfastjson
-pkgver=0.99.9
-pkgrel=2
+pkgver=1.2304.0
+pkgrel=1
 pkgdesc="A performance-focused json library for C"
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/rsyslog/libfastjson"
 license=('GPL')
-depends=()
 source=($pkgname-$pkgver.tar.gz::https://github.com/rsyslog/$pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('881f954633aa76931e4c756ece0bda6fd8a673c6e66955a3db3b2bb9d6bbff72')
+sha256sums=('6c18848c75b179108429fc2818273551c68ffe6ddd5e414c20c071c844befbc1')
 
 build() {
   cd "$pkgname-$pkgver"
