@@ -1,6 +1,6 @@
 pkgbase = gpu-screen-recorder-git
 	pkgdesc = A shadowplay-like screen recorder for Linux. The fastest screen recorder for Linux
-	pkgver = r337.4e8c47a
+	pkgver = r339.4de23c2
 	pkgrel = 1
 	url = https://git.dec05eba.com/gpu-screen-recorder
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = gpu-screen-recorder-git
 	optdepends = polkit: Required to record your screen on AMD/Intel or Wayland (when not using wlroots) (kms grab requires root access)
 	provides = gpu-screen-recorder
 	conflicts = gpu-screen-recorder
-	source = gpu-screen-recorder-git-r337.4e8c47a.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.r337.4e8c47a.tar.gz
-	sha512sums = 9fbd5edcb8137d90f2d2bd70ebaaaea8cf6ef29a48d31cd844538ab4bb414902157dd8c8154fe6c38f32844bdb09d49b5d1a9f0c854eb4485a828042d3461496
+	source = gpu-screen-recorder-git-r339.4de23c2.tar.gz::https://dec05eba.com/snapshot/gpu-screen-recorder.git.r339.4de23c2.tar.gz
+	sha512sums = 765d5512045508b2a7aa7873bb284468a860727e020c49b083f50b82b67a6aa9b99d25830856564b8cc6b95219df7f5b5b5fa026c5ac26811db539527fc59936
 
 pkgname = gpu-screen-recorder-git
