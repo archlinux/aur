@@ -9,7 +9,7 @@
     </magic>
   </mime-type>
 
-  <mime-type type="application/rpak">
+  <mime-type type="archive/rpak">
     <comment>Respawn Pak Archive Format</comment>
     <glob pattern="*.rpak"/>
     <magic priority="100">
