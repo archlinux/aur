@@ -3,7 +3,7 @@
 pkgname='matterircd'
 _github_path="github.com/42wim/${pkgname}"
 _go_pkg_path="src/${_github_path}"
-pkgver='0.26.1'
+pkgver='0.27.0'
 pkgrel='1'
 pkgdesc='Minimal IRC server which integrates with mattermost and slack'
 arch=('x86_64' 'armv7h')
@@ -45,7 +45,7 @@ package() {
     install -Dm644 matterircd.toml.example "${pkgdir}/etc/${pkgname}/config.toml"
 }
 
-sha512sums=('92405e89315b7f4281d763da808ba1c5791e64f60994a609983b01dff4999aeb4a540f1a79a0b31bc6940ac9cca8f2e3d21c6b1b91ba60798adcd6dcc9259742'
+sha512sums=('5e283ccd803df29eb47f1de987ae71be9584cce076f6eddd9f4e37dd129b066c18bdfbffa91c27fc064817ce9509b0aef81e64f1e5b4ca261c348c06475b025d'
             'SKIP'
             'a5cc900193814ffdf602b7df767c976794926733d6dea43221aca44a732bb426d11468ef05f26e04bf32b8942ef1cc006e6f8d6ac9532375fdb801bd2dce8a87'
             '80db251f5b087ba6bcdd6f266063fb749107a441f794678d645acf32d44aba7b53c2c9ef7a9c3962abfd6e8af20a2d29e93bde1c15358d9f2011ce98b68e56dc')
