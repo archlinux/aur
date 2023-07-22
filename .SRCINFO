@@ -11,9 +11,6 @@ pkgbase = openmodelica-omc
 	makedepends = git
 	makedepends = boost
 	depends = lapack
-	depends = lapack-static
-	depends = expat
-	depends = lpsolve
 	depends = java-environment
 	source = git+https://github.com/OpenModelica/OpenModelica.git#tag=v1.21.0
 	sha1sums = SKIP

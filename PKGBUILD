@@ -7,7 +7,7 @@ url="https://openmodelica.org"
 license=('OSMC-PL')
 _giturl="https://github.com/OpenModelica/OpenModelica.git"
 groups=(openmodelica)
-depends=('lapack' 'lapack-static' 'expat' 'lpsolve' 'java-environment')
+depends=('lapack' 'java-environment')
 makedepends=('gcc-fortran' 'cmake' 'git' 'boost')
 source=("git+${_giturl}#tag=v${pkgver}")
 sha1sums=('SKIP')
@@ -19,6 +19,9 @@ prepare() {
 
   # fix build with gcc 13
   curl -L https://github.com/oneapi-src/oneTBB/pull/833.patch | patch -p1 -d OMCompiler/3rdParty/tbb
+
+  # link with shared blas/lapack libs: https://github.com/OpenModelica/OpenModelica/issues/10304
+  sed -i "s|-Wl,-Bstatic -lSimulationRuntimeFMI \$LDFLAGS \$LD_LAPACK -Wl,-Bdynamic|-Wl,-Bstatic -lSimulationRuntimeFMI -Wl,-Bdynamic \$LDFLAGS \$LD_LAPACK|g" OMCompiler/configure.ac
 }
 
 build() {
