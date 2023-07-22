@@ -7,7 +7,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r19776.g0366122306'
+pkgver='5.0.r19817.g3d9bc85912'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -17,7 +17,7 @@ license=('GPL2')
 depends=(
 	'alsa-lib' 'bluez-libs' 'cubeb' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpulse'
 	'libspng' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls2' 'minizip-ng' 'pugixml'
-	'qt6-base' 'qt6-svg' 'sfml' 'zlib'
+	'qt6-base' 'qt6-svg' 'sfml' 'zlib-ng'
 	'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so' 'libfmt.so'
 	'libminiupnpc.so' 'libsfml-network.so' 'libsfml-system.so' 'libswscale.so'
 	'libudev.so' 'libusb-1.0.so'
@@ -31,11 +31,9 @@ source=(
 	"$pkgname-mgba::git+https://github.com/mgba-emu/mgba.git"
 	"$pkgname-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git"
 	"$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
-	"$pkgname-zlibng::git+https://github.com/zlib-ng/zlib-ng.git"
 	'minizip-ng.diff'
 )
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -58,7 +56,6 @@ prepare() {
 		[mgba]='mGBA/mgba'
 		[rcheevos]='rcheevos/rcheevos'
 		[vma]='VulkanMemoryAllocator'
-		[zlibng]='zlib-ng/zlib-ng'
 	)
 
 	for _submod in "${!_submodules[@]}"; do
