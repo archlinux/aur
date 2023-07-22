@@ -1,0 +1,31 @@
+pkgbase = openscad-objects-git
+	pkgdesc = The programmers solid 3D CAD modeller with experimental support for user-defined objects
+	pkgver = 2019.05.r2568.gccce0d16f
+	pkgrel = 1
+	url = https://github.com/jordanbrown0/openscad
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = boost
+	makedepends = cmake
+	makedepends = eigen
+	makedepends = imagemagick
+	makedepends = python
+	makedepends = flex
+	makedepends = bison
+	depends = boost-libs
+	depends = cgal
+	depends = libzip
+	depends = opencsg
+	depends = qscintilla-qt5
+	depends = qt5-base
+	depends = qt5-gamepad
+	depends = qt5-multimedia
+	depends = qt5-svg
+	depends = tbb
+	provides = openscad
+	conflicts = openscad
+	source = openscad::git+https://github.com/jordanbrown0/openscad#branch=objects,geometry-as-data,module-references
+	sha256sums = SKIP
+
+pkgname = openscad-objects-git

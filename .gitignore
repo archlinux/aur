@@ -1,0 +1,4 @@
+pkg/
+src/
+openscad/
+*.pkg.tar.zst
