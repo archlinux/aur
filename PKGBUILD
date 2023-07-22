@@ -2,7 +2,7 @@
 
 # General package information
 pkgname=wtwitch
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Terminal user interface for Twitch"
 url="https://github.com/krathalan/wtwitch"
@@ -22,8 +22,8 @@ optdepends=('fzf: for browsing and watching streams with fzf'
 # Download information
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
         "${url}/releases/download/${pkgver}/${pkgver}.tar.gz.sig")
-sha256sums=("2ca6e097006695076b52335e2fb5850af7444dcbeefa58887006a162e62b8f3f"
-            "653386c0ad258a5bb563ea839d19f5ab64fcff5de7ed0135daa2c9908afba7fe")
+sha256sums=("71e24e6f818779811b33726dd1101693df85e1821fd0aad205a9f1a9ddcee98e"
+            "b1940cdf26c9c699bbe075fdd8f29dfff958d45110ebdde2c0dfaadd2f5d283e")
 validpgpkeys=("0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174")
 
 build() {

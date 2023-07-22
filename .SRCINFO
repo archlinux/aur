@@ -1,6 +1,6 @@
 pkgbase = wtwitch
 	pkgdesc = Terminal user interface for Twitch
-	pkgver = 2.6.2
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = https://github.com/krathalan/wtwitch
 	changelog = CHANGELOG
@@ -15,10 +15,10 @@ pkgbase = wtwitch
 	optdepends = vlc: for watching streams
 	optdepends = youtube-dl: for watching VODs
 	optdepends = yt-dlp: for watching VODs
-	source = https://github.com/krathalan/wtwitch/archive/refs/tags/2.6.2.tar.gz
-	source = https://github.com/krathalan/wtwitch/releases/download/2.6.2/2.6.2.tar.gz.sig
+	source = https://github.com/krathalan/wtwitch/archive/refs/tags/2.6.3.tar.gz
+	source = https://github.com/krathalan/wtwitch/releases/download/2.6.3/2.6.3.tar.gz.sig
 	validpgpkeys = 0C6B73F391FA26F0EBCD1F75C0F9AEE56E47D174
-	sha256sums = 2ca6e097006695076b52335e2fb5850af7444dcbeefa58887006a162e62b8f3f
-	sha256sums = 653386c0ad258a5bb563ea839d19f5ab64fcff5de7ed0135daa2c9908afba7fe
+	sha256sums = 71e24e6f818779811b33726dd1101693df85e1821fd0aad205a9f1a9ddcee98e
+	sha256sums = b1940cdf26c9c699bbe075fdd8f29dfff958d45110ebdde2c0dfaadd2f5d283e
 
 pkgname = wtwitch
