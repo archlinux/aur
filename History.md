@@ -1,4 +1,15 @@
 
+uuu_1.5.21 / 2023-02-01
+=======================
+
+  * Fixed android super.img loop download 52byte after some block
+  * Use login header as in curl
+  * Skip sleep in usb_add
+  * Add empty line after input password
+  * linux prompt ask user name and password for http(s) download
+  * fix linux build failure
+  * windows support input password for http download
+
 uuu_1.5.11 / 2022-11-01
 =======================
 
