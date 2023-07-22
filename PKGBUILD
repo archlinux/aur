@@ -3,7 +3,7 @@
 _pkgname="pd-mapper"
 pkgname="$_pkgname-git"
 pkgdesc="Qualcomm Protection Domain mapper"
-pkgver=r11.ab5074f
+pkgver=r18.107104b
 pkgrel=1
 arch=("aarch64")
 url="https://github.com/andersson/$_pkgname"
@@ -12,7 +12,7 @@ groups=("qcom-icnss-wlan")
 depends=("qrtr")
 makedepends=("git" "make" "gcc")
 provides=("$_pkgname")
-source=("git://github.com/andersson/$_pkgname.git")
+source=("git+https://github.com/andersson/$_pkgname.git")
 md5sums=("SKIP")
 
 pkgver() {

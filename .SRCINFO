@@ -1,6 +1,6 @@
 pkgbase = pd-mapper-git
 	pkgdesc = Qualcomm Protection Domain mapper
-	pkgver = r11.ab5074f
+	pkgver = r18.107104b
 	pkgrel = 1
 	url = https://github.com/andersson/pd-mapper
 	arch = aarch64
@@ -11,8 +11,7 @@ pkgbase = pd-mapper-git
 	makedepends = gcc
 	depends = qrtr
 	provides = pd-mapper
-	source = git://github.com/andersson/pd-mapper.git
+	source = git+https://github.com/andersson/pd-mapper.git
 	md5sums = SKIP
 
 pkgname = pd-mapper-git
-
