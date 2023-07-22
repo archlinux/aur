@@ -7,10 +7,10 @@ fi
 
 set -e
 PKGVER="$1"
-PKGREL="$2"
+PKGREL="${2:-1}"
 
 sed -i "s/^pkgver=.*/pkgver='$PKGVER'/" PKGBUILD
-sed -i "s/^pkgrel=.*/pkgrel=${PKGREL:-1}/" PKGBUILD
+sed -i "s/^pkgrel=.*/pkgrel=$PKGREL/" PKGBUILD
 makepkg --printsrcinfo > .SRCINFO
 
 echo >&2 "updated PKGBUILD and .SRCINFO successfully"
