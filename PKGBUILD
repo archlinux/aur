@@ -7,7 +7,7 @@
 
 pkgname=obs-studio-browser
 pkgver=29.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -130,6 +130,8 @@ prepare() {
 }
 
 build() {
+  export CXXFLAGS="$CXXFLAGS -Wno-error=dangling-reference"
+
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
