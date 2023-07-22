@@ -5,7 +5,7 @@
 
 pkgname=notion3
 pkgver=20190501
-pkgrel=2
+pkgrel=3
 _commit=5e820d514837e12b8753a1afe9b5dd1033f449da
 _commit_doc=4875ffc1c4f8ba1d7ebe77fc3aceacc872e74c07
 pkgdesc="Tabbed tiling, window manager. Fork of Ion3"
@@ -49,8 +49,8 @@ backup=("etc/notion/cfg_bindings.lua"
 	"etc/notion/xkbion.lua")
 provides=('libtu' 'libextl')
 changelog=ChangleLog
-source=("notion::git://github.com/raboof/notion#commit=${_commit}"
-	"notion-doc::git://github.com/raboof/notion-doc.git#commit=${_commit_doc}")
+source=("notion::https://github.com/raboof/notion#commit=${_commit}"
+	"notion-doc::https://github.com/raboof/notion-doc.git#commit=${_commit_doc}")
 sha256sums=('SKIP'
             'SKIP')
 

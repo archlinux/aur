@@ -1,7 +1,7 @@
 pkgbase = notion3
 	pkgdesc = Tabbed tiling, window manager. Fork of Ion3
 	pkgver = 20190501
-	pkgrel = 2
+	pkgrel = 3
 	url = https://notionwm.net
 	changelog = ChangleLog
 	arch = x86_64
@@ -61,10 +61,9 @@ pkgbase = notion3
 	backup = etc/notion/test_xinerama.lua
 	backup = etc/notion/xkbbell.lua
 	backup = etc/notion/xkbion.lua
-	source = notion::git://github.com/raboof/notion#commit=5e820d514837e12b8753a1afe9b5dd1033f449da
-	source = notion-doc::git://github.com/raboof/notion-doc.git#commit=4875ffc1c4f8ba1d7ebe77fc3aceacc872e74c07
+	source = notion::https://github.com/raboof/notion#commit=5e820d514837e12b8753a1afe9b5dd1033f449da
+	source = notion-doc::https://github.com/raboof/notion-doc.git#commit=4875ffc1c4f8ba1d7ebe77fc3aceacc872e74c07
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = notion3
-
