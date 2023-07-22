@@ -1,6 +1,6 @@
 pkgbase = linux-mainline-binder
 	pkgdesc = Linux Mainline Kernel With BINDER Module enabled by default.
-	pkgver = 6.5rc1
+	pkgver = 6.1.39
 	pkgrel = 1
 	url = https://kernel.org/
 	arch = x86_64
