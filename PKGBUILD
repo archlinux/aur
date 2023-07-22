@@ -6,7 +6,7 @@ function _nvidia_check() {
 
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=21.0.0_dev00.r2562.338b0222
+pkgver=21.0.0_dev00.r2607.c73046a0
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -78,6 +78,7 @@ package() {
 
 	# vrcompositor wrapper
 	install -Dm755 target/release/alvr_vrcompositor_wrapper "$pkgdir/usr/lib/alvr/vrcompositor-wrapper"
+	install -Dm644 target/release/alvr_drm_lease_shim.so "$pkgdir/usr/lib/alvr/alvr_drm_lease_shim.so"
 
 	# OpenVR Driver
 	install -Dm644 target/release/libalvr_server.so "$pkgdir/usr/lib/steamvr/alvr/bin/linux64/driver_alvr_server.so"
@@ -91,8 +92,8 @@ package() {
 	install -Dm644 "alvr/xtask/resources/$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
 
 	# Icons
-	install -d $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps/
-	cp -ar icons/* $pkgdir/usr/share/icons/
+	install -d "$pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps/"
+	cp -ar icons/* "$pkgdir/usr/share/icons/"
 
 	# Firewall
 	install -Dm644 alvr/xtask/firewall/alvr-firewalld.xml "$pkgdir/usr/lib/firewalld/services/${_pkgname}.xml"
