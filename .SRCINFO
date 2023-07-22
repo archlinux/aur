@@ -1,6 +1,6 @@
 pkgbase = ibus-mozc
 	pkgdesc = Mozc module for IBus
-	pkgver = 2.29.5135.102
+	pkgver = 2.29.5160.102
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = ibus-mozc
 	makedepends = python
 	makedepends = qt5-base
 	depends = ibus>=1.4.1
-	depends = mozc>=2.29.5135.102
+	depends = mozc>=2.29.5160.102
 	options = !distcc
 	options = !ccache
-	source = ibus-mozc-git::git+https://github.com/google/mozc.git#commit=cb3150e6d6d2e80e7bfff35944c20510e557dcad
+	source = ibus-mozc-git::git+https://github.com/google/mozc.git#commit=0cf3e926112300c61e632a9ab0915fcd6eaed003
 	sha256sums = SKIP
 
 pkgname = ibus-mozc
