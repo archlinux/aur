@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=flightcore
-pkgver=1.24.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A Northstar installer, updater, and mod-manager"
 arch=('x86_64')
@@ -9,7 +9,6 @@ url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
 depends=('webkit2gtk' 'webkit2gtk-4.1' 'libappindicator-gtk3')
 makedepends=('cargo' 'git' 'npm')
-optdepends=('sccache: compiler caching for faster compiling')
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
