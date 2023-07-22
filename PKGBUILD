@@ -1,7 +1,7 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=python3-saml
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="SAML Python Toolkit (compatible with Python3)"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 depends=('python-lxml' 'python-isodate' 'python-xmlsec')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d5c92def813070e360b2d32a51142d6e2333c84445ab3e4c126debb2762e6829')
+sha256sums=('73cf5d4ba26bf9552ab7213068997304d843a040162100ff93dee4ef5e0ffe9b')
 
 build() {
 
