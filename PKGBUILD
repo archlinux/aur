@@ -5,7 +5,7 @@
 
 pkgname=python-django-cors-headers
 _pypi_pkgname=django_cors_headers
-pkgver=4.0.0
+pkgver=4.2.0
 pkgrel=0
 pkgdesc="Django application for handling the server headers required for Cross-Origin Resource Sharing (CORS)"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
 'python-setuptools-scm'
 )
 source=("https://pypi.io/packages/source/d/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('a971cd4c75b29974068cc36b5c595698822f1e0edd5f1b32ea42ea37326ad4aa')
+sha256sums=('f9749c6410fe738278bc2b6ef17f05195bc7b251693c035752d8257026af024f')
 
 build() {
   cd ${srcdir}/${_pypi_pkgname}-${pkgver}
