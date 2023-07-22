@@ -1,5 +1,6 @@
 # Maintainer: Theowhy <aur.theowhy@shizoku.fr>
 # Contributor: jpkotta
+# Contributor: jona
 pkgname=mfgtools
 pkgver=1.5.21
 pkgrel=1
