@@ -1,7 +1,7 @@
 # Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=papa
-pkgver=3.1.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Mod manager CLI for Northstar"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/AnActualEmerald/papa"
 license=('MIT')
 makedepends=('cargo' 'git')
 optdepends=('sccache: compiler caching for faster compiling')
-_commit=21f48f82509e568a4a54f64a7612a45c2016a733
+_commit=fa5617c1a1894d0ffd7aff69ccacfc61f8a600a2
 source=("git+$url.git#tag=v$pkgver"
         "git+https://github.com/AnActualEmerald/thermite.git#commit=$_commit")
 sha256sums=('SKIP'

@@ -1,6 +1,6 @@
 pkgbase = papa
 	pkgdesc = Mod manager CLI for Northstar
-	pkgver = 3.1.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/AnActualEmerald/papa
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = papa
 	makedepends = cargo
 	makedepends = git
 	optdepends = sccache: compiler caching for faster compiling
-	source = git+https://github.com/AnActualEmerald/papa.git#tag=v3.1.0
-	source = git+https://github.com/AnActualEmerald/thermite.git#commit=21f48f82509e568a4a54f64a7612a45c2016a733
+	source = git+https://github.com/AnActualEmerald/papa.git#tag=v4.0.0
+	source = git+https://github.com/AnActualEmerald/thermite.git#commit=fa5617c1a1894d0ffd7aff69ccacfc61f8a600a2
 	sha256sums = SKIP
 	sha256sums = SKIP
 
