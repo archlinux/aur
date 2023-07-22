@@ -3,16 +3,16 @@
 
 pkgname=lapce-git
 _pkgbase=lapce
-pkgver=0.2.5.r119.g5ee7ede
+pkgver=0.2.8.r252.g813d1b5
 pkgrel=1
 pkgdesc="Lightning-fast and Powerful Code Editor (Git version)"
 arch=('x86_64')
 url="https://lapce.dev"
 license=('Apache')
-provide=("lapce")
+provides=("lapce")
 conflicts=('lapce')
-depends=('gcc-libs' 'libxcb' 'expat' 'freetype2' 'libxkbcommon' 'fontconfig' 'gtk3')
-makedepends=('rust' 'python' 'cmake' 'git')
+depends=('gcc-libs' 'libxcb' 'expat' 'freetype2' 'libxkbcommon' 'fontconfig' 'gtk3' 'libxkbcommon-x11')
+makedepends=('rust' 'python' 'cmake' 'git' 'clang')
 options=('!lto')
 source=("$_pkgbase::git+https://github.com/lapce/lapce.git")
 sha512sums=('SKIP')
@@ -25,6 +25,7 @@ pkgver() {
 
 prepare() {
     cd "$_pkgbase"
+    export LIBCLANG_PATH='/usr/lib'
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
