@@ -7,7 +7,7 @@
 pkgname=epsxe
 _pkgname=ePSXe
 pkgver=2.0.5
-pkgrel=29
+pkgrel=30
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('x86_64')
@@ -25,11 +25,7 @@ prepare()
 {
   cd "$srcdir"
 
-  if [[ $pkgname =~ 32 ]]; then
-    mv e???e "$pkgname"
-  else
-    mv "${pkgname}_x64" "$pkgname"
-  fi
+  mv "${pkgname}_x64" "$pkgname"
 
   tar xf ncurses*.tar.xz usr/lib/libncursesw.so.5.9 2> /dev/null
   mv usr/lib/libncursesw.so.5.9 .
