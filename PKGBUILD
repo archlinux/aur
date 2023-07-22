@@ -71,7 +71,7 @@ _get_distribution_components(){
 prepare(){
   cd ${srcdir}/llvm-project-llvmorg-${pkgver}/llvm
   # https://github.com/intel/intel-graphics-compiler/issues/204
-  patch -Rp2 -i${srcdir}/don-t-accept-nullptr-as-GEP-element-type.patch
+  patch -Rp2 -i ${srcdir}/don-t-accept-nullptr-as-GEP-element-type.patch
   # Fixes Chromium error "*** stack smashing detected ***: terminated"
   # (which also goes away with "--change-stack-guard-on-fork=disabled")
   # https://reviews.llvm.org/D116589
