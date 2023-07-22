@@ -3,7 +3,7 @@
 pkgname=obs-studio-rc
 _pkgver=29.1.3
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=6
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
@@ -127,6 +127,8 @@ prepare() {
 }
 
 build() {
+  export CXXFLAGS="$CXXFLAGS -Wno-error=dangling-reference"
+
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
