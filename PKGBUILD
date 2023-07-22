@@ -2,11 +2,12 @@
 
 pkgname="pass-it-on-server"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pass-it-on server component"
 arch=("any")
 license=("MIT")
 url="https://github.com/kwheelans/pass-it-on"
+conflicts=("pass-it-on-server-bin")
 depends=("openssl")
 makedepends=("cargo")
 source=("https://github.com/kwheelans/pass-it-on/archive/refs/tags/v$pkgver.tar.gz")
