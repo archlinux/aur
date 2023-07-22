@@ -9,7 +9,7 @@ _tbbpkgminorver=6
 
 pkgname=usd
 pkgver=23.08
-pkgrel=1
+pkgrel=2
 pkgdesc='3D VFX pipeline interchange file format'
 arch=(x86_64)
 url='https://openusd.org'
@@ -39,16 +39,22 @@ makedepends=(cmake
              python-jinja
              python-pygments)
 optdepends=('materialx: MaterialX Support'
-            'embree: Embree Support')
+            'embree: Embree Support'
+            'alembic: Alembic Support'
+            'openshadinglanguage: OSL Support'
+            'draco: Draco Support')
+
 options=(!lto)
 
 # git+$_url.git#branch=dev TEST
 source=("git+$_url.git#tag=v$pkgver"
         "https://github.com/oneapi-src/oneTBB/archive/refs/tags/${_tbbmajorver}_U${_tbbpkgminorver}.tar.gz"
+        "tbbgcc13.patch"
         "usd.sh"
         )
 sha512sums=('SKIP'
             '6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15'
+            'e9d4d37b6243b32dc4dbf1ab8b5b1c6a2ceb87a81b7ac711afd95244131ac5305e2369b93581c4670ca15f8cdc42482a8cd373e22779322d52e66e2a5ecdf08b'
             '8094b0238f320044f939917cde3ff3541bfffbd65daa7848626ca4ad930635fe64c78cbdef1ee3469134b14068a12416542ac263d8115fa27e0ad70fa20a7ecd')
 
 prepare() {
@@ -94,6 +100,10 @@ build() {
   fi
 
   if [[ -d /usr/include/embree4 ]]; then
+    _CMAKE_FLAGS+=(-DPXR_BUILD_EMBREE_PLUGIN=ON)
+  fi
+
+  if [[ -d /usr/include/embree3 ]]; then
     _CMAKE_FLAGS+=(-DPXR_BUILD_EMBREE_PLUGIN=ON)
   fi
 
