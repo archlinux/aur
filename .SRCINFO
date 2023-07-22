@@ -1,16 +1,17 @@
 pkgbase = hb-downloader
 	pkgdesc = An unofficial library for querying the Humble Bundle API
 	pkgver = 0.5.0h
-	pkgrel = 8
-	url = https://github.com/saik0/humblebundle-python
+	pkgrel = 9
+	url = https://github.com/talonius/hb-downloader
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-requests
 	depends = python-pyaml
 	options = !emptydirs
-	source = hb-downloader-0.5.0h::https://github.com/wahrwolf/hb-downloader/archive/v0.5.0h.tar.gz
-	sha256sums = 941ee284114b48aca690896913c3bf631ac346cd481db83825edd192c482887f
+	source = hb-downloader-0.5.0h::https://github.com/talonius/hb-downloader/archive/ebbc91293c4acfc158be2100689632620fb60e50.zip
+	source = remove-logging-to-file.patch
+	sha256sums = f11be30faaff16d31f06b07b72eecb35cb57195413b8ec4b88a552621b66d6c1
+	sha256sums = 2d60de18919d1dcd20c9fc2571c8905f40edffde229d37b074fdd19a8a4c4028
 
 pkgname = hb-downloader
-
