@@ -207,7 +207,9 @@ package_llvm13-minimal(){
   # Remove empty dir
   rm -rf "${pkgdir}"/opt/llvm13/lib/pkgconfig
   rm -rf "${pkgdir}"/opt/llvm13/include/LLVMSPIRVLib
+
   # Move spirv headers files in spirv-llvm-translator
+  mkdir -p "${srcdir}"/spirv/opt/llvm13/{include/spirv,share}
   mv "${pkgdir}"/opt/llvm13/include/spirv/* "${srcdir}"/spirv/opt/llvm13/include/spirv/
   mv "${pkgdir}"/opt/llvm13/share/cmake "${srcdir}"/spirv/opt/llvm13/share/
   # Remove empty dir
