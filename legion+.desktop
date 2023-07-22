@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Legion+
+Comment=Asset Extraction tool for Apex Legends and Titanfall
+Exec=legion+ %f
+Icon=legion+
+StartupWMClass=Legion+
+MimeType=model/vnd.valve.source.compiled-map;application/rpak;audio/mbnk;
