@@ -1,28 +1,51 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=oqsprovider-git
 _pkgname=oqs-provider
-pkgver=r108.0c91d09
+pkgver=r130.57d4c58
+_pkgverliboqs=0.8.0
 pkgrel=1
 pkgdesc="OpenSSL 3 provider containing post-quantum algorithms"
 arch=('x86_64')
 url="https://openquantumsafe.org/applications/tls.html#oqs-openssl-provider"
 license=('MIT')
 depends=(
-    'liboqs>0.7.2'
+    'liboqs>=0.8.0'
     'openssl'
 )
 makedepends=(
     'cmake'
     'git'
+    'python'
+    'python-jinja'
+    'python-tabulate'
+    'python-yaml'
 )
 provides=('oqsprovider')
 conflicts=('oqsprovider')
-source=("${pkgname}::git+https://github.com/open-quantum-safe/${_pkgname}")
-b2sums=('SKIP')
+source=(
+    "${pkgname}::git+https://github.com/open-quantum-safe/${_pkgname}"
+    "liboqs-${_pkgverliboqs}.tar.gz::https://github.com/open-quantum-safe/liboqs/archive/refs/tags/${_pkgverliboqs}.tar.gz"
+    "enable-algs.patch"
+)
+b2sums=(
+    'SKIP'
+    'f84a290ece4fffe458988e2ddbbcb4efb05f0d2be97ab21d4ccd60720977477d9b36cd2a9c69bad7815c5ed69eaf3526ee8fc65d819c0b3c341d326bd435bc16'
+    '71286fda50b1830ee70e3cc23b647499f812348c3303c518147f2ec62c300bca346147e6bdf540748a5ca6400c6134607ffd47f6166b3b6661c53aabb8035af2'
+)
 
 pkgver() {
     cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+    # Enable additional algorithms supported by liboqs
+    # See: https://github.com/open-quantum-safe/oqs-provider/issues/210
+    patch --directory="${pkgname}" --forward --strip=1 --input="${srcdir}/enable-algs.patch"
+
+    # Some files are needed from the liboqs source code or generate.py will fail
+    cd "${pkgname}"
+    LIBOQS_SRC_DIR="${srcdir}/liboqs-${_pkgverliboqs}" python oqs-template/generate.py
 }
 
 build() {
@@ -34,11 +57,6 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/build/lib/
-
-    for library in *; do
-        install -D -m0755 "${library}" "${pkgdir}"/usr/lib/ossl-modules/${library}
-    done
-
-    install -D -m0644 "${srcdir}"/${pkgname}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    install -D -m0755 build/lib/oqsprovider.so "${pkgdir}"/usr/lib/ossl-modules/oqsprovider.so
+    install -D -m0644 ${pkgname}/LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
