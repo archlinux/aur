@@ -1,16 +1,16 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=python3-saml
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
-pkgdesc="OneLogin's SAML Python Toolkit. Upstream python3-saml targeted at Python 3."
+pkgdesc="SAML Python Toolkit (compatible with Python3)"
 arch=('any')
-url='https://github.com/onelogin/python3-saml'
+url='https://github.com/saml-toolkits/python3-saml'
 license=('MIT')
 makedepends=('python-setuptools')
 depends=('python-lxml' 'python-isodate' 'python-xmlsec')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('92a1cf3b41667d7b385e579d07c0f051ff8ac9c71fcfecf2c60779216ad134f3')
+sha256sums=('d5c92def813070e360b2d32a51142d6e2333c84445ab3e4c126debb2762e6829')
 
 build() {
 
