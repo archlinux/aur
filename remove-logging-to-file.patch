@@ -1,0 +1,5 @@
+33,36d32
+<         # Print the output also to a logfile
+<         logfile = open("hb-downloader_" + time.strftime("%Y-%m-%d") + ".log", 'a')
+<         print(formatted_message, file = logfile)
+<         logfile.close()
