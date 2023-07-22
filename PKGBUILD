@@ -3,7 +3,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=python-survey
-pkgver=4.5.2
+pkgver=4.5.3
 pkgrel=1
 pkgdesc='A simple library for creating beautiful interactive prompts.'
 arch=('any')
@@ -20,8 +20,8 @@ makedepends=(
    'python-sphinx_rtd_theme'
    'python-sphinx-autodoc-typehints'
    'python-sphinx-paramlinks')
-source=("https://files.pythonhosted.org/packages/94/5b/b3429928b766e38c155a8f01cae3ebec3c56760ed9dc73f172f04e28a926/survey-4.5.2.tar.gz")
-sha256sums=('bab2bea5fe01855e20ab20c00e00f6d4f17beae62fbe3aa017159e6455ef567b')
+source=("https://files.pythonhosted.org/packages/5d/5d/d669db2d16b6c6129910b11eaa66440208f08a7f7e6976f9743376ef56d6/survey-4.5.3.tar.gz")
+sha256sums=('6aae39c22db75da122f970e541f5d499c48e11734439d5d9585e4344bf31b3e6')
 
 build() {
    cd "${pkgname#python-}-${pkgver}"
