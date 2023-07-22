@@ -1,3 +1,7 @@
+## GE-Proton8-8
+
+- This is a minor hotfix release that just syncs proton-wine and dxvk with upstream versions from today. A user complained they were seeing some odd CPU+GPU usage in 8-7 but was fine in today's proton-experimental. After testing with this build based on today's experimental they confirmed it was working here too.
+
 ## GE-Proton8-7
 
 - FSR IS BACK!!!
