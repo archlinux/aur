@@ -1,3 +1,7 @@
+## GE-Proton8-9
+
+-Hotfix: Apparently yesterdays build was missing the normal proton packaged Gecko and Mono (the file size was significantly smaller than usual). This build fixes that.
+
 ## GE-Proton8-8
 
 - This is a minor hotfix release that just syncs proton-wine and dxvk with upstream versions from today. A user complained they were seeing some odd CPU+GPU usage in 8-7 but was fine in today's proton-experimental. After testing with this build based on today's experimental they confirmed it was working here too.
