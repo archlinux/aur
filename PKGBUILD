@@ -8,14 +8,15 @@ _tbbmajorver=2019
 _tbbpkgminorver=6
 
 pkgname=usd
-pkgver=23.05
-pkgrel=10
+pkgver=23.08
+pkgrel=1
 pkgdesc='3D VFX pipeline interchange file format'
 arch=(x86_64)
 url='https://openusd.org'
 _url='https://github.com/PixarAnimationStudios/USD'
 license=('Apache')
 depends=(glew
+         boost
          jemalloc
          doxygen
          graphviz
@@ -44,23 +45,15 @@ options=(!lto)
 # git+$_url.git#branch=dev TEST
 source=("git+$_url.git#tag=v$pkgver"
         "https://github.com/oneapi-src/oneTBB/archive/refs/tags/${_tbbmajorver}_U${_tbbpkgminorver}.tar.gz"
-        "https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.gz"
-        "tbbgcc13.patch"
-        "pyside6.patch"
-        "materialx.patch"
         "usd.sh"
         )
 sha512sums=('SKIP'
             '6bcc014ec90cd62293811ac436eab03c7f7c7e3e03109efcab1c42cfed48d8bf83073d03ab381e5e63ee8c905f1792a7fdab272ec7e585df14102bad714ffc15'
-            '6ab652c77dddc5a69cfc3f09974ba66f1413d699e49734c7ed31c629f5368230e0adaf95f599eafbf9316660d67b0b011b52ac1552d814564cbb2967bd927fdd'
-            'e9d4d37b6243b32dc4dbf1ab8b5b1c6a2ceb87a81b7ac711afd95244131ac5305e2369b93581c4670ca15f8cdc42482a8cd373e22779322d52e66e2a5ecdf08b'
-            'ba35f847b023139dcc3b38ec9308d52c7358967f22c38d481a0a9d9fee1ced674b56850bc9f7e07c350a144c1e575ec1f77a1a0b970dc4ceddcae904d6bc403f'
-            '167e9bb2bced935cd9513b4ecd40c9e73ada0c794f1e5f11dc3e2844bedc07ac082aa8fb88e50c86dc2c80854ed95ddc22472f6fdc978765398079164d1c15c5'
             '8094b0238f320044f939917cde3ff3541bfffbd65daa7848626ca4ad930635fe64c78cbdef1ee3469134b14068a12416542ac263d8115fa27e0ad70fa20a7ecd')
 
 prepare() {
-  patch --directory=USD --forward --strip=1 --input="${srcdir}/pyside6.patch"
-  patch --directory=USD --forward --strip=1 --input="${srcdir}/materialx.patch"
+  cd ${srcdir}
+
   #TBB
   mkdir -p "${srcdir}"/tbb2019
   patch --directory=oneTBB-${_tbbmajorver}_U${_tbbpkgminorver} --forward --strip=1 --input="${srcdir}/tbbgcc13.patch"
@@ -74,14 +67,6 @@ prepare() {
     -DSYSTEM_NAME=Linux \
     -DTBB_VERSION_FILE="${srcdir}"/tbb2019/usr/include/tbb/tbb_stddef.h \
     -P cmake/tbb_config_installer.cmake
-
-  #BOOST
-  cd ${srcdir}/boost_1_78_0
-
-  ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=python3
-  ./b2 install \
-  \
-  --prefix="$srcdir"/boost
 }
 
 build() {
@@ -90,8 +75,8 @@ build() {
     -DCMAKE_PREFIX_PATH:PATH=/usr/share/usd
     -DPXR_BUILD_TESTS=ON
     -DPXR_BUILD_DOCUMENTATION=ON
-    -DBOOST_ROOT="${srcdir}"/boost
-#     -DTBB_ROOT_DIR="${srcdir}"/tbb2019/usr
+    -DBOOST_ROOT=/usr
+    -DTBB_ROOT_DIR="${srcdir}"/tbb2019/usr
     -DBoost_NO_BOOST_CMAKE=ON
     -DBUILD_SHARED_LIBS=ON
     -DPXR_MALLOC_LIBRARY:path=/usr/lib/libjemalloc.so
@@ -134,6 +119,5 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
 
   install -Dm755 "${srcdir}"/usd.sh "${pkgdir}"/etc/profile.d/usd.sh
-  cp -r "${srcdir}"/boost/* "${pkgdir}"/usr/share/usd
   cp -r "${srcdir}"/tbb2019/usr/* "${pkgdir}"/usr/share/usd
 }
