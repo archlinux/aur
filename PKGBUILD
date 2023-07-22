@@ -4,7 +4,7 @@
 _pkgname=Orbiter
 pkgname=orbiter2016-git
 pkgver=r560.01aaeb02
-pkgrel=2
+pkgrel=3
 pkgdesc="Orbiter Space Flight Simulator"
 arch=(x86_64)
 url="http://orbit.medphys.ucl.ac.uk/index.html"
@@ -104,12 +104,12 @@ build() {
 package () {
   DESTDIR="$pkgdir" cmake --install build
 
-  mkdir -p "$pkgdir/opt/${_pkgname}"
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/applications"
+  mkdir -p "$pkgdir/usr/share/pixmaps"
 
+  ln -s "${pkgdir}/usr/Orbiter/Orbiter" 			"${pkgdir}/usr/bin/Orbiter"
   install -Dm644 "${srcdir}/Orbiter.desktop"			"${pkgdir}/usr/share/applications/Orbiter.desktop"
   install -Dm644 "${srcdir}/Orbiter_BasicLogo.png"		"${pkgdir}/usr/share/pixmaps/Orbiter_BasicLogo.png"
-  ln -s "${pkgdir}/usr/Orbiter/Orbiter" 			"${pkgdir}/usr/bin/Orbiter"
   install -D "${srcdir}/TheGondos-orbiter/LICENSE" -t   	"${pkgdir}/usr/share/licenses/${_pkgname}"
 }
