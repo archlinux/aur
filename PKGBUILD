@@ -5,7 +5,7 @@
 
 pkgname=pleroma
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A microblogging server software that can federate other servers that support ActivityPub'
 url='https://git.pleroma.social/pleroma/pleroma'
 license=('AGPL' 'CCPL:cc-by-4.0' 'CCPL:cc-by-sa-4.0')
@@ -32,6 +32,7 @@ build() {
     mix local.rebar --force
     mix deps.get
     mix deps.get --only prod
+    mix deps.update ssl_verify_fun ecto
 }
 package() { 
     cd "$srcdir"
