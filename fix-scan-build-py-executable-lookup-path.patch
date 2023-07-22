@@ -1,0 +1,31 @@
+From c84755a046bbdcd0564693e30b2508034b06002b Mon Sep 17 00:00:00 2001
+From: serge-sans-paille <sguelton@redhat.com>
+Date: Mon, 13 Sep 2021 10:25:45 +0200
+Subject: [PATCH] Fix scan-build-py executable lookup path
+
+Once installed, scan-build-py doesn't know anything about its auxiliary
+executable and can't find them.
+Use relative path wrt. scan-build-py script.
+
+Differential Revision: https://reviews.llvm.org/D109659
+---
+ clang/tools/scan-build-py/lib/libscanbuild/analyze.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/clang/tools/scan-build-py/lib/libscanbuild/analyze.py b/clang/tools/scan-build-py/lib/libscanbuild/analyze.py
+index 9a249a8e15cb..d83ff2aefab9 100644
+--- a/clang/tools/scan-build-py/lib/libscanbuild/analyze.py
++++ b/clang/tools/scan-build-py/lib/libscanbuild/analyze.py
+@@ -39,8 +39,10 @@ from libscanbuild.shell import decode
+ 
+ __all__ = ['scan_build', 'analyze_build', 'analyze_compiler_wrapper']
+ 
+-COMPILER_WRAPPER_CC = 'analyze-cc'
+-COMPILER_WRAPPER_CXX = 'analyze-c++'
++scanbuild_dir = os.path.dirname(__import__('sys').argv[0])
++
++COMPILER_WRAPPER_CC = os.path.join(scanbuild_dir, '..', 'libexec', 'analyze-cc')
++COMPILER_WRAPPER_CXX = os.path.join(scanbuild_dir, '..', 'libexec', 'analyze-c++')
+ 
+ CTU_EXTDEF_MAP_FILENAME = 'externalDefMap.txt'
+ CTU_TEMP_DEFMAP_FOLDER = 'tmpExternalDefMaps'
