@@ -325,6 +325,8 @@ package_spirv-llvm-translator13-minimal(){
   cp --preserve --recursive "${srcdir}"/spirv/* "${pkgdir}"/
 
   install -Dm644 "${srcdir}"/SPIRV-LLVM-Translator-"${spirvllvmver}"/LICENSE.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/llvm/build/tools/SPIRV-LLVM-Translator/SPIRV-Headers/LICENSE \
+    "${pkgdir}"/usr/share/licenses/"${pkgname}"/spirv-headers/LICENSE
 }
 
 sha256sums=('09c50d558bd975c41157364421820228df66632802a4a6a7c9c17f86a7340802'
