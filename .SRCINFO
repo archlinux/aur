@@ -1,7 +1,7 @@
 pkgbase = spotify-adblock
 	pkgdesc = Adblocker for Spotify
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/abba23/spotify-adblock
 	arch = x86_64
@@ -15,6 +15,6 @@ pkgbase = spotify-adblock
 	source = https://github.com/abba23/spotify-adblock/archive/v1.0.2/spotify-adblock-1.0.2.tar.gz
 	source = spotify-adblock.desktop
 	b2sums = 5247d1746a30805d218fc183d75adb249f6517b0dace9460b7be18fe63b6209bb49c0084973f1d28452901dedb839eba7e3e427d758dc78139e9aa4ed8a46009
-	b2sums = 35ab8a2d0efbf43c95cda53c5b316f37a38e0bd31f61e1913f0ef541c2fcc031dcf090f7214784178d91515df5981bfc19a590486df7e2a51b19629a4605456c
+	b2sums = 39f7b71aa8b6b894513812742b5ecbd4ab9ee60482f455555529be356b93724a663d9b4db21675b51db615594ed73fa7657eeab6d2b1679cd6a5572b2566a68a
 
 pkgname = spotify-adblock
