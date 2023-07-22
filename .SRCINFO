@@ -1,7 +1,7 @@
 pkgbase = kibot
 	pkgdesc = KiCad automation utility
-	pkgver = 0.11.0
-	pkgrel = 2
+	pkgver = 1.6.3
+	pkgrel = 0
 	url = https://github.com/INTI-CMNB/KiBot
 	arch = any
 	license = GPL-3.0
@@ -13,7 +13,7 @@ pkgbase = kibot
 	depends = python-yaml
 	conflicts = kibot-git
 	options = !strip
-	source = kibot-0.11.0.tar.gz::https://ghproxy.com/https://github.com/INTI-CMNB/KiBot/archive/refs/tags/v0.11.0.tar.gz
-	sha256sums = 6dc9376dc9402ab9bb0bec9f6ad69aa306ee63633546c46aa1f4ca49e7c41bc3
+	source = kibot-1.6.3.tar.gz::https://github.com/INTI-CMNB/KiBot/archive/refs/tags/v1.6.3.tar.gz
+	sha256sums = 9d127beee846cf80cee7892375804ff1bc4b504922618b865447c916295301ba
 
 pkgname = kibot

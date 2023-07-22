@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=kibot
-pkgver=0.11.0
-pkgrel=2
+pkgver=1.6.3
+pkgrel=0
 epoch=
 pkgdesc="KiCad automation utility"
 arch=('any')
@@ -20,12 +20,17 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://ghproxy.com/${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('6dc9376dc9402ab9bb0bec9f6ad69aa306ee63633546c46aa1f4ca49e7c41bc3')
+sha256sums=('9d127beee846cf80cee7892375804ff1bc4b504922618b865447c916295301ba')
 #validpgpkeys=()
+
+build() {
+    cd "${srcdir}/KiBot-${pkgver}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
     cd "${srcdir}/KiBot-${pkgver}"
-    python setup.py install --no-compile --root="$pkgdir"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
