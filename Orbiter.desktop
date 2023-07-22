@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Orbiter2016
+Keywords=game;space;
+Icon=Orbiter_BasicLogo
+Exec=Orbiter
+Terminal=false
+StartupNotify=false
+Categories=Game;
+Comment=Orbiter Space Flight Simulator

@@ -1,7 +1,7 @@
 pkgbase = orbiter2016-git
 	pkgdesc = Orbiter Space Flight Simulator
 	pkgver = r560.01aaeb02
-	pkgrel = 1
+	pkgrel = 2
 	url = http://orbit.medphys.ucl.ac.uk/index.html
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,8 @@ pkgbase = orbiter2016-git
 	makedepends = libsndfile
 	makedepends = glm
 	makedepends = texlive-latex
+	source = Orbiter_BasicLogo.png
+	source = Orbiter.desktop
 	source = TheGondos-orbiter::git+https://github.com/TheGondos/orbiter.git#branch=linux
 	source = TheGondos-imgui::git+https://github.com/TheGondos/imgui.git
 	source = TheGondos-XRVessels::git+https://github.com/TheGondos/XRVessels.git
@@ -31,6 +33,8 @@ pkgbase = orbiter2016-git
 	source = TheGondos-Orb42S::git+https://github.com/TheGondos/Orb42S.git
 	source = TheGondos-SSRMS::git+https://github.com/TheGondos/SSRMS.git
 	source = TheGondos-plus42desktop::git+https://github.com/TheGondos/plus42desktop.git
+	sha256sums = 086f1d52d8dfefe71e2f79c3bfd899886ded39a277bb5de78a7aa8f59222ad50
+	sha256sums = c2285249255e7959d99d25d56fa2c97d18db19a4c5549560c1342e536c428821
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -1,9 +1,10 @@
 # Maintainer: Mr.Smith1974
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
 
+_pkgname=Orbiter
 pkgname=orbiter2016-git
 pkgver=r560.01aaeb02
-pkgrel=1
+pkgrel=2
 pkgdesc="Orbiter Space Flight Simulator"
 arch=(x86_64)
 url="http://orbit.medphys.ucl.ac.uk/index.html"
@@ -12,7 +13,9 @@ depends=()
 makedepends=('git' 'cmake' 'glfw-x11' 'openal' 'libsndfile' 'glm' 'texlive-latex')
 provides=()
 conflicts=()
-source=("TheGondos-orbiter::git+https://github.com/TheGondos/orbiter.git#branch=linux"
+source=("Orbiter_BasicLogo.png"
+	"Orbiter.desktop"
+	"TheGondos-orbiter::git+https://github.com/TheGondos/orbiter.git#branch=linux"
         "TheGondos-imgui::git+https://github.com/TheGondos/imgui.git"
         "TheGondos-XRVessels::git+https://github.com/TheGondos/XRVessels.git"
         "TheGondos-SOIL2::git+https://github.com/TheGondos/SOIL2.git"
@@ -31,7 +34,9 @@ source=("TheGondos-orbiter::git+https://github.com/TheGondos/orbiter.git#branch=
         "TheGondos-Orb42S::git+https://github.com/TheGondos/Orb42S.git"
         "TheGondos-SSRMS::git+https://github.com/TheGondos/SSRMS.git"
         "TheGondos-plus42desktop::git+https://github.com/TheGondos/plus42desktop.git")
-sha256sums=('SKIP'
+sha256sums=('086f1d52d8dfefe71e2f79c3bfd899886ded39a277bb5de78a7aa8f59222ad50'
+            'c2285249255e7959d99d25d56fa2c97d18db19a4c5549560c1342e536c428821'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -85,16 +90,26 @@ prepare() {
 }
 
 build() {
+  cd ${srcdir}
+
+  [[ -d build ]] && rm -rf build
+
   cmake -B build -S TheGondos-orbiter -Wno-dev \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-  #can't find Orbitersdk.h at the first run
-  cmake --build build || true
   cmake --build build
 }
 
 package () {
   DESTDIR="$pkgdir" cmake --install build
-  install -D LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  mkdir -p "$pkgdir/opt/${_pkgname}"
+  mkdir -p "$pkgdir/usr/bin"
+  mkdir -p "$pkgdir/usr/share/applications"
+
+  install -Dm644 "${srcdir}/Orbiter.desktop"			"${pkgdir}/usr/share/applications/Orbiter.desktop"
+  install -Dm644 "${srcdir}/Orbiter_BasicLogo.png"		"${pkgdir}/usr/share/pixmaps/Orbiter_BasicLogo.png"
+  ln -s "${pkgdir}/usr/Orbiter/Orbiter" 			"${pkgdir}/usr/bin/Orbiter"
+  install -D "${srcdir}/TheGondos-orbiter/LICENSE" -t   	"${pkgdir}/usr/share/licenses/${_pkgname}"
 }
