@@ -6,7 +6,7 @@
 # epoch 1: 1.2.0
 epoch=1
 pkgname=dsview
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Client software that supports the DreamSourceLab logic analyzer"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ makedepends=('cmake' 'ninja' 'boost')
 source=(
   "DSView-$pkgver.tar.gz::https://github.com/DreamSourceLab/DSView/archive/v${pkgver}.tar.gz"
 )
-sha384sums=('7fb5c8970fe88a58b94571cc36ed0916d758bd4a1e3d0d80713b3b7124fdb164607ee806c34b84bc5248e2937ec4b915')
+sha384sums=('2fb32b0c48275ee4c7278fda59174aa7f7873a203952eded105cb7de1f2e60387a1db7a955455ceba5c269b911fe9a66')
 
 prepare() {
   sed -i 's#MODE="0666"#TAG+="uaccess"#' \
