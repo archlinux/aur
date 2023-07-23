@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moose'
-pkgver='2.2203'
+pkgver='2.2205'
 pkgrel='1'
 pkgdesc="A postmodern object system for Perl 5"
 arch=('x86_64' 'aarch64')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-cpan-meta-check>=0.011' 'perl-class-load>=0.09' 'perl-class-load-xs>=0.01' 'perl-data-optlist>=0.107' 'perl-devel-globaldestruction>=0' 'perl-devel-overloadinfo>=0.005' 'perl-devel-stacktrace>=2.03' 'perl-dist-checkconflicts>=0.02' 'perl-eval-closure>=0.04' 'perl-mro-compat>=0.05' 'perl-module-runtime>=0.014' 'perl-module-runtime-conflicts>=0.002' 'perl-package-deprecationmanager>=0.11' 'perl-package-stash>=0.32' 'perl-package-stash-xs>=0.24' 'perl-params-util>=1.00' 'perl-sub-exporter>=0.980' 'perl-try-tiny>=0.17')
 makedepends=()
-checkdepends=('perl-test-cleannamespaces>=0.13' 'perl-test-fatal>=0.001' 'perl-test-needs>=0')
+checkdepends=('perl-test-cleannamespaces>=0.13' 'perl-test-fatal>=0.001' 'perl-test-needs>=0.002010')
 url='https://metacpan.org/release/Moose'
 source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/Moose-$pkgver.tar.gz")
-md5sums=('86165bb94edb65f8d4fbfc4cf4717655')
-sha512sums=('c91284cfaa29c6252de25cad5e54d5565d468bc11eab9f02c8469c523441467fc3ad5f68a32847b347652b04bfaaaaffb6d078279c5175d93855552e10cc805a')
+md5sums=('adc6481b487cdc2a0138e9be9b53e164')
+sha512sums=('d687d586a1e6f11033c1783dacb2dd528614bfefeed4c0a90ca7d9a189baa824238b0be0f3d1444c715515934a730b491563534d7537a49f7152d5a80499458c')
 _distdir="Moose-$pkgver"
 
 build() {
