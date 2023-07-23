@@ -1,6 +1,7 @@
 pkgbase = gstreamer0.10-bad
+	pkgdesc = GStreamer Multimedia Framework Bad plugin libraries
 	pkgver = 0.10.23
-	pkgrel = 38
+	pkgrel = 39
 	url = http://gstreamer.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -13,9 +14,7 @@ pkgbase = gstreamer0.10-bad
 	makedepends = libdca
 	makedepends = bzip2
 	makedepends = libdc1394
-	makedepends = neon
 	makedepends = faac
-	makedepends = libmusicbrainz5
 	makedepends = faad2
 	makedepends = libmms
 	makedepends = libcdaudio
@@ -24,7 +23,6 @@ pkgbase = gstreamer0.10-bad
 	makedepends = libdvdnav
 	makedepends = libmodplug
 	makedepends = jasper
-	makedepends = liblrdf
 	makedepends = libofa
 	makedepends = soundtouch
 	makedepends = libvdpau
@@ -42,6 +40,7 @@ pkgbase = gstreamer0.10-bad
 	makedepends = spandsp
 	makedepends = celt
 	makedepends = openssl-1.0
+	makedepends = python
 	options = !emptydirs
 	source = https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-0.10.23.tar.xz
 	source = fix-libmodplug-include.patch
@@ -51,6 +50,7 @@ pkgbase = gstreamer0.10-bad
 	source = faad2-version-check.patch
 	source = wildmidi-0.4.patch
 	source = flite_cmu_us_kal.patch
+	source = gstcolorspaceorc.orc.patch
 	sha256sums = 03cf0786391c64625569072e904082a08861f05a63d64b2f8e8dad3f26d81bf9
 	sha256sums = d89d8f4307c7d5a143b9240467d260a1cb6bb1ab2e7ca57841ce0901f41c9cb7
 	sha256sums = eb97037b7b581d1ab994eadd144044c083975e5670a73ec827de126bf888f4b9
@@ -59,31 +59,42 @@ pkgbase = gstreamer0.10-bad
 	sha256sums = 741492ae7a9518603fc51d87ae331d882f075547ea7fdec19c60f399085f18cc
 	sha256sums = 7a8698df3b53c34c627c00d3b025045818898cedc5ee7ffa13272d8758fcefd2
 	sha256sums = e3b6a6a8bd0480ab812116cb472b92ad5770fdb8afdbdc2a5b557fdd0294ad36
+	sha256sums = 7340a88bd022b93e2cb1eed45acb572ffe49e61c3cfd4082399a7de3071140e9
 
 pkgname = gstreamer0.10-bad
 	pkgdesc = GStreamer Multimedia Framework Bad Plugin libraries (gst-plugins-bad)
+	depends = gstreamer0.10>=0.10.36
 	depends = gstreamer0.10-base>=0.10.36-11
+	depends = orc
+	depends = glibc
+	depends = libx11
+	depends = glib2
 
 pkgname = gstreamer0.10-bad-plugins
 	pkgdesc = GStreamer Multimedia Framework Bad Plugins (gst-plugins-bad)
 	groups = gstreamer0.10-plugins
+	depends = gstreamer0.10>=0.10.36
 	depends = gstreamer0.10-bad=0.10.23
+	depends = gstreamer0.10-base>=0.10.36-11
 	depends = xvidcore
 	depends = libdca
 	depends = bzip2
 	depends = libdc1394
-	depends = neon
+	depends = orc
+	depends = libx11
+	depends = glib2
+	depends = curl
+	depends = gcc-libs
 	depends = faac
-	depends = libmusicbrainz5
 	depends = faad2
 	depends = libmms
 	depends = libcdaudio
 	depends = libmpcdec
+	depends = libdvdread
 	depends = mjpegtools
 	depends = libdvdnav
 	depends = libmodplug
 	depends = jasper
-	depends = liblrdf
 	depends = libofa
 	depends = libvdpau
 	depends = soundtouch
@@ -101,4 +112,6 @@ pkgname = gstreamer0.10-bad-plugins
 	depends = spandsp
 	depends = openssl-1.0
 	depends = dconf
-
+	depends = cairo
+	depends = libpng
+	depends = glibc

@@ -57,7 +57,7 @@ prepare() {
 build() {
   cd ${_pkgname}-${pkgver}
   NOCONFIGURE=1 ./autogen.sh
-  CPPFLAGS="${CPPFLAGS} -I/usr/include/openssl-1.0" LDFLAGS="${LDFLAGS} -L/usr/lib/openssl-1.0" \
+  CPPFLAGS="${CPPFLAGS} -Wno-deprecated -Wno-deprecated-declarations -I/usr/include/openssl-1.0" LDFLAGS="${LDFLAGS} -L/usr/lib/openssl-1.0" \
     ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --disable-static --enable-experimental --disable-gtk-doc \
     --with-package-name="GStreamer Bad Plugins (Archlinux)" \
