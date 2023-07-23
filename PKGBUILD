@@ -3,7 +3,7 @@
 # Contributor: Fabio Loli <fabio.loli@disroot.org>
 
 _pkgname=cartridges
-pkgname="${_pkgname}git"
+pkgname="${_pkgname}-git"
 pkgver=2.0.6.r0.gc347d9b
 pkgrel=1
 pkgdesc="A GTK4 + Libadwaita game launcher"

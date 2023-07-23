@@ -1,4 +1,4 @@
-pkgbase = cartridgesgit
+pkgbase = cartridges-git
 	pkgdesc = A GTK4 + Libadwaita game launcher
 	pkgver = 2.0.6.r0.gc347d9b
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = cartridgesgit
 	source = git+https://github.com/kra-mo/cartridges.git
 	b2sums = SKIP
 
-pkgname = cartridgesgit
+pkgname = cartridges-git
