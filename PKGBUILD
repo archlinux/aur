@@ -1,6 +1,6 @@
 # Maintainer: Jadelynn Cheatum <cheatumj@proton.me>
 pkgname=rmup
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A TUI music player written in Rust"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
