@@ -21,7 +21,7 @@ pkgver() {
 build() {
 	cd -- "$srcdir/$pkgname"
 	xmake config --mode=release
-	xmake build -vwy
+	xmake build -vwy "${pkgname%-*}"
 }
 
 package() {
