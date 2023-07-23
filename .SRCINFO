@@ -1,7 +1,7 @@
 pkgbase = python-wpiformat-git
 	pkgdesc = Linters and formatters for ensuring WPILib's source code conforms to its style guide
 	pkgver = 2023.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wpilibsuite/styleguide
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = python-wpiformat-git
 	makedepends = python-tox
 	depends = python-regex
 	depends = python-black
+	depends = clang
 	provides = python-wpiformat
 	conflicts = python-wpiformat
 	source = git+https://github.com/wpilibsuite/styleguide
