@@ -1,6 +1,6 @@
 pkgbase = colmsg
-	pkgdesc = A CLI tool for 櫻坂46メッセージ, 日向坂46メッセージ and 乃木坂46メッセージ app.
-	pkgver = 3.0.3
+	pkgdesc = A CLI tool for 櫻坂46メッセージ, 日向坂46メッセージ, 乃木坂46メッセージ and 齋藤飛鳥メッセージ app.
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/proshunsuke/colmsg
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = colmsg
 	makedepends = rust
 	depends = gcc-libs
 	depends = openssl
-	source = git+https://github.com/proshunsuke/colmsg#commit=98ef9ed6e7001b20518f420c3bae2a5aa62cf98a
+	source = git+https://github.com/proshunsuke/colmsg#commit=9fc56923dfd5feb68ac0f2e184a10275e8998869
 	sha256sums = SKIP
 
 pkgname = colmsg
