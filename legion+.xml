@@ -2,7 +2,7 @@
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 
   <mime-type type="model/vnd.valve.source.compiled-map">
-    <comment>The Source Engine Map File Format</comment>
+    <comment>Source engine map file format</comment>
     <glob pattern="*.bsp"/>
     <magic priority="100">
         <match value="0x50534272" type="little32" offset="0"/>
@@ -10,7 +10,7 @@
   </mime-type>
 
   <mime-type type="archive/rpak">
-    <comment>Respawn Pak Archive Format</comment>
+    <comment>Respawn Pak archive</comment>
     <glob pattern="*.rpak"/>
     <magic priority="100">
         <match value="0x6b615052" type="little32" offset="0"/>

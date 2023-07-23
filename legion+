@@ -1,5 +1,5 @@
 #!/bin/bash
-export WINEPREFIX="$HOME/.local/share/legion+/wineprefix"
+export WINEPREFIX="$HOME/.local/share/wineprefixes/legion+/wineprefix"
 export WINEDEBUG=-all
 
 declare -a args
@@ -12,12 +12,12 @@ for arg; do
   fi
 done
 
-wine $HOME/.local/share/legion+/LegionPlus.exe "${args[@]}"
+wine $HOME/.local/share/wineprefixes/legion+/LegionPlus.exe "${args[@]}"
 EXIT=$?
 
 if [[ $EXIT -ne 0 ]]; then
   echo "Error: Legion+ failed to launch!"
   echo -e "If Legion+ didn't start, you should try deleting your Legion+ Wine prefix and restart:"
-  echo "rm -dr ~/.local/share/legion+/wineprefix"
+  echo "rm -dr ~/.local/share/wineprefixes/legion+/wineprefix"
   exit $EXIT
 fi
