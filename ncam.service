@@ -1,0 +1,18 @@
+[Unit]
+Description=Open Source Conditional Access Module
+Wants=pcscd.service
+After=tmp.mount network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/ncam -b
+User=ncam
+ConfigurationDirectory=ncam
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+NoNewPrivileges=yes
+ReadWritePaths=-/var/lib/ncam
+
+[Install]
+WantedBy=multi-user.target
