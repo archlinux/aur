@@ -1,0 +1,20 @@
+pkgbase = python-hypothesis-auto
+	pkgdesc = Extends Hypothesis to add fully automatic testing of type annotated functions
+	pkgver = 1.1.5
+	pkgrel = 2
+	url = https://github.com/timothycrosley/hypothesis-auto
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python-pydantic
+	depends = python-hypothesis
+	optdepends = python-pytest: for pytest plugin
+	source = git+https://github.com/timothycrosley/hypothesis-auto#commit=d3a9162feb79b310aa9ce61f8f8ac86caa591d38
+	sha512sums = SKIP
+
+pkgname = python-hypothesis-auto
