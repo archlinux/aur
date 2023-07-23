@@ -1,3 +1,5 @@
+# Maintainer: James Houlahan <james@houlahan.ch>
+
 pkgname=xdg-desktop-portal-rs
 pkgver=0.1.1
 pkgrel=1
@@ -17,7 +19,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
 
-    cargo build --frozen --release --all-features
+    cargo build --release --all-features
 }
 
 package() {
