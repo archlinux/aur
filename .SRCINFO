@@ -1,0 +1,24 @@
+pkgbase = syngestures-git
+	pkgdesc = Swipes and gestures for Linux with the MT multitouch protocol (latest commit)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/mqudsi/syngesture
+	arch = any
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	optdepends = wmctrl: needed for syngestures-switch-ws for X11 and Wayland compatible workspace switching
+	optdepends = xdotool: simulates keyboard and mouse actions for Xorg or XWayland based apps
+	provides = syngestures
+	conflicts = syngestures
+	backup = usr/local/etc/syngestures-git.toml
+	source = syngestures::git+https://github.com/mqudsi/syngesture.git
+	source = syngestures.desktop
+	source = syngestures.toml
+	source = syngestures-switch-ws
+	sha256sums = SKIP
+	sha256sums = 244d8dc40c0bb6eea28a05c22b4a6950bbf0ecfc358cbc4c1500aae805f87883
+	sha256sums = 56496557c63baa472dc426ee0215c80b63859983bc6977078e34266bda5fce7b
+	sha256sums = 587366d03b3e70f8cbdd78f557bdf5191ff9937f9f86afa0d7ff78c490b015d8
+
+pkgname = syngestures-git

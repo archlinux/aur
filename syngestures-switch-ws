@@ -1,0 +1,19 @@
+#!/bin/bash
+
+curr_workspace=$(wmctrl -d | grep '\*' | cut -d' ' -f1)
+
+case $1 in
+    "next")
+        next_workspace=$(($curr_workspace + 1))
+        wmctrl -s $next_workspace
+        ;;
+    "prev")
+        prev_workspace=$(($curr_workspace - 1))
+        if [ $prev_workspace -ge 0 ]; then
+            wmctrl -s $prev_workspace
+        fi
+        ;;
+    *)
+        >&2 echo "Usage: ${0} prev|next"
+        ;;
+esac
