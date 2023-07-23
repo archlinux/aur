@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Fire100265 <fire100265@outlook.com>
 pkgname=timeshift-bin
-pkgver=23.06.2
+pkgver=23.07.1
 pkgrel=1
-_build_id=202306081117
+_build_id=202307081612
 _ubuntu_ver=23.04.1
 pkgdesc="A system restore utility for Linux"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('btrfs-progs: BTRFS support'
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://launchpad.net/~linuxmint-daily-build-team/+archive/ubuntu/daily-builds/+files/${pkgname%-bin}_${pkgver}-unstable-${_build_id}~ubuntu${_ubuntu_ver}_amd64.deb")
-sha256sums=('687dc5d0f156eb1daed5ca28c5caf0b75860f08c8a2a9fde59b2ba2df96b068d')
+sha256sums=('10e04c964cf353457f0bb650be733da60e06ab5e5ad798d416176feff038d009')
 #source_x86_64=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname%-bin}_${pkgver}-1_amd64.deb")
 #source_aarch64=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname%-bin}_${pkgver}-1_arm64.deb")
 #source_riscv64=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname%-bin}_${pkgver}-1_riscv64.deb")
