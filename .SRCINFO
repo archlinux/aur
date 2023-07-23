@@ -1,0 +1,15 @@
+pkgbase = kde-wine-helper
+	pkgdesc = 一个小工具，用于解决KDE上由于wine微信/企业微信来新消息时图标不显示/不闪烁导致无法知晓新消息是否到来的问题
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/FengZhongShaoNian/kde-wine-helper
+	arch = x86_64
+	license = GPL-3.0
+	depends = cmake
+	depends = extra-cmake-modules
+	depends = qt5-base
+	depends = kwindowsystem>=5.88.0
+	source = kde-wine-helper-1.0.tar.gz::https://github.com/FengZhongShaoNian/kde-wine-helper/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 2b73a29f08c555941b2be3f00c09c89bb0b46d40d2f3def6efc1e430620e2e6b
+
+pkgname = kde-wine-helper
