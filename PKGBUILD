@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=bunnymodxt
-pkgver=2023.01.16
+pkgver=2023.07.23
 pkgrel=1
 pkgdesc='Speedrun and TAS tool for Half-Life & friends'
 url='https://github.com/YaLTeR/BunnymodXT'
@@ -22,10 +22,11 @@ makedepends=(
 
 # the proper source archive does not contain links to submodules
 source=(
-  "$pkgname-$pkgver::git+$url#tag=b52e3c84b9bc9b27c7db78d62eb11971ca37f54c"
+  "$pkgname-$pkgver::git+$url#tag=abf3d6c50f7b3dfcf972c57fba555278fdc1653a"
   bunnymodxt.sh
 )
-b2sums=('SKIP' 'SKIP')
+b2sums=('SKIP'
+        '76a234819827003035a02407877a5f050ebf2dbc64c42bd65667422d62d2493d233ce47e7bbbd876f955923b12849e6728f7f9fa7001bf31a3641b6dbf295c0f')
 install=$pkgname.install
 
 prepare() {
