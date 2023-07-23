@@ -3,7 +3,7 @@
 
 pkgname=pihpsdr-git
 _pkgname=pihpsdr
-pkgver=r1670.675eb00
+pkgver=r1676.42a31a4
 pkgrel=1
 pkgdesc='SDR software for HPSDR radios like Anan and Hermes Lite 2'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ arch=('x86_64' 'aarch64')
 # a lot of fixes and it is currently developed
 url='https://github.com/dl1ycf/pihpsdr'
 license=('GPL2')
-depends=('wdsp' 'fftw' 'libpulse' 'gtk3' 'soapysdr' 'alsa-lib')
+depends=('wdsp-dl1ycf-git' 'fftw' 'libpulse' 'gtk3' 'soapysdr' 'alsa-lib')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
