@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.7.99.r0.g158cc0d140
+pkgver=0.7.103.r0.g93ab116e91
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -9,6 +9,8 @@ url="https://xemu.app/"
 license=('GPL2')
 depends=('dtc' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'sdl2' 'zlib')
 makedepends=(
+	'cmake'
+	'cpp-httplib'
 	'git'
 	'glib2'
 	'glu'
@@ -19,6 +21,7 @@ makedepends=(
 	'libsamplerate'
 	'libslirp'
 	'meson'
+	'nlohmann-json'
 	'openssl'
 	'pixman'
 	'python-yaml'
@@ -37,6 +40,7 @@ source=(
 	'implot::git+https://github.com/epezent/implot.git'
 	'keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git'
 	'nv2a_vsh_cpu::git+https://github.com/abaire/nv2a_vsh_cpu.git'
+	'use-system-libs.patch'
 )
 b2sums=(
 	'SKIP'
@@ -47,6 +51,7 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
+	'66713ea21508daea5940a1dc0d761ecf449d31a825f2e24090d296ea4c127df80f961d13fe8d179bdad265441bad7174344c53db4202a23b910e9e0ca6c04e21'
 )
 
 pkgver() {
@@ -64,7 +69,8 @@ prepare() {
 	git config submodule.ui/thirdparty/imgui.url ../imgui
 	git config submodule.ui/thirdparty/implot.url ../implot
 	git -c protocol.file.allow=always submodule update
-	mkdir ../build tomlplusplus/include
+	mkdir -p ../build
+	patch -Np1 < ../use-system-libs.patch
 	python scripts/gen-license.py > XEMU_LICENSE
 }
 
@@ -75,25 +81,25 @@ build() {
 		--disable-debug-info \
 		--extra-cflags="-DXBOX=1" \
 		--ninja="$NINJA" \
-		--target-list=i386-softmmu \
+		--target-list="i386-softmmu" \
 		--with-git-submodules=ignore
 	make qemu-system-i386
 }
 
 package() {
 	depends+=(
-		'libcrypto.so'
 		'libepoxy.so'
 		'libgdk-3.so'
 		'libglib-2.0.so'
 		'libgobject-2.0.so'
 		'libgtk-3.so'
+		'libhttplib.so'
 		'libkeyutils.so'
 		'libpcap.so'
 		'libpixman-1.so'
 		'libsamplerate.so'
 		'libslirp.so'
-		'libssl.so'
+		'libtomlplusplus.so'
 	)
 	cd $_pkgname
 	# shellcheck disable=SC2154
