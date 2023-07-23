@@ -2,7 +2,7 @@
 
 pkgname=flent
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='The FLExible Network Tester.'
 arch=('any')
 url='https://flent.org'
@@ -14,10 +14,8 @@ optdepends=(
     'python-matplotlib: for outputting graphs'
     'python-qtpy: for the GUI'
 )
-source=(https://files.pythonhosted.org/packages/source/f/flent/flent-${pkgver}.tar.gz{,.asc})
-sha256sums=('db581deac3d8099965dd0d8eee4b9c4d1857bdce5bc97790af9d3ed5b6554f73'
-            'SKIP')
-validpgpkeys=('DE6162B5616BA9C9CAAC03074A55C497F744F705')
+source=(https://files.pythonhosted.org/packages/source/f/flent/flent-${pkgver}.tar.gz)
+sha256sums=('db581deac3d8099965dd0d8eee4b9c4d1857bdce5bc97790af9d3ed5b6554f73')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
