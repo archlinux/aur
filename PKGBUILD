@@ -3,13 +3,18 @@
 
 _pkgname=openslide-python
 pkgname=python-openslide
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Python bindings to OpenSlide'
 arch=('x86_64')
 url='https://github.com/openslide/openslide-python'
 license=('LGPL')
-makedepends=(python-setuptools)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
 checkdepends=(python-pytest)
 depends=(
   openslide
@@ -18,21 +23,21 @@ depends=(
 source=(
   "${_pkgname}-${pkgver}.tar.gz::https://github.com/openslide/openslide-python/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('8162829d3d0ea44dd82602ced7390d9b10dd339337a58f17a8eb81a30bc0883b')
+sha256sums=('6c961c22d96833f7215af2915b1034341ff860583df0e3880cc3137ee1dec7cb')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build_ext --inplace
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
+  local python_version=$(python -c 'import sys; print("".join(map(str, sys.version_info[:2])))')
   cd "${_pkgname}-${pkgver}"
-  pytest -v
+  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-${python_version}" pytest -v
 }
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
 # vim:set ts=2 sw=2 et:
