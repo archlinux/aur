@@ -1,0 +1,18 @@
+pkgbase = wdsp-dl1ycf-git
+	pkgdesc = NR0V DSP library ported to linux
+	pkgver = r116.7ceb35f
+	pkgrel = 1
+	url = https://github.com/dl1ycf/wdsp
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	depends = fftw
+	provides = wdsp
+	conflicts = wdsp
+	conflicts = wdsp-git
+	source = wdsp::git+https://github.com/dl1ycf/wdsp
+	sha256sums = SKIP
+
+pkgname = wdsp-dl1ycf-git
