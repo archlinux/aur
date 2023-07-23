@@ -66,6 +66,7 @@ source=(
     git+https://github.com/biojppm/cmake.git
     git+https://github.com/biojppm/c4core.git
     git+https://github.com/biojppm/debugbreak.git
+    git+https://github.com/KhronosGroup/glslang.git
     git+https://github.com/fastfloat/fast_float.git
     vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     git+https://github.com/nih-at/libzip.git
@@ -84,6 +85,7 @@ prepare() {
         fmt::3rdparty/fmt/fmt
         libchdr::3rdparty/libchdr/libchdr
         rapidyaml::3rdparty/rapidyaml/rapidyaml
+        glslang::3rdparty/glslang/glslang
         vulkan-headers::3rdparty/vulkan-headers
         libzip::3rdparty/libzip/libzip
         zstd::3rdparty/zstd/zstd
@@ -153,6 +155,7 @@ package() {
 }
 
 b2sums=('SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
