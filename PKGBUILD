@@ -1,8 +1,8 @@
 # Maintainer: leuko <aur202307_et_aydos_de>
 _pkgname=xpra-html5
 pkgname=${_pkgname}-git
-pkgver=8.0.r26.gc706346
-pkgrel=2
+pkgver=8.0.r27.gf133a43
+pkgrel=1
 pkgdesc='HTML5 client for Xpra'
 arch=('x86_64')
 url='https://github.com/Xpra-org/xpra-html5'
@@ -11,7 +11,7 @@ conflicts=($_pkgname)
 provides=($_pkgname=$pkgver)
 makedepends=(
 	git
-	python-setuptools
+	python
 	uglify-js  # for compressing Javascript
 	gzip  # compression for served files (.gz)
 	brotli  # compression for served files (.br)

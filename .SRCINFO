@@ -1,16 +1,16 @@
 pkgbase = xpra-html5-git
 	pkgdesc = HTML5 client for Xpra
-	pkgver = 8.0.r26.gc706346
-	pkgrel = 2
+	pkgver = 8.0.r27.gf133a43
+	pkgrel = 1
 	url = https://github.com/Xpra-org/xpra-html5
 	arch = x86_64
 	license = MPL2
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python
 	makedepends = uglify-js
 	makedepends = gzip
 	makedepends = brotli
-	provides = xpra-html5=8.0.r26.gc706346
+	provides = xpra-html5=8.0.r27.gf133a43
 	conflicts = xpra-html5
 	source = git+https://github.com/Xpra-org/xpra-html5
 	md5sums = SKIP
