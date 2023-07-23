@@ -2,7 +2,7 @@
 
 pkgname=wpimath
 pkgver=2023.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/allwpilib'
@@ -11,13 +11,16 @@ makedepends=('cmake')
 license=('BSD' 'MIT')
 options=('!strip' 'staticlibs')
 source=('git+https://github.com/wpilibsuite/allwpilib#tag=v2023.4.3'
-        'Suppress-Eigen-warning.patch')
+        'Don_t-treat-warnings-as-errors.patch'
+        'Add-missing-include.patch')
 md5sums=('SKIP'
-         '0116ecb4c78683a00db29f15c23b2920')
+         '06355c12d930efa26edbbe11f633831a'
+         'e2b9acf67122eca03efd62866a54ba59')
 
 prepare() {
   cd allwpilib
-  patch -p1 < "$srcdir"/Suppress-Eigen-warning.patch
+  patch -p1 < "$srcdir"/Don_t-treat-warnings-as-errors.patch
+  patch -p1 < "$srcdir"/Add-missing-include.patch
 }
 
 build() {

@@ -1,0 +1,13 @@
+diff --git a/wpiutil/src/main/native/include/wpi/Base64.h b/wpiutil/src/main/native/include/wpi/Base64.h
+index c410bd0c26..858ff73fff 100644
+--- a/wpiutil/src/main/native/include/wpi/Base64.h
++++ b/wpiutil/src/main/native/include/wpi/Base64.h
+@@ -5,6 +5,8 @@
+ #ifndef WPIUTIL_WPI_BASE64_H_
+ #define WPIUTIL_WPI_BASE64_H_
+ 
++#include <stdint.h>
++
+ #include <cstddef>
+ #include <span>
+ #include <string>
