@@ -1,7 +1,7 @@
 # Maintainer: Joan Figueras <ffigue at gmail dot com>
 
 pkgname=guacamole-auth-json-bin
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="The json authentication extension for Guacamole Client"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('guacamole-client')
 source=("https://archive.apache.org/dist/guacamole/${pkgver}/binary/guacamole-auth-json-${pkgver}.tar.gz")
 
-md5sums=('f48b0f85eed5143b2d41ab94d4d60239')
+md5sums=('90d6b26b993c0d58331fd4d87f949cb1')
 
 package() {
   cd "${srcdir}/guacamole-auth-json-${pkgver}"
