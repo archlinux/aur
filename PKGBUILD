@@ -9,7 +9,7 @@
 # match! -rc[0-9]+$
 
 pkgname=libvirt
-pkgver=9.2.0
+pkgver=9.5.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
@@ -86,7 +86,7 @@ backup=(
 source=(
   "https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
 )
-sha256sums=('a07f501e99093ac1374888312be32182e799de17407ed7547d0e469fae8188c5'
+sha256sums=('df5ea2272c4d1ce1889892d88292506616c1e10ebe8ecdeac7928f2ebdc3044a'
             'SKIP')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 
@@ -112,7 +112,6 @@ prepare() {
   sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
     src/qemu/qemu.conf.in \
     src/qemu/test_libvirtd_qemu.aug.in
-
 }
 
 build() {
@@ -150,6 +149,7 @@ check() {
 package() {
   conflicts=('libvirt')
   provides=("libvirt=$pkgver" 'libvirt.so' 'libvirt-admin.so' 'libvirt-lxc.so' 'libvirt-qemu.so')
+  provides+=('libvirt-libxl.so')
 
   DESTDIR="$pkgdir" ninja -C build install
   mkdir "$pkgdir"/usr/lib/{sysusers,tmpfiles}.d
