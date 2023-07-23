@@ -1,5 +1,5 @@
 pkgname="timedctl"
-pkgver=3.6.0.r0
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="Click CLI for Timed using libtimed"
 arch=("any")
