@@ -1,7 +1,7 @@
 # Maintainer: Joan Figueras <ffigue at gmail dot com>
 
 pkgname=guacamole-auth-ldap-bin
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="The ldap authentication extension for Guacamole Client"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('guacamole-client')
 source=("https://archive.apache.org/dist/guacamole/${pkgver}/binary/guacamole-auth-ldap-${pkgver}.tar.gz")
 
-md5sums=('1184909aa58dc2f74c941fdd65a00c26')
+md5sums=('d7e60649225107f65bdfc857a76349c8')
 
 package() {
   cd "${srcdir}/guacamole-auth-ldap-${pkgver}"
