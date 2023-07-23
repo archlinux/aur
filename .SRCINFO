@@ -1,0 +1,17 @@
+pkgbase = dysk-git
+	pkgdesc = Get information on your mounted filesystems
+	pkgver = 2.7.1.r0.g8df4767
+	pkgrel = 1
+	url = https://github.com/Canop/dysk
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = dysk
+	conflicts = dysk
+	replaces = lfs-git
+	source = git+https://github.com/Canop/dysk
+	sha512sums = SKIP
+
+pkgname = dysk-git
