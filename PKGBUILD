@@ -1,6 +1,6 @@
 pkgname=kernel-install-mkinitcpio
 _gitname=eos-systemd-boot
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc='A framework for enabling systemd-boot automation using kernel-install with mkinitcpio'
 arch=(any)
@@ -9,7 +9,7 @@ license=(GPL2)
 depends=(systemd mkinitcpio)
 conflicts=(dracut kernel-install-for-dracut)
 source=("$_gitname-$pkgver.tar.gz::$url/-/archive/$pkgver/$_gitname-$pkgver.tar.gz")
-sha512sums=('4db028e62e42f54253665efbc0beae36865fd9b678ce26e1294454ab9bb664c9e96024c261475160c9c6b63073d9919a5c321f889ef872905f80bd45c99de9b7')
+sha512sums=('8f7074af4aa34cf3ffcdc7a5f75adbde27b4df7af293746e170f4be52aa4e05ed62f981994ac9bf7b702c3243e9b061d40efed2e89251f510a573f476748f0c4')
 
 package()
 {
