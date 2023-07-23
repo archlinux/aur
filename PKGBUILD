@@ -2,7 +2,7 @@
 # Contributor: Black_Codec <orso.f.regna@gmail.com>
 
 pkgname=guacamole-server
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -26,7 +26,7 @@ source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${p
 
 backup=('etc/guacamole/guacd.conf')
 
-md5sums=('1577346b5ff8e388ddd12c7983fad955'
+md5sums=('4ed8a04f1abaa2a3e42120c9b1448f63'
          'ab0ac97ad76d16be73768f89abb6ee7e')
 
 prepare() {
