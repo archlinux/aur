@@ -1,0 +1,14 @@
+pkgbase = fireplace-git
+	pkgdesc = A cozy fireplace in your terminal
+	pkgver = r56.aa2070b
+	pkgrel = 1
+	url = https://github.com/Wyatt915/fireplace
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = fireplace=r56.aa2070b
+	conflicts = fireplace
+	source = fireplace-git::git+https://github.com/Wyatt915/fireplace.git
+	md5sums = SKIP
+
+pkgname = fireplace-git
