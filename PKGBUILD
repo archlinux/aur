@@ -3,7 +3,7 @@ _npmname=insect
 _npmver=5.9.0
 pkgname=insect
 pkgver=5.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="High precision scientific calculator with support for physical units"
 arch=(any)
 url="https://github.com/sharkdp/insect"
@@ -27,6 +27,7 @@ package() {
   find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 
   install -Dm644 "$_npmdir/insect/insect.desktop" "${pkgdir}/usr/share/applications/insect.desktop"
+  install -Dm644 "$_npmdir/insect/web/media/insect.svg" "${pkgdir}/usr/share/pixmaps/insect.svg"
 
   chown -R root:root "${pkgdir}"
 }
