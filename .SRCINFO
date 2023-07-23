@@ -1,6 +1,6 @@
 pkgbase = veyon
 	pkgdesc = Open Source computer monitoring and classroom management
-	pkgver = 4.8.0
+	pkgver = 4.8.1
 	pkgrel = 1
 	url = https://github.com/veyon
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = veyon
 	makedepends = qt5-tools
 	makedepends = procps-ng
 	makedepends = kldap
+	makedepends = libprocps
 	depends = qt5-base
 	depends = libfakekey
 	depends = kitemmodels
