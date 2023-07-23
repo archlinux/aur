@@ -2,7 +2,7 @@
 
 pkgname=xdg-desktop-portal-rs
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A rust backend for xdg-desktop-portal"
 arch=('x86_64')
 url="https://github.com/leakybits/xdg-desktop-portal-rs"
