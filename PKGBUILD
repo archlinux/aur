@@ -1,7 +1,7 @@
 _pkgname=jpl_eph
 pkgname=pluto-jpl-eph-git
-pkgver=20230411.5fccf11
-pkgrel=5
+pkgver=r104.5fccf11
+pkgrel=1
 pkgdesc="Code to read, use, and manipulate JPL DE ephemeris data"
 arch=(x86_64)
 url="http://www.projectpluto.com/jpl_eph.htm"
@@ -13,7 +13,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  git log -1 --format='%cd.%h' --date=short --abbrev=7 | tr -d -
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
