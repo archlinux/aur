@@ -1,7 +1,7 @@
 pkgbase = pluto-find-orb-git
 	pkgdesc = Orbit determination from observations
-	pkgver = 20230712.3ccabe5
-	pkgrel = 2
+	pkgver = r2376.ec12feb
+	pkgrel = 1
 	url = https://www.projectpluto.com/find_orb.htm
 	arch = x86_64
 	license = GPL2
