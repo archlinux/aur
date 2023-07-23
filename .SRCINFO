@@ -13,6 +13,7 @@ pkgbase = plasma-framework-git
 	makedepends = kwayland-git
 	makedepends = kdeclarative-git
 	depends = kactivities-git
+	depends = kcmutils-git
 	depends = kparts-git
 	depends = kpackage-git
 	depends = kirigami-git
@@ -22,4 +23,3 @@ pkgbase = plasma-framework-git
 	md5sums = SKIP
 
 pkgname = plasma-framework-git
-

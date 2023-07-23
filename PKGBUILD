@@ -1,5 +1,5 @@
-# Maintainer: zanny <lordzanny@gmail.com>
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
+# Maintainer: Melanie Scheirer <mel@nie.rs>
+# Contributor Antonio Rojas <arojas@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=plasma-framework-git
@@ -10,7 +10,7 @@ pkgdesc='Plasma library and runtime components based upon KF5 and Qt5'
 arch=(x86_64)
 url='https://projects.kde.org/projects/playground/libs/plasma-framework'
 license=(LGPL)
-depends=(kactivities-git kparts-git kpackage-git kirigami-git)
+depends=(kactivities-git kcmutils-git kparts-git kpackage-git kirigami-git)
 makedepends=(extra-cmake-modules-git git qt5-tools kdoctools-git kwayland-git kdeclarative-git)
 conflicts=(plasma-framework)
 provides=(plasma-framework)
