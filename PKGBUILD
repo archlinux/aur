@@ -3,13 +3,13 @@
 
 pkgname=betaflight-configurator-nightlies-bin
 _pkgname=betaflight-configurator
-pkgver=v20230721.497
+pkgver=v20230723.498
 pkgrel=1
 pkgdesc="Nightly builds of the Betaflight Configurator "
 arch=('x86_64')
 url="https://github.com/betaflight/betaflight-configurator-nightlies"
-source=("https://github.com/betaflight/betaflight-configurator-nightlies/releases/download/v20230721.497/betaflight-configurator_10.10.0-debug-4c54f3c_linux64-portable.zip")
-sha256sums=("ce90c42d8e756adb8333145198405530f870c751e7a67169633ea6412b9dc7bf")
+source=("https://github.com/betaflight/betaflight-configurator-nightlies/releases/download/v20230723.498/betaflight-configurator_10.10.0-debug-d1cb74e_linux64-portable.zip")
+sha256sums=("afa74c84d7752226298e90e01def87cf9198a3a28a66faf2f324db389e05c97d")
 options=(!strip)
 license=("GPL3")
 provides=("$_pkgname")
