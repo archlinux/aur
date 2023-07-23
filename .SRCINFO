@@ -1,6 +1,6 @@
 pkgbase = bunnymodxt-bin
 	pkgdesc = Speedrun and TAS tool for Half-Life & friends
-	pkgver = 2023.01.16
+	pkgver = 2023.07.23
 	pkgrel = 1
 	url = https://github.com/YaLTeR/BunnymodXT
 	install = bunnymodxt-bin.install
@@ -14,7 +14,7 @@ pkgbase = bunnymodxt-bin
 	conflicts = bunnymodxt
 	source = bunnymodxt.sh
 	sha256sums = 94e2930d1d3f3c71c4dd23b9d2b46a80eb35f02ffefaae521b1197eef7304446
-	source_x86_64 = bunnymodxt-bin-2023.01.16.7z::https://github.com/YaLTeR/BunnymodXT/releases/download/jan-16-2023/2-BunnymodXT-Linux.7z
-	sha256sums_x86_64 = 5004d88b843e2f23b2bf1413b78113cf00229f02c9aeb70a21cd0a5cc48cff73
+	source_x86_64 = bunnymodxt-bin-2023.07.23.7z::https://github.com/YaLTeR/BunnymodXT/releases/download/jul-23-2023/2-BunnymodXT-Linux.7z
+	sha256sums_x86_64 = ecfd9065ed426f4892bc8375fe7c76f5e0d8f59fb617316ea0bfc94fe95e07a7
 
 pkgname = bunnymodxt-bin

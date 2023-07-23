@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=bunnymodxt-bin
-pkgver=2023.01.16
+pkgver=2023.07.23
 pkgrel=1
 pkgdesc='Speedrun and TAS tool for Half-Life & friends'
 url='https://github.com/YaLTeR/BunnymodXT'
@@ -18,10 +18,10 @@ depends=(
 install=$pkgname.install
 
 source=(bunnymodxt.sh)
-source_x86_64=("$pkgname-$pkgver.7z::$url/releases/download/jan-16-2023/2-BunnymodXT-Linux.7z")
+source_x86_64=("$pkgname-$pkgver.7z::$url/releases/download/jul-23-2023/2-BunnymodXT-Linux.7z")
 
 sha256sums=('94e2930d1d3f3c71c4dd23b9d2b46a80eb35f02ffefaae521b1197eef7304446')
-sha256sums_x86_64=('5004d88b843e2f23b2bf1413b78113cf00229f02c9aeb70a21cd0a5cc48cff73')
+sha256sums_x86_64=('ecfd9065ed426f4892bc8375fe7c76f5e0d8f59fb617316ea0bfc94fe95e07a7')
 
 package() {
   install -Dm644 LICENSE \
