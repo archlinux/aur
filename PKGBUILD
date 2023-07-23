@@ -4,7 +4,7 @@ _name=editorconfig
 pkgname=vim-editorconfig
 _commit=0a3c1d8082e38a5ebadcba7bb3a608d88a9ff044  # refs/tags/v1.1.1
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="EditorConfig plugin for Vim"
 arch=(any)
 url="https://github.com/editorconfig/editorconfig-vim"
@@ -54,7 +54,7 @@ prepare() {
 
 package() {
   # gvim, pulled in by ruby-vimrunner conflicts with vim
-  depends+=(vim)
+  depends+=(vim-plugin-runtime)
 
   cd $_name-vim
   install -vDm 644 autoload/${_name}{,_core}.vim -t "$pkgdir/usr/share/vim/vimfiles/autoload/"
