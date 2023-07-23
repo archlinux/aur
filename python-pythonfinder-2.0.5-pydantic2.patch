@@ -1,0 +1,77 @@
+diff --git i/pyproject.toml w/pyproject.toml
+index eff4216..dad4039 100644
+--- i/pyproject.toml
++++ w/pyproject.toml
+@@ -43,7 +43,7 @@ unfixable = [
+ 
+ [tool.ruff.flake8-type-checking]
+ runtime-evaluated-base-classes = [
+-  "pydantic.BaseModel",
++  "pydantic.v1.BaseModel",
+   "pythonfinder.models.common.FinderBaseModel",
+   "pythonfinder.models.mixins.PathEntry",
+ ]
+diff --git i/setup.cfg w/setup.cfg
+index 077b7ce..b09b4fd 100644
+--- i/setup.cfg
++++ w/setup.cfg
+@@ -40,7 +40,7 @@ package_data =
+ install_requires =
+     cached-property
+     packaging>=22.0
+-    pydantic>=1.10.7,<2
++    pydantic>=2
+ 
+ [options.packages.find]
+ where = src
+diff --git i/src/pythonfinder/models/common.py w/src/pythonfinder/models/common.py
+index 4c439c9..0ef3d77 100644
+--- i/src/pythonfinder/models/common.py
++++ w/src/pythonfinder/models/common.py
+@@ -1,6 +1,6 @@
+ from __future__ import annotations
+ 
+-from pydantic import BaseModel, Extra
++from pydantic.v1 import BaseModel, Extra
+ 
+ 
+ class FinderBaseModel(BaseModel):
+diff --git i/src/pythonfinder/models/mixins.py w/src/pythonfinder/models/mixins.py
+index 58ce99a..e68020f 100644
+--- i/src/pythonfinder/models/mixins.py
++++ w/src/pythonfinder/models/mixins.py
+@@ -12,7 +12,7 @@ from typing import (
+     Optional,
+ )
+ 
+-from pydantic import BaseModel, Field, validator
++from pydantic.v1 import BaseModel, Field, validator
+ 
+ from ..exceptions import InvalidPythonVersion
+ from ..utils import (
+diff --git i/src/pythonfinder/models/path.py w/src/pythonfinder/models/path.py
+index a8fb807..e304603 100644
+--- i/src/pythonfinder/models/path.py
++++ w/src/pythonfinder/models/path.py
+@@ -20,7 +20,7 @@ from typing import (
+ )
+ 
+ from cached_property import cached_property
+-from pydantic import Field, root_validator
++from pydantic.v1 import Field, root_validator
+ 
+ from ..environment import (
+     ASDF_DATA_DIR,
+diff --git i/src/pythonfinder/models/python.py w/src/pythonfinder/models/python.py
+index c5e0345..32c82a8 100644
+--- i/src/pythonfinder/models/python.py
++++ w/src/pythonfinder/models/python.py
+@@ -19,7 +19,7 @@ from typing import (
+ )
+ 
+ from packaging.version import Version
+-from pydantic import Field, validator
++from pydantic.v1 import Field, validator
+ 
+ from ..environment import ASDF_DATA_DIR, PYENV_ROOT, SYSTEM_ARCH
+ from ..exceptions import InvalidPythonVersion
