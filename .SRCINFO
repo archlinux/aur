@@ -1,6 +1,6 @@
 pkgbase = eprosima-fast-dds
 	pkgdesc = eProsima's Fast-DDS implementation
-	pkgver = 2.11.0
+	pkgver = 2.11.1
 	pkgrel = 1
 	url = https://github.com/eProsima/Fast-DDS
 	arch = x86_64
@@ -10,9 +10,7 @@ pkgbase = eprosima-fast-dds
 	depends = asio
 	depends = tinyxml2
 	depends = eprosima-fast-cdr
-	source = https://github.com/eProsima/Fast-DDS/archive/v2.11.0.tar.gz
-	source = 001-include-cstdint.patch
-	sha256sums = afaf43fbee90d6dbecbbe7c363860c4963f8db2f4be94dc7c61a27bfdf841b83
-	sha256sums = 9656a7c2780040a922ecd85b9ba046ec72375a394b5ae199d570d1c1b7e82abf
+	source = https://github.com/eProsima/Fast-DDS/archive/v2.11.1.tar.gz
+	sha256sums = 3fe8b9f67a13a5d2aa40c0bd10581bd90f0a192b39c71f92ee233ffe584d3374
 
 pkgname = eprosima-fast-dds
