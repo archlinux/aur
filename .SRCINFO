@@ -1,5 +1,5 @@
 pkgbase = openxr-loader-git
-	pkgver = 1.0.23.r3.g915196a
+	pkgver = 1.0.28.1.r3.gd6b6d7a
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/OpenXR-SDK-Source
 	arch = i686
@@ -13,6 +13,8 @@ pkgbase = openxr-loader-git
 	makedepends = libxrandr
 	makedepends = python
 	makedepends = vulkan-icd-loader
+	makedepends = python-markupsafe
+	makedepends = python-jinja
 	source = openxr-loader::git+https://github.com/KhronosGroup/OpenXR-SDK-Source.git#branch=main
 	md5sums = SKIP
 
