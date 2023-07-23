@@ -1,7 +1,7 @@
 pkgbase = dnscontrol-ovh-git
-	pkgdesc = Synchronize your DNS to multiple providers from a simple DSL
+	pkgdesc = Synchronize your DNS to multiple providers from a simple DSL (with OVH fixes)
 	pkgver = 4.1.1.r1845.d7ec92e6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HLFH/dnscontrol.git
 	arch = x86_64
 	license = MIT
