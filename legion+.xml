@@ -2,7 +2,7 @@
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 
   <mime-type type="model/vnd.valve.source.compiled-map">
-    <comment>Source engine map file format</comment>
+    <comment>Source engine map file</comment>
     <glob pattern="*.bsp"/>
     <magic priority="100">
         <match value="0x50534272" type="little32" offset="0"/>
