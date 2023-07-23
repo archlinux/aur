@@ -2,7 +2,7 @@
 
 pkgname=wiliwili-git
 _pkg=wiliwili
-pkgver=v1.0.1.r0.g7180066
+pkgver=v1.1.0.r0.g02479f9
 pkgrel=1
 pkgdesc='A 3rd party bilibili client'
 url="https://github.com/xfangfang/wiliwili"
@@ -36,7 +36,7 @@ build() {
 	# -DGLFW_BUILD_WAYLAND=ON -DGLFW_BUILD_X11=OFF
 
 	# If you want to use Debug mode, deleate -DCMAKE_BUILD_TYPE=Releas
-
+	# If you don't want to use system library, deleate -USE-SHARED-LIB=ON
 	cmake \
 		-B build \
 		-S "$_pkg" \
@@ -44,6 +44,7 @@ build() {
 		-DPLATFORM_DESKTOP=ON \
 		-DINSTALL=ON \
 		-DCMAKE_BUILD_TYPE=Release \
+                -USE-SHARED-LIB=ON \
 		-Wno-dev
 	make -C build wiliwili -j$(nproc)
 }
