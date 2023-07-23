@@ -1,16 +1,16 @@
-pkgbase = burpsuite-pro-earlyadopter
-	pkgdesc = An integrated platform for performing security testing of web applications (professional edition) (early adopter)
+pkgbase = burpsuite-pro
+	pkgdesc = An integrated platform for performing security testing of web applications (professional edition)
 	pkgver = 2023.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://portswigger.net/burp/
 	arch = any
 	license = custom
 	makedepends = zip
 	depends = java-runtime>=17,
 	depends = hicolor-icon-theme
-	noextract = burpsuite-pro-earlyadopter-2023.7-orig.jar
-	source = burpsuite-pro-earlyadopter-2023.7-orig.jar::https://portswigger.net/burp/releases/download?product=pro&version=2023.7&type=Jar
-	source = burpsuite-pro-earlyadopter.desktop
+	noextract = burpsuite-pro-2023.7-orig.jar
+	source = burpsuite-pro-2023.7-orig.jar::https://portswigger.net/burp/releases/download?product=pro&version=2023.7&type=Jar
+	source = burpsuite-pro.desktop
 	source = splash.png
 	source = icon16.png
 	source = icon24.png
@@ -21,7 +21,7 @@ pkgbase = burpsuite-pro-earlyadopter
 	source = icon512.png
 	source = icon.svg
 	sha256sums = e29beb49af2679373bccdb497795f7180745c156cdc34abd3acee2706da1b07c
-	sha256sums = dabd0e917c65245aeab77f251481cdc77ac04bb756f757bb477d3969b12a75c5
+	sha256sums = f442258c5616969bfaad7c20b2ff99f05696ad04c2e2c3d145a360615650b9ec
 	sha256sums = be5226ff91b37f6102e143a1b8cf54c41ea66b2da6cff2d5df660b3b1a411c86
 	sha256sums = ff0b230af06fb76af053090ac021bf45b88341d746e67f6bb9e94ba40957d9d8
 	sha256sums = a6791fcaee558f6744b4f5a3fc0af2c9ad7ce244033e224c4e4464563ac9b911
@@ -32,4 +32,4 @@ pkgbase = burpsuite-pro-earlyadopter
 	sha256sums = 6bbfd022aa451efeb439a89527b814ae06f7ce6196f7ad8db276e9ad372a7e32
 	sha256sums = 8777077ed5b1809c8adde4c056a315f8ec8f1b79f4c4c0e60eb3582c4d7ab71d
 
-pkgname = burpsuite-pro-earlyadopter
+pkgname = burpsuite-pro

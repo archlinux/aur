@@ -1,10 +1,10 @@
 # Maintainer: Rasmus Moorats <xx+aur@nns.ee>
-# Contributor: freb
+# Maintainer: freb
 
-pkgname=burpsuite-pro-earlyadopter
+pkgname=burpsuite-pro
 pkgver=2023.7
-pkgrel=1
-pkgdesc="An integrated platform for performing security testing of web applications (professional edition) (early adopter)"
+pkgrel=2
+pkgdesc="An integrated platform for performing security testing of web applications (professional edition)"
 url="https://portswigger.net/burp/"
 depends=('java-runtime>=17', 'hicolor-icon-theme')
 makedepends=('zip')
@@ -23,7 +23,7 @@ source=("${pkgname}-${pkgver}-orig.jar::https://portswigger.net/burp/releases/do
   icon512.png
   icon.svg)
 sha256sums=('e29beb49af2679373bccdb497795f7180745c156cdc34abd3acee2706da1b07c'
-            'dabd0e917c65245aeab77f251481cdc77ac04bb756f757bb477d3969b12a75c5'
+            'f442258c5616969bfaad7c20b2ff99f05696ad04c2e2c3d145a360615650b9ec'
             'be5226ff91b37f6102e143a1b8cf54c41ea66b2da6cff2d5df660b3b1a411c86'
             'ff0b230af06fb76af053090ac021bf45b88341d746e67f6bb9e94ba40957d9d8'
             'a6791fcaee558f6744b4f5a3fc0af2c9ad7ce244033e224c4e4464563ac9b911'
@@ -49,11 +49,11 @@ package() {
 
   # install icons
   for size in {16,24,32,48,128,256,512}; do
-    install -Dm644 icon${size}.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/burpsuite-pro-earlyadopter.png
+    install -Dm644 icon${size}.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/burpsuite-pro.png
   done
-  install -Dm644 icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/burpsuite-pro-earlyadopter.svg
+  install -Dm644 icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/burpsuite-pro.svg
 
-  # create startup file for burpsuite-pro-earlyadopter.
+  # create startup file for burpsuite-pro.
   mkdir -m755 ${pkgdir}/usr/bin
   echo "#!/bin/sh" > ${pkgdir}/usr/bin/${pkgname}
   echo "exec \"\$JAVA_HOME/bin/java\" \"-splash:/usr/share/pixmaps/${pkgname}-splash.png\" \"--add-opens\" \"java.base/java.lang=ALL-UNNAMED\" \"--add-opens\" \"java.base/javax.crypto=ALL-UNNAMED\" \"--add-opens\" \"java.desktop/javax.swing=ALL-UNNAMED\" \"-jar\" \"/usr/share/${pkgname}/${pkgname}.jar\" \"\$@\"" >> ${pkgdir}/usr/bin/${pkgname}
