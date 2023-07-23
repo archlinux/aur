@@ -12,7 +12,7 @@ sha256sums=('e22d58904707212449c94fcc8611e3fee2af3e1849dae1b92cc928e48cd47c98'
             '515dc7cb110c904794183f4c95765d68b683c17316c1d425fb4cf1db07afa034')
 
 package() {
-    cd "$srcdir/DeGourou-v$pkgver"
+    cd "$srcdir/degourou"
     # copy files
     mkdir -p "$pkgdir/opt/$pkgname"
     cp -R DeGourou.py setup decrypt "$pkgdir/opt/$pkgname/"
