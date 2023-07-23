@@ -95,7 +95,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-git-noway-widgets"
 fi
-pkgver=30.0.50.165467
+pkgver=30.0.50.166575
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch with xwidgets & no-pgtk."
 arch=('x86_64')
