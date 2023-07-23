@@ -1,7 +1,7 @@
 pkgbase = insect
 	pkgdesc = High precision scientific calculator with support for physical units
 	pkgver = 5.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sharkdp/insect
 	arch = any
 	license = MIT

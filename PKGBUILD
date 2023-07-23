@@ -3,7 +3,7 @@ _npmname=insect
 _npmver=5.9.0
 pkgname=insect
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High precision scientific calculator with support for physical units"
 arch=(any)
 url="https://github.com/sharkdp/insect"
@@ -25,6 +25,8 @@ package() {
   # see https://wiki.archlinux.org/index.php/Node.js_package_guidelines
   find "${pkgdir}"/usr -type d -exec chmod 755 {} +
   find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+
+  install -Dm644 "$_npmdir/insect/insect.desktop" "${pkgdir}/usr/share/applications/insect.desktop"
 
   chown -R root:root "${pkgdir}"
 }
