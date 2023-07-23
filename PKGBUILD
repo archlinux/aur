@@ -84,12 +84,6 @@ _tickrate=${_tickrate-full}
 ## Choose between full(low-latency), voluntary or server
 _preempt=${_preempt-full}
 
-### Disable MQ-Deadline I/O scheduler
-_mq_deadline_disable=${_mq_deadline_disable-y}
-
-### Disable Kyber I/O scheduler
-_kyber_disable=${_kyber_disable-y}
-
 ### Enable multigenerational LRU
 # ATTENTION - one of three predefined values should be selected!
 # 'standard' - enable multigenerational LRU
@@ -193,7 +187,7 @@ else
     pkgbase=linux-$pkgsuffix
 fi
 _major=6.1
-_minor=37
+_minor=40
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -406,18 +400,6 @@ prepare() {
         scripts/config --set-val NR_CPUS 320
     else
         _die "The value '$_nr_cpus' is invalid. Please select a numerical value from 2 to 512..."
-    fi
-
-    ### Disable MQ Deadline I/O scheduler
-    if [ -n "$_mq_deadline_disable" ]; then
-        echo "Disabling MQ-Deadline I/O scheduler..."
-        scripts/config -d MQ_IOSCHED_DEADLINE
-    fi
-
-    ### Disable Kyber I/O scheduler
-    if [ -n "$_kyber_disable" ]; then
-        echo "Disabling Kyber I/O scheduler..."
-        scripts/config -d MQ_IOSCHED_KYBER
     fi
 
     ### Select performance governor
@@ -842,9 +824,9 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('46cad712d261a23c8e483a3b79b6a84b9a5f731a8921c9127df35ae35cef1e80'
+sha256sums=('43eafc2197a07dcdcff7a7ef79ac7502061f7c564744e51626bf5fa2e22587f0'
             'f7fa8deef26d10143b4af8f075c2c2397176a4e3323f9558b07cc5a5f939bb17'
             '41c34759ed248175e905c57a25e2b0ed09b11d054fe1a8783d37459f34984106'
-            '9669e0c18786d5b07a38a7da14bc653c1cf43e2765a047f1d33ecb5c0ee5369d'
+            'baac59a5abff8dda8bcc984cabd8f3b566cbf156fbf74b52cb316a1f1673fb62'
             '8811cdc9215a0dfff3a922a2f9eadefb6760bfb78fb756adc88d5894403148f0'
-            '73a93dcd983e31dab8f1e5cbf3241759779d0b9591e9df330eabd16fda491d8b')
+            '1b609b9da9f4b8b08e904cefae55a17ddc92b62a53c854258b35141096925572')
