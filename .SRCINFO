@@ -1,6 +1,6 @@
 pkgbase = virtualbox-svn
 	pkgver = 100670
-	pkgrel = 2
+	pkgrel = 3
 	url = http://virtualbox.org
 	arch = x86_64
 	license = GPL
@@ -165,6 +165,7 @@ pkgname = virtualbox-guest-utils-svn
 	conflicts = virtualbox-guest-utils-nox
 	conflicts = virtualbox-guest-utils
 	conflicts = virtualbox-guest-dkms
+	conflicts = virtualbox-guest-dkms-svn
 	replaces = virtualbox-archlinux-additions
 	replaces = virtualbox-guest-additions
 	replaces = virtualbox-guest-dkms-svn
@@ -178,6 +179,7 @@ pkgname = virtualbox-guest-utils-nox-svn
 	conflicts = virtualbox-guest-utils
 	conflicts = virtualbox-guest-utils-nox
 	conflicts = virtualbox-guest-dkms
+	conflicts = virtualbox-guest-dkms-svn
 	replaces = virtualbox-guest-dkms-svn
 
 pkgname = virtualbox-ext-vnc-svn
