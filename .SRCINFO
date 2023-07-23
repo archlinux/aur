@@ -1,12 +1,12 @@
 pkgbase = guacamole-auth-quickconnect-bin
 	pkgdesc = The quickconnect extension provides a connection bar on the Guacamole Client home page that allows users to type in the URI of a server to which they want to connect and the client will parse the URI and immediately establish the connection.
-	pkgver = 1.5.0
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://guacamole.apache.org/
 	arch = any
 	license = GPL3
 	depends = guacamole-client
-	source = https://archive.apache.org/dist/guacamole/1.5.0/binary/guacamole-auth-quickconnect-1.5.0.tar.gz
-	md5sums = fa9cf51edf401e3595ab67e70bf8395f
+	source = https://archive.apache.org/dist/guacamole/1.5.2/binary/guacamole-auth-quickconnect-1.5.2.tar.gz
+	md5sums = 7fc59ac450c9eef70ed169c0b9b0b62a
 
 pkgname = guacamole-auth-quickconnect-bin
