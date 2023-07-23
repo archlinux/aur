@@ -1,11 +1,11 @@
 pkgbase = mpd-mpris
 pkgdesc = An implementation of the MPRIS protocol for MPD.
-pkgver = 0.4.0
+pkgver = 0.4.1
 pkgrel = 1
 url = https://github.com/natsukagami/mpd-mpris
 arch = any
 makedepends = go>=1.9
 makedepends = git
-source = https://github.com/natsukagami/mpd-mpris/archive/v0.4.0.tar.gz
-sha256sums = 359d5260c2404b875ff40786b74cd29824e3dd0d8a4b15ff1bce204e6e25e498
+source = https://github.com/natsukagami/mpd-mpris/archive/v0.4.1.tar.gz
+sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 pkgname = mpd-mpris
