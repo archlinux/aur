@@ -4,13 +4,13 @@
 # This PKGBUILD is base on the AUR repo wiliwili-git, by yuioto <yuiotochan@outlook.com>
 
 pkgname=wiliwili
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='专为手柄控制设计的第三方跨平台B站客户端'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xfangfang/wiliwili'
 license=('GPL3')
-depends=('mpv')
+depends=('mpv' 'opencc' 'pystring')
 makedepends=('cmake' 'git' 'libxi' 'python' 'wayland-protocols')
 conflicts=("${pkgname}-git")
 source=("${pkgname}"::"git+${url}.git#tag=v${pkgver}")
@@ -23,18 +23,20 @@ prepare() {
 build() {
   cmake \
     -S "${srcdir}/${pkgname}" \
-    -B "${srcdir}/${pkgname}/build" \
+    -B "${srcdir}/build" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -DGLFW_BUILD_WAYLAND=ON \
+    -DGLFW_BUILD_X11=ON \
+    -DINSTALL=ON \
     -DPLATFORM_DESKTOP=ON \
     -DUSE_SYSTEM_CURL=ON \
-    -DINSTALL=ON \
-    -DGLFW_BUILD_WAYLAND=ON \
-    -DGLFW_BUILD_X11=ON
+    -DUSE_SYSTEM_OPENCC=ON \
+    -DUSE_SYSTEM_PYSTRING=ON
 
-  make -C "${srcdir}/${pkgname}/build" wiliwili
+  make -C "${srcdir}/build" wiliwili
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install "${srcdir}/${pkgname}/build"
+  DESTDIR="${pkgdir}" make -C "${srcdir}/build" install
 }
