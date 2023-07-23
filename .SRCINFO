@@ -1,0 +1,12 @@
+pkgbase = starplot-bin
+	pkgdesc = starplot-bin
+	pkgver = 0.95.5
+	pkgrel = 1
+	url = http://starplot.org/
+	arch = x86_64
+	license = GPL2
+	provides = starplot
+	source_x86_64 = https://mirror.ip-projects.de/debian/pool/main/s/starplot/starplot_0.95.5-8.3+b1_amd64.deb
+	sha256sums_x86_64 = b547e8e698d3a4efbdd26fa3c34ae2eb415c13597726c7edc0f2991d079b0276
+
+pkgname = starplot-bin
