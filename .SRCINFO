@@ -1,7 +1,7 @@
 pkgbase = legion+
 	pkgdesc = Asset Extraction tool for Apex Legends and Titanfall 2 (Wine)
 	pkgver = 1.7.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/r-ex/LegionPlus
 	arch = x86_64
 	license = GPL3

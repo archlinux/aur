@@ -2,7 +2,7 @@
 
 pkgname=legion+
 pkgver=1.7.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Asset Extraction tool for Apex Legends and Titanfall 2 (Wine)'
 arch=('x86_64')
 url='https://github.com/r-ex/LegionPlus'
@@ -25,17 +25,17 @@ prepare() {
         echo "! because Legion+ creates files in the same folder it's opened and must have write access to them"
     sleep 2
 
-  convert LegionIcon.ico -strip LegionIcon.png
+  convert LegionIcon.ico -strip $pkgname.png
 }
 
 package() {
   # Install icons
-  install -Dm644 LegionIcon-0.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-  install -Dm644 LegionIcon-1.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
-  install -Dm644 LegionIcon-2.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
-  install -Dm644 LegionIcon-3.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/$pkgname.png"
-  install -Dm644 LegionIcon-4.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
-  install -Dm644 LegionIcon-5.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/$pkgname.png"
+  install -Dm644 $pkgname-0.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  install -Dm644 $pkgname-1.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
+  install -Dm644 $pkgname-2.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/$pkgname.png"
+  install -Dm644 $pkgname-3.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/$pkgname.png"
+  install -Dm644 $pkgname-4.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
+  install -Dm644 $pkgname-5.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/$pkgname.png"
 
   # Create a folder
   mkdir -p "$pkgdir/usr/share/legion+"
