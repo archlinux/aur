@@ -1,8 +1,8 @@
 # Maintainer: Sieve Lau <sievelau@gmail.com>
 # Contributor: Sherlock-Holo <sherlockya@gmail.com> 
 pkgname=dns-over-https-git
-pkgver=r342.0690c41
-pkgrel=2
+pkgver=r346.32f3ad7
+pkgrel=1
 pkgdesc="Client and server software to query DNS over HTTPS, using Google DNS-over-HTTPS protocol"
 url="https://github.com/m13253/dns-over-https"
 arch=('x86_64' 'i686')
