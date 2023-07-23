@@ -76,6 +76,7 @@ makedepends=(
   libelf
   pahole
   perl
+  python
   tar
   xz
 )
