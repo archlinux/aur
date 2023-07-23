@@ -3,7 +3,7 @@
 
 pkgname=python-sphinx-2
 pkgver=2.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Python documentation generator'
 arch=('any')
 url=http://www.sphinx-doc.org/
@@ -25,11 +25,8 @@ depends=('python-babel'
 conflicts=(python-sphinx)
 optdepends=('imagemagick: for ext.imgconverter'
             'texlive-latexextra: for generation of PDF documentation')
-source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"{,.asc})
-sha256sums=('b00394e90463e7482c4cf59e7db1c8604baeca1468abfc062904dedc1cea6fcc'
-            'SKIP')
-validpgpkeys=('8A11B79A5D0D749A66F0A030102C2C17498D6B9E'  # Takeshi KOMIYA
-              'E9BEABB07E7B9CC3F56E62C91425F8CE5EBA0E07') # Takayuki Shimizukawa
+source=("https://pypi.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
+sha256sums=('b00394e90463e7482c4cf59e7db1c8604baeca1468abfc062904dedc1cea6fcc')
 
 build() {
   cd Sphinx-$pkgver
