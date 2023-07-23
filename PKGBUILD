@@ -4,12 +4,12 @@
 
 pkgname=vim-airline
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Status line, written in Vimscript'
 url='https://github.com/vim-airline/vim-airline'
 arch=('any')
 license=('MIT')
-depends=('vim' 'vim-airline-themes')
+depends=('vim-plugin-runtime' 'vim-airline-themes')
 makedepends=('git')
 groups=('vim-plugins')
 optdepends=('powerline-fonts')
