@@ -1,0 +1,4 @@
+styleguide/
+src/
+pkg/
+*.tar.zst
