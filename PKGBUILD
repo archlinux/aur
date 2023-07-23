@@ -4,12 +4,12 @@
 
 pkgname=vim-easymotion
 pkgver=3.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Vim motion on speed'
 url='https://github.com/easymotion/vim-easymotion'
 arch=('any')
 license=('MIT')
-depends=('vim' 'vim-vital')
+depends=('vim-plugin-runtime' 'vim-vital')
 groups=('vim-plugins')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/easymotion/vim-easymotion/archive/v${pkgver}.tar.gz)
 sha256sums=('c1b24de4592212f4c45327b98cca521cd811074475f8352cb2231be8fc61ae44')
