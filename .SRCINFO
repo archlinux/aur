@@ -1,7 +1,7 @@
 pkgbase = mapbox-gl-native-git
 	pkgdesc = C++ library that powers customizable vector maps in native applications
-	pkgver = r15975.cf734a2fec
-	pkgrel = 3
+	pkgver = 1.6.0.r18.gf9b8ddb
+	pkgrel = 1
 	url = https://github.com/mapbox/mapbox-gl-native
 	arch = x86_64
 	arch = aarch64
