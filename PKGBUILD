@@ -6,7 +6,7 @@
 _pkgname=proto
 pkgname="${_pkgname}-bin"
 pkgdesc='A multi-language version and dependency manager'
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 license=('MIT')
 provides=("${_pkgname}")
@@ -16,7 +16,7 @@ arch=('x86_64')
 depends=('git')
 _extdir="proto_cli-${arch[0]}-unknown-linux-gnu"
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${_extdir}.tar.xz")
-sha512sums=('a42162be820a02078d69ffac613d54731dd59c31b31bfa48f0164dbbef96acf2822f2ceeb475f0874cc4bde3f6bc322432800957cfa923818ef0aa485a8eddd2')
+sha512sums=('60fc2487eef791497ff0c389a84afed2e23840552f88b0fcd0e6a1a797e75002f5b3802c0b8bb2a055a3a8f025e4e2c7f97581f4648cc3518eccaff1a47bbb52')
 
 package() {
   cd "${_extdir}"
