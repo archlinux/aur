@@ -1,11 +1,11 @@
 pkgname="theli"
 pkgver=3.1.4
-pkgrel=5
+pkgrel=6
 pkgdesc="THELI is a data processing pipeline for optical, near-infrared and mid-infrared astronomical images"
 arch=("x86_64")
 url='https://github.com/schirmermischa/THELI'
 license=('GPL3')
-depends=('astromatic-scamp')
+depends=('astromatic-scamp' 'astromatic-swarp')
 makedepends=('wcslib' 'gsl' 'libraw')
 optdepends=('astrometry.net')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/schirmermischa/THELI/archive/refs/tags/v${pkgver}.tar.gz")
