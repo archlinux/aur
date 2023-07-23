@@ -1,6 +1,6 @@
 pkgbase = u8c-git
 	pkgdesc = Unicode for C.
-	pkgver = 29.0.029_30.a48610b
+	pkgver = 29_30.a48610b
 	pkgrel = 1
 	url = https://mandelbrot.dk/u8c
 	arch = any

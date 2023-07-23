@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Bjørnager Jensen <gabrielbjensen@icloud.com>
 pkgname=u8c-git
-pkgver=29.0.029_30.a48610b
+pkgver=29_30.a48610b
 pkgrel=1
 pkgdesc="Unicode for C."
 arch=("any")
@@ -13,7 +13,6 @@ license=("LGPL3")
 sha512sums=("SKIP")
 pkgver() {
 	cd "${srcdir}/u8c"
-	printf "%s.0.0" "$(($(git rev-list --count HEAD) - 1))"
 	printf "%s_%s.%s" "$(git describe --abbrev=0 --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 prepare() {
