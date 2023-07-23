@@ -1,7 +1,7 @@
 pkgbase = linuxqq
 	pkgdesc = New Linux QQ based on Electron
 	pkgver = 3.1.2_13107
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://im.qq.com/linuxqq/
 	arch = x86_64

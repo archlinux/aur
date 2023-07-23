@@ -2,7 +2,7 @@
 # Contributor: Integral <luckys68@126.com>
 pkgname=linuxqq
 pkgver=3.1.2_13107
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc='New Linux QQ based on Electron'
 arch=('x86_64' 'aarch64')
@@ -21,6 +21,7 @@ sha512sums_aarch64=('6d9b12b03fb5682fac4f6be10242a83b93e58e296905d85d49820cab641
 package() {
 	echo "  -> Extracting the data.tar.xz..."
 	bsdtar -xvf data.tar.xz -C "${pkgdir}/"
+	rm -f "${pkgdir}/opt/QQ/resources/app/libssh2.so.1" # Temporary Fix
 
 	echo "  -> Installing..."
 	# Launcher
