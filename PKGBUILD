@@ -2,7 +2,7 @@
 # Contributor: Sabart Otto - Seberm <seberm[at]seberm[dot]com>
 
 pkgname=ctstream
-pkgver=32
+pkgver=33
 pkgrel=1
 pkgdesc="Get URLs of Czech Television video streams for specific entry page"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('perl' 'perl-libwww' 'perl-xml-xpath' 'perl-json')
 source=(http://xpisar.wz.cz/$pkgname/$pkgname-$pkgver{,.asc})
 validpgpkeys=('E3F42FCE156830A80358E6E94FD1AEC3365AF7BF') #Petr Pisar
-sha256sums=('44de49df2fb68faf155b65c97194fdec40c45afbabd1c4a4ab5e445fc88a36bb'
+sha256sums=('8c526f4f8069bbb99fb73c2132257d7dd0d5109bcf2b33056ac17737a57d9e0c'
             'SKIP')
 
 package() {
