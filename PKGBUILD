@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/natsukagami/mpd-mpris'
 makedepends=('go>=1.9' 'git')
 source=("https://github.com/natsukagami/mpd-mpris/archive/v$pkgver.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('85d33ab66e8bda50270cc5d3e3701a333542e931a17f7d3116a902b8f82818d0')
 
 build() {
 	export GOPATH=${GOPATH=$srcdir}
