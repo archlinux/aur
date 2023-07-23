@@ -1,0 +1,15 @@
+pkgbase = u8c-git
+	pkgdesc = Unicode for C.
+	pkgver = 29.0.029_30.a48610b
+	pkgrel = 1
+	url = https://mandelbrot.dk/u8c
+	arch = any
+	license = LGPL3
+	makedepends = cmake
+	makedepends = git
+	provides = u8c
+	conflicts = u8c
+	source = git+https://mandelbrot.dk/u8c
+	sha512sums = SKIP
+
+pkgname = u8c-git
