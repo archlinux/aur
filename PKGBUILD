@@ -4,12 +4,12 @@
 pkgname=vim-airline-themes
 pkgver=r1435.97cf3e6
 _gitcommit=97cf3e6e638f936187d5f6e9b5eb1bdf0a4df256
-pkgrel=1
+pkgrel=2
 pkgdesc='Themes for vim-airline'
 url='https://github.com/vim-airline/vim-airline-themes'
 arch=('any')
 license=('MIT')
-depends=('vim')
+depends=('vim-plugin-runtime')
 makedepends=('git')
 groups=('vim-plugins')
 source=("git+${url}#commit=${_gitcommit}")
