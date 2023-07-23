@@ -1,0 +1,4 @@
+src/
+pkg/
+dnscontrol-ovh-git/
+*.tar.zst
