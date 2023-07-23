@@ -3,12 +3,12 @@
 # Contributor: DeaDDooMER <deaddoomer@deadsoftware.ru>
 
 pkgname=xkb-switch-git
-pkgver=1.8.5.r8.g5dd459a
+pkgver=1.8.5.r10.g2687564
 pkgrel=1
 pkgdesc='Program that allows to query and change the XKB layout state'
 arch=('i686' 'x86_64')
 url='https://github.com/grwlf/xkb-switch'
-license=('GPL3')
+license=('MIT')
 depends=('libx11' 'libxkbfile')
 provides=("xkb-switch=$pkgver")
 conflicts=('xkb-switch')
