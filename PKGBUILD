@@ -2,7 +2,7 @@
 # Maintainer: Nikolas Sepos <nikolas@greatlion.tech>
 
 pkgname='protoc-gen-rtk-query-bin'
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Generate rtk-query apis from grpc service definitions'
 url='https://github.com/greatliontech/protoc-gen-rtk-query'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('protoc-gen-rtk-query')
 conflicts=('protoc-gen-rtk-query')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/greatliontech/protoc-gen-rtk-query/releases/download/0.1.1/protoc-gen-rtk-query_0.1.1_Linux_arm64.tar.gz")
-sha256sums_aarch64=('c04ccbbfe11b743d6862f87b5f495c9e02d03e383f56fb0f2ac4be0d8e3a6bb8')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/greatliontech/protoc-gen-rtk-query/releases/download/0.1.3/protoc-gen-rtk-query_0.1.3_linux_arm64.tar.gz")
+sha256sums_aarch64=('1d4bcb819f81a9546f56c991047ea35268836c1e395f2fd7334228b088db7431')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/greatliontech/protoc-gen-rtk-query/releases/download/0.1.1/protoc-gen-rtk-query_0.1.1_Linux_i386.tar.gz")
-sha256sums_i686=('5d8f7dc97cea8c578f11273ef3f1383de637813825617cc428a9636acf04a5f9')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/greatliontech/protoc-gen-rtk-query/releases/download/0.1.3/protoc-gen-rtk-query_0.1.3_linux_386.tar.gz")
+sha256sums_i686=('8204126c0aa1820fd2be78e005a98a76e21690c15388f68a084f8268369128a3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/greatliontech/protoc-gen-rtk-query/releases/download/0.1.1/protoc-gen-rtk-query_0.1.1_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('63d156b7ca60f4517ba97409ed7d49150d6403209ed6a06aa770bb40f83dc28d')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/greatliontech/protoc-gen-rtk-query/releases/download/0.1.3/protoc-gen-rtk-query_0.1.3_linux_amd64.tar.gz")
+sha256sums_x86_64=('e33486616d86e175f226815a62d5406ecc38f0503595e7b417a81a7efb1dd44e')
 
 package() {
   # bin
