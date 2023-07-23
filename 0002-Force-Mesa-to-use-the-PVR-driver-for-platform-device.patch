@@ -1,4 +1,4 @@
-From 15a2b80c0cd5cff126661d48fe7236c903d281c9 Mon Sep 17 00:00:00 2001
+From 0a34a591e2bb68b4e2e0fa60d598843a1f4d1e42 Mon Sep 17 00:00:00 2001
 From: Frank Binns <frank.binns@imgtec.com>
 Date: Wed, 17 Jun 2015 15:37:18 +0100
 Subject: [PATCH] Force Mesa to use the PVR driver for platform devices
@@ -15,10 +15,10 @@ force it to use the PVR DRI driver.
  1 file changed, 4 insertions(+)
 
 diff --git a/src/loader/loader.c b/src/loader/loader.c
-index 08eeb61..c7e561e 100644
+index c9a499c..d01a8af 100644
 --- a/src/loader/loader.c
 +++ b/src/loader/loader.c
-@@ -436,7 +436,11 @@ loader_get_pci_driver(int fd)
+@@ -505,7 +505,11 @@ loader_get_pci_driver(int fd)
     char *driver = NULL;
  
     if (!loader_get_pci_id_for_fd(fd, &vendor_id, &chip_id))

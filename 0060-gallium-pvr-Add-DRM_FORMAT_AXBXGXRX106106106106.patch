@@ -1,0 +1,35 @@
+From 3370e1c5a56c848a057eec54d66527a503c34c7d Mon Sep 17 00:00:00 2001
+From: Brendan King <Brendan.King@imgtec.com>
+Date: Mon, 18 Jul 2022 13:08:17 +0100
+Subject: [PATCH] gallium/pvr: Add DRM_FORMAT_AXBXGXRX106106106106
+
+IMG NOTE: This patch should be merged into the "Add PVR Gallium
+driver" patch the next time the Mesa version is upgraded in the
+IMG DDK.
+
+---
+ src/gallium/frontends/pvr/pvrutil.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/gallium/frontends/pvr/pvrutil.c b/src/gallium/frontends/pvr/pvrutil.c
+index 2706b02..b3bcd13 100644
+--- a/src/gallium/frontends/pvr/pvrutil.c
++++ b/src/gallium/frontends/pvr/pvrutil.c
+@@ -192,6 +192,8 @@ PVRDRIFormatToFourCC(int dri_format)
+       return DRM_FORMAT_YVYU;
+    case __DRI_IMAGE_FORMAT_VYUY:
+       return DRM_FORMAT_VYUY;
++   case __DRI_IMAGE_FORMAT_AXBXGXRX106106106106:
++      return DRM_FORMAT_AXBXGXRX106106106106;
+    default:
+       __driUtilMessage("%s: Unknown format: %d", __func__, dri_format);
+       break;
+@@ -260,6 +262,8 @@ PVRDRIFourCCToDRIFormat(int iFourCC)
+       return __DRI_IMAGE_FORMAT_YVYU;
+    case DRM_FORMAT_VYUY:
+       return __DRI_IMAGE_FORMAT_VYUY;
++   case DRM_FORMAT_AXBXGXRX106106106106:
++      return __DRI_IMAGE_FORMAT_AXBXGXRX106106106106;
+    default:
+       __driUtilMessage("%s: Unknown format: %d", __func__, iFourCC);
+       break;

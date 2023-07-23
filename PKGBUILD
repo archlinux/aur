@@ -2,7 +2,7 @@
 
 pkgname=mesa-pvr-vf2
 pkgdesc="an open-source implementation of the OpenGL specification, PowerVR (VisionFive2) version"
-pkgver=21.2.5
+pkgver=22.1.3
 pkgrel=1
 arch=('riscv64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -16,219 +16,204 @@ conflicts=('mesa' 'vulkan-mesa-layer' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
 source=("https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz"
-       '0001-Add-pvr-dri-driver.patch'
-       '0002-Force-Mesa-to-use-the-PVR-driver-for-platform-device.patch'
-       '0003-dri-Add-some-new-DRI-formats-and-fourccs.patch'
-       '0004-GL_EXT_sparse_texture-entry-points.patch'
-       '0005-Add-support-for-various-GLES-extensions.patch'
-       '0006-Add-EGL_IMG_cl_image-extension.patch'
-       '0007-egl-Be-stricter-when-making-a-context-current-withou.patch'
-       '0008-egl-optimise-eglMakeCurrent-for-the-case-where-nothi.patch'
-       '0009-GL_EXT_shader_pixel_local_storage2-entry-points.patch'
-       '0010-GL_IMG_framebuffer_downsample-entry-points.patch'
-       '0011-GL_OVR_multiview-entry-points.patch'
-       '0012-Add-OVR_multiview_multisampled_render_to_texture.patch'
-       '0013-wayland-drm-install-wayland-drm.xml-to-the-configure.patch'
-       '0014-Enable-buffer-sharing-in-the-kms_swrast-driver.patch'
-       '0015-egl-wayland-add-support-for-RGB565-back-buffers.patch'
-       '0016-egl-dri3-fix-segfault-in-eglCopyBuffers.patch'
-       '0017-egl-automatically-call-eglReleaseThread-on-thread-te.patch'
-       '0018-egl-add-Tizen-platform-support.patch'
-       '0019-egl-add-support-for-EGL_TIZEN_image_native_surface.patch'
-       '0020-egl-wayland-post-maximum-damage-when-blitting.patch'
-       '0021-egl-wayland-flush-the-drawable-before-blitting.patch'
-       '0022-egl-tizen-create-an-internal-_EGLImage-for-each-tbm-.patch'
-       '0023-dri-use-a-supported-API-in-driCreateNewContext.patch'
-       '0024-gbm-add-gbm_bo_blit.patch'
-       '0025-gbm-don-t-assert-if-DRI-context-creation-fails.patch'
-       '0026-egl-wayland-add-pbuffer-support.patch'
-       '0027-egl-tizen-support-DRI-driver-handling-of-swap-preser.patch'
-       '0028-egl-eglBindAPI-workaround-for-dEQP-bug.patch'
-       '0029-GL_EXT_multi_draw_indirect-entry-points.patch'
-       '0030-dri-add-support-for-YUV-DRI-config.patch'
-       '0031-egl-add-support-for-EXT_yuv_surface.patch'
-       '0032-dri-add-missing-__DRI_IMAGE_COMPONENTS-define-for-EG.patch'
-       '0033-egl-wayland-expose-EXT_yuv_surface-support.patch'
-       '0034-egl-tizen-expose-EXT_yuv_surface-support.patch'
-       '0035-gbm-add-some-new-GBM-formats.patch'
-       '0036-egl-add-null-platform.patch'
-       '0037-egl-add-config-debug-printout.patch'
-       '0038-egl-add-support-for-EXT_image_gl_colorspace.patch'
-       '0039-meson-force-C-2011-for-thread_local.patch'
-       '0040-dri2-add-support-for-swap-intervals-other-than-1.patch'
-       '0041-null_platform-add-support-for-explicit-synchronisati.patch'
-       '0042-egl-null-add-support-for-DRM-image-format-modifiers.patch'
-       '0043-egl-query-the-supported-ES2-context-version.patch'
-       '0044-meson-allow-libGL-to-be-built-without-GLX.patch'
-       '0045-egl-wayland-process-non-resized-window-movement.patch'
-       '0046-Separate-EXT_framebuffer_object-from-ARB-version.patch'
-       '0047-egl-null-add-support-for-async-flip-with-front-buffe.patch'
-       '0048-gbm-add-pbuffer-support.patch'
-       '0049-egl-null-expose-EXT_yuv_surface-support.patch'
-       '0050-dri-preserve-the-original-FD-for-driver-use.patch'
-       '0051-egl-wayland-a-linear-buffer-is-not-needed-with-DRM-f.patch'
-       '0052-dri3-a-linear-buffer-is-not-needed-with-DRM-format-m.patch'
-       '0053-egl-drm-add-support-for-DRI_PRIME-GPU-selection.patch'
-       '0054-egl-null-add-support-for-DRI_PRIME-GPU-selection.patch'
-       '0055-egl-null-introduce-NULL_DRM_DISPLAY.patch'
-       '0056-vulkan-wsi-check-the-DRI3-and-Present-XCB-reply-poin.patch'
-       '0057-vulkan-wsi-Allow-host-visible-memory-to-be-requested.patch'
-       '0058-vulkan-wsi-make-the-display-FD-available.patch'
-       '0059-pvr-wsi-add-PowerVR-Vulkan-WSI-library.patch'
-       '0060-vulkan-wsi-Disable-use-of-VK_EXT_pci_bus_info.patch'
-       '0061-vulkan-wsi-default-to-force_bgra8_unorm_first-true.patch'
-       '0062-vulkan-wsi-enable-additional-formats-for-Wayland.patch'
-       '0063-vulkan-wsi-enable-additional-formats-for-Display.patch'
-       '0064-mesa-main-dri-add-YUV420_3PLANE-and-YVU420_3PLANE.patch'
-       '0065-egl-null-add-support-for-YU12-and-YV12.patch'
-       '0066-mesa-partially-revert-pbuffer-attribute-removal.patch'
-       '0067-egl_dri2-set-pbuffer-config-attribs-to-0-for-non-pbu.patch'
-       '0068-GL_ARB_geometry_shader4-entry-points.patch'
-       '0069-LLVM15.patch'
+'0001-Add-PVR-Gallium-driver.patch'
+'0002-dri-Add-some-new-DRI-formats-and-fourccs.patch'
+'0002-Force-Mesa-to-use-the-PVR-driver-for-platform-device.patch'
+'0003-GL_EXT_sparse_texture-entry-points.patch'
+'0004-Add-support-for-various-GLES-extensions.patch'
+'0005-Add-EGL_IMG_cl_image-extension.patch'
+'0006-egl-optimise-eglMakeCurrent-for-the-case-where-nothi.patch'
+'0007-GL_EXT_shader_pixel_local_storage2-entry-points.patch'
+'0008-GL_IMG_framebuffer_downsample-entry-points.patch'
+'0009-GL_OVR_multiview-entry-points.patch'
+'0010-Add-OVR_multiview_multisampled_render_to_texture.patch'
+'0011-wayland-drm-install-wayland-drm.xml-to-the-configure.patch'
+'0012-Enable-buffer-sharing-in-the-kms_swrast-driver.patch'
+'0013-egl-wayland-add-support-for-RGB565-back-buffers.patch'
+'0014-egl-automatically-call-eglReleaseThread-on-thread-te.patch'
+'0015-egl-wayland-post-maximum-damage-when-blitting.patch'
+'0016-egl-wayland-flush-the-drawable-before-blitting.patch'
+'0017-dri-use-a-supported-API-in-driCreateNewContext.patch'
+'0018-gbm-add-gbm_bo_blit.patch'
+'0019-gbm-don-t-assert-if-DRI-context-creation-fails.patch'
+'0020-egl-wayland-add-pbuffer-support.patch'
+'0021-egl-eglBindAPI-workaround-for-dEQP-bug.patch'
+'0022-GL_EXT_multi_draw_indirect-entry-points.patch'
+'0023-dri-add-support-for-YUV-DRI-config.patch'
+'0024-egl-add-support-for-EXT_yuv_surface.patch'
+'0025-dri-add-missing-__DRI_IMAGE_COMPONENTS-define-for-EG.patch'
+'0026-egl-wayland-expose-EXT_yuv_surface-support.patch'
+'0027-gbm-add-some-new-GBM-formats.patch'
+'0028-egl-add-null-platform.patch'
+'0029-egl-add-support-for-EXT_image_gl_colorspace.patch'
+'0030-meson-force-C-2011-for-thread_local.patch'
+'0031-dri2-add-support-for-swap-intervals-other-than-1.patch'
+'0032-null_platform-add-support-for-explicit-synchronisati.patch'
+'0033-egl-null-add-support-for-DRM-image-format-modifiers.patch'
+'0034-egl-query-the-supported-ES2-context-version.patch'
+'0035-meson-allow-libGL-to-be-built-without-GLX.patch'
+'0036-egl-wayland-process-non-resized-window-movement.patch'
+'0037-Separate-EXT_framebuffer_object-from-ARB-version.patch'
+'0038-egl-null-add-support-for-async-flip-with-front-buffe.patch'
+'0039-gbm-add-pbuffer-support.patch'
+'0040-egl-null-expose-EXT_yuv_surface-support.patch'
+'0041-dri-preserve-the-original-FD-for-driver-use.patch'
+'0042-egl-wayland-a-linear-buffer-is-not-needed-with-DRM-f.patch'
+'0043-dri3-a-linear-buffer-is-not-needed-with-DRM-format-m.patch'
+'0044-egl-drm-add-support-for-DRI_PRIME-GPU-selection.patch'
+'0045-egl-null-add-support-for-DRI_PRIME-GPU-selection.patch'
+'0046-egl-null-introduce-NULL_DRM_DISPLAY.patch'
+'0047-vulkan-wsi-check-the-DRI3-and-Present-XCB-reply-poin.patch'
+'0048-vulkan-wsi-make-the-display-FD-available.patch'
+'0049-pvr-wsi-add-PowerVR-Vulkan-WSI-library.patch'
+'0050-vulkan-wsi-Disable-use-of-VK_EXT_pci_bus_info.patch'
+'0051-vulkan-wsi-default-to-force_bgra8_unorm_first-true.patch'
+'0052-vulkan-wsi-enable-additional-formats-for-Display.patch'
+'0053-mesa-partially-revert-pbuffer-attribute-removal.patch'
+'0054-egl_dri2-set-pbuffer-config-attribs-to-0-for-non-pbu.patch'
+'0055-GL_ARB_geometry_shader4-entry-points.patch'
+'0056-egl-wayland-add-EGL_BUFFER_PRESERVED-support.patch'
+'0057-glapi-restore-exec-dynamic.patch'
+'0058-Revert-meson-check-mtls-if-has_exe_wrapper.patch'
+'0059-gbm-add-GBM_FORMAT_AXBXGXRX106106106106.patch'
+'0060-gallium-pvr-Add-DRM_FORMAT_AXBXGXRX106106106106.patch'
+'0061-gallium-pvr-add-the-DRIconfigOptions-extension.patch'
+'0062-gallium-pvr-support-DRI-Image-extension-v21.patch'
+'0063-LLVM15.patch'
     )
 md5sums=(
-'63ef94beb6677db0c5a43289e7e76ba4'
-'c6dd89f528eaa1ae111d1dd0560fd29d'
-'394e2320285750b926ec4733f9e0b067'
-'e1262298e4c09a71029c49aba53f4523'
-'f3855585a6907fa98a381fbf6fae3055'
-'ba22384ff7a1bf159e0e8915020efc6b'
-'89f758d4d57d6eea9121cfc51eae457a'
-'1309bca4acb272db97444730829d0e76'
-'1eb526f2cbb5cf911bf11be578f4ae6f'
-'88dcce3f8192a27e2f921017c84a677e'
-'036d9112b98d1278cc30e1f1fa4979cf'
-'22c94b54a3d5b35506c11d6012c13ec5'
-'9e3fb2fd882c3ce5767f54d9be702db9'
-'b7feca5688455f6b54112413893bf7e5'
-'9963ea6f2198a0b036aab698c181cf7b'
-'c640242edc812aca05464a993d70550c'
-'67bc04ec6c29c445e03d686e76d7e4f4'
-'1c994ab2b9697e1e7c31f0639f737249'
-'6b47c7a3b9dbe6fd9e5a224987edfd2d'
-'959d3ce2a010f9cb0316ec5e993501d8'
-'4d7fc8cb70babc2741363eef5bb9100d'
-'05429d3d5864a7f5be9d7d8e1b9477f2'
-'9bc51d4c426c3e3b18c2d5e35868554d'
-'4b9d271fc5944a28a93ba987e1759342'
-'938fff17835ab8237738872672e6b49f'
-'06479048cc6a46ff8037612621f0a4be'
-'27d94c42ccebad500cb896f5298df7c6'
-'c84f323bbec6d6ca0fd8042d17975efe'
-'935265d712e7c5c02d4f6a7ddd0eb428'
-'c6a77c0d902f8c0ba2279d1510f033d8'
-'63ef5a2ff18c43ef2f1138757d521184'
-'ba5336b6a614d5402e01562343a6e133'
-'e365c1144f0c7257d06d72a534ee5b0f'
-'60381ac8c6fcb22a38d509a89002c596'
-'b5d250afda2142fb15c4122ed740437d'
-'a035800f29efbbc751e823b7aa55d040'
-'cbb90f86444345c8f8748f45f6213be8'
-'b32004a919c376c1212fda276fc77c8b'
-'185ad643674d4091166ac66a2cb69cc6'
-'84579044422d60948feb438442162b36'
-'c4684bbd6a5a771154583964ebfb6352'
-'391748bfda7e9a228370afc1d27c6516'
-'cb2159624a7a7e1ce36964a13e27e9b1'
-'4de939dcd3f7e19d9158bad123c0082c'
-'d884578a85608d80826ebd1ec0c7279b'
-'27bc2ad4ccbf5fba48eea91b3204ab25'
-'c81dec3af5f6293b48b3526bb7795035'
-'f3556b978ed53b9b8d74ee0ab3003e4a'
-'9ba52f27dd0afc453351211f983bad37'
-'84101639ec3f35e2c12b9e1970be7eb1'
-'980a5e9f104db490d41db7380ce04c78'
-'8f54db3e0693f61e6e361ede39fd752d'
-'268d6758668417bdf32ba000cffdd569'
-'ea9deaf6e337832c52d9b423a8dd84ce'
-'b4a7e9c8c15d30ad4b11dc77a77df91c'
-'74fee9881fdf6b5d3b80da72efb4625d'
-'6d88382781e249f4c2645891348c1dd3'
-'2dda59b621b3a064ddbd2768b0ff68d6'
-'2e97efb5351944b761c9a6efdfadda79'
-'85c3256b5327233d6c906a2828f950d6'
-'15732e69358095115512ac06ae91a1cf'
-'f5bfa3851bdf603d873ac1670d0ac632'
-'bddd360ed6825060046f6e69ba7bd268'
-'6bc7700341471649a9f7cfacf27e52ab'
-'d26fff7c91b8dae629f9fbbd3e4321da'
-'8c4f2b7dede0c737b5f544606b9fd0ec'
-'4d852725f9eabc9dff1e62db93d835d4'
-'7b98e9e7edafe0b8496cc1408f34866b'
-'5b2ac4d79c33fa71f29db25047152576'
-'46a08d47150adcfbc4fcb2da9c4a0967'
+c8590d57135f7b9d2623c5df42412b30
+33d91dfc82ccb3a36ebd975c218913ae
+7ea82493080c1c2cdf164f4ab29d7919
+e824bc06b78113b26029e318c22de516
+d6236fdd8aa27156ac26213e754db9bf
+4d6e574e2b2c8d76aae8fcaf07de88d4
+3db4133516390d354a27b95cbc949805
+90a57d18bb1849b7ebb18a0ec5d568b4
+b5091e4df7f5b334907794be6c90a796
+55161e5dbdda06ee911e9b722ffddd9f
+323f2fdc9145481f466a415a02318ece
+85495837ca5908598c9b2f21a8c48918
+518ac2680e40741a49ddafc92cb59876
+6d49ae51c2b7c37c6bd5e71b63351172
+3422c8c7aaf1974e6c76684f1c36e2e6
+f93fb4753fc767f8b8e473f2f9e8856b
+aed78d3672db3d1a229d1526a62fe889
+83bac59243ca501b490b57df0cbf2434
+ef680a69ff835e5cab96164cd7637c11
+186173ba292c3ce78fa35488d515c77e
+6ea5bb0b566cbf3b817ae0fdbdc21b7d
+b3fbac6c9805c22e0a658dcb64f5ad8a
+e2fa1fbad733a4d42da2dba3f7d39fe4
+5094b798baaf7bd8e2489283ae0fafbb
+66b65bd0281edad810b769de817445e4
+8dedf964c790f6c8e310fb67acbd5189
+28045ec44adc30975edb7758b5910e71
+aed0262876678e37bc84f43e357460bc
+c41730138dfac6228470c35272f6f343
+e9aaf403cab3f0c4db1c0eb161c7649e
+960b8e8532550e1e965636556f0cc778
+de1f887d82dabb4e83cb6cee4a1a4670
+4991a0ba7bc7fdf181e26c9718a6d08b
+11945698318c4474aeb61f31153a10a0
+4240179b510e337ddc90dda1af1f2f72
+a1431a64d56e0a21a03eb26e8bf781af
+5107fffc53b4c73fd8ff1627afdbe6d8
+b8c1a3451486b177a8fabfe882ec817b
+7f089c3dcf9fbbf3cf249e4cd8812f1b
+5acf08847f6b845fec8a165773a9548d
+67c7b3bc8677fc583d6993aeeb86c704
+c00308b3ee62b5c22b7baf7a76c499f6
+02dda1bb3ef0d55f0562312cf5349f63
+07dbeeadf072b5de1906a7fc643ded26
+fa52a50936226123a6dabec190accdce
+89e7630af5b7cf4274654a3c47a67f93
+168440b1752b88a6b9f517579c3d2223
+d16133e02de2f3cc2b91dcd6a136b74a
+09a809c85be276846be66dffb95090a4
+27d7f1e32a23c51ce70273ff2774be55
+343f31c1781d1e3cf5708ee91b4b0c0b
+534f71882d7adad71bd7803ea28b20f3
+da88daabd4f7ea4fbd8fe5ff576ece4d
+3cf935af55d0e5760503141d83171f3d
+e428ac6ed595f37b16933ad76adbe08e
+d01f9815c20ac1a962e0624225307841
+dfe858d403d96a905412a40718bf0f88
+bd9b3fa8b5e5e7179ca104b0b528047d
+89e41863c87c3bcb7cb366071e752c97
+041a239c545fdb3b4fff2352a6366d6d
+9a97917bbd55f816afa6bc7d60476bb2
+aa0be1196a2fb8e9f9cdd9835d680c33
+a60532bcf4c9972775f358d8a60324df
+201fdd4ef6a5230ccbc809a0e555042d
+46a08d47150adcfbc4fcb2da9c4a0967
 )
 sha256sums=(
-'8e49585fb760d973723dab6435d0c86f7849b8305b1e6d99f475138d896bacbb'
-'effc4cc39e9f07ac2f4f32f2b69e874b3be71b993bea98f36bae56a2d92a2056'
-'5aff6dc45847047657ef25de37f38afa183307344e2ca971a748c76534375903'
-'cb762c0c0291f4edb346d8eb9ff42b6cd5863246d242f24696f8ce76f77cc80f'
-'c28e5a746295dd306646bdf442c027d69beef74b2921b6dc220773e96c98afa6'
-'8a66d235851395c67f03adacac78e1eb24de671d5e31b93d7ab96ccf5fb8cde1'
-'c4516f2f1a14d51f3122a23d774b922877c6234efb6b76b1e02f34d9d8e210fd'
-'01d50fa1b8408bb4dce04c062fd5cd129c6b9a28c7887b332639ab5147e3307b'
-'554ad2eb70da28206578ba5b37ad5bee66e4522aa1b95c2ad8dcc6ee259a639f'
-'02d60fb77164d5f252b8d9740dacd9200707ce50b4c0f8bcd593f42fc7c2ea42'
-'923160ffc44e94556fdd039f1c5233d87e6b5aaed538c98189d3cade74454a28'
-'9a3a20aa93e6ccf929c577207cb2cb0bceda69529b4e178aebb5fc3b013f605d'
-'47f22515c4d9af34d0d98b8d743a5c20145018343d2e32f2762753cce669634c'
-'69f7330f8d233a43dddd794986472bdef60c3ce090b02583a3c270e8b69a2835'
-'1cc591071ee7c83d37b1b7ed6d01cfabace9fd45dcc8784bdfe414314fcce7fc'
-'6b28333df7049d62e311381104b12e46592eb23a3a4a734650775f42699225a7'
-'d6e7d43493e0161fff738fe348226dc65f357c4723a602d2b260728339fa9d31'
-'724d49a26feae054a135bfeac0fd3db86b92aad954557e182a2bc0beab66399b'
-'16d5beaee105fa2d13b4151b42ab65f49894acad3f5e459597f74f299e09f838'
-'4a91646568703570e7e99aa41eda6f5741a7b4dfb7a7753458b985b0ba793f03'
-'21c8e315a97edc0f8fea946da3129ddd2602731dcb2ce63328609d179d4f3f7b'
-'86a067a9242b447b456bb5fcdd04cc0876cd7af4c14133db6afe872c7f3c0b74'
-'7466c707240b334b87a3ebefd88f4e2900533836443961e68a3ebd28b2b528e8'
-'b41e221457e7c1950e45dae8bc9275a2a46ff48e671da48863d49577ac53e938'
-'39211766753de0327657af272591ab669748a2adee0396fccf7e7c82e81fb094'
-'a30359ff20a40184990c885a499cee2bba7f41744cd9e85ca6f53aefb5b7058a'
-'87d2abe7761d9ae2885786085ff5c5d91ffe774ff5f51e3de970d1c78dc88710'
-'93f841785e1e7bf6e28e81df5b7fb18a39afa6e7a451dd74de99da6679ee7eb5'
-'ecf6ad01c94b914b4da422284a02491258a92217ad5688e9470d52b23ca582c2'
-'e33fb2153b0e24713eeb838a34312519263168345749171bdca9ef2c47ed0aee'
-'2b7958f4e7f4da316d2aa70632fea9c7c807a849b5ddb711026a77c9d40e87dd'
-'e2aba51625c91eb5a226efc0243623bde1e8489366c7dfe800c8a8a6cc55787b'
-'642728801a5f5ce7080de43906001bcce1b4994690a999133f32de06ee2f8b73'
-'2b0d376d84f537d1d6b7c18e8aac2a874a29673d05a2703dbbb98c499f7253cf'
-'2e898f77cd249fc428f50f9e73446eefe7ead4151dbcc2a0c714fb6cc6723654'
-'4af5ddf9129f9bd60ff47c9cfb12b5ef99b0d89746844eabd4329e9bdc8cde8f'
-'b03b9fc91054f8ccbfa8e71089da5c7aa1c3b227ecd4afe6d65906106bdbf908'
-'f867dbc92d74600cdc6bca3912b08ad587b1b19a7bf3fd5a99a5ab56893e0322'
-'0d10438a18187696a4d317af8eed963c98ab0f1c62c602bd5aa5bf96b019fd72'
-'a08c40d36e68dbd6a1e4d549e3d4eaffc33a4ae5714268462affd613e4afcabe'
-'a6fcd9c1c603cabbc1028ca8807025aab801bccdc1a0c3436fca187772db8406'
-'5e606b9525fa4b13cc076b6bb787bba58c27ab8f0e996d235b190cd036453d2a'
-'2e76d78ba3f3368af27a44cefe3bb14e32ebe7947742ed8445ebcef6d1591f1c'
-'30ad8552616bbe443ab7f94d88819d6b60362458b3efcae9fae36fd02f301709'
-'d7af0ab993cfe12febcec0aac042848747350050132a405fb5d54e0d3cdd1f5f'
-'9bf2d04d75897e41a979e5e68d547ac2943f2d1da77005e0360a5b7dda5bb7b6'
-'e15e2f03d023cc50d41386efb4031ebeb01d92e8e0bde1987d2d7238c14efe8a'
-'f06dd3887bf7967b42f8ffa02bd7a0582e94b80ab22357b9c9cbc1a95278d9f3'
-'95aefe98ea5b7871f43efeff93c1f4abbd3d4eae640f6c91063250bbe0cb0aec'
-'ed063895a79af7b1197e6bc29aeb3335d0d1bc9d783c2e0689ff05cda2b02150'
-'7f111640db3cdd7c7108f2ef4e3dd7188a5b26af20d1032b9d9758d386270548'
-'1ffe66aa7dfb4a929b63d90b7bf0c395f95e6eae6b1282a1486ae8b2453c0238'
-'86fbb90a2ec528ab700a6573a02b4b62a3415a206ae519fb469e35b3dbff31c4'
-'de6458cbb7b5f1ee3fdc44c45004381722c04f0633ad1cd9c5b68c6c841fa4f7'
-'12b78bc6c485484acbd12f15762eb2612db4f88a7acbb003cac078447981bc35'
-'3d70083b28a32c8b84322688208446422bb8e5f989201afac9659b9ae371e45a'
-'2d1792c7fd193d02a59cf6520b5c9495797dc52d8558c71581e822901385c11e'
-'14ea92b89761b4872a043828c797dfd222343f4ed5be0cd054a8df1e9daaa24f'
-'691512f30e77dc391e1be88c0136cdb3ac677bc5d3803c6cb161bdfe87878ac3'
-'212ee1d3601b345054abd9dcdbfa71cb983436332e5ca3b88e890b9f4e97c739'
-'f5dd9db93fd74c411daaff2084747c3dfe01a0df0451cd058ecf8a8d3b0a879b'
-'97b0dc456cff714779c2523c2b29b2488eaffc50b3bbcb3b3f1f850ee9c787d8'
-'bf0589d2a024e4e8f9c6da0d4df5135e957cf1ffd685d921d9e873e6c547cbdb'
-'ddc13dc75477761c1e0c44519f69201472cc13861f3ab4335391d86f9e02761f'
-'417e5f191fb1cdf7659d5eeca8f04505314b9db7bc5b5563a39e7e066aee091f'
-'7c54e2b2a4176fd760f321db48eae0f8efb9e342581780db037f8fcec567fc2e'
-'b66ba7f6d58469fc98cf20ad42134d09b02340bdec6d189783b051a494e398ba'
-'4b5a3801c1489fdfe975d9b1789e5b16e543d704dcd9344963b748c37e6ff6cc'
-'a698d554efed988a85b88169b4cff1ef9d6189004d57800f1c1e923f443f0661'
-'420ae64542bb89ca363979d69449498995cde0d6d58b53f69a5d95cc9d4dd1b3'
+b98f32ba7aa2a1ff5725fb36eb999c693079f0ca16f70aa2f103e2b6c3f093e3
+2ac349b1d799fab365aa419255fd34ab2e153e12c225e0baf628456cb13e172d
+891762286eea1e1b5dc65cec4908031218f2256302a8c3679cfc1a0756c01bfe
+b57b7baead401f0d0681249ddf4c2af98c2448c0fef307906f95fafcf4d6835f
+9f4e24feb159002d6f156e64727e22b444bf4a7703ce0efe703a90592a6ab0a7
+d7af5a52c9b50378b5ea883e9632511c525e951daf5fcd25a12d92ae2752b5a7
+1b3842f5ba95fd3510e90c092664e9fe7a467574cc6f0776abfea1f6656a3797
+4f92cd94c78b4fe2af9ae17f8eef43c87d6ce142e64d09678b02ec6c830a6a24
+40753683fee3b91b195291b338a5742b3cbdda94a4acdf4d8f7c246826940fda
+9b50a4e6571feedb7627772a5b6ff5a6600dfe9379aaabf7fda6c2842056ed26
+5b63a264743e3a6947bf2b35bcecbfb233558d3dbc41ca9de8a4c023fba7cf00
+56a1c6bab1bda2695177d393e9b8930c9348cf8c7abd2b4c4e7dae6687c1a74b
+9c8d30130e632731ef70fbf9d3afb5fb171660cae324ea49b991f970a9784a97
+dad5b61e66992ed7a4aa3382b78d00d5915d4f1bb47d303cba632609e6d40f36
+561232c8092fb1c00d63c58ce5ad1b5fa7f21bdf04b55d8b71f7e14222ff4db9
+bee04cfd0e8190971781a082effc99712f6742396528d0e9bb07758825caeeae
+90aff32aef6f4309e67a59ab194a517cce4cb1526b055ec617896826189749c0
+9fa79ab4a6e502af571f2017f6aec6f00b82b70093f0136d1a4cee2a7091932b
+0b3bbce24fb7150faed937d1bcd9777e8889cf815a7fc07f1c67a571e9b65c5d
+6235fe61c035170581b32a2ee23ce914f21c67c9e7a536555c02f9e5a73c7934
+8b16a60823263514a25dbfe2640d461c041587d3177396a0b35fef2fb3291a3f
+1a9e821939665355cb2bcefd8ff6a1c7e8598d59346228b2b1da804b5949369a
+f382ecad0bbb547904d59331b24fc5d7be19330f3510b4e1f7509dfb6c726f1c
+e46e190655ce7c06316842fe4a255c63891557c39536d9a85aa5c958cef5fc10
+ccc5f7c75ce685c82f78c090779098892f3dfc5c4968b4e94f22fb5faa0b644e
+7d3037ef3f9b4897accd9e418d05421d0595d98d0d6d588278d10c93463401f5
+c33e31707eff88c266e5f934def869fc351e745f30adc798ce4fc6d3a88420ba
+4f0a66f94877ab3778eb26960693df8270f8a299b066ef2134a389db70a74a98
+96e68ca052972e11cc707b74cea6b7864a1d87398fa1f0c3a1024d01b65bac57
+fc7f5856a0827d6dad95e42beb05c8b76973a021b34af11392446f84a0a2029e
+36526f789f81b8fb3437a918d432b82941d66305338ed2989a9447cdd8e7ec79
+8efea8ca3842d351c9e0a345f13597d8ae0a8ff7a9163125f67af4c04fb94530
+1d29dc4716bbe5d162270c0517f5dcf2589c4b0e74766a78374a85c5cec20543
+12b971fab9c64ecb10a937631473408edfa19c13da4b7024f93662a546d1a2e9
+1f8a18129440487622851ecc7fff411d496dedb46b430bdc4d1ef30a5edd87d3
+d20b81f32f145bb1fb859e64fc9e329361f4b09845212a60b9f8fb42063d7137
+b4745dee49d615e2224cddc17bd44173703de117b6de5953b8a9ac7586ddda80
+123e44e3693ea7590f5a4eda647a30b07ef7e91dd4e937cfbaac3f8c250c68b7
+363f7d5515e2533f3b2473e649e4df71ce091b7a7a7210dc88816720fcd0a11f
+df18dc94665c3c76115366287100237e289eab44f6ea98190af021192112daa1
+109b46637798e599149ca88084b3c7430297a0bf1908099cd42cb0a24261d97f
+afd54d74b7e6396c9b90bbe94d836846afa8242559c204a936149f881e56587c
+b7b9773c7b1b5569d46ae29fbb100a6c8db643f9dfb0ea2384e4be43f4f5c4bd
+b1c030cd96a65dcf8743eb06d3d2fd3a5a9c79d1f1c72358ad4bf96ca424de23
+33e02928156a19259007a08f270af10defa82427cfb8c9116131a7262e652f6c
+e61142363e83064d77599d23257e75ad8bca8e4981824641219bdd91bed17674
+a6878c0b986cd54b0dea517f4e0a3ce6297123d8436da6f99d6e861ff00a154c
+03dca4749641e7efa9c725cdcb91804d02bf0b0f7d987d4f12105b5b01cc5677
+c886bf99652eb7ed0d5db885a789f4c96a6f8ddca2d5b1ef31c6f6fe6b9edda8
+524179fa0098262b0afd9ff5153e96ce61d06f7b99ea1f9c0ab11ab19ab71134
+a2ab2bf83620d586e3b4a41f3f17223522a7315eb4c348ee1c8d48cdd32b9cda
+50496a24dd4a0253c455429dfae7979345d3435540b1f89e10f1e7191027146e
+8f73d2b3467c60340a85e1d805a294d3eab240b2c6e24817140eac9e03792b43
+060366bd2f24a893e9491c2ed608fa1038af3ca3db09e1387f9c75eafb6936be
+7b4fb22029d1e25c4f7b5ff1ddb86532f7ff025db4727bb8f31b30677752993d
+dd59c855107b4db6c6d96c96623eb3ec16b0358a6344a28f6bcb1d8363c3b6ad
+81127b6c8e95145b8d0307568bb6125f7eca42e79abf4b49a059b18ab8cf53e4
+166503de18aafe4877fd26947704b5a18d58a6d14416d36f80054480a20fadcf
+33df64c2013234f31cabe8c79f9aebff7c73aa52460bf497b1e114c828fc1ab2
+c15e38e1b9b90cc8af5e388d31f44c822906c6c4e4ec907ec9252e4352512d87
+ac5b60aac8abdb7620c859bfbb609fe28c7aca46b5f08b91066e63f85a3192f2
+4c71d7c43d4dccd34335099b370460920435999dbc44d858fdd89f83fe61ca14
+7b27f03f37e62326bee2bf96efbeea58e57f8d851608dfe1a5a0d6c528b8cd46
+05ffe42a8686b3bf28b157b655adc0015aedd74a2a676f2b05e38feaab0863e6
+420ae64542bb89ca363979d69449498995cde0d6d58b53f69a5d95cc9d4dd1b3
 )
 
 
@@ -289,6 +274,8 @@ prepare() {
         rm -rf _build
     fi
 
+    sed -i 's/\r$//' ${srcdir}/mesa-${pkgver}/src/mesa/main/formats.csv;
+
     local _patchfile
     for _patchfile in "${source[@]}"; do
         _patchfile="${_patchfile%%::*}"
@@ -304,8 +291,8 @@ build () {
        -D b_ndebug=true \
        -D b_lto=false \
        -D platforms=x11,wayland \
-       -D dri-drivers=pvr \
-       -D gallium-drivers=swrast \
+       -D dri-drivers='' \
+       -D gallium-drivers=pvr,swrast \
        -D vulkan-drivers=pvr \
        -D vulkan-layers=device-select,overlay \
        -D dri3=enabled \

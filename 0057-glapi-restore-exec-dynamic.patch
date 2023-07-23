@@ -1,0 +1,26 @@
+From d044c490a10212d1c4a39d14aa5b306ac0fb3692 Mon Sep 17 00:00:00 2001
+From: Brendan King <Brendan.King@imgtec.com>
+Date: Wed, 23 Mar 2022 12:57:01 +0000
+Subject: [PATCH] glapi: restore exec="dynamic"
+
+This is needed for the dispatch table entry points used by the IMG
+Rogue DDK driver, which have no implementation in Mesa. Using
+exec="dynamic" avoids the need to create stubs in Mesa for the
+unimplemented functions.
+
+---
+ src/mapi/glapi/gen/api_exec_init.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/mapi/glapi/gen/api_exec_init.py b/src/mapi/glapi/gen/api_exec_init.py
+index ec1c2ea..e10097f 100644
+--- a/src/mapi/glapi/gen/api_exec_init.py
++++ b/src/mapi/glapi/gen/api_exec_init.py
+@@ -33,6 +33,7 @@ import apiexec
+ 
+ 
+ exec_flavor_map = {
++    'dynamic': None,
+     'vtxfmt': None,
+     'dlist': '_mesa_',
+     'mesa': '_mesa_',
