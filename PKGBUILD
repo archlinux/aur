@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('cronie' 'gtk3' 'libgee' 'libnotify' 'libsoup' 'rsync' 'vte3' 'which'
          'xapp' 'xorg-xhost')
 optdepends=('btrfs-progs: BTRFS support'
-            'grub-btrfs: BtrfS snapshots in grub')
+            'grub-btrfs: BTRFS snapshots in GRUB')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://launchpad.net/~linuxmint-daily-build-team/+archive/ubuntu/daily-builds/+files/${pkgname%-bin}_${pkgver}-unstable-${_build_id}~ubuntu${_ubuntu_ver}_amd64.deb")
@@ -26,5 +26,5 @@ sha256sums=('10e04c964cf353457f0bb650be733da60e06ab5e5ad798d416176feff038d009')
 #sha256sums_riscv64=('ae65276830fb3b6a46d3f31bc1f729883f000927ddc3dae012913f9eded75057')
 
 package() {
-  bsdtar -xvf data.tar.zst -C "$pkgdir"
+  bsdtar -xvf data.tar.zst -C "$pkgdir/"
 }
