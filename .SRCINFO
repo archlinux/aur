@@ -1,7 +1,7 @@
 pkgbase = archivebox
 	pkgdesc = The open source self-hosted web archive
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pirate/ArchiveBox
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = archivebox
 	depends = python-django
 	depends = python-mypy_extensions
 	depends = wget
-	depends = python-crontab
+	depends = python-crontab-crontab
 	depends = python-atomicwrites
 	depends = python-dateparser
 	depends = python-requests
@@ -30,4 +30,3 @@ pkgbase = archivebox
 	sha256sums = cc7b72ee54eb6bac9a6fd774ab712ab0f1b717e96b9d92fa3e34006cbd40d8d6
 
 pkgname = archivebox
-
