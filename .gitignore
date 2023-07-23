@@ -2,3 +2,4 @@ pkg/
 *.pkg.tar.zst
 rmup/
 src/
+update.sh
