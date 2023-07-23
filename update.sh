@@ -17,5 +17,5 @@ echo "Press enter to continue"
 read
 makepkg --printsrcinfo > .SRCINFO
 git add .SRCINFO PKGBUILD
-#git commit -m "Updated to $NEWVER"
-#git push
+git commit -m "Updated to $NEWVER"
+git push
