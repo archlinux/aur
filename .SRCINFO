@@ -1,0 +1,36 @@
+pkgbase = touchegg-nosystemd-git
+	pkgdesc = Linux multi-touch gesture recognizer (without systemd dependency; latest git checkout).
+	pkgver = 2.0.16+2.r637.20230720.9c25edb
+	pkgrel = 1
+	url = https://github.com/JoseExposito/touchegg
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = at-spi2-core
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = harfbuzz
+	depends = libinput
+	depends = libudev
+	depends = libx11
+	depends = libxi
+	depends = libxrandr
+	depends = libxtst
+	depends = pango
+	depends = pugixml
+	depends = zlib
+	optdepends = touche: For a GUI to touchegg.
+	provides = touchegg=2.0.16+2.r637.20230720.9c25edb
+	provides = touchegg-nosystemd=2.0.16+2.r637.20230720.9c25edb
+	provides = touchegg-git=2.0.16+2.r637.20230720.9c25edb
+	conflicts = touchegg
+	source = touchegg::git+https://github.com/JoseExposito/touchegg.git
+	sha256sums = SKIP
+
+pkgname = touchegg-nosystemd-git
