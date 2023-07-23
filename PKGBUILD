@@ -3,12 +3,12 @@
 
 pkgname=vim-molokai
 pkgver=1.1
-pkgrel=7
+pkgrel=8
 pkgdesc='Port of the monokai colorscheme for TextMate'
 arch=('any')
 url='https://www.vim.org/scripts/script.php?script_id=2340'
 license=('custom')
-depends=('vim')
+depends=('vim-plugin-runtime')
 groups=('vim-plugins')
 source=("$pkgname.vim::https://www.vim.org/scripts/download_script.php?src_id=9750"
         'https://raw.githubusercontent.com/tomasr/molokai/master/LICENSE.md')
