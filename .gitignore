@@ -1,0 +1,4 @@
+allwpilib/
+src/
+pkg/
+*.tar.zst
