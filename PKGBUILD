@@ -2,7 +2,7 @@
 
 pkgname=pc-ble-driver
 pkgver=4.1.4
-pkgrel=5
+pkgrel=6
 pkgdesc="C/C++ libraries for Bluetooth Low Energy nRF5 SoftDevice serialization"
 arch=(x86_64)
 url="https://github.com/NordicSemiconductor/pc-ble-driver"
@@ -36,6 +36,8 @@ build() {
   cmake -B build -S $pkgname-$pkgver \
       -DCMAKE_BUILD_TYPE='None' \
       -DCMAKE_INSTALL_PREFIX='/usr' \
+      -DCMAKE_C_FLAGS="$CFLAGS -ffat-lto-objects" \
+      -DCMAKE_CXX_FLAGS="$CXXFLAGS -ffat-lto-objects" \
       -Wno-dev
   cmake --build build
 }
