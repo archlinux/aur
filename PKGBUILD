@@ -5,8 +5,8 @@
 # https://www.metabase.com/docs/latest/installation-and-operation/running-metabase-on-debian
 
 pkgname="metabase"
-pkgver=0.46.6
-pkgrel=4
+pkgver=0.46.6.1
+pkgrel=1
 pkgdesc="The simplest, fastest way to get business intelligence and analytics to everyone in your company"
 arch=("x86_64" "aarch64")
 url="https://www.metabase.com/"
@@ -25,7 +25,7 @@ source=("https://downloads.metabase.com/v$pkgver/metabase.jar"
         "metabase.sysusers"
         "metabase.tmpfiles"
         )
-sha256sums=('8511069190e54d08cdd35dbf89333c2031eb5bbdb637ee20546b6c547e91e64a'
+sha256sums=('12d267bf515a238944bb65fceed1ef83f5ae63451c11ad5b7f7adbeaf612e5c6'
             'f26e51e69a188c7eea8dc65f192d326d1ae7009032cd521c798a862d7fbc5365'
             '0135dce8719bf676eb44139776124f1cc8f4ecb53d973e2d78982ab210ce1868'
             '706ec71333804e97429f91c19ff72004a050a24307560b8a2fc4e6db7915964d'
