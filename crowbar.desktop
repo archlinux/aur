@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Crowbar
+Comment=GoldSource and Source Engine Modding Tool
+Exec=crowbar %f
+Icon=crowbar
+StartupWMClass=Crowbar
+MimeType=archive/fpx;application/gma;model/mdl;application/qc;archive/vpk;

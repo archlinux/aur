@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+
+  <mime-type type="archive/fpx">
+    <comment>Tactical Intervention archive</comment>
+    <glob pattern="*.fpx"/>
+  </mime-type>
+
+  <mime-type type="application/gma">
+    <comment>Garry's Mod addon</comment>
+    <glob pattern="*.gma"/>
+  </mime-type>
+
+  <mime-type type="model/mdl">
+    <comment>Source engine model</comment>
+    <glob pattern="*.mdl"/>
+  </mime-type>
+
+  <mime-type type="application/qc">
+    <comment>Source engine script</comment>
+    <glob pattern="*.qc"/>
+  </mime-type>
+
+  <mime-type type="archive/vpk">
+    <comment>Valve Pak archive</comment>
+    <glob pattern="*.vpk"/>
+  </mime-type>
+
+</mime-info>
