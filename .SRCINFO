@@ -1,6 +1,6 @@
 pkgbase = clash-verge-bin
 	pkgdesc = A Clash GUI based on tauri.
-	pkgver = 1.3.4
+	pkgver = 1.3.5
 	pkgrel = 0
 	url = https://github.com/zzzgydi/clash-verge
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = clash-verge-bin
 	depends = libayatana-appindicator
 	depends = clash
 	optdepends = clash-meta: Another Clash Kernel
-	source = clash-verge-1.3.4-x86_64.deb::https://github.com/zzzgydi/clash-verge/releases/download/v1.3.4/clash-verge_1.3.4_amd64.deb
-	sha512sums = 5f711e8d78dc9ee35842b558a2c1ac09e56934e9b1782ad40625182b9e5284296700378a5c5793561f9569e711f08e1de784cd16d8b1c573020bc4932972ef7b
+	source = clash-verge-1.3.5-x86_64.deb::https://github.com/zzzgydi/clash-verge/releases/download/v1.3.5/clash-verge_1.3.5_amd64.deb
+	sha512sums = 860ffe86443897c5ef6a4bb2f071aecd063393b7b66f378157e984c4d96f83e6b49b5d8862afa14df896f17ddd0794a3e54b2a12791358b7c65dcd31fba16f7a
 
 pkgname = clash-verge-bin
