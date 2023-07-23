@@ -1,0 +1,26 @@
+From 30bf9b79edc90533a903e59cf5e0650f0bdb53de Mon Sep 17 00:00:00 2001
+From: Miguel Angel Mulero Martinez <migmul@gmail.com>
+Date: Sat, 27 May 2023 09:11:15 +0200
+Subject: [PATCH] Downgrade nw-builder to version 3.8.3
+
+Since version 3.8.4, nw-builder has a dependency with nw-install, that
+is not available at this moment. Downgrade to 3.8.3 since it is
+available again or we migrate to version 4.x.x.
+---
+ package.json |   2 +-
+ yarn.lock    | 548 ++++++++++++++++++++++++++++++++++++++++++++-------
+ 2 files changed, 473 insertions(+), 77 deletions(-)
+
+diff --git a/package.json b/package.json
+index b42593052f..ce39d2842f 100644
+--- a/package.json
++++ b/package.json
+@@ -113,7 +113,7 @@
+     "gulp-yarn": "^3.0.0",
+     "gulp-zip": "^5.1.0",
+     "husky": "^4.3.0",
+-    "nw-builder": "^3.8.6",
++    "nw-builder": "3.8.3",
+     "os": "^0.1.2",
+     "postcss": "^8.4.17",
+     "rollup": "^3.9.0",

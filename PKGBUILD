@@ -13,22 +13,27 @@ makedepends=('yarn' 'npm' 'git')
 source=("git+https://github.com/betaflight/betaflight-configurator.git#tag=$pkgver"
         "$pkgname.sh"
         "$pkgname.desktop"
-        "remove_android_build_deps.patch")
+        "remove_android_build_deps.patch"
+        "nw-builder.patch")
 sha512sums=('SKIP'
             '1f9113fce812355d1f8cc614d4905845c601622b87aad2b6e74b62913582018a87059727a333db0673a4b767a10564389eece1f588658d171dc4d8446055a0e9'
             '79e5ab59cf8520ce7e20fb2bd89ee99ce3debba69e7da892bf219912cc32c7056a7c8fd6dae19eebfe4956c948d0bc75ece40911b203fcc2f34e43f2d8329532'
-            '07f52591ac364627efadfa005a2788d3c4fd4c7817a630afdfbafb809c937351b80c1ee6794a02a15c8916767b189ed1556d2a9c8cc91d51bcc33cd9a6f2a558')
+            '07f52591ac364627efadfa005a2788d3c4fd4c7817a630afdfbafb809c937351b80c1ee6794a02a15c8916767b189ed1556d2a9c8cc91d51bcc33cd9a6f2a558'
+            '62db5fd8ac9d36a6b9151a4932e6d0ec0cf928d9a19759cbc7c4b2fac6d819a056b8d7f0939a6f2e9fe863d8817ab091d5a37fdefa6fe8ad278ada65ba8fb3b2')
 options=(!strip)
 install=$pkgname.install
 
 prepare() {
 	cd $pkgname
-	
+
 	# Allow higher node version
 	sed 's#"node": "#&>=#' -i package.json
 
 	# Remove unecessary Andoid/Cordova XML build dependcy
 	patch -Np1 < "$srcdir/remove_android_build_deps.patch"
+
+	# Downgrade nw-builder to version 3.8.3 to resolve dependency with nw-install
+	patch -Np1 < "$srcdir/nw-builder.patch"
 }
 
 build() {
