@@ -1,6 +1,6 @@
 pkgbase = jdk17-graalvm-ee-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 17 version
-	pkgver = 17.0.7
+	pkgver = 17.0.8
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = jdk17-graalvm-ee-bin.install
@@ -15,8 +15,8 @@ pkgbase = jdk17-graalvm-ee-bin
 	source = graalvm-ee-rebuild-libpolyglot.hook
 	sha256sums = 7dc37bd3703ebebcd6efa39534e6bb6e3ec9c8ee0d97e46d6df5349739c7d2ca
 	source_x86_64 = https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = 93db5fd373fc8eb5a5578387f7646cfd414b82e8cfaf9dbcd0145ceae0137398
+	sha256sums_x86_64 = 2d6696aa209daa098c51fefc51906aa7bf0dbe28dcc560ef738328352564181b
 	source_aarch64 = https://download.oracle.com/graalvm/17/latest/graalvm-jdk-17_linux-aarch64_bin.tar.gz
-	sha256sums_aarch64 = 73256df1af0507f8cb230bafe506e4dcaba2b3e6d8bb1324bf5a02198890ef97
+	sha256sums_aarch64 = 10cb0b61571befb20bf7c11ac4e10ff4e4801065a64ae425b39f34d401e352b1
 
 pkgname = jdk17-graalvm-ee-bin
