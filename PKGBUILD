@@ -6,7 +6,7 @@
 
 pkgname="metabase"
 pkgver=0.46.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The simplest, fastest way to get business intelligence and analytics to everyone in your company"
 arch=("x86_64" "aarch64")
 url="https://www.metabase.com/"
@@ -18,7 +18,7 @@ optdepends=("metabase-driver-clickhouse: connect to clickhouse databases"
             "metabase-driver-duckdb: connect to duckdb files"
             "metabase-driver-teradata: connect to teradata databases"
            )
-source=("https://downloads.metabase.com/v$pkgver/metabase.jar"
+source=("metabase-$pkgver.jar::https://downloads.metabase.com/v$pkgver/metabase.jar"
         "metabase"
         "metabase.conf"
         "metabase.service"
@@ -31,14 +31,14 @@ sha256sums=('12d267bf515a238944bb65fceed1ef83f5ae63451c11ad5b7f7adbeaf612e5c6'
             '706ec71333804e97429f91c19ff72004a050a24307560b8a2fc4e6db7915964d'
             'c670b2c4c4663590ab2ced38b19b196f1b31ab1c6339ef7caa9225e94db82c92'
             '71478a76412929d5d35ce8aafb85a27a3c73b10a37235ed2ad890c47cb31812b')
-noextract=("metabase.jar")
+noextract=("metabase-$pkgver.jar")
 options=("!strip")
 backup=("etc/metabase.conf")
 
 package(){
  install -d -m 750 "$pkgdir/var/lib/metabase"
  install -D -m 755 "metabase" "$pkgdir/usr/bin/metabase"
- install -D -m 644 "metabase.jar" "$pkgdir/usr/share/java/metabase/metabase.jar"
+ install -D -m 644 "metabase-$pkgver.jar" "$pkgdir/usr/share/java/metabase/metabase.jar"
  install -D -m 640 "metabase.conf" "$pkgdir/etc/metabase.conf"
  install -D -m 644 "metabase.service" "$pkgdir/usr/lib/systemd/system/metabase.service"
  install -D -m 644 "metabase.sysusers" "$pkgdir/usr/lib/sysusers.d/metabase.conf"
