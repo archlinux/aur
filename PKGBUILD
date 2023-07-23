@@ -14,8 +14,9 @@ arch=('x86_64')
 url='https://marcelotduarte.github.io/cx_Freeze'
 license=('PSF')
 depends=('patchelf' 'python-packaging' 'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest-mock' 'python-bcrypt' 'python-cryptography' 'python-openpyxl'
-              'python-pandas' 'python-pillow' 'python-pydantic' 'python-pytz')
+              'python-pandas' 'python-pillow' 'python-pydantic' 'python-pytz' 'rpm-tools')
 replaces=('python-cx_freeze')
 provides=('python-cx_freeze')
 conflicts=('python-cx_freeze')
@@ -24,17 +25,19 @@ sha512sums=('a3fdd94b33985b3bb0fbee2fc7438e20f3ddb31f0d71322eed1c06a15954be5845a
 
 build() {
   cd cx_Freeze-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
   cd cx_Freeze-$pkgver
-  python setup.py egg_info
-  # TODO
-  PYTHONPATH="$PWD/build/lib.linux-$CARCH-cpython-310" python -m pytest --deselect tests/test_command_bdist_rpm.py::test_bdist_rpm
+  python -m installer --destdir=test_dir dist/*.whl
+  export PYTHONPATH="$PWD/test_dir/$site_packages:$PYTHONPATH"
+  pytest -vv
 }
 
 package() {
   cd cx_Freeze-$pkgver
-  python setup.py install --root "$pkgdir" --optimize 1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
