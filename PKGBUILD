@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname-switch-ws")
 sha256sums=('3b187ef32818427490e422925dc6c30cf2ab05649a94a14a568b70ac2fc177c2'
             '244d8dc40c0bb6eea28a05c22b4a6950bbf0ecfc358cbc4c1500aae805f87883'
-            '4b835cf5dfe4c4387a9d607f44ce06cfbb6777c3ca5ffe3f5125d957f4fc6626'
+            '56496557c63baa472dc426ee0215c80b63859983bc6977078e34266bda5fce7b'
             '587366d03b3e70f8cbdd78f557bdf5191ff9937f9f86afa0d7ff78c490b015d8')
 backup=("usr/local/etc/$pkgname.toml")
 

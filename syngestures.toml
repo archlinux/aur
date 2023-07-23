@@ -2,7 +2,7 @@
 
 # This file should be placed in any of the following paths.
 # * $PREFIX/syngestures.toml (for global configuration)
-# * $PREFIX/syngestures.d/*.toml (for gloabl configuration, separate file per device)
+# * $PREFIX/syngestures.d/*.toml (for global configuration, separate file per device)
 # * $XDG_CONFIG_HOME/syngestures.toml (for per-user configuration)
 # * $XDG_CONFIG_HOME/syngestures.d/*.toml (for per-user configuration, separate file per device)
 #
