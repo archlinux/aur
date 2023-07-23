@@ -1,7 +1,7 @@
 pkgbase = pluto-lunar-git
 	pkgdesc = Basic astronomical functions for solar system ephemerides, time systems, coordinate systems, etc
-	pkgver = 20230614.bb05de6
-	pkgrel = 5
+	pkgver = r592.bb05de6
+	pkgrel = 1
 	url = https://www.projectpluto.com/source.htm
 	arch = x86_64
 	license = GPL2

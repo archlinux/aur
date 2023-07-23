@@ -1,7 +1,7 @@
 _pkgname=lunar
 pkgname=pluto-lunar-git
-pkgver=20230614.bb05de6
-pkgrel=5
+pkgver=r592.bb05de6
+pkgrel=1
 pkgdesc="Basic astronomical functions for solar system ephemerides, time systems, coordinate systems, etc"
 arch=(x86_64)
 url="https://www.projectpluto.com/source.htm"
@@ -13,7 +13,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  git log -1 --format='%cd.%h' --date=short --abbrev=7 | tr -d -
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
