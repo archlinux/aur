@@ -1,4 +1,4 @@
-From 65007fd13530afe604a05ff7ab85fb71eb041936 Mon Sep 17 00:00:00 2001
+From a5f37373d2199f95ddc966b2426101bef62b4b93 Mon Sep 17 00:00:00 2001
 From: Robin Westermann <gitlab@seath.de>
 Date: Sat, 27 Feb 2021 14:41:22 +0100
 Subject: [PATCH] invoke waked when an alarm changes
@@ -13,15 +13,15 @@ Co-Authored-By: pcworld <0188801@gmail.com>
 ---
  build-aux/flatpak/org.gnome.clocks.json |  1 +
  src/alarm-face.vala                     |  2 +
- src/alarm-item.vala                     | 14 ++++++-
+ src/alarm-item.vala                     | 10 +++++
  src/alarm-setup-dialog.vala             |  1 +
  src/meson.build                         |  1 +
  src/waked-utils.vala                    | 53 +++++++++++++++++++++++++
- 6 files changed, 70 insertions(+), 2 deletions(-)
+ 6 files changed, 68 insertions(+)
  create mode 100644 src/waked-utils.vala
 
 diff --git a/build-aux/flatpak/org.gnome.clocks.json b/build-aux/flatpak/org.gnome.clocks.json
-index b3d768f..daedbf8 100644
+index a58ffcb..b009378 100644
 --- a/build-aux/flatpak/org.gnome.clocks.json
 +++ b/build-aux/flatpak/org.gnome.clocks.json
 @@ -11,6 +11,7 @@
@@ -33,10 +33,18 @@ index b3d768f..daedbf8 100644
          "--env=G_MESSAGES_DEBUG=org.gnome.ClocksDevel"
      ],
 diff --git a/src/alarm-face.vala b/src/alarm-face.vala
-index 04728ab..1a593a7 100644
+index 58950d5..edcc796 100644
 --- a/src/alarm-face.vala
 +++ b/src/alarm-face.vala
-@@ -121,6 +121,7 @@ public class Face : Adw.Bin, Clocks.Clock {
+@@ -73,6 +73,7 @@ public class Face : Adw.Bin, Clocks.Clock {
+             item.notify["active"].connect (save);
+ 
+             row.remove_alarm.connect (() => {
++                WakedUtils.remove_timer (((Item) item).id);
+                 alarms.delete_item ((Item) item);
+                 save ();
+             });
+@@ -129,6 +130,7 @@ public class Face : Adw.Bin, Clocks.Clock {
                  ((SetupDialog) dialog).apply_to_alarm (alarm);
                  save ();
              } else if (response == DELETE_ALARM) {
@@ -44,16 +52,8 @@ index 04728ab..1a593a7 100644
                  alarms.delete_item (alarm);
                  save ();
              }
-@@ -130,6 +131,7 @@ public class Face : Adw.Bin, Clocks.Clock {
-     }
- 
-     internal void delete (Item alarm) {
-+        WakedUtils.remove_timer (alarm.id);
-         alarms.delete_item (alarm);
-         save ();
-     }
 diff --git a/src/alarm-item.vala b/src/alarm-item.vala
-index 6103342..e350d1d 100644
+index 263248b..ce7678d 100644
 --- a/src/alarm-item.vala
 +++ b/src/alarm-item.vala
 @@ -20,6 +20,7 @@
@@ -64,21 +64,17 @@ index 6103342..e350d1d 100644
  private struct AlarmTime {
      public int hour;
      public int minute;
-@@ -88,8 +89,11 @@ private class Item : Object, ContentItem {
+@@ -98,6 +99,9 @@ private class Item : Object, ContentItem {
                  _active = value;
-                 if (_active) {
-                     reset ();
--                } else if (state == State.RINGING) {
--                    stop ();
-+                } else {
+ 
+                 reset ();
++                if (!active) {
 +                    WakedUtils.remove_timer (id);
-+                    if (state == State.RINGING) {
-+                        stop ();
-+                    }
++                }
+                 if (!active && state == State.RINGING) {
+                     stop ();
                  }
-                 notify_property ("active");
-             }
-@@ -150,6 +154,10 @@ private class Item : Object, ContentItem {
+@@ -161,6 +165,10 @@ private class Item : Object, ContentItem {
          }
  
          alarm_time = dt;
@@ -89,7 +85,7 @@ index 6103342..e350d1d 100644
      }
  
      private void update_snooze_time (GLib.DateTime start_time) {
-@@ -172,6 +180,7 @@ private class Item : Object, ContentItem {
+@@ -183,6 +191,7 @@ private class Item : Object, ContentItem {
      public void snooze () {
          bell.stop ();
          state = State.SNOOZING;
@@ -97,7 +93,7 @@ index 6103342..e350d1d 100644
      }
  
      public void stop () {
-@@ -221,6 +230,7 @@ private class Item : Object, ContentItem {
+@@ -232,6 +241,7 @@ private class Item : Object, ContentItem {
              update_alarm_time (); // reschedule for the next repeat
          }
  
@@ -106,7 +102,7 @@ index 6103342..e350d1d 100644
      }
  
 diff --git a/src/alarm-setup-dialog.vala b/src/alarm-setup-dialog.vala
-index 30163f3..a838993 100644
+index 5d122cd..b6f66e9 100644
 --- a/src/alarm-setup-dialog.vala
 +++ b/src/alarm-setup-dialog.vala
 @@ -264,6 +264,7 @@ private class SetupDialog : Gtk.Dialog {
@@ -118,7 +114,7 @@ index 30163f3..a838993 100644
  
          var duplicate = alarm.check_duplicate_alarm (other_alarms);
 diff --git a/src/meson.build b/src/meson.build
-index 61bf1ab..129e9a3 100644
+index dfc7d34..ab9de1c 100644
 --- a/src/meson.build
 +++ b/src/meson.build
 @@ -24,6 +24,7 @@ clocks_vala_sources = files(
@@ -189,5 +185,5 @@ index 0000000..9b8fa4a
 +}
 +}
 -- 
-2.35.1
+2.37.2
 
