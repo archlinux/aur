@@ -9,7 +9,7 @@
 
 pkgname=('platformio' 'platformio-udev-rules')
 pkgver=6.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
 url="https://github.com/platformio/platformio-core/"
@@ -32,7 +32,8 @@ depends=('python-setuptools'
          'python-starlette'
          'python-wsproto'
          'uvicorn')
-optdepends=('python-click-completion: for shell completions'
+optdepends=('platformio-udev-rules: user access for various boards/devices'
+           'python-click-completion: for shell completions'
            'python-shellingham: for shell completions')
 conflicts=('platformio-git')
 source=("https://github.com/platformio/platformio-core/archive/v${pkgver}.tar.gz")

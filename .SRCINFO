@@ -1,7 +1,7 @@
 pkgbase = platformio
 	pkgdesc = A cross-platform code builder and library manager
 	pkgver = 6.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/platformio/platformio-core/
 	arch = any
 	license = Apache
@@ -21,6 +21,7 @@ pkgbase = platformio
 	depends = python-starlette
 	depends = python-wsproto
 	depends = uvicorn
+	optdepends = platformio-udev-rules: user access for various boards/devices
 	optdepends = python-click-completion: for shell completions
 	optdepends = python-shellingham: for shell completions
 	conflicts = platformio-git
