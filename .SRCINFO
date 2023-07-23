@@ -1,6 +1,6 @@
 pkgbase = dmenu-bluetooth
 	pkgdesc = A dmenu menu that uses bluetoothctl to connect to bluetooth devices and display status
-	pkgver = r47.e6fbfbd
+	pkgver = r48.96e2e3e
 	pkgrel = 1
 	url = https://github.com/Layerex/dmenu-bluetooth
 	arch = any
