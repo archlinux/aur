@@ -1,7 +1,7 @@
 # Maintainer: Energi <bloznelis05@gmail.com>
 
 pkgname=kbt
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Keyboard tester in terminal"
 arch=(x86_64)
@@ -32,4 +32,3 @@ package() {
   install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
