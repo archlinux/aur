@@ -1,6 +1,6 @@
 # Maintainer: ml <ml-aur@ransomware.download>
 pkgname=vacuum
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='fast, lightweight OpenAPI linter and quality checking tool'
 arch=('aarch64' 'i686' 'x86_64')
@@ -8,25 +8,25 @@ url=https://quobix.com/vacuum/
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-  source=("https://github.com/daveshanley/vacuum/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('3b5ceeb7808ee26cdc57b6be961f41e67df3edc4c891d0ff4e6b6ec3671b6279')
+source=("https://github.com/daveshanley/vacuum/archive/refs/tags/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('49889fcf364ad7a5cb7a93e7ddf57a3f42130446b401d6403f6381e391116f7f')
 
 build() {
-  _commit=$(bsdcat "$pkgname"-"$pkgver".tar.gz | git get-tar-commit-id)
-  cd "$pkgname-$pkgver"
-  export CGO_ENABLED=1
-  export CGO_LDFLAGS=$LDFLAGS
-  export CGO_CFLAGS=$CFLAGS
-  export CGO_CPPFLAGS=$CPPFLAGS
-  export CGO_CXXFLAGS=$CXXFLAGS
-  export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
-  TZ=UTC printf -v _date '%(%FT%TZ)T' "$SOURCE_DATE_EPOCH"
-  go build -ldflags "-linkmode=external \
+	_commit=$(bsdcat "$pkgname"-"$pkgver".tar.gz | git get-tar-commit-id)
+	cd "$pkgname-$pkgver"
+	export CGO_ENABLED=1
+	export CGO_LDFLAGS=$LDFLAGS
+	export CGO_CFLAGS=$CFLAGS
+	export CGO_CPPFLAGS=$CPPFLAGS
+	export CGO_CXXFLAGS=$CXXFLAGS
+	export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
+	TZ=UTC printf -v _date '%(%FT%TZ)T' "$SOURCE_DATE_EPOCH"
+	go build -ldflags "-linkmode=external \
     -X main.version=$pkgver -X main.commit=$_commit -X 'main.date=$_date'"
 
-  ./"$pkgname" completion bash >completion.bash
-  ./"$pkgname" completion fish >completion.fish
-  ./"$pkgname" completion zsh >completion.zsh
+	./"$pkgname" completion bash >completion.bash
+	./"$pkgname" completion fish >completion.fish
+	./"$pkgname" completion zsh >completion.zsh
 }
 
 #check() {
@@ -35,10 +35,10 @@ build() {
 #}
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname" -t "$pkgdir"/usr/bin
-  install -Dm644 completion.bash "$pkgdir"/usr/share/bash-completion/completions/"$pkgname"
-  install -Dm644 completion.fish "$pkgdir"/usr/share/fish/vendor_completions.d/"$pkgname".fish
-  install -Dm644 completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_"$pkgname"
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"
+	cd "$pkgname-$pkgver"
+	install -Dm755 "$pkgname" -t "$pkgdir"/usr/bin
+	install -Dm644 completion.bash "$pkgdir"/usr/share/bash-completion/completions/"$pkgname"
+	install -Dm644 completion.fish "$pkgdir"/usr/share/fish/vendor_completions.d/"$pkgname".fish
+	install -Dm644 completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_"$pkgname"
+	install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"
 }
