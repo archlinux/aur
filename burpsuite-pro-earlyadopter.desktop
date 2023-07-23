@@ -1,9 +1,9 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Burp Suite Professional
-Exec=burpsuite-pro
-Icon=burpsuite-pro
+Name=Burp Suite Professional (Early Adopter)
+Exec=burpsuite-pro-earlyadopter
+Icon=burpsuite-pro-earlyadopter
 Comment=Burp Suite is an integrated platform for attacking web applications (professional edition)
 Categories=Development;Security
 Terminal=false
