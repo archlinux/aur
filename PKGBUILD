@@ -1,7 +1,7 @@
 # Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 _themename='smallscreen-raleigh-compact'
 pkgname="xfwm4-theme-${_themename}-git"
-pkgver=r9.20230723.7e13833
+pkgver=r10.20230723.eaa9e4e
 pkgrel=1
 pkgdesc="An Xfwm4 theme using only the necessary screen space and trying to imitate the 'raleigh' colour theme."
 arch=('any')
