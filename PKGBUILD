@@ -13,7 +13,7 @@ pkgdesc='Create standalone executables from Python scripts'
 arch=('x86_64')
 url='https://marcelotduarte.github.io/cx_Freeze'
 license=('PSF')
-depends=('patchelf' 'python' 'python-packaging' 'python-setuptools')
+depends=('glibc' 'patchelf' 'python' 'python-packaging' 'python-setuptools')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest-mock' 'python-bcrypt' 'python-cryptography' 'python-openpyxl'
               'python-pandas' 'python-pillow' 'python-pydantic' 'python-pytz' 'rpm-tools')
