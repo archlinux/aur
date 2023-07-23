@@ -1,7 +1,7 @@
 pkgbase = python-sphinx-2
 	pkgdesc = Python documentation generator
 	pkgver = 2.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sphinx-doc.org/
 	arch = any
 	license = BSD
@@ -22,7 +22,6 @@ pkgbase = python-sphinx-2
 	depends = python-sphinxcontrib-serializinghtml
 	optdepends = imagemagick: for ext.imgconverter
 	optdepends = texlive-latexextra: for generation of PDF documentation
-	provides = python-sphinx
 	conflicts = python-sphinx
 	source = https://pypi.org/packages/source/S/Sphinx/Sphinx-2.4.5.tar.gz
 	source = https://pypi.org/packages/source/S/Sphinx/Sphinx-2.4.5.tar.gz.asc

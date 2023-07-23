@@ -1,9 +1,9 @@
-# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Contributor: Yurii Kolesnykov <root@yurikoles.com>
 # Based on python-sphinx: Johannes Löthberg <johannes@kyriasis.com>, Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=python-sphinx-2
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Python documentation generator'
 arch=('any')
 url=http://www.sphinx-doc.org/
@@ -22,7 +22,6 @@ depends=('python-babel'
 #              'python-html5lib'
 #              'python-pytest'
 #              'texlive-fontsextra' 'texlive-latexextra')
-provides=(python-sphinx)
 conflicts=(python-sphinx)
 optdepends=('imagemagick: for ext.imgconverter'
             'texlive-latexextra: for generation of PDF documentation')
@@ -49,5 +48,3 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
