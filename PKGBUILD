@@ -2,7 +2,7 @@
 
 pkgname="sing-box-bin"
 _pkgname="sing-box"
-pkgver="1.3.0"
+pkgver="1.3.3"
 pkgrel="1"
 pkgdesc="The universal proxy platform."
 provides=("sing-box")
@@ -26,9 +26,9 @@ sha512sums=('b5e5b8dad736b628a2761cc883b7e8439d604b5b1612447020ac7c143747e57acaf
             '0541f144ee33bb4cb182231794065babae530260b95bff26cbeb5491ab856d40e247895d130629f9dbef58dcd6652f0c69d3e28f57f3bae916d36294565399b0'
             'c97518ba1e9b865239cedbba7bf6c5b9af0e0c873972fa6df7169aac43a8b500f9d063b382530faa326c0b5f135876cb9eb601a7922a6d0f53adaa9ba27e6816'
             'a3eb0e5789f04069fc7fd55ff09c437e394ae370110a43d6a1000759a524ac7d1b9f8b664656c2c9fb94fc9eca4852fb338a24186d9e3da30aed02773edbab86')
-sha512sums_x86_64=('dd209a8ab986f657643ba5b5c7eb5acc36f6843b9a713427c9d11cd79a0e666ac6fc398d3ca066c7526aa4a74a5b944eed88e9056a849729b785a2fb3a102bde')
-sha512sums_armv7h=('fd3d34bcd1979df148b54d69c581952f3f37e0d548caf255817c25956f8b3bc3447f040813b5d995ef09053f9d5aa52971dd0ed9e287f2135a3a89cf11fc3166')
-sha512sums_aarch64=('42defc80b0f01e74364f0b5d33ce0eefc32a387ff23b0833b8331f8a2d835cbf910aa9f22cb16998160bb11a770b864aa6c105d3d03a83b9be438993ccdfe938')
+sha512sums_x86_64=('a359804bdce802aad9080acac26867637a9d1a70c394c1531b73e19a00211dd5161eb1490483cc20e57dbb65f2a35040949ba7ea2c7c7e0c459a93919494623b')
+sha512sums_armv7h=('c12c04a2534dc520bf615a1b9f77ccfb7fd21168ce756e3e769a299d83476e11a18a0d33ee4812d07bf0055c4c0c874afea3137a2e83fa10dbd2b1914588eb17')
+sha512sums_aarch64=('45d500af1a2c44942dac977aa90a02a6f8e3d3ecd0c35348b135a9d6b5704d22fb8dc26e953658cddbb7eb4e722b376a454eca0accc09f6b7fa62643c71d6d10')
 
 package() {
     declare -A ARCH_MAP
@@ -38,7 +38,7 @@ package() {
     install -Dm644 "$_pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "$_pkgname@.service" -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 "$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
-    install -Dm644 "$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+    install -Dm644 "$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
     install -Dm644 "config.json" -t "$pkgdir/etc/$_pkgname"
 
     cd "$_pkgname-$pkgver-linux-${ARCH_MAP[$CARCH]}"
