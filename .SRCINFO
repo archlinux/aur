@@ -1,0 +1,12 @@
+pkgbase = spinnaker-doc
+    pkgdesc = Documentation for spinnaker libraries. This package contains the documentation.
+    pkgver = 3.1.0.79
+    pkgrel = 1
+    arch = x86_64
+    license = custom:FLIR EULA
+    url = https://www.flir.com/
+    depends = spinnaker
+    source = spinnaker-doc-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/spinnaker-doc-3.1.0.79.tar.gz
+    sha256sums = dcb3807872e380027d88c30e60359291504a2f0d7a2a36d0a58760caa9f23414
+
+pkgname = spinnaker-doc
