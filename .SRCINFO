@@ -1,0 +1,16 @@
+pkgbase = kubeshark-git
+	pkgdesc = Kubeshark is an API Traffic Analyzer for Kubernetes.
+	pkgver = 41.3.r12.g470ab3d7e
+	pkgrel = 1
+	url = https://github.com/kubeshark/kubeshark
+	arch = x86_64
+	arch = aarch64
+	license = apache
+	makedepends = go
+	makedepends = git
+	provides = kubeshark
+	conflicts = kubeshark
+	source = kubeshark::git+https://github.com/kubeshark/kubeshark#branch=master
+	sha256sums = SKIP
+
+pkgname = kubeshark-git
