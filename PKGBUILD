@@ -10,7 +10,7 @@
 
 _pack=arduino
 pkgname=octave-${_pack}
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Basic Octave implementation of the matlab arduino extension, allowing communication to a programmed arduino board to control its hardware"
 arch=(any)
@@ -24,9 +24,9 @@ backup=()
 options=()
 install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
-source=("https://downloads.sourceforge.net/octave/${_archive}")
+source=("https://github.com/gnu-octave/${pkgname}/releases/download/release-${pkgver}/${_archive}")
 noextract=("${_archive}")
-sha512sums=('041595a34aa4527aa7865b47230112d203b649fab2fe7d35b453d45cae6cbf55400f7ad583f7d46d74f83ce0cd630940e742bd40037e71bf35c495f2d8e4cef0')
+sha512sums=('6c653750387cfa5f17ab00fedf49a334605a61a733de5ac5e994d5e31179dc4c17824f82b5fbcc3d356d37d0a54c0ff397e3531ae12a7adff8ca3618cc6c1d33')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
