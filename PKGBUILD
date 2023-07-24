@@ -1,9 +1,9 @@
-# Maintainer: Jingbei Li <i@jingbei.li>
+# Maintainer: Alessio <alessio@linux.com>
 # Contributor: Pritunl <contact@pritunl.com>
 
 _pkgname=pritunl-dns
 pkgname=${_pkgname}-git
-pkgver=86.32a1408
+pkgver=105.a8ef4ca
 pkgrel=1
 pkgdesc="Pritunl DNS mapping service"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -32,7 +32,6 @@ prepare() {
 	# https://github.com/pritunl/pritunl-web/pull/2
 	find . -type f -exec sed 's/Sirupsen/sirupsen/g' -i {} \;
 
-	go mod init
 }
 
 build() {
