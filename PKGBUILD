@@ -3,7 +3,7 @@
 _appname=86BoxManager
 pkgname=86box-manager-bin
 pkgver=1.7.6.0e
-pkgrel=1
+pkgrel=2
 pkgdesc="A (cross-platform) configuration manager for the 86Box emulator"
 arch=('x86_64')
 url="https://github.com/RetBox/86BoxManagerX"
@@ -21,8 +21,8 @@ source=(
 	"86BoxVMs.json"
 )
 md5sums=('c1d70898edaa20188ec77e602f5d568c'
-         'c18f7125469e87445d4d2a753fb185d4'
-         '812b067db1131f6ff5f135d9c687e55a'
+         '10d648510f7337be51436f6191e45bdb'
+         'a0078cf9c88267a2fff82abe55d988f8'
          'fcc4426670c3fbe036bc29ab45ba3620'
          '057671d91413133a13a89fd6525c9bc3')
 
