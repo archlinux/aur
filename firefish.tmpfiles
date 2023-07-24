@@ -1,0 +1,7 @@
+#Type Path                              Mode    User    Group   Age     Argument
+d   /var/lib/firefish                    0770    firefish firefish -       -
+d   /var/lib/firefish/npm                0770    firefish firefish -       -
+d   /var/lib/firefish/pnpm               0770    firefish firefish -       -
+d   /var/lib/firefish/files              0770    firefish firefish -       -
+z   /etc/webapps/firefish/config.json    0660    firefish firefish -       -
+d   /var/cache/firefish                  0755    firefish firefish -       -
