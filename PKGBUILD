@@ -2,7 +2,7 @@
 
 pkgname=kibot
 pkgver=1.6.3
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="KiCad automation utility"
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
     imagemagick
     openscad
     rar
+    kicad
     kicost
     pandoc
     pcbdraw
@@ -41,7 +42,9 @@ depends=(
     )
 makedepends=("python-setuptools")
 checkdepends=()
-optdepends=('kicad-interactivehtmlbom: Interactive HTML BOM generation plugin for KiCad')
+optdepends=('kicad-interactivehtmlbom: Interactive HTML BOM generation plugin for KiCad'
+    'kicad-library: KiCad symbol, footprint and template libraries'
+    'kicad-library-3d: KiCad 3D model libraries')
 provides=()
 conflicts=(kibot-git)
 replaces=()
