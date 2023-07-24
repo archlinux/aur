@@ -1,6 +1,6 @@
 pkgbase = python-bokeh
 	pkgdesc = Interactive Web Plotting for Python
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = http://bokeh.pydata.org/
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-bokeh
 	optdepends = python-psutil: detailed memory logging
 	optdepends = python-networkx: plot directly from NetworkX data
 	optdepends = python-sphinx: support sphinx documentation
-	source = https://pypi.io/packages/source/b/bokeh/bokeh-3.2.0.tar.gz
-	sha256sums = cdb3a8c3109d8d91a2814f4cddea045c14d049021f7fb6ce2a6b2c15e224bb17
+	source = https://pypi.io/packages/source/b/bokeh/bokeh-3.2.1.tar.gz
+	sha256sums = 2371e9a08fd60766879ee8607a4ae54267acfed1e5dee0cc6a20d8348e02e814
 
 pkgname = python-bokeh
