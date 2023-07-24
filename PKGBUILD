@@ -2,7 +2,7 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=pytype
-pkgver=2023.01.31
+pkgver=2023.07.21
 pkgrel=1
 pkgdesc='A static type analyzer for Python code'
 arch=('x86_64')
@@ -30,7 +30,7 @@ makedepends=(
   'python-wheel'
   'pybind11'
 )
-_commit='06e3d79110e39ca1c61500719fc8efaabfa4ecfb'
+_commit='c9e3b2e5bf7c37728ca08f3436b19f8ff2e82530'
 source=(
   "$pkgname::git+https://github.com/google/pytype#commit=$_commit"
   'github.com-python-typeshed::git+https://github.com/python/typeshed'
@@ -39,7 +39,7 @@ source=(
 )
 b2sums=('SKIP'
         'SKIP'
-        '66171ed53b45ef3198c462fdc9689db245a48df327faaa1b62b9eb5cca99febc915010dc4127d7ec7c5a3c2f939a29d5bb7b84f3e32a93510eac57a7843038ec'
+        '87ac67b1ae18a6571ced8e708227f984ef979db55ff37a7ec224bbefa8f726590477032cac2247c2edf183c22bb50ba28ee86abad53dc4e2dc87437e658b5428'
         '2180276a2f7ef1be1036ca092243356d039c91f70077527358c76eb00d83c4866417df6a81e32a1dee105bb90c70db29582c1617c9e5b961d75ce846008bf9b1')
 
 pkgver() {
