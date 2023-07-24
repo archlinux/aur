@@ -1,16 +1,16 @@
 pkgbase = p3x-onenote
 	pkgdesc = Linux Electron Onenote - A Linux compatible version of OneNote
-	pkgver = 2023.10.214
+	pkgver = 2023.10.222
 	pkgrel = 1
 	url = https://github.com/patrikx3/onenote
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = electron
-	source = https://github.com/patrikx3/onenote/archive/refs/tags/v2023.10.214.tar.gz
+	source = https://github.com/patrikx3/onenote/archive/refs/tags/v2023.10.222.tar.gz
 	source = p3x-onenote.sh
 	source = p3x-onenote.desktop
-	sha256sums = 13f7f5e0c6e1ed03a4d16f58c538e7686653b316a1246281cf16a8f9cc0b131d
+	sha256sums = 42f9485523c2bd12c3d9c46aab9533ee45ae57919357bc1949faf8396da47c49
 	sha256sums = 97aca184d656b8021ce43d524d9de91f014c838372356844c845a531f8ab2b9f
 	sha256sums = 9bbb2f84f401a4da62ffe7f533aa0b149921f3f88fec7f470c4d4b5fcf63f331
 
