@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mission-center
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Monitor your CPU, Memory, Disk, Network and GPU usage"
 arch=('x86_64')
 url="https://gitlab.com/mission-center-devs/mission-center"
@@ -12,7 +12,7 @@ checkdepends=('appstream-glib')
 options=('!lto')
 _commit=9a8458b541a195a0c5cadafb66e240962c852b39
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz"
-        "https://github.com/Syllo/nvtop/archive/$_commit.tar.gz")
+        "nvtop-$_commit.tar.gz::https://github.com/Syllo/nvtop/archive/$_commit.tar.gz")
 sha256sums=('81bdc5245b23f0d1e9c8e9321894c1dee5f3c6cf5f2388bbf04785a692087923'
             '290542e3c2203613e18faaa769dcc5479b170c39acbe71c976a7e86ff03ea1a7')
 
