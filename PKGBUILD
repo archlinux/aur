@@ -11,7 +11,7 @@ provides=('k8sgpt')
 options=()
 license=('Apache')
 makedepends=('go' 'git')
-source=("git+https://github.com/k8sgpt-ai/k8sgpt.git")
+source=("git+https://github.com/k8sgpt-ai/k8sgpt.git#commit=4038318adc22991a75d0538e40c05d6bdd48fc71")
 sha256sums=('SKIP')
 
 pkgver() {
