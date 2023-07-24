@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="query-master"
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Just another MySQL GUI client"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('electron23' 'hicolor-icon-theme')
 makedepends=('yarn' 'npm' 'gendesk')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh")
-sha256sums=('5f3c7304c0d41e1834dafe584a2eef128916e17689c6e6c291186539e5f78d5f'
+sha256sums=('a851b18b40a79de9d6b85b24559c45a192c1788616925562c4072d1c115fee47'
             '07c34a79cb74e05f0c9a490e4cc34a2ec995bc7535d2ea7697114f7dce7247d9')
 build() {
     cd "${srcdir}/${pkgname%-appimage}-${pkgver}"
