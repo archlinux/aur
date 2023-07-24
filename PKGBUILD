@@ -1,12 +1,16 @@
-# $Id$
-# Maintainer:  Radu Potop <radu at wooptoo dot com>
+# Maintainer: Helder Bertoldo <helder.bertoldo@gmail.com>
+# Contributor: Radu Potop <radu at wooptoo dot com> 
 
-pkgname=lora-font-git
-pkgver=3.001
+_gitname=Lora-Cyrillic
+_author=cyrealtype
+_auxname=lora-font
+pkgname=("${_auxname}-git")
+pkgver=r254.c11db343
 pkgrel=1
 pkgdesc='Contemporary serif font that supports Latin and Cyrillic scripts. Includes OTF, TTF and variable.'
 arch=('any')
-url="https://github.com/cyrealtype/Lora-Cyrillic"
+makedepends=('git')
+url="https://github.com/${_author}/${_gitname}"
 license=('OFL')
 source=(
     "git+${url}.git"
