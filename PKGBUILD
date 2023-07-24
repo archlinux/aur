@@ -5,7 +5,7 @@
 
 pkgname=nwn-gog
 pkgver=2.1.0.21
-pkgrel=6
+pkgrel=7
 pkgdesc="Neverwinter Nights is an RPG from Bioware. This requires the GOG version."
 url="https://www.gog.com/game/neverwinter_nights_enhanced_edition_pack"
 license=('custom')
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 depends=('binkplayer-bin' 'perl' 'elfutils' 'icoutils')
 depends_x86_64=('lib32-libelf' 'lib32-libstdc++5' 'lib32-libgl' 'lib32-glu' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-sdl_mixer' 'gcc-multilib')
 depends_i686=('libgl' 'glu' 'libstdc++5' 'libxcursor' 'sdl_mixer')
-makedepends=('git' 'innoextract' 'p7zip' 'perl' 'unzip' 'unrar')
+makedepends=('git' 'innoextract' 'p7zip' 'perl' 'unzip' 'unrar' 'rsync')
 optdepends=('xdg-utils: xdg .desktop file support')
 provides=('nwn')
 conflicts=('nwn')
@@ -58,7 +58,7 @@ prepare()
     innoextract -e $srcdir/setup_nwn_diamond_${pkgver}.exe -d $srcdir --gog || return 1
 
     # Extract Kingmaker installer
-    unzip $srcdir/nvn_KingmakerSetup.zip -d $srcdir || return 1
+    unzip -o $srcdir/nvn_KingmakerSetup.zip -d $srcdir || return 1
 
     # Extract game icons
     if [ -d $srcdir/icons ]; then
@@ -68,7 +68,7 @@ prepare()
     icotool -x -p 0 $srcdir/game/goggame-1207658890.ico -o $srcdir/icons
 
     # Extract Kingmaker files
-    7z x $srcdir/KingmakerSetup.exe -xr'!$PLUGINSDIR' -xr'!*.exe' -xr'!*.dat' -o$srcdir/kingmakertmp/ || return 1
+    7z x -y $srcdir/KingmakerSetup.exe -xr'!$PLUGINSDIR' -xr'!*.exe' -xr'!*.dat' -o$srcdir/kingmakertmp/ || return 1
     
     # Patch nwlogger so that it finds sys/user.h
     /bin/sed -i 's|linux/user.h|sys/user.h|1' $srcdir/nwlogger/nwlogger/nwlogger_cookie.c
@@ -107,14 +107,14 @@ package()
 
     # Move game files to directory
     cd game
-    mv -t $pkgdir/opt/nwn ambient data dmvault hak localvault modules movies music nwm texturepacks premium chitin.key dialog.tlk xp1.key xp2.key
+    rsync -aR ambient data dmvault hak localvault modules movies music nwm texturepacks premium chitin.key dialog.tlk xp1.key xp2.key $pkgdir/opt/nwn
 
     # Extract linux clients
     tar zxfv $srcdir/nwclientgold.tar.gz --directory $pkgdir/opt/nwn
     tar zxvf $srcdir/nwclienthotu.tar.gz --directory $pkgdir/opt/nwn
 
     # Install Kingmaker files
-    mv -n $srcdir/kingmakertmp/\$0/* $pkgdir/opt/nwn
+    rsync -av $srcdir/kingmakertmp/\$0/ $pkgdir/opt/nwn
 
     # Extract latest patch
     tar zxvf $srcdir/English_linuxclient169_xp2.tar.gz --directory $pkgdir/opt/nwn
@@ -169,7 +169,7 @@ package()
     install -D -m 644 $srcdir/icons/goggame-1207658890_9_16x16x32.png $pkgdir/usr/share/icons/hicolor/16x16/apps/nwn.png
 
     # Fix Permissions, just to be sure
-    chown -R root:root $pkgdir
-    chmod -R o+r $pkgdir
+    chown -R $USER:$USER $pkgdir
+    chmod -R 755 $pkgdir
 }
 
