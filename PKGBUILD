@@ -17,50 +17,50 @@ pkgver=17.4.0.r23.gcbbda264d
 pkgrel=1
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
 arch=('i686' 'x86_64' 'aarch64')
-url="http://www.codelite.org/"
+url="https://www.codelite.org/"
 license=('GPL')
 
 makedepends=('pkgconfig' 'cmake' 'ninja' 'clang' 'git')
 
 depends=(
-  'wxgtk3'
-  'libedit'
-  'libssh'
-  'mariadb-libs'
-  'ncurses'
-  'uchardet'
-  'hunspell'
-  #'ctags'
-  #'xterm'
-  #'wget'
-  #'curl'
-  #'python'
-  #'python2'
+    'wxwidgets-gtk3'
+    'libedit'
+    'libssh'
+    'mariadb-libs'
+    'ncurses'
+    'uchardet'
+    'hunspell'
+    #'ctags'
+    #'xterm'
+    #'wget'
+    #'curl'
+    #'python'
+    #'python2'
 )
 
 optdepends=(
-  'clang: compiler'
-  'lldb: debugger'
-  'gcc: compiler'
-  'gdb: debugger'
-  'valgrind: debugger'
-  'rust: language'
-  'php: language'
-  'graphviz: callgraph visualization'
-  'cscope: CScope Integration for CodeLite'
+    'clang: compiler'
+    'lldb: debugger'
+    'gcc: compiler'
+    'gdb: debugger'
+    'valgrind: debugger'
+    'rust: language'
+    'php: language'
+    'graphviz: callgraph visualization'
+    'cscope: CScope Integration for CodeLite'
 )
 
 conflicts=('codelite' 'codelite-bin')
 provides=('codelite')
 
 source=(
-  ${_gitname}::git+https://github.com/eranif/codelite.git
-  http://repos.codelite.org/wxCrafterLibs/wxgui.zip
+    ${_gitname}::git+https://github.com/eranif/codelite.git
+    http://repos.codelite.org/wxCrafterLibs/wxgui.zip
 )
 
 sha256sums=(
-  'SKIP'
-  'SKIP'
+    'SKIP'
+    'SKIP'
 )
 
 noextract=('wxgui.zip')
