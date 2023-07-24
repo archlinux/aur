@@ -1,22 +1,22 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full
-pkgver=0.35.1
-pkgrel=2
+pkgver=0.36.0
+pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
 license=('GPL')
 url='https://mpv.io/'
 depends=(
     # official repositories:
-        'cmocka' 'ffmpeg' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
+        'cmocka' 'lcms2' 'libcdio-paranoia' 'libgl' 'libxss'
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
         'zlib' 'vapoursynth' 'openal' 'vulkan-icd-loader' 'shaderc'
-        'libplacebo' 'libxpresent' 'libpipewire' 'zimg' 'sndio' 'libsixel'
+        'libxpresent' 'libpipewire' 'zimg' 'sndio' 'libsixel'
     # AUR:
-        'spirv-cross'
+        'ffmpeg-git' 'libplacebo-git' 'spirv-cross'
 )
 makedepends=('meson' 'mesa' 'python-docutils' 'ladspa' 'vulkan-headers'
              'wayland-protocols' 'ffnvcodec-headers')
@@ -27,7 +27,7 @@ provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
 source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz")
-sha256sums=('41df981b7b84e33a2ef4478aaf81d6f4f5c8b9cd2c0d337ac142fc20b387d1a9')
+sha256sums=('29abc44f8ebee013bb2f9fe14d80b30db19b534c679056e4851ceadf5a5e8bf6')
 
 build() {
     arch-meson "mpv-${pkgver}" build \
@@ -80,6 +80,7 @@ build() {
         -Dcocoa='disabled' \
         -Dd3d11='disabled' \
         -Ddirect3d='disabled' \
+        -Ddmabuf-wayland='enabled' \
         -Ddrm='enabled' \
         -Degl='enabled' \
         -Degl-android='disabled' \
@@ -97,6 +98,7 @@ build() {
         -Dgl-x11='enabled' \
         -Djpeg='enabled' \
         -Dlibplacebo='enabled' \
+        -Dlibplacebo-next='enabled' \
         -Drpi='disabled' \
         -Dsdl2-video='enabled' \
         -Dshaderc='enabled' \
@@ -124,6 +126,7 @@ build() {
         -Dios-gl='disabled' \
         -Drpi-mmal='disabled' \
         -Dvideotoolbox-gl='disabled' \
+        -Dvulkan-interop='enabled' \
         \
         -Dmacos-10-11-features='disabled' \
         -Dmacos-10-12-2-features='disabled' \
