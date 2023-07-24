@@ -62,6 +62,6 @@ build() {
 package() {
 	cd $srcdir/${pkgname}/build 
 	make DESTDIR="$pkgdir/" install
-	pip install ../
+	pip install --break-system-packages ../
 	mv $srcdir/${pkgname} $pkgdir/opt/openmc
 }
