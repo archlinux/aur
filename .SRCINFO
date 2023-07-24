@@ -1,11 +1,11 @@
 pkgbase = r-cohcap
 	pkgdesc = CpG Island Analysis Pipeline for Illumina Methylation Array and Targeted BS-Seq Data
 	pkgver = 1.46.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bioconductor.org/packages/COHCAP
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL3
+	depends = perl
 	depends = r-bh
 	depends = r-cohcapanno
 	depends = r-gplots
@@ -13,8 +13,8 @@ pkgbase = r-cohcap
 	depends = r-rcpp
 	depends = r-rcpparmadillo
 	depends = r-writexls
-	depends = perl
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/COHCAP_1.46.0.tar.gz
+	md5sums = 7c6563694a4c95720c88bcc4df639f28
 	sha256sums = caa2bdc18d51ba9a66bd9168627d425a57ccc3521de813548f63d60a583043e7
 
 pkgname = r-cohcap
