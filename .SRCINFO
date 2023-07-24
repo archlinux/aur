@@ -1,0 +1,15 @@
+pkgbase = psitop
+	pkgdesc = top for /proc/pressure
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jamespwilliams/psitop
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = go
+	source = psitop-1.0.0.tar.gz::https://github.com/jamespwilliams/psitop/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = d909db926bb3711027efde9c4eeb6ab2ba244a041603bb8fc940cc5a9965f025
+
+pkgname = psitop
