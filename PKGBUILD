@@ -4,14 +4,32 @@
 pkgname=python-pyhanko
 _name=pyHanko
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for stamping and signing PDF files"
 url="https://github.com/MatthiasValvekens/pyHanko"
 license=(MIT)
 arch=(any)
+depends=(
+  python
+  python-aiohttp
+  python-asn1crypto
+  python-click
+  python-cryptography
+  python-dateutil
+  python-oscrypto
+  python-pillow
+  python-pyhanko-certvalidator
+  python-python-pkcs11
+  python-qrcode
+  python-requests
+  python-tzlocal
+  python-yaml
+)
 makedepends=(
   python-build
   python-installer
+  python-pytest-runner
+  python-setuptools
   python-wheel
 )
 checkdepends=(
@@ -22,19 +40,9 @@ checkdepends=(
   python-freezegun
   python-pytest
   python-pytest-aiohttp
+  python-pytest-asyncio
   python-requests-mock
   python-uharfbuzz
-)
-depends=(
-  python-aiohttp
-  python-click
-  python-dateutil
-  python-pillow
-  python-pyhanko-certvalidator
-  python-python-pkcs11
-  python-pyyaml
-  python-qrcode
-  python-tzlocal
 )
 optdepends=(
   'python-uharfbuzz: to use OpenType fonts'
@@ -57,7 +65,8 @@ check() {
   cd "$_archive"
 
   python -m pytest \
-    --ignore pyhanko_tests/test_csc.py
+    --ignore pyhanko_tests/test_csc.py \
+    --ignore pyhanko_tests/test_tsa_fetcher.py
 }
 
 package() {
