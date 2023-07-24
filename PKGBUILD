@@ -1,17 +1,16 @@
-# Contributor: naelstrof <naelstrof@gmail.com>
-
 pkgname=mingw-w64-libsndfile
-pkgver=1.0.28
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A C library for reading and writing files containing sampled sound (mingw-w64)"
 arch=(any)
-url="http://www.mega-nerd.com/libsndfile"
-license=('LGPL')
-makedepends=('mingw-w64-configure')
-depends=('mingw-w64-flac' 'mingw-w64-libvorbis' 'mingw-w64-crt')
+url="https://libsndfile.github.io/libsndfile/"
+license=(LGPL2.1)
+makedepends=('mingw-w64-cmake' 'python')
+depends=('mingw-w64-flac' 'mingw-w64-libvorbis' 'mingw-w64-lame' 'mingw-w64-opus')
 options=('staticlibs' '!strip' '!buildflags')
 source=(http://www.mega-nerd.com/libsndfile/files/libsndfile-${pkgver}.tar.gz)
-sha256sums=('1ff33929f042fa333aed1e8923aa628c3ee9e1eb85512686c55092d1e5a9dfa9')
+source=(https://github.com/libsndfile/libsndfile/releases/download/$pkgver/libsndfile-$pkgver.tar.xz)
+sha256sums=('0e30e7072f83dc84863e2e55f299175c7e04a5902ae79cfb99d4249ee8f6d60a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -19,7 +18,8 @@ build() {
   cd "${srcdir}/libsndfile-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    LIBS="`${_arch}-pkg-config --libs vorbis ogg`" ${_arch}-configure
+    ${_arch}-cmake -DENABLE_EXTERNAL_LIBS=ON -DENABLE_MPEG=ON -DINSTALL_MANPAGES=OFF \
+      -DBUILD_PROGRAMS=OFF -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF ..
     make
     popd
   done
@@ -30,7 +30,6 @@ package() {
     cd ${srcdir}/libsndfile-${pkgver}/build-${_arch}
     make DESTDIR="${pkgdir}" install
     rm -r $pkgdir/usr/${_arch}/share/
-    rm "$pkgdir"/usr/${_arch}/bin/*.exe
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
