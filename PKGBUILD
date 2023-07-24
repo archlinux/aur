@@ -2,8 +2,8 @@
 # Contributor: Victor <victor@xirion.net>
 
 pkgname=krew
-pkgver=0.4.3
-pkgrel=3
+pkgver=0.4.4
+pkgrel=1
 pkgdesc="Find and install kubectl plugins"
 arch=(x86_64 aarch64 armv7h)
 url="https://github.com/kubernetes-sigs/krew"
@@ -16,7 +16,7 @@ depends=(
 makedepends=(go)
 install=kubectl-krew.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('77cc28f744e10ce33860e47c1465fddb9e1b171ac5c366792785df27e29bcd34')
+sha256sums=('dd11ef2d56a0897d38ac219f17332effbd09a3c6a1f68974635b925ba129cd35')
 
 _archive="$pkgname-$pkgver"
 
