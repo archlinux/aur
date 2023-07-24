@@ -1,7 +1,7 @@
 # Maintainer: leotheleon <71839579+leo-the-leon@users.noreply.github.com>
 
 pkgname=firealpaca
-pkgver=2.11.2
+pkgver=2.11.4
 pkgrel=1
 pkgdesc="Simple and easy digital painting software"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ source=('firealpaca')
 source_i686=("https://firealpaca.com/download/win_zip")
 source_x86_64=("https://firealpaca.com/download/win64_zip")
 cksums=('1329839102')
-cksums_i686=('3241110844')
-cksums_x86_64=('3431891172')
+cksums_i686=('3062798601')
+cksums_x86_64=('4027740602')
 
 prepare() {
 	cd "$srcdir"
