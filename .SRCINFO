@@ -1,0 +1,18 @@
+pkgbase = python-kibom
+	pkgdesc = Bill of Materials generation tool for KiCad EDA
+	pkgver = 1.9.0
+	pkgrel = 0
+	url = https://pypi.org/project/qrcodegen
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	provides = kibom
+	conflicts = kibom
+	options = !strip
+	source = kibom-1.9.0.tar.gz::https://files.pythonhosted.org/packages/source/k/kibom/kibom-1.9.0.tar.gz
+	sha256sums = 89ad0fa95bb36bb6aaed666d9685c68974557febf96d51492a5b80d7803923ff
+
+pkgname = python-kibom
