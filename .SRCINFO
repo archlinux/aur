@@ -1,12 +1,12 @@
 pkgbase = ov
 	pkgdesc = Feature-rich terminal-based text viewer
-	pkgver = 0.30.0
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://github.com/noborus/ov
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = ov-0.30.0.tar.gz::https://github.com/noborus/ov/archive/v0.30.0.tar.gz
-	b2sums = 146a8a1cb85b4dfdf84a4550c60d9f9f72d25858d5ad53381b7000c0b8f65c1f82ba086a452593443f1bb579f2cf0334f20846e046ef9cfa995f64a0c14b0405
+	source = ov-0.31.0.tar.gz::https://github.com/noborus/ov/archive/v0.31.0.tar.gz
+	b2sums = e1315e7cf2d1146a879bea6cf89d9902d2e9fdef8766ac3591cfbb9d1d4b23466ff7cb8c9e572e2d12bad4d8a8e04a53e063c4229459c9051d367045a9c0c5d4
 
 pkgname = ov
