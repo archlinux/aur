@@ -1,0 +1,23 @@
+pkgbase = jql-bin
+	pkgdesc = A JSON Query Language CLI tool
+	pkgver = 7.0.2
+	pkgrel = 1
+	url = https://github.com/yamafaktory/jql
+	arch = arm
+	arch = x86_64
+	license = MIT
+	license = APACHE
+	source = https://github.com/yamafaktory/jql/raw/jql-v7.0.2/LICENSE-MIT
+	source = https://github.com/yamafaktory/jql/raw/jql-v7.0.2/LICENSE-APACHE
+	source = https://github.com/yamafaktory/jql/releases/download/jql-v7.0.2/jql-v7.0.2-arm-unknown-linux-musleabihf.tar.gz.sha256
+	source = https://github.com/yamafaktory/jql/releases/download/jql-v7.0.2/jql-v7.0.2-x86_64-unknown-linux-musl.tar.gz.sha256
+	sha256sums = 2282729282450a05a4908270ed7685dfc6aa0c3e86f2352cf4daa252c4cf6bf8
+	sha256sums = a2d0e76cc3e9053d72ab5372728ae01c3c323848db4d3c40d713f9de62be30cc
+	sha256sums = f9129a3af64291c89da907e5ce2b657091ab864423c2596082d83ef14dc6e30a
+	sha256sums = eb35807d38b317916bba13340cc0574e4695bbbf3a96d9dea1264b57daf9a345
+	source_arm = https://github.com/yamafaktory/jql/releases/download/jql-v7.0.2/jql-v7.0.2-arm-unknown-linux-musleabihf.tar.gz
+	sha256sums_arm = ca905b1205a53aca3cefd39ebccbf4ab55a423d9699138bae653272529bb2fb4
+	source_x86_64 = https://github.com/yamafaktory/jql/releases/download/jql-v7.0.2/jql-v7.0.2-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 7c27b446125593e96e2cae4456fa89d2ecddb03752ad76aba68d236e27b3fb57
+
+pkgname = jql-bin
