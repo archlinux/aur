@@ -33,10 +33,10 @@ if [ -z ${use_numa+x} ]; then
   use_numa=y
 fi
 
-## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
-## Stock Archlinux and Xanmod have this enabled.
-## Set variable "use_tracers" to: n to disable (possibly increase performance)
-##                                y to enable  (stock default)
+## Since upstream disabled CONFIG_STACK_TRACER (limits debugging and analyzing of the kernel)
+## you can enable them setting this option. Caution, because they have an impact in performance.
+## Stock Archlinux has this enabled.
+## Set variable "use_tracers" to: n to disable (possibly increase performance, XanMod default)
 if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
@@ -83,7 +83,7 @@ fi
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-_major=6.3
+_major=6.4
 pkgver=${_major}.5
 _branch=6.x
 xanmod=1
@@ -92,7 +92,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="00ef030daa80b01c1e56f9ba20cf7c627d7c5791" # 6.3.5-2
+__commit="b7f9ddcc394c11061450ef3f813701454865b1bd" # 6.4.5
 
 license=(GPL2)
 makedepends=(
@@ -119,11 +119,11 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
         
-sha256sums=('ba3491f5ed6bd270a370c440434e3d69085fcdd528922fa01e73d7657db73b1e'  # kernel tar.xz
+sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '81aec306b4bae742f3fa8fdc6ea156224d5fdf281d08382519d594c5826059d5'  # xanmod
-            '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30'  # choose-gcc-optimization.sh
-            'c916ebd9d2553ce4452146c779804dd2e858c5cd267bb624c9f683e136e9edf7') # manjaro
+            '225f7f1c616f4796eade829f8f7c5543f9e4075441482c55fd84373c2ac93bf4'  # xanmod
+            'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f'  # choose-gcc-optimization.sh
+            '7c528562d20c01035277d4897eaafd5245865cffbfa8d542c0e0bfa47dde8997') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -158,6 +158,8 @@ prepare() {
   
   # remove conflicting ones
   rm ../linux${_major//.}-$__commit/0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch
+  rm ../linux${_major//.}-$__commit/0102-netfilter-nf_tables-unbind_non-anonymous.patch
+  rm ../linux${_major//.}-$__commit/0202-amd-drm-fixes-6.4-2023-06-23.patch
   
   local _patch
   for _patch in ../linux${_major//.}-$__commit/*; do
@@ -165,7 +167,6 @@ prepare() {
       msg2 "Applying patch: $_patch..."
       patch -Np1 < "../linux${_major//.}-$__commit/$_patch"
   done 
-  git apply -p1 < "../linux${_major//.}-$__commit/0413-bootsplash.gitpatch"
   
   
   # Applying configuration
@@ -176,7 +177,6 @@ prepare() {
     scripts/config --enable LTO_CLANG_THIN
   fi
   
-  scripts/config --enable CONFIG_BOOTSPLASH
   
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
   scripts/config --enable CONFIG_STACK_VALIDATION
@@ -273,7 +273,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Xanmod and Manjaro patches (Bootsplash support). Ashmem and binder are enabled"
+  pkgdesc="The Linux kernel and modules with Xanmod and Manjaro patches"
   depends=('coreutils' 'linux-firmware' 'kmod' 'initramfs')
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices'
