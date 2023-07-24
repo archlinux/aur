@@ -1,0 +1,27 @@
+pkgbase = python-lensfunpy
+	pkgdesc = Python wrapper for the lensfun library
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/letmaik/lensfunpy
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-imageio
+	checkdepends = python-scikit-image
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-wheel
+	depends = lensfun
+	depends = python-numpy
+	optdepends = python-scikit-image
+	optdepends = python-opencv
+	source = python-lensfunpy-1.13.0.tar.gz::https://github.com/letmaik/lensfunpy/archive/v1.13.0.tar.gz
+	source = fix-test-np-import.patch
+	sha512sums = 2ce5cda73b6be0efdd6543d467b959aababdd3fcbc37c5075f5d5109c2274a26894cf298fd4826158fd1eecfccb5b6b1b9cda64efe663655a078ed2ef4e102bd
+	sha512sums = 4eabf53dddbc9d09fe4dd984170992170a9cfa656ee5eff638c6f6bdce2b8d5abc5cf8ea9d2e20408879cb6357d2f438729940e542d38a3462370409e50b890f
+
+pkgname = python-lensfunpy
