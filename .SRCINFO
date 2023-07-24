@@ -1,0 +1,18 @@
+pkgbase = python-tasmota-metrics
+	pkgdesc = Firmware size analysis for ESP-IDF
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/jason2866/tasmota-metrics
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-yaml
+	noextract = tasmota_metrics-0.3.4-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/79/1b/da2afaee37343fba66f1bab63c57e0bf77cd1c985b0e050e0209df8c8a29/tasmota_metrics-0.3.4-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = aa1b5f3ff4b3252cbf9992b25a909ea3
+	md5sums = 7c54c1a0b31a36f1ae00a2720082c83e
+
+pkgname = python-tasmota-metrics
