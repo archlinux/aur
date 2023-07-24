@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=kiwiirc-server-bin
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="KiwiIRC server"
 arch=('armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -17,11 +17,11 @@ source_i686=("${pkgname%-bin}-${pkgver}-i686.deb::${_githuburl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_v${pkgver}-1_linux_amd64.deb")
 source=("${pkgname%-bin}.install")
 sha256sums=('b9aa8bb14dcdbb9dce07716df7b22e9fe9ac5ff29600be6117b1b49f22ceba9e')
-sha256sums_armv6h=('6e61b0e09cad8434810e83810a9d8e20b052c678495a76aba4119e6751beaf92')
-sha256sums_armv7h=('94b8e670e10c481dba46aadbdbfd7e9d92ce9c08dbe113e171327e5ba1b8791a')
-sha256sums_aarch64=('4a2ffd2dc53404a0f875333af10c6c24514532e0ffee95104551d8d3f4e2b2b0')
-sha256sums_i686=('fe062a82d57d71e25fd5f23eb0473f92e454b27d22e8a326e98b5dd8d957a4e5')
-sha256sums_x86_64=('de6bb7363523ebfaa61c853c6a64e73c5a3b0df204c757aaaaf3ca79ba7e12d1')
+sha256sums_armv6h=('e8c455f2183935cbe3e212a360ab0427287afc2c3012959aacaedbf9f48916df')
+sha256sums_armv7h=('386e1e03872f51e0ec0f9db5a910fcfd99fc3877bba2ac510e83f8ef2bab19a5')
+sha256sums_aarch64=('2faec14668139ac4ea370015f03c641426a56e365a3aa593f895828dc8e9385e')
+sha256sums_i686=('801d39fadb72cf139206961538eeca5a974d99dc4516e90292e3c2c4769e6ebb')
+sha256sums_x86_64=('7ed21d01cffc63ed2cfb403142adc667248f5d3241c00bf1dc0698cdd2e532c8')
 package() {
     bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
 }
