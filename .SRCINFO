@@ -1,0 +1,11 @@
+pkgbase = ttf-sitelen-seli-kiwen-asuki
+	pkgdesc = Sitelen Seli Kiwen is a font created specially for Sitelen Pona writing system. Asuki variant.
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://www.kreativekorp.com/software/fonts/sitelenselikiwen
+	arch = any
+	license = OFL
+	source = https://github.com/kreativekorp/sitelen-seli-kiwen/releases/download/1.2.1/sitelenselikiwen.zip
+	sha256sums = F3A8F36CD5666C2DB6DBC061879F8A3DD2E7E64EA022CEE0394D4461FFEB992D
+
+pkgname = ttf-sitelen-seli-kiwen-asuki
