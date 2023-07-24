@@ -3,7 +3,7 @@
 
 pkgname=azure-kubelogin
 _name=kubelogin
-pkgver=0.0.30
+pkgver=0.0.31
 pkgrel=1
 pkgdesc="A Kubernetes credential (exec) plugin implementing azure authentication"
 arch=(x86_64)
@@ -14,10 +14,9 @@ depends=(glibc)
 conflicts=(kubelogin)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Azure/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b9b2198beae24827dba7bca312e2d872d6668448cadebf19a87db087639c4ea2')
+sha256sums=('7549745a1c2a280e77a9d33a2e3e463c314154bbebf6fed46fff9b36c1e22b9c')
 
 _archive="$_name-$pkgver"
-_git_hash="f9291df8538a4f8d3eb1957d75027199bbea0481"
 
 build() {
   cd "$_archive"
@@ -29,7 +28,12 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   _go_version=$(go version | cut -d " " -f 3)
-  _ld_flags="-linkmode external -X main.version=v$pkgver/$_git_hash -X main.goVersion=$_go_version -X 'main.platform=linux/amd64'"
+  _ld_flags=" \
+    -linkmode external \
+    -X main.version=v$pkgver/? \
+    -X main.goVersion=$_go_version \
+    -X 'main.platform=linux/amd64' \
+  "
   go build -ldflags "$_ld_flags" .
 }
 
@@ -42,6 +46,6 @@ check() {
 package() {
   cd "$_archive"
 
-  install -Dm755 kubelogin $pkgdir/usr/bin/kubelogin
+  install -Dm755 kubelogin "$pkgdir/usr/bin/kubelogin"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
