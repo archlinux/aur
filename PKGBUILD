@@ -1,8 +1,8 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 _gemname=discid
 pkgname=ruby-$_gemname
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Ruby bindings for the MusicBrainz DiscID library libdiscid."
 arch=(any)
 url="https://github.com/phw/ruby-discid"
@@ -11,7 +11,7 @@ depends=(ruby ruby-ffi libdiscid) # Full dependency information is available in 
 makedepends=(rubygems ruby-rdoc)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=(35bd45adad20ac50293e10926af0bac0e0f4057513d605d3908d996dfece9d01)
+sha256sums=(9a47af9479262a9f82aa9c5333c8439b472146fd747e9e7404b06e9a57f179cd)
 
 package() {
   cd "$srcdir"
