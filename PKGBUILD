@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.7.103.r0.g93ab116e91
+pkgver=0.7.104.r0.g15bf68594f
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -32,11 +32,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$_pkgname.install
 source=(
-	"$_pkgname::git+https://github.com/mborgerson/xemu.git"
+	"$_pkgname::git+https://github.com/xemu-project/xemu.git"
+	"$_pkgname-imgui::git+https://github.com/xemu-project/imgui.git"
 	'berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
 	'berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
 	'genconfig::git+https://github.com/mborgerson/genconfig.git'
-	'imgui::git+https://github.com/ocornut/imgui.git'
 	'implot::git+https://github.com/epezent/implot.git'
 	'keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git'
 	'nv2a_vsh_cpu::git+https://github.com/abaire/nv2a_vsh_cpu.git'
@@ -66,7 +66,7 @@ prepare() {
 	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
 	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
 	git config submodule.ui/keycodemapdb.url ../keycodemapdb
-	git config submodule.ui/thirdparty/imgui.url ../imgui
+	git config submodule.ui/thirdparty/imgui.url ../$_pkgname-imgui
 	git config submodule.ui/thirdparty/implot.url ../implot
 	git -c protocol.file.allow=always submodule update
 	mkdir -p ../build
