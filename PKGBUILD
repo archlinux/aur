@@ -4,13 +4,13 @@
 pkgname=eclipse-dsl
 epoch=2
 pkgver=4.28
-pkgrel=1
+pkgrel=2
 _release=2023-06/R
 pkgdesc="Highly extensible IDE (Java and DSL version)"
 arch=('x86_64')
 url="https://www.eclipse.org/"
 license=('EPL')
-depends=('java-environment>=11' webkit2gtk unzip)
+depends=('java-environment>=17' webkit2gtk unzip)
 provides=(eclipse=$pkgver-$pkgrel)
 conflicts=(eclipse)
 
