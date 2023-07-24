@@ -5,12 +5,34 @@
 pkgname=unigine-superposition
 _pkgname=Unigine_Superposition
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive Unigine Benchmark: walk through a lab of a lone professor"
 arch=('x86_64')
 url="https://benchmark.unigine.com/superposition"
 license=('custom:UNIGINE Engine')
-depends=('libgl' 'gcc-libs' 'libxrandr' 'libxinerama' 'fontconfig' 'qt5-declarative' 'libxkbcommon-x11')
+depends=(
+    'dbus'
+    'fontconfig'
+    'freetype2'
+    'gcc-libs'
+    'glib2'
+    'hicolor-icon-theme'
+    'libgl'
+    'libice'
+    'libsm'
+    'libxcb'
+    'libxext'
+    'libxi'
+    'libxinerama'
+    'libxrandr'
+    'libxrender'
+    'libx11'
+    'openal'
+    'qt5-base'
+    'sh'
+    'zlib'
+)
+makedepends=('patchelf')
 options=("!strip")
 source=("https://assets.unigine.com/d/${_pkgname}-${pkgver}.run" "Superposition.desktop")
 b2sums=('f0447b0ccd860e653c2308637c93ed29ec851ff9923251edbd37a14b021149038f1c252deb0f3c4954fd4508883b1a2994a87b34a5e18902cef6c82c6ccc6b6b'
@@ -31,13 +53,19 @@ package() {
     cat >> "${pkgdir}/usr/bin/unigine-superposition" << \here
 #!/bin/sh
 cd /opt/unigine-superposition/bin
-./launcher
+LD_LIBRARY_PATH='/opt/unigine-superposition/bin:/opt/unigine-superposition/bin/qt/lib' ./launcher
 here
     chmod a+x "${pkgdir}/usr/bin/unigine-superposition"
     # fix openssl1.0 stuff
-    mv "${pkgdir}/opt/unigine-superposition/bin/qt/lib/libcrypto.so"{,.1.0.0}
+    mv -v "${pkgdir}/opt/unigine-superposition/bin/qt/lib/libcrypto.so"{,.1.0.0}
     find "${pkgdir}/opt/unigine-superposition/bin/qt" -name "*.so*" -exec chmod a+x {} \;
-    ln -s /opt/unigine-superposition/bin/qt/lib/libcrypto.so.1.0.0 "${pkgdir}/opt/unigine-superposition/bin/qt/lib/libcrypto.so"
+    ln -sv /opt/unigine-superposition/bin/qt/lib/libcrypto.so.1.0.0 "${pkgdir}/opt/unigine-superposition/bin/qt/lib/libcrypto.so"
+    # remove unneeded install scripts
+    rm -v "${pkgdir}/opt/unigine-superposition/"*install.sh
+    # removing unneded libraries
+    rm -v "${pkgdir}/opt/unigine-superposition/bin/libopenal.so"
+    # removing runpaths
+    patchelf --remove-rpath "${pkgdir}/opt/unigine-superposition/bin/launcher"
     # misc
     install -Dm644 docs/Superposition_Benchmark_End-User_License_Agreement.pdf "${pkgdir}"/usr/share/licenses/${pkgname}/license
     install -Dm644 docs/Superposition_Benchmark_User_Manual.pdf "${pkgdir}"/usr/share/doc/${pkgname}/User_Manual.pdf
