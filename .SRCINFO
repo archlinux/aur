@@ -1,0 +1,13 @@
+pkgbase = catalyst-browser-rc-bin
+	pkgdesc = Catalyst Web Browser
+	pkgver = 3.5.0rc1
+	pkgrel = 1
+	url = https://getcatalyst.eu.org
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	conflicts = catalyst-browser-bin
+	source = https://github.com/CatalystDevOrg/Catalyst/releases/download/v3.5.0-rc.1/catalyst_3.5.0.rc.1_amd64.deb
+	md5sums = d2aa81c4446d0ffeee8f928521fd61b2
+
+pkgname = catalyst-browser-rc-bin
