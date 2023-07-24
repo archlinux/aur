@@ -2,3 +2,5 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
+!fix-sphinx-issues.patch
+!latex-engine.patch

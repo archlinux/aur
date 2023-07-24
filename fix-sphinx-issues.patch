@@ -1,0 +1,31 @@
+diff --unified --recursive --text xhtml2pdf-0.2.11.orig/docs/source/conf.py xhtml2pdf-0.2.11/docs/source/conf.py
+--- xhtml2pdf-0.2.11.orig/docs/source/conf.py	2023-07-24 21:56:50.661484433 +0200
++++ xhtml2pdf-0.2.11/docs/source/conf.py	2023-07-24 21:57:34.611687595 +0200
+@@ -44,8 +44,8 @@
+
+
+ # Shortening external links. Here: issue & PR tracker of GitHub
+-extlinks = {'issue': ('https://github.com/xhtml2pdf/xhtml2pdf/issues/%s', '#'),
+-            'pr': ('https://github.com/xhtml2pdf/xhtml2pdf/pull/%s', '#')}
++extlinks = {'issue': ('https://github.com/xhtml2pdf/xhtml2pdf/issues/%s', 'issue %s'),
++            'pr': ('https://github.com/xhtml2pdf/xhtml2pdf/pull/%s', 'pr %s')}
+
+ # Add any paths that contain templates here, relative to this directory.
+ templates_path = ['_templates']
+@@ -82,7 +82,7 @@
+ #
+ # This is also used if you do content translation via gettext catalogs.
+ # Usually you set "language" from the command line for these cases.
+-language = None
++language = 'en'
+ 
+ # There are two options for replacing |today|: either, you set today to some
+ # non-false value, then it is used:
+@@ -443,6 +443,6 @@
+ 
+ 
+ # Example configuration for intersphinx: refer to the Python standard library.
+-intersphinx_mapping = {'https://docs.python.org/': None}
++intersphinx_mapping = {'python': ('https://docs.python.org/3/', None)}
+ import build_samples as bs
+ bs.build_resources()
