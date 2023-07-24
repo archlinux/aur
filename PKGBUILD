@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.35.1.r567.g15252e13d5
+pkgver=0.36.0.r9.g4939570e17
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -90,6 +90,7 @@ build() {
         -Dcocoa='disabled' \
         -Dd3d11='disabled' \
         -Ddirect3d='disabled' \
+        -Ddmabuf-wayland='enabled' \
         -Ddrm='enabled' \
         -Degl='enabled' \
         -Degl-android='disabled' \
@@ -107,6 +108,7 @@ build() {
         -Dgl-x11='enabled' \
         -Djpeg='enabled' \
         -Dlibplacebo='enabled' \
+        -Dlibplacebo-next='enabled' \
         -Drpi='disabled' \
         -Dsdl2-video='enabled' \
         -Dshaderc='enabled' \
@@ -119,7 +121,6 @@ build() {
         -Dvaapi-drm='enabled' \
         -Dvaapi-wayland='enabled' \
         -Dvaapi-x11='enabled' \
-        -Dvaapi-x-egl='enabled' \
         -Dvulkan='enabled' \
         -Dwayland='enabled' \
         -Dx11='enabled' \
@@ -134,6 +135,7 @@ build() {
         -Dios-gl='disabled' \
         -Drpi-mmal='disabled' \
         -Dvideotoolbox-gl='disabled' \
+        -Dvulkan-interop='enabled' \
         \
         -Dmacos-10-11-features='disabled' \
         -Dmacos-10-12-2-features='disabled' \
