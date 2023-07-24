@@ -1,18 +1,21 @@
 pkgbase = python-webdriver-manager
 	pkgdesc = Simplify management of binary drivers for different browsers in Selenium
-	pkgver = 3.8.6
+	pkgver = 3.9.1
 	pkgrel = 1
 	url = https://github.com/SergeyPirogov/webdriver_manager
 	arch = any
 	license = Apache
-	checkdepends = python-pytest
 	checkdepends = python-pybrowsers
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python-requests
+	makedepends = python-wheel
+	depends = python
 	depends = python-dotenv
-	depends = python-tqdm
 	depends = python-packaging
-	source = python-webdriver-manager-3.8.6.tar.gz::https://github.com/SergeyPirogov/webdriver_manager/archive/refs/tags/v3.8.6.tar.gz
-	sha256sums = b75ce174081a26a188d536aad487b8ee7b52ccfcdab35b0e4846b95abe42dc41
+	depends = python-requests
+	source = python-webdriver-manager-3.9.1.tar.gz::https://github.com/SergeyPirogov/webdriver_manager/archive/refs/tags/v3.9.1.tar.gz
+	sha256sums = fb087f041d52e9e12c3a11a476d728c5feb01cc274b380c51842eab156e79b56
 
 pkgname = python-webdriver-manager
