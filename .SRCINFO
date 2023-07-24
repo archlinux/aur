@@ -1,0 +1,12 @@
+pkgbase = korobu
+	pkgdesc = Data encryptor for plaintext and files
+	pkgver = alpha_0.0.1
+	pkgrel = 1
+	url = https://github.com/osennij-morok/korobu
+	arch = x86_64
+	license = MIT
+	makedepends = rust>=1.65.0
+	source = https://github.com/osennij-morok/korobu/archive/refs/heads/master.zip
+	sha512sums = 7c1d7b096bcc998a8d21526a35216d52e91260af4432cee77f51320772c048002fa29f91c1a85113acab6344ce564d6862d044d6cb6e58fa1bad60cd17fc8133
+
+pkgname = korobu
