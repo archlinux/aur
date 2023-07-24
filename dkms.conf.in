@@ -4,6 +4,6 @@ AUTOINSTALL="yes"
 
 BUILT_MODULE_NAME[0]="nct6687"
 DEST_MODULE_LOCATION[0]="/updates"
-MAKE[0]="make TARGET=${kernelver} KERNEL_BUILD=${kernel_source_dir}"
+#MAKE[0]="make TARGET=${kernelver} KERNEL_BUILD=${kernel_source_dir}"
 
 #POST_REMOVE="rmdir /usr/lib/modules/${kernelver}/updates"
