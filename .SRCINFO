@@ -1,0 +1,12 @@
+pkgbase = libspinvideo-dev
+    pkgdesc = A library used to communicate with FLIR digital cameras. This package contains shared libraries
+    pkgver = 3.1.0.79
+    pkgrel = 1
+    arch = x86_64
+    license = custom:FLIR EULA
+    url = https://www.flir.com/
+    depends = libspinnaker
+    source = libspinvideo-dev-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/libspinvideo-dev-3.1.0.79.tar.gz
+    sha256sums = 12efbbfb05d7aefa74f2e2d13ee35a8cde1614705f7ac38564280886c6532dc8
+
+pkgname = libspinvideo-dev
