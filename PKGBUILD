@@ -7,7 +7,7 @@ else
   : ${_autoupdate:=false}
 fi
 
-: ${_pkgver:=1.7.4752}
+: ${_pkgver:=1.7.4791}
 
 # first letter, lowercase
 for i in _autoupdate ; do
@@ -43,7 +43,7 @@ esac
 # normal pkgbuild stuff
 _pkgname='pcsx2'
 pkgname="$_pkgname-latest-bin"
-pkgver=1.7.4752
+pkgver=1.7.4791
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -124,6 +124,17 @@ case "$_autoupdate" in
       chmod +x "$_appimage"
       "./$_appimage" --appimage-extract
 
+      (
+        # fix desktop file name
+        cd "$srcdir/squashfs-root"
+        if [ ! -e "PCSX2.desktop" ] ; then
+          for i in *.desktop ; do
+            mv "$i" PCSX2.desktop
+            break
+          done
+        fi
+      )
+
       # update script
       sed -Ei \
         's@^this_dir=".*\breadlink\b.*\bdirname\b.*"$@this_dir="/opt/pcsx2"@' \
@@ -133,9 +144,9 @@ case "$_autoupdate" in
     package() {
       install -Dm755 "$srcdir/squashfs-root/AppRun" "$pkgdir/usr/bin/pcsx2-qt"
 
-      install -Dm644 -t "$pkgdir/usr/share/applications" "$srcdir/squashfs-root/pcsx2-qt.desktop"
+      install -Dm644 "$srcdir/squashfs-root/PCSX2.desktop" -t "$pkgdir/usr/share/applications"
 
-      install -Dm644 -t "$pkgdir/usr/share/pixmaps" "$srcdir/squashfs-root/PCSX2.png"
+      install -Dm644 "$srcdir/squashfs-root/PCSX2.png" -t "$pkgdir/usr/share/pixmaps"
 
       mkdir -p "$pkgdir/opt"
       mv "$srcdir/squashfs-root" "$pkgdir/opt/pcsx2"
