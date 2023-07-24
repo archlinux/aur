@@ -1,0 +1,44 @@
+[Unit]
+Description=Calckey Server
+Requires=postgresql.service redis.service
+After=postgresql.service redis.service
+
+[Service]
+Type=simple
+User=firefish
+Group=firefish
+PermissionsStartOnly=true
+WorkingDirectory=/usr/share/webapps/firefish
+Environment=NODE_ENV=production
+Environment=HOME=/usr/share/webapps/firefish
+ExecStart=npm start
+Restart=on-failure
+ReadWritePaths=/etc/webapps/firefish/default.yml
+ReadWritePaths=/var/cache/firefish
+ReadWritePaths=/var/lib/firefish
+LockPersonality=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=strict
+SocketBindAllow=3000
+SocketBindAllow=443 # used to show previews and other things
+SocketBindDeny=any
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target
