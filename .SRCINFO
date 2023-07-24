@@ -1,0 +1,19 @@
+pkgbase = scrcpy-full-git
+	pkgdesc = Display and control your Android device
+	pkgver = v2.1.1.r5.gfcdf847
+	pkgrel = 1
+	url = https://github.com/Genymobile/scrcpy
+	arch = x86_64
+	license = Apache
+	makedepends = meson
+	makedepends = android-platform
+	makedepends = android-sdk-build-tools
+	depends = android-tools
+	depends = ffmpeg
+	depends = sdl2
+	provides = scrcpy
+	conflicts = scrcpy
+	source = git+https://github.com/Genymobile/scrcpy.git
+	b2sums = SKIP
+
+pkgname = scrcpy-full-git
