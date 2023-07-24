@@ -7,7 +7,7 @@ pkgname=(
   "${_pkgbase}-hostapp-git"
   "${_pkgbase}-docfiles-git"
 )
-pkgver=0.3.0+5.r56.20230319.240e165
+pkgver=0.3.0+6.r57.20230724.b50daaa
 _mainver="$(sed -E 's|^([^\.]*\.[^\.]*\.[^.+_]*)[\.+_]?.*$|\1|' <<<"${pkgver}")"
 _nextver="$(awk -F. '{print $1"."$2"."$3+1}' <<<"${_mainver}")"
 pkgrel=1
@@ -16,7 +16,7 @@ arch=(
   'any'
 )
 url="https://github.com/hsanson/chrome-pass"
-license=("unknown")
+license=("MIT")
 depends=()
 makedepends=(
   'git'
@@ -81,6 +81,7 @@ build() {
 #   )
 # 
 #   cd "${srcdir}/${_pkgbase}"
+#   install -Dvm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 # }
 
 package_chrome-pass-hostapp-git() {
@@ -107,6 +108,9 @@ package_chrome-pass-hostapp-git() {
   cd "${srcdir}/${_pkgbase}/application"
   export PYTHONHASHSEED=0
   python -m installer --destdir="${pkgdir}" dist/*.whl
+
+  cd "${srcdir}/${_pkgbase}"
+  install -Dvm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_chrome-pass-docfiles-git() {
@@ -127,4 +131,6 @@ package_chrome-pass-docfiles-git() {
   for _docfile in CHANGELOG.adoc README.md; do
     install -D -v -m644 "${_docfile}"               "${pkgdir}/usr/share/doc/${_pkgbase}/${_docfile}"
   done
+  install -Dvm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  ln -svr "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" "${pkgdir}/usr/share/doc/${_pkgbase}/LICENSE"
 }
