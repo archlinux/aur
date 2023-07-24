@@ -2,14 +2,14 @@
 
 pkgname=date-git
 _pkgname=date
-pkgver=3.0.1.r21.g655b249
+pkgver=3.0.1.r35.gcc4685a
 pkgrel=1
 pkgdesc='A header-only library which builds upon <chrono>'
 arch=('any')
 url="https://github.com/HowardHinnant/date"
 license=('MIT')
 depends=()
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/HowardHinnant/date.git")
 sha256sums=('SKIP')
 conflicts=('date')
@@ -39,6 +39,6 @@ package() {
   cd build
   make DESTDIR="$pkgdir/" install
 
-  mkdir -p "${pkgdir}/usr/share/licenses/$_pkgname"
-  install -Dm644 ../$_pkgname/LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  mkdir -p "${pkgdir}/usr/share/licenses/$pkgname"
+  install -Dm644 "${srcdir}/$_pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

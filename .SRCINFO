@@ -1,11 +1,12 @@
 pkgbase = date-git
 	pkgdesc = A header-only library which builds upon <chrono>
-	pkgver = 3.0.1.r21.g655b249
+	pkgver = 3.0.1.r35.gcc4685a
 	pkgrel = 1
 	url = https://github.com/HowardHinnant/date
 	arch = any
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	provides = date
 	conflicts = date
 	source = git+https://github.com/HowardHinnant/date.git
