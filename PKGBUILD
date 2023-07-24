@@ -1,30 +1,60 @@
 # Maintainer: Adrià Cabello <adro.cc79 at protonmail dot com>
+# Contributor: Fabio Loli <fabio.loli@disroot.org>
+
 pkgname=materialx-git
-_pkgver_major=1.38
-_pkgver_minor=6
-_pkgver_git=g9aa9b3a
-pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_git}
+pkgver=1.38.7.r49.g42e8b76
 pkgrel=1
 pkgdesc="Open standard for representing rich material and look-development content in computer graphics"
 arch=('x86_64')
 url="https://materialx.org/"
 license=('Apache')
-depends+=(libx{inerama,cursor} 'python' 'pybind11' 'openshadinglanguage' 'openimageio' 'pugixml' 'glfw' 'libxt')
-makedepends=('cmake')
+depends=(glibc gcc-libs libglvnd libx11 libxt python python-setuptools opencolorio)
+makedepends=(cmake chrpath git libxinerama libxcursor pybind11)
 provides=('materialx')
-source=(git+"https://github.com/AcademySoftwareFoundation/MaterialX.git#branch=main"
+conflicts=('materialx')
+source=("git+https://github.com/AcademySoftwareFoundation/MaterialX.git#branch=main"
+        "git+https://github.com/mitsuba-renderer/nanogui.git"
+        "git+https://github.com/ocornut/imgui.git"
+        "git+https://github.com/thedmd/imgui-node-editor.git"
+        "git+https://github.com/wjakob/nanovg.git"
+        "git+https://github.com/wjakob/nanovg_metal.git"
+        "git+https://github.com/wjakob/glfw.git"
+        "git+https://github.com/wjakob/nanobind.git"
         "materialx-grapheditor.desktop"
         "materialx-view.desktop"
         "materialx.xml")
-md5sums=('SKIP'
-         'b6a9f9582782cc6db2aed64d97b4013f'
-         '9ba6a5cdaff0f6a983753e47454df175'
-         'b0b94494e3a59b21b8ba725a75a21123')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'bd573797248a45bf015fd8406981c54cdcec57a7d5031fdfb4247563bf5c3a37'
+            '8af0e2e0c8e8aef8d1ced829753dc74579970a434f8897da12ceae6a64bb47b3'
+            'd9b9426fb94121da052b796542cc74a0c5d7cef06997be70611c25f345553861')
+
+pkgver() {
+  cd MaterialX
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare () {
   cd MaterialX
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  git submodule update --init --recursive
+  git submodule init
+  git config submodule.source/MaterialXView/NanoGUI.url "${srcdir}/nanogui"
+  git config submodule.source/MaterialXGraphEditor/External/ImGui.url "${srcdir}/imgui"
+  git config submodule.source/MaterialXGraphEditor/External/ImGuiNodeEditor.url "${srcdir}/imgui-node-editor"
+  git -c protocol.file.allow=always submodule update
+
+  cd source/MaterialXView/NanoGUI
+  git submodule init
+  git config submodule.ext/nanovg.url "${srcdir}/nanovg"
+  git config submodule.ext/nanovg_metal.url "${srcdir}/nanovg_metal"
+  git config submodule.ext/glfw.url "${srcdir}/glfw"
+  git config submodule.ext/nanobind.url "${srcdir}/nanobind"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
@@ -32,6 +62,7 @@ build() {
   cd build
 
   cmake "$srcdir"/MaterialX \
+  -Wno-dev\
   -DMATERIALX_BUILD_PYTHON=ON\
   -DMATERIALX_BUILD_VIEWER=ON\
   -DMATERIALX_BUILD_GRAPH_EDITOR=ON
@@ -52,4 +83,7 @@ package() {
 
   ln -s /opt/materialx/bin/MaterialXView "${pkgdir}"/usr/bin/mtlxview
   ln -s /opt/materialx/bin/MaterialXGraphEditor "${pkgdir}"/usr/bin/mtlxGraphEditor
+
+  chrpath --delete "${pkgdir}"/opt/materialx/python/MaterialX/*.so
+  chrpath --delete "${pkgdir}"/opt/materialx/bin/MaterialXView
 }
