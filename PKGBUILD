@@ -15,6 +15,7 @@ depends=(
     libspinvideo
     qt5-base
     qt5-tools
+    ffmpeg
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/spinview-qt-3.1.0.79.tar.gz")
