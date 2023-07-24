@@ -41,7 +41,6 @@ build() {
     cd "$srcdir/$_pkgname"
 
     platform=$(go version | sed -r 's/go version go.+\s(.+)/\1/' | sed -e 's/\//-/g')
-    echo commit_hash=$(git rev-parse HEAD)
     commit_hash=$(git rev-parse HEAD)
     version=$(git describe --tags | cut -d'-' -f1)
 
