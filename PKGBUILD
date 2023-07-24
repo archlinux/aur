@@ -2,8 +2,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=diffsitter
-pkgver=0.8.0
-_commit=67a08e1
+pkgver=0.8.1
+_commit=94e7d9f
 pkgrel=1
 pkgdesc="Tree-sitter based AST diff tool"
 arch=('x86_64' 'i686' 'arm' 'aarch64')
@@ -13,9 +13,9 @@ depends=(tree-sitter)
 makedepends=(git cargo)
 checkdepends=(tree-sitter-cpp tree-sitter-python tree-sitter-rust)
 options=('!lto')
-source=("${pkgname}::git+${url}#commit=${_commit}?signed")
-sha256sums=('SKIP')
-validpgpkeys=('1C519E4FEF5757BFB30C636494EEFE1FD178056B') # Afnan Enayet <afnan@afnan.io>
+source=("${pkgname}::git+${url}#commit=${_commit}") # ?signed
+sha512sums=('SKIP')
+#validpgpkeys=('1C519E4FEF5757BFB30C636494EEFE1FD178056B') # Afnan Enayet <afnan@afnan.io>
 
 prepare() {
   cd ${pkgname}
