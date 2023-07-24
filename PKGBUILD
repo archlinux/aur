@@ -3,7 +3,7 @@
 _pkgname="bugwarrior"
 _branch="develop"
 # renovate: pkgName=https://github.com/ralphbean/bugwarrior depName=bugwarrior-git
-_commit="740afbd0e3ed03d3f8da529d99a066fbf5a6af23"
+_commit=dd96577c77949c8f07852785a8c8def368391970
 pkgname="${_pkgname}-git"
 pkgver=1495.740afbd
 pkgrel=1
