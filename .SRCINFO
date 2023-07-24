@@ -1,16 +1,19 @@
 pkgbase = python-pyina
 	pkgdesc = MPI parallel map and cluster scheduling
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/uqfoundation/pyina
 	arch = any
 	license = custom:BSD-3-clause
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-mpi4py
 	depends = python-pathos
 	optdepends = python-mystic: for mystic models
-	source = pyina-pyina-0.2.7.tar.gz::https://github.com/uqfoundation/pyina/archive/pyina-0.2.7.tar.gz
-	sha512sums = 63c85557f6e8a4366eff38152896057957683268e373ac5907ae8ff0b1c2b9cafe47892325159489f71a9123d863556a191a4ef4eb6a694f87b25539cad52e5c
+	source = pyina-pyina-0.2.8.tar.gz::https://github.com/uqfoundation/pyina/archive/pyina-0.2.8.tar.gz
+	sha512sums = f8c3a7d66fdac874301eeeb5422c538066ac08b8cb7643b3dcfea3b4578b6ae5c23e8089fd4d60eb179bbcd9804763d49685ae1308ec0985fb877927461a8380
 
 pkgname = python-pyina
