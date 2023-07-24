@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=wchisp-git
-pkgver=0.2.0.r5.gb3143d6
+pkgver=nightly
 pkgrel=1
 pkgdesc="WCH ISP Tool in Rust"
 arch=('any')
@@ -10,10 +10,12 @@ license=('GPL-2.0')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=('cargo')
-makedepends=('git' 'rust')
+depends=(cargo)
+makedepends=(git
+            libusb
+            rust)
 backup=()
-options=('!strip')
+options=('!strip' '!lto')
 install=
 source=("${pkgname%-git}::git+$url.git")
 sha256sums=('SKIP')
@@ -26,12 +28,18 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}/"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
+#     cargo build --release --all-features
     cargo build --release --all-features
+}
+
+check() {
+  cd "${srcdir}/${pkgname%-git}/"
+  # Tests need nightly features
+  RUSTC_BOOTSTRAP=1 cargo test --release
 }
 
 package() {
     cd "${srcdir}/${pkgname%-git}/"
-    install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname%-git}"
+#     install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname%-git}"
+    cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
 }
