@@ -5,6 +5,7 @@ pkgbase = lib32-libheif
 	url = https://github.com/strukturag/libheif
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	makedepends = lib32-gdk-pixbuf2
 	makedepends = lib32-libwebp
 	makedepends = lib32-libjpeg

@@ -14,6 +14,7 @@ depends=(
   "libheif=${pkgver}"
 )
 makedepends=(
+  'cmake'
   'lib32-gdk-pixbuf2'
   'lib32-libwebp'
   'lib32-libjpeg'
