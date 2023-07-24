@@ -1,0 +1,13 @@
+pkgbase = spinview-qt-dev
+    pkgdesc = A library used to communicate with FLIR digital cameras. This package contains shared libraries.
+    pkgver = 3.1.0.79
+    pkgrel = 1
+    arch = x86_64
+    license = custom:FLIR EULA
+    url = https://www.flir.com/
+    depends = libspinnaker
+    depends = libspinnaker-dev
+    source = spinview-qt-dev-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/spinview-qt-dev-3.1.0.79.tar.gz
+    sha256sums = 7cee2d0fa4f1fbfd06ae695ea63e24f21a64d4de9dede65d7f0d1132be6182d9
+
+pkgname = spinview-qt-dev
