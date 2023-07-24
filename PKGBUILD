@@ -3,8 +3,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-g14
-pkgver=6.4.3.arch1
-pkgrel=2
+pkgver=6.4.5.arch1
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://gitlab.com/dragonn/linux-g14.git"
@@ -81,7 +81,8 @@ source=(
   v12_20230224_vincent_guittot_add_latency_priority_for_cfs_class.patch
   v4_20230406_ricardo_neri_calderon_sched_avoid_unnecessary_migrations_within_smt_domains.patch
   v8_20230429_yu_c_chen_sched_fair_introduce_sis_current_to_wake_up_short_task_on_current_cpu.patch
-
+  PATCH-v3-platform-x86-asus-wmi-Fix-setting-RGB-mode-on-some-TUF-laptops.patch
+  0001-platform-x86-asus-wmi-Fix-and-cleanup-custom-fan-cur.patch
 
   "sys-kernel_arch-sources-g14_files-0047-asus-nb-wmi-Add-tablet_mode_sw-lid-flip.patch"
   "sys-kernel_arch-sources-g14_files-0048-asus-nb-wmi-fix-tablet_mode_sw_int.patch"
@@ -133,6 +134,8 @@ sha256sums=('SKIP'
             'c557ad0e9cd5219f9cc3f6726a6956aa73e42731f09b6cdda289d4d3a80fd118'
             '59aeebac4efce333b9761a9e9c61c23595f480213e2090910b23c941e6f6dfb4'
             '43e90b35b2d737edee3208af3d6711c9bc44e188979a002a8e739ae6e1c9444f'
+            '656b82a522e193935a5a8782b6cfecd582728bbcdad884ef609babb4bd3e7414'
+            'a0c90f98af4a3d59f8be2265de4134b1e91992915aa72e71b14440d070ea7167'
             '15e912a66e4bbce1cf0450f1dc6610653df29df8dd6d5426f9c1b039490436c8'
             '444f2d86de8c2177655b01596f939f99c2e7abfa8efad8a509e0a334f42dfa85'
             '982a31e47d3d586789e1b3cdda25f75e3b71d810e7494202089b8f2cef7c0ef9')
@@ -260,6 +263,9 @@ prepare() {
   # enable back EFI_HANDOVER_PROTOCOL and EFI_STUB
   scripts/config  --enable CONFIG_EFI_HANDOVER_PROTOCOL \
                   --enable CONFIG_EFI_STUB
+
+  # try to fix stuttering on some ROG laptops
+  scripts/config --disable CONFIG_HW_RANDOM_TPM
 
   # HACK: forcibly fixup CONFIG_CMDLINE here as using scripts/config mangles escaped quotes
   sed -i 's#makepkgplaceholderyolo#ibt=off pm_debug_messages amd_pmc.dyndbg=\\"+p\\" acpi.dyndbg=\\"file drivers/acpi/x86/s2idle.c +p\\"#' .config
