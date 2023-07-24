@@ -15,7 +15,7 @@
 
 #
 _pkg_name="codelite"
-_pkg_ver="17.3.0"
+_pkg_ver="17.4.0"
 #_commit="636e07593842da6f6f52e805c7429cb9b05cfd45"
 
 # ctags submodule: https://github.com/eranif/ctags
@@ -108,7 +108,7 @@ source=(
     "http://repos.codelite.org/wxCrafterLibs/wxgui.zip"
   )
 
-sha256sums=('0c201d3ff801ca5a9e44c7713ce41983325869ba61e6806066e0c310e81c5eb8'
+sha256sums=('4211fbd60e57a1a90c99b28685ce8e32eb0a9c724f9fc7493c72b4b7e5e71b18'
             'aa48f2744a85c34fbaae845eecbc8862e453b8b754fec63938fc5ceef6c26189'
             '70aca36b95e2245740c17fc9a164fd6edabfd9c631184ea66cc5ee03ff54c028'
             '318d875955fe5b2b84be5ce0b50055d1fd12ad4bdcd54713e85add21f693f7df'
@@ -157,10 +157,11 @@ prepare()
 
   # apply patches
 
-  #patch -p0 < "${startdir}/codelite-DebugAdapterClient-CMakeLists-cxx17.patch"
+  patch -p0 < "${startdir}/codelite-linux-on-sigpipe.patch"
 
   #patch -p0 < "${startdir}/codelite-fsw-symlink.patch"
 
+  #patch -p0 < "${startdir}/codelite-DebugAdapterClient-CMakeLists-cxx17.patch"
   #patch -p0 < "${startdir}/codelite-quickfindbar-focus-tweak.patch"
   #patch -p0 < "${startdir}/cmake.patch"  # wx-config patch
 
