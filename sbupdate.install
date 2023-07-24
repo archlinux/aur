@@ -1,4 +1,7 @@
 pre_remove() {
     systemctl disable "sbupdate@.path"
-    systemctl stop "sbupdate@*.path"
+
+    if systemctl --quiet is-system-running; then
+        systemctl stop "sbupdate@*.path"
+    fi
 }
