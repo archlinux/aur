@@ -1,4 +1,5 @@
 # Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Moabeat <moabeat@berlin.de>
 # Contributor: Eric Liu <eric@hnws.me>
 # Contributor: Daniele Vazzola <daniele.vazzola@gmail.com>
 # Contributor: Ciarán Coffey <ciaran@ccoffey.ie>
@@ -6,10 +7,10 @@
 # Contributor: Giorgio Azzinnaro <giorgio@azzinna.ro>
 
 pkgname=icaclient
-pkgver=23.5.0.58
+pkgver=23.7.0.17
 pkgrel=1
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
-arch=('x86_64' 'i686' 'armv7h')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
 license=('custom:Citrix')
 depends=('alsa-lib' 'curl' 'gst-plugins-base-libs' 'gtk2' 'libc++' 'libc++abi' 'libidn11'
@@ -26,6 +27,7 @@ _dl_urls="$(echo "$_dl_urls_" | grep -F "$pkgver.tar.gz?__gda__")"
 _source32=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx86-[^"]*)".*$|\1|p')"
 _source64=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxx64-[^"]*)".*$|\1|p')"
 _sourcearmhf=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxarmhf-[^"]*)".*$|\1|p')"
+_sourceaarch64=https:"$(echo "$_dl_urls" | sed -En 's|^.*rel="(//.*/linuxarm64-[^"]*)".*$|\1|p')"
 source=('citrix-configmgr.desktop'
         'citrix-conncenter.desktop'
         'citrix-wfica.desktop'
@@ -35,15 +37,17 @@ source=('citrix-configmgr.desktop'
 source_x86_64=("$pkgname-x64-$pkgver.tar.gz::$_source64")
 source_i686=("$pkgname-x86-$pkgver.tar.gz::$_source32")
 source_armv7h=("$pkgname-armhf-$pkgver.tar.gz::$_sourcearmhf")
+source_aarch64=("$pkgname-arm64-$pkgver.tar.gz::$_sourceaarch64")
 sha256sums=('643427b6e04fc47cd7d514af2c2349948d3b45f536c434ba8682dcb1d4314736'
             '446bfe50e5e1cb027415b264a090cede1468dfbdc8b55e5ce14e9289b6134119'
             '1dc6d6592fa08c44fb6a4efa0dc238e9e78352bb799ef2e1a92358b390868064'
             'cdfb3a2ef3bf6b0dd9d17c7a279735db23bc54420f34bfd43606830557a922fe'
             'fe0b92bb9bfa32010fe304da5427d9ca106e968bad0e62a5a569e3323a57443f'
             'a3bd74aaf19123cc550cde71b5870d7dacf9883b7e7a85c90e03b508426c16c4')
-sha256sums_x86_64=('3a81e141d641b3ed837dbbee7958ef01a760a06a2bb5a432065923682c9a7303')
-sha256sums_i686=('e2b0be7c226bc43813df25544bdf4c907c2cda55fc4ed58ea7fa02d5120d8b51')
-sha256sums_armv7h=('37f22a1b4f6155b0bc901f39bbb0cbe8cec973d0e29619e90425b66fc0fb16e2')
+sha256sums_x86_64=('d4001226e79b5353fc74da4c8ed4f6295c1859fe18142cb5de345a3c7ae48168')
+sha256sums_i686=('4a7da238286ae28d7baf0fefa1e7e09d077c8bc56c2bf7bec00da42c331bee59')
+sha256sums_armv7h=('25e7b5a841e64529389023c2614b921739cf89a2d0cbb2848150484d6f860a47')
+sha256sums_aarch64=('b0c346fbe353b8e0537d2bdd7911d1dce8dcc4c610c013531ff71f98527948c9')
 install=citrix-client.install
 
 package() {
@@ -61,6 +65,10 @@ package() {
     then
         ICADIR="$srcdir/linuxarmhf/linuxarmhf.cor"
         PKGINF="Ver.core.linuxarmhf"
+    elif [[ $CARCH == 'aarch64' ]]
+    then
+        ICADIR="$srcdir/linuxarm64/linuxarm64.cor"
+        PKGINF="Ver.core.linuxarm64"
     fi
 
     mkdir -p "${pkgdir}$ICAROOT"
@@ -111,8 +119,12 @@ package() {
     install -Dm644 -t "$pkgdir"/usr/share/applications citrix-{configmgr,conncenter,workspace,wfica}.desktop
     # install scripts
     install -Dm755 -t "${pkgdir}$ICAROOT" wfica.sh wfica_assoc.sh
-    chmod +x "${pkgdir}$ICAROOT"/util/{HdxRtcEngine,ctx_app_bind,ctxcwalogd,icalicense.sh,setlog}
 
+    chmod +x "${pkgdir}$ICAROOT"/util/{ctx_app_bind,ctxcwalogd,icalicense.sh,setlog}
+    if [ $CARCH != 'armv7h' ] && [ $CARCH != 'aarch64' ]
+    then
+        chmod +x "${pkgdir}$ICAROOT"/util/HdxRtcEngine
+    fi
     # make certificates available
     rm -r "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
     ln -s /etc/ssl/certs "${pkgdir}/opt/Citrix/ICAClient/keystore/cacerts"
