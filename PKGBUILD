@@ -1,4 +1,6 @@
-# based on unigine-valley by ajs124 and meyithi
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Conributor: fordperfect (AUR user)
+# Based on unigine-valley by ajs124 and meyithi
 
 pkgname=unigine-superposition
 _pkgname=Unigine_Superposition
@@ -11,8 +13,8 @@ license=('custom:UNIGINE Engine')
 depends=('libgl' 'gcc-libs' 'libxrandr' 'libxinerama' 'fontconfig' 'qt5-declarative' 'libxkbcommon-x11')
 options=("!strip")
 source=("https://assets.unigine.com/d/${_pkgname}-${pkgver}.run" "Superposition.desktop")
-sha512sums=('00a680b789ec69f6453e31fbd233bc018cc9f3ca8595ea9367dda49bbdde453643863d90b84b068f444fc3ec023bdd4f35326cffb1fbf8653ced29c587524dd6'
-            'b636d8ad4de15159b6c034f2559dd3b00226f3651e37fecdd2f824a51cbbdbcb05753b8262d79c19f1fd365567d65b5b63fafae7d298ea5e84540de3131427fc')
+b2sums=('f0447b0ccd860e653c2308637c93ed29ec851ff9923251edbd37a14b021149038f1c252deb0f3c4954fd4508883b1a2994a87b34a5e18902cef6c82c6ccc6b6b'
+        '1d9987b5a910b86dac2e252c3187a6a07095da81d06dfafbd2c16bcacb72f602c183334fb6b3c03c7b35418f8dc6e4f2d34a44ab22831d66b67d9e5ed45bc93e')
 PKGEXT=.pkg.tar
 
 build() {
@@ -33,7 +35,7 @@ cd /opt/unigine-superposition/bin
 here
     chmod a+x "${pkgdir}/usr/bin/unigine-superposition"
     # fix openssl1.0 stuff
-    rm "${pkgdir}/opt/unigine-superposition/bin/qt/lib/libcrypto.so"
+    mv "${pkgdir}/opt/unigine-superposition/bin/qt/lib/libcrypto.so"{,.1.0.0}
     find "${pkgdir}/opt/unigine-superposition/bin/qt" -name "*.so*" -exec chmod a+x {} \;
     ln -s /opt/unigine-superposition/bin/qt/lib/libcrypto.so.1.0.0 "${pkgdir}/opt/unigine-superposition/bin/qt/lib/libcrypto.so"
     # misc
