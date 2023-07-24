@@ -6,40 +6,43 @@
 # 2) Check that sqlpp11 doesn't have a date.h that will overwrite /usr/include/sqlpp11/date.h
 
 pkgname=sqlpp11
-pkgver=0.61
+pkgver=0.63
 pkgrel=1
 pkgdesc='A type safe embedded domain specific language for SQL queries and results in C++'
 arch=('any')
-url="https://github.com/rbock/$pkgname"
+url='https://github.com/rbock/sqlpp11'
 license=('BSD')
 depends=('date')
-makedepends=('cmake')
-source=("https://github.com/rbock/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('d5a95e28ae93930f7701f517b1342ac14bcf33a9b1c5b5f0dff6aea5e315bb50')
-prepare() {
-  rm -Rf build
-  mkdir build
-  cd build
-  cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    "../$pkgname-$pkgver"
-}
-
+makedepends=('cmake' 'git' 'mariadb-libs' 'postgresql-libs' 'sqlite' 'boost-libs' 'python-pyparsing')
+optdepends=(
+    'mariadb-libs: MariaDB Connector support'
+    'postgresql-libs: PostgreSQL Connector support'
+    'sqlite: SQLite Connector support'
+    'boost-libs: ppgen.h support'
+    'python-pyparsing: ddl2cpp support'
+)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rbock/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('8e8229501679435e5052c2184d6772e4d6f61e6a9e2ec7231c5fb9a3d3b88d7e')
 build() {
-  cd build
-  make
+  cmake -B build -S "${pkgname}-${pkgver}" \
+    -DBUILD_MARIADB_CONNECTOR=ON \
+    -DBUILD_POSTGRESQL_CONNECTOR=ON \
+    -DBUILD_SQLITE3_CONNECTOR=ON \
+    -DBUILD_SQLCIPHER_CONNECTOR=OFF \
+    -DUSE_SYSTEM_DATE=ON \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=ON \
+    -Wno-dev
+  cmake --build build
 }
 
 check() {
-  cd build
-  make test
-  ctest
+  ctest --test-dir build
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="${pkgdir}" cmake --install build
 
-  mkdir -p "${pkgdir}/usr/share/licenses/$pkgname"
-  install -Dm644 ../$pkgname-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
