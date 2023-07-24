@@ -1,23 +1,22 @@
+# Maintainer: phanium <$(echo bnhoc2R1QHFxLmNvbQo= | base64 -d)>
 # Maintainer: Apple_QAQ <apple_qaq@outlook.com>
 
+_py=py3
+_pkgname=bilibili-api-python
 pkgname=python-bilibili-api-python
-pkgver=13.2.0
+pkgver=15.5.1
 pkgrel=1
-pkgdesc="这是一个用 Python 写的调用 Bilibili 各种 API 的库， 范围涵盖视频、音频、直播、动态、专栏、用户、番剧等。"
+pkgdesc="The fork of module bilibili-api. 哔哩哔哩的各种 API 调用便捷整合（视频、动态、直播等），另外附加一些常用的功能。"
 arch=('any')
 url="https://github.com/Nemo2011/bilibili-api"
 license=('GPL3')
-depends=('python' 'python-urllib3' 'python-aiohttp' 'python-beautifulsoup4' 'python-colorama' 'python-lxml' 'python-types-pyyaml' 'python-brotli' 'python-httpx' 'python-qrcode' 'python-requests' 'python-keyboard' 'python-apscheduler' 'python-rsa' 'python-pypng')
-makedepends=('python-setuptools' 'python-pip')
-source=("https://pypi.io/packages/source/b/bilibili-api-python/bilibili-api-python-$pkgver.tar.gz")
-sha512sums=('adf43aee7a2c7f491af4d3a4b8d6232d33185a20cfc158252542cf34cee40355aad28967bc5df0fa5bdf3098faa4d8996605743ec2d71d56b320cf86314a50e0')
-
-build() {
-  cd bilibili-api-python-$pkgver
-  python setup.py build
-}
+makedepends=('python-installer')
+source=(
+	"https://files.pythonhosted.org/packages/$_py/${_pkgname::1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl"
+)
+sha256sums=('f219dd903a7d1bcc58bed3639359c71c35b25cd75ab6a06d07b647a7893020b5')
 
 package() {
-  cd bilibili-api-python-$pkgver
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "$srcdir" || return 1
+  python -m installer --destdir="$pkgdir" ./*.whl
 }
