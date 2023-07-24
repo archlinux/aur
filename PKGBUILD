@@ -1,30 +1,88 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
-pkgname="pritunl-client-electron"
-_appname="pritunl_client_electron"
-pkgver=1.3.3484.2
-pkgrel=2
-pkgdesc="Pritunl OpenVPN client"
+# Maintainer: Alessio <alessio@linux.com> 
+pkgname=pritunl-client-electron-git
+pkgver=1.3.3600.11.r2.g716164a1
+pkgrel=1
+pkgdesc="Pritunl Electron Client (Git version)"
 arch=('x86_64')
-url="https://client.pritunl.com/"
-_githuburl="https://github.com/pritunl/pritunl-client-electron"
-license=('custom')
-conflicts=("${pkgname%-electron}")
-depends=('glib2' 'java-runtime' 'libxcb' 'libxkbcommon' 'libxfixes' 'at-spi2-core' 'dbus' 'mesa' 'nss' 'nodejs' 'libxcomposite' \
-    'libx11' 'nspr' 'gcc-libs' 'cairo' 'libxext' 'libdrm' 'pango' 'libxrandr' 'libxdamage' 'libcups' 'expat' 'gtk3' 'alsa-lib' \
-    'hicolor-icon-theme' 'sh' 'glibc')
-source=("${pkgname}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/${pkgname}_${pkgver}-0ubuntu1.kinetic_amd64.deb"
-        "LICENSE::${_githuburl}/raw/master/LICENSE")
-sha256sums=('2b84585df7222d4a4bbb89ee15d042254277d7f95c2da5945fa3cfe8881a71d0'
-            '244029a028871fca0a45c34f9f517848d7624bd6d4b899dd7678bd8c6f61e07d')
-  
-package() {
-    bsdtar -xf data.tar.zst -C "${pkgdir}"
-    install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm755 "${pkgdir}/etc/systemd/system/${pkgname%-electron}.service" -t "${pkgdir}/usr/lib/systemd/system/"
-    rm -rf "${pkgdir:?}/etc" \
-        "${pkgdir}usr/lib/${_appname}/resources/app/node_modules/ajv/scripts/info" \
-        "${pkgdir}/usr/lib/${_appname}/resources/app/node_modules/sshpk/man/man1/sshpk-verify.1" \
-        "${pkgdir}/usr/lib/${_appname}/resources/app/node_modules/sshpk/man/man1/sshpk-sign.1" \
-        "${pkgdir}/usr/lib/${_appname}/resources/app/node_modules/sshpk/man/man1/sshpk-conv.1" \
-        "${pkgdir}/usr/lib/${_appname}/resources/app/node_modules/ajv/scripts/info"
+url="https://github.com/pritunl/pritunl-client-electron"
+_reponame=pritunl-client-electron-git
+license=('AGPL3')
+
+conflicts=('pritunl-client-bin')
+depends=('electron' 'nodejs' 'npm' 'gettext')
+makedepends=('electron' 'nodejs' 'npm' 'gettext')
+
+
+
+source=("git+https://github.com/pritunl/pritunl-client-electron.git")
+
+
+pkgver() {
+  cd "$srcdir/pritunl-client-electron"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+prepare() {
+  mkdir -p ~/.local/bin
+  npm config set prefix '~/.local/'
+
+}
+
+build() {
+    cd "${srcdir}/pritunl-client-electron"
+
+    cd service
+    go get -u
+    go install
+
+    cd ../cli
+    go get -u
+    go install
+
+    cd ../client
+    npm install
+    ./node_modules/.bin/electron-packager ./ Pritunl --platform=linux --arch=x64 --out=../build/linux
+}
+
+package() {
+    cd ${srcdir}/pritunl-client-electron/
+    mkdir -p ${pkgdir}/usr/share/applications
+    cp resources_linux/pritunl-client-electron.desktop ${pkgdir}/usr/share/applications/pritunl-client-electron.desktop
+
+    mkdir -p ${pkgdir}/etc/systemd/system
+    cp resources_linux/pritunl-client.service ${pkgdir}/etc/systemd/system/pritunl-client.service
+
+    mkdir -p ${pkgdir}/usr/bin
+    mkdir -p ${pkgdir}/usr/lib
+    mv build/linux/Pritunl-linux-x64 ${pkgdir}/usr/lib/pritunl_client_electron
+    chmod 755 ${pkgdir}/usr/lib/pritunl_client_electron
+    chmod 4755 ${pkgdir}/usr/lib/pritunl_client_electron/chrome-sandbox
+    ln -s /usr/lib/pritunl_client_electron/Pritunl ${pkgdir}/usr/bin/pritunl-client-electron
+
+    cp ~/go/bin/service ${pkgdir}/usr/bin/pritunl-client-service
+    cp ~/go/bin/cli ${pkgdir}/usr/bin/pritunl-client
+
+    mkdir -p ${pkgdir}/usr/share/icons
+    mv resources_linux/icons ${pkgdir}/usr/share/icons/hicolor
+    find ${pkgdir}/usr/share/icons -type d -exec chmod 755 {} \;
+    find ${pkgdir}/usr/share/icons -type f -exec chmod 644 {} \;
+
+    mkdir -p ${pkgdir}/var/log
+    touch ${pkgdir}/var/log/pritunl-client.log
+    touch ${pkgdir}/var/log/pritunl-client.log.1
+}
+
+post_install() {
+    chmod 755 /usr/lib/pritunl_client_electron || true
+    systemctl stop pritunl-client-electron &> /dev/null || true
+    systemctl disable pritunl-client-electron &> /dev/null || true
+    systemctl daemon-reload &> /dev/null || true
+    systemctl start pritunl-client &> /dev/null || true
+    systemctl enable pritunl-client &> /dev/null || true
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || true
+    xdg-icon-resource forceupdate --theme hicolor &> /dev/null || true
+    update-desktop-database -q || true
+}
+
+sha256sums=(SKIP)
+validpgpkeys=()
