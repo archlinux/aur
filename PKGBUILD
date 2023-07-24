@@ -17,8 +17,8 @@ arch=(
 )
 url="https://github.com/${_gituser}/${_gitname}"
 license=("LGPL2.1")
-provides=("gtk3-nocsd=${pkgver}")
-conflicts=("gtk3-nocsd")
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 depends=(
   "bash"
   "glibc"
