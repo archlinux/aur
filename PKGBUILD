@@ -2,9 +2,8 @@
 # Contributor: itsagoodbrain <itsrottenisay@gmail.com>
 pkgname=zettlr-bin
 _appname=Zettlr
-pkgver=3.0.0.beta.6
-_pkgver=3.0.0-beta.6
-pkgrel=1
+pkgver=3.0.0_beta.6
+pkgrel=2
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('aarch64' 'x86_64')
 url="https://www.zettlr.com"
@@ -12,8 +11,8 @@ _githuburl="https://github.com/Zettlr/Zettlr"
 license=(GPL3)
 conflicts=("${pkgname%-bin}")
 depends=('hicolor-icon-theme' 'electron25' 'gcc-libs' 'glibc')
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${_pkgver}/Zettlr-${_pkgver}-arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${_pkgver}/Zettlr-${_pkgver}-amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_githuburl}/releases/download/v${pkgver//_/-}/Zettlr-${pkgver//_/-}-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver//_/-}/Zettlr-${pkgver//_/-}-amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('4a878f0c5f970da063debe22cf9d8c83690208c71f669274674c7138f66a3814')
 sha256sums_aarch64=('6c4966fb6761d6ff1e7fc29e0caf3c48df0e63c3435018cd62d60367adc6a225')
