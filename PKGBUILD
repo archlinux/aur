@@ -1,7 +1,7 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=oranda
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="generate beautiful landing pages for your projects"
 url="https://github.com/axodotdev/oranda"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=(APACHE MIT)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('efa485656a6325f6296a60b1514e00e2998ae630f30f4c069d0eaa3bcb241910dc60194b07fe252f835641be558ccb7a8db55886307fa271045d1e24644ea20a')
+sha512sums=('07bcb3be11aed0831355222a83ce01e3686721e6f18113fda03250bb47087809a800ea5e10b42fc938050441625de40cf2832ecf5a6dae210b6c37df534b8294')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
