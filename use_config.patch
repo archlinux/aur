@@ -1,0 +1,16 @@
+diff --git a/pihpsdr_config.bin b/pihpsdr_config.bin
+new file mode 100755
+index 0000000..38b62c9
+--- /dev/null
++++ b/pihpsdr_config.bin
+@@ -0,0 +1,10 @@
++#!/bin/sh
++
++CONF_FOLDER=${HOME}/.local/share/pihpsdr
++
++if [ ! -d ${CONF_FOLDER} ]; then
++    mkdir ${CONF_FOLDER}
++fi
++
++cd ${CONF_FOLDER}
++exec nice -n 0 /usr/bin/pihpsdr.bin $@
