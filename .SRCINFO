@@ -1,0 +1,17 @@
+pkgbase = bde-tools
+	pkgdesc = Build tools based on CMake for Bloomberg-style projects such as BDE
+	pkgver = 3.117.0.0
+	pkgrel = 1
+	url = https://github.com/bloomberg/bde-tools
+	arch = any
+	license = Apache
+	depends = python>=3.8
+	depends = make
+	depends = gcc
+	optdepends = ninja: Provides access to faster paralelized builds
+	optdepends = clang: Alternative to GCC compiler collection
+	optdepends = perl: Needed only for code generation
+	source = git+https://github.com/bloomberg/bde-tools.git
+	md5sums = SKIP
+
+pkgname = bde-tools
