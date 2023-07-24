@@ -1,7 +1,6 @@
 post_install() {
-    ln -sf /opt/Session/session-desktop /usr/bin/session-desktop
     update-desktop-database /usr/share/applications
-    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
 }
 
 post_upgrade() {
@@ -9,7 +8,5 @@ post_upgrade() {
 }
 
 post_remove() {
-    rm -f '/usr/bin/session-desktop'
-    update-desktop-database /usr/share/applications
-    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+    post_install
 }

@@ -1,6 +1,6 @@
 pkgbase = session-desktop-git
 	pkgdesc = Private messaging from your desktop
-	pkgver = v1.10.8.r0.g8ee731b2a
+	pkgver = v1.11.0.r3.ga3811b591
 	pkgrel = 1
 	url = https://getsession.org
 	install = session-desktop-git.install
@@ -26,6 +26,6 @@ pkgbase = session-desktop-git
 	source = session-desktop-git.install
 	sha256sums = SKIP
 	sha256sums = 18919ed91eddc64269256aaffe9b1abc864fbe2152c76e900e89799c1e9a1e9f
-	sha256sums = 6ec71b91d3f5f92e264bb3ebc1adfb6f75d2b75e2af3ce8db9f1dedc56bfc161
+	sha256sums = 1b59e97cff6207bcfb83bf9bd65d853feabbad6e9a49b9ed324165d3c72cc1f5
 
 pkgname = session-desktop-git

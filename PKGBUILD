@@ -2,7 +2,7 @@
 # Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 
 pkgname=session-desktop-git
-pkgver=v1.10.8.r0.g8ee731b2a
+pkgver=v1.11.0.r3.ga3811b591
 _semver="$(sed -E 's/v([0-9]+\.[0-9]+\.[0-9]+)\..+\.(.+)/\1-\2/g' <<< "$pkgver")"
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
@@ -21,13 +21,11 @@ source=('git+https://github.com/loki-project/session-desktop.git'
         'session-desktop-git.install')
 sha256sums=('SKIP'
             '18919ed91eddc64269256aaffe9b1abc864fbe2152c76e900e89799c1e9a1e9f'
-            '6ec71b91d3f5f92e264bb3ebc1adfb6f75d2b75e2af3ce8db9f1dedc56bfc161')
+            '1b59e97cff6207bcfb83bf9bd65d853feabbad6e9a49b9ed324165d3c72cc1f5')
 
 pkgver() {
   cd "$srcdir/session-desktop"
-  git checkout master &> /dev/null
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  git checkout clearnet &> /dev/null
 }
 
 prepare() {
@@ -57,6 +55,7 @@ package() {
   mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/apps/
   mkdir -p $pkgdir/usr/share/icons/hicolor/512x512/apps/
   mkdir -p $pkgdir/usr/share/icons/hicolor/1024x1024/apps/
+  mkdir -p "$pkgdir/usr/bin/"
 
   cp $srcdir/session-desktop/build/icons/icon_16x16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/session-messenger-desktop.png
   cp $srcdir/session-desktop/build/icons/icon_32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/session-messenger-desktop.png
@@ -70,4 +69,5 @@ package() {
   tar xf $srcdir/session-desktop/release/session-desktop-linux-x64-$_semver.tar.xz -C $pkgdir/opt/
   mv $pkgdir/opt/session-desktop-linux-x64-$_semver $pkgdir/opt/Session
   cp $srcdir/session-desktop.desktop $pkgdir/usr/share/applications/
+  ln -s "$pkgdir/opt/Session/session-desktop" "$pkgdir/usr/bin/"
 }
