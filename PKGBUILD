@@ -3,9 +3,9 @@ pkgdesc="ROS - Holds the action description and relevant messages for the move_b
 url='https://wiki.ros.org/move_base_msgs'
 
 pkgname='ros-noetic-move-base-msgs'
-pkgver='1.13.0'
+pkgver='1.14.1'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-message-generation
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="navigation_msgs-${pkgver}/move_base_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('09bba8fb7a60135183830dec4381cd3187244794aab9759ac50bbc6007e04a61')
+sha256sums=('897e2809fa07330f3b01fbd99163dbed5669eec89d4b7fd742d62cf57b690149')
 
 build() {
   # Use ROS environment variables

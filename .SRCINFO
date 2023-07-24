@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-move-base-msgs
 	pkgdesc = ROS - Holds the action description and relevant messages for the move_base package.
-	pkgver = 1.13.0
-	pkgrel = 2
+	pkgver = 1.14.1
+	pkgrel = 1
 	url = https://wiki.ros.org/move_base_msgs
 	arch = any
 	license = BSD
@@ -14,8 +14,7 @@ pkgbase = ros-noetic-move-base-msgs
 	depends = ros-noetic-message-runtime
 	depends = ros-noetic-actionlib-msgs
 	depends = ros-noetic-geometry-msgs
-	source = ros-noetic-move-base-msgs-1.13.0.tar.gz::https://github.com/ros-planning/navigation_msgs/archive/1.13.0.tar.gz
-	sha256sums = 09bba8fb7a60135183830dec4381cd3187244794aab9759ac50bbc6007e04a61
+	source = ros-noetic-move-base-msgs-1.14.1.tar.gz::https://github.com/ros-planning/navigation_msgs/archive/1.14.1.tar.gz
+	sha256sums = 897e2809fa07330f3b01fbd99163dbed5669eec89d4b7fd742d62cf57b690149
 
 pkgname = ros-noetic-move-base-msgs
-
