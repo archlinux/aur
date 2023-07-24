@@ -6,6 +6,7 @@ pkgbase = libspinnaker
     license = custom:FLIR EULA
     url = https://www.flir.com/
     depends = libgentl
+    depends = libusb
     source = libspinnaker-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/libspinnaker-3.1.0.79.tar.gz
     sha256sums = 19bf58a34960877146e49b1981782893336c4cdc24fb7eba5880b757402d1120
 
