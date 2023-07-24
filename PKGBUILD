@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pikatorrent-bin
-pkgver=0.3.1
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A modern, open source and electric BitTorrent app for mobile, desktop & server."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bash' 'electron25')
 makedepends=('asar' 'gendesk')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.zip"
     "${pkgname%-bin}.sh")
-sha256sums=('e8996e777abed0203346faa56b94a3de0cbbc725bc937f36329bd98258770a1c'
+sha256sums=('e758c5b5b18c58c284e600c11149680395d658d909fc80f6bd4c6c63e8496bfd'
             '37b888cccd0f10bb2e5050669fc534cfbeb1651bdd64afb177f8900b48d4d91c')
 package() {
     install -Dm755 -d "${pkgdir}/opt/${pkgname%-bin}"
