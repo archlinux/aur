@@ -3,7 +3,7 @@
 pkgname='python-dm-haiku'
 _pkgname=${pkgname#python-}
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='A library for building neural networks in JAX'
 arch=('x86_64')
 url='https://github.com/deepmind/dm-haiku'
@@ -32,7 +32,7 @@ package() {
         dist/${_pkgname/-/_}-$pkgver-*.whl
 
     # TODO(@daskol): Fix setup.py of optax.
-    rm -rfv $pkgdir/usr/lib/python3.10/site-packages/build
-    rm -rfv $pkgdir/usr/lib/python3.10/site-packages/docs
-    rm -rfv $pkgdir/usr/lib/python3.10/site-packages/examples
+    rm -rfv $pkgdir/usr/lib/python3.11/site-packages/build
+    rm -rfv $pkgdir/usr/lib/python3.11/site-packages/docs
+    rm -rfv $pkgdir/usr/lib/python3.11/site-packages/examples
 }
