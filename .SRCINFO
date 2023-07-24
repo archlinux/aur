@@ -1,0 +1,13 @@
+pkgbase = plasma5-nvidiap2statusworkaround
+	pkgdesc = A switch on your taskbar that can low down the clock speed of your Nvidia GPU, save power
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/detiam/nvidiap2statusworkaround
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0+
+	depends = plasma-workspace
+	source = git+https://github.com/detiam/nvidiap2statusworkaround#commit=2a178a44c3cb3759560a8838340a53a420986863
+	sha256sums = SKIP
+
+pkgname = plasma5-nvidiap2statusworkaround
