@@ -1,20 +1,19 @@
 pkgbase = mumps-seq
 	pkgdesc = Sparse solver library using Gaussian elimination (sequential version)
-	pkgver = 5.2.1
+	pkgver = 5.6.1
 	pkgrel = 1
-	url = http://mumps.enseeiht.fr
+	url = http://mumps-solver.org
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = gcc-fortran
 	depends = gcc-libs
-	depends = blas
+	depends = lapack
 	depends = metis
 	provides = mumps
 	conflicts = mumps
-	source = http://mumps.enseeiht.fr/MUMPS_5.2.1.tar.gz
-	source = Makefile.seq.inc
-	sha256sums = d988fc34dfc8f5eee0533e361052a972aa69cc39ab193e7f987178d24981744a
-	sha256sums = e73105ab186f78c14c71f8032deec0af77f9f32f6fe51381a56f0a545fd6ea3c
+	conflicts = mumps-par
+	source = http://mumps-solver.org/MUMPS_5.6.1.tar.gz
+	sha512sums = 7d0f7e6e852a967ee93b7eac1a13b491d85e1c3fa39df8c5aed6f12069f0a4f8ee369c049fddba52f19f60ff579eff189e5546a7dd41a1de0a80d915398f0f53
 
 pkgname = mumps-seq
-
