@@ -3,11 +3,11 @@
 pkgname=ppm-git
 _pkgname=ppm
 _gitname=plugin-manager
-pkgver=1.0.2.r43.gc1f8a7a
+pkgver=1.0.5.r0.gc1f8a7a
 pkgrel=1
 pkgdesc='A plugin manager for the Pragtical editor'
 arch=('x86_64' 'aarch64')
-url="https://github.com/pragtical/plugin-managerr"
+url="https://github.com/pragtical/plugin-manager"
 license=('MIT')
 depends=('pragtical' 'lua' 'zlib' 'libzip' 'libgit2' 'mbedtls2')
 makedepends=('git' 'cmake' 'gcc')
@@ -28,11 +28,8 @@ prepare() {
 
 build() {
   cd "${_gitname}"
-  ./build.sh -lz -lgit2 -lzip -llua -lm \
-             -lmbedtls -lmbedx509 -lmbedcrypto \
-             -DPPM_STATIC \
-             -I/usr/include/mbedtls2 \
-             -L/usr/lib/mbedtls2
+  ./build.sh -DPPM_STATIC \
+             -static
 }
 
 package() {

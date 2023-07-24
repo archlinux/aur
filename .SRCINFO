@@ -1,8 +1,8 @@
 pkgbase = ppm-git
 	pkgdesc = A plugin manager for the Pragtical editor
-	pkgver = 1.0.2.r43.gc1f8a7a
+	pkgver = 1.0.5.r0.gc1f8a7a
 	pkgrel = 1
-	url = https://github.com/pragtical/plugin-managerr
+	url = https://github.com/pragtical/plugin-manager
 	arch = x86_64
 	arch = aarch64
 	license = MIT
