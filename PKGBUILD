@@ -1,13 +1,16 @@
 # Maintainer: RhiobeT (Pierre Jeanjean) <rhiobet@gmail.com>
 pkgname=mpv-thumbfast-git
 _gitname=thumbfast
-pkgver=r62.11764cd
+pkgver=r124.4241c7d
 pkgrel=1
 pkgdesc='High-performance on-the-fly thumbnailer for mpv'
 arch=(x86_64)
 url=https://github.com/po5/thumbfast
 license=()
 optdepends=('mpv-uosc: for displaying thumbnails automatically on seek')
+makedepends=(
+  git
+)
 depends=(
   mpv
 )
