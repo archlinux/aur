@@ -9,6 +9,6 @@ pkgbase = cleanpkgdir
 	depends = rust
 	depends = cargo
 	source = rust-scripts-1.0.0.tar.gz::https://gitlab.com/greypilgrim/rust-scripts/-/archive/1.0.0/rust-scripts-1.0.0.tar.gz
-	sha256sums = 00a4b440f0921519a56cdf6b119e268d18b952d852bfddccbdeee736c838d7f7
+	sha256sums = 6cbb057a406f1a35e6217cf17368f987deeac034162b7563f8a5f217e34c4ccc
 
 pkgname = cleanpkgdir

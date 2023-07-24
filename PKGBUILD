@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('rust' 'cargo')
 makedepends=('git')
 source=("rust-scripts-$pkgver.tar.gz::https://gitlab.com/greypilgrim/rust-scripts/-/archive/$pkgver/rust-scripts-$pkgver.tar.gz")
-sha256sums=('00a4b440f0921519a56cdf6b119e268d18b952d852bfddccbdeee736c838d7f7')
+sha256sums=('6cbb057a406f1a35e6217cf17368f987deeac034162b7563f8a5f217e34c4ccc')
 
 build() {
   tar -xvf "rust-scripts-$pkgver.tar.gz"
