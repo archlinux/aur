@@ -8,6 +8,6 @@ pkgbase = libspinvideo-c
     depends = libspinnaker
     depends = libspinvideo
     source = libspinvideo-c-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/libspinvideo-c-3.1.0.79.tar.gz
-    sha256sums = 859af06db15ed6f9e0c4a7528cf49043d117593e3a3e362162e7d60cc866a9b3
+    sha256sums = 3b6f1de80bf56ca642ef0a7edf7930dccba6ff6720b2d2f2531eeaae391d2fa4
 
 pkgname = libspinvideo-c
