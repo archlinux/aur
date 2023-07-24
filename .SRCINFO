@@ -1,13 +1,24 @@
 pkgbase = sqlpp11
 	pkgdesc = A type safe embedded domain specific language for SQL queries and results in C++
-	pkgver = 0.61
+	pkgver = 0.63
 	pkgrel = 1
 	url = https://github.com/rbock/sqlpp11
 	arch = any
 	license = BSD
 	makedepends = cmake
+	makedepends = git
+	makedepends = mariadb-libs
+	makedepends = postgresql-libs
+	makedepends = sqlite
+	makedepends = boost-libs
+	makedepends = python-pyparsing
 	depends = date
-	source = https://github.com/rbock/sqlpp11/archive/0.61.tar.gz
-	sha256sums = d5a95e28ae93930f7701f517b1342ac14bcf33a9b1c5b5f0dff6aea5e315bb50
+	optdepends = mariadb-libs: MariaDB Connector support
+	optdepends = postgresql-libs: PostgreSQL Connector support
+	optdepends = sqlite: SQLite Connector support
+	optdepends = boost-libs: ppgen.h support
+	optdepends = python-pyparsing: ddl2cpp support
+	source = sqlpp11-0.63.tar.gz::https://github.com/rbock/sqlpp11/archive/0.63.tar.gz
+	sha256sums = 8e8229501679435e5052c2184d6772e4d6f61e6a9e2ec7231c5fb9a3d3b88d7e
 
 pkgname = sqlpp11
