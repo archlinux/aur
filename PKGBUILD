@@ -1,16 +1,16 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=contiBAIT
 _pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
-pkgrel=1
-pkgdesc='Improves Early Build Genome Assemblies using Strand-Seq Data'
-arch=('x86_64')
+pkgver=${_pkgver//-/.}
+pkgrel=2
+pkgdesc="Improves Early Build Genome Assemblies using Strand-Seq Data"
+arch=(x86_64)
 url="https://bioconductor.org/packages/${_pkgname}"
-license=('BSD')
+license=(BSD)
 depends=(
-  r
   r-bh
   r-biocgenerics
   r-biocparallel
@@ -38,15 +38,18 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
+md5sums=('bc21baae59dc116f62b237e1690ac8ec')
 sha256sums=('2c8e0e820233795cf0fb79798e6caf1d6b8bf7849114d20696a4541aff3993ba')
 
 build() {
-  R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "$_pkgname" -l build
 }
 
 package() {
-  install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/lib/R/library"
-  install -Dm644 "${_pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/$_pkgname" "$pkgdir/usr/lib/R/library"
+
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "/usr/lib/R/library/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
-# vim:set ts=2 sw=2 et:
