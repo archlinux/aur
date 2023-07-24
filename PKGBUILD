@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('libusb' 'openssl' 'glibc' 'pcsclite')
 makedepends=('git')
 optdepends=('ccid: PC/SC reader generic dsudriver')
-conflicts=('oscam-svn')
+provides=('ncam')
 backup=('etc/ncam/ncam.conf')
 source=("$pkgname::git+https://github.com/fairbird/NCam.git"
         'ncam.service'
