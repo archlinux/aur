@@ -1,7 +1,7 @@
 # Maintainer: Zach Hoffman <zrhoffman@apache.org>
 pkgname=f5vpn
 pkgver=7242.2023.0427.1
-pkgrel=2
+pkgrel=3
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM'
 arch=('x86_64')
 mirror=huskyonnet-ns.uw.edu
@@ -14,7 +14,7 @@ b2sums=('c864e69799ffc4c13bf8af7d76bcc8beed195d9a41acb01d459aaa0c3cd5bae75290ef7
 sha512sums_x86_64=('3dbd254cd603f86f81e6ae9ceec205caf75dba2132725b4139bc9215161a65dae2e5130df2f6029698aa1eaa4c6734c66c3207a827da58a212e90194c6b948ae')
 sha512sums=('f2ca5fd5052b307c147ac315eb0cda45a6eaf071de30eef6841c74dac239c2d3bc5a0e1513e4bbd5b3057384676b346428609cb366c3d1086acda982acde7a61'
 '51ee6ca353685de98b5e87bf44de9605006190cc56ae4612c39f9f4e8b22d89b5bfab6cba09b740bb799fa74ce3a8054c533f807473b13c2c4da3683da4fef4c')
-depends=(icu openssl qt5-base qt5-webkit)
+depends=('icu>=73.2-2' openssl qt5-base 'qt5-webkit>=5.212.0alpha4-20')
 provides=("${pkgname}")
 url='https://support.f5.com/csp/article/K32311645#link_04_05'
 license=('commercial')
