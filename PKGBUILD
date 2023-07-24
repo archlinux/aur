@@ -1,7 +1,7 @@
 # Maintainer: gastipatis <gastipatis@gmail.com>
 
 pkgname="korobu"
-pkgver="alpha_0.0.1"
+pkgver="0.0.1_alpha"
 makedepends=("rust>=1.65.0")
 pkgrel="1"
 pkgdesc="Data encryptor for plaintext and files"
@@ -9,20 +9,20 @@ url="https://github.com/osennij-morok/korobu"
 arch=("x86_64")
 license=("MIT")
 
-source=("https://github.com/osennij-morok/korobu/archive/refs/heads/master.zip")
-sha512sums=("7c1d7b096bcc998a8d21526a35216d52e91260af4432cee77f51320772c048002fa29f91c1a85113acab6344ce564d6862d044d6cb6e58fa1bad60cd17fc8133")
+source=("https://github.com/osennij-morok/korobu/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=("1e8a7b98b56549edabf0a29c55adb22eaad7da9b1225e1705e002954908f104082ad80ec4070653eea0066e4b3fda0d6e060b1bc4ac225d088e517e90bbae2ed")
 
 package() {
-    cd ${srcdir}/${pkgname}-master
+    cd ${srcdir}/${pkgname}-${pkgver}
     cargo build --release
     cd -
-    install -D "${srcdir}/${pkgname}-master/target/release/${pkgname}" \
+    install -D "${srcdir}/${pkgname}-${pkgver}/target/release/${pkgname}" \
                "${pkgdir}/usr/bin/${pkgname}" 
-    install -D "${srcdir}/${pkgname}-master/icons/icon-64.png" \
+    install -D "${srcdir}/${pkgname}-${pkgver}/icons/icon-64.png" \
                "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png"
-    install -D "${srcdir}/${pkgname}-master/${pkgname}.desktop" \
+    install -D "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" \
                "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/${pkgname}-master/LICENSE-MIT" \
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE-MIT" \
                    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     chmod +x "${pkgdir}/usr/bin/${pkgname}" 
 }
