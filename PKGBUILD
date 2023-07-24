@@ -4,7 +4,7 @@
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=fldigi
-pkgver=4.1.26
+pkgver=4.1.27
 pkgrel=1
 pkgdesc="Digital Modem Program for Amateur Radio"
 arch=('i686' 'x86_64' 'aarch64')
@@ -37,5 +37,5 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('052bc3da554b77d9981e00147888665a')
-sha256sums=('448ad35a340f9e7d08f1bcd5de431011eb0d68090842786290b31a622beb5917')
+md5sums=('eb22089d6112fdbf13a6fcc263dc3b0d')
+sha256sums=('b222c1253a7e0ef93b1a53581cef246650f74addd3be88da5bbead91c34d15f0')
