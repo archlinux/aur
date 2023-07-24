@@ -7,7 +7,7 @@ _name=jack2
 pkgbase=jack2-git
 pkgname=(jack2-git jack2-dbus-git jack2-docs-git)
 pkgdesc="The JACK low-latency audio server"
-pkgver=1.9.21.r14.gd732afcb
+pkgver=1.9.22.r3.gb93a1d82
 pkgrel=1
 epoch=2
 arch=(x86_64)
@@ -41,7 +41,7 @@ prepare() {
 pkgver() {
   cd $pkgbase
   # get commits since last unannotated tag
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g;'
+  git describe --long --tags --match="v[0-9]*" | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g;'
 }
 
 build() {
