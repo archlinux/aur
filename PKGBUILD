@@ -15,6 +15,8 @@ _architectures="x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}"
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/10335.patch | patch -p1 -d VTK
+  curl -L https://gitlab.kitware.com/vtk/vtk/-/merge_requests/10350.patch | patch -p1 -d VTK
 }
 
 build() {
