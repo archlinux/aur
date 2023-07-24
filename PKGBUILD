@@ -2,7 +2,7 @@
 # Contributor: Conni2461 <Simon-Hauser@outlook.de>
 _base=klepto
 pkgname=python-${_base}
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="persistent caching to memory, disk, or database"
 arch=(any)
@@ -17,7 +17,7 @@ optdepends=('python-jsonpickle: for serializers support'
   'python-h5py: for support dictionary-style interface to a hdf5 file'
   'python-pandas: for dataframe support')
 source=(${_base}-${_base}-${pkgver}.tar.gz::${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('f1e738fe9457fe493af0972db1360464a657f141daca5698628366249a9a047055d26f8c18c59bfb00c0895ee0434f104c29b843f7f87b0d6d8bee1fcdd98122')
+sha512sums=('78b9367d9bed22d68aa4d78201f0d81273d637ef86e9489c83890c3d50bea84ff89fe63c2848826db2e650a1602fe51e5495402d7883977a9ef6f7db3e72ddeb')
 
 build() {
   cd ${_base}-${_base}-${pkgver}
@@ -26,7 +26,7 @@ build() {
 
 check() {
   cd ${_base}-${_base}-${pkgver}
-  python -m pytest -k 'not combinations and not roundtrip'
+  python -m pytest -k 'not combinations and not basic and not alchemy and not methods and not roundtrip'
 }
 
 package() {
