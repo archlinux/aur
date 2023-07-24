@@ -3,7 +3,7 @@
 pkgname=python-kiauto
 _name=${pkgname#python-}
 pkgver=2.2.6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="KiCad automation scripts. In particular to automate tasks that can't be done using the KiCad native Python interface. The automation is carried out emulating the user interaction."
 arch=('any')
@@ -12,10 +12,15 @@ license=(Apache-2.0)
 groups=()
 provides=(${_name})
 conflicts=(${_name})
-depends=(python)
+depends=(python
+    python-argparse
+    python-xvfbwrapper
+    python-psutil
+)
 makedepends=(python-build
             python-installer
-            python-wheel)
+            python-wheel
+            python-setuptools)
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
