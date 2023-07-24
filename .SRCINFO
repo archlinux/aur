@@ -1,6 +1,6 @@
 pkgbase = nft-tool-bin
 	pkgdesc = A tool for creating and editing NFTs on the Bitshares blockchain
-	pkgver = 1.6.2
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/BTS-CM/Bitshares_NFT_Issuance_Tool
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = nft-tool-bin
 	depends = pango
 	conflicts = nft-tool
 	conflicts = nft-tool-appimage
-	source = nft-tool-1.6.2.deb::https://github.com/BTS-CM/Bitshares_NFT_Issuance_Tool/releases/download/v1.6.2/nft_tool.deb
+	source = nft-tool-1.7.0.deb::https://github.com/BTS-CM/Bitshares_NFT_Issuance_Tool/releases/download/v1.7.0/nft_tool.deb
 	source = LICENSE::https://raw.githubusercontent.com/BTS-CM/Bitshares_NFT_Issuance_Tool/main/License.md
-	sha256sums = 3deb93979278a6b2024c41d1be5494b02e1a943c7fafd4761e87043df74d8c8c
+	sha256sums = c18e28ad176e6c458fb706c84a06148a031b0bcd4331ba9b234f606ccb44afcb
 	sha256sums = 48ecd55adc52c7a1ad9e3f699b9e2348bca9bb6797ce8ad4e9cbe38f7aa11c8a
 
 pkgname = nft-tool-bin
