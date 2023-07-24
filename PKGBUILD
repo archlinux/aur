@@ -2,14 +2,14 @@
 pkgname=famistudio
 _pkgname=FamiStudio
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A very simple music editor for the Nintendo Entertainment System or Famicom"
 arch=(x86_64)
 url="https://famistudio.org/"
 license=('MIT')
 groups=()
-depends=(dotnet-host openal libcanberra rtmidi libvorbis ffmpeg)
+depends=(dotnet-sdk openal libcanberra rtmidi libvorbis ffmpeg)
 makedepends=()
 checkdepends=()
 optdepends=()

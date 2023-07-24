@@ -1,14 +1,11 @@
 pkgbase = famistudio
 	pkgdesc = A very simple music editor for the Nintendo Entertainment System or Famicom
 	pkgver = 4.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://famistudio.org/
 	arch = x86_64
 	license = MIT
-	makedepends = mono-msbuild
-	makedepends = mono-msbuild-sdkresolver
-	makedepends = nuget
-	depends = mono
+	depends = dotnet-sdk
 	depends = openal
 	depends = libcanberra
 	depends = rtmidi
