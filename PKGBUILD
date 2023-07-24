@@ -9,7 +9,7 @@ _gitname="${_pkgname}"
 _gituser='fredldotme'
 pkgname="${_pkgname}-git"
 pkgver=3.0.8+2.r84.20221015.a356bf7
-pkgrel=1
+pkgrel=2
 pkgdesc="A LD_PRELOAD library to disable gtk+ 3 client side decoration."
 arch=(
   "i686"
@@ -37,7 +37,7 @@ source=(
 sha256sums=(
   'SKIP'
   'b6a314bb7482f1de024805d669750957c41e350a82f87dd16ca72760d7d8f9f4'
-  '9827e52fb9d7385c4ec155411f8d2b1c2225878c107a1e2768f77f73589e99e4'
+  'e28ad755f953c32e02406bfe77b8cd9aa71c5f5f5a3284fb4244ece853ff272b'
 )
 
 prepare() {
@@ -82,5 +82,5 @@ package() {
   done
 
   cd "${srcdir}"
-  install -Dvm0755 '30-gtk3-nocsd.xinit.sh' "${pkgdir}/etc/X11/xinit/xinitrc.d/30-gtk3-nocsd.sh"
+  install -Dvm0755 '30-gtk3-nocsd.xinit.sh' "${pkgdir}/usr/share/doc/${_pkgname}/etc/xinit/xinitrc.d/30-gtk3-nocsd.sh"
 }

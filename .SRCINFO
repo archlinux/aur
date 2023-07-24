@@ -1,7 +1,7 @@
 pkgbase = gtk3-nocsd-git
 	pkgdesc = A LD_PRELOAD library to disable gtk+ 3 client side decoration.
 	pkgver = 3.0.8+2.r84.20221015.a356bf7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fredldotme/gtk3-nocsd
 	install = gtk3-nocsd.install
 	arch = i686
@@ -19,6 +19,6 @@ pkgbase = gtk3-nocsd-git
 	source = gtk3-nocsd.install
 	sha256sums = SKIP
 	sha256sums = b6a314bb7482f1de024805d669750957c41e350a82f87dd16ca72760d7d8f9f4
-	sha256sums = 9827e52fb9d7385c4ec155411f8d2b1c2225878c107a1e2768f77f73589e99e4
+	sha256sums = e28ad755f953c32e02406bfe77b8cd9aa71c5f5f5a3284fb4244ece853ff272b
 
 pkgname = gtk3-nocsd-git
