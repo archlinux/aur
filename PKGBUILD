@@ -3,11 +3,11 @@
 pkgname=python-kibom
 _name=${pkgname#python-}
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Bill of Materials generation tool for KiCad EDA"
 arch=('any')
-url="https://pypi.org/project/qrcodegen"
+url="https://pypi.org/project/kibom"
 license=(MIT)
 groups=()
 provides=(kibom)
@@ -15,7 +15,6 @@ conflicts=(kibom)
 depends=(
     flake8
     python
-    python-coverage
     python-xlsxwriter)
 makedepends=(python-build
             python-installer
