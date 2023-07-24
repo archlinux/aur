@@ -1,9 +1,9 @@
 # Maintainer: Raphael Emberger(raember) <raphael.emberger@hotmail.ch>
 # Contributor: Hervé Bitteur <herve.bitteur@audiveris.com>
 pkgname=audiveris
-pkgver=5.3.0
-_gitcommit=0eabc04
-_tag=5.3
+pkgver=5.3.1
+_gitcommit=f0bdbe6
+_tag=5.3.1
 pkgrel=1
 pkgdesc="Music score OMR engine"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
   "$pkgname-${pkgver/_/-}.tar.gz::https://github.com/Audiveris/$pkgname/archive/${pkgver/_/-}.tar.gz"
   "$pkgname"
 )
-sha256sums=('a163412a197a0e5e95cea64c4a0ef9e3b60ce95da0b6c6ee2766a6a5c4fea7d2'
+sha256sums=('b81ef95ea87cfb73ff718ff3a33acddc4a275f94d1d25134bdc43b813d28d6d6'
             'f8c61a27680a5255940d6837601dc461b517110e13aa9673c88f4c0300bfa255')
 
 prepare() {
@@ -35,7 +35,7 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-${pkgver/_/-}"
   export JAVA_HOME=$(archlinux-java-run -a 17 -b 18 -f jdk -j)
-  gradle build javadoc
+  gradle build javadoc --stacktrace
 }
 
 package() {
