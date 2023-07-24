@@ -3,7 +3,7 @@
 pkgname='python-optax'
 _pkgname=${pkgname#python-}
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A gradient processing and optimization library for JAX'
 arch=('x86_64')
 url='https://github.com/deepmind/optax'
@@ -31,7 +31,7 @@ package() {
         $_pkgname-$pkgver/dist/$_pkgname-$pkgver-*.whl
 
     # TODO(@daskol): Fix setup.py of optax.
-    rm -rfv $pkgdir/usr/lib/python3.10/site-packages/build
-    rm -rfv $pkgdir/usr/lib/python3.10/site-packages/docs
-    rm -rfv $pkgdir/usr/lib/python3.10/site-packages/examples
+    rm -rfv $pkgdir/usr/lib/python3.11/site-packages/build
+    rm -rfv $pkgdir/usr/lib/python3.11/site-packages/docs
+    rm -rfv $pkgdir/usr/lib/python3.11/site-packages/examples
 }
