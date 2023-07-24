@@ -3,24 +3,32 @@
 _base=ppft
 pkgname=python-${_base}
 pkgdesc="distributed and parallel python"
-pkgver=1.7.6.6
+pkgver=1.7.6.7
 pkgrel=1
 url="https://github.com/uqfoundation/${_base}"
 arch=(any)
 license=('custom:BSD-3-clause')
 depends=(python)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
+# checkdepends=(python-pytest)
 optdepends=('python-dill: for serialization support')
 source=(${_base}-${_base}-${pkgver}.tar.gz::${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('563eb6a52c017266a2af0fb8f180d420e3bdd74736bf6d66e817c9fa4fdcce27585a39b79b0cb43639f1283050a262fcd4eed6720b7651ede0475e8c663324f8')
+sha512sums=('251017650691e69d875613b1040de3d0cef982450b4858f4f1d1217acbf8d5264bd678d7958710563c0e0971b39bbbfe9f57ab18c089288cd9aeb05179238f8f')
 
 build() {
   cd ${_base}-${_base}-${pkgver}
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
+
+# check() {
+#   cd ${_base}-${_base}-${pkgver}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest ${_base}/tests
+# }
 
 package() {
   cd ${_base}-${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
