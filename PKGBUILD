@@ -3,19 +3,25 @@
 pkgbase=kicad-pcb-diff
 pkgname=kidiff
 pkgver=2.4.7
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="Tool to generate a PDF file showing the changes between two KiCad PCB/SCH files. Also a git plug-in."
 arch=('any')
 url="https://github.com/INTI-CMNB/KiDiff"
 license=('GPL-2.0')
 groups=()
-depends=('python' 'kicad' 'python-wxpython' 'imagemagick' 'librsvg' 'poppler' 'xdg-utils')
+depends=(python
+    kicad
+    python-wxpython
+    imagemagick
+    librsvg
+    poppler
+    xdg-utils)
 makedepends=(python-{build,installer}
              python-setuptools-scm
              python-wheel)
 optdepends=("kiauto-git: KiCad automation scripts.")
-provides=('kidiff' 'kicad-diff' 'kicad-pcb-diff')
+provides=('kidiff' 'kicad-diff' 'kicad-pcb-diff' 'python-kidff')
 conflicts=()
 replaces=()
 backup=()
