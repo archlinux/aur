@@ -1,6 +1,6 @@
 pkgbase = azure-dev-cli-bin
 	pkgdesc = A developer-centric command-line interface tool for creating Azure applications.
-	pkgver = 1.0.2
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Azure/azure-dev
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = azure-dev-cli-bin
 	provides = azure-dev-cli
 	conflicts = azure-dev-cli
 	options = !strip
-	source = azure-dev-cli-1.0.2-x86_64.tar.gz::https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.0.2/azd-linux-amd64.tar.gz
-	sha256sums = 6e7c2d8949107fff2967c5f1cfe4ecac1476ce8ed28f40d3e33491570ae3ee9f
+	source = azure-dev-cli-1.1.0-x86_64.tar.gz::https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.1.0/azd-linux-amd64.tar.gz
+	sha256sums = 811ad39c382de7c890f9f88511e5fa2ff39d426a32bb3ea447eceedf37738857
 
 pkgname = azure-dev-cli-bin
