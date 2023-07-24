@@ -1,18 +1,19 @@
 pkgbase = samsung-ssd-dc-toolkit
-	pkgdesc = Samsung magician. CLI tool for SSD Data Centers 983 ZET, 983 DCT, 883 DCT and 860 DCT
+	pkgdesc = CLI tool for management and diagnosgtics of SSD's primarily targeted for servers and data centers
 	pkgver = 2.1
-	pkgrel = 1
-	url = https://www.samsung.com/semiconductor
+	pkgrel = 2
+	url = https://semiconductor.samsung.com/consumer-storage/support/tools/
 	arch = x86_64
-	arch = i686
 	license = custom
-	depends = jsoncpp
+	depends = gcc-libs
+	depends = glibc
 	depends = hdparm
+	depends = jsoncpp
 	conflicts = samsung_magician-consumer-ssd
+	options = !strip
 	source = https://www.samsung.com/semiconductor/global.semi.static/Samsung_SSD_DC_Toolkit_for_Linux_V2.1
 	source = LICENSE
-	md5sums = 4311a4b3da567dc854fd07b7cf35b304
-	md5sums = 138596cfbe00f6b9ead1829b300f5e83
+	b2sums = b5c2b26099449cf2e259b798e6ab2e978c5806753ae4d2c352db2cb74e540c02f6ae4b18de6d159531292a5f22afa8d05cef2a36b17b2786401bc072fb8e8255
+	b2sums = 8e12c9640eadde76cb508dfde2059d5c1fdd55192bbda15ba7026d068644aa3e302770a018ce8704a146d65f84338c14756522430cbb21070ea767978c80bd38
 
 pkgname = samsung-ssd-dc-toolkit
-
