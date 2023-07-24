@@ -7,7 +7,7 @@ pkgbase = libspinnaker-c-dev
     url = https://www.flir.com/
     depends = libspinnaker
     depends = libspinnaker-c
-    source = libspinaker-c-dev-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/libspinnaker-c-dev-3.1.0.79.tar.gz
+    source = libspinnaker-c-dev-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/libspinnaker-c-dev-3.1.0.79.tar.gz
     sha256sums = e976a877916afba4ac32ee91489cfde9d9d699cdd0888066816ff3b932d3be57
 
 pkgname = libspinnaker-c-dev
