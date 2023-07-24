@@ -6,7 +6,7 @@ _author=cyrealtype
 _auxname=lora-font
 pkgname=("${_auxname}-git")
 pkgver=r254.c11db343
-pkgrel=1
+pkgrel=2
 pkgdesc='Contemporary serif font that supports Latin and Cyrillic scripts. Includes OTF, TTF and variable.'
 arch=('any')
 makedepends=('git')
@@ -22,9 +22,7 @@ sha256sums=(
 package() {
     cd "${srcdir}/Lora-Cyrillic"
     mkdir -p "${pkgdir}/usr/share/fonts/OTF/"
-    mkdir -p "${pkgdir}/usr/share/fonts/TTF/"
     mkdir -p "${pkgdir}/usr/share/fonts/Variable/"
     install -Dm644 fonts/otf/* "${pkgdir}/usr/share/fonts/OTF/"
-    install -Dm644 fonts/ttf/* "${pkgdir}/usr/share/fonts/TTF/"
     install -Dm644 fonts/variable/* "${pkgdir}/usr/share/fonts/Variable/"
 }
