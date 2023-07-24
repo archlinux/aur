@@ -5,28 +5,33 @@
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
 
 pkgname=watchman
-pkgver=2023.07.10.00
+pkgver=2023.07.24.00
 pkgrel=1
 pkgdesc="Watches files and records, or triggers actions, when they change"
 url="https://github.com/facebook/watchman"
 arch=(x86_64)
 license=(MIT)
-makedepends=(
-  boost
-  cmake
-  edencommon
-  gmock
-  rust
-  folly
-)
 depends=(
   boost-libs
   double-conversion
   fmt
+  gcc-libs
+  gflags
+  glibc
   google-glog
+  libevent
   libunwind
+  openssl
   pcre2
   python
+)
+makedepends=(
+  boost
+  cmake
+  edencommon
+  folly
+  gmock
+  rust
 )
 backup=(etc/watchman.json)
 
@@ -39,7 +44,7 @@ source=(
   "watchman.socket"
 )
 sha256sums=(
-  '3fc4e3a39d6c948e5ca175d1313551010282a8020a9363b50d3d1e70c76ccca8'
+  'abef7859e6412a30f92941d811a0ef7e595a0ef8bfebb674f909743fdc3f5a46'
   'd40feab6aa7dc6522c648660e88642fdf721ee1f9d80c23f6891a6381067a38b'
   '3ebc93cb91ec9b9603969e222fd3ffd9baa4a1d07a7b3bd7aabf956ec2e177c8'
   'ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356'
@@ -81,6 +86,7 @@ check() {
       test_even_more_moves
       test_failingSpawner
       test_fishy
+      test_force_recrawl
       test_fstype
       test_full_capability_set
       test_legacyTrigger
