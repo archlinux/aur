@@ -3,15 +3,15 @@
 # Mantainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
 
-_commit=67e2f150d2160779193cfdcfbdfdf2c08971ffb8
+_commit=9cb143646e688e9bb12541d116ab71fb412d40d9
 pkgname=penguins-eggs
-pkgver=9.5.12
+pkgver=9.5.13
 pkgrel=1
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
 license=('GPL2')
-depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'grub' 
+depends=('arch-install-scripts' 'dosfstools' 'erofs-utils' 'findutils' 'git' 'grub' 
          'jq' 'libarchive' 'libisoburn' 'lsb-release' 'lvm2' 'mkinitcpio-archiso'
          'mkinitcpio-nfs-utils' 'mtools' 'nbd' 'nodejs' 'pacman-contrib' 'parted' 
          'procps-ng' 'pv' 'python' 'rsync' 'squashfs-tools' 'sshfs' 'syslinux' 'xdg-utils')
