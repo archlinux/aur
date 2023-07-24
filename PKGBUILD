@@ -2,14 +2,44 @@
 
 pkgname=kibot
 pkgver=1.6.3
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="KiCad automation utility"
 arch=('any')
 url="https://github.com/INTI-CMNB/KiBot"
 license=('GPL-3.0')
 groups=()
-depends=('python' 'kibom' 'pcbdraw' 'kiauto' 'python-yaml')
+depends=(
+    blender
+    ghostscript
+    git
+    librsvg
+    imagemagick
+    openscad
+    rar
+    kiauto
+    kibom
+#     kicad-interactivehtmlbom
+    kicost
+    kidiff
+    pandoc
+    pcbdraw
+    python
+    python-colorama
+    python-lark-parser
+    python-lxml
+    python-kikit
+    python-numpy
+    python-markdown2
+    python-mistune
+    python-pyaml
+    python-qrcodegen
+    python-requests
+    python-xlsxwriter
+    python-xvfbwrapper
+    python-yaml
+    xorg-server-xvfb
+    )
 makedepends=("python-setuptools")
 checkdepends=()
 optdepends=()
