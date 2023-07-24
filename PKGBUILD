@@ -1,12 +1,12 @@
 # Maintainer: NicKoehler <grillinicolavocal at gmail dot com>
 pkgname=yarg
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="YARG - Yet Another Rhythm Game inspired off of Rockband, Guitar Hero, Clone Hero, or similar."
 arch=("x86_64")
 url="https://github.com/YARC-Official/YARG"
 license=("MIT")
-depends=("hidapi" "systemd-libs" "rsync")
+depends=("hidapi" "systemd-libs")
 
 source=(
     "$pkgname"

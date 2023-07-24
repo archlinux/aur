@@ -1,13 +1,12 @@
 pkgbase = yarg
 	pkgdesc = YARG - Yet Another Rhythm Game inspired off of Rockband, Guitar Hero, Clone Hero, or similar.
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YARC-Official/YARG
 	arch = x86_64
 	license = MIT
 	depends = hidapi
 	depends = systemd-libs
-	depends = rsync
 	source = yarg
 	source = yarg.desktop
 	source = https://github.com/YARC-Official/YARG/releases/download/v0.11.1/YARG_v0.11.1-Linux-x86_64.zip
