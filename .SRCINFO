@@ -1,0 +1,18 @@
+pkgbase = spinview-qt
+    pkgdesc = This package contains an image capture application used to communicate with FLIR digital cameras. This package contains shared libraries.
+    pkgver = 3.1.0.79
+    pkgrel = 1
+    arch = x86_64
+    license = custom:FLIR EULA
+    url = https://www.flir.com/
+    depends = cuda-tools
+    depends = hicolor-icon-theme
+    depends = intel-oneapi-basekit
+    depends = libspinnaker
+    depends = libspinvideo
+    depends = qt5-base
+    depends = qt5-tools
+    source = spinview-qt-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/spinview-qt-3.1.0.79.tar.gz
+    sha256sums = 82ef2cb68928475f0f6b051a1efda5699975e1a3c617e71ef05fe62a15c3476f
+
+pkgname = spinview-qt
