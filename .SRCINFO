@@ -1,11 +1,15 @@
 pkgbase = python-mystic
 	pkgdesc = highly-constrained non-convex optimization and uncertainty quantification
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/uqfoundation/mystic
 	arch = any
 	license = custom:BSD-3-clause
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-sympy
 	depends = python-klepto
@@ -13,7 +17,7 @@ pkgbase = python-mystic
 	optdepends = python-pathos: for for parallel computing
 	optdepends = python-pyina: for for parallel computing
 	optdepends = python-matplotlib: for Matplotlib rendering
-	source = mystic-mystic-0.4.0.tar.gz::https://github.com/uqfoundation/mystic/archive/mystic-0.4.0.tar.gz
-	sha512sums = 3ca3fa932e0b1ba175515610f316ac0531116147531738d646a00dedd60dbb9767cc6af1873b3de86971195d82e4938a1e5ceabf67efe405ff95d4cfa243fc6b
+	source = mystic-mystic-0.4.1.tar.gz::https://github.com/uqfoundation/mystic/archive/mystic-0.4.1.tar.gz
+	sha512sums = c8fdc2386815e5c046d23f3aefd6e97a4b04a826f2cbeff631e8716eca305918aa1c0640f6612ca13532ef98a58e107f8e554d225eb36d0deed180f7509c75aa
 
 pkgname = python-mystic
