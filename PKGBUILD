@@ -22,6 +22,8 @@ depends=(${ros_depends[@]}
     eigen
     boost
     mesa
+    qt5-base
+    glu
     suitesparse)
 
 # Tarball version (faster download)
