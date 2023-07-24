@@ -1,5 +1,5 @@
 pkgbase = spinnaker
-    pkgdesc = A library used to communicate with FLIR digital cameras. This package contains shared libraries
+    pkgdesc = Binaries and examples. This package contains examples using the Spinnaker SDK.
     pkgver = 3.1.0.79
     pkgrel = 1
     arch = x86_64

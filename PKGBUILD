@@ -1,4 +1,4 @@
-pkgdesc="A library used to communicate with FLIR digital cameras. This package contains shared libraries"
+pkgdesc="Binaries and examples. This package contains examples using the Spinnaker SDK."
 url='https://www.flir.com/'
 
 pkgname='spinnaker'
