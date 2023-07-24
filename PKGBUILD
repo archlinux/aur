@@ -3,7 +3,7 @@
 pkgname=python-kibom
 _name=${pkgname#python-}
 pkgver=1.9.0
-pkgrel=0
+pkgrel=1
 epoch=
 pkgdesc="Bill of Materials generation tool for KiCad EDA"
 arch=('any')
@@ -12,10 +12,15 @@ license=(MIT)
 groups=()
 provides=(kibom)
 conflicts=(kibom)
-depends=(python)
+depends=(
+    flake8
+    python
+    python-coverage
+    python-xlsxwriter)
 makedepends=(python-build
             python-installer
-            python-wheel)
+            python-wheel
+            python-setuptools)
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
