@@ -1,14 +1,14 @@
-pkgname=ttf-apple-fonts
-pkgver=1.1
+pkgname=otf-apple-fonts
+pkgver=1.2
 pkgrel=1
 pkgdesc="Collection of official SF Pro, SF Display, SF Mono Apple Fonts"
-pkgbase=ttf-apple-fonts
+pkgbase=otf-apple-fonts
 arch=('any')
-url="https://github.com/gxanshu/ttf-apple-fonts"
+url="https://github.com/gxanshu/otf-apple-fonts"
 license=('GPL')
 makedepends=('unzip>=6.0')
 
-source=("https://github.com/gxanshu/ttf-apple-fonts/releases/download/Fonts/fonts.zip")
+source=("https://github.com/gxanshu/otf-apple-fonts/releases/download/Fonts/fonts.zip")
 sha256sums=('8a6d9d53019aa52c1b7be6c0a07cadbc0ff9929d3b8945f7fcee9ee519d900fe')
 
 package() {
