@@ -4,9 +4,9 @@
     url='https://github.com/RainerKuemmerle/g2o'
 
     pkgname='ros-noetic-libg2o'
-    pkgver='2018.3.25'
+    pkgver='2020.5.3'
     arch=('any')
-    pkgrel=3
+    pkgrel=1
     license=('BSD')
 
     ros_makedepends=()
@@ -27,7 +27,7 @@
     # Tarball version (faster download)
     _dir="libg2o-release-release-noetic-libg2o"
     source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-gbp/libg2o-release/archive/release/noetic/libg2o/${pkgver}.tar.gz")
-    sha256sums=('9a287e8582c5bce1da4469e6aac80347df7f0ae6e1626a39560d4df580db4763')
+sha256sums=('9a287e8582c5bce1da4469e6aac80347df7f0ae6e1626a39560d4df580db4763')
 
     build() {
         # Use ROS environment variables

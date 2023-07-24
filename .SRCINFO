@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-libg2o
 	pkgdesc = ROS - The libg2o library from http://openslam.org/g2o.html.
-	pkgver = 2018.3.25
-	pkgrel = 3
+	pkgver = 2020.5.3
+	pkgrel = 1
 	url = https://github.com/RainerKuemmerle/g2o
 	arch = any
 	license = BSD
@@ -16,7 +16,7 @@ pkgbase = ros-noetic-libg2o
 	depends = boost
 	depends = mesa
 	depends = suitesparse
-	source = ros-noetic-libg2o-2018.3.25.tar.gz::https://github.com/ros-gbp/libg2o-release/archive/release/noetic/libg2o/2018.3.25.tar.gz
+	source = ros-noetic-libg2o-2020.5.3.tar.gz::https://github.com/ros-gbp/libg2o-release/archive/release/noetic/libg2o/2020.5.3.tar.gz
 	sha256sums = 9a287e8582c5bce1da4469e6aac80347df7f0ae6e1626a39560d4df580db4763
 
 pkgname = ros-noetic-libg2o
