@@ -1,9 +1,7 @@
-# Maintainer: Victor Roest <victor@xirion.net>
-# Based on the official k9s PKGBUILD by: Alexander F. Rødseth <xyproto@archlinux.org>
-
+# Maintainer: Alessio <alessio@linux.com>
 pkgname=k9s-git
 _pkgname=k9s
-pkgver=v0.17.0.r5.ge936b17
+pkgver=v0.27.4.r23.gc1e16e33
 pkgrel=1
 pkgdesc='Kubernetes TUI for managing clusters and pods'
 arch=(x86_64)
@@ -14,6 +12,11 @@ provides=(k9s)
 conflicts=(k9s)
 source=("git+$url")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/pritunl-client-electron"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd $_pkgname
