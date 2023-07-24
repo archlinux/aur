@@ -23,7 +23,7 @@ makedepends=( # Since we don't build the doc, most of the makedeps for other lin
 options=(!strip)
 source=(
   "${_srcname}.tar.gz::${url}/archive/${_orangepi_commit}.tar.gz"
-  'gcc12-fixups.patch::https://github.com/7Ji/linux-orangepi/compare/161606b049488da100e5d7ec95c8997d3b59b20d...5ed23c49bee59e066cdaa3ea2f540bb545aa1afe.patch'
+  'gcc12-fixups.patch::https://github.com/7Ji/linux-orangepi/releases/download/orange-pi-5.10-rk3588-gcc-12-patch-frozen/gcc12-fixups.patch'
   'config'
   'linux.preset'
 )
