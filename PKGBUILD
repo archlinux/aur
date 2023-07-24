@@ -62,39 +62,38 @@ _pkg_name_ident="${_pkg_name}-${_pkg_ident}"
 
 #
 pkgdesc="Cross platform IDE for C, C++, Rust, Python, PHP and Node.js written in C++"
-arch=('i686' 'x86_64')
-url="http://www.codelite.org/"
+arch=('i686' 'x86_64' 'aarch64')
+url="https://www.codelite.org/"
 license=('GPL')
 
 makedepends=('pkgconfig' 'cmake' 'ninja' 'clang')
 
 depends=(
-  #'wxwidgets-gtk3'
-  'wxgtk3'
-  'libedit'
-  'libssh'
-  'mariadb-libs'
-  'ncurses'
-  'uchardet'
-  'hunspell'
-  #'ctags'
-  #'xterm'
-  #'wget'
-  #'curl'
-  #'python'
-  #'python2'
+    'wxwidgets-gtk3'
+    'libedit'
+    'libssh'
+    'mariadb-libs'
+    'ncurses'
+    'uchardet'
+    'hunspell'
+    #'ctags'
+    #'xterm'
+    #'wget'
+    #'curl'
+    #'python'
+    #'python2'
 )
 
 optdepends=(
-   'clang: compiler'
-   'lldb: debugger'
-   'gcc: compiler'
-   'gdb: debugger'
-   'valgrind: debugger'
-   'rust: language'
-   'php: language'
-   'graphviz: callgraph visualization'
-   'cscope: CScope Integration for CodeLite'
+    'clang: compiler'
+    'lldb: debugger'
+    'gcc: compiler'
+    'gdb: debugger'
+    'valgrind: debugger'
+    'rust: language'
+    'php: language'
+    'graphviz: callgraph visualization'
+    'cscope: CScope Integration for CodeLite'
 )
 
 conflicts=('codelite')
