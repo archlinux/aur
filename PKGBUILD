@@ -42,4 +42,9 @@ package() {
     cd "${srcdir}/${pkgname%-git}/"
 #     install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname%-git}"
     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/50-wchisp.rules" <<EOF
+SUBSYSTEM=="usb" ATTR{idVendor}="1a86" ATTR{idProduct}=="8010" MODE:="0666"
+SUBSYSTEM=="usb" ATTR{idVendor}="4348" ATTR{idProduct}=="55e0" MODE:="0666"
+SUBSYSTEM=="usb" ATTR{idVendor}="1a86" ATTR{idProduct}=="8012" MODE:="0666"
+EOF
 }
