@@ -1,15 +1,15 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=termusic-git
-pkgver=0.7.11.r1500.1094054
+pkgver=0.7.11.r1505.2882d9c
 pkgrel=1
 pkgdesc='Music Player TUI written in Rust'
-arch=('x86_64')
+arch=(x86_64)
 url=https://github.com/tramhao/termusic
-license=('GPL3' 'MIT')
-depends=('dbus' 'gst-libav' 'gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-ugly' 'gstreamer' 'mpv') # 'libmpv.so'
-makedepends=('cargo' 'git')
-optdepends=('ffmpeg: extract audio by downloader' 'ueberzug: display album covers' 'youtube-dl: download files' 'yt-dlp: download files')
+license=(GPL3 MIT)
+depends=(dbus gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly gstreamer mpv protobuf ueberzug) # alsa-lib libmpv.so
+makedepends=(cargo git)
+optdepends=('ffmpeg: extract audio by downloader' 'yt-dlp: download files')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url.git")
@@ -33,6 +33,6 @@ check() {
 }
 
 package() {
-  install -Dm755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
+  install -Dm755 "target/release/${pkgname%-git}"{,-server} -t "$pkgdir/usr/bin"
   install -Dm644 $pkgname/LICENSE_MIT -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
