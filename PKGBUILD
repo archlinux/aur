@@ -2,13 +2,14 @@
 
 pkgname=shell-gpt
 _name=${pkgname/-/_}
-pkgver=0.9.3
-pkgrel=3
+pkgver=0.9.4
+pkgrel=1
 pkgdesc="A command-line productivity tool powered by OpenAI's ChatGPT"
 arch=(any)
 url="https://github.com/TheR1D/shell_gpt"
 license=(MIT)
 depends=(
+  python
   python-click
   python-distro
   python-requests
@@ -31,7 +32,7 @@ source=(
   "hatch-ignore-vcs.patch"
 )
 sha256sums=(
-  'cdd8545a79cdd706e199e41b0aa119a829c9a687331762e69ea95946d3d729a3'
+  '5bb53d634384fbde5d10b39429a89e59423457e60e7a2c746aec3ea541ea5856'
   'd0eddae80416ad719369ba6d83f101f710ff2c875c78d858bce0cded8ab1c6bd'
 )
 
@@ -40,7 +41,7 @@ _archive="$_name-$pkgver"
 prepare() {
   cd "$_archive"
 
-  patch --forward --strip=1 --input="${srcdir}/hatch-ignore-vcs.patch"
+  patch --forward --strip=1 --input="$srcdir/hatch-ignore-vcs.patch"
 }
 
 build() {
@@ -61,5 +62,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
