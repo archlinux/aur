@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Goudry <goudry.nicolas@gmail.com>
 pkgname=k8sgpt-git
 _pkgname=k8sgpt
-pkgver=v0.3.8.r3.g0f03ddc
+pkgver=v0.3.8
 pkgrel=1
 pkgdesc="Giving Kubernetes Superpowers to everyone"
 arch=('x86_64' 'arm64' 'i386')
