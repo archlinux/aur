@@ -5,7 +5,6 @@ pkgbase = python-pathos
 	url = https://github.com/uqfoundation/pathos
 	arch = any
 	license = custom:BSD-3-clause
-	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -15,6 +14,6 @@ pkgbase = python-pathos
 	depends = python-pox
 	depends = python-multiprocess
 	source = pathos-pathos-0.3.1.tar.gz::https://github.com/uqfoundation/pathos/archive/pathos-0.3.1.tar.gz
-	sha512sums = 45149655a2366913a41c228940b0d391a1a9b42da8c5675b9eff7024bfb230b22f758dd660fb58651f87101e5f5f01aa6f78227b475e5373c05fff23e23dafc1
+	sha512sums = bc2d91c56976db88366ddff29abe6cde90f8e0a4d2aa03a357ecabd67448d927639670e2a1368a83dfa7f930e0cca0a6c6d0bfe2e504934e4e310e83de8c79f6
 
 pkgname = python-pathos

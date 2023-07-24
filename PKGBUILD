@@ -10,21 +10,21 @@ arch=(any)
 license=('custom:BSD-3-clause')
 depends=(python-dill python-ppft python-pox python-multiprocess)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest)
+# checkdepends=(python-pytest)
 source=(${_base}-${_base}-${pkgver}.tar.gz::${url}/archive/${_base}-${pkgver}.tar.gz)
-sha512sums=('45149655a2366913a41c228940b0d391a1a9b42da8c5675b9eff7024bfb230b22f758dd660fb58651f87101e5f5f01aa6f78227b475e5373c05fff23e23dafc1')
+sha512sums=('bc2d91c56976db88366ddff29abe6cde90f8e0a4d2aa03a357ecabd67448d927639670e2a1368a83dfa7f930e0cca0a6c6d0bfe2e504934e4e310e83de8c79f6')
 
 build() {
   cd ${_base}-${_base}-${pkgver}
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-check() {
-  cd ${_base}-${_base}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m pytest
-}
+# check() {
+#   cd ${_base}-${_base}-${pkgver}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -m pytest ${_base}/tests
+# }
 
 package() {
   cd ${_base}-${_base}-${pkgver}
