@@ -5,7 +5,7 @@
 pkgname=firefish-beta
 _pkgname=firefish
 pkgver=14.0.0rc3
-pkgrel=2
+pkgrel=3
 pkgdesc='A fun, new way to experience social media'
 url='https://join.firefish.org'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('git' 'python' 'rust')
 install='firefish.install'
 optdepends=('ffmpeg: Media encode functionality'
             'nginx: Reverse-proxy')
-source=("git+https://git.joinfirefish.org/firefish/firefish#tag=$pkgver"
+source=("git+https://git.joinfirefish.org/firefish/firefish#tag=v$pkgver"
         "${_pkgname}.install"
         "${_pkgname}.service"
         "${_pkgname}.sh"
