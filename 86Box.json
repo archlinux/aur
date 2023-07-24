@@ -1,0 +1,13 @@
+﻿{
+  "SortColumn": 0,
+  "SortOrder": 0,
+  "EXEdir": "/usr/bin/",
+  "CFGdir": "86Box VMs/",
+  "MinimizeOnVMStart": 0,
+  "ShowConsole": 1,
+  "MinimizeToTray": 0,
+  "CloseToTray": 0,
+  "EnableLogging": 0,
+  "LogPath": "",
+  "EnableGridLines": 0
+}

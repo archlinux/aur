@@ -1,0 +1,28 @@
+pkgbase = 86box-manager-git
+	pkgdesc = A (cross-platform) configuration manager for the 86Box emulator
+	pkgver = v1.7.6.0d.r5.ga045810
+	pkgrel = 1
+	url = https://github.com/RetBox/86BoxManagerX
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-6.0
+	depends = dotnet-runtime-6.0
+	depends = libice
+	depends = libsm
+	optdepends = 86box>=3.0: emulator
+	provides = 86box-manager
+	conflicts = 86box-manager
+	backup = opt/86BoxManager/86Box.json
+	backup = opt/86BoxManager/86BoxVMs.json
+	source = git+https://github.com/RetBox/86BoxManagerX.git
+	source = 86BoxManager
+	source = 86BoxManager.desktop
+	source = 86Box.json
+	source = 86BoxVMs.json
+	md5sums = SKIP
+	md5sums = 10d648510f7337be51436f6191e45bdb
+	md5sums = a0078cf9c88267a2fff82abe55d988f8
+	md5sums = fcc4426670c3fbe036bc29ab45ba3620
+	md5sums = 057671d91413133a13a89fd6525c9bc3
+
+pkgname = 86box-manager-git
