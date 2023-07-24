@@ -7,6 +7,6 @@ pkgbase = libspinvideo-c-dev
     url = https://www.flir.com/
     depends = libspinnaker
     source = libspinvideo-c-dev-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/libspinvideo-c-dev-3.1.0.79.tar.gz
-    sha256sums = 859af06db15ed6f9e0c4a7528cf49043d117593e3a3e362162e7d60cc866a9b3
+    sha256sums = 16463775b7a798e5f8d83dffc41dcbfd9ced068dec93109882b93e42a41ad92f
 
 pkgname = libspinvideo-c-dev
