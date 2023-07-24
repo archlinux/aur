@@ -3,13 +3,13 @@
 _appname=86BoxManager
 pkgname=86box-manager
 pkgver=1.7.6.0e
-pkgrel=1
+pkgrel=2
 pkgdesc="A (cross-platform) configuration manager for the 86Box emulator"
 arch=('x86_64')
 url="https://github.com/RetBox/86BoxManagerX"
 license=('MIT')
 depends=('libice' 'libsm')
-optdepends=('86box: emulator')
+optdepends=('86box>=3.0: emulator')
 backup=("opt/$_appname/86Box.json" "opt/$_appname/86BoxVMs.json")
 source=(
 	"https://github.com/RetBox/86BoxManagerX/releases/download/v$pkgver/${_appname}_linux.tar.gz"
