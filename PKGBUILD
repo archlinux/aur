@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/uqfoundation/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-dill python-pox)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-h5py)
 optdepends=('python-jsonpickle: for serializers support'
   'python-cloudpickle: for serializers support'
@@ -21,16 +21,18 @@ sha512sums=('78b9367d9bed22d68aa4d78201f0d81273d637ef86e9489c83890c3d50bea84ff89
 
 build() {
   cd ${_base}-${_base}-${pkgver}
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd ${_base}-${_base}-${pkgver}
-  python -m pytest -k 'not combinations and not basic and not alchemy and not methods and not roundtrip'
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest -k 'not combinations and not basic and not alchemy and not methods and not roundtrip'
 }
 
 package() {
   cd ${_base}-${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
