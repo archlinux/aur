@@ -5,7 +5,7 @@
 pkgname=unigine-tropics
 _pkgname=Unigine_Tropics
 pkgver=1.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Demonstration and benchmarking of the Unigine 3D engine"
 arch=('i686' 'x86_64')
 url="http://unigine.com/"
@@ -13,9 +13,9 @@ license=('custom')
 md5sums=('73729f5ccde2bcf991ecff10feb6dbdf'
          '322eea429002108ec286be641c5b9549')
 [ `uname -m` = 'i686' ] &&
-  depends=('libstdc++5' 'libxrandr' 'libgl' 'openal' 'libxinerama')
+  depends=('gcc-libs' 'libxrandr' 'libgl' 'openal' 'libxinerama')
 [ `uname -m` = 'x86_64' ] &&
-  depends=('lib32-libstdc++5' 'lib32-libxrandr' 'lib32-libgl' 'lib32-openal' 'lib32-libxinerama')
+  depends=('lib32-gcc-libs' 'lib32-libxrandr' 'lib32-libgl' 'lib32-openal' 'lib32-libxinerama')
 source=(https://assets.unigine.com/d/${_pkgname}-${pkgver}.run
         LICENSE)
 build() {
