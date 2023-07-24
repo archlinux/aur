@@ -1,0 +1,13 @@
+#!/bin/bash
+
+post_install() {
+  printf "==> Run 'findpkg --update' to initialize the database\n"
+}
+
+post_remove() {
+  # the database might not be removed, notify the user
+  if [[ -f /var/lib/findpkg/database ]]; then
+    printf "==> var/lib/findpkg/database has not been removed\n"
+  fi
+}
+
