@@ -47,7 +47,7 @@ build() {
 package() {
     cd "$srcdir/${_name}"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    pip install -r requirements.txt
+    pip install --break-system-packages -r requirements.txt
 
     # make git repo available in opt 
     cd "$srcdir"
