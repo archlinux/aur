@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/opt/86BoxManager/86Manager "$@"

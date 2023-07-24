@@ -1,0 +1,24 @@
+pkgbase = 86box-manager
+	pkgdesc = A (cross-platform) configuration manager for the 86Box emulator
+	pkgver = 1.7.6.0e
+	pkgrel = 1
+	url = https://github.com/RetBox/86BoxManagerX
+	arch = x86_64
+	license = MIT
+	depends = libice
+	depends = libsm
+	optdepends = 86box: emulator
+	backup = opt/86BoxManager/86Box.json
+	backup = opt/86BoxManager/86BoxVMs.json
+	source = https://github.com/RetBox/86BoxManagerX/releases/download/v1.7.6.0e/86BoxManager_linux.tar.gz
+	source = 86BoxManager
+	source = 86BoxManager.desktop
+	source = 86Box.json
+	source = 86BoxVMs.json
+	md5sums = c1d70898edaa20188ec77e602f5d568c
+	md5sums = c18f7125469e87445d4d2a753fb185d4
+	md5sums = 812b067db1131f6ff5f135d9c687e55a
+	md5sums = fcc4426670c3fbe036bc29ab45ba3620
+	md5sums = 057671d91413133a13a89fd6525c9bc3
+
+pkgname = 86box-manager

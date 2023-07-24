@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=86Box Manager
+GenericName=Classic PC emulator manager
+Commend=Configuration manager for the 86Box emulator
+Path=$HOME
+Exec=86BoxManager
+Icon=86BoxManager
+Terminal=false
+Type=Application
+Categories=System;Emulator;
