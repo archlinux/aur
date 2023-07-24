@@ -5,7 +5,7 @@
 
 # Maintainer: Abigail Teague <ateague063@gmail.com>
 pkgname=luaclasslib
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Extends the Lua C API with Moonscript-compatible class support, with or without Moonscript"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('lua')
 makedepends=('cmake' 'git')
 source=("https://github.com/mousebyte/luaclasslib/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         "git+https://github.com/doctest/doctest.git")
-md5sums=('3def3dea1a0f5a95fff9facbc1c35cfb'
+md5sums=('466ed73d679363313a1c7dd830d4aed7'
          'SKIP')
 
 prepare() {
