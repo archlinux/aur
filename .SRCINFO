@@ -1,8 +1,9 @@
 pkgbase = pacman-pkgfile-hook
 	pkgdesc = Pacman hook to update the pkgfile database.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
+	license = unknown
 	depends = pkgfile
 	source = pkgfile.hook
 	md5sums = fb898371b45dbb50e35404ac9be8a43b

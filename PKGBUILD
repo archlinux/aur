@@ -3,7 +3,7 @@
 
 pkgname=pacman-pkgfile-hook
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Pacman hook to update the pkgfile database.'
 arch=('any')
 license=('unknown')
