@@ -1,0 +1,12 @@
+pkgbase = libspinnaker-dev
+    pkgdesc = A library used to communicate with FLIR digital cameras. This package contains shared libraries
+    pkgver = 3.1.0.79
+    pkgrel = 1
+    arch = x86_64
+    license = custom:FLIR EULA
+    url = https://www.flir.com/
+    depends = libspinnaker
+    source = libspinaker-c-dev-3.1.0.79.tar.gz::https://github.com/daizhirui/spinnaker-sdk-arch/raw/main/libspinnaker-dev-3.1.0.79.tar.gz
+    sha256sums = 88d173d4af3a8d89710bcfacae4771d7ffc4504a98dd02f8f2362edefa53b7bc
+
+pkgname = libspinnaker-dev
