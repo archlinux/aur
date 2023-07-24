@@ -1,0 +1,10 @@
+--- a/src/cs_rcu_list.h
++++ b/src/cs_rcu_list.h
+@@ -24,6 +24,7 @@
+ #include <cstddef>
+ #include <memory>
+ #include <mutex>
++#include <initializer_list>
+ 
+ namespace libguarded
+ {
