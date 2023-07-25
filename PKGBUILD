@@ -1,7 +1,7 @@
 # Maintainer: Fuero <fuerob@gmail.com>
 pkgname=xeol
 # renovate: datasource=github-releases depName=noqcks/xeol
-pkgver=0.4.3
+pkgver=0.4.5
 _pkgver=v${pkgver}
 pkgrel=1
 pkgdesc='An End Of Life (EOL) package scannner for container images and filesystems.'
@@ -11,7 +11,7 @@ license=(APACHE)
 makedepends=(git go podman-docker)
 options=('!lto')
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-sha256sums=('d913c460a2b5180223a3512da3880c32b7f4c0e613caa3a8e163bf756d2ab395')
+sha256sums=('9bf039f4f1822ef2dd45f5a5b840059fa676f04600dcf3049e131a7fa40a4afe')
 options=('!lto')
 
 build() {

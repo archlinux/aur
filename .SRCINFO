@@ -1,6 +1,6 @@
 pkgbase = xeol
 	pkgdesc = An End Of Life (EOL) package scannner for container images and filesystems.
-	pkgver = 0.4.3
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/noqcks/xeol
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = xeol
 	makedepends = go
 	makedepends = podman-docker
 	options = !lto
-	source = xeol-v0.4.3.tar.gz::https://github.com/noqcks/xeol/archive/refs/tags/v0.4.3.tar.gz
-	sha256sums = d913c460a2b5180223a3512da3880c32b7f4c0e613caa3a8e163bf756d2ab395
+	source = xeol-v0.4.5.tar.gz::https://github.com/noqcks/xeol/archive/refs/tags/v0.4.5.tar.gz
+	sha256sums = 9bf039f4f1822ef2dd45f5a5b840059fa676f04600dcf3049e131a7fa40a4afe
 
 pkgname = xeol
