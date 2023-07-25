@@ -1,6 +1,6 @@
 pkgbase = python-port-for
 	pkgdesc = Command-line utility and a python library that helps with local TCP ports managment
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/kmike/port-for
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-port-for
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
-	source = python-port-for-0.7.0.tar.gz::https://github.com/kmike/port-for/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = 4e0f1dc17c3f4da7afb93d5213a4f77625f4a254c0a2f250b15e8999648ff536
+	source = python-port-for-0.7.1.tar.gz::https://github.com/kmike/port-for/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = 1f60db6229a87c7719fdc6454e09b9d2181ada65c03c2c2ca64086cc45d7e5ad
 
 pkgname = python-port-for
