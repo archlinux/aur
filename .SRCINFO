@@ -1,10 +1,10 @@
 pkgbase = boost174
 	pkgdesc = Free peer-reviewed portable C++ source libraries (version 1.74)
 	pkgver = 1.74.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.boost.org/
 	arch = x86_64
-	license = custom
+	license = Boost
 	makedepends = icu
 	makedepends = python
 	makedepends = python-numpy
@@ -24,54 +24,19 @@ pkgbase = boost174
 
 pkgname = boost174
 	pkgdesc = Free peer-reviewed portable C++ source libraries (version 1.74) (development headers)
-	depends = boost-libs=1.74.0
+	depends = boost174-libs
+	depends = glibc
+	depends = gcc-libs
 	optdepends = python: for python bindings
 	options = staticlibs
 
 pkgname = boost174-libs
 	pkgdesc = Free peer-reviewed portable C++ source libraries (version 1.74) (runtime libraries)
 	depends = bzip2
-	depends = zlib
+	depends = gcc-libs
+	depends = glibc
 	depends = icu
+	depends = xz
+	depends = zlib
 	depends = zstd
 	optdepends = openmpi: for mpi support
-	provides = boost-libs=1.74.0
-	provides = libboost_atomic.so=1.74.0
-	provides = libboost_chrono.so=1.74.0
-	provides = libboost_container.so=1.74.0
-	provides = libboost_context.so=1.74.0
-	provides = libboost_contract.so=1.74.0
-	provides = libboost_coroutine.so=1.74.0
-	provides = libboost_date_time.so=1.74.0
-	provides = libboost_fiber.so=1.74.0
-	provides = libboost_filesystem.so=1.74.0
-	provides = libboost_graph.so=1.74.0
-	provides = libboost_graph_parallel.so=1.74.0
-	provides = libboost_iostreams.so=1.74.0
-	provides = libboost_locale.so=1.74.0
-	provides = libboost_log.so=1.74.0
-	provides = libboost_log_setup.so=1.74.0
-	provides = libboost_math_c99.so=1.74.0
-	provides = libboost_math_c99f.so=1.74.0
-	provides = libboost_math_c99l.so=1.74.0
-	provides = libboost_math_tr1.so=1.74.0
-	provides = libboost_math_tr1f.so=1.74.0
-	provides = libboost_math_tr1l.so=1.74.0
-	provides = libboost_mpi.so=1.74.0
-	provides = libboost_numpy.so=1.74.0
-	provides = libboost_prg_exec_monitor.so=1.74.0
-	provides = libboost_program_options.so=1.74.0
-	provides = libboost_python.so=1.74.0
-	provides = libboost_random.so=1.74.0
-	provides = libboost_regex.so=1.74.0
-	provides = libboost_serialization.so=1.74.0
-	provides = libboost_stacktrace_addr2line.so=1.74.0
-	provides = libboost_stacktrace_basic.so=1.74.0
-	provides = libboost_stacktrace_noop.so=1.74.0
-	provides = libboost_system.so=1.74.0
-	provides = libboost_thread.so=1.74.0
-	provides = libboost_timer.so=1.74.0
-	provides = libboost_type_erasure.so=1.74.0
-	provides = libboost_unit_test_framework.so=1.74.0
-	provides = libboost_wave.so=1.74.0
-	provides = libboost_wserialization.so=1.74.0

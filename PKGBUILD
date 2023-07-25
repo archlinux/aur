@@ -6,12 +6,12 @@ pkgname=(
   boost174-libs
 )
 pkgver=1.74.0
-pkgrel=3
+pkgrel=4
 _srcname=boost_${pkgver//./_}
 pkgdesc="Free peer-reviewed portable C++ source libraries (version 1.74)"
 arch=(x86_64)
 url="https://www.boost.org/"
-license=(custom)
+license=(Boost)
 makedepends=(
   icu
   python
@@ -36,7 +36,7 @@ sha256sums=(
 )
 
 prepare() {
-  cd $_srcname
+  cd "$_srcname"
 
   # https://github.com/boostorg/ublas/issues/96
   patch -Np2 -i ../$pkgbase-ublas-c++20-allocator-patch1.patch
@@ -50,17 +50,21 @@ prepare() {
 }
 
 build() {
-  local JOBS="$(sed 's/.*\(-j *[0-9]\+\).*/\1/' <<<$MAKEFLAGS)"
-  local python_version=$(
+  local JOBS
+  local python_version
+
+  # shellcheck disable=2001
+  JOBS="$(sed 's/.*\(-j *[0-9]\+\).*/\1/' <<< "$MAKEFLAGS")"
+  python_version=$(
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
 
-  pushd $_srcname/tools/build
+  pushd "$_srcname/tools/build"
   ./bootstrap.sh --cxxflags="$CXXFLAGS $LDFLAGS"
   ./b2 install --prefix="$srcdir"/fakeinstall
   ln -s b2 "$srcdir"/fakeinstall/bin/bjam
   popd
 
-  cd $_srcname
+  cd "$_srcname"
   ./bootstrap.sh --with-toolset=gcc --with-icu --with-python=python3
 
   # support for OpenMPI
@@ -78,22 +82,28 @@ build() {
     runtime-link=shared \
     link=shared,static \
     toolset=gcc \
-    python=$python_version \
+    python="$python_version" \
     cflags="$CPPFLAGS $CFLAGS -fPIC -O3 -ffat-lto-objects" \
     cxxflags="$CPPFLAGS $CXXFLAGS -fPIC -O3 -ffat-lto-objects" \
     linkflags="$LDFLAGS" \
     --layout=system \
-    $JOBS \
+    "$JOBS" \
     \
     --prefix="$srcdir"/fakeinstall
 }
 
 package_boost174() {
-  local python_version=$(
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+  local python_version
+  python_version=$(
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))' \
+  )
 
   pkgdesc+=' (development headers)'
-  depends=("boost-libs=$pkgver")
+  depends=(
+    boost174-libs
+    glibc
+    gcc-libs
+  )
   optdepends=('python: for python bindings')
   options=('staticlibs')
 
@@ -102,79 +112,43 @@ package_boost174() {
   cp -a fakeinstall/lib/cmake "$pkgdir/opt/boost-$pkgver/lib/"
   cp -a fakeinstall/{bin,include,share} "$pkgdir/opt/boost-$pkgver/"
 
-  for link in "$pkgdir"/opt/boost-$pkgver/lib/libboost_*.so; do
+  for link in "$pkgdir/opt/boost-$pkgver/lib/"libboost_*.so; do
     target="$(readlink "$link")"
     ln -nfs "/usr/lib/$target" "$link"
   done
 
   # https://github.com/boostorg/python/issues/203#issuecomment-391477685
   for _lib in python numpy; do
-    ln -srL "$pkgdir"/opt/boost-$pkgver/lib/libboost_${_lib}{${python_version/.},${python_version%.*}}.so
+    ln -srL "$pkgdir"/opt/boost-$pkgver/lib/libboost_${_lib}{"${python_version/.}","${python_version%.*}"}.so
   done
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $_srcname/LICENSE_1_0.txt
 }
 
 package_boost174-libs() {
-  local python_version=$(
-    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+  local python_version
+  python_version=$(
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))' \
+  )
 
   pkgdesc+=' (runtime libraries)'
-  depends=('bzip2' 'zlib' 'icu' 'zstd')
-  optdepends=('openmpi: for mpi support')
-  provides=(
-    "boost-libs=$pkgver"
-
-    "libboost_atomic.so=$pkgver"
-    "libboost_chrono.so=$pkgver"
-    "libboost_container.so=$pkgver"
-    "libboost_context.so=$pkgver"
-    "libboost_contract.so=$pkgver"
-    "libboost_coroutine.so=$pkgver"
-    "libboost_date_time.so=$pkgver"
-    "libboost_fiber.so=$pkgver"
-    "libboost_filesystem.so=$pkgver"
-    "libboost_graph.so=$pkgver"
-    "libboost_graph_parallel.so=$pkgver"
-    "libboost_iostreams.so=$pkgver"
-    "libboost_locale.so=$pkgver"
-    "libboost_log.so=$pkgver"
-    "libboost_log_setup.so=$pkgver"
-    "libboost_math_c99.so=$pkgver"
-    "libboost_math_c99f.so=$pkgver"
-    "libboost_math_c99l.so=$pkgver"
-    "libboost_math_tr1.so=$pkgver"
-    "libboost_math_tr1f.so=$pkgver"
-    "libboost_math_tr1l.so=$pkgver"
-    "libboost_mpi.so=$pkgver"
-    "libboost_numpy${python_version/.}.so=$pkgver"
-    "libboost_prg_exec_monitor.so=$pkgver"
-    "libboost_program_options.so=$pkgver"
-    "libboost_python${python_version/.}.so=$pkgver"
-    "libboost_random.so=$pkgver"
-    "libboost_regex.so=$pkgver"
-    "libboost_serialization.so=$pkgver"
-    "libboost_stacktrace_addr2line.so=$pkgver"
-    "libboost_stacktrace_basic.so=$pkgver"
-    "libboost_stacktrace_noop.so=$pkgver"
-    "libboost_system.so=$pkgver"
-    "libboost_thread.so=$pkgver"
-    "libboost_timer.so=$pkgver"
-    "libboost_type_erasure.so=$pkgver"
-    "libboost_unit_test_framework.so=$pkgver"
-    "libboost_wave.so=$pkgver"
-    "libboost_wserialization.so=$pkgver"
+  depends=(
+    bzip2
+    gcc-libs
+    glibc
+    icu
+    xz
+    zlib
+    zstd
   )
+  optdepends=('openmpi: for mpi support')
 
   install -dm755 "$pkgdir"/usr/lib
   cp -a fakeinstall/lib/*.so.* "$pkgdir"/usr/lib/
 
   # https://github.com/boostorg/mpi/issues/112
-  local site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
-  install -d "$pkgdir"$site_packages/boost174
-  touch "$pkgdir"$site_packages/boost174/__init__.py
-  python -m compileall -o 0 -o 1 -o 2 "$pkgdir"$site_packages/boost174
-  cp fakeinstall/lib/boost-python*/mpi.so "$pkgdir"$site_packages/boost174/mpi.so
-
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" $_srcname/LICENSE_1_0.txt
+  local site_packages
+  site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
+  install -d "$pkgdir$site_packages/boost174"
+  touch "$pkgdir$site_packages/boost174/__init__.py"
+  python -m compileall -o 0 -o 1 -o 2 "$pkgdir$site_packages/boost174"
+  cp fakeinstall/lib/boost-python*/mpi.so "$pkgdir$site_packages/boost174/mpi.so"
 }
