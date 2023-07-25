@@ -1,0 +1,24 @@
+pkgbase = weaviate-bin
+	pkgdesc = An open source vector database written in Go
+	pkgver = 1.20.2
+	pkgrel = 1
+	url = https://weaviate.io
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	provides = weaviate
+	conflicts = weaviate
+	source = weaviate-bin-1.20.2.tgz::https://github.com/weaviate/weaviate/releases/download/v1.20.2/weaviate-v1.20.2-linux-amd64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/weaviate/weaviate/v1.20.2/LICENSE
+	source = weaviate.default
+	source = weaviate.service
+	source = weaviate.sysusers
+	source = weaviate.tmpfiles
+	sha256sums = 8dcdb5a1730cc6187f789e1017e70114ab718b2728ee4452d618415799e4f6b9
+	sha256sums = 842b046d8650148dce39b625a3fb1ef167652b20c5660fdf65233e4334c1baf4
+	sha256sums = a375b1c55be48563ea3284a264352f1673c3f8e8f83bfd337c2ddfaeb532ce6d
+	sha256sums = 1507f4003ed6d3d5230cc9570e6f69c3be6177b52496b976f10a93519626b86a
+	sha256sums = a644fc4eaa46e97381df09b5321e60a9ca1cfdac67277b8fe103fb4bd96d4fa0
+	sha256sums = 557f6c52ca3c4dc261a5ff11e4d998b9f66690c8ee2075450a2a225107b58f57
+
+pkgname = weaviate-bin

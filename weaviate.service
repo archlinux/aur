@@ -1,0 +1,19 @@
+[Unit]
+Description=Weaviate database server
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=weaviate
+Group=weaviate
+
+EnvironmentFile=-/etc/default/weaviate
+ExecStart=/usr/bin/weaviate --host 127.0.0.1 --port 8080 --scheme http
+LimitNOFILE=64000
+
+ProtectHome=true
+ProtectSystem=full
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

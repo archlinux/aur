@@ -1,0 +1,4 @@
+pkg/
+src/
+weaviate-bin*
+LICENSE
