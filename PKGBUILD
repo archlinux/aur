@@ -3,7 +3,7 @@
 _pkgname='python-libpcap'
 pkgname="${_pkgname}-git"
 pkgver=0.4.1+2.r98.20230128.b38a8cc
-pkgrel=3
+pkgrel=4
 pkgdesc="Python binding for the libpcap C library."
 arch=(
   'aarch64'
@@ -85,6 +85,7 @@ build() {
   gzip -9 build/texinfo/*.info
 }
 
+### 2023-07-25: `pytest` fails on importing the not-yet-installed module.
 # check() {
 #   cd "${srcdir}/${_pkgname}"
 #   printf '%s\n' " --> running 'pytest' ..."
@@ -99,7 +100,7 @@ package() {
   for _docfile in "${srcdir}/git.log" CHANGELOG.rst README.rst; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/$(basename "${_docfile}")"
   done
-  for _docdir in html qthelp text epub ; do
+  for _docdir in html qthelp text; do
     cp -rv "docs/build/${_docdir}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docdir}"
   done
   install -D -v -m644 docs/build/man/python-libpcap.1.gz "${pkgdir}/usr/share/man/man1/python-libpcap.1.gz"
