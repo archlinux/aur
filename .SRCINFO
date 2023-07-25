@@ -1,0 +1,13 @@
+pkgbase = ripdrag
+	pkgdesc = An application that lets you drag and drop files from and to the terminal.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/nik012003/ripdrag
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gtk4
+	source = ripdrag-0.2.1.tar.gz::https://github.com/nik012003/ripdrag/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = ae85bc12ac80600079bb57e650f34b1bafa26dc685567c0c73cf3c3595d564ab
+
+pkgname = ripdrag
