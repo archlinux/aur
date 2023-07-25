@@ -3,16 +3,16 @@
 pkgname=ghostery-dawn-bin
 _vendorname=ghostery-dawn
 _shortname=ghostery
-# Change following variable to fr or de to build deutsch or french version
+# Change the following variable to 'fr' or 'de' to build the German or French version.
 # Warning: Don't forget to also change the first sha256sum hash with the
-# correct version bellow
+# correct version below
 _lang=en-US
-pkgver=2023.1
-_builddate=2023-03-03
-pkgrel=2
+pkgver=2023.6
+_builddate=2023-07-21
+pkgrel=1
 pkgdesc="Privacy aware web browser from Ghostery (binary release)."
 arch=('x86_64')
-url="https://www.ghostery.com/dawn"
+url="https://www.ghostery.com/ghostery-private-browser"
 license=('MPL2')
 provides=(ghostery-dawn)
 conflicts=(ghostery-dawn)
@@ -23,13 +23,13 @@ source=("https://github.com/ghostery/user-agent-desktop/releases/download/${_bui
         "https://raw.githubusercontent.com/ghostery/user-agent-desktop/master/LICENSE"
         "https://raw.githubusercontent.com/ghostery/ghostery-browser-linux-support/main/data/${_vendorname}.desktop"
         "ghostery.profile")
-# Hash to use with en-US: dab32f80be4a50b475810bfabaf524c28f79a60703e72db2337180dda5167ca1
-# Hash to use with de: 5fd034b9b6c45fad8c4b125f57faa36fed87478b49f621762d9d897382551c81
-# Hash to use with fr: 5a1cb447a021596f51fa37c0445c7d93b27e9b3b929ab693ca45296ac816fd3e
-sha256sums=('02cae41858166f46a18f0a5220550d6ad0405854caecf71f193afada50ff321f'
+sha256sums=('84bbd2221172e4b78fc88c8f9c46af0a43c8cc9e08d33ec32e7e35334b9e8609'
             '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
-            'ef652d37bf0e1c9087cba10ab41e5e8475ca8ce5a990b122b9bcdfd8f658af65'
+            '9b442a245fda8245271ce7b68de6d0756a5cbed19255125f1068395455798e94'
             'dbdfb7e32bb874d6b0c67b10524508620e2137662b7f928750f41f0df926040f')
+# Hash to use with en-US: 84bbd2221172e4b78fc88c8f9c46af0a43c8cc9e08d33ec32e7e35334b9e8609
+# Hash to use with de: 2a794ce3de918ab25dae59d8106117be35e08ccd469c11984a8aef9d3d5735c2
+# Hash to use with fr: d552c93c23905f396d4e220b1a27ba0837ce0879adeeb6353c6b4d2dc0dd0cac
 
 prepare() {
   # NOTE: the following line will be removed once related fix is integrated in
