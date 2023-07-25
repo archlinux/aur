@@ -1,0 +1,11 @@
+pkgbase = bde
+	pkgdesc = Bloomberg Basic Development Environment - Common C++ Libraries used instead of the STL
+	pkgver = 3.117.0.0
+	pkgrel = 1
+	url = https://github.com/bloomberg/bde
+	arch = any
+	license = Apache
+	source = bde::git+https://github.com/bloomberg/bde#tag=3.117.0.0
+	md5sums = SKIP
+
+pkgname = bde
