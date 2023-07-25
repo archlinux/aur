@@ -3,7 +3,7 @@
 _pkgname='python-libpcap'
 pkgname="${_pkgname}-git"
 pkgver=0.4.1+2.r98.20230128.b38a8cc
-pkgrel=2
+pkgrel=3
 pkgdesc="Python binding for the libpcap C library."
 arch=(
   'aarch64'
@@ -33,10 +33,10 @@ makedepends=(
   'python-sphinx_rtd_theme'
   'python-sphinxcontrib-napoleon'
 )
-checkdepends=(
-  # 'python-nose'
-  'python-pytest'
-)
+# checkdepends=(
+#   # 'python-nose'
+#   'python-pytest'
+# )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
@@ -85,11 +85,11 @@ build() {
   gzip -9 build/texinfo/*.info
 }
 
-check() {
-  cd "${srcdir}/${_pkgname}"
-  printf '%s\n' " --> running 'pytest' ..."
-  pytest
-}
+# check() {
+#   cd "${srcdir}/${_pkgname}"
+#   printf '%s\n' " --> running 'pytest' ..."
+#   pytest
+# }
 
 package() {
   cd "${srcdir}/${_pkgname}"

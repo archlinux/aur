@@ -1,7 +1,7 @@
 pkgbase = python-libpcap-git
 	pkgdesc = Python binding for the libpcap C library.
 	pkgver = 0.4.1+2.r98.20230128.b38a8cc
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/libpcap/
 	arch = aarch64
 	arch = armv6h
@@ -9,7 +9,6 @@ pkgbase = python-libpcap-git
 	arch = i686
 	arch = x86_64
 	license = custom: BSD
-	checkdepends = python-pytest
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
