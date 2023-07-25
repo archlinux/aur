@@ -1,7 +1,7 @@
 pkgbase = dsview
 	pkgdesc = Client software that supports the DreamSourceLab logic analyzer
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.dreamsourcelab.com/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = dsview
 	depends = qt5-base
 	depends = fftw
 	depends = python
+	depends = libusb
 	source = DSView-1.3.0.tar.gz::https://github.com/DreamSourceLab/DSView/archive/v1.3.0.tar.gz
 	sha384sums = 2fb32b0c48275ee4c7278fda59174aa7f7873a203952eded105cb7de1f2e60387a1db7a955455ceba5c269b911fe9a66
 
