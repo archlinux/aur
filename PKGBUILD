@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scran
-_pkgver=1.28.1
+_pkgver=1.28.2
 pkgname=r-${_pkgname,,}
-pkgver=1.28.1
+pkgver=1.28.2
 pkgrel=1
 pkgdesc='Methods for Single-Cell RNA-Seq Data Analysis'
 arch=('x86_64')
@@ -49,7 +49,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9735885070cade8291369bc59649ed0ec152fb0e25a66ccc5327f4c2b3ead5e1')
+sha256sums=('adcae27f5a2411c86b5781c9d3d8fef4ecfd675e4e004fd1957a6747822e45d1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
