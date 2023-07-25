@@ -1,9 +1,8 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
-# OLD-Maintainer: sportscliche <mph at sportscliche dot com>
 
 pkgname=perl-paper-specs
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='This packages the perl-paper-specs distribution, containing the Paper::Specs module!'
 _dist=Paper-Specs
 arch=('any')

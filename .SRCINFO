@@ -1,7 +1,7 @@
 pkgbase = perl-paper-specs
 	pkgdesc = This packages the perl-paper-specs distribution, containing the Paper::Specs module!
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/PDF-Labels
 	arch = any
 	license = GPL
