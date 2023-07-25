@@ -8,6 +8,7 @@ pkgbase = dgraph-bin
 	license = APACHE
 	license = custom:DCL
 	provides = dgraph
+	provides = badgerdb
 	conflicts = dgraph
 	conflicts = dgraph-git
 	source = dgraph-23.0.1.tar.gz::https://github.com/dgraph-io/dgraph/releases/download/v23.0.1/dgraph-linux-amd64.tar.gz

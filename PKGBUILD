@@ -11,8 +11,8 @@ pkgdesc='Fast, transactional, distributed graph database'
 arch=('x86_64')
 url='https://github.com/dgraph-io/dgraph'
 license=('APACHE' 'custom:DCL')
-provides=('dgraph')
-conflicts=('dgraph' 'dgraph-git')
+provides=('dgraph' 'badgerdb')
+conflicts=('dgraph' 'dgraph-git' 'badgerdb')
 install=$pkgname.install
 source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd64.tar.gz"
         "dgraph-$pkgver.tar.gz.sha256::$url/releases/download/v$pkgver/dgraph-checksum-linux-amd64.sha256"
@@ -33,11 +33,9 @@ sha256sums=('747569a48eb5a5f57b0e71aabe24ef763c77b8be23995fa320a3f42dae8564ca'
 
 package() {
   cd "$srcdir"
-  mv badger-linux-amd64 badger
   install -Dm644 DCL.txt "$pkgdir/usr/share/licenses/$pkgname/DCL.txt"
-  for binary in dgraph badger; do
-    install -Dm755 $binary "$pkgdir/usr/bin/$binary"
-  done
+  install -Dm755 dgraph "$pkgdir/usr/bin/dgraph"
+  install -Dm755 badger-linux-amd64 "$pkgdir/usr/bin/badger"
   install -Dm644 dgraph-alpha.service "$pkgdir/usr/lib/systemd/system/dgraph-alpha.service"
   install -Dm644 dgraph-zero.service "$pkgdir/usr/lib/systemd/system/dgraph-zero.service"
   install -Dm755 add_dgraph_account.sh "$pkgdir/usr/share/dgraph/add_dgraph_account.sh"
