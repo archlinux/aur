@@ -1,8 +1,8 @@
 pkgbase = firefish-beta
 	pkgdesc = A fun, new way to experience social media
 	pkgver = 14.0.0rc3
-	pkgrel = 4
-	url = https://join.firefish.org
+	pkgrel = 5
+	url = https://joinfirefish.org
 	install = firefish.install
 	arch = x86_64
 	license = AGPL3

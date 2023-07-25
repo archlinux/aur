@@ -5,9 +5,9 @@
 pkgname=firefish-beta
 _pkgname=firefish
 pkgver=14.0.0rc3
-pkgrel=4
+pkgrel=5
 pkgdesc='A fun, new way to experience social media'
-url='https://join.firefish.org'
+url='https://joinfirefish.org'
 arch=('x86_64')
 license=('AGPL3' 'MIT')
 depends=('nodejs' 'npm' 'postgresql' 'redis' 'pnpm' 'zip')
