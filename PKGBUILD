@@ -4,7 +4,7 @@ _pkgname=uncso2
 pkgname=$_pkgname-bin
 pkgdesc='A file extractor for Counter-Strike: Online 2 and Titanfall Online (binary release)'
 pkgver=2.0.5
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/L-Leite/UnCSO2"
 license=('GPL3')
@@ -15,7 +15,7 @@ _appimage=UnCSO2-$pkgver-linux64_gcc.AppImage
 source=("$url/releases/download/v$pkgver/$_appimage"
         "https://raw.githubusercontent.com/L-Leite/UnCSO2/v$pkgver/resources/$_pkgname.svg")
 sha256sums=('91527b05a5ff706df55e2f91a6d202ac48e2a604e98251a7dc5fbc8ef5e7af22'
-            '542c5a838f5537443eaf309143afc7f6d2192b0a88a5fa0c73dc08b6596c8ad5')
+            'c3f8e700a18aa951701e50c33556740574d04bcfbfd31e9eb9083b34d44c107f')
 
 prepare() {
   # Extract the AppImage
