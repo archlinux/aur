@@ -34,6 +34,7 @@ depends=(
   pipewire
   startup-notification
   xorg-xwayland
+  libei
 )
 makedepends=(
   egl-wayland
