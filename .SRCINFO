@@ -1,11 +1,13 @@
 pkgbase = uncso2-bin
 	pkgdesc = A file extractor for Counter-Strike: Online 2 and Titanfall Online (binary release)
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/L-Leite/UnCSO2
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
+	provides = uncso2
+	conflicts = uncso2
 	source = https://github.com/L-Leite/UnCSO2/releases/download/v2.0.5/UnCSO2-2.0.5-linux64_gcc.AppImage
 	sha256sums = 91527b05a5ff706df55e2f91a6d202ac48e2a604e98251a7dc5fbc8ef5e7af22
 
