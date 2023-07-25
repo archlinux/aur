@@ -14,7 +14,6 @@ pkgbase = python-superqt
 	depends = python-qtpy
 	depends = python-typing-extensions
 	depends = qt5-python-bindings
-	provides = python-superqt
 	source = https://files.pythonhosted.org/packages/source/s/superqt/superqt-0.4.1.tar.gz
 	sha256sums = a1037a2cef11afb597c2f3c47b532b5e8c9143e8ebed5b1b8eba823524378118
 

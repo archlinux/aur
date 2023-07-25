@@ -24,7 +24,6 @@ depends=(
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('a1037a2cef11afb597c2f3c47b532b5e8c9143e8ebed5b1b8eba823524378118')
-provides=("python-${_name}")
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
