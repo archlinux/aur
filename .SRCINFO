@@ -1,0 +1,27 @@
+pkgbase = frame-eth-canary-git
+	pkgdesc = System-wide Web3
+	pkgver = 0.6.7.canary.1.r0.g92b0c47e
+	pkgrel = 1
+	url = https://frame.sh
+	install = frame-eth-canary.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = npm
+	makedepends = nvm
+	makedepends = libusb
+	makedepends = python3
+	makedepends = git
+	makedepends = node-gyp
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	provides = frame
+	conflicts = frame-eth-dev
+	conflicts = frame-eth
+	source = git+https://github.com/frame-labs/frame-canary.git
+	source = frame-eth-canary.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = frame-eth-canary-git

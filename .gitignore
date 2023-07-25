@@ -1,0 +1,9 @@
+#Ignore everything
+*
+
+#But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!frame-eth-canary.desktop
+!frame-eth-canary.install
