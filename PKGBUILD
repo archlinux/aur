@@ -6,7 +6,7 @@
 # Set these variables to ANYTHING that is not null to enable them
 
 # Set to force building with a particular commit ~ takes precedence over _bcachefs_branch
-_bcachefs_commit=be3ef67f38e1e6a6bdbe2253b6bf4c19be05dcb9 # prandom: Remove unused include
+_bcachefs_commit=32564d78eb6d7f806354419b6d228e508bd8a3ea # prandom: Remove unused include
 
 # Set to force building with a particular branch
 _bcachefs_branch=
