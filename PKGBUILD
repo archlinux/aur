@@ -5,7 +5,7 @@ _name=libvarnam-ibus
 pkgname="${_name}-git"
 pkgver=r40.79ee71e
 pkgrel=2
-pkgdesc="Transliteration and reverse transliteration for Indian languages"
+pkgdesc="IBus engine for libvarnam providing Indian language input method"
 arch=('x86_64')
 url="https://www.varnamproject.com/"
 license=('Custom')
@@ -13,6 +13,7 @@ makedepends=('cmake' 'git')
 source=("git+https://github.com/varnamproject/libvarnam-ibus.git")
 sha256sums=('SKIP')
 depends=('libvarnam' 'ibus')
+provides=('libvarnam-ibus')
 
 pkgver() {
   cd ${_name}

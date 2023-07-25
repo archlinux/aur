@@ -1,5 +1,5 @@
 pkgbase = libvarnam-ibus-git
-	pkgdesc = Transliteration and reverse transliteration for Indian languages
+	pkgdesc = IBus engine for libvarnam providing Indian language input method
 	pkgver = r40.79ee71e
 	pkgrel = 2
 	url = https://www.varnamproject.com/
@@ -9,6 +9,7 @@ pkgbase = libvarnam-ibus-git
 	makedepends = git
 	depends = libvarnam
 	depends = ibus
+	provides = libvarnam-ibus
 	source = git+https://github.com/varnamproject/libvarnam-ibus.git
 	sha256sums = SKIP
 
