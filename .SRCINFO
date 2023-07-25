@@ -1,7 +1,7 @@
 pkgbase = k8s-ldap-auth
 	pkgdesc = Kubernetes webhook token authentication plugin implementation using ldap.
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vbouchaud/k8s-ldap-auth
 	arch = x86_64
 	arch = armv7l
