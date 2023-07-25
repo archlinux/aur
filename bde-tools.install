@@ -1,0 +1,3 @@
+post_install() {
+    echo "Remember to add /usr/bin/bde-tools/bin on your PATH"
+}

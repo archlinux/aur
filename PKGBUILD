@@ -17,18 +17,24 @@ optdepends=(
 	'clang: Alternative to GCC compiler collection'
 	'perl: Needed only for code generation'
 )
-source=("git+https://github.com/bloomberg/bde-tools.git")
+
+source=("bde-tools::git+https://github.com/bloomberg/bde-tools#tag=${pkgver}")
+
 md5sums=('SKIP')
+
+install="bde-tools.install"
 
 package() {
 	cd "$pkgname"
-	git checkout "3.117.0.0"
 	install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	#remove the git information, we are not interested in that.
 	rm -rf ".git"
 
 	# copy the whole directory to `/usr/bin/bde-tools`
+	# The official documentation of BDE Tools asks us to
+	# download the binaries and change the $path variable
+	# to point to it's internal `bin` folder.
 	install -d "${pkgdir}/usr/bin/bde-tools"
 	cp -r * "${pkgdir}/usr/bin/bde-tools"
 }
