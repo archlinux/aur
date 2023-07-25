@@ -1,18 +1,18 @@
 pkgbase = python-psygnal
 	pkgdesc = Fast python callback/event system modeled after Qt Signals
-	pkgver = 0.7.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/pyapp-kit/psygnal
 	arch = any
 	license = BSD
 	makedepends = python-build
 	makedepends = python-hatch-vcs
+	makedepends = python-hatchling
 	makedepends = python-installer
 	depends = python
 	depends = python-mypy_extensions
 	depends = python-typing_extensions
-	provides = python-psygnal
-	source = https://files.pythonhosted.org/packages/source/p/psygnal/psygnal-0.7.0.tar.gz
-	sha256sums = 0963f77508126d35dcf7ce3933d0fde5b8e01230360bcf0ce1306eb40eb32e28
+	source = https://files.pythonhosted.org/packages/source/p/psygnal/psygnal-0.9.1.tar.gz
+	sha256sums = a42cd3e55c474673cc8f61e7cdb40fb647ca94868a1d262bf4b6d6aa2fc8bf27
 
 pkgname = python-psygnal
