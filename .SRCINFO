@@ -1,17 +1,17 @@
 pkgbase = python-in-n-out
 	pkgdesc = Python dependency injection you can taste.
-	pkgver = 0.1.6
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/pyapp-kit/in-n-out
 	arch = any
 	license = BSD
-	makedepends = python-setuptools-scm
 	makedepends = python-build
+	makedepends = python-hatch-vcs
+	makedepends = python-hatchling
 	makedepends = python-installer
-	makedepends = cython3
 	depends = python
 	provides = python-in-n-out
-	source = https://files.pythonhosted.org/packages/source/i/in-n-out/in-n-out-0.1.6.tar.gz
-	sha256sums = 3eece389d39130556598565b9a7bbd3bdd85a22b97ac2f0d351ca3c1da1dae26
+	source = https://files.pythonhosted.org/packages/source/i/in_n_out/in_n_out-0.1.8.tar.gz
+	sha256sums = 8162af8787e682eb4b36d047f914199d80f1124e3a41420cd53de680e7d0a254
 
 pkgname = python-in-n-out
