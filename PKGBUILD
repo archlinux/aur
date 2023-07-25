@@ -1,10 +1,10 @@
 # Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 
 _name='superqt'
-_author='napari'
+_author='pyapp-kit'
 pkgname="python-${_name}"
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Missing widgets and components for Qt-python.'
 arch=('any')
 url="https://github.com/${_author}/${_name}"
