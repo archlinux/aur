@@ -1,6 +1,6 @@
 pkgbase = pritunl-web-git
 	pkgdesc = Pritunl external web server
-	pkgver = 135.9f6f48b
+	pkgver = 179.017bb55
 	pkgrel = 1
 	url = https://github.com/pritunl/pritunl-web
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = pritunl-web-git
 	sha256sums = SKIP
 
 pkgname = pritunl-web-git
-

@@ -1,10 +1,10 @@
-# Maintainer: Jingbei Li <i@jingbei.li>
-# Contributor: Pritunl <contact@pritunl.com>
+# Mantainer: Alessio <alessio@linux.com>
+# Contributor: Jingbei Li <i@jingbei.li>
 
 _pkgname=pritunl-web
 pkgname=${_pkgname}-git
-pkgver=135.9f6f48b
-pkgrel=1
+pkgver=179.017bb55
+pkgrel=2
 pkgdesc="Pritunl external web server"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=("custom")
@@ -32,7 +32,6 @@ prepare() {
 	# https://github.com/pritunl/pritunl-web/pull/2
 	find . -type f -exec sed 's/Sirupsen/sirupsen/g' -i {} \;
 
-	go mod init
 }
 
 build() {
