@@ -4,16 +4,16 @@ pkgbase=python-neosctl
 _pyname=neosctl
 pkgname=("${pkgbase}")
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Meosctl for management of neos services via CLI "
 arch=('any')
 url="https://pypi.org/project/neosctl/"
 license=('custom')
-depends=('python-poetry-core')
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-poetry' 'python-poetry-core')
+depends=('python-poetry-core' 'python-typer' 'python-pytest-httpx' 'python-pygments')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-poetry' 'python-poetry-core' 'python-minio')
 checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=(SKIP)
+sha256sums=(65e19e22546281317163af643e6e25bad30dee942ca54c1e832b79ed910e0cac)
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -22,7 +22,6 @@ build() {
 
 package_python-neosctl() {
 
-    depends=('python-poetry-core')
     provides=('python-neosctl')
     cd ${srcdir}/${_pyname}-${pkgver}
 

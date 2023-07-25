@@ -1,7 +1,7 @@
 pkgbase = python-neosctl
 	pkgdesc = Meosctl for management of neos services via CLI
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/neosctl/
 	arch = any
 	license = custom
@@ -11,10 +11,13 @@ pkgbase = python-neosctl
 	makedepends = python-build
 	makedepends = python-poetry
 	makedepends = python-poetry-core
+	makedepends = python-minio
 	depends = python-poetry-core
+	depends = python-typer
+	depends = python-pytest-httpx
+	depends = python-pygments
 	source = https://files.pythonhosted.org/packages/source/n/neosctl/neosctl-0.9.1.tar.gz
-	md5sums = SKIP
+	sha256sums = 65e19e22546281317163af643e6e25bad30dee942ca54c1e832b79ed910e0cac
 
 pkgname = python-neosctl
-	depends = python-poetry-core
 	provides = python-neosctl
