@@ -3,10 +3,10 @@
 # Mantainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Piero Proietti <piero.proietti_at_gmail.com>
 
-_commit=9cb143646e688e9bb12541d116ab71fb412d40d9
+_commit=13b49973766cd0591feee3f70a518944e123c147
 pkgname=penguins-eggs
 pkgver=9.5.13
-pkgrel=1
+pkgrel=2
 pkgdesc="A console tool that allows you to remaster your system and redistribute it as live images on USB sticks or via PXE"
 arch=('any')
 url="https://penguins-eggs.net"
@@ -85,3 +85,4 @@ package() {
   # Install icon
   install -Dm644 assets/eggs.png -t "${pkgdir}/usr/share/pixmaps/"
 }
+
