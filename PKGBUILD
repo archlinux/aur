@@ -6,11 +6,11 @@
 # Contributer: nightuser <nightuser.android at gmail.com>
 
 pkgname=lxd
-pkgver=5.15
+pkgver=5.16
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
-url="https://linuxcontainers.org/lxd"
+url="https://ubuntu.com/lxd"
 license=('APACHE')
 depends=('lxc' 'lxcfs' 'squashfs-tools' 'dnsmasq' 'dqlite' 'libuv' 'ebtables' 'raft' 'sqlite' 'libcap' 'acl')
 makedepends=('go' 'git' 'tcl' 'apparmor' 'libseccomp' 'systemd')
@@ -26,13 +26,13 @@ optdepends=(
     'apparmor: apparmor support'
 )
 options=('!debug')
-source=("https://linuxcontainers.org/downloads/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.asc}
+source=("https://github.com/canonical/lxd/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
         "lxd.socket"
         "lxd.service"
         "lxd.sysusers")
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67'  # Stéphane Graber <stgraber@stgraber.org>
               'ED1CA1E7A6F80E22E5CB2DA84ACE106615754614') # Thomas Parrott <tomp@tomp.uk>
-sha256sums=('7b3ffcef9caed1762ee4e45fe1a93a44dd63586c6e1a4d27f74db7cc992896e3'
+sha256sums=('7afb4d3d9be7c7caf3affb49904a7413b06150158705225d32d649424dd5648f'
             'SKIP'
             'b89a725223ef72b25eab25184084d069af312f8c23612c57fdb75427a510232e'
             '102d1d54186e0fc606a58f030231d76df6bd662b16dfd8f946e1f48e2b473b54'
