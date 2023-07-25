@@ -1,0 +1,12 @@
+pkgbase = ttf-guifanshusong
+	pkgdesc = 方正规范书宋，完整覆盖《通用规范汉字表》
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/judith04/general-standard-hanzi
+	arch = any
+	license = 个人非商用
+	depends = fontconfig
+	source = https://github.com/judith04/general-standard-hanzi/raw/main/方正规范书宋/FZGFShuSong_unicode.ttf
+	sha256sums = 1a754b202837653ec871da96930c517b2fc6da02e8528bfa5a42c5e2fe731a0d
+
+pkgname = ttf-guifanshusong
