@@ -27,6 +27,7 @@ chmod +x ./bin/$pkgname-$pkgver.run
 mkdir -p ./usr/share/applications/
 mkdir -p ./etc/xdg/autostart
 
+export PATH="/bin:$PATH"
 fakechroot fakeroot chroot . $pkgname-$pkgver.run  install --accept-licenses --confirm-command
 
 # remove temporary files for fakechroot
