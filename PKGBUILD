@@ -1,7 +1,7 @@
 # Maintainer: Fabrix Xm <fabrix.xm@gmail.com>
 _pkgname=confy
 pkgname=confy-git
-pkgver=0.6.4.r31.gfa67f5f
+pkgver=0.7.0.r0.g751f1cb
 pkgrel=1
 pkgdesc="Conferences schedule viewer for GNOME"
 arch=('x86_64' 'aarch64')
