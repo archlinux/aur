@@ -2,8 +2,8 @@
 # Contributor: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
 
 pkgname=govarnam-git
-pkgver=1.7.2.r0.gddcabaa
-pkgrel=1
+pkgver=1.9.0.r2.gda1b445
+pkgrel=2
 pkgdesc="Transliteration and reverse transliteration for Indian languages"
 arch=('x86_64')
 url="https://varnamproject.github.io/"
@@ -11,7 +11,7 @@ license=('AGPL')
 makedepends=('go')
 source=("${pkgname}::git+https://github.com/varnamproject/govarnam.git")
 sha256sums=('SKIP')
-provides=('govarnam' 'varnamcli')
+provides=('govarnam')
 
 prepare() {
   cd "$pkgname"
@@ -42,6 +42,12 @@ package() {
   cd "$pkgname"
 
   install -Dm755 varnamcli "$pkgdir"/usr/bin/varnamcli
+
   install -Dm644 libgovarnam.so "$pkgdir"/usr/lib/libgovarnam.so
+
+  install -Dm 644 govarnam.pc "${pkgdir}/usr/lib/pkgconfig/govarnam.pc"
+
+  mkdir -p "${pkgdir}/usr/include/libgovarnam"
+  cp -a --no-preserve=ownership *.h "${pkgdir}/usr/include/libgovarnam/"
 }
 
