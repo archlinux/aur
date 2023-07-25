@@ -2,7 +2,7 @@
 
 pkgname=rustgenhash
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolkit to generate and analyze hashes"
 arch=('x86_64')
 url="https://github.com/vschwaberow/rustgenhash"
@@ -31,7 +31,8 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm 755 "target/release/rgh" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
