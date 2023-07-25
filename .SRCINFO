@@ -1,7 +1,7 @@
 pkgbase = polkit-consolekit
 	pkgdesc = PolicyKit with ConsoleKit support for non-systemd systems
 	pkgver = 122
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.freedesktop.org/polkit/polkit
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = polkit-consolekit
 	depends = glib2
 	depends = pam
 	depends = expat
-	depends = js78
 	depends = duktape
 	provides = polkit=122
 	provides = libpolkit-agent-1.so
