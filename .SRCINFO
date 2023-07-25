@@ -1,6 +1,6 @@
 pkgbase = whisparr-nightly
 	pkgdesc = Porn download automation for usenet and torrents.
-	pkgver = 2.0.0.237
+	pkgver = 2.0.0.239
 	pkgrel = 1
 	url = https://github.com/Whisparr/Whisparr
 	arch = x86_64
@@ -28,11 +28,11 @@ pkgbase = whisparr-nightly
 	sha512sums = 86bf3eeed370680eae5ccad9be0caa1fa271461daca0d36c99b6b1a11a4e57a507e664e48ac27c454dea891db04a09766c76899169c335aa386ee90972cd6108
 	sha512sums = f938315fb803eb25fdf68cc9fbf6cda91589d20e0f41cafb5d6bb319a7642385a183b030e529ca194bac0e7f0ebb6aa992bd5ae18ec802ae6246dfe6cfcfc99d
 	sha512sums = d63e53264055e7281a0befaa9165f7651ecc2cf105787cc47b551ad4d412dfaa90c03a75d20108e87e0b4975655941a2823aaf22c50083e2250a2cb0a5db0491
-	source_x86_64 = Whisparr.nightly.2.0.0.237.linux-core-x64.tar.gz::https://whisparr.servarr.com/v1/update/nightly/updatefile?version=2.0.0.237&os=linux&runtime=netcore&arch=x64
-	sha512sums_x86_64 = dfa8ee0e7d6be30e58beeb0a7c72c02d0109bccdbb2522724895662dbbe8e85a3d91858927402e6009578b4194141c3b106aed95b3f3a842c37d06cc309aeffe
-	source_aarch64 = Whisparr.nightly.2.0.0.237.linux-core-arm64.tar.gz::https://whisparr.servarr.com/v1/update/nightly/updatefile?version=2.0.0.237&os=linux&runtime=netcore&arch=arm64
-	sha512sums_aarch64 = ac7106bdb18f96da2873b14a922f8cf231da08424816e17b08116fc859b91dcddf76cb2f148c89a4f3b2557bf22633114f2bb80b5c9a83434cb3004bdce07ae0
-	source_armv7h = Whisparr.nightly.2.0.0.237.linux-core-arm.tar.gz::https://whisparr.servarr.com/v1/update/nightly/updatefile?version=2.0.0.237&os=linux&runtime=netcore&arch=arm
-	sha512sums_armv7h = 9ad7d5cd25dce6b9dea0b92ba727619099fcd8368b1741bec919373a6daa618579c13cdd4d1e0373854a21367dbbf856f14bfc639c628dd02bb345b5289ee9b3
+	source_x86_64 = Whisparr.nightly.2.0.0.239.linux-core-x64.tar.gz::https://whisparr.servarr.com/v1/update/nightly/updatefile?version=2.0.0.239&os=linux&runtime=netcore&arch=x64
+	sha512sums_x86_64 = 303b5cca13c40c0411e92be0dcbfcb279f9e90169359c81c3c2d9904467853151fc87c18d02f0a3b1e4eb6a96002a9e70725742c48102a29fe60c8e965d5ec58
+	source_aarch64 = Whisparr.nightly.2.0.0.239.linux-core-arm64.tar.gz::https://whisparr.servarr.com/v1/update/nightly/updatefile?version=2.0.0.239&os=linux&runtime=netcore&arch=arm64
+	sha512sums_aarch64 = 8526b129d5ac0993a86a7a5b258a66e804b07b32fd90d8e304e04ee58b476320b3c1ea23ba400086761440e8ee047cf3d54c08f110b53f379ca353d4786c5d5a
+	source_armv7h = Whisparr.nightly.2.0.0.239.linux-core-arm.tar.gz::https://whisparr.servarr.com/v1/update/nightly/updatefile?version=2.0.0.239&os=linux&runtime=netcore&arch=arm
+	sha512sums_armv7h = c868500f8c954151b25911da0f2daf2d9c5ef08b36d936222fc1aed7fcab40a0cacf48b1333122c549fcd0691e99db5814fbd15aa5011bd805787ee9617301c5
 
 pkgname = whisparr-nightly
