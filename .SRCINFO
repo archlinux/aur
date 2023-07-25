@@ -1,10 +1,11 @@
 pkgbase = python-dataclasses-json
 	pkgdesc = Easily serialize Python Data Classes to and from JSON
 	pkgver = 0.5.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lidatong/dataclasses-json
 	arch = any
 	license = MIT
+	checkdepends = python-hypothesis
 	checkdepends = python-pytest-mypy
 	makedepends = python-build
 	makedepends = python-installer

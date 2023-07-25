@@ -5,7 +5,7 @@ pkgbase='python-dataclasses-json'
 pkgname=('python-dataclasses-json')
 _module='dataclasses-json'
 pkgver='0.5.13'
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily serialize Python Data Classes to and from JSON'
 url='https://github.com/lidatong/dataclasses-json'
 depends=(
@@ -19,7 +19,10 @@ makedepends=(
     'python-installer'
     'python-poetry-core'
 )
-checkdepends=('python-pytest-mypy')
+checkdepends=(
+    'python-hypothesis'
+    'python-pytest-mypy'
+)
 license=('MIT')
 arch=('any')
 source=("https://github.com/lidatong/dataclasses-json/archive/refs/tags/v${pkgver}.tar.gz")
