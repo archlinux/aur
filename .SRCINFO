@@ -1,7 +1,7 @@
 pkgbase = amazon-workspaces-bin
 	pkgdesc = Amazon Workspace Client
 	pkgver = 4.6.0.4187
-	pkgrel = 1
+	pkgrel = 2
 	url = https://clients.amazonworkspaces.com/
 	arch = x86_64
 	license = non-free
@@ -13,6 +13,7 @@ pkgbase = amazon-workspaces-bin
 	depends = libsoup
 	depends = graphicsmagick
 	depends = hiredis0.14
+	depends = openssl-1.1
 	depends = libva
 	options = staticlibs
 	source = amazon-workspaces-bin-4.6.0.4187.deb::https://d3nt0h4h6pmmc4.cloudfront.net/workspacesclient_focal_amd64.deb

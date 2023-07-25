@@ -3,7 +3,7 @@
 
 pkgname=amazon-workspaces-bin
 pkgver=4.6.0.4187
-pkgrel=1
+pkgrel=2
 _aptdist=focal
 pkgdesc='Amazon Workspace Client'
 arch=('x86_64')
@@ -16,6 +16,7 @@ depends=(
     'libsoup'
     'graphicsmagick'
     'hiredis0.14'
+    'openssl-1.1'
     'libva'
 )
 options=('staticlibs')
