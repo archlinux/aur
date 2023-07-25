@@ -3,7 +3,7 @@
 
 pkgname=openmsx-catapult
 pkgver=19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Front-end for openMSX: the MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org"
@@ -14,7 +14,7 @@ provides=("openmsx-catapult")
 conflicts=("openmsx-catapult-git")
 source=("https://github.com/openMSX/wxcatapult/archive/RELEASE_${pkgver//./_}.tar.gz"
         "wx3-fix.diff")
-md5sums=('e64b67e2a866f4173ee0d6ef8f687154'
+md5sums=('4119442b37390a6b2ce7ea04d1c62498'
          'c5b96def2590cef7d5250b0e21f52edc')
 
 build() {
