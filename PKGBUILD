@@ -1,7 +1,7 @@
 # Maintainer: mapleafgo <mapleafgo@163.com>
 pkgname=hugo-extended-cli
-pkgver=0.115.3
-pkgrel=2
+pkgver=0.115.4
+pkgrel=1
 pkgdesc="Extended version of Hugo"
 arch=('x86_64' 'aarch64')
 url="https://gohugo.io/"
