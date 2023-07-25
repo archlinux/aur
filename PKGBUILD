@@ -3,7 +3,7 @@
 _pkgname=lalalai
 pkgname=${_pkgname}
 pkgdesc="Vocal remover and instrumental AI splitter"
-pkgver=1.2.1
+pkgver=1.3.0
 _pkgrel=1
 pkgrel=${_pkgrel}
 provides=("${_pkgname}")
@@ -11,11 +11,11 @@ conflicts=("${_pkgname}")
 url="https://www.lalal.ai/"
 arch=("x86_64")
 license=("freeware-proprietary")
-_pkg="lalalai_${pkgver}-${_pkgrel}_amd64.deb"
+_pkg="lalalai_${pkgver}-1_amd64.deb"
 source=($_pkg::"https://d.lalal.ai/app/${_pkg}?source=aur"
         "https://s.lalal.ai/icons/favicon.svg"
         "lalalai.desktop")
-sha1sums=('fc7cb5931f474e0a29bb89128575910a5ac827eb'
+sha1sums=('2128153bbfdc2648b54acbd911042a8327aac777'
           '7f7c41c602bd20340bc79be3e73c364fcb774d73'
           '0879c6471548fda937e5bc28ae867f98ce1c3b9e')
 options=(!strip)
