@@ -3,10 +3,11 @@
 pkgbase=purc
 pkgname=purc
 pkgver=0.9.13
-pkgrel=0
+pkgrel=1
 pkgdesc="The prime HVML interpreter for C/C++ Language."
 arch=(x86_64
     aarch64
+    riscv64
     mips64
     powerpc
     powerpc64le)
