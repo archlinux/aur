@@ -4,7 +4,7 @@
 # Contributor: Mr. Outis <mroutis@protonmail.com>
 
 pkgname=dvc
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc='Open-source version control system for data science projects'
 arch=(any)
@@ -62,7 +62,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools-scm)
 _archive=("$pkgname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('158ee03dd2b71514e71c245ab2b223a0a4980e00bb21c4699492dbcd074439e0')
+sha256sums=('1185c7fac30076b1f183bfcc60d9865c4203b78d8ab687d51165e2539c642ecb')
 
 prepare() {
 	cd "$_archive"
