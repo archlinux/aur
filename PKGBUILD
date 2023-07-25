@@ -2,7 +2,7 @@
 pkgname="ripdrag"
 pkgver="0.2.1"
 pkgrel=1
-pkgdesc="Drag and drop files from and to the terminal"
+pkgdesc="Drag and drop files to and from the terminal"
 arch=(x86_64)
 url="https://github.com/nik012003/ripdrag"
 license=('GPL3')
