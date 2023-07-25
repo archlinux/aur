@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="final2x-bin"
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="2^x Image Super-Resolution"
 arch=('x86_64')
