@@ -2,7 +2,7 @@
 pkgname=python-async-tkinter-loop
 _name=async_tkinter_loop
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Asynchronous mainloop implementation for tkinter."
 arch=('any')
 url="https://github.com/insolor/async-tkinter-loop"
