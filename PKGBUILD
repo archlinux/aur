@@ -2,7 +2,7 @@
 
 pkgname=python-dnspython-git
 _pkgname=dnspython
-pkgver=2.4.0
+pkgver=v2.1.0.r541.ef6cf0b6
 pkgrel=1
 pkgdesc="A DNS toolkit for Python"
 arch=('any')
@@ -17,9 +17,9 @@ makedepends=(
 )
 checkdepends=('python-idna' 'python-cryptography' 'python-trio' 'python-pytest')
 optdepends=('python-cryptography: DNSSEC support'
-            'python-requests-toolbelt: DoH support'
+            'python-httpx: DNS-over-HTTPS support'
+            'python-h2: DNS-over-HTTPS support'
             'python-idna: support for updated IDNA 2008'
-            'python-curio: async support'
             'python-trio: async support'
             'python-sniffio: async support')
 source=("${_pkgname}::git+https://github.com/rthalley/${_pkgname}.git")
