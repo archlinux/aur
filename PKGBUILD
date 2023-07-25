@@ -1,8 +1,8 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=convco
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='Conventional commits, changelog, versioning, validation'
 url='https://convco.github.io'
 license=('MIT')
@@ -10,8 +10,8 @@ arch=('x86_64' 'i686' 'arm' 'aarch64')
 depends=('gcc-libs')
 makedepends=('cargo' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/convco/convco/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('88c92b175163c8847da7dd201d32106c51ff85e2c992c2a3ff67e29ecbe57abb')
-b2sums=('04a6d1610651b7fd397ef72b850e07e59eee7e5f27086c817f88b4d8be69e0abf583fba43fce0281fdd8990bbda3c1a75b877017867241a7d3311d7939114781')
+sha256sums=('bbee100a10db98adfa2a0913583136d91ceec915a0c7758ec22f1072419fa541')
+b2sums=('cf35d98c6fa5ce12eb2c977364027a4b8a7cc5e9ebf2066533dfc7c61c275c8d826a582493e29af74ce8cd141f8bbb9c82f1ab46ecf6f66f9c3bcad5c382ce32')
 
 case $CARCH in
   x86_64|i686|aarch64)
@@ -19,6 +19,8 @@ case $CARCH in
   arm)
     _target="arm-unknown-linux-gnueabi" ;;
 esac
+
+export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
 prepare() {
   cd "$pkgname-$pkgver"
