@@ -1,15 +1,16 @@
 # Maintainer: jdev082 <jdev0894@gmail.com>
 
 pkgname=catalyst-browser-bin
-pkgver=3.4.12
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Catalyst Web Browser"
 arch=('x86_64')
 url="https://getcatalyst.eu.org"
 license=('MIT')
 makedepends=('asar')
+conflicts=('catalyst-browser-rc-bin')
 source=("https://github.com/CatalystDevOrg/Catalyst/releases/download/v${pkgver}/catalyst_${pkgver}_amd64.deb")
-md5sums=("7e7564fc8ae89e8385a7827dd56743ec")
+md5sums=("e39b6c9693ad6bf355f7e419d24fe394")
 
 prepare() {
   tar -xf "data.tar.zst"
