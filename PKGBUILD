@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=monokle-bin
 _appname=Monokle
-pkgver=2.2.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Lets you create, analyze, and deploy YAML manifests with a visual UI, and provides policy validation and cluster management."
 arch=('aarch64' 'x86_64')
@@ -16,8 +16,8 @@ source_aarch64=("${pkgname%-appimage}-${pkgver}-aarch64.deb::${_githuburl}/relea
 source_x86_64=("${pkgname%-appimage}-${pkgver}-x86_64.deb::${_githuburl}/releases/download/v${pkgver}/${_appname}-linux-${pkgver}-amd64.deb")
 source=("LICENSE::https://raw.githubusercontent.com/kubeshop/monokle/main/LICENSE")
 sha256sums=('7a89ae90e9c88d5de936743c0432f43051d79d286aff3c4e669b2b3252b84528')
-sha256sums_aarch64=('e77a26436da8eac561fbe94a8dd64456aa2273e5e504f8f24649fe9f6fb21304')
-sha256sums_x86_64=('5c99482410b152d2a4fb01450a6ad46e58c3fe71f58da10f4a11ba8c2daff08a')
+sha256sums_aarch64=('9ec854a6887ecd2b9ba34ae0c2b64e291180c87523565f3be999bae4f5303d9d')
+sha256sums_x86_64=('64dc20b166abb7716a786f073ff559fc905bd20baac968b3f25777d12e0d21dd')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}" --gname root --uname root
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
