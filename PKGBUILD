@@ -3,13 +3,13 @@
 _pkgname="bazecor"
 _branch="development"
 pkgname="${_pkgname}-git"
-pkgver=1.0.0RC.2667
+pkgver=1.3.1.2961
 pkgrel=1
 pkgdesc="Graphical configurator for Dygma Raise. Development branch"
 url="https://github.com/Dygmalab/Bazecor"
 license=("GPL3")
 depends=("fuse")
-makedepends=("yarn" "git" "nvm")
+makedepends=("yarn" "git" "nvm" "squashfs-tools")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 arch=("x86_64")
@@ -39,15 +39,15 @@ pkgver() {
 
 prepare() {
     _ensure_local_nvm
-    nvm install 16
-    nvm use 16
+    nvm install 18
+    nvm use 18
 }
 
 build() {
     _ensure_local_nvm
     cd "$srcdir/$pkgname" || return
     yarn || /bin/true           # yarn errors, but seems to still work
-    yarn run build:linux
+    yarn run make-lin
 
     _appimage=$(find . -iname "*.AppImage")
     chmod +x "${_appimage}"
