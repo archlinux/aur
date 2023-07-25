@@ -1,0 +1,14 @@
+pkgbase = python-pandoc-latex-environment
+	pkgdesc = A pandoc filter for adding LaTeX environement on specific HTML div tags.
+	pkgver = 1.1.6.2
+	pkgrel = 1
+	url = https://github.com/chdemko/pandoc-latex-environment
+	arch = any
+	license = BSD
+	makedepends = python-pytest
+	depends = python
+	depends = python-panflute
+	source = https://github.com/chdemko/pandoc-latex-environment/archive/refs/tags/1.1.6.2.tar.gz
+	sha256sums = ad1df8288d026014d567c639386059e125fad00f7e19c8d15dd5f9b18d4f62fb
+
+pkgname = python-pandoc-latex-environment
