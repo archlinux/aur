@@ -3,8 +3,8 @@
 _name='napari-svg'
 _author='napari'
 pkgname="${_name}"
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.10
+pkgrel=1
 pkgdesc='A plugin for writing svg files from napari.'
 arch=('any')
 url="https://github.com/${_author}/${_name}"
@@ -15,15 +15,14 @@ makedepends=(
   'python-setuptools-scm'
 )
 depends=(
+  'napari-plugin-engine'
   'python'
   'python-imageio'
-  'python-napari-plugin-engine'
   'python-numpy'
   'python-vispy'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('12fa5c64995fc7179349969a39316355496b463858c3b0815e3b3e7ffcdced34')
-provides=("python-${_name}")
+sha256sums=('18e642c888a71e09c9d1097f25bced1e7ef5dde1771469647bcd77975800f77d')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
