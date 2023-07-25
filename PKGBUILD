@@ -1,7 +1,7 @@
 # Maintainer: Jeff Dickey <releases at rtx dot pub>
 
 pkgname=rtx-bin
-pkgver=1.34.1
+pkgver=1.34.2
 pkgrel=1
 pkgdesc='Polyglot runtime manager'
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('MIT')
 provides=('rtx')
 conflicts=('rtx')
 options=('!lto')
-source=("rtx-$pkgver.tar.gz::https://github.com/jdxcode/rtx/releases/download/v1.34.1/rtx-v1.34.1-linux-x64.tar.gz")
-sha512sums=('a966b49768f7fc1957f5d7f977e1eb6f722a8b069fa2d07eba6ddeff56e808a29ba558c079e4819503f4afa19303bfcead417a6bdbdce3b391b0b63bd29a2cab')
+source=("rtx-$pkgver.tar.gz::https://github.com/jdxcode/rtx/releases/download/v1.34.2/rtx-v1.34.2-linux-x64.tar.gz")
+sha512sums=('bcb9e02857cf505e32d955ef0df63c75f612f4b5c7df6f6fc86d31b4a209491778a743ec70060584007f87189daf60e85915105cfa077c29305b44a460dc6d25')
 
 build() {
  cd "$srcdir/"
