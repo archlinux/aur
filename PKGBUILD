@@ -1,7 +1,7 @@
 # Maintainer: fabillo <fabillo@archlinux.org>
 pkgname="ripdrag"
-pkgver="0.2.1"
-pkgrel=2
+pkgver="0.3.1"
+pkgrel=1
 pkgdesc="Drag and drop files to and from the terminal"
 arch=(x86_64)
 url="https://github.com/nik012003/ripdrag"
@@ -9,12 +9,12 @@ license=('GPL3')
 depends=('gtk4')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ae85bc12ac80600079bb57e650f34b1bafa26dc685567c0c73cf3c3595d564ab')
+sha256sums=('7142cd872e282acd972045623efd0b949d039004897132ce58aaa01c45ba5b4b')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
