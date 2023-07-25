@@ -3,9 +3,14 @@
 pkgbase=xguipro
 pkgname=(xguipro-gtk{3,4})
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
-arch=('x86_64' 'aarch64' 'mips64' 'powerpc' 'powerpc64le')
+arch=(x86_64
+    aarch64
+    riscv64
+    mips64 
+    powerpc
+    powerpc64le)
 url="https://github.com/HVML/xGUI-Pro"
 license=('LGPL-3.0')
 groups=('hvml-git')
