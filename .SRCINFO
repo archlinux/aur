@@ -1,0 +1,13 @@
+pkgbase = ttf-twilio
+	pkgdesc = Twilio fonts
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/twilio/twilio-sans-mono
+	arch = any
+	license = OFL
+	source = https://github.com/twilio/twilio-sans-mono/raw/main/Twilio-Sans-Mono.zip
+	source = https://raw.githubusercontent.com/twilio/twilio-sans-mono/main/LICENSE.txt
+	sha256sums = 27e1d437880d408556246b7d69a6f920f58ed4ee23a2266a37d02537435cb557
+	sha256sums = SKIP
+
+pkgname = ttf-twilio
