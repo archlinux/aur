@@ -4,17 +4,16 @@
 
 pkgname=firefish
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A fun, new way to experience social media'
 url='https://joinfirefish.org'
 arch=('x86_64')
 license=('AGPL3' 'MIT')
 depends=('nodejs' 'npm' 'postgresql' 'redis' 'pnpm' 'zip')
-makedepends=('git' 'python')
+makedepends=('git' 'python' 'cargo')
 options=('debug')
 install='firefish.install'
-commit=b03e65584383ceafe2d85e08055e9ab249fbe765
 optdepends=('ffmpeg: Media encode functionality'
             'nginx: Reverse-proxy')
 source=("git+https://git.joinfirefish.org/firefish/firefish.git#tag=v$pkgver"
@@ -88,6 +87,7 @@ build() {
     rm -rf "${srcdir}/${pkgname}/.npm"
     rm -rf "${srcdir}/${pkgname}/.local"
     rm -r "${srcdir}/${pkgname}/scripts"
+    rm -rf "${srcdir}/${_pkgname}/.cargo"
 }
 
 package() {
