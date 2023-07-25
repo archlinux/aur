@@ -1,0 +1,15 @@
+pkgbase = perl-paper-specs
+	pkgdesc = This packages the perl-paper-specs distribution, containing the Paper::Specs module!
+	pkgver = 0.10
+	pkgrel = 1
+	url = http://search.cpan.org/dist/PDF-Labels
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/J/JO/JONALLEN/Paper-Specs-0.10.tar.gz
+	md5sums = 9015563658a30f9fcfd98f23bb88651b
+	sha256sums = 4bba86a1021122d727a746cd98d8e8123b29a14029330cc68c989df095e55b37
+
+pkgname = perl-paper-specs
