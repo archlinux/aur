@@ -1,6 +1,6 @@
 pkgbase = libipt-git
 	pkgdesc = An Intel(R) Processor Trace decoder library
-	pkgver = 2.0+164.r903.20230324.7a863ba
+	pkgver = 2.0+190.r929.20221010.85ee54e
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/libipt
@@ -12,7 +12,7 @@ pkgbase = libipt-git
 	makedepends = pandoc
 	depends = glibc
 	depends = intelxed
-	provides = libipt=2.0+164.r903.20230324.7a863ba
+	provides = libipt=2.0+190.r929.20221010.85ee54e
 	conflicts = libipt
 	source = libipt-git::git+https://github.com/intel/libipt.git
 	sha256sums = SKIP

@@ -1,9 +1,9 @@
-# Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Bet4 (https://aur.archlinux.org/account/bet4it)
 
 pkgname=libipt-git
 epoch=1
-pkgver=2.0+164.r903.20230324.7a863ba
+pkgver=2.0+190.r929.20221010.85ee54e
 pkgrel=1
 pkgdesc='An Intel(R) Processor Trace decoder library'
 arch=(
@@ -14,12 +14,12 @@ url='https://github.com/intel/libipt'
 license=('BSD')
 depends=(
   'glibc'
-  'intelxed' # Required for ptxed
+  'intelxed' # Required for ptxed.
 )
 makedepends=(
   'cmake'
   'git'
-  'pandoc' # Required for building the manpage.
+  'pandoc'   # Required for building the manpage.
 )
 provides=("libipt=${pkgver}")
 conflicts=("libipt")
