@@ -1,7 +1,7 @@
 # Maintainer: dreieck (https://aur.archlinux.org/account/dreieck)
 _themename='smallscreen-raleigh-compact'
 pkgname="xfwm4-theme-${_themename}-git"
-pkgver=r15.20230725.224ff64
+pkgver=r16.20230725.8038dc8
 pkgrel=1
 pkgdesc="An Xfwm4 theme using only the necessary screen space and trying to imitate the 'raleigh' colour theme."
 arch=('any')
@@ -16,6 +16,12 @@ conflicts=("${pkgname%-git}")
 optdepends=('raleigh-reloaded: For a matching GTK3 application theme.')
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "${srcdir}/${pkgname%-git}"
+
+  git log > git.log
+}
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
@@ -37,7 +43,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/themes/${_themename}"
   cp -rv "themes/${_themename}"/* "${pkgdir}/usr/share/themes/${_themename}"/
 
-  for _docfile in README.md screenshot.png logo.png; do
+  for _docfile in git.log README.md screenshot.png logo.png; do
     install -Dvm644 "${_docfile}" "${pkgdir}/usr/share/doc/${pkgname%-git}/${_docfile}"
   done
   for _licensfile in COPYING.md; do
