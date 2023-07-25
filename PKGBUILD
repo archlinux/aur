@@ -3,42 +3,68 @@
 
 pkgname=python-pymc
 _name=${pkgname#python-}
-pkgver=5.5.0
+pkgver=5.6.1
 pkgrel=1
 pkgdesc="Markov chain Monte Carlo for Python"
 arch=(any)
 url="https://github.com/pymc-devs/pymc"
 license=(MIT)
-makedepends=(python-setuptools)
 depends=(
+  ipython
+  python
   python-arviz
   python-cachetools
   python-cloudpickle
   python-fastprogress
+  python-graphviz
+  python-matplotlib
   python-networkx
   python-numpy
   python-pandas
   python-pytensor
+  python-pytest
   python-scipy
   python-typing_extensions
+  python-xarray
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
 )
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('614aa0e40b16e25d5b4734f0c0bb7c8da246e4cf8355e1b19b39da0a1b3f6dab')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('3445f91136e44fe02a3e5029b2ececd262bc6623d4622c02cc47da21fa634be2')
 
 _archive="$_name-$pkgver"
 
 build() {
   cd "$_archive"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_archive"
+
+  python -m pytest \
+    tests/test_initial_point.py \
+    tests/test_math.py \
+    tests/test_model_graph.py \
+    tests/test_printing.py \
+    tests/test_pytensorf.py \
+    tests/test_testing.py \
+    tests/test_util.py \
+    -k "\
+      not test_softmax_logsoftmax_no_warnings \
+      and not TestImputationModel \
+    "
 }
 
 package() {
   cd "$_archive"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
