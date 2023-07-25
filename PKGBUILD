@@ -1,9 +1,10 @@
 # Maintainer: Funami
 # Contributor: Fredrick R. Brennan <copypaste@kittens.ph>
 # Contributor: witchymary
+# Contributor: Takina Lina <0tkl.zhaoqing@gmail.com>
 
 pkgname=aegisub-arch1t3cht-qt5-git
-pkgver=3.2.2.r1034.a957af9a1
+pkgver=3.2.2.r1036.66127f8c4
 pkgrel=1
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
 arch=('x86_64')
@@ -38,9 +39,9 @@ optdepends=('vapoursynth: VapourSynth source support'
             'vapoursynth-plugin-wwxd: VapourSynth plugin for keyframe generation'
             'vapoursynth-plugin-scxvid: VapourSynth plugin for keyframe generation')
 source=("${pkgname}::git+https://github.com/arch1t3cht/Aegisub.git#branch=feature"
-        "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#commit=ba1249c1f5443be6d0ec2be32490af5bbc96bf99"
-        "${pkgname}-avisynth::git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.2"
-        "${pkgname}-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R59"
+        "${pkgname}-bestsource::git+https://github.com/vapoursynth/bestsource.git#commit=530cc4b7a8e1d3b96ccf913eb8db9f5f8d7c565d"
+        "${pkgname}-avisynth::git+https://github.com/AviSynth/AviSynthPlus.git#tag=v3.7.3"
+        "${pkgname}-vapoursynth::git+https://github.com/vapoursynth/vapoursynth.git#tag=R63"
         "${pkgname}-luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1"
         "${pkgname}-gtest-1.8.1.zip::https://github.com/google/googletest/archive/release-1.8.1.zip"
         "${pkgname}-gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip")
@@ -92,9 +93,6 @@ prepare() {
   meson subprojects packagefiles --apply avisynth
   meson subprojects packagefiles --apply vapoursynth
   meson subprojects packagefiles --apply luajit
-
-  # Fix boost "undefined reference" error
-  sed -i '/BOOST_USE_WINDOWS_H/{n;s/$/\nadd_project_arguments('"'"'-DBOOST_NO_CXX11_SCOPED_ENUMS'"'"', language: '"'"'cpp'"'"')/}' meson.build
 
   # check if the OPTIONS array contains "!strip"
   check_makepkg_options() (
