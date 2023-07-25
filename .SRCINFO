@@ -1,6 +1,6 @@
 pkgbase = napari-console
 	pkgdesc = A plugin that adds a console to napari.
-	pkgver = 0.0.6
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/napari/napari-console
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = napari-console
 	depends = python-ipykernel
 	depends = python-qtconsole
 	depends = python-qtpy
-	provides = python-napari-console
-	source = https://files.pythonhosted.org/packages/source/n/napari-console/napari-console-0.0.6.tar.gz
-	sha256sums = d3bbd3c25392ef0dabfaebc52d4866fc859b2d99e3dad9da4bc13f1a991cd500
+	source = https://files.pythonhosted.org/packages/source/n/napari-console/napari-console-0.0.8.tar.gz
+	sha256sums = 9fa3f665ec0f5f351c364b212e73cdc4004615461dca6cbfaacf028525ec740a
 
 pkgname = napari-console
