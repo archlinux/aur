@@ -1,35 +1,29 @@
-# Maintainer: Tomas Krizek <tomas.krizek@nic.cz>
+# Maintainer: Tom Krizek <tkrizek@isc.org>
 
 pkgname=python-dnspython-git
 _pkgname=dnspython
-pkgver=v2.1.0.r200.ab53090
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A DNS toolkit for Python"
 arch=('any')
 url="http://www.dnspython.org"
-license=('ISC')
+license=('custom:ISC')
+depends=('python')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 makedepends=(
     'python-setuptools'
-    'python-pytest'
-    'python-httpx'
-    'python-h2'
     # 'cython'  # uncomment dep & build option for cython optimization speedup
 )
-checkdepends=('python-idna' 'python-cryptography' 'python-trio')
-depends=('python')
-optdepends=(
-    'python-idna: support for update IDNA 2008'
-    'python-cryptography: DNSSEC support'
-    'python-httpx: DNS-over-HTTPS support'
-    'python-h2: DNS-over-HTTPS support'
-    'python-trio: async I/O backend'
-    'python-curio: async I/O backend'
-    'python-sniffio: async I/O'
-)
+checkdepends=('python-idna' 'python-cryptography' 'python-trio' 'python-pytest')
+optdepends=('python-cryptography: DNSSEC support'
+            'python-requests-toolbelt: DoH support'
+            'python-idna: support for updated IDNA 2008'
+            'python-curio: async support'
+            'python-trio: async support'
+            'python-sniffio: async support')
 source=("${_pkgname}::git+https://github.com/rthalley/${_pkgname}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -45,7 +39,8 @@ build() {
 check() {
     cd "${srcdir}/${_pkgname}"
 
-    python setup.py test
+    # https://github.com/rthalley/dnspython/issues/622
+    pytest -k 'not test_unpickle'
 }
 
 package() {
