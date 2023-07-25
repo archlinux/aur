@@ -3,7 +3,7 @@
 # Contributor: dianlujitao <dianlujitao at gmail dot com>
 
 pkgname=efm-langserver
-pkgver=0.0.44
+pkgver=0.0.46
 pkgrel=1
 pkgdesc='General purpose Language Server'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('glibc')
 makedepends=('go')
 optdepends=('ctags: for "go to definition" requests')
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('825aef5815fb6eff656370e9f01fc31f91e5b2ab9d2b1f080881839676020dac')
+sha256sums=('ef81abeadecdde755a80ad34ed089c5bd42bd84b82886666fc699dfb3ec03115')
 
 build() {
   cd $pkgname-$pkgver
