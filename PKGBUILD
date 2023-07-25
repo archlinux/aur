@@ -1,17 +1,17 @@
 # Maintainer: Sergey Safonov <spoof-arch@spoofa.info>
 pkgname=jefferson
-pkgver=0.4.3
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="JFFS2 filesystem extraction tool"
 url="https://github.com/onekey-sec/jefferson"
 arch=(any)
 license=(MIT)
-depends=('python>=3.8' 'python-cstruct>=5' 'python-lzallright>=0.1' 'python-click>=8.1'})
+depends=('python>=3.8' 'python-cstruct>=5' 'python-lzallright>=0.2.1' 'python-click>=8.1'})
 makedepends=(python-{build,installer,wheel})
 provides=(${pkgname})
 conflicts=("${pkgname}-git")
 source=("https://github.com/onekey-sec/jefferson/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('90d073cb0b63a0d9d4742f5dd085a2690f683615c95b339b3461bf275f3a645e796e220dcdaf2b8e19e3ee304c9c96ce1cb34943a4e50b7c0176169095d718e5')
+sha256sums=('bce25b616e3e3ab97d6c646b63cd117f4dd7340353b8014d3b1d03107d43374e')
 
 build() {
   cd "$pkgname-$pkgver"
