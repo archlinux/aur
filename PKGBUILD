@@ -1,7 +1,7 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=no-power-privileges
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Prevent users from touching system power state unless they are in the `power` group'
 arch=("any")
@@ -10,6 +10,7 @@ depends=("polkit")
 conflicts=("no-power-privileges-multisession")
 
 license=("MIT")
+install="${pkgname}.install"
 source=(
   "20-no-power-privileges.rules"
   "LICENSE"
