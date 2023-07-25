@@ -5,7 +5,7 @@
 _pkgname=MUMPS
 pkgname=${_pkgname,,}-seq
 pkgver=5.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sparse solver library using Gaussian elimination (sequential version)"
 url="http://${_pkgname,,}-solver.org"
 license=('custom')
@@ -50,8 +50,8 @@ build() {
 package() {
   # Install all headers
   cd "${srcdir}/${_pkgname}_${pkgver}/include"
-  install -m 755 -d "${pkgdir}/usr/include/${pkgname}"
-  install -D -m644 -- *.h "${pkgdir}/usr/include/${pkgname}"
+  install -m 755 -d "${pkgdir}/usr/include"
+  install -D -m644 -- *.h "${pkgdir}/usr/include"
 
   # Install all libraries
   cd "${srcdir}/${_pkgname}_${pkgver}/lib"
@@ -62,10 +62,10 @@ package() {
     ln -sf ${_FILE}_seq.so.${pkgver} "${pkgdir}/usr/lib/${_FILE}_seq.so.${pkgver:0:1}"
   done
 
-  # Install mpiseq headers
+  # Install mumps_seq headers
   cd "${srcdir}/${_pkgname}_${pkgver}/libseq"
-  install -m 755 -d "${pkgdir}/usr/include/mpiseq"
-  install -D -m644 -- *.h "${pkgdir}/usr/include/mpiseq"
+  install -m 755 -d "${pkgdir}/usr/include/mumps_seq"
+  install -D -m644 -- *.h "${pkgdir}/usr/include/mumps_seq"
   # Install mpiseq libraries
   install -m 755 libmpiseq.so.${pkgver} "${pkgdir}/usr/lib"
   ln -sf libmpiseq.so.${pkgver} "${pkgdir}/usr/lib/libmpiseq.so.${pkgver:0:1}"
