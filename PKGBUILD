@@ -1,6 +1,6 @@
 # Maintainer: Philipp Claßen <philipp.classen@posteo.de>
 pkgname=livius-git
-pkgver=r27.745133f
+pkgver=r39.3bdc147
 pkgrel=1
 pkgdesc="A Qt-based TLCV-compatible live chess viewer"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('zlib')
 
 depends=('qt5-svg')
 makedepends=('gcc' 'make')
-source=('git://github.com/kmar/livius.git')
+source=('git+https://github.com/kmar/livius.git')
 md5sums=('SKIP')
 
 pkgver() {
