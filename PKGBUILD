@@ -3,20 +3,15 @@
 
 pkgname=govarnam-git
 pkgver=1.9.0.r2.gda1b445
-pkgrel=2
+pkgrel=3
 pkgdesc="Transliteration and reverse transliteration for Indian languages"
 arch=('x86_64')
 url="https://varnamproject.github.io/"
 license=('AGPL')
-makedepends=('go')
+makedepends=('go' 'git')
 source=("${pkgname}::git+https://github.com/varnamproject/govarnam.git")
 sha256sums=('SKIP')
 provides=('govarnam')
-
-prepare() {
-  cd "$pkgname"
-  # mkdir -p build
-}
 
 pkgver() {
   cd "$pkgname"
