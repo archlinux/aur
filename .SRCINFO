@@ -1,0 +1,15 @@
+pkgbase = govarnam-ibus-bin
+	pkgdesc = IBus engine for GoVarnam providing Indian language input method
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://www.varnamproject.com
+	arch = x86_64
+	license = AGPL3
+	makedepends = unzip
+	depends = govarnam
+	depends = ibus
+	provides = govarnam-ibus
+	source = https://github.com/varnamproject/govarnam-ibus/releases/download/v1.6.2/varnam-ibus-engine-1.6.2-x86_64.zip
+	sha256sums = aceeb0b649f25267db91164a4c216d9a71b7cca15083e777a3770cb94356ab32
+
+pkgname = govarnam-ibus-bin
