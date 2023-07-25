@@ -7,7 +7,7 @@
 
 pkgname=mathics
 _pkgname=Mathics3
-pkgver=6.0.1
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="A general-purpose computer algebra system."
 arch=('any')
@@ -22,11 +22,11 @@ optdepends=( 'python-psutil: SystemMemory and MemoryAvailable'
              'python-lxml: for HTML parsing used in builtin/fileformats/html'
              'python-wordcloud: Used in builtin/image.py by WordCloud')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$_pkgname/$pkgname-core/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('e96d6ba0e0efa79744add26b6fc081281a0b650f465ca5ac81f4885743a0eae1')
+sha256sums=('e46858d4e3ef10f1fc7316fb337c8c7d25f9c785665d46bc09fc5d232a8d7664')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  sed -i 's/numpy<=1.24/numpy<1.25/g' setup.py
+  sed -i 's/numpy<1.25/numpy<1.26/g' setup.py
   python setup.py build
 }
 

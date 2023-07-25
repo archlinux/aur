@@ -1,6 +1,6 @@
 pkgbase = mathics
 	pkgdesc = A general-purpose computer algebra system.
-	pkgver = 6.0.1
+	pkgver = 6.0.2
 	pkgrel = 1
 	url = https://mathics.org/
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = mathics
 	optdepends = python-scikit-image: FindMinimum can use this
 	optdepends = python-lxml: for HTML parsing used in builtin/fileformats/html
 	optdepends = python-wordcloud: Used in builtin/image.py by WordCloud
-	source = mathics-6.0.1.tar.gz::https://github.com/Mathics3/mathics-core/releases/download/6.0.1/Mathics3-6.0.1.tar.gz
-	sha256sums = e96d6ba0e0efa79744add26b6fc081281a0b650f465ca5ac81f4885743a0eae1
+	source = mathics-6.0.2.tar.gz::https://github.com/Mathics3/mathics-core/releases/download/6.0.2/Mathics3-6.0.2.tar.gz
+	sha256sums = e46858d4e3ef10f1fc7316fb337c8c7d25f9c785665d46bc09fc5d232a8d7664
 
 pkgname = mathics
