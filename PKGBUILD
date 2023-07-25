@@ -2,8 +2,8 @@
 
 pkgname=no-power-privileges
 pkgver=1.1
-pkgrel=2
-pkgdesc='Prevent users from touching system power state unless they are in the `power` group'
+pkgrel=3
+pkgdesc='Polkit rule to prevent users from touching system power state unless they are in the `power` group'
 arch=("any")
 url="https://aur.archlinux.org/packages/no-power-privileges"
 depends=("polkit")
