@@ -1,0 +1,12 @@
+pkgbase = los-git
+	pkgdesc = CLI program created in Rust to solve Lights Out Puzzle
+	pkgver = 1.2.0.r0.gdb1d7f7
+	pkgrel = 1
+	url = https://github.com/kikawet/lights_out_solver
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = git+https://github.com/kikawet/lights_out_solver.git
+	b2sums = SKIP
+
+pkgname = los-git
