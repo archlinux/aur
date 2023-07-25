@@ -1,7 +1,7 @@
 # Maintainer: Georgiy Tugai <georgiy.tugai@gmail.com>
 # Maintainer: ssfdust <ssfdust@gmail.com>
 pkgname=lieer-git
-pkgver=v1.3.r28.e04f56e
+pkgver=v1.3.r32.9293661
 pkgrel=1
 pkgdesc="Fast fetch and two-way tag synchronization between notmuch and GMail"
 arch=(any)
@@ -18,19 +18,14 @@ backup=()
 options=(!emptydirs)
 install=
 changelog=
-source=("$pkgname::git+https://github.com/gauteh/lieer.git" "lieer.patch")
-md5sums=('SKIP' 'SKIP')
+source=("$pkgname::git+https://github.com/gauteh/lieer.git")
+md5sums=('SKIP')
 noextract=()
 
 pkgver() {
     cd "$srcdir/$pkgname"
 
     printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-
-prepare() {
-    cd "$srcdir/$pkgname"
-    patch -p1 < "$srcdir/lieer.patch"
 }
 
 package() {

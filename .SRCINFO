@@ -1,6 +1,6 @@
 pkgbase = lieer-git
 	pkgdesc = Fast fetch and two-way tag synchronization between notmuch and GMail
-	pkgver = v1.3.r28.e04f56e
+	pkgver = v1.3.r32.9293661
 	pkgrel = 1
 	url = https://github.com/gauteh/lieer
 	arch = any
@@ -20,8 +20,6 @@ pkgbase = lieer-git
 	conflicts = gmailieer-git
 	options = !emptydirs
 	source = lieer-git::git+https://github.com/gauteh/lieer.git
-	source = lieer.patch
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = lieer-git
