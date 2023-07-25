@@ -2,7 +2,7 @@
 
 _pkgname=python-blobfile
 pkgname="${_pkgname}-git"
-pkgver=2.0.1.r607.20230109.d099063
+pkgver=2.0.2.r616.20230420.de92f83
 pkgrel=1
 pkgdesc="A library that provides a Python-like interface for reading local and remote files (only from blob storage), with an API similar to open() as well as some of the os.path and shutil functions."
 arch=(
@@ -26,6 +26,7 @@ makedepends=(
   'python-astor'
   'python-build'
   'python-installer'
+  'python-pytest'
   'python-setuptools'
   'python-wheel'
 )
@@ -43,6 +44,15 @@ sha256sums=(
   'SKIP'
 )
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  git log > "${srcdir}/git.log"
+
+  printf '%s\n' "  Removing version requirements for build dependencies in 'pyproject.toml' ..."
+  sed -i -E 's|[[:space:]]*==.*$|",|' pyproject.toml
+}
+
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
@@ -57,15 +67,6 @@ pkgver() {
   else
     printf '%s' "${_ver}.r${_rev}.${_date}.${_hash}"
   fi
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  git log > "${srcdir}/git.log"
-
-  printf '%s\n' "  Removing version requirements for build dependencies in 'pyproject.toml' ..."
-  sed -i -E 's|[[:space:]]*==.*$|",|' pyproject.toml
 }
 
 build() {
