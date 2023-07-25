@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 _base=selenoid
 pkgname=${_base}-bin
-pkgver=1.10.12
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Selenium Hub successor running browsers within containers"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ options=(strip)
 #depends=(glibc)
 provides=("${_base}")
 conflicts=("${_base}")
-sha512sums_x86_64=('5dec7cc76c0a1271622cfecd28839850c41c9061d959e2fdeee476133748e530ab7dab92bc5637462040816a844775451eb8eed350c0e048a0c9f6b3e99a5ada')
-sha512sums_aarch64=('9cef920e7ca7b314a178fd641ae118209c4abd03b1f62b6d12562e1817b4857a21ed8d0f446c86bec26f8cf2affd96951d2e3c2f4185d93f8795a7aaafaa6fe9')
+sha512sums_x86_64=('5cc9e0841207f7a535d14397788377436d4d5a09ab6dba924776490e21231f88044f7d35e05420804bc424af4d5ea06459f3ff0373d1348616d1b89abdc738e7')
+sha512sums_aarch64=('b11c5afe8ca4f0a0f6235ecb5938b36e8739a11ead8a9b03ccf3d9a32512af0d4418b4f4104b4f571d2db1806b628885acf35f398cf8992e7187c96c7fb3b1f5')
 
 if [[ "$CARCH" == "x86_64" ]]; then _tar_arch='amd64'; fi
 if [[ "$CARCH" == "aarch64" ]]; then _tar_arch='arm64'; fi
