@@ -7,13 +7,13 @@ pkgver=r85.672ade9
 pkgrel=1
 pkgdesc='LXQt system-tray applet for ConnMan'
 arch=('i686' 'x86_64')
-url='https://github.com/surlykke/lxqt-connman-applet'
+url='https://github.com/lxqt/lxqt-connman-applet'
 license=('LGPL')
 depends=('liblxqt' 'qt5-svg' 'connman')
 makedepends=('git' 'cmake' 'qt5-tools' 'lxqt-build-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/surlykke/lxqt-connman-applet.git")
+source=("git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {
