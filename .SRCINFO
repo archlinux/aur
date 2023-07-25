@@ -1,7 +1,7 @@
 pkgbase = no-power-privileges
 	pkgdesc = Prevent users from touching system power state unless they are in the `power` group
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/no-power-privileges
 	install = no-power-privileges.install
 	arch = any
