@@ -2,7 +2,7 @@
 
 pkgname=no-power-privileges
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Prevent users from touching system power state unless they are in the `power` group'
 arch=("any")
 url="https://aur.archlinux.org/packages/no-power-privileges"
@@ -20,6 +20,7 @@ sha512sums=('cf295103f74c9ec4d6f18a4f855b909f6b98d2fe7ed16bc0b6f0ac07b02e7150d46
 
 package() {
   cd ${srcdir}
+  install -Dm750 -d "${pkgdir}/usr/share/polkit-1/rules.d"
   install -Dm644 -t "${pkgdir}/usr/share/polkit-1/rules.d" 20-no-power-privileges.rules
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
