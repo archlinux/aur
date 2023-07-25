@@ -1,14 +1,14 @@
 pkgbase = rustgenhash
 	pkgdesc = A toolkit to generate and analyze hashes
-	pkgver = 0.7.1
-	pkgrel = 2
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://github.com/vschwaberow/rustgenhash
 	arch = x86_64
 	license = MIT
 	license = Apache
 	makedepends = cargo
 	options = !lto
-	source = rustgenhash-0.7.1.tar.gz::https://github.com/vschwaberow/rustgenhash/archive/refs/tags/v0.7.1.tar.gz
-	sha256sums = 7509a920c381538769413fab433b4309de83d23eda50f3670b4f0b886fa06357
+	source = rustgenhash-0.8.0.tar.gz::https://github.com/vschwaberow/rustgenhash/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 4a6385a97978ca2a2d3c216a5cdac58a42a8ff81f5a7d434009689235cca735a
 
 pkgname = rustgenhash
