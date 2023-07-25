@@ -2,7 +2,7 @@
 
 _name='napari'
 pkgname="${_name}"
-pkgver=0.4.17
+pkgver=0.4.18
 pkgrel=1
 pkgdesc='Multi-dimensional image viewer for Python.'
 arch=('any')
@@ -27,6 +27,7 @@ depends=(
   'python-dask'
   'python-imageio'
   'python-jsonschema'
+  'python-lazy-loader'
   'python-magicgui'
   'python-numpy'
   'python-numpydoc'
@@ -36,7 +37,7 @@ depends=(
   'python-pint'
   'python-psutil'
   'python-psygnal'
-  'python-pyaml'
+  'python-pyyaml'
   'python-pydantic'  # community package has been out of date for months
   'python-pygments'
   'python-qtpy'
@@ -57,9 +58,9 @@ source=(
   "${_name}.desktop"
 )
 sha256sums=(
-  '26def5271c7a0910182e9f6798a0ae13c7e4b1c3b746d1a4ff0a041db1aa3949'
-  '909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6')
-provides=("${_name}")
+  "8dcad79e0d0bc6378c7b6b1e85c8085834aad26d22d1339ae0aa1b7eed5238a2"
+  "909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6"
+)
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
