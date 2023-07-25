@@ -21,9 +21,6 @@ sha256sums=('SKIP'
             '61fb2628b9b8d0d1edf34108ba25736fd7bc72f3b9f382e1bd67fe88b9492f44'
             '14745a7cb3b2cefd2dca87532a924bae684d878b55608a6799916f3c34821bb3')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 
