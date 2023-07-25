@@ -7,7 +7,7 @@ pkgbase=lazarus-beta
 pkgname=('lazarus-beta' 'lazarus-gtk3' 'lazarus-qt6')
 _lazarus_tag=3_0_RC1
 pkgver=3.0.0.rc1
-pkgrel=1
+pkgrel=2
 url='http://www.lazarus.freepascal.org/'
 license=('GPL2' 'MPL' 'custom:modifiedLGPL')
 arch=('x86_64')
@@ -79,7 +79,7 @@ package_lazarus-beta() {
 
 package_lazarus-gtk3() {
   pkgdesc='Delphi-like IDE for FreePascal gtk3 version'
-  depends=('lazarus' 'desktop-file-utils' 'gtk3')
+  depends=('lazarus-beta' 'desktop-file-utils' 'gtk3')
   conflicts=('lazarus-qt6')
   replaces=('lazarus-gtk2')
 
@@ -104,7 +104,7 @@ package_lazarus-gtk3() {
 
 package_lazarus-qt6() {
   pkgdesc='Delphi-like IDE for FreePascal qt6 version'
-  depends=('lazarus' 'qt6pas')
+  depends=('lazarus-beta' 'qt6pas')
   conflicts=('lazarus-gtk3')
   replaces=('lazarus-qt' 'lazarus-qt4' 'lazarus-qt5')
 
