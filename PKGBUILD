@@ -73,7 +73,7 @@ _subarch=39
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=6.4.4
+pkgver=6.4.6
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -94,7 +94,7 @@ makedepends=(
 [[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld)
 options=('!strip')
 _srcname=linux-${pkgver}
-_kernel_base_commit=62813c2d2a3617a289397582b2db3db9f97111ee
+_kernel_base_commit=bc265e250410375ef3442233ad1af073023d4700
 _kernel_arch_tag=${pkgver}-arch1
 _arch_config_commit=dbc3bae65d759bb7144d8c28a4c94527281cf47b
 _prjc_version=6.4-r0
@@ -113,12 +113,12 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('1ab6c93da986dac6a07a5e3bc764f9d2a5bb9b8989321244455d894690634ac04364e6a3f960e8674f47ae22fc4ed09b18aa60cbf279636083e61aa6524f8a59'
+b2sums=('a395218ffd3447a9b22d248c7dd69204115567185d91d4abb712f77ce0b90571bdbcf0ea845ed4adb30d0fd448341d95c8be6e3acf46d940477d8c55d681a669'
         'SKIP'
         'a73a9eaa59dd45ccdd564b762c3816342873e9002c54b742f481ccd79c34549131ab3b0188445139b9e5fab696b60270f8148337387619456b4674d6ff28ccb7'
         '73438f4785fc533c901c6f4fd538f0e4a23526b15d43bfb35cc70c066c24d60006797a08e9c1bb388ca7feb7d946a7fce3b21f1065c66eeab5e8f923f817e96b'
         'd178dad69501967382d5c841f65e4f57651042bee8117041a9baa35ab3fa73af8174b8b999ae9e72ec381c52744ccaaabb77944d59f123c04b6ed5626432d843'
-        '3e3056029c463183e429ead64d7a3096de73844298ee14abd213385da1ce4148fc118ae9c021639f4d927ad0a2079da1b2639dcad871e3f2f878ee4269e95e84'
+        '93de883f6360836e99f4240efd94e9ebb11efd4042f60be969cc989ed50f9151577fc709b8e374ed5857335a7349c1a5596f66126598855fd48a482df0f49ba9'
         'cbd76f0a000e51173626009345b2de34f734c32072cf82e8e0860bbcf4eeac963ae34061ec562db8f852a4297c4633118f93c935a4783044ffb069643a03ce89')
 
 _kernelname=${pkgbase#linux}
