@@ -3,7 +3,7 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 _base=curses-menu
 pkgname=python-${_base}
-pkgver=0.6.14
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A simple console menu system using curses"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools' 'python-poetry')
 # options=(!emptydirs)
 source=(${url}/archive/refs/tags/${pkgver}.tar.gz)
-sha512sums=('11bf1bc8e68ff14bd5992b5dabdd136eb4f3b581c801753143541a996dea82d212b38e19514a11b335b5170f24ce5a2a5fcb2f450f9cfbd6585f2c1fbf33f8d5')
+sha512sums=('d9b0ad3b481971881e144186d01e115f3a7dde569d7d0c3ccdac3a1ff4dbaf3e10e4f0d7281952cfc2945c4f970f418e13d6a56d94943b588793aedc74469aba')
 
 build() {
   cd "${_base}-${pkgver}"
