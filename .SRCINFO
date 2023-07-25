@@ -6,10 +6,9 @@ pkgbase = libvarnam-git
 	arch = x86_64
 	license = MPL
 	makedepends = cmake
+	makedepends = git
 	depends = ruby
 	depends = ruby-ffi
-	depends = git
-	provides = varnamc
 	source = git+https://github.com/varnamproject/libvarnam.git
 	sha256sums = SKIP
 
