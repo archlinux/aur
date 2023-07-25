@@ -2,7 +2,7 @@
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
 
 pkgname=kleopatra-git
-pkgver=21.11.40_r5913.gbb92dfd2
+pkgver=23.11.70_r7377.g8c6ff88b
 pkgrel=1
 pkgdesc='Certificate Manager and Unified Crypto GUI'
 arch=($CARCH)
@@ -20,7 +20,7 @@ pkgver() {
   cd ${pkgname%-git}
   _major_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MAJOR' CMakeLists.txt | cut -d '"' -f2)"
   _minor_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MINOR' CMakeLists.txt | cut -d '"' -f2)"
-  _patch_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_PATCH' CMakeLists.txt | cut -d '"' -f2)"
+  _patch_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MICRO' CMakeLists.txt | cut -d '"' -f2)"
   echo "${_major_ver}.${_minor_ver}.${_patch_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
 
