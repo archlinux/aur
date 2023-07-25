@@ -1,5 +1,5 @@
 pkgname=epanet-git
-pkgver=2.3.r789d42f
+pkgver=2.2.r1057.2825f96
 pkgrel=1
 pkgdesc='The Water Distribution System Hydraulic and Water Quality Analysis Toolkit'
 arch=('any')
@@ -12,6 +12,12 @@ checkdepends=('boost')
 optdepends=('python: Python wrapper')
 source=("${pkgname}::git+https://github.com/OpenWaterAnalytics/EPANET.git#branch=dev")
 md5sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  tag='v2.2'
+  printf "%s.r%s.%s" "${tag#v}" "$(git rev-list --count ${tag}..HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
     cd $pkgname
