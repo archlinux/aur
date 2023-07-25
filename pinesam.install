@@ -1,0 +1,16 @@
+post_install() {
+  printf '\n'
+  printf '%s\n' "=== Notes for 'pinesam' ==="
+  printf '\n'
+  printf '%s\n' "This software consists of 3 parts:"
+  printf '%s\n' "  1. A backend server in python, that communicates with the Pinecil,"
+  printf '%s\n' "  2. a webserver in nodejs, which serves the GUI,"
+  printf '%s\n' "  3. a bash script '/usr/bin/pinesam' that orchestrates the startup"
+  printf '%s\n' "     of 1., 2. and a webbrowser window to view the GUI."
+  printf '%s\n' "     Run "'/usr/bin/pinesam -h' for help."
+  printf '\n'
+}
+
+post_upgrade() {
+  post_install "$@"
+}
