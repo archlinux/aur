@@ -1,9 +1,8 @@
 pkgbase = maestral
-	pkgdesc = Open-source Dropbox client
-	pkgver = 1.7.3
+	pkgdesc = A light-weight and open-source Dropbox client
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/SamSchott/maestral
-	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
@@ -33,9 +32,7 @@ pkgbase = maestral
 	depends = python-watchdog
 	optdepends = maestral-qt: Qt interface for the maestral daemon
 	optdepends = python-systemd: Syslog support
-	source = maestral-1.7.3.tar.gz::https://github.com/SamSchott/maestral/archive/v1.7.3.tar.gz
-	source = maestral@.service
-	sha256sums = 5461759a0648981e11b308b093f70306e886ad954de57afb596673cded3f5f0a
-	sha256sums = f20ab8c6e59271d76d9298bab604eaa139ec1993a49e6a571846b55482461fa3
+	source = maestral-1.8.0.tar.gz::https://github.com/SamSchott/maestral/archive/v1.8.0.tar.gz
+	sha256sums = 86b7968f98bc8380525b464ebca40181df57be1e86ea103825e8b08085583fc2
 
 pkgname = maestral
