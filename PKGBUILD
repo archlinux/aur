@@ -3,29 +3,30 @@
 
 pkgname=vpn-unlimited
 pkgver=8.5.2
-pkgrel=2
+pkgrel=4
 pkgdesc="VPN Unlimited client application"
 arch=(x86_64)
 url="https://www.vpnunlimitedapp.com"
 license=(custom)
-makedepends=(
-  patchelf
-)
 depends=(
-  qt5-script
-  qt5-webkit
-  openvpn
-  openresolv
-  net-tools
+  bash
+  boost174-libs
   c-ares
+  curl
+  gcc-libs
+  glibc
+  hicolor-icon-theme
   lsb-release
-  strongswan
+  lzo
+  net-tools
+  openresolv
+  openvpn
+  qt5-base
   qt5-webengine
-  openssl-1.1
+  strongswan
   wireguard-tools
-  boost-libs=1.74.0
+  zlib
 )
-install=vpn-unlimited.install
 
 source=(
   "https://geo.keepsolidcdn.com/soft/vpn/Linux/VPN_Unlimited_${pkgver}_amd64_mint.deb"
@@ -41,7 +42,7 @@ sha256sums=(
 package() {
   tar --extract --file data.tar.gz --directory "$pkgdir"
 
-  rm --recursive "$pkgdir/etc"
+  rm --recursive "${pkgdir:?}/etc"
 
   find "$pkgdir/usr/sbin" -type f -exec mv '{}' "$pkgdir/usr/bin/" \;
   rm -r "$pkgdir/usr/sbin"
@@ -55,16 +56,6 @@ package() {
   find "$pkgdir/usr/lib" -type f -name "*.so*" -exec chmod +x {} +
 
   chmod --recursive go-w "$pkgdir/usr"
-
-  files=(
-    $pkgdir/usr/bin/vpn-unlimited
-    $pkgdir/usr/bin/vpn-unlimited-daemon
-    $pkgdir/usr/lib/libvpnu_private_sdk.so.1.0.0
-  )
-  for file in "${files[@]}"; do
-    patchelf --replace-needed libcrypto.so.3  libcrypto.so.1.1 "$file"
-    patchelf --replace-needed libssl.so.3  libssl.so.1.1 "$file"
-  done
 
   install -Dm644 "vpn-unlimited-daemon.service" "$pkgdir/usr/lib/systemd/system/vpn-unlimited-daemon.service"
 }
