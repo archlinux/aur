@@ -6,7 +6,7 @@ _pkgname='fdpp'
 _gitname='dosemu2'
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=API32+85.r1434.20230717.5c9b268
+pkgver=1.6+170.r1434.20230717.5c9b268
 pkgrel=1
 pkgdesc='64 bit FreeDOS++ for dosemu2. Latest git checkout.'
 arch=(
@@ -57,7 +57,9 @@ pkgver() {
   set -u
   cd "${srcdir}/${_pkgname}"
 
-  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|-g[0-9a-f]+$||' | tr '-' '+')"
+  # _ver="$(grep -E -m1 '^[[:space:]]*fdpp[[:space:]]*\(' debian/changelog | sed -E -e 's|^[^\(]*\(([^\)]*)\).*$|\1|' -e 's|-.*$||')"
+  # _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|-g[0-9a-f]+$||' | tr '-' '+')" # git describe --tags give unpredictable result; sometimes it is like '1.6', sometimes like 'API31'. `git describe` seems to work.
+  _ver="$(git describe | sed -E -e 's|^[vV]||' -e 's|-g[0-9a-f]+$||' | tr '-' '+')"
   _rev="$(git rev-list --count HEAD)"
   _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
   _hash="$(git rev-parse --short HEAD)"
