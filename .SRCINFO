@@ -1,6 +1,6 @@
 pkgbase = python-magicgui
 	pkgdesc = Build GUIs from functions, using magic.
-	pkgver = 0.7.0rc0
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/pyapp-kit/magicgui
 	arch = any
@@ -15,8 +15,7 @@ pkgbase = python-magicgui
 	depends = python-superqt
 	depends = python-typing_extensions
 	depends = qt5-python-bindings
-	provides = python-magicgui
-	source = https://files.pythonhosted.org/packages/source/m/magicgui/magicgui-0.7.0rc0.tar.gz
-	sha256sums = c42e1ef8eab15eb8ba7185eed37c41f2f5df701bb88754ebcca91655ff3757d8
+	source = https://files.pythonhosted.org/packages/source/m/magicgui/magicgui-0.7.2.tar.gz
+	sha256sums = 568c65268cac2ad2d6010d54f37d96bfc3c4caf2219d0a59498608e63b9463e2
 
 pkgname = python-magicgui
