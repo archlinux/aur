@@ -58,7 +58,6 @@ check() {
 package() {
    cd "$pkgname-$pkgver"
    python -m installer --destdir="$pkgdir/" dist/*.whl
-   install -Dvm644 "$srcdir/maestral@.service" -t "$pkgdir/usr/lib/systemd/user/"
    install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
    install -Dvm644 docs/_build/man/maestral.1 -t "$pkgdir/usr/share/man/man1/"
    local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
