@@ -22,6 +22,6 @@ package() {
     cd "$_pkgname-$pkgver"
     make DESTDIR="$pkgdir" install
 
-    install -Dm644 ${srcdir}/$_pkgname-$pkgver/copyright $pkgdir//usr/share/licenses/libks/LICENSE
+    install -Dm644 ${srcdir}/$_pkgname-$pkgver/copyright $pkgdir//usr/share/licenses/$pkgname/LICENSE
 }
 
