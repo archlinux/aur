@@ -3,8 +3,9 @@
 # Based on https://aur.archlinux.org/packages/misskey
 
 pkgname=firefish
-pkgver=13.1.4
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
+epoch=1
 pkgdesc='A fun, new way to experience social media'
 url='https://joinfirefish.org'
 arch=('x86_64')
