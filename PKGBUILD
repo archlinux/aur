@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=knot
 pkgname="android-${_pkgname}-appimage"
-pkgver=1.1.04
-pkgrel=3
+pkgver=1.1.05
+pkgrel=1
 pkgdesc="An Android gadget that integrates common modules such as Todo, Notes and Reader and supports various clients (Win, Mac, Linux) for editing Todo and Notes."
 arch=("x86_64")
 url="https://github.com/ic005k/Knot"
@@ -14,7 +14,7 @@ providers=("ic005k")
 _install_path="/opt/appimages"
 source=("${pkgname-$appimage}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/Knot-Linux-${CARCH}.AppImage"
         "LICENSE::https://raw.githubusercontent.com/ic005k/Knot/main/LICENSE")
-sha256sums=('888c61b8dbd97c4d89c99ff2b98c716afb7e9b2b2c8c332846a4ae84ec5d0136'
+sha256sums=('949f9ab9a84e709300e60c505b1a55bdf6332c2f0592255e2aebd8ceb766ff91'
             'e81172c8f0c194e8fb34edd30b153e60407a094bbf2492abe4e012e6a1ad854a')
 prepare() {
     chmod a+x "${srcdir}/${pkgname-$appimage}-${pkgver}.AppImage"
