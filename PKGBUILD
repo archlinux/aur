@@ -1,4 +1,4 @@
-# Maintainer: fabillo <fabillo552@gmail.com>
+# Maintainer: fabillo <fabillo@archlinux.org>
 pkgname="ripdrag"
 pkgver="0.2.1"
 pkgrel=1
