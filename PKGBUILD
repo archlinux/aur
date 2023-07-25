@@ -8,6 +8,7 @@ pkgrel=1
 pkgdesc="xGUI (the X Graphics User Interface) Pro is a modern, cross-platform, and advanced HVML renderer which is based on tailored WebKit."
 arch=(x86_64
     aarch64
+    riscv64
     mips64
     powerpc
     powerpc64le)
@@ -97,6 +98,7 @@ package_xguipro-gtk3-git() {
         -DPORT=GTK \
         -DENABLE_GAMEPAD=OFF \
         -DENABLE_INTROSPECTION=OFF \
+        -DUSE_GTK4=OFF \
         -DUSE_SOUP2=ON \
         -DUSE_WPE_RENDERER=OFF \
         -DUSE_LCMS=OFF \
@@ -119,7 +121,7 @@ package_xguipro-gtk4-git() {
     pkgdesc+=" (gtk4)"
     conflicts+=(${pkgname%-git})
     depends+=(
-#         webkit2gtk-5.0
+        webkit2gtk-4.1
         gtk4
         libsoup3)
     options=('!strip')
@@ -133,7 +135,8 @@ package_xguipro-gtk4-git() {
         -DPORT=GTK \
         -DENABLE_GAMEPAD=OFF \
         -DENABLE_INTROSPECTION=OFF \
-        -DUSE_SOUP3=ON \
+        -DUSE_GTK4=ON \
+        -DUSE_SOUP2=OFF \
         -DUSE_WPE_RENDERER=OFF \
         -DUSE_LCMS=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
