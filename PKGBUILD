@@ -2,41 +2,54 @@
 
 _name=click-repl
 pkgname=python-click-repl
-pkgver=0.2.0
-pkgrel=4
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Subcommand REPL for click apps"
 arch=(any)
 url="https://github.com/click-contrib/click-repl"
 license=(MIT)
-depends=(python-click python-prompt_toolkit python-six)
-makedepends=(python-setuptools)
+depends=(
+  python
+  python-click
+  python-prompt_toolkit
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
 checkdepends=(python-pytest)
-# https://github.com/click-contrib/click-repl/issues/49
-# source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 source=($pkgname-$pkgver.tar.gz::https://github.com/click-contrib/$_name/archive/refs/tags/$pkgver.tar.gz)
-sha512sums=('888ef2d4082cbecbdab70d707296b20d3dcc0a13fe06ef103fbe04a3f29381fe0f3284c2eb38c6d3eb8b026063cba470a519524e98b9eadd06a5946c669ffc3b')
-b2sums=('b02c7d858971f655ba880c6f66ff0a5c1b3c1aeb83782807c04d862430841761caa8a7a72d2d110a9706272cf2cd818b6976db14315c885bea95e8ef991ef9df')
+sha512sums=('4135cfd4a0b041d9e6446b4c938bb5863d851703f47f204cd78fc9e5ae6b7fd71215abbf08863d9a5cdb664f92df5fca2380a6efa7ddeb67dd6c9b1d4f210f65')
+b2sums=('90b97c0e24e40c63770ee9c14fbcca2b8ac2c743ed62b46fce582ad9416c1c645af9e3d43499f488e4c6344f735d8b3c14f1119759e893af7250817992bf61d8')
 
 prepare() {
-  mv -v $_name-$pkgver $pkgname-$pkgver
+  # we are not interested in coverage
+  sed -e '/--cov/d' -i $_name-$pkgver/pyproject.toml
 }
 
 build() {
-  cd $pkgname-$pkgver
-  python setup.py build
+  cd $_name-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $pkgname-$pkgver
-  export PYTHONPATH="build:$PYTHONPATH"
-  pytest -v
+  local pytest_options=(
+    -vv
+  )
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+
+  cd $_name-$pkgver
+  # install to temporary location, as importlib is used
+  python -m installer --destdir=test_dir dist/*.whl
+  export PYTHONPATH="$PWD/test_dir/$site_packages:$PYTHONPATH"
+  pytest "${pytest_options[@]}"
 }
 
 package() {
-  cd $pkgname-$pkgver
-  python setup.py install --skip-build \
-    --optimize=1 \
-    --root="$pkgdir"
-  install -vDm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
