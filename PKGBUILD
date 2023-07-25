@@ -3,7 +3,7 @@
 
 pkgname=openmsx-catapult
 pkgver=19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Front-end for openMSX: the MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org"
@@ -12,10 +12,8 @@ depends=('libxml2' 'wxwidgets-gtk2' 'zlib' 'libjpeg' 'libpng' 'libtiff' "openmsx
 makedepends=('python')
 provides=("openmsx-catapult")
 conflicts=("openmsx-catapult-git")
-source=("https://github.com/openMSX/wxcatapult/archive/RELEASE_${pkgver//./_}.tar.gz"
-        "wx3-fix.diff")
-md5sums=('4119442b37390a6b2ce7ea04d1c62498'
-         'c5b96def2590cef7d5250b0e21f52edc')
+source=("https://github.com/openMSX/wxcatapult/archive/RELEASE_${pkgver//./_}.tar.gz")
+md5sums=('4119442b37390a6b2ce7ea04d1c62498')
 
 build() {
   cd "wxcatapult-RELEASE_${pkgver//./_}"
@@ -32,9 +30,6 @@ build() {
   echo 'INSTALL_DOC_DIR:=/usr/share/doc/openmsx-catapult' >> build/custom.mk
   echo 'INSTALL_SHARE_DIR:=/usr/share/openmsx-catapult' >> build/custom.mk
   echo 'INSTALL_BINARY_DIR:=/usr/bin' >> build/custom.mk
-
-  # Fixes WX Issues. Thanks @pjag
-  patch --forward --strip=1 --input="${srcdir}/wx3-fix.diff"
 
   # Compiling
   make
