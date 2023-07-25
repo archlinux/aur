@@ -14,5 +14,5 @@ md5sums=('a22e0c261b38d232ef8f53c951cfe1b3')
 
 package() {
     mkdir -p $pkgdir/$HOME/.local/share/$_pkgname
-    install -Dm700 $srcdir/$_pkgname $pkgdir/usr/bin/$_pkgname
+    install -Dm 755 $srcdir/$_pkgname $pkgdir/usr/bin/$_pkgname
 }
