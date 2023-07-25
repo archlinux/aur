@@ -19,8 +19,8 @@ LPORDDIR = $(topdir)/PORD/lib/
 IPORD    = -I$(topdir)/PORD/include/
 LPORD    = -L$(LPORDDIR) -lpord
 
-LMETISDIR = /usr/lib
-IMETIS    = -I/usr/include/
+#LMETISDIR = /usr/lib
+#IMETIS    = -I/usr/include/
 #IMETIS    = -I/usr/include/metis
 
 # LMETIS    = -L$(LMETISDIR) -lparmetis -lmetis
