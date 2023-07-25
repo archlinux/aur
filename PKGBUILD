@@ -3,7 +3,7 @@
 pkgname=python-requirements-parser
 _name=${pkgname#python-}
 pkgver=0.5.0
-pkgrel=6
+pkgrel=7
 pkgdesc="A Pip requirements file parser."
 arch=('any')
 url="https://github.com/madpah/requirements-parser"
