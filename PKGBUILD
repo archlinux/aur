@@ -3,61 +3,80 @@
 
 pkgname=gitlint
 pkgver=0.17.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Git commit message linter'
 arch=('any')
 url='https://github.com/jorisroovers/gitlint'
 license=('MIT')
 options=(!emptydirs)
 depends=(
-  'python'
-  'python-arrow'
-  'python-click'
-  'python-sh'
+  python
+  python-arrow
+  python-click
+  python-sh
 )
-makedepends=('python-setuptools')
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
 checkdepends=(
-  'git'
-  'python-pytest'
+  git
+  python-pytest
 )
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   "0001-Unset-EDITOR-env-var-in-test_run_hook_edit.patch"
-  "gitlint.install"
 )
 sha256sums=(
   '1c1e895aea22b1ded131a9dc81dd1f37fb064a9f3af7421debd1606ca646196a'
   'ec117041e4ba8a3a46d27e169982129dd08e455501de676d873fce91b1d934cd'
-  'c160f586b02894afc3535de1f9c843b60bfc24d2b56cc00ab26472dc296123c4'
 )
-install=gitlint.install
+
+_archive="$pkgname-$pkgver"
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$_archive"
 
   patch --forward --strip=1 --input="${srcdir}/0001-Unset-EDITOR-env-var-in-test_run_hook_edit.patch"
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_archive
   cd gitlint-core
 
-  python setup.py build
+  python -m build --wheel --no-isolation
+
+  # Completions
+  mkdir -p tmp_install
+  python -m installer --destdir=tmp_install dist/*.whl
+  local site_packages
+  site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  export PYTHONPATH="$PWD/tmp_install/$site_packages:$PYTHONPATH"
+  local gitlint_cmd="$PWD/tmp_install/usr/bin/gitlint"
+  _GITLINT_COMPLETE=bash_source $gitlint_cmd > gitlint.bash
+  _GITLINT_COMPLETE=fish_source $gitlint_cmd > gitlint.fish
+  _GITLINT_COMPLETE=zsh_source $gitlint_cmd > gitlint.zsh
+  rm -r tmp_install
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$_archive"
   cd gitlint-core
 
   python -m pytest
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_archive"
   cd gitlint-core
 
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 gitlint.bash "$pkgdir/usr/share/bash-completion/completions/gitlint"
+  install -Dm644 gitlint.fish "$pkgdir/usr/share/fish/vendor_completions.d/gitlint.fish"
+  install -Dm644 gitlint.zsh "$pkgdir/usr/share/zsh/site-functions/_gitlint"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
