@@ -1,0 +1,14 @@
+pkgbase = qt6pas
+	pkgdesc = Free Pascal Qt 6 binding library updated by lazarus IDE
+	pkgver = 6.2.6
+	pkgrel = 1
+	url = https://gitlab.com/freepascal.org/lazarus/lazarus/-/tree/main/lcl/interfaces/qt6/cbindings
+	arch = x86_64
+	license = LGPL3
+	depends = qt6-base
+	options = libtool
+	options = staticlibs
+	source = https://gitlab.com/freepascal.org/lazarus/lazarus/-/archive/lazarus_3_0_RC1/lazarus-lazarus_3_0_RC1.tar.bz2
+	sha512sums = b8597da154c0da2a9f3223f1987adc99433d5a82fcbe58393d97c4809eb5b183ce27d38bb76410448e9ce67654754d849597db433f310ba49efc45395208cc8c
+
+pkgname = qt6pas
