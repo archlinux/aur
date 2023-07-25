@@ -5,7 +5,7 @@ pkgbase='python-dataclasses-json'
 pkgname=('python-dataclasses-json')
 _module='dataclasses-json'
 pkgver='0.5.13'
-pkgrel=2
+pkgrel=3
 pkgdesc='Easily serialize Python Data Classes to and from JSON'
 url='https://github.com/lidatong/dataclasses-json'
 depends=(
@@ -48,4 +48,5 @@ check() {
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
