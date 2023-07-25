@@ -1,13 +1,13 @@
 pkgbase = mypeople-bin
 	pkgdesc = A simple and modern contactbook(addressbook)
-	pkgver = 0.0.3
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/TheSnakeWitcher/mypeople
 	arch = x86_64
 	license = MIT
 	makedepends = make
 	depends = sqlite3
-	source = mypeople::https://github.com/TheSnakeWitcher/mypeople/releases/download/v0.0.3/mypeople
-	md5sums = 7ee01430171f8d88d99d154911577120
+	source = mypeople::https://github.com/TheSnakeWitcher/mypeople/releases/download/v0.1.0/mypeople
+	md5sums = a22e0c261b38d232ef8f53c951cfe1b3
 
 pkgname = mypeople-bin
