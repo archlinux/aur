@@ -1,6 +1,6 @@
 pkgbase = gthumb-git
 	pkgdesc = Image browser and viewer for the GNOME Desktop
-	pkgver = 3.12.2+45+g23452ab7
+	pkgver = 3.12.2+105+g5e5e2479
 	pkgrel = 1
 	url = http://live.gnome.org/gthumb/
 	arch = i686
@@ -33,7 +33,7 @@ pkgbase = gthumb-git
 	optdepends = libchamplain: map viewer
 	optdepends = brasero: burn discs
 	optdepends = liboauth: web albums
-	provides = gthumb=3.12.2+45+g23452ab7
+	provides = gthumb=3.12.2+105+g5e5e2479
 	conflicts = gthumb
 	options = !emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/gthumb.git

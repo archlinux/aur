@@ -3,7 +3,7 @@
 
 _pkgname=gthumb
 pkgname=gthumb-git
-pkgver=3.12.2+45+g23452ab7
+pkgver=3.12.2+105+g5e5e2479
 pkgrel=1
 pkgdesc="Image browser and viewer for the GNOME Desktop"
 arch=(i686 x86_64)
