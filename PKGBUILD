@@ -2,8 +2,8 @@
 
 pkgname='python-optax'
 _pkgname=${pkgname#python-}
-pkgver=0.1.5
-pkgrel=3
+pkgver=0.1.6
+pkgrel=1
 pkgdesc='A gradient processing and optimization library for JAX'
 arch=('x86_64')
 url='https://github.com/deepmind/optax'
@@ -18,7 +18,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 optdepends=('python-dm-haiku: Deep learning framework from DeepMind'
             'python-flax: Deep learning framework from Google')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/deepmind/optax/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ff4180ae5f6601baba6445d22a465e7af3c2b485032e46929571d00c688ae7dc')
+sha256sums=('b921fc2a91503425c4893f0891962ec32d450af8338a84a1ae7f23310c64b7a4')
 
 build() {
     python -m build -n -w "$_pkgname-$pkgver"
@@ -29,9 +29,4 @@ package() {
         --compile-bytecode 1 \
         --destdir $pkgdir \
         $_pkgname-$pkgver/dist/$_pkgname-$pkgver-*.whl
-
-    # TODO(@daskol): Fix setup.py of optax.
-    rm -rfv $pkgdir/usr/lib/python3.11/site-packages/build
-    rm -rfv $pkgdir/usr/lib/python3.11/site-packages/docs
-    rm -rfv $pkgdir/usr/lib/python3.11/site-packages/examples
 }
