@@ -4,17 +4,43 @@
 
 _pkgname=digikam
 pkgname="$_pkgname-git"
-pkgver=8.0.0.r3363.9223eb7bec
+pkgver=8.1.0.r46.a12baf6dcb
 pkgrel=1
+epoch=1
 pkgdesc='An advanced digital photo management application'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://www.digikam.org/'
-depends=('akonadi-contacts' 'exiv2' 'glu' 'imagemagick' 'jasper' 'kcalendarcore'
-         'kfilemetadata' 'kio' 'knotifyconfig' 'lensfun' 'libass' 'libgphoto2'
-         'libksane' 'marble-common' 'opencv' 'perl-image-exiftool'
-         'qt5-networkauth' 'qt5-webengine' 'qt5-xmlpatterns' 'threadweaver')
-makedepends=('boost' 'doxygen' 'eigen' 'extra-cmake-modules' 'git' 'kdoctools')
+depends=(
+	akonadi-contacts
+	exiv2
+	glu
+	imagemagick
+	jasper
+	kcalendarcore
+	kfilemetadata
+	kio
+	knotifyconfig
+	lensfun
+	libass
+	libgphoto2
+	libksane
+	marble-common
+	opencv
+	perl-image-exiftool
+	qt5-networkauth
+	qt5-webengine
+	qt5-xmlpatterns
+	threadweaver
+)
+makedepends=(
+	boost
+	doxygen
+	eigen
+	extra-cmake-modules
+	git
+	kdoctools
+)
 optdepends=('darktable: RAW import'
             'hugin: panorama tool'
             'perl: for digitaglinktree'
@@ -26,21 +52,7 @@ source=("git+https://invent.kde.org/graphics/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $_pkgname
-	printf "%s.%s" $(git blame -s -L/DIGIKAM_MAJOR_VERSION/,+3 CMakeLists.txt | awk 'BEGIN { ORS = "."; }
-	{
-		gsub("[\")]", "");
-		"git rev-list --count "$1"..HEAD" | getline x;
-		if (NR==1 || min>x) {
-			min = x;
-			min_hash = $1;
-		}
-		print $4;
-	}
-	END {
-		ORS="";
-		print "r"min;
-	}') $(git rev-parse --short HEAD)
+	git -C $_pkgname describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {

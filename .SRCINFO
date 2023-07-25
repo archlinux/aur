@@ -1,7 +1,8 @@
 pkgbase = digikam-git
 	pkgdesc = An advanced digital photo management application
-	pkgver = 8.0.0.r3363.9223eb7bec
+	pkgver = 8.1.0.r46.a12baf6dcb
 	pkgrel = 1
+	epoch = 1
 	url = https://www.digikam.org/
 	arch = i686
 	arch = x86_64
