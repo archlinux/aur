@@ -1,0 +1,11 @@
+pkgbase = vim-swap-git
+	pkgdesc = Reorder delimited items.
+	pkgver = r223.9358bfd
+	pkgrel = 1
+	url = https://github.com/machakann/vim-swap
+	arch = any
+	license = unknown
+	source = git+https://github.com/machakann/vim-swap.git
+	md5sums = SKIP
+
+pkgname = vim-swap-git
