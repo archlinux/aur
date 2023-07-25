@@ -1,7 +1,7 @@
 # Maintainer: Ayush Shenoy <ayush.shenoy92@gmail.com>
 # Contributor: Asmund Ervik <aaervik@gmail.com>
 pkgname=hoomd-blue
-pkgver=v3.11.0
+pkgver=v4.0.1
 pkgrel=1
 pkgdesc="A general-purpose particle simulation toolkit using GPUs with CUDA"
 arch=("any")
@@ -16,6 +16,7 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir/$pkgname"
+    echo "$source"
     git submodule update --init
 	mkdir -p build && cd build
     cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release \
