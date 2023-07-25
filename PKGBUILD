@@ -3,32 +3,23 @@
 
 pkgname=libvarnam
 pkgver=3.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Transliteration and reverse transliteration for Indian languages"
 arch=('x86_64')
 url="https://www.varnamproject.com/"
 license=('MPL')
 makedepends=('cmake')
-source=("https://github.com/varnamproject/libvarnam/releases/download/v3.2.6/$pkgname-$pkgver.tar.gz")
+source=("https://github.com/varnamproject/libvarnam/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('17d856c6b2e1a3d009d9907e9d0b0a49d82f403e71a0307a9c11ba5681a35481')
-depends=(
-  'ruby'
-  'ruby-ffi'
-)
-provides=('varnamc')
-
-prepare() {
-  mkdir -p build
-}
+depends=('ruby' 'ruby-ffi')
 
 build() {
-  cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ../${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
+  cmake -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
-  cd build
+  cd ${pkgname}-${pkgver}
   make DESTDIR="$pkgdir/" install
 }
-
