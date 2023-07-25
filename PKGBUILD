@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=dwarfs
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url='https://github.com/mhx/dwarfs'
@@ -18,14 +18,20 @@ makedepends=(
   'utf8cpp'
 )
 source=("$pkgname-$pkgver.tar.xz::https://github.com/mhx/dwarfs/releases/download/v$pkgver/dwarfs-$pkgver.tar.xz")
-sha256sums=('012352e6ce9194a2df95889d4f87b5767d372e10edbfbe9141b3ee3e447d7676')
-b2sums=('d3612b751350f527be4e0bd547099d64e2fe18f812a916bd87574829034d35dfb0947d27b4cc9bc5c8219a5bbdaf9c1f81a569fdb1024f0a13dccd657e779dba')
+sha256sums=('2fbddf0c7fee00b175a70f9de2167a0ddbfa32cff6a2d9b29f585fe960174fd9')
+b2sums=('85cb90ea7d20c3c067c126dc7f7a65145041f6ef2853f96a89ca425a8a1dab9d49a0a21daa9590037aa0a9fcfc4f11fbb91d4417213318a699472532400017bb')
 
 prepare() {
   cd "$pkgname-$pkgver"
 }
 
 build() {
+  # Setting up release flags manually here so we get to use `CMAKE_BUILD_TYPE=None`
+  # and keep makepkg-defined flags for build
+  # cf. https://wiki.archlinux.org/title/CMake_package_guidelines#Fixing_the_automatic_optimization_flag_override
+  export CFLAGS="$CFLAGS -DNDEBUG"
+  export CXXFLAGS="$CXXFLAGS -DNDEBUG"
+
   cmake -B build -S "$pkgname-$pkgver" \
     -W no-dev \
     -D CMAKE_INSTALL_PREFIX=/usr \
