@@ -1,6 +1,6 @@
 pkgbase = json-schema-for-humans
 	pkgdesc = Quickly generate HTML documentation from a JSON schema
-	pkgver = 0.44.5
+	pkgver = 0.44.6
 	pkgrel = 1
 	url = https://github.com/coveooss/json-schema-for-humans
 	arch = any
@@ -17,11 +17,12 @@ pkgbase = json-schema-for-humans
 	depends = python-htmlmin
 	depends = python-jinja
 	depends = python-markdown2
+	depends = python-markupsafe
 	depends = python-pygments
 	depends = python-pytz
 	depends = python-requests
 	depends = python-yaml
-	source = json-schema-for-humans-0.44.5.tar.gz::https://github.com/coveooss/json-schema-for-humans/archive/refs/tags/v0.44.5.tar.gz
-	sha256sums = fff6dfa42ffdc97e5d2334ad30008d05ad77534a9c96ce724340c80b0676510b
+	source = json-schema-for-humans-0.44.6.tar.gz::https://github.com/coveooss/json-schema-for-humans/archive/refs/tags/v0.44.6.tar.gz
+	sha256sums = 28345d41eccdcc8088d618bf585500aab5e8bb79ffec746736cc367d235d3ae4
 
 pkgname = json-schema-for-humans

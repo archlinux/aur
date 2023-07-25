@@ -1,12 +1,25 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=json-schema-for-humans
-pkgver=0.44.5
+pkgver=0.44.6
 pkgrel=1
 pkgdesc="Quickly generate HTML documentation from a JSON schema"
 arch=(any)
 url="https://github.com/coveooss/json-schema-for-humans"
 license=(Apache)
+depends=(
+  python
+  python-click
+  python-dataclasses-json
+  python-htmlmin
+  python-jinja
+  python-markdown2
+  python-markupsafe
+  python-pygments
+  python-pytz
+  python-requests
+  python-yaml
+)
 makedepends=(
   python-build
   python-installer
@@ -17,21 +30,9 @@ checkdepends=(
   python-pytest
   python-beautifulsoup4
 )
-depends=(
-  python
-  python-click
-  python-dataclasses-json
-  python-htmlmin
-  python-jinja
-  python-markdown2
-  python-pygments
-  python-pytz
-  python-requests
-  python-yaml
-)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fff6dfa42ffdc97e5d2334ad30008d05ad77534a9c96ce724340c80b0676510b')
+sha256sums=('28345d41eccdcc8088d618bf585500aab5e8bb79ffec746736cc367d235d3ae4')
 
 _archive="$pkgname-$pkgver"
 
@@ -46,7 +47,7 @@ build() {
 check() {
   cd "$_archive"
 
-  pytest
+  python -m pytest
 }
 
 package() {
