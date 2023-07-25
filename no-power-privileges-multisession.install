@@ -1,0 +1,15 @@
+restart_polkit() {
+    systemctl restart polkit.service
+}
+
+post_install() {
+    restart_polkit
+}
+
+post_upgrade() {
+    restart_polkit
+}
+
+post_remove() {
+    restart_polkit
+}

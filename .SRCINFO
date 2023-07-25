@@ -1,0 +1,16 @@
+pkgbase = no-power-privileges-multisession
+	pkgdesc = Prevent users from touching system power state when there are multiple sessions, unless they are in the `power` group
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/no-power-privileges-multisession
+	install = no-power-privileges-multisession.install
+	arch = any
+	license = MIT
+	depends = polkit
+	conflicts = no-power-privileges
+	source = 20-no-power-privileges-multisession.rules
+	source = LICENSE
+	sha512sums = c115a02554718ce83e09c9f4c850b6d338a9530cdd8a9d63bb5ef70fcd5a1f8b0f8bb8e42b12acfb99d58f3b363b47289ebccfd1ea4a0608b0df2cad51354ab3
+	sha512sums = c99f1ab3ab4707199a0e767c065d10119b188e1a5a5100160ceaea753a3cc24342286606eb10d3b5dc251051f7ef922ed679823d5ca9109334d8dd9fc4dcd0be
+
+pkgname = no-power-privileges-multisession
