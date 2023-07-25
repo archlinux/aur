@@ -31,7 +31,7 @@ pkgbase = mpv-light-pulse
 	provides = mpv
 	conflicts = mpv
 	options = !emptydirs
-	source = git+https://github.com/mpv-player/mpv.git#tag=33f10b1aee5fef45960728fe8595d1603c8a9a85?signed
+	source = git+https://github.com/mpv-player/mpv.git#tag=3996724d3fa1c51cc7998f3de2e22e2c99e6d270?signed
 	validpgpkeys = 145077D82501AA20152CACCE8D769208D5E31419
 	sha256sums = SKIP
 

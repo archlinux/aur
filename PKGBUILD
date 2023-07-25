@@ -5,7 +5,7 @@
 
 _pkgname=mpv
 pkgname=${_pkgname}-light-pulse
-_tag='33f10b1aee5fef45960728fe8595d1603c8a9a85' # git rev-parse v${pkgver}
+_tag='3996724d3fa1c51cc7998f3de2e22e2c99e6d270' # git rev-parse v${pkgver}
 pkgver=0.35.0
 pkgrel=1
 pkgdesc="Free, open source, and cross-platform media player – with selection of features (pulse, dvd and cd support)."
@@ -23,7 +23,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 validpgpkeys=('145077D82501AA20152CACCE8D769208D5E31419') # sfan5 <sfan5@live.de>
 source=("git+https://github.com/mpv-player/mpv.git#tag=${_tag}?signed")
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 build() {
   cd ${_pkgname}
