@@ -12,7 +12,7 @@ makedepends=('unzip')
 depends=('go')
 provides=('govarnam')
 source=("https://github.com/varnamproject/${_base}/releases/download/v${pkgver}/${_base}-${pkgver}-${arch}.zip")
-sha256sums=('d00a6f4e43993a4b8c96546a3a8afbe04a5d11d0d65ab9dcc5137b0b6857f3dc')
+sha256sums=('d6c0017f62bc1d1816e799984529b62a3bc1d6c37e4dbd6f9b0b13b57e7446fc')
 
 prepare() {
 	cd "${_base}"-"${pkgver}"-"${arch}"
