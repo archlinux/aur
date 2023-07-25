@@ -10,7 +10,7 @@
 
 _pack=sockets
 pkgname=octave-${_pack}
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Socket functions for networking from within octave"
 arch=(any)
@@ -26,7 +26,7 @@ install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
 source=("https://downloads.sourceforge.net/octave/${_archive}")
 noextract=("${_archive}")
-sha512sums=('6ee0b071d43fb773f64bed652653a66e6e16d2c1b9ec64306dc24b0b9db6b1dde5ab085698d32baa14b4b6ccd2976c93df8414aae157fe81f579eb1389f633a5')
+sha512sums=('941ade43c1df3984084500a213db9d01f2a2264b4dd7c41145c5e222fb5197f43e17369491e6fd8be7f06faa865b072c08378c8f32f9a80e6275c12a169c5857')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
