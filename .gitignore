@@ -4,3 +4,4 @@
 !.SRCINFO
 !CHANGELOG
 !remove-werror.patch
+!fix-catch-glibc-compatibility.patch
