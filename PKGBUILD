@@ -2,8 +2,8 @@
 # Contributor: Tom < reztho at archlinux dot us >
 
 pkgname=openmsx-catapult
-pkgver=18.0
-pkgrel=5
+pkgver=19.0
+pkgrel=1
 pkgdesc="Front-end for openMSX: the MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
 url="http://openmsx.org"
@@ -14,7 +14,7 @@ provides=("openmsx-catapult")
 conflicts=("openmsx-catapult-git")
 source=("https://github.com/openMSX/wxcatapult/archive/RELEASE_${pkgver//./_}.tar.gz"
         "wx3-fix.diff")
-md5sums=('72c626bb16d46b5e6e77bbb0b0fe8be5'
+md5sums=('e64b67e2a866f4173ee0d6ef8f687154'
          'c5b96def2590cef7d5250b0e21f52edc')
 
 build() {
