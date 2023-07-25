@@ -1,0 +1,21 @@
+# kx3util
+
+## Installation Notes
+The program requires that the 'Help', 'Libs', and 'Resources' directories are
+all siblings to the main executable. In the previous version, this was done by
+creating symbolic links to the bin directory the main executable lived in.
+
+In the current release, all package files are installed together in an etc
+directory, and a simple shell script that calls the main executable is installed
+into the bin directory instead. This was done because the application was not
+able to detect the help directory when installed in this manner.
+
+## Help Notes
+The help documentation requires a gtkhtml library to be installed, which is not
+called out in their installation notes. At the time I put the package together,
+installing this library required packages from the AUR which were failing to
+install on my machine.
+
+Instead of opening the help directly in the application, the utility provides
+the ability to open the help documents in a browser instead. This has been
+tested to work as an alternative.

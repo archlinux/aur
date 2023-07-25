@@ -1,16 +1,16 @@
 pkgbase = kx3util
 	pkgdesc = Elecraft KX3 Utility
-	pkgver = 1.16.6.25
-	pkgrel = 2
-	url = http://www.elecraft.com/KX3/KX3_software.htm
+	pkgver = 1.23.4.23
+	pkgrel = 1
+	url = https://elecraft.com/pages/kx3-high-perofrmance-portable-transceiver-firmware-and-utility
 	arch = x86_64
 	license = custom
 	depends = lib32-glibc
 	depends = lib32-libstdc++5
 	depends = lib32-gtk2
+	depends = curl
 	provides = kx3util
-	source = http://www.elecraft.com/software/KX3/KX3UtilityLINUX_1_16_6_25.tgz
-	md5sums = 1c63b7f43b994ddf4f1c12add2cfaa36
+	source = https://ftp.elecraft.com/KX3/Utilities/KX3UtilityLINUX64BIT_1_23_4_23.tar.gz
+	md5sums = f46a2786b81bcb82d874c9e5c00427ac
 
 pkgname = kx3util
-

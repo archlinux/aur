@@ -1,5 +1,5 @@
 src/
 pkg/
-kx3util*.pkg.tar.xz
-KX3Utility*.tgz
+kx3util*.pkg.tar.zst
+KX3Utility*.tar.gz
 

@@ -1,14 +1,14 @@
 # Maintainer: Clement Poisson <clement@poisson.me>
 pkgname=kx3util
-pkgver=1.16.6.25
-pkgrel=2
+pkgver=1.23.4.23
+pkgrel=1
 epoch=
 pkgdesc="Elecraft KX3 Utility"
 arch=("x86_64")
-url="http://www.elecraft.com/KX3/KX3_software.htm"
+url="https://elecraft.com/pages/kx3-high-perofrmance-portable-transceiver-firmware-and-utility"
 license=("custom")
 groups=()
-depends=("lib32-glibc" "lib32-libstdc++5" "lib32-gtk2")
+depends=("lib32-glibc" "lib32-libstdc++5" "lib32-gtk2" "curl")
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://www.elecraft.com/software/KX3/KX3UtilityLINUX_1_16_6_25.tgz")
+source=("https://ftp.elecraft.com/KX3/Utilities/KX3UtilityLINUX64BIT_1_23_4_23.tar.gz")
 noextract=()
-md5sums=('1c63b7f43b994ddf4f1c12add2cfaa36')
+md5sums=('f46a2786b81bcb82d874c9e5c00427ac')
 validpgpkeys=()
 
 package() {
@@ -32,21 +32,17 @@ package() {
 	# License
 	install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	cd "${srcdir}/kx3util_1_16_6_25"
+	# Alias executable
+	install -Dm755 ../kx3util "${pkgdir}/usr/local/bin/kx3util"
 
-	# Main Binary
-	install -Dm755 kx3util "${pkgdir}/usr/local/bin/kx3util"
+	cd "${srcdir}/KX3UtilityLINUX64BIT_1_23_4_23"
+
+	# Main Contents
+	install -d "${pkgdir}/usr/local/etc/${pkgname}"
+	install -Dm755 kx3util "${pkgdir}/usr/local/etc/${pkgname}/kx3util"
 
 	# Libraries
-	install -d "${pkgdir}/usr/local/lib/${pkgname}"
-	install -Dm755 "kx3util Libs"/* "${pkgdir}/usr/local/lib/${pkgname}"
-	# -- create a link to the expected install location
-	ln -s "/usr/local/lib/${pkgname}" "${pkgdir}/usr/local/bin/kx3util Libs"
-
-	# Help
-	install -d "${pkgdir}/etc/${pkgname}/Help"
-	# -- help files need world read in order to open in the browser
-	install -Dm744 "Help"/* "${pkgdir}/etc/${pkgname}/Help"
-	# -- create a link to the expected install location
-	ln -s "/etc/${pkgname}/Help" "${pkgdir}/usr/local/bin/Help"
+	cp -r "Libs" "${pkgdir}/usr/local/etc/${pkgname}"
+	cp -r "Help" "${pkgdir}/usr/local/etc/${pkgname}"
+	cp -r "Resources" "${pkgdir}/usr/local/etc/${pkgname}"
 }
