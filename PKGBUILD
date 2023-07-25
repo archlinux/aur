@@ -5,8 +5,8 @@
 
 _pkgname=libgit2
 pkgname=lib32-libgit2
-pkgver=1.6.4
-pkgrel=1
+pkgver=1.7.0
+pkgrel=3
 pkgdesc="A linkable library for Git"
 arch=('x86_64')
 url="https://github.com/libgit2/libgit2"
@@ -26,9 +26,23 @@ makedepends=(
   'python'
 )
 provides=('libgit2.so')
-source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('fd73df91710f19b0d6c3765c37c7f529233196da91cf4d58028a8d3840244f11df44abafabd74a8ed1cbe4826d1afd6ff9f01316d183ace0924c65e7cf0eb8d5')
-b2sums=('103af9ea9ed1310b1066a48859bbefc162647d787519bb3df83d7ea1957cda5934537271970d3d180f91daa6edc3bbc05387d6293812f0d849dda966419d29ba')
+source=(
+  "${url}/archive/refs/tags/v${pkgver}.tar.gz"
+  'libgit2-1.7.0-git_oidarray_include.patch::https://gitlab.archlinux.org/archlinux/packaging/packages/libgit2/-/raw/1-1.7.0-3/libgit2-1.7.0-git_oidarray_include.patch'
+  'libgit2-1.7.0-cleanup_grafts.patch::https://github.com/libgit2/libgit2/commit/9d4c550564ee254dda9e2620c4c1e32ebb529728.patch'
+)
+sha256sums=(
+  'd9d0f84a86bf98b73e68997f5c1543cc5067d0ca9c7a5acaba3e8d117ecefef3'
+  'b4a4897fd376ee94e30f3d695194614062fc87ec22ccb249c86d71afbc2c5d92'
+  '1c921387370c10a08d8db0143b70f94be205cc1e4af7faf3626f673d244747da'
+)
+
+prepare() {
+  # add missing include needed when registering custom transports: https://github.com/libgit2/libgit2/issues/6607
+  patch -Np1 -d "libgit2-${pkgver}" -i "${srcdir}/libgit2-1.7.0-git_oidarray_include.patch"
+  # make reuse of grafts "safe"
+  patch -Np1 -d "libgit2-${pkgver}" -i "${srcdir}/libgit2-1.7.0-cleanup_grafts.patch"
+}
 
 build() {
 
