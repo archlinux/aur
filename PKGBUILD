@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="pritunl-client-bin"
-pkgver=1.3.3596.68
+pkgver=1.3.3600.11
 pkgrel=1
 pkgdesc="Pritunl OpenVPN client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${pkgname%-bin}" "${pkgname%-bin}-electron")
 depends=('glibc')
 source=("${pkgname%-bin}-${pkgver}.deb::${_githuburl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}-0ubuntu1.kinetic_amd64.deb"
         "LICENSE::https://raw.githubusercontent.com/pritunl/pritunl-client-electron/master/LICENSE")
-sha256sums=('511a62cda07dfec61c52db8f8039dfac86a0c74a9355a8c0e2ff4aa4b08be64f'
+sha256sums=('0f283eb2f191c9687fb285210b9ed4b4c4bc5e587750442fe81e633ad2fcba38'
             '890ace4699add48d4ac60cb109cdd4368d44f4138ed8820ac36366e9421253f0')
 package() {
     bsdtar -xf data.tar.zst -C "${pkgdir}"
