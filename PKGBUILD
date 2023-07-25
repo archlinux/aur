@@ -6,8 +6,8 @@ pkgname=(
   asusctl
   rog-control-center
 )
-pkgver=4.6.2
-pkgrel=1
+pkgver=4.7.0
+pkgrel=0.1
 pkgdesc="A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops"
 arch=('x86_64')
 url="https://gitlab.com/asus-linux/asusctl"
@@ -22,10 +22,9 @@ makedepends=(
   libusb
   power-profiles-daemon
   rust
-  supergfxctl
   systemd
 )
-_commit=7ae0f896cf197a240b871a0228966bc36e239a3c # tags/4.6.2^0
+_commit=2d396a49daddae3bdb124123218257dd880fea84 # tags/4.7.0^0
 source=("git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -40,6 +39,9 @@ prepare() {
 
 build() {
   cd "${pkgbase}"
+
+  # Keep rust/cargo build-dependency management inside the build directory
+  export CARGO_HOME="${srcdir}/cargo"
   make build
 }
 
@@ -70,6 +72,7 @@ package_asusctl() {
   )
 
   cd "${pkgbase}"
+  export CARGO_HOME="${srcdir}/cargo"
   make DESTDIR="${pkgdir}" install
 
   _pick rogcc "${pkgdir}/usr/bin/rog-control-center" \
@@ -83,7 +86,6 @@ package_rog-control-center() {
     asusctl
     fontconfig
     libappindicator-gtk3
-    supergfxctl
   )
   pkgdesc="App to control asusctl"
   mv rogcc/* "${pkgdir}"
