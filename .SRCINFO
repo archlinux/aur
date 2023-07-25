@@ -9,6 +9,8 @@ pkgbase = libks2
 	makedepends = cmake
 	depends = util-linux-libs
 	depends = openssl
+	provides = libks
+	conflicts = libks
 	source = libks2-2.0.2.tar.gz::https://github.com/signalwire/libks/archive/v2.0.2.tar.gz
 	sha256sums = af94f9fcdb2022b8f09187309ac2d372a5a4cc639af77cd4375f2d5c88b4fd63
 
