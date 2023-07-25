@@ -2,7 +2,7 @@
 
 pkgname=perl-data-validate-ip
 pkgver=0.27
-pkgrel=6
+pkgrel=7
 
 pkgdesc='IPv4 and IPv6 validation methods'
 license=('GPL' 'PerlArtistic')
