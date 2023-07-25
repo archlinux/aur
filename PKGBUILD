@@ -2,8 +2,8 @@
 
 pkgname=no-power-privileges-multisession
 pkgver=1.0
-pkgrel=1
-pkgdesc='Prevent users from touching system power state when there are multiple sessions, unless they are in the `power` group'
+pkgrel=2
+pkgdesc='Polkit rule to prevent users from touching system power state when there are multiple sessions, unless they are in the `power` group'
 arch=("any")
 url="https://aur.archlinux.org/packages/no-power-privileges-multisession"
 depends=("polkit")
