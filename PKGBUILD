@@ -4,7 +4,7 @@
 
 pkgname='python-dparse'
 _name=${pkgname#python-}
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Parser for Python dependency files"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/pyupio/dparse"
 license=('MIT')
 depends=(
   'python-packaging'
-  'python-toml'
+  'python-tomli'
 )
 makedepends=('python-setuptools')
 optdepends=(
@@ -20,7 +20,7 @@ optdepends=(
   'python-pyyaml: conda'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d09c212c2998306696fbd838b0587f9c6f46caac6c72db5cdcb3837a9715cc79')
+sha256sums=('45696c4ebb3acdbbdf3b8b00e6d2ac720fb3851c160820f1f6fb6481baefb991')
 
 build() {
   cd ${_name}-${pkgver}
