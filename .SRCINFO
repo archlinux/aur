@@ -1,5 +1,5 @@
 pkgbase = ripdrag
-	pkgdesc = An application that lets you drag and drop files from and to the terminal.
+	pkgdesc = Drag and drop files from and to the terminal
 	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/nik012003/ripdrag
