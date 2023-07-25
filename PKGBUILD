@@ -1,21 +1,18 @@
 # Maintainer: Aseem Athale <athaleaseem@gmail.com>
 # Contributor: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
+
 _name=libvarnam-ibus
 pkgname="${_name}-git"
 pkgver=r40.79ee71e
-pkgrel=1
+pkgrel=2
 pkgdesc="Transliteration and reverse transliteration for Indian languages"
 arch=('x86_64')
 url="https://www.varnamproject.com/"
 license=('Custom')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 source=("git+https://github.com/varnamproject/libvarnam-ibus.git")
 sha256sums=('SKIP')
-depends=(
-  'libvarnam'
-  'ibus'
-)
-provides=()
+depends=('libvarnam' 'ibus')
 
 pkgver() {
   cd ${_name}
@@ -35,4 +32,3 @@ package() {
   cd ${_name}
   make DESTDIR="$pkgdir/" install
 }
-
