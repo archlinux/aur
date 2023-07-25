@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos.toutou@gmail.com>
 
 pkgname=dektec-utilities
-pkgver=23.4.5
+pkgver=23.7.25
 pkgrel=1
 pkgdesc="DekTec utilities DtEpc, DtPlay, DtRecord and DtInfoCL"
 arch=('x86_64')
@@ -12,10 +12,10 @@ makedepends=('unzip')
 provides=('dektec-utilities')
 conflicts=('dektec-utilities')
 _dtepc=2.13.1
-_dtplay=4.16.0
-_dtrecord=4.13.0
+_dtplay=4.17.0
+_dtrecord=4.14.0
 _dtinfocl=1.5.2
-_sdk=2022.12.2
+_sdk=2023.06.0
 source=(
 	"https://www.dektec.com/products/SDK/DTAPI/Downloads/LinuxSDK_v${_sdk}.tar.gz"
 	"https://www.dektec.com/products/applications/DtEpc/downloads/DtEpc-${_dtepc}.zip"
@@ -24,11 +24,11 @@ source=(
 	"https://www.dektec.com/products/applications/DtRecord/downloads/DtRecord_v${_dtrecord}.zip"
 	)
 noextract=("DtPlay_v${_dtplay}.zip" "DtRecord_v${_dtrecord}.zip")
-sha256sums=('a1c758aac793dc529ad0430ca79a9ae56caab44befb6a00add4eaef1aba35af7'
+sha256sums=('a69a9c7cb7962768bd0a81c943df78f20e1184e56dd0a029cc1b9486844edd3b'
             '4fbbfe09d55b3528a6a45bc6a2effce3ba0431d7ac141bf190423accc7c4a435'
             'd93fd5372e3ae09942a6d21c363f3eb4c527d2ae631a103df81487942dbdfbce'
-            '94f01c935e16e2abb626515f6ef6433d302850efb180bb0699d5deb767b7e00b'
-            '12a383160743672d8b90a97a10356b701f931d0c99daad2d1066a2eb425d22ad')
+            '86a5372637dbe8e5a01a876e944f7548b4e62ad75885f933fcdf8714a8752dc1'
+            'c33f4fa33c718e4a40f8d758d8cb9f293565b169f6820b5d970ab1f2b3609360')
 
 prepare() {
 	cd "${srcdir}"
@@ -38,10 +38,10 @@ prepare() {
 	mkdir -p "dtplay/Import/DTAPI" "dtrecord/Import/DTAPI"
 	# include DTAPI (SDK) for DtPlay
 	cp LinuxSDK/DTAPI/Include/DTAPI.h dtplay/Import/DTAPI/
-	cp LinuxSDK/DTAPI/Lib/GCC5.1_CXX11_ABI1/* dtplay/Import/DTAPI/
+	cp LinuxSDK/DTAPI/Lib/GCC7.5.0/* dtplay/Import/DTAPI/
 	# include DTAPI (SDK) for DtRecord
 	cp LinuxSDK/DTAPI/Include/DTAPI.h dtrecord/Import/DTAPI/
-	cp LinuxSDK/DTAPI/Lib/GCC5.1_CXX11_ABI1/* dtrecord/Import/DTAPI/
+	cp LinuxSDK/DTAPI/Lib/GCC7.5.0/* dtrecord/Import/DTAPI/
 }
 
 build() {
@@ -56,7 +56,7 @@ build() {
 }
 
 package() {
-	install -Dvm755 ${srcdir}/Linux/DtEpc64 		${pkgdir}/usr/bin/DtEpc
+	install -Dvm755 ${srcdir}/Linux/DtEpc64 	${pkgdir}/usr/bin/DtEpc
 	install -Dvm755 ${srcdir}/Linux/DtInfoCL64 	${pkgdir}/usr/bin/DtInfoCL
 	install -Dvm755 ${srcdir}/Linux/DtPlay 		${pkgdir}/usr/bin/DtPlay
 	install -Dvm755 ${srcdir}/Linux/DtRecord 	${pkgdir}/usr/bin/DtRecord
