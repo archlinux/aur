@@ -1,7 +1,7 @@
 pkgbase = xfce4-volumed-pulse
 	pkgdesc = A volume keys control daemon for Xfce using pulseaudio
-	pkgver = 0.2.3
-	pkgrel = 4
+	pkgver = 0.2.4
+	pkgrel = 1
 	url = https://gitlab.xfce.org/apps/xfce4-volumed-pulse
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = xfce4-volumed-pulse
 	optdepends = xfce4-notifyd: for OSD notifications
 	conflicts = xfce4-volumed
 	replaces = xfce4-volumed
-	source = https://gitlab.xfce.org/apps/xfce4-volumed-pulse/-/archive/xfce4-volumed-pulse-0.2.3/xfce4-volumed-pulse-xfce4-volumed-pulse-0.2.3.tar.bz2
-	sha256sums = 4cc4ea464046a1e98705780c93e655d23c92f29122d91a593aea98155a2716fa
+	source = https://archive.xfce.org/src/apps/xfce4-volumed-pulse/0.2/xfce4-volumed-pulse-0.2.4.tar.bz2
+	sha256sums = a019e3f626b31c0aaa0b807962606645cc0caf7930882b034a5a3a1719858362
 
 pkgname = xfce4-volumed-pulse

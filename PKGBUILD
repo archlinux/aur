@@ -2,9 +2,9 @@
 
 pkgname=xfce4-volumed-pulse
 _vmaj=0.2
-_vmin=3
+_vmin=4
 pkgver=$_vmaj.$_vmin
-pkgrel=4
+pkgrel=1
 pkgdesc='A volume keys control daemon for Xfce using pulseaudio'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -14,13 +14,11 @@ url="https://gitlab.xfce.org/apps/$pkgname"
 depends=('libnotify' 'pulseaudio' 'libkeybinder3' 'xfconf')
 makedepends=('git' 'xfce4-dev-tools')
 optdepends=('xfce4-notifyd: for OSD notifications')
-sha256sums=('4cc4ea464046a1e98705780c93e655d23c92f29122d91a593aea98155a2716fa')
-source=("https://gitlab.xfce.org/apps/$pkgname/-/archive/$pkgname-$pkgver/$pkgname-$pkgname-$pkgver.tar.bz2")
+sha256sums=('a019e3f626b31c0aaa0b807962606645cc0caf7930882b034a5a3a1719858362')
+source=("https://archive.xfce.org/src/apps/$pkgname/$_vmaj/$pkgname-$pkgver.tar.bz2")
 
 build() {
-  cd $pkgname-$pkgname-$pkgver
-  sed -i -e "s|XDT_CHECK_PACKAGE(\[GLIB\], \[glib-2.0\], \[2.16\])|XDT_CHECK_PACKAGE(\[GLIB\], \[glib-2.0\], \[2.26\])|" configure.ac.in
-  ./autogen.sh
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr --sysconfdir=/etc \
               --libexecdir=/usr/lib \
               --localstatedir=/var
@@ -28,6 +26,6 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgname-$pkgver
+  cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
 }
