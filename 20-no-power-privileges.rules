@@ -1,0 +1,23 @@
+// This script is modified from a similar script written by MindlessLeadership
+// on Reddit
+// See https://www.reddit.com/r/gnome/comments/gya4a5/comment/ftcu44n
+
+// Prevent users from touching system power state unless they are in the
+// `power` group
+
+polkit.addRule(function(action, subject) {
+    if (action.id === "org.freedesktop.login1.suspend" ||
+        action.id === "org.freedesktop.login1.suspend-multiple-sessions" ||
+        action.id === "org.freedesktop.login1.hibernate" ||
+        action.id === "org.freedesktop.login1.hibernate-multiple-sessions" ||
+        action.id === "org.freedesktop.login1.power-off" ||
+        action.id === "org.freedesktop.login1.power-off-multiple-sessions" ||
+        action.id === "org.freedesktop.login1.reboot" ||
+        action.id === "org.freedesktop.login1.reboot-multiple-sessions") {
+        if (subject.isInGroup("power")) {
+            return polkit.Result.YES;
+        } else {
+            return polkit.Result.AUTH_ADMIN;
+        }
+    }
+});

@@ -1,0 +1,15 @@
+pkgbase = no-power-privileges
+	pkgdesc = Prevent users from touching system power state unless they are in the `power` group
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/no-power-privileges
+	arch = any
+	license = MIT
+	depends = polkit
+	conflicts = no-power-privileges-multisession
+	source = 20-no-power-privileges.rules
+	source = LICENSE
+	sha512sums = cf295103f74c9ec4d6f18a4f855b909f6b98d2fe7ed16bc0b6f0ac07b02e7150d46bcc8284877a9c78cddb1da97ee4c2ed15a7044a760962d7c3f9ece4822b19
+	sha512sums = c99f1ab3ab4707199a0e767c065d10119b188e1a5a5100160ceaea753a3cc24342286606eb10d3b5dc251051f7ef922ed679823d5ca9109334d8dd9fc4dcd0be
+
+pkgname = no-power-privileges
