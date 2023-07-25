@@ -1,6 +1,6 @@
 pkgbase = flaru-player-bin
 	pkgdesc = An unofficial emulator based on Ruffle Flash Emulator. Created to provide a friendly interface and enhanced playing experience. It's a complete alternative to Adobe Flash Player. Run Flash Safely Anywhere
-	pkgver = 1.12.0
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/jooy2/flaru
 	arch = x86_64
@@ -29,12 +29,10 @@ pkgbase = flaru-player-bin
 	depends = alsa-lib
 	depends = glibc
 	depends = libdrm
-	conflicts = flaru-appimage
 	conflicts = flaru-player
-	options = !strip
-	source = flaru-player-1.12.0.deb::https://github.com/jooy2/flaru/releases/download/1.12.0/Flaru.Player.1.12.0_amd64.deb
+	source = flaru-player-1.13.0.deb::https://github.com/jooy2/flaru/releases/download/1.13.0/Flaru.Player.1.13.0_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/jooy2/flaru/master/LICENSE
-	sha256sums = 986db046e5e073877f6d43d62045b753d2a902ddcbda3328bdc9d3f6745aa065
+	sha256sums = 670f561b22352657df29c4941616b464bf2f6b5121628d5a48dd3339f0cc15b5
 	sha256sums = 22f86a10f95ec7f4695c4d39a1df4464a6d61d7fe457dcd9181d71d530b0b70a
 
 pkgname = flaru-player-bin
