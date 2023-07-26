@@ -3,7 +3,7 @@
 java_=20
 pkgname_=graal-nodejs
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=23.0.0
+pkgver=23.0.1
 pkgrel=1
 pkgdesc="GraalVM-based, ployglot-enabled implementation of Node.js, Java ${java_} version"
 arch=('x86_64'
@@ -14,8 +14,8 @@ depends=("jdk${java_}-graalvm-bin")
 optdepends=("graaljs-jdk${java_}-bin: JavaScript support for non-native mode (with --jvm)")
 source_x86_64=("https://github.com/oracle/graaljs/releases/download/graal-${pkgver}/nodejs-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/oracle/graaljs/releases/download/graal-${pkgver}/nodejs-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('fde2af0a550bf70f915c6cbacce20f93d7864a294101ecd4d293ddc5e87d4898')
-sha256sums_aarch64=('878b8e61a030fcd08226ba8b227ba07564ecd3e2707b55e6ff907facdddc3380')
+sha256sums_x86_64=('553e321dafcbf1a05c7f5f372f80643b30105df410e5c15171b0f1536588a1a3')
+sha256sums_aarch64=('ba58a9375cee9ce0daf42c14f583e12d1892b3ee36b70c5bca5c2d7ecbe1d076')
 
 package() {
     local file eq permissions mode name target
