@@ -13,4 +13,4 @@ pkgbase = easymosdns-bin
 	sha256sums = 7b1062a8e9de0a93555149e042a2f410232e539b73acbaafa20bf89def9e9ec8
 	sha256sums = 5c3954d1ed479fca1dd6b9c948edd0313bd9deaafcc8e57515780bf51defff45
 
-pkgname = easymosdns
+pkgname = easymosdns-bin
