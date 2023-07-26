@@ -13,7 +13,7 @@ depends=('govarnam' 'ibus')
 source=("${pkgname}::git+https://github.com/varnamproject/govarnam-ibus.git"
     "git+https://github.com/varnamproject/govarnam.git")
 sha256sums=('SKIP' 'SKIP')
-provides=('govarnam')
+provides=('govarnam-ibus')
 
 pkgver() {
   cd "$pkgname"
