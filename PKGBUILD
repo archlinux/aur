@@ -1,6 +1,6 @@
 # Maintainer: fabillo <fabillo@archlinux.org>
 pkgname="ripdrag"
-pkgver="0.3.1"
+pkgver="0.3.2"
 pkgrel=1
 pkgdesc="Drag and drop files to and from the terminal"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gtk4')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7142cd872e282acd972045623efd0b949d039004897132ce58aaa01c45ba5b4b')
+sha256sums=('569f96b2fb5d071f207884d2b9b184b100dd0f964c7e338249533e813e860cc0')
 
 prepare() {
 	cd "$pkgname-$pkgver"
