@@ -2,7 +2,7 @@
 
 pkgname=dektec-utilities
 pkgver=23.7.25
-pkgrel=1
+pkgrel=2
 pkgdesc="DekTec utilities DtEpc, DtPlay, DtRecord and DtInfoCL"
 arch=('x86_64')
 url="https://www.dektec.com/downloads/utilities/"
@@ -60,4 +60,5 @@ package() {
 	install -Dvm755 ${srcdir}/Linux/DtInfoCL64 	${pkgdir}/usr/bin/DtInfoCL
 	install -Dvm755 ${srcdir}/Linux/DtPlay 		${pkgdir}/usr/bin/DtPlay
 	install -Dvm755 ${srcdir}/Linux/DtRecord 	${pkgdir}/usr/bin/DtRecord
+	install -Dvm644 ${srcdir}/LinuxSDK/License	${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }

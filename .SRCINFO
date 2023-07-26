@@ -1,7 +1,7 @@
 pkgbase = dektec-utilities
 	pkgdesc = DekTec utilities DtEpc, DtPlay, DtRecord and DtInfoCL
 	pkgver = 23.7.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dektec.com/downloads/utilities/
 	arch = x86_64
 	license = unknown
