@@ -1,0 +1,12 @@
+pkgbase = ttf-icomoon-feather-git
+	pkgdesc = Icomoon and Feather font icons
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/adi1090x/rofi/blob/master/fonts
+	arch = any
+	license = GPL3
+	conflicts = ttf-icomoon-feather
+	source = icomoon-feather.ttf::https://github.com/adi1090x/rofi/blob/master/fonts/Icomoon-Feather.ttf?raw=true
+	sha512sums = 807c896223158da8fa396bb10a5eb9769259c66deb44d7482ac47e1d5d6df4e75b5e33f3c411a49ca3453dc1875b03b1b8a59ded3c79417fbb1e75aea04dcf7d
+
+pkgname = ttf-icomoon-feather-git
