@@ -1,7 +1,7 @@
 pkgbase = cpu-x-opencl
 	pkgdesc = Gathers information on CPU, motherboard, GPU and more (with OpenCL support)
 	pkgver = 4.5.3
-	pkgrel = 2.3
+	pkgrel = 2.4
 	url = https://thetumultuousunicornofdarkness.github.io/CPU-X
 	arch = i686
 	arch = x86_64
@@ -9,18 +9,18 @@ pkgbase = cpu-x-opencl
 	checkdepends = mawk
 	checkdepends = nawk
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = nasm
+	makedepends = ninja
 	makedepends = opencl-headers>=2:2023.02.06
 	makedepends = vulkan-headers
-	depends = gtk3
-	depends = ncurses
-	depends = libcpuid>=0.6.0
-	depends = pciutils
 	depends = glfw
+	depends = gtk3
+	depends = libcpuid>=0.6.0
+	depends = ncurses
 	depends = opencl-icd-loader
-	depends = vulkan-icd-loader
+	depends = pciutils
 	depends = procps-ng>=4.0.0
+	depends = vulkan-icd-loader
 	optdepends = opencl-driver: packaged openCL driver
 	optdepends = opengl-driver: packaged openGL driver
 	optdepends = vulkan-driver: packaged Vulkan driver
