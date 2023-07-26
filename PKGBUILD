@@ -2,12 +2,12 @@
 
 pkgname="rofi-ykman-git"
 pkgver=r15.5275382
-pkgrel=2
+pkgrel=3
 pkgdesc='YubiKey manager script for rofi'
 arch=('any')
 url='https://github.com/nukeop/rofi-ykman'
 license=('AGPL-3.0')
-depends=('bash' 'yubikey-manager')
+depends=('bash' 'yubikey-manager' 'rofi')
 optdepends=(
     'xclip: X11 clipboard support'
     'wl-clipboard: Wayland clipboard support'
