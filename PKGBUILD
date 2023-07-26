@@ -1,5 +1,5 @@
 pkgname=pyrobbo
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Clone of an old 8-bit Atari game Robbo"
 url="http://github.com/macdems/pyrobbo"
@@ -12,13 +12,12 @@ source=(
     'pyrobbo.desktop'
     'robbo.png'
 )
-sha256sums=('3a8372ef1a2d4288a043a962292191922e907293383959cf6fe5eb3e61411e3b'
+sha256sums=('9063cd34dc66d0addb48d41b86ad5dcda78e57513f94a9cd8c756e9fd001dd5a'
             'd29ae49f54b9ba159fd39b0132dad6f0fa252902533934e7021f6cd61a04db33'
             'cc89dcb37e7f2dde624e8db706f0b26c0493fc68a1af5716b615ee992d716a84')
 
 build() {
     cd "${srcdir}/PyRobbo-${pkgver}"
-    export PYROBBO_VERSION=${pkgver}
     python -m build --wheel --outdir "${srcdir}"
 }
 
