@@ -6,7 +6,7 @@
 _pkgname=mpv
 pkgname=${_pkgname}-light-pulse
 _tag='3996724d3fa1c51cc7998f3de2e22e2c99e6d270' # git rev-parse v${pkgver}
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="Free, open source, and cross-platform media player – with selection of features (pulse, dvd and cd support)."
 arch=(i686 x86_64)
