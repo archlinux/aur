@@ -1,14 +1,14 @@
 pkgbase = python-optax
 	pkgdesc = A gradient processing and optimization library for JAX
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deepmind/optax
 	arch = x86_64
 	groups = jax
 	license = Apache
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-flit-core
 	makedepends = python-wheel
 	depends = python-absl
 	depends = python-chex
