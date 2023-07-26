@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=psitop
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='top for /proc/pressure'
 url='https://github.com/jamespwilliams/psitop'
@@ -9,7 +9,7 @@ arch=(i686 x86_64 aarch64 riscv64)
 license=(MIT)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e67e65c12f7be7a81200be81cea942e411b76a3ac6ddd9c540df8df7a6df18e7')
+sha256sums=('15bddcdd6da148e8d89297778027d4bdb7c882e3d087a5500d1e3de015370ebe')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
