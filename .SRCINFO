@@ -1,0 +1,19 @@
+pkgbase = black-pearl-origin-bin
+	pkgdesc = Free and open-source tool for managing game sources using community-made modules.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/BlackPearlOrigin/blackpearlorigin
+	arch = x86_64
+	license = BSD
+	makedepends = binutils
+	makedepends = tar
+	depends = libayatana-appindicator
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = openssl-1.1
+	provides = black-pearl-origin
+	conflicts = black-pearl-origin
+	source = https://github.com/BlackPearlOrigin/blackpearlorigin/releases/download/1.0.0/black-pearl-origin_0.3.0_amd64.deb
+	sha256sums = b1f2afcffe3e1ef31b0b9b0b0c6381152fc0b366977cb67f1d6cda2e7a5226a7
+
+pkgname = black-pearl-origin-bin
