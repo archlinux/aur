@@ -1,17 +1,17 @@
 pkgbase = graal-regex-jdk20-bin
 	pkgdesc = GraalVM regular expressions language, Java 20 version
-	pkgver = 23.0.0
+	pkgver = 23.0.1
 	pkgrel = 1
 	url = https://github.com/oracle/graal
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	depends = jdk20-graalvm-bin
-	source = https://github.com/oracle/graal/raw/graal-23.0.0/regex/LICENSE.md
+	source = https://github.com/oracle/graal/raw/graal-23.0.1/regex/LICENSE.md
 	sha256sums = 7d2369d11c040d7937191c1222d4910071fddf7413b1b4f743eee982e8ab63fd
-	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/regex-installable-ce-java20-linux-amd64-23.0.0.jar
-	sha256sums_x86_64 = 197889c8274021b4f096b707fdc17e8a0dddc1e3b2f13aee57827b4d30495333
-	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/regex-installable-ce-java20-linux-aarch64-23.0.0.jar
-	sha256sums_aarch64 = 5e44bbc71c5c8dc3193810bb3b8396df3519afdb740ee1d54085918c4ad565bc
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.1/regex-installable-ce-java20-linux-amd64-23.0.1.jar
+	sha256sums_x86_64 = 1b34edf86d4a378bcf00029083da620547c6cc022cfb677b26c1a3946df38dab
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.1/regex-installable-ce-java20-linux-aarch64-23.0.1.jar
+	sha256sums_aarch64 = 8d0ebfda4c1f8c0a291b1bc7fc5c3a3b04ae0e7c1ee3e3f1cafc649e0a9bb3fb
 
 pkgname = graal-regex-jdk20-bin
