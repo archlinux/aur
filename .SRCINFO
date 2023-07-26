@@ -1,6 +1,6 @@
 pkgbase = clion
 	pkgdesc = C/C++ IDE. Free 30-day trial.
-	pkgver = 2023.1.5
+	pkgver = 2023.2
 	pkgrel = 1
 	epoch = 1
 	url = http://www.jetbrains.com/clion
@@ -8,11 +8,11 @@ pkgbase = clion
 	arch = aarch64
 	license = custom
 	makedepends = rsync
-	noextract = CLion-2023.1.5.tar.gz
+	noextract = CLion-2023.2.tar.gz
 	options = !strip
-	source = https://download.jetbrains.com/cpp/CLion-2023.1.5.tar.gz
+	source = https://download.jetbrains.com/cpp/CLion-2023.2.tar.gz
 	source = jetbrains-clion.desktop
-	sha256sums = 69a274098fe35ca53edbed460f1044691cedf595d080e291644a013905591bf3
+	sha256sums = 45671bb8cf7b18bd6da2b519b950f28d315ad49d230494a08785e78219e43819
 	sha256sums = 13c9e7c7f6ef57ee573d133bf30a599390a99087a1f578caea62020e0f742587
 
 pkgname = clion
