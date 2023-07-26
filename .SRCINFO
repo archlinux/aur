@@ -1,7 +1,7 @@
 pkgbase = cpu-x-opencl
 	pkgdesc = Gathers information on CPU, motherboard, GPU and more (with OpenCL support)
 	pkgver = 4.5.3
-	pkgrel = 2.2
+	pkgrel = 2.3
 	url = https://thetumultuousunicornofdarkness.github.io/CPU-X
 	arch = i686
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = cpu-x-opencl
 	optdepends = vulkan-driver: packaged Vulkan driver
 	provides = cpu-x=4.5.3
 	conflicts = cpu-x
-	source = cpu-x-4.5.3.tar.gz::https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/v4.5.3.tar.gz
+	source = cpu-x-4.5.3.tar.gz::https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/refs/tags/v4.5.3.tar.gz
 	sha512sums = 3f3e4f1d31e4e84bdeb68e448a1dabd2e22965caed1668300945a1d9150f77422b685a7a0bad997371ba08a3b0ac7fe3eab3aa1d0b485942347a72eb81d21b4f
 
 pkgname = cpu-x-opencl
