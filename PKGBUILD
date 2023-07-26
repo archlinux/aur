@@ -1,7 +1,7 @@
 # Maintainer: Jigsaw <j1g5aw@foxmail.com>
 #
 pkgname=ttf-huayingmincho
-pkgver=1.005
+pkgver=1.006
 pkgdesc="Huaying Mincho 華英明朝 华英明朝"
 pkgrel=1
 arch=(any)
@@ -13,7 +13,7 @@ source=(
     "HuayingMincho.7z::${url}/releases/download/${pkgver}/HuayingMincho.7z"
 )
 sha256sums=(
-    'a3aa8d2e70a8fc7553ddac30918ad8b5ebd4761f38160fcbed0662cb13e1c404'
+    '4c6fabe670ec1ac5453b2193bf0d283fa3e8d0af568d9406f8f1f0653b99845f'
 )
 prepare() {
     7z e -y '-x!crackme' "-o ${pkgname}-${pkgver}" "HuayingMincho.7z"
