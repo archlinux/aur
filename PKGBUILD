@@ -9,7 +9,7 @@ license=('MIT License')
 options=('!strip')
 provides=('octobrowser')
 conflicts=('octobrowser')
-source=('https://octobrowser.net/releases/installer/OctoBrowser.linux.tar.gz')
+source=("https://octobrowser.net/releases/installer/OctoBrowser_${pkgver}.linux.tar.gz")
 sha256sums=('de4ae90a9bf117789c6abc89daed486d9b382de02220e17ba30147ae1e3f9da3')
 depends=(libxcrypt-compat
         libselinux)
