@@ -1,8 +1,9 @@
 pkgname=fzf-tab-source
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="替代zsh的命令补全功能，加入文件和目录预览，可使用rg和rga辅助fzf搜索
-Replace zsh's default completion selection menu with fzf.Add file and directory previews,and can use rg or rga to assist fzf searches"
+pkgdesc="替代zsh的命令补全功能，加入文件和目录预览，可使用rg和rga辅助fzf搜索。
+         Replace zsh's default completion selection menu with fzf.Add file and directory previews,and can use rg or rga to assist fzf searches.
+         After the installation is completed, use 'fts -a' to enable the plugin"
 arch=('x86_64')
 url="https://github.com/aslingguang/fzf-tab-source"
 license=('GPL')
@@ -21,8 +22,8 @@ optdepends=('exa: 目录结构预览'
 	'unrar: rar预览'
 	'7z: 7z预览'
 	'fd: 快速查找文件和目录，比默认的find更快')
-source=("https://github.com/aslingguang/fzf-tab-source/releases/download/v1.0.0/fzf-tab-source.tar.gz")
-sha256sums=('SKIP')
+source=("https://github.com/aslingguang/fzf-tab-source/releases/download/v1.0.2/fzf-tab-source.tar.gz")
+sha256sums=('20e418c7c0c4c7fd0c376a40a0e7740aec417ba1bf1a951133fd5988a1f58cec')
 
 package() {
 	mkdir -p "$pkgdir/opt"
