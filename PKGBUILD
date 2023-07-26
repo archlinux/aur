@@ -4,22 +4,20 @@
 
 pkgname=odin-git
 _pkgname=odin
-pkgver=r6557.a1f15c2c
+pkgver=r8682.5ac7fe453
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=(x86_64)
 url="https://github.com/odin-lang/odin"
 license=(BSD)
-depends=(glibc llvm-libs ncurses)
-makedepends=(git clang llvm)
+depends=(glibc llvm14-libs)
+makedepends=(git clang llvm14 clang14)
+checkdepends=(python)
+optdepends=(python java-runtime)
 provides=(odin)
 conflicts=(odin)
-
-source=("git+https://github.com/odin-lang/odin.git"
-        '0001-use-llvm13.patch')
-
-sha256sums=('SKIP'
-            '4e0e571d4067975f0405564d7110d67092549a213a3012ff3a42f93efffda84f')
+source=("git+https://github.com/odin-lang/odin.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${_pkgname}"
@@ -28,9 +26,21 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    #patch --forward --strip=1 --input="${srcdir}/0001-use-llvm13.patch"
-    sed -i "s/linux\/libraylib.a/system:raylib/g" "vendor/raylib/raylib.odin"
+    #sed -i "s/linux\/libraylib.a/system:raylib/g" "vendor/raylib/raylib.odin"
+    export LLVM_CONFIG=llvm-config-14
+    export CXX=/usr/lib/llvm14/bin/clang++
     make release
+}
+
+check() {
+    cd "${_pkgname}"
+    ./odin check examples/all -strict-style
+
+    cd tests/core
+    make
+
+    cd ../internal
+    make
 }
 
 package() {
@@ -43,5 +53,5 @@ package() {
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     cp -r examples "${pkgdir}/usr/share/doc/${_pkgname}/examples"
-    cp -r vendor "${pkgdir}/usr/lib/${_pkgname}/vendor"    
+    cp -r vendor "${pkgdir}/usr/lib/${_pkgname}/vendor"
 }
