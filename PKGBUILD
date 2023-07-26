@@ -17,25 +17,64 @@ pkgver=115.0.1
 pkgrel=5
 pkgdesc="Thunderbird from extra with appmenu patch"
 arch=(x86_64)
-license=(MPL GPL LGPL)
-url="https://www.mozilla.org/thunderbird/"
-
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
-makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
-             autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
-             python lld dump_syms
-             wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
-             at-spi2-core
-             )
-optdepends=('networkmanager: Location detection via available WiFi networks'
-            'libnotify: Notification integration'
-            'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English'
-            'xdg-desktop-portal: Screensharing with Wayland')
-options=(!emptydirs !makeflags !strip !lto !debug)
+license=(
+  GPL
+  LGPL
+  MPL
+)
+depends=(
+  dbus-glib
+  ffmpeg
+  gtk3
+  libpulse
+  libxss
+  libxt
+  mime-types
+  nss
+  ttf-font
+)
+makedepends=(
+  cbindgen
+  clang
+  diffutils
+  dump_syms
+  imake
+  inetutils
+  jack
+  lld
+  llvm
+  mesa
+  nasm
+  nodejs
+  python
+  rust
+  unzip
+  wasi-compiler-rt
+  wasi-libc
+  wasi-libc++
+  wasi-libc++abi
+  xorg-server-xvfb
+  yasm
+  zip
+)
+optdepends=(
+  'hunspell-en_US: Spell checking, American English'
+  'libnotify: Notification integration'
+  'networkmanager: Location detection via available WiFi networks'
+  'pulseaudio: Audio support'
+  'speech-dispatcher: Text-to-Speech'
+  'xdg-desktop-portal: Screensharing with Wayland'
+)
+options=(
+  !debug
+  !lto
+  !emptydirs
+  !makeflags
+  !strip
+)
 source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
-        cbindgen-0.24.0.diff arc4random.diff unity-menubar.patch
+        unity-menubar.patch
+        0001-Revert-Bug-1817071-Remove-moz-image-region-support-f.patch
         ${_pkgname}.desktop identity-icons-brand.svg)
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -51,25 +90,18 @@ _google_api_key=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
 # more information.
 _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 
-ppatch() {
-  msg2 "Patching from file: $1"
-  patch -Np1 -i $1
-}
-
 prepare() {
   mkdir -p mozbuild
   cd thunderbird-$pkgver
 
   echo "${noextract[@]}"
 
-
-  # Fix arc4random
-  ppatch ../unity-menubar.patch
-
+  patch -Np1 -i ../unity-menubar.patch
+  patch -Np1 -i ../0001-Revert-Bug-1817071-Remove-moz-image-region-support-f.patch
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
 
-  cat >../mozconfig <<END
+  cat > ../mozconfig <<END
 ac_add_options --enable-application=comm/mail
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
@@ -92,7 +124,6 @@ ac_add_options --allow-addon-sideload
 ac_add_options --with-app-name=${_pkgname}
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=${_pkgname}
-export MOZ_APP_PROFILE="mozilla/thunderbird"
 
 # Keys
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
@@ -124,18 +155,26 @@ build() {
   export RUSTFLAGS="-C debuginfo=1"
 
   # LTO needs more open files
-  ulimit -n 4096
-
+#  ulimit -n 4096
   # Do 3-tier PGO
-#  echo "Building instrumented browser..."
+#  echo "Building instrumented comm/mail..."
   cat >.mozconfig ../mozconfig - <<END
 #ac_add_options --enable-profile-generate=cross
 END
+  ./mach build || true # i dont care
+
+( echo '#include <stdint.h>'
+cat comm/third_party/rnp/src/libsexp/include/sexp/sexp-error.h
+) > tmp.h
+  cp tmp.h comm/third_party/rnp/src/libsexp/include/sexp/sexp-error.h
+  rm tmp.h # lol
+
 #  ./mach build
-#
-#  echo "Profiling instrumented browser..."
+#  export MOZ_REMOTE_SETTINGS_DEVTOOLS=1
+#  echo "Profiling instrumented comm/mail..."
 #  ./mach package
-#  LLVM_PROFDATA=llvm-profdata \
+#  HOME=$TMPDIR \
+#    LLVM_PROFDATA=llvm-profdata \
 #    JARLOG_FILE="$PWD/jarlog" \
 #    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
 #    ./mach python build/pgo/profileserver.py
@@ -146,10 +185,10 @@ END
 #  stat -c "Jar log found (%s bytes)" jarlog
 #  test -s jarlog
 #
-#  echo "Removing instrumented browser..."
+#  echo "Removing instrumented comm/mail..."
 #  ./mach clobber
 #
-#  echo "Building optimized browser..."
+#  echo "Building optimized comm/mail..."
 #  cat >.mozconfig ../mozconfig - <<END
 #ac_add_options --enable-lto=cross
 #ac_add_options --enable-profile-use=cross
@@ -157,14 +196,16 @@ END
 #ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 #END
   ./mach build
-
+#
+#  echo "Building symbol archive..."
+#  ./mach buildsymbols
 }
 
 package() {
   cd thunderbird-$pkgver
   DESTDIR="$pkgdir" ./mach install
 
-  local vendorjs="$pkgdir/usr/lib/${_pkgname}/browser/defaults/preferences/vendor.js"
+  local vendorjs="$pkgdir/usr/lib/${_pkgname}/comm/mail/defaults/preferences/vendor.js"
   install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
@@ -172,8 +213,8 @@ pref("intl.locale.requested", "");
 // Use system-provided dictionaries
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
-// Disable default browser checking.
-pref("browser.shell.checkDefaultBrowser", false);
+// Disable default comm/mail checking.
+// pref("browser.shell.checkDefaultBrowser", false);
 
 // Don't disable extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
@@ -192,52 +233,55 @@ app.distributor.channel=${_pkgname}
 app.partner.archlinux=archlinux
 END
 
-  local i theme=official
+  local i theme=thunderbird
   for i in 16 22 24 32 48 64 128 256; do
-    install -Dvm644 browser/branding/$theme/default$i.png \
+    install -Dvm644 comm/mail/branding/$theme/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_pkgname}.png"
   done
-  install -Dvm644 browser/branding/$theme/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/${_pkgname}.png"
-  install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
-    "$pkgdir/usr/share/icons/hicolor/384x384/apps/${_pkgname}.png"
-  install -Dvm644 browser/branding/$theme/content/about-logo.svg \
+  install -Dvm644 comm/mail/branding/$theme/content/about-logo.svg \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg"
-  install -Dvm644 ../identity-icons-brand.svg \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/${_pkgname}-symbolic.svg"
 
   install -Dvm644 ../${_pkgname}.desktop \
     "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 
-  # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/${_pkgname}" <<END
-#!/bin/sh
-exec /usr/lib/${_pkgname}/thunderbird "\$@"
+      # Install a wrapper to avoid confusion about binary path
+      install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
+    #!/bin/sh
+    exec /usr/lib/$_pkgname/thunderbird "\$@"
 END
 
-  # Replace duplicate binary with wrapper
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/${_pkgname}" "$pkgdir/usr/lib/${_pkgname}/thunderbird-bin"
+      # Replace duplicate binary with wrapper
+      # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+      ln -srfv "$pkgdir/usr/bin/$_pkgname" "$pkgdir/usr/lib/$_pkgname/thunderbird-bin"
 
-  # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/${_pkgname}/libnssckbi.so"
-  if [[ -e $nssckbi ]]; then
-    ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
-  fi
+      # Use system certificates
+      local nssckbi="$pkgdir/usr/lib/$_pkgname/libnssckbi.so"
+      if [[ -e $nssckbi ]]; then
+        ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
+      fi
 
-  export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
-#  if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
-#    make -C obj uploadsymbols
-#  else
-#    cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
-#  fi
+      local sprovider="$pkgdir/usr/share/gnome-shell/search-providers/$_pkgname.search-provider.ini"
+      install -Dvm644 /dev/stdin "$sprovider" <<END
+    [Shell Search Provider]
+    DesktopId=$_pkgname.desktop
+    BusName=org.mozilla.${pkgname//-/}.SearchProvider
+    ObjectPath=/org/mozilla/${pkgname//-/}/SearchProvider
+    Version=2
+END
+
+#      export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
+#      if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
+#        make -C obj uploadsymbols
+#      else
+#        cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
+#      fi
 }
 
 # vim:set sw=2 et:
 md5sums=('SKIP'
          'SKIP'
-         'bb20e95b9d65d59ba39f2f7f1c853c27'
-         '6fcf81de61fa98bccedf1f7b8656d83a'
-         '63ebf05aea29545081dab2cb023e2bba'
-         '10872ca39ebb8844ec753203c55bccc4'
-         '68708a0695494a318f13425f0c608d72')
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')

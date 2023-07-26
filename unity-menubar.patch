@@ -1436,7 +1436,7 @@
 +
 +    mEventListener = new DocEventListener(this);
 +
-+    mDocument = do_QueryInterface(ContentNode()->OwnerDoc());
++    mDocument = ContentNode()->OwnerDoc();
 +
 +    mAccessKey = Preferences::GetInt("ui.key.menuAccessKey");
 +    if (mAccessKey == dom::KeyboardEvent_Binding::DOM_VK_SHIFT) {
@@ -3254,7 +3254,7 @@
 +                          nullptr, 0, loadGroup, this, nullptr, nullptr,
 +                          nsIRequest::LOAD_NORMAL, nullptr,
 +                          nsIContentPolicy::TYPE_IMAGE, EmptyString(),
-+                          false, false, getter_AddRefs(mImageRequest));
++                          false, false, 0, getter_AddRefs(mImageRequest));
 +    }
 +}
 +
@@ -4112,7 +4112,7 @@
 +}
 +
 +void
-+nsNativeMenuDocListener::NodeWillBeDestroyed(const nsINode *aNode)
++nsNativeMenuDocListener::NodeWillBeDestroyed(nsINode *aNode)
 +{
 +    mDocument = nullptr;
 +}
@@ -5096,24 +5096,6 @@
 +    Atom("openedwithkey", "openedwithkey"),
 +    Atom("shellshowingmenubar", "shellshowingmenubar"),
 +]
---- a/xpcom/ds/StaticAtoms.py
-+++ b/xpcom/ds/StaticAtoms.py
-@@ -7,6 +7,7 @@
- from Atom import Atom, InheritingAnonBoxAtom, NonInheritingAnonBoxAtom
- from Atom import PseudoElementAtom
- from HTMLAtoms import HTML_PARSER_ATOMS
-+from NativeMenuAtoms import NATIVE_MENU_ATOMS
- import sys
- 
- # Static atom definitions, used to generate nsGkAtomList.h.
-@@ -2529,7 +2530,7 @@ STATIC_ATOMS = [
-     InheritingAnonBoxAtom("AnonBox_mozSVGForeignContent", ":-moz-svg-foreign-content"),
-     InheritingAnonBoxAtom("AnonBox_mozSVGText", ":-moz-svg-text"),
-     # END ATOMS
--] + HTML_PARSER_ATOMS
-+] + HTML_PARSER_ATOMS + NATIVE_MENU_ATOMS
- # fmt: on
- 
  
 --- a/widget/gtk/components.conf
 +++ b/widget/gtk/components.conf
@@ -5277,3 +5259,22 @@
  // {F6CD4F21-53AF-11d2-8DC4-00609703C14E}
  #define NS_POPUPMENU_CID                           \
    {                                                \
+--- a/xpcom/ds/StaticAtoms.py	2023-07-19 21:07:44.000000000 +0300
++++ b/xpcom/ds/StaticAtoms.py	2023-07-24 18:54:31.767985790 +0300
+@@ -13,6 +13,7 @@
+     PseudoElementAtom,
+ )
+ from HTMLAtoms import HTML_PARSER_ATOMS
++from NativeMenuAtoms import NATIVE_MENU_ATOMS
+ 
+ # Static atom definitions, used to generate nsGkAtomList.h.
+ #
+@@ -2555,7 +2556,7 @@
+     InheritingAnonBoxAtom("AnonBox_mozSVGForeignContent", ":-moz-svg-foreign-content"),
+     InheritingAnonBoxAtom("AnonBox_mozSVGText", ":-moz-svg-text"),
+     # END ATOMS
+-] + HTML_PARSER_ATOMS
++] + HTML_PARSER_ATOMS + NATIVE_MENU_ATOMS
+ # fmt: on
+ 
+ 
