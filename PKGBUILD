@@ -1,6 +1,6 @@
 # Maintainer: Marcanicus <marcanicus@proton.me>
 pkgname=xivlauncher-rb
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 epoch=1
 pkgdesc="Custom launcher for Final Fantasy XIV Online with RB Patches!"
