@@ -9,6 +9,7 @@ pkgbase = spark-dwine-helper-git
 	depends = bash
 	depends = deepin-wine-helper
 	depends = hicolor-icon-theme
+	depends = p7zip
 	depends = spark-transhell
 	depends = zenity
 	optdepends = noto-fonts-cjk: recommended fonts

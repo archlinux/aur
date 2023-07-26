@@ -13,7 +13,7 @@ depends=(
 	# 'dbus-python'
 	'deepin-wine-helper'
 	'hicolor-icon-theme'
-	# 'p7zip'
+	'p7zip'
 	# 'python'
 	# 'python-gobject'
 	'spark-transhell'
