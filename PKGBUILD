@@ -1,14 +1,16 @@
-# Maintainer: eolianoe <eolianoe At gmail DoT com>
+# Maintainer: knedl1k <knedl1k at duck dot com>
+# Contributor: eolianoe <eolianoe At gmail DoT com>
+
 pkgname=f90cache
-pkgver=0.99
+pkgver=0.99c
 pkgrel=1
 pkgdesc="Caching pre-processor for Fortran compilers"
 arch=('i686' 'x86_64')
-url="http://people.irisa.fr/Edouard.Canot/f90cache/"
+url="https://perso.univ-rennes1.fr/edouard.canot//f90cache/"
 license=('GPL')
 depends=('glibc')
-source=("${url}${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('be3fe77b676bc784dd45b3f65b4a5db34d858ed29156b29d8da38b24585bda7d')
+source=("${url}${pkgname}-${pkgver}.tar.gz")
+sha256sums=('13f8297ecba73671d43376b71ef0e453bd9d6677a901d1c95f01f16cc33776e1')
 
 build(){
   cd ${srcdir}/${pkgname}-${pkgver}
