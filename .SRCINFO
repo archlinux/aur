@@ -1,10 +1,9 @@
 pkgbase = archivebox-git
-	pkgdesc = Create a local, static, browsable HTML clone of websites (it saves HTML, JS, media files, PDFs, images and more).
-	pkgver = r969.737c5c3
-	pkgrel = 7
+	pkgdesc = Create a local, staticm browsable archive of websites.
+	pkgver = 0.5.4.r330.efebd8e
+	pkgrel = 1
 	url = https://github.com/pirate/ArchiveBox/
 	arch = x86_64
-	arch = i686
 	license = MIT
 	makedepends = git
 	depends = python
@@ -15,8 +14,7 @@ pkgbase = archivebox-git
 	depends = chromium
 	provides = archivebox
 	conflicts = archivebox
-	source = archivebox::git+https://github.com/pirate/ArchiveBox/
-	md5sums = SKIP
+	source = archivebox::git+https://github.com/pirate/ArchiveBox/#branch=dev
+	sha256sums = SKIP
 
 pkgname = archivebox-git
-

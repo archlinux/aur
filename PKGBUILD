@@ -1,8 +1,9 @@
-# Maintainer: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
+# Mantainer: Alessio <alessio@linux.com>
+# Contributor: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
 pkgname=archivebox-git
-pkgver=r969.737c5c3
-pkgrel=7
-pkgdesc="Create a local, static, browsable HTML clone of websites (it saves HTML, JS, media files, PDFs, images and more)."
+pkgver=0.5.4.r749.40ddd33
+pkgrel=1
+pkgdesc="Create a local, staticm browsable archive of websites."
 arch=('x86_64' 'i686')
 url="https://github.com/pirate/ArchiveBox/"
 depends=('python' 'git' 'wget' 'curl' 'youtube-dl' 'chromium')
@@ -12,21 +13,19 @@ conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-source=("archivebox::git+${url}")
+source=("archivebox::git+${url}#branch=dev")
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP')
 license=('MIT')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
+	git describe --long | sed 's/^v//;s/-rc./rc/;s/\([^-]*-\)g/r\1/;s/-/./g'
 
-	# Git, no tags available
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	git checkout master
 }
 
 package() {
