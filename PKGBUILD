@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=newrelic-cli
-pkgver=0.68.23
+pkgver=0.68.24
 pkgrel=1
 pkgdesc="The New Relic Command Line Interface"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache)
 depends=(glibc)
 makedepends=(go)
 source=(${url}/archive/v${pkgver}/$pkgname-$pkgver.tar.gz)
-sha256sums=('79c10ec4f6fa495b86b275be9c5ee750bd7c310f46390a70b18e848d1cc456e7')
+sha256sums=('96ea849742234c5f6aa4c73b7fd8a8c522e65bcf06e0902ad97872a0d3811737')
 
 prepare() {
   cd $pkgname-$pkgver
