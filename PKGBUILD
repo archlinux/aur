@@ -1,36 +1,29 @@
 # Maintainer: Sam L. Yes <samlukeyes123 at gmail dot com>
 # Contributor: 9r0k <tanyawei1991@gmail.com>
 pkgname=com.qq.tim.spark
-pkgver=3.4.3.22064spark4
+pkgver=3.4.3.22064spark5
 pkgrel=1
-epoch=
 pkgdesc="Tencent TIM Client on Deepin Wine 5 (from Spark Store)"
 arch=('i686' 'x86_64')
 url="https://tim.qq.com/"
 license=('unknown')
-groups=()
 depends=(
+	'bash'
 	'deepin-wine5'
+	'hicolor-icon-theme'
 	'spark-dwine-helper'
 )
-checkdepends=()
-optdepends=()
-provides=()
 conflicts=('com.qq.tim.dcs')
-replaces=()
-backup=()
-options=()
 # install=tim.install
-changelog=
+_upstream_arch=all
 source=(
-	"https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/${pkgname}/${pkgname}_${pkgver}_i386.deb"
+	"https://mirrors.sdu.edu.cn/spark-store-repository/store/chat/${pkgname}/${pkgname}_${pkgver}_${_upstream_arch}.deb"
 	"reg.patch"
 )
 sha512sums=(
-	'ce20227aa2fc720396d7ea0d3eeadb7fab0594e4101ec163aa18e242cb74c493d69686ebb3c58bfd03e8942697f4399ffcb26fac9f64a52f5bfa469725fc7013'
+	'fbbb0ee76699d5d335403efbb3b2ee25adf9fcec32fcb895161b3c6d022b4daf8c4c97532c0fd240565f8f7ce3fdb14e3bfaf968cead46a237715c04f6404ad9'
 	'5730066dc9bf3689e3db1c08ba83b516efc0bcc7fe6ff47198b43dd352718a6942d01190da87fe010816bf1e9e0e453a09fd15314e4004c309e7f52725b32528'
 )
-validpgpkeys=()
 
 prepare() {
 	_bottle_archive="${srcdir}/dpkgdir/opt/apps/com.qq.tim.spark/files/files.7z"
