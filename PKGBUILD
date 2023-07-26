@@ -8,6 +8,7 @@ pkgrel='1'
 arch=('x86_64')
 url='https://github.com/jmorganca/ollama'
 license=('MIT')
+depends=('glibc' 'gcc-libs')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jmorganca/ollama/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('1ebb7d19d8e76ba3c1a00ab55f67a97fca6ad3a21eeb69e718fbdae81958e4cc')
