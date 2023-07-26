@@ -1,27 +1,27 @@
-# Maintainer: ValdikSS <iam@valdikss.org.ru>
+# Maintainer: Lu Xu <oliver_lew at outlook dot com>
+# Contributor: ValdikSS <iam@valdikss.org.ru>
 
 pkgname=libusb0
 pkgver=0.1.12
-pkgrel=6
+pkgrel=7
 pkgdesc="Library to enable user space application programs to communicate with USB devices. 0.x branch. Debian's binary."
 arch=('i686' 'x86_64')
-url="http://libusb.sourceforge.net/"
+url="https://libusb.info/"
 license=('LGPL')
 depends=('sh')
 provides=('libusb-compat')
 #replaces=('libusb-compat')
 conflicts=('libusb-compat')
-_debianver_="0.1.12-25"
+_debianver_="0.1.12-32"
 _debianver="0.1-4_$_debianver_"
 source_i686=("http://ftp.debian.org/debian/pool/main/libu/libusb/libusb-${_debianver}_i386.deb"
              "http://ftp.debian.org/debian/pool/main/libu/libusb/libusb-dev_${_debianver_}_i386.deb")
-md5sums_i686=('316254e4ae2ff97f520948ffbb4af1ad'
-              '9f3e584547a8643a3efd6d3901f846cb')
-
+sha256sums_i686=('005227e6f783eb3cd422e58c3a49e4578c8ba90641dee6ad24f9aa7060a89276'
+              '4a5b7a2f05f1bb9cc0ac608304ec1b321931dd1bdbf9252e91c9beda8af7ed94')
 source_x86_64=("http://ftp.debian.org/debian/pool/main/libu/libusb/libusb-${_debianver}_amd64.deb"
               "http://ftp.debian.org/debian/pool/main/libu/libusb/libusb-dev_${_debianver_}_amd64.deb")
-md5sums_x86_64=('582aee4738aecee1ad2d4c725510b419'
-                'a1f65ae086a6085ff4f99e26195ce102')
+sha256sums_x86_64=('ecc251e8af96904290669233988a91e195670bb432396c408e01489c9efff993'
+                '5974e30179cd079c1763b29fd97a8cc859ae5ff888f298c15082e2adb276f45e')
 
 noextract=("${source[@]%%::*}")
 
