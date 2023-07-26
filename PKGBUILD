@@ -4,7 +4,7 @@
 pkgname=govarnam-git
 pkgver=1.9.0.r2.gda1b445
 pkgrel=3
-pkgdesc="Transliteration and reverse transliteration for Indian languages"
+pkgdesc="Transliteration and reverse transliteration for Indian languages - Go port of libvarnam"
 arch=('x86_64')
 url="https://varnamproject.github.io/"
 license=('AGPL')
