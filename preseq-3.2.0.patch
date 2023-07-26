@@ -1,0 +1,36 @@
+diff --git a/bisulfite_utils.hpp b/bisulfite_utils.hpp
+index 4dbba60..75adbe5 100644
+--- a/bisulfite_utils.hpp
++++ b/bisulfite_utils.hpp
+@@ -22,6 +22,7 @@
+ 
+ #include <string>
+ #include <random>
++#include <cstdint>
+ 
+ #include "sam_record.hpp"
+ 
+diff --git a/sam_record.hpp b/sam_record.hpp
+index f444565..cabc865 100644
+--- a/sam_record.hpp
++++ b/sam_record.hpp
+@@ -22,6 +22,7 @@
+ #include <string>
+ #include <vector>
+ #include <iostream>
++#include <cstdint>
+ 
+ // from 30 April 2020 SAM documentation
+ // 1    0x1   template having multiple segments in sequencing
+diff --git a/smithlab_utils.hpp b/smithlab_utils.hpp
+index 0e1041b..ac9da60 100644
+--- a/smithlab_utils.hpp
++++ b/smithlab_utils.hpp
+@@ -36,6 +36,7 @@
+ #include <cmath>
+ #include <numeric>
+ #include <iomanip>
++#include <cstdint>
+ 
+ extern "C" {char have_smithlab_cpp();}
+ 
