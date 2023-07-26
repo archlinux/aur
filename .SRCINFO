@@ -1,15 +1,15 @@
 pkgbase = graal-llvm-jdk20-bin
 	pkgdesc = GraalVM LLVM runtime (aka Sulong), Java 20 version
-	pkgver = 23.0.0
+	pkgver = 23.0.1
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	arch = x86_64
 	arch = aarch64
 	license = BSD
 	depends = jdk20-graalvm-bin
-	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/llvm-installable-svm-java20-linux-amd64-23.0.0.jar
-	sha256sums_x86_64 = af4e1046a63d7eb8f88bbe922e0ee9caa7e7fa1fb37f3e40654e81dcb9659cb2
-	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/llvm-installable-svm-java20-linux-aarch64-23.0.0.jar
-	sha256sums_aarch64 = e908c002af444fb1e6ccdd1abbe89ad52d251a8f71030516c480bf152c56db76
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.1/llvm-installable-svm-java20-linux-amd64-23.0.1.jar
+	sha256sums_x86_64 = 045f4e4568caff567f7dd30888f88a06a5e593789152f3135a02bda273920640
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.1/llvm-installable-svm-java20-linux-aarch64-23.0.1.jar
+	sha256sums_aarch64 = 03696746a6ca7150bb55fa1adc6a97bfe3310dc4af87e3e58b399dea9e15caa7
 
 pkgname = graal-llvm-jdk20-bin

@@ -3,7 +3,7 @@
 java_=20
 pkgname_=graal-llvm
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=23.0.0
+pkgver=23.0.1
 pkgrel=1
 pkgdesc="GraalVM LLVM runtime (aka Sulong), Java ${java_} version"
 arch=('x86_64'
@@ -13,8 +13,8 @@ license=('BSD')
 depends=("jdk${java_}-graalvm-bin")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/llvm-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/llvm-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('af4e1046a63d7eb8f88bbe922e0ee9caa7e7fa1fb37f3e40654e81dcb9659cb2')
-sha256sums_aarch64=('e908c002af444fb1e6ccdd1abbe89ad52d251a8f71030516c480bf152c56db76')
+sha256sums_x86_64=('045f4e4568caff567f7dd30888f88a06a5e593789152f3135a02bda273920640')
+sha256sums_aarch64=('03696746a6ca7150bb55fa1adc6a97bfe3310dc4af87e3e58b399dea9e15caa7')
 
 package() {
     local file eq permissions mode name target
