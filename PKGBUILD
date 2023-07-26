@@ -1,6 +1,6 @@
 pkgname=xfwm4-gaps
 pkgver=4.18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Xfce's window manager - now with extra gaps"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfwm4/start"

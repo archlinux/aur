@@ -1,19 +1,20 @@
 --- a/defaults/defaults	2021-01-12 21:42:12.000000000 +0200
-+++ b/defaults/defaults	2023-06-16 08:38:06.504599096 +0200
-@@ -25,6 +25,11 @@
++++ b/defaults/defaults	2023-06-19 18:12:23.427093361 +0200
+@@ -25,6 +25,12 @@
  frame_border_top=0
  frame_opacity=100
  full_width_title=true
 +gap_bottom=0
 +gap_inner=0
 +gap_left=0
++gap_maximize=true
 +gap_right=0
 +gap_top=0
  horiz_scroll_opacity=false
  inactive_opacity=100
  maximized_offset=0
 --- a/src/client.c	2022-12-01 12:47:40.000000000 +0200
-+++ b/src/client.c	2023-06-16 08:53:10.857981141 +0200
++++ b/src/client.c	2023-06-19 18:12:12.000426078 +0200
 @@ -3295,6 +3295,9 @@
  static gboolean
  clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositionType tile)
@@ -95,33 +96,36 @@
      GdkRectangle full;
  
      clientMaxSpaceForGeometry (c, rect, &full);
-@@ -3378,6 +3408,11 @@
+@@ -3378,6 +3408,13 @@
          wc->height = full.height - frameExtentTop (c) - frameExtentBottom (c);
      }
  
-+    wc->x += screen_info->params->gap_left;
-+    wc->y += screen_info->params->gap_top;
-+    wc->width -= screen_info->params->gap_left + screen_info->params->gap_right;
-+    wc->height -= screen_info->params->gap_top + screen_info->params->gap_bottom;
++    if (screen_info->params->gap_maximize) {
++        wc->x += screen_info->params->gap_left;
++        wc->y += screen_info->params->gap_top;
++        wc->width -= screen_info->params->gap_left + screen_info->params->gap_right;
++        wc->height -= screen_info->params->gap_top + screen_info->params->gap_bottom;
++    }
 +
      return ((wc->height >= c->size->min_height) && (wc->height <= c->size->max_height) &&
              (wc->width >= c->size->min_width) && (wc->width <= c->size->max_width));
  }
 --- a/src/settings.c	2022-11-12 22:57:54.000000000 +0200
-+++ b/src/settings.c	2023-06-16 08:42:06.661278695 +0200
-@@ -693,6 +693,11 @@
++++ b/src/settings.c	2023-06-19 18:17:00.867108334 +0200
+@@ -693,6 +693,12 @@
          {"frame_opacity", NULL, G_TYPE_INT, TRUE},
          {"frame_border_top", NULL, G_TYPE_INT, TRUE},
          {"full_width_title", NULL, G_TYPE_BOOLEAN, TRUE},
 +        {"gap_bottom", NULL, G_TYPE_INT, TRUE},
 +        {"gap_inner", NULL, G_TYPE_INT, TRUE},
 +        {"gap_left", NULL, G_TYPE_INT, TRUE},
++        {"gap_maximize", NULL, G_TYPE_BOOLEAN, TRUE},
 +        {"gap_right", NULL, G_TYPE_INT, TRUE},
 +        {"gap_top", NULL, G_TYPE_INT, TRUE},
          {"horiz_scroll_opacity", NULL, G_TYPE_BOOLEAN, FALSE},
          {"inactive_opacity", NULL, G_TYPE_INT, TRUE},
          {"margin_bottom", NULL, G_TYPE_INT, FALSE},
-@@ -793,6 +798,16 @@
+@@ -793,6 +799,18 @@
          getBoolValue ("focus_hint", rc);
      screen_info->params->focus_new =
          getBoolValue ("focus_new", rc);
@@ -131,6 +135,8 @@
 +        getIntValue ("gap_inner", rc);
 +    screen_info->params->gap_left =
 +        getIntValue ("gap_left", rc);
++    screen_info->params->gap_maximize =
++        getBoolValue ("gap_maximize", rc);
 +    screen_info->params->gap_right =
 +        getIntValue ("gap_right", rc);
 +    screen_info->params->gap_top =
@@ -138,7 +144,7 @@
      screen_info->params->horiz_scroll_opacity =
          getBoolValue ("horiz_scroll_opacity", rc);
      screen_info->params->mousewheel_rollup =
-@@ -1238,6 +1253,26 @@
+@@ -1238,6 +1256,26 @@
                  {
                      screen_info->params->cycle_tabwin_mode = CLAMP (g_value_get_int(value), 0, 1);
                  }
@@ -165,8 +171,19 @@
                  else if ((!strcmp (name, "button_offset"))
                        || (!strcmp (name, "button_spacing"))
                        || (!strcmp (name, "double_click_time"))
+@@ -1278,6 +1316,10 @@
+                 {
+                     screen_info->params->focus_new = g_value_get_boolean (value);
+                 }
++                else if (!strcmp (name, "gap_maximize"))
++                {
++                    screen_info->params->gap_maximize = g_value_get_boolean (value);
++                }
+                 else if (!strcmp (name, "raise_on_focus"))
+                 {
+                     screen_info->params->raise_on_focus = g_value_get_boolean (value);
 --- a/src/settings.h	2022-11-12 22:57:54.000000000 +0200
-+++ b/src/settings.h	2023-06-16 08:39:23.487936574 +0200
++++ b/src/settings.h	2023-06-19 18:12:01.503758845 +0200
 @@ -190,6 +190,11 @@
      int focus_delay;
      int frame_opacity;
@@ -179,3 +196,11 @@
      int inactive_opacity;
      int maximized_offset;
      int move_opacity;
+@@ -209,6 +214,7 @@
+     int title_shadow[2];
+     int wrap_resistance;
+     gboolean borderless_maximize;
++    gboolean gap_maximize;
+     gboolean titleless_maximize;
+     gboolean box_move;
+     gboolean box_resize;
