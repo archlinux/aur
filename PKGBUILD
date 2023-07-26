@@ -9,9 +9,9 @@
 
 
 pkgname=pycharm-community-eap
-pkgver=232.8660.146
+pkgver=232.8660.197
 _pkgver=2023.2
-_eap=y
+_eap=n
 pkgrel=1
 
 epoch=14
@@ -32,7 +32,7 @@ options=('!strip')
 
 _filever="$([ $_eap = y ] && echo -n $pkgver || echo -n $_pkgver)"
 source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
-sha256sums=('016da5fa51c9e653ffd043092ddfea094447ada05c646d1e9d826a07f25db203')
+sha256sums=('64472ee39d244fbc2cc8aeade204d02a767c7ce66b2edaa26a8499eeef44f3d7')
 
 
 prepare() {
