@@ -1,0 +1,23 @@
+pkgbase = libyang-cpp-git
+	pkgdesc = C++ bindings for the libyang library
+	pkgver = r319.7bb4662
+	pkgrel = 1
+	url = https://github.com/CESNET/libyang-cpp/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = doctest
+	depends = libyang
+	depends = glibc
+	depends = gcc-libs
+	provides = libyang-cpp
+	conflicts = libyang-cpp
+	conflicts = libyang-cpp-git
+	source = git+https://github.com/CESNET/libyang-cpp.git
+	md5sums = SKIP
+
+pkgname = libyang-cpp-git
