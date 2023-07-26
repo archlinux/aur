@@ -11,16 +11,16 @@ depends=('zsh' 'fzf')
 
 optdepends=('exa: 目录结构预览'
 	'chafa: 图片预览'
-	'exiftool: 元数据预览'
-	'pdftotext: pdf预览'
+	'perl-image-exiftool: 元数据预览'
+	'python-pdftotext: pdf预览'
 	'bat: 文本预览'
-	'xlsx2csv: xlsx2csv预览'
-	'xls2csv: xls2csv预览'
+	'python-xlsx2csv: xlsx2csv预览'
+	'perl-xls2csv: xls2csv预览'
 	'csvkit: xlsx2csv和xls2csv预览'
 	'pandoc: docx预览'
 	'atool: deb,gz,jar,rpm,tar,tgz,xz,zip等预览 '
 	'unrar: rar预览'
-	'7z: 7z预览'
+	'p7zip: 7z预览'
 	'fd: 快速查找文件和目录，比默认的find更快')
 source=("https://github.com/aslingguang/fzf-tab-source/releases/download/v1.0.2/fzf-tab-source.tar.gz")
 sha256sums=('20e418c7c0c4c7fd0c376a40a0e7740aec417ba1bf1a951133fd5988a1f58cec')
