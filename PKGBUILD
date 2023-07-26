@@ -3,7 +3,7 @@
 java_=17
 pkgname_=graal-regex
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=23.0.0
+pkgver=23.0.1
 pkgrel=1
 pkgdesc="GraalVM regular expressions language, Java ${java_} version"
 arch=('x86_64'
@@ -13,11 +13,11 @@ license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/regex-installable-ce-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/regex-installable-ce-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('163cb4bf936bd5c766bebf06536110be06c45533ff494d04d4c2c105ffc1f5c4')
-sha256sums_aarch64=('a35e6bc6bab379286c2f09b0ed7610ae98c3659a5fee318daea42d4a7b5b962f')
+sha256sums_x86_64=('770852489943f3d8d29c7cae5ba99c0e309e023501881243fa86ab4d2f8cc13c')
+sha256sums_aarch64=('6309c8ea3be3f687394393ed14937a084dd0905cef2e8f075fc67d6caeef4f11')
 # there is no proper license file in the distribution (https://github.com/oracle/graal/issues/6800),
 # but presumably the following license applies:
-source=('https://github.com/oracle/graal/raw/graal-23.0.0/regex/LICENSE.md')
+source=('https://github.com/oracle/graal/raw/graal-23.0.1/regex/LICENSE.md')
 sha256sums=('7d2369d11c040d7937191c1222d4910071fddf7413b1b4f743eee982e8ab63fd')
 
 package() {
