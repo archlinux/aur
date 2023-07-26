@@ -1,6 +1,6 @@
 pkgbase = mkdocs
 	pkgdesc = Project documentation with Markdown
-	pkgver = 1.4.3
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://www.mkdocs.org
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = mkdocs
 	provides = mkdocs
 	conflicts = python-mkdocs
 	options = !strip
-	source = mkdocs-1.4.3.tar.gz::https://github.com/mkdocs/mkdocs/archive/refs/tags/1.4.3.tar.gz
-	sha256sums = 2662b2a39db437b472f7cba92d0aaf6973732929a000af56e05cfc42055e7fc8
+	source = mkdocs-1.5.0.tar.gz::https://github.com/mkdocs/mkdocs/archive/refs/tags/1.5.0.tar.gz
+	sha256sums = fad42de2779752ea09c3e89c797c028fe829f4b76debe78d4b8739420746a0a4
 
 pkgname = mkdocs
