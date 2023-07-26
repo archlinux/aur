@@ -1,13 +1,11 @@
 pkgbase = html2text-cpp
-	pkgdesc = A C/C++ based HTML to text converter
-	pkgver = r91.49db615
+	pkgdesc = HTML to text rendering aimed for E-mail
+	pkgver = 2.1.1
 	pkgrel = 1
-	url = http://www.mbayer.de/html2text
-	arch = i686
+	url = https://github.com/grobian/html2text
 	arch = x86_64
 	license = GPL2
-	depends = gcc-libs
-	source = git+https://github.com/grobian/html2text.git
-	sha1sums = SKIP
+	source = html2text-cpp-2.1.1.tar.gz::https://github.com/grobian/html2text/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = be16ec8ceb25f8e7fe438bd6e525b717d5de51bd0797eeadda0617087f1563c9
 
 pkgname = html2text-cpp
