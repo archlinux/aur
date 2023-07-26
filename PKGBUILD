@@ -1,10 +1,10 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="netctl-tray"
-pkgver=0.2.2
+pkgver=v0.3.0
 pkgrel=1
 pkgdesc="A lightweight netctl tray app with notifications"
 arch=('x86_64')
-url="https://github.com/PonasKovas/netctl-tray"
+url="https://github.com/DanielcoderX/netctl-tray"
 license=('MIT')
 makedepends=('rustup'
 			 'cmake')
@@ -12,7 +12,7 @@ depends=('qt5-base'
      	 'polkit')
 conflicts=("netctl-tray-auto")
 install=".install"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DanielcoderX/netctl-tray/archive/${pkgver}.tar.gz")
 md5sums=('d6fb801d64b3e75c0b49d65cac673e89')
 
 build () {
@@ -20,7 +20,7 @@ build () {
   rustup toolchain install nightly
   rustup update
   RUSTUP_TOOLCHAIN=nightly \
-    RUSTFLAGS="-Ctarget-cpu=native" cargo +nightly build --release
+    RUSTFLAGS="-Ctarget-cpu=native" cargo +nightly build --release -j$(nproc)
 }
 
 package() {

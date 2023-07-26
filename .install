@@ -1,5 +1,8 @@
 post_install() {
-  setcap cap_net_raw=ep usr/bin/netctl-tray  2>/dev/null || chmod +s usr/bin/netctl-tray
+  setcap cap_net_raw=ep usr/bin/netctl-tray 2>/dev/null || chmod +s usr/bin/netctl-tray
+
+  # Additional command to set permissions on /etc/netctl/*
+  sudo chmod 644 /etc/netctl/*
 }
 
 post_upgrade() {
