@@ -1,16 +1,16 @@
 # Maintainer: Thomas Roos (Roosted7) <mail [at] thomasroos [dot] nl>
 
 pkgname=mricrogl
-pkgver=1.2.20201102
+pkgver=1.2.20220720
 pkgrel=1
 pkgdesc="A program designed to display 3D medical imaging."
 arch=('x86_64')
-url="https://github.com/rordenlab/MRIcroGL12"
+url="https://github.com/rordenlab/MRIcroGL"
 license=('BSD')
 provides=('mricrogl' 'dcm2niix')
-source=("MRIcroGL_linux.zip::https://github.com/rordenlab/MRIcroGL12/releases/download/v${pkgver}/MRIcroGL_linux.zip"
+source=("MRIcroGL_linux.zip::https://github.com/rordenlab/MRIcroGL/releases/download/v${pkgver}/MRIcroGL_linux.zip"
 	"mricrogl.desktop")
-sha512sums=('4cf110f332a4df52a22141c1129a30482a6a55337ad7f4044d405789d74bd8a43e25d8c66a9f2cd22593191fc4870f9f1bb9d7525dd06932b9ca46a981501bfe'
+sha512sums=('c41f0d9cd9e91446a1bb94a3c07c9f06cbbbd64dbb19ea27b655b4e7f33c50500c4dc34110785ec2b3aa7bbaef15c41f49f858f3cec209eb3c99867954073806'
             '3a25eeca058ee8613ec46662f0efe050d241f206bf436cff2fbf90d5eee21555ad447741df45f02e90410093caa7df74bb3a768b4703d7bfbd2fc1ed34d7df53')
 
 package(){
