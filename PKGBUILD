@@ -2,8 +2,8 @@
 # Contributor: Andrew Eikum
 
 pkgname=faudio
-pkgver=23.06
-_commit=58cf606b5f718883e5dffbafdec44859d4e304ec
+pkgver=23.07
+_commit=f1a10b353237175481a97081b36c5c58f3596fcc
 pkgrel=1
 pkgdesc="XAudio2 reimplementation"
 arch=(x86_64)
@@ -22,9 +22,7 @@ build() {
   cd build
   cmake ../FAudio -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DGSTREAMER=ON
+    -DCMAKE_BUILD_TYPE=Release
   ninja
 }
 
