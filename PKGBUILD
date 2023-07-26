@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=heroic-games-launcher-git
-pkgver=2.5.0.r0.gba0a2a062
+pkgver=2.9.1.r0.g0f747b0e0
 pkgrel=1
 pkgdesc="Native GOG and Epic Games launcher for Linux"
 arch=(x86_64)
