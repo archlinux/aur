@@ -1,7 +1,7 @@
 # Maintainer: Keybase <linux-packages@keyba.se>
 
 # NOTE: This PKGBUILD is generated and pushed by Keybase's release automation.
-# Any changes made in aur.archlinux.org git repos will get overwritten. See
+# Any changes made in aur.archlinux.org git repos will get overwritten.  See
 # https://github.com/keybase/client/tree/master/packaging/linux/arch.
 
 pkgname=keybase-bin
