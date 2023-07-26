@@ -4,11 +4,12 @@
 
 pkgname=slack-term
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Slack client for your terminal"
 arch=(x86_64)
 url="https://github.com/jpbruinsslot/slack-term"
 license=(MIT)
+depends=(glibc)
 makedepends=(go)
 
 source=(
@@ -39,5 +40,5 @@ package() {
 
   install -Dm755 slack-term "$pkgdir/usr/bin/slack-term"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 $srcdir/slack-term.json "$pkgdir/etc/slack-term.json"
+  install -Dm644 "$srcdir/slack-term.json" "$pkgdir/etc/slack-term.json"
 }
