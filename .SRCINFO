@@ -1,0 +1,25 @@
+pkgbase = fzf-tab-source
+	pkgdesc = 替代zsh的命令补全功能，加入文件和目录预览，可使用rg和rga辅助fzf搜索 Replace zsh's default completion selection menu with fzf.Add file and directory previews,and can use rg or rga to assist fzf searches
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aslingguang/fzf-tab-source
+	arch = x86_64
+	license = GPL
+	depends = zsh
+	depends = fzf
+	optdepends = exa: 目录结构预览
+	optdepends = chafa: 图片预览
+	optdepends = exiftool: 元数据预览
+	optdepends = pdftotext: pdf预览
+	optdepends = bat: 文本预览
+	optdepends = xlsx2csv: xlsx2csv预览
+	optdepends = xls2csv: xls2csv预览
+	optdepends = csvkit: xlsx2csv和xls2csv预览
+	optdepends = pandoc: docx预览
+	optdepends = atool: deb,gz,jar,rpm,tar,tgz,xz,zip等预览
+	optdepends = unrar: rar预览
+	optdepends = 7z: 7z预览
+	source = https://github.com/aslingguang/fzf-tab-source/releases/download/v1.0.0/fzf-tab-source.tar.gz
+	sha256sums = c167969b7319146aa2f56d6de70b080b124d9e858fc467a3243b5e65ffb19191
+
+pkgname = fzf-tab-source
