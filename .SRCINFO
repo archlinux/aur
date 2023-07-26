@@ -1,6 +1,6 @@
 pkgbase = arkenfox-user.js-git
 	pkgdesc = Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening.
-	pkgver = 112.0.r1.g04e6e77
+	pkgver = 115.0.r0.g4d78abf
 	pkgrel = 1
 	url = https://github.com/arkenfox/user.js
 	arch = any
