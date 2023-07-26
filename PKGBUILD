@@ -2,7 +2,7 @@
 
 _pkgname='firefox-decrypt'
 pkgname="${_pkgname}-git"
-pkgver=1.0.0+12.r264.20220201.aa471d9
+pkgver=1.0.0+44.r296.20230707.2c61b27
 pkgrel=1
 pkgdesc="A tool to extract passwords from Mozilla (Firefox™, Waterfox™, Thunderbird®, SeaMonkey®) profiles."
 arch=('any')
@@ -27,7 +27,7 @@ conflicts=(
 )
 replaces=()
 backup=()
-options=(!emptydirs)
+options+=('!emptydirs')
 install=
 source=(
   "${_pkgname}::git+https://github.com/Unode/firefox_decrypt.git"
@@ -56,7 +56,7 @@ package() {
 
   install -D -v -m755 firefox_decrypt.py "${pkgdir}/usr/bin/firefox-decrypt"
 
-  for _docfile in AUTHORS CHANGELOG.md README.md; do
+  for _docfile in CONTRIBUTORS.md CHANGELOG.md README.md; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
   cp -rv "tests" "${pkgdir}/usr/share/doc/${_pkgname}/tests"
