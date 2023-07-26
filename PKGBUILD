@@ -6,16 +6,19 @@ _realname=CPU-X
 _basename=cpu-x
 pkgname="${_basename}-opencl"
 pkgver=4.5.3
-pkgrel=2.4
+pkgrel=2.5
 pkgdesc='Gathers information on CPU, motherboard, GPU and more (with OpenCL support)'
 arch=('i686' 'x86_64')
 url="https://thetumultuousunicornofdarkness.github.io/${_realname}"
 _repourl="https://github.com/TheTumultuousUnicornOfDarkness/${_realname}"
 license=('GPL3')
 depends=(
+  'dconf'
   'glfw'
   'gtk3'
+  'hicolor-icon-theme'
   'libcpuid>=0.6.0'
+  'libgl'
   'ncurses'
   'opencl-icd-loader'
   'pciutils'
@@ -34,8 +37,8 @@ checkdepends=(
   'nawk'
 )
 optdepends=(
-  'opencl-driver: packaged openCL driver'
-  'opengl-driver: packaged openGL driver'
+  'opencl-driver: packaged OpenCL driver'
+  'opengl-driver: packaged OpenGL driver'
   'vulkan-driver: packaged Vulkan driver'
 )
 provides=("${_basename}=${pkgver}")
