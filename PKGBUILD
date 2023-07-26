@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('xsel' 'libx11' 'libxcb')
 makedepends=('rust')
 source=("https://github.com/rikonaka/translator-rs/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=(b83c1935fd4951ba11375c9c36b5662a787229d2c3c24bf14d05af58c3848b00)
+sha256sums=(9c1ab76abb4bb4e69e4262ee9037a0b27579f58369862341446a645dd436c0b2)
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
