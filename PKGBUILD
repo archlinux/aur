@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=gtk4-paper-plane
-pkgver=4.11.3
+pkgver=4.11.4
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit (Version required by Paper Plane)"
 url="https://www.gtk.org/"
@@ -62,7 +62,7 @@ optdepends=('evince: Default print preview command')
 conflicts=(gtk4)
 provides=(gtk4=$pkgver libgtk-4.so)
 checkdepends=(weston)
-_commit=55dd5f47808730ae4f1ffaa481ae37dd536b410a  # tags/4.11.3^0
+_commit=f5d68bb586be6a82b9c2fa8c1a32ea540999ea10  # tags/4.11.4^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-reversed-list-${pkgver}.patch::'https://raw.githubusercontent.com/paper-plane-developers/paper-plane/main/build-aux/gtk-reversed-list.patch'
         gtk4-querymodules.{hook,script})
@@ -92,7 +92,9 @@ build() {
     -D gtk_doc=false
     -D man-pages=true
     -D build-tests=false
-    -D demos=false
+    -D build-demos=false
+    -D build-examples=false
+    -D build-testsuite=false
     -D tracker=enabled
   )
 
@@ -103,8 +105,12 @@ build() {
 package() {
   meson install -C build --destdir "$pkgdir"
 
+  # files belonging to gtk-update-icon-cache, the official package is used instead
   rm "$pkgdir/usr/bin/gtk4-update-icon-cache"
   rm "$pkgdir/usr/share/man/man1/gtk4-update-icon-cache.1"
+
+  # files belonging to gtk4-demos, the official package is used instead
+  rm "$pkgdir/usr/share/man/man1/gtk4-"{demo-application,demo,icon-browser,node-editor,widget-factory}".1"
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/gtk-4.0/settings.ini" <<END
 [Settings]
