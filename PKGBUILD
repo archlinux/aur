@@ -81,11 +81,12 @@ build() {
 }
 
 check() {
-  local _deselected=()
+  local pytest_options=(
+    -vv
+  )
 
   cd $_name-$pkgver
-  # ignore failing tests due to incompatible bincopy: https://github.com/NXPmicro/spsdk/issues/38
-  pytest -v --ignore tests/elftosb/test_elftosb_mbi.py -k "not test_parse_image_file_invalid and not test_load_binary_image"
+  pytest "${pytest_options[@]}"
 }
 
 package() {
