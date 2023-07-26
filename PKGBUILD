@@ -1,10 +1,10 @@
 # Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
 
-graal_=17.0.7+7.1
+graal_=17.0.8+7.1
 jdk_=${graal_%%+*}
 java_=${jdk_%%.*}
 pkgname="jdk${java_}-graalvm-bin"
-pkgver=23.0.0
+pkgver=23.0.1
 pkgrel=1
 pkgdesc="Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java ${java_} version"
 arch=('x86_64'
@@ -26,8 +26,8 @@ source=('graalvm-rebuild-libpolyglot.hook')
 sha256sums=('SKIP')
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${jdk_}/graalvm-community-jdk-${jdk_}_linux-x64_bin.tar.gz")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-${jdk_}/graalvm-community-jdk-${jdk_}_linux-aarch64_bin.tar.gz")
-sha256sums_x86_64=('094e5a7dcc4a903b70741d5c3c1688f83e83e2d44eb3d8d798c5d79ed902032c')
-sha256sums_aarch64=('cb5bedf6244d30018856559a393029e98de48c9608eb35ec6c4937dcb7d97224')
+sha256sums_x86_64=('1dffdf5c7cc5bf38558e9f093eef6a14072a6dff0be3a9906208b37b53ecc009')
+sha256sums_aarch64=('c4f26318114d6bd125cc95ee070289afdd42c6683867adf832f2ab2819c3b685')
 
 package() {
     cd "graalvm-community-openjdk-${graal_}"
