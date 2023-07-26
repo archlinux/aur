@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 6.4.3-arch1 Kernel Configuration
+# Linux/x86 6.4.6-arch1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="clang version 15.0.7"
 CONFIG_GCC_VERSION=0

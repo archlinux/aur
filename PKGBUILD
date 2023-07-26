@@ -1,7 +1,7 @@
 # Maintainer: Raphael Nestler (rnestler) <raphael.nestler@gmail.com>
 
 pkgbase=linux-rust
-pkgver=6.4.3.arch1
+pkgver=6.4.6.arch1
 pkgrel=1
 pkgdesc='Rust Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,6 +18,7 @@ makedepends=(
   libelf
   pahole
   perl
+  python
   rustup
   tar
   xz
@@ -37,7 +38,7 @@ validpgpkeys=(
   C7E7849466FE2358343588377258734B41C31549  # David Runge <dvzrv@archlinux.org>
 )
 b2sums=('SKIP'
-        '284c2158f21cc8ef3ac8b20f9afa965542aa064a1f69fc283728033814fcdaeac4ba473780aab30fd7e6b44a6e80b80e783d69021d5c59152a0c9c4dfdec6ef8'
+        'aca117ad9fd93b06b453fd86807ff9ffc32fbaa6949ecd1c69033706f79f26f91d2c8a0b22d1ff1a6c2a2970ab7c3a9d39cf7bd8df36a54ee23fe278d1317a4b'
         '901111182b9026f9592306b116bb6b9db02e27af803c5d5db856b5141f383305d0558b42f37a00b1a8112689d21334e4d49c69c8b96fa9cdd605b828b3abcc7a'
         '60fcfd6703fc06511e8dbf6968189b8d7b8ed0b3676ced50eff1f9f36e4d99fb61491c4c7dadf4b6bcdf14b35dd3e6870bf1c70f5344d2c5a6f91c646de62227')
 
