@@ -1,0 +1,16 @@
+pkgbase = easymosdns-bin
+	pkgdesc = 基于Mosdns的精准DNS分流策略，仅需几分钟即可搭建一台支持ECS的无污染DNS服务器。
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/pmkol/easymosdns
+	arch = x86_64
+	license = GPL3
+	provides = mosdns
+	source = mosdns.zip::https://github.com/IrineSistiana/mosdns/releases/download/v4.5.3/mosdns-linux-amd64.zip
+	source = config.zip::https://github.com/pmkol/easymosdns/archive/refs/tags/v3.0.zip
+	source = service
+	sha256sums = c970f5a5502256d6ef0e3b9729c325f3fca96f1bc09f0573efce9f3ee1cd67a2
+	sha256sums = 7b1062a8e9de0a93555149e042a2f410232e539b73acbaafa20bf89def9e9ec8
+	sha256sums = 5c3954d1ed479fca1dd6b9c948edd0313bd9deaafcc8e57515780bf51defff45
+
+pkgname = easymosdns
