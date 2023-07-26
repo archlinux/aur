@@ -7,6 +7,7 @@ pkgbase = fzf-tab-source
 	license = GPL
 	depends = zsh
 	depends = fzf
+	depends = fd
 	optdepends = exa: 目录结构预览
 	optdepends = chafa: 图片预览
 	optdepends = exiftool: 元数据预览
@@ -20,6 +21,6 @@ pkgbase = fzf-tab-source
 	optdepends = unrar: rar预览
 	optdepends = 7z: 7z预览
 	source = https://github.com/aslingguang/fzf-tab-source/releases/download/v1.0.0/fzf-tab-source.tar.gz
-	sha256sums = c167969b7319146aa2f56d6de70b080b124d9e858fc467a3243b5e65ffb19191
+	sha256sums = SKIP
 
 pkgname = fzf-tab-source
