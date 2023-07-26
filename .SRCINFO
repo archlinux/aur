@@ -1,6 +1,6 @@
 pkgbase = python-stlib
 	pkgdesc = Async library that provides features related to Steam client and compatible stuffs
-	pkgver = 2.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/calendulish/stlib
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = python-stlib
 	depends = python-rsa
 	depends = steamworks-sdk
 	optdepends = python-stlib-plugins: A set of official plugins for stlib
-	source = https://github.com/calendulish/stlib/archive/v2.0.tar.gz
-	sha256sums = 9d9391b1bf6f3e8ad04ac48707700029f0ebf6f65cf0679168254a3a829fb074
+	source = https://github.com/calendulish/stlib/archive/v2.0.1.tar.gz
+	sha256sums = 120b3eb563fc62c5d8ffd863b790d83ae8b4f8b4e48a9adca2c8f2a1fc7e5e80
 
 pkgname = python-stlib
