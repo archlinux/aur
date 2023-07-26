@@ -1,4 +1,5 @@
-# Maintainer: Thomas Roos (Roosted7) <mail [at] thomasroos [dot] nl>
+# Maintainer: Raphael Nestler (rnestler) <raphael.nestler@gmail.com>
+# Contributor: Thomas Roos (Roosted7) <mail [at] thomasroos [dot] nl>
 
 pkgname=mricrogl
 pkgver=1.2.20220720
