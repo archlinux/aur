@@ -2,7 +2,7 @@
 
 pkgname=umr-git
 epoch=1
-pkgver=r748.5e4f578
+pkgver=r1090.cc16f19
 pkgrel=1
 pkgdesc='userspace debugging and diagnostic tool for AMD GPUs using the AMDGPU kernel driver'
 arch=('i686' 'x86_64')
@@ -22,12 +22,19 @@ pkgver() {
 }
 
 build() {
-	cd umr
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DUMR_NO_GUI=ON .
+	local cmake_args=(
+		-B build -S umr
+		-DCMAKE_INSTALL_PREFIX=/usr
+		-DCMAKE_INSTALL_LIBDIR=lib
+		-DCMAKE_BUILD_TYPE=Release
+		-DUMR_NO_GUI=ON
+	)
+
+	cmake "${cmake_args[@]}"
+	cmake --build build
 }
 
 package() {
-	cd umr
-	make DESTDIR="$pkgdir" install
-	install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 umr/LICENSE
 }
