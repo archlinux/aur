@@ -1,7 +1,7 @@
 # Maintainer: AlanChen <chenzunlai@qq.com>
 
 pkgname=translator-rs
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="A simple real-time translator written in Rust. 选中文本即翻译。"
 arch=('x86_64')
