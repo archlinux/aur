@@ -1,0 +1,20 @@
+post_install(){
+    cat << EOF
+    >>>
+    >>>
+    >>>  Basic language scheme support for all languages supported in govarnam has been installed.
+    >>>  To import words into govarnam, please ensure that govarnam is installed and
+    >>>  run the following command for whichever language you wish to use:
+    >>>                varnamcli -s <language_scheme_code> -import /usr/share/varnam/schemes/<language_scheme_code>.vlf
+    >>>  For example:
+    >>>                varnamcli -s mr -import /usr/share/varnam/schemes/mr.vlf
+    >>>
+    >>>
+    >>>
+    >>>
+EOF
+}
+
+op=$1
+shift
+$op $*
