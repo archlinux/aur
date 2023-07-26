@@ -1,0 +1,18 @@
+pkgbase = govarnam-ibus-git
+	pkgdesc = IBus engine for GoVarnam providing Indian language input method - Git version
+	pkgver = 1.6.2.r1.g76e9421
+	pkgrel = 1
+	url = https://varnamproject.github.io/
+	arch = x86_64
+	license = AGPL
+	makedepends = go
+	makedepends = git
+	depends = govarnam
+	depends = ibus
+	provides = govarnam
+	source = govarnam-ibus-git::git+https://github.com/varnamproject/govarnam-ibus.git
+	source = git+https://github.com/varnamproject/govarnam.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = govarnam-ibus-git
