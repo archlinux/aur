@@ -1,6 +1,6 @@
 pkgbase = betterspades
 	pkgdesc = Opensource game client for Ace Of Spades 0.75 protocol
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/xtreme8000/betterspades/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = betterspades
 	depends = glfw
 	depends = enet
 	depends = glew
-	source = https://github.com/xtreme8000/betterspades/archive/v0.1.4-beta.tar.gz
+	source = https://github.com/xtreme8000/betterspades/archive/v0.1.5.tar.gz
 	source = http://aos.party/bsresources.zip
 	source = betterspades.desktop
 	source = betterspades
@@ -33,8 +33,8 @@ pkgbase = betterspades
 	source = parson.c
 	source = parson.h
 	source = stb_truetype.h
-	sha512sums = b07f77a37ce0d8ccf8fb5ffef95ce60190d6d2c13f4c995f50a11a7f12c33a218484104fde989c80e7d0d9df6318115aa070cbe622e3dc83f1c2dd142344963e
-	sha512sums = 08723cd955e5fcc7481a426a9e9a53d978c58975d6b01f91f8bbe16b3a8b500b039cc67f0f2b9ca9974b5a0a49231eaea3a10bb779070cdda24032ebc8c65eb7
+	sha512sums = 743c66f620be0e15a4b9055ba0e1709fcec6e7152836f4c87ad6545cd2b03fc14691b523b196608c5a62e7774f272227b3b7bc436445e5205549b55cb5284ceb
+	sha512sums = 83651b4befe06b534299fac03de032466f20ab8010bcb0828e8f67594865726437b527334fd3f048b5ae1939ad0e4d02bf8fd5cff2e23afba7d6e644dd6f5fa7
 	sha512sums = 45488d7196410a1bc9461de82ac28ac5335cb99babae5f8a4465539b196a4cbe9361aa1f8d7521289537aae6fdb2a8c5c2588b20f4fd5fe7c4484f9c9c8e285b
 	sha512sums = 5cac9e619faa2d83a3db76753b9bbea40d3c97de579701357d6d6472feb378bb4dca1ba389b132ae6187b0a15b2bc17d42fba331e0c653682827d09af0e231aa
 	sha512sums = 0785768bcc9e144a5bc0242dcabc495bbdd68209a4a66a15b4d75fab4a52f51f142323b12532aaf1dcc7eb579a2f49b9af6da7aaf742bb11be900c85135a7fe1
@@ -51,4 +51,3 @@ pkgbase = betterspades
 	sha512sums = b1a14208296a4ca343c3f1ac4a889f635a97ace658d55aef93ac928722ac3ce7f5ee30a70bc8f0c0989510b4b1a732964fefd25e5dc232672432f53e7d182964
 
 pkgname = betterspades
-
