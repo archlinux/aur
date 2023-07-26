@@ -1,6 +1,6 @@
 pkgbase = python-rpa
 	pkgdesc = RPA for Python is a Python package for RPA (robotic process automation)
-	pkgver = 1.49.0
+	pkgver = 1.50.0
 	pkgrel = 1
 	url = https://github.com/tebelorg/RPA-Python
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-rpa
 	depends = python
 	depends = python-tagui
 	depends = tesseract
-	source = https://files.pythonhosted.org/packages/source/r/rpa/rpa-1.49.0.tar.gz
-	b2sums = 3c30c447bac4c5617a0007e68673ac3eb7de697d74b9ae16c21e43909e6446ef0b8946eccfcb3bc3a4ef9503c905b5b0cf018031543fcde248996ac4d3e2270d
+	source = https://files.pythonhosted.org/packages/source/r/rpa/rpa-1.50.0.tar.gz
+	b2sums = bc8c3b6e70e423a411bacf46dba699e0baca48c29505e018789b25a10eb905458adc1209841adfefa59babd8bfe899fdefd31972a6cca90044bd8a4b5157e811
 
 pkgname = python-rpa
