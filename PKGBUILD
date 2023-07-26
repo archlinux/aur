@@ -2,7 +2,7 @@
 
 _pkgname=livsdiary
 pkgname=$_pkgname-git
-pkgver=v3.3.1.r0.79d7cb7
+pkgver=v3.4.0.r0.32b9185
 pkgrel=1
 pkgdesc="Lightweight virtual simple diary."
 arch=(any)
