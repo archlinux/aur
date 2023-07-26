@@ -1,7 +1,9 @@
+# Mainter: knedl1k <knedl1k at duck dot com>
 # Contributor: Olivire Mehani <shtrom-arch@ssji.net>
 # Generator  : CPANPLUS::Dist::Arch 1.06
+
 pkgname=perl-crypt-x509
-pkgver=0.51
+pkgver=0.55
 pkgrel=1
 pkgdesc="Pure Perl X.509 Parser"
 arch=('any')
@@ -9,8 +11,7 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl' 'perl-convert-asn1>=0.19')
 url='http://search.cpan.org/dist/Crypt-X509'
-source=("http://search.cpan.org/CPAN/authors/id/A/AJ/AJUNG/Crypt-X509-$pkgver.tar.gz")
-
+source=("https://cpan.metacpan.org/authors/id/M/MR/MRSCOTTY/Crypt-X509-$pkgver.tar.gz")
 PERL=/usr/bin/perl
 
 prepare() {
@@ -43,4 +44,4 @@ package() {
 	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
-md5sums=('aadab2960d2bd65a212d1bd7f50e282a')
+md5sums=('011c3cdfdbf93bde6a46396cc6252df7')

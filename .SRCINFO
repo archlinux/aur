@@ -1,6 +1,6 @@
 pkgbase = perl-crypt-x509
 	pkgdesc = Pure Perl X.509 Parser
-	pkgver = 0.51
+	pkgver = 0.55
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Crypt-X509
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = perl-crypt-x509
 	depends = perl
 	depends = perl-convert-asn1>=0.19
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/A/AJ/AJUNG/Crypt-X509-0.51.tar.gz
-	md5sums = aadab2960d2bd65a212d1bd7f50e282a
+	source = https://cpan.metacpan.org/authors/id/M/MR/MRSCOTTY/Crypt-X509-0.55.tar.gz
+	md5sums = 011c3cdfdbf93bde6a46396cc6252df7
 
 pkgname = perl-crypt-x509
-
