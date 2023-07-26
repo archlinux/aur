@@ -35,7 +35,12 @@ depends=(
   python-sly
   python-typing-extensions
 )
-makedepends=(python-build python-installer python-setuptools python-wheel)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
 checkdepends=(
   python-jsonschema
   python-pytest
