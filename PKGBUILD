@@ -8,10 +8,9 @@ pkgdesc="Varnam Language support files for govarnam"
 arch=('x86_64')
 url="https://www.varnamproject.com/"
 license=('MPL')
-makedepends=('python')
 source=("${pkgname}-${pkgver}.zip"::"https://github.com/varnamproject/schemes/archive/refs/tags/v1.8.0.zip")
 sha256sums=('51084589feeff4584ff26da1b37954c93e0938f6eabaedf4a9a20e3c867782a3')
-depends=('ruby' 'ruby-ffi' 'govarnam')
+makedepends=('ruby' 'ruby-ffi' 'govarnam')
 provides=('govarnam-schemes')
 install=${pkgname}.install
 
