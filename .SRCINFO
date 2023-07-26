@@ -1,0 +1,13 @@
+pkgbase = squiid
+	pkgdesc = A modular calculator written in Rust. Intended to be the successor to ImaginaryInfinity Calculator.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid
+	arch = any
+	license = GPLv3
+	makedepends = cargo
+	makedepends = cmake
+	source = https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid/-/archive/1.0.0/squiid-1.0.0.tar.gz
+	sha512sums = bcc666a0687a4e7670d4ed67bc5070d2a1a14f6a5521f8362a2ec05d0e6038272fe64ead4bc2d29e84ded694befb2bed4e6739d14e718365b8fe96f1bd1cec2e
+
+pkgname = squiid
