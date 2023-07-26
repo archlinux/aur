@@ -11,7 +11,7 @@ makedepends = cmake
 depends = qt5-base
 depends = polkit
 conflicts = netctl-tray-auto
-source = netctl-tray-0.3.0.tar.gz::https://github.com/DanielcoderX/netctl-tray/archive/0.3.0.tar.gz
-md5sums = d6fb801d64b3e75c0b49d65cac673e89
+source = netctl-tray-v0.3.0.tar.gz::https://github.com/DanielcoderX/netctl-tray/archive/v0.3.0.tar.gz
+md5sums = c9f341daa27b7fa9096a187d02fed2e8
 
 pkgname = netctl-tray

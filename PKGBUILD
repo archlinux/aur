@@ -13,7 +13,7 @@ depends=('qt5-base'
 conflicts=("netctl-tray-auto")
 install=".install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DanielcoderX/netctl-tray/archive/${pkgver}.tar.gz")
-md5sums=('d6fb801d64b3e75c0b49d65cac673e89')
+md5sums=('c9f341daa27b7fa9096a187d02fed2e8')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
