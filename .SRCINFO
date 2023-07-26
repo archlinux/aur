@@ -1,6 +1,6 @@
 pkgbase = graaljs-jdk20-bin
 	pkgdesc = GraalVM-based, polyglot-enabled implementation of JavaScript, Java 20 version
-	pkgver = 23.0.0
+	pkgver = 23.0.1
 	pkgrel = 1
 	url = https://github.com/oracle/graaljs
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = graaljs-jdk20-bin
 	depends = jdk20-graalvm-bin
 	depends = graal-icu4j-jdk20-bin
 	depends = graal-regex-jdk20-bin
-	source_x86_64 = https://github.com/oracle/graaljs/releases/download/graal-23.0.0/js-installable-svm-java20-linux-amd64-23.0.0.jar
-	sha256sums_x86_64 = b45e1d39ecdf0f0b25205d1ae0e15c70acace0382aa291a9bf4c1ca510ddb3d2
-	source_aarch64 = https://github.com/oracle/graaljs/releases/download/graal-23.0.0/js-installable-svm-java20-linux-aarch64-23.0.0.jar
-	sha256sums_aarch64 = 74d92d8f3bf214816cd6b7ff01b4f41bc188a5944e4592f661ceb89ef97e93ae
+	source_x86_64 = https://github.com/oracle/graaljs/releases/download/graal-23.0.1/js-installable-svm-java20-linux-amd64-23.0.1.jar
+	sha256sums_x86_64 = 372dda758e2feae88029f3e23d319127ed08e0392272f02d30333e2ae3199b5a
+	source_aarch64 = https://github.com/oracle/graaljs/releases/download/graal-23.0.1/js-installable-svm-java20-linux-aarch64-23.0.1.jar
+	sha256sums_aarch64 = 799d6be66923801583fa20f8ea0ee2ad537fe11b1c194930621035adeb47d3aa
 
 pkgname = graaljs-jdk20-bin
