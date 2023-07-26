@@ -1,6 +1,6 @@
 pkgbase = graalpy-jdk20-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the Python language (early development), Java 20 version
-	pkgver = 23.0.0
+	pkgver = 23.0.1
 	pkgrel = 1
 	url = https://github.com/graalvm/graalpython
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = graalpy-jdk20-bin
 	depends = libxcrypt-compat
 	depends = zlib
 	replaces = graalpython-jdk20-bin
-	source_x86_64 = https://github.com/graalvm/graalpython/releases/download/graal-23.0.0/python-installable-svm-java20-linux-amd64-23.0.0.jar
-	sha256sums_x86_64 = f857342fac54a7fd6b593f5af5c1a16bdfa6c96b47c873f7dc6cd6c237bbe269
-	source_aarch64 = https://github.com/graalvm/graalpython/releases/download/graal-23.0.0/python-installable-svm-java20-linux-aarch64-23.0.0.jar
-	sha256sums_aarch64 = 5ea566a515b5646311af6f49496cd72d844ffebc904fd4144a21160578e15810
+	source_x86_64 = https://github.com/graalvm/graalpython/releases/download/graal-23.0.1/python-installable-svm-java20-linux-amd64-23.0.1.jar
+	sha256sums_x86_64 = c0afd164f64efc368680ff8690651c3e6e0fd5256d360a2a51c86a82469f93e4
+	source_aarch64 = https://github.com/graalvm/graalpython/releases/download/graal-23.0.1/python-installable-svm-java20-linux-aarch64-23.0.1.jar
+	sha256sums_aarch64 = 7814163acd96c89b76cbce66091de8da43d42a6ff05a751bf165ca60f548bcb3
 
 pkgname = graalpy-jdk20-bin
