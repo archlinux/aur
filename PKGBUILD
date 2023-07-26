@@ -12,7 +12,7 @@ pkgver=6.2.2_20230726175256+4464bfb32d
 src_prefix=https://prerelease.keybase.io/linux_binaries/deb
 deb_pkgver="${pkgver/_/-}"
 deb_pkgver="${deb_pkgver/+/.}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 depends=(fuse libxss gtk3 lsof) # don't change this without changing the SRCINFO template too
                                 # also make sure to change the keybase-git PKGBUILD

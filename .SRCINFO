@@ -2,7 +2,7 @@
 pkgbase = keybase-bin
 	pkgdesc = the Keybase Go client, filesystem, and GUI
 	pkgver = 6.2.2_20230726175256+4464bfb32d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://keybase.io
 	install = keybase.install
 	arch = x86_64
