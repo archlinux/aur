@@ -3,7 +3,7 @@
 
 pkgname=mozregression-gui-bin
 _pkgname=mozregression-gui
-pkgver=5.7.0.dev3
+pkgver=5.7.0
 pkgrel=1
 pkgdesc='Regression range finder for Firefox'
 arch=('any')
@@ -15,7 +15,7 @@ provides=("${_pkgname}=${pkgver}")
 source=("https://github.com/mozilla/mozregression/releases/download/${pkgver}/${_pkgname}-ubuntu-22.04.tar.gz"
         "${_pkgname}.desktop"
         "https://raw.githubusercontent.com/mozilla/mozregression/master/gui/icons/app_icon.png")
-sha256sums=('1f220c62e807ac50125586d697732008a46928e7bb06938e15b9640fa5bb52f0'
+sha256sums=('f7408446c0365b04e88c28252f192800baba9b305469bb8fbc78e13562265380'
             '0b51e2692ef75addd98365185ff05524426ca1735f43d6b1cafa0e71d71481cb'
             'eec9a7ab76d757b7f03ceea4a65623337a6625989f4aa801d07f71aa37175e23')
 
