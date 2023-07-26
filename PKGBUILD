@@ -2,7 +2,7 @@
 # Contributor: Asuka Minato
 
 pkgname=typstudio-bin
-pkgver=0.1.0dev.22
+pkgver=0.1.0dev.23
 _pkgver=${pkgver/dev/-dev}
 pkgrel=1
 pkgdesc='desktop application for typst'
@@ -23,7 +23,7 @@ makedepends=()
 provides=("typstudio=$pkgver")
 conflicts=(typstudio)
 source=("$pkgname-$pkgver.deb::https://github.com/Cubxity/typstudio/releases/download/v${_pkgver}/typstudio_0.1.0_amd64.deb")
-sha256sums=('e4770477c00df1262339b1aa75ed2048b77d42e0d8a591af037f44213e0cef57')
+sha256sums=('734f30f6fafd593d950fad17d94eff422740b42639d26fa86ca78d4a802a172e')
 
 package() {
 	tar -xvpf data.tar.* -C $pkgdir
