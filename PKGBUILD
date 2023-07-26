@@ -2,8 +2,8 @@
 pkgname=mistserver
 pkgdesc="The MistServer media server toolkit"
 pkgver=3.2.2
-pkgrel=1
-license=('AGPL3')
+pkgrel=2
+license=('Unlicense')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://mistserver.org"
 depends=('srt' 'libsrtp')
