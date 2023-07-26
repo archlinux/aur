@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libfreexl
-pkgver=1.0.6
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Library to extract valid data from within an Excel (.xls) spreadsheet (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-configure')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://www.gaia-gis.it/gaia-sins/freexl-${pkgver}.tar.gz"
         "01-fix-pkgconfig.patch")
-sha256sums=('3de8b57a3d130cb2881ea52d3aa9ce1feedb1b57b7daa4eb37f751404f90fc22'
+sha256sums=('176705f1de58ab7c1eebbf5c6de46ab76fcd8b856508dbd28f5648f7c6e1a7f0'
             'bc6facd7b0bde308d442962b350fa1894cd6605412ae4665775be745069e4ea5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
