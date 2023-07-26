@@ -2,12 +2,12 @@
 
 pkgname=portproton
 pkgver=1.0
-pkgrel=13
+pkgrel=14
 pkgdesc="Software for playing Microsoft Windows games and launchers"
 arch=('x86_64')
 url="https://linux-gaming.ru"
 license=('MIT')
-depends=('procps-ng' 'bash' 'icoutils' 'yad' 'wget' 'bubblewrap' 'zstd' 'cabextract'
+depends=('procps-ng' 'bash' 'icoutils' 'yad' 'wget' 'bubblewrap' 'zstd' 'cabextract' 'gzip'
          'bc' 'tar' 'openssl' 'desktop-file-utils' 'curl' 'dbus' 'freetype2' 'xdg-utils'
          'gdk-pixbuf2' 'ttf-font' 'zenity' 'lsb-release' 'nss' 'xorg-xrandr' 'lsof' 'mesa-utils'
          'vulkan-driver' 'vulkan-icd-loader' 'lib32-libgl' 'lib32-gcc-libs' 'vulkan-tools'
@@ -19,7 +19,7 @@ source=("https://raw.githubusercontent.com/Castro-Fidel/PortWINE/master/portwine
         "$pkgname.desktop"
         "$pkgname.png"
         'LICENSE')
-sha256sums=('349b16b86bb54bc74b8972725ee0c567e8b45e1fc2d04c0805074e6e56e0a137'
+sha256sums=('6fa73e20bf180ffa8b252d7d50dc43fcf62eed6caf8867e7a5bcf445daa6dabe'
             '7abdcc92de357592043b9db45e1c5913ee4c49a340e6e4d49bb2099893aae24c'
             'b27e5a701555b3cccdba0d902c80888d6b0e6a9ed2fb4ced8dfd915207683975'
             '65d12e4e0be4dd5e58324593563c8c79af42876d63f51225364b968117c6ff4f')
