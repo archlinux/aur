@@ -2,7 +2,7 @@
 
 pkgname=freedv-gui
 pkgver=1.8.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
 license=('LGPL2.1')
