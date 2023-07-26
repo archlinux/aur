@@ -19,6 +19,7 @@ pkgbase = rstudio-desktop-daily-bin
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-bin
+	conflicts = rstudio-desktop-preview-bin
 	options = !strip
 	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/electron/jammy/amd64/rstudio-2023.09.0-daily-246-amd64.deb
 	sha256sums_x86_64 = 9c6e2f7e56eb9a3eb67cb11c035b7957fc55d94863f1622c1edea2096032fc6e

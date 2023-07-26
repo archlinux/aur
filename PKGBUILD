@@ -21,7 +21,7 @@ optdepends=(
     'pandoc: markdown support'
     'x11-ssh-askpass: password dialog for ssh'
 )
-conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
+conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin' 'rstudio-desktop-preview-bin')
 provides=("rstudio-desktop-daily=${pkgver}")
 options=(!strip)
 
