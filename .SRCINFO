@@ -1,6 +1,6 @@
 pkgbase = graal-icu4j-jdk17-bin
 	pkgdesc = GraalVM distribution of ICU4J, Java 17 version
-	pkgver = 23.0.0
+	pkgver = 23.0.1
 	pkgrel = 1
 	url = https://github.com/oracle/graal
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = graal-icu4j-jdk17-bin
 	depends = jdk17-graalvm-bin
 	source = https://github.com/unicode-org/icu/raw/be6428690dc9b2e0e4a622691eb4c1101647cd2d/icu4j/main/shared/licenses/LICENSE
 	sha256sums = af3e84c401f1a35e8d32d6eb1a33fe587c3981aa5cd206033d9527c1855b57a2
-	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/icu4j-installable-ce-java17-linux-amd64-23.0.0.jar
-	sha256sums_x86_64 = 618661e076a626c29919159e20650b48570834f8868063ae5efa50abd73f1637
-	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/icu4j-installable-ce-java17-linux-aarch64-23.0.0.jar
-	sha256sums_aarch64 = f1913beead2b90f918c9aab2a337c451e83fb5840535a1f36dae61bf1f88e65f
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.1/icu4j-installable-ce-java17-linux-amd64-23.0.1.jar
+	sha256sums_x86_64 = 3fb44c9051a04997dcf8cd1cc04af0feb09ed0f1b0b325a4f767319aafc01a2c
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.1/icu4j-installable-ce-java17-linux-aarch64-23.0.1.jar
+	sha256sums_aarch64 = 175305109fcf0f3212ea878853060099fdf3d3225546dd6b96337ff0d2d4454e
 
 pkgname = graal-icu4j-jdk17-bin

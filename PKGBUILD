@@ -3,7 +3,7 @@
 java_=17
 pkgname_=graal-icu4j
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=23.0.0
+pkgver=23.0.1
 pkgrel=1
 pkgdesc="GraalVM distribution of ICU4J, Java ${java_} version"
 arch=('x86_64'
@@ -13,8 +13,8 @@ license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/icu4j-installable-ce-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/icu4j-installable-ce-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('618661e076a626c29919159e20650b48570834f8868063ae5efa50abd73f1637')
-sha256sums_aarch64=('f1913beead2b90f918c9aab2a337c451e83fb5840535a1f36dae61bf1f88e65f')
+sha256sums_x86_64=('3fb44c9051a04997dcf8cd1cc04af0feb09ed0f1b0b325a4f767319aafc01a2c')
+sha256sums_aarch64=('175305109fcf0f3212ea878853060099fdf3d3225546dd6b96337ff0d2d4454e')
 # there is no proper license file in the distribution (https://github.com/oracle/graal/issues/6800),
 # but a nested file in src/languages/icu4j/icu4j.jar/LICENSE is identical to the following:
 source=('https://github.com/unicode-org/icu/raw/be6428690dc9b2e0e4a622691eb4c1101647cd2d/icu4j/main/shared/licenses/LICENSE')
