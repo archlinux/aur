@@ -2,23 +2,22 @@
 
 pkgname=astromatic-psfex
 _pkgname=psfex
-pkgver=3.21.1
-pkgrel=2
+pkgver=3.24.2
+pkgrel=1
 pkgdesc="extracts models of the PSF from FITS images processed with sextractor"
 url="http://www.astromatic.net/software/sextractor"
 arch=('x86_64')
 license=('GPL')
-depends=('astromatic-sextractor')
+depends=('astromatic-sextractor' 'blas-openblas')
 makedepends=()
 provides=()
 backup=()
-source=(https://github.com/astromatic/psfex/archive/${pkgver}.tar.gz)
-sha1sums=('b2b33fdde68230de21cfb6868fb999b5d30fcea4')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/astromatic/psfex/archive/${pkgver}.tar.gz)
+sha256sums=('e2c94bf60d90e0db52ad4b8baa5d5fceb483eff6a87b35c6fc5a881fccc04af9')
 
 
 build() {
-
-	_COPTS="--enable-openblas --with-openblas-incdir=/usr/include"
+	_COPTS="--enable-openblas"
 
 	cd $srcdir/${_pkgname}-${pkgver}
 	sh autogen.sh

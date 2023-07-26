@@ -1,13 +1,13 @@
 pkgbase = astromatic-psfex
 	pkgdesc = extracts models of the PSF from FITS images processed with sextractor
-	pkgver = 3.21.1
-	pkgrel = 2
+	pkgver = 3.24.2
+	pkgrel = 1
 	url = http://www.astromatic.net/software/sextractor
 	arch = x86_64
 	license = GPL
 	depends = astromatic-sextractor
-	source = https://github.com/astromatic/psfex/archive/3.21.1.tar.gz
-	sha1sums = b2b33fdde68230de21cfb6868fb999b5d30fcea4
+	depends = blas-openblas
+	source = astromatic-psfex-3.24.2.tar.gz::https://github.com/astromatic/psfex/archive/3.24.2.tar.gz
+	sha256sums = e2c94bf60d90e0db52ad4b8baa5d5fceb483eff6a87b35c6fc5a881fccc04af9
 
 pkgname = astromatic-psfex
-
