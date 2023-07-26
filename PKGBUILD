@@ -1,7 +1,7 @@
 # Maintainer: Ng Oon-Ee <n g o o n e e dot t a l k @ gmail dot com>
 # Based on obs-backgroundremoval PKGBUILD by PedroHLC <root@pedrohlc.com>
 pkgname=obs-backgroundremoval-git
-pkgver=1.1.0.r2.aeab837
+pkgver=1.1.2.r8.6158103
 pkgrel=1
 pkgdesc="Background removal plugin for OBS studio"
 arch=(x86_64)
