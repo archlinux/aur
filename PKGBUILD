@@ -1,29 +1,20 @@
 # Maintainer: Emil Velikov <emil.l.velikov@gmail.com>
 
-pkgname=umr-git
-epoch=1
-pkgver=r1090.cc16f19
-pkgrel=3
+pkgname=umr
+pkgver=1.0.8
+pkgrel=1
 pkgdesc='User Mode Register Debugger for AMDGPU Hardware'
 arch=('i686' 'x86_64')
-url='https://gitlab.freedesktop.org/tomstdenis/umr.git'
+url='https://gitlab.freedesktop.org/tomstdenis/umr'
 license=('MIT')
 depends=('libpciaccess' 'ncurses' 'llvm-libs')
-makedepends=('git' 'cmake' 'llvm' 'libdrm')
-provides=('umr')
-conflicts=('umr')
-source=('git+https://gitlab.freedesktop.org/tomstdenis/umr.git')
-sha256sums=('SKIP')
-#options=(debug "!strip")
-
-pkgver() {
-	cd umr
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+makedepends=('cmake' 'llvm' 'libdrm')
+source=("$url/-/archive/$pkgver/umr-$pkgver.tar.bz2")
+sha256sums=('a4c817588e7646a7efb0a177cdddcab58c49fc0923b33b5105dd3ac0183b276a')
 
 build() {
 	local cmake_args=(
-		-B build -S umr
+		-B build -S "$pkgname-$pkgver"
 		-DCMAKE_INSTALL_PREFIX=/usr
 		-DCMAKE_INSTALL_LIBDIR=lib
 		-DCMAKE_BUILD_TYPE=Release
@@ -41,5 +32,5 @@ package() {
 	rm -rf "$pkgdir/usr/bin/umrgui"
 	rm -rf "$pkgdir/usr/include"
 	rm -rf "$pkgdir/usr/lib"
-	install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 umr/LICENSE
+	install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 "$pkgname-$pkgver/LICENSE"
 }
