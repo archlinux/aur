@@ -1,6 +1,6 @@
 pkgbase = truffleruby-jdk20-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the Ruby language (Java 20 version)
-	pkgver = 23.0.0
+	pkgver = 23.0.1
 	pkgrel = 1
 	url = https://github.com/oracle/truffleruby
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = truffleruby-jdk20-bin
 	license = LGPL2.1
 	depends = jdk20-graalvm-bin
 	depends = graal-llvm-jdk20-bin
-	source_x86_64 = https://github.com/oracle/truffleruby/releases/download/graal-23.0.0/ruby-installable-svm-java20-linux-amd64-23.0.0.jar
-	sha256sums_x86_64 = e02cb2c1df032aa133fc6a34b712aabe75fd1b33f663b22c9619cac6438dcd1f
-	source_aarch64 = https://github.com/oracle/truffleruby/releases/download/graal-23.0.0/ruby-installable-svm-java20-linux-aarch64-23.0.0.jar
-	sha256sums_aarch64 = ba3593c28c33f8e919e5967cd0012b34c33ea8a00c6b2d81651c758111652206
+	source_x86_64 = https://github.com/oracle/truffleruby/releases/download/graal-23.0.1/ruby-installable-svm-java20-linux-amd64-23.0.1.jar
+	sha256sums_x86_64 = 22161003e0fa238ab5b94a6722ce9c7359c0ba0c1c37f0d0d8ae30fdabc57d7e
+	source_aarch64 = https://github.com/oracle/truffleruby/releases/download/graal-23.0.1/ruby-installable-svm-java20-linux-aarch64-23.0.1.jar
+	sha256sums_aarch64 = 90862e8cc1d1653b8253e6147365e8bfba98d82d0fbf48c9c8142796cea334b7
 
 pkgname = truffleruby-jdk20-bin
