@@ -2,7 +2,7 @@
 pkgname=hptnacp-bin
 pkgver=1.03
 pkgrel=1
-pkgdesc="hacPack is a tool for creating Nintendo Switch NCAs (Nintendo Content Archive) and packing them into NSPs (Nintendo Submission Package)"
+pkgdesc="hacPackTools-NACP is a tool for creating and viewing Nintendo Switch NACP files"
 arch=('x86_64')
 url="https://github.com/The-4n/hacPack/tree/master/hacPack-Tools/hacPackTools-NACP"
 licence=('GPL2')
