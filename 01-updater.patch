@@ -1,27 +1,21 @@
 --- updater.sh
 +++ updater.sh
-@@ -15,5 +14,0 @@
--elif [ -n "$(find ./ -user 0 -o -group 0)" ]; then
--	printf 'It looks like this script was previously run with elevated privileges,
--you will need to change ownership of the following files to your user:\n'
--	find . -user 0 -o -group 0
--	exit 1
-@@ -50 +45 @@
+@@ -45 +45 @@
 -PROFILE_PATH=false
 +PROFILE_PATH='list'
-@@ -92,2 +86,0 @@
+@@ -87,2 +86,0 @@
 -    -u           Update updater.sh and execute silently.  Do not seek confirmation.
 -    -d           Do not look for updates to updater.sh.
-@@ -107 +99,0 @@
+@@ -102 +99,0 @@
 -    -r           Only download user.js to a temporary file and open it.
-@@ -117,6 +108,0 @@
+@@ -112,6 +108,0 @@
 -download_file() { # expects URL as argument ($1)
 -  declare -r tf=$(mktemp)
 -
 -  $DOWNLOAD_METHOD "${tf}" "$1" &>/dev/null && echo "$tf" || echo '' # return the temp-filename or empty string on error
 -}
 -
-@@ -185,36 +170,0 @@
+@@ -180,36 +170,0 @@
 -#   Update updater.sh   #
 -#########################
 -
@@ -58,29 +52,29 @@
 -}
 -
 -#########################
-@@ -255,2 +205 @@
+@@ -250,2 +205 @@
 -  declare -r newfile="$(download_file 'https://raw.githubusercontent.com/arkenfox/user.js/master/user.js')"
 -  [ -z "${newfile}" ] && echo -e "${RED}Error! Could not download user.js${NC}" && return 1 # check if download failed
 +  declare -r newfile="${SCRIPT_DIR}/user.js"
-@@ -260 +209 @@
+@@ -255 +209 @@
 -    Available online: ${ORANGE}$(get_userjs_version "$newfile")${NC}
 +    Package:          ${ORANGE}$(get_userjs_version "$newfile")${NC}
-@@ -269 +217,0 @@
+@@ -264 +217,0 @@
 -      rm "$newfile"
-@@ -286 +234 @@
+@@ -281 +234 @@
 -  mv "${newfile}" user.js
 +  cp "${newfile}" user.js
-@@ -336 +284 @@
+@@ -331 +284 @@
 -    while getopts ":hp:ludsno:bcvre" opt; do
 +    while getopts ":hp:lsno:bcve" opt; do
-@@ -347,6 +294,0 @@
+@@ -342,6 +294,0 @@
 -        u)
 -          UPDATE='yes'
 -          ;;
 -        d)
 -          UPDATE='no'
 -          ;;
-@@ -374,8 +315,0 @@
+@@ -369,8 +315,0 @@
 -        r)
 -          tfile="$(download_file 'https://raw.githubusercontent.com/arkenfox/user.js/master/user.js')"
 -          [ -z "${tfile}" ] && echo -e "${RED}Error! Could not download user.js${NC}" && exit 1 # check if download failed
@@ -89,5 +83,5 @@
 -          open_file "${tfile}.js"
 -          exit 0
 -          ;;
-@@ -396 +329,0 @@
+@@ -391 +329,0 @@
 -update_updater "$@"
