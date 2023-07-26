@@ -28,6 +28,4 @@ package() {
 	install -Dm644 ./Readme.md "$pkgdir/usr/share/doc/$pkgname"
 	install -Dm644 ./LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
-  echo "Try: alias stime='watch -n1 -t "date +%A%n%x%n%X | figlet  | center-align -a"'"
-
 }
