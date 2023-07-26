@@ -1,6 +1,6 @@
 pkgbase = r-ggtree
 	pkgdesc = an R package for visualization of tree and annotation data
-	pkgver = 3.8.0
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ggtree
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-ggtree
 	optdepends = r-shadowtext
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggtree_3.8.0.tar.gz
-	sha256sums = fee0bc18ed69f4817585b57a92aaf94bdf595d5f8f332a7dbb3914bcb16c8b9c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggtree_3.8.2.tar.gz
+	sha256sums = 4a4a27495f14e221f655e5bbebc735a483dd5ee8cf6df3d4c365a257b7a51451
 
 pkgname = r-ggtree
