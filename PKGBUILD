@@ -7,7 +7,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 pkgbase=mingw-w64-harfbuzz
 pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -68,6 +68,7 @@ package_mingw-w64-harfbuzz() {
     DESTDIR="${pkgdir}" ninja install
     cd "${srcdir}/harfbuzz/build-${_arch}-shared"
     DESTDIR="${pkgdir}" ninja install
+    cp "${srcdir}/harfbuzz/src/hb-ft.h" "${pkgdir}/usr/${_arch}/include/harfbuzz/"
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec rm {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' | xargs ${_arch}-strip -g
