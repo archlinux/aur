@@ -1,6 +1,6 @@
 pkgbase = graal-icu4j-jdk20-bin
 	pkgdesc = GraalVM distribution of ICU4J, Java 20 version
-	pkgver = 23.0.0
+	pkgver = 23.0.1
 	pkgrel = 1
 	url = https://github.com/oracle/graal
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = graal-icu4j-jdk20-bin
 	depends = jdk20-graalvm-bin
 	source = https://github.com/unicode-org/icu/raw/be6428690dc9b2e0e4a622691eb4c1101647cd2d/icu4j/main/shared/licenses/LICENSE
 	sha256sums = af3e84c401f1a35e8d32d6eb1a33fe587c3981aa5cd206033d9527c1855b57a2
-	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/icu4j-installable-ce-java20-linux-amd64-23.0.0.jar
-	sha256sums_x86_64 = 369a9a45bf86b0f8551592c3ce9326525e453434502c798de0a18384cd936414
-	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/icu4j-installable-ce-java20-linux-aarch64-23.0.0.jar
-	sha256sums_aarch64 = 9fa431b1f604760385c993a2fc727cdffde582195d55272b12a47b55ab5ae161
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.1/icu4j-installable-ce-java20-linux-amd64-23.0.1.jar
+	sha256sums_x86_64 = dafb348bffa09d1538c9c97a320785d3d2cc6c94dc345f1a84a9372a5626dc7c
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.1/icu4j-installable-ce-java20-linux-aarch64-23.0.1.jar
+	sha256sums_aarch64 = b938f54036d4179f062fbd236f001691136ace1589657b2a3f53239a6b8a0c4b
 
 pkgname = graal-icu4j-jdk20-bin
