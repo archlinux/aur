@@ -6,13 +6,13 @@ _realname=CPU-X
 _basename=cpu-x
 pkgname="${_basename}-opencl"
 pkgver=4.5.3
-pkgrel=2.1
+pkgrel=2.2
 pkgdesc='Gathers information on CPU, motherboard, GPU and more (with OpenCL support)'
 arch=('i686' 'x86_64')
 url="https://thetumultuousunicornofdarkness.github.io/CPU-X"
 license=('GPL3')
 depends=('gtk3' 'ncurses' 'libcpuid>=0.6.0' 'pciutils' 'glfw' 'opencl-icd-loader' 'vulkan-icd-loader' 'procps-ng>=4.0.0')
-makedepends=('cmake' 'ninja' 'nasm' 'opencl-headers' 'vulkan-headers')
+makedepends=('cmake' 'ninja' 'nasm' 'opencl-headers>=2:2023.02.06' 'vulkan-headers')
 checkdepends=('mawk' 'nawk')
 optdepends=('opencl-driver: packaged openCL driver'
             'opengl-driver: packaged openGL driver'
