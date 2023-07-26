@@ -12,6 +12,8 @@ makedepends=('go' 'git')
 source=("${pkgname}::git+https://github.com/varnamproject/govarnam.git")
 sha256sums=('SKIP')
 provides=('govarnam')
+optdepends=('govarnam-ibus: Ibus engine support'
+            'govarnam-schemes: Language schemes support')
 
 pkgver() {
   cd "$pkgname"
