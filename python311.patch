@@ -1,0 +1,53 @@
+diff -u --color -Naur sphinxcontrib-napoleon-0.7.orig/setup.cfg sphinxcontrib-napoleon-0.7/setup.cfg
+--- sphinxcontrib-napoleon-0.7.orig/setup.cfg	2018-09-23 16:16:36.000000000 +0200
++++ sphinxcontrib-napoleon-0.7/setup.cfg	2023-07-26 09:51:30.611401885 +0200
+@@ -9,7 +9,7 @@
+ release = egg_info -RDb ''
+ 
+ [metadata]
+-description-file = README.rst
++description_file = README.rst
+ 
+ [flake8]
+ max-line-length = 95
+diff -u --color -Naur sphinxcontrib-napoleon-0.7.orig/setup.py sphinxcontrib-napoleon-0.7/setup.py
+--- sphinxcontrib-napoleon-0.7.orig/setup.py	2018-09-22 13:03:20.000000000 +0200
++++ sphinxcontrib-napoleon-0.7/setup.py	2023-07-26 09:51:13.998080787 +0200
+@@ -6,7 +6,7 @@
+ 
+ import os
+ import sys
+-from setuptools import setup, find_packages
++from setuptools import setup, find_packages, find_namespace_packages
+ 
+ reqs = open('requirements.txt', 'r').read().strip().splitlines()
+ reqs_test = open('requirements_test.txt', 'r').read().strip().splitlines()
+@@ -43,10 +43,9 @@
+         'Framework :: Sphinx :: Extension',
+     ],
+     platforms='any',
+-    packages=find_packages(exclude=['tests*']),
++    packages=find_namespace_packages(exclude=['tests*']),
+     include_package_data=True,
+     install_requires=reqs,
+     test_suite='nose.collector',
+     tests_require=reqs_test,
+-    namespace_packages=['sphinxcontrib']
+ )
+diff -u --color -Naur sphinxcontrib-napoleon-0.7.orig/sphinxcontrib/__init__.py sphinxcontrib-napoleon-0.7/sphinxcontrib/__init__.py
+--- sphinxcontrib-napoleon-0.7.orig/sphinxcontrib/__init__.py	2018-09-22 15:31:37.000000000 +0200
++++ sphinxcontrib-napoleon-0.7/sphinxcontrib/__init__.py	1970-01-01 01:00:00.000000000 +0100
+@@ -1,13 +0,0 @@
+-# -*- coding: utf-8 -*-
+-"""
+-    sphinxcontrib
+-    ~~~~~~~~~~~~~
+-
+-    This package is a namespace package that contains all extensions
+-    distributed in the ``sphinx-contrib`` distribution.
+-
+-    :copyright: Copyright 2007-2018 by the Sphinx team, see AUTHORS.
+-    :license: BSD, see LICENSE for details.
+-"""
+-
+-__import__('pkg_resources').declare_namespace(__name__)
