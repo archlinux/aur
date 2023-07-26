@@ -13,6 +13,8 @@ depends=('go')
 provides=('govarnam')
 source=("https://github.com/varnamproject/${_base}/releases/download/v${pkgver}/${_base}-${pkgver}-${arch}.zip")
 sha256sums=('d6c0017f62bc1d1816e799984529b62a3bc1d6c37e4dbd6f9b0b13b57e7446fc')
+optdepends=('govarnam-ibus: Ibus engine support'
+            'govarnam-schemes: Language schemes support')
 
 prepare() {
 	cd "${_base}"-"${pkgver}"-"${arch}"
