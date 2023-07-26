@@ -2,7 +2,7 @@
 # Maintainer: Max Klein <max@maxkl.de>
 
 pkgname=sigasi
-pkgver=5.1.1
+pkgver=5.2.1
 pkgrel=1
 pkgdesc='Eclipse-based commercial VHDL, Verilog and SystemVerilog IDE'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}-x86_64.zip::http://download.sigasi.com/updates/${p
 depends=('glib2' 'jre11-openjdk' 'gtk3' 'webkit2gtk')
 makedepends=('unzip')
 options=('!strip')
-sha1sums=('637eaad4e1e531c06609c32a195cb24bba8ab027'
+sha1sums=('7a56cd3c737616368d5f2044de0751288c967d7a'
           '99dfc8c07414ab73f921bdeba790a70715624f35')
 
 package() {
