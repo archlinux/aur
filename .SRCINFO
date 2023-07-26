@@ -1,0 +1,15 @@
+pkgbase = ripdrag-git
+	pkgdesc = Drag and drop files to and from the terminal
+	pkgver = 0.3.2.r0.d162e52
+	pkgrel = 1
+	url = https://github.com/nik012003/ripdrag
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gtk4
+	provides = ripdrag
+	conflicts = ripdrag
+	source = ripdrag-git::git+https://github.com/nik012003/ripdrag
+	sha256sums = SKIP
+
+pkgname = ripdrag-git
