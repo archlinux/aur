@@ -2,7 +2,7 @@
 # Contributor: Asuka Minato
 
 pkgname=killport-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Easily kill processes running on a specified port'
 arch=(aarch64 x86_64 i686 armv7h)
@@ -19,10 +19,10 @@ source_i686=("$url/releases/download/v$pkgver/killport-i686-linux-gnu.tar.gz")
 source_armv7h=("$url/releases/download/v$pkgver/killport-armv7-linux-gnueabihf.tar.gz")
 
 sha256sums=('e023af3d4e0c544d684777de83d21f029df35a8bd60bf93dce2e703334095bf7')
-sha256sums_aarch64=('42a0793b27b6b22eeeb45bcdbe7842a812a50afa278f17419ba56e5b78d62215')
-sha256sums_x86_64=('8066181166cf22afe107ff7b605089c1ae6c29857185f8a9794bda96844196ea')
-sha256sums_i686=('179424664c4857b010b3d7785a0100a128091a146db765dace44a183470a7c33')
-sha256sums_armv7h=('fbbf6a46c2aea685d68943b478db4ad5a9f64c8e2b126bf7359b730ff42b17bb')
+sha256sums_aarch64=('0ccc0b04f4dff72b35067efe6f7d5c0cb0536217682486731e84d33f9edb8ee0')
+sha256sums_x86_64=('3ee9b9c37ca9e3b305458140ea4feb45c1bbd2256ed5dd2cf7f8440a88627b03')
+sha256sums_i686=('1a012f60f8c3cda2753c3e60ae0776584c6899c18d3e05ba0ff4e8bbd8d6b465')
+sha256sums_armv7h=('e93c544139578862394dacf1a81eb8f34ad3ba99c6b1362ed9d45e64ab336aa0')
 
 package() {
   install -Dm755 killport -t "$pkgdir/usr/bin/"
