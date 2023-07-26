@@ -2,7 +2,7 @@
 # Contributor: Jan Oliver Oelerich <jan.oliver.oelerich@physik.uni-marburg.de>
 
 pkgname=latex-template-pss
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="LaTeX template for the physica status solidi journal"
 arch=('any')
@@ -19,11 +19,8 @@ source=(https://www.wiley-vch.de/vch/journals/2133/public/pss_template_latex.zip
 md5sums=('570b8eb99f55e4c01aa397dd49745d35')
 
 
-build() {
-  cd ${srcdir}/PSS_latex
-}
-
 package(){
+  cd ${srcdir}/PSS_latex
   install -m 0644 -D readme.txt ${pkgdir}/usr/share/texmf-dist/tex/latex/pss/readme.txt
   install -m 0644 -D wiley2sp.cls ${pkgdir}/usr/share/texmf-dist/tex/latex/pss/wiley2sp.cls
   install -m 0644 -D w2sp-pss.clo ${pkgdir}/usr/share/texmf-dist/tex/latex/pss/w2sp-pss.clo
