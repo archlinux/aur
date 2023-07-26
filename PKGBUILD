@@ -1,20 +1,20 @@
 # Maintainer: r6eve <r6eve at acm dot org>
-# Former Maintainer (thnaks!): Christopher Vittal ("viralstitch") <chris@vittal.dev>
-# Former Maintainer (thans!) : Alex Peltzer ("alexpe87") <alexpe.aur@mailbox.org>
+# Former Maintainer (thanks!) : Christopher Vittal ("viralstitch") <chris@vittal.dev>
+# Former Maintainer (thanks!) : Alex Peltzer ("alexpe87") <alexpe.aur@mailbox.org>
 # Former Maintainer (thanks dude!) : Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 # Contributor: Markus Heuser <markus.heuser@web.de>
 
 pkgname=samtools
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc="tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
 url="http://www.htslib.org/"
 license=('custom')
-depends=('htslib>=1.17')
+depends=('htslib>=1.18')
 optdepends=('luajit: needed for r2plot.lua vcfutils.lua')
 source=("${pkgname}-${pkgver}.tar.bz2"::"https://github.com/samtools/samtools/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('3adf390b628219fd6408f14602a4c4aa90e63e18b395dad722ab519438a2a729')
+sha256sums=('d686ffa621023ba61822a2a50b70e85d0b18e79371de5adb07828519d3fc06e1')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
