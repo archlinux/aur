@@ -1,0 +1,26 @@
+pkgbase = python-xlmhglite
+	pkgdesc = A minimal fork of the original python-xlmhg package
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/GuyTeichman/xlmhglite
+	arch = x86_64
+	license = custom:BSD-3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-nose
+	makedepends = nasm
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-sphinx-argparse
+	depends = python
+	depends = cython
+	depends = glibc
+	depends = python-numpy
+	depends = python-plotly
+	depends = python
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/x/xlmhglite/xlmhglite-1.1.0.tar.gz
+	sha256sums = dbc56b92d812ec1feb252cf2e9c18b6bdbe1f0f8288fa93c5f8105ed9df09ab0
+
+pkgname = python-xlmhglite
