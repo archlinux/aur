@@ -2,36 +2,50 @@
 
 pkgname=python-aeppl
 _name=${pkgname#python-}
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 pkgdesc="Tools for an Aesara-based PPL"
 arch=(any)
 url="https://github.com/aesara-devs/aeppl"
 license=(MIT)
-
-makedepends=(python-setuptools)
 depends=(
-  python-numpy
+  python
   python-aesara
+  python-numpy
+  python-sympy
   python-typing_extensions
+)
+makedepends=(
+  python-build
+  python-installer
+  python-wheel
+)
+checkdepends=(
+  python-numdifftools
+  python-pytest
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2ab4d9d06783a6fe5bba4f8ffb8f60c37f302edd99d3957521d6ac1255482412')
+sha256sums=('51991576033f4036e73429504b5f830f1ee63db50eeead2e9966f55969581992')
 
 _archive="$_name-$pkgver"
 
 build() {
   cd "$_archive"
 
-  python setup.py build
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$_archive"
+
+  python -m pytest
 }
 
 package() {
   cd "$_archive"
 
-  export PYTHONHASHSEED=0
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
