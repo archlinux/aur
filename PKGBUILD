@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/firecat53/keepmenu"
 license=('GPL3')
 depends=('python' 'python-pykeepass' 'python-pynput')
-makedepends=('git' 'python-build' 'python-setuptools' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-setuptools' 'python-installer' 'python-wheel' 'python-hatchling' 'python-hatch-vcs')
 optdepends=('dmenu: either dmenu or rofi is required'
             'rofi: either dmenu or rofi is required'
             'xdotool: required for typing non-U.S. Unicode characters')
