@@ -1,7 +1,7 @@
 pkgbase = cpu-x-opencl
 	pkgdesc = Gathers information on CPU, motherboard, GPU and more (with OpenCL support)
 	pkgver = 4.5.3
-	pkgrel = 2.5
+	pkgrel = 2.6
 	url = https://thetumultuousunicornofdarkness.github.io/CPU-X
 	arch = i686
 	arch = x86_64

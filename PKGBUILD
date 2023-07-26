@@ -6,7 +6,7 @@ _realname=CPU-X
 _basename=cpu-x
 pkgname="${_basename}-opencl"
 pkgver=4.5.3
-pkgrel=2.5
+pkgrel=2.6
 pkgdesc='Gathers information on CPU, motherboard, GPU and more (with OpenCL support)'
 arch=('i686' 'x86_64')
 url="https://thetumultuousunicornofdarkness.github.io/${_realname}"
@@ -47,20 +47,36 @@ _tarname="${_basename}-${pkgver}"
 source=("${_tarname}.tar.gz::${_repourl}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('3f3e4f1d31e4e84bdeb68e448a1dabd2e22965caed1668300945a1d9150f77422b685a7a0bad997371ba08a3b0ac7fe3eab3aa1d0b485942347a72eb81d21b4f')
 
-build() {
-  cmake -S "$_realname-$pkgver" -B build \
+prepare() {
+  cmake -S "${_realname}-${pkgver}" -B build \
     -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBEXECDIR='lib/cpu-x' \
-		-DWITH_OPENCL=ON
-	cmake --build build
+    -DWITH_GTK=ON \
+    -DWITH_NCURSES=ON \
+    -DWITH_GETTEXT=ON \
+    -DWITH_LIBCPUID=ON \
+    -DWITH_LIBPCI=ON \
+    -DWITH_LIBGLFW=ON \
+    -DWITH_VULKAN=ON \
+    -DWITH_OPENCL=ON \
+    -DWITH_LIBPROCPS=ON \
+    -DWITH_LIBSTATGRAB=OFF \
+    -DWITH_DMIDECODE=ON \
+    -DWITH_BANDWIDTH=ON \
+    -DFORCE_LIBSTATGRAB=OFF \
+    -DAPPIMAGE=OFF
+}
+
+build() {
+  cmake --build build
 }
 
 check() {
-	ninja -C build test
+  ninja -C build test
 }
 
 package() {
-	DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="${pkgdir}" cmake --install build
 }
