@@ -1,7 +1,7 @@
 pkgbase = fbreader-bin
 	pkgdesc = An e-book reader for Linux
-	pkgver = 2.0.1
-	pkgrel = 3
+	pkgver = 2.0.3
+	pkgrel = 1
 	url = http://www.fbreader.org/
 	arch = x86_64
 	license = unknown
@@ -11,7 +11,7 @@ pkgbase = fbreader-bin
 	depends = nettle7
 	provides = fbreader
 	conflicts = fbreader
-	source = fbreader-2.0.1-25.snap::https://api.snapcraft.io/api/v1/snaps/download/ePTZ3tz7FWi8tBNQ2Ii0dHw8U5Vmv8Ib_25.snap
-	sha256sums = 40ae8d9a1d95e24eb5ec15854f1a1c11f040b7cd546de0052a6b294849bd06bd
+	source = fbreader-2.0.3-27.snap::https://api.snapcraft.io/api/v1/snaps/download/ePTZ3tz7FWi8tBNQ2Ii0dHw8U5Vmv8Ib_27.snap
+	sha256sums = c58126db5c09f361c218a6f0076551901ea11c045ce687f8bbe643baf57a4730
 
 pkgname = fbreader-bin
