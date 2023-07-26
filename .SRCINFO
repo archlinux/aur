@@ -1,17 +1,23 @@
 pkgbase = python-opentelemetry
 	pkgdesc = OpenTelemetry Python API and SDK
 	pkgver = 1.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-telemetry/opentelemetry-python
 	arch = any
 	license = Apache
 	checkdepends = python-backoff
 	checkdepends = python-deprecated
 	checkdepends = python-flaky
+	checkdepends = python-googleapis-common-protos
+	checkdepends = python-grpcio
+	checkdepends = python-importlib-metadata
 	checkdepends = python-prometheus_client
+	checkdepends = python-protobuf
 	checkdepends = python-pytest
 	checkdepends = python-pytest-benchmark
+	checkdepends = python-requests
 	checkdepends = python-responses
+	checkdepends = python-typing_extensions
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -20,10 +26,12 @@ pkgbase = python-opentelemetry
 	sha256sums = 2ce9f9d6b2665407176ff1f7c98dd6de878613223c397d607860b2dffadc4d0e
 
 pkgname = python-opentelemetry-api
+	depends = python
 	depends = python-deprecated
 	depends = python-importlib-metadata
 
 pkgname = python-opentelemetry-sdk
+	depends = python
 	depends = python-deprecated
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-semantic-conventions
@@ -37,18 +45,22 @@ pkgname = python-opentelemetry-semantic-conventions
 	depends = python
 
 pkgname = python-opentelemetry-propagator-b3
+	depends = python
 	depends = python-deprecated
 	depends = python-opentelemetry-api
 
 pkgname = python-opentelemetry-propagator-jaeger
+	depends = python
 	depends = python-opentelemetry-api
 
 pkgname = python-opentelemetry-exporter-otlp-proto-common
+	depends = python
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-proto
 	depends = python-opentelemetry-sdk
 
 pkgname = python-opentelemetry-exporter-otlp-proto-grpc
+	depends = python
 	depends = python-backoff
 	depends = python-deprecated
 	depends = python-googleapis-common-protos
@@ -59,6 +71,7 @@ pkgname = python-opentelemetry-exporter-otlp-proto-grpc
 	depends = python-opentelemetry-sdk
 
 pkgname = python-opentelemetry-exporter-otlp-proto-http
+	depends = python
 	depends = python-backoff
 	depends = python-deprecated
 	depends = python-googleapis-common-protos
@@ -73,16 +86,19 @@ pkgname = python-opentelemetry-exporter-otlp
 	depends = python-opentelemetry-exporter-otlp-proto-http
 
 pkgname = python-opentelemetry-exporter-prometheus
+	depends = python
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-sdk
 	depends = python-prometheus_client
 
 pkgname = python-opentelemetry-exporter-zipkin-json
+	depends = python
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-sdk
 	depends = python-requests
 
 pkgname = python-opentelemetry-exporter-zipkin-proto-http
+	depends = python
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-exporter-zipkin-json
 	depends = python-opentelemetry-sdk
