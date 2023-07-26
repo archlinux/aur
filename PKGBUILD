@@ -3,10 +3,10 @@
 pkgname=umr-git
 epoch=1
 pkgver=r1090.cc16f19
-pkgrel=2
-pkgdesc='userspace debugging and diagnostic tool for AMD GPUs using the AMDGPU kernel driver'
+pkgrel=3
+pkgdesc='User Mode Register Debugger for AMDGPU Hardware'
 arch=('i686' 'x86_64')
-url='https://lists.freedesktop.org/archives/amd-gfx/2017-February/005122.html'
+url='https://gitlab.freedesktop.org/tomstdenis/umr.git'
 license=('MIT')
 depends=('libpciaccess' 'ncurses' 'llvm-libs')
 makedepends=('git' 'cmake' 'llvm' 'libdrm')
