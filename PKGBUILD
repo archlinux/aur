@@ -2,13 +2,14 @@
 
 _name=spsdk
 pkgname=python-spsdk
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.11.0
+pkgrel=1
 pkgdesc="NXP Secure Provisioning SDK"
 arch=(any)
 url="https://github.com/NXPmicro/spsdk"
 license=(BSD)
 depends=(
+  python
   python-asn1crypto
   python-astunparse
   python-bincopy
@@ -16,7 +17,6 @@ depends=(
   python-click
   python-click-command-tree
   python-click-option-group
-  python-cmsis-pack-manager
   python-colorama
   python-commentjson
   python-crcmod
@@ -42,20 +42,21 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
-  python-jsonschema
+  python-pyftdi
   python-pytest
+  python-pytest-xdist
   python-voluptuous
-  python-pyyaml
 )
-# pypi sdist tarball has no tests: https://github.com/NXPmicro/spsdk/issues/37
-# source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+optdepends=(
+  'python-pyftdi: for dk6'
+)
 source=(
-  $_name-$pkgver.tar.gz::https://github.com/NXPmicro/$_name/archive/refs/tags/$pkgver.tar.gz
+  $_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz
   $pkgname-1.6.0-remove_pypemicro.patch
 )
-sha512sums=('ab6c404dae2994eec1a2016d7e187fc74fe3b6b50e8f431ca8003ccb5dbcefbdd55ecfa683062b94a85dee675da46483cc58e2c42b50afad83ebd60e22306108'
+sha512sums=('1c798dc7dbaa1e7f666255d9b8b269ac0920812f085f27c7401d7458c518b87a4dc8e3792c85b0b8dbc1de0e7f36e4d31685252b21af37bd578688e424bf0b2f'
             '7bfb3739053284ba0b4084c1f84e37e307233fa7b52adf403fa5c574393d71e08ea02bdc927106b036d1055f6efd6c326b534d697c1d5f6c097def53dbafc560')
-b2sums=('0f8556e2b9f5e6401fcfb563017184eb8112f4f7ce5cb5c98831f5ba156189618bfe0bec74397ed0e77706bd1aea8342f64b8e8913918773e17170842a34237d'
+b2sums=('e7baba27e824c658ff6233694fba06796dcfffe8d3c72840f732a08bbd72c1a1f8af5015220f7431c6513d22ad787acc02610d3686625d20c1597e8f93518115'
         '2c68116494b5e7ff51e59ec79dd3e354e2a8035ab35e29b27a097d7baa47e48c71a2cdac651920c76cd29097c5e8710e74106e41a4b3d5f543e259ef7404beac')
 
 prepare() {
