@@ -3,7 +3,7 @@
 java_=20
 pkgname_=graal-visualvm
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=23.0.0
+pkgver=23.0.1
 pkgrel=1
 pkgdesc="GraalVM VisualVM distribution, Java ${java_} version"
 arch=('x86_64'
@@ -13,8 +13,8 @@ license=('GPL2')
 depends=("jdk${java_}-graalvm-bin")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/visualvm-installable-ce-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/visualvm-installable-ce-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('7a39f1b5ba48efe4c0b607630ff59d719035f5d7ed8a9d66867d32cdca0f7ccf')
-sha256sums_aarch64=('430cceba5263e5d7e6138ff5affb58954d99abe890f7d80ef9007b5dbf7f4331')
+sha256sums_x86_64=('5a81898a5653ccf8b2a214fc8ea4d3536447531a0a2b0d358ddff0fb403fe508')
+sha256sums_aarch64=('3c57437e0c4a98166d96c13be9b542d5749e08d968558d2faf7f8a56da516a40')
 
 package() {
     local file eq permissions mode name target

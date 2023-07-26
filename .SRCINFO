@@ -1,15 +1,15 @@
 pkgbase = graal-visualvm-jdk20-bin
 	pkgdesc = GraalVM VisualVM distribution, Java 20 version
-	pkgver = 23.0.0
+	pkgver = 23.0.1
 	pkgrel = 1
 	url = https://www.graalvm.org/
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	depends = jdk20-graalvm-bin
-	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/visualvm-installable-ce-java20-linux-amd64-23.0.0.jar
-	sha256sums_x86_64 = 7a39f1b5ba48efe4c0b607630ff59d719035f5d7ed8a9d66867d32cdca0f7ccf
-	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.0/visualvm-installable-ce-java20-linux-aarch64-23.0.0.jar
-	sha256sums_aarch64 = 430cceba5263e5d7e6138ff5affb58954d99abe890f7d80ef9007b5dbf7f4331
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.1/visualvm-installable-ce-java20-linux-amd64-23.0.1.jar
+	sha256sums_x86_64 = 5a81898a5653ccf8b2a214fc8ea4d3536447531a0a2b0d358ddff0fb403fe508
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-23.0.1/visualvm-installable-ce-java20-linux-aarch64-23.0.1.jar
+	sha256sums_aarch64 = 3c57437e0c4a98166d96c13be9b542d5749e08d968558d2faf7f8a56da516a40
 
 pkgname = graal-visualvm-jdk20-bin
