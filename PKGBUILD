@@ -9,7 +9,7 @@ url="https://github.com/chambln/$pkgname"
 license=('MIT')
 depends=('pandoc')
 source=("pandoc-rss-$pkgver.zip::$url/archive/refs/tags/$pkgver.zip")
-sha256sums=('c8ccc509c3cd73983b42b518bb99f9668155aebaa51a46977666b6b58e21cc18')
+sha256sums=('eca7145ec1cb1ca6bd848b8bf10161bf387f52bde4ef1a03483db59bc7390520')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
