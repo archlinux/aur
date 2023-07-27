@@ -26,6 +26,6 @@ pkgbase = plainpanel
 	depends = plainabout
 	conflicts = plainpanel-git
 	source = plainpanel-0.5.2.tar.gz::https://github.com/plainDE/plainPanel/archive/refs/tags/0.5.2.tar.gz
-	sha256sums = 1a707d23a245f2ffcacbdd28b7adb8b0ccde9c40d3f56a90ebc3cd0186e040e9
+	sha256sums = b0167682069f403614079a039577680537f371154660c810943233ba0d917e12
 
 pkgname = plainpanel
