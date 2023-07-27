@@ -19,7 +19,6 @@ source_x86_64=("$url/releases/download/v$pkgver/teams-for-linux_${pkgver}_amd64.
 sha256sums_x86_64=('457acbc07138c4074d5fed8792d3f1628a5e7e967670bf008b0811a26731e5bc')
 options=("!strip")
 
-
 package(){
  tar -xf "data.tar.xz" -C $pkgdir
  find "$pkgdir"/opt -type f -not -path "*resources/*" -delete
