@@ -21,6 +21,7 @@ pkgbase = python-pyperscan-git
 	makedepends = python-maturin
 	depends = python
 	provides = python-pyperscan
+	conflicts = python-pyperscan
 	source = git+https://github.com/vlaci/pyperscan.git
 	source = git+https://github.com/VectorCamp/vectorscan#commit=b4bba94b1a250603b0b198e0394946e32f6c3f30
 	source = git+https://github.com/intel/hyperscan#commit=bc3b191ab56055e8560c7cdc161c289c4d76e3d2

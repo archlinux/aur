@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/vlaci/$_pyname"
 license=(MIT)
 depends=(python)
-conflicts=()
+conflicts=(python-pyperscan)
 provides=(python-pyperscan)
 makedepends=(git 
              cmake 
