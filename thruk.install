@@ -1,0 +1,6 @@
+post_upgrade() {
+  echo ":: please stop the web server running thruk now and delete the caches with:"
+  echo "   rm -rf /var/lib/thruk/*"
+  echo "   you also might have to restart lmd with:"
+  echo "   thruk -a livecachestop --local"
+}

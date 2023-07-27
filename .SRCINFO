@@ -1,8 +1,9 @@
 pkgbase = thruk
 	pkgdesc = Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken
 	pkgver = 3.08.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://thruk.org
+	install = thruk.install
 	arch = any
 	license = GPL2
 	depends = perl

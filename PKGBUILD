@@ -3,7 +3,7 @@
 
 pkgname=thruk
 pkgver=3.08.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Multibackend monitoring webinterface for Naemon, Nagios, Icinga and Shinken"
 arch=('any')
 url="http://thruk.org"
@@ -22,6 +22,7 @@ backup=('etc/thruk/cgi.cfg' 'etc/thruk/htpasswd'
         'etc/thruk/thruk_local.conf' 'etc/logrotate.d/thruk-base')
 source=(http://download.thruk.org/pkg/v$pkgver/src/$pkgname-$pkgver.tar.gz)
 md5sums=('71fe1ccd1ac1e32e2375339b57bfe7c4')
+install="thruk.install"
 
 build() {
   cd $pkgname-$pkgver
