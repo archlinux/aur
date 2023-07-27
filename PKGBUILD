@@ -2,7 +2,7 @@
 pkgname=cmake-common
 _name="${pkgname//-/_}"
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities to help develop C++/CMake projects'
 arch=(any)
 url="https://github.com/egor-tensin/$pkgname"

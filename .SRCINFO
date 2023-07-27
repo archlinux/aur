@@ -1,7 +1,7 @@
 pkgbase = cmake-common
 	pkgdesc = Utilities to help develop C++/CMake projects
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/egor-tensin/cmake-common
 	arch = any
 	license = MIT
