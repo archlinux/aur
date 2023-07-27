@@ -1,6 +1,6 @@
 pkgbase = r-enmix
 	pkgdesc = Quality control and analysis tools for Illumina DNA methylation BeadChip
-	pkgver = 1.36.02
+	pkgver = 1.36.03
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ENmix
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-enmix
 	optdepends = r-minfidata
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ENmix_1.36.02.tar.gz
-	sha256sums = b56740dd9caf3d58507f8368148ce555c10dde1cb9ac34afb3f14449c7d079d2
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ENmix_1.36.03.tar.gz
+	sha256sums = fd1d9494c9e829b8515606985b0b6da7662a0cd0427e33c42c9fa6e427e044ce
 
 pkgname = r-enmix
