@@ -1,0 +1,16 @@
+pkgbase = python-numpymaxflow
+	pkgdesc = Numpy-based implementation of Max-flow/Min-cut (graphcut) for 2D/3D data
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/masadcv/numpymaxflow
+	arch = x86_64
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-numpy
+	source = numpymaxflow-0.0.5.tar.gz::https://github.com/masadcv/numpymaxflow/archive/refs/tags/v0.0.5.tar.gz
+	sha512sums = b7bc515bfdf17dd4e376799030722c7e33a8515a2d4590ff388630c855b806025d0584962099e88c4252b5389715da835d7598ca1a0e29d3bd51ac9dc8606c4c
+
+pkgname = python-numpymaxflow
