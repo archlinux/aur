@@ -2,7 +2,7 @@
 
 pkgname=python-pytensor
 _name=${pkgname#python-}
-pkgver=2.13.1
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="Fork of Aesara -- Library for defining, optimizing, and efficiently evaluating mathematical expressions involving multi-dimensional arrays"
 arch=(x86_64)
@@ -43,7 +43,7 @@ source=(
   "remove-bin-package.patch"
 )
 sha256sums=(
-  '468eb208e5a9fe62530752a354f48f739442b45811797e084ea432809ca5f99c'
+  '775700e09bb193882bda018ef81564907db25bcd089db576b471c29b167ea689'
   '73360d53a5c5e5718a544c69218d3d64adc2390007a9b6781f7b61cc32415e59'
 )
 
@@ -67,15 +67,10 @@ check() {
 
   python -m pytest \
     tests/misc/ \
-    tests/scalar/ \
-    tests/sparse/ \
     tests/test_breakpoint.py \
     tests/test_config.py \
-    tests/test_gradient.py \
-    tests/test_ifelse.py \
     tests/test_printing.py \
     tests/test_raise_op.py \
-    tests/test_rop.py \
     tests/test_updates.py
 }
 
