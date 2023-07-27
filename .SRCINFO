@@ -1,0 +1,15 @@
+pkgbase = python-pinout
+	pkgdesc = Generate graphical pinout references for electronic hardware.
+	pkgver = 0.0.20
+	pkgrel = 1
+	url = https://github.com/j0ono0/pinout
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jinja
+	depends = python-pillow
+	source = https://files.pythonhosted.org/packages/source/p/pinout/pinout-0.0.20.tar.gz
+	b2sums = 4d6a5c00dfdaf5d8af32870791965d936cd14af926ee92e15ff77d4898331b299c57678bed45206d82a8a3d7160e78a30d51451ae2bc28751c5b548f9319e036
+
+pkgname = python-pinout
