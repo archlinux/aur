@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Effortless argument parser"
 url="https://github.com/anntzer/defopt"
 depends=('python' 'python-sphinxcontrib-napoleon')
-makedepends=('python-setuptools' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
@@ -14,10 +14,10 @@ sha256sums=('359a56137b4b7dcbc051d2157e6591a09c35c4297cfc00f1ef8dbcd192d19a34')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel . --outdir "${srcdir}" --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer "${srcdir}/${_module}-${pkgver}-py3-none-any.whl" --destdir="${pkgdir}"
 }
