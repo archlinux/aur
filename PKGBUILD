@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-core
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="Core DNF Plugins"
 arch=('any')
@@ -22,7 +22,7 @@ backup=('etc/dnf/plugins/copr.conf'
         'etc/dnf/plugins/versionlock.list')
 options=('!emptydirs')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ae00921b98b2e5cb6454d47907f1516612f991ad6a4a0a2adbb01446208a70f9')
+sha256sums=('9d509936641386d435e8b7727bf9620ac9cf2380981b81bf0c5f67fd5cdb6e2d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -48,7 +48,7 @@ check() {
 	cd "$pkgname-$pkgver"
 
 	# Tests fail with non-english locales
-	LC_ALL=en_US.UTF-8 ctest --test-dir build --output-on-failure
+	LC_ALL=C.UTF-8 ctest --test-dir build --output-on-failure
 }
 
 package() {
