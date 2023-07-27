@@ -3,7 +3,7 @@
 # Contributor: Gökberk Yaltıraklı <webdosusb at gmail dot com>
 # Contributor: Tuur Vanhoutte <vanhouttetuur at gmail dot com>
 pkgname=notes
-pkgver=V2.2.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Note taking application, write down your thoughts'
 arch=('x86_64')
