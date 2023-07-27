@@ -1,8 +1,8 @@
 # Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-bash-git
-pkgver=0.19.0.r3.g7776f24
-pkgrel=4
+pkgver=0.19.0.r33.g1b0321e
+pkgrel=1
 pkgdesc="Bash shell grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-bash"
