@@ -24,8 +24,8 @@ makedepends=(cmake ninja zlib zstd libffi libedit ncurses
              libxml2 python-setuptools python-psutil python-sphinx
              python-recommonmark gcc12 gcc12-fortran gcc12-libs)
 options=(staticlibs !lto) # Getting thousands of test failures with LTO
-source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz
-        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v${spirvllvmver}.tar.gz
+source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-"${pkgver}".tar.gz
+        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v"${spirvllvmver}".tar.gz
         llvm-config.h
         don-t-accept-nullptr-as-GEP-element-type.patch
         don-t-override-__attribute__-no_stack_protector.patch
