@@ -1,0 +1,5 @@
+checksums*
+pkg/
+src/
+node/
+*.tar.*
