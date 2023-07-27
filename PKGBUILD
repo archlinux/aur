@@ -10,10 +10,24 @@ pkgdesc="Official MusicBrainz tagger"
 arch=(x86_64)
 url="https://github.com/metabrainz/picard"
 license=(GPL2)
-depends=(glibc hicolor-icon-theme python-dateutil python-discid
-python-fasteners python-markdown python-mutagen python-pyjwt python-pyqt5
-python-yaml)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+depends=(
+  glibc
+  hicolor-icon-theme
+  python-dateutil
+  python-discid
+  python-fasteners
+  python-markdown
+  python-mutagen
+  python-pyjwt
+  python-pyqt5
+  python-yaml
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
 checkdepends=(python-pytest)
 optdepends=(
   'chromaprint: fingerprinting'
