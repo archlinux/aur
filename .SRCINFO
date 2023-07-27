@@ -1,6 +1,6 @@
 pkgbase = plainabout
 	pkgdesc = plainDE about screen
-	pkgver = 0.5.2
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://plainde.github.io
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = plainabout
 	depends = make
 	depends = plainbase
 	conflicts = plainabout-git
-	source = plainabout-0.5.2.tar.gz::https://github.com/plainDE/plainAbout/archive/refs/tags/0.5.2.tar.gz
-	sha256sums = 206adc9a949e8b569e12df3ba0fd384ef12ad5af8dc9a4539b6e840809d54985
+	source = plainabout-0.6.2.tar.gz::https://github.com/plainDE/plainAbout/archive/refs/tags/0.6.2.tar.gz
+	sha256sums = fc6f95c78b8b1e87159dddd951638092a138977cfd9062df0a9db24b642c2045
 
 pkgname = plainabout
