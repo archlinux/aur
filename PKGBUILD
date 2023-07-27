@@ -4,7 +4,7 @@
 # Contributor: Konstantin Gizdov <arch@kge.com>
 
 pkgname=mingw-w64-xxhash
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='Extremely fast non-cryptographic hash algorithm (mingw-w64)'
 arch=('any')
@@ -16,11 +16,11 @@ license=(
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-gcc' 'mingw-w64-make' 'git')
-_tag=35b0373c697b5f160d3db26b1cbb45a0d5ba788c
+_tag=bbb27a5efb85b92a0486cf361a8635715a53f6ba
 source=(git+https://github.com/Cyan4973/xxHash.git#tag=${_tag}
         mingw-Makefile.patch)
 b2sums=('SKIP'
-        'dae60c9356e0f27575ef29da73c3c000ce48baeb4ec3dfab57264fe39559374128316729b4db933a97c0fe35da8024c5879c70ba6ecab0a36114d1c80552c98d')
+        '4021554a1261cb517a249173a5552a96a73f9261ecf5d7f59e1e449cff7e7ced81d6791d501bbb2d86f2406a993275500890ee00a6cf02e0e95f13b5fb283287')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
@@ -37,15 +37,14 @@ prepare() {
 build() {
   for _arch in ${_architectures}; do
     cp -r "${srcdir}"/xxHash "${srcdir}"/build-${_arch} && cd "${srcdir}"/build-${_arch}
-    ${_arch}-make PREFIX=/usr/${_arch}
+    ${_arch}-make PREFIX=/usr/${_arch} DISPATCH=1
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}"/build-${_arch}
-    ${_arch}-make PREFIX=/usr/${_arch} DESTDIR="${pkgdir}" install
-    mv "${pkgdir}"/usr/${_arch}/bin/libxxhash.dll.a "${pkgdir}"/usr/${_arch}/lib/libxxhash.dll.a
+    ${_arch}-make PREFIX=/usr/${_arch} DISPATCH=1 DESTDIR="${pkgdir}" install
     install -Dm 644 LICENSE -t "${pkgdir}"/usr/${_arch}/share/licenses/xxhash
   done
 }

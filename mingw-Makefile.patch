@@ -1,5 +1,5 @@
---- xxHash.orig/Makefile	2021-03-11 21:46:58.129999604 +0100
-+++ xxHash/Makefile	2021-03-11 21:47:17.273332927 +0100
+--- xxHash.orig/Makefile	2023-07-27 13:34:32.183333333 +0200
++++ xxHash/Makefile	2023-07-27 13:42:43.283333333 +0200
 @@ -49,11 +49,7 @@
  UNAME := $(shell uname)
  
@@ -10,9 +10,9 @@
 -EXT =
 -endif
  
- # OS X linker doesn't support -soname, and use different extension
- # see: https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/DynamicLibraries/100-Articles/DynamicLibraryDesignGuidelines.html
-@@ -63,8 +59,8 @@
+ ifeq ($(NODE_JS),1)
+     # Link in unrestricted filesystem support
+@@ -70,8 +66,8 @@
  	SHARED_EXT_VER = $(LIBVER).$(SHARED_EXT)
  	SONAME_FLAGS = -install_name $(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR) -compatibility_version $(LIBVER_MAJOR) -current_version $(LIBVER)
  else
@@ -23,7 +23,7 @@
  	SHARED_EXT_MAJOR = $(SHARED_EXT).$(LIBVER_MAJOR)
  	SHARED_EXT_VER = $(SHARED_EXT).$(LIBVER)
  endif
-@@ -119,9 +115,7 @@
+@@ -140,9 +136,7 @@
  	$(AR) $(ARFLAGS) $@ $^
  
  $(LIBXXH): LDFLAGS += -shared
@@ -33,27 +33,26 @@
  ifeq ($(DISPATCH),1)
  $(LIBXXH): xxh_x86dispatch.c
  endif
-@@ -444,11 +438,13 @@
- .PHONY: install
- install: lib libxxhash.pc xxhsum  ## install libraries, CLI, links and man page
+@@ -579,10 +573,12 @@
+ 
+ install_libxxhash: libxxhash
  	@echo Installing libxxhash
-+	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(BINDIR)
- 	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(LIBDIR)
- 	$(Q)$(INSTALL_DATA) libxxhash.a $(DESTDIR)$(LIBDIR)
++	$(Q)$(INSTALL_DIR) $(DESTDIR)$(BINDIR)
+ 	$(Q)$(INSTALL_DIR) $(DESTDIR)$(LIBDIR)
 -	$(Q)$(INSTALL_PROGRAM) $(LIBXXH) $(DESTDIR)$(LIBDIR)
 -	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR)
 -	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT)
-+	$(Q)$(INSTALL_PROGRAM) libxxhash.dll.a $(DESTDIR)$(BINDIR)
++	$(Q)$(INSTALL_PROGRAM) libxxhash.dll.a $(DESTDIR)$(LIBDIR)
 +	$(Q)$(INSTALL_PROGRAM) $(LIBXXH) $(DESTDIR)$(BINDIR)
 +	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT_MAJOR)
 +	$(Q)ln -sf $(LIBXXH) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT)
+ 
+ install_libxxhash.includes:
  	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(INCLUDEDIR)   # includes
- 	$(Q)$(INSTALL_DATA) xxhash.h $(DESTDIR)$(INCLUDEDIR)
- 	$(Q)$(INSTALL_DATA) xxh3.h $(DESTDIR)$(INCLUDEDIR) # for compatibility, will be removed in v0.9.0
-@@ -460,10 +456,10 @@
- 	$(Q)$(INSTALL_DATA) libxxhash.pc $(DESTDIR)$(PKGCONFIGDIR)/
+@@ -600,10 +596,10 @@
+ install_xxhsum: xxhsum
  	@echo Installing xxhsum
- 	$(Q)$(INSTALL) -d -m 755 $(DESTDIR)$(BINDIR)/ $(DESTDIR)$(MANDIR)/
+ 	$(Q)$(INSTALL_DIR) $(DESTDIR)$(BINDIR)/
 -	$(Q)$(INSTALL_PROGRAM) xxhsum $(DESTDIR)$(BINDIR)/xxhsum
 -	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh32sum
 -	$(Q)ln -sf xxhsum $(DESTDIR)$(BINDIR)/xxh64sum
@@ -62,10 +61,21 @@
 +	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh32sum$(EXT)
 +	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh64sum$(EXT)
 +	$(Q)ln -sf xxhsum$(EXT) $(DESTDIR)$(BINDIR)/xxh128sum$(EXT)
+ 
+ install_man:
  	@echo Installing man pages
- 	$(Q)$(INSTALL_DATA) xxhsum.1 $(DESTDIR)$(MANDIR)/xxhsum.1
- 	$(Q)ln -sf xxhsum.1 $(DESTDIR)$(MANDIR)/xxh32sum.1
-@@ -481,10 +477,10 @@
+@@ -620,17 +616,18 @@
+ .PHONY: uninstall
+ uninstall:  ## uninstall libraries, CLI, links and man page
+ 	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.a
+-	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT)
+-	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.$(SHARED_EXT_MAJOR)
+-	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/$(LIBXXH)
++	$(Q)$(RM) $(DESTDIR)$(LIBDIR)/libxxhash.dll.a
++	$(Q)$(RM) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT)
++	$(Q)$(RM) $(DESTDIR)$(BINDIR)/libxxhash.$(SHARED_EXT_MAJOR)
++	$(Q)$(RM) $(DESTDIR)$(BINDIR)/$(LIBXXH)
+ 	$(Q)$(RM) $(DESTDIR)$(INCLUDEDIR)/xxhash.h
  	$(Q)$(RM) $(DESTDIR)$(INCLUDEDIR)/xxh3.h
  	$(Q)$(RM) $(DESTDIR)$(INCLUDEDIR)/xxh_x86dispatch.h
  	$(Q)$(RM) $(DESTDIR)$(PKGCONFIGDIR)/libxxhash.pc
