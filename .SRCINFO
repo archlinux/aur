@@ -1,0 +1,12 @@
+pkgbase = pandoc-rss
+	pkgdesc = Generate an RSS feed from markup content and metadata
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/chambln/pandoc-rss
+	arch = any
+	license = MIT
+	depends = pandoc
+	source = pandoc-rss-1.0.1.zip::https://github.com/chambln/pandoc-rss/archive/refs/tags/1.0.1.zip
+	sha256sums = c8ccc509c3cd73983b42b518bb99f9668155aebaa51a46977666b6b58e21cc18
+
+pkgname = pandoc-rss
