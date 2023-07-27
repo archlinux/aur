@@ -12,17 +12,17 @@ makedepends=("make" "go" "nodejs" "yarn" "upx")
 optdepends=("wireguard-tools: for debugging")
 conflicts=("webmesh-bin")
 
-source=("git+https://github.com/webmeshproj/node.git")
+source=("git+https://github.com/webmeshproj/webmesh.git")
 sha256sums=("SKIP")
 
 build() {
-    cd "$srcdir/node"
+    cd "$srcdir/webmesh"
     git fetch --all --tags
     make
 }
 
 package() {
-    cd "$srcdir/node"
+    cd "$srcdir/webmesh"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 dist/**/webmesh-node "$pkgdir/usr/bin/webmesh-node"
     install -Dm755 dist/**/wmctl "$pkgdir/usr/bin/wmctl"

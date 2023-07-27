@@ -17,7 +17,7 @@ pkgbase = webmesh-git
 	makedepends = upx
 	optdepends = wireguard-tools: for debugging
 	conflicts = webmesh-bin
-	source = git+https://github.com/webmeshproj/node.git
+	source = git+https://github.com/webmeshproj/webmesh.git
 	sha256sums = SKIP
 
 pkgname = webmesh-git
