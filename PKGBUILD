@@ -2,16 +2,17 @@
 # Contributor: xantares
 
 pkgname=python-baycomp
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc='Library for Bayesian comparison of classifiers'
 url='https://github.com/janezd/baycomp'
 arch=('any')
 license=('MIT')
 makedepends=('python-setuptools')
-depends=('python-scipy' 'python-matplotlib')
+depends=('python-scipy' 'python-matplotlib' 'python-numpy')
+optdepends=('python-pystan')
 source=("https://pypi.io/packages/source/b/baycomp/baycomp-${pkgver}.tar.gz")
-sha256sums=('c43472c16bd7cdf4884dd4c73dd307e4a3da7097fe49c83cd5e88d75142923b0')
+sha256sums=('32b25ad7b16d5b251ddb9f6110a32d7b3953b987096da1d25ef277935d25daec')
 
 prepare() {
     cd "${srcdir}"/baycomp-${pkgver}
