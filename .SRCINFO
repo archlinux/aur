@@ -1,7 +1,7 @@
 pkgbase = python-pinout
 	pkgdesc = Generate graphical pinout references for electronic hardware.
 	pkgver = 0.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/j0ono0/pinout
 	arch = any
 	license = MIT

@@ -3,7 +3,7 @@
 _modulename='pinout'
 pkgname="python-${_modulename}"
 pkgver=0.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Generate graphical pinout references for electronic hardware.'
 arch=('any')
 url="https://github.com/j0ono0/${_modulename}"
@@ -29,4 +29,5 @@ package() {
   cd "${_modulename}-${pkgver}"
 
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
