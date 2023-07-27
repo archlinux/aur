@@ -2,7 +2,7 @@
 
 pkgname=plainbase
 _pkgname=plainBase
-pkgver=0.5.2
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="plainDE base files"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://plainde.github.io"
 license=(GPL3)
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plainDE/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9691675973b705f92674c89404205fffc78ac02277d28147130688ceaf0ae717')
+sha256sums=('24eff817609f7ed6594cbe197a81a2766c868abb18d8bdca197d76da1f4e5010')
 conflicts=('plainbase-git')
 
 package() {
