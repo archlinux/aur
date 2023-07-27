@@ -1,0 +1,16 @@
+diff --git a/dnssec-reverb b/dnssec-reverb
+index ad133ad..e204334 100755
+--- a/dnssec-reverb
++++ b/dnssec-reverb
+@@ -34,11 +34,6 @@ Fatal()
+ 	exit 1
+ }
+ 
+-if [ $(id -u) != 0 ]; then
+-	Fatal "must be root"
+-fi
+-
+-
+ # load conf
+ CONF="dnssec-reverb.conf"
+ if [ -r "$DNSSEC_REVERB_CONF/$CONF" ]; then

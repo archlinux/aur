@@ -1,0 +1,13 @@
+diff --git a/dnssec-reverb b/dnssec-reverb
+index ad133ad..3eafb0b 100755
+--- a/dnssec-reverb
++++ b/dnssec-reverb
+@@ -160,7 +160,7 @@ sign()
+ 		EXPIRE=$EXPIRE_ABS
+ 	fi
+ 	$SIGNZONE_CMD "$_SIGN_PARAM" -e "$EXP" -o "$ZONE" -f "$ZONEFILE.signed" "$ZONEFILE.tmp" "$KEYDIR/$ZSK" "$KEYDIR/$KSK" $KSS || Fatal "failed to sign zone" && $CHECKZONE_CMD $ZONE $ZONE
+-	TT=$EXPIRE; date -r "$TT" '+%Y/%m/%d %H:%M:%S' > "$KEYDIR/$ZSK.expire"
++	TT=$EXPIRE; date -d "@$TT" '+%Y/%m/%d %H:%M:%S' > "$KEYDIR/$ZSK.expire"
+ 	rm "$ZONEFILE.tmp"
+ 	eval "$RELOAD_CMD"
+ }
