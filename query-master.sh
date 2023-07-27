@@ -1,6 +1,8 @@
 #!/bin/bash
+_ELECTRON=/usr/bin/electron23
+_ASAR="/opt/query-master/app.asar"
 if [[ $EUID -ne 0 ]] || [[ $ELECTRON_RUN_AS_NODE ]]; then
-    exec electron23 /opt/query-master/app.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} "$@"
 else
-    exec electron23 --no-sandbox /opt/query-master/app.asar "$@"
+    exec ${_ELECTRON} ${_ASAR} --no-sandbox "$@"
 fi
