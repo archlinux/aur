@@ -1,10 +1,10 @@
-# Maintainer: Aleksey Filippov <sarum9in@gmail.com>
+# Maintainer: FirstAirBender <noblechuk5[at]web[dot]de>
+# Contributor: Aleksey Filippov <sarum9in@gmail.com>
 # Contributor: Friedrich Weber <fred@reichbier.de>
-# Contributor: FirstAirBender <noblechuk5[at]web[dot]de>
 
 pkgname=czmq
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="High-level C binding for 0MQ"
 arch=('i686' 'x86_64')
 url="http://czmq.zeromq.org"

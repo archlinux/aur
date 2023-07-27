@@ -1,7 +1,7 @@
 pkgbase = czmq
 	pkgdesc = High-level C binding for 0MQ
 	pkgver = 4.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://czmq.zeromq.org
 	arch = i686
 	arch = x86_64
