@@ -3,7 +3,7 @@
 _pkgname=notes
 pkgname=notes-git
 pkgver=2.2.0.r2.g67e724f
-pkgrel=1
+pkgrel=2
 pkgdesc='Note taking application, write down your thoughts'
 arch=('x86_64')
 url='https://github.com/nuttyartist/notes'
@@ -41,7 +41,8 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DUSE_QT_VERSION=6 \
-		-DUPDATE_CHECKER=OFF
+		-DUPDATE_CHECKER=OFF \
+		-DGIT_REVISION=ON
 	cmake --build build
 }
 

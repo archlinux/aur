@@ -1,6 +1,6 @@
 pkgbase = notes-git
 	pkgdesc = Note taking application, write down your thoughts
-	pkgver = 2.2.0.r0.g8f20a2b
+	pkgver = 2.2.0.r2.g67e724f
 	pkgrel = 2
 	url = https://github.com/nuttyartist/notes
 	arch = x86_64
