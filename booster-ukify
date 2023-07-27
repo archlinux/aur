@@ -10,7 +10,7 @@ function usage {
 
 function check_root {
   [ $EUID -eq 0 ] && return
-  echo "dracut-ukify requires root privileges to work" >&2
+  echo "booster-ukify requires root privileges to work" >&2
   exit 1
 }
 
@@ -22,11 +22,11 @@ declare -a ukify_global_args=()
 declare -A ukify_variants=()
 declare -A ukify_install_path=()
 
-[ -f "/etc/dracut-ukify.conf" ] && source /etc/dracut-ukify.conf
+[ -f "/etc/booster-ukify.conf" ] && source /etc/booster-ukify.conf
 
 [ ${#ukify_variants[@]} -eq 0 ] && {
   # Fallback to default image if ukify_variants isn't specified
-  ukify_variants[default]="--hostonly"
+  ukify_variants[default]="--strip --compression=zstd"
 }
 
 ESP_PATH=$(bootctl --print-esp-path)
@@ -132,7 +132,7 @@ while getopts ":hag:sxyz" arg; do
     x)
       check_root
       # Trigger some IO on ESP path to be sure it's mounted by autofs if it's the case
-      # Otherwise upgrading systemd may cause ESP partition not mounted at the time dracut attempt to write new image
+      # Otherwise upgrading systemd may cause ESP partition not mounted at the time booster attempt to write new image
       stat "$ESP_PATH" >/dev/null
       exit 0
       ;;
@@ -207,7 +207,7 @@ function gen_image() {
     local initrd=$(mktemp)
 
     echo "==> Building initrd image $kernel ($version_name)"
-    dracut -q -f --no-hostonly-cmdline --kver "${version}" ${ukify_variants[$variant]} "$initrd"
+    booster build --force "--kernel-version=${version}" ${ukify_variants[$variant]} "$initrd"
 
     local os_release=$(mktemp)
     grep -v '^BUILD_ID=' /etc/os-release > "$os_release"
@@ -218,11 +218,12 @@ function gen_image() {
     ukify_args+=(--uname "$version")
     ukify_args+=(--os-release "@$os_release")
     ukify_args+=(--output "$image")
-    ukify_args+=("$vmlinuz" "$initrd")
+    ukify_args+=(--linux "$vmlinuz")
+    ukify_args+=(--initrd "$initrd")
 
     echo "==> Ukify image $kernel ($version_name)"
 
-    /usr/lib/systemd/ukify "${ukify_args[@]}"
+    /usr/lib/systemd/ukify build "${ukify_args[@]}"
 
     # Remove temporary files
     rm "$initrd"

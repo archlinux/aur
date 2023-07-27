@@ -1,34 +1,32 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 
-pkgname=dracut-ukify
-pkgver=5
-pkgrel=2
-pkgdesc="Integration layer for dracut and systemd's ukify tool for Arch Linux"
-url="https://aur.archlinux.org/packages/dracut-ukify"
+pkgname=booster-ukify
+pkgver=1
+pkgrel=1
+pkgdesc="Integration layer for booster and systemd's ukify tool for Arch Linux"
+url="https://aur.archlinux.org/packages/booster-ukify"
 arch=(any)
 license=('MIT')
-depends=(dracut systemd-ukify python util-linux)
+depends=(booster systemd-ukify python util-linux)
 optdepends=(
 	'sbsigntools: secureboot support'
 )
-source=('10-dracut-ukify-pre-install.hook'
-        '90-dracut-ukify-install.hook'
-        '60-dracut-ukify-remove.hook'
-        'dracut-ukify'
-        'dracut-ukify.conf')
-sha256sums=('e9592f4f738e8ac70044db1e3f0c4839bc07f37662d5dbc221230cf1617a6b4d'
-            '08225b2c3f5e2a734561b5fa9a3e84060dfffd85b2898adb0fff0ce3b068b4d0'
-            '341cd01546d840e7401f7bec868a78e2f6ca12563e93d993a07bc51efe674ed0'
-            '2cc8286a7862a8e8167c7e44ab5cd1cc24cca6a21a8f53be2ad54c0b219b6cc2'
-            '189829a1c06a1d0f8c8d46a0266d4bb1343ba33de27e435a0833d030c92b0e78')
-backup=(etc/dracut-ukify.conf)
-provides=(dracut-hook)
-conflicts=(dracut-hook-uefi dracut-uefi-hook)
+source=('10-booster-ukify-pre-install.hook'
+        '90-booster-ukify-install.hook'
+        '60-booster-ukify-remove.hook'
+        'booster-ukify'
+        'booster-ukify.conf')
+sha256sums=('87d08ea560f3e0f23c9e7ea75c6ff366f1f7e83e1ecdbce296f6b327b79817e3'
+            'a7bfd82f243b90d9acda5eaee23831ffd92ecbc69fbf633f48da00dcffa55925'
+            '368d9c735eb7e015e371d04a7261dba0b7ad105b7192a3c2ee48511283e06dd8'
+            '16c0bcb6639ab7d0bf63f20e5b5ed719baeb513801d0f39ce2857bdd81c1292c'
+            'e9f964ad0c4314dcbe5d8ba63f503877ce4ad75299833097073549d26a02e931')
+backup=(etc/booster-ukify.conf)
 
 package() {
-  install -Dm644 "${srcdir}/10-dracut-ukify-pre-install.hook" "${pkgdir}/usr/share/libalpm/hooks/10-dracut-ukify-pre-install.hook"
-  install -Dm644 "${srcdir}/60-dracut-ukify-remove.hook"      "${pkgdir}/usr/share/libalpm/hooks/60-dracut-ukify-remove.hook"
-  install -Dm644 "${srcdir}/90-dracut-ukify-install.hook"     "${pkgdir}/usr/share/libalpm/hooks/90-dracut-ukify-install.hook"
-  install -Dm755 "${srcdir}/dracut-ukify"                     "${pkgdir}/usr/bin/dracut-ukify"
-  install -Dm644 "${srcdir}/dracut-ukify.conf"                "${pkgdir}/etc/dracut-ukify.conf"
+  install -Dm644 "${srcdir}/10-booster-ukify-pre-install.hook" "${pkgdir}/usr/share/libalpm/hooks/10-booster-ukify-pre-install.hook"
+  install -Dm644 "${srcdir}/60-booster-ukify-remove.hook"      "${pkgdir}/usr/share/libalpm/hooks/60-booster-ukify-remove.hook"
+  install -Dm644 "${srcdir}/90-booster-ukify-install.hook"     "${pkgdir}/usr/share/libalpm/hooks/90-booster-ukify-install.hook"
+  install -Dm755 "${srcdir}/booster-ukify"                     "${pkgdir}/usr/bin/booster-ukify"
+  install -Dm644 "${srcdir}/booster-ukify.conf"                "${pkgdir}/etc/booster-ukify.conf"
 }

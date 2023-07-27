@@ -3,15 +3,15 @@ Type = Path
 Operation = Install
 Operation = Upgrade
 Target = usr/lib/modules/*/pkgbase
-Target = usr/lib/dracut/*
+Target = usr/lib/booster/*
 Target = usr/lib/systemd/systemd
 Target = usr/lib/systemd/boot/efi/*.efi.stub
-Target = usr/share/libalpm/hooks/90-dracut-ukify-install.hook
-Target = usr/bin/dracut-ukify
+Target = usr/share/libalpm/hooks/90-booster-ukify-install.hook
+Target = usr/bin/booster-ukify
 Target = usr/src/*/dkms.conf
 
 [Action]
 Description = Updating linux images...
 When = PostTransaction
-Exec = /usr/bin/dracut-ukify -z
+Exec = /usr/bin/booster-ukify -z
 NeedsTargets
