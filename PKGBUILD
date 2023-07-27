@@ -12,6 +12,7 @@ backup=('etc/bird.conf')
 depends=('glibc' 'readline' 'ncurses' 'libssh')
 makedepends=('git')
 replaces=('bird6')
+conflicts=('bird')
 options=(!emptydirs)
 source=("git+https://gitlab.nic.cz/labs/bird.git"
         'bird.service')

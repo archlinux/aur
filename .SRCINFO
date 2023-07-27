@@ -10,6 +10,7 @@ pkgbase = bird-babel-rtt
 	depends = readline
 	depends = ncurses
 	depends = libssh
+	conflicts = bird
 	replaces = bird6
 	options = !emptydirs
 	backup = etc/bird.conf
