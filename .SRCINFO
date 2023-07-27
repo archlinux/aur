@@ -1,7 +1,7 @@
 pkgbase = exodus
 	pkgdesc = Send, receive & exchange cryptocurrency with ease on the world's leading Desktop, Mobile and Hardware wallets. Bitcoin wallet
 	pkgver = 23.7.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://exodus.com
 	arch = x86_64
 	license = custom
