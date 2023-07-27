@@ -1,11 +1,11 @@
 pkgbase = solv-bin
 	pkgdesc = SOLution Validation tool that analyzes Microsoft Visual Studio solutions (binary release)
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/aegoroff/solv
 	arch = x86_64
 	license = MIT
-	source = https://github.com/aegoroff/solv/releases/download/0.9.0/solv-0.9.0-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = b2361e673ac0d87a5a7588d6e68503911555233a46353ef81179baca5e09fa3e
+	source = https://github.com/aegoroff/solv/releases/download/0.10.0/solv-0.10.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 078f953c61c408b777124b6014bee1a0a3e13f0b9b30f201ed4098ef9e991e8a
 
 pkgname = solv-bin
