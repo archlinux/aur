@@ -1,14 +1,14 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-r-git
-pkgver=r95.80efda5
+pkgver=r98.c55f8b4
 pkgrel=1
 pkgdesc="R grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/r-lib/tree-sitter-r"
 license=('MIT')
 groups=('tree-sitter-grammars')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter-cli' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
@@ -30,7 +30,7 @@ prepare() {
 build() {
 	cd "$pkgname/src/"
 	cc $CFLAGS -std=c99 -c parser.c
-	c++ $CXXFLAGS -c scanner.cc
+	cc $CFLAGS -std=c99 -c scanner.c
 	cc $LDFLAGS -shared parser.o scanner.o -o "$srcdir/parser.so"
 }
 
