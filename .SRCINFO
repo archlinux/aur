@@ -1,6 +1,6 @@
 pkgbase = electrum-mona
 	pkgdesc = A lightweight Monacoin wallet
-	pkgver = 4.1.4
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/wakiyamap/electrum-mona
 	arch = any
@@ -35,7 +35,7 @@ pkgbase = electrum-mona
 	optdepends = python-qdarkstyle: optional dark theme in graphical mode
 	optdepends = python-trezor: for Trezor hardware support
 	optdepends = python-keepkey: for KeepKey hardware support
-	source = electrum-mona-4.1.4.tar.gz::https://github.com/wakiyamap/electrum-mona/archive/4.1.4.tar.gz
-	sha512sums = e66e5fdf68f54e0e16ece07746ab40c6ce0b49430f96fdc55a92cfaf0084d29fde0089bfda3c47c0262d941db40bc71792b70883b3655258af8d5437bff1508e
+	source = electrum-mona-4.2.1.tar.gz::https://github.com/wakiyamap/electrum-mona/archive/4.2.1.tar.gz
+	sha512sums = ee2dfe3a4c272bdb589543530a8f8d044b20a35e91aaf12dbb34f3f5712214fc2f8a15c0a3c0ac72b8d80d0b245745c98261fb88aefb35583f44f0aef7e6144d
 
 pkgname = electrum-mona

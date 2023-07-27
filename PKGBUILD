@@ -1,6 +1,6 @@
 # Maintainer: Musee "lae" Ullah <lae(at)idolactiviti(dot)es>
 pkgname=electrum-mona
-pkgver=4.1.4
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="A lightweight Monacoin wallet"
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=('python-btchip: BTChip hardware wallet support'
             'python-keepkey: for KeepKey hardware support')
 makedepends=('python-pycurl' 'python-pip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wakiyamap/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('e66e5fdf68f54e0e16ece07746ab40c6ce0b49430f96fdc55a92cfaf0084d29fde0089bfda3c47c0262d941db40bc71792b70883b3655258af8d5437bff1508e')
+sha512sums=('ee2dfe3a4c272bdb589543530a8f8d044b20a35e91aaf12dbb34f3f5712214fc2f8a15c0a3c0ac72b8d80d0b245745c98261fb88aefb35583f44f0aef7e6144d')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}/
@@ -29,6 +29,7 @@ prepare() {
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}/
+  sed -ri 's/(libsecp256k1\.so)\.0/\1/g' electrum_mona/ecc_fast.py
   python setup.py build
   python contrib/pull_locale
 }
