@@ -1,30 +1,27 @@
-# Maintainer: Mikel Pintado <mikelaitornube2010@gmail.com>
-
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: Mikel Pintado <mikelaitornube2010@gmail.com>
 pkgname=nuclear-player
-pkgver=0.4.3
-pkgrel=2
+pkgver=0.6.27
+pkgrel=1
 pkgdesc="A free, multiplatform music player app that streams from multiple sources."
-arch=('x86_64')
+arch=('any')
 url="http://nuclear.gumblert.tech/"
-install=nuclear-player.install
+_githuburl="https://github.com/nukeop/nuclear"
 license=('GPL3')
-depends=('gconf' 'libnotify' 'libappindicator-gtk3' 'libxtst' 'nss')
-source=(
-    https://github.com/nukeop/nuclear/releases/download/v${pkgver}/nuclear_${pkgver}_amd64.deb
-    nuclear.desktop
-)
-md5sums=(
-    '0499640e2bfab3abcdb1dd898b97d77e'
-    '02328fb5995b2e92b3ee11dca5c6b262'    
-)
-
-package()   {
-    tar xf data.tar.xz
-
-    cp --preserve=mode -r usr "${pkgdir}"
-    cp --preserve=mode -r opt "${pkgdir}"
-
-    find "${pkgdir}" -type d -exec chmod 755 {} +
-
-    cp --preserve=mode ${srcdir}/nuclear.desktop ${pkgdir}/usr/share/applications
+depends=('python' 'make' 'libcups' 'gdk-pixbuf2' 'libx11' 'gcc-libs' 'libxext' 'glibc' 'bash' 'nspr' 'cairo' 'libxcomposite' 'nss' 'dbus' \
+    'at-spi2-core' 'libxrandr' 'expat' 'pango' 'gtk3' 'libdrm' 'libxkbcommon' 'libxshmfence' 'libxfixes' 'mesa' 'alsa-lib' 'libxcb' 'libxdamage' 'glib2')
+makedepends=('gendesk' 'npm' 'nodejs')
+source=("${pkgname}-${pkgver}.tar.gz::${_githuburl}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('6fa1b2e8e682fa46712fa2a5850c3323db4851993ff22ddc8627a5664df447cf')
+build() {
+    cd "${srcdir}/${pkgname%-player}-${pkgver}"
+    npm install
+    npm run build:linux
+}
+package() {
+    install -Dm755 -d "${pkgdir}/opt/${pkgname}"
+    cp -r "${srcdir}/${pkgname%-player}-${pkgver}/release/linux-unpacked/"* "${pkgdir}/opt/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname%-player}-${pkgver}/packages/app/resources/media/1024x1024.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    gendesk -f -n --icon "${pkgname}" --categories "AudioVideo" --name "Nuclear Player" --exec "/opt/${pkgname}/${pkgname%-player} --no-sandbox %U"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
