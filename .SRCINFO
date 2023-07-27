@@ -1,0 +1,16 @@
+pkgbase = python-console-menu
+	pkgdesc = allows you to quickly clone all of an orgs, or users repos into a single directory.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/gabrie30/ghorg
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jose
+	depends = python-requests
+	source = python-console-menu-0.8.0.tar.gz::https://github.com/aegirhall/console-menu/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = a178e43701cb046455ae405bfcd156ca6b0acc36c19004e8849967bc666633d1
+
+pkgname = python-console-menu
