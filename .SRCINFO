@@ -1,0 +1,19 @@
+pkgbase = ttf-rubik-vf
+	pkgdesc = A sans serif font family with slightly rounded corners: variable font version
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/googlefonts/rubik
+	arch = any
+	license = OFL
+	source = https://github.com/googlefonts/rubik/raw/e337a5f69a9bea30e58d05bd40184d79cc099628/fonts/variable/Rubik[wght].ttf
+	source = https://github.com/googlefonts/rubik/raw/e337a5f69a9bea30e58d05bd40184d79cc099628/fonts/variable/Rubik-Italic[wght].ttf
+	source = https://github.com/googlefonts/rubik/raw/e337a5f69a9bea30e58d05bd40184d79cc099628/OFL.txt
+	source = https://github.com/googlefonts/rubik/raw/e337a5f69a9bea30e58d05bd40184d79cc099628/AUTHORS.txt
+	source = https://github.com/googlefonts/rubik/raw/e337a5f69a9bea30e58d05bd40184d79cc099628/CONTRIBUTORS.txt
+	sha256sums = 1b3a7437ba2af80e465e773ed60c5036d1ba6ace492d89046dbcf18fb31e4e88
+	sha256sums = 08c6c4018a5ada8b517407b46897e46cf6ebb106853fbd3e89addb51d3b59c62
+	sha256sums = 472cbe7c25441df63e9c7864b43eb3c0f4b3df950c66a76224e6cfe1eae843fb
+	sha256sums = 7e2cf473951e887dc83a6676ab3ce19eef293cd0e5b4d15504dcc42228934576
+	sha256sums = d0955625026fcda3c16cbf518486e7e272ef3a4ca86ef11daafc2892cabb59b6
+
+pkgname = ttf-rubik-vf
