@@ -2,13 +2,13 @@
 
 pkgname=intellij-http-client
 pkgver=232.8660.185
-pkgrel=1
+pkgrel=2
 pkgdesc="IntelliJ HTTP Client: run HTTP requests from a terminal. The binary is called ijhttp."
 arch=("any")
 url="https://www.jetbrains.com/help/idea/http-client-cli.html"
 license=('custom')
 depends=('java-runtime>=17' 'archlinux-java-run')
-source=("https://download-cdn.jetbrains.com/resources/intellij/http-client/${pkgver}/${pkgname}.zip"
+source=("${pkgname}-${pkgver}.zip::https://download-cdn.jetbrains.com/resources/intellij/http-client/${pkgver}/${pkgname}.zip"
          ${pkgname} jdk-ge-17.patch)
 
 build() {
