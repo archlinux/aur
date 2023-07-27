@@ -1,0 +1,19 @@
+pkgbase = openmatrix
+	pkgdesc = An open-source computational programming language
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://www.openmatrix.org/
+	arch = x86_64
+	license = AGPL
+	makedepends = boost
+	depends = sundials
+	depends = fftw
+	depends = intel-oneapi-mkl
+	depends = qhull
+	depends = libantlr3c
+	depends = libmatio
+	depends = hdf5
+	source = https://github.com/OpenMatrixLanguage/OpenMatrix/archive/refs/tags/1.0.12.tar.gz
+	sha256sums = faa6717455a09b95aff530de11f28a9eedb014d4ad9826f857570350c1a37ab6
+
+pkgname = openmatrix
