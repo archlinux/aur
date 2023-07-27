@@ -1,0 +1,134 @@
+# Maintainer: Funami
+# Maintainer: Takina Lina <0tkl.zhaoqing@gmail.com>
+# Contributor: Fredrick R. Brennan <copypaste@kittens.ph>
+# Contributor: witchymary
+
+pkgname=aegisub-arch1t3cht
+pkgver=feature_10
+_aspver=3.7.3
+_vsver=R63
+pkgrel=1
+pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
+arch=('x86_64')
+url="https://github.com/arch1t3cht/Aegisub"
+license=('GPL' 'BSD')
+provides=('aegisub')
+conflicts=('aegisub' 'aegisub-arch1t3cht-git')
+depends=('alsa-lib'
+         'boost-libs'
+         'ffmpeg'
+         'ffms2'
+         'fftw'
+         'fontconfig'
+         'hicolor-icon-theme'
+         'hunspell'
+         'icu'
+         'jansson'
+         'libass'
+         'libgl'
+         'libpulse'
+         'openal'
+         'portaudio'
+         'python'
+         'uchardet'
+         'vapoursynth'
+         'wxwidgets-common'
+         'wxwidgets-gtk3'
+         'zlib')
+makedepends=('git' 'meson' 'cmake' 'boost')
+optdepends=('avisynthplus: AviSynth source support'
+            'vapoursynth-plugin-lsmashsource: VapourSynth plugin used by default (LWLibavSource)'
+            'vapoursynth-plugin-bestsource: VapourSynth plugin used by default (BestSource)'
+            'vapoursynth-plugin-wwxd: VapourSynth plugin for keyframe generation'
+            'vapoursynth-plugin-scxvid: VapourSynth plugin for keyframe generation')
+source=("$pkgname.tar.gz::https://github.com/arch1t3cht/Aegisub/archive/$pkgver.tar.gz"
+        "$pkgname-bestsource::git+https://github.com/vapoursynth/bestsource.git#commit=ba1249c1f5443be6d0ec2be32490af5bbc96bf99"
+        "$pkgname-avisynth.tar.gz::https://github.com/AviSynth/AviSynthPlus/archive/v$_aspver.tar.gz"
+        "$pkgname-vapoursynth.tar.gz::https://github.com/vapoursynth/vapoursynth/archive/$_vsver.tar.gz"
+        "$pkgname-luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1"
+        "$pkgname-gtest-1.8.1.zip::https://github.com/google/googletest/archive/release-1.8.1.zip"
+        "$pkgname-gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip")
+noextract=("$pkgname-gtest-1.8.1.zip"
+           "$pkgname-gtest-1.8.1-1-wrap.zip")
+sha256sums=('9c93b581fe3af3fda2bb9e7e3cddfe209a76d5929ea774515914a1da6d026b5c'
+            'SKIP'
+            'b847705af6f16fa26664d06e0fea2bda14a7f6aac8249a9c37e4106ecb8fd44c'
+            'ed909b3c58e79bcbb056d07c5d301222ba8001222b4b40d5c1123be35fea9ae2'
+            'SKIP'
+            '927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7'
+            'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805')
+
+AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT=${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT:=PulseAudio}
+
+prepare() {
+  cd Aegisub-$pkgver
+
+  # If build dir exists (it won't ever if makepkg is passed --cleanbuild) call --reconfigure rather than setup without it which will fail)
+  local MESON_FLAGS=''
+  if [ -d build ]; then
+    MESON_FLAGS='--reconfigure'
+  else
+    # Initialize subproject wraps for bestsource
+    ln -s $srcdir/$pkgname-bestsource subprojects/bestsource
+
+    # Initialize subproject wraps for avisynth
+    ln -s $srcdir/AviSynthPlus-$_aspver subprojects/avisynth
+
+    # Initialize subproject wraps for vapoursynth
+    ln -s $srcdir/vapoursynth-$_vsver subprojects/vapoursynth
+
+    # Initialize subproject wraps for luajit
+    ln -s $srcdir/$pkgname-luajit subprojects/luajit
+
+    # Initialize subproject wraps for gtest
+    mkdir subprojects/packagecache
+    ln -s $srcdir/$pkgname-gtest-1.8.1.zip subprojects/packagecache/gtest-1.8.1.zip
+    ln -s $srcdir/$pkgname-gtest-1.8.1-1-wrap.zip subprojects/packagecache/gtest-1.8.1-1-wrap.zip
+  fi
+
+  meson subprojects packagefiles --apply bestsource
+  meson subprojects packagefiles --apply avisynth
+  meson subprojects packagefiles --apply vapoursynth
+  meson subprojects packagefiles --apply luajit
+
+  # check if the OPTIONS array contains "!strip"
+  check_makepkg_options() (
+    source /etc/makepkg.conf
+
+    if [ "$?" -ne 0 ]; then
+      >&2 echo 'Failed to source /etc/makepkg.conf'
+      echo release # use release as fallback buildtype
+      return 1
+    fi
+
+    if [[ " ${OPTIONS[@]} " =~ ' !strip ' ]]; then
+      >&2 echo '!strip found in OPTIONS array'
+      echo debug
+    else
+      >&2 echo '!strip not found in OPTIONS array'
+      echo release
+    fi
+  )
+  local BUILDTYPE="$(check_makepkg_options 2> /dev/null)"
+
+  mkdir -p build
+  echo """#define BUILD_GIT_VERSION_NUMBER 0
+#define BUILD_GIT_VERSION_STRING \"$pkgver\"
+""" > build/git_version.h
+
+  # Disabling LTO because it seems to lead to crashing aegisub scripts for some people
+  # (https://aur.archlinux.org/packages/aegisub-arch1t3cht-git#comment-911741)
+  arch-meson --buildtype="${BUILDTYPE}" -D b_lto=false -D vapoursynth=enabled \
+  -D default_audio_output="${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT}" ${MESON_FLAGS} build
+}
+
+build() {
+  cd Aegisub-$pkgver
+  meson compile -C build
+}
+
+package() {
+  cd Aegisub-$pkgver
+  meson install -C build --destdir $pkgdir
+  install -Dm644 LICENCE -t "$pkgdir/usr/share/licenses/$pkgname"
+}
