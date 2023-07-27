@@ -13,7 +13,7 @@ source=("yt-spammer-purge-${pkgver}.tar.gz::https://github.com/ThioJoe/YT-Spamme
 depends=('python' 'tk' 'python-google-api-python-client' 
     'python-google-auth-oauthlib' 'python-protobuf' 'python-colorama'
     'python-rtfunicode' 'python-certifi' 'python-six' 'python-levenshtein'
-    'python-regex' 'python-rapidfuzz')
+    'python-regex' 'python-rapidfuzz' 'python-numpy' 'python-setuptools')
 sha256sums=('73e4c9db16a12e87855df0b5116ed834b9ce194c2091c11925e1dc1449113f67'
             'f3f6ace0928d0c5465c693a4300e03059c33d4c059409741169f5c5e9e5eeb86')
 install=msg.install
