@@ -1,14 +1,16 @@
+# Maintainer: JustKidding <jk@vin.ovh>
+
 pkgname=turbo-base64
 _pkgname=Turbo-Base64
-pkgver=2023.04
+pkgver=2023.08
 pkgrel=1
 pkgdesc="Fastest Base64 SIMD Encoding library"
-arch=("x86_64")
+arch=("any")
 url="https://github.com/powturbo/Turbo-Base64"
 license=("GPL3")
 makedepends=("cmake")
 source=("https://github.com/powturbo/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('f6f47d17641bc170b62b37607746b30faf838fe3ad34dd39f201fe6ce734ad92')
+sha256sums=('72f22c31534502d715ebc0158932fdbdf1133cdadedfdaba6fea598ca0c0808e')
 
 build() {
   cmake -B build -S "$_pkgname-$pkgver" \
