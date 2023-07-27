@@ -1,7 +1,7 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=ansible-language-server
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Ansible Language Server"
 arch=(any)
@@ -30,8 +30,8 @@ optdepends=(
   'yamllint: for YAML linting support'
 )
 source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha512sums=('2599933f99ec3a6fcdc138a4e07ebceec245eb09029939d9345df79d3c437830416d01b3e8888fefbaab6ee98493a21e60cc2797940b9eaab1288a476fcfc821')
-b2sums=('4570765d63af6bdd85ff612b75ce90c962e66f393976c9f42e83157116501a4bf1283c1c83eb5131a977a6ba0af0c0eb995dd14c087e8f2ffc0aeb4bf65b5c2b')
+sha512sums=('ab067742ac9365ddbf7587f297ad1733471f75e778f1ecb2f98dd2291fd53d77f3db157d4f07c42fd8b32a450f9730339cb90d937b27f72b8fdcf6759bd0d3a6')
+b2sums=('1d93cdd76e49b882187e123b2e3906874e80ba15322e6b7081cf00afb55916d6b68bc0defc69f456dac65081870563daf9dfbde8d498f673981efe7534e46f5a')
 
 build() {
   cd $pkgname-$pkgver
