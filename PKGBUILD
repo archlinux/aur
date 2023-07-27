@@ -1,15 +1,15 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-javascript-git
 pkgver=0.20.0.r0.gfdeb68a
-pkgrel=1
+pkgrel=2
 pkgdesc="Javascript and JSX grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-javascript"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('glibc')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter-cli' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
