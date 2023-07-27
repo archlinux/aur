@@ -3,7 +3,7 @@
 
 pkgname=bird-babel-rtt
 pkgver=2.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon'
 arch=('x86_64')
 url='https://bird.network.cz/'
@@ -45,8 +45,8 @@ build() {
     --sbindir=/usr/bin \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --runstatedir=/run/$pkgname \
-    --docdir=/usr/share/doc/$pkgname
+    --runstatedir=/run/bird \
+    --docdir=/usr/share/doc/bird
   make
 }
 
