@@ -1,6 +1,6 @@
 pkgbase = 86box-git
 	pkgdesc = An emulator for classic IBM PC clones
-	pkgver = 3.11.r1069.g937cadf05
+	pkgver = 3.11.r1081.gc12cfad5f
 	pkgrel = 1
 	url = https://86box.net/
 	arch = pentium4
@@ -13,6 +13,7 @@ pkgbase = 86box-git
 	makedepends = extra-cmake-modules
 	makedepends = ninja
 	makedepends = qt6-tools
+	makedepends = vde2
 	depends = fluidsynth
 	depends = hicolor-icon-theme
 	depends = libslirp
