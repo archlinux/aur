@@ -1,0 +1,12 @@
+pkgbase = pawse
+	pkgdesc = An easy way to keep programs running in the background
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/Froggo/pawse
+	arch = any
+	license = MIT
+	depends = python
+	source = pawse.py
+	sha256sums = SKIP
+
+pkgname = pawse
