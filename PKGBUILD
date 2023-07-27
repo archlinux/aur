@@ -2,7 +2,7 @@
 
 pkgname=plainpanel
 _pkgname=plainPanel
-pkgver=0.5.2
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="plainDE panel"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(qt5-base noto-fonts-emoji polkit ttf-opensans make alsa-utils kwindowsystem python3 picom upower plainbase plainartwork plainabout)
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plainDE/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b0167682069f403614079a039577680537f371154660c810943233ba0d917e12')
+sha256sums=('a1c9d5e1322ba66d5b1713c02085a78b206ec3d82a05b9629e6c75315de487b5')
 conflicts=('plainpanel-git')
 
 build() {
