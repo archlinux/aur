@@ -9,14 +9,14 @@
 # Maintainer: Jesse R Codling <codling@umich.edu>
 pkgname=armbian-firmware-git
 pkgver=20230716.125181c
-pkgrel=2
+pkgrel=3
 pkgdesc="Armbian-Specific Linux Firmware Files, useful for some SBCs"
 arch=(any)
 url="https://github.com/armbian/firmware"
 license=('custom')
 depends=()
 provides=("${pkgname%-git}" "linux-firmware")
-options=()
+options=(!strip)
 conflicts=(linux-firmware)
 install=
 noextract=()
