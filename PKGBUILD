@@ -3,7 +3,7 @@
 # Contributor: Luís Ferreira <net dot lsferreira at contact, backwards>
 
 pkgname=railwayapp-cli
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Command Line Interface for Railway.app"
 arch=('x86_64' 'aarch64' 'i686')
@@ -13,7 +13,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('68083661599e2f4b7fada400071b9f311fc56c7d4625407f7ca011bfa285694f')
+sha256sums=('7411b02c2353af459d9bbbd809cbdf13df333c84e60d383301e8ff2415bac0b0')
 
 prepare() {
 	cd "cli-$pkgver"
