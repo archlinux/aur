@@ -1,6 +1,6 @@
 pkgbase = reboot-arch-btw
 	pkgdesc = Check if you need to reboot due to an updated kernel
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/rnestler/reboot-arch-btw
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = reboot-arch-btw
 	depends = dbus
 	depends = pacman>6
 	replaces = kernel-updated
-	source = https://github.com/rnestler/reboot-arch-btw/archive/v0.5.5.tar.gz
-	sha256sums = 2ec5a0549c0c02aa0b412469726ace48d41596fec40b31a28fbf05ede2fb5dca
+	source = https://github.com/rnestler/reboot-arch-btw/archive/v0.5.6.tar.gz
+	sha256sums = 13ccd393a418cc310197cca32848725bfe8f3bf552a7fffd48d192fd7106e95f
 
 pkgname = reboot-arch-btw
