@@ -3,7 +3,7 @@
 
 pkgname=ytdlp-gui
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="a GUI for yt-dlp written in Rust"
 url="https://github.com/BKSalman"
 license=("GPL3")
@@ -24,7 +24,7 @@ build() {
     cd "$pkgname-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --forzen --release
+    cargo build --frozen --release
 }
 
 package() {
