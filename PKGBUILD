@@ -1,8 +1,8 @@
 pkgname=jd-cli
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 arch=('any')
-depends=('java-runtime')
+depends=('java-runtime>=8')
 # Unclear if this is GPL-3.0-only, or GPL-3.0-or-later.
 # https://github.com/intoolswetrust/jd-cli/issues/36
 license=('GPL3')

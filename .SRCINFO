@@ -1,11 +1,11 @@
 pkgbase = jd-cli
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/intoolswetrust/jd-cli
 	arch = any
 	license = GPL3
 	makedepends = maven
-	depends = java-runtime
+	depends = java-runtime>=8
 	source = https://github.com/intoolswetrust/jd-cli/archive/refs/tags/jd-cli-1.2.1.tar.gz
 	sha256sums = db39c3286e4dd64ddc328738c6597178a083c223900edcc9a5012163a54ec95a
 
