@@ -1,8 +1,8 @@
 pkgbase = python-console-menu
-	pkgdesc = allows you to quickly clone all of an orgs, or users repos into a single directory.
+	pkgdesc = A simple Python menu system for building terminal user interfaces.
 	pkgver = 0.8.0
 	pkgrel = 1
-	url = https://github.com/gabrie30/ghorg
+	url = https://github.com/aegirhall/console-menu
 	arch = any
 	license = MIT
 	makedepends = git
