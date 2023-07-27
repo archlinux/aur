@@ -1,5 +1,5 @@
 pkgbase = kaitai-struct-compiler-serialization-git
-	pkgdesc = Kaitai Struct Compiler: Compiler for the Kaitai declarative binary format parsing language. Serialization support included.
+	pkgdesc = Compiler for the Kaitai declarative binary format parsing language. Serialization support included.
 	pkgver = 0.10.r94.gf1dc857
 	pkgrel = 1
 	url = https://doc.kaitai.io/serialization.html
