@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.35.1.r568.gfd03d0038b
+pkgver=0.36.0.r24.g4c3ed843dc
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -444,7 +444,6 @@ prepare() {
     '-Dvaapi-drm=enabled'
     '-Dvaapi-wayland=enabled'
     '-Dvaapi-x11=enabled'
-    '-Dvaapi-x-egl=enabled'
     '-Dvulkan=enabled'
     '-Dvulkan-interop=enabled'
     '-Dwayland=enabled'
