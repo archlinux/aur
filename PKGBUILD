@@ -5,8 +5,8 @@ pkgver='1.2.1'
 pkgrel=1
 pkgdesc="Hankel Transformations using method of Ogata 2005"
 url="https://github.com/steven-murray/hankel"
-depends=('python' 'python-numpy>=1.9.3' 'python-scipy>=0.16.1' 'python-mpmath>=1.0.0')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=('python-build' 'python-installer')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz" "setupfix.patch")
@@ -20,11 +20,11 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     depends+=()
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
