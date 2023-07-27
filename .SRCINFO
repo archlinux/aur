@@ -1,6 +1,6 @@
 pkgbase = python-opensearch
 	pkgdesc = Python Client for OpenSearch
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/opensearch-project/opensearch-py
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-opensearch
 	depends = python-requests
 	depends = python-six
 	depends = python-dateutil
-	source = https://files.pythonhosted.org/packages/source/o/opensearch-py/opensearch-py-2.2.0.tar.gz
-	sha256sums = 109fe8d2e1e8f419a22358eb901025f51e6ad2f50014c8962e23796b2a23cb67
+	source = https://files.pythonhosted.org/packages/source/o/opensearch-py/opensearch-py-2.3.0.tar.gz
+	sha256sums = 493b224d0f865f62663f689c3a7662b1edccf9ee6c7643f2561cafda04e3a66a
 
 pkgname = python-opensearch
