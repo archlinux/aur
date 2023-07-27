@@ -1,14 +1,14 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-make-git
 pkgver=r43.716c294
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU Makefile grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/alemuller/tree-sitter-make"
 license=('MIT')
 groups=('tree-sitter-grammars')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter-cli' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
