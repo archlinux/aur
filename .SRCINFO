@@ -1,6 +1,6 @@
 pkgbase = happyx
 	pkgdesc = Macro-oriented asynchronous full-stack web-framework, written in Nim
-	pkgver = 1.9.0
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://github.com/HapticX/happyx
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = happyx
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	source = git+https://github.com/HapticX/happyx.git#commit=32d7dc13fa00ff2a7084546eac30347f433c7d69
+	source = git+https://github.com/HapticX/happyx.git#commit=ff4e6fc5f5104b737cfdffca4a9ec011752f5079
 	b2sums = SKIP
 
 pkgname = happyx
