@@ -1,7 +1,7 @@
 pkgbase = steam-boilr-gui
 	pkgdesc = Synchronize games from other platforms into your Steam library
-	pkgver = 1.7.22
-	pkgrel = 2
+	pkgver = 1.9.1
+	pkgrel = 1
 	url = https://github.com/PhilipK/BoilR
 	arch = x86_64
 	license = Apache
@@ -14,7 +14,7 @@ pkgbase = steam-boilr-gui
 	depends = gcc-libs
 	depends = hicolor-icon-theme
 	options = !lto
-	source = steam-boilr-gui-1.7.22.tar.gz::https://github.com/PhilipK/BoilR/archive/refs/tags/v.1.7.22.tar.gz
-	sha256sums = e540061578f142f73a587015f0f3fc7bb1be08e8a222ca0279eab80c9323417f
+	source = steam-boilr-gui-1.9.1.tar.gz::https://github.com/PhilipK/BoilR/archive/refs/tags/v.1.9.1.tar.gz
+	sha256sums = 763b27f2427464ca11d774ff1298cd44039c0248cfd8b81f51c6f25fbd515a72
 
 pkgname = steam-boilr-gui
