@@ -22,4 +22,3 @@ index 0785e68..ba17f5f 100755
          return path.strip()
 --
 2.12.0
-

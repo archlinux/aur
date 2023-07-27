@@ -1,6 +1,6 @@
 # Maintainer: Thomas Haider <t.haider@deprecate.de>
 pkgname=bley-git
-pkgver=r388.30571b1
+pkgver=r541.eaad52f
 pkgrel=1
 pkgdesc="Intelligent greylisting daemon for postfix and exim"
 arch=(any)
@@ -18,10 +18,8 @@ provides=("bley")
 conflicts=("bley")
 install='bley.sysusers'
 source=("${pkgname}::git+https://github.com/evgeni/bley.git"
-            "fix_setup.patch"
             "bley.sysusers")
 md5sums=('SKIP'
-         '18f197d7034087e3125751624a8c13c3'
          '4c5d548dd75a3b40c8b5b8f5c74f76ef')
 
 pkgver() {
@@ -31,7 +29,6 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname-git}"
-    git apply $srcdir/fix_setup.patch
 	python setup.py build
 }
 
