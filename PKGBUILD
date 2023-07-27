@@ -1,29 +1,34 @@
-# Maintainer: Salman
+# Maintainer: Salman Abuhaimed <salman.f.abuhaimed@gmail.com>
 #
 
 pkgname=ytdlp-gui
-_pkgname=ytdlp-gui
-pkgver=0.2.5
-pkgrel=4
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="a GUI for yt-dlp written in Rust"
 url="https://github.com/BKSalman"
 license=("GPL3")
 arch=("x86_64")
-makedepends=( "rust" "pkgconf" "git" )
+makedepends=( "cargo" "pkgconf" "git" )
 depends=("ffmpeg" "yt-dlp")
-provides=("ytdlp-gui")
-conflicts=("ytdlp-gui")
 
-source=("${url}/ytdlp-gui/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::${url}/ytdlp-gui/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=("b7e1a8350dc69f583122df4bc43c6968ab1f11a3282472f1fc52b47630387f0c")
 
+prepare() {
+    cd "$pkgname-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
-    cd "$_pkgname-${pkgver}"
-    cargo build --release
+    cd "$pkgname-${pkgver}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --forzen --release
 }
 
 package() {
-    cd "$_pkgname-${pkgver}"
+    cd "$pkgname-${pkgver}"
     
     install -Dm755 "${CARGO_TARGET_DIR:-target}/release/ytdlp-gui" "$pkgdir/usr/bin/ytdlp-gui"
     install -Dm755 "data/applications/ytdlp-gui.desktop" "$pkgdir/usr/share/applications/ytdlp-gui.desktop"
