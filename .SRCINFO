@@ -1,5 +1,5 @@
 pkgbase = czmq
-	pkgdesc = High-level C binding for 0MQ
+	pkgdesc = High-level C Binding for ZeroMQ
 	pkgver = 4.2.1
 	pkgrel = 3
 	url = http://czmq.zeromq.org

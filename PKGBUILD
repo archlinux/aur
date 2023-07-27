@@ -5,7 +5,7 @@
 pkgname=czmq
 pkgver=4.2.1
 pkgrel=3
-pkgdesc="High-level C binding for 0MQ"
+pkgdesc="High-level C Binding for ZeroMQ"
 arch=('i686' 'x86_64')
 url="http://czmq.zeromq.org"
 license=('MPL2')
