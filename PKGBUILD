@@ -1,19 +1,19 @@
-# Contributor: BluePeril <blueperil@blueperil.de>
+# Contributor: BluePeril <blueperil (at) blueperil _dot_ de>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-perl-languageserver'
-pkgver='2.5.0'
-pkgrel='2'
+pkgver='2.6.1'
+pkgrel='1'
 pkgdesc="Language Server and Debug Protocol Adapter for Perl"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-anyevent' 'perl-anyevent-aio' 'perl-class-refresh' 'perl-compiler-lexer>=0.23' 'perl-coro' 'perl-data-dump' 'perl-hash-safekeys' 'perl-io-aio' 'perl-json' 'perl-moose' 'perl-padwalker' 'perl>=5.016')
+depends=('perl-anyevent>=0' 'perl-anyevent-aio>=0' 'perl-class-refresh>=0' 'perl-compiler-lexer>=0.23' 'perl-coro>=0' 'perl-data-dump>=0' 'perl-encode-locale>=0' 'perl-hash-safekeys>=0' 'perl-io-aio>=0' 'perl-json>=0' 'perl-moose>=0' 'perl-padwalker>=0' 'perl>=5.016')
 makedepends=()
 url='https://metacpan.org/release/Perl-LanguageServer'
 source=("http://search.cpan.org/CPAN/authors/id/G/GR/GRICHTER/Perl-LanguageServer-${pkgver}.tar.gz")
-md5sums=('0fff3a712fb49f704c4af22ea809dfee')
-sha512sums=('d56f79296b516586671093e3f29b0ae695fb985afc91d29827cef30b1911eede26d2c4897c7acea21e3a6aac714d0d0a7cafdabe9a3e66b0654208110466a4bf')
+md5sums=('c8473b0b6acfee7d9e53e8979a1a6a87')
+sha512sums=('c20661844449ac012de2af5069649b6fc98484536c929ef9423df554c1f0e285d7b1ff4a1de7711f0e3c01b491e93bf014ce652b9cb82e9fa971558817a6fef9')
 _distdir="Perl-LanguageServer-${pkgver}"
 
 build() {
