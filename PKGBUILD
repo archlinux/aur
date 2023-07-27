@@ -7,7 +7,8 @@ pkgdesc='A CTF framework and exploit development library. (git branch dev)'
 url='https://github.com/Gallopsled/pwntools'
 arch=('any')
 license=('GPL')
-makedepends=('make')
+makedepends=('make' 'git')
+conflicts=('python-pwntools')
 depends=('python' 'python-intervaltree' 'python-pyelftools' 'python-tox' 'python-mako'
          'python-unicorn-git' 'python-psutil' 'python-dateutil' 'python-pysocks' 'python-pygments'
          'python-pip' 'python-pyserial' 'python-paramiko' 'ropgadget' 'python-capstone'

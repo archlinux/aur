@@ -6,6 +6,7 @@ pkgbase = python-pwntools-git
 	arch = any
 	license = GPL
 	makedepends = make
+	makedepends = git
 	depends = python
 	depends = python-intervaltree
 	depends = python-pyelftools
@@ -28,6 +29,7 @@ pkgbase = python-pwntools-git
 	depends = python-colored-traceback
 	optdepends = gdb: binary debugging
 	provides = python-pwntools
+	conflicts = python-pwntools
 	source = python-pwntools-git::git+https://github.com/Gallopsled/pwntools.git#branch=dev
 	sha256sums = SKIP
 
