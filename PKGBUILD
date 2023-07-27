@@ -1,7 +1,7 @@
 # Maintainer: Kyuunex <kyuunex at protonmail dot ch>
 
 pkgname=xorg-xwayland-osu
-pkgver=23.1.1
+pkgver=23.1.2
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -9,17 +9,15 @@ groups=('xorg')
 url="https://xorg.freedesktop.org"
 pkgdesc="run X clients under wayland (patched specifically to run osu! under Wine correctly)"
 depends=('nettle' 'libepoxy' 'systemd-libs' 'libxfont2' 
-         'pixman' 'xorg-server-common' 'libxcvt' 'mesa')
+         'pixman' 'xorg-server-common' 'libxcvt' 'mesa'
+         'libglvnd' 'libxau' 'wayland' 'libdrm' 'libtirpc'
+         'libxshmfence' 'glibc')
 makedepends=('meson' 'xorgproto' 'xtrans' 'libxkbfile' 'dbus'
-             'xorg-font-util'
-             'wayland' 'wayland-protocols'
-             'libdrm' 'mesa-libgl'
-             'systemd'
-             'egl-wayland'
-)
+             'xorg-font-util' 'wayland-protocols' 'mesa-libgl'
+             'systemd' 'egl-wayland')
 source=(https://xorg.freedesktop.org/archive/individual/xserver/xwayland-$pkgver.tar.xz{,.sig}
         xwayland-vsync.diff)
-sha512sums=('21c386847135c5cb4ac884926b0fbeb6ad21c9ee54752e0cdc8418e31a72872d81032159c1d91b8afb915aaaf65e80454342461d676996b2f3c535a37b0147f0'
+sha512sums=('796939106e8c986f2e8d6a1ff27f3a51cda0718825c3a6da678573de95a61bcc9fac484a34c6f8f762f7078f5289aa35c393725ea0b0f7e5d153352ab01a48f5'
             'SKIP'
             'ce461fde80aeddf1ed0b412e1b79486759e3981448ccbc1af45591aa1b80a094386f0ecb1aa5bfb68ab6f2169c0a1ab9e6517cb6bc04317290077ded2f8b78b6')
 provides=('xorg-server-xwayland'
