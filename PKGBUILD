@@ -1,8 +1,8 @@
 # Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-go-git
-pkgver=0.19.1.r0.g7f6bfd0
-pkgrel=2
+pkgver=v0.20.0.r0.gbbaa67a
+pkgrel=1
 pkgdesc="Golang grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-go"
