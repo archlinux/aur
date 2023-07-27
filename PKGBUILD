@@ -2,7 +2,7 @@
 # Contributor: Sofia Lima <me [at] dzshn [dot] xyz>
 pkgname=vencord-desktop-bin
 _appname=vencorddesktop
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="An Electron based Mastodon, Pleroma, and Misskey client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('bash' 'electron25')
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/VencordDesktop_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('f627703d457750e7033f33aaf6dbb744865072bf3d1e2c39f777121eae2682f8'
+sha256sums=('373741599a5ac703d7e39bf16ade685966f8e86d83836890b88b458100d43bbb'
             '283634e33143121d09020e79dbe44d5380b7f976258e4a44ef772a2676affa04')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
