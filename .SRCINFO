@@ -1,0 +1,22 @@
+pkgbase = pyabpoa
+	pkgdesc = an easy-to-use python interface to abPOA
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/yangao07/abPOA
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-nose
+	makedepends = cython
+	depends = python
+	depends = glibc
+	depends = zlib
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/p/pyabpoa/pyabpoa-1.4.0.tar.gz
+	source = https://github.com/yangao07/abPOA/blob/main/LICENSE
+	sha256sums = 7880aff37e8fcc22cb4806ecc40628521d047df4b5aaf75b679ea82ecb24a335
+	sha256sums = c3230d968909de1d6b16926d6ed0ffb19c7c3fb792d4041f209ae8a39177f412
+
+pkgname = pyabpoa
