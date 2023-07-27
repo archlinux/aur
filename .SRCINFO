@@ -1,6 +1,6 @@
 pkgbase = linux-aarch64-lts
 	pkgdesc = The Linux Kernel and modules - AArch64 multi-platform LTS
-	pkgver = 6.1.41
+	pkgver = 6.1.42
 	pkgrel = 1
 	url = https://github.com/lynix/linux-aarch64-lts
 	arch = aarch64
@@ -15,16 +15,16 @@ pkgbase = linux-aarch64-lts
 	makedepends = dtc
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.1.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v6.x/patch-6.1.41.xz
+	source = https://www.kernel.org/pub/linux/kernel/v6.x/patch-6.1.42.xz
 	source = 0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
 	source = 0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
 	source = config
 	source = linux.preset
 	sha256sums = 2ca1f17051a430f6fed1196e4952717507171acfd97d96577212502703b25deb
-	sha256sums = 1f5911ec359ea8be2439f30f98f4361a5bd41c99f20c100ee9b153d20c876da2
+	sha256sums = f6fd8fbd14669d24887ed59c9307f999db005d9bdbb1e857b36cbb2da0a59503
 	sha256sums = 013ab7f5bcf2cd486e819fb13fde1f673ac72978984a8befea13938eaf8ddd8e
 	sha256sums = bcb8a42654df5f9670367950daaa01b165c15618f827d18b7b2a8d53d39227a4
-	sha256sums = c5828257e463b707558f42f011ed41b233d16cc2ee748faeabc69d3d02c24e11
+	sha256sums = 07b565df5de13347e282f9e1d42344f19f1a9c2c4806467772694f83c6ae4a6b
 	sha256sums = 6837b3e2152f142f3fff595c6cbd03423f6e7b8d525aac8ae3eb3b58392bd255
 
 pkgname = linux-aarch64-lts
