@@ -4,12 +4,13 @@
 
 pkgname=pg_activity
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Top-like application for PostgreSQL server activity monitoring"
 arch=(any)
 url="https://github.com/dalibo/pg_activity"
 license=(custom:PostgreSQL)
 depends=(
+  python
   python-attrs
   python-blessed
   python-humanize
@@ -22,6 +23,7 @@ makedepends=(
   python-wheel
 )
 checkdepends=(
+  postgresql
   python-pytest
   python-pytest-postgresql
 )
@@ -52,5 +54,5 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
