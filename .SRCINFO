@@ -1,6 +1,6 @@
 pkgbase = pot-translation-bin
 	pkgdesc = 一个跨平台的划词翻译软件
-	pkgver = 1.10.1
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/pot-app/pot-desktop
 	arch = x86_64
@@ -11,10 +11,12 @@ pkgbase = pot-translation-bin
 	depends = xdotool
 	depends = libxcb
 	depends = libxrandr
+	depends = tesseract
+	depends = tesseract-data
 	provides = pot-translation
 	conflicts = pot-translation
 	conflicts = pot-translation-git
-	source = pot-1.10.1-x86_64.deb::https://github.com/pot-app/pot-desktop/releases/download/1.10.1/pot_1.10.1_amd64.deb
-	sha512sums = df8437c009b2c3e8f2a69984eedd424cf53b5ecff933f6808db6adc500f2ac559e6c97f5bed220d97940b568b26deab15758a1425ca4d92485cb8a83c6234d90
+	source = pot-1.11.0-x86_64.deb::https://github.com/pot-app/pot-desktop/releases/download/1.11.0/pot_1.11.0_amd64.deb
+	sha512sums = 65c064405c94498fbc1be6cceb80aab08fdf3cb37ca5b314eb2e0c21c47ed46a2009cfd22d5a1349f2edea01f5ca55d7021d1c0c7e10301574aaf6ba77a08be8
 
 pkgname = pot-translation-bin
