@@ -1,4 +1,4 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-bash-git
 pkgver=0.19.0.r3.g7776f24
@@ -9,7 +9,7 @@ url="https://github.com/tree-sitter/tree-sitter-bash"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('gcc-libs')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter-cli' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
@@ -28,7 +28,7 @@ prepare() {
 build() {
 	cd "$pkgname/src/"
 	cc $CFLAGS -std=c99 -c parser.c
-	c++ $CPPFLAGS -c scanner.cc
+	cc $CFLAGS -std=c99 -c scanner.c
 	c++ $LDFLAGS -shared parser.o scanner.o -o "$srcdir/bash-parser.so"
 }
 
