@@ -4,7 +4,7 @@
 # Co-Maintainer: bartus <arch-user-repo@bartus.33mail.com>
 
 pkgname=inkscape-git
-pkgver=1.3.alpha.r1.g2a5ddc9d23
+pkgver=1.3.alpha.r352.g5cf271997e
 pkgrel=1
 epoch=5
 pkgdesc="An Open Source vector graphics editor, using SVG file format, from git master"
@@ -20,6 +20,7 @@ depends=(
 	'gsl'
 	'gspell'
 	'gtkmm3'
+	'gtksourceview4'
 	'lcms2'
 	'lib2geom-git'
 	'libcdr'
@@ -61,9 +62,9 @@ prepare() {
 # fix track_obj deprecated in libsigc
   sed '/DSIGCXX_DISABLE_DEPRECATED/d' -i CMakeScripts/DefineDependsandFlags.cmake
 # fix lib2geom header location
-  sed -E '/^#include/s/"(point.h)/"2geom\/\1/' -i src/path/splinefit/bezier-fit.cpp src/ui/tool/path-manipulator.cpp src/ui/dialog/symbols.cpp
-  sed -E '/^#include/s/(forward.h)/2geom\/\1/' -i src/ui/tool/path-manipulator.cpp
-  sed -E '/^#include/s/"(rect.h)/"2geom\/\1/' -i src/ui/dialog/object-attributes.cpp
+  sed -E '/^#include/s/"(point.h)/"2geom\/\1/' -i src/path/splinefit/bezier-fit.cpp src/ui/{tool/path-manipulator,dialog/{symbols,extensions-gallery}}.cpp
+  sed -E '/^#include/s/"(rect.h)/"2geom\/\1/' -i src/ui/dialog/{object-attributes,extensions-gallery}.cpp
+  sed -E '/^#include/s/"(transforms.h)/"2geom\/\1/' -i src/ui/widget/gradient-editor.cpp
 }
 
 pkgver() {
