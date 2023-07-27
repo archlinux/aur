@@ -218,11 +218,12 @@ function gen_image() {
     ukify_args+=(--uname "$version")
     ukify_args+=(--os-release "@$os_release")
     ukify_args+=(--output "$image")
-    ukify_args+=("$vmlinuz" "$initrd")
+    ukify_args+=(--linux "$vmlinuz")
+    ukify_args+=(--initrd "$initrd")
 
     echo "==> Ukify image $kernel ($version_name)"
 
-    /usr/lib/systemd/ukify "${ukify_args[@]}"
+    /usr/lib/systemd/ukify build "${ukify_args[@]}"
 
     # Remove temporary files
     rm "$initrd"
