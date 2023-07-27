@@ -1,6 +1,10 @@
 This is an automatically generated copy of the package, originally from https://github.com/MiSTerArch/PKGBUILDs:
-commit 4d93f575a421d8c59f70eda2931860ea305cb7b5
+commit 532f5915efe7144d9e3700bdd6affef2f7e5dacc
 Author: Alexandru M Stan <alex@hypertriangle.com>
-Date:   Wed Jul 13 12:36:53 2022 -0700
+Date:   Thu Jul 27 19:25:25 2023 -0400
 
-    mister-bin to 20220712-1
+    mister/releases now automatically track pkgver
+    
+    Also update those packages.
+    
+    Also add some QOL to the Makefile
