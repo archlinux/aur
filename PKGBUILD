@@ -2,14 +2,14 @@
 
 _pkgname=notes
 pkgname=notes-git
-pkgver=2.2.0.r0.g8f20a2b
+pkgver=2.2.0.r2.g67e724f
 pkgrel=1
 pkgdesc='Note taking application, write down your thoughts'
 arch=('x86_64')
 url='https://github.com/nuttyartist/notes'
 license=('MPL')
 makedepends=('cmake' 'git')
-depends=('hicolor-icon-theme' 'qt6-base' 'qt6-declarative')
+depends=('hicolor-icon-theme' 'qt6-base' 'qt6-declarative' 'qt6-quick3d')
 provides=('notes')
 conflicts=('notes')
 source=("${pkgname}::git+https://github.com/nuttyartist/notes"

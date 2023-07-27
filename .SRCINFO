@@ -1,7 +1,7 @@
 pkgbase = notes-git
 	pkgdesc = Note taking application, write down your thoughts
 	pkgver = 2.2.0.r0.g8f20a2b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nuttyartist/notes
 	arch = x86_64
 	license = MPL
@@ -10,6 +10,7 @@ pkgbase = notes-git
 	depends = hicolor-icon-theme
 	depends = qt6-base
 	depends = qt6-declarative
+	depends = qt6-quick3d
 	provides = notes
 	conflicts = notes
 	source = notes-git::git+https://github.com/nuttyartist/notes
