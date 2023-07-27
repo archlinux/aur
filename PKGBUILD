@@ -1,14 +1,14 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-go-git
 pkgver=0.19.1.r0.g7f6bfd0
-pkgrel=1
+pkgrel=2
 pkgdesc="Golang grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-go"
 license=('MIT')
 groups=('tree-sitter-grammars')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter-cli' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
