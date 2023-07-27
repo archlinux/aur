@@ -7,7 +7,11 @@ pkgrel=1
 pkgdesc='A 3rd party bilibili client'
 url="https://github.com/xfangfang/wiliwili"
 license=('GPL3')
-arch=('x86_64')
+# Some arches are not tested and may not work properly.
+# they are untested and may not compile.
+arch=('x86_64' 'i386' 'aarch64' 'armv7h' 'riscv64' 'loong64')
+# This program should run on any platform that supports C++17,OpenGL(ES)2.0+,ffmpeg platform.
+# arch=('any')
 provides=("$_pkg")
 conflicts=("$_pkg" "$_pkg-bin")
 depends=('mpv')
