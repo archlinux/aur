@@ -2,15 +2,15 @@
 
 _name=FST
 pkgname=fst
-pkgver=0.122.0
+pkgver=0.123.0
 pkgrel=1
 pkgdesc="Free Studio Technology"
 arch=(any)
 url="https://git.iem.at/zmoelnig/FST"
 license=(GPL3)
 source=(https://git.iem.at/zmoelnig/$_name/-/archive/v$pkgver/$_name-v$pkgver.tar.gz)
-sha512sums=('0a199fde0894bda7ecb78b8b534c85fa7ca4c2d2eec2ccee2e76b4b4b60fd19f908c234227baed94d9f94b30d33ce69ec8e7947b4d040930477c2abf1e3fc781')
-b2sums=('32b94edd06bc0b92a2ecf78fa677b45b8acd37edc56f564a8f693128c4bde7be6e8ef516eeb25943237db88a3d91b5b3dca91c8a5569f54d3d34e6e9e126a924')
+sha512sums=('f4fcdc0e4f0e3e6f231969c69464c56e6eb1134ea73a770db5348a514d06263c9d98bcf67260e91b59c727ad3e0f160ff45383221c3f0afc3ff775e5576f3af7')
+b2sums=('fa987375c2874e152393dcc7be584606ff818a76a231f36f33e9eb69820da34fdbf3da6c917164454c5ba47fe5f457e53cef340ffcf404cb6cfeae25339f998c')
 
 package() {
   cd $_name-v$pkgver
