@@ -29,7 +29,7 @@ md5sums_aarch64=("SKIP")
 source=("SCL-icon.png" "SCL.desktop")
 sha256sums=(
 	"ac418e2a871efc0eb4393a15da1352771524fb94b998a8614e158a8ab581f6be"
-	"154b2bc08684aab88ae45d27df8c505fff353072d4fc33ae7da03669cccb0203"
+	"b9201fd7dda93168660eb835363cb8262ecb177c0d2de1b2ba997b838488cdec"
 )
 
 package() {
