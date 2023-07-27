@@ -1,7 +1,7 @@
 # Maintainer: Ivan 'ivabus' Bushchik ivabus@ivabus.dev -> https://github.com/ivabus
 
 pkgname=plainartwork
-pkgver=0.5
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="plainDE icons, flags, etc."
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
