@@ -3,8 +3,8 @@
 pkgname=abpoa
 _pkgname=abPOA
 pkgver=1.4.1
-pkgrel=1
-pkgdesc='SIMD-based C library for fast partial order alignment ' 
+pkgrel=2
+pkgdesc='SIMD-based C library for fast partial order alignment. https://dx.doi.org/10.1093/bioinformatics/btaa963' 
 arch=(x86_64)
 url="https://github.com/yangao07/abPOA"
 license=('MIT')

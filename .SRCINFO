@@ -1,7 +1,7 @@
 pkgbase = abpoa
-	pkgdesc = SIMD-based C library for fast partial order alignment
+	pkgdesc = SIMD-based C library for fast partial order alignment. https://dx.doi.org/10.1093/bioinformatics/btaa963
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yangao07/abPOA
 	arch = x86_64
 	license = MIT
