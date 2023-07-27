@@ -1,0 +1,5 @@
+pkg/
+src/
+xorg-xwayland-osu-*.pkg.*
+xwayland-*.tar.xz
+xwayland-*.tar.xz.sig
