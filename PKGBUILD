@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A script that allows you to filter and search for spammer comments on your channel and other's channel(s)"
 arch=('any')
 url="https://github.com/ThioJoe/YT-Spammer-Purge"
-license=('GPL-3.0')
+license=('GPL3')
 source=("yt-spammer-purge-${pkgver}.tar.gz::https://github.com/ThioJoe/YT-Spammer-Purge/archive/refs/tags/v${pkgver}.tar.gz"
     'yt-spammer-purge')
 depends=('python' 'tk' 'python-google-api-python-client' 
