@@ -3,7 +3,7 @@
 
 _pkgname=xdg-xmenu
 pkgname=xdg-xmenu-git
-pkgver=r113.82629b1_c_version
+pkgver=1.0.0.beta.2.r0.g2e2834d
 pkgrel=1
 pkgdesc="Minimal app menu with xmenu"
 url="https://github.com/xlucn/xdg-xmenu"
@@ -17,7 +17,7 @@ makedepends=('git')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "r%s.%s_c_version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
@@ -26,4 +26,3 @@ package() {
     make PREFIX=/usr DESTDIR="$pkgdir" install
     install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
-
