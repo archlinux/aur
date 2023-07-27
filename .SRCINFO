@@ -1,0 +1,9 @@
+pkgbase = python-pangu
+	pkgver = 4.0.6.1
+	pkgrel = 1
+	arch = any
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/pangu/pangu-4.0.6.1.tar.gz
+	sha256sums = f799d127709fe5ecff5d476945ac63d4be758b7bda02efb95715f1dc24472a2f
+
+pkgname = python-pangu
