@@ -1,0 +1,7 @@
+post_install() {
+        cat <<- EOF
+                :: Add the destination folder (/tmp when using the systemd unit)
+                :: to your /etc/conf.d/prometheus-node-exporter:
+                :: NODE_EXPORTER_ARGS="--collector.textfile.directory /tmp"
+        EOF
+}
