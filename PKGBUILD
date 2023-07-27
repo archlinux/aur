@@ -1,8 +1,10 @@
-# Maintainer: dreieck
+# Maintainer:  dreieck (https://aur.archlinux.org/account/dreieck)
 # Contributor: Christian Hesse
 
 _USE_CCACHE=false
-# _USE_CCACHE=true
+if which ccache > /dev/null; then
+  _USE_CCACHE=true
+fi
 _WITH_NETWORKMANAGER=false
 # _WITH_NETWORKMANAGER=true
 _WITH_VALGRIND=false
@@ -29,7 +31,7 @@ esac
 pkgname="${_pkgname}-${_pkgvariant}-git"
 epoch=0
 pkgver=4.1.1+67.r13230.20230709.4c6844370
-pkgrel=3
+pkgrel=4
 pkgdesc="A GTK based e-mail client. Latest git checkout, built against '${_TOOLKIT}'. Patched to use charset supersets to decode titles and to display protected headers."
 arch=(
   'i686'
