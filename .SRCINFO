@@ -1,0 +1,15 @@
+pkgbase = python-pprintpp-git
+	pkgdesc = Extension of Python package pycountry providing conversion functions.
+	pkgver = 0.4.0.r25.g8731637
+	pkgrel = 1
+	url = https://github.com/wolever/pprintpp.git#branch=pprintpp2
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pprintpp
+	conflicts = python-pprintpp
+	source = python-pprintpp-git::git+https://github.com/wolever/pprintpp.git#branch=pprintpp2
+	b2sums = SKIP
+
+pkgname = python-pprintpp-git
