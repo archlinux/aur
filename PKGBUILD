@@ -1,4 +1,5 @@
-# Maintainer: Sashanoraa <sasha@noraa.gay>
+# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Contributor: Sashanoraa <sasha@noraa.gay>
 
 pkgname=yt-spammer-purge
 pkgver=2.17.0
