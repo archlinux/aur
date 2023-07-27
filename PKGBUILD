@@ -2,7 +2,7 @@
 
 _repo_name=prometheus-pacman-exporter
 pkgname=python-prometheus_pacman_exporter
-pkgver=r9.c3ef40e
+pkgver=r10.ced7e59
 pkgrel=1
 pkgdesc="Export pacman metrics to prometheus"
 arch=('any')

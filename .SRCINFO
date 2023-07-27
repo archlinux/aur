@@ -1,6 +1,6 @@
 pkgbase = python-prometheus_pacman_exporter
 	pkgdesc = Export pacman metrics to prometheus
-	pkgver = r9.c3ef40e
+	pkgver = r10.ced7e59
 	pkgrel = 1
 	url = https://codeberg.org/LukeLR/prometheus-pacman-exporter
 	install = python-prometheus_pacman_exporter.install
