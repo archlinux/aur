@@ -1,8 +1,9 @@
 pkgbase = maa-x-bin
 	pkgdesc = MAA GUI with Electron & Vue3
-	pkgver = 2.0.0beta.11
+	pkgver = 2.0.0_beta.12
 	pkgrel = 1
 	url = https://www.maa.plus/
+	arch = aarch64
 	arch = x86_64
 	license = AGPL3
 	makedepends = gendesk
@@ -34,11 +35,13 @@ pkgbase = maa-x-bin
 	depends = cairo
 	depends = libxfixes
 	conflicts = maa-x
-	noextract = maa-x-2.0.0beta.11.zip
+	noextract = maa-x-2.0.0_beta.12.zip
 	options = !strip
-	source = maa-x-2.0.0beta.11.zip::https://github.com/MaaAssistantArknights/MaaX/releases/download/v2.0.0-beta.11/maa-x-linux-x64-2.0.0-beta.11.zip
 	source = maa-x.png::https://raw.githubusercontent.com/MaaAssistantArknights/MaaX/dev/packages/common/resources/icon.png
-	sha256sums = 569c8540be56e38b92ac9b8a76ffaf8dba133ca3d2c7459f31d7d95ef6fb905c
 	sha256sums = 2920264f809b69ccb61be013538c2162154e6ee7fa3d27e748eec89b51315b5b
+	source_aarch64 = maa-x-2.0.0_beta.12-aarch64.zip::https://github.com/MaaAssistantArknights/MaaX/releases/download/v2.0.0-beta.12/maa-x-linux-arm64-2.0.0-beta.12.zip
+	sha256sums_aarch64 = afd793de48821166e96b89ed816a8a79a77a8f558d407d11a5ab96e59a59e94a
+	source_x86_64 = maa-x-2.0.0_beta.12-x86_64.zip::https://github.com/MaaAssistantArknights/MaaX/releases/download/v2.0.0-beta.12/maa-x-linux-x64-2.0.0-beta.12.zip
+	sha256sums_x86_64 = fbd2fa56dc3249b94d2786b8df6bedaa6422f1dcd77a8faf9fdedab3201e685a
 
 pkgname = maa-x-bin
