@@ -7,6 +7,10 @@ pkgbase = aocl-blis
 	license = custom
 	makedepends = python
 	depends = gcc-libs
+	provides = blas
+	provides = cblas
+	conflicts = blas
+	conflicts = cblas
 	source = aocl-blis-4.0.tar.gz::https://github.com/amd/blis/archive/4.0.tar.gz
 	sha256sums = cddd31176834a932753ac0fc4c76332868feab3e9ac607fa197d8b44c1e74a41
 
