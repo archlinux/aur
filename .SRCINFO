@@ -1,0 +1,21 @@
+pkgbase = bird-babel-rtt
+	pkgdesc = RIP, OSPF, BGP, MPLS, BFD, Babel routing daemon
+	pkgver = 2.13.1
+	pkgrel = 1
+	url = https://bird.network.cz/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = glibc
+	depends = readline
+	depends = ncurses
+	depends = libssh
+	replaces = bird6
+	options = !emptydirs
+	backup = etc/bird.conf
+	source = git+https://gitlab.nic.cz/labs/bird.git
+	source = bird.service
+	sha256sums = SKIP
+	sha256sums = 4aa1e8d41229badd276aa3747f613e7df34761892add2258c63bdb5097dfeb2b
+
+pkgname = bird-babel-rtt
