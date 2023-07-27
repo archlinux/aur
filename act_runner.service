@@ -1,0 +1,13 @@
+[Unit]
+Description=Act Runner
+After=network.target
+
+[Service]
+Type=exec
+Restart=on-failure
+RestartSec=30
+ExecStart=/usr/bin/act_runner -c /etc/act_runner/act_runner.yaml daemon
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
