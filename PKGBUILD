@@ -3,7 +3,7 @@
 
 pkgname=openspades
 pkgver=0.1.3
-pkgrel=2
+pkgrel=1
 pkgdesc="A clone of Voxlap Ace of Spades 0.75"
 arch=('i686' 'x86_64')
 url="http://openspades.yvt.jp/"

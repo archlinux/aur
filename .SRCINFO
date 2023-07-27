@@ -1,7 +1,7 @@
 pkgbase = openspades
 	pkgdesc = A clone of Voxlap Ace of Spades 0.75
 	pkgver = 0.1.3
-	pkgrel = 2
+	pkgrel = 1
 	url = http://openspades.yvt.jp/
 	install = openspades.install
 	arch = i686
@@ -27,4 +27,3 @@ pkgbase = openspades
 	sha256sums = ecd7aaf568f80712d981ecdd7bf9e380221dc2c16e86d2e56a0ddda87432bea3
 
 pkgname = openspades
-
