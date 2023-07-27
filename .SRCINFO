@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-glslang
 	pkgdesc = OpenGL and OpenGL ES shader front end and validator (mingw-w64)
-	pkgver = 11.10.0
+	pkgver = 12.3.1
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/glslang
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mingw-w64-glslang
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = mingw-w64-glslang-11.10.0.tar.gz::https://github.com/KhronosGroup/glslang/archive/11.10.0.tar.gz
-	sha256sums = 8ffc19c435232d09299dd2c91e247292b3508c1b826a3497c60682e4bbf2d602
+	source = mingw-w64-glslang-12.3.1.tar.gz::https://github.com/KhronosGroup/glslang/archive/12.3.1.tar.gz
+	sha256sums = a57836a583b3044087ac51bb0d5d2d803ff84591d55f89087fc29ace42a8b9a8
 
 pkgname = mingw-w64-glslang

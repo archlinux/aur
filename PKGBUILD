@@ -1,5 +1,5 @@
 pkgname=mingw-w64-glslang
-pkgver=11.10.0
+pkgver=12.3.1
 pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (mingw-w64)'
 arch=('any')
@@ -10,7 +10,7 @@ makedepends=('mingw-w64-cmake' 'python' 'git')
 optdepends=('mingw-w64-wine: runtime support')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/glslang/archive/${pkgver}.tar.gz)
-sha256sums=('8ffc19c435232d09299dd2c91e247292b3508c1b826a3497c60682e4bbf2d602')
+sha256sums=('a57836a583b3044087ac51bb0d5d2d803ff84591d55f89087fc29ace42a8b9a8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
