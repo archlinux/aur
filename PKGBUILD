@@ -1,7 +1,7 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
 _pkgname=chatterino2
-pkgver=v2.4.1.r10.g3c73801d2
+pkgver=v2.4.4.r57.g9f8a1d882
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
@@ -52,6 +52,7 @@ prepare () {
     git config submodule.lib/libcommuni.url "$srcdir/libcommuni"
     git config submodule.lib/crashpad.url "$srcdir/crashpad"
     # TODO: crashpad contains its own submodules, this needs to be resolved
+    # crashpad is currently not used by this build
     git config submodule.lib/settings.url "$srcdir/settings"
     git config submodule.lib/signals.url "$srcdir/signals"
     git config submodule.lib/serialize.url "$srcdir/serialize"
