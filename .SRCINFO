@@ -1,5 +1,5 @@
 pkgbase = librime-sbxlm
-	pkgdesc = Rime input method engine (声笔系列码 GIT version)
+	pkgdesc = Rime input method engine (声笔系列码)
 	pkgver = 9.5.12
 	pkgrel = 1
 	epoch = 1
@@ -8,7 +8,6 @@ pkgbase = librime-sbxlm
 	license = GPL3
 	makedepends = cmake
 	makedepends = boost
-	makedepends = git
 	makedepends = gtest
 	makedepends = ninja
 	depends = boost-libs
