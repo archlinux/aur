@@ -4,7 +4,7 @@
 # Contributor: Tuur Vanhoutte <vanhouttetuur at gmail dot com>
 pkgname=notes
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Note taking application, write down your thoughts'
 arch=('x86_64')
 url='https://www.get-notes.com/'
