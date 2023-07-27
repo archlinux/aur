@@ -1,6 +1,6 @@
 pkgbase = unblob-git
 	pkgdesc = Extract files from any kind of container formats
-	pkgver = 0.0.0.r1226.g639ec9a
+	pkgver = 0.0.0.r1228.g6b5e38a
 	pkgrel = 1
 	url = https://github.com/onekey-sec/unblob
 	arch = any
@@ -31,5 +31,7 @@ pkgbase = unblob-git
 	depends = python-ubi-reader
 	depends = python-treelib
 	depends = python-unblob-native
+	source = https://github.com/onekey-sec/unblob
+	sha256sums = SKIP
 
 pkgname = unblob-git

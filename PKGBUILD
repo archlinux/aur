@@ -2,7 +2,7 @@
 
 pkgname=unblob-git
 _pkgname=${pkgname%-git}
-pkgver=0.0.0.r1226.g639ec9a
+pkgver=0.0.0.r1228.g6b5e38a
 pkgrel=1
 pkgdesc='Extract files from any kind of container formats'
 arch=(any)
@@ -13,8 +13,8 @@ _py_deps=(arpy
           click
           cstruct
           dissect.cstruct
-          pyperscan # pyperscan replaces hyperscan (brings vectorscan too)
           # see : https://github.com/onekey-sec/unblob/pull/411#issuecomment-1555961215
+          pyperscan # pyperscan replaces hyperscan (brings vectorscan too)
           jefferson
           lark-parser
           lief
@@ -35,6 +35,8 @@ makedepends=(git
              git-lfs
              python-{build,installer,wheel}
              python-poetry)
+source=("https://github.com/onekey-sec/unblob")
+sha256sums=('SKIP')
 
 # git clone using source array
 # Fails with git-lfs error
@@ -45,7 +47,6 @@ prepare() {
 
 pkgver() {
 	cd "$_pkgname"
-    git tag v0.0.0 1958a226e2ffe86262ddd5a8e8f87a0f98816cdf^
 	  git describe --long --abbrev=7 --tags --match="v*" |
 		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
