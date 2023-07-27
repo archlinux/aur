@@ -5,7 +5,7 @@
 pkgname=unigine-superposition
 _pkgname=Unigine_Superposition
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Interactive Unigine Benchmark: walk through a lab of a lone professor"
 arch=('x86_64')
 url="https://benchmark.unigine.com/superposition"
@@ -27,12 +27,10 @@ depends=(
     'libxrandr'
     'libxrender'
     'libx11'
-    'openal'
     'qt5-base'
     'sh'
     'zlib'
 )
-makedepends=('patchelf')
 options=('!strip')
 _tarname="${_pkgname}-${pkgver}.run"
 source=("${_tarname}::https://assets.unigine.com/d/${_tarname}" "Superposition.desktop")
@@ -50,7 +48,7 @@ build() {
     cat >> "${srcdir}/bin/unigine-superposition" << \here
 #!/bin/sh
 cd /opt/unigine-superposition/bin
-LD_LIBRARY_PATH='/opt/unigine-superposition/bin:/opt/unigine-superposition/bin/qt/lib' ./launcher
+./launcher
 here
 }
 
@@ -71,12 +69,6 @@ package() {
 
     # remove unneeded install scripts
     rm -v "${pkgdir}/opt/${pkgname}/"*install.sh
-
-    # removing unneded libraries
-    rm -v "${pkgdir}/opt/${pkgname}/bin/libopenal.so"
-
-    # removing runpaths
-    patchelf --remove-rpath "${pkgdir}/opt/${pkgname}/bin/launcher"
 
     # misc
     install -v -Dm644 docs/Superposition_Benchmark_End-User_License_Agreement.pdf "${pkgdir}"/usr/share/licenses/${pkgname}/license
