@@ -1,6 +1,6 @@
 pkgbase = python-octodns-git
 	pkgdesc = Tools for managing DNS across multiple providers
-	pkgver = v1.0.0rc1.r0.g7b2a1d4
+	pkgver = 1.0.0rc1.r0.g7b2a1d4
 	pkgrel = 1
 	url = https://github.com/octodns/octodns
 	arch = any

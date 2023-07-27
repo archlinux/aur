@@ -6,7 +6,7 @@ pkgdesc="Tools for managing DNS across multiple providers"
 url="https://github.com/octodns/octodns"
 provides=("python-octodns")
 conflicts=("python-octodns")
-pkgver=v1.0.0rc1.r0.g7b2a1d4
+pkgver=1.0.0rc1.r0.g7b2a1d4
 pkgrel=1
 arch=("any")
 license=("MIT")
@@ -27,7 +27,7 @@ b2sums=("SKIP")
 
 pkgver() {
   cd "${pkgname}"
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//;'
 }
 
 build() {
