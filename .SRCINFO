@@ -1,0 +1,21 @@
+pkgbase = global-appmenu-applet-whose-menu-mnemonic-has-been-disabled-git
+	pkgdesc = A Plasma 5 applet that shows the current window appmenu in your Plasma panels or latte land. The menu mnemonic has been disabled so you can use Alt key as a shortcut modifier. The name after install is Window AppMenu.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/FengZhongShaoNian/applet-window-appmenu.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	depends = kdecoration
+	depends = plasma-workspace
+	conflicts = plasma5-applets-window-appmenu
+	conflicts = plasma5-applets-window-appmenu-git
+	conflicts = applet-window-appmenu-git
+	source = global-appmenu-applet-whose-menu-mnemonic-has-been-disabled-git-0.8.1.tar.gz::https://github.com/FengZhongShaoNian/applet-window-appmenu/archive/refs/tags/v0.8.1.tar.gz
+	md5sums = SKIP
+
+pkgname = global-appmenu-applet-whose-menu-mnemonic-has-been-disabled-git
