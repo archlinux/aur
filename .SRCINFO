@@ -1,0 +1,23 @@
+pkgbase = pdx-unlimiter-deb
+	pkgdesc = Pdx-Unlimiter is a savegame manager for all major Paradox Grand Strategy games
+	pkgver = 2.13.2
+	pkgrel = 1
+	url = https://github.com/crschnick/pdx_unlimiter
+	arch = x86_64
+	license = GPL3
+	depends = alsa-lib
+	depends = libxext
+	depends = libxi
+	depends = java-runtime
+	depends = glibc
+	depends = libxrender
+	depends = libxtst
+	depends = libx11
+	depends = zlib
+	depends = freetype2
+	depends = bash
+	provides = pdx-unlimiter
+	source = https://github.com/crschnick/pdxu_launcher/releases/latest/download/pdxu_installer-linux.deb
+	md5sums = 44fd5b581d0aa4c77aea29b2bc0b7f5d
+
+pkgname = pdx-unlimiter-deb
