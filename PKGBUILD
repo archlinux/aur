@@ -7,7 +7,7 @@ pkgdesc="A script that allows you to filter and search for spammer comments on y
 arch=('any')
 url="https://github.com/ThioJoe/YT-Spammer-Purge"
 license=('GPL-3.0')
-source=("yt-spammer-purge-$pkgver.tar.gz::https://github.com/ThioJoe/YT-Spammer-Purge/archive/refs/tags/v$pkgver.tar.gz"
+source=("yt-spammer-purge-${pkgver}.tar.gz::https://github.com/ThioJoe/YT-Spammer-Purge/archive/refs/tags/v${pkgver}.tar.gz"
     'yt-spammer-purge')
 depends=('python' 'tk' 'python-google-api-python-client' 
     'python-google-auth-oauthlib' 'python-protobuf' 'python-colorama'
@@ -18,8 +18,8 @@ sha256sums=('73e4c9db16a12e87855df0b5116ed834b9ce194c2091c11925e1dc1449113f67'
 install=msg.install
 
 package() {
-    mkdir -p "$pkgdir/usr/share"
-    cp -r "$srcdir/YT-Spammer-Purge-$pkgver" "$pkgdir/usr/share/$pkgname"
-    chmod a+w "$pkgdir/usr/share/$pkgname"
-    install -Dm755 yt-spammer-purge "$pkgdir/usr/bin/yt-spammer-purge"
+    mkdir -p "${pkgdir}/usr/share"
+    cp -r "${srcdir}/YT-Spammer-Purge-${pkgver}" "${pkgdir}/usr/share/${pkgname}"
+    chmod a+w "${pkgdir}/usr/share/${pkgname}"
+    install -Dm755 yt-spammer-purge "${pkgdir}/usr/bin/yt-spammer-purge"
 }
