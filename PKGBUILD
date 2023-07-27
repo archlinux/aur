@@ -4,12 +4,13 @@
 
 pkgname=exodus
 pkgver=23.7.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Send, receive & exchange cryptocurrency with ease on the world's leading Desktop, Mobile and Hardware wallets. Bitcoin wallet"
 arch=('x86_64')
 url="https://exodus.com"
 license=('custom')
 depends=('libxss')
+DLAGENTS=("http::/usr/bin/curl --user-agent 'exodus-archlinux-pkg' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("https://downloads.exodus.com/releases/exodus-linux-x64-${pkgver}.zip"
 	"${pkgname}.svg"
 	"${pkgname}.desktop"
