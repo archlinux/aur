@@ -3,7 +3,7 @@
 
 pkgname=gtk-theme-clearlooks-compact
 pkgver=2019.01.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A compact clearlooks theme for GTK2, GTK3, Metacity, Xfwm4."
 arch=('any')
 url="https://www.gnome-look.org/p/1284820/"
@@ -25,9 +25,7 @@ provides=(
 conflicts=(
   'gtk-clearlooks-compact'
 )
-replaces=(
-  'gtk-clearlooks-compact'
-)
+replaces=()
 
 _themearchive="$(curl -Lfs "${url}/loadFiles" | jq -r '.files | .[] | select(.version == "'"${pkgver}"'").url' | perl -pe 's/\%(\w\w)/chr hex $1/ge')" # See https://unix.stackexchange.com/a/743991/133286
 source=("${_themearchive}")
