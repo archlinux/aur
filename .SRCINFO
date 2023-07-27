@@ -1,6 +1,6 @@
 pkgbase = bley-git
 	pkgdesc = Intelligent greylisting daemon for postfix and exim
-	pkgver = r388.30571b1
+	pkgver = r541.eaad52f
 	pkgrel = 1
 	url = http://bley.mx
 	install = bley.sysusers
@@ -21,11 +21,8 @@ pkgbase = bley-git
 	provides = bley
 	conflicts = bley
 	source = bley-git::git+https://github.com/evgeni/bley.git
-	source = fix_setup.patch
 	source = bley.sysusers
 	md5sums = SKIP
-	md5sums = 18f197d7034087e3125751624a8c13c3
 	md5sums = 4c5d548dd75a3b40c8b5b8f5c74f76ef
 
 pkgname = bley-git
-
