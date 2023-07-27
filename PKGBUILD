@@ -1,8 +1,8 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-lua-git
 pkgver=0.0.14.r0.gfb30e8c
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Lua grammar for tree-sitter"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/muniftanjim/tree-sitter-lua"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('gcc-libs')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter-cli' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
