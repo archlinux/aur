@@ -1,0 +1,14 @@
+pkgbase = python-prometheus_pacman_exporter
+	pkgdesc = Export pacman metrics to prometheus
+	pkgver = r7.550615d
+	pkgrel = 1
+	url = https://codeberg.org/LukeLR/prometheus-pacman-exporter
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-prometheus_client
+	source = git+https://codeberg.org/LukeLR/prometheus-pacman-exporter.git
+	sha256sums = SKIP
+
+pkgname = python-prometheus_pacman_exporter
