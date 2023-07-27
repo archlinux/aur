@@ -2,24 +2,23 @@
 pkgbase='python-dash-bootstrap-components'
 pkgname=('python-dash-bootstrap-components')
 _module='dash-bootstrap-components'
-pkgver=1.4.1
+_wheel='dash_bootstrap_components'
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Bootstrap themed components for use in Plotly Dash"
 url="https://dash-bootstrap-components.opensource.faculty.ai/"
 depends=('python' 'python-dash')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer')
 license=('APACHE')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('05c2e2767a8ab104fc950d15482d09dde59d21f1e9bd5809d30672e61b7f420c')
+sha256sums=('b7514be30e229a1701db5010a47d275882a94d1efff4c803ac42a9d222ed86e0')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    python -m build --wheel . --outdir "${srcdir}" --no-isolation
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer "${srcdir}/${_wheel}-${pkgver}-py3-none-any.whl" --destdir="${pkgdir}"
 }
