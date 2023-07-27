@@ -32,9 +32,6 @@ prepare() {
 }
 
 build() {
-	# if you need run on wayland, you need add cmake options to cmake.
-	# -DGLFW_BUILD_WAYLAND=ON -DGLFW_BUILD_X11=OFF
-
 	# If you want to use Debug mode, deleate -DCMAKE_BUILD_TYPE=Releas
 	# If you don't want to use system library, deleate -USE-SHARED-LIB=ON
 	cmake \
@@ -45,6 +42,8 @@ build() {
 		-DINSTALL=ON \
 		-DCMAKE_BUILD_TYPE=Release \
                 -USE-SHARED-LIB=ON \
+		-DGLFW_BUILD_WAYLAND=ON \
+		-DGLFW_BUILD_X11=ON \
 		-Wno-dev
 	make -C build wiliwili -j$(nproc)
 }
