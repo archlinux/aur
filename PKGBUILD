@@ -3,35 +3,35 @@
 
 pkgname=patator
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-purpose bruteforcer"
 arch=(any)
 url="https://github.com/lanjelot/patator"
 license=(GPL2)
-depends=(python)
+depends=(
+  python
+  python-dnspython
+  python-pyasn1
+)
 optdepends=(
-  'python-paramiko: SSH'
-  'python-pycurl: HTTP'
-  'openldap: LDAP'
   'impacket: SMB'
-  'mysql-python: MySQL'
-  'python-psycopg2: PostgreSQL'
+  'java-runtime: keystore files'
+  'openldap: LDAP'
   'python-crypto: VNC'
+  'python-ipy: NETx keywords'
+  'python-mysqlclient: MySQL'
+  'python-paramiko: SSH'
+  'python-psycopg2: PostgreSQL'
+  'python-pycurl: HTTP'
   'python-pydns: DNS'
   'python-pysnmp: SNMP'
-  'python-ipy: NETx keywords'
-  'java-runtime: keystore files'
   'unzip: zip archives'
 )
-source=("$url/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('dfec3106e3bbab15b83135e17728e8dbb325f2697875364d99abc2ebba15fd5a')
 
-build() {
-  sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python|g' -i "$srcdir/${pkgname}-$pkgver/${pkgname}.py"
-}
-
 package() {
-  install -D -m 0755 "$srcdir/${pkgname}-$pkgver/${pkgname}.py" "$pkgdir/usr/bin/patator"
+  install -D -m 0755 "$srcdir/$pkgname-$pkgver/$pkgname.py" "$pkgdir/usr/bin/patator"
 
   _modules=(
     'ftp_login'
