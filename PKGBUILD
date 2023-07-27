@@ -5,9 +5,9 @@
 
 _pkgname=thunderbird-gnome-theme
 pkgname=thunderbird-gnome-theme-git
-pkgver=r28.f957def
+pkgver=r34.6108cc5
 pkgrel=1
-pkgdesc='A GNOME theme for Firefox'
+pkgdesc='A GNOME theme for Thunderbird'
 arch=('any')
 url='https://github.com/rafaelmardojai/thunderbird-gnome-theme'
 license=('Unlicense')

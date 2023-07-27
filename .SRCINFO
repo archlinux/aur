@@ -1,6 +1,6 @@
 pkgbase = thunderbird-gnome-theme-git
-	pkgdesc = A GNOME theme for Firefox
-	pkgver = r28.f957def
+	pkgdesc = A GNOME theme for Thunderbird
+	pkgver = r34.6108cc5
 	pkgrel = 1
 	url = https://github.com/rafaelmardojai/thunderbird-gnome-theme
 	install = thunderbird-gnome-theme-git.install
