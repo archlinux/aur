@@ -1,15 +1,16 @@
 pkgbase = xdg-xmenu-git
-	pkgdesc = Show apps menu with xmenu
 	pkgver = r113.82629b1_c_version
+	pkgdesc = Minimal app menu with xmenu
 	pkgrel = 1
-	url = https://github.com/OliverLew/xdg-xmenu
+	url = https://github.com/xlucn/xdg-xmenu
 	install = xdg-xmenu-git.install
 	arch = x86_64
+	arch = i686
 	license = MIT
 	makedepends = git
 	depends = xmenu
 	depends = libinih
-	source = git+https://github.com/OliverLew/xdg-xmenu
+	source = git+https://github.com/xlucn/xdg-xmenu#branch=c_version
 	sha256sums = SKIP
 
 pkgname = xdg-xmenu-git
