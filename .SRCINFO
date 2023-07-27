@@ -1,13 +1,13 @@
 pkgbase = tree-sitter-vimdoc-git
 	pkgdesc = Tree-sitter parser for Vim help files
 	pkgver = 1.2.5.r5.g9dee68e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neovim/tree-sitter-vimdoc
 	arch = any
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
-	makedepends = tree-sitter
+	makedepends = tree-sitter-cli
 	makedepends = npm
 	depends = gcc-libs
 	provides = tree-sitter-vimdoc

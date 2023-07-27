@@ -3,14 +3,14 @@
 pkgname=tree-sitter-vimdoc-git
 _pkgname="${pkgname%-git}"
 pkgver=1.2.5.r5.g9dee68e
-pkgrel=1
+pkgrel=2
 pkgdesc="Tree-sitter parser for Vim help files"
 arch=('any')
 url="https://github.com/neovim/tree-sitter-vimdoc"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('gcc-libs')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter-cli' 'npm')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url.git")
