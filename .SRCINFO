@@ -1,7 +1,7 @@
 pkgbase = python-xlmhglite
 	pkgdesc = A minimal fork of the original python-xlmhg package
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GuyTeichman/xlmhglite
 	arch = x86_64
 	license = custom:BSD-3
@@ -18,6 +18,8 @@ pkgbase = python-xlmhglite
 	depends = glibc
 	depends = python-numpy
 	depends = python-plotly
+	depends = python-pandas
+	depends = python-scipy
 	depends = python
 	options = !emptydirs
 	source = https://files.pythonhosted.org/packages/source/x/xlmhglite/xlmhglite-1.1.0.tar.gz

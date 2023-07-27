@@ -3,7 +3,7 @@
 pkgname=python-xlmhglite
 _module=${pkgname#python-}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A minimal fork of the original python-xlmhg package'
 arch=('x86_64')
 url="https://github.com/GuyTeichman/xlmhglite"
@@ -14,6 +14,8 @@ depends=(
          'glibc'
          'python-numpy'
          'python-plotly'
+         'python-pandas'
+         'python-scipy'
          'python')
 
 makedepends=(
