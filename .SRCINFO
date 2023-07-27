@@ -1,6 +1,6 @@
 pkgbase = plaincontrolcenter
 	pkgdesc = plainDE control center
-	pkgver = 0.5.2
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://plainde.github.io
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = plaincontrolcenter
 	depends = plainpanel
 	depends = plainabout
 	conflicts = plaincontrolcenter-git
-	source = plaincontrolcenter-0.5.2.tar.gz::https://github.com/plainDE/plainControlCenter/archive/refs/tags/0.5.2.tar.gz
-	sha256sums = 490000aed236d3d5cbb2769912e20f4825e55ccdfdb75d883c9cd21541353381
+	source = plaincontrolcenter-0.6.2.tar.gz::https://github.com/plainDE/plainControlCenter/archive/refs/tags/0.6.2.tar.gz
+	sha256sums = a0718f674ff76d21716c5f6064980202b4469603fc25793eff902e0f99ed60fe
 
 pkgname = plaincontrolcenter
