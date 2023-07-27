@@ -2,7 +2,7 @@
 # Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=kasts-git
-pkgver=23.01.0.r114.g761e6762
+pkgver=23.11.70_r1316.gaf6e581b
 pkgrel=1
 arch=('x86_64' 'armv7h' 'aarch64')
 pkgdesc="Kirigami-based podcast player"
@@ -20,8 +20,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   ( set -o pipefail
-    git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | \
-      sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
+    _major_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MAJOR' CMakeLists.txt | cut -d '"' -f2)"
+    _minor_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MINOR' CMakeLists.txt | cut -d '"' -f2)"
+    _micro_ver="$(grep -m1 'set *(RELEASE_SERVICE_VERSION_MICRO' CMakeLists.txt | cut -d '"' -f2)"
+    echo "${_major_ver}.${_minor_ver}.${_micro_ver}_r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
   )
 }
 

@@ -1,6 +1,6 @@
 pkgbase = kasts-git
 	pkgdesc = Kirigami-based podcast player
-	pkgver = 23.01.0.r114.g761e6762
+	pkgver = 23.11.70_r1316.gaf6e581b
 	pkgrel = 1
 	url = https://invent.kde.org/multimedia/kasts
 	arch = x86_64
