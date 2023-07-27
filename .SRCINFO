@@ -1,7 +1,7 @@
 pkgbase = notes
 	pkgdesc = Note taking application, write down your thoughts
-	pkgver = 2.1.0
-	pkgrel = 3
+	pkgver = V2.2.0
+	pkgrel = 1
 	url = https://www.get-notes.com/
 	arch = x86_64
 	license = MPL
@@ -9,7 +9,7 @@ pkgbase = notes
 	makedepends = cmake
 	depends = hicolor-icon-theme
 	depends = qt6-base
-	source = git+https://github.com/nuttyartist/notes.git#commit=1ca5ea77bd8e1044b4fa8fd71166cf69904e09f5
+	source = git+https://github.com/nuttyartist/notes.git#commit=V2.2.0
 	source = git+https://github.com/b00f/qautostart.git
 	source = git+https://github.com/pbek/qmarkdowntextedit.git
 	source = git+https://github.com/alex-spataru/QSimpleUpdater.git
