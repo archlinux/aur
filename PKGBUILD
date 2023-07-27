@@ -439,7 +439,6 @@ prepare() {
     '-Dshaderc=enabled'
     '-Dplain-gl=enabled'
     '-Dvdpau=enabled'
-    # '-Dvdpau-gl-x11=enabled'
     '-Dvaapi=enabled'
     '-Dvaapi-drm=enabled'
     '-Dvaapi-wayland=enabled'
