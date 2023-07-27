@@ -1,4 +1,4 @@
-# Maintainer: Ivan 'ivabus' Bushchik ivabus@ivabus.dev -> https://github.com/ivabus
+# Maintainer: Mark 'maemolol' Korobkin <markkorobkin85@gmail.com>
 
 pkgname=plainpanel
 _pkgname=plainPanel
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(qt5-base noto-fonts-emoji polkit ttf-opensans make alsa-utils kwindowsystem python3 picom upower plainbase plainartwork plainabout)
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plainDE/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('1a707d23a245f2ffcacbdd28b7adb8b0ccde9c40d3f56a90ebc3cd0186e040e9')
+sha256sums=('b0167682069f403614079a039577680537f371154660c810943233ba0d917e12')
 conflicts=('plainpanel-git')
 
 build() {
