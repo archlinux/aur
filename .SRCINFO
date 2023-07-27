@@ -1,0 +1,20 @@
+pkgbase = fwbuilder-git
+	pkgdesc = Object-oriented GUI and set of compilers for various firewall platforms. Git version
+	pkgver = 4853.8013c00e1
+	pkgrel = 1
+	url = https://github.com/fwbuilder/fwbuilder
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	depends = libxml2
+	depends = libxslt
+	depends = net-snmp
+	depends = zlib
+	source = git+https://github.com/fwbuilder/fwbuilder.git
+	sha256sums = SKIP
+
+pkgname = fwbuilder-git
