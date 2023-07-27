@@ -6,7 +6,7 @@ pkgname=python-torchaudio-rocm
 _pkgname=audio
 pkgver=2.0.2
 _sox_ver=14.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch (ROCm Support)"
 arch=('x86_64' 'i686')
 url="https://github.com/pytorch/audio"
@@ -56,6 +56,14 @@ prepare() {
 
 build() {
   cd "$srcdir/${_pkgname}"
+
+  # hardcode ROCM_PATH and HIP_ROOT_DIR to /opt/rocm (from arch:python-pytorch-rocm@2.0.1#7)
+  export ROCM_PATH=/opt/rocm
+  export HIP_ROOT_DIR=/opt/rocm
+  # fix bin/hipcc not found, because ROCM_HOME is lost
+  # https://github.com/pytorch/vision/issues/6707#issuecomment-1269640873
+  export ROCM_HOME=/opt/rocm
+
   BUILD_SOX=1 USE_ROCM=1 ROCclr_DIR=/opt/rocm/ python3 setup.py build
 }
 
