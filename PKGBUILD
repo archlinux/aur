@@ -1,14 +1,14 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-toml-git
 pkgver=0.5.1.r2.g8bd2056
-pkgrel=1
+pkgrel=2
 pkgdesc="TOML grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/ikatyang/tree-sitter-toml"
 license=('MIT')
 groups=('tree-sitter-grammars')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter-cli' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
