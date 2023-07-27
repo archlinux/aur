@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mingw-w64-avisynthplus
-pkgver=3.7.2
+pkgver=3.7.3
 pkgrel=1
 pkgdesc='An improved version of the AviSynth frameserver (mingw-w64)'
 arch=('x86_64')
@@ -16,8 +16,8 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-wine')
 source=("https://github.com/AviSynth/AviSynthPlus/archive/v${pkgver}/avisynthplus-${pkgver}.tar.gz"
         "mingw.patch"
         "staticlib.patch")
-sha256sums=('6159fd976dffa62d5db5277cbb0b3b7f7a4ee92fc8667edd32da9840a669ccc1'
-            '155f398626bf3e07edb14ee84b569367af97079ed8ed77cd9fba59581af6f406'
+sha256sums=('b847705af6f16fa26664d06e0fea2bda14a7f6aac8249a9c37e4106ecb8fd44c'
+            'f7532c8693519e88e7dd098c4f69a158028180d3fdbae873d2b73da70601a57a'
             'a0838ef2cf66b89e8588703dfb1cd33c281dbc73a2d7af260668b958a3a5e304')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -32,17 +32,18 @@ build() {
   export LDFLAGS="$LDFLAGS -lssp"
   for _arch in ${_architectures}; do
    ${_arch}-cmake -B build-${_arch} -S "AviSynthPlus-${pkgver}" \
+        -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
 	-DWITH_STATIC_LIB:BOOL='ON' \
 	-DBUILD_SHIBATCH:BOOL='OFF' \
         -Wno-dev
-    make -C build-${_arch}
+    cmake --build build-${_arch}
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    make -C build-${_arch} DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build-${_arch}
 
     mv "$pkgdir"/usr/${_arch}/lib/avisynth/*.dll "$pkgdir"/usr/${_arch}/bin/
     mv "$pkgdir"/usr/${_arch}/lib/avisynth/*.a "$pkgdir"/usr/${_arch}/lib/
