@@ -1,7 +1,7 @@
 # Maintainer: Vojko Pribudić <dmanthing@gmail.com>
 
 pkgname=expressvpn-gui-gtk
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc='Unofficial linux GUI for expressvpn CLI (GTK)'
 arch=('x86_64')
