@@ -2,8 +2,8 @@
 
 _pkgname=notes
 pkgname=notes-git
-pkgver=2.1.0.r74.g5b76489
-pkgrel=2
+pkgver=2.2.0.r0.g8f20a2b
+pkgrel=1
 pkgdesc='Note taking application, write down your thoughts'
 arch=('x86_64')
 url='https://github.com/nuttyartist/notes'
