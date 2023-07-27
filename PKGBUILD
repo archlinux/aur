@@ -1,69 +1,44 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
-
+# Maintainer: Victor Golovanenko <drygdryg2014 at domain yandex.com>
 pkgname=kaitai-struct-compiler-git
-pkgver=0.8.r56.g078d45b
+_pkgname='kaitai-struct-compiler'
+pkgver=0.10.r56.g0acd030
 pkgrel=1
-pkgdesc='Kaitai Struct Compiler: Compiler for the Kaitai declarative binary format parsing language'
-url='http://kaitai.io'
-arch=('x86_64')
-license=('GPL')
-depends=('scala' 'java-runtime')
-makedepends=('git' 'sbt' 'unzip')
-optdepends=()
-backup=()
-source=("${pkgname}::git+https://github.com/kaitai-io/kaitai_struct.git")
-md5sums=('SKIP')
+pkgdesc='Compiler for the Kaitai declarative binary format parsing language.'
+arch=('any')
+url='https://kaitai.io'
+license=('GPL3')
+depends=('java-runtime')
+makedepends=('git' 'sbt')
 provides=('kaitai-struct-compiler')
 conflicts=('kaitai-struct-compiler')
+source=("$_pkgname::git+https://github.com/kaitai-io/kaitai_struct_compiler.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
-  # Remove 'v' prefix on tags; prefix revision with 'r'; replace all '-' with '.'
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd ${pkgname}
-
-  # Pull in compiler and example formats submodules
-  git submodule update --init compiler/ formats/
+  cd "$_pkgname"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   # Build the kaitai-compiler
-  cd "${srcdir}/${pkgname}/compiler"
-  sbt compilerJVM/universal:packageBin
+  cd "$srcdir/$_pkgname"
+  sbt --error compilerJVM/stage
 }
 
 package() {
-  cd "${pkgdir}"
-  mkdir -p "usr/share/${pkgname}/"
-
-  # Unzip the compiler universal .zip into a temporary directory
-  unzip "${srcdir}/${pkgname}/compiler/jvm/target/universal/kaitai-struct-compiler-*.zip" -d compiler-unzip
-
-  # Copy all files out of the unzip directory into compiler-tmp/
-  mkdir -p compiler-tmp/
-  cp -a compiler-unzip/kaitai-struct-compiler-*/* "compiler-tmp/"
-
-  # Install ksy files into usr/share
-  mv "compiler-tmp/formats" "usr/share/${pkgname}/"
-
   # Install java jar / classes
-  mkdir -p "${pkgdir}/usr/share/java/kaitai-struct-compiler/"
-  mv compiler-tmp/lib/*.jar "${pkgdir}/usr/share/java/kaitai-struct-compiler/"
+  cd "$srcdir/$_pkgname/jvm/target/universal/stage/lib/"
+  for f in *.jar; do
+    install -D -m 644 "$f" "$pkgdir/usr/share/java/$_pkgname/$f"
+  done
 
   # Install binaries
-  mkdir -p "${pkgdir}/usr/bin/"
-  mv compiler-tmp/bin/* "${pkgdir}/usr/bin/"
+  install -D -m 755 "$srcdir/$_pkgname/jvm/target/universal/stage/bin/kaitai-struct-compiler" "$pkgdir/usr/bin/kaitai-struct-compiler"
 
   # Patch kaitai-struct-compiler binary to point to system lib instead of installdir lib
-  sed -ir 's/^declare -r lib_dir=.*/declare -r lib_dir="\/usr\/share\/java\/kaitai-struct-compiler"/' "${pkgdir}/usr/bin/kaitai-struct-compiler"
+  sed -i "s/^declare -r lib_dir=.*/declare -r lib_dir=\"\/usr\/share\/java\/${_pkgname}\/\"/" "${pkgdir}/usr/bin/kaitai-struct-compiler"
 
-  # Remove temporary directories
-  rm -rf "${pkgdir}/compiler-unzip"
-  rm -rf "${pkgdir}/compiler-tmp"
-
-  # Cleanup unused files
-  find "${pkgdir}" -type f -iname "*.bat" -delete
+  # Install license
+  install -D -m 644 "$srcdir/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
