@@ -9,7 +9,7 @@ pkgbase = notes
 	makedepends = cmake
 	depends = hicolor-icon-theme
 	depends = qt6-base
-	source = git+https://github.com/nuttyartist/notes.git#commit=V2.2.0
+	source = git+https://github.com/nuttyartist/notes.git#commit=v2.2.0
 	source = git+https://github.com/b00f/qautostart.git
 	source = git+https://github.com/pbek/qmarkdowntextedit.git
 	source = git+https://github.com/alex-spataru/QSimpleUpdater.git

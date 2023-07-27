@@ -11,7 +11,7 @@ url='https://www.get-notes.com/'
 license=('MPL')
 depends=('hicolor-icon-theme' 'qt6-base')
 makedepends=('git' 'cmake')
-_commit=V2.2.0
+_commit=v2.2.0
 source=("git+https://github.com/nuttyartist/notes.git#commit=$_commit"
 	'git+https://github.com/b00f/qautostart.git'
 	'git+https://github.com/pbek/qmarkdowntextedit.git'
