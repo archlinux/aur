@@ -3,14 +3,14 @@
 pkgname=tree-sitter-viml-git
 _pkgname="${pkgname%-git}"
 pkgver=0.2.0.r25.g55ff1b0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tree-sitter parser for VimL"
 arch=('any')
 url="https://github.com/vigoux/tree-sitter-viml"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('gcc-libs')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter-cli' 'npm')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+$url.git")
