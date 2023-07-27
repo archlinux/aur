@@ -1,0 +1,27 @@
+diff --git a/src/WORKSPACE.bazel b/src/WORKSPACE.bazel
+index 1a422b31..6b64f117 100644
+--- a/src/WORKSPACE.bazel
++++ b/src/WORKSPACE.bazel
+@@ -70,6 +70,12 @@ pkg_config_repository(
+   packages = ["glib-2.0", "gobject-2.0", "ibus-1.0"],
+ )
+ 
++# uim
++pkg_config_repository(
++  name = "uim",
++  packages = ["uim"],
++)
++
+ # Japanese Usage Dictionary
+ new_local_repository(
+     name = "ja_usage_dict",
+diff --git a/src/unix/BUILD.bazel b/src/unix/BUILD.bazel
+index b69ce0bb..c986e891 100644
+--- a/src/unix/BUILD.bazel
++++ b/src/unix/BUILD.bazel
+@@ -113,3 +113,5 @@ mozc_py_binary(
+     name = "build_package",
+     srcs = ["build_package.py"],
+ )
++
++exports_files(["uim"])
