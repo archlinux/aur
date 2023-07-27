@@ -1,6 +1,6 @@
 pkgbase = python-pytango
 	pkgdesc = A python binding for the Tango control system
-	pkgver = 9.4.1
+	pkgver = 9.4.2
 	pkgrel = 1
 	url = https://pytango.readthedocs.io/en/stable/
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = python-pytango
 	depends = python-gevent
 	depends = python-pytest
 	depends = python-psutil
-	source = pytango-9.4.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pytango/pytango-9.4.1.tar.gz
-	sha256sums = f00198e9d150a222a9711fafebbee7c688c79814128956e6c92f8c0e7f1605b7
+	source = pytango-v9.4.2.tar.gz::https://gitlab.com/tango-controls/pytango/-/archive/v9.4.2/pytango-v9.4.2.tar.gz
+	sha256sums = 736d5acde077d9c3cceedd2c633d43272209f260865b7ea41748e0fed9344fdc
 
 pkgname = python-pytango

@@ -6,7 +6,8 @@
 
 _name=pytango
 pkgname=python-$_name
-pkgver=9.4.1
+pkgver=9.4.2
+_tag=v$pkgver
 pkgrel=1
 pkgdesc="A python binding for the Tango control system"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -16,15 +17,16 @@ groups=('tango-controls')
 depends=('tango-cpp>=9.4.0' 'boost' 'python-numpy' 'python-six'
 	 'python-gevent' 'python-pytest' 'python-psutil')
 makedepends=(python-setuptools python-sphinx python-sphinx_rtd_theme)
-source=("$_name-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('f00198e9d150a222a9711fafebbee7c688c79814128956e6c92f8c0e7f1605b7')
+
+source=("$_name-$_tag.tar.gz::https://gitlab.com/tango-controls/$_name/-/archive/v$pkgver/$_name-$_tag.tar.gz")
+sha256sums=('736d5acde077d9c3cceedd2c633d43272209f260865b7ea41748e0fed9344fdc')
 
 build() {
-  cd "$_name-$pkgver"
+  cd "$_name-$_tag"
   python setup.py build
 }
 
 package() {
-  cd "$_name-$pkgver"
+  cd "$_name-$_tag"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
