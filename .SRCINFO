@@ -1,0 +1,16 @@
+pkgbase = kaitai-struct-compiler-serialization-git
+	pkgdesc = Kaitai Struct Compiler: Compiler for the Kaitai declarative binary format parsing language. Serialization support included.
+	pkgver = 0.10.r94.gf1dc857
+	pkgrel = 1
+	url = https://doc.kaitai.io/serialization.html
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = sbt
+	depends = java-runtime
+	provides = kaitai-struct-compiler
+	conflicts = kaitai-struct-compiler
+	source = kaitai-struct-compiler::git+https://github.com/kaitai-io/kaitai_struct_compiler.git#branch=serialization
+	sha256sums = SKIP
+
+pkgname = kaitai-struct-compiler-serialization-git
