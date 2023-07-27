@@ -1,0 +1,13 @@
+pkgbase = python-sphinxcontrib-asciinema
+	pkgdesc = Embed asciinema casts in your Sphinx docs.
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = https://github.com/divi255/sphinxcontrib.asciinema
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-sphinx
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib.asciinema/sphinxcontrib.asciinema-0.3.7.tar.gz
+	b2sums = 6722d0bf535368b9e1e62000eff874a7480b3c8d4842419bd45fb1a6fbee9c7ea2daf5789e47b090ff89598084ddca0a4bd42862fffd7a6b7b5d609e4bb0268a
+
+pkgname = python-sphinxcontrib-asciinema
