@@ -1,13 +1,13 @@
 pkgbase = tree-sitter-latex-git
 	pkgdesc = LaTex grammar for tree-sitter
 	pkgver = r33.7f72066
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/latex-lsp/tree-sitter-latex
 	arch = x86_64
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
-	makedepends = tree-sitter
+	makedepends = tree-sitter-cli
 	makedepends = npm
 	provides = tree-sitter-latex
 	conflicts = tree-sitter-latex

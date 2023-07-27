@@ -1,14 +1,14 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: HelloImWar <helloimwar at proton dot me>
 
 pkgname=tree-sitter-latex-git
 pkgver=r33.7f72066
-pkgrel=2
+pkgrel=3
 pkgdesc="LaTex grammar for tree-sitter"
 arch=('x86_64')
 url="https://github.com/latex-lsp/tree-sitter-latex"
 license=('MIT')
 groups=('tree-sitter-grammars')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter-cli' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
