@@ -1,15 +1,14 @@
 pkgbase = thedesk-bin
 	pkgdesc = Mastodon Client for PC.
 	pkgver = 24.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://thedesk.top/
 	arch = x86_64
 	license = GPL3
 	depends = electron22
 	depends = hicolor-icon-theme
-	depends = zsh
+	depends = bash
 	conflicts = thedesk
-	conflicts = thedesk-appimage
 	source = thedesk-24.1.3.deb::https://github.com/cutls/TheDesk/releases/download/v24.1.3/thedesk_24.1.3_amd64.deb
 	source = thedesk.sh
 	sha256sums = 16afa40dd351ec6d056e2fbe3851b161b80514e9e9773c72d09561e6dfe2f21b
