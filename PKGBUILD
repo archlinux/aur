@@ -4,12 +4,12 @@
 # Contributor: Tuur Vanhoutte <vanhouttetuur at gmail dot com>
 pkgname=notes
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Note taking application, write down your thoughts'
 arch=('x86_64')
 url='https://www.get-notes.com/'
 license=('MPL')
-depends=('hicolor-icon-theme' 'qt6-base')
+depends=('hicolor-icon-theme' 'qt6-base' 'qt6-declarative' 'qt6-quick3d')
 makedepends=('git' 'cmake')
 _commit=v2.2.0
 source=("git+https://github.com/nuttyartist/notes.git#commit=$_commit"
