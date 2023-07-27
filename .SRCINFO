@@ -1,0 +1,13 @@
+pkgbase = logitech-g923-xbox-udev
+	pkgdesc = The udev rules for the Logitech G923 Xbox wheel
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = usb_modeswitch
+	source = 99-logitech-g923-xbox.rules
+	source = 046d:c26d
+	sha256sums = 6d65fbc73cf17f3fe2f2fa2ea0382d20ca6803dc3906006019da343d35444f87
+	sha256sums = d352026fbe910a1fc7fb7194719cac2e8fc768033a1b732f7a4e7fa47e2988bc
+
+pkgname = logitech-g923-xbox-udev

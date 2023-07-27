@@ -1,0 +1,2 @@
+# Logitech G923 wheel switch to PC mode
+ATTR{idVendor}=="046d", ATTR{idProduct}=="c26d", RUN+="usb_modeswitch '%b/%k'"
