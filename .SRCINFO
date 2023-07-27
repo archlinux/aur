@@ -1,7 +1,7 @@
 pkgbase = python-jaxlib
 	pkgdesc = XLA library for JAX
-	pkgver = 0.4.13
-	pkgrel = 3
+	pkgver = 0.4.14
+	pkgrel = 1
 	url = https://github.com/google/jax/
 	arch = x86_64
 	groups = jax
@@ -15,7 +15,7 @@ pkgbase = python-jaxlib
 	depends = python-numpy
 	depends = python-scipy
 	conflicts = python-jaxlib
-	source = jaxlib-0.4.13.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v0.4.13.tar.gz
-	sha256sums = 45766238b57b992851763c64bc943858aebafe4cad7b3df6cde844690bc34293
+	source = jaxlib-0.4.14.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v0.4.14.tar.gz
+	sha256sums = 9f309476a8f6337717b059b8d10b5859b4134c30cf8f1220bb70379b5e2744a4
 
 pkgname = python-jaxlib
