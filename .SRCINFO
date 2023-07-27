@@ -1,7 +1,7 @@
 pkgbase = config-links
 	pkgdesc = Config file sharing
 	pkgver = 2.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/egor-tensin/config-links
 	arch = any
 	license = MIT
