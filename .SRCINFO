@@ -1,11 +1,11 @@
 pkgbase = mister-menu
 	pkgdesc = FPGA bitstream loaded by uboot which shows the MiSTer menu
-	pkgver = 20220413
+	pkgver = 20230223
 	pkgrel = 1
 	url = https://github.com/MiSTer-devel/Menu_MiSTer
 	arch = armv7h
-	license = GPL
-	source = https://github.com/MiSTer-devel/Menu_MiSTer/raw/master/releases/menu_20220413.rbf
-	sha256sums = 01286520f2b8186c3f79e8a71fd8143efab4b8202274c65186711baef77b8dbf
+	license = GPL2
+	source = git+https://github.com/MiSTer-devel/Menu_MiSTer.git
+	sha256sums = SKIP
 
 pkgname = mister-menu

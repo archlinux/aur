@@ -1,6 +1,6 @@
 This is an automatically generated copy of the package, originally from https://github.com/MiSTerArch/PKGBUILDs:
-commit 6d9931acad7330d19f273128d0c8ea510905724e
+commit a0cb01d5efd4375cb39ac2a03a09873d2c0dbf7e
 Author: Alexandru M Stan <alex@hypertriangle.com>
-Date:   Sat Apr 16 18:06:50 2022 -0700
+Date:   Tue May 3 19:51:38 2022 -0700
 
-    mister-menu to 20220413-1
+    mister-menu: style fixup

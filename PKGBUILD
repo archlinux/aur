@@ -4,15 +4,21 @@
 buildarch=4
 
 pkgname=mister-menu
-pkgver=20220413
+pkgver=20230223
 pkgrel=1
 pkgdesc="FPGA bitstream loaded by uboot which shows the MiSTer menu"
 arch=('armv7h')
 url='https://github.com/MiSTer-devel/Menu_MiSTer'
-license=('GPL')
-source=("https://github.com/MiSTer-devel/Menu_MiSTer/raw/master/releases/menu_${pkgver}.rbf")
-sha256sums=('01286520f2b8186c3f79e8a71fd8143efab4b8202274c65186711baef77b8dbf')
+license=('GPL2')
+source=("git+https://github.com/MiSTer-devel/Menu_MiSTer.git")
+sha256sums=('SKIP')
 
-package_mister-menu() {
-  install menu_${pkgver}.rbf -D "${pkgdir}"/boot/menu.rbf
+pkgver() {
+  cd "Menu_MiSTer/releases"
+  last_file=$(ls | tail -n 1)
+  echo ${last_file} | sed "s/menu_//" | sed "s/.rbf//"
+}
+
+package() {
+  install Menu_MiSTer/releases/menu_${pkgver}.rbf -D "${pkgdir}"/boot/menu.rbf
 }

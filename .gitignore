@@ -3,6 +3,7 @@
 *.7z
 *.rar
 *.rbf
+*/*MiSTer*/
 
 # Ignore everything that gets build
 src/
