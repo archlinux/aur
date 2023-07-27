@@ -24,3 +24,4 @@ package(){
  find "$pkgdir"/opt -type f -not -path "*resources/*" -delete
  find $pkgdir -name "*.desktop" -exec sed -i -r "s!^Exec=.*!Exec=electron24 /opt/teams-for-linux/resources/app.asar!" {} \;
 }
+
