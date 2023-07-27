@@ -16,7 +16,7 @@ pkgrel=1
 arch=(x86_64)
 license=(MIT)
 makedepends=(clang12-minimal llvm12-minimal cmake ninja python git spirv-llvm-translator12-minimal gcc12 gcc12-fortran gcc12-libs)
-source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${pkgver}.tar.gz)
+source=(https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-"${pkgver}".tar.gz)
 
 # Both ninja & LIT by default use all available cores. this can lead to heavy stress on systems making them unresponsive.
 # It can also happen that the kernel oom killer interferes and kills important tasks.
@@ -33,7 +33,7 @@ export CXX=/usr/bin/g++-12
 export CFLAGS+=" ${CPPFLAGS}"
 export CXXFLAGS+=" ${CPPFLAGS}"
 
-  cd ${srcdir}/llvm-project-llvmorg-${pkgver}/libclc
+  cd "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/libclc
 
   rm -rf build
 
@@ -46,10 +46,10 @@ export CXXFLAGS+=" ${CPPFLAGS}"
 }
 
 package(){
-  DESTDIR="$pkgdir" ninja $NINJAFLAGS -C ${srcdir}/llvm-project-llvmorg-${pkgver}/libclc/build/ install
+  DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/libclc/build/ install
 
-  install -Dm644 ${srcdir}/llvm-project-llvmorg-${pkgver}/libclc/LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 ${srcdir}/llvm-project-llvmorg-${pkgver}/libclc/CREDITS.TXT "$pkgdir/usr/share/licenses/$pkgname/CREDITS"
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/libclc/LICENSE.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 "${srcdir}"/llvm-project-llvmorg-"${pkgver}"/libclc/CREDITS.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/CREDITS
 }
 
 sha256sums=('66b64aa301244975a4aea489f402f205cde2f53dd722dad9e7b77a0459b4c8df')
