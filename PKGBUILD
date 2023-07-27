@@ -1,7 +1,7 @@
-# Maintainer: Witalij Berdinskikh <vitalij_r2@outlook.com>
+# Maintainer: Vitalij Berdinskih <vitalij_r2 at outlook dot com>
 
 pkgname=intellij-http-client
-pkgver=231.9161.38
+pkgver=232.8660.185
 pkgrel=1
 pkgdesc="IntelliJ HTTP Client: run HTTP requests from a terminal. The binary is called ijhttp."
 arch=("any")
@@ -22,9 +22,9 @@ package() {
 	install -D ${pkgname} "${pkgdir}"/usr/bin/ijhttp
 }
 
-md5sums=('6b53d9dc71b5c9dd19a10c895a471f5d'
+md5sums=('02a7e54b19a439584ed1a9e440b295b9'
          '7c9c50bca2863eccc4ce3c37c6a2c2fd'
          '20d3cf451bcd33a245a957bfbbec9b50')
-sha256sums=('64d6907b41e2ba9c6f59ad7782aff96e18f2b44c53197f162f652f793e94ee9a'
+sha256sums=('69675944efdb51bbb6d8f52eade84fa0e37e54962d6851e92ae4094352aa17fa'
             '7631fff1dee9bddd5d5c4b2a6496f7095d577c72ca7cad54d7eb24b2e4302968'
             '938214dc5b40b1c235663d76508b5f0b3c11d876ef69f22ec4fb49a8e22cb8a1')
