@@ -1,7 +1,7 @@
 pkgbase = prepros-bin
 	pkgdesc = Prepros compiles your files, transpiles your JavaScript, reloads your browsers and makes it really easy to develop & test your websites so you can focus on making them perfect.
 	pkgver = 7.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://prepros.io
 	arch = x86_64
 	license = custom:proprietary
