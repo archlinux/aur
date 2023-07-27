@@ -13,7 +13,7 @@ optdepends=("wireguard-tools: for debugging")
 conflicts=("webmesh-git")
 
 source=(
-    "https://github.com/webmeshproj/node/releases/download/v$pkgver/checksums.txt"
+    "https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt"
 )
 
 sha256sums=(
@@ -23,11 +23,11 @@ sha256sums=(
 prepare() {
     COSIGN_EXPERIMENTAL=1 cosign verify-blob \
         --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
-        --certificate-identity-regexp="github\.com/webmeshproj/node" \
-        --signature="https://github.com/webmeshproj/node/releases/download/v$pkgver/checksums.txt.sig" \
-        --certificate="https://github.com/webmeshproj/node/releases/download/v$pkgver/checksums.txt.sig.cert" \
+        --certificate-identity-regexp="github\.com/webmeshproj/webmesh" \
+        --signature="https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt.sig" \
+        --certificate="https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt.sig.cert" \
         checksums.txt
-    curl -JL https://github.com/webmeshproj/node/releases/download/v$pkgver/webmesh_Linux_$CARCH.tar.gz > webmesh_Linux_$CARCH.tar.gz
+    curl -JL https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/webmesh_Linux_$CARCH.tar.gz > webmesh_Linux_$CARCH.tar.gz
     sha256sum -c checksums.txt --ignore-missing
     tar -C "$srcdir" -xzf webmesh_Linux_$CARCH.tar.gz
 }
