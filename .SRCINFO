@@ -6,8 +6,7 @@ pkgbase = aocl-blis
 	arch = x86_64
 	license = custom
 	makedepends = python
-	options = staticlibs
-	options = !emptydirs
+	depends = gcc-libs
 	source = aocl-blis-4.0.tar.gz::https://github.com/amd/blis/archive/4.0.tar.gz
 	sha256sums = cddd31176834a932753ac0fc4c76332868feab3e9ac607fa197d8b44c1e74a41
 
