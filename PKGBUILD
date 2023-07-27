@@ -3,7 +3,7 @@
 _reponame=Shipwright
 pkgbase=soh-git
 pkgname=(soh-git soh-otr-exporter-git)
-pkgver=7.0.2.r82.gef6227d8b
+pkgver=7.1.0.r5.g861003a09
 pkgrel=1
 arch=("x86_64" "i686")
 url="https://shipofharkinian.com/"
@@ -14,13 +14,11 @@ makedepends=("cmake" "ninja" "python" "curl" "lsb-release" "libxrandr" "libxiner
 source=("git+https://github.com/HarbourMasters/${_reponame}.git"
         "git+https://github.com/Kenix3/libultraship.git"
         "soh.desktop"
-        "soh-misc-otr-patches.patch"
-        "lus-install-paths.patch")
+        "soh-misc-otr-patches.patch")
 sha256sums=('SKIP'
             'SKIP'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2'
-            '440a1a0d09fc4bec154f089c522adb598f6e99e9d2b39b20cfce9e5e6b8155f5'
-            '4893372c68554681ad05c66dc054ebbb74843dac5088de04a7ae631ddc1b2d38')
+            'c4e52efee2c995ff3841cd318864a751a0fffe565adf8be239fd963c014c5a64')
 
 # NOTE: If compiling complains about missing headers, set __generate_headers below to 1
 # Changable options for debugging:
@@ -61,7 +59,6 @@ prepare() {
   fi
 
   patch -Np1 -i "${srcdir}/soh-misc-otr-patches.patch"
-  (cd libultraship && patch -Np1 -i "${srcdir}/lus-install-paths.patch")
 }
 
 build() {
@@ -75,7 +72,8 @@ build() {
 
   CFLAGS="${CFLAGS/-Werror=format-security/}" \
   CXXFLAGS="${CXXFLAGS/-Werror=format-security/}" \
-    cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_INSTALL_PREFIX=$SHIP_PREFIX .
+    cmake -Bbuild -GNinja -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
+        -DNON_PORTABLE=On -DCMAKE_INSTALL_PREFIX=$SHIP_PREFIX .
 
   cmake --build build --target ZAPD --config $BUILD_TYPE
 
@@ -138,5 +136,5 @@ package_soh-otr-exporter-git() {
     sed -i "/ExternalXMLFolder/s,assets/extractor,${SHIP_PREFIX}/&," {} +
 
   install -dm755 "${pkgdir}/usr/share/licenses/soh-otr-exporter"
-  install -Dm644 "OTRExporter/LICENSE" "${pkgdir}/usr/share/licenses/soh"
+  install -Dm644 "OTRExporter/LICENSE" "${pkgdir}/usr/share/licenses/soh-otr-exporter/LICENSE"
 }
