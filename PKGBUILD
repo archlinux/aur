@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jmorganca/ollama/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1ebb7d19d8e76ba3c1a00ab55f67a97fca6ad3a21eeb69e718fbdae81958e4cc')
+sha256sums=('115be13ba5702e9569c84b623dab08f103ef807e61eec354600bf7aefd1d5e07')
 
 prepare() {
   cd "$pkgname-$pkgver"
