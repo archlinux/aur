@@ -1,13 +1,13 @@
 pkgbase = tree-sitter-markdown-git
 	pkgdesc = A markdown grammar for tree-sitter
 	pkgver = r210.g10b9b5a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MDeiml/tree-sitter-markdown
 	arch = any
 	groups = tree-sitter-grammars
 	license = MIT
 	makedepends = git
-	makedepends = tree-sitter
+	makedepends = tree-sitter-cli
 	makedepends = npm
 	depends = gcc-libs
 	provides = tree-sitter-markdown

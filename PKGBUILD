@@ -3,14 +3,14 @@
 pkgname=tree-sitter-markdown-git
 _pkgname="${pkgname%-git}"
 pkgver=r210.g10b9b5a
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown grammar for tree-sitter"
 arch=('any')
 url="https://github.com/MDeiml/tree-sitter-markdown"
 license=('MIT')
 groups=('tree-sitter-grammars')
 depends=('gcc-libs')
-makedepends=('git' 'tree-sitter' 'npm')
+makedepends=('git' 'tree-sitter-cli' 'npm')
 provides=("$_pkgname" "${_pkgname}-inline")
 conflicts=("$_pkgname" "${_pkgname}-inline")
 source=("$pkgname::git+$url.git")
