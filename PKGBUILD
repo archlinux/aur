@@ -4,7 +4,7 @@
 
 pkgname=czmq
 pkgver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="High-level C binding for 0MQ"
 arch=('i686' 'x86_64')
 url="http://czmq.zeromq.org"
@@ -39,4 +39,9 @@ package() {
 	cd "$pkgname-$pkgver"
 
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/czmq"
+
+	# For some reason, CMAKE installation also includes
+	# many files that are not needed. The following line
+	# removes them. See https://github.com/microsoft/vcpkg/pull/24434/files
+	rm -f "${pkgdir}/usr/include/"{readme.txt,sha1.h,sha1.inc_c,slre.h,slre.inc_c,zgossip_engine.inc,zgossip_msg.h,zhash_primes.inc,zsock_option.inc}
 }
