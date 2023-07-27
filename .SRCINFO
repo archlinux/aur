@@ -1,6 +1,6 @@
 pkgbase = plainde-meta
 	pkgdesc = Meta package to install plainDE
-	pkgver = 0.5.2
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://plainde.github.io
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = plainde-meta
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	depends = plainpanel=0.5.2
-	depends = plainabout=0.5.2
-	depends = plaincontrolcenter=0.5.2
-	depends = plainbase=0.5.2
+	depends = plainpanel=0.6.2
+	depends = plainabout=0.6.2
+	depends = plaincontrolcenter=0.6.2
+	depends = plainbase=0.6.2
 	depends = plainartwork
 	conflicts = plainde-meta-git
 
