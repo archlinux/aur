@@ -1,15 +1,16 @@
 pkgbase = yaft
 	pkgdesc = yet another framebuffer terminal
 	pkgver = 0.2.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/uobikiemukot/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = ncurses
+	optdepends = fbv: for the yaft_wall command to work
+	optdepends = idump: for the yaft_wall command to work
 	backup = usr/share/terminfo/y/yaft-256color
 	source = https://github.com/uobikiemukot//yaft/archive/v0.2.9.tar.gz
 	md5sums = ddcbe929c51c453b01e3d18579b0860a
 
 pkgname = yaft
-
