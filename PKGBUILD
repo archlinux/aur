@@ -11,7 +11,7 @@ conflicts=('linux-firmware')
 provides=("linux-firmware=${pkgver}")
 options=(!strip)
 source=(
-  "git+https://github.com/orangepi-xunlong/firmware.git"
+  "git+${url}.git"
 )
 
 sha256sums=(
