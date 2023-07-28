@@ -1,7 +1,7 @@
 # Maintainer: kuri <kurikuri22 at yandex dot com>
 pkgname=bililive-go-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.7.13
+pkgver=0.7.14
 pkgrel=1
 pkgdesc="pre build binary for bililive-go"
 arch=("x86_64")
@@ -15,10 +15,15 @@ source=("${_pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/bilil
         "LICENSE::https://raw.githubusercontent.com/hr3lxphr6j/bililive-go/master/LICENSE"
         "${_pkgname}@.service"
         "${_pkgname}.service")
-b2sums=('b085d5d6b911c3b8b712de031bd36d434485060e5bd152f79c958ae990d58fd072e972759995ee541f0642d95dd42e321e0244930a6ddf6d1a41156fe643bc8a'
+b2sums=('ed2f5d4be91ce5fe0e2e33c4f7a3140b46d96f5cb2bfbb43ed7ee0039d1a7d34c2fda14fda31ea84c284f125c43e953ede66438b06b1ba9132452a9a24cb40ea'
         'ab7e38fc42fb6686add7393ecc3c7ec622cc0d72d0304ded3e56c2f96dc8433c584520896a30c037affa44461ecccfaf3ffa4a97a7e050e8ed0ec4c592caa45c'
         'SKIP'
         'SKIP')
+
+prepare() {
+  cd "${srcdir}"
+  sed -i "s/save_last_log: true/save_last_log: false/" config.yml
+}
 
 package(){
   install -Dm644 "${_pkgname}@.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}@.service"		
