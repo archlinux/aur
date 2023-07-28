@@ -1,7 +1,7 @@
 pkgbase = raytracinginvulkan-git
 	pkgdesc = Implementation of Peter Shirley's Ray Tracing In One Weekend book
 	pkgver = 7.r16.g5316859
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GPSnoopy/RayTracingInVulkan
 	arch = x86_64
 	license = BSD

@@ -3,7 +3,7 @@
 _pkgname='raytracinginvulkan'
 pkgname="${_pkgname}-git"
 pkgver=7.r16.g5316859
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of Peter Shirley's Ray Tracing In One Weekend book"
 arch=('x86_64')
 url='https://github.com/GPSnoopy/RayTracingInVulkan'
