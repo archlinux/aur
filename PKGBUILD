@@ -8,7 +8,7 @@ pkgname=("$pkgbase" "$pkgbase-headers")
 pkgver=6.1.11
 _armbver=23.02.2
 _kernver="$pkgver-$_target"
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 _desc="AArch64 multi-platform $_target (from Armbian-edge)"
 url="https://github.com/armbian/build"
@@ -47,9 +47,9 @@ _package() {
 
   cd "$srcdir"
 
-  ar x "linux-dtb-current-${_target}_${_armbver}_arm64.deb"
+  ar x "linux-dtb-edge-${_target}_${_armbver}_arm64.deb"
   tar -xf data.tar.xz
-  ar x "linux-image-current-${_target}_${_armbver}_arm64.deb"
+  ar x "linux-image-edge-${_target}_${_armbver}_arm64.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/boot"
@@ -83,9 +83,9 @@ _package-headers() {
 
   cd "$srcdir"
 
-  ar x "linux-image-current-${_target}_${_armbver}_arm64.deb"
+  ar x "linux-image-edge-${_target}_${_armbver}_arm64.deb"
   tar -xf data.tar.xz
-  ar x "linux-headers-current-${_target}_${_armbver}_arm64.deb"
+  ar x "linux-headers-edge-${_target}_${_armbver}_arm64.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/usr/lib/modules/$_kernver"
