@@ -1,5 +1,3 @@
 checksums:
-	makepkg --geninteg
-
-srcinfo:
+	updpkgsums
 	makepkg --printsrcinfo > .SRCINFO
