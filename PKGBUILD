@@ -22,7 +22,7 @@ sha256sums=('a03840cf9735b97c5207516adaeaba6ae53c5db481551ef8e93c7e4b253a726b')
 
 build() {
   cd "${srcdir}/DeepSpeed-$pkgver"
-  python -m build --wheel --no-isolation
+  DS_BUILD_OPS=1 DS_BUILD_SPARSE_ATTN=0 python -m build --wheel --no-isolation
 }
 
 package() {
