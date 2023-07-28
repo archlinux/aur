@@ -2,8 +2,8 @@
 
 _name=pytest-archon
 pkgname=python-${_name}
-pkgver=0.0.4
-pkgrel=3
+pkgver=0.0.5
+pkgrel=1
 pkgdesc="A little tool that helps you structure (large) Python projects"
 arch=('any')
 url="https://github.com/jwbargsten/${_name}"
@@ -21,15 +21,8 @@ makedepends=(
 checkdepends=(
 	'python-pytest'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-	"$pkgname-$pkgver.patch")
-sha256sums=('c809faa1695a708d4dc5faad0811d7b28e2fd9f668d93bdbe9f3eb0e13698a7d'
-            '7296e5208ce64fa6d2b71e6f38de94336e9f426d401797cb6029c241fc49008a')
-
-prepare() {
-	cd "${srcdir}/${_name}-${pkgver}"
-	patch --strip=1 --input="${srcdir}/${pkgname}-${pkgver}.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('04d45dc1d27c149da206f5957e0dac6b9e01c426334bcc28dcd50c944bf157a4')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
