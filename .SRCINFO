@@ -1,7 +1,7 @@
 pkgbase = cchv2
 	pkgdesc = A powerful contest helper for CodeForces.com
 	pkgver = 2.0.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CodeforcesContestHelper/CCHv2
 	arch = any
 	license = GPL3
