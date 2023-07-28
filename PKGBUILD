@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgbase=linux-flowx13
-pkgver=6.4.5.arch1
+pkgver=6.4.7.arch1
 pkgrel=1
 pkgdesc='Linux (with patches for the Asus Flow X13)'
 _srctag=v${pkgver%.*}-${pkgver##*.}
