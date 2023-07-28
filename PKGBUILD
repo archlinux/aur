@@ -4,7 +4,7 @@ pkgname="gnome-thumbnailers-git"
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 pkgver=r23.6d695f6
-pkgrel=1
+pkgrel=2
 pkgdesc="Thumbnailing utilities for 3D files for GNOME 42+"
 arch=(any)
 url="https://github.com/rcarmo/gnome-thumbnailers"
@@ -31,8 +31,8 @@ prepare() {
 }
 
 package() {
-	mkdir -p "${pkgdir}/usr/local/bin"
-	cp "$srcdir/${pkgname}"/*_thumbnailer "${pkgdir}/usr/local/bin"
+	mkdir -p "${pkgdir}/usr/bin"
+	cp "$srcdir/${pkgname}"/*_thumbnailer "${pkgdir}/usr/bin"
 	mkdir -p "${pkgdir}/usr/share/thumbnailers"
 	cp "$srcdir/${pkgname}"/*.thumbnailer "${pkgdir}/usr/share/thumbnailers"
 }
