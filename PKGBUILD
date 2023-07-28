@@ -1,18 +1,18 @@
 # Maintainer: Integral <integral@murena.io>
 
 pkgname=arianna
-pkgver=1.1.0
-pkgrel=2
+pkgver=23.07.80
+pkgrel=1
 pkgdesc="EPub Reader for mobile devices"
 url="https://invent.kde.org/graphics/${pkgname}"
 depends=('kirigami-addons' 'kquickcharts' 'hicolor-icon-theme')
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 license=('GPL' 'LGPL' 'MIT' 'BSD')
 makedepends=('git' 'extra-cmake-modules' 'kdoctools' 'kfilemetadata' 'qqc2-desktop-style' 'python' 'reuse' 'baloo' 'qt5-websockets' 'qt5-webengine')
 provides=('arianna')
 conflicts=('arianna')
 source=("https://invent.kde.org/graphics/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('b2624a4d567bc975d7d4dd053e5e99f64f6a8cd7d0e55231a3a32581ab30bb26')
+sha256sums=('ce6ca4effce77719c27d6155e654c44c46c24f8c54dcd01afad508a1ef41c1fe')
 
 prepare() {
   mkdir -p ${pkgname}-v${pkgver}/build/

@@ -1,10 +1,9 @@
 pkgbase = arianna
 	pkgdesc = EPub Reader for mobile devices
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 23.07.80
+	pkgrel = 1
 	url = https://invent.kde.org/graphics/arianna
 	arch = x86_64
-	arch = aarch64
 	license = GPL
 	license = LGPL
 	license = MIT
@@ -24,7 +23,7 @@ pkgbase = arianna
 	depends = hicolor-icon-theme
 	provides = arianna
 	conflicts = arianna
-	source = https://invent.kde.org/graphics/arianna/-/archive/v1.1.0/arianna-v1.1.0.tar.gz
-	sha256sums = b2624a4d567bc975d7d4dd053e5e99f64f6a8cd7d0e55231a3a32581ab30bb26
+	source = https://invent.kde.org/graphics/arianna/-/archive/v23.07.80/arianna-v23.07.80.tar.gz
+	sha256sums = ce6ca4effce77719c27d6155e654c44c46c24f8c54dcd01afad508a1ef41c1fe
 
 pkgname = arianna
