@@ -1,6 +1,6 @@
 pkgbase = ahriman
 	pkgdesc = ArcH linux ReposItory MANager
-	pkgver = 2.10.0
+	pkgver = 2.10.1
 	pkgrel = 1
 	url = https://github.com/arcan1s/ahriman
 	install = ahriman.install
@@ -37,10 +37,10 @@ pkgbase = ahriman
 	optdepends = subversion: -svn packages support
 	backup = etc/ahriman.ini
 	backup = etc/ahriman.ini.d/logging.ini
-	source = https://github.com/arcan1s/ahriman/releases/download/2.10.0/ahriman-2.10.0-src.tar.xz
+	source = https://github.com/arcan1s/ahriman/releases/download/2.10.1/ahriman-2.10.1-src.tar.xz
 	source = ahriman.sysusers
 	source = ahriman.tmpfiles
-	sha512sums = ce7fd6ac257929f672d75345b8f4f104dc2bbfb8cb17623369ad5c8bf96d0380c40868ea052ffcc38cbad08f788593635bd5ef9f765c9090cf209338672142ea
+	sha512sums = 78299159ddd57de3674276ac223462bab665075d167f0144df36f6130068b4040c346cebc1a1b168487dbe0fc35fb3d1504814665c187cf351e8869f497bdc5b
 	sha512sums = b1dd772f8802be99ccba3add5f1e6f78e5e79d0967342668dd12e472651a6b91c342f11fba330caaca421cc3d6c7e2011e09a6bd131f8ba14bbc4a6206cce539
 	sha512sums = 62b2eccc352d33853ef243c9cddd63663014aa97b87242f1b5bc5099a7dbd69ff3821f24ffc58e1b7f2387bd4e9e9712cc4c67f661b1724ad99cdf09b3717794
 
