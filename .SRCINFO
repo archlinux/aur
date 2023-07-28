@@ -1,16 +1,16 @@
 pkgbase = lune
-	pkgdesc = PRECOMPILED - A standalone Luau script runtime
+	pkgdesc = [Latest Stable Source] A standalone Luau script runtime
 	pkgver = 0.7.5
 	pkgrel = 1
-	url = https://github.com/filiptibell/lune
+	url = https://lune-org.github.io/docs
 	arch = x86_64
 	arch = aarch64
-	license = MPL
-	provides = lune
+	license = MPL2
+	makedepends = cargo
 	conflicts = lune-git
-	source_x86_64 = https://github.com/filiptibell/lune/releases/download/v0.7.5/lune-0.7.5-linux-x86_64.zip
-	sha256sums_x86_64 = eaec8e6361c8f9b4e63f756cc9b83a94bbbba28b060e5338a144e499aae2881c
-	source_aarch64 = https://github.com/filiptibell/lune/releases/download/v0.7.5/lune-0.7.5-linux-aarch64.zip
-	sha256sums_aarch64 = dad5292299db3359c8676c8e294cb9b30105ad1a47f9d96ee99fa34f2684f4fd
+	conflicts = lune-bin
+	options = !lto
+	source = lune-0.7.5.tar.gz::https://github.com/filiptibell/lune/archive/refs/tags/v0.7.5.tar.gz
+	sha256sums = e8191df5d6844026772cc7afab1083235a265c506474c4c4dee0a7724b04f775
 
 pkgname = lune
