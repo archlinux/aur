@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 6.1.40 Kernel Configuration
+# Linux/arm64 6.1.42 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.0"
 CONFIG_CC_IS_GCC=y
@@ -2929,7 +2929,7 @@ CONFIG_BCM_NET_PHYLIB=m
 # CONFIG_CORTINA_PHY is not set
 # CONFIG_DAVICOM_PHY is not set
 CONFIG_ICPLUS_PHY=y
-CONFIG_JLSEMI_JL2XX1_PHY=y
+CONFIG_JLSEMI_PHY=y
 # CONFIG_LXT_PHY is not set
 # CONFIG_INTEL_XWAY_PHY is not set
 # CONFIG_LSI_ET1011C_PHY is not set
