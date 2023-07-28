@@ -10,6 +10,6 @@ pkgbase = polywatch-git
 	provides = polywatch
 	conflicts = polywatch
 	source = polywatch-git-1.1.0.tar.gz::https://github.com/pouyanh/polywatch/archive/v1.1.0.tar.gz
-	md5sums = a8477e7de275c826eb108871f7c40026
+	md5sums = f4144551a9561be4c3639e30d541529f
 
 pkgname = polywatch-git

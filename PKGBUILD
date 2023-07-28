@@ -10,7 +10,7 @@ license=('GPL3')
 depends=()
 makedepends=('go' 'goreleaser')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/pouyanh/polywatch/archive/v${pkgver}.tar.gz)
-md5sums=('a8477e7de275c826eb108871f7c40026')
+md5sums=('f4144551a9561be4c3639e30d541529f')
 provides=('polywatch')
 conflicts=('polywatch')
 
