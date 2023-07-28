@@ -9,3 +9,6 @@ pkg/
 
 # Package files
 *.zst
+
+# Temporary directory
+tmp/
