@@ -1,7 +1,7 @@
-# Maintainer: codeberge <concur_panama530 at slmail dot me>
+# Maintainer: codeberge <codeberge at mailbox dot org>
 pkgname=dl-distro-git
 _pkgname=dl-distro
-pkgver=45.e18e73c
+pkgver=100.fda90c5
 pkgrel=1
 pkgdesc="Download and verify ISOs with GPG and shasums"
 arch=('any')
