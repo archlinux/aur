@@ -1,0 +1,51 @@
+pkgbase = linux-rangho
+	pkgdesc = Linux ZEN with RangHo's local patches
+	pkgver = 6.4.7.rangho1
+	pkgrel = 1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v6.4.7-zen1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = git
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = perl
+	makedepends = python
+	makedepends = tar
+	makedepends = xz
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = python-sphinx
+	makedepends = texlive-latexextra
+	options = !strip
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v6.4.7-zen1
+	source = config
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	validpgpkeys = C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D
+	b2sums = SKIP
+	b2sums = 259b889056573ca178c66eaeee32df053d677e861788288c21f10fe861b66d4e82da4800b1f2b90dc85a98473928528019e54c1885e9f4683d69c1dbb869a9f5
+
+pkgname = linux-rangho
+	pkgdesc = The Linux ZEN with RangHo's local patches kernel and modules
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = KSMBD-MODULE
+	provides = UKSMD-BUILTIN
+	provides = VHBA-MODULE
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = 
+
+pkgname = linux-rangho-headers
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN with RangHo's local patches kernel
+	depends = pahole
+
+pkgname = linux-rangho-docs
+	pkgdesc = Documentation for the Linux ZEN with RangHo's local patches kernel

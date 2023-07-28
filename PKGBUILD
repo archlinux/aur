@@ -1,10 +1,10 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=linux-zen
-pkgver=6.4.7.zen1
+pkgbase=linux-rangho
+pkgver=6.4.7.rangho1
 pkgrel=1
-pkgdesc='Linux ZEN'
-_srctag=v${pkgver%.*}-${pkgver##*.}
+pkgdesc="Linux ZEN with RangHo's local patches"
+_srctag=v${pkgver%.*}-zen${pkgver##*.rangho}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
@@ -39,7 +39,7 @@ validpgpkeys=(
   C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D  # Steven Barrett <steven@liquorix.net>
 )
 b2sums=('SKIP'
-        '259b889056573ca178c66eaeee32df053d677e861788288c21f10fe861b66d4e82da4800b1f2b90dc85a98473928528019e54c1885e9f4683d69c1dbb869a9f5')
+        'bf10a190a740f4e43361424d333ced2fffb0f6bfc099c68840a121f46df1c3b65b9d018bcb2b21a54e6a1e3edd428a8914c27dc3a5b77f46e3f0e033b884f633')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
