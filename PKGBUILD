@@ -1,7 +1,7 @@
 # Maintainer: x70b1
 
 pkgname=pam_exec-ssh-git
-pkgver=r19.311b153
+pkgver=r22.cc3b533
 pkgrel=1
 pkgdesc="Unlock SSH keys on login using PAM."
 arch=(any)
