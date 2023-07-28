@@ -1,0 +1,15 @@
+pkgbase = polywatch-git
+	pkgdesc = File change watcher with filter & rate limit feature which run command(s) when file change events happen
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://pouyanh.github.io/polywatch/
+	arch = any
+	license = GPL3
+	makedepends = go
+	makedepends = goreleaser
+	provides = polywatch
+	conflicts = polywatch
+	source = polywatch-git-1.1.1.tar.gz::https://github.com/pouyanh/polywatch/archive/v1.1.1.tar.gz
+	md5sums = a8477e7de275c826eb108871f7c40026
+
+pkgname = polywatch-git
