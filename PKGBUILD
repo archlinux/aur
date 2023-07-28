@@ -2,14 +2,14 @@
 
 pkgname=texmacs-guile3-git
 _pkgname=texmacs
-pkgver=2.1.2_r13234.a57c804b7
+pkgver=2.1.2_r13235.470c63534
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG
 editor and CAS-interface. Pulled from github.com/hammerfunctor/texmacs"
 arch=('x86_64')
 url="http://www.texmacs.org/"
 license=('GPL3')
-depends=('perl' 'guile' 'texlive-core' 'python' 'libxext' 'freetype2'
+depends=('perl' 'guile' 'texlive-basic' 'python' 'libxext' 'freetype2'
 	 'qt5-svg' 'hicolor-icon-theme' 'gawk' 'python-lxml')
 optdepends=('transfig: convert images using fig2ps'
             'ghostscript: rendering ps files'
