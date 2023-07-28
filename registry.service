@@ -1,0 +1,9 @@
+[Unit]
+Description=Docker Registry
+
+[Service]
+User=registry
+ExecStart=/usr/bin/registry serve /etc/docker/registry/config.yml
+
+[Install]
+WantedBy=multi-user.target

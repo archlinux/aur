@@ -1,0 +1,16 @@
+version: 0.1
+http:
+  addr: 0.0.0.0:5000
+  host: https://registry.example.com:5006
+storage:
+  filesystem:
+    rootdirectory: /var/lib/registry
+    maxthreads: 100
+  delete:
+    enabled: true
+auth:
+  token:
+    realm: https://gitlab.example.com/jwt/auth
+    service: container_registry
+    issuer: gitlab-issuer
+    rootcertbundle: /etc/docker/registry/docker-registry.crt

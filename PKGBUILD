@@ -1,15 +1,23 @@
 pkgname=distribution
 pkgver=2.8.2git # fails to build from tag
-pkgrel=1
+pkgrel=2
 pkgdesc="the Open Source Registry implementation for storing and distributing container images using the OCI Distribution Specification"
 arch=(x86_64)
 url="https://github.com/distribution/distribution/"
 license=('GPL')
-depends=('go' 'git')
-makedepends=('go')
+depends=()
+makedepends=('go' 'git')
 #source=("git+https://github.com/distribution/distribution.git#tag=v$pkgver")
-source=("git+https://github.com/distribution/distribution.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/distribution/distribution.git"
+	registry.sysuser
+	registry.service
+	registry.tmpfiles
+	config.yml.example)
+sha256sums=('SKIP'
+            '8f967e91e3a952628378ff71aeeace48f5d29883a7a0eec26d0ab1485c354b07'
+            '24793414a56feca9c9d908018652da1ddf19e91d6ed10ac9a0900daf2a5688cf'
+            '6dea38e5e572c54c8474670c69bcc61c70d8213d063a0767083b82ccec4d7064'
+            'c8755adfcc2ae168947b1e60a404dee725a84185b5363d505303fb289c9d16fa')
 
 prepare() {
 	cd "$pkgname"
@@ -27,4 +35,9 @@ package() {
 	install -Dm0755 bin/digest "$pkgdir"/usr/bin/digest
 	install -Dm0755 bin/registry "$pkgdir"/usr/bin/registry
 	install -Dm0755 bin/registry-api-descriptor-template "$pkgdir"/usr/bin/registry-api-descriptor-template
+	
+	install -Dm0644 "$srcdir"/registry.service "$pkgdir"/usr/lib/systemd/system/registry.service
+	install -Dm0644 "$srcdir"/registry.sysuser "$pkgdir"/usr/lib/sysusers.d/registry.conf
+	install -Dm0644 "$srcdir"/registry.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/registry.conf
+	install -Dm0644 "$srcdir"/config.yml.example "$pkgdir"/etc/docker/registry/config.yml.example
 }
