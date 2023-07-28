@@ -15,8 +15,15 @@ depends=('python-absl'
          'python-scipy')
 makedepends=('python-installer' 'python-setuptools' 'python-wheel')
 conflicts=('python-jaxlib')
-source=("jaxlib-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v${pkgver}.tar.gz")
-sha256sums=('9f309476a8f6337717b059b8d10b5859b4134c30cf8f1220bb70379b5e2744a4')
+source=("jaxlib-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v${pkgver}.tar.gz"
+        'python-jaxlib.diff')
+sha256sums=('9f309476a8f6337717b059b8d10b5859b4134c30cf8f1220bb70379b5e2744a4'
+            'SKIP')
+
+prepare() {
+    cd $srcdir/jax-jaxlib-v$pkgver
+    patch -p1 -i ../python-jaxlib.diff
+}
 
 build() {
     cd $srcdir/jax-jaxlib-v$pkgver

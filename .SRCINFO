@@ -16,6 +16,8 @@ pkgbase = python-jaxlib
 	depends = python-scipy
 	conflicts = python-jaxlib
 	source = jaxlib-0.4.14.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v0.4.14.tar.gz
+	source = python-jaxlib.diff
 	sha256sums = 9f309476a8f6337717b059b8d10b5859b4134c30cf8f1220bb70379b5e2744a4
+	sha256sums = SKIP
 
 pkgname = python-jaxlib
