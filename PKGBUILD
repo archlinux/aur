@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kopete
-pkgver=23.04.3
+pkgver=23.07.80
 pkgrel=1
 pkgdesc='Instant Messenger'
 url='https://apps.kde.org/kopete/'
@@ -14,8 +14,8 @@ depends=(knotifyconfig kcmutils ktexteditor kcontacts kidentitymanagement libkle
          libidn libotr)
 makedepends=(extra-cmake-modules libgadu jsoncpp kdoctools kdesignerplugin kdnssd kinit)
 optdepends=('libgadu: Gadu-Gadu protocol' 'kdnssd: bonjour protocol')
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
-sha256sums=('f189a472ba49735de2f00e21a904c8e8b4c07f056e08b9f817be850b087946df'
+source=(https://download.kde.org/unstable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+sha256sums=('ace9caa681e6b0c3267af2085d8cd27bf0e9c1555f561cd26cff57427fc68449'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
