@@ -2,7 +2,7 @@
 
 pkgbase=mfgtools-git
 pkgname=(mfgtools{,-doc}-git)
-pkgver=1.5.109.r9.gd669525
+pkgver=1.5.120.r3.g1fde24c
 pkgrel=1
 epoch=
 pkgdesc="uuu (Universal Update Utility), mfgtools 3.0. Freescale/NXP I.MX Chip image deploy tools."
@@ -10,7 +10,11 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/nxp-imx/mfgtools"
 license=('BSD')
 groups=()
-depends=('bzip2' 'zlib' 'libusb' 'libzip' 'openssl')
+depends=(bzip2
+	zlib 
+	libusb
+	libzip
+	openssl)
 makedepends=('cmake' 'git' 'ninja')
 checkdepends=()
 optdepends=()
