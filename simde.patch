@@ -1,0 +1,50 @@
+Description: refer to debian's simde headers.
+Author: Étienne Mollier <emollier@debian.org>
+Forwarded: not-needed
+Last-Update: 2022-07-07
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- abpoa.orig/src/simd_instruction.h
++++ abpoa/src/simd_instruction.h
+@@ -21,15 +21,15 @@
+ #include <immintrin.h>
+ #else // use SIMDE
+ #ifdef __AVX512F__
+-#include "simde/simde/x86/avx512.h"
++#include <simde/x86/avx512.h>
+ #else
+ #ifdef __AVX2__
+-#include "simde/simde/x86/avx2.h"
++#include <simde/x86/avx2.h>
+ #else
+ #ifdef __SSE4_1__
+-#include "simde/simde/x86/sse4.1.h"
++#include <simde/x86/sse4.1.h>
+ #else
+-#include "simde/simde/x86/sse2.h"
++#include <simde/x86/sse2.h>
+ #endif // end of sse41
+ #endif // end of AVX2
+ #endif // end of 512F
+--- abpoa.orig/include/simd_instruction.h
++++ abpoa/include/simd_instruction.h
+@@ -21,15 +21,15 @@
+ #include <immintrin.h>
+ #else // use SIMDE
+ #ifdef __AVX512F__
+-#include "simde/simde/x86/avx512.h"
++#include <simde/x86/avx512.h|>
+ #else
+ #ifdef __AVX2__
+-#include "simde/simde/x86/avx2.h"
++#include <simde/x86/avx2.h>
+ #else
+ #ifdef __SSE4_1__
+-#include "simde/simde/x86/sse4.1.h"
++#include <simde/x86/sse4.1.h>
+ #else
+-#include "simde/simde/x86/sse2.h"
++#include <simde/x86/sse2.h>
+ #endif // end of sse41
+ #endif // end of AVX2
+ #endif // end of 512F

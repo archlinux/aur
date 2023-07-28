@@ -1,0 +1,63 @@
+Description: respect the CPU baseline.
+ FIXME: implement multiple executables using SIMDe as distributed by Debian.
+Author: Étienne Mollier <emollier@debian.org>
+Forwarded: not-needed
+Last-Update: 2022-07-09
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- abpoa.orig/CMakeLists.txt
++++ abpoa/CMakeLists.txt
+@@ -10,7 +10,7 @@
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+ 
+-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native") # SIMD
++#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native") # SIMD
+ 
+ # build abPOA as a static library by default
+ set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build all libraries as shared")
+--- abpoa.orig/Makefile
++++ abpoa/Makefile
+@@ -2,19 +2,19 @@
+ EXTRA_FLAGS = -Wno-unused-function -Wno-misleading-indentation -DUSE_SIMDE -DSIMDE_ENABLE_NATIVE_ALIASES
+ CFLAGS      += $(CPPFLAGS) -Wall -O3 $(EXTRA_FLAGS) $(LDFLAGS)
+ 
+-SIMD_FLAG   = -march=native
++#SIMD_FLAG   = -march=native
+ 
+-ifneq ($(armv7),) # for ARMv7
+-	SIMD_FLAG   =  -march=armv7-a -mfpu=neon -D__AVX2__
+-else
+-ifneq ($(armv8),) # for ARMv8
+-ifneq ($(aarch64),) # for Aarch64 
+-	SIMD_FLAG   =  -march=armv8-a+simd -D__AVX2__
+-else # for Aarch32
+-	SIMD_FLAG   =  -march=armv8-a+simd -mfpu=auto -D__AVX2__
+-endif
+-endif
+-endif
++#ifneq ($(armv7),) # for ARMv7
++#	SIMD_FLAG   =  -march=armv7-a -mfpu=neon -D__AVX2__
++#else
++#ifneq ($(armv8),) # for ARMv8
++#ifneq ($(aarch64),) # for Aarch64 
++#	SIMD_FLAG   =  -march=armv8-a+simd -D__AVX2__
++#else # for Aarch32
++#	SIMD_FLAG   =  -march=armv8-a+simd -mfpu=auto -D__AVX2__
++#endif
++#endif
++#endif
+ 
+ # for debug
+ ifneq ($(debug),)
+--- abpoa.orig/setup.py
++++ abpoa/setup.py
+@@ -64,7 +64,7 @@
+                     include_dirs=[inc_dir],
+                     depends=[src_dir+'abpoa.h', src_dir+'abpoa_align.h', src_dir+'abpoa_graph.h', src_dir+'abpoa_output.h', src_dir+'abpoa_seed.h', src_dir+'abpoa_seq.h', src_dir+'kalloc.h', src_dir+'khash.h', src_dir+'kdq.h', src_dir+'kseq.h', src_dir+'ksort.h', src_dir+'kstring.h', src_dir+'kvec.h', src_dir+'simd_abpoa_align.h', src_dir+'simd_instruction.h', src_dir+'utils.h', 'python/cabpoa.pxd'],
+                     libraries = ['z', 'm', 'pthread'],
+-                    extra_compile_args=['-O3', '-Wno-error=declaration-after-statement', simde, simd_flag])],
++                    extra_compile_args=['-O3', '-Wno-error=declaration-after-statement', simde])],
+     install_requires=['cython'],
+     cmdclass = cmdclass
+ )

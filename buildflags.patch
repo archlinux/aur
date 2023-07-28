@@ -1,0 +1,28 @@
+Description: inject standard debian build flags.
+Author: Étienne Mollier <emollier@debian.org>
+Forwarded: not-needed
+Last-Update: 2022-07-09
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- abpoa.orig/Makefile
++++ abpoa/Makefile
+@@ -1,6 +1,6 @@
+ #CC          = gcc
+ EXTRA_FLAGS = -Wno-unused-function -Wno-misleading-indentation -DUSE_SIMDE -DSIMDE_ENABLE_NATIVE_ALIASES
+-CFLAGS      = -Wall -O3 $(EXTRA_FLAGS)
++CFLAGS      += $(CPPFLAGS) -Wall -O3 $(EXTRA_FLAGS) $(LDFLAGS)
+ 
+ SIMD_FLAG   = -march=native
+ 
+@@ -22,9 +22,9 @@
+ endif
+ # for gdb
+ ifneq ($(gdb),)
+-	CFLAGS   = -Wall -g ${DFLAGS} $(EXTRA_FLAGS)
++	CFLAGS   += -Wall -g ${DFLAGS} $(EXTRA_FLAGS)
+ else
+-	CFLAGS   = -Wall -O3 ${DFLAGS} $(EXTRA_FLAGS)
++	CFLAGS   += -Wall -O3 ${DFLAGS} $(EXTRA_FLAGS)
+ endif
+ 
+ # for gprof
