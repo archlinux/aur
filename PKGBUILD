@@ -2,7 +2,7 @@
 
 pkgname=python-jaxlib-cuda
 pkgver=0.4.14
-pkgrel=2
+pkgrel=3
 pkgdesc='XLA library for JAX'
 arch=('x86_64')
 url='https://github.com/google/jax/'
@@ -37,9 +37,10 @@ prepare() {
     export PYTHON_BIN_PATH=/usr/bin/python
     export USE_DEFAULT_PYTHON_LIB_PATH=1
     export TF_NEED_JEMALLOC=1
-    # See https://github.com/tensorflow/tensorflow/blob/master/third_party/systemlibs/syslibs_configure.bzl
-    # export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,lmdb,nasm,png,pybind11,zlib"
-    export TF_SYSTEM_LIBS="curl,pybind11,zlib"
+    # See https://github.com/openxla/xla/blob/main/configure.py
+    # There is some vague reason why we should exclude pybind11. It exists in
+    # two version in source tree: abseil one and bazel one.
+    export TF_SYSTEM_LIBS="boringssl,curl,cython,gif,icu,libjpeg_turbo,lmdb,nasm,png,zlib"
     export TF_SET_ANDROID_WORKSPACE=0
     export TF_DOWNLOAD_CLANG=0
     export TF_NCCL_VERSION=$(pkg-config nccl --modversion | grep -Po '\d+\.\d+')
@@ -48,7 +49,8 @@ prepare() {
     # Does tensorflow really need the compiler overridden in 5 places? Yes.
     export CC=gcc
     export CXX=g++
-    export GCC_HOST_COMPILER_PATH=/opt/cuda/bin/gcc
+    # For some reason, simlink is not resolved.
+    export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-12
     export HOST_C_COMPILER=/usr/bin/${CC}
     export HOST_CXX_COMPILER=/usr/bin/${CXX}
     export TF_CUDA_CLANG=0  # Clang currently disabled because it's not compatible at the moment.
