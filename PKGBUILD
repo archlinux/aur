@@ -2,12 +2,12 @@
 pkgname="pipelight-git"
 base="pipelight"
 pkgrel=1
-pkgver=0.6.3
+pkgver=0.6.10
 pkgdesc="A Rust based quick automation tool"
 arch=("any")
 url="https://gitea.com/pipelight/pipelight.git"
 license=('GPL2')
-depends=(deno)
+depends=(deno watchexec)
 makedepends=(git make cargo)
 provides=("pipelight-git")
 conflicts=("pipelight")
