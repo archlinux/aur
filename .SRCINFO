@@ -1,11 +1,11 @@
 pkgbase = super_clipboard
 	pkgdesc = Manage your clipboard history with a beautiful and simple interface
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/SergioRibera/super_clipboard
 	arch = x86_64
 	license = MIT
-	source = https://github.com/SergioRibera/super_clipboard/releases/download/v2.0.1/superclipboard_x86_64-linux.tar.gz
+	source = https://github.com/SergioRibera/super_clipboard/releases/download/v2.1.0/superclipboard_x86_64-linux.tar.gz
 	sha512sums = SKIP
 
 pkgname = super_clipboard
