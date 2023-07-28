@@ -1,6 +1,6 @@
 pkgbase = cyberdropdownloader
 	pkgdesc = Bulk downloader for multiple file hosts and forum sites
-	pkgver = 4.2.164
+	pkgver = 4.2.167
 	pkgrel = 1
 	url = https://github.com/Jules-WinnfieldX/CyberDropDownloader
 	arch = any
@@ -17,12 +17,13 @@ pkgbase = cyberdropdownloader
 	depends = python-beautifulsoup4
 	depends = python-certifi
 	depends = python-myjdapi
+	depends = python-platformdirs
 	depends = python-rich
 	depends = python-tqdm
 	depends = python-yaml
 	conflicts = cyberdrop-dl
 	conflicts = cyberdrop-dl-git
-	source = https://files.pythonhosted.org/packages/source/c/cyberdrop-dl/cyberdrop-dl-4.2.164.tar.gz
-	sha256sums = 62d6f006825d669ab3fe5817f5c374e85d55720d270c8a36de5540d6b7e11707
+	source = https://files.pythonhosted.org/packages/source/c/cyberdrop-dl/cyberdrop-dl-4.2.167.tar.gz
+	sha256sums = 7e946904d887b0ef4dbe62a18430607949fd7dc3098b6e8f8c414da73b35ffd8
 
 pkgname = cyberdropdownloader
