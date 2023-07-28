@@ -14,7 +14,7 @@ _pkgname=thunderbird
 pkgbase=thunderbird-appmenu
 pkgname=thunderbird-appmenu
 pkgver=115.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Thunderbird from extra with appmenu patch"
 arch=(x86_64)
 license=(
@@ -41,7 +41,8 @@ makedepends=(
   imake
   inetutils
   jack
-  lld
+#  lld
+  mold
   llvm
   mesa
   nasm
@@ -67,7 +68,6 @@ optdepends=(
 )
 options=(
   !debug
-  !lto
   !emptydirs
   !makeflags
   !strip
@@ -109,8 +109,8 @@ ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
-#ac_add_options --enable-rust-simd
-ac_add_options --enable-linker=lld
+ac_add_options --enable-rust-simd
+ac_add_options --enable-linker=mold
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
@@ -148,14 +148,14 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-#  export MOZ_ENABLE_FULL_SYMBOLS=1
+  export MOZ_ENABLE_FULL_SYMBOLS=1
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
 
   export MOZ_BUILD_DATE=$(head -1 sourcestamp.txt)
   export RUSTFLAGS="-C debuginfo=1"
 
   # LTO needs more open files
-#  ulimit -n 4096
+  ulimit -n 4096
   # Do 3-tier PGO
 #  echo "Building instrumented comm/mail..."
   cat >.mozconfig ../mozconfig - <<END
@@ -169,7 +169,7 @@ cat comm/third_party/rnp/src/libsexp/include/sexp/sexp-error.h
   cp tmp.h comm/third_party/rnp/src/libsexp/include/sexp/sexp-error.h
   rm tmp.h # lol
 
-#  ./mach build
+  ./mach build
 #  export MOZ_REMOTE_SETTINGS_DEVTOOLS=1
 #  echo "Profiling instrumented comm/mail..."
 #  ./mach package
@@ -186,19 +186,19 @@ cat comm/third_party/rnp/src/libsexp/include/sexp/sexp-error.h
 #  test -s jarlog
 #
 #  echo "Removing instrumented comm/mail..."
-#  ./mach clobber
-#
-#  echo "Building optimized comm/mail..."
-#  cat >.mozconfig ../mozconfig - <<END
-#ac_add_options --enable-lto=cross
+  ./mach clobber
+
+  echo "Building optimized comm/mail..."
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto=thin
 #ac_add_options --enable-profile-use=cross
 #ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 #ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-#END
+END
   ./mach build
-#
-#  echo "Building symbol archive..."
-#  ./mach buildsymbols
+
+  echo "Building symbol archive..."
+  ./mach buildsymbols
 }
 
 package() {
@@ -269,12 +269,12 @@ END
     Version=2
 END
 
-#      export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
-#      if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
-#        make -C obj uploadsymbols
-#      else
-#        cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
-#      fi
+      export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
+      if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
+        make -C obj uploadsymbols
+      else
+        cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
+      fi
 }
 
 # vim:set sw=2 et:
