@@ -1,7 +1,7 @@
 # Maintainer: zzy-ac <zzy-ac@qq.com>
 
 pkgname=listen1
-pkgver=2.30.0
+pkgver=2.31.0
 pkgrel=1
 pkgdesc="  One for all free music in China"
 arch=("x86_64")
@@ -12,7 +12,7 @@ provides=('listen1')
 conflicts=('listen1-electron')
 source=(
   https://github.com/$pkgname/$pkgname\_desktop/releases/download/v$pkgver/$pkgname\_$pkgver\_linux_amd64.deb)
-sha256sums=('34c6c584dc55d722ab6c3e31ad0b0f2b423caf00c40012d010ab36c10770e512')
+sha256sums=('0623e152524477d1015b2619bb1784d82473de6153b8b78a892783fb9e0894f9')
 
 build() {
   mkdir -p "${srcdir}/dpkgdir"
