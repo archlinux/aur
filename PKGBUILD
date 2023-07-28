@@ -56,7 +56,11 @@ build() {
              -DOPENMC_USE_MPI=ON \
              -DHDF5_PREFER_PARALLEL=ON \
 	     -DCMAKE_INSTALL_PREFIX=/opt/openmc
-    make
+    _ccores=`cat /proc/cpuinfo |grep CPU|wc -l`
+  	if [ "x$1" != "x" ]; then
+		_ccores=$1
+  	fi
+	make -j ${_ccores}
 }
 
 package() {
