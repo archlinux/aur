@@ -1,24 +1,31 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="yana-bin"
 pkgver=1.0.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerful note-taking app with nested documents, full-text search, rich-text editor, code snippet editor and more"
 arch=("x86_64")
 url="https://yana.js.org/"
 _githuburl="https://github.com/lukasbach/yana"
 license=('MIT')
-depends=('gtk3' 'nss' 'alsa-lib' 'at-spi2-core' 'pango' 'glibc' 'libcups' 'dbus' 'glib2' 'gcc-libs' 'libxi' \
-    'libxcursor' 'libxrandr' 'gdk-pixbuf2' 'libxcomposite' 'hicolor-icon-theme' 'libx11' 'libdrm' 'expat' \
-    'libxrender' 'cairo' 'nspr' 'mesa' 'libxdamage' 'libxfixes' 'libxcb' 'libxext' 'libxtst')
+depends=('bash' 'electron10' 'hicolor-icon-theme')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}" "${pkgname%-bin}-appimage")
 source=(
     "${pkgname%-bin}-${pkgver}_amd64.deb::${_githuburl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "LICENSE::${_githuburl}/raw/master/LICENSE")
+    "LICENSE::https://raw.githubusercontent.com/lukasbach/yana/master/LICENSE"
+    "${pkgname%-bin}.sh")
 sha256sums=('00d2f30dad0342fa59fa228f087bf647cf2fa6fe061aa46ede22a5439d5c23b8'
-            'ebb422a6231ddde433e1d601377c455aefcc96cdc27662bd3ce07d08f1110152')
-     
+            'd51fa4278a4f3a6871df2e45a74a3a242f253b21e1ed655f7117d5dd45570a32'
+            '546e75b9012146cc72160fcd777d69ba3dd220bdd2c7178005c67f9d55617d3c')
 package() {
-    bsdtar -xvf data.tar.xz -C "${pkgdir}"
+    bsdtar -xf data.tar.xz
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/opt/Yana/resources/app.asar" "${pkgdir}/opt/${pkgname%-bin}/${pkgname%-bin}.asar"
+    sed "s|/opt/Yana/yana %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    for _icons in 16x16 32x32 48x48 64x64 128x128 256x256 512x512;do
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
+            -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
+    done
     install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
