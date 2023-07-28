@@ -50,7 +50,7 @@ package_python-sphinx_design() {
     depends=('python-sphinx')
     optdepends=('python-pre-commit: code_style'
                 'python-myst-parser: rtd'
-                'python-sphinx-fure: theme_furo'
+                'python-sphinx-furo: theme_furo'
                 'python-sphinx_rtd_theme: theme_rtd'
                 'python-sphinx-book-theme: theme_sbt'
                 'python-pydata-sphinx-theme: theme_pydata'
