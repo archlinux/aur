@@ -14,7 +14,7 @@ _pkgver=$(
 _pkgname='beeper'
 pkgname="$_pkgname-latest-bin"
 pkgver=3.66.24
-pkgrel=3
+pkgrel=4
 pkgdesc="all your chats in one app"
 arch=('x86_64')
 url="https://beeper.com/"
@@ -26,7 +26,7 @@ depends=(
 makedepends=()
 
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+#conflicts=("$_pkgname")
 
 options=('!strip')
 
