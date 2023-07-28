@@ -1,7 +1,7 @@
 # Maintainer: RangHo Lee <hibiki_love@rangho.moe>
 
 pkgname=atheros-ar3012
-pkgver=4.18.4
+pkgver=6.4.6
 pkgrel=1
 pkgdesc="Provides an alternate kernel module for those with malfunctioning AR3012 bluetooth hardware."
 arch=('any')
