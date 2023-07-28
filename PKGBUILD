@@ -1,7 +1,7 @@
 # Maintainer: Philip May <eniak.info@gmail.com>
 pkgname=pycharm-community-jre
 _appname=pycharm-community
-pkgver=2023.1
+pkgver=2023.2
 pkgrel=1
 pkgdesc="PyCharm Community Edition IDE for Python with bundled JRE"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-  'e8e9ed964ef8a397ad920ccaad41b30c3f29a2e125e7a5c4be50db791099e068'
+  '64472ee39d244fbc2cc8aeade204d02a767c7ce66b2edaa26a8499eeef44f3d7'
   'f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21'
   'b6f0518e59c4744ded38de63efba91205bcba406fa74944a1f3a8937566d8acc'
 )
