@@ -1,0 +1,64 @@
+From 93e34c7dd12b1bea0092800007ee8d592cb34d49 Mon Sep 17 00:00:00 2001
+From: egnappahz <egnappah@gmail.com>
+Date: Fri, 28 Jul 2023 08:58:31 +0200
+Subject: [PATCH] rename glslangValidator according to upstream
+
+Signed-off-by: egnappahz <egnappah@gmail.com>
+---
+ CMakeLists.txt                  | 4 ++--
+ src/ImGui/imgui_impl_vulkan.cpp | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ca44bfd..cdc5d1f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -65,12 +65,12 @@ ELSE()
+ ENDIF()
+ 
+ find_program(Vulkan_GLSLANG_VALIDATOR 
+-	NAMES glslangValidator 
++	NAMES glslang
+ 	HINTS ENV VULKAN_SDK 
+ 	PATH_SUFFIXES bin)
+ 	
+ if (NOT Vulkan_GLSLANG_VALIDATOR)
+-    message(FATAL_ERROR "glslangValidator not found!")
++    message(FATAL_ERROR "glslang not found!")
+ endif()
+ 
+ set(MAIN_PROJECT "RayTracer")
+diff --git a/src/ImGui/imgui_impl_vulkan.cpp b/src/ImGui/imgui_impl_vulkan.cpp
+index dbd8b18..d0fd80e 100644
+--- a/src/ImGui/imgui_impl_vulkan.cpp
++++ b/src/ImGui/imgui_impl_vulkan.cpp
+@@ -58,7 +58,7 @@
+ //  2018-02-06: Misc: Removed call to ImGui::Shutdown() which is not available from 1.60 WIP, user needs to call CreateContext/DestroyContext themselves.
+ //  2017-05-15: Vulkan: Fix scissor offset being negative. Fix new Vulkan validation warnings. Set required depth member for buffer image copy.
+ //  2016-11-13: Vulkan: Fix validation layer warnings and errors and redeclare gl_PerVertex.
+-//  2016-10-18: Vulkan: Add location decorators & change to use structs as in/out in glsl, update embedded spv (produced with glslangValidator -x). Null the released resources.
++//  2016-10-18: Vulkan: Add location decorators & change to use structs as in/out in glsl, update embedded spv (produced with glslang -x). Null the released resources.
+ //  2016-08-27: Vulkan: Fix Vulkan example for use when a depth buffer is active.
+ 
+ #include "imgui_impl_vulkan.h"
+@@ -212,7 +212,7 @@ IMGUI_VULKAN_FUNC_MAP(IMGUI_VULKAN_FUNC_DEF)
+ //-----------------------------------------------------------------------------
+ 
+ // glsl_shader.vert, compiled with:
+-// # glslangValidator -V -x -o glsl_shader.vert.u32 glsl_shader.vert
++// # glslang -V -x -o glsl_shader.vert.u32 glsl_shader.vert
+ /*
+ #version 450 core
+ layout(location = 0) in vec2 aPos;
+@@ -276,7 +276,7 @@ static uint32_t __glsl_shader_vert_spv[] =
+ };
+ 
+ // glsl_shader.frag, compiled with:
+-// # glslangValidator -V -x -o glsl_shader.frag.u32 glsl_shader.frag
++// # glslang -V -x -o glsl_shader.frag.u32 glsl_shader.frag
+ /*
+ #version 450 core
+ layout(location = 0) out vec4 fColor;
+-- 
+2.41.0
+
