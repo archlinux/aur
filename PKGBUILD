@@ -1,6 +1,7 @@
 # Maintainer: Leon Mergen <leon@solatis.com>
+# Maintainer: unlogicalcode <jearsmail99@gmail.com>
 pkgname=cloudflare-warp-bin
-pkgver=2023.3.470
+pkgver=2023.7.40
 pkgrel=1
 pkgdesc="Cloudflare Warp Client"
 url="https://1.1.1.1"
@@ -19,15 +20,15 @@ changelog=$pkgname.changelog
 #
 # `curl https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages`
 source=(
-    "${pkgname}-${pkgver}-x86_64.deb::https://pkg.cloudflareclient.com/pool/focal/main/c/cloudflare-warp/cloudflare-warp_2023.3.470-1_amd64.deb"
+    "${pkgname}-${pkgver}-x86_64.deb::https://pkg.cloudflareclient.com/pool/focal/main/c/cloudflare-warp/cloudflare-warp_2023.7.40-1_amd64.deb"
     "${pkgname}-${pkgver}-${pkgrel}-Release::https://pkg.cloudflareclient.com/dists/focal/Release"
     "${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages::https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages"
 )
 
-md5sums=('f4e7de64d6fdd4c794750dc186d7993b'
+md5sums=('86189a2517b968c25b8fb6a3a511d7b8'
          'SKIP'
          'SKIP')
-sha256sums=('642b85c831f8e4821e2abf14c519e0c0537c0c36577236b45e80836845b0fa9c'
+sha256sums=('30d183fa608e5e1852c13c986dfdba0c2c35ada823ff992d7f17eedff5989383'
             'SKIP'
             'SKIP')
 install=$pkgname.install
@@ -87,14 +88,14 @@ check() {
     echo "==> sha256sum: ${PKGHASH}"
     if ! sha256sum --status --check ${PKGHASH}
     then
-        echo "!!> SHA512 mismatch: ${PKGHASH}"
+        echo "!!> SHA256 mismatch: ${PKGHASH}"
         exit 1
     fi
 
     echo "==> sha256sum: ${DEBHASH}"
     if ! sha256sum --status --check ${DEBHASH}
     then
-        echo "!!> SHA512 mismatch: ${DEBHASH}"
+        echo "!!> SHA256 mismatch: ${DEBHASH}"
         exit 1
     fi
 
