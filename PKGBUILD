@@ -1,7 +1,7 @@
 # Maintainer: malet
 pkgname=dafny-bin
 _pkgname=dafny
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Dafny is a verification-aware programming language"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('dafny')
 depends=('dotnet-runtime')
 options=('staticlibs')
 source=(dafny-${pkgver}.zip::https://github.com/dafny-lang/dafny/releases/download/v${pkgver}/dafny-${pkgver}-x64-ubuntu-20.04.zip)
-sha256sums=('9b8848445b0cc4b8b3155978e36355e194083c4723d93fe051045e6e4757b033')
+sha256sums=('5450936ddecdd461a5ffb0dc816a6ddee63f449e84dee8b10ea891695150eff7')
 
 package() {
   cd ${_pkgname}
