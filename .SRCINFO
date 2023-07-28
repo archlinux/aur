@@ -1,0 +1,22 @@
+pkgbase = python-seagoat
+	pkgdesc = A semantic-code search engine
+	pkgver = 0.2.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	checkdepends = python-appdirs
+	checkdepends = python-click
+	checkdepends = python-pygments
+	checkdepends = python-typing-extensions
+	checkdepends = python-gitpython
+	checkdepends = python-chromadb
+	checkdepends = python-ripgrepy
+	checkdepends = python-tqdm
+	checkdepends = python-nest_asyncio
+	checkdepends = python-blessed
+	checkdepends = python-prompt-toolkit
+	makedepends = python
+	makedepends = python-pip
+	depends = python
+
+pkgname = python-seagoat
