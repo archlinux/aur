@@ -15,8 +15,10 @@ optdepends=('amdvlk: Standalone driver for radeon gpus')
 makedepends=('cmake' 'boost' 'vulkan-headers' 'stb')
 
 source=(	"${_pkgname}::git+${url}.git"
+		'glslang.patch'
 )
 sha256sums=(	'SKIP'
+		'4cd8b72df0816b2d0140c0f840e8e619ea48101ad01636dfa9ff3ab0b65ce99a'
 )
 
 pkgver() {
