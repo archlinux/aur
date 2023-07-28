@@ -1,5 +1,5 @@
 pkgbase = ariez
-	pkgdesc = aids
+	pkgdesc = just hangman
 	pkgver = 2.0
 	pkgrel = 1
 	url = https://ariez.codes

@@ -2,7 +2,7 @@
 pkgname=ariez
 pkgver=2.0
 pkgrel=1
-pkgdesc="aids"
+pkgdesc="just hangman"
 arch=('x86_64')
 url="https://ariez.codes"
 license=('MIT')
