@@ -1,6 +1,6 @@
 # Maintainer: Nikola Brezovec <ShiNoNeko47@proton.me>
 pkgname=reel_hub
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Gtk movie library browser written in rust"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=('MIT')
 depends=("cairo" "gcc-libs" "gdk-pixbuf2" "glib2" "glibc" "gtk3" "openssl" "pango" "mpv")
 makedepends=("rust")
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/ShiNoNeko47/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('5ee3b0fee2a773dec8daf6f360363801')
+md5sums=('0fb4cabb7e241574579d0da108ec3528')
 
 build() {
 	cd "$pkgname-$pkgver"
