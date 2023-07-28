@@ -1,4 +1,4 @@
-# Maintainer: Vidhu Kant Sharma <vidhukant@vidhukant.xyz>
+# Maintainer: Vidhu Kant Sharma <vidhukant@vidhukant.com>
 
 pkgname=macli-git
 _pkgname=macli
@@ -9,7 +9,7 @@ pkgdesc='Unofficial CLI-Based MyAnimeList Client'
 makedepends=("git" "go>=1.6")
 depends=("gnome-keyring")
 arch=("i686" "x86_64")
-_gourl='github.com/MikunoNaka/macli'
+_gourl='dev.vidhukant.xyz/macli'
 url="https://${_gourl}"
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
