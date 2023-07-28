@@ -1,7 +1,7 @@
 # Maintainer: Denilson Sá <denilsonsa@gmail.com>
 
 pkgname=xevil-git
-pkgver=r24.e8554ab
+pkgver=r28.9ca8505
 pkgrel=1
 pkgdesc="Side-view, single or network-multiplayer, fast-action, kill-everything, game."
 # Note: building this package on ARM is untested, but it should work due to https://github.com/lvella/xevil/pull/2
@@ -9,7 +9,7 @@ pkgdesc="Side-view, single or network-multiplayer, fast-action, kill-everything,
 arch=('x86_64')
 url="https://www.xevil.com/"
 license=('GPL2')
-depends=('libx11' 'lib32-libxpm' 'xorg-fonts-misc')
+depends=('libx11' 'libxpm' 'xorg-fonts-misc')
 makedepends=('git')
 source=('git+https://github.com/lvella/xevil.git#branch=master')
 sha256sums=('SKIP')

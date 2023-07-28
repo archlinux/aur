@@ -7,7 +7,7 @@ pkgbase = xevil-git
 	license = GPL2
 	makedepends = git
 	depends = libx11
-	depends = lib32-libxpm
+	depends = libxpm
 	depends = xorg-fonts-misc
 	source = git+https://github.com/lvella/xevil.git#branch=master
 	sha256sums = SKIP
