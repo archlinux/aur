@@ -1,18 +1,27 @@
+# Maintainer:
+
 _pkgname="annotator"
 pkgname=$_pkgname-git
-pkgver=1.1.1.r85.ge18f5eb
+pkgver=1.2.1.r0.g754b72e
 pkgrel=1
 pkgdesc="Image annotation for Elementary OS"
 url='https://github.com/phase1geo/Annotator'
 license=("GPL3")
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
+
 depends=(
   'granite'
   'libhandy'
 )
-makedepends=('git' 'meson' 'vala')
-provides=($_pkgname)
+makedepends=(
+  'git'
+  'meson'
+  'vala'
+)
+
+provides=("$_pkgname")
 conflicts=(${provides[@]})
+
 source=("$_pkgname"::"git+$url")
 sha256sums=('SKIP')
 
@@ -32,6 +41,6 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
 
   # symlink
-  ln -sf "/usr/bin/com.github.phase1geo.annotator" "$pkgdir/usr/bin/annotator"
+  ln -sf "com.github.phase1geo.annotator" "$pkgdir/usr/bin/annotator"
 }
 
