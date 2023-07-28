@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 
 pkgname=booster-ukify
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc="Integration layer for booster and systemd's ukify tool for Arch Linux"
 url="https://aur.archlinux.org/packages/booster-ukify"
@@ -19,7 +19,7 @@ source=('10-booster-ukify-pre-install.hook'
 sha256sums=('87d08ea560f3e0f23c9e7ea75c6ff366f1f7e83e1ecdbce296f6b327b79817e3'
             'a7bfd82f243b90d9acda5eaee23831ffd92ecbc69fbf633f48da00dcffa55925'
             '368d9c735eb7e015e371d04a7261dba0b7ad105b7192a3c2ee48511283e06dd8'
-            '16c0bcb6639ab7d0bf63f20e5b5ed719baeb513801d0f39ce2857bdd81c1292c'
+            'b12579e141f2e29caf677bb8f1f02a3caa730230ec5b89c1d891cd3828a362bf'
             'e9f964ad0c4314dcbe5d8ba63f503877ce4ad75299833097073549d26a02e931')
 backup=(etc/booster-ukify.conf)
 
