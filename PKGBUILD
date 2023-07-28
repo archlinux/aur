@@ -7,7 +7,7 @@
 # Contributor: lybin
 pkgname=chromedriver
 pkgver=115.0.5790.102
-pkgrel=1
+pkgrel=3
 pkgdesc="Standalone server that implements the W3C WebDriver standard (for google-chrome)"
 arch=('x86_64')
 url="https://chromedriver.chromium.org/"
