@@ -1,0 +1,18 @@
+pkgbase = cchv2
+	pkgdesc = A powerful contest helper for CodeForces.com
+	pkgver = 2.0.40
+	pkgrel = 1
+	url = https://github.com/CodeforcesContestHelper/CCHv2
+	arch = any
+	license = GPL3
+	depends = nwjs-bin
+	provides = CCHv2
+	noextract = CCHv2.desktop
+	source = CCHv2.sh
+	source = CCHv2.desktop
+	source = https://github.com/CodeforcesContestHelper/CCHv2/archive/refs/tags/v2.0-beta-40.zip
+	sha256sums = c0e4ffb027ea4b1f65cfe2b6588925b7b659f628ce546fbc7b2bd3b5932045f5
+	sha256sums = a131b262e4c91f0ff12a8b9ddf040763e2a81520bf05b1b3dd943497e1ccad60
+	sha256sums = db09027cf609691a0f8ca04321ce6d0d1fd5a0af0392663a01407b8fdacc538c
+
+pkgname = cchv2

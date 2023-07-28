@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Encoding=UTF-8
+Name=CCHv2
+Comment=Codeforces Contest Helper v2
+Exec=/usr/bin/CCHv2
+Icon=/usr/share/icons/CCHv2.png
+Terminal=false
+Categories=Network;
+StartupWMClass=CCHv2
