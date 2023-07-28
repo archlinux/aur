@@ -8,7 +8,7 @@ pkgdesc="An in-development indie sandbox game about innovation and exploration--
 license=('custom')
 #  Versioning
 _release=stable # the name of the version's release type ("stable", "unstable", "pre")
-_pkgver=1.18.6
+_pkgver=1.18.7
 pkgver=${_pkgver//-/_} # allows usage of versions with hyphens in _pkgver
 pkgrel=1
 #  Requirements
@@ -24,7 +24,7 @@ _ignored=("vs_server_$_pkgver.tar.gz"
           "ModMaker.exe"
           "icons.icns"
           "MonoMac.dll" "launchmac")
-md5sums=('6e89043f9f91762cb5e385a46be6b272')
+md5sums=('4ceb8d90929e50f89db160acfa38f8be')
 
 # Installation
 prepare() {
