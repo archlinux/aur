@@ -1,6 +1,6 @@
 pkgbase = wluma
 	pkgdesc = Automatic brightness adjustment based on screen contents and ALS
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/maximbaz/wluma
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = wluma
 	depends = v4l-utils
 	optdepends = vulkan-driver: for using capturer=wlroots in config.toml
 	optdepends = wayland: for using capturer=wlroots in config.toml
-	source = wluma-4.2.0.tar.gz::https://github.com/maximbaz/wluma/archive/4.2.0.tar.gz
-	source = https://github.com/maximbaz/wluma/releases/download/4.2.0/wluma-4.2.0.tar.gz.asc
+	source = wluma-4.3.0.tar.gz::https://github.com/maximbaz/wluma/archive/4.3.0.tar.gz
+	source = https://github.com/maximbaz/wluma/releases/download/4.3.0/wluma-4.3.0.tar.gz.asc
 	validpgpkeys = 56C3E775E72B0C8B1C0C1BD0B5DB77409B11B601
-	b2sums = 7a950f08d57e47a5e37f0cf60f4faaa59661b10f6834aaebf925af31530dbf898830aee6cef711dc22fb594c1a9240e2d2a2506018cabdab026239f854084f12
+	b2sums = 3e1cdf68ac87767bb20f49c9c01e5c1373e636ae64c3570fc29fd5c57749e6211ebf43946b1410570af3d346ed5771d78a685160843b84af996d05893246720b
 	b2sums = SKIP
 
 pkgname = wluma
