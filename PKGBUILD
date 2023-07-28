@@ -12,10 +12,10 @@ checkdepends=(
     "python-appdirs"
     "python-click"
     "python-pygments"
-    "python-typing-extensions"
+    "python-typing_extensions"
     "python-gitpython"
     "python-tqdm"
-    "python-nest_asyncio"
+    "python-nest-asyncio"
     "python-blessed"
     "python-prompt-toolkit")
 
