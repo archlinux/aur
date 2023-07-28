@@ -36,6 +36,7 @@ conflicts=(
 
 source=("${_pkgname}::git+https://github.com/johnfanv2/LenovoLegionLinux")
 sha256sums=('SKIP')
+install="lenovolegionlinux.install"
 
 pkgver() {
   cd "${_pkgname}"
