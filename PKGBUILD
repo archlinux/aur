@@ -1,9 +1,7 @@
 # Maintainer: 7Ji <pugokughin@gmail.com>
 
-_commit='0b32ed16bfd45f979cd1e20c1efb1de6abbb7d64'
-
 pkgname=linux-firmware-amlogic-ophub
-pkgver=20230405
+pkgver=20230725.c1f334c
 pkgrel=1
 pkgdesc="Firmware files for Linux - for AArch64 Amlogic platform, complete set, collected by ophub"
 arch=('aarch64')
@@ -12,17 +10,19 @@ license=('GPL2' 'GPL3' 'custom')
 conflicts=('linux-firmware')
 provides=("linux-firmware=${pkgver}")
 options=(!strip)
-source=(
-  "firmware-${_commit}.tar.gz::${url}/archive/${_commit}.tar.gz"
-)
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
-sha256sums=(
-  'f1c3cb68df79c1de943cf4bcd88b9634ff8ced82265ae021ee87dbf0e6134881'
-)
+pkgver() {
+  cd firmware
+
+  # Commit date + short rev
+  echo $(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD).$(git rev-parse --short HEAD)
+}
 
 package() {
   install -d -m 755 "${pkgdir}"/usr/lib
-  cp -rva "${srcdir}/firmware-${_commit}/firmware" "${pkgdir}/usr/lib/"
+  cp -rva "${srcdir}/firmware/firmware" "${pkgdir}/usr/lib/"
   
   # Optimize wifi/bluetooth module, adapted from https://github.com/ophub/amlogic-s9xxx-armbian/blob/d324aad263106aa218f9ada5c01b1ca6f285c121/rebuild#L803
   pushd "${pkgdir}/usr/lib/firmware/brcm"
