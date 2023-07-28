@@ -2,6 +2,7 @@ pkgbase = beeper
 	pkgdesc = all your chats in one app - metapackage pointing to successor package
 	pkgver = 0.0.1
 	pkgrel = 1
+	epoch = 1
 	url = https://beeper.com/
 	arch = x86_64
 	license = custom
