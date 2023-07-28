@@ -1,22 +1,19 @@
 # Maintainer: yuhldr <yuhldr@qq.com>
 
+_pkgname=('phonolammps')
 pkgname=('python-phonolammps')
-_pkgname=('phonoLAMMPS')
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="LAMMPS interface for phonon calculations using phonopy"
 arch=('any')
-url="https://phonolammps.readthedocs.io/"
+url="https://github.com/abelcarreras/phonolammps"
 license=('MIT')
-depends=("python-phonopy" "python-numpy" "python-matplotlib" "python-seekpath" "python-dynaphopy")
+depends=("python-seekpath" "dynaphopy")
 optdepends=()
 makedepends=('python-setuptools' 'python')
-source=(
-  https://files.pythonhosted.org/packages/b9/07/f3bd45557caf2a2e5a5eaf25062f196bd545fe34b98c921f807c564a1b22/${_pkgname}-${pkgver}.tar.gz
+source=(${url}/archive/refs/tags/${pkgver}.tar.gz
 )
-sha256sums=(
-  'a5dcd72e09fbb8ee29d61e1084fbfda619ccd35a2324ca3a69a5b0baba7cbe18'
-  )
+sha256sums=('46d1611fd1d7f3d6dcfe5209966ee8594bd36410b6ac45f9a2d89f7f884b0daf')
 
 package() {
   cd "$srcdir"/${_pkgname}-${pkgver}

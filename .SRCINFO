@@ -1,18 +1,15 @@
 pkgbase = python-phonolammps
 	pkgdesc = LAMMPS interface for phonon calculations using phonopy
 	pkgver = 0.9.1
-	pkgrel = 1
-	url = https://phonolammps.readthedocs.io/
+	pkgrel = 2
+	url = https://github.com/abelcarreras/phonolammps
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python
-	depends = python-phonopy
-	depends = python-numpy
-	depends = python-matplotlib
 	depends = python-seekpath
-	depends = python-dynaphopy
-	source = https://files.pythonhosted.org/packages/b9/07/f3bd45557caf2a2e5a5eaf25062f196bd545fe34b98c921f807c564a1b22/phonoLAMMPS-0.9.1.tar.gz
-	sha256sums = a5dcd72e09fbb8ee29d61e1084fbfda619ccd35a2324ca3a69a5b0baba7cbe18
+	depends = dynaphopy
+	source = https://github.com/abelcarreras/phonolammps/archive/refs/tags/0.9.1.tar.gz
+	sha256sums = 46d1611fd1d7f3d6dcfe5209966ee8594bd36410b6ac45f9a2d89f7f884b0daf
 
 pkgname = python-phonolammps
