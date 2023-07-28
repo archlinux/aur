@@ -5,7 +5,7 @@
 pkgname='zeronet-conservancy'
 _gitname='zeronet-conservancy'
 _gitroot='https://github.com/zeronet-conservancy/zeronet-conservancy.git'
-pkgver=0.7.9
+pkgver=0.7.10
 pkgrel=1
 arch=('any')
 url='https://github.com/zeronet-conservancy/zeronet-conservancy/'
@@ -18,6 +18,7 @@ depends=('python' 'python-gevent>=1.1.0' 'python-gevent-websocket'
 	'python-defusedxml'
 	'python-rich'
 	'python-base58' 'python-merkletools'
+        'python-requests'
 )
 optdepends=('tor: anonymity'
 	    'namecoin-core: local name resolution')
