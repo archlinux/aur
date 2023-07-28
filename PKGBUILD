@@ -2,13 +2,13 @@
 
 pkgname=python-pywebview
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Build GUI for your Python program with JavaScript, HTML, and CSS."
 arch=('any')
 url='https://github.com/r0x0r/pywebview'
 license=('BSD')
 depends=('python' 'python-proxy_tools' 'python-bottle')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools-scm' 'python' 'python-wheel')
 optdepends=('python-gobject: use with GTK'
 	'python-cairo: use with GTK'
 	'webkit2gtk>=2.22: use with GTK'
