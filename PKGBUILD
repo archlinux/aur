@@ -4,7 +4,7 @@ pkgname='anituner'
 pkgdesc='Create, edit and convert Windows animated cursors'
 
 pkgver=2.0.0.0
-pkgrel=1
+pkgrel=2
 
 arch=(i686 x86_64)
 
@@ -12,7 +12,7 @@ url='https://www.gdgsoft.com/anituner'
 license=('freeware')
 
 depends=(wine)
-makedepends=(unzip gendesk icoutils)
+makedepends=(unzip gendesk icoutils pev)
 
 provides=(anituner)
 
