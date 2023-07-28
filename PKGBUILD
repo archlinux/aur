@@ -8,8 +8,8 @@ pkgdesc="Python library that interfaces with the MediaWiki API"
 url="https://www.mediawiki.org/wiki/Manual:${_base}"
 license=(MIT)
 arch=(any)
-depends=(python-requests python-mwparserfromhell)
-makedepends=(python-build python-installer python-setuptools python-wheel)
+depends=(python-requests python-setuptools python-mwparserfromhell)
+makedepends=(python-build python-installer python-wheel)
 optdepends=('python-wikitextparser: parsing MediaWiki wikicode'
   'python-stdnum: cosmetic changes for numbers')
 # python-sseclient python-pydot python-google python-pymysql python-pillow python-mwoauth python-beautifulsoup4 python-fake-useragent flake8 python-darglint python-flake8-bugbear python-flake8-coding python-flake8-colors python-flake8-comprehensions python-flake8-docstrings python-flake8-future-import python-verve-flake8-mock python-flake8-print python-flake8-quotes python-flake8-string-format python-flake8-tuple python-flake8-no-u-prefixed-strings python-pep8-naming python-hacking
