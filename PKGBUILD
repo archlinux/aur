@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=rpcsx
 pkgname=$_pkgname-git
-pkgver=r246.ff26305
+pkgver=r256.032d191
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 arch=('x86_64')
@@ -36,12 +36,17 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
+	# https://github.com/RPCSX/rpcsx/pull/32
 	sed -i '/xbyak/c find_package(xbyak)' CMakeLists.txt
 	sed -i 's/xbyak/xbyak::xbyak/' rpcsx-os/CMakeLists.txt
+	# https://github.com/RPCSX/rpcsx/issues/33
 	sed -i 's/-march=native/-mfsgsbase/' rpcsx-os/CMakeLists.txt
+	# https://bugs.archlinux.org/task/79212
+	sed -i 's/glslangValidator/glslang/' hw/amdgpu/device/CMakeLists.txt
 }
 
 build() {
+	LDFLAGS+=" -Wl,-z,undefs"
 	cmake -S $_pkgname -B build \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
