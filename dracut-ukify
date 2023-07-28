@@ -44,6 +44,12 @@ function variant_name() {
   fi
 }
 
+function ukify_obsolete_syntax() {
+  read -r -a ukify_version < <(/usr/lib/systemd/ukify --version)
+  [ "${ukify_version[1]}" -lt 254 ]
+  return $?
+}
+
 function uki_path() {
   local name="$1"
   local version="$2"
@@ -214,16 +220,24 @@ function gen_image() {
     echo "BUILD_ID=\"$version_name\"" >> "$os_release"
     echo "VERSION_ID=\"$(variant_name "$pkgbase" "$variant")\"" >> "$os_release"
 
-    local -a ukify_args=("${ukify_global_args[@]}")
+    local -a ukify_args=()
+    if ! ukify_obsolete_syntax; then
+          ukify_args+=(build)
+    fi
+    ukify_args+=("${ukify_global_args[@]}")
     ukify_args+=(--uname "$version")
     ukify_args+=(--os-release "@$os_release")
     ukify_args+=(--output "$image")
-    ukify_args+=(--linux "$vmlinuz")
-    ukify_args+=(--initrd "$initrd")
+    if ukify_obsolete_syntax; then
+      ukify_args+=("$vmlinuz" "$initrd")
+    else
+      ukify_args+=(--linux "$vmlinuz")
+      ukify_args+=(--initrd "$initrd")
+    fi
 
     echo "==> Ukify image $kernel ($version_name)"
 
-    /usr/lib/systemd/ukify build "${ukify_args[@]}"
+    /usr/lib/systemd/ukify "${ukify_args[@]}"
 
     # Remove temporary files
     rm "$initrd"
@@ -231,10 +245,14 @@ function gen_image() {
 
     # Mark image as default if needed
     if [[ "$pkgbase" == "$default_kernel_package" && "$variant" == "default" ]]; then
-      echo "===> Mark linux image $kernel ($version) as default"
-      bootctl set-default "$image" || {
-      	echo "==> Unable to mark linux image $kernel ($version) as default due to error" >&2
-      }
+      if ! bootctl is-installed --quiet; then
+        echo "==> systemd-boot is not installed, unable to mark image as default" >&2
+      else
+        echo "===> Mark linux image $kernel ($version) as default"
+        bootctl set-default "$(basename "$image")" || {
+          echo "==> Unable to mark linux image $kernel ($version) as default due to error" >&2
+        }
+      fi
     fi
   done
 }
