@@ -1,6 +1,6 @@
 pkgbase = ctpv-git
 	pkgdesc = Fast image previews for lf
-	pkgver = r255.4c14f6d
+	pkgver = r257.930535c
 	pkgrel = 1
 	url = https://github.com/NikitaIvanovV/ctpv
 	arch = i686

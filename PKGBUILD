@@ -1,7 +1,7 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=ctpv
 pkgname="${_name}-git"
-pkgver=r255.4c14f6d
+pkgver=r257.930535c
 pkgrel=1
 pkgdesc="Fast image previews for lf"
 arch=('i686' 'x86_64')
