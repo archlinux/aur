@@ -3,7 +3,7 @@
 
 pkgname=ytdlp-gui
 pkgver=0.3.0
-pkgrel=5
+pkgrel=7
 pkgdesc="a GUI for yt-dlp written in Rust"
 url="https://github.com/BKSalman"
 license=("GPL3")

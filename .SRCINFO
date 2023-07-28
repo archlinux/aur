@@ -1,7 +1,7 @@
 pkgbase = ytdlp-gui
 	pkgdesc = a GUI for yt-dlp written in Rust
 	pkgver = 0.3.0
-	pkgrel = 5
+	pkgrel = 7
 	url = https://github.com/BKSalman
 	arch = x86_64
 	license = GPL3
