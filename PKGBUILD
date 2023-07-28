@@ -1,7 +1,7 @@
-# Maintainer: codeberge <concur_panama530 at slmail dot me>
+# Maintainer: codeberge <codeberge at mailbox dot org>
 pkgname=dl-stream-git
 _pkgname=dl-stream
-pkgver=44.48be3d6
+pkgver=51.fd6eb2a
 pkgrel=1
 pkgdesc="Ad-free Twitch streams and videos via streamlink and ttvlol plugin"
 arch=('any')
