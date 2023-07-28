@@ -3,7 +3,7 @@
 _pkgname=libretro-dolphin
 pkgname=$_pkgname-git
 pkgver=r33042.2f4b0f7902
-pkgrel=2
+pkgrel=3
 pkgdesc="Nintendo GameCube/Wii core"
 arch=('x86_64')
 url="https://github.com/libretro/dolphin"
@@ -27,7 +27,6 @@ makedepends=(
 	'cmake'
 	'cubeb'
 	'curl'
-	'fmt'
 	'git'
 	'hidapi'
 	'libevdev'
@@ -68,6 +67,7 @@ build() {
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_C_FLAGS_RELEASE="-DNDEBUG" \
 		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
+		-DCMAKE_DISABLE_FIND_PACKAGE_fmt=ON \
 		-DENABLE_LTO=OFF \
 		-DENABLE_TESTS=OFF \
 		-DLIBRETRO=ON \
@@ -83,7 +83,6 @@ package() {
 		'libcubeb.so'
 		'libEGL.so'
 		'libevdev.so'
-		'libfmt.so'
 		'libGLX.so'
 		'libhidapi-hidraw.so'
 		'liblzma.so'
