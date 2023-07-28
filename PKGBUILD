@@ -1,103 +1,101 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=0.35.0.348.g0f13c38e72
+pkgver=0.36.0.24.g4c3ed843dc
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
 depends=(
-         'libfribidi.so'
-         'gnutls'
-         'libjack.so'
-         'liblcms2.so'
-         'libarchive.so'
-         'libbluray.so'
-         'libbs2b.so'
-         'libcaca'
-         'libcdio-paranoia'
-         'libdav1d.so'
-         'libdovi.so'
-         'libdvdnav' #'libdvdnav.so'
-         'libgme'
-         'libmysofa'
-         'libpulse.so'
-         'libshaderc_shared.so'
-         'libsixel'
-         'libsoxr'
-         'libssh.so'
-         'libva.so'
-         'libvdpau'
-         'libxinerama'
-         'libxkbcommon'
-         'libxss'
-         'libxv'
-         'libzimg.so'
-         'luajit'
-         'mujs'
-         'libopenal.so'
-         'libxpresent'
-         'librubberband.so'
-         'libpipewire-0.3.so'
-         'sdl2'
-         'libsndio.so'
-         'uchardet'
-         'v4l-utils'
-         'spirv-cross'
-         'davs2'
-         'glslang'
-         'ffnvcodec-headers'
-         'wayland-protocols'
-         )
+  'fribidi' 'libfribidi.so'
+  'gnutls'
+  'jack2' 'libjack.so'
+  'lcms2' 'liblcms2.so'
+  'libarchive' 'libarchive.so'
+  'libbluray' 'libbluray.so'
+  'libbs2b' 'libbs2b.so'
+  'libcaca'
+  'libcdio-paranoia'
+  'dav1d' 'libdav1d.so'
+  'libdovi' 'libdovi.so'
+  'libdvdnav' #'libdvdnav.so'
+  'libgme'
+  'libmysofa'
+  'libpulse' 'libpulse.so'
+  'shaderc' 'libshaderc_shared.so'
+  'libsixel'
+  'libsoxr'
+  'libssh' 'libssh.so'
+  'libva' 'libva.so'
+  'libvdpau'
+  'libxinerama'
+  'libxkbcommon'
+  'libxss'
+  'libxv'
+  'zimg' 'libzimg.so'
+  'luajit'
+  'mujs'
+  'openal' 'libopenal.so'
+  'libxpresent'
+  'rubberband' 'librubberband.so'
+  'libpipewire' 'libpipewire-0.3.so'
+  'sdl2'
+  'sndio' 'libsndio.so'
+  'uchardet'
+  'v4l-utils'
+  'spirv-cross'
+  'davs2'
+  'glslang'
+  'ffnvcodec-headers'
+  'wayland-protocols'
+)
 license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD')
 url='http://mpv.io'
 makedepends=(
-             'git'
-             'meson'
-             'python-docutils'
-             'nasm'
-             'ladspa'
-             'libdvdnav'
-             'fontconfig'
-             'vulkan-headers'
-             'wayland-protocols'
-             'ffnvcodec-headers'
-             'rubberband'
-             'zimg'
-             'sndio'
-             'python-mako'
-             'python-jinja'
-             'python-markupsafe'
-             'nuklear'
-             'glad'
-             'jbigkit'
-             'libpipewire'
-             'libdovi'
-             )
+  'git'
+  'meson'
+  'python-docutils'
+  'nasm'
+  'ladspa'
+  'fontconfig'
+  'vulkan-headers'
+  'ffnvcodec-headers'
+  'python-mako'
+  'python-jinja'
+  'python-markupsafe'
+  'nuklear'
+  'glad'
+  'jbigkit'
+)
 optdepends=(
-            'nvidia-utils: for hardware accelerated video decoding with CUDA'
-            'youtube-dl: Another way to view youtuve videos with mpv'
-            'zsh-completions: Additional completion definitions for Zsh users'
-            'bash-completion: Additional completion definitions for Bash users'
-            )
-provides=('mpv'
-          'libmpv.so'
-          )
-conflicts=('mpv'
-           'libmpv.so'
-           )
+  'nvidia-utils: for hardware accelerated video decoding with CUDA'
+  'youtube-dl: Another way to view youtuve videos with mpv'
+  'yt-dlp: Another way to view youtuve videos with mpv'
+  'zsh-completions: Additional completion definitions for Zsh users'
+  'bash-completion: Additional completion definitions for Bash users'
+)
+provides=(
+  'mpv'
+  'libmpv.so'
+)
+conflicts=(
+  'mpv'
+  'libmpv.so'
+)
 options=('!emptydirs' 'debug')
-source=('git+https://github.com/mpv-player/mpv-build.git'
-        'git+https://github.com/mpv-player/mpv.git'
-        'git+https://github.com/ffmpeg/ffmpeg.git'
-        'git+https://github.com/libass/libass.git'
-        'git+https://github.com/haasn/libplacebo.git'
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            )
+source=(
+  'git+https://github.com/mpv-player/mpv-build.git'
+  'git+https://github.com/mpv-player/mpv.git'
+  'git+https://github.com/ffmpeg/ffmpeg.git'
+  'git+https://github.com/libass/libass.git'
+  'git+https://github.com/haasn/libplacebo.git'
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+  'SKIP'
+)
 backup=('etc/mpv/encoding-profiles.conf')
 
 if [ -f /usr/lib/libvapoursynth.so ]; then
@@ -133,7 +131,7 @@ prepare() {
     '-Dd3d11=disabled'
     )
 
-_ffmpeg_options=(
+  _ffmpeg_options=(
     '--disable-programs'
     '--enable-libbs2b'
     '--enable-libdav1d'
@@ -203,7 +201,6 @@ _ffmpeg_options=(
     '-Dvaapi-x11=enabled'
     '-Dvaapi-wayland=enabled'
     '-Dvaapi-drm=enabled'
-    '-Dvaapi-x-egl=enabled'
     '-Dvulkan=enabled'
     '-Dwayland=enabled'
     '-Dx11=enabled'
