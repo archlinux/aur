@@ -1,21 +1,21 @@
 pkgbase = linux-xanmod-lts-linux-bin-x64v2
 	pkgdesc = The Linux kernel and modules with Xanmod patches - Current Stable (LTS) - Prebuilt version - x64v2
-	pkgver = 6.1.39
+	pkgver = 6.1.42
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
 	license = GPL2
 	makedepends = jq
 	makedepends = curl
-	noextract = https://github.com/xanmod/linux/releases/download/6.1.39-xanmod1/linux-image-6.1.39-x64v2-xanmod1_6.1.39-x64v2-xanmod1-0.20230719.g59d2d55_amd64.deb
-	noextract = https://github.com/xanmod/linux/releases/download/6.1.39-xanmod1/linux-headers-6.1.39-x64v2-xanmod1_6.1.39-x64v2-xanmod1-0.20230719.g59d2d55_amd64.deb
+	noextract = https://github.com/xanmod/linux/releases/download/6.1.42-xanmod1/linux-image-6.1.42-x64v2-xanmod1_6.1.42-x64v2-xanmod1-0.20230727.g3b60bb1_amd64.deb
+	noextract = https://github.com/xanmod/linux/releases/download/6.1.42-xanmod1/linux-headers-6.1.42-x64v2-xanmod1_6.1.42-x64v2-xanmod1-0.20230727.g3b60bb1_amd64.deb
 	options = !strip
-	source = https://github.com/xanmod/linux/releases/download/6.1.39-xanmod1/linux-image-6.1.39-x64v2-xanmod1_6.1.39-x64v2-xanmod1-0.20230719.g59d2d55_amd64.deb
-	source = https://github.com/xanmod/linux/releases/download/6.1.39-xanmod1/linux-headers-6.1.39-x64v2-xanmod1_6.1.39-x64v2-xanmod1-0.20230719.g59d2d55_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/6.1.42-xanmod1/linux-image-6.1.42-x64v2-xanmod1_6.1.42-x64v2-xanmod1-0.20230727.g3b60bb1_amd64.deb
+	source = https://github.com/xanmod/linux/releases/download/6.1.42-xanmod1/linux-headers-6.1.42-x64v2-xanmod1_6.1.42-x64v2-xanmod1-0.20230727.g3b60bb1_amd64.deb
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = b7555f2f061a1c9ca680cdcbdfd3fb8f2e79a422bab908dc18079bf134aa3032
-	sha256sums = 2368f38228819ee72882cf7e2036ad4afcfa0cdfdee11e7264a23371d0191724
+	sha256sums = bdb1a456a67eb4b52ccd8304494c3656730359b3d418a1164086b735469e0017
+	sha256sums = fad0ae360c6f82f70ab6343c647c235b4ccf4f0544c6f897f69ac048557d3295
 
 pkgname = linux-xanmod-lts-linux-bin-x64v2
 
