@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="ferrum-bin"
-pkgver=0.16.12
-pkgrel=2
+pkgver=0.17.0
+pkgrel=1
 pkgdesc="Music library app for Mac, Linux and Windows"
 arch=('x86_64')
 url="https://github.com/probablykasper/ferrum"
@@ -10,7 +10,7 @@ conflicts=("${pkgname%-bin}")
 depends=('electron19' 'hicolor-icon-theme')
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/Ferrum-v${pkgver}-linux.deb"
     "${pkgname%-bin}.sh")
-sha256sums=('9698d0088bfdfb702e53fcb5d95aa5ad3668f14b978fb4e247443beee8c2efc9'
+sha256sums=('9e86f033dc16aa2d59def3ab886bd7f2c9083ccb6e25643e0dbfe063ec419836'
             '71aefe1c77400e66d3d51101bdd2621f1ed602c9014ca8fa4fe4d56cfcdc4dcf')
 package() {
     bsdtar -xf "${srcdir}/data.tar.xz"
