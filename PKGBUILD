@@ -9,7 +9,8 @@ arch=("x86_64")
 url="https://ankexinchaung.cn"
 _appstore="https://com-store-packages.uniontech.com/pool/appstore"
 license=('unknown')
-depends=()
+depends=('dbus' 'java-runtime' 'freetype2' 'gtk3' 'gdk-pixbuf2' 'at-spi2-core' 'cairo' 'libxrender' 'gcc-libs' 'glibc' \
+    'fontconfig' 'dbus-glib' 'libxcb' 'nspr' 'gtk2' 'nss' 'pango' 'libxt' 'libx11' 'glib2' 'libxext' 'hicolor-icon-theme')
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${pkgver}.deb::${_appstore}/c/${_uosname}/${_uosname}_${pkgver}_amd64.deb")
 sha256sums=('6607e19422fb0180fd4bf925b4632ba92773470ed1969a5f6cf0687b2cbdd31d')
