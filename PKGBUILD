@@ -1,20 +1,32 @@
 # Maintainer: xihale <xihale.top@qq.com>
-pkgname=affine-canary-releases
-pkgver=0.7.0
-pkgrel=59
-pkgdesc="A privacy-focussed, local-first, open-source, and ready-to-use alternative for Notion & Miro."
+pkgname=affine-latest-releases
+pkgver=0
+pkgrel=0
+pkgdesc="Auto get the latest version(maybe canary maybe not) of AFFiNE(A privacy-focussed, local-first, open-source, and ready-to-use alternative for Notion & Miro.)"
 arch=("x86_64")
 license=('MPL-2.0')
-source=("https://github.com/toeverything/AFFiNE/releases/download/v${pkgver}-canary.${pkgrel}/affine-canary-linux-x64.zip")
-sha256sums=("SKIP")
 makedepends=('gendesk')
 
 package() {
+
+    # get the package
+    url=`curl -s "https://api.github.com/repos/toeverything/AFFiNE/releases?per_page=1" | grep -E ".zip" | head -n 3 | tail -n 1 | awk -F'"' '{print $4}'`
+    file=`basename $url`
+    echo $url $file
+    if [ -e affine-canary-linux-x64.zip ]; then
+        curl -C - -O $url # continuous transmission on the breakpoint.
+    else
+        curl -JLO $url # prevent redirect
+    fi
+    bsdtar -xf $file
+
     first_dir=$(find . -maxdepth 1 -type d | head -n 3 | tail -n 1)
-    install -Dm755 $first_dir/AFFiNE-canary -t $pkgdir/opt/affine-canary/
+    exec=`basename \`find $first_dir/* -maxdepth 1 -name "AFFiNE*"\``
+    echo $first_dir $exec
+    install -Dm755 $first_dir/$exec -t $pkgdir/opt/affine-latest/
     install -Dm644 "$first_dir/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "$first_dir/resources/app/resources/icons/icon.png" "${pkgdir}/usr/share/pixmaps/affine.png"
-    gendesk -f -n --icon "affine" --categories "Utility" --name "AFFiNE" --exec "/opt/affine-canary/AFFiNE-canary"
+    gendesk -f -n --icon "affine" --categories "Utility" --name "affine-latest" --exec "/opt/affine-latest/$exec"
     install -Dm644 "${srcdir}/$pkgname.desktop" -t "${pkgdir}/usr/share/applications"
-    mv $first_dir/* $pkgdir/opt/affine-canary/
+    mv $first_dir/* $pkgdir/opt/affine-latest/
 }
