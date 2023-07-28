@@ -1,18 +1,17 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname="board4you-bin"
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A whiteboard app built with Electron, React, react-icons, konva and bootstrap."
 arch=("x86_64")
 url="https://github.com/GachiLord/board4you"
-license=("custom")
+license=("GPL3")
 depends=('electron')
 conflicts=("${pkgname%-bin}")
 source=("${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh")
-sha256sums=('cc334da395c8d9d6e0dcba03cb048e0a998a14b966a5eda7588065a9bb2a6a67'
+sha256sums=('1aef780b30d0e45e460046c0c91119be5243918d027b98553a64a384604c9829'
             '03c6ec21d2322a88d9fadec9dfa18f041cbf9e967aceabf46088c4099915076e')
-          
 prepare() {
     chmod a+x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
     "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
@@ -23,6 +22,5 @@ package() {
     sed "s|AppRun --no-sandbox %U|/opt/${pkgname%-bin}/${pkgname%-bin}|g" -i "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/squashfs-root/"LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
     find "${pkgdir}/opt/${pkgname%-bin}" -type d -exec chmod 755 {} \;
 }
