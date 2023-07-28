@@ -2,7 +2,7 @@
 # Author: Andrey Ovsankin aka EvilBeaver
 
 pkgname=onescript
-pkgver=1.8.1
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="This project is an alternative implementation of the virtual machine, execute scripts in the language of the 1C:Enterprise"
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=(
         "source.deb::https://oscript.io/downloads/latest/x64/onescript-engine_${pkgver}_all.deb"
         )
 
-md5sums=('5bcd5161c2f5e59ea4d5e4db2e53117e')
+md5sums=('214f15edbf5c2d7c92172b0a56d55a09')
 
 
 prepare() {
