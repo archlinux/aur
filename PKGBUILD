@@ -3,7 +3,7 @@
 _name=pytest-archon
 pkgname=python-${_name}
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A little tool that helps you structure (large) Python projects"
 arch=('any')
 url="https://github.com/jwbargsten/${_name}"
@@ -14,8 +14,12 @@ depends=(
 makedepends=(
 	'python-setuptools'
 	'python-setuptools-scm'
+	'python-build'
+	'python-installer'
+	'python-wheel'
 )
 checkdepends=(
+	'python-pytest'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	"$pkgname-$pkgver.patch")
