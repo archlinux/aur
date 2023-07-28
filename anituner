@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export WINEARCH=win32 WINEPREFIX="$HOME/.anituner/wine"
+
+if [ ! -d "$HOME/.anituner" ]; then
+    mkdir -p "$HOME/.anituner/wine" || exit 1
+
+    # copy the default configuration file
+    cp -r /usr/share/anituner/AniTunerPrefDefault.xml "$HOME/.anituner/AniTunerPref.xml" || exit 1
+
+    # make a symlink to the executable
+    ln -s /usr/share/anituner/AniTuner.exe "$HOME/.anituner/anituner"
+fi
+
+wine "$HOME/.anituner/anituner" "$@"
