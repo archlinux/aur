@@ -105,6 +105,7 @@ package() {
     # wfica expects {module,wfclient,apssrv}.ini in $ICAROOT/config
     # sadly these configs differ slightly by locale
     lang=${LANG%%_*}
+    lang=${lang:-'en'}
     [[ -d "${pkgdir}/$ICAROOT/nls/$lang" ]] || lang='en'
     cp "${pkgdir}$ICAROOT/nls/$lang/module.ini" "${pkgdir}/$ICAROOT/config/"
     cp "${pkgdir}$ICAROOT/nls/$lang/appsrv.template" "${pkgdir}/$ICAROOT/config/appsrv.ini"
