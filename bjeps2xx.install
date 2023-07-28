@@ -1,0 +1,90 @@
+post_install() {
+	# Copyright 2013 The Chromium Authors. All rights reserved.
+	# Use of this source code is governed by a BSD-style license that can be
+	# found in the LICENSE file.
+
+	TARGET_DIR_CHROME="/etc/opt/chrome/native-messaging-hosts"
+	TARGET_DIR_CHROMIUM="/etc/chromium/native-messaging-hosts"
+	TARGET_DIR_FIREFOX="/usr/lib/mozilla/native-messaging-hosts"
+	TARGET_DIR_FONT="/usr/share/fonts/truetype/source-sans-3"
+
+	HOST_NAME=br.com.banrisul.bjess2jm_wizardserver
+
+	# Update host path in the manifest.
+	HOST_PATH=/usr/lib/BanrisulExtensao/Bjess8xm_WizardServer
+
+	ESCAPED_HOST_PATH=${HOST_PATH}
+
+	if [ -e "/usr/bin/google-chrome-stable" ];then
+	# Create directory to store native messaging host.
+	mkdir -p $TARGET_DIR_CHROME
+
+	# Copy native messaging host manifest.
+	cp /usr/local/lib/BanrisulExtensao/$HOST_NAME.json $TARGET_DIR_CHROME
+
+	sed -i -e "s|HOST_PATH|$ESCAPED_HOST_PATH|" $TARGET_DIR_CHROME/$HOST_NAME.json
+
+	# Set permissions for the manifest so that all users can read it.
+	chmod o+r $TARGET_DIR_CHROME/$HOST_NAME.json
+	fi
+
+	if [ -e "/usr/bin/chromium" ];then
+	# Create directory to store native messaging host.
+	mkdir -p $TARGET_DIR_CHROMIUM
+
+	# Copy native messaging host manifest.
+	cp /usr/local/lib/BanrisulExtensao/$HOST_NAME.json $TARGET_DIR_CHROMIUM
+
+	sed -i -e "s|HOST_PATH|$ESCAPED_HOST_PATH|" $TARGET_DIR_CHROMIUM/$HOST_NAME.json
+
+	# Set permissions for the manifest so that all users can read it.
+	chmod o+r $TARGET_DIR_CHROMIUM/$HOST_NAME.json
+	fi
+
+	if [ -e "/usr/bin/firefox" ];then
+	# Create directory to store native messaging host.
+	mkdir -p $TARGET_DIR_FIREFOX
+
+	# Copy native messaging host manifest.
+	cp /usr/local/lib/BanrisulExtensao/$HOST_NAME.firefox.json $TARGET_DIR_FIREFOX
+
+	sed -i -e "s|HOST_PATH|$ESCAPED_HOST_PATH|" $TARGET_DIR_FIREFOX/$HOST_NAME.firefox.json
+
+	# Set permissions for the manifest so that all users can read it.
+	chmod o+r $TARGET_DIR_FIREFOX/$HOST_NAME.firefox.json
+	fi
+
+    if [ "$(locale | grep "LANG")" = "LANG=pt_BR.UTF-8" ]; then
+        echo -e "\e[34;1m==>\e[39;1m O host nativo de mensagens $HOST_NAME foi instalado. \e[0m"
+    else
+        echo -e "\e[34;1m==>\e[39;1m Native messaging host $HOST_NAME has been installed. \e[0m"
+    fi
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+    if [ "$(locale | grep "LANG")" = "LANG=pt_BR.UTF-8" ]; then
+        echo -e "\e[34;1m==>\e[39;1m Finalizando remocao de arquivos... \e[0m"
+    else
+        echo -e "\e[34;1m==>\e[39;1m Finishing removing files... \e[0m"
+    fi
+
+	if [ -e "/etc/opt/chrome/native-messaging-hosts/$HOST_NAME.json" ];then
+		rm -rf /etc/opt/chrome/native-messaging-hosts/$HOST_NAME.json
+	fi
+	if [ -e "/etc/chromium/native-messaging-hosts/$HOST_NAME.json" ];then
+		rm -rf /etc/chromium/native-messaging-hosts/$HOST_NAME.json
+	fi
+	if [ -e "/usr/lib/mozilla/native-messaging-hosts/$HOST_NAME.firefox.json" ];then
+		rm -rf /usr/lib/mozilla/native-messaging-hosts/$HOST_NAME.firefox.json
+	fi
+
+    if [ "$(locale | grep "LANG")" = "LANG=pt_BR.UTF-8" ]; then
+        echo -e "\e[34;1m==>\e[39;1m Arquivos removidos com sucesso. \e[0m"
+    else
+        echo -e "\e[34;1m==>\e[39;1m Files removed successfully. \e[0m"
+    fi
+}
