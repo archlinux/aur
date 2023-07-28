@@ -21,7 +21,7 @@ source=("${_pkgname}-${pkgver}-zh.7z::${_githubzhurl}/releases/download/${pkgver
     "${pkgname%-bin}.sh")
 sha256sums=('ed82eb4ddb6155d8d7d6496ebc94a3610120038c4e8a2cf61c83b027564822da'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
-            '340f1a5cf1f8b903679608619be19a8e326bea0ab8af924cc54946589b8b51c6')
+            'fa3622bc2dfe7a1000a2851404306d79463cd1ff5371534f0513d4e4fec090ec')
 sha256sums_aarch64=('6031515cb44652e573cd231aa2ae151768947f5612cbb98322c3dd2b9ed861d1')
 sha256sums_armv7h=('34aba140ece5fe97ffe505d3f30c8989a3b3fc665969016df8bf93c56855bb2a')
 sha256sums_x86_64=('6031515cb44652e573cd231aa2ae151768947f5612cbb98322c3dd2b9ed861d1')
