@@ -1,8 +1,8 @@
 # Maintainer: Nicola Revelant <nicolarevelant@outlook.com>
 
 pkgname=italian-draughts-git
-pkgver=1.3.3.r2.g797d4a7
-pkgrel=2
+pkgver=1.3.4.r0.g7334b64
+pkgrel=1
 pkgdesc="Play Italian Draughts against the computer"
 arch=("x86_64")
 license=("GPL3")
