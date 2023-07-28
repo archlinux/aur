@@ -8,6 +8,8 @@ pkgdesc="powerlevel10k style for luaprompt"
 arch=(any)
 url=https://github.com/Freed-Wu/$_pkgname.lua
 license=(GPL3)
+depends=(lua-ansicolors lua-filesystem)
+makedepends=(luarocks)
 source=("$url/releases/download/$pkgver/$_pkgname-$pkgver-0.all.rock")
 sha256sums=(SKIP)
 

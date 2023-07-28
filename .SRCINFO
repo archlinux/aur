@@ -5,6 +5,9 @@ pkgbase = lua-prompt-style
 	url = https://github.com/Freed-Wu/prompt-style.lua
 	arch = any
 	license = GPL3
+	makedepends = luarocks
+	depends = lua-ansicolors
+	depends = lua-filesystem
 	source = https://github.com/Freed-Wu/prompt-style.lua/releases/download/0.0.1/prompt-style-0.0.1-0.all.rock
 	sha256sums = SKIP
 
