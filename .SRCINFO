@@ -1,7 +1,7 @@
 pkgbase = bookxnotepro-bin
 	pkgdesc = Electronic notebook
-	pkgver = 2.0.0.1086
-	pkgrel = 2
+	pkgver = 2.0.0.1112
+	pkgrel = 1
 	url = http://www.bookxnote.com
 	arch = x86_64
 	license = unknown
@@ -9,9 +9,9 @@ pkgbase = bookxnotepro-bin
 	depends = qt5-base
 	depends = qt5-speech
 	provides = bookxnotepro
-	source = BookxNotePro-2.0.0.1086.deb::http://www.bookxnote.com/setup/BookxNotePro_ubuntu_amd64-1086.deb
+	source = BookxNotePro-2.0.0.1112.deb::http://www.bookxnote.com/setup/BookxNotePro_ubuntu_amd64-2.0.0.1112.deb
 	source = BookxNotePro.sh
-	sha512sums = e53dc40acc130d8cb6df2bc064d73ffeac0d19465f5482f0d2deb8935cc2f646a7fe2220153cd49e3f33ca0eb5b2b3bd1b76d98bc42b56db519a60fa00c0a87c
+	sha512sums = 8c517f62384956147e8b4702ede5c3974988eae66c9f0529689b70ab0fb7b7c940ce5bf9a3f9a763aae773f2367491b38e6ae2bb299604ffe5cc4a6ab74b65d5
 	sha512sums = 0b605046f657ddc9b3c566c022e702ca81bb5cc58aba3fd71d0ae73ce22af1cbc60fbaac6949a09b81fa6ee5f2a2818579a07798e2a92be2f03a1c0e52fcd924
 
 pkgname = bookxnotepro-bin

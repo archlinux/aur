@@ -2,9 +2,8 @@
 
 _pkgname=BookxNotePro
 pkgname=${_pkgname,,}-bin
-_rev=1086
-pkgver=2.0.0.${_rev}
-pkgrel=2
+pkgver=2.0.0.1112
+pkgrel=1
 pkgdesc="Electronic notebook"
 arch=('x86_64')
 url="http://www.bookxnote.com"
@@ -12,10 +11,10 @@ license=('unknown')
 provides=("${_pkgname,,}")
 depends=('qt5-base' 'qt5-speech')
 makedepends=('patchelf')
-source=("${_pkgname}-${pkgver}.deb::${url}/setup/${_pkgname}_ubuntu_amd64-${_rev}.deb"
+source=("${_pkgname}-${pkgver}.deb::${url}/setup/BookxNotePro_ubuntu_amd64-${pkgver}.deb"
 "${_pkgname}.sh"
 )
-sha512sums=('e53dc40acc130d8cb6df2bc064d73ffeac0d19465f5482f0d2deb8935cc2f646a7fe2220153cd49e3f33ca0eb5b2b3bd1b76d98bc42b56db519a60fa00c0a87c'
+sha512sums=('8c517f62384956147e8b4702ede5c3974988eae66c9f0529689b70ab0fb7b7c940ce5bf9a3f9a763aae773f2367491b38e6ae2bb299604ffe5cc4a6ab74b65d5'
             '0b605046f657ddc9b3c566c022e702ca81bb5cc58aba3fd71d0ae73ce22af1cbc60fbaac6949a09b81fa6ee5f2a2818579a07798e2a92be2f03a1c0e52fcd924')
 
 
