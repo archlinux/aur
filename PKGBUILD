@@ -2,7 +2,7 @@
 
 pkgname=python-dvc-objects
 _pkgname=${pkgname#python-}
-pkgver=0.23.1
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='DVC objects'
 arch=(any)
@@ -35,7 +35,7 @@ optdepends=('python-adlfs: azure support'
             'python-webdav4: webdav support')
 _archive=("$_pkgname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_archive.tar.gz")
-sha256sums=('159ec9bede7443fbcbc64d33e53071ae51bea86fc82a764ab652655c35b58776')
+sha256sums=('4c58153162b71d2290e13c47de4f4f009c6ed43f1b3e37cfe8a9a76065101e37')
 
 build() {
 	cd "$_archive"
