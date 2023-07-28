@@ -1,11 +1,12 @@
 pkgbase = ud
 	pkgdesc = UNIX day utility
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/xyproto/ud
 	arch = x86_64
 	license = BSD3
-	source = https://github.com/xyproto/ud/releases/download/v1.0.0/ud-1.0.0.tar.gz
-	b2sums = 6dc77c593ce84634280f47fac207f2db0b34bbc6912523f746bb4ffbc04713c2f6b3780be1452038b5f682a8876cacbf3a67849fbf824ed0cb9cbda76d6d4703
+	source = https://github.com/xyproto/ud/releases/download/v1.0.1/ud-1.0.1.tar.gz
+	sha256sums = 0627220fb8c615c8bc70b90fdd443a6738f9eb5fba1d6c110e9d93a1b7843766
+	b2sums = 485f81de5f9568bec1fa70d1db508bd6f5d5c18e1e12b3d0170b897ba2eb6b4d96ff0cf3b84416e083e469ca7724624934a9ac435727a0c01333d4fa632ce95a
 
 pkgname = ud
