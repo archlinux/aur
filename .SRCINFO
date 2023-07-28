@@ -1,0 +1,16 @@
+pkgbase = python-clipboard
+	pkgdesc = A cross platform clipboard operation Python library.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/terryyin/clipboard
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pyperclip
+	source = https://files.pythonhosted.org/packages/source/c/clipboard/clipboard-0.0.4.tar.gz
+	sha256sums = a72a78e9c9bf68da1c3f29ee022417d13ec9e3824b511559fd2b702b1dd5b817
+
+pkgname = python-clipboard
