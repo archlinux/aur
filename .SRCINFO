@@ -1,0 +1,11 @@
+pkgbase = lua-prompt-style
+	pkgdesc = powerlevel10k style for luaprompt
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Freed-Wu/prompt-style.lua
+	arch = any
+	license = GPL3
+	source = https://github.com/Freed-Wu/prompt-style.lua/releases/download/0.0.1/prompt-style-0.0.1-0.all.rock
+	sha256sums = SKIP
+
+pkgname = lua-prompt-style
