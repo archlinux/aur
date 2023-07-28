@@ -13,7 +13,7 @@ depends=('python-absl'
          'python-ml-dtypes'
          'python-numpy'
          'python-scipy')
-makedepends=('python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 conflicts=('python-jaxlib')
 source=("jaxlib-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v${pkgver}.tar.gz"
         'python-jaxlib.diff')
