@@ -4,7 +4,7 @@
 
 # Maintainer: Štěpán Němec <stepnem@smrk.net>
 pkgname=knfmt
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='OpenBSD KNF-style (Kernel Normal Form) C code formatter'
 arch=(x86_64)
@@ -12,7 +12,7 @@ url=https://github.com/mptre/knfmt
 license=(ISC)
 depends=(glibc)
 source=(https://github.com/mptre/knfmt/releases/download/v"$pkgver"/knfmt-"$pkgver".tar.gz)
-sha256sums=('d9a98bb7659a725dd729f655bb2ffa059bf41fc6bb78db15149d037a566d9848')
+sha256sums=('6938d7863cb47f217847004b1adfed21c4e62dd7c316fc85a4a07a9aa91f12aa')
 
 build() {
 	cd "$pkgname-$pkgver"
