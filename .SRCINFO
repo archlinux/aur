@@ -1,0 +1,25 @@
+pkgbase = softmaker-freeoffice
+	pkgdesc = An alternative to Microsoft Office for personal and business use
+	pkgver = 2021.1064
+	pkgrel = 1
+	url = https://www.freeoffice.com/
+	arch = x86_64
+	license = custom
+	makedepends = gettext
+	depends = curl
+	depends = libglvnd
+	depends = libx11
+	depends = libxext
+	depends = libxmu
+	depends = libxrandr
+	depends = libxrender
+	source = https://www.softmaker.net/down/softmaker-freeoffice-2021-1064-amd64.tgz
+	source = template.sh
+	source = template.desktop
+	source = LICENSE
+	md5sums = cc4ab29ebba0b1cf23e01c604be25f88
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = softmaker-freeoffice
