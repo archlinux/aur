@@ -1,0 +1,20 @@
+pkgbase = wnr-bin
+	pkgdesc = Work/Rest Timer. Stricter. Prettier. More features.
+	pkgver = 1.30.0
+	pkgrel = 1
+	url = https://getwnr.com/
+	arch = x86_64
+	license = MPL2
+	depends = bash
+	depends = electron22
+	depends = hicolor-icon-theme
+	provides = wnr
+	conflicts = wnr
+	source = wnr-1.30.0.AppImage::https://github.com/RoderickQiu/wnr/releases/download/v1.30.0-patch/wnr-1.30.0-patch-Linux.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/RoderickQiu/wnr/master/LICENSE
+	source = wnr.sh
+	sha256sums = 455695c7de497ebf05a0d44c8fc897b08d3fbecc7a13c79e3ce511a2be3d2224
+	sha256sums = 1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5
+	sha256sums = 3ed021387a345b174939f407ba1fd5cee6fb51bed078ff7ad4e4081ab2b1651b
+
+pkgname = wnr-bin
