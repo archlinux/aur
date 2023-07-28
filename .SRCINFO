@@ -6,6 +6,7 @@ pkgbase = plooshra1n
 	arch = x86_64
 	license = MIT
 	depends = gcc
+	depends = wget
 	source = https://cdn.discordapp.com/attachments/1134301212292948018/1134351272640782448/plooshra1n.c
 	source = https://cdn.discordapp.com/attachments/1134301212292948018/1134347173337763881/LICENSE
 	sha256sums = 6fd41d68b20a73e6be7aca0933357c5abffa9ad7dfbf7ae207ee14f8f6aa88be
