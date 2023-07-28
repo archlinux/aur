@@ -1,4 +1,4 @@
-# Maintainer:  dreiecl
+# Maintainer:  dreieck
 # Contributor: Diejmon
 
 pkgname=gtk-theme-clearlooks-compact
