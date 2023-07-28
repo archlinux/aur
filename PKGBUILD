@@ -2,15 +2,15 @@
 
 pkgname=pam_exec-gpg-git
 pkgver=r8.aadfc63
-pkgrel=2
+pkgrel=3
 pkgdesc="Unlock GnuPG keys keys on login using PAM."
 arch=(any)
 url="https://github.com/x70b1/pam_exec-gpg"
 license=("The Unlicense")
 makedepends=("git")
 depends=("pam")
-provides=('pam_exec-gpg')
-conflicts=('pam_exec-gpg')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+${url}.git")
 noextract=()
 sha256sums=('SKIP')
@@ -24,5 +24,5 @@ pkgver() {
 
 package() {
     cd ${pkgname}
-    install -Dm755 pam_exec-gpg "${pkgdir}"/usr/bin/pam_exec-gpg
+    install -Dm755 pam_exec-gpg "${pkgdir}/usr/bin/${pkgname%-git}"
 }
