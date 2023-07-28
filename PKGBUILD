@@ -2,7 +2,7 @@
 
 pkgname=super_clipboard
 _pkgname=superclipboard
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Manage your clipboard history with a beautiful and simple interface"
 arch=('x86_64')
