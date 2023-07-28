@@ -2,7 +2,7 @@
 
 pkgname=macli-git
 _pkgname=macli
-pkgver=1.1.0.r0.g1d72b87
+pkgver=v1.18.0
 pkgrel=1
 license=('GPLv3')
 pkgdesc='Unofficial CLI-Based MyAnimeList Client'
@@ -18,7 +18,7 @@ conflicts=("macli")
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	version=$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
+	version=$(git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
 	echo "${version:1}"
 }
 
