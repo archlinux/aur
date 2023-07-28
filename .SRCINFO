@@ -1,7 +1,7 @@
 pkgbase = python-pywebview
 	pkgdesc = Build GUI for your Python program with JavaScript, HTML, and CSS.
 	pkgver = 4.2.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/r0x0r/pywebview
 	install = python-pywebview.install
 	arch = any
