@@ -4,7 +4,7 @@ pkgbase=python-sphinx_design
 _pname=${pkgbase#python-}
 _pyname=${_pname/_/-}
 pkgname=("python-${_pname}" "python-${_pname}-doc")
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A sphinx extension for designing beautiful, screen-size responsive web components"
 arch=('any')
@@ -17,9 +17,10 @@ makedepends=('python-flit-core'
              'python-myst-parser')  # sphinx required by myst-parser
 checkdepends=('python-pytest-regressions')  # myst-parser already in makedepends
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+#source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pname}/${_pname}-${pkgver}.tar.gz")
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/executablebooks/sphinx-design/archive/refs/tags/v${pkgver}.tar.gz"
         'Makefile')
-md5sums=('66700d7b1cb6fcd93215c7b29913b740'
+md5sums=('a127b4dc73893156687c2dcaab77ae7d'
          'a6aa4bc42b138d75f938065a0994c3e1')
 
 prepare() {
@@ -41,7 +42,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed" # -vv --color=yes
+    pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 #   nosetests #|| warning "Tests failed"
 }
 
@@ -49,6 +50,10 @@ package_python-sphinx_design() {
     depends=('python-sphinx')
     optdepends=('python-pre-commit: code_style'
                 'python-myst-parser: rtd'
+                'python-sphinx-fure: theme_furo'
+                'python-sphinx_rtd_theme: theme_rtd'
+                'python-sphinx-book-theme: theme_sbt'
+                'python-pydata-sphinx-theme: theme_pydata'
                 'python-sphinx_design-doc: Documentation for sphinx_design')
     cd ${srcdir}/${_pyname}-${pkgver}
 
