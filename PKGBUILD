@@ -3,7 +3,7 @@ pkgname="cchv2"
 _pkgname="CCHv2"
 pkgver="2.0.40"
 _pkgver="2.0-beta-40"
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful contest helper for CodeForces.com"
 arch=("any")
 url="https://github.com/CodeforcesContestHelper/CCHv2"
@@ -34,7 +34,7 @@ package() {
 	cp CCHv2.sh $pkgdir/usr/bin/$_pkgname
 	chmod +x $pkgdir/usr/bin/$_pkgname
 
-	mv "$_pkgname-$_pkgver"/favicon.png $pkgdir/usr/share/icons/CCHv2.png
+	cp "$_pkgname-$_pkgver"/favicon.png $pkgdir/usr/share/icons/CCHv2.png
 	cp -r "$_pkgname-$_pkgver" $pkgdir/usr/lib/$_pkgname/
 
 	cp CCHv2.desktop $pkgdir/usr/share/applications/
