@@ -1,20 +1,23 @@
-pkgname=('dynaphopy')
-pkgver=1.17.0
+# Maintainer: yuhldr <yuhldr@qq.com>
+
+pkgname="dynaphopy"
+_pkgname="DynaPhoPy"
+pkgver=1.17.15
 pkgrel=1
 pkgdesc="Dynaphopy allows to calculate anharmonic phonon linewidhts and frequency shifts using the mode descomposition technique"
 arch=('any')
-url="http://abelcarreras.github.io/DynaPhoPy/"
+url="https://github.com/abelcarreras/${_pkgname}"
 license=('MIT')
-depends=("python-numpy" "python-scipy" "python-h5py" "python-pyaml" "python-matplotlib" "openblas")
-optdepends=("python-pyfftw" "seekpath" "openmpi")
+depends=("python-scipy" "python-phonopy")
+optdepends=()
 makedepends=('python-setuptools' 'python')
-source=("https://github.com/abelcarreras/DynaPhoPy/archive/$pkgver.tar.gz")
-sha512sums=('bca8d61764bee95de9797e39bb9421ce69ac4cd4e75868c8e9d4d98143a424eaa7a2df09bbc3537807a90e64a2a9793aa3f14d279ac15e5805b0f53ca6acae55')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('eaa9d18f7518f8cab53c8d41bc0f10ad683586b85ac7b6d368e7f8c7c5ca38aa')
 
 
 
 package() {
-  cd "$srcdir"/DynaPhoPy-$pkgver
+  cd "$srcdir"/${_pkgname}-$pkgver
   python setup.py install --root "$pkgdir" --optimize=1
   # uncomment for openmpi version
   # python setup_openmp.py install --root "$pkgdir" --optimize=1

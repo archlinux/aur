@@ -1,23 +1,15 @@
 pkgbase = dynaphopy
 	pkgdesc = Dynaphopy allows to calculate anharmonic phonon linewidhts and frequency shifts using the mode descomposition technique
-	pkgver = 1.17.0
+	pkgver = 1.17.15
 	pkgrel = 1
-	url = http://abelcarreras.github.io/DynaPhoPy/
+	url = https://github.com/abelcarreras/DynaPhoPy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python
-	depends = python-numpy
 	depends = python-scipy
-	depends = python-h5py
-	depends = python-pyaml
-	depends = python-matplotlib
-	depends = openblas
-	optdepends = python-pyfftw
-	optdepends = seekpath
-	optdepends = openmpi
-	source = https://github.com/abelcarreras/DynaPhoPy/archive/1.17.0.tar.gz
-	sha512sums = bca8d61764bee95de9797e39bb9421ce69ac4cd4e75868c8e9d4d98143a424eaa7a2df09bbc3537807a90e64a2a9793aa3f14d279ac15e5805b0f53ca6acae55
+	depends = python-phonopy
+	source = https://github.com/abelcarreras/DynaPhoPy/archive/refs/tags/1.17.15.tar.gz
+	sha256sums = eaa9d18f7518f8cab53c8d41bc0f10ad683586b85ac7b6d368e7f8c7c5ca38aa
 
 pkgname = dynaphopy
-
