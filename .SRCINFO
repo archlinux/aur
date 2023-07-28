@@ -1,6 +1,6 @@
 pkgbase = avisynthplus-git
 	pkgdesc = Avisynth+. (GIT Version)
-	pkgver = 3.7.2.188.g25601720
+	pkgver = 3.7.3.0.gfc5b9bc4
 	pkgrel = 1
 	url = http://avs-plus.net
 	arch = x86_64

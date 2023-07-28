@@ -1,20 +1,22 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=avisynthplus-git
-pkgname=('avisynthplus-git'
-         'avisynthplus-docs-git'
-         )
-pkgver=3.7.2.188.g25601720
+pkgname=(
+  'avisynthplus-git'
+  'avisynthplus-docs-git'
+)
+pkgver=3.7.3.0.gfc5b9bc4
 pkgrel=1
 pkgdesc='Avisynth+. (GIT Version)'
 arch=('x86_64')
 url='http://avs-plus.net'
 license=('GPL')
-makedepends=('git'
-             'cmake'
-             'python-sphinx'
-             'devil'
-             )
+makedepends=(
+  'git'
+  'cmake'
+  'python-sphinx'
+  'devil'
+)
 source=('avisynthplus::git+https://github.com/AviSynth/AviSynthPlus.git')
 sha256sums=('SKIP')
 options=('debug')
@@ -41,9 +43,10 @@ build() {
 
 package_avisynthplus-git() {
   depends=('devil')
-  provides=('avisynthplus'
-            'libavisynth.so'
-            )
+  provides=(
+    'avisynthplus'
+    'libavisynth.so'
+  )
   conflicts=('avisynthplus')
 
   DESTDIR="${pkgdir}" cmake --build build --target install
