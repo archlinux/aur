@@ -1,6 +1,6 @@
 pkgname=river-noxwayland
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A dynamic tiling wayland compositor'
 arch=('x86_64')
 url='https://github.com/riverwm/river'

@@ -1,7 +1,7 @@
 pkgbase = river-noxwayland
 	pkgdesc = A dynamic tiling wayland compositor
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/riverwm/river
 	arch = x86_64
 	license = GPL3
