@@ -1,6 +1,6 @@
 pkgbase = mov-cli-git
 	pkgdesc = A cli tool to browse and watch movies/shows.
-	pkgver = 1.4.3.r0.g0b52f87
+	pkgver = 1.4.6.r3.g1c8605d
 	pkgrel = 1
 	url = https://github.com/mov-cli/mov-cli
 	arch = any
@@ -21,6 +21,7 @@ pkgbase = mov-cli-git
 	depends = python-tldextract
 	depends = python-krfzf
 	optdepends = iina: Player used for MacOS
+	optdepends = porn-cli: CLI tool to browse and watch porn
 	provides = mov-cli
 	source = git+https://github.com/mov-cli/mov-cli.git
 	md5sums = SKIP
