@@ -1,7 +1,7 @@
 # Maintainer: dakriy <aur at persignum dot com>
 pkgname=classicube-git
 _pkgname=ClassiCube
-pkgver=1.3.2.r85.g5a6f356a2
+pkgver=1.3.5.r165.gc47f48d18
 pkgrel=1
 epoch=0
 pkgdesc="A game based on the original Minecraft Classic. (Not an official package)"
@@ -21,12 +21,12 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname/src"
+	cd "$_pkgname"
 	make
 }
 
 package() {
-	install -D -m755 "$srcdir/$_pkgname/src/ClassiCube" "$pkgdir/usr/bin/classicube_run"
+	install -D -m755 "$srcdir/$_pkgname/ClassiCube" "$pkgdir/usr/bin/classicube_run"
 	install -D -m755 "$srcdir/classicube" "$pkgdir/usr/bin/classicube"
 	install -D -m644 "$srcdir/$_pkgname/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 	install -D -m644 "$srcdir/$_pkgname/misc/CCicon.png" "$pkgdir/usr/share/$pkgname/CCicon.png"
