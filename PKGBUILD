@@ -15,7 +15,8 @@ depends=('absl-py'
          'python-ml-dtypes'
          'python-numpy'
          'python-scipy')
-makedepends=('bazel' 'gcc12' 'pybind11' 'python-installer' 'python-setuptools' 'python-wheel')
+makedepends=('bazel' 'gcc12' 'pybind11' 'python-build' 'python-installer'
+             'python-setuptools' 'python-wheel')
 conflicts=('python-jaxlib')
 provides=("python-jaxlib=$pkgver")
 source=("jaxlib-${pkgver}.tar.gz::https://github.com/google/jax/archive/refs/tags/jaxlib-v${pkgver}.tar.gz"

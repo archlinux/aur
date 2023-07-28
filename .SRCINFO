@@ -9,6 +9,7 @@ pkgbase = python-jaxlib-cuda
 	makedepends = bazel
 	makedepends = gcc12
 	makedepends = pybind11
+	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
