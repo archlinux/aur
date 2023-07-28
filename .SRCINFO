@@ -1,7 +1,7 @@
 pkgbase = argagg
 	pkgdesc = Simple C++ command line argument/option parser
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vietjtnguyen/argagg
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=argagg
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple C++ command line argument/option parser'
 arch=('any')
 url='https://github.com/vietjtnguyen/argagg'
@@ -18,7 +18,8 @@ build() {
   cd "$pkgname-$pkgver/build"
 
   cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_FLAGS='-O0'
 
   make
 }
