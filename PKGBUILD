@@ -1,6 +1,3 @@
-# Maintainer: Daurnimator <daurnimator@archlinux.org>
-# Contributor: Andrea Feletto <andrea@andreafeletto.com>
-
 pkgname=river-noxwayland
 pkgver=0.2.4
 pkgrel=1
