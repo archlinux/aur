@@ -2,7 +2,7 @@
 
 pkgname='zwcad-bin'
 _pkgname='zwcad'
-pkgver=23.2.3.4
+pkgver=24.0.2.3
 _year=20${pkgver:0:2}
 pkgrel=1
 epoch=1
@@ -14,11 +14,11 @@ provides=("zwcad")
 depends=('freeimage' 'qrencode'  'freetype2' 'python' 'log4cpp')
 makedepends=('patchelf')
 source=('zwcad.sh')
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://dl.zwsoft.cn/zwcad/cad_linux/2023/SP2/zwcad2023_23.2.3.4_amd64.deb?auth_key=1677250795-0-0-6b84b2d9fef19aed29d558b343c20d50")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::https://dl.zwsoft.cn/zwcad/cad_linux/2023/SP2/zwcad2023_23.2.3.4_arm64.deb?auth_key=1677250795-0-0-7af64a3a729cfdb1f9dad2e2c94da7f3")
+source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::https://dl.zwsoft.cn/zwcad/cad_linux/2024/zwcad2024_24.0.2.3_amd64.deb?auth_key=1690549857-0-0-b6892670688f7bd5bd4dadd52629d815")
+source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::https://dl.zwsoft.cn/zwcad/cad_linux/2024/zwcad2024_24.0.2.3_arm64.deb?auth_key=1690549857-0-0-5896181fcadbec59eb315d18a65cc634")
 sha512sums=('3f978fc46a39c8e65551a8e581f234526183b6b811b1e857fb17903549b10442b676713c342880d144a47fc5da76882152901533abd898a24588b7e9bbbc207c')
-sha512sums_x86_64=('47c52811cf396e81a94ab2877cce0591c8b0a98e12df48d8bf02b634a123f7be68f32f0b03a05e3b89d9995cb6f0738f8ff1e0cce2af396571cd352d395b2c37')
-sha512sums_aarch64=('2e511a7374f06d5d6d0519f90bacedb9cc15c05f6c6d129b680745eb418f7e6a99f6c7857ec5c12b42023327d5d3c71f2f7019afa7ba036ee1c3bf1fe949942a')
+sha512sums_x86_64=('2cf0943a942e0ee6f6db63c8c74ac4ee97686b1978938e5e76cd9682f9d15b900f407759ea841ce62becb8527218ea0bca2390695bfbd38755b25572da40bc0b')
+sha512sums_aarch64=('3c68ed5e31dad54abd223794243d0aa44b12c285029c65d0c657505eb4c748a366e5fe9165a7838bc654fad30cbafe904a822e45cfb471de739bde679bf8236e')
 options=(!strip)
 # no need to strip, it only decreases the installed size by 24.44 MiB.
 
@@ -53,6 +53,7 @@ build(){
     cd $srcdir/usr/share/applications/
     sed -i "s|^Exec=.*|Exec=zwcad %F|g;s|^Icon=.*|Icon=zwcad${_year}|g"   "zwcad${_year}.desktop"
     sed -i "s|^Exec=.*|Exec=zwlmgr|g;s|^Icon=.*|Icon=zwcad${_year}|g"   "zwlmgr${_year}.desktop"
+    sed -i "s|^Exec=.*|Exec=zwcloud2d|g;s|^Icon=.*|Icon=zwcad${_year}|g" "zwcloud2d.desktop"
 
 }
 
@@ -61,42 +62,26 @@ package(){
     cp -rf  "${srcdir}"/usr   "$pkgdir"
     mkdir -p "${pkgdir}"/usr/share/icons/hicolor/scalable/apps
     cp -rf  "${srcdir}"/opt/apps/zwcad${_year} "${pkgdir}"/opt/zwcad
-    # chmod a-x "${pkgdir}"/opt/zwcad/Icons/ZWCAD.svg
-    # mv "${pkgdir}"/opt/zwcad/Icons/ZWCAD.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps
 
     # create executable
     install -Dm755 ${srcdir}/zwcad.sh "$pkgdir"/usr/bin/zwcad
     install -Dm755 ${srcdir}/zwlmgr.sh "$pkgdir"/usr/bin/zwlmgr
+    ln -s /opt/zwcad/ZwCloud2DLauncher "$pkgdir"/usr/bin/zwcloud2d
 
 
     cd "$pkgdir"/opt/zwcad
     install -Dm644 sense4_usb.rules  ${pkgdir}/etc/udev/rules.d/sense4_usb.rules
 
-    # patch rpath
-    for lib in ${pkgdir}/opt/zwcad/{lib*.so,*.zrx}
-    do
-        echo patching $lib
-        patchelf --set-rpath '$ORIGIN:/usr/lib/zwcad' $lib
-    done;
-    for lib in ${pkgdir}/opt/zwcad/zh-CN/lib*.so
-    do
-        echo patching $lib
-        patchelf --set-rpath '$ORIGIN:/usr/lib/zwcad' $lib
-    done;
-    _pyver=$(python -V | cut -d' ' -f2)
-    patchelf --set-rpath '$ORIGIN:/usr/lib/zwcad' ${pkgdir}/opt/zwcad/ZwPyRuntime/python${_pyver%.*}/ZwPyRuntime.so
-    patchelf --set-rpath '$ORIGIN:/usr/lib/zwcad' ${pkgdir}/opt/zwcad/ZWCAD
+    # fix rpath
+    find ${pkgdir}/opt/zwcad -executable -type f -print0 |
+    xargs -0 -i  sh -c 'patchelf --set-rpath "\$ORIGIN:/usr/lib/zwcad" "{}" 2> /dev/null||true';
 
     # move libs
     mkdir -p ${pkgdir}/usr/lib/zwcad
     mv "$pkgdir"/opt/zwcad/{lib/libSpaA*,libdwf*,libsw*,libfsdk*}  ${pkgdir}/usr/lib/zwcad
 
-
-
     # remove unused files
     rm -rf "$pkgdir"/opt/zwcad/{Icons,ZWCADRUN.sh,ZWLMGRRUN.sh}
     rm -rf ${pkgdir}/opt/zwcad/{libfree*,libqren*,libcrypto*,libgmp*,liblog4cpp*,libssl*,*.rules}
     rm -rf ${pkgdir}/opt/zwcad/lib/{libicu*,libpcre*}
-
-
 }
