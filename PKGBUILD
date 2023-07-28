@@ -11,7 +11,6 @@ license=('MIT')
 url="https://github.com/RaRe-Technologies/smart_open"
 depends=()
 optdepends=("python-boto3: AWS support"
-	"python-bz2file: Handling bz2 files"
 	"python-requests: HTTP support"
 	"python-paramiko: SSH support")
 makedepends=('python-setuptools')

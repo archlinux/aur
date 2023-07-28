@@ -7,7 +7,6 @@ pkgbase = python-smart_open
 	license = MIT
 	makedepends = python-setuptools
 	optdepends = python-boto3: AWS support
-	optdepends = python-bz2file: Handling bz2 files
 	optdepends = python-requests: HTTP support
 	optdepends = python-paramiko: SSH support
 	provides = python-smart-open
