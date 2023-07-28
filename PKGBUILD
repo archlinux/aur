@@ -14,7 +14,7 @@ _pkgver=$(
 _pkgname='beeper'
 pkgname="$_pkgname-latest-bin"
 pkgver=3.66.24
-pkgrel=1
+pkgrel=2
 pkgdesc="all your chats in one app"
 arch=('x86_64')
 url="https://beeper.com/"
@@ -22,9 +22,7 @@ license=('custom')
 depends=(
   'hicolor-icon-theme'
 )
-makedepends=(
-  'p7zip'
-)
+makedepends=()
 options=('!strip')
 
 source=(
@@ -39,8 +37,11 @@ pkgver() {
 }
 
 build() {
+  cd "$srcdir"
+
   # extract appimage
-  7z x "$srcdir/$_filename" -o"$srcdir/squashfs-root"
+  chmod +x "$_filename"
+  "$srcdir/$_filename" --appimage-extract
 
   # fix folder permissions
   find "$srcdir/squashfs-root" -type d -exec chmod 755 {} \;
