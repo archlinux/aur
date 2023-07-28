@@ -9,6 +9,8 @@ url="https://github.com/x70b1/pam_exec-ssh"
 license=("The Unlicense")
 makedepends=("git")
 depends=("pam" "expect")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+${url}.git")
 noextract=()
 sha256sums=('SKIP')
@@ -22,5 +24,5 @@ pkgver() {
 
 package() {
     cd ${pkgname}
-    install -Dm755 pam_exec-ssh "${pkgdir}"/usr/bin/pam_exec-ssh
+    install -Dm755 pam_exec-ssh "${pkgdir}/usr/bin/${pkgname%-git}"
 }

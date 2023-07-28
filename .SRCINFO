@@ -8,6 +8,8 @@ pkgbase = pam_exec-ssh-git
     makedepends = git
     depends = pam
     depends = expect
+    provides = pam_exec-ssh
+    conflicts = pam_exec-ssh
     source = pam_exec-ssh::git+https://github.com/x70b1/pam_exec-ssh.git
     sha256sums = SKIP
 
