@@ -2,9 +2,9 @@
 # Contributor: Fredy García <frealgagu at gmail dot com>
 # Contributor: Philip Goto <philip.goto@gmail.com>, WithTheBraid <the-one@with-the-braid.cf>
 
-pkgname=('flutter-light-common' 'flutter-light-android-arm' 'flutter-light-android-arm64' 'flutter-light-android-x86' 'flutter-light-android-x64' 'flutter-light-web' 'flutter-light-linux')
+pkgname=('flutter-light' 'flutter-light-android-arm' 'flutter-light-android-arm64' 'flutter-light-android-x86' 'flutter-light-android-x64' 'flutter-light-web' 'flutter-light-linux')
 pkgbase=flutter-light
-pkgver=3.10.5
+pkgver=3.10.6
 pkgrel=1
 makedepends=("python")
 optdepends=("android-sdk" "android-studio" "intellij-idea-community-edition" "intellij-idea-ultimate-edition" "cmake" "ninja" "perl" "python")
@@ -17,7 +17,7 @@ source=(
   "flutter.sh"
 )
 
-sha256sums=('6ba1a8b996300bb6222915d99a19945c5a5ef062550413559d5bb124bd6cf1e9')
+sha256sums=('1c161f30aabf34e25d9399a79973bdd457bedd6c6f6ffcc5152f8965aa8eb568')
 
 prepare() {
   if [ ! -e $srcdir/flutter ]; then
@@ -29,7 +29,7 @@ prepare() {
   if [[ $_ver != $pkgver  ]]; then
 	git pull --update-shallow
   fi
-  _ver=$(git tag -l)
+  _ver=$(git tag -l | grep $pkgver)
   if [[ $_ver != $pkgver  ]]; then
   	exit 1
   fi
@@ -39,7 +39,7 @@ prepare() {
   "${srcdir}/flutter/bin/flutter" --no-version-check precache
 }
 
-package_flutter-light-common() {
+package_flutter-light() {
   provides=(flutter)
   conflicts=(flutter)
   depends=("git" "glu" "java-environment>=8" "libglvnd" "unzip" "dart" "flutter-light-android-arm64" "dart")
@@ -64,11 +64,11 @@ package_flutter-light-common() {
   chmod -R a+rw "${pkgdir}/opt/flutter/version" "${pkgdir}/opt/flutter/bin/cache" "${pkgdir}/opt/flutter/.git"
   find "${pkgdir}/opt/flutter" -name "pubspec.lock" -exec chmod a+rw {} +
   find "${pkgdir}/opt/flutter" -name "package_config.json" -exec chmod a+rw {} +
-  find "${pkgdir}/opt/${pkgname}" -name "package_config.json" -exec chmod a+rw {} +
+  find "${pkgdir}/opt/flutter" -name "package_config.json" -exec chmod a+rw {} +
 }
 
 package_flutter-light-android-arm() {
-  depends=("flutter-light-common")
+  depends=("flutter-light")
   
   install -dm755 "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
   cp -ra "${srcdir}/flutter/bin/cache/artifacts/engine/android-arm" "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
@@ -77,7 +77,7 @@ package_flutter-light-android-arm() {
 }
 
 package_flutter-light-android-arm64() {
-  depends=("flutter-light-common")
+  depends=("flutter-light")
   
   install -dm755 "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
   cp -ra ${srcdir}/flutter/bin/cache/artifacts/engine/android-arm64* ${pkgdir}/opt/flutter/bin/cache/artifacts/engine
@@ -86,7 +86,7 @@ package_flutter-light-android-arm64() {
 }
 
 package_flutter-light-android-x86() {
-  depends=("flutter-light-common")
+  depends=("flutter-light")
 
   install -dm755 "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
   cp -ra ${srcdir}/flutter/bin/cache/artifacts/engine/android-x86* ${pkgdir}/opt/flutter/bin/cache/artifacts/engine
@@ -95,7 +95,7 @@ package_flutter-light-android-x86() {
 }
 
 package_flutter-light-android-x64() {
-  depends=("flutter-light-common")
+  depends=("flutter-light")
 
   install -dm755 "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
   cp -ra ${srcdir}/flutter/bin/cache/artifacts/engine/android-x64 ${pkgdir}/opt/flutter/bin/cache/artifacts/engine
@@ -104,7 +104,7 @@ package_flutter-light-android-x64() {
 }
 
 package_flutter-light-web() {
-  depends=("flutter-light-common")
+  depends=("flutter-light")
 
   install -dm755 "${pkgdir}/opt/flutter/bin/cache"
   cp -ra "${srcdir}/flutter/bin/cache/flutter_web_sdk" "${pkgdir}/opt/flutter/bin/cache"
@@ -113,7 +113,7 @@ package_flutter-light-web() {
 }
 
 package_flutter-light-linux() {
-  depends=("flutter-light-common")
+  depends=("flutter-light")
 
   install -dm755 "${pkgdir}/opt/flutter/bin/cache/artifacts/engine"
   cp -ra ${srcdir}/flutter/bin/cache/artifacts/engine/linux* ${pkgdir}/opt/flutter/bin/cache/artifacts/engine
