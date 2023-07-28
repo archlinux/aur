@@ -1,7 +1,10 @@
 pkgbase = python-pangu
+	pkgdesc = Paranoid text spacing for good readability, to automatically insert whitespace between CJK (Chinese, Japanese, Korean) and half-width characters (alphabetical letters, numerical digits and symbols).
 	pkgver = 4.0.6.1
-	pkgrel = 1
+	pkgrel = 2
+	url = https://github.com/vinta/pangu.py
 	arch = any
+	license = MIT
 	makedepends = python-setuptools
 	source = https://files.pythonhosted.org/packages/source/p/pangu/pangu-4.0.6.1.tar.gz
 	sha256sums = f799d127709fe5ecff5d476945ac63d4be758b7bda02efb95715f1dc24472a2f

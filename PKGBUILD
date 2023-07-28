@@ -6,7 +6,7 @@ arch=('any')
 
 url='https://github.com/vinta/pangu.py'
 pkgdesc='Paranoid text spacing for good readability, to automatically insert whitespace between CJK (Chinese, Japanese, Korean) and half-width characters (alphabetical letters, numerical digits and symbols).'
-license='MIT'
+license=('MIT')
 
 _name=${pkgname#python-}
 
