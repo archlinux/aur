@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=PixelFlasher
+Comment=Pixel phone flashing GUI
+Exec=PixelFlasher
+Terminal=false
+Icon=PixelFlasher
+Type=Application
+StartupNotify=false
+Hidden=false
+Categories=Utility
