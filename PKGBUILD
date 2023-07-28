@@ -1,10 +1,14 @@
+# Maintainer: loukii
 pkgname=python-pangu
+pkgver="4.0.6.1"
+pkgrel=2
+arch=('any')
+
+url='https://github.com/vinta/pangu.py'
+pkgdesc='Paranoid text spacing for good readability, to automatically insert whitespace between CJK (Chinese, Japanese, Korean) and half-width characters (alphabetical letters, numerical digits and symbols).'
+license='MIT'
 
 _name=${pkgname#python-}
-
-pkgver="4.0.6.1"
-pkgrel=1
-arch=('any')
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 
