@@ -1,6 +1,6 @@
 # Python package author: Daniel Kantor <git@daniel-kantor.com>
 pkgname=python-seagoat
-pkgver=0.5.4
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A semantic-code search engine"
 arch=(any)
