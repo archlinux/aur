@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/anituner-atd">
+        <sub-class-of type="text/plain"/>
+        <comment>AniTuner disassembly</comment>
+        <glob pattern="*.atd"/>
+    </mime-type>
+</mime-info>
