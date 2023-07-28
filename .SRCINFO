@@ -8,6 +8,6 @@ pkgbase = mypeople-bin
 	depends = sqlite
 	provides = mypeople
 	source = mypeople::https://github.com/TheSnakeWitcher/mypeople/releases/download/v0.1.0/mypeople
-	md5sums = a22e0c261b38d232ef8f53c951cfe1b3
+	md5sums = SKIP
 
 pkgname = mypeople-bin
