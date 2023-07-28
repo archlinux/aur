@@ -93,7 +93,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
 _major=6.4
-pkgver=${_major}.5
+pkgver=${_major}.7
 _branch=6.x
 xanmod=1
 _revision=
@@ -131,10 +131,10 @@ _patches=()
 for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
-sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3'
-            'SKIP'
-            '225f7f1c616f4796eade829f8f7c5543f9e4075441482c55fd84373c2ac93bf4'
-            '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30'
+sha256sums=('8fa0588f0c2ceca44cac77a0e39ba48c9f00a6b9dc69761c02a5d3efac8da7f3' # kernel
+            'SKIP'                                                             # kernel signature
+            '5a314f13da6a489b4001cb601f86c30fee1eae3f0fc09dc91efa1aaea4f97216' # xanmod
+            '5c84bfe7c1971354cff3f6b3f52bf33e7bbeec22f85d5e7bfde383b54c679d30' # choose-gcc-optimization.sh
             'ec83793ae083a70b4b91f22473179ddfa5fa80bed5751dfb80ee3224b498b498' # 0001-bore.patch
             'a2c4322972924197763b52974b814d105e0ffef27336baabb8a96e0946566089' # 0002-constgran-vanilla-max.patch
             '01eea507af27ad3b1329ea6856fc302691ec13a5b13495f79eeb784b6cca521a' # 0003-glitched-cfs.patch
