@@ -3,7 +3,7 @@
 pkgbase=python-cdflib
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A python module for reading NASA's Common Data Format (cdf) files Resources"
 arch=('any')
@@ -66,7 +66,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.cdf"
 #       "https://lasp.colorado.edu/maven/sdc/public/data/sdc/web/cdflib_testing/wi_k0_spha_20210121_v01.nc")
 #       'fix-module-import.patch')
-md5sums=('7b1dcf17260fb56b857ede7b5b49b6ae')
+md5sums=('c9a7dfb94a05f42f9d13b943f92275fc')
 #        'ba680f74500be6839d3fe232e6a22eb1'
 #        '0239191dd5d8400aaf68ff5a6ee4de0d'
 #        '269b0b2dae018ffa3e7442349e65b0ad'
@@ -130,7 +130,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv --color=yes --remote-data
+    PYTHONPATH="build/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count
 }
 
 package_python-cdflib() {
