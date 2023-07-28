@@ -2,7 +2,7 @@ pkgbase = macli-git
 	pkgdesc = Unofficial CLI-Based MyAnimeList Client
 	pkgver = 1.1.0.r0.g1d72b87
 	pkgrel = 1
-	url = https://github.com/MikunoNaka/macli
+	url = https://dev.vidhukant.xyz/macli
 	arch = i686
 	arch = x86_64
 	license = GPLv3
@@ -11,7 +11,7 @@ pkgbase = macli-git
 	depends = gnome-keyring
 	provides = macli
 	conflicts = macli
-	source = macli::git+https://github.com/MikunoNaka/macli.git
+	source = macli::git+https://dev.vidhukant.xyz/macli
 	sha256sums = SKIP
 
 pkgname = macli-git
