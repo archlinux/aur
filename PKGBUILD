@@ -20,6 +20,8 @@ optdepends=(
     'libxkbcommon: xkb layout conversion support'
     )
 makedepends=('meson')
+conflicts=('sfwbar')
+provides=('sfwbar')
 
 source=("${pkgname%-*}::git+https://github.com/LBCrion/sfwbar.git")
 md5sums=('SKIP')
