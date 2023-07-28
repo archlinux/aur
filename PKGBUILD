@@ -7,56 +7,78 @@ pkgname=aegisub-arch1t3cht
 pkgver=feature_10
 _aspver=3.7.3
 _vsver=R63
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose subtitle editor with ASS/SSA support (arch1t3cht fork)"
-arch=('x86_64')
-url="https://github.com/arch1t3cht/Aegisub"
-license=('GPL' 'BSD')
-provides=('aegisub')
-conflicts=('aegisub' 'aegisub-arch1t3cht-git')
-depends=('alsa-lib'
-         'boost-libs'
-         'ffmpeg'
-         'ffms2'
-         'fftw'
-         'fontconfig'
-         'hicolor-icon-theme'
-         'hunspell'
-         'icu'
-         'jansson'
-         'libass'
-         'libgl'
-         'libpulse'
-         'openal'
-         'portaudio'
-         'python'
-         'uchardet'
-         'vapoursynth'
-         'wxwidgets-common'
-         'wxwidgets-gtk3'
-         'zlib')
-makedepends=('git' 'meson' 'cmake' 'boost')
-optdepends=('avisynthplus: AviSynth source support'
-            'vapoursynth-plugin-lsmashsource: VapourSynth plugin used by default (LWLibavSource)'
-            'vapoursynth-plugin-bestsource: VapourSynth plugin used by default (BestSource)'
-            'vapoursynth-plugin-wwxd: VapourSynth plugin for keyframe generation'
-            'vapoursynth-plugin-scxvid: VapourSynth plugin for keyframe generation')
-source=("$pkgname.tar.gz::https://github.com/arch1t3cht/Aegisub/archive/$pkgver.tar.gz"
-        "$pkgname-bestsource::git+https://github.com/vapoursynth/bestsource.git#commit=ba1249c1f5443be6d0ec2be32490af5bbc96bf99"
-        "$pkgname-avisynth.tar.gz::https://github.com/AviSynth/AviSynthPlus/archive/v$_aspver.tar.gz"
-        "$pkgname-vapoursynth.tar.gz::https://github.com/vapoursynth/vapoursynth/archive/$_vsver.tar.gz"
-        "$pkgname-luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1"
-        "$pkgname-gtest-1.8.1.zip::https://github.com/google/googletest/archive/release-1.8.1.zip"
-        "$pkgname-gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip")
-noextract=("$pkgname-gtest-1.8.1.zip"
-           "$pkgname-gtest-1.8.1-1-wrap.zip")
-sha256sums=('9c93b581fe3af3fda2bb9e7e3cddfe209a76d5929ea774515914a1da6d026b5c'
-            'SKIP'
-            'b847705af6f16fa26664d06e0fea2bda14a7f6aac8249a9c37e4106ecb8fd44c'
-            'ed909b3c58e79bcbb056d07c5d301222ba8001222b4b40d5c1123be35fea9ae2'
-            'SKIP'
-            '927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7'
-            'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805')
+arch=(x86_64)
+url=https://github.com/arch1t3cht/Aegisub
+license=(
+  GPL
+  BSD
+)
+provides=(aegisub)
+conflicts=(
+  aegisub
+  aegisub-arch1t3cht-git
+)
+depends=(
+  alsa-lib
+  boost-libs
+  ffmpeg
+  ffms2
+  fftw
+  fontconfig
+  hicolor-icon-theme
+  hunspell
+  icu
+  jansson
+  libass
+  libgl
+  libpulse
+  openal
+  portaudio
+  python
+  uchardet
+  vapoursynth
+  vapoursynth-plugin-bestsource
+  vapoursynth-plugin-lsmashsource
+  vapoursynth-plugin-wwxd
+  wxwidgets-common
+  wxwidgets-gtk3
+  zlib
+)
+makedepends=(
+  git
+  meson
+  cmake
+  boost
+)
+optdepends=(
+  'avisynthplus: AviSynth source support'
+  # 'vapoursynth-plugin-wwxd: VapourSynth plugin for keyframe generation'
+  'vapoursynth-plugin-scxvid: VapourSynth plugin for keyframe generation'
+)
+source=(
+  "$pkgname.tar.gz::https://github.com/arch1t3cht/Aegisub/archive/$pkgver.tar.gz"
+  "$pkgname-bestsource::git+https://github.com/vapoursynth/bestsource.git#commit=ba1249c1f5443be6d0ec2be32490af5bbc96bf99"
+  "$pkgname-avisynth.tar.gz::https://github.com/AviSynth/AviSynthPlus/archive/v$_aspver.tar.gz"
+  "$pkgname-vapoursynth.tar.gz::https://github.com/vapoursynth/vapoursynth/archive/$_vsver.tar.gz"
+  "$pkgname-luajit::git+https://github.com/LuaJIT/LuaJIT.git#branch=v2.1"
+  "$pkgname-gtest-1.8.1.zip::https://github.com/google/googletest/archive/release-1.8.1.zip"
+  "$pkgname-gtest-1.8.1-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/gtest/1.8.1/1/get_zip"
+)
+noextract=(
+  $pkgname-gtest-1.8.1.zip
+  $pkgname-gtest-1.8.1-1-wrap.zip
+)
+sha256sums=(
+  '9c93b581fe3af3fda2bb9e7e3cddfe209a76d5929ea774515914a1da6d026b5c'
+  'SKIP'
+  'b847705af6f16fa26664d06e0fea2bda14a7f6aac8249a9c37e4106ecb8fd44c'
+  'ed909b3c58e79bcbb056d07c5d301222ba8001222b4b40d5c1123be35fea9ae2'
+  'SKIP'
+  '927827c183d01734cc5cfef85e0ff3f5a92ffe6188e0d18e909c5efebf28a0c7'
+  'f79f5fd46e09507b3f2e09a51ea6eb20020effe543335f5aee59f30cc8d15805'
+)
 
 AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT=${AEGISUB_AUR_DEFAULT_AUDIO_OUTPUT:=PulseAudio}
 
@@ -125,6 +147,11 @@ prepare() {
 build() {
   cd Aegisub-$pkgver
   meson compile -C build
+}
+
+check() {
+  cd Aegisub-$pkgver
+  meson test -C build --print-errorlogs --verbose "gtest main"
 }
 
 package() {
