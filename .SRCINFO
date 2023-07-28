@@ -1,0 +1,13 @@
+pkgbase = cla-bin
+	pkgdesc = A terminal calendar tool
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/alex-laycalvert/cla
+	arch = x86_64
+	license = MIT
+	provides = cla
+	conflicts = cla
+	source = https://github.com/alex-laycalvert/cla/releases/download/v0.0.1/cla-0.0.1-x86_64.tar.gz
+	sha256sums = 5cdffbfc0106f3aa45929b8fae4997bff3f2bffdb55a5263fcdc1e52fc06d97a
+
+pkgname = cla-bin
