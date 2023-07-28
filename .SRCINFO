@@ -1,7 +1,7 @@
 pkgbase = tijolo
 	pkgdesc = Lightweight, keyboard-oriented IDE for the masses
-	pkgver = 0.7.3
-	pkgrel = 2
+	pkgver = 0.7.4
+	pkgrel = 1
 	url = https://github.com/hugopl/tijolo
 	arch = x86_64
 	license = MIT
@@ -24,7 +24,7 @@ pkgbase = tijolo
 	optdepends = yaml-language-server: YAML LSP support
 	optdepends = python-lsp-server: Python LSP support
 	conflicts = tijolo-git
-	source = tijolo-0.7.3.tar.gz::https://github.com/hugopl/tijolo/archive/v0.7.3.tar.gz
-	sha256sums = fc003b9b25bc744059c241613d5c9f6330fe10eb46cfb2608cddd58679cbbffc
+	source = tijolo-0.7.4.tar.gz::https://github.com/hugopl/tijolo/archive/v0.7.4.tar.gz
+	sha256sums = 7a7220d63ae831fa06808668a040bfe59adf087f6af34aa577ccad55b12a952f
 
 pkgname = tijolo

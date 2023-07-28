@@ -1,8 +1,8 @@
 # Maintainer: Hugo Parente Lima <hugo.pl@gmail.com>
 
 pkgname=tijolo
-pkgver=0.7.3
-pkgrel=2
+pkgver=0.7.4
+pkgrel=1
 pkgdesc="Lightweight, keyboard-oriented IDE for the masses"
 arch=("x86_64")
 conflicts=("tijolo-git")
@@ -15,7 +15,7 @@ optdepends=('ccls: C/C++ LSP support'
             'yaml-language-server: YAML LSP support'
             'python-lsp-server: Python LSP support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hugopl/tijolo/archive/v${pkgver}.tar.gz")
-sha256sums=('fc003b9b25bc744059c241613d5c9f6330fe10eb46cfb2608cddd58679cbbffc')
+sha256sums=('7a7220d63ae831fa06808668a040bfe59adf087f6af34aa577ccad55b12a952f')
 
 build() {
   cd "$srcdir/tijolo-$pkgver"
