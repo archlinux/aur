@@ -2,13 +2,15 @@
 
 pkgname=tumbler-extra-thumbnailers
 pkgver=4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Customized thumbnailers for Tumbler"
 arch=('any')
 url="https://docs.xfce.org/xfce/tumbler/start"
 license=('unknown')
 depends=('imagemagick')
 optdepends=('djvulibre: thumbnails for DjVu files')
+provides=('tumbler-folder-thumbnailer')
+conflicts=('tumbler-folder-thumbnailer')
 source=('dds.thumbnailer'
 	'djvu.thumbnailer'
 	'folder-thumbnailer.sh'
