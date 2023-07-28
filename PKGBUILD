@@ -15,14 +15,13 @@ provides=('polywatch')
 conflicts=('polywatch')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname%-git}-${pkgver}"
 
-  go mod tidy
-  go build ./cmd/polywatch
+  goreleaser build --snapshot --clean --single-target -o dist/polywatch
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname%-git}-${pkgver}"
 
-  install -Dm 755 polywatch -t "${pkgdir}/usr/bin"
+  install -Dm 755 dist/polywatch -t "${pkgdir}/usr/bin"
 }
