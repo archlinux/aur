@@ -1,0 +1,36 @@
+pkgbase = linux-rockchip64-edge-bin
+	pkgver = 6.1.11
+	pkgrel = 1
+	url = https://github.com/armbian/build
+	arch = aarch64
+	license = GPL2
+	provides = linux-rockchip64
+	noextract = linux.preset
+	noextract = linux-dtb-edge-rockchip64_23.02.2_arm64.deb
+	noextract = linux-image-edge-rockchip64_23.02.2_arm64.deb
+	noextract = linux-headers-edge-rockchip64_23.02.2_arm64.deb
+	options = !strip
+	source = linux.preset
+	source = https://apt.armbian.com/pool/main/l/linux-6.1.11-rockchip64/linux-dtb-edge-rockchip64_23.02.2_arm64.deb
+	source = https://apt.armbian.com/pool/main/l/linux-6.1.11-rockchip64/linux-image-edge-rockchip64_23.02.2_arm64.deb
+	source = https://apt.armbian.com/pool/main/l/linux-6.1.11-rockchip64/linux-headers-edge-rockchip64_23.02.2_arm64.deb
+	sha512sums = a492aae17ee4a316ce03faf9f1b284b2529c485f4b092cc4a1f865a6c68d482fd356fd30efa296c116975a3bdf3922f5bf03912a8d0e76f4ab24aa6ab9f8c276
+	sha512sums = 184e9b91fcdc28b9558e3e1c850ab7c20262a576d503a5fa9b5fd33be1e7815242938dad483ea7256e5317c858208ee2a62982a9e223dc41a73c265f69271c0f
+	sha512sums = 29937139108690079fbb5c00526783a3d613dfb110d8c650f11f6cb569d7cc2a609dd0ab98299db2ced0e65f71bc342061dfd3be4e39b4d0d25b773f7de32478
+	sha512sums = 09482c8b07805c337555e7e16c4a339578c7cb6808b70e87c3eb4bcf41818bd29beaa49546625803259bfa895408021b87a0afc6bac17a577bc4a2f7e28eb2a0
+
+pkgname = linux-rockchip64-edge-bin
+	pkgdesc = The Linux Kernel and modules - AArch64 multi-platform rockchip64 (from Armbian-edge)
+	depends = coreutils
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed by some devices
+	provides = WIREGUARD-MODULE
+	provides = linux=6.1.11
+	conflicts = linux
+	backup = etc/mkinitcpio.d/linux-rockchip64.preset
+
+pkgname = linux-rockchip64-edge-bin-headers
+	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 multi-platform rockchip64 (from Armbian-edge)
+	conflicts = linux-headers
