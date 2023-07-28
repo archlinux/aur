@@ -1,7 +1,7 @@
 # Maintainer: Florijan Hamzic <florijanh@gmail.com>
 
 pkgname=flannel-cni-plugin
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Flannel cni plugin, maintained by flannel-io'
 arch=(x86_64)
@@ -11,8 +11,8 @@ depends=(glibc)
 makedepends=(go)
 options=('emptydirs')
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('4b75cfe2af334b974093e520657a92f69e2d20b43319d8425d7f024aef0ed5b923908a55fe146a561a5e3e83be9fda218e4317b29d9e58c2f414402c58f0fea6')
-b2sums=('785bc80a097a9e8cf1fd98f3bd53d68828f150b3caff14c7a59071656989add536bfd01028efc86a5751a069363d06e46bfba6a8d0baf3bd27f3539271df88b5')
+sha512sums=('cf2eb35bea94c1fe123d9f9871bb83ffe863c8375b10a8cffdb1c289b42296fdbb07fcb1e192ba7ed02930dc1163425883238b62a882836327adca9837438c19')
+b2sums=('9fa3ebcfbde4bba89c7d81bbd0427c7b1d2c0bf104bd90f1cd93e4caed114621d24b00580beb9b040614d717710e4663a4f66b01108f664a05b0043732efe289')
 
 build() {
   cd cni-plugin-$pkgver
