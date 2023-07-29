@@ -12,7 +12,7 @@ pkgbase = ptrack
 	depends = python-setuptools
 	source = https://concise.cc/pkg/ptrack-0.1.0-1-x86_64.pkg.tar.xz
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = 5c5abd04c89624966592d03a315de4ef
-	sha512sums = db9699e215c260ce7a4c4865c708f65d2134428f8e088d34999e739eb7b3a4f78bfb70f267f55355c1559264f635cb37d61ee5db41af9768d987cc5c63cf2d21
+	md5sums = 386a0c102849b2ea8b09759b1b40e007
+	sha512sums = 136da6c67bdd956335d9354bffc8db6428f773bee1808cf675d5caaa71d03f392abe187917e98ec18ffac9def7f105aa39d14f4a0a1539d69a0a4546aba6baed
 
 pkgname = ptrack
