@@ -4,7 +4,7 @@
 pkgname=gamejolt-client-bin-aur
 pkgname=gamejolt-client-bin-aur
 pkgver=1.33.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="GameJolt library of game"
 arch=(x86_64)
@@ -12,7 +12,7 @@ url="https://gamejolt.com/"
 license=('MIT')
 source=("gamejolt.png"
                 "GameJolt.desktop"
-                "gamejolt-$pkgver::https://download.gamejolt.net/12fce6ef1cc8fc29159e1a44d9e1a1e2fd5f6e047cbd892663ee388a235fa02d,1690742129,7/data/games/5/162/362412/files/64bed7b60f5d8/gamejoltclient.tar.gz")
+                "gamejolt-$pkgver::https://github.com/Bens0/Gamejolt-Client-Linux-Releases/releases/download/1.33.0/gamejoltclient.tar.gz")
 prepare() {
         echo $srcdir
 }
