@@ -1,0 +1,39 @@
+#!/bin/bash
+# A script for automatically updating the elasticsearch AUR package by checking the project's releases on github
+# Jared Johnstone
+# # Sat 29 Jul 2023 11:05:59 AEST
+set -o pipefail
+files=(PKGBUILD .SRCINFO)
+
+githubProject="elastic/elasticsearch"
+
+. PKGBUILD || { echo "This script must be placed and run in the AUR package dir" ; exit 1;}
+
+git status >/dev/null 2>&1 || { echo "This script is not suitable for running outside of a git repository." ; exit 1 ;}
+
+githubBaseurl="https://api.github.com/repos"
+githubLatestRelease="$(curl -Ss ${githubBaseurl}/${githubProject}/releases/latest)" || { echo "Failed fetching latest release info from github" ; exit 1;}
+latestVer=$(jq -r .tag_name <<< ${githubLatestRelease} | tr -d [a-z]) || { echo "Failed to read latest version" ; exit 1;}
+
+latestVerTarballUrl="$(jq -r .tarball_url <<< ${githubLatestRelease})"
+
+compareString="(pkgver=${pkgver}, latestVer=${latestVer})"
+if [ "${pkgver}" == "${latestVer}" ]
+then
+  echo "No new version detected. ${compareString}"
+  exit
+else
+  echo "New version detected. ${compareString}"
+  echo "Downloading latest release to generate a replacement b2sum..."
+  newB2sum="$(curl -L --progress-meter "${latestVerTarballUrl}" | b2sum | cut -f1 -d' ')" || { echo "Failed to download the archive for checksumming" ; exit 1;}
+  oldB2sum="${b2sums[0]}"
+
+    # Update version vars
+  sed -i "s/${pkgver//./\\.}/${latestVer}/g" ${files[@]}
+    # Update B2sum
+  sed -i "s/${oldB2sum}/${newB2sum}/g" ${files[@]}
+
+  git add ${files[@]}
+  git commit -m "Version bump to ${latestVer}"
+  git push || { echo "Failed to push version bump." ; exit 1;}
+fi

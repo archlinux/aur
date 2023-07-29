@@ -11,7 +11,7 @@ depends=('jre-openjdk-headless' 'libxml2')
 provides=("elasticsearch=$pkgver")
 conflicts=('elasticsearch7')
 source=(
-  $pkgname-$pkgver.tar.gz::"https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${pkgver}-linux-$CARCH.tar.gz"
+  $pkgname-$pkgver.tar.gz::"https://api.github.com/repos/elastic/elasticsearch/tarball/v${pkgver}"
   elasticsearch.service
   elasticsearch@.service
   elasticsearch-keystore.service
