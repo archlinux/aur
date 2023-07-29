@@ -1,0 +1,26 @@
+From 130887e6d971e71eca341bec1d894901a5ac1327 Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Sat, 29 Jul 2023 10:35:51 -0500
+Subject: [PATCH 2/3] setup: Include ico and svg images
+
+* Add package data.
+---
+ setup.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/setup.py b/setup.py
+index 74ac08f..ab9dbed 100755
+--- a/setup.py
++++ b/setup.py
+@@ -48,6 +48,8 @@ setup(
+     },
+     license='Creative Commons Attribution-Noncommercial-Share Alike license',
+     packages=find_packages(),
++    package_data={'': ['*.ico', '*.svg']},
++    include_package_data=True,
+     entry_points = {
+         'console_scripts': [
+             'bmstools_jbd_gui=bmstools.gui.jbd_gui:main'
+-- 
+2.41.0
+

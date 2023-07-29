@@ -1,0 +1,27 @@
+pkgbase = bms-tools
+	pkgdesc = Open source tools for popular Battery Management Systems (BMS)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://gitlab.com/bms-tools/bms-tools
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pyserial
+	source = https://gitlab.com/bms-tools/bms-tools/-/archive/v1.2.0/bms-tools-v1.2.0.tar.gz
+	source = 0001-gui-Move-gui-to-bmstools-folder.patch
+	source = 0002-setup-Include-ico-and-svg-images.patch
+	source = 0003-gui-Create-module-for-gui.patch
+	sha256sums = 6ff85dfb071d641a9ebeaefe118026836447e668626d83f61fe95e8764ea81e9
+	sha256sums = 2279979c05f3b57687f8c2f284b0e88ba72d1a479ee07b3e8944e64d799ef749
+	sha256sums = 6ebc97c350f77a47b95cf35eb8dfd54285a373efdb7b84f8faee98bd13d04ea3
+	sha256sums = ff0489a04c42277e0e1384678a3e79c8db7908a8aafed3ada4c6b12a84c35266
+
+pkgname = python-bmstools
+
+pkgname = bmstools-gui
+	depends = python-bmstools
+	depends = python-xlsxwriter

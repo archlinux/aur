@@ -1,0 +1,153 @@
+From 31ca32d034771e539f3aee88c80f252538c6b7dc Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Sat, 29 Jul 2023 10:31:05 -0500
+Subject: [PATCH 1/3] gui: Move gui to bmstools folder
+
+* Move these under bmstools so that when installed it's not in the
+  global Python library namespace, instead it's `bmstools.gui`.
+* Workaround symlink to file debug_strct.py that's out of tree.
+---
+ MANIFEST.in                                        |   1 -
+ {gui => bmstools/gui}/img/arrow_left.svg           |   0
+ {gui => bmstools/gui}/img/arrow_right.svg          |   0
+ {gui => bmstools/gui}/img/batt_icon_128.ico        | Bin
+ {gui => bmstools/gui}/img/battery_icon_h.svg       |   0
+ {gui => bmstools/gui}/img/chg_fet_disabled.svg     |   0
+ {gui => bmstools/gui}/img/chg_fet_enabled.svg      |   0
+ {gui => bmstools/gui}/img/dsg_fet_disabled.svg     |   0
+ {gui => bmstools/gui}/img/dsg_fet_enabled.svg      |   0
+ {gui => bmstools/gui}/img/err.svg                  |   0
+ {gui => bmstools/gui}/img/file.svg                 |   0
+ {gui => bmstools/gui}/img/floppy.svg               |   0
+ {gui => bmstools/gui}/img/ok.svg                   |   0
+ {gui => bmstools/gui}/jbd_gui.py                   |   0
+ {gui => bmstools/gui}/plugins/fw_debug/__init__.py |   0
+ bmstools/gui/plugins/fw_debug/debug_struct.py      |   1 +
+ {gui => bmstools/gui}/plugins/fw_debug/fw_debug.py |   0
+ {gui => bmstools/gui}/test.py                      |   0
+ gui/plugins/fw_debug/debug_struct.py               |   1 -
+ setup.py                                           |   2 +-
+ 20 files changed, 2 insertions(+), 3 deletions(-)
+ rename {gui => bmstools/gui}/img/arrow_left.svg (100%)
+ rename {gui => bmstools/gui}/img/arrow_right.svg (100%)
+ rename {gui => bmstools/gui}/img/batt_icon_128.ico (100%)
+ rename {gui => bmstools/gui}/img/battery_icon_h.svg (100%)
+ rename {gui => bmstools/gui}/img/chg_fet_disabled.svg (100%)
+ rename {gui => bmstools/gui}/img/chg_fet_enabled.svg (100%)
+ rename {gui => bmstools/gui}/img/dsg_fet_disabled.svg (100%)
+ rename {gui => bmstools/gui}/img/dsg_fet_enabled.svg (100%)
+ rename {gui => bmstools/gui}/img/err.svg (100%)
+ rename {gui => bmstools/gui}/img/file.svg (100%)
+ rename {gui => bmstools/gui}/img/floppy.svg (100%)
+ rename {gui => bmstools/gui}/img/ok.svg (100%)
+ rename {gui => bmstools/gui}/jbd_gui.py (100%)
+ rename {gui => bmstools/gui}/plugins/fw_debug/__init__.py (100%)
+ create mode 120000 bmstools/gui/plugins/fw_debug/debug_struct.py
+ rename {gui => bmstools/gui}/plugins/fw_debug/fw_debug.py (100%)
+ rename {gui => bmstools/gui}/test.py (100%)
+ delete mode 120000 gui/plugins/fw_debug/debug_struct.py
+
+diff --git a/MANIFEST.in b/MANIFEST.in
+index 1e400cb..7264343 100644
+--- a/MANIFEST.in
++++ b/MANIFEST.in
+@@ -1,3 +1,2 @@
+ include versioneer.py
+ include bmstools/_version.py
+-include gui/jbd_gui.py
+diff --git a/gui/img/arrow_left.svg b/bmstools/gui/img/arrow_left.svg
+similarity index 100%
+rename from gui/img/arrow_left.svg
+rename to bmstools/gui/img/arrow_left.svg
+diff --git a/gui/img/arrow_right.svg b/bmstools/gui/img/arrow_right.svg
+similarity index 100%
+rename from gui/img/arrow_right.svg
+rename to bmstools/gui/img/arrow_right.svg
+diff --git a/gui/img/batt_icon_128.ico b/bmstools/gui/img/batt_icon_128.ico
+similarity index 100%
+rename from gui/img/batt_icon_128.ico
+rename to bmstools/gui/img/batt_icon_128.ico
+diff --git a/gui/img/battery_icon_h.svg b/bmstools/gui/img/battery_icon_h.svg
+similarity index 100%
+rename from gui/img/battery_icon_h.svg
+rename to bmstools/gui/img/battery_icon_h.svg
+diff --git a/gui/img/chg_fet_disabled.svg b/bmstools/gui/img/chg_fet_disabled.svg
+similarity index 100%
+rename from gui/img/chg_fet_disabled.svg
+rename to bmstools/gui/img/chg_fet_disabled.svg
+diff --git a/gui/img/chg_fet_enabled.svg b/bmstools/gui/img/chg_fet_enabled.svg
+similarity index 100%
+rename from gui/img/chg_fet_enabled.svg
+rename to bmstools/gui/img/chg_fet_enabled.svg
+diff --git a/gui/img/dsg_fet_disabled.svg b/bmstools/gui/img/dsg_fet_disabled.svg
+similarity index 100%
+rename from gui/img/dsg_fet_disabled.svg
+rename to bmstools/gui/img/dsg_fet_disabled.svg
+diff --git a/gui/img/dsg_fet_enabled.svg b/bmstools/gui/img/dsg_fet_enabled.svg
+similarity index 100%
+rename from gui/img/dsg_fet_enabled.svg
+rename to bmstools/gui/img/dsg_fet_enabled.svg
+diff --git a/gui/img/err.svg b/bmstools/gui/img/err.svg
+similarity index 100%
+rename from gui/img/err.svg
+rename to bmstools/gui/img/err.svg
+diff --git a/gui/img/file.svg b/bmstools/gui/img/file.svg
+similarity index 100%
+rename from gui/img/file.svg
+rename to bmstools/gui/img/file.svg
+diff --git a/gui/img/floppy.svg b/bmstools/gui/img/floppy.svg
+similarity index 100%
+rename from gui/img/floppy.svg
+rename to bmstools/gui/img/floppy.svg
+diff --git a/gui/img/ok.svg b/bmstools/gui/img/ok.svg
+similarity index 100%
+rename from gui/img/ok.svg
+rename to bmstools/gui/img/ok.svg
+diff --git a/gui/jbd_gui.py b/bmstools/gui/jbd_gui.py
+similarity index 100%
+rename from gui/jbd_gui.py
+rename to bmstools/gui/jbd_gui.py
+diff --git a/gui/plugins/fw_debug/__init__.py b/bmstools/gui/plugins/fw_debug/__init__.py
+similarity index 100%
+rename from gui/plugins/fw_debug/__init__.py
+rename to bmstools/gui/plugins/fw_debug/__init__.py
+diff --git a/bmstools/gui/plugins/fw_debug/debug_struct.py b/bmstools/gui/plugins/fw_debug/debug_struct.py
+new file mode 120000
+index 0000000..7bbbdca
+--- /dev/null
++++ b/bmstools/gui/plugins/fw_debug/debug_struct.py
+@@ -0,0 +1 @@
++../../../../../bms-firmware-jbd/python/debug_struct.py
+\ No newline at end of file
+diff --git a/gui/plugins/fw_debug/fw_debug.py b/bmstools/gui/plugins/fw_debug/fw_debug.py
+similarity index 100%
+rename from gui/plugins/fw_debug/fw_debug.py
+rename to bmstools/gui/plugins/fw_debug/fw_debug.py
+diff --git a/gui/test.py b/bmstools/gui/test.py
+similarity index 100%
+rename from gui/test.py
+rename to bmstools/gui/test.py
+diff --git a/gui/plugins/fw_debug/debug_struct.py b/gui/plugins/fw_debug/debug_struct.py
+deleted file mode 120000
+index 5562fdc..0000000
+--- a/gui/plugins/fw_debug/debug_struct.py
++++ /dev/null
+@@ -1 +0,0 @@
+-../../../../bms-firmware-jbd/python/debug_struct.py
+\ No newline at end of file
+diff --git a/setup.py b/setup.py
+index 77d2cee..74ac08f 100755
+--- a/setup.py
++++ b/setup.py
+@@ -50,7 +50,7 @@ setup(
+     packages=find_packages(),
+     entry_points = {
+         'console_scripts': [
+-            'bmstools_jbd_gui=gui.jbd_gui:main' 
++            'bmstools_jbd_gui=bmstools.gui.jbd_gui:main'
+         ]
+     },
+     description="This package aims to provide open source tools for popular Battery Management Systems (BMS)",
+-- 
+2.41.0
+
