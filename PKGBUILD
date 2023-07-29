@@ -69,9 +69,7 @@ check() {
 
 package() {
   local _ucm_path="/usr/share/alsa/ucm/"
-  cd "${_pkgname}-$pkgver"
   make DESTDIR="$pkgdir" install -C "${_pkgname}-${pkgver}"
-  make DESTDIR="$pkgdir" install -C doc
   install -vDm 644 \
           "${_pkgname}-${pkgver}/"{MEMORY-LEAK,TODO,NOTES,ChangeLog,doc/asoundrc.txt} \
           -t "${pkgdir}/usr/share/doc/${_pkgname}"
