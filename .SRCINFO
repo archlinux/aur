@@ -1,6 +1,6 @@
 pkgbase = ctrisr-git
 	pkgdesc = Tetris clone in terminal colorzied
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/spynetS/ctrisr
 	arch = x86_64
