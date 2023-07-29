@@ -1,8 +1,8 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='ldaptools'
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc='Easily manage LDAP users and groups'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
