@@ -1,10 +1,10 @@
 pkgbase = ttf-plangothic
 	pkgdesc = 遍黑体项目（Plangothic Project）
 	pkgver = 0.8.5744
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project
 	arch = any
-	license = SIL Open Font License
+	license = OFL
 	depends = fontconfig
 	source = https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/download/V0.8.5744/PlangothicP1-Regular.fallback.ttf
 	source = https://github.com/Fitzgerald-Porthmouth-Koenigsegg/Plangothic-Project/releases/download/V0.8.5744/PlangothicP2-Regular.ttf
