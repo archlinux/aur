@@ -33,7 +33,7 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    cargo build --release --locked --all-features
+    cargo build --release --locked --all-features --target-dir target
 }
 
 check() {
