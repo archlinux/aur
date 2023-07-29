@@ -3,7 +3,7 @@
 pkgbase=bms-tools
 pkgname=('python-bmstools' 'bmstools-gui')
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source tools for popular Battery Management Systems (BMS)'
 url='https://gitlab.com/bms-tools/bms-tools'
 depends=('python'
@@ -21,13 +21,11 @@ arch=('any')
 source=("https://gitlab.com/${pkgbase}/${pkgbase}/-/archive/v${pkgver}/${pkgbase}-v${pkgver}.tar.gz"
         '0001-gui-Move-gui-to-bmstools-folder.patch'
         '0002-setup-Include-ico-and-svg-images.patch'
-        '0003-gui-Create-module-for-gui.patch'
        )
 
 sha256sums=('6ff85dfb071d641a9ebeaefe118026836447e668626d83f61fe95e8764ea81e9'
-            '2279979c05f3b57687f8c2f284b0e88ba72d1a479ee07b3e8944e64d799ef749'
-            '6ebc97c350f77a47b95cf35eb8dfd54285a373efdb7b84f8faee98bd13d04ea3'
-            'ff0489a04c42277e0e1384678a3e79c8db7908a8aafed3ada4c6b12a84c35266')
+            '00eb720b17ec4dcaa8d94ad2839df9c71131c13ba2d6069fe08f83444af7f03a'
+            '59e7df09589af40b572344ec3920e7738696cbb8559ae8484150e5fe2edee316')
 
 prepare() {
     cd ${srcdir}/${pkgbase}-v${pkgver}
@@ -61,7 +59,8 @@ package_python-bmstools() {
 
 package_bmstools-gui() {
     depends=(
-        "python-bmstools"
+        'python-bmstools'
+        'python-wxpython'
         'python-xlsxwriter'
     )
 
