@@ -8,7 +8,7 @@ arch=('x86_64')
 depends=(
   'fribidi' 'libfribidi.so'
   'gnutls'
-  'jack2' 'libjack.so'
+  'jack' 'libjack.so'
   'lcms2' 'liblcms2.so'
   'libarchive' 'libarchive.so'
   'libbluray' 'libbluray.so'
