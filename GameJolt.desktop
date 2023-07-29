@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=GameJolt
+Exec=/opt/gamejolt/data-376715-1430054/game-jolt-client
+Comment=Official GameJolt Client
+Terminal=false
+Icon=gamejolt
+Type=Application
+Categories=Game
+StartupNotify=true
