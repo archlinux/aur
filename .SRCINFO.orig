@@ -1,0 +1,45 @@
+pkgbase = alsa-lib-x205ta
+	pkgdesc = An alternative implementation of Linux sound support, with UCM files for the ASUS x205ta.
+<<<<<<< HEAD
+	pkgver = 1.2.7.2
+=======
+	pkgver = 1.2.7.1
+>>>>>>> 9966bd8b2fd3f00b5cedbd30f300e05a4eddf87a
+	pkgrel = 1
+	url = https://www.alsa-project.org
+	install = alsa-lib.install
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = LGPL2.1
+	depends = glibc
+	depends = alsa-topology-conf
+	depends = alsa-ucm-conf
+	provides = libasound.so=2-32
+	provides = libasound.so=2-64
+	provides = libatopology.so=2-32
+	provides = libatopology.so=2-64
+<<<<<<< HEAD
+	provides = alsa-lib=1.2.7.2
+	conflicts = alsa-lib
+	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.7.2.tar.bz2
+	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.7.2.tar.bz2.sig
+	source = https://raw.githubusercontent.com/plbossart/UCM/c8b344ca650a62aa809242b0c9ba908eac963125/chtrt5645/chtrt5645.conf
+	source = https://raw.githubusercontent.com/plbossart/UCM/UCM/c7405e6f03eb2404edb38b495c27225364bf16f4/sof-chtrt5645/HiFi.conf
+	validpgpkeys = F04DF50737AC1A884C4B3D718380596DA6E59C91
+	sha512sums = 79e5920384e570a1acd8ecd1eb8812879333c3cedb1d15780080afc40125b97df893c33f4163d9dd863871b628bc6026265f8ace2c8634fc1af5b52b62ac9cfe
+=======
+	provides = alsa-lib=1.2.7.1
+	conflicts = alsa-lib
+	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.7.1.tar.bz2
+	source = https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.7.1.tar.bz2.sig
+	source = https://raw.githubusercontent.com/plbossart/UCM/c8b344ca650a62aa809242b0c9ba908eac963125/chtrt5645/chtrt5645.conf
+	source = https://raw.githubusercontent.com/plbossart/UCM/UCM/c7405e6f03eb2404edb38b495c27225364bf16f4/sof-chtrt5645/HiFi.conf
+	validpgpkeys = F04DF50737AC1A884C4B3D718380596DA6E59C91
+	sha512sums = 2a0b4205e8bf602b56a6f5007ba219799e5443827393058e439adf5b391bb6c4815a48bb994b5d108b9f31a90db0eb43a96a0d7741216e2d710dc63d372de27e
+>>>>>>> 9966bd8b2fd3f00b5cedbd30f300e05a4eddf87a
+	sha512sums = SKIP
+	sha512sums = 9b65ff4fe9d10e40e4eb69398c53de6d5eb07ba1a5526813a07182008d67ea68e7245ce3db44fc1a69f70eeef928c9ede742c90785e1f90298c07c49db965ba0
+	sha512sums = 4bb154a791fa2df7f1a165eaa8a970df9790e8315c5e2f43c0482ea867413ccf31a5c40700698357b4972de20ca2f4d9a7276e2e4968f4bbafd36ce57574bd32
+
+pkgname = alsa-lib-x205ta
