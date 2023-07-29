@@ -4,7 +4,7 @@ _pkgbase=rime-ice
 _schemas=(double_pinyin)
 _pkgname=$_pkgbase-double-pinyin
 pkgname=$_pkgname-git
-pkgver=r275.e32b3fa
+pkgver=r301.d9c024d
 pkgrel=1
 pkgdesc="Rime 配置：雾凇拼音 | 长期维护的简体词库 - 自然码双拼"
 arch=("any")
@@ -67,8 +67,7 @@ build() {
 
 package() {
   cd "${_pkgname}" || return
-
-  _install_base=$pkgdir/usr/share/rime-data
+  _install_base="$pkgdir/usr/share/rime-data"
 
   install -Dm644 "$_suggestion"       -t "$_install_base/"
   install -Dm644 ./build/*.{bin,yaml} -t "$_install_base/build"
@@ -92,17 +91,14 @@ package() {
   done
 
   for _f in */*.dict.yaml; do
-    grep -q "\- ${_f/.dict.yaml/}" "$_install_base/"*.dict.yaml &&
+    if grep -q "\- ${_f/.dict.yaml/}" "$_install_base/"*.dict.yaml; then
       install -Dm644 "$_f" -t "$_install_base/$(dirname "$_f")"
+    fi
   done
 
   for _f in *.yaml; do
-    grep -q "${_f/.yaml/:}" build/*.schema.yaml &&
+    if grep -q "${_f/.yaml/:}" build/*.schema.yaml; then
       install -Dm644 "$_f" -t "$_install_base/"
-  done
-
-  for _f in *.gram; do
-    grep -q "${_f/.gram/}" build/*.schema.yaml &&
-      install -Dm644 "$_f" -t "$_install_base/"
+    fi
   done
 }
