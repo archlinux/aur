@@ -1,10 +1,8 @@
 # Maintainer: XavierCLL <xavier.corredor.llano at gmail.com>
-# Contributor: MikeBreytenbach <mike.breyten.bach at gmail dot com>
-# Contributor: edacval
-# Contributor: Ethan Reece <aur at ethanreece dot com>
+# Maintainer for aarch64: Ethan Reece <aur at ethanreece dot com>
 
 pkgname=pycharm-professional
-pkgver=2023.1.4
+pkgver=2023.2
 pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64' 'aarch64')
@@ -22,8 +20,8 @@ source=("pycharm-professional.desktop"
         "ltedit.desktop")
 sha256sums=('a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '41f0e64dc7ec5ab85e7b0df1dc8237b56c94ccf9e4f2fa033eaadcc7756df3d3')
-sha256sums_x86_64=('0f9beda16f7e90631e75954bf780669ab05621b69e9f91a9e41ed1ecd1ac26cf')
-sha256sums_aarch64=('eed03923f55f84ff59741e297bfa271685b43a1016c62340353128b5917dcf6a')
+sha256sums_x86_64=('95f1666c471a9d752c53ec0b776840552e023f6405a3b000ce6f1014125bfc83')
+sha256sums_aarch64=('533916df23c39ac06df41bb98b7611b707492e51e5ad4b4a9aab8a7391edd9f2')
 makedepends=('python-setuptools' 'cython')
 optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'openssh: For deployment and remote connections'
@@ -37,23 +35,16 @@ optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'python-tox: Python environments for testing tool'
             'jupyter-server: For Jupyter notebooks and apps')
             
-# build() {
-#     # clean up and compile PyDev debugger used by PyCharm to speedup debugging
-#     find pycharm-${pkgver}/plugins/python/helpers/pydev/ \( -name *.so -o -name *.pyd \) -delete
-#     python pycharm-${pkgver}/plugins/python/helpers/pydev/setup_cython.py build_ext --inplace --force-cython
-#     
-#     # for attach debugger
-#     pushd pycharm-${pkgver}/plugins/python/helpers/pydev/pydevd_attach_to_process/linux_and_mac
-#     if [[ $CARCH == "x86_64" ]]; then
-#         g++ -m64 -shared -o ../attach_linux_amd64.so -fPIC -nostartfiles attach.cpp
-#     elif [ "${CARCH}" == "aarch64" ]; then
-#         g++ -march=armv8-a+crypto -shared -o ../attach_linux_amd64.so -fPIC -nostartfiles attach.cpp
-#     fi
-#     popd
-# 
-#     rm -rf pycharm-${pkgver}/plugins/python/helpers/pydev/build/
-#     find pycharm-${pkgver}/plugins/python/helpers/pydev/ -name __pycache__ -exec rm -rf {} \;
-# }
+if [[ $CARCH == "x86_64" ]]; then
+    install=pycharm-professional_x86_64.install
+elif [ "${CARCH}" == "aarch64" ]; then
+    install=pycharm-professional_aarch64.install
+fi
+            
+prepare() {
+    # clean up for PyDev debugger
+    find pycharm-${pkgver}/plugins/python/helpers/pydev/ \( -name *.so -o -name *.pyd -o -name *.dll \) -delete
+}
 
 package() {
     # licenses
@@ -74,5 +65,4 @@ package() {
     install -dm 755 "$pkgdir/usr/bin/"
     ln -s "/opt/$pkgname/bin/pycharm.sh" "$pkgdir/usr/bin/pycharm"
     ln -s "/opt/$pkgname/bin/ltedit.sh" "$pkgdir/usr/bin/ltedit"
-
 }

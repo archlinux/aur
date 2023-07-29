@@ -1,0 +1,21 @@
+post_install() {
+    echo ":: Building Cython speed-ups" 
+    # compile PyDev debugger used by PyCharm to speedup debugging
+    python /opt/pycharm-professional/plugins/python/helpers/pydev/setup_cython.py build_ext --inplace --force-cython
+    
+    # for attach debugger
+    pushd /opt/pycharm-professional/plugins/python/helpers/pydev/pydevd_attach_to_process/linux_and_mac
+    g++ -march=armv8-a+crypto -shared -o ../attach_linux_amd64.so -fPIC -nostartfiles attach.cpp
+    popd
+    
+    rm -rf /opt/pycharm-professional/plugins/python/helpers/pydev/build
+    echo ":: Cython speed-ups done" 
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    rm -rf /opt/pycharm-professional
+}
