@@ -1,6 +1,7 @@
 # Maintainer: Darvin Delgado <dnmodder at gmail dot com>
+_sdkver=7.0.306
 pkgname=ryujinx-git
-pkgver=r2771.a8950d6ac
+pkgver=r2975.eb528ae0f
 pkgrel=1
 pkgdesc="Experimental Nintendo Switch Emulator written in C#"
 arch=(x86_64)
@@ -14,12 +15,12 @@ install=ryujinx.install
 source=(
 	"git+$url"
 	"ryujinx.install"
-	"dotnet-sdk-linux-x64.tar.gz::https://dotnetcli.azureedge.net/dotnet/Sdk/7.0.203/dotnet-sdk-7.0.203-linux-x64.tar.gz")
+	"https://dotnetcli.azureedge.net/dotnet/Sdk/$_sdkver/dotnet-sdk-$_sdkver-linux-x64.tar.gz")
 md5sums=(
 	'SKIP'
 	'824e675295b3e9df5a7f8d9220c89c93'
-	'7de32730b3a9f8c1de87282e8aec344b')
-noextract=('dotnet-sdk-linux-x64.tar.gz')
+	'e3d9ad4b7a18c94884cd7d7e9bf6cab8')
+noextract=("dotnet-sdk-$_sdkver-linux-x64.tar.gz")
 options=(!strip)
 
 pkgver() {
@@ -29,7 +30,7 @@ pkgver() {
 
 build() {
 	export DOTNET_ROOT=$srcdir/dotnet
-	mkdir -p "$DOTNET_ROOT" && tar zxf dotnet-sdk-linux-x64.tar.gz -C "$DOTNET_ROOT"
+	mkdir -p "$DOTNET_ROOT" && tar zxf dotnet-sdk-$_sdkver-linux-x64.tar.gz -C "$DOTNET_ROOT"
 
 	cd "Ryujinx"
 
