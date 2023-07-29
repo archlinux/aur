@@ -229,7 +229,7 @@ package() {
       install -d "${pkgdir}/usr/bin/"
       ln -s -t "${pkgdir}/usr/bin/" "/usr/lib/${_pkgname}/${_pkgname}"
 
-  install -Dm0644 <(sed -e 's:=/run/:=/var/run/:g' "res/${pkgname}.service") "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm0644 "res/${_pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system/"
 
   install -Dm0644 'res/32x32.png' "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
   install -Dm0644 'res/128x128.png' "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
@@ -258,7 +258,7 @@ X-Desktop-File-Install-Version=0.23
 [Desktop Action new-window]
 Name=Open a New Window
 EOF
-  install -Dm644 'LICENCE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 'LICENCE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
   set +u
 }
 set +u
