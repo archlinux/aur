@@ -14,7 +14,7 @@ md5sums=('4b9c379f4def3cd616e98e5292794ef3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Un10ck3d/massapp/archive/v$pkgver.tar.gz")
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-$pkgver"
   git submodule update --init --recursive
 	sudo npm install -g yarn
   yarn
@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-$pkgver"
 	install -DCm644 ./musicassistant.desktop "$pkgdir/usr/share/applications/musicassistant.desktop"
   install -DCm644 ./app-icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/musicassistant.png"
   install -DCm0755 -t "$pkgdir/usr/bin/" ./src-tauri/target/release/musicassistantdesktop
