@@ -6,7 +6,7 @@ _pkgname=PICSimLab
 _pkgname2=${pkgname%-bin}
 _date=230728
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A realtime emulator of development boards with integrated MPLABX/avr-gdb debugger"
 arch=('x86_64')
 url='https://github.com/lcgamboa/picsimlab'
@@ -18,10 +18,16 @@ depends=('gtkwave'
 	 'libgcrypt'
 	 'cutecom'
 	 'gedit'
+	 'pulseview'
+	 'glibc'
+	 'dtc'
+	 'gcc-libs'
 	 'glib2'
          'picsim'
          'openal'
 	 'pixman'
+	 'libslirp'
+	 'wxwidgets-common'
 	 'wxgtk3'
 	 'zlib')
 makedepends=('tar')
