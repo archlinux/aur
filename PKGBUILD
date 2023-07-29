@@ -1,13 +1,13 @@
 # Maintainer: fabillo <fabillo@archlinux.org>
 pkgname="ripdrag-git"
-pkgver=0.3.2.r0.d162e52
+pkgver=0.3.2.r3.c2e08a6
 pkgrel=1
 pkgdesc="Drag and drop files to and from the terminal"
 arch=(x86_64)
 url="https://github.com/nik012003/ripdrag"
 license=('GPL3')
 depends=('gtk4')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 provides=('ripdrag')
 conflicts=('ripdrag')
 source=("$pkgname::git+$url")
