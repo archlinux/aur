@@ -1,0 +1,50 @@
+pkgbase = pars-win
+	pkgdesc = free parsimony programs
+	pkgver = 2014.03.10
+	pkgrel = 0
+	url = https://www.lillo.org.ar/phylogeny/Nona-PeeWee/readme.htm
+	arch = x86_64
+	license = custom
+	makedepends = unrar
+	makedepends = dosbox
+	makedepends = wine
+	source = https://www.lillo.org.ar/phylogeny/Nona-PeeWee/Pars-win.exe
+	sha256sums = 89a5eeaeef53aefbefdc9a7344b5b0e996ed1465987452045297d03d89126fce
+
+pkgname = nona-win
+	pkgdesc = a bastard son of Pee-Wee
+	depends = wine
+	depends = bash
+
+pkgname = pee-wee
+	pkgdesc = (P)arsimony and (I)mplied (WE)ights
+	depends = wine
+	depends = bash
+	provides = pee-wee
+	provides = piwe
+
+pkgname = xpiwe
+	pkgdesc = Pee-Wee with Floating Point Precision
+	depends = wine
+	depends = bash
+
+pkgname = slf-wt
+	pkgdesc = A prototype program implementing character state reconstructions under non-lineal functions of the state changes (Pee-Wee with SeLF-WeighTed) https://doi.org/10.1006/clad.1997.0043
+	depends = wine
+	depends = bash
+
+pkgname = spa
+	pkgdesc = Sankoff Parsimony Analysis https://doi.org/10.1006/clad.1998.0068
+	depends = wine
+	depends = bash
+
+pkgname = phast-win
+	pkgdesc = PHylogenetic Analysis for Sankoff Transformations https://doi.org/10.1006/clad.1998.0068
+	depends = wine
+	depends = bash
+	provides = phast
+
+pkgname = pars-win-extra
+	pkgdesc = Parsimony programs extra software from Pablo A. Goloboff
+	depends = dosbox
+	depends = bash
