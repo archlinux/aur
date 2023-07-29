@@ -1,6 +1,6 @@
 pkgbase = r-ppcseq
 	pkgdesc = Probabilistic Outlier Identification for RNA Sequencing Generalized Linear Models
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ppcseq
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = r-ppcseq
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ppcseq_1.8.0.tar.gz
-	sha256sums = 01a66310ef7c76ec41de504ad01f211b323b7764ac0cd4475570057448e6e1cb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ppcseq_1.8.1.tar.gz
+	sha256sums = ed1ba447354f457b34cb1fb8a27516e877a5948850baf78d43417e8232830e6b
 
 pkgname = r-ppcseq
