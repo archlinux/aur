@@ -1,6 +1,6 @@
 pkgbase = dolphin-emu-git
 	pkgdesc = A Gamecube / Wii emulator
-	pkgver = 5.0.r19817.g3d9bc85912
+	pkgver = 5.0.r19859.g30c4ac34b0
 	pkgrel = 1
 	url = https://dolphin-emu.org
 	arch = x86_64
@@ -49,12 +49,14 @@ pkgbase = dolphin-emu-git
 	source = dolphin-emu-git-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git
 	source = dolphin-emu-git-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
 	source = minizip-ng.diff
+	source = fmt-10.diff
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 568ca7db64149e9ac9409947689a8390783b891e6cff7b096690771512db3e19f9d8551a8739921d8a9f6ec4a9de747811a2efc8cdd4791d715677772db7fa8e
+	sha512sums = 57852e07fc6e296598a3351a2ad63ac5af8c0130e1d1d8f0f8f99d0730fe01b1cf206e31efe1837a33ff2971e08fd48e281edc4be625c4660a711062812ae0ee
 
 pkgname = dolphin-emu-git
 	pkgdesc = A Gamecube / Wii emulator - git version

@@ -7,7 +7,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r19817.g3d9bc85912'
+pkgver='5.0.r19859.g30c4ac34b0'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -32,13 +32,15 @@ source=(
 	"$pkgname-rcheevos::git+https://github.com/RetroAchievements/rcheevos.git"
 	"$pkgname-vma::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	'minizip-ng.diff'
+	'fmt-10.diff'
 )
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '568ca7db64149e9ac9409947689a8390783b891e6cff7b096690771512db3e19f9d8551a8739921d8a9f6ec4a9de747811a2efc8cdd4791d715677772db7fa8e')
+            '568ca7db64149e9ac9409947689a8390783b891e6cff7b096690771512db3e19f9d8551a8739921d8a9f6ec4a9de747811a2efc8cdd4791d715677772db7fa8e'
+            '57852e07fc6e296598a3351a2ad63ac5af8c0130e1d1d8f0f8f99d0730fe01b1cf206e31efe1837a33ff2971e08fd48e281edc4be625c4660a711062812ae0ee')
 
 _sourcedirectory="$pkgname"
 
@@ -49,6 +51,9 @@ prepare() {
 
 	# Fix minizip-ng name for Arch
 	patch --forward -p1 < "$srcdir/minizip-ng.diff"
+
+	# Fix build with fmt 10
+	patch --forward -p1 < "$srcdir/fmt-10.diff"
 
 	# Provide submodules
 	declare -A _submodules=(
@@ -73,7 +78,7 @@ pkgver() {
 
 build() {
 	# CMAKE_BUILD_TYPE - the dolphin-emu package in the repos  uses 'None' for some reason, so we use it as well
-	# USE_SYSTEM_LIBS - we want to use systems libs where possible
+	# USE_SYSTEM_LIBS - we want to use system libs where possible
 	# USE_SYSTEM_LIBMGBA - the current version of mgba in the repos is not compatible with Dolphin
 	cd "$srcdir/$_sourcedirectory/"
 	cmake -S '.' -B 'build/' -G Ninja \
