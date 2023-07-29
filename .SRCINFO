@@ -1,7 +1,7 @@
 pkgbase = bjeps2xx
 	pkgdesc = Pacote de instalacao do Complemento Banrisul Internet Banking destinado ao sistema operacional Linux.
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.banrisul.com.br/bob/link/bobw00hn_conteudo_detalhe2.aspx?secao_id=3002
 	install = bjeps2xx.install
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = bjeps2xx
 pkgname = bjeps2xx
 	depends = cairo
 	depends = gcc-libs
-	depends = gdk-pixbuf
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
