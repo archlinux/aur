@@ -2,7 +2,7 @@
 
 pkgname=plymouth-theme-spinner-no-mark
 pkgver=22.02.122
-pkgrel=2
+pkgrel=3
 pkgdesc='Spinner Plymouth theme with watermark removed'
 arch=('any')
 url='https://gitlab.freedesktop.org/plymouth/plymouth'

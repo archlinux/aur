@@ -1,7 +1,7 @@
 pkgbase = plymouth-theme-spinner-no-mark
 	pkgdesc = Spinner Plymouth theme with watermark removed
 	pkgver = 22.02.122
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.freedesktop.org/plymouth/plymouth
 	install = plymouth-theme-spinner-no-mark.install
 	arch = any
