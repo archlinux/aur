@@ -1,9 +1,8 @@
 pkgbase = eww-git
 	pkgdesc = ElKowar's wacky widgets
-	pkgver = 0.4.0.r34.g25e50ed
-	pkgrel = 2
+	pkgver = 0.4.0.r36.g4a9455b
+	pkgrel = 1
 	url = https://github.com/elkowar/eww
-	install = eww-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = cargo-nightly
@@ -13,11 +12,9 @@ pkgbase = eww-git
 	provides = eww
 	conflicts = eww
 	source = git+https://github.com/elkowar/eww.git?signed
-	source = 0001-comply-with-rust-lang-rfcs-2140.patch
 	validpgpkeys = 94E8F34BCE4F4BA8ED9B29BD50E76B4711E4C3E4
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	b2sums = SKIP
-	b2sums = 1696d841f15794b4a0a5af350f46a958d4230b89c1560ba8a9b7139507f145751c288f9e696227948c1e9fb235961d1bca1e29004c8d5e9f3c5b4ef6b58e1970
 
 pkgname = eww-x11-git
 	pkgdesc = ElKowar's wacky widgets (X11 backend)

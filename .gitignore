@@ -2,5 +2,3 @@
 !/.gitignore
 !/.SRCINFO
 !/PKGBUILD
-!/eww-git.install
-!/0001-comply-with-rust-lang-rfcs-2140.patch
