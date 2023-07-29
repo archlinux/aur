@@ -1,0 +1,16 @@
+pkgbase = kittygifs-bin
+	pkgdesc = A tool to optimize your gifkittyposting, and of course posting of other gifs.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Jan0660/kittygifs
+	arch = x86_64
+	license = AGPL3
+	depends = webkit2gtk-4.1
+	depends = appmenu-gtk-module
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = xdotool
+	source = https://github.com/Jan0660/kittygifs/releases/download/v0.2.0/kittygifs_0.2.0_amd64.deb
+	sha256sums = f8a9d777e85477293c0d1a3b109e25e65610fe27d40faa4162e4c23534f5a0ad
+
+pkgname = kittygifs-bin
