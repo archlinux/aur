@@ -2,7 +2,7 @@
 # Maintainer: Daniel Bershatsky <d.bershatsky2@skoltech.ru> (aur.archlinux.org/account/daskol)
 pkgname=python-flax
 _name=${pkgname#python-}
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='A neural network library and ecosystem for JAX designed for flexibility'
 arch=('any')
@@ -27,7 +27,8 @@ optdepends=(
     'tensorboard: TensorBoard visualization and logging.'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('171715d7df050eb748867f14a6d42338adba060edaa1e3b4d3e978a3483db8c5')
+source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('6c47b93f711c2c4e043ac9d49168370efecb1d973b1dbdae15ee30e7dc26922f')
 
 build() {
     python -m build -nw $_name-$pkgver
