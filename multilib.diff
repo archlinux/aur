@@ -1,8 +1,8 @@
 diff --git i/meson_post_install.py w/meson_post_install.py
-index e742310..b8cd360 100644
+index efb75a1..35335ac 100644
 --- i/meson_post_install.py
 +++ w/meson_post_install.py
-@@ -29,7 +29,9 @@ except KeyError:
+@@ -28,7 +28,9 @@ except KeyError:
  
  dst = os.path.join(bindir, 'pkexec')
  
@@ -13,7 +13,7 @@ index e742310..b8cd360 100644
      os.chown(dst, 0, -1)
      os.chmod(dst, 0o4755)
  else:
-@@ -62,7 +64,9 @@ for dst in dst_dirs:
+@@ -57,7 +59,9 @@ if not os.path.exists(dst):
  # and/or other users.
  dst = os.path.join(pkglibdir, 'polkit-agent-helper-1')
  

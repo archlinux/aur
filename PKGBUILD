@@ -5,7 +5,7 @@
 # Contributor: GordonGR <gordongr@freemail.gr>
 
 pkgname=lib32-polkit
-pkgver=122
+pkgver=123
 pkgrel=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
 url="https://gitlab.freedesktop.org/polkit/polkit"
@@ -23,13 +23,13 @@ makedepends=(
   meson
 )
 provides=(libpolkit-gobject-1.so)
-_commit=da87c5698019897dd731bb2cbb54ebd9c9481f52  # tags/122
+_commit=fc8b07e71d99f88a29258cde99b913b44da1846d  # tags/123^0
 source=(
   "git+https://gitlab.freedesktop.org/polkit/polkit.git#commit=$_commit"
   multilib.diff
 )
 b2sums=('SKIP'
-        '9b588509dae8528bfb8aa3cb734bf79b194350587d763ed70fa8e91a1a9fe54bb6cef352e13e31560f3b4ad418157111eb3e2678ae5dd84f052e4dcd9cde53c9')
+        '132e1817a9f7ea5a9a5776ce342f8928c11c3562e97b35583430bac2843c4e335a599a63570f75439cc0b12f2d1df9349b617ace732aa32b3a35dc885beb673f')
 
 pkgver() {
   cd polkit
