@@ -1,7 +1,7 @@
 pkgbase = tundra
 	pkgdesc = MyAnimeList scrobbler
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tundra.moe
 	arch = x86_64
 	license = GPL3
