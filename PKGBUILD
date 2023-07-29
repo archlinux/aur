@@ -2,7 +2,7 @@
 
 _name=Patchance
 pkgname="${_name,,}"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A modern graphical patchbay for JACK'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(hicolor-icon-theme python-pyqt5)
 makedepends=(qt5-tools)
 groups=(pro-audio)
 source=("https://github.com/Houston4444/Patchance/releases/download/v$pkgver/$_name-$pkgver-source.tar.gz")
-sha256sums=('f199fac5c0efe210455e76972bdc6c958101f2e1c47c83fed4d2af70f0321e3d')
+sha256sums=('c259042a43c7d82ff2ed34227085727166ed2d4757da12027145a2ee714de75c')
 
 
 build() {
