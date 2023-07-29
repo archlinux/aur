@@ -3,7 +3,7 @@
 # Based on testing/linux by Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-drm-xe-next-git
-pkgver=6.4.r1189878.cd26cb9c94f4
+pkgver=6.4.r1189957.bec0c6a53123
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge Intel Xe driver'
 _product="${pkgbase%-git}"
@@ -22,12 +22,12 @@ source=(
   "$_srcname::git+https://gitlab.freedesktop.org/drm/xe/kernel.git#branch=${_branch}"
   config         # the main kernel config file
   0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  uAPI-bits-for-small-bar.patch
+  cursor-fix.patch
 )
 sha256sums=('SKIP'
             'f5516aae6fcfdc305c5375f7426ce1058d6926ced170404fab876727d4cb2777'
             'edb89714a248c3f6d33de7ebe576623cf80e5bc70bb66ab29cf949171ec84d9f'
-            '6bdb36ff27d0b5999a3ce4d9e0a79900d4cee0fd8cbb8a4389c3195228972d39')
+            '131d3c33a9f3444ea986ab573c018bd496a6d9e49340c9fb208bd6f01f2da066')
 
 pkgver() {
   cd $_srcname

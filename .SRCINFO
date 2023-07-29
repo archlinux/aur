@@ -1,6 +1,6 @@
 pkgbase = linux-drm-xe-next-git
 	pkgdesc = Linux kernel with bleeding-edge Intel Xe driver
-	pkgver = 6.4.r1189878.cd26cb9c94f4
+	pkgver = 6.4.r1189957.bec0c6a53123
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/drm/xe/kernel/-/tree/drm-xe-next
 	arch = x86_64
@@ -23,11 +23,11 @@ pkgbase = linux-drm-xe-next-git
 	source = linux-drm-xe-next-git::git+https://gitlab.freedesktop.org/drm/xe/kernel.git#branch=drm-xe-next
 	source = config
 	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-	source = uAPI-bits-for-small-bar.patch
+	source = cursor-fix.patch
 	sha256sums = SKIP
 	sha256sums = f5516aae6fcfdc305c5375f7426ce1058d6926ced170404fab876727d4cb2777
 	sha256sums = edb89714a248c3f6d33de7ebe576623cf80e5bc70bb66ab29cf949171ec84d9f
-	sha256sums = 6bdb36ff27d0b5999a3ce4d9e0a79900d4cee0fd8cbb8a4389c3195228972d39
+	sha256sums = 131d3c33a9f3444ea986ab573c018bd496a6d9e49340c9fb208bd6f01f2da066
 
 pkgname = linux-drm-xe-next-git
 	pkgdesc = The Linux kernel with bleeding-edge Intel Xe driver kernel and modules
