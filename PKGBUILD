@@ -2,14 +2,14 @@
 
 pkgname=optimus-manager-git
 pkgver=1.5.r0.g7429168
-pkgrel=3
+pkgrel=4
 pkgdesc="Management utility to handle GPU switching for Optimus laptops (Git version)"
 arch=('any')
 url="https://github.com/Askannz/optimus-manager"
 license=('MIT')
 conflicts=("optimus-manager")
 provides=("optimus-manager=$pkgver")
-depends=('python3' 'python-setuptools' 'python-dbus' 'glxinfo' 'xorg-xrandr')
+depends=('python3' 'python-dbus' 'glxinfo' 'xorg-xrandr')
 optdepends=('bbswitch: alternative power switching method'
             'acpi_call: alternative power switching method'
             'xf86-video-intel: provides the Xorg intel driver')
