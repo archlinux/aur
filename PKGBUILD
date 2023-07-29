@@ -17,10 +17,10 @@ source=(
   "https://concise.cc/pkg/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.xz"
 )
 sha512sums=(
-  'a8dad35e58bb9b76b9381c6e9963509a4599ecfca96a0bc59a7bd7d281980a3926d9e71cac7d5ccc766d48f541ef4883d32d9a16a1dcbd762ba7de95607e5132'
+  'a2749694088c2dd04a8a6f22a35d1cd0130876e184f77a270408dd4a91727359998c978903e4aedd990d7592374f3fdf5b354acd07739aed18c8b674a10e2ac3'
 )
 md5sums=(
-  '6aeaa8402dadd84deb84f68ceff911f7'
+  '4474c0176d0c20ca54992d41af301ddb'
 )
 validpgpkeys=(
   '81BACEEBC3EA26E127166E4A819BB92A9A48160E'
@@ -31,7 +31,7 @@ package() {
   cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}/lfpreviewer" ||
   cd "$srcdir/${pkgname}/lfpreviewer"
 
-  python3 ./setup.py install --root="$pkgdir" --optimize=1
+  python3 ./setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
 
   cd "$srcdir/${pkgname}-${pkgver}-${pkgrel}-${arch}" ||
   cd "$srcdir/${pkgname}"
