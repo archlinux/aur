@@ -15,7 +15,7 @@ arch=('x86_64')
 _pyversion=cp311 # $(python -c "import sys; print(f'cp{sys.version_info.major}{sys.version_info.minor}')")
 _wheel="${_base}-${pkgver}-${_pyversion}-${_pyversion}-manylinux1_${CARCH}"
 source=(https://pypi.org/packages/${_pyversion}/${_base::1}/${_base}/${_wheel}.whl)
-sha256sums=('a171ada892b415bef9fa073c8590b26b050b31c6e73d0cc4229d64dd3bd02d7d')
+sha256sums=('2131251fab6ce384e9fa29d1660a3d17f6a3f73a9229393a6d0aa3bd62c23cb6')
 
 package() {
   XDG_CACHE_HOME="${PWD}" PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps ./*whl

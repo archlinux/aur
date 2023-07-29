@@ -19,6 +19,6 @@ pkgbase = paddlepaddle-bin
 	conflicts = paddlepaddle
 	conflicts = paddlepaddle-gpu
 	source = https://pypi.org/packages/cp311/p/paddlepaddle/paddlepaddle-2.5.1-cp311-cp311-manylinux1_x86_64.whl
-	sha256sums = a171ada892b415bef9fa073c8590b26b050b31c6e73d0cc4229d64dd3bd02d7d
+	sha256sums = 2131251fab6ce384e9fa29d1660a3d17f6a3f73a9229393a6d0aa3bd62c23cb6
 
 pkgname = paddlepaddle-bin
