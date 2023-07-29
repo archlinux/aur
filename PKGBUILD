@@ -2,7 +2,7 @@
 # Contributor: Myles English <myles at tdma dot co>
 
 pkgname=pastix
-pkgver=6.2.2
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="High performance parallel solver for very large sparse linear systems based on direct methods"
 arch=('x86_64')
@@ -49,6 +49,9 @@ package() {
 
     # remove the env script (not necessary since we install into /usr which is searched by default)
     rm "${pkgdir}/usr/bin/pastix_env.sh"
+    # remove the completion script (useless since this package does not install anything in bin/)
+    rm "${pkgdir}/usr/bin/pastix_completion.sh"
+    # remove empty directory
     rmdir "${pkgdir}/usr/bin"
 
     # move examples into proper doc directory
