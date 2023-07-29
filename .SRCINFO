@@ -1,7 +1,7 @@
 pkgbase = python-fusepyng
 	pkgdesc = Simple ctypes bindings for FUSE
 	pkgver = 1.0.7
-	pkgrel = 6
+	pkgrel = 7
 	url = https://thelig.ht/code/fusepyng
 	arch = any
 	license = ISC
@@ -11,11 +11,8 @@ pkgbase = python-fusepyng
 	makedepends = python-wheel
 	depends = python
 	source = https://files.pythonhosted.org/packages/source/f/fusepyng/fusepyng-1.0.7.tar.gz
-	source = https://files.pythonhosted.org/packages/source/f/fusepyng/fusepyng-1.0.7.tar.gz.asc
 	source = LICENSE
-	validpgpkeys = 584EDA5AAC13B9FBFB13F678A6A5398DACC9C15C
 	sha256sums = 8b4f6ef81e8600f23da7509169acb2615582ef116d46a2a1ad4b7e530d8f899f
-	sha256sums = SKIP
 	sha256sums = e61e6b2171e77a5da5a6b8bdb1e588dd0c660fd2ac64342cded4ab53cf3d4140
 
 pkgname = python-fusepyng
