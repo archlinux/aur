@@ -4,12 +4,12 @@ _name=guiqwt
 pkgname=python-$_name
 pkgver=4.4.1
 _pkgver=v$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Efficient 2D plotting Python library based on PythonQwt "
 arch=('x86_64')
 url='https://github.com/PierreRaybaut/guiqwt'
 license=('custom:CeCILL')
-depends=(python-pyqt5 python-qtpy python-pythonqwt python-guidata python-numpy python-scipy python-pillow)
+depends=(python-pyqt5 python-qtpy python-pythonqwt 'python-guidata>=3.0.1' python-numpy python-scipy python-pillow)
 optdepends=(
   'python-pydicom: DICOM I/O support'
   'python-tifffile: for tiff file support'
