@@ -31,10 +31,8 @@ conflicts=('gmusicbrowser' 'gmusicbrowser-git')
 provides=(gmusicbrowser)
 install=$pkgname.install
 source=("https://github.com/squentin/gmusicbrowser/archive/v$pkgver.tar.gz"
-        "perl524.patch"
         "shimmer.patch")
 sha256sums=('fa86235c0e39def45a061b66a92321f60eb3b054a79a0f010db101a427f2785c'
-            'b5a8196e7b3f8b7ad7da65d06ed4f767a871fcc2af3285a79599a6737646439e'
             '30a4451be1c86552a783473f7a7007892daac0a64c632756ccbc762401ce71a6')
 
 
