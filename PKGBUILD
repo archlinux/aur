@@ -1,68 +1,111 @@
-# Maintainer:  Vincent Grande <shoober420@gmail.com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: éclairevoyant
+# Contributor: Vincent Grande <shoober420 at gmail dot com>
+# Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
+# Contributor: Ionut Biru <ibiru at archlinux dot org>
 
-pkgbase=colord-git
-pkgname=(colord-git colord-sane-git)
-pkgver=1.4.4
-pkgrel=2
+_pkgbase=colord
+pkgbase="$_pkgbase-git"
+pkgname=(colord-git colord-sane-git libcolord-git)
+pkgver=1.4.6.r16.d735245
+pkgrel=1
 pkgdesc="System daemon for managing color devices"
-url="https://www.freedesktop.org/software/colord"
 arch=(x86_64)
+url="https://www.freedesktop.org/software/$_pkgbase"
 license=(GPL2)
-provides=(colord colord-sane)
-conflicts=(colord colord-sane)
-depends=(lcms2 libgusb polkit sqlite dconf dbus libgudev shared-mime-info systemd-libs udev)
-makedepends=(gobject-introspection vala sane bash-completion argyllcms git meson gtk-doc systemd
-             docbook-xsl)
+depends=(
+	dbus
+	dconf
+	lcms2
+	libgudev
+	libgusb
+	polkit
+	shared-mime-info
+	sqlite
+	systemd-libs
+	udev
+)
+makedepends=(
+	argyllcms
+	bash-completion
+	docbook-xsl
+	git
+	gobject-introspection
+	gtk-doc
+	meson
+	sane
+	systemd
+	vala
+)
+provides=(colord colord-sane libcolord)
+conflicts=(colord colord-sane libcolord)
 options=(!emptydirs)
 source=("git+https://github.com/hughsie/colord")
-sha256sums=('SKIP')
-#validpgpkeys=('163EB50119225DB3DF8F49EA17ACBA8DFA970E17')  # Richard Hughes
+b2sums=('SKIP')
 
 pkgver() {
-  cd colord
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd colord
+	git -C $_pkgbase describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson colord build \
-    -D libcolordcompat=true \
-    -D sane=true \
-    -D vapi=true \
-    -D print_profiles=true \
-    -D daemon_user=colord
-  ninja $NINJAFLAGS -C build
+	arch-meson $_pkgbase build \
+		-D libcolordcompat=true \
+		-D sane=true \
+		-D vapi=true \
+		-D print_profiles=true \
+		-D daemon_user=colord
+	meson compile -C build
 }
 
-#check() {
-#  meson test -C build
-#}
+check() {
+	meson test -C build --print-errorlogs
+}
+
+_pick() {
+	local p="$1" f d; shift
+	for f; do
+		d="$srcdir/$p/${f#$pkgdir/}"
+		mkdir -p "$(dirname "$d")"
+		mv "$f" "$d"
+		rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+	done
+}
 
 package_colord-git() {
-  optdepends=('argyllcms: color profiling'
-              'colord-sane: SANE support')
-  replaces=(shared-color-profiles)
+	depends+=("libcolord=$pkgver")
+	optdepends=('argyllcms: color profiling'
+	            'colord-sane: SANE support')
+	provides=(colord libcolorhug.so)
+	conflicts=(colord)
 
-  DESTDIR="$pkgdir" meson install -C build
+	DESTDIR="$pkgdir" meson install -C build
 
-  echo 'u colord - "Color management daemon" /var/lib/colord' |
-    install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/colord.conf"
+	echo 'u colord - "Color management daemon" /var/lib/colord' |
+		install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/colord.conf"
 
-### Split colord-sane
-  mkdir -p colord-sane/usr/lib/colord-plugins
-  mv {"$pkgdir",colord-sane}/usr/lib/colord-sane
-  mv {"$pkgdir",colord-sane}/usr/lib/colord-plugins/libcolord_sensor_sane.so
+	cd "$pkgdir"
+
+	_pick sane usr/lib/colord-sane
+	_pick sane usr/lib/colord-plugins/libcolord_sensor_sane.so
+
+	_pick lib usr/include/colord-1/colord{,.h}
+	_pick lib usr/lib/libcolord{,compat}.so*
+	_pick lib usr/lib/girepository-1.0/Colord-1.0.typelib
+	_pick lib usr/lib/pkgconfig/colord.pc
+	_pick lib usr/share/gir-1.0/Colord-1.0.gir
 }
 
 package_colord-sane-git() {
-  pkgdesc+=" (SANE support)"
-  depends=(colord sane)
-  mv colord-sane/* "$pkgdir"
+	pkgdesc+=" (SANE support)"
+	depends=("colord=$pkgver" sane)
+	provides=(colord-sane)
+	conflicts=(colord-sane)
+
+	mv sane/* "$pkgdir"
 }
 
-# vim:set sw=2 et:
+package_libcolord-git() {
+	pkgdesc+=" (client library)"
+	depends=(glib2 lcms2 systemd)
+	provides=(libcolord libcolord.so)
+	mv lib/* "$pkgdir"
+}
