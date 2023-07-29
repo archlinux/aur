@@ -30,7 +30,7 @@ optdepends=('alsa-utils: enables the ALSA backend'
 conflicts=('gmusicbrowser' 'gmusicbrowser-git')
 provides=(gmusicbrowser)
 install=$pkgname.install
-source=("https://github.com/squentin/gmusicbrowser/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/squentin/gmusicbrowser/archive/v$pkgver.tar.gz"
         "shimmer.patch")
 sha256sums=('fa86235c0e39def45a061b66a92321f60eb3b054a79a0f010db101a427f2785c'
             '30a4451be1c86552a783473f7a7007892daac0a64c632756ccbc762401ce71a6')
