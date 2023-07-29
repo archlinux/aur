@@ -1,7 +1,7 @@
 # Maintainer: Avi Zimmerman <avi.zimmerman@gmail.com>
 
 pkgname="webmesh-bin"
-pkgver="0.0.22"
+pkgver="0.0.24"
 pkgrel="1"
 pkgdesc="A service mesh for the web"
 arch=("x86_64" "aarch64" "armv6h" "i686" "s390x" "ppc64le")
@@ -15,12 +15,10 @@ conflicts=("webmesh-git")
 source=(
     "https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt"
 )
-
-sha256sums=(
-    "032b4a65d2a5136c4817d13a7b446833ff1c894e80b4d0e255a7f9aa15b670a1"
-)
+sha256sums=('b9dfceef36163967de11143b892cfa188f856999b03c3f9c3b676dc82b39d7e5')
 
 prepare() {
+    echo "==> Verifying cosign signatures..."
     COSIGN_EXPERIMENTAL=1 cosign verify-blob \
         --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
         --certificate-identity-regexp="github\.com/webmeshproj/webmesh" \
