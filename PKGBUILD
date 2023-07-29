@@ -13,7 +13,7 @@ _opt_SYS_FLUTTER=1
 set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
-pkgver='1.2.0'
+pkgver='1.2.1'
 pkgrel=1
 pkgdesc='Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!'
 arch=('x86_64')
@@ -52,9 +52,9 @@ if ! :; then
   _srcdir="${_pkgname}"
   source[0]="git+${_giturl}#tag=${pkgver}"
 fi
-md5sums=('e0800c4d3f635cb0a39a85c18608a4c9'
+md5sums=('a768dfc315c735d9f137e89a17604a7a'
          '9cb4a6717db959e082db75200e75d3e1')
-sha256sums=('79cf5b37a6e10beb6383ea0dab3f69c462c5292d04a970858bb949b5cba2e6eb'
+sha256sums=('6f53d046cdff83dcb304c866cf0b90076fc4a379ba9d5e14cf70f2a47e71e1bc'
             '6efb71ac8086699da74dad6736c32ddb20db5dcabe167c49a8c3a650675eb84b')
 
 _vcpkg=(libvpx libyuv opus aom)
