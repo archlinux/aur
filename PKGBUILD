@@ -109,6 +109,9 @@ package() {
   install -m 644 \
           "${srcdir}/chtrt5645.conf" \
           "${pkgdir}/${ucm_path}/${_card}/${_card}.conf"
+  install -D \
+          -m 755 \
+          "${pkgdir}/etc/modprobe.d"
   install -m 644 \
           "${srcdir}/50-${_card}.conf" \
           "${pkgdir}/etc/modprobe.d/50-${_card}.conf"
