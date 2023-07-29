@@ -1,0 +1,14 @@
+pkgbase = lvb
+	pkgdesc = parsimony and simulated annealing in the search for phylogenetic trees https://doi.org/10.1093/bioinformatics/btg402
+	pkgver = 4.2
+	pkgrel = 0
+	url = https://github.com/phylolvb/lvb
+	arch = x86_64
+	license = GPL2
+	makedepends = make
+	depends = gcc-libs
+	depends = glibc
+	source = https://github.com/phylolvb/lvb/archive/refs/tags/4.2.tar.gz
+	sha256sums = cdd51333fb82ab4ea356f5bc6cb3dc973d524bfed82cec63db6089f33f494da2
+
+pkgname = lvb
