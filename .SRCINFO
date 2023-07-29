@@ -6,7 +6,10 @@ pkgbase = ldaptools
 	arch = any
 	license = GPLv3
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = python
 	depends = python-setuptools
 	source = git+https://github.com/coNQP/ldaptools.git#tag=1.0.6

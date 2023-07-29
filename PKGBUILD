@@ -8,16 +8,16 @@ arch=('any')
 url="https://github.com/coNQP/${pkgname}"
 license=('GPLv3')
 depends=('python' 'python-setuptools')
-makedepends=('git' 'python-setuptools-scm')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 source=("git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {
-    cd "${pkgname}"
-    python setup.py build
+    cd "${srcdir}/${_pkgbase}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${pkgname}"
-    python setup.py install --root "${pkgdir}" --optimize=1 --skip-build
+    cd "${srcdir}/${_pkgbase}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
