@@ -3,7 +3,7 @@
 pkgname=python-flax
 _name=${pkgname#python-}
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A neural network library and ecosystem for JAX designed for flexibility'
 arch=('any')
 url='https://github.com/google/flax'
@@ -26,9 +26,18 @@ optdepends=(
     'python-matplotlib: Export to TensorBoard.'
     'tensorboard: TensorBoard visualization and logging.'
 )
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6c47b93f711c2c4e043ac9d49168370efecb1d973b1dbdae15ee30e7dc26922f')
+source=("flax-$pkgver.tar.gz::https://github.com/google/flax/archive/refs/tags/v${pkgver}.tar.gz"
+        'python-flax.diff')
+sha256sums=('6c47b93f711c2c4e043ac9d49168370efecb1d973b1dbdae15ee30e7dc26922f'
+            'SKIP')
+
+prepare(){
+    rm -rfv flax-$pkgver/flax/version.py
+    cd flax-$pkgver
+    patch -p 1 -i ../python-flax.diff
+    export SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver
+
+}
 
 build() {
     python -m build -nw $_name-$pkgver
@@ -38,6 +47,6 @@ package() {
     python -m installer \
         --compile-bytecode 1 \
         --destdir=$pkgdir \
-        $_name-$pkgver/dist/*.whl
+        $_name-$pkgver/dist/$_pkgname-$pkgver*.whl
 }
 
