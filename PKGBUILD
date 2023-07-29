@@ -28,4 +28,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     make DESTDIR="${pkgdir}/" install
+    mv "${pkgdir}/usr/bin/kal" "${pkgdir}/usr/bin/kalibrate-hackrf"
 }
