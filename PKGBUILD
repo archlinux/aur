@@ -3,7 +3,7 @@
 
 pkgname=agate
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple static file server for the Gemini network protocol, written in Rust"
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
