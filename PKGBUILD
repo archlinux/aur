@@ -27,6 +27,9 @@ provides=(
   libasound.so
   libatopology.so
   "${_pkgname}=${pkgver}"
+  "${pkgname}-conf=${pkgver}"
+  "${_pkgname}-${_card}=${pkgver}"
+  "${_pkgname}-${_card}-conf=${pkgver}"
 )
 conflicts=(
   "${_pkgname}"
@@ -37,7 +40,10 @@ _ucm_commit="c7405e6f03eb2404edb38b495c27225364bf16f4"
 source=(
   "${url}/files/pub/lib/${_pkgname}-${pkgver}.tar.bz2"{,.sig}
   "${plbossart_url}/${_card_commit}/${_card}/${_card}.conf"
-  "${plbossart_url}/UCM/${_ucm_commit}/sof-${_card}/HiFi.conf")
+  # "${plbossart_url}/UCM/${_ucm_commit}/sof-${_card}/HiFi.conf"
+  "HiFi.conf"
+  "chtrt5645.conf"
+)
 sha512sums=(
   '8f39c8166c3648d46695a9287d9b9a35e5bfffed11d79e868ff7aba92d0fee792e82784186ebeb2a3e44d6b617c916025c7fce9a802565bb8e0dc8fdcce2311a'
   'SKIP'
