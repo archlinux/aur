@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.5.1
+
+### Fixed
+
+- Fixed bug in laz backend handling in the CLI
+
+---
+
 ## 2.5.0
 
 ### Added
