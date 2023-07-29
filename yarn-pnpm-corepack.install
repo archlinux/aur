@@ -1,0 +1,12 @@
+#!/bin/bash
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+# yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    echo "  ${blue}-> NOTE: ${all_off}"
+    echo "      Run \`${bold}corepack prepare --activate yarn@<YARN_VERSION> pnpm@<PNPM_VERSION>${all_off}\` to install the actual package managers."
+    echo "      For example: \`${bold}corepack prepare --activate yarn@1 pnpm@latest${all_off}\`."
+    # echo "    ${blue} END NOTE${all_off}"
+}
