@@ -2,7 +2,7 @@
 
 pkgname="webmesh-bin"
 pkgver="0.0.24"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A service mesh for the web"
 arch=("x86_64" "aarch64" "armv6h" "i686" "s390x" "ppc64le")
 url="https://webmeshproj.github.io"
@@ -24,9 +24,10 @@ prepare() {
         --certificate-identity-regexp="github\.com/webmeshproj/webmesh" \
         --signature="https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt.sig" \
         --certificate="https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/checksums.txt.sig.cert" \
-        checksums.txt
+        "$srcdir/checksums.txt"
     curl -JL https://github.com/webmeshproj/webmesh/releases/download/v$pkgver/webmesh_Linux_$CARCH.tar.gz > webmesh_Linux_$CARCH.tar.gz
     sha256sum -c checksums.txt --ignore-missing
+    rm -f ../checksums.txt "$srcdir/checksums.txt"
     tar -C "$srcdir" -xzf webmesh_Linux_$CARCH.tar.gz
 }
 
