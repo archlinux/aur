@@ -1,15 +1,19 @@
 # Maintainer:
 # Contributor: Benjamin Landis <bmlandis2010@gmail.com>
 
-_pkgname="mpv-vapoursynth"
-pkgname="$_pkgname-git"
-pkgver=0.35.0.r386.gacababec20
+_pkgname="mpv"
+pkgname="$_pkgname-vapoursynth-git"
+pkgver=0.36.0.r30.ga2dd78fbc0
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with Vapoursynth enabled)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
-url='https://mpv.io/'
+url='https://github.com/mpv-player/mpv'
+
 depends=(
+  'vapoursynth'
+
+  # extra/mpv
   'alsa-lib'
   'desktop-file-utils'
   'ffmpeg'
@@ -29,7 +33,6 @@ depends=(
   'libavutil.so'
   'libbluray'
   'libbluray.so'
-  'libcaca'
   'libcdio'
   'libcdio-paranoia'
   'libdrm'
@@ -42,6 +45,7 @@ depends=(
   'libjpeg'
   'libjpeg.so'
   'liblcms2.so'
+  'libpipewire'
   'libplacebo'
   'libplacebo.so'
   'libpulse'
@@ -61,41 +65,51 @@ depends=(
   'libxinerama'
   'libxkbcommon'
   'libxkbcommon.so'
+  'libxpresent'
   'libxrandr'
   'libxss'
   'libxv'
-  'lua52'
+  'luajit'
   'mesa'
   'mujs'
   'rubberband'
   'shaderc'
   'uchardet'
-  'vapoursynth'
   'vulkan-icd-loader'
   'wayland'
-  'xdg-utils'
   'zlib'
 )
 makedepends=(
+  # extra/mpv
   'ffnvcodec-headers'
   'git'
   'ladspa'
+  'meson'
   'python-docutils'
   'vulkan-headers'
-  'waf'
   'wayland-protocols'
 )
-provides=('mpv')
+
+optdepends=(
+  'yt-dlp: for video-sharing websites playback'
+  'youtube-dl: for video-sharing websites playback'
+)
+
+provides=(
+  'libmpv.so'
+  'mpv'
+)
 conflicts=('mpv')
+
 options=('!emptydirs')
 validpgpkeys=('145077D82501AA20152CACCE8D769208D5E31419') # sfan5 <sfan5@live.de>
+
 source=(
-  "$_pkgname"::"git+https://github.com/mpv-player/mpv"
+  "$_pkgname"::"git+$url"
 )
 sha256sums=(
   'SKIP'
 )
-
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -104,29 +118,35 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  local _meson_options=(
+    --auto-features auto
 
-  waf configure --prefix=/usr \
-    --confdir=/etc/mpv \
-    --enable-cdda \
-    --enable-dvb \
-    --enable-dvdnav \
-    --enable-libarchive \
-    --enable-libmpv-shared \
-    --disable-build-date \
-    --enable-vapoursynth
+    -Dlibmpv=true
 
-  waf build
+    -Dcaca=disabled
+    -Dcdda=enabled
+    -Ddvbin=enabled
+    -Ddvdnav=enabled
+    -Dlibarchive=enabled
+
+    -Dbuild-date=false
+    -Dvapoursynth=enabled
+  )
+
+  arch-meson "$_pkgname" build "${_meson_options[@]}"
+
+  meson compile -C build
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  meson install -C build --destdir "$pkgdir"
 
-  waf install --destdir="$pkgdir"
+  # delete private entries only required for static linking 
+  sed -i -e '/Requires.private/d' -e '/Libs.private/d' "$pkgdir/usr/lib/pkgconfig/mpv.pc"
 
-  install -m0644 DOCS/{encoding.rst,tech-overview.txt} \
-    "$pkgdir"/usr/share/doc/mpv
+  install -Dm0644 "$_pkgname/DOCS"/{encoding.rst,tech-overview.txt} \
+    -t "$pkgdir/usr/share/doc/mpv"
 
-  install -m0644 TOOLS/lua/* \
-    -D -t "$pkgdir"/usr/share/mpv/scripts
+  install -Dm0644 "$_pkgname/TOOLS/lua"/* \
+    -t "$pkgdir/usr/share/mpv/scripts"
 }
