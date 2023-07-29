@@ -1,0 +1,11 @@
+diff -ru src-a/pal/src/core/imported/rdf/rdf/inc/amdrdf.h src-b/pal/src/core/imported/rdf/rdf/inc/amdrdf.h
+--- src-a/pal/src/core/imported/rdf/rdf/inc/amdrdf.h	2023-05-23 10:28:07.000000000 +0200
++++ src-b/pal/src/core/imported/rdf/rdf/inc/amdrdf.h	2023-05-23 13:02:53.827690595 +0200
+@@ -24,6 +24,7 @@
+  **********************************************************************************************************************/
+ #pragma once
+ 
++#include <cstdint>
+ #include <cstddef>
+ #include <cstring>
+ #include <functional>
