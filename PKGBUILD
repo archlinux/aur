@@ -7,7 +7,7 @@ pkgdesc="parsimony and simulated annealing in the search for phylogenetic trees 
 	 https://doi.org/10.1093/bioinformatics/btg402"
 arch=('x86_64')
 url="https://github.com/phylolvb/lvb"
-license=('GPL2')
+license=('custom')
 depends=('gcc-libs' 'glibc')
 makedepends=('make')
 source=($url/archive/refs/tags/$pkgver.tar.gz)
