@@ -4,13 +4,13 @@
 pkgname=ls++
 pkgver=0.36
 _gitcommit=e17221c78f398fc9180631c684cdefabb45d1595
-pkgrel=7
+pkgrel=8
 epoch=1
 pkgdesc='Colorized LS on steroids'
 url='https://github.com/trapd00r/ls--/'
 arch=('any')
 license=('GPL2')
-depends=('perl-term-extendedcolor')
+depends=('perl' 'perl-term-extendedcolor')
 makedepends=('git')
 backup=('etc/ls++.conf')
 options=('!emptydirs')
