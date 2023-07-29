@@ -1,6 +1,6 @@
 # Maintainer: Leonardo Dagnino <leodag.sch@gmail.com>
 pkgname=display-switch-tray
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A tray icon for enabling and disabling display-switch's systemd service"
 arch=('i686' 'x86_64')
