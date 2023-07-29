@@ -3,8 +3,8 @@
 # Maintainer: Hydral
 pkgname=gamejolt-client-bin-aur
 pkgname=gamejolt-client-bin-aur
-pkgver=1.32.0
-pkgrel=3
+pkgver=1.33.0
+pkgrel=1
 epoch=
 pkgdesc="GameJolt library of game"
 arch=(x86_64)
@@ -12,7 +12,7 @@ url="https://gamejolt.com/"
 license=('MIT')
 source=("gamejolt.png"
                 "GameJolt.desktop"
-                "gamejolt-$pkgver::https://download.gamejolt.net/ab3b7f028299b984e7faa8689c6b8357ce55879bb221e0773277e6ff0d34ebf8,1689826565,7/data/games/5/162/362412/files/64b1dc742580f/gamejoltclient.tar.gz")
+                "gamejolt-$pkgver::https://download.gamejolt.net/12fce6ef1cc8fc29159e1a44d9e1a1e2fd5f6e047cbd892663ee388a235fa02d,1690742129,7/data/games/5/162/362412/files/64bed7b60f5d8/gamejoltclient.tar.gz")
 prepare() {
         echo $srcdir
 }
@@ -38,4 +38,4 @@ package() {
 }
 md5sums=('4c975528cb791ee16e5c62edbbf28287'
          '92ce58877e47b071ace909969d6a710a'
-         'b2bd038af798511c2886d0ea21cfe165')
+         '03146ec6dcddf6d658a3bb78a9c7a37b')
