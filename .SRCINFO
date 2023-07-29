@@ -1,0 +1,14 @@
+pkgbase = clann
+	pkgdesc = constructing consensus trees and supertrees from multiple source trees https://doi.org/10.1093/bioinformatics/bti020
+	pkgver = 194f8aa
+	pkgrel = 1
+	url = https://github.com/ChrisCreevey/clann
+	arch = x86_64
+	license = GPL2
+	makedepends = autoconf
+	makedepends = make
+	depends = readline
+	source = https://github.com/ChrisCreevey/clann/archive/refs/tags/194f8aa.tar.gz
+	sha256sums = 4ac7bdb035743a2f53a7da96d4d8b22c95f94d117ffdf3380d88ad14322f88e4
+
+pkgname = clann
