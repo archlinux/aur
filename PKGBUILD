@@ -1,9 +1,9 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 # Maintainer: Daniel Bershatsky <d.bershatsky2@skoltech.ru> (aur.archlinux.org/account/daskol)
 pkgname=python-flax
-_name=${pkgname#python-}
+_pkgname=${pkgname#python-}
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A neural network library and ecosystem for JAX designed for flexibility'
 arch=('any')
 url='https://github.com/google/flax'
