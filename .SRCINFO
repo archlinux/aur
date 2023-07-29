@@ -1,0 +1,14 @@
+pkgbase = abstreet-bin
+	pkgdesc = A traffic simulation game exploring how small changes to roads affect everyone
+	pkgver = 0.3.45
+	pkgrel = 1
+	url = https://github.com/a-b-street/abstreet
+	arch = x86_64
+	license = Apache
+	conflicts = abstreet-git
+	source = https://github.com/a-b-street/abstreet/releases/download/v0.3.45/abstreet_linux_v0_3_45.zip
+	source = abstreet.desktop
+	sha256sums = 24caf220859592782e9d07bc062cbf9f560c35f79a0ea9eb5d857f5a2e50ed58
+	sha256sums = 8c20072d6d4270c380207c738d773682450b2b060fcfda0f994cab522087327f
+
+pkgname = abstreet-bin

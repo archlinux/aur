@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=A/B Street
+GenericName=Traffic simulation game
+Comment=A traffic simulation game exploring how small changes to roads affect cyclists, transit users, pedestrians, and drivers.
+Keywords=simulation;seattle;traffic
+Path=/usr/share/abstreet/game
+Exec=/usr/share/abstreet/game/game
+Terminal=false
+StartupNotify=true
+Type=Application
+Icon=abstreet
+Categories=Game
