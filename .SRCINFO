@@ -1,7 +1,7 @@
 pkgbase = kalibrate-hackrf-git
 	pkgdesc = GSM base stations scanner (for HackRF)
 	pkgver = 20220321
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scateu/kalibrate-hackrf
 	arch = i686
 	arch = x86_64
