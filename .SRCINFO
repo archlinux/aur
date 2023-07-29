@@ -1,17 +1,16 @@
 pkgbase = mingw-w64-lv2
 	pkgdesc = Successor to the LADSPA audio plug-in standard (mingw-w64)
-	pkgver = 1.18.0
+	pkgver = 1.18.10
 	pkgrel = 1
 	url = http://lv2plug.in/
 	arch = any
 	license = LGPL
 	license = custom
-	makedepends = python2
+	makedepends = meson
 	depends = mingw-w64-crt
 	optdepends = mingw-w64-pkg-config
 	optdepends = mingw-w64-gcc
-	source = http://lv2plug.in/spec/lv2-1.18.0.tar.bz2
-	sha512sums = 9e8dd9c1f30371260d21efc105b1d4d4ad03d9e332d4d3877d873f20b9527bcd0e917ff23fc6e0a9cc4337bda85882c742f225f7cf4fbc8a8a0964565c91f9d9
+	source = http://lv2plug.in/spec/lv2-1.18.10.tar.xz
+	sha512sums = ab4bcf593f633b1ed16c0eb6aa4525458a00655ef9c87619bf85eaa966f8fd094a8e871b825f679e0d97923f8bbbf11841ff467022390ca2f1a5b5f66ccd5d1b
 
 pkgname = mingw-w64-lv2
-
