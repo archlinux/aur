@@ -12,7 +12,7 @@ pkgbase = random_machine_id-openrc
 	conflicts = random_machine_id
 	source = random_machine_id.sh
 	source = random_machine_id.openrc
-	sha256sums = adb283b1c22b0d6f87fb11c437188b567886364fdf731e4a1b13274eca7f475b
+	sha256sums = 7948ff8d668da3cbadfd40dab01024450d31cca80072c0ef569362101813e215
 	sha256sums = 80f56b2e612c92e0bdc6d7518d85dce4059811232c505b3049eb15e7e14c0226
 
 pkgname = random_machine_id-openrc

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=20230728.02
+VERSION=20230729.01
 
 set -e # Abort on errors, so that a failing cd does not mess up elsewhere.
 
