@@ -1,6 +1,6 @@
 pkgbase = softmaker-office-2024-bin
 	pkgdesc = Proprietary office suite; word processing, spreadsheets, presentations
-	pkgver = 1200
+	pkgver = 1202
 	pkgrel = 1
 	url = https://www.softmaker.com
 	arch = x86_64
@@ -37,8 +37,8 @@ pkgbase = softmaker-office-2024-bin
 	sha512sums = 2c9f577e819e7aab96f527ed6562c2b56841d340c7e1d851f4ad96e780f92af1653160b9661bfd3fa6fe208f7d659a4d96cd4e11081840487a7bb14753a79a8a
 	sha512sums = 9be8b6a101b4064e1d14e45d9e81c2867f3e3dbe717820a8c3838685b036415f0584b4d9d999d1b052b675b1f4ee23d1e411321fa66ec63373cbc8ec6341f515
 	sha512sums = 2cf6d62036e88a181b6a0aec73bfe92890901d02cea3bed350fd0297af1e0de0418153c8817d7c79ebf0258c3118023bc6c0300199dbb0fd9d608e16b7b22ae2
-	source_x86_64 = http://www.softmaker.net/down/softmaker-office-2024-1200-amd64.tgz
-	md5sums_x86_64 = c02f437da611ebb5e7df27ea0be68cf3
-	sha512sums_x86_64 = 6501fb01bee9b85ac2b728b3e30e63781f30bfdecb5a7fc1d7526e470cbc79081332167eafd1e14b181e2b55e46db3110b61dd1dde4b835ee1ceebbb51b5a5e4
+	source_x86_64 = http://www.softmaker.net/down/softmaker-office-2024-1202-amd64.tgz
+	md5sums_x86_64 = 18fda2d1695bb502b7df3a2f76805919
+	sha512sums_x86_64 = d4d5b7471a8261c64eac39d5b6a883fa1de60903f9166aa2c0a5fe4d599494b52fb25b153681f6dc3607ed26939d1053e7d8c610539c334d7219132c8198fff5
 
 pkgname = softmaker-office-2024-bin
