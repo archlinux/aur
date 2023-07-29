@@ -3,9 +3,9 @@
 
 pkgname='nginx-vts-exporter'
 pkgver='0.10.8'
-pkgrel='1'
-pkgdesc='Simple server that scrapes Nginx vts stats and exports them via HTTP for Prometheus consumption'
-arch=('x86_64' 'i686' 'aarch64')
+pkgrel='2'
+pkgdesc='Prometheus exporter for Nginx vts stats'
+arch=('x86_64' 'aarch64')
 _uri='github.com/hnlq715'
 url="https://${_uri}/${pkgname}"
 license=('MIT')
@@ -25,7 +25,17 @@ prepare() {
 
 build() {
   cd "${GOPATH}/src/${_uri}/${pkgname}"
-  GOOS=linux go build
+  go build -x \
+    -buildmode="pie" \
+    -trimpath \
+    -mod="readonly" \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
+    -X github.com/prometheus/common/version.Version=${pkgver} \
+    -X github.com/prometheus/common/version.Revision=$(git rev-parse HEAD) \
+    -X github.com/prometheus/common/version.Branch=$(git describe --all --contains --dirty HEAD) \
+    -X github.com/prometheus/common/version.BuildUser=$(whoami)@$(hostnamectl hostname) \
+    -X github.com/prometheus/common/version.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)"
 }
 
 package() {

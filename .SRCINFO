@@ -1,10 +1,9 @@
 pkgbase = nginx-vts-exporter
-	pkgdesc = Simple server that scrapes Nginx vts stats and exports them via HTTP for Prometheus consumption
+	pkgdesc = Prometheus exporter for Nginx vts stats
 	pkgver = 0.10.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hnlq715/nginx-vts-exporter
 	arch = x86_64
-	arch = i686
 	arch = aarch64
 	license = MIT
 	makedepends = go
