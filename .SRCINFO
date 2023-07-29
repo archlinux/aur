@@ -1,6 +1,6 @@
 pkgbase = memos-git
 	pkgdesc = A lightweight, self-hosted memo hub. Open Source and Free forever.
-	pkgver = 0.14.1.r0.g4231ec5a
+	pkgver = 0.14.2.r2.g28aecd86
 	pkgrel = 1
 	url = https://github.com/usememos/memos
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = memos-git
 	makedepends = pnpm
 	provides = memos-git
 	backup = etc/memos.conf
-	source = git+https://github.com/usememos/memos.git#tag=v0.14.1
+	source = git+https://github.com/usememos/memos.git
 	source = systemd.service
 	source = sysusers.conf
 	source = memos.conf

@@ -3,11 +3,9 @@
 _pkgname="memos"
 _gitauthor="usememos"
 _gitbranch="main"
-_gittag="v0.14.1"
-
 
 pkgname="${_pkgname}-git"
-pkgver=0.14.1.r0.g4231ec5a
+pkgver=0.14.2.r2.g28aecd86
 pkgrel=1
 pkgdesc="A lightweight, self-hosted memo hub. Open Source and Free forever."
 url="https://github.com/${_gitauthor}/${_pkgname}"
@@ -18,7 +16,7 @@ depends=()
 provides=("${pkgname}")
 backup=('etc/memos.conf')
 source=(
-  "git+https://github.com/${_gitauthor}/${_pkgname}.git#tag=${_gittag}"
+  "git+https://github.com/${_gitauthor}/${_pkgname}.git"
   "systemd.service"
   "sysusers.conf"
   "memos.conf"
@@ -42,7 +40,8 @@ build(){
     corepack enable --install-directory "${srcdir}/bin" && pnpm i --frozen-lockfile
     env PATH="${PATH}:${srcdir}/bin" pnpm build    
     cp -r "dist" "$srcdir/$_pkgname/server/"
-    
+
+    # build backend
     cd "$srcdir/$_pkgname"
     CGO_ENABLED=0 go build -o memos ./main.go
 }
@@ -57,5 +56,4 @@ package () {
   cd "$_pkgname"
   install  -Dm755 "memos" "$pkgdir/usr/bin/memos"
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
-
 }
