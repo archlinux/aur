@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=TPM Manager
+Exec=sudo tpmmanager
+Comment=Configure TPM 1.2
+Terminal=true
+Icon=lock
+Type=Application
+
