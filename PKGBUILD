@@ -11,6 +11,7 @@ arch=('x86_64')
 url="https://github.com/mbrubeck/agate"
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 license=('APACHE' 'MIT')
+options=("!lto") # see: https://github.com/briansmith/ring/issues/1444
 
 prepare() {
   cd $pkgname-$pkgver
