@@ -1,36 +1,32 @@
-# Maintainer : Juraj Matuš <matus.juraj at yandex dot com>
+# Maintainer : K.B.Dharun Krishna <kbdharunkrishna@gmail.com>
 
-_lang=slk-eng
-pkgname=dict-freedict-${_lang}
-pkgver=0.2
+pkgname=vib
+pkgver=0.2.10
 pkgrel=1
-pkgdesc="Slovak -> English dictionary for dictd et al. from Freedict.org"
-arch=('any')
-url="https://freedict.org/"
-license=('GPL')
-optdepends=('dictd: dict client and server')
-makedepends=('dictd' 'freedict-tools')
-install=install.sh
-source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}.${pkgrel}/freedict-${_lang}-${pkgver}.${pkgrel}.src.tar.xz")
-sha512sums=('ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac')
+pkgdesc="Vib (Vanilla Image Builder) is a tool that allow generating Containerfile(s) using a Flatpak-like recipe and syntax."
+arch=(x86_64 aarch64)
+url='https://github.com/Vanilla-OS/Vib'
+license=(GPL3)
+makedepends=(go)
+source=("$Vib-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('1f0ea16323f8a5e58a0b85700dcff6f63d73bf61397f7f26e0751ab34b6b096d85c58726b3fe14d0dccfcc84de63a692c5ddd238b1d8fb1896c07f7e30c2569a')
 
-build()
-{
-	cd $_lang
-	make FREEDICT_TOOLS=/usr/lib/freedict-tools build-dictd
+prepare(){
+	cd "Vib-${pkgver}"
+	mkdir -p build/
 }
 
-package()
-{
-	install -m 755 -d "${pkgdir}/usr/share/dictd"
-	install -m 644 -t "${pkgdir}/usr/share/dictd/" \
-		${_lang}/build/dictd/${_lang}.{dict.dz,index}
+build() {
+	cd "Vib-${pkgver}"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -o build
+}
 
-	for file in ${_lang}/{AUTHORS,README,NEWS,ChangeLog}
-	do
-		if test -f ${file}
-		then
-			install -m 644 -Dt "${pkgdir}/usr/share/doc/freedict/${_lang}/" ${file}
-		fi
-	done
+package() {
+	cd "Vib-${pkgver}"
+	install -Dm755 "build/vib" "${pkgdir}/usr/bin/${pkgname}"
 }

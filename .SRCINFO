@@ -1,15 +1,13 @@
-pkgbase = pkgbase
-	pkgdesc = Slovak -> English dictionary for dictd et al. from Freedict.org
-	pkgver = 0.2
+pkgbase = vib
+	pkgdesc = Vib (Vanilla Image Builder) is a tool that allow generating Containerfile(s) using a Flatpak-like recipe and syntax.
+	pkgver = 0.2.10
 	pkgrel = 1
-	url = https://freedict.org/
-	install = install.sh
-	arch = any
-	license = GPL
-	makedepends = dictd
-	makedepends = freedict-tools
-	optdepends = dictd: dict client and server
-	source = https://download.freedict.org/dictionaries/slk-eng/0.2.1/freedict-slk-eng-0.2.1.src.tar.xz
-	sha512sums = ba7669020a12f64f7d2e2b6dfa90f1376df4a2fe764273bdb06f1e04998ee6dac9584b47f20f8e14cbaae5bf7271dd221032bcc34bd1ff7c93a93cf9de4429ac
+	url = https://github.com/Vanilla-OS/Vib
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = go
+	source = -0.2.10.tar.gz::https://github.com/Vanilla-OS/Vib/archive/refs/tags/v0.2.10.tar.gz
+	sha512sums = 1f0ea16323f8a5e58a0b85700dcff6f63d73bf61397f7f26e0751ab34b6b096d85c58726b3fe14d0dccfcc84de63a692c5ddd238b1d8fb1896c07f7e30c2569a
 
-pkgname = dict-freedict-slk-eng
+pkgname = vib
