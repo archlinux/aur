@@ -9,7 +9,7 @@ pkgbase = gamejolt-client-bin-aur
 	source = GameJolt.desktop
 	source = gamejolt-1.33.0::https://download.gamejolt.net/12fce6ef1cc8fc29159e1a44d9e1a1e2fd5f6e047cbd892663ee388a235fa02d,1690742129,7/data/games/5/162/362412/files/64bed7b60f5d8/gamejoltclient.tar.gz
 	md5sums = 4c975528cb791ee16e5c62edbbf28287
-	md5sums = 92ce58877e47b071ace909969d6a710a
+	md5sums = acbba04de3ea19952c2b23ab91e384ee
 	md5sums = 03146ec6dcddf6d658a3bb78a9c7a37b
 
 pkgname = gamejolt-client-bin-aur

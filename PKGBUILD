@@ -22,7 +22,7 @@ build() {
 }
 
 check() {
-        echo no check
+         echo no check
 }
 
 package() {
@@ -32,10 +32,10 @@ package() {
         install -Dm775 GameJolt.desktop                 $pkgdir/usr/share/applications/GameJolt.desktop
         install -Dm777 .manifest                                        $pkgdir/opt/gamejolt/.manifest
         install -Dm777 game-jolt-client                 $pkgdir/opt/gamejolt/game-jolt-client
-        mv data-376715-1430054                                   $pkgdir/opt/gamejolt
-        chmod 777 $pkgdir/opt/gamejolt/data-376715-1430054
+        mv data-376715-1435462                                   $pkgdir/opt/gamejolt
+        chmod 777 $pkgdir/opt/gamejolt/data-376715-1435462
 
 }
 md5sums=('4c975528cb791ee16e5c62edbbf28287'
-         '92ce58877e47b071ace909969d6a710a'
+         'acbba04de3ea19952c2b23ab91e384ee'
          '03146ec6dcddf6d658a3bb78a9c7a37b')
