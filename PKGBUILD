@@ -13,7 +13,7 @@ makedepends=('git')
 source=('https://github.com/spicetify/spicetify-marketplace/releases/download/v'$pkgver'/spicetify-marketplace.zip'
 		'https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/color.ini'
 		'https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/LICENSE')
-sha256sums=('152f2abbda557bbc8753e03e9ee607ca637cf41920f5764b5d9a7f13ba72900c'
+sha256sums=('c4c3866601b44b0e4ede6be6ec139eb81b0f5782690683bb6627262ec7c4ddab'
             '802c83f4f822eb254f60ef34ea8c53ea9d97889b9e886ac532e42953b9548fb2'
             '49ecb1c6db038200e2f9e8549d99d1966dcfa5b4bc3d0aea3e89b2f3a305a6da')
 install=spicetify-marketplace-bin.install
