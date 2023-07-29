@@ -1,0 +1,14 @@
+[Unit]
+Description=ShadowsocksR-native client service for %I
+After=network.target
+
+[Service]
+Type=simple
+PrivateTmp=true
+WorkingDirectory=/etc/ssr-native
+ExecStart=/usr/bin/ssr-client -c %i.json
+User=nobody
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

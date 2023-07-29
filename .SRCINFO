@@ -1,0 +1,18 @@
+pkgbase = shadowsocksr-native-bin
+	pkgdesc = ShadowsocksR-native is a lightweight secured SOCKS5 proxy with obsfucation.
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://github.com/ShadowsocksR-Live/shadowsocksr-native
+	arch = x86_64
+	license = GPL
+	provides = shadowsocksr-native
+	provides = shadowsocksr
+	backup = etc/ssr-native/config.json
+	source = https://github.com/ShadowsocksR-Live/shadowsocksr-native/releases/download/0.9.4/ssr-native-linux-x64.zip
+	source = shadowsocksr-native@.service
+	source = shadowsocksr-native-server@.service
+	sha256sums = 509523ccbdedeb5fdfd8c4e5d048bed2fd21aeafb4e24360d60ad68cc8dc9f41
+	sha256sums = b776d4590f5e0743530deb405296ced277282668a61348814b59db9f12721891
+	sha256sums = f0496db45b5bd9cdf4b0d52016edbe49f8e57fd964c065c70cea564dcbf03b49
+
+pkgname = shadowsocksr-native-bin
