@@ -1,2 +1,3 @@
-nss
-src
+pkg/
+src/
+nss*
