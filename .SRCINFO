@@ -1,7 +1,7 @@
 pkgbase = lemmony
 	pkgdesc = A better 'All' browsing experience for Lemmy instances
-	pkgver = 0.0.5
-	pkgrel = 2
+	pkgver = 0.0.6
+	pkgrel = 1
 	url = https://github.com/jheidecker/lemmony
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = lemmony
 	depends = python-idna
 	depends = python-requests
 	depends = python-urllib3
-	source = https://github.com/jheidecker/lemmony/archive/refs/tags/v0.0.5.tar.gz
-	sha256sums = d4b134464039c95c6b61ce6f3d5e877c045c6207bad40662e9749874b3294cc9
+	source = https://github.com/jheidecker/lemmony/archive/refs/tags/v0.0.6.tar.gz
+	sha256sums = bbe33998db953129f032e99d1387e7969dbc9fa18d661a71a5365ee2bb562455
 
 pkgname = lemmony
