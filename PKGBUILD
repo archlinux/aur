@@ -3,7 +3,7 @@
 pkgname=ananicy-cpp
 _pkgver=1.1.0
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 arch=(x86_64 x86_64_v3 i386 armv7h aarch64 pentium4)
 url="https://gitlab.com/ananicy-cpp/ananicy-cpp"
