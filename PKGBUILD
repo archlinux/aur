@@ -3,7 +3,7 @@
 # Contributor: Henri Häkkinen <henuxd@gmail.com>
 
 pkgname=pidgin-mini
-pkgver=2.13.0
+pkgver=2.14.12
 pkgrel=1
 pkgdesc="A minimal version of Pidgin for sane XMPP / IRC users"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('pidgin' 'libpurple')
 options=('!libtool')
 install=pidgin.install
 source=(https://downloads.sourceforge.net/pidgin/pidgin-${pkgver}.tar.bz2)
-sha256sums=('2747150c6f711146bddd333c496870bfd55058bab22ffb7e4eb784018ec46d8f')
+sha256sums=('2b05246be208605edbb93ae9edc079583d449e2a9710db6d348d17f59020a4b7')
 
 build() {
   cd "$srcdir/pidgin-$pkgver"
@@ -24,6 +24,7 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc --disable-schemas-install \
     --disable-meanwhile --disable-nm --disable-perl --disable-gnutls \
     --disable-doxygen --disable-gtkspell --disable-gestures \
+    --disable-gevolution \
     --disable-consoleui --disable-tk --disable-tcl --disable-avahi \
     --disable-gstreamer --disable-farstream --disable-idn --disable-mono \
     --disable-vv --disable-nls --with-dynamic-prpls=jabber,irc \
