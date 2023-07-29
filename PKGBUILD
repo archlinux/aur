@@ -2,7 +2,7 @@
 
 pkgname=ttf-firacode
 pkgver=6.2
-pkgrel=0
+pkgrel=2
 pkgdesc="Free monospaced font with programming ligatures"
 arch=('any')
 url="https://github.com/tonsky/FiraCode"
