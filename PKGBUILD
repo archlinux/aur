@@ -1,6 +1,6 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
 pkgname=tundra-git
-pkgver=0.3.0.014070
+pkgver=0.4.0.f13b595
 pkgrel=1
 epoch=
 pkgdesc="MyAnimeList scrobbler (git version)"
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
     cd "tundra"
-    cargo build --release --locked --all-features
+    cargo build --release --locked --all-features --target-dir target
 }
 
 check() {

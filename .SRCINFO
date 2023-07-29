@@ -1,6 +1,6 @@
 pkgbase = tundra-git
 	pkgdesc = MyAnimeList scrobbler (git version)
-	pkgver = 0.3.0.014070
+	pkgver = 0.4.0.f13b595
 	pkgrel = 1
 	url = https://tundra.moe
 	arch = x86_64
