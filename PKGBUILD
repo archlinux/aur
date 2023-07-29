@@ -2,7 +2,8 @@
 
 _name=guiqwt
 pkgname=python-$_name
-pkgver=4.3.3
+pkgver=4.4.1
+_pkgver=v$pkgver
 pkgrel=1
 pkgdesc="Efficient 2D plotting Python library based on PythonQwt "
 arch=('x86_64')
@@ -14,8 +15,8 @@ optdepends=(
   'python-tifffile: for tiff file support'
 )
 makedepends=(python-setuptools python-sphinx cython)
-source=("$_name-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('28f1d2a73ef53a684501f6c7067a57354ff46582bc4f34f7abee46c38630dc4a')
+source=("$_name-$pkgver.tar.gz::https://github.com/PierreRaybaut/$_name/archive/refs/tags/$_pkgver.tar.gz")
+sha256sums=('4427857b7aae80e3c157d4613158edc68b620428a066585adcdb5e0f05c5234f')
 
 build() {
   cd "$_name-$pkgver"
